@@ -11,12 +11,9 @@ Supported options for Zend\\Validator\\InArray
 
 The following options are supported for ``Zend\Validator\InArray`` :
 
-    - haystack: Sets the haystack for the
-    - validation.
-    - recursive: Defines if the validation
-    - should be done recursive. This option defaults to FALSE.
-    - strict: Defines if the validation
-    - should be done strict. This option defaults to FALSE.
+    - haystack: Sets the haystack for the validation.
+    - recursive: Defines if the validation should be done recursive. This option defaults to ``FALSE``.
+    - strict: Defines if the validation should be done strict. This option defaults to ``FALSE``.
 
 
 .. _zend.validator.set.in_array.basic:
@@ -29,8 +26,16 @@ The simplest way, is just to give the array which should be searched against at 
 .. code-block:: php
     :linenos:
     
-    $validator = new Zend\Validator\InArray(array('key' => 'value',
-                                                 'otherkey' => 'othervalue'));
+    $validator = new Zend\Validator\InArray(
+        array(
+            'haystack' =>
+             array(
+                'key'      => 'value',
+                'otherkey' => 'othervalue',
+            )
+        )
+    );
+
     if ($validator->isValid('value')) {
         // value found
     } else {
@@ -44,6 +49,11 @@ This will behave exactly like *PHP* 's ``in_array()`` method.
     ****
 
     Per default this validation is not strict nor can it validate multidimensional arrays.
+
+.. note::
+    ****
+
+    To validate values against a 0 integer is necessary do it with strict mode enabled.
 
 Of course you can give the array to validate against also afterwards by using the ``setHaystack()`` method. ``getHaystack()`` returns the actual set haystack array.
 
@@ -65,7 +75,12 @@ Of course you can give the array to validate against also afterwards by using th
 Strict array validation
 -----------------------
 
-As mentioned before you can also do a strict validation within the array. Per default there would be no difference between the integer value0and the string"0". When doing a strict validation this difference will also be validated and only same types are accepted.
+As mentioned before you can also do a strict validation within the array. Per default there would be no difference between the integer value 0 and the string "0". When doing a strict validation this difference will also be validated and only same types are accepted.
+
+.. note::
+    ****
+
+    PHP converts any string to 0 so it's necessary enable strict mode when you are comparing strings against 0.
 
 A strict validation can also be done by using two different ways. At initiation and by using a method. At initiation you have to give an array with the following structure:
 
@@ -86,14 +101,14 @@ A strict validation can also be done by using two different ways. At initiation 
     }
     
 
-Thehaystackkey contains your array to validate against. And by setting thestrictkey to ``TRUE`` , the validation is done by using a strict type check.
+The haystack key contains your array to validate against. And by setting the strict key to ``TRUE`` , the validation is done by using a strict type check.
 
 Of course you can also use the ``setStrict()`` method to change this setting afterwards and ``getStrict()`` to get the actual set state.
 
 .. note::
     ****
 
-    Note that thestrictsetting is per default ``FALSE`` .
+    Note that the strict setting is per default ``FALSE`` .
 
 .. _zend.validator.set.in_array.recursive:
 
@@ -102,7 +117,7 @@ Recursive array validation
 
 In addition to *PHP* 's ``in_array()`` method this validator can also be used to validate multidimensional arrays.
 
-To validate multidimensional arrays you have to set therecursiveoption.
+To validate multidimensional arrays you have to set the recursive option.
 
 .. code-block:: php
     :linenos:
