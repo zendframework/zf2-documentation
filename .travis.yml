@@ -1,0 +1,11 @@
+language: python
+
+python:
+    - "pypy"
+
+install:
+    - pip install -q Sphinx
+
+script:
+    - cd docs
+    - make linkcheck
