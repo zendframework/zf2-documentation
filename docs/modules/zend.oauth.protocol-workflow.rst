@@ -1,4 +1,6 @@
 
+.. _zend.oauth.introduction.protocol-workflow:
+
 Protocol Workflow
 =================
 

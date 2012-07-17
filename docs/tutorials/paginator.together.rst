@@ -1,4 +1,6 @@
 
+.. _learning.paginator.together:
+
 Putting it all Together
 =======================
 
@@ -9,50 +11,48 @@ In the following examples we will ignore the best practice implementation of usi
 Lets start with the controller. The sample application is simple, and we'll just put everything in the IndexController and the IndexAction. Again, this is for demonstration purposes only. A real application should not use controllers in this manner.
 
 .. code-block:: php
-    :linenos:
-    
-    class IndexController extends Zend_Controller_Action
-    {
-        public function indexAction()
-        {
-            // Setup pagination control view script. See the pagation control tutorial page
-            // for more information about this view script.
-            Zend_View_Helper_PaginationControl::setDefaultViewPartial('controls.phtml');
-    
-            // Fetch an already instantiated database connection from the registry
-            $db = Zend_Registry::get('db');
-    
-            // Create a select object which fetches blog posts, sorted decending by date of creation
-            $select = $db->select()->from('posts')->order('date_created DESC');
-    
-            // Create a Paginator for the blog posts query
-            $paginator = Zend_Paginator::factory($select);
-    
-            // Read the current page number from the request. Default to 1 if no explicit page number is provided.
-            $paginator->setCurrentPageNumber($this->_getParam('page', 1));
-    
-            // Assign the Paginator object to the view
-            $this->view->paginator = $paginator;
-        }
-    }
-    
+   :linenos:
+
+   class IndexController extends Zend_Controller_Action
+   {
+       public function indexAction()
+       {
+           // Setup pagination control view script. See the pagation control tutorial page
+           // for more information about this view script.
+           Zend_View_Helper_PaginationControl::setDefaultViewPartial('controls.phtml');
+
+           // Fetch an already instantiated database connection from the registry
+           $db = Zend_Registry::get('db');
+
+           // Create a select object which fetches blog posts, sorted decending by date of creation
+           $select = $db->select()->from('posts')->order('date_created DESC');
+
+           // Create a Paginator for the blog posts query
+           $paginator = Zend_Paginator::factory($select);
+
+           // Read the current page number from the request. Default to 1 if no explicit page number is provided.
+           $paginator->setCurrentPageNumber($this->_getParam('page', 1));
+
+           // Assign the Paginator object to the view
+           $this->view->paginator = $paginator;
+       }
+   }
 
 The following view script is the index.phtml view script for the IndexController's indexAction. The view script can be kept simple. We're assuming the use of the default ScrollingStyle.
 
 .. code-block:: php
-    :linenos:
-    
-    <ul>
-    <?php
-    // Render each the title of each post for the current page in a list-item
-    foreach ($this->paginator as $item) {
-        echo '<li>' . $item["title"] . '</li>';
-    }
-    ?>
-    </ul>
-    <?php echo $this->paginator; ?>
-    
+   :linenos:
 
-Now navigate to your project's index and see Paginator in action. What we have discussed in this tutorial is just the tip of the iceberg. The reference manual and *API* documentation can tell you more about what you can do with ``Zend_Paginator`` .
+   <ul>
+   <?php
+   // Render each the title of each post for the current page in a list-item
+   foreach ($this->paginator as $item) {
+       echo '<li>' . $item["title"] . '</li>';
+   }
+   ?>
+   </ul>
+   <?php echo $this->paginator; ?>
+
+Now navigate to your project's index and see Paginator in action. What we have discussed in this tutorial is just the tip of the iceberg. The reference manual and *API* documentation can tell you more about what you can do with ``Zend_Paginator``.
 
 

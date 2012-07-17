@@ -1,18 +1,20 @@
 
+.. _zend.validator.set.int:
+
 Int
 ===
 
 ``Zend\Validator\Int`` validates if a given value is an integer. Also localized integer values are recognised and can be validated.
+
 
 .. _zend.validator.set.int.options:
 
 Supported options for Zend\\Validator\\Int
 ------------------------------------------
 
-The following options are supported for ``Zend\Validator\Int`` :
+The following options are supported for ``Zend\Validator\Int``:
 
-    - locale: Sets the locale which will be
-    - used to validate localized integers.
+- **locale**: Sets the locale which will be used to validate localized integers.
 
 
 .. _zend.validator.set.int.basic:
@@ -23,16 +25,16 @@ Simple integer validation
 The simplest way to validate an integer is by using the system settings. When no option is used, the environment locale is used for validation:
 
 .. code-block:: php
-    :linenos:
-    
-    $validator = new Zend\Validator\Int();
-    
-    $validator->isValid(1234);   // returns true
-    $validator->isValid(1234.5); // returns false
-    $validator->isValid('1,234'); // returns true
-    
+   :linenos:
+
+   $validator = new Zend\Validator\Int();
+
+   $validator->isValid(1234);   // returns true
+   $validator->isValid(1234.5); // returns false
+   $validator->isValid('1,234'); // returns true
 
 In the above example we expected that our environment is set to "en" as locale. As you can see in the third example also grouping is recognised.
+
 
 .. _zend.validator.set.int.localized:
 
@@ -44,17 +46,16 @@ Often it's useful to be able to validate also localized values. Integer values a
 ``Zend\Validator\Int`` is able to validate such notations. But it is limited to the locale you set. This means that it not simply strips off the separator, it validates if the correct separator is used. See the following code:
 
 .. code-block:: php
-    :linenos:
-    
-    $validator = new Zend\Validator\Int(array('locale' => 'de'));
-    
-    $validator->isValid(1234); // returns true
-    $validator->isValid("1,234"); // returns false
-    $validator->isValid("1.234"); // returns true
-    
+   :linenos:
+
+   $validator = new Zend\Validator\Int(array('locale' => 'de'));
+
+   $validator->isValid(1234); // returns true
+   $validator->isValid("1,234"); // returns false
+   $validator->isValid("1.234"); // returns true
 
 As you can see, by using a locale, your input is validated localized. Using the english notation you get a ``FALSE`` when the locale forces a different notation.
 
-The locale can also be set afterwards by using ``setLocale()`` and retrieved by using ``getLocale()`` .
+The locale can also be set afterwards by using ``setLocale()`` and retrieved by using ``getLocale()``.
 
 
