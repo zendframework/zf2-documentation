@@ -1,6 +1,9 @@
 
+.. _zend.service.amazon.ec2:
+
 Zend_Service_Amazon_Ec2
 =======================
+
 
 .. _zend.service.amazon.ec2.introduction:
 
@@ -9,47 +12,48 @@ Introduction
 
 ``Zend_Service_Amazon_Ec2`` provides an interface to Amazon Elastic Clound Computing (EC2).
 
+
 .. _zend.service.amazon.ec2.whatis:
 
 What is Amazon Ec2?
 -------------------
 
-Amazon EC2 is a web service that enables you to launch and manage server instances in Amazon's data centers using *API* s or available tools and utilities. You can use Amazon EC2 server instances at any time, for as long as you need, and for any legal purpose.
+Amazon EC2 is a web service that enables you to launch and manage server instances in Amazon's data centers using *API*\ s or available tools and utilities. You can use Amazon EC2 server instances at any time, for as long as you need, and for any legal purpose.
+
 
 .. _zend.service.amazon.ec2.staticmethods:
 
 Static Methods
 --------------
 
-To make using the Ec2 class easier to use there are two static methods that can be invoked from any of the Ec2 Elements. The first static method issetKeyswhich will defind you *AWS* Access Keys as default keys. When you then create any new object you don't need to pass in any keys to the constructor.
+To make using the Ec2 class easier to use there are two static methods that can be invoked from any of the Ec2 Elements. The first static method is *setKeys* which will defind you *AWS* Access Keys as default keys. When you then create any new object you don't need to pass in any keys to the constructor.
+
 
 .. _zend.service.amazon.ec2.staticmethods.setkeys:
 
-setKeys() Example
------------------
+.. rubric:: setKeys() Example
 
 .. code-block:: php
-    :linenos:
-    
-    Zend_Service_Amazon_Ec2_Ebs::setKeys('aws_key','aws_secret_key');
-    
+   :linenos:
 
-To set the region that you are working in you can call thesetRegionto set which Amazon Ec2 Region you are working in. Currently there is only two region available us-east-1 and eu-west-1. If an invalid value is passed it will throw an exception stating that.
+   Zend_Service_Amazon_Ec2_Ebs::setKeys('aws_key','aws_secret_key');
+
+To set the region that you are working in you can call the *setRegion* to set which Amazon Ec2 Region you are working in. Currently there is only two region available us-east-1 and eu-west-1. If an invalid value is passed it will throw an exception stating that.
+
 
 .. _zend.service.amazon.ec2.staticmethods.setregion:
 
-setRegion() Example
--------------------
+.. rubric:: setRegion() Example
 
 .. code-block:: php
-    :linenos:
-    
-    Zend_Service_Amazon_Ec2_Ebs::setRegion('us-east-1');
-    
+   :linenos:
+
+   Zend_Service_Amazon_Ec2_Ebs::setRegion('us-east-1');
 
 .. note::
-    **Set Amazon Ec2 Region**
+   **Set Amazon Ec2 Region**
 
-    Alternativly you can set the region when you create each class as the third parameter in the constructor method.
+   Alternativly you can set the region when you create each class as the third parameter in the constructor method.
+
 
 

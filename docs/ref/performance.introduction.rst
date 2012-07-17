@@ -1,4 +1,6 @@
 
+.. _performance.introduction:
+
 Introduction
 ============
 

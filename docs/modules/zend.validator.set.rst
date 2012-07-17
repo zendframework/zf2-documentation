@@ -1,8 +1,11 @@
 
+.. _zend.validator.set:
+
 Standard Validation Classes
 ===========================
 
 Zend Framework comes with a standard set of validation classes, which are ready for you to use.
+
 
 .. include:: zend.validator.alnum.rst
 .. include:: zend.validator.alpha.rst
@@ -16,9 +19,9 @@ Ccnum
 -----
 
 .. note::
-    ****
+   The ``Ccnum`` validator has been deprecated in favor of the ``CreditCard`` validator. For security reasons you should use CreditCard instead of Ccnum.
 
-    The ``Ccnum`` validator has been deprecated in favor of the ``CreditCard`` validator. For security reasons you should use CreditCard instead of Ccnum.
+
 
 .. include:: zend.validator.date.rst
 .. include:: zend.validator.db.rst
@@ -41,4 +44,3 @@ Ccnum
 .. include:: zend.validator.sitemap.rst
 .. include:: zend.validator.step.rst
 .. include:: zend.validator.string-length.rst
-
