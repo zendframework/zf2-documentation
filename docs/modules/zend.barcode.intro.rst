@@ -1,4 +1,6 @@
 
+.. _zend.barcode.introduction:
+
 Introduction
 ============
 

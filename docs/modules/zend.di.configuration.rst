@@ -1,4 +1,6 @@
 
+.. _zend.di.configuration:
+
 Zend\\Di Configuration
 ======================
 
@@ -9,28 +11,27 @@ The top two keys are 'definition' and 'instance', each specifying values for res
 The definition section expects the following information expressed as a PHP array:
 
 .. code-block:: php
-    :linenos:
-    
-    $config = array(
-        'definition' => array(
-            'compiler' => array(/* @todo compiler information */),
-            'runtime'  => array(/* @todo runtime information */),
-            'class' => array(
-                'instantiator' => '', // the name of the instantiator, by default this is __construct
-                'supertypes    => array(), // an array of supertypes the class implements
-                'methods'      => array(
-                    'setSomeParameter' => array( // a method name
-                        'parameterName' => array(
-                            'name',       // string parameter name
-                            'type',       // type or null
-                            'is-required' // bool
-                        )
-                    )
-    
-                )
-            )
-        )
-    );
-    
+   :linenos:
+
+   $config = array(
+       'definition' => array(
+           'compiler' => array(/* @todo compiler information */),
+           'runtime'  => array(/* @todo runtime information */),
+           'class' => array(
+               'instantiator' => '', // the name of the instantiator, by default this is __construct
+               'supertypes    => array(), // an array of supertypes the class implements
+               'methods'      => array(
+                   'setSomeParameter' => array( // a method name
+                       'parameterName' => array(
+                           'name',       // string parameter name
+                           'type',       // type or null
+                           'is-required' // bool
+                       )
+                   )
+
+               )
+           )
+       )
+   );
 
 

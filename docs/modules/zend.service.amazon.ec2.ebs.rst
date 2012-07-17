@@ -1,4 +1,6 @@
 
+.. _zend.service.amazon.ec2.ebs:
+
 Zend_Service_Amazon_Ec2: Elastic Block Storage (EBS)
 ====================================================
 
@@ -8,189 +10,184 @@ You can create up to twenty Amazon EBS volumes of any size (from one GiB up to o
 
 Amazon EBS provides the ability to create snapshots of your Amazon EBS volumes to Amazon S3. You can use these snapshots as the starting point for new Amazon EBS volumes and can protect your data for long term durability.
 
+
 .. _zend.service.amazon.ec2.ebs.creating:
 
 Create EBS Volumes and Snapshots
 --------------------------------
 
+
 .. _zend.service.amazon.ec2.ebs.creating.volume:
 
-Create a new EBS Volume
------------------------
+.. rubric:: Create a new EBS Volume
 
 Creating a brand new EBS Volume requires the size and which zone you want the EBS Volume to be in.
 
-createNewVolumewill return an array containing information about the new Volume which includes the volumeId, size, zone, status and createTime.
+*createNewVolume* will return an array containing information about the new Volume which includes the volumeId, size, zone, status and createTime.
 
 .. code-block:: php
-    :linenos:
-    
-    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
-    $return = $ec2_ebs->createNewVolume(40, 'us-east-1a');
-    
+   :linenos:
+
+   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $return = $ec2_ebs->createNewVolume(40, 'us-east-1a');
+
 
 .. _zend.service.amazon.ec2.ebs.creating.volumesnapshot:
 
-Create an EBS Volume from a Snapshot
-------------------------------------
+.. rubric:: Create an EBS Volume from a Snapshot
 
 Creating an EBS Volume from a snapshot requires the snapshot_id and which zone you want the EBS Volume to be in.
 
-createVolumeFromSnapshotwill return an array containing information about the new Volume which includes the volumeId, size, zone, status, createTime and snapshotId.
+*createVolumeFromSnapshot* will return an array containing information about the new Volume which includes the volumeId, size, zone, status, createTime and snapshotId.
 
 .. code-block:: php
-    :linenos:
-    
-    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
-    $return = $ec2_ebs->createVolumeFromSnapshot('snap-78a54011', 'us-east-1a');
-    
+   :linenos:
+
+   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $return = $ec2_ebs->createVolumeFromSnapshot('snap-78a54011', 'us-east-1a');
+
 
 .. _zend.service.amazon.ec2.ebs.creating.snapshot:
 
-Create a Snapshot of an EBS Volume
-----------------------------------
+.. rubric:: Create a Snapshot of an EBS Volume
 
 Creating a Snapshot of an EBS Volume requires the volumeId of the EBS Volume.
 
-createSnapshotwill return an array containing information about the new Volume Snapshot which includes the snapshotId, volumeId, status, startTime and progress.
+*createSnapshot* will return an array containing information about the new Volume Snapshot which includes the snapshotId, volumeId, status, startTime and progress.
 
 .. code-block:: php
-    :linenos:
-    
-    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
-    $return = $ec2_ebs->createSnapshot('volumeId');
-    
+   :linenos:
+
+   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $return = $ec2_ebs->createSnapshot('volumeId');
+
 
 .. _zend.service.amazon.ec2.ebs.describing:
 
 Describing EBS Volumes and Snapshots
 ------------------------------------
 
+
 .. _zend.service.amazon.ec2.ebs.describing.volume:
 
-Describing an EBS Volume
-------------------------
+.. rubric:: Describing an EBS Volume
 
-describeVolumeallows you to get information on an EBS Volume or a set of EBS Volumes. If nothing is passed in then it will return all EBS Volumes. If only one EBS Volume needs to be described a string can be passed in while an array of EBS Volume Id's can be passed in to describe them.
+*describeVolume* allows you to get information on an EBS Volume or a set of EBS Volumes. If nothing is passed in then it will return all EBS Volumes. If only one EBS Volume needs to be described a string can be passed in while an array of EBS Volume Id's can be passed in to describe them.
 
-describeVolumewill return an array with information about each Volume which includes the volumeId, size, status and createTime. If the volume is attached to an instance, an addition value of attachmentSet will be returned. The attachment set contains information about the instance that the EBS Volume is attached to, which includes volumeId, instanceId, device, status and attachTime.
+*describeVolume* will return an array with information about each Volume which includes the volumeId, size, status and createTime. If the volume is attached to an instance, an addition value of attachmentSet will be returned. The attachment set contains information about the instance that the EBS Volume is attached to, which includes volumeId, instanceId, device, status and attachTime.
 
 .. code-block:: php
-    :linenos:
-    
-    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
-    $return = $ec2_ebs->describeVolume('volumeId');
-    
+   :linenos:
+
+   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $return = $ec2_ebs->describeVolume('volumeId');
+
 
 .. _zend.service.amazon.ec2.ebs.describing.attachedvolumes:
 
-Describe Attached Volumes
--------------------------
+.. rubric:: Describe Attached Volumes
 
 To return a list of EBS Volumes currently attached to a running instance you can call this method. It will only return EBS Volumes attached to the instance with the passed in instanceId.
 
-describeAttachedVolumesreturns the same information as thedescribeVolumebut only for the EBS Volumes that are currently attached to the specified instanceId.
+*describeAttachedVolumes* returns the same information as the *describeVolume* but only for the EBS Volumes that are currently attached to the specified instanceId.
 
 .. code-block:: php
-    :linenos:
-    
-    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
-    $return = $ec2_ebs->describeAttachedVolumes('instanceId');
-    
+   :linenos:
+
+   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $return = $ec2_ebs->describeAttachedVolumes('instanceId');
+
 
 .. _zend.service.amazon.ec2.ebs.describing.snapshot:
 
-Describe an EBS Volume Snapshot
--------------------------------
+.. rubric:: Describe an EBS Volume Snapshot
 
-describeSnapshotallows you to get information on an EBS Volume Snapshot or a set of EBS Volume Snapshots. If nothing is passed in then it will return information about all EBS Volume Snapshots. If only one EBS Volume Snapshot needs to be described its snapshotId can be passed in while an array of EBS Volume Snapshot Id's can be passed in to describe them.
+*describeSnapshot* allows you to get information on an EBS Volume Snapshot or a set of EBS Volume Snapshots. If nothing is passed in then it will return information about all EBS Volume Snapshots. If only one EBS Volume Snapshot needs to be described its snapshotId can be passed in while an array of EBS Volume Snapshot Id's can be passed in to describe them.
 
-describeSnapshotwill return an array containing information about each EBS Volume Snapshot which includes the snapshotId, volumeId, status, startTime and progress.
+*describeSnapshot* will return an array containing information about each EBS Volume Snapshot which includes the snapshotId, volumeId, status, startTime and progress.
 
 .. code-block:: php
-    :linenos:
-    
-    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
-    $return = $ec2_ebs->describeSnapshot('volumeId');
-    
+   :linenos:
+
+   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $return = $ec2_ebs->describeSnapshot('volumeId');
+
 
 .. _zend.service.amazon.ec2.ebs.attachdetach:
 
 Attach and Detaching Volumes from Instances
 -------------------------------------------
 
+
 .. _zend.service.amazon.ec2.ebs.attachdetach.attach:
 
-Attaching an EBS Volume
------------------------
+.. rubric:: Attaching an EBS Volume
 
-attachVolumewill attach an EBS Volume to a running Instance. To attach a volume you need to specify the volumeId, the instanceId and the device(ex: /dev/sdh).
+*attachVolume* will attach an EBS Volume to a running Instance. To attach a volume you need to specify the volumeId, the instanceId and the device **(ex: /dev/sdh)**.
 
-attachVolumewill return an array with information about the attach status which contains volumeId, instanceId, device, status and attachTime
+*attachVolume* will return an array with information about the attach status which contains volumeId, instanceId, device, status and attachTime
 
 .. code-block:: php
-    :linenos:
-    
-    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
-    $return = $ec2_ebs->attachVolume('volumeId', 'instanceid', '/dev/sdh');
-    
+   :linenos:
+
+   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $return = $ec2_ebs->attachVolume('volumeId', 'instanceid', '/dev/sdh');
+
 
 .. _zend.service.amazon.ec2.ebs.attachdetach.detach:
 
-Detaching an EBS Volume
------------------------
+.. rubric:: Detaching an EBS Volume
 
-detachVolumewill detach an EBS Volume from a running Instance.detachVolumerequires that you specify the volumeId with the optional instanceId and device name that was passed when attaching the volume. If you need to force the detachment you can set the fourth parameter to be ``TRUE`` and it will force the volume to detach.
+*detachVolume* will detach an EBS Volume from a running Instance. *detachVolume* requires that you specify the volumeId with the optional instanceId and device name that was passed when attaching the volume. If you need to force the detachment you can set the fourth parameter to be ``TRUE`` and it will force the volume to detach.
 
-detachVolumereturns an array containing status information about the EBS Volume which includes volumeId, instanceId, device, status and attachTime.
+*detachVolume* returns an array containing status information about the EBS Volume which includes volumeId, instanceId, device, status and attachTime.
 
 .. code-block:: php
-    :linenos:
-    
-    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
-    $return = $ec2_ebs->detachVolume('volumeId');
-    
+   :linenos:
+
+   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $return = $ec2_ebs->detachVolume('volumeId');
 
 .. note::
-    **Forced Detach**
+   **Forced Detach**
 
-    You should only force a detach if the previous detachment attempt did not occur cleanly (logging into an instance, unmounting the volume, and detaching normally). This option can lead to data loss or a corrupted file system. Use this option only as a last resort to detach a volume from a failed instance. The instance will not have an opportunity to flush file system caches or file system meta data. If you use this option, you must perform file system check and repair procedures.
+   You should only force a detach if the previous detachment attempt did not occur cleanly (logging into an instance, unmounting the volume, and detaching normally). This option can lead to data loss or a corrupted file system. Use this option only as a last resort to detach a volume from a failed instance. The instance will not have an opportunity to flush file system caches or file system meta data. If you use this option, you must perform file system check and repair procedures.
+
+
 
 .. _zend.service.amazon.ec2.ebs.deleting:
 
 Deleting EBS Volumes and Snapshots
 ----------------------------------
 
+
 .. _zend.service.amazon.ec2.ebs.deleting.volume:
 
-Deleting an EBS Volume
-----------------------
+.. rubric:: Deleting an EBS Volume
 
-deleteVolumewill delete an unattached EBS Volume.
+*deleteVolume* will delete an unattached EBS Volume.
 
-deleteVolumewill return boolean ``TRUE`` or ``FALSE`` .
+*deleteVolume* will return boolean ``TRUE`` or ``FALSE``.
 
 .. code-block:: php
-    :linenos:
-    
-    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
-    $return = $ec2_ebs->deleteVolume('volumeId');
-    
+   :linenos:
+
+   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $return = $ec2_ebs->deleteVolume('volumeId');
+
 
 .. _zend.service.amazon.ec2.ebs.deleting.snapshot:
 
-Deleting an EBS Volume Snapshot
--------------------------------
+.. rubric:: Deleting an EBS Volume Snapshot
 
-deleteSnapshotwill delete an EBS Volume Snapshot.
+*deleteSnapshot* will delete an EBS Volume Snapshot.
 
-deleteSnapshotreturns boolean ``TRUE`` or ``FALSE`` .
+*deleteSnapshot* returns boolean ``TRUE`` or ``FALSE``.
 
 .. code-block:: php
-    :linenos:
-    
-    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
-    $return = $ec2_ebs->deleteSnapshot('snapshotId');
-    
+   :linenos:
+
+   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $return = $ec2_ebs->deleteSnapshot('snapshotId');
 
 

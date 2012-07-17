@@ -1,47 +1,154 @@
 
+.. _zend.view.helpers.initial.partial:
+
 Partial Helper
 ==============
 
 The ``Partial`` view helper is used to render a specified template within its own variable scope. The primary use is for reusable template fragments with which you do not need to worry about variable name clashes. Additionally, they allow you to specify partial view scripts from specific modules.
 
-A sibling to the ``Partial`` , the ``PartialLoop`` view helper allows you to pass iterable data, and render a partial for each item.
+A sibling to the ``Partial``, the ``PartialLoop`` view helper allows you to pass iterable data, and render a partial for each item.
 
 .. note::
-    **PartialLoop Counter**
+   **PartialLoop Counter**
 
-    The ``PartialLoop`` view helper assigns a variable to the view namedpartialCounterwhich passes the current position of the array to the view script. This provides an easy way to have alternating colors on table rows for example.
-
-.. note::
-    **What is a model?**
-
-    A model used with the ``Partial`` view helper can be one of the following:
-
-    - Array. If an array is passed, it
-    - should be associative, as its key/value pairs are
-    - assigned to the view with keys as view variables.
-    - Object implementing toArray() method. If an object is
-    - passed an has a toArray() method, the results of
-    - toArray() will be assigned to the view
-    - object as view variables.
-    - Standard object. Any other object
-    - will assign the results of
-    - object_get_vars() (essentially all public
-    - properties of the object) to the view object.
+   The ``PartialLoop`` view helper assigns a variable to the view named **partialCounter** which passes the current position of the array to the view script. This provides an easy way to have alternating colors on table rows for example.
 
 
-    If your model is an object, you may want to have it passedas an objectto the partial script, instead of serializing it to an array of variables. You can do this by setting the 'objectKey' property of the appropriate helper:
+
+.. _zend.view.helpers.initial.partial.usage:
+
+.. rubric:: Basic Usage of Partials
+
+Basic usage of partials is to render a template fragment in its own view scope. Consider the following partial script:
 
 .. code-block:: php
-    :linenos:
-    
-    // Tell partial to pass objects as 'model' variable
-    $view->partial()->setObjectKey('model');
-    
-    // Tell partial to pass objects from partialLoop as 'model' variable
-    // in final partial view script:
-    $view->partialLoop()->setObjectKey('model');
-    
+   :linenos:
 
-    This technique is particularly useful when passing ``Zend_Db_Table_Rowset`` s to ``partialLoop()`` , as you then have full access to your row objects within the view scripts, allowing you to call methods on them (such as retrieving values from parent or dependent rows).
+   <?php // partial.phtml ?>
+   <ul>
+       <li>From: <?php echo $this->escape($this->from) ?></li>
+       <li>Subject: <?php echo $this->escape($this->subject) ?></li>
+   </ul>
+
+You would then call it from your view script using the following:
+
+.. code-block:: php
+   :linenos:
+
+   <?php echo $this->partial('partial.phtml', array(
+       'from' => 'Team Framework',
+       'subject' => 'view partials')); ?>
+
+Which would then render:
+
+.. code-block:: html
+   :linenos:
+
+   <ul>
+       <li>From: Team Framework</li>
+       <li>Subject: view partials</li>
+   </ul>
+
+.. note::
+   **What is a model?**
+
+   A model used with the ``Partial`` view helper can be one of the following:
+
+
+   - **Array**. If an array is passed, it should be associative, as its key/value pairs are assigned to the view with keys as view variables.
+
+   - **Object implementing toArray() method**. If an object is passed an has a ``toArray()`` method, the results of ``toArray()`` will be assigned to the view object as view variables.
+
+   - **Standard object**. Any other object will assign the results of ``object_get_vars()`` (essentially all public properties of the object) to the view object.
+
+
+   If your model is an object, you may want to have it passed **as an object** to the partial script, instead of serializing it to an array of variables. You can do this by setting the 'objectKey' property of the appropriate helper:
+
+
+   .. code-block:: php
+      :linenos:
+
+      // Tell partial to pass objects as 'model' variable
+      $view->partial()->setObjectKey('model');
+
+      // Tell partial to pass objects from partialLoop as 'model' variable
+      // in final partial view script:
+      $view->partialLoop()->setObjectKey('model');
+
+
+   This technique is particularly useful when passing ``Zend_Db_Table_Rowset``\ s to ``partialLoop()``, as you then have full access to your row objects within the view scripts, allowing you to call methods on them (such as retrieving values from parent or dependent rows).
+
+
+
+.. _zend.view.helpers.initial.partial.partialloop:
+
+.. rubric:: Using PartialLoop to Render Iterable Models
+
+Typically, you'll want to use partials in a loop, to render the same content fragment many times; this way you can put large blocks of repeated content or complex display logic into a single location. However this has a performance impact, as the partial helper needs to be invoked once for each iteration.
+
+The ``PartialLoop`` view helper helps solve this issue. It allows you to pass an iterable item (array or object implementing **Iterator**) as the model. It then iterates over this, passing, the items to the partial script as the model. Items in the iterator may be any model the ``Partial`` view helper allows.
+
+Let's assume the following partial view script:
+
+.. code-block:: php
+   :linenos:
+
+   <?php // partialLoop.phtml ?>
+       <dt><?php echo $this->key ?></dt>
+       <dd><?php echo $this->value ?></dd>
+
+And the following "model":
+
+.. code-block:: php
+   :linenos:
+
+   $model = array(
+       array('key' => 'Mammal', 'value' => 'Camel'),
+       array('key' => 'Bird', 'value' => 'Penguin'),
+       array('key' => 'Reptile', 'value' => 'Asp'),
+       array('key' => 'Fish', 'value' => 'Flounder'),
+   );
+
+In your view script, you could then invoke the ``PartialLoop`` helper:
+
+.. code-block:: php
+   :linenos:
+
+   <dl>
+   <?php echo $this->partialLoop('partialLoop.phtml', $model) ?>
+   </dl>
+
+.. code-block:: html
+   :linenos:
+
+   <dl>
+       <dt>Mammal</dt>
+       <dd>Camel</dd>
+
+       <dt>Bird</dt>
+       <dd>Penguin</dd>
+
+       <dt>Reptile</dt>
+       <dd>Asp</dd>
+
+       <dt>Fish</dt>
+       <dd>Flounder</dd>
+   </dl>
+
+
+.. _zend.view.helpers.initial.partial.modules:
+
+.. rubric:: Rendering Partials in Other Modules
+
+Sometime a partial will exist in a different module. If you know the name of the module, you can pass it as the second argument to either ``partial()`` or ``partialLoop()``, moving the ``$model`` argument to third position.
+
+For instance, if there's a pager partial you wish to use that's in the 'list' module, you could grab it as follows:
+
+.. code-block:: php
+   :linenos:
+
+   <?php echo $this->partial('pager.phtml', 'list', $pagerData) ?>
+
+In this way, you can re-use partials created specifically for other modules. That said, it's likely a better practice to put re-usable partials in shared view script paths.
 
 

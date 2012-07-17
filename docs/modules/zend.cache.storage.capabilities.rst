@@ -1,6 +1,9 @@
 
+.. _zend.cache.storage.capabilities:
+
 Zend\\Cache\\Storage\\Capabilities
 ==================================
+
 
 .. _zend.cache.storage.capabilities.intro:
 
@@ -13,445 +16,444 @@ To get capabilities of a storage adapter, you can use the method ``getCapabiliti
 
 Because capabilities are mutable, for example, by changing some options, you can subscribe to the "change" event to get notifications; see the examples for details.
 
-If you are writing your own plugin or adapter, you can also change capabilities because you have access to the marker object and can create your own marker to instantiate a new object of ``Zend\Cache\Storage\Capabilities`` .
+If you are writing your own plugin or adapter, you can also change capabilities because you have access to the marker object and can create your own marker to instantiate a new object of ``Zend\Cache\Storage\Capabilities``.
+
 
 .. _zend.cache.storage.capabilities.methods:
 
 Available Methods
 -----------------
 
+
 .. _zend.cache.storage.capabilities.methods.__construct:
 
-
 **__construct**
+   ``__construct(stdClass $marker, array $capabilities = array ( ), null|Zend\Cache\Storage\Capabilities $baseCapabilities)``
 
 
-    ``__construct(stdClass $marker, array $capabilities = array (), null|Zend\\Cache\\Storage\\Capabilities $baseCapabilities)``
+   Returns void
 
 
-Returns void
 
 .. _zend.cache.storage.capabilities.methods.has-event-manager:
 
-
 **hasEventManager**
+   ``hasEventManager()``
 
 
-    ``hasEventManager()``
+   Returns if the dependency of Zend\\EventManager is available.
 
 
-Returns if the dependency of Zend\\EventManager is available.
+   Returns boolean
 
-Returns boolean
+
 
 .. _zend.cache.storage.capabilities.methods.get-event-manager:
 
-
 **getEventManager**
+   ``getEventManager()``
 
 
-    ``getEventManager()``
+   Get the event manager
 
 
-Get the event manager
+   Returns Zend\\EventManager\\EventCollection instance.
 
-Returns Zend\\EventManager\\EventCollection instance.
+
 
 .. _zend.cache.storage.capabilities.methods.get-supported-datatypes:
 
-
 **getSupportedDatatypes**
+   ``getSupportedDatatypes()``
 
 
-    ``getSupportedDatatypes()``
+   Get supported datatypes.
 
 
-Get supported datatypes.
+   Returns array.
 
-Returns array.
+
 
 .. _zend.cache.storage.capabilities.methods.set-supported-datatypes:
 
-
 **setSupportedDatatypes**
+   ``setSupportedDatatypes(stdClass $marker, array $datatypes)``
 
 
-    ``setSupportedDatatypes(stdClass $marker, array $datatypes)``
+   Set supported datatypes.
 
 
-Set supported datatypes.
+   Implements a fluent interface.
 
-Implements a fluent interface.
+
 
 .. _zend.cache.storage.capabilities.methods.get-supported-metadata:
 
-
 **getSupportedMetadata**
+   ``getSupportedMetadata()``
 
 
-    ``getSupportedMetadata()``
+   Get supported metadata.
 
 
-Get supported metadata.
+   Returns array.
 
-Returns array.
+
 
 .. _zend.cache.storage.capabilities.methods.set-supported-metadata:
 
-
 **setSupportedMetadata**
+   ``setSupportedMetadata(stdClass $marker, string $metadata)``
 
 
-    ``setSupportedMetadata(stdClass $marker, string $metadata)``
+   Set supported metadata
 
 
-Set supported metadata
+   Implements a fluent interface.
 
-Implements a fluent interface.
+
 
 .. _zend.cache.storage.capabilities.methods.get-max-ttl:
 
-
 **getMaxTtl**
+   ``getMaxTtl()``
 
 
-    ``getMaxTtl()``
+   Get maximum supported time-to-live
 
 
-Get maximum supported time-to-live
+   Returns int
 
-Returns int
+
 
 .. _zend.cache.storage.capabilities.methods.set-max-ttl:
 
-
 **setMaxTtl**
+   ``setMaxTtl(stdClass $marker, int $maxTtl)``
 
 
-    ``setMaxTtl(stdClass $marker, int $maxTtl)``
+   Set maximum supported time-to-live
 
 
-Set maximum supported time-to-live
+   Implements a fluent interface.
 
-Implements a fluent interface.
+
 
 .. _zend.cache.storage.capabilities.methods.get-static-ttl:
 
-
 **getStaticTtl**
+   ``getStaticTtl()``
 
 
-    ``getStaticTtl()``
+   Is the time-to-live handled static (on write), or dynamic (on read).
 
 
-Is the time-to-live handled static (on write), or dynamic (on read).
+   Returns boolean
 
-Returns boolean
+
 
 .. _zend.cache.storage.capabilities.methods.set-static-ttl:
 
-
 **setStaticTtl**
+   ``setStaticTtl(stdClass $marker, boolean $flag)``
 
 
-    ``setStaticTtl(stdClass $marker, boolean $flag)``
+   Set if the time-to-live is handled statically (on write) or dynamically (on read)
 
 
-Set if the time-to-live is handled statically (on write) or dynamically (on read)
+   Implements a fluent interface.
 
-Implements a fluent interface.
+
 
 .. _zend.cache.storage.capabilities.methods.get-ttl-precision:
 
-
 **getTtlPrecision**
+   ``getTtlPrecision()``
 
 
-    ``getTtlPrecision()``
+   Get time-to-live precision.
 
 
-Get time-to-live precision.
+   Returns float.
 
-Returns float.
+
 
 .. _zend.cache.storage.capabilities.methods.set-ttl-precision:
 
-
 **setTtlPrecision**
+   ``setTtlPrecision(stdClass $marker, float $ttlPrecision)``
 
 
-    ``setTtlPrecision(stdClass $marker, float $ttlPrecision)``
+   Set time-to-live precision.
 
 
-Set time-to-live precision.
+   Implements a fluent interface.
 
-Implements a fluent interface.
+
 
 .. _zend.cache.storage.capabilities.methods.get-use-request-time:
 
-
 **getUseRequestTime**
+   ``getUseRequestTime()``
 
 
-    ``getUseRequestTime()``
+   Get the "use request time" flag status
 
 
-Get the "use request time" flag status
+   Returns boolean
 
-Returns boolean
+
 
 .. _zend.cache.storage.capabilities.methods.set-use-request-time:
 
-
 **setUseRequestTime**
+   ``setUseRequestTime(stdClass $marker, boolean $flag)``
 
 
-    ``setUseRequestTime(stdClass $marker, boolean $flag)``
+   Set the "use request time" flag.
 
 
-Set the "use request time" flag.
+   Implements a fluent interface.
 
-Implements a fluent interface.
+
 
 .. _zend.cache.storage.capabilities.methods.get-expired-read:
 
-
 **getExpiredRead**
+   ``getExpiredRead()``
 
 
-    ``getExpiredRead()``
+   Get flag indicating if expired items are readable.
 
 
-Get flag indicating if expired items are readable.
+   Returns boolean
 
-Returns boolean
+
 
 .. _zend.cache.storage.capabilities.methods.set-expired-read:
 
-
 **setExpiredRead**
+   ``setExpiredRead(stdClass $marker, boolean $flag)``
 
 
-    ``setExpiredRead(stdClass $marker, boolean $flag)``
+   Set if expired items are readable.
 
 
-Set if expired items are readable.
+   Implements a fluent interface.
 
-Implements a fluent interface.
+
 
 .. _zend.cache.storage.capabilities.methods.get-max-key-length:
 
-
 **getMaxKeyLength**
+   ``getMaxKeyLength()``
 
 
-    ``getMaxKeyLength()``
+   Get maximum key lenth.
 
 
-Get maximum key lenth.
+   Returns int
 
-Returns int
+
 
 .. _zend.cache.storage.capabilities.methods.set-max-key-length:
 
-
 **setMaxKeyLength**
+   ``setMaxKeyLength(stdClass $marker, int $maxKeyLength)``
 
 
-    ``setMaxKeyLength(stdClass $marker, int $maxKeyLength)``
+   Set maximum key lenth.
 
 
-Set maximum key lenth.
+   Implements a fluent interface.
 
-Implements a fluent interface.
+
 
 .. _zend.cache.storage.capabilities.methods.get-namespace-is-prefix:
 
-
 **getNamespaceIsPrefix**
+   ``getNamespaceIsPrefix()``
 
 
-    ``getNamespaceIsPrefix()``
+   Get if namespace support is implemented as a key prefix.
 
 
-Get if namespace support is implemented as a key prefix.
+   Returns boolean
 
-Returns boolean
+
 
 .. _zend.cache.storage.capabilities.methods.set-namespace-is-prefix:
 
-
 **setNamespaceIsPrefix**
+   ``setNamespaceIsPrefix(stdClass $marker, boolean $flag)``
 
 
-    ``setNamespaceIsPrefix(stdClass $marker, boolean $flag)``
+   Set if namespace support is implemented as a key prefix.
 
 
-Set if namespace support is implemented as a key prefix.
+   Implements a fluent interface.
 
-Implements a fluent interface.
+
 
 .. _zend.cache.storage.capabilities.methods.get-namespace-separator:
 
-
 **getNamespaceSeparator**
+   ``getNamespaceSeparator()``
 
 
-    ``getNamespaceSeparator()``
+   Get namespace separator if namespace is implemented as a key prefix.
 
 
-Get namespace separator if namespace is implemented as a key prefix.
+   Returns string
 
-Returns string
+
 
 .. _zend.cache.storage.capabilities.methods.set-namespace-separator:
 
-
 **setNamespaceSeparator**
+   ``setNamespaceSeparator(stdClass $marker, string $separator)``
 
 
-    ``setNamespaceSeparator(stdClass $marker, string $separator)``
+   Set the namespace separator if namespace is implemented as a key prefix.
 
 
-Set the namespace separator if namespace is implemented as a key prefix.
+   Implements a fluent interface.
 
-Implements a fluent interface.
+
 
 .. _zend.cache.storage.capabilities.methods.get-iterable:
 
-
 **getIterable**
+   ``getIterable()``
 
 
-    ``getIterable()``
+   Get if items are iterable.
 
 
-Get if items are iterable.
+   Returns boolean
 
-Returns boolean
+
 
 .. _zend.cache.storage.capabilities.methods.set-iterable:
 
-
 **setIterable**
+   ``setIterable(stdClass $marker, boolean $flag)``
 
 
-    ``setIterable(stdClass $marker, boolean $flag)``
+   Set if items are iterable.
 
 
-Set if items are iterable.
+   Implements a fluent interface.
 
-Implements a fluent interface.
+
 
 .. _zend.cache.storage.capabilities.methods.get-clear-all-namespaces:
 
-
 **getClearAllNamespaces**
+   ``getClearAllNamespaces()``
 
 
-    ``getClearAllNamespaces()``
+   Get flag indicating support to clear items of all namespaces.
 
 
-Get flag indicating support to clear items of all namespaces.
+   Returns boolean
 
-Returns boolean
+
 
 .. _zend.cache.storage.capabilities.methods.set-clear-all-namespaces:
 
-
 **setClearAllNamespaces**
+   ``setClearAllNamespaces(stdClass $marker, boolean $flag)``
 
 
-    ``setClearAllNamespaces(stdClass $marker, boolean $flag)``
+   Set flag indicating support to clear items of all namespaces.
 
 
-Set flag indicating support to clear items of all namespaces.
+   Implements a fluent interface.
 
-Implements a fluent interface.
+
 
 .. _zend.cache.storage.capabilities.methods.get-clear-by-namespace:
 
-
 **getClearByNamespace**
+   ``getClearByNamespace()``
 
 
-    ``getClearByNamespace()``
+   Get flag indicating support to clear items by namespace.
 
 
-Get flag indicating support to clear items by namespace.
+   Returns boolean
 
-Returns boolean
+
 
 .. _zend.cache.storage.capabilities.methods.set-clear-by-namespace:
 
-
 **setClearByNamespace**
+   ``setClearByNamespace(stdClass $marker, boolean $flag)``
 
 
-    ``setClearByNamespace(stdClass $marker, boolean $flag)``
+   Set flag indicating support to clear items by namespace.
 
 
-Set flag indicating support to clear items by namespace.
+   Implements a fluent interface.
 
-Implements a fluent interface.
+
 
 .. _zend.cache.storage.capabilities.examples:
 
 Examples
 --------
 
+
 .. _zend.cache.storage.capabilities.examples.specific:
 
-Get storage capabilities and do specific stuff in base of it
-------------------------------------------------------------
+.. rubric:: Get storage capabilities and do specific stuff in base of it
 
 .. code-block:: php
-    :linenos:
-    
-    use Zend\Cache\StorageFactory;
-    
-    $cache = StorageFactory::adapterFactory('filesystem');
-    $capabilities = $cache->getCapabilities();
-    
-    // now you can run specific stuff in base of supported feature
-    if ($capabilities->getIterable()) {
-        $cache->find();
-        while ( ($item => $cache->fetch()) ) {
-            echo $item['key'] . ': ' . $item['value'] . "\n";
-        }
-    } else {
-        echo 'Iterating cached items not supported.';
-    }
-    
-    
+   :linenos:
+
+   use Zend\Cache\StorageFactory;
+
+   $cache = StorageFactory::adapterFactory('filesystem');
+   $capabilities = $cache->getCapabilities();
+
+   // now you can run specific stuff in base of supported feature
+   if ($capabilities->getIterable()) {
+       $cache->find();
+       while ( ($item => $cache->fetch()) ) {
+           echo $item['key'] . ': ' . $item['value'] . "\n";
+       }
+   } else {
+       echo 'Iterating cached items not supported.';
+   }
+
+
 
 .. _zend.cache.storage.capabilities.examples.event.change:
 
-Listen to change event
-----------------------
+.. rubric:: Listen to change event
 
 .. code-block:: php
-    :linenos:
-    
-    use Zend\Cache\StorageFactory;
-    
-    $cache = StorageFactory::adapterFactory('filesystem', array(
-        'no_atime' => false,
-    ));
-    $capabilities = $cache->getCapabilities();
-    
-    // Catching the change event
-    $capabilities->getEventManager()->attach('change', function() {
-        echo 'Capabilities changed';
-    });
-    
-    // change option which changes capabilities
-    $cache->getOptions()->setNoATime(true);
-    
-    /*
-     * Will output:
-     * "Capabilities changed"
-     */
-    
+   :linenos:
+
+   use Zend\Cache\StorageFactory;
+
+   $cache = StorageFactory::adapterFactory('filesystem', array(
+       'no_atime' => false,
+   ));
+   $capabilities = $cache->getCapabilities();
+
+   // Catching the change event
+   $capabilities->getEventManager()->attach('change', function() {
+       echo 'Capabilities changed';
+   });
+
+   // change option which changes capabilities
+   $cache->getOptions()->setNoATime(true);
+
+   /*
+    * Will output:
+    * "Capabilities changed"
+    */
 
 

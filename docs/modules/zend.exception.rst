@@ -1,8 +1,30 @@
 
+.. _zend.exception.using:
+
 Using Exceptions
 ================
 
 ``Zend_Exception`` is simply the base class for all exceptions thrown within Zend Framework.
+
+
+.. _zend.exception.using.example:
+
+.. rubric:: Catching an Exception
+
+The following code listing demonstrates how to catch an exception thrown in a Zend Framework class:
+
+.. code-block:: php
+   :linenos:
+
+   try {
+       // Calling Zend_Loader::loadClass() with a non-existant class will cause
+       // an exception to be thrown in Zend_Loader:
+       Zend_Loader::loadClass('nonexistantclass');
+   } catch (Zend_Exception $e) {
+       echo "Caught exception: " . get_class($e) . "\n";
+       echo "Message: " . $e->getMessage() . "\n";
+       // Other code to recover from the error
+   }
 
 ``Zend_Exception`` can be used as a catch-all exception class in a catch block to trap all exceptions thrown by Zend Framework classes. This can be useful when the program can not recover by catching a specific exception type.
 
