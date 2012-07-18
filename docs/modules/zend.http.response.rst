@@ -87,6 +87,7 @@ Available Methods
 
 **Response::fromString**
    ``Response::fromString(string $string)``
+
    Populate object from string
 
    Returns ``Zend\Http\Response``
@@ -95,6 +96,7 @@ Available Methods
 
 **renderStatusLine**
    ``renderStatusLine()``
+
    Render the status line header
 
    Returns string
@@ -103,6 +105,7 @@ Available Methods
 
 **setHeaders**
    ``setHeaders(Zend\Http\Headers $headers)``
+
    Set response headers
 
    Returns ``Zend\Http\Response``
@@ -111,6 +114,7 @@ Available Methods
 
 **headers**
    ``headers()``
+
    Get response headers
 
    Returns ``Zend\Http\Headers``
@@ -119,18 +123,21 @@ Available Methods
 
 **setVersion**
    ``setVersion(string $version)``
+
    Returns ``Zend\Http\Response``
 
 .. _zend.http.response.methods.get-version:
 
 **getVersion**
    ``getVersion()``
+
    Returns string
 
 .. _zend.http.response.methods.get-status-code:
 
 **getStatusCode**
    ``getStatusCode()``
+
    Retrieve HTTP status code
 
    Returns int
@@ -139,12 +146,14 @@ Available Methods
 
 **setReasonPhrase**
    ``setReasonPhrase(string $reasonPhrase)``
+
    Returns ``Zend\Http\Response``
 
 .. _zend.http.response.methods.get-reason-phrase:
 
 **getReasonPhrase**
    ``getReasonPhrase()``
+
    Get HTTP status message
 
    Returns string
@@ -153,6 +162,7 @@ Available Methods
 
 **setStatusCode**
    ``setStatusCode(numeric $code)``
+
    Set HTTP status code and (optionally) message
 
    Returns ``Zend\Http\Response``
@@ -161,6 +171,7 @@ Available Methods
 
 **isClientError**
    ``isClientError()``
+
    Does the status code indicate a client error?
 
    Returns bool
@@ -169,6 +180,7 @@ Available Methods
 
 **isForbidden**
    ``isForbidden()``
+
    Is the request forbidden due to ACLs?
 
    Returns bool
@@ -177,6 +189,7 @@ Available Methods
 
 **isInformational**
    ``isInformational()``
+
    Is the current status "informational"?
 
    Returns bool
@@ -185,6 +198,7 @@ Available Methods
 
 **isNotFound**
    ``isNotFound()``
+
    Does the status code indicate the resource is not found?
 
    Returns bool
@@ -193,6 +207,7 @@ Available Methods
 
 **isOk**
    ``isOk()``
+
    Do we have a normal, OK response?
 
    Returns bool
@@ -201,6 +216,7 @@ Available Methods
 
 **isServerError**
    ``isServerError()``
+
    Does the status code reflect a server error?
 
    Returns bool
@@ -209,6 +225,7 @@ Available Methods
 
 **isRedirect**
    ``isRedirect()``
+
    Do we have a redirect?
 
    Returns bool
@@ -217,6 +234,7 @@ Available Methods
 
 **isRedirect**
    ``isSuccess()``
+
    Was the response successful?
 
    Returns bool
@@ -225,6 +243,7 @@ Available Methods
 
 **decodeChunkedBody**
    ``decodeChunkedBody(string $body)``
+
    Decode a "chunked" transfer-encoded body and return the decoded text
 
    Returns string
@@ -233,6 +252,7 @@ Available Methods
 
 **decodeGzip**
    ``decodeGzip(string $body)``
+
    Decode a gzip encoded message (when Content-encoding = gzip)
 
    Currently requires PHP with zlib support
@@ -243,6 +263,7 @@ Available Methods
 
 **decodeGzip**
    ``decodeDeflate(string $body)``
+
    Decode a zlib deflated message (when Content-encoding = deflate)
 
    Currently requires PHP with zlib support
@@ -253,6 +274,7 @@ Available Methods
 
 **setMetadata**
    ``setMetadata(string|int|array|Traversable $spec, mixed $value)``
+
    Set message metadata
 
    Non-destructive setting of message metadata; always adds to the metadata, never overwrites the entire metadata
@@ -264,6 +286,7 @@ Available Methods
 
 **getMetadata**
    ``getMetadata(null|string|int $key, null|mixed $default)``
+
    Retrieve all metadata or a single metadatum as specified by key
 
    Returns mixed
@@ -272,6 +295,7 @@ Available Methods
 
 **setContent**
    ``setContent(mixed $value)``
+
    Set message content
 
    Returns ``Zend\Stdlib\Message``
@@ -280,6 +304,7 @@ Available Methods
 
 **getContent**
    ``getContent()``
+
    Get message content
 
 
@@ -290,6 +315,7 @@ Available Methods
 
 **toString**
    ``toString()``
+
    Returns string
 
 .. _zend.http.response.examples:

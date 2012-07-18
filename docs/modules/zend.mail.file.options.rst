@@ -73,6 +73,7 @@ getters are provided.
 
 **__construct**
    ``setPath(string $path)``
+
    Set the path under which mail files will be written.
 
    Implements fluent interface.
@@ -81,6 +82,7 @@ getters are provided.
 
 **getPath**
    ``getPath()``
+
    Get the path under which mail files will be written.
 
    Returns string
@@ -89,6 +91,7 @@ getters are provided.
 
 **setCallback**
    ``setCallback(Callable $callback)``
+
    Set the callback used to generate unique filenames for messages.
 
    Implements fluent interface.
@@ -97,6 +100,7 @@ getters are provided.
 
 **getCallback**
    ``getCallback()``
+
    Get the callback used to generate unique filenames for messages.
 
    Returns PHP callable argument.
@@ -105,6 +109,7 @@ getters are provided.
 
 **__construct**
    ``__construct(null|array|Traversable $config)``
+
    Initialize the object. Allows passing a PHP array or ``Traversable`` object with which to populate the instance.
 
 .. _zend.mail.file-options.examples:

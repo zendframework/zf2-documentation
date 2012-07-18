@@ -151,12 +151,14 @@ Available Methods
 
 **getName**
    ``getName()``
+
    Returns the string name of the local client hostname.
 
 .. _zend.mail.smtp-options.methods.set-name:
 
 **setName**
    ``setName(string $name)``
+
    Set the string name of the local client hostname.
 
    Implements a fluent interface.
@@ -165,12 +167,14 @@ Available Methods
 
 **getConnectionClass**
    ``getConnectionClass()``
+
    Returns a string indicating the connection class name to use.
 
 .. _zend.mail.smtp-options.methods.set-connection-class:
 
 **setConnectionClass**
    ``setConnectionClass(string $connectionClass)``
+
    Set the connection class to use.
 
    Implements a fluent interface.
@@ -179,6 +183,7 @@ Available Methods
 
 **getConnectionConfig**
    ``getConnectionConfig()``
+
    Get configuration for the connection class.
 
    Returns array.
@@ -187,6 +192,7 @@ Available Methods
 
 **setConnectionConfig**
    ``setConnectionConfig(array $config)``
+
    Set configuration for the connection class. Typically, if using anything other than the default connection
    class, this will be an associative array with the keys "username" and "password".
 
@@ -196,12 +202,14 @@ Available Methods
 
 **getHost**
    ``getHost()``
+
    Returns a string indicating the IP address or host name of the SMTP server via which to send messages.
 
 .. _zend.mail.smtp-options.methods.set-host:
 
 **setHost**
    ``setHost(string $host)``
+
    Set the SMTP host name or IP address.
 
    Implements a fluent interface.
@@ -210,12 +218,14 @@ Available Methods
 
 **getPort**
    ``getPort()``
+
    Retrieve the integer port on which the SMTP host is listening.
 
 .. _zend.mail.smtp-options.methods.set-port:
 
 **setPort**
    ``setPort(int $port)``
+
    Set the port on which the SMTP host is listening.
 
    Implements a fluent interface.
@@ -224,6 +234,7 @@ Available Methods
 
 **__construct**
    ``__construct(null|array|Traversable $config)``
+
    Instantiate the class, and optionally configure it with values provided.
 
 .. _zend.mail.smtp-options.examples:

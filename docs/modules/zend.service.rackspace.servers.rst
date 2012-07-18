@@ -154,6 +154,7 @@ Available Methods
 
 **changeBackupSchedule**
    ``changeBackupSchedule(string $id, string $weekly, string $daily)``
+
    This operation creates a new backup schedule or updates an existing backup schedule for the specified server.
    Return **true** in case of success, **false** in case of error.
 
@@ -167,6 +168,7 @@ Available Methods
 
 **changeServerName**
    ``changeServerName(string $id, string $name)``
+
    Change the name of a server. Return **true** in case of success, **false** in case of error.
 
    **$id** is the ID of the server
@@ -177,6 +179,7 @@ Available Methods
 
 **changeServerPassword**
    ``changeServerPassword(string $id, string $password)``
+
    Change the admin password of a server. Return **true** in case of success, **false** in case of error.
 
    **$id** is the ID of the server
@@ -187,6 +190,7 @@ Available Methods
 
 **confirmResizeServer**
    ``confirmResizeServer(string $id)``
+
    Confirm the resize of a server. During a resize operation, the original server is saved for a period of time to
    allow roll back if there is a problem. Once the newly resized server is tested and has been confirmed to be
    functioning properly, use this operation to confirm the resize. After confirmation, the original server is
@@ -199,6 +203,7 @@ Available Methods
 
 **createImage**
    ``createImage(string $serverId,string $name)``
+
    Create an image from a server. Return a new instance of ``Zend\Service\Rackspace\Servers\Image``. In case of
    error the return is **false**.
 
@@ -210,6 +215,7 @@ Available Methods
 
 **createSharedIpGroup**
    ``createSharedIpGroup(string $name, string $serverId)``
+
    This operation creates a new shared IP group. Please note, on a create request, the shared IP group can be
    created empty or can be initially populated with a single server. Return the shared IP group as instance of
    ``Zend\Service\Rackspace\Servers\SharedIpGroup`` In case of error the return is **false**.
@@ -222,6 +228,7 @@ Available Methods
 
 **createServer**
    ``createServer(array $data, $metadata=array(),$files=array())``
+
    Create a server with the attributes specified in **$data**. You can specify also optional parameters:
    **metadata** and **files**. Metadata is an array contains key/value of metadata related to the server and files
    is an array contains the paths of some files to upload into the server. The syntax used for the uploading of the
@@ -246,6 +253,7 @@ Available Methods
 
 **disableBackupSchedule**
    ``disableBackupSchedule(string $id)``
+
    Disable the backup of a server. Return **true** in case of success, **false** in case of error.
 
    **$id** is the Id of the server.
@@ -254,6 +262,7 @@ Available Methods
 
 **deleteImage**
    ``deleteImage(string $id)``
+
    Delete a image. Return **true** in case of success, **false** in case of error.
 
    **$id** is the Id of the image.
@@ -262,6 +271,7 @@ Available Methods
 
 **deleteSharedIpGroup**
    ``deleteSharedIpGroup(string $id)``
+
    Delete a shared IP group. Return **true** in case of success, **false** in case of error.
 
    **$id** is the Id of the shared IP group.
@@ -270,6 +280,7 @@ Available Methods
 
 **deleteServer**
    ``deleteServer(string $id)``
+
    Delete a server. Return **true** in case of success, **false** in case of error.
 
    **$id** is the Id of the server.
@@ -278,6 +289,7 @@ Available Methods
 
 **getBackupSchedule**
    ``getBackupSchedule(string $id)``
+
    Return the backup schedule of a server. The return is an associative array with the following values: enabled,
    weekly, daily. In case of error the return is **false**.
 
@@ -287,6 +299,7 @@ Available Methods
 
 **getFlavor**
    ``getFlavor(string $flavorId)``
+
    Return the information about a flavor. The return is an associative array with the following values: id, ram,
    disk, name. In case of error the return is **false**.
 
@@ -296,6 +309,7 @@ Available Methods
 
 **getImage**
    ``getImage(string $id)``
+
    Return an image as instance of ``Zend\Service\Rackspace\Servers\Image``. In case of error the return is
    **false**.
 
@@ -305,6 +319,7 @@ Available Methods
 
 **getSharedIpGroup**
    ``getSharedIpGroup(string $id)``
+
    Return the shared IP group as instance of ``Zend\Service\Rackspace\Servers\SharedIpGroup`` In case of error the
    return is **false**.
 
@@ -314,6 +329,7 @@ Available Methods
 
 **getServer**
    ``getServer(string $id)``
+
    Return the server specified by the Id as instance of ``Zend\Service\Rackspace\Servers\Server``. In case of error
    the return is **false**.
 
@@ -323,6 +339,7 @@ Available Methods
 
 **getServerIp**
    ``getServerIp(string $id)``
+
    Return the public and private IP addresses of a server. Return an associative array contains the key
    **'public'** and **'private'** for the IP addresses. In case of error the return is **false**.
 
@@ -332,6 +349,7 @@ Available Methods
 
 **getServerPrivateIp**
    ``getServerPrivateIp(string $id)``
+
    Return the private IP addresses of the server. Return an associative array contains the IP addresses. In case of
    error the return is **false**.
 
@@ -341,6 +359,7 @@ Available Methods
 
 **getServerPublicIp**
    ``getServerPublicIp(string $id)``
+
    Return the public IP addresses of the server. Return an associative array contains the IP addresses. In case of
    error the return is **false**.
 
@@ -350,6 +369,7 @@ Available Methods
 
 **listFlavors**
    ``listFlavors(boolean $details=false)``
+
    Return all the available flavors as associative array. In case of error the return is **false**.
 
    If **$details** is **true** return a detailed list, if is **false** return only the **name** and the **Id** of
@@ -359,6 +379,7 @@ Available Methods
 
 **listImages**
    ``listImages(boolean $details=false)``
+
    Return all the available images as instance of ``Zend\Service\Rackspace\Servers\ImageList`` In case of error the
    return is **false**.
 
@@ -369,6 +390,7 @@ Available Methods
 
 **listServer**
    ``listServer(boolean $details=false)``
+
    Return all the available servers with a new instance of ``Zend\Service\Rackspace\Servers\ServerList``. In case
    of error the return is **false**.
 
@@ -379,6 +401,7 @@ Available Methods
 
 **listSharedIpGroups**
    ``listSharedIpGroups(boolean $details=false)``
+
    Return all the shared IP groups as instance of ``Zend\Service\Rackspace\Servers\SharedIpGroupList`` In case of
    error the return is **false**.
 
@@ -389,6 +412,7 @@ Available Methods
 
 **rebootServer**
    ``rebootServer(string $id, boolean $hard=false)``
+
    Reboot a server. Return **true** in case of success, **false** in case of error.
 
    **$id** is Id of the server.
@@ -401,6 +425,7 @@ Available Methods
 
 **rebuildServer**
    ``rebuildServer(string $id, string $imageId)``
+
    Rebuild a server. The rebuild function removes all data on the server and replaces it with the specified image,
    server's Id and IP addresses will remain the same. Return **true** in case of success, **false** in case of
    error.
@@ -413,6 +438,7 @@ Available Methods
 
 **resizeServer**
    ``resizeServer(string $id, string $flavorId)``
+
    Resize a server. The resize function converts an existing server to a different flavor, in essence, scaling the
    server up or down. The original server is saved for a period of time to allow rollback if there is a problem.
    All resizes should be tested and explicitly confirmed, at which time the original server is removed. All resizes
@@ -427,6 +453,7 @@ Available Methods
 
 **revertResizeServer**
    ``revertResizeServer(string $id)``
+
    Revert the resize of a server. During a resize operation, the original server is saved for a period of time to
    allow for roll back if there is a problem. If you determine there is a problem with a newly resized server, use
    this operation to revert the resize and roll back to the original server. All resizes are automatically
@@ -439,6 +466,7 @@ Available Methods
 
 **shareIpAddress**
    ``shareIpAddress(string $id, string $ip, string $groupId, boolean $configure=true)``
+
    Share an IP address for a server. Return **true** in case of success, **false** in case of error.
 
    **$id** is Id of the server.
@@ -454,6 +482,7 @@ Available Methods
 
 **unshareIpAddress**
    ``unshareIpAddress(string $id, string $ip)``
+
    Unshare an IP address for a server. Return **true** in case of success, **false** in case of error.
 
    **$id** is Id of the server.
@@ -464,6 +493,7 @@ Available Methods
 
 **updateServer**
    ``updateServer(string $id,string $name=null,string $password=null)``
+
    Change the name or/and the admin password of a server. In case of error the return is **false**.
 
    **$id** is the ID of the server
