@@ -40,7 +40,7 @@ Included Helpers
 
 Zend Framework comes with an initial set of helper classes. In particular, there are helpers for creating route-based *URL*\ s and *HTML* lists, as well as declaring variables. Additionally, there are a rich set of helpers for providing values for, and rendering, the various HTML *<head>* tags, such as ``HeadTitle``, ``HeadLink``, and ``HeadScript``. The currently shipped helpers include:
 
-- ``url($urlOptions, $name, $reset)``: Creates a *URL* string based on a named route. ``$urlOptions`` should be an associative array of key/value pairs used by the particular route.
+- ``url($name, $params, $options, $reuseMatchedParams)``: Creates a *URL* string based on a named route. ``$params`` should be an associative array of key/value pairs used by the particular route.
 
 - ``htmlList($items, $ordered, $attribs, $escape)``: generates unordered and ordered lists based on the ``$items`` passed to it. If ``$items`` is a multidimensional array, a nested list will be built. If the ``$escape`` flag is ``TRUE`` (default), individual items will be escaped using the view objects registered escaping mechanisms; pass a ``FALSE`` value if you want to allow markup in your lists.
 
