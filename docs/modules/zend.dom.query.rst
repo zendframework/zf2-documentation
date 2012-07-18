@@ -1,4 +1,3 @@
-
 .. _zend.dom.query:
 
 Zend\\Dom\\Query
@@ -7,7 +6,6 @@ Zend\\Dom\\Query
 ``Zend\Dom\Query`` provides mechanisms for querying *XML* and (X) *HTML* documents utilizing either XPath or *CSS* selectors. It was developed to aid with functional testing of *MVC* applications, but could also be used for rapid development of screen scrapers.
 
 *CSS* selector notation is provided as a simpler and more familiar notation for web developers to utilize when querying documents with *XML* structures. The notation should be familiar to anybody who has developed Cascading Style Sheets or who utilizes Javascript toolkits that provide functionality for selecting nodes utilizing *CSS* selectors (`Prototype's $$()`_ and `Dojo's dojo.query`_ were both inspirations for the component).
-
 
 .. _zend.dom.query.operation:
 
@@ -31,7 +29,6 @@ The primary difference between ``Zend\Dom\Query`` and using `DOMDocument`_ + `DO
   - **word match**: the attribute contains a word matching the string: 'div[bar~="baz"]' would match a div element with a "bar" attribute that contains the word "baz". '<div bar="foo baz">' would match, but '<div bar="foo bazbat">' would not.
 
   - **substring match**: the attribute contains the string: 'div[bar*="baz"]' would match a div element with a "bar" attribute that contains the string "baz" anywhere within it.
-
 
 - **direct descendents**: utilize '>' between selectors to denote direct descendents. 'div > span' would select only 'span' elements that are direct descendents of a 'div'. Can also be used with any of the selectors above.
 
@@ -57,7 +54,6 @@ The primary difference between ``Zend\Dom\Query`` and using `DOMDocument`_ + `DO
      </table>
      </div>
 
-
 Once you've performed your query, you can then work with the result object to determine information about the nodes, as well as to pull them and/or their content directly for examination and manipulation. ``Zend\Dom\NodeList`` implements ``Countable`` and ``Iterator``, and stores the results internally as a `DOMDocument`_ and `DOMNodeList`_. As an example, consider the following call, that selects against the *HTML* above:
 
 .. code-block:: php
@@ -75,14 +71,12 @@ Once you've performed your query, you can then work with the result object to de
 
 ``Zend\Dom\Query`` also allows straight XPath queries utilizing the ``queryXpath()`` method; you can pass any valid XPath query to this method, and it will return a ``Zend\Dom\NodeList`` object.
 
-
 .. _zend.dom.query.methods:
 
 Methods Available
 -----------------
 
 The ``Zend\Dom\Query`` family of classes have the following methods available.
-
 
 .. _zend.dom.query.methods.zenddomquery:
 
@@ -110,7 +104,6 @@ The following methods are available to ``Zend\Dom\Query``:
 - ``execute($query)``: query the document using *CSS* selector notation.
 
 - ``queryXpath($xPathQuery)``: query the document using XPath notation.
-
 
 .. _zend.dom.query.methods.zenddomnodelist:
 

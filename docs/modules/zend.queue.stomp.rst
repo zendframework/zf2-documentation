@@ -1,4 +1,3 @@
-
 .. _zend.queue.stomp:
 
 Stomp
@@ -7,7 +6,6 @@ Stomp
 ``Zend_Queue_Stomp`` provides a basic client to communicate with `Stomp`_ compatible servers. Some servers, such as Apache ActiveMQ and RabbitMQ, will allow you to communicate by other methods, such as *HTTP*, and *XMPP*.
 
 The Stomp protocol provides `StompConnect`_ which supports any `Java Message Service (JMS)`_ provider. Stomp is supported by `Apache ActiveMQ`_, `RabbitMQ`_, `stompserver`_, and `Gozirra`_.
-
 
 .. _zend.queue.adapters-configuration.stomp:
 

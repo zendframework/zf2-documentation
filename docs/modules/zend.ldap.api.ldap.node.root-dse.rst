@@ -1,4 +1,3 @@
-
 .. _zend.ldap.api.reference.zend-ldap-node-rootdse:
 
 Zend\\Ldap\\Node\\RootDse
@@ -7,7 +6,6 @@ Zend\\Ldap\\Node\\RootDse
 The following methods are available on all vendor-specific subclasses.
 
 ``Zend\Ldap\Node\RootDse`` includes the magic property accessors ``__get()`` and ``__isset()`` to access the attributes by their name. They proxy to ``Zend\Ldap\Node\RootDse::getAttribute()`` and ``Zend\Ldap\Node\RootDse::existsAttribute()`` respectively. ``__set()`` and ``__unset()`` are also implemented but they throw a *BadMethodCallException* as modifications are not allowed on RootDSE nodes. Furthermore the class implements *ArrayAccess* for array-style-access to the attributes. ``offsetSet()`` and ``offsetUnset()`` also throw a *BadMethodCallException* due ro obvious reasons.
-
 
 .. _zend.ldap.api.reference.zend-ldap-node-rootdse.table:
 
@@ -67,8 +65,6 @@ The following methods are available on all vendor-specific subclasses.
    |Zend\\Ldap\\Dn getSchemaDn()                                         |Returns the schema DN.                                                                                                                                                                                                                                                                                                                          |
    +---------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-
 .. _zend.ldap.api.reference.zend-ldap-node-rootdse.openldap:
 
 OpenLDAP
@@ -77,9 +73,8 @@ OpenLDAP
 Additionally the common methods above apply to instances of ``Zend\Ldap\Node\RootDse\OpenLdap``.
 
 .. note::
+
    Refer to `LDAP Operational Attributes and Objects`_ for information on the attributes of OpenLDAP RootDSE.
-
-
 
 .. _zend.ldap.api.reference.zend-ldap-node-rootdse.openldap.table:
 
@@ -101,8 +96,6 @@ Additionally the common methods above apply to instances of ``Zend\Ldap\Node\Roo
    |boolean supportsFeature(string|array $oids)  |Determines if the feature is supported.                                      |
    +---------------------------------------------+-----------------------------------------------------------------------------+
 
-
-
 .. _zend.ldap.api.reference.zend-ldap-node-rootdse.activedirectory:
 
 ActiveDirectory
@@ -111,9 +104,8 @@ ActiveDirectory
 Additionally the common methods above apply to instances of ``Zend\Ldap\Node\RootDse\ActiveDirectory``.
 
 .. note::
+
    Refer to `RootDSE`_ for information on the attributes of Microsoft ActiveDirectory RootDSE.
-
-
 
 .. _zend.ldap.api.reference.zend-ldap-node-rootdse.activedirectory.table:
 
@@ -161,8 +153,6 @@ Additionally the common methods above apply to instances of ``Zend\Ldap\Node\Roo
    |boolean supportsPolicy(string|array $policies)|Determines if the version is supported.                                             |
    +----------------------------------------------+------------------------------------------------------------------------------------+
 
-
-
 .. _zend.ldap.api.reference.zend-ldap-node-rootdse.edirectory:
 
 eDirectory
@@ -171,9 +161,8 @@ eDirectory
 Additionally the common methods above apply to instances of *Zend\Ldap\Node\RootDse\eDirectory*.
 
 .. note::
+
    Refer to `Getting Information about the LDAP Server`_ for information on the attributes of Novell eDirectory RootDSE.
-
-
 
 .. _zend.ldap.api.reference.zend-ldap-node-rootdse.edirectory.table:
 
@@ -206,7 +195,6 @@ Additionally the common methods above apply to instances of *Zend\Ldap\Node\Root
    +------------------------------------------------+-------------------------------------------------------------------------------+
    |string|null getStatisticsWholeSubtreeSearchOps()|Gets the server statistics "wholeSubtreeSearchOps".                            |
    +------------------------------------------------+-------------------------------------------------------------------------------+
-
 
 
 

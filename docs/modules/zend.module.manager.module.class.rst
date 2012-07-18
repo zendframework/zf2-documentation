@@ -1,11 +1,9 @@
-
 .. _zend.module-manager.module-class:
 
 The Module Class
 ================
 
 By default, ZF2 module system simply expects each module name to be able to be resolved to an object instance. The default module resolver, ``Zend\ModuleManager\Listener\ModuleResolverListener``, simply instantiates an instance of ``{moduleName}\Module`` for each enabled module.
-
 
 .. _zend.module-manager.module-class.example.minimal-module:
 
@@ -16,12 +14,10 @@ As an example, provided the module name "MyModule", ``Zend\ModuleManager\Listene
 A module named "MyModule" module might start out looking something like this:
 
 
-
 ::
 
    MyModule/
        Module.php
-
 
 Within ``Module.php``, you define your ``MyModule\Module`` class:
 
@@ -37,7 +33,6 @@ Within ``Module.php``, you define your ``MyModule\Module`` class:
 Though it will not serve any purpose at this point, this "MyModule" module now has everything it needs to be considered a valid module and be loaded by the module system!
 
 This ``Module`` class serves as the single entry point for module manager listeners to interact with a module. From within this simple, yet powerful class, modules can override or provide additional application configuration, perform initialization tasks such as registering autoloader(s) and event listeners, declaring dependencies, and much more.
-
 
 .. _zend.module-manager.module-class.example.typical-module-class:
 
@@ -74,7 +69,6 @@ The following example shows a more typical usage of the ``Module`` class:
 
 For a list of the provided module manager listeners and the interfaces and methods that ``Module`` classes may implement in order to interact with the module manager and application, see the :ref:`module manager listeners documentation <zend.module-manager.module-manager.module-manager-listeners>` and the :ref:`module mananger events documentation <zend.module-manager.module-manager.module-manager-events>`.
 
-
 .. _zend.module-manager.module-class.the-loadModules.post-event:
 
 The "loadModules.post" Event
@@ -83,9 +77,8 @@ The "loadModules.post" Event
 It is not safe for a module to assume that any other modules have already been loaded at the time ``init()`` method is called. If your module needs to perform any actions after all other modules have been loaded, the module manager's "loadModules.post" event makes this easy.
 
 .. note::
+
    For more information on methods like ``init()`` and ``getConfig()``, refer to the :ref:`module manager listeners documentation <zend.module-manager.module-manager.module-manager-listeners>`.
-
-
 
 .. _zend.module-manager.module-class.example.loadModules.post-event:
 
@@ -115,14 +108,12 @@ It is not safe for a module to assume that any other modules have already been l
        }
    }
 
-
 .. _zend.module-manager.module-class.the-mvc-bootstrap-event:
 
 The MVC "bootstrap" Event
 -------------------------
 
 If you are writing an MVC-oriented module for ZF2, you may need access to additional parts of the application in your ``Module`` class such as the instance of ``Zend\Mvc\Application`` or its registered service manager instance. For this, you may utilize the MVC "bootstrap" event. The bootstrap event is triggered after the "loadModule.post" event, once *$application->bootstrap()* is called.
-
 
 .. _zend.module-manager.module-class.example.mvc-bootstrap-event:
 

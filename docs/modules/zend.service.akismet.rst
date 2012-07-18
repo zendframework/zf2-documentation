@@ -1,9 +1,7 @@
-
 .. _zend.service.akismet:
 
 Zend_Service_Akismet
 ====================
-
 
 .. _zend.service.akismet.introduction:
 
@@ -15,7 +13,6 @@ Introduction
 Akismet requires an *API* key for usage. You can get one by signing up for a `WordPress.com`_ account. You do not need to activate a blog. Simply acquiring the account will provide you with the *API* key.
 
 Akismet requires that all requests contain a *URL* to the resource for which data is being filtered. Because of Akismet's origins in WordPress, this resource is called the blog *URL*. This value should be passed as the second argument to the constructor, but may be reset at any time using the ``setBlogUrl()`` method, or overridden by specifying a 'blog' key in the various method calls.
-
 
 .. _zend.service.akismet.verifykey:
 
@@ -40,7 +37,6 @@ Verify an API key
 If called with no arguments, ``verifyKey()`` uses the *API* key provided to the constructor.
 
 ``verifyKey()`` implements Akismet's *verify-key* REST method.
-
 
 .. _zend.service.akismet.isspam:
 
@@ -75,7 +71,6 @@ You may also submit any other environmental variables you feel might be a factor
 
 The ``isSpam()`` method will return either ``TRUE`` or ``FALSE``, or throw an exception if the *API* key is invalid.
 
-
 .. _zend.service.akismet.isspam.example-1:
 
 .. rubric:: isSpam() Usage
@@ -101,7 +96,6 @@ The ``isSpam()`` method will return either ``TRUE`` or ``FALSE``, or throw an ex
 
 ``isSpam()`` implements the *comment-check* Akismet *API* method.
 
-
 .. _zend.service.akismet.submitspam:
 
 Submitting known spam
@@ -110,7 +104,6 @@ Submitting known spam
 Spam data will occasionally get through the filter. If you discover spam that you feel should have been caught, you can submit it to Akismet to help improve their filter.
 
 ``Zend_Service_Akismet::submitSpam()`` takes the same data array as passed to ``isSpam()``, but does not return a value. An exception will be raised if the *API* key used is invalid.
-
 
 .. _zend.service.akismet.submitspam.example-1:
 
@@ -132,7 +125,6 @@ Spam data will occasionally get through the filter. If you discover spam that yo
 
 ``submitSpam()`` implements the *submit-spam* Akismet *API* method.
 
-
 .. _zend.service.akismet.submitham:
 
 Submitting false positives (ham)
@@ -141,7 +133,6 @@ Submitting false positives (ham)
 Data will occasionally be trapped erroneously as spam by Akismet. For this reason, you should probably keep a log of all data trapped as spam by Akismet and review it periodically. If you find such occurrences, you can submit the data to Akismet as "ham", or a false positive (ham is good, spam is not).
 
 ``Zend_Service_Akismet::submitHam()`` takes the same data array as passed to ``isSpam()`` or ``submitSpam()``, and, like ``submitSpam()``, does not return a value. An exception will be raised if the *API* key used is invalid.
-
 
 .. _zend.service.akismet.submitham.example-1:
 
@@ -163,7 +154,6 @@ Data will occasionally be trapped erroneously as spam by Akismet. For this reaso
 
 ``submitHam()`` implements the *submit-ham* Akismet *API* method.
 
-
 .. _zend.service.akismet.accessors:
 
 Zend-specific Methods
@@ -182,7 +172,6 @@ While the Akismet *API* only specifies four methods, ``Zend_Service_Akismet`` ha
 - ``getUserAgent()`` and ``setUserAgent()`` allow you to retrieve and modify the *HTTP* user agent used to make the request. Note: this is not the user_agent used in data submitted to the service, but rather the value provided in the *HTTP* User-Agent header when making a request to the service.
 
   The value used to set the user agent should be of the form *some user agent/version | Akismet/version*. The default is *Zend Framework/ZF-VERSION | Akismet/1.11*, where *ZF-VERSION* is the current Zend Framework version as stored in the ``Zend_Framework::VERSION`` constant.
-
 
 
 

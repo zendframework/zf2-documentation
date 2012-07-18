@@ -1,16 +1,13 @@
-
 .. _zend.soap.wsdl:
 
 WSDL Accessor
 =============
 
 .. note::
+
    ``Zend\Soap\Wsdl`` class is used by ``Zend\Soap\Server`` component internally to operate with WSDL documents. Nevertheless, you could also use functionality provided by this class for your own needs. The ``Zend\Soap\Wsdl`` package contains both a parser and a builder of WSDL documents.
 
-
    If you don't plan to do this, you can skip this documentation section.
-
-
 
 .. _zend.soap.wsdl.constructor:
 
@@ -26,7 +23,6 @@ Zend\\Soap\\Wsdl constructor
 . ``$strategy``- optional flag used to identify the strategy for complex types (objects) detection. To read more on complex type detection strategies go to the section: :ref:`Add complex types <zend.soap.wsdl.types.add_complex>`.
 
 . ``$classMap``- Optional array of class name translations from PHP Type (key) to WSDL type (value).
-
 
 
 
@@ -46,21 +42,16 @@ Each message correspond to methods in terms of ``Zend\Soap\Server`` and ``Zend\S
 Type mapping management is performed using ``addTypes()``, ``addTypes()`` and ``addComplexType()`` methods (see below).
 
 .. note::
-   Messages parts can use either 'element' or 'type' attribute for typing (see `http://www.w3.org/TR/wsdl#_messages`_).
 
+   Messages parts can use either 'element' or 'type' attribute for typing (see `http://www.w3.org/TR/wsdl#_messages`_).
 
    'element' attribute must refer to a corresponding element of data type definition. 'type' attribute refers to a corresponding complexType entry.
 
-
    All standard XSD types have both 'element' and 'complexType' definitions (see `http://schemas.xmlsoap.org/soap/encoding/`_).
-
 
    All non-standard types, which may be added using ``Zend\Soap\Wsdl::addComplexType()`` method, are described using 'complexType' node of '/definitions/types/schema/' section of WSDL document.
 
-
    So ``addMessage()`` method always uses 'type' attribute to describe types.
-
-
 
 .. _zend.soap.wsdl.add_port_type:
 
@@ -73,7 +64,6 @@ It joins a set of Web Service methods defined in terms of ``Zend\Soap\Server`` i
 
 See `http://www.w3.org/TR/wsdl#_porttypes`_ for the details.
 
-
 .. _zend.soap.wsdl.add_port_operation:
 
 addPortOperation() method
@@ -83,20 +73,21 @@ addPortOperation() method
 
 Each port operation corresponds to a class method (if Web Service is based on a class) or function (if Web Service is based on a set of methods) in terms of ``Zend\Soap\Server`` implementation.
 
-It also adds corresponding port operation messages depending on specified ``$input``, ``$output`` and ``$fault`` parameters. .. note::
-   ``Zend\Soap\Server`` component generates two messages for each port operation while describing service based on ``Zend\Soap\Server`` class:
+It also adds corresponding port operation messages depending on specified ``$input``, ``$output`` and ``$fault`` parameters.
 
-   - input message with name *$methodName . 'Request'*.
+   .. note::
 
-   - output message with name *$methodName . 'Response'*.
+      ``Zend\Soap\Server`` component generates two messages for each port operation while describing service based on ``Zend\Soap\Server`` class:
 
+      - input message with name *$methodName . 'Request'*.
+
+      - output message with name *$methodName . 'Response'*.
 
 
 
 
 
 See `http://www.w3.org/TR/wsdl#_request-response`_ for the details.
-
 
 .. _zend.soap.wsdl.add_binding:
 
@@ -111,7 +102,6 @@ The method creates binding node and returns it. Then it may be used to fill with
 
 ``Zend\Soap\Server`` implementation uses *$serviceName . 'Binding'* name for 'binding' element of WSDL document.
 
-
 .. _zend.soap.wsdl.add_binding_operation:
 
 addBindingOperation() method
@@ -125,7 +115,6 @@ It takes *XML_Tree_Node* object returned by ``addBinding()`` as an input (``$bin
 
 See `http://www.w3.org/TR/wsdl#_bindings`_ for the details.
 
-
 .. _zend.soap.wsdl.add_soap_binding:
 
 addSoapBinding() method
@@ -136,7 +125,6 @@ addSoapBinding() method
 '/definitions/binding/soap:binding' element is used to signify that the binding is bound to the *SOAP* protocol format.
 
 See `http://www.w3.org/TR/wsdl#_bindings`_ for the details.
-
 
 .. _zend.soap.wsdl.add_soap_operation:
 
@@ -150,7 +138,6 @@ addSoapOperation() method
 ``Zend\Soap\Server`` implementation uses *$serviceUri . '#' . $methodName* for *SOAP* operation action name.
 
 See `http://www.w3.org/TR/wsdl#_soap:operation`_ for the details.
-
 
 .. _zend.soap.wsdl.add_service:
 
@@ -174,7 +161,6 @@ WSDL 1.1 allows to have several port types (sets of operations) per service. Thi
 where ``$name`` is a class name for the Web Service definition mode using class and script name for the Web Service definition mode using set of functions.
 
 See `http://www.w3.org/TR/wsdl#_services`_ for the details.
-
 
 .. _zend.soap.wsdl.types:
 
@@ -203,7 +189,6 @@ Type mapping
 
 Where *xsd:* is "http://www.w3.org/2001/XMLSchema" namespace, *soap-enc:* is a "http://schemas.xmlsoap.org/soap/encoding/" namespace, *tns:* is a "target namespace" for a service.
 
-
 .. _zend.soap.wsdl.types.retrieve:
 
 Retrieving type information
@@ -226,7 +211,6 @@ Retrieving type information
    }
    ...
    $soapMyClassType = $wsdl->getType('MyClass');
-
 
 .. _zend.soap.wsdl.types.add_complex:
 
@@ -259,7 +243,6 @@ It prevents duplications if this method is called two or more times and recursio
 
 See `http://www.w3.org/TR/wsdl#_types`_ for the details.
 
-
 .. _zend.soap.wsdl.add_documentation:
 
 addDocumentation() method
@@ -270,7 +253,6 @@ addDocumentation() method
 '/definitions/binding/soap:binding' element is used to signify that the binding is bound to the *SOAP* protocol format.
 
 See `http://www.w3.org/TR/wsdl#_documentation`_ for the details.
-
 
 .. _zend.soap.wsdl.retrieve:
 

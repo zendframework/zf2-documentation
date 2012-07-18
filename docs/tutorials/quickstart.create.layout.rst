@@ -1,4 +1,3 @@
-
 .. _learning.quickstart.create-layout:
 
 Create A Layout
@@ -148,10 +147,10 @@ We grab our application content using the ``layout()`` view helper, and accessin
 Note also the use of the ``headLink()`` placeholder. This is an easy way to generate the *HTML* for <link> elements, as well as to keep track of them throughout your application. If you need to add additional CSS sheets to support a single action, you can do so, and be assured it will be present in the final rendered page.
 
 .. note::
+
    **Checkpoint**
 
    Now go to "http://localhost" and check out the source. You should see your XHTML header, head, title, and body sections.
-
 
 
 

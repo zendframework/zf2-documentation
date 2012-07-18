@@ -1,4 +1,3 @@
-
 .. _zend.queue.adapters:
 
 Adapters
@@ -17,11 +16,10 @@ Adapters
 - A local array. Useful for unit testing.
 
 .. note::
+
    **Limitations**
 
    Message transaction handling is not supported.
-
-
 
 .. _zend.queue.adapters.configuration:
 
@@ -29,7 +27,6 @@ Specific Adapters - Configuration settings
 ------------------------------------------
 
 If a default setting is indicated then the parameter is optional. If a default setting is not specified then the parameter is required.
-
 
 .. _zend.queue.adapters.configuration.activemq:
 
@@ -42,41 +39,31 @@ Options listed here are known requirements. Not all messaging servers require us
 
   This is the name of the queue that you wish to start using. (Required)
 
-
 - **$options['driverOptions']['host'] = 'host.domain.tld';**
 
   **$options['driverOptions']['host'] = '127.0.0.1';**
 
-
   You may set host to an IP address or a hostname.
 
-
   Default setting for host is '127.0.0.1'.
-
 
 - **$options['driverOptions']['port'] = 61613;**
 
   Default setting for port is 61613.
 
-
 - **$options['driverOptions']['username'] = 'username';**
 
   Optional for some messaging servers. Read the manual for your messaging server.
-
 
 - **$options['driverOptions']['password'] = 'password';**
 
   Optional for some messaging servers. Read the manual for your messaging server.
 
-
 - **$options['driverOptions']['timeout_sec'] = 2;**
 
   **$options['driverOptions']['timeout_usec'] = 0;**
 
-
   This is the amount of time that ``Zend_Queue_Adapter_Activemq`` will wait for read activity on a socket before returning no messages.
-
-
 
 .. _zend.queue.adapters.configuration.Db:
 
@@ -113,22 +100,17 @@ Driver options are checked for a few required options such as **type**, **host**
 
   This is the name of the queue that you wish to start using. (Required)
 
-
 - **$options['driverOptions']['type'] = 'Pdo';**
 
   **type** is the adapter you wish to have ``Zend_Db::factory()`` use. This is the first parameter for the ``Zend_Db::factory()`` class method call.
-
 
 - **$options['driverOptions']['host'] = 'host.domain.tld';**
 
   **$options['driverOptions']['host'] = '127.0.0.1';**
 
-
   You may set host to an IP address or a hostname.
 
-
   Default setting for host is '127.0.0.1'.
-
 
 - **$options['driverOptions']['username'] = 'username';**
 
@@ -137,8 +119,6 @@ Driver options are checked for a few required options such as **type**, **host**
 - **$options['driverOptions']['dbname'] = 'dbname';**
 
   The database name that you have created the required tables for. See the notes section below.
-
-
 
 .. _zend.queue.adapters.configuration.memcacheq:
 
@@ -149,23 +129,17 @@ MemcacheQ - Zend_Queue_Adapter_Memcacheq
 
   This is the name of the queue that you wish to start using. (Required)
 
-
 - **$options['driverOptions']['host'] = 'host.domain.tld';**
 
   **$options['driverOptions']['host'] = '127.0.0.1;'**
 
-
   You may set host to an IP address or a hostname.
 
-
   Default setting for host is '127.0.0.1'.
-
 
 - **$options['driverOptions']['port'] = 22201;**
 
   The default setting for port is 22201.
-
-
 
 .. _zend.queue.adapters.configuration.platformjq:
 
@@ -176,12 +150,9 @@ Zend Platform Job Queue - Zend_Queue_Adapter_PlatformJobQueue
 
   The hostname and port corresponding to the Zend Platform Job Queue daemon you will use. (Required)
 
-
 - **$options['daemonOptions']['password'] = '1234';**
 
   The password required for accessing the Zend Platform Job Queue daemon. (Required)
-
-
 
 .. _zend.queue.adapters.configuration.array:
 
@@ -192,15 +163,12 @@ Array - Zend_Queue_Adapter_Array
 
   This is the name of the queue that you wish to start using. (Required)
 
-
-
 .. _zend.queue.adapters.notes:
 
 Notes for Specific Adapters
 ---------------------------
 
 The following adapters have notes:
-
 
 .. _zend.queue.adapters.notes.activemq:
 
@@ -231,14 +199,12 @@ The following functions are not supported:
 
 - ``getQueues()``- list queues. Calling this function will throw an exception.
 
-
 .. _zend.queue.adapters.notes.zend_db:
 
 Zend_Db
 ^^^^^^^
 
 The database **CREATE TABLE ( ... )** *SQL* statement can be found in ``Zend/Queue/Adapter/Db/mysql.sql``.
-
 
 .. _zend.queue.adapters.notes.memcacheQ:
 
@@ -252,7 +218,6 @@ MemcacheQ can be downloaded from `http://memcachedb.org/memcacheq/`_.
 - ``deleteMessage()``- Messages are deleted upon reception from the queue. Calling this function would have no effect. Calling this function will throw an error.
 
 - ``count()`` or ``count($adapter)``- MemcacheQ does not support a method for counting the number of items in a queue. Calling this function will throw an error.
-
 
 .. _zend.queue.adapters.notes.platformjq:
 
@@ -299,20 +264,15 @@ The following is a list of methods where this adapter's behavior diverges from t
 
     - ``application_id``- the application identifier of the job. By default, this is ``NULL``, indicating that one will be automatically assigned by the queue, if the queue was assigned an application ID.
 
-
     As noted, only the ``script`` argument is required; all others are simply available to allow passing more fine-grained detail on how and when to run the job.
-
 
   - ``ZendApi_Job``- finally, you may simply pass a ``ZendApi_Job`` instance, and it will be passed along to Platform's Job Queue.
 
-
   In all instances, ``send()`` returns a ``Zend_Queue_Message_PlatformJob`` object, which provides access to the ``ZendApi_Job`` object used to communicate with Job Queue.
-
 
 - ``receive()``- retrieves a list of active jobs from Job Queue. Each job in the returned set will be an instance of ``Zend_Queue_Message_PlatformJob``.
 
 - ``deleteMessage()``- since this adapter only works with Job Queue, this method expects the provided ``$message`` to be a ``Zend_Queue_Message_PlatformJob`` instance, and will throw an exception otherwise.
-
 
 .. _zend.queue.adapters.notes.array:
 

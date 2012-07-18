@@ -1,9 +1,7 @@
-
 .. _zend.feed.reader:
 
 Zend_Feed_Reader
 ================
-
 
 .. _zend.feed.reader.introduction:
 
@@ -17,7 +15,6 @@ Internally, ``Zend_Feed_Reader`` works almost entirely on the basis of making XP
 Performance is assisted in three ways. First of all, ``Zend_Feed_Reader`` supports caching using ``Zend_Cache`` to maintain a copy of the original feed *XML*. This allows you to skip network requests for a feed *URI* if the cache is valid. Second, the Feed and Entry level *API* is backed by an internal cache (non-persistant) so repeat *API* calls for the same feed will avoid additional *DOM* or XPath use. Thirdly, importing feeds from a *URI* can take advantage of *HTTP* Conditional ``GET`` requests which allow servers to issue an empty 304 response when the requested feed has not changed since the last time you requested it. In the final case, an instance of ``Zend_Cache`` will hold the last received feed along with the ETag and Last-Modified header values sent in the *HTTP* response.
 
 In relation to ``Zend_Feed``, ``Zend_Feed_Reader`` was formulated as a free standing replacement for ``Zend_Feed`` but it is not backwards compatible with ``Zend_Feed``. Rather it is an alternative following a different ideology focused on being simple to use, flexible, consistent and extendable through the plugin system. ``Zend_Feed_Reader`` is also not capable of constructing feeds and delegates this responsibility to ``Zend_Feed_Writer``, its sibling in arms.
-
 
 .. _zend.feed.reader.import:
 
@@ -73,7 +70,6 @@ Feeds can also be imported from strings, files, and even objects of type ``Zend_
    $zfeed = Zend_Feed::import('http://www.planet-php.net/atom/');
    $feed  = Zend_Feed_Reader::importFeed($zfeed);
 
-
 .. _zend.feed.reader.sources:
 
 Retrieving Underlying Feed and Entry Sources
@@ -105,15 +101,13 @@ Here's an example where a feed might include an *RSS* Extension not supported by
                                     . '/admin:errorReportsTo)');
 
 .. warning::
+
    If you register an already registered namespace with a different prefix name to that used internally by ``Zend_Feed_Reader``, it will break the internal operation of this component.
-
-
 
 .. _zend.feed.reader.cache-request:
 
 Cache Support and Intelligent Requests
 --------------------------------------
-
 
 .. _zend.feed.reader.cache-request.cache:
 
@@ -137,9 +131,8 @@ Adding Cache Support to Zend_Feed_Reader
    Zend_Feed_Reader::setCache($cache);
 
 .. note::
+
    While it's a little off track, you should also consider adding a cache to ``Zend_Loader_PluginLoader`` which is used by ``Zend_Feed_Reader`` to load Extensions.
-
-
 
 .. _zend.feed.reader.cache-request.http-conditional-get:
 
@@ -182,7 +175,6 @@ If you intend on managing request headers from outside ``Zend_Feed_Reader``, you
        $uri, $lastEtagReceived, $lastModifiedDateReceived
    );
 
-
 .. _zend.feed.reader.locate:
 
 Locating Feed URIs from Websites
@@ -222,7 +214,6 @@ This quick method only gives you one link for each feed type, but websites may i
        echo $link['uri'], "\n";
    }
 
-
 .. _zend.feed.reader.attribute-collections:
 
 Attribute Collections
@@ -261,7 +252,6 @@ However, the container class allows you to access the "most relevant" data as a 
 
 The above example shows how to extract only labels and nothing else thus giving simple access to the category labels without any additional work to extract that data by itself.
 
-
 .. _zend.feed.reader.retrieve-info:
 
 Retrieving Feed Information
@@ -270,8 +260,8 @@ Retrieving Feed Information
 Retrieving information from a feed (we'll cover entries and items in the next section though they follow identical principals) uses a clearly defined *API* which is exactly the same regardless of whether the feed in question is *RSS*, *RDF* or Atom. The same goes for sub-versions of these standards and we've tested every single *RSS* and Atom version. While the underlying feed *XML* can differ substantially in terms of the tags and elements they present, they nonetheless are all trying to convey similar information and to reflect this all the differences and wrangling over alternative tags are handled internally by ``Zend_Feed_Reader`` presenting you with an identical interface for each. Ideally, you should not have to care whether a feed is *RSS* or Atom so long as you can extract the information you want.
 
 .. note::
-   While determining common ground between feed types is itself complex, it should be noted that *RSS* in particular is a constantly disputed "specification". This has its roots in the original *RSS* 2.0 document which contains ambiguities and does not detail the correct treatment of all elements. As a result, this component rigorously applies the *RSS* 2.0.11 Specification published by the *RSS* Advisory Board and its accompanying *RSS* Best Practices Profile. No other interpretation of *RSS* 2.0 will be supported though exceptions may be allowed where it does not directly prevent the application of the two documents mentioned above.
 
+   While determining common ground between feed types is itself complex, it should be noted that *RSS* in particular is a constantly disputed "specification". This has its roots in the original *RSS* 2.0 document which contains ambiguities and does not detail the correct treatment of all elements. As a result, this component rigorously applies the *RSS* 2.0.11 Specification published by the *RSS* Advisory Board and its accompanying *RSS* Best Practices Profile. No other interpretation of *RSS* 2.0 will be supported though exceptions may be allowed where it does not directly prevent the application of the two documents mentioned above.
 
 Of course, we don't live in an ideal world so there may be times the *API* just does not cover what you're looking for. To assist you, ``Zend_Feed_Reader`` offers a plugin system which allows you to write Extensions to expand the core *API* and cover any additional data you are trying to extract from feeds. If writing another Extension is too much trouble, you can simply grab the underlying *DOM* or XPath objects and do it by hand in your application. Of course, we really do encourage writing an Extension simply to make it more portable and reusable, and useful Extensions may be proposed to the Framework for formal addition.
 
@@ -313,7 +303,6 @@ Here's a summary of the Core *API* for Feeds. You should note it comprises not o
    |getImage()                   |Returns an array containing data relating to any feed image or logo, or NULL if no image found. The resulting array may contain the following keys: uri, link, title, description, height, and width. Atom logos only contain a URI so the remaining metadata is drawn from RSS feeds only.                                                                                                                                                                                                         |
    +-----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
 Given the variety of feeds in the wild, some of these methods will undoubtedly return ``NULL`` indicating the relevant information couldn't be located. Where possible, ``Zend_Feed_Reader`` will fall back on alternative elements during its search. For example, searching an *RSS* feed for a modification date is more complicated than it looks. *RSS* 2.0 feeds should include a ``<lastBuildDate>`` tag and (or) a ``<pubDate>`` element. But what if it doesn't, maybe this is an *RSS* 1.0 feed? Perhaps it instead has an ``<atom:updated>`` element with identical information (Atom may be used to supplement *RSS*'s syntax)? Failing that, we could simply look at the entries, pick the most recent, and use its ``<pubDate>`` element. Assuming it exists... Many feeds also use Dublin Core 1.0 or 1.1 ``<dc:date>`` elements for feeds and entries. Or we could find Atom lurking again.
 
 The point is, ``Zend_Feed_Reader`` was designed to know this. When you ask for the modification date (or anything else), it will run off and search for all these alternatives until it either gives up and returns ``NULL``, or finds an alternative that should have the right answer.
@@ -353,8 +342,6 @@ In addition to the above methods, all Feed objects implement methods for retriev
    +--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |getType()                 |Returns a static class constant (e.g. Zend_Feed_Reader::TYPE_ATOM_03, i.e. Atom 0.3) indicating exactly what kind of feed is being consumed.                                                                                          |
    +--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
 
 .. _zend.feed.reader.entry:
 
@@ -397,19 +384,17 @@ Retrieving information for specific entries or items (depending on whether you s
    |getCategories()                                   |Returns a Zend_Feed_Reader_Collection_Category object containing the details of any categories associated with the entry. The supported fields include "term" (the machine readable category name), "scheme" (the categorisation scheme and domain for this category), and "label" (a HTML decoded human readable category name). Where any of the three fields are absent from the field, they are either set to the closest available alternative or, in the case of "scheme", set to NULL.|
    +--------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
 The extended *API* for entries is identical to that for feeds with the exception of the Iterator methods which are not needed here.
 
 .. caution::
-   There is often confusion over the concepts of modified and created dates. In Atom, these are two clearly defined concepts (so knock yourself out) but in *RSS* they are vague. *RSS* 2.0 defines a single **<pubDate>** element which typically refers to the date this entry was published, i.e. a creation date of sorts. This is not always the case, and it may change with updates or not. As a result, if you really want to check whether an entry has changed, don't rely on the results of ``getDateModified()``. Instead, consider tracking the *MD5* hash of three other elements concatenated, e.g. using ``getTitle()``, ``getDescription()`` and ``getContent()``. If the entry was truly updated, this hash computation will give a different result than previously saved hashes for the same entry. This is obviously content oriented, and will not assist in detecting changes to other relevant elements. Atom feeds should not require such steps.
 
+   There is often confusion over the concepts of modified and created dates. In Atom, these are two clearly defined concepts (so knock yourself out) but in *RSS* they are vague. *RSS* 2.0 defines a single **<pubDate>** element which typically refers to the date this entry was published, i.e. a creation date of sorts. This is not always the case, and it may change with updates or not. As a result, if you really want to check whether an entry has changed, don't rely on the results of ``getDateModified()``. Instead, consider tracking the *MD5* hash of three other elements concatenated, e.g. using ``getTitle()``, ``getDescription()`` and ``getContent()``. If the entry was truly updated, this hash computation will give a different result than previously saved hashes for the same entry. This is obviously content oriented, and will not assist in detecting changes to other relevant elements. Atom feeds should not require such steps.
 
    Further muddying the waters, dates in feeds may follow different standards. Atom and Dublin Core dates should follow *ISO* 8601, and *RSS* dates should follow *RFC* 822 or *RFC* 2822 which is also common. Date methods will throw an exception if ``DateTime`` cannot load the date string using one of the above standards, or the *PHP* recognised possibilities for *RSS* dates.
 
-
 .. warning::
-   The values returned from these methods are not validated. This means users must perform validation on all retrieved data including the filtering of any *HTML* such as from ``getContent()`` before it is output from your application. Remember that most feeds come from external sources, and therefore the default assumption should be that they cannot be trusted.
 
+   The values returned from these methods are not validated. This means users must perform validation on all retrieved data including the filtering of any *HTML* such as from ``getContent()`` before it is output from your application. Remember that most feeds come from external sources, and therefore the default assumption should be that they cannot be trusted.
 
 .. table:: Extended Entry Level API Methods
 
@@ -430,8 +415,6 @@ The extended *API* for entries is identical to that for feeds with the exception
    +--------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |getType()                 |Returns a static class constant (e.g. Zend_Feed_Reader::TYPE_ATOM_03, i.e. Atom 0.3) indicating exactly what kind of feed is being consumed.                                                                                                   |
    +--------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
 
 .. _zend.feed.reader.extending:
 
@@ -462,7 +445,6 @@ Extensions are loaded into ``Zend_Feed_Reader`` using ``Zend_Loader_PluginLoader
    |Podcast                    |Implements support for the Podcast 1.0 DTD from Apple                    |
    +---------------------------+-------------------------------------------------------------------------+
 
-
 The Core Extensions are somewhat special since they are extremely common and multi-faceted. For example, we have a Core Extension for Atom. Atom is implemented as an Extension (not just a base class) because it doubles as a valid *RSS* module - you can insert Atom elements into *RSS* feeds. I've even seen *RDF* feeds which use a lot of Atom in place of more common Extensions like Dublin Core.
 
 .. table:: Non-Core Extensions (must register manually)
@@ -472,7 +454,6 @@ The Core Extensions are somewhat special since they are extremely common and mul
    +---------------+-------------------------------------------------------------------------------------------------------------------------+
    |CreativeCommons|A RSS module that adds an element at the <channel> or <item> level that specifies which Creative Commons license applies.|
    +---------------+-------------------------------------------------------------------------------------------------------------------------+
-
 
 The additional non-Core Extensions are offered but not registered to ``Zend_Feed_Reader`` by default. If you want to use them, you'll need to tell ``Zend_Feed_Reader`` to load them in advance of importing a feed. Additional non-Core Extensions will be included in future iterations of the component.
 
@@ -496,7 +477,6 @@ As you can also notice, the new methods from Extensions are accessible from the 
    $feed = Zend_Feed_Reader::import('http://rss.slashdot.org/Slashdot/slashdot');
    $syndication = $feed->getExtension('Syndication');
    $updatePeriod = $syndication->getUpdatePeriod();
-
 
 .. _zend.feed.reader.extending.feed:
 

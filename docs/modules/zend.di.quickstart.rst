@@ -1,4 +1,3 @@
-
 .. _zend.di.quickstart:
 
 Zend\\Di Quickstart

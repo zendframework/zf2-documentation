@@ -1,11 +1,9 @@
-
 .. _zend.i18n.view.helper.date-format:
 
 DateFormat Helper
 =================
 
 The ``DateFormat`` view helper can be used to simplify rendering of localized date/time values. It acts as a wrapper for the ``IntlDateFormatter`` class within the Internationalization extension (Intl).
-
 
 .. _zend.i18n.view.helper.date-format.usage:
 
@@ -52,7 +50,6 @@ The ``DateFormat`` view helper can be used to simplify rendering of localized da
 - ``$timeType``: (Optional) Time type to use (none, short, medium, long, full). This is one of the `IntlDateFormatter constants`_. Defaults to ``IntlDateFormatter::NONE``.
 
 - ``$locale``: (Optional) Locale in which the date would be formatted (locale name, e.g. en_US). If unset, it will use the default locale (``Locale::getDefault()``)
-
 
 .. _zend.i18n.view.helper.date-format.setter-usage:
 

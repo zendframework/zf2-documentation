@@ -1,11 +1,9 @@
-
 .. _zend.config.introduction:
 
 Introduction
 ============
 
 ``Zend\Config`` is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code. The configuration data may come from a variety of media supporting hierarchical data storage. Currently ``Zend\Config`` provides adapters for read and write configuration data that are stored in Ini or XML files.
-
 
 .. _zend.config.introduction.example.using:
 
@@ -45,7 +43,6 @@ Along with the object oriented access to the data values, ``Zend\Config\Config``
    :linenos:
 
    $host = $config->database->get('host', 'localhost');
-
 
 .. _zend.config.introduction.example.file.php:
 

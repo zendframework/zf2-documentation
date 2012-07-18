@@ -1,9 +1,7 @@
-
 .. _zend.service.twitter.search:
 
 Zend_Service_Twitter_Search
 ===========================
-
 
 .. _zend.service.twitter.search.introduction:
 
@@ -11,7 +9,6 @@ Introduction
 ------------
 
 ``Zend_Service_Twitter_Search`` provides a client for the `Twitter Search API`_. The Twitter Search service is use to search Twitter. Currently, it only returns data in Atom or *JSON* format, but a full *REST* service is in the future, which will support *XML* responses.
-
 
 .. _zend.service.twitter.search.trends:
 
@@ -36,7 +33,6 @@ The return array has two values in it:
 
 - *url* is the *URL* to see the tweets for that trend.
 
-
 .. _zend.service.twitter.search.search:
 
 Searching Twitter
@@ -58,7 +54,6 @@ The search method can accept six different optional *URL* parameters passed in a
 
 - *geocode* returns tweets by users located within a given radius of the given latitude/longitude, where the user's location is taken from their Twitter profile. The parameter value is specified by "latitude,longitude,radius", where radius units must be specified as either "mi" (miles) or "km" (kilometers).
 
-
 .. _zend.service.twitter.search.search.json:
 
 .. rubric:: JSON Search Example
@@ -71,7 +66,6 @@ The following code sample will return an array with the search results.
    $twitterSearch  = new Zend_Service_Twitter_Search('json');
    $searchResults  = $twitterSearch->search('zend', array('lang' => 'en'));
 
-
 .. _zend.service.twitter.search.search.atom:
 
 .. rubric:: ATOM Search Example
@@ -83,7 +77,6 @@ The following code sample will return a ``Zend_Feed_Atom`` object.
 
    $twitterSearch  = new Zend_Service_Twitter_Search('atom');
    $searchResults  = $twitterSearch->search('zend', array('lang' => 'en'));
-
 
 .. _zend.service.twitter.search.accessors:
 

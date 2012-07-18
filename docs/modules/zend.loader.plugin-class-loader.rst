@@ -1,9 +1,7 @@
-
 .. _zend.loader.plugin-class-loader:
 
 The PluginClassLoader
 =====================
-
 
 .. _zend.loader.plugin-class-loader.intro:
 
@@ -15,7 +13,6 @@ Resolving plugin names to class names is a common requirement within Zend Framew
 While it can act as a standalone class, it is intended that developers will extend the class to provide a per-component plugin map. This allows seeding the map with the most often-used plugins, while simultaneously allowing the end-user to overwrite existing or register new plugins.
 
 Additionally, ``PluginClassLoader`` provides the ability to statically seed all new instances of a given ``PluginClassLoader`` or one of its extensions (via Late Static Binding). If your application will always call for defining or overriding particular plugin maps on given ``PluginClassLoader`` extensions, this is a powerful capability.
-
 
 .. _zend.loader.plugin-class-loader.quick-start:
 
@@ -44,11 +41,10 @@ Typical use cases involve simply instantiating a ``PluginClassLoader``, seeding 
    $class = $loader->load('url'); // 'My\Custom\UrlHelper'
 
 .. note::
+
    **Case Sensitivity**
 
    The ``PluginClassLoader`` is designed to do case-insensitive plugin name lookups. While the above example defines a "bugUrl" plugin name, internally, this will be stored as simply "bugurl". If another plugin is registered with simply a different word case, it will overwrite this entry.
-
-
 
 .. _zend.loader.plugin-class-loader.options:
 
@@ -60,43 +56,28 @@ Configuration Options
 **$map**
    The constructor may take a single option, an array or ``Traversable`` object of key/value pairs corresponding to a plugin name and class name, respectively.
 
-
-
 .. _zend.loader.plugin-class-loader.methods:
 
 Available Methods
 -----------------
 
-
 .. _zend.loader.plugin-class-loader.methods.constructor:
 
 \__construct
    Instantiate and initialize the loader
-
    ``__construct($map = null)``
 
-
-
-
    **__construct()**
-
    The constructor is used to instantiate and intialize the plugin class loader. If passed a string, an array, or a ``Traversable`` object, it will pass this to the :ref:`registerPlugins() <zend.loader.plugin-class-loader.methods.register-plugins>` method in order to seed (or overwrite) the plugin class map.
-
-
 
 
 .. _zend.loader.plugin-class-loader.methods.add-static-map:
 
 addStaticMap
    Statically seed the plugin loader map
-
    ``addStaticMap($map)``
 
-
-
-
    **addStaticMap()**
-
    Static method for globally pre-seeding the loader with a class map. It accepts either an array or ``Traversable`` object of plugin name/class name pairs.
 
    When using this method, be certain you understand the precedence in which maps will be merged; in decreasing order of preference:
@@ -112,151 +93,92 @@ addStaticMap
    Also, please note that calling the method will **not** affect any instances already created.
 
 
-
-
 .. _zend.loader.plugin-class-loader.methods.register-plugin:
 
 registerPlugin
    Register a plugin/class association
-
    ``registerPlugin($shortName, $className)``
 
-
-
-
    **registerPlugin()**
-
    Defined by the :ref:`PluginClassLocator <zend.loader.plugin-class-locator>` interface. Expects two string arguments, the plugin ``$shortName``, and the class ``$className`` which it represents.
-
-
 
 
 .. _zend.loader.plugin-class-loader.methods.register-plugins:
 
 registerPlugins
    Register many plugin/class associations at once
-
    ``registerPlugins($map)``
 
-
-
-
    **registerPlugins()**
-
    Expects a string, an array or ``Traversable`` object of plugin name/class name pairs representing a plugin class map.
 
    If a string argument is provided, ``registerPlugins()`` assumes this is a class name. If the class does not exist, an exception will be thrown. If it does, it then instantiates the class and checks to see whether or not it implements ``Traversable``.
-
-
 
 
 .. _zend.loader.plugin-class-loader.methods.unregister-plugin:
 
 unregisterPlugin
    Remove a plugin/class association from the map
-
    ``unregisterPlugin($shortName)``
 
-
-
-
    **unregisterPlugin()**
-
    Defined by the ``PluginClassLocator`` interface; remove a plugin/class association from the plugin class map.
-
-
 
 
 .. _zend.loader.plugin-class-loader.methods.get-registered-plugins:
 
 getRegisteredPlugins
    Return the complete plugin class map
-
    ``getRegisteredPlugins()``
 
-
-
-
    **getRegisteredPlugins()**
-
    Defined by the ``PluginClassLocator`` interface; return the entire plugin class map as an array.
-
-
 
 
 .. _zend.loader.plugin-class-loader.methods.is-loaded:
 
 isLoaded
    Determine if a given plugin name resolves
-
    ``isLoaded($name)``
 
-
-
-
    **isLoaded()**
-
    Defined by the ``ShortNameLocator`` interface; determine if the given plugin has been resolved to a class name.
-
-
 
 
 .. _zend.loader.plugin-class-loader.methods.get-class-name:
 
 getClassName
    Return the class name to which a plugin resolves
-
    ``getClassName($name)``
 
-
-
-
    **getClassName()**
-
    Defined by the ``ShortNameLocator`` interface; return the class name to which a plugin name resolves.
-
-
 
 
 .. _zend.loader.plugin-class-loader.methods.load:
 
 load
    Resolve a plugin name
-
    ``load($name)``
 
-
-
-
    **load()**
-
    Defined by the ``ShortNameLocator`` interface; attempt to resolve a plugin name to a class name. If successful, returns the class name; otherwise, returns a boolean ``false``.
-
-
 
 
 .. _zend.loader.plugin-class-loader.methods.get-iterator:
 
 getIterator
    Return iterator capable of looping over plugin class map
-
    ``getIterator()``
 
-
-
-
    **getIterator()**
-
    Defined by the ``IteratorAggregate`` interface; allows iteration over the plugin class map. This can come in useful for using ``PluginClassLoader`` instances to other ``PluginClassLoader`` instances in order to merge maps.
-
-
 
 
 .. _zend.loader.plugin-class-loader.examples:
 
 Examples
 --------
-
 
 .. _zend.loader.plugin-class-loader.examples.static-maps:
 
@@ -282,7 +204,6 @@ Any later instances created will now have this map defined, allowing you to load
 
    $loader = new PluginClassLoader();
    $helper = $loader->load('url'); // Zend\View\Helper\Url
-
 
 .. _zend.loader.plugin-class-loader.examples.extended-loader:
 
@@ -341,7 +262,6 @@ To inject the static map, use the extending class' name to call the static ``add
    PluginLoader::addStaticMap(array(
        'url' => 'Zend\View\Helper\Url',
    ));
-
 
 .. _zend.loader.plugin-class-loader.examples.using-as-plugin-map:
 

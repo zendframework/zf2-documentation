@@ -1,11 +1,9 @@
-
 .. _migration.09:
 
 Zend Framework 0.9
 ==================
 
 When upgrading from a previous release to Zend Framework 0.9 or higher you should note the following migration notes.
-
 
 .. _migration.09.zend.controller:
 

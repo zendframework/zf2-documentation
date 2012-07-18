@@ -1,9 +1,7 @@
-
 .. _zend.search.lucene.java-lucene:
 
 Interoperating with Java Lucene
 ===============================
-
 
 .. _zend.search.lucene.index-creation.file-formats:
 
@@ -13,7 +11,6 @@ File Formats
 ``Zend_Search_Lucene`` index file formats are binary compatible with Java Lucene version 1.4 and greater.
 
 A detailed description of this format is available here: `http://lucene.apache.org/java/2_3_0/fileformats.html`_ [#]_.
-
 
 .. _zend.search.lucene.index-creation.index-directory:
 
@@ -27,7 +24,6 @@ After index creation, the index directory will contain several files:
 - The ``*.cfs`` files contain index segments. Note! An optimized index always has only one segment.
 
 - The ``deletable`` file is a list of files that are no longer used by the index, but which could not be deleted.
-
 
 .. _zend.search.lucene.java-lucene.source-code:
 

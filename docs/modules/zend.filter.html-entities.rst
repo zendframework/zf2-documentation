@@ -1,11 +1,9 @@
-
 .. _zend.filter.set.htmlentities:
 
 HtmlEntities
 ============
 
 Returns the string ``$value``, converting characters to their corresponding *HTML* entity equivalents where they exist.
-
 
 .. _zend.filter.set.htmlentities.options:
 
@@ -19,17 +17,14 @@ The following options are supported for ``Zend_Filter_HtmlEntities``:
 - **charset**: Equivalent to the *PHP* htmlentities native function parameter **charset**. This defines the character set to be used in filtering. Unlike the *PHP* native function the default is 'UTF-8'. See "http://php.net/htmlentities" for a list of supported character sets.
 
   .. note::
+
      This option can also be set via the ``$options`` parameter as a ``Zend_Config`` object or array. The option key will be accepted as either charset or encoding.
-
-
 
 - **doublequote**: Equivalent to the *PHP* htmlentities native function parameter **double_encode**. If set to false existing html entities will not be encoded. The default is to convert everything (true).
 
   .. note::
+
      This option must be set via the ``$options`` parameter or the ``setDoubleEncode()`` method.
-
-
-
 
 .. _zend.filter.set.htmlentities.basic:
 
@@ -44,7 +39,6 @@ See the following example for the default behaviour of this filter.
    $filter = new Zend_Filter_HtmlEntities();
 
    print $filter->filter('<');
-
 
 .. _zend.filter.set.htmlentities.quotestyle:
 
@@ -82,7 +76,6 @@ The above example returns **A 'single' and "double"**. Notice that "double" quot
    print $filter->filter($input);
 
 The above example returns **A 'single' and "double"**. Notice that neither "double" or 'single' quotes are altered.
-
 
 .. _zend.filter.set.htmlentities.:
 

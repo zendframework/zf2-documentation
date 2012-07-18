@@ -1,9 +1,7 @@
-
 .. _zend.auth.adapter.openid:
 
 Open ID Authentication
 ======================
-
 
 .. _zend.auth.adapter.openid.introduction:
 
@@ -17,9 +15,8 @@ The OpenID identity is just a *URI* that points to a web site with information a
 The ``Zend_Auth_Adapter_OpenId`` class wraps the ``Zend_OpenId_Consumer`` component, which implements the OpenID authentication protocol itself.
 
 .. note::
+
    ``Zend_OpenId`` takes advantage of the `GMP extension`_, where available. Consider enabling the *GMP* extension for better performance when using ``Zend_Auth_Adapter_OpenId``.
-
-
 
 .. _zend.auth.adapter.openid.specifics:
 

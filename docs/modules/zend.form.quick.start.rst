@@ -1,4 +1,3 @@
-
 .. _zend.form.quick-start:
 
 Zend\\Form Quick Start
@@ -7,7 +6,6 @@ Zend\\Form Quick Start
 Forms are relatively easy to create. At the bare minimum, each element or fieldset requires a name; typically, you'll also provide some attributes to hint to the view layer how it might render the item. The form itself will also typically compose an ``InputFilter``-- which you can also conveniently create directly in the form via a factory. Individual elements can hint as to what defaults to use when generating a related input for the input filter.
 
 Form validation is as easy as providing an array of data to the ``setData()`` method. If you want to simplify your work even more, you can bind an object to the form; on successful validation, it will be populated from the validated values.
-
 
 .. _zend.form.quick-start.programmatic:
 
@@ -101,7 +99,6 @@ As a demonstration of fieldsets, let's alter the above slightly. We'll create tw
    $form->add($send);
 
 Regardles of approach, as you can see, this can be tedious.
-
 
 .. _zend.form.quick-start.factory:
 
@@ -266,7 +263,6 @@ Note that the chief difference is nesting; otherwise, the information is basical
 
 The chief benefits to using the ``Factory`` are allowing you to store definitions in configuration, and usage of significant whitespace.
 
-
 .. _zend.form.quick-start.extension:
 
 .. rubric:: Factory-backed Form Extension
@@ -349,7 +345,6 @@ The default ``Form`` implementation is backed by the ``Factory``. This allows yo
 
 You'll note that this example introduces a method, ``prepareElements()``. This is done to allow altering and/or configuring either the form or input filter factory instances, which could then have bearing on how elements, inputs, etc. are created. In this case, it also allows injection of the CAPTCHA adapter, allowing us to configure it elsewhere in our application and inject it into the form.
 
-
 .. _zend.form.quick-start.validation:
 
 .. rubric:: Validating Forms
@@ -386,7 +381,6 @@ You can get the raw data if you want, by accessing the composed input filter.
 
    $rawValues    = $filter->getRawValues();
    $nameRawValue = $filter->getRawValue('name');
-
 
 .. _zend.form.quick-start.input-specification:
 
@@ -468,7 +462,6 @@ For fieldsets, you do very similarly; the difference is that ``getInputFilterSpe
 
 Specifications are a great way to make forms, fieldsets, and elements re-usable trivially in your applications. In fact, the ``Captcha`` and ``Csrf`` elements define specifications in order to ensure they can work without additional user configuration!
 
-
 .. _zend.form.quick-start.binding:
 
 .. rubric:: Binding an object
@@ -538,7 +531,6 @@ Zend Framework ships several standard :ref:`hydrators <zend.stdlib.hydrator>`, a
        public function extract($object);
        public function hydrate(array $data, $object);
    }
-
 
 .. _zend.form.quick-start.rendering:
 
@@ -631,7 +623,6 @@ In order to use these form view helpers in the first place, you need to inform t
        ),
    );
 
-
 .. _zend.form.quick-start.partial:
 
 .. rubric:: Validation Groups
@@ -657,7 +648,6 @@ If you later want to reset the form to validate all, simply pass the ``FormInter
 
    use Zend\Form\FormInterface;
    $form->setValidationGroup(FormInterface::VALIDATE_ALL);
-
 
 .. _zend.form.quick-start.annotations:
 
@@ -748,9 +738,9 @@ To use the above, we need ``Zend\Form\Annotation\AnnotationBuilder``:
 At this point, you have a form with the appropriate hydrator attached, an input filter with the appropriate inputs, and all elements.
 
 .. note::
+
    **You're not done**
 
    In all liklihood, you'll need to add some more elements to the form you construct. For example, you'll want a submit button, and likely a CSRF-protection element. We recommend creating a fieldset with common elements such as these that you can then attach to the form you build via annotations.
-
 
 

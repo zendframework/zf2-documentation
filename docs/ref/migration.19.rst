@@ -1,4 +1,3 @@
-
 .. _migration.19:
 
 Zend Framework 1.9
@@ -6,12 +5,10 @@ Zend Framework 1.9
 
 When upgrading from a release of Zend Framework earlier than 1.9.0 to any 1.9 release, you should note the following migration notes.
 
-
 .. _migration.19.zend.file.transfer:
 
 Zend_File_Transfer
 ------------------
-
 
 .. _migration.19.zend.file.transfer.mimetype:
 
@@ -23,11 +20,10 @@ For security reasons we had to turn off the default fallback mechanism of the ``
 If you are in need of validation by using the *HTTP* fields which are provided by the user then you can turn on this feature by using the ``enableHeaderCheck()`` method.
 
 .. note::
+
    **Security hint**
 
    You should note that relying on the *HTTP* fields, which are provided by your user, is a security risk. They can easily be changed and could allow your user to provide a malcious file.
-
-
 
 .. _migration.19.zend.file.transfer.example:
 
@@ -42,7 +38,6 @@ If you are in need of validation by using the *HTTP* fields which are provided b
    // or afterwards
    $valid->enableHeaderCheck();
 
-
 .. _migration.19.zend.filter:
 
 Zend_Filter
@@ -50,12 +45,10 @@ Zend_Filter
 
 Prior to the 1.9 release, ``Zend_Filter`` allowed the usage of the static ``get()`` method. As with release 1.9 this method has been renamed to ``filterStatic()`` to be more descriptive. The old ``get()`` method is marked as deprecated.
 
-
 .. _migration.19.zend.http.client:
 
 Zend_Http_Client
 ----------------
-
 
 .. _migration.19.zend.http.client.fileuploadsarray:
 
@@ -65,7 +58,6 @@ Changes to internal uploaded file information storage
 In version 1.9 of Zend Framework, there has been a change in the way ``Zend_Http_Client`` internally stores information about files to be uploaded, set using the ``Zend_Http_Client::setFileUpload()`` method.
 
 This change was introduced in order to allow multiple files to be uploaded with the same form name, as an array of files. More information about this issue can be found in `this bug report`_.
-
 
 .. _migration.19.zend.http.client.fileuploadsarray.example:
 
@@ -111,7 +103,6 @@ This change was introduced in order to allow multiple files to be uploaded with 
 
 As you can see, this change permits the usage of the same form element name with more than one file - however, it introduces a subtle backwards-compatibility change and as such should be noted.
 
-
 .. _migration.19.zend.http.client.getparamsrecursize:
 
 Deprecation of Zend_Http_Client::\_getParametersRecursive()
@@ -123,12 +114,10 @@ If you subclass ``Zend_Http_Client`` and call this method, you should look into 
 
 Again, since this ``_getParametersRecursive()`` is a protected method, this change will only affect users who subclass ``Zend_Http_Client``.
 
-
 .. _migration.19.zend.locale:
 
 Zend_Locale
 -----------
-
 
 .. _migration.19.zend.locale.deprecated:
 
@@ -136,7 +125,6 @@ Deprecated methods
 ^^^^^^^^^^^^^^^^^^
 
 Some specialized translation methods have been deprecated because they duplicate existing behaviour. Note that the old methods will still work, but a user notice is triggered which describes the new call. The methods will be erased with 2.0. See the following list for old and new method call.
-
 
 .. _migration.19.zend.locale.deprecated.table-1:
 
@@ -161,8 +149,6 @@ Some specialized translation methods have been deprecated because they duplicate
    +----------------------------------------+--------------------------------------------+
    |getTerritoryTranslation($value, $locale)|getTranslation($value, 'territory', $locale)|
    +----------------------------------------+--------------------------------------------+
-
-
 
 .. _migration.19.zend.view.helper.navigation:
 
@@ -234,14 +220,12 @@ The same code snippet will now output the following:
        </li>
    </ul>
 
-
 .. _migration.19.security:
 
 Security fixes as with 1.9.7
 ----------------------------
 
 Additionally, users of the 1.9 series may be affected by other changes starting in version 1.9.7. These are all security fixes that also have potential backwards compatibility implications.
-
 
 .. _migration.19.security.zend.filter.html-entities:
 
@@ -251,7 +235,6 @@ Zend_Filter_HtmlEntities
 In order to default to a more secure character encoding, ``Zend_Filter_HtmlEntities`` now defaults to *UTF-8* instead of *ISO-8859-1*.
 
 Additionally, because the actual mechanism is dealing with character encodings and not character sets, two new methods have been added, ``setEncoding()`` and ``getEncoding()``. The previous methods ``setCharSet()`` and ``setCharSet()`` are now deprecated and proxy to the new methods. Finally, instead of using the protected members directly within the ``filter()`` method, these members are retrieved by their explicit accessors. If you were extending the filter in the past, please check your code and unit tests to ensure everything still continues to work.
-
 
 .. _migration.19.security.zend.filter.strip-tags:
 

@@ -1,11 +1,9 @@
-
 .. _zend.validate.set.step:
 
 Step
 ====
 
 ``Zend\Validator\Step`` allows you to validate if a given value is a valid step value. This validator requires the value to be a numeric value (either string, int or float).
-
 
 .. _zend.validate.set.step.options:
 
@@ -17,7 +15,6 @@ The following options are supported for ``Zend\Validator\Step``:
 - **baseValue**: This is the base value from which the step should be computed. This option defaults to ``0``
 
 - **step**: This is the step value. This option defaults to ``1``
-
 
 .. _zend.validate.set.step.basic:
 
@@ -35,7 +32,6 @@ A basic example is the following one:
                } else {
                // false
                }
-
 
 .. _zend.validate.set.step.floatingvalues:
 

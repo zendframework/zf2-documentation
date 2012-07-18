@@ -1,4 +1,3 @@
-
 .. _zend.cache.introduction:
 
 Introduction
@@ -9,7 +8,6 @@ Introduction
 Caching in Zend Framework is operated by frontends while cache records are stored through backend adapters (**File**, **Sqlite**, **Memcache**...) through a flexible system of IDs and tags. Using those, it is easy to delete specific types of records afterwards (for example: "delete all cache records marked with a given tag").
 
 The core of the module (``Zend_Cache_Core``) is generic, flexible and configurable. Yet, for your specific needs there are cache frontends that extend ``Zend_Cache_Core`` for convenience: **Output**, **File**, **Function** and **Class**.
-
 
 .. _zend.cache.introduction.example-1:
 
@@ -36,11 +34,10 @@ The core of the module (``Zend_Cache_Core``) is generic, flexible and configurab
                                 $backendOptions);
 
 .. note::
+
    **Frontends and Backends Consisting of Multiple Words**
 
    Some frontends and backends are named using multiple words, such as 'ZendPlatform'. When specifying them to the factory, separate them using a word separator, such as a space (' '), hyphen ('-'), or period ('.').
-
-
 
 .. _zend.cache.introduction.example-2:
 
@@ -72,7 +69,6 @@ Now that we have a frontend, we can cache any type of data (we turned on seriali
    }
 
    print_r($result);
-
 
 .. _zend.cache.introduction.example-3:
 
@@ -112,7 +108,7 @@ Inside, output your data as usual - all output will be cached when execution hit
 Notice that we output the result of ``time()`` twice; this is something dynamic for demonstration purposes. Try running this and then refreshing several times; you will notice that the first number doesn't change while second changes as time passes. That is because the first number was output in the cached section and is saved among other output. After half a minute (we've set lifetime to 30 seconds) the numbers should match again because the cache record expired -- only to be cached again. You should try this in your browser or console.
 
 .. note::
-   When using ``Zend_Cache``, pay attention to the important cache identifier (passed to ``save()`` and ``start()``). It must be unique for every resource you cache, otherwise unrelated cache records may wipe each other or, even worse, be displayed in place of the other.
 
+   When using ``Zend_Cache``, pay attention to the important cache identifier (passed to ``save()`` and ``start()``). It must be unique for every resource you cache, otherwise unrelated cache records may wipe each other or, even worse, be displayed in place of the other.
 
 

@@ -1,11 +1,9 @@
-
 .. _zend.log.writers:
 
 Writers
 =======
 
 A Writer is an object that inherits from ``Zend\Log\Writer\AbstractWriter``. A Writer's responsibility is to record log data to a storage backend.
-
 
 .. _zend.log.writers.stream:
 
@@ -52,7 +50,6 @@ The constructor of ``Zend\Log\Writer\Stream`` also accepts an existing stream re
    $logger->info('Informational message');
 
 You cannot specify the mode for existing stream resources. Doing so causes a ``Zend\Log\Exception`` to be thrown.
-
 
 .. _zend.log.writers.database:
 
@@ -104,7 +101,6 @@ The previous example will store only the log information timestamp, priority and
 
 The ``Zend\Log\Writer\Db`` has a second optional parameter in the constructor. This parameter is the character separator for the log events managed by an array. For instance, if we have a log that contains an array extra fields, this will be translated in 'extra-field', where '-' is the character separator (default) and field is the subname of the specific extra field.
 
-
 .. include:: zend.log.writers.mail.rst
 .. include:: zend.log.writers.syslog.rst
 .. include:: zend.log.writers.zend-monitor.rst
@@ -123,7 +119,6 @@ The ``Zend\Log\Writer\Null`` is a stub that does not write log data to anything.
 
    // goes nowhere
    $logger->info('Informational message');
-
 
 .. _zend.log.writers.mock:
 
@@ -151,7 +146,6 @@ The ``Zend\Log\Writer\Mock`` is a very simple writer that records the raw data i
    // )
 
 To clear the events logged by the mock, simply set ``$mock->events = array()``.
-
 
 .. _zend.log.writers.compositing:
 

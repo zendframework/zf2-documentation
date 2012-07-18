@@ -1,9 +1,7 @@
-
 .. _zend.search.lucene.best-practice:
 
 Best Practices
 ==============
-
 
 .. _zend.search.lucene.best-practice.field-names:
 
@@ -44,7 +42,6 @@ The ``Zend_Search_Lucene_Search_QueryHit`` ``id`` and ``score`` properties alway
        $title = $hit->getDocument()->title;
    }
 
-
 .. _zend.search.lucene.best-practice.indexing-performance:
 
 Indexing performance
@@ -81,9 +78,11 @@ There are three options to control the behavior of auto-optimization (see :ref:`
 
 - **MergeFactor** determines how often auto-optimization is performed.
 
-.. note::
-   All these options are ``Zend_Search_Lucene`` object properties- not index properties. They affect only current ``Zend_Search_Lucene`` object behavior and may vary for different scripts.
 
+
+   .. note::
+
+      All these options are ``Zend_Search_Lucene`` object properties- not index properties. They affect only current ``Zend_Search_Lucene`` object behavior and may vary for different scripts.
 
 
 
@@ -117,7 +116,8 @@ in general, background index optimization should be performed for interactive in
 
 ``Zend_Search_Lucene`` checks during each ``addDocument()`` call to see if merging any segments may move the newly created segment into the next group. If yes, then merging is performed.
 
-So an index with N groups may contain **MaxBufferedDocs** + (N-1)* **MergeFactor** segments and contains at least **MaxBufferedDocs**\ * **MergeFactor** :sup:`(N-1)` documents.
+So an index with N groups may contain **MaxBufferedDocs** + (N-1)* **MergeFactor** segments and contains at least **MaxBufferedDocs**\ * **MergeFactor** :sup:`(N-1)`
+         documents.
 
 This gives good approximation for the number of segments in the index:
 
@@ -126,7 +126,6 @@ This gives good approximation for the number of segments in the index:
 **MaxBufferedDocs** is determined by allowed memory. This allows for the appropriate merge factor to get a reasonable number of segments.
 
 Tuning the **MergeFactor** parameter is more effective for batch indexing performance than **MaxMergeDocs**. But it's also more course-grained. So use the estimation above for tuning **MergeFactor**, then play with **MaxMergeDocs** to get best batch indexing performance.
-
 
 .. _zend.search.lucene.best-practice.shutting-down:
 
@@ -168,7 +167,6 @@ And the second is to perform a commit operation before the end of script executi
    $index->commit();
 
 This possibility is also described in the ":ref:`Advanced. Using index as static property <zend.search.lucene.advanced.static>`" section.
-
 
 .. _zend.search.lucene.best-practice.unique-id:
 
@@ -216,7 +214,6 @@ This is more efficient than using the ``find()`` method:
        ...
    }
 
-
 .. _zend.search.lucene.best-practice.memory-usage:
 
 Memory Usage
@@ -228,7 +225,8 @@ It uses memory to cache some information and optimize searching and indexing per
 
 The memory required differs for different modes.
 
-The terms dictionary index is loaded during the search. It's actually each 128\ :sup:`th` [#]_ term of the full dictionary.
+The terms dictionary index is loaded during the search. It's actually each 128\ :sup:`th`
+         [#]_ term of the full dictionary.
 
 Thus memory usage is increased if you have a high number of unique terms. This may happen if you use untokenized phrases as a field values or index a large volume of non-text information.
 
@@ -237,7 +235,6 @@ An unoptimized index consists of several segments. It also increases memory usag
 Indexing uses the same memory as searching plus memory for buffering documents. The amount of memory used may be managed with **MaxBufferedDocs** parameter.
 
 Index optimization (full or partial) uses stream-style data processing and doesn't require a lot of memory.
-
 
 .. _zend.search.lucene.best-practice.encoding:
 
@@ -307,7 +304,6 @@ The default encoding may also be specified with ``setDefaultEncoding()`` method:
 The empty string implies 'current locale'.
 
 If the correct encoding is specified it can be correctly processed by analyzer. The actual behavior depends on which analyzer is used. See the :ref:`Character Set <zend.search.lucene.charset>` documentation section for details.
-
 
 .. _zend.search.lucene.best-practice.maintenance:
 

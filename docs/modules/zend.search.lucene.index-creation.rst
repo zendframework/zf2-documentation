@@ -1,9 +1,7 @@
-
 .. _zend.search.lucene.index-creation:
 
 Building Indexes
 ================
-
 
 .. _zend.search.lucene.index-creation.creating:
 
@@ -33,7 +31,6 @@ The *PHP* code listing below provides an example of how to index a file using ``
 
 Newly added documents are immediately searchable in the index.
 
-
 .. _zend.search.lucene.index-creation.updating:
 
 Updating Index
@@ -57,7 +54,6 @@ The same procedure is used to update an existing index. The only difference is t
    // Add document to the index.
    $index->addDocument($doc);
 
-
 .. _zend.search.lucene.index-creation.document-updating:
 
 Updating Documents
@@ -75,7 +71,6 @@ The Lucene index file format doesn't support document updating. Documents should
    foreach ($hits as $hit) {
        $index->delete($hit->id);
    }
-
 
 .. _zend.search.lucene.index-creation.counting:
 
@@ -107,7 +102,6 @@ There are two methods to retrieve the size of an index in ``Zend_Search_Lucene``
 
 Index optimization removes deleted documents and squeezes documents' IDs in to a smaller range. A document's internal id may therefore change during index optimization.
 
-
 .. _zend.search.lucene.index-creation.optimization:
 
 Index optimization
@@ -134,7 +128,6 @@ Automatic index optimization is performed to keep indexes in a consistent state.
 
 Automatic optimization is an iterative process managed by several index options. It merges very small segments into larger ones, then merges these larger segments into even larger segments and so on.
 
-
 .. _zend.search.lucene.index-creation.optimization.maxbuffereddocs:
 
 MaxBufferedDocs auto-optimization option
@@ -146,7 +139,6 @@ MaxBufferedDocs auto-optimization option
 
 Default value is 10.
 
-
 .. _zend.search.lucene.index-creation.optimization.maxmergedocs:
 
 MaxMergeDocs auto-optimization option
@@ -157,7 +149,6 @@ MaxMergeDocs auto-optimization option
 **MaxMergeDocs** can be retrieved or set by *$index->getMaxMergeDocs()* or *$index->setMaxMergeDocs($maxMergeDocs)* calls.
 
 Default value is PHP_INT_MAX.
-
 
 .. _zend.search.lucene.index-creation.optimization.mergefactor:
 
@@ -180,7 +171,6 @@ Lucene Java and Luke (Lucene Index Toolbox -`http://www.getopt.org/luke/`_) can 
 
 
 
-
 .. _zend.search.lucene.index-creation.permissions:
 
 Permissions
@@ -200,12 +190,10 @@ It's possible to override this with the ``Zend_Search_Lucene_Storage_Directory_F
    // Give read-writing permissions only for current user and group
    Zend_Search_Lucene_Storage_Directory_Filesystem::setDefaultFilePermissions(0660);
 
-
 .. _zend.search.lucene.index-creation.limitations:
 
 Limitations
 -----------
-
 
 .. _zend.search.lucene.index-creation.limitations.index-size:
 
@@ -215,7 +203,6 @@ Index size
 Index size is limited by 2GB for 32-bit platforms.
 
 Use 64-bit platforms for larger indices.
-
 
 .. _zend.search.lucene.index-creation.limitations.filesystems:
 

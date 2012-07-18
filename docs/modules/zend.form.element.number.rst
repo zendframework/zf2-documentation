@@ -1,11 +1,9 @@
-
 .. _zend.form.element.number:
 
 Zend\\Form\\Element\\Number
 ===========================
 
 The ``Number`` element is meant to be paired with the ``Zend/Form/View/Helper/FormNumber`` for `HTML5 inputs with type number`_. This element adds filters and validators to it's input filter specification in order to validate HTML5 number input values on the server.
-
 
 .. _zend.form.element.number.usage:
 
@@ -32,9 +30,8 @@ This element automatically adds a ``"type"`` attribute of value ``"number"``.
    $form->add($number);
 
 .. note::
+
    Note: the ``min``, ``max``, and ``step`` attributes should be set prior to calling Zend\\Form::prepare(). Otherwise, the default input specification for the element may not contain the correct validation rules.
-
-
 
 .. _zend.form.element.number.methods:
 
@@ -43,27 +40,19 @@ Available Methods
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element <zend.form.element.methods>`.
 
-
 .. _zend.form.element.number.methods.get-input-specification:
 
 **getInputSpecification**
    ``getInputSpecification()``
-
-
    Returns a input filter specification, which includes ``Zend\Filter\StringTrim`` and will add the appropriate validators based on the values from the ``min``, ``max``, and ``step`` attributes.
-
 
    If the ``min`` attribute is set, a ``Zend\Validator\GreaterThan`` validator will be added to ensure the number value is greater than the minimum value. The ``min`` value should be a `valid floating point number`_.
 
-
    If the ``max`` attribute is set, a ``Zend\Validator\LessThanValidator`` validator will be added to ensure the number value is less than the maximum value. The ``max`` value should be a `valid floating point number`_.
-
 
    If the ``step`` attribute is set to "any", step validations will be skipped. Otherwise, a a ``Zend\Validator\Step`` validator will be added to ensure the number value is within a certain interval (default is 1). The ``step`` value should be either "any" or a `valid floating point number`_.
 
-
    Returns array
-
 
 
 

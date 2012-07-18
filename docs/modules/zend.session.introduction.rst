@@ -1,4 +1,3 @@
-
 .. _zend.session.introduction:
 
 Introduction

@@ -1,11 +1,9 @@
-
 .. _zend.validator.Db:
 
 Db\\RecordExists and Db\\NoRecordExists
 =======================================
 
 ``Zend\Validator\Db\RecordExists`` and ``Zend\Validator\Db\NoRecordExists`` provide a means to test whether a record exists in a given table of a database, with a given value.
-
 
 .. _zend.validator.set.db.options:
 
@@ -23,7 +21,6 @@ The following options are supported for ``Zend\Validator\Db\NoRecordExists`` and
 - **schema**: Sets the schema which will be used for the search.
 
 - **table**: The table which will be searched for the record.
-
 
 .. _zend.validator.db.basic-usage:
 
@@ -75,7 +72,6 @@ The above will test that a given email address is in the database table. If no r
    }
 
 The above will test that a given username is not in the database table. If a record is found containing the value of ``$username`` in the specified column, then an error message is displayed.
-
 
 .. _zend.validator.db.excluding-records:
 
@@ -141,7 +137,6 @@ You can also provide a string to the exclude clause so you can use an operator o
 
 The above example will check the 'users' table to ensure that only a record with both the username ``$username`` and with the email ``$email`` is valid.
 
-
 .. _zend.validator.db.database-adapters:
 
 Database Adapters
@@ -159,7 +154,6 @@ You can also specify an adapter. This will allow you to work with applications u
            'adapter' => $dbAdapter
        )
    );
-
 
 .. _zend.validator.db.database-schemas:
 

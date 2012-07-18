@@ -1,11 +1,9 @@
-
 .. _zend.filter.set.callback:
 
 Callback
 ========
 
 This filter allows you to use own methods in conjunction with ``Zend_Filter``. You don't have to create a new filter when you already have a method which does the job.
-
 
 .. _zend.filter.set.callback.options:
 
@@ -17,7 +15,6 @@ The following options are supported for ``Zend_Filter_Callback``:
 - **callback**: This sets the callback which should be used.
 
 - **options**: This property sets the options which are used when the callback is processed.
-
 
 .. _zend.filter.set.callback.basic:
 
@@ -52,11 +49,10 @@ As you can see it's really simple to use a callback to define a own filter. It i
 To get the actual set callback use ``getCallback()`` and to set another callback use ``setCallback()``.
 
 .. note::
+
    **Possible exceptions**
 
    You should note that defining a callback method which can not be called will raise an exception.
-
-
 
 .. _zend.filter.set.callback.parameters:
 

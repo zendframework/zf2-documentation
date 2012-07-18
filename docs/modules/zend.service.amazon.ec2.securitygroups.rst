@@ -1,4 +1,3 @@
-
 .. _zend.service.amazon.ec2.securitygroups:
 
 Zend_Service_Amazon_Ec2: Security Groups
@@ -9,17 +8,15 @@ A security group is a named collection of access rules. These access rules speci
 You can modify rules for a group at any time. The new rules are automatically enforced for all running instances and instances launched in the future.
 
 .. note::
+
    **Maximum Security Groups**
 
    You can create up to 100 security groups.
-
-
 
 .. _zend.service.amazon.ec2.securitygroups.maintenance:
 
 Security Group Maintenance
 --------------------------
-
 
 .. _zend.service.amazon.ec2.securitygroups.maintenance.create:
 
@@ -35,7 +32,6 @@ Security Group Maintenance
    $ec2_sg = new Zend_Service_Amazon_Ec2_Securitygroups('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_sg->create('mygroup', 'my group description');
-
 
 .. _zend.service.amazon.ec2.securitygroups.maintenance.describe:
 
@@ -54,7 +50,6 @@ If you specify security group names, information about those security groups is 
                                                         'aws_secret_key');
    $return = $ec2_sg->describe('mygroup');
 
-
 .. _zend.service.amazon.ec2.securitygroups.maintenance.delete:
 
 .. rubric:: Delete a Security Group
@@ -70,12 +65,10 @@ If you specify security group names, information about those security groups is 
                                                         'aws_secret_key');
    $return = $ec2_sg->delete('mygroup');
 
-
 .. _zend.service.amazon.ec2.securitygroups.authorize:
 
 Authorizing Access
 ------------------
-
 
 .. _zend.service.amazon.ec2.securitygroups.authorize.ip:
 
@@ -100,7 +93,6 @@ Permission changes are propagated to instances within the security group as quic
                                    'toPort',
                                    'ipRange');
 
-
 .. _zend.service.amazon.ec2.securitygroups.authorize.group:
 
 .. rubric:: Authorize By Group
@@ -118,12 +110,10 @@ Permission changes are propagated to instances within the security group as quic
                                                         'aws_secret_key');
    $return = $ec2_sg->authorizeGroup('mygroup', 'securityGroupName', 'ownerId');
 
-
 .. _zend.service.amazon.ec2.securitygroups.revoke:
 
 Revoking Access
 ---------------
-
 
 .. _zend.service.amazon.ec2.securitygroups.revoke.ip:
 
@@ -147,7 +137,6 @@ Permission changes are propagated to instances within the security group as quic
                                 'fromPort',
                                 'toPort',
                                 'ipRange');
-
 
 .. _zend.service.amazon.ec2.securitygroups.revoke.group:
 

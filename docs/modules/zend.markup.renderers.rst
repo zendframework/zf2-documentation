@@ -1,11 +1,9 @@
-
 .. _zend.markup.renderers:
 
 Zend_Markup Renderers
 =====================
 
 ``Zend_Markup`` is currently shipped with one renderer, the *HTML* renderer.
-
 
 .. _zend.markup.renderers.add:
 
@@ -42,7 +40,6 @@ By adding your own markups, you can add your own functionality to the ``Zend_Mar
 Please note that creating your own markups only makes sense when your parser also supports it with a markup structure. Currently, only BBCode supports this. Textile doesn't have support for custom markups.
 
 Some renderers (like the *HTML* renderer) also have support for a 'markup' parameter. This replaces the 'start' and 'end' parameters, and it renders the markups including some default attributes and the closing markup.
-
 
 .. _zend.markup.renderers.add.callback:
 
@@ -93,12 +90,10 @@ Now you can add the 'upper' markup, with as callback, an instance of the ``My_Ma
    // now, this will output: 'my !up!MARKUP!up!'
    echo $bbcode->render('my [upper]markup[/upper]');
 
-
 .. _zend.markup.renderers.list:
 
 List of markups
 ---------------
-
 
 .. _zend.markup.renderers.list.markups:
 
@@ -131,6 +126,5 @@ List of markups
    +--------------------------------------------------------+---------------------------------------------------------+
    |[img]http://framework.zend.com/images/logo.gif[/img]    |<img src="http://framework.zend.com/images/logo.gif" />  |
    +--------------------------------------------------------+---------------------------------------------------------+
-
 
 

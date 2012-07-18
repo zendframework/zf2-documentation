@@ -1,9 +1,7 @@
-
 .. _zend.service.amazon.s3:
 
 Zend_Service_Amazon_S3
 ======================
-
 
 .. _zend.service.amazon.s3.introduction:
 
@@ -11,7 +9,6 @@ Introduction
 ------------
 
 Amazon S3 provides a simple web services interface that can be used to store and retrieve any amount of data, at any time, from anywhere on the web. It gives any developer access to the same highly scalable, reliable, fast, inexpensive data storage infrastructure that Amazon uses to run its own global network of web sites. The service aims to maximize benefits of scale and to pass those benefits on to developers.
-
 
 .. _zend.service.amazon.s3.registering:
 
@@ -22,14 +19,12 @@ Before you can get started with ``Zend_Service_Amazon_S3``, you must first regis
 
 After registering, you will receive an application key and a secret key. You will need both to access the S3 service.
 
-
 .. _zend.service.amazon.s3.apiDocumentation:
 
 API Documentation
 -----------------
 
 The ``Zend_Service_Amazon_S3`` class provides the *PHP* wrapper to the Amazon S3 REST interface. Please consult the `Amazon S3 documentation`_ for detailed description of the service. You will need to be familiar with basic concepts in order to use this service.
-
 
 .. _zend.service.amazon.s3.features:
 
@@ -48,7 +43,6 @@ Features
 
 
 
-
 .. _zend.service.amazon.s3.storing-your-first:
 
 Getting Started
@@ -57,7 +51,6 @@ Getting Started
 Once you have registered with Amazon S3, you're ready to store your first data object on the S3. The objects on S3 are stored in containers, called "buckets". Bucket names are unique on S3, and each user can have no more than 100 buckets simultaneously. Each bucket can contain unlimited amount of objects, identified by name.
 
 The following example demonstrates creating a bucket, storing and retrieving the data.
-
 
 .. _zend.service.amazon.s3.storing-your-first.example:
 
@@ -86,7 +79,6 @@ Since ``Zend_Service_Amazon_S3`` service requires authentication, you should pas
    Zend_Service_Amazon_S3::setKeys($my_aws_key, $my_aws_secret_key);
    $s3 = new Zend_Service_Amazon_S3();
 
-
 .. _zend.service.amazon.s3.buckets:
 
 Bucket operations
@@ -102,7 +94,6 @@ Bucket name can contain lowercase letters, digits, periods (.), underscores (\_)
 
 - ``removeBucket()`` removes the bucket from the system. The bucket should be empty to be removed.
 
-
   .. _zend.service.amazon.s3.buckets.remove.example:
 
   .. rubric:: Zend_Service_Amazon_S3 Bucket Removal Example
@@ -117,9 +108,7 @@ Bucket name can contain lowercase letters, digits, periods (.), underscores (\_)
      $s3->cleanBucket("my-own-bucket");
      $s3->removeBucket("my-own-bucket");
 
-
 - ``getBuckets()`` returns the list of the names of all buckets belonging to the user.
-
 
   .. _zend.service.amazon.s3.buckets.list.example:
 
@@ -137,9 +126,7 @@ Bucket name can contain lowercase letters, digits, periods (.), underscores (\_)
        echo "I have bucket $bucket\n";
      }
 
-
 - ``isBucketAvailable()`` check if the bucket exists and returns ``TRUE`` if it does.
-
 
 .. _zend.service.amazon.s3.objects:
 
@@ -158,10 +145,8 @@ By default, all objects are private and can be accessed only by their owner. How
 
   Optional ``$meta`` parameter is the array of metadata, which currently supports the following parameters as keys:
 
-
   **S3_CONTENT_TYPE_HEADER**
      *MIME* content type of the data. If not specified, the type will be guessed according to the file extension of the object name.
-
 
   **S3_ACL_HEADER**
      The access to the item. Following access constants can be used:
@@ -169,26 +154,16 @@ By default, all objects are private and can be accessed only by their owner. How
         **S3_ACL_PRIVATE**
            Only the owner has access to the item.
 
-
-
         **S3_ACL_PUBLIC_READ**
            Anybody can read the object, but only owner can write. This is setting may be used to store publicly accessible content.
-
-
 
         **S3_ACL_PUBLIC_WRITE**
            Anybody can read or write the object. This policy is rarely useful.
 
-
-
         **S3_ACL_AUTH_READ**
            Only the owner has write access to the item, and other authenticated S3 users have read access. This is useful for sharing data between S3 accounts without exposing them to the public.
 
-
-
       By default, all the items are private.
-
-
 
      .. _zend.service.amazon.s3.objects.public.example:
 
@@ -210,38 +185,27 @@ By default, all objects are private and can be accessed only by their owner. How
                   Zend_Service_Amazon_S3::S3_ACL_PUBLIC_READ));
         echo "Go to http://s3.amazonaws.com/my-own-bucket/Pictures/Me.png to see me!\n";
 
-
-
 - ``getObject($object)`` retrieves object data from the storage by name.
 
 - ``removeObject($object)`` removes the object from the storage.
 
 - ``getInfo($object)`` retrieves the metadata information about the object. The function will return array with metadata information. Some of the useful keys are:
 
-   **type**
-      The *MIME* type of the item.
+     **type**
+        The *MIME* type of the item.
 
+     **size**
+        The size of the object data.
 
+     **mtime**
+        UNIX-type timestamp of the last modification for the object.
 
-   **size**
-      The size of the object data.
+     **etag**
+        The ETag of the data, which is the MD5 hash of the data, surrounded by quotes (").
 
-
-
-   **mtime**
-      UNIX-type timestamp of the last modification for the object.
-
-
-
-   **etag**
-      The ETag of the data, which is the MD5 hash of the data, surrounded by quotes (").
-
-
-
-The function will return ``FALSE`` if the key does not correspond to any existing object.
+   The function will return ``FALSE`` if the key does not correspond to any existing object.
 
 - ``getObjectsByBucket($bucket)`` returns the list of the object keys, contained in the bucket.
-
 
   .. _zend.service.amazon.s3.objects.list.example:
 
@@ -261,14 +225,11 @@ The function will return ``FALSE`` if the key does not correspond to any existin
        echo "with data: $data\n";
      }
 
-
 - ``isObjectAvailable($object)`` checks if the object with given name exists.
 
 - ``putFile($path, $object, $meta)`` puts the content of the file in ``$path`` into the object named ``$object``.
 
   The optional ``$meta`` argument is the same as for *putObject*. If the content type is omitted, it will be guessed basing on the source file name.
-
-
 
 .. _zend.service.amazon.s3.streaming:
 
@@ -278,19 +239,22 @@ Data Streaming
 It is possible to get and put objects using not stream data held in memory but files or *PHP* streams. This is especially useful when file sizes are large in order not to overcome memory limits.
 
 To receive object using streaming, use method ``getObjectStream($object, $filename)``. This method will return ``Zend_Http_Response_Stream``, which can be used as described in :ref:`HTTP Client Data Streaming <zend.http.client.streaming>` section.
-.. _zend.service.amazon.s3.streaming.example1:
 
-.. rubric:: Zend_Service_Amazon_S3 Data Streaming Example
 
-.. code-block:: php
-   :linenos:
 
-   $response = $amazon->getObjectStream("mybycket/zftest");
-   // copy file
-   copy($response->getStreamName(), "my/downloads/file");
-   // use stream
-   $fp = fopen("my/downloads/file2", "w");
-   stream_copy_to_stream($response->getStream(), $fp);
+      .. _zend.service.amazon.s3.streaming.example1:
+
+      .. rubric:: Zend_Service_Amazon_S3 Data Streaming Example
+
+      .. code-block:: php
+         :linenos:
+
+         $response = $amazon->getObjectStream("mybycket/zftest");
+         // copy file
+         copy($response->getStreamName(), "my/downloads/file");
+         // use stream
+         $fp = fopen("my/downloads/file2", "w");
+         stream_copy_to_stream($response->getStream(), $fp);
 
 
 
@@ -300,14 +264,12 @@ To send object using streaming, use ``putFileStream()`` which has the same signa
 
 Also, you can pass stream resource to ``putObject()`` method data parameter, in which case the data will be read from the stream when sending the request to the server.
 
-
 .. _zend.service.amazon.s3.streams:
 
 Stream wrapper
 --------------
 
 In addition to the interfaces described above, ``Zend_Service_Amazon_S3`` also supports operating as a stream wrapper. For this, you need to register the client object as the stream wrapper:
-
 
 .. _zend.service.amazon.s3.streams.example:
 

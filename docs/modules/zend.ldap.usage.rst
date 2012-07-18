@@ -1,21 +1,17 @@
-
 .. _zend.ldap.usage:
 
 Usage Scenarios
 ===============
-
 
 .. _zend.ldap.usage.authentication:
 
 Authentication scenarios
 ------------------------
 
-
 .. _zend.ldap.usage.authentication.openldap:
 
 OpenLDAP
 ^^^^^^^^
-
 
 
 
@@ -26,18 +22,15 @@ ActiveDirectory
 
 
 
-
 .. _zend.ldap.usage.basic:
 
 Basic CRUD operations
 ---------------------
 
-
 .. _zend.ldap.usage.basic.retrieve:
 
 Retrieving data from the LDAP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 
 .. _zend.ldap.usage.basic.retrieve.dn:
 
@@ -61,7 +54,6 @@ Retrieving data from the LDAP
    )
    */
 
-
 .. _zend.ldap.usage.basic.retrieve.exists:
 
 .. rubric:: Check for the existence of a given DN
@@ -73,7 +65,6 @@ Retrieving data from the LDAP
    $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind();
    $isThere = $ldap->exists('cn=Hugo Müller,ou=People,dc=my,dc=local');
-
 
 .. _zend.ldap.usage.basic.retrieve.counting-children:
 
@@ -87,7 +78,6 @@ Retrieving data from the LDAP
    $ldap->bind();
    $childrenCount = $ldap->countChildren(
                                'cn=Hugo Müller,ou=People,dc=my,dc=local');
-
 
 .. _zend.ldap.usage.basic.retrieve.search:
 
@@ -105,7 +95,6 @@ Retrieving data from the LDAP
    foreach ($result as $item) {
        echo $item["dn"] . ': ' . $item['cn'][0] . PHP_EOL;
    }
-
 
 .. _zend.ldap.usage.basic.add:
 
@@ -126,7 +115,6 @@ Adding data to the LDAP
    Zend\Ldap\Attribute::setAttribute($entry, 'objectClass', 'inetOrgPerson');
    $ldap->add('cn=Hans Meier,ou=People,dc=my,dc=local', $entry);
 
-
 .. _zend.ldap.usage.basic.delete:
 
 Deleting from the LDAP
@@ -141,7 +129,6 @@ Deleting from the LDAP
    $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind();
    $ldap->delete('cn=Hans Meier,ou=People,dc=my,dc=local');
-
 
 .. _zend.ldap.usage.basic.update:
 
@@ -163,18 +150,15 @@ Updating the LDAP
                                     Zend\Ldap\Attribute::PASSWORD_HASH_SHA1);
    $ldap->update('cn=Hugo Müller,ou=People,dc=my,dc=local', $hm);
 
-
 .. _zend.ldap.usage.extended:
 
 Extended operations
 -------------------
 
-
 .. _zend.ldap.usage.extended.copy-and-move:
 
 Copy and move entries in the LDAP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 
 .. _zend.ldap.usage.extended.copy-and-move.copy:
 
@@ -189,7 +173,6 @@ Copy and move entries in the LDAP
    $ldap->copy('cn=Hugo Müller,ou=People,dc=my,dc=local',
                'cn=Hans Meier,ou=People,dc=my,dc=local',
                true);
-
 
 .. _zend.ldap.usage.extended.copy-and-move.move-to-subtree:
 

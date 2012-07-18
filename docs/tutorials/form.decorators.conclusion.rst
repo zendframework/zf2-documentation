@@ -1,4 +1,3 @@
-
 .. _learning.form.decorators.conclusion:
 
 Conclusion

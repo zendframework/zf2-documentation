@@ -1,4 +1,3 @@
-
 .. _zend.mail.additional-headers:
 
 Additional Headers
@@ -15,13 +14,12 @@ Additional Headers
 
 
 .. note::
+
    **Return-Path**
 
    If you set Return-Path on your mail, see :ref:`Configuring sendmail transport <zend.mail.introduction.sendmail>`. Unfortunately, ``setReturnPath($email)`` method does not perform this purpose.
 
-
 Furthermore, arbitrary mail headers can be set by using the ``addHeader()`` method. It requires two parameters containing the name and the value of the header field. A third optional parameter determines if the header should have only one or multiple values:
-
 
 .. _zend.mail.additional-headers.example-1:
 

@@ -1,4 +1,3 @@
-
 .. _zend.acl.introduction:
 
 Introduction
@@ -16,7 +15,6 @@ Put simply, **roles request access to resources**. For example, if a parking att
 
 Through the specification and use of an *ACL*, an application may control how roles are granted access to resources.
 
-
 .. _zend.acl.introduction.resources:
 
 Resources
@@ -28,7 +26,6 @@ Creating a resource using ``Zend\Acl\Acl`` is very simple. A resource interface 
 
 ``Zend\Acl\Acl`` also supports privileges on resources (e.g., "create", "read", "update", "delete"), so the developer can assign rules that affect all privileges or specific privileges on one or more resources.
 
-
 .. _zend.acl.introduction.roles:
 
 Roles
@@ -39,7 +36,6 @@ As with resources, creating a role is also very simple. All roles must implement
 In ``Zend\Acl\Acl``, a role may inherit from one or more roles. This is to support inheritance of rules among roles. For example, a user role, such as "sally", may belong to one or more parent roles, such as "editor" and "administrator". The developer can assign rules to "editor" and "administrator" separately, and "sally" would inherit such rules from both, without having to assign rules directly to "sally".
 
 Though the ability to inherit from multiple roles is very useful, multiple inheritance also introduces some degree of complexity. The following example illustrates the ambiguity condition and how ``Zend\Acl\Acl`` solves it.
-
 
 .. _zend.acl.introduction.roles.example.multiple_inheritance:
 
@@ -77,9 +73,8 @@ If ``Zend\Acl\Acl`` were to continue examining the rules defined for other paren
 ``Zend\Acl\Acl`` resolves this ambiguity by completing a query when it finds the first rule that is directly applicable to the query. In this case, since the "member" role is examined before the "guest" role, the example code would print "allowed".
 
 .. note::
+
    When specifying multiple parents for a role, keep in mind that the last parent listed is the first one searched for rules applicable to an authorization query.
-
-
 
 .. _zend.acl.introduction.creating:
 
@@ -95,9 +90,8 @@ An Access Control List (*ACL*) can represent any set of physical or virtual obje
    $acl = new Acl();
 
 .. note::
+
    Until a developer specifies an "allow" rule, ``Zend\Acl\Acl`` denies access to every privilege upon every resource by every role.
-
-
 
 .. _zend.acl.introduction.role_registry:
 
@@ -105,7 +99,6 @@ Registering Roles
 -----------------
 
 *CMS*'s will nearly always require a hierarchy of permissions to determine the authoring capabilities of its users. There may be a 'Guest' group to allow limited access for demonstrations, a 'Staff' group for the majority of *CMS* users who perform most of the day-to-day operations, an 'Editor' group for those responsible for publishing, reviewing, archiving and deleting content, and finally an 'Administrator' group whose tasks may include all of those of the other groups as well as maintenance of sensitive information, user management, back-end configuration data, backup and export. This set of permissions can be represented in a role registry, allowing each group to inherit privileges from 'parent' groups, as well as providing distinct privileges for their unique group only. The permissions may be expressed as follows:
-
 
 .. _zend.acl.introduction.role_registry.table.example_cms_access_controls:
 
@@ -122,7 +115,6 @@ Registering Roles
    +-------------+------------------------+------------------------+
    |Administrator|(Granted all access)    |N/A                     |
    +-------------+------------------------+------------------------+
-
 
 For this example, ``Zend\Acl\Role\GenericRole`` is used, but any object that implements ``Zend\Acl\Role\RoleInterface`` is acceptable. These groups can be added to the role registry as follows:
 
@@ -154,7 +146,6 @@ For this example, ``Zend\Acl\Role\GenericRole`` is used, but any object that imp
    // Administrator does not inherit access controls
    $acl->addRole(new Role('administrator'));
 
-
 .. _zend.acl.introduction.defining:
 
 Defining Access Controls
@@ -163,8 +154,8 @@ Defining Access Controls
 Now that the *ACL* contains the relevant roles, rules can be established that define how resources may be accessed by roles. You may have noticed that we have not defined any particular resources for this example, which is simplified to illustrate that the rules apply to all resources. ``Zend\Acl\Acl`` provides an implementation whereby rules need only be assigned from general to specific, minimizing the number of rules needed, because resources and roles inherit rules that are defined upon their ancestors.
 
 .. note::
-   In general, ``Zend\Acl\Acl`` obeys a given rule if and only if a more specific rule does not apply.
 
+   In general, ``Zend\Acl\Acl`` obeys a given rule if and only if a more specific rule does not apply.
 
 Consequently, we can define a reasonably complex set of rules with a minimum amount of code. To apply the base permissions as defined above:
 
@@ -202,7 +193,6 @@ Consequently, we can define a reasonably complex set of rules with a minimum amo
    $acl->allow('administrator');
 
 The ``NULL`` values in the above ``allow()`` calls are used to indicate that the allow rules apply to all resources.
-
 
 .. _zend.acl.introduction.querying:
 

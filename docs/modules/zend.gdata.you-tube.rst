@@ -1,4 +1,3 @@
-
 .. _zend.gdata.youtube:
 
 Using the YouTube Data API
@@ -8,7 +7,6 @@ The YouTube Data *API* offers read and write access to YouTube's content. Users 
 
 For more information on the YouTube Data *API*, please refer to the official `PHP Developer's Guide`_ on code.google.com.
 
-
 .. _zend.gdata.youtube.authentication:
 
 Authentication
@@ -16,14 +14,12 @@ Authentication
 
 The YouTube Data *API* allows read-only access to public data, which does not require authentication. For any write requests, a user needs to authenticate either using ClientLogin or AuthSub authentication. Please refer to the `Authentication section in the PHP Developer's Guide`_ for more detail.
 
-
 .. _zend.gdata.youtube.developer_key:
 
 Developer Keys and Client ID
 ----------------------------
 
 A developer key identifies the YouTube developer that is submitting an *API* request. A client ID identifies your application for logging and debugging purposes. Please visit `http://code.google.com/apis/youtube/dashboard/`_ to obtain a developer key and client ID. The example below demonstrates how to pass the developer key and client ID to the `Zend_Gdata_YouTube`_ service object.
-
 
 .. _zend.gdata.youtube.developer_key.example:
 
@@ -37,7 +33,6 @@ A developer key identifies the YouTube developer that is submitting an *API* req
                                 $clientId,
                                 $developerKey);
 
-
 .. _zend.gdata.youtube.videos:
 
 Retrieving public video feeds
@@ -45,14 +40,12 @@ Retrieving public video feeds
 
 The YouTube Data *API* provides numerous feeds that return a list of videos, such as standard feeds, related videos, video responses, user's uploads, and user's favorites. For example, the user's uploads feed returns all videos uploaded by a specific user. See the `YouTube API reference guide`_ for a detailed list of available feeds.
 
-
 .. _zend.gdata.youtube.videos.searching:
 
 Searching for videos by metadata
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can retrieve a list of videos that match specified search criteria, using the YouTubeQuery class. The following query looks for videos which contain the word "cat" in their metadata, starting with the 10th video and displaying 20 videos per page, ordered by the view count.
-
 
 .. _zend.gdata.youtube.videos.searching.example:
 
@@ -81,14 +74,12 @@ You can retrieve a list of videos that match specified search criteria, using th
 
 For more details on the different query parameters, please refer to the `Reference Guide`_. The available helper functions in `Zend_Gdata_YouTube_VideoQuery`_ for each of these parameters are described in more detail in the `PHP Developer's Guide`_.
 
-
 .. _zend.gdata.youtube.videos.searchingcategories:
 
 Searching for videos by categories and tags/keywords
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Searching for videos in specific categories is done by generating a `specially formatted URL`_. For example, to search for comedy videos which contain the keyword dog:
-
 
 .. _zend.gdata.youtube.videos.searchingcategories.example:
 
@@ -104,7 +95,6 @@ Searching for videos in specific categories is done by generating a `specially f
    echo $query->queryUrl . "\n";
    $videoFeed = $yt->getVideoFeed($query);
 
-
 .. _zend.gdata.youtube.videos.standard:
 
 Retrieving standard feeds
@@ -113,7 +103,6 @@ Retrieving standard feeds
 The YouTube Data *API* has a number of `standard feeds`_. These standard feeds can be retrieved as `Zend_Gdata_YouTube_VideoFeed`_ objects using the specified *URL*\ s, using the predefined constants within the `Zend_Gdata_YouTube`_ class (Zend_Gdata_YouTube::STANDARD_TOP_RATED_URI for example) or using the predefined helper methods (see code listing below).
 
 To retrieve the top rated videos using the helper method:
-
 
 .. _zend.gdata.youtube.videos.standard.example-1:
 
@@ -129,7 +118,6 @@ There are also query parameters to specify the time period over which the standa
 
 For example, to retrieve the top rated videos for today:
 
-
 .. _zend.gdata.youtube.videos.standard.example-2:
 
 .. rubric:: Using a Zend_Gdata_YouTube_VideoQuery to Retrieve Videos
@@ -144,7 +132,6 @@ For example, to retrieve the top rated videos for today:
 
 Alternatively, you could just retrieve the feed using the *URL*:
 
-
 .. _zend.gdata.youtube.videos.standard.example-3:
 
 .. rubric:: Retrieving a video feed by URL
@@ -156,14 +143,12 @@ Alternatively, you could just retrieve the feed using the *URL*:
    $url = 'http://gdata.youtube.com/feeds/standardfeeds/top_rated?time=today'
    $videoFeed = $yt->getVideoFeed($url);
 
-
 .. _zend.gdata.youtube.videos.user:
 
 Retrieving videos uploaded by a user
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can retrieve a list of videos uploaded by a particular user using a simple helper method. This example retrieves videos uploaded by the user 'liz'.
-
 
 .. _zend.gdata.youtube.videos.user.example:
 
@@ -175,14 +160,12 @@ You can retrieve a list of videos uploaded by a particular user using a simple h
    $yt = new Zend_Gdata_YouTube();
    $videoFeed = $yt->getUserUploads('liz');
 
-
 .. _zend.gdata.youtube.videos.favorites:
 
 Retrieving videos favorited by a user
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can retrieve a list of a user's favorite videos using a simple helper method. This example retrieves videos favorited by the user 'liz'.
-
 
 .. _zend.gdata.youtube.videos.favorites.example:
 
@@ -194,14 +177,12 @@ You can retrieve a list of a user's favorite videos using a simple helper method
    $yt = new Zend_Gdata_YouTube();
    $videoFeed = $yt->getUserFavorites('liz');
 
-
 .. _zend.gdata.youtube.videos.responses:
 
 Retrieving video responses for a video
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can retrieve a list of a video's video responses using a simple helper method. This example retrieves video response for a video with the ID 'abc123813abc'.
-
 
 .. _zend.gdata.youtube.videos.responses.example:
 
@@ -213,14 +194,12 @@ You can retrieve a list of a video's video responses using a simple helper metho
    $yt = new Zend_Gdata_YouTube();
    $videoFeed = $yt->getVideoResponseFeed('abc123813abc');
 
-
 .. _zend.gdata.youtube.comments:
 
 Retrieving video comments
 -------------------------
 
 The comments for each YouTube video can be retrieved in several ways. To retrieve the comments for the video with the ID 'abc123813abc', use the following code:
-
 
 .. _zend.gdata.youtube.videos.comments.example-1:
 
@@ -239,7 +218,6 @@ The comments for each YouTube video can be retrieved in several ways. To retriev
 
 Comments can also be retrieved for a video if you have a copy of the `Zend_Gdata_YouTube_VideoEntry`_ object:
 
-
 .. _zend.gdata.youtube.videos.comments.example-2:
 
 .. rubric:: Retrieving a Feed of Video Comments from a Zend_Gdata_YouTube_VideoEntry
@@ -253,7 +231,6 @@ Comments can also be retrieved for a video if you have a copy of the `Zend_Gdata
    $commentFeed = $yt->getVideoCommentFeed(null,
                                            $videoEntry->comments->href);
 
-
 .. _zend.gdata.youtube.playlists:
 
 Retrieving playlist feeds
@@ -261,14 +238,12 @@ Retrieving playlist feeds
 
 The YouTube Data *API* provides information about users, including profiles, playlists, subscriptions, and more.
 
-
 .. _zend.gdata.youtube.playlists.user:
 
 Retrieving the playlists of a user
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The library provides a helper method to retrieve the playlists associated with a given user. To retrieve the playlists for the user 'liz':
-
 
 .. _zend.gdata.youtube.playlists.user.example:
 
@@ -286,14 +261,12 @@ The library provides a helper method to retrieve the playlists associated with a
        echo $playlistEntry->getPlaylistVideoFeedUrl() . "\n\n\n";
    }
 
-
 .. _zend.gdata.youtube.playlists.special:
 
 Retrieving a specific playlist
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The library provides a helper method to retrieve the videos associated with a given playlist. To retrieve the playlists for a specific playlist entry:
-
 
 .. _zend.gdata.youtube.playlists.special.example:
 
@@ -305,7 +278,6 @@ The library provides a helper method to retrieve the videos associated with a gi
    $feedUrl = $playlistEntry->getPlaylistVideoFeedUrl();
    $playlistVideoFeed = $yt->getPlaylistVideoFeed($feedUrl);
 
-
 .. _zend.gdata.youtube.subscriptions:
 
 Retrieving a list of a user's subscriptions
@@ -314,7 +286,6 @@ Retrieving a list of a user's subscriptions
 A user can have several types of subscriptions: channel subscription, tag subscription, or favorites subscription. A `Zend_Gdata_YouTube_SubscriptionEntry`_ is used to represent individual subscriptions.
 
 To retrieve all subscriptions for the user 'liz':
-
 
 .. _zend.gdata.youtube.subscriptions.example:
 
@@ -330,14 +301,12 @@ To retrieve all subscriptions for the user 'liz':
        echo $subscriptionEntry->title->text . "\n";
    }
 
-
 .. _zend.gdata.youtube.profile:
 
 Retrieving a user's profile
 ---------------------------
 
 You can retrieve the public profile information for any YouTube user. To retrieve the profile for the user 'liz':
-
 
 .. _zend.gdata.youtube.profile.example:
 
@@ -352,7 +321,6 @@ You can retrieve the public profile information for any YouTube user. To retriev
    echo "age: " . $userProfile->age->text . "\n";
    echo "hometown: " . $userProfile->hometown->text . "\n";
 
-
 .. _zend.gdata.youtube.uploads:
 
 Uploading Videos to YouTube
@@ -361,7 +329,6 @@ Uploading Videos to YouTube
 Please make sure to review the diagrams in the `protocol guide`_ on code.google.com for a high-level overview of the upload process. Uploading videos can be done in one of two ways: either by uploading the video directly or by sending just the video meta-data and having a user upload the video through an *HTML* form.
 
 In order to upload a video directly, you must first construct a new `Zend_Gdata_YouTube_VideoEntry`_ object and specify some required meta-data. The following example shows uploading the Quicktime video "mytestmovie.mov" to YouTube with the following properties:
-
 
 .. _zend.gdata.youtube.uploads.metadata:
 
@@ -389,9 +356,7 @@ In order to upload a video directly, you must first construct a new `Zend_Gdata_
    |Developer Tags|mydevelopertag, anotherdevelopertag|
    +--------------+-----------------------------------+
 
-
 The code below creates a blank `Zend_Gdata_YouTube_VideoEntry`_ to be uploaded. A `Zend_Gdata_App_MediaFileSource`_ object is then used to hold the actual video file. Under the hood, the `Zend_Gdata_YouTube_Extension_MediaGroup`_ object is used to hold all of the video's meta-data. Our helper methods detailed below allow you to just set the video meta-data without having to worry about the media group object. The $uploadUrl is the location where the new entry gets posted to. This can be specified either with the $userName of the currently authenticated user, or, alternatively, you can simply use the string 'default' to refer to the currently authenticated user.
-
 
 .. _zend.gdata.youtube.uploads.example:
 
@@ -449,14 +414,12 @@ The code below creates a blank `Zend_Gdata_YouTube_VideoEntry`_ to be uploaded. 
 
 To upload a video as private, simply use: $myVideoEntry->setVideoPrivate(); prior to performing the upload. $videoEntry->isVideoPrivate() can be used to check whether a video entry is private or not.
 
-
 .. _zend.gdata.youtube.uploads.browser:
 
 Browser-based upload
 --------------------
 
 Browser-based uploading is performed almost identically to direct uploading, except that you do not attach a `Zend_Gdata_App_MediaFileSource`_ object to the `Zend_Gdata_YouTube_VideoEntry`_ you are constructing. Instead you simply submit all of your video's meta-data to receive back a token element which can be used to construct an *HTML* upload form.
-
 
 .. _zend.gdata.youtube.uploads.browser.example-1:
 
@@ -482,7 +445,6 @@ Browser-based uploading is performed almost identically to direct uploading, exc
 
 The above code prints out a link and a token that is used to construct an *HTML* form to display in the user's browser. A simple example form is shown below with $tokenValue representing the content of the returned token element, as shown being retrieved from $myVideoEntry above. In order for the user to be redirected to your website after submitting the form, make sure to append a $nextUrl parameter to the $postUrl above, which functions in the same way as the $next parameter of an AuthSub link. The only difference is that here, instead of a single-use token, a status and an id variable are returned in the *URL*.
 
-
 .. _zend.gdata.youtube.uploads.browser.example-2:
 
 .. rubric:: Browser-based upload: Creating the HTML form
@@ -500,14 +462,12 @@ The above code prints out a link and a token that is used to construct an *HTML*
            '<input value="Upload Video File" type="submit" />'.
            '</form>';
 
-
 .. _zend.gdata.youtube.uploads.status:
 
 Checking upload status
 ----------------------
 
 After uploading a video, it will immediately be visible in an authenticated user's uploads feed. However, it will not be public on the site until it has been processed. Videos that have been rejected or failed to upload successfully will also only be in the authenticated user's uploads feed. The following code checks the status of a `Zend_Gdata_YouTube_VideoEntry`_ to see if it is not live yet or if it has been rejected.
-
 
 .. _zend.gdata.youtube.uploads.status.example:
 
@@ -537,7 +497,6 @@ After uploading a video, it will immediately be visible in an authenticated user
            }
        }
    }
-
 
 .. _zend.gdata.youtube.other:
 

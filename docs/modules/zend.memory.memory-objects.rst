@@ -1,9 +1,7 @@
-
 .. _zend.memory.memory-objects:
 
 Memory Objects
 ==============
-
 
 .. _zend.memory.memory-objects.movable:
 
@@ -18,7 +16,6 @@ Create movable memory objects using the ``create([$data])`` method of the memory
    $memObject = $memoryManager->create($data);
 
 "Movable" means that such objects may be swapped and unloaded from memory and then loaded when application code accesses the object.
-
 
 .. _zend.memory.memory-objects.locked:
 
@@ -41,7 +38,6 @@ It's useful if an application or developer can decide, that some objects should 
 Access to locked objects is faster, because the memory manager doesn't need to track changes for these objects.
 
 The locked objects class (``Zend_Memory_Container_Locked``) guarantees virtually the same performance as working with a string variable. The overhead is a single dereference to get the class property.
-
 
 .. _zend.memory.memory-objects.value:
 
@@ -67,14 +63,12 @@ Use the memory container (movable or locked) '``value``' property to operate wit
 
 An alternative way to access memory object data is to use the :ref:`getRef() <zend.memory.memory-objects.api.getRef>` method. This method **must** be used for *PHP* versions before 5.2. It also may have to be used in some other cases for performance reasons.
 
-
 .. _zend.memory.memory-objects.api:
 
 Memory container interface
 --------------------------
 
 Memory container provides the following methods:
-
 
 .. _zend.memory.memory-objects.api.getRef:
 
@@ -106,7 +100,6 @@ Tracking changes to data needs additional resources. The ``getRef()`` method ret
        ...
    }
 
-
 .. _zend.memory.memory-objects.api.touch:
 
 touch() method
@@ -136,7 +129,6 @@ The ``touch()`` method should be used in common with ``getRef()``. It signals th
    }
 
    $memObject->touch();
-
 
 .. _zend.memory.memory-objects.api.lock:
 
@@ -173,7 +165,6 @@ Locking objects in memory also guarantees that reference returned by the ``getRe
    $memObject1->unlock();
    $memObject2->unlock();
 
-
 .. _zend.memory.memory-objects.api.unlock:
 
 unlock() method
@@ -185,7 +176,6 @@ unlock() method
    public function unlock();
 
 ``unlock()`` method unlocks object when it's no longer necessary to be locked. See the example above.
-
 
 .. _zend.memory.memory-objects.api.isLocked:
 

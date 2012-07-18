@@ -1,4 +1,3 @@
-
 .. _learning.lucene.index-structure:
 
 Lucene Index Structure

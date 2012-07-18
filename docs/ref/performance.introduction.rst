@@ -1,4 +1,3 @@
-
 .. _performance.introduction:
 
 Introduction

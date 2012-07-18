@@ -1,4 +1,3 @@
-
 .. _zend.ldap.api.reference.zend-ldap-converter-converter:
 
 Zend\\Ldap\\Converter\\Converter
@@ -9,45 +8,34 @@ Zend\\Ldap\\Converter\\Converter
 **string**
    No conversion will be done.
 
-
 **integer and float**
    The value will be converted to a string.
-
 
 **boolean**
    ``TRUE`` will be converted to **'TRUE'** and ``FALSE`` to **'FALSE'**
 
-
 **object and array**
    The value will be converted to a string by using ``serialize()``.
-
 
 **Date/Time**
    The value will be converted to a string with the following ``date()`` format *YmdHisO*, UTC timezone (+0000) will be replaced with a *Z*. For example *01-30-2011 01:17:32 PM GMT-6* will be *20113001131732-0600* and *30-01-2012 15:17:32 UTC* will be *20120130151732Z*
 
-
 **resource**
    If a *stream* resource is given, the data will be fetched by calling ``stream_get_contents()``.
 
-
 **others**
    All other data types (namely non-stream resources) will be omitted.
-
 
 On reading values the following conversion will take place:
 
 **'TRUE'**
    Converted to ``TRUE``.
 
-
 **'FALSE'**
    Converted to ``FALSE``.
 
-
 **others**
    All other strings won't be automatically converted and are passed as they are.
-
-
 
 .. _zend.ldap.api.reference.zend-ldap-converter-converter.table:
 
@@ -76,6 +64,5 @@ On reading values the following conversion will take place:
    +-------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |mixed fromLdapUnserialize(string $value)                                 |The value will be converted from a string by using unserialize().                                                                                                                                                                                                                                                     |
    +-------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 
 

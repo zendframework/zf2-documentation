@@ -1,4 +1,3 @@
-
 .. _zend.service.amazon.ec2.elasticip:
 
 Zend_Service_Amazon_Ec2: Elastic IP Addresses
@@ -9,7 +8,6 @@ By default, all Amazon EC2 instances are assigned two IP addresses at launch: a 
 If you use dynamic DNS to map an existing DNS name to a new instance's public IP address, it might take up to 24 hours for the IP address to propagate through the Internet. As a result, new instances might not receive traffic while terminated instances continue to receive requests.
 
 To solve this problem, Amazon EC2 provides elastic IP addresses. Elastic IP addresses are static IP addresses designed for dynamic cloud computing. Elastic IP addresses are associated with your account, not specific instances. Any elastic IP addresses that you associate with your account remain associated with your account until you explicitly release them. Unlike traditional static IP addresses, however, elastic IP addresses allow you to mask instance or Availability Zone failures by rapidly remapping your public IP addresses to any instance in your account.
-
 
 .. _zend.service.amazon.ec2.elasticip.allocate:
 
@@ -27,7 +25,6 @@ To solve this problem, Amazon EC2 provides elastic IP addresses. Elastic IP addr
 
    // print out your newly allocated elastic ip address;
    print $ip;
-
 
 .. _zend.service.amazon.ec2.elasticip.describe:
 
@@ -50,7 +47,6 @@ To solve this problem, Amazon EC2 provides elastic IP addresses. Elastic IP addr
    // describe a single ip address
    $ip = $ec2_eip->describe('ip1');
 
-
 .. _zend.service.amazon.ec2.elasticip.release:
 
 .. rubric:: Releasing Elastic IP
@@ -65,7 +61,6 @@ Returns a boolean ``TRUE`` or ``FALSE``.
    $ec2_eip = new Zend_Service_Amazon_Ec2_Elasticip('aws_key','aws_secret_key');
    $ec2_eip->release('ipaddress');
 
-
 .. _zend.service.amazon.ec2.elasticip.associate:
 
 .. rubric:: Associates an Elastic IP to an Instance
@@ -79,7 +74,6 @@ Returns a boolean ``TRUE`` or ``FALSE``.
 
    $ec2_eip = new Zend_Service_Amazon_Ec2_Elasticip('aws_key','aws_secret_key');
    $ec2_eip->associate('instance_id', 'ipaddress');
-
 
 .. _zend.service.amazon.ec2.elasticip.disassociate:
 

@@ -1,4 +1,3 @@
-
 .. _zend.feed.findFeeds:
 
 Retrieving Feeds from Web Pages

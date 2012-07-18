@@ -1,4 +1,3 @@
-
 .. _zend.ldap.api.reference.zend-ldap-dn:
 
 Zend\\Ldap\\Dn
@@ -9,19 +8,15 @@ Zend\\Ldap\\Dn
 **Zend\Ldap\Dn::ATTR_CASEFOLD_NONE**
    No case-folding will be done.
 
-
 **Zend\Ldap\Dn::ATTR_CASEFOLD_UPPER**
    All attributes will be converted to upper-case.
-
 
 **Zend\Ldap\Dn::ATTR_CASEFOLD_LOWER**
    All attributes will be converted to lower-case.
 
-
 The default case-folding is ``Zend\Ldap\Dn::ATTR_CASEFOLD_NONE`` and can be set with ``Zend\Ldap\Dn::setDefaultCaseFold()``. Each instance of ``Zend\Ldap\Dn`` can have its own case-folding-setting. If the ``$caseFold`` parameter is omitted in method-calls it defaults to the instance's case-folding setting.
 
 The class implements *ArrayAccess* to allow indexer-access to the different parts of the DN. The *ArrayAccess*-methods proxy to ``Zend\Ldap\Dn::get($offset, 1, null)`` for *offsetGet(integer $offset)*, to ``Zend\Ldap\Dn::set($offset, $value)`` for ``offsetSet()`` and to ``Zend\Ldap\Dn::remove($offset, 1)`` for ``offsetUnset()``. ``offsetExists()`` simply checks if the index is within the bounds.
-
 
 .. _zend.ldap.api.reference.zend-ldap-dn.table:
 
@@ -78,6 +73,5 @@ The class implements *ArrayAccess* to allow indexer-access to the different part
    +----------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |boolean isChildOf(string|Zend\\Ldap\\Dn $childDn, string|Zend\\Ldap\\Dn $parentDn)|Checks if given $childDn is beneath $parentDn subtree.                                                                                                                                                                                                                                                                                                                                     |
    +----------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 
 

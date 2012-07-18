@@ -1,9 +1,7 @@
-
 .. _zend.rest.client:
 
 Zend_Rest_Client
 ================
-
 
 .. _zend.rest.client.introduction:
 
@@ -11,7 +9,6 @@ Introduction
 ------------
 
 Using the ``Zend_Rest_Client`` is very similar to using *SoapClient* objects (`SOAP web service extension`_). You can simply call the REST service procedures as ``Zend_Rest_Client`` methods. Specify the service's full address in the ``Zend_Rest_Client`` constructor.
-
 
 .. _zend.rest.client.introduction.example-1:
 
@@ -28,18 +25,16 @@ Using the ``Zend_Rest_Client`` is very similar to using *SoapClient* objects (`S
    echo $client->sayHello('Davey', 'Day')->get(); // "Hello Davey, Good Day"
 
 .. note::
+
    **Differences in calling**
 
    ``Zend_Rest_Client`` attempts to make remote methods look as much like native methods as possible, the only difference being that you must follow the method call with one of either ``get()``, ``post()``, ``put()`` or ``delete()``. This call may be made via method chaining or in separate method calls:
-
 
    .. code-block:: php
       :linenos:
 
       $client->sayHello('Davey', 'Day');
       echo $client->get();
-
-
 
 .. _zend.rest.client.return:
 
@@ -49,7 +44,6 @@ Responses
 All requests made using ``Zend_Rest_Client`` return a ``Zend_Rest_Client_Response`` object. This object has many properties that make it easier to access the results.
 
 When the service is based on ``Zend_Rest_Server``, ``Zend_Rest_Client`` can make several assumptions about the response, including response status (success or failure) and return type.
-
 
 .. _zend.rest.client.return.example-1:
 
@@ -68,7 +62,6 @@ In the example above, you can see that we use the request result as an object, t
 
 If however, you wish to query a service not using ``Zend_Rest_Server`` the ``Zend_Rest_Client_Response`` object will behave more like a *SimpleXMLElement*. However, to make things easier, it will automatically query the *XML* using XPath if the property is not a direct descendant of the document root element. Additionally, if you access a property as a method, you will receive the *PHP* value for the object, or an array of *PHP* value results.
 
-
 .. _zend.rest.client.return.example-2:
 
 .. rubric:: Using Technorati's Rest Service
@@ -81,7 +74,6 @@ If however, you wish to query a service not using ``Zend_Rest_Server`` the ``Zen
    $technorati->url('http://pixelated-dreams.com');
    $result = $technorati->get();
    echo $result->firstname() .' '. $result->lastname();
-
 
 .. _zend.rest.client.return.example-3:
 
@@ -126,11 +118,10 @@ If however, you wish to query a service not using ``Zend_Rest_Server`` the ``Zen
 Here we are accessing the *firstname* and *lastname* properties. Even though these are not top-level elements, they are automatically returned when accessed by name.
 
 .. note::
+
    **Multiple items**
 
    If multiple items are found when accessing a value by name, an array of SimpleXMLElements will be returned; accessing via method notation will return an array of *PHP* values.
-
-
 
 .. _zend.rest.client.args:
 
@@ -138,7 +129,6 @@ Request Arguments
 -----------------
 
 Unless you are making a request to a ``Zend_Rest_Server`` based service, chances are you will need to send multiple arguments with your request. This is done by calling a method with the name of the argument, passing in the value as the first (and only) argument. Each of these method calls returns the object itself, allowing for chaining, or "fluent" usage. The first call, or the first argument if you pass in more than one argument, is always assumed to be the method when calling a ``Zend_Rest_Server`` service.
-
 
 .. _zend.rest.client.args.example-1:
 
@@ -162,10 +152,10 @@ Both of the methods in the example above, will result in the following get args:
 You will notice that the first call of *$client->arg('value1');* resulted in both *method=arg&arg1=value1* and *arg=value1*; this is so that ``Zend_Rest_Server`` can understand the request properly, rather than requiring pre-existing knowledge of the service.
 
 .. warning::
+
    **Strictness of Zend_Rest_Client**
 
    Any REST service that is strict about the arguments it receives will likely fail using ``Zend_Rest_Client``, because of the behavior described above. This is not a common practice and should not cause problems.
-
 
 
 

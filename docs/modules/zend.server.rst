@@ -1,4 +1,3 @@
-
 .. _zend.server.introduction:
 
 Introduction

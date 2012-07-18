@@ -1,4 +1,3 @@
-
 .. _zend.mvc.mvc-event:
 
 The MvcEvent

@@ -1,11 +1,9 @@
-
 .. _zend.validator.set.notempty:
 
 NotEmpty
 ========
 
 This validator allows you to validate if a given value is not empty. This is often useful when working with form elements or other user input, where you can use it to ensure required elements have values associated with them.
-
 
 .. _zend.validator.set.notempty.options:
 
@@ -15,7 +13,6 @@ Supported options for Zend\\Validator\\NotEmpty
 The following options are supported for ``Zend\Validator\NotEmpty``:
 
 - **type**: Sets the type of validation which will be processed. For details take a look into :ref:`this section <zend.validator.set.notempty.types>`.
-
 
 .. _zend.validator.set.notempty.default:
 
@@ -33,11 +30,10 @@ By default, this validator works differently than you would expect when you've w
    // returns false
 
 .. note::
+
    **Default behaviour differs from PHP**
 
    Without providing configuration, ``Zend\Validator\NotEmpty``'s behaviour differs from *PHP*.
-
-
 
 .. _zend.validator.set.notempty.types:
 

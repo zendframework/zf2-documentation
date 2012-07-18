@@ -1,11 +1,9 @@
-
 .. _zend.i18n.filter.alnum:
 
 Alnum Filter
 ============
 
 The ``Alnum`` filter can be used to return only alphabetic characters and digits in the unicode "letter" and "number" categories, respectively. All other characters are supressed.
-
 
 .. _zend.i18n.filter.alnum.options:
 
@@ -19,12 +17,9 @@ The following options are supported for ``Alnum``:
 
   Methods for getting/setting the allowWhiteSpace option are also available: ``getAllowWhiteSpace()`` and ``setAllowWhiteSpace()``
 
-
 - ``$locale``: The locale string used in identifying the characters to filter (locale name, e.g. en_US). If unset, it will use the default locale (``Locale::getDefault()``).
 
   Methods for getting/setting the locale are also available: ``getLocale()`` and ``setLocale()``
-
-
 
 .. _zend.i18n.filter.alnum.usage:
 
@@ -44,7 +39,7 @@ The following options are supported for ``Alnum``:
    // Returns "This is my content 123"
 
 .. note::
-   Note: ``Alnum`` works on almost all languages, except: Chinese, Japanese and Korean. Within these languages the english alphabet is used instead of the characters from these languages. The language itself is detected using the ``Locale``.
 
+   Note: ``Alnum`` works on almost all languages, except: Chinese, Japanese and Korean. Within these languages the english alphabet is used instead of the characters from these languages. The language itself is detected using the ``Locale``.
 
 

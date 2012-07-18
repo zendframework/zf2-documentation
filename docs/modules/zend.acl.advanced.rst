@@ -1,9 +1,7 @@
-
 .. _zend.acl.advanced:
 
 Advanced Usage
 ==============
-
 
 .. _zend.acl.advanced.storing:
 
@@ -13,7 +11,6 @@ Storing ACL Data for Persistence
 The ``Zend\Acl`` component was designed in such a way that it does not require any particular backend technology such as a database or cache server for storage of the *ACL* data. Its complete *PHP* implementation enables customized administration tools to be built upon ``Zend\Acl\Acl`` with relative ease and flexibility. Many situations require some form of interactive maintenance of the *ACL*, and ``Zend\Acl\Acl`` provides methods for setting up, and querying against, the access controls of an application.
 
 Storage of *ACL* data is therefore left as a task for the developer, since use cases are expected to vary widely for various situations. Because ``Zend\Acl\Acl`` is serializable, *ACL* objects may be serialized with *PHP*'s `serialize()`_ function, and the results may be stored anywhere the developer should desire, such as a file, database, or caching mechanism.
-
 
 .. _zend.acl.advanced.assertions:
 

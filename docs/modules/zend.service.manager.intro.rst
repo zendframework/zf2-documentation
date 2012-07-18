@@ -1,4 +1,3 @@
-
 .. _zend.service-manager.intro:
 
 Zend\\ServiceManager

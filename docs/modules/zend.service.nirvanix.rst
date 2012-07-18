@@ -1,9 +1,7 @@
-
 .. _zend.service.nirvanix:
 
 Zend_Service_Nirvanix
 =====================
-
 
 .. _zend.service.nirvanix.introduction:
 
@@ -11,7 +9,6 @@ Introduction
 ------------
 
 Nirvanix provides an Internet Media File System (IMFS), an Internet storage service that allows applications to upload, store and organize files and subsequently access them using a standard Web Services interface. An IMFS is distributed clustered file system, accessed over the Internet, and optimized for dealing with media files (audio, video, etc). The goal of an IMFS is to provide massive scalability to deal with the challenges of media storage growth, with guaranteed access and availability regardless of time and location. Finally, an IMFS gives applications the ability to access data securely, without the large fixed costs associated with acquiring and maintaining physical storage assets.
-
 
 .. _zend.service.nirvanix.registering:
 
@@ -21,7 +18,6 @@ Registering with Nirvanix
 Before you can get started with ``Zend_Service_Nirvanix``, you must first register for an account. Please see the `Getting Started`_ page on the Nirvanix website for more information.
 
 After registering, you will receive a Username, Password, and Application Key. All three are required to use ``Zend_Service_Nirvanix``.
-
 
 .. _zend.service.nirvanix.apiDocumentation:
 
@@ -33,7 +29,6 @@ Access to the Nirvanix IMFS is available through both *SOAP* and a faster REST s
 ``Zend_Service_Nirvanix`` aims to make using the Nirvanix REST service easier but understanding the service itself is still essential to be successful with Nirvanix.
 
 The `Nirvanix API Documentation`_ provides an overview as well as detailed information using the service. Please familiarize yourself with this document and refer back to it as you use ``Zend_Service_Nirvanix``.
-
 
 .. _zend.service.nirvanix.features:
 
@@ -51,7 +46,6 @@ Nirvanix's REST service can be used effectively with *PHP* using the `SimpleXML`
 - A response wrapper that parses each response body and throws an exception if an error occurred, alleviating the need to repeatedly check the success of many commands.
 
 - Additional convenience methods for some of the more common operations.
-
 
 
 
@@ -84,7 +78,6 @@ Nirvanix divides its web services into `namespaces`_. Each namespace encapsulate
 
 After you have a proxy for the namespace you want to use, call methods on it. The proxy will allow you to use any command available on the REST *API*. The proxy may also make convenience methods available, which wrap web service commands. The example above shows using the IMFS convenience methods to create a new file, retrieve and display that file, and finally delete the file.
 
-
 .. _zend.service.nirvanix.understanding-proxy:
 
 Understanding the Proxy
@@ -116,7 +109,6 @@ Above, a proxy for the ``IMFS`` namespace is created. A method, ``renameFile()``
 Notice in the Nirvanix *API* documentation that *sessionToken* is required for this method but we did not give it to the proxy object. It is added automatically for your convenience.
 
 The result of this operation will either be a ``Zend_Service_Nirvanix_Response`` object wrapping the *XML* returned by Nirvanix, or a ``Zend_Service_Nirvanix_Exception`` if an error occurred.
-
 
 .. _zend.service.nirvanix.examining-results:
 
@@ -155,7 +147,6 @@ The simplest way to examine a result from the service is to use the built-in *PH
 You can access any property or method of the decorated *SimpleXMLElement*. In the above example, *$result->BytesUploaded* could be used to see the number of bytes received. Should you want to access the *SimpleXMLElement* directly, just use *$result->getSxml()*.
 
 The most common response from Nirvanix is success (*ResponseCode* of zero). It is not normally necessary to check *ResponseCode* because any non-zero result will throw a ``Zend_Service_Nirvanix_Exception``. See the next section on handling errors.
-
 
 .. _zend.service.nirvanix.handling-errors:
 

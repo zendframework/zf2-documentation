@@ -1,4 +1,3 @@
-
 .. _zend.authentication.introduction:
 
 Introduction
@@ -9,9 +8,8 @@ The ``Zend\Authentication`` component provides an *API* for authentication and i
 ``Zend\Authentication`` is concerned only with **authentication** and not with **authorization**. Authentication is loosely defined as determining whether an entity actually is what it purports to be (i.e., identification), based on some set of credentials. Authorization, the process of deciding whether to allow an entity access to, or to perform operations upon, other entities is outside the scope of ``Zend\Authentication``. For more information about authorization and access control with Zend Framework, please see the :ref:`Zend\\Acl <zend.acl>` component.
 
 .. note::
+
    There is no ``Zend\Authentication\Authentication`` class, instead the class ``Zend\Authentication\AuthenticationService`` is provided. This class uses underlying authentication adapters and persistent storage backends.
-
-
 
 .. _zend.authentication.introduction.adapters:
 
@@ -55,7 +53,6 @@ The following is an example authentication adapter that requires a username and 
    }
 
 As indicated in its docblock, ``authenticate()`` must return an instance of ``Zend\Authentication\Result`` (or of a class derived from ``Zend\Authentication\Result``). If for some reason performing an authentication query is impossible, ``authenticate()`` should throw an exception that derives from ``Zend\Authentication\Adapter\Exception\ExceptionInterface``.
-
 
 .. _zend.authentication.introduction.results:
 
@@ -113,7 +110,6 @@ The following example illustrates how a developer may branch on the result code:
            break;
    }
 
-
 .. _zend.authentication.introduction.persistence:
 
 Identity Persistence
@@ -123,7 +119,6 @@ Authenticating a request that includes authentication credentials is useful per 
 
 *HTTP* is a stateless protocol, however, and techniques such as cookies and sessions have been developed in order to facilitate maintaining state across multiple requests in server-side web applications.
 
-
 .. _zend.authentication.introduction.persistence.default:
 
 Default Persistence in the PHP Session
@@ -132,9 +127,8 @@ Default Persistence in the PHP Session
 By default, ``Zend\Authentication`` provides persistent storage of the identity from a successful authentication attempt using the *PHP* session. Upon a successful authentication attempt, ``Zend\Authentication\AuthenticationService::authenticate()`` stores the identity from the authentication result into persistent storage. Unless specified otherwise, ``Zend\Authentication\AuthenticationService`` uses a storage class named ``Zend\Authentication\Storage\Session``, which, in turn, uses :ref:`Zend\\Session <zend.session>`. A custom class may instead be used by providing an object that implements ``Zend\Authentication\Storage\StorageInterface`` to ``Zend\Authentication\AuthenticationService::setStorage()``.
 
 .. note::
+
    If automatic persistent storage of the identity is not appropriate for a particular use case, then developers may forgot using the ``Zend\Authentication\AuthenticationService`` class altogether, instead using an adapter class directly.
-
-
 
 .. _zend.authentication.introduction.persistence.default.example:
 
@@ -161,14 +155,12 @@ By default, ``Zend\Authentication`` provides persistent storage of the identity 
    // success
    $result = $auth->authenticate($authAdapter);
 
-
 .. _zend.authentication.introduction.persistence.custom:
 
 Implementing Customized Storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sometimes developers may need to use a different identity storage mechanism than that provided by ``Zend\Authentication\Storage\Session``. For such cases developers may simply implement ``Zend\Authentication\Storage\StorageInterface`` and supply an instance of the class to ``Zend\Authentication\AuthenticationService::setStorage()``.
-
 
 .. _zend.authentication.introduction.persistence.custom.example:
 
@@ -266,7 +258,6 @@ In order to use this custom storage class, ``Zend\Authentication\AuthenticationS
    // Authenticate, saving the result, and persisting the identity on
    // success
    $result = $auth->authenticate($authAdapter);
-
 
 .. _zend.authentication.introduction.using:
 

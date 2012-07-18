@@ -1,4 +1,3 @@
-
 .. _zend.view.helpers.initial.headmeta:
 
 HeadMeta Helper
@@ -43,7 +42,6 @@ You may also set meta tags using the ``headMeta()`` helper method, which has the
 ``HeadMeta`` overrides each of ``append()``, ``offsetSet()``, ``prepend()``, and ``set()`` to enforce usage of the special methods as listed above. Internally, it stores each item as a ``stdClass`` token, which it later serializes using the ``itemToString()`` method. This allows you to perform checks on the items in the stack, and optionally modify these items by simply modifying the object returned.
 
 The ``HeadMeta`` helper is a concrete implementation of the :ref:`Placeholder helper <zend.view.helpers.initial.placeholder>`.
-
 
 .. _zend.view.helpers.initial.headmeta.basicusage:
 
@@ -103,7 +101,6 @@ When you're ready to place your meta tags in the layout, simply echo the helper:
    :linenos:
 
    <?php echo $this->headMeta() ?>
-
 
 .. _zend.view.helpers.initial.headmeta.property:
 

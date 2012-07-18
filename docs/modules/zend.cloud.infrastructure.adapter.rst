@@ -1,9 +1,7 @@
-
 .. _zend.cloud.infrastructure.adapter:
 
 Zend\\Cloud\\Infrastructure\\Adapter
 ====================================
-
 
 .. _zend.cloud.infrastructure.adapter.intro:
 
@@ -15,7 +13,6 @@ The ``Zend\Cloud\Infrastructure`` supports the following adapters:
 - `Amazon EC2`_;
 
 - `Rackspace Cloud Servers`_.
-
 
 .. _zend.cloud.infrastructure.adapter.ec2:
 
@@ -73,7 +70,6 @@ The monitor an instance of AMAZON EC2 you can use the starting time and ending t
    print_r($cpuUsage);
 
 The **instanceType** parameter is optional. This parameter specify the type of the instance to create (for instance, 't1.micro').
-
 
 .. _zend.cloud.infrastructure.adapter.rackspace:
 

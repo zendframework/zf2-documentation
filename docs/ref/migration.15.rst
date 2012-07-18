@@ -1,11 +1,9 @@
-
 .. _migration.15:
 
 Zend Framework 1.5
 ==================
 
 When upgrading from a previous release to Zend Framework 1.5 or higher you should note the following migration notes.
-
 
 .. _migration.15.zend.controller:
 
@@ -40,12 +38,9 @@ If you find that you were relying on this "feature", you have several options:
          'StringToLower'
      ));
 
-
   The above code will modify the inflector to no longer separate the words with dash; you may also want to remove the 'StringToLower' filter if you **do** want the actual view script names camelCased as well.
 
-
   If renaming your view scripts would be too tedious or time consuming, this is your best option until you can find the time to do so.
-
 
 - Least desirable option: You can force the dispatcher to dispatch camelCased action names with a new front controller flag, ``useCaseSensitiveActions``:
 
@@ -54,11 +49,8 @@ If you find that you were relying on this "feature", you have several options:
 
      $front->setParam('useCaseSensitiveActions', true);
 
-
   This will allow you to use camelCasing on the url and still have it resolve to the same action as when you use word separators. However, this will mean that the original issues will cascade on through; you will likely need to use the second option above in addition to this for things to work at all reliably.
 
-
   Note, also, that usage of this flag will raise a notice that this usage is deprecated.
-
 
 

@@ -1,4 +1,3 @@
-
 .. _zend.captcha.introduction:
 
 Introduction

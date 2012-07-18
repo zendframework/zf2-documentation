@@ -1,4 +1,3 @@
-
 .. _zend.gdata.photos:
 
 Using Picasa Web Albums
@@ -11,11 +10,10 @@ Access to public albums and photos is not restricted by account, however, a user
 For more information on the *API*, including instructions for enabling *API* access, refer to the `Picasa Web Albums Data API Overview`_.
 
 .. note::
+
    **Authentication**
 
    The *API* provides authentication via AuthSub (recommended) and ClientAuth. *HTTP* connections must be authenticated for write support, but non-authenticated connections have read-only access.
-
-
 
 .. _zend.gdata.photos.connecting:
 
@@ -25,7 +23,6 @@ Connecting To The Service
 The Picasa Web Albums *API*, like all GData *API*\ s, is based off of the Atom Publishing Protocol (APP), an *XML* based format for managing web-based resources. Traffic between a client and the servers occurs over *HTTP* and allows for both authenticated and unauthenticated connections.
 
 Before any transactions can occur, this connection needs to be made. Creating a connection to the Picasa servers involves two steps: creating an *HTTP* client and binding a ``Zend_Gdata_Photos`` service instance to that client.
-
 
 .. _zend.gdata.photos.connecting.authentication:
 
@@ -39,7 +36,6 @@ The Google Picasa *API* allows access to both public and private photo feeds. Pu
 - **AuthSub** allows authentication to the Picasa servers via a Google proxy server. This provides the same level of convenience as ClientAuth but without the security risk, making this an ideal choice for web-based applications.
 
 The ``Zend_Gdata`` library provides support for both authentication schemes. The rest of this chapter will assume that you are familiar the authentication schemes available and how to create an appropriate authenticated connection. For more information, please see section the :ref:`Authentication section <zend.gdata.introduction.authentication>` of this manual or the `Authentication Overview in the Google Data API Developer's Guide`_.
-
 
 .. _zend.gdata.photos.connecting.service:
 
@@ -165,7 +161,6 @@ Finally, an unauthenticated server can be created for use with public feeds:
    // Create an instance of the service using an unauthenticated HTTP client
    $service = new Zend_Gdata_Photos();
 
-
 .. _zend.gdata.photos.queries:
 
 Understanding and Constructing Queries
@@ -215,14 +210,12 @@ for each query, a number of parameters limiting the search can be requested, or 
 
 - **PhotoId** sets the id of the photo being searched for. This element only applies to photo queries.
 
-
 .. _zend.gdata.photos.retrieval:
 
 Retrieving Feeds And Entries
 ----------------------------
 
 The service has functions to retrieve a feed, or individual entries, for users, albums, and individual photos.
-
 
 .. _zend.gdata.photos.user_retrieval:
 
@@ -283,7 +276,6 @@ Constructing a query also provides the ability to request a user entry object:
        echo "Error: " . $e->getMessage();
    }
 
-
 .. _zend.gdata.photos.album_retrieval:
 
 Retrieving An Album
@@ -331,7 +323,6 @@ Constructing a query also provides the ability to request an album entry object:
    } catch (Zend_Gdata_App_Exception $e) {
        echo "Error: " . $e->getMessage();
    }
-
 
 .. _zend.gdata.photos.photo_retrieval:
 
@@ -381,7 +372,6 @@ Constructing a query also provides the ability to request a photo entry object:
        echo "Error: " . $e->getMessage();
    }
 
-
 .. _zend.gdata.photos.comment_retrieval:
 
 Retrieving A Comment
@@ -415,7 +405,6 @@ Performing an action on each of the comments on a given photo can be accomplishe
    } catch (Zend_Gdata_App_Exception $e) {
        echo "Error: " . $e->getMessage();
    }
-
 
 .. _zend.gdata.photos.tag_retrieval:
 
@@ -451,14 +440,12 @@ Performing an action on each of the tags on a given photo can be accomplished as
        echo "Error: " . $e->getMessage();
    }
 
-
 .. _zend.gdata.photos.creation:
 
 Creating Entries
 ----------------
 
 The service has functions to create albums, photos, comments, and tags.
-
 
 .. _zend.gdata.photos.album_creation:
 
@@ -478,7 +465,6 @@ The service supports creating a new album for an authenticated user:
    $entry->setTitle($service->newTitle("test album"));
 
    $service->insertAlbumEntry($entry);
-
 
 .. _zend.gdata.photos.photo_creation:
 
@@ -511,7 +497,6 @@ The service supports creating a new photo for an authenticated user:
 
    $service->insertPhotoEntry($entry, $albumEntry);
 
-
 .. _zend.gdata.photos.comment_creation:
 
 Creating A Comment
@@ -540,7 +525,6 @@ The service supports creating a new comment for a photo:
 
    $service->insertCommentEntry($entry, $photoEntry);
 
-
 .. _zend.gdata.photos.tag_creation:
 
 Creating A Tag
@@ -568,14 +552,12 @@ The service supports creating a new tag for a photo:
 
    $service->insertTagEntry($entry, $photoEntry);
 
-
 .. _zend.gdata.photos.deletion:
 
 Deleting Entries
 ----------------
 
 The service has functions to delete albums, photos, comments, and tags.
-
 
 .. _zend.gdata.photos.album_deletion:
 
@@ -600,7 +582,6 @@ The service supports deleting an album for an authenticated user:
 
    $service->deleteAlbumEntry($entry, true);
 
-
 .. _zend.gdata.photos.photo_deletion:
 
 Deleting A Photo
@@ -624,7 +605,6 @@ The service supports deleting a photo for an authenticated user:
    $entry = $service->getPhotoEntry($photoQuery);
 
    $service->deletePhotoEntry($entry, true);
-
 
 .. _zend.gdata.photos.comment_deletion:
 
@@ -651,7 +631,6 @@ The service supports deleting a comment for an authenticated user:
    $entry = $service->getCommentEntry($path);
 
    $service->deleteCommentEntry($entry, true);
-
 
 .. _zend.gdata.photos.tag_deletion:
 
@@ -685,7 +664,6 @@ The service supports deleting a tag for an authenticated user:
    }
 
    $service->deleteTagEntry($tagEntry, true);
-
 
 .. _zend.gdata.photos.optimistic_concurrenty:
 

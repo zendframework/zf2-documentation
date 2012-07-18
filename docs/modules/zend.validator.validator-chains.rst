@@ -1,4 +1,3 @@
-
 .. _zend.validator.validator_chains:
 
 Validator Chains

@@ -1,11 +1,9 @@
-
 .. _zend.ldap.api.reference.zend-ldap-node:
 
 Zend\\Ldap\\Node
 ================
 
 ``Zend\Ldap\Node`` includes the magic property accessors ``__set()``, ``__get()``, ``__unset()`` and ``__isset()`` to access the attributes by their name. They proxy to ``Zend\Ldap\Node::setAttribute()``, ``Zend\Ldap\Node::getAttribute()``, ``Zend\Ldap\Node::deleteAttribute()`` and ``Zend\Ldap\Node::existsAttribute()`` respectively. Furthermore the class implements *ArrayAccess* for array-style-access to the attributes. ``Zend\Ldap\Node`` also implements *Iterator* and *RecursiveIterator* to allow for recursive tree-traversal.
-
 
 .. _zend.ldap.api.reference.zend-ldap-node.table:
 
@@ -124,6 +122,5 @@ Zend\\Ldap\\Node
    +---------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Zend\\Ldap\\Node getParent(Zend\\Ldap\\Ldap $ldap)                                                                         |Returns the parent of the current node using the LDAP connection $ldap (uses the current LDAP connection if omitted).                                                                                                                                                                                                                        |
    +---------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 
 

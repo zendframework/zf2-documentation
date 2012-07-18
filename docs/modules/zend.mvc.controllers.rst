@@ -1,4 +1,3 @@
-
 .. _zend.mvc.controllers:
 
 Available Controllers
@@ -25,12 +24,10 @@ While this pattern is simple enough, chances are you don't want to implement cus
 
 The MVC also defines several interfaces that, when implemented, can provide controllers with additional capabilities.
 
-
 .. _zend.mvc.controllers.interfaces:
 
 Common Interfaces Used With Controllers
 ---------------------------------------
-
 
 .. _zend.mvc.controllers.interfaces.inject-application-event:
 
@@ -65,7 +62,6 @@ The ``InjectApplicationEventInterface`` defines simply two methods:
    public function setEvent(Event $event);
    public function getEvent($event);
 
-
 .. _zend.mvc.controllers.interfaces.service-manager-aware:
 
 ServiceManagerAware
@@ -84,7 +80,6 @@ The ``ServiceManagerAwareInterface`` interface hints to the ``ServiceManager`` t
    use Zend\ServiceManager\ServiceManagerAwareInterface;
 
    public function setServiceManager(ServiceManager $serviceManager);
-
 
 .. _zend.mvc.controllers.interfaces.event-manager-aware:
 
@@ -105,7 +100,6 @@ Combined, you define two methods. The first, a setter, should also set any ``Eve
 
    public function setEventManager(EventManagerInterface $events);
    public function getEventManager();
-
 
 .. _zend.mvc.controllers.interfaces.pluggable:
 
@@ -151,7 +145,6 @@ To facilitate these actions while also making them available to alternate contro
        return $this->getBroker()->load($plugin, $options);
    }
 
-
 .. _zend.mvc.controllers.action-controller:
 
 The AbstractActionController
@@ -191,7 +184,6 @@ Creation of action controllers is then reasonably trivial:
        }
    }
 
-
 .. _zend.mvc.controllers.action-controller.interfaces-and-collaborators:
 
 Interfaces and Collaborators
@@ -219,7 +211,6 @@ The composed ``EventManager`` will be configured to listen on the following cont
 
 Additionally, if you extend the class, it will listen on the extending class's name.
 
-
 .. _zend.mvc.controllers.restful-controller:
 
 The AbstractRestfulController
@@ -236,7 +227,6 @@ The second abstract controller ZF2 provides is ``Zend\Mvc\Controller\AbstractRes
 - **DELETE** maps to ``delete()``, and requires that an "id" parameter exists in the route matches; that value is passed as an argument to the method. It should attempt to delete the given entity, and, if successful, return either a 200 or 204 response status.
 
 Additionally, you can map "action" methods to the ``AbstractRestfulController``, just as you would in the ``AbstractActionController``; these methods will be suffixed with "Action", differentiating them from the RESTful methods listed above. This allows you to perform such actions as providing forms used to submit to the various RESTful methods, or to add RPC methods to your RESTful API.
-
 
 .. _zend.mvc.controllers.restful-controller.interfaces-and-collaborators:
 

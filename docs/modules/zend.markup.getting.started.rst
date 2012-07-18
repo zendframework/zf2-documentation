@@ -1,11 +1,9 @@
-
 .. _zend.markup.getting-started:
 
 Getting Started With Zend_Markup
 ================================
 
 This guide to get you started with ``Zend_Markup`` uses the BBCode parser and *HTML* renderer. The priciples discussed can be adapted to other parsers and renderers.
-
 
 .. _zend.markup.getting-started.basic-usage:
 
@@ -24,7 +22,6 @@ Afther that, we will use the ``render()`` method to convert a piece of BBCode to
 
    echo $bbcode->render('[b]bold text[/b] and [i]cursive text[/i]');
    // Outputs: '<strong>bold text</strong> and <em>cursive text</em>'
-
 
 .. _zend.markup.getting-started.complicated-example:
 
@@ -52,7 +49,6 @@ This time, we will do exactly the same as above, but with more complicated BBCod
    <li>Foobar</li>
    </ul>
    */
-
 
 .. _zend.markup.getting-started.incorrect-input:
 

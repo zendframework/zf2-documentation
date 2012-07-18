@@ -1,4 +1,3 @@
-
 .. _zend.service.amazon.ec2.ebs:
 
 Zend_Service_Amazon_Ec2: Elastic Block Storage (EBS)
@@ -10,12 +9,10 @@ You can create up to twenty Amazon EBS volumes of any size (from one GiB up to o
 
 Amazon EBS provides the ability to create snapshots of your Amazon EBS volumes to Amazon S3. You can use these snapshots as the starting point for new Amazon EBS volumes and can protect your data for long term durability.
 
-
 .. _zend.service.amazon.ec2.ebs.creating:
 
 Create EBS Volumes and Snapshots
 --------------------------------
-
 
 .. _zend.service.amazon.ec2.ebs.creating.volume:
 
@@ -31,7 +28,6 @@ Creating a brand new EBS Volume requires the size and which zone you want the EB
    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->createNewVolume(40, 'us-east-1a');
 
-
 .. _zend.service.amazon.ec2.ebs.creating.volumesnapshot:
 
 .. rubric:: Create an EBS Volume from a Snapshot
@@ -45,7 +41,6 @@ Creating an EBS Volume from a snapshot requires the snapshot_id and which zone y
 
    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->createVolumeFromSnapshot('snap-78a54011', 'us-east-1a');
-
 
 .. _zend.service.amazon.ec2.ebs.creating.snapshot:
 
@@ -61,12 +56,10 @@ Creating a Snapshot of an EBS Volume requires the volumeId of the EBS Volume.
    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->createSnapshot('volumeId');
 
-
 .. _zend.service.amazon.ec2.ebs.describing:
 
 Describing EBS Volumes and Snapshots
 ------------------------------------
-
 
 .. _zend.service.amazon.ec2.ebs.describing.volume:
 
@@ -82,7 +75,6 @@ Describing EBS Volumes and Snapshots
    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->describeVolume('volumeId');
 
-
 .. _zend.service.amazon.ec2.ebs.describing.attachedvolumes:
 
 .. rubric:: Describe Attached Volumes
@@ -96,7 +88,6 @@ To return a list of EBS Volumes currently attached to a running instance you can
 
    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->describeAttachedVolumes('instanceId');
-
 
 .. _zend.service.amazon.ec2.ebs.describing.snapshot:
 
@@ -112,12 +103,10 @@ To return a list of EBS Volumes currently attached to a running instance you can
    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->describeSnapshot('volumeId');
 
-
 .. _zend.service.amazon.ec2.ebs.attachdetach:
 
 Attach and Detaching Volumes from Instances
 -------------------------------------------
-
 
 .. _zend.service.amazon.ec2.ebs.attachdetach.attach:
 
@@ -132,7 +121,6 @@ Attach and Detaching Volumes from Instances
 
    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->attachVolume('volumeId', 'instanceid', '/dev/sdh');
-
 
 .. _zend.service.amazon.ec2.ebs.attachdetach.detach:
 
@@ -149,17 +137,15 @@ Attach and Detaching Volumes from Instances
    $return = $ec2_ebs->detachVolume('volumeId');
 
 .. note::
+
    **Forced Detach**
 
    You should only force a detach if the previous detachment attempt did not occur cleanly (logging into an instance, unmounting the volume, and detaching normally). This option can lead to data loss or a corrupted file system. Use this option only as a last resort to detach a volume from a failed instance. The instance will not have an opportunity to flush file system caches or file system meta data. If you use this option, you must perform file system check and repair procedures.
-
-
 
 .. _zend.service.amazon.ec2.ebs.deleting:
 
 Deleting EBS Volumes and Snapshots
 ----------------------------------
-
 
 .. _zend.service.amazon.ec2.ebs.deleting.volume:
 
@@ -174,7 +160,6 @@ Deleting EBS Volumes and Snapshots
 
    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->deleteVolume('volumeId');
-
 
 .. _zend.service.amazon.ec2.ebs.deleting.snapshot:
 

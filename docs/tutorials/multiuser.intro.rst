@@ -1,9 +1,7 @@
-
 .. _learning.multiuser.intro:
 
 Building Multi-User Applications With Zend Framework
 ====================================================
-
 
 .. _learning.multiuser.intro.zf:
 
@@ -23,10 +21,10 @@ These concerns and responsibilities can effectively be summed up by three questi
 - How do you control what a consumer has access to?
 
 .. note::
+
    **Consumer Vs. User**
 
    Notice we use the term "consumer" instead of person. Increasingly, web applications are becoming service driven. This means that not only are real people ("users") with real web browsers consuming and using your application, but also other web applications through machine service technologies such as *REST*, *SOAP*, and *XML-RPC*. In this respect, people, as well as other consuming applications, should all be treated in same with regard to the concerns outlined above.
-
 
 In the following chapters, we'll take a look at these common problems relating to authentication and authorization in detail. We will discover how 3 main components: ``Zend_Session``, ``Zend_Auth``, and ``Zend_Acl``; provide an out-of-the-box solution as well as the extension points each have that will cater to a more customized solution.
 

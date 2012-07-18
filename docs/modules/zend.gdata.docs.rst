@@ -1,4 +1,3 @@
-
 .. _zend.gdata.docs:
 
 Using Google Documents List Data API
@@ -7,7 +6,6 @@ Using Google Documents List Data API
 The Google Documents List Data *API* allows client applications to upload documents to Google Documents and list them in the form of Google Data *API* ("GData") feeds. Your client application can request a list of a user's documents, and query the content in an existing document.
 
 See `http://code.google.com/apis/documents/overview.html`_ for more information about the Google Documents List *API*.
-
 
 .. _zend.gdata.docs.listdocuments:
 
@@ -25,7 +23,6 @@ You can get a list of the Google Documents for a particular user by using the ``
    $feed = $docs->getDocumentListFeed();
 
 The resulting ``Zend_Gdata_Docs_DocumentListFeed`` object represents the response from the server. This feed contains a list of ``Zend_Gdata_Docs_DocumentListEntry`` objects (``$feed->entries``), each of which represents a single Google Document.
-
 
 .. _zend.gdata.docs.creating:
 
@@ -84,14 +81,12 @@ You can create a new Google Document by uploading a word processing document, sp
      if ($html) {echo "</a>\n";}
    }
 
-
 .. _zend.gdata.docs.queries:
 
 Searching the documents feed
 ----------------------------
 
 You can search the Document List using some of the `standard Google Data API query parameters`_. Categories are used to restrict the type of document (word processor document, spreadsheet) returned. The full-text query string is used to search the content of all the documents. More detailed information on parameters specific to the Documents List can be found in the `Documents List Data API Reference Guide`_.
-
 
 .. _zend.gdata.docs.listwpdocuments:
 
@@ -106,7 +101,6 @@ You can also request a feed containing all of your documents of a specific type.
    $feed = $docs->getDocumentListFeed(
        'http://docs.google.com/feeds/documents/private/full/-/document');
 
-
 .. _zend.gdata.docs.listspreadsheets:
 
 Get a List of Spreadsheets
@@ -119,7 +113,6 @@ To request a list of your Google Spreadsheets, use the following category query:
 
    $feed = $docs->getDocumentListFeed(
        'http://docs.google.com/feeds/documents/private/full/-/spreadsheet');
-
 
 .. _zend.gdata.docs.textquery:
 

@@ -1,9 +1,7 @@
-
 .. _zend.barcode.creation:
 
 Barcode creation using Zend\\Barcode\\Barcode class
 ===================================================
-
 
 .. _zend.barcode.creation.configuration:
 
@@ -21,7 +19,6 @@ Using Zend\\Barcode\\Barcode::factory
 . Options to pass to the renderer object (an array or a `Traversable`_ object) (optional)
 
 . Boolean to indicate whether or not to automatically render errors. If an exception occurs, the provided barcode object will be replaced with an Error representation (optional default ``TRUE``)
-
 
 .. _zend.barcode.creation.configuration.example-1:
 
@@ -42,7 +39,6 @@ Using Zend\\Barcode\\Barcode::factory
    $renderer = Barcode::factory(
        'code39', 'image', $barcodeOptions, $rendererOptions
    );
-
 
 .. _zend.barcode.creation.configuration.example-2:
 
@@ -66,14 +62,12 @@ You may pass a ``Zend\Config\Config`` object to the factory in order to create t
 
    $renderer = Barcode::factory($config);
 
-
 .. _zend.barcode.creation.drawing:
 
 Drawing a barcode
 -----------------
 
 When you **draw** the barcode, you retrieve the resource in which the barcode is drawn. To draw a barcode, you can call the ``draw()`` of the renderer, or simply use the proxy method provided by ``Zend\Barcode\Barcode``.
-
 
 .. _zend.barcode.creation.drawing.example-1:
 
@@ -95,7 +89,6 @@ When you **draw** the barcode, you retrieve the resource in which the barcode is
        'code39', 'image', $barcodeOptions, $rendererOptions
    )->draw();
 
-
 .. _zend.barcode.creation.drawing.example-2:
 
 .. rubric:: Drawing a barcode with Zend\\Barcode\\Barcode::draw()
@@ -116,14 +109,12 @@ When you **draw** the barcode, you retrieve the resource in which the barcode is
        'code39', 'image', $barcodeOptions, $rendererOptions
    );
 
-
 .. _zend.barcode.creation.renderering:
 
 Renderering a barcode
 ---------------------
 
 When you render a barcode, you draw the barcode, you send the headers and you send the resource (e.g. to a browser). To render a barcode, you can call the ``render()`` method of the renderer or simply use the proxy method provided by ``Zend\Barcode\Barcode``.
-
 
 .. _zend.barcode.creation.renderering.example-1:
 
@@ -148,11 +139,9 @@ When you render a barcode, you draw the barcode, you send the headers and you se
 
 This will generate this barcode:
 
-
 .. image:: ../images/zend.barcode.introduction.example-1.png
    :width: 275
    :align: center
-
 
 .. _zend.barcode.creation.renderering.example-2:
 

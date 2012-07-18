@@ -1,11 +1,9 @@
-
 .. _zend.filter.set.compress:
 
 Compress and Decompress
 =======================
 
 These two filters are capable of compressing and decompressing strings, files, and directories.
-
 
 .. _zend.filter.set.compress.options:
 
@@ -17,7 +15,6 @@ The following options are supported for ``Zend_Filter_Compress`` and ``Zend_Filt
 - **adapter**: The compression adapter which should be used. It defaults to ``Gz``.
 
 - **options**: Additional options which are given to the adapter at initiation. Each adapter supports it's own options.
-
 
 .. _zend.filter.set.compress.basic:
 
@@ -39,7 +36,6 @@ The following compression formats are supported by their own adapter:
 - **Zip**
 
 Each compression format has different capabilities as described below. All compression filters may be used in approximately the same ways, and differ primarily in the options available and the type of compression they offer (both algorithmically as well as string vs. file vs. directory)
-
 
 .. _zend.filter.set.compress.generic:
 
@@ -72,10 +68,10 @@ You may also provide an array of options or ``Zend_Config`` object. If you do, p
    ));
 
 .. note::
+
    **Default compression Adapter**
 
    When no compression adapter is given, then the **Gz** adapter will be used.
-
 
 Almost the same usage is we want to decompress a string. We just have to use the decompression filter in this case.
 
@@ -103,11 +99,10 @@ Decompression works the same way.
    // Returns the uncompressed string
 
 .. note::
+
    **Note on string compression**
 
    Not all adapters support string compression. Compression formats like **Rar** can only handle files and directories. For details, consult the section for the adapter you wish to use.
-
-
 
 .. _zend.filter.set.compress.archive:
 
@@ -131,10 +126,10 @@ Creating an archive file works almost the same as compressing a string. However,
 In the above example the uncompressed string is compressed, and is then written into the given archive file.
 
 .. note::
+
    **Existing archives will be overwritten**
 
    The content of any existing file will be overwritten when the given filename of the archive already exists.
-
 
 When you want to compress a file, then you must give the name of the file with its path.
 
@@ -165,11 +160,10 @@ You may also specify a directory instead of a filename. In this case the whole d
    // Returns true on success and creates the archive file
 
 .. note::
+
    **Do not compress large or base directories**
 
    You should never compress large or base directories like a complete partition. Compressing a complete partition is a very time consuming task which can lead to massive problems on your server when there is not enough space or your script takes too much time.
-
-
 
 .. _zend.filter.set.compress.decompress:
 
@@ -201,11 +195,10 @@ Some adapters support decompressing the archive into another subdirectory. In th
    // into the given target directory
 
 .. note::
+
    **Directories to extract to must exist**
 
    When you want to decompress an archive into a directory, then that directory must exist.
-
-
 
 .. _zend.filter.set.compress.bz2:
 
@@ -229,7 +222,6 @@ To customize compression, this adapter supports the following options:
 - **Blocksize**: This parameter sets the blocksize to use. It can be from '0' to '9'. The default value is '4'.
 
 All options can be set at instantiation or by using a related method. For example, the related methods for 'Blocksize' are ``getBlocksize()`` and ``setBlocksize()``. You can also use the ``setOptions()`` method which accepts all options as array.
-
 
 .. _zend.filter.set.compress.gz:
 
@@ -256,7 +248,6 @@ To customize the compression this adapter supports the following options:
 
 All options can be set at initiation or by using a related method. For example, the related methods for 'Level' are ``getLevel()`` and ``setLevel()``. You can also use the ``setOptions()`` method which accepts all options as array.
 
-
 .. _zend.filter.set.compress.lzf:
 
 Lzf Adapter
@@ -267,15 +258,14 @@ The Lzf Adapter can compress and decompress:
 - Strings
 
 .. note::
+
    **Lzf supports only strings**
 
    The Lzf adapter can not handle files and directories.
 
-
 This adapter makes use of *PHP*'s Lzf extension.
 
 There are no options available to customize this adapter.
-
 
 .. _zend.filter.set.compress.rar:
 
@@ -289,18 +279,18 @@ The Rar Adapter can compress and decompress:
 - Directories
 
 .. note::
+
    **Rar does not support strings**
 
    The Rar Adapter can not handle strings.
 
-
 This adapter makes use of *PHP*'s Rar extension.
 
 .. note::
+
    **Rar compression not supported**
 
    Due to restrictions with the Rar compression format, there is no compression available for free. When you want to compress files into a new Rar archive, you must provide a callback to the adapter that can invoke a Rar compression program.
-
 
 To customize the compression this adapter supports the following options:
 
@@ -314,7 +304,6 @@ To customize the compression this adapter supports the following options:
 
 All options can be set at instantiation or by using a related method. For example, the related methods for 'Target' are ``getTarget()`` and ``setTarget()``. You can also use the ``setOptions()`` method which accepts all options as array.
 
-
 .. _zend.filter.set.compress.tar:
 
 Tar Adapter
@@ -327,10 +316,10 @@ The Tar Adapter can compress and decompress:
 - Directories
 
 .. note::
+
    **Tar does not support strings**
 
    The Tar Adapter can not handle strings.
-
 
 This adapter makes use of *PEAR*'s ``Archive_Tar`` component.
 
@@ -345,11 +334,10 @@ To customize the compression this adapter supports the following options:
 All options can be set at instantiation or by using a related method. For example, the related methods for 'Target' are ``getTarget()`` and ``setTarget()``. You can also use the ``setOptions()`` method which accepts all options as array.
 
 .. note::
+
    **Directory usage**
 
    When compressing directories with Tar then the complete file path is used. This means that created Tar files will not only have the subdirectory but the complete path for the compressed file.
-
-
 
 .. _zend.filter.set.compress.zip:
 
@@ -365,10 +353,10 @@ The Zip Adapter can compress and decompress:
 - Directories
 
 .. note::
+
    **Zip does not support string decompression**
 
    The Zip Adapter can not handle decompression to a string; decompression will always be written to a file.
-
 
 This adapter makes use of *PHP*'s ``Zip`` extension.
 

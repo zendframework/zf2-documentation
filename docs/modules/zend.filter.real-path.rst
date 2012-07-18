@@ -1,11 +1,9 @@
-
 .. _zend.filter.set.realpath:
 
 RealPath
 ========
 
 This filter will resolve given links and pathnames and returns canonicalized absolute pathnames.
-
 
 .. _zend.filter.set.realpath.options:
 
@@ -15,7 +13,6 @@ Supported options for Zend_Filter_RealPath
 The following options are supported for ``Zend_Filter_RealPath``:
 
 - **exists**: This option defaults to ``TRUE`` which checks if the given path really exists.
-
 
 .. _zend.filter.set.realpath.basic:
 
@@ -34,7 +31,6 @@ For any given link of pathname its absolute path will be returned. References to
    $filtered = $filter->filter($path);
 
    // returns '/www/mypath'
-
 
 .. _zend.filter.set.realpath.exists:
 

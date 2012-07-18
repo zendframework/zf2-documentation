@@ -1,4 +1,3 @@
-
 .. _zend.console.getopt.rules:
 
 Declaring Getopt Rules
@@ -10,14 +9,12 @@ The constructor takes two more arguments, both of which are optional. The second
 
 The third argument of the constructor may contain an configuration options to customize the behavior of ``Zend_Console_Getopt``. See :ref:`Adding Configuration <zend.console.getopt.configuration.config>` for reference on the options available.
 
-
 .. _zend.console.getopt.rules.short:
 
 Declaring Options with the Short Syntax
 ---------------------------------------
 
 ``Zend_Console_Getopt`` supports a compact syntax similar to that used by *GNU* Getopt (see `http://www.gnu.org/software/libc/manual/html_node/Getopt.html`_. This syntax supports only single-character flags. In a single string, you type each of the letters that correspond to flags supported by your application. A letter followed by a colon character (**:**) indicates a flag that requires a parameter.
-
 
 .. _zend.console.getopt.rules.short.example:
 
@@ -31,7 +28,6 @@ Declaring Options with the Short Syntax
 The example above shows using ``Zend_Console_Getopt`` to declare that options may be given as ``-a``, ``-b``, or ``-p``. The latter flag requires a parameter.
 
 The short syntax is limited to flags of a single character. Aliases, parameter types, and help strings are not supported in the short syntax.
-
 
 .. _zend.console.getopt.rules.long:
 
@@ -51,7 +47,6 @@ The key of each element of the associative array is a string with a format that 
 If the parameter is optional, use a dash ("**-**") instead of the equals symbol.
 
 The value of each element in the associative array is a help string to describe to a user how to use your program.
-
 
 .. _zend.console.getopt.rules.long.example:
 

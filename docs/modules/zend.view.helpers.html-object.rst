@@ -1,4 +1,3 @@
-
 .. _zend.view.helpers.initial.object:
 
 HTML Object Helpers
@@ -17,7 +16,6 @@ There are four initial Object helpers:
 - ``htmlQuicktime()`` Generates markup for embedding QuickTime files.
 
 All of these helpers share a similar interface. For this reason, this documentation will only contain examples of two of these helpers.
-
 
 .. _zend.view.helpers.initial.object.flash:
 
@@ -42,7 +40,6 @@ This outputs the following *HTML*:
    </object>
 
 Additionally you can specify attributes, parameters and content that can be rendered along with the **<object>**. This will be demonstrated using the ``htmlObject()`` helper.
-
 
 .. _zend.view.helpers.initial.object.object:
 

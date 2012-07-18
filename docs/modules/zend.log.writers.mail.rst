@@ -1,4 +1,3 @@
-
 .. _zend.log.writers.mail:
 
 Writing to Email

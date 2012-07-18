@@ -1,11 +1,9 @@
-
 .. _learning.lucene.index-opening:
 
 Index Opening and Creation
 ==========================
 
 All index operations (e.g., creating a new index, adding a document to the index, deleting a document, searching through the index) need an index object. One can be obtained using one of the following two methods.
-
 
 .. _learning.lucene.index-opening.creation:
 
@@ -15,7 +13,6 @@ All index operations (e.g., creating a new index, adding a document to the index
    :linenos:
 
    $index = Zend_Search_Lucene::create($indexPath);
-
 
 .. _learning.lucene.index-opening.opening:
 

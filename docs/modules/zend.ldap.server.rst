@@ -1,9 +1,7 @@
-
 .. _zend.ldap.server:
 
 Getting information from the LDAP server
 ========================================
-
 
 .. _zend.ldap.server.rootdse:
 
@@ -18,7 +16,6 @@ See the following documents for more information on the attributes contained wit
 
 - `Novell eDirectory`_
 
-
 .. _zend.ldap.server.rootdse.getting:
 
 .. rubric:: Getting hands on the RootDSE
@@ -31,12 +28,10 @@ See the following documents for more information on the attributes contained wit
    $rootdse = $ldap->getRootDse();
    $serverType = $rootdse->getServerType();
 
-
 .. _zend.ldap.server.schema:
 
 Schema Browsing
 ---------------
-
 
 .. _zend.ldap.server.schema.getting:
 
@@ -50,12 +45,10 @@ Schema Browsing
    $schema = $ldap->getSchema();
    $classes = $schema->getObjectClasses();
 
-
 .. _zend.ldap.server.schema.openldap:
 
 OpenLDAP
 ^^^^^^^^
-
 
 
 
@@ -65,10 +58,10 @@ ActiveDirectory
 ^^^^^^^^^^^^^^^
 
 .. note::
+
    **Schema browsing on ActiveDirectory servers**
 
    Due to restrictions on Microsoft ActiveDirectory servers regarding the number of entries returned by generic search routines and due to the structure of the ActiveDirectory schema repository, schema browsing is currently **not** available for Microsoft ActiveDirectory servers.
-
 
 
 

@@ -1,9 +1,7 @@
-
 .. _zend.mime.mime:
 
 Zend_Mime
 =========
-
 
 .. _zend.mime.mime.introduction:
 
@@ -11,7 +9,6 @@ Introduction
 ------------
 
 ``Zend_Mime`` is a support class for handling multipart *MIME* messages. It is used by :ref:`Zend_Mail <zend.mail>` and :ref:`Zend_Mime_Message <zend.mime.message>` and may be used by applications requiring *MIME* support.
-
 
 .. _zend.mime.mime.static:
 
@@ -59,7 +56,6 @@ Static Methods and Constants
 - ``Zend_Mime::MULTIPART_MIXED``: 'multipart/mixed'
 
 - ``Zend_Mime::MULTIPART_RELATED``: 'multipart/related'
-
 
 
 

@@ -1,11 +1,9 @@
-
 .. _migration.10:
 
 Zend Framework 1.0
 ==================
 
 When upgrading from a previous release to Zend Framework 1.0 or higher you should note the following migration notes.
-
 
 .. _migration.10.zend.controller:
 
@@ -83,7 +81,6 @@ If you're using a view object from the registry, or customizing your view object
      $viewRenderer = new Zend_Controller_Action_Helper_ViewRenderer($view);
      Zend_Controller_Action_HelperBroker::addHelper($viewRenderer);
 
-
 - Any time during the bootstrap process:
 
   .. code-block:: php
@@ -93,11 +90,9 @@ If you're using a view object from the registry, or customizing your view object
          Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
      $viewRenderer->setView($view);
 
-
 There are many ways to modify the ``ViewRenderer``, including setting a different view script to render, specifying replacements for all replaceable elements of a view script path (including the suffix), choosing a response named segment to utilize, and more. If you aren't using the conventional modular directory structure, you can even associate different path specifications with the ``ViewRenderer``.
 
 We encourage you to adapt your code to use the ``ErrorHandler`` and ``ViewRenderer`` as they are now core functionality.
-
 
 .. _migration.10.zend.currency:
 

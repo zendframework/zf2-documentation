@@ -1,4 +1,3 @@
-
 .. _zend.oauth.introduction.security-architecture:
 
 Security Architecture

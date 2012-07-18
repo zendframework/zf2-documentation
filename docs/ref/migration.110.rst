@@ -1,11 +1,9 @@
-
 .. _migration.110:
 
 Zend Framework 1.10
 ===================
 
 When upgrading from a previous release to Zend Framework 1.10 or higher you should note the following migration notes.
-
 
 .. _migration.110.zend.controller.front:
 
@@ -42,7 +40,6 @@ A wrong behaviour was fixed, when there was no module route and no route matched
                case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION:
        // ...
 
-
 .. _migration.110.zend.feed.reader:
 
 Zend_Feed_Reader
@@ -71,12 +68,10 @@ The simplest method of simulating the original behaviour of these methods is to 
    $feed = Zend_Feed_Reader::import('http://example.com/feed');
    $authors = $feed->getAuthors()->getValues();
 
-
 .. _migration.110.zend.file.transfer:
 
 Zend_File_Transfer
 ------------------
-
 
 .. _migration.110.zend.file.transfer.files:
 
@@ -89,14 +84,12 @@ Additionally the original values within ``$_FILES`` will be overridden within th
 
 When you are in need of the original values you can either store them before initiating ``Zend_File_Transfer`` or use the ``disableInfos`` option at initiation. Note that this option is useless when its given after initiation.
 
-
 .. _migration.110.zend.file.transfer.count:
 
 Count validation
 ^^^^^^^^^^^^^^^^
 
 Before release 1.10 the ``MimeType`` validator used a wrong naming. For consistency the following constants have been changed:
-
 
 .. _migration.110.zend.file.transfer.count.table:
 
@@ -110,9 +103,7 @@ Before release 1.10 the ``MimeType`` validator used a wrong naming. For consiste
    |TOO_LESS|TOO_FEW |Too few files, minimum '%min%' are expected but '%count%' are given|
    +--------+--------+-------------------------------------------------------------------+
 
-
 When you are translating these messages within your code then use the new constants. As benefit you don't need to translate the original string anymore to get a correct spelling.
-
 
 .. _migration.110.zend.filter.html-entities:
 
@@ -123,7 +114,6 @@ In order to default to a more secure character encoding, ``Zend_Filter_HtmlEntit
 
 Additionally, because the actual mechanism is dealing with character encodings and not character sets, two new methods have been added, ``setEncoding()`` and ``getEncoding()``. The previous methods ``setCharSet()`` and ``setCharSet()`` are now deprecated and proxy to the new methods. Finally, instead of using the protected members directly within the ``filter()`` method, these members are retrieved by their explicit accessors. If you were extending the filter in the past, please check your code and unit tests to ensure everything still continues to work.
 
-
 .. _migration.110.zend.filter.strip-tags:
 
 Zend_Filter_StripTags
@@ -131,12 +121,10 @@ Zend_Filter_StripTags
 
 ``Zend_Filter_StripTags`` contains a flag, ``commentsAllowed``, that, in previous versions, allowed you to optionally whitelist *HTML* comments in *HTML* text filtered by the class. However, this opens code enabling the flag to *XSS* attacks, particularly in Internet Explorer (which allows specifying conditional functionality via *HTML* comments). Starting in version 1.9.7 (and backported to versions 1.8.5 and 1.7.9), the ``commentsAllowed`` flag no longer has any meaning, and all *HTML* comments, including those containing other *HTML* tags or nested commments, will be stripped from the final output of the filter.
 
-
 .. _migration.110.zend.translator:
 
 Zend_Translator
 ---------------
-
 
 .. _migration.110.zend.translator.xliff:
 
@@ -154,12 +142,10 @@ But you can still get the incorrect and old behaviour by setting the ``useId`` o
        'xliff', '/path/to/source', $locale, array('useId' => false)
    );
 
-
 .. _migration.110.zend.validate:
 
 Zend_Validate
 -------------
-
 
 .. _migration.110.zend.validate.selfwritten:
 
@@ -198,14 +184,12 @@ To prevent this problem the ``_error()`` method is no longer allowed to be calle
        }
    }
 
-
 .. _migration.110.zend.validate.datevalidator:
 
 Simplification in date validator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Before Zend Framework 1.10 2 identical messages were thrown within the date validator. These were ``NOT_YYYY_MM_DD`` and ``FALSEFORMAT``. As of Zend Framework 1.10 only the ``FALSEFORMAT`` message will be returned when the given date does not match the set format.
-
 
 .. _migration.110.zend.validate.barcodevalidator:
 
@@ -215,7 +199,6 @@ Fixes in Alpha, Alnum and Barcode validator
 Before Zend Framework 1.10 the messages within the 2 barcode adapters, the Alpha and the Alnum validator were identical. This introduced problems when using custom messages, translations or multiple instances of these validators.
 
 As with Zend Framework 1.10 the values of the constants were changed to be unique. When you used the constants as proposed in the manual there is no change for you. But when you used the content of the constants in your code then you will have to change them. The following table shows you the changed values:
-
 
 .. _migration.110.zend.validate.barcodevalidator.table:
 
@@ -238,6 +221,5 @@ As with Zend Framework 1.10 the values of the constants were changed to be uniqu
    +-------------+--------------+------------------+
    |Digits       |STRING_EMPTY  |digitsStringEmpty |
    +-------------+--------------+------------------+
-
 
 

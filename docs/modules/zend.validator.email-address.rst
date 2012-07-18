@@ -1,11 +1,9 @@
-
 .. _zend.validator.set.email_address:
 
 EmailAddress
 ============
 
 ``Zend\Validator\EmailAddress`` allows you to validate an email address. The validator first splits the email address on local-part @ hostname and attempts to match these against known specifications for email addresses and hostnames.
-
 
 .. _zend.validator.set.email_address.basic:
 
@@ -28,7 +26,6 @@ A basic example of usage is below:
    }
 
 This will match the email address ``$email`` and on failure populate ``getMessages()`` with useful error messages.
-
 
 .. _zend.validator.set.email_address.options:
 
@@ -53,7 +50,6 @@ Options for validating Email Addresses
    $validator = new Zend\Validator\EmailAddress();
    $validator->setOptions(array('domain' => false));
 
-
 .. _zend.validator.set.email_address.complexlocal:
 
 Complex local parts
@@ -62,7 +58,6 @@ Complex local parts
 ``Zend\Validator\EmailAddress`` will match any valid email address according to RFC2822. For example, valid emails include **bob@domain.com**, **bob+jones@domain.us**, **"bob@jones"@domain.com** and **"bob jones"@domain.com**
 
 Some obsolete email formats will not currently validate (e.g. carriage returns or a "\\" character in an email address).
-
 
 .. _zend.validator.set.email_address.purelocal:
 
@@ -76,7 +71,6 @@ If you need ``Zend\Validator\EmailAddress`` to check only the local part of an e
 
    $validator = new Zend\Validator\EmailAddress();
    $validator->setOptions(array('domain' => FALSE));
-
 
 .. _zend.validator.set.email_address.hostnametype:
 
@@ -102,7 +96,6 @@ To do this you need to instantiate ``Zend\Validator\EmailAddress`` passing a par
        }
    }
 
-
 .. _zend.validator.set.email_address.checkacceptance:
 
 Checking if the hostname actually accepts email
@@ -123,10 +116,10 @@ MX checking is not enabled by default. To enable MX checking you can pass a seco
    );
 
 .. note::
+
    **MX Check under Windows**
 
    Within Windows environments MX checking is only available when *PHP* 5.3 or above is used. Below *PHP* 5.3 MX checking will not be used even if it's activated within the options.
-
 
 Alternatively you can either pass ``TRUE`` or ``FALSE`` to ``setValidateMx()`` to enable or disable MX validation.
 
@@ -148,17 +141,16 @@ Sometimes validation for MX records returns ``FALSE``, even if emails are accept
 Sometimes it can be useful to get the server's MX information which have been used to do further processing. Simply use ``getMXRecord()`` after validation. This method returns the received MX record including weight and sorted by it.
 
 .. warning::
+
    **Performance warning**
 
    You should be aware that enabling MX check will slow down you script because of the used network functions. Enabling deep check will slow down your script even more as it searches the given server for 3 additional types.
 
-
 .. note::
+
    **Disallowed IP addresses**
 
    You should note that MX validation is only accepted for external servers. When deep MX validation is enabled, then local IP addresses like ``192.168.*`` or ``169.254.*`` are not accepted.
-
-
 
 .. _zend.validator.set.email_address.validatoridn:
 
@@ -176,7 +168,6 @@ More information on the usage of ``setValidateIdn()`` appears in the ``Zend\Vali
 
 Please note IDNs are only validated if you allow DNS hostnames to be validated.
 
-
 .. _zend.validator.set.email_address.validatortld:
 
 Validating Top Level Domains
@@ -192,7 +183,6 @@ By default a hostname will be checked against a list of known TLDs. This is enab
 More information on the usage of ``setValidateTld()`` appears in the ``Zend\Validator\Hostname`` documentation.
 
 Please note TLDs are only validated if you allow DNS hostnames to be validated.
-
 
 .. _zend.validator.set.email_address.setmessage:
 

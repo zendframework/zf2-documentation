@@ -1,9 +1,7 @@
-
 .. _zend.search.lucene.extending:
 
 Extensibility
 =============
-
 
 .. _zend.search.lucene.extending.analysis:
 
@@ -31,84 +29,86 @@ The ``Zend_Search_Lucene_Analysis_Analyzer_Common`` class is designed to be an a
 The ``nextToken()`` method should call the ``normalize()`` method on each token. This will allow you to use token filters with your analyzer.
 
 Here is an example of a custom analyzer, which accepts words with digits as terms:
-.. _zend.search.lucene.extending.analysis.example-1:
 
-.. rubric:: Custom text Analyzer
 
-.. code-block:: php
-   :linenos:
 
-   /**
-    * Here is a custom text analyser, which treats words with digits as
-    * one term
-    */
+      .. _zend.search.lucene.extending.analysis.example-1:
 
-   class My_Analyzer extends Zend_Search_Lucene_Analysis_Analyzer_Common
-   {
-       private $_position;
+      .. rubric:: Custom text Analyzer
 
-       /**
-        * Reset token stream
-        */
-       public function reset()
-       {
-           $this->_position = 0;
-       }
+      .. code-block:: php
+         :linenos:
 
-       /**
-        * Tokenization stream API
-        * Get next token
-        * Returns null at the end of stream
-        *
-        * @return Zend_Search_Lucene_Analysis_Token|null
-        */
-       public function nextToken()
-       {
-           if ($this->_input === null) {
-               return null;
-           }
+         /**
+          * Here is a custom text analyser, which treats words with digits as
+          * one term
+          */
 
-           while ($this->_position < strlen($this->_input)) {
-               // skip white space
-               while ($this->_position < strlen($this->_input) &&
-                      !ctype_alnum( $this->_input[$this->_position] )) {
-                   $this->_position++;
-               }
+         class My_Analyzer extends Zend_Search_Lucene_Analysis_Analyzer_Common
+         {
+             private $_position;
 
-               $termStartPosition = $this->_position;
+             /**
+              * Reset token stream
+              */
+             public function reset()
+             {
+                 $this->_position = 0;
+             }
 
-               // read token
-               while ($this->_position < strlen($this->_input) &&
-                      ctype_alnum( $this->_input[$this->_position] )) {
-                   $this->_position++;
-               }
+             /**
+              * Tokenization stream API
+              * Get next token
+              * Returns null at the end of stream
+              *
+              * @return Zend_Search_Lucene_Analysis_Token|null
+              */
+             public function nextToken()
+             {
+                 if ($this->_input === null) {
+                     return null;
+                 }
 
-               // Empty token, end of stream.
-               if ($this->_position == $termStartPosition) {
-                   return null;
-               }
+                 while ($this->_position < strlen($this->_input)) {
+                     // skip white space
+                     while ($this->_position < strlen($this->_input) &&
+                            !ctype_alnum( $this->_input[$this->_position] )) {
+                         $this->_position++;
+                     }
 
-               $token = new Zend_Search_Lucene_Analysis_Token(
-                                         substr($this->_input,
-                                                $termStartPosition,
-                                                $this->_position -
-                                                $termStartPosition),
-                                         $termStartPosition,
-                                         $this->_position);
-               $token = $this->normalize($token);
-               if ($token !== null) {
-                   return $token;
-               }
-               // Continue if token is skipped
-           }
+                     $termStartPosition = $this->_position;
 
-           return null;
-       }
-   }
+                     // read token
+                     while ($this->_position < strlen($this->_input) &&
+                            ctype_alnum( $this->_input[$this->_position] )) {
+                         $this->_position++;
+                     }
 
-   Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-       new My_Analyzer());
+                     // Empty token, end of stream.
+                     if ($this->_position == $termStartPosition) {
+                         return null;
+                     }
 
+                     $token = new Zend_Search_Lucene_Analysis_Token(
+                                               substr($this->_input,
+                                                      $termStartPosition,
+                                                      $this->_position -
+                                                      $termStartPosition),
+                                               $termStartPosition,
+                                               $this->_position);
+                     $token = $this->normalize($token);
+                     if ($token !== null) {
+                         return $token;
+                     }
+                     // Continue if token is skipped
+                 }
+
+                 return null;
+             }
+         }
+
+         Zend_Search_Lucene_Analysis_Analyzer::setDefault(
+             new My_Analyzer());
 
 
 
@@ -179,7 +179,6 @@ This file should be a common text file with one word in each line. The '#' chara
 
 The ``Zend_Search_Lucene_Analysis_TokenFilter_ShortWords`` constructor has one optional argument. This is the word length limit, set by default to 2.
 
-
 .. _zend.search.lucene.extending.scoring:
 
 Scoring Algorithms
@@ -244,7 +243,6 @@ The scoring algorithm can be customized by defining your own Similarity class. T
 
    $mySimilarity = new MySimilarity();
    Zend_Search_Lucene_Search_Similarity::setDefault($mySimilarity);
-
 
 .. _zend.search.lucene.extending.storage:
 

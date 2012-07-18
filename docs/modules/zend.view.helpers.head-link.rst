@@ -1,4 +1,3 @@
-
 .. _zend.view.helpers.initial.headlink:
 
 HeadLink Helper
@@ -31,7 +30,6 @@ Additionally, the ``HeadLink`` helper has special methods for adding 'alternate'
 The ``headLink()`` helper method allows specifying all attributes necessary for a **<link>** element, and allows you to also specify placement -- whether the new element replaces all others, prepends (top of stack), or appends (end of stack).
 
 The ``HeadLink`` helper is a concrete implementation of the :ref:`Placeholder helper <zend.view.helpers.initial.placeholder>`.
-
 
 .. _zend.view.helpers.initial.headlink.basicusage:
 

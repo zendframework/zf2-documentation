@@ -1,4 +1,3 @@
-
 .. _learning.view.placeholders.conclusion:
 
 View Placeholders: Conclusion

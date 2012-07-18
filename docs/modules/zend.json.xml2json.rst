@@ -1,4 +1,3 @@
-
 .. _zend.json.xml2json:
 
 XML to JSON conversion

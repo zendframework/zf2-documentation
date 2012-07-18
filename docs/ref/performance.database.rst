@@ -1,11 +1,9 @@
-
 .. _performance.database:
 
 Zend_Db Performance
 ===================
 
 ``Zend_Db`` is a database abstraction layer, and is intended to provide a common *API* for *SQL* operations. ``Zend_Db_Table`` is a Table Data Gateway, intended to abstract common table-level database operations. Due to their abstract nature and the "magic" they do under the hood to perform their operations, they can sometimes introduce performance overhead.
-
 
 .. _performance.database.tableMetadata:
 
@@ -16,7 +14,6 @@ In order to keep usage as simple as possible, and also to support constantly cha
 
 Fortunately, there are techniques for improving the situation.
 
-
 .. _performance.database.tableMetadata.cache:
 
 Use the metadata cache
@@ -26,7 +23,6 @@ Use the metadata cache
 
 The :ref:`Zend_Db_Table documentation includes information on metadata caching <zend.db.table.metadata.caching>`.
 
-
 .. _performance.database.tableMetadata.hardcoding:
 
 Hardcode your metadata in the table definition
@@ -34,14 +30,12 @@ Hardcode your metadata in the table definition
 
 As of 1.7.0, ``Zend_Db_Table`` also provides :ref:`support for hardcoding metadata in the table definition <zend.db.table.metadata.caching.hardcoding>`. This is an advanced use case, and should only be used when you know the table schema is unlikely to change, or that you're able to keep the definitions up-to-date.
 
-
 .. _performance.database.select:
 
 SQL generated with Zend_Db_Select s not hitting my indexes; how can I make it better?
 -------------------------------------------------------------------------------------
 
 ``Zend_Db_Select`` is relatively good at its job. However, if you are performing complex queries requiring joins or sub-selects, it can often be fairly naive.
-
 
 .. _performance.database.select.writeyourown:
 

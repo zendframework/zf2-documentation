@@ -1,9 +1,7 @@
-
 .. _zend.search.lucene.searching:
 
 Searching an Index
 ==================
-
 
 .. _zend.search.lucene.searching.query_building:
 
@@ -40,7 +38,6 @@ It is important to note that the query parser uses the standard analyzer to toke
 The standard analyzer may transform the query string to lower case for case-insensitivity, remove stop-words, and stem among other transformations.
 
 The *API* method doesn't transform or filter input terms in any way. It's therefore more suitable for computer generated or untokenized fields.
-
 
 .. _zend.search.lucene.searching.query_building.parsing:
 
@@ -89,7 +86,6 @@ It's also possible to specify the default query string encoding with ``Zend_Sear
    $userQuery = Zend_Search_Lucene_Search_QueryParser::parse($queryStr);
 
 ``Zend_Search_Lucene_Search_QueryParser::getDefaultEncoding()`` returns the current default query string encoding (the empty string means "current locale").
-
 
 .. _zend.search.lucene.searching.results:
 
@@ -142,7 +138,6 @@ The fields available from the ``Zend_Search_Lucene_Document`` object are determi
 
 Note that the document identity ('path' in our example) is also stored in the index and must be retrieved from it.
 
-
 .. _zend.search.lucene.searching.results-limiting:
 
 Limiting the Result Set
@@ -162,7 +157,6 @@ The most computationally expensive part of searching is score calculation. It ma
 The default value of 0 means 'no limit'.
 
 It doesn't give the 'best N' results, but only the 'first N'[#]_.
-
 
 .. _zend.search.lucene.searching.results-scoring:
 
@@ -186,7 +180,6 @@ A hit's score can be retrieved by accessing the *score* property of the hit:
    }
 
 The ``Zend_Search_Lucene_Search_Similarity`` class is used to calculate the score for each hit. See :ref:`Extensibility. Scoring Algorithms <zend.search.lucene.extending.scoring>` section for details.
-
 
 .. _zend.search.lucene.searching.sorting:
 
@@ -228,7 +221,6 @@ Examples:
    $index->find($query, 'name', SORT_STRING, 'quantity', SORT_NUMERIC, SORT_DESC);
 
 Please use caution when using a non-default search order; the query needs to retrieve documents completely from an index, which may dramatically reduce search performance.
-
 
 .. _zend.search.lucene.searching.highlighting:
 
@@ -281,17 +273,14 @@ To customize highlighting behavior use ``highlightExtended()`` method with speci
 The result of highlighting operation is retrieved by *Zend_Search_Lucene_Document_Html->getHTML()* method.
 
 .. note::
-   Highlighting is performed in terms of current analyzer. So all forms of the word(s) recognized by analyzer are highlighted.
 
+   Highlighting is performed in terms of current analyzer. So all forms of the word(s) recognized by analyzer are highlighted.
 
    E.g. if current analyzer is case insensitive and we request to highlight 'text' word, then 'text', 'Text', 'TEXT' and other case combinations will be highlighted.
 
-
    In the same way, if current analyzer supports stemming and we request to highlight 'indexed', then 'index', 'indexing', 'indices' and other word forms will be highlighted.
 
-
    On the other hand, if word is skipped by current analyzer (e.g. if short words filter is applied to the analyzer), then nothing will be highlighted.
-
 
 The second option is to use *Zend_Search_Lucene_Search_Query->highlightMatches(string $inputHTML[, $defaultEncoding = 'UTF-8'[, Zend_Search_Lucene_Search_Highlighter_Interface $highlighter]])* method:
 

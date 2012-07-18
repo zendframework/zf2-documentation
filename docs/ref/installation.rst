@@ -1,4 +1,3 @@
-
 .. _introduction.installation:
 
 ************
@@ -17,15 +16,11 @@ Installing Zend Framework is extremely simple. Once you have downloaded and extr
 
   `Exporting`_ is useful if you want to get a particular framework revision without the ``.svn`` directories as created in a working copy.
 
-
   `Check out a working copy`_ if you want contribute to Zend Framework, a working copy can be updated any time with `svn update`_ and changes can be commited to our *SVN* repository with the `svn commit`_ command.
-
 
   An `externals definition`_ is quite convenient for developers already using *SVN* to manage their application's working copies.
 
-
   The *URL* for the trunk of Zend Framework's *SVN* repository is: `http://framework.zend.com/svn/framework/standard/trunk`_
-
 
 Once you have a copy of Zend Framework available, your application needs to be able to access the framework classes. Though there are `several ways to achieve this`_, your *PHP* `include_path`_ needs to contain the path to Zend Framework's library.
 

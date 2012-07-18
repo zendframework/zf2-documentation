@@ -1,9 +1,7 @@
-
 .. _zend.loader.class-map-autoloader:
 
 The ClassMapAutoloader
 ======================
-
 
 .. _zend.loader.class-map-autoloader.intro:
 
@@ -15,7 +13,6 @@ The ``ClassMapAutoloader`` is designed with performance in mind. The idea behind
 In order to use the ``ClassMapAutoloader``, you first need class maps. Zend Framework ships with a class map per component or, if you grabbed the entire ZF distribution, a class map for the entire Zend Framework. These maps are typically in a file named ``.classmap.php`` within either the "Zend" directory, or an individual component's source directory.
 
 Zend Framework also provides a tool for generating these class maps; you can find it in ``bin/classmap_generator.php`` of the distribution. Full documentation of this too is provided in :ref:` <zend.loader.classmap-generator>`.
-
 
 .. _zend.loader.class-map-autoloader.quick-start:
 
@@ -50,7 +47,6 @@ Within your code, you will now instantiate the ``ClassMapAutoloader``, and provi
 
 At this point, you may now use any classes referenced in your class map.
 
-
 .. _zend.loader.class-map-autoloader.options:
 
 Configuration Options
@@ -63,9 +59,7 @@ The ``ClassMapAutoloader`` defines the following options.
 **$options**
    The ``ClassMapAutoloader`` expects an array of options, where each option is either a filename referencing a class map, or an associative array of class name/filename pairs.
 
-
    As an example:
-
 
    .. code-block:: php
       :linenos:
@@ -79,140 +73,87 @@ The ``ClassMapAutoloader`` defines the following options.
           ),
       );
 
-
-
 .. _zend.loader.class-map-autoloader.methods:
 
 Available Methods
 -----------------
 
-
 .. _zend.loader.class-map-autoloader.methods.constructor:
 
 \__construct
    Initialize and configure the object
-
    ``__construct($options = null)``
 
-
-
-
    **Constructor**
-
    Used during instantiation of the object. Optionally, pass options, which may be either an array or ``Traversable`` object; this argument will be passed to :ref:`setOptions() <zend.loader.class-map-autoloader.methods.set-options>`.
-
-
 
 
 .. _zend.loader.class-map-autoloader.methods.set-options:
 
 setOptions
    Configure the autoloader
-
    ``setOptions($options)``
 
-
-
-
    **setOptions()**
-
    Configures the state of the autoloader, including registering class maps. Expects an array or ``Traversable`` object; the argument will be passed to :ref:`registerAutoloadMaps() <zend.loader.class-map-autoloader.methods.register-autoload-maps>`.
-
-
 
 
 .. _zend.loader.class-map-autoloader.methods.register-autoload-map:
 
 registerAutoloadMap
    Register a class map
-
    ``registerAutoloadMap($map)``
 
-
-
-
    **registerAutoloadMap()**
-
    Registers a class map with the autoloader. ``$map`` may be either a string referencing a PHP script that returns a class map, or an array defining a class map.
 
    More than one class map may be registered; each will be merged with the previous, meaning it's possible for a later class map to overwrite entries from a previously registered map.
-
-
 
 
 .. _zend.loader.class-map-autoloader.methods.register-autoload-maps:
 
 registerAutoloadMaps
    Register multiple class maps at once
-
    ``registerAutoloadMaps($maps)``
 
-
-
-
    **registerAutoloadMaps()**
-
    Register multiple class maps with the autoloader. Expects either an array or ``Traversable`` object; it then iterates over the argument and passes each value to :ref:`registerAutoloadMap() <zend.loader.class-map-autoloader.methods.register-autoload-map>`.
-
-
 
 
 .. _zend.loader.class-map-autoloader.methods.get-autoload-map:
 
 getAutoloadMap
    Retrieve the current class map
-
    ``getAutoloadMap()``
 
-
-
-
    **getAutoloadMap()**
-
    Retrieves the state of the current class map; the return value is simply an array.
-
-
 
 
 .. _zend.loader.class-map-autoloader.methods.autoload:
 
 autoload
    Attempt to load a class.
-
    ``autoload($class)``
 
-
-
-
    **autoload()**
-
    Attempts to load the class specified. Returns a boolean ``false`` on failure, or a string indicating the class loaded on success.
-
-
 
 
 .. _zend.loader.class-map-autoloader.methods.register:
 
 register
    Register with spl_autoload.
-
    ``register()``
 
-
-
-
    **register()**
-
    Registers the ``autoload()`` method of the current instance with ``spl_autoload_register()``.
-
-
 
 
 .. _zend.loader.class-map-autoloader.examples:
 
 Examples
 --------
-
 
 .. _zend.loader.class-map-autoloader.examples.configuration:
 

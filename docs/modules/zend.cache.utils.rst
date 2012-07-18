@@ -1,9 +1,7 @@
-
 .. _zend.cache.utils:
 
 Zend\\Cache\\Utils
 ==================
-
 
 .. _zend.cache.utils.intro:
 
@@ -14,86 +12,57 @@ The class ``Zend\Cache\Utils`` is a class that defines a set of methods that per
 
 It is a static class and has only static members.
 
-
 .. _zend.cache.utils.methods:
 
 Available Methods
 -----------------
 
-
 .. _zend.cache.utils.methods.get-disk-capacity:
 
 **getDiskCapacity**
    ``getDiskCapacity(string $path)``
-
-
    Get disk capacity
 
-
    Returns array
-
-
 
 .. _zend.cache.utils.methods.get-php-memory-capacity:
 
 **getPhpMemoryCapacity**
    ``getPhpMemoryCapacity()``
-
-
    Get php memory capacity
 
-
    Returns array
-
-
 
 .. _zend.cache.utils.methods.get-system-memory-capacity:
 
 **getSystemMemoryCapacity**
    ``getSystemMemoryCapacity()``
-
-
    Get system memory capacity
 
-
    Returns array
-
-
 
 .. _zend.cache.utils.methods.generate-hash:
 
 **generateHash**
    ``generateHash(string $algo, string $data, bool $raw = false)``
-
-
    Generate a hash value.
-
 
    This helper adds the virtual hash algo "strlen".
 
-
    Returns string
-
-
 
 .. _zend.cache.utils.methods.get-hash-algos:
 
 **getHashAlgos**
    ``getHashAlgos()``
-
-
    Return a list of registered hashing algorithms, incl. the virtual hash algo "strlen".
 
-
    Returns string
-
-
 
 .. _zend.cache.utils.examples:
 
 Examples
 --------
-
 
 .. _zend.cache.utils.examples.getCapacity:
 

@@ -1,9 +1,7 @@
-
 .. _zend.service.twitter:
 
 Zend_Service_Twitter
 ====================
-
 
 .. _zend.service.twitter.introduction:
 
@@ -30,14 +28,12 @@ Introduction
 
 - *block* blocks and unblocks users from following you.
 
-
 .. _zend.service.twitter.authentication:
 
 Authentication
 --------------
 
 With the exception of fetching the public timeline, ``Zend_Service_Twitter`` requires authentication as a valid user. This is achieved using the OAuth authentication protocol. OAuth is the only supported authentication mode for Twitter as of August 2010. The OAuth implementation used by ``Zend_Service_Twitter`` is ``Zend_Oauth``.
-
 
 .. _zend.service.twitter.authentication.example:
 
@@ -67,12 +63,10 @@ The following example demonstrates setting up ``Zend_Service_Twitter`` which is 
    $response = $twitter->account->verifyCredentials();
 
 .. note::
+
    In order to authenticate with Twitter, ALL applications MUST be registered with Twitter in order to receive a Consumer Key and Consumer Secret to be used when authenticating with OAuth. This can not be reused across multiple applications - you must register each new application separately. Twitter access tokens have no expiry date, so storing them to a database is advised (they can, of course, be refreshed simply be repeating the OAuth authorization process). This can only be done while interacting with the user associated with that access token.
 
-
    The previous pre-OAuth version of ``Zend_Service_Twitter`` allowed passing in a username as the first parameter rather than within an array. This is no longer supported.
-
-
 
 .. _zend.service.twitter.account:
 
@@ -80,7 +74,6 @@ Account Methods
 ---------------
 
 - ``verifyCredentials()`` tests if supplied user credentials are valid with minimal overhead.
-
 
   .. _zend.service.twitter.account.verifycredentails:
 
@@ -95,9 +88,7 @@ Account Methods
      ));
      $response   = $twitter->account->verifyCredentials();
 
-
 - ``endSession()`` signs users out of client-facing applications.
-
 
   .. _zend.service.twitter.account.endsession:
 
@@ -112,9 +103,7 @@ Account Methods
      ));
      $response   = $twitter->account->endSession();
 
-
 - ``rateLimitStatus()`` returns the remaining number of *API* requests available to the authenticating user before the *API* limit is reached for the current hour.
-
 
   .. _zend.service.twitter.account.ratelimitstatus:
 
@@ -129,15 +118,12 @@ Account Methods
      ));
      $response   = $twitter->account->rateLimitStatus();
 
-
-
 .. _zend.service.twitter.status:
 
 Status Methods
 --------------
 
 - ``publicTimeline()`` returns the 20 most recent statuses from non-protected users with a custom user icon. The public timeline is cached by Twitter for 60 seconds.
-
 
   .. _zend.service.twitter.status.publictimeline:
 
@@ -152,9 +138,7 @@ Status Methods
      ));
      $response   = $twitter->status->publicTimeline();
 
-
 - ``friendsTimeline()`` returns the 20 most recent statuses posted by the authenticating user and that user's friends.
-
 
   .. _zend.service.twitter.status.friendstimeline:
 
@@ -169,17 +153,13 @@ Status Methods
      ));
      $response   = $twitter->status->friendsTimeline();
 
-
   The ``friendsTimeline()`` method accepts an array of optional parameters to modify the query.
-
 
   - *since* narrows the returned results to just those statuses created after the specified date/time (up to 24 hours old).
 
   - *page* specifies which page you want to return.
 
-
 - ``userTimeline()`` returns the 20 most recent statuses posted from the authenticating user.
-
 
   .. _zend.service.twitter.status.usertimeline:
 
@@ -194,9 +174,7 @@ Status Methods
      ));
      $response   = $twitter->status->userTimeline();
 
-
   The ``userTimeline()`` method accepts an array of optional parameters to modify the query.
-
 
   - *id* specifies the ID or screen name of the user for whom to return the friends_timeline.
 
@@ -206,9 +184,7 @@ Status Methods
 
   - *count* specifies the number of statuses to retrieve. May not be greater than 200.
 
-
 - ``show()`` returns a single status, specified by the *id* parameter below. The status' author will be returned inline.
-
 
   .. _zend.service.twitter.status.show:
 
@@ -223,9 +199,7 @@ Status Methods
      ));
      $response   = $twitter->status->show(1234);
 
-
 - ``update()`` updates the authenticating user's status. This method requires that you pass in the status update that you want to post to Twitter.
-
 
   .. _zend.service.twitter.status.update:
 
@@ -240,15 +214,11 @@ Status Methods
      ));
      $response   = $twitter->status->update('My Great Tweet');
 
-
   The ``update()`` method accepts a second additional parameter.
-
 
   - *in_reply_to_status_id* specifies the ID of an existing status that the status to be posted is in reply to.
 
-
 - ``replies()`` returns the 20 most recent @replies (status updates prefixed with @username) for the authenticating user.
-
 
   .. _zend.service.twitter.status.replies:
 
@@ -263,9 +233,7 @@ Status Methods
      ));
      $response   = $twitter->status->replies();
 
-
   The ``replies()`` method accepts an array of optional parameters to modify the query.
-
 
   - *since* narrows the returned results to just those statuses created after the specified date/time (up to 24 hours old).
 
@@ -273,9 +241,7 @@ Status Methods
 
   - *since_id* returns only statuses with an ID greater than (that is, more recent than) the specified ID.
 
-
 - ``destroy()`` destroys the status specified by the required *id* parameter.
-
 
   .. _zend.service.twitter.status.destroy:
 
@@ -290,15 +256,12 @@ Status Methods
      ));
      $response   = $twitter->status->destroy(12345);
 
-
-
 .. _zend.service.twitter.user:
 
 User Methods
 ------------
 
 - ``friends()``\ r eturns up to 100 of the authenticating user's friends who have most recently updated, each with current status inline.
-
 
   .. _zend.service.twitter.user.friends:
 
@@ -313,9 +276,7 @@ User Methods
      ));
      $response   = $twitter->user->friends();
 
-
   The ``friends()`` method accepts an array of optional parameters to modify the query.
-
 
   - *id* specifies the ID or screen name of the user for whom to return a list of friends.
 
@@ -323,9 +284,7 @@ User Methods
 
   - *page* specifies which page you want to return.
 
-
 - ``followers()`` returns the authenticating user's followers, each with current status inline.
-
 
   .. _zend.service.twitter.user.followers:
 
@@ -340,17 +299,13 @@ User Methods
      ));
      $response   = $twitter->user->followers();
 
-
   The ``followers()`` method accepts an array of optional parameters to modify the query.
-
 
   - *id* specifies the ID or screen name of the user for whom to return a list of followers.
 
   - *page* specifies which page you want to return.
 
-
 - ``show()`` returns extended information of a given user, specified by ID or screen name as per the required *id* parameter below.
-
 
   .. _zend.service.twitter.user.show:
 
@@ -365,15 +320,12 @@ User Methods
      ));
      $response   = $twitter->user->show('myfriend');
 
-
-
 .. _zend.service.twitter.directmessage:
 
 Direct Message Methods
 ----------------------
 
 - ``messages()`` returns a list of the 20 most recent direct messages sent to the authenticating user.
-
 
   .. _zend.service.twitter.directmessage.messages:
 
@@ -388,9 +340,7 @@ Direct Message Methods
      ));
      $response   = $twitter->directMessage->messages();
 
-
   The ``message()`` method accepts an array of optional parameters to modify the query.
-
 
   - *since_id* returns only direct messages with an ID greater than (that is, more recent than) the specified ID.
 
@@ -398,9 +348,7 @@ Direct Message Methods
 
   - *page* specifies which page you want to return.
 
-
 - ``sent()`` returns a list of the 20 most recent direct messages sent by the authenticating user.
-
 
   .. _zend.service.twitter.directmessage.sent:
 
@@ -415,9 +363,7 @@ Direct Message Methods
      ));
      $response   = $twitter->directMessage->sent();
 
-
   The ``sent()`` method accepts an array of optional parameters to modify the query.
-
 
   - *since_id* returns only direct messages with an ID greater than (that is, more recent than) the specified ID.
 
@@ -425,9 +371,7 @@ Direct Message Methods
 
   - *page* specifies which page you want to return.
 
-
 - ``new()`` sends a new direct message to the specified user from the authenticating user. Requires both the user and text parameters below.
-
 
   .. _zend.service.twitter.directmessage.new:
 
@@ -442,9 +386,7 @@ Direct Message Methods
      ));
      $response   = $twitter->directMessage->new('myfriend', 'mymessage');
 
-
 - ``destroy()`` destroys the direct message specified in the required *id* parameter. The authenticating user must be the recipient of the specified direct message.
-
 
   .. _zend.service.twitter.directmessage.destroy:
 
@@ -459,15 +401,12 @@ Direct Message Methods
      ));
      $response   = $twitter->directMessage->destroy(123548);
 
-
-
 .. _zend.service.twitter.friendship:
 
 Friendship Methods
 ------------------
 
 - ``create()`` befriends the user specified in the *id* parameter with the authenticating user.
-
 
   .. _zend.service.twitter.friendship.create:
 
@@ -482,9 +421,7 @@ Friendship Methods
      ));
      $response   = $twitter->friendship->create('mynewfriend');
 
-
 - ``destroy()`` discontinues friendship with the user specified in the *id* parameter and the authenticating user.
-
 
   .. _zend.service.twitter.friendship.destroy:
 
@@ -499,9 +436,7 @@ Friendship Methods
      ));
      $response   = $twitter->friendship->destroy('myoldfriend');
 
-
 - ``exists()`` tests if a friendship exists between the user specified in the *id* parameter and the authenticating user.
-
 
   .. _zend.service.twitter.friendship.exists:
 
@@ -516,15 +451,12 @@ Friendship Methods
      ));
      $response   = $twitter->friendship->exists('myfriend');
 
-
-
 .. _zend.service.twitter.favorite:
 
 Favorite Methods
 ----------------
 
 - ``favorites()`` returns the 20 most recent favorite statuses for the authenticating user or user specified by the *id* parameter.
-
 
   .. _zend.service.twitter.favorite.favorites:
 
@@ -539,17 +471,13 @@ Favorite Methods
      ));
      $response   = $twitter->favorite->favorites();
 
-
   The ``favorites()`` method accepts an array of optional parameters to modify the query.
-
 
   - *id* specifies the ID or screen name of the user for whom to request a list of favorite statuses.
 
   - *page* specifies which page you want to return.
 
-
 - ``create()`` favorites the status specified in the *id* parameter as the authenticating user.
-
 
   .. _zend.service.twitter.favorite.create:
 
@@ -564,9 +492,7 @@ Favorite Methods
      ));
      $response   = $twitter->favorite->create(12351);
 
-
 - ``destroy()`` un-favorites the status specified in the *id* parameter as the authenticating user.
-
 
   .. _zend.service.twitter.favorite.destroy:
 
@@ -581,15 +507,12 @@ Favorite Methods
      ));
      $response   = $twitter->favorite->destroy(12351);
 
-
-
 .. _zend.service.twitter.block:
 
 Block Methods
 -------------
 
 - ``exists()`` checks if the authenticating user is blocking a target user and can optionally return the blocked user's object if a block does exists.
-
 
   .. _zend.service.twitter.block.exists:
 
@@ -609,15 +532,11 @@ Block Methods
      // returns the blocked user's info if the user is blocked
      $response2 = $twitter->block->exists('blockeduser', true);
 
-
   The ``favorites()`` method accepts a second optional parameter.
-
 
   - *returnResult* specifies whether or not return the user object instead of just ``TRUE`` or ``FALSE``.
 
-
 - ``create()`` blocks the user specified in the *id* parameter as the authenticating user and destroys a friendship to the blocked user if one exists. Returns the blocked user in the requested format when successful.
-
 
   .. _zend.service.twitter.block.create:
 
@@ -632,9 +551,7 @@ Block Methods
      ));
      $response   = $twitter->block->create('usertoblock);
 
-
 - ``destroy()`` un-blocks the user specified in the *id* parameter for the authenticating user. Returns the un-blocked user in the requested format when successful.
-
 
   .. _zend.service.twitter.block.destroy:
 
@@ -649,9 +566,7 @@ Block Methods
      ));
      $response   = $twitter->block->destroy('blockeduser');
 
-
 - ``blocking()`` returns an array of user objects that the authenticating user is blocking.
-
 
   .. _zend.service.twitter.block.blocking:
 
@@ -671,16 +586,13 @@ Block Methods
      // return an array of numeric user IDs from the second page
      $response2 = $twitter->block->blocking(2, true);
 
-
   The ``favorites()`` method accepts two optional parameters.
-
 
   - *page* specifies which page ou want to return. A single page contains 20 IDs.
 
   - *returnUserIds* specifies whether to return an array of numeric user IDs the authenticating user is blocking instead of an array of user objects.
 
-
-
 .. include:: zend.service.twitter.search.rst
+
 
 .. _`Twitter RESTAPI`: http://apiwiki.twitter.com/Twitter-API-Documentation

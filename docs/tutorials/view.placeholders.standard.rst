@@ -1,4 +1,3 @@
-
 .. _learning.view.placeholders.standard:
 
 Standard Placeholders
@@ -9,7 +8,6 @@ In the :ref:`previous section <learning.view.placeholders.basics>`, we learned a
 Most of the shipped placeholders are for generating content for the **<head>** section of your layout content -- an area you typically cannot manipulate directly via your application view scripts, but one you may want to influence. As examples: you may want your title to contain certain content on every page, but specific content based on the controller and/or action; you may want to specify *CSS* files to load based on what section of the application you're in; you may need specific JavaScript scripts loaded at different times; or you may want to set the **DocType** declaration.
 
 Zend Framework ships with placeholder implementations for each of these situations, and several more.
-
 
 .. _learning.view.placeholders.standard.doctype:
 
@@ -30,22 +28,17 @@ Among the other available mnemonics, you'll find these common types:
 **XHTML1_STRICT**
    *XHTML* 1.0 Strict
 
-
 **XHTML1_TRANSITIONAL**
    *XHTML* 1.0 Transitional
-
 
 **HTML4_STRICT**
    *HTML* 4.01 Strict
 
-
 **HTML4_Loose**
    *HTML* 4.01 Loose
 
-
 **HTML5**
    *HTML* 5
-
 
 You can assign the type and render the declaration in a single call:
 
@@ -79,7 +72,6 @@ Then, in your layout script, simply ``echo()`` the helper at the top of the file
        <!-- ... -->
 
 This will ensure that your DocType-aware view helpers render the appropriate markup, ensure that the type is set well before the layout is rendered, and provide a single location to change the DocType.
-
 
 .. _learning.view.placeholders.standard.head-title:
 
@@ -142,7 +134,6 @@ This will generate the following output:
    <!-- If prepend() was used: -->
    <title>Some Page :: My Site</title>
 
-
 .. _learning.view.placeholders.standard.head-link:
 
 Specifying Stylesheets with HeadLink
@@ -203,7 +194,6 @@ This will generate the following output:
 
    <link rel="stylesheet" type="text/css" href="/styles/site.css" />
    <link rel="stylesheet" type="text/css" href="/styles/user-list.css" />
-
 
 .. _learning.view.placeholders.standard.head-script:
 
@@ -283,21 +273,18 @@ This will generate the following output:
    </script>
 
 .. note::
+
    **InlineScript Variant**
 
    Many browsers will often block display of a page until all scripts and stylesheets referenced in the **<head>** section have loaded. If you have a number of such directives, this can impact how soon somebody can start actually viewing the page.
 
-
    One way around this is to emit your **<script>** tags just prior to closing the **<body>** of your document. (This is a practice specifically recommend by the `Y! Slow project`_.)
 
-
    Zend Framework supports this in two different ways:
-
 
    - You can render your ``headScript()`` tag wherever you like in your layout script; just because the title references "head" does not mean it needs to be rendered in that location.
 
    - Alternately, you may use the ``inlineScript()`` helper, which is simply a variant on ``headScript()``, and retains the same behavior, but uses a separate registry.
-
 
 
 

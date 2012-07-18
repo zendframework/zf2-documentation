@@ -1,9 +1,7 @@
-
 .. _zend.acl.refining:
 
 Refining Access Controls
 ========================
-
 
 .. _zend.acl.refining.precise:
 
@@ -104,7 +102,6 @@ We can now query the *ACL* with respect to the latest changes:
    echo $acl->isAllowed('administrator', 'announcement', 'archive') ?
         "allowed" : "denied";
    // denied
-
 
 .. _zend.acl.refining.removing:
 

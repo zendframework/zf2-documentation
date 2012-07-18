@@ -1,9 +1,7 @@
-
 .. _zend.progressbar.introduction:
 
 Zend_ProgressBar
 ================
-
 
 .. _zend.progressbar.whatisit:
 
@@ -11,7 +9,6 @@ Introduction
 ------------
 
 ``Zend_ProgressBar`` is a component to create and update progressbars in different environments. It consists of a single backend, which outputs the progress through one of the multiple adapters. On every update, it takes an absolute value and optionally a status message, and then calls the adapter with some precalculated values like percentage and estimated time left.
-
 
 .. _zend.progressbar.basic:
 
@@ -37,14 +34,12 @@ In the first step, an instance of ``Zend_ProgressBar`` is created, with a specif
 
 You can also call the ``update()`` method of ``Zend_ProgressBar`` without arguments, which just recalculates ETA and notifies the adapter. This is useful when there is no data update but you want the progressbar to be updated.
 
-
 .. _zend.progressbar.persistent:
 
 Persistent progress
 -------------------
 
 If you want the progressbar to be persistent over multiple requests, you can give the name of a session namespace as fourth argument to the constructor. In that case, the progressbar will not notify the adapter within the constructor, but only when you call ``update()`` or ``finish()``. Also the current value, the status text and the start time for ETA calculation will be fetched in the next request run again.
-
 
 .. _zend.progressbar.adapters:
 
@@ -61,7 +56,7 @@ Standard adapters
 
 
 
-
 .. include:: zend.progress-bar.adapter.console.rst
 .. include:: zend.progress-bar.adapter.js-push.rst
 .. include:: zend.progress-bar.adapter.js-pull.rst
+

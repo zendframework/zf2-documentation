@@ -1,9 +1,7 @@
-
 .. _zend.search.lucene.charset:
 
 Character Set
 =============
-
 
 .. _zend.search.lucene.charset.description:
 
@@ -13,7 +11,6 @@ UTF-8 and single-byte character set support
 ``Zend_Search_Lucene`` works with the UTF-8 charset internally. Index files store unicode data in Java's "modified UTF-8 encoding". ``Zend_Search_Lucene`` core completely supports this encoding with one exception. [#]_
 
 Actual input data encoding may be specified through ``Zend_Search_Lucene`` *API*. Data will be automatically converted into UTF-8 encoding.
-
 
 .. _zend.search.lucene.charset.default_analyzer:
 
@@ -25,9 +22,8 @@ However, the default text analyzer (which is also used within query parser) uses
 ctype_alpha() is not UTF-8 compatible, so the analyzer converts text to 'ASCII//TRANSLIT' encoding before indexing. The same processing is transparently performed during query parsing. [#]_
 
 .. note::
+
    Default analyzer doesn't treats numbers as parts of terms. Use corresponding 'Num' analyzer if you don't want words to be broken by numbers.
-
-
 
 .. _zend.search.lucene.charset.utf_analyzer:
 
@@ -45,11 +41,10 @@ Any of this analyzers can be enabled with the code like this:
        new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
 
 .. warning::
+
    UTF-8 compatible analyzers were improved in Zend Framework 1.5. Early versions of analyzers assumed all non-ascii characters are letters. New analyzers implementation has more accurate behavior.
 
-
    This may need you to re-build index to have data and search queries tokenized in the same way, otherwise search engine may return wrong result sets.
-
 
 All of these analyzers need PCRE (Perl-compatible regular expressions) library to be compiled with UTF-8 support turned on. PCRE UTF-8 support is turned on for the PCRE library sources bundled with *PHP* source code distribution, but if shared library is used instead of bundled with *PHP* sources, then UTF-8 support state may depend on you operating system.
 
@@ -113,7 +108,6 @@ If you don't want mbstring extension to be turned on, but need case insensitive 
 .. _`mbstring`: http://www.php.net/manual/en/ref.mbstring.php
 
 .. [#] ``Zend_Search_Lucene`` supports only Basic Multilingual Plane (BMP) characters (from 0x0000 to 0xFFFF) and doesn't support "supplementary characters" (characters whose code points are greater than 0xFFFF)
-
 
        Java 2 represents these characters as a pair of char (16-bit) values, the first from the high-surrogates range (0xD800-0xDBFF), the second from the low-surrogates range (0xDC00-0xDFFF). Then they are encoded as usual UTF-8 characters in six bytes. Standard UTF-8 representation uses four bytes for supplementary characters.
 .. [#] Conversion to 'ASCII//TRANSLIT' may depend on current locale and OS.

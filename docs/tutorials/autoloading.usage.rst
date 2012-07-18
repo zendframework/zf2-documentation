@@ -1,4 +1,3 @@
-
 .. _learning.autoloading.usage:
 
 Basic Autoloader Usage
@@ -34,33 +33,28 @@ Alternately, you can tell ``Zend_Loader_Autoloader`` to act as a "fallback" auto
    $loader->setFallbackAutoloader(true);
 
 .. warning::
+
    **Do not use as a fallback autoloader**
 
    While it's tempting to use ``Zend_Loader_Autoloader`` as a fallback autoloader, we do not recommend the practice.
 
-
    Internally, ``Zend_Loader_Autoloader`` uses ``Zend_Loader::loadClass()`` to load classes. That method uses ``include()`` to attempt to load the given class file. ``include()`` will return a boolean ``FALSE`` if not successful -- but also issues a *PHP* warning. This latter fact can lead to some issues:
-
 
    - If ``display_errors`` is enabled, the warning will be included in output.
 
    - Depending on the ``error_reporting`` level you have chosen, it could also clutter your logs.
 
-
    You can suppress the error messages (the ``Zend_Loader_Autoloader`` documentation details this), but note that the suppression is only relevant when ``display_errors`` is enabled; the error log will always display the messages. For these reasons, we recommend always configuring the namespace prefixes the autoloader should be aware of
 
-
 .. note::
+
    **Namespace Prefixes vs PHP Namespaces**
 
    At the time this is written, *PHP* 5.3 has been released. With that version, *PHP* now has official namespace support.
 
-
    However, Zend Framework predates *PHP* 5.3, and thus namespaces. Within Zend Framework, when we refer to "namespaces", we are referring to a practice whereby classes are prefixed with a vender "namespace". As an example, all Zend Framework class names are prefixed with "Zend\_" -- that is our vendor "namespace".
 
-
    Zend Framework plans to offer native *PHP* namespace support to the autoloader in future revisions, and its own library will utilize namespaces starting with version 2.0.0.
-
 
 If you have a custom autoloader you wish to use with Zend Framework -- perhaps an autoloader from a third-party library you are also using -- you can manage it with ``Zend_Loader_Autoloader``'s ``pushAutoloader()`` and ``unshiftAutoloader()`` methods. These methods will append or prepend, respectively, autoloaders to a chain that is called prior to executing Zend Framework's internal autoloading mechanism. This approach offers the following benefits:
 

@@ -1,9 +1,7 @@
-
 .. _zend.ldap.ldif:
 
 Serializing LDAP data to and from LDIF
 ======================================
-
 
 .. _zend.ldap.ldif.encode:
 
@@ -68,7 +66,6 @@ Serialize a LDAP entry to LDIF
    cn;lang-en: Rodney Ogasawara
    title;lang-en: Sales, Director
    */
-
 
 .. _zend.ldap.ldif.decode:
 

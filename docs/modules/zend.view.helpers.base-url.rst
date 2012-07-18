@@ -1,4 +1,3 @@
-
 .. _zend.view.helpers.initial.baseurl:
 
 BaseUrl Helper
@@ -29,7 +28,7 @@ Usage of the BaseUrl helper is very straightforward:
         href="<?php echo $this->baseUrl('css/base.css'); ?>" />
 
 .. note::
-   For simplicity's sake, we strip out the entry *PHP* file (e.g., "``index.php``") from the base *URL* that was contained in ``Zend_Controller``. However, in some situations this may cause a problem. If one occurs, use ``$this->getHelper('BaseUrl')->setBaseUrl()`` to set your own BaseUrl.
 
+   For simplicity's sake, we strip out the entry *PHP* file (e.g., "``index.php``") from the base *URL* that was contained in ``Zend_Controller``. However, in some situations this may cause a problem. If one occurs, use ``$this->getHelper('BaseUrl')->setBaseUrl()`` to set your own BaseUrl.
 
 

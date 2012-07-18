@@ -1,4 +1,3 @@
-
 .. _zend.feed.introduction:
 
 Introduction
@@ -11,11 +10,10 @@ Programmatically, ``Zend_Feed`` consists of a base ``Zend_Feed`` class, abstract
 In the example below, we demonstrate a simple use case of retrieving an *RSS* feed and saving relevant portions of the feed data to a simple *PHP* array, which could then be used for printing the data, storing to a database, etc.
 
 .. note::
+
    **Be aware**
 
    Many *RSS* feeds have different channel and item properties available. The *RSS* specification provides for many optional properties, so be aware of this when writing code to work with *RSS* data.
-
-
 
 .. _zend.feed.introduction.example.rss:
 

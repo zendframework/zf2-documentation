@@ -1,4 +1,3 @@
-
 .. _learning.quickstart.conclusion:
 
 Congratulations!

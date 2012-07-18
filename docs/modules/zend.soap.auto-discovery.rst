@@ -1,9 +1,7 @@
-
 .. _zend.soap.autodiscovery:
 
 AutoDiscovery
 =============
-
 
 .. _zend.soap.autodiscovery.introduction:
 
@@ -63,10 +61,10 @@ Here is an example of common usage of the autodiscovery functionality. The ``gen
    $dom = $wsdl->toDomDocument();
 
 .. note::
-   **Zend\\Soap\\Autodiscover is not a Soap Server**
+
+   **Zend\Soap\Autodiscover is not a Soap Server**
 
    It is very important to note, that the class ``Zend\Soap\AutoDiscover`` does not act as a *SOAP* Server on its own.
-
 
    .. code-block:: php
       :linenos:
@@ -82,8 +80,6 @@ Here is an example of common usage of the autodiscovery functionality. The ``gen
           $soap->setClass('HelloWorldService');
           $soap->handle();
       }
-
-
 
 .. _zend.soap.autodiscovery.class:
 
@@ -111,11 +107,9 @@ The following rules are used while WSDL generation:
 
   It's also used as a target namespace for all service related names (including described complex types).
 
-
 - Class methods are joined into one `Port Type`_.
 
   *$serviceName . 'Port'* is used as Port Type name.
-
 
 - Each class method/function is registered as a corresponding port operation.
 
@@ -124,8 +118,6 @@ The following rules are used while WSDL generation:
 - WSDL autodiscover utilizes the *PHP* docblocks provided by the developer to determine the parameter and return types. In fact, for scalar types, this is the only way to determine the parameter types, and for return types, this is the only way to determine them.
 
   That means, providing correct and fully detailed docblocks is not only best practice, but is required for discovered class.
-
-
 
 
 
@@ -147,7 +139,6 @@ If set of functions are used to provide SOAP server functionality, then the same
    $wsdl = $autodiscover->generate();
 
 The same rules apply to generation as described in the class audodiscover seection above.
-
 
 .. _zend.soap.autodiscovery.datatypes:
 
@@ -177,7 +168,6 @@ Input/output datatypes are converted into network service types using the follow
 - If type is not matched to any of these types by some reason, then *xsd:anyType* is used.
 
 Where *xsd:* is "http://www.w3.org/2001/XMLSchema" namespace, *soap-enc:* is a "http://schemas.xmlsoap.org/soap/encoding/" namespace, *tns:* is a "target namespace" for a service.
-
 
 .. _zend.soap.autodiscovery.wsdlstyles:
 

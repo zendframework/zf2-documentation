@@ -1,9 +1,7 @@
-
 .. _zend.json.advanced:
 
 Advanced Usage of Zend_Json
 ===========================
-
 
 .. _zend.json.advanced.objects1:
 
@@ -28,14 +26,12 @@ Any objects thus decoded are returned as ``StdClass`` objects with properties co
 
 The recommendation of Zend Framework is that the individual developer should decide how to decode *JSON* objects. If an object of a specified type should be created, it can be created in the developer code and populated with the values decoded using ``Zend_Json``.
 
-
 .. _zend.json.advanced.objects2:
 
 Encoding PHP objects
 --------------------
 
 If you are encoding *PHP* objects by default the encoding mechanism can only access public properties of these objects. When a method ``toJson()`` is implemented on an object to encode, ``Zend_Json`` calls this method and expects the object to return a *JSON* representation of its internal state.
-
 
 .. _zend.json.advanced.internal:
 
@@ -50,7 +46,6 @@ Still sometimes you might want to use the internal encoder/decoder even if you h
    :linenos:
 
    Zend_Json::$useBuiltinEncoderDecoder = true:
-
 
 .. _zend.json.advanced.expr:
 

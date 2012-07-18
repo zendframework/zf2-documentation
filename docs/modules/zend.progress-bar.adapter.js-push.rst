@@ -1,4 +1,3 @@
-
 .. _zend.progressbar.adapter.jspush:
 
 Zend_ProgressBar_Adapter_JsPush
@@ -25,7 +24,6 @@ The usage of this adapter is quite simple. First you create a progressbar in you
 - *timeRemaining*: The expected time for the process to finish
 
 - *text*: The optional status message, if given
-
 
 .. _zend.progressbar-adapter.jspush.example:
 
@@ -91,10 +89,10 @@ Instead of creating your custom progressbar, you may want to use one of the avai
 - Prototype: `http://livepipe.net/control/progressbar`_
 
 .. note::
+
    **Interval of updates**
 
    You should take care of not sending too many updates, as every update has a min-size of 1kb. This is a requirement for the Safari browser to actually render and execute the function call. Internet Explorer has a similar limitation of 256 bytes.
-
 
 
 

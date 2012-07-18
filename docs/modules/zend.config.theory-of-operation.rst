@@ -1,4 +1,3 @@
-
 .. _zend.config.theory_of_operation:
 
 Theory of Operation
@@ -13,16 +12,16 @@ Each configuration data array value becomes a property of the ``Zend\Config\Conf
 By default, configuration data made available through ``Zend\Config\Config`` are read-only, and an assignment (e.g., ``$config->database->host = 'example.com';``) results in a thrown exception. This default behavior may be overridden through the constructor, however, to allow modification of data values. Also, when modifications are allowed, ``Zend\Config\Config`` supports unsetting of values (i.e. ``unset($config->database->host)``). The ``isReadOnly()`` method can be used to determine if modifications to a given ``Zend\Config\Config`` object are allowed and the ``setReadOnly()`` method can be used to stop any further modifications to a ``Zend\Config\Config`` object that was created allowing modifications.
 
 .. note::
+
    **Modifying Config does not save changes**
 
    It is important not to confuse such in-memory modifications with saving configuration data out to specific storage media. Tools for creating and modifying configuration data for various storage media are out of scope with respect to ``Zend\Config\Config``. Third-party open source solutions are readily available for the purpose of creating and modifying configuration data for various storage media.
 
-
 If you have two ``Zend\Config\Config`` objects, you can merge them into a single object using the ``merge()`` function. For example, given ``$config`` and ``$localConfig``, you can merge data from ``$localConfig`` to ``$config`` using ``$config->merge($localConfig);``. The items in ``$localConfig`` will override any items with the same name in ``$config``.
 
 .. note::
-   The ``Zend\Config\Config`` object that is performing the merge must have been constructed to allow modifications, by passing ``TRUE`` as the second parameter of the constructor. The ``setReadOnly()`` method can then be used to prevent any further modifications after the merge is complete.
 
+   The ``Zend\Config\Config`` object that is performing the merge must have been constructed to allow modifications, by passing ``TRUE`` as the second parameter of the constructor. The ``setReadOnly()`` method can then be used to prevent any further modifications after the merge is complete.
 
 
 

@@ -1,4 +1,3 @@
-
 .. _learning.plugins.intro:
 
 Introduction

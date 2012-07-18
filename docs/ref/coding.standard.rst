@@ -1,16 +1,13 @@
-
 .. _coding-standard:
 
 **************************************
 Zend Framework Coding Standard for PHP
 **************************************
 
-
 .. _coding-standard.overview:
 
 Overview
 --------
-
 
 .. _coding-standard.overview.scope:
 
@@ -20,8 +17,8 @@ Scope
 This document provides guidelines for code formatting and documentation to individuals and teams contributing to Zend Framework. Many developers using Zend Framework have also found these coding standards useful because their code's style remains consistent with all Zend Framework code. It is also worth noting that it requires significant effort to fully specify coding standards.
 
 .. note::
-   Sometimes developers consider the establishment of a standard more important than what that standard actually suggests at the most detailed level of design. The guidelines in Zend Framework's coding standards capture practices that have worked well on the Zend Framework project. You may modify these standards or use them as is in accordance with the terms of our `license`_.
 
+   Sometimes developers consider the establishment of a standard more important than what that standard actually suggests at the most detailed level of design. The guidelines in Zend Framework's coding standards capture practices that have worked well on the Zend Framework project. You may modify these standards or use them as is in accordance with the terms of our `license`_.
 
 Topics covered in Zend Framework's coding standards include:
 
@@ -33,7 +30,6 @@ Topics covered in Zend Framework's coding standards include:
 
 - Inline Documentation
 
-
 .. _coding-standard.overview.goals:
 
 Goals
@@ -41,12 +37,10 @@ Goals
 
 Coding standards are important in any development project, but they are particularly important when many developers are working on the same project. Coding standards help ensure that the code is high quality, has fewer bugs, and can be easily maintained.
 
-
 .. _coding-standard.php-file-formatting:
 
 PHP File Formatting
 -------------------
-
 
 .. _coding-standard.php-file-formatting.general:
 
@@ -56,9 +50,8 @@ General
 For files that contain only *PHP* code, the closing tag ("?>") is never permitted. It is not required by *PHP*, and omitting it´ prevents the accidental injection of trailing white space into the response.
 
 .. note::
+
    **Important**: Inclusion of arbitrary binary data as permitted by ``__HALT_COMPILER()`` is prohibited from *PHP* files in the Zend Framework project or files derived from them. Use of this feature is only permitted for some installation scripts.
-
-
 
 .. _coding-standard.php-file-formatting.indentation:
 
@@ -67,14 +60,12 @@ Indentation
 
 Indentation should consist of 4 spaces. Tabs are not allowed.
 
-
 .. _coding-standard.php-file-formatting.max-line-length:
 
 Maximum Line Length
 ^^^^^^^^^^^^^^^^^^^
 
 The target line length is 80 characters. That is to say, Zend Framework developers should strive keep each line of their code under 80 characters where possible and practical. However, longer lines are acceptable in some circumstances. The maximum length of any line of *PHP* code is 120 characters.
-
 
 .. _coding-standard.php-file-formatting.line-termination:
 
@@ -85,12 +76,10 @@ Line termination follows the Unix text file convention. Lines must end with a si
 
 Note: Do not use carriage returns (CR) as is the convention in Apple OS's (0x0D) or the carriage return - linefeed combination (*CRLF*) as is standard for the Windows OS (0x0D, 0x0A).
 
-
 .. _coding-standard.naming-conventions:
 
 Naming Conventions
 ------------------
-
 
 .. _coding-standard.naming-conventions.classes:
 
@@ -108,9 +97,8 @@ These conventions define a pseudo-namespace mechanism for Zend Framework. Zend F
 See the class names in the standard and extras libraries for examples of this classname convention.
 
 .. note::
+
    **Important**: Code that must be deployed alongside Zend Framework libraries but is not part of the standard or extras libraries (e.g. application code or libraries that are not distributed by Zend) must never start with "Zend\_" or "ZendX\_".
-
-
 
 .. _coding-standard.naming-conventions.abstracts:
 
@@ -120,14 +108,12 @@ Abstract Classes
 In general, abstract classes follow the same conventions as :ref:`classes <coding-standard.naming-conventions.classes>`, with one additional rule: abstract class names must end in the term, "Abstract", and that term must not be preceded by an underscore. As an example, ``Zend_Controller_Plugin_Abstract`` is considered an invalid name, but ``Zend_Controller_PluginAbstract`` or ``Zend_Controller_Plugin_PluginAbstract`` would be valid names.
 
 .. note::
-   This naming convention is new with version 1.9.0 of Zend Framework. Classes that pre-date that version may not follow this rule, but will be renamed in the future in order to comply.
 
+   This naming convention is new with version 1.9.0 of Zend Framework. Classes that pre-date that version may not follow this rule, but will be renamed in the future in order to comply.
 
    The rationale for the change is due to namespace usage. As we look towards Zend Framework 2.0 and usage of *PHP* 5.3, we will be using namespaces. The easiest way to automate conversion to namespaces is to simply convert underscores to the namespace separator -- but under the old naming conventions, this leaves the classname as simply "Abstract" or "Interface" -- both of which are reserved keywords in *PHP*. If we prepend the (sub)component name to the classname, we can avoid these issues.
 
-
    To illustrate the situation, consider converting the class ``Zend_Controller_Request_Abstract`` to use namespaces:
-
 
    .. code-block:: php
       :linenos:
@@ -139,9 +125,7 @@ In general, abstract classes follow the same conventions as :ref:`classes <codin
           // ...
       }
 
-
    Clearly, this will not work. Under the new naming conventions, however, this would become:
-
 
    .. code-block:: php
       :linenos:
@@ -153,10 +137,7 @@ In general, abstract classes follow the same conventions as :ref:`classes <codin
           // ...
       }
 
-
    We still retain the semantics and namespace separation, while omitting the keyword issues; simultaneously, it better describes the abstract class.
-
-
 
 .. _coding-standard.naming-conventions.interfaces:
 
@@ -168,9 +149,8 @@ In general, interfaces follow the same conventions as :ref:`classes <coding-stan
 While this rule is not required, it is strongly recommended, as it provides a good visual cue to developers as to which files contain interfaces rather than classes.
 
 .. note::
+
    This naming convention is new with version 1.9.0 of Zend Framework. Classes that pre-date that version may not follow this rule, but will be renamed in the future in order to comply. See :ref:`the previous section <coding-standard.naming-conventions.abstracts>` for more information on the rationale for this change.
-
-
 
 .. _coding-standard.naming-conventions.filenames:
 
@@ -191,7 +171,6 @@ Any file that contains *PHP* code should end with the extension "``.php``", with
    Zend/View/Helper/FormRadio.php
 
 File names must map to class names as described above.
-
 
 .. _coding-standard.naming-conventions.functions-and-methods:
 
@@ -221,7 +200,6 @@ For methods on objects that are declared with the "private" or "protected" modif
 
 Functions in the global scope (a.k.a "floating functions") are permitted but discouraged in most cases. Consider wrapping these functions in a static class.
 
-
 .. _coding-standard.naming-conventions.variables:
 
 Variables
@@ -234,7 +212,6 @@ For instance variables that are declared with the "private" or "protected" modif
 As with function names (see section 3.3) variable names must always start with a lowercase letter and follow the "camelCaps" capitalization convention.
 
 Verbosity is generally encouraged. Variables should always be as verbose as practical to describe the data that the developer intends to store in them. Terse variable names such as "``$i``" and "``$n``" are discouraged for all but the smallest loop contexts. If a loop contains more than 20 lines of code, the index variables should have more descriptive names.
-
 
 .. _coding-standard.naming-conventions.constants:
 
@@ -249,12 +226,10 @@ For example, ``EMBED_SUPPRESS_EMBED_EXCEPTION`` is permitted but ``EMBED_SUPPRES
 
 Constants must be defined as class members with the "const" modifier. Defining constants in the global scope with the "define" function is permitted but strongly discouraged.
 
-
 .. _coding-standard.coding-style:
 
 Coding Style
 ------------
-
 
 .. _coding-standard.coding-style.php-code-demarcation:
 
@@ -272,12 +247,10 @@ PHP Code Demarcation
 
 Short tags are never allowed. For files containing only *PHP* code, the closing tag must always be omitted (See :ref:`General standards <coding-standard.php-file-formatting.general>`).
 
-
 .. _coding-standard.coding-style.strings:
 
 Strings
 ^^^^^^^
-
 
 .. _coding-standard.coding-style.strings.literals:
 
@@ -290,7 +263,6 @@ When a string is literal (contains no variable substitutions), the apostrophe or
    :linenos:
 
    $a = 'Example String';
-
 
 .. _coding-standard.coding-style.strings.literals-containing-apostrophes:
 
@@ -306,7 +278,6 @@ When a literal string itself contains apostrophes, it is permitted to demarcate 
         . "WHERE `name`='Fred' OR `name`='Susan'";
 
 This syntax is preferred over escaping apostrophes as it is much easier to read.
-
 
 .. _coding-standard.coding-style.strings.variable-substitution:
 
@@ -329,7 +300,6 @@ For consistency, this form is not permitted:
 
    $greeting = "Hello ${name}, welcome back!";
 
-
 .. _coding-standard.coding-style.strings.string-concatenation:
 
 String Concatenation
@@ -351,12 +321,10 @@ When concatenating strings with the "." operator, it is encouraged to break the 
         . "WHERE `name` = 'Susan' "
         . "ORDER BY `name` ASC ";
 
-
 .. _coding-standard.coding-style.arrays:
 
 Arrays
 ^^^^^^
-
 
 .. _coding-standard.coding-style.arrays.numerically-indexed:
 
@@ -396,7 +364,6 @@ Alternately, the initial array item may begin on the following line. If so, it s
 
 When using this latter declaration, we encourage using a trailing comma for the last item in the array; this minimizes the impact of adding new items on successive lines, and helps to ensure no parse errors occur due to a missing comma.
 
-
 .. _coding-standard.coding-style.arrays.associative:
 
 Associative Arrays
@@ -422,12 +389,10 @@ Alternately, the initial array item may begin on the following line. If so, it s
 
 When using this latter declaration, we encourage using a trailing comma for the last item in the array; this minimizes the impact of adding new items on successive lines, and helps to ensure no parse errors occur due to a missing comma.
 
-
 .. _coding-standard.coding-style.classes:
 
 Classes
 ^^^^^^^
-
 
 .. _coding-standard.coding-style.classes.declaration:
 
@@ -491,7 +456,6 @@ If the class implements multiple interfaces and the declaration exceeds the maxi
    {
    }
 
-
 .. _coding-standard.coding-style.classes.member-variables:
 
 Class Member Variables
@@ -503,12 +467,10 @@ Any variables declared in a class must be listed at the top of the class, above 
 
 The **var** construct is not permitted. Member variables always declare their visibility by using one of the ``private``, ``protected``, or ``public`` modifiers. Giving access to member variables directly by declaring them as public is permitted but discouraged in favor of accessor methods (set & get).
 
-
 .. _coding-standard.coding-style.functions-and-methods:
 
 Functions and Methods
 ^^^^^^^^^^^^^^^^^^^^^
-
 
 .. _coding-standard.coding-style.functions-and-methods.declaration:
 
@@ -565,8 +527,8 @@ In cases where the argument list exceeds the :ref:`maximum line length <coding-s
    }
 
 .. note::
-   Pass-by-reference is the only parameter passing mechanism permitted in a method declaration.
 
+   Pass-by-reference is the only parameter passing mechanism permitted in a method declaration.
 
 .. code-block:: php
    :linenos:
@@ -612,7 +574,6 @@ The return value must not be enclosed in parentheses. This can hinder readabilit
        }
    }
 
-
 .. _coding-standard.coding-style.functions-and-methods.usage:
 
 Function and Method Usage
@@ -644,12 +605,10 @@ In passing arrays as arguments to a function, the function call may include the 
        56.44, $d, 500
    ), 2, 3);
 
-
 .. _coding-standard.coding-style.control-statements:
 
 Control Statements
 ^^^^^^^^^^^^^^^^^^
-
 
 .. _coding-standard.coding-style.control-statements.if-else-elseif:
 
@@ -717,7 +676,6 @@ For "if" statements that include "elseif" or "else", the formatting conventions 
 
 *PHP* allows statements to be written without braces in some circumstances. This coding standard makes no differentiation- all "if", "elseif" or "else" statements must use braces.
 
-
 .. _coding-standards.coding-style.control-statements.switch:
 
 Switch
@@ -744,15 +702,13 @@ All content within the "switch" statement must be indented using four spaces. Co
 The construct ``default`` should never be omitted from a ``switch`` statement.
 
 .. note::
+
    It is sometimes useful to write a ``case`` statement which falls through to the next case by not including a ``break`` or ``return`` within that case. To distinguish these cases from bugs, any ``case`` statement where ``break`` or ``return`` are omitted should contain a comment indicating that the break was intentionally omitted.
-
-
 
 .. _coding-standards.inline-documentation:
 
 Inline Documentation
 ^^^^^^^^^^^^^^^^^^^^
-
 
 .. _coding-standards.inline-documentation.documentation-format:
 
@@ -762,7 +718,6 @@ Documentation Format
 All documentation blocks ("docblocks") must be compatible with the phpDocumentor format. Describing the phpDocumentor format is beyond the scope of this document. For more information, visit: `http://phpdoc.org/`_
 
 All class files must contain a "file-level" docblock at the top of each file and a "class-level" docblock immediately above each class. Examples of such docblocks can be found below.
-
 
 .. _coding-standards.inline-documentation.files:
 
@@ -796,7 +751,6 @@ The ``@package`` annotation must be assigned, and should be equivalent to the co
 
 The ``@subpackage`` annotation is optional. If provided, it should be the subcomponent name, minus the class prefix. In the example above, the assumption is that the class in the file is either "``Zend_Magic_Wand``", or uses that classname as part of its prefix.
 
-
 .. _coding-standards.inline-documentation.classes:
 
 Classes
@@ -828,7 +782,6 @@ The ``@category`` annotation must have a value of "Zend".
 The ``@package`` annotation must be assigned, and should be equivalent to the component to which the class belongs; typically, this will only have two segments, the "Zend" prefix, and the component name.
 
 The ``@subpackage`` annotation is optional. If provided, it should be the subcomponent name, minus the class prefix. In the example above, the assumption is that the class described is either "``Zend_Magic_Wand``", or uses that classname as part of its prefix.
-
 
 .. _coding-standards.inline-documentation.functions:
 

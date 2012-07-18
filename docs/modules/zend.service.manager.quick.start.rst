@@ -1,4 +1,3 @@
-
 .. _zend.service-manager.quick-start:
 
 Zend\\ServiceManager Quick Start
@@ -15,7 +14,6 @@ By default, the module manager listener ``Zend\ModuleManager\Listener\ServiceLis
 - Finally, it will use the merged configuration to configure the ``ServiceManager``.
 
 In most cases, you won't interact with the ``ServiceManager``, other than to provide services to it; your application will typically rely on good configuration in the ``ServiceManager`` to ensure that classes are configured correctly with their dependencies. When creating factories, however, you may want to interact with the ``ServiceManager`` to retrieve other services to inject as dependencies. Additionally, there are some cases where you may want to receive the ``ServiceManager`` to lazy-retrieve dependencies; as such, you'll want to implement ``ServiceManagerAwareInterface``, and learn the API of the ``ServiceManager``.
-
 
 .. _zend.service-manager.quick-start.config:
 
@@ -36,7 +34,6 @@ Configuration requires a ``service_manager`` key at the top level of your config
 
 - **shared**, an array of service name/boolean pairs, indicating whether or not a service should be shared. By default, the ``ServiceManager`` assumes all services are shared, but you may specify a boolean false value here to indicate a new instance should be returned.
 
-
 .. _zend.service-manager.quick-start.module:
 
 Modules as Service Providers
@@ -52,12 +49,10 @@ Modules may act as service configuration providers. To do so, the Module class m
 
 As noted previously, this configuration will be merged with the configuration returned from other modules as well as configuration files, prior to being passed to the ``ServiceManager``; this allows overriding configuration from modules easily.
 
-
 .. _zend.service-manager.quick-start.examples:
 
 Examples
 --------
-
 
 .. _zend.service-manager.quick-start.examples.config-array:
 
@@ -128,14 +123,12 @@ As such, you have a variety of ways to override service manager configuration se
    );
 
 .. note::
+
    **Configuration and PHP**
 
    Typically, you should not have your configuration files create new instances of objects or even closures for factories; at the time of configuration, not all autoloading may be in place, and if another configuration overwrites this one later, you're now spending CPU and memory performing work that is ultimately lost.
 
-
    For instances that require factories, write a factory. If you'd like to inject specific, configured instances, use the Module class to do so, or a listener.
-
-
 
 .. _zend.service-manager.quick-start.examples.return-array:
 
@@ -203,7 +196,6 @@ The following demonstrates returning an array of configuration from a module cla
        }
    }
 
-
 .. _zend.service-manager.quick-start.examples.return-config-instance:
 
 .. rubric:: Returning a Configuration instance
@@ -262,7 +254,6 @@ Now, we'll consume it from our Module.
            // return 'SomeModule\Service\ServiceConfiguration';
        }
    }
-
 
 .. _zend.service-manager.quick-start.examples.service-manager-aware:
 

@@ -1,4 +1,3 @@
-
 .. _zend.db.row-gateway:
 
 Zend\\Db\\RowGateway
@@ -16,7 +15,6 @@ The interface for a Row Gateway object simply adds save() and delete() and this 
        public function save();
        public function delete();
    }
-
 
 .. _zend.db.row-gateway.row-gateway:
 

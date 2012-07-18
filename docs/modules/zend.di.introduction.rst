@@ -1,9 +1,7 @@
-
 .. _zend.di.intro:
 
 Introduction to Zend\\Di
 ========================
-
 
 .. _zend.di.intro.di:
 
@@ -18,7 +16,6 @@ Dependency Injection (here-in called DI) is a concept that has been talked about
    $b = new MovieLister(new MovieFinder));
 
 Above, MovieFinder is a dependency of MovieLister, and MovieFinder was injected into MovieLister. If you are not familiar with the concept of DI, here are a couple of great reads: `Matthew Weier O'Phinney's Analogy`_, `Ralph Schindler's Learning DI`_, or `Fabien Potencier's Series`_ on DI.
-
 
 .. _zend.di.intro.dic:
 

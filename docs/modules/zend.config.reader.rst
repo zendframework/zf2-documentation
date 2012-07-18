@@ -1,4 +1,3 @@
-
 .. _zend.config.reader.introduction:
 
 Zend\\Config\\Reader
@@ -17,16 +16,14 @@ Zend\\Config\\Reader
 The ``fromFile()`` and ``fromString()`` return a PHP array contains the data of the configuration file.
 
 .. note::
+
    **Differences from ZF1**
 
    The ``Zend\Config\Reader`` component no longer supports the following features:
 
-
    - Inheritance of sections.
 
    - Reading of specific sections.
-
-
 
 .. _zend.config.reader.ini:
 
@@ -38,17 +35,16 @@ Zend\\Config\\Reader\\Ini
 ``Zend\Config\Reader\Ini`` utilizes the `parse_ini_file()`_ *PHP* function. Please review this documentation to be aware of its specific behaviors, which propagate to ``Zend\Config\Reader\Ini``, such as how the special values of "``TRUE``", "``FALSE``", "yes", "no", and "``NULL``" are handled.
 
 .. note::
+
    **Key Separator**
 
    By default, the key separator character is the period character ("**.**"). This can be changed, however, using the ``setNestSeparator()`` method. For example:
-
 
    .. code-block:: php
       :linenos:
 
       $reader = new Zend\Config\Reader\Ini();
       $reader->setNestSeparator('-');
-
 
 The following example illustrates a basic use of ``Zend\Config\Reader\Ini`` for loading configuration data from an *INI* file. In this example there are configuration data for both a production system and for a staging system. Suppose we have the following INI configuration file:
 
@@ -112,7 +108,6 @@ And assign the ``@include`` as sublement of the database value:
 
    webhost           = 'www.example.com'
    database.@include = 'database.ini'
-
 
 .. _zend.config.reader.xml:
 
@@ -184,7 +179,6 @@ We can include this configuration in another XML file, for instance:
 
 The syntax to include an XML file in a specific element is ``<xi:include href="file-to-include.xml"/>``
 
-
 .. _zend.config.reader.json:
 
 Zend\\Config\\Reader\\Json
@@ -249,7 +243,6 @@ We can include this configuration in another JSON file, for instance:
        "webhost"  : "www.example.com",
        "@include" : "database.json"
    }
-
 
 .. _zend.config.reader.yaml:
 

@@ -1,4 +1,3 @@
-
 .. _learning.autoloading.intro:
 
 Introduction

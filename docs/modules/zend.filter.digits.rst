@@ -1,4 +1,3 @@
-
 .. _zend.filter.set.digits:
 
 Digits
@@ -6,14 +5,12 @@ Digits
 
 Returns the string ``$value``, removing all but digits.
 
-
 .. _zend.filter.set.digits.options:
 
 Supported options for Zend_Filter_Digits
 ----------------------------------------
 
 There are no additional options for ``Zend_Filter_Digits``.
-
 
 .. _zend.filter.set.digits.basic:
 

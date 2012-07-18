@@ -1,4 +1,3 @@
-
 .. _zend.filter.set.int:
 
 Int
@@ -6,14 +5,12 @@ Int
 
 ``Zend_Filter_Int`` allows you to transform a sclar value which contains into an integer.
 
-
 .. _zend.filter.set.int.options:
 
 Supported options for Zend_Filter_Int
 -------------------------------------
 
 There are no additional options for ``Zend_Filter_Int``.
-
 
 .. _zend.filter.set.int.basic:
 

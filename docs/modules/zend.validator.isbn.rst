@@ -1,11 +1,9 @@
-
 .. _zend.validator.set.isbn:
 
 Isbn
 ====
 
 ``Zend\Validator\Isbn`` allows you to validate an *ISBN-10* or *ISBN-13* value.
-
 
 .. _zend.validator.set.isbn.options:
 
@@ -17,7 +15,6 @@ The following options are supported for ``Zend\Validator\Isbn``:
 - **separator**: Defines the allowed separator for the *ISBN* number. It defaults to an empty string.
 
 - **type**: Defines the allowed type of *ISBN* numbers. It defaults to ``Zend\Validator\Isbn::AUTO``. For details take a look at :ref:`this section <zend.validator.set.isbn.type-explicit>`.
-
 
 .. _zend.validator.set.isbn.basic:
 
@@ -37,7 +34,6 @@ A basic example of usage is below:
    }
 
 This will validate any *ISBN-10* and *ISBN-13* without separator.
-
 
 .. _zend.validator.set.isbn.type-explicit:
 
@@ -72,7 +68,6 @@ Valid types include:
 
 - ``Zend\Validator\Isbn::ISBN13``
 
-
 .. _zend.validator.set.isbn.separator:
 
 Specifying a separator restriction
@@ -97,10 +92,10 @@ An example of separator restriction is below:
    }
 
 .. note::
+
    **Values without separator**
 
    This will return ``FALSE`` if ``$isbn`` doesn't contain a separator **or** if it's an invalid *ISBN* value.
-
 
 Valid separators include:
 

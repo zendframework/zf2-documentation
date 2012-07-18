@@ -1,11 +1,9 @@
-
 .. _zend.service.strikeiron.bundled-services:
 
 Zend_Service_StrikeIron: Bundled Services
 =========================================
 
 ``Zend_Service_StrikeIron`` comes with wrapper classes for three popular StrikeIron services.
-
 
 .. _zend.service.strikeiron.bundled-services.zip-code-information:
 
@@ -59,7 +57,6 @@ The service contains a ``getZipCode()`` method that will retrieve information ab
    // http://www.strikeiron.com/exampledata/StrikeIronZipCodeInformation_v3.pdf
    $status = $response->serviceStatus;
 
-
 .. _zend.service.strikeiron.bundled-services.us-address-verification:
 
 U.S. Address Verification
@@ -108,7 +105,6 @@ The service contains a ``verifyAddressUSA()`` method that will verify an address
        // valid address?
        $valid = ($result->valid == 'VALID');
    }
-
 
 .. _zend.service.strikeiron.bundled-services.sales-use-tax-basic:
 

@@ -1,11 +1,9 @@
-
 .. _zend.openid.introduction:
 
 Introduction
 ============
 
 ``Zend_OpenId`` is a Zend Framework component that provides a simple *API* for building OpenID-enabled sites and identity providers.
-
 
 .. _zend.openid.introduction.what:
 
@@ -16,14 +14,12 @@ OpenID is a set of protocols for user-centric digital identities. These protocol
 
 For more information about OpenID visit the `OpenID official site`_.
 
-
 .. _zend.openid.introduction.how:
 
 How Does it Work?
 -----------------
 
 The purpose of the ``Zend_OpenId`` component is to implement the OpenID authentication protocol as described in the following sequence diagram:
-
 
 .. image:: ../images/zend.openid.protocol.jpg
    :width: 559
@@ -49,7 +45,6 @@ The purpose of the ``Zend_OpenId`` component is to implement the OpenID authenti
 
 . The OpenID consumer verifies the information received from the provider by using the shared secret it got in step 3 or by sending an additional direct request to the OpenID provider.
 
-
 .. _zend.openid.introduction.structure:
 
 Zend_OpenId Structure
@@ -60,9 +55,8 @@ Zend_OpenId Structure
 The only common code used by these sub-packages are the OpenID Simple Registration Extension implemented by ``Zend_OpenId_Extension_Sreg`` class and a set of utility functions implemented by the ``Zend_OpenId`` class.
 
 .. note::
+
    ``Zend_OpenId`` takes advantage of the `GMP extension`_, where available. Consider enabling the GMP extension for enhanced performance when using ``Zend_OpenId``.
-
-
 
 .. _zend.openid.introduction.standards:
 

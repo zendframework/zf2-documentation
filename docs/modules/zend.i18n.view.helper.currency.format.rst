@@ -1,11 +1,9 @@
-
 .. _zend.i18n.view.helper.currency-format:
 
 CurrencyFormat Helper
 =====================
 
 The ``CurrencyFormat`` view helper can be used to simplify rendering of localized currency values. It acts as a wrapper for the ``NumberFormatter`` class within the Internationalization extension (Intl).
-
 
 .. _zend.i18n.view.helper.currency-format.usage:
 
@@ -29,7 +27,6 @@ The ``CurrencyFormat`` view helper can be used to simplify rendering of localize
 - ``$currencyCode``: The 3-letter ISO 4217 currency code indicating the currency to use.
 
 - ``$locale``: (Optional) Locale in which the currency would be formatted (locale name, e.g. en_US). If unset, it will use the default locale (``Locale::getDefault()``)
-
 
 .. _zend.i18n.view.helper.currency-format.setter-usage:
 

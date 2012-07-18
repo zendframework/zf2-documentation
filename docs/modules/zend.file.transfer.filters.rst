@@ -1,4 +1,3 @@
-
 .. _zend.file.transfer.filters:
 
 Filters for Zend_File_Transfer
@@ -15,7 +14,6 @@ Filters for Zend_File_Transfer
 - ``Rename``: This filter can rename files, change the location and even force overwriting of existing files.
 
 - ``UpperCase``: This filter can uppercase the content of a textfile.
-
 
 .. _zend.file.transfer.filters.usage:
 
@@ -40,7 +38,6 @@ The usage of filters is quite simple. There are several methods for adding and m
 
 - ``clearFilters()``: Clears all registered filters.
 
-
 .. _zend.file.transfer.filters.usage.example:
 
 .. rubric:: Add filters to a file transfer
@@ -58,7 +55,6 @@ The usage of filters is quite simple. There are several methods for adding and m
                       array('target' => 'C:\picture\uploads',
                             'overwrite' => true));
 
-
 .. _zend.file.transfer.filters.usage.exampletwo:
 
 .. rubric:: Limit filters to single files
@@ -74,7 +70,6 @@ The usage of filters is quite simple. There are several methods for adding and m
    $upload->addFilter('Rename', 'C:\picture\uploads', 'file2');
 
 Generally you should simply use the ``addFilters()`` method, which can be called multiple times.
-
 
 .. _zend.file.transfer.filters.usage.examplemultiple:
 
@@ -92,9 +87,8 @@ Often it's simpler just to call ``addFilter()`` multiple times. One call for eac
           ->addFilter('Rename', 'C:\picture\newgif', 'file2');
 
 .. note::
+
    Note that even though setting the same filter multiple times is allowed, doing so can lead to issues when using different options for the same filter.
-
-
 
 .. _zend.file.transfer.filters.decrypt:
 
@@ -106,7 +100,6 @@ The ``Decrypt`` filter allows to decrypt a encrypted file.
 This filter makes use of ``Zend_Filter_Decrypt``. It supports the ``Mcrypt`` and ``OpenSSL`` extensions from *PHP*. Please read the related section for details about how to set the options for decryption and which options are supported.
 
 This filter supports one additional option which can be used to save the decrypted file with another filename. Set the ``filename`` option to change the filename where the decrypted file will be stored. If you suppress this option, the decrypted file will overwrite the original encrypted file.
-
 
 .. _zend.file.transfer.filters.decrypt.example1:
 
@@ -121,7 +114,6 @@ This filter supports one additional option which can be used to save the decrypt
    // with mcrypt and the key mykey
    $upload->addFilter('Decrypt',
        array('adapter' => 'mcrypt', 'key' => 'mykey'));
-
 
 .. _zend.file.transfer.filters.decrypt.example2:
 
@@ -139,7 +131,6 @@ This filter supports one additional option which can be used to save the decrypt
              'private' => '/path/to/privatekey.pem',
              'envelope' => '/path/to/envelopekey.pem'));
 
-
 .. _zend.file.transfer.filters.encrypt:
 
 Encrypt filter
@@ -150,7 +141,6 @@ The ``Encrypt`` filter allows to encrypt a file.
 This filter makes use of ``Zend_Filter_Encrypt``. It supports the ``Mcrypt`` and ``OpenSSL`` extensions from *PHP*. Please read the related section for details about how to set the options for encryption and which options are supported.
 
 This filter supports one additional option which can be used to save the encrypted file with another filename. Set the ``filename`` option to change the filename where the encrypted file will be stored. If you suppress this option, the encrypted file will overwrite the original file.
-
 
 .. _zend.file.transfer.filters.encrypt.example1:
 
@@ -165,7 +155,6 @@ This filter supports one additional option which can be used to save the encrypt
    // with mcrypt and the key mykey
    $upload->addFilter('Encrypt',
        array('adapter' => 'mcrypt', 'key' => 'mykey'));
-
 
 .. _zend.file.transfer.filters.encrypt.example2:
 
@@ -182,7 +171,6 @@ This filter supports one additional option which can be used to save the encrypt
        array('adapter' => 'openssl',
              'public' => '/path/to/publickey.pem'));
 
-
 .. _zend.file.transfer.filters.lowercase:
 
 LowerCase filter
@@ -191,7 +179,6 @@ LowerCase filter
 The ``LowerCase`` filter allows to change the content of a file to lowercase. You should use this filter only on textfiles.
 
 At initiation you can give a string which will then be used as encoding. Or you can use the ``setEncoding()`` method to set it afterwards.
-
 
 .. _zend.file.transfer.filters.lowercase.example:
 
@@ -213,9 +200,8 @@ At initiation you can give a string which will then be used as encoding. Or you 
    $upload->addFilter('LowerCase', 'ISO-8859-1');
 
 .. note::
+
    Note that due to the fact that the options for the LowerCase filter are optional, you must give a ``NULL`` as second parameter (the options) when you want to limit it to a single file element.
-
-
 
 .. _zend.file.transfer.filters.rename:
 
@@ -231,7 +217,6 @@ The ``Rename`` filter allows to change the destination of the upload, the filena
 - ``overwrite``: Sets if the old file overwrites the new one if it already exists. The default value is ``FALSE``.
 
 Additionally you can also use the method ``setFile()`` to set files, which erases all previous set, ``addFile()`` to add a new file to existing ones, and ``getFile()`` to get all actually set files. To simplify things, this filter understands several notations and that methods and constructor understand the same notations.
-
 
 .. _zend.file.transfer.filters.rename.example:
 
@@ -249,7 +234,6 @@ Additionally you can also use the method ``setFile()`` to set files, which erase
    $upload->addFilter('Rename', 'C:\mypics\newgifs', 'uploadfile1');
 
 You can use different notations. Below is a table where you will find a description and the intention for the supported notations. Note that when you use the Adapter or the Form Element you will not be able to use all described notations.
-
 
 .. _zend.file.transfer.filters.rename.notations:
 
@@ -269,8 +253,6 @@ You can use different notations. Below is a table where you will find a descript
    |addFile(array('source' => 'C:\\temp\\uploads', 'target' => 'C:\\uploads', 'overwrite' => true))|Specifies a new location for all files in the old location when the given strings are detected as directory and overwrites and existing file with the same target name. Note, that you will get no notification that a file was overwritten.|
    +-----------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-
 .. _zend.file.transfer.filters.uppercase:
 
 UpperCase filter
@@ -279,7 +261,6 @@ UpperCase filter
 The ``UpperCase`` filter allows to change the content of a file to uppercase. You should use this filter only on textfiles.
 
 At initiation you can give a string which will then be used as encoding. Or you can use the ``setEncoding()`` method to set it afterwards.
-
 
 .. _zend.file.transfer.filters.uppercase.example:
 
@@ -301,7 +282,7 @@ At initiation you can give a string which will then be used as encoding. Or you 
    $upload->addFilter('UpperCase', 'ISO-8859-1');
 
 .. note::
-   Note that due to the fact that the options for the UpperCase filter are optional, you must give a ``NULL`` as second parameter (the options) when you want to limit it to a single file element.
 
+   Note that due to the fact that the options for the UpperCase filter are optional, you must give a ``NULL`` as second parameter (the options) when you want to limit it to a single file element.
 
 
