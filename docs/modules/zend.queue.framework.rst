@@ -3,7 +3,9 @@
 Framework
 =========
 
-The ``Zend_Queue`` is a proxy that hides the details of the queue services. The queue services are represented by ``Zend_Queue_Adapter_<service>``. For example, ``Zend_Queue_Adapter_Db`` is a queue that will use database tables to store and retrieve messages.
+The ``Zend_Queue`` is a proxy that hides the details of the queue services. The queue services are represented by
+``Zend_Queue_Adapter_<service>``. For example, ``Zend_Queue_Adapter_Db`` is a queue that will use database tables
+to store and retrieve messages.
 
 Below is an example for using database tables for a queuing system:
 
@@ -26,11 +28,15 @@ Below is an example for using database tables for a queuing system:
    // Zend_Queue will prepend Zend_Queue_Adapter_ to 'Db' for the class name.
    $queue = new Zend_Queue('Db', $options);
 
-The ``Zend_Queue`` constructor will create a ``Zend_Queue_Adapter_Db`` and initialize the adapter with the configuration settings.
+The ``Zend_Queue`` constructor will create a ``Zend_Queue_Adapter_Db`` and initialize the adapter with the
+configuration settings.
 
-The accepted configuration settings for each adapter are provided in the :ref:`adapter notes <zend.queue.adapters>`.
+The accepted configuration settings for each adapter are provided in the :ref:`adapter notes
+<zend.queue.adapters>`.
 
-``Zend_Queue`` returns messages using the class ``Zend_Queue_Message_Iterator``, which is an implementation of *SPL* ``Iterator`` and ``Countable``. ``Zend_Queue_Message_Iterator`` contains an array of ``Zend_Queue_Message`` objects.
+``Zend_Queue`` returns messages using the class ``Zend_Queue_Message_Iterator``, which is an implementation of
+*SPL* ``Iterator`` and ``Countable``. ``Zend_Queue_Message_Iterator`` contains an array of ``Zend_Queue_Message``
+objects.
 
 .. code-block:: php
    :linenos:
@@ -58,9 +64,12 @@ The ``createQueue()``, ``deleteQueue()`` methods are used to manage queues.
 Commonality among adapters
 --------------------------
 
-The queue services supported by ``Zend_Queue`` do not all support the same functions. For example, ``Zend_Queue_Adapter_Array``, ``Zend_Queue_Adapter_Db``, support all functions, while ``Zend_Queue_Adapter_Activemq`` does not support queue listing, queue deletion, or counting of messages.
+The queue services supported by ``Zend_Queue`` do not all support the same functions. For example,
+``Zend_Queue_Adapter_Array``, ``Zend_Queue_Adapter_Db``, support all functions, while
+``Zend_Queue_Adapter_Activemq`` does not support queue listing, queue deletion, or counting of messages.
 
-You can determine what functions are supported by using ``Zend_Queue::isSupported()`` or ``Zend_Queue::getCapabilities()``.
+You can determine what functions are supported by using ``Zend_Queue::isSupported()`` or
+``Zend_Queue::getCapabilities()``.
 
 - **createQueue()**- create a queue
 

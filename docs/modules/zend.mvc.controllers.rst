@@ -3,7 +3,8 @@
 Available Controllers
 =====================
 
-Controllers in the MVC layer simply need to be objects implementing ``Zend\Stdlib\DispatchableInterface``. That interface describes a single method:
+Controllers in the MVC layer simply need to be objects implementing ``Zend\Stdlib\DispatchableInterface``. That
+interface describes a single method:
 
 .. code-block:: php
    :linenos:
@@ -20,9 +21,12 @@ Controllers in the MVC layer simply need to be objects implementing ``Zend\Stdli
        }
    }
 
-While this pattern is simple enough, chances are you don't want to implement custom dispatch logic for every controller (particularly as it's not unusual or uncommon for a single controller to handle several related types of requests).
+While this pattern is simple enough, chances are you don't want to implement custom dispatch logic for every
+controller (particularly as it's not unusual or uncommon for a single controller to handle several related types of
+requests).
 
-The MVC also defines several interfaces that, when implemented, can provide controllers with additional capabilities.
+The MVC also defines several interfaces that, when implemented, can provide controllers with additional
+capabilities.
 
 .. _zend.mvc.controllers.interfaces:
 
@@ -34,9 +38,11 @@ Common Interfaces Used With Controllers
 InjectApplicationEvent
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The ``Zend\Mvc\InjectApplicationEventInterface`` hints to the ``Application`` instance that it should inject its ``MvcEvent`` into the controller itself. Why would this be useful?
+The ``Zend\Mvc\InjectApplicationEventInterface`` hints to the ``Application`` instance that it should inject its
+``MvcEvent`` into the controller itself. Why would this be useful?
 
-Recall that the ``MvcEvent`` composes a number of objects: the ``Request`` and ``Response``, naturally, but also the router, the route matches (a ``RouteMatch`` instance), and potentially the "result" of dispatching.
+Recall that the ``MvcEvent`` composes a number of objects: the ``Request`` and ``Response``, naturally, but also
+the router, the route matches (a ``RouteMatch`` instance), and potentially the "result" of dispatching.
 
 A controller that has the ``MvcEvent`` injected, then, can retrieve or inject these. As an example:
 
@@ -67,11 +73,15 @@ The ``InjectApplicationEventInterface`` defines simply two methods:
 ServiceManagerAware
 ^^^^^^^^^^^^^^^^^^^
 
-In most cases, you should define your controllers such that dependencies are injected by the application's ``ServiceManager``, via either constructor arguments or setter methods.
+In most cases, you should define your controllers such that dependencies are injected by the application's
+``ServiceManager``, via either constructor arguments or setter methods.
 
-However, occasionally you may have objects you wish to use in your controller that are only valid for certain code paths. Examples include forms, paginators, navigation, etc. In these cases, you may decide that it doesn't make sense to inject those objects every time the controller is used.
+However, occasionally you may have objects you wish to use in your controller that are only valid for certain code
+paths. Examples include forms, paginators, navigation, etc. In these cases, you may decide that it doesn't make
+sense to inject those objects every time the controller is used.
 
-The ``ServiceManagerAwareInterface`` interface hints to the ``ServiceManager`` that it should inject itself into the controller. It defines simply one method:
+The ``ServiceManagerAwareInterface`` interface hints to the ``ServiceManager`` that it should inject itself into
+the controller. It defines simply one method:
 
 .. code-block:: php
    :linenos:
@@ -85,11 +95,15 @@ The ``ServiceManagerAwareInterface`` interface hints to the ``ServiceManager`` t
 
 .. rubric:: EventManagerAware
 
-Typically, it's nice to be able to tie into a controller's workflow without needing to extend it or hardcode behavior into it. The solution for this at the framework level is to use the ``EventManager``.
+Typically, it's nice to be able to tie into a controller's workflow without needing to extend it or hardcode
+behavior into it. The solution for this at the framework level is to use the ``EventManager``.
 
-You can hint to the ``ServiceManager`` that you want an ``EventManager`` injected by implementing the interfaces ``EventManagerAwareInterface`` and ``EventsCapableInterface``; the former tells the ``ServiceManager`` to inject an ``EventManager``, the latter to other objects that this class has an accessible ``EventManager`` instance.
+You can hint to the ``ServiceManager`` that you want an ``EventManager`` injected by implementing the interfaces
+``EventManagerAwareInterface`` and ``EventsCapableInterface``; the former tells the ``ServiceManager`` to inject an
+``EventManager``, the latter to other objects that this class has an accessible ``EventManager`` instance.
 
-Combined, you define two methods. The first, a setter, should also set any ``EventManager`` identifiers you want to listen on, and the second, a getter, should simply return the composed ``EventManager`` instance
+Combined, you define two methods. The first, a setter, should also set any ``EventManager`` identifiers you want to
+listen on, and the second, a getter, should simply return the composed ``EventManager`` instance
 
 .. code-block:: php
    :linenos:
@@ -106,9 +120,11 @@ Combined, you define two methods. The first, a setter, should also set any ``Eve
 Pluggable
 ^^^^^^^^^
 
-Code re-use is a common goal for developers. Another common goal is convenience. However, this is often difficult to achieve cleanly in abstract, general systems.
+Code re-use is a common goal for developers. Another common goal is convenience. However, this is often difficult
+to achieve cleanly in abstract, general systems.
 
-Within your controllers, you'll often find yourself repeating tasks from one controller to another. Some common examples:
+Within your controllers, you'll often find yourself repeating tasks from one controller to another. Some common
+examples:
 
 - Generating URLs
 
@@ -118,7 +134,10 @@ Within your controllers, you'll often find yourself repeating tasks from one con
 
 - Invoking and dispatching additional controllers
 
-To facilitate these actions while also making them available to alternate controller implementations, we've created a ``PluginBroker`` implementation for the controller layer, ``Zend\Mvc\Controller\PluginBroker``, building on the ``Zend\Loader\PluginBroker`` functionality. To utilize it, you simply need to implement the ``Zend\Loader\Pluggable`` interface, and set up your code to use the controller-specific implementation by default:
+To facilitate these actions while also making them available to alternate controller implementations, we've created
+a ``PluginBroker`` implementation for the controller layer, ``Zend\Mvc\Controller\PluginBroker``, building on the
+``Zend\Loader\PluginBroker`` functionality. To utilize it, you simply need to implement the
+``Zend\Loader\Pluggable`` interface, and set up your code to use the controller-specific implementation by default:
 
 .. code-block:: php
    :linenos:
@@ -150,17 +169,25 @@ To facilitate these actions while also making them available to alternate contro
 The AbstractActionController
 ----------------------------
 
-Implementing each of the above interfaces is a lesson in redundancy; you won't often want to do it. As such, we've developed two abstract, base controllers you can extend to get started.
+Implementing each of the above interfaces is a lesson in redundancy; you won't often want to do it. As such, we've
+developed two abstract, base controllers you can extend to get started.
 
-The first is ``Zend\Mvc\Controller\AbstractActionController``. This controller implements each of the above interfaces, and uses the following assumptions:
+The first is ``Zend\Mvc\Controller\AbstractActionController``. This controller implements each of the above
+interfaces, and uses the following assumptions:
 
-- An "action" parameter is expected in the ``RouteMatch`` object composed in the attached ``MvcEvent``. If none is found, a ``notFoundAction()`` is invoked.
+- An "action" parameter is expected in the ``RouteMatch`` object composed in the attached ``MvcEvent``. If none is
+  found, a ``notFoundAction()`` is invoked.
 
-- The "action" parameter is converted to a camelCased format and appended with the word "Action" to create a method name. As examples: "foo" maps to "fooAction", "foo-bar" or "foo.bar" or "foo_bar" to "fooBarAction". The controller then checks to see if that method exists. If not, the ``notFoundAction()`` method is invoked; otherwise, the discovered method.
+- The "action" parameter is converted to a camelCased format and appended with the word "Action" to create a method
+  name. As examples: "foo" maps to "fooAction", "foo-bar" or "foo.bar" or "foo_bar" to "fooBarAction". The
+  controller then checks to see if that method exists. If not, the ``notFoundAction()`` method is invoked;
+  otherwise, the discovered method.
 
-- The results of executing the given action method are injected into the ``MvcEvent``'s "result" property (via ``setResult()``, and accesible via ``getResult()``).
+- The results of executing the given action method are injected into the ``MvcEvent``'s "result" property (via
+  ``setResult()``, and accesible via ``getResult()``).
 
-Essentially, a route mapping to an ``AbstractActionController`` needs to return both "controller" and "action" keys in its matches.
+Essentially, a route mapping to an ``AbstractActionController`` needs to return both "controller" and "action" keys
+in its matches.
 
 Creation of action controllers is then reasonably trivial:
 
@@ -216,17 +243,32 @@ Additionally, if you extend the class, it will listen on the extending class's n
 The AbstractRestfulController
 -----------------------------
 
-The second abstract controller ZF2 provides is ``Zend\Mvc\Controller\AbstractRestfulController``. This controller provides a naive RESTful implementation that simply maps HTTP request methods to controller methods, using the following matrix:
+The second abstract controller ZF2 provides is ``Zend\Mvc\Controller\AbstractRestfulController``. This controller
+provides a naive RESTful implementation that simply maps HTTP request methods to controller methods, using the
+following matrix:
 
-- **GET** maps to either ``get()`` or ``getList()``, depending on whether or not an "id" parameter is found in the route matches. If one is, it is passed as an argument to ``get()``; if not, ``getList()`` is invoked. In the former case, you should provide a representation of the given entity with that identification; in the latter, you should provide a list of entities.
+- **GET** maps to either ``get()`` or ``getList()``, depending on whether or not an "id" parameter is found in the
+  route matches. If one is, it is passed as an argument to ``get()``; if not, ``getList()`` is invoked. In the
+  former case, you should provide a representation of the given entity with that identification; in the latter, you
+  should provide a list of entities.
 
-- **POST** maps to ``create()``. That method expects a ``$data`` argument, usually the ``$_POST`` superglobal array. The data should be used to create a new entitiy, and the response should typically be an HTTP 201 response with the Location header indicating the URI of the newly created entity and the response body providing the representation.
+- **POST** maps to ``create()``. That method expects a ``$data`` argument, usually the ``$_POST`` superglobal
+  array. The data should be used to create a new entitiy, and the response should typically be an HTTP 201 response
+  with the Location header indicating the URI of the newly created entity and the response body providing the
+  representation.
 
-- **PUT** maps to ``update()``, and requires that an "id" parameter exists in the route matches; that value is passed as an argument to the method. It should attempt to update the given entity, and, if successful, return either a 200 or 202 response status, as well as the representation of the entity.
+- **PUT** maps to ``update()``, and requires that an "id" parameter exists in the route matches; that value is
+  passed as an argument to the method. It should attempt to update the given entity, and, if successful, return
+  either a 200 or 202 response status, as well as the representation of the entity.
 
-- **DELETE** maps to ``delete()``, and requires that an "id" parameter exists in the route matches; that value is passed as an argument to the method. It should attempt to delete the given entity, and, if successful, return either a 200 or 204 response status.
+- **DELETE** maps to ``delete()``, and requires that an "id" parameter exists in the route matches; that value is
+  passed as an argument to the method. It should attempt to delete the given entity, and, if successful, return
+  either a 200 or 204 response status.
 
-Additionally, you can map "action" methods to the ``AbstractRestfulController``, just as you would in the ``AbstractActionController``; these methods will be suffixed with "Action", differentiating them from the RESTful methods listed above. This allows you to perform such actions as providing forms used to submit to the various RESTful methods, or to add RPC methods to your RESTful API.
+Additionally, you can map "action" methods to the ``AbstractRestfulController``, just as you would in the
+``AbstractActionController``; these methods will be suffixed with "Action", differentiating them from the RESTful
+methods listed above. This allows you to perform such actions as providing forms used to submit to the various
+RESTful methods, or to add RPC methods to your RESTful API.
 
 .. _zend.mvc.controllers.restful-controller.interfaces-and-collaborators:
 

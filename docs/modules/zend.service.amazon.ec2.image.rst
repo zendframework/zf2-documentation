@@ -14,7 +14,9 @@ AMI Information Utilities
 
 .. rubric:: Register an AMI with EC2
 
-*register* Each *AMI* is associated with an unique ID which is provided by the Amazon EC2 service through the RegisterImage operation. During registration, Amazon EC2 retrieves the specified image manifest from Amazon S3 and verifies that the image is owned by the user registering the image.
+*register* Each *AMI* is associated with an unique ID which is provided by the Amazon EC2 service through the
+RegisterImage operation. During registration, Amazon EC2 retrieves the specified image manifest from Amazon S3 and
+verifies that the image is owned by the user registering the image.
 
 *register* returns the imageId for the registered Image.
 
@@ -42,7 +44,10 @@ AMI Information Utilities
 
 .. rubric:: Describe an AMI
 
-*describe* Returns information about *AMI*\ s, AKIs, and ARIs available to the user. Information returned includes image type, product codes, architecture, and kernel and *RAM* disk IDs. Images available to the user include public images available for any user to launch, private images owned by the user making the request, and private images owned by other users for which the user has explicit launch permissions.
+*describe* Returns information about *AMI*\ s, AKIs, and ARIs available to the user. Information returned includes
+image type, product codes, architecture, and kernel and *RAM* disk IDs. Images available to the user include public
+images available for any user to launch, private images owned by the user making the request, and private images
+owned by other users for which the user has explicit launch permissions.
 
 
 
@@ -63,16 +68,25 @@ AMI Information Utilities
          +--------+-------------------------------------------------------------------------------------------------------------------------------+
 
 
+The list of *AMI*\ s returned can be modified by specifying *AMI* IDs, *AMI* owners, or users with launch
+permissions. If no options are specified, Amazon EC2 returns all *AMI*\ s for which the user has launch
+permissions.
 
-The list of *AMI*\ s returned can be modified by specifying *AMI* IDs, *AMI* owners, or users with launch permissions. If no options are specified, Amazon EC2 returns all *AMI*\ s for which the user has launch permissions.
+If you specify one or more *AMI* IDs, only *AMI*\ s that have the specified IDs are returned. If you specify an
+invalid *AMI* ID, a fault is returned. If you specify an *AMI* ID for which you do not have access, it will not be
+included in the returned results.
 
-If you specify one or more *AMI* IDs, only *AMI*\ s that have the specified IDs are returned. If you specify an invalid *AMI* ID, a fault is returned. If you specify an *AMI* ID for which you do not have access, it will not be included in the returned results.
+If you specify one or more *AMI* owners, only *AMI*\ s from the specified owners and for which you have access are
+returned. The results can include the account IDs of the specified owners, amazon for *AMI*\ s owned by Amazon or
+self for *AMI*\ s that you own.
 
-If you specify one or more *AMI* owners, only *AMI*\ s from the specified owners and for which you have access are returned. The results can include the account IDs of the specified owners, amazon for *AMI*\ s owned by Amazon or self for *AMI*\ s that you own.
+If you specify a list of executable users, only users that have launch permissions for the *AMI*\ s are returned.
+You can specify account IDs (if you own the *AMI*\ (s)), self for *AMI*\ s for which you own or have explicit
+permissions, or all for public *AMI*\ s.
 
-If you specify a list of executable users, only users that have launch permissions for the *AMI*\ s are returned. You can specify account IDs (if you own the *AMI*\ (s)), self for *AMI*\ s for which you own or have explicit permissions, or all for public *AMI*\ s.
-
-*describe* returns an array for all the images that match the critera that was passed in. The array contains the imageId, imageLocation, imageState, imageOwnerId, isPublic, architecture, imageType, kernelId, ramdiskId and platform.
+*describe* returns an array for all the images that match the critera that was passed in. The array contains the
+imageId, imageLocation, imageState, imageOwnerId, isPublic, architecture, imageType, kernelId, ramdiskId and
+platform.
 
 .. code-block:: php
    :linenos:
@@ -108,7 +122,6 @@ Modifies an attribute of an *AMI*
          +----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-
 *modifyAttribute* returns boolean ``TRUE`` or ``FALSE``.
 
 .. code-block:: php
@@ -134,7 +147,8 @@ Modifies an attribute of an *AMI*
 
 .. rubric:: Reset an AMI Attribute
 
-*resetAttribute* will reset the attribute of an *AMI* to its default value. **The productCodes attribute cannot be reset.**
+*resetAttribute* will reset the attribute of an *AMI* to its default value. **The productCodes attribute cannot be
+reset.**
 
 .. code-block:: php
    :linenos:
@@ -146,7 +160,8 @@ Modifies an attribute of an *AMI*
 
 .. rubric:: Describe AMI Attribute
 
-*describeAttribute* returns information about an attribute of an *AMI*. Only one attribute can be specified per call. Currently only launchPermission and productCodes are supported.
+*describeAttribute* returns information about an attribute of an *AMI*. Only one attribute can be specified per
+call. Currently only launchPermission and productCodes are supported.
 
 *describeAttribute* returns an array with the value of the attribute that was requested.
 

@@ -3,7 +3,11 @@
 Consuming an Atom Feed
 ======================
 
-``Zend_Feed_Atom`` is used in much the same way as ``Zend_Feed_Rss``. It provides the same access to feed-level properties and iteration over entries in the feed. The main difference is in the structure of the Atom protocol itself. Atom is a successor to *RSS*; it is more generalized protocol and it is designed to deal more easily with feeds that provide their full content inside the feed, splitting *RSS*'``description`` tag into two elements, ``summary`` and ``content``, for that purpose.
+``Zend_Feed_Atom`` is used in much the same way as ``Zend_Feed_Rss``. It provides the same access to feed-level
+properties and iteration over entries in the feed. The main difference is in the structure of the Atom protocol
+itself. Atom is a successor to *RSS*; it is more generalized protocol and it is designed to deal more easily with
+feeds that provide their full content inside the feed, splitting *RSS*'``description`` tag into two elements,
+``summary`` and ``content``, for that purpose.
 
 .. _zend.feed.consuming-atom.example.usage:
 
@@ -30,7 +34,8 @@ In an Atom feed you can expect to find the following feed properties:
 
 - ``link``- Feeds can have multiple links, which are distinguished by a ``type`` attribute
 
-  The equivalent to *RSS*'s channel link would be ``type="text/html"``. if the link is to an alternate version of the same content that's in the feed, it would have a ``rel="alternate"`` attribute.
+  The equivalent to *RSS*'s channel link would be ``type="text/html"``. if the link is to an alternate version of
+  the same content that's in the feed, it would have a ``rel="alternate"`` attribute.
 
 - ``subtitle``- The feed's description, equivalent to *RSS*' channel description
 
@@ -46,7 +51,8 @@ Atom entries commonly have the following properties:
 
 - ``link``- A link to another format or an alternate view of this entry
 
-  The link property of an atom entry typically has an ``href`` attribute. Attributes can be accessed using array notation. For example, ``$entry->link['rel']`` and ``$entry->link['href']``.
+  The link property of an atom entry typically has an ``href`` attribute. Attributes can be accessed using array
+  notation. For example, ``$entry->link['rel']`` and ``$entry->link['href']``.
 
 - ``summary``- A summary of this entry's content
 

@@ -9,7 +9,8 @@ LessThan
 
    **Zend\Validator\LessThan supports only number validation**
 
-   It should be noted that ``Zend\Validator\LessThan`` supports only the validation of numbers. Strings or dates can not be validated with this validator.
+   It should be noted that ``Zend\Validator\LessThan`` supports only the validation of numbers. Strings or dates
+   can not be validated with this validator.
 
 .. _zend.validator.set.lessthan.options:
 
@@ -18,7 +19,8 @@ Supported options for Zend\\Validator\\LessThan
 
 The following options are supported for ``Zend\Validator\LessThan``:
 
-- **inclusive**: Defines if the validation is inclusive the maximum border value or exclusive. It defaults to ``FALSE``.
+- **inclusive**: Defines if the validation is inclusive the maximum border value or exclusive. It defaults to
+  ``FALSE``.
 
 - **max**: Sets the maximum allowed value.
 
@@ -59,6 +61,7 @@ Sometimes it is useful to validate a value by including the border value. See th
    $result = $valid->isValid($value);
    // returns true
 
-The example is almost equal to our first example but we included the border value. Now the value '10' is allowed and will return ``TRUE``.
+The example is almost equal to our first example but we included the border value. Now the value '10' is allowed
+and will return ``TRUE``.
 
 

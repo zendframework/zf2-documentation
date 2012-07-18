@@ -8,9 +8,15 @@ Zend_Service_ReCaptcha
 Introduction
 ------------
 
-``Zend_Service_ReCaptcha`` provides a client for the `reCAPTCHA Web Service`_. Per the reCAPTCHA site, "reCAPTCHA is a free CAPTCHA service that helps to digitize books." Each reCAPTCHA requires the user to input two words, the first of which is the actual CAPTCHA, and the second of which is a word from some scanned text that Optical Character Recognition (OCR) software has been unable to identify. The assumption is that if a user correctly provides the first word, the second is likely correctly entered as well, and can be used to improve OCR software for digitizing books.
+``Zend_Service_ReCaptcha`` provides a client for the `reCAPTCHA Web Service`_. Per the reCAPTCHA site, "reCAPTCHA
+is a free CAPTCHA service that helps to digitize books." Each reCAPTCHA requires the user to input two words, the
+first of which is the actual CAPTCHA, and the second of which is a word from some scanned text that Optical
+Character Recognition (OCR) software has been unable to identify. The assumption is that if a user correctly
+provides the first word, the second is likely correctly entered as well, and can be used to improve OCR software
+for digitizing books.
 
-In order to use the reCAPTCHA service, you will need to `sign up for an account`_ and register one or more domains with the service in order to generate public and private keys.
+In order to use the reCAPTCHA service, you will need to `sign up for an account`_ and register one or more domains
+with the service in order to generate public and private keys.
 
 .. _zend.service.recaptcha.simplestuse:
 
@@ -39,7 +45,8 @@ To render the reCAPTCHA, simply call the ``getHTML()`` method:
 
    echo $recaptcha->getHTML();
 
-When the form is submitted, you should receive two fields, 'recaptcha_challenge_field' and 'recaptcha_response_field'. Pass these to the reCAPTCHA object's ``verify()`` method:
+When the form is submitted, you should receive two fields, 'recaptcha_challenge_field' and
+'recaptcha_response_field'. Pass these to the reCAPTCHA object's ``verify()`` method:
 
 .. _zend.service.recaptcha.example-3:
 
@@ -53,7 +60,8 @@ When the form is submitted, you should receive two fields, 'recaptcha_challenge_
        $_POST['recaptcha_response_field']
    );
 
-Once you have the result, test against it to see if it is valid. The result is a ``Zend_Service_ReCaptcha_Response`` object, which provides an ``isValid()`` method.
+Once you have the result, test against it to see if it is valid. The result is a
+``Zend_Service_ReCaptcha_Response`` object, which provides an ``isValid()`` method.
 
 .. _zend.service.recaptcha.example-4:
 
@@ -66,16 +74,21 @@ Once you have the result, test against it to see if it is valid. The result is a
        // Failed validation
    }
 
-It is even simpler to use :ref:`the reCAPTCHA <zend.captcha.adapters.recaptcha>` ``Zend_Captcha`` adapter, or to use that adapter as a backend for the :ref:`CAPTCHA form element <zend.form.standardElements.captcha>`. In each case, the details of rendering and validating the reCAPTCHA are automated for you.
+It is even simpler to use :ref:`the reCAPTCHA <zend.captcha.adapters.recaptcha>` ``Zend_Captcha`` adapter, or to
+use that adapter as a backend for the :ref:`CAPTCHA form element <zend.form.standardElements.captcha>`. In each
+case, the details of rendering and validating the reCAPTCHA are automated for you.
 
 .. _zend.service.recaptcha.mailhide:
 
 Hiding email addresses
 ----------------------
 
-``Zend_Service_ReCaptcha_MailHide`` can be used to hide email addresses. It will replace a part of an email address with a link that opens a popup window with a reCAPTCHA challenge. Solving the challenge will reveal the complete email address.
+``Zend_Service_ReCaptcha_MailHide`` can be used to hide email addresses. It will replace a part of an email address
+with a link that opens a popup window with a reCAPTCHA challenge. Solving the challenge will reveal the complete
+email address.
 
-In order to use this component you will need `an account`_ to generate public and private keys for the mailhide *API*.
+In order to use this component you will need `an account`_ to generate public and private keys for the mailhide
+*API*.
 
 .. _zend.service.recaptcha.mailhide.example-1:
 
@@ -97,9 +110,12 @@ In order to use this component you will need `an account`_ to generate public an
    // Display it
    print($mailHide);
 
-The example above will display "m...@example.com" where "..." has a link that opens up a popup window with a reCAPTCHA challenge.
+The example above will display "m...@example.com" where "..." has a link that opens up a popup window with a
+reCAPTCHA challenge.
 
-The public key, private key, and the email address can also be specified in the constructor of the class. A fourth argument also exists that enables you to set some options for the component. The available options are listed in the following table:
+The public key, private key, and the email address can also be specified in the constructor of the class. A fourth
+argument also exists that enables you to set some options for the component. The available options are listed in
+the following table:
 
 
 
@@ -121,7 +137,8 @@ The public key, private key, and the email address can also be specified in the 
 
 
 
-The configuration options can be set by sending them as the fourth argument to the constructor or by calling ``setOptions($options)``, which takes an associative array or an instance of :ref:`Zend_Config <zend.config>`.
+The configuration options can be set by sending them as the fourth argument to the constructor or by calling
+``setOptions($options)``, which takes an associative array or an instance of :ref:`Zend_Config <zend.config>`.
 
 .. _zend.service.recaptcha.mailhide.example-2:
 

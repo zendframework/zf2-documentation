@@ -8,9 +8,11 @@ Memory Manager
 Creating a Memory Manager
 -------------------------
 
-You can create new a memory manager (``Zend_Memory_Manager`` object) using the ``Zend_Memory::factory($backendName [, $backendOprions])`` method.
+You can create new a memory manager (``Zend_Memory_Manager`` object) using the ``Zend_Memory::factory($backendName
+[, $backendOprions])`` method.
 
-The first argument ``$backendName`` is a string that names one of the backend implementations supported by ``Zend_Cache``.
+The first argument ``$backendName`` is a string that names one of the backend implementations supported by
+``Zend_Cache``.
 
 The second argument ``$backendOptions`` is an optional backend options array.
 
@@ -32,7 +34,8 @@ You may use the special name 'None' as a backend name, in addition to standard `
 
    $memoryManager = Zend_Memory::factory('None');
 
-If you use 'None' as the backend name, then the memory manager never swaps memory blocks. This is useful if you know that memory is not limited or the overall size of objects never reaches the memory limit.
+If you use 'None' as the backend name, then the memory manager never swaps memory blocks. This is useful if you
+know that memory is not limited or the overall size of objects never reaches the memory limit.
 
 The 'None' backend doesn't need any option specified.
 
@@ -41,7 +44,8 @@ The 'None' backend doesn't need any option specified.
 Managing Memory Objects
 -----------------------
 
-This section describes creating and destroying objects in the managed memory, and settings to control memory manager behavior.
+This section describes creating and destroying objects in the managed memory, and settings to control memory
+manager behavior.
 
 .. _zend.memory.memory-manager.objects-management.movable:
 
@@ -55,21 +59,24 @@ Create movable objects (objects, which may be swapped) using the ``Zend_Memory_M
 
    $memObject = $memoryManager->create($data);
 
-The ``$data`` argument is optional and used to initialize the object value. If the ``$data`` argument is omitted, the value is an empty string.
+The ``$data`` argument is optional and used to initialize the object value. If the ``$data`` argument is omitted,
+the value is an empty string.
 
 .. _zend.memory.memory-manager.objects-management.locked:
 
 Creating Locked Objects
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Create locked objects (objects, which are not swapped) using the ``Zend_Memory_Manager::createLocked([$data])`` method:
+Create locked objects (objects, which are not swapped) using the ``Zend_Memory_Manager::createLocked([$data])``
+method:
 
 .. code-block:: php
    :linenos:
 
    $memObject = $memoryManager->createLocked($data);
 
-The ``$data`` argument is optional and used to initialize the object value. If the ``$data`` argument is omitted, the value is an empty string.
+The ``$data`` argument is optional and used to initialize the object value. If the ``$data`` argument is omitted,
+the value is an empty string.
 
 .. _zend.memory.memory-manager.objects-management.destruction:
 
@@ -119,9 +126,11 @@ Memory Limit
 
 Memory limit is a number of bytes allowed to be used by loaded movable objects.
 
-If loading or creation of an object causes memory usage to exceed of this limit, then the memory manager swaps some other objects.
+If loading or creation of an object causes memory usage to exceed of this limit, then the memory manager swaps some
+other objects.
 
-You can retrieve or set the memory limit setting using the ``getMemoryLimit()`` and ``setMemoryLimit($newLimit)`` methods:
+You can retrieve or set the memory limit setting using the ``getMemoryLimit()`` and ``setMemoryLimit($newLimit)``
+methods:
 
 .. code-block:: php
    :linenos:
@@ -131,14 +140,16 @@ You can retrieve or set the memory limit setting using the ``getMemoryLimit()`` 
 
 A negative value for memory limit means 'no limit'.
 
-The default value is two-thirds of the value of 'memory_limit' in php.ini or 'no limit' (-1) if 'memory_limit' is not set in php.ini.
+The default value is two-thirds of the value of 'memory_limit' in php.ini or 'no limit' (-1) if 'memory_limit' is
+not set in php.ini.
 
 .. _zend.memory.memory-manager.settings.min-size:
 
 MinSize
 ^^^^^^^
 
-MinSize is a minimal size of memory objects, which may be swapped by memory manager. The memory manager does not swap objects that are smaller than this value. This reduces the number of swap/load operations.
+MinSize is a minimal size of memory objects, which may be swapped by memory manager. The memory manager does not
+swap objects that are smaller than this value. This reduces the number of swap/load operations.
 
 You can retrieve or set the minimum size using the ``getMinSize()`` and ``setMinSize($newSize)`` methods:
 

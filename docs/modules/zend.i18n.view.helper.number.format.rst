@@ -3,7 +3,8 @@
 NumberFormat Helper
 ===================
 
-The ``NumberFormat`` view helper can be used to simplify rendering of locale-specific number and percentage strings. It acts as a wrapper for the ``NumberFormatter`` class within the Internationalization extension (Intl).
+The ``NumberFormat`` view helper can be used to simplify rendering of locale-specific number and percentage
+strings. It acts as a wrapper for the ``NumberFormatter`` class within the Internationalization extension (Intl).
 
 .. _zend.i18n.view.helper.number-format.usage:
 
@@ -45,17 +46,21 @@ The ``NumberFormat`` view helper can be used to simplify rendering of locale-spe
 
 - ``$number``: The numeric value.
 
-- ``$formatStyle``: (Optional) Style of the formatting, one of the `format style constants`_. If unset, it will use ``NumberFormatter::DECIMAL`` as the default style.
+- ``$formatStyle``: (Optional) Style of the formatting, one of the `format style constants`_. If unset, it will use
+  ``NumberFormatter::DECIMAL`` as the default style.
 
-- ``$formatType``: (Optional) The `formatting type`_ to use. If unset, it will use ``NumberFormatter::TYPE_DEFAULT`` as the default type.
+- ``$formatType``: (Optional) The `formatting type`_ to use. If unset, it will use
+  ``NumberFormatter::TYPE_DEFAULT`` as the default type.
 
-- ``$locale``: (Optional) Locale in which the number would be formatted (locale name, e.g. en_US). If unset, it will use the default locale (``Locale::getDefault()``)
+- ``$locale``: (Optional) Locale in which the number would be formatted (locale name, e.g. en_US). If unset, it
+  will use the default locale (``Locale::getDefault()``)
 
 .. _zend.i18n.view.helper.number-format.setter-usage:
 
 .. rubric:: NumberFormat Setters
 
-The ``$formatStyle``, ``$formatType``, and ``$locale`` options can be set prior to formatting and will be applied each time the helper is used.
+The ``$formatStyle``, ``$formatType``, and ``$locale`` options can be set prior to formatting and will be applied
+each time the helper is used.
 
 .. code-block:: php
    :linenos:

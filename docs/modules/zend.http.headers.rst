@@ -8,16 +8,22 @@ Zend\\Http\\Headers And The Various Header Classes
 Overview
 --------
 
-The ``Zend\Http\Headers`` class is a container for HTTP headers. It is typically accessed as part of a ``Zend\Http\Request`` or ``Zend\Http\Response`` ``header()`` call. The Headers container will lazily load actual Header objects as to reduce the overhead of header specific parsing.
+The ``Zend\Http\Headers`` class is a container for HTTP headers. It is typically accessed as part of a
+``Zend\Http\Request`` or ``Zend\Http\Response`` ``header()`` call. The Headers container will lazily load actual
+Header objects as to reduce the overhead of header specific parsing.
 
-The ``Zend\Http\Header\*`` classes are the domain specific implementations for the various types of Headers that one might encounter during the typical HTTP request. If a header of unknown type is encountered, it will be implemented as a ``Zend\Http\Header\GenericHeader`` instance. See the below table for a list of the various HTTP headers and the API that is specific to each header type.
+The ``Zend\Http\Header\*`` classes are the domain specific implementations for the various types of Headers that
+one might encounter during the typical HTTP request. If a header of unknown type is encountered, it will be
+implemented as a ``Zend\Http\Header\GenericHeader`` instance. See the below table for a list of the various HTTP
+headers and the API that is specific to each header type.
 
 .. _zend.http.headers.quick-start:
 
 Quick Start
 -----------
 
-The quickest way to get started interacting with header objects is by getting an already populated Headers container from a request or response object.
+The quickest way to get started interacting with header objects is by getting an already populated Headers
+container from a request or response object.
 
 .. _zend.http.headers.options:
 
@@ -37,7 +43,8 @@ Available Methods
    ``Headers::fromString(string $string)``
    Populates headers from string representation
 
-   Parses a string for headers, and aggregates them, in order, in the current instance, primarily as strings until they are needed (they will be lazy loaded).
+   Parses a string for headers, and aggregates them, in order, in the current instance, primarily as strings until
+   they are needed (they will be lazy loaded).
 
    Returns ``Zend\Http\Headers``
 
@@ -73,7 +80,8 @@ Available Methods
    ``addHeaderLine(string $headerFieldNameOrLine, string $fieldValue)``
    Add a raw header line, either in name => value, or as a single string 'name: value'
 
-   This method allows for lazy-loading in that the parsing and instantiation of Header object will be delayed until they are retrieved by either ``get()`` or ``current()``.
+   This method allows for lazy-loading in that the parsing and instantiation of Header object will be delayed until
+   they are retrieved by either ``get()`` or ``current()``.
 
    Returns ``Zend\Http\Headers``
 
@@ -167,7 +175,8 @@ Available Methods
 
 **count**
    ``count()``
-   Return the number of headers in this container. If all headers have not been parsed, actual count could increase if MultipleHeader objects exist in the Request/Response. If you need an exact count, iterate.
+   Return the number of headers in this container. If all headers have not been parsed, actual count could increase
+   if MultipleHeader objects exist in the Request/Response. If you need an exact count, iterate.
 
    Returns int
 
@@ -177,7 +186,8 @@ Available Methods
    ``toString()``
    Render all headers at once
 
-   This method handles the normal iteration of headers; it is up to the concrete classes to prepend with the appropriate status/request line.
+   This method handles the normal iteration of headers; it is up to the concrete classes to prepend with the
+   appropriate status/request line.
 
    Returns string
 

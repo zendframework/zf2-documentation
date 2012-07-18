@@ -10,9 +10,12 @@ This section describes the more advanced uses of ``Zend_Service_StrikeIron``.
 Using Services by WSDL
 ----------------------
 
-Some StrikeIron services may have a *PHP* wrapper class available, such as those described in :ref:`Bundled Services <zend.service.strikeiron.bundled-services>`. However, StrikeIron offers hundreds of services and many of these may be usable even without creating a special wrapper class.
+Some StrikeIron services may have a *PHP* wrapper class available, such as those described in :ref:`Bundled
+Services <zend.service.strikeiron.bundled-services>`. However, StrikeIron offers hundreds of services and many of
+these may be usable even without creating a special wrapper class.
 
-To try a StrikeIron service that does not have a wrapper class available, give the ``wsdl`` option to ``getService()`` instead of the ``class`` option:
+To try a StrikeIron service that does not have a wrapper class available, give the ``wsdl`` option to
+``getService()`` instead of the ``class`` option:
 
 .. code-block:: php
    :linenos:
@@ -30,22 +33,30 @@ To try a StrikeIron service that does not have a wrapper class available, give t
 
    // Zend Technologies USA Inc
 
-Using StrikeIron services from the WSDL will require at least some understanding of the WSDL files. StrikeIron has many resources on its site to help with this. Also, `Jan Schneider`_ from the `Horde project`_ has written a `small PHP routine`_ that will format a WSDL file into more readable *HTML*.
+Using StrikeIron services from the WSDL will require at least some understanding of the WSDL files. StrikeIron has
+many resources on its site to help with this. Also, `Jan Schneider`_ from the `Horde project`_ has written a `small
+PHP routine`_ that will format a WSDL file into more readable *HTML*.
 
-Please note that only the services described in the :ref:`Bundled Services <zend.service.strikeiron.bundled-services>` section are officially supported.
+Please note that only the services described in the :ref:`Bundled Services
+<zend.service.strikeiron.bundled-services>` section are officially supported.
 
 .. _zend.service.strikeiron.viewing-soap-transactions:
 
 Viewing SOAP Transactions
 -------------------------
 
-All communication with StrikeIron is done using the *SOAP* extension. It is sometimes useful to view the *XML* exchanged with StrikeIron for debug purposes.
+All communication with StrikeIron is done using the *SOAP* extension. It is sometimes useful to view the *XML*
+exchanged with StrikeIron for debug purposes.
 
-Every StrikeIron client (subclass of ``Zend_Service_StrikeIron_Base``) contains a ``getSoapClient()`` method to return the underlying instance of ``SOAPClient`` used to communicate with StrikeIron.
+Every StrikeIron client (subclass of ``Zend_Service_StrikeIron_Base``) contains a ``getSoapClient()`` method to
+return the underlying instance of ``SOAPClient`` used to communicate with StrikeIron.
 
-*PHP*'`SOAPClient`_ has a ``trace`` option that causes it to remember the *XML* exchanged during the last transaction. ``Zend_Service_StrikeIron`` does not enable the ``trace`` option by default but this can easily by changed by specifying the options that will be passed to the ``SOAPClient`` constructor.
+*PHP*'`SOAPClient`_ has a ``trace`` option that causes it to remember the *XML* exchanged during the last
+transaction. ``Zend_Service_StrikeIron`` does not enable the ``trace`` option by default but this can easily by
+changed by specifying the options that will be passed to the ``SOAPClient`` constructor.
 
-To view a SOAP transaction, call the ``getSoapClient()`` method to get the ``SOAPClient`` instance and then call the appropriate methods like `\__getLastRequest()`_ and `\__getLastRequest()`_:
+To view a SOAP transaction, call the ``getSoapClient()`` method to get the ``SOAPClient`` instance and then call
+the appropriate methods like `\__getLastRequest()`_ and `\__getLastRequest()`_:
 
 .. code-block:: php
    :linenos:

@@ -14,11 +14,16 @@ Overview
 Scope
 ^^^^^
 
-This document provides guidelines for creation of the end-user documentation found within Zend Framework. It is intended as a guide to Zend Framework contributors, who must write documentation as part of component contributions, as well as to documentation translators. The standards contained herein are intended to ease translation of documentation, minimize visual and stylistic differences between different documentation files, and make finding changes in documentation easier with ``diff`` tools.
+This document provides guidelines for creation of the end-user documentation found within Zend Framework. It is
+intended as a guide to Zend Framework contributors, who must write documentation as part of component
+contributions, as well as to documentation translators. The standards contained herein are intended to ease
+translation of documentation, minimize visual and stylistic differences between different documentation files, and
+make finding changes in documentation easier with ``diff`` tools.
 
 You may adopt and/or modify these standards in accordance with the terms of our `license`_.
 
-Topics covered in Zend Framework's documentation standards include documentation file formatting and recommendations for documentation quality.
+Topics covered in Zend Framework's documentation standards include documentation file formatting and
+recommendations for documentation quality.
 
 .. _doc-standard.file-formatting:
 
@@ -38,7 +43,8 @@ Each manual file must include the following *XML* declarations at the top of the
    <?xml version="1.0" encoding="UTF-8"?>
    <!-- Reviewed: no -->
 
-*XML* files from translated languages must also include a revision tag containing the revision of the corresponding English-language file the translation was based on.
+*XML* files from translated languages must also include a revision tag containing the revision of the corresponding
+English-language file the translation was based on.
 
 .. code-block:: xml
    :linenos:
@@ -52,7 +58,9 @@ Each manual file must include the following *XML* declarations at the top of the
 Maximum Line Length
 ^^^^^^^^^^^^^^^^^^^
 
-The maximum line length, including tags, attributes, and indentation, is not to exceed 100 characters. There is only one exception to this rule: attribute and value pairs are allowed to exceed the 100 chars as they are not allowed to be separated.
+The maximum line length, including tags, attributes, and indentation, is not to exceed 100 characters. There is
+only one exception to this rule: attribute and value pairs are allowed to exceed the 100 chars as they are not
+allowed to be separated.
 
 .. _doc-standard.file-formatting.indentation:
 
@@ -101,9 +109,11 @@ Multiple block tags within the same line are not allowed; multiple inline tags a
 Line Termination
 ^^^^^^^^^^^^^^^^
 
-Line termination follows the Unix text file convention. Lines must end with a single linefeed (LF) character. Linefeed characters are represented as ordinal 10, or hexadecimal 0x0A.
+Line termination follows the Unix text file convention. Lines must end with a single linefeed (LF) character.
+Linefeed characters are represented as ordinal 10, or hexadecimal 0x0A.
 
-Note: Do not use carriage returns (*CR*) as is the convention in Apple OS's (0x0D) or the carriage return - linefeed combination (*CRLF*) as is standard for the Windows OS (0x0D, 0x0A).
+Note: Do not use carriage returns (*CR*) as is the convention in Apple OS's (0x0D) or the carriage return -
+linefeed combination (*CRLF*) as is standard for the Windows OS (0x0D, 0x0A).
 
 .. _doc-standard.file-formatting.empty-tags:
 
@@ -133,7 +143,8 @@ Usage of whitespace within documents
 Whitespace within tags
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Opening block tags should have no whitespace immediately following them other than line breaks (and indentation on the following line).
+Opening block tags should have no whitespace immediately following them other than line breaks (and indentation on
+the following line).
 
 .. code-block:: xml
    :linenos:
@@ -153,7 +164,8 @@ Opening inline tags should have no whitespace immediately following them.
    <!-- OK -->
    This is the class <classname>Zend_Class</classname>.
 
-Closing block tags may be preceded by whitespace equivalent to the current indentation level, but no more than that amount.
+Closing block tags may be preceded by whitespace equivalent to the current indentation level, but no more than that
+amount.
 
 .. code-block:: xml
    :linenos:
@@ -236,7 +248,8 @@ Tags at the same level must be separated by an empty line to improve readability
        More text...
    </para>
 
-The first child tag should open directly below its parent, with no empty line between them; the last child tag should close directly before the closing tag of its parent.
+The first child tag should open directly below its parent, with no empty line between them; the last child tag
+should close directly before the closing tag of its parent.
 
 .. code-block:: xml
    :linenos:
@@ -272,7 +285,8 @@ The first child tag should open directly below its parent, with no empty line be
 Program Listings
 ^^^^^^^^^^^^^^^^
 
-The opening **<programlisting>** tag must indicate the appropriate "language" attribute and be indented at the same level as its sibling blocks.
+The opening **<programlisting>** tag must indicate the appropriate "language" attribute and be indented at the same
+level as its sibling blocks.
 
 .. code-block:: xml
    :linenos:
@@ -283,7 +297,8 @@ The opening **<programlisting>** tag must indicate the appropriate "language" at
 
 *CDATA* should be used around all program listings.
 
-**<programlisting>** sections must not add linebreaks or whitespace at the beginning or end of the section, as these are then represented in the final output.
+**<programlisting>** sections must not add linebreaks or whitespace at the beginning or end of the section, as
+these are then represented in the final output.
 
 .. code-block:: xml
    :linenos:
@@ -321,7 +336,8 @@ Ending *CDATA* and **<programlisting>** tags should be on the same line, without
    $render = "xxx";
    ]]></programlisting>
 
-The **<programlisting>** tag should contain the "language" attribute with a value appropriate to the contents of the program listing. Typical values include "css", "html", "ini", "javascript", "php", "text", and "xml".
+The **<programlisting>** tag should contain the "language" attribute with a value appropriate to the contents of
+the program listing. Typical values include "css", "html", "ini", "javascript", "php", "text", and "xml".
 
 .. code-block:: xml
    :linenos:
@@ -335,7 +351,8 @@ The **<programlisting>** tag should contain the "language" attribute with a valu
    <!-- XML -->
    <programlisting language="xml"><![CDATA[
 
-For program listings containing only *PHP* code, *PHP* tags (e.g., "<?php", "?>") are not required, and should not be used. They simply clutter the narrative, and are implied by the use of the **<programlisting>** tag.
+For program listings containing only *PHP* code, *PHP* tags (e.g., "<?php", "?>") are not required, and should not
+be used. They simply clutter the narrative, and are implied by the use of the **<programlisting>** tag.
 
 .. code-block:: xml
    :linenos:
@@ -351,9 +368,12 @@ For program listings containing only *PHP* code, *PHP* tags (e.g., "<?php", "?>"
    ?>
    ]]></programlisting>
 
-Line lengths within program listings should follow the :ref:`coding standards recommendations <coding-standard.php-file-formatting.max-line-length>`.
+Line lengths within program listings should follow the :ref:`coding standards recommendations
+<coding-standard.php-file-formatting.max-line-length>`.
 
-Refrain from using ``require_once()``, ``require()``, ``include_once()``, and ``include()`` calls within *PHP* listings. They simply clutter the narrative, and are largely obviated when using an autoloader. Use them only when they are essential to the example.
+Refrain from using ``require_once()``, ``require()``, ``include_once()``, and ``include()`` calls within *PHP*
+listings. They simply clutter the narrative, and are largely obviated when using an autoloader. Use them only when
+they are essential to the example.
 
 .. note::
 
@@ -371,7 +391,8 @@ Notes on specific inline tags
 classname
 ^^^^^^^^^
 
-The tag **<classname>** must be used each time a class name is represented by itself; it should not be used when combined with a method name, variable name, or constant, and no other content is allowed within the tag.
+The tag **<classname>** must be used each time a class name is represented by itself; it should not be used when
+combined with a method name, variable name, or constant, and no other content is allowed within the tag.
 
 .. code-block:: xml
    :linenos:
@@ -385,7 +406,8 @@ The tag **<classname>** must be used each time a class name is represented by it
 varname
 ^^^^^^^
 
-Variables must be wrapped in the **<varname>** tag. Variables must be written using the "$" sigil. No other content is allowed within this tag, unless a class name is used, which indicates a class variable.
+Variables must be wrapped in the **<varname>** tag. Variables must be written using the "$" sigil. No other content
+is allowed within this tag, unless a class name is used, which indicates a class variable.
 
 .. code-block:: xml
    :linenos:
@@ -400,7 +422,9 @@ Variables must be wrapped in the **<varname>** tag. Variables must be written us
 methodname
 ^^^^^^^^^^
 
-Methods must be wrapped in the **<methodname>** tag. Methods must either include the full method signature or at the least a pair of closing parentheses (e.g., "()"). No other content is allowed within this tag, unless a class name is used, which indicates a class method.
+Methods must be wrapped in the **<methodname>** tag. Methods must either include the full method signature or at
+the least a pair of closing parentheses (e.g., "()"). No other content is allowed within this tag, unless a class
+name is used, which indicates a class method.
 
 .. code-block:: xml
    :linenos:
@@ -416,7 +440,8 @@ Methods must be wrapped in the **<methodname>** tag. Methods must either include
 constant
 ^^^^^^^^
 
-Use the **<constant>** tag when denoting constants. Constants must be written in *UPPERCASE*. No other content is allowed within this tag, unless a class name is used, which indicates a class constant.
+Use the **<constant>** tag when denoting constants. Constants must be written in *UPPERCASE*. No other content is
+allowed within this tag, unless a class name is used, which indicates a class constant.
 
 .. code-block:: xml
    :linenos:
@@ -445,7 +470,8 @@ Filenames and paths must be wrapped in the **<filename>** tag. No other content 
 command
 ^^^^^^^
 
-Commands, shell scripts, and program calls must be wrapped in the **<command>** tag. If the command includes arguments, these should also be included within the tag.
+Commands, shell scripts, and program calls must be wrapped in the **<command>** tag. If the command includes
+arguments, these should also be included within the tag.
 
 .. code-block:: xml
    :linenos:
@@ -492,25 +518,34 @@ Recommendations
 Use editors without autoformatting or with configurable formatting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The style guidelines were written in large part to assist translators in recognizing the lines that have changed using normal ``diff`` tools.
+The style guidelines were written in large part to assist translators in recognizing the lines that have changed
+using normal ``diff`` tools.
 
-Many formal *XML* editors autoformat existing and new documents. Often, this formatting either does not strictly follow the docbook standard, or does not follow the standards outlined in this document. As examples, we have seen them erase the *CDATA* tags, change 4 space separation to tabs or 2 spaces, etc. Such changes can often make identification of actual content changes difficult for translators.
+Many formal *XML* editors autoformat existing and new documents. Often, this formatting either does not strictly
+follow the docbook standard, or does not follow the standards outlined in this document. As examples, we have seen
+them erase the *CDATA* tags, change 4 space separation to tabs or 2 spaces, etc. Such changes can often make
+identification of actual content changes difficult for translators.
 
-If possible, configure your editor's formatting settings such that they follow the guidelines outlined in this document. If you cannot do so, please disable autoformatting, or find a different tool that allows such configurability.
+If possible, configure your editor's formatting settings such that they follow the guidelines outlined in this
+document. If you cannot do so, please disable autoformatting, or find a different tool that allows such
+configurability.
 
 .. _doc-standard.recommendations.images:
 
 Use Images
 ^^^^^^^^^^
 
-Good images and diagrams can improve readability and comprehension. Use them whenever they will assist in these goals. Images should be placed in the ``documentation/manual/en/figures/`` directory, and be named after the section identifier in which they occur.
+Good images and diagrams can improve readability and comprehension. Use them whenever they will assist in these
+goals. Images should be placed in the ``documentation/manual/en/figures/`` directory, and be named after the
+section identifier in which they occur.
 
 .. _doc-standard.recommendations.examples:
 
 Use Case Examples
 ^^^^^^^^^^^^^^^^^
 
-Look for good use cases submitted by the community, especially those posted in proposal comments or on one of the mailing lists. Examples often illustrate usage far better than the narrative does.
+Look for good use cases submitted by the community, especially those posted in proposal comments or on one of the
+mailing lists. Examples often illustrate usage far better than the narrative does.
 
 When writing your examples for inclusion in the manual, follow all coding standards and documentation standards.
 

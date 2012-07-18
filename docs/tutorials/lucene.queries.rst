@@ -3,9 +3,11 @@
 Supported queries
 =================
 
-``Zend_Search_Lucene`` and Java Lucene support a powerful query language. It allows searching for individual terms, phrases, ranges of terms; using wildcards and fuzzy search; combining queries using boolean operators; and so on.
+``Zend_Search_Lucene`` and Java Lucene support a powerful query language. It allows searching for individual terms,
+phrases, ranges of terms; using wildcards and fuzzy search; combining queries using boolean operators; and so on.
 
-A detailed query language description can be found in the :ref:`Zend_Search_Lucene component documentation <zend.search.lucene.query-language>`.
+A detailed query language description can be found in the :ref:`Zend_Search_Lucene component documentation
+<zend.search.lucene.query-language>`.
 
 What follows are examples of some common query types and strategies.
 
@@ -24,7 +26,9 @@ Searches for the word "hello" through all document fields.
 
    **Default search field**
 
-   Important note! Java Lucene searches only through the "contents" field by default, but ``Zend_Search_Lucene`` searches through **all** fields. This behavior can be modified using the ``Zend_Search_Lucene::setDefaultSearchField($fieldName)`` method.
+   Important note! Java Lucene searches only through the "contents" field by default, but ``Zend_Search_Lucene``
+   searches through **all** fields. This behavior can be modified using the
+   ``Zend_Search_Lucene::setDefaultSearchField($fieldName)`` method.
 
 .. _learning.lucene.queries.multiple-words:
 
@@ -57,7 +61,8 @@ Searches for two words; "hello" is required, "dolly" is optional.
 
    +hello -dolly
 
-Searches for two words; "hello" is required, 'dolly' is prohibited. In other words, if the document matches "hello", but contains the word "dolly", it will not be returned in the set of matches.
+Searches for two words; "hello" is required, 'dolly' is prohibited. In other words, if the document matches
+"hello", but contains the word "dolly", it will not be returned in the set of matches.
 
 .. _learning.lucene.queries.phrases:
 
@@ -90,7 +95,8 @@ Searches for the phrase "The Right Way" within the ``title`` field and the word 
 
    title:"The Right Way" AND  go
 
-Searches for the phrase "The Right Way" within the ``title`` field and the word "go" word appearing in any field of the document.
+Searches for the phrase "The Right Way" within the ``title`` field and the word "go" word appearing in any field of
+the document.
 
 .. _learning.lucene.queries.fields-and-document-alt:
 
@@ -101,7 +107,8 @@ Searches for the phrase "The Right Way" within the ``title`` field and the word 
 
    title:Do it right
 
-Searches for the word "Do" within the ``title`` field and the words "it" and "right" words through all fields; any single one matching will result in a document match.
+Searches for the word "Do" within the ``title`` field and the words "it" and "right" words through all fields; any
+single one matching will result in a document match.
 
 .. _learning.lucene.queries.wildcard-question:
 
@@ -169,7 +176,8 @@ Fuzzy search for the word "roam".
 
 Boolean query.
 
-All supported queries can be constructed through ``Zend_Search_Lucene``'s :ref:`query construction API <zend.search.lucene.query-api>`. Moreover, query parsing and query constructing may be combined:
+All supported queries can be constructed through ``Zend_Search_Lucene``'s :ref:`query construction API
+<zend.search.lucene.query-api>`. Moreover, query parsing and query constructing may be combined:
 
 .. _learning.lucene.queries.combining:
 

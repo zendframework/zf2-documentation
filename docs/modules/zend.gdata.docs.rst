@@ -3,16 +3,21 @@
 Using Google Documents List Data API
 ====================================
 
-The Google Documents List Data *API* allows client applications to upload documents to Google Documents and list them in the form of Google Data *API* ("GData") feeds. Your client application can request a list of a user's documents, and query the content in an existing document.
+The Google Documents List Data *API* allows client applications to upload documents to Google Documents and list
+them in the form of Google Data *API* ("GData") feeds. Your client application can request a list of a user's
+documents, and query the content in an existing document.
 
-See `http://code.google.com/apis/documents/overview.html`_ for more information about the Google Documents List *API*.
+See `http://code.google.com/apis/documents/overview.html`_ for more information about the Google Documents List
+*API*.
 
 .. _zend.gdata.docs.listdocuments:
 
 Get a List of Documents
 -----------------------
 
-You can get a list of the Google Documents for a particular user by using the ``getDocumentListFeed()`` method of the docs service. The service will return a ``Zend_Gdata_Docs_DocumentListFeed`` object containing a list of documents associated with the authenticated user.
+You can get a list of the Google Documents for a particular user by using the ``getDocumentListFeed()`` method of
+the docs service. The service will return a ``Zend_Gdata_Docs_DocumentListFeed`` object containing a list of
+documents associated with the authenticated user.
 
 .. code-block:: php
    :linenos:
@@ -22,14 +27,18 @@ You can get a list of the Google Documents for a particular user by using the ``
    $docs = new Zend_Gdata_Docs($client);
    $feed = $docs->getDocumentListFeed();
 
-The resulting ``Zend_Gdata_Docs_DocumentListFeed`` object represents the response from the server. This feed contains a list of ``Zend_Gdata_Docs_DocumentListEntry`` objects (``$feed->entries``), each of which represents a single Google Document.
+The resulting ``Zend_Gdata_Docs_DocumentListFeed`` object represents the response from the server. This feed
+contains a list of ``Zend_Gdata_Docs_DocumentListEntry`` objects (``$feed->entries``), each of which represents a
+single Google Document.
 
 .. _zend.gdata.docs.creating:
 
 Upload a Document
 -----------------
 
-You can create a new Google Document by uploading a word processing document, spreadsheet, or presentation. This example is from the interactive Docs.php sample which comes with the library. It demonstrates uploading a file and printing information about the result from the server.
+You can create a new Google Document by uploading a word processing document, spreadsheet, or presentation. This
+example is from the interactive Docs.php sample which comes with the library. It demonstrates uploading a file and
+printing information about the result from the server.
 
 .. code-block:: php
    :linenos:
@@ -86,14 +95,18 @@ You can create a new Google Document by uploading a word processing document, sp
 Searching the documents feed
 ----------------------------
 
-You can search the Document List using some of the `standard Google Data API query parameters`_. Categories are used to restrict the type of document (word processor document, spreadsheet) returned. The full-text query string is used to search the content of all the documents. More detailed information on parameters specific to the Documents List can be found in the `Documents List Data API Reference Guide`_.
+You can search the Document List using some of the `standard Google Data API query parameters`_. Categories are
+used to restrict the type of document (word processor document, spreadsheet) returned. The full-text query string
+is used to search the content of all the documents. More detailed information on parameters specific to the
+Documents List can be found in the `Documents List Data API Reference Guide`_.
 
 .. _zend.gdata.docs.listwpdocuments:
 
 Get a List of Word Processing Documents
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can also request a feed containing all of your documents of a specific type. For example, to see a list of your work processing documents, you would perform a category query as follows.
+You can also request a feed containing all of your documents of a specific type. For example, to see a list of your
+work processing documents, you would perform a category query as follows.
 
 .. code-block:: php
    :linenos:
@@ -119,7 +132,9 @@ To request a list of your Google Spreadsheets, use the following category query:
 Performing a text query
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-You can search the content of documents by using a ``Zend_Gdata_Docs_Query`` in your request. A Query object can be used to construct the query *URI*, with the search term being passed in as a parameter. Here is an example method which queries the documents list for documents which contain the search string:
+You can search the content of documents by using a ``Zend_Gdata_Docs_Query`` in your request. A Query object can be
+used to construct the query *URI*, with the search term being passed in as a parameter. Here is an example method
+which queries the documents list for documents which contain the search string:
 
 .. code-block:: php
    :linenos:

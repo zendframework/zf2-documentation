@@ -3,7 +3,8 @@
 Callback
 ========
 
-This filter allows you to use own methods in conjunction with ``Zend_Filter``. You don't have to create a new filter when you already have a method which does the job.
+This filter allows you to use own methods in conjunction with ``Zend_Filter``. You don't have to create a new
+filter when you already have a method which does the job.
 
 .. _zend.filter.set.callback.options:
 
@@ -31,7 +32,8 @@ The usage of this filter is quite simple. Let's expect we want to create a filte
    print $filter->filter('Hello!');
    // returns "!olleH"
 
-As you can see it's really simple to use a callback to define a own filter. It is also possible to use a method, which is defined within a class, by giving an array as callback.
+As you can see it's really simple to use a callback to define a own filter. It is also possible to use a method,
+which is defined within a class, by giving an array as callback.
 
 .. code-block:: php
    :linenos:
@@ -59,7 +61,8 @@ To get the actual set callback use ``getCallback()`` and to set another callback
 Default parameters within a callback
 ------------------------------------
 
-It is also possible to define default parameters, which are given to the called method as array when the filter is executed. This array will be concatenated with the value which will be filtered.
+It is also possible to define default parameters, which are given to the called method as array when the filter is
+executed. This array will be concatenated with the value which will be filtered.
 
 .. code-block:: php
    :linenos:

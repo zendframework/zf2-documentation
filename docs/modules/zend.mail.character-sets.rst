@@ -3,7 +3,10 @@
 Character Sets
 ==============
 
-``Zend_Mail`` does not check for the correct character set of the mail parts. When instantiating ``Zend_Mail``, a charset for the e-mail itself may be given. It defaults to **iso-8859-1**. The application has to make sure that all parts added to that mail object have their content encoded in the correct character set. When creating a new mail part, a different charset can be given for each part.
+``Zend_Mail`` does not check for the correct character set of the mail parts. When instantiating ``Zend_Mail``, a
+charset for the e-mail itself may be given. It defaults to **iso-8859-1**. The application has to make sure that
+all parts added to that mail object have their content encoded in the correct character set. When creating a new
+mail part, a different charset can be given for each part.
 
 .. note::
 
@@ -15,7 +18,8 @@ Character Sets
 
 .. rubric:: Usage in CJK languages
 
-The following example is how to use ``Zend_Mail`` in Japanese. This is one of *CJK* (aka *CJKV*) languages. If you use Chinese, you may use *HZ-GB-2312* instead of *ISO-2022-JP*.
+The following example is how to use ``Zend_Mail`` in Japanese. This is one of *CJK* (aka *CJKV*) languages. If you
+use Chinese, you may use *HZ-GB-2312* instead of *ISO-2022-JP*.
 
 .. code-block:: php
    :linenos:

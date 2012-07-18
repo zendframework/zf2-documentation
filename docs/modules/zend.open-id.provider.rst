@@ -3,16 +3,21 @@
 Zend_OpenId_Provider
 ====================
 
-``Zend_OpenId_Provider`` can be used to implement OpenID servers. This chapter provides examples that demonstrate how to build a very basic server. However, for implementation of a production OpenID server (such as `www.myopenid.com`_) you may have to deal with more complex issues.
+``Zend_OpenId_Provider`` can be used to implement OpenID servers. This chapter provides examples that demonstrate
+how to build a very basic server. However, for implementation of a production OpenID server (such as
+`www.myopenid.com`_) you may have to deal with more complex issues.
 
 .. _zend.openid.provider.start:
 
 Quick start
 -----------
 
-The following example includes code for creating a user account using ``Zend_OpenId_Provider::register``. The link element with ``rel="openid.server"`` points to our own server script. If you submit this identity to an OpenID-enabled site, it will perform authentication on this server.
+The following example includes code for creating a user account using ``Zend_OpenId_Provider::register``. The link
+element with ``rel="openid.server"`` points to our own server script. If you submit this identity to an
+OpenID-enabled site, it will perform authentication on this server.
 
-The code before the <html> tag is just a trick that automatically creates a user account. You won't need such code when using real identities.
+The code before the <html> tag is just a trick that automatically creates a user account. You won't need such code
+when using real identities.
 
 .. _zend.openid.provider.example-1:
 
@@ -37,9 +42,15 @@ The code before the <html> tag is just a trick that automatically creates a user
    <?php echo TEST_ID;?>
    </body></html>
 
-The following identity server script handles two kinds of requests from OpenID-enabled sites (for association and authentication). Both of them are handled by the same method: ``Zend_OpenId_Provider::handle``. The two arguments to the ``Zend_OpenId_Provider`` constructor are *URL*\ s of login and trust pages, which ask for input from the end user.
+The following identity server script handles two kinds of requests from OpenID-enabled sites (for association and
+authentication). Both of them are handled by the same method: ``Zend_OpenId_Provider::handle``. The two arguments
+to the ``Zend_OpenId_Provider`` constructor are *URL*\ s of login and trust pages, which ask for input from the end
+user.
 
-On success, the method ``Zend_OpenId_Provider::handle`` returns a string that should be passed back to the OpenID-enabled site. On failure, it returns ``FALSE``. This example will return an *HTTP* 403 response if ``Zend_OpenId_Provider::handle`` fails. You will get this response if you open this script with a web browser, because it sends a non-OpenID conforming request.
+On success, the method ``Zend_OpenId_Provider::handle`` returns a string that should be passed back to the
+OpenID-enabled site. On failure, it returns ``FALSE``. This example will return an *HTTP* 403 response if
+``Zend_OpenId_Provider::handle`` fails. You will get this response if you open this script with a web browser,
+because it sends a non-OpenID conforming request.
 
 .. _zend.openid.provider.example-2:
 
@@ -60,17 +71,24 @@ On success, the method ``Zend_OpenId_Provider::handle`` returns a string that sh
 
 .. note::
 
-   It is a good idea to use a secure connection (HTTPS) for these scripts- especially for the following interactive scripts- to prevent password disclosure.
+   It is a good idea to use a secure connection (HTTPS) for these scripts- especially for the following interactive
+   scripts- to prevent password disclosure.
 
-The following script implements a login screen for an identity server using ``Zend_OpenId_Provider`` and redirects to this page when a required user has not yet logged in. On this page, a user will enter his password to login.
+The following script implements a login screen for an identity server using ``Zend_OpenId_Provider`` and redirects
+to this page when a required user has not yet logged in. On this page, a user will enter his password to login.
 
 You should use the password "123" that was used in the identity script above.
 
-On submit, the script calls ``Zend_OpenId_Provider::login`` with the accepted user's identity and password, then redirects back to the main identity provider's script. On success, the ``Zend_OpenId_Provider::login`` establishes a session between the user and the identity provider and stores the information about the user, who is now logged in. All following requests from the same user won't require a login procedure- even if they come from another OpenID enabled web site.
+On submit, the script calls ``Zend_OpenId_Provider::login`` with the accepted user's identity and password, then
+redirects back to the main identity provider's script. On success, the ``Zend_OpenId_Provider::login`` establishes
+a session between the user and the identity provider and stores the information about the user, who is now logged
+in. All following requests from the same user won't require a login procedure- even if they come from another
+OpenID enabled web site.
 
 .. note::
 
-   Note that this session is between end-user and identity provider only. OpenID enabled sites know nothing about it.
+   Note that this session is between end-user and identity provider only. OpenID enabled sites know nothing about
+   it.
 
 .. _zend.openid.provider.example-3:
 
@@ -128,7 +146,11 @@ On submit, the script calls ``Zend_OpenId_Provider::login`` with the accepted us
    </body>
    </html>
 
-The fact that the user is now logged in doesn't mean that the authentication must necessarily succeed. The user may decide not to trust particular OpenID enabled sites. The following trust screen allows the end user to make that choice. This choice may either be made only for current requests or forever. In the second case, information about trusted/untrusted sites is stored in an internal database, and all following authentication requests from this site will be handled automatically without user interaction.
+The fact that the user is now logged in doesn't mean that the authentication must necessarily succeed. The user may
+decide not to trust particular OpenID enabled sites. The following trust screen allows the end user to make that
+choice. This choice may either be made only for current requests or forever. In the second case, information about
+trusted/untrusted sites is stored in an internal database, and all following authentication requests from this site
+will be handled automatically without user interaction.
 
 .. _zend.openid.provider.example-4:
 
@@ -180,18 +202,24 @@ The fact that the user is now logged in doesn't mean that the authentication mus
    </body>
    </html>
 
-Production OpenID servers usually support the Simple Registration Extension that allows consumers to request some information about the user from the provider. In this case, the trust page can be extended to allow entering requested fields or selecting a specific user profile.
+Production OpenID servers usually support the Simple Registration Extension that allows consumers to request some
+information about the user from the provider. In this case, the trust page can be extended to allow entering
+requested fields or selecting a specific user profile.
 
 .. _zend.openid.provider.all:
 
 Combined Provide Scripts
 ------------------------
 
-It is possible to combine all provider functionality in one script. In this case login and trust *URL*\ s are omitted, and ``Zend_OpenId_Provider`` assumes that they point to the same page with the additional "openid.action"``GET`` argument.
+It is possible to combine all provider functionality in one script. In this case login and trust *URL*\ s are
+omitted, and ``Zend_OpenId_Provider`` assumes that they point to the same page with the additional
+"openid.action"``GET`` argument.
 
 .. note::
 
-   The following example is not complete. It doesn't provide GUI code for the user, instead performing an automatic login and trust relationship instead. This is done just to simplify the example; a production server should include some code from previous examples.
+   The following example is not complete. It doesn't provide GUI code for the user, instead performing an automatic
+   login and trust relationship instead. This is done just to simplify the example; a production server should
+   include some code from previous examples.
 
 .. _zend.openid.provider.example-5:
 
@@ -226,14 +254,18 @@ It is possible to combine all provider functionality in one script. In this case
        }
    }
 
-If you compare this example with previous examples split in to separate pages, you will see only the one difference besides the dispatch code: ``unset($_GET['openid_action'])``. This call to ``unset()`` is necessary to route the next request to main handler.
+If you compare this example with previous examples split in to separate pages, you will see only the one difference
+besides the dispatch code: ``unset($_GET['openid_action'])``. This call to ``unset()`` is necessary to route the
+next request to main handler.
 
 .. _zend.openid.provider.sreg:
 
 Simple Registration Extension
 -----------------------------
 
-Again, the code before the <html> tag is just a trick to demonstrate functionality. It creates a new user account and associates it with a profile (nickname and password). Such tricks aren't needed in deployed providers where end users register on OpenID servers and fill in their profiles. Implementing this GUI is out of scope for this manual.
+Again, the code before the <html> tag is just a trick to demonstrate functionality. It creates a new user account
+and associates it with a profile (nickname and password). Such tricks aren't needed in deployed providers where end
+users register on OpenID servers and fill in their profiles. Implementing this GUI is out of scope for this manual.
 
 .. _zend.openid.provider.example-6:
 
@@ -269,11 +301,17 @@ Again, the code before the <html> tag is just a trick to demonstrate functionali
    </body>
    </html>
 
-You should now pass this identity to the OpenID-enabled web site (use the Simple Registration Extension example from the previous section), and it should use the following OpenID server script.
+You should now pass this identity to the OpenID-enabled web site (use the Simple Registration Extension example
+from the previous section), and it should use the following OpenID server script.
 
-This script is a variation of the script in the "Everything Together" example. It uses the same automatic login mechanism, but doesn't contain any code for a trust page. The user already trusts the example scripts forever. This trust was established by calling the ``Zend_OpenId_Provider::allowSite()`` method in the identity script. The same method associates the profile with the trusted *URL*. This profile will be returned automatically for a request from the trusted *URL*.
+This script is a variation of the script in the "Everything Together" example. It uses the same automatic login
+mechanism, but doesn't contain any code for a trust page. The user already trusts the example scripts forever. This
+trust was established by calling the ``Zend_OpenId_Provider::allowSite()`` method in the identity script. The same
+method associates the profile with the trusted *URL*. This profile will be returned automatically for a request
+from the trusted *URL*.
 
-To make Simple Registration Extension work, you must simply pass an instance of ``Zend_OpenId_Extension_Sreg`` as the second argument to the ``Zend_OpenId_Provider::handle()`` method.
+To make Simple Registration Extension work, you must simply pass an instance of ``Zend_OpenId_Extension_Sreg`` as
+the second argument to the ``Zend_OpenId_Provider::handle()`` method.
 
 .. _zend.openid.provider.example-7:
 
@@ -313,17 +351,23 @@ To make Simple Registration Extension work, you must simply pass an instance of 
 Anything Else?
 --------------
 
-Building OpenID providers is much less common than building OpenID-enabled sites, so this manual doesn't cover all ``Zend_OpenId_Provider`` features exhaustively, as was done for ``Zend_OpenId_Consumer``.
+Building OpenID providers is much less common than building OpenID-enabled sites, so this manual doesn't cover all
+``Zend_OpenId_Provider`` features exhaustively, as was done for ``Zend_OpenId_Consumer``.
 
 To summamize, ``Zend_OpenId_Provider`` contains:
 
-- A set of methods to build an end-user GUI that allows users to register and manage their trusted sites and profiles
+- A set of methods to build an end-user GUI that allows users to register and manage their trusted sites and
+  profiles
 
-- An abstract storage layer to store information about users, their sites and their profiles. It also stores associations between the provider and OpenID-enabled sites. This layer is very similar to that of the ``Zend_OpenId_Consumer`` class. It also uses file storage by default, but may used with another backend.
+- An abstract storage layer to store information about users, their sites and their profiles. It also stores
+  associations between the provider and OpenID-enabled sites. This layer is very similar to that of the
+  ``Zend_OpenId_Consumer`` class. It also uses file storage by default, but may used with another backend.
 
 - An abstract user-association layer that may associate a user's web browser with a logged-in identity
 
-The ``Zend_OpenId_Provider`` class doesn't attempt to cover all possible features that can be implemented by OpenID servers, e.g. digital certificates, but it can be extended easily using ``Zend_OpenId_Extension``\ s or by standard object-oriented extension.
+The ``Zend_OpenId_Provider`` class doesn't attempt to cover all possible features that can be implemented by OpenID
+servers, e.g. digital certificates, but it can be extended easily using ``Zend_OpenId_Extension``\ s or by standard
+object-oriented extension.
 
 
 

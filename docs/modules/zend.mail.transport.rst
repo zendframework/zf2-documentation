@@ -8,16 +8,22 @@ Zend\\Mail\\Transport
 Overview
 --------
 
-Transports take care of the actual delivery of mail. Typically, you only need to worry about two possibilities: using PHP's native ``mail()`` functionality, which uses system resources to deliver mail, or using the *SMTP* protocol for delivering mail via a remote server. Zend Framework also includes a "File" transport, which creates a mail file for each message sent; these can later be introspected as logs or consumed for the purposes of sending via an alternate transport mechanism later.
+Transports take care of the actual delivery of mail. Typically, you only need to worry about two possibilities:
+using PHP's native ``mail()`` functionality, which uses system resources to deliver mail, or using the *SMTP*
+protocol for delivering mail via a remote server. Zend Framework also includes a "File" transport, which creates a
+mail file for each message sent; these can later be introspected as logs or consumed for the purposes of sending
+via an alternate transport mechanism later.
 
-The ``Zend\Mail\Transport`` interface defines exactly one method, ``send()``. This method accepts a ``Zend\Mail\Message`` instance, which it then introspects and serializes in order to send.
+The ``Zend\Mail\Transport`` interface defines exactly one method, ``send()``. This method accepts a
+``Zend\Mail\Message`` instance, which it then introspects and serializes in order to send.
 
 .. _zend.mail.transport.quick-start:
 
 Quick Start
 -----------
 
-Using a mail transport is typically as simple as instantiating it, optionally configuring it, and then passing a message to it.
+Using a mail transport is typically as simple as instantiating it, optionally configuring it, and then passing a
+message to it.
 
 .. _zend.mail.transport.quick-start.sendmail-usage:
 

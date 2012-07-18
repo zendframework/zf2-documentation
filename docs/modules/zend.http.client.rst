@@ -8,14 +8,20 @@ Zend\\Http\\Client
 Overview
 --------
 
-``Zend\Http\Client`` provides an easy interface for preforming Hyper-Text Transfer Protocol (HTTP) requests. ``Zend\Http\Client`` supports most simple features expected from an *HTTP* client, as well as some more complex features such as *HTTP* authentication and file uploads. Successful requests (and most unsuccessful ones too) return a ``Zend\Http\Response`` object, which provides access to the response's headers and body (see :ref:`this section <zend.http.response>`).
+``Zend\Http\Client`` provides an easy interface for preforming Hyper-Text Transfer Protocol (HTTP) requests.
+``Zend\Http\Client`` supports most simple features expected from an *HTTP* client, as well as some more complex
+features such as *HTTP* authentication and file uploads. Successful requests (and most unsuccessful ones too)
+return a ``Zend\Http\Response`` object, which provides access to the response's headers and body (see :ref:`this
+section <zend.http.response>`).
 
 .. _zend.http.client.quick-start:
 
 Quick Start
 -----------
 
-The class constructor optionally accepts a URL as its first parameter (can be either a string or a ``Zend\Uri\Http`` object), and an array or ``Zend\Config\Config`` object containing configuration options. Both can be left out, and set later using the setUri() and setConfig() methods.
+The class constructor optionally accepts a URL as its first parameter (can be either a string or a
+``Zend\Uri\Http`` object), and an array or ``Zend\Config\Config`` object containing configuration options. Both can
+be left out, and set later using the setUri() and setConfig() methods.
 
 .. code-block:: php
    :linenos:
@@ -40,14 +46,18 @@ The class constructor optionally accepts a URL as its first parameter (can be ei
 
 .. note::
 
-   ``Zend\Http\Client`` uses ``Zend\Uri\Http`` to validate URLs. This means that some special characters like the pipe symbol ('\|') or the caret symbol ('^') will not be accepted in the URL by default. This can be modified by setting the 'allowunwise' option of ``Zend\Uri`` to '``TRUE``'. See :ref:`this section <zend.uri.validation.allowunwise>` for more information.
+   ``Zend\Http\Client`` uses ``Zend\Uri\Http`` to validate URLs. This means that some special characters like the
+   pipe symbol ('\|') or the caret symbol ('^') will not be accepted in the URL by default. This can be modified by
+   setting the 'allowunwise' option of ``Zend\Uri`` to '``TRUE``'. See :ref:`this section
+   <zend.uri.validation.allowunwise>` for more information.
 
 .. _zend.http.client.options:
 
 Configuration Options
 ---------------------
 
-The constructor and setConfig() method accept an associative array of configuration parameters, or a ``Zend\Config\Config`` object. Setting these parameters is optional, as they all have default values.
+The constructor and setConfig() method accept an associative array of configuration parameters, or a
+``Zend\Config\Config`` object. Setting these parameters is optional, as they all have default values.
 
 
 
@@ -78,7 +88,6 @@ The constructor and setConfig() method accept an associative array of configurat
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
          |encodecookies  |Whether to pass the cookie value through urlencode/urldecode. Enabling this breaks support with some web servers. Disabling this limits the range of values the cookies can contain.|boolean        |TRUE                                 |
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
-
 
 
 .. _zend.http.client.methods:
@@ -112,7 +121,8 @@ Available Methods
    ``setAdapter(Zend\Http\Client\Adapter|string $adapter)``
    Load the connection adapter
 
-   While this method is not called more than one for a client, it is seperated from ->request() to preserve logic and readability
+   While this method is not called more than one for a client, it is seperated from ->request() to preserve logic
+   and readability
 
    Returns null
 
@@ -380,7 +390,8 @@ Available Methods
 
 **setAuth**
    ``setAuth(string $user, string $password, string $type = 'basic')``
-   Create a HTTP authentication "Authorization:" header according to the specified user, password and authentication method.
+   Create a HTTP authentication "Authorization:" header according to the specified user, password and
+   authentication method.
 
 
 
@@ -412,7 +423,10 @@ Available Methods
    ``setFileUpload(string $filename, string $formname, string $data, string $ctype)``
    Set a file to upload (using a POST request)
 
-   Can be used in two ways: 1. $data is null (default): $filename is treated as the name if a local file which will be read and sent. Will try to guess the content type using mime_content_type(). 2. $data is set - $filename is sent as the file name, but $data is sent as the file contents and no file is read from the file system. In this case, you need to manually set the Content-Type ($ctype) or it will default to application/octet-stream.
+   Can be used in two ways: 1. $data is null (default): $filename is treated as the name if a local file which will
+   be read and sent. Will try to guess the content type using mime_content_type(). 2. $data is set - $filename is
+   sent as the file name, but $data is sent as the file contents and no file is read from the file system. In this
+   case, you need to manually set the Content-Type ($ctype) or it will default to application/octet-stream.
 
    Returns Zend\\Http\\Client
 
@@ -445,7 +459,8 @@ Examples
 
 .. rubric:: Performing a Simple GET Request
 
-Performing simple *HTTP* requests is very easily done using the request() method, and rarely needs more than three lines of code:
+Performing simple *HTTP* requests is very easily done using the request() method, and rarely needs more than three
+lines of code:
 
 .. code-block:: php
    :linenos:
@@ -454,15 +469,18 @@ Performing simple *HTTP* requests is very easily done using the request() method
    $client = new Client('http://example.org');
    $response = $client->send();
 
-The request() method takes one optional parameter - the request method. This can be either ``GET``, ``POST``, ``PUT``, ``HEAD``, ``DELETE``, ``TRACE``, ``OPTIONS`` or ``CONNECT`` as defined by the *HTTP* protocol [#]_.
+The request() method takes one optional parameter - the request method. This can be either ``GET``, ``POST``,
+``PUT``, ``HEAD``, ``DELETE``, ``TRACE``, ``OPTIONS`` or ``CONNECT`` as defined by the *HTTP* protocol [#]_.
 
 .. _zend.http.client.basic-requests.example-2:
 
 .. rubric:: Using Request Methods Other Than GET
 
-For convenience, these are all defined as class constants: Zend\\Http\\Client::GET, Zend\\Http\\Client::POST and so on.
+For convenience, these are all defined as class constants: Zend\\Http\\Client::GET, Zend\\Http\\Client::POST and so
+on.
 
-If no method is specified, the method set by the last ``setMethod()`` call is used. If ``setMethod()`` was never called, the default request method is ``GET`` (see the above example).
+If no method is specified, the method set by the last ``setMethod()`` call is used. If ``setMethod()`` was never
+called, the default request method is ``GET`` (see the above example).
 
 .. code-block:: php
    :linenos:
@@ -480,7 +498,11 @@ If no method is specified, the method set by the last ``setMethod()`` call is us
 
 .. rubric:: Adding GET and POST parameters
 
-Adding ``GET`` parameters to an *HTTP* request is quite simple, and can be done either by specifying them as part of the URL, or by using the setParameterGet() method. This method takes the ``GET`` parameter's name as its first parameter, and the ``GET`` parameter's value as its second parameter. For convenience, the setParameterGet() method can also accept a single associative array of name => value ``GET`` variables - which may be more comfortable when several ``GET`` parameters need to be set.
+Adding ``GET`` parameters to an *HTTP* request is quite simple, and can be done either by specifying them as part
+of the URL, or by using the setParameterGet() method. This method takes the ``GET`` parameter's name as its first
+parameter, and the ``GET`` parameter's value as its second parameter. For convenience, the setParameterGet() method
+can also accept a single associative array of name => value ``GET`` variables - which may be more comfortable when
+several ``GET`` parameters need to be set.
 
 .. code-block:: php
    :linenos:
@@ -505,7 +527,9 @@ Adding ``GET`` parameters to an *HTTP* request is quite simple, and can be done 
 
 .. rubric:: Setting POST Parameters
 
-While ``GET`` parameters can be sent with every request method, POST parameters are only sent in the body of POST requests. Adding POST parameters to a request is very similar to adding ``GET`` parameters, and can be done with the setParameterPost() method, which is similar to the setParameterGet() method in structure.
+While ``GET`` parameters can be sent with every request method, POST parameters are only sent in the body of POST
+requests. Adding POST parameters to a request is very similar to adding ``GET`` parameters, and can be done with
+the setParameterPost() method, which is similar to the setParameterGet() method in structure.
 
 .. code-block:: php
    :linenos:
@@ -522,7 +546,9 @@ While ``GET`` parameters can be sent with every request method, POST parameters 
        'selection' => array(45, 32, 80)
    ));
 
-Note that when sending POST requests, you can set both ``GET`` and POST parameters. On the other hand, while setting POST parameters for a non-POST request will not trigger and error, it is useless. Unless the request is a POST request, POST parameters are simply ignored.
+Note that when sending POST requests, you can set both ``GET`` and POST parameters. On the other hand, while
+setting POST parameters for a non-POST request will not trigger and error, it is useless. Unless the request is a
+POST request, POST parameters are simply ignored.
 
 .. _zend.http.client.request-object-usage:
 

@@ -128,14 +128,19 @@ Configuration Options
 .. _zend.mail.smtp-options.options.connection-class:
 
 **connection_class**
-   Fully-qualified classname or short name resolvable via ``Zend\Mail\Protocol\SmtpLoader``. Typically, this will be one of "smtp", "plain", "login", or "crammd5", and defaults to "smtp".
+   Fully-qualified classname or short name resolvable via ``Zend\Mail\Protocol\SmtpLoader``. Typically, this will
+   be one of "smtp", "plain", "login", or "crammd5", and defaults to "smtp".
 
-   Typically, the connection class should extend the ``Zend\Mail\Protocol\AbstractProtocol`` class, and specifically the SMTP variant.
+   Typically, the connection class should extend the ``Zend\Mail\Protocol\AbstractProtocol`` class, and
+   specifically the SMTP variant.
 
 .. _zend.mail.smtp-options.options.connection-config:
 
 **connection_config**
-   Optional associative array of parameters to pass to the :ref:`connection class <zend.mail.smtp-options.options.connection-class>` in order to configure it. By default this is empty. For connection classes other than the default, you will typically need to define the "username" and "password" options.
+   Optional associative array of parameters to pass to the :ref:`connection class
+   <zend.mail.smtp-options.options.connection-class>` in order to configure it. By default this is empty. For
+   connection classes other than the default, you will typically need to define the "username" and "password"
+   options.
 
 .. _zend.mail.smtp-options.methods:
 
@@ -182,7 +187,8 @@ Available Methods
 
 **setConnectionConfig**
    ``setConnectionConfig(array $config)``
-   Set configuration for the connection class. Typically, if using anything other than the default connection class, this will be an associative array with the keys "username" and "password".
+   Set configuration for the connection class. Typically, if using anything other than the default connection
+   class, this will be an associative array with the keys "username" and "password".
 
    Implements a fluent interface.
 

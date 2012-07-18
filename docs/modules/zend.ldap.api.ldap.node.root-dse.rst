@@ -5,7 +5,12 @@ Zend\\Ldap\\Node\\RootDse
 
 The following methods are available on all vendor-specific subclasses.
 
-``Zend\Ldap\Node\RootDse`` includes the magic property accessors ``__get()`` and ``__isset()`` to access the attributes by their name. They proxy to ``Zend\Ldap\Node\RootDse::getAttribute()`` and ``Zend\Ldap\Node\RootDse::existsAttribute()`` respectively. ``__set()`` and ``__unset()`` are also implemented but they throw a *BadMethodCallException* as modifications are not allowed on RootDSE nodes. Furthermore the class implements *ArrayAccess* for array-style-access to the attributes. ``offsetSet()`` and ``offsetUnset()`` also throw a *BadMethodCallException* due ro obvious reasons.
+``Zend\Ldap\Node\RootDse`` includes the magic property accessors ``__get()`` and ``__isset()`` to access the
+attributes by their name. They proxy to ``Zend\Ldap\Node\RootDse::getAttribute()`` and
+``Zend\Ldap\Node\RootDse::existsAttribute()`` respectively. ``__set()`` and ``__unset()`` are also implemented but
+they throw a *BadMethodCallException* as modifications are not allowed on RootDSE nodes. Furthermore the class
+implements *ArrayAccess* for array-style-access to the attributes. ``offsetSet()`` and ``offsetUnset()`` also throw
+a *BadMethodCallException* due ro obvious reasons.
 
 .. _zend.ldap.api.reference.zend-ldap-node-rootdse.table:
 
@@ -162,7 +167,8 @@ Additionally the common methods above apply to instances of *Zend\Ldap\Node\Root
 
 .. note::
 
-   Refer to `Getting Information about the LDAP Server`_ for information on the attributes of Novell eDirectory RootDSE.
+   Refer to `Getting Information about the LDAP Server`_ for information on the attributes of Novell eDirectory
+   RootDSE.
 
 .. _zend.ldap.api.reference.zend-ldap-node-rootdse.edirectory.table:
 

@@ -8,7 +8,10 @@ Zend_Service_WindowsAzure
 Introduction
 ------------
 
-Windows Azure is the name for Microsoft's Software + Services platform, an operating system in the cloud providing services for hosting, management, scalable storage with support for simple blobs, tables, and queues, as well as a management infrastructure for provisioning and geo-distribution of cloud-based services, and a development platform for the Azure Services layer.
+Windows Azure is the name for Microsoft's Software + Services platform, an operating system in the cloud providing
+services for hosting, management, scalable storage with support for simple blobs, tables, and queues, as well as a
+management infrastructure for provisioning and geo-distribution of cloud-based services, and a development platform
+for the Azure Services layer.
 
 .. _zend.service.windowsazure.sdk:
 
@@ -17,11 +20,15 @@ Installing the Windows Azure SDK
 
 There are two development scenario's when working with Windows Azure.
 
-- You can develop your application using ``Zend_Service_WindowsAzure`` and the Windows Azure *SDK*, which provides a local developent environment of the services provided by Windows Azure's cloud infrastructure.
+- You can develop your application using ``Zend_Service_WindowsAzure`` and the Windows Azure *SDK*, which provides
+  a local developent environment of the services provided by Windows Azure's cloud infrastructure.
 
-- You can develop your application using ``Zend_Service_WindowsAzure``, working directly with the Windows Azure cloud infrastructure.
+- You can develop your application using ``Zend_Service_WindowsAzure``, working directly with the Windows Azure
+  cloud infrastructure.
 
-The first case requires you to install the `Windows Azure SDK`_ on your development machine. It is currently only available for Windows environments; progress is being made on a Java-based version of the *SDK* which can run on any platform.
+The first case requires you to install the `Windows Azure SDK`_ on your development machine. It is currently only
+available for Windows environments; progress is being made on a Java-based version of the *SDK* which can run on
+any platform.
 
 The latter case requires you to have an account at `Azure.com`_.
 
@@ -30,7 +37,9 @@ The latter case requires you to have an account at `Azure.com`_.
 API Documentation
 -----------------
 
-The ``Zend_Service_WindowsAzure`` class provides the *PHP* wrapper to the Windows Azure *REST* interface. Please consult the `REST documentation`_ for detailed description of the service. You will need to be familiar with basic concepts in order to use this service.
+The ``Zend_Service_WindowsAzure`` class provides the *PHP* wrapper to the Windows Azure *REST* interface. Please
+consult the `REST documentation`_ for detailed description of the service. You will need to be familiar with basic
+concepts in order to use this service.
 
 .. _zend.service.windowsazure.features:
 
@@ -50,9 +59,11 @@ Features
 Architecture
 ------------
 
-``Zend_Service_WindowsAzure`` provides access to Windows Azure's storage, computation and management interfaces by abstracting the *REST*-*XML* interface Windows Azure provides into a simple *PHP* *API*.
+``Zend_Service_WindowsAzure`` provides access to Windows Azure's storage, computation and management interfaces by
+abstracting the *REST*-*XML* interface Windows Azure provides into a simple *PHP* *API*.
 
-An application built using ``Zend_Service_WindowsAzure`` can access Windows Azure's features, no matter if it is hosted on the Windows Azure platform or on an in-premise web server.
+An application built using ``Zend_Service_WindowsAzure`` can access Windows Azure's features, no matter if it is
+hosted on the Windows Azure platform or on an in-premise web server.
 
 .. include:: zend.service.windows-azure.blob.rst
 .. include:: zend.service.windows-azure.table.rst

@@ -8,25 +8,36 @@ Zend_Service_Amazon_Sqs
 Introduction
 ------------
 
-`Amazon Simple Queue Service (Amazon SQS)`_ offers a reliable, highly scalable, hosted queue for storing messages as they travel between computers. By using Amazon SQS, developers can simply move data between distributed components of their applications that perform different tasks, without losing messages or requiring each component to be always available. Amazon SQS makes it easy to build an automated workflow, working in close conjunction with the Amazon Elastic Compute Cloud (Amazon EC2) and the other *AWS* infrastructure web services.
+`Amazon Simple Queue Service (Amazon SQS)`_ offers a reliable, highly scalable, hosted queue for storing messages
+as they travel between computers. By using Amazon SQS, developers can simply move data between distributed
+components of their applications that perform different tasks, without losing messages or requiring each component
+to be always available. Amazon SQS makes it easy to build an automated workflow, working in close conjunction with
+the Amazon Elastic Compute Cloud (Amazon EC2) and the other *AWS* infrastructure web services.
 
-Amazon SQS works by exposing Amazon's web-scale messaging infrastructure as a web service. Any computer on the Internet can add or read messages without any installed software or special firewall configurations. Components of applications using Amazon SQS can run independently, and do not need to be on the same network, developed with the same technologies, or running at the same time.
+Amazon SQS works by exposing Amazon's web-scale messaging infrastructure as a web service. Any computer on the
+Internet can add or read messages without any installed software or special firewall configurations. Components of
+applications using Amazon SQS can run independently, and do not need to be on the same network, developed with the
+same technologies, or running at the same time.
 
 .. _zend.service.amazon.sqs.registering:
 
 Registering with Amazon SQS
 ---------------------------
 
-Before you can get started with ``Zend_Service_Amazon_Sqs``, you must first register for an account. Please see the `SQS FAQ`_ page on the Amazon website for more information.
+Before you can get started with ``Zend_Service_Amazon_Sqs``, you must first register for an account. Please see the
+`SQS FAQ`_ page on the Amazon website for more information.
 
-After registering, you will receive an application key and a secret key. You will need both to access the SQS service.
+After registering, you will receive an application key and a secret key. You will need both to access the SQS
+service.
 
 .. _zend.service.amazon.sqs.apiDocumentation:
 
 API Documentation
 -----------------
 
-The ``Zend_Service_Amazon_Sqs`` class provides the *PHP* wrapper to the Amazon SQS REST interface. Please consult the `Amazon SQS documentation`_ for detailed description of the service. You will need to be familiar with basic concepts in order to use this service.
+The ``Zend_Service_Amazon_Sqs`` class provides the *PHP* wrapper to the Amazon SQS REST interface. Please consult
+the `Amazon SQS documentation`_ for detailed description of the service. You will need to be familiar with basic
+concepts in order to use this service.
 
 .. _zend.service.amazon.sqs.features:
 
@@ -35,11 +46,14 @@ Features
 
 ``Zend_Service_Amazon_Sqs`` provides the following functionality:
 
-- A single point for configuring your amazon.sqs authentication credentials that can be used across the amazon.sqs namespaces.
+- A single point for configuring your amazon.sqs authentication credentials that can be used across the amazon.sqs
+  namespaces.
 
-- A proxy object that is more convenient to use than an *HTTP* client alone, mostly removing the need to manually construct *HTTP* POST requests to access the REST service.
+- A proxy object that is more convenient to use than an *HTTP* client alone, mostly removing the need to manually
+  construct *HTTP* POST requests to access the REST service.
 
-- A response wrapper that parses each response body and throws an exception if an error occurred, alleviating the need to repeatedly check the success of many commands.
+- A response wrapper that parses each response body and throws an exception if an error occurred, alleviating the
+  need to repeatedly check the success of many commands.
 
 - Additional convenience methods for some of the more common operations.
 
@@ -48,7 +62,8 @@ Features
 Getting Started
 ---------------
 
-Once you have registered with Amazon SQS, you're ready to create your queue and store some messages on SQS. Each queue can contain unlimited amount of messages, identified by name.
+Once you have registered with Amazon SQS, you're ready to create your queue and store some messages on SQS. Each
+queue can contain unlimited amount of messages, identified by name.
 
 The following example demonstrates creating a queue, storing and retrieving messages.
 
@@ -70,7 +85,8 @@ The following example demonstrates creating a queue, storing and retrieving mess
        echo $message['body'].'<br/>';
    }
 
-Since the ``Zend_Service_Amazon_Sqs`` service requires authentication, you should pass your credentials (AWS key and secret key) to the constructor. If you only use one account, you can set default credentials for the service:
+Since the ``Zend_Service_Amazon_Sqs`` service requires authentication, you should pass your credentials (AWS key
+and secret key) to the constructor. If you only use one account, you can set default credentials for the service:
 
 .. code-block:: php
    :linenos:
@@ -83,9 +99,11 @@ Since the ``Zend_Service_Amazon_Sqs`` service requires authentication, you shoul
 Queue operations
 ----------------
 
-All messages SQS are stored in queues. A queue has to be created before any message operations. Queue names must be unique under your access key and secret key.
+All messages SQS are stored in queues. A queue has to be created before any message operations. Queue names must be
+unique under your access key and secret key.
 
-Queue names can contain lowercase letters, digits, periods (.), underscores (\_), and dashes (-). No other symbols allowed. Queue names can be a maximum of 80 characters.
+Queue names can contain lowercase letters, digits, periods (.), underscores (\_), and dashes (-). No other symbols
+allowed. Queue names can be a maximum of 80 characters.
 
 - ``create()`` creates a new queue.
 
@@ -136,7 +154,9 @@ Queue names can contain lowercase letters, digits, periods (.), underscores (\_)
 Message operations
 ------------------
 
-After a queue is created, simple messages can be sent into the queue then received at a later point in time. Messages can be up to 8KB in length. If longer messages are needed please see `S3`_. There is no limit to the number of messages a queue can contain.
+After a queue is created, simple messages can be sent into the queue then received at a later point in time.
+Messages can be up to 8KB in length. If longer messages are needed please see `S3`_. There is no limit to the
+number of messages a queue can contain.
 
 - ``sent($queue_url, $message)`` send the ``$message`` to the ``$queue_url`` SQS queue *URL*.
 
@@ -167,7 +187,8 @@ After a queue is created, simple messages can be sent into the queue then receiv
          echo "got message ".$message['body'].'<br/>';
      }
 
-- ``deleteMessage($queue_url, $handle)`` deletes a message from a queue. A message must first be received using the ``receive()`` method before it can be deleted.
+- ``deleteMessage($queue_url, $handle)`` deletes a message from a queue. A message must first be received using the
+  ``receive()`` method before it can be deleted.
 
   .. _zend.service.amazon.sqs.messages.deleteExample:
 

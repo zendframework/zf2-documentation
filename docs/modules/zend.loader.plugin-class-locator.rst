@@ -8,7 +8,9 @@ The PluginClassLocator interface
 Overview
 --------
 
-The ``PluginClassLocator`` interface describes a component capable of maintaining an internal map of plugin names to actual class names. Classes implementing this interface can register and unregister plugin/class associations, and return the entire map.
+The ``PluginClassLocator`` interface describes a component capable of maintaining an internal map of plugin names
+to actual class names. Classes implementing this interface can register and unregister plugin/class associations,
+and return the entire map.
 
 .. _zend.loader.plugin-class-locator.quick-start:
 
@@ -48,7 +50,8 @@ registerPlugin
    ``registerPlugin($shortName, $className)``
 
    **registerPlugin()**
-   Implement this method to add or overwrite plugin name/class name associations in the internal plugin map. ``$shortName`` will be aliased to ``$className``.
+   Implement this method to add or overwrite plugin name/class name associations in the internal plugin map.
+   ``$shortName`` will be aliased to ``$className``.
 
 
 .. _zend.loader.plugin-class-locator.methods.unregister-plugin:

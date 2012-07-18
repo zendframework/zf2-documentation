@@ -8,7 +8,9 @@ Zend_Service_Flickr
 Introduction
 ------------
 
-``Zend_Service_Flickr`` is a simple *API* for using the Flickr REST Web Service. In order to use the Flickr web services, you must have an *API* key. To obtain a key and for more information about the Flickr REST Web Service, please visit the `Flickr API Documentation`_.
+``Zend_Service_Flickr`` is a simple *API* for using the Flickr REST Web Service. In order to use the Flickr web
+services, you must have an *API* key. To obtain a key and for more information about the Flickr REST Web Service,
+please visit the `Flickr API Documentation`_.
 
 In the following example, we use the ``tagSearch()`` method to search for photos having "php" in the tags.
 
@@ -40,7 +42,8 @@ Finding Flickr Users' Photos and Information
 
 ``Zend_Service_Flickr`` provides several ways to get information about Flickr users:
 
-- ``userSearch()``: Accepts a string query of space-delimited tags and an optional second parameter as an array of search options, and returns a set of photos as a ``Zend_Service_Flickr_ResultSet`` object.
+- ``userSearch()``: Accepts a string query of space-delimited tags and an optional second parameter as an array of
+  search options, and returns a set of photos as a ``Zend_Service_Flickr_ResultSet`` object.
 
 - ``getIdByUsername()``: Returns a string user ID associated with the given username string.
 
@@ -50,7 +53,8 @@ Finding Flickr Users' Photos and Information
 
 .. rubric:: Finding a Flickr User's Public Photos by E-Mail Address
 
-In this example, we have a Flickr user's e-mail address, and we search for the user's public photos by using the ``userSearch()`` method:
+In this example, we have a Flickr user's e-mail address, and we search for the user's public photos by using the
+``userSearch()`` method:
 
 .. code-block:: php
    :linenos:
@@ -68,7 +72,8 @@ In this example, we have a Flickr user's e-mail address, and we search for the u
 Finding photos From a Group Pool
 --------------------------------
 
-``Zend_Service_Flickr`` allows to retrieve a group's pool photos based on the group ID. Use the ``groupPoolGetPhotos()`` method:
+``Zend_Service_Flickr`` allows to retrieve a group's pool photos based on the group ID. Use the
+``groupPoolGetPhotos()`` method:
 
 .. _zend.service.flickr.grouppoolgetphotos.example-1:
 
@@ -96,7 +101,8 @@ Finding photos From a Group Pool
 Retrieving Flickr Image Details
 -------------------------------
 
-``Zend_Service_Flickr`` makes it quick and easy to get an image's details based on a given image ID. Just use the ``getImageDetails()`` method, as in the following example:
+``Zend_Service_Flickr`` makes it quick and easy to get an image's details based on a given image ID. Just use the
+``getImageDetails()`` method, as in the following example:
 
 .. _zend.service.flickr.getimagedetails.example-1:
 
@@ -121,11 +127,13 @@ Zend_Service_Flickr Result Classes
 
 The following classes are all returned by ``tagSearch()`` and ``userSearch()``:
 
-- :ref:`Zend_Service_Flickr_ResultSet <zend.service.flickr.classes.resultset>`
 
-- :ref:`Zend_Service_Flickr_Result <zend.service.flickr.classes.result>`
 
-- :ref:`Zend_Service_Flickr_Image <zend.service.flickr.classes.image>`
+   - :ref:`Zend_Service_Flickr_ResultSet <zend.service.flickr.classes.resultset>`
+
+   - :ref:`Zend_Service_Flickr_Result <zend.service.flickr.classes.result>`
+
+   - :ref:`Zend_Service_Flickr_Image <zend.service.flickr.classes.image>`
 
 
 
@@ -138,7 +146,8 @@ Represents a set of Results from a Flickr search.
 
 .. note::
 
-   Implements the ``SeekableIterator`` interface for easy iteration (e.g., using ``foreach()``), as well as direct access to a specific result using ``seek()``.
+   Implements the ``SeekableIterator`` interface for easy iteration (e.g., using ``foreach()``), as well as direct
+   access to a specific result using ``seek()``.
 
 .. _zend.service.flickr.classes.resultset.properties:
 

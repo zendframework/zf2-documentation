@@ -3,23 +3,27 @@
 Introduction
 ============
 
-The ``Zend_Pdf`` component is a *PDF* (Portable Document Format) manipulation engine. It can load, create, modify and save documents. Thus it can help any *PHP* application dynamically create *PDF* documents by modifying existing documents or generating new ones from scratch. ``Zend_Pdf`` offers the following features:
+The ``Zend_Pdf`` component is a *PDF* (Portable Document Format) manipulation engine. It can load, create, modify
+and save documents. Thus it can help any *PHP* application dynamically create *PDF* documents by modifying existing
+documents or generating new ones from scratch. ``Zend_Pdf`` offers the following features:
 
-- Create a new document or load existing one. [#]_
 
-- Retrieve a specified revision of the document.
 
-- Manipulate pages within a document. Change page order, add new pages, remove pages from a document.
+   - Create a new document or load existing one. [#]_
 
-- Different drawing primitives (lines, rectangles, polygons, circles, ellipses and sectors).
+   - Retrieve a specified revision of the document.
 
-- Text drawing using any of the 14 standard (built-in) fonts or your own custom TrueType fonts.
+   - Manipulate pages within a document. Change page order, add new pages, remove pages from a document.
 
-- Rotations.
+   - Different drawing primitives (lines, rectangles, polygons, circles, ellipses and sectors).
 
-- Image drawing. [#]_
+   - Text drawing using any of the 14 standard (built-in) fonts or your own custom TrueType fonts.
 
-- Incremental *PDF* file update.
+   - Rotations.
+
+   - Image drawing. [#]_
+
+   - Incremental *PDF* file update.
 
 
 

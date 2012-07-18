@@ -3,24 +3,40 @@
 Introduction
 ============
 
-The ``Zend\Authentication`` component provides an *API* for authentication and includes concrete authentication adapters for common use case scenarios.
+The ``Zend\Authentication`` component provides an *API* for authentication and includes concrete authentication
+adapters for common use case scenarios.
 
-``Zend\Authentication`` is concerned only with **authentication** and not with **authorization**. Authentication is loosely defined as determining whether an entity actually is what it purports to be (i.e., identification), based on some set of credentials. Authorization, the process of deciding whether to allow an entity access to, or to perform operations upon, other entities is outside the scope of ``Zend\Authentication``. For more information about authorization and access control with Zend Framework, please see the :ref:`Zend\\Acl <zend.acl>` component.
+``Zend\Authentication`` is concerned only with **authentication** and not with **authorization**. Authentication is
+loosely defined as determining whether an entity actually is what it purports to be (i.e., identification), based
+on some set of credentials. Authorization, the process of deciding whether to allow an entity access to, or to
+perform operations upon, other entities is outside the scope of ``Zend\Authentication``. For more information about
+authorization and access control with Zend Framework, please see the :ref:`Zend\\Acl <zend.acl>` component.
 
 .. note::
 
-   There is no ``Zend\Authentication\Authentication`` class, instead the class ``Zend\Authentication\AuthenticationService`` is provided. This class uses underlying authentication adapters and persistent storage backends.
+   There is no ``Zend\Authentication\Authentication`` class, instead the class
+   ``Zend\Authentication\AuthenticationService`` is provided. This class uses underlying authentication adapters
+   and persistent storage backends.
 
 .. _zend.authentication.introduction.adapters:
 
 Adapters
 --------
 
-``Zend\Authentication`` adapters are used to authenticate against a particular type of authentication service, such as *LDAP*, *RDBMS*, or file-based storage. Different adapters are likely to have vastly different options and behaviors, but some basic things are common among authentication adapters. For example, accepting authentication credentials (including a purported identity), performing queries against the authentication service, and returning results are common to ``Zend\Authentication`` adapters.
+``Zend\Authentication`` adapters are used to authenticate against a particular type of authentication service, such
+as *LDAP*, *RDBMS*, or file-based storage. Different adapters are likely to have vastly different options and
+behaviors, but some basic things are common among authentication adapters. For example, accepting authentication
+credentials (including a purported identity), performing queries against the authentication service, and returning
+results are common to ``Zend\Authentication`` adapters.
 
-Each ``Zend\Authentication`` adapter class implements ``Zend\Authentication\Adapter\AdapterInterface``. This interface defines one method, ``authenticate()``, that an adapter class must implement for performing an authentication query. Each adapter class must be prepared prior to calling ``authenticate()``. Such adapter preparation includes setting up credentials (e.g., username and password) and defining values for adapter-specific configuration options, such as database connection settings for a database table adapter.
+Each ``Zend\Authentication`` adapter class implements ``Zend\Authentication\Adapter\AdapterInterface``. This
+interface defines one method, ``authenticate()``, that an adapter class must implement for performing an
+authentication query. Each adapter class must be prepared prior to calling ``authenticate()``. Such adapter
+preparation includes setting up credentials (e.g., username and password) and defining values for adapter-specific
+configuration options, such as database connection settings for a database table adapter.
 
-The following is an example authentication adapter that requires a username and password to be set for authentication. Other details, such as how the authentication service is queried, have been omitted for brevity:
+The following is an example authentication adapter that requires a username and password to be set for
+authentication. Other details, such as how the authentication service is queried, have been omitted for brevity:
 
 .. code-block:: php
    :linenos:
@@ -52,24 +68,39 @@ The following is an example authentication adapter that requires a username and 
        }
    }
 
-As indicated in its docblock, ``authenticate()`` must return an instance of ``Zend\Authentication\Result`` (or of a class derived from ``Zend\Authentication\Result``). If for some reason performing an authentication query is impossible, ``authenticate()`` should throw an exception that derives from ``Zend\Authentication\Adapter\Exception\ExceptionInterface``.
+As indicated in its docblock, ``authenticate()`` must return an instance of ``Zend\Authentication\Result`` (or of a
+class derived from ``Zend\Authentication\Result``). If for some reason performing an authentication query is
+impossible, ``authenticate()`` should throw an exception that derives from
+``Zend\Authentication\Adapter\Exception\ExceptionInterface``.
 
 .. _zend.authentication.introduction.results:
 
 Results
 -------
 
-``Zend\Authentication`` adapters return an instance of ``Zend\Authentication\Result`` with ``authenticate()`` in order to represent the results of an authentication attempt. Adapters populate the ``Zend\Authentication\Result`` object upon construction, so that the following four methods provide a basic set of user-facing operations that are common to the results of ``Zend\Authentication`` adapters:
+``Zend\Authentication`` adapters return an instance of ``Zend\Authentication\Result`` with ``authenticate()`` in
+order to represent the results of an authentication attempt. Adapters populate the ``Zend\Authentication\Result``
+object upon construction, so that the following four methods provide a basic set of user-facing operations that are
+common to the results of ``Zend\Authentication`` adapters:
 
 - ``isValid()``- returns ``TRUE`` if and only if the result represents a successful authentication attempt
 
-- ``getCode()``- returns a ``Zend\Authentication\Result`` constant identifier for determining the type of authentication failure or whether success has occurred. This may be used in situations where the developer wishes to distinguish among several authentication result types. This allows developers to maintain detailed authentication result statistics, for example. Another use of this feature is to provide specific, customized messages to users for usability reasons, though developers are encouraged to consider the risks of providing such detailed reasons to users, instead of a general authentication failure message. For more information, see the notes below.
+- ``getCode()``- returns a ``Zend\Authentication\Result`` constant identifier for determining the type of
+  authentication failure or whether success has occurred. This may be used in situations where the developer wishes
+  to distinguish among several authentication result types. This allows developers to maintain detailed
+  authentication result statistics, for example. Another use of this feature is to provide specific, customized
+  messages to users for usability reasons, though developers are encouraged to consider the risks of providing such
+  detailed reasons to users, instead of a general authentication failure message. For more information, see the
+  notes below.
 
 - ``getIdentity()``- returns the identity of the authentication attempt
 
 - ``getMessages()``- returns an array of messages regarding a failed authentication attempt
 
-A developer may wish to branch based on the type of authentication result in order to perform more specific operations. Some operations developers might find useful are locking accounts after too many unsuccessful password attempts, flagging an IP address after too many nonexistent identities are attempted, and providing specific, customized authentication result messages to the user. The following result codes are available:
+A developer may wish to branch based on the type of authentication result in order to perform more specific
+operations. Some operations developers might find useful are locking accounts after too many unsuccessful password
+attempts, flagging an IP address after too many nonexistent identities are attempted, and providing specific,
+customized authentication result messages to the user. The following result codes are available:
 
 .. code-block:: php
    :linenos:
@@ -115,26 +146,41 @@ The following example illustrates how a developer may branch on the result code:
 Identity Persistence
 --------------------
 
-Authenticating a request that includes authentication credentials is useful per se, but it is also important to support maintaining the authenticated identity without having to present the authentication credentials with each request.
+Authenticating a request that includes authentication credentials is useful per se, but it is also important to
+support maintaining the authenticated identity without having to present the authentication credentials with each
+request.
 
-*HTTP* is a stateless protocol, however, and techniques such as cookies and sessions have been developed in order to facilitate maintaining state across multiple requests in server-side web applications.
+*HTTP* is a stateless protocol, however, and techniques such as cookies and sessions have been developed in order
+to facilitate maintaining state across multiple requests in server-side web applications.
 
 .. _zend.authentication.introduction.persistence.default:
 
 Default Persistence in the PHP Session
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default, ``Zend\Authentication`` provides persistent storage of the identity from a successful authentication attempt using the *PHP* session. Upon a successful authentication attempt, ``Zend\Authentication\AuthenticationService::authenticate()`` stores the identity from the authentication result into persistent storage. Unless specified otherwise, ``Zend\Authentication\AuthenticationService`` uses a storage class named ``Zend\Authentication\Storage\Session``, which, in turn, uses :ref:`Zend\\Session <zend.session>`. A custom class may instead be used by providing an object that implements ``Zend\Authentication\Storage\StorageInterface`` to ``Zend\Authentication\AuthenticationService::setStorage()``.
+By default, ``Zend\Authentication`` provides persistent storage of the identity from a successful authentication
+attempt using the *PHP* session. Upon a successful authentication attempt,
+``Zend\Authentication\AuthenticationService::authenticate()`` stores the identity from the authentication result
+into persistent storage. Unless specified otherwise, ``Zend\Authentication\AuthenticationService`` uses a storage
+class named ``Zend\Authentication\Storage\Session``, which, in turn, uses :ref:`Zend\\Session <zend.session>`. A
+custom class may instead be used by providing an object that implements
+``Zend\Authentication\Storage\StorageInterface`` to ``Zend\Authentication\AuthenticationService::setStorage()``.
 
 .. note::
 
-   If automatic persistent storage of the identity is not appropriate for a particular use case, then developers may forgot using the ``Zend\Authentication\AuthenticationService`` class altogether, instead using an adapter class directly.
+   If automatic persistent storage of the identity is not appropriate for a particular use case, then developers
+   may forgot using the ``Zend\Authentication\AuthenticationService`` class altogether, instead using an adapter
+   class directly.
 
 .. _zend.authentication.introduction.persistence.default.example:
 
 .. rubric:: Modifying the Session Namespace
 
-``Zend\Authentication\Storage\Session`` uses a session namespace of '``Zend_Auth``'. This namespace may be overridden by passing a different value to the constructor of ``Zend\Authentication\Storage\Session``, and this value is internally passed along to the constructor of :ref:`Zend\\Session\\Container <zend.session>`. This should occur before authentication is attempted, since ``Zend\Authentication\AuthenticationService::authenticate()`` performs the automatic storage of the identity.
+``Zend\Authentication\Storage\Session`` uses a session namespace of '``Zend_Auth``'. This namespace may be
+overridden by passing a different value to the constructor of ``Zend\Authentication\Storage\Session``, and this
+value is internally passed along to the constructor of :ref:`Zend\\Session\\Container <zend.session>`. This should
+occur before authentication is attempted, since ``Zend\Authentication\AuthenticationService::authenticate()``
+performs the automatic storage of the identity.
 
 .. code-block:: php
    :linenos:
@@ -160,13 +206,17 @@ By default, ``Zend\Authentication`` provides persistent storage of the identity 
 Implementing Customized Storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Sometimes developers may need to use a different identity storage mechanism than that provided by ``Zend\Authentication\Storage\Session``. For such cases developers may simply implement ``Zend\Authentication\Storage\StorageInterface`` and supply an instance of the class to ``Zend\Authentication\AuthenticationService::setStorage()``.
+Sometimes developers may need to use a different identity storage mechanism than that provided by
+``Zend\Authentication\Storage\Session``. For such cases developers may simply implement
+``Zend\Authentication\Storage\StorageInterface`` and supply an instance of the class to
+``Zend\Authentication\AuthenticationService::setStorage()``.
 
 .. _zend.authentication.introduction.persistence.custom.example:
 
 .. rubric:: Using a Custom Storage Class
 
-In order to use an identity persistence storage class other than ``Zend\Authentication\Storage\Session``, a developer implements ``Zend\Authentication\Storage\StorageInterface``:
+In order to use an identity persistence storage class other than ``Zend\Authentication\Storage\Session``, a
+developer implements ``Zend\Authentication\Storage\StorageInterface``:
 
 .. code-block:: php
    :linenos:
@@ -239,7 +289,8 @@ In order to use an identity persistence storage class other than ``Zend\Authenti
        }
    }
 
-In order to use this custom storage class, ``Zend\Authentication\AuthenticationService::setStorage()`` is invoked before an authentication query is attempted:
+In order to use this custom storage class, ``Zend\Authentication\AuthenticationService::setStorage()`` is invoked
+before an authentication query is attempted:
 
 .. code-block:: php
    :linenos:
@@ -270,7 +321,8 @@ There are two provided ways to use ``Zend\Authentication`` adapters:
 
 . directly, through the adapter's ``authenticate()`` method
 
-The following example illustrates how to use a ``Zend\Authentication`` adapter indirectly, through the use of the ``Zend\Authentication\AuthenticationService`` class:
+The following example illustrates how to use a ``Zend\Authentication`` adapter indirectly, through the use of the
+``Zend\Authentication\AuthenticationService`` class:
 
 .. code-block:: php
    :linenos:
@@ -298,7 +350,8 @@ The following example illustrates how to use a ``Zend\Authentication`` adapter i
        // $result->getIdentity() === $username
    }
 
-Once authentication has been attempted in a request, as in the above example, it is a simple matter to check whether a successfully authenticated identity exists:
+Once authentication has been attempted in a request, as in the above example, it is a simple matter to check
+whether a successfully authenticated identity exists:
 
 .. code-block:: php
    :linenos:
@@ -316,14 +369,19 @@ Once authentication has been attempted in a request, as in the above example, it
        $identity = $auth->getIdentity();
    }
 
-To remove an identity from persistent storage, simply use the ``clearIdentity()`` method. This typically would be used for implementing an application "logout" operation:
+To remove an identity from persistent storage, simply use the ``clearIdentity()`` method. This typically would be
+used for implementing an application "logout" operation:
 
 .. code-block:: php
    :linenos:
 
    $auth->clearIdentity();
 
-When the automatic use of persistent storage is inappropriate for a particular use case, a developer may simply bypass the use of the ``Zend\Authentication\AuthenticationService`` class, using an adapter class directly. Direct use of an adapter class involves configuring and preparing an adapter object and then calling its ``authenticate()`` method. Adapter-specific details are discussed in the documentation for each adapter. The following example directly utilizes ``My\Auth\Adapter``:
+When the automatic use of persistent storage is inappropriate for a particular use case, a developer may simply
+bypass the use of the ``Zend\Authentication\AuthenticationService`` class, using an adapter class directly. Direct
+use of an adapter class involves configuring and preparing an adapter object and then calling its
+``authenticate()`` method. Adapter-specific details are discussed in the documentation for each adapter. The
+following example directly utilizes ``My\Auth\Adapter``:
 
 .. code-block:: php
    :linenos:

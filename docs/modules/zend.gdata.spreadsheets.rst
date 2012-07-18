@@ -3,9 +3,12 @@
 Using Google Spreadsheets
 =========================
 
-The Google Spreadsheets data *API* allows client applications to view and update Spreadsheets content in the form of Google data *API* feeds. Your client application can request a list of a user's spreadsheets, edit or delete content in an existing Spreadsheets worksheet, and query the content in an existing Spreadsheets worksheet.
+The Google Spreadsheets data *API* allows client applications to view and update Spreadsheets content in the form
+of Google data *API* feeds. Your client application can request a list of a user's spreadsheets, edit or delete
+content in an existing Spreadsheets worksheet, and query the content in an existing Spreadsheets worksheet.
 
-See `http://code.google.com/apis/spreadsheets/overview.html`_ for more information about the Google Spreadsheets *API*.
+See `http://code.google.com/apis/spreadsheets/overview.html`_ for more information about the Google Spreadsheets
+*API*.
 
 .. _zend.gdata.spreadsheets.creating:
 
@@ -19,7 +22,9 @@ The Spreadsheets data *API* does not currently provide a way to programmatically
 Get a List of Spreadsheets
 --------------------------
 
-You can get a list of spreadsheets for a particular user by using the ``getSpreadsheetFeed()`` method of the Spreadsheets service. The service will return a ``Zend_Gdata_Spreadsheets_SpreadsheetFeed`` object containing a list of spreadsheets associated with the authenticated user.
+You can get a list of spreadsheets for a particular user by using the ``getSpreadsheetFeed()`` method of the
+Spreadsheets service. The service will return a ``Zend_Gdata_Spreadsheets_SpreadsheetFeed`` object containing a
+list of spreadsheets associated with the authenticated user.
 
 .. code-block:: php
    :linenos:
@@ -34,9 +39,11 @@ You can get a list of spreadsheets for a particular user by using the ``getSprea
 Get a List of Worksheets
 ------------------------
 
-A given spreadsheet may contain multiple worksheets. For each spreadsheet, there's a worksheets metafeed listing all the worksheets in that spreadsheet.
+A given spreadsheet may contain multiple worksheets. For each spreadsheet, there's a worksheets metafeed listing
+all the worksheets in that spreadsheet.
 
-Given the spreadsheet key from the <id> of a ``Zend_Gdata_Spreadsheets_SpreadsheetEntry`` object you've already retrieved, you can fetch a feed containing a list of worksheets associated with that spreadsheet.
+Given the spreadsheet key from the <id> of a ``Zend_Gdata_Spreadsheets_SpreadsheetEntry`` object you've already
+retrieved, you can fetch a feed containing a list of worksheets associated with that spreadsheet.
 
 .. code-block:: php
    :linenos:
@@ -45,22 +52,33 @@ Given the spreadsheet key from the <id> of a ``Zend_Gdata_Spreadsheets_Spreadshe
    $query->setSpreadsheetKey($spreadsheetKey);
    $feed = $spreadsheetService->getWorksheetFeed($query);
 
-The resulting ``Zend_Gdata_Spreadsheets_WorksheetFeed`` object feed represents the response from the server. Among other things, this feed contains a list of ``Zend_Gdata_Spreadsheets_WorksheetEntry`` objects (``$feed->entries``), each of which represents a single worksheet.
+The resulting ``Zend_Gdata_Spreadsheets_WorksheetFeed`` object feed represents the response from the server. Among
+other things, this feed contains a list of ``Zend_Gdata_Spreadsheets_WorksheetEntry`` objects (``$feed->entries``),
+each of which represents a single worksheet.
 
 .. _zend.gdata.spreadsheets.listfeeds:
 
 Interacting With List-based Feeds
 ---------------------------------
 
-A given worksheet generally contains multiple rows, each containing multiple cells. You can request data from the worksheet either as a list-based feed, in which each entry represents a row, or as a cell-based feed, in which each entry represents a single cell. For information on cell-based feeds, see :ref:`Interacting with cell-based feeds <zend.gdata.spreadsheets.cellfeeds>`.
+A given worksheet generally contains multiple rows, each containing multiple cells. You can request data from the
+worksheet either as a list-based feed, in which each entry represents a row, or as a cell-based feed, in which each
+entry represents a single cell. For information on cell-based feeds, see :ref:`Interacting with cell-based feeds
+<zend.gdata.spreadsheets.cellfeeds>`.
 
-The following sections describe how to get a list-based feed, add a row to a worksheet, and send queries with various query parameters.
+The following sections describe how to get a list-based feed, add a row to a worksheet, and send queries with
+various query parameters.
 
 The list feed makes some assumptions about how the data is laid out in the spreadsheet.
 
-In particular, the list feed treats the first row of the worksheet as a header row; Spreadsheets dynamically creates *XML* elements named after the contents of header-row cells. Users who want to provide Gdata feeds should not put any data other than column headers in the first row of a worksheet.
+In particular, the list feed treats the first row of the worksheet as a header row; Spreadsheets dynamically
+creates *XML* elements named after the contents of header-row cells. Users who want to provide Gdata feeds should
+not put any data other than column headers in the first row of a worksheet.
 
-The list feed contains all rows after the first row up to the first blank row. The first blank row terminates the data set. If expected data isn't appearing in a feed, check the worksheet manually to see whether there's an unexpected blank row in the middle of the data. In particular, if the second row of the spreadsheet is blank, then the list feed will contain no data.
+The list feed contains all rows after the first row up to the first blank row. The first blank row terminates the
+data set. If expected data isn't appearing in a feed, check the worksheet manually to see whether there's an
+unexpected blank row in the middle of the data. In particular, if the second row of the spreadsheet is blank, then
+the list feed will contain no data.
 
 A row in a list feed is as many columns wide as the worksheet itself.
 
@@ -79,9 +97,12 @@ To retrieve a worksheet's list feed, use the ``getListFeed()`` method of the Spr
    $query->setWorksheetId($worksheetId);
    $listFeed = $spreadsheetService->getListFeed($query);
 
-The resulting ``Zend_Gdata_Spreadsheets_ListFeed`` object ``$listfeed`` represents a response from the server. Among other things, this feed contains an array of ``Zend_Gdata_Spreadsheets_ListEntry`` objects (``$listFeed->entries``), each of which represents a single row in a worksheet.
+The resulting ``Zend_Gdata_Spreadsheets_ListFeed`` object ``$listfeed`` represents a response from the server.
+Among other things, this feed contains an array of ``Zend_Gdata_Spreadsheets_ListEntry`` objects
+(``$listFeed->entries``), each of which represents a single row in a worksheet.
 
-Each ``Zend_Gdata_Spreadsheets_ListEntry`` contains an array, ``custom``, which contains the data for that row. You can extract and display this array:
+Each ``Zend_Gdata_Spreadsheets_ListEntry`` contains an array, ``custom``, which contains the data for that row. You
+can extract and display this array:
 
 .. code-block:: php
    :linenos:
@@ -91,7 +112,8 @@ Each ``Zend_Gdata_Spreadsheets_ListEntry`` contains an array, ``custom``, which 
      echo $customEntry->getColumnName() . " = " . $customEntry->getText();
    }
 
-An alternate version of this array, ``customByName``, allows direct access to an entry's cells by name. This is convenient when trying to access a specific header:
+An alternate version of this array, ``customByName``, allows direct access to an entry's cells by name. This is
+convenient when trying to access a specific header:
 
 .. code-block:: php
    :linenos:
@@ -104,7 +126,9 @@ An alternate version of this array, ``customByName``, allows direct access to an
 Reverse-sort Rows
 ^^^^^^^^^^^^^^^^^
 
-By default, rows in the feed appear in the same order as the corresponding rows in the GUI; that is, they're in order by row number. To get rows in reverse order, set the reverse properties of the ``Zend_Gdata_Spreadsheets_ListQuery`` object to ``TRUE``:
+By default, rows in the feed appear in the same order as the corresponding rows in the GUI; that is, they're in
+order by row number. To get rows in reverse order, set the reverse properties of the
+``Zend_Gdata_Spreadsheets_ListQuery`` object to ``TRUE``:
 
 .. code-block:: php
    :linenos:
@@ -115,14 +139,19 @@ By default, rows in the feed appear in the same order as the corresponding rows 
    $query->setReverse('true');
    $listFeed = $spreadsheetService->getListFeed($query);
 
-Note that if you want to order (or reverse sort) by a particular column, rather than by position in the worksheet, you can set the ``orderby`` value of the ``Zend_Gdata_Spreadsheets_ListQuery`` object to **column:<the header of that column>**.
+Note that if you want to order (or reverse sort) by a particular column, rather than by position in the worksheet,
+you can set the ``orderby`` value of the ``Zend_Gdata_Spreadsheets_ListQuery`` object to **column:<the header of
+that column>**.
 
 .. _zend.gdata.spreadsheets.listfeeds.sq:
 
 Send a Structured Query
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-You can set a ``Zend_Gdata_Spreadsheets_ListQuery``'s ``sq`` value to produce a feed with entries that meet the specified criteria. For example, suppose you have a worksheet containing personnel data, in which each row represents information about a single person. You wish to retrieve all rows in which the person's name is "John" and the person's age is over 25. To do so, you would set ``sq`` as follows:
+You can set a ``Zend_Gdata_Spreadsheets_ListQuery``'s ``sq`` value to produce a feed with entries that meet the
+specified criteria. For example, suppose you have a worksheet containing personnel data, in which each row
+represents information about a single person. You wish to retrieve all rows in which the person's name is "John"
+and the person's age is over 25. To do so, you would set ``sq`` as follows:
 
 .. code-block:: php
    :linenos:
@@ -147,16 +176,19 @@ Rows can be added to a spreadsheet by using the ``insertRow()`` method of the Sp
                                                        $spreadsheetKey,
                                                        $worksheetId);
 
-The ``$rowData`` parameter contains an array of column keys to data values. The method returns a ``Zend_Gdata_Spreadsheets_SpreadsheetsEntry`` object which represents the inserted row.
+The ``$rowData`` parameter contains an array of column keys to data values. The method returns a
+``Zend_Gdata_Spreadsheets_SpreadsheetsEntry`` object which represents the inserted row.
 
-Spreadsheets inserts the new row immediately after the last row that appears in the list-based feed, which is to say immediately before the first entirely blank row.
+Spreadsheets inserts the new row immediately after the last row that appears in the list-based feed, which is to
+say immediately before the first entirely blank row.
 
 .. _zend.gdata.spreadsheets.listfeeds.editrow:
 
 Edit a Row
 ^^^^^^^^^^
 
-Once a ``Zend_Gdata_Spreadsheets_ListEntry`` object is fetched, its rows can be updated by using the ``updateRow()`` method of the Spreadsheet service.
+Once a ``Zend_Gdata_Spreadsheets_ListEntry`` object is fetched, its rows can be updated by using the
+``updateRow()`` method of the Spreadsheet service.
 
 .. code-block:: php
    :linenos:
@@ -164,14 +196,17 @@ Once a ``Zend_Gdata_Spreadsheets_ListEntry`` object is fetched, its rows can be 
    $updatedListEntry = $spreadsheetService->updateRow($oldListEntry,
                                                       $newRowData);
 
-The ``$oldListEntry`` parameter contains the list entry to be updated. ``$newRowData`` contains an array of column keys to data values, to be used as the new row data. The method returns a ``Zend_Gdata_Spreadsheets_SpreadsheetsEntry`` object which represents the updated row.
+The ``$oldListEntry`` parameter contains the list entry to be updated. ``$newRowData`` contains an array of column
+keys to data values, to be used as the new row data. The method returns a
+``Zend_Gdata_Spreadsheets_SpreadsheetsEntry`` object which represents the updated row.
 
 .. _zend.gdata.spreadsheets.listfeeds.deleterow:
 
 Delete a Row
 ^^^^^^^^^^^^
 
-To delete a row, simply invoke ``deleteRow()`` on the ``Zend_Gdata_Spreadsheets`` object with the existing entry to be deleted:
+To delete a row, simply invoke ``deleteRow()`` on the ``Zend_Gdata_Spreadsheets`` object with the existing entry to
+be deleted:
 
 .. code-block:: php
    :linenos:
@@ -192,7 +227,8 @@ Interacting With Cell-based Feeds
 
 In a cell-based feed, each entry represents a single cell.
 
-Note that we don't recommend interacting with both a cell-based feed and a list-based feed for the same worksheet at the same time.
+Note that we don't recommend interacting with both a cell-based feed and a list-based feed for the same worksheet
+at the same time.
 
 .. _zend.gdata.spreadsheets.cellfeeds.get:
 
@@ -209,7 +245,9 @@ To retrieve a worksheet's cell feed, use the ``getCellFeed()`` method of the Spr
    $query->setWorksheetId($worksheetId);
    $cellFeed = $spreadsheetService->getCellFeed($query);
 
-The resulting ``Zend_Gdata_Spreadsheets_CellFeed`` object ``$cellFeed`` represents a response from the server. Among other things, this feed contains an array of ``Zend_Gdata_Spreadsheets_CellEntry`` objects (``$cellFeed>entries``), each of which represents a single cell in a worksheet. You can display this information:
+The resulting ``Zend_Gdata_Spreadsheets_CellFeed`` object ``$cellFeed`` represents a response from the server.
+Among other things, this feed contains an array of ``Zend_Gdata_Spreadsheets_CellEntry`` objects
+(``$cellFeed>entries``), each of which represents a single cell in a worksheet. You can display this information:
 
 .. code-block:: php
    :linenos:
@@ -226,7 +264,8 @@ The resulting ``Zend_Gdata_Spreadsheets_CellFeed`` object ``$cellFeed`` represen
 Send a Cell Range Query
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Suppose you wanted to retrieve the cells in the first column of a worksheet. You can request a cell feed containing only this column as follows:
+Suppose you wanted to retrieve the cells in the first column of a worksheet. You can request a cell feed containing
+only this column as follows:
 
 .. code-block:: php
    :linenos:
@@ -255,7 +294,8 @@ To modify the contents of a cell, call ``updateCell()`` with the row, column, an
                                                   $spreadsheetKey,
                                                   $worksheetId);
 
-The new data is placed in the specified cell in the worksheet. If the specified cell contains data already, it will be overwritten. Note: Use ``updateCell()`` to change the data in a cell, even if the cell is empty.
+The new data is placed in the specified cell in the worksheet. If the specified cell contains data already, it will
+be overwritten. Note: Use ``updateCell()`` to change the data in a cell, even if the cell is empty.
 
 
 

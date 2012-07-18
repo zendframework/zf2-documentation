@@ -3,9 +3,11 @@
 Stomp
 =====
 
-``Zend_Queue_Stomp`` provides a basic client to communicate with `Stomp`_ compatible servers. Some servers, such as Apache ActiveMQ and RabbitMQ, will allow you to communicate by other methods, such as *HTTP*, and *XMPP*.
+``Zend_Queue_Stomp`` provides a basic client to communicate with `Stomp`_ compatible servers. Some servers, such as
+Apache ActiveMQ and RabbitMQ, will allow you to communicate by other methods, such as *HTTP*, and *XMPP*.
 
-The Stomp protocol provides `StompConnect`_ which supports any `Java Message Service (JMS)`_ provider. Stomp is supported by `Apache ActiveMQ`_, `RabbitMQ`_, `stompserver`_, and `Gozirra`_.
+The Stomp protocol provides `StompConnect`_ which supports any `Java Message Service (JMS)`_ provider. Stomp is
+supported by `Apache ActiveMQ`_, `RabbitMQ`_, `stompserver`_, and `Gozirra`_.
 
 .. _zend.queue.adapters-configuration.stomp:
 
@@ -14,7 +16,8 @@ Stomp - Supporting classes
 
 - ``Zend_Queue_Stomp_Frame``. This class provides the basic functions for manipulating a Stomp Frame.
 
-- ``Zend_Queue_Stomp_Client``. This class provides the basic functions to ``send()`` and ``receive()`` ``Zend_Queue_Stomp_Frame``\ s to and from a Stomp compatible server.
+- ``Zend_Queue_Stomp_Client``. This class provides the basic functions to ``send()`` and ``receive()``
+  ``Zend_Queue_Stomp_Frame``\ s to and from a Stomp compatible server.
 
 
 

@@ -8,39 +8,48 @@ Zend\\Service\\Rackspace
 Introduction
 ------------
 
-The ``Zend\Service\Rackspace`` is a class that provides a simple *API* to manage the Rackspace services Cloud Files and Cloud Servers.
+The ``Zend\Service\Rackspace`` is a class that provides a simple *API* to manage the Rackspace services Cloud Files
+and Cloud Servers.
 
 .. note::
 
    **Load balancers service**
 
-   The load balancers service of Rackspace is not implemented yet. We are planning to release it in the next future.
+   The load balancers service of Rackspace is not implemented yet. We are planning to release it in the next
+   future.
 
 .. _zend.service.rackspace.registering:
 
 Registering with Rackspace
 --------------------------
 
-Before you can get started with ``Zend\Service\Rackspace``, you must first register for an account. Please see the `Cloud services`_ page on the Rackspace website for more information.
+Before you can get started with ``Zend\Service\Rackspace``, you must first register for an account. Please see the
+`Cloud services`_ page on the Rackspace website for more information.
 
-After registering, you can get the Username and the API Key from the Rackspace management console under the menu "Your Account" > "API Access". These informations are required to use the ``Zend\Service\Rackspace`` classes.
+After registering, you can get the Username and the API Key from the Rackspace management console under the menu
+"Your Account" > "API Access". These informations are required to use the ``Zend\Service\Rackspace`` classes.
 
 .. _zend.service.rackspace.feature.files:
 
 Cloud Files
 -----------
 
-The Cloud Files is a service to store any files in a cloud environment. A user can store an unlimited quantity of files and each file can be as large as 5 gigabytes. The files can be private or public. The private files can be accessed using the API of Rackspace. The public files are accessed using a *CDN* (Content Delivery Network). Rackspace exposes a *REST* API to manage the Cloud Files.
+The Cloud Files is a service to store any files in a cloud environment. A user can store an unlimited quantity of
+files and each file can be as large as 5 gigabytes. The files can be private or public. The private files can be
+accessed using the API of Rackspace. The public files are accessed using a *CDN* (Content Delivery Network).
+Rackspace exposes a *REST* API to manage the Cloud Files.
 
 ``Zend\Service\Rackspace\Files`` provides the following functionality:
 
-- Upload files programmatically for tight integration with your application
 
-- Enable Cloud Files CDN integration on any container for public distribution
 
-- Create Containers programmatically
+   - Upload files programmatically for tight integration with your application
 
-- Retrieve lists of containers and files
+   - Enable Cloud Files CDN integration on any container for public distribution
+
+   - Create Containers programmatically
+
+   - Retrieve lists of containers and files
 
 
 
@@ -49,25 +58,28 @@ The Cloud Files is a service to store any files in a cloud environment. A user c
 Cloud Servers
 -------------
 
-Rackspace Cloud Servers is a compute service that provides server capacity in the cloud. Cloud Servers come in different flavors of memory, disk space, and CPU.
+Rackspace Cloud Servers is a compute service that provides server capacity in the cloud. Cloud Servers come in
+different flavors of memory, disk space, and CPU.
 
 ``Zend\Service\Rackspace\Servers`` provides the following functionality:
 
-- Create/delete new servers
 
-- List and get information on each server
 
-- Manage the public/private IP addresses of a server
+   - Create/delete new servers
 
-- Resize the server capacity
+   - List and get information on each server
 
-- Reboot a server
+   - Manage the public/private IP addresses of a server
 
-- Create new images for a server
+   - Resize the server capacity
 
-- Manage the backup of a server
+   - Reboot a server
 
-- Create a group of server to share the IP addresses for High Availability architecture
+   - Create new images for a server
+
+   - Manage the backup of a server
+
+   - Create a group of server to share the IP addresses for High Availability architecture
 
 
 
@@ -76,13 +88,15 @@ Rackspace Cloud Servers is a compute service that provides server capacity in th
 Available Methods
 -----------------
 
-Eeach service class (Files, Servers) of Rackspace extends the ``Zend\Service\Rackspace`` abstract class. This class contains a set of public methods shared with all the service. This public methods are reported as follow:
+Eeach service class (Files, Servers) of Rackspace extends the ``Zend\Service\Rackspace`` abstract class. This class
+contains a set of public methods shared with all the service. This public methods are reported as follow:
 
 .. _zend.service.rackspace.files.methods.authenticate:
 
 **authenticate**
    ``authenticate()``
-   Authenticate the Rackspace API using the user and the key specified in the concrete class that extend ``Zend\Service\Rackspace``. Return **true** in case of success and **false** in case of error.
+   Authenticate the Rackspace API using the user and the key specified in the concrete class that extend
+   ``Zend\Service\Rackspace``. Return **true** in case of success and **false** in case of error.
 
 .. _zend.service.rackspace.files.methods.get-auth-url:
 

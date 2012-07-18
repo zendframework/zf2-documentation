@@ -3,7 +3,10 @@
 Simple Examples
 ===============
 
-In this first example we won't do anything spectacular, but hopefully it will give you a good idea of what ``Zend_Paginator`` is designed to do. Let's say we have an array called $data with the numbers 1 to 100 in it, which we want to divide over a number of pages. We can use the static ``factory()`` method in the ``Zend_Paginator`` class to get a ``Zend_Paginator`` object with our array in it.
+In this first example we won't do anything spectacular, but hopefully it will give you a good idea of what
+``Zend_Paginator`` is designed to do. Let's say we have an array called $data with the numbers 1 to 100 in it,
+which we want to divide over a number of pages. We can use the static ``factory()`` method in the
+``Zend_Paginator`` class to get a ``Zend_Paginator`` object with our array in it.
 
 .. code-block:: php
    :linenos:
@@ -14,7 +17,11 @@ In this first example we won't do anything spectacular, but hopefully it will gi
    // Get a Paginator object using Zend_Paginator's built-in factory.
    $paginator = Zend_Paginator::factory($data);
 
-We're already almost done! The $paginator variable now contains a reference to the Paginator object. By default it is setup to display 10 items per page. To display the items for the currently active page, all you need to do is iterate over the Paginator object with a foreach loop. The currently active page defaults to the first page if it's not explicitly specified. We will see how you can select a specific page later on. The snippet below will display an unordered list containing the numbers 1 to 10, which are the numbers on the first page.
+We're already almost done! The $paginator variable now contains a reference to the Paginator object. By default it
+is setup to display 10 items per page. To display the items for the currently active page, all you need to do is
+iterate over the Paginator object with a foreach loop. The currently active page defaults to the first page if it's
+not explicitly specified. We will see how you can select a specific page later on. The snippet below will display
+an unordered list containing the numbers 1 to 10, which are the numbers on the first page.
 
 .. code-block:: php
    :linenos:
@@ -34,7 +41,8 @@ We're already almost done! The $paginator variable now contains a reference to t
 
    ?></ul>
 
-Now let's try and render the items on the second page. You can use the ``setCurrentPageNumber()`` method to select which page you want to view.
+Now let's try and render the items on the second page. You can use the ``setCurrentPageNumber()`` method to select
+which page you want to view.
 
 .. code-block:: php
    :linenos:
@@ -59,9 +67,13 @@ Now let's try and render the items on the second page. You can use the ``setCurr
 
 As expected, this little snippet will render an unordered list with the numbers 11 to 20 in it.
 
-These simple examples demonstrate a small portion of what can be achieved with ``Zend_Paginator``. However, a real application rarely reads its data from a plain array, so the next section is dedicated to showing you how you can use Paginator to paginate the results of a database query. Before reading on, make sure you're familiar with the way ``Zend_Db_Select`` works!
+These simple examples demonstrate a small portion of what can be achieved with ``Zend_Paginator``. However, a real
+application rarely reads its data from a plain array, so the next section is dedicated to showing you how you can
+use Paginator to paginate the results of a database query. Before reading on, make sure you're familiar with the
+way ``Zend_Db_Select`` works!
 
-In the database examples we will look at a table with blog posts called 'posts'. The 'posts' table has four columns: id, title, body, date_created. Let's dive right in and have a look at a simple example.
+In the database examples we will look at a table with blog posts called 'posts'. The 'posts' table has four
+columns: id, title, body, date_created. Let's dive right in and have a look at a simple example.
 
 .. code-block:: php
    :linenos:
@@ -85,6 +97,9 @@ In the database examples we will look at a table with blog posts called 'posts'.
 
    ?></ul>
 
-As you can see, this example is not that different from the previous one. The only difference is that you pass a ``Zend_Db_Select`` object to the Paginator's ``factory()`` method, rather than an array. For more details on how the database adapter makes sure that your query is being executed efficiently, see the ``Zend_Paginator`` chapter in the reference manual on the DbSelect and DbTableSelect adapters.
+As you can see, this example is not that different from the previous one. The only difference is that you pass a
+``Zend_Db_Select`` object to the Paginator's ``factory()`` method, rather than an array. For more details on how
+the database adapter makes sure that your query is being executed efficiently, see the ``Zend_Paginator`` chapter
+in the reference manual on the DbSelect and DbTableSelect adapters.
 
 

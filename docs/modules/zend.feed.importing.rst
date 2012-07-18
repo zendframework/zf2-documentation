@@ -3,14 +3,16 @@
 Importing Feeds
 ===============
 
-``Zend_Feed`` enables developers to retrieve feeds very easily. If you know the *URI* of a feed, simply use the ``Zend_Feed::import()`` method:
+``Zend_Feed`` enables developers to retrieve feeds very easily. If you know the *URI* of a feed, simply use the
+``Zend_Feed::import()`` method:
 
 .. code-block:: php
    :linenos:
 
    $feed = Zend_Feed::import('http://feeds.example.com/feedName');
 
-You can also use ``Zend_Feed`` to fetch the contents of a feed from a file or the contents of a *PHP* string variable:
+You can also use ``Zend_Feed`` to fetch the contents of a feed from a file or the contents of a *PHP* string
+variable:
 
 .. code-block:: php
    :linenos:
@@ -21,14 +23,21 @@ You can also use ``Zend_Feed`` to fetch the contents of a feed from a file or th
    // importing a feed from a PHP string variable
    $feedFromPHP = Zend_Feed::importString($feedString);
 
-In each of the examples above, an object of a class that extends ``Zend_Feed_Abstract`` is returned upon success, depending on the type of the feed. If an *RSS* feed were retrieved via one of the import methods above, then a ``Zend_Feed_Rss`` object would be returned. On the other hand, if an Atom feed were imported, then a ``Zend_Feed_Atom`` object is returned. The import methods will also throw a ``Zend_Feed_Exception`` object upon failure, such as an unreadable or malformed feed.
+In each of the examples above, an object of a class that extends ``Zend_Feed_Abstract`` is returned upon success,
+depending on the type of the feed. If an *RSS* feed were retrieved via one of the import methods above, then a
+``Zend_Feed_Rss`` object would be returned. On the other hand, if an Atom feed were imported, then a
+``Zend_Feed_Atom`` object is returned. The import methods will also throw a ``Zend_Feed_Exception`` object upon
+failure, such as an unreadable or malformed feed.
 
 .. _zend.feed.importing.custom:
 
 Custom feeds
 ------------
 
-``Zend_Feed`` enables developers to create custom feeds very easily. You just have to create an array and to import it with ``Zend_Feed``. This array can be imported with ``Zend_Feed::importArray()`` or with ``Zend_Feed::importBuilder()``. In this last case the array will be computed on the fly by a custom data source implementing ``Zend_Feed_Builder_Interface``.
+``Zend_Feed`` enables developers to create custom feeds very easily. You just have to create an array and to import
+it with ``Zend_Feed``. This array can be imported with ``Zend_Feed::importArray()`` or with
+``Zend_Feed::importBuilder()``. In this last case the array will be computed on the fly by a custom data source
+implementing ``Zend_Feed_Builder_Interface``.
 
 .. _zend.feed.importing.custom.importarray:
 
@@ -249,11 +258,17 @@ References:
 Importing a custom data source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can create a ``Zeed_Feed`` instance from any data source implementing ``Zend_Feed_Builder_Interface``. You just have to implement the ``getHeader()`` and ``getEntries()`` methods to be able to use your object with ``Zend_Feed::importBuilder()``. As a simple reference implementation, you can use ``Zend_Feed_Builder``, which takes an array in its constructor, performs some minor validation, and then can be used in the ``importBuilder()`` method. The ``getHeader()`` method must return an instance of ``Zend_Feed_Builder_Header``, and ``getEntries()`` must return an array of ``Zend_Feed_Builder_Entry`` instances.
+You can create a ``Zeed_Feed`` instance from any data source implementing ``Zend_Feed_Builder_Interface``. You just
+have to implement the ``getHeader()`` and ``getEntries()`` methods to be able to use your object with
+``Zend_Feed::importBuilder()``. As a simple reference implementation, you can use ``Zend_Feed_Builder``, which
+takes an array in its constructor, performs some minor validation, and then can be used in the ``importBuilder()``
+method. The ``getHeader()`` method must return an instance of ``Zend_Feed_Builder_Header``, and ``getEntries()``
+must return an array of ``Zend_Feed_Builder_Entry`` instances.
 
 .. note::
 
-   ``Zend_Feed_Builder`` serves as a concrete implementation to demonstrate the usage. Users are encouraged to make their own classes to implement ``Zend_Feed_Builder_Interface``.
+   ``Zend_Feed_Builder`` serves as a concrete implementation to demonstrate the usage. Users are encouraged to make
+   their own classes to implement ``Zend_Feed_Builder_Interface``.
 
 Here is an example of ``Zend_Feed::importBuilder()`` usage:
 

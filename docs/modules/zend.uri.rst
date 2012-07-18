@@ -8,9 +8,14 @@ Zend_Uri
 Overview
 --------
 
-``Zend_Uri`` is a component that aids in manipulating and validating `Uniform Resource Identifiers`_ (URIs). ``Zend_Uri`` exists primarily to service other components, such as ``Zend_Http_Client``, but is also useful as a standalone utility.
+``Zend_Uri`` is a component that aids in manipulating and validating `Uniform Resource Identifiers`_ (URIs).
+``Zend_Uri`` exists primarily to service other components, such as ``Zend_Http_Client``, but is also useful as a
+standalone utility.
 
-*URI*\ s always begin with a scheme, followed by a colon. The construction of the many different schemes varies significantly. The ``Zend_Uri`` class provides a factory that returns a subclass of itself which specializes in each scheme. The subclass will be named ``Zend_Uri_<scheme>``, where **<scheme>** is the scheme, lowercased with the first letter capitalized. An exception to this rule is *HTTPS*, which is also handled by ``Zend_Uri_Http``.
+*URI*\ s always begin with a scheme, followed by a colon. The construction of the many different schemes varies
+significantly. The ``Zend_Uri`` class provides a factory that returns a subclass of itself which specializes in
+each scheme. The subclass will be named ``Zend_Uri_<scheme>``, where **<scheme>** is the scheme, lowercased with
+the first letter capitalized. An exception to this rule is *HTTPS*, which is also handled by ``Zend_Uri_Http``.
 
 .. _zend.uri.creation:
 
@@ -31,16 +36,22 @@ Creating a New URI
 
    // $uri instanceof Zend_Uri_Http
 
-To create a new *URI* from scratch, pass only the scheme to ``Zend_Uri::factory()`` [#]_. If an unsupported scheme is passed and no scheme-specific class is specified, a ``Zend_Uri_Exception`` will be thrown.
+To create a new *URI* from scratch, pass only the scheme to ``Zend_Uri::factory()`` [#]_. If an unsupported scheme
+is passed and no scheme-specific class is specified, a ``Zend_Uri_Exception`` will be thrown.
 
-If the scheme or *URI* passed is supported, ``Zend_Uri::factory()`` will return a subclass of itself that specializes in the scheme to be created.
+If the scheme or *URI* passed is supported, ``Zend_Uri::factory()`` will return a subclass of itself that
+specializes in the scheme to be created.
 
 Creating a New Custom-Class URI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Starting from Zend Framework 1.10.5, you can specify a custom class to be used when creating the Zend_Uri instance, as a second parameter to the ``Zend_Uri::factory()`` method. This enables you to subclass Zend_Uri and create your own custom URI classes, and instantiate new URI objects based on your own custom classes.
+Starting from Zend Framework 1.10.5, you can specify a custom class to be used when creating the Zend_Uri instance,
+as a second parameter to the ``Zend_Uri::factory()`` method. This enables you to subclass Zend_Uri and create your
+own custom URI classes, and instantiate new URI objects based on your own custom classes.
 
-The 2nd parameter passed to ``Zend_Uri::factory()`` must be a string with the name of a class extending ``Zend_Uri``. The class must either be alredy-loaded, or loadable using ``Zend_Loader::loadClass()``- that is, it must follow the Zend Framework class and file naming conventions, and must be in your include_path.
+The 2nd parameter passed to ``Zend_Uri::factory()`` must be a string with the name of a class extending
+``Zend_Uri``. The class must either be alredy-loaded, or loadable using ``Zend_Loader::loadClass()``- that is, it
+must follow the Zend Framework class and file naming conventions, and must be in your include_path.
 
 .. _zend.uri.creation.custom.example-1:
 
@@ -76,7 +87,9 @@ To manipulate an existing *URI*, pass the entire *URI* to ``Zend_Uri::factory()`
 
    // $uri instanceof Zend_Uri_Http
 
-The *URI* will be parsed and validated. If it is found to be invalid, a ``Zend_Uri_Exception`` will be thrown immediately. Otherwise, ``Zend_Uri::factory()`` will return a subclass of itself that specializes in the scheme to be manipulated.
+The *URI* will be parsed and validated. If it is found to be invalid, a ``Zend_Uri_Exception`` will be thrown
+immediately. Otherwise, ``Zend_Uri::factory()`` will return a subclass of itself that specializes in the scheme to
+be manipulated.
 
 .. _zend.uri.validation:
 
@@ -97,16 +110,20 @@ The ``Zend_Uri::check()`` method can only be used if validation of an existing *
 
    // $valid is TRUE for a valid URI, or FALSE otherwise.
 
-``Zend_Uri::check()`` returns a boolean, which is more convenient than using ``Zend_Uri::factory()`` and catching the exception.
+``Zend_Uri::check()`` returns a boolean, which is more convenient than using ``Zend_Uri::factory()`` and catching
+the exception.
 
 .. _zend.uri.validation.allowunwise:
 
 Allowing "Unwise" characters in URIs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default, ``Zend_Uri`` will not accept the following characters: **"{", "}", "|", "\", "^", "`"**. These characters are defined by the *RFC* as "unwise" and invalid; however, many implementations do accept these characters as valid.
+By default, ``Zend_Uri`` will not accept the following characters: **"{", "}", "|", "\", "^", "`"**. These
+characters are defined by the *RFC* as "unwise" and invalid; however, many implementations do accept these
+characters as valid.
 
-``Zend_Uri`` can be set to accept these "unwise" characters by setting the 'allow_unwise' option to boolean ``TRUE`` using ``Zend_Uri::setConfig()``:
+``Zend_Uri`` can be set to accept these "unwise" characters by setting the 'allow_unwise' option to boolean
+``TRUE`` using ``Zend_Uri::setConfig()``:
 
 .. _zend.uri.validation.allowunwise.example-1:
 
@@ -130,21 +147,25 @@ By default, ``Zend_Uri`` will not accept the following characters: **"{", "}", "
 
 .. note::
 
-   ``Zend_Uri::setConfig()`` sets configuration options globally. It is recommended to reset the 'allow_unwise' option to '``FALSE``', like in the example above, unless you are certain you want to always allow unwise characters globally.
+   ``Zend_Uri::setConfig()`` sets configuration options globally. It is recommended to reset the 'allow_unwise'
+   option to '``FALSE``', like in the example above, unless you are certain you want to always allow unwise
+   characters globally.
 
 .. _zend.uri.instance-methods:
 
 Common Instance Methods
 -----------------------
 
-Every instance of a ``Zend_Uri`` subclass (e.g. ``Zend_Uri_Http``) has several instance methods that are useful for working with any kind of *URI*.
+Every instance of a ``Zend_Uri`` subclass (e.g. ``Zend_Uri_Http``) has several instance methods that are useful for
+working with any kind of *URI*.
 
 .. _zend.uri.instance-methods.getscheme:
 
 Getting the Scheme of the URI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The scheme of the *URI* is the part of the *URI* that precedes the colon. For example, the scheme of ``http://www.zend.com`` is 'http'.
+The scheme of the *URI* is the part of the *URI* that precedes the colon. For example, the scheme of
+``http://www.zend.com`` is 'http'.
 
 .. _zend.uri.instance-methods.getscheme.example-1:
 
@@ -182,7 +203,9 @@ The ``getUri()`` method returns the string representation of the entire *URI*.
 Validating the URI
 ^^^^^^^^^^^^^^^^^^
 
-``Zend_Uri::factory()`` will always validate any *URI* passed to it and will not instantiate a new ``Zend_Uri`` subclass if the given *URI* is found to be invalid. However, after the ``Zend_Uri`` subclass is instantiated for a new *URI* or an existing valid one, it is possible that the *URI* can later become invalid after it is manipulated.
+``Zend_Uri::factory()`` will always validate any *URI* passed to it and will not instantiate a new ``Zend_Uri``
+subclass if the given *URI* is found to be invalid. However, after the ``Zend_Uri`` subclass is instantiated for a
+new *URI* or an existing valid one, it is possible that the *URI* can later become invalid after it is manipulated.
 
 .. _zend.uri.instance-methods.valid.example-1:
 

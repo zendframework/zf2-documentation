@@ -8,28 +8,39 @@ Zend\\Cache\\Storage\\Adapter
 Overview
 --------
 
-Storage adapters are wrappers for real storage resources such as memory and the filesystem, using the well known adapter pattern.
+Storage adapters are wrappers for real storage resources such as memory and the filesystem, using the well known
+adapter pattern.
 
-They comes with tons of methods to read, write and modify stored items and to get information about stored items and the storage.
+They comes with tons of methods to read, write and modify stored items and to get information about stored items
+and the storage.
 
-All adapters implements the interface ``Zend\Cache\Storage\Adapter`` and most extend ``Zend\Cache\Storage\Adapter\AbstractAdapter``, which comes with basic logic.
+All adapters implements the interface ``Zend\Cache\Storage\Adapter`` and most extend
+``Zend\Cache\Storage\Adapter\AbstractAdapter``, which comes with basic logic.
 
-Configuration is handled by either ``Zend\Cache\Storage\Adapter\AdapterOptions``, or an adapter-specific options class if it exists. You may pass the options instance to the class at instantiation or via the ``setOptions()`` method, or alternately pass an associative array of options in either place (internally, these are then passed to an options class instance). Alternately, you can pass either the options instance or associative array to the ``Zend\Cache\StorageFactory::factory`` method.
+Configuration is handled by either ``Zend\Cache\Storage\Adapter\AdapterOptions``, or an adapter-specific options
+class if it exists. You may pass the options instance to the class at instantiation or via the ``setOptions()``
+method, or alternately pass an associative array of options in either place (internally, these are then passed to
+an options class instance). Alternately, you can pass either the options instance or associative array to the
+``Zend\Cache\StorageFactory::factory`` method.
 
 .. note::
 
    **Many methods throw exceptions**
 
-   Because many caching methods can throw exceptions, you need to catch them manually or you can use the plug-in ``Zend\Cache\Storage\Plugin\ExceptionHandler`` to automatically catch them and redirect exceptions into a log file using the option "exception_callback".
+   Because many caching methods can throw exceptions, you need to catch them manually or you can use the plug-in
+   ``Zend\Cache\Storage\Plugin\ExceptionHandler`` to automatically catch them and redirect exceptions into a log
+   file using the option "exception_callback".
 
 .. _zend.cache.storage.adapter.quick-start:
 
 Quick Start
 -----------
 
-Caching adapters can either be created from the provided ``Zend\Cache\StorageFactory`` factory, or by simply instantiating one of the ``Zend\Cache\Storage\Adapter\*``\ classes.
+Caching adapters can either be created from the provided ``Zend\Cache\StorageFactory`` factory, or by simply
+instantiating one of the ``Zend\Cache\Storage\Adapter\*``\ classes.
 
-To make life easier, the ``Zend\Cache\StorageFactory`` comes with a ``factory`` method to create an adapter and create/add all requested plugins at once.
+To make life easier, the ``Zend\Cache\StorageFactory`` comes with a ``factory`` method to create an adapter and
+create/add all requested plugins at once.
 
 .. code-block:: php
    :linenos:

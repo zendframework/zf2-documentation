@@ -8,7 +8,8 @@ Zend\\Http\\Request
 Overview
 --------
 
-The ``Zend\Http\Request`` object is responsible for providing a fluent API that allows a developer to interact with all the various parts of an HTTP request.
+The ``Zend\Http\Request`` object is responsible for providing a fluent API that allows a developer to interact with
+all the various parts of an HTTP request.
 
 A typical HTTP request looks like this:
 
@@ -23,14 +24,19 @@ A typical HTTP request looks like this:
    |         BODY           |
    --------------------------
 
-In simplified terms, the request consist of a method, *URI* and the HTTP version number which all make up the "Request Line." Next is a set of headers; there can be 0 or an unlimited number of headers. After that is the request body, which is typically used when a client wishes to send data to the server in the form of an encoded file, or include a set of POST parameters, for example. More information on the structure and specification of an HTTP request can be found in `RFC-2616 on the W3.org site`_.
+In simplified terms, the request consist of a method, *URI* and the HTTP version number which all make up the
+"Request Line." Next is a set of headers; there can be 0 or an unlimited number of headers. After that is the
+request body, which is typically used when a client wishes to send data to the server in the form of an encoded
+file, or include a set of POST parameters, for example. More information on the structure and specification of an
+HTTP request can be found in `RFC-2616 on the W3.org site`_.
 
 .. _zend.http.request.quick-start:
 
 Quick Start
 -----------
 
-Request objects can either be created from the provided ``fromString()`` factory, or, if you wish to have a completely empty object to start with, by simply instantiating the ``Zend\Http\Request`` class.
+Request objects can either be created from the provided ``fromString()`` factory, or, if you wish to have a
+completely empty object to start with, by simply instantiating the ``Zend\Http\Request`` class.
 
 .. code-block:: php
    :linenos:
@@ -136,7 +142,8 @@ Available Methods
 
 **setQuery**
    ``setQuery(Zend\Stdlib\ParametersInterface $query)``
-   Provide an alternate Parameter Container implementation for query parameters in this object. (This is NOT the primary API for value setting; for that, see ``query()``.)
+   Provide an alternate Parameter Container implementation for query parameters in this object. (This is NOT the
+   primary API for value setting; for that, see ``query()``.)
 
    Returns Zend\\Http\\Request
 
@@ -152,7 +159,8 @@ Available Methods
 
 **setPost**
    ``setPost(Zend\Stdlib\ParametersInterface $post)``
-   Provide an alternate Parameter Container implementation for post parameters in this object. (This is NOT the primary API for value setting; for that, see ``post()``.)
+   Provide an alternate Parameter Container implementation for post parameters in this object. (This is NOT the
+   primary API for value setting; for that, see ``post()``.)
 
    Returns ``Zend\Http\Request``
 
@@ -176,7 +184,8 @@ Available Methods
 
 **setFile**
    ``setFile(Zend\Stdlib\ParametersInterface $files)``
-   Provide an alternate Parameter Container implementation for file parameters in this object. (This is NOT the primary API for value setting; for that, see ``file()``.)
+   Provide an alternate Parameter Container implementation for file parameters in this object. (This is NOT the
+   primary API for value setting; for that, see ``file()``.)
 
    Returns ``Zend\Http\Request``
 
@@ -192,7 +201,8 @@ Available Methods
 
 **setServer**
    ``setServer(Zend\Stdlib\ParametersInterface $server)``
-   Provide an alternate Parameter Container implementation for server parameters in this object. (This is NOT the primary API for value setting; for that, see ``server()``.)
+   Provide an alternate Parameter Container implementation for server parameters in this object. (This is NOT the
+   primary API for value setting; for that, see ``server()``.)
 
    Returns ``Zend\Http\Request``
 
@@ -208,7 +218,8 @@ Available Methods
 
 **setEnv**
    ``setEnv(Zend\Stdlib\ParametersInterface $env)``
-   Provide an alternate Parameter Container implementation for env parameters in this object. (This is NOT the primary API for value setting; for that, see ``env()``.)
+   Provide an alternate Parameter Container implementation for env parameters in this object. (This is NOT the
+   primary API for value setting; for that, see ``env()``.)
 
    Returns ``Zend\Http\Request``
 
@@ -224,7 +235,8 @@ Available Methods
 
 **setHeader**
    ``setHeader(Zend\Http\Headers $headers)``
-   Provide an alternate Parameter Container implementation for headers in this object. (This is NOT the primary API for value setting; for that, see ``header()``.)
+   Provide an alternate Parameter Container implementation for headers in this object. (This is NOT the primary API
+   for value setting; for that, see ``header()``.)
 
    Returns ``Zend\Http\Request``
 
@@ -344,7 +356,8 @@ Available Methods
    ``setMetadata(string|int|array|Traversable $spec, mixed $value)``
    Set message metadata
 
-   Non-destructive setting of message metadata; always adds to the metadata, never overwrites the entire metadata container.
+   Non-destructive setting of message metadata; always adds to the metadata, never overwrites the entire metadata
+   container.
 
    Returns ``Zend\Stdlib\Message``
 

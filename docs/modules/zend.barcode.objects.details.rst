@@ -14,7 +14,8 @@ Zend\\Barcode\\Object\\Error
    :width: 400
    :align: center
 
-This barcode is a special case. It is internally used to automatically render an exception caught by the ``Zend\Barcode`` component.
+This barcode is a special case. It is internally used to automatically render an exception caught by the
+``Zend\Barcode`` component.
 
 .. _zend.barcode.objects.details.code128:
 
@@ -82,7 +83,8 @@ Zend\\Barcode\\Object\\Code25interleaved
    :width: 101
    :align: center
 
-This barcode extends ``Zend\Barcode\Object\Code25`` (Code 2 of 5), and has the same particulars and options, and adds the following:
+This barcode extends ``Zend\Barcode\Object\Code25`` (Code 2 of 5), and has the same particulars and options, and
+adds the following:
 
 - **Name:** Code 2 of 5 Interleaved
 
@@ -106,7 +108,8 @@ Available options include:
 
 .. note::
 
-   If the number of characters is not even, ``Zend\Barcode\Object\Code25interleaved`` will automatically prepend the missing zero to the barcode text.
+   If the number of characters is not even, ``Zend\Barcode\Object\Code25interleaved`` will automatically prepend
+   the missing zero to the barcode text.
 
 .. _zend.barcode.objects.details.ean2:
 
@@ -117,7 +120,8 @@ Zend\\Barcode\\Object\\Ean2
    :width: 41
    :align: center
 
-This barcode extends ``Zend\Barcode\Object\Ean5`` (*EAN* 5), and has the same particulars and options, and adds the following:
+This barcode extends ``Zend\Barcode\Object\Ean5`` (*EAN* 5), and has the same particulars and options, and adds the
+following:
 
 - **Name:** *EAN*-2
 
@@ -131,7 +135,8 @@ There are no particular options for this barcode.
 
 .. note::
 
-   If the number of characters is lower than 2, ``Zend\Barcode\Object\Ean2`` will automatically prepend the missing zero to the barcode text.
+   If the number of characters is lower than 2, ``Zend\Barcode\Object\Ean2`` will automatically prepend the missing
+   zero to the barcode text.
 
 .. _zend.barcode.objects.details.ean5:
 
@@ -142,7 +147,8 @@ Zend\\Barcode\\Object\\Ean5
    :width: 68
    :align: center
 
-This barcode extends ``Zend\Barcode\Object\Ean13`` (*EAN* 13), and has the same particulars and options, and adds the following:
+This barcode extends ``Zend\Barcode\Object\Ean13`` (*EAN* 13), and has the same particulars and options, and adds
+the following:
 
 - **Name:** *EAN*-5
 
@@ -156,7 +162,8 @@ There are no particular options for this barcode.
 
 .. note::
 
-   If the number of characters is lower than 5, ``Zend\Barcode\Object\Ean5`` will automatically prepend the missing zero to the barcode text.
+   If the number of characters is lower than 5, ``Zend\Barcode\Object\Ean5`` will automatically prepend the missing
+   zero to the barcode text.
 
 .. _zend.barcode.objects.details.ean8:
 
@@ -167,7 +174,8 @@ Zend\\Barcode\\Object\\Ean8
    :width: 82
    :align: center
 
-This barcode extends ``Zend\Barcode\Object\Ean13`` (*EAN* 13), and has the same particulars and options, and adds the following:
+This barcode extends ``Zend\Barcode\Object\Ean13`` (*EAN* 13), and has the same particulars and options, and adds
+the following:
 
 - **Name:** *EAN*-8
 
@@ -181,7 +189,8 @@ There are no particular options for this barcode.
 
 .. note::
 
-   If the number of characters is lower than 8, ``Zend\Barcode\Object\Ean8`` will automatically prepend the missing zero to the barcode text.
+   If the number of characters is lower than 8, ``Zend\Barcode\Object\Ean8`` will automatically prepend the missing
+   zero to the barcode text.
 
 .. _zend.barcode.objects.details.ean13:
 
@@ -204,7 +213,8 @@ There are no particular options for this barcode.
 
 .. note::
 
-   If the number of characters is lower than 13, ``Zend\Barcode\Object\Ean13`` will automatically prepend the missing zero to the barcode text.
+   If the number of characters is lower than 13, ``Zend\Barcode\Object\Ean13`` will automatically prepend the
+   missing zero to the barcode text.
 
    The option ``withQuietZones`` has no effect with this barcode.
 
@@ -240,7 +250,8 @@ Zend\\Barcode\\Object\\Identcode
    :width: 137
    :align: center
 
-This barcode extends ``Zend\Barcode\Object\Code25interleaved`` (Code 2 of 5 Interleaved), and inherits some of its capabilities; it also has a few particulars of its own.
+This barcode extends ``Zend\Barcode\Object\Code25interleaved`` (Code 2 of 5 Interleaved), and inherits some of its
+capabilities; it also has a few particulars of its own.
 
 - **Name:** Identcode (Deutsche Post Identcode)
 
@@ -254,7 +265,8 @@ There are no particular options for this barcode.
 
 .. note::
 
-   If the number of characters is lower than 12, ``Zend\Barcode\Object\Identcode`` will automatically prepend missing zeros to the barcode text.
+   If the number of characters is lower than 12, ``Zend\Barcode\Object\Identcode`` will automatically prepend
+   missing zeros to the barcode text.
 
 .. _zend.barcode.objects.details.itf14:
 
@@ -265,7 +277,8 @@ Zend\\Barcode\\Object\\Itf14
    :width: 155
    :align: center
 
-This barcode extends ``Zend\Barcode\Object\Code25interleaved`` (Code 2 of 5 Interleaved), and inherits some of its capabilities; it also has a few particulars of its own.
+This barcode extends ``Zend\Barcode\Object\Code25interleaved`` (Code 2 of 5 Interleaved), and inherits some of its
+capabilities; it also has a few particulars of its own.
 
 - **Name:** *ITF*-14
 
@@ -279,7 +292,8 @@ There are no particular options for this barcode.
 
 .. note::
 
-   If the number of characters is lower than 14, ``Zend\Barcode\Object\Itf14`` will automatically prepend missing zeros to the barcode text.
+   If the number of characters is lower than 14, ``Zend\Barcode\Object\Itf14`` will automatically prepend missing
+   zeros to the barcode text.
 
 .. _zend.barcode.objects.details.leitcode:
 
@@ -290,7 +304,8 @@ Zend\\Barcode\\Object\\Leitcode
    :width: 155
    :align: center
 
-This barcode extends ``Zend\Barcode\Object\Identcode`` (Deutsche Post Identcode), and inherits some of its capabilities; it also has a few particulars of its own.
+This barcode extends ``Zend\Barcode\Object\Identcode`` (Deutsche Post Identcode), and inherits some of its
+capabilities; it also has a few particulars of its own.
 
 - **Name:** Leitcode (Deutsche Post Leitcode)
 
@@ -304,7 +319,8 @@ There are no particular options for this barcode.
 
 .. note::
 
-   If the number of characters is lower than 14, ``Zend\Barcode\Object\Leitcode`` will automatically prepend missing zeros to the barcode text.
+   If the number of characters is lower than 14, ``Zend\Barcode\Object\Leitcode`` will automatically prepend
+   missing zeros to the barcode text.
 
 .. _zend.barcode.objects.details.planet:
 
@@ -372,7 +388,8 @@ Zend\\Barcode\\Object\\Upca
    :width: 115
    :align: center
 
-This barcode extends ``Zend\Barcode\Object\Ean13`` (*EAN*-13), and inherits some of its capabilities; it also has a few particulars of its own.
+This barcode extends ``Zend\Barcode\Object\Ean13`` (*EAN*-13), and inherits some of its capabilities; it also has a
+few particulars of its own.
 
 - **Name:** *UPC*-A (Universal Product Code)
 
@@ -386,7 +403,8 @@ There are no particular options for this barcode.
 
 .. note::
 
-   If the number of characters is lower than 12, ``Zend\Barcode\Object\Upca`` will automatically prepend missing zeros to the barcode text.
+   If the number of characters is lower than 12, ``Zend\Barcode\Object\Upca`` will automatically prepend missing
+   zeros to the barcode text.
 
    The option ``withQuietZones`` has no effect with this barcode.
 
@@ -399,7 +417,8 @@ Zend\\Barcode\\Object\\Upce
    :width: 71
    :align: center
 
-This barcode extends ``Zend\Barcode\Object\Upca`` (*UPC*-A), and inherits some of its capabilities; it also has a few particulars of its own. The first character of the text to encode is the system (0 or 1).
+This barcode extends ``Zend\Barcode\Object\Upca`` (*UPC*-A), and inherits some of its capabilities; it also has a
+few particulars of its own. The first character of the text to encode is the system (0 or 1).
 
 - **Name:** *UPC*-E (Universal Product Code)
 
@@ -413,11 +432,13 @@ There are no particular options for this barcode.
 
 .. note::
 
-   If the number of characters is lower than 8, ``Zend\Barcode\Object\Upce`` will automatically prepend missing zeros to the barcode text.
+   If the number of characters is lower than 8, ``Zend\Barcode\Object\Upce`` will automatically prepend missing
+   zeros to the barcode text.
 
 .. note::
 
-   If the first character of the text to encode is not 0 or 1, ``Zend\Barcode\Object\Upce`` will automatically replace it by 0.
+   If the first character of the text to encode is not 0 or 1, ``Zend\Barcode\Object\Upce`` will automatically
+   replace it by 0.
 
    The option ``withQuietZones`` has no effect with this barcode.
 

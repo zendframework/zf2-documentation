@@ -3,7 +3,8 @@
 Float
 =====
 
-``Zend\Validator\Float`` allows you to validate if a given value contains a floating-point value. This validator validates also localized input.
+``Zend\Validator\Float`` allows you to validate if a given value contains a floating-point value. This validator
+validates also localized input.
 
 .. _zend.validator.set.float.options:
 
@@ -19,7 +20,8 @@ The following options are supported for ``Zend\Validator\Float``:
 Simple float validation
 -----------------------
 
-The simplest way to validate a float is by using the system settings. When no option is used, the environment locale is used for validation:
+The simplest way to validate a float is by using the system settings. When no option is used, the environment
+locale is used for validation:
 
 .. code-block:: php
    :linenos:
@@ -37,9 +39,12 @@ In the above example we expected that our environment is set to "en" as locale.
 Localized float validation
 --------------------------
 
-Often it's useful to be able to validate also localized values. Float values are often written different in other countries. For example using english you will write "1.5". In german you may write "1,5" and in other languages you may use grouping.
+Often it's useful to be able to validate also localized values. Float values are often written different in other
+countries. For example using english you will write "1.5". In german you may write "1,5" and in other languages you
+may use grouping.
 
-``Zend\Validator\Float`` is able to validate such notations. But it is limited to the locale you set. See the following code:
+``Zend\Validator\Float`` is able to validate such notations. But it is limited to the locale you set. See the
+following code:
 
 .. code-block:: php
    :linenos:
@@ -50,7 +55,8 @@ Often it's useful to be able to validate also localized values. Float values are
    $validator->isValid("1 234,5"); // returns false
    $validator->isValid("1.234"); // returns true
 
-As you can see, by using a locale, your input is validated localized. Using a different notation you get a ``FALSE`` when the locale forces a different notation.
+As you can see, by using a locale, your input is validated localized. Using a different notation you get a
+``FALSE`` when the locale forces a different notation.
 
 The locale can also be set afterwards by using ``setLocale()`` and retrieved by using ``getLocale()``.
 

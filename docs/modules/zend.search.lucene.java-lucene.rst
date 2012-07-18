@@ -10,7 +10,8 @@ File Formats
 
 ``Zend_Search_Lucene`` index file formats are binary compatible with Java Lucene version 1.4 and greater.
 
-A detailed description of this format is available here: `http://lucene.apache.org/java/2_3_0/fileformats.html`_ [#]_.
+A detailed description of this format is available here: `http://lucene.apache.org/java/2_3_0/fileformats.html`_
+[#]_.
 
 .. _zend.search.lucene.index-creation.index-directory:
 

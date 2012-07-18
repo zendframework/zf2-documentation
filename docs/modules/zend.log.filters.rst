@@ -10,7 +10,8 @@ A Filter object blocks a message from being written to the log.
 Filtering for All Writers
 -------------------------
 
-To filter before all writers, you can add any number of Filters to a Logger object using the ``addFilter()`` method:
+To filter before all writers, you can add any number of Filters to a Logger object using the ``addFilter()``
+method:
 
 .. code-block:: php
    :linenos:
@@ -31,7 +32,8 @@ To filter before all writers, you can add any number of Filters to a Logger obje
    // logged
    $logger->emerg('Emergency message');
 
-When you add one or more Filters to the Log object, the message must pass through all of the Filters before any Writers receives it.
+When you add one or more Filters to the Log object, the message must pass through all of the Filters before any
+Writers receives it.
 
 .. _zend.log.filters.single-writer:
 
@@ -70,12 +72,16 @@ Available filters
 
 The Zend\\Log\\Filter available are:
 
-- **Priority**, filter logging by $priority. By default, it will accept any log event whose priority value is less than or equal to $priority.
+- **Priority**, filter logging by $priority. By default, it will accept any log event whose priority value is less
+  than or equal to $priority.
 
-- **Regex**, filter out any log messages not matching the regex pattern. This filter use the preg_match() function of PHP.
+- **Regex**, filter out any log messages not matching the regex pattern. This filter use the preg_match() function
+  of PHP.
 
-- **SuppressFilter**, this is a simple boolean filter. Call suppress(true) to suppress all log events. Call suppress(false) to accept all log events.
+- **SuppressFilter**, this is a simple boolean filter. Call suppress(true) to suppress all log events. Call
+  suppress(false) to accept all log events.
 
-- **Validator**, filter out any log messages not matching the Zend\\Validator\\Validator object passed to the filter.
+- **Validator**, filter out any log messages not matching the Zend\\Validator\\Validator object passed to the
+  filter.
 
 

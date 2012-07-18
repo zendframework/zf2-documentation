@@ -14,7 +14,8 @@ Full Java Lucene query language syntax documentation can be found `here`_.
 Terms
 -----
 
-A query is broken up into terms and operators. There are three types of terms: Single Terms, Phrases, and Subqueries.
+A query is broken up into terms and operators. There are three types of terms: Single Terms, Phrases, and
+Subqueries.
 
 A Single Term is a single word such as "test" or "hello".
 
@@ -29,11 +30,14 @@ Multiple terms can be combined together with boolean operators to form complex q
 Fields
 ------
 
-Lucene supports fields of data. When performing a search you can either specify a field, or use the default field. The field names depend on indexed data and default field is defined by current settings.
+Lucene supports fields of data. When performing a search you can either specify a field, or use the default field.
+The field names depend on indexed data and default field is defined by current settings.
 
-The first and most significant difference from Java Lucene is that terms are searched through **all fields** by default.
+The first and most significant difference from Java Lucene is that terms are searched through **all fields** by
+default.
 
-There are two static methods in the ``Zend_Search_Lucene`` class which allow the developer to configure these settings:
+There are two static methods in the ``Zend_Search_Lucene`` class which allow the developer to configure these
+settings:
 
 .. code-block:: php
    :linenos:
@@ -44,9 +48,11 @@ There are two static methods in the ``Zend_Search_Lucene`` class which allow the
 
 The ``NULL`` value indicated that the search is performed across all fields. It's the default setting.
 
-You can search specific fields by typing the field name followed by a colon ":" followed by the term you are looking for.
+You can search specific fields by typing the field name followed by a colon ":" followed by the term you are
+looking for.
 
-As an example, let's assume a Lucene index contains two fields- title and text- with text as the default field. If you want to find the document entitled "The Right Way" which contains the text "don't go this way", you can enter:
+As an example, let's assume a Lucene index contains two fields- title and text- with text as the default field. If
+you want to find the document entitled "The Right Way" which contains the text "don't go this way", you can enter:
 
 .. code-block:: text
    :linenos:
@@ -69,27 +75,31 @@ Note: The field is only valid for the term, phrase or subquery that it directly 
 
    title:Do it right
 
-Will only find "Do" in the title field. It will find "it" and "right" in the default field (if the default field is set) or in all indexed fields (if the default field is set to ``NULL``).
+Will only find "Do" in the title field. It will find "it" and "right" in the default field (if the default field is
+set) or in all indexed fields (if the default field is set to ``NULL``).
 
 .. _zend.search.lucene.query-language.wildcard:
 
 Wildcards
 ---------
 
-Lucene supports single and multiple character wildcard searches within single terms (but not within phrase queries).
+Lucene supports single and multiple character wildcard searches within single terms (but not within phrase
+queries).
 
 To perform a single character wildcard search use the "?" symbol.
 
 To perform a multiple character wildcard search use the "\*" symbol.
 
-The single character wildcard search looks for string that match the term with the "?" replaced by any single character. For example, to search for "text" or "test" you can use the search:
+The single character wildcard search looks for string that match the term with the "?" replaced by any single
+character. For example, to search for "text" or "test" you can use the search:
 
 .. code-block:: text
    :linenos:
 
    te?t
 
-Multiple character wildcard searches look for 0 or more characters when matching strings against terms. For example, to search for test, tests or tester, you can use the search:
+Multiple character wildcard searches look for 0 or more characters when matching strings against terms. For
+example, to search for test, tests or tester, you can use the search:
 
 .. code-block:: text
    :linenos:
@@ -105,9 +115,11 @@ You can use "?", "\*" or both at any place of the term:
 
 It searches for "write", "wrote", "written", "rewrite", "rewrote" and so on.
 
-Starting from ZF 1.7.7 wildcard patterns need some non-wildcard prefix. Default prefix length is 3 (like in Java Lucene). So "\*", "te?t", "\*wr?t*" terms will cause an exception [#]_.
+Starting from ZF 1.7.7 wildcard patterns need some non-wildcard prefix. Default prefix length is 3 (like in Java
+Lucene). So "\*", "te?t", "\*wr?t*" terms will cause an exception [#]_.
 
-It can be altered using ``Zend_Search_Lucene_Search_Query_Wildcard::getMinPrefixLength()`` and ``Zend_Search_Lucene_Search_Query_Wildcard::setMinPrefixLength()`` methods.
+It can be altered using ``Zend_Search_Lucene_Search_Query_Wildcard::getMinPrefixLength()`` and
+``Zend_Search_Lucene_Search_Query_Wildcard::setMinPrefixLength()`` methods.
 
 .. _zend.search.lucene.query-language.modifiers:
 
@@ -123,25 +135,30 @@ Lucene supports modifying query terms to provide a wide range of searching optio
 Range Searches
 --------------
 
-Range queries allow the developer or user to match documents whose field(s) values are between the lower and upper bound specified by the range query. Range Queries can be inclusive or exclusive of the upper and lower bounds. Sorting is performed lexicographically.
+Range queries allow the developer or user to match documents whose field(s) values are between the lower and upper
+bound specified by the range query. Range Queries can be inclusive or exclusive of the upper and lower bounds.
+Sorting is performed lexicographically.
 
 .. code-block:: text
    :linenos:
 
    mod_date:[20020101 TO 20030101]
 
-This will find documents whose mod_date fields have values between 20020101 and 20030101, inclusive. Note that Range Queries are not reserved for date fields. You could also use range queries with non-date fields:
+This will find documents whose mod_date fields have values between 20020101 and 20030101, inclusive. Note that
+Range Queries are not reserved for date fields. You could also use range queries with non-date fields:
 
 .. code-block:: text
    :linenos:
 
    title:{Aida TO Carmen}
 
-This will find all documents whose titles would be sorted between Aida and Carmen, but not including Aida and Carmen.
+This will find all documents whose titles would be sorted between Aida and Carmen, but not including Aida and
+Carmen.
 
 Inclusive range queries are denoted by square brackets. Exclusive range queries are denoted by curly brackets.
 
-If field is not specified then ``Zend_Search_Lucene`` searches for specified interval through all fields by default.
+If field is not specified then ``Zend_Search_Lucene`` searches for specified interval through all fields by
+default.
 
 .. code-block:: text
    :linenos:
@@ -153,14 +170,18 @@ If field is not specified then ``Zend_Search_Lucene`` searches for specified int
 Fuzzy Searches
 --------------
 
-``Zend_Search_Lucene`` as well as Java Lucene supports fuzzy searches based on the Levenshtein Distance, or Edit Distance algorithm. To do a fuzzy search use the tilde, "~", symbol at the end of a Single word Term. For example to search for a term similar in spelling to "roam" use the fuzzy search:
+``Zend_Search_Lucene`` as well as Java Lucene supports fuzzy searches based on the Levenshtein Distance, or Edit
+Distance algorithm. To do a fuzzy search use the tilde, "~", symbol at the end of a Single word Term. For example
+to search for a term similar in spelling to "roam" use the fuzzy search:
 
 .. code-block:: text
    :linenos:
 
    roam~
 
-This search will find terms like foam and roams. Additional (optional) parameter can specify the required similarity. The value is between 0 and 1, with a value closer to 1 only terms with a higher similarity will be matched. For example:
+This search will find terms like foam and roams. Additional (optional) parameter can specify the required
+similarity. The value is between 0 and 1, with a value closer to 1 only terms with a higher similarity will be
+matched. For example:
 
 .. code-block:: text
    :linenos:
@@ -174,9 +195,12 @@ The default that is used if the parameter is not given is 0.5.
 Matched terms limitation
 ------------------------
 
-Wildcard, range and fuzzy search queries may match too many terms. It may cause incredible search performance downgrade.
+Wildcard, range and fuzzy search queries may match too many terms. It may cause incredible search performance
+downgrade.
 
-So ``Zend_Search_Lucene`` sets a limit of matching terms per query (subquery). This limit can be retrieved and set using ``Zend_Search_Lucene::getTermsPerQueryLimit()`` and ``Zend_Search_Lucene::setTermsPerQueryLimit($limit)`` methods.
+So ``Zend_Search_Lucene`` sets a limit of matching terms per query (subquery). This limit can be retrieved and set
+using ``Zend_Search_Lucene::getTermsPerQueryLimit()`` and ``Zend_Search_Lucene::setTermsPerQueryLimit($limit)``
+methods.
 
 Default matched terms per query limit is 1024.
 
@@ -185,7 +209,9 @@ Default matched terms per query limit is 1024.
 Proximity Searches
 ------------------
 
-Lucene supports finding words from a phrase that are within a specified word distance in a string. To do a proximity search use the tilde, "~", symbol at the end of the phrase. For example to search for a "Zend" and "Framework" within 10 words of each other in a document use the search:
+Lucene supports finding words from a phrase that are within a specified word distance in a string. To do a
+proximity search use the tilde, "~", symbol at the end of the phrase. For example to search for a "Zend" and
+"Framework" within 10 words of each other in a document use the search:
 
 .. code-block:: text
    :linenos:
@@ -197,23 +223,28 @@ Lucene supports finding words from a phrase that are within a specified word dis
 Boosting a Term
 ---------------
 
-Java Lucene and ``Zend_Search_Lucene`` provide the relevance level of matching documents based on the terms found. To boost the relevance of a term use the caret, "^", symbol with a boost factor (a number) at the end of the term you are searching. The higher the boost factor, the more relevant the term will be.
+Java Lucene and ``Zend_Search_Lucene`` provide the relevance level of matching documents based on the terms found.
+To boost the relevance of a term use the caret, "^", symbol with a boost factor (a number) at the end of the term
+you are searching. The higher the boost factor, the more relevant the term will be.
 
-Boosting allows you to control the relevance of a document by boosting individual terms. For example, if you are searching for
+Boosting allows you to control the relevance of a document by boosting individual terms. For example, if you are
+searching for
 
 .. code-block:: text
    :linenos:
 
    PHP framework
 
-and you want the term "PHP" to be more relevant boost it using the ^ symbol along with the boost factor next to the term. You would type:
+and you want the term "PHP" to be more relevant boost it using the ^ symbol along with the boost factor next to the
+term. You would type:
 
 .. code-block:: text
    :linenos:
 
    PHP^4 framework
 
-This will make documents with the term *PHP* appear more relevant. You can also boost phrase terms and subqueries as in the example:
+This will make documents with the term *PHP* appear more relevant. You can also boost phrase terms and subqueries
+as in the example:
 
 .. code-block:: text
    :linenos:
@@ -227,11 +258,15 @@ By default, the boost factor is 1. Although the boost factor must be positive, i
 Boolean Operators
 -----------------
 
-Boolean operators allow terms to be combined through logic operators. Lucene supports AND, "+", OR, NOT and "-" as Boolean operators. Java Lucene requires boolean operators to be ALL CAPS. ``Zend_Search_Lucene`` does not.
+Boolean operators allow terms to be combined through logic operators. Lucene supports AND, "+", OR, NOT and "-" as
+Boolean operators. Java Lucene requires boolean operators to be ALL CAPS. ``Zend_Search_Lucene`` does not.
 
-AND, OR, and NOT operators and "+", "-" defines two different styles to construct boolean queries. Unlike Java Lucene, ``Zend_Search_Lucene`` doesn't allow these two styles to be mixed.
+AND, OR, and NOT operators and "+", "-" defines two different styles to construct boolean queries. Unlike Java
+Lucene, ``Zend_Search_Lucene`` doesn't allow these two styles to be mixed.
 
-If the AND/OR/NOT style is used, then an AND or OR operator must be present between all query terms. Each term may also be preceded by NOT operator. The AND operator has higher precedence than the OR operator. This differs from Java Lucene behavior.
+If the AND/OR/NOT style is used, then an AND or OR operator must be present between all query terms. Each term may
+also be preceded by NOT operator. The AND operator has higher precedence than the OR operator. This differs from
+Java Lucene behavior.
 
 .. _zend.search.lucene.query-language.boolean.and:
 
@@ -266,7 +301,8 @@ To search for documents that contain "PHP framework" or "Zend Framework" use the
 NOT
 ^^^
 
-The NOT operator excludes documents that contain the term after NOT. But an "AND group" which contains only terms with the NOT operator gives an empty result set instead of a full set of indexed documents.
+The NOT operator excludes documents that contain the term after NOT. But an "AND group" which contains only terms
+with the NOT operator gives an empty result set instead of a full set of indexed documents.
 
 To search for documents that contain "PHP framework" but not "Zend Framework" use the query:
 
@@ -319,7 +355,8 @@ If no operator is used, then the search behavior is defined by the "default bool
 
 This is set to 'OR' by default.
 
-That implies each term is optional by default. It may or may not be present within document, but documents with this term will receive a higher score.
+That implies each term is optional by default. It may or may not be present within document, but documents with
+this term will receive a higher score.
 
 To search for documents that requires "PHP framework" and may contain "Zend Framework" use the query:
 
@@ -328,16 +365,21 @@ To search for documents that requires "PHP framework" and may contain "Zend Fram
 
    +"PHP framework" "Zend Framework"
 
-The default boolean operator may be set or retrieved with the ``Zend_Search_Lucene_Search_QueryParser::setDefaultOperator($operator)`` and ``Zend_Search_Lucene_Search_QueryParser::getDefaultOperator()`` methods, respectively.
+The default boolean operator may be set or retrieved with the
+``Zend_Search_Lucene_Search_QueryParser::setDefaultOperator($operator)`` and
+``Zend_Search_Lucene_Search_QueryParser::getDefaultOperator()`` methods, respectively.
 
-These methods operate with the ``Zend_Search_Lucene_Search_QueryParser::B_AND`` and ``Zend_Search_Lucene_Search_QueryParser::B_OR`` constants.
+These methods operate with the ``Zend_Search_Lucene_Search_QueryParser::B_AND`` and
+``Zend_Search_Lucene_Search_QueryParser::B_OR`` constants.
 
 .. _zend.search.lucene.query-language.grouping:
 
 Grouping
 --------
 
-Java Lucene and ``Zend_Search_Lucene`` support using parentheses to group clauses to form sub queries. This can be useful if you want to control the precedence of boolean logic operators for a query or mix different boolean query styles:
+Java Lucene and ``Zend_Search_Lucene`` support using parentheses to group clauses to form sub queries. This can be
+useful if you want to control the precedence of boolean logic operators for a query or mix different boolean query
+styles:
 
 .. code-block:: text
    :linenos:
@@ -365,13 +407,15 @@ To search for a title that contains both the word "return" and the phrase "pink 
 Escaping Special Characters
 ---------------------------
 
-Lucene supports escaping special characters that are used in query syntax. The current list of special characters is:
+Lucene supports escaping special characters that are used in query syntax. The current list of special characters
+is:
 
 \+ - && \|| ! ( ) { } [ ] ^ " ~ * ? : \\
 
 \+ and - inside single terms are automatically treated as common characters.
 
-For other instances of these characters use the \\ before each special character you'd like to escape. For example to search for (1+1):2 use the query:
+For other instances of these characters use the \\ before each special character you'd like to escape. For example
+to search for (1+1):2 use the query:
 
 .. code-block:: text
    :linenos:
@@ -382,4 +426,5 @@ For other instances of these characters use the \\ before each special character
 
 .. _`here`: http://lucene.apache.org/java/2_3_0/queryparsersyntax.html
 
-.. [#] Please note, that it's not a ``Zend_Search_Lucene_Search_QueryParserException``, but a ``Zend_Search_Lucene_Exception``. It's thrown during query rewrite (execution) operation.
+.. [#] Please note, that it's not a ``Zend_Search_Lucene_Search_QueryParserException``, but a
+       ``Zend_Search_Lucene_Exception``. It's thrown during query rewrite (execution) operation.

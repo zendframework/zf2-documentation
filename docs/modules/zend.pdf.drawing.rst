@@ -8,7 +8,8 @@ Drawing
 Geometry
 --------
 
-*PDF* uses the same geometry as PostScript. It starts from bottom-left corner of page and by default is measured in points (1/72 of an inch).
+*PDF* uses the same geometry as PostScript. It starts from bottom-left corner of page and by default is measured in
+points (1/72 of an inch).
 
 Page size can be retrieved from a page object:
 
@@ -23,7 +24,10 @@ Page size can be retrieved from a page object:
 Colors
 ------
 
-*PDF* has a powerful capabilities for colors representation. ``Zend_Pdf`` module supports Gray Scale, RGB and CMYK color spaces. Any of them can be used in any place, where ``Zend_Pdf_Color`` object is required. ``Zend_Pdf_Color_GrayScale``, ``Zend_Pdf_Color_Rgb`` and ``Zend_Pdf_Color_Cmyk`` classes provide this functionality:
+*PDF* has a powerful capabilities for colors representation. ``Zend_Pdf`` module supports Gray Scale, RGB and CMYK
+color spaces. Any of them can be used in any place, where ``Zend_Pdf_Color`` object is required.
+``Zend_Pdf_Color_GrayScale``, ``Zend_Pdf_Color_Rgb`` and ``Zend_Pdf_Color_Cmyk`` classes provide this
+functionality:
 
 .. code-block:: php
    :linenos:
@@ -214,7 +218,9 @@ All drawing operations can be done in a context of *PDF* page.
 Text Drawing
 ------------
 
-Text drawing operations also exist in the context of a *PDF* page. You can draw a single line of text at any position on the page by supplying the x and y coordinates of the baseline. Current font and current font size are used for text drawing operations (see detailed description below).
+Text drawing operations also exist in the context of a *PDF* page. You can draw a single line of text at any
+position on the page by supplying the x and y coordinates of the baseline. Current font and current font size are
+used for text drawing operations (see detailed description below).
 
 .. code-block:: php
    :linenos:
@@ -243,7 +249,11 @@ Text drawing operations also exist in the context of a *PDF* page. You can draw 
    $pdfPage->drawText('Hello world!', 72, 720);
    ...
 
-By default, text strings are interpreted using the character encoding method of the current locale. if you have a string that uses a different encoding method (such as a UTF-8 string read from a file on disk, or a MacRoman string obtained from a legacy database), you can indicate the character encoding at draw time and ``Zend_Pdf`` will handle the conversion for you. You can supply source strings in any encoding method supported by *PHP*'s `iconv()`_ function:
+By default, text strings are interpreted using the character encoding method of the current locale. if you have a
+string that uses a different encoding method (such as a UTF-8 string read from a file on disk, or a MacRoman string
+obtained from a legacy database), you can indicate the character encoding at draw time and ``Zend_Pdf`` will handle
+the conversion for you. You can supply source strings in any encoding method supported by *PHP*'s `iconv()`_
+function:
 
 .. _zend.pdf.drawing.text-drawing.example-2:
 
@@ -265,7 +275,8 @@ By default, text strings are interpreted using the character encoding method of 
 Using fonts
 -----------
 
-``Zend_Pdf_Page::drawText()`` uses the page's current font and font size, which is set with the ``Zend_Pdf_Page::setFont()`` method:
+``Zend_Pdf_Page::drawText()`` uses the page's current font and font size, which is set with the
+``Zend_Pdf_Page::setFont()`` method:
 
 .. code-block:: php
    :linenos:
@@ -279,9 +290,13 @@ Using fonts
     */
    public function setFont(Zend_Pdf_Resource_Font $font, $fontSize);
 
-*PDF* documents support PostScript Type 1 and TrueType fonts, as well as two specialized *PDF* types, Type 3 and composite fonts. There are also 14 standard Type 1 fonts built-in to every *PDF* viewer: Courier (4 styles), Helvetica (4 styles), Times (4 styles), Symbol, and Zapf Dingbats.
+*PDF* documents support PostScript Type 1 and TrueType fonts, as well as two specialized *PDF* types, Type 3 and
+composite fonts. There are also 14 standard Type 1 fonts built-in to every *PDF* viewer: Courier (4 styles),
+Helvetica (4 styles), Times (4 styles), Symbol, and Zapf Dingbats.
 
-``Zend_Pdf`` currently supports the standard 14 *PDF* fonts as well as your own custom TrueType fonts. Font objects are obtained via one of two factory methods: ``Zend_Pdf_Font::fontWithName($fontName)`` for the standard 14 *PDF* fonts or ``Zend_Pdf_Font::fontWithPath($filePath)`` for custom fonts.
+``Zend_Pdf`` currently supports the standard 14 *PDF* fonts as well as your own custom TrueType fonts. Font objects
+are obtained via one of two factory methods: ``Zend_Pdf_Font::fontWithName($fontName)`` for the standard 14 *PDF*
+fonts or ``Zend_Pdf_Font::fontWithPath($filePath)`` for custom fonts.
 
 .. _zend.pdf.drawing.using-fonts.example-1:
 
@@ -298,39 +313,44 @@ Using fonts
    $pdfPage->setFont($font, 36);
    ...
 
-Constants for the standard 14 *PDF* font names are defined in the ``Zend_Pdf_Font`` class: - Zend_Pdf_Font::FONT_COURIER
+Constants for the standard 14 *PDF* font names are defined in the ``Zend_Pdf_Font`` class:
 
-- Zend_Pdf_Font::FONT_COURIER_BOLD
+   - Zend_Pdf_Font::FONT_COURIER
 
-- Zend_Pdf_Font::FONT_COURIER_ITALIC
+   - Zend_Pdf_Font::FONT_COURIER_BOLD
 
-- Zend_Pdf_Font::FONT_COURIER_BOLD_ITALIC
+   - Zend_Pdf_Font::FONT_COURIER_ITALIC
 
-- Zend_Pdf_Font::FONT_TIMES
+   - Zend_Pdf_Font::FONT_COURIER_BOLD_ITALIC
 
-- Zend_Pdf_Font::FONT_TIMES_BOLD
+   - Zend_Pdf_Font::FONT_TIMES
 
-- Zend_Pdf_Font::FONT_TIMES_ITALIC
+   - Zend_Pdf_Font::FONT_TIMES_BOLD
 
-- Zend_Pdf_Font::FONT_TIMES_BOLD_ITALIC
+   - Zend_Pdf_Font::FONT_TIMES_ITALIC
 
-- Zend_Pdf_Font::FONT_HELVETICA
+   - Zend_Pdf_Font::FONT_TIMES_BOLD_ITALIC
 
-- Zend_Pdf_Font::FONT_HELVETICA_BOLD
+   - Zend_Pdf_Font::FONT_HELVETICA
 
-- Zend_Pdf_Font::FONT_HELVETICA_ITALIC
+   - Zend_Pdf_Font::FONT_HELVETICA_BOLD
 
-- Zend_Pdf_Font::FONT_HELVETICA_BOLD_ITALIC
+   - Zend_Pdf_Font::FONT_HELVETICA_ITALIC
 
-- Zend_Pdf_Font::FONT_SYMBOL
+   - Zend_Pdf_Font::FONT_HELVETICA_BOLD_ITALIC
 
-- Zend_Pdf_Font::FONT_ZAPFDINGBATS
+   - Zend_Pdf_Font::FONT_SYMBOL
+
+   - Zend_Pdf_Font::FONT_ZAPFDINGBATS
 
 
 
-You can also use any individual TrueType font (which usually has a '.ttf' extension) or an OpenType font ('.otf' extension) if it contains TrueType outlines. Currently unsupported, but planned for a future release are Mac OS X .dfont files and Microsoft TrueType Collection ('.ttc' extension) files.
+You can also use any individual TrueType font (which usually has a '.ttf' extension) or an OpenType font ('.otf'
+extension) if it contains TrueType outlines. Currently unsupported, but planned for a future release are Mac OS X
+.dfont files and Microsoft TrueType Collection ('.ttc' extension) files.
 
-To use a TrueType font, you must provide the full file path to the font program. If the font cannot be read for some reason, or if it is not a TrueType font, the factory method will throw an exception:
+To use a TrueType font, you must provide the full file path to the font program. If the font cannot be read for
+some reason, or if it is not a TrueType font, the factory method will throw an exception:
 
 .. _zend.pdf.drawing.using-fonts.example-2:
 
@@ -347,7 +367,10 @@ To use a TrueType font, you must provide the full file path to the font program.
    $pdfPage->setFont($goodDogCoolFont, 36);
    ...
 
-By default, custom fonts will be embedded in the resulting *PDF* document. This allows recipients to view the page as intended, even if they don't have the proper fonts installed on their system. If you are concerned about file size, you can request that the font program not be embedded by passing a 'do not embed' option to the factory method:
+By default, custom fonts will be embedded in the resulting *PDF* document. This allows recipients to view the page
+as intended, even if they don't have the proper fonts installed on their system. If you are concerned about file
+size, you can request that the font program not be embedded by passing a 'do not embed' option to the factory
+method:
 
 .. _zend.pdf.drawing.using-fonts.example-3:
 
@@ -365,11 +388,16 @@ By default, custom fonts will be embedded in the resulting *PDF* document. This 
    $pdfPage->setFont($goodDogCoolFont, 36);
    ...
 
-If the font program is not embedded but the recipient of the *PDF* file has the font installed on their system, they will see the document as intended. If they do not have the correct font installed, the *PDF* viewer application will do its best to synthesize a replacement.
+If the font program is not embedded but the recipient of the *PDF* file has the font installed on their system,
+they will see the document as intended. If they do not have the correct font installed, the *PDF* viewer
+application will do its best to synthesize a replacement.
 
-Some fonts have very specific licensing rules which prevent them from being embedded in *PDF* documents. So you are not caught off-guard by this, if you try to use a font that cannot be embedded, the factory method will throw an exception.
+Some fonts have very specific licensing rules which prevent them from being embedded in *PDF* documents. So you are
+not caught off-guard by this, if you try to use a font that cannot be embedded, the factory method will throw an
+exception.
 
-You can still use these fonts, but you must either pass the do not embed flag as described above, or you can simply suppress the exception:
+You can still use these fonts, but you must either pass the do not embed flag as described above, or you can simply
+suppress the exception:
 
 .. _zend.pdf.drawing.using-fonts.example-4:
 
@@ -385,9 +413,12 @@ You can still use these fonts, but you must either pass the do not embed flag as
            );
    ...
 
-This suppression technique is preferred if you allow an end-user to choose their own fonts. Fonts which can be embedded in the *PDF* document will be; those that cannot, won't.
+This suppression technique is preferred if you allow an end-user to choose their own fonts. Fonts which can be
+embedded in the *PDF* document will be; those that cannot, won't.
 
-Font programs can be rather large, some reaching into the tens of megabytes. By default, all embedded fonts are compressed using the Flate compression scheme, resulting in a space savings of 50% on average. If, for some reason, you do not want to compress the font program, you can disable it with an option:
+Font programs can be rather large, some reaching into the tens of megabytes. By default, all embedded fonts are
+compressed using the Flate compression scheme, resulting in a space savings of 50% on average. If, for some reason,
+you do not want to compress the font program, you can disable it with an option:
 
 .. _zend.pdf.drawing.using-fonts.example-5:
 
@@ -422,11 +453,13 @@ Finally, when necessary, you can combine the embedding options by using the bitw
 Standard PDF fonts limitations
 ------------------------------
 
-Standard *PDF* fonts use several single byte encodings internally (see `PDF Reference, Sixth Edition, version 1.7`_ Appendix D for details). They are generally equal to Latin1 character set (except Symbol and ZapfDingbats fonts).
+Standard *PDF* fonts use several single byte encodings internally (see `PDF Reference, Sixth Edition, version 1.7`_
+Appendix D for details). They are generally equal to Latin1 character set (except Symbol and ZapfDingbats fonts).
 
 ``Zend_Pdf`` uses CP1252 (WinLatin1) for drawing text with standard fonts.
 
-Text still can be provided in any other encoding, which must be specified if it differs from a current locale. Only WinLatin1 characters will be actually drawn.
+Text still can be provided in any other encoding, which must be specified if it differs from a current locale. Only
+WinLatin1 characters will be actually drawn.
 
 .. _zend.pdf.drawing.using-fonts.example-7:
 
@@ -449,9 +482,11 @@ Extracting fonts
 
 ``Zend_Pdf`` module provides a possibility to extract fonts from loaded documents.
 
-It may be useful for incremental document updates. Without this functionality you have to attach and possibly embed font into a document each time you want to update it.
+It may be useful for incremental document updates. Without this functionality you have to attach and possibly embed
+font into a document each time you want to update it.
 
-``Zend_Pdf`` and ``Zend_Pdf_Page`` objects provide special methods to extract all fonts mentioned within a document or a page:
+``Zend_Pdf`` and ``Zend_Pdf_Page`` objects provide special methods to extract all fonts mentioned within a document
+or a page:
 
 .. _zend.pdf.drawing.extracting-fonts.example-1:
 
@@ -527,29 +562,32 @@ It may be useful for incremental document updates. Without this functionality yo
 
 Extracted fonts can be used in the place of any other font with the following limitations:
 
-- Extracted font can be used only in the context of the document from which it was extracted.
 
-- Possibly embedded font program is actually not extracted. So extracted font can't provide correct font metrics and original font has to be used for text width calculations:
 
-  .. code-block:: php
-     :linenos:
+   - Extracted font can be used only in the context of the document from which it was extracted.
 
-     ...
-     $font = $pdf->extractFont($fontName);
-     $originalFont = Zend_Pdf_Font::fontWithPath($fontPath);
+   - Possibly embedded font program is actually not extracted. So extracted font can't provide correct font metrics
+     and original font has to be used for text width calculations:
 
-     $page->setFont($font /* use extracted font for drawing */, $fontSize);
-     $xPosition = $x;
-     for ($charIndex = 0; $charIndex < strlen($text); $charIndex++) {
-         $page->drawText($text[$charIndex], xPosition, $y);
+     .. code-block:: php
+        :linenos:
 
-         // Use original font for text width calculation
-         $width = $originalFont->widthForGlyph(
-                      $originalFont->glyphNumberForCharacter($text[$charIndex])
-                  );
-         $xPosition += $width/$originalFont->getUnitsPerEm()*$fontSize;
-     }
-     ...
+        ...
+        $font = $pdf->extractFont($fontName);
+        $originalFont = Zend_Pdf_Font::fontWithPath($fontPath);
+
+        $page->setFont($font /* use extracted font for drawing */, $fontSize);
+        $xPosition = $x;
+        for ($charIndex = 0; $charIndex < strlen($text); $charIndex++) {
+            $page->drawText($text[$charIndex], xPosition, $y);
+
+            // Use original font for text width calculation
+            $width = $originalFont->widthForGlyph(
+                         $originalFont->glyphNumberForCharacter($text[$charIndex])
+                     );
+            $xPosition += $width/$originalFont->getUnitsPerEm()*$fontSize;
+        }
+        ...
 
 
 
@@ -575,7 +613,8 @@ Image Drawing
     */
    public function drawImage(Zend_Pdf_Resource_Image $image, $x1, $y1, $x2, $y2);
 
-Image objects should be created with ``Zend_Pdf_Image::imageWithPath($filePath)`` method (JPG, PNG and TIFF images are supported now):
+Image objects should be created with ``Zend_Pdf_Image::imageWithPath($filePath)`` method (JPG, PNG and TIFF images
+are supported now):
 
 .. _zend.pdf.drawing.image-drawing.example-1:
 
@@ -591,16 +630,19 @@ Image objects should be created with ``Zend_Pdf_Image::imageWithPath($filePath)`
    $pdfPage->drawImage($image, 100, 100, 400, 300);
    ...
 
-**Important! JPEG support requires PHP GD extension to be configured.** **Important! PNG support requires ZLIB extension to be configured to work with Alpha channel images.**
+**Important! JPEG support requires PHP GD extension to be configured.** **Important! PNG support requires ZLIB
+extension to be configured to work with Alpha channel images.**
 
-Refer to the *PHP* documentation for detailed information (`http://www.php.net/manual/en/ref.image.php`_). (`http://www.php.net/manual/en/ref.zlib.php`_).
+Refer to the *PHP* documentation for detailed information (`http://www.php.net/manual/en/ref.image.php`_).
+(`http://www.php.net/manual/en/ref.zlib.php`_).
 
 .. _zend.pdf.drawing.line-drawing-style:
 
 Line drawing style
 ------------------
 
-Line drawing style is defined by line width, line color and line dashing pattern. All of this parameters can be assigned by ``Zend_Pdf_Page`` class methods:
+Line drawing style is defined by line width, line color and line dashing pattern. All of this parameters can be
+assigned by ``Zend_Pdf_Page`` class methods:
 
 .. code-block:: php
    :linenos:
@@ -629,7 +671,8 @@ Line drawing style is defined by line width, line color and line dashing pattern
 Fill style
 ----------
 
-``Zend_Pdf_Page::drawRectangle()``, ``Zend_Pdf_Page::drawPolygon()``, ``Zend_Pdf_Page::drawCircle()`` and ``Zend_Pdf_Page::drawEllipse()`` methods take ``$fillType`` argument as an optional parameter. It can be:
+``Zend_Pdf_Page::drawRectangle()``, ``Zend_Pdf_Page::drawPolygon()``, ``Zend_Pdf_Page::drawCircle()`` and
+``Zend_Pdf_Page::drawEllipse()`` methods take ``$fillType`` argument as an optional parameter. It can be:
 
 - Zend_Pdf_Page::SHAPE_DRAW_STROKE - stroke shape
 
@@ -641,15 +684,37 @@ Fill style
 
 - Zend_Pdf_Page::FILL_METHOD_NON_ZERO_WINDING (default behavior)
 
-  :t:`PDF reference`
-           describes this rule as follows: | The nonzero winding number rule determines whether a given point is inside a path by conceptually drawing a ray from that point to infinity in any direction and then examining the places where a segment of the path crosses the ray. Starting with a count of 0, the rule adds 1 each time a path segment crosses the ray from left to right and subtracts 1 each time a segment crosses from right to left. After counting all the crossings, if the result is 0 then the point is outside the path; otherwise it is inside. Note: The method just described does not specify what to do if a path segment coincides with or is tangent to the chosen ray. Since the direction of the ray is arbitrary, the rule simply chooses a ray that does not encounter such problem intersections. For simple convex paths, the nonzero winding number rule defines the inside and outside as one would intuitively expect. The more interesting cases are those involving complex or self-intersecting paths like the ones shown in Figure 4.10 (in a *PDF* Reference). For a path consisting of a five-pointed star, drawn with five connected straight line segments intersecting each other, the rule considers the inside to be the entire area enclosed by the star, including the pentagon in the center. For a path composed of two concentric circles, the areas enclosed by both circles are considered to be inside, provided that both are drawn in the same direction. If the circles are drawn in opposite directions, only the "doughnut" shape between them is inside, according to the rule; the "doughnut hole" is outside.
+  :t:`PDF reference`  describes this rule as follows:
+  | The nonzero winding number rule determines whether a given point is inside a path by conceptually drawing a ray
+  from that point to infinity in any direction and then examining the places where a segment of the path crosses
+  the ray. Starting with a count of 0, the rule adds 1 each time a path segment crosses the ray from left to right
+  and subtracts 1 each time a segment crosses from right to left. After counting all the crossings, if the result
+  is 0 then the point is outside the path; otherwise it is inside. Note: The method just described does not specify
+  what to do if a path segment coincides with or is tangent to the chosen ray. Since the direction of the ray is
+  arbitrary, the rule simply chooses a ray that does not encounter such problem intersections. For simple convex
+  paths, the nonzero winding number rule defines the inside and outside as one would intuitively expect. The more
+  interesting cases are those involving complex or self-intersecting paths like the ones shown in Figure 4.10 (in a
+  *PDF* Reference). For a path consisting of a five-pointed star, drawn with five connected straight line segments
+  intersecting each other, the rule considers the inside to be the entire area enclosed by the star, including the
+  pentagon in the center. For a path composed of two concentric circles, the areas enclosed by both circles are
+  considered to be inside, provided that both are drawn in the same direction. If the circles are drawn in opposite
+  directions, only the "doughnut" shape between them is inside, according to the rule; the "doughnut hole" is
+  outside.
 
 
 
 - Zend_Pdf_Page::FILL_METHOD_EVEN_ODD
 
-  :t:`PDF reference`
-           describes this rule as follows: | An alternative to the nonzero winding number rule is the even-odd rule. This rule determines the "insideness" of a point by drawing a ray from that point in any direction and simply counting the number of path segments that cross the ray, regardless of direction. If this number is odd, the point is inside; if even, the point is outside. This yields the same results as the nonzero winding number rule for paths with simple shapes, but produces different results for more complex shapes. Figure 4.11 (in a *PDF* Reference) shows the effects of applying the even-odd rule to complex paths. For the five-pointed star, the rule considers the triangular points to be inside the path, but not the pentagon in the center. For the two concentric circles, only the "doughnut" shape between the two circles is considered inside, regardless of the directions in which the circles are drawn.
+  :t:`PDF reference`  describes this rule as follows:
+  | An alternative to the nonzero winding number rule is the even-odd rule. This rule determines the "insideness"
+  of
+  a point by drawing a ray from that point in any direction and simply counting the number of path segments that
+  cross the ray, regardless of direction. If this number is odd, the point is inside; if even, the point is
+  outside. This yields the same results as the nonzero winding number rule for paths with simple shapes, but
+  produces different results for more complex shapes. Figure 4.11 (in a *PDF* Reference) shows the effects of
+  applying the even-odd rule to complex paths. For the five-pointed star, the rule considers the triangular points
+  to be inside the path, but not the pentagon in the center. For the two concentric circles, only the "doughnut"
+  shape between the two circles is considered inside, regardless of the directions in which the circles are drawn.
 
 
 
@@ -742,7 +807,9 @@ Page skewing can be done using ``Zend_Pdf_Page::skew()`` method:
 Save/restore graphics state
 ---------------------------
 
-At any time page graphics state (current font, font size, line color, fill color, line style, page rotation, clip area) can be saved and then restored. Save operation puts data to a graphics state stack, restore operation retrieves it from there.
+At any time page graphics state (current font, font size, line color, fill color, line style, page rotation, clip
+area) can be saved and then restored. Save operation puts data to a graphics state stack, restore operation
+retrieves it from there.
 
 There are two methods in ``Zend_Pdf_Page`` class for these operations:
 
@@ -772,7 +839,8 @@ There are two methods in ``Zend_Pdf_Page`` class for these operations:
 Clipping draw area
 ------------------
 
-*PDF* and ``Zend_Pdf`` module support clipping of draw area. Current clip area limits the regions of the page affected by painting operators. It's a whole page initially.
+*PDF* and ``Zend_Pdf`` module support clipping of draw area. Current clip area limits the regions of the page
+affected by painting operators. It's a whole page initially.
 
 ``Zend_Pdf_Page`` class provides a set of methods for clipping operations.
 

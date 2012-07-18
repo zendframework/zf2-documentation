@@ -5,7 +5,12 @@ Zend\\Ldap\\Node\\Schema
 
 The following methods are available on all vendor-specific subclasses.
 
-*Zend\Ldap\Node\Schema* includes the magic property accessors *__get()* and *__isset()* to access the attributes by their name. They proxy to *Zend\Ldap\Node\Schema::getAttribute()* and *Zend\Ldap\Node\Schema::existsAttribute()* respectively. *__set()* and *__unset()* are also implemented, but they throw a *BadMethodCallException* as modifications are not allowed on RootDSE nodes. Furthermore the class implements *ArrayAccess* for array-style-access to the attributes. *offsetSet()* and *offsetUnset()* also throw a *BadMethodCallException* due to obvious reasons.
+*Zend\Ldap\Node\Schema* includes the magic property accessors *__get()* and *__isset()* to access the attributes by
+their name. They proxy to *Zend\Ldap\Node\Schema::getAttribute()* and *Zend\Ldap\Node\Schema::existsAttribute()*
+respectively. *__set()* and *__unset()* are also implemented, but they throw a *BadMethodCallException* as
+modifications are not allowed on RootDSE nodes. Furthermore the class implements *ArrayAccess* for
+array-style-access to the attributes. *offsetSet()* and *offsetUnset()* also throw a *BadMethodCallException* due
+to obvious reasons.
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.table:
 
@@ -99,7 +104,12 @@ The following methods are available on all vendor-specific subclasses.
    |array getParentClasses()|Returns the parent objectClasses of this class. This includes structural, abstract and auxiliary objectClasses.                                                                                                                                                                                                                                                                   |
    +------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Classes representing attribute types and object classes extend *Zend\Ldap\Node\Schema\AbstractItem* which provides some core methods to access arbitrary attributes on the underlying *LDAP* node. *Zend\Ldap\Node\Schema\AbstractItem* includes the magic property accessors *__get()* and *__isset()* to access the attributes by their name. Furthermore the class implements *ArrayAccess* for array-style-access to the attributes. *offsetSet()* and *offsetUnset()* throw a *BadMethodCallException* as modifications are not allowed on schema information nodes.
+Classes representing attribute types and object classes extend *Zend\Ldap\Node\Schema\AbstractItem* which provides
+some core methods to access arbitrary attributes on the underlying *LDAP* node.
+*Zend\Ldap\Node\Schema\AbstractItem* includes the magic property accessors *__get()* and *__isset()* to access the
+attributes by their name. Furthermore the class implements *ArrayAccess* for array-style-access to the attributes.
+*offsetSet()* and *offsetUnset()* throw a *BadMethodCallException* as modifications are not allowed on schema
+information nodes.
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.schema-item.table:
 
@@ -163,7 +173,9 @@ ActiveDirectory
 
    **Schema browsing on ActiveDirectory servers**
 
-   Due to restrictions on Microsoft ActiveDirectory servers regarding the number of entries returned by generic search routines and due to the structure of the ActiveDirectory schema repository, schema browsing is currently **not** available for Microsoft ActiveDirectory servers.
+   Due to restrictions on Microsoft ActiveDirectory servers regarding the number of entries returned by generic
+   search routines and due to the structure of the ActiveDirectory schema repository, schema browsing is currently
+   **not** available for Microsoft ActiveDirectory servers.
 
 *Zend\Ldap\Node\Schema\ActiveDirectory* does not provide any additional methods.
 

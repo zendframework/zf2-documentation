@@ -8,7 +8,8 @@ Getting information from the LDAP server
 RootDSE
 -------
 
-See the following documents for more information on the attributes contained within the RootDSE for a given *LDAP* server.
+See the following documents for more information on the attributes contained within the RootDSE for a given *LDAP*
+server.
 
 - `OpenLDAP`_
 
@@ -61,7 +62,9 @@ ActiveDirectory
 
    **Schema browsing on ActiveDirectory servers**
 
-   Due to restrictions on Microsoft ActiveDirectory servers regarding the number of entries returned by generic search routines and due to the structure of the ActiveDirectory schema repository, schema browsing is currently **not** available for Microsoft ActiveDirectory servers.
+   Due to restrictions on Microsoft ActiveDirectory servers regarding the number of entries returned by generic
+   search routines and due to the structure of the ActiveDirectory schema repository, schema browsing is currently
+   **not** available for Microsoft ActiveDirectory servers.
 
 
 
