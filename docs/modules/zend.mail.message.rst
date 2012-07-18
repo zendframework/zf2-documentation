@@ -8,11 +8,15 @@ Zend\\Mail\\Message
 Overview
 --------
 
-The ``Message`` class encapsulates a single email message as described in RFCs `822`_ and `2822`_. It acts basically as a value object for setting mail headers and content.
+The ``Message`` class encapsulates a single email message as described in RFCs `822`_ and `2822`_. It acts
+basically as a value object for setting mail headers and content.
 
-If desired, multi-part email messages may also be created. This is as trivial as creating the message body using the :ref:`Zend\\Mime <zend.mime>` component, assigning it to the mail message body.
+If desired, multi-part email messages may also be created. This is as trivial as creating the message body using
+the :ref:`Zend\\Mime <zend.mime>` component, assigning it to the mail message body.
 
-The ``Message`` class is simply a value object. It is not capable of sending or storing itself; for those purposes, you will need to use, respectively, a :ref:`Storage adapter <zend.mail.read>` or :ref:`Transport adapter <zend.mail.transport>`.
+The ``Message`` class is simply a value object. It is not capable of sending or storing itself; for those purposes,
+you will need to use, respectively, a :ref:`Storage adapter <zend.mail.read>` or :ref:`Transport adapter
+<zend.mail.transport>`.
 
 .. _zend.mail.message.quick-start:
 
@@ -28,7 +32,8 @@ Creating a ``Message`` is simple: simply instantiate it.
 
    $message = new Message();
 
-Once you have your ``Message`` instance, you can start adding content or headers. Let's set who the mail is from, who it's addressed to, a subject, and some content:
+Once you have your ``Message`` instance, you can start adding content or headers. Let's set who the mail is from,
+who it's addressed to, a subject, and some content:
 
 .. code-block:: php
    :linenos:
@@ -53,7 +58,8 @@ If you want to specify an alternate address to which replies may be sent, that c
 
    $message->addReplyTo("matthew@weierophinney.net", "Matthew");
 
-Interestingly, RFC822 allows for multiple "From:" addresses. When you do this, the first one will be used as the sender, **unless** you specify a "Sender:" header. The ``Message`` class allows for this.
+Interestingly, RFC822 allows for multiple "From:" addresses. When you do this, the first one will be used as the
+sender, **unless** you specify a "Sender:" header. The ``Message`` class allows for this.
 
 .. code-block:: php
    :linenos:
@@ -67,7 +73,9 @@ Interestingly, RFC822 allows for multiple "From:" addresses. When you do this, t
            ->addFrom("enrico.z@zend.com", "Enrico Zimuel")
            ->setSender("matthew@zend.com", "Matthew Weier O'Phinney");
 
-By default, the ``Message`` class assumes ASCII encoding for your email. If you wish to use another encoding, you can do so; setting this will ensure all headers and body content are properly encoded using quoted-printable encoding.
+By default, the ``Message`` class assumes ASCII encoding for your email. If you wish to use another encoding, you
+can do so; setting this will ensure all headers and body content are properly encoded using quoted-printable
+encoding.
 
 .. code-block:: php
    :linenos:
@@ -85,7 +93,9 @@ If you wish to set other headers, you can do that as well.
     */
    $message->getHeaders()->addHeaderLine('X-API-Key', 'FOO-BAR-BAZ-BAT');
 
-Sometimes you may want to provide HTML content, or multi-part content. To do that, you'll first create a MIME message object, and then set it as the body of your mail message object. When you do so, the ``Message`` class will automatically set a "MIME-Version" header, as well as an appropriate "Content-Type" header.
+Sometimes you may want to provide HTML content, or multi-part content. To do that, you'll first create a MIME
+message object, and then set it as the body of your mail message object. When you do so, the ``Message`` class will
+automatically set a "MIME-Version" header, as well as an appropriate "Content-Type" header.
 
 .. code-block:: php
    :linenos:
@@ -116,7 +126,8 @@ If you want a string representation of your email, you can get that:
 
    echo $message->toString();
 
-Finally, you can fully introspect the message -- including getting all addresses of recipients and senders, all ehaders, and the message body.
+Finally, you can fully introspect the message -- including getting all addresses of recipients and senders, all
+ehaders, and the message body.
 
 .. code-block:: php
    :linenos:
@@ -148,7 +159,8 @@ Finally, you can fully introspect the message -- including getting all addresses
    echo $message->getBody();     // raw body, or MIME object
    echo $message->getBodyText(); // body as it will be sent
 
-Once your message is shaped to your liking, pass it to a :ref:`mail transport <zend.mail.transport>` in order to send it!
+Once your message is shaped to your liking, pass it to a :ref:`mail transport <zend.mail.transport>` in order to
+send it!
 
 .. code-block:: php
    :linenos:

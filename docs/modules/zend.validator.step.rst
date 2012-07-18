@@ -3,7 +3,8 @@
 Step
 ====
 
-``Zend\Validator\Step`` allows you to validate if a given value is a valid step value. This validator requires the value to be a numeric value (either string, int or float).
+``Zend\Validator\Step`` allows you to validate if a given value is a valid step value. This validator requires the
+value to be a numeric value (either string, int or float).
 
 .. _zend.validate.set.step.options:
 

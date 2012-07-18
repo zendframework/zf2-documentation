@@ -5,7 +5,8 @@ Query Construction API
 
 In addition to parsing a string query automatically it's also possible to construct them with the query *API*.
 
-User queries can be combined with queries created through the query *API*. Simply use the query parser to construct a query from a string:
+User queries can be combined with queries created through the query *API*. Simply use the query parser to construct
+a query from a string:
 
 .. code-block:: php
    :linenos:
@@ -19,9 +20,11 @@ Query Parser Exceptions
 
 The query parser may generate two types of exceptions:
 
-- ``Zend_Search_Lucene_Exception`` is thrown if something goes wrong in the query parser itself.
 
-- ``Zend_Search_Lucene_Search_QueryParserException`` is thrown when there is an error in the query syntax.
+
+   - ``Zend_Search_Lucene_Exception`` is thrown if something goes wrong in the query parser itself.
+
+   - ``Zend_Search_Lucene_Search_QueryParserException`` is thrown when there is an error in the query syntax.
 
 It's a good idea to catch ``Zend_Search_Lucene_Search_QueryParserException``\ s and handle them appropriately:
 
@@ -36,7 +39,12 @@ It's a good idea to catch ``Zend_Search_Lucene_Search_QueryParserException``\ s 
 
 The same technique should be used for the find() method of a ``Zend_Search_Lucene`` object.
 
-Starting in 1.5, query parsing exceptions are suppressed by default. If query doesn't conform query language, then it's tokenized using current default analyzer and all tokenized terms are used for searching. Use ``Zend_Search_Lucene_Search_QueryParser::dontSuppressQueryParsingExceptions()`` method to turn exceptions on. ``Zend_Search_Lucene_Search_QueryParser::suppressQueryParsingExceptions()`` and ``Zend_Search_Lucene_Search_QueryParser::queryParsingExceptionsSuppressed()`` methods are also intended to manage exceptions handling behavior.
+Starting in 1.5, query parsing exceptions are suppressed by default. If query doesn't conform query language, then
+it's tokenized using current default analyzer and all tokenized terms are used for searching. Use
+``Zend_Search_Lucene_Search_QueryParser::dontSuppressQueryParsingExceptions()`` method to turn exceptions on.
+``Zend_Search_Lucene_Search_QueryParser::suppressQueryParsingExceptions()`` and
+``Zend_Search_Lucene_Search_QueryParser::queryParsingExceptionsSuppressed()`` methods are also intended to manage
+exceptions handling behavior.
 
 .. _zend.search.lucene.queries.term-query:
 
@@ -63,7 +71,8 @@ Query construction by *API*:
    $query = new Zend_Search_Lucene_Search_Query_Term($term);
    $hits  = $index->find($query);
 
-The term field is optional. ``Zend_Search_Lucene`` searches through all indexed fields in each document if the field is not specified:
+The term field is optional. ``Zend_Search_Lucene`` searches through all indexed fields in each document if the
+field is not specified:
 
 .. code-block:: php
    :linenos:
@@ -82,15 +91,19 @@ Multi-term queries can be used for searching with a set of terms.
 
 Each term in a set can be defined as **required**, **prohibited**, or **neither**.
 
-- **required** means that documents not matching this term will not match the query;
-
-- **prohibited** means that documents matching this term will not match the query;
-
-- **neither**, in which case matched documents are neither prohibited from, nor required to, match the term. A document must match at least 1 term, however, to match the query.
 
 
+   - **required** means that documents not matching this term will not match the query;
 
-If optional terms are added to a query with required terms, both queries will have the same result set but the optional terms may affect the score of the matched documents.
+   - **prohibited** means that documents matching this term will not match the query;
+
+   - **neither**, in which case matched documents are neither prohibited from, nor required to, match the term. A
+     document must match at least 1 term, however, to match the query.
+
+
+
+If optional terms are added to a query with required terms, both queries will have the same result set but the
+optional terms may affect the score of the matched documents.
 
 Both search methods can be used for multi-term queries.
 
@@ -139,11 +152,13 @@ It's also possible to specify terms list within MultiTerm query constructor:
 
 The ``$signs`` array contains information about the term type:
 
-- ``TRUE`` is used to define required term.
 
-- ``FALSE`` is used to define prohibited term.
 
-- ``NULL`` is used to define a term that is neither required nor prohibited.
+   - ``TRUE`` is used to define required term.
+
+   - ``FALSE`` is used to define prohibited term.
+
+   - ``NULL`` is used to define a term that is neither required nor prohibited.
 
 
 
@@ -156,15 +171,19 @@ Boolean queries allow to construct query using other queries and boolean operato
 
 Each subquery in a set can be defined as **required**, **prohibited**, or **optional**.
 
-- **required** means that documents not matching this subquery will not match the query;
-
-- **prohibited** means that documents matching this subquery will not match the query;
-
-- **optional**, in which case matched documents are neither prohibited from, nor required to, match the subquery. A document must match at least 1 subquery, however, to match the query.
 
 
+   - **required** means that documents not matching this subquery will not match the query;
 
-If optional subqueries are added to a query with required subqueries, both queries will have the same result set but the optional subqueries may affect the score of the matched documents.
+   - **prohibited** means that documents matching this subquery will not match the query;
+
+   - **optional**, in which case matched documents are neither prohibited from, nor required to, match the
+     subquery. A document must match at least 1 subquery, however, to match the query.
+
+
+
+If optional subqueries are added to a query with required subqueries, both queries will have the same result set
+but the optional subqueries may affect the score of the matched documents.
 
 Both search methods can be used for boolean queries.
 
@@ -223,15 +242,18 @@ It's also possible to specify subqueries list within Boolean query constructor:
 
 The ``$signs`` array contains information about the subquery type:
 
-- ``TRUE`` is used to define required subquery.
-
-- ``FALSE`` is used to define prohibited subquery.
-
-- ``NULL`` is used to define a subquery that is neither required nor prohibited.
 
 
+   - ``TRUE`` is used to define required subquery.
 
-Each query which uses boolean operators can be rewritten using signs notation and constructed using *API*. For example:
+   - ``FALSE`` is used to define prohibited subquery.
+
+   - ``NULL`` is used to define a subquery that is neither required nor prohibited.
+
+
+
+Each query which uses boolean operators can be rewritten using signs notation and constructed using *API*. For
+example:
 
 .. code-block:: text
    :linenos:
@@ -274,7 +296,8 @@ Query construction by *API*:
    $query = new Zend_Search_Lucene_Search_Query_Wildcard($pattern);
    $hits  = $index->find($query);
 
-The term field is optional. ``Zend_Search_Lucene`` searches through all fields on each document if a field is not specified:
+The term field is optional. ``Zend_Search_Lucene`` searches through all fields on each document if a field is not
+specified:
 
 .. code-block:: php
    :linenos:
@@ -330,7 +353,8 @@ Query construction by *API*:
    $query = new Zend_Search_Lucene_Search_Query_Fuzzy($term, 0.4);
    $hits  = $index->find($query);
 
-The term field is optional. ``Zend_Search_Lucene`` searches through all fields on each document if a field is not specified:
+The term field is optional. ``Zend_Search_Lucene`` searches through all fields on each document if a field is not
+specified:
 
 .. code-block:: php
    :linenos:
@@ -346,9 +370,12 @@ Phrase Query
 
 Phrase Queries can be used to search for a phrase within documents.
 
-Phrase Queries are very flexible and allow the user or developer to search for exact phrases as well as 'sloppy' phrases.
+Phrase Queries are very flexible and allow the user or developer to search for exact phrases as well as 'sloppy'
+phrases.
 
-Phrases can also contain gaps or terms in the same places; they can be generated by the analyzer for different purposes. For example, a term can be duplicated to increase the term its weight, or several synonyms can be placed into a single position.
+Phrases can also contain gaps or terms in the same places; they can be generated by the analyzer for different
+purposes. For example, a term can be duplicated to increase the term its weight, or several synonyms can be placed
+into a single position.
 
 .. code-block:: php
    :linenos:
@@ -380,7 +407,8 @@ Phrases can also contain gaps or terms in the same places; they can be generated
    $query4 = new Zend_Search_Lucene_Search_Query_Phrase(
                    array('word1', 'word2'), array(0,1), 'annotation');
 
-A phrase query can be constructed in one step with a class constructor or step by step with ``Zend_Search_Lucene_Search_Query_Phrase::addTerm()`` method calls.
+A phrase query can be constructed in one step with a class constructor or step by step with
+``Zend_Search_Lucene_Search_Query_Phrase::addTerm()`` method calls.
 
 ``Zend_Search_Lucene_Search_Query_Phrase`` class constructor takes three optional arguments:
 
@@ -391,11 +419,14 @@ A phrase query can be constructed in one step with a class constructor or step b
        [array $terms[, array $offsets[, string $field]]]
    );
 
-The ``$terms`` parameter is an array of strings that contains a set of phrase terms. If it's omitted or equal to ``NULL``, then an empty query is constructed.
+The ``$terms`` parameter is an array of strings that contains a set of phrase terms. If it's omitted or equal to
+``NULL``, then an empty query is constructed.
 
-The ``$offsets`` parameter is an array of integers that contains offsets of terms in a phrase. If it's omitted or equal to ``NULL``, then the terms' positions are assumed to be sequential with no gaps.
+The ``$offsets`` parameter is an array of integers that contains offsets of terms in a phrase. If it's omitted or
+equal to ``NULL``, then the terms' positions are assumed to be sequential with no gaps.
 
-The ``$field`` parameter is a string that indicates the document field to search. If it's omitted or equal to ``NULL``, then the default field is searched.
+The ``$field`` parameter is a string that indicates the document field to search. If it's omitted or equal to
+``NULL``, then the default field is searched.
 
 Thus:
 
@@ -414,7 +445,8 @@ will search for the phrase 'zend framework' in all fields.
                     array('zend', 'download'), array(0, 2)
                 );
 
-will search for the phrase 'zend ????? download' and match 'zend platform download', 'zend studio download', 'zend core download', 'zend framework download', and so on.
+will search for the phrase 'zend ????? download' and match 'zend platform download', 'zend studio download', 'zend
+core download', 'zend framework download', and so on.
 
 .. code-block:: php
    :linenos:
@@ -425,7 +457,8 @@ will search for the phrase 'zend ????? download' and match 'zend platform downlo
 
 will search for the phrase 'zend framework' in the 'title' field.
 
-``Zend_Search_Lucene_Search_Query_Phrase::addTerm()`` takes two arguments, a required ``Zend_Search_Lucene_Index_Term`` object and an optional position:
+``Zend_Search_Lucene_Search_Query_Phrase::addTerm()`` takes two arguments, a required
+``Zend_Search_Lucene_Index_Term`` object and an optional position:
 
 .. code-block:: php
    :linenos:
@@ -434,7 +467,8 @@ will search for the phrase 'zend framework' in the 'title' field.
        Zend_Search_Lucene_Index_Term $term[, integer $position]
    );
 
-The ``$term`` parameter describes the next term in the phrase. It must indicate the same field as previous terms, or an exception will be thrown.
+The ``$term`` parameter describes the next term in the phrase. It must indicate the same field as previous terms,
+or an exception will be thrown.
 
 The ``$position`` parameter indicates the term position in the phrase.
 
@@ -456,7 +490,8 @@ will search for the phrase 'zend framework'.
    $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'), 0);
    $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'), 2);
 
-will search for the phrase 'zend ????? download' and match 'zend platform download', 'zend studio download', 'zend core download', 'zend framework download', and so on.
+will search for the phrase 'zend ????? download' and match 'zend platform download', 'zend studio download', 'zend
+core download', 'zend framework download', and so on.
 
 .. code-block:: php
    :linenos:
@@ -467,11 +502,16 @@ will search for the phrase 'zend ????? download' and match 'zend platform downlo
 
 will search for the phrase 'zend framework' in the 'title' field.
 
-The slop factor sets the number of other words permitted between specified words in the query phrase. If set to zero, then the corresponding query is an exact phrase search. For larger values this works like the WITHIN or NEAR operators.
+The slop factor sets the number of other words permitted between specified words in the query phrase. If set to
+zero, then the corresponding query is an exact phrase search. For larger values this works like the WITHIN or NEAR
+operators.
 
-The slop factor is in fact an edit distance, where the edits correspond to moving terms in the query phrase. For example, to switch the order of two words requires two moves (the first move places the words atop one another), so to permit re-orderings of phrases, the slop factor must be at least two.
+The slop factor is in fact an edit distance, where the edits correspond to moving terms in the query phrase. For
+example, to switch the order of two words requires two moves (the first move places the words atop one another), so
+to permit re-orderings of phrases, the slop factor must be at least two.
 
-More exact matches are scored higher than sloppier matches; thus, search results are sorted by exactness. The slop is zero by default, requiring exact matches.
+More exact matches are scored higher than sloppier matches; thus, search results are sorted by exactness. The slop
+is zero by default, requiring exact matches.
 
 The slop factor can be assigned after query creation:
 
@@ -496,7 +536,8 @@ The slop factor can be assigned after query creation:
 Range Query
 -----------
 
-:ref:`Range queries <zend.search.lucene.query-language.range>` are intended for searching terms within specified interval.
+:ref:`Range queries <zend.search.lucene.query-language.range>` are intended for searching terms within specified
+interval.
 
 Query string:
 
@@ -532,7 +573,8 @@ Term fields are optional. ``Zend_Search_Lucene`` searches through all fields if 
                 );
    $hits  = $index->find($query);
 
-Either (but not both) of the boundary terms may be set to ``NULL``. ``Zend_Search_Lucene`` searches from the beginning or up to the end of the dictionary for the specified field(s) in this case:
+Either (but not both) of the boundary terms may be set to ``NULL``. ``Zend_Search_Lucene`` searches from the
+beginning or up to the end of the dictionary for the specified field(s) in this case:
 
 .. code-block:: php
    :linenos:

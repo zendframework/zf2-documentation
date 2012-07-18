@@ -3,7 +3,8 @@
 Zend\\Ldap\\Ldap
 ================
 
-``Zend\Ldap\Ldap`` is the base interface into a *LDAP* server. It provides connection and binding methods as well as methods to operate on the *LDAP* tree.
+``Zend\Ldap\Ldap`` is the base interface into a *LDAP* server. It provides connection and binding methods as well
+as methods to operate on the *LDAP* tree.
 
 .. _zend.ldap.api.reference.zend-ldap.table:
 
@@ -80,7 +81,9 @@ Zend\\Ldap\\Ldap
 Zend\\Ldap\\Collection
 ----------------------
 
-``Zend\Ldap\Collection`` implements *Iterator* to allow for item traversal using ``foreach()`` and *Countable* to be able to respond to ``count()``. With its protected ``createEntry()`` method it provides a simple extension point for developers needing custom result objects.
+``Zend\Ldap\Collection`` implements *Iterator* to allow for item traversal using ``foreach()`` and *Countable* to
+be able to respond to ``count()``. With its protected ``createEntry()`` method it provides a simple extension point
+for developers needing custom result objects.
 
 .. _zend.ldap.api.reference.zend-ldap.zend-ldap-collection.table:
 

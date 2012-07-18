@@ -13,11 +13,13 @@ Zend_Cache_Core
 Introduction
 ^^^^^^^^^^^^
 
-``Zend_Cache_Core`` is a special frontend because it is the core of the module. It is a generic cache frontend and is extended by other classes.
+``Zend_Cache_Core`` is a special frontend because it is the core of the module. It is a generic cache frontend and
+is extended by other classes.
 
 .. note::
 
-   All frontends inherit from ``Zend_Cache_Core`` so that its methods and options (described below) would also be available in other frontends, therefore they won't be documented there.
+   All frontends inherit from ``Zend_Cache_Core`` so that its methods and options (described below) would also be
+   available in other frontends, therefore they won't be documented there.
 
 .. _zend.cache.frontends.core.options:
 
@@ -57,7 +59,8 @@ Examples
 
 An example is given in the manual at the very beginning.
 
-If you store only strings into cache (because with "automatic_serialization" option, it's possible to store some booleans), you can use a more compact construction like:
+If you store only strings into cache (because with "automatic_serialization" option, it's possible to store some
+booleans), you can use a more compact construction like:
 
 .. code-block:: php
    :linenos:
@@ -120,7 +123,8 @@ If you want to cache multiple blocks or data instances, the idea is the same:
    }
    echo($data);
 
-If you want to cache special values (boolean with "automatic_serialization" option) or empty strings you can't use the compact construction given above. You have to test formally the cache record.
+If you want to cache special values (boolean with "automatic_serialization" option) or empty strings you can't use
+the compact construction given above. You have to test formally the cache record.
 
 .. code-block:: php
    :linenos:
@@ -170,7 +174,8 @@ Zend_Cache_Frontend_Output
 Introduction
 ^^^^^^^^^^^^
 
-``Zend_Cache_Frontend_Output`` is an output-capturing frontend. It utilizes output buffering in *PHP* to capture everything between its ``start()`` and ``end()`` methods.
+``Zend_Cache_Frontend_Output`` is an output-capturing frontend. It utilizes output buffering in *PHP* to capture
+everything between its ``start()`` and ``end()`` methods.
 
 .. _zend.cache.frontends.output.options:
 
@@ -202,7 +207,8 @@ An example is given in the manual at the very beginning. Here it is with minor c
 
    echo 'This is never cached ('.time().').';
 
-Using this form it is fairly easy to set up output caching in your already working project with little or no code refactoring.
+Using this form it is fairly easy to set up output caching in your already working project with little or no code
+refactoring.
 
 .. _zend.cache.frontends.function:
 
@@ -214,7 +220,8 @@ Zend_Cache_Frontend_Function
 Introduction
 ^^^^^^^^^^^^
 
-``Zend_Cache_Frontend_Function`` caches the results of function calls. It has a single main method named ``call()`` which takes a function name and parameters for the call in an array.
+``Zend_Cache_Frontend_Function`` caches the results of function calls. It has a single main method named ``call()``
+which takes a function name and parameters for the call in an array.
 
 .. _zend.cache.frontends.function.options:
 
@@ -252,11 +259,13 @@ Using the ``call()`` function is the same as using ``call_user_func_array()`` in
    // caching, you can use
    // $cache->call('veryExpensiveFunc', array(1, 'foo', 'bar'))
 
-``Zend_Cache_Frontend_Function`` is smart enough to cache both the return value of the function and its internal output.
+``Zend_Cache_Frontend_Function`` is smart enough to cache both the return value of the function and its internal
+output.
 
 .. note::
 
-   You can pass any built in or user defined function with the exception of ``array()``, ``echo()``, ``empty()``, ``eval()``, ``exit()``, ``isset()``, ``list()``, ``print()`` and ``unset()``.
+   You can pass any built in or user defined function with the exception of ``array()``, ``echo()``, ``empty()``,
+   ``eval()``, ``exit()``, ``isset()``, ``list()``, ``print()`` and ``unset()``.
 
 .. _zend.cache.frontends.class:
 
@@ -268,7 +277,8 @@ Zend_Cache_Frontend_Class
 Introduction
 ^^^^^^^^^^^^
 
-``Zend_Cache_Frontend_Class`` is different from ``Zend_Cache_Frontend_Function`` because it allows caching of object and static method calls.
+``Zend_Cache_Frontend_Class`` is different from ``Zend_Cache_Frontend_Function`` because it allows caching of
+object and static method calls.
 
 .. _zend.cache.frontends.class.options:
 
@@ -356,9 +366,13 @@ Zend_Cache_Frontend_File
 Introduction
 ^^^^^^^^^^^^
 
-``Zend_Cache_Frontend_File`` is a frontend driven by the modification time of a "master file". It's really interesting for examples in configuration or templates issues. It's also possible to use multiple master files.
+``Zend_Cache_Frontend_File`` is a frontend driven by the modification time of a "master file". It's really
+interesting for examples in configuration or templates issues. It's also possible to use multiple master files.
 
-For instance, you have an *XML* configuration file which is parsed by a function which returns a "config object" (like with ``Zend_Config``). With ``Zend_Cache_Frontend_File``, you can store the "config object" into cache (to avoid the parsing of the *XML* config file at each time) but with a sort of strong dependency on the "master file". So, if the *XML* config file is modified, the cache is immediately invalidated.
+For instance, you have an *XML* configuration file which is parsed by a function which returns a "config object"
+(like with ``Zend_Config``). With ``Zend_Cache_Frontend_File``, you can store the "config object" into cache (to
+avoid the parsing of the *XML* config file at each time) but with a sort of strong dependency on the "master file".
+So, if the *XML* config file is modified, the cache is immediately invalidated.
 
 .. _zend.cache.frontends.file.options:
 
@@ -386,7 +400,8 @@ Available Options
 Examples
 ^^^^^^^^
 
-Use of this frontend is the same than of ``Zend_Cache_Core``. There is no need of a specific example - the only thing to do is to define the **master_file** when using the factory.
+Use of this frontend is the same than of ``Zend_Cache_Core``. There is no need of a specific example - the only
+thing to do is to define the **master_file** when using the factory.
 
 .. _zend.cache.frontends.page:
 
@@ -398,15 +413,24 @@ Zend_Cache_Frontend_Page
 Introduction
 ^^^^^^^^^^^^
 
-``Zend_Cache_Frontend_Page`` is like ``Zend_Cache_Frontend_Output`` but designed for a complete page. It's impossible to use ``Zend_Cache_Frontend_Page`` for caching only a single block.
+``Zend_Cache_Frontend_Page`` is like ``Zend_Cache_Frontend_Output`` but designed for a complete page. It's
+impossible to use ``Zend_Cache_Frontend_Page`` for caching only a single block.
 
-On the other hand, the "cache id" is calculated automatically with ``$_SERVER['REQUEST_URI']`` and (depending on options) ``$_GET``, ``$_POST``, ``$_SESSION``, ``$_COOKIE``, ``$_FILES``. More over, you have only one method to call (``start()``) because the ``end()`` call is fully automatic when the page is ended.
+On the other hand, the "cache id" is calculated automatically with ``$_SERVER['REQUEST_URI']`` and (depending on
+options) ``$_GET``, ``$_POST``, ``$_SESSION``, ``$_COOKIE``, ``$_FILES``. More over, you have only one method to
+call (``start()``) because the ``end()`` call is fully automatic when the page is ended.
 
-For the moment, it's not implemented but we plan to add a *HTTP* conditional system to save bandwidth (the system will send a *HTTP* 304 Not Modified if the cache is hit and if the browser has already the good version).
+For the moment, it's not implemented but we plan to add a *HTTP* conditional system to save bandwidth (the system
+will send a *HTTP* 304 Not Modified if the cache is hit and if the browser has already the good version).
 
 .. note::
 
-   This frontend operates by registering a callback function to be called when the output buffering it uses is cleaned. In order for this to operate correctly, it must be the final output buffer in the request. To guarantee this, the output buffering used by the Dispatcher **must** be disabled by calling ``Zend_Controller_Front``'s ``setParam()`` method, for example, ``$front->setParam('disableOutputBuffering', true);`` or adding "resources.frontcontroller.params.disableOutputBuffering = true" to your bootstrap configuration file (assumed *INI*) if using ``Zend_Application``.
+   This frontend operates by registering a callback function to be called when the output buffering it uses is
+   cleaned. In order for this to operate correctly, it must be the final output buffer in the request. To guarantee
+   this, the output buffering used by the Dispatcher **must** be disabled by calling ``Zend_Controller_Front``'s
+   ``setParam()`` method, for example, ``$front->setParam('disableOutputBuffering', true);`` or adding
+   "resources.frontcontroller.params.disableOutputBuffering = true" to your bootstrap configuration file (assumed
+   *INI*) if using ``Zend_Application``.
 
 .. _zend.cache.frontends.page.options:
 
@@ -449,7 +473,8 @@ Use of ``Zend_Cache_Frontend_Page`` is really trivial:
 
    // rest of the page ...
 
-a more complex example which shows a way to get a centralized cache management in a bootstrap file (for using with ``Zend_Controller`` for example)
+a more complex example which shows a way to get a centralized cache management in a bootstrap file (for using with
+``Zend_Controller`` for example)
 
 .. code-block:: php
    :linenos:
@@ -508,7 +533,8 @@ a more complex example which shows a way to get a centralized cache management i
 The Specific Cancel Method
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Because of design issues, in some cases (for example when using non *HTTP* 200 return codes), you could need to cancel the current cache process. So we introduce for this particular frontend, the ``cancel()`` method.
+Because of design issues, in some cases (for example when using non *HTTP* 200 return codes), you could need to
+cancel the current cache process. So we introduce for this particular frontend, the ``cancel()`` method.
 
 .. code-block:: php
    :linenos:
@@ -536,12 +562,20 @@ Zend_Cache_Frontend_Capture
 Introduction
 ^^^^^^^^^^^^
 
-``Zend_Cache_Frontend_Capture`` is like ``Zend_Cache_Frontend_Output`` but designed for a complete page. It's impossible to use ``Zend_Cache_Frontend_Capture`` for caching only a single block. This class is specifically designed to operate in concert only with the ``Zend_Cache_Backend_Static`` backend to assist in caching entire pages of *HTML*/*XML* or other content to a physical static file on the local filesystem.
+``Zend_Cache_Frontend_Capture`` is like ``Zend_Cache_Frontend_Output`` but designed for a complete page. It's
+impossible to use ``Zend_Cache_Frontend_Capture`` for caching only a single block. This class is specifically
+designed to operate in concert only with the ``Zend_Cache_Backend_Static`` backend to assist in caching entire
+pages of *HTML*/*XML* or other content to a physical static file on the local filesystem.
 
 Please refer to the documentation on ``Zend_Cache_Backend_Static`` for all use cases pertaining to this class.
 
 .. note::
 
-   This frontend operates by registering a callback function to be called when the output buffering it uses is cleaned. In order for this to operate correctly, it must be the final output buffer in the request. To guarantee this, the output buffering used by the Dispatcher **must** be disabled by calling ``Zend_Controller_Front``'s ``setParam()`` method, for example, ``$front->setParam('disableOutputBuffering', true);`` or adding "resources.frontcontroller.params.disableOutputBuffering = true" to your bootstrap configuration file (assumed *INI*) if using ``Zend_Application``.
+   This frontend operates by registering a callback function to be called when the output buffering it uses is
+   cleaned. In order for this to operate correctly, it must be the final output buffer in the request. To guarantee
+   this, the output buffering used by the Dispatcher **must** be disabled by calling ``Zend_Controller_Front``'s
+   ``setParam()`` method, for example, ``$front->setParam('disableOutputBuffering', true);`` or adding
+   "resources.frontcontroller.params.disableOutputBuffering = true" to your bootstrap configuration file (assumed
+   *INI*) if using ``Zend_Application``.
 
 

@@ -5,16 +5,22 @@ Zend_Service_WindowsAzure_Storage_Queue
 
 The Queue service stores messages that may be read by any client who has access to the storage account.
 
-A queue can contain an unlimited number of messages, each of which can be up to 8 KB in size. Messages are generally added to the end of the queue and retrieved from the front of the queue, although first in/first out (*FIFO*) behavior is not guaranteed. If you need to store messages larger than 8 KB, you can store message data as a queue or in a table and then store a reference to the data as a message in a queue.
+A queue can contain an unlimited number of messages, each of which can be up to 8 KB in size. Messages are
+generally added to the end of the queue and retrieved from the front of the queue, although first in/first out
+(*FIFO*) behavior is not guaranteed. If you need to store messages larger than 8 KB, you can store message data as
+a queue or in a table and then store a reference to the data as a message in a queue.
 
-Queue Storage is offered by Windows Azure as a *REST* *API* which is wrapped by the ``Zend_Service_WindowsAzure_Storage_Queue`` class in order to provide a native *PHP* interface to the storage account.
+Queue Storage is offered by Windows Azure as a *REST* *API* which is wrapped by the
+``Zend_Service_WindowsAzure_Storage_Queue`` class in order to provide a native *PHP* interface to the storage
+account.
 
 .. _zend.service.windowsazure.storage.queue.api:
 
 API Examples
 ------------
 
-This topic lists some examples of using the ``Zend_Service_WindowsAzure_Storage_Queue`` class. Other features are available in the download package, as well as a detailed *API* documentation of those features.
+This topic lists some examples of using the ``Zend_Service_WindowsAzure_Storage_Queue`` class. Other features are
+available in the download package, as well as a detailed *API* documentation of those features.
 
 .. _zend.service.windowsazure.storage.queue.api.create-queue:
 
@@ -57,7 +63,8 @@ Using the following code, a queue can be removed from development storage.
 Adding a message to a queue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the following code, a message can be added to a queue on development storage. Note that the queue has already been created before.
+Using the following code, a message can be added to a queue on development storage. Note that the queue has already
+been created before.
 
 .. _zend.service.windowsazure.storage.queue.api.storing-queue.example:
 
@@ -76,7 +83,8 @@ Using the following code, a message can be added to a queue on development stora
 Reading a message from a queue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the following code, a message can be read from a queue on development storage. Note that the queue and message have already been created before.
+Using the following code, a message can be read from a queue on development storage. Note that the queue and
+message have already been created before.
 
 .. _zend.service.windowsazure.storage.queue.api.read-queue.example:
 
@@ -94,7 +102,9 @@ Using the following code, a message can be read from a queue on development stor
        echo $message->MessageText . "\r\n";
    }
 
-The messages that are read using ``getMessages()`` will be invisible in the queue for 30 seconds, after which the messages will re-appear in the queue. To mark a message as processed and remove it from the queue, use the ``deleteMessage()`` method.
+The messages that are read using ``getMessages()`` will be invisible in the queue for 30 seconds, after which the
+messages will re-appear in the queue. To mark a message as processed and remove it from the queue, use the
+``deleteMessage()`` method.
 
 .. _zend.service.windowsazure.storage.queue.api.read-queue.processexample:
 
@@ -120,7 +130,8 @@ The messages that are read using ``getMessages()`` will be invisible in the queu
 Check if there are messages in a queue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the following code, a queue can be checked for new messages. Note that the queue and message have already been created before.
+Using the following code, a queue can be checked for new messages. Note that the queue and message have already
+been created before.
 
 .. _zend.service.windowsazure.storage.queue.api.peek-queue.example:
 
@@ -138,6 +149,7 @@ Using the following code, a queue can be checked for new messages. Note that the
        echo $message->MessageText . "\r\n";
    }
 
-Note that messages that are read using ``peekMessages()`` will not become invisible in the queue, nor can they be marked as processed using the ``deleteMessage()`` method. To do this, use ``getMessages()`` instead.
+Note that messages that are read using ``peekMessages()`` will not become invisible in the queue, nor can they be
+marked as processed using the ``deleteMessage()`` method. To do this, use ``getMessages()`` instead.
 
 

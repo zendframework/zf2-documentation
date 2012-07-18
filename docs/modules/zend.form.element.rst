@@ -3,13 +3,16 @@
 Zend\\Form\\Element
 ===================
 
-``Zend\Form\Element`` is a base class for all specialized elements and Zend\\Form\\Fieldset, but can also be used for all generic ``text``, ``select``, ``radio``, etc. type form inputs which do not have a specialized element available.
+``Zend\Form\Element`` is a base class for all specialized elements and Zend\\Form\\Fieldset, but can also be used
+for all generic ``text``, ``select``, ``radio``, etc. type form inputs which do not have a specialized element
+available.
 
 .. _zend.form.element.usage:
 
 .. rubric:: Basic Usage of Zend\\Form\\Element
 
-At the bare minimum, each element or fieldset requires a name. You will also typically provide some attributes to hint to the view layer how it might render the item.
+At the bare minimum, each element or fieldset requires a name. You will also typically provide some attributes to
+hint to the view layer how it might render the item.
 
 .. code-block:: php
    :linenos:
@@ -96,7 +99,8 @@ Available Methods
 
 **setOptions**
    ``setOptions(array $options)``
-   Set options for an element. Accepted options are: ``"label"`` and ``"label_attributes"``, which call ``setLabel`` and ``setLabelAttributes``, respectively.
+   Set options for an element. Accepted options are: ``"label"`` and ``"label_attributes"``, which call
+   ``setLabel`` and ``setLabelAttributes``, respectively.
 
    Returns ``Zend\Form\Element``
 

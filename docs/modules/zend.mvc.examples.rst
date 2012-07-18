@@ -13,7 +13,9 @@ Controllers
 Accessing the Request and Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When using ``AbstractActionController`` or ``AbstractRestfulController``, the request and response object are composed directly into the controller as soon as ``dispatch()`` is called. You may access them in the following ways:
+When using ``AbstractActionController`` or ``AbstractRestfulController``, the request and response object are
+composed directly into the controller as soon as ``dispatch()`` is called. You may access them in the following
+ways:
 
 .. code-block:: php
    :linenos:
@@ -26,7 +28,9 @@ When using ``AbstractActionController`` or ``AbstractRestfulController``, the re
    $request  = $this->request;
    $response = $this->response;
 
-Additionally, if your controller implements ``InjectApplicationEventInterface`` (as both ``AbstractActionController`` and ``AbstractRestfulController`` do), you can access these objects from the attached ``MvcEvent``:
+Additionally, if your controller implements ``InjectApplicationEventInterface`` (as both
+``AbstractActionController`` and ``AbstractRestfulController`` do), you can access these objects from the attached
+``MvcEvent``:
 
 .. code-block:: php
    :linenos:
@@ -42,9 +46,11 @@ The above can be useful when composing event listeners into your controller.
 Accessing routing parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The parameters returned when routing completes are wrapped in a ``Zend\Mvc\Router\RouteMatch`` object. This object is detailed in the section on routing.
+The parameters returned when routing completes are wrapped in a ``Zend\Mvc\Router\RouteMatch`` object. This object
+is detailed in the section on routing.
 
-Within your controller, if you implement ``InjectApplicationEventInterface`` (as both ``AbstractActionController`` and ``AbstractRestfulController`` do), you can access this object from the attached ``MvcEvent``:
+Within your controller, if you implement ``InjectApplicationEventInterface`` (as both ``AbstractActionController``
+and ``AbstractRestfulController`` do), you can access this object from the attached ``MvcEvent``:
 
 .. code-block:: php
    :linenos:
@@ -59,9 +65,13 @@ Once you have the ``RouteMatch`` object, you can pull parameters from it.
 Returning early
 ^^^^^^^^^^^^^^^
 
-You can effectively short-circuit execution of the application at any point by returning a ``Response`` from your controller or any event. When such a value is discovered, it halts further execution of the event manager, bubbling up to the ``Application`` instance, where it is immediately returned.
+You can effectively short-circuit execution of the application at any point by returning a ``Response`` from your
+controller or any event. When such a value is discovered, it halts further execution of the event manager, bubbling
+up to the ``Application`` instance, where it is immediately returned.
 
-As an example, the ``Redirect`` plugin returns a ``Response``, which can be returned immediately so as to complete the request as quickly as possible. Other use cases might be for returning JSON or XML results from web service endpoints, returning "401 Forbidden" results, etc.
+As an example, the ``Redirect`` plugin returns a ``Response``, which can be returned immediately so as to complete
+the request as quickly as possible. Other use cases might be for returning JSON or XML results from web service
+endpoints, returning "401 Forbidden" results, etc.
 
 .. _zend.mvc.examples.bootstrapping:
 
@@ -73,13 +83,19 @@ Bootstrapping
 Registering module-specific listeners
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Often you may want module-specific listeners. As an example, this would be a simple and effective way to introduce authorization, logging, or caching into your application.
+Often you may want module-specific listeners. As an example, this would be a simple and effective way to introduce
+authorization, logging, or caching into your application.
 
-Each ``Module`` class can have an optional ``onBootstrap()`` method. Typically, you'll do module-specific configuration here, or setup event listeners for you module here. The ``onBootstrap()`` method is called for **every** module on **every** page request and should **only** be used for performing **lightweight** tasks such as registering event listeners.
+Each ``Module`` class can have an optional ``onBootstrap()`` method. Typically, you'll do module-specific
+configuration here, or setup event listeners for you module here. The ``onBootstrap()`` method is called for
+**every** module on **every** page request and should **only** be used for performing **lightweight** tasks such as
+registering event listeners.
 
-The base ``Application`` class shipped with the framework has an ``EventManager`` associated with it, and once the modules are initialized, it triggers a "bootstrap" event, with a ``getApplication()`` method on the event.
+The base ``Application`` class shipped with the framework has an ``EventManager`` associated with it, and once the
+modules are initialized, it triggers a "bootstrap" event, with a ``getApplication()`` method on the event.
 
-So, one way to accomplish module-specific listeners is to listen to that event, and register listeners at that time. As an example:
+So, one way to accomplish module-specific listeners is to listen to that event, and register listeners at that
+time. As an example:
 
 .. code-block:: php
    :linenos:
@@ -101,6 +117,10 @@ So, one way to accomplish module-specific listeners is to listen to that event, 
        }
    }
 
-The above demonstrates several things. First, it demonstrates a listener on the application's "bootstrap" event (the ``onBootstrap()`` method). Second, it demonstrates that listener, and how it can be used to register listeners with the application. It grabs the ``Application`` instance; from the ``Application``, it is able to grab the attached service manager and configuration. These are then used to retrieve the view, configure some helpers, and then register a listener aggregate with the application event manager.
+The above demonstrates several things. First, it demonstrates a listener on the application's "bootstrap" event
+(the ``onBootstrap()`` method). Second, it demonstrates that listener, and how it can be used to register listeners
+with the application. It grabs the ``Application`` instance; from the ``Application``, it is able to grab the
+attached service manager and configuration. These are then used to retrieve the view, configure some helpers, and
+then register a listener aggregate with the application event manager.
 
 

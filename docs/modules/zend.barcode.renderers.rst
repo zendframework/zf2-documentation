@@ -38,7 +38,11 @@ Renderers have some common options. These options can be set in three ways:
 Common Options
 --------------
 
-In the following list, the values have no unit; we will use the term "unit." For example, the default value of the "thin bar" is "1 unit." The real units depend on the rendering support. The individual setters are obtained by uppercasing the initial letter of the option and prefixing the name with "set" (e.g. "barHeight" => "setBarHeight"). All options have a correspondant getter prefixed with "get" (e.g. "getBarHeight"). Available options are:
+In the following list, the values have no unit; we will use the term "unit." For example, the default value of the
+"thin bar" is "1 unit." The real units depend on the rendering support. The individual setters are obtained by
+uppercasing the initial letter of the option and prefixing the name with "set" (e.g. "barHeight" =>
+"setBarHeight"). All options have a correspondant getter prefixed with "get" (e.g. "getBarHeight"). Available
+options are:
 
 .. _zend.barcode.renderers.common.options.table:
 
@@ -64,14 +68,16 @@ In the following list, the values have no unit; we will use the term "unit." For
    |barcode             |Zend\\Barcode\\Object|NULL                   |The barcode object to render.                                                                                                                                                                               |
    +--------------------+---------------------+-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-An additional getter exists: ``getType()``. It returns the name of the renderer class without the namespace (e.g. ``Zend\Barcode\Renderer\Image`` returns "image").
+An additional getter exists: ``getType()``. It returns the name of the renderer class without the namespace (e.g.
+``Zend\Barcode\Renderer\Image`` returns "image").
 
 .. _zend.barcode.renderers.image:
 
 Zend\\Barcode\\Renderer\\Image
 ------------------------------
 
-The Image renderer will draw the instruction list of the barcode object in an image resource. The component requires the GD extension. The default width of a module is 1 pixel.
+The Image renderer will draw the instruction list of the barcode object in an image resource. The component
+requires the GD extension. The default width of a module is 1 pixel.
 
 Available options are:
 
@@ -94,7 +100,8 @@ Available options are:
 Zend\\Barcode\\Renderer\\Pdf
 ----------------------------
 
-The *PDF* renderer will draw the instruction list of the barcode object in a *PDF* document. The default width of a module is 0.5 point.
+The *PDF* renderer will draw the instruction list of the barcode object in a *PDF* document. The default width of a
+module is 0.5 point.
 
 There are no particular options for this renderer.
 

@@ -3,13 +3,26 @@
 Create a Model and Database Table
 =================================
 
-Before we get started, let's consider something: where will these classes live, and how will we find them? The default project we created instantiates an autoloader. We can attach other autoloaders to it so that it knows where to find different classes. Typically, we want our various MVC classes grouped under the same tree -- in this case, ``application/``-- and most often using a common prefix.
+Before we get started, let's consider something: where will these classes live, and how will we find them? The
+default project we created instantiates an autoloader. We can attach other autoloaders to it so that it knows where
+to find different classes. Typically, we want our various MVC classes grouped under the same tree -- in this case,
+``application/``-- and most often using a common prefix.
 
-``Zend_Controller_Front`` has a notion of "modules", which are individual mini-applications. Modules mimic the directory structure that the ``zf`` tool sets up under ``application/``, and all classes inside them are assumed to begin with a common prefix, the module name. ``application/`` is itself a module -- the "default" or "application" module. As such, we'll want to setup autoloading for resources within this directory.
+``Zend_Controller_Front`` has a notion of "modules", which are individual mini-applications. Modules mimic the
+directory structure that the ``zf`` tool sets up under ``application/``, and all classes inside them are assumed to
+begin with a common prefix, the module name. ``application/`` is itself a module -- the "default" or "application"
+module. As such, we'll want to setup autoloading for resources within this directory.
 
-``Zend_Application_Module_Autoloader`` provides the functionality needed to map the various resources under a module to the appropriate directories, and provides a standard naming mechanism as well. An instance of the class is created by default during initialization of the bootstrap object; your application bootstrap will be default use the module prefix "Application". As such, our models, forms, and table classes will all begin with the class prefix "Application\_".
+``Zend_Application_Module_Autoloader`` provides the functionality needed to map the various resources under a
+module to the appropriate directories, and provides a standard naming mechanism as well. An instance of the class
+is created by default during initialization of the bootstrap object; your application bootstrap will be default use
+the module prefix "Application". As such, our models, forms, and table classes will all begin with the class prefix
+"Application\_".
 
-Now, let's consider what makes up a guestbook. Typically, they are simply a list of entries with a **comment**, **timestamp**, and, often, **email address**. Assuming we store them in a database, we may also want a **unique identifier** for each entry. We'll likely want to be able to save an entry, fetch individual entries, and retrieve all entries. As such, a simple guestbook model *API* might look something like this:
+Now, let's consider what makes up a guestbook. Typically, they are simply a list of entries with a **comment**,
+**timestamp**, and, often, **email address**. Assuming we store them in a database, we may also want a **unique
+identifier** for each entry. We'll likely want to be able to save an entry, fetch individual entries, and retrieve
+all entries. As such, a simple guestbook model *API* might look something like this:
 
 .. code-block:: php
    :linenos:
@@ -46,13 +59,17 @@ Now, let's consider what makes up a guestbook. Typically, they are simply a list
        public function fetchAll();
    }
 
-``__get()`` and ``__set()`` will provide a convenience mechanism for us to access the individual entry properties, and proxy to the other getters and setters. They also will help ensure that only properties we whitelist will be available in the object.
+``__get()`` and ``__set()`` will provide a convenience mechanism for us to access the individual entry properties,
+and proxy to the other getters and setters. They also will help ensure that only properties we whitelist will be
+available in the object.
 
-``find()`` and ``fetchAll()`` provide the ability to fetch a single entry or all entries, while ``save()`` takes care of saving an entry to the data store.
+``find()`` and ``fetchAll()`` provide the ability to fetch a single entry or all entries, while ``save()`` takes
+care of saving an entry to the data store.
 
 Now from here, we can start thinking about setting up our database.
 
-First we need to initialize our ``Db`` resource. As with the ``Layout`` and ``View`` resource, we can provide configuration for the ``Db`` resource. We can do this with the ``zf configure db-adapter`` command:
+First we need to initialize our ``Db`` resource. As with the ``Layout`` and ``View`` resource, we can provide
+configuration for the ``Db`` resource. We can do this with the ``zf configure db-adapter`` command:
 
 .. code-block:: console
    :linenos:
@@ -72,7 +89,8 @@ First we need to initialize our ``Db`` resource. As with the ``Layout`` and ``Vi
    > development
    A db configuration for the production has been written to the application config file.
 
-Now edit your ``application/configs/application.ini`` file, where you'll see the following lines were added in the appropriate sections.
+Now edit your ``application/configs/application.ini`` file, where you'll see the following lines were added in the
+appropriate sections.
 
 .. code-block:: ini
    :linenos:
@@ -128,16 +146,19 @@ Your final configuration file should look like the following:
    resources.db.adapter = "PDO_SQLITE"
    resources.db.params.dbname = APPLICATION_PATH "/../data/db/guestbook-dev.db"
 
-Note that the database(s) will be stored in ``data/db/``. Create those directories, and make them world-writeable. On unix-like systems, you can do that as follows:
+Note that the database(s) will be stored in ``data/db/``. Create those directories, and make them world-writeable.
+On unix-like systems, you can do that as follows:
 
 .. code-block:: console
    :linenos:
 
    % mkdir -p data/db; chmod -R a+rwX data
 
-On Windows, you will need to create the directories in Explorer and set the permissions to allow anyone to write to the directory.
+On Windows, you will need to create the directories in Explorer and set the permissions to allow anyone to write to
+the directory.
 
-At this point we have a connection to a database; in our case, its a connection to a Sqlite database located inside our ``application/data/`` directory. So, let's design a simple table that will hold our guestbook entries.
+At this point we have a connection to a database; in our case, its a connection to a Sqlite database located inside
+our ``application/data/`` directory. So, let's design a simple table that will hold our guestbook entries.
 
 .. code-block:: sql
    :linenos:
@@ -155,7 +176,8 @@ At this point we have a connection to a database; in our case, its a connection 
 
    CREATE INDEX "id" ON "guestbook" ("id");
 
-And, so that we can have some working data out of the box, lets create a few rows of information to make our application interesting.
+And, so that we can have some working data out of the box, lets create a few rows of information to make our
+application interesting.
 
 .. code-block:: sql
    :linenos:
@@ -173,7 +195,10 @@ And, so that we can have some working data out of the box, lets create a few row
        'Baz baz baz, baz baz Baz baz baz - baz baz baz.',
        DATETIME('NOW'));
 
-Now that we have both the schema and some data defined. Lets get a script together that we can now execute to build this database. Naturally, this is not needed in production, but this script will help developers build out the database requirements locally so they can have the fully working application. Create the script as ``scripts/load.sqlite.php`` with the following contents:
+Now that we have both the schema and some data defined. Lets get a script together that we can now execute to build
+this database. Naturally, this is not needed in production, but this script will help developers build out the
+database requirements locally so they can have the fully working application. Create the script as
+``scripts/load.sqlite.php`` with the following contents:
 
 .. code-block:: php
    :linenos:
@@ -298,9 +323,15 @@ You should see output like the following:
    Database Created
    Data Loaded.
 
-Now we have a fully working database and table for our guestbook application. Our next few steps are to build out our application code. This includes building a data source (in our case, we will use ``Zend_Db_Table``), and a data mapper to connect that data source to our domain model. Finally we'll also create the controller that will interact with this model to both display existing entries and process new entries.
+Now we have a fully working database and table for our guestbook application. Our next few steps are to build out
+our application code. This includes building a data source (in our case, we will use ``Zend_Db_Table``), and a data
+mapper to connect that data source to our domain model. Finally we'll also create the controller that will interact
+with this model to both display existing entries and process new entries.
 
-We'll use a `Table Data Gateway`_ to connect to our data source; ``Zend_Db_Table`` provides this functionality. To get started, lets create a ``Zend_Db_Table``-based table class. Just as we've done for layouts and the database adapter, we can use the ``zf`` tool to assist, using the command ``create db-table``. This takes minimally two arguments, the name by which you want to refer to the class, and the database table it maps to.
+We'll use a `Table Data Gateway`_ to connect to our data source; ``Zend_Db_Table`` provides this functionality. To
+get started, lets create a ``Zend_Db_Table``-based table class. Just as we've done for layouts and the database
+adapter, we can use the ``zf`` tool to assist, using the command ``create db-table``. This takes minimally two
+arguments, the name by which you want to refer to the class, and the database table it maps to.
 
 .. code-block:: console
    :linenos:
@@ -309,7 +340,8 @@ We'll use a `Table Data Gateway`_ to connect to our data source; ``Zend_Db_Table
    Creating a DbTable at application/models/DbTable/Guestbook.php
    Updating project profile 'zfproject.xml'
 
-Looking at your directory tree, you'll now see that a new directory, ``application/models/DbTable/``, was created, with the file ``Guestbook.php``. If you open that file, you'll see the following contents:
+Looking at your directory tree, you'll now see that a new directory, ``application/models/DbTable/``, was created,
+with the file ``Guestbook.php``. If you open that file, you'll see the following contents:
 
 .. code-block:: php
    :linenos:
@@ -325,11 +357,16 @@ Looking at your directory tree, you'll now see that a new directory, ``applicati
        protected $_name    = 'guestbook';
    }
 
-Note the class prefix: ``Application_Model_DbTable``. The class prefix for our module, "Application", is the first segment, and then we have the component, "Model_DbTable"; the latter is mapped to the ``models/DbTable/`` directory of the module.
+Note the class prefix: ``Application_Model_DbTable``. The class prefix for our module, "Application", is the first
+segment, and then we have the component, "Model_DbTable"; the latter is mapped to the ``models/DbTable/`` directory
+of the module.
 
-All that is truly necessary when extending ``Zend_Db_Table`` is to provide a table name and optionally the primary key (if it is not "id").
+All that is truly necessary when extending ``Zend_Db_Table`` is to provide a table name and optionally the primary
+key (if it is not "id").
 
-Now let's create a `Data Mapper`_. A **Data Mapper** maps a domain object to the database. In our case, it will map our model, ``Application_Model_Guestbook``, to our data source, ``Application_Model_DbTable_Guestbook``. A typical *API* for a data mapper is as follows:
+Now let's create a `Data Mapper`_. A **Data Mapper** maps a domain object to the database. In our case, it will map
+our model, ``Application_Model_Guestbook``, to our data source, ``Application_Model_DbTable_Guestbook``. A typical
+*API* for a data mapper is as follows:
 
 .. code-block:: php
    :linenos:
@@ -343,7 +380,8 @@ Now let's create a `Data Mapper`_. A **Data Mapper** maps a domain object to the
        public function fetchAll();
    }
 
-In addition to these methods, we'll add methods for setting and retrieving the Table Data Gateway. To create the initial class, use the ``zf`` CLI tool:
+In addition to these methods, we'll add methods for setting and retrieving the Table Data Gateway. To create the
+initial class, use the ``zf`` CLI tool:
 
 .. code-block:: console
    :linenos:
@@ -352,7 +390,8 @@ In addition to these methods, we'll add methods for setting and retrieving the T
    Creating a model at application/models/GuestbookMapper.php
    Updating project profile '.zfproject.xml'
 
-Now, edit the class ``Application_Model_GuestbookMapper`` found in ``application/models/GuestbookMapper.php`` to read as follows:
+Now, edit the class ``Application_Model_GuestbookMapper`` found in ``application/models/GuestbookMapper.php`` to
+read as follows:
 
 .. code-block:: php
    :linenos:
@@ -437,7 +476,9 @@ Now it's time to create our model class. We'll do so, once again, using the ``zf
    Creating a model at application/models/Guestbook.php
    Updating project profile '.zfproject.xml'
 
-We'll modify this empty *PHP* class to make it easy to populate the model by passing an array of data either to the constructor or a ``setOptions()`` method. The final model class, located in ``application/models/Guestbook.php``, should look like this:
+We'll modify this empty *PHP* class to make it easy to populate the model by passing an array of data either to the
+constructor or a ``setOptions()`` method. The final model class, located in ``application/models/Guestbook.php``,
+should look like this:
 
 .. code-block:: php
    :linenos:
@@ -533,7 +574,8 @@ We'll modify this empty *PHP* class to make it easy to populate the model by pas
        }
    }
 
-Lastly, to connect these elements all together, lets create a guestbook controller that will both list the entries that are currently inside the database.
+Lastly, to connect these elements all together, lets create a guestbook controller that will both list the entries
+that are currently inside the database.
 
 To create a new controller, use the ``zf create controller`` command:
 
@@ -550,11 +592,14 @@ To create a new controller, use the ``zf create controller`` command:
        tests/application/controllers/GuestbookControllerTest.php
    Updating project profile '.zfproject.xml'
 
-This will create a new controller, ``GuestbookController``, in ``application/controllers/GuestbookController.php``, with a single action method, ``indexAction()``. It will also create a view script directory for the controller, ``application/views/scripts/guestbook/``, with a view script for the index action.
+This will create a new controller, ``GuestbookController``, in ``application/controllers/GuestbookController.php``,
+with a single action method, ``indexAction()``. It will also create a view script directory for the controller,
+``application/views/scripts/guestbook/``, with a view script for the index action.
 
 We'll use the "index" action as a landing page to view all guestbook entries.
 
-Now, let's flesh out the basic application logic. On a hit to ``indexAction()``, we'll display all guestbook entries. This would look like the following:
+Now, let's flesh out the basic application logic. On a hit to ``indexAction()``, we'll display all guestbook
+entries. This would look like the following:
 
 .. code-block:: php
    :linenos:
@@ -570,7 +615,8 @@ Now, let's flesh out the basic application logic. On a hit to ``indexAction()``,
        }
    }
 
-And, of course, we need a view script to go along with that. Edit ``application/views/scripts/guestbook/index.phtml`` to read as follows:
+And, of course, we need a view script to go along with that. Edit
+``application/views/scripts/guestbook/index.phtml`` to read as follows:
 
 .. code-block:: php
    :linenos:
@@ -607,7 +653,10 @@ And, of course, we need a view script to go along with that. Edit ``application/
 
    **Using the data loader script**
 
-   The data loader script introduced in this section (``scripts/load.sqlite.php``) can be used to create the database for each environment you have defined, as well as to load it with sample data. Internally, it utilizes ``Zend_Console_Getopt``, which allows it to provide a number of command line switches. If you pass the "-h" or "--help" switch, it will give you the available options:
+   The data loader script introduced in this section (``scripts/load.sqlite.php``) can be used to create the
+   database for each environment you have defined, as well as to load it with sample data. Internally, it utilizes
+   ``Zend_Console_Getopt``, which allows it to provide a number of command line switches. If you pass the "-h" or
+   "--help" switch, it will give you the available options:
 
    .. code-block:: php
       :linenos:
@@ -618,7 +667,9 @@ And, of course, we need a view script to go along with that. Edit ``application/
                             (defaults to development)
       --help|-h             Help -- usage message)]]
 
-   The "-e" switch allows you to specify the value to use for the constant ``APPLICATION_ENV``-- which in turn allows you to create a SQLite database for each environment you define. Be sure to run the script for the environment you choose for your application when deploying.
+   The "-e" switch allows you to specify the value to use for the constant ``APPLICATION_ENV``-- which in turn
+   allows you to create a SQLite database for each environment you define. Be sure to run the script for the
+   environment you choose for your application when deploying.
 
 
 

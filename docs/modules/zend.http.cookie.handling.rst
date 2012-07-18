@@ -8,9 +8,18 @@ Zend_Http_Cookie and Zend_Http_CookieJar
 Introduction
 ------------
 
-``Zend_Http_Cookie``, as expected, is a class that represents an *HTTP* cookie. It provides methods for parsing *HTTP* response strings, collecting cookies, and easily accessing their properties. It also allows checking if a cookie matches against a specific scenario, IE a request *URL*, expiration time, secure connection, etc.
+``Zend_Http_Cookie``, as expected, is a class that represents an *HTTP* cookie. It provides methods for parsing
+*HTTP* response strings, collecting cookies, and easily accessing their properties. It also allows checking if a
+cookie matches against a specific scenario, IE a request *URL*, expiration time, secure connection, etc.
 
-``Zend_Http_CookieJar`` is an object usually used by ``Zend_Http_Client`` to hold a set of ``Zend_Http_Cookie`` objects. The idea is that if a ``Zend_Http_CookieJar`` object is attached to a ``Zend_Http_Client`` object, all cookies going from and into the client through *HTTP* requests and responses will be stored by the CookieJar object. Then, when the client will send another request, it will first ask the CookieJar object for all cookies matching the request. These will be added to the request headers automatically. This is highly useful in cases where you need to maintain a user session over consecutive *HTTP* requests, automatically sending the session ID cookies when required. Additionally, the ``Zend_Http_CookieJar`` object can be serialized and stored in $_SESSION when needed.
+``Zend_Http_CookieJar`` is an object usually used by ``Zend_Http_Client`` to hold a set of ``Zend_Http_Cookie``
+objects. The idea is that if a ``Zend_Http_CookieJar`` object is attached to a ``Zend_Http_Client`` object, all
+cookies going from and into the client through *HTTP* requests and responses will be stored by the CookieJar
+object. Then, when the client will send another request, it will first ask the CookieJar object for all cookies
+matching the request. These will be added to the request headers automatically. This is highly useful in cases
+where you need to maintain a user session over consecutive *HTTP* requests, automatically sending the session ID
+cookies when required. Additionally, the ``Zend_Http_CookieJar`` object can be serialized and stored in $_SESSION
+when needed.
 
 .. _zend.http.cookies.cookie.instantiating:
 
@@ -19,29 +28,40 @@ Instantiating Zend_Http_Cookie Objects
 
 Instantiating a Cookie object can be done in two ways:
 
-- Through the constructor, using the following syntax: ``new Zend_Http_Cookie(string $name, string $value, string $domain, [int $expires, [string $path, [boolean $secure]]]);``
 
-  - ``$name``: The name of the cookie (eg. 'PHPSESSID') (required)
 
-  - ``$value``: The value of the cookie (required)
+   - Through the constructor, using the following syntax: ``new Zend_Http_Cookie(string $name, string $value,
+     string $domain, [int $expires, [string $path, [boolean $secure]]]);``
 
-  - ``$domain``: The cookie's domain (eg. '.example.com') (required)
+     - ``$name``: The name of the cookie (eg. 'PHPSESSID') (required)
 
-  - ``$expires``: Cookie expiration time, as UNIX time stamp (optional, defaults to ``NULL``). If not set, cookie will be treated as a 'session cookie' with no expiration time.
+     - ``$value``: The value of the cookie (required)
 
-  - ``$path``: Cookie path, eg. '/foo/bar/' (optional, defaults to '/')
+     - ``$domain``: The cookie's domain (eg. '.example.com') (required)
 
-  - ``$secure``: Boolean, Whether the cookie is to be sent over secure (HTTPS) connections only (optional, defaults to boolean ``FALSE``)
+     - ``$expires``: Cookie expiration time, as UNIX time stamp (optional, defaults to ``NULL``). If not set,
+       cookie will be treated as a 'session cookie' with no expiration time.
 
-- By calling the fromString($cookieStr, [$refUri, [$encodeValue]]) static method, with a cookie string as represented in the 'Set-Cookie '*HTTP* response header or 'Cookie'*HTTP* request header. In this case, the cookie value must already be encoded. When the cookie string does not contain a 'domain' part, you must provide a reference *URI* according to which the cookie's domain and path will be set.
+     - ``$path``: Cookie path, eg. '/foo/bar/' (optional, defaults to '/')
 
-  The ``fromString()`` method accepts the following parameters:
+     - ``$secure``: Boolean, Whether the cookie is to be sent over secure (HTTPS) connections only (optional,
+       defaults to boolean ``FALSE``)
 
-  - ``$cookieStr``: a cookie string as represented in the 'Set-Cookie'*HTTP* response header or 'Cookie'*HTTP* request header (required)
+   - By calling the fromString($cookieStr, [$refUri, [$encodeValue]]) static method, with a cookie string as
+     represented in the 'Set-Cookie '*HTTP* response header or 'Cookie'*HTTP* request header. In this case, the
+     cookie value must already be encoded. When the cookie string does not contain a 'domain' part, you must
+     provide a reference *URI* according to which the cookie's domain and path will be set.
 
-  - ``$refUri``: a reference *URI* according to which the cookie's domain and path will be set. (optional, defaults to parsing the value from the $cookieStr)
+     The ``fromString()`` method accepts the following parameters:
 
-  - ``$encodeValue``: If the value should be passed through urldecode. Also effects the cookie's behavior when being converted back to a cookie string. (optional, defaults to true)
+     - ``$cookieStr``: a cookie string as represented in the 'Set-Cookie'*HTTP* response header or 'Cookie'*HTTP*
+       request header (required)
+
+     - ``$refUri``: a reference *URI* according to which the cookie's domain and path will be set. (optional,
+       defaults to parsing the value from the $cookieStr)
+
+     - ``$encodeValue``: If the value should be passed through urldecode. Also effects the cookie's behavior when
+       being converted back to a cookie string. (optional, defaults to true)
 
 
 
@@ -75,11 +95,15 @@ Instantiating a Cookie object can be done in two ways:
 
    .. note::
 
-      When instantiating a cookie object using the ``Zend_Http_Cookie``::fromString() method, the cookie value is expected to be *URL* encoded, as cookie strings should be. However, when using the constructor, the cookie value string is expected to be the real, decoded value.
+      When instantiating a cookie object using the ``Zend_Http_Cookie``::fromString() method, the cookie value is
+      expected to be *URL* encoded, as cookie strings should be. However, when using the constructor, the cookie
+      value string is expected to be the real, decoded value.
 
 
 
-A cookie object can be transferred back into a string, using the \__toString() magic method. This method will produce a *HTTP* request "Cookie" header string, showing the cookie's name and value, and terminated by a semicolon (';'). The value will be URL encoded, as expected in a Cookie header:
+A cookie object can be transferred back into a string, using the \__toString() magic method. This method will
+produce a *HTTP* request "Cookie" header string, showing the cookie's name and value, and terminated by a semicolon
+(';'). The value will be URL encoded, as expected in a Cookie header:
 
 
 
@@ -113,27 +137,37 @@ A cookie object can be transferred back into a string, using the \__toString() m
 Zend_Http_Cookie getter methods
 -------------------------------
 
-Once a ``Zend_Http_Cookie`` object is instantiated, it provides several getter methods to get the different properties of the *HTTP* cookie:
+Once a ``Zend_Http_Cookie`` object is instantiated, it provides several getter methods to get the different
+properties of the *HTTP* cookie:
 
-- ``getName()``: Get the name of the cookie
 
-- ``getValue()``: Get the real, decoded value of the cookie
 
-- ``getDomain()``: Get the cookie's domain
+   - ``getName()``: Get the name of the cookie
 
-- ``getPath()``: Get the cookie's path, which defaults to '/'
+   - ``getValue()``: Get the real, decoded value of the cookie
 
-- ``getExpiryTime()``: Get the cookie's expiration time, as UNIX time stamp. If the cookie has no expiration time set, will return ``NULL``.
+   - ``getDomain()``: Get the cookie's domain
+
+   - ``getPath()``: Get the cookie's path, which defaults to '/'
+
+   - ``getExpiryTime()``: Get the cookie's expiration time, as UNIX time stamp. If the cookie has no expiration
+     time set, will return ``NULL``.
 
 
 
 Additionally, several boolean tester methods are provided:
 
-- ``isSecure()``: Check whether the cookie is set to be sent over secure connections only. Generally speaking, if ``TRUE`` the cookie should only be sent over *HTTPS*.
 
-- ``isExpired(int $time = null)``: Check whether the cookie is expired or not. If the cookie has no expiration time, will always return ``TRUE``. If $time is provided, it will override the current time stamp as the time to check the cookie against.
 
-- ``isSessionCookie()``: Check whether the cookie is a "session cookie" - that is a cookie with no expiration time, which is meant to expire when the session ends.
+   - ``isSecure()``: Check whether the cookie is set to be sent over secure connections only. Generally speaking,
+     if ``TRUE`` the cookie should only be sent over *HTTPS*.
+
+   - ``isExpired(int $time = null)``: Check whether the cookie is expired or not. If the cookie has no expiration
+     time, will always return ``TRUE``. If $time is provided, it will override the current time stamp as the time
+     to check the cookie against.
+
+   - ``isSessionCookie()``: Check whether the cookie is a "session cookie" - that is a cookie with no expiration
+     time, which is meant to expire when the session ends.
 
 
 
@@ -180,11 +214,20 @@ Additionally, several boolean tester methods are provided:
 Zend_Http_Cookie: Matching against a scenario
 ---------------------------------------------
 
-The only real logic contained in a ``Zend_Http_Cookie`` object, is in the match() method. This method is used to test a cookie against a given *HTTP* request scenario, in order to tell whether the cookie should be sent in this request or not. The method has the following syntax and parameters: ``Zend_Http_Cookie->match(mixed $uri, [boolean $matchSessionCookies, [int $now]]);`` - ``$uri``: A ``Zend_Uri_Http`` object with a domain name and path to be checked. Optionally, a string representing a valid *HTTP* *URL* can be passed instead. The cookie will match if the *URL*'s scheme (HTTP or *HTTPS*), domain and path all match.
+The only real logic contained in a ``Zend_Http_Cookie`` object, is in the match() method. This method is used to
+test a cookie against a given *HTTP* request scenario, in order to tell whether the cookie should be sent in this
+request or not. The method has the following syntax and parameters: ``Zend_Http_Cookie->match(mixed $uri, [boolean
+$matchSessionCookies, [int $now]]);``
 
-- ``$matchSessionCookies``: Whether session cookies should be matched or not. Defaults to ``TRUE``. If set to ``FALSE``, cookies with no expiration time will never match.
+   - ``$uri``: A ``Zend_Uri_Http`` object with a domain name and path to be checked. Optionally, a string
+     representing a valid *HTTP* *URL* can be passed instead. The cookie will match if the *URL*'s scheme (HTTP or
+     *HTTPS*), domain and path all match.
 
-- ``$now``: Time (represented as UNIX time stamp) to check a cookie against for expiration. If not specified, will default to the current time.
+   - ``$matchSessionCookies``: Whether session cookies should be matched or not. Defaults to ``TRUE``. If set to
+     ``FALSE``, cookies with no expiration time will never match.
+
+   - ``$now``: Time (represented as UNIX time stamp) to check a cookie against for expiration. If not specified,
+     will default to the current time.
 
 
 
@@ -249,20 +292,39 @@ The only real logic contained in a ``Zend_Http_Cookie`` object, is in the match(
 The Zend_Http_CookieJar Class: Instantiation
 --------------------------------------------
 
-In most cases, there is no need to directly instantiate a ``Zend_Http_CookieJar`` object. If you want to attach a new cookie jar to your ``Zend_Http_Client`` object, just call the Zend_Http_Client->setCookieJar() method, and a new, empty cookie jar will be attached to your client. You could later get this cookie jar using Zend_Http_Client->getCookieJar().
+In most cases, there is no need to directly instantiate a ``Zend_Http_CookieJar`` object. If you want to attach a
+new cookie jar to your ``Zend_Http_Client`` object, just call the Zend_Http_Client->setCookieJar() method, and a
+new, empty cookie jar will be attached to your client. You could later get this cookie jar using
+Zend_Http_Client->getCookieJar().
 
-If you still wish to manually instantiate a CookieJar object, you can do so by calling "new Zend_Http_CookieJar()" directly - the constructor method does not take any parameters. Another way to instantiate a CookieJar object is to use the static Zend_Http_CookieJar::fromResponse() method. This method takes two parameters: a ``Zend_Http_Response`` object, and a reference *URI*, as either a string or a ``Zend_Uri_Http`` object. This method will return a new ``Zend_Http_CookieJar`` object, already containing the cookies set by the passed *HTTP* response. The reference *URI* will be used to set the cookie's domain and path, if they are not defined in the Set-Cookie headers.
+If you still wish to manually instantiate a CookieJar object, you can do so by calling "new Zend_Http_CookieJar()"
+directly - the constructor method does not take any parameters. Another way to instantiate a CookieJar object is to
+use the static Zend_Http_CookieJar::fromResponse() method. This method takes two parameters: a
+``Zend_Http_Response`` object, and a reference *URI*, as either a string or a ``Zend_Uri_Http`` object. This method
+will return a new ``Zend_Http_CookieJar`` object, already containing the cookies set by the passed *HTTP* response.
+The reference *URI* will be used to set the cookie's domain and path, if they are not defined in the Set-Cookie
+headers.
 
 .. _zend.http.cookies.cookiejar.adding_cookies:
 
 Adding Cookies to a Zend_Http_CookieJar object
 ----------------------------------------------
 
-Usually, the ``Zend_Http_Client`` object you attached your CookieJar object to will automatically add cookies set by *HTTP* responses to your jar. if you wish to manually add cookies to your jar, this can be done by using two methods:
+Usually, the ``Zend_Http_Client`` object you attached your CookieJar object to will automatically add cookies set
+by *HTTP* responses to your jar. if you wish to manually add cookies to your jar, this can be done by using two
+methods:
 
-- ``Zend_Http_CookieJar->addCookie($cookie[, $ref_uri])``: Add a single cookie to the jar. $cookie can be either a ``Zend_Http_Cookie`` object or a string, which will be converted automatically into a Cookie object. If a string is provided, you should also provide $ref_uri - which is a reference *URI* either as a string or ``Zend_Uri_Http`` object, to use as the cookie's default domain and path.
 
-- ``Zend_Http_CookieJar->addCookiesFromResponse($response, $ref_uri)``: Add all cookies set in a single *HTTP* response to the jar. $response is expected to be a ``Zend_Http_Response`` object with Set-Cookie headers. $ref_uri is the request *URI*, either as a string or a ``Zend_Uri_Http`` object, according to which the cookies' default domain and path will be set.
+
+   - ``Zend_Http_CookieJar->addCookie($cookie[, $ref_uri])``: Add a single cookie to the jar. $cookie can be either
+     a ``Zend_Http_Cookie`` object or a string, which will be converted automatically into a Cookie object. If a
+     string is provided, you should also provide $ref_uri - which is a reference *URI* either as a string or
+     ``Zend_Uri_Http`` object, to use as the cookie's default domain and path.
+
+   - ``Zend_Http_CookieJar->addCookiesFromResponse($response, $ref_uri)``: Add all cookies set in a single *HTTP*
+     response to the jar. $response is expected to be a ``Zend_Http_Response`` object with Set-Cookie headers.
+     $ref_uri is the request *URI*, either as a string or a ``Zend_Uri_Http`` object, according to which the
+     cookies' default domain and path will be set.
 
 
 
@@ -271,35 +333,60 @@ Usually, the ``Zend_Http_Client`` object you attached your CookieJar object to w
 Retrieving Cookies From a Zend_Http_CookieJar object
 ----------------------------------------------------
 
-Just like with adding cookies, there is usually no need to manually fetch cookies from a CookieJar object. Your ``Zend_Http_Client`` object will automatically fetch the cookies required for an *HTTP* request for you. However, you can still use 3 provided methods to fetch cookies from the jar object: ``getCookie()``, ``getAllCookies()``, and ``getMatchingCookies()``. Additionnaly, iterating over the CookieJar will let you retrieve all the ``Zend_Http_Cookie`` objects from it.
+Just like with adding cookies, there is usually no need to manually fetch cookies from a CookieJar object. Your
+``Zend_Http_Client`` object will automatically fetch the cookies required for an *HTTP* request for you. However,
+you can still use 3 provided methods to fetch cookies from the jar object: ``getCookie()``, ``getAllCookies()``,
+and ``getMatchingCookies()``. Additionnaly, iterating over the CookieJar will let you retrieve all the
+``Zend_Http_Cookie`` objects from it.
 
-It is important to note that each one of these methods takes a special parameter, which sets the return type of the method. This parameter can have 3 values:
+It is important to note that each one of these methods takes a special parameter, which sets the return type of the
+method. This parameter can have 3 values:
 
-- ``Zend_Http_CookieJar::COOKIE_OBJECT``: Return a ``Zend_Http_Cookie`` object. If the method returns more than one cookie, an array of objects will be returned.
 
-- ``Zend_Http_CookieJar::COOKIE_STRING_ARRAY``: Return cookies as strings, in a "foo=bar" format, suitable for sending in a *HTTP* request "Cookie" header. If more than one cookie is returned, an array of strings is returned.
 
-- ``Zend_Http_CookieJar::COOKIE_STRING_CONCAT``: Similar to COOKIE_STRING_ARRAY, but if more than one cookie is returned, this method will concatenate all cookies into a single, long string separated by semicolons (;), and return it. This is especially useful if you want to directly send all matching cookies in a single *HTTP* request "Cookie" header.
+   - ``Zend_Http_CookieJar::COOKIE_OBJECT``: Return a ``Zend_Http_Cookie`` object. If the method returns more than
+     one cookie, an array of objects will be returned.
+
+   - ``Zend_Http_CookieJar::COOKIE_STRING_ARRAY``: Return cookies as strings, in a "foo=bar" format, suitable for
+     sending in a *HTTP* request "Cookie" header. If more than one cookie is returned, an array of strings is
+     returned.
+
+   - ``Zend_Http_CookieJar::COOKIE_STRING_CONCAT``: Similar to COOKIE_STRING_ARRAY, but if more than one cookie is
+     returned, this method will concatenate all cookies into a single, long string separated by semicolons (;), and
+     return it. This is especially useful if you want to directly send all matching cookies in a single *HTTP*
+     request "Cookie" header.
 
 
 
 The structure of the different cookie-fetching methods is described below:
 
-- ``Zend_Http_CookieJar->getCookie($uri, $cookie_name[, $ret_as])``: Get a single cookie from the jar, according to its *URI* (domain and path) and name. $uri is either a string or a ``Zend_Uri_Http`` object representing the *URI*. $cookie_name is a string identifying the cookie name. $ret_as specifies the return type as described above. $ret_type is optional, and defaults to COOKIE_OBJECT.
 
-- ``Zend_Http_CookieJar->getAllCookies($ret_as)``: Get all cookies from the jar. $ret_as specifies the return type as described above. If not specified, $ret_type defaults to COOKIE_OBJECT.
 
-- ``Zend_Http_CookieJar->getMatchingCookies($uri[, $matchSessionCookies[, $ret_as[, $now]]])``: Get all cookies from the jar that match a specified scenario, that is a *URI* and expiration time.
+   - ``Zend_Http_CookieJar->getCookie($uri, $cookie_name[, $ret_as])``: Get a single cookie from the jar, according
+     to its *URI* (domain and path) and name. $uri is either a string or a ``Zend_Uri_Http`` object representing
+     the *URI*. $cookie_name is a string identifying the cookie name. $ret_as specifies the return type as
+     described above. $ret_type is optional, and defaults to COOKIE_OBJECT.
 
-  - ``$uri`` is either a ``Zend_Uri_Http`` object or a string specifying the connection type (secure or non-secure), domain and path to match against.
+   - ``Zend_Http_CookieJar->getAllCookies($ret_as)``: Get all cookies from the jar. $ret_as specifies the return
+     type as described above. If not specified, $ret_type defaults to COOKIE_OBJECT.
 
-  - ``$matchSessionCookies`` is a boolean telling whether to match session cookies or not. Session cookies are cookies that have no specified expiration time. Defaults to ``TRUE``.
+   - ``Zend_Http_CookieJar->getMatchingCookies($uri[, $matchSessionCookies[, $ret_as[, $now]]])``: Get all cookies
+     from the jar that match a specified scenario, that is a *URI* and expiration time.
 
-  - ``$ret_as`` specifies the return type as described above. If not specified, defaults to COOKIE_OBJECT.
 
-  - ``$now`` is an integer representing the UNIX time stamp to consider as "now" - that is any cookies who are set to expire before this time will not be matched. If not specified, defaults to the current time.
 
-   You can read more about cookie matching here: :ref:`this section <zend.http.cookies.cookie.matching>`.
+        - ``$uri`` is either a ``Zend_Uri_Http`` object or a string specifying the connection type (secure or
+          non-secure), domain and path to match against.
+
+        - ``$matchSessionCookies`` is a boolean telling whether to match session cookies or not. Session cookies
+          are cookies that have no specified expiration time. Defaults to ``TRUE``.
+
+        - ``$ret_as`` specifies the return type as described above. If not specified, defaults to COOKIE_OBJECT.
+
+        - ``$now`` is an integer representing the UNIX time stamp to consider as "now" - that is any cookies who
+          are set to expire before this time will not be matched. If not specified, defaults to the current time.
+
+     You can read more about cookie matching here: :ref:`this section <zend.http.cookies.cookie.matching>`.
 
 
 

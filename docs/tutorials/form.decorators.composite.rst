@@ -3,7 +3,8 @@
 Creating and Rendering Composite Elements
 =========================================
 
-In :ref:`the last section <learning.form.decorators.individual>`, we had an example showing a "date of birth element":
+In :ref:`the last section <learning.form.decorators.individual>`, we had an example showing a "date of birth
+element":
 
 .. code-block:: php
    :linenos:
@@ -35,17 +36,23 @@ The questions about how the element would work include:
 
 - Regardless, how would you then allow for discrete form inputs for the three segments (day, month, year)?
 
-The first two questions center around the form element itself: how would ``setValue()`` and ``getValue()`` work? There's actually another question implied by the question about the decorator: how would you retrieve the discrete date segments from the element and/or set them?
+The first two questions center around the form element itself: how would ``setValue()`` and ``getValue()`` work?
+There's actually another question implied by the question about the decorator: how would you retrieve the discrete
+date segments from the element and/or set them?
 
-The solution is to override the ``setValue()`` method of your element to provide some custom logic. In this particular case, our element should have three discrete behaviors:
+The solution is to override the ``setValue()`` method of your element to provide some custom logic. In this
+particular case, our element should have three discrete behaviors:
 
 - If an integer timestamp is provided, it should be used to determine and store the day, month, and year.
 
-- If a textual string is provided, it should be cast to a timestamp, and then that value used to determine and store the day, month, and year.
+- If a textual string is provided, it should be cast to a timestamp, and then that value used to determine and
+  store the day, month, and year.
 
 - If an array containing keys for date, month, and year is provided, those values should be stored.
 
-Internally, the day, month, and year will be stored discretely. When the value of the element is retrieved, it will be done so in a normalized string format. We'll override ``getValue()`` as well to assemble the discrete date segments into a final string.
+Internally, the day, month, and year will be stored discretely. When the value of the element is retrieved, it will
+be done so in a normalized string format. We'll override ``getValue()`` as well to assemble the discrete date
+segments into a final string.
 
 Here's what the class would look like:
 
@@ -129,16 +136,23 @@ Here's what the class would look like:
        }
    }
 
-This class gives some nice flexibility -- we can set default values from our database, and be certain that the value will be stored and represented correctly. Additionally, we can allow for the value to be set from an array passed via form input. Finally, we have discrete accessors for each date segment, which we can now use in a decorator to create a composite element.
+This class gives some nice flexibility -- we can set default values from our database, and be certain that the
+value will be stored and represented correctly. Additionally, we can allow for the value to be set from an array
+passed via form input. Finally, we have discrete accessors for each date segment, which we can now use in a
+decorator to create a composite element.
 
 .. _learning.form.decorators.composite.decorator:
 
 The Decorator
 -------------
 
-Revisiting the example from the last section, let's assume that we want users to input each of the year, month, and day separately. *PHP* fortunately allows us to use array notation when creating elements, so it's still possible to capture these three entities into a single value -- and we've now created a ``Zend_Form`` element that can handle such an array value.
+Revisiting the example from the last section, let's assume that we want users to input each of the year, month, and
+day separately. *PHP* fortunately allows us to use array notation when creating elements, so it's still possible to
+capture these three entities into a single value -- and we've now created a ``Zend_Form`` element that can handle
+such an array value.
 
-The decorator is relatively simple: it will grab the day, month, and year from the element, and pass each to a discrete view helper to render individual form inputs; these will then be aggregated to form the final markup.
+The decorator is relatively simple: it will grab the day, month, and year from the element, and pass each to a
+discrete view helper to render individual form inputs; these will then be aggregated to form the final markup.
 
 .. code-block:: php
    :linenos:
@@ -187,7 +201,9 @@ The decorator is relatively simple: it will grab the day, month, and year from t
        }
    }
 
-We now have to do a minor tweak to our form element, and tell it that we want to use the above decorator as a default. That takes two steps. First, we need to inform the element of the decorator path. We can do that in the constructor:
+We now have to do a minor tweak to our form element, and tell it that we want to use the above decorator as a
+default. That takes two steps. First, we need to inform the element of the decorator path. We can do that in the
+constructor:
 
 .. code-block:: php
    :linenos:
@@ -209,7 +225,10 @@ We now have to do a minor tweak to our form element, and tell it that we want to
        // ...
    }
 
-Note that this is being done in the constructor and not in ``init()``. This is for two reasons. First, it allows extending the element later to add logic in ``init`` without needing to worry about calling ``parent::init()``. Second, it allows passing additional plugin paths via configuration or within an ``init`` method that will then allow overriding the default ``Date`` decorator with my own replacement.
+Note that this is being done in the constructor and not in ``init()``. This is for two reasons. First, it allows
+extending the element later to add logic in ``init`` without needing to worry about calling ``parent::init()``.
+Second, it allows passing additional plugin paths via configuration or within an ``init`` method that will then
+allow overriding the default ``Date`` decorator with my own replacement.
 
 Next, we need to override the ``loadDefaultDecorators()`` method to use our new ``Date`` decorator:
 
@@ -258,7 +277,8 @@ What does the final output look like? Let's consider the following element:
    $d->setValue('20 April 2009');
    $d->setValue(array('year' => '2009', 'month' => '04', 'day' => '20'));
 
-If you then echo this element, you get the following markup (with some slight whitespace modifications for readability):
+If you then echo this element, you get the following markup (with some slight whitespace modifications for
+readability):
 
 .. code-block:: html
    :linenos:
@@ -280,7 +300,9 @@ If you then echo this element, you get the following markup (with some slight wh
 Conclusion
 ----------
 
-We now have an element that can render multiple related form input fields, and then handle the aggregated fields as a single entity -- the ``dateOfBirth`` element will be passed as an array to the element, and the element will then, as we noted earlier, create the appropriate date segments and return a value we can use for most backends.
+We now have an element that can render multiple related form input fields, and then handle the aggregated fields as
+a single entity -- the ``dateOfBirth`` element will be passed as an array to the element, and the element will
+then, as we noted earlier, create the appropriate date segments and return a value we can use for most backends.
 
 In the end, you get a uniform element *API* you can use to describe an element representing a composite value.
 

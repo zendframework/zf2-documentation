@@ -8,7 +8,9 @@ Usage
 Paginating data collections
 ---------------------------
 
-In order to paginate items into pages, ``Zend_Paginator`` must have a generic way of accessing that data. For that reason, all data access takes place through data source adapters. Several adapters ship with Zend Framework by default:
+In order to paginate items into pages, ``Zend_Paginator`` must have a generic way of accessing that data. For that
+reason, all data access takes place through data source adapters. Several adapters ship with Zend Framework by
+default:
 
 .. _zend.paginator.usage.paginating.adapters:
 
@@ -30,9 +32,12 @@ In order to paginate items into pages, ``Zend_Paginator`` must have a generic wa
 
 .. note::
 
-   Instead of selecting every matching row of a given query, the DbSelect and DbTableSelect adapters retrieve only the smallest amount of data necessary for displaying the current page.
+   Instead of selecting every matching row of a given query, the DbSelect and DbTableSelect adapters retrieve only
+   the smallest amount of data necessary for displaying the current page.
 
-   Because of this, a second query is dynamically generated to determine the total number of matching rows. However, it is possible to directly supply a count or count query yourself. See the ``setRowCount()`` method in the DbSelect adapter for more information.
+   Because of this, a second query is dynamically generated to determine the total number of matching rows.
+   However, it is possible to directly supply a count or count query yourself. See the ``setRowCount()`` method in
+   the DbSelect adapter for more information.
 
 To create an instance of ``Zend_Paginator``, you must supply an adapter to the constructor:
 
@@ -41,7 +46,8 @@ To create an instance of ``Zend_Paginator``, you must supply an adapter to the c
 
    $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($array));
 
-For convenience, you may take advantage of the static ``factory()`` method for the adapters packaged with Zend Framework:
+For convenience, you may take advantage of the static ``factory()`` method for the adapters packaged with Zend
+Framework:
 
 .. code-block:: php
    :linenos:
@@ -50,16 +56,19 @@ For convenience, you may take advantage of the static ``factory()`` method for t
 
 .. note::
 
-   In the case of the ``Null`` adapter, in lieu of a data collection you must supply an item count to its constructor.
+   In the case of the ``Null`` adapter, in lieu of a data collection you must supply an item count to its
+   constructor.
 
-Although the instance is technically usable in this state, in your controller action you'll need to tell the paginator what page number the user requested. This allows him to advance through the paginated data.
+Although the instance is technically usable in this state, in your controller action you'll need to tell the
+paginator what page number the user requested. This allows him to advance through the paginated data.
 
 .. code-block:: php
    :linenos:
 
    $paginator->setCurrentPageNumber($page);
 
-The simplest way to keep track of this value is through a *URL*. Although we recommend using a ``Zend_Controller_Router_Interface``-compatible router to handle this, it is not a requirement.
+The simplest way to keep track of this value is through a *URL*. Although we recommend using a
+``Zend_Controller_Router_Interface``-compatible router to handle this, it is not a requirement.
 
 The following is an example route you might use in an *INI* configuration file:
 
@@ -82,7 +91,8 @@ With the above route (and using Zend Framework *MVC* components), you might set 
 
 There are other options available; see :ref:`Configuration <zend.paginator.configuration>` for more on them.
 
-Finally, you'll need to assign the paginator instance to your view. If you're using ``Zend_View`` with the ViewRenderer action helper, the following will work:
+Finally, you'll need to assign the paginator instance to your view. If you're using ``Zend_View`` with the
+ViewRenderer action helper, the following will work:
 
 .. code-block:: php
    :linenos:
@@ -94,13 +104,23 @@ Finally, you'll need to assign the paginator instance to your view. If you're us
 The DbSelect and DbTableSelect adapter
 --------------------------------------
 
-The usage of most adapters is pretty straight-forward. However, the database adapters require a more detailed explanation regarding the retrieval and count of the data from the database.
+The usage of most adapters is pretty straight-forward. However, the database adapters require a more detailed
+explanation regarding the retrieval and count of the data from the database.
 
-To use the DbSelect and DbTableSelect adapters you don't have to retrieve the data upfront from the database. Both adapters do the retrieval for you, aswell as the counting of the total pages. If additional work has to be done on the database results the adapter ``getItems()`` method has to be extended in your application.
+To use the DbSelect and DbTableSelect adapters you don't have to retrieve the data upfront from the database. Both
+adapters do the retrieval for you, aswell as the counting of the total pages. If additional work has to be done on
+the database results the adapter ``getItems()`` method has to be extended in your application.
 
-Additionally these adapters do **not** fetch all records from the database in order to count them. Instead, the adapters manipulates the original query to produce the corresponding COUNT query. Paginator then executes that COUNT query to get the number of rows. This does require an extra round-trip to the database, but this is many times faster than fetching an entire result set and using ``count()``. Especially with large collections of data.
+Additionally these adapters do **not** fetch all records from the database in order to count them. Instead, the
+adapters manipulates the original query to produce the corresponding COUNT query. Paginator then executes that
+COUNT query to get the number of rows. This does require an extra round-trip to the database, but this is many
+times faster than fetching an entire result set and using ``count()``. Especially with large collections of data.
 
-The database adapters will try and build the most efficient query that will execute on pretty much all modern databases. However, depending on your database or even your own schema setup, there might be more efficient ways to get a rowcount. For this scenario the database adapters allow you to set a custom COUNT query. For example, if you keep track of the count of blog posts in a separate table, you could achieve a faster count query with the following setup:
+The database adapters will try and build the most efficient query that will execute on pretty much all modern
+databases. However, depending on your database or even your own schema setup, there might be more efficient ways to
+get a rowcount. For this scenario the database adapters allow you to set a custom COUNT query. For example, if you
+keep track of the count of blog posts in a separate table, you could achieve a faster count query with the
+following setup:
 
 .. code-block:: php
    :linenos:
@@ -118,16 +138,20 @@ The database adapters will try and build the most efficient query that will exec
 
    $paginator = new Zend_Paginator($adapter);
 
-This approach will probably not give you a huge performance gain on small collections and/or simple select queries. However, with complex queries and large collections, a similar approach could give you a significant performance boost.
+This approach will probably not give you a huge performance gain on small collections and/or simple select queries.
+However, with complex queries and large collections, a similar approach could give you a significant performance
+boost.
 
 .. _zend.paginator.rendering:
 
 Rendering pages with view scripts
 ---------------------------------
 
-The view script is used to render the page items (if you're using ``Zend_Paginator`` to do so) and display the pagination control.
+The view script is used to render the page items (if you're using ``Zend_Paginator`` to do so) and display the
+pagination control.
 
-Because ``Zend_Paginator`` implements the *SPL* interface `IteratorAggregate`_, looping over your items and displaying them is simple.
+Because ``Zend_Paginator`` implements the *SPL* interface `IteratorAggregate`_, looping over your items and
+displaying them is simple.
 
 .. code-block:: php
    :linenos:
@@ -149,14 +173,20 @@ Because ``Zend_Paginator`` implements the *SPL* interface `IteratorAggregate`_, 
    </body>
    </html>
 
-Notice the view helper call near the end. PaginationControl accepts up to four parameters: the paginator instance, a scrolling style, a view partial, and an array of additional parameters.
+Notice the view helper call near the end. PaginationControl accepts up to four parameters: the paginator instance,
+a scrolling style, a view partial, and an array of additional parameters.
 
-The second and third parameters are very important. Whereas the view partial is used to determine how the pagination control should **look**, the scrolling style is used to control how it should **behave**. Say the view partial is in the style of a search pagination control, like the one below:
+The second and third parameters are very important. Whereas the view partial is used to determine how the
+pagination control should **look**, the scrolling style is used to control how it should **behave**. Say the view
+partial is in the style of a search pagination control, like the one below:
 
 .. image:: ../images/zend.paginator.usage.rendering.control.png
    :align: center
 
-What happens when the user clicks the "next" link a few times? Well, any number of things could happen. The current page number could stay in the middle as you click through (as it does on Yahoo!), or it could advance to the end of the page range and then appear again on the left when the user clicks "next" one more time. The page numbers might even expand and contract as the user advances (or "scrolls") through them (as they do on Google).
+What happens when the user clicks the "next" link a few times? Well, any number of things could happen. The current
+page number could stay in the middle as you click through (as it does on Yahoo!), or it could advance to the end of
+the page range and then appear again on the left when the user clicks "next" one more time. The page numbers might
+even expand and contract as the user advances (or "scrolls") through them (as they do on Google).
 
 There are four scrolling styles packaged with Zend Framework:
 
@@ -176,9 +206,12 @@ There are four scrolling styles packaged with Zend Framework:
    |Sliding        |A Yahoo!-like scrolling style that positions the current page number in the center of the page range, or as close as possible. This is the default style.            |
    +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-The fourth and final parameter is reserved for an optional associative array of additional variables that you want available in your view partial (available via ``$this``). For instance, these values could include extra *URL* parameters for pagination links.
+The fourth and final parameter is reserved for an optional associative array of additional variables that you want
+available in your view partial (available via ``$this``). For instance, these values could include extra *URL*
+parameters for pagination links.
 
-By setting the default view partial, default scrolling style, and view instance, you can eliminate the calls to PaginationControl completely:
+By setting the default view partial, default scrolling style, and view instance, you can eliminate the calls to
+PaginationControl completely:
 
 .. code-block:: php
    :linenos:
@@ -189,7 +222,8 @@ By setting the default view partial, default scrolling style, and view instance,
    );
    $paginator->setView($view);
 
-When all of these values are set, you can render the pagination control inside your view script with a simple echo statement:
+When all of these values are set, you can render the pagination control inside your view script with a simple echo
+statement:
 
 .. code-block:: php
    :linenos:
@@ -198,7 +232,8 @@ When all of these values are set, you can render the pagination control inside y
 
 .. note::
 
-   Of course, it's possible to use ``Zend_Paginator`` with other template engines. For example, with Smarty you might do the following:
+   Of course, it's possible to use ``Zend_Paginator`` with other template engines. For example, with Smarty you
+   might do the following:
 
    .. code-block:: php
       :linenos:

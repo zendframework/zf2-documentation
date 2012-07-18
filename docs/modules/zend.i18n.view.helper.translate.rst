@@ -3,15 +3,19 @@
 Translate Helper
 ================
 
-The ``Translate`` view helper can be used to translate content. It acts as a wrapper for the ``Zend\I18n\Translator\Translator`` class.
+The ``Translate`` view helper can be used to translate content. It acts as a wrapper for the
+``Zend\I18n\Translator\Translator`` class.
 
 .. _zend.i18n.view.helper.translate.setup:
 
 .. rubric:: Translate Setup
 
-Before using the ``Translate`` view helper, you must have first created a ``Translator`` object and have attached it to the view helper. If you use the ``Zend\I18n\Translator\TranslatorServiceFactory`` to create your ``Translator`` object, this will be done automatically for you.
+Before using the ``Translate`` view helper, you must have first created a ``Translator`` object and have attached
+it to the view helper. If you use the ``Zend\I18n\Translator\TranslatorServiceFactory`` to create your
+``Translator`` object, this will be done automatically for you.
 
-If you are not using the ``TranslatorServiceFactory``, then you will need to manually attach your ``Translator`` object, such as:
+If you are not using the ``TranslatorServiceFactory``, then you will need to manually attach your ``Translator``
+object, such as:
 
 .. code-block:: php
    :linenos:
@@ -42,6 +46,7 @@ If you are not using the ``TranslatorServiceFactory``, then you will need to man
 
 - ``$textDomain``: (Optional) The text domain where this translation lives. Defaults to the value "default".
 
-- ``$locale``: (Optional) Locale in which the message would be translated (locale name, e.g. en_US). If unset, it will use the default locale (``Locale::getDefault()``)
+- ``$locale``: (Optional) Locale in which the message would be translated (locale name, e.g. en_US). If unset, it
+  will use the default locale (``Locale::getDefault()``)
 
 

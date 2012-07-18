@@ -3,11 +3,17 @@
 Putting it all Together
 =======================
 
-You have seen how to create a Paginator object, how to render the items on the current page, and how to render a navigation element to browse through your pages. In this section you will see how Paginator fits in with the rest of your MVC application.
+You have seen how to create a Paginator object, how to render the items on the current page, and how to render a
+navigation element to browse through your pages. In this section you will see how Paginator fits in with the rest
+of your MVC application.
 
-In the following examples we will ignore the best practice implementation of using a Service Layer to keep the example simple and easier to understand. Once you get familiar with using Service Layers, it should be easy to see how Paginator can fit in with the best practice approach.
+In the following examples we will ignore the best practice implementation of using a Service Layer to keep the
+example simple and easier to understand. Once you get familiar with using Service Layers, it should be easy to see
+how Paginator can fit in with the best practice approach.
 
-Lets start with the controller. The sample application is simple, and we'll just put everything in the IndexController and the IndexAction. Again, this is for demonstration purposes only. A real application should not use controllers in this manner.
+Lets start with the controller. The sample application is simple, and we'll just put everything in the
+IndexController and the IndexAction. Again, this is for demonstration purposes only. A real application should not
+use controllers in this manner.
 
 .. code-block:: php
    :linenos:
@@ -37,7 +43,8 @@ Lets start with the controller. The sample application is simple, and we'll just
        }
    }
 
-The following view script is the index.phtml view script for the IndexController's indexAction. The view script can be kept simple. We're assuming the use of the default ScrollingStyle.
+The following view script is the index.phtml view script for the IndexController's indexAction. The view script can
+be kept simple. We're assuming the use of the default ScrollingStyle.
 
 .. code-block:: php
    :linenos:
@@ -52,6 +59,8 @@ The following view script is the index.phtml view script for the IndexController
    </ul>
    <?php echo $this->paginator; ?>
 
-Now navigate to your project's index and see Paginator in action. What we have discussed in this tutorial is just the tip of the iceberg. The reference manual and *API* documentation can tell you more about what you can do with ``Zend_Paginator``.
+Now navigate to your project's index and see Paginator in action. What we have discussed in this tutorial is just
+the tip of the iceberg. The reference manual and *API* documentation can tell you more about what you can do with
+``Zend_Paginator``.
 
 

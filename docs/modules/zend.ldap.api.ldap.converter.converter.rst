@@ -3,7 +3,8 @@
 Zend\\Ldap\\Converter\\Converter
 ================================
 
-``Zend\Ldap\Converter\Converter`` is a helper class providing only static methods to manipulate arrays suitable to the data format required by the *LDAP* server. *PHP* data types are converted the following way:
+``Zend\Ldap\Converter\Converter`` is a helper class providing only static methods to manipulate arrays suitable to
+the data format required by the *LDAP* server. *PHP* data types are converted the following way:
 
 **string**
    No conversion will be done.
@@ -18,7 +19,9 @@ Zend\\Ldap\\Converter\\Converter
    The value will be converted to a string by using ``serialize()``.
 
 **Date/Time**
-   The value will be converted to a string with the following ``date()`` format *YmdHisO*, UTC timezone (+0000) will be replaced with a *Z*. For example *01-30-2011 01:17:32 PM GMT-6* will be *20113001131732-0600* and *30-01-2012 15:17:32 UTC* will be *20120130151732Z*
+   The value will be converted to a string with the following ``date()`` format *YmdHisO*, UTC timezone (+0000)
+   will be replaced with a *Z*. For example *01-30-2011 01:17:32 PM GMT-6* will be *20113001131732-0600* and
+   *30-01-2012 15:17:32 UTC* will be *20120130151732Z*
 
 **resource**
    If a *stream* resource is given, the data will be fetched by calling ``stream_get_contents()``.

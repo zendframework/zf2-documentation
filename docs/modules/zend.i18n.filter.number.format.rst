@@ -3,7 +3,8 @@
 NumberFormat Filter
 ===================
 
-The ``NumberFormat`` filter can be used to return locale-specific number and percentage strings. It acts as a wrapper for the ``NumberFormatter`` class within the Internationalization extension (Intl).
+The ``NumberFormat`` filter can be used to return locale-specific number and percentage strings. It acts as a
+wrapper for the ``NumberFormatter`` class within the Internationalization extension (Intl).
 
 .. _zend.i18n.filter.number-format.options:
 
@@ -13,15 +14,18 @@ The following options are supported for ``NumberFormat``:
 
 ``NumberFormat([ string $locale [, int $style [, int $type ]]])``
 
-- ``$locale``: (Optional) Locale in which the number would be formatted (locale name, e.g. en_US). If unset, it will use the default locale (``Locale::getDefault()``)
+- ``$locale``: (Optional) Locale in which the number would be formatted (locale name, e.g. en_US). If unset, it
+  will use the default locale (``Locale::getDefault()``)
 
   Methods for getting/setting the locale are also available: ``getLocale()`` and ``setLocale()``
 
-- ``$style``: (Optional) Style of the formatting, one of the `format style constants`_. If unset, it will use ``NumberFormatter::DEFAULT_STYLE`` as the default style.
+- ``$style``: (Optional) Style of the formatting, one of the `format style constants`_. If unset, it will use
+  ``NumberFormatter::DEFAULT_STYLE`` as the default style.
 
   Methods for getting/setting the format style are also available: ``getStyle()`` and ``setStyle()``
 
-- ``$type``: (Optional) The `formatting type`_ to use. If unset, it will use ``NumberFormatter::TYPE_DOUBLE`` as the default type.
+- ``$type``: (Optional) The `formatting type`_ to use. If unset, it will use ``NumberFormatter::TYPE_DOUBLE`` as
+  the default type.
 
   Methods for getting/setting the format type are also available: ``getType()`` and ``setType()``
 

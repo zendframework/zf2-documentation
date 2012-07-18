@@ -3,7 +3,8 @@
 Date
 ====
 
-``Zend\Validator\Date`` allows you to validate if a given value contains a date. This validator validates also localized input.
+``Zend\Validator\Date`` allows you to validate if a given value contains a date. This validator validates also
+localized input.
 
 .. _zend.validator.set.date.options:
 
@@ -21,7 +22,8 @@ The following options are supported for ``Zend\Validator\Date``:
 Default date validation
 -----------------------
 
-The easiest way to validate a date is by using the default date format. It is used when no locale and no format has been given.
+The easiest way to validate a date is by using the default date format. It is used when no locale and no format has
+been given.
 
 .. code-block:: php
    :linenos:
@@ -38,7 +40,8 @@ The default date format for ``Zend\Validator\Date`` is 'yyyy-MM-dd'.
 Localized date validation
 -------------------------
 
-``Zend\Validator\Date`` validates also dates which are given in a localized format. By using the ``locale`` option you can define the locale which the date format should use for validation.
+``Zend\Validator\Date`` validates also dates which are given in a localized format. By using the ``locale`` option
+you can define the locale which the date format should use for validation.
 
 .. code-block:: php
    :linenos:
@@ -48,14 +51,16 @@ Localized date validation
    $validator->isValid('10.Feb.2010'); // returns true
    $validator->isValid('10.May.2010'); // returns false
 
-The ``locale`` option sets the default date format. In the above example this is 'dd.MM.yyyy' which is defined as default date format for 'de'.
+The ``locale`` option sets the default date format. In the above example this is 'dd.MM.yyyy' which is defined as
+default date format for 'de'.
 
 .. _zend.validator.set.date.formats:
 
 Self defined date validation
 ----------------------------
 
-``Zend\Validator\Date`` supports also self defined date formats. When you want to validate such a date you can use the ``format`` option.
+``Zend\Validator\Date`` supports also self defined date formats. When you want to validate such a date you can use
+the ``format`` option.
 
 .. code-block:: php
    :linenos:

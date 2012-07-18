@@ -3,27 +3,40 @@
 Navigation Helpers
 ==================
 
-The navigation helpers are used for rendering navigational elements from :ref:`Zend_Navigation_Container <zend.navigation.containers>` instances.
+The navigation helpers are used for rendering navigational elements from :ref:`Zend_Navigation_Container
+<zend.navigation.containers>` instances.
 
 There are 5 built-in helpers:
 
-- :ref:`Breadcrumbs <zend.view.helpers.initial.navigation.breadcrumbs>`, used for rendering the path to the currently active page.
+- :ref:`Breadcrumbs <zend.view.helpers.initial.navigation.breadcrumbs>`, used for rendering the path to the
+  currently active page.
 
-- :ref:`Links <zend.view.helpers.initial.navigation.links>`, used for rendering navigational head links (e.g. ``<link rel="next" href="..." />``)
+- :ref:`Links <zend.view.helpers.initial.navigation.links>`, used for rendering navigational head links (e.g.
+  ``<link rel="next" href="..." />``)
 
 - :ref:`Menu <zend.view.helpers.initial.navigation.menu>`, used for rendering menus.
 
-- :ref:`Sitemap <zend.view.helpers.initial.navigation.sitemap>`, used for rendering sitemaps conforming to the `Sitemaps XML format`_.
+- :ref:`Sitemap <zend.view.helpers.initial.navigation.sitemap>`, used for rendering sitemaps conforming to the
+  `Sitemaps XML format`_.
 
-- :ref:`Navigation <zend.view.helpers.initial.navigation.navigation>`, used for proxying calls to other navigational helpers.
+- :ref:`Navigation <zend.view.helpers.initial.navigation.navigation>`, used for proxying calls to other
+  navigational helpers.
 
-All built-in helpers extend ``Zend_View_Helper_Navigation_HelperAbstract``, which adds integration with :ref:`ACL <zend.acl>` and :ref:`translation <zend.i18n.translating>`. The abstract class implements the interface ``Zend_View_Helper_Navigation_Helper``, which defines the following methods:
+All built-in helpers extend ``Zend_View_Helper_Navigation_HelperAbstract``, which adds integration with :ref:`ACL
+<zend.acl>` and :ref:`translation <zend.i18n.translating>`. The abstract class implements the interface
+``Zend_View_Helper_Navigation_Helper``, which defines the following methods:
 
-- ``getContainer()`` and ``setContainer()`` gets and sets the navigation container the helper should operate on by default, and ``hasContainer()`` checks if the helper has container registered.
+- ``getContainer()`` and ``setContainer()`` gets and sets the navigation container the helper should operate on by
+  default, and ``hasContainer()`` checks if the helper has container registered.
 
-- ``getTranslator()`` and ``setTranslator()`` gets and sets the translator used for translating labels and titles. ``getUseTranslator()`` and ``setUseTranslator()`` controls whether the translator should be enabled. The method ``hasTranslator()`` checks if the helper has a translator registered.
+- ``getTranslator()`` and ``setTranslator()`` gets and sets the translator used for translating labels and titles.
+  ``getUseTranslator()`` and ``setUseTranslator()`` controls whether the translator should be enabled. The method
+  ``hasTranslator()`` checks if the helper has a translator registered.
 
-- ``getAcl()``, ``setAcl()``, ``getRole()`` and ``setRole()``, gets and sets *ACL* (``Zend_Acl``) instance and role (``String`` or ``Zend_Acl_Role_Interface``) used for filtering out pages when rendering. ``getUseAcl()`` and ``setUseAcl()`` controls whether *ACL* should be enabled. The methods ``hasAcl()`` and ``hasRole()`` checks if the helper has an *ACL* instance or a role registered.
+- ``getAcl()``, ``setAcl()``, ``getRole()`` and ``setRole()``, gets and sets *ACL* (``Zend_Acl``) instance and role
+  (``String`` or ``Zend_Acl_Role_Interface``) used for filtering out pages when rendering. ``getUseAcl()`` and
+  ``setUseAcl()`` controls whether *ACL* should be enabled. The methods ``hasAcl()`` and ``hasRole()`` checks if
+  the helper has an *ACL* instance or a role registered.
 
 - ``__toString()``, magic method to ensure that helpers can be rendered by echoing the helper instance directly.
 
@@ -31,33 +44,49 @@ All built-in helpers extend ``Zend_View_Helper_Navigation_HelperAbstract``, whic
 
 In addition to the method stubs from the interface, the abstract class also implements the following methods:
 
-- ``getIndent()`` and ``setIndent()`` gets and sets indentation. The setter accepts a ``String`` or an ``Integer``. In the case of an ``Integer``, the helper will use the given number of spaces for indentation. I.e., ``setIndent(4)`` means 4 initial spaces of indentation. Indentation can be specified for all helpers except the Sitemap helper.
+- ``getIndent()`` and ``setIndent()`` gets and sets indentation. The setter accepts a ``String`` or an ``Integer``.
+  In the case of an ``Integer``, the helper will use the given number of spaces for indentation. I.e.,
+  ``setIndent(4)`` means 4 initial spaces of indentation. Indentation can be specified for all helpers except the
+  Sitemap helper.
 
-- ``getMinDepth()`` and ``setMinDepth()`` gets and sets the minimum depth a page must have to be included by the helper. Setting ``NULL`` means no minimum depth.
+- ``getMinDepth()`` and ``setMinDepth()`` gets and sets the minimum depth a page must have to be included by the
+  helper. Setting ``NULL`` means no minimum depth.
 
-- ``getMaxDepth()`` and ``setMaxDepth()`` gets and sets the maximum depth a page can have to be included by the helper. Setting ``NULL`` means no maximum depth.
+- ``getMaxDepth()`` and ``setMaxDepth()`` gets and sets the maximum depth a page can have to be included by the
+  helper. Setting ``NULL`` means no maximum depth.
 
-- ``getRenderInvisible()`` and ``setRenderInvisible()`` gets and sets whether to render items that have been marked as invisible or not.
+- ``getRenderInvisible()`` and ``setRenderInvisible()`` gets and sets whether to render items that have been marked
+  as invisible or not.
 
-- ``__call()`` is used for proxying calls to the container registered in the helper, which means you can call methods on a helper as if it was a container. See :ref:`example <zend.view.helpers.initial.navigation.proxy.example>` below.
+- ``__call()`` is used for proxying calls to the container registered in the helper, which means you can call
+  methods on a helper as if it was a container. See :ref:`example
+  <zend.view.helpers.initial.navigation.proxy.example>` below.
 
-- ``findActive($container, $minDepth, $maxDepth)`` is used for finding the deepest active page in the given container. If depths are not given, the method will use the values retrieved from ``getMinDepth()`` and ``getMaxDepth()``. The deepest active page must be between ``$minDepth`` and ``$maxDepth`` inclusively. Returns an array containing a reference to the found page instance and the depth at which the page was found.
+- ``findActive($container, $minDepth, $maxDepth)`` is used for finding the deepest active page in the given
+  container. If depths are not given, the method will use the values retrieved from ``getMinDepth()`` and
+  ``getMaxDepth()``. The deepest active page must be between ``$minDepth`` and ``$maxDepth`` inclusively. Returns
+  an array containing a reference to the found page instance and the depth at which the page was found.
 
 - ``htmlify()`` renders an **'a'** *HTML* element from a ``Zend_Navigation_Page`` instance.
 
-- ``accept()`` is used for determining if a page should be accepted when iterating containers. This method checks for page visibility and verifies that the helper's role is allowed access to the page's resource and privilege.
+- ``accept()`` is used for determining if a page should be accepted when iterating containers. This method checks
+  for page visibility and verifies that the helper's role is allowed access to the page's resource and privilege.
 
 - The static method ``setDefaultAcl()`` is used for setting a default *ACL* object that will be used by helpers.
 
 - The static method ``setDefaultRole()`` is used for setting a default *ACL* that will be used by helpers
 
-If a navigation container is not explicitly set in a helper using ``$helper->setContainer($nav)``, the helper will look for a container instance with the key ``Zend_Navigation`` in :ref:`the registry <zend.registry>`. If a container is not explicitly set or found in the registry, the helper will create an empty ``Zend_Navigation`` container when calling ``$helper->getContainer()``.
+If a navigation container is not explicitly set in a helper using ``$helper->setContainer($nav)``, the helper will
+look for a container instance with the key ``Zend_Navigation`` in :ref:`the registry <zend.registry>`. If a
+container is not explicitly set or found in the registry, the helper will create an empty ``Zend_Navigation``
+container when calling ``$helper->getContainer()``.
 
 .. _zend.view.helpers.initial.navigation.proxy.example:
 
 .. rubric:: Proxying calls to the navigation container
 
-Navigation view helpers use the magic method ``__call()`` to proxy method calls to the navigation container that is registered in the view helper.
+Navigation view helpers use the magic method ``__call()`` to proxy method calls to the navigation container that is
+registered in the view helper.
 
 .. code-block:: php
    :linenos:
@@ -73,26 +102,34 @@ The call above will add a page to the container in the ``Navigation`` helper.
 Translation of labels and titles
 --------------------------------
 
-The navigation helpers support translation of page labels and titles. You can set a translator of type ``Zend\I18n\Translator`` in the helper using ``$helper->setTranslator($translator)``.
+The navigation helpers support translation of page labels and titles. You can set a translator of type
+``Zend\I18n\Translator`` in the helper using ``$helper->setTranslator($translator)``.
 
 If you want to disable translation, use ``$helper->setUseTranslator(false)``.
 
-The :ref:`proxy helper <zend.view.helpers.initial.navigation.navigation>` will inject its own translator to the helper it proxies to if the proxied helper doesn't already have a translator.
+The :ref:`proxy helper <zend.view.helpers.initial.navigation.navigation>` will inject its own translator to the
+helper it proxies to if the proxied helper doesn't already have a translator.
 
 .. note::
 
-   There is no translation in the sitemap helper, since there are no page labels or titles involved in an *XML* sitemap.
+   There is no translation in the sitemap helper, since there are no page labels or titles involved in an *XML*
+   sitemap.
 
 .. _zend.view.helpers.initial.navigation.acl:
 
 Integration with ACL
 --------------------
 
-All navigational view helpers support *ACL* inherently from the class ``Zend_View_Helper_Navigation_HelperAbstract``. A ``Zend_Acl`` object can be assigned to a helper instance with *$helper->setAcl($acl)*, and role with *$helper->setRole('member')* or *$helper->setRole(new Zend_Acl_Role('member'))*. If *ACL* is used in the helper, the role in the helper must be allowed by the *ACL* to access a page's *resource* and/or have the page's *privilege* for the page to be included when rendering.
+All navigational view helpers support *ACL* inherently from the class
+``Zend_View_Helper_Navigation_HelperAbstract``. A ``Zend_Acl`` object can be assigned to a helper instance with
+*$helper->setAcl($acl)*, and role with *$helper->setRole('member')* or *$helper->setRole(new
+Zend_Acl_Role('member'))*. If *ACL* is used in the helper, the role in the helper must be allowed by the *ACL* to
+access a page's *resource* and/or have the page's *privilege* for the page to be included when rendering.
 
 If a page is not accepted by *ACL*, any descendant page will also be excluded from rendering.
 
-The :ref:`proxy helper <zend.view.helpers.initial.navigation.navigation>` will inject its own *ACL* and role to the helper it proxies to if the proxied helper doesn't already have any.
+The :ref:`proxy helper <zend.view.helpers.initial.navigation.navigation>` will inject its own *ACL* and role to the
+helper it proxies to if the proxied helper doesn't already have any.
 
 The examples below all show how *ACL* affects rendering.
 
@@ -109,7 +146,8 @@ Notes on the setup:
 
 - Interesting page properties are marked with a comment.
 
-- Unless otherwise is stated in other examples, the user is requesting the *URL* *http://www.example.com/products/server/faq/*, which translates to the page labeled ``FAQ`` under *Foo Server*.
+- Unless otherwise is stated in other examples, the user is requesting the *URL*
+  *http://www.example.com/products/server/faq/*, which translates to the page labeled ``FAQ`` under *Foo Server*.
 
 - The assumed *ACL* and router setup is shown below the container setup.
 
@@ -332,19 +370,33 @@ In addition to the container above, the following setup is assumed:
 Breadcrumbs Helper
 ------------------
 
-Breadcrumbs are used for indicating where in a sitemap a user is currently browsing, and are typically rendered like this: "You are here: Home > Products > FantasticProduct 1.0". The breadcrumbs helper follows the guidelines from `Breadcrumbs Pattern - Yahoo! Design Pattern Library`_, and allows simple customization (minimum/maximum depth, indentation, separator, and whether the last element should be linked), or rendering using a partial view script.
+Breadcrumbs are used for indicating where in a sitemap a user is currently browsing, and are typically rendered
+like this: "You are here: Home > Products > FantasticProduct 1.0". The breadcrumbs helper follows the guidelines
+from `Breadcrumbs Pattern - Yahoo! Design Pattern Library`_, and allows simple customization (minimum/maximum
+depth, indentation, separator, and whether the last element should be linked), or rendering using a partial view
+script.
 
-The Breadcrumbs helper works like this; it finds the deepest active page in a navigation container, and renders an upwards path to the root. For *MVC* pages, the "activeness" of a page is determined by inspecting the request object, as stated in the section on :ref:`Zend_Navigation_Page_Mvc <zend.navigation.pages.mvc>`.
+The Breadcrumbs helper works like this; it finds the deepest active page in a navigation container, and renders an
+upwards path to the root. For *MVC* pages, the "activeness" of a page is determined by inspecting the request
+object, as stated in the section on :ref:`Zend_Navigation_Page_Mvc <zend.navigation.pages.mvc>`.
 
-The helper sets the *minDepth* property to 1 by default, meaning breadcrumbs will not be rendered if the deepest active page is a root page. If *maxDepth* is specified, the helper will stop rendering when at the specified depth (e.g. stop at level 2 even if the deepest active page is on level 3).
+The helper sets the *minDepth* property to 1 by default, meaning breadcrumbs will not be rendered if the deepest
+active page is a root page. If *maxDepth* is specified, the helper will stop rendering when at the specified depth
+(e.g. stop at level 2 even if the deepest active page is on level 3).
 
 Methods in the breadcrumbs helper:
 
 - *{get|set}Separator()* gets/sets separator string that is used between breadcrumbs. Defualt is *' &gt; '*.
 
-- *{get|set}LinkLast()* gets/sets whether the last breadcrumb should be rendered as an anchor or not. Default is ``FALSE``.
+- *{get|set}LinkLast()* gets/sets whether the last breadcrumb should be rendered as an anchor or not. Default is
+  ``FALSE``.
 
-- *{get|set}Partial()* gets/sets a partial view script that should be used for rendering breadcrumbs. If a partial view script is set, the helper's ``render()`` method will use the ``renderPartial()`` method. If no partial is set, the ``renderStraight()`` method is used. The helper expects the partial to be a ``String`` or an ``Array`` with two elements. If the partial is a ``String``, it denotes the name of the partial script to use. If it is an ``Array``, the first element will be used as the name of the partial view script, and the second element is the module where the script is found.
+- *{get|set}Partial()* gets/sets a partial view script that should be used for rendering breadcrumbs. If a partial
+  view script is set, the helper's ``render()`` method will use the ``renderPartial()`` method. If no partial is
+  set, the ``renderStraight()`` method is used. The helper expects the partial to be a ``String`` or an ``Array``
+  with two elements. If the partial is a ``String``, it denotes the name of the partial script to use. If it is an
+  ``Array``, the first element will be used as the name of the partial view script, and the second element is the
+  module where the script is found.
 
 - ``renderStraight()`` is the default render method.
 
@@ -423,7 +475,10 @@ This example shows how to customze breadcrumbs output by specifying various opti
 
 .. rubric:: Rendering breadcrumbs using a partial view script
 
-This example shows how to render customized breadcrumbs using a partial vew script. By calling ``setPartial()``, you can specify a partial view script that will be used when calling ``render()``. When a partial is specified, the ``renderPartial()`` method will be called. This method will find the deepest active page and pass an array of pages that leads to the active page to the partial view script.
+This example shows how to render customized breadcrumbs using a partial vew script. By calling ``setPartial()``,
+you can specify a partial view script that will be used when calling ``render()``. When a partial is specified, the
+``renderPartial()`` method will be called. This method will find the deepest active page and pass an array of pages
+that leads to the active page to the partial view script.
 
 In a layout:
 
@@ -455,37 +510,65 @@ Output:
 Links Helper
 ------------
 
-The links helper is used for rendering *HTML* ``LINK`` elements. Links are used for describing document relationships of the currently active page. Read more about links and link types at `Document relationships: the LINK element (HTML4 W3C Rec.)`_ and `Link types (HTML4 W3C Rec.)`_ in the *HTML*\ 4 W3C Recommendation.
+The links helper is used for rendering *HTML* ``LINK`` elements. Links are used for describing document
+relationships of the currently active page. Read more about links and link types at `Document relationships: the
+LINK element (HTML4 W3C Rec.)`_ and `Link types (HTML4 W3C Rec.)`_ in the *HTML*\ 4 W3C Recommendation.
 
-There are two types of relations; forward and reverse, indicated by the keyords *'rel'* and *'rev'*. Most methods in the helper will take a ``$rel`` param, which must be either *'rel'* or *'rev'*. Most methods also take a ``$type`` param, which is used for specifying the link type (e.g. alternate, start, next, prev, chapter, etc).
+There are two types of relations; forward and reverse, indicated by the keyords *'rel'* and *'rev'*. Most methods
+in the helper will take a ``$rel`` param, which must be either *'rel'* or *'rev'*. Most methods also take a
+``$type`` param, which is used for specifying the link type (e.g. alternate, start, next, prev, chapter, etc).
 
-Relationships can be added to page objects manually, or found by traversing the container registered in the helper. The method ``findRelation($page, $rel, $type)`` will first try to find the given ``$rel`` of ``$type`` from the ``$page`` by calling *$page->findRel($type)* or *$page->findRel($type)*. If the ``$page`` has a relation that can be converted to a page instance, that relation will be used. If the ``$page`` instance doesn't have the specified ``$type``, the helper will look for a method in the helper named *search$rel$type* (e.g. ``searchRelNext()`` or ``searchRevAlternate()``). If such a method exists, it will be used for determining the ``$page``'s relation by traversing the container.
+Relationships can be added to page objects manually, or found by traversing the container registered in the helper.
+The method ``findRelation($page, $rel, $type)`` will first try to find the given ``$rel`` of ``$type`` from the
+``$page`` by calling *$page->findRel($type)* or *$page->findRel($type)*. If the ``$page`` has a relation that can
+be converted to a page instance, that relation will be used. If the ``$page`` instance doesn't have the specified
+``$type``, the helper will look for a method in the helper named *search$rel$type* (e.g. ``searchRelNext()`` or
+``searchRevAlternate()``). If such a method exists, it will be used for determining the ``$page``'s relation by
+traversing the container.
 
-Not all relations can be determined by traversing the container. These are the relations that will be found by searching:
+Not all relations can be determined by traversing the container. These are the relations that will be found by
+searching:
 
 - ``searchRelStart()``, forward 'start' relation: the first page in the container.
 
-- ``searchRelNext()``, forward 'next' relation; finds the next page in the container, i.e. the page after the active page.
+- ``searchRelNext()``, forward 'next' relation; finds the next page in the container, i.e. the page after the
+  active page.
 
 - ``searchRelPrev()``, forward 'prev' relation; finds the previous page, i.e. the page before the active page.
 
-- ``searchRelChapter()``, forward 'chapter' relations; finds all pages on level 0 except the 'start' relation or the active page if it's on level 0.
+- ``searchRelChapter()``, forward 'chapter' relations; finds all pages on level 0 except the 'start' relation or
+  the active page if it's on level 0.
 
-- ``searchRelSection()``, forward 'section' relations; finds all child pages of the active page if the active page is on level 0 (a 'chapter').
+- ``searchRelSection()``, forward 'section' relations; finds all child pages of the active page if the active page
+  is on level 0 (a 'chapter').
 
-- ``searchRelSubsection()``, forward 'subsection' relations; finds all child pages of the active page if the active pages is on level 1 (a 'section').
+- ``searchRelSubsection()``, forward 'subsection' relations; finds all child pages of the active page if the active
+  pages is on level 1 (a 'section').
 
-- ``searchRevSection()``, reverse 'section' relation; finds the parent of the active page if the active page is on level 1 (a 'section').
+- ``searchRevSection()``, reverse 'section' relation; finds the parent of the active page if the active page is on
+  level 1 (a 'section').
 
-- ``searchRevSubsection()``, reverse 'subsection' relation; finds the parent of the active page if the active page is on level 2 (a 'subsection').
+- ``searchRevSubsection()``, reverse 'subsection' relation; finds the parent of the active page if the active page
+  is on level 2 (a 'subsection').
 
 .. note::
 
-   When looking for relations in the page instance (*$page->getRel($type)* or *$page->getRev($type)*), the helper accepts the values of type ``String``, ``Array``, ``Zend_Config``, or ``Zend_Navigation_Page``. If a string is found, it will be converted to a ``Zend_Navigation_Page_Uri``. If an array or a config is found, it will be converted to one or several page instances. If the first key of the array/config is numeric, it will be considered to contain several pages, and each element will be passed to the :ref:`page factory <zend.navigation.pages.factory>`. If the first key is not numeric, the array/config will be passed to the page factory directly, and a single page will be returned.
+   When looking for relations in the page instance (*$page->getRel($type)* or *$page->getRev($type)*), the helper
+   accepts the values of type ``String``, ``Array``, ``Zend_Config``, or ``Zend_Navigation_Page``. If a string is
+   found, it will be converted to a ``Zend_Navigation_Page_Uri``. If an array or a config is found, it will be
+   converted to one or several page instances. If the first key of the array/config is numeric, it will be
+   considered to contain several pages, and each element will be passed to the :ref:`page factory
+   <zend.navigation.pages.factory>`. If the first key is not numeric, the array/config will be passed to the page
+   factory directly, and a single page will be returned.
 
-The helper also supports magic methods for finding relations. E.g. to find forward alternate relations, call *$helper->findRelAlternate($page)*, and to find reverse section relations, call *$helper->findRevSection($page)*. Those calls correspond to *$helper->findRelation($page, 'rel', 'alternate');* and *$helper->findRelation($page, 'rev', 'section');* respectively.
+The helper also supports magic methods for finding relations. E.g. to find forward alternate relations, call
+*$helper->findRelAlternate($page)*, and to find reverse section relations, call *$helper->findRevSection($page)*.
+Those calls correspond to *$helper->findRelation($page, 'rel', 'alternate');* and *$helper->findRelation($page,
+'rev', 'section');* respectively.
 
-To customize which relations should be rendered, the helper uses a render flag. The render flag is an integer value, and will be used in a `bitwse and (&) operation`_ against the helper's render constants to determine if the relation that belongs to the render constant should be rendered.
+To customize which relations should be rendered, the helper uses a render flag. The render flag is an integer
+value, and will be used in a `bitwse and (&) operation`_ against the helper's render constants to determine if the
+relation that belongs to the render constant should be rendered.
 
 See the :ref:`example below <zend.view.helpers.initial.navigation.links.example3>` for more information.
 
@@ -523,17 +606,20 @@ See the :ref:`example below <zend.view.helpers.initial.navigation.links.example3
 
 - ``Zend_View_Helper_Navigation_Link::RENDER_ALL``
 
-The constants from ``RENDER_ALTERNATE`` to ``RENDER_BOOKMARK`` denote standard *HTML* link types. ``RENDER_CUSTOM`` denotes non-standard relations that specified in pages. ``RENDER_ALL`` denotes standard and non-standard relations.
+The constants from ``RENDER_ALTERNATE`` to ``RENDER_BOOKMARK`` denote standard *HTML* link types. ``RENDER_CUSTOM``
+denotes non-standard relations that specified in pages. ``RENDER_ALL`` denotes standard and non-standard relations.
 
 Methods in the links helper:
 
-- *{get|set}RenderFlag()* gets/sets the render flag. Default is ``RENDER_ALL``. See examples below on how to set the render flag.
+- *{get|set}RenderFlag()* gets/sets the render flag. Default is ``RENDER_ALL``. See examples below on how to set
+  the render flag.
 
 - ``findAllRelations()`` finds all relations of all types for a given page.
 
 - ``findRelation()`` finds all relations of a given type from a given page.
 
-- *searchRel{Start|Next|Prev|Chapter|Section|Subsection}()* traverses a container to find forward relations to the start page, the next page, the previous page, chapters, sections, and subsections.
+- *searchRel{Start|Next|Prev|Chapter|Section|Subsection}()* traverses a container to find forward relations to the
+  start page, the next page, the previous page, chapters, sections, and subsections.
 
 - *searchRev{Section|Subsection}()* traverses a container to find reverse relations to sections or subsections.
 
@@ -666,25 +752,35 @@ This example shows how to specify which relations to find and render.
 Menu Helper
 -----------
 
-The Menu helper is used for rendering menus from navigation containers. By default, the menu will be rendered using *HTML* *UL* and *LI* tags, but the helper also allows using a partial view script.
+The Menu helper is used for rendering menus from navigation containers. By default, the menu will be rendered using
+*HTML* *UL* and *LI* tags, but the helper also allows using a partial view script.
 
 Methods in the Menu helper:
 
 - *{get|set}UlClass()* gets/sets the *CSS* class used in ``renderMenu()``.
 
-- *{get|set}OnlyActiveBranch()* gets/sets a flag specifying whether only the active branch of a container should be rendered.
+- *{get|set}OnlyActiveBranch()* gets/sets a flag specifying whether only the active branch of a container should be
+  rendered.
 
-- *{get|set}RenderParents()* gets/sets a flag specifying whether parents should be rendered when only rendering active branch of a container. If set to ``FALSE``, only the deepest active menu will be rendered.
+- *{get|set}RenderParents()* gets/sets a flag specifying whether parents should be rendered when only rendering
+  active branch of a container. If set to ``FALSE``, only the deepest active menu will be rendered.
 
-- *{get|set}Partial()* gets/sets a partial view script that should be used for rendering menu. If a partial view script is set, the helper's ``render()`` method will use the ``renderPartial()`` method. If no partial is set, the ``renderMenu()`` method is used. The helper expects the partial to be a ``String`` or an ``Array`` with two elements. If the partial is a ``String``, it denotes the name of the partial script to use. If it is an ``Array``, the first element will be used as the name of the partial view script, and the second element is the module where the script is found.
+- *{get|set}Partial()* gets/sets a partial view script that should be used for rendering menu. If a partial view
+  script is set, the helper's ``render()`` method will use the ``renderPartial()`` method. If no partial is set,
+  the ``renderMenu()`` method is used. The helper expects the partial to be a ``String`` or an ``Array`` with two
+  elements. If the partial is a ``String``, it denotes the name of the partial script to use. If it is an
+  ``Array``, the first element will be used as the name of the partial view script, and the second element is the
+  module where the script is found.
 
 - ``htmlify()`` overrides the method from the abstract class to return *span* elements if the page has no *href*.
 
-- ``renderMenu($container = null, $options = array())`` is the default render method, and will render a container as a *HTML* *UL* list.
+- ``renderMenu($container = null, $options = array())`` is the default render method, and will render a container
+  as a *HTML* *UL* list.
 
   If ``$container`` is not given, the container registered in the helper will be rendered.
 
-  ``$options`` is used for overriding options specified temporarily without rsetting the values in the helper instance. It is an associative array where each key corresponds to an option in the helper.
+  ``$options`` is used for overriding options specified temporarily without rsetting the values in the helper
+  instance. It is an associative array where each key corresponds to an option in the helper.
 
   Recognized options:
 
@@ -698,7 +794,8 @@ Methods in the Menu helper:
 
   - *onlyActiveBranch*; whether only active branch should be rendered. Expects a ``Boolean`` value.
 
-  - *renderParents*; whether parents should be rendered if only rendering active branch. Expects a ``Boolean`` value.
+  - *renderParents*; whether parents should be rendered if only rendering active branch. Expects a ``Boolean``
+    value.
 
   If an option is not given, the value set in the helper will be used.
 
@@ -710,7 +807,8 @@ Methods in the Menu helper:
 
 .. rubric:: Rendering a menu
 
-This example shows how to render a menu from a container registered/found in the view helper. Notice how pages are filtered out based on visibility and *ACL*.
+This example shows how to render a menu from a container registered/found in the view helper. Notice how pages are
+filtered out based on visibility and *ACL*.
 
 .. code-block:: php
    :linenos:
@@ -792,7 +890,8 @@ This example shows how to render a menu from a container registered/found in the
 
 .. rubric:: Calling renderMenu() directly
 
-This example shows how to render a menu that is not registered in the view helper by calling the ``renderMenu()`` directly and specifying a few options.
+This example shows how to render a menu that is not registered in the view helper by calling the ``renderMenu()``
+directly and specifying a few options.
 
 .. code-block:: php
    :linenos:
@@ -824,7 +923,8 @@ This example shows how to render a menu that is not registered in the view helpe
 
 This example shows how the ``renderSubMenu()`` will render the deepest sub menu of the active branch.
 
-Calling ``renderSubMenu($container, $ulClass, $indent)`` is equivalent to calling ``renderMenu($container, $options)`` with the following options:
+Calling ``renderSubMenu($container, $ulClass, $indent)`` is equivalent to calling ``renderMenu($container,
+$options)`` with the following options:
 
 .. code-block:: php
    :linenos:
@@ -1103,7 +1203,10 @@ Calling ``renderSubMenu($container, $ulClass, $indent)`` is equivalent to callin
 
 .. rubric:: Rendering a custom menu using a partial view script
 
-This example shows how to render a custom menu using a partial vew script. By calling ``setPartial()``, you can specify a partial view script that will be used when calling ``render()``. When a partial is specified, the ``renderPartial()`` method will be called. This method will assign the container to the view with the key *container*.
+This example shows how to render a custom menu using a partial vew script. By calling ``setPartial()``, you can
+specify a partial view script that will be used when calling ``render()``. When a partial is specified, the
+``renderPartial()`` method will be called. This method will assign the container to the view with the key
+*container*.
 
 In a layout:
 
@@ -1138,15 +1241,19 @@ Output:
 Sitemap Helper
 --------------
 
-The Sitemap helper is used for generating *XML* sitemaps, as defined by the `Sitemaps XML format`_. Read more about `Sitemaps on Wikpedia`_.
+The Sitemap helper is used for generating *XML* sitemaps, as defined by the `Sitemaps XML format`_. Read more about
+`Sitemaps on Wikpedia`_.
 
-By default, the sitemap helper uses :ref:`sitemap validators <zend.validator.sitemap>` to validate each element that is rendered. This can be disabled by calling *$helper->setUseSitemapValidators(false)*.
+By default, the sitemap helper uses :ref:`sitemap validators <zend.validator.sitemap>` to validate each element
+that is rendered. This can be disabled by calling *$helper->setUseSitemapValidators(false)*.
 
 .. note::
 
    If you disable sitemap validators, the custom properties (see table) are not validated at all.
 
-The sitemap helper also supports `Sitemap XSD Schema`_ validation of the generated sitemap. This is disabled by default, since it will require a request to the Schema file. It can be enabled with *$helper->setUseSchemaValidation(true)*.
+The sitemap helper also supports `Sitemap XSD Schema`_ validation of the generated sitemap. This is disabled by
+default, since it will require a request to the Schema file. It can be enabled with
+*$helper->setUseSchemaValidation(true)*.
 
 .. _zend.view.helpers.initial.navigation.sitemap.elements:
 
@@ -1166,15 +1273,21 @@ The sitemap helper also supports `Sitemap XSD Schema`_ validation of the generat
 
 Methods in the sitemap helper:
 
-- *{get|set}FormatOutput()* gets/sets a flag indicating whether *XML* output should be formatted. This corresponds to the *formatOutput* property of the native ``DOMDocument`` class. Read more at `PHP: DOMDocument - Manual`_. Default is ``FALSE``.
+- *{get|set}FormatOutput()* gets/sets a flag indicating whether *XML* output should be formatted. This corresponds
+  to the *formatOutput* property of the native ``DOMDocument`` class. Read more at `PHP: DOMDocument - Manual`_.
+  Default is ``FALSE``.
 
-- *{get|set}UseXmlDeclaration()* gets/sets a flag indicating whether the *XML* declaration should be included when rendering. Default is ``TRUE``.
+- *{get|set}UseXmlDeclaration()* gets/sets a flag indicating whether the *XML* declaration should be included when
+  rendering. Default is ``TRUE``.
 
-- *{get|set}UseSitemapValidators()* gets/sets a flag indicating whether sitemap validators should be used when generating the DOM sitemap. Default is ``TRUE``.
+- *{get|set}UseSitemapValidators()* gets/sets a flag indicating whether sitemap validators should be used when
+  generating the DOM sitemap. Default is ``TRUE``.
 
-- *{get|set}UseSchemaValidation()* gets/sets a flag indicating whether the helper should use *XML* Schema validation when generating the DOM sitemap. Default is ``FALSE``. If ``TRUE``.
+- *{get|set}UseSchemaValidation()* gets/sets a flag indicating whether the helper should use *XML* Schema
+  validation when generating the DOM sitemap. Default is ``FALSE``. If ``TRUE``.
 
-- *{get|set}ServerUrl()* gets/sets server *URL* that will be prepended to non-absolute *URL*\ s in the ``url()`` method. If no server *URL* is specified, it will be determined by the helper.
+- *{get|set}ServerUrl()* gets/sets server *URL* that will be prepended to non-absolute *URL*\ s in the ``url()``
+  method. If no server *URL* is specified, it will be determined by the helper.
 
 - ``url()`` is used to generate absolute *URL*\ s to pages.
 
@@ -1380,28 +1493,46 @@ Render the sitemap using a maximum depth of 1.
 
    **UTF-8 encoding used by default**
 
-   By default, Zend Framework uses *UTF-8* as its default encoding, and, specific to this case, ``Zend_View`` does as well. Character encoding can be set differently on the view object itself using the ``setEncoding()`` method (or the the ``encoding`` instantiation parameter). However, since ``Zend_View_Interface`` does not define accessors for encoding, it's possible that if you are using a custom view implementation with the Dojo view helper, you will not have a ``getEncoding()`` method, which is what the view helper uses internally for determining the character set in which to encode.
+   By default, Zend Framework uses *UTF-8* as its default encoding, and, specific to this case, ``Zend_View`` does
+   as well. Character encoding can be set differently on the view object itself using the ``setEncoding()`` method
+   (or the the ``encoding`` instantiation parameter). However, since ``Zend_View_Interface`` does not define
+   accessors for encoding, it's possible that if you are using a custom view implementation with the Dojo view
+   helper, you will not have a ``getEncoding()`` method, which is what the view helper uses internally for
+   determining the character set in which to encode.
 
-   If you do not want to utilize *UTF-8* in such a situation, you will need to implement a ``getEncoding()`` method in your custom view implementation.
+   If you do not want to utilize *UTF-8* in such a situation, you will need to implement a ``getEncoding()`` method
+   in your custom view implementation.
 
 .. _zend.view.helpers.initial.navigation.navigation:
 
 Navigation Helper
 -----------------
 
-The Navigation helper is a proxy helper that relays calls to other navigational helpers. It can be considered an entry point to all navigation-related view tasks. The aforementioned navigational helpers are in the namespace ``Zend_View_Helper_Navigation``, and would thus require the path *Zend/View/Helper/Navigation* to be added as a helper path to the view. With the proxy helper residing in the ``Zend_View_Helper`` namespace, it will always be available, without the need to add any helper paths to the view.
+The Navigation helper is a proxy helper that relays calls to other navigational helpers. It can be considered an
+entry point to all navigation-related view tasks. The aforementioned navigational helpers are in the namespace
+``Zend_View_Helper_Navigation``, and would thus require the path *Zend/View/Helper/Navigation* to be added as a
+helper path to the view. With the proxy helper residing in the ``Zend_View_Helper`` namespace, it will always be
+available, without the need to add any helper paths to the view.
 
-The Navigation helper finds other helpers that implement the ``Zend_View_Helper_Navigation_Helper`` interface, which means custom view helpers can also be proxied. This would, however, require that the custom helper path is added to the view.
+The Navigation helper finds other helpers that implement the ``Zend_View_Helper_Navigation_Helper`` interface,
+which means custom view helpers can also be proxied. This would, however, require that the custom helper path is
+added to the view.
 
-When proxying to other helpers, the Navigation helper can inject its container, *ACL*/role, and translator. This means that you won't have to explicitly set all three in all navigational helpers, nor resort to injecting by means of ``Zend_Registry`` or static methods.
+When proxying to other helpers, the Navigation helper can inject its container, *ACL*/role, and translator. This
+means that you won't have to explicitly set all three in all navigational helpers, nor resort to injecting by means
+of ``Zend_Registry`` or static methods.
 
-- ``findHelper()`` finds the given helper, verifies that it is a navigational helper, and injects container, *ACL*/role and translator.
+- ``findHelper()`` finds the given helper, verifies that it is a navigational helper, and injects container,
+  *ACL*/role and translator.
 
-- *{get|set}InjectContainer()* gets/sets a flag indicating whether the container should be injected to proxied helpers. Default is ``TRUE``.
+- *{get|set}InjectContainer()* gets/sets a flag indicating whether the container should be injected to proxied
+  helpers. Default is ``TRUE``.
 
-- *{get|set}InjectAcl()* gets/sets a flag indicating whether the *ACL*/role should be injected to proxied helpers. Default is ``TRUE``.
+- *{get|set}InjectAcl()* gets/sets a flag indicating whether the *ACL*/role should be injected to proxied helpers.
+  Default is ``TRUE``.
 
-- *{get|set}InjectTranslator()* gets/sets a flag indicating whether the translator should be injected to proxied helpers. Default is ``TRUE``.
+- *{get|set}InjectTranslator()* gets/sets a flag indicating whether the translator should be injected to proxied
+  helpers. Default is ``TRUE``.
 
 - *{get|set}DefaultProxy()* gets/sets the default proxy. Default is *'menu'*.
 

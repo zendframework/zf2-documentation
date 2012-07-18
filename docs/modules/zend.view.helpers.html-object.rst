@@ -3,7 +3,8 @@
 HTML Object Helpers
 ===================
 
-The *HTML* **<object>** element is used for embedding media like Flash or QuickTime in web pages. The object view helpers take care of embedding media with minimum effort.
+The *HTML* **<object>** element is used for embedding media like Flash or QuickTime in web pages. The object view
+helpers take care of embedding media with minimum effort.
 
 There are four initial Object helpers:
 
@@ -15,13 +16,15 @@ There are four initial Object helpers:
 
 - ``htmlQuicktime()`` Generates markup for embedding QuickTime files.
 
-All of these helpers share a similar interface. For this reason, this documentation will only contain examples of two of these helpers.
+All of these helpers share a similar interface. For this reason, this documentation will only contain examples of
+two of these helpers.
 
 .. _zend.view.helpers.initial.object.flash:
 
 .. rubric:: Flash helper
 
-Embedding Flash in your page using the helper is pretty straight-forward. The only required argument is the resource *URI*.
+Embedding Flash in your page using the helper is pretty straight-forward. The only required argument is the
+resource *URI*.
 
 .. code-block:: php
    :linenos:
@@ -39,13 +42,20 @@ This outputs the following *HTML*:
            codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab">
    </object>
 
-Additionally you can specify attributes, parameters and content that can be rendered along with the **<object>**. This will be demonstrated using the ``htmlObject()`` helper.
+Additionally you can specify attributes, parameters and content that can be rendered along with the **<object>**.
+This will be demonstrated using the ``htmlObject()`` helper.
 
 .. _zend.view.helpers.initial.object.object:
 
 .. rubric:: Customizing the object by passing additional arguments
 
-The first argument in the object helpers is always required. It is the *URI* to the resource you want to embed. The second argument is only required in the ``htmlObject()`` helper. The other helpers already contain the correct value for this argument. The third argument is used for passing along attributes to the object element. It only accepts an array with key-value pairs. ``classid`` and ``codebase`` are examples of such attributes. The fourth argument also only takes a key-value array and uses them to create **<param>** elements. You will see an example of this shortly. Lastly, there is the option of providing additional content to the object. Now for an example which utilizes all arguments.
+The first argument in the object helpers is always required. It is the *URI* to the resource you want to embed. The
+second argument is only required in the ``htmlObject()`` helper. The other helpers already contain the correct
+value for this argument. The third argument is used for passing along attributes to the object element. It only
+accepts an array with key-value pairs. ``classid`` and ``codebase`` are examples of such attributes. The fourth
+argument also only takes a key-value array and uses them to create **<param>** elements. You will see an example of
+this shortly. Lastly, there is the option of providing additional content to the object. Now for an example which
+utilizes all arguments.
 
 .. code-block:: php
    :linenos:

@@ -3,17 +3,25 @@
 PhpRenderer View Scripts
 ========================
 
-Once you call ``render()``, ``Zend\View\Renderer\PhpRenderer`` then ``include()``\ s the requested view script and executes it "inside" the scope of the ``PhpRenderer`` instance. Therefore, in your view scripts, references to ``$this`` actually point to the ``PhpRenderer`` instance itself.
+Once you call ``render()``, ``Zend\View\Renderer\PhpRenderer`` then ``include()``\ s the requested view script and
+executes it "inside" the scope of the ``PhpRenderer`` instance. Therefore, in your view scripts, references to
+``$this`` actually point to the ``PhpRenderer`` instance itself.
 
-Variables assigned to the view -- either via a :ref:`View Model <zend.view.model>`, :ref:`Variables container <zend.view.variables>`, or simply by passing an array of variables to ``render()``-- may be retrieved in three ways:
+Variables assigned to the view -- either via a :ref:`View Model <zend.view.model>`, :ref:`Variables container
+<zend.view.variables>`, or simply by passing an array of variables to ``render()``-- may be retrieved in three
+ways:
 
-- Explicitly, by retrieving them from the ``Variables`` container composed in the ``PhpRenderer``: *$this->vars()->varname*.
+- Explicitly, by retrieving them from the ``Variables`` container composed in the ``PhpRenderer``:
+  *$this->vars()->varname*.
 
-- As instance properties of the ``PhpRenderer`` instance: *$this->varname*. (In this situation, instance property access is simply proxying to the composed ``Variables`` instance.)
+- As instance properties of the ``PhpRenderer`` instance: *$this->varname*. (In this situation, instance property
+  access is simply proxying to the composed ``Variables`` instance.)
 
-- As local PHP variables: *$varname*. The ``PhpRenderer`` extracts the members of the ``Variables`` container locally.
+- As local PHP variables: *$varname*. The ``PhpRenderer`` extracts the members of the ``Variables`` container
+  locally.
 
-We generally recommend using the second notation, as it's less verbose than the first, but differentiates between variables in the view script scope and those assigned to the renderer from elsewhere.
+We generally recommend using the second notation, as it's less verbose than the first, but differentiates between
+variables in the view script scope and those assigned to the renderer from elsewhere.
 
 By way of reminder, here is the example view script from the ``PhpRenderer`` introduction.
 
@@ -49,9 +57,15 @@ By way of reminder, here is the example view script from the ``PhpRenderer`` int
 Escaping Output
 ---------------
 
-One of the most important tasks to perform in a view script is to make sure that output is escaped properly; among other things, this helps to avoid cross-site scripting attacks. Unless you are using a function, method, or helper that does escaping on its own, you should always escape variables when you output them and pay careful attention to applying the correct escaping strategy to each HTML context you use.
+One of the most important tasks to perform in a view script is to make sure that output is escaped properly; among
+other things, this helps to avoid cross-site scripting attacks. Unless you are using a function, method, or helper
+that does escaping on its own, you should always escape variables when you output them and pay careful attention to
+applying the correct escaping strategy to each HTML context you use.
 
-The ``PhpRenderer`` includes a selection of helpers you can use for this purpose: ``EscapeHtml``, ``EscapeHtmlAttr`` ``EscapeJs``, ``EscapeCss``, and ``EscapeUrl``. Matching the correct helper (or combination of helpers) to the context into which you are injecting untrusted variables will ensure that you are protected against Cross-Site Scripting (XSS) vulnerabilities.
+The ``PhpRenderer`` includes a selection of helpers you can use for this purpose: ``EscapeHtml``,
+``EscapeHtmlAttr`` ``EscapeJs``, ``EscapeCss``, and ``EscapeUrl``. Matching the correct helper (or combination of
+helpers) to the context into which you are injecting untrusted variables will ensure that you are protected against
+Cross-Site Scripting (XSS) vulnerabilities.
 
 .. code-block:: php
    :linenos:

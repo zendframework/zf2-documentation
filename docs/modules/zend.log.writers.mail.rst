@@ -3,9 +3,14 @@
 Writing to Email
 ================
 
-``Zend\Log\Writer\Mail`` writes log entries in an email message by using ``Zend\Mail``. The ``Zend\Log\Writer\Mail`` constructor takes a ``Zend\Mail\Message`` object to compose the message, and an optional ``Zend\Mail\Transport`` object to send the email (the default transport is ``Zend\Mail\Transport\Sendmail``).
+``Zend\Log\Writer\Mail`` writes log entries in an email message by using ``Zend\Mail``. The
+``Zend\Log\Writer\Mail`` constructor takes a ``Zend\Mail\Message`` object to compose the message, and an optional
+``Zend\Mail\Transport`` object to send the email (the default transport is ``Zend\Mail\Transport\Sendmail``).
 
-The primary use case for ``Zend\Log\Writer\Mail`` is notifying developers, systems administrators, or any concerned parties of errors that might be occurring with *PHP*-based scripts. ``Zend\Log\Writer\Mail`` was born out of the idea that if something is broken, a human being needs to be alerted of it immediately so they can take corrective action.
+The primary use case for ``Zend\Log\Writer\Mail`` is notifying developers, systems administrators, or any concerned
+parties of errors that might be occurring with *PHP*-based scripts. ``Zend\Log\Writer\Mail`` was born out of the
+idea that if something is broken, a human being needs to be alerted of it immediately so they can take corrective
+action.
 
 Basic usage is outlined below:
 
@@ -36,6 +41,8 @@ Basic usage is outlined below:
 
 ``Zend\Log\Writer\Mail`` will render the email body as plain text.
 
-One email is sent containing all log entries at or above the filter level. For example, if warning-level entries an up are to be emailed, and two warnings and five errors occur, the resulting email will contain a total of seven log entries.
+One email is sent containing all log entries at or above the filter level. For example, if warning-level entries an
+up are to be emailed, and two warnings and five errors occur, the resulting email will contain a total of seven log
+entries.
 
 

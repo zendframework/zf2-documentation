@@ -8,9 +8,11 @@ Digest Authentication
 Introduction
 ------------
 
-`Digest authentication`_ is a method of *HTTP* authentication that improves upon `Basic authentication`_ by providing a way to authenticate without having to transmit the password in clear text across the network.
+`Digest authentication`_ is a method of *HTTP* authentication that improves upon `Basic authentication`_ by
+providing a way to authenticate without having to transmit the password in clear text across the network.
 
-This adapter allows authentication against text files containing lines having the basic elements of Digest authentication:
+This adapter allows authentication against text files containing lines having the basic elements of Digest
+authentication:
 
 - username, such as "**joe.user**"
 
@@ -18,7 +20,8 @@ This adapter allows authentication against text files containing lines having th
 
 - *MD5* hash of the username, realm, and password, separated by colons
 
-The above elements are separated by colons, as in the following example (in which the password is "**somePassword**"):
+The above elements are separated by colons, as in the following example (in which the password is
+"**somePassword**"):
 
 .. code-block:: text
    :linenos:
@@ -47,7 +50,9 @@ These parameters must be set prior to calling ``authenticate()``.
 Identity
 --------
 
-The digest authentication adapter returns a ``Zend\Authentication\Result`` object, which has been populated with the identity as an array having keys of **realm** and **username**. The respective array values associated with these keys correspond to the values set before ``authenticate()`` is called.
+The digest authentication adapter returns a ``Zend\Authentication\Result`` object, which has been populated with
+the identity as an array having keys of **realm** and **username**. The respective array values associated with
+these keys correspond to the values set before ``authenticate()`` is called.
 
 .. code-block:: php
    :linenos:

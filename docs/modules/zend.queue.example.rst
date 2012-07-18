@@ -3,7 +3,8 @@
 Example usage
 =============
 
-The below example of ``Zend_Queue`` shows a variety of features, including queue creation, queue retrieval, message retrieval, message deletion, and sending messages.
+The below example of ``Zend_Queue`` shows a variety of features, including queue creation, queue retrieval, message
+retrieval, message deletion, and sending messages.
 
 .. code-block:: php
    :linenos:

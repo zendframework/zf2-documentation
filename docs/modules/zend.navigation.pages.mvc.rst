@@ -3,7 +3,10 @@
 Zend_Navigation_Page_Mvc
 ========================
 
-*MVC* pages are defined using *MVC* parameters known from the ``Zend_Controller`` component. An *MVC* page will use ``Zend_Controller_Action_Helper_Url`` internally in the ``getHref()`` method to generate hrefs, and the ``isActive()`` method will intersect the ``Zend_Controller_Request_Abstract`` params with the page's params to determine if the page is active.
+*MVC* pages are defined using *MVC* parameters known from the ``Zend_Controller`` component. An *MVC* page will use
+``Zend_Controller_Action_Helper_Url`` internally in the ``getHref()`` method to generate hrefs, and the
+``isActive()`` method will intersect the ``Zend_Controller_Request_Abstract`` params with the page's params to
+determine if the page is active.
 
 .. _zend.navigation.pages.mvc.options:
 
@@ -29,13 +32,15 @@ Zend_Navigation_Page_Mvc
 
    The three examples below assume a default *MVC* setup with the *default* route in place.
 
-   The *URI* returned is relative to the *baseUrl* in ``Zend_Controller_Front``. In the examples, the baseUrl is '/' for simplicity.
+   The *URI* returned is relative to the *baseUrl* in ``Zend_Controller_Front``. In the examples, the baseUrl is
+   '/' for simplicity.
 
 .. _zend.navigation.pages.mvc.example.getHref:
 
 .. rubric:: getHref() generates the page URI
 
-This example show that *MVC* pages use ``Zend_Controller_Action_Helper_Url`` internally to generate *URI*\ s when calling *$page->getHref()*.
+This example show that *MVC* pages use ``Zend_Controller_Action_Helper_Url`` internally to generate *URI*\ s when
+calling *$page->getHref()*.
 
 .. code-block:: php
    :linenos:
@@ -65,7 +70,8 @@ This example show that *MVC* pages use ``Zend_Controller_Action_Helper_Url`` int
 
 .. rubric:: isActive() determines if page is active
 
-This example show that *MVC* pages determine whether they are active by using the params found in the request object.
+This example show that *MVC* pages determine whether they are active by using the params found in the request
+object.
 
 .. code-block:: php
    :linenos:
@@ -125,13 +131,18 @@ This example show that *MVC* pages determine whether they are active by using th
 
 .. rubric:: Using routes
 
-Routes can be used with *MVC* pages. If a page has a route, this route will be used in ``getHref()`` to generate the *URL* for the page.
+Routes can be used with *MVC* pages. If a page has a route, this route will be used in ``getHref()`` to generate
+the *URL* for the page.
 
 
 
    .. note::
 
-      Note that when using the *route* property in a page, you should also specify the default params that the route defines (module, controller, action, etc.), otherwise the ``isActive()`` method will not be able to determine if the page is active. The reason for this is that there is currently no way to get the default params from a ``Zend_Controller_Router_Route_Interface`` object, nor to retrieve the current route from a ``Zend_Controller_Router_Interface`` object.
+      Note that when using the *route* property in a page, you should also specify the default params that the
+      route defines (module, controller, action, etc.), otherwise the ``isActive()`` method will not be able to
+      determine if the page is active. The reason for this is that there is currently no way to get the default
+      params from a ``Zend_Controller_Router_Route_Interface`` object, nor to retrieve the current route from a
+      ``Zend_Controller_Router_Interface`` object.
 
 
 

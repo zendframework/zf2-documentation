@@ -8,25 +8,40 @@ Database Table Authentication
 Introduction
 ------------
 
-``Zend\Authentication\Adapter\DbTable`` provides the ability to authenticate against credentials stored in a database table. Because ``Zend\Authentication\Adapter\DbTable`` requires an instance of ``Zend\Db\Adapter\Adapter`` to be passed to its constructor, each instance is bound to a particular database connection. Other configuration options may be set through the constructor and through instance methods, one for each option.
+``Zend\Authentication\Adapter\DbTable`` provides the ability to authenticate against credentials stored in a
+database table. Because ``Zend\Authentication\Adapter\DbTable`` requires an instance of ``Zend\Db\Adapter\Adapter``
+to be passed to its constructor, each instance is bound to a particular database connection. Other configuration
+options may be set through the constructor and through instance methods, one for each option.
 
 The available configuration options include:
 
-- **tableName**: This is the name of the database table that contains the authentication credentials, and against which the database authentication query is performed.
+- **tableName**: This is the name of the database table that contains the authentication credentials, and against
+  which the database authentication query is performed.
 
-- **identityColumn**: This is the name of the database table column used to represent the identity. The identity column must contain unique values, such as a username or e-mail address.
+- **identityColumn**: This is the name of the database table column used to represent the identity. The identity
+  column must contain unique values, such as a username or e-mail address.
 
-- **credentialColumn**: This is the name of the database table column used to represent the credential. Under a simple identity and password authentication scheme, the credential value corresponds to the password. See also the ``credentialTreatment`` option.
+- **credentialColumn**: This is the name of the database table column used to represent the credential. Under a
+  simple identity and password authentication scheme, the credential value corresponds to the password. See also
+  the ``credentialTreatment`` option.
 
-- **credentialTreatment**: In many cases, passwords and other sensitive data are encrypted, hashed, encoded, obscured, salted or otherwise treated through some function or algorithm. By specifying a parameterized treatment string with this method, such as '``MD5(?)``' or '``PASSWORD(?)``', a developer may apply such arbitrary *SQL* upon input credential data. Since these functions are specific to the underlying *RDBMS*, check the database manual for the availability of such functions for your database system.
+- **credentialTreatment**: In many cases, passwords and other sensitive data are encrypted, hashed, encoded,
+  obscured, salted or otherwise treated through some function or algorithm. By specifying a parameterized treatment
+  string with this method, such as '``MD5(?)``' or '``PASSWORD(?)``', a developer may apply such arbitrary *SQL*
+  upon input credential data. Since these functions are specific to the underlying *RDBMS*, check the database
+  manual for the availability of such functions for your database system.
 
 .. _zend.authentication.adapter.dbtable.introduction.example.basic_usage:
 
 .. rubric:: Basic Usage
 
-As explained in the introduction, the ``Zend\Authentication\Adapter\DbTable`` constructor requires an instance of ``Zend\Db\Adapter\Adapter`` that serves as the database connection to which the authentication adapter instance is bound. First, the database connection should be created.
+As explained in the introduction, the ``Zend\Authentication\Adapter\DbTable`` constructor requires an instance of
+``Zend\Db\Adapter\Adapter`` that serves as the database connection to which the authentication adapter instance is
+bound. First, the database connection should be created.
 
-The following code creates an adapter for an in-memory database, creates a simple table schema, and inserts a row against which we can perform an authentication query later. This example requires the *PDO* SQLite extension to be available:
+The following code creates an adapter for an in-memory database, creates a simple table schema, and inserts a row
+against which we can perform an authentication query later. This example requires the *PDO* SQLite extension to be
+available:
 
 .. code-block:: php
    :linenos:
@@ -56,7 +71,9 @@ The following code creates an adapter for an in-memory database, creates a simpl
    // Insert the data
    $dbAdapter->query($sqlInsert);
 
-With the database connection and table data available, an instance of ``Zend\Authentication\Adapter\DbTable`` may be created. Configuration option values may be passed to the constructor or deferred as parameters to setter methods after instantiation:
+With the database connection and table data available, an instance of ``Zend\Authentication\Adapter\DbTable`` may
+be created. Configuration option values may be passed to the constructor or deferred as parameters to setter
+methods after instantiation:
 
 .. code-block:: php
    :linenos:
@@ -79,7 +96,9 @@ With the database connection and table data available, an instance of ``Zend\Aut
        ->setCredentialColumn('password')
    ;
 
-At this point, the authentication adapter instance is ready to accept authentication queries. In order to formulate an authentication query, the input credential values are passed to the adapter prior to calling the ``authenticate()`` method:
+At this point, the authentication adapter instance is ready to accept authentication queries. In order to formulate
+an authentication query, the input credential values are passed to the adapter prior to calling the
+``authenticate()`` method:
 
 .. code-block:: php
    :linenos:
@@ -92,7 +111,8 @@ At this point, the authentication adapter instance is ready to accept authentica
 
    // Perform the authentication query, saving the result
 
-In addition to the availability of the ``getIdentity()`` method upon the authentication result object, ``Zend\Authentication\Adapter\DbTable`` also supports retrieving the table row upon authentication success:
+In addition to the availability of the ``getIdentity()`` method upon the authentication result object,
+``Zend\Authentication\Adapter\DbTable`` also supports retrieving the table row upon authentication success:
 
 .. code-block:: php
    :linenos:
@@ -121,7 +141,10 @@ Since the table row contains the credential value, it is important to secure the
 Advanced Usage: Persisting a DbTable Result Object
 --------------------------------------------------
 
-By default, ``Zend\Authentication\Adapter\DbTable`` returns the identity supplied back to the auth object upon successful authentication. Another use case scenario, where developers want to store to the persistent storage mechanism of ``Zend\Authentication`` an identity object containing other useful information, is solved by using the ``getResultRowObject()`` method to return a **stdClass** object. The following code snippet illustrates its use:
+By default, ``Zend\Authentication\Adapter\DbTable`` returns the identity supplied back to the auth object upon
+successful authentication. Another use case scenario, where developers want to store to the persistent storage
+mechanism of ``Zend\Authentication`` an identity object containing other useful information, is solved by using the
+``getResultRowObject()`` method to return a **stdClass** object. The following code snippet illustrates its use:
 
 .. code-block:: php
    :linenos:
@@ -158,9 +181,14 @@ By default, ``Zend\Authentication\Adapter\DbTable`` returns the identity supplie
 Advanced Usage By Example
 -------------------------
 
-While the primary purpose of the ``Zend\Authentication`` component (and consequently ``Zend\Authentication\Adapter\DbTable``) is primarily **authentication** and not **authorization**, there are a few instances and problems that toe the line between which domain they fit within. Depending on how you've decided to explain your problem, it sometimes makes sense to solve what could look like an authorization problem within the authentication adapter.
+While the primary purpose of the ``Zend\Authentication`` component (and consequently
+``Zend\Authentication\Adapter\DbTable``) is primarily **authentication** and not **authorization**, there are a few
+instances and problems that toe the line between which domain they fit within. Depending on how you've decided to
+explain your problem, it sometimes makes sense to solve what could look like an authorization problem within the
+authentication adapter.
 
-With that disclaimer out of the way, ``Zend\Authentication\Adapter\DbTable`` has some built in mechanisms that can be leveraged for additional checks at authentication time to solve some common user problems.
+With that disclaimer out of the way, ``Zend\Authentication\Adapter\DbTable`` has some built in mechanisms that can
+be leveraged for additional checks at authentication time to solve some common user problems.
 
 .. code-block:: php
    :linenos:
@@ -183,7 +211,10 @@ With that disclaimer out of the way, ``Zend\Authentication\Adapter\DbTable`` has
                               'MD5(?) AND active = "TRUE"'
                               );
 
-Another scenario can be the implementation of a salting mechanism. Salting is a term referring to a technique which can highly improve your application's security. It's based on the idea that concatenating a random string to every password makes it impossible to accomplish a successful brute force attack on the database using pre-computed hash values from a dictionary.
+Another scenario can be the implementation of a salting mechanism. Salting is a term referring to a technique which
+can highly improve your application's security. It's based on the idea that concatenating a random string to every
+password makes it impossible to accomplish a successful brute force attack on the database using pre-computed hash
+values from a dictionary.
 
 Therefore, we need to modify our table to store our salt string:
 
@@ -216,11 +247,18 @@ And now let's build the adapter:
 
 .. note::
 
-   You can improve security even more by using a static salt value hard coded into your application. In the case that your database is compromised (e. g. by an *SQL* injection attack) but your web server is intact your data is still unusable for the attacker.
+   You can improve security even more by using a static salt value hard coded into your application. In the case
+   that your database is compromised (e. g. by an *SQL* injection attack) but your web server is intact your data
+   is still unusable for the attacker.
 
-Another alternative is to use the ``getDbSelect()`` method of the ``Zend\Authentication\Adapter\DbTable`` after the adapter has been constructed. This method will return the ``Zend\Db\Sql\Select`` object instance it will use to complete the ``authenticate()`` routine. It is important to note that this method will always return the same object regardless if ``authenticate()`` has been called or not. This object **will not** have any of the identity or credential information in it as those values are placed into the select object at ``authenticate()`` time.
+Another alternative is to use the ``getDbSelect()`` method of the ``Zend\Authentication\Adapter\DbTable`` after the
+adapter has been constructed. This method will return the ``Zend\Db\Sql\Select`` object instance it will use to
+complete the ``authenticate()`` routine. It is important to note that this method will always return the same
+object regardless if ``authenticate()`` has been called or not. This object **will not** have any of the identity
+or credential information in it as those values are placed into the select object at ``authenticate()`` time.
 
-An example of a situation where one might want to use the ``getDbSelect()`` method would check the status of a user, in other words to see if that user's account is enabled.
+An example of a situation where one might want to use the ``getDbSelect()`` method would check the status of a
+user, in other words to see if that user's account is enabled.
 
 .. code-block:: php
    :linenos:

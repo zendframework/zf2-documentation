@@ -5,7 +5,10 @@ Zend_Serializer_Adapter
 
 ``Zend_Serializer`` adapters create a bridge for different methods of serializing with very little effort.
 
-Every adapter has different pros and cons. In some cases, not every *PHP* datatype (e.g., objects) can be converted to a string representation. In most such cases, the type will be converted to a similar type that is serializable -- as an example, *PHP* objects will often be cast to arrays. If this fails, a ``Zend_Serializer_Exception`` will be thrown.
+Every adapter has different pros and cons. In some cases, not every *PHP* datatype (e.g., objects) can be converted
+to a string representation. In most such cases, the type will be converted to a similar type that is serializable
+-- as an example, *PHP* objects will often be cast to arrays. If this fails, a ``Zend_Serializer_Exception`` will
+be thrown.
 
 Below is a list of available adapters.
 
@@ -23,7 +26,10 @@ There are no configurable options for this adapter.
 Zend_Serializer_Adapter_IgBinary
 --------------------------------
 
-`Igbinary`_ is Open Source Software released by Sulake Dynamoid Oy. It's a drop-in replacement for the standard *PHP* serializer. Instead of time and space consuming textual representation, igbinary stores *PHP* data structures in a compact binary form. Savings are significant when using memcached or similar memory based storages for serialized data.
+`Igbinary`_ is Open Source Software released by Sulake Dynamoid Oy. It's a drop-in replacement for the standard
+*PHP* serializer. Instead of time and space consuming textual representation, igbinary stores *PHP* data structures
+in a compact binary form. Savings are significant when using memcached or similar memory based storages for
+serialized data.
 
 You need the igbinary *PHP* extension installed on your system in order to use this adapter.
 
@@ -34,11 +40,14 @@ There adapter takes no configuration options.
 Zend_Serializer_Adapter_Wddx
 ----------------------------
 
-`WDDX`_ (Web Distributed Data eXchange) is a programming-language-, platform-, and transport-neutral data interchange mechanism for passing data between different environments and different computers.
+`WDDX`_ (Web Distributed Data eXchange) is a programming-language-, platform-, and transport-neutral data
+interchange mechanism for passing data between different environments and different computers.
 
-The adapter simply uses the `wddx_*()`_ *PHP* functions. Please read the *PHP* manual to determine how you may enable them in your *PHP* installation.
+The adapter simply uses the `wddx_*()`_ *PHP* functions. Please read the *PHP* manual to determine how you may
+enable them in your *PHP* installation.
 
-Additionally, the `SimpleXML`_ *PHP* extension is used to check if a returned ``NULL`` value from ``wddx_unserialize()`` is based on a serialized ``NULL`` or on invalid data.
+Additionally, the `SimpleXML`_ *PHP* extension is used to check if a returned ``NULL`` value from
+``wddx_unserialize()`` is based on a serialized ``NULL`` or on invalid data.
 
 Available options include:
 
@@ -57,7 +66,8 @@ Available options include:
 Zend_Serializer_Adapter_Json
 ----------------------------
 
-The *JSON* adapter provides a bridge to the ``Zend_Json`` component and/or ext/json. Please read the :ref:`Zend_Json documentation <zend.json.introduction>` for further information.
+The *JSON* adapter provides a bridge to the ``Zend_Json`` component and/or ext/json. Please read the
+:ref:`Zend_Json documentation <zend.json.introduction>` for further information.
 
 Available options include:
 
@@ -80,7 +90,9 @@ Available options include:
 Zend_Serializer_Adapter_Amf 0 and 3
 -----------------------------------
 
-The *AMF* adapters, ``Zend_Serializer_Adapter_Amf0`` and ``Zend_Serializer_Adapter_Amf3``, provide a bridge to the serializer of the ``Zend_Amf`` component. Please read the :ref:`Zend_Amf documentation <zend.amf.introduction>` for further information.
+The *AMF* adapters, ``Zend_Serializer_Adapter_Amf0`` and ``Zend_Serializer_Adapter_Amf3``, provide a bridge to the
+serializer of the ``Zend_Amf`` component. Please read the :ref:`Zend_Amf documentation <zend.amf.introduction>` for
+further information.
 
 There are no options for these adapters.
 
@@ -89,7 +101,8 @@ There are no options for these adapters.
 Zend_Serializer_Adapter_PythonPickle
 ------------------------------------
 
-This adapter converts *PHP* types to a `Python Pickle`_ string representation. With it, you can read the serialized data with Python and read Pickled data of Python with *PHP*.
+This adapter converts *PHP* types to a `Python Pickle`_ string representation. With it, you can read the serialized
+data with Python and read Pickled data of Python with *PHP*.
 
 Available options include:
 
@@ -168,7 +181,8 @@ Datatype merging (Python to *PHP*) occurs per the following:
 Zend_Serializer_Adapter_PhpCode
 -------------------------------
 
-This adapter generates a parsable *PHP* code representation using `var_export()`_. On restoring, the data will be executed using `eval`_.
+This adapter generates a parsable *PHP* code representation using `var_export()`_. On restoring, the data will be
+executed using `eval`_.
 
 There are no configuration options for this adapter.
 
@@ -176,13 +190,16 @@ There are no configuration options for this adapter.
 
    **Unserializing objects**
 
-   Objects will be serialized using the `\__set_state`_ magic method. If the class doesn't implement this method, a fatal error will occur during execution.
+   Objects will be serialized using the `\__set_state`_ magic method. If the class doesn't implement this method, a
+   fatal error will occur during execution.
 
 .. warning::
 
    **Uses eval()**
 
-   The ``PhpCode`` adapter utilizes ``eval()`` to unserialize. This introduces both a performance and potential security issue as a new process will be executed. Typically, you should use the ``PhpSerialize`` adapter unless you require human-readability of the serialized data.
+   The ``PhpCode`` adapter utilizes ``eval()`` to unserialize. This introduces both a performance and potential
+   security issue as a new process will be executed. Typically, you should use the ``PhpSerialize`` adapter unless
+   you require human-readability of the serialized data.
 
 
 

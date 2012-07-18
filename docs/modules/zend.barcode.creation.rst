@@ -8,7 +8,8 @@ Barcode creation using Zend\\Barcode\\Barcode class
 Using Zend\\Barcode\\Barcode::factory
 -------------------------------------
 
-``Zend_Barcode`` uses a factory method to create an instance of a renderer that extends ``Zend\Barcode\Renderer\AbstractRenderer``. The factory method accepts five arguments.
+``Zend_Barcode`` uses a factory method to create an instance of a renderer that extends
+``Zend\Barcode\Renderer\AbstractRenderer``. The factory method accepts five arguments.
 
 . The name of the barcode format (e.g., "code39") or a `Traversable`_ object (required)
 
@@ -18,13 +19,15 @@ Using Zend\\Barcode\\Barcode::factory
 
 . Options to pass to the renderer object (an array or a `Traversable`_ object) (optional)
 
-. Boolean to indicate whether or not to automatically render errors. If an exception occurs, the provided barcode object will be replaced with an Error representation (optional default ``TRUE``)
+. Boolean to indicate whether or not to automatically render errors. If an exception occurs, the provided barcode
+  object will be replaced with an Error representation (optional default ``TRUE``)
 
 .. _zend.barcode.creation.configuration.example-1:
 
 .. rubric:: Getting a Renderer with Zend\\Barcode\\Barcode::factory()
 
-``Zend\Barcode\Barcode::factory()`` instantiates barcode objects and renderers and ties them together. In this first example, we will use the **Code39** barcode type together with the **Image** renderer.
+``Zend\Barcode\Barcode::factory()`` instantiates barcode objects and renderers and ties them together. In this
+first example, we will use the **Code39** barcode type together with the **Image** renderer.
 
 .. code-block:: php
    :linenos:
@@ -44,7 +47,8 @@ Using Zend\\Barcode\\Barcode::factory
 
 .. rubric:: Using Zend\\Barcode\\Barcode::factory() with Zend\\Config\\Config objects
 
-You may pass a ``Zend\Config\Config`` object to the factory in order to create the necessary objects. The following example is functionally equivalent to the previous.
+You may pass a ``Zend\Config\Config`` object to the factory in order to create the necessary objects. The following
+example is functionally equivalent to the previous.
 
 .. code-block:: php
    :linenos:
@@ -67,7 +71,8 @@ You may pass a ``Zend\Config\Config`` object to the factory in order to create t
 Drawing a barcode
 -----------------
 
-When you **draw** the barcode, you retrieve the resource in which the barcode is drawn. To draw a barcode, you can call the ``draw()`` of the renderer, or simply use the proxy method provided by ``Zend\Barcode\Barcode``.
+When you **draw** the barcode, you retrieve the resource in which the barcode is drawn. To draw a barcode, you can
+call the ``draw()`` of the renderer, or simply use the proxy method provided by ``Zend\Barcode\Barcode``.
 
 .. _zend.barcode.creation.drawing.example-1:
 
@@ -114,7 +119,9 @@ When you **draw** the barcode, you retrieve the resource in which the barcode is
 Renderering a barcode
 ---------------------
 
-When you render a barcode, you draw the barcode, you send the headers and you send the resource (e.g. to a browser). To render a barcode, you can call the ``render()`` method of the renderer or simply use the proxy method provided by ``Zend\Barcode\Barcode``.
+When you render a barcode, you draw the barcode, you send the headers and you send the resource (e.g. to a
+browser). To render a barcode, you can call the ``render()`` method of the renderer or simply use the proxy method
+provided by ``Zend\Barcode\Barcode``.
 
 .. _zend.barcode.creation.renderering.example-1:
 

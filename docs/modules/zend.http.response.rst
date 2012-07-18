@@ -8,7 +8,8 @@ Zend\\Http\\Response
 Overview
 --------
 
-The ``Zend\Http\Response`` class is responsible for providing a fluent API that allows a developer to interact with all the various parts of an HTTP response.
+The ``Zend\Http\Response`` class is responsible for providing a fluent API that allows a developer to interact with
+all the various parts of an HTTP response.
 
 A typical HTTP Response looks like this:
 
@@ -23,14 +24,20 @@ A typical HTTP Response looks like this:
    |         BODY            |
    ---------------------------
 
-The first line of the response consists of the HTTP version, status code, and the reason string for the provided status code; this is called the Response Line. Next is a set of headers; there can be 0 or an unlimited number of headers. The remainder of the response is the response body, which is typically a string of HTML that will render on the client's browser, but which can also be a place for request/response payload data typical of an AJAX request. More information on the structure and specification of an HTTP response can be found in `RFC-2616 on the W3.org site`_.
+The first line of the response consists of the HTTP version, status code, and the reason string for the provided
+status code; this is called the Response Line. Next is a set of headers; there can be 0 or an unlimited number of
+headers. The remainder of the response is the response body, which is typically a string of HTML that will render
+on the client's browser, but which can also be a place for request/response payload data typical of an AJAX
+request. More information on the structure and specification of an HTTP response can be found in `RFC-2616 on the
+W3.org site`_.
 
 .. _zend.http.response.quick-start:
 
 Quick Start
 -----------
 
-Response objects can either be created from the provided ``fromString()`` factory, or, if you wish to have a completely empty object to start with, by simply instantiating the ``Zend\Http\Response`` class.
+Response objects can either be created from the provided ``fromString()`` factory, or, if you wish to have a
+completely empty object to start with, by simply instantiating the ``Zend\Http\Response`` class.
 
 .. code-block:: php
    :linenos:
@@ -248,7 +255,8 @@ Available Methods
    ``setMetadata(string|int|array|Traversable $spec, mixed $value)``
    Set message metadata
 
-   Non-destructive setting of message metadata; always adds to the metadata, never overwrites the entire metadata container.
+   Non-destructive setting of message metadata; always adds to the metadata, never overwrites the entire metadata
+   container.
 
    Returns ``Zend\Stdlib\Message``
 

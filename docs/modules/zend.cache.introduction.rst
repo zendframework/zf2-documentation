@@ -5,15 +5,20 @@ Introduction
 
 ``Zend_Cache`` provides a generic way to cache any data.
 
-Caching in Zend Framework is operated by frontends while cache records are stored through backend adapters (**File**, **Sqlite**, **Memcache**...) through a flexible system of IDs and tags. Using those, it is easy to delete specific types of records afterwards (for example: "delete all cache records marked with a given tag").
+Caching in Zend Framework is operated by frontends while cache records are stored through backend adapters
+(**File**, **Sqlite**, **Memcache**...) through a flexible system of IDs and tags. Using those, it is easy to
+delete specific types of records afterwards (for example: "delete all cache records marked with a given tag").
 
-The core of the module (``Zend_Cache_Core``) is generic, flexible and configurable. Yet, for your specific needs there are cache frontends that extend ``Zend_Cache_Core`` for convenience: **Output**, **File**, **Function** and **Class**.
+The core of the module (``Zend_Cache_Core``) is generic, flexible and configurable. Yet, for your specific needs
+there are cache frontends that extend ``Zend_Cache_Core`` for convenience: **Output**, **File**, **Function** and
+**Class**.
 
 .. _zend.cache.introduction.example-1:
 
 .. rubric:: Getting a Frontend with Zend_Cache::factory()
 
-``Zend_Cache::factory()`` instantiates correct objects and ties them together. In this first example, we will use **Core** frontend together with **File** backend.
+``Zend_Cache::factory()`` instantiates correct objects and ties them together. In this first example, we will use
+**Core** frontend together with **File** backend.
 
 .. code-block:: php
    :linenos:
@@ -37,13 +42,16 @@ The core of the module (``Zend_Cache_Core``) is generic, flexible and configurab
 
    **Frontends and Backends Consisting of Multiple Words**
 
-   Some frontends and backends are named using multiple words, such as 'ZendPlatform'. When specifying them to the factory, separate them using a word separator, such as a space (' '), hyphen ('-'), or period ('.').
+   Some frontends and backends are named using multiple words, such as 'ZendPlatform'. When specifying them to the
+   factory, separate them using a word separator, such as a space (' '), hyphen ('-'), or period ('.').
 
 .. _zend.cache.introduction.example-2:
 
 .. rubric:: Caching a Database Query Result
 
-Now that we have a frontend, we can cache any type of data (we turned on serialization). for example, we can cache a result from a very expensive database query. After it is cached, there is no need to even connect to the database; records are fetched from cache and unserialized.
+Now that we have a frontend, we can cache any type of data (we turned on serialization). for example, we can cache
+a result from a very expensive database query. After it is cached, there is no need to even connect to the
+database; records are fetched from cache and unserialized.
 
 .. code-block:: php
    :linenos:
@@ -74,9 +82,11 @@ Now that we have a frontend, we can cache any type of data (we turned on seriali
 
 .. rubric:: Caching Output with Zend_Cache Output Frontend
 
-We 'mark up' sections in which we want to cache output by adding some conditional logic, encapsulating the section within ``start()`` and ``end()`` methods (this resembles the first example and is the core strategy for caching).
+We 'mark up' sections in which we want to cache output by adding some conditional logic, encapsulating the section
+within ``start()`` and ``end()`` methods (this resembles the first example and is the core strategy for caching).
 
-Inside, output your data as usual - all output will be cached when execution hits the ``end()`` method. On the next run, the whole section will be skipped in favor of fetching data from cache (as long as the cache record is valid).
+Inside, output your data as usual - all output will be cached when execution hits the ``end()`` method. On the next
+run, the whole section will be skipped in favor of fetching data from cache (as long as the cache record is valid).
 
 .. code-block:: php
    :linenos:
@@ -105,10 +115,16 @@ Inside, output your data as usual - all output will be cached when execution hit
 
    echo 'This is never cached ('.time().').';
 
-Notice that we output the result of ``time()`` twice; this is something dynamic for demonstration purposes. Try running this and then refreshing several times; you will notice that the first number doesn't change while second changes as time passes. That is because the first number was output in the cached section and is saved among other output. After half a minute (we've set lifetime to 30 seconds) the numbers should match again because the cache record expired -- only to be cached again. You should try this in your browser or console.
+Notice that we output the result of ``time()`` twice; this is something dynamic for demonstration purposes. Try
+running this and then refreshing several times; you will notice that the first number doesn't change while second
+changes as time passes. That is because the first number was output in the cached section and is saved among other
+output. After half a minute (we've set lifetime to 30 seconds) the numbers should match again because the cache
+record expired -- only to be cached again. You should try this in your browser or console.
 
 .. note::
 
-   When using ``Zend_Cache``, pay attention to the important cache identifier (passed to ``save()`` and ``start()``). It must be unique for every resource you cache, otherwise unrelated cache records may wipe each other or, even worse, be displayed in place of the other.
+   When using ``Zend_Cache``, pay attention to the important cache identifier (passed to ``save()`` and
+   ``start()``). It must be unique for every resource you cache, otherwise unrelated cache records may wipe each
+   other or, even worse, be displayed in place of the other.
 
 

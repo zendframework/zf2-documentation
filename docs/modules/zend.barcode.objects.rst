@@ -3,9 +3,11 @@
 Zend\\Barcode\\Barcode Objects
 ==============================
 
-Barcode objects allow you to generate barcodes independently of the rendering support. After generation, you can retrieve the barcode as an array of drawing instructions that you can provide to a renderer.
+Barcode objects allow you to generate barcodes independently of the rendering support. After generation, you can
+retrieve the barcode as an array of drawing instructions that you can provide to a renderer.
 
-Objects have a large number of options. Most of them are common to all objects. These options can be set in three ways:
+Objects have a large number of options. Most of them are common to all objects. These options can be set in three
+ways:
 
 - As an array or a `Traversable`_ object) object passed to the constructor.
 
@@ -41,7 +43,11 @@ Objects have a large number of options. Most of them are common to all objects. 
 Common Options
 --------------
 
-In the following list, the values have no units; we will use the term "unit." For example, the default value of the "thin bar" is "1 unit". The real units depend on the rendering support (see :ref:`the renderers documentation <zend.barcode.renderers>` for more information). Setters are each named by uppercasing the initial letter of the option and prefixing the name with "set" (e.g. "barHeight" becomes "setBarHeight"). All options have a corresponding getter prefixed with "get" (e.g. "getBarHeight"). Available options are:
+In the following list, the values have no units; we will use the term "unit." For example, the default value of the
+"thin bar" is "1 unit". The real units depend on the rendering support (see :ref:`the renderers documentation
+<zend.barcode.renderers>` for more information). Setters are each named by uppercasing the initial letter of the
+option and prefixing the name with "set" (e.g. "barHeight" becomes "setBarHeight"). All options have a
+corresponding getter prefixed with "get" (e.g. "getBarHeight"). Available options are:
 
 .. _zend.barcode.objects.common.options.table:
 
@@ -90,7 +96,9 @@ In the following list, the values have no units; we will use the term "unit." Fo
 Particular case of static setBarcodeFont()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can set a commont font for all your objects by using the static method ``Zend\Barcode\Barcode::setBarcodeFont()``. This value can be always be overridden for individual objects by using the ``setFont()`` method.
+You can set a commont font for all your objects by using the static method
+``Zend\Barcode\Barcode::setBarcodeFont()``. This value can be always be overridden for individual objects by using
+the ``setFont()`` method.
 
 .. code-block:: php
    :linenos:
