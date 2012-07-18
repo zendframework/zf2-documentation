@@ -1,4 +1,3 @@
-
 .. _zend.crypt.password:
 
 Password secure storing
@@ -40,10 +39,10 @@ By default the ``Zend\Crypt\Password\Bcrypt`` class uses a value of 14 for the c
 If you want to change the cost parameter of the bcrypt algorithm you can use the ``setCost()`` method.
 
 .. note::
+
    **Bcrypt with non-ASCII passwords (8-bit characters)**
 
    The bcrypt implementation used by PHP < 5.3.7 can contains a security flaw if the password uses 8-bit characters (`here the security report`_). The impact of this bug was that most (but not all) passwords containing non-ASCII characters with the 8th bit set were hashed incorrectly, resulting in password hashes incompatible with those of OpenBSD's original implementation of bcrypt. This security flaw has been fixed starting from PHP 5.3.7 and the prefix used in the output has changed in '$2y$' in order to put evidence on the correctness of the hash value. If you are using PHP < 5.3.7 with 8-bit passwords the ``Zend\Crypt\Password\Bcrypt`` throws an exception suggesting to upgrade to PHP 5.3.7+ or use only 7-bit passwords.
-
 
 
 

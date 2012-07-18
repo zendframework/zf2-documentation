@@ -1,10 +1,8 @@
-
 .. _learning.di:
 
 #############################
 Learning Dependency Injection
 #############################
-
 
 .. _learning.di.very-brief-introduction-to-di:
 
@@ -20,7 +18,6 @@ Very brief introduction to Di.
 
 Above, A is a dependency of B, and A was **injected** into B. If you are not familar with the concept of dependency injection, here are a couple of great reads: Matthew Weier O'Phinney's `Analogy`_, Ralph Schindler's `Learning DI`_, or Fabien Potencier's `Series on DI`_.
 
-
 .. _learning.di.very-brief-introduction-to-di-container:
 
 Very brief introduction to Di Container.
@@ -30,7 +27,6 @@ Very brief introduction to Di Container.
    :linenos:
 
    TBD.
-
 
 .. _learning.di.simplest-usage-case-2-classes-one-consumes-the-other:
 
@@ -171,7 +167,6 @@ Since the method is prefixed with set, and is followed by a capital letter, the 
 
 Other methods are being created to determine what the wirings between classes are, such as interface injection and annotation based injection.
 
-
 .. _learning.di.simplest-usage-case-without-type-hints:
 
 Simplest Usage Case Without Type-hints
@@ -235,7 +230,6 @@ You'll notice the only change is that setA now does not include any type-hinting
    $c = $di->get('My\C', $parameters);
 
 This above usage scenario provides that whatever the code looks like, you can ensure that it works with the dependency injection container. In an ideal world, all of your code would have the proper type hinting and/or would be using a mapping strategy that reduces the amount of bootstrapping work that needs to be done in order to have a full definition that is capable of instantiating all of the objects you might require.
-
 
 .. _learning.di.simplest-usage-case-with-compiled-definition:
 
@@ -304,7 +298,6 @@ One strategy for persisting these compiled definitions would be the following:
 
 Since ``Zend\Code\Scanner`` does not include files, the classes contained within are not loaded into memory. Instead, ``Zend\Code\Scanner`` uses tokenization to determine the structure of your files. This makes this suitable to use this solution during development and within the same request as any one of your application's dispatched actions.
 
-
 .. _learning.di.creating-a-precompiled-definition-for-others-to-use:
 
 Creating a precompiled definition for others to use
@@ -331,7 +324,6 @@ If you are a 3rd party code developer, it makes sense to produce a ``Definition`
        'body' => 'parent::__construct(' . var_export($definition->toArray(), true) . ');'
    ));
    file_put_contents(__DIR__ . '/My/DiDefinition.php', $codeGenerator->generate());
-
 
 .. _learning.di.using-multiple-definitions-from-multiple-sources:
 
@@ -387,7 +379,6 @@ In all actuality, you will be using code from multiple places, some Zend Framewo
        ),
    );
    $im->setProperties($propertiesFromConfig);
-
 
 .. _learning.di.generating-service-locators:
 

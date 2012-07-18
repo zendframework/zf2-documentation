@@ -1,9 +1,7 @@
-
 .. _zend.pdf.pages:
 
 Working with Pages
 ==================
-
 
 .. _zend.pdf.pages.creation:
 
@@ -30,7 +28,6 @@ The ``\Zend\Pdf\PdfDocument::newPage()`` method and the ``\Zend\Pdf\Page`` const
 
 Document pages are stored in the ``$pages`` public attribute of the ``\Zend\Pdf\PdfDocument`` class. The attribute holds an array of ``\Zend\Pdf\Page`` objects and completely defines the instances and order of pages. This array can be manipulated like any other *PHP* array:
 
-
 .. _zend.pdf.pages.example-1:
 
 .. rubric:: PDF document pages management
@@ -52,14 +49,12 @@ Document pages are stored in the ``$pages`` public attribute of the ``\Zend\Pdf\
 
    ...
 
-
 .. _zend.pdf.pages.cloning:
 
 Page cloning
 ------------
 
 Existing *PDF* page can be duplicated by creating new ``\Zend\Pdf\Page`` object with existing page as a parameter:
-
 
 .. _zend.pdf.pages.example-2:
 
@@ -92,11 +87,10 @@ Existing *PDF* page can be duplicated by creating new ``\Zend\Pdf\Page`` object 
 It's useful if you need several pages to be created using one template.
 
 .. caution::
+
    Important! Duplicated page shares some *PDF* resources with a template page, so it can be used only within the same document as a template page. Modified document can be saved as new one.
 
-
 *clone* operator may be used to create page which is not attached to any document. It takes more time than duplicating page since it needs to copy all dependent objects (used fonts, images and other resources), but it allows to use pages from different source documents to create new one:
-
 
 .. _zend.pdf.pages.example-3:
 
@@ -115,7 +109,6 @@ It's useful if you need several pages to be created using one template.
    $pdf->pages[] = $page2;
 
 If several template pages are planned to be used as templates then it could be more efficient to utilize ``\Zend\Pdf\Resource\Extractor`` class which gives an ability to share resources between cloned pages - fonts, images, etc. (otherwise new resource copy will be created for each cloned page):
-
 
 .. _zend.pdf.pages.example-4:
 

@@ -1,11 +1,9 @@
-
 .. _zend.filter.set.stringtolower:
 
 StringToLower
 =============
 
 This filter converts any input to be lowercased.
-
 
 .. _zend.filter.set.stringtolower.options:
 
@@ -15,7 +13,6 @@ Supported options for Zend_Filter_StringToLower
 The following options are supported for ``Zend_Filter_StringToLower``:
 
 - **encoding**: This option can be used to set an encoding which has to be used.
-
 
 .. _zend.filter.set.stringtolower.basic:
 
@@ -31,7 +28,6 @@ This is a basic example:
 
    print $filter->filter('SAMPLE');
    // returns "sample"
-
 
 .. _zend.filter.set.stringtolower.encoding:
 
@@ -53,12 +49,11 @@ Per default it will only handle characters from the actual locale of your server
    $filter->setEncoding('ISO-8859-1');
 
 .. note::
+
    **Setting wrong encodings**
 
    Be aware that you will get an exception when you want to set an encoding and the mbstring extension is not available in your environment.
 
-
    Also when you are trying to set an encoding which is not supported by your mbstring extension you will get an exception.
-
 
 

@@ -1,4 +1,3 @@
-
 .. _zend.validator.messages:
 
 Validation Messages
@@ -38,7 +37,6 @@ Using the ``setMessage()`` method you can set another message to be returned in 
 
 The second parameter defines the failure which will be overridden. When you omit this parameter, then the given message will be set for all possible failures of this validator.
 
-
 .. _zend.validator.messages.pretranslated:
 
 Using pre-translated validation messages
@@ -47,10 +45,10 @@ Using pre-translated validation messages
 Zend Framework is shipped with more than 45 different validators with more than 200 failure messages. It can be a tedious task to translate all of these messages. But for your convenience Zend Framework comes with already pre-translated validation messages. You can find them within the path ``/resources/languages`` in your Zend Framework installation.
 
 .. note::
+
    **Used path**
 
    The resource files are outside of the library path because all of your translations should also be outside of this path.
-
 
 So to translate all validation messages to German for example, all you have to do is to attach a translator to ``Zend\Validator\AbstractValidator`` using these resource files.
 
@@ -67,14 +65,12 @@ So to translate all validation messages to German for example, all you have to d
    Zend\Validator\AbstractValidator::setDefaultTranslator($translator);
 
 .. note::
+
    **Supported languages**
 
    This feature is very young, so the amount of supported languages may not be complete. New languages will be added with each release. Additionally feel free to use the existing resource files to make your own translations.
 
-
    You could also use these resource files to rewrite existing translations. So you are not in need to create these files manually yourself.
-
-
 
 .. _zend.validator.messages.limitation:
 
@@ -93,9 +89,9 @@ To limit the returned message size use ``Zend\Validator\AbstractValidator::setMe
    Zend\Validator\AbstractValidator::setMessageLength(100);
 
 .. note::
+
    **Where is this parameter used?**
 
    The set message length is used for all validators, even for self defined ones, as long as they extend ``Zend\Validator\AbstractValidator``.
-
 
 

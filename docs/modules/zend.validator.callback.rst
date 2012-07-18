@@ -1,11 +1,9 @@
-
 .. _zend.validator.set.callback:
 
 Callback
 ========
 
 ``Zend\Validator\Callback`` allows you to provide a callback with which to validate a given value.
-
 
 .. _zend.validator.set.callback.options:
 
@@ -17,7 +15,6 @@ The following options are supported for ``Zend\Validator\Callback``:
 - **callback**: Sets the callback which will be called for the validation.
 
 - **options**: Sets the additional options which will be given to the callback.
-
 
 .. _zend.validator.set.callback.basic:
 
@@ -47,7 +44,6 @@ To use it within ``Zend\Validator\Callback`` you just have to call it this way:
        // input is invalid
    }
 
-
 .. _zend.validator.set.callback.closure:
 
 Usage with closures
@@ -68,7 +64,6 @@ Usage with closures
    } else {
        // input is invalid
    }
-
 
 .. _zend.validator.set.callback.class:
 
@@ -144,7 +139,6 @@ Finally, if you are using *PHP* 5.3, you may define the magic method ``__invoke(
    } else {
        // input is invalid
    }
-
 
 .. _zend.validator.set.callback.options2:
 

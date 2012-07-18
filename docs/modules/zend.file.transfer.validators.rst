@@ -1,4 +1,3 @@
-
 .. _zend.file.transfer.validators:
 
 Validators for Zend_File_Transfer
@@ -42,7 +41,6 @@ Validators for Zend_File_Transfer
 
 - ``WordCount``: This validator is able to check the number of words within files. It provides a minimum and maximum count and will throw an error when either of these thresholds are crossed.
 
-
 .. _zend.file.transfer.validators.usage:
 
 Using Validators with Zend_File_Transfer
@@ -68,7 +66,6 @@ Putting validators to work is quite simple. There are several methods for adding
 
 - ``clearValidators()``: Clears all registered validators.
 
-
 .. _zend.file.transfer.validators.usage.example:
 
 .. rubric:: Add Validators to a File Transfer Object
@@ -91,7 +88,6 @@ Putting validators to work is quite simple. There are several methods for adding
        'Count' => array('min' => 1, 'max' => 3),
    ));
 
-
 .. _zend.file.transfer.validators.usage.exampletwo:
 
 .. rubric:: Limit Validators to Single Files
@@ -107,7 +103,6 @@ Putting validators to work is quite simple. There are several methods for adding
    $upload->addValidator('Size', false, 20000, 'file2');
 
 Normally, you should use the ``addValidators()`` method, which can be called multiple times.
-
 
 .. _zend.file.transfer.validators.usage.examplemultiple:
 
@@ -126,11 +121,10 @@ Often it's simpler just to call ``addValidator()`` multiple times with one call 
           ->addValidator('Filessize', false, 25000);
 
 .. note::
+
    Note that setting the same validator multiple times is allowed, but doing so can lead to issues when using different options for the same validator.
 
-
 Last but not least, you can simply check the files using ``isValid()``.
-
 
 .. _zend.file.transfer.validators.usage.exampleisvalid:
 
@@ -153,11 +147,10 @@ Last but not least, you can simply check the files using ``isValid()``.
    }
 
 .. note::
+
    Note that ``isValid()`` will be called automatically when you receive the files and have not called it previously.
 
-
 When validation has failed it is a good idea to get information about the problems found. To get this information, you can use the methods ``getMessages()`` which returns all validation messages as array, ``getErrors()`` which returns all error codes, and ``hasErrors()`` which returns ``TRUE`` as soon as a validation error has been found.
-
 
 .. _zend.file.transfer.validators.count:
 
@@ -169,20 +162,16 @@ The ``Count`` validator checks for the number of files which are provided. It su
 - ``min``: Sets the minimum number of files to transfer.
 
   .. note::
+
      When using this option you must give the minimum number of files when calling this validator the first time; otherwise you will get an error in return.
 
-
-
   With this option you can define the minimum number of files you expect to receive.
-
 
 - ``max``: Sets the maximum number of files to transfer.
 
   With this option you can limit the number of files which are accepted but also detect a possible attack when more files are given than defined in your form.
 
-
 If you initiate this validator with a string or integer, the value will be used as ``max``. Or you can also use the methods ``setMin()`` and ``setMax()`` to set both options afterwards and ``getMin()`` and ``getMax()`` to retrieve the actual set values.
-
 
 .. _zend.file.transfer.validators.count.example:
 
@@ -200,9 +189,8 @@ If you initiate this validator with a string or integer, the value will be used 
    $upload->addValidator('Count', false, array('min' =>1, 'max' => 5));
 
 .. note::
+
    Note that this validator stores the number of checked files internally. The file which exceeds the maximum will be returned as error.
-
-
 
 .. _zend.file.transfer.validators.crc32:
 
@@ -214,8 +202,6 @@ The ``Crc32`` validator checks the content of a transferred file by hashing it. 
 - ``*``: Sets any key or use a numeric array. The values will be used as hash to validate against.
 
   You can set multiple hashes by using different keys. Each will be checked and the validation will fail only if all values fail.
-
-
 
 .. _zend.file.transfer.validators.crc32.example:
 
@@ -232,7 +218,6 @@ The ``Crc32`` validator checks the content of a transferred file by hashing it. 
    // Limits this validator to two different hashes
    $upload->addValidator('Crc32', false, array('3b3652f', 'e612b69'));
 
-
 .. _zend.file.transfer.validators.excludeextension:
 
 ExcludeExtension Validator
@@ -247,7 +232,6 @@ The ``ExcludeExtension`` validator checks the file extension of the specified fi
 This validator accepts multiple extensions, either as a comma-delimited string, or as an array. You may also use the methods ``setExtension()``, ``addExtension()``, and ``getExtension()`` to set and retrieve extensions.
 
 In some cases it is useful to match in a case-sensitive fashion. So the constructor allows a second parameter called ``$case`` which, if set to ``TRUE``, validates the extension by comparing it with the specified values in a case-sensitive fashion.
-
 
 .. _zend.file.transfer.validators.excludeextension.example:
 
@@ -273,9 +257,8 @@ In some cases it is useful to match in a case-sensitive fashion. So the construc
                          array('php', 'exe', 'case' => true));
 
 .. note::
+
    Note that this validator only checks the file extension. It does not check the file's *MIME* type.
-
-
 
 .. _zend.file.transfer.validators.excludemimetype:
 
@@ -288,11 +271,9 @@ The ``ExcludeMimeType`` validator checks the *MIME* type of transferred files. I
 
   With this option you can define the *MIME* type of files that are not to be accepted.
 
-
 - ``headerCheck``: If set to ``TRUE`` this option will check the *HTTP* Information for the file type when the **fileInfo** or **mimeMagic** extensions can not be found. The default value for this option is ``FALSE``.
 
 This validator accepts multiple *MIME* types, either as a comma-delimited string, or as an array. You may also use the methods ``setMimeType()``, ``addMimeType()``, and ``getMimeType()`` to set and retrieve the *MIME* types.
-
 
 .. _zend.file.transfer.validators.excludemimetype.example:
 
@@ -316,9 +297,8 @@ This validator accepts multiple *MIME* types, either as a comma-delimited string
 The above example shows that it is also possible to disallow groups of *MIME* types. For example, to disallow all images, just use 'image' as the *MIME* type. This can be used for all groups of *MIME* types like 'image', 'audio', 'video', 'text', etc.
 
 .. note::
+
    Note that disallowing groups of *MIME* types will disallow all members of this group even if this is not intentional. When you disallow 'image' you will disallow all types of images like 'image/jpeg' or 'image/vasa'. When you are not sure if you want to disallow all types, you should disallow only specific *MIME* types instead of complete groups.
-
-
 
 .. _zend.file.transfer.validators.exists:
 
@@ -330,7 +310,6 @@ The ``Exists`` validator checks for the existence of specified files. It support
 - ``*``: Sets any key or use a numeric array to check if the specific file exists in the given directory.
 
 This validator accepts multiple directories, either as a comma-delimited string, or as an array. You may also use the methods ``setDirectory()``, ``addDirectory()``, and ``getDirectory()`` to set and retrieve directories.
-
 
 .. _zend.file.transfer.validators.exists.example:
 
@@ -350,9 +329,8 @@ This validator accepts multiple directories, either as a comma-delimited string,
                          array('\home\images', '\home\uploads'));
 
 .. note::
+
    Note that this validator checks whether the specified file exists in all of the given directories. The validation will fail if the file does not exist in any of the given directories.
-
-
 
 .. _zend.file.transfer.validators.extension:
 
@@ -368,7 +346,6 @@ The ``Extension`` validator checks the file extension of the specified files. It
 This validator accepts multiple extensions, either as a comma-delimited string, or as an array. You may also use the methods ``setExtension()``, ``addExtension()``, and ``getExtension()`` to set and retrieve extension values.
 
 In some cases it is useful to test in a case-sensitive fashion. Therefore the constructor takes a second parameter ``$case``, which, if set to ``TRUE``, will validate the extension in a case-sensitive fashion.
-
 
 .. _zend.file.transfer.validators.extension.example:
 
@@ -392,9 +369,8 @@ In some cases it is useful to test in a case-sensitive fashion. Therefore the co
    }
 
 .. note::
+
    Note that this validator only checks the file extension. It does not check the file's *MIME* type.
-
-
 
 .. _zend.file.transfer.validators.filessize:
 
@@ -409,16 +385,13 @@ The ``FilesSize`` validator checks for the aggregate size of all transferred fil
 
   This option limits the aggregate file size of all transferred files, but not the file size of individual files.
 
-
 - ``bytestring``: Defines whether a failure is to return a user-friendly number or the plain file size.
 
   This option defines whether the user sees '10864' or '10MB'. The default value is ``TRUE``, so '10MB' is returned if you did not specify otherwise.
 
-
 You can initialize this validator with a string, which will then be used to set the ``max`` option. You can also use the methods ``setMin()`` and ``setMax()`` to set both options after construction, along with ``getMin()`` and ``getMax()`` to retrieve the values that have been set previously.
 
 The size itself is also accepted in SI notation as handled by most operating systems. That is, instead of specifying **20000 bytes**, **20kB** may be given. All file sizes are converted using 1024 as the base value. The following Units are accepted: **kB**, **MB**, **GB**, **TB**, **PB** and **EB**. Note that 1kB is equal to 1024 bytes, 1MB is equal to 1024kB, and so on.
-
 
 .. _zend.file.transfer.validators.filessize.example:
 
@@ -445,9 +418,8 @@ The size itself is also accepted in SI notation as handled by most operating sys
                                'bytestring' => false));
 
 .. note::
+
    Note that this validator internally stores the file size of checked files. The file which exceeds the size will be returned as an error.
-
-
 
 .. _zend.file.transfer.validators.imagesize:
 
@@ -470,7 +442,6 @@ For your convenience there are also the ``setImageWidth()`` and ``setImageHeight
 
 To bypass validation of a particular dimension, the relevent option simply should not be set.
 
-
 .. _zend.file.transfer.validators.imagesize.example:
 
 .. rubric:: Using the ImageSize Validator
@@ -492,14 +463,12 @@ To bypass validation of a particular dimension, the relevent option simply shoul
    // Reset the width for validation
    $upload->setImageWidth(array('minwidth' => 20, 'maxwidth' => 200));
 
-
 .. _zend.file.transfer.validators.iscompressed:
 
 IsCompressed Validator
 ----------------------
 
 The ``IsCompressed`` validator checks if a transferred file is a compressed archive, such as zip or arc. This validator is based on the ``MimeType`` validator and supports the same methods and options. You may also limit this validator to particular compression types with the methods described there.
-
 
 .. _zend.file.transfer.validators.iscompressed.example:
 
@@ -520,9 +489,8 @@ The ``IsCompressed`` validator checks if a transferred file is a compressed arch
    $upload->addValidator('IsCompressed', false, 'zip');
 
 .. note::
+
    Note that there is no check if you set a *MIME* type that is not a archive. For example, it would be possible to define gif files to be accepted by this validator. Using the 'MimeType' validator for files which are not archived will result in more readable code.
-
-
 
 .. _zend.file.transfer.validators.isimage:
 
@@ -530,7 +498,6 @@ IsImage Validator
 -----------------
 
 The ``IsImage`` validator checks if a transferred file is a image file, such as gif or jpeg. This validator is based on the ``MimeType`` validator and supports the same methods and options. You can limit this validator to particular image types with the methods described there.
-
 
 .. _zend.file.transfer.validators.isimage.example:
 
@@ -551,9 +518,8 @@ The ``IsImage`` validator checks if a transferred file is a image file, such as 
    $upload->addValidator('IsImage', false, 'jpeg');
 
 .. note::
+
    Note that there is no check if you set a *MIME* type that is not an image. For example, it would be possible to define zip files to be accepted by this validator. Using the 'MimeType' validator for files which are not images will result in more readable code.
-
-
 
 .. _zend.file.transfer.validators.hash:
 
@@ -566,12 +532,9 @@ The ``Hash`` validator checks the content of a transferred file by hashing it. T
 
   You can set multiple hashes by passing them as an array. Each file is checked, and the validation will fail only if all files fail validation.
 
-
 - ``algorithm``: Sets the algorithm to use for hashing the content.
 
   You can set multiple algorithm by calling the ``addHash()`` method multiple times.
-
-
 
 .. _zend.file.transfer.validators.hash.example:
 
@@ -595,9 +558,8 @@ The ``Hash`` validator checks the content of a transferred file by hashing it. T
                                'algorithm' => 'md5'));
 
 .. note::
+
    This validator supports about 34 different hash algorithms. The most common include 'crc32', 'md5' and 'sha1'. A comprehesive list of supports hash algorithms can be found at the `hash_algos method`_ on the `php.net site`_.
-
-
 
 .. _zend.file.transfer.validators.md5:
 
@@ -609,8 +571,6 @@ The ``Md5`` validator checks the content of a transferred file by hashing it. Th
 - ``*``: Takes any key or use a numeric array.
 
   You can set multiple hashes by passing them as an array. Each file is checked, and the validation will fail only if all files fail validation.
-
-
 
 .. _zend.file.transfer.validators.md5.example:
 
@@ -630,7 +590,6 @@ The ``Md5`` validator checks the content of a transferred file by hashing it. Th
                          array('3b3652f336522365223',
                                'eb3365f3365ddc65365'));
 
-
 .. _zend.file.transfer.validators.mimetype:
 
 MimeType Validator
@@ -642,21 +601,17 @@ The ``MimeType`` validator checks the *MIME* type of transferred files. It suppo
 
   Defines the *MIME* type of files to be accepted.
 
-
 - ``headerCheck``: If set to ``TRUE`` this option will check the *HTTP* Information for the file type when the **fileInfo** or **mimeMagic** extensions can not be found. The default value for this option is ``FALSE``.
 
 - ``magicfile``: The magicfile to be used.
 
   With this option you can define which magicfile to use. When it's not set or empty, the MAGIC constant will be used instead. This option is available since Zend Framework 1.7.1.
 
-
   When you omit this option or set it to ``NULL``, the environment variable 'magic' will be used to get the proper magicfile. When you set it to 'false', PHP will use the build it magic file. A 'string' will be seen as filename or path to the magicfile.
-
 
 This validator accepts multiple *MIME* type, either as a comma-delimited string, or as an array. You may also use the methods ``setMimeType()``, ``addMimeType()``, and ``getMimeType()`` to set and retrieve *MIME* type.
 
 You can also set the magicfile which shall be used by fileinfo with the 'magicfile' option. Additionally there are convenient ``setMagicFile()`` and ``getMagicFile()`` methods which allow later setting and retrieving of the magicfile parameter. This methods are available since Zend Framework 1.7.1.
-
 
 .. _zend.file.transfer.validators.mimetype.example:
 
@@ -687,16 +642,14 @@ The above example shows that it is also possible to limit the accepted *MIME* ty
 By using ``disableMagicFile(true)`` the MimeType validator will use PHP's build in magic file. You should use this method when you have PHP 5.3 or higher and want to use the magic file which is provided by PHP itself. By using ``isMagicFileDisabled()`` you can check if magicfile is actually disabled or not.
 
 .. note::
+
    Note that allowing groups of *MIME* types will accept all members of this group even if your application does not support them. When you allow 'image' you will also get 'image/xpixmap' or 'image/vasa' which could be problematic. When you are not sure if your application supports all types you should better allow only defined *MIME* types instead of the complete group.
 
-
 .. note::
+
    This component will use the ``FileInfo`` extension if it is available. If it's not, it will degrade to the ``mime_content_type()`` function. And if the function call fails it will use the *MIME* type which is given by *HTTP*.
 
-
    You should be aware of possible security problems when you have whether ``FileInfo`` nor ``mime_content_type()`` available. The *MIME* type given by *HTTP* is not secure and can be easily manipulated.
-
-
 
 .. _zend.file.transfer.validators.notexists:
 
@@ -708,7 +661,6 @@ The ``NotExists`` validator checks for the existence of the provided files. It s
 - ``*``: Set any key or use a numeric array. Checks whether the file exists in the given directory.
 
 This validator accepts multiple directories either as a comma-delimited string, or as an array. You may also use the methods ``setDirectory()``, ``addDirectory()``, and ``getDirectory()`` to set and retrieve directories.
-
 
 .. _zend.file.transfer.validators.notexists.example:
 
@@ -729,9 +681,8 @@ This validator accepts multiple directories either as a comma-delimited string, 
                         );
 
 .. note::
+
    Note that this validator checks if the file does not exist in all of the provided directories. The validation will fail if the file does exist in any of the given directories.
-
-
 
 .. _zend.file.transfer.validators.sha1:
 
@@ -743,8 +694,6 @@ The ``Sha1`` validator checks the content of a transferred file by hashing it. T
 - ``*``: Takes any key or use a numeric array.
 
   You can set multiple hashes by passing them as an array. Each file is checked, and the validation will fail only if all files fail validation.
-
-
 
 .. _zend.file.transfer.validators.sha1.example:
 
@@ -763,7 +712,6 @@ The ``Sha1`` validator checks the content of a transferred file by hashing it. T
                          false, array('3b3652f336522365223',
                                       'eb3365f3365ddc65365'));
 
-
 .. _zend.file.transfer.validators.size:
 
 Size Validator
@@ -779,11 +727,9 @@ The ``Size`` validator checks for the size of a single file. It supports the fol
 
   With this option you can define if the user gets '10864' or '10MB'. Default value is ``TRUE`` which returns '10MB'.
 
-
 You can initialize this validator with a string, which will then be used to set the ``max`` option. You can also use the methods ``setMin()`` and ``setMax()`` to set both options after construction, along with ``getMin()`` and ``getMax()`` to retrieve the values that have been set previously.
 
 The size itself is also accepted in SI notation as handled by most operating systems. That is, instead of specifying **20000 bytes**, **20kB** may be given. All file sizes are converted using 1024 as the base value. The following Units are accepted: **kB**, **MB**, **GB**, **TB**, **PB** and **EB**. Note that 1kB is equal to 1024 bytes, 1MB is equal to 1024kB, and so on.
-
 
 .. _zend.file.transfer.validators.size.example:
 
@@ -806,7 +752,6 @@ The size itself is also accepted in SI notation as handled by most operating sys
                                'max' => '4MB',
                                'bytestring' => false));
 
-
 .. _zend.file.transfer.validators.wordcount:
 
 WordCount Validator
@@ -819,7 +764,6 @@ The ``WordCount`` validator checks for the number of words within provided files
 - ``max``: Sets the maximum number of words to be found.
 
 If you initiate this validator with a string or integer, the value will be used as ``max``. Or you can also use the methods ``setMin()`` and ``setMax()`` to set both options afterwards and ``getMin()`` and ``getMax()`` to retrieve the actual set values.
-
 
 .. _zend.file.transfer.validators.wordcount.example:
 

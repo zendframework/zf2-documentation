@@ -1,4 +1,3 @@
-
 .. _zend.oauth.introduction:
 
 Introduction to OAuth
@@ -12,7 +11,7 @@ OAuth is not a completely new idea, rather it is a standardized protocol buildin
 
 Zend Framework's ``Zend_Oauth`` currently implements a full OAuth Consumer conforming to the OAuth Core 1.0 Revision A Specification (24 June 2009) via the ``Zend_Oauth_Consumer`` class.
 
-
 .. include:: zend.oauth.protocol-workflow.rst
 .. include:: zend.oauth.security-architecture.rst
 .. include:: zend.oauth.getting-started.rst
+

@@ -1,11 +1,9 @@
-
 .. _zend.filter.set.stringtoupper:
 
 StringToUpper
 =============
 
 This filter converts any input to be uppercased.
-
 
 .. _zend.filter.set.stringtoupper.options:
 
@@ -15,7 +13,6 @@ Supported options for Zend_Filter_StringToUpper
 The following options are supported for ``Zend_Filter_StringToUpper``:
 
 - **encoding**: This option can be used to set an encoding which has to be used.
-
 
 .. _zend.filter.set.stringtoupper.basic:
 
@@ -31,7 +28,6 @@ This is a basic example for using the ``StringToUpper`` filter:
 
    print $filter->filter('Sample');
    // returns "SAMPLE"
-
 
 .. _zend.filter.set.stringtoupper.encoding:
 

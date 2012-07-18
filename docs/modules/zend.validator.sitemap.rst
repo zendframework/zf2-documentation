@@ -1,11 +1,9 @@
-
 .. _zend.validator.sitemap:
 
 Sitemap Validators
 ==================
 
 The following validators conform to the `Sitemap XML protocol`_.
-
 
 .. _zend.validator.sitemap.changefreq:
 
@@ -16,7 +14,6 @@ Validates whether a string is valid for using as a 'changefreq' element in a Sit
 
 Returns ``TRUE`` if and only if the value is a string and is equal to one of the frequencies specified above.
 
-
 .. _zend.validator.sitemap.lastmod:
 
 Sitemap\\Lastmod
@@ -25,7 +22,6 @@ Sitemap\\Lastmod
 Validates whether a string is valid for using as a 'lastmod' element in a Sitemap *XML* document. The lastmod element should contain a *W3C* date string, optionally discarding information about time.
 
 Returns ``TRUE`` if and only if the given value is a string and is valid according to the protocol.
-
 
 .. _zend.validator.sitemap.lastmod.example:
 
@@ -47,7 +43,6 @@ Returns ``TRUE`` if and only if the given value is a string and is valid accordi
    $validator->isValid('2008-05-32'); // false
    $validator->isValid('yesterday'); // false
 
-
 .. _zend.validator.sitemap.loc:
 
 Sitemap\\Loc
@@ -55,14 +50,12 @@ Sitemap\\Loc
 
 Validates whether a string is valid for using as a 'loc' element in a Sitemap *XML* document. This uses ``Zend\Uri\Uri::isValid()`` internally. Read more at :ref:`URI Validation <zend.uri.validation>`.
 
-
 .. _zend.validator.sitemap.priority:
 
 Sitemap\\Priority
 -----------------
 
 Validates whether a value is valid for using as a 'priority' element in a Sitemap *XML* document. The value should be a decimal between 0.0 and 1.0. This validator accepts both numeric values and string values.
-
 
 .. _zend.validator.sitemap.priority.example:
 
@@ -83,7 +76,6 @@ Validates whether a value is valid for using as a 'priority' element in a Sitema
    $validator->isValid(1.00001); // false
    $validator->isValid(0xFF); // false
    $validator->isValid('foo'); // false
-
 
 .. _zend.validator.set.sitemap.options:
 

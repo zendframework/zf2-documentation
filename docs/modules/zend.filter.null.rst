@@ -1,11 +1,9 @@
-
 .. _zend.filter.set.null:
 
 Null
 ====
 
 This filter will change the given input to be ``NULL`` if it meets specific criteria. This is often necessary when you work with databases and want to have a ``NULL`` value instead of a boolean or any other type.
-
 
 .. _zend.filter.set.null.options:
 
@@ -15,7 +13,6 @@ Supported options for Zend_Filter_Null
 The following options are supported for ``Zend_Filter_Null``:
 
 - **type**: The variable type which should be supported.
-
 
 .. _zend.filter.set.null.default:
 
@@ -35,7 +32,6 @@ Per default this filter works like *PHP*'s ``empty()`` method; in other words, i
 This means that without providing any configuration, ``Zend_Filter_Null`` will accept all input types and return ``NULL`` in the same cases as ``empty()``.
 
 Any other value will be returned as is, without any changes.
-
 
 .. _zend.filter.set.null.types:
 

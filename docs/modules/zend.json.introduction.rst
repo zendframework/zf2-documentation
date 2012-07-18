@@ -1,4 +1,3 @@
-
 .. _zend.json.introduction:
 
 Introduction

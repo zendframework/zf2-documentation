@@ -1,4 +1,3 @@
-
 .. _zend.validator.set.greaterthan:
 
 GreaterThan
@@ -7,11 +6,10 @@ GreaterThan
 ``Zend\Validator\GreaterThan`` allows you to validate if a given value is greater than a minimum border value.
 
 .. note::
-   **Zend\\Validator\\GreaterThan supports only number validation**
+
+   **Zend\Validator\GreaterThan supports only number validation**
 
    It should be noted that ``Zend\Validator\GreaterThan`` supports only the validation of numbers. Strings or dates can not be validated with this validator.
-
-
 
 .. _zend.validator.set.greaterthan.options:
 
@@ -23,7 +21,6 @@ The following options are supported for ``Zend\Validator\GreaterThan``:
 - **inclusive**: Defines if the validation is inclusive the minimum border value or exclusive. It defaults to ``FALSE``.
 
 - **min**: Sets the minimum allowed value.
-
 
 .. _zend.validator.set.greaterthan.basic:
 
@@ -41,7 +38,6 @@ To validate if a given value is greater than a defined border simply use the fol
    // returns false
 
 The above example returns ``TRUE`` for all values which are greater than 10.
-
 
 .. _zend.validator.set.greaterthan.inclusively:
 

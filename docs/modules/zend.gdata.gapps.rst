@@ -1,4 +1,3 @@
-
 .. _zend.gdata.gapps:
 
 Using Google Apps Provisioning
@@ -11,11 +10,10 @@ This library implements version 2.0 of the Provisioning *API*. Access to your ac
 For more information on the Google Apps Provisioning *API*, including instructions for enabling *API* access, refer to the `Provisioning API V2.0 Reference`_.
 
 .. note::
+
    **Authentication**
 
    The Provisioning *API* does not support authentication via AuthSub and anonymous access is not permitted. All *HTTP* connections must be authenticated using ClientAuth authentication.
-
-
 
 .. _zend.gdata.gapps.domain:
 
@@ -23,7 +21,6 @@ Setting the current domain
 --------------------------
 
 In order to use the Provisioning *API*, the domain being administered needs to be specified in all request *URI*\ s. In order to ease development, this information is stored within both the Gapps service and query classes to use when constructing requests.
-
 
 .. _zend.gdata.gapps.domain.service:
 
@@ -37,7 +34,6 @@ To set the domain for requests made by the service class, either call ``setDomai
 
    $domain = "example.com";
    $gdata = new Zend_Gdata_Gapps($client, $domain);
-
 
 .. _zend.gdata.gapps.domain.query:
 
@@ -61,14 +57,12 @@ When using a service class factory method to create a query, the service class w
    $gdata = new Zend_Gdata_Gapps($client, $domain);
    $query = $gdata->newUserQuery($arg);
 
-
 .. _zend.gdata.gapps.users:
 
 Interacting with users
 ----------------------
 
 Each user account on a Google Apps hosted domain is represented as an instance of ``Zend_Gdata_Gapps_UserEntry``. This class provides access to all account properties including name, username, password, access rights, and current quota.
-
 
 .. _zend.gdata.gapps.users.creating:
 
@@ -97,7 +91,6 @@ Users can also be created by instantiating UserEntry, providing a username, give
    $user = $gdata->insertUser($user);
 
 The user's password should normally be provided as cleartext. Optionally, the password can be provided as an *SHA-1* digest if ``login->passwordHashFunction`` is set to '``SHA-1``'.
-
 
 .. _zend.gdata.gapps.users.retrieving:
 
@@ -141,7 +134,6 @@ Users can also be retrieved by creating an instance of ``Zend_Gdata_Gapps_UserQu
 
 If the specified user cannot be located a ServiceException will be thrown with an error code of ``Zend_Gdata_Gapps_Error::ENTITY_DOES_NOT_EXIST``. ServiceExceptions will be covered in :ref:`the exceptions chapter <zend.gdata.gapps.exceptions>`.
 
-
 .. _zend.gdata.gapps.users.retrievingAll:
 
 Retrieving all users in a domain
@@ -173,7 +165,6 @@ Alternatively, call ``getUserFeed()`` with no options. Keep in mind that on larg
            ' ' . $user->name->familyName . ")\n";
    }
 
-
 .. _zend.gdata.gapps.users.updating:
 
 Updating a user account
@@ -188,7 +179,6 @@ The easiest way to update a user account is to retrieve the user as described in
    $user->name->givenName = 'Foo';
    $user->name->familyName = 'Bar';
    $user = $user->save();
-
 
 .. _zend.gdata.gapps.users.updating.resettingPassword:
 
@@ -206,7 +196,6 @@ A user's password can be reset to a new value by updating the ``login->password`
 
 Note that it is not possible to recover a password in this manner as stored passwords are not made available via the Provisioning *API* for security reasons.
 
-
 .. _zend.gdata.gapps.users.updating.forcingPasswordChange:
 
 Forcing a user to change their password
@@ -222,7 +211,6 @@ A user can be forced to change their password at their next login by setting the
    $user = $user->save();
 
 Similarly, this can be undone by setting the ``login->changePasswordAtNextLogin`` property to ``FALSE``.
-
 
 .. _zend.gdata.gapps.users.updating.suspendingAccount:
 
@@ -248,7 +236,6 @@ Alternatively, you can set the UserEntry's ``login->suspended`` property to ``TR
 
 To restore the user's access, set the ``login->suspended`` property to ``FALSE``.
 
-
 .. _zend.gdata.gapps.users.updating.grantingAdminRights:
 
 Granting administrative rights
@@ -264,7 +251,6 @@ Users can be granted the ability to administer your domain by setting their ``lo
    $user = $user->save();
 
 And as expected, setting a user's ``login->admin`` property to ``FALSE`` revokes their administrative rights.
-
 
 .. _zend.gdata.gapps.users.deleting:
 
@@ -286,7 +272,6 @@ If you do not have access to a UserEntry object for an account, use the ``delete
 
    $gdata->deleteUser('foo');
 
-
 .. _zend.gdata.gapps.nicknames:
 
 Interacting with nicknames
@@ -295,7 +280,6 @@ Interacting with nicknames
 Nicknames serve as email aliases for existing users. Each nickname contains precisely two key properties: its name and its owner. Any email addressed to a nickname is forwarded to the user who owns that nickname.
 
 Nicknames are represented as an instances of ``Zend_Gdata_Gapps_NicknameEntry``.
-
 
 .. _zend.gdata.gapps.nicknames.creating:
 
@@ -318,7 +302,6 @@ Nicknames can also be created by instantiating NicknameEntry, providing the nick
    $nickname->login = $gdata->newLogin('foo');
    $nickname->nickname = $gdata->newNickname('bar');
    $nickname = $gdata->insertNickname($nickname);
-
 
 .. _zend.gdata.gapps.nicknames.retrieving:
 
@@ -347,7 +330,6 @@ Individual nicknames can also be retrieved by creating an instance of ``Zend_Gda
    echo 'Owner: ' . $nickname->login->username . "\n";
 
 As with users, if no corresponding nickname is found a ServiceException will be thrown with an error code of ``Zend_Gdata_Gapps_Error::ENTITY_DOES_NOT_EXIST``. Again, these will be discussed in :ref:`the exceptions chapter <zend.gdata.gapps.exceptions>`.
-
 
 .. _zend.gdata.gapps.nicknames.retrievingUser:
 
@@ -380,7 +362,6 @@ Alternatively, create a new ``Zend_Gdata_Gapps_NicknameQuery``, set its username
        echo '  * ' . $nickname->nickname->name . "\n";
    }
 
-
 .. _zend.gdata.gapps.nicknames.retrievingAll:
 
 Retrieving all nicknames in a domain
@@ -412,7 +393,6 @@ Alternatively, call ``getNicknameFeed()`` on a service object with no arguments.
            $nickname->login->username . "\n";
    }
 
-
 .. _zend.gdata.gapps.nicknames.deleting:
 
 Deleting a nickname
@@ -433,7 +413,6 @@ For nicknames which you do not hold a NicknameEntry for, use the ``deleteNicknam
 
    $gdata->deleteNickname('bar');
 
-
 .. _zend.gdata.gapps.groups:
 
 Interacting with groups
@@ -442,7 +421,6 @@ Interacting with groups
 Google Groups allows people to post messages like an email list. Google is depreciating the Email List *API*. Google Groups provides some neat features like nested groups and group owners. If you want to start a new email lst, it is advisable to use Google Groups instead. Google's Email List is not compatible with Google Groups. So if you create an email list, it will not show up as a group. The opposite is true as well.
 
 Each group on a domain is represented as an instance of ``Zend_Gdata_Gapps_GroupEntry``.
-
 
 .. _zend.gdata.gapps.groups.creating:
 
@@ -473,7 +451,6 @@ Groups can also be created by instantiating GroupEntry, providing a group id and
    $group->property = $properties;
 
    $group = $gdata->insertGroup($group);
-
 
 .. _zend.gdata.gapps.groups.retrieveGroup:
 
@@ -507,7 +484,6 @@ Alternatively, create a new ``Zend_Gdata_Gapps_GroupQuery``, set its groupId pro
        echo "Property Name: " . $p->name;
        echo "\nProperty Value: " . $p->value . "\n\n";
    }
-
 
 .. _zend.gdata.gapps.groups.retrievingAll:
 
@@ -546,7 +522,6 @@ Alternatively, call ``getGroupFeed()`` on a service object with no arguments.
        echo "\n\n";
    }
 
-
 .. _zend.gdata.gapps.groups.deleting:
 
 Deleting a group
@@ -558,7 +533,6 @@ To delete a group, call the ``deleteGroup()`` convenience method:
    :linenos:
 
    $gdata->deleteGroup('friends');
-
 
 .. _zend.gdata.gapps.groups.updating:
 
@@ -573,7 +547,6 @@ Groups can be updated by calling the ``updateGroup()`` convenience method:
    $gdata->updateGroup('group-id-here', 'Group Name Here');
 
 The first parameter is required. The second, third and fourth parameter, representing the group name, group descscription, and email permission, respectively are optional. Setting any of these optional parameters to null will not update that item.
-
 
 .. _zend.gdata.gapps.groups.retrieve:
 
@@ -614,14 +587,12 @@ Alternatively, create a new ``Zend_Gdata_Gapps_GroupQuery``, set its member prop
        echo "\n\n";
    }
 
-
 .. _zend.gdata.gapps.groupMembers:
 
 Interacting with group members
 ------------------------------
 
 Each member subscribed to a group is represented by an instance of ``Zend_Gdata_Gapps_MemberEntry``. Through this class, individual recipients can be added and removed from groups.
-
 
 .. _zend.gdata.gapps.groupMembers.adding:
 
@@ -634,7 +605,6 @@ To add a member to a group, simply call the ``addMemberToGroup()`` convenience m
    :linenos:
 
    $gdata->addMemberToGroup('bar@somewhere.com', 'friends');
-
 
 .. _zend.gdata.gapps.groupMembers.check:
 
@@ -651,7 +621,6 @@ To check to see if member belongs to group, simply call the ``isMember()`` conve
 
 The method returns a boolean value. If the member belongs to the group specified, the method returns true, else it returns false.
 
-
 .. _zend.gdata.gapps.groupMembers.removing:
 
 Removing a member from a group
@@ -663,7 +632,6 @@ To remove a member from a group, call the ``removeMemberFromGroup()`` convenienc
    :linenos:
 
    $gdata->removeMemberFromGroup('baz', 'friends');
-
 
 .. _zend.gdata.gapps.groupMembers.retrieving:
 
@@ -702,14 +670,12 @@ Alternatively, construct a new MemberQuery, set its groupId property to match th
 
 This will create a ``Zend_Gdata_Gapps_MemberFeed`` object which holds each member for the selected group.
 
-
 .. _zend.gdata.gapps.groupOwners:
 
 Interacting with group owners
 -----------------------------
 
 Each owner associated with a group is represented by an instance of ``Zend_Gdata_Gapps_OwnerEntry``. Through this class, individual owners can be added and removed from groups.
-
 
 .. _zend.gdata.gapps.groupOwners.adding:
 
@@ -722,7 +688,6 @@ To add an owner to a group, simply call the ``addOwnerToGroup()`` convenience me
    :linenos:
 
    $gdata->addOwnerToGroup('bar@somewhere.com', 'friends');
-
 
 .. _zend.gdata.gapps.groupOwners.retrieving:
 
@@ -761,7 +726,6 @@ Alternatively, construct a new OwnerQuery, set its groupId property to match the
 
 This will create a ``Zend_Gdata_Gapps_OwnerFeed`` object which holds each member for the selected group.
 
-
 .. _zend.gdata.gapps.groupOwners.check:
 
 Check to see if an email is the owner of a group
@@ -777,7 +741,6 @@ To check to see if an email is the owner of a group, simply call the ``isOwner()
 
 The method returns a boolean value. If the email is the owner of the group specified, the method returns true, else it returns false.
 
-
 .. _zend.gdata.gapps.groupOwners.removing:
 
 Removing an owner from a group
@@ -790,7 +753,6 @@ To remove an owner from a group, call the ``removeOwnerFromGroup()`` convenience
 
    $gdata->removeOwnerFromGroup('baz@somewhere.com', 'friends');
 
-
 .. _zend.gdata.gapps.emailLists:
 
 Interacting with email lists
@@ -799,7 +761,6 @@ Interacting with email lists
 Email lists allow several users to retrieve email addressed to a single email address. Users do not need to be a member of this domain in order to subscribe to an email list provided their complete email address (including domain) is used.
 
 Each email list on a domain is represented as an instance of ``Zend_Gdata_Gapps_EmailListEntry``.
-
 
 .. _zend.gdata.gapps.emailLists.creating:
 
@@ -821,7 +782,6 @@ Email lists can also be created by instantiating EmailListEntry, providing a nam
    $list = $gdata->newEmailListEntry();
    $list->emailList = $gdata->newEmailList('friends');
    $list = $gdata->insertEmailList($list);
-
 
 .. _zend.gdata.gapps.emailList.retrieve:
 
@@ -854,7 +814,6 @@ Alternatively, create a new ``Zend_Gdata_Gapps_EmailListQuery``, set its recipie
        echo '  * ' . $list->emailList->name . "\n";
    }
 
-
 .. _zend.gdata.gapps.emailLists.retrievingAll:
 
 Retrieving all email lists in a domain
@@ -884,7 +843,6 @@ Alternatively, call ``getEmailListFeed()`` on a service object with no arguments
        echo '  * ' . $list->emailList->name . "\n";
    }
 
-
 .. _zend.gdata.gapps.emailList.deleting:
 
 Deleting an email list
@@ -897,14 +855,12 @@ To delete an email list, call the ``deleteEmailList()`` convenience method:
 
    $gdata->deleteEmailList('friends');
 
-
 .. _zend.gdata.gapps.emailListRecipients:
 
 Interacting with email list recipients
 --------------------------------------
 
 Each recipient subscribed to an email list is represented by an instance of ``Zend_Gdata_Gapps_EmailListRecipient``. Through this class, individual recipients can be added and removed from email lists.
-
 
 .. _zend.gdata.gapps.emailListRecipients.adding:
 
@@ -917,7 +873,6 @@ To add a recipient to an email list, simply call the ``addRecipientToEmailList()
    :linenos:
 
    $gdata->addRecipientToEmailList('bar@somewhere.com', 'friends');
-
 
 .. _zend.gdata.gapps.emailListRecipients.retrieving:
 
@@ -950,7 +905,6 @@ Alternatively, construct a new EmailListRecipientQuery, set its emailListName pr
 
 This will create a ``Zend_Gdata_Gapps_EmailListRecipientFeed`` object which holds each recipient for the selected email list.
 
-
 .. _zend.gdata.gapps.emailListRecipients.removing:
 
 Removing a recipient from an email list
@@ -962,7 +916,6 @@ To remove a recipient from an email list, call the ``removeRecipientFromEmailLis
    :linenos:
 
    $gdata->removeRecipientFromEmailList('baz@somewhere.com', 'friends');
-
 
 .. _zend.gdata.gapps.exceptions:
 

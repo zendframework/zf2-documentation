@@ -1,11 +1,9 @@
-
 .. _zend.validator.set.float:
 
 Float
 =====
 
 ``Zend\Validator\Float`` allows you to validate if a given value contains a floating-point value. This validator validates also localized input.
-
 
 .. _zend.validator.set.float.options:
 
@@ -15,7 +13,6 @@ Supported options for Zend\\Validator\\Float
 The following options are supported for ``Zend\Validator\Float``:
 
 - **locale**: Sets the locale which will be used to validate localized float values.
-
 
 .. _zend.validator.set.float.basic:
 
@@ -34,7 +31,6 @@ The simplest way to validate a float is by using the system settings. When no op
    $validator->isValid('1,234.5'); // returns true
 
 In the above example we expected that our environment is set to "en" as locale.
-
 
 .. _zend.validator.set.float.localized:
 

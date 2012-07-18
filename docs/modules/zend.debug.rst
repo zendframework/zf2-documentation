@@ -1,11 +1,9 @@
-
 .. _zend.debug.dumping:
 
 Dumping Variables
 =================
 
 The static method ``Zend_Debug::dump()`` prints or returns information about an expression. This simple technique of debugging is common because it is easy to use in an ad hoc fashion and requires no initialization, special tools, or debugging environment.
-
 
 .. _zend.debug.dumping.example:
 
@@ -25,13 +23,12 @@ The boolean ``$echo`` argument specifies whether the output of ``Zend_Debug::dum
 It may be helpful to understand that ``Zend_Debug::dump()`` method wraps the *PHP* function `var_dump()`_. If the output stream is detected as a web presentation, the output of ``var_dump()`` is escaped using `htmlspecialchars()`_ and wrapped with (X)HTML ``<pre>`` tags.
 
 .. tip::
+
    **Debugging with Zend_Log**
 
    Using ``Zend_Debug::dump()`` is best for ad hoc debugging during software development. You can add code to dump a variable and then remove the code very quickly.
 
-
    Also consider the :ref:`Zend_Log <zend.log.overview>` component when writing more permanent debugging code. For example, you can use the ``DEBUG`` log level and the :ref:`stream log writer <zend.log.writers.stream>` to output the string returned by ``Zend_Debug::dump()``.
-
 
 
 

@@ -1,9 +1,7 @@
-
 .. _zend.xmlrpc.server:
 
 Zend\\XmlRpc\\Server
 ====================
-
 
 .. _zend.xmlrpc.server.introduction:
 
@@ -11,7 +9,6 @@ Introduction
 ------------
 
 ``Zend\XmlRpc\Server`` is intended as a fully-featured *XML-RPC* server, following `the specifications outlined at www.xmlrpc.com`_. Additionally, it implements the ``system.multicall()`` method, allowing boxcarring of requests.
-
 
 .. _zend.xmlrpc.server.usage:
 
@@ -27,7 +24,6 @@ An example of the most basic use case:
    $server->setClass('My\Service\Class');
    echo $server->handle();
 
-
 .. _zend.xmlrpc.server.structure:
 
 Server Structure
@@ -41,12 +37,10 @@ Once done, you may either pass a ``Zend\XmlRpc\Request`` object to ``Zend\XmlRpc
 
 ``Zend\XmlRpc\Server::handle()`` then attempts to dispatch to the appropriate handler based on the method requested. It then returns either a ``Zend\XmlRpc\Response``-based object or a ``Zend\XmlRpc\Server\Fault``\ object. These objects both have ``__toString()`` methods that create valid *XML-RPC* *XML* responses, allowing them to be directly echoed.
 
-
 .. _zend.xmlrpc.server.anatomy:
 
 Anatomy of a webservice
 -----------------------
-
 
 .. _zend.xmlrpc.server.anatomy.general:
 
@@ -57,14 +51,12 @@ For maximum performance it is recommended to use a simple bootstrap file for the
 
 Services change over time and while webservices are generally less change intense as code-native *APIs*, it is recommended to version your service. Do so to lay grounds to provide compatibility for clients using older versions of your service and manage your service lifecycle including deprecation timeframes.To do so just include a version number into your *URI*. It is also recommended to include the remote protocol name in the *URI* to allow easy integration of upcoming remoting technologies. http://myservice.ws/**1.0/XMLRPC/**.
 
-
 .. _zend.xmlrpc.server.anatomy.expose:
 
 What to expose?
 ^^^^^^^^^^^^^^^
 
 Most of the time it is not sensible to expose business objects directly. Business objects are usually small and under heavy change, because change is cheap in this layer of your application. Once deployed and adopted, web services are hard to change. Another concern is *I/O* and latency: the best webservice calls are those not happening. Therefore service calls need to be more coarse-grained than usual business logic is. Often an additional layer in front of your business objects makes sense. This layer is sometimes referred to as `Remote Facade`_. Such a service layer adds a coarse grained interface on top of your business logic and groups verbose operations into smaller ones.
-
 
 .. _zend.xmlrpc.server.conventions:
 
@@ -118,9 +110,8 @@ It is perfectly valid to specify multiple types for both params and return value
    }
 
 .. note::
+
    Allowing multiple signatures can lead to confusion for developers using the services; to keep things simple, a *XML-RPC* service method should only have a single signature.
-
-
 
 .. _zend.xmlrpc.server.namespaces:
 
@@ -149,14 +140,12 @@ If you want to add namespaces to the methods you serve, simply provide a namespa
    // Function 'somefunc' will be accessible as funcs.somefunc
    $server->addFunction('somefunc', 'funcs');
 
-
 .. _zend.xmlrpc.server.request:
 
 Custom Request Objects
 ----------------------
 
 Most of the time, you'll simply use the default request type included with ``Zend\XmlRpc\Server``, ``Zend\XmlRpc\Request\Http``. However, there may be times when you need *XML-RPC* to be available via the *CLI*, a *GUI*, or other environment, or want to log incoming requests. To do so, you may create a custom request object that extends ``Zend\XmlRpc\Request``. The most important thing to remember is to ensure that the ``getMethod()`` and ``getParams()`` methods are implemented so that the *XML-RPC* server can retrieve that information in order to dispatch the request.
-
 
 .. _zend.xmlrpc.server.response:
 
@@ -166,7 +155,6 @@ Custom Responses
 Similar to request objects, ``Zend\XmlRpc\Server`` can return custom response objects; by default, a ``Zend_XmlRpc_Response_Http`` object is returned, which sends an appropriate Content-Type *HTTP* header for use with *XML-RPC*. Possible uses of a custom object would be to log responses, or to send responses back to ``STDOUT``.
 
 To use a custom response class, use ``Zend\XmlRpc\Server::setResponseClass()`` prior to calling ``handle()``.
-
 
 .. _zend.xmlrpc.server.fault:
 
@@ -185,7 +173,6 @@ Exception classes can be whitelisted to be used as fault responses, however. To 
 If you utilize an exception class that your other project exceptions inherit, you can then whitelist a whole family of exceptions at a time. ``Zend\XmlRpc\Server\Exception``\ s are always whitelisted, to allow reporting specific internal errors (undefined methods, etc.).
 
 Any exception not specifically whitelisted will generate a fault response with a code of '404' and a message of 'Unknown error'.
-
 
 .. _zend.xmlrpc.server.caching:
 
@@ -224,14 +211,12 @@ An sample usage follows:
 
 The above example attempts to retrieve a server definition from ``xmlrpc.cache`` in the same directory as the script. If unsuccessful, it loads the service classes it needs, attaches them to the server instance, and then attempts to create a new cache file with the server definition.
 
-
 .. _zend.xmlrpc.server.use:
 
 Usage Examples
 --------------
 
 Below are several usage examples, showing the full spectrum of options available to developers. Usage examples will each build on the previous example provided.
-
 
 .. _zend.xmlrpc.server.use.attach-function:
 
@@ -257,7 +242,6 @@ The example below attaches a function as a dispatchable *XML-RPC* method and han
    $server->addFunction('md5Value');
    echo $server->handle();
 
-
 .. _zend.xmlrpc.server.use.attach-class:
 
 .. rubric:: Attaching a class
@@ -272,7 +256,6 @@ The example below illustrates attaching a class' public methods as dispatchable 
    $server = new Zend\XmlRpc\Server();
    $server->setClass('Services\Comb');
    echo $server->handle();
-
 
 .. _zend.xmlrpc.server.use.attach-class-with-arguments:
 
@@ -307,7 +290,6 @@ The following example illustrates how to attach a class' public methods and pass
                      new PurchaseRepository());
 
 The arguments passed at ``setClass()`` at server construction time are injected into the method call ``pricing.calculate()`` on remote invokation. In the example above, only the argument ``$purchaseId`` is expected from the client.
-
 
 .. _zend.xmlrpc.server.use.attach-class-with-arguments-constructor:
 
@@ -349,13 +331,11 @@ The arguments passed at ``setClass()`` at server construction time are injected 
                      new ProductRepository(),
                      new PurchaseRepository());
 
-
 .. _zend.xmlrpc.server.use.attach-instance:
 
 .. rubric:: Attaching a class instance
 
 ``setClass()`` allows to register a previously instantiated object at the server. Just pass an instance instead of the class name. Obviously passing arguments to the constructor is not possible with pre-instantiated objects.
-
 
 .. _zend.xmlrpc.server.use.attach-several-classes-namespaces:
 
@@ -375,7 +355,6 @@ The example below illustrates attaching several classes, each with their own nam
    $server->setClass('Services\Brush', 'brush'); // methods called as brush.*
    $server->setClass('Services\Pick', 'pick');   // methods called as pick.*
    echo $server->handle();
-
 
 .. _zend.xmlrpc.server.use.exceptions-faults:
 
@@ -399,7 +378,6 @@ The example below allows any ``Services\Exception``-derived class to report its 
    $server->setClass('Services\Brush', 'brush'); // methods called as brush.*
    $server->setClass('Services\Pick', 'pick');   // methods called as pick.*
    echo $server->handle();
-
 
 .. _zend.xmlrpc.server.use.custom-request-object:
 
@@ -430,7 +408,6 @@ The example below instantiates a custom request object and passes it to the serv
    $request = new Services\Request();
 
    echo $server->handle($request);
-
 
 .. _zend.xmlrpc.server.use.custom-response-object:
 
@@ -464,12 +441,10 @@ The example below illustrates specifying a custom response class for the returne
 
    echo $server->handle($request);
 
-
 .. _zend.xmlrpc.server.performance:
 
 Performance optimization
 ------------------------
-
 
 .. _zend.xmlrpc.server.performance.caching:
 
@@ -514,9 +489,8 @@ The example below illustrates caching server definitions between requests.
    echo $server->handle($request);
 
 .. note::
+
    The server cache file should be located outside the document root.
-
-
 
 .. _zend.xmlrpc.server.performance.xmlgen:
 
@@ -537,16 +511,16 @@ If **ext/xmlwriter** is available on your host, you can select a the ``XmlWriter
    ...
 
 .. note::
+
    **Benchmark your application**
 
    Performance is determined by a lot of parameters and benchmarks only apply for the specific test case. Differences come from *PHP* version, installed extensions, webserver and operating system just to name a few. Please make sure to benchmark your application on your own and decide which generator to use based on **your** numbers.
 
-
 .. note::
+
    **Benchmark your client**
 
    This optimization makes sense for the client side too. Just select the alternate *XML* generator before doing any work with ``Zend\XmlRpc\Client``.
-
 
 
 

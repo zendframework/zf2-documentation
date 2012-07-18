@@ -1,9 +1,7 @@
-
 .. _zend.memory.memory-manager:
 
 Memory Manager
 ==============
-
 
 .. _zend.memory.memory-manager.creation:
 
@@ -38,14 +36,12 @@ If you use 'None' as the backend name, then the memory manager never swaps memor
 
 The 'None' backend doesn't need any option specified.
 
-
 .. _zend.memory.memory-manager.objects-management:
 
 Managing Memory Objects
 -----------------------
 
 This section describes creating and destroying objects in the managed memory, and settings to control memory manager behavior.
-
 
 .. _zend.memory.memory-manager.objects-management.movable:
 
@@ -61,7 +57,6 @@ Create movable objects (objects, which may be swapped) using the ``Zend_Memory_M
 
 The ``$data`` argument is optional and used to initialize the object value. If the ``$data`` argument is omitted, the value is an empty string.
 
-
 .. _zend.memory.memory-manager.objects-management.locked:
 
 Creating Locked Objects
@@ -75,7 +70,6 @@ Create locked objects (objects, which are not swapped) using the ``Zend_Memory_M
    $memObject = $memoryManager->createLocked($data);
 
 The ``$data`` argument is optional and used to initialize the object value. If the ``$data`` argument is omitted, the value is an empty string.
-
 
 .. _zend.memory.memory-manager.objects-management.destruction:
 
@@ -113,12 +107,10 @@ Memory objects are automatically destroyed and removed from memory when they go 
 
 This applies to both movable and locked objects.
 
-
 .. _zend.memory.memory-manager.settings:
 
 Memory Manager Settings
 -----------------------
-
 
 .. _zend.memory.memory-manager.settings.memory-limit:
 
@@ -140,7 +132,6 @@ You can retrieve or set the memory limit setting using the ``getMemoryLimit()`` 
 A negative value for memory limit means 'no limit'.
 
 The default value is two-thirds of the value of 'memory_limit' in php.ini or 'no limit' (-1) if 'memory_limit' is not set in php.ini.
-
 
 .. _zend.memory.memory-manager.settings.min-size:
 

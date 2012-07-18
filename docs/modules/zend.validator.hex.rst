@@ -1,4 +1,3 @@
-
 .. _zend.validator.set.hex:
 
 Hex
@@ -17,11 +16,10 @@ Hex
    }
 
 .. note::
+
    **Invalid characters**
 
    All other characters will return false, including whitespace and decimal point. Also unicode zeros and numbers from other scripts than latin will not be treated as valid.
-
-
 
 .. _zend.validator.set.hex.options:
 

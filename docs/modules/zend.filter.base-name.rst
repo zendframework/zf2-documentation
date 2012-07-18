@@ -1,4 +1,3 @@
-
 .. _zend.filter.set.basename:
 
 BaseName
@@ -6,14 +5,12 @@ BaseName
 
 ``Zend_Filter_BaseName`` allows you to filter a string which contains the path to a file and it will return the base name of this file.
 
-
 .. _zend.filter.set.basename.options:
 
 Supported options for Zend_Filter_BaseName
 ------------------------------------------
 
 There are no additional options for ``Zend_Filter_BaseName``.
-
 
 .. _zend.filter.set.basename.basic:
 

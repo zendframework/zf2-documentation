@@ -1,4 +1,3 @@
-
 .. _zend.service.strikeiron:
 
 Zend_Service_StrikeIron
@@ -14,7 +13,6 @@ Zend_Service_StrikeIron
 
 
 
-
 .. _zend.service.strikeiron.overview:
 
 Overview
@@ -27,8 +25,8 @@ Each StrikeIron web service shares a standard *SOAP* (and REST) *API*, making it
 StrikeIron's services may be used through the `PHP 5 SOAP extension`_ alone. However, using StrikeIron this way does not give an ideal *PHP*-like interface. The ``Zend_Service_StrikeIron`` component provides a lightweight layer on top of the *SOAP* extension for working with StrikeIron services in a more convenient, *PHP*-like manner.
 
 .. note::
-   The *PHP* 5 *SOAP* extension must be installed and enabled to use ``Zend_Service_StrikeIron``.
 
+   The *PHP* 5 *SOAP* extension must be installed and enabled to use ``Zend_Service_StrikeIron``.
 
 The ``Zend_Service_StrikeIron`` component provides:
 
@@ -39,7 +37,6 @@ The ``Zend_Service_StrikeIron`` component provides:
 - The ability to use any StrikeIron service from its WSDL without creating a *PHP* wrapper class, and the option of creating a wrapper for a more convenient interface.
 
 - Wrappers for three popular StrikeIron services.
-
 
 
 
@@ -55,7 +52,6 @@ After registering, you will receive a StrikeIron username and password. These wi
 You will also need to `sign up`_ for StrikeIron's Super Data Pack Web Service.
 
 Both registration steps are free and can be done relatively quickly through the StrikeIron website.
-
 
 .. _zend.service.strikeiron.getting-started:
 
@@ -86,7 +82,6 @@ The ``getService()`` method will return a client for any StrikeIron service by t
 
 The ``getService()`` method can also return a client for a StrikeIron service that does not yet have a *PHP* wrapper. This is explained in :ref:`Using Services by WSDL <zend.service.strikeiron.advanced-uses.services-by-wsdl>`.
 
-
 .. _zend.service.strikeiron.making-first-query:
 
 Making Your First Query
@@ -116,7 +111,6 @@ The ``getTaxRateCanada()`` method is then called on the service. An associative 
 The result from ``getTaxRateCanada()`` is stored in ``$rateInfo`` and has properties like ``province`` and ``GST``.
 
 Many of the StrikeIron services are as simple to use as the example above. See :ref:`Bundled Services <zend.service.strikeiron.bundled-services>` for detailed information on three StrikeIron services.
-
 
 .. _zend.service.strikeiron.examining-results:
 
@@ -159,11 +153,10 @@ In the output above, we see that the decorator (``$rateInfo``) wraps an object n
 This means that ``$rateInfo`` has public properties like ``abbreviation``, ``province``>, and ``GST``. These are accessed like ``$rateInfo->province``.
 
 .. tip::
+
    StrikeIron result properties sometimes start with an uppercase letter such as ``Foo`` or ``Bar`` where most *PHP* object properties normally start with a lowercase letter as in ``foo`` or ``bar``. The decorator will automatically do this inflection so you may read a property ``Foo`` as ``foo``.
 
-
 If you ever need to get the original object or its name out of the decorator, use the respective methods ``getDecoratedObject()`` and ``getDecoratedObjectName()``.
-
 
 .. _zend.service.strikeiron.handling-errors:
 
@@ -198,9 +191,8 @@ The exceptions thrown will always be ``Zend_Service_StrikeIron_Exception``.
 It's important to understand the difference between exceptions and normal failed method calls. Exceptions occur for **exceptional** conditions, such as the network going down or your subscription expiring. Failed method calls that are a common occurrence, such as ``getTaxRateCanada()`` not finding the ``province`` you supplied, will not result an in exception.
 
 .. note::
+
    Every time you make a method call to a StrikeIron service, you should check the response object for validity and also be prepared to catch an exception.
-
-
 
 
 

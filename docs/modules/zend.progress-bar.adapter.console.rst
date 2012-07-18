@@ -1,4 +1,3 @@
-
 .. _zend.progressbar.adapter.console:
 
 Zend_ProgressBar_Adapter_Console
@@ -7,10 +6,10 @@ Zend_ProgressBar_Adapter_Console
 ``Zend_ProgressBar_Adapter_Console`` is a text-based adapter for terminals. It can automatically detect terminal widths but supports custom widths as well. You can define which elements are displayed with the progressbar and as well customize the order of them. You can also define the style of the progressbar itself.
 
 .. note::
+
    **Automatic console width recognition**
 
    *shell_exec* is required for this feature to work on \*nix based systems. On windows, there is always a fixed terminal width of 80 character, so no recognition is required there.
-
 
 You can set the adapter options either via the *set** methods or give an array or a ``Zend_Config`` instance with options as first parameter to the constructor. The available options are:
 
@@ -27,7 +26,6 @@ You can set the adapter options either via the *set** methods or give an array o
   - ``ELEMENT_ETA``: The automatic calculated ETA. This element is firstly displayed after five seconds, because in this time, it is not able to calculate accurate results.
 
   - ``ELEMENT_TEXT``: An optional status message about the current process.
-
 
 - *textWidth*: Width in characters of the ``ELEMENT_TEXT`` element. Default is 20.
 

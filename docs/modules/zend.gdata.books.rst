@@ -1,4 +1,3 @@
-
 .. _zend.gdata.books:
 
 Using the Book Search Data API
@@ -10,14 +9,12 @@ Your client application can use the Book Search Data *API* to issue full-text se
 
 For more information on the Book Search Data *API*, please refer to the official `PHP Developer's Guide`_ on code.google.com.
 
-
 .. _zend.gdata.books.authentication:
 
 Authenticating to the Book Search service
 -----------------------------------------
 
 You can access both public and private feeds using the Book Search Data *API*. Public feeds don't require any authentication, but they are read-only. If you want to modify user libraries, submit reviews or ratings, or add labels, then your client needs to authenticate before requesting private feeds. It can authenticate using either of two approaches: AuthSub proxy authentication or ClientLogin username/password authentication. Please refer to the `Authentication section in the PHP Developer's Guide`_ for more detail.
-
 
 .. _zend.gdata.books.searching_for_books:
 
@@ -66,7 +63,6 @@ Here are some of the most common ``VolumeQuery`` methods for setting search para
 
 ``setMinViewability()``: Allows you to filter the results according to the books'`viewability status`_. This parameter accepts one of three values: **'none'** (the default, returning all matching books regardless of viewability), **'partial_view'** (returning only books that the user can preview or view in their entirety), or **'full_view'** (returning only books that the user can view in their entirety).
 
-
 .. _zend.gdata.books.partner_restrict:
 
 Partner Co-Branded Search
@@ -98,12 +94,10 @@ To specify an alternate *URL* when querying a volume feed, you can provide an ex
 
 For additional information or support, visit our `Partner help center`_.
 
-
 .. _zend.gdata.books.community_features:
 
 Using community features
 ------------------------
-
 
 .. _zend.gdata.books.adding_ratings:
 
@@ -122,14 +116,12 @@ To add a rating, add a ``Rating`` object to a ``VolumeEntry`` and post it to the
    $entry->setRating(new Zend_Gdata_Extension_Rating(3, 1, 5, 1));
    $books->insertVolume($entry, Zend_Gdata_Books::MY_ANNOTATION_FEED_URI);
 
-
 .. _zend.gdata.books.reviews:
 
 Reviews
 ^^^^^^^
 
 In addition to ratings, authenticated users can submit reviews or edit their reviews. For information on how to request previously submitted reviews, see `Retrieving annotations`_.
-
 
 .. _zend.gdata.books.adding_review:
 
@@ -148,7 +140,6 @@ To add a review, add a ``Review`` object to a ``VolumeEntry`` and post it to the
    $entry->setReview($review);
    $books->insertVolume($entry, $annotationUrl);
 
-
 .. _zend.gdata.books.editing_review:
 
 Editing a review
@@ -166,14 +157,12 @@ To update an existing review, first you retrieve the review you want to update, 
    $entry->setReview($review);
    $books->updateVolume($entry, $entryUrl);
 
-
 .. _zend.gdata.books.labels:
 
 Labels
 ^^^^^^
 
 You can use the Book Search Data *API* to label volumes with keywords. A user can submit, retrieve and modify labels. See `Retrieving annotations`_ for how to read previously submitted labels.
-
 
 .. _zend.gdata.books.submitting_labels:
 
@@ -191,7 +180,6 @@ To submit labels, add a ``Category`` object with the scheme ``LABELS_SCHEME`` to
        'http://schemas.google.com/books/2008/labels');
    $entry->setCategory(array($category));
    $books->insertVolume($entry, Zend_Gdata_Books::MY_ANNOTATION_FEED_URI);
-
 
 .. _zend.gdata.books.retrieving_annotations:
 
@@ -220,7 +208,6 @@ You can use the Book Search Data *API* to retrieve annotations submitted by a gi
 
 For a list of the supported query parameters, see the `query parameters`_ section.
 
-
 .. _zend.gdata.books.deleting_annotations:
 
 Deleting Annotations
@@ -233,7 +220,6 @@ If you retrieved an annotation entry containing ratings, reviews, and/or labels,
 
    $books->deleteVolume($entry);
 
-
 .. _zend.gdata.books.sharing_with_my_library:
 
 Book collections and My Library
@@ -243,7 +229,6 @@ Google Book Search provides a number of user-specific book collections, each of 
 
 The most important collection is the user's My Library, which represents the books the user would like to remember, organize, and share with others. This is the collection the user sees when accessing his or her `My Library page`_.
 
-
 .. _zend.gdata.books.retrieving_books_in_library:
 
 Retrieving books in a user's library
@@ -252,7 +237,6 @@ Retrieving books in a user's library
 The following sections describe how to retrieve a list of books from a user's library, with or without query parameters.
 
 You can query a Book Search public feed without authentication.
-
 
 .. _zend.gdata.books.retrieving_all_books_in_library:
 
@@ -267,7 +251,6 @@ To retrieve the user's books, send a query to the My Library feed. To get the li
    $feed = $books->getUserLibraryFeed();
 
 Note: The feed may not contain all of the user's books, because there's a default limit on the number of results returned. For more information, see the ``max-results`` query parameter in `Searching for books`_.
-
 
 .. _zend.gdata.books.retrieving_books_in_library_with_query:
 
@@ -299,14 +282,12 @@ For a list of the supported query parameters, see the `query parameters`_ sectio
    $query->setCategory('favorites');
    $feed = $books->getVolumeFeed($query);
 
-
 .. _zend.gdata.books.updating_library:
 
 Updating books in a user's library
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can use the Book Search Data *API* to add a book to, or remove a book from, a user's library. Ratings, reviews, and labels are valid across all the collections of a user, and are thus edited using the annotation feed (see `Using community features`_).
-
 
 .. _zend.gdata.books.library_book_add:
 
@@ -338,7 +319,6 @@ The following example adds an existing ``VolumeEntry`` object to the library:
        $entry,
        Zend_Gdata_Books::MY_LIBRARY_FEED_URI
    );
-
 
 .. _zend.gdata.books.library_book_remove:
 

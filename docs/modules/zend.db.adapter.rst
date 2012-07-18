@@ -1,11 +1,9 @@
-
 .. _zend.db.adapter:
 
 Zend\\Db\\Adapter
 =================
 
 The Adapter object is the most important sub-component of Zend\\Db. It is responsible for adapting any code written in or for Zend\\Db to the targeted php extensions and vendor databases. In doing this, it creates an abstraction layer for the PHP extensions, which is called the "Driver" portion of the Zend\\Db adapter. It also creates a lightweight abstraction layer for the various idiosyncrasies that each vendor specific platform might have in it's SQL/RDBMS implementation which is called the "Platform" portion of the adapter.
-
 
 .. _zend.db.adapter.quickstart:
 
@@ -41,7 +39,6 @@ This driver array is an abstraction for the extension level required parameters.
    |characterset|not generally required|not generally required the character set to use              |
    +------------+----------------------+-------------------------------------------------------------+
 
-
 \* other names will work as well. Effectively, if the PHP manual uses a particular naming, this naming will be supported by our Driver. For example, dbname in most cases will also work for 'database'. Another example is that in the case of Sqlsrv, UID will work in place of username. Which format you chose is up to you, but the above table represents the official abstraction names.
 
 So, for example, a MySQL connection using ext/mysqli:
@@ -68,7 +65,6 @@ Another example, of a Sqlite connection via PDO:
 
 It is important to know that by using this style of adapter creation, the Adapter will attempt to create any dependencies that were not explicitly provided. A Driver object will be created from the contents of the $driver array provided in the constructor. A Platform object will be created based off the type of Driver object that was instantiated. And lastly, a default ResultSet object is created and utilized. Any of these objects can be injected, to do this, see the next section.
 
-
 .. _zend.db.adapter.instantiating:
 
 Creating an Adapter (By Injecting Dependencies)
@@ -89,7 +85,6 @@ The more expressive and explicit way of creating an adapter is by injecting all 
 What can be injected:
 
 $driver - an array or an instance of ``Zend\Db\Adapter\Driver\DriverInterface`` $platform - (optional) an instance of ``Zend\Db\Platform\PlatformInterface``, the default will be created based off the driver implementation $queryResultSetPrototype - (optional) an instance of ``Zend\Db\ResultSet\ResultSet``, to understand this object's role, see the section below on querying through the adapter
-
 
 .. _zend.db.adapter.query-preparing:
 
@@ -119,7 +114,6 @@ The above example will go through the following steps:
 
 - else, return the Result
 
-
 .. _zend.db.adapter.query-execution:
 
 Query Execution Through Zend\\Db\\Adapter\\Adapter::query()
@@ -134,7 +128,6 @@ In some cases, you have to execute statements directly. The primary purpose for 
 
 The primary difference to notice is that you must provide the Adapter::QUERY_MODE_EXECUTE (execute) as the second parameter.
 
-
 .. _zend.db.adapter.statement-creation:
 
 Creating Statements
@@ -147,7 +140,6 @@ While query() is highly useful for one-off and quick querying of a database thro
 
    $statement = $adapter->createStatement($sql, $optionalParameters);
    $result = $statement->execute();
-
 
 .. _zend.db.adapter.platform:
 
@@ -187,14 +179,12 @@ Generally speaking, it is easier to get the proper Platform instance from the ad
    // or
    $platform = $adapter->platform; // magic property access
 
-
 .. _zend.db.adapter.parameter-container:
 
 Using The Parameter Container
 -----------------------------
 
 The ParameterContainer object is a container for the various parameters that need to be passed into a Statement object to fulfill all the various parameterized parts of the SQL statement. This object implements the ArrayAccess interface.
-
 
 .. _zend.db.adapter.parameter-container.examples:
 

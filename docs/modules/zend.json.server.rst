@@ -1,4 +1,3 @@
-
 .. _zend.json.server:
 
 Zend_Json_Server - JSON-RPC server
@@ -21,7 +20,6 @@ JSON-RPC is a lightweight Remote Procedure Call protocol that utilizes *JSON* fo
 - The return value variable type
 
 ``Zend_Json_Server`` listens for POST requests only at this time; fortunately, most JSON-RPC client implementations in the wild at the time of this writing will only POST requests as it is. This makes it simple to utilize the same server end point to both handle requests as well as to deliver the service SMD, as is shown in the next example.
-
 
 .. _zend.json.server.usage:
 
@@ -148,14 +146,12 @@ If utilizing the JSON-RPC server with Dojo toolkit, you will also need to set a 
 
    $server->handle();
 
-
 .. _zend.json.server.details:
 
 Advanced Details
 ----------------
 
 While most functionality for ``Zend_Json_Server`` is spelled out in :ref:`this section <zend.json.server.usage>`, more advanced functionality is available.
-
 
 .. _zend.json.server.details.zendjsonserver:
 
@@ -187,7 +183,6 @@ Zend_Json_Server
 - ``autoEmitResponse()``: Determine if auto-emission of the response is enabled.
 
 - ``getServiceMap()``: Retrieve the service map description in the form of a ``Zend_Json_Server_Smd`` object
-
 
 .. _zend.json.server.details.zendjsonserverrequest:
 
@@ -230,7 +225,6 @@ The request object has the following methods available:
 
 An *HTTP* specific version is available via ``Zend_Json_Server_Request_Http``. This class will retrieve the request via ``php://input``, and allows access to the raw *JSON* via the ``getRawJson()`` method.
 
-
 .. _zend.json.server.details.zendjsonserverresponse:
 
 Zend_Json_Server_Response
@@ -266,7 +260,6 @@ The response object has the following methods available:
 
 An *HTTP* specific version is available via ``Zend_Json_Server_Response_Http``. This class will send the appropriate *HTTP* headers as well as serialize the response as *JSON*.
 
-
 .. _zend.json.server.details.zendjsonservererror:
 
 Zend_Json_Server_Error
@@ -293,7 +286,6 @@ Error codes are derived from those recommended by `the XML-RPC EPI project`_. ``
 - ``toArray()``: Cast the error to an array. The array will contain the keys 'code', 'message', and 'data'.
 
 - ``toJson()``: Cast the error to a JSON-RPC error representation.
-
 
 .. _zend.json.server.details.zendjsonserversmd:
 
@@ -389,7 +381,6 @@ Methods available in ``Zend_Json_Server_Smd`` include:
   - **default**: a default value for the parameter
 
   - **description**: text describing the parameter
-
 
 - ``addParams(array $params)``: Add several parameters at once; each param should be an assoc array containing minimally the key 'type' describing the parameter type, and optionally the key 'order'; any other keys will be passed as ``$options`` to ``addOption()``.
 

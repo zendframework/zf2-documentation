@@ -1,4 +1,3 @@
-
 .. _zend.markup.introduction:
 
 Introduction

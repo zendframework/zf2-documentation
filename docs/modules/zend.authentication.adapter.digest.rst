@@ -1,9 +1,7 @@
-
 .. _zend.authentication.adapter.digest:
 
 Digest Authentication
 =====================
-
 
 .. _zend.authentication.adapter.digest.introduction:
 
@@ -27,7 +25,6 @@ The above elements are separated by colons, as in the following example (in whic
 
    someUser:Some Realm:fde17b91c3a510ecbaf7dbd37f59d4f8
 
-
 .. _zend.authentication.adapter.digest.specifics:
 
 Specifics
@@ -44,7 +41,6 @@ The digest authentication adapter, ``Zend\Authentication\Adapter\Digest``, requi
 - password - Password for the user of the realm
 
 These parameters must be set prior to calling ``authenticate()``.
-
 
 .. _zend.authentication.adapter.digest.identity:
 

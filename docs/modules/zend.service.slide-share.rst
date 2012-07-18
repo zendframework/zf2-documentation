@@ -1,11 +1,9 @@
-
 .. _zend.service.slideshare:
 
 Zend_Service_SlideShare
 =======================
 
 The ``Zend_Service_SlideShare`` component is used to interact with the `slideshare.net`_ web services for hosting slide shows online. With this component, you can embed slide shows which are hosted on this web site within a web site and even upload new slide shows to your account.
-
 
 .. _zend.service.slideshare.basicusage:
 
@@ -24,7 +22,6 @@ Once you have setup an account, you can begin using the ``Zend_Service_SlideShar
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
-
 
 .. _zend.service.slideshare.slideshowobj:
 
@@ -174,11 +171,10 @@ All slide shows in the ``Zend_Service_SlideShare`` component are represented usi
    }
 
 .. note::
+
    The above pseudo-class only shows those methods which should be used by end-user developers. Other available methods are internal to the component.
 
-
 When using the ``Zend_Service_SlideShare`` component, this data class will be used frequently to browse or add new slide shows to or from the web service.
-
 
 .. _zend.service.slideshare.getslideshow:
 
@@ -201,7 +197,6 @@ The simplest usage of the ``Zend_Service_SlideShare`` component is the retrieval
    print "Slide Show Title: {$slideshow->getTitle()}<br/>\n";
    print "Number of views: {$slideshow->getNumViews()}<br/>\n";
 
-
 .. _zend.service.slideshare.getslideshowlist:
 
 Retrieving Groups of Slide Shows
@@ -213,16 +208,13 @@ If you do not know the specific ID of a slide show you are interested in retriev
 
   You can retrieve slide shows from a specific account by using the ``getSlideShowsByUsername()`` method and providing the username from which the slide shows should be retrieved
 
-
 - **Slide shows which contain specific tags**
 
   You can retrieve slide shows which contain one or more specific tags by using the ``getSlideShowsByTag()`` method and providing one or more tags which the slide show must have assigned to it in order to be retrieved
 
-
 - **Slide shows by group**
 
   You can retrieve slide shows which are a member of a specific group using the ``getSlideShowsByGroup()`` method and providing the name of the group which the slide show must belong to in order to be retrieved
-
 
 Each of the above methods of retrieving multiple slide shows a similar approach is used. An example of using each method is shown below:
 
@@ -247,7 +239,6 @@ Each of the above methods of retrieving multiple slide shows a similar approach 
    foreach($ss_user as $slideshow) {
       print "Slide Show Title: {$slideshow->getTitle}<br/>\n";
    }
-
 
 .. _zend.service.slideshare.caching:
 
@@ -277,7 +268,6 @@ By default, ``Zend_Service_SlideShare`` will cache any request against the web s
    $ss->setCacheObject($cache);
 
    $ss_user = $ss->getSlideShowsByUser('username', $starting_offset, $limit);
-
 
 .. _zend.service.slideshare.httpclient:
 

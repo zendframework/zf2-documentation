@@ -1,4 +1,3 @@
-
 .. _zend.mvc.controller-plugins:
 
 Controller Plugins
@@ -29,7 +28,6 @@ For an extra layer of convenience, both ``AbstractActionController`` and ``Abstr
    :linenos:
 
    $plugin = $this->url();
-
 
 .. _zend.mvc.controller-plugins.flashmessenger:
 
@@ -64,7 +62,6 @@ The ``FlashMessenger`` is a plugin designed to create and retrieve self-expiring
 
 Additionally, the ``FlashMessenger`` implements both ``IteratorAggregate`` and ``Countable``, allowing you to iterate over and count the flash messages in the current namespace within the session container.
 
-
 .. _zend.mvc.controller-plugins.examples:
 
 Examples
@@ -89,7 +86,6 @@ Examples
        }
        return $return;
    }
-
 
 .. _zend.mvc.controller-plugins.forward:
 
@@ -118,7 +114,6 @@ As an example:
        'somekey' => $somevalue,
        'foo'     => $foo,
    );
-
 
 .. _zend.mvc.controller-plugins.redirect:
 
@@ -149,7 +144,6 @@ As an example:
    :linenos:
 
    return $this->redirect()->toRoute('login-success');
-
 
 .. _zend.mvc.controller-plugins.url:
 

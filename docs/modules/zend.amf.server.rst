@@ -1,11 +1,9 @@
-
 .. _zend.amf.server:
 
 Zend_Amf_Server
 ===============
 
 ``Zend_Amf_Server`` provides an *RPC*-style server for handling requests made from the Adobe Flash Player using the *AMF* protocol. Like all Zend Framework server classes, it follows the SoapServer *API*, providing an easy to remember interface for creating servers.
-
 
 .. _zend.amf.server.basic:
 
@@ -56,10 +54,10 @@ When calling remote services your source name can have underscore ("\_") and dot
 All *AMF* requests sent to the script will then be handled by the server, and an *AMF* response will be returned.
 
 .. note::
+
    **All Attached Methods and Functions Need Docblocks**
 
    Like all other server components in Zend Framework, you must document your class methods using *PHP* docblocks. At the minimum, you need to provide annotations for each required argument as well as the return value. As examples:
-
 
    .. code-block:: php
       :linenos:
@@ -75,7 +73,6 @@ All *AMF* requests sent to the script will then be handled by the server, and an
       {
           return $greeting . ', ' . $name;
       }
-
 
    .. code-block:: php
       :linenos:
@@ -95,10 +92,7 @@ All *AMF* requests sent to the script will then be handled by the server, and an
           }
       }
 
-
    Other annotations may be used, but will be ignored.
-
-
 
 .. _zend.amf.server.flex:
 
@@ -183,7 +177,6 @@ When namespacing, you would use "myservice.<namespace>.<method>":
 
 For more information on Flex RemoteObject invocation, `visit the Adobe Flex 3 Help site`_.
 
-
 .. _zend.amf.server.errors:
 
 Error Handling
@@ -208,13 +201,12 @@ To re-enable it, pass a ``TRUE`` boolean value instead:
    $server->setProduction(true);
 
 .. note::
+
    **Disable production mode sparingly!**
 
    We recommend disabling production mode only when in development. Exception messages and backtraces can contain sensitive system information that you may not wish for outside parties to access. Even though *AMF* is a binary format, the specification is now open, meaning anybody can potentially deserialize the payload.
 
-
 One area to be especially careful with is *PHP* errors themselves. When the ``display_errors`` *INI* directive is enabled, any *PHP* errors for the current error reporting level are rendered directly in the output -- potentially disrupting the *AMF* response payload. We suggest turning off the ``display_errors`` directive in production to prevent such problems
-
 
 .. _zend.amf.server.response:
 
@@ -222,7 +214,6 @@ AMF Responses
 -------------
 
 Occasionally you may desire to manipulate the response object slightly, typically to return extra message headers. The ``handle()`` method of the server returns the response object, allowing you to do so.
-
 
 .. _zend.amf.server.response.messageHeaderExample:
 
@@ -236,7 +227,6 @@ In this example, we add a 'foo' MessageHeader with the value 'bar' to the respon
    $response = $server->handle();
    $response->addAmfHeader(new Zend_Amf_Value_MessageHeader('foo', true, 'bar'))
    echo $response;
-
 
 .. _zend.amf.server.typedobjects:
 
@@ -255,7 +245,6 @@ Similar to *SOAP*, *AMF* allows passing objects between the client and server. T
      // Map the ActionScript class 'ContactVO' to the PHP class 'Contact':
      $server->setClassMap('ContactVO', 'Contact');
 
-
 - Second, you can set the public property ``$_explicitType`` in your *PHP* class, with the value representing the ActionScript class to map to:
 
   .. code-block:: php
@@ -265,7 +254,6 @@ Similar to *SOAP*, *AMF* allows passing objects between the client and server. T
      {
          public $_explicitType = 'ContactVO';
      }
-
 
 - Third, in a similar vein, you may define the public method ``getASClassName()`` in your *PHP* class; this method should return the appropriate ActionScript class:
 
@@ -279,7 +267,6 @@ Similar to *SOAP*, *AMF* allows passing objects between the client and server. T
              return 'ContactVO';
          }
      }
-
 
 Although we have created the ContactVO on the server we now need to make its corresponding class in *AS3* for the server object to be mapped to.
 
@@ -317,7 +304,6 @@ The class is syntactically equivalent to the *PHP* of the same name. The variabl
    }
 
 The following result event from the service call is cast instantly onto the Flex ContactVO. Anything that is bound to myContact will be updated with the returned ContactVO data.
-
 
 .. _zend.amf.server.resources:
 
@@ -364,7 +350,6 @@ Default directory for ``Zend_Amf`` resources is registered automatically and cur
    }
 
 Trying to return unknown resource type (i.e., one for which no handler plugin exists) will result in an exception.
-
 
 .. _zend.amf.server.flash:
 
@@ -465,7 +450,6 @@ The onFault function, is called if there was an invalid response from the server
    }
 
 Adding in the ActionScript to make the remoting connection is now complete. Running the ZendExample file now makes a connection to ``Zend_Amf``. In review you have added the required variables to open a connection to the remote server, defined what methods should be used when your application receives a response from the server, and finally displayed the returned data to output via ``trace()``.
-
 
 .. _zend.amf.server.auth:
 

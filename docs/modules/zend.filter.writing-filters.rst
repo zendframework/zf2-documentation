@@ -1,4 +1,3 @@
-
 .. _zend.filter.writing_filters:
 
 Writing Filters

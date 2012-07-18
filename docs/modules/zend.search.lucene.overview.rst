@@ -1,9 +1,7 @@
-
 .. _zend.search.lucene.overview:
 
 Overview
 ========
-
 
 .. _zend.search.lucene.introduction:
 
@@ -21,12 +19,10 @@ Introduction
 ``Zend_Search_Lucene`` was derived from the Apache Lucene project. The currently (starting from ZF 1.6) supported Lucene index format versions are 1.4 - 2.3. For more information on Lucene, visit `http://lucene.apache.org/java/docs/`_.
 
 .. note::
+
    Previous ``Zend_Search_Lucene`` implementations support the Lucene 1.4 (1.9) - 2.1 index formats.
 
-
    Starting from Zend Framework 1.5 any index created using pre-2.1 index format is automatically upgraded to Lucene 2.1 format after the ``Zend_Search_Lucene`` update and will not be compatible with ``Zend_Search_Lucene`` implementations included into Zend Framework 1.0.x.
-
-
 
 .. _zend.search.lucene.index-creation.documents-and-fields:
 
@@ -102,7 +98,6 @@ Fields' names are defined at your discretion in the ``addField()`` method.
 
 Java Lucene uses the 'contents' field as a default field to search. ``Zend_Search_Lucene`` searches through all fields by default, but the behavior is configurable. See the :ref:`"Default search field" <zend.search.lucene.query-language.fields>` chapter for details.
 
-
 .. _zend.search.lucene.index-creation.understanding-field-types:
 
 Understanding Field Types
@@ -117,7 +112,6 @@ Understanding Field Types
 - *Text* fields are stored, indexed, and tokenized. Text fields are appropriate for storing information like subjects and titles that need to be searchable as well as returned with search results.
 
 - *UnStored* fields are tokenized and indexed, but not stored in the index. Large amounts of text are best indexed using this type of field. Storing data creates a larger index on disk, so if you need to search but not redisplay the data, use an UnStored field. UnStored fields are practical when using a ``Zend_Search_Lucene`` index in combination with a relational database. You can index large data fields with UnStored fields for searching, and retrieve them from your relational database by using a separate field as an identifier.
-
 
   .. _zend.search.lucene.index-creation.understanding-field-types.table:
 
@@ -136,9 +130,6 @@ Understanding Field Types
      +----------+------+-------+---------+------+
      |UnStored  |No    |Yes    |Yes      |No    |
      +----------+------+-------+---------+------+
-
-
-
 
 .. _zend.search.lucene.index-creation.html-documents:
 
@@ -197,7 +188,6 @@ Starting from Zend Framework 1.6 it's also possible to exclude links with *rel* 
 
 ``Zend_Search_Lucene_Document_Html::getExcludeNoFollowLinks()`` method returns current state of "Exclude nofollow links" flag.
 
-
 .. _zend.search.lucene.index-creation.docx-documents:
 
 Word 2007 documents
@@ -255,7 +245,6 @@ Parsed documents may be augmented by the programmer with any other field:
    );
    $index->addDocument($doc);
 
-
 .. _zend.search.lucene.index-creation.pptx-documents:
 
 Powerpoint 2007 documents
@@ -310,7 +299,6 @@ Parsed documents may be augmented by the programmer with any other field:
        'annotation',
        'Document annotation text'));
    $index->addDocument($doc);
-
 
 .. _zend.search.lucene.index-creation.xlsx-documents:
 

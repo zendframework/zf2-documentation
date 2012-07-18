@@ -1,4 +1,3 @@
-
 .. _zend.filter.introduction.staticfilter:
 
 Using the StaticFilter

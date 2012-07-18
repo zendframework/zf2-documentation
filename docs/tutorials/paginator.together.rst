@@ -1,4 +1,3 @@
-
 .. _learning.paginator.together:
 
 Putting it all Together

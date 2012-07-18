@@ -1,4 +1,3 @@
-
 .. _migration.17:
 
 Zend Framework 1.7
@@ -6,12 +5,10 @@ Zend Framework 1.7
 
 When upgrading from a previous release to Zend Framework 1.7 or higher you should note the following migration notes.
 
-
 .. _migration.17.zend.controller:
 
 Zend_Controller
 ---------------
-
 
 .. _migration.17.zend.controller.dispatcher:
 
@@ -22,12 +19,10 @@ Users brought to our attention the fact that ``Zend_Controller_Action_Helper_Vie
 
 - ``formatModuleName()``: should be used to take a raw controller name, such as one that would be packaged inside a request object, and reformat it to a proper class name that a class extending ``Zend_Controller_Action`` would use
 
-
 .. _migration.17.zend.file.transfer:
 
 Zend_File_Transfer
 ------------------
-
 
 .. _migration.17.zend.file.transfer.validators:
 
@@ -40,7 +35,6 @@ Therefor, all filters and validators for ``Zend_File_Transfer`` have been rework
 
 The following list shows you the changes you will have to do for proper usage of the parameters.
 
-
 .. _migration.17.zend.file.transfer.validators.rename:
 
 Filter: Rename
@@ -49,7 +43,6 @@ Filter: Rename
 - Old method *API*: ``Zend_Filter_File_Rename($oldfile, $newfile, $overwrite)``
 
 - New method *API*: ``Zend_Filter_File_Rename($options)`` where ``$options`` accepts the following array keys: **source** equals to ``$oldfile``, **target** equals to ``$newfile``, **overwrite** equals to ``$overwrite``.
-
 
 .. _migration.17.zend.file.transfer.validators.rename.example:
 
@@ -70,7 +63,6 @@ Filter: Rename
                             'target' => '/path/to/newfile',
                             'overwrite' => true));
 
-
 .. _migration.17.zend.file.transfer.validators.count:
 
 Validator: Count
@@ -79,7 +71,6 @@ Validator: Count
 - Old method *API*: ``Zend_Validate_File_Count($min, $max)``
 
 - New method *API*: ``Zend_Validate_File_Count($options)`` where ``$options`` accepts the following array keys: **min** equals to ``$min``, **max** equals to ``$max``.
-
 
 .. _migration.17.zend.file.transfer.validators.count.example:
 
@@ -100,7 +91,6 @@ Validator: Count
                          array('min' => 2,
                                'max' => 3));
 
-
 .. _migration.17.zend.file.transfer.validators.extension:
 
 Validator:Extension
@@ -109,7 +99,6 @@ Validator:Extension
 - Old method *API*: ``Zend_Validate_File_Extension($extension, $case)``
 
 - New method *API*: ``Zend_Validate_File_Extension($options)`` where ``$options`` accepts the following array keys: ***** equals to ``$extension`` and can have any other key, **case** equals to ``$case``.
-
 
 .. _migration.17.zend.file.transfer.validators.extension.example:
 
@@ -130,7 +119,6 @@ Validator:Extension
                          array('extension1' => 'jpg,gif,bmp',
                                'case' => true));
 
-
 .. _migration.17.zend.file.transfer.validators.filessize:
 
 Validator: FilesSize
@@ -141,7 +129,6 @@ Validator: FilesSize
 - New method *API*: ``Zend_Validate_File_FilesSize($options)`` where ``$options`` accepts the following array keys: **min** equals to ``$min``, **max** equals to ``$max``, **bytestring** equals to ``$bytestring``.
 
 Additionally, the ``useByteString()`` method signature has changed. It can only be used to test if the validator is expecting to use byte strings in generated messages. To set the value of the flag, use the ``setUseByteString()`` method.
-
 
 .. _migration.17.zend.file.transfer.validators.filessize.example:
 
@@ -169,7 +156,6 @@ Additionally, the ``useByteString()`` method signature has changed. It can only 
    // Same example for 1.7
    $upload->setUseByteSting(true); // set flag
 
-
 .. _migration.17.zend.file.transfer.validators.hash:
 
 Validator: Hash
@@ -178,7 +164,6 @@ Validator: Hash
 - Old method *API*: ``Zend_Validate_File_Hash($hash, $algorithm)``
 
 - New method *API*: ``Zend_Validate_File_Hash($options)`` where ``$options`` accepts the following array keys: ***** equals to ``$hash`` and can have any other key, **algorithm** equals to ``$algorithm``.
-
 
 .. _migration.17.zend.file.transfer.validators.hash.example:
 
@@ -199,7 +184,6 @@ Validator: Hash
                          array('hash1' => '12345',
                                'algorithm' => 'md5'));
 
-
 .. _migration.17.zend.file.transfer.validators.imagesize:
 
 Validator: ImageSize
@@ -208,7 +192,6 @@ Validator: ImageSize
 - Old method *API*: ``Zend_Validate_File_ImageSize($minwidth, $minheight, $maxwidth, $maxheight)``
 
 - New method *API*: ``Zend_Validate_File_FilesSize($options)`` where ``$options`` accepts the following array keys: **minwidth** equals to ``$minwidth``, **maxwidth** equals to ``$maxwidth``, **minheight** equals to ``$minheight``, **maxheight** equals to ``$maxheight``.
-
 
 .. _migration.17.zend.file.transfer.validators.imagesize.example:
 
@@ -231,7 +214,6 @@ Validator: ImageSize
                                'maxwidth' => 100,
                                'maxheight' => 100));
 
-
 .. _migration.17.zend.file.transfer.validators.size:
 
 Validator: Size
@@ -240,7 +222,6 @@ Validator: Size
 - Old method *API*: ``Zend_Validate_File_Size($min, $max, $bytestring)``
 
 - New method *API*: ``Zend_Validate_File_Size($options)`` where ``$options`` accepts the following array keys: **min** equals to ``$min``, **max** equals to ``$max``, **bytestring** equals to ``$bytestring``.
-
 
 .. _migration.17.zend.file.transfer.validators.size.example:
 
@@ -262,12 +243,10 @@ Validator: Size
                                'max' => 10000,
                                'bytestring' => true));
 
-
 .. _migration.17.zend.locale:
 
 Zend_Locale
 -----------
-
 
 .. _migration.17.zend.locale.islocale:
 
@@ -277,7 +256,6 @@ Changes when using isLocale()
 According to the coding standards ``isLocale()`` had to be changed to return a boolean. In previous releases a string was returned on success. For release 1.7 a compatibility mode has been added which allows to use the old behaviour of a returned string, but it triggers a user warning to mention you to change to the new behaviour. The rerouting which the old behaviour of ``isLocale()`` could have done is no longer neccessary as all I18n will now process a rerouting themself.
 
 To migrate your scripts to the new *API*, simply use the method as shown below.
-
 
 .. _migration.17.zend.locale.islocale.example:
 
@@ -324,7 +302,6 @@ Note that you can use the second parameter to see if the locale is correct witho
        // original string is no locale but can be rerouted
    }
 
-
 .. _migration.17.zend.locale.islocale.getdefault:
 
 Changes when using getDefault()
@@ -333,7 +310,6 @@ Changes when using getDefault()
 The meaning of the ``getDefault()`` method has been change due to the fact that we integrated a framework locale which can be set with ``setDefault()``. It does no longer return the locale chain but only the set framework locale.
 
 To migrate your scripts to the new *API*, simply use the method as shown below.
-
 
 .. _migration.17.zend.locale.islocale.getdefault.example:
 
@@ -356,15 +332,13 @@ To migrate your scripts to the new *API*, simply use the method as shown below.
 Note that the second parameter of the old ``getDefault()`` implementation is not available anymore, but the returned values are the same.
 
 .. note::
+
    Per default the old behaviour is still active, but throws a user warning. When you have changed your code to the new behaviour you should also change the compatibility mode to ``FALSE`` so that no warning is thrown anymore.
-
-
 
 .. _migration.17.zend.translator:
 
 Zend_Translator
 ---------------
-
 
 .. _migration.17.zend.translator.languages:
 
@@ -378,7 +352,6 @@ The reason is, that when a user requests a non existing language, you have no si
 But when you use a own error or exception handler, like xdebug, you will get all notices returned, even if this was not your intention. This is due to the fact that these handlers override all settings from within *PHP*.
 
 To get rid of these notices you can simply set the new option 'disableNotices' to ``TRUE``. It defaults to ``FALSE``.
-
 
 .. _migration.17.zend.translator.example:
 
@@ -403,15 +376,14 @@ In this case we will get an notice about a not available language 'fr'. Simply a
                                   'auto',
                                   array('disableNotices' => true));
 
-
 .. _migration.17.zend.view:
 
 Zend_View
 ---------
 
 .. note::
-   The *API* changes within ``Zend_View`` are only notable for you when you are upgrading to release 1.7.5 or higher.
 
+   The *API* changes within ``Zend_View`` are only notable for you when you are upgrading to release 1.7.5 or higher.
 
 Prior to the 1.7.5 release, the Zend Framework team was notified of a potential Local File Inclusion (*LFI*) vulnerability in the ``Zend_View::render()`` method. Prior to 1.7.5, the method allowed, by default, the ability to specify view scripts that included parent directory notation (e.g., "../" or "..\\"). This opens the possibility for an *LFI* attack if unfiltered user input is passed to the ``render()`` method:
 
@@ -422,7 +394,6 @@ Prior to the 1.7.5 release, the Zend Framework team was notified of a potential 
    echo $view->render($_GET['foobar']); // LFI inclusion
 
 ``Zend_View`` now by default raises an exception when such a view script is requested.
-
 
 .. _migration.17.zend.view.disabling:
 

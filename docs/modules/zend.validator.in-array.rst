@@ -1,11 +1,9 @@
-
 .. _zend.validator.set.in_array:
 
 InArray
 =======
 
 ``Zend\Validator\InArray`` allows you to validate if a given value is contained within an array. It is also able to validate multidimensional arrays.
-
 
 .. _zend.validator.set.in_array.options:
 
@@ -19,7 +17,6 @@ The following options are supported for ``Zend\Validator\InArray``:
 - **recursive**: Defines if the validation should be done recursive. This option defaults to ``FALSE``.
 
 - **strict**: Defines if the validation should be done strict. This option defaults to ``FALSE``.
-
 
 .. _zend.validator.set.in_array.basic:
 
@@ -42,8 +39,8 @@ The simplest way, is just to give the array which should be searched against at 
 This will behave exactly like *PHP*'s ``in_array()`` method.
 
 .. note::
-   Per default this validation is not strict nor can it validate multidimensional arrays.
 
+   Per default this validation is not strict nor can it validate multidimensional arrays.
 
 Of course you can give the array to validate against also afterwards by using the ``setHaystack()`` method. ``getHaystack()`` returns the actual set haystack array.
 
@@ -58,7 +55,6 @@ Of course you can give the array to validate against also afterwards by using th
    } else {
        // no value found
    }
-
 
 .. _zend.validator.set.in_array.strict:
 
@@ -90,9 +86,8 @@ The **haystack** key contains your array to validate against. And by setting the
 Of course you can also use the ``setStrict()`` method to change this setting afterwards and ``getStrict()`` to get the actual set state.
 
 .. note::
+
    Note that the **strict** setting is per default ``FALSE``.
-
-
 
 .. _zend.validator.set.in_array.recursive:
 
@@ -145,15 +140,15 @@ Your array will then be validated recursive to see if the given value is contain
    }
 
 .. note::
+
    **Default setting for recursion**
 
    Per default the recursive validation is turned off.
 
-
 .. note::
+
    **Option keys within the haystack**
 
    When you are using the keys '``haystack``', '``strict``' or '``recursive``' within your haystack, then you must wrap the ``haystack`` key.
-
 
 

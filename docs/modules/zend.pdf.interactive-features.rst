@@ -1,9 +1,7 @@
-
 .. _zend.pdf.interactive-features:
 
 Interactive Features
 ====================
-
 
 .. _zend.pdf.pages.interactive-features.destinations:
 
@@ -20,14 +18,12 @@ A destination defines a particular view of a document, consisting of the followi
 
 Destinations may be associated with outline items (:ref:`Document Outline (bookmarks) <zend.pdf.pages.interactive-features.outlines>`), annotations (:ref:`Annotations <zend.pdf.pages.interactive-features.annotations>`), or actions (:ref:`Actions <zend.pdf.pages.interactive-features.actions>`). In each case, the destination specifies the view of the document to be presented when the outline item or annotation is opened or the action is performed. In addition, the optional document open action can be specified.
 
-
 .. _zend.pdf.pages.interactive-features.destinations.types:
 
 Supported Destination Types
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following types are supported by ``Zend_Pdf`` component.
-
 
 .. _zend.pdf.pages.interactive-features.destinations.types.zoom:
 
@@ -64,7 +60,6 @@ Where:
 
 - ``setZoomFactor(float $zoom)``;
 
-
 .. _zend.pdf.pages.interactive-features.destinations.types.fit:
 
 Zend_Pdf_Destination_Fit
@@ -75,7 +70,6 @@ Display the specified page, with the coordinates (left, top) positioned at the u
 Destination object may be created using ``Zend_Pdf_Destination_Fit::create($page)`` method.
 
 Where ``$page`` is a destination page (a ``Zend_Pdf_Page`` object or a page number).
-
 
 .. _zend.pdf.pages.interactive-features.destinations.types.fit-horizontally:
 
@@ -98,7 +92,6 @@ Where:
 
 - ``setTopEdge(float $top)``;
 
-
 .. _zend.pdf.pages.interactive-features.destinations.types.fit-vertically:
 
 Zend_Pdf_Destination_FitVertically
@@ -119,7 +112,6 @@ Where:
 - ``Float`` ``getLeftEdge()``;
 
 - ``setLeftEdge(float $left)``;
-
 
 .. _zend.pdf.pages.interactive-features.destinations.types.fit-rectangle:
 
@@ -160,7 +152,6 @@ Where:
 
 - ``setTopEdge(float $top)``;
 
-
 .. _zend.pdf.pages.interactive-features.destinations.types.fit-bounding-box:
 
 Zend_Pdf_Destination_FitBoundingBox
@@ -171,7 +162,6 @@ Display the specified page, with its contents magnified just enough to fit its b
 Destination object may be created using ``Zend_Pdf_Destination_FitBoundingBox::create($page, $left, $bottom, $right, $top)`` method.
 
 Where ``$page`` is a destination page (a ``Zend_Pdf_Page`` object or a page number).
-
 
 .. _zend.pdf.pages.interactive-features.destinations.types.fit-bounding-box-horizontally:
 
@@ -194,7 +184,6 @@ Where
 
 - ``setTopEdge(float $top)``;
 
-
 .. _zend.pdf.pages.interactive-features.destinations.types.fit-bounding-box-vertically:
 
 Zend_Pdf_Destination_FitBoundingBoxVertically
@@ -216,7 +205,6 @@ Where
 
 - ``setLeftEdge(float $left)``;
 
-
 .. _zend.pdf.pages.interactive-features.destinations.types.named:
 
 Zend_Pdf_Destination_Named
@@ -233,7 +221,6 @@ Named destination object may be created using ``Zend_Pdf_Destination_Named::crea
 ``Zend_Pdf_Destination_Named`` class provides the only one additional method:
 
 ``String`` ``getName()``;
-
 
 .. _zend.pdf.pages.interactive-features.destinations.processing:
 
@@ -255,9 +242,8 @@ Complete list of named destinations can be retrieved using ``Zend_Pdf::getNamedD
 If ``NULL`` is specified in place of ``$destination``, then specified named destination is removed.
 
 .. note::
+
    Unresolvable named destinations are automatically removed from a document while document saving.
-
-
 
 .. _zend.pdf.interactive-features.destinations.example-1:
 
@@ -296,14 +282,12 @@ If ``NULL`` is specified in place of ``$destination``, then specified named dest
    // Returns null, page 3 is not included into document yet
    $pdf->resolveDestination(Zend_Pdf_Destination_Named::create('Page3'));
 
-
 .. _zend.pdf.pages.interactive-features.actions:
 
 Actions
 -------
 
 Instead of simply jumping to a destination in the document, an annotation or outline item can specify an action for the viewer application to perform, such as launching an application, playing a sound, or changing an annotation's appearance state.
-
 
 .. _zend.pdf.pages.interactive-features.actions.types:
 
@@ -340,7 +324,6 @@ The following action types are recognized while loading *PDF* document:
 
   - **LastPage**- Go to the last page of the document.
 
-
 - ``Zend_Pdf_Action_SubmitForm``- send data to a uniform resource locator.
 
 - ``Zend_Pdf_Action_ResetForm``- set fields to their default values.
@@ -364,7 +347,6 @@ GoTo action object can be created using ``Zend_Pdf_Action_GoTo::create($destinat
 ``Zend_Pdf_Action_URI::create($uri[, $isMap])`` method has to be used to create a URI action (see *API* documentation for the details). Optional ``$isMap`` parameter is set to ``FALSE`` by default.
 
 It also supports the following methods:
-
 
 .. _zend.pdf.pages.interactive-features.actions.chaining:
 
@@ -415,7 +397,6 @@ It's an array of ``Zend_Pdf_Action`` objects, which also may have their sub-acti
    // Prints 'Actions in a tree: 4'
    printf("Actions in a tree: %d\n", $actionsCount++);
 
-
 .. _zend.pdf.pages.interactive-features.actions.open-action:
 
 Document Open Action
@@ -426,7 +407,6 @@ Special open action may be specify a destination to be displayed or an action to
 ``Zend_Pdf_Target Zend_Pdf::getOpenAction()`` method returns current document open action (or ``NULL`` if open action is not set).
 
 ``setOpenAction(Zend_Pdf_Target $openAction = null)`` method sets document open action or clean it if ``$openAction`` is ``NULL``.
-
 
 .. _zend.pdf.pages.interactive-features.outlines:
 
@@ -453,7 +433,6 @@ A PDF document may optionally display a document outline on the screen, allowing
           Zend_Pdf_Outline::create('Chapter 2', 'chapter_2');
 
       $pdf->save($path, true);
-
 
 
 
@@ -529,9 +508,8 @@ Each outline object may have child outline items listed in ``Zend_Pdf_Outline::$
    $pdf->save($path, true);
 
 .. note::
+
    All outline items with unresolved destinations (or destinations of GoTo actions) are updated while document saving by setting their targets to ``NULL``. So document will not be corrupted by removing pages referenced by outlines.
-
-
 
 .. _zend.pdf.pages.interactive-features.annotations:
 

@@ -1,4 +1,3 @@
-
 .. _zend.gdata.clientlogin:
 
 Authenticating with ClientLogin
@@ -11,7 +10,6 @@ See `http://code.google.com/apis/accounts/AuthForInstalledApps.html`_ for more i
 The Google documentation says the ClientLogin mechanism is appropriate for "installed applications" whereas the AuthSub mechanism is for "web applications." The difference is that AuthSub requires interaction from the user, and a browser interface that can react to redirection requests. The ClientLogin solution uses *PHP* code to supply the account credentials; the user is not required to enter her credentials interactively.
 
 The account credentials supplied via the ClientLogin mechanism must be valid credentials for Google services, but they are not required to be those of the user who is using the *PHP* application.
-
 
 .. _zend.gdata.clientlogin.login:
 
@@ -48,7 +46,6 @@ Below is an example of *PHP* code for a web application to acquire authenticatio
    }
 
    $cal = new Zend_Gdata_Calendar($client);
-
 
 .. _zend.gdata.clientlogin.terminating:
 

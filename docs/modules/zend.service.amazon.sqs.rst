@@ -1,9 +1,7 @@
-
 .. _zend.service.amazon.sqs:
 
 Zend_Service_Amazon_Sqs
 =======================
-
 
 .. _zend.service.amazon.sqs.introduction:
 
@@ -14,7 +12,6 @@ Introduction
 
 Amazon SQS works by exposing Amazon's web-scale messaging infrastructure as a web service. Any computer on the Internet can add or read messages without any installed software or special firewall configurations. Components of applications using Amazon SQS can run independently, and do not need to be on the same network, developed with the same technologies, or running at the same time.
 
-
 .. _zend.service.amazon.sqs.registering:
 
 Registering with Amazon SQS
@@ -24,14 +21,12 @@ Before you can get started with ``Zend_Service_Amazon_Sqs``, you must first regi
 
 After registering, you will receive an application key and a secret key. You will need both to access the SQS service.
 
-
 .. _zend.service.amazon.sqs.apiDocumentation:
 
 API Documentation
 -----------------
 
 The ``Zend_Service_Amazon_Sqs`` class provides the *PHP* wrapper to the Amazon SQS REST interface. Please consult the `Amazon SQS documentation`_ for detailed description of the service. You will need to be familiar with basic concepts in order to use this service.
-
 
 .. _zend.service.amazon.sqs.features:
 
@@ -48,7 +43,6 @@ Features
 
 - Additional convenience methods for some of the more common operations.
 
-
 .. _zend.service.amazon.sqs.storing-your-first:
 
 Getting Started
@@ -57,7 +51,6 @@ Getting Started
 Once you have registered with Amazon SQS, you're ready to create your queue and store some messages on SQS. Each queue can contain unlimited amount of messages, identified by name.
 
 The following example demonstrates creating a queue, storing and retrieving messages.
-
 
 .. _zend.service.amazon.sqs.storing-your-first.example:
 
@@ -85,7 +78,6 @@ Since the ``Zend_Service_Amazon_Sqs`` service requires authentication, you shoul
    Zend_Service_Amazon_Sqs::setKeys($my_aws_key, $my_aws_secret_key);
    $sqs = new Zend_Service_Amazon_Sqs();
 
-
 .. _zend.service.amazon.sqs.queues:
 
 Queue operations
@@ -99,7 +91,6 @@ Queue names can contain lowercase letters, digits, periods (.), underscores (\_)
 
 - ``delete()`` removes all messages in the queue.
 
-
   .. _zend.service.amazon.sqs.queues.removalExample:
 
   .. rubric:: Zend_Service_Amazon_Sqs Queue Removal Example
@@ -111,9 +102,7 @@ Queue names can contain lowercase letters, digits, periods (.), underscores (\_)
      $queue_url = $sqs->create('test_1');
      $sqs->delete($queue_url);
 
-
 - ``count()`` gets the approximate number of messages in the queue.
-
 
   .. _zend.service.amazon.sqs.queues.countExample:
 
@@ -127,9 +116,7 @@ Queue names can contain lowercase letters, digits, periods (.), underscores (\_)
      $sqs->send($queue_url, 'this is a test');
      $count = $sqs->count($queue_url); // Returns '1'
 
-
 - ``getQueues()`` returns the list of the names of all queues belonging to the user.
-
 
   .. _zend.service.amazon.sqs.queues.listExample:
 
@@ -144,8 +131,6 @@ Queue names can contain lowercase letters, digits, periods (.), underscores (\_)
         echo "I have queue $queue\n";
      }
 
-
-
 .. _zend.service.amazon.sqs.messages:
 
 Message operations
@@ -154,7 +139,6 @@ Message operations
 After a queue is created, simple messages can be sent into the queue then received at a later point in time. Messages can be up to 8KB in length. If longer messages are needed please see `S3`_. There is no limit to the number of messages a queue can contain.
 
 - ``sent($queue_url, $message)`` send the ``$message`` to the ``$queue_url`` SQS queue *URL*.
-
 
   .. _zend.service.amazon.sqs.messages.sendExample:
 
@@ -167,9 +151,7 @@ After a queue is created, simple messages can be sent into the queue then receiv
      $queue_url = $sqs->create('test_queue');
      $sqs->send($queue_url, 'this is a test message');
 
-
 - ``receive($queue_url)`` retrieves messages from the queue.
-
 
   .. _zend.service.amazon.sqs.messages.receiveExample:
 
@@ -185,9 +167,7 @@ After a queue is created, simple messages can be sent into the queue then receiv
          echo "got message ".$message['body'].'<br/>';
      }
 
-
 - ``deleteMessage($queue_url, $handle)`` deletes a message from a queue. A message must first be received using the ``receive()`` method before it can be deleted.
-
 
   .. _zend.service.amazon.sqs.messages.deleteExample:
 
@@ -209,7 +189,6 @@ After a queue is created, simple messages can be sent into the queue then receiv
              echo "Message not deleted";
          }
      }
-
 
 
 

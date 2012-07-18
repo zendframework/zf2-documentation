@@ -1,4 +1,3 @@
-
 .. _zend.serializer.adapter:
 
 Zend_Serializer_Adapter
@@ -10,7 +9,6 @@ Every adapter has different pros and cons. In some cases, not every *PHP* dataty
 
 Below is a list of available adapters.
 
-
 .. _zend.serializer.adapter.phpserialize:
 
 Zend_Serializer_Adapter_PhpSerialize
@@ -19,7 +17,6 @@ Zend_Serializer_Adapter_PhpSerialize
 This adapter uses the built-in ``un/serialize`` *PHP* functions, and is a good default adapter choice.
 
 There are no configurable options for this adapter.
-
 
 .. _zend.serializer.adapter.igbinary:
 
@@ -31,7 +28,6 @@ Zend_Serializer_Adapter_IgBinary
 You need the igbinary *PHP* extension installed on your system in order to use this adapter.
 
 There adapter takes no configuration options.
-
 
 .. _zend.serializer.adapter.wddx:
 
@@ -46,7 +42,6 @@ Additionally, the `SimpleXML`_ *PHP* extension is used to check if a returned ``
 
 Available options include:
 
-
 .. _zend.serializer.adapter.wddx.table.options:
 
 .. table:: Zend_Serializer_Adapter_Wddx Options
@@ -57,8 +52,6 @@ Available options include:
    |comment|string   |             |An optional comment that appears in the packet header.|
    +-------+---------+-------------+------------------------------------------------------+
 
-
-
 .. _zend.serializer.adapter.json:
 
 Zend_Serializer_Adapter_Json
@@ -67,7 +60,6 @@ Zend_Serializer_Adapter_Json
 The *JSON* adapter provides a bridge to the ``Zend_Json`` component and/or ext/json. Please read the :ref:`Zend_Json documentation <zend.json.introduction>` for further information.
 
 Available options include:
-
 
 .. _zend.serializer.adapter.json.table.options:
 
@@ -83,8 +75,6 @@ Available options include:
    |enableJsonExprFinder|boolean          |false                |See this section|
    +--------------------+-----------------+---------------------+----------------+
 
-
-
 .. _zend.serializer.adapter.amf03:
 
 Zend_Serializer_Adapter_Amf 0 and 3
@@ -94,7 +84,6 @@ The *AMF* adapters, ``Zend_Serializer_Adapter_Amf0`` and ``Zend_Serializer_Adapt
 
 There are no options for these adapters.
 
-
 .. _zend.serializer.adapter.pythonpickle:
 
 Zend_Serializer_Adapter_PythonPickle
@@ -103,7 +92,6 @@ Zend_Serializer_Adapter_PythonPickle
 This adapter converts *PHP* types to a `Python Pickle`_ string representation. With it, you can read the serialized data with Python and read Pickled data of Python with *PHP*.
 
 Available options include:
-
 
 .. _zend.serializer.adapter.pythonpickle.table.options:
 
@@ -115,9 +103,7 @@ Available options include:
    |protocol|integer (0 | 1 | 2 | 3)|0            |The Pickle protocol version used on serialize|
    +--------+-----------------------+-------------+---------------------------------------------+
 
-
 Datatype merging (PHP to Python) occurs as follows:
-
 
 .. _zend.serializer.adapter.pythonpickle.table.php2python:
 
@@ -143,9 +129,7 @@ Datatype merging (PHP to Python) occurs as follows:
    |object           |dictionary |
    +-----------------+-----------+
 
-
 Datatype merging (Python to *PHP*) occurs per the following:
-
 
 .. _zend.serializer.adapter.pythonpickle.table.python2php:
 
@@ -179,8 +163,6 @@ Datatype merging (Python to *PHP*) occurs per the following:
    |All other types|Zend_Serializer_Exception                           |
    +---------------+----------------------------------------------------+
 
-
-
 .. _zend.serializer.adapter.phpcode:
 
 Zend_Serializer_Adapter_PhpCode
@@ -191,16 +173,16 @@ This adapter generates a parsable *PHP* code representation using `var_export()`
 There are no configuration options for this adapter.
 
 .. warning::
+
    **Unserializing objects**
 
    Objects will be serialized using the `\__set_state`_ magic method. If the class doesn't implement this method, a fatal error will occur during execution.
 
-
 .. warning::
+
    **Uses eval()**
 
    The ``PhpCode`` adapter utilizes ``eval()`` to unserialize. This introduces both a performance and potential security issue as a new process will be executed. Typically, you should use the ``PhpSerialize`` adapter unless you require human-readability of the serialized data.
-
 
 
 

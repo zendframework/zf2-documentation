@@ -1,4 +1,3 @@
-
 .. _zend.di.configuration:
 
 Zend\\Di Configuration

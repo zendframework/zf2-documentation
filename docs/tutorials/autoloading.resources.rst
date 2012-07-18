@@ -1,4 +1,3 @@
-
 .. _learning.autoloading.resources:
 
 Resource Autoloading
@@ -62,9 +61,9 @@ Once defined, we can simply use these classes:
    $guestbook = new Foo_Model_Guestbook();
 
 .. note::
+
    **Module Resource Autoloading**
 
    Zend Framework's *MVC* layer encourages the use of "modules", which are self-contained applications within your site. Modules typically have a number of resource types by default, and Zend Framework even :ref:`recommends a standard directory layout for modules <project-structure.filesystem>`. Resource autoloaders are therefore quite useful in this paradigm -- so useful that they are enabled by default when you create a bootstrap class for your module that extends ``Zend_Application_Module_Bootstrap``. For more information, read the :ref:`Zend_Loader_Autoloader_Module documentation <zend.loader.autoloader-resource.module>`.
-
 
 

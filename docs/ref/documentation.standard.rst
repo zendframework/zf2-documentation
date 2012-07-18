@@ -1,16 +1,13 @@
-
 .. _doc-standard:
 
 *************************************
 Zend Framework Documentation Standard
 *************************************
 
-
 .. _doc-standard.overview:
 
 Overview
 --------
-
 
 .. _doc-standard.overview.scope:
 
@@ -23,12 +20,10 @@ You may adopt and/or modify these standards in accordance with the terms of our 
 
 Topics covered in Zend Framework's documentation standards include documentation file formatting and recommendations for documentation quality.
 
-
 .. _doc-standard.file-formatting:
 
 Documentation File Formatting
 -----------------------------
-
 
 .. _doc-standard.file-formatting.xml-tags:
 
@@ -52,14 +47,12 @@ Each manual file must include the following *XML* declarations at the top of the
    <!-- EN-Revision: 14978 -->
    <!-- Reviewed: no -->
 
-
 .. _doc-standard.file-formatting.max-line-length:
 
 Maximum Line Length
 ^^^^^^^^^^^^^^^^^^^
 
 The maximum line length, including tags, attributes, and indentation, is not to exceed 100 characters. There is only one exception to this rule: attribute and value pairs are allowed to exceed the 100 chars as they are not allowed to be separated.
-
 
 .. _doc-standard.file-formatting.indentation:
 
@@ -103,7 +96,6 @@ Multiple block tags within the same line are not allowed; multiple inline tags a
        <classname>Zend_Magic</classname> does not exist. <classname>Zend_Acl</classname> does.
    </para>
 
-
 .. _doc-standard.file-formatting.line-termination:
 
 Line Termination
@@ -112,7 +104,6 @@ Line Termination
 Line termination follows the Unix text file convention. Lines must end with a single linefeed (LF) character. Linefeed characters are represented as ordinal 10, or hexadecimal 0x0A.
 
 Note: Do not use carriage returns (*CR*) as is the convention in Apple OS's (0x0D) or the carriage return - linefeed combination (*CRLF*) as is standard for the Windows OS (0x0D, 0x0A).
-
 
 .. _doc-standard.file-formatting.empty-tags:
 
@@ -132,12 +123,10 @@ Empty tags are not allowed; all tags must contain text or child tags.
    <para>
    </para>
 
-
 .. _doc-standard.file-formatting.whitespace:
 
 Usage of whitespace within documents
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 
 .. _doc-standard.file-formatting.whitespace.trailing:
 
@@ -188,7 +177,6 @@ Closing inline tags must not be preceded by any whitespace.
    <!-- OK -->
    This is the class <classname>Zend_Class</classname>
 
-
 .. _doc-standard.file-formatting.whitespace.multiple-line-breaks:
 
 Multiple line breaks
@@ -220,7 +208,6 @@ Multiple line breaks within or between tags are not allowed.
    <para>
        Another paragraph.
    </para>
-
 
 .. _doc-standard.file-formatting.whitespace.tag-separation:
 
@@ -279,7 +266,6 @@ The first child tag should open directly below its parent, with no empty line be
        <section>
        </section>
    </section>
-
 
 .. _doc-standard.file-formatting.program-listing:
 
@@ -370,17 +356,15 @@ Line lengths within program listings should follow the :ref:`coding standards re
 Refrain from using ``require_once()``, ``require()``, ``include_once()``, and ``include()`` calls within *PHP* listings. They simply clutter the narrative, and are largely obviated when using an autoloader. Use them only when they are essential to the example.
 
 .. note::
+
    **Never use short tags**
 
    Short tags (e.g., "<?", "<?=") should never be used within **programlisting** or the narrative of a document.
-
-
 
 .. _doc-standard.file-formatting.inline-tags:
 
 Notes on specific inline tags
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 
 .. _doc-standard.file-formatting.inline-tags.classname:
 
@@ -396,7 +380,6 @@ The tag **<classname>** must be used each time a class name is represented by it
        The class <classname>Zend_Class</classname>.
    </para>
 
-
 .. _doc-standard.file-formatting.inline-tags.varname:
 
 varname
@@ -411,7 +394,6 @@ Variables must be wrapped in the **<varname>** tag. Variables must be written us
        The variable <varname>$var</varname> and the class variable
        <varname>Zend_Class::$var</varname>.
    </para>
-
 
 .. _doc-standard.file-formatting.inline-tags.methodname:
 
@@ -429,7 +411,6 @@ Methods must be wrapped in the **<methodname>** tag. Methods must either include
        <methodname>foo($bar, $baz)</methodname>
    </para>
 
-
 .. _doc-standard.file-formatting.inline-tags.constant:
 
 constant
@@ -445,7 +426,6 @@ Use the **<constant>** tag when denoting constants. Constants must be written in
        <constant>Zend_Class::FOO</constant>.
    </para>
 
-
 .. _doc-standard.file-formatting.inline-tags.filename:
 
 filename
@@ -459,7 +439,6 @@ Filenames and paths must be wrapped in the **<filename>** tag. No other content 
    <para>
        The filename <filename>application/Bootstrap.php</filename>.
    </para>
-
 
 .. _doc-standard.file-formatting.inline-tags.command:
 
@@ -475,7 +454,6 @@ Commands, shell scripts, and program calls must be wrapped in the **<command>** 
        Execute <command>zf.sh create project</command>.
    </para>
 
-
 .. _doc-standard.file-formatting.inline-tags.code:
 
 code
@@ -483,12 +461,10 @@ code
 
 Usage of the **<code>** tag is discouraged, in favor of the other inline tasks discussed previously.
 
-
 .. _doc-standard.file-formatting.block-tags:
 
 Notes on specific block tags
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 
 .. _doc-standard.file-formatting.block-tags.title:
 
@@ -506,12 +482,10 @@ The **<title>** tag is not allowed to hold other tags.
    <!-- OK -->
    <title>Using Zend_Class</title>
 
-
 .. _doc-standard.recommendations:
 
 Recommendations
 ---------------
-
 
 .. _doc-standard.recommendations.editors:
 
@@ -524,14 +498,12 @@ Many formal *XML* editors autoformat existing and new documents. Often, this for
 
 If possible, configure your editor's formatting settings such that they follow the guidelines outlined in this document. If you cannot do so, please disable autoformatting, or find a different tool that allows such configurability.
 
-
 .. _doc-standard.recommendations.images:
 
 Use Images
 ^^^^^^^^^^
 
 Good images and diagrams can improve readability and comprehension. Use them whenever they will assist in these goals. Images should be placed in the ``documentation/manual/en/figures/`` directory, and be named after the section identifier in which they occur.
-
 
 .. _doc-standard.recommendations.examples:
 
@@ -541,7 +513,6 @@ Use Case Examples
 Look for good use cases submitted by the community, especially those posted in proposal comments or on one of the mailing lists. Examples often illustrate usage far better than the narrative does.
 
 When writing your examples for inclusion in the manual, follow all coding standards and documentation standards.
-
 
 .. _doc-standard.recommendations.links:
 

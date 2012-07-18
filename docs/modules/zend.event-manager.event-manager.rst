@@ -1,9 +1,7 @@
-
 .. _zend.event-manager.event-manager:
 
 The EventManager
 ================
-
 
 .. _zend.event-manager.event-manager.intro:
 
@@ -19,7 +17,6 @@ The ``EventManager`` is a component designed for the following use cases:
 - Implementing event-driven architectures.
 
 The basic architecture allows you to attach and detach listeners to named events, both on a per-instance basis as well as via shared collections; trigger events; and interrupt execution of listeners.
-
 
 .. _zend.event-manager.event-manager.quick-start:
 
@@ -137,16 +134,14 @@ Sometimes you may want to specify listeners without yet having an object instanc
    // bar called on Foo, using params {"baz" : "baz", "bat" : "bat"}"
 
 .. note::
+
    **StaticEventManager**
 
    As of 2.0.0beta3, you can use the ``StaticEventManager`` singleton as a ``SharedEventCollection``. As such, you do not need to worry about where and how to get access to the ``SharedEventCollection``; it's globally available by simply calling *StaticEventManager::getInstance()*.
 
-
    Be aware, however, that its usage is deprecated within the framework, and starting with 2.0.0beta4, you will instead configure a ``SharedEventManager`` instance that will be injected by the framework into individual ``EventManager`` instances.
 
-
 The ``EventManager`` also provides the ability to detach listeners, short-circuit execution of an event either from within a listener or by testing return values of listeners, test and loop through the results returned by listeners, prioritize listeners, and more. Many of these features are detailed in the examples.
-
 
 .. _zend.event-manager.event-manager.quick-start.wildcard:
 
@@ -154,7 +149,6 @@ Wildcard Listeners
 ^^^^^^^^^^^^^^^^^^
 
 Sometimes you'll want to attach the same listener to many events or to all events of a given instance -- or potentially, with a shared event collection, many contexts, and many events. The ``EventManager`` component allows for this.
-
 
 .. _zend.event-manager.event-manager.quick-start.wildcard.many:
 
@@ -167,7 +161,6 @@ Sometimes you'll want to attach the same listener to many events or to all event
    $events->attach(array('these', 'are', 'event', 'names'), $callback);
 
 Note that if you specify a priority, that priority will be used for all events specified.
-
 
 .. _zend.event-manager.event-manager.quick-start.wildcard.wildcard:
 
@@ -182,7 +175,6 @@ Note that if you specify a priority, that priority will be used for all events s
 Note that if you specify a priority, that priority will be used for this listener for any event triggered.
 
 What the above specifies is that **any** event triggered will result in notification of this particular listener.
-
 
 .. _zend.event-manager.event-manager.quick-start.wildcard.shared-many:
 
@@ -199,7 +191,6 @@ What the above specifies is that **any** event triggered will result in notifica
    $events->attach(array('foo', 'bar'), array('these', 'are', 'event', 'names'), $callback);
 
 Note that if you specify a priority, that priority will be used for all events specified.
-
 
 .. _zend.event-manager.event-manager.quick-start.wildcard.shared-wildcard:
 
@@ -219,7 +210,6 @@ Note that if you specify a priority, that priority will be used for all events s
 
 The above is specifying that for the contexts "foo" and "bar", the specified listener should be notified for any event they trigger.
 
-
 .. _zend.event-manager.event-manager.options:
 
 Configuration Options
@@ -230,182 +220,115 @@ Configuration Options
 **identifier**
    A string or array of strings to which the given ``EventManager`` instance can answer when accessed via a ``SharedEventManager``.
 
-
 **event_class**
    The name of an alternate ``Event`` class to use for representing events passed to listeners.
 
-
 **shared_collections**
    An instance of a ``SharedEventCollection`` instance to use when triggering events.
-
-
 
 .. _zend.event-manager.event-manager.methods:
 
 Available Methods
 -----------------
 
-
 .. _zend.event-manager.event-manager.methods.constructor:
 
 **__construct**
    ``__construct(null|string|int $identifier)``
-
-
    Constructs a new ``EventManager`` instance, using the given identifier, if provided, for purposes of shared collections.
-
-
 
 .. _zend.event-manager.event-manager.methods.set-event-class:
 
 **setEventClass**
    ``setEventClass(string $class)``
-
-
    Provide the name of an alternate ``Event`` class to use when creating events to pass to triggered listeners.
-
-
 
 .. _zend.event-manager.event-manager.methods.set-shared-collections:
 
 **setSharedCollections**
    ``setSharedCollections(SharedEventCollection $collections = null)``
-
-
    An instance of a ``SharedEventCollection`` instance to use when triggering events.
-
-
 
 .. _zend.event-manager.event-manager.methods.get-shared-collections:
 
 **getSharedCollections**
    ``getSharedCollections()``
-
-
    Returns the currently attached ``SharedEventCollection`` instance. Returns either a ``null`` if no collection is attached, or a ``SharedEventCollection`` instance otherwise.
-
-
 
 .. _zend.event-manager.event-manager.methods.trigger:
 
 **trigger**
    ``trigger(string $event, mixed $target, mixed $argv, callback $callback)``
-
-
    Triggers all listeners to a named event. The recommendation is to use the current function/method name for ``$event``, appending it with values such as ".pre", ".post", etc. as needed. ``$context`` should be the current object instance, or the name of the function if not triggering within an object. ``$params`` should typically be an associative array or ``ArrayAccess`` instance; we recommend using the parameters passed to the function/method (``compact()`` is often useful here). This method can also take a callback and behave in the same way as ``triggerUntil()``.
 
-
    The method returns an instance of ``ResponseCollection``, which may be used to introspect return values of the various listeners, test for short-circuiting, and more.
-
-
 
 .. _zend.event-manager.event-manager.methods.trigger-until:
 
 **triggerUntil**
    ``triggerUntil(string $event, mixed $context, mixed $argv, callback $callback)``
-
-
    Triggers all listeners to a named event, just like :ref:`trigger() <zend.event-manager.event-manager.methods.trigger>`, with the addition that it passes the return value from each listener to ``$callback``; if ``$callback`` returns a boolean ``true`` value, execution of the listeners is interrupted. You can test for this using *$result->stopped()*.
-
-
 
 .. _zend.event-manager.event-manager.methods.attach:
 
 **attach**
    ``attach(string $event, callback $callback, int $priority)``
-
-
    Attaches ``$callback`` to the ``EventManager`` instance, listening for the event ``$event``. If a ``$priority`` is provided, the listener will be inserted into the internal listener stack using that priority; higher values execute earliest. (Default priority is "1", and negative priorities are allowed.)
 
-
    The method returns an instance of ``Zend\Stdlib\CallbackHandler``; this value can later be passed to ``detach()`` if desired.
-
-
 
 .. _zend.event-manager.event-manager.methods.attach-aggregate:
 
 **attachAggregate**
    ``attachAggregate(string|ListenerAggregate $aggregate)``
-
-
    If a string is passed for ``$aggregate``, instantiates that class. The ``$aggregate`` is then passed the ``EventManager`` instance to its ``attach()`` method so that it may register listeners.
 
-
    The ``ListenerAggregate`` instance is returned.
-
-
 
 .. _zend.event-manager.event-manager.methods.detach:
 
 **detach**
    ``detach(CallbackHandler $listener)``
-
-
    Scans all listeners, and detaches any that match ``$listener`` so that they will no longer be triggered.
 
-
    Returns a boolean ``true`` if any listeners have been identified and unsubscribed, and a boolean ``false`` otherwise.
-
-
 
 .. _zend.event-manager.event-manager.methods.detach-aggregate:
 
 **detachAggregate**
    ``detachAggregate(ListenerAggregate $aggregate)``
-
-
    Loops through all listeners of all events to identify listeners that are represented by the aggregate; for all matches, the listeners will be removed.
 
-
    Returns a boolean ``true`` if any listeners have been identified and unsubscribed, and a boolean ``false`` otherwise.
-
-
 
 .. _zend.event-manager.event-manager.methods.get-events:
 
 **getEvents**
    ``getEvents()``
-
-
    Returns an array of all event names that have listeners attached.
-
-
 
 .. _zend.event-manager.event-manager.methods.get-listeners:
 
 **getListeners**
    ``getListeners(string $event)``
-
-
    Returns a ``Zend\Stdlib\PriorityQueue`` instance of all listeners attached to ``$event``.
-
-
 
 .. _zend.event-manager.event-manager.methods.clear-listeners:
 
 **clearListeners**
    ``clearListeners(string $event)``
-
-
    Removes all listeners attached to ``$event``.
-
-
 
 .. _zend.event-manager.event-manager.methods.prepare-args:
 
 **prepareArgs**
    ``prepareArgs(array $args)``
-
-
    Creates an ``ArrayObject`` from the provided ``$args``. This can be useful if you want yours listeners to be able to modify arguments such that later listeners or the triggering method can see the changes.
-
-
 
 .. _zend.event-manager.event-manager.examples:
 
 Examples
 --------
-
 
 .. _zend.event-manager.event-manager.examples.modifying-args:
 
@@ -452,7 +375,6 @@ To do this, you can pass your arguments to ``prepareArgs()``, and pass this new 
    $v->inject(array(
        'date' => '2011-08-10 15:30:29',
    ));
-
 
 .. _zend.event-manager.event-manager.examples.short-circuiting:
 
@@ -513,7 +435,6 @@ Typically, you may want to return a value that stopped execution, or use it some
            // continue...
        }
    }
-
 
 .. _zend.event-manager.event-manager.examples.priority:
 

@@ -1,4 +1,3 @@
-
 .. _zend.validator.writing_validators:
 
 Writing Validators
@@ -13,7 +12,6 @@ As you may already have inferred from the above description of ``Zend\Validator\
 Basic validation failure message functionality is implemented in ``Zend\Validator\AbstractValidator``. To include this functionality when creating a validation class, simply extend ``Zend\Validator\AbstractValidator``. In the extending class you would implement the ``isValid()`` method logic and define the message variables and message templates that correspond to the types of validation failures that can occur. If a value fails your validation tests, then ``isValid()`` should return ``FALSE``. If the value passes your validation tests, then ``isValid()`` should return ``TRUE``.
 
 In general, the ``isValid()`` method should not throw any exceptions, except where it is impossible to determine whether or not the input value is valid. A few examples of reasonable cases for throwing an exception might be if a file cannot be opened, an *LDAP* server could not be contacted, or a database connection is unavailable, where such a thing may be required for validation success or failure to be determined.
-
 
 .. _zend.validator.writing_validators.example.simple:
 
@@ -46,7 +44,6 @@ The following example demonstrates how a very simple custom validator might be w
    }
 
 The class defines a template for its single validation failure message, which includes the built-in magic parameter, **%value%**. The call to ``setValue()`` prepares the object to insert the tested value into the failure message automatically, should the value fail validation. The call to ``error()`` tracks a reason for validation failure. Since this class only defines one failure message, it is not necessary to provide ``error()`` with the name of the failure message template.
-
 
 .. _zend.validator.writing_validators.example.conditions.dependent:
 
@@ -111,7 +108,6 @@ These validation failure reasons are then translated to definitions in the class
 The public properties ``$minimum`` and ``$maximum`` have been established to provide the minimum and maximum boundaries, respectively, for a value to successfully validate. The class also defines two message variables that correspond to the public properties and allow ``min`` and ``max`` to be used in message templates as magic parameters, just as with ``value``.
 
 Note that if any one of the validation checks in ``isValid()`` fails, an appropriate failure message is prepared, and the method immediately returns ``FALSE``. These validation rules are therefore sequentially dependent. That is, if one test should fail, there is no need to test any subsequent validation rules. This need not be the case, however. The following example illustrates how to write a class having independent validation rules, where the validation object may return multiple reasons why a particular validation attempt failed.
-
 
 .. _zend.validator.writing_validators.example.conditions.independent:
 

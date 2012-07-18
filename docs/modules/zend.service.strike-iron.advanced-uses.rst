@@ -1,11 +1,9 @@
-
 .. _zend.service.strikeiron.advanced-uses:
 
 Zend_Service_StrikeIron: Advanced Uses
 ======================================
 
 This section describes the more advanced uses of ``Zend_Service_StrikeIron``.
-
 
 .. _zend.service.strikeiron.advanced-uses.services-by-wsdl:
 
@@ -35,7 +33,6 @@ To try a StrikeIron service that does not have a wrapper class available, give t
 Using StrikeIron services from the WSDL will require at least some understanding of the WSDL files. StrikeIron has many resources on its site to help with this. Also, `Jan Schneider`_ from the `Horde project`_ has written a `small PHP routine`_ that will format a WSDL file into more readable *HTML*.
 
 Please note that only the services described in the :ref:`Bundled Services <zend.service.strikeiron.bundled-services>` section are officially supported.
-
 
 .. _zend.service.strikeiron.viewing-soap-transactions:
 

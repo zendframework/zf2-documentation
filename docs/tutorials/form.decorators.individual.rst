@@ -1,4 +1,3 @@
-
 .. _learning.form.decorators.individual:
 
 Rendering Individual Decorators
@@ -91,8 +90,8 @@ First, let's define a form. Our form will capture a user's demographic details. 
    }
 
 .. note::
-   We're not defining any validators or filters at this time, as they are not relevant to the discussion of decoration. In a real-world scenario, you should define them.
 
+   We're not defining any validators or filters at this time, as they are not relevant to the discussion of decoration. In a real-world scenario, you should define them.
 
 With that out of the way, let's consider how we might want to display this form. One common idiom with first/last names is to display them on a single line; when a title is provided, that is often on the same line as well. Dates, when not using a JavaScript date chooser, will often be separated into three fields displayed side by side.
 

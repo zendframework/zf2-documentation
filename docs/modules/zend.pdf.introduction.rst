@@ -1,4 +1,3 @@
-
 .. _zend.pdf.introduction:
 
 Introduction

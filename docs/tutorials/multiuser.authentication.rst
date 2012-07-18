@@ -1,9 +1,7 @@
-
 .. _learning.multiuser.authentication:
 
 Authenticating Users in Zend Framework
 ======================================
-
 
 .. _learning.multiuser.authentication.intro:
 
@@ -13,7 +11,6 @@ Introduction to Authentication
 Once a web application has been able to distinguish one user from another by establishing a session, web applications typically want to validate the identity of a user. The process of validating a consumer as being authentic is "authentication." Authentication is made up of two distinctive parts: an identity and a set of credentials. It takes some variation of both presented to the application for processing so that it may authenticate a user.
 
 While the most common pattern of authentication revolves around usernames and passwords, it should be stated that this is not always the case. Identities are not limited to usernames. In fact, any public identifier can be used: an assigned number, social security number, or residence address. Likewise, credentials are not limited to passwords. Credentials can come in the form of protected private information: fingerprint, eye retinal scan, passphrase, or any other obscure personal information.
-
 
 .. _learning.multiuser.authentication.basic-usage:
 

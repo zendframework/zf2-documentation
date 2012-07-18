@@ -1,11 +1,9 @@
-
 .. _performance.view:
 
 View Rendering
 ==============
 
 When using Zend Framework's *MVC* layer, chances are you will be using ``Zend_View``. ``Zend_View`` is performs well compared to other view or templating engines; since view scripts are written in *PHP*, you do not incur the overhead of compiling custom markup to *PHP*, nor do you need to worry that the compiled *PHP* is not optimized. However, ``Zend_View`` presents its own issues: extension is done via overloading (view helpers), and a number of view helpers, while carrying out key functionality do so with a performance cost.
-
 
 .. _performance.view.pluginloader:
 
@@ -18,14 +16,12 @@ Internally, ``Zend_View`` uses the :ref:`PluginLoader <zend.loader.pluginloader>
 
 The question, then, is: how can you speed up helper resolution?
 
-
 .. _performance.view.pluginloader.cache:
 
 Use the PluginLoader include file cache
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The simplest, cheapest solution is the same as for :ref:`general PluginLoader performance <performance.classloading.pluginloader>`: :ref:`use the PluginLoader include file cache <zend.loader.pluginloader.performance.example>`. Anecdotal evidence has shown this technique to provide a 25-30% performance gain on systems without an opcode cache, and a 40-65% gain on systems with an opcode cache.
-
 
 .. _performance.view.pluginloader.extend:
 
@@ -82,14 +78,12 @@ Another solution for those seeking to tune performance even further is to extend
 
 Either way, this technique will substantially reduce the overhead of the helper system by avoiding calls to the PluginLoader entirely, and either benefiting from autoloading or bypassing it altogether.
 
-
 .. _performance.view.partial:
 
 How can I speed up view partials?
 ---------------------------------
 
 Those who use partials heavily and who profile their applications will often immediately notice that the ``partial()`` view helper incurs a lot of overhead, due to the need to clone the view object. Is it possible to speed this up?
-
 
 .. _performance.view.partial.render:
 
@@ -108,7 +102,6 @@ The power and use of ``partial()`` come from the second and third arguments. The
 
 Basically, unless you are actually passing variables to the partial and need the clean variable scope, or rendering a view script from another *MVC* module, there is no reason to incur the overhead of ``partial()``; instead, use ``Zend_View``'s built-in ``render()`` method to render the view script.
 
-
 .. _performance.view.action:
 
 How can I speed up calls to the action() view helper?
@@ -117,7 +110,6 @@ How can I speed up calls to the action() view helper?
 Version 1.5.0 introduced the ``action()`` view helper, which allows you to dispatch an *MVC* action and capture its rendered content. This provides an important step towards the *DRY* principle, and promotes code reuse. However, as those who profile their applications will quickly realize, it, too, is an expensive operation. Internally, the ``action()`` view helper needs to clone new request and response objects, invoke the dispatcher, invoke the requested controller and action, etc.
 
 How can you speed it up?
-
 
 .. _performance.view.action.actionstack:
 
@@ -168,7 +160,6 @@ The ``UserController::indexAction()`` method might then use the ``$responseSegme
    <?php $this->layout()->login ?>
 
 While the ActionStack still requires a dispatch cycle, this is still cheaper than the ``action()`` view helper as it does not need to clone objects and reset internal state. Additionally, it ensures that all pre and post dispatch plugins are invoked, which may be of particular concern if you are using front controller plugins for handling *ACL*'s to particular actions.
-
 
 .. _performance.view.action.model:
 

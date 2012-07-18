@@ -1,4 +1,3 @@
-
 .. _zend.soap.client:
 
 Zend_Soap_Client
@@ -11,7 +10,6 @@ It may be used in WSDL or non-WSDL mode.
 Under the WSDL mode, the ``Zend_Soap_Client`` component uses a WSDL document to define transport layer options.
 
 The WSDL description is usually provided by the web service the client will access. If the WSDL description is not made available, you may want to use ``Zend_Soap_Client`` in non-WSDL mode. Under this mode, all *SOAP* protocol options have to be set explicitly on the ``Zend_Soap_Client`` class.
-
 
 .. _zend.soap.client.constructor:
 
@@ -27,10 +25,10 @@ The ``Zend_Soap_Client`` constructor takes two parameters:
 Both of these parameters may be set later using ``setWsdl($wsdl)`` and ``setOptions($options)`` methods respectively.
 
 .. note::
+
    **Important!**
 
    If you use ``Zend_Soap_Client`` component in non-WSDL mode, you **must** set the 'location' and 'uri' options.
-
 
 The following options are recognized:
 
@@ -40,13 +38,11 @@ The following options are recognized:
 
   The option must be an array with WSDL types as keys and names of *PHP* classes as values.
 
-
 - 'encoding' - internal character encoding (UTF-8 is always used as an external encoding).
 
 - 'wsdl' which is equivalent to ``setWsdl($wsdlValue)`` call.
 
   Changing this option may switch ``Zend_Soap_Client`` object to or from WSDL mode.
-
 
 - 'uri' - target namespace for the *SOAP* service (required for non-WSDL-mode, doesn't work for WSDL mode).
 
@@ -80,8 +76,6 @@ The following options are recognized:
      // Compress requests using deflate compression
      $client = new Zend_Soap_Client("some.wsdl",
        array('compression' => SOAP_COMPRESSION_ACCEPT | SOAP_COMPRESSION_DEFLATE));
-
-
 
 
 

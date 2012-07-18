@@ -1,4 +1,3 @@
-
 .. _zend.cache.cache.manager:
 
 The Cache Manager

@@ -1,4 +1,3 @@
-
 .. _zend.gdata.analytics:
 
 Using Google Analytics
@@ -7,7 +6,6 @@ Using Google Analytics
 The Google Analytics *API* allows client applications to request data, saved in the analytics accounts.
 
 See `http://code.google.com/apis/analytics/docs/gdata/v2/gdataOverview.html`_ for more information about the Google Analytics *API*.
-
 
 .. _zend.gdata.analytics.accounts:
 
@@ -29,7 +27,6 @@ Using the account feed, you are able to retrieve a list of all the accounts avai
    }
 
 The ``$analytics->getAccountFeed()`` call, results in a ``Zend\GData\Analytics\AccountFeed`` object that contains ``Zend\GData\Analytics\AccountEntry`` objects. Each of this objects represent a google analytics account.
-
 
 .. _zend.gdata.analytics.reports:
 

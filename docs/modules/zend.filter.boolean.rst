@@ -1,11 +1,9 @@
-
 .. _zend.filter.set.boolean:
 
 Boolean
 =======
 
 This filter changes a given input to be a ``BOOLEAN`` value. This is often useful when working with databases or when processing form values.
-
 
 .. _zend.filter.set.boolean.options:
 
@@ -19,7 +17,6 @@ The following options are supported for ``Zend_Filter_Boolean``:
 - **locale**: This option sets the locale which will be used to detect localized input.
 
 - **type**: The ``type`` option sets the boolean type which should be used. Read the following for details.
-
 
 .. _zend.filter.set.boolean.default:
 
@@ -37,7 +34,6 @@ By default, this filter works by casting the input to a ``BOOLEAN`` value; in ot
    // returns false
 
 This means that without providing any configuration, ``Zend_Filter_Boolean`` accepts all input types and returns a ``BOOLEAN`` just as you would get by type casting to ``BOOLEAN``.
-
 
 .. _zend.filter.set.boolean.types:
 
@@ -103,7 +99,6 @@ There are several ways to select which of the above types are filtered. You can 
 
 You can also give an instance of ``Zend_Config`` to set the desired types. To set types after instantiation, use the ``setType()`` method.
 
-
 .. _zend.filter.set.boolean.localized:
 
 Localized booleans
@@ -129,7 +124,6 @@ To set the desired locale, you can either use the ``locale`` option, or the meth
    // returns true
    $filter->filter('yes');
 
-
 .. _zend.filter.set.boolean.casting:
 
 Disable casting
@@ -138,7 +132,6 @@ Disable casting
 Sometimes it is necessary to recognise only ``TRUE`` or ``FALSE`` and return all other values without changes. ``Zend_Filter_Boolean`` allows you to do this by setting the ``casting`` option to ``FALSE``.
 
 In this case ``Zend_Filter_Boolean`` will work as described in the following table, which shows which values return ``TRUE`` or ``FALSE``. All other given values are returned without change when ``casting`` is set to ``FALSE``
-
 
 .. _zend.filter.set.boolean.casting.table:
 
@@ -165,7 +158,6 @@ In this case ``Zend_Filter_Boolean`` will work as described in the following tab
    +---------------------------------+------------------------------------+-----------------------------------+
    |Zend_Filter_Boolean::YES         |localized "yes" (case independently)|localized "no" (case independently)|
    +---------------------------------+------------------------------------+-----------------------------------+
-
 
 The following example shows the behaviour when changing the ``casting`` option:
 

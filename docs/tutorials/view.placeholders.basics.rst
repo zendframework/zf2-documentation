@@ -1,4 +1,3 @@
-
 .. _learning.view.placeholders.basics:
 
 Basic Placeholder Usage

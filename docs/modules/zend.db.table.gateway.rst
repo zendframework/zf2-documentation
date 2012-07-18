@@ -1,4 +1,3 @@
-
 .. _zend.db.table-gateway:
 
 Zend\\Db\\TableGateway
@@ -19,7 +18,6 @@ The Table Gateway object is intended to provide an object that represents a tabl
    }
 
 There are two primary implementations of the ``TableGatewayInterface`` that are of the most useful: ``AbstractTableGateway`` and ``TableGateway``. The ``AbstractTableGateway`` is an abstract basic implementation that provides functionality for ``select()``, ``insert()``, ``update()``, ``delete()``, as well as an additional API for doing these same kinds of tasks with explicit SQL objects. These methods are ``selectWith()``, ``insertWith()``, ``updateWith()`` and ``deleteWith()``. In addition, AbstracTableGateway also implements a "Feature" API, that allows for expanding the behaviors of the base ``TableGateway`` implementation without having to extend the class with this new functionality. The ``TableGateway`` concrete implementation simply adds a sensible constructor to the ``AbstractTableGateway`` class so that out-of-the-box, ``TableGateway`` does not need to be extended in order to be consumed and utilized to its fullest.
-
 
 .. _zend.db.table-gateway.basic:
 
@@ -99,7 +97,6 @@ The ``select()`` method takes the same arguments as ``Zend\Db\Sql\Select::where(
    	$select->order('name ASC')->limit(2);
    });
 
-
 .. _zend.db.table-gateway.features:
 
 TableGateway Features
@@ -133,14 +130,12 @@ There are a number of features built-in and shipped with Zend\\Db:
      // in a controller, or model somewhere
      $table = new MyTableGateway(); // adapter is statially loaded
 
-
 - MasterSlaveFeature: the ability to use a master adapter for insert(), update(), and delete() while using a slave adapter for all select() operations.
 
   .. code-block:: php
      :linenos:
 
      $table = new TableGateway('artist', $adapter, new Feature\MasterSlaveFeature($slaveAdapter));
-
 
 - MetadataFeature: the ability populate ``TableGateway`` with column information from a Metadata object. It will also store the primary key information in case RowGatewayFeature needs to consume this information.
 
@@ -149,14 +144,12 @@ There are a number of features built-in and shipped with Zend\\Db:
 
      $table = new TableGateway('artist', $adapter, new Feature\MeatadataFeature());
 
-
 - EventFeature: the ability utilize a ``TableGateway`` object with Zend\\EventManager and to be able to subscribe to various events in a ``TableGateway`` lifecycle.
 
   .. code-block:: php
      :linenos:
 
      $table = new TableGateway('artist', $adapter, new Feature\EventFeature($eventManagerInstance));
-
 
 - RowGatewayFeature: the ability for ``select()`` to return a ResultSet object that upon iteration will
 
@@ -169,6 +162,5 @@ There are a number of features built-in and shipped with Zend\\Db:
      $artistRow = $results->current();
      $artistRow->name = 'New Name';
      $artistRow->save();
-
 
 

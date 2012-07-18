@@ -1,4 +1,3 @@
-
 .. _zend.view.helpers.initial.navigation:
 
 Navigation Helpers
@@ -54,7 +53,6 @@ In addition to the method stubs from the interface, the abstract class also impl
 
 If a navigation container is not explicitly set in a helper using ``$helper->setContainer($nav)``, the helper will look for a container instance with the key ``Zend_Navigation`` in :ref:`the registry <zend.registry>`. If a container is not explicitly set or found in the registry, the helper will create an empty ``Zend_Navigation`` container when calling ``$helper->getContainer()``.
 
-
 .. _zend.view.helpers.initial.navigation.proxy.example:
 
 .. rubric:: Proxying calls to the navigation container
@@ -70,7 +68,6 @@ Navigation view helpers use the magic method ``__call()`` to proxy method calls 
 
 The call above will add a page to the container in the ``Navigation`` helper.
 
-
 .. _zend.view.helpers.initial.navigation.i18n:
 
 Translation of labels and titles
@@ -83,9 +80,8 @@ If you want to disable translation, use ``$helper->setUseTranslator(false)``.
 The :ref:`proxy helper <zend.view.helpers.initial.navigation.navigation>` will inject its own translator to the helper it proxies to if the proxied helper doesn't already have a translator.
 
 .. note::
+
    There is no translation in the sitemap helper, since there are no page labels or titles involved in an *XML* sitemap.
-
-
 
 .. _zend.view.helpers.initial.navigation.acl:
 
@@ -99,7 +95,6 @@ If a page is not accepted by *ACL*, any descendant page will also be excluded fr
 The :ref:`proxy helper <zend.view.helpers.initial.navigation.navigation>` will inject its own *ACL* and role to the helper it proxies to if the proxied helper doesn't already have any.
 
 The examples below all show how *ACL* affects rendering.
-
 
 .. _zend.view.helpers.initial.navigation.setup:
 
@@ -332,7 +327,6 @@ In addition to the container above, the following setup is assumed:
    Zend_View_Helper_Navigation_HelperAbstract::setDefaultAcl($acl);
    Zend_View_Helper_Navigation_HelperAbstract::setDefaultRole('member');
 
-
 .. _zend.view.helpers.initial.navigation.breadcrumbs:
 
 Breadcrumbs Helper
@@ -356,7 +350,6 @@ Methods in the breadcrumbs helper:
 
 - ``renderPartial()`` is used for rendering using a partial view script.
 
-
 .. _zend.view.helpers.initial.navigation.breadcrumbs.example1:
 
 .. rubric:: Rendering breadcrumbs
@@ -376,7 +369,6 @@ This example shows how to render breadcrumbs with default settings.
    Output:
    <a href="/products">Products</a> > <a href="/products/server">Foo Server</a> > FAQ
 
-
 .. _zend.view.helpers.initial.navigation.breadcrumbs.example2:
 
 .. rubric:: Specifying indentation
@@ -391,7 +383,6 @@ This example shows how to render breadcrumbs with initial indentation.
 
    Output:
            <a href="/products">Products</a> > <a href="/products/server">Foo Server</a> > FAQ
-
 
 .. _zend.view.helpers.initial.navigation.breadcrumbs.example3:
 
@@ -428,7 +419,6 @@ This example shows how to customze breadcrumbs output by specifying various opti
    Output:
    Nothing, because the deepest active page is not at level 10 or deeper.
 
-
 .. _zend.view.helpers.initial.navigation.breadcrumbs.example4:
 
 .. rubric:: Rendering breadcrumbs using a partial view script
@@ -460,7 +450,6 @@ Output:
 
    Products, Foo Server, FAQ
 
-
 .. _zend.view.helpers.initial.navigation.links:
 
 Links Helper
@@ -491,8 +480,8 @@ Not all relations can be determined by traversing the container. These are the r
 - ``searchRevSubsection()``, reverse 'subsection' relation; finds the parent of the active page if the active page is on level 2 (a 'subsection').
 
 .. note::
-   When looking for relations in the page instance (*$page->getRel($type)* or *$page->getRev($type)*), the helper accepts the values of type ``String``, ``Array``, ``Zend_Config``, or ``Zend_Navigation_Page``. If a string is found, it will be converted to a ``Zend_Navigation_Page_Uri``. If an array or a config is found, it will be converted to one or several page instances. If the first key of the array/config is numeric, it will be considered to contain several pages, and each element will be passed to the :ref:`page factory <zend.navigation.pages.factory>`. If the first key is not numeric, the array/config will be passed to the page factory directly, and a single page will be returned.
 
+   When looking for relations in the page instance (*$page->getRel($type)* or *$page->getRev($type)*), the helper accepts the values of type ``String``, ``Array``, ``Zend_Config``, or ``Zend_Navigation_Page``. If a string is found, it will be converted to a ``Zend_Navigation_Page_Uri``. If an array or a config is found, it will be converted to one or several page instances. If the first key of the array/config is numeric, it will be considered to contain several pages, and each element will be passed to the :ref:`page factory <zend.navigation.pages.factory>`. If the first key is not numeric, the array/config will be passed to the page factory directly, and a single page will be returned.
 
 The helper also supports magic methods for finding relations. E.g. to find forward alternate relations, call *$helper->findRelAlternate($page)*, and to find reverse section relations, call *$helper->findRevSection($page)*. Those calls correspond to *$helper->findRelation($page, 'rel', 'alternate');* and *$helper->findRelation($page, 'rev', 'section');* respectively.
 
@@ -550,7 +539,6 @@ Methods in the links helper:
 
 - ``renderLink()`` renders a single *link* element.
 
-
 .. _zend.view.helpers.initial.navigation.links.example1:
 
 .. rubric:: Specify relations in pages
@@ -599,7 +587,6 @@ This example shows how to specify relations in pages.
        )
    ));
 
-
 .. _zend.view.helpers.initial.navigation.links.example2:
 
 .. rubric:: Default rendering of links
@@ -622,7 +609,6 @@ This example shows how to render a menu from a container registered/found in the
    <link rel="chapter" href="/community" title="Community">
    <link rel="canonical" href="http://www.example.com/?page=server-faq">
    <link rev="subsection" href="/products/server" title="Foo Server">
-
 
 .. _zend.view.helpers.initial.navigation.links.example3:
 
@@ -675,7 +661,6 @@ This example shows how to specify which relations to find and render.
    <link rel="canonical" href="http://www.example.com/?page=server-faq">
    <link rev="subsection" href="/products/server" title="Foo Server">
 
-
 .. _zend.view.helpers.initial.navigation.menu:
 
 Menu Helper
@@ -699,12 +684,9 @@ Methods in the Menu helper:
 
   If ``$container`` is not given, the container registered in the helper will be rendered.
 
-
   ``$options`` is used for overriding options specified temporarily without rsetting the values in the helper instance. It is an associative array where each key corresponds to an option in the helper.
 
-
   Recognized options:
-
 
   - *indent*; indentation. Expects a ``String`` or an *int* value.
 
@@ -718,14 +700,11 @@ Methods in the Menu helper:
 
   - *renderParents*; whether parents should be rendered if only rendering active branch. Expects a ``Boolean`` value.
 
-
   If an option is not given, the value set in the helper will be used.
-
 
 - ``renderPartial()`` is used for rendering the menu using a partial view script.
 
 - ``renderSubMenu()`` renders the deepest menu level of a container's active branch.
-
 
 .. _zend.view.helpers.initial.navigation.menu.example1:
 
@@ -809,7 +788,6 @@ This example shows how to render a menu from a container registered/found in the
        </li>
    </ul>
 
-
 .. _zend.view.helpers.initial.navigation.menu.example2:
 
 .. rubric:: Calling renderMenu() directly
@@ -839,7 +817,6 @@ This example shows how to render a menu that is not registered in the view helpe
                            <a class="external" href="http://forums.example.com/">Forums</a>
                        </li>
                    </ul>
-
 
 .. _zend.view.helpers.initial.navigation.menu.example3:
 
@@ -882,7 +859,6 @@ Calling ``renderSubMenu($container, $ulClass, $indent)`` is equivalent to callin
                <a href="/products/server/requirements">System Requirements</a>
            </li>
        </ul>
-
 
 .. _zend.view.helpers.initial.navigation.menu.example4:
 
@@ -936,7 +912,6 @@ Calling ``renderSubMenu($container, $ulClass, $indent)`` is equivalent to callin
            </ul>
        </li>
    </ul>
-
 
 .. _zend.view.helpers.initial.navigation.menu.example5:
 
@@ -1000,7 +975,6 @@ Calling ``renderSubMenu($container, $ulClass, $indent)`` is equivalent to callin
        </li>
    </ul>
 
-
 .. _zend.view.helpers.initial.navigation.menu.example6:
 
 .. rubric:: Rendering only the active branch of a menu
@@ -1037,7 +1011,6 @@ Calling ``renderSubMenu($container, $ulClass, $indent)`` is equivalent to callin
        </li>
    </ul>
 
-
 .. _zend.view.helpers.initial.navigation.menu.example7:
 
 .. rubric:: Rendering only the active branch of a menu with minimum depth
@@ -1070,7 +1043,6 @@ Calling ``renderSubMenu($container, $ulClass, $indent)`` is equivalent to callin
        </li>
    </ul>
 
-
 .. _zend.view.helpers.initial.navigation.menu.example8:
 
 .. rubric:: Rendering only the active branch of a menu with maximum depth
@@ -1100,7 +1072,6 @@ Calling ``renderSubMenu($container, $ulClass, $indent)`` is equivalent to callin
        </li>
    </ul>
 
-
 .. _zend.view.helpers.initial.navigation.menu.example9:
 
 .. rubric:: Rendering only the active branch of a menu with maximum depth and no parents
@@ -1127,7 +1098,6 @@ Calling ``renderSubMenu($container, $ulClass, $indent)`` is equivalent to callin
            <a href="/products/studio">Foo Studio</a>
        </li>
    </ul>
-
 
 .. _zend.view.helpers.initial.navigation.menu.example10:
 
@@ -1163,7 +1133,6 @@ Output:
    <a title="About us" href="/company/about">Company</a>
    <a href="/community">Community</a>
 
-
 .. _zend.view.helpers.initial.navigation.sitemap:
 
 Sitemap Helper
@@ -1174,11 +1143,10 @@ The Sitemap helper is used for generating *XML* sitemaps, as defined by the `Sit
 By default, the sitemap helper uses :ref:`sitemap validators <zend.validator.sitemap>` to validate each element that is rendered. This can be disabled by calling *$helper->setUseSitemapValidators(false)*.
 
 .. note::
+
    If you disable sitemap validators, the custom properties (see table) are not validated at all.
 
-
 The sitemap helper also supports `Sitemap XSD Schema`_ validation of the generated sitemap. This is disabled by default, since it will require a request to the Schema file. It can be enabled with *$helper->setUseSchemaValidation(true)*.
-
 
 .. _zend.view.helpers.initial.navigation.sitemap.elements:
 
@@ -1196,7 +1164,6 @@ The sitemap helper also supports `Sitemap XSD Schema`_ validation of the generat
    |priority  |The priority of this URL relative to other URLs on your site. Valid values range from 0.0 to 1.0. The helper will try to retrieve the priority value from the page's custom property priority if it is set in the page. If the value is not valid, it is ignored.                                                                                                                                     |
    +----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
 Methods in the sitemap helper:
 
 - *{get|set}FormatOutput()* gets/sets a flag indicating whether *XML* output should be formatted. This corresponds to the *formatOutput* property of the native ``DOMDocument`` class. Read more at `PHP: DOMDocument - Manual`_. Default is ``FALSE``.
@@ -1212,7 +1179,6 @@ Methods in the sitemap helper:
 - ``url()`` is used to generate absolute *URL*\ s to pages.
 
 - ``getDomSitemap()`` generates a DOMDocument from a given container.
-
 
 .. _zend.view.helpers.initial.navigation.sitemap.example:
 
@@ -1411,14 +1377,12 @@ Render the sitemap using a maximum depth of 1.
    </urlset>
 
 .. note::
+
    **UTF-8 encoding used by default**
 
    By default, Zend Framework uses *UTF-8* as its default encoding, and, specific to this case, ``Zend_View`` does as well. Character encoding can be set differently on the view object itself using the ``setEncoding()`` method (or the the ``encoding`` instantiation parameter). However, since ``Zend_View_Interface`` does not define accessors for encoding, it's possible that if you are using a custom view implementation with the Dojo view helper, you will not have a ``getEncoding()`` method, which is what the view helper uses internally for determining the character set in which to encode.
 
-
    If you do not want to utilize *UTF-8* in such a situation, you will need to implement a ``getEncoding()`` method in your custom view implementation.
-
-
 
 .. _zend.view.helpers.initial.navigation.navigation:
 

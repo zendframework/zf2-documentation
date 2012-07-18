@@ -1,9 +1,7 @@
-
 .. _zend.service.flickr:
 
 Zend_Service_Flickr
 ===================
-
 
 .. _zend.service.flickr.introduction:
 
@@ -13,7 +11,6 @@ Introduction
 ``Zend_Service_Flickr`` is a simple *API* for using the Flickr REST Web Service. In order to use the Flickr web services, you must have an *API* key. To obtain a key and for more information about the Flickr REST Web Service, please visit the `Flickr API Documentation`_.
 
 In the following example, we use the ``tagSearch()`` method to search for photos having "php" in the tags.
-
 
 .. _zend.service.flickr.introduction.example-1:
 
@@ -31,11 +28,10 @@ In the following example, we use the ``tagSearch()`` method to search for photos
    }
 
 .. note::
+
    **Optional parameter**
 
    ``tagSearch()`` accepts an optional second parameter as an array of options.
-
-
 
 .. _zend.service.flickr.finding-users:
 
@@ -49,7 +45,6 @@ Finding Flickr Users' Photos and Information
 - ``getIdByUsername()``: Returns a string user ID associated with the given username string.
 
 - ``getIdByEmail()``: Returns a string user ID associated with the given email address string.
-
 
 .. _zend.service.flickr.finding-users.example-1:
 
@@ -68,14 +63,12 @@ In this example, we have a Flickr user's e-mail address, and we search for the u
        echo $result->title . '<br />';
    }
 
-
 .. _zend.service.flickr.grouppoolgetphotos:
 
 Finding photos From a Group Pool
 --------------------------------
 
 ``Zend_Service_Flickr`` allows to retrieve a group's pool photos based on the group ID. Use the ``groupPoolGetPhotos()`` method:
-
 
 .. _zend.service.flickr.grouppoolgetphotos.example-1:
 
@@ -93,11 +86,10 @@ Finding photos From a Group Pool
        }
 
 .. note::
+
    **Optional parameter**
 
    ``groupPoolGetPhotos()`` accepts an optional second parameter as an array of options.
-
-
 
 .. _zend.service.flickr.getimagedetails:
 
@@ -105,7 +97,6 @@ Retrieving Flickr Image Details
 -------------------------------
 
 ``Zend_Service_Flickr`` makes it quick and easy to get an image's details based on a given image ID. Just use the ``getImageDetails()`` method, as in the following example:
-
 
 .. _zend.service.flickr.getimagedetails.example-1:
 
@@ -123,7 +114,6 @@ Once you have a Flickr image ID, it is a simple matter to fetch information abou
    echo "Image ID $imageId is $image->width x $image->height pixels.<br />\n";
    echo "<a href=\"$image->clickUri\">Click for Image</a>\n";
 
-
 .. _zend.service.flickr.classes:
 
 Zend_Service_Flickr Result Classes
@@ -139,7 +129,6 @@ The following classes are all returned by ``tagSearch()`` and ``userSearch()``:
 
 
 
-
 .. _zend.service.flickr.classes.resultset:
 
 Zend_Service_Flickr_ResultSet
@@ -148,15 +137,13 @@ Zend_Service_Flickr_ResultSet
 Represents a set of Results from a Flickr search.
 
 .. note::
+
    Implements the ``SeekableIterator`` interface for easy iteration (e.g., using ``foreach()``), as well as direct access to a specific result using ``seek()``.
-
-
 
 .. _zend.service.flickr.classes.resultset.properties:
 
 Properties
 ^^^^^^^^^^
-
 
 .. _zend.service.flickr.classes.resultset.properties.table-1:
 
@@ -172,21 +159,17 @@ Properties
    |firstResultPosition  |int |The offset in the total result set of this result set|
    +---------------------+----+-----------------------------------------------------+
 
-
-
 .. _zend.service.flickr.classes.resultset.totalResults:
 
 Zend_Service_Flickr_ResultSet::totalResults()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-int: ``totalResults()``
-
+int:``totalResults()``
 
 
 Returns the total number of results in this result set.
 
 :ref:`Back to Class List <zend.service.flickr.classes>`
-
 
 .. _zend.service.flickr.classes.result:
 
@@ -195,12 +178,10 @@ Zend_Service_Flickr_Result
 
 A single Image result from a Flickr query
 
-
 .. _zend.service.flickr.classes.result.properties:
 
 Properties
 ^^^^^^^^^^
-
 
 .. _zend.service.flickr.classes.result.properties.table-1:
 
@@ -248,9 +229,7 @@ Properties
    |Original  |Zend_Service_Flickr_Image|The original image.                                               |
    +----------+-------------------------+------------------------------------------------------------------+
 
-
 :ref:`Back to Class List <zend.service.flickr.classes>`
-
 
 .. _zend.service.flickr.classes.image:
 
@@ -259,12 +238,10 @@ Zend_Service_Flickr_Image
 
 Represents an Image returned by a Flickr search.
 
-
 .. _zend.service.flickr.classes.image.properties:
 
 Properties
 ^^^^^^^^^^
-
 
 .. _zend.service.flickr.classes.image.properties.table-1:
 
@@ -281,7 +258,6 @@ Properties
    +--------+------+--------------------------------------------------+
    |height  |int   |Height of the Image                               |
    +--------+------+--------------------------------------------------+
-
 
 :ref:`Back to Class List <zend.service.flickr.classes>`
 

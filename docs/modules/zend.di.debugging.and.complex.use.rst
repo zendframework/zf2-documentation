@@ -1,9 +1,7 @@
-
 .. _zend.di.debugging-and-complex-use-cases:
 
 Zend\\Di Debugging & Complex Use Cases
 ======================================
-
 
 .. _zend.di.zend.di.debugging-and-complex-use-cases.debugging:
 
@@ -26,12 +24,10 @@ If you are using a RuntimeDefinition where upon you expect a particular definiti
 
            Zend\Di\Display\Console::export($di, array('A\ClassIWantTo\GetTheDefinitionFor'));
 
-
 .. _zend.di.zend.di.debugging-and-complex-use-cases.complex-use-cases:
 
 Complex Use Cases
 -----------------
-
 
 .. _zend.di.zend.di.debugging-and-complex-use-cases.complex-use-cases.interface-injection:
 
@@ -61,7 +57,6 @@ Interface Injection
        $di = new Zend\Di\Di;
        $baz = $di->get('Foo\Bar\Baz');
    }
-
 
 .. _zend.di.zend.di.debugging-and-complex-use-cases.complex-use-cases.setter-injection-with-class-definition:
 
@@ -95,7 +90,6 @@ Setter Injection with Class Definition
        )));
        $baz = $di->get('Foo\Bar\Baz');
    }
-
 
 .. _zend.di.zend.di.debugging-and-complex-use-cases.complex-use-cases.multiple-injections:
 

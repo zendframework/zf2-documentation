@@ -1,11 +1,9 @@
-
 .. _zend.di.instancemanager:
 
 Zend\\Di InstanceManager
 ========================
 
 The InstanceManage is responsible for any runtime information associated with the Zend\\Di\\Di DiC. This means that the information that goes into the instance manager is specific to both how the particular consuming Application's needs and even more specifically to the environment in which the application is running.
-
 
 .. _zend.di.instancemanager.parameters:
 
@@ -85,7 +83,6 @@ The following ways of using parameters are available:
        'dbAdapter' => new MyLibrary\DbAdaper('myusername', 'mypassword')
    ));
 
-
 .. _zend.di.instancemanager.preferences:
 
 Preferences
@@ -132,7 +129,6 @@ To give this information to the instance manager, see the following code example
    $di->instanceManager()->addTypePreference('MyMovieApp\MovieFinderInterface', 'MyMovieApp\GenericMovieFinder');
    // assuming all instance config for username, password is setup
    $di->get('MyMovieApp\MovieLister');
-
 
 .. _zend.di.instancemanager.aliases:
 

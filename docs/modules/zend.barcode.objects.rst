@@ -1,4 +1,3 @@
-
 .. _zend.barcode.objects:
 
 Zend\\Barcode\\Barcode Objects
@@ -13,7 +12,6 @@ Objects have a large number of options. Most of them are common to all objects. 
 - As an array passed to the ``setOptions()`` method.
 
 - Via individual setters for each configuration type.
-
 
 .. _zend.barcode.objects.configuration:
 
@@ -38,14 +36,12 @@ Objects have a large number of options. Most of them are common to all objects. 
    $barcode->setText('ZEND-FRAMEWORK')
            ->setBarHeight(40);
 
-
 .. _zend.barcode.objects.common.options:
 
 Common Options
 --------------
 
 In the following list, the values have no units; we will use the term "unit." For example, the default value of the "thin bar" is "1 unit". The real units depend on the rendering support (see :ref:`the renderers documentation <zend.barcode.renderers>` for more information). Setters are each named by uppercasing the initial letter of the option and prefixing the name with "set" (e.g. "barHeight" becomes "setBarHeight"). All options have a corresponding getter prefixed with "get" (e.g. "getBarHeight"). Available options are:
-
 
 .. _zend.barcode.objects.common.options.table:
 
@@ -89,8 +85,6 @@ In the following list, the values have no units; we will use the term "unit." Fo
    |text              |String           |NULL                 |The text to represent as a barcode                                                                         |
    +------------------+-----------------+---------------------+-----------------------------------------------------------------------------------------------------------+
 
-
-
 .. _zend.barcode.barcode.common.options.barcodefont:
 
 Particular case of static setBarcodeFont()
@@ -123,12 +117,10 @@ You can set a commont font for all your objects by using the static method ``Zen
        )
    ); // will use the 3rd GD internal font
 
-
 .. _zend.barcode.objects.common.getters:
 
 Common Additional Getters
 -------------------------
-
 
 
 
@@ -158,8 +150,7 @@ Common Additional Getters
    |getOffsetLeft($recalculate = false)|Integer  |Return the position of the left of the barcode calculated after possible rotation                                      |
    +-----------------------------------+---------+-----------------------------------------------------------------------------------------------------------------------+
 
-
-
 .. include:: zend.barcode.objects.details.rst
+
 
 .. _`Traversable`: php.net/traversable

@@ -1,4 +1,3 @@
-
 .. _zend.view.php-renderer.scripts:
 
 PhpRenderer View Scripts
@@ -44,7 +43,6 @@ By way of reminder, here is the example view script from the ``PhpRenderer`` int
        <p>There are no books to display.</p>
 
    <?php endif;?>
-
 
 .. _zend.view.php-renderer.scripts.escaping:
 

@@ -1,11 +1,9 @@
-
 .. _zend.di.definition:
 
 Zend\\Di Definition
 ===================
 
 Definitions are the place where Zend\\Di attempts to understand the structure of the code it is attempting to wire. This means that if you've written non-ambiguous, clear and concise code; Zend\\Di has a very good chance of understanding how to wire things up without much added complexity.
-
 
 .. _zend.di.definition.definitionlist:
 
@@ -15,7 +13,6 @@ DefinitionList
 Definitions are introduced to the Zend\\Di\\Di object through a definition list implemented as Zend\\Di\\DefinitionList (SplDoublyLinkedList). Order is important. Definitions in the front of the list will be consulted on a class before definitions at the end of the list.
 
 Note: Regardless of what kind of Definition strategy you decide to use, it is important that your autoloaders are already setup and ready to use.
-
 
 .. _zend.di.definition.runtimedefinition:
 
@@ -58,7 +55,6 @@ The constructor for the IntrospectionStrategy looks like this:
 This goes to say that an AnnotationManager is not required, but if you wish to create a special AnnotationManager with your own annotations, and also wish to extend the RuntimeDefinition to look for these special Annotations, this is the place to do it.
 
 The RuntimeDefinition also can be used to look up either all classes (implicitly, which is default), or explicitly look up for particular pre-defined classes. This is useful when your strategy for inspecting one set of classes might differ from those of another strategy for another set of classes. This can be achieved by using the setExplictClasses() method or by passing a list of classes as a second argument to the constructor of the RuntimeDefinition.
-
 
 .. _zend.di.definition.compilerdefinition:
 
@@ -107,7 +103,6 @@ This will create a couple of files that will return an array of the definition f
    }
 
 The above code would more than likely go inside your application's or module's bootstrap file. This represents the simplest and most performant way of configuring your DiC for usage.
-
 
 .. _zend.di.definition.classdefinition:
 

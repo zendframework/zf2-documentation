@@ -1,9 +1,7 @@
-
 .. _zend.paginator.usage:
 
 Usage
 =====
-
 
 .. _zend.paginator.usage.paginating:
 
@@ -11,7 +9,6 @@ Paginating data collections
 ---------------------------
 
 In order to paginate items into pages, ``Zend_Paginator`` must have a generic way of accessing that data. For that reason, all data access takes place through data source adapters. Several adapters ship with Zend Framework by default:
-
 
 .. _zend.paginator.usage.paginating.adapters:
 
@@ -31,13 +28,11 @@ In order to paginate items into pages, ``Zend_Paginator`` must have a generic wa
    |Null         |Do not use Zend_Paginator to manage data pagination. You can still take advantage of the pagination control feature.                                                                 |
    +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
 .. note::
+
    Instead of selecting every matching row of a given query, the DbSelect and DbTableSelect adapters retrieve only the smallest amount of data necessary for displaying the current page.
 
-
    Because of this, a second query is dynamically generated to determine the total number of matching rows. However, it is possible to directly supply a count or count query yourself. See the ``setRowCount()`` method in the DbSelect adapter for more information.
-
 
 To create an instance of ``Zend_Paginator``, you must supply an adapter to the constructor:
 
@@ -54,8 +49,8 @@ For convenience, you may take advantage of the static ``factory()`` method for t
    $paginator = Zend_Paginator::factory($array);
 
 .. note::
-   In the case of the ``Null`` adapter, in lieu of a data collection you must supply an item count to its constructor.
 
+   In the case of the ``Null`` adapter, in lieu of a data collection you must supply an item count to its constructor.
 
 Although the instance is technically usable in this state, in your controller action you'll need to tell the paginator what page number the user requested. This allows him to advance through the paginated data.
 
@@ -94,7 +89,6 @@ Finally, you'll need to assign the paginator instance to your view. If you're us
 
    $this->view->paginator = $paginator;
 
-
 .. _zend.paginator.usage.dbselect:
 
 The DbSelect and DbTableSelect adapter
@@ -125,7 +119,6 @@ The database adapters will try and build the most efficient query that will exec
    $paginator = new Zend_Paginator($adapter);
 
 This approach will probably not give you a huge performance gain on small collections and/or simple select queries. However, with complex queries and large collections, a similar approach could give you a significant performance boost.
-
 
 .. _zend.paginator.rendering:
 
@@ -160,14 +153,12 @@ Notice the view helper call near the end. PaginationControl accepts up to four p
 
 The second and third parameters are very important. Whereas the view partial is used to determine how the pagination control should **look**, the scrolling style is used to control how it should **behave**. Say the view partial is in the style of a search pagination control, like the one below:
 
-
 .. image:: ../images/zend.paginator.usage.rendering.control.png
    :align: center
 
 What happens when the user clicks the "next" link a few times? Well, any number of things could happen. The current page number could stay in the middle as you click through (as it does on Yahoo!), or it could advance to the end of the page range and then appear again on the left when the user clicks "next" one more time. The page numbers might even expand and contract as the user advances (or "scrolls") through them (as they do on Google).
 
 There are four scrolling styles packaged with Zend Framework:
-
 
 .. _zend.paginator.usage.rendering.scrolling-styles:
 
@@ -184,7 +175,6 @@ There are four scrolling styles packaged with Zend Framework:
    +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Sliding        |A Yahoo!-like scrolling style that positions the current page number in the center of the page range, or as close as possible. This is the default style.            |
    +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 
 The fourth and final parameter is reserved for an optional associative array of additional variables that you want available in your view partial (available via ``$this``). For instance, these values could include extra *URL* parameters for pagination links.
 
@@ -207,24 +197,20 @@ When all of these values are set, you can render the pagination control inside y
    <?php echo $this->paginator; ?>
 
 .. note::
-   Of course, it's possible to use ``Zend_Paginator`` with other template engines. For example, with Smarty you might do the following:
 
+   Of course, it's possible to use ``Zend_Paginator`` with other template engines. For example, with Smarty you might do the following:
 
    .. code-block:: php
       :linenos:
 
       $smarty->assign('pages', $paginator->getPages());
 
-
    You could then access paginator values from a template like so:
-
 
    .. code-block:: php
       :linenos:
 
       {$pages->pageCount}
-
-
 
 .. _zend.paginator.usage.rendering.example-controls:
 
@@ -354,14 +340,12 @@ Dropdown pagination:
    })
    </script>
 
-
 .. _zend.paginator.usage.rendering.properties:
 
 Listing of properties
 ^^^^^^^^^^^^^^^^^^^^^
 
 The following options are available to pagination control view partials:
-
 
 .. _zend.paginator.usage.rendering.properties.table:
 
@@ -398,7 +382,6 @@ The following options are available to pagination control view partials:
    +----------------+-------+-------------------------------------------------------+
    |totalItemCount  |integer|Total number of items                                  |
    +----------------+-------+-------------------------------------------------------+
-
 
 
 

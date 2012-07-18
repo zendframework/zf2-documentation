@@ -1,11 +1,9 @@
-
 .. _migration.08:
 
 Zend Framework 0.8
 ==================
 
 When upgrading from a previous release to Zend Framework 0.8 or higher you should note the following migration notes.
-
 
 .. _migration.08.zend.controller:
 
@@ -41,8 +39,6 @@ However, the directory structure underwent an overhaul, several components were 
                                        $module = null,
                                        array $params = null);
 
-
   ``$action`` is always required; if no controller is specified, an action in the current controller is assumed. ``$module`` is always ignored unless ``$controller`` is specified. Finally, any ``$params`` provided will be appended to the request object. If you do not require the controller or module, but still need to pass parameters, simply specify ``NULL`` for those values.
-
 
 

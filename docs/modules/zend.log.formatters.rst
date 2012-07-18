@@ -1,4 +1,3 @@
-
 .. _zend.log.formatters:
 
 Formatters
@@ -7,7 +6,6 @@ Formatters
 A Formatter is an object that is responsible for taking an ``event`` array describing a log event and outputting a string with a formatted log line.
 
 Some Writers are not line-oriented and cannot use a Formatter. An example is the Database Writer, which inserts the event items directly into database columns. For Writers that cannot support a Formatter, an exception is thrown if you attempt to set a Formatter.
-
 
 .. _zend.log.formatters.simple:
 
@@ -39,7 +37,6 @@ A formatter is set on an individual Writer object using the Writer's ``setFormat
    // outputs "hello there"
 
 The constructor of ``Zend\Log\Formatter\Simple`` accepts a single parameter: the format string. This string contains keys surrounded by percent signs (e.g. ``%message%``). The format string may contain any key from the event data array. You can retrieve the default keys by using the DEFAULT_FORMAT constant from ``Zend\Log\Formatter\Simple``.
-
 
 .. _zend.log.formatters.xml:
 
@@ -98,7 +95,6 @@ The code above changes the root element from its default of ``logEntry`` to ``lo
      <msg>informational message</msg>
      <level>INFO</level>
    </log>
-
 
 .. _zend.log.formatters.firebug:
 

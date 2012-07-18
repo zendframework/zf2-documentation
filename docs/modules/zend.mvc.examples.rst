@@ -1,15 +1,12 @@
-
 .. _zend.mvc.examples:
 
 Examples
 ========
 
-
 .. _zend.mvc.examples.controllers:
 
 Controllers
 -----------
-
 
 .. _zend.mvc.examples.controllers.accessing-the-request-and-response:
 
@@ -40,7 +37,6 @@ Additionally, if your controller implements ``InjectApplicationEventInterface`` 
 
 The above can be useful when composing event listeners into your controller.
 
-
 .. _zend.mvc.examples.controllers.accessing-routing-parameters:
 
 Accessing routing parameters
@@ -58,7 +54,6 @@ Within your controller, if you implement ``InjectApplicationEventInterface`` (as
 
 Once you have the ``RouteMatch`` object, you can pull parameters from it.
 
-
 .. _zend.mvc.examples.controllers.returning-early:
 
 Returning early
@@ -68,12 +63,10 @@ You can effectively short-circuit execution of the application at any point by r
 
 As an example, the ``Redirect`` plugin returns a ``Response``, which can be returned immediately so as to complete the request as quickly as possible. Other use cases might be for returning JSON or XML results from web service endpoints, returning "401 Forbidden" results, etc.
 
-
 .. _zend.mvc.examples.bootstrapping:
 
 Bootstrapping
 -------------
-
 
 .. _registering-module-specific-listeners:
 

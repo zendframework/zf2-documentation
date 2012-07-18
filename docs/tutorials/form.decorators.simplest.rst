@@ -1,9 +1,7 @@
-
 .. _learning.form.decorators.simplest:
 
 Decorator Basics
 ================
-
 
 .. _learning.form.decorators.simplest.decorator-overview:
 
@@ -120,7 +118,6 @@ In this particular example, we're going to use `duck typing`_ instead of an expl
 In this example, you pass your ``Person`` instance to the ``TextPerson`` constructor. By using method overloading, you are able to continue to call all the methods of ``Person``-- to set the first name, last name, or title -- but you also now gain a string representation via the ``__toString()`` method.
 
 This latter example is getting close to how ``Zend_Form`` decorators work. The key difference is that instead of a decorator wrapping the element, the element has one or more decorators attached to it that it then injects itself into in order to render. The decorator then can access the element's methods and properties in order to create a representation of the element -- or a subset of it.
-
 
 .. _learning.form.decorators.simplest.first-decorator:
 

@@ -1,11 +1,9 @@
-
 .. _zend.serializer.introduction:
 
 Introduction
 ============
 
 ``Zend_Serializer`` provides an adapter based interface to simply generate storable representation of *PHP* types by different facilities, and recover.
-
 
 .. _zend.serializer.introduction.example.dynamic:
 
@@ -58,7 +56,6 @@ To configure a given serializer adapter, you can optionally add an array or an i
    }
 
 Options passed to the ``factory()`` are valid for the instantiated object. You can change these options using the ``setOption(s)`` method. To change one or more options only for a single call, pass them as the second argument to either the ``serialize()`` or ``unserialize()`` method.
-
 
 .. _zend.serializer.introduction.example.static.php:
 

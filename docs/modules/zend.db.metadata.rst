@@ -1,4 +1,3 @@
-
 .. _zend.db.metadata:
 
 Zend\\Db\\Metadata
@@ -33,7 +32,6 @@ Zend\\Db\\Metadata
        public function getTriggers($schema = null);
        public function getTrigger($triggerName, $schema = null);
    }
-
 
 .. _zend.db.metadata.metadata:
 

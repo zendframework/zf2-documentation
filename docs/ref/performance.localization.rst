@@ -1,4 +1,3 @@
-
 .. _performance.localization:
 
 Internationalization (i18n) and Localization (l10n)
@@ -6,14 +5,12 @@ Internationalization (i18n) and Localization (l10n)
 
 Internationalizing and localizing a site are fantastic ways to expand your audience and ensure that all visitors can get to the information they need. However, it often comes with a performance penalty. Below are some strategies you can employ to reduce the overhead of i18n and l10n.
 
-
 .. _performance.localization.translationadapter:
 
 Which translation adapter should I use?
 ---------------------------------------
 
 Not all translation adapters are made equal. Some have more features than others, and some perform better than others. Additionally, you may have business requirements that force you to use a particular adapter. However, if you have a choice, which adapters are fastest?
-
 
 .. _performance.localization.translationadapter.fastest:
 
@@ -32,14 +29,12 @@ Zend Framework ships with a variety of translation adapters. Fully half of them 
 
 If high performance is one of your concerns, we suggest utilizing one of the above adapters.
 
-
 .. _performance.localization.cache:
 
 How can I make translation and localization even faster?
 --------------------------------------------------------
 
 Maybe, for business reasons, you're limited to an *XML*-based translation adapter. Or perhaps you'd like to speed things up even more. Or perhaps you want to make l10n operations faster. How can you do this?
-
 
 .. _performance.localization.cache.usage:
 

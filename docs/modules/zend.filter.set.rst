@@ -1,11 +1,9 @@
-
 .. _zend.filter.set:
 
 Standard Filter Classes
 =======================
 
 Zend Framework comes with a standard set of filters, which are ready for you to use.
-
 
 .. include:: zend.filter.alnum.rst
 .. include:: zend.filter.alpha.rst
@@ -24,3 +22,4 @@ Zend Framework comes with a standard set of filters, which are ready for you to 
 .. include:: zend.filter.string-to-lower.rst
 .. include:: zend.filter.string-to-upper.rst
 .. include:: zend.filter.string-trim.rst
+

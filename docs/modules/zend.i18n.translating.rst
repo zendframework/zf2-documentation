@@ -1,4 +1,3 @@
-
 .. _zend.i18n.translating:
 
 Translating
@@ -7,7 +6,6 @@ Translating
 Zend_I18n comes with a complete translation suite which supports all major formats and includes popular features like plural translations and text domains. The Translator component is mostly dependency free, except for the fallback to a default locale, where it relies on the Intl PHP extension.
 
 The translator itself is initialized without any parameters, as any configuration to it is optional. A translator without any translations will actually do nothing but just return the given message IDs.
-
 
 .. _zend.i18n.translating.adding-translations:
 
@@ -29,8 +27,8 @@ To add a single file to the translator, use the ``addTranslationFile()`` method:
 The type given there is a name of one of the format loaders listed in the next section. Filename points to the file containing the file containing the translations and the text domain specifies a category name for the translations. If the text domain is omitted, it will default to the "default" value. The locale specifies which language the translated strings are from and is only required for formats which contain translations for a single locale.
 
 .. note::
-   For each text domain and locale combination, there can only be one file loaded. Every successive file would override the translations which were loaded prior.
 
+   For each text domain and locale combination, there can only be one file loaded. Every successive file would override the translations which were loaded prior.
 
 When storing one locale per file, you should specify those files via a pattern. This allows you to add new translations to the file system, without touching your code. Patterns are added with the ``addTranslationPattern()`` method:
 
@@ -43,7 +41,6 @@ When storing one locale per file, you should specify those files via a pattern. 
    $translator->addTranslationPattern($type, $pattern, $textDomain);
 
 The parameters for adding patterns is pretty similar to adding individual files, except that don't specify a locale and give the file location as sprtinf pattern. The locale is passed to the sprintf call, so you can either use %s oder %1$s where it should be substituted. So when youf translation files are located in /var/messages/LOCALE/messages.mo, you would specify your pattern as /var/messages/%s/messages.mo.
-
 
 .. _zend.i18n.translating.supported-formats:
 
@@ -60,7 +57,6 @@ The translator supports the following major translation formats:
 
 - Xliff
 
-
 .. _zend.i18n.translating.setting-a-locale:
 
 Setting a locale
@@ -69,7 +65,6 @@ Setting a locale
 By default, the translator will get the locale to use from the Intl extension's ``Locale`` class. If you want to set an alternative locale explicitly, you can do so by passing it to the ``setLocale()`` method.
 
 When there is not translation for a specific message ID in a locale, the message ID itself will be returned by default. Alternatively you can set a fallback locale which is used to retrieve a fallback translation. To do so, pass it to the ``setFallbackLocale()`` method.
-
 
 .. _zend.i18n.translating.translating-messages:
 
@@ -93,7 +88,6 @@ To translate plural messages, you can use the ``translatePlural()`` method. It w
    $translator->translatePlural($singular, $plural, $number, $textDomain, $locale);
 
 Plural translations are only available if the underlying format supports the transport of plural messages and plural rule definitions.
-
 
 .. _zend.i18n.translating.caching:
 

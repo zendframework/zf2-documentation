@@ -1,11 +1,9 @@
-
 .. _zend.filter.set.encrypt:
 
 Encrypt and Decrypt
 ===================
 
 These filters allow to encrypt and decrypt any given string. Therefor they make use of Adapters. Actually there are adapters for the ``Mcrypt`` and ``OpenSSL`` extensions from *PHP*.
-
 
 .. _zend.filter.set.encrypt.options:
 
@@ -40,7 +38,6 @@ The following options are supported for ``Zend_Filter_Encrypt`` and ``Zend_Filte
 
 - **vector**: Only ``MCrypt``. The initialization vector which shall be used. If not set it will be a random vector.
 
-
 .. _zend.filter.set.encrypt.adapterusage:
 
 Adapter usage
@@ -67,9 +64,8 @@ To set another adapter you can also use ``setAdapter()``, and the ``getAdapter()
    $filter->setAdapter('openssl');
 
 .. note::
+
    When you do not supply the ``adapter`` option or do not use ``setAdapter()``, then the ``Mcrypt`` adapter will be used per default.
-
-
 
 .. _zend.filter.set.encrypt.mcrypt:
 
@@ -81,18 +77,18 @@ When you have installed the ``Mcrypt`` extension you can use the ``Mcrypt`` adap
 You can get and set the encryption values also afterwards with the ``getEncryption()`` and ``setEncryption()`` methods.
 
 .. note::
+
    Note that you will get an exception if the mcrypt extension is not available in your environment.
 
-
 .. note::
-   You should also note that all settings which be checked when you create the instance or when you call ``setEncryption()``. If mcrypt detects problem with your settings an exception will be thrown.
 
+   You should also note that all settings which be checked when you create the instance or when you call ``setEncryption()``. If mcrypt detects problem with your settings an exception will be thrown.
 
 You can get or set the encryption vector by calling ``getVector()`` and ``setVector()``. A given string will be truncated or padded to the needed vector size of the used algorithm.
 
 .. note::
-   Note that when you are not using an own vector, you must get the vector and store it. Otherwise you will not be able to decode the encoded string.
 
+   Note that when you are not using an own vector, you must get the vector and store it. Otherwise you will not be able to decode the encoded string.
 
 .. code-block:: php
    :linenos:
@@ -109,7 +105,6 @@ You can get or set the encryption vector by calling ``getVector()`` and ``setVec
    print $encrypted;
 
    // For decryption look at the Decrypt filter
-
 
 .. _zend.filter.set.encrypt.mcryptdecrypt:
 
@@ -135,13 +130,12 @@ As soon as you have provided all options decryption is as simple as encryption.
    print $decrypted;
 
 .. note::
+
    Note that you will get an exception if the mcrypt extension is not available in your environment.
 
-
 .. note::
+
    You should also note that all settings which be checked when you create the instance or when you call ``setEncryption()``. If mcrypt detects problem with your settings an exception will be thrown.
-
-
 
 .. _zend.filter.set.encrypt.openssl:
 
@@ -166,8 +160,8 @@ When you have installed the ``OpenSSL`` extension you can use the ``OpenSSL`` ad
    ));
 
 .. note::
-   Note that the ``OpenSSL`` adapter will not work when you do not provide valid keys.
 
+   Note that the ``OpenSSL`` adapter will not work when you do not provide valid keys.
 
 When you want to encode also the keys, then you have to provide a passphrase with the ``setPassphrase()`` method. When you want to decode content which was encoded with a passphrase you will not only need the public key, but also the passphrase to decode the encrypted key.
 
@@ -215,7 +209,6 @@ So our complete example for encrypting content with ``OpenSSL`` look like this.
 
    // For decryption look at the Decrypt filter
 
-
 .. _zend.filter.set.encrypt.openssl.simplified:
 
 Simplified usage with Openssl
@@ -242,7 +235,6 @@ To have a simplified usage you can set the ``package`` option to ``TRUE``. The d
    // For decryption look at the Decrypt filter
 
 Now the returned value contains the encrypted value and the envelope. You don't need to get them after the compression. But, and this is the negative aspect of this feature, the encrypted value can now only be decrypted by using ``Zend_Filter_Encrypt``.
-
 
 .. _zend.filter.set.encrypt.openssl.compressed:
 
@@ -275,11 +267,10 @@ The ``compression`` option can eighter be set to the name of a compression adapt
    ));
 
 .. note::
+
    **Decryption with same settings**
 
    When you want to decrypt a value which is additionally compressed, then you need to set the same compression settings for decryption as for encryption. Otherwise the decryption will fail.
-
-
 
 .. _zend.filter.set.encrypt.openssldecrypt:
 
@@ -304,8 +295,8 @@ Decryption with ``OpenSSL`` is as simple as encryption. But you need to have all
    ));
 
 .. note::
-   Note that the ``OpenSSL`` adapter will not work when you do not provide valid keys.
 
+   Note that the ``OpenSSL`` adapter will not work when you do not provide valid keys.
 
 Optionally it could be necessary to provide the passphrase for decrypting the keys themself by using the ``setPassphrase()`` method.
 

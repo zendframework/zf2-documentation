@@ -1,9 +1,7 @@
-
 .. _zend.rest.server:
 
 Zend_Rest_Server
 ================
-
 
 .. _zend.rest.server.introduction:
 
@@ -12,12 +10,10 @@ Introduction
 
 ``Zend_Rest_Server`` is intended as a fully-featured REST server.
 
-
 .. _zend.rest.server.usage:
 
 REST Server Usage
 -----------------
-
 
 .. _zend.rest.server.usage.example-1:
 
@@ -29,7 +25,6 @@ REST Server Usage
    $server = new Zend_Rest_Server();
    $server->setClass('My_Service_Class');
    $server->handle();
-
 
 .. _zend.rest.server.usage.example-2:
 
@@ -54,7 +49,6 @@ REST Server Usage
    $server->addFunction('sayHello');
    $server->handle();
 
-
 .. _zend.rest.server.args:
 
 Calling a Zend_Rest_Server Service
@@ -63,10 +57,10 @@ Calling a Zend_Rest_Server Service
 To call a ``Zend_Rest_Server`` service, you must supply a ``GET``/POST *method* argument with a value that is the method you wish to call. You can then follow that up with any number of arguments using either the name of the argument (i.e. "who") or using *arg* following by the numeric position of the argument (i.e. "arg1").
 
 .. note::
+
    **Numeric index**
 
    Numeric arguments use a 1-based index.
-
 
 To call *sayHello* from the example above, you can use either:
 
@@ -76,14 +70,12 @@ or:
 
 *?method=sayHello&arg1=Davey&arg2=Day*
 
-
 .. _zend.rest.server.customstatus:
 
 Sending A Custom Status
 -----------------------
 
 When returning values, to return a custom status, you may return an array with a *status* key.
-
 
 .. _zend.rest.server.customstatus.example-1:
 
@@ -108,14 +100,12 @@ When returning values, to return a custom status, you may return an array with a
    $server->addFunction('sayHello');
    $server->handle();
 
-
 .. _zend.rest.server.customxml:
 
 Returning Custom XML Responses
 ------------------------------
 
 If you wish to return custom *XML*, simply return a *DOMDocument*, *DOMElement* or *SimpleXMLElement* object.
-
 
 .. _zend.rest.server.customxml.example-1:
 

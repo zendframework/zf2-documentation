@@ -1,4 +1,3 @@
-
 .. _zend.session.basic_usage:
 
 Basic Usage
@@ -17,14 +16,12 @@ Each instance of ``Zend_Session_Namespace`` corresponds to an entry of the ``$_S
 
 It is possible to use ``Zend_Session`` in conjunction with other code that uses ``$_SESSION`` directly. To avoid problems, however, it is highly recommended that such code only uses parts of ``$_SESSION`` that do not correspond to instances of ``Zend_Session_Namespace``.
 
-
 .. _zend.session.basic_usage.basic_examples:
 
 Tutorial Examples
 -----------------
 
 If no namespace is specified when instantiating ``Zend_Session_Namespace``, all data will be transparently stored in a namespace called "*Default*". ``Zend_Session`` is not intended to work directly on the contents of session namespace containers. Instead, we use ``Zend_Session_Namespace``. The example below demonstrates use of this default namespace, showing how to count the number of client requests during a session:
-
 
 .. _zend.session.basic_usage.basic_examples.example.counting_page_views:
 
@@ -49,7 +46,6 @@ When multiple modules use instances of ``Zend_Session_Namespace`` having differe
 
 Namespace names are restricted to character sequences represented as non-empty *PHP* strings that do not begin with an underscore ("*_*") character. Only core components included in Zend Framework should use namespace names starting with "*Zend*".
 
-
 .. _zend.session.basic_usage.basic_examples.example.namespaces.new:
 
 .. rubric:: New Way: Namespaces Avoid Collisions
@@ -67,7 +63,6 @@ Namespace names are restricted to character sequences represented as non-empty *
 
 The example above achieves the same effect as the code below, except that the session objects above preserve encapsulation of session data within their respective namespaces.
 
-
 .. _zend.session.basic_usage.basic_examples.example.namespaces.old:
 
 .. rubric:: Old Way: PHP Session Access
@@ -78,14 +73,12 @@ The example above achieves the same effect as the code below, except that the se
    $_SESSION['Zend_Auth']['user'] = "myusername";
    $_SESSION['Some_Web_Service']['user'] = "mywebusername";
 
-
 .. _zend.session.basic_usage.iteration:
 
 Iterating Over Session Namespaces
 ---------------------------------
 
 ``Zend_Session_Namespace`` provides the full `IteratorAggregate interface`_, including support for the *foreach* statement:
-
 
 .. _zend.session.basic_usage.iteration.example:
 
@@ -101,14 +94,12 @@ Iterating Over Session Namespaces
        echo "aNamespace->$index = '$value';\n";
    }
 
-
 .. _zend.session.basic_usage.accessors:
 
 Accessors for Session Namespaces
 --------------------------------
 
 ``Zend_Session_Namespace`` implements the ``__get()``, ``__set()``, ``__isset()``, and ``__unset()`` `magic methods`_, which should not be invoked directly, except from within a subclass. Instead, the normal operators automatically invoke these methods, such as in the following example:
-
 
 .. _zend.session.basic_usage.accessors.example:
 

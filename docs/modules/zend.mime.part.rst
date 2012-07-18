@@ -1,9 +1,7 @@
-
 .. _zend.mime.part:
 
 Zend_Mime_Part
 ==============
-
 
 .. _zend.mime.part.introduction:
 
@@ -11,7 +9,6 @@ Introduction
 ------------
 
 This class represents a single part of a *MIME* message. It contains the actual content of the message part plus information about its encoding, content type and original filename. It provides a method for generating a string from the stored data. ``Zend_Mime_Part`` objects can be added to :ref:`Zend_Mime_Message <zend.mime.message>` to assemble a complete multipart message.
-
 
 .. _zend.mime.part.instantiation:
 
@@ -33,7 +30,6 @@ Instantiation
    public $boundary;
    public $location;
    public $language;
-
 
 .. _zend.mime.part.methods:
 

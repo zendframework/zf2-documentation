@@ -1,11 +1,9 @@
-
 .. _zend.view.helpers.initial.placeholder:
 
 Placeholder Helper
 ==================
 
 The ``Placeholder`` view helper is used to persist content between view scripts and view instances. It also offers some useful features such as aggregating content, capturing view script content for later use, and adding pre- and post-text to content (and custom separators for aggregated content).
-
 
 .. _zend.view.helpers.initial.placeholder.usage:
 
@@ -22,7 +20,6 @@ Basic usage of placeholders is to persist view data. Each invocation of the ``Pl
        echo $this->placeholder('foo');
        // outputs "Some text for later"
    ?>
-
 
 .. _zend.view.helpers.initial.placeholder.aggregation:
 
@@ -75,7 +72,6 @@ Because the ``Placeholder`` container objects extend ``ArrayObject``, you can al
    echo $foo['bar'];
    ?>
 
-
 .. _zend.view.helpers.initial.placeholder.capture:
 
 .. rubric:: Using Placeholders to Capture Content
@@ -86,12 +82,9 @@ Occasionally you may have content for a placeholder in a view script that is eas
 
   ``$type`` should be one of the ``Placeholder`` constants ``APPEND`` or ``SET``. If ``APPEND``, captured content is appended to the list of current content in the placeholder; if ``SET``, captured content is used as the sole value of the placeholder (potentially replacing any previous content). By default, ``$type`` is ``APPEND``.
 
-
   ``$key`` can be used to specify a specific key in the placeholder container to which you want content captured.
 
-
   ``captureStart()`` locks capturing until ``captureEnd()`` is called; you cannot nest capturing with the same placeholder container. Doing so will raise an exception.
-
 
 - ``captureEnd()`` stops capturing content, and places it in the container object according to how ``captureStart()`` was called.
 
@@ -124,7 +117,6 @@ Occasionally you may have content for a placeholder in a view script that is eas
    <?php $this->placeholder('foo')->captureEnd() ?>
 
    <?php echo $this->placeholder('foo')->data ?>
-
 
 .. _zend.view.helpers.initial.placeholder.implementations:
 

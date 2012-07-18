@@ -1,9 +1,7 @@
-
 .. _zend.mime.message:
 
 Zend_Mime_Message
 =================
-
 
 .. _zend.mime.message.introduction:
 
@@ -12,14 +10,12 @@ Introduction
 
 ``Zend_Mime_Message`` represents a *MIME* compliant message that can contain one or more separate Parts (Represented as :ref:`Zend_Mime_Part <zend.mime.part>` objects). With ``Zend_Mime_Message``, *MIME* compliant multipart messages can be generated from ``Zend_Mime_Part`` objects. Encoding and Boundary handling are handled transparently by the class. ``Zend_Mime_Message`` objects can also be reconstructed from given strings (experimental). Used by :ref:`Zend_Mail <zend.mail>`.
 
-
 .. _zend.mime.message.instantiation:
 
 Instantiation
 -------------
 
 There is no explicit constructor for ``Zend_Mime_Message``.
-
 
 .. _zend.mime.message.addparts:
 
@@ -32,7 +28,6 @@ An array with all :ref:`Zend_Mime_Part <zend.mime.part>` objects in the ``Zend_M
 
 The function ``isMultiPart()`` will return ``TRUE`` if more than one part is registered with the ``Zend_Mime_Message`` object and thus the object would generate a Multipart-Mime-Message when generating the actual output.
 
-
 .. _zend.mime.message.bondary:
 
 Boundary handling
@@ -43,7 +38,6 @@ Boundary handling
 ``getMime()`` returns the instance of ``Zend_Mime`` that will be used to render the message when ``generateMessage()`` is called.
 
 ``generateMessage()`` renders the ``Zend_Mime_Message`` content to a string.
-
 
 .. _zend.mime.message.parse:
 

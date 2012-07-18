@@ -1,9 +1,7 @@
-
 .. _zend.paginator.advanced:
 
 Advanced usage
 ==============
-
 
 .. _zend.paginator.advanced.adapters:
 
@@ -30,7 +28,6 @@ The ``getItems()`` method is only slightly more complicated. For this, your adap
    return array_slice($this->_array, $offset, $itemCountPerPage);
 
 Take a look at the packaged adapters (all of which implement the ``Zend_Paginator_Adapter_Interface``) for ideas of how you might go about implementing your own.
-
 
 .. _zend.paginator.advanced.scrolling-styles:
 
@@ -63,7 +60,6 @@ When you're ready to use your new scrolling style, you'll need to tell ``Zend_Pa
    $prefix = 'My_Paginator_ScrollingStyle';
    $path   = 'My/Paginator/ScrollingStyle/';
    Zend_Paginator::addScrollingStylePrefixPath($prefix, $path);
-
 
 .. _zend.paginator.advanced.caching:
 
@@ -139,7 +135,6 @@ It is also possible to see the data in cache and ask for them directly. ``getPag
 
    // see the cached items as a two-dimension array:
    var_dump($paginator->getPageItemCache());
-
 
 .. _zend.paginator.advanced.aggregator:
 

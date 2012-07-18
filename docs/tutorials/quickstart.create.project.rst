@@ -1,11 +1,9 @@
-
 .. _learning.quickstart.create-project:
 
 Create Your Project
 ===================
 
 In order to create your project, you must first download and extract Zend Framework.
-
 
 .. _learning.quickstart.create-project.install-zf:
 
@@ -22,23 +20,20 @@ Optionally, you can add the path to the ``library/`` subdirectory of the archive
 
 That's it! Zend Framework is now installed and ready to use.
 
-
 .. _learning.quickstart.create-project.create-project:
 
 Create Your Project
 -------------------
 
 .. note::
+
    **zf Command Line Tool**
 
    In your Zend Framework installation is a ``bin/`` subdirectory, containing the scripts ``zf.sh`` and ``zf.bat`` for Unix-based and Windows-based users, respectively. Make a note of the absolute path to this script.
 
-
    Wherever you see references to the command ``zf``, please substitute the absolute path to the script. On Unix-like systems, you may want to use your shell's alias functionality: ``alias zf.sh=path/to/ZendFramework/bin/zf.sh``.
 
-
    If you have problems setting up the ``zf`` command-line tool, please refer to :ref:`the manual <zend.tool.framework.clitool>`.
-
 
 Open a terminal (in Windows, ``Start -> Run``, and then use ``cmd``). Navigate to a directory where you would like to start a project. Then, use the path to the appropriate script, and execute one of the following:
 
@@ -94,7 +89,6 @@ On Windows systems, it may be easiest to do this from the Explorer.
 
 Now that the project is created, the main artifacts to begin understanding are the bootstrap, configuration, action controllers, and views.
 
-
 .. _learning.quickstart.create-project.bootstrap:
 
 The Bootstrap
@@ -112,7 +106,6 @@ Your ``Bootstrap`` class defines what resources and components to initialize. By
    }
 
 As you can see, not much is necessary to begin with.
-
 
 .. _learning.quickstart.create-project.configuration:
 
@@ -147,7 +140,6 @@ While Zend Framework is itself configurationless, you often need to configure yo
    phpSettings.display_errors = 1
 
 Several things about this file should be noted. First, when using *INI*-style configuration, you can reference constants directly and expand them; ``APPLICATION_PATH`` is actually a constant. Additionally note that there are several sections defined: production, staging, testing, and development. The latter three inherit settings from the "production" environment. This is a useful way to organize configuration to ensure that appropriate settings are available in each stage of application development.
-
 
 .. _learning.quickstart.create-project.action-controllers:
 
@@ -217,7 +209,6 @@ And the default ``ErrorController`` is as follows:
    }
 
 You'll note that (1) the ``IndexController`` contains no real code, and (2) the ``ErrorController`` makes reference to a "view" property. That leads nicely into our next subject.
-
 
 .. _learning.quickstart.create-project.views:
 
@@ -318,7 +309,6 @@ The ``error/error.phtml`` view script is slightly more interesting as it uses so
    </body>
    </html>
 
-
 .. _learning.quickstart.create-project.vhost:
 
 Create a virtual host
@@ -365,7 +355,6 @@ Finally, you will need to add an entry in your ``hosts`` file corresponding to t
    127.0.0.1 quickstart.local
 
 Start your webserver (or restart it), and you should be ready to go.
-
 
 .. _learning.quickstart.create-project.checkpoint:
 

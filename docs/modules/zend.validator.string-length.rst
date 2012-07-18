@@ -1,4 +1,3 @@
-
 .. _zend.validator.set.stringlength:
 
 StringLength
@@ -7,11 +6,10 @@ StringLength
 This validator allows you to validate if a given string is between a defined length.
 
 .. note::
-   **Zend\\Validator\\StringLength supports only string validation**
+
+   **Zend\Validator\StringLength supports only string validation**
 
    It should be noted that ``Zend\Validator\StringLength`` supports only the validation of strings. Integers, floats, dates or objects can not be validated with this validator.
-
-
 
 .. _zend.validator.set.stringlength.options:
 
@@ -26,7 +24,6 @@ The following options are supported for ``Zend\Validator\StringLength``:
 
 - **max**: Sets the maximum allowed length for a string.
 
-
 .. _zend.validator.set.stringlength.basic:
 
 Default behaviour for Zend\\Validator\\StringLength
@@ -35,7 +32,6 @@ Default behaviour for Zend\\Validator\\StringLength
 Per default this validator checks if a value is between ``min`` and ``max``. But for ``min`` the default value is **0** and for ``max`` it is **NULL** which means unlimited.
 
 So per default, without giving any options, this validator only checks if the input is a string.
-
 
 .. _zend.validator.set.stringlength.maximum:
 
@@ -63,7 +59,6 @@ You can set the maximum allowed length also afterwards by using the ``setMax()``
    $validator->isValid("Test"); // returns true
    $validator->isValid("Testing"); // returns false
 
-
 .. _zend.validator.set.stringlength.minimum:
 
 Limiting the minimal required length of a string
@@ -90,7 +85,6 @@ You can set the minimal requested length also afterwards by using the ``setMin()
    $validator->isValid("Test"); // returns false
    $validator->isValid("Testing"); // returns true
 
-
 .. _zend.validator.set.stringlength.both:
 
 Limiting a string on both sides
@@ -108,11 +102,10 @@ Sometimes it is required to get a string which has a maximal defined length but 
    $validator->isValid("Testing"); // returns true
 
 .. note::
+
    **Setting a lower maximum border than the minimum border**
 
    When you try to set a lower maximum value as the actual minimum value, or a higher minimum value as the actual maximum value, then an exception will be raised.
-
-
 
 .. _zend.validator.set.stringlength.encoding:
 

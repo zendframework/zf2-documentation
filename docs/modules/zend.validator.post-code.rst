@@ -1,4 +1,3 @@
-
 .. _zend.validator.set.post_code:
 
 PostCode
@@ -42,14 +41,12 @@ Postal code formats are simply regular expression strings. When the internationa
    $validator->setFormat('AT-\d{5}');
 
 .. note::
+
    **Conventions for self defined formats**
 
    When using self defined formats you should omit the starting (``'/^'``) and ending tags (``'$/'``). They are attached automatically.
 
-
    You should also be aware that postcode values are always be validated in a strict way. This means that they have to be written standalone without additional characters when they are not covered by the format.
-
-
 
 .. _zend.validator.set.post_code.constructor:
 
@@ -73,7 +70,6 @@ Additionally, you may pass either an array or a ``Traversable`` instance to the 
        'locale' => 'de_AT',
        'format' => 'AT_\d+'
    ));
-
 
 .. _zend.validator.set.post_code.options:
 

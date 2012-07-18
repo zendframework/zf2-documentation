@@ -1,4 +1,3 @@
-
 .. _zend.gdata.authsub:
 
 Authenticating with AuthSub
@@ -13,11 +12,10 @@ The Google documentation says the ClientLogin mechanism is appropriate for "inst
 The account credentials supplied via the AuthSub mechanism are entered by the user of the web application. Therefore they must be account credentials that are known to that user.
 
 .. note::
+
    **Registered applications**
 
    ``Zend_Gdata`` currently does not support use of secure tokens, because the AuthSub authentication does not support passing a digital certificate to acquire a secure token.
-
-
 
 .. _zend.gdata.authsub.login:
 
@@ -61,7 +59,6 @@ Below is an example of *PHP* code for a web application to acquire authenticatio
    // Create a Gdata object using the authenticated Http Client
    $cal = new Zend_Gdata_Calendar($client);
 
-
 .. _zend.gdata.authsub.logout:
 
 Revoking AuthSub authentication
@@ -86,13 +83,12 @@ To terminate the authenticated status of a given token, use the ``Zend_Gdata_Aut
    }
 
 .. note::
+
    **Security notes**
 
    The treatment of the ``$php_self`` variable in the example above is a general security guideline, it is not specific to ``Zend_Gdata``. You should always filter content you output to *HTTP* headers.
 
-
    Regarding revoking authentication tokens, it is recommended to do this when the user is finished with her Google Data session. The possibility that someone can intercept the token and use it for malicious purposes is very small, but nevertheless it is a good practice to terminate authenticated access to any service.
-
 
 
 

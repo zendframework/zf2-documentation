@@ -1,4 +1,3 @@
-
 .. _learning.paginator.intro:
 
 Introduction

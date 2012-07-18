@@ -1,4 +1,3 @@
-
 .. _learning.lucene.intro:
 
 Zend_Search_Lucene Introduction
@@ -17,10 +16,10 @@ Field values may or may not be tokenized while indexing. If a field is not token
 Several analyzers are provided within the ``Zend_Search_Lucene`` package. The default analyzer works with *ASCII* text (since the *UTF-8* analyzer needs the **mbstring** extension to be turned on). It is case insensitive, and it skips numbers. Use other analyzers or create your own analyzer if you need to change this behavior.
 
 .. note::
+
    **Using analyzers during indexing and searching**
 
    Important note! Search queries are also tokenized using the "current analyzer", so the same analyzer must be set as the default during both the indexing and searching process. This will guarantee that source and searched text will be transformed into terms in the same way.
-
 
 Field values are optionally stored within an index. This allows the original field data to be retrieved from the index while searching. This is the only way to associate search results with the original data (internal document IDs may be changed after index optimization or auto-optimization).
 

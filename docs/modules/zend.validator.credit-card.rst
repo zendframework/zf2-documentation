@@ -1,4 +1,3 @@
-
 .. _zend.validator.set.creditcard:
 
 CreditCard
@@ -16,49 +15,35 @@ The following issuing institutes are accepted:
 
   **China UnionPay**
 
-
   **Diners Club Card Blanche**
-
 
   **Diners Club International**
 
-
   **Diners Club US & Canada**
-
 
   **Discover Card**
 
-
   **JCB**
-
 
   **Laser**
 
-
   **Maestro**
-
 
   **MasterCard**
 
-
   **Solo**
-
 
   **Visa**
 
-
   **Visa Electron**
 
-
 .. note::
+
    **Invalid institutes**
 
    The institutes **Bankcard** and **Diners Club enRoute** do not exist anymore. Therefore they are treated as invalid.
 
-
    **Switch** has been rebranded to **Visa** and is therefore also treated as invalid.
-
-
 
 .. _zend.validator.set.creditcard.options:
 
@@ -70,7 +55,6 @@ The following options are supported for ``Zend\Validator\CreditCard``:
 - **service**: A callback to an online service which will additionally be used for the validation.
 
 - **type**: The type of credit card which will be validated. See the below list of institutes for details.
-
 
 .. _zend.validator.set.creditcard.basic:
 
@@ -90,7 +74,6 @@ There are several credit card institutes which can be validated by ``Zend\Valida
    }
 
 The above example would validate against all known credit card institutes.
-
 
 .. _zend.validator.set.creditcard.institute:
 
@@ -129,7 +112,6 @@ And as with all validators, you can also pass an associative array of options or
        'type' => array(Zend\Validator\CreditCard::AMERICAN_EXPRESS)
    ));
 
-
 .. _zend.validator.set.creditcard.institute.table:
 
 .. table:: Constants for credit card institutes
@@ -164,7 +146,6 @@ And as with all validators, you can also pass an associative array of options or
    |Visa Electron            |VISA            |
    +-------------------------+----------------+
 
-
 You can also set or add institutes afterward instantiation by using the methods ``setType()``, ``addType()`` and ``getType()``.
 
 .. code-block:: php
@@ -177,14 +158,12 @@ You can also set or add institutes afterward instantiation by using the methods 
    ));
 
 .. note::
+
    **Default institute**
 
    When no institute is given at initiation then ``ALL`` will be used, which sets all institutes at once.
 
-
    In this case the usage of ``addType()`` is useless because all institutes are already added.
-
-
 
 .. _zend.validator.set.creditcard.servicecheck:
 

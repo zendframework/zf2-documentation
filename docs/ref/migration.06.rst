@@ -1,11 +1,9 @@
-
 .. _migration.06:
 
 Zend Framework 0.6
 ==================
 
 When upgrading from a previous release to Zend Framework 0.6 or higher you should note the following migration notes.
-
 
 .. _migration.06.zend.controller:
 
@@ -52,7 +50,6 @@ The main changes you will need to be aware of will be found when subclassing the
 
        $front->throwExceptions(true);
 
-
   - Set ``renderExceptions()`` in the response object:
 
     .. code-block:: php
@@ -67,8 +64,6 @@ The main changes you will need to be aware of will be found when subclassing the
        $response = $front->dispatch();
        $response->renderExceptions(true);
        echo $response;
-
-
 
 - ``Zend_Controller_Dispatcher_Interface::dispatch()`` now accepts and returns a :ref:`The Request Object <zend.controller.request>` instead of a dispatcher token.
 
@@ -109,7 +104,6 @@ The main changes you will need to be aware of will be found when subclassing the
        // request 'foo' parameter, using 'default' as default value if not found
        $foo = $this->_getParam('foo', 'default');
 
-
   - ``noRouteAction()`` has been removed. The appropriate way to handle non-existent action methods should you wish to route them to a default action is using ``__call()``:
 
     .. code-block:: php
@@ -125,8 +119,6 @@ The main changes you will need to be aware of will be found when subclassing the
 
            throw new Zend_Controller_Exception('Invalid method called');
        }
-
-
 
 - ``Zend_Controller_RewriteRouter::setRewriteBase()`` has been removed. Use ``Zend_Controller_Front::setBaseUrl()`` instead (or ``Zend_Controller_Request_Http::setBaseUrl()``, if using that request class).
 

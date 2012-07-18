@@ -1,4 +1,3 @@
-
 .. _zend.queue.example:
 
 Example usage

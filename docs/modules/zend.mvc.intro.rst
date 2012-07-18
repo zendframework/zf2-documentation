@@ -1,4 +1,3 @@
-
 .. _zend.mvc.intro:
 
 Introduction to the MVC Layer
@@ -30,14 +29,12 @@ Within the MVC layer, several subcomponents are exposed:
 
 The gateway to the MVC is the ``Zend\Mvc\Application`` object (referred to simply as ``Application`` from this point forward). Its primary responsibilities are to **bootstrap** resources, **route** the request, and to retrieve and **dispatch** the controller discovered. Once accomplished, it returns a response, which can then be **sent**.
 
-
 .. _zend.mvc.intro.basic-application-structure:
 
 Basic Application Structure
 ---------------------------
 
 The basic structure of an application is as follows:
-
 
 
 ::
@@ -56,7 +53,6 @@ The basic structure of an application is as follows:
            .htaccess
            index.php
 
-
 The ``public/index.php`` performs the basic work of martialling configuration and configuring the ``Application``. Once done, it ``run()``\ s the ``Application`` and ``send()``\ s the response returned.
 
 The ``config`` directory will typically contain configuration used by ``Zend\Module\Manager`` in order to load modules and merge configuration; we will detail this more later.
@@ -67,7 +63,6 @@ Finally, the ``module`` directory will contain one or more modules delivering yo
 
 Let's now turn to modules, as they are the basic units of a web application.
 
-
 .. _zend.mvc.intro.basic-module-structure:
 
 Basic Module Structure
@@ -76,7 +71,6 @@ Basic Module Structure
 A module may contain just about anything: PHP code, including MVC functionality; library code; view scripts; and/or or public assets such as images, CSS, and JavaScript. The one requirement -- and even this is optional -- is that a module acts as a PHP namespace and that it contains a ``Module`` class under that namespace. This class will then be consumed by ``Zend\Module\Manager`` in order to perform a number of tasks.
 
 The recommended structure of a module is as follows:
-
 
 
 ::
@@ -104,7 +98,6 @@ The recommended structure of a module is as follows:
            <dir-named-after-module-namespace>/
                <dir-named-after-a-controller>/
                    <.phtml files>
-
 
 Since a module acts as a namespace, the module root directory should be that namespace. Typically, this namespace will also include a vendor prefix of sorts. As an example a module centered around "User" functionality delivered by Zend might be named "ZendUser", and this is also what the module root directory will be named.
 
@@ -140,7 +133,6 @@ The ``test`` directory should contain your unit tests. Typically, these will be 
 The ``public`` directory can be used for assets that you may want to expose in your application's document root. These might include images, CSS files, JavaScript files, etc. How these are exposed is left to the developer.
 
 The ``view`` directory contains view scripts related to your controllers.
-
 
 .. _zend.mvc.intro.bootstrapping-an-application:
 
@@ -228,7 +220,6 @@ This is a lot to remember in order to bootstrap the application; in fact, we hav
 
 You'll note that you have a great amount of control over the workflow. Using the ``ServiceManager``, you have fine-grained control over what services are available, how they are instantiated, and what dependencies are injected into them. Using the ``EventManager``'s priority system, you can intercept any of the application events ("bootstrap", "route", "dispatch", "dispatch.error", "render", and "finish") anywhere during execution, allowing you to craft your own application workflows as needed.
 
-
 .. _zend.mvc.intro.bootstrapping-a-modular-application:
 
 Bootstrapping a Modular Application
@@ -237,7 +228,6 @@ Bootstrapping a Modular Application
 While the previous approach largely works, where does the configuration come from? When we create a modular application, the assumption will be that it's from the modules themselves. How do we get that information and aggregate it, then?
 
 The answer is via ``Zend\ModuleManager\ModuleManager``. This component allows you to specify where modules exist, and it will then locate each module and initialize it. Module classes can tie into various listeners on the ``ModuleManager`` in order to provide configuration, services, listeners, and more to the application. Sound complicated? It's not.
-
 
 .. _zend.mvc.intro.bootstrapping-a-modular-application.configuring-the-module-manager:
 
@@ -283,7 +273,6 @@ Each ``Module`` class that has configuration it wants the ``Application`` to kno
    }
 
 There are a number of other methods you can define for tasks ranging from providing autoloader configuration, to providing services to the ``ServiceManager``, to listening to the bootstrap event. The ModuleManager documentation goes into more detail on these.
-
 
 .. _zend.mvc.intro.conclusion:
 

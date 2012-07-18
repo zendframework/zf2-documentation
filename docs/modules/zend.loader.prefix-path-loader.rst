@@ -1,9 +1,7 @@
-
 .. _zend.loader.prefix-path-loader:
 
 The PrefixPathLoader
 ====================
-
 
 .. _zend.loader.prefix-path-loader.intro:
 
@@ -19,17 +17,16 @@ Since searching through the filesystem can lead to performance degradation, the 
 ``PrefixPathLoader`` implements the ``ShortNameLocator`` and ``PrefixPathMapper`` interfaces.
 
 .. note::
+
    **Case Sensitivity**
 
    Unlike the :ref:`PluginClassLoader <zend.loader.plugin-class-loader>`, plugins resolved via the ``PrefixPathLoader`` are considered case sensitive. This is due to the fact that the lookup is done on the filesystem, and thus a file exactly matching the plugin name must exist.
 
-
 .. note::
+
    **Preference is for Namespaces**
 
    Unlike the Zend Framework 1 variant, the ``PrefixPathLoader`` assumes that "prefixes" are PHP 5.3 namespaces by default. You can override this behavior, however, per prefix/path you map. Please see the documentation and examples below for details.
-
-
 
 .. _zend.loader.prefix-path-loader.quick-start:
 
@@ -68,7 +65,6 @@ Once configured, you may then attempt to lookup a plugin.
    }
    $plugin = new $class();
 
-
 .. _zend.loader.prefix-path-loader.options:
 
 Configuration Options
@@ -79,96 +75,60 @@ Configuration Options
 **$options**
    The constructor accepts either an array or a ``Traversable`` object of prefix paths. For the format allowed, please see the :ref:`addPrefixPaths() <zend.loader.prefix-path-loader.methods.add-prefix-paths>` method documentation.
 
-
-
 .. _zend.loader.prefix-path-loader.methods:
 
 Available Methods
 -----------------
 
-
 .. _zend.loader.prefix-path-loader.methods.constructor:
 
 \__construct
    Instantiate and initialize loader
-
    ``__construct($options = null)``
 
-
-
-
    **__construct()**
-
    Instantiates and initializes a ``PrefixPathLoader`` instance. If the ``$prefixPaths`` protected member is defined, it re-initializes it to an ``Zend\Stdlib\ArrayStack`` instance, and passes the original value to :ref:`the addPrefixPaths() method <zend.loader.prefix-path-loader.methods.add-prefix-paths>`. It then checks to see if ``$staticPaths`` has been populated, and, if so, passes that on to the ``addPrefixPaths()`` method to merge the values. Finally, if ``$options`` is non-null, it passes that to ``addPrefixPaths()``.
-
-
 
 
 .. _zend.loader.prefix-path-loader.methods.add-static-paths:
 
 addStaticPaths
    Add paths statically
-
    ``addStaticPaths($paths)``
 
-
-
-
    **addStaticPaths()**
-
    Expects an array or ``Traversable`` object compatible with the ``addPrefixPaths()`` method. This method is static, and populates the protected ``$staticPaths`` member, which is used during instantiation to either override default paths or add additional prefix/path pairs to search.
-
-
 
 
 .. _zend.loader.prefix-path-loader.methods.set-options:
 
 setOptions
    Configure object state
-
    ``setOptions($options)``
 
-
-
-
    **setOptions()**
-
    Proxies to :ref:`addPrefixPaths() <zend.loader.prefix-path-loader.methods.add-prefix-paths>`.
-
-
 
 
 .. _zend.loader.prefix-path-loader.methods.add-prefix-path:
 
 addPrefixPath
    Map a namespace/vendor prefix to the given filesystem path
-
    ``addPrefixPath($prefix, $path, $namespaced = true)``
 
-
-
-
    **addPrefixPath()**
-
    Use this method to map a single filesystem path to a given namespace or vendor prefix. By default, the ``$prefix`` will be considered a PHP 5.3 namespace; you may specify that it is a vendor prefix by passing a boolean ``false`` value to the ``$namespaced`` argument.
 
    If the ``$prefix`` has been previously mapped, this method adds another ``$path`` to a stack -- meaning the new path will be searched first when attempting to resolve a plugin name to this ``$prefix``.
-
-
 
 
 .. _zend.loader.prefix-path-loader.methods.add-prefix-paths:
 
 addPrefixPaths
    Add many prefix/path pairs at once
-
    ``addPrefixPaths($prefixPaths)``
 
-
-
-
    **addPrefixPaths()**
-
    This method expects an array or ``Traversable`` object. Each item in the array or object must be one of the following:
 
    - An array, with the keys "prefix" and "path", and optionally "namespaced"; the keys correspond to the arguments to :ref:`addPrefixPath() <zend.loader.prefix-path-loader.methods.add-prefix-path>`. The "prefix" and "path" keys should point to string values, while the "namespaced" key should be a boolean.
@@ -178,153 +138,94 @@ addPrefixPaths
    The method will loop over arguments, and pass values to :ref:`addPrefixPath() <zend.loader.prefix-path-loader.methods.add-prefix-path>` to process.
 
 
-
-
 .. _zend.loader.prefix-path-loader.methods.get-paths:
 
 getPaths
    Retrieve all paths associated with a prefix, or all paths
-
    ``getPaths($prefix = null)``
 
-
-
-
    **getPaths()**
-
    Use this method to obtain the prefix/paths map. If no ``$prefix`` is provided, the return value is an ``Zend\Stdlib\ArrayStack``, where the keys are namespaces or vendor prefixes, and the values are ``Zend\Stdlib\SplStack`` instances containing all paths associated with the given namespace or prefix.
 
    If the ``$prefix`` argument is provided, two outcomes are possible. If the prefix is not found, a boolean ``false`` value is returned. If the prefix is found, a ``Zend\Stdlib\SplStack`` instance containing all paths associated with that prefix is returned.
-
-
 
 
 .. _zend.loader.prefix-path-loader.methods.clear-paths:
 
 clearPaths
    Clear all maps, or all paths for a given prefix
-
    ``clearPaths($prefix = null)``
 
-
-
-
    **clearPaths()**
-
    If no ``$prefix`` is provided, all prefix/path pairs are removed. If a ``$prefix`` is provided and found within the map, only that prefix is removed. Finally, if a ``$prefix`` is provided, but not found, a boolean ``false`` is returned.
-
-
 
 
 .. _zend.loader.prefix-path-loader.methods.remove-prefix-path:
 
 removePrefixPath
 
-
    ``removePrefixPath($prefix, $path)``
 
-
-
-
    **removePrefixPath()**
-
    Removes a single path from a given prefix.
-
-
 
 
 .. _zend.loader.prefix-path-loader.methods.is-loaded:
 
 isLoaded
    Has the given plugin been loaded?
-
    ``isLoaded($name)``
 
-
-
-
    **isLoaded()**
-
    Use this method to determine if the given plugin has been resolved to a class and file. Unlike ``PluginClassLoader``, this method can return a boolean ``false`` even if the loader is capable of loading the plugin; it simply indicates whether or not the current instance has yet resolved the plugin via the ``load()`` method.
-
-
 
 
 .. _zend.loader.prefix-path-loader.methods.get-class-name:
 
 getClassName
    Retrieve the class name to which a plugin resolves
-
    ``getClassName($name)``
 
-
-
-
    **getClassName()**
-
    Given a plugin name, this method will attempt to return the associated class name. The method completes successfully if, and only if, the plugin has been successfully loaded via ``load()``. Otherwise, it will return a boolean ``false``.
-
-
 
 
 .. _zend.loader.prefix-path-loader.methods.load:
 
 load
    Attempt to resolve a plugin to a class
-
    ``load($name)``
 
-
-
-
    **load()**
-
    Given a plugin name, the ``load()`` method will loop through the internal ``ArrayStack``. The plugin name is first normalized using ``ucwords()``, and then appended to the current vendor prefix or namespace. If the resulting class name resolves via autoloading, the class name is immediately returned. Otherwise, it then loops through the associated ``SplStack`` of paths for the prefix, looking for a file matching the plugin name (i.e., for plugin ``Foo``, file name ``Foo.php``) in the given path. If a match is found, the class name is returned.
 
    If no match is found, a boolean false is returned.
-
-
 
 
 .. _zend.loader.prefix-path-loader.methods.get-plugin-map:
 
 getPluginMap
    Get a list of plugin/class name pairs
-
    ``getPluginMap()``
 
-
-
-
    **getPluginMap()**
-
    Returns an array of resolved plugin name/class name pairs. This value may be used to seed a ``PluginClassLoader`` instance.
-
-
 
 
 .. _zend.loader.prefix-path-loader.methods.get-class-map:
 
 getClassMap
    Get a list of class name/file name pairs
-
    ``getClassMap()``
 
-
-
-
    **getClassMap()**
-
    Returns an array of resolved class name/file name pairs. This value may be used to seed a ``ClassMapAutoloader`` instance.
-
-
 
 
 .. _zend.loader.prefix-path-loader.examples:
 
 Examples
 --------
-
 
 .. _zend.loader.prefix-path-loader.examples.multiple-paths:
 
@@ -372,7 +273,6 @@ For purposes of this example, we'll assume that the common namespace is "Foo", a
    $bar    = $loader->load('bar');    // Foo\Bar from vendor/Foo/Bar.php
    $baz    = $loader->load('baz');    // Foo\Baz from library/Foo/Baz.php
    $foobar = $loader->load('foobar'); // Foo\Foobar from vendor/Foo/Baz.php
-
 
 .. _zend.loader.prefix-path-loader.examples.optimizing:
 

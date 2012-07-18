@@ -1,11 +1,9 @@
-
 .. _zend.markup.parsers:
 
 Zend_Markup Parsers
 ===================
 
 ``Zend_Markup`` is currently shipped with two parsers, a BBCode parser and a Textile parser.
-
 
 .. _zend.markup.parsers.theory:
 
@@ -29,12 +27,9 @@ Then the BBCode parser will take that value, tear it apart and create the follow
 
     - bar
 
-
-
 - baz
 
 You will notice that the closing tags are gone, they don't show up as content in the tree structure. This is because the closing tag isn't part of the actual content. Although, this does not mean that the closing tag is just lost, it is stored inside the tag information for the tag itself. Also, please note that this is just a simplified view of the tree itself. The actual tree contains a lot more information, like the tag's attributes and its name.
-
 
 .. _zend.markup.parsers.bbcode:
 
@@ -60,14 +55,12 @@ Some examples of valid BBCode tags are:
 
 By default, all tags are closed by using the format '[/tagname]'.
 
-
 .. _zend.markup.parsers.textile:
 
 The Textile parser
 ------------------
 
 The Textile parser is a ``Zend_Markup`` parser that converts Textile to a token tree. Because Textile doesn't have a tag structure, the following is a list of example tags:
-
 
 .. _zend.markup.parsers.textile.tags:
 
@@ -103,9 +96,7 @@ The Textile parser is a ``Zend_Markup`` parser that converts Textile to a token 
    |!http://framework.zend.com/images/logo.gif!|<img src="http://framework.zend.com/images/logo.gif" />  |
    +-------------------------------------------+---------------------------------------------------------+
 
-
 Also, the Textile parser wraps all tags into paragraphs; a paragraph ends with two newlines, and if there are more tags, a new paragraph will be added.
-
 
 .. _zend.markup.parsers.textile.lists:
 

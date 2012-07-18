@@ -1,4 +1,3 @@
-
 .. _zend.log.writers.syslog:
 
 Writing to the System Log

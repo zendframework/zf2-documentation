@@ -1,9 +1,7 @@
-
 .. _zend.authentication.adapter.http:
 
 HTTP Authentication Adapter
 ===========================
-
 
 .. _zend.authentication.adapter.http.introduction:
 
@@ -30,7 +28,6 @@ There are a few notable features of *RFC-2617* that are not implemented yet:
 
 - Authentication-Info *HTTP* header.
 
-
 .. _zend.authentication.adapter.design_overview:
 
 Design Overview
@@ -38,14 +35,12 @@ Design Overview
 
 This adapter consists of two sub-components, the *HTTP* authentication class itself, and the so-called "Resolvers." The *HTTP* authentication class encapsulates the logic for carrying out both Basic and Digest authentication. It uses a Resolver to look up a client's identity in some data store (text file by default), and retrieve the credentials from the data store. The "resolved" credentials are then compared to the values submitted by the client to determine whether authentication is successful.
 
-
 .. _zend.authentication.adapter.configuration_options:
 
 Configuration Options
 ---------------------
 
 The ``Zend\Authentication\Adapter\Http`` class requires a configuration array passed to its constructor. There are several configuration options available, and some are required:
-
 
 .. _zend.authentication.adapter.configuration_options.table:
 
@@ -69,11 +64,9 @@ The ``Zend\Authentication\Adapter\Http`` class requires a configuration array pa
    |proxy_auth    |No                                      |Disabled by default. Enable to perform Proxy authentication, instead of normal origin server authentication.                                       |
    +--------------+----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
 .. note::
+
    The current implementation of the ``nonce_timeout`` has some interesting side effects. This setting is supposed to determine the valid lifetime of a given nonce, or effectively how long a client's authentication information is accepted. Currently, if it's set to 3600 (for example), it will cause the adapter to prompt the client for new credentials every hour, on the hour. This will be resolved in a future release, once nonce tracking and stale support are implemented.
-
-
 
 .. _zend.authentication.adapter.http.resolvers:
 
@@ -83,7 +76,6 @@ Resolvers
 The resolver's job is to take a username and realm, and return some kind of credential value. Basic authentication expects to receive the Base64 encoded version of the user's password. Digest authentication expects to receive a hash of the user's username, the realm, and their password (each separated by colons). Currently, the only supported hash algorithm is *MD5*.
 
 ``Zend\Authentication\Adapter\Http`` relies on objects implementing ``Zend\Authentication\Adapter\Http\ResolverInterface``. A text file resolver class is included with this adapter, but any other kind of resolver can be created simply by implementing the resolver interface.
-
 
 .. _zend.authentication.adapter.http.resolvers.file:
 
@@ -118,7 +110,6 @@ or
    $resolver->setFile($path);
 
 If the given path is empty or not readable, an exception is thrown.
-
 
 .. _zend.authentication.adapter.http.basic_usage:
 

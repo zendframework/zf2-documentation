@@ -1,11 +1,9 @@
-
 .. _zend.captcha.adapters:
 
 CAPTCHA Adapters
 ================
 
 The following adapters are shipped with Zend Framework by default.
-
 
 .. _zend.captcha.adapters.word:
 
@@ -35,9 +33,8 @@ In addition to the methods required by the ``Zend\Captcha\AdapterInterface`` int
 All word *CAPTCHA*\ s allow you to pass an array of options or ``Traversable`` object to the constructor, or, alternately, pass them to ``setOptions()``. By default, the **wordLen**, **timeout**, and **sessionClass** keys may all be used. Each concrete implementation may define additional keys or utilize the options in other ways.
 
 .. note::
+
    ``Zend\Captcha\Word`` is an abstract class and may not be instantiated directly.
-
-
 
 .. _zend.captcha.adapters.dumb:
 
@@ -45,7 +42,6 @@ Zend\\Captcha\\Dumb
 -------------------
 
 The ``Zend\Captcha\Dumb`` adapter is mostly self-descriptive. It provides a random string that must be typed in reverse to validate. As such, it's not a good *CAPTCHA* solution and should only be used for testing. It extends ``Zend\Captcha\Word``.
-
 
 .. _zend.captcha.adapters.figlet:
 
@@ -55,7 +51,6 @@ Zend\\Captcha\\Figlet
 The ``Zend\Captcha\Figlet`` adapter utilizes :ref:`Zend\\Text\\Figlet <zend.text.figlet>` to present a figlet to the user.
 
 Options passed to the constructor will also be passed to the :ref:`Zend\\Text\\Figlet <zend.text.figlet>` object. See the :ref:`Zend\\Text\\Figlet <zend.text.figlet>` documentation for details on what configuration options are available.
-
 
 .. _zend.captcha.adapters.image:
 
@@ -87,7 +82,6 @@ The ``Zend\Captcha\Image`` adapter takes the generated word and renders it as an
 - ``setDotNoiseLevel($level)`` and ``getDotNoiseLevel()``, along with ``setLineNoiseLevel($level)`` and ``getLineNoiseLevel()``, allow you to control how much "noise" in the form of random dots and lines the image would contain. Each unit of ``$level`` produces one random dot or line. The default is 100 dots and 5 lines. The noise is added twice - before and after the image distortion transformation.
 
 All of the above options may be passed to the constructor by simply removing the 'set' method prefix and casting the initial letter to lowercase: "suffix", "height", "imgUrl", etc.
-
 
 .. _zend.captcha.adapters.recaptcha:
 

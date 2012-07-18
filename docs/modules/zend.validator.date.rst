@@ -1,11 +1,9 @@
-
 .. _zend.validator.set.date:
 
 Date
 ====
 
 ``Zend\Validator\Date`` allows you to validate if a given value contains a date. This validator validates also localized input.
-
 
 .. _zend.validator.set.date.options:
 
@@ -17,7 +15,6 @@ The following options are supported for ``Zend\Validator\Date``:
 - **format**: Sets the format which is used to write the date.
 
 - **locale**: Sets the locale which will be used to validate date values.
-
 
 .. _zend.validator.set.date.basic:
 
@@ -36,7 +33,6 @@ The easiest way to validate a date is by using the default date format. It is us
 
 The default date format for ``Zend\Validator\Date`` is 'yyyy-MM-dd'.
 
-
 .. _zend.validator.set.date.localized:
 
 Localized date validation
@@ -53,7 +49,6 @@ Localized date validation
    $validator->isValid('10.May.2010'); // returns false
 
 The ``locale`` option sets the default date format. In the above example this is 'dd.MM.yyyy' which is defined as default date format for 'de'.
-
 
 .. _zend.validator.set.date.formats:
 

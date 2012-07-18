@@ -1,9 +1,7 @@
-
 .. _zend.cloud.infrastructure:
 
 Zend\\Cloud\\Infrastructure
 ===========================
-
 
 .. _zend.cloud.infrastructure.intro:
 
@@ -39,13 +37,12 @@ In order to provide a common class API for different cloud vendors we implemente
 - **deploy of an instance (run arbitrary shell script on an instance)**;
 
 .. note::
+
    **Deployment of an instance**
 
    For the deploy operations we used the `SSH2 PHP extension (ext/ssh2)`_ to connect on an instance and execute shell script. The SSH2 extensions can be used to connect only to Gnu/Linux instances (servers).
 
-
 This class is managed by a factory to initialize specific cloud computing adapters.
-
 
 .. _zend.cloud.infrastructure.quick-start:
 
@@ -92,245 +89,159 @@ The interface of the ``createInstance`` is always the same, only the content of 
 
 The ``Zend\Cloud\Infrastructure`` uses the classes ``Zend\Cloud\Infrastructure\Instance`` and ``Zend\Cloud\Infrastructure\Image`` to manage the instances (servers) and the images of an instance.
 
-
 .. _zend.cloud.infrastructure.methods:
 
 Available Methods
 -----------------
 
-
 .. _zend.cloud.infrastructure.methods.create-instance:
 
 **createInstance**
    ``createInstance(string $name, array $options)``
-
-
    Create an instance. The return value is an instance of ``Zend\Cloud\Infrastructure\Instance``. In case of error the return is **false**.
-
 
    **$name** is the name of the instance to create
 
-
    **$options** is the array contains the specific parameter for the cloud adapter. For more info read the Chapter of :ref:`Zend\\Cloud\\Infrastructure\\Adapter <zend.cloud.infrastructure.adapter>`.
-
-
 
 .. _zend.cloud.infrastructure.methods.deploy-instance:
 
 **deployInstance**
    ``deployInstance(string $id, array $param, string|array $cmd)``
+   Run arbitrary shell scripts on an instance. Return a string or an array contains all the standard output (errors included) of the scripts executed in the instance.
 
+      .. note::
 
-   Run arbitrary shell scripts on an instance. Return a string or an array contains all the standard output (errors included) of the scripts executed in the instance. .. note::
-      **Requirement**
+         **Requirement**
 
-      In order to use the deployInstance method you have to install the SSH2 extension (ext/ssh2) of PHP. The SSH2 extensions can be used to connect only to Gnu/Linux instances (servers). For more info about the SSH2 extension, `click here`_.
-
-
+         In order to use the deployInstance method you have to install the SSH2 extension (ext/ssh2) of PHP. The SSH2 extensions can be used to connect only to Gnu/Linux instances (servers). For more info about the SSH2 extension, `click here`_.
 
 
 
    **$id** is the ID of the instance
 
-
    **$param** is an array contains the username and the password to be used for the SSH connection. The username and the password must be specified using the following constants key of the ``Zend\Cloud\Infrastructure\Instance``: SSH_USERNAME, SSH_PASSWORD.
 
-
    **$cmd** is a string (or an array) contains the commands line to be executed in the instance.
-
-
 
 .. _zend.cloud.infrastructure.methods.destroy-instance:
 
 **destroyInstance**
    ``destroyInstance(string $id)``
-
-
    Destroy an instance. Return **true** in case of success, **false** in case of error.
 
-
    **$id** is the ID of the instance
-
-
 
 .. _zend.cloud.infrastructure.methods.get-adapter:
 
 **getAdapter**
    ``getAdapter()``
-
-
    Return the adapter object.
-
-
 
 .. _zend.cloud.infrastructure.methods.get-adapter-result:
 
 **getAdapterResult**
    ``getAdapterResult()``
-
-
    Return the original adapter result.
-
-
 
 .. _zend.cloud.infrastructure.methods.get-last-http-request:
 
 **getLastHttpRequest**
    ``getLastHttpRequest()``
-
-
    Return the last HTTP Request of the adapter.
-
-
 
 .. _zend.cloud.infrastructure.methods.get-last-http-response:
 
 **getLastHttpResponse**
    ``getLastHttpResponse()``
-
-
    Return the last HTTP Response of the adapter.
-
-
 
 .. _zend.cloud.infrastructure.methods.images-instance:
 
 **imagesInstance**
    ``imagesInstance()``
-
-
    Return all the available images to use for an instance. The return value is an instance of ``Zend\Cloud\Infrastructure\ImageList``
-
-
 
 .. _zend.cloud.infrastructure.methods.list-instances:
 
 **listInstances**
    ``listInstances()``
-
-
    Return the list of of the available instances. The return is an instance of ``Zend\Cloud\Infrastructure\InstanceList``.
-
-
 
 .. _zend.cloud.infrastructure.methods.monitor-instance:
 
 **monitorInstance**
    ``monitorInstance(string $id,string $metric,array $options=null)``
-
-
    Monitor an instance. Return the system information about the metric of an instance. The return value is an array that contains samples of values, timestamp and the elaboration of the average value.
-
 
    **$id** is the ID of the instance;
 
-
    **$metric** is the metric to be monitored. The allowed metrics are reported as contants of the ``Zend\Cloud\Infrastructure\Instance`` class: MONITOR_CPU, MONITOR_RAM, MONITOR_NETWORK_IN, MONITOR_NETWORK_OUT, MONITOR_DISK, MONITOR_DISK_WRITE, MONITOR_DISK_READ.
 
-
    **$options** is the optional array contains the adapter specific options.
-
-
 
 .. _zend.cloud.infrastructure.methods.public-dns-instance:
 
 **publicDnsInstance**
    ``publicDnsInstance(string $id)``
-
-
    Return the public DNS name or the IP address of the instance. The return value is a string. In case of error the return is **false**.
 
-
    **$id** is the ID of the instance
-
-
 
 .. _zend.cloud.infrastructure.methods.reboot-instance:
 
 **rebootInstance**
    ``rebootInstance(string $id)``
-
-
    Reboot an instance. Return **true** in case of success, **false** in case of error.
 
-
    **$id** is the ID of the instance
-
-
 
 .. _zend.cloud.infrastructure.methods.start-instance:
 
 **startInstance**
    ``startInstance(string $id)``
-
-
    Start an instance. Return **true** in case of success, **false** in case of error.
 
-
    **$id** is the ID of the instance
-
-
 
 .. _zend.cloud.infrastructure.methods.status-instance:
 
 **statusInstance**
    ``statusInstance(string $id)``
-
-
    Get the status of an instance. The return value is a string. The available status are reported in the following constants of the class ``Zend\Cloud\Infrastructure\Instance``: STATUS_STOPPED, STATUS_RUNNING, STATUS_SHUTTING_DOWN, STATUS_REBOOTING, STATUS_TERMINATED, STATUS_PENDING, STATUS_REBUILD. In case of error the return is **false**.
 
-
    **$id** is the ID of the instance
-
-
 
 .. _zend.cloud.infrastructure.methods.stop-instance:
 
 **stopInstance**
    ``stopInstance(string $id)``
-
-
    Stop an instance. Return **true** in case of success, **false** in case of error.
 
-
    **$id** is the ID of the instance
-
-
 
 .. _zend.cloud.infrastructure.methods.wait-status-instance:
 
 **waitStatusInstance**
    ``waitStatusInstance(string $id, string $status,integer $timeout=30)``
-
-
    Wait the status change of an instance for a maximum time of **n** seconds. Return **true** if the status changes as expected, **false** if not.
-
 
    **$id** is the ID of the instance;
 
-
    **$status** is the status to wait for;
 
-
    **$timeout** is the maximum time, in seconds, to wait for the status change. This parametr is optional and the default value is 30 seconds.
-
-
 
 .. _zend.cloud.infrastructure.methods.zones-instance:
 
 **zonesInstance**
    ``zonesInstance()``
-
-
    Return all the available zones for an instance. The return value is an array.
-
-
 
 .. _zend.cloud.infrastructure.examples:
 
 Examples
 --------
-
 
 .. _zend.cloud.infrastructure.examples.authenticate:
 
@@ -351,7 +262,6 @@ Get the result of the **date** command line.
 
    echo $output;
 
-
 .. _zend.cloud.infrastructure.examples.get-datetime:
 
 .. rubric:: Get the datetime system information of an instance
@@ -370,7 +280,6 @@ Get the result of the **date** command line.
    $output = $infrastructure->deployInstance('instance-id', $param, $cmd);
 
    echo $output;
-
 
 .. _zend.cloud.infrastructure.examples.reboot:
 

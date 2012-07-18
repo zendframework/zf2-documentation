@@ -1,9 +1,7 @@
-
 .. _zend.http.cookies:
 
 Zend_Http_Cookie and Zend_Http_CookieJar
 ========================================
-
 
 .. _zend.http.cookies.introduction:
 
@@ -13,7 +11,6 @@ Introduction
 ``Zend_Http_Cookie``, as expected, is a class that represents an *HTTP* cookie. It provides methods for parsing *HTTP* response strings, collecting cookies, and easily accessing their properties. It also allows checking if a cookie matches against a specific scenario, IE a request *URL*, expiration time, secure connection, etc.
 
 ``Zend_Http_CookieJar`` is an object usually used by ``Zend_Http_Client`` to hold a set of ``Zend_Http_Cookie`` objects. The idea is that if a ``Zend_Http_CookieJar`` object is attached to a ``Zend_Http_Client`` object, all cookies going from and into the client through *HTTP* requests and responses will be stored by the CookieJar object. Then, when the client will send another request, it will first ask the CookieJar object for all cookies matching the request. These will be added to the request headers automatically. This is highly useful in cases where you need to maintain a user session over consecutive *HTTP* requests, automatically sending the session ID cookies when required. Additionally, the ``Zend_Http_CookieJar`` object can be serialized and stored in $_SESSION when needed.
-
 
 .. _zend.http.cookies.cookie.instantiating:
 
@@ -36,11 +33,9 @@ Instantiating a Cookie object can be done in two ways:
 
   - ``$secure``: Boolean, Whether the cookie is to be sent over secure (HTTPS) connections only (optional, defaults to boolean ``FALSE``)
 
-
 - By calling the fromString($cookieStr, [$refUri, [$encodeValue]]) static method, with a cookie string as represented in the 'Set-Cookie '*HTTP* response header or 'Cookie'*HTTP* request header. In this case, the cookie value must already be encoded. When the cookie string does not contain a 'domain' part, you must provide a reference *URI* according to which the cookie's domain and path will be set.
 
   The ``fromString()`` method accepts the following parameters:
-
 
   - ``$cookieStr``: a cookie string as represented in the 'Set-Cookie'*HTTP* response header or 'Cookie'*HTTP* request header (required)
 
@@ -50,60 +45,66 @@ Instantiating a Cookie object can be done in two ways:
 
 
 
-.. _zend.http.cookies.cookie.instantiating.example-1:
 
-.. rubric:: Instantiating a Zend_Http_Cookie object
 
-.. code-block:: php
-   :linenos:
+      .. _zend.http.cookies.cookie.instantiating.example-1:
 
-   // First, using the constructor. This cookie will expire in 2 hours
-   $cookie = new Zend_Http_Cookie('foo',
-                                  'bar',
-                                  '.example.com',
-                                  time() + 7200,
-                                  '/path');
+      .. rubric:: Instantiating a Zend_Http_Cookie object
 
-   // You can also take the HTTP response Set-Cookie header and use it.
-   // This cookie is similar to the previous one, only it will not expire, and
-   // will only be sent over secure connections
-   $cookie = Zend_Http_Cookie::fromString('foo=bar; domain=.example.com; ' .
-                                          'path=/path; secure');
+      .. code-block:: php
+         :linenos:
 
-   // If the cookie's domain is not set, you have to manually specify it
-   $cookie = Zend_Http_Cookie::fromString('foo=bar; secure;',
-                                          'http://www.example.com/path');
+         // First, using the constructor. This cookie will expire in 2 hours
+         $cookie = new Zend_Http_Cookie('foo',
+                                        'bar',
+                                        '.example.com',
+                                        time() + 7200,
+                                        '/path');
 
-.. note::
-   When instantiating a cookie object using the ``Zend_Http_Cookie``::fromString() method, the cookie value is expected to be *URL* encoded, as cookie strings should be. However, when using the constructor, the cookie value string is expected to be the real, decoded value.
+         // You can also take the HTTP response Set-Cookie header and use it.
+         // This cookie is similar to the previous one, only it will not expire, and
+         // will only be sent over secure connections
+         $cookie = Zend_Http_Cookie::fromString('foo=bar; domain=.example.com; ' .
+                                                'path=/path; secure');
 
+         // If the cookie's domain is not set, you have to manually specify it
+         $cookie = Zend_Http_Cookie::fromString('foo=bar; secure;',
+                                                'http://www.example.com/path');
+
+
+
+   .. note::
+
+      When instantiating a cookie object using the ``Zend_Http_Cookie``::fromString() method, the cookie value is expected to be *URL* encoded, as cookie strings should be. However, when using the constructor, the cookie value string is expected to be the real, decoded value.
 
 
 
 A cookie object can be transferred back into a string, using the \__toString() magic method. This method will produce a *HTTP* request "Cookie" header string, showing the cookie's name and value, and terminated by a semicolon (';'). The value will be URL encoded, as expected in a Cookie header:
-.. _zend.http.cookies.cookie.instantiating.example-2:
 
-.. rubric:: Stringifying a Zend_Http_Cookie object
 
-.. code-block:: php
-   :linenos:
 
-   // Create a new cookie
-   $cookie = new Zend_Http_Cookie('foo',
-                                  'two words',
-                                  '.example.com',
-                                  time() + 7200,
-                                  '/path');
+      .. _zend.http.cookies.cookie.instantiating.example-2:
 
-   // Will print out 'foo=two+words;' :
-   echo $cookie->__toString();
+      .. rubric:: Stringifying a Zend_Http_Cookie object
 
-   // This is actually the same:
-   echo (string) $cookie;
+      .. code-block:: php
+         :linenos:
 
-   // In PHP 5.2 and higher, this also works:
-   echo $cookie;
+         // Create a new cookie
+         $cookie = new Zend_Http_Cookie('foo',
+                                        'two words',
+                                        '.example.com',
+                                        time() + 7200,
+                                        '/path');
 
+         // Will print out 'foo=two+words;' :
+         echo $cookie->__toString();
+
+         // This is actually the same:
+         echo (string) $cookie;
+
+         // In PHP 5.2 and higher, this also works:
+         echo $cookie;
 
 
 
@@ -137,38 +138,40 @@ Additionally, several boolean tester methods are provided:
 
 
 
-.. _zend.http.cookies.cookie.accessors.example-1:
 
-.. rubric:: Using getter methods with Zend_Http_Cookie
 
-.. code-block:: php
-   :linenos:
 
-   // First, create the cookie
-   $cookie =
-       Zend_Http_Cookie::fromString('foo=two+words; ' +
-                                    'domain=.example.com; ' +
-                                    'path=/somedir; ' +
-                                    'secure; ' +
-                                    'expires=Wednesday, 28-Feb-05 20:41:22 UTC');
+      .. _zend.http.cookies.cookie.accessors.example-1:
 
-   echo $cookie->getName();   // Will echo 'foo'
-   echo $cookie->getValue();  // will echo 'two words'
-   echo $cookie->getDomain(); // Will echo '.example.com'
-   echo $cookie->getPath();   // Will echo '/'
+      .. rubric:: Using getter methods with Zend_Http_Cookie
 
-   echo date('Y-m-d', $cookie->getExpiryTime());
-   // Will echo '2005-02-28'
+      .. code-block:: php
+         :linenos:
 
-   echo ($cookie->isExpired() ? 'Yes' : 'No');
-   // Will echo 'Yes'
+         // First, create the cookie
+         $cookie =
+             Zend_Http_Cookie::fromString('foo=two+words; ' +
+                                          'domain=.example.com; ' +
+                                          'path=/somedir; ' +
+                                          'secure; ' +
+                                          'expires=Wednesday, 28-Feb-05 20:41:22 UTC');
 
-   echo ($cookie->isExpired(strtotime('2005-01-01') ? 'Yes' : 'No');
-   // Will echo 'No'
+         echo $cookie->getName();   // Will echo 'foo'
+         echo $cookie->getValue();  // will echo 'two words'
+         echo $cookie->getDomain(); // Will echo '.example.com'
+         echo $cookie->getPath();   // Will echo '/'
 
-   echo ($cookie->isSessionCookie() ? 'Yes' : 'No');
-   // Will echo 'No'
+         echo date('Y-m-d', $cookie->getExpiryTime());
+         // Will echo '2005-02-28'
 
+         echo ($cookie->isExpired() ? 'Yes' : 'No');
+         // Will echo 'Yes'
+
+         echo ($cookie->isExpired(strtotime('2005-01-01') ? 'Yes' : 'No');
+         // Will echo 'No'
+
+         echo ($cookie->isSessionCookie() ? 'Yes' : 'No');
+         // Will echo 'No'
 
 
 
@@ -184,58 +187,60 @@ The only real logic contained in a ``Zend_Http_Cookie`` object, is in the match(
 - ``$now``: Time (represented as UNIX time stamp) to check a cookie against for expiration. If not specified, will default to the current time.
 
 
-.. _zend.http.cookies.cookie.matching.example-1:
 
-.. rubric:: Matching cookies
 
-.. code-block:: php
-   :linenos:
 
-   // Create the cookie object - first, a secure session cookie
-   $cookie = Zend_Http_Cookie::fromString('foo=two+words; ' +
-                                          'domain=.example.com; ' +
-                                          'path=/somedir; ' +
-                                          'secure;');
+      .. _zend.http.cookies.cookie.matching.example-1:
 
-   $cookie->match('https://www.example.com/somedir/foo.php');
-   // Will return true
+      .. rubric:: Matching cookies
 
-   $cookie->match('http://www.example.com/somedir/foo.php');
-   // Will return false, because the connection is not secure
+      .. code-block:: php
+         :linenos:
 
-   $cookie->match('https://otherexample.com/somedir/foo.php');
-   // Will return false, because the domain is wrong
+         // Create the cookie object - first, a secure session cookie
+         $cookie = Zend_Http_Cookie::fromString('foo=two+words; ' +
+                                                'domain=.example.com; ' +
+                                                'path=/somedir; ' +
+                                                'secure;');
 
-   $cookie->match('https://example.com/foo.php');
-   // Will return false, because the path is wrong
+         $cookie->match('https://www.example.com/somedir/foo.php');
+         // Will return true
 
-   $cookie->match('https://www.example.com/somedir/foo.php', false);
-   // Will return false, because session cookies are not matched
+         $cookie->match('http://www.example.com/somedir/foo.php');
+         // Will return false, because the connection is not secure
 
-   $cookie->match('https://sub.domain.example.com/somedir/otherdir/foo.php');
-   // Will return true
+         $cookie->match('https://otherexample.com/somedir/foo.php');
+         // Will return false, because the domain is wrong
 
-   // Create another cookie object - now, not secure, with expiration time
-   // in two hours
-   $cookie = Zend_Http_Cookie::fromString('foo=two+words; ' +
-                                          'domain=www.example.com; ' +
-                                          'expires='
-                                          . date(DATE_COOKIE, time() + 7200));
+         $cookie->match('https://example.com/foo.php');
+         // Will return false, because the path is wrong
 
-   $cookie->match('http://www.example.com/');
-   // Will return true
+         $cookie->match('https://www.example.com/somedir/foo.php', false);
+         // Will return false, because session cookies are not matched
 
-   $cookie->match('https://www.example.com/');
-   // Will return true - non secure cookies can go over secure connections
-   // as well!
+         $cookie->match('https://sub.domain.example.com/somedir/otherdir/foo.php');
+         // Will return true
 
-   $cookie->match('http://subdomain.example.com/');
-   // Will return false, because the domain is wrong
+         // Create another cookie object - now, not secure, with expiration time
+         // in two hours
+         $cookie = Zend_Http_Cookie::fromString('foo=two+words; ' +
+                                                'domain=www.example.com; ' +
+                                                'expires='
+                                                . date(DATE_COOKIE, time() + 7200));
 
-   $cookie->match('http://www.example.com/', true, time() + (3 * 3600));
-   // Will return false, because we added a time offset of +3 hours to
-   // current time
+         $cookie->match('http://www.example.com/');
+         // Will return true
 
+         $cookie->match('https://www.example.com/');
+         // Will return true - non secure cookies can go over secure connections
+         // as well!
+
+         $cookie->match('http://subdomain.example.com/');
+         // Will return false, because the domain is wrong
+
+         $cookie->match('http://www.example.com/', true, time() + (3 * 3600));
+         // Will return false, because we added a time offset of +3 hours to
+         // current time
 
 
 
@@ -248,7 +253,6 @@ In most cases, there is no need to directly instantiate a ``Zend_Http_CookieJar`
 
 If you still wish to manually instantiate a CookieJar object, you can do so by calling "new Zend_Http_CookieJar()" directly - the constructor method does not take any parameters. Another way to instantiate a CookieJar object is to use the static Zend_Http_CookieJar::fromResponse() method. This method takes two parameters: a ``Zend_Http_Response`` object, and a reference *URI*, as either a string or a ``Zend_Uri_Http`` object. This method will return a new ``Zend_Http_CookieJar`` object, already containing the cookies set by the passed *HTTP* response. The reference *URI* will be used to set the cookie's domain and path, if they are not defined in the Set-Cookie headers.
 
-
 .. _zend.http.cookies.cookiejar.adding_cookies:
 
 Adding Cookies to a Zend_Http_CookieJar object
@@ -259,7 +263,6 @@ Usually, the ``Zend_Http_Client`` object you attached your CookieJar object to w
 - ``Zend_Http_CookieJar->addCookie($cookie[, $ref_uri])``: Add a single cookie to the jar. $cookie can be either a ``Zend_Http_Cookie`` object or a string, which will be converted automatically into a Cookie object. If a string is provided, you should also provide $ref_uri - which is a reference *URI* either as a string or ``Zend_Uri_Http`` object, to use as the cookie's default domain and path.
 
 - ``Zend_Http_CookieJar->addCookiesFromResponse($response, $ref_uri)``: Add all cookies set in a single *HTTP* response to the jar. $response is expected to be a ``Zend_Http_Response`` object with Set-Cookie headers. $ref_uri is the request *URI*, either as a string or a ``Zend_Uri_Http`` object, according to which the cookies' default domain and path will be set.
-
 
 
 
@@ -288,15 +291,15 @@ The structure of the different cookie-fetching methods is described below:
 
 - ``Zend_Http_CookieJar->getMatchingCookies($uri[, $matchSessionCookies[, $ret_as[, $now]]])``: Get all cookies from the jar that match a specified scenario, that is a *URI* and expiration time.
 
-- ``$uri`` is either a ``Zend_Uri_Http`` object or a string specifying the connection type (secure or non-secure), domain and path to match against.
+  - ``$uri`` is either a ``Zend_Uri_Http`` object or a string specifying the connection type (secure or non-secure), domain and path to match against.
 
-- ``$matchSessionCookies`` is a boolean telling whether to match session cookies or not. Session cookies are cookies that have no specified expiration time. Defaults to ``TRUE``.
+  - ``$matchSessionCookies`` is a boolean telling whether to match session cookies or not. Session cookies are cookies that have no specified expiration time. Defaults to ``TRUE``.
 
-- ``$ret_as`` specifies the return type as described above. If not specified, defaults to COOKIE_OBJECT.
+  - ``$ret_as`` specifies the return type as described above. If not specified, defaults to COOKIE_OBJECT.
 
-- ``$now`` is an integer representing the UNIX time stamp to consider as "now" - that is any cookies who are set to expire before this time will not be matched. If not specified, defaults to the current time.
+  - ``$now`` is an integer representing the UNIX time stamp to consider as "now" - that is any cookies who are set to expire before this time will not be matched. If not specified, defaults to the current time.
 
-You can read more about cookie matching here: :ref:`this section <zend.http.cookies.cookie.matching>`.
+   You can read more about cookie matching here: :ref:`this section <zend.http.cookies.cookie.matching>`.
 
 
 

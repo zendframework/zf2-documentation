@@ -1,4 +1,3 @@
-
 .. _requirements.dependencies.table-1:
 
 .. table:: Zend Framework Components and their dependency to other Zend Framework Components
@@ -1386,6 +1385,5 @@
    +---------------------------+--------------------------------------------------+
    |Zend_Registry              |                                                  |
    +---------------------------+--------------------------------------------------+
-
 
 

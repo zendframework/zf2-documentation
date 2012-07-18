@@ -1,11 +1,9 @@
-
 .. _zend.log.filters:
 
 Filters
 =======
 
 A Filter object blocks a message from being written to the log.
-
 
 .. _zend.log.filters.all-writers:
 
@@ -34,7 +32,6 @@ To filter before all writers, you can add any number of Filters to a Logger obje
    $logger->emerg('Emergency message');
 
 When you add one or more Filters to the Log object, the message must pass through all of the Filters before any Writers receives it.
-
 
 .. _zend.log.filters.single-writer:
 
@@ -65,7 +62,6 @@ To filter only on a specific Writer instance, use the ``addFilter()`` method of 
 
    // logged by both writers
    $logger->emerg('Emergency message');
-
 
 .. _zend.log.filters.type:
 

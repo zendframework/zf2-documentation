@@ -1,4 +1,3 @@
-
 .. _learning.form.decorators.composite:
 
 Creating and Rendering Composite Elements
@@ -22,7 +21,6 @@ In :ref:`the last section <learning.form.decorators.individual>`, we had an exam
    </div>
 
 How might you represent this element as a ``Zend_Form_Element``? How might you write a decorator to render it?
-
 
 .. _learning.form.decorators.composite.element:
 
@@ -132,7 +130,6 @@ Here's what the class would look like:
    }
 
 This class gives some nice flexibility -- we can set default values from our database, and be certain that the value will be stored and represented correctly. Additionally, we can allow for the value to be set from an array passed via form input. Finally, we have discrete accessors for each date segment, which we can now use in a decorator to create a composite element.
-
 
 .. _learning.form.decorators.composite.decorator:
 
@@ -277,7 +274,6 @@ If you then echo this element, you get the following markup (with some slight wh
        <input type="text" name="dateOfBirth[year]" id="dateOfBirth-year"
            value="2009" size="4" maxlength="4">
    </dd>
-
 
 .. _learning.form.decorators.composite.conclusion:
 
