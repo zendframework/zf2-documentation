@@ -3,7 +3,8 @@
 InArray
 =======
 
-``Zend\Validator\InArray`` allows you to validate if a given value is contained within an array. It is also able to validate multidimensional arrays.
+``Zend\Validator\InArray`` allows you to validate if a given value is contained within an array. It is also able to
+validate multidimensional arrays.
 
 .. _zend.validator.set.in_array.options:
 
@@ -42,7 +43,8 @@ This will behave exactly like *PHP*'s ``in_array()`` method.
 
    Per default this validation is not strict nor can it validate multidimensional arrays.
 
-Of course you can give the array to validate against also afterwards by using the ``setHaystack()`` method. ``getHaystack()`` returns the actual set haystack array.
+Of course you can give the array to validate against also afterwards by using the ``setHaystack()`` method.
+``getHaystack()`` returns the actual set haystack array.
 
 .. code-block:: php
    :linenos:
@@ -61,9 +63,12 @@ Of course you can give the array to validate against also afterwards by using th
 Strict array validation
 -----------------------
 
-As mentioned before you can also do a strict validation within the array. Per default there would be no difference between the integer value **0** and the string **"0"**. When doing a strict validation this difference will also be validated and only same types are accepted.
+As mentioned before you can also do a strict validation within the array. Per default there would be no difference
+between the integer value **0** and the string **"0"**. When doing a strict validation this difference will also be
+validated and only same types are accepted.
 
-A strict validation can also be done by using two different ways. At initiation and by using a method. At initiation you have to give an array with the following structure:
+A strict validation can also be done by using two different ways. At initiation and by using a method. At
+initiation you have to give an array with the following structure:
 
 .. code-block:: php
    :linenos:
@@ -81,9 +86,11 @@ A strict validation can also be done by using two different ways. At initiation 
        // no value found
    }
 
-The **haystack** key contains your array to validate against. And by setting the **strict** key to ``TRUE``, the validation is done by using a strict type check.
+The **haystack** key contains your array to validate against. And by setting the **strict** key to ``TRUE``, the
+validation is done by using a strict type check.
 
-Of course you can also use the ``setStrict()`` method to change this setting afterwards and ``getStrict()`` to get the actual set state.
+Of course you can also use the ``setStrict()`` method to change this setting afterwards and ``getStrict()`` to get
+the actual set state.
 
 .. note::
 
@@ -118,7 +125,8 @@ To validate multidimensional arrays you have to set the **recursive** option.
        // no value found
    }
 
-Your array will then be validated recursive to see if the given value is contained. Additionally you could use ``setRecursive()`` to set this option afterwards and ``getRecursive()`` to retrieve it.
+Your array will then be validated recursive to see if the given value is contained. Additionally you could use
+``setRecursive()`` to set this option afterwards and ``getRecursive()`` to retrieve it.
 
 .. code-block:: php
    :linenos:
@@ -149,6 +157,7 @@ Your array will then be validated recursive to see if the given value is contain
 
    **Option keys within the haystack**
 
-   When you are using the keys '``haystack``', '``strict``' or '``recursive``' within your haystack, then you must wrap the ``haystack`` key.
+   When you are using the keys '``haystack``', '``strict``' or '``recursive``' within your haystack, then you must
+   wrap the ``haystack`` key.
 
 

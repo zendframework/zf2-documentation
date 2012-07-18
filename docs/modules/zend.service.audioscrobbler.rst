@@ -8,56 +8,82 @@ Zend_Service_Audioscrobbler
 Introduction
 ------------
 
-``Zend_Service_Audioscrobbler`` is a simple *API* for using the Audioscrobbler REST Web Service. The Audioscrobbler Web Service provides access to its database of Users, Artists, Albums, Tracks, Tags, Groups, and Forums. The methods of the ``Zend_Service_Audioscrobbler`` class begin with one of these terms. The syntax and namespaces of the Audioscrobbler Web Service are mirrored in ``Zend_Service_Audioscrobbler``. For more information about the Audioscrobbler REST Web Service, please visit the `Audioscrobbler Web Service site`_.
+``Zend_Service_Audioscrobbler`` is a simple *API* for using the Audioscrobbler REST Web Service. The Audioscrobbler
+Web Service provides access to its database of Users, Artists, Albums, Tracks, Tags, Groups, and Forums. The
+methods of the ``Zend_Service_Audioscrobbler`` class begin with one of these terms. The syntax and namespaces of
+the Audioscrobbler Web Service are mirrored in ``Zend_Service_Audioscrobbler``. For more information about the
+Audioscrobbler REST Web Service, please visit the `Audioscrobbler Web Service site`_.
 
 .. _zend.service.audioscrobbler.users:
 
 Users
 -----
 
-In order to retrieve information for a specific user, the ``setUser()`` method is first used to select the user for which data are to be retrieved. ``Zend_Service_Audioscrobbler`` provides several methods for retrieving data specific to a single user:
+In order to retrieve information for a specific user, the ``setUser()`` method is first used to select the user for
+which data are to be retrieved. ``Zend_Service_Audioscrobbler`` provides several methods for retrieving data
+specific to a single user:
 
-- ``userGetProfileInformation()``: Returns a SimpleXML object containing the current user's profile information.
 
-- ``userGetTopArtists()``: Returns a SimpleXML object containing a list of the current user's most listened to artists.
 
-- ``userGetTopAlbums()``: Returns a SimpleXML object containing a list of the current user's most listened to albums.
+   - ``userGetProfileInformation()``: Returns a SimpleXML object containing the current user's profile information.
 
-- ``userGetTopTracks()``: Returns a SimpleXML object containing a list of the current user's most listened to tracks.
+   - ``userGetTopArtists()``: Returns a SimpleXML object containing a list of the current user's most listened to
+     artists.
 
-- ``userGetTopTags()``: Returns a SimpleXML object containing a list of tags most applied by the current user.
+   - ``userGetTopAlbums()``: Returns a SimpleXML object containing a list of the current user's most listened to
+     albums.
 
-- ``userGetTopTagsForArtist()``: Requires that an artist be set via ``setArtist()``. Returns a SimpleXML object containing the tags most applied to the current artist by the current user.
+   - ``userGetTopTracks()``: Returns a SimpleXML object containing a list of the current user's most listened to
+     tracks.
 
-- ``userGetTopTagsForAlbum()``: Requires that an album be set via ``setAlbum()``. Returns a SimpleXML object containing the tags most applied to the current album by the current user.
+   - ``userGetTopTags()``: Returns a SimpleXML object containing a list of tags most applied by the current user.
 
-- ``userGetTopTagsForTrack()``: Requires that a track be set via ``setTrack()``. Returns a SimpleXML object containing the tags most applied to the current track by the current user.
+   - ``userGetTopTagsForArtist()``: Requires that an artist be set via ``setArtist()``. Returns a SimpleXML object
+     containing the tags most applied to the current artist by the current user.
 
-- ``userGetFriends()``: Returns a SimpleXML object containing the user names of the current user's friends.
+   - ``userGetTopTagsForAlbum()``: Requires that an album be set via ``setAlbum()``. Returns a SimpleXML object
+     containing the tags most applied to the current album by the current user.
 
-- ``userGetNeighbours()``: Returns a SimpleXML object containing the user names of people with similar listening habits to the current user.
+   - ``userGetTopTagsForTrack()``: Requires that a track be set via ``setTrack()``. Returns a SimpleXML object
+     containing the tags most applied to the current track by the current user.
 
-- ``userGetRecentTracks()``: Returns a SimpleXML object containing the 10 tracks most recently played by the current user.
+   - ``userGetFriends()``: Returns a SimpleXML object containing the user names of the current user's friends.
 
-- ``userGetRecentBannedTracks()``: Returns a SimpleXML object containing a list of the 10 tracks most recently banned by the current user.
+   - ``userGetNeighbours()``: Returns a SimpleXML object containing the user names of people with similar listening
+     habits to the current user.
 
-- ``userGetRecentLovedTracks()``: Returns a SimpleXML object containing a list of the 10 tracks most recently loved by the current user.
+   - ``userGetRecentTracks()``: Returns a SimpleXML object containing the 10 tracks most recently played by the
+     current user.
 
-- ``userGetRecentJournals()``: Returns a SimpleXML object containing a list of the current user's most recent journal entries.
+   - ``userGetRecentBannedTracks()``: Returns a SimpleXML object containing a list of the 10 tracks most recently
+     banned by the current user.
 
-- ``userGetWeeklyChartList()``: Returns a SimpleXML object containing a list of weeks for which there exist Weekly Charts for the current user.
+   - ``userGetRecentLovedTracks()``: Returns a SimpleXML object containing a list of the 10 tracks most recently
+     loved by the current user.
 
-- ``userGetRecentWeeklyArtistChart()``: Returns a SimpleXML object containing the most recent Weekly Artist Chart for the current user.
+   - ``userGetRecentJournals()``: Returns a SimpleXML object containing a list of the current user's most recent
+     journal entries.
 
-- ``userGetRecentWeeklyAlbumChart()``: Returns a SimpleXML object containing the most recent Weekly Album Chart for the current user.
+   - ``userGetWeeklyChartList()``: Returns a SimpleXML object containing a list of weeks for which there exist
+     Weekly Charts for the current user.
 
-- ``userGetRecentWeeklyTrackChart()``: Returns a SimpleXML object containing the most recent Weekly Track Chart for the current user.
+   - ``userGetRecentWeeklyArtistChart()``: Returns a SimpleXML object containing the most recent Weekly Artist
+     Chart for the current user.
 
-- ``userGetPreviousWeeklyArtistChart($fromDate, $toDate)``: Returns a SimpleXML object containing the Weekly Artist Chart from ``$fromDate`` to ``$toDate`` for the current user.
+   - ``userGetRecentWeeklyAlbumChart()``: Returns a SimpleXML object containing the most recent Weekly Album Chart
+     for the current user.
 
-- ``userGetPreviousWeeklyAlbumChart($fromDate, $toDate)``: Returns a SimpleXML object containing the Weekly Album Chart from ``$fromDate`` to ``$toDate`` for the current user.
+   - ``userGetRecentWeeklyTrackChart()``: Returns a SimpleXML object containing the most recent Weekly Track Chart
+     for the current user.
 
-- ``userGetPreviousWeeklyTrackChart($fromDate, $toDate)``: Returns a SimpleXML object containing the Weekly Track Chart from ``$fromDate`` to ``$toDate`` for the current user.
+   - ``userGetPreviousWeeklyArtistChart($fromDate, $toDate)``: Returns a SimpleXML object containing the Weekly
+     Artist Chart from ``$fromDate`` to ``$toDate`` for the current user.
+
+   - ``userGetPreviousWeeklyAlbumChart($fromDate, $toDate)``: Returns a SimpleXML object containing the Weekly
+     Album Chart from ``$fromDate`` to ``$toDate`` for the current user.
+
+   - ``userGetPreviousWeeklyTrackChart($fromDate, $toDate)``: Returns a SimpleXML object containing the Weekly
+     Track Chart from ``$fromDate`` to ``$toDate`` for the current user.
 
 
 
@@ -65,7 +91,8 @@ In order to retrieve information for a specific user, the ``setUser()`` method i
 
 .. rubric:: Retrieving User Profile Information
 
-In this example, we use the ``setUser()`` and ``userGetProfileInformation()`` methods to retrieve a specific user's profile information:
+In this example, we use the ``setUser()`` and ``userGetProfileInformation()`` methods to retrieve a specific user's
+profile information:
 
 .. code-block:: php
    :linenos:
@@ -115,17 +142,25 @@ In this example, we use the ``setUser()`` and ``userGetProfileInformation()`` me
 Artists
 -------
 
-``Zend_Service_Audioscrobbler`` provides several methods for retrieving data about a specific artist, specified via the ``setArtist()`` method:
+``Zend_Service_Audioscrobbler`` provides several methods for retrieving data about a specific artist, specified via
+the ``setArtist()`` method:
 
-- ``artistGetRelatedArtists()``: Returns a SimpleXML object containing a list of Artists similar to the current Artist.
 
-- ``artistGetTopFans()``: Returns a SimpleXML object containing a list of Users who listen most to the current Artist.
 
-- ``artistGetTopTracks()``: Returns a SimpleXML object containing a list of the current Artist's top-rated Tracks.
+   - ``artistGetRelatedArtists()``: Returns a SimpleXML object containing a list of Artists similar to the current
+     Artist.
 
-- ``artistGetTopAlbums()``: Returns a SimpleXML object containing a list of the current Artist's top-rated Albums.
+   - ``artistGetTopFans()``: Returns a SimpleXML object containing a list of Users who listen most to the current
+     Artist.
 
-- ``artistGetTopTags()``: Returns a SimpleXML object containing a list of the Tags most frequently applied to current Artist.
+   - ``artistGetTopTracks()``: Returns a SimpleXML object containing a list of the current Artist's top-rated
+     Tracks.
+
+   - ``artistGetTopAlbums()``: Returns a SimpleXML object containing a list of the current Artist's top-rated
+     Albums.
+
+   - ``artistGetTopTags()``: Returns a SimpleXML object containing a list of the Tags most frequently applied to
+     current Artist.
 
 
 
@@ -151,11 +186,16 @@ Artists
 Tracks
 ------
 
-``Zend_Service_Audioscrobbler`` provides two methods for retrieving data specific to a single track, specified via the ``setTrack()`` method:
+``Zend_Service_Audioscrobbler`` provides two methods for retrieving data specific to a single track, specified via
+the ``setTrack()`` method:
 
-- ``trackGetTopFans()``: Returns a SimpleXML object containing a list of Users who listen most to the current Track.
 
-- ``trackGetTopTags()``: Returns a SimpleXML object containing a list of the Tags most frequently applied to the current Track.
+
+   - ``trackGetTopFans()``: Returns a SimpleXML object containing a list of Users who listen most to the current
+     Track.
+
+   - ``trackGetTopTags()``: Returns a SimpleXML object containing a list of the Tags most frequently applied to the
+     current Track.
 
 
 
@@ -164,15 +204,22 @@ Tracks
 Tags
 ----
 
-``Zend_Service_Audioscrobbler`` provides several methods for retrieving data specific to a single tag, specified via the ``setTag()`` method:
+``Zend_Service_Audioscrobbler`` provides several methods for retrieving data specific to a single tag, specified
+via the ``setTag()`` method:
 
-- ``tagGetOverallTopTags()``: Returns a SimpleXML object containing a list of Tags most frequently used on Audioscrobbler.
 
-- ``tagGetTopArtists()``: Returns a SimpleXML object containing a list of Artists to whom the current Tag was most frequently applied.
 
-- ``tagGetTopAlbums()``: Returns a SimpleXML object containing a list of Albums to which the current Tag was most frequently applied.
+   - ``tagGetOverallTopTags()``: Returns a SimpleXML object containing a list of Tags most frequently used on
+     Audioscrobbler.
 
-- ``tagGetTopTracks()``: Returns a SimpleXML object containing a list of Tracks to which the current Tag was most frequently applied.
+   - ``tagGetTopArtists()``: Returns a SimpleXML object containing a list of Artists to whom the current Tag was
+     most frequently applied.
+
+   - ``tagGetTopAlbums()``: Returns a SimpleXML object containing a list of Albums to which the current Tag was
+     most frequently applied.
+
+   - ``tagGetTopTracks()``: Returns a SimpleXML object containing a list of Tracks to which the current Tag was
+     most frequently applied.
 
 
 
@@ -181,23 +228,36 @@ Tags
 Groups
 ------
 
-``Zend_Service_Audioscrobbler`` provides several methods for retrieving data specific to a single group, specified via the ``setGroup()`` method:
+``Zend_Service_Audioscrobbler`` provides several methods for retrieving data specific to a single group, specified
+via the ``setGroup()`` method:
 
-- ``groupGetRecentJournals()``: Returns a SimpleXML object containing a list of recent journal posts by Users in the current Group.
 
-- ``groupGetWeeklyChart()``: Returns a SimpleXML object containing a list of weeks for which there exist Weekly Charts for the current Group.
 
-- ``groupGetRecentWeeklyArtistChart()``: Returns a SimpleXML object containing the most recent Weekly Artist Chart for the current Group.
+   - ``groupGetRecentJournals()``: Returns a SimpleXML object containing a list of recent journal posts by Users in
+     the current Group.
 
-- ``groupGetRecentWeeklyAlbumChart()``: Returns a SimpleXML object containing the most recent Weekly Album Chart for the current Group.
+   - ``groupGetWeeklyChart()``: Returns a SimpleXML object containing a list of weeks for which there exist Weekly
+     Charts for the current Group.
 
-- ``groupGetRecentWeeklyTrackChart()``: Returns a SimpleXML object containing the most recent Weekly Track Chart for the current Group.
+   - ``groupGetRecentWeeklyArtistChart()``: Returns a SimpleXML object containing the most recent Weekly Artist
+     Chart for the current Group.
 
-- ``groupGetPreviousWeeklyArtistChart($fromDate, $toDate)``: Requires ``setFromDate()`` and ``setToDate()``. Returns a SimpleXML object containing the Weekly Artist Chart from the current fromDate to the current toDate for the current Group.
+   - ``groupGetRecentWeeklyAlbumChart()``: Returns a SimpleXML object containing the most recent Weekly Album Chart
+     for the current Group.
 
-- ``groupGetPreviousWeeklyAlbumChart($fromDate, $toDate)``: Requires ``setFromDate()`` and ``setToDate()``. Returns a SimpleXML object containing the Weekly Album Chart from the current fromDate to the current toDate for the current Group.
+   - ``groupGetRecentWeeklyTrackChart()``: Returns a SimpleXML object containing the most recent Weekly Track Chart
+     for the current Group.
 
-- ``groupGetPreviousWeeklyTrackChart($fromDate, $toDate)``: Returns a SimpleXML object containing the Weekly Track Chart from the current fromDate to the current toDate for the current Group.
+   - ``groupGetPreviousWeeklyArtistChart($fromDate, $toDate)``: Requires ``setFromDate()`` and ``setToDate()``.
+     Returns a SimpleXML object containing the Weekly Artist Chart from the current fromDate to the current toDate
+     for the current Group.
+
+   - ``groupGetPreviousWeeklyAlbumChart($fromDate, $toDate)``: Requires ``setFromDate()`` and ``setToDate()``.
+     Returns a SimpleXML object containing the Weekly Album Chart from the current fromDate to the current toDate
+     for the current Group.
+
+   - ``groupGetPreviousWeeklyTrackChart($fromDate, $toDate)``: Returns a SimpleXML object containing the Weekly
+     Track Chart from the current fromDate to the current toDate for the current Group.
 
 
 
@@ -206,9 +266,12 @@ Groups
 Forums
 ------
 
-``Zend_Service_Audioscrobbler`` provides a method for retrieving data specific to a single forum, specified via the ``setForum()`` method:
+``Zend_Service_Audioscrobbler`` provides a method for retrieving data specific to a single forum, specified via the
+``setForum()`` method:
 
-- ``forumGetRecentPosts()``: Returns a SimpleXML object containing a list of recent posts in the current forum.
+
+
+   - ``forumGetRecentPosts()``: Returns a SimpleXML object containing a list of recent posts in the current forum.
 
 
 

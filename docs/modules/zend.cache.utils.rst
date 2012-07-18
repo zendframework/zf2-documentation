@@ -8,7 +8,8 @@ Zend\\Cache\\Utils
 Overview
 --------
 
-The class ``Zend\Cache\Utils`` is a class that defines a set of methods that perform common, often re-used logic needed by the ``Zend\Cache`` component.
+The class ``Zend\Cache\Utils`` is a class that defines a set of methods that perform common, often re-used logic
+needed by the ``Zend\Cache`` component.
 
 It is a static class and has only static members.
 

@@ -13,7 +13,8 @@ Abstract Classes and Interfaces
 Zend_CodeGenerator_Abstract
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The base class from which all CodeGenerator classes inherit provides the minimal functionality necessary. It's *API* is as follows:
+The base class from which all CodeGenerator classes inherit provides the minimal functionality necessary. It's
+*API* is as follows:
 
 .. code-block:: php
    :linenos:
@@ -30,20 +31,26 @@ The base class from which all CodeGenerator classes inherit provides the minimal
        final public function __toString()
    }
 
-The constructor first calls ``_init()`` (which is left empty for the concrete extending class to implement), then passes the ``$options`` parameter to ``setOptions()``, and finally calls ``_prepare()`` (again, to be implemented by an extending class).
+The constructor first calls ``_init()`` (which is left empty for the concrete extending class to implement), then
+passes the ``$options`` parameter to ``setOptions()``, and finally calls ``_prepare()`` (again, to be implemented
+by an extending class).
 
-Like most classes in Zend Framework, ``setOptions()`` compares an option key to existing setters in the class, and passes the value on to that method if found.
+Like most classes in Zend Framework, ``setOptions()`` compares an option key to existing setters in the class, and
+passes the value on to that method if found.
 
 ``__toString()`` is marked as final, and proxies to ``generate()``.
 
-``setSourceContent()`` and ``getSourceContent()`` are intended to either set the default content for the code being generated, or to replace said content once all generation tasks are complete.
+``setSourceContent()`` and ``getSourceContent()`` are intended to either set the default content for the code being
+generated, or to replace said content once all generation tasks are complete.
 
 .. _zend.codegenerator.reference.abstracts.php-abstract:
 
 Zend_CodeGenerator_Php_Abstract
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Abstract`` extends ``Zend_CodeGenerator_Abstract``, and adds some properties for tracking whether content has changed as well as the amount of indentation that should appear before generated content. Its *API* is as follows:
+``Zend_CodeGenerator_Php_Abstract`` extends ``Zend_CodeGenerator_Abstract``, and adds some properties for tracking
+whether content has changed as well as the amount of indentation that should appear before generated content. Its
+*API* is as follows:
 
 .. code-block:: php
    :linenos:
@@ -62,7 +69,9 @@ Zend_CodeGenerator_Php_Abstract
 Zend_CodeGenerator_Php_Member_Abstract
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Member_Abstract`` is a base class for generating class members -- properties and methods -- and provides accessors and mutators for establishing visibility; whether or not the member is abstract, static, or final; and the name of the member. Its *API* is as follows:
+``Zend_CodeGenerator_Php_Member_Abstract`` is a base class for generating class members -- properties and methods
+-- and provides accessors and mutators for establishing visibility; whether or not the member is abstract, static,
+or final; and the name of the member. Its *API* is as follows:
 
 .. code-block:: php
    :linenos:
@@ -90,7 +99,8 @@ Concrete CodeGenerator Classes
 Zend_CodeGenerator_Php_Body
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Body`` is intended for generating arbitrary procedural code to include within a file. As such, you simply set content for the object, and it will return that content when you invoke ``generate()``.
+``Zend_CodeGenerator_Php_Body`` is intended for generating arbitrary procedural code to include within a file. As
+such, you simply set content for the object, and it will return that content when you invoke ``generate()``.
 
 The *API* of the class is as follows:
 
@@ -109,7 +119,10 @@ The *API* of the class is as follows:
 Zend_CodeGenerator_Php_Class
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Class`` is intended for generating *PHP* classes. The basic functionality just generates the *PHP* class itself, as well as optionally the related *PHP* DocBlock. Classes may implement or inherit from other classes, and may be marked as abstract. Utilizing other code generator classes, you can also attach class constants, properties, and methods.
+``Zend_CodeGenerator_Php_Class`` is intended for generating *PHP* classes. The basic functionality just generates
+the *PHP* class itself, as well as optionally the related *PHP* DocBlock. Classes may implement or inherit from
+other classes, and may be marked as abstract. Utilizing other code generator classes, you can also attach class
+constants, properties, and methods.
 
 The *API* is as follows:
 
@@ -144,7 +157,10 @@ The *API* is as follows:
        public function generate()
    }
 
-The ``setProperty()`` method accepts an array of information that may be used to generate a ``Zend_CodeGenerator_Php_Property`` instance -- or simply an instance of ``Zend_CodeGenerator_Php_Property``. Likewise, ``setMethod()`` accepts either an array of information for generating a ``Zend_CodeGenerator_Php_Method`` instance or a concrete instance of that class.
+The ``setProperty()`` method accepts an array of information that may be used to generate a
+``Zend_CodeGenerator_Php_Property`` instance -- or simply an instance of ``Zend_CodeGenerator_Php_Property``.
+Likewise, ``setMethod()`` accepts either an array of information for generating a ``Zend_CodeGenerator_Php_Method``
+instance or a concrete instance of that class.
 
 Note that ``setDocBlock()`` expects an instance of ``Zend_CodeGenerator_Php_DocBlock``.
 
@@ -153,9 +169,12 @@ Note that ``setDocBlock()`` expects an instance of ``Zend_CodeGenerator_Php_DocB
 Zend_CodeGenerator_Php_Docblock
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Docblock`` can be used to generate arbitrary *PHP* docblocks, including all the standard docblock features: short and long descriptions and annotation tags.
+``Zend_CodeGenerator_Php_Docblock`` can be used to generate arbitrary *PHP* docblocks, including all the standard
+docblock features: short and long descriptions and annotation tags.
 
-Annotation tags may be set using the ``setTag()`` and ``setTags()`` methods; these each take either an array describing the tag that may be passed to the ``Zend_CodeGenerator_Php_Docblock_Tag`` constructor, or an instance of that class.
+Annotation tags may be set using the ``setTag()`` and ``setTags()`` methods; these each take either an array
+describing the tag that may be passed to the ``Zend_CodeGenerator_Php_Docblock_Tag`` constructor, or an instance of
+that class.
 
 The *API* is as follows:
 
@@ -182,7 +201,9 @@ The *API* is as follows:
 Zend_CodeGenerator_Php_Docblock_Tag
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Docblock_Tag`` is intended for creating arbitrary annotation tags for inclusion in *PHP* docblocks. Tags are expected to contain a name (the portion immediately following the '@' symbol) and a description (everything following the tag name).
+``Zend_CodeGenerator_Php_Docblock_Tag`` is intended for creating arbitrary annotation tags for inclusion in *PHP*
+docblocks. Tags are expected to contain a name (the portion immediately following the '@' symbol) and a description
+(everything following the tag name).
 
 The class *API* is as follows:
 
@@ -207,7 +228,10 @@ The class *API* is as follows:
 Zend_CodeGenerator_Php_DocBlock_Tag_Param
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_DocBlock_Tag_Param`` is a specialized version of ``Zend_CodeGenerator_Php_DocBlock_Tag``, and represents a method parameter. The tag name is therefor known ("param"), but due to the format of this annotation tag, additional information is required in order to generate it: the parameter name and data type it represents.
+``Zend_CodeGenerator_Php_DocBlock_Tag_Param`` is a specialized version of ``Zend_CodeGenerator_Php_DocBlock_Tag``,
+and represents a method parameter. The tag name is therefor known ("param"), but due to the format of this
+annotation tag, additional information is required in order to generate it: the parameter name and data type it
+represents.
 
 The class *API* is as follows:
 
@@ -232,7 +256,9 @@ The class *API* is as follows:
 Zend_CodeGenerator_Php_DocBlock_Tag_Return
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Like the param docblock tag variant, ``Zend_CodeGenerator_Php_Docblock_Tab_Return`` is an annotation tag variant for representing a method return value. In this case, the annotation tag name is known ("return"), but requires a return type.
+Like the param docblock tag variant, ``Zend_CodeGenerator_Php_Docblock_Tab_Return`` is an annotation tag variant
+for representing a method return value. In this case, the annotation tag name is known ("return"), but requires a
+return type.
 
 The class *API* is as follows:
 
@@ -255,9 +281,13 @@ The class *API* is as follows:
 Zend_CodeGenerator_Php_File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_File`` is used to generate the full contents of a file that will contain *PHP* code. The file may contain classes or arbitrary *PHP* code, as well as a file-level docblock if desired.
+``Zend_CodeGenerator_Php_File`` is used to generate the full contents of a file that will contain *PHP* code. The
+file may contain classes or arbitrary *PHP* code, as well as a file-level docblock if desired.
 
-When adding classes to the file, you will need to pass either an array of information to pass to the ``Zend_CodeGenerator_Php_Class`` constructor, or an instance of that class. Similarly, with docblocks, you will need to pass information for the ``Zend_CodeGenerator_Php_Docblock`` constructor to consume or an instance of the class.
+When adding classes to the file, you will need to pass either an array of information to pass to the
+``Zend_CodeGenerator_Php_Class`` constructor, or an instance of that class. Similarly, with docblocks, you will
+need to pass information for the ``Zend_CodeGenerator_Php_Docblock`` constructor to consume or an instance of the
+class.
 
 The *API* of the class is as follows:
 
@@ -292,7 +322,9 @@ The *API* of the class is as follows:
 Zend_CodeGenerator_Php_Member_Container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Member_Container`` is used internally by ``Zend_CodeGenerator_Php_Class`` to keep track of class members -- properties and methods alike. These are indexed by name, using the concrete instances of the members as values.
+``Zend_CodeGenerator_Php_Member_Container`` is used internally by ``Zend_CodeGenerator_Php_Class`` to keep track of
+class members -- properties and methods alike. These are indexed by name, using the concrete instances of the
+members as values.
 
 The *API* of the class is as follows:
 
@@ -309,9 +341,14 @@ The *API* of the class is as follows:
 Zend_CodeGenerator_Php_Method
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Method`` describes a class method, and can generate both the code and the docblock for the method. The visibility and status as static, abstract, or final may be indicated, per its parent class, ``Zend_CodeGenerator_Php_Member_Abstract``. Finally, the parameters and return value for the method may be specified.
+``Zend_CodeGenerator_Php_Method`` describes a class method, and can generate both the code and the docblock for the
+method. The visibility and status as static, abstract, or final may be indicated, per its parent class,
+``Zend_CodeGenerator_Php_Member_Abstract``. Finally, the parameters and return value for the method may be
+specified.
 
-Parameters may be set using ``setParameter()`` or ``setParameters()``. In each case, a parameter should either be an array of information to pass to the ``Zend_CodeGenerator_Php_Parameter`` constructor or an instance of that class.
+Parameters may be set using ``setParameter()`` or ``setParameters()``. In each case, a parameter should either be
+an array of information to pass to the ``Zend_CodeGenerator_Php_Parameter`` constructor or an instance of that
+class.
 
 The *API* of the class is as follows:
 
@@ -340,7 +377,9 @@ The *API* of the class is as follows:
 Zend_CodeGenerator_Php_Parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Parameter`` may be used to specify method parameters. Each parameter may have a position (if unspecified, the order in which they are registered with the method will be used), a default value, and a data type; a parameter name is required.
+``Zend_CodeGenerator_Php_Parameter`` may be used to specify method parameters. Each parameter may have a position
+(if unspecified, the order in which they are registered with the method will be used), a default value, and a data
+type; a parameter name is required.
 
 The *API* of the class is as follows:
 
@@ -365,7 +404,8 @@ The *API* of the class is as follows:
        public function generate()
    }
 
-There are several problems that might occur when trying to set ``NULL``, booleans or arrays as default values. For this the value holder object ``Zend_CodeGenerator_Php_ParameterDefaultValue`` can be used, for example:
+There are several problems that might occur when trying to set ``NULL``, booleans or arrays as default values. For
+this the value holder object ``Zend_CodeGenerator_Php_ParameterDefaultValue`` can be used, for example:
 
 .. code-block:: php
    :linenos:
@@ -385,7 +425,9 @@ Internally ``setDefaultValue()`` also converts the values which can't be express
 Zend_CodeGenerator_Php_Property
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Property`` describes a class property, which may be either a constant or a variable. In each case, the property may have an optional default value associated with it. Additionally, the visibility of variable properties may be set, per the parent class, ``Zend_CodeGenerator_Php_Member_Abstract``.
+``Zend_CodeGenerator_Php_Property`` describes a class property, which may be either a constant or a variable. In
+each case, the property may have an optional default value associated with it. Additionally, the visibility of
+variable properties may be set, per the parent class, ``Zend_CodeGenerator_Php_Member_Abstract``.
 
 The *API* of the class is as follows:
 

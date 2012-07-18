@@ -8,7 +8,9 @@ Zend_Service_Delicious
 Introduction
 ------------
 
-``Zend_Service_Delicious`` is simple *API* for using `del.icio.us`_ *XML* and *JSON* web services. This component gives you read-write access to posts at del.icio.us if you provide credentials. It also allows read-only access to public data of all users.
+``Zend_Service_Delicious`` is simple *API* for using `del.icio.us`_ *XML* and *JSON* web services. This component
+gives you read-write access to posts at del.icio.us if you provide credentials. It also allows read-only access to
+public data of all users.
 
 .. _zend.service.delicious.introduction.getAllPosts:
 
@@ -31,7 +33,9 @@ Introduction
 Retrieving posts
 ----------------
 
-``Zend_Service_Delicious`` provides three methods for retrieving posts: ``getPosts()``, ``getRecentPosts()`` and ``getAllPosts()``. All of these methods return an instance of ``Zend_Service_Delicious_PostList``, which holds all retrieved posts.
+``Zend_Service_Delicious`` provides three methods for retrieving posts: ``getPosts()``, ``getRecentPosts()`` and
+``getAllPosts()``. All of these methods return an instance of ``Zend_Service_Delicious_PostList``, which holds all
+retrieved posts.
 
 .. code-block:: php
    :linenos:
@@ -70,7 +74,8 @@ Retrieving posts
 Zend_Service_Delicious_PostList
 -------------------------------
 
-Instances of this class are returned by the ``getPosts()``, ``getAllPosts()``, ``getRecentPosts()``, and ``getUserPosts()`` methods of ``Zend_Service_Delicious``.
+Instances of this class are returned by the ``getPosts()``, ``getAllPosts()``, ``getRecentPosts()``, and
+``getUserPosts()`` methods of ``Zend_Service_Delicious``.
 
 For easier data access this class implements the *Countable*, *Iterator*, and *ArrayAccess* interfaces.
 
@@ -99,7 +104,9 @@ For easier data access this class implements the *Countable*, *Iterator*, and *A
 
 .. note::
 
-   The ``ArrayAccess::offsetSet()`` and ``ArrayAccess::offsetUnset()`` methods throw exceptions in this implementation. Thus, code like *unset($posts[0]);* and *$posts[0] = 'A';* will throw exceptions because these properties are read-only.
+   The ``ArrayAccess::offsetSet()`` and ``ArrayAccess::offsetUnset()`` methods throw exceptions in this
+   implementation. Thus, code like *unset($posts[0]);* and *$posts[0] = 'A';* will throw exceptions because these
+   properties are read-only.
 
 Post list objects have two built-in filtering capabilities. Post lists may be filtered by tags and by *URL*.
 
@@ -107,7 +114,8 @@ Post list objects have two built-in filtering capabilities. Post lists may be fi
 
 .. rubric:: Filtering a Post List with Specific Tags
 
-Posts may be filtered by specific tags using ``withTags()``. As a convenience, ``withTag()`` is also provided for when only a single tag needs to be specified.
+Posts may be filtered by specific tags using ``withTags()``. As a convenience, ``withTag()`` is also provided for
+when only a single tag needs to be specified.
 
 .. code-block:: php
    :linenos:
@@ -180,7 +188,8 @@ Every setter method returns the post object so that you can chain method calls u
 Deleting posts
 --------------
 
-There are two ways to delete a post, by specifying the post *URL* or by calling the ``delete()`` method upon a post object.
+There are two ways to delete a post, by specifying the post *URL* or by calling the ``delete()`` method upon a post
+object.
 
 .. _zend.service.delicious.deleting_posts.deleting_posts:
 
@@ -206,7 +215,9 @@ There are two ways to delete a post, by specifying the post *URL* or by calling 
 Adding new posts
 ----------------
 
-To add a post you first need to call the ``createNewPost()`` method, which returns a ``Zend_Service_Delicious_Post`` object. When you edit the post, you need to save it to the del.icio.us database by calling the ``save()`` method.
+To add a post you first need to call the ``createNewPost()`` method, which returns a
+``Zend_Service_Delicious_Post`` object. When you edit the post, you need to save it to the del.icio.us database by
+calling the ``save()`` method.
 
 .. _zend.service.delicious.adding_posts.adding_a_post:
 
@@ -296,7 +307,8 @@ The del.icio.us web *API* allows access to the public data of all users.
 
 .. note::
 
-   When using only these methods, a username and password combination is not required when constructing a new ``Zend_Service_Delicious`` object.
+   When using only these methods, a username and password combination is not required when constructing a new
+   ``Zend_Service_Delicious`` object.
 
 .. _zend.service.delicious.public_data.retrieving_public_data:
 
@@ -322,7 +334,9 @@ The del.icio.us web *API* allows access to the public data of all users.
 Public posts
 ^^^^^^^^^^^^
 
-When retrieving public posts with the ``getUserPosts()`` method, a ``Zend_Service_Delicious_PostList`` object is returned, and it contains ``Zend_Service_Delicious_SimplePost`` objects, which contain basic information about the posts, including *URL*, title, notes, and tags.
+When retrieving public posts with the ``getUserPosts()`` method, a ``Zend_Service_Delicious_PostList`` object is
+returned, and it contains ``Zend_Service_Delicious_SimplePost`` objects, which contain basic information about the
+posts, including *URL*, title, notes, and tags.
 
 .. _zend.service.delicious.public_data.posts.SimplePost_methods:
 
@@ -345,7 +359,9 @@ When retrieving public posts with the ``getUserPosts()`` method, a ``Zend_Servic
 HTTP client
 -----------
 
-``Zend_Service_Delicious`` uses ``Zend_Rest_Client`` for making *HTTP* requests to the del.icio.us web service. To change which *HTTP* client ``Zend_Service_Delicious`` uses, you need to change the *HTTP* client of ``Zend_Rest_Client``.
+``Zend_Service_Delicious`` uses ``Zend_Rest_Client`` for making *HTTP* requests to the del.icio.us web service. To
+change which *HTTP* client ``Zend_Service_Delicious`` uses, you need to change the *HTTP* client of
+``Zend_Rest_Client``.
 
 .. _zend.service.delicious.httpclient.changing:
 
@@ -357,7 +373,8 @@ HTTP client
    $myHttpClient = new My_Http_Client();
    Zend_Rest_Client::setHttpClient($myHttpClient);
 
-When you are making more than one request with ``Zend_Service_Delicious`` to speed your requests, it's better to configure your *HTTP* client to keep connections alive.
+When you are making more than one request with ``Zend_Service_Delicious`` to speed your requests, it's better to
+configure your *HTTP* client to keep connections alive.
 
 .. _zend.service.delicious.httpclient.keepalive:
 
@@ -372,7 +389,9 @@ When you are making more than one request with ``Zend_Service_Delicious`` to spe
 
 .. note::
 
-   When a ``Zend_Service_Delicious`` object is constructed, the *SSL* transport of ``Zend_Rest_Client`` is set to *'ssl'* rather than the default of *'ssl2'*. This is because del.icio.us has some problems with *'ssl2'*, such as requests taking a long time to complete (around 2 seconds).
+   When a ``Zend_Service_Delicious`` object is constructed, the *SSL* transport of ``Zend_Rest_Client`` is set to
+   *'ssl'* rather than the default of *'ssl2'*. This is because del.icio.us has some problems with *'ssl2'*, such
+   as requests taking a long time to complete (around 2 seconds).
 
 
 

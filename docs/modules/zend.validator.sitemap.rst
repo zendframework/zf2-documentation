@@ -10,7 +10,8 @@ The following validators conform to the `Sitemap XML protocol`_.
 Sitemap\\Changefreq
 -------------------
 
-Validates whether a string is valid for using as a 'changefreq' element in a Sitemap *XML* document. Valid values are: 'always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', or 'never'.
+Validates whether a string is valid for using as a 'changefreq' element in a Sitemap *XML* document. Valid values
+are: 'always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', or 'never'.
 
 Returns ``TRUE`` if and only if the value is a string and is equal to one of the frequencies specified above.
 
@@ -19,7 +20,8 @@ Returns ``TRUE`` if and only if the value is a string and is equal to one of the
 Sitemap\\Lastmod
 ----------------
 
-Validates whether a string is valid for using as a 'lastmod' element in a Sitemap *XML* document. The lastmod element should contain a *W3C* date string, optionally discarding information about time.
+Validates whether a string is valid for using as a 'lastmod' element in a Sitemap *XML* document. The lastmod
+element should contain a *W3C* date string, optionally discarding information about time.
 
 Returns ``TRUE`` if and only if the given value is a string and is valid according to the protocol.
 
@@ -48,14 +50,16 @@ Returns ``TRUE`` if and only if the given value is a string and is valid accordi
 Sitemap\\Loc
 ------------
 
-Validates whether a string is valid for using as a 'loc' element in a Sitemap *XML* document. This uses ``Zend\Uri\Uri::isValid()`` internally. Read more at :ref:`URI Validation <zend.uri.validation>`.
+Validates whether a string is valid for using as a 'loc' element in a Sitemap *XML* document. This uses
+``Zend\Uri\Uri::isValid()`` internally. Read more at :ref:`URI Validation <zend.uri.validation>`.
 
 .. _zend.validator.sitemap.priority:
 
 Sitemap\\Priority
 -----------------
 
-Validates whether a value is valid for using as a 'priority' element in a Sitemap *XML* document. The value should be a decimal between 0.0 and 1.0. This validator accepts both numeric values and string values.
+Validates whether a value is valid for using as a 'priority' element in a Sitemap *XML* document. The value should
+be a decimal between 0.0 and 1.0. This validator accepts both numeric values and string values.
 
 .. _zend.validator.sitemap.priority.example:
 

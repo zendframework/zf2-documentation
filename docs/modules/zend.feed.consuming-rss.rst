@@ -19,7 +19,10 @@ Once you have a feed object, you can access any of the standard *RSS*"channel" p
 
    echo $channel->title();
 
-Note the function syntax. ``Zend_Feed`` uses a convention of treating properties as *XML* object if they are requested with variable "getter" syntax (``$obj->property``) and as strings if they are access with method syntax (``$obj->property()``). This enables access to the full text of any individual node while still allowing full access to all children.
+Note the function syntax. ``Zend_Feed`` uses a convention of treating properties as *XML* object if they are
+requested with variable "getter" syntax (``$obj->property``) and as strings if they are access with method syntax
+(``$obj->property()``). This enables access to the full text of any individual node while still allowing full
+access to all children.
 
 If channel properties have attributes, they are accessible using *PHP*'s array syntax:
 
@@ -30,7 +33,8 @@ If channel properties have attributes, they are accessible using *PHP*'s array s
 
 Since *XML* attributes cannot have children, method syntax is not necessary for accessing attribute values.
 
-Most commonly you'll want to loop through the feed and do something with its entries. ``Zend_Feed_Abstract`` implements *PHP*'s ``Iterator`` interface, so printing all titles of articles in a channel is just a matter of:
+Most commonly you'll want to loop through the feed and do something with its entries. ``Zend_Feed_Abstract``
+implements *PHP*'s ``Iterator`` interface, so printing all titles of articles in a channel is just a matter of:
 
 .. code-block:: php
    :linenos:
@@ -39,7 +43,8 @@ Most commonly you'll want to loop through the feed and do something with its ent
        echo $item->title() . "\n";
    }
 
-If you are not familiar with *RSS*, here are the standard elements you can expect to be available in an *RSS* channel and in individual *RSS* items (entries).
+If you are not familiar with *RSS*, here are the standard elements you can expect to be available in an *RSS*
+channel and in individual *RSS* items (entries).
 
 Required channel elements:
 
@@ -57,7 +62,8 @@ Common optional channel elements:
 
 - ``category``- One or more (specified by multiple tags) categories the channel belongs to
 
-*RSS* **<item>** elements do not have any strictly required elements. However, either ``title`` or ``description`` must be present.
+*RSS* **<item>** elements do not have any strictly required elements. However, either ``title`` or ``description``
+must be present.
 
 Common item elements:
 
@@ -84,9 +90,11 @@ In your code you can always test to see if an element is non-empty with:
        // ... proceed.
    }
 
-If you use ``$item->propname`` instead, you will always get an empty object which will evaluate to ``TRUE``, so your check will fail.
+If you use ``$item->propname`` instead, you will always get an empty object which will evaluate to ``TRUE``, so
+your check will fail.
 
-For further information, the official *RSS* 2.0 specification is available at: `http://blogs.law.harvard.edu/tech/rss`_
+For further information, the official *RSS* 2.0 specification is available at:
+`http://blogs.law.harvard.edu/tech/rss`_
 
 
 

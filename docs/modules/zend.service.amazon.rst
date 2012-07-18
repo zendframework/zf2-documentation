@@ -8,29 +8,38 @@ Zend_Service_Amazon
 Introduction
 ------------
 
-``Zend_Service_Amazon`` is a simple *API* for using Amazon web services. ``Zend_Service_Amazon`` has two *API*\ s: a more traditional one that follows Amazon's own *API*, and a simpler "Query *API*" for constructing even complex search queries easily.
+``Zend_Service_Amazon`` is a simple *API* for using Amazon web services. ``Zend_Service_Amazon`` has two *API*\ s:
+a more traditional one that follows Amazon's own *API*, and a simpler "Query *API*" for constructing even complex
+search queries easily.
 
-``Zend_Service_Amazon`` enables developers to retrieve information appearing throughout Amazon.com web sites directly through the Amazon Web Services *API*. Examples include:
-
-- Store item information, such as images, descriptions, pricing, and more
-
-- Customer and editorial reviews
-
-- Similar products and accessories
-
-- Amazon.com offers
-
-- ListMania lists
+``Zend_Service_Amazon`` enables developers to retrieve information appearing throughout Amazon.com web sites
+directly through the Amazon Web Services *API*. Examples include:
 
 
 
-In order to use ``Zend_Service_Amazon``, you should already have an Amazon developer *API* key aswell as a secret key. To get a key and for more information, please visit the `Amazon Web Services`_ web site. As of August 15th, 2009 you can only use the Amazon Product Advertising *API* through ``Zend_Service_Amazon``, when specifying the additional secret key.
+   - Store item information, such as images, descriptions, pricing, and more
+
+   - Customer and editorial reviews
+
+   - Similar products and accessories
+
+   - Amazon.com offers
+
+   - ListMania lists
+
+
+
+In order to use ``Zend_Service_Amazon``, you should already have an Amazon developer *API* key aswell as a secret
+key. To get a key and for more information, please visit the `Amazon Web Services`_ web site. As of August 15th,
+2009 you can only use the Amazon Product Advertising *API* through ``Zend_Service_Amazon``, when specifying the
+additional secret key.
 
 .. note::
 
    **Attention**
 
-   Your Amazon developer *API* and secret keys are linked to your Amazon identity, so take appropriate measures to keep them private.
+   Your Amazon developer *API* and secret keys are linked to your Amazon identity, so take appropriate measures to
+   keep them private.
 
 .. _zend.service.amazon.introduction.example.itemsearch:
 
@@ -52,7 +61,8 @@ In this example, we search for *PHP* books at Amazon and loop through the result
 
 .. rubric:: Search Amazon Using the Query API
 
-Here, we also search for *PHP* books at Amazon, but we instead use the Query *API*, which resembles the Fluent Interface design pattern.
+Here, we also search for *PHP* books at Amazon, but we instead use the Query *API*, which resembles the Fluent
+Interface design pattern.
 
 .. code-block:: php
    :linenos:
@@ -71,7 +81,8 @@ Here, we also search for *PHP* books at Amazon, but we instead use the Query *AP
 Country Codes
 -------------
 
-By default, ``Zend_Service_Amazon`` connects to the United States ("*US*") Amazon web service. To connect from a different country, simply specify the appropriate country code string as the second parameter to the constructor:
+By default, ``Zend_Service_Amazon`` connects to the United States ("*US*") Amazon web service. To connect from a
+different country, simply specify the appropriate country code string as the second parameter to the constructor:
 
 .. _zend.service.amazon.countrycodes.example.country_code:
 
@@ -106,20 +117,23 @@ The ``itemLookup()`` method provides the ability to fetch a particular Amazon it
    $amazon = new Zend_Service_Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
    $item = $amazon->itemLookup('B0000A432X');
 
-The ``itemLookup()`` method also accepts an optional second parameter for handling search options. For full details, including a list of available options, please see the `relevant Amazon documentation`_.
+The ``itemLookup()`` method also accepts an optional second parameter for handling search options. For full
+details, including a list of available options, please see the `relevant Amazon documentation`_.
 
 .. note::
 
    **Image information**
 
-   To retrieve images information for your search results, you must set *ResponseGroup* option to *Medium* or *Large*.
+   To retrieve images information for your search results, you must set *ResponseGroup* option to *Medium* or
+   *Large*.
 
 .. _zend.service.amazon.itemsearch:
 
 Performing Amazon Item Searches
 -------------------------------
 
-Searching for items based on any of various available criteria are made simple using the ``itemSearch()`` method, as in the following example:
+Searching for items based on any of various available criteria are made simple using the ``itemSearch()`` method,
+as in the following example:
 
 .. _zend.service.amazon.itemsearch.example.basic:
 
@@ -155,11 +169,13 @@ The *ResponseGroup* option is used to control the specific information that will
        echo $result->Title . '<br />';
    }
 
-The ``itemSearch()`` method accepts a single array parameter for handling search options. For full details, including a list of available options, please see the `relevant Amazon documentation`_
+The ``itemSearch()`` method accepts a single array parameter for handling search options. For full details,
+including a list of available options, please see the `relevant Amazon documentation`_
 
 .. tip::
 
-   The :ref:`Zend_Service_Amazon_Query <zend.service.amazon.query>` class is an easy to use wrapper around this method.
+   The :ref:`Zend_Service_Amazon_Query <zend.service.amazon.query>` class is an easy to use wrapper around this
+   method.
 
 .. _zend.service.amazon.query:
 
@@ -171,15 +187,20 @@ Using the Alternative Query API
 Introduction
 ^^^^^^^^^^^^
 
-``Zend_Service_Amazon_Query`` provides an alternative *API* for using the Amazon Web Service. The alternative *API* uses the Fluent Interface pattern. That is, all calls can be made using chained method calls. (e.g., *$obj->method()->method2($arg)*)
+``Zend_Service_Amazon_Query`` provides an alternative *API* for using the Amazon Web Service. The alternative *API*
+uses the Fluent Interface pattern. That is, all calls can be made using chained method calls. (e.g.,
+*$obj->method()->method2($arg)*)
 
-The ``Zend_Service_Amazon_Query`` *API* uses overloading to easily set up an item search and then allows you to search based upon the criteria specified. Each of the options is provided as a method call, and each method's argument corresponds to the named option's value:
+The ``Zend_Service_Amazon_Query`` *API* uses overloading to easily set up an item search and then allows you to
+search based upon the criteria specified. Each of the options is provided as a method call, and each method's
+argument corresponds to the named option's value:
 
 .. _zend.service.amazon.query.introduction.example.basic:
 
 .. rubric:: Search Amazon Using the Alternative Query API
 
-In this example, the alternative query *API* is used as a fluent interface to specify options and their respective values:
+In this example, the alternative query *API* is used as a fluent interface to specify options and their respective
+values:
 
 .. code-block:: php
    :linenos:
@@ -200,27 +221,30 @@ For more information on the available options, please refer to the `relevant Ama
 Zend_Service_Amazon Classes
 ---------------------------
 
-The following classes are all returned by :ref:`Zend_Service_Amazon::itemLookup() <zend.service.amazon.itemlookup>` and :ref:`Zend_Service_Amazon::itemSearch() <zend.service.amazon.itemsearch>`:
+The following classes are all returned by :ref:`Zend_Service_Amazon::itemLookup() <zend.service.amazon.itemlookup>`
+and :ref:`Zend_Service_Amazon::itemSearch() <zend.service.amazon.itemsearch>`:
 
-- :ref:`Zend_Service_Amazon_Item <zend.service.amazon.classes.item>`
 
-- :ref:`Zend_Service_Amazon_Image <zend.service.amazon.classes.image>`
 
-- :ref:`Zend_Service_Amazon_ResultSet <zend.service.amazon.classes.resultset>`
+   - :ref:`Zend_Service_Amazon_Item <zend.service.amazon.classes.item>`
 
-- :ref:`Zend_Service_Amazon_OfferSet <zend.service.amazon.classes.offerset>`
+   - :ref:`Zend_Service_Amazon_Image <zend.service.amazon.classes.image>`
 
-- :ref:`Zend_Service_Amazon_Offer <zend.service.amazon.classes.offer>`
+   - :ref:`Zend_Service_Amazon_ResultSet <zend.service.amazon.classes.resultset>`
 
-- :ref:`Zend_Service_Amazon_SimilarProduct <zend.service.amazon.classes.similarproduct>`
+   - :ref:`Zend_Service_Amazon_OfferSet <zend.service.amazon.classes.offerset>`
 
-- :ref:`Zend_Service_Amazon_Accessories <zend.service.amazon.classes.accessories>`
+   - :ref:`Zend_Service_Amazon_Offer <zend.service.amazon.classes.offer>`
 
-- :ref:`Zend_Service_Amazon_CustomerReview <zend.service.amazon.classes.customerreview>`
+   - :ref:`Zend_Service_Amazon_SimilarProduct <zend.service.amazon.classes.similarproduct>`
 
-- :ref:`Zend_Service_Amazon_EditorialReview <zend.service.amazon.classes.editorialreview>`
+   - :ref:`Zend_Service_Amazon_Accessories <zend.service.amazon.classes.accessories>`
 
-- :ref:`Zend_Service_Amazon_ListMania <zend.service.amazon.classes.listmania>`
+   - :ref:`Zend_Service_Amazon_CustomerReview <zend.service.amazon.classes.customerreview>`
+
+   - :ref:`Zend_Service_Amazon_EditorialReview <zend.service.amazon.classes.editorialreview>`
+
+   - :ref:`Zend_Service_Amazon_ListMania <zend.service.amazon.classes.listmania>`
 
 
 
@@ -229,7 +253,8 @@ The following classes are all returned by :ref:`Zend_Service_Amazon::itemLookup(
 Zend_Service_Amazon_Item
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_Service_Amazon_Item`` is the class type used to represent an Amazon item returned by the web service. It encompasses all of the items attributes, including title, description, reviews, etc.
+``Zend_Service_Amazon_Item`` is the class type used to represent an Amazon item returned by the web service. It
+encompasses all of the items attributes, including title, description, reviews, etc.
 
 .. _zend.service.amazon.classes.item.asxml:
 
@@ -246,7 +271,8 @@ Return the original *XML* for the item
 Properties
 ^^^^^^^^^^
 
-``Zend_Service_Amazon_Item`` has a number of properties directly related to their standard Amazon *API* counterparts.
+``Zend_Service_Amazon_Item`` has a number of properties directly related to their standard Amazon *API*
+counterparts.
 
 .. _zend.service.amazon.classes.item.properties.table-1:
 
@@ -321,13 +347,15 @@ Properties
 Zend_Service_Amazon_ResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_Service_Amazon_ResultSet`` objects are returned by :ref:`Zend_Service_Amazon::itemSearch() <zend.service.amazon.itemsearch>` and allow you to easily handle the multiple results returned.
+``Zend_Service_Amazon_ResultSet`` objects are returned by :ref:`Zend_Service_Amazon::itemSearch()
+<zend.service.amazon.itemsearch>` and allow you to easily handle the multiple results returned.
 
 .. note::
 
    **SeekableIterator**
 
-   Implements the *SeekableIterator* for easy iteration (e.g. using *foreach*), as well as direct access to a specific result using ``seek()``.
+   Implements the *SeekableIterator* for easy iteration (e.g. using *foreach*), as well as direct access to a
+   specific result using ``seek()``.
 
 .. _zend.service.amazon.classes.resultset.totalresults:
 
@@ -344,7 +372,9 @@ Returns the total number of results returned by the search
 Zend_Service_Amazon_OfferSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Each result returned by :ref:`Zend_Service_Amazon::itemSearch() <zend.service.amazon.itemsearch>` and :ref:`Zend_Service_Amazon::itemLookup() <zend.service.amazon.itemlookup>` contains a ``Zend_Service_Amazon_OfferSet`` object through which pricing information for the item can be retrieved.
+Each result returned by :ref:`Zend_Service_Amazon::itemSearch() <zend.service.amazon.itemsearch>` and
+:ref:`Zend_Service_Amazon::itemLookup() <zend.service.amazon.itemlookup>` contains a
+``Zend_Service_Amazon_OfferSet`` object through which pricing information for the item can be retrieved.
 
 .. _zend.service.amazon.classes.offerset.parameters:
 
@@ -424,9 +454,11 @@ Zend_Service_Amazon_Offer Properties
 Zend_Service_Amazon_SimilarProduct
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When searching for items, Amazon also returns a list of similar products that the searcher may find to their liking. Each of these is returned as a ``Zend_Service_Amazon_SimilarProduct`` object.
+When searching for items, Amazon also returns a list of similar products that the searcher may find to their
+liking. Each of these is returned as a ``Zend_Service_Amazon_SimilarProduct`` object.
 
-Each object contains the information to allow you to make sub-sequent requests to get the full information on the item.
+Each object contains the information to allow you to make sub-sequent requests to get the full information on the
+item.
 
 .. _zend.service.amazon.classes.similarproduct.properties:
 

@@ -3,7 +3,9 @@
 Doctype Helper
 ==============
 
-Valid *HTML* and *XHTML* documents should include a ``DOCTYPE`` declaration. Besides being difficult to remember, these can also affect how certain elements in your document should be rendered (for instance, CDATA escaping in **<script>** and **<style>** elements.
+Valid *HTML* and *XHTML* documents should include a ``DOCTYPE`` declaration. Besides being difficult to remember,
+these can also affect how certain elements in your document should be rendered (for instance, CDATA escaping in
+**<script>** and **<style>** elements.
 
 The ``Doctype`` helper allows you to specify one of the following types:
 
@@ -29,13 +31,15 @@ The ``Doctype`` helper allows you to specify one of the following types:
 
 You can also specify a custom doctype as long as it is well-formed.
 
-The ``Doctype`` helper is a concrete implementation of the :ref:`Placeholder helper <zend.view.helpers.initial.placeholder>`.
+The ``Doctype`` helper is a concrete implementation of the :ref:`Placeholder helper
+<zend.view.helpers.initial.placeholder>`.
 
 .. _zend.view.helpers.initial.doctype.basicusage:
 
 .. rubric:: Doctype Helper Basic Usage
 
-You may specify the doctype at any time. However, helpers that depend on the doctype for their output will recognize it only after you have set it, so the easiest approach is to specify it in your bootstrap:
+You may specify the doctype at any time. However, helpers that depend on the doctype for their output will
+recognize it only after you have set it, so the easiest approach is to specify it in your bootstrap:
 
 .. code-block:: php
    :linenos:
@@ -54,14 +58,16 @@ And then print it out on top of your layout script:
 
 .. rubric:: Retrieving the Doctype
 
-If you need to know the doctype, you can do so by calling ``getDoctype()`` on the object, which is returned by invoking the helper.
+If you need to know the doctype, you can do so by calling ``getDoctype()`` on the object, which is returned by
+invoking the helper.
 
 .. code-block:: php
    :linenos:
 
    $doctype = $view->doctype()->getDoctype();
 
-Typically, you'll simply want to know if the doctype is *XHTML* or not; for this, the ``isXhtml()`` method will suffice:
+Typically, you'll simply want to know if the doctype is *XHTML* or not; for this, the ``isXhtml()`` method will
+suffice:
 
 .. code-block:: php
    :linenos:
@@ -83,7 +89,8 @@ You can also check if the doctype represents an *HTML5* document.
 
 .. rubric:: Choosing a Doctype to Use with the Open Graph Protocol
 
-To implement the `Open Graph Protocol`_, you may specify the XHTML1_RDFA doctype. This doctype allows a developer to use the `Resource Description Framework`_ within an *XHTML* document.
+To implement the `Open Graph Protocol`_, you may specify the XHTML1_RDFA doctype. This doctype allows a developer
+to use the `Resource Description Framework`_ within an *XHTML* document.
 
 .. code-block:: php
    :linenos:
@@ -91,7 +98,8 @@ To implement the `Open Graph Protocol`_, you may specify the XHTML1_RDFA doctype
    $doctypeHelper = new Zend_View_Helper_Doctype();
    $doctypeHelper->doctype('XHTML1_RDFA');
 
-The RDFa doctype allows XHTML to validate when the 'property' meta tag attribute is used per the Open Graph Protocol spec. Example within a view script:
+The RDFa doctype allows XHTML to validate when the 'property' meta tag attribute is used per the Open Graph
+Protocol spec. Example within a view script:
 
 .. code-block:: html
    :linenos:
@@ -102,7 +110,10 @@ The RDFa doctype allows XHTML to validate when the 'property' meta tag attribute
    <head>
       <meta property="og:type" content="musician" />
 
-In the previous example, we set the property to og:type. The og references the Open Graph namespace we specified in the html tag. The content identifies the page as being about a musician. See the `Open Graph Protocol documentation`_ for supported properties. The :ref:`HeadMeta helper <zend.view.helpers.initial.headmeta>` may be used to programmatically set these Open Graph Protocol meta tags.
+In the previous example, we set the property to og:type. The og references the Open Graph namespace we specified in
+the html tag. The content identifies the page as being about a musician. See the `Open Graph Protocol
+documentation`_ for supported properties. The :ref:`HeadMeta helper <zend.view.helpers.initial.headmeta>` may be
+used to programmatically set these Open Graph Protocol meta tags.
 
 Here is how you check if the doctype is set to XHTML1_RDFA:
 

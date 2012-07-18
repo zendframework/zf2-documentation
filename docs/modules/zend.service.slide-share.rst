@@ -3,16 +3,21 @@
 Zend_Service_SlideShare
 =======================
 
-The ``Zend_Service_SlideShare`` component is used to interact with the `slideshare.net`_ web services for hosting slide shows online. With this component, you can embed slide shows which are hosted on this web site within a web site and even upload new slide shows to your account.
+The ``Zend_Service_SlideShare`` component is used to interact with the `slideshare.net`_ web services for hosting
+slide shows online. With this component, you can embed slide shows which are hosted on this web site within a web
+site and even upload new slide shows to your account.
 
 .. _zend.service.slideshare.basicusage:
 
 Getting Started with Zend_Service_SlideShare
 --------------------------------------------
 
-In order to use the ``Zend_Service_SlideShare`` component you must first create an account on the slideshare.net servers (more information can be found `here`_) in order to receive an *API* key, username, password and shared secret value -- all of which are needed in order to use the ``Zend_Service_SlideShare`` component.
+In order to use the ``Zend_Service_SlideShare`` component you must first create an account on the slideshare.net
+servers (more information can be found `here`_) in order to receive an *API* key, username, password and shared
+secret value -- all of which are needed in order to use the ``Zend_Service_SlideShare`` component.
 
-Once you have setup an account, you can begin using the ``Zend_Service_SlideShare`` component by creating a new instance of the ``Zend_Service_SlideShare`` object and providing these values as shown below:
+Once you have setup an account, you can begin using the ``Zend_Service_SlideShare`` component by creating a new
+instance of the ``Zend_Service_SlideShare`` object and providing these values as shown below:
 
 .. code-block:: php
    :linenos:
@@ -28,7 +33,9 @@ Once you have setup an account, you can begin using the ``Zend_Service_SlideShar
 The SlideShow object
 --------------------
 
-All slide shows in the ``Zend_Service_SlideShare`` component are represented using the ``Zend_Service_SlideShare_SlideShow`` object (both when retrieving and uploading new slide shows). For your reference a pseudo-code version of this class is provided below.
+All slide shows in the ``Zend_Service_SlideShare`` component are represented using the
+``Zend_Service_SlideShare_SlideShow`` object (both when retrieving and uploading new slide shows). For your
+reference a pseudo-code version of this class is provided below.
 
 .. code-block:: php
    :linenos:
@@ -172,16 +179,20 @@ All slide shows in the ``Zend_Service_SlideShare`` component are represented usi
 
 .. note::
 
-   The above pseudo-class only shows those methods which should be used by end-user developers. Other available methods are internal to the component.
+   The above pseudo-class only shows those methods which should be used by end-user developers. Other available
+   methods are internal to the component.
 
-When using the ``Zend_Service_SlideShare`` component, this data class will be used frequently to browse or add new slide shows to or from the web service.
+When using the ``Zend_Service_SlideShare`` component, this data class will be used frequently to browse or add new
+slide shows to or from the web service.
 
 .. _zend.service.slideshare.getslideshow:
 
 Retrieving a single slide show
 ------------------------------
 
-The simplest usage of the ``Zend_Service_SlideShare`` component is the retrieval of a single slide show by slide show ID provided by the slideshare.net application and is done by calling the ``getSlideShow()`` method of a ``Zend_Service_SlideShare`` object and using the resulting ``Zend_Service_SlideShare_SlideShow`` object as shown.
+The simplest usage of the ``Zend_Service_SlideShare`` component is the retrieval of a single slide show by slide
+show ID provided by the slideshare.net application and is done by calling the ``getSlideShow()`` method of a
+``Zend_Service_SlideShare`` object and using the resulting ``Zend_Service_SlideShare_SlideShow`` object as shown.
 
 .. code-block:: php
    :linenos:
@@ -202,21 +213,26 @@ The simplest usage of the ``Zend_Service_SlideShare`` component is the retrieval
 Retrieving Groups of Slide Shows
 --------------------------------
 
-If you do not know the specific ID of a slide show you are interested in retrieving, you can retrieving groups of slide shows by using one of three methods:
+If you do not know the specific ID of a slide show you are interested in retrieving, you can retrieving groups of
+slide shows by using one of three methods:
 
 - **Slide shows from a specific account**
 
-  You can retrieve slide shows from a specific account by using the ``getSlideShowsByUsername()`` method and providing the username from which the slide shows should be retrieved
+  You can retrieve slide shows from a specific account by using the ``getSlideShowsByUsername()`` method and
+  providing the username from which the slide shows should be retrieved
 
 - **Slide shows which contain specific tags**
 
-  You can retrieve slide shows which contain one or more specific tags by using the ``getSlideShowsByTag()`` method and providing one or more tags which the slide show must have assigned to it in order to be retrieved
+  You can retrieve slide shows which contain one or more specific tags by using the ``getSlideShowsByTag()`` method
+  and providing one or more tags which the slide show must have assigned to it in order to be retrieved
 
 - **Slide shows by group**
 
-  You can retrieve slide shows which are a member of a specific group using the ``getSlideShowsByGroup()`` method and providing the name of the group which the slide show must belong to in order to be retrieved
+  You can retrieve slide shows which are a member of a specific group using the ``getSlideShowsByGroup()`` method
+  and providing the name of the group which the slide show must belong to in order to be retrieved
 
-Each of the above methods of retrieving multiple slide shows a similar approach is used. An example of using each method is shown below:
+Each of the above methods of retrieving multiple slide shows a similar approach is used. An example of using each
+method is shown below:
 
 .. code-block:: php
    :linenos:
@@ -245,7 +261,9 @@ Each of the above methods of retrieving multiple slide shows a similar approach 
 Zend_Service_SlideShare Caching policies
 ----------------------------------------
 
-By default, ``Zend_Service_SlideShare`` will cache any request against the web service automatically to the filesystem (default path ``/tmp``) for 12 hours. If you desire to change this behavior, you must provide your own :ref:`Zend_Cache <zend.cache>` object using the ``setCacheObject()`` method as shown:
+By default, ``Zend_Service_SlideShare`` will cache any request against the web service automatically to the
+filesystem (default path ``/tmp``) for 12 hours. If you desire to change this behavior, you must provide your own
+:ref:`Zend_Cache <zend.cache>` object using the ``setCacheObject()`` method as shown:
 
 .. code-block:: php
    :linenos:
@@ -274,7 +292,10 @@ By default, ``Zend_Service_SlideShare`` will cache any request against the web s
 Changing the behavior of the HTTP Client
 ----------------------------------------
 
-If for whatever reason you would like to change the behavior of the *HTTP* client when making the web service request, you can do so by creating your own instance of the ``Zend_Http_Client`` object (see :ref:`Zend_Http <zend.http>`). This is useful for instance when it is desirable to set the timeout for the connection to something other then default as shown:
+If for whatever reason you would like to change the behavior of the *HTTP* client when making the web service
+request, you can do so by creating your own instance of the ``Zend_Http_Client`` object (see :ref:`Zend_Http
+<zend.http>`). This is useful for instance when it is desirable to set the timeout for the connection to something
+other then default as shown:
 
 .. code-block:: php
    :linenos:

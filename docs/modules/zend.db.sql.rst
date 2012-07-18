@@ -3,16 +3,23 @@
 Zend\\Db\\Sql
 =============
 
-``Zend\Db\Sql`` is a SQL abstraction layer for building platform specific SQL queries via a object-oriented API. The end result of an ``Zend\Db\Sql`` object will be to either produce a Statement and Parameter container that represents the target query, or a full string that can be directly executed against the database platform. To achieve this, there is ``Zend\Db\Sql`` objects require a ``Zend\Db\Adapter\Adapter`` object in order to produce the desired results.
+``Zend\Db\Sql`` is a SQL abstraction layer for building platform specific SQL queries via a object-oriented API.
+The end result of an ``Zend\Db\Sql`` object will be to either produce a Statement and Parameter container that
+represents the target query, or a full string that can be directly executed against the database platform. To
+achieve this, there is ``Zend\Db\Sql`` objects require a ``Zend\Db\Adapter\Adapter`` object in order to produce the
+desired results.
 
 .. _zend.db.sql.sql:
 
 Zend\\Db\\Sql\\Sql (Quickstart)
 -------------------------------
 
-As there are for primary tasks associated with interacting with a database (from the DML, or Data Manipulation Language): selecting, inserting, updating and deleting. As such, there are four primary objects that developers can interact or building queries, ``Zend\Db\Sql\Select``, ``Insert``, ``Update`` and ``Delete``.
+As there are for primary tasks associated with interacting with a database (from the DML, or Data Manipulation
+Language): selecting, inserting, updating and deleting. As such, there are four primary objects that developers can
+interact or building queries, ``Zend\Db\Sql\Select``, ``Insert``, ``Update`` and ``Delete``.
 
-Since these four tasks are so closely related, and generally used together within the same application, ``Zend\Db\Sql\Sql`` objects help you create them and produce the result you are attempting to achieve.
+Since these four tasks are so closely related, and generally used together within the same application,
+``Zend\Db\Sql\Sql`` objects help you create them and produce the result you are attempting to achieve.
 
 .. code-block:: php
    :linenos:
@@ -24,7 +31,8 @@ Since these four tasks are so closely related, and generally used together withi
    $update = $sql->update(); // @return Zend\Db\Sql\Update
    $delete = $sql->delete(); // @return Zend\Db\Sql\Delete
 
-As a developer, you can now interact with these objects, as described in the sections below, to specialize each query. Once they have been populated with values, they are ready to either be prepared or executed.
+As a developer, you can now interact with these objects, as described in the sections below, to specialize each
+query. Once they have been populated with values, they are ready to either be prepared or executed.
 
 To prepare (using a Select object):
 
@@ -52,7 +60,8 @@ To execute (using a Select object)
    $selectString = $sql->getSqlStringForSqlObject($select);
    $results = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
 
-Zend\\Db\\Sql\\Sql objects can also be bound to a particular table so that in getting a select, insert, update, or delete object, they are all primarily seeded with the same table when produced.
+Zend\\Db\\Sql\\Sql objects can also be bound to a particular table so that in getting a select, insert, update, or
+delete object, they are all primarily seeded with the same table when produced.
 
 .. code-block:: php
    :linenos:
@@ -81,7 +90,8 @@ These are the functions you can call to either produce (a) a prepared statement,
 Zend\\Db\\Sql\\Select
 ---------------------
 
-``Zend\Db\Sql\Select`` is an object who's primary function is to present a unified API for building platform specific SQL SELECT queries. The object can be instantiated and consumed without ``Zend\Db\Sql\Sql``:
+``Zend\Db\Sql\Select`` is an object who's primary function is to present a unified API for building platform
+specific SQL SELECT queries. The object can be instantiated and consumed without ``Zend\Db\Sql\Sql``:
 
 .. code-block:: php
    :linenos:
@@ -93,7 +103,8 @@ Zend\\Db\\Sql\\Select
 
 If a table is provided to the Select object, then from() cannot be called later to change the name of the table.
 
-Once you have a valid Select object, the following API can be used to further specify various select statement parts:
+Once you have a valid Select object, the following API can be used to further specify various select statement
+parts:
 
 .. code-block:: php
    :linenos:
@@ -312,9 +323,17 @@ Zend\\Db\\Sql\\Where & Zend\\Db\\Sql\\Having
 
 In the following, we will talk about Where, Having is implies as being the same API.
 
-Effectively, Where and Having extend from the same base object, a Predicate (and PredicateSet). All of the parts that make up a where or having that are and'ed or or'd together are called predicates. The full set of predicates is called a PredicateSet. This object set generally contains the values (and identifiers) separate from the fragment they belong to until the last possible moment when the statement is either used to be prepared (parameteritized), or executed. In parameterization, the parameters will be replaced with their proper placeholder (a named or positional parameter), and the values stored inside a Adapter\\ParameterContainer. When executed, the values will be interpolated into the fragments they belong to and properly quoted.
+Effectively, Where and Having extend from the same base object, a Predicate (and PredicateSet). All of the parts
+that make up a where or having that are and'ed or or'd together are called predicates. The full set of predicates
+is called a PredicateSet. This object set generally contains the values (and identifiers) separate from the
+fragment they belong to until the last possible moment when the statement is either used to be prepared
+(parameteritized), or executed. In parameterization, the parameters will be replaced with their proper placeholder
+(a named or positional parameter), and the values stored inside a Adapter\\ParameterContainer. When executed, the
+values will be interpolated into the fragments they belong to and properly quoted.
 
-It is important to know that in this API, a distinction is made between what elements are considered identifiers (TYPE_IDENTIFIER) and which of those is a value (TYPE_VALUE). There is also a special use case type for literal values (TYPE_LITERAL). These are all exposed via the ``Zend\Db\Sql\ExpressionInterface`` interface.
+It is important to know that in this API, a distinction is made between what elements are considered identifiers
+(TYPE_IDENTIFIER) and which of those is a value (TYPE_VALUE). There is also a special use case type for literal
+values (TYPE_LITERAL). These are all exposed via the ``Zend\Db\Sql\ExpressionInterface`` interface.
 
 The Zend\\Db\\Sql\\Where (Predicate/PredicateSet) API:
 
@@ -358,7 +377,8 @@ The Zend\\Db\\Sql\\Where (Predicate/PredicateSet) API:
 
    }
 
-Each method in the Where API will produce a coresponding Predicate object of a similarly named type, described below, with the full API of the object:
+Each method in the Where API will produce a coresponding Predicate object of a similarly named type, described
+below, with the full API of the object:
 
 equalTo(), lessThan(), greaterThan(), lessThanOrEqualTo(), greaterThanOrEqualTo():
 

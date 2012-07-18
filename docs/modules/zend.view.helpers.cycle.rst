@@ -43,7 +43,8 @@ The output
 
 .. rubric:: Working with two or more cycles
 
-To use two cycles you have to specify the names of cycles. Just set second parameter in cycle method. ``$this->cycle(array("#F0F0F0","#FFFFFF"),'cycle2')``. You can also use setName($name) function.
+To use two cycles you have to specify the names of cycles. Just set second parameter in cycle method.
+``$this->cycle(array("#F0F0F0","#FFFFFF"),'cycle2')``. You can also use setName($name) function.
 
 .. code-block:: php
    :linenos:

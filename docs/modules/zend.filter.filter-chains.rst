@@ -3,7 +3,10 @@
 Filter Chains
 =============
 
-Often multiple filters should be applied to some value in a particular order. For example, a login form accepts a username that should be only lowercase, alphabetic characters. ``Zend_Filter`` provides a simple method by which filters may be chained together. The following code illustrates how to chain together two filters for the submitted username:
+Often multiple filters should be applied to some value in a particular order. For example, a login form accepts a
+username that should be only lowercase, alphabetic characters. ``Zend_Filter`` provides a simple method by which
+filters may be chained together. The following code illustrates how to chain together two filters for the submitted
+username:
 
 .. code-block:: php
    :linenos:
@@ -16,7 +19,8 @@ Often multiple filters should be applied to some value in a particular order. Fo
    // Filter the username
    $username = $filterChain->filter($_POST['username']);
 
-Filters are run in the order they were added to ``Zend_Filter``. In the above example, the username is first removed of any non-alphabetic characters, and then any uppercase characters are converted to lowercase.
+Filters are run in the order they were added to ``Zend_Filter``. In the above example, the username is first
+removed of any non-alphabetic characters, and then any uppercase characters are converted to lowercase.
 
 Any object that implements ``Zend_Filter_Interface`` may be used in a filter chain.
 
@@ -25,7 +29,8 @@ Any object that implements ``Zend_Filter_Interface`` may be used in a filter cha
 Changing filter chain order
 ---------------------------
 
-Since 1.10, the ``Zend_Filter`` chain also supports altering the chain by prepending or appending filters. For example, the next piece of code does exactly the same as the other username filter chain example:
+Since 1.10, the ``Zend_Filter`` chain also supports altering the chain by prepending or appending filters. For
+example, the next piece of code does exactly the same as the other username filter chain example:
 
 .. code-block:: php
    :linenos:

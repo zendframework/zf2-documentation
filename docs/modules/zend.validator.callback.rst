@@ -21,7 +21,8 @@ The following options are supported for ``Zend\Validator\Callback``:
 Basic usage
 -----------
 
-The simplest usecase is to have a single function and use it as a callback. Let's expect we have the following function.
+The simplest usecase is to have a single function and use it as a callback. Let's expect we have the following
+function.
 
 .. code-block:: php
    :linenos:
@@ -49,7 +50,8 @@ To use it within ``Zend\Validator\Callback`` you just have to call it this way:
 Usage with closures
 -------------------
 
-*PHP* 5.3 introduces `closures`_, which are basically self-contained or **anonymous** functions. *PHP* considers closures another form of callback, and, as such, may be used with ``Zend\Validator\Callback``. As an example:
+*PHP* 5.3 introduces `closures`_, which are basically self-contained or **anonymous** functions. *PHP* considers
+closures another form of callback, and, as such, may be used with ``Zend\Validator\Callback``. As an example:
 
 .. code-block:: php
    :linenos:
@@ -84,7 +86,8 @@ Of course it's also possible to use a class method as callback. Let's expect we 
        }
    }
 
-The definition of the callback is in this case almost the same. You have just to create an instance of the class before the method and create an array describing the callback:
+The definition of the callback is in this case almost the same. You have just to create an instance of the class
+before the method and create an array describing the callback:
 
 .. code-block:: php
    :linenos:
@@ -118,7 +121,8 @@ You may also define a static method as a callback. Consider the following class 
        // input is invalid
    }
 
-Finally, if you are using *PHP* 5.3, you may define the magic method ``__invoke()`` in your class. If you do so, simply providing an instance of the class as the callback will also work:
+Finally, if you are using *PHP* 5.3, you may define the magic method ``__invoke()`` in your class. If you do so,
+simply providing an instance of the class as the callback will also work:
 
 .. code-block:: php
    :linenos:
@@ -145,7 +149,8 @@ Finally, if you are using *PHP* 5.3, you may define the magic method ``__invoke(
 Adding options
 --------------
 
-``Zend\Validator\Callback`` also allows the usage of options which are provided as additional arguments to the callback.
+``Zend\Validator\Callback`` also allows the usage of options which are provided as additional arguments to the
+callback.
 
 Consider the following class and method definition:
 
@@ -161,7 +166,8 @@ Consider the following class and method definition:
        }
    }
 
-There are two ways to inform the validator of additional options: pass them in the constructor, or pass them to the ``setOptions()`` method.
+There are two ways to inform the validator of additional options: pass them in the constructor, or pass them to the
+``setOptions()`` method.
 
 To pass them to the constructor, you would need to pass an array containing two keys, "callback" and "options":
 
@@ -193,7 +199,8 @@ Otherwise, you may pass them to the validator after instantiation:
        // input is invalid
    }
 
-When there are additional values given to ``isValid()`` then these values will be added immediately after ``$value``.
+When there are additional values given to ``isValid()`` then these values will be added immediately after
+``$value``.
 
 .. code-block:: php
    :linenos:
@@ -207,7 +214,9 @@ When there are additional values given to ``isValid()`` then these values will b
        // input is invalid
    }
 
-When making the call to the callback, the value to be validated will always be passed as the first argument to the callback followed by all other values given to ``isValid()``; all other options will follow it. The amount and type of options which can be used is not limited.
+When making the call to the callback, the value to be validated will always be passed as the first argument to the
+callback followed by all other values given to ``isValid()``; all other options will follow it. The amount and type
+of options which can be used is not limited.
 
 
 

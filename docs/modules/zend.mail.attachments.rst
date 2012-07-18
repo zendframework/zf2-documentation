@@ -3,7 +3,10 @@
 Attachments
 ===========
 
-Files can be attached to an e-mail using the ``createAttachment()`` method. The default behavior of ``Zend_Mail`` is to assume the attachment is a binary object (``application/octet-stream``), that it should be transferred with base64 encoding, and that it is handled as an attachment. These assumptions can be overridden by passing more parameters to ``createAttachment()``:
+Files can be attached to an e-mail using the ``createAttachment()`` method. The default behavior of ``Zend_Mail``
+is to assume the attachment is a binary object (``application/octet-stream``), that it should be transferred with
+base64 encoding, and that it is handled as an attachment. These assumptions can be overridden by passing more
+parameters to ``createAttachment()``:
 
 .. _zend.mail.attachments.example-1:
 
@@ -20,7 +23,9 @@ Files can be attached to an e-mail using the ``createAttachment()`` method. The 
                            Zend_Mime::DISPOSITION_INLINE,
                            Zend_Mime::ENCODING_BASE64);
 
-If you want more control over the *MIME* part generated for this attachment you can use the return value of ``createAttachment()`` to modify its attributes. The ``createAttachment()`` method returns a ``Zend_Mime_Part`` object:
+If you want more control over the *MIME* part generated for this attachment you can use the return value of
+``createAttachment()`` to modify its attributes. The ``createAttachment()`` method returns a ``Zend_Mime_Part``
+object:
 
 .. code-block:: php
    :linenos:

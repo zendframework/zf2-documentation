@@ -8,9 +8,11 @@ Zend\\Cloud\\Infrastructure
 Overview
 --------
 
-The ``Zend\Cloud\Infrastructure`` is a class to manage different cloud computing infrastructures using a common *API*.
+The ``Zend\Cloud\Infrastructure`` is a class to manage different cloud computing infrastructures using a common
+*API*.
 
-In order to provide a common class API for different cloud vendors we implemented a small set of basic operations for the management of instances (servers) in a cloud infrastructure. These basic operations are:
+In order to provide a common class API for different cloud vendors we implemented a small set of basic operations
+for the management of instances (servers) in a cloud infrastructure. These basic operations are:
 
 - **create a new instance**;
 
@@ -40,7 +42,8 @@ In order to provide a common class API for different cloud vendors we implemente
 
    **Deployment of an instance**
 
-   For the deploy operations we used the `SSH2 PHP extension (ext/ssh2)`_ to connect on an instance and execute shell script. The SSH2 extensions can be used to connect only to Gnu/Linux instances (servers).
+   For the deploy operations we used the `SSH2 PHP extension (ext/ssh2)`_ to connect on an instance and execute
+   shell script. The SSH2 extensions can be used to connect only to Gnu/Linux instances (servers).
 
 This class is managed by a factory to initialize specific cloud computing adapters.
 
@@ -49,7 +52,9 @@ This class is managed by a factory to initialize specific cloud computing adapte
 Quick Start
 -----------
 
-To use this class you have to initialize the factory with a specific adapters. You can check the supported apadters in the specific Chapter :ref:`Zend\\Cloud\\Infrastructure\\Adapter <zend.cloud.infrastructure.adapter>`. We are planning to support other cloud computing vendors very soon.
+To use this class you have to initialize the factory with a specific adapters. You can check the supported apadters
+in the specific Chapter :ref:`Zend\\Cloud\\Infrastructure\\Adapter <zend.cloud.infrastructure.adapter>`. We are
+planning to support other cloud computing vendors very soon.
 
 For instance, to work with the AMAZON EC2 adapter you have to initialize the class with following parameters:
 
@@ -70,7 +75,9 @@ For instance, to work with the AMAZON EC2 adapter you have to initialize the cla
        Ec2Adapter::AWS_REGION     => $region,
    ));
 
-``Zend\Cloud\Infrastructure`` has only a couple of methods that are vendor specific. These methods are the creation of a new instance and the monitoring of an instance. For instance, below is reported an example that shows how to create a new instance using the Amazon EC2 adapter:
+``Zend\Cloud\Infrastructure`` has only a couple of methods that are vendor specific. These methods are the creation
+of a new instance and the monitoring of an instance. For instance, below is reported an example that shows how to
+create a new instance using the Amazon EC2 adapter:
 
 .. code-block:: php
    :linenos:
@@ -85,9 +92,12 @@ For instance, to work with the AMAZON EC2 adapter you have to initialize the cla
    printf ("Name of the instance: %s\n", $instance->getName());
    printf ("ID of the instance  : %s\n", $instance->getId());
 
-The interface of the ``createInstance`` is always the same, only the content of **$param** is specific to the adapter. for more information about the adapter supported by Zend\\Cloud\\Infrastructure go to the specific :ref:`page of the manual <zend.cloud.infrastructure.adapter>`.
+The interface of the ``createInstance`` is always the same, only the content of **$param** is specific to the
+adapter. for more information about the adapter supported by Zend\\Cloud\\Infrastructure go to the specific
+:ref:`page of the manual <zend.cloud.infrastructure.adapter>`.
 
-The ``Zend\Cloud\Infrastructure`` uses the classes ``Zend\Cloud\Infrastructure\Instance`` and ``Zend\Cloud\Infrastructure\Image`` to manage the instances (servers) and the images of an instance.
+The ``Zend\Cloud\Infrastructure`` uses the classes ``Zend\Cloud\Infrastructure\Instance`` and
+``Zend\Cloud\Infrastructure\Image`` to manage the instances (servers) and the images of an instance.
 
 .. _zend.cloud.infrastructure.methods:
 
@@ -98,29 +108,36 @@ Available Methods
 
 **createInstance**
    ``createInstance(string $name, array $options)``
-   Create an instance. The return value is an instance of ``Zend\Cloud\Infrastructure\Instance``. In case of error the return is **false**.
+   Create an instance. The return value is an instance of ``Zend\Cloud\Infrastructure\Instance``. In case of error
+   the return is **false**.
 
    **$name** is the name of the instance to create
 
-   **$options** is the array contains the specific parameter for the cloud adapter. For more info read the Chapter of :ref:`Zend\\Cloud\\Infrastructure\\Adapter <zend.cloud.infrastructure.adapter>`.
+   **$options** is the array contains the specific parameter for the cloud adapter. For more info read the Chapter
+   of :ref:`Zend\\Cloud\\Infrastructure\\Adapter <zend.cloud.infrastructure.adapter>`.
 
 .. _zend.cloud.infrastructure.methods.deploy-instance:
 
 **deployInstance**
    ``deployInstance(string $id, array $param, string|array $cmd)``
-   Run arbitrary shell scripts on an instance. Return a string or an array contains all the standard output (errors included) of the scripts executed in the instance.
+   Run arbitrary shell scripts on an instance. Return a string or an array contains all the standard output (errors
+   included) of the scripts executed in the instance.
 
       .. note::
 
          **Requirement**
 
-         In order to use the deployInstance method you have to install the SSH2 extension (ext/ssh2) of PHP. The SSH2 extensions can be used to connect only to Gnu/Linux instances (servers). For more info about the SSH2 extension, `click here`_.
+         In order to use the deployInstance method you have to install the SSH2 extension (ext/ssh2) of PHP. The
+         SSH2 extensions can be used to connect only to Gnu/Linux instances (servers). For more info about the SSH2
+         extension, `click here`_.
 
 
 
    **$id** is the ID of the instance
 
-   **$param** is an array contains the username and the password to be used for the SSH connection. The username and the password must be specified using the following constants key of the ``Zend\Cloud\Infrastructure\Instance``: SSH_USERNAME, SSH_PASSWORD.
+   **$param** is an array contains the username and the password to be used for the SSH connection. The username
+   and the password must be specified using the following constants key of the
+   ``Zend\Cloud\Infrastructure\Instance``: SSH_USERNAME, SSH_PASSWORD.
 
    **$cmd** is a string (or an array) contains the commands line to be executed in the instance.
 
@@ -160,23 +177,28 @@ Available Methods
 
 **imagesInstance**
    ``imagesInstance()``
-   Return all the available images to use for an instance. The return value is an instance of ``Zend\Cloud\Infrastructure\ImageList``
+   Return all the available images to use for an instance. The return value is an instance of
+   ``Zend\Cloud\Infrastructure\ImageList``
 
 .. _zend.cloud.infrastructure.methods.list-instances:
 
 **listInstances**
    ``listInstances()``
-   Return the list of of the available instances. The return is an instance of ``Zend\Cloud\Infrastructure\InstanceList``.
+   Return the list of of the available instances. The return is an instance of
+   ``Zend\Cloud\Infrastructure\InstanceList``.
 
 .. _zend.cloud.infrastructure.methods.monitor-instance:
 
 **monitorInstance**
    ``monitorInstance(string $id,string $metric,array $options=null)``
-   Monitor an instance. Return the system information about the metric of an instance. The return value is an array that contains samples of values, timestamp and the elaboration of the average value.
+   Monitor an instance. Return the system information about the metric of an instance. The return value is an array
+   that contains samples of values, timestamp and the elaboration of the average value.
 
    **$id** is the ID of the instance;
 
-   **$metric** is the metric to be monitored. The allowed metrics are reported as contants of the ``Zend\Cloud\Infrastructure\Instance`` class: MONITOR_CPU, MONITOR_RAM, MONITOR_NETWORK_IN, MONITOR_NETWORK_OUT, MONITOR_DISK, MONITOR_DISK_WRITE, MONITOR_DISK_READ.
+   **$metric** is the metric to be monitored. The allowed metrics are reported as contants of the
+   ``Zend\Cloud\Infrastructure\Instance`` class: MONITOR_CPU, MONITOR_RAM, MONITOR_NETWORK_IN, MONITOR_NETWORK_OUT,
+   MONITOR_DISK, MONITOR_DISK_WRITE, MONITOR_DISK_READ.
 
    **$options** is the optional array contains the adapter specific options.
 
@@ -184,7 +206,8 @@ Available Methods
 
 **publicDnsInstance**
    ``publicDnsInstance(string $id)``
-   Return the public DNS name or the IP address of the instance. The return value is a string. In case of error the return is **false**.
+   Return the public DNS name or the IP address of the instance. The return value is a string. In case of error the
+   return is **false**.
 
    **$id** is the ID of the instance
 
@@ -208,7 +231,10 @@ Available Methods
 
 **statusInstance**
    ``statusInstance(string $id)``
-   Get the status of an instance. The return value is a string. The available status are reported in the following constants of the class ``Zend\Cloud\Infrastructure\Instance``: STATUS_STOPPED, STATUS_RUNNING, STATUS_SHUTTING_DOWN, STATUS_REBOOTING, STATUS_TERMINATED, STATUS_PENDING, STATUS_REBUILD. In case of error the return is **false**.
+   Get the status of an instance. The return value is a string. The available status are reported in the following
+   constants of the class ``Zend\Cloud\Infrastructure\Instance``: STATUS_STOPPED, STATUS_RUNNING,
+   STATUS_SHUTTING_DOWN, STATUS_REBOOTING, STATUS_TERMINATED, STATUS_PENDING, STATUS_REBUILD. In case of error the
+   return is **false**.
 
    **$id** is the ID of the instance
 
@@ -224,13 +250,15 @@ Available Methods
 
 **waitStatusInstance**
    ``waitStatusInstance(string $id, string $status,integer $timeout=30)``
-   Wait the status change of an instance for a maximum time of **n** seconds. Return **true** if the status changes as expected, **false** if not.
+   Wait the status change of an instance for a maximum time of **n** seconds. Return **true** if the status changes
+   as expected, **false** if not.
 
    **$id** is the ID of the instance;
 
    **$status** is the status to wait for;
 
-   **$timeout** is the maximum time, in seconds, to wait for the status change. This parametr is optional and the default value is 30 seconds.
+   **$timeout** is the maximum time, in seconds, to wait for the status change. This parametr is optional and the
+   default value is 30 seconds.
 
 .. _zend.cloud.infrastructure.methods.zones-instance:
 

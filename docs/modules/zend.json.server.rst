@@ -3,9 +3,12 @@
 Zend_Json_Server - JSON-RPC server
 ==================================
 
-``Zend_Json_Server`` is a `JSON-RPC`_ server implementation. It supports both the `JSON-RPC version 1 specification`_ as well as the `version 2 specification`_; additionally, it provides a *PHP* implementation of the `Service Mapping Description (SMD) specification`_ for providing service metadata to service consumers.
+``Zend_Json_Server`` is a `JSON-RPC`_ server implementation. It supports both the `JSON-RPC version 1
+specification`_ as well as the `version 2 specification`_; additionally, it provides a *PHP* implementation of the
+`Service Mapping Description (SMD) specification`_ for providing service metadata to service consumers.
 
-JSON-RPC is a lightweight Remote Procedure Call protocol that utilizes *JSON* for its messaging envelopes. This JSON-RPC implementation follows *PHP*'s `SoapServer`_ *API*. This means, in a typical situation, you will simply:
+JSON-RPC is a lightweight Remote Procedure Call protocol that utilizes *JSON* for its messaging envelopes. This
+JSON-RPC implementation follows *PHP*'s `SoapServer`_ *API*. This means, in a typical situation, you will simply:
 
 - Instantiate the server object
 
@@ -13,19 +16,25 @@ JSON-RPC is a lightweight Remote Procedure Call protocol that utilizes *JSON* fo
 
 - handle() the request
 
-``Zend_Json_Server`` utilizes :ref:`Zend_Server_Reflection <zend.server.reflection>` to perform reflection on any attached classes or functions, and uses that information to build both the SMD and enforce method call signatures. As such, it is imperative that any attached functions and/or class methods have full *PHP* docblocks documenting, minimally:
+``Zend_Json_Server`` utilizes :ref:`Zend_Server_Reflection <zend.server.reflection>` to perform reflection on any
+attached classes or functions, and uses that information to build both the SMD and enforce method call signatures.
+As such, it is imperative that any attached functions and/or class methods have full *PHP* docblocks documenting,
+minimally:
 
 - All parameters and their expected variable types
 
 - The return value variable type
 
-``Zend_Json_Server`` listens for POST requests only at this time; fortunately, most JSON-RPC client implementations in the wild at the time of this writing will only POST requests as it is. This makes it simple to utilize the same server end point to both handle requests as well as to deliver the service SMD, as is shown in the next example.
+``Zend_Json_Server`` listens for POST requests only at this time; fortunately, most JSON-RPC client implementations
+in the wild at the time of this writing will only POST requests as it is. This makes it simple to utilize the same
+server end point to both handle requests as well as to deliver the service SMD, as is shown in the next example.
 
 .. _zend.json.server.usage:
 
 .. rubric:: Zend_Json_Server Usage
 
-First, let's define a class we wish to expose via the JSON-RPC server. We'll call the class 'Calculator', and define methods for 'add', 'subtract', 'multiply', and 'divide':
+First, let's define a class we wish to expose via the JSON-RPC server. We'll call the class 'Calculator', and
+define methods for 'add', 'subtract', 'multiply', and 'divide':
 
 .. code-block:: php
    :linenos:
@@ -84,7 +93,9 @@ First, let's define a class we wish to expose via the JSON-RPC server. We'll cal
        }
    }
 
-Note that each method has a docblock with entries indicating each parameter and its type, as well as an entry for the return value. This is **absolutely critical** when utilizing ``Zend_Json_Server`` or any other server component in Zend Framework, for that matter.
+Note that each method has a docblock with entries indicating each parameter and its type, as well as an entry for
+the return value. This is **absolutely critical** when utilizing ``Zend_Json_Server`` or any other server component
+in Zend Framework, for that matter.
 
 Now we'll create a script to handle the requests:
 
@@ -99,7 +110,8 @@ Now we'll create a script to handle the requests:
    // Handle the request:
    $server->handle();
 
-However, this will not address the issue of returning an SMD so that the JSON-RPC client can autodiscover methods. That can be accomplished by determining the *HTTP* request method, and then specifying some server metadata:
+However, this will not address the issue of returning an SMD so that the JSON-RPC client can autodiscover methods.
+That can be accomplished by determining the *HTTP* request method, and then specifying some server metadata:
 
 .. code-block:: php
    :linenos:
@@ -123,7 +135,8 @@ However, this will not address the issue of returning an SMD so that the JSON-RP
 
    $server->handle();
 
-If utilizing the JSON-RPC server with Dojo toolkit, you will also need to set a special compatibility flag to ensure that the two interoperate properly:
+If utilizing the JSON-RPC server with Dojo toolkit, you will also need to set a special compatibility flag to
+ensure that the two interoperate properly:
 
 .. code-block:: php
    :linenos:
@@ -151,22 +164,26 @@ If utilizing the JSON-RPC server with Dojo toolkit, you will also need to set a 
 Advanced Details
 ----------------
 
-While most functionality for ``Zend_Json_Server`` is spelled out in :ref:`this section <zend.json.server.usage>`, more advanced functionality is available.
+While most functionality for ``Zend_Json_Server`` is spelled out in :ref:`this section <zend.json.server.usage>`,
+more advanced functionality is available.
 
 .. _zend.json.server.details.zendjsonserver:
 
 Zend_Json_Server
 ^^^^^^^^^^^^^^^^
 
-``Zend_Json_Server`` is the core class in the JSON-RPC offering; it handles all requests and returns the response payload. It has the following methods:
+``Zend_Json_Server`` is the core class in the JSON-RPC offering; it handles all requests and returns the response
+payload. It has the following methods:
 
 - ``addFunction($function)``: Specify a userland function to attach to the server.
 
-- ``setClass($class)``: Specify a class or object to attach to the server; all public methods of that item will be exposed as JSON-RPC methods.
+- ``setClass($class)``: Specify a class or object to attach to the server; all public methods of that item will be
+  exposed as JSON-RPC methods.
 
 - ``fault($fault = null, $code = 404, $data = null)``: Create and return a ``Zend_Json_Server_Error`` object.
 
-- ``handle($request = false)``: Handle a JSON-RPC request; optionally, pass a ``Zend_Json_Server_Request`` object to utilize (creates one by default).
+- ``handle($request = false)``: Handle a JSON-RPC request; optionally, pass a ``Zend_Json_Server_Request`` object
+  to utilize (creates one by default).
 
 - ``getFunctions()``: Return a list of all attached methods.
 
@@ -178,7 +195,8 @@ Zend_Json_Server
 
 - ``getResponse()``: Retrieve the response object used by the server.
 
-- ``setAutoEmitResponse($flag)``: Indicate whether the server should automatically emit the response and all headers; by default, this is ``TRUE``.
+- ``setAutoEmitResponse($flag)``: Indicate whether the server should automatically emit the response and all
+  headers; by default, this is ``TRUE``.
 
 - ``autoEmitResponse()``: Determine if auto-emission of the response is enabled.
 
@@ -189,13 +207,18 @@ Zend_Json_Server
 Zend_Json_Server_Request
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The JSON-RPC request environment is encapsulated in the ``Zend_Json_Server_Request`` object. This object allows you to set necessary portions of the JSON-RPC request, including the request ID, parameters, and JSON-RPC specification version. It has the ability to load itself via *JSON* or a set of options, and can render itself as *JSON* via the ``toJson()`` method.
+The JSON-RPC request environment is encapsulated in the ``Zend_Json_Server_Request`` object. This object allows you
+to set necessary portions of the JSON-RPC request, including the request ID, parameters, and JSON-RPC specification
+version. It has the ability to load itself via *JSON* or a set of options, and can render itself as *JSON* via the
+``toJson()`` method.
 
 The request object has the following methods available:
 
-- ``setOptions(array $options)``: Specify object configuration. ``$options`` may contain keys matching any 'set' method: ``setParams()``, ``setMethod()``, ``setId()``, and ``setVersion()``.
+- ``setOptions(array $options)``: Specify object configuration. ``$options`` may contain keys matching any 'set'
+  method: ``setParams()``, ``setMethod()``, ``setId()``, and ``setVersion()``.
 
-- ``addParam($value, $key = null)``: Add a parameter to use with the method call. Parameters can be just the values, or can optionally include the parameter name.
+- ``addParam($value, $key = null)``: Add a parameter to use with the method call. Parameters can be just the
+  values, or can optionally include the parameter name.
 
 - ``addParams(array $params)``: Add multiple parameters at once; proxies to ``addParam()``
 
@@ -215,7 +238,8 @@ The request object has the following methods available:
 
 - ``getId()``: Retrieve the request identifier.
 
-- ``setVersion($version)``: Set the JSON-RPC specification version the request conforms to. May be either '1.0' or '2.0'.
+- ``setVersion($version)``: Set the JSON-RPC specification version the request conforms to. May be either '1.0' or
+  '2.0'.
 
 - ``getVersion()``: Retrieve the JSON-RPC specification version used by the request.
 
@@ -223,14 +247,17 @@ The request object has the following methods available:
 
 - ``toJson()``: Render the request as a *JSON* string.
 
-An *HTTP* specific version is available via ``Zend_Json_Server_Request_Http``. This class will retrieve the request via ``php://input``, and allows access to the raw *JSON* via the ``getRawJson()`` method.
+An *HTTP* specific version is available via ``Zend_Json_Server_Request_Http``. This class will retrieve the request
+via ``php://input``, and allows access to the raw *JSON* via the ``getRawJson()`` method.
 
 .. _zend.json.server.details.zendjsonserverresponse:
 
 Zend_Json_Server_Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The JSON-RPC response payload is encapsulated in the ``Zend_Json_Server_Response`` object. This object allows you to set the return value of the request, whether or not the response is an error, the request identifier, the JSON-RPC specification version the response conforms to, and optionally the service map.
+The JSON-RPC response payload is encapsulated in the ``Zend_Json_Server_Response`` object. This object allows you
+to set the return value of the request, whether or not the response is an error, the request identifier, the
+JSON-RPC specification version the response conforms to, and optionally the service map.
 
 The response object has the following methods available:
 
@@ -238,7 +265,8 @@ The response object has the following methods available:
 
 - ``getResult()``: Retrieve the response result.
 
-- ``setError(Zend_Json_Server_Error $error)``: Set an error object. If set, this will be used as the response when serializing to *JSON*.
+- ``setError(Zend_Json_Server_Error $error)``: Set an error object. If set, this will be used as the response when
+  serializing to *JSON*.
 
 - ``getError()``: Retrieve the error object, if any.
 
@@ -252,26 +280,31 @@ The response object has the following methods available:
 
 - ``getVersion()``: Retrieve the JSON-RPC version the response conforms to.
 
-- ``toJson()``: Serialize the response to *JSON*. If the response is an error response, serializes the error object.
+- ``toJson()``: Serialize the response to *JSON*. If the response is an error response, serializes the error
+  object.
 
 - ``setServiceMap($serviceMap)``: Set the service map object for the response.
 
 - ``getServiceMap()``: Retrieve the service map object, if any.
 
-An *HTTP* specific version is available via ``Zend_Json_Server_Response_Http``. This class will send the appropriate *HTTP* headers as well as serialize the response as *JSON*.
+An *HTTP* specific version is available via ``Zend_Json_Server_Response_Http``. This class will send the
+appropriate *HTTP* headers as well as serialize the response as *JSON*.
 
 .. _zend.json.server.details.zendjsonservererror:
 
 Zend_Json_Server_Error
 ^^^^^^^^^^^^^^^^^^^^^^
 
-JSON-RPC has a special format for reporting error conditions. All errors need to provide, minimally, an error message and error code; optionally, they can provide additional data, such as a backtrace.
+JSON-RPC has a special format for reporting error conditions. All errors need to provide, minimally, an error
+message and error code; optionally, they can provide additional data, such as a backtrace.
 
-Error codes are derived from those recommended by `the XML-RPC EPI project`_. ``Zend_Json_Server`` appropriately assigns the code based on the error condition. For application exceptions, the code '-32000' is used.
+Error codes are derived from those recommended by `the XML-RPC EPI project`_. ``Zend_Json_Server`` appropriately
+assigns the code based on the error condition. For application exceptions, the code '-32000' is used.
 
 ``Zend_Json_Server_Error`` exposes the following methods:
 
-- ``setCode($code)``: Set the error code; if the code is not in the accepted XML-RPC error code range, -32000 will be assigned.
+- ``setCode($code)``: Set the error code; if the code is not in the accepted XML-RPC error code range, -32000 will
+  be assigned.
 
 - ``getCode()``: Retrieve the current error code.
 
@@ -292,25 +325,39 @@ Error codes are derived from those recommended by `the XML-RPC EPI project`_. ``
 Zend_Json_Server_Smd
 ^^^^^^^^^^^^^^^^^^^^
 
-SMD stands for Service Mapping Description, a *JSON* schema that defines how a client can interact with a particular web service. At the time of this writing, the `specification`_ has not yet been formally ratified, but it is in use already within Dojo toolkit as well as other JSON-RPC consumer clients.
+SMD stands for Service Mapping Description, a *JSON* schema that defines how a client can interact with a
+particular web service. At the time of this writing, the `specification`_ has not yet been formally ratified, but
+it is in use already within Dojo toolkit as well as other JSON-RPC consumer clients.
 
-At its most basic, a Service Mapping Description indicates the method of transport (POST, ``GET``, *TCP*/IP, etc), the request envelope type (usually based on the protocol of the server), the target *URL* of the service provider, and a map of services available. In the case of JSON-RPC, the service map is a list of available methods, which each method documenting the available parameters and their types, as well as the expected return value type.
+At its most basic, a Service Mapping Description indicates the method of transport (POST, ``GET``, *TCP*/IP, etc),
+the request envelope type (usually based on the protocol of the server), the target *URL* of the service provider,
+and a map of services available. In the case of JSON-RPC, the service map is a list of available methods, which
+each method documenting the available parameters and their types, as well as the expected return value type.
 
-``Zend_Json_Server_Smd`` provides an object oriented way to build service maps. At its most basic, you pass it metadata describing the service using mutators, and specify services (methods and functions).
+``Zend_Json_Server_Smd`` provides an object oriented way to build service maps. At its most basic, you pass it
+metadata describing the service using mutators, and specify services (methods and functions).
 
-The service descriptions themselves are typically instances of ``Zend_Json_Server_Smd_Service``; you can also pass all information as an array to the various service mutators in ``Zend_Json_Server_Smd``, and it will instantiate a service object for you. The service objects contain information such as the name of the service (typically the function or method name), the parameters (names, types, and position), and the return value type. Optionally, each service can have its own target and envelope, though this functionality is rarely used.
+The service descriptions themselves are typically instances of ``Zend_Json_Server_Smd_Service``; you can also pass
+all information as an array to the various service mutators in ``Zend_Json_Server_Smd``, and it will instantiate a
+service object for you. The service objects contain information such as the name of the service (typically the
+function or method name), the parameters (names, types, and position), and the return value type. Optionally, each
+service can have its own target and envelope, though this functionality is rarely used.
 
-``Zend_Json_Server`` actually does all of this behind the scenes for you, by using reflection on the attached classes and functions; you should create your own service maps only if you need to provide custom functionality that class and function introspection cannot offer.
+``Zend_Json_Server`` actually does all of this behind the scenes for you, by using reflection on the attached
+classes and functions; you should create your own service maps only if you need to provide custom functionality
+that class and function introspection cannot offer.
 
 Methods available in ``Zend_Json_Server_Smd`` include:
 
-- ``setOptions(array $options)``: Setup an SMD object from an array of options. All mutators (methods beginning with 'set') can be used as keys.
+- ``setOptions(array $options)``: Setup an SMD object from an array of options. All mutators (methods beginning
+  with 'set') can be used as keys.
 
 - ``setTransport($transport)``: Set the transport used to access the service; only POST is currently supported.
 
 - ``getTransport()``: Get the current service transport.
 
-- ``setEnvelope($envelopeType)``: Set the request envelope that should be used to access the service. Currently, supports the constants ``Zend_Json_Server_Smd::ENV_JSONRPC_1`` and ``Zend_Json_Server_Smd::ENV_JSONRPC_2``.
+- ``setEnvelope($envelopeType)``: Set the request envelope that should be used to access the service. Currently,
+  supports the constants ``Zend_Json_Server_Smd::ENV_JSONRPC_1`` and ``Zend_Json_Server_Smd::ENV_JSONRPC_2``.
 
 - ``getEnvelope()``: Get the current request envelope.
 
@@ -326,15 +373,19 @@ Methods available in ``Zend_Json_Server_Smd`` include:
 
 - ``getId()``: Retrieve the service ID (typically the *URL* endpoint of the service).
 
-- ``setDescription($description)``: Set a service description (typically narrative information describing the purpose of the service).
+- ``setDescription($description)``: Set a service description (typically narrative information describing the
+  purpose of the service).
 
 - ``getDescription()``: Get the service description.
 
-- ``setDojoCompatible($flag)``: Set a flag indicating whether or not the SMD is compatible with Dojo toolkit. When ``TRUE``, the generated *JSON* SMD will be formatted to comply with the format that Dojo's JSON-RPC client expects.
+- ``setDojoCompatible($flag)``: Set a flag indicating whether or not the SMD is compatible with Dojo toolkit. When
+  ``TRUE``, the generated *JSON* SMD will be formatted to comply with the format that Dojo's JSON-RPC client
+  expects.
 
 - ``isDojoCompatible()``: Returns the value of the Dojo compatibility flag (``FALSE``, by default).
 
-- ``addService($service)``: Add a service to the map. May be an array of information to pass to the constructor of ``Zend_Json_Server_Smd_Service``, or an instance of that class.
+- ``addService($service)``: Add a service to the map. May be an array of information to pass to the constructor of
+  ``Zend_Json_Server_Smd_Service``, or an instance of that class.
 
 - ``addServices(array $services)``: Add multiple services at once.
 
@@ -354,25 +405,30 @@ Methods available in ``Zend_Json_Server_Smd`` include:
 
 ``Zend_Json_Server_Smd_Service`` has the following methods:
 
-- ``setOptions(array $options)``: Set object state from an array. Any mutator (methods beginning with 'set') may be used as a key and set via this method.
+- ``setOptions(array $options)``: Set object state from an array. Any mutator (methods beginning with 'set') may be
+  used as a key and set via this method.
 
 - ``setName($name)``: Set the service name (typically, the function or method name).
 
 - ``getName()``: Retrieve the service name.
 
-- ``setTransport($transport)``: Set the service transport (currently, only transports supported by ``Zend_Json_Server_Smd`` are allowed).
+- ``setTransport($transport)``: Set the service transport (currently, only transports supported by
+  ``Zend_Json_Server_Smd`` are allowed).
 
 - ``getTransport()``: Retrieve the current transport.
 
-- ``setTarget($target)``: Set the *URL* endpoint of the service (typically, this will be the same as the overall SMD to which the service is attached).
+- ``setTarget($target)``: Set the *URL* endpoint of the service (typically, this will be the same as the overall
+  SMD to which the service is attached).
 
 - ``getTarget()``: Get the *URL* endpoint of the service.
 
-- ``setEnvelope($envelopeType)``: Set the service envelope (currently, only envelopes supported by ``Zend_Json_Server_Smd`` are allowed).
+- ``setEnvelope($envelopeType)``: Set the service envelope (currently, only envelopes supported by
+  ``Zend_Json_Server_Smd`` are allowed).
 
 - ``getEnvelope()``: Retrieve the service envelope type.
 
-- ``addParam($type, array $options = array(), $order = null)``: Add a parameter to the service. By default, only the parameter type is necessary. However, you may also specify the order, as well as options such as:
+- ``addParam($type, array $options = array(), $order = null)``: Add a parameter to the service. By default, only
+  the parameter type is necessary. However, you may also specify the order, as well as options such as:
 
   - **name**: the parameter name
 
@@ -382,7 +438,9 @@ Methods available in ``Zend_Json_Server_Smd`` include:
 
   - **description**: text describing the parameter
 
-- ``addParams(array $params)``: Add several parameters at once; each param should be an assoc array containing minimally the key 'type' describing the parameter type, and optionally the key 'order'; any other keys will be passed as ``$options`` to ``addOption()``.
+- ``addParams(array $params)``: Add several parameters at once; each param should be an assoc array containing
+  minimally the key 'type' describing the parameter type, and optionally the key 'order'; any other keys will be
+  passed as ``$options`` to ``addOption()``.
 
 - ``setParams(array $params)``: Set many parameters at once, overwriting any existing parameters.
 

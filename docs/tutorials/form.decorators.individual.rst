@@ -3,9 +3,13 @@
 Rendering Individual Decorators
 ===============================
 
-In the :ref:`previous section <learning.form.decorators.layering>`, we looked at how you can combine decorators to create complex output. We noted that while you have a ton of flexibility with this approach, it also adds some complexity and overhead. In this section, we will examine how to render decorators individually in order to create custom markup for forms and/or individual elements.
+In the :ref:`previous section <learning.form.decorators.layering>`, we looked at how you can combine decorators to
+create complex output. We noted that while you have a ton of flexibility with this approach, it also adds some
+complexity and overhead. In this section, we will examine how to render decorators individually in order to create
+custom markup for forms and/or individual elements.
 
-Once you have registered your decorators, you can later retrieve them by name from the element. Let's review the previous example:
+Once you have registered your decorators, you can later retrieve them by name from the element. Let's review the
+previous example:
 
 .. code-block:: php
    :linenos:
@@ -23,7 +27,8 @@ Once you have registered your decorators, you can later retrieve them by name fr
        ),
    ));
 
-If we wanted to pull and render just the ``SimpleInput`` decorator, we can do so using the ``getDecorator()`` method:
+If we wanted to pull and render just the ``SimpleInput`` decorator, we can do so using the ``getDecorator()``
+method:
 
 .. code-block:: php
    :linenos:
@@ -38,7 +43,10 @@ This is pretty easy, but it can be made even easier; let's do it in a single lin
 
    echo $element->getDecorator('SimpleInput')->render('');
 
-Not too bad, but still a little complex. To make this easier, a shorthand notation was introduced into ``Zend_Form`` in 1.7: you can render any registered decorator by calling a method of the format ``renderDecoratorName()``. This will effectively perform what you see above, but makes the ``$content`` argument optional and simplifies the usage:
+Not too bad, but still a little complex. To make this easier, a shorthand notation was introduced into
+``Zend_Form`` in 1.7: you can render any registered decorator by calling a method of the format
+``renderDecoratorName()``. This will effectively perform what you see above, but makes the ``$content`` argument
+optional and simplifies the usage:
 
 .. code-block:: php
    :linenos:
@@ -47,11 +55,16 @@ Not too bad, but still a little complex. To make this easier, a shorthand notati
 
 This is a neat trick, but how and why would you use it?
 
-Many developers and designers have very precise markup needs for their forms. They would rather have full control over the output than rely on a more automated solution which may or may not conform to their design. In other cases, the form layout may require a lot of specialized markup -- grouping arbitrary elements, making some invisible unless a particular link is selected, etc.
+Many developers and designers have very precise markup needs for their forms. They would rather have full control
+over the output than rely on a more automated solution which may or may not conform to their design. In other
+cases, the form layout may require a lot of specialized markup -- grouping arbitrary elements, making some
+invisible unless a particular link is selected, etc.
 
 Let's utilize the ability to render individual decorators to create some specialized markup.
 
-First, let's define a form. Our form will capture a user's demographic details. The markup will be highly customized, and in some cases use view helpers directly instead of form elements in order to achieve its goals. Here is the basic form definition:
+First, let's define a form. Our form will capture a user's demographic details. The markup will be highly
+customized, and in some cases use view helpers directly instead of form elements in order to achieve its goals.
+Here is the basic form definition:
 
 .. code-block:: php
    :linenos:
@@ -91,11 +104,16 @@ First, let's define a form. Our form will capture a user's demographic details. 
 
 .. note::
 
-   We're not defining any validators or filters at this time, as they are not relevant to the discussion of decoration. In a real-world scenario, you should define them.
+   We're not defining any validators or filters at this time, as they are not relevant to the discussion of
+   decoration. In a real-world scenario, you should define them.
 
-With that out of the way, let's consider how we might want to display this form. One common idiom with first/last names is to display them on a single line; when a title is provided, that is often on the same line as well. Dates, when not using a JavaScript date chooser, will often be separated into three fields displayed side by side.
+With that out of the way, let's consider how we might want to display this form. One common idiom with first/last
+names is to display them on a single line; when a title is provided, that is often on the same line as well. Dates,
+when not using a JavaScript date chooser, will often be separated into three fields displayed side by side.
 
-Let's use the ability to render an element's decorators one by one to accomplish this. First, let's note that no explicit decorators were defined for the given elements. As a refresher, the default decorators for (most) elements are:
+Let's use the ability to render an element's decorators one by one to accomplish this. First, let's note that no
+explicit decorators were defined for the given elements. As a refresher, the default decorators for (most) elements
+are:
 
 - ``ViewHelper``: utilize a view helper to render a form input
 
@@ -107,7 +125,8 @@ Let's use the ability to render an element's decorators one by one to accomplish
 
 - ``Label``: render the element label using the ``FormLabel`` view helper (and wrap it in a **<dt>** tag)
 
-Also, as a refresher, you can access any element of a form as if it were a class property; simply reference the element by the name you assigned it.
+Also, as a refresher, you can access any element of a form as if it were a class property; simply reference the
+element by the name you assigned it.
 
 Our view script might then look like this:
 
@@ -153,7 +172,8 @@ Our view script might then look like this:
        <?php echo $this->formSubmit('submit', 'Save') ?>
    </form>
 
-If you use the above view script, you'll get approximately the following *HTML* (approximate, as the *HTML* below is formatted):
+If you use the above view script, you'll get approximately the following *HTML* (approximate, as the *HTML* below
+is formatted):
 
 .. code-block:: html
    :linenos:
@@ -193,8 +213,13 @@ If you use the above view script, you'll get approximately the following *HTML* 
                value="Save"/>
    </form>
 
-It may not be truly pretty, but with some CSS, it could be made to look exactly how you might want to see it. The main point, however, is that this form was generated using almost entirely custom markup, while still leveraging decorators for the most common markup (and to ensure things like escaping with htmlentities and value injection occur).
+It may not be truly pretty, but with some CSS, it could be made to look exactly how you might want to see it. The
+main point, however, is that this form was generated using almost entirely custom markup, while still leveraging
+decorators for the most common markup (and to ensure things like escaping with htmlentities and value injection
+occur).
 
-By this point in the tutorial, you should be getting fairly comfortable with the markup possibilities using ``Zend_Form``'s decorators. In the next section, we'll revisit the date element from above, and demonstrate how to create a custom element and decorator for composite elements.
+By this point in the tutorial, you should be getting fairly comfortable with the markup possibilities using
+``Zend_Form``'s decorators. In the next section, we'll revisit the date element from above, and demonstrate how to
+create a custom element and decorator for composite elements.
 
 

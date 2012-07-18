@@ -8,14 +8,19 @@ The PrefixPathMapper Interface
 Overview
 --------
 
-One approach to resolving plugin names to class names utilizes prefix/path pairs. In this methodology, the developer specifies one or more directories containing plugins that have a common namespace or prefix. When resolving a plugin, the mapper will loop through these prefixes, and look for a class file matching the requested plugin; if found, that plugin class is loaded from the file and used. The ``PrefixPathMapper`` interface defines a common interface for specifying and modifying a map of prefix/path pairs.
+One approach to resolving plugin names to class names utilizes prefix/path pairs. In this methodology, the
+developer specifies one or more directories containing plugins that have a common namespace or prefix. When
+resolving a plugin, the mapper will loop through these prefixes, and look for a class file matching the requested
+plugin; if found, that plugin class is loaded from the file and used. The ``PrefixPathMapper`` interface defines a
+common interface for specifying and modifying a map of prefix/path pairs.
 
 .. _zend.loader.prefix-path-mapper.quick-start:
 
 Quick Start
 -----------
 
-The ``PrefixPathMapper`` provides simply two methods: one for registering a prefix path, and another for removing one.
+The ``PrefixPathMapper`` provides simply two methods: one for registering a prefix path, and another for removing
+one.
 
 .. code-block:: php
    :linenos:
@@ -47,7 +52,10 @@ addPrefixPath
    ``addPrefixPath($prefix, $path)``
 
    **addPrefixPath()**
-   Implement this method to allow registering a prefix/path pair. The prefix may be either an older, PHP 5.2-style vendor prefix or a true PHP 5.3 namespace; the path should be a path to a directory of files using the given prefix or namespace. The implemenation should determine whether or not to aggregate paths for each namespace, or simply maintain a 1:1 association.
+   Implement this method to allow registering a prefix/path pair. The prefix may be either an older, PHP 5.2-style
+   vendor prefix or a true PHP 5.3 namespace; the path should be a path to a directory of files using the given
+   prefix or namespace. The implemenation should determine whether or not to aggregate paths for each namespace, or
+   simply maintain a 1:1 association.
 
 
 .. _zend.loader.prefix-path-mapper.methods.remove-prefix-path:

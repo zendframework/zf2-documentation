@@ -53,7 +53,8 @@ To create a new instance for AMAZON EC2 adapter you have to use the following pa
    printf("Name of the instance: %s\n", $instance->getName());
    printf("ID of the instance  : %s\n", $instance->getId());
 
-The monitor an instance of AMAZON EC2 you can use the starting time and ending time optional parameters. The times must be specified using the ISO 8601 format.
+The monitor an instance of AMAZON EC2 you can use the starting time and ending time optional parameters. The times
+must be specified using the ISO 8601 format.
 
 .. code-block:: php
    :linenos:
@@ -69,7 +70,8 @@ The monitor an instance of AMAZON EC2 you can use the starting time and ending t
 
    print_r($cpuUsage);
 
-The **instanceType** parameter is optional. This parameter specify the type of the instance to create (for instance, 't1.micro').
+The **instanceType** parameter is optional. This parameter specify the type of the instance to create (for
+instance, 't1.micro').
 
 .. _zend.cloud.infrastructure.adapter.rackspace:
 
@@ -116,7 +118,9 @@ To create a new instance for Rackspace Cloud Servers adapter you have to use the
 
 The **metadata** array and the **file** array are optional parameters.
 
-To monitor an instance of Rackspace Cloud Servers we can use only the SSH2 extension. The Rackspace API does not offer a dedicated service to monitor the instance. The monitoring features using the SSH2 connection are limited to the CPU usage, the RAM usage and the DISK usage.
+To monitor an instance of Rackspace Cloud Servers we can use only the SSH2 extension. The Rackspace API does not
+offer a dedicated service to monitor the instance. The monitoring features using the SSH2 connection are limited to
+the CPU usage, the RAM usage and the DISK usage.
 
 .. code-block:: php
    :linenos:

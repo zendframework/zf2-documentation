@@ -14,7 +14,8 @@ Our first order of business is to create the actual form class. To create the em
    Creating a form at application/forms/Guestbook.php
    Updating project profile '.zfproject.xml'
 
-This will create the directory ``application/forms/`` with the classfile ``Guestbook.php``. Open that file and update it so it reads as follows:
+This will create the directory ``application/forms/`` with the classfile ``Guestbook.php``. Open that file and
+update it so it reads as follows:
 
 .. code-block:: php
    :linenos:
@@ -71,9 +72,11 @@ This will create the directory ``application/forms/`` with the classfile ``Guest
        }
    }
 
-The above form defines five elements: an email address field, a comment field, a *CAPTCHA* for preventing spam submissions, a submit button, and a *CSRF* protection token.
+The above form defines five elements: an email address field, a comment field, a *CAPTCHA* for preventing spam
+submissions, a submit button, and a *CSRF* protection token.
 
-Next, we will add a ``signAction()`` to our ``GuestbookController`` which will process the form upon submission. To create the action and related view script, execute the following:
+Next, we will add a ``signAction()`` to our ``GuestbookController`` which will process the form upon submission. To
+create the action and related view script, execute the following:
 
 .. code-block:: console
    :linenos:
@@ -86,9 +89,13 @@ Next, we will add a ``signAction()`` to our ``GuestbookController`` which will p
        at application/views/scripts/guestbook/sign.phtml
    Updating project profile '.zfproject.xml'
 
-As you can see from the output, this will create a ``signAction()`` method in our controller, as well as the appropriate view script.
+As you can see from the output, this will create a ``signAction()`` method in our controller, as well as the
+appropriate view script.
 
-Let's add some logic into our guestbook controller's sign action. We need to first check if we're getting a *POST* or a *GET* request; in the latter case, we'll simply display the form. However, if we get a *POST* request, we'll want to validate the posted data against our form, and, if valid, create a new entry and save it. The logic might look like this:
+Let's add some logic into our guestbook controller's sign action. We need to first check if we're getting a *POST*
+or a *GET* request; in the latter case, we'll simply display the form. However, if we get a *POST* request, we'll
+want to validate the posted data against our form, and, if valid, create a new entry and save it. The logic might
+look like this:
 
 .. code-block:: php
    :linenos:
@@ -134,7 +141,8 @@ Of course, we also need to edit the view script; edit ``application/views/script
 
    **Better Looking Forms**
 
-   No one will be waxing poetic about the beauty of this form anytime soon. No matter - form appearance is fully customizable! See the :ref:`decorators section in the reference guide <zend.form.decorators>` for details.
+   No one will be waxing poetic about the beauty of this form anytime soon. No matter - form appearance is fully
+   customizable! See the :ref:`decorators section in the reference guide <zend.form.decorators>` for details.
 
    Additionally, you may be interested in :ref:`our tutorial on form decorators <learning.form.decorators.intro>`.
 

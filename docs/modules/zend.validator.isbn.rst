@@ -14,7 +14,8 @@ The following options are supported for ``Zend\Validator\Isbn``:
 
 - **separator**: Defines the allowed separator for the *ISBN* number. It defaults to an empty string.
 
-- **type**: Defines the allowed type of *ISBN* numbers. It defaults to ``Zend\Validator\Isbn::AUTO``. For details take a look at :ref:`this section <zend.validator.set.isbn.type-explicit>`.
+- **type**: Defines the allowed type of *ISBN* numbers. It defaults to ``Zend\Validator\Isbn::AUTO``. For details
+  take a look at :ref:`this section <zend.validator.set.isbn.type-explicit>`.
 
 .. _zend.validator.set.isbn.basic:
 

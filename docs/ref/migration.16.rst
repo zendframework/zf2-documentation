@@ -3,7 +3,8 @@
 Zend Framework 1.6
 ==================
 
-When upgrading from a previous release to Zend Framework 1.6 or higher you should note the following migration notes.
+When upgrading from a previous release to Zend Framework 1.6 or higher you should note the following migration
+notes.
 
 .. _migration.16.zend.controller:
 
@@ -15,7 +16,9 @@ Zend_Controller
 Dispatcher Interface Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Users brought to our attention the fact that ``Zend_Controller_Front`` and ``Zend_Controller_Router_Route_Module`` were each using methods of the dispatcher that were not in the dispatcher interface. We have now added the following three methods to ensure that custom dispatchers will continue to work with the shipped implementations:
+Users brought to our attention the fact that ``Zend_Controller_Front`` and ``Zend_Controller_Router_Route_Module``
+were each using methods of the dispatcher that were not in the dispatcher interface. We have now added the
+following three methods to ensure that custom dispatchers will continue to work with the shipped implementations:
 
 - ``getDefaultModule()``: should return the name of the default module.
 
@@ -33,7 +36,9 @@ Zend_File_Transfer
 Changes when using validators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As noted by users, the validators from ``Zend_File_Transfer`` do not work the same way like the default ones from ``Zend_Form``. ``Zend_Form`` allows the usage of a ``$breakChainOnFailure`` parameter which breaks the validation for all further validators when an validation error has occurred.
+As noted by users, the validators from ``Zend_File_Transfer`` do not work the same way like the default ones from
+``Zend_Form``. ``Zend_Form`` allows the usage of a ``$breakChainOnFailure`` parameter which breaks the validation
+for all further validators when an validation error has occurred.
 
 So we added this parameter also to all existing validators from ``Zend_File_Transfer``.
 

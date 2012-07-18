@@ -3,7 +3,9 @@
 HeadMeta Helper
 ===============
 
-The *HTML* **<meta>** element is used to provide meta information about your *HTML* document -- typically keywords, document character set, caching pragmas, etc. Meta tags may be either of the 'http-equiv' or 'name' types, must contain a 'content' attribute, and can also have either of the 'lang' or 'scheme' modifier attributes.
+The *HTML* **<meta>** element is used to provide meta information about your *HTML* document -- typically keywords,
+document character set, caching pragmas, etc. Meta tags may be either of the 'http-equiv' or 'name' types, must
+contain a 'content' attribute, and can also have either of the 'lang' or 'scheme' modifier attributes.
 
 The ``HeadMeta`` helper supports the following methods for setting and adding meta tags:
 
@@ -25,7 +27,8 @@ The ``HeadMeta`` helper supports the following methods for setting and adding me
 
 - ``setCharset($charset)``
 
-The following methods are also supported with XHTML1_RDFA doctype set with the :ref:`Doctype helper <zend.view.helpers.initial.doctype>`:
+The following methods are also supported with XHTML1_RDFA doctype set with the :ref:`Doctype helper
+<zend.view.helpers.initial.doctype>`:
 
 - ``appendProperty($property, $content, $modifiers)``
 
@@ -35,13 +38,23 @@ The following methods are also supported with XHTML1_RDFA doctype set with the :
 
 - ``setProperty($property, $content, $modifiers)``
 
-The ``$keyValue`` item is used to define a value for the 'name' or 'http-equiv' key; ``$content`` is the value for the 'content' key, and ``$modifiers`` is an optional associative array that can contain keys for 'lang' and/or 'scheme'.
+The ``$keyValue`` item is used to define a value for the 'name' or 'http-equiv' key; ``$content`` is the value for
+the 'content' key, and ``$modifiers`` is an optional associative array that can contain keys for 'lang' and/or
+'scheme'.
 
-You may also set meta tags using the ``headMeta()`` helper method, which has the following signature: ``headMeta($content, $keyValue, $keyType = 'name', $modifiers = array(), $placement = 'APPEND')``. ``$keyValue`` is the content for the key specified in ``$keyType``, which should be either 'name' or 'http-equiv'. ``$keyType`` may also be specified as 'property' if the doctype has been set to XHTML1_RDFA. ``$placement`` can be 'SET' (overwrites all previously stored values), 'APPEND' (added to end of stack), or 'PREPEND' (added to top of stack).
+You may also set meta tags using the ``headMeta()`` helper method, which has the following signature:
+``headMeta($content, $keyValue, $keyType = 'name', $modifiers = array(), $placement = 'APPEND')``. ``$keyValue`` is
+the content for the key specified in ``$keyType``, which should be either 'name' or 'http-equiv'. ``$keyType`` may
+also be specified as 'property' if the doctype has been set to XHTML1_RDFA. ``$placement`` can be 'SET' (overwrites
+all previously stored values), 'APPEND' (added to end of stack), or 'PREPEND' (added to top of stack).
 
-``HeadMeta`` overrides each of ``append()``, ``offsetSet()``, ``prepend()``, and ``set()`` to enforce usage of the special methods as listed above. Internally, it stores each item as a ``stdClass`` token, which it later serializes using the ``itemToString()`` method. This allows you to perform checks on the items in the stack, and optionally modify these items by simply modifying the object returned.
+``HeadMeta`` overrides each of ``append()``, ``offsetSet()``, ``prepend()``, and ``set()`` to enforce usage of the
+special methods as listed above. Internally, it stores each item as a ``stdClass`` token, which it later serializes
+using the ``itemToString()`` method. This allows you to perform checks on the items in the stack, and optionally
+modify these items by simply modifying the object returned.
 
-The ``HeadMeta`` helper is a concrete implementation of the :ref:`Placeholder helper <zend.view.helpers.initial.placeholder>`.
+The ``HeadMeta`` helper is a concrete implementation of the :ref:`Placeholder helper
+<zend.view.helpers.initial.placeholder>`.
 
 .. _zend.view.helpers.initial.headmeta.basicusage:
 
@@ -49,7 +62,8 @@ The ``HeadMeta`` helper is a concrete implementation of the :ref:`Placeholder he
 
 You may specify a new meta tag at any time. Typically, you will specify client-side caching rules or SEO keywords.
 
-For instance, if you wish to specify SEO keywords, you'd be creating a meta name tag with the name 'keywords' and the content the keywords you wish to associate with your page:
+For instance, if you wish to specify SEO keywords, you'd be creating a meta name tag with the name 'keywords' and
+the content the keywords you wish to associate with your page:
 
 .. code-block:: php
    :linenos:
@@ -106,7 +120,9 @@ When you're ready to place your meta tags in the layout, simply echo the helper:
 
 .. rubric:: HeadMeta Usage with XHTML1_RDFA doctype
 
-Enabling the RDFa doctype with the :ref:`Doctype helper <zend.view.helpers.initial.doctype>` enables the use of the 'property' attribute (in addition to the standard 'name' and 'http-equiv') with HeadMeta. This is commonly used with the Facebook `Open Graph Protocol`_.
+Enabling the RDFa doctype with the :ref:`Doctype helper <zend.view.helpers.initial.doctype>` enables the use of the
+'property' attribute (in addition to the standard 'name' and 'http-equiv') with HeadMeta. This is commonly used
+with the Facebook `Open Graph Protocol`_.
 
 For instance, you may specify an open graph page title and type as follows:
 

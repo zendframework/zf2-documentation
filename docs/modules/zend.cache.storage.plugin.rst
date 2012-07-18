@@ -10,16 +10,20 @@ Overview
 
 Cache storage plugins are objects to add missing functionality or to influence behavior of a storage adapter.
 
-The plugins listen to events the adapter triggers and can change called method arguments (\*.post - events), skipping and directly return a result (using ``stopPropagation``), changing the result (with ``setResult`` of ``Zend\Cache\Storage\PostEvent``) and catching exceptions (with ``Zend\Cache\Storage\ExceptionEvent``).
+The plugins listen to events the adapter triggers and can change called method arguments (\*.post - events),
+skipping and directly return a result (using ``stopPropagation``), changing the result (with ``setResult`` of
+``Zend\Cache\Storage\PostEvent``) and catching exceptions (with ``Zend\Cache\Storage\ExceptionEvent``).
 
 .. _zend.cache.storage.plugin.quick-start:
 
 Quick Start
 -----------
 
-Storage plugins can either be created from ``Zend\Cache\StorageFactory`` with the ``pluginFactory``, or by simply instantiating one of the ``Zend\Cache\Storage\Plugin\*``\ classes.
+Storage plugins can either be created from ``Zend\Cache\StorageFactory`` with the ``pluginFactory``, or by simply
+instantiating one of the ``Zend\Cache\Storage\Plugin\*``\ classes.
 
-To make life easier, the ``Zend\Cache\StorageFactory`` comes with the method ``factory`` to create an adapter and all given plugins at once.
+To make life easier, the ``Zend\Cache\StorageFactory`` comes with the method ``factory`` to create an adapter and
+all given plugins at once.
 
 .. code-block:: php
    :linenos:

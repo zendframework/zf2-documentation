@@ -3,16 +3,21 @@
 Zend_Service_WindowsAzure_Storage_Blob
 ======================================
 
-Blob Storage stores sets of binary data. Blob storage offers the following three resources: the storage account, containers, and blobs. Within your storage account, containers provide a way to organize sets of blobs within your storage account.
+Blob Storage stores sets of binary data. Blob storage offers the following three resources: the storage account,
+containers, and blobs. Within your storage account, containers provide a way to organize sets of blobs within your
+storage account.
 
-Blob Storage is offered by Windows Azure as a *REST* *API* which is wrapped by the ``Zend_Service_WindowsAzure_Storage_Blob`` class in order to provide a native *PHP* interface to the storage account.
+Blob Storage is offered by Windows Azure as a *REST* *API* which is wrapped by the
+``Zend_Service_WindowsAzure_Storage_Blob`` class in order to provide a native *PHP* interface to the storage
+account.
 
 .. _zend.service.windowsazure.storage.blob.api:
 
 API Examples
 ------------
 
-This topic lists some examples of using the ``Zend_Service_WindowsAzure_Storage_Blob`` class. Other features are available in the download package, as well as a detailed *API* documentation of those features.
+This topic lists some examples of using the ``Zend_Service_WindowsAzure_Storage_Blob`` class. Other features are
+available in the download package, as well as a detailed *API* documentation of those features.
 
 .. _zend.service.windowsazure.storage.blob.api.create-container:
 
@@ -55,7 +60,8 @@ Using the following code, a blob storage container can be removed from developme
 Storing a blob
 ^^^^^^^^^^^^^^
 
-Using the following code, a blob can be uploaded to a blob storage container on development storage. Note that the container has already been created before.
+Using the following code, a blob can be uploaded to a blob storage container on development storage. Note that the
+container has already been created before.
 
 .. _zend.service.windowsazure.storage.blob.api.storing-blob.example:
 
@@ -78,7 +84,9 @@ Using the following code, a blob can be uploaded to a blob storage container on 
 Copying a blob
 ^^^^^^^^^^^^^^
 
-Using the following code, a blob can be copied from inside the storage account. The advantage of using this method is that the copy operation occurs in the Azure cloud and does not involve downloading the blob. Note that the container has already been created before.
+Using the following code, a blob can be copied from inside the storage account. The advantage of using this method
+is that the copy operation occurs in the Azure cloud and does not involve downloading the blob. Note that the
+container has already been created before.
 
 .. _zend.service.windowsazure.storage.blob.api.copy-blob.example:
 
@@ -101,7 +109,8 @@ Using the following code, a blob can be copied from inside the storage account. 
 Downloading a blob
 ^^^^^^^^^^^^^^^^^^
 
-Using the following code, a blob can be downloaded from a blob storage container on development storage. Note that the container has already been created before and a blob has been uploaded.
+Using the following code, a blob can be downloaded from a blob storage container on development storage. Note that
+the container has already been created before and a blob has been uploaded.
 
 .. _zend.service.windowsazure.storage.blob.api.download-blob.example:
 
@@ -122,9 +131,12 @@ Using the following code, a blob can be downloaded from a blob storage container
 Making a blob publicly available
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default, blob storage containers on Windows Azure are protected from public viewing. If any user on the Internet should have access to a blob container, its ACL can be set to public. Note that this applies to a complete container and not to a single blob!
+By default, blob storage containers on Windows Azure are protected from public viewing. If any user on the Internet
+should have access to a blob container, its ACL can be set to public. Note that this applies to a complete
+container and not to a single blob!
 
-Using the following code, blob storage container ACL can be set on development storage. Note that the container has already been created before.
+Using the following code, blob storage container ACL can be set on development storage. Note that the container has
+already been created before.
 
 .. _zend.service.windowsazure.storage.blob.api.public-blob.example:
 
@@ -146,16 +158,21 @@ Using the following code, blob storage container ACL can be set on development s
 Root container
 --------------
 
-Windows Azure Blob Storage provides support to work with a "root container". This means that a blob can be stored in the root of your storage account, i.e. ``http://myaccount.blob.core.windows.net/somefile.txt``.
+Windows Azure Blob Storage provides support to work with a "root container". This means that a blob can be stored
+in the root of your storage account, i.e. ``http://myaccount.blob.core.windows.net/somefile.txt``.
 
-In order to work with the root container, it should first be created using the ``createContainer()`` method, naming the container ``$root``. All other operations on the root container should be issued with the container name set to ``$root``.
+In order to work with the root container, it should first be created using the ``createContainer()`` method, naming
+the container ``$root``. All other operations on the root container should be issued with the container name set to
+``$root``.
 
 .. _zend.service.windowsazure.storage.blob.wrapper:
 
 Blob storage stream wrapper
 ---------------------------
 
-The Windows Azure *SDK* for *PHP* provides support for registering a blob storage client as a *PHP* file stream wrapper. The blob storage stream wrapper provides support for using regular file operations on Windows Azure Blob Storage. For example, one can open a file from Windows Azure Blob Storage with the ``fopen()`` function:
+The Windows Azure *SDK* for *PHP* provides support for registering a blob storage client as a *PHP* file stream
+wrapper. The blob storage stream wrapper provides support for using regular file operations on Windows Azure Blob
+Storage. For example, one can open a file from Windows Azure Blob Storage with the ``fopen()`` function:
 
 .. _zend.service.windowsazure.storage.blob.wrapper.sample:
 
@@ -170,7 +187,8 @@ The Windows Azure *SDK* for *PHP* provides support for registering a blob storag
 
    fclose($fileHandle);
 
-In order to do this, the Windows Azure *SDK* for *PHP* blob storage client must be registered as a stream wrapper. This can be done by calling the ``registerStreamWrapper()`` method:
+In order to do this, the Windows Azure *SDK* for *PHP* blob storage client must be registered as a stream wrapper.
+This can be done by calling the ``registerStreamWrapper()`` method:
 
 .. _zend.service.windowsazure.storage.blob.wrapper.register:
 
@@ -196,7 +214,10 @@ To unregister the stream wrapper, the ``unregisterStreamWrapper()`` method can b
 Shared Access Signature
 -----------------------
 
-Windows Azure Bob Storage provides a feature called "Shared Access Signatures". By default, there is only one level of authorization possible in Windows Azure Blob Storage: either a container is private or it is public. Shared Access Signatures provide a more granular method of authorization: read, write, delete and list permissions can be assigned on a container or a blob and given to a specific client using an URL-based model.
+Windows Azure Bob Storage provides a feature called "Shared Access Signatures". By default, there is only one level
+of authorization possible in Windows Azure Blob Storage: either a container is private or it is public. Shared
+Access Signatures provide a more granular method of authorization: read, write, delete and list permissions can be
+assigned on a container or a blob and given to a specific client using an URL-based model.
 
 An example would be the following signature:
 
@@ -212,9 +233,12 @@ The above signature gives write access to the "phpazuretestshared1" container of
 Generating a Shared Access Signature
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When you are the owner of a Windows Azure Bob Storage account, you can create and distribute a shared access key for any type of resource in your account. To do this, the ``generateSharedAccessUrl()`` method of the ``Zend_Service_WindowsAzure_Storage_Blob`` storage client can be used.
+When you are the owner of a Windows Azure Bob Storage account, you can create and distribute a shared access key
+for any type of resource in your account. To do this, the ``generateSharedAccessUrl()`` method of the
+``Zend_Service_WindowsAzure_Storage_Blob`` storage client can be used.
 
-The following example code will generate a Shared Access Signature for write access in a container named "container1", within a timeframe of 3000 seconds.
+The following example code will generate a Shared Access Signature for write access in a container named
+"container1", within a timeframe of 3000 seconds.
 
 .. _zend.service.windowsazure.storage.blob.sharedaccesssig.generate-2:
 
@@ -233,7 +257,8 @@ The following example code will generate a Shared Access Signature for write acc
        $storageClient ->isoDate(time() + 3000)
    );
 
-The following example code will generate a Shared Access Signature for read access in a blob named ``test.txt`` in a container named "container1" within a time frame of 3000 seconds.
+The following example code will generate a Shared Access Signature for read access in a blob named ``test.txt`` in
+a container named "container1" within a time frame of 3000 seconds.
 
 .. _zend.service.windowsazure.storage.blob.sharedaccesssig-generate-3:
 
@@ -257,14 +282,18 @@ The following example code will generate a Shared Access Signature for read acce
 Working with Shared Access Signatures from others
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When you receive a Shared Access Signature from someone else, you can use the Windows Azure *SDK* for *PHP* to work with the addressed resource. For example, the following signature can be retrieved from the owner of a storage account:
+When you receive a Shared Access Signature from someone else, you can use the Windows Azure *SDK* for *PHP* to work
+with the addressed resource. For example, the following signature can be retrieved from the owner of a storage
+account:
 
 
 ::
 
    http://phpstorage.blob.core.windows.net/phpazuretestshared1?st=2009-08-17T09%3A06%3A17Z&se=2009-08-17T09%3A56%3A17Z&sr=c&sp=w&sig=hscQ7Su1nqd91OfMTwTkxabhJSaspx%2BD%2Fz8UqZAgn9s%3D
 
-The above signature gives write access to the "phpazuretestshared1" "container" of the phpstorage account. Since the shared key for the account is not known, the Shared Access Signature can be used to work with the authorized resource.
+The above signature gives write access to the "phpazuretestshared1" "container" of the phpstorage account. Since
+the shared key for the account is not known, the Shared Access Signature can be used to work with the authorized
+resource.
 
 .. _zend.service.windowsazure.storage.blob.sharedaccesssig.consuming:
 
@@ -286,6 +315,9 @@ The above signature gives write access to the "phpazuretestshared1" "container" 
        'phpazuretestshared1', 'NewBlob.txt', 'C:\Files\dataforazure.txt'
    );
 
-Note that there was no explicit permission to write to a specific blob. Instead, the Windows Azure *SDK* for *PHP* determined that a permission was required to either write to that specific blob, or to write to its container. Since only a signature was available for the latter, the Windows Azure *SDK* for *PHP* chose those credentials to perform the request on Windows Azure blob storage.
+Note that there was no explicit permission to write to a specific blob. Instead, the Windows Azure *SDK* for *PHP*
+determined that a permission was required to either write to that specific blob, or to write to its container.
+Since only a signature was available for the latter, the Windows Azure *SDK* for *PHP* chose those credentials to
+perform the request on Windows Azure blob storage.
 
 

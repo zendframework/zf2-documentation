@@ -16,7 +16,12 @@ A destination defines a particular view of a document, consisting of the followi
 
 - The magnification (zoom) factor to use when displaying the page.
 
-Destinations may be associated with outline items (:ref:`Document Outline (bookmarks) <zend.pdf.pages.interactive-features.outlines>`), annotations (:ref:`Annotations <zend.pdf.pages.interactive-features.annotations>`), or actions (:ref:`Actions <zend.pdf.pages.interactive-features.actions>`). In each case, the destination specifies the view of the document to be presented when the outline item or annotation is opened or the action is performed. In addition, the optional document open action can be specified.
+Destinations may be associated with outline items (:ref:`Document Outline (bookmarks)
+<zend.pdf.pages.interactive-features.outlines>`), annotations (:ref:`Annotations
+<zend.pdf.pages.interactive-features.annotations>`), or actions (:ref:`Actions
+<zend.pdf.pages.interactive-features.actions>`). In each case, the destination specifies the view of the document
+to be presented when the outline item or annotation is opened or the action is performed. In addition, the optional
+document open action can be specified.
 
 .. _zend.pdf.pages.interactive-features.destinations.types:
 
@@ -30,9 +35,11 @@ The following types are supported by ``Zend_Pdf`` component.
 Zend_Pdf_Destination_Zoom
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Display the specified page, with the coordinates (left, top) positioned at the upper-left corner of the window and the contents of the page magnified by the factor zoom.
+Display the specified page, with the coordinates (left, top) positioned at the upper-left corner of the window and
+the contents of the page magnified by the factor zoom.
 
-Destination object may be created using ``Zend_Pdf_Destination_Zoom::create($page, $left = null, $top = null, $zoom = null)`` method.
+Destination object may be created using ``Zend_Pdf_Destination_Zoom::create($page, $left = null, $top = null, $zoom
+= null)`` method.
 
 Where:
 
@@ -65,7 +72,11 @@ Where:
 Zend_Pdf_Destination_Fit
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Display the specified page, with the coordinates (left, top) positioned at the upper-left corner of the window and the contents of the page magnified by the factor zoom. Display the specified page, with its contents magnified just enough to fit the entire page within the window both horizontally and vertically. If the required horizontal and vertical magnification factors are different, use the smaller of the two, centering the page within the window in the other dimension.
+Display the specified page, with the coordinates (left, top) positioned at the upper-left corner of the window and
+the contents of the page magnified by the factor zoom. Display the specified page, with its contents magnified just
+enough to fit the entire page within the window both horizontally and vertically. If the required horizontal and
+vertical magnification factors are different, use the smaller of the two, centering the page within the window in
+the other dimension.
 
 Destination object may be created using ``Zend_Pdf_Destination_Fit::create($page)`` method.
 
@@ -76,7 +87,8 @@ Where ``$page`` is a destination page (a ``Zend_Pdf_Page`` object or a page numb
 Zend_Pdf_Destination_FitHorizontally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Display the specified page, with the vertical coordinate top positioned at the top edge of the window and the contents of the page magnified just enough to fit the entire width of the page within the window.
+Display the specified page, with the vertical coordinate top positioned at the top edge of the window and the
+contents of the page magnified just enough to fit the entire width of the page within the window.
 
 Destination object may be created using ``Zend_Pdf_Destination_FitHorizontally::create($page, $top)`` method.
 
@@ -97,7 +109,8 @@ Where:
 Zend_Pdf_Destination_FitVertically
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Display the specified page, with the horizontal coordinate left positioned at the left edge of the window and the contents of the page magnified just enough to fit the entire height of the page within the window.
+Display the specified page, with the horizontal coordinate left positioned at the left edge of the window and the
+contents of the page magnified just enough to fit the entire height of the page within the window.
 
 Destination object may be created using ``Zend_Pdf_Destination_FitVertically::create($page, $left)`` method.
 
@@ -118,9 +131,13 @@ Where:
 Zend_Pdf_Destination_FitRectangle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Display the specified page, with its contents magnified just enough to fit the rectangle specified by the coordinates left, bottom, right, and top entirely within the window both horizontally and vertically. If the required horizontal and vertical magnification factors are different, use the smaller of the two, centering the rectangle within the window in the other dimension.
+Display the specified page, with its contents magnified just enough to fit the rectangle specified by the
+coordinates left, bottom, right, and top entirely within the window both horizontally and vertically. If the
+required horizontal and vertical magnification factors are different, use the smaller of the two, centering the
+rectangle within the window in the other dimension.
 
-Destination object may be created using ``Zend_Pdf_Destination_FitRectangle::create($page, $left, $bottom, $right, $top)`` method.
+Destination object may be created using ``Zend_Pdf_Destination_FitRectangle::create($page, $left, $bottom, $right,
+$top)`` method.
 
 Where:
 
@@ -157,9 +174,12 @@ Where:
 Zend_Pdf_Destination_FitBoundingBox
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Display the specified page, with its contents magnified just enough to fit its bounding box entirely within the window both horizontally and vertically. If the required horizontal and vertical magnification factors are different, use the smaller of the two, centering the bounding box within the window in the other dimension.
+Display the specified page, with its contents magnified just enough to fit its bounding box entirely within the
+window both horizontally and vertically. If the required horizontal and vertical magnification factors are
+different, use the smaller of the two, centering the bounding box within the window in the other dimension.
 
-Destination object may be created using ``Zend_Pdf_Destination_FitBoundingBox::create($page, $left, $bottom, $right, $top)`` method.
+Destination object may be created using ``Zend_Pdf_Destination_FitBoundingBox::create($page, $left, $bottom,
+$right, $top)`` method.
 
 Where ``$page`` is a destination page (a ``Zend_Pdf_Page`` object or a page number).
 
@@ -168,9 +188,11 @@ Where ``$page`` is a destination page (a ``Zend_Pdf_Page`` object or a page numb
 Zend_Pdf_Destination_FitBoundingBoxHorizontally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Display the specified page, with the vertical coordinate top positioned at the top edge of the window and the contents of the page magnified just enough to fit the entire width of its bounding box within the window.
+Display the specified page, with the vertical coordinate top positioned at the top edge of the window and the
+contents of the page magnified just enough to fit the entire width of its bounding box within the window.
 
-Destination object may be created using ``Zend_Pdf_Destination_FitBoundingBoxHorizontally::create($page, $top)`` method.
+Destination object may be created using ``Zend_Pdf_Destination_FitBoundingBoxHorizontally::create($page, $top)``
+method.
 
 Where
 
@@ -189,9 +211,11 @@ Where
 Zend_Pdf_Destination_FitBoundingBoxVertically
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Display the specified page, with the horizontal coordinate left positioned at the left edge of the window and the contents of the page magnified just enough to fit the entire height of its bounding box within the window.
+Display the specified page, with the horizontal coordinate left positioned at the left edge of the window and the
+contents of the page magnified just enough to fit the entire height of its bounding box within the window.
 
-Destination object may be created using ``Zend_Pdf_Destination_FitBoundingBoxVertically::create($page, $left)`` method.
+Destination object may be created using ``Zend_Pdf_Destination_FitBoundingBoxVertically::create($page, $left)``
+method.
 
 Where
 
@@ -212,7 +236,8 @@ Zend_Pdf_Destination_Named
 
 All destinations listed above are "Explicit Destinations".
 
-In addition to this, *PDF* document may contain a dictionary of such destinations which may be used to reference from outside the *PDF* (e.g. '``http://www.mycompany.com/document.pdf#chapter3``').
+In addition to this, *PDF* document may contain a dictionary of such destinations which may be used to reference
+from outside the *PDF* (e.g. '``http://www.mycompany.com/document.pdf#chapter3``').
 
 ``Zend_Pdf_Destination_Named`` objects allow to refer destinations from the document named destinations dictionary.
 
@@ -229,15 +254,26 @@ Document level destination processing
 
 ``Zend_Pdf`` class provides a set of destinations processing methods.
 
-Each destination object (including named destinations) can be resolved using the ``resolveDestination($destination)`` method. It returns corresponding ``Zend_Pdf_Page`` object, if destination target is found, or ``NULL`` otherwise.
+Each destination object (including named destinations) can be resolved using the
+``resolveDestination($destination)`` method. It returns corresponding ``Zend_Pdf_Page`` object, if destination
+target is found, or ``NULL`` otherwise.
 
-``Zend_Pdf::resolveDestination()`` method also takes an optional boolean parameter ``$refreshPageCollectionHashes``, which is ``TRUE`` by default. It forces ``Zend_Pdf`` object to refresh internal page collection hashes since document pages list may be updated by user using ``Zend_Pdf::$pages`` property (:ref:`Working with Pages <zend.pdf.pages>`). It may be turned off for performance reasons, if it's known that document pages list wasn't changed since last method request.
+``Zend_Pdf::resolveDestination()`` method also takes an optional boolean parameter
+``$refreshPageCollectionHashes``, which is ``TRUE`` by default. It forces ``Zend_Pdf`` object to refresh internal
+page collection hashes since document pages list may be updated by user using ``Zend_Pdf::$pages`` property
+(:ref:`Working with Pages <zend.pdf.pages>`). It may be turned off for performance reasons, if it's known that
+document pages list wasn't changed since last method request.
 
-Complete list of named destinations can be retrieved using ``Zend_Pdf::getNamedDestinations()`` method. It returns an array of ``Zend_Pdf_Target`` objects, which are actually either an explicit destination or a GoTo action (:ref:`Actions <zend.pdf.pages.interactive-features.actions>`).
+Complete list of named destinations can be retrieved using ``Zend_Pdf::getNamedDestinations()`` method. It returns
+an array of ``Zend_Pdf_Target`` objects, which are actually either an explicit destination or a GoTo action
+(:ref:`Actions <zend.pdf.pages.interactive-features.actions>`).
 
-``Zend_Pdf::getNamedDestination(string $name)`` method returns specified named destination (an explicit destination or a GoTo action).
+``Zend_Pdf::getNamedDestination(string $name)`` method returns specified named destination (an explicit destination
+or a GoTo action).
 
-*PDF* document named destinations dictionary may be updated with ``Zend_Pdf::setNamedDestination(string $name, $destination)`` method, where ``$destination`` is either an explicit destination (any destination except ``Zend_Pdf_Destination_Named``) or a GoTo action.
+*PDF* document named destinations dictionary may be updated with ``Zend_Pdf::setNamedDestination(string $name,
+$destination)`` method, where ``$destination`` is either an explicit destination (any destination except
+``Zend_Pdf_Destination_Named``) or a GoTo action.
 
 If ``NULL`` is specified in place of ``$destination``, then specified named destination is removed.
 
@@ -287,7 +323,9 @@ If ``NULL`` is specified in place of ``$destination``, then specified named dest
 Actions
 -------
 
-Instead of simply jumping to a destination in the document, an annotation or outline item can specify an action for the viewer application to perform, such as launching an application, playing a sound, or changing an annotation's appearance state.
+Instead of simply jumping to a destination in the document, an annotation or outline item can specify an action for
+the viewer application to perform, such as launching an application, playing a sound, or changing an annotation's
+appearance state.
 
 .. _zend.pdf.pages.interactive-features.actions.types:
 
@@ -334,7 +372,8 @@ The following action types are recognized while loading *PDF* document:
 
 - ``Zend_Pdf_Action_SetOCGState``- set the state of one or more optional content groups.
 
-- ``Zend_Pdf_Action_Rendition``- control the playing of multimedia content (begin, stop, pause, or resume a playing rendition).
+- ``Zend_Pdf_Action_Rendition``- control the playing of multimedia content (begin, stop, pause, or resume a playing
+  rendition).
 
 - ``Zend_Pdf_Action_Trans``- update the display of a document, using a transition dictionary.
 
@@ -342,9 +381,11 @@ The following action types are recognized while loading *PDF* document:
 
 Only ``Zend_Pdf_Action_GoTo`` and ``Zend_Pdf_Action_URI`` actions can be created by user now.
 
-GoTo action object can be created using ``Zend_Pdf_Action_GoTo::create($destination)`` method, where ``$destination`` is a ``Zend_Pdf_Destination`` object or a string which can be used to identify named destination.
+GoTo action object can be created using ``Zend_Pdf_Action_GoTo::create($destination)`` method, where
+``$destination`` is a ``Zend_Pdf_Destination`` object or a string which can be used to identify named destination.
 
-``Zend_Pdf_Action_URI::create($uri[, $isMap])`` method has to be used to create a URI action (see *API* documentation for the details). Optional ``$isMap`` parameter is set to ``FALSE`` by default.
+``Zend_Pdf_Action_URI::create($uri[, $isMap])`` method has to be used to create a URI action (see *API*
+documentation for the details). Optional ``$isMap`` parameter is set to ``FALSE`` by default.
 
 It also supports the following methods:
 
@@ -402,18 +443,28 @@ It's an array of ``Zend_Pdf_Action`` objects, which also may have their sub-acti
 Document Open Action
 ^^^^^^^^^^^^^^^^^^^^
 
-Special open action may be specify a destination to be displayed or an action to be performed when the document is opened.
+Special open action may be specify a destination to be displayed or an action to be performed when the document is
+opened.
 
-``Zend_Pdf_Target Zend_Pdf::getOpenAction()`` method returns current document open action (or ``NULL`` if open action is not set).
+``Zend_Pdf_Target Zend_Pdf::getOpenAction()`` method returns current document open action (or ``NULL`` if open
+action is not set).
 
-``setOpenAction(Zend_Pdf_Target $openAction = null)`` method sets document open action or clean it if ``$openAction`` is ``NULL``.
+``setOpenAction(Zend_Pdf_Target $openAction = null)`` method sets document open action or clean it if
+``$openAction`` is ``NULL``.
 
 .. _zend.pdf.pages.interactive-features.outlines:
 
 Document Outline (bookmarks)
 ----------------------------
 
-A PDF document may optionally display a document outline on the screen, allowing the user to navigate interactively from one part of the document to another. The outline consists of a tree-structured hierarchy of outline items (sometimes called bookmarks), which serve as a visual table of contents to display the document's structure to the user. The user can interactively open and close individual items by clicking them with the mouse. When an item is open, its immediate children in the hierarchy become visible on the screen; each child may in turn be open or closed, selectively revealing or hiding further parts of the hierarchy. When an item is closed, all of its descendants in the hierarchy are hidden. Clicking the text of any visible item activates the item, causing the viewer application to jump to a destination or trigger an action associated with the item.
+A PDF document may optionally display a document outline on the screen, allowing the user to navigate interactively
+from one part of the document to another. The outline consists of a tree-structured hierarchy of outline items
+(sometimes called bookmarks), which serve as a visual table of contents to display the document's structure to the
+user. The user can interactively open and close individual items by clicking them with the mouse. When an item is
+open, its immediate children in the hierarchy become visible on the screen; each child may in turn be open or
+closed, selectively revealing or hiding further parts of the hierarchy. When an item is closed, all of its
+descendants in the hierarchy are hidden. Clicking the text of any visible item activates the item, causing the
+viewer application to jump to a destination or trigger an action associated with the item.
 
 ``Zend_Pdf`` class provides public property ``$outlines`` which is an array of ``Zend_Pdf_Outline`` objects.
 
@@ -460,11 +511,13 @@ Outline attributes may be retrieved or set using the following methods:
 
 - ``Zend_Pdf_Target getTarget()``- get outline target (action or explicit or named destination object).
 
-- ``setTarget(Zend_Pdf_Target|string $target)``- set outline target (action or destination). String may be used to identify named destination. ``NULL`` means 'no target'.
+- ``setTarget(Zend_Pdf_Target|string $target)``- set outline target (action or destination). String may be used to
+  identify named destination. ``NULL`` means 'no target'.
 
 - ``array getOptions()``- get outline attributes as an array.
 
-- ``setOptions(array $options)``- set outline options. The following options are recognized: 'title', 'open', 'color', 'italic', 'bold', and 'target'.
+- ``setOptions(array $options)``- set outline options. The following options are recognized: 'title', 'open',
+  'color', 'italic', 'bold', and 'target'.
 
 New outline may be created in two ways:
 
@@ -472,9 +525,11 @@ New outline may be created in two ways:
 
 - ``Zend_Pdf_Outline::create(array $options)``
 
-Each outline object may have child outline items listed in ``Zend_Pdf_Outline::$childOutlines`` public property. It's an array of ``Zend_Pdf_Outline`` objects, so outlines are organized in a tree.
+Each outline object may have child outline items listed in ``Zend_Pdf_Outline::$childOutlines`` public property.
+It's an array of ``Zend_Pdf_Outline`` objects, so outlines are organized in a tree.
 
-``Zend_Pdf_Outline`` class implements RecursiveArray interface, so child outlines may be recursively iterated using RecursiveIteratorIterator:
+``Zend_Pdf_Outline`` class implements RecursiveArray interface, so child outlines may be recursively iterated using
+RecursiveIteratorIterator:
 
 .. code-block:: php
    :linenos:
@@ -509,28 +564,34 @@ Each outline object may have child outline items listed in ``Zend_Pdf_Outline::$
 
 .. note::
 
-   All outline items with unresolved destinations (or destinations of GoTo actions) are updated while document saving by setting their targets to ``NULL``. So document will not be corrupted by removing pages referenced by outlines.
+   All outline items with unresolved destinations (or destinations of GoTo actions) are updated while document
+   saving by setting their targets to ``NULL``. So document will not be corrupted by removing pages referenced by
+   outlines.
 
 .. _zend.pdf.pages.interactive-features.annotations:
 
 Annotations
 -----------
 
-An annotation associates an object such as a note, sound, or movie with a location on a page of a PDF document, or provides a way to interact with the user by means of the mouse and keyboard.
+An annotation associates an object such as a note, sound, or movie with a location on a page of a PDF document, or
+provides a way to interact with the user by means of the mouse and keyboard.
 
 All annotations are represented by ``Zend_Pdf_Annotation`` abstract class.
 
-Annotation may be attached to a page using ``Zend_Pdf_Page::attachAnnotation(Zend_Pdf_Annotation $annotation)`` method.
+Annotation may be attached to a page using ``Zend_Pdf_Page::attachAnnotation(Zend_Pdf_Annotation $annotation)``
+method.
 
 Three types of annotations may be created by user now:
 
-- ``Zend_Pdf_Annotation_Link::create($x1, $y1, $x2, $y2, $target)`` where ``$target`` is an action object or a destination or string (which may be used in place of named destination object).
+- ``Zend_Pdf_Annotation_Link::create($x1, $y1, $x2, $y2, $target)`` where ``$target`` is an action object or a
+  destination or string (which may be used in place of named destination object).
 
 - ``Zend_Pdf_Annotation_Text::create($x1, $y1, $x2, $y2, $text)``
 
 - ``Zend_Pdf_Annotation_FileAttachment::create($x1, $y1, $x2, $y2, $fileSpecification)``
 
-A link annotation represents either a hypertext link to a destination elsewhere in the document or an action to be performed.
+A link annotation represents either a hypertext link to a destination elsewhere in the document or an action to be
+performed.
 
 A text annotation represents a "sticky note" attached to a point in the PDF document.
 
@@ -558,7 +619,8 @@ The following methods are shared between all annotation types:
 
 - ``string getText()``
 
-Text annotation property is a text to be displayed for the annotation or, if this type of annotation does not display text, an alternate description of the annotation's contents in human-readable form.
+Text annotation property is a text to be displayed for the annotation or, if this type of annotation does not
+display text, an alternate description of the annotation's contents in human-readable form.
 
 Link annotation objects also provide two additional methods:
 

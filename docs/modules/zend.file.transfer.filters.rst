@@ -3,7 +3,12 @@
 Filters for Zend_File_Transfer
 ==============================
 
-``Zend_File_Transfer`` is delivered with several file related filters which can be used to automate several tasks which are often done on files. Note that file filters are applied after validation. Also file filters behave slightly different that other filters. They will always return the file name and not the changed content (which would be a bad idea when working on 1GB files). All filters which are provided with ``Zend_File_Transfer`` can be found in the ``Zend_Filter`` component and are named ``Zend_Filter_File_*``. The following filters are actually available:
+``Zend_File_Transfer`` is delivered with several file related filters which can be used to automate several tasks
+which are often done on files. Note that file filters are applied after validation. Also file filters behave
+slightly different that other filters. They will always return the file name and not the changed content (which
+would be a bad idea when working on 1GB files). All filters which are provided with ``Zend_File_Transfer`` can be
+found in the ``Zend_Filter`` component and are named ``Zend_Filter_File_*``. The following filters are actually
+available:
 
 - ``Decrypt``: This filter can decrypt a encrypted file.
 
@@ -22,17 +27,23 @@ Using filters with Zend_File_Transfer
 
 The usage of filters is quite simple. There are several methods for adding and manipulating filters.
 
-- ``addFilter($filter, $options = null, $files = null)``: Adds the given filter to the filter stack (optionally only to the file(s) specified). ``$filter`` may be either an actual filter instance, or a short name specifying the filter type (e.g., 'Rename').
+- ``addFilter($filter, $options = null, $files = null)``: Adds the given filter to the filter stack (optionally
+  only to the file(s) specified). ``$filter`` may be either an actual filter instance, or a short name specifying
+  the filter type (e.g., 'Rename').
 
-- ``addFilters(array $filters, $files = null)``: Adds the given filters to the stack of filters. Each entry may be either a filter type/options pair, or an array with the key 'filter' specifying the filter (all other options will be considered filter options for instantiation).
+- ``addFilters(array $filters, $files = null)``: Adds the given filters to the stack of filters. Each entry may be
+  either a filter type/options pair, or an array with the key 'filter' specifying the filter (all other options
+  will be considered filter options for instantiation).
 
-- ``setFilters(array $filters, $files = null)``: Overwrites any existing filters with the filters specified. The filters should follow the syntax for ``addFilters()``.
+- ``setFilters(array $filters, $files = null)``: Overwrites any existing filters with the filters specified. The
+  filters should follow the syntax for ``addFilters()``.
 
 - ``hasFilter($name)``: Indicates if a filter has been registered.
 
 - ``getFilter($name)``: Returns a previously registered filter.
 
-- ``getFilters($files = null)``: Returns registered filters; if ``$files`` is passed, returns filters for that particular file or set of files.
+- ``getFilters($files = null)``: Returns registered filters; if ``$files`` is passed, returns filters for that
+  particular file or set of files.
 
 - ``removeFilter($name)``: Removes a previously registered filter.
 
@@ -59,7 +70,8 @@ The usage of filters is quite simple. There are several methods for adding and m
 
 .. rubric:: Limit filters to single files
 
-``addFilter()``, ``addFilters()``, and ``setFilters()`` each accept a final ``$files`` argument. This argument can be used to specify a particular file or array of files on which to set the given filter.
+``addFilter()``, ``addFilters()``, and ``setFilters()`` each accept a final ``$files`` argument. This argument can
+be used to specify a particular file or array of files on which to set the given filter.
 
 .. code-block:: php
    :linenos:
@@ -75,7 +87,9 @@ Generally you should simply use the ``addFilters()`` method, which can be called
 
 .. rubric:: Add multiple filters
 
-Often it's simpler just to call ``addFilter()`` multiple times. One call for each filter. This also increases the readability and makes your code more maintainable. As all methods provide a fluent interface you can couple the calls as shown below:
+Often it's simpler just to call ``addFilter()`` multiple times. One call for each filter. This also increases the
+readability and makes your code more maintainable. As all methods provide a fluent interface you can couple the
+calls as shown below:
 
 .. code-block:: php
    :linenos:
@@ -88,7 +102,8 @@ Often it's simpler just to call ``addFilter()`` multiple times. One call for eac
 
 .. note::
 
-   Note that even though setting the same filter multiple times is allowed, doing so can lead to issues when using different options for the same filter.
+   Note that even though setting the same filter multiple times is allowed, doing so can lead to issues when using
+   different options for the same filter.
 
 .. _zend.file.transfer.filters.decrypt:
 
@@ -97,9 +112,13 @@ Decrypt filter
 
 The ``Decrypt`` filter allows to decrypt a encrypted file.
 
-This filter makes use of ``Zend_Filter_Decrypt``. It supports the ``Mcrypt`` and ``OpenSSL`` extensions from *PHP*. Please read the related section for details about how to set the options for decryption and which options are supported.
+This filter makes use of ``Zend_Filter_Decrypt``. It supports the ``Mcrypt`` and ``OpenSSL`` extensions from *PHP*.
+Please read the related section for details about how to set the options for decryption and which options are
+supported.
 
-This filter supports one additional option which can be used to save the decrypted file with another filename. Set the ``filename`` option to change the filename where the decrypted file will be stored. If you suppress this option, the decrypted file will overwrite the original encrypted file.
+This filter supports one additional option which can be used to save the decrypted file with another filename. Set
+the ``filename`` option to change the filename where the decrypted file will be stored. If you suppress this
+option, the decrypted file will overwrite the original encrypted file.
 
 .. _zend.file.transfer.filters.decrypt.example1:
 
@@ -138,9 +157,13 @@ Encrypt filter
 
 The ``Encrypt`` filter allows to encrypt a file.
 
-This filter makes use of ``Zend_Filter_Encrypt``. It supports the ``Mcrypt`` and ``OpenSSL`` extensions from *PHP*. Please read the related section for details about how to set the options for encryption and which options are supported.
+This filter makes use of ``Zend_Filter_Encrypt``. It supports the ``Mcrypt`` and ``OpenSSL`` extensions from *PHP*.
+Please read the related section for details about how to set the options for encryption and which options are
+supported.
 
-This filter supports one additional option which can be used to save the encrypted file with another filename. Set the ``filename`` option to change the filename where the encrypted file will be stored. If you suppress this option, the encrypted file will overwrite the original file.
+This filter supports one additional option which can be used to save the encrypted file with another filename. Set
+the ``filename`` option to change the filename where the encrypted file will be stored. If you suppress this
+option, the encrypted file will overwrite the original file.
 
 .. _zend.file.transfer.filters.encrypt.example1:
 
@@ -176,9 +199,11 @@ This filter supports one additional option which can be used to save the encrypt
 LowerCase filter
 ----------------
 
-The ``LowerCase`` filter allows to change the content of a file to lowercase. You should use this filter only on textfiles.
+The ``LowerCase`` filter allows to change the content of a file to lowercase. You should use this filter only on
+textfiles.
 
-At initiation you can give a string which will then be used as encoding. Or you can use the ``setEncoding()`` method to set it afterwards.
+At initiation you can give a string which will then be used as encoding. Or you can use the ``setEncoding()``
+method to set it afterwards.
 
 .. _zend.file.transfer.filters.lowercase.example:
 
@@ -201,14 +226,16 @@ At initiation you can give a string which will then be used as encoding. Or you 
 
 .. note::
 
-   Note that due to the fact that the options for the LowerCase filter are optional, you must give a ``NULL`` as second parameter (the options) when you want to limit it to a single file element.
+   Note that due to the fact that the options for the LowerCase filter are optional, you must give a ``NULL`` as
+   second parameter (the options) when you want to limit it to a single file element.
 
 .. _zend.file.transfer.filters.rename:
 
 Rename filter
 -------------
 
-The ``Rename`` filter allows to change the destination of the upload, the filename and also to overwrite existing files. It supports the following options:
+The ``Rename`` filter allows to change the destination of the upload, the filename and also to overwrite existing
+files. It supports the following options:
 
 - ``source``: The name and destination of the old file which shall be renamed.
 
@@ -216,7 +243,9 @@ The ``Rename`` filter allows to change the destination of the upload, the filena
 
 - ``overwrite``: Sets if the old file overwrites the new one if it already exists. The default value is ``FALSE``.
 
-Additionally you can also use the method ``setFile()`` to set files, which erases all previous set, ``addFile()`` to add a new file to existing ones, and ``getFile()`` to get all actually set files. To simplify things, this filter understands several notations and that methods and constructor understand the same notations.
+Additionally you can also use the method ``setFile()`` to set files, which erases all previous set, ``addFile()``
+to add a new file to existing ones, and ``getFile()`` to get all actually set files. To simplify things, this
+filter understands several notations and that methods and constructor understand the same notations.
 
 .. _zend.file.transfer.filters.rename.example:
 
@@ -233,7 +262,9 @@ Additionally you can also use the method ``setFile()`` to set files, which erase
    // Set a new destination path only for uploadfile1
    $upload->addFilter('Rename', 'C:\mypics\newgifs', 'uploadfile1');
 
-You can use different notations. Below is a table where you will find a description and the intention for the supported notations. Note that when you use the Adapter or the Form Element you will not be able to use all described notations.
+You can use different notations. Below is a table where you will find a description and the intention for the
+supported notations. Note that when you use the Adapter or the Form Element you will not be able to use all
+described notations.
 
 .. _zend.file.transfer.filters.rename.notations:
 
@@ -258,9 +289,11 @@ You can use different notations. Below is a table where you will find a descript
 UpperCase filter
 ----------------
 
-The ``UpperCase`` filter allows to change the content of a file to uppercase. You should use this filter only on textfiles.
+The ``UpperCase`` filter allows to change the content of a file to uppercase. You should use this filter only on
+textfiles.
 
-At initiation you can give a string which will then be used as encoding. Or you can use the ``setEncoding()`` method to set it afterwards.
+At initiation you can give a string which will then be used as encoding. Or you can use the ``setEncoding()``
+method to set it afterwards.
 
 .. _zend.file.transfer.filters.uppercase.example:
 
@@ -283,6 +316,7 @@ At initiation you can give a string which will then be used as encoding. Or you 
 
 .. note::
 
-   Note that due to the fact that the options for the UpperCase filter are optional, you must give a ``NULL`` as second parameter (the options) when you want to limit it to a single file element.
+   Note that due to the fact that the options for the UpperCase filter are optional, you must give a ``NULL`` as
+   second parameter (the options) when you want to limit it to a single file element.
 
 

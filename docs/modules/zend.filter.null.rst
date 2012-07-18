@@ -3,7 +3,8 @@
 Null
 ====
 
-This filter will change the given input to be ``NULL`` if it meets specific criteria. This is often necessary when you work with databases and want to have a ``NULL`` value instead of a boolean or any other type.
+This filter will change the given input to be ``NULL`` if it meets specific criteria. This is often necessary when
+you work with databases and want to have a ``NULL`` value instead of a boolean or any other type.
 
 .. _zend.filter.set.null.options:
 
@@ -19,7 +20,8 @@ The following options are supported for ``Zend_Filter_Null``:
 Default behaviour for Zend_Filter_Null
 --------------------------------------
 
-Per default this filter works like *PHP*'s ``empty()`` method; in other words, if ``empty()`` returns a boolean ``TRUE``, then a ``NULL`` value will be returned.
+Per default this filter works like *PHP*'s ``empty()`` method; in other words, if ``empty()`` returns a boolean
+``TRUE``, then a ``NULL`` value will be returned.
 
 .. code-block:: php
    :linenos:
@@ -29,7 +31,8 @@ Per default this filter works like *PHP*'s ``empty()`` method; in other words, i
    $result = $filter->filter($value);
    // returns null instead of the empty string
 
-This means that without providing any configuration, ``Zend_Filter_Null`` will accept all input types and return ``NULL`` in the same cases as ``empty()``.
+This means that without providing any configuration, ``Zend_Filter_Null`` will accept all input types and return
+``NULL`` in the same cases as ``empty()``.
 
 Any other value will be returned as is, without any changes.
 
@@ -38,7 +41,8 @@ Any other value will be returned as is, without any changes.
 Changing behaviour for Zend_Filter_Null
 ---------------------------------------
 
-Sometimes it's not enough to filter based on ``empty()``. Therefor ``Zend_Filter_Null`` allows you to configure which type will be converted and which not.
+Sometimes it's not enough to filter based on ``empty()``. Therefor ``Zend_Filter_Null`` allows you to configure
+which type will be converted and which not.
 
 The following types can be handled:
 
@@ -56,7 +60,8 @@ The following types can be handled:
 
 - **all**: Converts all above types to ``NULL``. (This is the default behavior.)
 
-There are several ways to select which of the above types are filtered. You can give one or multiple types and add them, you can give an array, you can use constants, or you can give a textual string. See the following examples:
+There are several ways to select which of the above types are filtered. You can give one or multiple types and add
+them, you can give an array, you can use constants, or you can give a textual string. See the following examples:
 
 .. code-block:: php
    :linenos:
@@ -81,6 +86,7 @@ There are several ways to select which of the above types are filtered. You can 
        'integer',
    ));
 
-You can also give an instance of ``Zend_Config`` to set the wished types. To set types afterwards use ``setType()``.
+You can also give an instance of ``Zend_Config`` to set the wished types. To set types afterwards use
+``setType()``.
 
 

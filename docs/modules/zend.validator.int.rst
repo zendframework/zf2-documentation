@@ -3,7 +3,8 @@
 Int
 ===
 
-``Zend\Validator\Int`` validates if a given value is an integer. Also localized integer values are recognised and can be validated.
+``Zend\Validator\Int`` validates if a given value is an integer. Also localized integer values are recognised and
+can be validated.
 
 .. _zend.validator.set.int.options:
 
@@ -19,7 +20,8 @@ The following options are supported for ``Zend\Validator\Int``:
 Simple integer validation
 -------------------------
 
-The simplest way to validate an integer is by using the system settings. When no option is used, the environment locale is used for validation:
+The simplest way to validate an integer is by using the system settings. When no option is used, the environment
+locale is used for validation:
 
 .. code-block:: php
    :linenos:
@@ -30,16 +32,20 @@ The simplest way to validate an integer is by using the system settings. When no
    $validator->isValid(1234.5); // returns false
    $validator->isValid('1,234'); // returns true
 
-In the above example we expected that our environment is set to "en" as locale. As you can see in the third example also grouping is recognised.
+In the above example we expected that our environment is set to "en" as locale. As you can see in the third example
+also grouping is recognised.
 
 .. _zend.validator.set.int.localized:
 
 Localized integer validation
 ----------------------------
 
-Often it's useful to be able to validate also localized values. Integer values are often written different in other countries. For example using english you can write "1234" or "1,234". Both are integer values but the grouping is optional. In german for example you may write "1.234" and in french "1 234".
+Often it's useful to be able to validate also localized values. Integer values are often written different in other
+countries. For example using english you can write "1234" or "1,234". Both are integer values but the grouping is
+optional. In german for example you may write "1.234" and in french "1 234".
 
-``Zend\Validator\Int`` is able to validate such notations. But it is limited to the locale you set. This means that it not simply strips off the separator, it validates if the correct separator is used. See the following code:
+``Zend\Validator\Int`` is able to validate such notations. But it is limited to the locale you set. This means that
+it not simply strips off the separator, it validates if the correct separator is used. See the following code:
 
 .. code-block:: php
    :linenos:
@@ -50,7 +56,8 @@ Often it's useful to be able to validate also localized values. Integer values a
    $validator->isValid("1,234"); // returns false
    $validator->isValid("1.234"); // returns true
 
-As you can see, by using a locale, your input is validated localized. Using the english notation you get a ``FALSE`` when the locale forces a different notation.
+As you can see, by using a locale, your input is validated localized. Using the english notation you get a
+``FALSE`` when the locale forces a different notation.
 
 The locale can also be set afterwards by using ``setLocale()`` and retrieved by using ``getLocale()``.
 

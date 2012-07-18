@@ -8,17 +8,29 @@ Searching an Index
 Building Queries
 ----------------
 
-There are two ways to search the index. The first method uses query parser to construct a query from a string. The second is to programmatically create your own queries through the ``Zend_Search_Lucene`` *API*.
+There are two ways to search the index. The first method uses query parser to construct a query from a string. The
+second is to programmatically create your own queries through the ``Zend_Search_Lucene`` *API*.
 
 Before choosing to use the provided query parser, please consider the following:
 
-. If you are programmatically creating a query string and then parsing it with the query parser then you should consider building your queries directly with the query *API*. Generally speaking, the query parser is designed for human-entered text, not for program-generated text.
 
-. Untokenized fields are best added directly to queries and not through the query parser. If a field's values are generated programmatically by the application, then the query clauses for this field should also be constructed programmatically. An analyzer, which the query parser uses, is designed to convert human-entered text to terms. Program-generated values, like dates, keywords, etc., should be added with the query *API*.
 
-. In a query form, fields that are general text should use the query parser. All others, such as date ranges, keywords, etc., are better added directly through the query *API*. A field with a limited set of values that can be specified with a pull-down menu should not be added to a query string that is subsequently parsed but instead should be added as a TermQuery clause.
+   . If you are programmatically creating a query string and then parsing it with the query parser then you should
+     consider building your queries directly with the query *API*. Generally speaking, the query parser is designed
+     for human-entered text, not for program-generated text.
 
-. Boolean queries allow the programmer to logically combine two or more queries into new one. Thus it's the best way to add additional criteria to a search defined by a query string.
+   . Untokenized fields are best added directly to queries and not through the query parser. If a field's values
+     are generated programmatically by the application, then the query clauses for this field should also be
+     constructed programmatically. An analyzer, which the query parser uses, is designed to convert human-entered
+     text to terms. Program-generated values, like dates, keywords, etc., should be added with the query *API*.
+
+   . In a query form, fields that are general text should use the query parser. All others, such as date ranges,
+     keywords, etc., are better added directly through the query *API*. A field with a limited set of values that
+     can be specified with a pull-down menu should not be added to a query string that is subsequently parsed but
+     instead should be added as a TermQuery clause.
+
+   . Boolean queries allow the programmer to logically combine two or more queries into new one. Thus it's the best
+     way to add additional criteria to a search defined by a query string.
 
 
 
@@ -31,13 +43,17 @@ Both ways use the same *API* method to search through the index:
 
    $index->find($query);
 
-The ``Zend_Search_Lucene::find()`` method determines the input type automatically and uses the query parser to construct an appropriate ``Zend_Search_Lucene_Search_Query`` object from an input of type string.
+The ``Zend_Search_Lucene::find()`` method determines the input type automatically and uses the query parser to
+construct an appropriate ``Zend_Search_Lucene_Search_Query`` object from an input of type string.
 
-It is important to note that the query parser uses the standard analyzer to tokenize separate parts of query string. Thus all transformations which are applied to indexed text are also applied to query strings.
+It is important to note that the query parser uses the standard analyzer to tokenize separate parts of query
+string. Thus all transformations which are applied to indexed text are also applied to query strings.
 
-The standard analyzer may transform the query string to lower case for case-insensitivity, remove stop-words, and stem among other transformations.
+The standard analyzer may transform the query string to lower case for case-insensitivity, remove stop-words, and
+stem among other transformations.
 
-The *API* method doesn't transform or filter input terms in any way. It's therefore more suitable for computer generated or untokenized fields.
+The *API* method doesn't transform or filter input terms in any way. It's therefore more suitable for computer
+generated or untokenized fields.
 
 .. _zend.search.lucene.searching.query_building.parsing:
 
@@ -46,7 +62,8 @@ Query Parsing
 
 ``Zend_Search_Lucene_Search_QueryParser::parse()`` method may be used to parse query strings into query objects.
 
-This query object may be used in query construction *API* methods to combine user entered queries with programmatically generated queries.
+This query object may be used in query construction *API* methods to combine user entered queries with
+programmatically generated queries.
 
 Actually, in some cases it's the only way to search for values within untokenized fields:
 
@@ -66,7 +83,8 @@ Actually, in some cases it's the only way to search for values within untokenize
 
    $hits = $index->find($query);
 
-``Zend_Search_Lucene_Search_QueryParser::parse()`` method also takes an optional encoding parameter, which can specify query string encoding:
+``Zend_Search_Lucene_Search_QueryParser::parse()`` method also takes an optional encoding parameter, which can
+specify query string encoding:
 
 .. code-block:: php
    :linenos:
@@ -76,7 +94,8 @@ Actually, in some cases it's the only way to search for values within untokenize
 
 If the encoding parameter is omitted, then current locale is used.
 
-It's also possible to specify the default query string encoding with ``Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding()`` method:
+It's also possible to specify the default query string encoding with
+``Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding()`` method:
 
 .. code-block:: php
    :linenos:
@@ -85,16 +104,21 @@ It's also possible to specify the default query string encoding with ``Zend_Sear
    ...
    $userQuery = Zend_Search_Lucene_Search_QueryParser::parse($queryStr);
 
-``Zend_Search_Lucene_Search_QueryParser::getDefaultEncoding()`` returns the current default query string encoding (the empty string means "current locale").
+``Zend_Search_Lucene_Search_QueryParser::getDefaultEncoding()`` returns the current default query string encoding
+(the empty string means "current locale").
 
 .. _zend.search.lucene.searching.results:
 
 Search Results
 --------------
 
-The search result is an array of ``Zend_Search_Lucene_Search_QueryHit`` objects. Each of these has two properties: *$hit->id* is a document number within the index and *$hit->score* is a score of the hit in a search result. The results are ordered by score (descending from highest score).
+The search result is an array of ``Zend_Search_Lucene_Search_QueryHit`` objects. Each of these has two properties:
+*$hit->id* is a document number within the index and *$hit->score* is a score of the hit in a search result. The
+results are ordered by score (descending from highest score).
 
-The ``Zend_Search_Lucene_Search_QueryHit`` object also exposes each field of the ``Zend_Search_Lucene_Document`` found in the search as a property of the hit. In the following example, a hit is returned with two fields from the corresponding document: title and author.
+The ``Zend_Search_Lucene_Search_QueryHit`` object also exposes each field of the ``Zend_Search_Lucene_Document``
+found in the search as a property of the hit. In the following example, a hit is returned with two fields from the
+corresponding document: title and author.
 
 .. code-block:: php
    :linenos:
@@ -111,7 +135,9 @@ The ``Zend_Search_Lucene_Search_QueryHit`` object also exposes each field of the
 
 Stored fields are always returned in UTF-8 encoding.
 
-Optionally, the original ``Zend_Search_Lucene_Document`` object can be returned from the ``Zend_Search_Lucene_Search_QueryHit``. You can retrieve stored parts of the document by using the ``getDocument()`` method of the index object and then get them by ``getFieldValue()`` method:
+Optionally, the original ``Zend_Search_Lucene_Document`` object can be returned from the
+``Zend_Search_Lucene_Search_QueryHit``. You can retrieve stored parts of the document by using the
+``getDocument()`` method of the index object and then get them by ``getFieldValue()`` method:
 
 .. code-block:: php
    :linenos:
@@ -134,7 +160,9 @@ Optionally, the original ``Zend_Search_Lucene_Document`` object can be returned 
        echo $document->title;
    }
 
-The fields available from the ``Zend_Search_Lucene_Document`` object are determined at the time of indexing. The document fields are either indexed, or index and stored, in the document by the indexing application (e.g. LuceneIndexCreation.jar).
+The fields available from the ``Zend_Search_Lucene_Document`` object are determined at the time of indexing. The
+document fields are either indexed, or index and stored, in the document by the indexing application (e.g.
+LuceneIndexCreation.jar).
 
 Note that the document identity ('path' in our example) is also stored in the index and must be retrieved from it.
 
@@ -143,9 +171,11 @@ Note that the document identity ('path' in our example) is also stored in the in
 Limiting the Result Set
 -----------------------
 
-The most computationally expensive part of searching is score calculation. It may take several seconds for large result sets (tens of thousands of hits).
+The most computationally expensive part of searching is score calculation. It may take several seconds for large
+result sets (tens of thousands of hits).
 
-``Zend_Search_Lucene`` gives the possibility to limit result set size with ``getResultSetLimit()`` and ``setResultSetLimit()`` methods:
+``Zend_Search_Lucene`` gives the possibility to limit result set size with ``getResultSetLimit()`` and
+``setResultSetLimit()`` methods:
 
 .. code-block:: php
    :linenos:
@@ -163,7 +193,9 @@ It doesn't give the 'best N' results, but only the 'first N'[#]_.
 Results Scoring
 ---------------
 
-``Zend_Search_Lucene`` uses the same scoring algorithms as Java Lucene. All hits in the search result are ordered by score by default. Hits with greater score come first, and documents having higher scores should match the query more precisely than documents having lower scores.
+``Zend_Search_Lucene`` uses the same scoring algorithms as Java Lucene. All hits in the search result are ordered
+by score by default. Hits with greater score come first, and documents having higher scores should match the query
+more precisely than documents having lower scores.
 
 Roughly speaking, search hits that contain the searched term or phrase more frequently will have a higher score.
 
@@ -179,14 +211,16 @@ A hit's score can be retrieved by accessing the *score* property of the hit:
        echo $hit->score;
    }
 
-The ``Zend_Search_Lucene_Search_Similarity`` class is used to calculate the score for each hit. See :ref:`Extensibility. Scoring Algorithms <zend.search.lucene.extending.scoring>` section for details.
+The ``Zend_Search_Lucene_Search_Similarity`` class is used to calculate the score for each hit. See
+:ref:`Extensibility. Scoring Algorithms <zend.search.lucene.extending.scoring>` section for details.
 
 .. _zend.search.lucene.searching.sorting:
 
 Search Result Sorting
 ---------------------
 
-By default, the search results are ordered by score. The programmer can change this behavior by setting a sort field (or a list of fields), sort type and sort order parameters.
+By default, the search results are ordered by score. The programmer can change this behavior by setting a sort
+field (or a list of fields), sort type and sort order parameters.
 
 *$index->find()* call may take several optional parameters:
 
@@ -199,9 +233,11 @@ By default, the search results are ordered by score. The programmer can change t
 
 A name of stored field by which to sort result should be passed as the ``$sortField`` parameter.
 
-``$sortType`` may be omitted or take the following enumerated values: ``SORT_REGULAR`` (compare items normally- default value), ``SORT_NUMERIC`` (compare items numerically), ``SORT_STRING`` (compare items as strings).
+``$sortType`` may be omitted or take the following enumerated values: ``SORT_REGULAR`` (compare items normally-
+default value), ``SORT_NUMERIC`` (compare items numerically), ``SORT_STRING`` (compare items as strings).
 
-``$sortOrder`` may be omitted or take the following enumerated values: ``SORT_ASC`` (sort in ascending order- default value), ``SORT_DESC`` (sort in descending order).
+``$sortOrder`` may be omitted or take the following enumerated values: ``SORT_ASC`` (sort in ascending order-
+default value), ``SORT_DESC`` (sort in descending order).
 
 Examples:
 
@@ -220,7 +256,8 @@ Examples:
 
    $index->find($query, 'name', SORT_STRING, 'quantity', SORT_NUMERIC, SORT_DESC);
 
-Please use caution when using a non-default search order; the query needs to retrieve documents completely from an index, which may dramatically reduce search performance.
+Please use caution when using a non-default search order; the query needs to retrieve documents completely from an
+index, which may dramatically reduce search performance.
 
 .. _zend.search.lucene.searching.highlighting:
 
@@ -229,7 +266,8 @@ Search Results Highlighting
 
 ``Zend_Search_Lucene`` provides two options for search results highlighting.
 
-The first one is utilizing ``Zend_Search_Lucene_Document_Html`` class (see :ref:`HTML documents section <zend.search.lucene.index-creation.html-documents>` for details) using the following methods:
+The first one is utilizing ``Zend_Search_Lucene_Document_Html`` class (see :ref:`HTML documents section
+<zend.search.lucene.index-creation.html-documents>` for details) using the following methods:
 
 .. code-block:: php
    :linenos:
@@ -261,7 +299,9 @@ The first one is utilizing ``Zend_Search_Lucene_Document_Html`` class (see :ref:
     */
    public function highlightExtended($words, $callback, $params = array())
 
-To customize highlighting behavior use ``highlightExtended()`` method with specified callback, which takes one or more parameters [#]_, or extend ``Zend_Search_Lucene_Document_Html`` class and redefine ``applyColour($stringToHighlight, $colour)`` method used as a default highlighting callback. [#]_
+To customize highlighting behavior use ``highlightExtended()`` method with specified callback, which takes one or
+more parameters [#]_, or extend ``Zend_Search_Lucene_Document_Html`` class and redefine
+``applyColour($stringToHighlight, $colour)`` method used as a default highlighting callback. [#]_
 
 :ref:`View helpers <zend.view.helpers>` also can be used as callbacks in context of view script:
 
@@ -274,15 +314,20 @@ The result of highlighting operation is retrieved by *Zend_Search_Lucene_Documen
 
 .. note::
 
-   Highlighting is performed in terms of current analyzer. So all forms of the word(s) recognized by analyzer are highlighted.
+   Highlighting is performed in terms of current analyzer. So all forms of the word(s) recognized by analyzer are
+   highlighted.
 
-   E.g. if current analyzer is case insensitive and we request to highlight 'text' word, then 'text', 'Text', 'TEXT' and other case combinations will be highlighted.
+   E.g. if current analyzer is case insensitive and we request to highlight 'text' word, then 'text', 'Text',
+   'TEXT' and other case combinations will be highlighted.
 
-   In the same way, if current analyzer supports stemming and we request to highlight 'indexed', then 'index', 'indexing', 'indices' and other word forms will be highlighted.
+   In the same way, if current analyzer supports stemming and we request to highlight 'indexed', then 'index',
+   'indexing', 'indices' and other word forms will be highlighted.
 
-   On the other hand, if word is skipped by current analyzer (e.g. if short words filter is applied to the analyzer), then nothing will be highlighted.
+   On the other hand, if word is skipped by current analyzer (e.g. if short words filter is applied to the
+   analyzer), then nothing will be highlighted.
 
-The second option is to use *Zend_Search_Lucene_Search_Query->highlightMatches(string $inputHTML[, $defaultEncoding = 'UTF-8'[, Zend_Search_Lucene_Search_Highlighter_Interface $highlighter]])* method:
+The second option is to use *Zend_Search_Lucene_Search_Query->highlightMatches(string $inputHTML[, $defaultEncoding
+= 'UTF-8'[, Zend_Search_Lucene_Search_Highlighter_Interface $highlighter]])* method:
 
 .. code-block:: php
    :linenos:
@@ -290,9 +335,11 @@ The second option is to use *Zend_Search_Lucene_Search_Query->highlightMatches(s
    $query = Zend_Search_Lucene_Search_QueryParser::parse($queryStr);
    $highlightedHTML = $query->highlightMatches($sourceHTML);
 
-Optional second parameter is a default *HTML* document encoding. It's used if encoding is not specified using Content-type HTTP-EQUIV meta tag.
+Optional second parameter is a default *HTML* document encoding. It's used if encoding is not specified using
+Content-type HTTP-EQUIV meta tag.
 
-Optional third parameter is a highlighter object which has to implement ``Zend_Search_Lucene_Search_Highlighter_Interface`` interface:
+Optional third parameter is a highlighter object which has to implement
+``Zend_Search_Lucene_Search_Highlighter_Interface`` interface:
 
 .. code-block:: php
    :linenos:
@@ -322,18 +369,25 @@ Optional third parameter is a highlighter object which has to implement ``Zend_S
        public function highlight($words);
    }
 
-Where ``Zend_Search_Lucene_Document_Html`` object is an object constructed from the source *HTML* provided to the ``Zend_Search_Lucene_Search_Query->highlightMatches()`` method.
+Where ``Zend_Search_Lucene_Document_Html`` object is an object constructed from the source *HTML* provided to the
+``Zend_Search_Lucene_Search_Query->highlightMatches()`` method.
 
-If ``$highlighter`` parameter is omitted, then ``Zend_Search_Lucene_Search_Highlighter_Default`` object is instantiated and used.
+If ``$highlighter`` parameter is omitted, then ``Zend_Search_Lucene_Search_Highlighter_Default`` object is
+instantiated and used.
 
-Highlighter ``highlight()`` method is invoked once per subquery, so it has an ability to differentiate highlighting for them.
+Highlighter ``highlight()`` method is invoked once per subquery, so it has an ability to differentiate highlighting
+for them.
 
-Actually, default highlighter does this walking through predefined color table. So you can implement your own highlighter or just extend the default and redefine color table.
+Actually, default highlighter does this walking through predefined color table. So you can implement your own
+highlighter or just extend the default and redefine color table.
 
-*Zend_Search_Lucene_Search_Query->htmlFragmentHighlightMatches()* has similar behavior. The only difference is that it takes as an input and returns *HTML* fragment without <>HTML>, <HEAD>, <BODY> tags. Nevertheless, fragment is automatically transformed to valid *XHTML*.
+*Zend_Search_Lucene_Search_Query->htmlFragmentHighlightMatches()* has similar behavior. The only difference is that
+it takes as an input and returns *HTML* fragment without <>HTML>, <HEAD>, <BODY> tags. Nevertheless, fragment is
+automatically transformed to valid *XHTML*.
 
 
 
 .. [#] Returned hits are still ordered by score or by the specified order, if given.
-.. [#] The first is an *HTML* fragment for highlighting and others are callback behavior dependent. Returned value is a highlighted *HTML* fragment.
+.. [#] The first is an *HTML* fragment for highlighting and others are callback behavior dependent. Returned value
+       is a highlighted *HTML* fragment.
 .. [#] In both cases returned *HTML* is automatically transformed into valid *XHTML*.

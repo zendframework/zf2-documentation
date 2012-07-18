@@ -3,7 +3,8 @@
 BaseName
 ========
 
-``Zend_Filter_BaseName`` allows you to filter a string which contains the path to a file and it will return the base name of this file.
+``Zend_Filter_BaseName`` allows you to filter a string which contains the path to a file and it will return the
+base name of this file.
 
 .. _zend.filter.set.basename.options:
 

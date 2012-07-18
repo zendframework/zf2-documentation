@@ -18,7 +18,8 @@ Ccnum
 
 .. note::
 
-   The ``Ccnum`` validator has been deprecated in favor of the ``CreditCard`` validator. For security reasons you should use CreditCard instead of Ccnum.
+   The ``Ccnum`` validator has been deprecated in favor of the ``CreditCard`` validator. For security reasons you
+   should use CreditCard instead of Ccnum.
 
 .. include:: zend.validator.date.rst
 .. include:: zend.validator.db.rst

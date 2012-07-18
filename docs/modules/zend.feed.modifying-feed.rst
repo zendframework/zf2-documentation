@@ -3,7 +3,9 @@
 Modifying Feed and Entry structures
 ===================================
 
-``Zend_Feed``'s natural syntax extends to constructing and modifying feeds and entries as well as reading them. You can easily turn your new or modified objects back into well-formed *XML* for saving to a file or sending to a server.
+``Zend_Feed``'s natural syntax extends to constructing and modifying feeds and entries as well as reading them. You
+can easily turn your new or modified objects back into well-formed *XML* for saving to a file or sending to a
+server.
 
 .. _zend.feed.modifying-feed.example.modifying:
 
@@ -20,11 +22,17 @@ Modifying Feed and Entry structures
 
    echo $entry->saveXML();
 
-This will output a full (includes ``<?xml ... >`` prologue) *XML* representation of the new entry, including any necessary *XML* namespaces.
+This will output a full (includes ``<?xml ... >`` prologue) *XML* representation of the new entry, including any
+necessary *XML* namespaces.
 
-Note that the above will work even if the existing entry does not already have an author tag. You can use as many levels of ``->`` access as you like before getting to an assignment; all of the intervening levels will be created for you automatically if necessary.
+Note that the above will work even if the existing entry does not already have an author tag. You can use as many
+levels of ``->`` access as you like before getting to an assignment; all of the intervening levels will be created
+for you automatically if necessary.
 
-If you want to use a namespace other than ``atom:``, ``rss:``, or ``osrss:`` in your entry, you need to register the namespace with ``Zend_Feed`` using ``Zend_Feed::registerNamespace()``. When you are modifying an existing element, it will always maintain its original namespace. When adding a new element, it will go into the default namespace if you do not explicitly specify another namespace.
+If you want to use a namespace other than ``atom:``, ``rss:``, or ``osrss:`` in your entry, you need to register
+the namespace with ``Zend_Feed`` using ``Zend_Feed::registerNamespace()``. When you are modifying an existing
+element, it will always maintain its original namespace. When adding a new element, it will go into the default
+namespace if you do not explicitly specify another namespace.
 
 .. _zend.feed.modifying-feed.example.creating:
 

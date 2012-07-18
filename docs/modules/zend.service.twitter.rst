@@ -8,19 +8,27 @@ Zend_Service_Twitter
 Introduction
 ------------
 
-``Zend_Service_Twitter`` provides a client for the `Twitter RESTAPI`_. ``Zend_Service_Twitter`` allows you to query the public timeline. If you provide a username and OAuth details for Twitter, it will allow you to get and update your status, reply to friends, direct message friends, mark tweets as favorite, and much more.
+``Zend_Service_Twitter`` provides a client for the `Twitter RESTAPI`_. ``Zend_Service_Twitter`` allows you to query
+the public timeline. If you provide a username and OAuth details for Twitter, it will allow you to get and update
+your status, reply to friends, direct message friends, mark tweets as favorite, and much more.
 
-``Zend_Service_Twitter`` implements a *REST* service, and all methods return an instance of ``Zend_Rest_Client_Result``.
+``Zend_Service_Twitter`` implements a *REST* service, and all methods return an instance of
+``Zend_Rest_Client_Result``.
 
-``Zend_Service_Twitter`` is broken up into subsections so you can easily identify which type of call is being requested.
+``Zend_Service_Twitter`` is broken up into subsections so you can easily identify which type of call is being
+requested.
 
-- *account* makes sure that your account credentials are valid, checks your *API* rate limit, and ends the current session for the authenticated user.
+- *account* makes sure that your account credentials are valid, checks your *API* rate limit, and ends the current
+  session for the authenticated user.
 
-- *status* retrieves the public and user timelines and shows, updates, destroys, and retrieves replies for the authenticated user.
+- *status* retrieves the public and user timelines and shows, updates, destroys, and retrieves replies for the
+  authenticated user.
 
-- *user* retrieves friends and followers for the authenticated user and returns extended information about a passed user.
+- *user* retrieves friends and followers for the authenticated user and returns extended information about a passed
+  user.
 
-- *directMessage* retrieves the authenticated user's received direct messages, deletes direct messages, and sends new direct messages.
+- *directMessage* retrieves the authenticated user's received direct messages, deletes direct messages, and sends
+  new direct messages.
 
 - *friendship* creates and removes friendships for the authenticated user.
 
@@ -33,17 +41,35 @@ Introduction
 Authentication
 --------------
 
-With the exception of fetching the public timeline, ``Zend_Service_Twitter`` requires authentication as a valid user. This is achieved using the OAuth authentication protocol. OAuth is the only supported authentication mode for Twitter as of August 2010. The OAuth implementation used by ``Zend_Service_Twitter`` is ``Zend_Oauth``.
+With the exception of fetching the public timeline, ``Zend_Service_Twitter`` requires authentication as a valid
+user. This is achieved using the OAuth authentication protocol. OAuth is the only supported authentication mode for
+Twitter as of August 2010. The OAuth implementation used by ``Zend_Service_Twitter`` is ``Zend_Oauth``.
 
 .. _zend.service.twitter.authentication.example:
 
 .. rubric:: Creating the Twitter Class
 
-``Zend_Service_Twitter`` must authorize itself, on behalf of a user, before use with the Twitter API (except for public timeline). This must be accomplished using OAuth since Twitter has disabled it's basic HTTP authentication as of August 2010.
+``Zend_Service_Twitter`` must authorize itself, on behalf of a user, before use with the Twitter API (except for
+public timeline). This must be accomplished using OAuth since Twitter has disabled it's basic HTTP authentication
+as of August 2010.
 
-There are two options to establishing authorization. The first is to implement the workflow of ``Zend_Oauth`` via ``Zend_Service_Twitter`` which proxies to an internal ``Zend_Oauth_Consumer`` object. Please refer to the ``Zend_Oauth`` documentation for a full example of this workflow - you can call all documented ``Zend_Oauth_Consumer`` methods on ``Zend_Service_Twitter`` including constructor options. You may also use ``Zend_Oauth`` directly and only pass the resulting access token into ``Zend_Service_Twitter``. This is the normal workflow once you have established a reusable access token for a particular Twitter user. The resulting OAuth access token should be stored to a database for future use (otherwise you will need to authorize for every new instance of ``Zend_Service_Twitter``). Bear in mind that authorization via OAuth results in your user being redirected to Twitter to give their consent to the requested authorization (this is not repeated for stored access tokens). This will require additional work (i.e. redirecting users and hosting a callback URL) over the previous HTTP authentication mechanism where a user just needed to allow applications to store their username and password.
+There are two options to establishing authorization. The first is to implement the workflow of ``Zend_Oauth`` via
+``Zend_Service_Twitter`` which proxies to an internal ``Zend_Oauth_Consumer`` object. Please refer to the
+``Zend_Oauth`` documentation for a full example of this workflow - you can call all documented
+``Zend_Oauth_Consumer`` methods on ``Zend_Service_Twitter`` including constructor options. You may also use
+``Zend_Oauth`` directly and only pass the resulting access token into ``Zend_Service_Twitter``. This is the normal
+workflow once you have established a reusable access token for a particular Twitter user. The resulting OAuth
+access token should be stored to a database for future use (otherwise you will need to authorize for every new
+instance of ``Zend_Service_Twitter``). Bear in mind that authorization via OAuth results in your user being
+redirected to Twitter to give their consent to the requested authorization (this is not repeated for stored access
+tokens). This will require additional work (i.e. redirecting users and hosting a callback URL) over the previous
+HTTP authentication mechanism where a user just needed to allow applications to store their username and password.
 
-The following example demonstrates setting up ``Zend_Service_Twitter`` which is given an already established OAuth access token. Please refer to the ``Zend_Oauth`` documentation to understand the workflow involved. The access token is a serializable object, so you may store the serialized object to a database, and unserialize it at retrieval time before passing the objects into ``Zend_Service_Twitter``. The ``Zend_Oauth`` documentation demonstrates the workflow and objects involved.
+The following example demonstrates setting up ``Zend_Service_Twitter`` which is given an already established OAuth
+access token. Please refer to the ``Zend_Oauth`` documentation to understand the workflow involved. The access
+token is a serializable object, so you may store the serialized object to a database, and unserialize it at
+retrieval time before passing the objects into ``Zend_Service_Twitter``. The ``Zend_Oauth`` documentation
+demonstrates the workflow and objects involved.
 
 .. code-block:: php
    :linenos:
@@ -64,9 +90,14 @@ The following example demonstrates setting up ``Zend_Service_Twitter`` which is 
 
 .. note::
 
-   In order to authenticate with Twitter, ALL applications MUST be registered with Twitter in order to receive a Consumer Key and Consumer Secret to be used when authenticating with OAuth. This can not be reused across multiple applications - you must register each new application separately. Twitter access tokens have no expiry date, so storing them to a database is advised (they can, of course, be refreshed simply be repeating the OAuth authorization process). This can only be done while interacting with the user associated with that access token.
+   In order to authenticate with Twitter, ALL applications MUST be registered with Twitter in order to receive a
+   Consumer Key and Consumer Secret to be used when authenticating with OAuth. This can not be reused across
+   multiple applications - you must register each new application separately. Twitter access tokens have no expiry
+   date, so storing them to a database is advised (they can, of course, be refreshed simply be repeating the OAuth
+   authorization process). This can only be done while interacting with the user associated with that access token.
 
-   The previous pre-OAuth version of ``Zend_Service_Twitter`` allowed passing in a username as the first parameter rather than within an array. This is no longer supported.
+   The previous pre-OAuth version of ``Zend_Service_Twitter`` allowed passing in a username as the first parameter
+   rather than within an array. This is no longer supported.
 
 .. _zend.service.twitter.account:
 
@@ -103,7 +134,8 @@ Account Methods
      ));
      $response   = $twitter->account->endSession();
 
-- ``rateLimitStatus()`` returns the remaining number of *API* requests available to the authenticating user before the *API* limit is reached for the current hour.
+- ``rateLimitStatus()`` returns the remaining number of *API* requests available to the authenticating user before
+  the *API* limit is reached for the current hour.
 
   .. _zend.service.twitter.account.ratelimitstatus:
 
@@ -123,7 +155,8 @@ Account Methods
 Status Methods
 --------------
 
-- ``publicTimeline()`` returns the 20 most recent statuses from non-protected users with a custom user icon. The public timeline is cached by Twitter for 60 seconds.
+- ``publicTimeline()`` returns the 20 most recent statuses from non-protected users with a custom user icon. The
+  public timeline is cached by Twitter for 60 seconds.
 
   .. _zend.service.twitter.status.publictimeline:
 
@@ -138,7 +171,8 @@ Status Methods
      ));
      $response   = $twitter->status->publicTimeline();
 
-- ``friendsTimeline()`` returns the 20 most recent statuses posted by the authenticating user and that user's friends.
+- ``friendsTimeline()`` returns the 20 most recent statuses posted by the authenticating user and that user's
+  friends.
 
   .. _zend.service.twitter.status.friendstimeline:
 
@@ -155,7 +189,8 @@ Status Methods
 
   The ``friendsTimeline()`` method accepts an array of optional parameters to modify the query.
 
-  - *since* narrows the returned results to just those statuses created after the specified date/time (up to 24 hours old).
+  - *since* narrows the returned results to just those statuses created after the specified date/time (up to 24
+    hours old).
 
   - *page* specifies which page you want to return.
 
@@ -178,13 +213,15 @@ Status Methods
 
   - *id* specifies the ID or screen name of the user for whom to return the friends_timeline.
 
-  - *since* narrows the returned results to just those statuses created after the specified date/time (up to 24 hours old).
+  - *since* narrows the returned results to just those statuses created after the specified date/time (up to 24
+    hours old).
 
   - *page* specifies which page you want to return.
 
   - *count* specifies the number of statuses to retrieve. May not be greater than 200.
 
-- ``show()`` returns a single status, specified by the *id* parameter below. The status' author will be returned inline.
+- ``show()`` returns a single status, specified by the *id* parameter below. The status' author will be returned
+  inline.
 
   .. _zend.service.twitter.status.show:
 
@@ -199,7 +236,8 @@ Status Methods
      ));
      $response   = $twitter->status->show(1234);
 
-- ``update()`` updates the authenticating user's status. This method requires that you pass in the status update that you want to post to Twitter.
+- ``update()`` updates the authenticating user's status. This method requires that you pass in the status update
+  that you want to post to Twitter.
 
   .. _zend.service.twitter.status.update:
 
@@ -218,7 +256,8 @@ Status Methods
 
   - *in_reply_to_status_id* specifies the ID of an existing status that the status to be posted is in reply to.
 
-- ``replies()`` returns the 20 most recent @replies (status updates prefixed with @username) for the authenticating user.
+- ``replies()`` returns the 20 most recent @replies (status updates prefixed with @username) for the authenticating
+  user.
 
   .. _zend.service.twitter.status.replies:
 
@@ -235,7 +274,8 @@ Status Methods
 
   The ``replies()`` method accepts an array of optional parameters to modify the query.
 
-  - *since* narrows the returned results to just those statuses created after the specified date/time (up to 24 hours old).
+  - *since* narrows the returned results to just those statuses created after the specified date/time (up to 24
+    hours old).
 
   - *page* specifies which page you want to return.
 
@@ -261,7 +301,8 @@ Status Methods
 User Methods
 ------------
 
-- ``friends()``\ r eturns up to 100 of the authenticating user's friends who have most recently updated, each with current status inline.
+- ``friends()``\ r eturns up to 100 of the authenticating user's friends who have most recently updated, each with
+  current status inline.
 
   .. _zend.service.twitter.user.friends:
 
@@ -280,7 +321,8 @@ User Methods
 
   - *id* specifies the ID or screen name of the user for whom to return a list of friends.
 
-  - *since* narrows the returned results to just those statuses created after the specified date/time (up to 24 hours old).
+  - *since* narrows the returned results to just those statuses created after the specified date/time (up to 24
+    hours old).
 
   - *page* specifies which page you want to return.
 
@@ -305,7 +347,8 @@ User Methods
 
   - *page* specifies which page you want to return.
 
-- ``show()`` returns extended information of a given user, specified by ID or screen name as per the required *id* parameter below.
+- ``show()`` returns extended information of a given user, specified by ID or screen name as per the required *id*
+  parameter below.
 
   .. _zend.service.twitter.user.show:
 
@@ -344,7 +387,8 @@ Direct Message Methods
 
   - *since_id* returns only direct messages with an ID greater than (that is, more recent than) the specified ID.
 
-  - *since* narrows the returned results to just those statuses created after the specified date/time (up to 24 hours old).
+  - *since* narrows the returned results to just those statuses created after the specified date/time (up to 24
+    hours old).
 
   - *page* specifies which page you want to return.
 
@@ -367,11 +411,13 @@ Direct Message Methods
 
   - *since_id* returns only direct messages with an ID greater than (that is, more recent than) the specified ID.
 
-  - *since* narrows the returned results to just those statuses created after the specified date/time (up to 24 hours old).
+  - *since* narrows the returned results to just those statuses created after the specified date/time (up to 24
+    hours old).
 
   - *page* specifies which page you want to return.
 
-- ``new()`` sends a new direct message to the specified user from the authenticating user. Requires both the user and text parameters below.
+- ``new()`` sends a new direct message to the specified user from the authenticating user. Requires both the user
+  and text parameters below.
 
   .. _zend.service.twitter.directmessage.new:
 
@@ -386,7 +432,8 @@ Direct Message Methods
      ));
      $response   = $twitter->directMessage->new('myfriend', 'mymessage');
 
-- ``destroy()`` destroys the direct message specified in the required *id* parameter. The authenticating user must be the recipient of the specified direct message.
+- ``destroy()`` destroys the direct message specified in the required *id* parameter. The authenticating user must
+  be the recipient of the specified direct message.
 
   .. _zend.service.twitter.directmessage.destroy:
 
@@ -436,7 +483,8 @@ Friendship Methods
      ));
      $response   = $twitter->friendship->destroy('myoldfriend');
 
-- ``exists()`` tests if a friendship exists between the user specified in the *id* parameter and the authenticating user.
+- ``exists()`` tests if a friendship exists between the user specified in the *id* parameter and the authenticating
+  user.
 
   .. _zend.service.twitter.friendship.exists:
 
@@ -456,7 +504,8 @@ Friendship Methods
 Favorite Methods
 ----------------
 
-- ``favorites()`` returns the 20 most recent favorite statuses for the authenticating user or user specified by the *id* parameter.
+- ``favorites()`` returns the 20 most recent favorite statuses for the authenticating user or user specified by the
+  *id* parameter.
 
   .. _zend.service.twitter.favorite.favorites:
 
@@ -512,7 +561,8 @@ Favorite Methods
 Block Methods
 -------------
 
-- ``exists()`` checks if the authenticating user is blocking a target user and can optionally return the blocked user's object if a block does exists.
+- ``exists()`` checks if the authenticating user is blocking a target user and can optionally return the blocked
+  user's object if a block does exists.
 
   .. _zend.service.twitter.block.exists:
 
@@ -536,7 +586,8 @@ Block Methods
 
   - *returnResult* specifies whether or not return the user object instead of just ``TRUE`` or ``FALSE``.
 
-- ``create()`` blocks the user specified in the *id* parameter as the authenticating user and destroys a friendship to the blocked user if one exists. Returns the blocked user in the requested format when successful.
+- ``create()`` blocks the user specified in the *id* parameter as the authenticating user and destroys a friendship
+  to the blocked user if one exists. Returns the blocked user in the requested format when successful.
 
   .. _zend.service.twitter.block.create:
 
@@ -551,7 +602,8 @@ Block Methods
      ));
      $response   = $twitter->block->create('usertoblock);
 
-- ``destroy()`` un-blocks the user specified in the *id* parameter for the authenticating user. Returns the un-blocked user in the requested format when successful.
+- ``destroy()`` un-blocks the user specified in the *id* parameter for the authenticating user. Returns the
+  un-blocked user in the requested format when successful.
 
   .. _zend.service.twitter.block.destroy:
 
@@ -590,7 +642,8 @@ Block Methods
 
   - *page* specifies which page ou want to return. A single page contains 20 IDs.
 
-  - *returnUserIds* specifies whether to return an array of numeric user IDs the authenticating user is blocking instead of an array of user objects.
+  - *returnUserIds* specifies whether to return an array of numeric user IDs the authenticating user is blocking
+    instead of an array of user objects.
 
 .. include:: zend.service.twitter.search.rst
 

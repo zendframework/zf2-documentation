@@ -12,7 +12,9 @@ Supported options for Zend_Filter_StringTrim
 
 The following options are supported for ``Zend_Filter_StringTrim``:
 
-- **charlist**: List of characters to remove from the beginning and end of the string. If this is not set or is null, the default behavior will be invoked, which is to remove only whitespace from the beginning and end of the string.
+- **charlist**: List of characters to remove from the beginning and end of the string. If this is not set or is
+  null, the default behavior will be invoked, which is to remove only whitespace from the beginning and end of the
+  string.
 
 .. _zend.filter.set.stringtrim.basic:
 
@@ -43,6 +45,9 @@ Default behaviour for Zend_Filter_StringTrim
 
    print $filter->filter(' This is (my) content:');
 
-The above example returns 'This is (my) content'. Notice that the whitespace characters and colon are removed. You can also provide an instance of ``Zend_Config`` or an array with a 'charlist' key. To set the desired character list after instantiation, use the ``setCharList()`` method. The ``getCharList()`` return the values set for charlist.
+The above example returns 'This is (my) content'. Notice that the whitespace characters and colon are removed. You
+can also provide an instance of ``Zend_Config`` or an array with a 'charlist' key. To set the desired character
+list after instantiation, use the ``setCharList()`` method. The ``getCharList()`` return the values set for
+charlist.
 
 

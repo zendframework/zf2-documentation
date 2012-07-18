@@ -54,7 +54,9 @@ REST Server Usage
 Calling a Zend_Rest_Server Service
 ----------------------------------
 
-To call a ``Zend_Rest_Server`` service, you must supply a ``GET``/POST *method* argument with a value that is the method you wish to call. You can then follow that up with any number of arguments using either the name of the argument (i.e. "who") or using *arg* following by the numeric position of the argument (i.e. "arg1").
+To call a ``Zend_Rest_Server`` service, you must supply a ``GET``/POST *method* argument with a value that is the
+method you wish to call. You can then follow that up with any number of arguments using either the name of the
+argument (i.e. "who") or using *arg* following by the numeric position of the argument (i.e. "arg1").
 
 .. note::
 

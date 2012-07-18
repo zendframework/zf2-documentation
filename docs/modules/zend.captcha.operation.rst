@@ -24,7 +24,11 @@ All *CAPTCHA* adapter implement ``Zend\Captcha\AdapterInterface``, which looks l
        public function getHelperName();
    }
 
-The name setter and getter are used to specify and retrieve the *CAPTCHA* identifier. The most interesting methods are ``generate()`` and ``render()``. ``generate()`` is used to create the *CAPTCHA* token. This process typically will store the token in the session so that you may compare against it in subsequent requests. ``render()`` is used to render the information that represents the *CAPTCHA*, be it an image, a figlet, a logic problem, or some other *CAPTCHA*.
+The name setter and getter are used to specify and retrieve the *CAPTCHA* identifier. The most interesting methods
+are ``generate()`` and ``render()``. ``generate()`` is used to create the *CAPTCHA* token. This process typically
+will store the token in the session so that you may compare against it in subsequent requests. ``render()`` is used
+to render the information that represents the *CAPTCHA*, be it an image, a figlet, a logic problem, or some other
+*CAPTCHA*.
 
 A simple use case might look like the following:
 
@@ -53,6 +57,8 @@ A simple use case might look like the following:
 
 .. note::
 
-   Under most circumstances, you probably prefer the use of ``Zend\Captcha`` functionality combined with the power of the ``Zend\Form`` component. For an example on how to use ``Zend\Form\Element\Captcha``, have a look at the :ref:`Zend\\Form Quick Start <zend.form.quick-start>`.
+   Under most circumstances, you probably prefer the use of ``Zend\Captcha`` functionality combined with the power
+   of the ``Zend\Form`` component. For an example on how to use ``Zend\Form\Element\Captcha``, have a look at the
+   :ref:`Zend\\Form Quick Start <zend.form.quick-start>`.
 
 

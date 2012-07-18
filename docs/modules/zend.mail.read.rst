@@ -3,7 +3,9 @@
 Reading Mail Messages
 =====================
 
-``Zend_Mail`` can read mail messages from several local or remote mail storages. All of them have the same basic *API* to count and fetch messages and some of them implement additional interfaces for not so common features. For a feature overview of the implemented storages, see the following table.
+``Zend_Mail`` can read mail messages from several local or remote mail storages. All of them have the same basic
+*API* to count and fetch messages and some of them implement additional interfaces for not so common features. For
+a feature overview of the implemented storages, see the following table.
 
 .. _zend.mail.read.table-1:
 
@@ -51,7 +53,8 @@ Opening a local storage
 
 Mbox and Maildir are the two supported formats for local mail storages, both in their most simple formats.
 
-If you want to read from a Mbox file you only need to give the filename to the constructor of ``Zend_Mail_Storage_Mbox``:
+If you want to read from a Mbox file you only need to give the filename to the constructor of
+``Zend_Mail_Storage_Mbox``:
 
 .. code-block:: php
    :linenos:
@@ -74,7 +77,9 @@ Both constructors throw a ``Zend_Mail_Exception`` if the storage can't be read.
 Opening a remote storage
 ------------------------
 
-For remote storages the two most popular protocols are supported: Pop3 and Imap. Both need at least a host and a user to connect and login. The default password is an empty string, the default port as given in the protocol *RFC*.
+For remote storages the two most popular protocols are supported: Pop3 and Imap. Both need at least a host and a
+user to connect and login. The default password is an empty string, the default port as given in the protocol
+*RFC*.
 
 .. code-block:: php
    :linenos:
@@ -114,21 +119,24 @@ For both storages *SSL* and TLS are supported. If you use *SSL* the default port
                                             'password' => 'test',
                                             'ssl'      => 'TLS'));
 
-Both constructors can throw ``Zend_Mail_Exception`` or ``Zend_Mail_Protocol_Exception`` (extends ``Zend_Mail_Exception``), depending on the type of error.
+Both constructors can throw ``Zend_Mail_Exception`` or ``Zend_Mail_Protocol_Exception`` (extends
+``Zend_Mail_Exception``), depending on the type of error.
 
 .. _zend.mail.read-fetching:
 
 Fetching messages and simple methods
 ------------------------------------
 
-Messages can be fetched after you've opened the storage . You need the message number, which is a counter starting with 1 for the first message. To fetch the message, you use the method ``getMessage()``:
+Messages can be fetched after you've opened the storage . You need the message number, which is a counter starting
+with 1 for the first message. To fetch the message, you use the method ``getMessage()``:
 
 .. code-block:: php
    :linenos:
 
    $message = $mail->getMessage($messageNum);
 
-Array access is also supported, but this access method won't supported any additional parameters that could be added to ``getMessage()``. As long as you don't mind, and can live with the default values, you may use:
+Array access is also supported, but this access method won't supported any additional parameters that could be
+added to ``getMessage()``. As long as you don't mind, and can live with the default values, you may use:
 
 .. code-block:: php
    :linenos:
@@ -171,7 +179,12 @@ To remove a mail, you use the method ``removeMessage()`` or again array access:
 Working with messages
 ---------------------
 
-After you fetch the messages with ``getMessage()`` you want to fetch headers, the content or single parts of a multipart message. All headers can be accessed via properties or the method ``getHeader()`` if you want more control or have unusual header names. The header names are lower-cased internally, thus the case of the header name in the mail message doesn't matter. Also headers with a dash can be written in camel-case. If no header is found for both notations an exception is thrown. To encounter this the method ``headerExists()`` can be used to check the existence of a header.
+After you fetch the messages with ``getMessage()`` you want to fetch headers, the content or single parts of a
+multipart message. All headers can be accessed via properties or the method ``getHeader()`` if you want more
+control or have unusual header names. The header names are lower-cased internally, thus the case of the header name
+in the mail message doesn't matter. Also headers with a dash can be written in camel-case. If no header is found
+for both notations an exception is thrown. To encounter this the method ``headerExists()`` can be used to check the
+existence of a header.
 
 .. code-block:: php
    :linenos:
@@ -190,7 +203,8 @@ After you fetch the messages with ``getMessage()`` you want to fetch headers, th
        $cc = $message->cc;
    }
 
-If you have multiple headers with the same name- i.e. the Received headers- you might want an array instead of a string. In this case, use the ``getHeader()`` method.
+If you have multiple headers with the same name- i.e. the Received headers- you might want an array instead of a
+string. In this case, use the ``getHeader()`` method.
 
 .. code-block:: php
    :linenos:
@@ -215,7 +229,8 @@ If you have multiple headers with the same name- i.e. the Received headers- you 
        // only one received header found in message
    }
 
-The method ``getHeaders()`` returns all headers as array with the lower-cased name as key and the value as and array for multiple headers or as string for single headers.
+The method ``getHeaders()`` returns all headers as array with the lower-cased name as key and the value as and
+array for multiple headers or as string for single headers.
 
 .. code-block:: php
    :linenos:
@@ -231,7 +246,8 @@ The method ``getHeaders()`` returns all headers as array with the lower-cased na
        }
    }
 
-If you don't have a multipart message, fetching the content is easily done via ``getContent()``. Unlike the headers, the content is only fetched when needed (aka late-fetch).
+If you don't have a multipart message, fetching the content is easily done via ``getContent()``. Unlike the
+headers, the content is only fetched when needed (aka late-fetch).
 
 .. code-block:: php
    :linenos:
@@ -241,7 +257,10 @@ If you don't have a multipart message, fetching the content is easily done via `
    echo $message->getContent();
    echo '</pre>';
 
-Checking for multipart messages is done with the method ``isMultipart()``. If you have multipart message you can get an instance of ``Zend_Mail_Part`` with the method ``getPart()``. ``Zend_Mail_Part`` is the base class of ``Zend_Mail_Message``, so you have the same methods: ``getHeader()``, ``getHeaders()``, ``getContent()``, ``getPart()``, ``isMultipart()`` and the properties for headers.
+Checking for multipart messages is done with the method ``isMultipart()``. If you have multipart message you can
+get an instance of ``Zend_Mail_Part`` with the method ``getPart()``. ``Zend_Mail_Part`` is the base class of
+``Zend_Mail_Message``, so you have the same methods: ``getHeader()``, ``getHeaders()``, ``getContent()``,
+``getPart()``, ``isMultipart()`` and the properties for headers.
 
 .. code-block:: php
    :linenos:
@@ -255,7 +274,8 @@ Checking for multipart messages is done with the method ``isMultipart()``. If yo
    echo "Content:\n";
    echo $part->getContent();
 
-``Zend_Mail_Part`` also implements ``RecursiveIterator``, which makes it easy to scan through all parts. And for easy output, it also implements the magic method ``__toString()``, which returns the content.
+``Zend_Mail_Part`` also implements ``RecursiveIterator``, which makes it easy to scan through all parts. And for
+easy output, it also implements the magic method ``__toString()``, which returns the content.
 
 .. code-block:: php
    :linenos:
@@ -283,7 +303,9 @@ Checking for multipart messages is done with the method ``isMultipart()``. If yo
 Checking for flags
 ------------------
 
-Maildir and IMAP support storing flags. The class ``Zend_Mail_Storage`` has constants for all known maildir and IMAP system flags, named ``Zend_Mail_Storage::FLAG_<flagname>``. To check for flags ``Zend_Mail_Message`` has a method called ``hasFlag()``. With ``getFlags()`` you'll get all set flags.
+Maildir and IMAP support storing flags. The class ``Zend_Mail_Storage`` has constants for all known maildir and
+IMAP system flags, named ``Zend_Mail_Storage::FLAG_<flagname>``. To check for flags ``Zend_Mail_Message`` has a
+method called ``hasFlag()``. With ``getFlags()`` you'll get all set flags.
 
 .. code-block:: php
    :linenos:
@@ -324,7 +346,8 @@ Maildir and IMAP support storing flags. The class ``Zend_Mail_Storage`` has cons
        }
    }
 
-As IMAP allows user or client defined flags, you could get flags that don't have a constant in ``Zend_Mail_Storage``. Instead, they are returned as strings and can be checked the same way with ``hasFlag()``.
+As IMAP allows user or client defined flags, you could get flags that don't have a constant in
+``Zend_Mail_Storage``. Instead, they are returned as strings and can be checked the same way with ``hasFlag()``.
 
 .. code-block:: php
    :linenos:
@@ -343,9 +366,15 @@ As IMAP allows user or client defined flags, you could get flags that don't have
 Using folders
 -------------
 
-All storages, except Pop3, support folders, also called mailboxes. The interface implemented by all storages supporting folders is called ``Zend_Mail_Storage_Folder_Interface``. Also all of these classes have an additional optional parameter called ``folder``, which is the folder selected after login, in the constructor.
+All storages, except Pop3, support folders, also called mailboxes. The interface implemented by all storages
+supporting folders is called ``Zend_Mail_Storage_Folder_Interface``. Also all of these classes have an additional
+optional parameter called ``folder``, which is the folder selected after login, in the constructor.
 
-For the local storages you need to use separate classes called ``Zend_Mail_Storage_Folder_Mbox`` or ``Zend_Mail_Storage_Folder_Maildir``. Both need one parameter called ``dirname`` with the name of the base dir. The format for maildir is as defined in maildir++ (with a dot as default delimiter), Mbox is a directory hierarchy with Mbox files. If you don't have a Mbox file called INBOX in your Mbox base dir you need to set another folder in the constructor.
+For the local storages you need to use separate classes called ``Zend_Mail_Storage_Folder_Mbox`` or
+``Zend_Mail_Storage_Folder_Maildir``. Both need one parameter called ``dirname`` with the name of the base dir. The
+format for maildir is as defined in maildir++ (with a dot as default delimiter), Mbox is a directory hierarchy with
+Mbox files. If you don't have a Mbox file called INBOX in your Mbox base dir you need to set another folder in the
+constructor.
 
 ``Zend_Mail_Storage_Imap`` already supports folders by default. Examples for opening these storages:
 
@@ -377,7 +406,11 @@ For the local storages you need to use separate classes called ``Zend_Mail_Stora
                                             'user'     => 'test',
                                             'password' => 'test'));
 
-With the method getFolders($root = null) you can get the folder hierarchy starting with the root folder or the given folder. It's returned as an instance of ``Zend_Mail_Storage_Folder``, which implements ``RecursiveIterator`` and all children are also instances of ``Zend_Mail_Storage_Folder``. Each of these instances has a local and a global name returned by the methods ``getLocalName()`` and ``getGlobalName()``. The global name is the absolute name from the root folder (including delimiters), the local name is the name in the parent folder.
+With the method getFolders($root = null) you can get the folder hierarchy starting with the root folder or the
+given folder. It's returned as an instance of ``Zend_Mail_Storage_Folder``, which implements ``RecursiveIterator``
+and all children are also instances of ``Zend_Mail_Storage_Folder``. Each of these instances has a local and a
+global name returned by the methods ``getLocalName()`` and ``getGlobalName()``. The global name is the absolute
+name from the root folder (including delimiters), the local name is the name in the parent folder.
 
 .. _zend.mail.read-folders.table-1:
 
@@ -393,7 +426,10 @@ With the method getFolders($root = null) you can get the folder hierarchy starti
    |List.ZF.General|General   |
    +---------------+----------+
 
-If you use the iterator, the key of the current element is the local name. The global name is also returned by the magic method ``__toString()``. Some folders may not be selectable, which means they can't store messages and selecting them results in an error. This can be checked with the method ``isSelectable()``. So it's very easy to output the whole tree in a view:
+If you use the iterator, the key of the current element is the local name. The global name is also returned by the
+magic method ``__toString()``. Some folders may not be selectable, which means they can't store messages and
+selecting them results in an error. This can be checked with the method ``isSelectable()``. So it's very easy to
+output the whole tree in a view:
 
 .. code-block:: php
    :linenos:
@@ -413,7 +449,9 @@ If you use the iterator, the key of the current element is the local name. The g
    }
    echo '</select>';
 
-The current selected folder is returned by the method ``getSelectedFolder()``. Changing the folder is done with the method ``selectFolder()``, which needs the global name as parameter. If you want to avoid to write delimiters you can also use the properties of a ``Zend_Mail_Storage_Folder`` instance:
+The current selected folder is returned by the method ``getSelectedFolder()``. Changing the folder is done with the
+method ``selectFolder()``, which needs the global name as parameter. If you want to avoid to write delimiters you
+can also use the properties of a ``Zend_Mail_Storage_Folder`` instance:
 
 .. code-block:: php
    :linenos:
@@ -461,7 +499,13 @@ If you're using a remote storage and have some long tasks you might need to keep
 Caching instances
 ^^^^^^^^^^^^^^^^^
 
-``Zend_Mail_Storage_Mbox``, ``Zend_Mail_Storage_Folder_Mbox``, ``Zend_Mail_Storage_Maildir`` and ``Zend_Mail_Storage_Folder_Maildir`` implement the magic methods ``__sleep()`` and ``__wakeup()``, which means they are serializable. This avoids parsing the files or directory tree more than once. The disadvantage is that your Mbox or Maildir storage should not change. Some easy checks may be done, like reparsing the current Mbox file if the modification time changes, or reparsing the folder structure if a folder has vanished (which still results in an error, but you can search for another folder afterwards). It's better if you have something like a signal file for changes and check it before using the cached instance.
+``Zend_Mail_Storage_Mbox``, ``Zend_Mail_Storage_Folder_Mbox``, ``Zend_Mail_Storage_Maildir`` and
+``Zend_Mail_Storage_Folder_Maildir`` implement the magic methods ``__sleep()`` and ``__wakeup()``, which means they
+are serializable. This avoids parsing the files or directory tree more than once. The disadvantage is that your
+Mbox or Maildir storage should not change. Some easy checks may be done, like reparsing the current Mbox file if
+the modification time changes, or reparsing the folder structure if a folder has vanished (which still results in
+an error, but you can search for another folder afterwards). It's better if you have something like a signal file
+for changes and check it before using the cached instance.
 
 .. code-block:: php
    :linenos:
@@ -490,9 +534,12 @@ Caching instances
 Extending Protocol Classes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Remote storages use two classes: ``Zend_Mail_Storage_<Name>`` and ``Zend_Mail_Protocol_<Name>``. The protocol class translates the protocol commands and responses from and to *PHP*, like methods for the commands or variables with different structures for data. The other/main class implements the common interface.
+Remote storages use two classes: ``Zend_Mail_Storage_<Name>`` and ``Zend_Mail_Protocol_<Name>``. The protocol class
+translates the protocol commands and responses from and to *PHP*, like methods for the commands or variables with
+different structures for data. The other/main class implements the common interface.
 
-If you need additional protocol features, you can extend the protocol class and use it in the constructor of the main class. As an example, assume we need to knock different ports before we can connect to POP3.
+If you need additional protocol features, you can extend the protocol class and use it in the constructor of the
+main class. As an example, assume we need to knock different ports before we can connect to POP3.
 
 .. code-block:: php
    :linenos:
@@ -563,14 +610,19 @@ If you need additional protocol features, you can extend the protocol class and 
                                              'knock_ports' =>
                                                  array(1101, 1105, 1111)));
 
-As you see, we always assume we're connected, logged in and, if supported, a folder is selected in the constructor of the main class. Thus if you assign your own protocol class, you always need to make sure that's done or the next method will fail if the server doesn't allow it in the current state.
+As you see, we always assume we're connected, logged in and, if supported, a folder is selected in the constructor
+of the main class. Thus if you assign your own protocol class, you always need to make sure that's done or the next
+method will fail if the server doesn't allow it in the current state.
 
 .. _zend.mail.read-advanced.quota:
 
 Using Quota (since 1.5)
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_Mail_Storage_Writable_Maildir`` has support for Maildir++ quotas. It's disabled by default, but it's possible to use it manually, if the automatic checks are not desired (this means ``appendMessage()``, ``removeMessage()`` and ``copyMessage()`` do no checks and do not add entries to the maildirsize file). If enabled, an exception is thrown if you try to write to the maildir and it's already over quota.
+``Zend_Mail_Storage_Writable_Maildir`` has support for Maildir++ quotas. It's disabled by default, but it's
+possible to use it manually, if the automatic checks are not desired (this means ``appendMessage()``,
+``removeMessage()`` and ``copyMessage()`` do no checks and do not add entries to the maildirsize file). If enabled,
+an exception is thrown if you try to write to the maildir and it's already over quota.
 
 There are three methods used for quotas: ``getQuota()``, ``setQuota()`` and ``checkQuota()``:
 
@@ -598,7 +650,8 @@ There are three methods used for quotas: ``getQuota()``, ``setQuota()`` and ``ch
         ' messages and use ';
    echo $quota['size'], ' of ', $quota['quota']['size'], ' octets';
 
-If you want to specify your own quota instead of using the one specified in the maildirsize file you can do with ``setQuota()``:
+If you want to specify your own quota instead of using the one specified in the maildirsize file you can do with
+``setQuota()``:
 
 .. code-block:: php
    :linenos:
@@ -606,7 +659,9 @@ If you want to specify your own quota instead of using the one specified in the 
    // message count and octet size supported, order does matter
    $quota = $mail->setQuota(array('size' => 10000, 'count' => 100));
 
-To add your own quota checks use single letters as keys, and they will be preserved (but obviously not checked). It's also possible to extend ``Zend_Mail_Storage_Writable_Maildir`` to define your own quota only if the maildirsize file is missing (which can happen in Maildir++):
+To add your own quota checks use single letters as keys, and they will be preserved (but obviously not checked).
+It's also possible to extend ``Zend_Mail_Storage_Writable_Maildir`` to define your own quota only if the
+maildirsize file is missing (which can happen in Maildir++):
 
 .. code-block:: php
    :linenos:

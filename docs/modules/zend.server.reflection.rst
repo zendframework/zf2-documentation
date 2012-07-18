@@ -8,7 +8,10 @@ Zend_Server_Reflection
 Introduction
 ------------
 
-``Zend_Server_Reflection`` provides a standard mechanism for performing function and class introspection for use with server classes. It is based on *PHP* 5's Reflection *API*, augmenting it with methods for retrieving parameter and return value types and descriptions, a full list of function and method prototypes (i.e., all possible valid calling combinations), and function or method descriptions.
+``Zend_Server_Reflection`` provides a standard mechanism for performing function and class introspection for use
+with server classes. It is based on *PHP* 5's Reflection *API*, augmenting it with methods for retrieving parameter
+and return value types and descriptions, a full list of function and method prototypes (i.e., all possible valid
+calling combinations), and function or method descriptions.
 
 Typically, this functionality will only be used by developers of server classes for the framework.
 
@@ -49,6 +52,8 @@ Basic usage is simple:
    // setNamespace()
    $reflection->getNamespace();
 
-``reflectFunction()`` returns a ``Zend_Server_Reflection_Function`` object; ``reflectClass()`` returns a ``Zend_Server_Reflection_Class`` object. Please refer to the *API* documentation to see what methods are available to each.
+``reflectFunction()`` returns a ``Zend_Server_Reflection_Function`` object; ``reflectClass()`` returns a
+``Zend_Server_Reflection_Class`` object. Please refer to the *API* documentation to see what methods are available
+to each.
 
 

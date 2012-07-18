@@ -3,7 +3,9 @@
 Zend\\Config\\Processor
 =======================
 
-``Zend\Config\Processor`` gives you the ability to perform some operations on a ``Zend\Config\Config`` object. The ``Zend\Config\Processor`` is an interface that defines two methods: ``process()`` and ``processValue()``. These operations are provided by the following concrete implementations:
+``Zend\Config\Processor`` gives you the ability to perform some operations on a ``Zend\Config\Config`` object. The
+``Zend\Config\Processor`` is an interface that defines two methods: ``process()`` and ``processValue()``. These
+operations are provided by the following concrete implementations:
 
 - ``Zend\Config\Processor\Constant``: manage PHP constant values;
 
@@ -13,7 +15,8 @@ Zend\\Config\\Processor
 
 - ``Zend\Config\Processor\Token``: find and replace specific tokens;
 
-- ``Zend\Config\Processor\Translator``: translate configuration values in other languages using ``Zend\I18n\Translator``;
+- ``Zend\Config\Processor\Translator``: translate configuration values in other languages using
+  ``Zend\I18n\Translator``;
 
 Below we reported some examples for each type of processor.
 
@@ -105,7 +108,8 @@ This example illustrates the basic use of ``Zend\Config\Processor\Queue``:
 
    echo $config->foo;
 
-This example returns the output: ``bar``. The filters in the queue are applied with a *FIFO* logic (First In, First Out).
+This example returns the output: ``bar``. The filters in the queue are applied with a *FIFO* logic (First In, First
+Out).
 
 .. _zend.config.processor.token:
 

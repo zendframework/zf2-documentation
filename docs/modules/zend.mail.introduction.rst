@@ -8,13 +8,16 @@ Introduction
 Getting started
 ---------------
 
-``Zend_Mail`` provides generalized functionality to compose and send both text and *MIME*-compliant multipart e-mail messages. Mail can be sent with ``Zend_Mail`` via the default ``Zend_Mail_Transport_Sendmail`` transport or via ``Zend_Mail_Transport_Smtp``.
+``Zend_Mail`` provides generalized functionality to compose and send both text and *MIME*-compliant multipart
+e-mail messages. Mail can be sent with ``Zend_Mail`` via the default ``Zend_Mail_Transport_Sendmail`` transport or
+via ``Zend_Mail_Transport_Smtp``.
 
 .. _zend.mail.introduction.example-1:
 
 .. rubric:: Simple E-Mail with Zend_Mail
 
-A simple e-mail consists of some recipients, a subject, a body and a sender. To send such a mail using ``Zend_Mail_Transport_Sendmail``, do the following:
+A simple e-mail consists of some recipients, a subject, a body and a sender. To send such a mail using
+``Zend_Mail_Transport_Sendmail``, do the following:
 
 .. code-block:: php
    :linenos:
@@ -30,11 +33,16 @@ A simple e-mail consists of some recipients, a subject, a body and a sender. To 
 
    **Minimum definitions**
 
-   In order to send an e-mail with ``Zend_Mail`` you have to specify at least one recipient, a sender (e.g., with ``setFrom()``), and a message body (text and/or *HTML*).
+   In order to send an e-mail with ``Zend_Mail`` you have to specify at least one recipient, a sender (e.g., with
+   ``setFrom()``), and a message body (text and/or *HTML*).
 
-For most mail attributes there are "get" methods to read the information stored in the mail object. for further details, please refer to the *API* documentation. A special one is ``getRecipients()``. It returns an array with all recipient e-mail addresses that were added prior to the method call.
+For most mail attributes there are "get" methods to read the information stored in the mail object. for further
+details, please refer to the *API* documentation. A special one is ``getRecipients()``. It returns an array with
+all recipient e-mail addresses that were added prior to the method call.
 
-For security reasons, ``Zend_Mail`` filters all header fields to prevent header injection with newline (**\n**) characters. Double quotation is changed to single quotation and angle brackets to square brackets in the name of sender and recipients. If the marks are in email address, the marks will be removed.
+For security reasons, ``Zend_Mail`` filters all header fields to prevent header injection with newline (**\n**)
+characters. Double quotation is changed to single quotation and angle brackets to square brackets in the name of
+sender and recipients. If the marks are in email address, the marks will be removed.
 
 You also can use most methods of the ``Zend_Mail`` object with a convenient fluent interface.
 
@@ -53,7 +61,10 @@ You also can use most methods of the ``Zend_Mail`` object with a convenient flue
 Configuring the default sendmail transport
 ------------------------------------------
 
-The default transport for a ``Zend_Mail`` instance is ``Zend_Mail_Transport_Sendmail``. It is essentially a wrapper to the *PHP* `mail()`_ function. If you wish to pass additional parameters to the `mail()`_ function, simply create a new transport instance and pass your parameters to the constructor. The new transport instance can then act as the default ``Zend_Mail`` transport, or it can be passed to the ``send()`` method of ``Zend_Mail``.
+The default transport for a ``Zend_Mail`` instance is ``Zend_Mail_Transport_Sendmail``. It is essentially a wrapper
+to the *PHP* `mail()`_ function. If you wish to pass additional parameters to the `mail()`_ function, simply create
+a new transport instance and pass your parameters to the constructor. The new transport instance can then act as
+the default ``Zend_Mail`` transport, or it can be passed to the ``send()`` method of ``Zend_Mail``.
 
 .. _zend.mail.introduction.sendmail.example-1:
 
@@ -78,13 +89,16 @@ This example shows how to change the Return-Path of the `mail()`_ function.
 
    **Safe mode restrictions**
 
-   The optional additional parameters will be cause the `mail()`_ function to fail if *PHP* is running in safe mode.
+   The optional additional parameters will be cause the `mail()`_ function to fail if *PHP* is running in safe
+   mode.
 
 .. warning::
 
    **Sendmail Transport and Windows**
 
-   As the *PHP* manual states the ``mail()`` function has different behaviour on Windows and on \*nix based systems. Using the Sendmail Transport on Windows will not work in combination with ``addBcc()``. The ``mail()`` function will sent to the BCC recipient such that all the other recipients can see him as recipient!
+   As the *PHP* manual states the ``mail()`` function has different behaviour on Windows and on \*nix based
+   systems. Using the Sendmail Transport on Windows will not work in combination with ``addBcc()``. The ``mail()``
+   function will sent to the BCC recipient such that all the other recipients can see him as recipient!
 
    Therefore if you want to use BCC on a windows server, use the SMTP transport for sending!
 

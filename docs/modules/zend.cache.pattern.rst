@@ -8,20 +8,29 @@ Zend\\Cache\\Pattern
 Overview
 --------
 
-Cache patterns are configurable objects to solve known performance bottlenecks. Each should be used only in the specific situations they are designed to address. For example you can use one of the ``CallbackCache``, ``ObjectCache`` or ``ClassCache`` patterns to cache method and function calls; to cache output generation, the ``OutputCache`` pattern could assist.
+Cache patterns are configurable objects to solve known performance bottlenecks. Each should be used only in the
+specific situations they are designed to address. For example you can use one of the ``CallbackCache``,
+``ObjectCache`` or ``ClassCache`` patterns to cache method and function calls; to cache output generation, the
+``OutputCache`` pattern could assist.
 
-All cache patterns implements the same interface, ``Zend\Cache\Pattern``, and most extend the abstract class ``Zend\Cache\Pattern\AbstractPattern`` to implement basic logic.
+All cache patterns implements the same interface, ``Zend\Cache\Pattern``, and most extend the abstract class
+``Zend\Cache\Pattern\AbstractPattern`` to implement basic logic.
 
-Configuration is provided via the ``Zend\Cache\Pattern\PatternOptions`` class, which can simply be instantiated with an associative array of options passed to the constructor. To configure a pattern object, you can set an instance of ``Zend\Cache\Pattern\PatternOptions`` with ``setOptions``, or provide your options (either as an associative array or ``PatternOptions`` instance) as the second argument to the factory.
+Configuration is provided via the ``Zend\Cache\Pattern\PatternOptions`` class, which can simply be instantiated
+with an associative array of options passed to the constructor. To configure a pattern object, you can set an
+instance of ``Zend\Cache\Pattern\PatternOptions`` with ``setOptions``, or provide your options (either as an
+associative array or ``PatternOptions`` instance) as the second argument to the factory.
 
-It's also possible to use a single instance of ``Zend\Cache\Pattern\PatternOptions`` and pass it to multiple pattern objects.
+It's also possible to use a single instance of ``Zend\Cache\Pattern\PatternOptions`` and pass it to multiple
+pattern objects.
 
 .. _zend.cache.pattern.quick-start:
 
 Quick Start
 -----------
 
-Pattern objects can either be created from the provided ``Zend\Cache\PatternFactory`` factory, or, by simply instantiating one of the ``Zend\Cache\Pattern\*`` classes.
+Pattern objects can either be created from the provided ``Zend\Cache\PatternFactory`` factory, or, by simply
+instantiating one of the ``Zend\Cache\Pattern\*`` classes.
 
 .. code-block:: php
    :linenos:
@@ -61,7 +70,8 @@ Configuration Options
 .. _zend.cache.pattern.options.cache-output:
 
 **cache_output**
-   Used by the ``CallbackCache``, ``ClassCache``, and ``ObjectCache`` patterns. Flag used to determine whether or not to cache output.
+   Used by the ``CallbackCache``, ``ClassCache``, and ``ObjectCache`` patterns. Flag used to determine whether or
+   not to cache output.
 
    - ``setCacheOutput(bool $cacheOutput)``
      Implements a fluent interface.
@@ -105,7 +115,8 @@ Configuration Options
 .. _zend.cache.pattern.options.dir-perm:
 
 **dir_perm**
-   Set directory permissions; proxies to "dir_umask" property, setting the inverse of the provided value. Used by the ``CaptureCache`` pattern.
+   Set directory permissions; proxies to "dir_umask" property, setting the inverse of the provided value. Used by
+   the ``CaptureCache`` pattern.
 
    - ``setDirPerm(string|int $dirPerm)``
      Implements a fluent interface.
@@ -138,7 +149,8 @@ Configuration Options
 .. _zend.cache.pattern.options.file-perm:
 
 **file_perm**
-   Set file permissions; proxies to the "file_umask" property, setting the inverse of the value provided. Used by the ``CaptureCache`` pattern.
+   Set file permissions; proxies to the "file_umask" property, setting the inverse of the value provided. Used by
+   the ``CaptureCache`` pattern.
 
    - ``setFilePerm(int|string $filePerm)``
      Implements a fluent interface.
@@ -204,7 +216,8 @@ Configuration Options
 .. _zend.cache.pattern.options.object-key:
 
 **object_key**
-   Set the object key part; used to generate a callback key in order to speed up key generation. Used by the ``ObjectCache`` pattern.
+   Set the object key part; used to generate a callback key in order to speed up key generation. Used by the
+   ``ObjectCache`` pattern.
 
    - ``setObjectKey(null|string $objectKey)``
      Implements a fluent interface.
@@ -237,7 +250,8 @@ Configuration Options
 .. _zend.cache.pattern.options.storage:
 
 **storage**
-   Set the storage adapter. Required for the following Pattern classes: ``CallbackCache``, ``ClassCache``, ``ObjectCache``, ``OutputCache``.
+   Set the storage adapter. Required for the following Pattern classes: ``CallbackCache``, ``ClassCache``,
+   ``ObjectCache``, ``OutputCache``.
 
    - ``setStorage(string|array|Zend\Cache\Storage\Adapter $storage)``
      Implements a fluent interface.

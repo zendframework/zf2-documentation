@@ -10,13 +10,17 @@ Zend_Service_StrikeIron: Bundled Services
 ZIP Code Information
 --------------------
 
-``Zend_Service_StrikeIron_ZipCodeInfo`` provides a client for StrikeIron's Zip Code Information Service. For more information on this service, visit these StrikeIron resources:
+``Zend_Service_StrikeIron_ZipCodeInfo`` provides a client for StrikeIron's Zip Code Information Service. For more
+information on this service, visit these StrikeIron resources:
 
-- `Zip Code Information Service Page`_
 
-- `Zip Code Information Service WSDL`_
 
-The service contains a ``getZipCode()`` method that will retrieve information about a United States ZIP code or Canadian postal code:
+   - `Zip Code Information Service Page`_
+
+   - `Zip Code Information Service WSDL`_
+
+The service contains a ``getZipCode()`` method that will retrieve information about a United States ZIP code or
+Canadian postal code:
 
 .. code-block:: php
    :linenos:
@@ -62,11 +66,14 @@ The service contains a ``getZipCode()`` method that will retrieve information ab
 U.S. Address Verification
 -------------------------
 
-``Zend_Service_StrikeIron_USAddressVerification`` provides a client for StrikeIron's U.S. Address Verification Service. For more information on this service, visit these StrikeIron resources:
+``Zend_Service_StrikeIron_USAddressVerification`` provides a client for StrikeIron's U.S. Address Verification
+Service. For more information on this service, visit these StrikeIron resources:
 
-- `U.S. Address Verification Service Page`_
 
-- `U.S. Address Verification Service WSDL`_
+
+   - `U.S. Address Verification Service Page`_
+
+   - `U.S. Address Verification Service WSDL`_
 
 
 
@@ -111,15 +118,19 @@ The service contains a ``verifyAddressUSA()`` method that will verify an address
 Sales & Use Tax Basic
 ---------------------
 
-``Zend_Service_StrikeIron_SalesUseTaxBasic`` provides a client for StrikeIron's Sales & Use Tax Basic service. For more information on this service, visit these StrikeIron resources:
-
-- `Sales & Use Tax Basic Service Page`_
-
-- `Sales & Use Tax Basic Service WSDL`_
+``Zend_Service_StrikeIron_SalesUseTaxBasic`` provides a client for StrikeIron's Sales & Use Tax Basic service. For
+more information on this service, visit these StrikeIron resources:
 
 
 
-The service contains two methods, ``getTaxRateUSA()`` and ``getTaxRateCanada()``, that will retrieve sales and use tax data for the United States and Canada, respectively.
+   - `Sales & Use Tax Basic Service Page`_
+
+   - `Sales & Use Tax Basic Service WSDL`_
+
+
+
+The service contains two methods, ``getTaxRateUSA()`` and ``getTaxRateCanada()``, that will retrieve sales and use
+tax data for the United States and Canada, respectively.
 
 .. code-block:: php
    :linenos:

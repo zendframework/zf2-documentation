@@ -9,7 +9,9 @@ It may be used in WSDL or non-WSDL mode.
 
 Under the WSDL mode, the ``Zend_Soap_Client`` component uses a WSDL document to define transport layer options.
 
-The WSDL description is usually provided by the web service the client will access. If the WSDL description is not made available, you may want to use ``Zend_Soap_Client`` in non-WSDL mode. Under this mode, all *SOAP* protocol options have to be set explicitly on the ``Zend_Soap_Client`` class.
+The WSDL description is usually provided by the web service the client will access. If the WSDL description is not
+made available, you may want to use ``Zend_Soap_Client`` in non-WSDL mode. Under this mode, all *SOAP* protocol
+options have to be set explicitly on the ``Zend_Soap_Client`` class.
 
 .. _zend.soap.client.constructor:
 
@@ -18,11 +20,14 @@ Zend_Soap_Client Constructor
 
 The ``Zend_Soap_Client`` constructor takes two parameters:
 
-- ``$wsdl``- the *URI* of a WSDL file.
 
-- ``$options``- options to create *SOAP* client object.
 
-Both of these parameters may be set later using ``setWsdl($wsdl)`` and ``setOptions($options)`` methods respectively.
+   - ``$wsdl``- the *URI* of a WSDL file.
+
+   - ``$options``- options to create *SOAP* client object.
+
+Both of these parameters may be set later using ``setWsdl($wsdl)`` and ``setOptions($options)`` methods
+respectively.
 
 .. note::
 
@@ -32,50 +37,53 @@ Both of these parameters may be set later using ``setWsdl($wsdl)`` and ``setOpti
 
 The following options are recognized:
 
-- 'soap_version' ('soapVersion') - soap version to use (SOAP_1_1 or *SOAP*\ _1_2).
 
-- 'classmap' ('classMap') - can be used to map some WSDL types to *PHP* classes.
 
-  The option must be an array with WSDL types as keys and names of *PHP* classes as values.
+   - 'soap_version' ('soapVersion') - soap version to use (SOAP_1_1 or *SOAP*\ _1_2).
 
-- 'encoding' - internal character encoding (UTF-8 is always used as an external encoding).
+   - 'classmap' ('classMap') - can be used to map some WSDL types to *PHP* classes.
 
-- 'wsdl' which is equivalent to ``setWsdl($wsdlValue)`` call.
+     The option must be an array with WSDL types as keys and names of *PHP* classes as values.
 
-  Changing this option may switch ``Zend_Soap_Client`` object to or from WSDL mode.
+   - 'encoding' - internal character encoding (UTF-8 is always used as an external encoding).
 
-- 'uri' - target namespace for the *SOAP* service (required for non-WSDL-mode, doesn't work for WSDL mode).
+   - 'wsdl' which is equivalent to ``setWsdl($wsdlValue)`` call.
 
-- 'location' - the *URL* to request (required for non-WSDL-mode, doesn't work for WSDL mode).
+     Changing this option may switch ``Zend_Soap_Client`` object to or from WSDL mode.
 
-- 'style' - request style (doesn't work for WSDL mode): ``SOAP_RPC`` or ``SOAP_DOCUMENT``.
+   - 'uri' - target namespace for the *SOAP* service (required for non-WSDL-mode, doesn't work for WSDL mode).
 
-- 'use' - method to encode messages (doesn't work for WSDL mode): ``SOAP_ENCODED`` or ``SOAP_LITERAL``.
+   - 'location' - the *URL* to request (required for non-WSDL-mode, doesn't work for WSDL mode).
 
-- 'login' and 'password' - login and password for an *HTTP* authentication.
+   - 'style' - request style (doesn't work for WSDL mode): ``SOAP_RPC`` or ``SOAP_DOCUMENT``.
 
-- 'proxy_host', 'proxy_port', 'proxy_login', and 'proxy_password' - an *HTTP* connection through a proxy server.
+   - 'use' - method to encode messages (doesn't work for WSDL mode): ``SOAP_ENCODED`` or ``SOAP_LITERAL``.
 
-- 'local_cert' and 'passphrase' -*HTTPS* client certificate authentication options.
+   - 'login' and 'password' - login and password for an *HTTP* authentication.
 
-- 'compression' - compression options; it's a combination of ``SOAP_COMPRESSION_ACCEPT``, ``SOAP_COMPRESSION_GZIP`` and ``SOAP_COMPRESSION_DEFLATE`` options which may be used like this:
+   - 'proxy_host', 'proxy_port', 'proxy_login', and 'proxy_password' - an *HTTP* connection through a proxy server.
 
-  .. code-block:: php
-     :linenos:
+   - 'local_cert' and 'passphrase' -*HTTPS* client certificate authentication options.
 
-     // Accept response compression
-     $client = new Zend_Soap_Client("some.wsdl",
-       array('compression' => SOAP_COMPRESSION_ACCEPT));
-     ...
+   - 'compression' - compression options; it's a combination of ``SOAP_COMPRESSION_ACCEPT``,
+     ``SOAP_COMPRESSION_GZIP`` and ``SOAP_COMPRESSION_DEFLATE`` options which may be used like this:
 
-     // Compress requests using gzip with compression level 5
-     $client = new Zend_Soap_Client("some.wsdl",
-       array('compression' => SOAP_COMPRESSION_ACCEPT | SOAP_COMPRESSION_GZIP | 5));
-     ...
+     .. code-block:: php
+        :linenos:
 
-     // Compress requests using deflate compression
-     $client = new Zend_Soap_Client("some.wsdl",
-       array('compression' => SOAP_COMPRESSION_ACCEPT | SOAP_COMPRESSION_DEFLATE));
+        // Accept response compression
+        $client = new Zend_Soap_Client("some.wsdl",
+          array('compression' => SOAP_COMPRESSION_ACCEPT));
+        ...
+
+        // Compress requests using gzip with compression level 5
+        $client = new Zend_Soap_Client("some.wsdl",
+          array('compression' => SOAP_COMPRESSION_ACCEPT | SOAP_COMPRESSION_GZIP | 5));
+        ...
+
+        // Compress requests using deflate compression
+        $client = new Zend_Soap_Client("some.wsdl",
+          array('compression' => SOAP_COMPRESSION_ACCEPT | SOAP_COMPRESSION_DEFLATE));
 
 
 
@@ -86,7 +94,8 @@ Performing SOAP Requests
 
 After we've created a ``Zend_Soap_Client`` object we are ready to perform *SOAP* requests.
 
-Each web service method is mapped to the virtual ``Zend_Soap_Client`` object method which takes parameters with common *PHP* types.
+Each web service method is mapped to the virtual ``Zend_Soap_Client`` object method which takes parameters with
+common *PHP* types.
 
 Use it like in the following example:
 

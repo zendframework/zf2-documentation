@@ -19,7 +19,8 @@ The following options are supported for ``Zend\Validator\Regex``:
 Validation with Zend\\Validator\\Regex
 --------------------------------------
 
-Validation with regular expressions allows to have complicated validations being done without writing a own validator. The usage of regular expression is quite common and simple. Let's look at some examples:
+Validation with regular expressions allows to have complicated validations being done without writing a own
+validator. The usage of regular expression is quite common and simple. Let's look at some examples:
 
 .. code-block:: php
    :linenos:
@@ -30,14 +31,16 @@ Validation with regular expressions allows to have complicated validations being
    $validator->isValid("Testing"); // returns true
    $validator->isValid("Pest"); // returns false
 
-As you can see, the pattern has to be given using the same syntax as for ``preg_match()``. For details about regular expressions take a look into `PHP's manual about PCRE pattern syntax`_.
+As you can see, the pattern has to be given using the same syntax as for ``preg_match()``. For details about
+regular expressions take a look into `PHP's manual about PCRE pattern syntax`_.
 
 .. _zend.validator.set.regex.handling:
 
 Pattern handling
 ----------------
 
-It is also possible to set a different pattern afterwards by using ``setPattern()`` and to get the actual set pattern with ``getPattern()``.
+It is also possible to set a different pattern afterwards by using ``setPattern()`` and to get the actual set
+pattern with ``getPattern()``.
 
 .. code-block:: php
    :linenos:

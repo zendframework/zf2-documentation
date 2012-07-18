@@ -3,16 +3,22 @@
 Containers
 ==========
 
-Containers have methods for adding, retrieving, deleting and iterating pages. Containers implement the `SPL`_ interfaces ``RecursiveIterator`` and ``Countable``, meaning that a container can be iterated using the SPL ``RecursiveIteratorIterator`` class.
+Containers have methods for adding, retrieving, deleting and iterating pages. Containers implement the `SPL`_
+interfaces ``RecursiveIterator`` and ``Countable``, meaning that a container can be iterated using the SPL
+``RecursiveIteratorIterator`` class.
 
 .. _zend.navigation.containers.creating:
 
 Creating containers
 -------------------
 
-``Zend_Navigation_Container`` is abstract, and can not be instantiated directly. Use ``Zend_Navigation`` if you want to instantiate a container.
+``Zend_Navigation_Container`` is abstract, and can not be instantiated directly. Use ``Zend_Navigation`` if you
+want to instantiate a container.
 
-``Zend_Navigation`` can be constructed entirely empty, or take an array or a ``Zend_Config`` object with pages to put in the container. Each page in the given array/config will eventually be passed to the ``addPage()`` method of the container class, which means that each element in the array/config can be an array or a config object, or a ``Zend_Navigation_Page`` instance.
+``Zend_Navigation`` can be constructed entirely empty, or take an array or a ``Zend_Config`` object with pages to
+put in the container. Each page in the given array/config will eventually be passed to the ``addPage()`` method of
+the container class, which means that each element in the array/config can be an array or a config object, or a
+``Zend_Navigation_Page`` instance.
 
 .. _zend.navigation.containers.creating.example.array:
 
@@ -390,7 +396,8 @@ Creating containers
 Adding pages
 ------------
 
-Adding pages to a container can be done with the methods ``addPage()``, ``addPages()``, or ``setPages()``. See examples below for explanation.
+Adding pages to a container can be done with the methods ``addPage()``, ``addPages()``, or ``setPages()``. See
+examples below for explanation.
 
 .. _zend.navigation.containers.adding.example:
 
@@ -439,7 +446,9 @@ Adding pages to a container can be done with the methods ``addPage()``, ``addPag
 Removing pages
 --------------
 
-Removing pages can be done with ``removePage()`` or ``removePages()``. The first method accepts a an instance of a page, or an integer. The integer corresponds to the ``order`` a page has. The latter method will remove all pages in the container.
+Removing pages can be done with ``removePage()`` or ``removePages()``. The first method accepts a an instance of a
+page, or an integer. The integer corresponds to the ``order`` a page has. The latter method will remove all pages
+in the container.
 
 .. _zend.navigation.containers.removing.example:
 
@@ -482,9 +491,17 @@ Removing pages can be done with ``removePage()`` or ``removePages()``. The first
 Finding pages
 -------------
 
-Containers have finder methods for retrieving pages. They are ``findOneBy($property, $value)``, ``findAllBy($property, $value)``, and ``findBy($property, $value, $all = false)``. Those methods will recursively search the container for pages matching the given ``$page->$property == $value``. The first method, ``findOneBy()``, will return a single page matching the property with the given value, or ``NULL`` if it cannot be found. The second method will return all pages with a property matching the given value. The third method will call one of the two former methods depending on the ``$all`` flag.
+Containers have finder methods for retrieving pages. They are ``findOneBy($property, $value)``,
+``findAllBy($property, $value)``, and ``findBy($property, $value, $all = false)``. Those methods will recursively
+search the container for pages matching the given ``$page->$property == $value``. The first method,
+``findOneBy()``, will return a single page matching the property with the given value, or ``NULL`` if it cannot be
+found. The second method will return all pages with a property matching the given value. The third method will call
+one of the two former methods depending on the ``$all`` flag.
 
-The finder methods can also be used magically by appending the property name to ``findBy``, ``findOneBy``, or ``findAllBy``, e.g. ``findOneByLabel('Home')`` to return the first matching page with label 'Home'. Other combinations are ``findByLabel(...)``, ``findOnyByTitle(...)``, ``findAllByController(...)``, etc. Finder methods also work on custom properties, such as ``findByFoo('bar')``.
+The finder methods can also be used magically by appending the property name to ``findBy``, ``findOneBy``, or
+``findAllBy``, e.g. ``findOneByLabel('Home')`` to return the first matching page with label 'Home'. Other
+combinations are ``findByLabel(...)``, ``findOnyByTitle(...)``, ``findAllByController(...)``, etc. Finder methods
+also work on custom properties, such as ``findByFoo('bar')``.
 
 .. _zend.navigation.containers.finding.example:
 
@@ -577,7 +594,8 @@ The finder methods can also be used magically by appending the property name to 
 Iterating containers
 --------------------
 
-``Zend_Navigation_Container`` implements ``RecursiveIteratorIterator``, and can be iterated using any ``Iterator`` class. To iterate a container recursively, use the ``RecursiveIteratorIterator`` class.
+``Zend_Navigation_Container`` implements ``RecursiveIteratorIterator``, and can be iterated using any ``Iterator``
+class. To iterate a container recursively, use the ``RecursiveIteratorIterator`` class.
 
 .. _zend.navigation.containers.iterating.example:
 
@@ -634,9 +652,11 @@ Iterating containers
 Other operations
 ----------------
 
-The method ``hasPage(Zend_Navigation_Page $page)`` checks if the container has the given page. The method ``hasPages()`` checks if there are any pages in the container, and is equivalent to ``count($container) > 1``.
+The method ``hasPage(Zend_Navigation_Page $page)`` checks if the container has the given page. The method
+``hasPages()`` checks if there are any pages in the container, and is equivalent to ``count($container) > 1``.
 
-The ``toArray()`` method converts the container and the pages in it to an array. This can be useful for serializing and debugging.
+The ``toArray()`` method converts the container and the pages in it to an array. This can be useful for serializing
+and debugging.
 
 .. _zend.navigation.containers.other.example.toarray:
 

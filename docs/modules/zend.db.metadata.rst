@@ -3,7 +3,9 @@
 Zend\\Db\\Metadata
 ==================
 
-``Zend\Db\Metadata`` is as sub-component of Zend\\Db that makes it possible to get metadata information about tables, columns, constraints, triggers, and other information from a database in a standardized way. The primary interface for the Metadata objects is:
+``Zend\Db\Metadata`` is as sub-component of Zend\\Db that makes it possible to get metadata information about
+tables, columns, constraints, triggers, and other information from a database in a standardized way. The primary
+interface for the Metadata objects is:
 
 .. code-block:: php
    :linenos:
@@ -38,9 +40,13 @@ Zend\\Db\\Metadata
 Basic Usage
 -----------
 
-Usage of ``Zend\Db\Metadata`` is very straight forward. The top level class Zend\\Db\\Metadata\\Metadata will, given an adapter, choose the best strategy (based on the database platform being used) for retrieving metadata. In most cases, information will come from querying the INFORMATION_SCHEMA tables generally accessible to all database connections about the currently accessible schema.
+Usage of ``Zend\Db\Metadata`` is very straight forward. The top level class Zend\\Db\\Metadata\\Metadata will,
+given an adapter, choose the best strategy (based on the database platform being used) for retrieving metadata. In
+most cases, information will come from querying the INFORMATION_SCHEMA tables generally accessible to all database
+connections about the currently accessible schema.
 
-Metadata::get*Names() methods will return an array of strings, while the other methods will return specific value objects with the containing information. This is best demonstrated by the script below.
+Metadata::get*Names() methods will return an array of strings, while the other methods will return specific value
+objects with the containing information. This is best demonstrated by the script below.
 
 .. code-block:: php
    :linenos:
@@ -90,7 +96,8 @@ Metadata::get*Names() methods will return an array of strings, while the other m
        echo '----' . PHP_EOL;
    }
 
-Metadata returns value objects that provide an interface to help developers better explore the metadata. Below is the API for the various value objects:
+Metadata returns value objects that provide an interface to help developers better explore the metadata. Below is
+the API for the various value objects:
 
 The TableObject:
 

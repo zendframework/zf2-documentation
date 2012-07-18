@@ -3,13 +3,15 @@
 Getting Started With Zend_Markup
 ================================
 
-This guide to get you started with ``Zend_Markup`` uses the BBCode parser and *HTML* renderer. The priciples discussed can be adapted to other parsers and renderers.
+This guide to get you started with ``Zend_Markup`` uses the BBCode parser and *HTML* renderer. The priciples
+discussed can be adapted to other parsers and renderers.
 
 .. _zend.markup.getting-started.basic-usage:
 
 .. rubric:: Basic Zend_Markup Usage
 
-We will first instantiate a ``Zend_Markup_Renderer_Html`` object using the ``Zend_Markup::factory()`` method. This will also create a ``Zend_Markup_Parser_Bbcode`` object which will be added to the renderer object.
+We will first instantiate a ``Zend_Markup_Renderer_Html`` object using the ``Zend_Markup::factory()`` method. This
+will also create a ``Zend_Markup_Parser_Bbcode`` object which will be added to the renderer object.
 
 Afther that, we will use the ``render()`` method to convert a piece of BBCode to *HTML*.
 
@@ -54,7 +56,9 @@ This time, we will do exactly the same as above, but with more complicated BBCod
 
 .. rubric:: Processing incorrect input
 
-Besides simply parsing and rendering markup such as BBCode, ``Zend_Markup`` is also able to handle incorrect input. Most BBCode processors are not able to render all input to *XHTML* valid output. ``Zend_Markup`` corrects input that is nested incorrectly, and also closes tags that were not closed:
+Besides simply parsing and rendering markup such as BBCode, ``Zend_Markup`` is also able to handle incorrect input.
+Most BBCode processors are not able to render all input to *XHTML* valid output. ``Zend_Markup`` corrects input
+that is nested incorrectly, and also closes tags that were not closed:
 
 .. code-block:: php
    :linenos:

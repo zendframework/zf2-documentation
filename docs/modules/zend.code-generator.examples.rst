@@ -124,7 +124,8 @@ The above results in the following class definition:
 
 .. rubric:: Generating PHP classes with class methods
 
-``Zend_CodeGenerator_Php_Class`` allows you to attach methods with optional content to your classes. Methods may be attached as either arrays or concrete ``Zend_CodeGenerator_Php_Method`` instances.
+``Zend_CodeGenerator_Php_Class`` allows you to attach methods with optional content to your classes. Methods may be
+attached as either arrays or concrete ``Zend_CodeGenerator_Php_Method`` instances.
 
 .. code-block:: php
    :linenos:
@@ -251,9 +252,12 @@ The above generates the following output:
 
 .. rubric:: Generating PHP files
 
-``Zend_CodeGenerator_Php_File`` can be used to generate the contents of a *PHP* file. You can include classes as well as arbitrary content body. When attaching classes, you should attach either concrete ``Zend_CodeGenerator_Php_Class`` instances or an array defining the class.
+``Zend_CodeGenerator_Php_File`` can be used to generate the contents of a *PHP* file. You can include classes as
+well as arbitrary content body. When attaching classes, you should attach either concrete
+``Zend_CodeGenerator_Php_Class`` instances or an array defining the class.
 
-In the example below, we will assume you've defined ``$foo`` per one of the class definitions in a previous example.
+In the example below, we will assume you've defined ``$foo`` per one of the class definitions in a previous
+example.
 
 .. code-block:: php
    :linenos:
@@ -272,7 +276,8 @@ In the example below, we will assume you've defined ``$foo`` per one of the clas
        'body'     => 'define(\'APPLICATION_ENV\', \'testing\');',
    ));
 
-Calling ``generate()`` will generate the code -- but not write it to a file. You will need to capture the contents and write them to a file yourself. As an example:
+Calling ``generate()`` will generate the code -- but not write it to a file. You will need to capture the contents
+and write them to a file yourself. As an example:
 
 .. code-block:: php
    :linenos:
@@ -339,7 +344,8 @@ The above will generate the following file:
 
 .. rubric:: Seeding PHP file code generation via reflection
 
-You can add *PHP* code to an existing *PHP* file using the code generator. To do so, you need to first do reflection on it. The static method ``fromReflectedFileName()`` allows you to do this.
+You can add *PHP* code to an existing *PHP* file using the code generator. To do so, you need to first do
+reflection on it. The static method ``fromReflectedFileName()`` allows you to do this.
 
 .. code-block:: php
    :linenos:
@@ -353,7 +359,8 @@ You can add *PHP* code to an existing *PHP* file using the code generator. To do
 
 .. rubric:: Seeding PHP class generation via reflection
 
-You may add code to an existing class. To do so, first use the static ``fromReflection()`` method to map the class into a generator object. From there, you may add additional properties or methods, and then regenerate the class.
+You may add code to an existing class. To do so, first use the static ``fromReflection()`` method to map the class
+into a generator object. From there, you may add additional properties or methods, and then regenerate the class.
 
 .. code-block:: php
    :linenos:

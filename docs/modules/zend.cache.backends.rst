@@ -66,9 +66,12 @@ Available options are :
 Zend_Cache_Backend_Memcached
 ----------------------------
 
-This (extended) backends stores cache records into a memcached server. `memcached`_ is a high-performance, distributed memory object caching system. To use this backend, you need a memcached daemon and `the memcache PECL extension`_.
+This (extended) backends stores cache records into a memcached server. `memcached`_ is a high-performance,
+distributed memory object caching system. To use this backend, you need a memcached daemon and `the memcache PECL
+extension`_.
 
-Be careful : with this backend, "tags" are not supported for the moment as the "doNotTestCacheValidity=true" argument.
+Be careful : with this backend, "tags" are not supported for the moment as the "doNotTestCacheValidity=true"
+argument.
 
 Available options are :
 
@@ -91,9 +94,11 @@ Available options are :
 Zend_Cache_Backend_Apc
 ----------------------
 
-This (extended) backends stores cache records in shared memory through the `APC`_ (Alternative *PHP* Cache) extension (which is of course need for using this backend).
+This (extended) backends stores cache records in shared memory through the `APC`_ (Alternative *PHP* Cache)
+extension (which is of course need for using this backend).
 
-Be careful : with this backend, "tags" are not supported for the moment as the "doNotTestCacheValidity=true" argument.
+Be careful : with this backend, "tags" are not supported for the moment as the "doNotTestCacheValidity=true"
+argument.
 
 There is no option for this backend.
 
@@ -102,9 +107,11 @@ There is no option for this backend.
 Zend_Cache_Backend_Xcache
 -------------------------
 
-This backends stores cache records in shared memory through the `XCache`_ extension (which is of course need for using this backend).
+This backends stores cache records in shared memory through the `XCache`_ extension (which is of course need for
+using this backend).
 
-Be careful : with this backend, "tags" are not supported for the moment as the "doNotTestCacheValidity=true" argument.
+Be careful : with this backend, "tags" are not supported for the moment as the "doNotTestCacheValidity=true"
+argument.
 
 Available options are :
 
@@ -125,11 +132,13 @@ Available options are :
 Zend_Cache_Backend_ZendPlatform
 -------------------------------
 
-This backend uses content caching *API* of the `Zend Platform`_ product. Naturally, to use this backend you need to have Zend Platform installed.
+This backend uses content caching *API* of the `Zend Platform`_ product. Naturally, to use this backend you need to
+have Zend Platform installed.
 
 This backend supports tags, but does not support ``CLEANING_MODE_NOT_MATCHING_TAG`` cleaning mode.
 
-Specify this backend using a word separator -- '-', '.', ' ', or '\_' -- between the words 'Zend' and 'Platform' when using the ``Zend_Cache::factory()`` method:
+Specify this backend using a word separator -- '-', '.', ' ', or '\_' -- between the words 'Zend' and 'Platform'
+when using the ``Zend_Cache::factory()`` method:
 
 .. code-block:: php
    :linenos:
@@ -143,11 +152,14 @@ There are no options for this backend.
 Zend_Cache_Backend_TwoLevels
 ----------------------------
 
-This (extend) backend is an hybrid one. It stores cache records in two other backends : a fast one (but limited) like Apc, Memcache... and a "slow" one like File, Sqlite...
+This (extend) backend is an hybrid one. It stores cache records in two other backends : a fast one (but limited)
+like Apc, Memcache... and a "slow" one like File, Sqlite...
 
-This backend will use the priority parameter (given at the frontend level when storing a record) and the remaining space in the fast backend to optimize the usage of these two backends.
+This backend will use the priority parameter (given at the frontend level when storing a record) and the remaining
+space in the fast backend to optimize the usage of these two backends.
 
-Specify this backend using a word separator -- '-', '.', ' ', or '\_' -- between the words 'Two' and 'Levels' when using the ``Zend_Cache::factory()`` method:
+Specify this backend using a word separator -- '-', '.', ' ', or '\_' -- between the words 'Two' and 'Levels' when
+using the ``Zend_Cache::factory()`` method:
 
 .. code-block:: php
    :linenos:
@@ -191,11 +203,14 @@ Zend_Cache_Backend_ZendServer_Disk and Zend_Cache_Backend_ZendServer_ShMem
 
 These backends store cache records using `Zend Server`_ caching functionality.
 
-Be careful: with these backends, "tags" are not supported for the moment as the "doNotTestCacheValidity=true" argument.
+Be careful: with these backends, "tags" are not supported for the moment as the "doNotTestCacheValidity=true"
+argument.
 
-These backend work only withing Zend Server environment for pages requested through *HTTP* or *HTTPS* and don't work for command line script execution
+These backend work only withing Zend Server environment for pages requested through *HTTP* or *HTTPS* and don't
+work for command line script execution
 
-Specify this backend using parameter **customBackendNaming** as ``TRUE`` when using the ``Zend_Cache::factory()`` method:
+Specify this backend using parameter **customBackendNaming** as ``TRUE`` when using the ``Zend_Cache::factory()``
+method:
 
 .. code-block:: php
    :linenos:
@@ -210,15 +225,28 @@ There is no option for this backend.
 Zend_Cache_Backend_Static
 -------------------------
 
-This backend works in concert with ``Zend_Cache_Frontend_Capture`` (the two must be used together) to save the output from requests as static files. This means the static files are served directly on subsequent requests without any involvement of *PHP* or Zend Framework at all.
+This backend works in concert with ``Zend_Cache_Frontend_Capture`` (the two must be used together) to save the
+output from requests as static files. This means the static files are served directly on subsequent requests
+without any involvement of *PHP* or Zend Framework at all.
 
 .. note::
 
-   ``Zend_Cache_Frontend_Capture`` operates by registering a callback function to be called when the output buffering it uses is cleaned. In order for this to operate correctly, it must be the final output buffer in the request. To guarantee this, the output buffering used by the Dispatcher **must** be disabled by calling ``Zend_Controller_Front``'s ``setParam()`` method, for example, ``$front->setParam('disableOutputBuffering', true);`` or adding "resources.frontcontroller.params.disableOutputBuffering = true" to your bootstrap configuration file (assumed *INI*) if using ``Zend_Application``.
+   ``Zend_Cache_Frontend_Capture`` operates by registering a callback function to be called when the output
+   buffering it uses is cleaned. In order for this to operate correctly, it must be the final output buffer in the
+   request. To guarantee this, the output buffering used by the Dispatcher **must** be disabled by calling
+   ``Zend_Controller_Front``'s ``setParam()`` method, for example, ``$front->setParam('disableOutputBuffering',
+   true);`` or adding "resources.frontcontroller.params.disableOutputBuffering = true" to your bootstrap
+   configuration file (assumed *INI*) if using ``Zend_Application``.
 
-The benefits of this cache include a large throughput increase since all subsequent requests return the static file and don't need any dynamic processing. Of course this also has some disadvantages. The only way to retry the dynamic request is to purge the cached file from elsewhere in the application (or via a cronjob if timed). It is also restricted to single-server applications where only one filesystem is used. Nevertheless, it can be a powerful means of getting more performance without incurring the cost of a proxy on single machines.
+The benefits of this cache include a large throughput increase since all subsequent requests return the static file
+and don't need any dynamic processing. Of course this also has some disadvantages. The only way to retry the
+dynamic request is to purge the cached file from elsewhere in the application (or via a cronjob if timed). It is
+also restricted to single-server applications where only one filesystem is used. Nevertheless, it can be a powerful
+means of getting more performance without incurring the cost of a proxy on single machines.
 
-Before describing its options, you should note this needs some changes to the default ``.htaccess`` file in order for requests to be directed to the static files if they exist. Here's an example of a simple application caching some content, including two specific feeds which need additional treatment to serve a correct Content-Type header:
+Before describing its options, you should note this needs some changes to the default ``.htaccess`` file in order
+for requests to be directed to the static files if they exist. Here's an example of a simple application caching
+some content, including two specific feeds which need additional treatment to serve a correct Content-Type header:
 
 .. code-block:: text
    :linenos:
@@ -248,15 +276,29 @@ Before describing its options, you should note this needs some changes to the de
 
    RewriteRule ^.*$ index.php [NC,L]
 
-The above assumes static files are cached to the directory ``./public/cached``. We'll cover the option setting this location, "public_dir", below.
+The above assumes static files are cached to the directory ``./public/cached``. We'll cover the option setting this
+location, "public_dir", below.
 
-Due to the nature of static file caching, the backend class offers two additional methods: ``remove()`` and ``removeRecursively()``. Both accept a request *URI*, which when mapped to the "public_dir" where static files are cached, and has a pre-stored extension appended, provides the name of either a static file to delete, or a directory path to delete recursively. Due to the restraints of ``Zend_Cache_Backend_Interface``, all other methods such as ``save()`` accept an ID which is calculated by applying ``bin2hex()`` to a request *URI*.
+Due to the nature of static file caching, the backend class offers two additional methods: ``remove()`` and
+``removeRecursively()``. Both accept a request *URI*, which when mapped to the "public_dir" where static files are
+cached, and has a pre-stored extension appended, provides the name of either a static file to delete, or a
+directory path to delete recursively. Due to the restraints of ``Zend_Cache_Backend_Interface``, all other methods
+such as ``save()`` accept an ID which is calculated by applying ``bin2hex()`` to a request *URI*.
 
-Given the level at which static caching operates, static file caching is addressed for simpler use with the ``Zend_Controller_Action_Helper_Cache`` action helper. This helper assists in setting which actions of a controller to cache, with what tags, and with which extension. It also offers methods for purging the cache by request *URI* or tag. Static file caching is also assisted by ``Zend_Cache_Manager`` which includes pre-configured configuration templates for a static cache (as ``Zend_Cache_Manager::PAGECACHE`` or "page"). The defaults therein can be configured as needed to set up a "public_dir" location for caching, etc.
+Given the level at which static caching operates, static file caching is addressed for simpler use with the
+``Zend_Controller_Action_Helper_Cache`` action helper. This helper assists in setting which actions of a controller
+to cache, with what tags, and with which extension. It also offers methods for purging the cache by request *URI*
+or tag. Static file caching is also assisted by ``Zend_Cache_Manager`` which includes pre-configured configuration
+templates for a static cache (as ``Zend_Cache_Manager::PAGECACHE`` or "page"). The defaults therein can be
+configured as needed to set up a "public_dir" location for caching, etc.
 
 .. note::
 
-   It should be noted that the static cache actually uses a secondary cache to store tags (obviously we can't store them elsewhere since a static cache does not invoke *PHP* if working correctly). This is just a standard Core cache, and should use a persistent backend such as File or TwoLevels (to take advantage of memory storage without sacrificing permanent persistance). The backend includes the option "tag_cache" to set this up (it is obligatory), or the ``setInnerCache()`` method.
+   It should be noted that the static cache actually uses a secondary cache to store tags (obviously we can't store
+   them elsewhere since a static cache does not invoke *PHP* if working correctly). This is just a standard Core
+   cache, and should use a persistent backend such as File or TwoLevels (to take advantage of memory storage
+   without sacrificing permanent persistance). The backend includes the option "tag_cache" to set this up (it is
+   obligatory), or the ``setInnerCache()`` method.
 
 .. _zend.cache.backends.static.table:
 

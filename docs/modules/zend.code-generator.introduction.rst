@@ -3,14 +3,19 @@
 Introduction
 ============
 
-``Zend_CodeGenerator`` provides facilities to generate arbitrary code using an object oriented interface, both to create new code as well as to update existing code. While the current implementation is limited to generating *PHP* code, you can easily extend the base class in order to provide code generation for other tasks: JavaScript, configuration files, apache vhosts, etc.
+``Zend_CodeGenerator`` provides facilities to generate arbitrary code using an object oriented interface, both to
+create new code as well as to update existing code. While the current implementation is limited to generating *PHP*
+code, you can easily extend the base class in order to provide code generation for other tasks: JavaScript,
+configuration files, apache vhosts, etc.
 
 .. _zend.codegenerator.introduction.theory:
 
 Theory of Operation
 -------------------
 
-In the most typical use case, you will simply instantiate a code generator class and either pass it the appropriate configuration or configure it after instantiation. To generate the code, you will simply echo the object or call its ``generate()`` method.
+In the most typical use case, you will simply instantiate a code generator class and either pass it the appropriate
+configuration or configure it after instantiation. To generate the code, you will simply echo the object or call
+its ``generate()`` method.
 
 .. code-block:: php
    :linenos:
@@ -65,9 +70,12 @@ Both of the above samples will render the same result:
 
    }
 
-Another common use case is to update existing code -- for instance, to add a method to a class. In such a case, you must first inspect the existing code using reflection, and then add your new method. ``Zend_CodeGenerator`` makes this trivially simple, by leveraging :ref:`Zend_Reflection <zend.reflection>`.
+Another common use case is to update existing code -- for instance, to add a method to a class. In such a case, you
+must first inspect the existing code using reflection, and then add your new method. ``Zend_CodeGenerator`` makes
+this trivially simple, by leveraging :ref:`Zend_Reflection <zend.reflection>`.
 
-As an example, let's say we've saved the above to the file "``World.php``", and have already included it. We could then do the following:
+As an example, let's say we've saved the above to the file "``World.php``", and have already included it. We could
+then do the following:
 
 .. code-block:: php
    :linenos:

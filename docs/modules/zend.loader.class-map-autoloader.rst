@@ -8,25 +8,35 @@ The ClassMapAutoloader
 Overview
 --------
 
-The ``ClassMapAutoloader`` is designed with performance in mind. The idea behind it is simple: when asked to load a class, see if it's in the map, and, if so, load the file associated with the class in the map. This avoids unnecessary filesystem operations, and can also ensure the autoloader "plays nice" with opcode caches and PHP's realpath cache.
+The ``ClassMapAutoloader`` is designed with performance in mind. The idea behind it is simple: when asked to load a
+class, see if it's in the map, and, if so, load the file associated with the class in the map. This avoids
+unnecessary filesystem operations, and can also ensure the autoloader "plays nice" with opcode caches and PHP's
+realpath cache.
 
-In order to use the ``ClassMapAutoloader``, you first need class maps. Zend Framework ships with a class map per component or, if you grabbed the entire ZF distribution, a class map for the entire Zend Framework. These maps are typically in a file named ``.classmap.php`` within either the "Zend" directory, or an individual component's source directory.
+In order to use the ``ClassMapAutoloader``, you first need class maps. Zend Framework ships with a class map per
+component or, if you grabbed the entire ZF distribution, a class map for the entire Zend Framework. These maps are
+typically in a file named ``.classmap.php`` within either the "Zend" directory, or an individual component's source
+directory.
 
-Zend Framework also provides a tool for generating these class maps; you can find it in ``bin/classmap_generator.php`` of the distribution. Full documentation of this too is provided in :ref:` <zend.loader.classmap-generator>`.
+Zend Framework also provides a tool for generating these class maps; you can find it in
+``bin/classmap_generator.php`` of the distribution. Full documentation of this too is provided in :ref:`
+<zend.loader.classmap-generator>`.
 
 .. _zend.loader.class-map-autoloader.quick-start:
 
 Quick Start
 -----------
 
-The first step is to generate a class map file. You may run this over any directory containing source code anywhere underneath it.
+The first step is to generate a class map file. You may run this over any directory containing source code anywhere
+underneath it.
 
 .. code-block:: sh
    :linenos:
 
    php classmap_generator.php Some/Directory/
 
-This will create a file named ``Some/Directory/.classmap.php``, which is a PHP file returning an associative array that represents the class map.
+This will create a file named ``Some/Directory/.classmap.php``, which is a PHP file returning an associative array
+that represents the class map.
 
 Within your code, you will now instantiate the ``ClassMapAutoloader``, and provide it the location of the map.
 
@@ -57,7 +67,8 @@ The ``ClassMapAutoloader`` defines the following options.
 .. rubric:: ClassMapAutoloader Options
 
 **$options**
-   The ``ClassMapAutoloader`` expects an array of options, where each option is either a filename referencing a class map, or an associative array of class name/filename pairs.
+   The ``ClassMapAutoloader`` expects an array of options, where each option is either a filename referencing a
+   class map, or an associative array of class name/filename pairs.
 
    As an example:
 
@@ -85,7 +96,9 @@ Available Methods
    ``__construct($options = null)``
 
    **Constructor**
-   Used during instantiation of the object. Optionally, pass options, which may be either an array or ``Traversable`` object; this argument will be passed to :ref:`setOptions() <zend.loader.class-map-autoloader.methods.set-options>`.
+   Used during instantiation of the object. Optionally, pass options, which may be either an array or
+   ``Traversable`` object; this argument will be passed to :ref:`setOptions()
+   <zend.loader.class-map-autoloader.methods.set-options>`.
 
 
 .. _zend.loader.class-map-autoloader.methods.set-options:
@@ -95,7 +108,9 @@ setOptions
    ``setOptions($options)``
 
    **setOptions()**
-   Configures the state of the autoloader, including registering class maps. Expects an array or ``Traversable`` object; the argument will be passed to :ref:`registerAutoloadMaps() <zend.loader.class-map-autoloader.methods.register-autoload-maps>`.
+   Configures the state of the autoloader, including registering class maps. Expects an array or ``Traversable``
+   object; the argument will be passed to :ref:`registerAutoloadMaps()
+   <zend.loader.class-map-autoloader.methods.register-autoload-maps>`.
 
 
 .. _zend.loader.class-map-autoloader.methods.register-autoload-map:
@@ -105,9 +120,11 @@ registerAutoloadMap
    ``registerAutoloadMap($map)``
 
    **registerAutoloadMap()**
-   Registers a class map with the autoloader. ``$map`` may be either a string referencing a PHP script that returns a class map, or an array defining a class map.
+   Registers a class map with the autoloader. ``$map`` may be either a string referencing a PHP script that returns
+   a class map, or an array defining a class map.
 
-   More than one class map may be registered; each will be merged with the previous, meaning it's possible for a later class map to overwrite entries from a previously registered map.
+   More than one class map may be registered; each will be merged with the previous, meaning it's possible for a
+   later class map to overwrite entries from a previously registered map.
 
 
 .. _zend.loader.class-map-autoloader.methods.register-autoload-maps:
@@ -117,7 +134,9 @@ registerAutoloadMaps
    ``registerAutoloadMaps($maps)``
 
    **registerAutoloadMaps()**
-   Register multiple class maps with the autoloader. Expects either an array or ``Traversable`` object; it then iterates over the argument and passes each value to :ref:`registerAutoloadMap() <zend.loader.class-map-autoloader.methods.register-autoload-map>`.
+   Register multiple class maps with the autoloader. Expects either an array or ``Traversable`` object; it then
+   iterates over the argument and passes each value to :ref:`registerAutoloadMap()
+   <zend.loader.class-map-autoloader.methods.register-autoload-map>`.
 
 
 .. _zend.loader.class-map-autoloader.methods.get-autoload-map:
@@ -137,7 +156,8 @@ autoload
    ``autoload($class)``
 
    **autoload()**
-   Attempts to load the class specified. Returns a boolean ``false`` on failure, or a string indicating the class loaded on success.
+   Attempts to load the class specified. Returns a boolean ``false`` on failure, or a string indicating the class
+   loaded on success.
 
 
 .. _zend.loader.class-map-autoloader.methods.register:
@@ -159,7 +179,9 @@ Examples
 
 .. rubric:: Using configuration to seed ClassMapAutoloader
 
-Often, you will want to configure your ``ClassMapAutoloader``. These values may come from a configuration file, a cache (such as ShMem or memcached), or a simple PHP array. The following is an example of a PHP array that could be used to configure the autoloader:
+Often, you will want to configure your ``ClassMapAutoloader``. These values may come from a configuration file, a
+cache (such as ShMem or memcached), or a simple PHP array. The following is an example of a PHP array that could be
+used to configure the autoloader:
 
 .. code-block:: php
    :linenos:
@@ -182,7 +204,8 @@ An eqivalent INI style configuration might look like this:
    classmap.resources.Application\Bootstrap = APPLICATION_PATH "/Bootstrap.php"
    classmap.resources.Test\Bootstrap = APPLICATION_PATH "/../tests/Bootstrap.php"
 
-Once you have your configuration, you can pass it either to the constructor of the ``ClassMapAutoloader``, to its ``setOptions()`` method, or to ``registerAutoloadMaps()``.
+Once you have your configuration, you can pass it either to the constructor of the ``ClassMapAutoloader``, to its
+``setOptions()`` method, or to ``registerAutoloadMaps()``.
 
 .. code-block:: php
    :linenos:

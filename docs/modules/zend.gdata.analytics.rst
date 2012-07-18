@@ -5,7 +5,8 @@ Using Google Analytics
 
 The Google Analytics *API* allows client applications to request data, saved in the analytics accounts.
 
-See `http://code.google.com/apis/analytics/docs/gdata/v2/gdataOverview.html`_ for more information about the Google Analytics *API*.
+See `http://code.google.com/apis/analytics/docs/gdata/v2/gdataOverview.html`_ for more information about the Google
+Analytics *API*.
 
 .. _zend.gdata.analytics.accounts:
 
@@ -26,14 +27,18 @@ Using the account feed, you are able to retrieve a list of all the accounts avai
      echo "\n{$account->title}\n";
    }
 
-The ``$analytics->getAccountFeed()`` call, results in a ``Zend\GData\Analytics\AccountFeed`` object that contains ``Zend\GData\Analytics\AccountEntry`` objects. Each of this objects represent a google analytics account.
+The ``$analytics->getAccountFeed()`` call, results in a ``Zend\GData\Analytics\AccountFeed`` object that contains
+``Zend\GData\Analytics\AccountEntry`` objects. Each of this objects represent a google analytics account.
 
 .. _zend.gdata.analytics.reports:
 
 Retrieving report data
 ----------------------
 
-Besides the account feed, google offers a data feed, to retrieve report data using the Google Analytics *API*. To easily request for these reports, Zend\\GData\\Analytics offers a simple query construction interface. You can use all the `metrics and dimensions`_ specified by the API. Additionaly you can apply some `filters`_ to retrieve some `common data`_ or even complex results.
+Besides the account feed, google offers a data feed, to retrieve report data using the Google Analytics *API*. To
+easily request for these reports, Zend\\GData\\Analytics offers a simple query construction interface. You can use
+all the `metrics and dimensions`_ specified by the API. Additionaly you can apply some `filters`_ to retrieve some
+`common data`_ or even complex results.
 
 .. code-block:: php
    :linenos:

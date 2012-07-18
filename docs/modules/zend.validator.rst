@@ -3,29 +3,43 @@
 Introduction
 ============
 
-The ``Zend\Validator`` component provides a set of commonly needed validators. It also provides a simple validator chaining mechanism by which multiple validators may be applied to a single datum in a user-defined order.
+The ``Zend\Validator`` component provides a set of commonly needed validators. It also provides a simple validator
+chaining mechanism by which multiple validators may be applied to a single datum in a user-defined order.
 
 .. _zend.validator.introduction.definition:
 
 What is a validator?
 --------------------
 
-A validator examines its input with respect to some requirements and produces a boolean result - whether the input successfully validates against the requirements. If the input does not meet the requirements, a validator may additionally provide information about which requirement(s) the input does not meet.
+A validator examines its input with respect to some requirements and produces a boolean result - whether the input
+successfully validates against the requirements. If the input does not meet the requirements, a validator may
+additionally provide information about which requirement(s) the input does not meet.
 
-For example, a web application might require that a username be between six and twelve characters in length and may only contain alphanumeric characters. A validator can be used for ensuring that usernames meet these requirements. If a chosen username does not meet one or both of the requirements, it would be useful to know which of the requirements the username fails to meet.
+For example, a web application might require that a username be between six and twelve characters in length and may
+only contain alphanumeric characters. A validator can be used for ensuring that usernames meet these requirements.
+If a chosen username does not meet one or both of the requirements, it would be useful to know which of the
+requirements the username fails to meet.
 
 .. _zend.validator.introduction.using:
 
 Basic usage of validators
 -------------------------
 
-Having defined validation in this way provides the foundation for ``Zend\Validator\ValidatorInterface``, which defines two methods, ``isValid()`` and ``getMessages()``. The ``isValid()`` method performs validation upon the provided value, returning ``TRUE`` if and only if the value passes against the validation criteria.
+Having defined validation in this way provides the foundation for ``Zend\Validator\ValidatorInterface``, which
+defines two methods, ``isValid()`` and ``getMessages()``. The ``isValid()`` method performs validation upon the
+provided value, returning ``TRUE`` if and only if the value passes against the validation criteria.
 
-If ``isValid()`` returns ``FALSE``, the ``getMessages()`` returns an array of messages explaining the reason(s) for validation failure. The array keys are short strings that identify the reasons for validation failure, and the array values are the corresponding human-readable string messages. The keys and values are class-dependent; each validation class defines its own set of validation failure messages and the unique keys that identify them. Each class also has a const definition that matches each identifier for a validation failure cause.
+If ``isValid()`` returns ``FALSE``, the ``getMessages()`` returns an array of messages explaining the reason(s) for
+validation failure. The array keys are short strings that identify the reasons for validation failure, and the
+array values are the corresponding human-readable string messages. The keys and values are class-dependent; each
+validation class defines its own set of validation failure messages and the unique keys that identify them. Each
+class also has a const definition that matches each identifier for a validation failure cause.
 
 .. note::
 
-   The ``getMessages()`` methods return validation failure information only for the most recent ``isValid()`` call. Each call to ``isValid()`` clears any messages and errors caused by a previous ``isValid()`` call, because it's likely that each call to ``isValid()`` is made for a different input value.
+   The ``getMessages()`` methods return validation failure information only for the most recent ``isValid()`` call.
+   Each call to ``isValid()`` clears any messages and errors caused by a previous ``isValid()`` call, because it's
+   likely that each call to ``isValid()`` is made for a different input value.
 
 The following example illustrates validation of an e-mail address:
 
@@ -48,9 +62,19 @@ The following example illustrates validation of an e-mail address:
 Customizing messages
 --------------------
 
-Validator classes provide a ``setMessage()`` method with which you can specify the format of a message returned by ``getMessages()`` in case of validation failure. The first argument of this method is a string containing the error message. You can include tokens in this string which will be substituted with data relevant to the validator. The token **%value%** is supported by all validators; this is substituted with the value you passed to ``isValid()``. Other tokens may be supported on a case-by-case basis in each validation class. For example, **%max%** is a token supported by ``Zend\Validator\LessThan``. The ``getMessageVariables()`` method returns an array of variable tokens supported by the validator.
+Validator classes provide a ``setMessage()`` method with which you can specify the format of a message returned by
+``getMessages()`` in case of validation failure. The first argument of this method is a string containing the error
+message. You can include tokens in this string which will be substituted with data relevant to the validator. The
+token **%value%** is supported by all validators; this is substituted with the value you passed to ``isValid()``.
+Other tokens may be supported on a case-by-case basis in each validation class. For example, **%max%** is a token
+supported by ``Zend\Validator\LessThan``. The ``getMessageVariables()`` method returns an array of variable tokens
+supported by the validator.
 
-The second optional argument is a string that identifies the validation failure message template to be set, which is useful when a validation class defines more than one cause for failure. If you omit the second argument, ``setMessage()`` assumes the message you specify should be used for the first message template declared in the validation class. Many validation classes only have one error message template defined, so there is no need to specify which message template you are changing.
+The second optional argument is a string that identifies the validation failure message template to be set, which
+is useful when a validation class defines more than one cause for failure. If you omit the second argument,
+``setMessage()`` assumes the message you specify should be used for the first message template declared in the
+validation class. Many validation classes only have one error message template defined, so there is no need to
+specify which message template you are changing.
 
 .. code-block:: php
    :linenos:
@@ -69,7 +93,8 @@ The second optional argument is a string that identifies the validation failure 
        // "The string 'word' is too short; it must be at least 8 characters"
    }
 
-You can set multiple messages using the ``setMessages()`` method. Its argument is an array containing key/message pairs.
+You can set multiple messages using the ``setMessages()`` method. Its argument is an array containing key/message
+pairs.
 
 .. code-block:: php
    :linenos:
@@ -83,7 +108,10 @@ You can set multiple messages using the ``setMessages()`` method. Its argument i
            'The string \'%value%\' is too long'
    ));
 
-If your application requires even greater flexibility with which it reports validation failures, you can access properties by the same name as the message tokens supported by a given validation class. The ``value`` property is always available in a validator; it is the value you specified as the argument of ``isValid()``. Other properties may be supported on a case-by-case basis in each validation class.
+If your application requires even greater flexibility with which it reports validation failures, you can access
+properties by the same name as the message tokens supported by a given validation class. The ``value`` property is
+always available in a validator; it is the value you specified as the argument of ``isValid()``. Other properties
+may be supported on a case-by-case basis in each validation class.
 
 .. code-block:: php
    :linenos:
@@ -105,7 +133,9 @@ If your application requires even greater flexibility with which it reports vali
 Translating messages
 --------------------
 
-Validator classes provide a ``setTranslator()`` method with which you can specify a instance of ``Zend\I18n\Translator\Translator`` which will translate the messages in case of a validation failure. The ``getTranslator()`` method returns the set translator instance.
+Validator classes provide a ``setTranslator()`` method with which you can specify a instance of
+``Zend\I18n\Translator\Translator`` which will translate the messages in case of a validation failure. The
+``getTranslator()`` method returns the set translator instance.
 
 .. code-block:: php
    :linenos:
@@ -116,7 +146,9 @@ Validator classes provide a ``setTranslator()`` method with which you can specif
 
    $validator->setTranslator($translate);
 
-With the static ``setDefaultTranslator()`` method you can set a instance of ``Zend\I18n\Translator\Translator`` which will be used for all validation classes, and can be retrieved with ``getDefaultTranslator()``. This prevents you from setting a translator manually for all validator classes, and simplifies your code.
+With the static ``setDefaultTranslator()`` method you can set a instance of ``Zend\I18n\Translator\Translator``
+which will be used for all validation classes, and can be retrieved with ``getDefaultTranslator()``. This prevents
+you from setting a translator manually for all validator classes, and simplifies your code.
 
 .. code-block:: php
    :linenos:
@@ -128,9 +160,12 @@ With the static ``setDefaultTranslator()`` method you can set a instance of ``Ze
 
 .. note::
 
-   When you have set an application wide locale within your registry, then this locale will be used as default translator.
+   When you have set an application wide locale within your registry, then this locale will be used as default
+   translator.
 
-Sometimes it is necessary to disable the translator within a validator. To archive this you can use the ``setDisableTranslator()`` method, which accepts a boolean parameter, and ``isTranslatorDisabled()`` to get the set value.
+Sometimes it is necessary to disable the translator within a validator. To archive this you can use the
+``setDisableTranslator()`` method, which accepts a boolean parameter, and ``isTranslatorDisabled()`` to get the set
+value.
 
 .. code-block:: php
    :linenos:
@@ -140,6 +175,7 @@ Sometimes it is necessary to disable the translator within a validator. To archi
        $validator->setDisableTranslator();
    }
 
-It is also possible to use a translator instead of setting own messages with ``setMessage()``. But doing so, you should keep in mind, that the translator works also on messages you set your own.
+It is also possible to use a translator instead of setting own messages with ``setMessage()``. But doing so, you
+should keep in mind, that the translator works also on messages you set your own.
 
 

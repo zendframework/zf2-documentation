@@ -8,7 +8,10 @@ Decorator Basics
 Overview of the Decorator Pattern
 ---------------------------------
 
-To begin, we'll cover some background on the `Decorator design pattern`_. One common technique is to define a common interface that both your originating object and decorator will implement; your decorator than accepts the originating object as a dependency, and will either proxy to it or override its methods. Let's put that into code to make it more easily understood:
+To begin, we'll cover some background on the `Decorator design pattern`_. One common technique is to define a
+common interface that both your originating object and decorator will implement; your decorator than accepts the
+originating object as a dependency, and will either proxy to it or override its methods. Let's put that into code
+to make it more easily understood:
 
 .. code-block:: php
    :linenos:
@@ -70,11 +73,19 @@ To begin, we'll cover some background on the `Decorator design pattern`_. One co
        }
    }
 
-You then create an object of type ``StandardWindow``, pass it to the constructor of ``LockedWindow``, and your window instance now has different behavior. The beauty is that you don't have to implement any sort of "locking" functionality on your standard window class -- the decorator takes care of that for you. In the meantime, you can pass your locked window around as if it were just another window.
+You then create an object of type ``StandardWindow``, pass it to the constructor of ``LockedWindow``, and your
+window instance now has different behavior. The beauty is that you don't have to implement any sort of "locking"
+functionality on your standard window class -- the decorator takes care of that for you. In the meantime, you can
+pass your locked window around as if it were just another window.
 
-One particular place where the decorator pattern is useful is for creating textual representations of objects. As an example, you might have a "Person" object that, by itself, has no textual representation. By using the Decorator pattern, you can create an object that will act as if it were a Person, but also provide the ability to render that Person textually.
+One particular place where the decorator pattern is useful is for creating textual representations of objects. As
+an example, you might have a "Person" object that, by itself, has no textual representation. By using the Decorator
+pattern, you can create an object that will act as if it were a Person, but also provide the ability to render that
+Person textually.
 
-In this particular example, we're going to use `duck typing`_ instead of an explicit interface. This allows our implementation to be a bit more flexible, while still allowing the decorator object to act exactly as if it were a Person object.
+In this particular example, we're going to use `duck typing`_ instead of an explicit interface. This allows our
+implementation to be a bit more flexible, while still allowing the decorator object to act exactly as if it were a
+Person object.
 
 .. code-block:: php
    :linenos:
@@ -115,18 +126,28 @@ In this particular example, we're going to use `duck typing`_ instead of an expl
        }
    }
 
-In this example, you pass your ``Person`` instance to the ``TextPerson`` constructor. By using method overloading, you are able to continue to call all the methods of ``Person``-- to set the first name, last name, or title -- but you also now gain a string representation via the ``__toString()`` method.
+In this example, you pass your ``Person`` instance to the ``TextPerson`` constructor. By using method overloading,
+you are able to continue to call all the methods of ``Person``-- to set the first name, last name, or title -- but
+you also now gain a string representation via the ``__toString()`` method.
 
-This latter example is getting close to how ``Zend_Form`` decorators work. The key difference is that instead of a decorator wrapping the element, the element has one or more decorators attached to it that it then injects itself into in order to render. The decorator then can access the element's methods and properties in order to create a representation of the element -- or a subset of it.
+This latter example is getting close to how ``Zend_Form`` decorators work. The key difference is that instead of a
+decorator wrapping the element, the element has one or more decorators attached to it that it then injects itself
+into in order to render. The decorator then can access the element's methods and properties in order to create a
+representation of the element -- or a subset of it.
 
 .. _learning.form.decorators.simplest.first-decorator:
 
 Creating Your First Decorator
 -----------------------------
 
-``Zend_Form`` decorators all implement a common interface, ``Zend_Form_Decorator_Interface``. That interface provides the ability to set decorator-specific options, register and retrieve the element, and render. A base decorator, ``Zend_Form_Decorator_Abstract``, provides most of the functionality you will ever need, with the exception of the rendering logic.
+``Zend_Form`` decorators all implement a common interface, ``Zend_Form_Decorator_Interface``. That interface
+provides the ability to set decorator-specific options, register and retrieve the element, and render. A base
+decorator, ``Zend_Form_Decorator_Abstract``, provides most of the functionality you will ever need, with the
+exception of the rendering logic.
 
-Let's consider a situation where we simply want to render an element as a standard form text input with a label. We won't worry about error handling or whether or not the element should be wrapped within other tags for now -- just the basics. Such a decorator might look like this:
+Let's consider a situation where we simply want to render an element as a standard form text input with a label. We
+won't worry about error handling or whether or not the element should be wrapped within other tags for now -- just
+the basics. Such a decorator might look like this:
 
 .. code-block:: php
    :linenos:
@@ -169,7 +190,8 @@ Rendering this element results in the following markup:
    <label for="bar[foo]">Foo</label>
    <input id="bar-foo" name="bar[foo]" type="text" value="test"/>
 
-You could also put this class in your library somewhere, inform your element of that path, and refer to the decorator as simply "SimpleInput" as well:
+You could also put this class in your library somewhere, inform your element of that path, and refer to the
+decorator as simply "SimpleInput" as well:
 
 .. code-block:: php
    :linenos:
@@ -184,7 +206,8 @@ You could also put this class in your library somewhere, inform your element of 
        'decorators' => array('SimpleInput'),
    ));
 
-This gives you the benefit of re-use in other projects, and also opens the door for providing alternate implementations of that decorator later.
+This gives you the benefit of re-use in other projects, and also opens the door for providing alternate
+implementations of that decorator later.
 
 In the next section, we'll look at how to combine decorators in order to create composite output.
 

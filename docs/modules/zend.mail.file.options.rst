@@ -50,7 +50,8 @@ Configuration Options
 .. _zend.mail.file-options.options.callback:
 
 **callback**
-   A PHP callable to be invoked in order to generate a unique name for a message file. By default, the following is used:
+   A PHP callable to be invoked in order to generate a unique name for a message file. By default, the following is
+   used:
 
    .. code-block:: php
       :linenos:
@@ -64,7 +65,9 @@ Configuration Options
 Available Methods
 -----------------
 
-``Zend\Mail\Transport\FileOptions`` extends ``Zend\Stdlib\Options``, and inherits all functionality from that class; this includes ``ArrayAccess`` and property overloading. Additionally, the following explicit setters and getters are provided.
+``Zend\Mail\Transport\FileOptions`` extends ``Zend\Stdlib\Options``, and inherits all functionality from that
+class; this includes ``ArrayAccess`` and property overloading. Additionally, the following explicit setters and
+getters are provided.
 
 .. _zend.mail.file-options.methods.set-path:
 

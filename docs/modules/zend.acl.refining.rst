@@ -8,13 +8,23 @@ Refining Access Controls
 Precise Access Controls
 -----------------------
 
-The basic *ACL* as defined in the :ref:`previous section <zend.acl.introduction>` shows how various privileges may be allowed upon the entire *ACL* (all resources). In practice, however, access controls tend to have exceptions and varying degrees of complexity. ``Zend\Acl\Acl`` allows to you accomplish these refinements in a straightforward and flexible manner.
+The basic *ACL* as defined in the :ref:`previous section <zend.acl.introduction>` shows how various privileges may
+be allowed upon the entire *ACL* (all resources). In practice, however, access controls tend to have exceptions and
+varying degrees of complexity. ``Zend\Acl\Acl`` allows to you accomplish these refinements in a straightforward and
+flexible manner.
 
-For the example *CMS*, it has been determined that whilst the 'staff' group covers the needs of the vast majority of users, there is a need for a new 'marketing' group that requires access to the newsletter and latest news in the *CMS*. The group is fairly self-sufficient and will have the ability to publish and archive both newsletters and the latest news.
+For the example *CMS*, it has been determined that whilst the 'staff' group covers the needs of the vast majority
+of users, there is a need for a new 'marketing' group that requires access to the newsletter and latest news in the
+*CMS*. The group is fairly self-sufficient and will have the ability to publish and archive both newsletters and
+the latest news.
 
-In addition, it has also been requested that the 'staff' group be allowed to view news stories but not to revise the latest news. Finally, it should be impossible for anyone (administrators included) to archive any 'announcement' news stories since they only have a lifespan of 1-2 days.
+In addition, it has also been requested that the 'staff' group be allowed to view news stories but not to revise
+the latest news. Finally, it should be impossible for anyone (administrators included) to archive any
+'announcement' news stories since they only have a lifespan of 1-2 days.
 
-First we revise the role registry to reflect these changes. We have determined that the 'marketing' group has the same basic permissions as 'staff', so we define 'marketing' in such a way that it inherits permissions from 'staff':
+First we revise the role registry to reflect these changes. We have determined that the 'marketing' group has the
+same basic permissions as 'staff', so we define 'marketing' in such a way that it inherits permissions from
+'staff':
 
 .. code-block:: php
    :linenos:
@@ -28,7 +38,8 @@ First we revise the role registry to reflect these changes. We have determined t
 
    $acl->addRole(new Role('marketing'), 'staff');
 
-Next, note that the above access controls refer to specific resources (e.g., "newsletter", "latest news", "announcement news"). Now we add these resources:
+Next, note that the above access controls refer to specific resources (e.g., "newsletter", "latest news",
+"announcement news"). Now we add these resources:
 
 .. code-block:: php
    :linenos:
@@ -108,7 +119,9 @@ We can now query the *ACL* with respect to the latest changes:
 Removing Access Controls
 ------------------------
 
-To remove one or more access rules from the *ACL*, simply use the available ``removeAllow()`` or ``removeDeny()`` methods. As with ``allow()`` and ``deny()``, you may provide a ``NULL`` value to indicate application to all roles, resources, and/or privileges:
+To remove one or more access rules from the *ACL*, simply use the available ``removeAllow()`` or ``removeDeny()``
+methods. As with ``allow()`` and ``deny()``, you may provide a ``NULL`` value to indicate application to all roles,
+resources, and/or privileges:
 
 .. code-block:: php
    :linenos:
@@ -135,7 +148,8 @@ To remove one or more access rules from the *ACL*, simply use the available ``re
         "allowed" : "denied";
    // denied
 
-Privileges may be modified incrementally as indicated above, but a ``NULL`` value for the privileges overrides such incremental changes:
+Privileges may be modified incrementally as indicated above, but a ``NULL`` value for the privileges overrides such
+incremental changes:
 
 .. code-block:: php
    :linenos:

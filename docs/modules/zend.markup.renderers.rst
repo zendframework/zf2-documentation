@@ -10,7 +10,9 @@ Zend_Markup Renderers
 Adding your own markups
 -----------------------
 
-By adding your own markups, you can add your own functionality to the ``Zend_Markup`` renderers. With the markup structure, you can add about any functionality you want. From simple markups, to complicated markup structures. A simple example for a 'foo' markup:
+By adding your own markups, you can add your own functionality to the ``Zend_Markup`` renderers. With the markup
+structure, you can add about any functionality you want. From simple markups, to complicated markup structures. A
+simple example for a 'foo' markup:
 
 .. code-block:: php
    :linenos:
@@ -37,18 +39,22 @@ By adding your own markups, you can add your own functionality to the ``Zend_Mar
    // now, this will output: 'my -bar-markup-baz-'
    echo $bbcode->render('my [foo]markup[/foo]');
 
-Please note that creating your own markups only makes sense when your parser also supports it with a markup structure. Currently, only BBCode supports this. Textile doesn't have support for custom markups.
+Please note that creating your own markups only makes sense when your parser also supports it with a markup
+structure. Currently, only BBCode supports this. Textile doesn't have support for custom markups.
 
-Some renderers (like the *HTML* renderer) also have support for a 'markup' parameter. This replaces the 'start' and 'end' parameters, and it renders the markups including some default attributes and the closing markup.
+Some renderers (like the *HTML* renderer) also have support for a 'markup' parameter. This replaces the 'start' and
+'end' parameters, and it renders the markups including some default attributes and the closing markup.
 
 .. _zend.markup.renderers.add.callback:
 
 Add a callback markup
 ^^^^^^^^^^^^^^^^^^^^^
 
-By adding a callback markup, you can do a lot more then just a simple replace of the markups. For instance, you can change the contents, use the parameters to influence the output etc.
+By adding a callback markup, you can do a lot more then just a simple replace of the markups. For instance, you can
+change the contents, use the parameters to influence the output etc.
 
-A callback is a class that implements the ``Zend_Markup_Renderer_TokenInterface`` interface. An example of a callback class:
+A callback is a class that implements the ``Zend_Markup_Renderer_TokenInterface`` interface. An example of a
+callback class:
 
 .. code-block:: php
    :linenos:
@@ -64,7 +70,8 @@ A callback is a class that implements the ``Zend_Markup_Renderer_TokenInterface`
 
    }
 
-Now you can add the 'upper' markup, with as callback, an instance of the ``My_Markup_Renderer_Html_Upper`` class. A simple example:
+Now you can add the 'upper' markup, with as callback, an instance of the ``My_Markup_Renderer_Html_Upper`` class. A
+simple example:
 
 .. code-block:: php
    :linenos:

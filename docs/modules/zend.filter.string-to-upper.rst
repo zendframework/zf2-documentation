@@ -34,7 +34,8 @@ This is a basic example for using the ``StringToUpper`` filter:
 Different encoded strings
 -------------------------
 
-Like the ``StringToLower`` filter, this filter handles only characters from the actual locale of your server. Using different character sets works the same as with ``StringToLower``.
+Like the ``StringToLower`` filter, this filter handles only characters from the actual locale of your server. Using
+different character sets works the same as with ``StringToLower``.
 
 .. code-block:: php
    :linenos:

@@ -8,7 +8,8 @@ API overview
 Configuration / options
 -----------------------
 
-The ``Zend\Ldap\Ldap`` component accepts an array of options either supplied to the constructor or through the ``setOptions()`` method. The permitted options are as follows:
+The ``Zend\Ldap\Ldap`` component accepts an array of options either supplied to the constructor or through the
+``setOptions()`` method. The permitted options are as follows:
 
 .. _zend.ldap.api.configuration.table:
 

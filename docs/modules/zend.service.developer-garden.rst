@@ -8,23 +8,31 @@ Zend_Service_DeveloperGarden
 Introduction to DeveloperGarden
 -------------------------------
 
-Developer Garden is the name of Deutsche Telekom’s developer community. Developer Garden offers you access to core services of Deutsche Telekom, such as voice connections (Voice Call) or sending text messages (Send SMS) via open interfaces (Open *API*\ s). You can access the Developer Garden services directly via *SOAP* or *REST*.
+Developer Garden is the name of Deutsche Telekom’s developer community. Developer Garden offers you access to
+core services of Deutsche Telekom, such as voice connections (Voice Call) or sending text messages (Send SMS) via
+open interfaces (Open *API*\ s). You can access the Developer Garden services directly via *SOAP* or *REST*.
 
-The family of ``Zend_Service_DeveloperGarden`` components provides a clean and simple interface to the `Developer Garden APIs`_ and additionally offers functionality to improve handling and performance.
+The family of ``Zend_Service_DeveloperGarden`` components provides a clean and simple interface to the `Developer
+Garden APIs`_ and additionally offers functionality to improve handling and performance.
 
-- :ref:`BaseUserService <zend.service.developergarden.baseuserservice>`: Class to manage *API* quota and user accounting details.
+- :ref:`BaseUserService <zend.service.developergarden.baseuserservice>`: Class to manage *API* quota and user
+  accounting details.
 
-- :ref:`IPLocation <zend.service.developergarden.iplocation>`: Locale the given IP and returns geo coordinates. Works only with IPs allocated in the network of the Deutsche Telekom.
+- :ref:`IPLocation <zend.service.developergarden.iplocation>`: Locale the given IP and returns geo coordinates.
+  Works only with IPs allocated in the network of the Deutsche Telekom.
 
-- :ref:`LocalSearch <zend.service.developergarden.localsearch>`: Allows you to search with options nearby or around a given geo coordinate or city.
+- :ref:`LocalSearch <zend.service.developergarden.localsearch>`: Allows you to search with options nearby or around
+  a given geo coordinate or city.
 
 - :ref:`SendSMS <zend.service.developergarden.sendsms>`: Send a SMS or Flash SMS to a given number.
 
-- :ref:`SMSValidation <zend.service.developergarden.smsvalidation>`: You can validate a number to use it with SendSMS for also supply a back channel.
+- :ref:`SMSValidation <zend.service.developergarden.smsvalidation>`: You can validate a number to use it with
+  SendSMS for also supply a back channel.
 
 - :ref:`VoiceCall <zend.service.developergarden.voicecall>`: Initiates a call between two participants.
 
-- :ref:`ConferenceCall <zend.service.developergarden.conferencecall>`: You can configure a whole conference room with participants for an adhoc conference or you can also schedule your conference.
+- :ref:`ConferenceCall <zend.service.developergarden.conferencecall>`: You can configure a whole conference room
+  with participants for an adhoc conference or you can also schedule your conference.
 
 The backend *SOAP* *API* is documented `here`_.
 
@@ -42,13 +50,17 @@ The Environment
 
 With the DeveloperGarden *API* you have the possibility to choose between 3 different development environments.
 
-- **production**: In Production environment there are no usage limitations. You have to pay for calls, sms and other services with costs.
+- **production**: In Production environment there are no usage limitations. You have to pay for calls, sms and
+  other services with costs.
 
-- **sandbox**: In the Sandbox mode you can use the same features (with limitations) as in the production without to paying for them. This environment is suitable for testing your prototype.
+- **sandbox**: In the Sandbox mode you can use the same features (with limitations) as in the production without to
+  paying for them. This environment is suitable for testing your prototype.
 
-- **mock**: The Mock environment allows you to build your application and have results but you do not initiate any action on the *API* side. This environment is intended for testing during development.
+- **mock**: The Mock environment allows you to build your application and have results but you do not initiate any
+  action on the *API* side. This environment is intended for testing during development.
 
-For every environment and service, there are some special features (options) available for testing. Please look `here`_ for details.
+For every environment and service, there are some special features (options) available for testing. Please look
+`here`_ for details.
 
 .. _zend.service.developergarden.config:
 
@@ -120,7 +132,8 @@ You can fetch quota informations for a specific service module with the provided
    echo 'Max User Quota: ', $result->getMaxUserQuota(), '<br />';
    echo 'Quota Level: ', $result->getQuotaLevel(), '<br />';
 
-You get a ``result`` object that contains all the information you need, optional you can pass to the ``QuotaInformation`` method the environment constant to fetch the quota for the specific environment.
+You get a ``result`` object that contains all the information you need, optional you can pass to the
+``QuotaInformation`` method the environment constant to fetch the quota for the specific environment.
 
 Here a list of all ``getQuotaInformation`` methods:
 
@@ -139,7 +152,8 @@ Here a list of all ``getQuotaInformation`` methods:
 Change quota information
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-To change the current quota use one of the ``changeQuotaPool`` methods. First parameter is the new pool value and the second one is the environment.
+To change the current quota use one of the ``changeQuotaPool`` methods. First parameter is the new pool value and
+the second one is the environment.
 
 .. _zend.service.developergarden.baseuserservice.changequotainformation.example:
 
@@ -203,7 +217,8 @@ There are some limitations:
 Local Search
 ------------
 
-The Local Search service provides the location based search machine `suchen.de`_ via web service interface. For more details, refer to `the documentation`_.
+The Local Search service provides the location based search machine `suchen.de`_ via web service interface. For
+more details, refer to `the documentation`_.
 
 .. _zend.service.developergarden.localsearch.example:
 
@@ -230,21 +245,25 @@ The Send SMS service is used to send normal and Flash SMS to any number.
 
 The following restrictions apply to the use of the SMS service:
 
-- An SMS or Flash SMS in the production environment must not be longer than 765 characters and must not be sent to more than 10 recipients.
+- An SMS or Flash SMS in the production environment must not be longer than 765 characters and must not be sent to
+  more than 10 recipients.
 
-- An SMS or Flash SMS in the sandbox environment is shortened and enhanced by a note from the DeveloperGarden. The maximum length of the message is 160 characters.
+- An SMS or Flash SMS in the sandbox environment is shortened and enhanced by a note from the DeveloperGarden. The
+  maximum length of the message is 160 characters.
 
 - In the sandbox environment, a maximum of 10 SMS can be sent per day.
 
 - The following characters are counted twice: ``| ^ € { } [ ] ~ \ LF`` (line break)
 
-- If a SMS or Flash SMS is longer than 160 characters, one message is charged for each 153 characters (quota and credit).
+- If a SMS or Flash SMS is longer than 160 characters, one message is charged for each 153 characters (quota and
+  credit).
 
 - Delivery cannot be guaranteed for SMS or Flash SMS to landline numbers.
 
 - The sender can be a maximum of 11 characters. Permitted characters are letters and numbers.
 
-- The specification of a phone number as the sender is only permitted if the phone number has been validated. (See: :ref:`SMS Validation <zend.service.developergarden.smsvalidation>`)
+- The specification of a phone number as the sender is only permitted if the phone number has been validated. (See:
+  :ref:`SMS Validation <zend.service.developergarden.smsvalidation>`)
 
 .. _zend.service.developergarden.sendsms.example:
 
@@ -269,9 +288,11 @@ The SMS Validation service allows the validation of physical phone number to be 
 
 First, call ``setValidationKeyword()`` to receive an SMS with a keyword.
 
-After you get your keyword, you have to use the ``validate()`` to validate your number with the keyword against the service.
+After you get your keyword, you have to use the ``validate()`` to validate your number with the keyword against the
+service.
 
-With the method ``getValidatedNumbers()``, you will get a list of all already validated numbers and the status of each.
+With the method ``getValidatedNumbers()``, you will get a list of all already validated numbers and the status of
+each.
 
 .. _zend.service.developergarden.smsvalidation.request.example:
 
@@ -300,7 +321,8 @@ To invalidate a validated number, call the method ``inValidate()``.
 Voice Call
 ----------
 
-The Voice Call service can be used to set up a voice connection between two telephone connections. For specific details please read the `API Documentation`_.
+The Voice Call service can be used to set up a voice connection between two telephone connections. For specific
+details please read the `API Documentation`_.
 
 Normally the Service works as followed:
 
@@ -327,7 +349,9 @@ Normally the Service works as followed:
    $newCall = $service->newCall($aNumber, $bNumber, $expiration, $maxDuration);
    echo $newCall->getSessionId();
 
-If the call is initiated, you can ask the result object for the session ID and use this session ID for an additional call to the ``callStatus`` or ``tearDownCall()`` methods. The second parameter on the ``callStatus()`` method call extends the expiration for this call.
+If the call is initiated, you can ask the result object for the session ID and use this session ID for an
+additional call to the ``callStatus`` or ``tearDownCall()`` methods. The second parameter on the ``callStatus()``
+method call extends the expiration for this call.
 
 .. _zend.service.developergarden.voicecall.teardown.example:
 
@@ -476,7 +500,8 @@ The ``[PHP CONSTANT]`` can be one of the following values:
 
 - ``WSDL_CACHE_NONE``: disabled both caching
 
-If you also want to cache the result for calls to the SecuritTokenServer you can setup a ``Zend_Cache`` instance and pass it to the ``setCache()``.
+If you also want to cache the result for calls to the SecuritTokenServer you can setup a ``Zend_Cache`` instance
+and pass it to the ``setCache()``.
 
 .. _zend.service.developergarden.performance.cache.example:
 

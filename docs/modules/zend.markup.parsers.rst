@@ -10,7 +10,9 @@ Zend_Markup Parsers
 Theory of Parsing
 -----------------
 
-The parsers of ``Zend_Markup`` are classes that convert text with markup to a token tree. Although we are using the BBCode parser as example here, the idea of the token tree remains the same across all parsers. We will start with this piece of BBCode for example:
+The parsers of ``Zend_Markup`` are classes that convert text with markup to a token tree. Although we are using the
+BBCode parser as example here, the idea of the token tree remains the same across all parsers. We will start with
+this piece of BBCode for example:
 
 .. code-block:: text
    :linenos:
@@ -29,14 +31,18 @@ Then the BBCode parser will take that value, tear it apart and create the follow
 
 - baz
 
-You will notice that the closing tags are gone, they don't show up as content in the tree structure. This is because the closing tag isn't part of the actual content. Although, this does not mean that the closing tag is just lost, it is stored inside the tag information for the tag itself. Also, please note that this is just a simplified view of the tree itself. The actual tree contains a lot more information, like the tag's attributes and its name.
+You will notice that the closing tags are gone, they don't show up as content in the tree structure. This is
+because the closing tag isn't part of the actual content. Although, this does not mean that the closing tag is just
+lost, it is stored inside the tag information for the tag itself. Also, please note that this is just a simplified
+view of the tree itself. The actual tree contains a lot more information, like the tag's attributes and its name.
 
 .. _zend.markup.parsers.bbcode:
 
 The BBCode parser
 -----------------
 
-The BBCode parser is a ``Zend_Markup`` parser that converts BBCode to a token tree. The syntax of all BBCode tags is:
+The BBCode parser is a ``Zend_Markup`` parser that converts BBCode to a token tree. The syntax of all BBCode tags
+is:
 
 .. code-block:: text
    :linenos:
@@ -60,7 +66,8 @@ By default, all tags are closed by using the format '[/tagname]'.
 The Textile parser
 ------------------
 
-The Textile parser is a ``Zend_Markup`` parser that converts Textile to a token tree. Because Textile doesn't have a tag structure, the following is a list of example tags:
+The Textile parser is a ``Zend_Markup`` parser that converts Textile to a token tree. Because Textile doesn't have
+a tag structure, the following is a list of example tags:
 
 .. _zend.markup.parsers.textile.tags:
 
@@ -96,14 +103,16 @@ The Textile parser is a ``Zend_Markup`` parser that converts Textile to a token 
    |!http://framework.zend.com/images/logo.gif!|<img src="http://framework.zend.com/images/logo.gif" />  |
    +-------------------------------------------+---------------------------------------------------------+
 
-Also, the Textile parser wraps all tags into paragraphs; a paragraph ends with two newlines, and if there are more tags, a new paragraph will be added.
+Also, the Textile parser wraps all tags into paragraphs; a paragraph ends with two newlines, and if there are more
+tags, a new paragraph will be added.
 
 .. _zend.markup.parsers.textile.lists:
 
 Lists
 ^^^^^
 
-The Textile parser also supports two types of lists. The numeric type, using the "#" character and bullit-lists using the "\*" character. An example of both lists:
+The Textile parser also supports two types of lists. The numeric type, using the "#" character and bullit-lists
+using the "\*" character. An example of both lists:
 
 .. code-block:: text
    :linenos:
@@ -114,6 +123,8 @@ The Textile parser also supports two types of lists. The numeric type, using the
    * Item 1
    * Item 2
 
-The above will generate two lists: the first, numbered; and the second, bulleted. Inside list items, you can use normal tags like strong (\*), and emphasized (\_). Tags that need to start on a new line (like 'h1' etc.) cannot be used inside lists.
+The above will generate two lists: the first, numbered; and the second, bulleted. Inside list items, you can use
+normal tags like strong (\*), and emphasized (\_). Tags that need to start on a new line (like 'h1' etc.) cannot be
+used inside lists.
 
 

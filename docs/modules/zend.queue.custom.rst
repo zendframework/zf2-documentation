@@ -8,7 +8,10 @@ Customizing Zend_Queue
 Creating your own adapter
 -------------------------
 
-``Zend_Queue`` will accept any adapter that implements ``Zend_Queue_Adapter_AdapterAbstract``. You can create your own adapter by extending one of the existing adapters, or the abstract class ``Zend_Queue_Adapter_AdapterAbstract``. I suggest reviewing ``Zend_Queue_Adapter_Array`` as this adapter is the easiest to conceptualize.
+``Zend_Queue`` will accept any adapter that implements ``Zend_Queue_Adapter_AdapterAbstract``. You can create your
+own adapter by extending one of the existing adapters, or the abstract class
+``Zend_Queue_Adapter_AdapterAbstract``. I suggest reviewing ``Zend_Queue_Adapter_Array`` as this adapter is the
+easiest to conceptualize.
 
 .. code-block:: php
    :linenos:
@@ -95,7 +98,9 @@ You can extend the existing messaging class. See the example code in ``tests/Zen
 Creating your own message iterator class
 ----------------------------------------
 
-``Zend_Queue`` will also accept your own message iterator class. The message iterator class is used to return messages from ``Zend_Queue_Adapter_Abstract::recieve()``. ``Zend_Queue_Abstract::receive()`` should always return a container class like ``Zend_Queue_Message_Iterator``, even if there is only one message.
+``Zend_Queue`` will also accept your own message iterator class. The message iterator class is used to return
+messages from ``Zend_Queue_Adapter_Abstract::recieve()``. ``Zend_Queue_Abstract::receive()`` should always return a
+container class like ``Zend_Queue_Message_Iterator``, even if there is only one message.
 
 See the example filename in ``tests/Zend/Queue/Custom/Messages.php``.
 

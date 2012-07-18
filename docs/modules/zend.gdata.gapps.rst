@@ -3,31 +3,41 @@
 Using Google Apps Provisioning
 ==============================
 
-Google Apps is a service which allows domain administrators to offer their users managed access to Google services such as Mail, Calendar, and Docs & Spreadsheets. The Provisioning *API* offers a programmatic interface to configure this service. Specifically, this *API* allows administrators the ability to create, retrieve, update, and delete user accounts, nicknames, groups, and email lists.
+Google Apps is a service which allows domain administrators to offer their users managed access to Google services
+such as Mail, Calendar, and Docs & Spreadsheets. The Provisioning *API* offers a programmatic interface to
+configure this service. Specifically, this *API* allows administrators the ability to create, retrieve, update, and
+delete user accounts, nicknames, groups, and email lists.
 
-This library implements version 2.0 of the Provisioning *API*. Access to your account via the Provisioning *API* must be manually enabled for each domain using the Google Apps control panel. Only certain account types are able to enable this feature.
+This library implements version 2.0 of the Provisioning *API*. Access to your account via the Provisioning *API*
+must be manually enabled for each domain using the Google Apps control panel. Only certain account types are able
+to enable this feature.
 
-For more information on the Google Apps Provisioning *API*, including instructions for enabling *API* access, refer to the `Provisioning API V2.0 Reference`_.
+For more information on the Google Apps Provisioning *API*, including instructions for enabling *API* access, refer
+to the `Provisioning API V2.0 Reference`_.
 
 .. note::
 
    **Authentication**
 
-   The Provisioning *API* does not support authentication via AuthSub and anonymous access is not permitted. All *HTTP* connections must be authenticated using ClientAuth authentication.
+   The Provisioning *API* does not support authentication via AuthSub and anonymous access is not permitted. All
+   *HTTP* connections must be authenticated using ClientAuth authentication.
 
 .. _zend.gdata.gapps.domain:
 
 Setting the current domain
 --------------------------
 
-In order to use the Provisioning *API*, the domain being administered needs to be specified in all request *URI*\ s. In order to ease development, this information is stored within both the Gapps service and query classes to use when constructing requests.
+In order to use the Provisioning *API*, the domain being administered needs to be specified in all request *URI*\
+s. In order to ease development, this information is stored within both the Gapps service and query classes to use
+when constructing requests.
 
 .. _zend.gdata.gapps.domain.service:
 
 Setting the domain for the service class
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To set the domain for requests made by the service class, either call ``setDomain()`` or specify the domain when instantiating the service class. For example:
+To set the domain for requests made by the service class, either call ``setDomain()`` or specify the domain when
+instantiating the service class. For example:
 
 .. code-block:: php
    :linenos:
@@ -40,7 +50,8 @@ To set the domain for requests made by the service class, either call ``setDomai
 Setting the domain for query classes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Setting the domain for requests made by query classes is similar to setting it for the service class-either call ``setDomain()`` or specify the domain when creating the query. For example:
+Setting the domain for requests made by query classes is similar to setting it for the service class-either call
+``setDomain()`` or specify the domain when creating the query. For example:
 
 .. code-block:: php
    :linenos:
@@ -48,7 +59,9 @@ Setting the domain for requests made by query classes is similar to setting it f
    $domain = "example.com";
    $query = new Zend_Gdata_Gapps_UserQuery($domain, $arg);
 
-When using a service class factory method to create a query, the service class will automatically set the query's domain to match its own domain. As a result, it is not necessary to specify the domain as part of the constructor arguments.
+When using a service class factory method to create a query, the service class will automatically set the query's
+domain to match its own domain. As a result, it is not necessary to specify the domain as part of the constructor
+arguments.
 
 .. code-block:: php
    :linenos:
@@ -62,7 +75,9 @@ When using a service class factory method to create a query, the service class w
 Interacting with users
 ----------------------
 
-Each user account on a Google Apps hosted domain is represented as an instance of ``Zend_Gdata_Gapps_UserEntry``. This class provides access to all account properties including name, username, password, access rights, and current quota.
+Each user account on a Google Apps hosted domain is represented as an instance of ``Zend_Gdata_Gapps_UserEntry``.
+This class provides access to all account properties including name, username, password, access rights, and current
+quota.
 
 .. _zend.gdata.gapps.users.creating:
 
@@ -76,7 +91,8 @@ User accounts can be created by calling the ``createUser()`` convenience method:
 
    $gdata->createUser('foo', 'Random', 'User', '••••••••');
 
-Users can also be created by instantiating UserEntry, providing a username, given name, family name, and password, then calling ``insertUser()`` on a service object to upload the entry to the server.
+Users can also be created by instantiating UserEntry, providing a username, given name, family name, and password,
+then calling ``insertUser()`` on a service object to upload the entry to the server.
 
 .. code-block:: php
    :linenos:
@@ -90,14 +106,16 @@ Users can also be created by instantiating UserEntry, providing a username, give
    $user->name->familyName = 'User';
    $user = $gdata->insertUser($user);
 
-The user's password should normally be provided as cleartext. Optionally, the password can be provided as an *SHA-1* digest if ``login->passwordHashFunction`` is set to '``SHA-1``'.
+The user's password should normally be provided as cleartext. Optionally, the password can be provided as an
+*SHA-1* digest if ``login->passwordHashFunction`` is set to '``SHA-1``'.
 
 .. _zend.gdata.gapps.users.retrieving:
 
 Retrieving a user account
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Individual user accounts can be retrieved by calling the ``retrieveUser()`` convenience method. If the user is not found, ``NULL`` will be returned.
+Individual user accounts can be retrieved by calling the ``retrieveUser()`` convenience method. If the user is not
+found, ``NULL`` will be returned.
 
 .. code-block:: php
    :linenos:
@@ -114,7 +132,9 @@ Individual user accounts can be retrieved by calling the ``retrieveUser()`` conv
    echo 'Has Agreed To Terms: ' .
         ($user->login->agreedToTerms ? 'Yes' : 'No') . "\n";
 
-Users can also be retrieved by creating an instance of ``Zend_Gdata_Gapps_UserQuery``, setting its username property to equal the username of the user that is to be retrieved, and calling ``getUserEntry()`` on a service object with that query.
+Users can also be retrieved by creating an instance of ``Zend_Gdata_Gapps_UserQuery``, setting its username
+property to equal the username of the user that is to be retrieved, and calling ``getUserEntry()`` on a service
+object with that query.
 
 .. code-block:: php
    :linenos:
@@ -132,7 +152,9 @@ Users can also be retrieved by creating an instance of ``Zend_Gdata_Gapps_UserQu
    echo 'Has Agreed To Terms: ' .
         ($user->login->agreedToTerms ? 'Yes' : 'No') . "\n";
 
-If the specified user cannot be located a ServiceException will be thrown with an error code of ``Zend_Gdata_Gapps_Error::ENTITY_DOES_NOT_EXIST``. ServiceExceptions will be covered in :ref:`the exceptions chapter <zend.gdata.gapps.exceptions>`.
+If the specified user cannot be located a ServiceException will be thrown with an error code of
+``Zend_Gdata_Gapps_Error::ENTITY_DOES_NOT_EXIST``. ServiceExceptions will be covered in :ref:`the exceptions
+chapter <zend.gdata.gapps.exceptions>`.
 
 .. _zend.gdata.gapps.users.retrievingAll:
 
@@ -153,7 +175,8 @@ To retrieve all users in a domain, call the ``retrieveAllUsers()`` convenience m
 
 This will create a ``Zend_Gdata_Gapps_UserFeed`` object which holds each user on the domain.
 
-Alternatively, call ``getUserFeed()`` with no options. Keep in mind that on larger domains this feed may be paged by the server. For more information on paging, see :ref:`the paging chapter <zend.gdata.introduction.paging>`.
+Alternatively, call ``getUserFeed()`` with no options. Keep in mind that on larger domains this feed may be paged
+by the server. For more information on paging, see :ref:`the paging chapter <zend.gdata.introduction.paging>`.
 
 .. code-block:: php
    :linenos:
@@ -170,7 +193,8 @@ Alternatively, call ``getUserFeed()`` with no options. Keep in mind that on larg
 Updating a user account
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The easiest way to update a user account is to retrieve the user as described in the previous sections, make any desired changes, then call ``save()`` on that user. Any changes made will be propagated to the server.
+The easiest way to update a user account is to retrieve the user as described in the previous sections, make any
+desired changes, then call ``save()`` on that user. Any changes made will be propagated to the server.
 
 .. code-block:: php
    :linenos:
@@ -194,14 +218,16 @@ A user's password can be reset to a new value by updating the ``login->password`
    $user->login->password = '••••••••';
    $user = $user->save();
 
-Note that it is not possible to recover a password in this manner as stored passwords are not made available via the Provisioning *API* for security reasons.
+Note that it is not possible to recover a password in this manner as stored passwords are not made available via
+the Provisioning *API* for security reasons.
 
 .. _zend.gdata.gapps.users.updating.forcingPasswordChange:
 
 Forcing a user to change their password
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A user can be forced to change their password at their next login by setting the ``login->changePasswordAtNextLogin`` property to ``TRUE``.
+A user can be forced to change their password at their next login by setting the
+``login->changePasswordAtNextLogin`` property to ``TRUE``.
 
 .. code-block:: php
    :linenos:
@@ -217,7 +243,9 @@ Similarly, this can be undone by setting the ``login->changePasswordAtNextLogin`
 Suspending a user account
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Users can be restricted from logging in without deleting their user account by instead **suspending** their user account. Accounts can be suspended or restored by using the ``suspendUser()`` and ``restoreUser()`` convenience methods:
+Users can be restricted from logging in without deleting their user account by instead **suspending** their user
+account. Accounts can be suspended or restored by using the ``suspendUser()`` and ``restoreUser()`` convenience
+methods:
 
 .. code-block:: php
    :linenos:
@@ -277,7 +305,8 @@ If you do not have access to a UserEntry object for an account, use the ``delete
 Interacting with nicknames
 --------------------------
 
-Nicknames serve as email aliases for existing users. Each nickname contains precisely two key properties: its name and its owner. Any email addressed to a nickname is forwarded to the user who owns that nickname.
+Nicknames serve as email aliases for existing users. Each nickname contains precisely two key properties: its name
+and its owner. Any email addressed to a nickname is forwarded to the user who owns that nickname.
 
 Nicknames are represented as an instances of ``Zend_Gdata_Gapps_NicknameEntry``.
 
@@ -293,7 +322,8 @@ Nicknames can be created by calling the ``createNickname()`` convenience method:
 
    $gdata->createNickname('foo', 'bar');
 
-Nicknames can also be created by instantiating NicknameEntry, providing the nickname with a name and an owner, then calling ``insertNickname()`` on a service object to upload the entry to the server.
+Nicknames can also be created by instantiating NicknameEntry, providing the nickname with a name and an owner, then
+calling ``insertNickname()`` on a service object to upload the entry to the server.
 
 .. code-block:: php
    :linenos:
@@ -308,7 +338,8 @@ Nicknames can also be created by instantiating NicknameEntry, providing the nick
 Retrieving a nickname
 ^^^^^^^^^^^^^^^^^^^^^
 
-Nicknames can be retrieved by calling the ``retrieveNickname()`` convenience method. This will return ``NULL`` if a user is not found.
+Nicknames can be retrieved by calling the ``retrieveNickname()`` convenience method. This will return ``NULL`` if a
+user is not found.
 
 .. code-block:: php
    :linenos:
@@ -318,7 +349,9 @@ Nicknames can be retrieved by calling the ``retrieveNickname()`` convenience met
    echo 'Nickname: ' . $nickname->nickname->name . "\n";
    echo 'Owner: ' . $nickname->login->username . "\n";
 
-Individual nicknames can also be retrieved by creating an instance of ``Zend_Gdata_Gapps_NicknameQuery``, setting its nickname property to equal the nickname that is to be retrieved, and calling ``getNicknameEntry()`` on a service object with that query.
+Individual nicknames can also be retrieved by creating an instance of ``Zend_Gdata_Gapps_NicknameQuery``, setting
+its nickname property to equal the nickname that is to be retrieved, and calling ``getNicknameEntry()`` on a
+service object with that query.
 
 .. code-block:: php
    :linenos:
@@ -329,7 +362,9 @@ Individual nicknames can also be retrieved by creating an instance of ``Zend_Gda
    echo 'Nickname: ' . $nickname->nickname->name . "\n";
    echo 'Owner: ' . $nickname->login->username . "\n";
 
-As with users, if no corresponding nickname is found a ServiceException will be thrown with an error code of ``Zend_Gdata_Gapps_Error::ENTITY_DOES_NOT_EXIST``. Again, these will be discussed in :ref:`the exceptions chapter <zend.gdata.gapps.exceptions>`.
+As with users, if no corresponding nickname is found a ServiceException will be thrown with an error code of
+``Zend_Gdata_Gapps_Error::ENTITY_DOES_NOT_EXIST``. Again, these will be discussed in :ref:`the exceptions chapter
+<zend.gdata.gapps.exceptions>`.
 
 .. _zend.gdata.gapps.nicknames.retrievingUser:
 
@@ -347,9 +382,11 @@ To retrieve all nicknames associated with a given user, call the convenience met
        echo '  * ' . $nickname->nickname->name . "\n";
    }
 
-This will create a ``Zend_Gdata_Gapps_NicknameFeed`` object which holds each nickname associated with the specified user.
+This will create a ``Zend_Gdata_Gapps_NicknameFeed`` object which holds each nickname associated with the specified
+user.
 
-Alternatively, create a new ``Zend_Gdata_Gapps_NicknameQuery``, set its username property to the desired user, and submit the query by calling ``getNicknameFeed()`` on a service object.
+Alternatively, create a new ``Zend_Gdata_Gapps_NicknameQuery``, set its username property to the desired user, and
+submit the query by calling ``getNicknameFeed()`` on a service object.
 
 .. code-block:: php
    :linenos:
@@ -398,7 +435,8 @@ Alternatively, call ``getNicknameFeed()`` on a service object with no arguments.
 Deleting a nickname
 ^^^^^^^^^^^^^^^^^^^
 
-Deleting a nickname to which you already hold a NicknameEntry for is a simple as calling ``delete()`` on that entry.
+Deleting a nickname to which you already hold a NicknameEntry for is a simple as calling ``delete()`` on that
+entry.
 
 .. code-block:: php
    :linenos:
@@ -418,7 +456,10 @@ For nicknames which you do not hold a NicknameEntry for, use the ``deleteNicknam
 Interacting with groups
 -----------------------
 
-Google Groups allows people to post messages like an email list. Google is depreciating the Email List *API*. Google Groups provides some neat features like nested groups and group owners. If you want to start a new email lst, it is advisable to use Google Groups instead. Google's Email List is not compatible with Google Groups. So if you create an email list, it will not show up as a group. The opposite is true as well.
+Google Groups allows people to post messages like an email list. Google is depreciating the Email List *API*.
+Google Groups provides some neat features like nested groups and group owners. If you want to start a new email
+lst, it is advisable to use Google Groups instead. Google's Email List is not compatible with Google Groups. So if
+you create an email list, it will not show up as a group. The opposite is true as well.
 
 Each group on a domain is represented as an instance of ``Zend_Gdata_Gapps_GroupEntry``.
 
@@ -434,7 +475,8 @@ Groups can be created by calling the ``createGroup()`` convenience method:
 
    $gdata->createGroup('friends', 'The Friends Group');
 
-Groups can also be created by instantiating GroupEntry, providing a group id and name for the group, then calling ``insertGroup()`` on a service object to upload the entry to the server.
+Groups can also be created by instantiating GroupEntry, providing a group id and name for the group, then calling
+``insertGroup()`` on a service object to upload the entry to the server.
 
 .. code-block:: php
    :linenos:
@@ -471,7 +513,8 @@ To retrieve an individual group, call the ``retrieveGroup()`` convenience method
 
 This will create a ``Zend_Gdata_Gapps_GroupEntry`` object which holds the properties about the group.
 
-Alternatively, create a new ``Zend_Gdata_Gapps_GroupQuery``, set its groupId property to the desired group id, and submit the query by calling ``getGroupEntry()`` on a service object.
+Alternatively, create a new ``Zend_Gdata_Gapps_GroupQuery``, set its groupId property to the desired group id, and
+submit the query by calling ``getGroupEntry()`` on a service object.
 
 .. code-block:: php
    :linenos:
@@ -546,7 +589,9 @@ Groups can be updated by calling the ``updateGroup()`` convenience method:
 
    $gdata->updateGroup('group-id-here', 'Group Name Here');
 
-The first parameter is required. The second, third and fourth parameter, representing the group name, group descscription, and email permission, respectively are optional. Setting any of these optional parameters to null will not update that item.
+The first parameter is required. The second, third and fourth parameter, representing the group name, group
+descscription, and email permission, respectively are optional. Setting any of these optional parameters to null
+will not update that item.
 
 .. _zend.gdata.gapps.groups.retrieve:
 
@@ -568,9 +613,11 @@ To retrieve all groups to which a particular person is a member, call the ``retr
        echo "\n\n";
    }
 
-This will create a ``Zend_Gdata_Gapps_GroupFeed`` object which holds each group associated with the specified member.
+This will create a ``Zend_Gdata_Gapps_GroupFeed`` object which holds each group associated with the specified
+member.
 
-Alternatively, create a new ``Zend_Gdata_Gapps_GroupQuery``, set its member property to the desired email address, and submit the query by calling ``getGroupFeed()`` on a service object.
+Alternatively, create a new ``Zend_Gdata_Gapps_GroupQuery``, set its member property to the desired email address,
+and submit the query by calling ``getGroupFeed()`` on a service object.
 
 .. code-block:: php
    :linenos:
@@ -592,7 +639,8 @@ Alternatively, create a new ``Zend_Gdata_Gapps_GroupQuery``, set its member prop
 Interacting with group members
 ------------------------------
 
-Each member subscribed to a group is represented by an instance of ``Zend_Gdata_Gapps_MemberEntry``. Through this class, individual recipients can be added and removed from groups.
+Each member subscribed to a group is represented by an instance of ``Zend_Gdata_Gapps_MemberEntry``. Through this
+class, individual recipients can be added and removed from groups.
 
 .. _zend.gdata.gapps.groupMembers.adding:
 
@@ -619,7 +667,8 @@ To check to see if member belongs to group, simply call the ``isMember()`` conve
    $isMember = $gdata->isMember('bar@somewhere.com', 'friends');
    var_dump($isMember);
 
-The method returns a boolean value. If the member belongs to the group specified, the method returns true, else it returns false.
+The method returns a boolean value. If the member belongs to the group specified, the method returns true, else it
+returns false.
 
 .. _zend.gdata.gapps.groupMembers.removing:
 
@@ -652,7 +701,8 @@ The convenience method ``retrieveAllMembers()`` can be used to retrieve the list
        }
    }
 
-Alternatively, construct a new MemberQuery, set its groupId property to match the desired group id, and call ``getMemberFeed()`` on a service object.
+Alternatively, construct a new MemberQuery, set its groupId property to match the desired group id, and call
+``getMemberFeed()`` on a service object.
 
 .. code-block:: php
    :linenos:
@@ -675,7 +725,8 @@ This will create a ``Zend_Gdata_Gapps_MemberFeed`` object which holds each membe
 Interacting with group owners
 -----------------------------
 
-Each owner associated with a group is represented by an instance of ``Zend_Gdata_Gapps_OwnerEntry``. Through this class, individual owners can be added and removed from groups.
+Each owner associated with a group is represented by an instance of ``Zend_Gdata_Gapps_OwnerEntry``. Through this
+class, individual owners can be added and removed from groups.
 
 .. _zend.gdata.gapps.groupOwners.adding:
 
@@ -708,7 +759,8 @@ The convenience method ``retrieveGroupOwners()`` can be used to retrieve the lis
        }
    }
 
-Alternatively, construct a new OwnerQuery, set its groupId property to match the desired group id, and call ``getOwnerFeed()`` on a service object.
+Alternatively, construct a new OwnerQuery, set its groupId property to match the desired group id, and call
+``getOwnerFeed()`` on a service object.
 
 .. code-block:: php
    :linenos:
@@ -739,7 +791,8 @@ To check to see if an email is the owner of a group, simply call the ``isOwner()
    $isOwner = $gdata->isOwner('bar@somewhere.com', 'friends');
    var_dump($isOwner);
 
-The method returns a boolean value. If the email is the owner of the group specified, the method returns true, else it returns false.
+The method returns a boolean value. If the email is the owner of the group specified, the method returns true, else
+it returns false.
 
 .. _zend.gdata.gapps.groupOwners.removing:
 
@@ -758,7 +811,9 @@ To remove an owner from a group, call the ``removeOwnerFromGroup()`` convenience
 Interacting with email lists
 ----------------------------
 
-Email lists allow several users to retrieve email addressed to a single email address. Users do not need to be a member of this domain in order to subscribe to an email list provided their complete email address (including domain) is used.
+Email lists allow several users to retrieve email addressed to a single email address. Users do not need to be a
+member of this domain in order to subscribe to an email list provided their complete email address (including
+domain) is used.
 
 Each email list on a domain is represented as an instance of ``Zend_Gdata_Gapps_EmailListEntry``.
 
@@ -774,7 +829,8 @@ Email lists can be created by calling the ``createEmailList()`` convenience meth
 
    $gdata->createEmailList('friends');
 
-Email lists can also be created by instantiating EmailListEntry, providing a name for the list, then calling ``insertEmailList()`` on a service object to upload the entry to the server.
+Email lists can also be created by instantiating EmailListEntry, providing a name for the list, then calling
+``insertEmailList()`` on a service object to upload the entry to the server.
 
 .. code-block:: php
    :linenos:
@@ -788,7 +844,8 @@ Email lists can also be created by instantiating EmailListEntry, providing a nam
 Retrieving all email lists to which a recipient is subscribed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve all email lists to which a particular recipient is subscribed, call the ``retrieveEmailLists()`` convenience method:
+To retrieve all email lists to which a particular recipient is subscribed, call the ``retrieveEmailLists()``
+convenience method:
 
 .. code-block:: php
    :linenos:
@@ -799,9 +856,11 @@ To retrieve all email lists to which a particular recipient is subscribed, call 
        echo '  * ' . $list->emailList->name . "\n";
    }
 
-This will create a ``Zend_Gdata_Gapps_EmailListFeed`` object which holds each email list associated with the specified recipient.
+This will create a ``Zend_Gdata_Gapps_EmailListFeed`` object which holds each email list associated with the
+specified recipient.
 
-Alternatively, create a new ``Zend_Gdata_Gapps_EmailListQuery``, set its recipient property to the desired email address, and submit the query by calling ``getEmailListFeed()`` on a service object.
+Alternatively, create a new ``Zend_Gdata_Gapps_EmailListQuery``, set its recipient property to the desired email
+address, and submit the query by calling ``getEmailListFeed()`` on a service object.
 
 .. code-block:: php
    :linenos:
@@ -860,7 +919,9 @@ To delete an email list, call the ``deleteEmailList()`` convenience method:
 Interacting with email list recipients
 --------------------------------------
 
-Each recipient subscribed to an email list is represented by an instance of ``Zend_Gdata_Gapps_EmailListRecipient``. Through this class, individual recipients can be added and removed from email lists.
+Each recipient subscribed to an email list is represented by an instance of
+``Zend_Gdata_Gapps_EmailListRecipient``. Through this class, individual recipients can be added and removed from
+email lists.
 
 .. _zend.gdata.gapps.emailListRecipients.adding:
 
@@ -879,7 +940,8 @@ To add a recipient to an email list, simply call the ``addRecipientToEmailList()
 Retrieving the list of subscribers to an email list
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The convenience method ``retrieveAllRecipients()`` can be used to retrieve the list of subscribers to an email list:
+The convenience method ``retrieveAllRecipients()`` can be used to retrieve the list of subscribers to an email
+list:
 
 .. code-block:: php
    :linenos:
@@ -890,7 +952,8 @@ The convenience method ``retrieveAllRecipients()`` can be used to retrieve the l
        echo '  * ' . $recipient->who->email . "\n";
    }
 
-Alternatively, construct a new EmailListRecipientQuery, set its emailListName property to match the desired email list, and call ``getEmailListRecipientFeed()`` on a service object.
+Alternatively, construct a new EmailListRecipientQuery, set its emailListName property to match the desired email
+list, and call ``getEmailListRecipientFeed()`` on a service object.
 
 .. code-block:: php
    :linenos:
@@ -903,7 +966,8 @@ Alternatively, construct a new EmailListRecipientQuery, set its emailListName pr
        echo '  * ' . $recipient->who->email . "\n";
    }
 
-This will create a ``Zend_Gdata_Gapps_EmailListRecipientFeed`` object which holds each recipient for the selected email list.
+This will create a ``Zend_Gdata_Gapps_EmailListRecipientFeed`` object which holds each recipient for the selected
+email list.
 
 .. _zend.gdata.gapps.emailListRecipients.removing:
 
@@ -922,13 +986,21 @@ To remove a recipient from an email list, call the ``removeRecipientFromEmailLis
 Handling errors
 ---------------
 
-In addition to the standard suite of exceptions thrown by ``Zend_Gdata``, requests using the Provisioning *API* may also throw a ``Zend_Gdata_Gapps_ServiceException``. These exceptions indicate that a *API* specific error occurred which prevents the request from completing.
+In addition to the standard suite of exceptions thrown by ``Zend_Gdata``, requests using the Provisioning *API* may
+also throw a ``Zend_Gdata_Gapps_ServiceException``. These exceptions indicate that a *API* specific error occurred
+which prevents the request from completing.
 
-Each ServiceException instance may hold one or more Error objects. Each of these objects contains an error code, reason, and (optionally) the input which triggered the exception. A complete list of known error codes is provided in Zend Framework's *API* documentation under ``Zend_Gdata_Gapps_Error``. Additionally, the authoritative error list is available online at `Google Apps Provisioning API V2.0 Reference: Appendix D`_.
+Each ServiceException instance may hold one or more Error objects. Each of these objects contains an error code,
+reason, and (optionally) the input which triggered the exception. A complete list of known error codes is provided
+in Zend Framework's *API* documentation under ``Zend_Gdata_Gapps_Error``. Additionally, the authoritative error
+list is available online at `Google Apps Provisioning API V2.0 Reference: Appendix D`_.
 
-While the complete list of errors received is available within ServiceException as an array by calling ``getErrors()``, often it is convenient to know if one specific error occurred. For these cases the presence of an error can be determined by calling ``hasError()``.
+While the complete list of errors received is available within ServiceException as an array by calling
+``getErrors()``, often it is convenient to know if one specific error occurred. For these cases the presence of an
+error can be determined by calling ``hasError()``.
 
-The following example demonstrates how to detect if a requested resource doesn't exist and handle the fault gracefully:
+The following example demonstrates how to detect if a requested resource doesn't exist and handle the fault
+gracefully:
 
 .. code-block:: php
    :linenos:

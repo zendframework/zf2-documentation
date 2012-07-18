@@ -8,9 +8,16 @@ Zend_Service_Amazon_Ec2: Instances
 Instance Types
 --------------
 
-Amazon EC2 instances are grouped into two families: standard and High-CPU. Standard instances have memory to *CPU* ratios suitable for most general purpose applications; High-CPU instances have proportionally more *CPU* resources than memory (RAM) and are well suited for compute-intensive applications. When selecting instance types, you might want to use less powerful instance types for your web server instances and more powerful instance types for your database instances. Additionally, you might want to run *CPU* instance types for *CPU*-intensive data processing tasks.
+Amazon EC2 instances are grouped into two families: standard and High-CPU. Standard instances have memory to *CPU*
+ratios suitable for most general purpose applications; High-CPU instances have proportionally more *CPU* resources
+than memory (RAM) and are well suited for compute-intensive applications. When selecting instance types, you might
+want to use less powerful instance types for your web server instances and more powerful instance types for your
+database instances. Additionally, you might want to run *CPU* instance types for *CPU*-intensive data processing
+tasks.
 
-One of the advantages of EC2 is that you pay by the instance hour, which makes it convenient and inexpensive to test the performance of your application on different instance families and types. One good way to determine the most appropriate instance family and instance type is to launch test instances and benchmark your application.
+One of the advantages of EC2 is that you pay by the instance hour, which makes it convenient and inexpensive to
+test the performance of your application on different instance families and types. One good way to determine the
+most appropriate instance family and instance type is to launch test instances and benchmark your application.
 
 .. note::
 
@@ -47,7 +54,8 @@ This section describes the operation methods for maintaining Amazon EC2 Instance
 
 .. rubric:: Starting New Ec2 Instances
 
-*run* will launch a specified number of EC2 Instances. *run* takes an array of parameters to start, below is a table containing the valid values.
+*run* will launch a specified number of EC2 Instances. *run* takes an array of parameters to start, below is a
+table containing the valid values.
 
 
 
@@ -88,7 +96,6 @@ This section describes the operation methods for maintaining Amazon EC2 Instance
          +----------------------+--------------------------------------------------------------------------------------------------------------------------------+--------+
 
 
-
 *run* will return information about each instance that is starting up.
 
 .. code-block:: php
@@ -107,7 +114,8 @@ This section describes the operation methods for maintaining Amazon EC2 Instance
 
 *reboot* will reboot one or more instances.
 
-This operation is asynchronous; it only queues a request to reboot the specified instance(s). The operation will succeed if the instances are valid and belong to the user. Requests to reboot terminated instances are ignored.
+This operation is asynchronous; it only queues a request to reboot the specified instance(s). The operation will
+succeed if the instances are valid and belong to the user. Requests to reboot terminated instances are ignored.
 
 *reboot* returns boolean ``TRUE`` or ``FALSE``
 
@@ -122,7 +130,8 @@ This operation is asynchronous; it only queues a request to reboot the specified
 
 .. rubric:: Terminating an Ec2 Instances
 
-*terminate* shuts down one or more instances. This operation is idempotent; if you terminate an instance more than once, each call will succeed.
+*terminate* shuts down one or more instances. This operation is idempotent; if you terminate an instance more than
+once, each call will succeed.
 
 *terminate* returns boolean ``TRUE`` or ``FALSE``
 
@@ -144,7 +153,8 @@ This operation is asynchronous; it only queues a request to reboot the specified
 Amazon Instance Utilities
 -------------------------
 
-In this section you will find out how to retreive information, the console output and see if an instance contains a product code.
+In this section you will find out how to retreive information, the console output and see if an instance contains a
+product code.
 
 .. _zend.service.amazon.ec2.instance.utility.describe:
 
@@ -152,7 +162,9 @@ In this section you will find out how to retreive information, the console outpu
 
 *describe* returns information about instances that you own.
 
-If you specify one or more instance IDs, Amazon EC2 returns information for those instances. If you do not specify instance IDs, Amazon EC2 returns information for all relevant instances. If you specify an invalid instance ID, a fault is returned. If you specify an instance that you do not own, it will not be included in the returned results.
+If you specify one or more instance IDs, Amazon EC2 returns information for those instances. If you do not specify
+instance IDs, Amazon EC2 returns information for all relevant instances. If you specify an invalid instance ID, a
+fault is returned. If you specify an instance that you do not own, it will not be included in the returned results.
 
 *describe* will return an array containing information on the instance.
 
@@ -167,15 +179,19 @@ If you specify one or more instance IDs, Amazon EC2 returns information for thos
 
    **Terminated Instances**
 
-   Recently terminated instances might appear in the returned results. This interval is usually less than one hour. If you do not want terminated instances to be returned, pass in a second variable of boolean ``TRUE`` to *describe* and the terminated instances will be ignored.
+   Recently terminated instances might appear in the returned results. This interval is usually less than one hour.
+   If you do not want terminated instances to be returned, pass in a second variable of boolean ``TRUE`` to
+   *describe* and the terminated instances will be ignored.
 
 .. _zend.service.amazon.ec2.instance.utility.describebyimageid:
 
 .. rubric:: Describing Instances By Image Id
 
-*describeByImageId* is functionally the same as *describe* but it will only return the instances that are using the provided imageId.
+*describeByImageId* is functionally the same as *describe* but it will only return the instances that are using the
+provided imageId.
 
-*describeByImageId* will return an array containing information on the instances thare were started by the passed in imageId
+*describeByImageId* will return an array containing information on the instances thare were started by the passed
+in imageId
 
 .. code-block:: php
    :linenos:
@@ -188,7 +204,9 @@ If you specify one or more instance IDs, Amazon EC2 returns information for thos
 
    **Terminated Instances**
 
-   Recently terminated instances might appear in the returned results. This interval is usually less than one hour. If you do not want terminated instances to be returned, pass in a second variable of boolean ``TRUE`` to *describe* and the terminated instances will be ignored.
+   Recently terminated instances might appear in the returned results. This interval is usually less than one hour.
+   If you do not want terminated instances to be returned, pass in a second variable of boolean ``TRUE`` to
+   *describe* and the terminated instances will be ignored.
 
 .. _zend.service.amazon.ec2.instance.utility.consoleOutput:
 
@@ -196,9 +214,11 @@ If you specify one or more instance IDs, Amazon EC2 returns information for thos
 
 *consoleOutput* retrieves console output for the specified instance.
 
-Instance console output is buffered and posted shortly after instance boot, reboot, and termination. Amazon EC2 preserves the most recent 64 KB output which will be available for at least one hour after the most recent post.
+Instance console output is buffered and posted shortly after instance boot, reboot, and termination. Amazon EC2
+preserves the most recent 64 KB output which will be available for at least one hour after the most recent post.
 
-*consoleOutput* returns an array containing the *instanceId*, *timestamp* from the last output and the *output* from the console.
+*consoleOutput* returns an array containing the *instanceId*, *timestamp* from the last output and the *output*
+from the console.
 
 .. code-block:: php
    :linenos:
@@ -211,9 +231,11 @@ Instance console output is buffered and posted shortly after instance boot, rebo
 
 .. rubric:: Confirm Product Code on an Instance
 
-*confirmProduct* returns ``TRUE`` if the specified product code is attached to the specified instance. The operation returns ``FALSE`` if the product code is not attached to the instance.
+*confirmProduct* returns ``TRUE`` if the specified product code is attached to the specified instance. The
+operation returns ``FALSE`` if the product code is not attached to the instance.
 
-The *confirmProduct* operation can only be executed by the owner of the *AMI*. This feature is useful when an *AMI* owner is providing support and wants to verify whether a user's instance is eligible.
+The *confirmProduct* operation can only be executed by the owner of the *AMI*. This feature is useful when an *AMI*
+owner is providing support and wants to verify whether a user's instance is eligible.
 
 .. code-block:: php
    :linenos:
@@ -226,7 +248,8 @@ The *confirmProduct* operation can only be executed by the owner of the *AMI*. T
 
 .. rubric:: Turn on CloudWatch Monitoring on an Instance(s)
 
-*monitor* returns the list of instances and their current state of the CloudWatch Monitoring. If the instance does not currently have Monitoring enabled it will be turned on.
+*monitor* returns the list of instances and their current state of the CloudWatch Monitoring. If the instance does
+not currently have Monitoring enabled it will be turned on.
 
 .. code-block:: php
    :linenos:
@@ -239,7 +262,8 @@ The *confirmProduct* operation can only be executed by the owner of the *AMI*. T
 
 .. rubric:: Turn off CloudWatch Monitoring on an Instance(s)
 
-*monitor* returns the list of instances and their current state of the CloudWatch Monitoring. If the instance currently has Monitoring enabled it will be turned off.
+*monitor* returns the list of instances and their current state of the CloudWatch Monitoring. If the instance
+currently has Monitoring enabled it will be turned off.
 
 .. code-block:: php
    :linenos:
