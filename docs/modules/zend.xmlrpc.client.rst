@@ -167,11 +167,11 @@ There are two ways to create a ``Zend\XmlRpc\Value`` object: instantiate one of 
 
 
 
-   .. note::
+.. note::
 
-      **Automatic Conversion**
+  **Automatic Conversion**
 
-      When building a new ``Zend\XmlRpc\Value`` object, its value is set by a *PHP* type. The *PHP* type will be converted to the specified type using *PHP* casting. For example, if a string is given as a value to the ``Zend\XmlRpc\Value\Integer`` object, it will be converted using ``(int)$value``.
+  When building a new ``Zend\XmlRpc\Value`` object, its value is set by a *PHP* type. The *PHP* type will be converted to the specified type using *PHP* casting. For example, if a string is given as a value to the ``Zend\XmlRpc\Value\Integer`` object, it will be converted using ``(int)$value``.
 
 
 
