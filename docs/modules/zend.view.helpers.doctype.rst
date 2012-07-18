@@ -1,4 +1,3 @@
-
 .. _zend.view.helpers.initial.doctype:
 
 Doctype Helper
@@ -32,7 +31,6 @@ You can also specify a custom doctype as long as it is well-formed.
 
 The ``Doctype`` helper is a concrete implementation of the :ref:`Placeholder helper <zend.view.helpers.initial.placeholder>`.
 
-
 .. _zend.view.helpers.initial.doctype.basicusage:
 
 .. rubric:: Doctype Helper Basic Usage
@@ -51,7 +49,6 @@ And then print it out on top of your layout script:
    :linenos:
 
    <?php echo $this->doctype() ?>
-
 
 .. _zend.view.helpers.initial.doctype.retrieving:
 
@@ -81,7 +78,6 @@ You can also check if the doctype represents an *HTML5* document.
    if ($view->doctype()->isHtml5()) {
        // do something differently
    }
-
 
 .. _zend.view.helpers.initial.doctype.xhtml1_rdfa:
 

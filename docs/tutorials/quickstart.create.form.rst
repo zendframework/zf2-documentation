@@ -1,4 +1,3 @@
-
 .. _learning.quickstart.create-form:
 
 Create A Form
@@ -132,24 +131,21 @@ Of course, we also need to edit the view script; edit ``application/views/script
    echo $this->form;
 
 .. note::
+
    **Better Looking Forms**
 
    No one will be waxing poetic about the beauty of this form anytime soon. No matter - form appearance is fully customizable! See the :ref:`decorators section in the reference guide <zend.form.decorators>` for details.
 
-
    Additionally, you may be interested in :ref:`our tutorial on form decorators <learning.form.decorators.intro>`.
 
-
 .. note::
+
    **Checkpoint**
 
    Now browse to "http://localhost/guestbook/sign". You should see the following in your browser:
 
-
-
    .. image:: ../images/learning.quickstart.create-form.png
       :width: 421
       :align: center
-
 
 

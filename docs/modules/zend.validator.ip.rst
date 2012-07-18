@@ -1,11 +1,9 @@
-
 .. _zend.validator.set.ip:
 
 Ip
 ==
 
 ``Zend\Validator\Ip`` allows you to validate if a given value is an IP address. It supports the IPv4, IPv6 and IPvFeature definitions.
-
 
 .. _zend.validator.set.ip.options:
 
@@ -21,7 +19,6 @@ The following options are supported for ``Zend\Validator\Ip``:
 - **allowipvfuture**: Defines if the validator allows IPvFuture addresses. This option defaults to ``false``.
 
 - **allowliteral**: Defines if the validator allows IPv6 or IPvFuture with URI literal style (the IP surrounded by brackets). This option defaults to ``true``.
-
 
 .. _zend.validator.set.ip.basic:
 
@@ -41,17 +38,16 @@ A basic example of usage is below:
    }
 
 .. note::
+
    **Invalid IP addresses**
 
    Keep in mind that ``Zend\Validator\Ip`` only validates IP addresses. Addresses like '``mydomain.com``' or '``192.168.50.1/index.html``' are no valid IP addresses. They are either hostnames or valid *URL*\ s but not IP addresses.
 
-
 .. note::
+
    **IPv6/IPvFuture validation**
 
    ``Zend\Validator\Ip`` validates IPv6/IPvFuture addresses with regex. The reason is that the filters and methods from *PHP* itself don't follow the *RFC*. Many other available classes also don't follow it.
-
-
 
 .. _zend.validator.set.ip.singletype:
 
@@ -73,9 +69,9 @@ To limit ``Zend\Validator\Ip`` to one protocol you can set the options ``allowip
    }
 
 .. note::
+
    **Default behaviour**
 
    The default behaviour which ``Zend\Validator\Ip`` follows is to allow both standards.
-
 
 

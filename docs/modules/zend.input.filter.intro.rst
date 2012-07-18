@@ -1,4 +1,3 @@
-
 .. _zend.input-filter.intro:
 
 Introduction

@@ -1,9 +1,7 @@
-
 .. _zend.codegenerator.examples:
 
 Zend_CodeGenerator Examples
 ===========================
-
 
 .. _zend.codegenerator.examples.class:
 
@@ -51,7 +49,6 @@ The above code will result in the following:
    {
 
    }
-
 
 .. _zend.codegenerator.examples.class-properties:
 
@@ -122,7 +119,6 @@ The above results in the following class definition:
        const bat = 'foobarbazbat';
 
    }
-
 
 .. _zend.codegenerator.examples.class-methods:
 
@@ -251,7 +247,6 @@ The above generates the following output:
 
    }
 
-
 .. _zend.codegenerator.examples.file:
 
 .. rubric:: Generating PHP files
@@ -340,7 +335,6 @@ The above will generate the following file:
 
    define('APPLICATION_ENV', 'testing');
 
-
 .. _zend.codegenerator.examples.reflection-file:
 
 .. rubric:: Seeding PHP file code generation via reflection
@@ -354,7 +348,6 @@ You can add *PHP* code to an existing *PHP* file using the code generator. To do
    $body = $generator->getBody();
    $body .= "\n\$foo->bar();";
    file_put_contents($path, $generator->generate());
-
 
 .. _zend.codegenerator.examples.reflection-class:
 

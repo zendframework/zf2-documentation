@@ -1,11 +1,9 @@
-
 .. _zend.mvc.services:
 
 Default Services
 ================
 
 The default and recommended way to write Zend Framework applications uses a set of services defined in the ``Zend\Mvc\Service`` namespace. This chapter details what each of those services are, the classes they represent, and the configuration options available.
-
 
 .. _zend.mvc.services.service-manager-configuration:
 
@@ -25,7 +23,6 @@ This is the one service class referenced directly in the bootstrapping. It provi
 
   - ``VeiwManager``, mapping to ``Zend\Mvc\View\ViewManager``.
 
-
 - **Factories**
 
   - ``Application``, mapping to ``Zend\Mvc\Service\ApplicationFactory``.
@@ -36,9 +33,7 @@ This is the one service class referenced directly in the bootstrapping. It provi
 
     Additionally, the scoped container is configured to use the ``Di`` service as both an initializer as well as an abstract service factory -- effectively allowing you to fall back to DI in order to retrieve your controllers.
 
-
     Finally, if the loaded controller is ``Pluggable``, an initializer will inject it with the ``ControllerPluginBroker`` service.
-
 
   - ``ControllerPluginBroker``, mapping to ``Zend\Mvc\Service\ControllerPluginBrokerFactory``. This instantiates the ``Zend\Mvc\Controller\PluginBroker`` instance, passing it the ``ControllerPluginLoader`` service as well as the service manager instance.
 
@@ -52,18 +47,13 @@ This is the one service class referenced directly in the bootstrapping. It provi
 
     This is perhaps the most complex factory in the MVC stack. It expects that an ``ApplicationConfiguration`` service has been injected, with keys for ``module_listener_options`` and ``modules``; see the quick start for samples.
 
-
     It instantiates an instance of ``Zend\ModuleManager\Listener\DefaultListenerAggregate``, using the "module_listener_options" retrieved. It also instantiates an instance of ``Zend\ModuleManager\Listener\ServiceListener``, providing it the service manager.
-
 
     Next, it retrieves the ``EventManager`` service, and attaches the above listeners.
 
-
     It instantiates a ``Zend\ModuleManager\ModuleEvent`` instance, setting the "ServiceManager" parameter to the service manager object.
 
-
     Finally, it instantiates a ``Zend\ModuleManager\ModuleManager`` instance, and injects the ``EventManager`` and ``ModuleEvent``.
-
 
   - ``Router``, mapping to ``Zend\Mvc\Service\RouterFactory``. This grabs the ``Configuration`` service, and pulls from the ``router`` key, passing it to ``Zend\Mvc\Router\Http\TreeRouteStack::factory`` in order to get a configured router instance.
 
@@ -74,7 +64,6 @@ This is the one service class referenced directly in the bootstrapping. It provi
   - ``ViewJsonRenderer``, mapping to ``Zend\Mvc\Service\ViewJsonRendererFactory``, which simply returns a ``Zend\View\Renderer\JsonRenderer`` instance.
 
   - ``ViewJsonStrategy``, mapping to ``Zend\Mvc\Service\ViewJsonStrategyFactory``. This instantiates a ``Zend\View\Strategy\JsonStrategy`` instance with the ``VeiwJsonRenderer`` service.
-
 
 - **Aliases**
 
@@ -88,7 +77,6 @@ This is the one service class referenced directly in the bootstrapping. It provi
 
   - ``Zend\Mvc\Controller\PluginLoader``, mapping to the ``ControllerPluginLoader`` service. This is mainly to ensure that when falling through to DI, classes are still injected via the ``ServiceManager``.
 
-
 Additionally, two initializers are registered. Initializers are run on created instances, and may be used to further configure them. The two initializers the ``ServiceManagerConfiguration`` class creates and registers do the following:
 
 - For objects that implement ``Zend\EventManager\EventManagerAwareInterface``, the ``EventManager`` service will be retrieved and injected. This service is **not** shared, though each instance it creates is injected with a shared instance of ``SharedEventManager``.
@@ -96,7 +84,6 @@ Additionally, two initializers are registered. Initializers are run on created i
 - For objects that implement ``Zend\ServiceManager\ServiceManagerAwareInterface``, the ``ServiceManager`` will inject itself into the object.
 
 Finally, the ``ServiceManager`` registers itself as the ``ServiceManager`` service, and aliases itself to the class names ``Zend\ServiceManager\ServiceManagerInterface`` and ``Zend\ServiceManager\ServiceManager``.
-
 
 .. _zend.mvc.services.view-manager:
 
@@ -114,12 +101,9 @@ Configuration for all members of the ``ViewManager`` fall under the ``view_manag
 
   The ``Router`` service is retrieved, and injected into the ``Url`` helper.
 
-
   If the ``base_path`` key is present, it is used to inject the ``BasePath`` view helper; otherwise, the ``Request`` service is retrieved, and the value of its ``getBasePath()`` method is used.
 
-
   If the ``doctype`` key is present, it will be used to set the value of the ``Doctype`` view helper.
-
 
 - ``ViewTemplateMapResolver``, representing and aliased to ``Zend\View\Resolver\TemplateMapResolver``. If a ``template_map`` key is present, it will be used to seed the template map.
 
@@ -144,7 +128,6 @@ Configuration for all members of the ``ViewManager`` fall under the ``view_manag
 The ``ViewManager`` also creates several other listeners, but does not expose them as services; these include ``Zend\Mvc\View\CreateViewModelListener``, ``Zend\Mvc\View\InjectTemplateListener``, and ``Zend\Mvc\View\InjectViewModelListener``. These, along with ``RouteNotFoundStrategy``, ``ExceptionStrategy``, and ``DefaultRenderingStrategy`` are attached as listeners either to the application ``EventManager`` instance or the ``SharedEventManager`` instance.
 
 Finally, if you have a ``strategies`` key in your configuration, the ``ViewManager`` will loop over these and attach them in order to the ``View`` service as listeners, at a priority of 100 (allowing them to execute before the ``DefaultRenderingStrategy``).
-
 
 .. _zend.mvc.services.app-config:
 
@@ -193,7 +176,6 @@ The following options may be used to provide initial configuration for the ``Ser
        'service_manager' => array(
        ),
    );
-
 
 .. _zend.mvc.services.config:
 

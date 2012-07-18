@@ -1,4 +1,3 @@
-
 .. _zend.service.amazon.ec2.cloudwatch:
 
 Zend_Service_Amazon_Ec2: CloudWatch Monitoring
@@ -6,12 +5,10 @@ Zend_Service_Amazon_Ec2: CloudWatch Monitoring
 
 Amazon CloudWatch is an easy-to-use web service that provides comprehensive monitoring for Amazon Elastic Compute Cloud (Amazon *EC2*) and Elastic Load Balancing. For more details information check out the `Amazon CloudWatch Developers Guide`_
 
-
 .. _zend.service.amazon.ec2.cloudwatch.usage:
 
 CloudWatch Usage
 ----------------
-
 
 .. _zend.service.amazon.ec2.cloudwatch.usage.list:
 
@@ -25,16 +22,17 @@ CloudWatch Usage
    $ec2_ebs = new Zend_Service_Amazon_Ec2_CloudWatch('aws_key','aws_secret_key');
    $return = $ec2_ebs->listMetrics();
 
-
 .. _zend.service.amazon.ec2.cloudwatch.usage.getmetricstatistics:
 
 .. rubric:: Return Statistics for a given metric
 
 ``getMetricStatistics()`` Returns data for one or more statistics of given a metric.
 
-.. note::
-   The maximum number of datapoints that the Amazon CloudWatch service will return in a single GetMetricStatistics request is 1,440. If a request is made that would generate more datapoints than this amount, Amazon CloudWatch will return an error. You can alter your request by narrowing the time range (StartTime, EndTime) or increasing the Period in your single request. You may also get all of the data at the granularity you originally asked for by making multiple requests with adjacent time ranges.
 
+
+   .. note::
+
+      The maximum number of datapoints that the Amazon CloudWatch service will return in a single GetMetricStatistics request is 1,440. If a request is made that would generate more datapoints than this amount, Amazon CloudWatch will return an error. You can alter your request by narrowing the time range (StartTime, EndTime) or increasing the Period in your single request. You may also get all of the data at the granularity you originally asked for by making multiple requests with adjacent time ranges.
 
 
 

@@ -1,4 +1,3 @@
-
 .. _zend.json.basics:
 
 Basic Usage
@@ -14,7 +13,6 @@ Usage of ``Zend_Json`` involves using the two public static methods available: `
 
    // Encode it to return to the client:
    $json = Zend_Json::encode($phpNative);
-
 
 .. _zend.json.basics.prettyprint:
 

@@ -1,9 +1,7 @@
-
 .. _learning.multiuser.sessions:
 
 Managing User Sessions In ZF
 ============================
-
 
 .. _learning.multiuser.sessions.intro:
 
@@ -15,7 +13,6 @@ The success of the web is deeply rooted in the protocol that drives the web: *HT
 The act of interacting with a web application is typically defined by the sum of all requests sent to a web server. Since there can be many consumers being served simultaneously, the application must decide which requests belong to which consumer. These requests are typically known as a "session".
 
 In *PHP*, the session problem is solved by the session extension which utilizes some state tracking, typically cookies, and some form of local storage which is exposed via the $_SESSION superglobal. In Zend Framework, the component ``Zend_Session`` adds value to the *PHP* session extension making it easier to use and depend on inside object-oriented applications.
-
 
 .. _learning.multiuser.sessions.basic-usage:
 
@@ -57,7 +54,6 @@ Most Zend Framework components that use sessions need nothing more to use ``Zend
    }
 
 As you can see above, the session namespace object uses the magic \__get, \__set, \__isset, and \__unset to allow you to seamlessly and fluently interact with the session. The information stored in the above example is stored at $_SESSION['mysession']['counter'].
-
 
 .. _learning.multiuser.sessions.advanced-usage:
 

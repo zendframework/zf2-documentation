@@ -1,4 +1,3 @@
-
 .. _zend.search.lucene.query-language:
 
 Query Language
@@ -9,7 +8,6 @@ Java Lucene and ``Zend_Search_Lucene`` provide quite powerful query languages.
 These languages are mostly the same with some minor differences, which are mentioned below.
 
 Full Java Lucene query language syntax documentation can be found `here`_.
-
 
 .. _zend.search.lucene.query-language.terms:
 
@@ -25,7 +23,6 @@ A Phrase is a group of words surrounded by double quotes such as "hello dolly".
 A Subquery is a query surrounded by parentheses such as "(hello dolly)".
 
 Multiple terms can be combined together with boolean operators to form complex queries (see below).
-
 
 .. _zend.search.lucene.query-language.fields:
 
@@ -74,7 +71,6 @@ Note: The field is only valid for the term, phrase or subquery that it directly 
 
 Will only find "Do" in the title field. It will find "it" and "right" in the default field (if the default field is set) or in all indexed fields (if the default field is set to ``NULL``).
 
-
 .. _zend.search.lucene.query-language.wildcard:
 
 Wildcards
@@ -113,7 +109,6 @@ Starting from ZF 1.7.7 wildcard patterns need some non-wildcard prefix. Default 
 
 It can be altered using ``Zend_Search_Lucene_Search_Query_Wildcard::getMinPrefixLength()`` and ``Zend_Search_Lucene_Search_Query_Wildcard::setMinPrefixLength()`` methods.
 
-
 .. _zend.search.lucene.query-language.modifiers:
 
 Term Modifiers
@@ -122,7 +117,6 @@ Term Modifiers
 Lucene supports modifying query terms to provide a wide range of searching options.
 
 "~" modifier can be used to specify proximity search for phrases or fuzzy search for individual terms.
-
 
 .. _zend.search.lucene.query-language.range:
 
@@ -154,7 +148,6 @@ If field is not specified then ``Zend_Search_Lucene`` searches for specified int
 
    {Aida TO Carmen}
 
-
 .. _zend.search.lucene.query-language.fuzzy:
 
 Fuzzy Searches
@@ -176,7 +169,6 @@ This search will find terms like foam and roams. Additional (optional) parameter
 
 The default that is used if the parameter is not given is 0.5.
 
-
 .. _zend.search.lucene.query-language.matched-terms-limitations:
 
 Matched terms limitation
@@ -187,7 +179,6 @@ Wildcard, range and fuzzy search queries may match too many terms. It may cause 
 So ``Zend_Search_Lucene`` sets a limit of matching terms per query (subquery). This limit can be retrieved and set using ``Zend_Search_Lucene::getTermsPerQueryLimit()`` and ``Zend_Search_Lucene::setTermsPerQueryLimit($limit)`` methods.
 
 Default matched terms per query limit is 1024.
-
 
 .. _zend.search.lucene.query-language.proximity-search:
 
@@ -200,7 +191,6 @@ Lucene supports finding words from a phrase that are within a specified word dis
    :linenos:
 
    "Zend Framework"~10
-
 
 .. _zend.search.lucene.query-language.boosting:
 
@@ -232,7 +222,6 @@ This will make documents with the term *PHP* appear more relevant. You can also 
 
 By default, the boost factor is 1. Although the boost factor must be positive, it may be less than 1 (e.g. 0.2).
 
-
 .. _zend.search.lucene.query-language.boolean:
 
 Boolean Operators
@@ -243,7 +232,6 @@ Boolean operators allow terms to be combined through logic operators. Lucene sup
 AND, OR, and NOT operators and "+", "-" defines two different styles to construct boolean queries. Unlike Java Lucene, ``Zend_Search_Lucene`` doesn't allow these two styles to be mixed.
 
 If the AND/OR/NOT style is used, then an AND or OR operator must be present between all query terms. Each term may also be preceded by NOT operator. The AND operator has higher precedence than the OR operator. This differs from Java Lucene behavior.
-
 
 .. _zend.search.lucene.query-language.boolean.and:
 
@@ -259,7 +247,6 @@ To search for documents that contain "PHP framework" and "Zend Framework" use th
 
    "PHP framework" AND "Zend Framework"
 
-
 .. _zend.search.lucene.query-language.boolean.or:
 
 OR
@@ -273,7 +260,6 @@ To search for documents that contain "PHP framework" or "Zend Framework" use the
    :linenos:
 
    "PHP framework" OR "Zend Framework"
-
 
 .. _zend.search.lucene.query-language.boolean.not:
 
@@ -289,14 +275,12 @@ To search for documents that contain "PHP framework" but not "Zend Framework" us
 
    "PHP framework" AND NOT "Zend Framework"
 
-
 .. _zend.search.lucene.query-language.boolean.other-form:
 
 &&, \||, and ! operators
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 &&, \||, and ! may be used instead of AND, OR, and NOT notation.
-
 
 .. _zend.search.lucene.query-language.boolean.plus:
 
@@ -312,7 +296,6 @@ To search for documents that must contain "Zend" and may contain "Framework" use
 
    +Zend Framework
 
-
 .. _zend.search.lucene.query-language.boolean.minus:
 
 \-
@@ -326,7 +309,6 @@ To search for documents that contain "PHP framework" but not "Zend Framework" us
    :linenos:
 
    "PHP framework" -"Zend Framework"
-
 
 .. _zend.search.lucene.query-language.boolean.no-operator:
 
@@ -350,7 +332,6 @@ The default boolean operator may be set or retrieved with the ``Zend_Search_Luce
 
 These methods operate with the ``Zend_Search_Lucene_Search_QueryParser::B_AND`` and ``Zend_Search_Lucene_Search_QueryParser::B_OR`` constants.
 
-
 .. _zend.search.lucene.query-language.grouping:
 
 Grouping
@@ -365,7 +346,6 @@ Java Lucene and ``Zend_Search_Lucene`` support using parentheses to group clause
 
 ``Zend_Search_Lucene`` supports subqueries nested to any level.
 
-
 .. _zend.search.lucene.query-language.field-grouping:
 
 Field Grouping
@@ -379,7 +359,6 @@ To search for a title that contains both the word "return" and the phrase "pink 
    :linenos:
 
    title:(+return +"pink panther")
-
 
 .. _zend.search.lucene.query-language.escaping:
 

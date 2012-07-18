@@ -1,15 +1,12 @@
-
 .. _zend.codegenerator.reference:
 
 Zend_CodeGenerator Reference
 ============================
 
-
 .. _zend.codegenerator.reference.abstracts:
 
 Abstract Classes and Interfaces
 -------------------------------
-
 
 .. _zend.codegenerator.reference.abstracts.abstract:
 
@@ -41,7 +38,6 @@ Like most classes in Zend Framework, ``setOptions()`` compares an option key to 
 
 ``setSourceContent()`` and ``getSourceContent()`` are intended to either set the default content for the code being generated, or to replace said content once all generation tasks are complete.
 
-
 .. _zend.codegenerator.reference.abstracts.php-abstract:
 
 Zend_CodeGenerator_Php_Abstract
@@ -60,7 +56,6 @@ Zend_CodeGenerator_Php_Abstract
        public function setIndentation($indentation)
        public function getIndentation()
    }
-
 
 .. _zend.codegenerator.reference.abstracts.php-member-abstract:
 
@@ -85,12 +80,10 @@ Zend_CodeGenerator_Php_Member_Abstract
        public function getName()
    }
 
-
 .. _zend.codegenerator.reference.concrete:
 
 Concrete CodeGenerator Classes
 ------------------------------
-
 
 .. _zend.codegenerator.reference.concrete.php-body:
 
@@ -110,7 +103,6 @@ The *API* of the class is as follows:
        public function getContent()
        public function generate()
    }
-
 
 .. _zend.codegenerator.reference.concrete.php-class:
 
@@ -156,7 +148,6 @@ The ``setProperty()`` method accepts an array of information that may be used to
 
 Note that ``setDocBlock()`` expects an instance of ``Zend_CodeGenerator_Php_DocBlock``.
 
-
 .. _zend.codegenerator.reference.concrete.php-docblock:
 
 Zend_CodeGenerator_Php_Docblock
@@ -186,7 +177,6 @@ The *API* is as follows:
        public function generate()
    }
 
-
 .. _zend.codegenerator.reference.concrete.php-docblock-tag:
 
 Zend_CodeGenerator_Php_Docblock_Tag
@@ -211,7 +201,6 @@ The class *API* is as follows:
        public function getDescription()
        public function generate()
    }
-
 
 .. _zend.codegenerator.reference.concrete.php-docblock-tag-param:
 
@@ -238,7 +227,6 @@ The class *API* is as follows:
        public function generate()
    }
 
-
 .. _zend.codegenerator.reference.concrete.php-docblock-tag-return:
 
 Zend_CodeGenerator_Php_DocBlock_Tag_Return
@@ -261,7 +249,6 @@ The class *API* is as follows:
        public function getDatatype()
        public function generate()
    }
-
 
 .. _zend.codegenerator.reference.concrete.php-file:
 
@@ -300,7 +287,6 @@ The *API* of the class is as follows:
        public function generate()
    }
 
-
 .. _zend.codegenerator.reference.concrete.php-member-container:
 
 Zend_CodeGenerator_Php_Member_Container
@@ -317,7 +303,6 @@ The *API* of the class is as follows:
    {
        public function __construct($type = self::TYPE_PROPERTY)
    }
-
 
 .. _zend.codegenerator.reference.concrete.php-method:
 
@@ -349,7 +334,6 @@ The *API* of the class is as follows:
        public function getBody()
        public function generate()
    }
-
 
 .. _zend.codegenerator.reference.concrete.php-parameter:
 
@@ -395,7 +379,6 @@ There are several problems that might occur when trying to set ``NULL``, boolean
    );
 
 Internally ``setDefaultValue()`` also converts the values which can't be expressed in *PHP* into the value holder.
-
 
 .. _zend.codegenerator.reference.concrete.php-property:
 

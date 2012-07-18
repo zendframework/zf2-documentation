@@ -1,4 +1,3 @@
-
 .. _zend.filter.filter_chains:
 
 Filter Chains
@@ -20,7 +19,6 @@ Often multiple filters should be applied to some value in a particular order. Fo
 Filters are run in the order they were added to ``Zend_Filter``. In the above example, the username is first removed of any non-alphabetic characters, and then any uppercase characters are converted to lowercase.
 
 Any object that implements ``Zend_Filter_Interface`` may be used in a filter chain.
-
 
 .. _zend.filter.filter_chains.order:
 

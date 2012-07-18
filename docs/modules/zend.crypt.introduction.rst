@@ -1,4 +1,3 @@
-
 .. _zend.crypt.introduction:
 
 Introduction
@@ -29,10 +28,10 @@ The main scope of this component is to offer an easy and secure way to protect a
 
 
 .. note::
+
    **PHP-CryptLib**
 
    Most of the ideas behind the ``Zend\Crypt`` component have been inspired by the `PHP-CryptLib project`_ of `Anthony Ferrara`_. PHP-CryptLib is an all-inclusive pure PHP cryptographic library for all cryptographic needs. It is meant to be easy to install and use, yet extensible and powerful enough for even the most experienced developer.
-
 
 
 

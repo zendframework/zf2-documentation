@@ -1,11 +1,9 @@
-
 .. _zend.validator.set.int:
 
 Int
 ===
 
 ``Zend\Validator\Int`` validates if a given value is an integer. Also localized integer values are recognised and can be validated.
-
 
 .. _zend.validator.set.int.options:
 
@@ -15,7 +13,6 @@ Supported options for Zend\\Validator\\Int
 The following options are supported for ``Zend\Validator\Int``:
 
 - **locale**: Sets the locale which will be used to validate localized integers.
-
 
 .. _zend.validator.set.int.basic:
 
@@ -34,7 +31,6 @@ The simplest way to validate an integer is by using the system settings. When no
    $validator->isValid('1,234'); // returns true
 
 In the above example we expected that our environment is set to "en" as locale. As you can see in the third example also grouping is recognised.
-
 
 .. _zend.validator.set.int.localized:
 

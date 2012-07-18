@@ -1,4 +1,3 @@
-
 .. _zend.soap.server:
 
 Zend_Soap_Server
@@ -14,14 +13,12 @@ WSDL document may be auto-generated with functionality provided by :ref:`Zend_So
 
 If the non-WSDL mode is used, then all protocol options have to be set using options mechanism.
 
-
 .. _zend.soap.server.constructor:
 
 Zend_Soap_Server constructor
 ----------------------------
 
 ``Zend_Soap_Server`` constructor should be used a bit differently for WSDL and non-WSDL modes.
-
 
 .. _zend.soap.server.constructor.wsdl_mode:
 
@@ -44,12 +41,9 @@ Zend_Soap_Server constructor for the WSDL mode
 
     The option must be an array with WSDL types as keys and names of *PHP* classes as values.
 
-
   - 'encoding' - internal character encoding (UTF-8 is always used as an external encoding).
 
   - 'wsdl' which is equivalent to ``setWsdl($wsdlValue)`` call.
-
-
 
 
 
@@ -76,11 +70,9 @@ The following options are recognized in the non-WSDL mode:
 
   The option must be an array with WSDL types as keys and names of *PHP* classes as values.
 
-
 - 'encoding' - internal character encoding (UTF-8 is always used as an external encoding).
 
 - 'uri' (required) -*URI* namespace for *SOAP* server.
-
 
 
 
@@ -131,10 +123,10 @@ The first one is to attach some class to the ``Zend_Soap_Server`` object which h
    $server->handle();
 
 .. note::
+
    **Important!**
 
    You should completely describe each method using method docblock if you plan to use autodiscover functionality to prepare corresponding Web Service WSDL.
-
 
 The second method of defining Web Service *API* is using set of functions and ``addFunction()`` or ``loadFunctions()`` methods:
 
@@ -169,20 +161,18 @@ The second method of defining Web Service *API* is using set of functions and ``
    ...
    $server->handle();
 
-
 .. _zend.soap.server.request_response:
 
 Request and response objects handling
 -------------------------------------
 
 .. note::
+
    **Advanced**
 
    This section describes advanced request/response processing options and may be skipped.
 
-
 ``Zend_Soap_Server`` component performs request/response processing automatically, but allows to catch it and do some pre- and post-processing.
-
 
 .. _zend.soap.server.request_response.request:
 
@@ -229,7 +219,6 @@ Last processed request may be retrieved using ``getLastRequest()`` method as an 
    $server->handle();
    $request = $server->getLastRequest();
 
-
 .. _zend.soap.server.request_response.response:
 
 Response pre-processing
@@ -261,7 +250,6 @@ Last response may be also retrieved by ``getLastResponse()`` method for some pos
    $server->handle();
    $response = $server->getLastResponse();
    ...
-
 
 .. _zend.soap.server.documentliteral:
 

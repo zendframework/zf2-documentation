@@ -1,4 +1,3 @@
-
 .. _zend.service.amazon.ec2.windows.instance:
 
 Zend_Service_Amazon_Ec2: Windows Instances
@@ -15,8 +14,8 @@ Using Amazon EC2 instances running Windows is similar to using instances running
 As part of this service, Amazon EC2 instances can now run Microsoft Windows Server 2003. Our base Windows image provides you with most of the common functionality associated with Windows. However, if you require more than two concurrent Windows users or need to leverage applications that require *LDAP*, Kerberos, RADIUS, or other credential services, you must use Windows with Authentication Services. For example, Microsoft Exchange Server and Microsoft SharePoint Server require Windows with Authentication Services.
 
 .. note::
-   To get started using Windows instances, we recommend using the *AWS* Management Console. There are differences in pricing between Windows and Windows with Authentication Services instances. For information on pricing, go to the Amazon EC2 Product Page.
 
+   To get started using Windows instances, we recommend using the *AWS* Management Console. There are differences in pricing between Windows and Windows with Authentication Services instances. For information on pricing, go to the Amazon EC2 Product Page.
 
 Amazon EC2 currently provides the following Windows *AMI*\ s:
 
@@ -36,12 +35,10 @@ The Windows public *AMI*\ s that Amazon provides are unmodified versions of Wind
 
 - Sends the last three system and application errors from the event log to the console. This helps developers to identify problems that caused an instance to crash or network connectivity to be lost.
 
-
 .. _zend.service.amazon.ec2.windows.instance.operations:
 
 Windows Instances Usage
 -----------------------
-
 
 .. _zend.service.amazon.ec2.windows.instance.operations.bundle:
 
@@ -66,7 +63,6 @@ Windows Instances Usage
                                                         'aws_secret_key');
    $return = $ec2_instance->bundle('instanceId', 's3Bucket', 's3Prefix');
 
-
 .. _zend.service.amazon.ec2.windows.instance.operations.describe:
 
 .. rubric:: Describes current bundling tasks
@@ -81,7 +77,6 @@ Windows Instances Usage
    $ec2_instance = new Zend_Service_Amazon_Ec2_Instance_Windows('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->describeBundle('bundleId');
-
 
 .. _zend.service.amazon.ec2.windows.instance.operations.cancel:
 

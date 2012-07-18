@@ -1,4 +1,3 @@
-
 .. _zend.gdata.calendar:
 
 Using Google Calendar
@@ -8,7 +7,6 @@ You can use the ``Zend_Gdata_Calendar`` class to view, create, update, and delet
 
 See `http://code.google.com/apis/calendar/overview.html`_ for more information about the Google Calendar *API*.
 
-
 .. _zend.gdata.calendar.connecting:
 
 Connecting To The Calendar Service
@@ -17,7 +15,6 @@ Connecting To The Calendar Service
 The Google Calendar *API*, like all GData *API*\ s, is based off of the Atom Publishing Protocol (APP), an *XML* based format for managing web-based resources. Traffic between a client and the Google Calendar servers occurs over *HTTP* and allows for both authenticated and unauthenticated connections.
 
 Before any transactions can occur, this connection needs to be made. Creating a connection to the calendar servers involves two steps: creating an *HTTP* client and binding a ``Zend_Gdata_Calendar`` service instance to that client.
-
 
 .. _zend.gdata.calendar.connecting.authentication:
 
@@ -33,7 +30,6 @@ The Google Calendar *API* allows access to both public and private calendar feed
 - **MagicCookie** allows authentication based on a semi-random *URL* available from within the Google Calendar interface. This is the simplest authentication scheme to implement, but requires that users manually retrieve their secure *URL* before they can authenticate, doesn't provide access to calendar lists, and is limited to read-only access.
 
 The ``Zend_Gdata`` library provides support for all three authentication schemes. The rest of this chapter will assume that you are familiar the authentication schemes available and how to create an appropriate authenticated connection. For more information, please see section the :ref:`Authentication section <zend.gdata.introduction.authentication>` of this manual or the `Authentication Overview in the Google Data API Developer's Guide`_.
-
 
 .. _zend.gdata.calendar.connecting.service:
 
@@ -163,7 +159,6 @@ Finally, an unauthenticated server can be created for use with either public fee
 
 Note that MagicCookie authentication is not supplied with the *HTTP* connection, but is instead specified along with the desired visibility when submitting queries. See the section on retrieving events below for an example.
 
-
 .. _zend.gdata.calendar_retrieval:
 
 Retrieving A Calendar List
@@ -199,14 +194,12 @@ Calling ``getCalendarListFeed()`` creates a new instance of ``Zend_Gdata_Calenda
    }
    echo "</ul>";
 
-
 .. _zend.gdata.event_retrieval:
 
 Retrieving Events
 -----------------
 
 Like the list of calendars, events are also retrieved using the ``Zend_Gdata_Calendar`` service class. The event list returned is of type ``Zend_Gdata_Calendar_EventFeed`` and contains each event as an instance of ``Zend_Gdata_Calendar_EventEntry``. As before, the iterator and accessors contained within the event feed instance allow inspection of individual events.
-
 
 .. _zend.gdata.event_retrieval.queries:
 
@@ -220,7 +213,6 @@ When retrieving events using the Calendar *API*, specially constructed query *UR
 - **Visibility** specifies whether a users public or private calendar should be searched. If using an unauthenticated session and no MagicCookie is available, only the public feed will be available.
 
 - **Projection** specifies how much data should be returned by the server and in what format. In most cases you will want to use the "full" projection. Also available is the "basic" projection, which places most meta-data into each event's content field as human readable text, and the "composite" projection which includes complete text for any comments alongside each event. The "composite" view is often much larger than the "full" view.
-
 
 .. _zend.gdata.event_retrieval.start_time:
 
@@ -257,7 +249,6 @@ The example below illustrates the use of the ``Zend_Gdata_Query`` class and spec
 
 Additional properties such as ID, author, when, event status, visibility, web content, and content, among others are available within ``Zend_Gdata_Calendar_EventEntry``. Refer to the `Zend Framework API Documentation`_ and the `Calendar Protocol Reference`_ for a complete list.
 
-
 .. _zend.gdata.event_retrieval.date_range:
 
 Retrieving Events In A Specified Date Range
@@ -273,7 +264,6 @@ To print out all events within a certain range, for example from December 1, 200
 
 Note that ``startMin`` is inclusive whereas ``startMax`` is exclusive. As a result, only events through 2006-12-15 23:59:59 will be returned.
 
-
 .. _zend.gdata.event_retrieval.fulltext:
 
 Retrieving Events By Fulltext Query
@@ -285,7 +275,6 @@ To print out all events which contain a specific word, for example "dogfood", us
    :linenos:
 
    $query->setQuery("dogfood");
-
 
 .. _zend.gdata.event_retrieval.individual:
 
@@ -323,12 +312,10 @@ In a similar fashion, if the event *URL* is known, it can be passed directly int
        echo "Error: " . $e->getMessage();
    }
 
-
 .. _zend.gdata.calendar.creating_events:
 
 Creating Events
 ---------------
-
 
 .. _zend.gdata.calendar.creating_events.single:
 
@@ -394,7 +381,6 @@ Once the event has been populated, it can be uploaded to the calendar server by 
    // A copy of the event as it is recorded on the server is returned
    $newEvent = $service->insertEvent($event);
 
-
 .. _zend.gdata.calendar.creating_events.schedulers_reminders:
 
 Event Schedules and Reminders
@@ -432,7 +418,6 @@ For a **reminder** to be valid, it needs to have two attributes set: ``method`` 
    // Apply the reminder to an existing event's when property
    $when = $event->when[0];
    $when->reminders = array($reminder);
-
 
 .. _zend.gdata.calendar.creating_events.recurring:
 
@@ -472,7 +457,6 @@ Due to the complexity of parsing recurrence patterns, further information on thi
    // A copy of the event as it is recorded on the server is returned
    $newEvent = $service->insertEvent($event);
 
-
 .. _zend.gdata.calendar.creating_events.quickadd:
 
 Using QuickAdd
@@ -493,7 +477,6 @@ QuickAdd is a feature which allows events to be created using free-form text ent
    // Upload the event to the calendar server
    // A copy of the event as it is recorded on the server is returned
    $newEvent = $service->insertEvent($event);
-
 
 .. _zend.gdata.calendar.modifying_events:
 
@@ -520,7 +503,6 @@ In the event another user has modified the event since the local copy was retrie
        echo "Error: " . $e->getMessage();
    }
 
-
 .. _zend.gdata.calendar.deleting_events:
 
 Deleting Events
@@ -542,7 +524,6 @@ In either case, the deleted event will still show up on a user's private event f
    // Option 2: Events can be deleted supplying the edit URL of the event
    // to the calendar service, if known
    $service->delete($event->getEditLink()->href);
-
 
 .. _zend.gdata.calendar.comments:
 

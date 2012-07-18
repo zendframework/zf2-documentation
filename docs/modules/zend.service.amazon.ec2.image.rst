@@ -1,4 +1,3 @@
-
 .. _zend.service.amazon.ec2.images:
 
 Zend_Service_Amazon_Ec2: Amazon Machine Images (AMI)
@@ -6,12 +5,10 @@ Zend_Service_Amazon_Ec2: Amazon Machine Images (AMI)
 
 Amazon Machine Images (AMIs) are preconfigured with an ever-growing list of operating systems.
 
-
 .. _zend.service.amazon.ec2.images.info:
 
 AMI Information Utilities
 -------------------------
-
 
 .. _zend.service.amazon.ec2.images.register:
 
@@ -27,7 +24,6 @@ AMI Information Utilities
    $ec2_img = new Zend_Service_Amazon_Ec2_Image('aws_key','aws_secret_key');
    $ip = $ec2_img->register('imageLocation');
 
-
 .. _zend.service.amazon.ec2.images.deregister:
 
 .. rubric:: Deregister an AMI with EC2
@@ -42,7 +38,6 @@ AMI Information Utilities
    $ec2_img = new Zend_Service_Amazon_Ec2_Image('aws_key','aws_secret_key');
    $ip = $ec2_img->deregister('imageId');
 
-
 .. _zend.service.amazon.ec2.images.describe:
 
 .. rubric:: Describe an AMI
@@ -50,20 +45,22 @@ AMI Information Utilities
 *describe* Returns information about *AMI*\ s, AKIs, and ARIs available to the user. Information returned includes image type, product codes, architecture, and kernel and *RAM* disk IDs. Images available to the user include public images available for any user to launch, private images owned by the user making the request, and private images owned by other users for which the user has explicit launch permissions.
 
 
-.. _zend.service.amazon.ec2.images.describe-table:
 
-.. table:: Launch permissions fall into three categories
 
-   +--------+-------------------------------------------------------------------------------------------------------------------------------+
-   |Name    |Description                                                                                                                    |
-   +========+===============================================================================================================================+
-   |public  |The owner of the AMI granted launch permissions for the AMI to the all group. All users have launch permissions for these AMIs.|
-   +--------+-------------------------------------------------------------------------------------------------------------------------------+
-   |explicit|The owner of the AMI granted launch permissions to a specific user.                                                            |
-   +--------+-------------------------------------------------------------------------------------------------------------------------------+
-   |implicit|A user has implicit launch permissions for all AMIs he or she owns.                                                            |
-   +--------+-------------------------------------------------------------------------------------------------------------------------------+
 
+      .. _zend.service.amazon.ec2.images.describe-table:
+
+      .. table:: Launch permissions fall into three categories
+
+         +--------+-------------------------------------------------------------------------------------------------------------------------------+
+         |Name    |Description                                                                                                                    |
+         +========+===============================================================================================================================+
+         |public  |The owner of the AMI granted launch permissions for the AMI to the all group. All users have launch permissions for these AMIs.|
+         +--------+-------------------------------------------------------------------------------------------------------------------------------+
+         |explicit|The owner of the AMI granted launch permissions to a specific user.                                                            |
+         +--------+-------------------------------------------------------------------------------------------------------------------------------+
+         |implicit|A user has implicit launch permissions for all AMIs he or she owns.                                                            |
+         +--------+-------------------------------------------------------------------------------------------------------------------------------+
 
 
 
@@ -83,12 +80,10 @@ If you specify a list of executable users, only users that have launch permissio
    $ec2_img = new Zend_Service_Amazon_Ec2_Image('aws_key','aws_secret_key');
    $ip = $ec2_img->describe();
 
-
 .. _zend.service.amazon.ec2.images.attribute:
 
 AMI Attribute Utilities
 -----------------------
-
 
 .. _zend.service.amazon.ec2.images.attribute.modify:
 
@@ -97,18 +92,20 @@ AMI Attribute Utilities
 Modifies an attribute of an *AMI*
 
 
-.. _zend.service.amazon.ec2.images.attribute.modify-table:
 
-.. table:: Valid Attributes
 
-   +----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |Name            |Description                                                                                                                                                                                                                                             |
-   +================+========================================================================================================================================================================================================================================================+
-   |launchPermission|Controls who has permission to launch the AMI. Launch permissions can be granted to specific users by adding userIds. To make the AMI public, add the all group.                                                                                        |
-   +----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |productCodes    |Associates a product code with AMIs. This allows developers to charge users for using AMIs. The user must be signed up for the product before they can launch the AMI. This is a write once attribute; after it is set, it cannot be changed or removed.|
-   +----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+      .. _zend.service.amazon.ec2.images.attribute.modify-table:
+
+      .. table:: Valid Attributes
+
+         +----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+         |Name            |Description                                                                                                                                                                                                                                             |
+         +================+========================================================================================================================================================================================================================================================+
+         |launchPermission|Controls who has permission to launch the AMI. Launch permissions can be granted to specific users by adding userIds. To make the AMI public, add the all group.                                                                                        |
+         +----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+         |productCodes    |Associates a product code with AMIs. This allows developers to charge users for using AMIs. The user must be signed up for the product before they can launch the AMI. This is a write once attribute; after it is set, it cannot be changed or removed.|
+         +----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 
@@ -133,7 +130,6 @@ Modifies an attribute of an *AMI*
                                        null,
                                        'productCode');
 
-
 .. _zend.service.amazon.ec2.images.attribute.reset:
 
 .. rubric:: Reset an AMI Attribute
@@ -145,7 +141,6 @@ Modifies an attribute of an *AMI*
 
    $ec2_img = new Zend_Service_Amazon_Ec2_Image('aws_key','aws_secret_key');
    $return = $ec2_img->resetAttribute('imageId', 'launchPermission');
-
 
 .. _zend.service.amazon.ec2.images.attribute.describe:
 

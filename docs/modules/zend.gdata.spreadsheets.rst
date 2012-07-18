@@ -1,4 +1,3 @@
-
 .. _zend.gdata.spreadsheets:
 
 Using Google Spreadsheets
@@ -8,14 +7,12 @@ The Google Spreadsheets data *API* allows client applications to view and update
 
 See `http://code.google.com/apis/spreadsheets/overview.html`_ for more information about the Google Spreadsheets *API*.
 
-
 .. _zend.gdata.spreadsheets.creating:
 
 Create a Spreadsheet
 --------------------
 
 The Spreadsheets data *API* does not currently provide a way to programmatically create or delete a spreadsheet.
-
 
 .. _zend.gdata.spreadsheets.listspreadsheets:
 
@@ -31,7 +28,6 @@ You can get a list of spreadsheets for a particular user by using the ``getSprea
    $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
    $spreadsheetService = new Zend_Gdata_Spreadsheets($client);
    $feed = $spreadsheetService->getSpreadsheetFeed();
-
 
 .. _zend.gdata.spreadsheets.listworksheets:
 
@@ -51,7 +47,6 @@ Given the spreadsheet key from the <id> of a ``Zend_Gdata_Spreadsheets_Spreadshe
 
 The resulting ``Zend_Gdata_Spreadsheets_WorksheetFeed`` object feed represents the response from the server. Among other things, this feed contains a list of ``Zend_Gdata_Spreadsheets_WorksheetEntry`` objects (``$feed->entries``), each of which represents a single worksheet.
 
-
 .. _zend.gdata.spreadsheets.listfeeds:
 
 Interacting With List-based Feeds
@@ -68,7 +63,6 @@ In particular, the list feed treats the first row of the worksheet as a header r
 The list feed contains all rows after the first row up to the first blank row. The first blank row terminates the data set. If expected data isn't appearing in a feed, check the worksheet manually to see whether there's an unexpected blank row in the middle of the data. In particular, if the second row of the spreadsheet is blank, then the list feed will contain no data.
 
 A row in a list feed is as many columns wide as the worksheet itself.
-
 
 .. _zend.gdata.spreadsheets.listfeeds.get:
 
@@ -105,7 +99,6 @@ An alternate version of this array, ``customByName``, allows direct access to an
    $customEntry = $listFeed->entries[1]->getCustomByName('my_heading');
    echo $customEntry->getColumnName() . " = " . $customEntry->getText();
 
-
 .. _zend.gdata.spreadsheets.listfeeds.reverse:
 
 Reverse-sort Rows
@@ -124,7 +117,6 @@ By default, rows in the feed appear in the same order as the corresponding rows 
 
 Note that if you want to order (or reverse sort) by a particular column, rather than by position in the worksheet, you can set the ``orderby`` value of the ``Zend_Gdata_Spreadsheets_ListQuery`` object to **column:<the header of that column>**.
 
-
 .. _zend.gdata.spreadsheets.listfeeds.sq:
 
 Send a Structured Query
@@ -140,7 +132,6 @@ You can set a ``Zend_Gdata_Spreadsheets_ListQuery``'s ``sq`` value to produce a 
    $query->setWorksheetId($worksheetId);
    $query->setSpreadsheetQuery('name=John and age>25');
    $listFeed = $spreadsheetService->getListFeed($query);
-
 
 .. _zend.gdata.spreadsheets.listfeeds.addrow:
 
@@ -160,7 +151,6 @@ The ``$rowData`` parameter contains an array of column keys to data values. The 
 
 Spreadsheets inserts the new row immediately after the last row that appears in the list-based feed, which is to say immediately before the first entirely blank row.
 
-
 .. _zend.gdata.spreadsheets.listfeeds.editrow:
 
 Edit a Row
@@ -175,7 +165,6 @@ Once a ``Zend_Gdata_Spreadsheets_ListEntry`` object is fetched, its rows can be 
                                                       $newRowData);
 
 The ``$oldListEntry`` parameter contains the list entry to be updated. ``$newRowData`` contains an array of column keys to data values, to be used as the new row data. The method returns a ``Zend_Gdata_Spreadsheets_SpreadsheetsEntry`` object which represents the updated row.
-
 
 .. _zend.gdata.spreadsheets.listfeeds.deleterow:
 
@@ -196,7 +185,6 @@ Alternatively, you can call the ``delete()`` method of the entry itself:
 
    $listEntry->delete();
 
-
 .. _zend.gdata.spreadsheets.cellfeeds:
 
 Interacting With Cell-based Feeds
@@ -205,7 +193,6 @@ Interacting With Cell-based Feeds
 In a cell-based feed, each entry represents a single cell.
 
 Note that we don't recommend interacting with both a cell-based feed and a list-based feed for the same worksheet at the same time.
-
 
 .. _zend.gdata.spreadsheets.cellfeeds.get:
 
@@ -234,7 +221,6 @@ The resulting ``Zend_Gdata_Spreadsheets_CellFeed`` object ``$cellFeed`` represen
      echo "$row, $col = $val\n";
    }
 
-
 .. _zend.gdata.spreadsheets.cellfeeds.cellrangequery:
 
 Send a Cell Range Query
@@ -252,7 +238,6 @@ Suppose you wanted to retrieve the cells in the first column of a worksheet. You
    $feed = $spreadsheetService->getCellsFeed($query);
 
 This requests all the data in column 1, starting with row 2.
-
 
 .. _zend.gdata.spreadsheets.cellfeeds.updatecell:
 

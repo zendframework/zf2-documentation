@@ -1,11 +1,9 @@
-
 .. _zend.validator.introduction:
 
 Introduction
 ============
 
 The ``Zend\Validator`` component provides a set of commonly needed validators. It also provides a simple validator chaining mechanism by which multiple validators may be applied to a single datum in a user-defined order.
-
 
 .. _zend.validator.introduction.definition:
 
@@ -15,7 +13,6 @@ What is a validator?
 A validator examines its input with respect to some requirements and produces a boolean result - whether the input successfully validates against the requirements. If the input does not meet the requirements, a validator may additionally provide information about which requirement(s) the input does not meet.
 
 For example, a web application might require that a username be between six and twelve characters in length and may only contain alphanumeric characters. A validator can be used for ensuring that usernames meet these requirements. If a chosen username does not meet one or both of the requirements, it would be useful to know which of the requirements the username fails to meet.
-
 
 .. _zend.validator.introduction.using:
 
@@ -27,8 +24,8 @@ Having defined validation in this way provides the foundation for ``Zend\Validat
 If ``isValid()`` returns ``FALSE``, the ``getMessages()`` returns an array of messages explaining the reason(s) for validation failure. The array keys are short strings that identify the reasons for validation failure, and the array values are the corresponding human-readable string messages. The keys and values are class-dependent; each validation class defines its own set of validation failure messages and the unique keys that identify them. Each class also has a const definition that matches each identifier for a validation failure cause.
 
 .. note::
-   The ``getMessages()`` methods return validation failure information only for the most recent ``isValid()`` call. Each call to ``isValid()`` clears any messages and errors caused by a previous ``isValid()`` call, because it's likely that each call to ``isValid()`` is made for a different input value.
 
+   The ``getMessages()`` methods return validation failure information only for the most recent ``isValid()`` call. Each call to ``isValid()`` clears any messages and errors caused by a previous ``isValid()`` call, because it's likely that each call to ``isValid()`` is made for a different input value.
 
 The following example illustrates validation of an e-mail address:
 
@@ -45,7 +42,6 @@ The following example illustrates validation of an e-mail address:
            echo "Validation failure '$messageId': $message\n";
        }
    }
-
 
 .. _zend.validator.introduction.messages:
 
@@ -104,7 +100,6 @@ If your application requires even greater flexibility with which it reports vali
            . "\n";
    }
 
-
 .. _zend.validator.introduction.translation:
 
 Translating messages
@@ -132,8 +127,8 @@ With the static ``setDefaultTranslator()`` method you can set a instance of ``Ze
    Zend\Validator\AbstractValidator::setDefaultTranslator($translate);
 
 .. note::
-   When you have set an application wide locale within your registry, then this locale will be used as default translator.
 
+   When you have set an application wide locale within your registry, then this locale will be used as default translator.
 
 Sometimes it is necessary to disable the translator within a validator. To archive this you can use the ``setDisableTranslator()`` method, which accepts a boolean parameter, and ``isTranslatorDisabled()`` to get the set value.
 

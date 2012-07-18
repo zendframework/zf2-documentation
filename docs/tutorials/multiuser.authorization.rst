@@ -1,9 +1,7 @@
-
 .. _learning.multiuser.authorization:
 
 Building an Authorization System in Zend Framework
 ==================================================
-
 
 .. _learning.multiuser.authorization.intro:
 
@@ -19,7 +17,6 @@ After a user has been identified as being authentic, an application can go about
 - and optionally, what the identity is privileged to do with the resource
 
 In Zend Framework, the ``Zend_Acl`` component handles the task of building a tree of roles, resources and privileges to manage and query authorization requests against.
-
 
 .. _learning.multiuser.authorization.basic-usage:
 

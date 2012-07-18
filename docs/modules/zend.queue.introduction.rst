@@ -1,4 +1,3 @@
-
 .. _zend.queue.introduction:
 
 Introduction

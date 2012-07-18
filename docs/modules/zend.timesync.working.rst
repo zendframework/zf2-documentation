@@ -1,4 +1,3 @@
-
 .. _zend.timesync.working:
 
 Working with Zend_TimeSync
@@ -7,9 +6,8 @@ Working with Zend_TimeSync
 ``Zend\TimeSync\TimeSync`` can return the actual time from any given **NTP** or **SNTP** time server. It can automatically handle multiple servers and provides a simple interface.
 
 .. note::
+
    All examples in this chapter use a public, generic time server: **0.europe.pool.ntp.org**. You should use a public, generic time server which is close to your application server. See `http://www.pool.ntp.org`_ for information.
-
-
 
 .. _zend.timesync.working.generic:
 
@@ -28,7 +26,6 @@ Requesting the time from a time server is simple. First, you provide the time se
 So what is happening in the background of ``Zend\TimeSync\TimeSync``? First the syntax of the time server is checked. In our example, '**0.pool.ntp.org**' is checked and recognised as a possible address for a time server. Then when calling ``getDate()`` the actual set time server is requested and it will return its own time. ``Zend\TimeSync\TimeSync`` then calculates the difference to the actual time of the server running the script and returns a ``DateTime`` object with the correct time.
 
 For details about ``DateTime`` and its methods see the `DateTimedocumentation`_.
-
 
 .. _zend.timesync.working.multiple:
 
@@ -65,7 +62,6 @@ When you supply more than one time server- which is considered a best practice f
 
 Naming the time servers allows you to request a specific time server as we will see later in this chapter.
 
-
 .. _zend.timesync.working.protocol:
 
 Protocols of Time Servers
@@ -87,7 +83,6 @@ You set the proper protocol in the address of the time server. There are two pro
 
 ``Zend\TimeSync\TimeSync`` can handle mixed time servers. So you are not restricted to only one protocol; you can add any server independently from its protocol.
 
-
 .. _zend.timesync.working.ports:
 
 Using Ports for Time Servers
@@ -105,7 +100,6 @@ But sometimes the port that the protocols use differs from the standard one. You
    $server->addServer('sntp://internal.myserver.com:399', 'additional');
 
    print $server->getDate()->format(DateTime::ISO8601);
-
 
 .. _zend.timesync.working.options:
 
@@ -132,7 +126,6 @@ With the ``setOptions()`` method, you can set any option. This function accepts 
 
 As you can see, the options for ``Zend\TimeSync\TimeSync`` are static. Each instance of ``Zend\TimeSync\TimeSync`` will use the same options.
 
-
 .. _zend.timesync.working.different:
 
 Using Different Time Servers
@@ -150,7 +143,6 @@ Using Different Time Servers
    $actual = $server->getServer();
    $server = $server->setServer('additional');
 
-
 .. _zend.timesync.working.informations:
 
 Information from Time Servers
@@ -167,7 +159,6 @@ Time servers not only offer the time itself, but also additional information. Yo
    print_r ($server->getInfo());
 
 The returned information differs with the protocol used and can also differ with the server used.
-
 
 .. _zend.timesync.working.exceptions:
 

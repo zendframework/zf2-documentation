@@ -1,9 +1,7 @@
-
 .. _zend.mail.transport:
 
 Zend\\Mail\\Transport
 =====================
-
 
 .. _zend.mail.transport.intro:
 
@@ -14,14 +12,12 @@ Transports take care of the actual delivery of mail. Typically, you only need to
 
 The ``Zend\Mail\Transport`` interface defines exactly one method, ``send()``. This method accepts a ``Zend\Mail\Message`` instance, which it then introspects and serializes in order to send.
 
-
 .. _zend.mail.transport.quick-start:
 
 Quick Start
 -----------
 
 Using a mail transport is typically as simple as instantiating it, optionally configuring it, and then passing a message to it.
-
 
 .. _zend.mail.transport.quick-start.sendmail-usage:
 
@@ -41,7 +37,6 @@ Using a mail transport is typically as simple as instantiating it, optionally co
 
    $transport = new SendmailTransport();
    $transport->send($message);
-
 
 .. _zend.mail.transport.quick-start.smtp-usage:
 
@@ -74,7 +69,6 @@ Using a mail transport is typically as simple as instantiating it, optionally co
    $transport->setOptions($options);
    $transport->send($message);
 
-
 .. _zend.mail.transport.quick-start.file-usage:
 
 .. rubric:: File Transport Usage
@@ -103,7 +97,6 @@ Using a mail transport is typically as simple as instantiating it, optionally co
    $transport->setOptions($options);
    $transport->send($message);
 
-
 .. _zend.mail.transport.options:
 
 Configuration Options
@@ -115,25 +108,18 @@ Configuration options are per transport. Please follow the links below for trans
 
 - :ref:`File Transport Options <zend.mail.file-options>`
 
-
 .. _zend.mail.transport.methods:
 
 Available Methods
 -----------------
 
-
 .. _zend.mail.transport.methods.send:
 
 **send**
    ``send(Zend\Mail\Message $message)``
-
-
    Send a mail message.
 
-
    Returns void
-
-
 
 .. _zend.mail.transport.examples:
 

@@ -1,9 +1,7 @@
-
 .. _zend.service.recaptcha:
 
 Zend_Service_ReCaptcha
 ======================
-
 
 .. _zend.service.recaptcha.introduction:
 
@@ -14,14 +12,12 @@ Introduction
 
 In order to use the reCAPTCHA service, you will need to `sign up for an account`_ and register one or more domains with the service in order to generate public and private keys.
 
-
 .. _zend.service.recaptcha.simplestuse:
 
 Simplest use
 ------------
 
 Instantiate a ``Zend_Service_ReCaptcha`` object, passing it your public and private keys:
-
 
 .. _zend.service.recaptcha.example-1:
 
@@ -34,7 +30,6 @@ Instantiate a ``Zend_Service_ReCaptcha`` object, passing it your public and priv
 
 To render the reCAPTCHA, simply call the ``getHTML()`` method:
 
-
 .. _zend.service.recaptcha.example-2:
 
 .. rubric:: Displaying the reCAPTCHA
@@ -45,7 +40,6 @@ To render the reCAPTCHA, simply call the ``getHTML()`` method:
    echo $recaptcha->getHTML();
 
 When the form is submitted, you should receive two fields, 'recaptcha_challenge_field' and 'recaptcha_response_field'. Pass these to the reCAPTCHA object's ``verify()`` method:
-
 
 .. _zend.service.recaptcha.example-3:
 
@@ -61,7 +55,6 @@ When the form is submitted, you should receive two fields, 'recaptcha_challenge_
 
 Once you have the result, test against it to see if it is valid. The result is a ``Zend_Service_ReCaptcha_Response`` object, which provides an ``isValid()`` method.
 
-
 .. _zend.service.recaptcha.example-4:
 
 .. rubric:: Validating the reCAPTCHA
@@ -75,7 +68,6 @@ Once you have the result, test against it to see if it is valid. The result is a
 
 It is even simpler to use :ref:`the reCAPTCHA <zend.captcha.adapters.recaptcha>` ``Zend_Captcha`` adapter, or to use that adapter as a backend for the :ref:`CAPTCHA form element <zend.form.standardElements.captcha>`. In each case, the details of rendering and validating the reCAPTCHA are automated for you.
 
-
 .. _zend.service.recaptcha.mailhide:
 
 Hiding email addresses
@@ -84,7 +76,6 @@ Hiding email addresses
 ``Zend_Service_ReCaptcha_MailHide`` can be used to hide email addresses. It will replace a part of an email address with a link that opens a popup window with a reCAPTCHA challenge. Solving the challenge will reveal the complete email address.
 
 In order to use this component you will need `an account`_ to generate public and private keys for the mailhide *API*.
-
 
 .. _zend.service.recaptcha.mailhide.example-1:
 
@@ -109,27 +100,28 @@ In order to use this component you will need `an account`_ to generate public an
 The example above will display "m...@example.com" where "..." has a link that opens up a popup window with a reCAPTCHA challenge.
 
 The public key, private key, and the email address can also be specified in the constructor of the class. A fourth argument also exists that enables you to set some options for the component. The available options are listed in the following table:
-.. _zend.service.recaptcha.mailhide.options.table:
 
-.. table:: Zend_Service_ReCaptcha_MailHide options
 
-   +--------------+-------------------------------------+---------------+----------------------------+
-   |Option        |Description                          |Expected Values|Default Value               |
-   +==============+=====================================+===============+============================+
-   |linkTitle     |The title attribute of the link      |string         |'Reveal this e=mail address'|
-   +--------------+-------------------------------------+---------------+----------------------------+
-   |linkHiddenText|The text that includes the popup link|string         |'...'                       |
-   +--------------+-------------------------------------+---------------+----------------------------+
-   |popupWidth    |The width of the popup window        |int            |500                         |
-   +--------------+-------------------------------------+---------------+----------------------------+
-   |popupHeight   |The height of the popup window       |int            |300                         |
-   +--------------+-------------------------------------+---------------+----------------------------+
 
+      .. _zend.service.recaptcha.mailhide.options.table:
+
+      .. table:: Zend_Service_ReCaptcha_MailHide options
+
+         +--------------+-------------------------------------+---------------+----------------------------+
+         |Option        |Description                          |Expected Values|Default Value               |
+         +==============+=====================================+===============+============================+
+         |linkTitle     |The title attribute of the link      |string         |'Reveal this e=mail address'|
+         +--------------+-------------------------------------+---------------+----------------------------+
+         |linkHiddenText|The text that includes the popup link|string         |'...'                       |
+         +--------------+-------------------------------------+---------------+----------------------------+
+         |popupWidth    |The width of the popup window        |int            |500                         |
+         +--------------+-------------------------------------+---------------+----------------------------+
+         |popupHeight   |The height of the popup window       |int            |300                         |
+         +--------------+-------------------------------------+---------------+----------------------------+
 
 
 
 The configuration options can be set by sending them as the fourth argument to the constructor or by calling ``setOptions($options)``, which takes an associative array or an instance of :ref:`Zend_Config <zend.config>`.
-
 
 .. _zend.service.recaptcha.mailhide.example-2:
 

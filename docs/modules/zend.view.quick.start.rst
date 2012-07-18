@@ -1,9 +1,7 @@
-
 .. _zend.view.quick-start:
 
 Zend\\View Quick Start
 ======================
-
 
 .. _zend.view.quick-start.intro:
 
@@ -28,14 +26,12 @@ The components of the view layer are as follows:
 
 Additionally, Zend Framework provides integration with the MVC via a number of event listeners in the ``Zend\Mvc\View`` namespace.
 
-
 .. _zend.view.quick-start.usage:
 
 Usage
 -----
 
 This manual section is designed to show you typical usage patterns of the view layer when using it within the Zend Framework MVC. The assumptions are that you are using :ref:`Dependency Injection <zend.di>`, and that you are using the default :ref:`default MVC view strategies <zend.mvc.view>`.
-
 
 .. _zend.view.quick-start.usage.config:
 
@@ -160,7 +156,6 @@ The default configuration for the framework will typically work out-of-the-box. 
            ),
        ),
    );
-
 
 .. _zend.view.quick-start.usage.controllers:
 
@@ -340,7 +335,6 @@ And here is the aggregate, generated content:
    </div>
 
 As you can see, you can achieve very complex markup using nested views, while simultaneously keeping the details of rendering isolated from the request/reponse lifecycle of the controller.
-
 
 .. _zend.view.quick-start.usage.layouts:
 
@@ -551,7 +545,6 @@ The place to do these actions is in a listener. It should listen either to the "
            $viewModel->setTemplate('content/layout');
        }
    }
-
 
 .. _zend.view.quick-start.usage.strategies:
 

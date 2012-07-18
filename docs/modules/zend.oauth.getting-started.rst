@@ -1,4 +1,3 @@
-
 .. _zend.oauth.introduction.getting-started:
 
 Getting Started

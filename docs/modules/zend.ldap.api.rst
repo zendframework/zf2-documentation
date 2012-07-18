@@ -1,9 +1,7 @@
-
 .. _zend.ldap.api:
 
 API overview
 ============
-
 
 .. _zend.ldap.api.configuration:
 
@@ -11,7 +9,6 @@ Configuration / options
 -----------------------
 
 The ``Zend\Ldap\Ldap`` component accepts an array of options either supplied to the constructor or through the ``setOptions()`` method. The permitted options are as follows:
-
 
 .. _zend.ldap.api.configuration.table:
 
@@ -53,17 +50,14 @@ The ``Zend\Ldap\Ldap`` component accepts an array of options either supplied to 
    |networkTimeout        |Number of seconds to wait for LDAP connection before fail. If not set the default value is the system value.                                                                                                                                                                                                                                                                                                                                                                                    |
    +----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-
 .. _zend.ldap.api.reference:
 
 API Reference
 -------------
 
 .. note::
+
    Method names in **italics** are static methods.
-
-
 
 .. include:: zend.ldap.api.ldap.rst
 .. include:: zend.ldap.api.ldap.attribute.rst
@@ -74,3 +68,4 @@ API Reference
 .. include:: zend.ldap.api.ldap.node.root-dse.rst
 .. include:: zend.ldap.api.ldap.node.schema.rst
 .. include:: zend.ldap.api.ldap.ldif.encoder.rst
+

@@ -1,4 +1,3 @@
-
 .. _zend.feed.consuming-rss:
 
 Consuming an RSS Feed

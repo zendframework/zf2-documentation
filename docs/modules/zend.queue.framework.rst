@@ -1,4 +1,3 @@
-
 .. _zend.queue.framework:
 
 Framework
@@ -43,7 +42,6 @@ The accepted configuration settings for each adapter are provided in the :ref:`a
 
 Any exceptions thrown are of class ``Zend_Queue_Exception``.
 
-
 .. _zend.queue.framework.basics:
 
 Introduction
@@ -54,7 +52,6 @@ Introduction
 The ``send()``, ``count($queue)``, and ``receive()`` methods are employed by each adapter to interact with queues.
 
 The ``createQueue()``, ``deleteQueue()`` methods are used to manage queues.
-
 
 .. _zend.queue.framework.support:
 
@@ -73,11 +70,9 @@ You can determine what functions are supported by using ``Zend_Queue::isSupporte
 
   ``send()`` is not available in all adapters; the ``Zend_Queue_Adapter_Null`` does not support ``send()``.
 
-
 - **receive()**- receive messages
 
   ``receive()`` is not available in all adapters; the ``Zend_Queue_Adapter_Null`` does not support ``receive()``.
-
 
 - **deleteMessage()**- delete a message
 

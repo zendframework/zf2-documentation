@@ -1,4 +1,3 @@
-
 .. _zend.tag.introduction:
 
 Introduction
@@ -9,7 +8,6 @@ Introduction
 ``Zend_Tag_Item`` is a basic taggable item implementation which comes with the essential functionality required to work with the ``Zend_Tag`` suite. A taggable item always consists of a title and a relative weight (e.g. number of occurrences). It also stores parameters which are used by the different sub-components of ``Zend_Tag``.
 
 To group multiple items together, ``Zend_Tag_ItemList`` exists as an array iterator and provides additional functionality to calculate absolute weight values based on the given relative weights of each item in it.
-
 
 .. _zend.tag.example.using:
 

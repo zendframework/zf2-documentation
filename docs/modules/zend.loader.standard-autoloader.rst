@@ -1,9 +1,7 @@
-
 .. _zend.loader.standard-autoloader:
 
 The StandardAutoloader
 ======================
-
 
 .. _zend.loader.standard-autoloader.intro:
 
@@ -33,17 +31,14 @@ As a measure of last resort, you may also use the ``StandardAutoloader`` as a "f
 Finally, as with all autoloaders in Zend Framework, the ``StandardAutoloader`` is capable of registering itself with PHP's SPL autoloader registry.
 
 .. note::
+
    **Vocabulary: Namespaces vs. Vendor Prefixes**
 
    In terms of autloading, a "namespace" corresponds to PHP's own definition of namespaces in PHP versions 5.3 and above.
 
-
    A "vendor prefix" refers to the practice, popularized in PHP versions prior to 5.3, of providing a pseudo-namespace in the form of underscore-separated words in class names. As an example, the class ``Phly_Couch_Document`` uses a vendor prefix of "Phly", and a component prefix of "Phly_Couch" -- but it is a class sitting in the global namespace within PHP 5.3.
 
-
    The ``StandardAutoloader`` is capable of loading either namespaced or vendor prefixed class names, but treats them separately when attempting to match them to an appropriate path.
-
-
 
 .. _zend.loader.standard-autoloader.quick-start:
 
@@ -53,7 +48,6 @@ Quick Start
 Basic use of the ``StandardAutoloader`` requires simply registering namespace/path pairs. This can either be done at instantiation, or via explicit method calls after the object has been initialized. Calling ``register()`` will register the autoloader with the SPL autoloader registry.
 
 If the option key 'autoregister_zf' is set to true then the class will register the "Zend" namespace to the directory above where its own classfile is located on the filesystem.
-
 
 .. _zend.loader.standard-autoloader.quick-start.example-manual-configuration:
 
@@ -80,7 +74,6 @@ If the option key 'autoregister_zf' is set to true then the class will register 
 
    // Register with spl_autoload:
    $loader->register();
-
 
 .. _zend.loader.standard-autoloader.quick-start.example-constructor-configuration:
 
@@ -112,7 +105,6 @@ The following is equivalent to the previous example.
    // Register with spl_autoload:
    $loader->register();
 
-
 .. _zend.loader.standard-autoloader.options:
 
 Configuration Options
@@ -125,55 +117,37 @@ The ``StandardAutoloader`` defines the following options.
 **namespaces**
    An associative array of namespace/path pairs. The path should be an absolute path or path relative to the calling script, and contain only classes that live in that namespace (or its subnamespaces). By default, the "Zend" namespace is registered, pointing to the arent directory of the file defining the ``StandardAutoloader``.
 
-
 **prefixes**
    An associative array of vendor prefix/path pairs. The path should be an absolute path or path relative to the calling script, and contain only classes that begin with the provided vendor prefix.
-
 
 **fallback_autoloader**
    A boolean value indicating whether or not this instance should act as a "fallback" autoloader (i.e., look for classes of any namespace or vendor prefix on the ``include_path``). By default, ``false``.
 
-
 **autoregister_zf**
    An boolean value indicating that the class should register the "Zend" namespace to the directory above where its own classfile is located on the filesystem.
-
-
 
 .. _zend.loader.standard-autoloader.methods:
 
 Available Methods
 -----------------
 
-
 .. _zend.loader.standard-autoloader.methods.constructor:
 
 \__construct
    Initialize a new instance of the object
-
    ``__construct($options = null)``
 
-
-
-
    **Constructor**
-
    Takes an optional ``$options`` argument. This argument may be an associative array or ``Traversable`` object. If not null, the argument is passed to :ref:`setOptions() <zend.loader.standard-autoloader.methods.set-options>`.
-
-
 
 
 .. _zend.loader.standard-autoloader.methods.set-options:
 
 setOptions
    Set object state based on provided options.
-
    ``setOptions($options)``
 
-
-
-
    **setOptions()**
-
    Takes an argument of either an associative array or ``Traversable`` object. Recognized keys are detailed under :ref:` <zend.loader.standard-autoloader.options>`, with the following behaviors:
 
    - The ``namespaces`` value will be passed to :ref:`registerNamespaces() <zend.loader.standard-autoloader.methods.register-namespaces>`.
@@ -183,142 +157,84 @@ setOptions
    - The ``fallback_autoloader`` value will be passed to :ref:`setFallbackAutoloader() <zend.loader.standard-autoloader.methods.set-fallback-autoloader>`.
 
 
-
-
 .. _zend.loader.standard-autoloader.methods.set-fallback-autoloader:
 
 setFallbackAutoloader
    Enable/disable fallback autoloader status
-
    ``setFallbackAutoloader($flag)``
 
-
-
-
    **setFallbackAutoloader()**
-
    Takes a boolean flag indicating whether or not to act as a fallback autoloader when registered with the SPL autoloader.
-
-
 
 
 .. _zend.loader.standard-autoloader.methods.is-fallback-autoloader:
 
 isFallbackAutoloader
    Query fallback autoloader status
-
    ``isFallbackAutoloader()``
 
-
-
-
    **isFallbackAutoloader()**
-
    Indicates whether or not this instance is flagged as a fallback autoloader.
-
-
 
 
 .. _zend.loader.standard-autoloader.methods.register-namespace:
 
 registerNamespace
    Register a namespace with the autoloader
-
    ``registerNamespace($namespace, $directory)``
 
-
-
-
    **registerNamespace()**
-
    Register a namespace with the autoloader, pointing it to a specific directory on the filesystem for class resolution. For classes matching that initial namespace, the autoloader will then perform lookups within that directory.
-
-
 
 
 .. _zend.loader.standard-autoloader.methods.register-namespaces:
 
 registerNamespaces
    Register multiple namespaces with the autoloader
-
    ``registerNamespaces($namespaces)``
 
-
-
-
    **registerNamespaces()**
-
    Accepts either an array or ``Traversable`` object. It will then iterate through the argument, and pass each item to :ref:`registerNamespace() <zend.loader.standard-autoloader.methods.register-namespace>`.
-
-
 
 
 .. _zend.loader.standard-autoloader.methods.register-prefix:
 
 registerPrefix
    Register a vendor prefix with the autoloader.
-
    ``registerPrefix($prefix, $directory)``
 
-
-
-
    **registerPrefix()**
-
    Register a vendor prefix with the autoloader, pointing it to a specific directory on the filesystem for class resolution. For classes matching that initial vendor prefix, the autoloader will then perform lookups within that directory.
-
-
 
 
 .. _zend.loader.standard-autoloader.methods.register-prefixes:
 
 registerPrefixes
    Register many vendor prefixes with the autoloader
-
    ``registerPrefixes($prefixes)``
 
-
-
-
    **registerPrefixes()**
-
    Accepts either an array or ``Traversable`` object. It will then iterate through the argument, and pass each item to :ref:`registerPrefix() <zend.loader.standard-autoloader.methods.register-prefix>`.
-
-
 
 
 .. _zend.loader.standard-autoloader.methods.autoload:
 
 autoload
    Attempt to load a class.
-
    ``autoload($class)``
 
-
-
-
    **autoload()**
-
    Attempts to load the class specified. Returns a boolean ``false`` on failure, or a string indicating the class loaded on success.
-
-
 
 
 .. _zend.loader.standard-autoloader.methods.register:
 
 register
    Register with spl_autoload.
-
    ``register()``
 
-
-
-
    **register()**
-
    Registers the ``autoload()`` method of the current instance with ``spl_autoload_register()``.
-
-
 
 
 .. _zend.loader.standard-autoloader.examples:

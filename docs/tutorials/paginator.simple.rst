@@ -1,4 +1,3 @@
-
 .. _learning.paginator.simple:
 
 Simple Examples

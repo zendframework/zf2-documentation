@@ -1,15 +1,12 @@
-
 .. _zend.cache.frontends:
 
 Zend_Cache Frontends
 ====================
 
-
 .. _zend.cache.frontends.core:
 
 Zend_Cache_Core
 ---------------
-
 
 .. _zend.cache.frontends.core.introduction:
 
@@ -19,9 +16,8 @@ Introduction
 ``Zend_Cache_Core`` is a special frontend because it is the core of the module. It is a generic cache frontend and is extended by other classes.
 
 .. note::
+
    All frontends inherit from ``Zend_Cache_Core`` so that its methods and options (described below) would also be available in other frontends, therefore they won't be documented there.
-
-
 
 .. _zend.cache.frontends.core.options:
 
@@ -29,7 +25,6 @@ Available options
 ^^^^^^^^^^^^^^^^^
 
 These options are passed to the factory method as demonstrated in previous examples.
-
 
 .. _zend.cache.frontends.core.options.table:
 
@@ -54,8 +49,6 @@ These options are passed to the factory method as demonstrated in previous examp
    +-------------------------+---------+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |ignore_user_abort        |Boolean  |FALSE        |if set to TRUE, the core will set the ignore_user_abort PHP flag inside the save() method to avoid cache corruptions in some cases                                                                                                                                                                                                |
    +-------------------------+---------+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
 
 .. _zend.cache.core.examples:
 
@@ -167,12 +160,10 @@ If you want to cache special values (boolean with "automatic_serialization" opti
 
    // we do something with $data
 
-
 .. _zend.cache.frontends.output:
 
 Zend_Cache_Frontend_Output
 --------------------------
-
 
 .. _zend.cache.frontends.output.introduction:
 
@@ -181,14 +172,12 @@ Introduction
 
 ``Zend_Cache_Frontend_Output`` is an output-capturing frontend. It utilizes output buffering in *PHP* to capture everything between its ``start()`` and ``end()`` methods.
 
-
 .. _zend.cache.frontends.output.options:
 
 Available Options
 ^^^^^^^^^^^^^^^^^
 
 This frontend doesn't have any specific options other than those of ``Zend_Cache_Core``.
-
 
 .. _zend.cache.frontends.output.examples:
 
@@ -215,12 +204,10 @@ An example is given in the manual at the very beginning. Here it is with minor c
 
 Using this form it is fairly easy to set up output caching in your already working project with little or no code refactoring.
 
-
 .. _zend.cache.frontends.function:
 
 Zend_Cache_Frontend_Function
 ----------------------------
-
 
 .. _zend.cache.frontends.function.introduction:
 
@@ -229,12 +216,10 @@ Introduction
 
 ``Zend_Cache_Frontend_Function`` caches the results of function calls. It has a single main method named ``call()`` which takes a function name and parameters for the call in an array.
 
-
 .. _zend.cache.frontends.function.options:
 
 Available Options
 ^^^^^^^^^^^^^^^^^
-
 
 .. _zend.cache.frontends.function.options.table:
 
@@ -249,8 +234,6 @@ Available Options
    +--------------------+---------+-------------+-------------------------------------------------+
    |non_cached_functions|Array    |             |function names which must never be cached        |
    +--------------------+---------+-------------+-------------------------------------------------+
-
-
 
 .. _zend.cache.frontends.function.examples:
 
@@ -272,15 +255,13 @@ Using the ``call()`` function is the same as using ``call_user_func_array()`` in
 ``Zend_Cache_Frontend_Function`` is smart enough to cache both the return value of the function and its internal output.
 
 .. note::
+
    You can pass any built in or user defined function with the exception of ``array()``, ``echo()``, ``empty()``, ``eval()``, ``exit()``, ``isset()``, ``list()``, ``print()`` and ``unset()``.
-
-
 
 .. _zend.cache.frontends.class:
 
 Zend_Cache_Frontend_Class
 -------------------------
-
 
 .. _zend.cache.frontends.class.introduction:
 
@@ -289,12 +270,10 @@ Introduction
 
 ``Zend_Cache_Frontend_Class`` is different from ``Zend_Cache_Frontend_Function`` because it allows caching of object and static method calls.
 
-
 .. _zend.cache.frontends.class.options:
 
 Available Options
 ^^^^^^^^^^^^^^^^^
-
 
 .. _zend.cache.frontends.class.options.table:
 
@@ -311,8 +290,6 @@ Available Options
    +------------------------+---------+-------------+----------------------------------------------------------------------------------------------------------------------------------------------+
    |non_cached_methods      |Array    |             |method names which must never be cached                                                                                                       |
    +------------------------+---------+-------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-
-
 
 .. _zend.cache.frontends.class.examples:
 
@@ -369,12 +346,10 @@ To cache classic method calls :
    // The cached call
    $result = $cache->foobar2('1', '2');
 
-
 .. _zend.cache.frontends.file:
 
 Zend_Cache_Frontend_File
 ------------------------
-
 
 .. _zend.cache.frontends.file.introduction:
 
@@ -385,12 +360,10 @@ Introduction
 
 For instance, you have an *XML* configuration file which is parsed by a function which returns a "config object" (like with ``Zend_Config``). With ``Zend_Cache_Frontend_File``, you can store the "config object" into cache (to avoid the parsing of the *XML* config file at each time) but with a sort of strong dependency on the "master file". So, if the *XML* config file is modified, the cache is immediately invalidated.
 
-
 .. _zend.cache.frontends.file.options:
 
 Available Options
 ^^^^^^^^^^^^^^^^^
-
 
 .. _zend.cache.frontends.file.options.table:
 
@@ -408,8 +381,6 @@ Available Options
    |ignore_missing_master_files|Boolean  |FALSE                            |if TRUE, missing master files are ignored silently (an exception is raised else)                                                                                                                                                               |
    +---------------------------+---------+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-
 .. _zend.cache.frontends.file.examples:
 
 Examples
@@ -417,12 +388,10 @@ Examples
 
 Use of this frontend is the same than of ``Zend_Cache_Core``. There is no need of a specific example - the only thing to do is to define the **master_file** when using the factory.
 
-
 .. _zend.cache.frontends.page:
 
 Zend_Cache_Frontend_Page
 ------------------------
-
 
 .. _zend.cache.frontends.page.introduction:
 
@@ -436,15 +405,13 @@ On the other hand, the "cache id" is calculated automatically with ``$_SERVER['R
 For the moment, it's not implemented but we plan to add a *HTTP* conditional system to save bandwidth (the system will send a *HTTP* 304 Not Modified if the cache is hit and if the browser has already the good version).
 
 .. note::
+
    This frontend operates by registering a callback function to be called when the output buffering it uses is cleaned. In order for this to operate correctly, it must be the final output buffer in the request. To guarantee this, the output buffering used by the Dispatcher **must** be disabled by calling ``Zend_Controller_Front``'s ``setParam()`` method, for example, ``$front->setParam('disableOutputBuffering', true);`` or adding "resources.frontcontroller.params.disableOutputBuffering = true" to your bootstrap configuration file (assumed *INI*) if using ``Zend_Application``.
-
-
 
 .. _zend.cache.frontends.page.options:
 
 Available Options
 ^^^^^^^^^^^^^^^^^
-
 
 .. _zend.cache.frontends.page.options.table:
 
@@ -463,8 +430,6 @@ Available Options
    +----------------+---------+----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |memorize_headers|Array    |array()               |an array of strings corresponding to some HTTP headers name. Listed headers will be stored with cache datas and "replayed" when the cache is hit                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
    +----------------+---------+----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
 
 .. _zend.cache.frontends.page.examples:
 
@@ -538,7 +503,6 @@ a more complex example which shows a way to get a centralized cache management i
    // [...] the end of the bootstrap file
    // these lines won't be executed if the cache is hit
 
-
 .. _zend.cache.frontends.page.cancel:
 
 The Specific Cancel Method
@@ -562,12 +526,10 @@ Because of design issues, in some cases (for example when using non *HTTP* 200 r
 
    // [...]
 
-
 .. _zend.cache.frontends.capture:
 
 Zend_Cache_Frontend_Capture
 ---------------------------
-
 
 .. _zend.cache.frontends.capture.introduction:
 
@@ -579,7 +541,7 @@ Introduction
 Please refer to the documentation on ``Zend_Cache_Backend_Static`` for all use cases pertaining to this class.
 
 .. note::
-   This frontend operates by registering a callback function to be called when the output buffering it uses is cleaned. In order for this to operate correctly, it must be the final output buffer in the request. To guarantee this, the output buffering used by the Dispatcher **must** be disabled by calling ``Zend_Controller_Front``'s ``setParam()`` method, for example, ``$front->setParam('disableOutputBuffering', true);`` or adding "resources.frontcontroller.params.disableOutputBuffering = true" to your bootstrap configuration file (assumed *INI*) if using ``Zend_Application``.
 
+   This frontend operates by registering a callback function to be called when the output buffering it uses is cleaned. In order for this to operate correctly, it must be the final output buffer in the request. To guarantee this, the output buffering used by the Dispatcher **must** be disabled by calling ``Zend_Controller_Front``'s ``setParam()`` method, for example, ``$front->setParam('disableOutputBuffering', true);`` or adding "resources.frontcontroller.params.disableOutputBuffering = true" to your bootstrap configuration file (assumed *INI*) if using ``Zend_Application``.
 
 

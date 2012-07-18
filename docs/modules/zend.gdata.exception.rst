@@ -1,4 +1,3 @@
-
 .. _zend.gdata.exception:
 
 Catching Gdata Exceptions

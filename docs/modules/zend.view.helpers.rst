@@ -1,4 +1,3 @@
-
 .. _zend.view.helpers:
 
 View Helpers
@@ -34,7 +33,6 @@ The last two examples demonstrate how the ``PhpRenderer`` uses method overloadin
 
 A large number of helpers are provided in the standard distribution of Zend Framework. You can also register helpers by adding them to the :ref:`plugin broker <zend.loader.plugin-broker>`, or the plugin locator the broker composes. Please refer to the :ref:`plugin broker documentation <zend.loader.plugin-broker>` for details.
 
-
 .. _zend.view.helpers.initial:
 
 Included Helpers
@@ -45,7 +43,6 @@ Zend Framework comes with an initial set of helper classes. In particular, there
 - ``url($urlOptions, $name, $reset)``: Creates a *URL* string based on a named route. ``$urlOptions`` should be an associative array of key/value pairs used by the particular route.
 
 - ``htmlList($items, $ordered, $attribs, $escape)``: generates unordered and ordered lists based on the ``$items`` passed to it. If ``$items`` is a multidimensional array, a nested list will be built. If the ``$escape`` flag is ``TRUE`` (default), individual items will be escaped using the view objects registered escaping mechanisms; pass a ``FALSE`` value if you want to allow markup in your lists.
-
 
 .. include:: zend.view.helpers.action.rst
 .. include:: zend.view.helpers.base-url.rst
@@ -105,7 +102,6 @@ Within an MVC application, you will typically simply pass a map of plugins to th
    );
 
 The above can be done in each module that needs to register helpers with the ``PhpRenderer``; however, be aware that another module can register helpers with the same name, so order of modules can impact which helper class will actually be registered!
-
 
 .. _zend.view.helpers.custom:
 
@@ -206,7 +202,6 @@ Sometimes you will need access to the calling ``PhpRenderer`` object -- for inst
            return $escaper($output);
        }
    }
-
 
 .. _zend.view.helpers.registering-concrete:
 

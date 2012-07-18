@@ -1,9 +1,7 @@
-
 .. _zend.authentication.adapter.dbtable:
 
 Database Table Authentication
 =============================
-
 
 .. _zend.authentication.adapter.dbtable.introduction:
 
@@ -21,7 +19,6 @@ The available configuration options include:
 - **credentialColumn**: This is the name of the database table column used to represent the credential. Under a simple identity and password authentication scheme, the credential value corresponds to the password. See also the ``credentialTreatment`` option.
 
 - **credentialTreatment**: In many cases, passwords and other sensitive data are encrypted, hashed, encoded, obscured, salted or otherwise treated through some function or algorithm. By specifying a parameterized treatment string with this method, such as '``MD5(?)``' or '``PASSWORD(?)``', a developer may apply such arbitrary *SQL* upon input credential data. Since these functions are specific to the underlying *RDBMS*, check the database manual for the availability of such functions for your database system.
-
 
 .. _zend.authentication.adapter.dbtable.introduction.example.basic_usage:
 
@@ -119,7 +116,6 @@ In addition to the availability of the ``getIdentity()`` method upon the authent
 
 Since the table row contains the credential value, it is important to secure the values against unintended access.
 
-
 .. _zend.authentication.adapter.dbtable.advanced.storing_result_row:
 
 Advanced Usage: Persisting a DbTable Result Object
@@ -156,7 +152,6 @@ By default, ``Zend\Authentication\Adapter\DbTable`` returns the identity supplie
        /* ... */
 
    }
-
 
 .. _zend.authentication.adapter.dbtable.advanced.advanced_usage:
 
@@ -220,8 +215,8 @@ And now let's build the adapter:
                              );
 
 .. note::
-   You can improve security even more by using a static salt value hard coded into your application. In the case that your database is compromised (e. g. by an *SQL* injection attack) but your web server is intact your data is still unusable for the attacker.
 
+   You can improve security even more by using a static salt value hard coded into your application. In the case that your database is compromised (e. g. by an *SQL* injection attack) but your web server is intact your data is still unusable for the attacker.
 
 Another alternative is to use the ``getDbSelect()`` method of the ``Zend\Authentication\Adapter\DbTable`` after the adapter has been constructed. This method will return the ``Zend\Db\Sql\Select`` object instance it will use to complete the ``authenticate()`` routine. It is important to note that this method will always return the same object regardless if ``authenticate()`` has been called or not. This object **will not** have any of the identity or credential information in it as those values are placed into the select object at ``authenticate()`` time.
 

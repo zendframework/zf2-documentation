@@ -1,9 +1,7 @@
-
 .. _learning.autoloading.design:
 
 Goals and Design
 ================
-
 
 .. _learning.autoloading.design.naming:
 
@@ -17,7 +15,6 @@ Zend Framework has borrowed an idea from `PEAR`_, whereby class names have a 1:1
 Additionally, per *PEAR* as well as the `PHP project`_, we use and recommend using a vendor or project prefix for your code. What this means is that all classes you write will share a common class prefix; for example, all code in Zend Framework has the prefix "Zend\_". This naming convention helps prevent naming collisions. Within Zend Framework, we often refer to this as the "namespace" prefix; be careful not to confuse it with *PHP*'s native namespace implementation.
 
 Zend Framework follows these simple rules internally, and our coding standards encourage that you do so as well for all library code.
-
 
 .. _learning.autoloading.design.autoloader:
 

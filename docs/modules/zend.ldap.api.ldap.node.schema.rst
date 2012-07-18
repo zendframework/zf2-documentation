@@ -1,4 +1,3 @@
-
 .. _zend.ldap.api.reference.zend-ldap-node-schema:
 
 Zend\\Ldap\\Node\\Schema
@@ -7,7 +6,6 @@ Zend\\Ldap\\Node\\Schema
 The following methods are available on all vendor-specific subclasses.
 
 *Zend\Ldap\Node\Schema* includes the magic property accessors *__get()* and *__isset()* to access the attributes by their name. They proxy to *Zend\Ldap\Node\Schema::getAttribute()* and *Zend\Ldap\Node\Schema::existsAttribute()* respectively. *__set()* and *__unset()* are also implemented, but they throw a *BadMethodCallException* as modifications are not allowed on RootDSE nodes. Furthermore the class implements *ArrayAccess* for array-style-access to the attributes. *offsetSet()* and *offsetUnset()* also throw a *BadMethodCallException* due to obvious reasons.
-
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.table:
 
@@ -59,8 +57,6 @@ The following methods are available on all vendor-specific subclasses.
    |array getObjectClasses()                                             |Gets the object classes as an array of Zend\\Ldap\\Node\\Schema\\ObjectClass\\Interface.                                                                                                                                                                                                                                                       |
    +---------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-
 .. _zend.ldap.api.reference.zend-ldap-node-schema.attributetype-interface.table:
 
 .. table:: Zend\\Ldap\\Node\\Schema\\AttributeType\\Interface API
@@ -80,8 +76,6 @@ The following methods are available on all vendor-specific subclasses.
    +------------------------+------------------------------------------+
    |string getDescription() |Gets the attribute description            |
    +------------------------+------------------------------------------+
-
-
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.objectclass-interface.table:
 
@@ -105,9 +99,7 @@ The following methods are available on all vendor-specific subclasses.
    |array getParentClasses()|Returns the parent objectClasses of this class. This includes structural, abstract and auxiliary objectClasses.                                                                                                                                                                                                                                                                   |
    +------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
 Classes representing attribute types and object classes extend *Zend\Ldap\Node\Schema\AbstractItem* which provides some core methods to access arbitrary attributes on the underlying *LDAP* node. *Zend\Ldap\Node\Schema\AbstractItem* includes the magic property accessors *__get()* and *__isset()* to access the attributes by their name. Furthermore the class implements *ArrayAccess* for array-style-access to the attributes. *offsetSet()* and *offsetUnset()* throw a *BadMethodCallException* as modifications are not allowed on schema information nodes.
-
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.schema-item.table:
 
@@ -121,15 +113,12 @@ Classes representing attribute types and object classes extend *Zend\Ldap\Node\S
    |integer count()|Returns the number of attributes in this schema information node. Implements Countable.|
    +---------------+---------------------------------------------------------------------------------------+
 
-
-
 .. _zend.ldap.api.reference.zend-ldap-node-schema.openldap:
 
 OpenLDAP
 --------
 
 Additionally the common methods above apply to instances of *Zend\Ldap\Node\Schema\OpenLDAP*.
-
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.openldap.table:
 
@@ -145,8 +134,6 @@ Additionally the common methods above apply to instances of *Zend\Ldap\Node\Sche
    |array getMatchingRuleUse()|Gets the matching rule use.|
    +--------------------------+---------------------------+
 
-
-
 .. _zend.ldap.api.reference.zend-ldap-node-schema.openldap.attributetype-interface.table:
 
 .. table:: Zend\\Ldap\\Node\\Schema\\AttributeType\\OpenLDAP API
@@ -156,8 +143,6 @@ Additionally the common methods above apply to instances of *Zend\Ldap\Node\Sche
    +==================================================================+========================================================================+
    |Zend\\Ldap\\Node\\Schema\\AttributeType\\OpenLdap|null getParent()|Returns the parent attribute type in the inheritance tree if one exists.|
    +------------------------------------------------------------------+------------------------------------------------------------------------+
-
-
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.openldap.objectclass-interface.table:
 
@@ -169,21 +154,18 @@ Additionally the common methods above apply to instances of *Zend\Ldap\Node\Sche
    |array getParents()|Returns the parent object classes in the inheritance tree if one exists. The returned array is an array of Zend\\Ldap\\Node\\Schema\\ObjectClass\\OpenLdap.|
    +------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-
 .. _zend.ldap.api.reference.zend-ldap-node-schema.activedirectory:
 
 ActiveDirectory
 ---------------
 
 .. note::
+
    **Schema browsing on ActiveDirectory servers**
 
    Due to restrictions on Microsoft ActiveDirectory servers regarding the number of entries returned by generic search routines and due to the structure of the ActiveDirectory schema repository, schema browsing is currently **not** available for Microsoft ActiveDirectory servers.
 
-
 *Zend\Ldap\Node\Schema\ActiveDirectory* does not provide any additional methods.
-
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.activedirectory.attributetype-interface.table:
 
@@ -193,8 +175,6 @@ ActiveDirectory
    |Zend\\Ldap\\Node\\Schema\\AttributeType\\ActiveDirectory does not provide any additional methods.|
    +-------------------------------------------------------------------------------------------------+
 
-
-
 .. _zend.ldap.api.reference.zend-ldap-node-schema.activedirectory.objectclass-interface.table:
 
 .. table:: Zend\\Ldap\\Node\\Schema\\ObjectClass\\ActiveDirectory API
@@ -202,6 +182,5 @@ ActiveDirectory
    +-----------------------------------------------------------------------------------------------+
    |Zend\\Ldap\\Node\\Schema\\ObjectClass\\ActiveDirectory does not provide any additional methods.|
    +-----------------------------------------------------------------------------------------------+
-
 
 

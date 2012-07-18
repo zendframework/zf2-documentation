@@ -1,11 +1,9 @@
-
 .. _zend.ldap.introduction:
 
 Introduction
 ============
 
 ``Zend\Ldap\Ldap`` is a class for performing *LDAP* operations including but not limited to binding, searching and modifying entries in an *LDAP* directory.
-
 
 .. _zend.ldap.introduction.theory-of-operations:
 
@@ -59,7 +57,6 @@ If you are using Microsoft AD a simple example is:
 
 Note that we use the ``getCanonicalAccountName()`` method to retrieve the account DN here only because that is what exercises the most of what little code is currently present in this class.
 
-
 .. _zend.ldap.introduction.theory-of-operations.automatic-username-canonicalization:
 
 Automatic Username Canonicalization When Binding
@@ -90,14 +87,12 @@ The following example illustrates how the non-DN username '**abaker**' can be us
 
 The ``bind()`` call in this example sees that the username '**abaker**' is not in DN form, finds **bindRequiresDn** is ``TRUE``, uses '``CN=user1,DC=foo,DC=net``' and '**pass1**' to bind, retrieves the DN for '**abaker**', unbinds and then rebinds with the newly discovered '``CN=Alice Baker,OU=Sales,DC=foo,DC=net``'.
 
-
 .. _zend.ldap.introduction.theory-of-operations.account-name-canonicalization:
 
 Account Name Canonicalization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The **accountDomainName** and **accountDomainNameShort** options are used for two purposes: (1) they facilitate multi-domain authentication and failover capability, and (2) they are also used to canonicalize usernames. Specifically, names are canonicalized to the form specified by the **accountCanonicalForm** option. This option may one of the following values:
-
 
 .. _zend.ldap.using.theory-of-operation.account-name-canonicalization.table:
 
@@ -115,11 +110,9 @@ The **accountDomainName** and **accountDomainNameShort** options are used for tw
    |ACCTNAME_FORM_PRINCIPAL|4    |abaker@example.com                       |
    +-----------------------+-----+-----------------------------------------+
 
-
 The default canonicalization depends on what account domain name options were supplied. If **accountDomainNameShort** was supplied, the default **accountCanonicalForm** value is ``ACCTNAME_FORM_BACKSLASH``. Otherwise, if **accountDomainName** was supplied, the default is ``ACCTNAME_FORM_PRINCIPAL``.
 
 Account name canonicalization ensures that the string used to identify an account is consistent regardless of what was supplied to ``bind()``. For example, if the user supplies an account name of ``abaker@example.com`` or just **abaker** and the **accountCanonicalForm** is set to 3, the resulting canonicalized name would be **EXAMPLE\abaker**.
-
 
 .. _zend.ldap.introduction.theory-of-operations.multi-domain-failover:
 

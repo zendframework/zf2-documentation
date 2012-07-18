@@ -1,11 +1,9 @@
-
 .. _zend.ldap.api.reference.zend-ldap-attribute:
 
 Zend\\Ldap\\Attribute
 =====================
 
 ``Zend\Ldap\Attribute`` is a helper class providing only static methods to manipulate arrays suitable to the structure used in ``Zend\Ldap\Ldap`` data modification methods and to the data format required by the *LDAP* server. *PHP* data types are converted using ``Zend\Ldap\Converter\Converter`` methods.
-
 
 .. _zend.ldap.api.reference.zend-ldap-attribute.table:
 
@@ -32,6 +30,5 @@ Zend\\Ldap\\Attribute
    +----------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |array|integer getDateTimeAttribute(array $data, string $attribName, integer|null $index)                        |Returns the date/time attribute $attribName from $data. If $index is NULL (default) an array will be returned containing all the date/time values for the given attribute. An empty array will be returned if the attribute does not exist in the given array. If an integer index is specified the corresponding date/time value at the given index will be returned. If the index is out of bounds, NULL will be returned. Date-time-conversion according to Zend\\Ldap\\Converter\\Converter::fromLdapDateTime() will take place.|
    +----------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 
 

@@ -1,4 +1,3 @@
-
 .. _zend.mail.file-transport:
 
 Using File Transport

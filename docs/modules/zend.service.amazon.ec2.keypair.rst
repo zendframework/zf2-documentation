@@ -1,11 +1,9 @@
-
 .. _zend.service.amazon.ec2.keypairs:
 
 Zend_Service_Amazon_Ec2: Keypairs
 =================================
 
 Keypairs are used to access instances.
-
 
 .. _zend.service.amazon.ec2.keypairs.create:
 
@@ -21,7 +19,6 @@ Keypairs are used to access instances.
    $ec2_kp = new Zend_Service_Amazon_Ec2_Keypair('aws_key','aws_secret_key');
    $return = $ec2_kp->create('my-new-key');
 
-
 .. _zend.service.amazon.ec2.keypairs.delete:
 
 .. rubric:: Deleting an Amazon Keypair
@@ -35,7 +32,6 @@ Keypairs are used to access instances.
 
    $ec2_kp = new Zend_Service_Amazon_Ec2_Keypair('aws_key','aws_secret_key');
    $return = $ec2_kp->delete('my-new-key');
-
 
 .. _zend.service.amazon.ec2.describe:
 

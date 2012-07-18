@@ -1,15 +1,12 @@
-
 .. _zend.ldap.tools:
 
 Tools
 =====
 
-
 .. _zend.ldap.tools.dn:
 
 Creation and modification of DN strings
 ---------------------------------------
-
 
 
 
@@ -50,7 +47,6 @@ Using the filter API to create search filters
 
    // (|(name=value)(name=value*)(name=*value))
    $f6 = Zend\Ldap\Filter::orFilter($f2, $f3, $f4);
-
 
 .. _zend.ldap.tools.attribute:
 

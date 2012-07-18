@@ -1,11 +1,9 @@
-
 .. _zend.mail.read:
 
 Reading Mail Messages
 =====================
 
 ``Zend_Mail`` can read mail messages from several local or remote mail storages. All of them have the same basic *API* to count and fetch messages and some of them implement additional interfaces for not so common features. For a feature overview of the implemented storages, see the following table.
-
 
 .. _zend.mail.read.table-1:
 
@@ -29,8 +27,6 @@ Reading Mail Messages
    |Quota                |No      |Yes     |No      |No      |
    +---------------------+--------+--------+--------+--------+
 
-
-
 .. _zend.mail.read-example:
 
 Simple example using Pop3
@@ -47,7 +43,6 @@ Simple example using Pop3
    foreach ($mail as $message) {
        echo "Mail from '{$message->from}': {$message->subject}\n";
    }
-
 
 .. _zend.mail.read-open-local:
 
@@ -73,7 +68,6 @@ Maildir is very similar but needs a dirname:
                                                    '/home/test/mail/'));
 
 Both constructors throw a ``Zend_Mail_Exception`` if the storage can't be read.
-
 
 .. _zend.mail.read-open-remote:
 
@@ -121,7 +115,6 @@ For both storages *SSL* and TLS are supported. If you use *SSL* the default port
                                             'ssl'      => 'TLS'));
 
 Both constructors can throw ``Zend_Mail_Exception`` or ``Zend_Mail_Protocol_Exception`` (extends ``Zend_Mail_Exception``), depending on the type of error.
-
 
 .. _zend.mail.read-fetching:
 
@@ -172,7 +165,6 @@ To remove a mail, you use the method ``removeMessage()`` or again array access:
 
    // array access
    unset($mail[$messageNum]);
-
 
 .. _zend.mail.read-message:
 
@@ -286,7 +278,6 @@ Checking for multipart messages is done with the method ``isMultipart()``. If yo
        echo "plain text part: \n" . $foundPart;
    }
 
-
 .. _zend.mail.read-flags:
 
 Checking for flags
@@ -347,7 +338,6 @@ As IMAP allows user or client defined flags, you could get flags that don't have
        echo 'this message is ham';
    }
 
-
 .. _zend.mail.read-folders:
 
 Using folders
@@ -389,7 +379,6 @@ For the local storages you need to use separate classes called ``Zend_Mail_Stora
 
 With the method getFolders($root = null) you can get the folder hierarchy starting with the root folder or the given folder. It's returned as an instance of ``Zend_Mail_Storage_Folder``, which implements ``RecursiveIterator`` and all children are also instances of ``Zend_Mail_Storage_Folder``. Each of these instances has a local and a global name returned by the methods ``getLocalName()`` and ``getGlobalName()``. The global name is the absolute name from the root folder (including delimiters), the local name is the name in the parent folder.
 
-
 .. _zend.mail.read-folders.table-1:
 
 .. table:: Mail Folder Names
@@ -403,7 +392,6 @@ With the method getFolders($root = null) you can get the folder hierarchy starti
    +---------------+----------+
    |List.ZF.General|General   |
    +---------------+----------+
-
 
 If you use the iterator, the key of the current element is the local name. The global name is also returned by the magic method ``__toString()``. Some folders may not be selectable, which means they can't store messages and selecting them results in an error. This can be checked with the method ``isSelectable()``. So it's very easy to output the whole tree in a view:
 
@@ -442,12 +430,10 @@ The current selected folder is returned by the method ``getSelectedFolder()``. C
       . "new folder is $folder\n";
    $mail->selectFolder($folder);
 
-
 .. _zend.mail.read-advanced:
 
 Advanced Use
 ------------
-
 
 .. _zend.mail.read-advanced.noop:
 
@@ -469,7 +455,6 @@ If you're using a remote storage and have some long tasks you might need to keep
 
        $mail->noop(); // keep alive
    }
-
 
 .. _zend.mail.read-advanced.caching:
 
@@ -499,7 +484,6 @@ Caching instances
    // do stuff ...
 
    $cache->set($cache_id, $mail);
-
 
 .. _zend.mail.read-advanced.extending:
 
@@ -580,7 +564,6 @@ If you need additional protocol features, you can extend the protocol class and 
                                                  array(1101, 1105, 1111)));
 
 As you see, we always assume we're connected, logged in and, if supported, a folder is selected in the constructor of the main class. Thus if you assign your own protocol class, you always need to make sure that's done or the next method will fail if the server doesn't allow it in the current state.
-
 
 .. _zend.mail.read-advanced.quota:
 

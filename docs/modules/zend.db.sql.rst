@@ -1,11 +1,9 @@
-
 .. _zend.db.sql:
 
 Zend\\Db\\Sql
 =============
 
 ``Zend\Db\Sql`` is a SQL abstraction layer for building platform specific SQL queries via a object-oriented API. The end result of an ``Zend\Db\Sql`` object will be to either produce a Statement and Parameter container that represents the target query, or a full string that can be directly executed against the database platform. To achieve this, there is ``Zend\Db\Sql`` objects require a ``Zend\Db\Adapter\Adapter`` object in order to produce the desired results.
-
 
 .. _zend.db.sql.sql:
 
@@ -63,7 +61,6 @@ Zend\\Db\\Sql\\Sql objects can also be bound to a particular table so that in ge
    $select = new Sql($adapter, 'foo');
    $select->where(array('id' => 2)); // $select already has the from('foo') applied
 
-
 .. _zend.db.sql.sql-objects:
 
 Zend\\Db\\Sql's Select, Insert, Update and Delete
@@ -78,7 +75,6 @@ Each of these objects implement the following (2) interfaces:
    public function getSqlString(PlatformInterface $adapterPlatform = null);
 
 These are the functions you can call to either produce (a) a prepared statement, or (b) a string to be executed.
-
 
 .. _zend.db.sql.select:
 
@@ -204,7 +200,6 @@ limit() and offset():
    $select->limit(5); // always takes an integer/numeric
    $select->offset(10); // similarly takes an integer/numeric
 
-
 .. _zend.db.sql.insert:
 
 Zend\\Db\\Sql\\Insert
@@ -253,7 +248,6 @@ values():
    // merging values with previous calls
    $insert->values(array('col_2' => 'value2'), $insert::VALUES);
 
-
 .. _zend.db.sql.update:
 
 Zend\\Db\\Sql\\Update
@@ -288,7 +282,6 @@ where():
 
    See where section below.
 
-
 .. _zend.db.sql.delete:
 
 Zend\\Db\\Sql\\Delete
@@ -311,7 +304,6 @@ where():
    :linenos:
 
    See where section below.
-
 
 .. _zend.db.sql.where:
 

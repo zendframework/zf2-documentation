@@ -1,4 +1,3 @@
-
 .. _zend.mvc.routing:
 
 Routing
@@ -99,7 +98,6 @@ Typically, routes should be queried in a LIFO order, and hence the reason behind
        ),
    ));
 
-
 .. _zend.mvc.routing.router-types:
 
 Router Types
@@ -107,14 +105,12 @@ Router Types
 
 Two routers are provided, the ``SimpleRouteStack`` and ``TreeRouteStack``. Each works with the above interface, but utilize slightly different options and execution paths.
 
-
 .. _zend.mvc.routing.router-types.simple-route-stack:
 
 SimpleRouteStack
 ^^^^^^^^^^^^^^^^
 
 This router simply takes individual routes that provide their full matching logic in one go, and loops through them in LIFO order until a match is found. As such, routes that will match most often should be registered last, and least common routes first. Additionally, you will need to ensure that routes that potentially overlap are registered such that the most specific match will match first (i.e., register later). Alternatively, you can set priorities by giving the priority as third parameter to the ``addRoute()`` method, specifying the priority in the route specifications or setting the priority property within a route instance before adding it to the route stack.
-
 
 .. _zend.mvc.routing.router-types.tree-route-stack:
 
@@ -139,14 +135,12 @@ A ``TreeRouteStack`` can be your sole route for your application, or describe pa
 
 An example of a ``TreeRouteStack`` is provided in the documentation of the ``Part`` route.
 
-
 .. _zend.mvc.routing.route-types:
 
 Route Types
 -----------
 
 Zend Framework 2.0 ships with the following route types.
-
 
 .. _zend.mvc.routing.route-types.hostname:
 
@@ -190,7 +184,6 @@ In the above example, only a "subdomain" key will be returned in the ``RouteMatc
 
 When matched, the above will return two keys in the ``RouteMatch``, "subdomain" and "type".
 
-
 .. _zend.mvc.routing.route-types.literal:
 
 Zend\\Mvc\\Router\\Http\\Literal
@@ -210,7 +203,6 @@ The ``Literal`` route is for doing exact matching of the URI path. Configuration
 
 The above route would match a path "/foo", and return the key "controller" in the ``RouteMatch``, with the value "foo-index".
 
-
 .. _zend.mvc.routing.route-types.method:
 
 Zend\\Mvc\\Router\\Http\\Method
@@ -229,7 +221,6 @@ The ``Method`` route is used to match the http method or 'verb' specified in the
    ));
 
 The above route would match an http "POST" or "PUT" request and return a ``RouteMatch`` object containing a key "action" with a value of "form-submit".
-
 
 .. _zend.mvc.routing.route-types.part:
 
@@ -314,7 +305,6 @@ The above would match the following:
 
 You may use any route type as a child route of a ``Part`` route.
 
-
 .. _zend.mvc.routing.route-types.regex:
 
 Zend\\Mvc\\Router\\Http\\Regex
@@ -340,7 +330,6 @@ Just like other routes, the ``Regex`` route can accept "defaults", parameters to
 
 The above would match "/blog/001-some-blog_slug-here.html", and return three items in the ``RouteMatch``, an "id", the "controller", and the "format". When assembling a URL from this route, the "id" and "format" values would be used to fill the specification.
 
-
 .. _zend.mvc.routing.route-types.scheme:
 
 Zend\\Mvc\\Router\\Http\\Scheme
@@ -359,7 +348,6 @@ The ``Scheme`` route matches the URI scheme only, and must be an exact match. As
    ));
 
 The above route would match the "https" scheme, and return the key "https" in the ``RouteMatch`` with a boolean ``true`` value.
-
 
 .. _zend.mvc.routing.route-types.segment:
 
@@ -390,7 +378,6 @@ As a complex example:
            'action'     => 'index',
        ),
    ));
-
 
 .. _zend.mvc.routing.route-types.query:
 

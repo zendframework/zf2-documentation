@@ -1,4 +1,3 @@
-
 .. _zend.view.helpers.initial.partial:
 
 Partial Helper
@@ -9,11 +8,10 @@ The ``Partial`` view helper is used to render a specified template within its ow
 A sibling to the ``Partial``, the ``PartialLoop`` view helper allows you to pass iterable data, and render a partial for each item.
 
 .. note::
+
    **PartialLoop Counter**
 
    The ``PartialLoop`` view helper assigns a variable to the view named **partialCounter** which passes the current position of the array to the view script. This provides an easy way to have alternating colors on table rows for example.
-
-
 
 .. _zend.view.helpers.initial.partial.usage:
 
@@ -50,10 +48,10 @@ Which would then render:
    </ul>
 
 .. note::
+
    **What is a model?**
 
    A model used with the ``Partial`` view helper can be one of the following:
-
 
    - **Array**. If an array is passed, it should be associative, as its key/value pairs are assigned to the view with keys as view variables.
 
@@ -61,9 +59,7 @@ Which would then render:
 
    - **Standard object**. Any other object will assign the results of ``object_get_vars()`` (essentially all public properties of the object) to the view object.
 
-
    If your model is an object, you may want to have it passed **as an object** to the partial script, instead of serializing it to an array of variables. You can do this by setting the 'objectKey' property of the appropriate helper:
-
 
    .. code-block:: php
       :linenos:
@@ -75,10 +71,7 @@ Which would then render:
       // in final partial view script:
       $view->partialLoop()->setObjectKey('model');
 
-
    This technique is particularly useful when passing ``Zend_Db_Table_Rowset``\ s to ``partialLoop()``, as you then have full access to your row objects within the view scripts, allowing you to call methods on them (such as retrieving values from parent or dependent rows).
-
-
 
 .. _zend.view.helpers.initial.partial.partialloop:
 
@@ -134,7 +127,6 @@ In your view script, you could then invoke the ``PartialLoop`` helper:
        <dt>Fish</dt>
        <dd>Flounder</dd>
    </dl>
-
 
 .. _zend.view.helpers.initial.partial.modules:
 

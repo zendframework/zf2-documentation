@@ -1,4 +1,3 @@
-
 .. _learning.lucene.queries:
 
 Supported queries
@@ -9,7 +8,6 @@ Supported queries
 A detailed query language description can be found in the :ref:`Zend_Search_Lucene component documentation <zend.search.lucene.query-language>`.
 
 What follows are examples of some common query types and strategies.
-
 
 .. _learning.lucene.queries.keyword:
 
@@ -23,11 +21,10 @@ What follows are examples of some common query types and strategies.
 Searches for the word "hello" through all document fields.
 
 .. note::
+
    **Default search field**
 
    Important note! Java Lucene searches only through the "contents" field by default, but ``Zend_Search_Lucene`` searches through **all** fields. This behavior can be modified using the ``Zend_Search_Lucene::setDefaultSearchField($fieldName)`` method.
-
-
 
 .. _learning.lucene.queries.multiple-words:
 
@@ -40,7 +37,6 @@ Searches for the word "hello" through all document fields.
 
 Searches for two words. Both words are optional; at least one of them must be present in the result.
 
-
 .. _learning.lucene.queries.required-words:
 
 .. rubric:: Requiring words in a query
@@ -51,7 +47,6 @@ Searches for two words. Both words are optional; at least one of them must be pr
    +hello dolly
 
 Searches for two words; "hello" is required, "dolly" is optional.
-
 
 .. _learning.lucene.queries.prohibited-words:
 
@@ -64,7 +59,6 @@ Searches for two words; "hello" is required, "dolly" is optional.
 
 Searches for two words; "hello" is required, 'dolly' is prohibited. In other words, if the document matches "hello", but contains the word "dolly", it will not be returned in the set of matches.
 
-
 .. _learning.lucene.queries.phrases:
 
 .. rubric:: Querying for phrases
@@ -75,7 +69,6 @@ Searches for two words; "hello" is required, 'dolly' is prohibited. In other wor
    "hello dolly"
 
 Searches for the phrase "hello dolly"; a document only matches if that exact string is present.
-
 
 .. _learning.lucene.queries.fields:
 
@@ -88,7 +81,6 @@ Searches for the phrase "hello dolly"; a document only matches if that exact str
 
 Searches for the phrase "The Right Way" within the ``title`` field and the word "go" within the ``text`` field.
 
-
 .. _learning.lucene.queries.fields-and-document:
 
 .. rubric:: Querying against specific fields as well as the entire document
@@ -99,7 +91,6 @@ Searches for the phrase "The Right Way" within the ``title`` field and the word 
    title:"The Right Way" AND  go
 
 Searches for the phrase "The Right Way" within the ``title`` field and the word "go" word appearing in any field of the document.
-
 
 .. _learning.lucene.queries.fields-and-document-alt:
 
@@ -112,7 +103,6 @@ Searches for the phrase "The Right Way" within the ``title`` field and the word 
 
 Searches for the word "Do" within the ``title`` field and the words "it" and "right" words through all fields; any single one matching will result in a document match.
 
-
 .. _learning.lucene.queries.wildcard-question:
 
 .. rubric:: Querying with the wildcard "?"
@@ -123,7 +113,6 @@ Searches for the word "Do" within the ``title`` field and the words "it" and "ri
    te?t
 
 Search for words matching the pattern "te?t", where "?" is any single character.
-
 
 .. _learning.lucene.queries.wildcard-asterisk:
 
@@ -136,7 +125,6 @@ Search for words matching the pattern "te?t", where "?" is any single character.
 
 Search for words matching the pattern "test*", where "\*" is any sequence of zero or more characters.
 
-
 .. _learning.lucene.queries.range-inclusive:
 
 .. rubric:: Querying for an inclusive range of terms
@@ -147,7 +135,6 @@ Search for words matching the pattern "test*", where "\*" is any sequence of zer
    mod_date:[20020101 TO 20030101]
 
 Search for the range of terms (inclusive).
-
 
 .. _learning.lucene.queries.range-exclusive:
 
@@ -160,7 +147,6 @@ Search for the range of terms (inclusive).
 
 Search for the range of terms (exclusive).
 
-
 .. _learning.lucene.queries.fuzzy:
 
 .. rubric:: Fuzzy searches
@@ -171,7 +157,6 @@ Search for the range of terms (exclusive).
    roam~
 
 Fuzzy search for the word "roam".
-
 
 .. _learning.lucene.queries.boolean:
 
@@ -185,7 +170,6 @@ Fuzzy search for the word "roam".
 Boolean query.
 
 All supported queries can be constructed through ``Zend_Search_Lucene``'s :ref:`query construction API <zend.search.lucene.query-api>`. Moreover, query parsing and query constructing may be combined:
-
 
 .. _learning.lucene.queries.combining:
 

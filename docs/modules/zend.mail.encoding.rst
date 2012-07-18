@@ -1,4 +1,3 @@
-
 .. _zend.mail.encoding:
 
 Encoding

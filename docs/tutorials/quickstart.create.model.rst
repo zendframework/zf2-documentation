@@ -1,4 +1,3 @@
-
 .. _learning.quickstart.create-model:
 
 Create a Model and Database Table
@@ -595,22 +594,20 @@ And, of course, we need a view script to go along with that. Edit ``application/
    </dl>
 
 .. note::
+
    **Checkpoint**
 
    Now browse to "http://localhost/guestbook". You should see the following in your browser:
-
-
 
    .. image:: ../images/learning.quickstart.create-model.png
       :width: 525
       :align: center
 
-
 .. note::
+
    **Using the data loader script**
 
    The data loader script introduced in this section (``scripts/load.sqlite.php``) can be used to create the database for each environment you have defined, as well as to load it with sample data. Internally, it utilizes ``Zend_Console_Getopt``, which allows it to provide a number of command line switches. If you pass the "-h" or "--help" switch, it will give you the available options:
-
 
    .. code-block:: php
       :linenos:
@@ -621,9 +618,7 @@ And, of course, we need a view script to go along with that. Edit ``application/
                             (defaults to development)
       --help|-h             Help -- usage message)]]
 
-
    The "-e" switch allows you to specify the value to use for the constant ``APPLICATION_ENV``-- which in turn allows you to create a SQLite database for each environment you define. Be sure to run the script for the environment you choose for your application when deploying.
-
 
 
 

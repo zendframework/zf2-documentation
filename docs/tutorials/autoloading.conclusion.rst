@@ -1,4 +1,3 @@
-
 .. _learning.autoloading.conclusion:
 
 Conclusion

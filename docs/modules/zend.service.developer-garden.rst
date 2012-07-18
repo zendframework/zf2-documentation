@@ -1,9 +1,7 @@
-
 .. _zend.service.developergarden:
 
 Zend_Service_DeveloperGarden
 ============================
-
 
 .. _zend.service.developergarden.introduction:
 
@@ -30,14 +28,12 @@ The family of ``Zend_Service_DeveloperGarden`` components provides a clean and s
 
 The backend *SOAP* *API* is documented `here`_.
 
-
 .. _zend.service.developergarden.account:
 
 Sign Up for an Account
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Before you can start using the DeveloperGarden *API*, you first have to `sign up`_ for an account.
-
 
 .. _zend.service.developergarden.environment:
 
@@ -54,7 +50,6 @@ With the DeveloperGarden *API* you have the possibility to choose between 3 diff
 
 For every environment and service, there are some special features (options) available for testing. Please look `here`_ for details.
 
-
 .. _zend.service.developergarden.config:
 
 Your configuration
@@ -67,7 +62,6 @@ You can pass to all classes an array of configuration values. Possible values ar
 - **password**: Your DeveloperGarden *API* password.
 
 - **environment**: The environment that you selected.
-
 
 .. _zend.service.developergarden.config.example:
 
@@ -84,7 +78,6 @@ You can pass to all classes an array of configuration values. Possible values ar
    );
    $service = new Zend_Service_DeveloperGarden_SendSms($config);
 
-
 .. _zend.service.developergarden.baseuserservice:
 
 BaseUserService
@@ -93,7 +86,6 @@ BaseUserService
 The class can be used to set and get quota values for the services and to fetch account details.
 
 The ``getAccountBalance()`` method fetches an array of account id's with the current balance status (credits).
-
 
 .. _zend.service.developergarden.baseuserservice.getaccountbalance.example:
 
@@ -105,14 +97,12 @@ The ``getAccountBalance()`` method fetches an array of account id's with the cur
    $service = new Zend_Service_DeveloperGarden_BaseUserService($config);
    print_r($service->getAccountBalance());
 
-
 .. _zend.service.developergarden.baseuserservice.getquotainformation:
 
 Get quota information
 ^^^^^^^^^^^^^^^^^^^^^
 
 You can fetch quota informations for a specific service module with the provided methods.
-
 
 .. _zend.service.developergarden.baseuserservice.getquotainformation.example:
 
@@ -144,14 +134,12 @@ Here a list of all ``getQuotaInformation`` methods:
 
 - ``getVoiceCallQuotaInformation()``
 
-
 .. _zend.service.developergarden.baseuserservice.changequotainformation:
 
 Change quota information
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 To change the current quota use one of the ``changeQuotaPool`` methods. First parameter is the new pool value and the second one is the environment.
-
 
 .. _zend.service.developergarden.baseuserservice.changequotainformation.example:
 
@@ -181,7 +169,6 @@ Here a list of all ``changeQuotaPool`` methods:
 
 - ``changeVoiceCallQuotaPool()``
 
-
 .. _zend.service.developergarden.iplocation:
 
 IP Location
@@ -197,7 +184,6 @@ There are some limitations:
 
 - IPv6 is not supported yet
 
-
 .. _zend.service.developergarden.iplocation.locateip.example:
 
 .. rubric:: Locate a given IP
@@ -212,14 +198,12 @@ There are some limitations:
    $ip = new Zend_Service_DeveloperGarden_IpLocation_IpAddress('127.0.0.1');
    print_r($service->locateIp($ip));
 
-
 .. _zend.service.developergarden.localsearch:
 
 Local Search
 ------------
 
 The Local Search service provides the location based search machine `suchen.de`_ via web service interface. For more details, refer to `the documentation`_.
-
 
 .. _zend.service.developergarden.localsearch.example:
 
@@ -236,7 +220,6 @@ The Local Search service provides the location based search machine `suchen.de`_
    $search->setWhat('pizza')
           ->setWhere('jena');
    print_r($service->localSearch($search));
-
 
 .. _zend.service.developergarden.sendsms:
 
@@ -263,7 +246,6 @@ The following restrictions apply to the use of the SMS service:
 
 - The specification of a phone number as the sender is only permitted if the phone number has been validated. (See: :ref:`SMS Validation <zend.service.developergarden.smsvalidation>`)
 
-
 .. _zend.service.developergarden.sendsms.example:
 
 .. rubric:: Sending an SMS
@@ -278,7 +260,6 @@ The following restrictions apply to the use of the SMS service:
        'yourname'
    );
    print_r($service->send($sms));
-
 .. _zend.service.developergarden.smsvalidation:
 
 SMS Validation
@@ -292,7 +273,6 @@ After you get your keyword, you have to use the ``validate()`` to validate your 
 
 With the method ``getValidatedNumbers()``, you will get a list of all already validated numbers and the status of each.
 
-
 .. _zend.service.developergarden.smsvalidation.request.example:
 
 .. rubric:: Request validation keyword
@@ -302,7 +282,6 @@ With the method ``getValidatedNumbers()``, you will get a list of all already va
 
    $service = new Zend_Service_DeveloperGarden_SmsValidation($config);
    print_r($service->sendValidationKeyword('+49-172-123456'));
-
 
 .. _zend.service.developergarden.smsvalidation.validate.example:
 
@@ -315,7 +294,6 @@ With the method ``getValidatedNumbers()``, you will get a list of all already va
    print_r($service->validate('TheKeyWord', '+49-172-123456'));
 
 To invalidate a validated number, call the method ``inValidate()``.
-
 
 .. _zend.service.developergarden.voicecall:
 
@@ -334,7 +312,6 @@ Normally the Service works as followed:
 
 - The call is open until one of the participants hangs up or the expire mechanism intercepts.
 
-
 .. _zend.service.developergarden.voicecall.call.example:
 
 .. rubric:: Call two numbers
@@ -351,7 +328,6 @@ Normally the Service works as followed:
    echo $newCall->getSessionId();
 
 If the call is initiated, you can ask the result object for the session ID and use this session ID for an additional call to the ``callStatus`` or ``tearDownCall()`` methods. The second parameter on the ``callStatus()`` method call extends the expiration for this call.
-
 
 .. _zend.service.developergarden.voicecall.teardown.example:
 
@@ -375,7 +351,6 @@ If the call is initiated, you can ask the result object for the session ID and u
    sleep(10); // sleep 10s and then tearDown
 
    $service->tearDownCall($sessionId);
-
 
 .. _zend.service.developergarden.conferencecall:
 
@@ -440,7 +415,6 @@ Here is a list of currently implemented *API* methods:
 
 - ``removeConferenceTemplateParticipant()`` removes a participant from a conference template
 
-
 .. _zend.service.developergarden.conferencecall.example:
 
 .. rubric:: Ad-Hoc conference
@@ -472,7 +446,6 @@ Here is a list of currently implemented *API* methods:
 
    $client->commitConference($conference->getConferenceId());
 
-
 .. _zend.service.developergarden.performance:
 
 Performance and Caching
@@ -481,7 +454,6 @@ Performance and Caching
 You can setup various caching options to improve the performance for resolving WSDL and authentication tokens.
 
 First of all, you can setup the internal SoapClient (PHP) caching values.
-
 
 .. _zend.service.developergarden.performance.wsdlcache.example:
 
@@ -505,7 +477,6 @@ The ``[PHP CONSTANT]`` can be one of the following values:
 - ``WSDL_CACHE_NONE``: disabled both caching
 
 If you also want to cache the result for calls to the SecuritTokenServer you can setup a ``Zend_Cache`` instance and pass it to the ``setCache()``.
-
 
 .. _zend.service.developergarden.performance.cache.example:
 

@@ -1,11 +1,9 @@
-
 .. _zend.i18n.view.helper.translate:
 
 Translate Helper
 ================
 
 The ``Translate`` view helper can be used to translate content. It acts as a wrapper for the ``Zend\I18n\Translator\Translator`` class.
-
 
 .. _zend.i18n.view.helper.translate.setup:
 
@@ -20,7 +18,6 @@ If you are not using the ``TranslatorServiceFactory``, then you will need to man
 
    // Somewhere early in the process...
    $serviceLocator->get('ViewHelperManager')->get('translate')->setTranslator($translator);
-
 
 .. _zend.i18n.view.helper.translate.usage:
 

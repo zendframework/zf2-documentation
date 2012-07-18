@@ -1,9 +1,7 @@
-
 .. _zend.http.headers:
 
 Zend\\Http\\Headers And The Various Header Classes
 ==================================================
-
 
 .. _zend.http.headers.intro:
 
@@ -14,14 +12,12 @@ The ``Zend\Http\Headers`` class is a container for HTTP headers. It is typically
 
 The ``Zend\Http\Header\*`` classes are the domain specific implementations for the various types of Headers that one might encounter during the typical HTTP request. If a header of unknown type is encountered, it will be implemented as a ``Zend\Http\Header\GenericHeader`` instance. See the below table for a list of the various HTTP headers and the API that is specific to each header type.
 
-
 .. _zend.http.headers.quick-start:
 
 Quick Start
 -----------
 
 The quickest way to get started interacting with header objects is by getting an already populated Headers container from a request or response object.
-
 
 .. _zend.http.headers.options:
 
@@ -30,280 +26,176 @@ Configuration Options
 
 None currently available.
 
-
 .. _zend.http.headers.methods:
 
 Available Methods
 -----------------
 
-
 .. _zend.http.headers.methods.from-string:
 
 **Headers::fromString**
    ``Headers::fromString(string $string)``
-
-
    Populates headers from string representation
-
 
    Parses a string for headers, and aggregates them, in order, in the current instance, primarily as strings until they are needed (they will be lazy loaded).
 
-
    Returns ``Zend\Http\Headers``
-
-
 
 .. _zend.http.headers.methods.set-plugin-class-loader:
 
 **setPluginClassLoader**
    ``setPluginClassLoader(Zend\Loader\PluginClassLocator $pluginClassLoader)``
-
-
    Set an alternate implementation for the plugin class loader
 
-
    Returns ``Zend\Http\Headers``
-
-
 
 .. _zend.http.headers.methods.get-plugin-class-loader:
 
 **getPluginClassLoader**
    ``getPluginClassLoader()``
-
-
    Return an instance of a ``Zend\Loader\PluginClassLocator``, lazyload and inject map if necessary.
 
-
    Returns ``Zend\Loader\PluginClassLocator``
-
-
 
 .. _zend.http.headers.methods.add-headers:
 
 **addHeaders**
    ``addHeaders(array|Traversable $headers)``
-
-
    Add many headers at once
-
 
    Expects an array (or ``Traversable`` object) of type/value pairs.
 
-
    Returns ``Zend\Http\Headers``
-
-
 
 .. _zend.http.headers.methods.add-header-line:
 
 **addHeaders**
    ``addHeaderLine(string $headerFieldNameOrLine, string $fieldValue)``
-
-
    Add a raw header line, either in name => value, or as a single string 'name: value'
-
 
    This method allows for lazy-loading in that the parsing and instantiation of Header object will be delayed until they are retrieved by either ``get()`` or ``current()``.
 
-
    Returns ``Zend\Http\Headers``
-
-
 
 .. _zend.http.headers.methods.add-header:
 
 **addHeader**
    ``addHeader(Zend\Http\Header\HeaderInterface $header)``
-
-
    Add a Header to this container, for raw values see ``addHeaderLine()`` and ``addHeaders()``.
 
 
 
-
-
    Returns ``Zend\Http\Headers``
-
-
 
 .. _zend.http.headers.methods.remove-header:
 
 **removeHeader**
    ``removeHeader(Zend\Http\Header\HeaderInterface $header)``
-
-
    Remove a Header from the container
 
-
    Returns bool
-
-
 
 .. _zend.http.headers.methods.clear-headers:
 
 **clearHeaders**
    ``clearHeaders()``
-
-
    Clear all headers
-
 
    Removes all headers from queue
 
-
    Returns ``Zend\Http\Headers``
-
-
 
 .. _zend.http.headers.methods.get:
 
 **get**
    ``get(string $name)``
-
-
    Get all headers of a certain name/type
-
-
 
 
 
    Returns false| ``Zend\Http\Header\HeaderInterface``\ | ``ArrayIterator``
 
-
-
 .. _zend.http.headers.methods.has:
 
 **has**
    ``has(string $name)``
-
-
    Test for existence of a type of header
 
-
    Returns bool
-
-
 
 .. _zend.http.headers.methods.next:
 
 **next**
    ``next()``
-
-
    Advance the pointer for this object as an interator
 
-
    Returns void
-
-
 
 .. _zend.http.headers.methods.key:
 
 **key**
    ``key()``
-
-
    Return the current key for this object as an interator
 
-
    Returns mixed
-
-
 
 .. _zend.http.headers.methods.valid:
 
 **valid**
    ``valid()``
-
-
    Is this iterator still valid?
 
-
    Returns bool
-
-
 
 .. _zend.http.headers.methods.rewind:
 
 **rewind**
    ``rewind()``
-
-
    Reset the internal pointer for this object as an iterator
 
-
    Returns void
-
-
 
 .. _zend.http.headers.methods.current:
 
 **current**
    ``current()``
-
-
    Return the current value for this iterator, lazy loading it if need be
 
-
    Returns ``Zend\Http\Header\HeaderInterface``
-
-
 
 .. _zend.http.headers.methods.count:
 
 **count**
    ``count()``
-
-
    Return the number of headers in this container. If all headers have not been parsed, actual count could increase if MultipleHeader objects exist in the Request/Response. If you need an exact count, iterate.
 
-
    Returns int
-
-
 
 .. _zend.http.headers.methods.to-string:
 
 **toString**
    ``toString()``
-
-
    Render all headers at once
-
 
    This method handles the normal iteration of headers; it is up to the concrete classes to prepend with the appropriate status/request line.
 
-
    Returns string
-
-
 
 .. _zend.http.headers.methods.to-array:
 
 **toArray**
    ``toArray()``
-
-
    Return the headers container as an array
 
-
    Returns array
-
-
 
 .. _zend.http.headers.methods.force-loading:
 
 **forceLoading**
    ``forceLoading()``
-
-
    By calling this, it will force parsing and loading of all headers, after this ``count()`` will be accurate
 
-
    Returns bool
-
-
 
 .. _zend.http.headers.examples:
 
@@ -312,67 +204,44 @@ Examples
 
 
 
-
 .. _zend.http.headers.header-description:
 
 Zend\\Http\\Header\\* Base Methods
 ----------------------------------
 
-
 .. _zend.http.header.generic-header.methods.from-string:
 
 **fromString**
    ``fromString(string $headerLine)``
-
-
    Factory to generate a header object from a string
 
-
    Returns ``Zend\Http\Header\GenericHeader``
-
-
 
 .. _zend.http.header.generic-header.methods.get-field-name:
 
 **getFieldName**
    ``getFieldName()``
-
-
    Retrieve header field name
 
-
    Returns string
-
-
 
 .. _zend.http.header.generic-header.methods.get-field-value:
 
 **getFieldValue**
    ``getFieldValue()``
-
-
    Retrieve header field value
 
-
    Returns string
-
-
 
 .. _zend.http.header.generic-header.methods.to-string:
 
 **toString**
    ``toString()``
-
-
    Cast to string as a well formed HTTP header line
-
 
    Returns in form of "NAME: VALUE\\r\\n"
 
-
    Returns string
-
-
 
 .. _zend.http.header-types.list:
 
@@ -490,6 +359,5 @@ List of Http Header Types
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |WWWAuthenticate   |N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 
 

@@ -1,9 +1,7 @@
-
 .. _zend.ldap.api.reference.zend-ldap-ldif-encoder:
 
 Zend\\Ldap\\Ldif\\Encoder
 =========================
-
 
 .. _zend.ldap.api.reference.zend-ldap-ldif-encoder.table:
 
@@ -16,6 +14,5 @@ Zend\\Ldap\\Ldif\\Encoder
    +-------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |string encode(scalar|array|Zend\\Ldap\\Node $value, array $options)|Encode $value into a LDIF representation. $options is an array that may contain the following keys: 'sort' Sort the given attributes with dn following objectClass and following all other attributes sorted alphabetically. TRUE by default. 'version' The LDIF format version. 1 by default. 'wrap' The line-length. 78 by default to conform to the LDIF specification.|
    +-------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 
 

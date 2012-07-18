@@ -1,9 +1,7 @@
-
 .. _zend.mail.message:
 
 Zend\\Mail\\Message
 ===================
-
 
 .. _zend.mail.message.intro:
 
@@ -15,7 +13,6 @@ The ``Message`` class encapsulates a single email message as described in RFCs `
 If desired, multi-part email messages may also be created. This is as trivial as creating the message body using the :ref:`Zend\\Mime <zend.mime>` component, assigning it to the mail message body.
 
 The ``Message`` class is simply a value object. It is not capable of sending or storing itself; for those purposes, you will need to use, respectively, a :ref:`Storage adapter <zend.mail.read>` or :ref:`Transport adapter <zend.mail.transport>`.
-
 
 .. _zend.mail.message.quick-start:
 
@@ -158,7 +155,6 @@ Once your message is shaped to your liking, pass it to a :ref:`mail transport <z
 
    $transport->send($message);
 
-
 .. _zend.mail.message.options:
 
 Configuration Options
@@ -166,397 +162,248 @@ Configuration Options
 
 The ``Message`` class has no configuration options, and is instead a value object.
 
-
 .. _zend.mail.message.methods:
 
 Available Methods
 -----------------
 
-
 .. _zend.mail.message.methods.is-valid:
 
 **isValid**
    ``isValid()``
-
-
    Is the message valid?
-
 
    If we don't have any From addresses, we're invalid, according to RFC2822.
 
-
    Returns bool
-
-
 
 .. _zend.mail.message.methods.set-encoding:
 
 **setEncoding**
    ``setEncoding(string $encoding)``
-
-
    Set the message encoding.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.get-encoding:
 
 **getEncoding**
    ``getEncoding()``
-
-
    Get the message encoding.
 
-
    Returns string.
-
-
 
 .. _zend.mail.message.methods.set-headers:
 
 **setHeaders**
    ``setHeaders(Zend\Mail\Headers $headers)``
-
-
    Compose headers.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.get-headers:
 
 **getHeaders**
    ``getHeaders()``
-
-
    Access headers collection.
-
 
    Lazy-loads a Zend\\Mail\\Headers instance if none is already attached.
 
-
    Returns a Zend\\Mail\\Headers instance.
-
-
 
 .. _zend.mail.message.methods.set-from:
 
 **setFrom**
    ``setFrom(string|AddressDescription|array|Zend\Mail\AddressList|Traversable $emailOrAddressList, string|null $name)``
-
-
    Set (overwrite) From addresses.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.add-from:
 
 **addFrom**
    ``addFrom(string|Zend\Mail\Address|array|Zend\Mail\AddressList|Traversable $emailOrAddressOrList, string|null $name)``
-
-
    Add a "From" address.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.from:
 
 **from**
    ``from()``
-
-
    Retrieve list of From senders
 
-
    Returns Zend\\Mail\\AddressList instance.
-
-
 
 .. _zend.mail.message.methods.set-to:
 
 **setTo**
    ``setTo(string|AddressDescription|array|Zend\Mail\AddressList|Traversable $emailOrAddressList, null|string $name)``
-
-
    Overwrite the address list in the To recipients.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.add-to:
 
 **addTo**
    ``addTo(string|AddressDescription|array|Zend\Mail\AddressList|Traversable $emailOrAddressOrList, null|string $name)``
-
-
    Add one or more addresses to the To recipients.
-
 
    Appends to the list.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.to:
 
 **to**
    ``to()``
-
-
    Access the address list of the To header.
-
 
    Lazy-loads a Zend\\Mail\\AddressList and populates the To header if not previously done.
 
-
    Returns a Zend\\Mail\\AddressList instance.
-
-
 
 .. _zend.mail.message.methods.set-cc:
 
 **setCc**
    ``setCc(string|AddressDescription|array|Zend\Mail\AddressList|Traversable $emailOrAddressList, string|null $name)``
-
-
    Set (overwrite) CC addresses.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.add-cc:
 
 **addCc**
    ``addCc(string|Zend\Mail\Address|array|Zend\Mail\AddressList|Traversable $emailOrAddressOrList, string|null $name)``
-
-
    Add a "Cc" address.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.cc:
 
 **cc**
    ``cc()``
-
-
    Retrieve list of CC recipients
-
 
    Lazy-loads a Zend\\Mail\\AddressList and populates the Cc header if not previously done.
 
-
    Returns a Zend\\Mail\\AddressList instance.
-
-
 
 .. _zend.mail.message.methods.set-bcc:
 
 **setBcc**
    ``setBcc(string|AddressDescription|array|Zend\Mail\AddressList|Traversable $emailOrAddressList, string|null $name)``
-
-
    Set (overwrite) BCC addresses.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.add-bcc:
 
 **addBcc**
    ``addBcc(string|Zend\Mail\Address|array|Zend\Mail\AddressList|Traversable $emailOrAddressOrList, string|null $name)``
-
-
    Add a "Bcc" address.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.bcc:
 
 **bcc**
    ``bcc()``
-
-
    Retrieve list of BCC recipients.
-
 
    Lazy-loads a Zend\\Mail\\AddressList and populates the Bcc header if not previously done.
 
-
    Returns a Zend\\Mail\\AddressList instance.
-
-
 
 .. _zend.mail.message.methods.set-reply-to:
 
 **setReplyTo**
    ``setReplyTo(string|AddressDescription|array|Zend\Mail\AddressList|Traversable $emailOrAddressList, null|string $name)``
-
-
    Overwrite the address list in the Reply-To recipients.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.add-reply-to:
 
 **addReplyTo**
    ``addReplyTo(string|AddressDescription|array|Zend\Mail\AddressList|Traversable $emailOrAddressOrList, null|string $name)``
-
-
    Add one or more addresses to the Reply-To recipients.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.reply-to:
 
 **replyTo**
    ``replyTo()``
-
-
    Access the address list of the Reply-To header
-
 
    Lazy-loads a Zend\\Mail\\AddressList and populates the Reply-To header if not previously done.
 
-
    Returns a Zend\\Mail\\AddressList instance.
-
-
 
 .. _zend.mail.message.methods.set-sender:
 
 **setSender**
    ``setSender(mixed $emailOrAddress, mixed $name)``
-
-
    Set the message envelope Sender header.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.get-sender:
 
 **getSender**
    ``getSender()``
-
-
    Retrieve the sender address, if any.
 
-
    Returns null or a Zend\\Mail\\AddressDescription instance.
-
-
 
 .. _zend.mail.message.methods.set-subject:
 
 **setSubject**
    ``setSubject(string $subject)``
-
-
    Set the message subject header value.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.get-subject:
 
 **getSubject**
    ``getSubject()``
-
-
    Get the message subject header value.
 
-
    Returns null or a string.
-
-
 
 .. _zend.mail.message.methods.set-body:
 
 **setBody**
    ``setBody(null|string|Zend\Mime\Message|object $body)``
-
-
    Set the message body.
 
-
    Implements a fluent interface.
-
-
 
 .. _zend.mail.message.methods.get-body:
 
 **getBoidy**
    ``getBody()``
-
-
    Return the currently set message body.
 
-
    Returns null, a string, or an object.
-
-
 
 .. _zend.mail.message.methods.get-body-text:
 
 **getBodyText**
    ``getBodyText()``
-
-
    Get the string-serialized message body text.
 
-
    Returns null or a string.
-
-
 
 .. _zend.mail.message.methods.to-string:
 
 **toString**
    ``toString()``
-
-
    Serialize to string.
 
-
    Returns string.
-
-
 
 .. _zend.mail.message.examples:
 

@@ -1,4 +1,3 @@
-
 .. _learning.paginator.control:
 
 Pagination Control and ScrollingStyles

@@ -1,4 +1,3 @@
-
 .. _zend.filter.inflector:
 
 Zend_Filter_Inflector
@@ -9,7 +8,6 @@ Zend_Filter_Inflector
 As an example, you may find you need to transform MixedCase or camelCasedWords into a path; for readability, OS policies, or other reasons, you also need to lower case this, and you want to separate the words using a dash ('-'). An inflector can do this for you.
 
 ``Zend_Filter_Inflector`` implements ``Zend_Filter_Interface``; you perform inflection by calling ``filter()`` on the object instance.
-
 
 .. _zend.filter.inflector.camel_case_example:
 
@@ -32,7 +30,6 @@ As an example, you may find you need to transform MixedCase or camelCasedWords i
    $filtered = $inflector->filter(array('page' => $string));
    // pages/this_is_not_camel_cased.html
 
-
 .. _zend.filter.inflector.operation:
 
 Operation
@@ -45,7 +42,6 @@ When calling ``filter()``, you then pass in an array of key and value pairs corr
 Each variable in the target can have zero or more rules associated with them. Rules may be either **static** or refer to a ``Zend_Filter`` class. Static rules will replace with the text provided. Otherwise, a class matching the rule provided will be used to inflect the text. Classes are typically specified using a short name indicating the filter name stripped of any common prefix.
 
 As an example, you can use any ``Zend_Filter`` concrete implementations; however, instead of referring to them as '``Zend_Filter_Alpha``' or '``Zend_Filter_StringToLower``', you'd specify only '``Alpha``' or '``StringToLower``'.
-
 
 .. _zend.filter.inflector.paths:
 
@@ -76,7 +72,6 @@ Alternatively, you can retrieve the plugin loader from the inflector, and intera
    $loader->addPrefixPath('My_Filter', 'My/Filter/');
 
 For more options on modifying the paths to filters, please see :ref:`the PluginLoader documentation <zend.loader.pluginloader>`.
-
 
 .. _zend.filter.inflector.targets:
 
@@ -139,7 +134,6 @@ Additionally, you may wish to have a class member for your class that you can us
        }
    }
 
-
 .. _zend.filter.inflector.rules:
 
 Inflection Rules
@@ -148,9 +142,8 @@ Inflection Rules
 As mentioned in the introduction, there are two types of rules: static and filter-based.
 
 .. note::
+
    It is important to note that regardless of the method in which you add rules to the inflector, either one-by-one, or all-at-once; the order is very important. More specific names, or names that might contain other rule names, must be added before least specific names. For example, assuming the two rule names 'moduleDir' and 'module', the 'moduleDir' rule should appear before module since 'module' is contained within 'moduleDir'. If 'module' were added before 'moduleDir', 'module' will match part of 'moduleDir' and process it leaving 'Dir' inside of the target uninflected.
-
-
 
 .. _zend.filter.inflector.rules.static:
 
@@ -203,7 +196,6 @@ Much like the target itself, you can also bind a static rule to a reference, all
        }
    }
 
-
 .. _zend.filter.inflector.rules.filters:
 
 Filter Inflector Rules
@@ -236,7 +228,6 @@ Rules may be added using ``setFilterRule()`` (which overwrites any previous rule
        new Zend_Filter_StringToLower()
    ));
 
-
 .. _zend.filter.inflector.rules.multiple:
 
 Setting Many Rules At Once
@@ -249,7 +240,6 @@ Each method takes an array of variable and rule pairs, where the rule may be wha
 - **':' prefix**: filter rules.
 
 - **No prefix**: static rule.
-
 
 .. _zend.filter.inflector.rules.multiple.example:
 
@@ -268,7 +258,6 @@ Each method takes an array of variable and rule pairs, where the rule may be wha
        'suffix'      => 'phtml'
    ));
 
-
 .. _zend.filter.inflector.utility:
 
 Utility Methods
@@ -286,7 +275,6 @@ Utility Methods
 
 - ``clearRules()`` will clear all currently registered rules.
 
-
 .. _zend.filter.inflector.config:
 
 Using Zend_Config with Zend_Filter_Inflector
@@ -303,7 +291,6 @@ You can use ``Zend_Config`` to set rules, filter prefix paths, and other object 
 - ``targetReplacementIdentifier`` specifies the character to use when identifying replacement variables in the target string.
 
 - ``rules`` specifies an array of inflection rules; it should consist of keys that specify either values or arrays of values, consistent with ``addRules()``.
-
 
 .. _zend.filter.inflector.config.example:
 

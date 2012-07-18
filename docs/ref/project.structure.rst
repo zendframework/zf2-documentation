@@ -1,10 +1,8 @@
-
 .. _project-structure:
 
 *****************************************************************
 Recommended Project Structure for Zend Framework MVC Applications
 *****************************************************************
-
 
 .. _project-structure.overview:
 
@@ -16,7 +14,6 @@ Many developers seek guidance on the best project structure for a Zend Framework
 The following directory structure is designed to be maximally extensible for complex projects, while providing a simple subset of folder and files for project with simpler requirements. This structure also works without alteration for both modular and non-modular Zend Framework applications. The ``.htaccess`` files require *URL* rewrite functionality in the web server as described in the :ref:`Rewrite Configuration Guide <project-structure.rewrite>`, also included in this appendix.
 
 It is not the intention that this project structure will support all possible Zend Framework project requirements. The default project profile used by ``Zend_Tool`` reflect this project structure, but applications with requirements not supported by this structure should use a custom project profile.
-
 
 .. _project-structure.project:
 
@@ -84,7 +81,6 @@ The following describes the use cases for each directory as listed.
 
   - **Bootstrap.php**: This file is the entry point for your application, and should implement ``Zend_Application_Bootstrap_Bootstrapper``. The purpose for this file is to bootstrap the application and make components available to the application by initializing them.
 
-
 - **data/**: This directory provides a place to store application data that is volatile and possibly temporary. The disturbance of data in this directory might cause the application to fail. Also, the information in this directory may or may not be committed to a subversion repository. Examples of things in this directory are session files, cache files, sqlite databases, logs and indexes.
 
 - **docs/**: This directory contains documentation, either generated or directly authored.
@@ -98,7 +94,6 @@ The following describes the use cases for each directory as listed.
 - **temp/**: The ``temp/`` folder is set aside for transient application data. This information would not typically be committed to the applications svn repository. If data under the ``temp/`` directory were deleted, the application should be able to continue running with a possible decrease in performance until data is once again restored or recached.
 
 - **tests/**: This directory contains application tests. These could be hand-written, PHPUnit tests, Selenium-RC based tests or based on some other testing framework. By default, library code can be tested by mimicing the directory structure of your ``library/`` directory. Additionally, functional tests for your application could be written mimicing the ``application/`` directory structure (including the application subdirectory).
-
 
 .. _project-structure.filesystem:
 
@@ -130,7 +125,6 @@ The directory structure for modules should mimic that of the ``application/`` di
 
 The purpose of these directories remains exactly the same as for the recommended project directory structure.
 
-
 .. _project-structure.rewrite:
 
 Rewrite Configuration Guide
@@ -138,14 +132,12 @@ Rewrite Configuration Guide
 
 *URL* rewriting is a common function of *HTTP* servers. However, the rules and configuration differ widely between them. Below are some common approaches across a variety of popular web servers available at the time of writing.
 
-
 .. _project-structure.rewrite.apache:
 
 Apache HTTP Server
 ^^^^^^^^^^^^^^^^^^
 
 All examples that follow use ``mod_rewrite``, an official module that comes bundled with Apache. To use it, ``mod_rewrite`` must either be included at compile time or enabled as a Dynamic Shared Object (*DSO*). Please consult the `Apache documentation`_ for your version for more information.
-
 
 .. _project-structure.rewrite.apache.vhost:
 
@@ -175,7 +167,6 @@ Here is a very basic virtual host definition. These rules direct all requests to
 
 Note the slash ("/") prefixing ``index.php``; the rules for ``.htaccess`` differ in this regard.
 
-
 .. _project-structure.rewrite.apache.htaccess:
 
 Rewriting within a .htaccess file
@@ -194,7 +185,6 @@ Below is a sample ``.htaccess`` file that utilizes ``mod_rewrite``. It is simila
    RewriteRule ^.*$ index.php [NC,L]
 
 There are many ways to configure ``mod_rewrite``; if you would like more information, see Jayson Minard's `Blueprint for PHP Applications: Bootstrapping`_.
-
 
 .. _project-structure.rewrite.iis:
 

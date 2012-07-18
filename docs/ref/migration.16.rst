@@ -1,4 +1,3 @@
-
 .. _migration.16:
 
 Zend Framework 1.6
@@ -6,12 +5,10 @@ Zend Framework 1.6
 
 When upgrading from a previous release to Zend Framework 1.6 or higher you should note the following migration notes.
 
-
 .. _migration.16.zend.controller:
 
 Zend_Controller
 ---------------
-
 
 .. _migration.16.zend.controller.dispatcher:
 
@@ -26,12 +23,10 @@ Users brought to our attention the fact that ``Zend_Controller_Front`` and ``Zen
 
 - ``getDefaultAction()``: should return the name of the default action.
 
-
 .. _migration.16.zend.file.transfer:
 
 Zend_File_Transfer
 ------------------
-
 
 .. _migration.16.zend.file.transfer.validators:
 
@@ -47,7 +42,6 @@ So we added this parameter also to all existing validators from ``Zend_File_Tran
 - New method *API*: ``addValidator($validator, $breakChainOnFailure, $options, $files)``.
 
 To migrate your scripts to the new *API*, simply add a ``FALSE`` after defining the wished validator.
-
 
 .. _migration.16.zend.file.transfer.example:
 

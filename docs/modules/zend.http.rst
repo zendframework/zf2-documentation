@@ -1,9 +1,7 @@
-
 .. _zend.http.overview:
 
 Zend\\Http
 ==========
-
 
 .. _zend.http.overview.intro:
 
@@ -22,9 +20,7 @@ Overview
 
   - Headers
 
-
 - A Client implementation with various adapters that allow for sending requests and introspecting responses.
-
 
 .. _zend.http.overview.request-response-and-headers:
 

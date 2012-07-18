@@ -1,4 +1,3 @@
-
 .. _zend.config.processor:
 
 Zend\\Config\\Processor
@@ -18,12 +17,10 @@ Zend\\Config\\Processor
 
 Below we reported some examples for each type of processor.
 
-
 .. _zend.config.processor.constant:
 
 Zend\\Config\\Processor\\Constant
 ---------------------------------
-
 
 .. _zend.config.processor.constant.example:
 
@@ -45,12 +42,10 @@ This example illustrates the basic use of ``Zend\Config\Processor\Constant``:
 
 This example returns the output: ``TEST_CONST, bar.``.
 
-
 .. _zend.config.processor.filter:
 
 Zend\\Config\\Processor\\Filter
 -------------------------------
-
 
 .. _zend.config.processor.filter.example:
 
@@ -76,12 +71,10 @@ This example illustrates the basic use of ``Zend\Config\Processor\Filter``:
 
 This example returns the output: ``bar,BAR``.
 
-
 .. _zend.config.processor.queue:
 
 Zend\\Config\\Processor\\Queue
 ------------------------------
-
 
 .. _zend.config.processor.queue.example:
 
@@ -114,12 +107,10 @@ This example illustrates the basic use of ``Zend\Config\Processor\Queue``:
 
 This example returns the output: ``bar``. The filters in the queue are applied with a *FIFO* logic (First In, First Out).
 
-
 .. _zend.config.processor.token:
 
 Zend\\Config\\Processor\\Token
 ------------------------------
-
 
 .. _zend.config.processor.token.example:
 
@@ -141,12 +132,10 @@ This example illustrates the basic use of ``Zend\Config\Processor\Token``:
 
 This example returns the output: ``Value is TOKEN,Value is bar``.
 
-
 .. _zend.config.processor.translator:
 
 Zend\\Config\\Processor\\Translator
 -----------------------------------
-
 
 .. _zend.config.processor.translator.example:
 

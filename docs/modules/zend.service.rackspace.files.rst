@@ -1,9 +1,7 @@
-
 .. _zend.service.rackspace.files:
 
 Zend\\Service\\Rackspace\\Files
 ===============================
-
 
 .. _zend.service.rackspace.files.intro:
 
@@ -11,7 +9,6 @@ Overview
 --------
 
 The ``Zend\Service\Rackspace\Files`` is a class that provides a simple *API* to manage the `Rackspace Cloud Files`_.
-
 
 .. _zend.service.rackspace.files.quick-start:
 
@@ -111,116 +108,76 @@ This example publish the container **test** as *CDN*. If the operation is succes
 
 - **cdn_uri_ssl**, the ssl url of the CDN container;
 
-
 .. _zend.service.rackspace.files.methods:
 
 Available Methods
 -----------------
 
-
 .. _zend.service.rackspace.files.methods.copy-object:
 
 **copyObject**
    ``copyObject(string $container_source,string $obj_source,string $container_dest,string $obj_dest,$metadata=array(),string $content_type=null)``
-
-
    Copy an object from a container to another. The return is **true** in case of success and **false** in case of error.
-
 
    The **$container_source** is the name of the source container.
 
-
    The **$obj_source** is the name of the source object.
-
 
    The **$container_dest** is the name of the destination container.
 
-
    The **$obj_dest** is the name of the destination object.
-
 
    The **$metadata** array contains the metadata information related to the destination object.
 
-
    The **$content_type** is the optional content type of the destination object (file).
-
-
 
 .. _zend.service.rackspace.files.methods.create-container:
 
 **createContainer**
    ``createContainer(string $container, $metadata=array())``
-
-
    Create a container. The return is an instance of ``Zend\Service\Rackspace\Files\Container``. In case of error the return is **false**.
-
 
    The **$container** is the name of the container to create.
 
-
    The **$metadata** array contains the metadata information related to the container.
-
-
 
 .. _zend.service.rackspace.files.methods.delete-container:
 
 **deleteContainer**
    ``deleteContainer(string $container)``
-
-
    Delete a container. The return is **true** in case of success and **false** in case of error.
 
-
    The **$container** is the name of the container to delete.
-
-
 
 .. _zend.service.rackspace.files.methods.delete-object:
 
 **deleteObject**
    ``deleteObject(string $container,string $object)``
-
-
    Delete an object in a specific container. Return **true** in case of success, **false** in case of error.
-
 
    The **$container** is the name of the container.
 
-
    The **$object** is the name of the object to delete.
-
-
 
 .. _zend.service.rackspace.files.methods.enable-cdn-container:
 
 **enableCdnContainer**
    ``enableCdnContainer(string $container,integer $ttl=900)``
-
-
    Publish a container as *CDN* (Content Delivery Network). Return an associative array contains the CDN url and SSL url. In case of error the return is **false**.
-
 
    The **$container** is the name of the container.
 
-
    The **$ttl** is the time to live for the CDN cache content. The default value is 15 minutes (900 seconds). The minimum TTL that can be set is 15 minutes (900 seconds); the maximum TTL is 50 years (range of 900 to 1577836800 seconds).
-
-
 
 .. _zend.service.rackspace.files.methods.get-cdn-containers:
 
 **getCdnContainers**
    ``getCdnContainers($options=array())``
-
-
    Returns all the CDN containers available. The return is an instance of ``Zend\Service\Rackspace\Files\ContainerList``. In case of error the return is **false**.
-
 
    The **$options** contains the following optional parameters: - **limit**, for an integer value n, limits the number of results to at most n values.
 
    - **marker**, given a string value x, return object names greater in value than the specified marker.
-
-
 
 
 
@@ -228,10 +185,7 @@ Available Methods
 
 **getContainers**
    ``getContainers($options=array())``
-
-
    Returns all the containers available. The return is an instance of ``Zend\Service\Rackspace\Files\ContainerList`` In case of error the return is **false**.
-
 
    The **$options** contains the following optional parameters: - **limit**, for an integer value n, limits the number of results to at most n values.
 
@@ -239,60 +193,38 @@ Available Methods
 
 
 
-
-
 .. _zend.service.rackspace.files.methods.get-container:
 
 **getContainer**
    ``getContainer(string $container)``
-
-
    Returns the container specified as instance of ``Zend\Service\Rackspace\Files\Container`` In case of error the return is **false**.
 
-
    The **$container** is the name of the container.
-
-
 
 .. _zend.service.rackspace.files.methods.get-count-containers:
 
 **getCountContainers**
    ``getCountContainers()``
-
-
    Return the total count of containers.
-
-
 
 .. _zend.service.rackspace.files.methods.get-count-objects:
 
 **getCountObjects**
    ``getCountObjects()``
-
-
    Return the count of objects contained in all the containers.
-
-
 
 .. _zend.service.rackspace.files.methods.get-info-cdn-container:
 
 **getInfoCdnContainer**
    ``getInfoCdnContainer(string $container)``
-
-
    Get the information of a CDN container. The result is an associative array with all the CDN information. In case of error the return is **false**.
 
-
    The **$container** is the name of the container.
-
-
 
 .. _zend.service.rackspace.files.methods.get-info-containers:
 
 **getInfoContainers**
    ``getInfoContainers()``
-
-
    Get the information about all the containers available. Return an associative array with the following values: - **tot_containers**, the total number of containers stored
 
    - **size_containers**, the total size, in byte, of all the containers.
@@ -301,48 +233,31 @@ Available Methods
 
     In case of error the return is **false**.
 
-
-
 .. _zend.service.rackspace.files.methods.get-metadata-container:
 
 **getMetadataContainer**
    ``getMetadataContainer(string $container)``
-
-
    Get the metadata information of a container. The result is an associative array with all the metadata keys/values. In case of error the return is **false**.
 
-
    The **$container** is the name of the container.
-
-
 
 .. _zend.service.rackspace.files.methods.get-metadata-object:
 
 **getMetadataObject**
    ``getMetadataObject(string $container, string $object)``
-
-
    Get the metadata information of an object. The result is an associative array with all the metadata keys/values. In case of error the return is **false**.
-
 
    The **$container** is the name of the container.
 
-
    The **$object** is the name of the object.
-
-
 
 .. _zend.service.rackspace.files.methods.get-objects:
 
 **getObjects**
    ``getObjects(string $container, $options=array())``
-
-
    Returns all the objects of a container. The return is an instance of ``Zend\Service\Rackspace\Files\ObjectList`` In case of error the return is **false**.
 
-
    The **$container** is the name of the container.
-
 
    The **$options** contains the following optional parameters: - **limit**, for an integer value n, limits the number of results to at most n values.
 
@@ -356,22 +271,15 @@ Available Methods
 
 
 
-
-
 .. _zend.service.rackspace.files.methods.get-object:
 
 **getObject**
    ``getObject(string $container, string $object, $headers=array())``
-
-
    Returns an object of a container. The return is an instance of ``Zend\Service\Rackspace\Files\Object`` In case of error the return is **false**.
-
 
    The **$container** is the name of the container.
 
-
    The **$object** is the name of the object.
-
 
    The **$headers** contains the following optional parameters (See the `RFC-2616`_ for more info): - **If-Match**, a client that has one or more entities previously obtained from the resource can verify that one of those entities is current by including a list of their associated entity tags in the If-Match header field.
 
@@ -383,11 +291,9 @@ Available Methods
 
    - **Range**, Rackspace supports a sub-set of Range and do not adhere to the full RFC-2616 specification. We support specifying OFFSET-LENGTH where either OFFSET or LENGTH can be optional (not both at the same time). The following are supported forms of the header: - **Range: bytes=-5**, last five bytes of the object
 
-   - **Range: bytes=10-15**, the five bytes after a 10-byte offset
+     - **Range: bytes=10-15**, the five bytes after a 10-byte offset
 
-   - **Range: bytes=32-**, all data after the first 32 bytes of the object
-
-
+     - **Range: bytes=32-**, all data after the first 32 bytes of the object
 
 
 
@@ -397,80 +303,52 @@ Available Methods
 
 **getSizeContainers**
    ``getSizeContainers()``
-
-
    Return the size, in bytes, of all the containers.
-
-
 
 .. _zend.service.rackspace.files.methods.set-metadata-object:
 
 **setMetadataObject**
    ``setMetadataObject(string $container,string $object, array $metadata)``
-
-
    Update metadata information to the object (all the previous metadata will be deleted). Return **true** in case of success, **false** in case of error.
-
 
    The **$container** is the name of the container.
 
-
    The **$object** is the name of the object to store.
 
-
    The **$metadata** array contains the metadata information related to the object.
-
-
 
 .. _zend.service.rackspace.files.methods.store-object:
 
 **storeObject**
    ``storeObject(string $container,string $object,string $file,$metadata=array())``
-
-
    Store an object in a specific container. Return **true** in case of success, **false** in case of error.
-
 
    The **$container** is the name of the container.
 
-
    The **$object** is the name of the object to store.
-
 
    The **$file** is the content of the object to store.
 
-
    The **$metadata** array contains the metadata information related to the object to store.
-
-
 
 .. _zend.service.rackspace.files.methods.update-cdn-container:
 
 **updateCdnContainer**
    ``updateCdnContainer(string $container,integer $ttl=null,$cdn_enabled=null,$log=null)``
-
-
    Update the attribute of a *CDN* container. Return an associative array contains the CDN url and SSL url. In case of error the return is **false**.
-
 
    The **$container** is the name of the container.
 
-
    The **$ttl** is the time to live for the CDN cache content. The default value is 15 minutes (900 seconds). The minimum TTL that can be set is 15 minutes (900 seconds); the maximum TTL is 50 years (range of 900 to 1577836800 seconds).
-
 
    The **$cdn_enabled** is the flag to swith on/off the CDN. **True** switch on, **false** switch off.
 
-
    The **$log** enable or disable the log retention. **True** switch on, **false** switch off.
-
-
 
 .. _zend.service.rackspace.files.examples:
 
 Examples
 --------
-
 
 .. _zend.service.rackspace.files.examples.authenticate:
 
@@ -491,7 +369,6 @@ Check if the username and the key are valid for the Rackspace authentication.
    } else {
        printf("ERROR: %s",$rackspace->getErrorMsg());
    }
-
 
 .. _zend.service.rackspace.files.examples.get-object:
 
@@ -515,7 +392,6 @@ Get an image file (**example.gif**) from the cloud and render it in the browser
 
    header('Content-type: image/gif');
    echo $object->getFile();
-
 
 .. _zend.service.rackspace.files.examples.create-container:
 
@@ -542,7 +418,6 @@ Create a container (**test**) with some metadata information (**$metadata**)
        echo 'Container created successfully';
    }
 
-
 .. _zend.service.rackspace.files.examples.get-metadata-container:
 
 .. rubric:: Get the metadata of a container
@@ -565,7 +440,6 @@ Get the metadata of the container **test**
 
    $metadata= $container->getMetadata();
    print_r($metadata);
-
 
 .. _zend.service.rackspace.files.examples.store-object-container:
 
@@ -595,7 +469,6 @@ Store an object using a ``Zend\Service\Rackspace\Files\Container`` instance
    if ($container->addObject('test.jpg', $file, $metadata)) {
        echo 'Object stored successfully';
    }
-
 
 .. _zend.service.rackspace.files.examples.check-cdn-enabled:
 

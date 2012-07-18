@@ -1,4 +1,3 @@
-
 .. _zend.log.writers.zendmonitor:
 
 Writing to the Zend Server Monitor
@@ -9,10 +8,10 @@ Writing to the Zend Server Monitor
 One particularly useful feature of the Monitor *API* is that it allows you to specify arbitrary custom information alongside the log message. For instance, if you wish to log an exception, you can log not just the exception message, but pass the entire exception object to the function, and then inspect the object within the Zend Server event monitor.
 
 .. note::
+
    **Zend Monitor must be installed and enabled**
 
    In order to use this log writer, Zend Monitor must be both installed and enabled. However, it is designed such that if Zend Monitor is not detected, it will simply act as a ``NULL`` logger.
-
 
 Instantiating the ``Zend\Log\Writer\ZendMonitor`` log writer is trivial:
 
@@ -48,15 +47,15 @@ The second parameter may be a scalar, object, or array; if you need to pass mult
 
 Within Zend Server, your event is logged as a "custom event". From the "Monitor" tab, select the "Events" sub-item, and then filter on "Custom" to see custom events.
 
-
 .. image:: ../images/zend.log.writers.zendmonitor-events.png
+
 
 Events in Zend Server's Monitor dashboard
 
 In this screenshot, the first two events listed are custom events logged via the ``Zend\Log\Writer\ZendMonitor`` log writer. You may then click on an event to view all information related to it.
 
-
 .. image:: ../images/zend.log.writers.zendmonitor-event.png
+
 
 Event detail in Zend Server's Monitor
 

@@ -1,4 +1,3 @@
-
 .. _zend.search.lucene.query-api:
 
 Query Construction API
@@ -12,7 +11,6 @@ User queries can be combined with queries created through the query *API*. Simpl
    :linenos:
 
    $query = Zend_Search_Lucene_Search_QueryParser::parse($queryString);
-
 
 .. _zend.search.lucene.queries.exceptions:
 
@@ -39,7 +37,6 @@ It's a good idea to catch ``Zend_Search_Lucene_Search_QueryParserException``\ s 
 The same technique should be used for the find() method of a ``Zend_Search_Lucene`` object.
 
 Starting in 1.5, query parsing exceptions are suppressed by default. If query doesn't conform query language, then it's tokenized using current default analyzer and all tokenized terms are used for searching. Use ``Zend_Search_Lucene_Search_QueryParser::dontSuppressQueryParsingExceptions()`` method to turn exceptions on. ``Zend_Search_Lucene_Search_QueryParser::suppressQueryParsingExceptions()`` and ``Zend_Search_Lucene_Search_QueryParser::queryParsingExceptionsSuppressed()`` methods are also intended to manage exceptions handling behavior.
-
 
 .. _zend.search.lucene.queries.term-query:
 
@@ -75,7 +72,6 @@ The term field is optional. ``Zend_Search_Lucene`` searches through all indexed 
    $term  = new Zend_Search_Lucene_Index_Term('word1');
    $query = new Zend_Search_Lucene_Search_Query_Term($term);
    $hits  = $index->find($query);
-
 
 .. _zend.search.lucene.queries.multiterm-query:
 
@@ -148,7 +144,6 @@ The ``$signs`` array contains information about the term type:
 - ``FALSE`` is used to define prohibited term.
 
 - ``NULL`` is used to define a term that is neither required nor prohibited.
-
 
 
 
@@ -250,7 +245,6 @@ is equivalent to
 
    (+(word1) +(+word2 +word3 -word4)) (word5)
 
-
 .. _zend.search.lucene.queries.wildcard:
 
 Wildcard Query
@@ -288,7 +282,6 @@ The term field is optional. ``Zend_Search_Lucene`` searches through all fields o
    $pattern = new Zend_Search_Lucene_Index_Term('test*');
    $query = new Zend_Search_Lucene_Search_Query_Wildcard($pattern);
    $hits  = $index->find($query);
-
 
 .. _zend.search.lucene.queries.fuzzy:
 
@@ -345,7 +338,6 @@ The term field is optional. ``Zend_Search_Lucene`` searches through all fields o
    $term = new Zend_Search_Lucene_Index_Term('test');
    $query = new Zend_Search_Lucene_Search_Query_Fuzzy($term);
    $hits  = $index->find($query);
-
 
 .. _zend.search.lucene.queries.phrase-query:
 
@@ -498,7 +490,6 @@ The slop factor can be assigned after query creation:
    // 'word1 ... ... word2', 'word2 word1'
    $query->setSlop(2);
    $hits2 = $index->find($query);
-
 
 .. _zend.search.lucene.queries.range:
 

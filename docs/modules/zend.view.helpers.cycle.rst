@@ -1,11 +1,9 @@
-
 .. _zend.view.helpers.initial.cycle:
 
 Cycle Helper
 ============
 
 The ``Cycle`` helper is used to alternate a set of values.
-
 
 .. _zend.view.helpers.initial.cycle.basicusage:
 
@@ -40,7 +38,6 @@ The output
    <tr style="background-color:'#FFFFFF'">
       <td>Second</td>
    </tr>
-
 
 .. _zend.view.helpers.initial.cycle.advanceusage:
 

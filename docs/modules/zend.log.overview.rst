@@ -1,4 +1,3 @@
-
 .. _zend.log.overview:
 
 Overview
@@ -13,7 +12,6 @@ Overview
 - A Filter (implements ``Zend\Log\Filter``) blocks log data from being saved. A filter may be applied to an individual Writer, or to a Logger where it is applied before all Writers. In either case, filters may be chained.
 
 - A Formatter (inheriting from ``Zend\Log\Formatter\AbstractFormatter``) can format the log data before it is written by a Writer. Each Writer has exactly one Formatter.
-
 
 .. _zend.log.overview.creating-a-logger:
 
@@ -31,7 +29,6 @@ To get started logging, instantiate a Writer and then pass it to a Logger instan
    $logger->addWriter($writer);
 
 It is important to note that the Logger must have at least one Writer. You can add any number of Writers using the Log's ``addWriter()`` method.
-
 
 .. _zend.log.overview.logging-messages:
 
@@ -58,7 +55,6 @@ A shortcut is also available. Instead of calling the ``log()`` method, you can c
    $logger->log(Zend\Log\Logger::EMERG, 'Emergency message');
    $logger->emerg('Emergency message');
 
-
 .. _zend.log.overview.destroying-a-logger:
 
 Destroying a Log
@@ -72,7 +68,6 @@ If the Logger object is no longer needed, set the variable containing it to ``NU
    $logger = null;
 
 Explicitly destroying the log in this way is optional and is performed automatically at *PHP* shutdown.
-
 
 .. _zend.log.overview.builtin-priorities:
 
@@ -99,7 +94,6 @@ The priorities are not arbitrary. They come from the BSD syslog protocol, which 
 
 Priority numbers descend in order of importance. ``EMERG`` (0) is the most important priority. ``DEBUG`` (7) is the least important priority of the built-in priorities. You may define priorities of lower importance than ``DEBUG``. When selecting the priority for your log message, be aware of this priority hierarchy and choose appropriately.
 
-
 .. _zend.log.overview.understanding-fields:
 
 Understanding Log Events
@@ -108,7 +102,6 @@ Understanding Log Events
 When you call the ``log()`` method or one of its shortcuts, a log event is created. This is simply an associative array with data describing the event that is passed to the writers. The following keys are always created in this array: ``timestamp``, ``message``, ``priority``, and ``priorityName``.
 
 The creation of the ``event`` array is completely transparent.
-
 
 .. _zend.log.overview.as-errorHandler:
 
@@ -131,7 +124,6 @@ Log PHP Errors
 
 If you want to unregister the error handler you can use the ``unregisterErrorHandler()`` static method.
 
-
 .. _zend.log.overview.as-errorHandler.properties.table:
 
 .. table:: Zend\\Log\\Logger events from PHP errors fields matching handler ( int $errno , string $errstr [, string $errfile [, int $errline [, array $errcontext ]]] ) from set_error_handler
@@ -149,7 +141,6 @@ If you want to unregister the error handler you can use the ``unregisterErrorHan
    +-------+-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |context|errcontext             |(optional) An array that points to the active symbol table at the point the error occurred. In other words, errcontext will contain an array of every variable that existed in the scope the error was triggered in. User error handler must not modify error context.|
    +-------+-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 
 You can also configure a Logger to intercept Exceptions using the static method ``registerExceptionHandler($logger)``.
 

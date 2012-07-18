@@ -1,4 +1,3 @@
-
 .. _zend.service.amazon.ec2.reserved.instance:
 
 Zend_Service_Amazon_Ec2: Reserved Instances
@@ -7,7 +6,6 @@ Zend_Service_Amazon_Ec2: Reserved Instances
 With Amazon *EC2* Reserved Instances, you can make a low one-time payment for each instance to reserve and receive a significant discount on the hourly usage charge for that instance.
 
 Amazon *EC2* Reserved Instances are based on instance type and location (region and Availability Zone) for a specified period of time (e.g., 1 year or 3 years) and are only available for Linux or UNIX instances.
-
 
 .. _zend.service.amazon.ec2.reserved.instance.howitworks:
 
@@ -32,12 +30,10 @@ The user then purchases the following Reserved Instances.
 
 Amazon *EC2* applies the two m1.small Reserved Instances to two of the instances in Availability Zone us-east-1a. Amazon *EC2* doesn't apply the two c1.medium Reserved Instances because the c1.medium instances are in a different Availability Zone and does not apply the m1.xlarge Reserved Instances because there are no running m1.xlarge instances.
 
-
 .. _zend.service.amazon.ec2.reserved.instance.operations:
 
 Reserved Instances Usage
 ------------------------
-
 
 .. _zend.service.amazon.ec2.reserved.instance.operations.describe:
 
@@ -54,7 +50,6 @@ Reserved Instances Usage
                                                         'aws_secret_key');
    $return = $ec2_instance->describeInstances('instanceId');
 
-
 .. _zend.service.amazon.ec2.reserved.instance.offerings.describe:
 
 .. rubric:: Describe current Reserved Instance Offerings available
@@ -69,7 +64,6 @@ Reserved Instances Usage
    $ec2_instance = new Zend_Service_Amazon_Ec2_Instance_Reserved('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->describeOfferings();
-
 
 .. _zend.service.amazon.ec2.reserved.instance.offerings.purchase:
 

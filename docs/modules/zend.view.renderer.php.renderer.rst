@@ -1,4 +1,3 @@
-
 .. _zend.view.renderer.php-renderer:
 
 The PhpRenderer
@@ -7,7 +6,6 @@ The PhpRenderer
 ``Zend\View\Renderer\PhpRenderer``"renders" view scripts written in PHP, capturing and returning the output. It composes Variable containers and/or View Models, a plugin broker for :ref:`helpers <zend.view.helpers>`, and optional filtering of the captured output.
 
 The ``PhpRenderer`` is template system agnostic; you may use *PHP* as your template language, or create instances of other template systems and manipulate them within your view script. Anything you can do with PHP is available to you.
-
 
 .. _zend.view.renderer.php-renderer.usage:
 
@@ -127,7 +125,6 @@ Now that we have our ``PhpRenderer`` instance, and it can find templates, let's 
      $model->setTemplate($templateName);
      $renderer->render($model);
 
-
 Now, let's render something. As a simple example, let us say you have a list of book data.
 
 .. code-block:: php
@@ -222,19 +219,16 @@ Now we need the associated view script. At this point, we'll assume that the tem
    <?php endif;?>
 
 .. note::
+
    **Escape Output**
 
    The security mantra is "Filter input, escape output." If you are unsure of the source of a given variable -- which is likely most of the time -- you should escape it based on which HTML context it is being injected into. The primary contexts to be aware of are HTML Body, HTML Attribute, Javascript, CSS and URI. Each context has a dedicated helper available to apply the escaping strategy most appropriate to each context. You should be aware that escaping does vary significantly between contexts - there is no one single escaping strategy that can be globally applied.
 
-
    In the example above, there are calls to an ``escapeHtml()`` method. The method is actually a :ref:`helper <zend.view.helpers>`, a plugin available via method overloading. Additional escape helpers provide the ``escapeHtmlAttr()``, ``escapeJs()``, ``escapeCss()``, and ``escapeUrl()`` methods for each of the HTML contexts you are most likely to encounter.
-
 
    By using the provided helpers and being aware of your variables' contexts, you will prevent your templates from running afoul of Cross-Site Scripting (XSS) vulnerabilities.
 
-
 We've now toured the basic usage of the ``PhpRenderer``. By now you should know how to instantiate the renderer, provide it with a resolver, assign variables and/or create view models, create view scripts, and render view scripts.
-
 
 .. _zend.view.renderer.php-renderer.options:
 
@@ -243,56 +237,35 @@ Options and Configuration
 
 ``Zend\View\Renderer\PhpRenderer`` utilizes several collaborators in order to do its work. use the following methods to configure the renderer.
 
-
 .. _zend.view.renderer.php-renderer.options.broker:
 
 **broker**
    ``setBroker(Zend\View\HelperBroker $broker)``
-
-
    Set the broker instance used to load, register, and retrieve :ref:`helpers <zend.view.helpers>`.
-
-
 
 .. _zend.view.renderer.php-renderer.options.resolver:
 
 **resolver**
    ``setResolver(Zend\View\Resolver $resolver)``
-
-
    Set the resolver instance.
-
-
 
 .. _zend.view.renderer.php-renderer.options.filter-chain:
 
 **filters**
    ``setFilterChain(Zend\Filter\FilterChain $filters)``
-
-
    Set a filter chain to use as an output filter on rendered content.
-
-
 
 .. _zend.view.renderer.php-renderer.options.vars:
 
 **vars**
    ``setVars(array|ArrayAccess|Zend\View\Variables $variables)``
-
-
    Set the variables to use when rendering a view script/template.
-
-
 
 .. _zend.view.renderer.php-renderer.options.can-render-trees:
 
 **canRenderTrees**
    ``setCanRenderTrees(bool $canRenderTrees)``
-
-
    Set flag indicating whether or not we should render trees of view models. If set to true, the ``Zend\View\View`` instance will not attempt to render children separately, but instead pass the root view model directly to the ``PhpRenderer``. It is then up to the developer to render the children from within the view script. This is typically done using the ``RenderChildModel`` helper: *$this->renderChildModel('child_name')*.
-
-
 
 .. _zend.view.renderer.php-renderer.methods:
 
@@ -301,60 +274,38 @@ Additional Methods
 
 Typically, you'll only ever access variables and :ref:`helpers <zend.view.helpers>` within your view scripts or when interacting with the ``PhpRenderer``. However, there are a few additional methods you may be interested in.
 
-
 .. _zend.view.renderer.php-renderer.methods.render:
 
 **render**
    ``render(string|Zend\View\Model $nameOrModel, $values = null)``
-
-
    Render a template/view model.
-
 
    If ``$nameOrModel`` is a string, it is assumed to be a template name. That template will be resolved using the current resolver, and then rendered. If ``$values`` is non-null, those values, and those values only, will be used during rendering, and will replace whatever variable container previously was in the renderer; however, the previous variable container will be reset when done. If ``$values`` is empty, the current variables container (see :ref:`setVars() <zend.view.renderer.php-renderer.options.vars>`) will be injected when rendering.
 
-
    If ``$nameOrModel`` is a ``Model`` instance, the template name will be retrieved from it and used. Additionally, if the model contains any variables, these will be used when rendering; otherwise, the variables container already present, if any, will be used.
-
-
 
 .. _zend.view.renderer.php-renderer.methods.resolver:
 
 **resolver**
    ``resolver()``
-
-
    Retrieves the ``Resolver`` instance.
-
-
 
 .. _zend.view.renderer.php-renderer.methods.vars:
 
 **vars**
    ``vars(string $key = null)``
-
-
    Retrieve the variables container, or a single variable from the container..
-
-
 
 .. _zend.view.renderer.php-renderer.methods.plugin:
 
 **plugin**
    ``plugin(string $name, array $options = null)``
-
-
    Get a plugin/helper instance. Proxies to the broker's ``load()`` method; as such, any ``$options`` you pass will be passed to the plugin's constructor if this is the first time the plugin has been retrieved. See the section on :ref:`helpers <zend.view.helpers>` for more information.
-
-
 
 .. _zend.view.renderer.php-renderer.methods.add-template:
 
 **addTemplate**
    ``addTemplate(string $template)``
-
-
    Add a template to the stack. When used, the next call to ``render()`` will loop through all template added using this method, rendering them one by one; the output of the last will be returned.
-
 
 

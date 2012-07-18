@@ -1,4 +1,3 @@
-
 .. _zend.filter.input:
 
 Zend_Filter_Input
@@ -25,7 +24,6 @@ To use ``Zend_Filter_Input``, perform the following steps:
 . Retrieve validated fields and other reports
 
 The following sections describe the steps for using this class.
-
 
 .. _zend.filter.input.declaring:
 
@@ -61,7 +59,6 @@ You can declare a rule in several formats:
          'month'   => 'Digits',
      );
 
-
 - An object instance of one of the classes that implement ``Zend_Filter_Interface`` or ``Zend_Validate_Interface``.
 
   .. code-block:: php
@@ -72,7 +69,6 @@ You can declare a rule in several formats:
      $validators = array(
          'month'   => $digits
      );
-
 
 - An array, to declare a chain of filters or validators. The elements of this array can be strings mapping to class names or filter/validator objects, as in the cases described above. In addition, you can use a third choice: an array containing a string mapping to the class name followed by arguments to pass to its constructor.
 
@@ -87,10 +83,9 @@ You can declare a rule in several formats:
          )
      );
 
-
 .. note::
-   If you declare a filter or validator with constructor arguments in an array, then you must make an array for the rule, even if the rule has only one filter or validator.
 
+   If you declare a filter or validator with constructor arguments in an array, then you must make an array for the rule, even if the rule has only one filter or validator.
 
 You can use a special "wildcard" rule key **'*'** in either the filters array or the validators array. This means that the filters or validators declared in this rule will be applied to all input data fields. Note that the order of entries in the filters array or validators array is significant; the rules are applied in the same order in which you declare them.
 
@@ -101,7 +96,6 @@ You can use a special "wildcard" rule key **'*'** in either the filters array or
        '*'     => 'StringTrim',
        'month' => 'Digits'
    );
-
 
 .. _zend.filter.input.running:
 
@@ -134,14 +128,12 @@ Alternatively, use the ``setData()`` method, passing an associative array of key
 
 The ``setData()`` method redefines data in an existing ``Zend_Filter_Input`` object without changing the filtering and validation rules. Using this method, you can run the same rules against different sets of input data.
 
-
 .. _zend.filter.input.results:
 
 Retrieving Validated Fields and other Reports
 ---------------------------------------------
 
 After you have declared filters and validators and created the input processor, you can retrieve reports of missing, unknown, and invalid fields. You also can get the values of fields after filters have been applied.
-
 
 .. _zend.filter.input.results.isvalid:
 
@@ -165,7 +157,6 @@ This method accepts an optional string argument, naming an individual field. If 
    if ($input->isValid('month')) {
      echo "Field 'month' is OK\n";
    }
-
 
 .. _zend.filter.input.results.reports:
 
@@ -240,7 +231,6 @@ When you are using an application wide translator, then it will also be used by 
 
 The results of the ``getUnknown()`` method is an associative array, mapping field names to field values. Field names are used as the array keys in this case, instead of rule names, because no rule mentions the fields considered to be unknown fields.
 
-
 .. _zend.filter.input.results.escaping:
 
 Getting Valid Fields
@@ -258,14 +248,14 @@ All fields that are neither invalid, missing, nor unknown are considered valid. 
 By default, when retrieving a value, it is filtered with the ``Zend_Filter_HtmlEntities``. This is the default because it is considered the most common usage to output the value of a field in *HTML*. The HtmlEntities filter helps prevent unintentional output of code, which can result in security problems.
 
 .. note::
+
    As shown above, you can retrieve the unescaped value using the ``getUnescaped()`` method, but you must write code to use the value safely, and avoid security issues such as vulnerability to cross-site scripting attacks.
 
-
 .. warning::
+
    **Escaping unvalidated fields**
 
    As mentioned before ``getEscaped()`` returns only validated fields. Fields which do not have an associated validator can not be received this way. Still, there is a possible way. You can add a empty validator for all fields.
-
 
    .. code-block:: php
       :linenos:
@@ -274,9 +264,7 @@ By default, when retrieving a value, it is filtered with the ``Zend_Filter_HtmlE
 
       $input = new Zend_Filter_Input($filters, $validators, $data, $options);
 
-
    But be warned that using this notation introduces a security leak which could be used for cross-site scripting attacks. Therefor you should always set individual validators for each field.
-
 
 You can specify a different filter for escaping values, by specifying it in the constructor options array:
 
@@ -300,14 +288,12 @@ Filters to escape output should be run in this way, to make sure they run after 
 
 There is only one method ``getEscaped()``, and therefore you can specify only one filter for escaping (although this filter can be a filter chain). If you need a single instance of ``Zend_Filter_Input`` to return escaped output using more than one filtering method, you should extend ``Zend_Filter_Input`` and implement new methods in your subclass to get values in different ways.
 
-
 .. _zend.filter.input.metacommands:
 
 Using Metacommands to Control Filter or Validator Rules
 -------------------------------------------------------
 
 In addition to declaring the mapping from fields to filters or validators, you can specify some "metacommands" in the array declarations, to control some optional behavior of ``Zend_Filter_Input``. Metacommands appear as string-indexed entries in a given filter or validator array value.
-
 
 .. _zend.filter.input.metacommands.fields:
 
@@ -349,7 +335,6 @@ Another use of the 'fields' metacommand is to specify fields for filters or vali
 
 If the validation of this rule fails, the rule key ('password') is used in the return value of ``getInvalid()``, not any of the fields named in the 'fields' metacommand.
 
-
 .. _zend.filter.input.metacommands.presence:
 
 The PRESENCE metacommand
@@ -370,7 +355,6 @@ You can specify this metacommand using the class constant ``Zend_Filter_Input::P
    );
 
 The default value of this metacommand is 'optional'.
-
 
 .. _zend.filter.input.metacommands.default:
 
@@ -402,7 +386,6 @@ This default value is assigned to the field before any of the validators are inv
 If your rule uses the ``FIELDS`` metacommand to define an array of multiple fields, you can define an array for the ``DEFAULT_VALUE`` metacommand and the defaults of corresponding keys are used for any missing fields. If ``FIELDS`` defines multiple fields but ``DEFAULT_VALUE`` is a scalar, then that default value is used as the value for any missing fields in the array.
 
 There is no default value for this metacommand.
-
 
 .. _zend.filter.input.metacommands.allow-empty:
 
@@ -442,7 +425,6 @@ In the uncommon case that you declare a validation rule with no validators, but 
 
    $input = new Zend_Filter_Input($filters, $validators, $data);
    $input->setOptions($options);
-
 
 .. _zend.filter.input.metacommands.break-chain:
 
@@ -487,7 +469,6 @@ The validator chain class, ``Zend_Validate``, is more flexible with respect to b
        'month' => $chain
    );
    $input = new Zend_Filter_Input(null, $validators);
-
 
 .. _zend.filter.input.metacommands.messages:
 
@@ -572,7 +553,6 @@ If you have only one validator in validation rule or all used validators has the
        )
    );
 
-
 .. _zend.filter.input.metacommands.global:
 
 Using options to set metacommands for all rules
@@ -598,7 +578,6 @@ The default value for 'allowEmpty', 'breakChainOnFailure', and 'presence' metaco
    $input = new Zend_Filter_Input($filters, $validators, $data, $options);
 
 The 'fields', 'messages', and 'default' metacommands cannot be set using this technique.
-
 
 .. _zend.filter.input.namespaces:
 
@@ -637,11 +616,11 @@ Alternatively, you can use the ``addValidatorPrefixPath($prefix, $path)`` or ``a
 You cannot remove ``Zend_Filter`` and ``Zend_Validate`` as namespaces, you only can add namespaces. User-defined namespaces are searched first, Zend namespaces are searched last.
 
 .. note::
+
    As of version 1.5 the function ``addNamespace($namespace)`` was deprecated and exchanged with the plugin loader and the ``addFilterPrefixPath()`` and ``addValidatorPrefixPath()`` were added. Also the constant ``Zend_Filter_Input::INPUT_NAMESPACE`` is now deprecated. The constants ``Zend_Filter_Input::VALIDATOR_NAMESPACE`` and ``Zend_Filter_Input::FILTER_NAMESPACE`` are available in releases after 1.7.0.
 
-
 .. note::
-   As of version 1.0.4, ``Zend_Filter_Input::NAMESPACE``, having value ``namespace``, was changed to ``Zend_Filter_Input::INPUT_NAMESPACE``, having value ``inputNamespace``, in order to comply with the *PHP* 5.3 reservation of the keyword ``namespace``.
 
+   As of version 1.0.4, ``Zend_Filter_Input::NAMESPACE``, having value ``namespace``, was changed to ``Zend_Filter_Input::INPUT_NAMESPACE``, having value ``inputNamespace``, in order to comply with the *PHP* 5.3 reservation of the keyword ``namespace``.
 
 

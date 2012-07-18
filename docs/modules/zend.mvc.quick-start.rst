@@ -1,4 +1,3 @@
-
 .. _zend.mvc.quick-start:
 
 Quick Start
@@ -6,14 +5,12 @@ Quick Start
 
 Now that you know the basics of how applications and modules are structured, we'll show you the easy way to get started.
 
-
 .. _zend.mvc.quick-start.install:
 
 Install the Zend Skeleton Application
 -------------------------------------
 
 The easiest way to get started is to grab the sample application and module repositories. This can be done in the following ways.
-
 
 .. _zend.mvc.quick-start.install.using-composer:
 
@@ -34,7 +31,6 @@ Then run `Composer`_'s ``install`` command to install the ZF library and any oth
 
    prompt> php ./composer.phar install
 
-
 .. _zend.mvc.quick-start.install.using-git:
 
 Using Git
@@ -47,7 +43,6 @@ Simply clone the ``ZendSkeletonApplication`` repository, using the ``--recursive
 
    prompt> git clone --recursive git://github.com/zendframework/ZendSkeletonApplication.git my-application
 
-
 .. _zend.mvc.quick-start.install.manual-installation:
 
 Manual installation
@@ -59,11 +54,9 @@ Manual installation
 
   - Tarball: `https://github.com/zendframework/ZendSkeletonApplication/tarball/master`_
 
-
 - Deflate the archive you selected and rename the parent directory according to your project needs; we use "my-application" throughout this document.
 
 - Install Zend Framework, and either have its library on your PHP ``include_path``, symlink the library into your project's "library", or install it directly into your application using Pyrus.
-
 
 .. _zend.mvc.quick-start.create-a-new-module:
 
@@ -85,7 +78,6 @@ To get you started with modules, we recommend using the ``ZendSkeletonModule`` a
 Deflate the package, and rename the directory "ZendSkeletonModule" to reflect the name of the new module you want to create; when done, move the module into your new project's ``modules/`` directory.
 
 At this point, it's time to create some functionality.
-
 
 .. _zend.mvc.quick-start.update-the-module-class:
 
@@ -152,7 +144,6 @@ Next, edit the ``Module.php`` file to read as follows:
 
 At this point, you now have your module configured properly. Let's create a controller!
 
-
 .. _zend.mvc.quick-start.create-a-controller:
 
 Create a Controller
@@ -173,7 +164,6 @@ In practice, though, this would mean writing logic to branch based on matched ro
   - ``PUT`` expects an "id" to be matched during routing, and will call the ``update()`` method, passing in the identifier, and any data found in the raw post body.
 
   - ``DELETE`` expects an "id" to be matched during routing, and will call the ``delete()`` method.
-
 
 To get started, we'll simply create a "hello world" style controller, with a single action. First, create the directory ``src/<module name>/Controller``, and then create the file ``HelloController.php`` inside it. Edit it in your favorite text editor or IDE, and insert the following contents:
 
@@ -209,7 +199,6 @@ We return a ``ViewModel``. The view layer will use this when rendering the view,
 
 So, with that in mind, let's create a view script.
 
-
 .. _zend.mvc.quick-start.create-a-view-script:
 
 Create a view script
@@ -227,9 +216,8 @@ Create the directory ``view/<module-name>hello``. Inside that directory, create 
 That's it. Save the file.
 
 .. note::
+
    What is the method ``escapeHtml()``? It's actually a :ref:`view helper <zend.view.helpers>`, and it's designed to help mitigate *XSS* attacks. Never trust user input; if you are at all uncertain about the source of a given variable in your view script, escape it using one of the :ref:`provided escape view helper <zend.view.helpers>` depending on the type of data you have.
-
-
 
 .. _zend.mvc.quick-start.create-a-route:
 
@@ -239,11 +227,10 @@ Create a route
 Now that we have a controller and a view script, we need to create a route to it.
 
 .. note::
+
    ``ZendSkeletonApplication`` ships with a "default route" that will likely get you to this action. That route basically expects "/{module}/{controller}/{action}", which allows you to specify this: "/zend-user/hello/world". We're going to create a route here mainly for illustration purposes, as creating explicit routes is a recommended practice. The application will look for a ``Zend\Mvc\Router\RouteStack`` instance to setup routing. The default generated router is a ``Zend\Mvc\Router\Http\TreeRouteStack``.
 
-
    To use the "default route" functionality, you will need to add a the following route definition to your module. Replace
-
 
    .. code-block:: php
       :linenos:
@@ -284,12 +271,11 @@ Now that we have a controller and a view script, we need to create a route to it
           // ... other configuration ...
       );
 
-
 Additionally, we need to tell the application we have a controller.
 
 .. note::
-   We inform the application about controllers we expect to have in the application. This is to prevent somebody requesting any service the ``ServiceManager`` knows about in an attempt to break the application. The dispatcher uses a special, scoped container that will only pull controllers that are specifically registered with it, either as invokable classes or via factories.
 
+   We inform the application about controllers we expect to have in the application. This is to prevent somebody requesting any service the ``ServiceManager`` knows about in an attempt to break the application. The dispatcher uses a special, scoped container that will only pull controllers that are specifically registered with it, either as invokable classes or via factories.
 
 Open your ``config/module.config.php`` file, and modify it to add to the "routes" and "controller" parameters so it reads as follows:
 
@@ -316,7 +302,6 @@ Open your ``config/module.config.php`` file, and modify it to add to the "routes
        ),
        // ... other configuration ...
    );
-
 
 .. _zend.mvc.quick-start.tell-the-application-about-our-module:
 
@@ -347,7 +332,6 @@ Remember the ``config/application.php`` file? Let's modify it to add our new mod
    );
 
 Replace ``<module namespace>`` with the namespace of your module.
-
 
 .. _zend.mvc.quick-start.test-it-out:
 

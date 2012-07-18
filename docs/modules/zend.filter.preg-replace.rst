@@ -1,11 +1,9 @@
-
 .. _zend.filter.set.pregreplace:
 
 PregReplace
 ===========
 
 ``Zend_Filter_PregReplace`` performs a search using regular expressions and replaces all found elements.
-
 
 .. _zend.filter.set.pregreplace.options:
 
@@ -17,7 +15,6 @@ The following options are supported for ``Zend_Filter_PregReplace``:
 - **match**: The pattern which will be searched for.
 
 - **replace**: The string which is used as replacement for the matches.
-
 
 .. _zend.filter.set.pregreplace.basic:
 

@@ -1,4 +1,3 @@
-
 .. _zend.file.transfer.introduction:
 
 Zend_File_Transfer
@@ -7,19 +6,18 @@ Zend_File_Transfer
 ``Zend_File_Transfer`` provides extensive support for file uploads and downloads. It comes with built-in validators for files plus functionality to change files with filters. Protocol adapters allow ``Zend_File_Transfer`` to expose the same *API* for transport protocols like *HTTP*, FTP, WEBDAV and more.
 
 .. note::
+
    **Limitation**
 
    The current implementation of ``Zend_File_Transfer`` is limited to *HTTP* Post Uploads. Other adapters supporting downloads and other protocols will be added in future releases. Unimplemented methods will throw an exception. For now, you should use ``Zend_File_Transfer_Adapter_Http`` directly. As soon as there are multiple adapters available you can use a common interface.
 
-
 .. note::
+
    **Forms**
 
    When you are using ``Zend_Form`` you should use the *API*\ s provided by ``Zend_Form`` and not ``Zend_File_Transfer`` directly. The file transfer support in ``Zend_Form`` is implemented with ``Zend_File_Transfer``, so the information in this chapter may be useful for advanced users of ``Zend_Form``.
 
-
 The usage of ``Zend_File_Transfer`` is relatively simple. It consists of two parts. The *HTTP* form does the upload, while the ``Zend_File_Transfer`` handles the uploaded files. See the following example:
-
 
 .. _zend.file.transfer.introduction.example:
 
@@ -56,11 +54,10 @@ The next step is to create the receiver of the upload. In our example the receiv
 This code listing demonstrates the simplest usage of ``Zend_File_Transfer``. A local destination is set with the ``setDestination()`` method, then the ``receive()`` method is called. if there are any upload errors, an error will be returned.
 
 .. note::
+
    **Attention**
 
    This example is suitable only for demonstrating the basic *API* of ``Zend_File_Transfer``. You should **never** use this code listing in a production environment, because severe security issues may be introduced. You should always use validators to increase security.
-
-
 
 .. _zend.file.transfer.introduction.adapters:
 
@@ -68,7 +65,6 @@ Supported Adapters for Zend_File_Transfer
 -----------------------------------------
 
 ``Zend_File_Transfer`` is designed to support a variety of adapters and transfer directions. With ``Zend_File_Transfer`` you can upload, download and even forward (upload one adapter and download with another adapter at the same time) files.
-
 
 .. _zend.file.transfer.introduction.options:
 
@@ -78,7 +74,6 @@ Options for Zend_File_Transfer
 ``Zend_File_Transfer`` and its adapters support different options. You can set all options either by passing them to the constructor or by calling ``setOptions($options)``. ``getOptions()`` will return the options that are currently set. The following is a list of all supported options.
 
 - **ignoreNoFile**: If this option is set to ``TRUE``, all validators will ignore files that have not been uploaded by the form. The default value is ``FALSE`` which results in an error if no files were specified.
-
 
 .. _zend.file.transfer.introduction.checking:
 
@@ -92,7 +87,6 @@ Checking Files
 - **isUploaded($files = null)**: This method will check if the specified files have been uploaded by the user. This is useful when you have defined one or more optional files. When no files are specified, all files will be checked.
 
 - **isReceived($files = null)**: This method will check if the given files have already been received. When no files are specified, all files will be checked.
-
 
 .. _zend.file.transfer.introduction.checking.example:
 
@@ -122,7 +116,6 @@ Checking Files
 
    $upload->receive();
 
-
 .. _zend.file.transfer.introduction.informations:
 
 Additional File Informations
@@ -144,7 +137,6 @@ Additional File Informations
 
 By default file names will be returned with the complete path. If you only need the file name without path, you can set the second parameter, ``$path``, which will truncate the file path when set to ``FALSE``.
 
-
 .. _zend.file.transfer.introduction.informations.example1:
 
 .. rubric:: Getting the Filename
@@ -162,11 +154,10 @@ By default file names will be returned with the complete path. If you only need 
    $names = $upload->getFileName('foo');
 
 .. note::
+
    Note that the file name can change after you receive the file, because all filters will be applied once the file is received. So you should always call ``getFileName()`` after the files have been received.
 
-
 ``getFileSize()`` returns per default the real filesize in SI notation which means you will get **2kB** instead of **2048**. If you need only the plain size set the ``useByteString`` option to ``FALSE``.
-
 
 .. _zend.file.transfer.introduction.informations.example.getfilesize:
 
@@ -186,13 +177,12 @@ By default file names will be returned with the complete path. If you only need 
    $size = $upload->getFileSize();
 
 .. note::
+
    **Client given filesize**
 
    Note that the filesize which is given by the client is not seen as save input. Therefor the real size of the file will be detected and returned instead of the filesize sent by the client.
 
-
 ``getHash()`` accepts the name of a hash algorithm as first parameter. For a list of known algorithms refer to `PHP's hash_algos method`_. If you don't specify an algorithm, the **crc32** algorithm will be used by default.
-
 
 .. _zend.file.transfer.introduction.informations.example2:
 
@@ -211,13 +201,12 @@ By default file names will be returned with the complete path. If you only need 
    $names = $upload->getHash('crc32', 'foo');
 
 .. note::
+
    **Return value**
 
    Note that if the given file or form name contains more than one file, the returned value will be an array.
 
-
 ``getMimeType()`` returns the mimetype of a file. If more than one file was uploaded it returns an array, otherwise a string.
-
 
 .. _zend.file.transfer.introduction.informations.getmimetype:
 
@@ -235,26 +224,24 @@ By default file names will be returned with the complete path. If you only need 
    $names = $upload->getMimeType('foo');
 
 .. note::
+
    **Client given mimetype**
 
    Note that the mimetype which is given by the client is not seen as save input. Therefor the real mimetype of the file will be detected and returned instead of the mimetype sent by the client.
 
-
 .. warning::
+
    **Possible exception**
 
    Note that this method uses the fileinfo extension if it is available. If this extension can not be found, it uses the mimemagic extension. When no extension was found it raises an exception.
 
-
 .. warning::
+
    **Original data within $_FILES**
 
    Due to security reasons also the original data within $_FILES will be overridden as soon as ``Zend_File_Transfer`` is initiated. When you want to omit this behaviour and have the original data simply set the ``detectInfos`` option to ``FALSE`` at initiation.
 
-
    This option will have no effect after you initiated ``Zend_File_Transfer``.
-
-
 
 .. _zend.file.transfer.introduction.uploadprogress:
 
@@ -269,7 +256,6 @@ Second, you need to have the proper hidden fields added in the form which sends 
 
 When the above two points are provided then you are able to get the actual progress of the file upload by using the ``getProgress()`` method. Actually there are 2 official ways to handle this.
 
-
 .. _zend.file.transfer.introduction.uploadprogress.progressadapter:
 
 Using a progressbar adapter
@@ -278,7 +264,6 @@ Using a progressbar adapter
 You can use the convinient **Zend_ProgressBar** to get the actual progress and can display it in a simple manner to your user.
 
 To archive this, you have to add the wished **Zend_ProgressBar_Adapter** to ``getProgress()`` when you are calling it the first time. For details about the right adapter to use, look into the chapter :ref:`Zend_ProgressBar Standard Adapters <zend.progressbar.adapters>`.
-
 
 .. _zend.file.transfer.introduction.uploadprogress.progressadapter.example1:
 
@@ -296,7 +281,6 @@ To archive this, you have to add the wished **Zend_ProgressBar_Adapter** to ``ge
    }
 
 The complete handling is done by ``getProgress()`` for you in the background.
-
 
 .. _zend.file.transfer.introduction.uploadprogress.manually:
 
@@ -327,7 +311,6 @@ All other returned keys are provided directly from the extensions and will not b
 
 The following example shows a possible manual usage:
 
-
 .. _zend.file.transfer.introduction.uploadprogress.manually.example1:
 
 .. rubric:: Manual usage of the file progress
@@ -344,10 +327,10 @@ The following example shows a possible manual usage:
    }
 
 .. note::
+
    **Knowing the file to get the progress from**
 
    The above example works when your upload identified is set to 'progress_key'. When you are using another identifier within your form you must give the used identifier as first parameter to ``getProgress()`` on the initial call.
-
 
 
 

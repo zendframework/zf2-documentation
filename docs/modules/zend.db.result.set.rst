@@ -1,4 +1,3 @@
-
 .. _zend.db.result-set:
 
 Zend\\Db\\ResultSet
@@ -16,7 +15,6 @@ Zend\\Db\\ResultSet
        public function initialize($dataSource);
        public function getFieldCount();
    }
-
 
 .. _zend.db.result-set.result-set:
 
@@ -43,7 +41,6 @@ Quickstart
            echo $row->my_column . PHP_EOL;
        }
    }
-
 
 .. _zend.db.result-set.hydrating-result-set:
 

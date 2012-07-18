@@ -1,4 +1,3 @@
-
 .. _zend.navigation.pages.common:
 
 Common page features
@@ -9,7 +8,6 @@ All page classes must extend ``Zend_Navigation_Page``, and will thus share a com
 Option keys are mapped to *set* methods. This means that the option *order* maps to the method ``setOrder()``, and *reset_params* maps to the method ``setResetParams()``. If there is no setter method for the option, it will be set as a custom property of the page.
 
 Read more on extending ``Zend_Navigation_Page`` in :ref:`Creating custom page types <zend.navigation.pages.custom>`.
-
 
 .. _zend.navigation.pages.common.options:
 
@@ -45,16 +43,13 @@ Read more on extending ``Zend_Navigation_Page`` in :ref:`Creating custom page ty
    |pages    |Array | Zend_Config | NULL                 |NULL   |Child pages of the page. This could be an Array or Zend_Config object containing either page options that can be passed to the factory() method, or actual Zend_Navigation_Page instances, or a mixture of both.                                                                                                                                                                                                                               |
    +---------+-------------------------------------------+-------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
 .. note::
+
    **Custom properties**
 
    All pages support setting and getting of custom properties by use of the magic methods ``__set($name, $value)``, ``__get($name)``, ``__isset($name)`` and ``__unset($name)``. Custom properties may have any value, and will be included in the array that is returned from *$page->toArray()*, which means that pages can be serialized/deserialized successfully even if the pages contains properties that are not native in the page class.
 
-
    Both native and custom properties can be set using *$page->set($name, $value)* and retrieved using *$page->get($name)*, or by using magic methods.
-
-
 
 .. _zend.navigation.pages.common.example.customprops:
 

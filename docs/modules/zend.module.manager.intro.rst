@@ -1,4 +1,3 @@
-
 .. _zend.module-manager.intro:
 
 Introduction to the Module System
@@ -7,11 +6,10 @@ Introduction to the Module System
 Zend Framework 2.0 introduces a new and powerful approach to modules. This new module system is designed with flexibility, simplicity, and re-usability in mind. A module may contain just about anything: PHP code, including MVC functionality; library code; view scripts; and/or public assets such as images, CSS, and JavaScript. The possibilities are endless.
 
 .. note::
+
    The module system in ZF2 has been designed to be useful as a generic and powerful foundation from which developers and other projects can build their own module or plugin systems.
 
-
    For a better understanding of the event-driven concepts behind the ZF2 module system, it may be helpful to read the :ref:`EventManager documentation. <zend.event-manager.event-manager>`.
-
 
 The module system is made up of the following:
 
@@ -22,11 +20,10 @@ The module system is made up of the following:
 - **ModuleManager Listeners**- Event listeners can be attached to the module manager's various events. These listeners can do everything from resolving and loading modules to performing complex initialization tasks and introspection into each returned module object.
 
 .. note::
+
    The name of a module in a typical Zend Framework 2 application is simply a `PHP namespace`_ and must follow all of the same rules for naming.
 
-
 The recommended structure of a typical MVC-oriented ZF2 module is as follows:
-
 
 
 ::
@@ -54,8 +51,6 @@ The recommended structure of a typical MVC-oriented ZF2 module is as follows:
            <dir-named-after-module-namespace>/
                <dir-named-after-a-controller>/
                    <.phtml files>
-
-
 
 .. _zend.module-manager.intro.the-autoload-files:
 

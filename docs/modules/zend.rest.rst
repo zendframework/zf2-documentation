@@ -1,4 +1,3 @@
-
 .. _zend.rest.introduction:
 
 Introduction
