@@ -264,6 +264,7 @@ Available Methods
 
 **__construct**
    ``__construct(null|string|int $identifier)``
+
    Constructs a new ``EventManager`` instance, using the given identifier, if provided, for purposes of shared
    collections.
 
@@ -271,18 +272,21 @@ Available Methods
 
 **setEventClass**
    ``setEventClass(string $class)``
+
    Provide the name of an alternate ``Event`` class to use when creating events to pass to triggered listeners.
 
 .. _zend.event-manager.event-manager.methods.set-shared-collections:
 
 **setSharedCollections**
    ``setSharedCollections(SharedEventCollection $collections = null)``
+
    An instance of a ``SharedEventCollection`` instance to use when triggering events.
 
 .. _zend.event-manager.event-manager.methods.get-shared-collections:
 
 **getSharedCollections**
    ``getSharedCollections()``
+
    Returns the currently attached ``SharedEventCollection`` instance. Returns either a ``null`` if no collection is
    attached, or a ``SharedEventCollection`` instance otherwise.
 
@@ -290,6 +294,7 @@ Available Methods
 
 **trigger**
    ``trigger(string $event, mixed $target, mixed $argv, callback $callback)``
+
    Triggers all listeners to a named event. The recommendation is to use the current function/method name for
    ``$event``, appending it with values such as ".pre", ".post", etc. as needed. ``$context`` should be the current
    object instance, or the name of the function if not triggering within an object. ``$params`` should typically be
@@ -304,6 +309,7 @@ Available Methods
 
 **triggerUntil**
    ``triggerUntil(string $event, mixed $context, mixed $argv, callback $callback)``
+
    Triggers all listeners to a named event, just like :ref:`trigger()
    <zend.event-manager.event-manager.methods.trigger>`, with the addition that it passes the return value from each
    listener to ``$callback``; if ``$callback`` returns a boolean ``true`` value, execution of the listeners is
@@ -313,6 +319,7 @@ Available Methods
 
 **attach**
    ``attach(string $event, callback $callback, int $priority)``
+
    Attaches ``$callback`` to the ``EventManager`` instance, listening for the event ``$event``. If a ``$priority``
    is provided, the listener will be inserted into the internal listener stack using that priority; higher values
    execute earliest. (Default priority is "1", and negative priorities are allowed.)
@@ -324,6 +331,7 @@ Available Methods
 
 **attachAggregate**
    ``attachAggregate(string|ListenerAggregate $aggregate)``
+
    If a string is passed for ``$aggregate``, instantiates that class. The ``$aggregate`` is then passed the
    ``EventManager`` instance to its ``attach()`` method so that it may register listeners.
 
@@ -333,6 +341,7 @@ Available Methods
 
 **detach**
    ``detach(CallbackHandler $listener)``
+
    Scans all listeners, and detaches any that match ``$listener`` so that they will no longer be triggered.
 
    Returns a boolean ``true`` if any listeners have been identified and unsubscribed, and a boolean ``false``
@@ -342,6 +351,7 @@ Available Methods
 
 **detachAggregate**
    ``detachAggregate(ListenerAggregate $aggregate)``
+
    Loops through all listeners of all events to identify listeners that are represented by the aggregate; for all
    matches, the listeners will be removed.
 
@@ -352,24 +362,28 @@ Available Methods
 
 **getEvents**
    ``getEvents()``
+
    Returns an array of all event names that have listeners attached.
 
 .. _zend.event-manager.event-manager.methods.get-listeners:
 
 **getListeners**
    ``getListeners(string $event)``
+
    Returns a ``Zend\Stdlib\PriorityQueue`` instance of all listeners attached to ``$event``.
 
 .. _zend.event-manager.event-manager.methods.clear-listeners:
 
 **clearListeners**
    ``clearListeners(string $event)``
+
    Removes all listeners attached to ``$event``.
 
 .. _zend.event-manager.event-manager.methods.prepare-args:
 
 **prepareArgs**
    ``prepareArgs(array $args)``
+
    Creates an ``ArrayObject`` from the provided ``$args``. This can be useful if you want yours listeners to be
    able to modify arguments such that later listeners or the triggering method can see the changes.
 

@@ -133,6 +133,7 @@ Available Methods
 
 **copyObject**
    ``copyObject(string $container_source,string $obj_source,string $container_dest,string $obj_dest,$metadata=array(),string $content_type=null)``
+
    Copy an object from a container to another. The return is **true** in case of success and **false** in case of
    error.
 
@@ -152,6 +153,7 @@ Available Methods
 
 **createContainer**
    ``createContainer(string $container, $metadata=array())``
+
    Create a container. The return is an instance of ``Zend\Service\Rackspace\Files\Container``. In case of error
    the return is **false**.
 
@@ -163,6 +165,7 @@ Available Methods
 
 **deleteContainer**
    ``deleteContainer(string $container)``
+
    Delete a container. The return is **true** in case of success and **false** in case of error.
 
    The **$container** is the name of the container to delete.
@@ -171,6 +174,7 @@ Available Methods
 
 **deleteObject**
    ``deleteObject(string $container,string $object)``
+
    Delete an object in a specific container. Return **true** in case of success, **false** in case of error.
 
    The **$container** is the name of the container.
@@ -181,6 +185,7 @@ Available Methods
 
 **enableCdnContainer**
    ``enableCdnContainer(string $container,integer $ttl=900)``
+
    Publish a container as *CDN* (Content Delivery Network). Return an associative array contains the CDN url and
    SSL url. In case of error the return is **false**.
 
@@ -194,6 +199,7 @@ Available Methods
 
 **getCdnContainers**
    ``getCdnContainers($options=array())``
+
    Returns all the CDN containers available. The return is an instance of
    ``Zend\Service\Rackspace\Files\ContainerList``. In case of error the return is **false**.
 
@@ -209,6 +215,7 @@ Available Methods
 
 **getContainers**
    ``getContainers($options=array())``
+
    Returns all the containers available. The return is an instance of
    ``Zend\Service\Rackspace\Files\ContainerList`` In case of error the return is **false**.
 
@@ -224,6 +231,7 @@ Available Methods
 
 **getContainer**
    ``getContainer(string $container)``
+
    Returns the container specified as instance of ``Zend\Service\Rackspace\Files\Container`` In case of error the
    return is **false**.
 
@@ -233,18 +241,21 @@ Available Methods
 
 **getCountContainers**
    ``getCountContainers()``
+
    Return the total count of containers.
 
 .. _zend.service.rackspace.files.methods.get-count-objects:
 
 **getCountObjects**
    ``getCountObjects()``
+
    Return the count of objects contained in all the containers.
 
 .. _zend.service.rackspace.files.methods.get-info-cdn-container:
 
 **getInfoCdnContainer**
    ``getInfoCdnContainer(string $container)``
+
    Get the information of a CDN container. The result is an associative array with all the CDN information. In case
    of error the return is **false**.
 
@@ -254,6 +265,7 @@ Available Methods
 
 **getInfoContainers**
    ``getInfoContainers()``
+
    Get the information about all the containers available. Return an associative array with the following values:
 
       - **tot_containers**, the total number of containers stored
@@ -268,6 +280,7 @@ Available Methods
 
 **getMetadataContainer**
    ``getMetadataContainer(string $container)``
+
    Get the metadata information of a container. The result is an associative array with all the metadata
    keys/values. In case of error the return is **false**.
 
@@ -277,6 +290,7 @@ Available Methods
 
 **getMetadataObject**
    ``getMetadataObject(string $container, string $object)``
+
    Get the metadata information of an object. The result is an associative array with all the metadata keys/values.
    In case of error the return is **false**.
 
@@ -288,6 +302,7 @@ Available Methods
 
 **getObjects**
    ``getObjects(string $container, $options=array())``
+
    Returns all the objects of a container. The return is an instance of ``Zend\Service\Rackspace\Files\ObjectList``
    In case of error the return is **false**.
 
@@ -313,6 +328,7 @@ Available Methods
 
 **getObject**
    ``getObject(string $container, string $object, $headers=array())``
+
    Returns an object of a container. The return is an instance of ``Zend\Service\Rackspace\Files\Object`` In case
    of error the return is **false**.
 
@@ -355,12 +371,14 @@ Available Methods
 
 **getSizeContainers**
    ``getSizeContainers()``
+
    Return the size, in bytes, of all the containers.
 
 .. _zend.service.rackspace.files.methods.set-metadata-object:
 
 **setMetadataObject**
    ``setMetadataObject(string $container,string $object, array $metadata)``
+
    Update metadata information to the object (all the previous metadata will be deleted). Return **true** in case
    of success, **false** in case of error.
 
@@ -374,6 +392,7 @@ Available Methods
 
 **storeObject**
    ``storeObject(string $container,string $object,string $file,$metadata=array())``
+
    Store an object in a specific container. Return **true** in case of success, **false** in case of error.
 
    The **$container** is the name of the container.
@@ -388,6 +407,7 @@ Available Methods
 
 **updateCdnContainer**
    ``updateCdnContainer(string $container,integer $ttl=null,$cdn_enabled=null,$log=null)``
+
    Update the attribute of a *CDN* container. Return an associative array contains the CDN url and SSL url. In case
    of error the return is **false**.
 

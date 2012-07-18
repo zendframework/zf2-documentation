@@ -37,6 +37,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 
 **getInputSpecification**
    ``getInputSpecification()``
+
    Returns a input filter specification, which includes ``Zend\Filter\StringTrim`` and
    ``Zend\Filter\StringToLower`` filters, and a ``Zend\Validator\Regex`` to validate the RGB hex format.
 

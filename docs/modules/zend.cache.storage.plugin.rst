@@ -137,6 +137,7 @@ Available Methods
 
 **setOptions**
    ``setOptions(Zend\Cache\Storage\Plugin\PluginOptions $options)``
+
    Set options
 
    Implements a fluent interface.
@@ -145,6 +146,7 @@ Available Methods
 
 **getOptions**
    ``getOptions()``
+
    Get options
 
    Returns PluginOptions
@@ -153,6 +155,7 @@ Available Methods
 
 **attach**
    ``attach(EventCollection $events)``
+
    Defined by ``Zend\EventManager\ListenerAggregate``, attach one or more listeners.
 
    Returns void
@@ -161,6 +164,7 @@ Available Methods
 
 **detach**
    ``detach(EventCollection $events)``
+
    Defined by ``Zend\EventManager\ListenerAggregate``, detach all previously attached listeners.
 
    Returns void

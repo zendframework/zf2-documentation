@@ -42,6 +42,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 
 **setCaptcha**
    ``setCaptcha(array|Zend\Captcha\AdapterInterface $captcha)``
+
    Set the *CAPTCHA* adapter for this element. If ``$captcha`` is an array, ``Zend\Captcha\Factory::factory()``
    will be run to create the adapter from the array configuration.
 
@@ -51,6 +52,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 
 **getCaptcha**
    ``getCaptcha()``
+
    Return the *CAPTCHA* adapter for this element.
 
    Returns ``Zend\Captcha\AdapterInterface``
@@ -59,6 +61,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 
 **getInputSpecification**
    ``getInputSpecification()``
+
    Returns a input filter specification, which includes a ``Zend\Filter\StringTrim`` filter, and a *CAPTCHA*
    validator.
 

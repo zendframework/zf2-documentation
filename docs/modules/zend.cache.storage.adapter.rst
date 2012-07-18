@@ -175,6 +175,7 @@ Available Methods
 
 **setOptions**
    ``setOptions(array|Traversable|Zend\Cache\Storage\Adapter\AdapterOptions $options)``
+
    Set options.
 
    Implements a fluent interface.
@@ -183,6 +184,7 @@ Available Methods
 
 **getOptions**
    ``getOptions()``
+
    Get options
 
    Returns Zend\\Cache\\Storage\\Adapter\\AdapterOptions
@@ -191,6 +193,7 @@ Available Methods
 
 **getItem**
    ``getItem(string $key, array $options = array ())``
+
    Get an item.
 
    Returns mixed
@@ -199,6 +202,7 @@ Available Methods
 
 **getItems**
    ``getItems(array $keys, array $options = array ())``
+
    Get multiple items.
 
    Returns array
@@ -207,6 +211,7 @@ Available Methods
 
 **hasItem**
    ``hasItem(string $key, array $options = array ())``
+
    Test if an item exists.
 
    Returns boolean
@@ -215,6 +220,7 @@ Available Methods
 
 **hasItems**
    ``hasItems(array $keys, array $options = array ())``
+
    Test multiple items.
 
    Returns array
@@ -223,6 +229,7 @@ Available Methods
 
 **getMetadata**
    ``getMetadata(string $key, array $options = array ())``
+
    Get metadata of an item.
 
    Returns array|boolean
@@ -231,6 +238,7 @@ Available Methods
 
 **getMetadatas**
    ``getMetadatas(array $keys, array $options = array ())``
+
    Get multiple metadata
 
    Returns array
@@ -239,6 +247,7 @@ Available Methods
 
 **setItem**
    ``setItem(string $key, mixed $value, array $options = array ())``
+
    Store an item.
 
    Returns boolean
@@ -247,6 +256,7 @@ Available Methods
 
 **setItems**
    ``setItems(array $keyValuePairs, array $options = array ())``
+
    Store multiple items.
 
    Returns boolean
@@ -255,6 +265,7 @@ Available Methods
 
 **addItem**
    ``addItem(string $key, mixed $value, array $options = array ())``
+
    Add an item.
 
    Returns boolean
@@ -263,6 +274,7 @@ Available Methods
 
 **addItems**
    ``addItems(array $keyValuePairs, array $options = array ())``
+
    Add multiple items.
 
    Returns boolean
@@ -271,6 +283,7 @@ Available Methods
 
 **replaceItem**
    ``replaceItem(string $key, mixed $value, array $options = array ())``
+
    Replace an item.
 
    Returns boolean
@@ -279,6 +292,7 @@ Available Methods
 
 **replaceItems**
    ``replaceItems(array $keyValuePairs, array $options = array ())``
+
    Replace multiple items.
 
    Returns boolean
@@ -287,6 +301,7 @@ Available Methods
 
 **checkAndSetItem**
    ``checkAndSetItem(mixed $token, string|null $key, mixed $value, array $options = array ())``
+
    Set item only if token matches
 
    It uses the token from received from ``getItem()`` to check if the item has changed before overwriting it.
@@ -297,6 +312,7 @@ Available Methods
 
 **touchItem**
    ``touchItem(string $key, array $options = array ())``
+
    Reset lifetime of an item
 
    Returns boolean
@@ -305,6 +321,7 @@ Available Methods
 
 **touchItems**
    ``touchItems(array $keys, array $options = array ())``
+
    Reset lifetime of multiple items.
 
    Returns boolean
@@ -313,6 +330,7 @@ Available Methods
 
 **removeItem**
    ``removeItem(string $key, array $options = array ())``
+
    Remove an item.
 
    Returns boolean
@@ -321,6 +339,7 @@ Available Methods
 
 **removeItems**
    ``removeItems(array $keys, array $options = array ())``
+
    Remove multiple items.
 
    Returns boolean
@@ -329,6 +348,7 @@ Available Methods
 
 **incrementItem**
    ``incrementItem(string $key, int $value, array $options = array ())``
+
    Increment an item.
 
    Returns int|boolean
@@ -337,6 +357,7 @@ Available Methods
 
 **incrementItems**
    ``incrementItems(array $keyValuePairs, array $options = array ())``
+
    Increment multiple items.
 
    Returns boolean
@@ -345,6 +366,7 @@ Available Methods
 
 **decrementItem**
    ``decrementItem(string $key, int $value, array $options = array ())``
+
    Decrement an item.
 
    Returns int|boolean
@@ -353,6 +375,7 @@ Available Methods
 
 **decrementItems**
    ``decrementItems(array $keyValuePairs, array $options = array ())``
+
    Decrement multiple items.
 
    Returns boolean
@@ -361,6 +384,7 @@ Available Methods
 
 **getDelayed**
    ``getDelayed(array $keys, array $options = array ())``
+
    Request multiple items.
 
    Returns boolean
@@ -369,6 +393,7 @@ Available Methods
 
 **find**
    ``find(int $mode = 2, array $options = array ())``
+
    Find items.
 
    Returns boolean
@@ -377,6 +402,7 @@ Available Methods
 
 **fetch**
    ``fetch()``
+
    Fetches the next item from result set
 
    Returns array|boolean
@@ -385,6 +411,7 @@ Available Methods
 
 **fetchAll**
    ``fetchAll()``
+
    Returns all items of result set.
 
    Returns array
@@ -393,6 +420,7 @@ Available Methods
 
 **clear**
    ``clear(int $mode = 1, array $options = array ())``
+
    Clear items off all namespaces.
 
    Returns boolean
@@ -401,6 +429,7 @@ Available Methods
 
 **clearByNamespace**
    ``clearByNamespace(int $mode = 1, array $options = array ())``
+
    Clear items by namespace.
 
    Returns boolean
@@ -409,6 +438,7 @@ Available Methods
 
 **optimize**
    ``optimize(array $options = array ())``
+
    Optimize adapter storage.
 
    Returns boolean
@@ -417,6 +447,7 @@ Available Methods
 
 **getCapabilities**
    ``getCapabilities()``
+
    Capabilities of this storage
 
    Returns Zend\\Cache\\Storage\\Capabilities
@@ -425,6 +456,7 @@ Available Methods
 
 **getCapacity**
    ``getCapacity(array $options = array ())``
+
    Get storage capacity.
 
    Returns array|boolean

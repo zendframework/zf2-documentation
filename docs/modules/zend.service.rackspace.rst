@@ -95,6 +95,7 @@ contains a set of public methods shared with all the service. This public method
 
 **authenticate**
    ``authenticate()``
+
    Authenticate the Rackspace API using the user and the key specified in the concrete class that extend
    ``Zend\Service\Rackspace``. Return **true** in case of success and **false** in case of error.
 
@@ -102,72 +103,84 @@ contains a set of public methods shared with all the service. This public method
 
 **getAuthUrl**
    ``getAuthUrl()``
+
    Get the authentication URL of Rackspace. Returns a string.
 
 .. _zend.service.rackspace.files.methods.get-cdn-url:
 
 **getCdnUrl**
    ``getCdnUrl()``
+
    Get the URL for the CDN. Returns a string.
 
 .. _zend.service.rackspace.files.methods.get-error-code:
 
 **getErrorCode**
    ``getErrorCode()``
+
    Get the last HTTP error code. Returns a string.
 
 .. _zend.service.rackspace.files.methods.get-error-msg:
 
 **getErrorMsg**
    ``getErrorMsg()``
+
    Get the last error message. Returns a string.
 
 .. _zend.service.rackspace.files.methods.get-http-client:
 
 **getHttpClient**
    ``getHttpClient()``
+
    Get the HTTP client used to call the API of the Rackspace. Returns a ``Zend\Http\Client`` instance.
 
 .. _zend.service.rackspace.files.methods.get-key:
 
 **getKey**
    ``getKey()``
+
    Get the authentication key. Returns a string.
 
 .. _zend.service.rackspace.files.methods.get-management-url:
 
 **getManagementUrl**
    ``getManagementUrl()``
+
    Get the URL for the management services. Returns a string.
 
 .. _zend.service.rackspace.files.methods.get-storage-url:
 
 **getStorageUrl**
    ``getStorageUrl()``
+
    Get the URL for the storage (files) service. Returns a string.
 
 .. _zend.service.rackspace.files.methods.get-token:
 
 **getToken**
    ``getToken()``
+
    Get the token returned after a successful authentication. Returns a string.
 
 .. _zend.service.rackspace.files.methods.get-user:
 
 **getUser**
    ``getUser()``
+
    Get the user authenticated with the Rackspace service. Returns a string.
 
 .. _zend.service.rackspace.files.methods.is-successful:
 
 **isSuccessful**
    ``isSuccessful()``
+
    Return **true** if the last service call was successful, false otherwise.
 
 .. _zend.service.rackspace.files.methods.set-auth-url:
 
 **setAuthUrl**
    ``setAuthUrl(string $url)``
+
    Set the authentication URL to be used.
 
    **$url** is the URL for the authentication
@@ -176,6 +189,7 @@ contains a set of public methods shared with all the service. This public method
 
 **setKey**
    ``setKey(string $key)``
+
    Set the key for the API authentication.
 
    **$key** is the key string for the authentication
@@ -184,6 +198,7 @@ contains a set of public methods shared with all the service. This public method
 
 **setUser**
    ``setUser(string $user)``
+
    Set the user for the API authentication.
 
    **$user** is the user string for the authentication

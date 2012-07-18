@@ -28,12 +28,14 @@ Available Methods
 
 **__construct**
    ``__construct(stdClass $marker, array $capabilities = array ( ), null|Zend\Cache\Storage\Capabilities $baseCapabilities)``
+
    Returns void
 
 .. _zend.cache.storage.capabilities.methods.has-event-manager:
 
 **hasEventManager**
    ``hasEventManager()``
+
    Returns if the dependency of Zend\\EventManager is available.
 
    Returns boolean
@@ -42,6 +44,7 @@ Available Methods
 
 **getEventManager**
    ``getEventManager()``
+
    Get the event manager
 
    Returns Zend\\EventManager\\EventCollection instance.
@@ -50,6 +53,7 @@ Available Methods
 
 **getSupportedDatatypes**
    ``getSupportedDatatypes()``
+
    Get supported datatypes.
 
    Returns array.
@@ -58,6 +62,7 @@ Available Methods
 
 **setSupportedDatatypes**
    ``setSupportedDatatypes(stdClass $marker, array $datatypes)``
+
    Set supported datatypes.
 
    Implements a fluent interface.
@@ -66,6 +71,7 @@ Available Methods
 
 **getSupportedMetadata**
    ``getSupportedMetadata()``
+
    Get supported metadata.
 
    Returns array.
@@ -74,6 +80,7 @@ Available Methods
 
 **setSupportedMetadata**
    ``setSupportedMetadata(stdClass $marker, string $metadata)``
+
    Set supported metadata
 
    Implements a fluent interface.
@@ -82,6 +89,7 @@ Available Methods
 
 **getMaxTtl**
    ``getMaxTtl()``
+
    Get maximum supported time-to-live
 
    Returns int
@@ -90,6 +98,7 @@ Available Methods
 
 **setMaxTtl**
    ``setMaxTtl(stdClass $marker, int $maxTtl)``
+
    Set maximum supported time-to-live
 
    Implements a fluent interface.
@@ -98,6 +107,7 @@ Available Methods
 
 **getStaticTtl**
    ``getStaticTtl()``
+
    Is the time-to-live handled static (on write), or dynamic (on read).
 
    Returns boolean
@@ -106,6 +116,7 @@ Available Methods
 
 **setStaticTtl**
    ``setStaticTtl(stdClass $marker, boolean $flag)``
+
    Set if the time-to-live is handled statically (on write) or dynamically (on read)
 
    Implements a fluent interface.
@@ -114,6 +125,7 @@ Available Methods
 
 **getTtlPrecision**
    ``getTtlPrecision()``
+
    Get time-to-live precision.
 
    Returns float.
@@ -122,6 +134,7 @@ Available Methods
 
 **setTtlPrecision**
    ``setTtlPrecision(stdClass $marker, float $ttlPrecision)``
+
    Set time-to-live precision.
 
    Implements a fluent interface.
@@ -130,6 +143,7 @@ Available Methods
 
 **getUseRequestTime**
    ``getUseRequestTime()``
+
    Get the "use request time" flag status
 
    Returns boolean
@@ -138,6 +152,7 @@ Available Methods
 
 **setUseRequestTime**
    ``setUseRequestTime(stdClass $marker, boolean $flag)``
+
    Set the "use request time" flag.
 
    Implements a fluent interface.
@@ -146,6 +161,7 @@ Available Methods
 
 **getExpiredRead**
    ``getExpiredRead()``
+
    Get flag indicating if expired items are readable.
 
    Returns boolean
@@ -154,6 +170,7 @@ Available Methods
 
 **setExpiredRead**
    ``setExpiredRead(stdClass $marker, boolean $flag)``
+
    Set if expired items are readable.
 
    Implements a fluent interface.
@@ -162,6 +179,7 @@ Available Methods
 
 **getMaxKeyLength**
    ``getMaxKeyLength()``
+
    Get maximum key lenth.
 
    Returns int
@@ -170,6 +188,7 @@ Available Methods
 
 **setMaxKeyLength**
    ``setMaxKeyLength(stdClass $marker, int $maxKeyLength)``
+
    Set maximum key lenth.
 
    Implements a fluent interface.
@@ -178,6 +197,7 @@ Available Methods
 
 **getNamespaceIsPrefix**
    ``getNamespaceIsPrefix()``
+
    Get if namespace support is implemented as a key prefix.
 
    Returns boolean
@@ -186,6 +206,7 @@ Available Methods
 
 **setNamespaceIsPrefix**
    ``setNamespaceIsPrefix(stdClass $marker, boolean $flag)``
+
    Set if namespace support is implemented as a key prefix.
 
    Implements a fluent interface.
@@ -194,6 +215,7 @@ Available Methods
 
 **getNamespaceSeparator**
    ``getNamespaceSeparator()``
+
    Get namespace separator if namespace is implemented as a key prefix.
 
    Returns string
@@ -202,6 +224,7 @@ Available Methods
 
 **setNamespaceSeparator**
    ``setNamespaceSeparator(stdClass $marker, string $separator)``
+
    Set the namespace separator if namespace is implemented as a key prefix.
 
    Implements a fluent interface.
@@ -210,6 +233,7 @@ Available Methods
 
 **getIterable**
    ``getIterable()``
+
    Get if items are iterable.
 
    Returns boolean
@@ -218,6 +242,7 @@ Available Methods
 
 **setIterable**
    ``setIterable(stdClass $marker, boolean $flag)``
+
    Set if items are iterable.
 
    Implements a fluent interface.
@@ -226,6 +251,7 @@ Available Methods
 
 **getClearAllNamespaces**
    ``getClearAllNamespaces()``
+
    Get flag indicating support to clear items of all namespaces.
 
    Returns boolean
@@ -234,6 +260,7 @@ Available Methods
 
 **setClearAllNamespaces**
    ``setClearAllNamespaces(stdClass $marker, boolean $flag)``
+
    Set flag indicating support to clear items of all namespaces.
 
    Implements a fluent interface.
@@ -242,6 +269,7 @@ Available Methods
 
 **getClearByNamespace**
    ``getClearByNamespace()``
+
    Get flag indicating support to clear items by namespace.
 
    Returns boolean
@@ -250,6 +278,7 @@ Available Methods
 
 **setClearByNamespace**
    ``setClearByNamespace(stdClass $marker, boolean $flag)``
+
    Set flag indicating support to clear items by namespace.
 
    Implements a fluent interface.
