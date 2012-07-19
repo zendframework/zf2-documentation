@@ -5,9 +5,7 @@ Between
 
 ``Zend\Validator\Between`` allows you to validate if a given value is between two other values.
 
-.. note::
-
-   **Zend\Validator\Between supports only number validation**
+.. note:: Zend\\Validator\\Between supports only number validation
 
    It should be noted that ``Zend\Validator\Between`` supports only the validation of numbers. Strings or dates can
    not be validated with this validator.

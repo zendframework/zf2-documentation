@@ -98,9 +98,7 @@ particular interest are noted below.
      **absolute path** to a directory readable and writable by the *PHP* process. If a writable path is not
      supplied, then ``Zend_Session`` will throw an exception when started (i.e., when ``start()`` is called).
 
-     .. note::
-
-        **Security Risk**
+     .. note:: Security Risk
 
         If the path is readable by other applications, then session hijacking might be possible. if the path is
         writable by other applications, then `session poisoning`_ might be possible. If this path is shared with
@@ -122,9 +120,7 @@ particular interest are noted below.
    - string *name*- The correct value is system dependent and should be provided by the developer using a value
      **unique** to the application.
 
-     .. note::
-
-        **Security Risk**
+     .. note:: Security Risk
 
         If the *php.ini* setting for *session.name* is the same (e.g., the default "PHPSESSID"), and there are two
         or more *PHP* applications accessible through the same domain name then they will share the same session
@@ -133,9 +129,7 @@ particular interest are noted below.
    - boolean *use_only_cookies*- In order to avoid introducing additional security risks, do not alter the default
      value of this option.
 
-        .. note::
-
-           **Security Risk**
+        .. note:: Security Risk
 
            If this setting is not enabled, an attacker can easily fix victim's session ids, using links on the
            attacker's website, such as *http://www.example.com/index.php?PHPSESSID=fixed_session_id*. The fixation
@@ -316,9 +310,7 @@ If you see the error message, "Cannot modify header information - headers alread
 before *PHP* has sent *HTTP* headers, or output buffering must be enabled. Also, the total output sent must not
 exceed the set buffer size, in order to prevent triggering sending the output before the call to ``destroy()``.
 
-.. note::
-
-   **Throws**
+.. note:: Throws
 
    By default, ``$readonly`` is enabled and further actions involving writing to the session data store will throw
    an exception.
@@ -344,9 +336,7 @@ complete the internal data transformation on this request. The optional ``$reado
 write access by throwing an exception upon any attempt to write to the session via ``Zend_Session`` or
 ``Zend_Session_Namespace``.
 
-.. note::
-
-   **Throws**
+.. note:: Throws
 
    By default, ``$readonly`` is enabled and further actions involving writing to the session data store will throw
    an exception. However, some legacy application might expect ``$_SESSION`` to remain writable after ending the
@@ -377,9 +367,7 @@ namespaceIsset($namespace)
 Use this method to determine if a session namespace exists, or if a particular index exists in a particular
 namespace.
 
-.. note::
-
-   **Throws**
+.. note:: Throws
 
    An exception will be thrown if ``Zend_Session`` is not marked as readable (e.g., before ``Zend_Session`` has
    been started).
@@ -395,9 +383,7 @@ objects will remain available, if they were also stored by reference in other ar
 via other variables. So ``namespaceUnset()`` does not perform a "deep" unsetting/deleting of the contents of the
 entries in the namespace. For a more detailed explanation, please see `References Explained`_ in the *PHP* manual.
 
-.. note::
-
-   **Throws**
+.. note:: Throws
 
    An exception will be thrown if the namespace is not writable (e.g., after ``destroy()``).
 
@@ -410,9 +396,7 @@ DEPRECATED: Use ``getIterator()`` in ``Zend_Session_Namespace``. This method ret
 ``$namespace``. If you have logical reasons to keep this method publicly accessible, please provide feedback to the
 `fw-auth@lists.zend.com`_ mail list. Actually, all participation on any relevant topic is welcome :)
 
-.. note::
-
-   **Throws**
+.. note:: Throws
 
    An exception will be thrown if ``Zend_Session`` is not marked as readable (e.g., before ``Zend_Session`` has
    been started).
@@ -424,9 +408,7 @@ getIterator()
 
 Use ``getIterator()`` to obtain an array containing the names of all namespaces.
 
-.. note::
-
-   **Throws**
+.. note:: Throws
 
    An exception will be thrown if ``Zend_Session`` is not marked as readable (e.g., before ``Zend_Session`` has
    been started).

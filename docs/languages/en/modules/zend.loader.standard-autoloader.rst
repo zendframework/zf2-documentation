@@ -40,9 +40,7 @@ however, due to performance implications.
 Finally, as with all autoloaders in Zend Framework, the ``StandardAutoloader`` is capable of registering itself
 with PHP's SPL autoloader registry.
 
-.. note::
-
-   **Vocabulary: Namespaces vs. Vendor Prefixes**
+.. note:: Vocabulary: Namespaces vs. Vendor Prefixes
 
    In terms of autloading, a "namespace" corresponds to PHP's own definition of namespaces in PHP versions 5.3 and
    above.

@@ -53,9 +53,7 @@ tedious task to translate all of these messages. But for your convenience Zend F
 pre-translated validation messages. You can find them within the path ``/resources/languages`` in your Zend
 Framework installation.
 
-.. note::
-
-   **Used path**
+.. note:: Used path
 
    The resource files are outside of the library path because all of your translations should also be outside of
    this path.
@@ -75,9 +73,7 @@ So to translate all validation messages to German for example, all you have to d
    );
    Zend\Validator\AbstractValidator::setDefaultTranslator($translator);
 
-.. note::
-
-   **Supported languages**
+.. note:: Supported languages
 
    This feature is very young, so the amount of supported languages may not be complete. New languages will be
    added with each release. Additionally feel free to use the existing resource files to make your own
@@ -108,9 +104,7 @@ string '**...**' will be added instead of the rest of the message.
 
    Zend\Validator\AbstractValidator::setMessageLength(100);
 
-.. note::
-
-   **Where is this parameter used?**
+.. note:: Where is this parameter used?
 
    The set message length is used for all validators, even for self defined ones, as long as they extend
    ``Zend\Validator\AbstractValidator``.

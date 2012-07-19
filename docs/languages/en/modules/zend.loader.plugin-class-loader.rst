@@ -49,9 +49,7 @@ name associations, and then using it to retrieve the class name associated with 
    // Load/retrieve the associated plugin class:
    $class = $loader->load('url'); // 'My\Custom\UrlHelper'
 
-.. note::
-
-   **Case Sensitivity**
+.. note:: Case Sensitivity
 
    The ``PluginClassLoader`` is designed to do case-insensitive plugin name lookups. While the above example
    defines a "bugUrl" plugin name, internally, this will be stored as simply "bugurl". If another plugin is

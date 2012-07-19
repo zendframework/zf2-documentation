@@ -44,9 +44,7 @@ option by our definition.
 error and usage message if they use an invalid flag, and report to your application code which flags the user
 specified.
 
-.. note::
-
-   **Getopt is not an Application Framework**
+.. note:: Getopt is not an Application Framework
 
    ``Zend_Console_Getopt`` does **not** interpret the meaning of flags and parameters, nor does this class
    implement application workflow or invoke application code. You must implement those actions in your own

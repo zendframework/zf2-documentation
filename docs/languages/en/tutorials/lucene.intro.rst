@@ -23,9 +23,7 @@ Several analyzers are provided within the ``Zend_Search_Lucene`` package. The de
 text (since the *UTF-8* analyzer needs the **mbstring** extension to be turned on). It is case insensitive, and it
 skips numbers. Use other analyzers or create your own analyzer if you need to change this behavior.
 
-.. note::
-
-   **Using analyzers during indexing and searching**
+.. note:: Using analyzers during indexing and searching
 
    Important note! Search queries are also tokenized using the "current analyzer", so the same analyzer must be set
    as the default during both the indexing and searching process. This will guarantee that source and searched text

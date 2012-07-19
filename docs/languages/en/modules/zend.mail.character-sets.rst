@@ -8,9 +8,7 @@ charset for the e-mail itself may be given. It defaults to **iso-8859-1**. The a
 all parts added to that mail object have their content encoded in the correct character set. When creating a new
 mail part, a different charset can be given for each part.
 
-.. note::
-
-   **Only in text format**
+.. note:: Only in text format
 
    Character sets are only applicable for message parts in text format.
 

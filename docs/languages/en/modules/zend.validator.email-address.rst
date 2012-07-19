@@ -138,9 +138,7 @@ MX checking is not enabled by default. To enable MX checking you can pass a seco
        )
    );
 
-.. note::
-
-   **MX Check under Windows**
+.. note:: MX Check under Windows
 
    Within Windows environments MX checking is only available when *PHP* 5.3 or above is used. Below *PHP* 5.3 MX
    checking will not be used even if it's activated within the options.
@@ -171,16 +169,12 @@ Sometimes it can be useful to get the server's MX information which have been us
 use ``getMXRecord()`` after validation. This method returns the received MX record including weight and sorted by
 it.
 
-.. warning::
-
-   **Performance warning**
+.. warning:: Performance warning
 
    You should be aware that enabling MX check will slow down you script because of the used network functions.
    Enabling deep check will slow down your script even more as it searches the given server for 3 additional types.
 
-.. note::
-
-   **Disallowed IP addresses**
+.. note:: Disallowed IP addresses
 
    You should note that MX validation is only accepted for external servers. When deep MX validation is enabled,
    then local IP addresses like ``192.168.*`` or ``169.254.*`` are not accepted.

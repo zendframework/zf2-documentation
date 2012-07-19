@@ -35,9 +35,7 @@ specify a different padding technique using a special adapter for that (Zend\\Cr
 encryption key and the authentication key for HMAC are generated using the `PBKDF2`_ algorithm as key derivation
 function.
 
-.. note::
-
-   **Key size**
+.. note:: Key size
 
    The BlockCipher class uses always the longest size of the key, for a particular cipher. For instance, for the
    AES algorithm it uses 256 bits and for the `Blowfish`_ algorithm it uses 448 bits.
@@ -57,9 +55,7 @@ class as follow:
                                    'hash' => 'sha512'
                                ));
 
-.. note::
-
-   **Recommendation**
+.. note:: Recommendation
 
    If you are not familiar with symmetric encryption techniques we strongly suggest to use the default values of
    the ``BlockCipher`` class. The default values are: AES algorithm, CBC mode, HMAC with SHA256, PKCS#7 padding.

@@ -67,9 +67,7 @@ The Socket adapter allows several extra configuration options that can be set us
 
 
 
-   .. note::
-
-      **Persistent TCP Connections**
+   .. note:: Persistent TCP Connections
 
       Using persistent *TCP* connections can potentially speed up *HTTP* requests - but in most use cases, will
       have little positive effect and might overload the *HTTP* server you are connecting to.
@@ -85,9 +83,7 @@ The Socket adapter allows several extra configuration options that can be set us
 
 
 
-   .. note::
-
-      **HTTPS SSL Stream Parameters**
+   .. note:: HTTPS SSL Stream Parameters
 
       ``ssltransport``, ``sslcert`` and ``sslpassphrase`` are only relevant when connecting using *HTTPS*.
 

@@ -43,9 +43,7 @@ You may manage conversion process and assign target index format by *$index->set
 
 Backward conversions are not supported.
 
-.. note::
-
-   **Important!**
+.. note:: Important!
 
    Once index is converted to upper version it can't be converted back. So make a backup of your index when you
    plan migration to upper version, but want to have possibility to go back.

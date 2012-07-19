@@ -26,9 +26,7 @@ allowed, ``Zend\Config\Config`` supports unsetting of values (i.e. ``unset($conf
 allowed and the ``setReadOnly()`` method can be used to stop any further modifications to a ``Zend\Config\Config``
 object that was created allowing modifications.
 
-.. note::
-
-   **Modifying Config does not save changes**
+.. note:: Modifying Config does not save changes
 
    It is important not to confuse such in-memory modifications with saving configuration data out to specific
    storage media. Tools for creating and modifying configuration data for various storage media are out of scope

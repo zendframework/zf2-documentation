@@ -32,9 +32,7 @@ references:
 
 
 
-.. note::
-
-   **PHP-CryptLib**
+.. note:: PHP-CryptLib
 
    Most of the ideas behind the ``Zend\Crypt`` component have been inspired by the `PHP-CryptLib project`_ of
    `Anthony Ferrara`_. PHP-CryptLib is an all-inclusive pure PHP cryptographic library for all cryptographic needs.

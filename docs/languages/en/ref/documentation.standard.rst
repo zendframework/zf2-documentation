@@ -375,9 +375,7 @@ Refrain from using ``require_once()``, ``require()``, ``include_once()``, and ``
 listings. They simply clutter the narrative, and are largely obviated when using an autoloader. Use them only when
 they are essential to the example.
 
-.. note::
-
-   **Never use short tags**
+.. note:: Never use short tags
 
    Short tags (e.g., "<?", "<?=") should never be used within **programlisting** or the narrative of a document.
 

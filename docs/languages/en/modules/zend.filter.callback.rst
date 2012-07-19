@@ -50,9 +50,7 @@ which is defined within a class, by giving an array as callback.
 
 To get the actual set callback use ``getCallback()`` and to set another callback use ``setCallback()``.
 
-.. note::
-
-   **Possible exceptions**
+.. note:: Possible exceptions
 
    You should note that defining a callback method which can not be called will raise an exception.
 

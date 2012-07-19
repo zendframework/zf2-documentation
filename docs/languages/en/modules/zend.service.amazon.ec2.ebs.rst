@@ -161,9 +161,7 @@ instanceId, device, status and attachTime.
    $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->detachVolume('volumeId');
 
-.. note::
-
-   **Forced Detach**
+.. note:: Forced Detach
 
    You should only force a detach if the previous detachment attempt did not occur cleanly (logging into an
    instance, unmounting the volume, and detaching normally). This option can lead to data loss or a corrupted file

@@ -580,18 +580,14 @@ performance differences.
    $server = new XmlRpc\Server();
    ...
 
-.. note::
-
-   **Benchmark your application**
+.. note:: Benchmark your application
 
    Performance is determined by a lot of parameters and benchmarks only apply for the specific test case.
    Differences come from *PHP* version, installed extensions, webserver and operating system just to name a few.
    Please make sure to benchmark your application on your own and decide which generator to use based on **your**
    numbers.
 
-.. note::
-
-   **Benchmark your client**
+.. note:: Benchmark your client
 
    This optimization makes sense for the client side too. Just select the alternate *XML* generator before doing
    any work with ``Zend\XmlRpc\Client``.

@@ -22,9 +22,7 @@ default transport for the actual ``send()`` request.
    $mail->send($tr2);
    $mail->send();  // use default again
 
-.. note::
-
-   **Additional transports**
+.. note:: Additional transports
 
    Additional transports can be written by implementing ``Zend_Mail_Transport_Interface``.
 

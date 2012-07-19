@@ -17,9 +17,7 @@ and ``fromString()``. The concrete implementations of this interface are:
 
 The ``fromFile()`` and ``fromString()`` return a PHP array contains the data of the configuration file.
 
-.. note::
-
-   **Differences from ZF1**
+.. note:: Differences from ZF1
 
    The ``Zend\Config\Reader`` component no longer supports the following features:
 
@@ -39,9 +37,7 @@ in the application by using an array syntax.
 aware of its specific behaviors, which propagate to ``Zend\Config\Reader\Ini``, such as how the special values of
 "``TRUE``", "``FALSE``", "yes", "no", and "``NULL``" are handled.
 
-.. note::
-
-   **Key Separator**
+.. note:: Key Separator
 
    By default, the key separator character is the period character ("**.**"). This can be changed, however, using
    the ``setNestSeparator()`` method. For example:

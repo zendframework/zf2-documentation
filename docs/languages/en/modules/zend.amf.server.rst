@@ -65,9 +65,7 @@ will have ``com/Foo/Bar.php`` append to the end to autoload ``Bar.php``
 
 All *AMF* requests sent to the script will then be handled by the server, and an *AMF* response will be returned.
 
-.. note::
-
-   **All Attached Methods and Functions Need Docblocks**
+.. note:: All Attached Methods and Functions Need Docblocks
 
    Like all other server components in Zend Framework, you must document your class methods using *PHP* docblocks.
    At the minimum, you need to provide annotations for each required argument as well as the return value. As
@@ -239,9 +237,7 @@ To re-enable it, pass a ``TRUE`` boolean value instead:
 
    $server->setProduction(true);
 
-.. note::
-
-   **Disable production mode sparingly!**
+.. note:: Disable production mode sparingly!
 
    We recommend disabling production mode only when in development. Exception messages and backtraces can contain
    sensitive system information that you may not wish for outside parties to access. Even though *AMF* is a binary

@@ -50,9 +50,7 @@ will throw an exception stating that.
 
    Zend_Service_Amazon_Ec2_Ebs::setRegion('us-east-1');
 
-.. note::
-
-   **Set Amazon Ec2 Region**
+.. note:: Set Amazon Ec2 Region
 
    Alternativly you can set the region when you create each class as the third parameter in the constructor method.
 

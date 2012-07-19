@@ -314,9 +314,7 @@ This will generate the following output:
    };
    </script>
 
-.. note::
-
-   **InlineScript Variant**
+.. note:: InlineScript Variant
 
    Many browsers will often block display of a page until all scripts and stylesheets referenced in the **<head>**
    section have loaded. If you have a number of such directives, this can impact how soon somebody can start

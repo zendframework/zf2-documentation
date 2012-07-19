@@ -92,9 +92,7 @@ An example of separator restriction is below:
        // this is an invalid ISBN with separator
    }
 
-.. note::
-
-   **Values without separator**
+.. note:: Values without separator
 
    This will return ``FALSE`` if ``$isbn`` doesn't contain a separator **or** if it's an invalid *ISBN* value.
 

@@ -8,9 +8,7 @@ resource containing client-side scripting code. The ``InlineScript`` helper allo
 derived from :ref:`HeadScript <zend.view.helpers.initial.headscript>`, and any method of that helper is available;
 however, use the ``inlineScript()`` method in place of ``headScript()``.
 
-.. note::
-
-   **Use InlineScript for HTML Body Scripts**
+.. note:: Use InlineScript for HTML Body Scripts
 
    ``InlineScript``, should be used when you wish to include scripts inline in the *HTML* **body**. Placing scripts
    at the end of your document is a good practice for speeding up delivery of your page, particularly when using

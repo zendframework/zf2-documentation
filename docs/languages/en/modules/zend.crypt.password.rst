@@ -47,9 +47,7 @@ Ghz that can be considered secure.
 
 If you want to change the cost parameter of the bcrypt algorithm you can use the ``setCost()`` method.
 
-.. note::
-
-   **Bcrypt with non-ASCII passwords (8-bit characters)**
+.. note:: Bcrypt with non-ASCII passwords (8-bit characters)
 
    The bcrypt implementation used by PHP < 5.3.7 can contains a security flaw if the password uses 8-bit characters
    (`here the security report`_). The impact of this bug was that most (but not all) passwords containing non-ASCII

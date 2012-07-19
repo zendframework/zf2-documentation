@@ -74,9 +74,7 @@ HTML Tag decorator
 The *HTML* tag decorator will by default render every tag in an anchor element, surounded by a li element. The
 anchor itself is fixed and cannot be changed, but the surounding element(s) can.
 
-.. note::
-
-   **URL parameter**
+.. note:: URL parameter
 
    As the *HTML* tag decorator always surounds the tag title with an anchor, you should define an *URL* parameter
    for every tag used in it.

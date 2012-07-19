@@ -10,9 +10,7 @@ they allow you to specify partial view scripts from specific modules.
 A sibling to the ``Partial``, the ``PartialLoop`` view helper allows you to pass iterable data, and render a
 partial for each item.
 
-.. note::
-
-   **PartialLoop Counter**
+.. note:: PartialLoop Counter
 
    The ``PartialLoop`` view helper assigns a variable to the view named **partialCounter** which passes the current
    position of the array to the view script. This provides an easy way to have alternating colors on table rows for
@@ -53,9 +51,7 @@ Which would then render:
        <li>Subject: view partials</li>
    </ul>
 
-.. note::
-
-   **What is a model?**
+.. note:: What is a model?
 
    A model used with the ``Partial`` view helper can be one of the following:
 

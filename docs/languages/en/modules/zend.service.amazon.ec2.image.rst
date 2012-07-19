@@ -68,6 +68,7 @@ owned by other users for which the user has explicit launch permissions.
          +--------+-------------------------------------------------------------------------------------------------------------------------------+
 
 
+
 The list of *AMI*\ s returned can be modified by specifying *AMI* IDs, *AMI* owners, or users with launch
 permissions. If no options are specified, Amazon EC2 returns all *AMI*\ s for which the user has launch
 permissions.
@@ -120,6 +121,7 @@ Modifies an attribute of an *AMI*
          +----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
          |productCodes    |Associates a product code with AMIs. This allows developers to charge users for using AMIs. The user must be signed up for the product before they can launch the AMI. This is a write once attribute; after it is set, it cannot be changed or removed.|
          +----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
 
 
 *modifyAttribute* returns boolean ``TRUE`` or ``FALSE``.

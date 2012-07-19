@@ -133,9 +133,7 @@ Service *API*:
    ...
    $server->handle();
 
-.. note::
-
-   **Important!**
+.. note:: Important!
 
    You should completely describe each method using method docblock if you plan to use autodiscover functionality
    to prepare corresponding Web Service WSDL.
@@ -179,9 +177,7 @@ The second method of defining Web Service *API* is using set of functions and ``
 Request and response objects handling
 -------------------------------------
 
-.. note::
-
-   **Advanced**
+.. note:: Advanced
 
    This section describes advanced request/response processing options and may be skipped.
 

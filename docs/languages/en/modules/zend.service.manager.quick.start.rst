@@ -146,9 +146,7 @@ As such, you have a variety of ways to override service manager configuration se
        ),
    );
 
-.. note::
-
-   **Configuration and PHP**
+.. note:: Configuration and PHP
 
    Typically, you should not have your configuration files create new instances of objects or even closures for
    factories; at the time of configuration, not all autoloading may be in place, and if another configuration

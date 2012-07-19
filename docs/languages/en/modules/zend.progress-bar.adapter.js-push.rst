@@ -100,9 +100,7 @@ Dojo, jQuery etc. For example, there are:
 
 - Prototype: `http://livepipe.net/control/progressbar`_
 
-.. note::
-
-   **Interval of updates**
+.. note:: Interval of updates
 
    You should take care of not sending too many updates, as every update has a min-size of 1kb. This is a
    requirement for the Safari browser to actually render and execute the function call. Internet Explorer has a

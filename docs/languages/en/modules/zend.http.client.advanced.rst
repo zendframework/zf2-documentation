@@ -198,9 +198,7 @@ In the second example, the existing file /tmp/Backup.tar.gz is uploaded to the s
 $_FILES['bufile']. The content type will be guesses automatically if possible - and if not, the content type will
 be set to 'application/octet-stream'.
 
-.. note::
-
-   **Uploading files**
+.. note:: Uploading files
 
    When uploading files, the *HTTP* request content-type is automatically set to multipart/form-data. Keep in mind
    that you must send a POST or PUT request in order to upload files. Most servers will ignore the requests body on
@@ -239,9 +237,7 @@ setRawData(), or with another method: setEncType().
 The data should be available on the server side through *PHP*'s $HTTP_RAW_POST_DATA variable or through the
 php://input stream.
 
-.. note::
-
-   **Using raw POST data**
+.. note:: Using raw POST data
 
    Setting raw POST data for a request will override any POST parameters or file uploads. You should not try to use
    both on the same request. Keep in mind that most servers will ignore the request body unless you send a POST
@@ -295,9 +291,7 @@ When you perform several requests with the same client, but want to make sure al
 are cleared, you should use the resetParameters() method. This ensures that ``GET`` and POST parameters, request
 body and request-specific headers are reset and are not reused in the next request.
 
-.. note::
-
-   **Resetting parameters**
+.. note:: Resetting parameters
 
    Note that non-request specific headers are not reset by default when the ``resetParameters()`` method is used.
    Only the 'Content-length' and 'Content-type' headers are reset. This allows you to set-and-forget headers like

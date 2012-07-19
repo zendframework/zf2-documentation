@@ -56,9 +56,7 @@ Boolean, Integer, Float, Array or even Objects. As already noted Haystack and Va
        // input is invalid
    }
 
-.. note::
-
-   **Type comparison**
+.. note:: Type comparison
 
    You should be aware that also the type of a variable is used for validation. This means that the string **'3'**
    is not identical with the integer **3**. When you want such a non strict validation you must set the ``strict``

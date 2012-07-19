@@ -71,9 +71,7 @@ Once defined, we can simply use these classes:
    $form      = new Foo_Form_Guestbook();
    $guestbook = new Foo_Model_Guestbook();
 
-.. note::
-
-   **Module Resource Autoloading**
+.. note:: Module Resource Autoloading
 
    Zend Framework's *MVC* layer encourages the use of "modules", which are self-contained applications within your
    site. Modules typically have a number of resource types by default, and Zend Framework even :ref:`recommends a

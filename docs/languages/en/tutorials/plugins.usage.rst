@@ -54,9 +54,7 @@ When the element needs to validate, it will then request the plugin class from t
 validators will resolve to ``Zend_Validate_NotEmpty`` and ``Zend_Validate_Int``, respectively; the next two will
 resolve to ``Foo_Validate_Even`` and ``Foo_Validate_Dozens``, respectively.
 
-.. note::
-
-   **What happens if a plugin is not found?**
+.. note:: What happens if a plugin is not found?
 
    What happens if a plugin is requested, but the PluginLoader is unable to find a class matching it? For instance,
    in the above example, if we registered the plugin "Bar" with the element, what would happen?

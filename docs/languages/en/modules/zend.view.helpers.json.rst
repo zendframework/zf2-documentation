@@ -23,9 +23,7 @@ Usage of the *JSON* helper is very straightforward:
 
    <?php echo $this->json($this->data) ?>
 
-.. note::
-
-   **Keeping layouts and enabling encoding using Zend_Json_Expr**
+.. note:: Keeping layouts and enabling encoding using Zend_Json_Expr
 
    Each method in the *JSON* helper accepts a second, optional argument. This second argument can be a boolean flag
    to enable or disable layouts, or an array of options that will be passed to ``Zend_Json::encode()`` and used

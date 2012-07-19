@@ -9,9 +9,7 @@ network traffic should be delivered to your instance. All other ingress traffic 
 You can modify rules for a group at any time. The new rules are automatically enforced for all running instances
 and instances launched in the future.
 
-.. note::
-
-   **Maximum Security Groups**
+.. note:: Maximum Security Groups
 
    You can create up to 100 security groups.
 

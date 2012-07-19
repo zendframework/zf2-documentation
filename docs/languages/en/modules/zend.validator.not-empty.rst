@@ -32,9 +32,7 @@ function. In particular, this validator will evaluate both the integer **0** and
    $result = $valid->isValid($value);
    // returns false
 
-.. note::
-
-   **Default behaviour differs from PHP**
+.. note:: Default behaviour differs from PHP
 
    Without providing configuration, ``Zend\Validator\NotEmpty``'s behaviour differs from *PHP*.
 

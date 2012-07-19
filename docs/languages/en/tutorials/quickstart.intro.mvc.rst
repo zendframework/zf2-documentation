@@ -37,9 +37,7 @@ part of your application with your business logic in another and your data acces
 developers have found this well-defined separation indispensable for keeping their code organized, especially when
 more than one developer is working on the same application.
 
-.. note::
-
-   **More Information**
+.. note:: More Information
 
    Let's break down the pattern and take a look at the individual pieces:
 

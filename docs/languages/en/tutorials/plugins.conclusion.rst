@@ -19,9 +19,7 @@ many components within the framework. Plugins are used in a variety of places:
 And several more places, besides. Learn the concepts early so you can leverage this important extension point in
 Zend Framework.
 
-.. note::
-
-   **Caveat**
+.. note:: Caveat
 
    We'll note here that ``Zend_Controller_Front`` has a plugin system - but it does not adhere to any of the
    guidelines offerred in this tutorial. The plugins registered with the front controller must be instantiated

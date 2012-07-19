@@ -305,9 +305,7 @@ helps prevent unintentional output of code, which can result in security problem
    As shown above, you can retrieve the unescaped value using the ``getUnescaped()`` method, but you must write
    code to use the value safely, and avoid security issues such as vulnerability to cross-site scripting attacks.
 
-.. warning::
-
-   **Escaping unvalidated fields**
+.. warning:: Escaping unvalidated fields
 
    As mentioned before ``getEscaped()`` returns only validated fields. Fields which do not have an associated
    validator can not be received this way. Still, there is a possible way. You can add a empty validator for all

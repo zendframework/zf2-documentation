@@ -47,9 +47,7 @@ We could use the application wide locale. This means that when no option is give
        // IBAN is not valid
    }
 
-.. note::
-
-   **Application wide locale**
+.. note:: Application wide locale
 
    Of course this works only when an application wide locale was set within the registry previously. Otherwise
    ``Locale`` will try to use the locale which the client sends or, when non has been send, it uses the environment
@@ -97,9 +95,7 @@ To validate against a defined country, you just need to give the wished locale. 
        // IBAN is not valid
    }
 
-.. note::
-
-   **Use full qualified locales**
+.. note:: Use full qualified locales
 
    You must give a full qualified locale, otherwise the country could not be detected correct because languages are
    spoken in multiple countries.

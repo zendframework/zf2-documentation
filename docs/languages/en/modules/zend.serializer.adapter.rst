@@ -186,16 +186,12 @@ executed using `eval`_.
 
 There are no configuration options for this adapter.
 
-.. warning::
-
-   **Unserializing objects**
+.. warning:: Unserializing objects
 
    Objects will be serialized using the `\__set_state`_ magic method. If the class doesn't implement this method, a
    fatal error will occur during execution.
 
-.. warning::
-
-   **Uses eval()**
+.. warning:: Uses eval()
 
    The ``PhpCode`` adapter utilizes ``eval()`` to unserialize. This introduces both a performance and potential
    security issue as a new process will be executed. Typically, you should use the ``PhpSerialize`` adapter unless

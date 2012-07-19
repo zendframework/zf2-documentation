@@ -39,17 +39,13 @@ A basic example of usage is below:
        // ip is invalid; print the reasons
    }
 
-.. note::
-
-   **Invalid IP addresses**
+.. note:: Invalid IP addresses
 
    Keep in mind that ``Zend\Validator\Ip`` only validates IP addresses. Addresses like '``mydomain.com``' or
    '``192.168.50.1/index.html``' are no valid IP addresses. They are either hostnames or valid *URL*\ s but not IP
    addresses.
 
-.. note::
-
-   **IPv6/IPvFuture validation**
+.. note:: IPv6/IPvFuture validation
 
    ``Zend\Validator\Ip`` validates IPv6/IPvFuture addresses with regex. The reason is that the filters and methods
    from *PHP* itself don't follow the *RFC*. Many other available classes also don't follow it.
@@ -75,9 +71,7 @@ You can do this either by giving the option to the constructor or by using ``set
        // ip is no ipv4 address
    }
 
-.. note::
-
-   **Default behaviour**
+.. note:: Default behaviour
 
    The default behaviour which ``Zend\Validator\Ip`` follows is to allow both standards.
 

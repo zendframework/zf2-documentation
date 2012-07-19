@@ -30,9 +30,7 @@ It may be helpful to understand that ``Zend_Debug::dump()`` method wraps the *PH
 output stream is detected as a web presentation, the output of ``var_dump()`` is escaped using
 `htmlspecialchars()`_ and wrapped with (X)HTML ``<pre>`` tags.
 
-.. tip::
-
-   **Debugging with Zend_Log**
+.. tip:: Debugging with Zend_Log
 
    Using ``Zend_Debug::dump()`` is best for ad hoc debugging during software development. You can add code to dump
    a variable and then remove the code very quickly.

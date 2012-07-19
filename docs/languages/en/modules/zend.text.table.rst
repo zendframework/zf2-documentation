@@ -8,9 +8,7 @@ helpful, if you either want to send structured data in text emails, which are us
 display table information in a CLI application. ``Zend_Text_Table`` supports multi-line columns, colspan and align
 as well.
 
-.. note::
-
-   **Encoding**
+.. note:: Encoding
 
    ``Zend_Text_Table`` expects your strings to be UTF-8 encoded by default. If this is not the case, you can either
    supply the character encoding as a parameter to the ``constructor()`` or the ``setContent()`` method of

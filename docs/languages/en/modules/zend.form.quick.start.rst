@@ -821,9 +821,7 @@ To use the above, we need ``Zend\Form\Annotation\AnnotationBuilder``:
 At this point, you have a form with the appropriate hydrator attached, an input filter with the appropriate inputs,
 and all elements.
 
-.. note::
-
-   **You're not done**
+.. note:: You're not done
 
    In all liklihood, you'll need to add some more elements to the form you construct. For example, you'll want a
    submit button, and likely a CSRF-protection element. We recommend creating a fieldset with common elements such

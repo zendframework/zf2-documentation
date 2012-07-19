@@ -43,9 +43,7 @@ Or retrieving the document from the index:
 
    $doc = $index->getDocument($id);
 
-.. note::
-
-   **Internal Document Identifiers**
+.. note:: Internal Document Identifiers
 
    Important note! Internal document identifiers may be changed by index optimization or the auto-optimization
    process, but it's never changed within a single script's execution unless the ``addDocument()`` (which may

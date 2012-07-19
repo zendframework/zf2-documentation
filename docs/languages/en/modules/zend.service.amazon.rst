@@ -34,9 +34,7 @@ key. To get a key and for more information, please visit the `Amazon Web Service
 2009 you can only use the Amazon Product Advertising *API* through ``Zend_Service_Amazon``, when specifying the
 additional secret key.
 
-.. note::
-
-   **Attention**
+.. note:: Attention
 
    Your Amazon developer *API* and secret keys are linked to your Amazon identity, so take appropriate measures to
    keep them private.
@@ -94,9 +92,7 @@ different country, simply specify the appropriate country code string as the sec
    // Connect to Amazon in Japan
    $amazon = new Zend_Service_Amazon('AMAZON_API_KEY', 'JP', 'AMAZON_SECRET_KEY');
 
-.. note::
-
-   **Country codes**
+.. note:: Country codes
 
    Valid country codes are: *CA*, *DE*, *FR*, *JP*, *UK*, and *US*.
 
@@ -120,9 +116,7 @@ The ``itemLookup()`` method provides the ability to fetch a particular Amazon it
 The ``itemLookup()`` method also accepts an optional second parameter for handling search options. For full
 details, including a list of available options, please see the `relevant Amazon documentation`_.
 
-.. note::
-
-   **Image information**
+.. note:: Image information
 
    To retrieve images information for your search results, you must set *ResponseGroup* option to *Medium* or
    *Large*.
@@ -350,9 +344,7 @@ Zend_Service_Amazon_ResultSet
 ``Zend_Service_Amazon_ResultSet`` objects are returned by :ref:`Zend_Service_Amazon::itemSearch()
 <zend.service.amazon.itemsearch>` and allow you to easily handle the multiple results returned.
 
-.. note::
-
-   **SeekableIterator**
+.. note:: SeekableIterator
 
    Implements the *SeekableIterator* for easy iteration (e.g. using *foreach*), as well as direct access to a
    specific result using ``seek()``.

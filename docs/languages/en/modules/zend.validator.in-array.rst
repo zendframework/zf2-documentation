@@ -147,15 +147,11 @@ Your array will then be validated recursive to see if the given value is contain
        // no value found
    }
 
-.. note::
-
-   **Default setting for recursion**
+.. note:: Default setting for recursion
 
    Per default the recursive validation is turned off.
 
-.. note::
-
-   **Option keys within the haystack**
+.. note:: Option keys within the haystack
 
    When you are using the keys '``haystack``', '``strict``' or '``recursive``' within your haystack, then you must
    wrap the ``haystack`` key.

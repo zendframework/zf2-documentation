@@ -130,9 +130,7 @@ The third parameter to the ``Zend_Console_Getopt`` constructor is an array of co
 behavior of the object instance returned. You can also specify configuration options using the ``setOptions()``
 method, or you can set an individual option using the ``setOption()`` method.
 
-.. note::
-
-   **Clarifying the Term "option"**
+.. note:: Clarifying the Term "option"
 
    The term "option" is used for configuration of the ``Zend_Console_Getopt`` class to match terminology used
    elsewhere in Zend Framework. These are not the same things as the command-line options that are parsed by the

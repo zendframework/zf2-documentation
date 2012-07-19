@@ -38,9 +38,7 @@ for the management of instances (servers) in a cloud infrastructure. These basic
 
 - **deploy of an instance (run arbitrary shell script on an instance)**;
 
-.. note::
-
-   **Deployment of an instance**
+.. note:: Deployment of an instance
 
    For the deploy operations we used the `SSH2 PHP extension (ext/ssh2)`_ to connect on an instance and execute
    shell script. The SSH2 extensions can be used to connect only to Gnu/Linux instances (servers).
@@ -125,9 +123,7 @@ Available Methods
    Run arbitrary shell scripts on an instance. Return a string or an array contains all the standard output (errors
    included) of the scripts executed in the instance.
 
-      .. note::
-
-         **Requirement**
+      .. note:: Requirement
 
          In order to use the deployInstance method you have to install the SSH2 extension (ext/ssh2) of PHP. The
          SSH2 extensions can be used to connect only to Gnu/Linux instances (servers). For more info about the SSH2

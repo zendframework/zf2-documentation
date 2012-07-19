@@ -51,9 +51,7 @@ environment. Simply set the wished encoding when initiating the ``StringToLower`
    // or do this afterwards
    $filter->setEncoding('ISO-8859-1');
 
-.. note::
-
-   **Setting wrong encodings**
+.. note:: Setting wrong encodings
 
    Be aware that you will get an exception when you want to set an encoding and the mbstring extension is not
    available in your environment.

@@ -152,9 +152,7 @@ instance, via dependency injection), we could change the above example to attach
    // results in log message:
    // bar called on Foo, using params {"baz" : "baz", "bat" : "bat"}"
 
-.. note::
-
-   **StaticEventManager**
+.. note:: StaticEventManager
 
    As of 2.0.0beta3, you can use the ``StaticEventManager`` singleton as a ``SharedEventCollection``. As such, you
    do not need to worry about where and how to get access to the ``SharedEventCollection``; it's globally available

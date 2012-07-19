@@ -15,9 +15,7 @@ to enable this feature.
 For more information on the Google Apps Provisioning *API*, including instructions for enabling *API* access, refer
 to the `Provisioning API V2.0 Reference`_.
 
-.. note::
-
-   **Authentication**
+.. note:: Authentication
 
    The Provisioning *API* does not support authentication via AuthSub and anonymous access is not permitted. All
    *HTTP* connections must be authenticated using ClientAuth authentication.

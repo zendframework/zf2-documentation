@@ -1489,9 +1489,7 @@ Render the sitemap using a maximum depth of 1.
      </url>
    </urlset>
 
-.. note::
-
-   **UTF-8 encoding used by default**
+.. note:: UTF-8 encoding used by default
 
    By default, Zend Framework uses *UTF-8* as its default encoding, and, specific to this case, ``Zend_View`` does
    as well. Character encoding can be set differently on the view object itself using the ``setEncoding()`` method

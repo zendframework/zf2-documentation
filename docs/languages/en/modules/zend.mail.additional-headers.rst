@@ -18,9 +18,7 @@ Additional Headers
 
 
 
-.. note::
-
-   **Return-Path**
+.. note:: Return-Path
 
    If you set Return-Path on your mail, see :ref:`Configuring sendmail transport
    <zend.mail.introduction.sendmail>`. Unfortunately, ``setReturnPath($email)`` method does not perform this
