@@ -123,6 +123,7 @@ Available Methods
 
 **send**
    ``send(Zend\Mail\Message $message)``
+
    Send a mail message.
 
    Returns void

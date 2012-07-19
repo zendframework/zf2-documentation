@@ -22,6 +22,7 @@ Available Methods
 
 **getDiskCapacity**
    ``getDiskCapacity(string $path)``
+
    Get disk capacity
 
    Returns array
@@ -30,6 +31,7 @@ Available Methods
 
 **getPhpMemoryCapacity**
    ``getPhpMemoryCapacity()``
+
    Get php memory capacity
 
    Returns array
@@ -38,6 +40,7 @@ Available Methods
 
 **getSystemMemoryCapacity**
    ``getSystemMemoryCapacity()``
+
    Get system memory capacity
 
    Returns array
@@ -46,6 +49,7 @@ Available Methods
 
 **generateHash**
    ``generateHash(string $algo, string $data, bool $raw = false)``
+
    Generate a hash value.
 
    This helper adds the virtual hash algo "strlen".
@@ -56,6 +60,7 @@ Available Methods
 
 **getHashAlgos**
    ``getHashAlgos()``
+
    Return a list of registered hashing algorithms, incl. the virtual hash algo "strlen".
 
    Returns string

@@ -51,6 +51,7 @@ Available Methods
 
 **setName**
    ``setName(string $name)``
+
    Set the name for this element.
 
    Returns ``Zend\Form\Element``
@@ -59,6 +60,7 @@ Available Methods
 
 **getName**
    ``getName()``
+
    Return the name for this element.
 
    Returns string
@@ -67,6 +69,7 @@ Available Methods
 
 **setLabel**
    ``setLabel(string $label)``
+
    Set the label content for this element.
 
    Returns ``Zend\Form\Element``
@@ -75,6 +78,7 @@ Available Methods
 
 **getLabel**
    ``getLabel()``
+
    Return the label content for this element.
 
    Returns string
@@ -83,6 +87,7 @@ Available Methods
 
 **setLabelAttributes**
    ``setLabelAttributes(array $labelAttributes)``
+
    Set the attributes to use with the label.
 
    Returns ``Zend\Form\Element``
@@ -91,6 +96,7 @@ Available Methods
 
 **getLabelAttributes**
    ``getLabelAttributes()``
+
    Return the attributes to use with the label.
 
    Returns array
@@ -99,6 +105,7 @@ Available Methods
 
 **setOptions**
    ``setOptions(array $options)``
+
    Set options for an element. Accepted options are: ``"label"`` and ``"label_attributes"``, which call
    ``setLabel`` and ``setLabelAttributes``, respectively.
 
@@ -108,6 +115,7 @@ Available Methods
 
 **setAttribute**
    ``setAttribute(string $key, mixed $value)``
+
    Set a single element attribute.
 
    Returns ``Zend\Form\Element``
@@ -116,6 +124,7 @@ Available Methods
 
 **getAttribute**
    ``getAttribute(string $key)``
+
    Retrieve a single element attribute.
 
    Returns mixed
@@ -124,6 +133,7 @@ Available Methods
 
 **hasAttribute**
    ``hasAttribute(string $key)``
+
    Check if a specific attribute exists for this element.
 
    Returns boolean
@@ -132,6 +142,7 @@ Available Methods
 
 **setAttributes**
    ``setAttributes(array|Traversable $arrayOrTraversable)``
+
    Set many attributes at once. Implementation will decide if this will overwrite or merge.
 
    Returns ``Zend\Form\Element``
@@ -140,6 +151,7 @@ Available Methods
 
 **getAttributes**
    ``getAttributes()``
+
    Retrieve all attributes at once.
 
    Returns array|Traversable
@@ -148,6 +160,7 @@ Available Methods
 
 **clearAttributes**
    ``clearAttributes()``
+
    Clear all attributes for this element.
 
    Returns ``Zend\Form\Element``
@@ -156,6 +169,7 @@ Available Methods
 
 **setMessages**
    ``setMessages(array|Traversable $messages)``
+
    Set a list of messages to report when validation fails.
 
    Returns ``Zend\Form\Element``
@@ -164,6 +178,7 @@ Available Methods
 
 **setMessages**
    ``getMessages()``
+
    Returns a list of validation failure messages, if any.
 
    Returns array|Traversable

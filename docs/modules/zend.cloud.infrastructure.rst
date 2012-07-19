@@ -108,6 +108,7 @@ Available Methods
 
 **createInstance**
    ``createInstance(string $name, array $options)``
+
    Create an instance. The return value is an instance of ``Zend\Cloud\Infrastructure\Instance``. In case of error
    the return is **false**.
 
@@ -120,6 +121,7 @@ Available Methods
 
 **deployInstance**
    ``deployInstance(string $id, array $param, string|array $cmd)``
+
    Run arbitrary shell scripts on an instance. Return a string or an array contains all the standard output (errors
    included) of the scripts executed in the instance.
 
@@ -145,6 +147,7 @@ Available Methods
 
 **destroyInstance**
    ``destroyInstance(string $id)``
+
    Destroy an instance. Return **true** in case of success, **false** in case of error.
 
    **$id** is the ID of the instance
@@ -153,30 +156,35 @@ Available Methods
 
 **getAdapter**
    ``getAdapter()``
+
    Return the adapter object.
 
 .. _zend.cloud.infrastructure.methods.get-adapter-result:
 
 **getAdapterResult**
    ``getAdapterResult()``
+
    Return the original adapter result.
 
 .. _zend.cloud.infrastructure.methods.get-last-http-request:
 
 **getLastHttpRequest**
    ``getLastHttpRequest()``
+
    Return the last HTTP Request of the adapter.
 
 .. _zend.cloud.infrastructure.methods.get-last-http-response:
 
 **getLastHttpResponse**
    ``getLastHttpResponse()``
+
    Return the last HTTP Response of the adapter.
 
 .. _zend.cloud.infrastructure.methods.images-instance:
 
 **imagesInstance**
    ``imagesInstance()``
+
    Return all the available images to use for an instance. The return value is an instance of
    ``Zend\Cloud\Infrastructure\ImageList``
 
@@ -184,6 +192,7 @@ Available Methods
 
 **listInstances**
    ``listInstances()``
+
    Return the list of of the available instances. The return is an instance of
    ``Zend\Cloud\Infrastructure\InstanceList``.
 
@@ -191,6 +200,7 @@ Available Methods
 
 **monitorInstance**
    ``monitorInstance(string $id,string $metric,array $options=null)``
+
    Monitor an instance. Return the system information about the metric of an instance. The return value is an array
    that contains samples of values, timestamp and the elaboration of the average value.
 
@@ -206,6 +216,7 @@ Available Methods
 
 **publicDnsInstance**
    ``publicDnsInstance(string $id)``
+
    Return the public DNS name or the IP address of the instance. The return value is a string. In case of error the
    return is **false**.
 
@@ -215,6 +226,7 @@ Available Methods
 
 **rebootInstance**
    ``rebootInstance(string $id)``
+
    Reboot an instance. Return **true** in case of success, **false** in case of error.
 
    **$id** is the ID of the instance
@@ -223,6 +235,7 @@ Available Methods
 
 **startInstance**
    ``startInstance(string $id)``
+
    Start an instance. Return **true** in case of success, **false** in case of error.
 
    **$id** is the ID of the instance
@@ -231,6 +244,7 @@ Available Methods
 
 **statusInstance**
    ``statusInstance(string $id)``
+
    Get the status of an instance. The return value is a string. The available status are reported in the following
    constants of the class ``Zend\Cloud\Infrastructure\Instance``: STATUS_STOPPED, STATUS_RUNNING,
    STATUS_SHUTTING_DOWN, STATUS_REBOOTING, STATUS_TERMINATED, STATUS_PENDING, STATUS_REBUILD. In case of error the
@@ -242,6 +256,7 @@ Available Methods
 
 **stopInstance**
    ``stopInstance(string $id)``
+
    Stop an instance. Return **true** in case of success, **false** in case of error.
 
    **$id** is the ID of the instance
@@ -250,6 +265,7 @@ Available Methods
 
 **waitStatusInstance**
    ``waitStatusInstance(string $id, string $status,integer $timeout=30)``
+
    Wait the status change of an instance for a maximum time of **n** seconds. Return **true** if the status changes
    as expected, **false** if not.
 
@@ -264,6 +280,7 @@ Available Methods
 
 **zonesInstance**
    ``zonesInstance()``
+
    Return all the available zones for an instance. The return value is an array.
 
 .. _zend.cloud.infrastructure.examples:

@@ -183,6 +183,7 @@ Available Methods
 
 **isValid**
    ``isValid()``
+
    Is the message valid?
 
    If we don't have any From addresses, we're invalid, according to RFC2822.
@@ -193,6 +194,7 @@ Available Methods
 
 **setEncoding**
    ``setEncoding(string $encoding)``
+
    Set the message encoding.
 
    Implements a fluent interface.
@@ -201,6 +203,7 @@ Available Methods
 
 **getEncoding**
    ``getEncoding()``
+
    Get the message encoding.
 
    Returns string.
@@ -209,6 +212,7 @@ Available Methods
 
 **setHeaders**
    ``setHeaders(Zend\Mail\Headers $headers)``
+
    Compose headers.
 
    Implements a fluent interface.
@@ -217,6 +221,7 @@ Available Methods
 
 **getHeaders**
    ``getHeaders()``
+
    Access headers collection.
 
    Lazy-loads a Zend\\Mail\\Headers instance if none is already attached.
@@ -227,6 +232,7 @@ Available Methods
 
 **setFrom**
    ``setFrom(string|AddressDescription|array|Zend\Mail\AddressList|Traversable $emailOrAddressList, string|null $name)``
+
    Set (overwrite) From addresses.
 
    Implements a fluent interface.
@@ -235,6 +241,7 @@ Available Methods
 
 **addFrom**
    ``addFrom(string|Zend\Mail\Address|array|Zend\Mail\AddressList|Traversable $emailOrAddressOrList, string|null $name)``
+
    Add a "From" address.
 
    Implements a fluent interface.
@@ -243,6 +250,7 @@ Available Methods
 
 **from**
    ``from()``
+
    Retrieve list of From senders
 
    Returns Zend\\Mail\\AddressList instance.
@@ -251,6 +259,7 @@ Available Methods
 
 **setTo**
    ``setTo(string|AddressDescription|array|Zend\Mail\AddressList|Traversable $emailOrAddressList, null|string $name)``
+
    Overwrite the address list in the To recipients.
 
    Implements a fluent interface.
@@ -259,6 +268,7 @@ Available Methods
 
 **addTo**
    ``addTo(string|AddressDescription|array|Zend\Mail\AddressList|Traversable $emailOrAddressOrList, null|string $name)``
+
    Add one or more addresses to the To recipients.
 
    Appends to the list.
@@ -269,6 +279,7 @@ Available Methods
 
 **to**
    ``to()``
+
    Access the address list of the To header.
 
    Lazy-loads a Zend\\Mail\\AddressList and populates the To header if not previously done.
@@ -279,6 +290,7 @@ Available Methods
 
 **setCc**
    ``setCc(string|AddressDescription|array|Zend\Mail\AddressList|Traversable $emailOrAddressList, string|null $name)``
+
    Set (overwrite) CC addresses.
 
    Implements a fluent interface.
@@ -287,6 +299,7 @@ Available Methods
 
 **addCc**
    ``addCc(string|Zend\Mail\Address|array|Zend\Mail\AddressList|Traversable $emailOrAddressOrList, string|null $name)``
+
    Add a "Cc" address.
 
    Implements a fluent interface.
@@ -295,6 +308,7 @@ Available Methods
 
 **cc**
    ``cc()``
+
    Retrieve list of CC recipients
 
    Lazy-loads a Zend\\Mail\\AddressList and populates the Cc header if not previously done.
@@ -305,6 +319,7 @@ Available Methods
 
 **setBcc**
    ``setBcc(string|AddressDescription|array|Zend\Mail\AddressList|Traversable $emailOrAddressList, string|null $name)``
+
    Set (overwrite) BCC addresses.
 
    Implements a fluent interface.
@@ -313,6 +328,7 @@ Available Methods
 
 **addBcc**
    ``addBcc(string|Zend\Mail\Address|array|Zend\Mail\AddressList|Traversable $emailOrAddressOrList, string|null $name)``
+
    Add a "Bcc" address.
 
    Implements a fluent interface.
@@ -321,6 +337,7 @@ Available Methods
 
 **bcc**
    ``bcc()``
+
    Retrieve list of BCC recipients.
 
    Lazy-loads a Zend\\Mail\\AddressList and populates the Bcc header if not previously done.
@@ -331,6 +348,7 @@ Available Methods
 
 **setReplyTo**
    ``setReplyTo(string|AddressDescription|array|Zend\Mail\AddressList|Traversable $emailOrAddressList, null|string $name)``
+
    Overwrite the address list in the Reply-To recipients.
 
    Implements a fluent interface.
@@ -339,6 +357,7 @@ Available Methods
 
 **addReplyTo**
    ``addReplyTo(string|AddressDescription|array|Zend\Mail\AddressList|Traversable $emailOrAddressOrList, null|string $name)``
+
    Add one or more addresses to the Reply-To recipients.
 
    Implements a fluent interface.
@@ -347,6 +366,7 @@ Available Methods
 
 **replyTo**
    ``replyTo()``
+
    Access the address list of the Reply-To header
 
    Lazy-loads a Zend\\Mail\\AddressList and populates the Reply-To header if not previously done.
@@ -357,6 +377,7 @@ Available Methods
 
 **setSender**
    ``setSender(mixed $emailOrAddress, mixed $name)``
+
    Set the message envelope Sender header.
 
    Implements a fluent interface.
@@ -365,6 +386,7 @@ Available Methods
 
 **getSender**
    ``getSender()``
+
    Retrieve the sender address, if any.
 
    Returns null or a Zend\\Mail\\AddressDescription instance.
@@ -373,6 +395,7 @@ Available Methods
 
 **setSubject**
    ``setSubject(string $subject)``
+
    Set the message subject header value.
 
    Implements a fluent interface.
@@ -381,6 +404,7 @@ Available Methods
 
 **getSubject**
    ``getSubject()``
+
    Get the message subject header value.
 
    Returns null or a string.
@@ -389,6 +413,7 @@ Available Methods
 
 **setBody**
    ``setBody(null|string|Zend\Mime\Message|object $body)``
+
    Set the message body.
 
    Implements a fluent interface.
@@ -397,6 +422,7 @@ Available Methods
 
 **getBoidy**
    ``getBody()``
+
    Return the currently set message body.
 
    Returns null, a string, or an object.
@@ -405,6 +431,7 @@ Available Methods
 
 **getBodyText**
    ``getBodyText()``
+
    Get the string-serialized message body text.
 
    Returns null or a string.
@@ -413,6 +440,7 @@ Available Methods
 
 **toString**
    ``toString()``
+
    Serialize to string.
 
    Returns string.

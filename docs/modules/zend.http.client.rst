@@ -99,6 +99,7 @@ Available Methods
 
 **__construct**
    ``__construct(string $uri, array $config)``
+
    Constructor
 
 
@@ -109,6 +110,7 @@ Available Methods
 
 **setConfig**
    ``setConfig(Config|array $config = array ( ))``
+
    Set configuration parameters for this HTTP client
 
 
@@ -119,6 +121,7 @@ Available Methods
 
 **setAdapter**
    ``setAdapter(Zend\Http\Client\Adapter|string $adapter)``
+
    Load the connection adapter
 
    While this method is not called more than one for a client, it is seperated from ->request() to preserve logic
@@ -130,6 +133,7 @@ Available Methods
 
 **getAdapter**
    ``getAdapter()``
+
    Load the connection adapter
 
 
@@ -140,6 +144,7 @@ Available Methods
 
 **getRequest**
    ``getRequest()``
+
    Get Request
 
 
@@ -150,6 +155,7 @@ Available Methods
 
 **getResponse**
    ``getResponse()``
+
    Get Response
 
 
@@ -160,6 +166,7 @@ Available Methods
 
 **setRequest**
    ``setRequest(Zend\Http\Zend\Http\Request $request)``
+
    Set request
 
 
@@ -170,6 +177,7 @@ Available Methods
 
 **setResponse**
    ``setResponse(Zend\Http\Zend\Http\Response $response)``
+
    Set response
 
 
@@ -180,6 +188,7 @@ Available Methods
 
 **getLastRequest**
    ``getLastRequest()``
+
    Get the last request (as a string)
 
 
@@ -190,6 +199,7 @@ Available Methods
 
 **getLastResponse**
    ``getLastResponse()``
+
    Get the last response (as a string)
 
 
@@ -200,6 +210,7 @@ Available Methods
 
 **getRedirectionsCount**
    ``getRedirectionsCount()``
+
    Get the redirections count
 
 
@@ -210,6 +221,7 @@ Available Methods
 
 **setUri**
    ``setUri(string|Zend\Http\Zend\Uri\Http $uri)``
+
    Set Uri (to the request)
 
 
@@ -220,6 +232,7 @@ Available Methods
 
 **getUri**
    ``getUri()``
+
    Get uri (from the request)
 
 
@@ -230,6 +243,7 @@ Available Methods
 
 **setMethod**
    ``setMethod(string $method)``
+
    Set the HTTP method (to the request)
 
 
@@ -240,6 +254,7 @@ Available Methods
 
 **getMethod**
    ``getMethod()``
+
    Get the HTTP method
 
 
@@ -250,6 +265,7 @@ Available Methods
 
 **setEncType**
    ``setEncType(string $encType, string $boundary)``
+
    Set the encoding type and the boundary (if any)
 
 
@@ -260,6 +276,7 @@ Available Methods
 
 **getEncType**
    ``getEncType()``
+
    Get the encoding type
 
 
@@ -270,6 +287,7 @@ Available Methods
 
 **setRawBody**
    ``setRawBody(string $body)``
+
    Set raw body (for advanced use cases)
 
 
@@ -280,6 +298,7 @@ Available Methods
 
 **setParameterPost**
    ``setParameterPost(array $post)``
+
    Set the POST parameters
 
 
@@ -290,6 +309,7 @@ Available Methods
 
 **setParameterGet**
    ``setParameterGet(array $query)``
+
    Set the GET parameters
 
 
@@ -300,6 +320,7 @@ Available Methods
 
 **getCookies**
    ``getCookies()``
+
    Return the current cookies
 
 
@@ -310,6 +331,7 @@ Available Methods
 
 **addCookie**
    ``addCookie(ArrayIterator|SetCookie|string $cookie, string $value, string $domain, string $expire, string $path, boolean $secure = false, boolean $httponly = true)``
+
    Add a cookie
 
 
@@ -320,6 +342,7 @@ Available Methods
 
 **setCookies**
    ``setCookies(array $cookies)``
+
    Set an array of cookies
 
 
@@ -330,6 +353,7 @@ Available Methods
 
 **clearCookies**
    ``clearCookies()``
+
    Clear all the cookies
 
 
@@ -340,6 +364,7 @@ Available Methods
 
 **setHeaders**
    ``setHeaders(Headers|array $headers)``
+
    Set the headers (for the request)
 
 
@@ -350,6 +375,7 @@ Available Methods
 
 **hasHeader**
    ``hasHeader(string $name)``
+
    Check if exists the header type specified
 
 
@@ -360,6 +386,7 @@ Available Methods
 
 **getHeader**
    ``getHeader(string $name)``
+
    Get the header value of the request
 
 
@@ -370,6 +397,7 @@ Available Methods
 
 **setStream**
    ``setStream(string|boolean $streamfile = true)``
+
    Set streaming for received data
 
 
@@ -380,6 +408,7 @@ Available Methods
 
 **getStream**
    ``getStream()``
+
    Get status of streaming for received data
 
 
@@ -390,6 +419,7 @@ Available Methods
 
 **setAuth**
    ``setAuth(string $user, string $password, string $type = 'basic')``
+
    Create a HTTP authentication "Authorization:" header according to the specified user, password and
    authentication method.
 
@@ -401,6 +431,7 @@ Available Methods
 
 **resetParameters**
    ``resetParameters()``
+
    Reset all the HTTP parameters (auth,cookies,request, response, etc)
 
 
@@ -411,6 +442,7 @@ Available Methods
 
 **send**
    ``send(Request $request)``
+
    Send HTTP request
 
 
@@ -421,6 +453,7 @@ Available Methods
 
 **setFileUpload**
    ``setFileUpload(string $filename, string $formname, string $data, string $ctype)``
+
    Set a file to upload (using a POST request)
 
    Can be used in two ways: 1. $data is null (default): $filename is treated as the name if a local file which will
@@ -434,6 +467,7 @@ Available Methods
 
 **removeFileUpload**
    ``removeFileUpload(string $filename)``
+
    Remove a file to upload
 
 
@@ -444,6 +478,7 @@ Available Methods
 
 **encodeFormData**
    ``encodeFormData(string $boundary, string $name, mixed $value, string $filename, array $headers = array ( ))``
+
    Encode data to a multipart/form-data part suitable for a POST request.
 
 

@@ -300,6 +300,7 @@ Available Methods
 
 **setOptions**
    ``setOptions(Zend\Cache\Pattern\PatternOptions $options)``
+
    Set pattern options
 
    Returns Zend\\Cache\\Pattern
@@ -308,6 +309,7 @@ Available Methods
 
 **getOptions**
    ``getOptions()``
+
    Get all pattern options
 
    Returns ``PatternOptions`` instance.

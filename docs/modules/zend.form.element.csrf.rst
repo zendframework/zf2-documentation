@@ -36,6 +36,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 
 **getInputSpecification**
    ``getInputSpecification()``
+
    Returns a input filter specification, which includes a ``Zend\Filter\StringTrim`` filter and a
    ``Zend\Validator\Csrf`` to validate the *CSRF* value.
 

@@ -78,6 +78,7 @@ Available Methods
 
 **Request::fromString**
    ``Request::fromString(string $string)``
+
    A factory that produces a Request object from a well-formed Http Request string
 
    Returns ``Zend\Http\Request``
@@ -86,6 +87,7 @@ Available Methods
 
 **setMethod**
    ``setMethod(string $method)``
+
    Set the method for this request.
 
    Returns ``Zend\Http\Request``
@@ -94,6 +96,7 @@ Available Methods
 
 **getMethod**
    ``getMethod()``
+
    Return the method for this request.
 
    Returns string.
@@ -102,6 +105,7 @@ Available Methods
 
 **setUri**
    ``setUri(string|\Zend\Stdlib\RequestInterface|\Zend\Stdlib\Message|\Zend\Stdlib\ParametersInterface|\Zend\Stdlib\Parameters|\Zend\Uri\Http $uri)``
+
    Set the URI/URL for this request; this can be a string or an instance of ``Zend\Uri\Http``.
 
    Returns Zend\\Http\\Request
@@ -110,6 +114,7 @@ Available Methods
 
 **getUri**
    ``getUri()``
+
    Return the URI for this request object.
 
    Returns string.
@@ -118,6 +123,7 @@ Available Methods
 
 **uri**
    ``uri()``
+
    Return the URI for this request object as an instance of ``Zend\Uri\Http``.
 
    Returns ``Zend\Uri\Http``.
@@ -126,6 +132,7 @@ Available Methods
 
 **setVersion**
    ``setVersion(string $version)``
+
    Set the HTTP version for this object, one of 1.0 or 1.1 (``Request::VERSION_10``, ``Request::VERSION_11``).
 
    Returns ``Zend\Http\Request``.
@@ -134,6 +141,7 @@ Available Methods
 
 **setVersion**
    ``getVersion()``
+
    Return the HTTP version for this request
 
    Returns string
@@ -142,6 +150,7 @@ Available Methods
 
 **setQuery**
    ``setQuery(Zend\Stdlib\ParametersInterface $query)``
+
    Provide an alternate Parameter Container implementation for query parameters in this object. (This is NOT the
    primary API for value setting; for that, see ``query()``.)
 
@@ -151,6 +160,7 @@ Available Methods
 
 **setQuery**
    ``query()``
+
    Return the parameter container responsible for query parameters.
 
    Returns ``Zend\Stdlib\ParametersInterface``
@@ -159,6 +169,7 @@ Available Methods
 
 **setPost**
    ``setPost(Zend\Stdlib\ParametersInterface $post)``
+
    Provide an alternate Parameter Container implementation for post parameters in this object. (This is NOT the
    primary API for value setting; for that, see ``post()``.)
 
@@ -168,6 +179,7 @@ Available Methods
 
 **post**
    ``post()``
+
    Return the parameter container responsible for post parameters.
 
    Returns ``Zend\Stdlib\ParametersInterface``
@@ -176,6 +188,7 @@ Available Methods
 
 **cookie**
    ``cookie()``
+
    Return the Cookie header, this is the same as calling *$request->header()->get('Cookie');*.
 
    Returns ``Zend\Http\Header\Cookie``
@@ -184,6 +197,7 @@ Available Methods
 
 **setFile**
    ``setFile(Zend\Stdlib\ParametersInterface $files)``
+
    Provide an alternate Parameter Container implementation for file parameters in this object. (This is NOT the
    primary API for value setting; for that, see ``file()``.)
 
@@ -193,6 +207,7 @@ Available Methods
 
 **file**
    ``file()``
+
    Return the parameter container responsible for file parameters
 
    Returns ``Zend\Stdlib\ParametersInterface``
@@ -201,6 +216,7 @@ Available Methods
 
 **setServer**
    ``setServer(Zend\Stdlib\ParametersInterface $server)``
+
    Provide an alternate Parameter Container implementation for server parameters in this object. (This is NOT the
    primary API for value setting; for that, see ``server()``.)
 
@@ -210,6 +226,7 @@ Available Methods
 
 **server**
    ``server()``
+
    Return the parameter container responsible for server parameters
 
    Returns ``Zend\Stdlib\ParametersInterface``
@@ -218,6 +235,7 @@ Available Methods
 
 **setEnv**
    ``setEnv(Zend\Stdlib\ParametersInterface $env)``
+
    Provide an alternate Parameter Container implementation for env parameters in this object. (This is NOT the
    primary API for value setting; for that, see ``env()``.)
 
@@ -227,6 +245,7 @@ Available Methods
 
 **env**
    ``env()``
+
    Return the parameter container responsible for env parameters
 
    Returns ``Zend\Stdlib\ParametersInterface``
@@ -235,6 +254,7 @@ Available Methods
 
 **setHeader**
    ``setHeader(Zend\Http\Headers $headers)``
+
    Provide an alternate Parameter Container implementation for headers in this object. (This is NOT the primary API
    for value setting; for that, see ``header()``.)
 
@@ -244,6 +264,7 @@ Available Methods
 
 **header**
    ``header()``
+
    Return the header container responsible for headers
 
    Returns ``Zend\Http\Headers``
@@ -252,6 +273,7 @@ Available Methods
 
 **setRawBody**
    ``setRawBody(string $string)``
+
    Set the raw body for the request
 
    Returns ``Zend\Http\Request``
@@ -260,6 +282,7 @@ Available Methods
 
 **getRawBody**
    ``getRawBody()``
+
    Get the raw body for the request
 
    Returns string
@@ -268,6 +291,7 @@ Available Methods
 
 **isOptions**
    ``isOptions()``
+
    Is this an OPTIONS method request?
 
    Returns bool
@@ -276,6 +300,7 @@ Available Methods
 
 **isGet**
    ``isGet()``
+
    Is this a GET method request?
 
    Returns bool
@@ -284,6 +309,7 @@ Available Methods
 
 **isHead**
    ``isHead()``
+
    Is this a HEAD method request?
 
    Returns bool
@@ -292,6 +318,7 @@ Available Methods
 
 **isPost**
    ``isPost()``
+
    Is this a POST method request?
 
    Returns bool
@@ -300,6 +327,7 @@ Available Methods
 
 **isPut**
    ``isPut()``
+
    Is this a PUT method request?
 
    Returns bool
@@ -308,6 +336,7 @@ Available Methods
 
 **isDelete**
    ``isDelete()``
+
    Is this a DELETE method request?
 
    Returns bool
@@ -316,6 +345,7 @@ Available Methods
 
 **isTrace**
    ``isTrace()``
+
    Is this a TRACE method request?
 
    Returns bool
@@ -324,6 +354,7 @@ Available Methods
 
 **isConnect**
    ``isConnect()``
+
    Is this a CONNECT method request?
 
    Returns bool
@@ -332,6 +363,7 @@ Available Methods
 
 **renderRequestLine**
    ``renderRequestLine()``
+
    Return the formatted request line (first line) for this HTTP request
 
    Returns string
@@ -340,12 +372,14 @@ Available Methods
 
 **toString**
    ``toString()``
+
    Returns string
 
 .. _zend.http.request.methods.__to-string:
 
 **__toString**
    ``__toString()``
+
    Allow PHP casting of this object
 
    Returns string
@@ -354,6 +388,7 @@ Available Methods
 
 **setMetadata**
    ``setMetadata(string|int|array|Traversable $spec, mixed $value)``
+
    Set message metadata
 
    Non-destructive setting of message metadata; always adds to the metadata, never overwrites the entire metadata
@@ -365,6 +400,7 @@ Available Methods
 
 **getMetadata**
    ``getMetadata(null|string|int $key, null|mixed $default)``
+
    Retrieve all metadata or a single metadatum as specified by key
 
    Returns mixed
@@ -373,6 +409,7 @@ Available Methods
 
 **setContent**
    ``setContent(mixed $value)``
+
    Set message content
 
    Returns ``Zend\Stdlib\Message``
@@ -381,6 +418,7 @@ Available Methods
 
 **getContent**
    ``getContent()``
+
    Get message content
 
    Returns mixed

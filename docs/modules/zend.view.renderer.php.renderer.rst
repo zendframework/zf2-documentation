@@ -271,30 +271,35 @@ methods to configure the renderer.
 
 **broker**
    ``setBroker(Zend\View\HelperBroker $broker)``
+
    Set the broker instance used to load, register, and retrieve :ref:`helpers <zend.view.helpers>`.
 
 .. _zend.view.renderer.php-renderer.options.resolver:
 
 **resolver**
    ``setResolver(Zend\View\Resolver $resolver)``
+
    Set the resolver instance.
 
 .. _zend.view.renderer.php-renderer.options.filter-chain:
 
 **filters**
    ``setFilterChain(Zend\Filter\FilterChain $filters)``
+
    Set a filter chain to use as an output filter on rendered content.
 
 .. _zend.view.renderer.php-renderer.options.vars:
 
 **vars**
    ``setVars(array|ArrayAccess|Zend\View\Variables $variables)``
+
    Set the variables to use when rendering a view script/template.
 
 .. _zend.view.renderer.php-renderer.options.can-render-trees:
 
 **canRenderTrees**
    ``setCanRenderTrees(bool $canRenderTrees)``
+
    Set flag indicating whether or not we should render trees of view models. If set to true, the ``Zend\View\View``
    instance will not attempt to render children separately, but instead pass the root view model directly to the
    ``PhpRenderer``. It is then up to the developer to render the children from within the view script. This is
@@ -312,6 +317,7 @@ when interacting with the ``PhpRenderer``. However, there are a few additional m
 
 **render**
    ``render(string|Zend\View\Model $nameOrModel, $values = null)``
+
    Render a template/view model.
 
    If ``$nameOrModel`` is a string, it is assumed to be a template name. That template will be resolved using the
@@ -328,18 +334,21 @@ when interacting with the ``PhpRenderer``. However, there are a few additional m
 
 **resolver**
    ``resolver()``
+
    Retrieves the ``Resolver`` instance.
 
 .. _zend.view.renderer.php-renderer.methods.vars:
 
 **vars**
    ``vars(string $key = null)``
+
    Retrieve the variables container, or a single variable from the container..
 
 .. _zend.view.renderer.php-renderer.methods.plugin:
 
 **plugin**
    ``plugin(string $name, array $options = null)``
+
    Get a plugin/helper instance. Proxies to the broker's ``load()`` method; as such, any ``$options`` you pass will
    be passed to the plugin's constructor if this is the first time the plugin has been retrieved. See the section
    on :ref:`helpers <zend.view.helpers>` for more information.
@@ -348,6 +357,7 @@ when interacting with the ``PhpRenderer``. However, there are a few additional m
 
 **addTemplate**
    ``addTemplate(string $template)``
+
    Add a template to the stack. When used, the next call to ``render()`` will loop through all template added using
    this method, rendering them one by one; the output of the last will be returned.
 

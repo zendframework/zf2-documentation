@@ -41,6 +41,7 @@ Available Methods
 
 **Headers::fromString**
    ``Headers::fromString(string $string)``
+
    Populates headers from string representation
 
    Parses a string for headers, and aggregates them, in order, in the current instance, primarily as strings until
@@ -52,6 +53,7 @@ Available Methods
 
 **setPluginClassLoader**
    ``setPluginClassLoader(Zend\Loader\PluginClassLocator $pluginClassLoader)``
+
    Set an alternate implementation for the plugin class loader
 
    Returns ``Zend\Http\Headers``
@@ -60,6 +62,7 @@ Available Methods
 
 **getPluginClassLoader**
    ``getPluginClassLoader()``
+
    Return an instance of a ``Zend\Loader\PluginClassLocator``, lazyload and inject map if necessary.
 
    Returns ``Zend\Loader\PluginClassLocator``
@@ -68,6 +71,7 @@ Available Methods
 
 **addHeaders**
    ``addHeaders(array|Traversable $headers)``
+
    Add many headers at once
 
    Expects an array (or ``Traversable`` object) of type/value pairs.
@@ -78,6 +82,7 @@ Available Methods
 
 **addHeaders**
    ``addHeaderLine(string $headerFieldNameOrLine, string $fieldValue)``
+
    Add a raw header line, either in name => value, or as a single string 'name: value'
 
    This method allows for lazy-loading in that the parsing and instantiation of Header object will be delayed until
@@ -89,6 +94,7 @@ Available Methods
 
 **addHeader**
    ``addHeader(Zend\Http\Header\HeaderInterface $header)``
+
    Add a Header to this container, for raw values see ``addHeaderLine()`` and ``addHeaders()``.
 
 
@@ -99,6 +105,7 @@ Available Methods
 
 **removeHeader**
    ``removeHeader(Zend\Http\Header\HeaderInterface $header)``
+
    Remove a Header from the container
 
    Returns bool
@@ -107,6 +114,7 @@ Available Methods
 
 **clearHeaders**
    ``clearHeaders()``
+
    Clear all headers
 
    Removes all headers from queue
@@ -117,6 +125,7 @@ Available Methods
 
 **get**
    ``get(string $name)``
+
    Get all headers of a certain name/type
 
 
@@ -127,6 +136,7 @@ Available Methods
 
 **has**
    ``has(string $name)``
+
    Test for existence of a type of header
 
    Returns bool
@@ -135,6 +145,7 @@ Available Methods
 
 **next**
    ``next()``
+
    Advance the pointer for this object as an interator
 
    Returns void
@@ -143,6 +154,7 @@ Available Methods
 
 **key**
    ``key()``
+
    Return the current key for this object as an interator
 
    Returns mixed
@@ -151,6 +163,7 @@ Available Methods
 
 **valid**
    ``valid()``
+
    Is this iterator still valid?
 
    Returns bool
@@ -159,6 +172,7 @@ Available Methods
 
 **rewind**
    ``rewind()``
+
    Reset the internal pointer for this object as an iterator
 
    Returns void
@@ -167,6 +181,7 @@ Available Methods
 
 **current**
    ``current()``
+
    Return the current value for this iterator, lazy loading it if need be
 
    Returns ``Zend\Http\Header\HeaderInterface``
@@ -175,6 +190,7 @@ Available Methods
 
 **count**
    ``count()``
+
    Return the number of headers in this container. If all headers have not been parsed, actual count could increase
    if MultipleHeader objects exist in the Request/Response. If you need an exact count, iterate.
 
@@ -184,6 +200,7 @@ Available Methods
 
 **toString**
    ``toString()``
+
    Render all headers at once
 
    This method handles the normal iteration of headers; it is up to the concrete classes to prepend with the
@@ -195,6 +212,7 @@ Available Methods
 
 **toArray**
    ``toArray()``
+
    Return the headers container as an array
 
    Returns array
@@ -203,6 +221,7 @@ Available Methods
 
 **forceLoading**
    ``forceLoading()``
+
    By calling this, it will force parsing and loading of all headers, after this ``count()`` will be accurate
 
    Returns bool
@@ -223,6 +242,7 @@ Zend\\Http\\Header\\* Base Methods
 
 **fromString**
    ``fromString(string $headerLine)``
+
    Factory to generate a header object from a string
 
    Returns ``Zend\Http\Header\GenericHeader``
@@ -231,6 +251,7 @@ Zend\\Http\\Header\\* Base Methods
 
 **getFieldName**
    ``getFieldName()``
+
    Retrieve header field name
 
    Returns string
@@ -239,6 +260,7 @@ Zend\\Http\\Header\\* Base Methods
 
 **getFieldValue**
    ``getFieldValue()``
+
    Retrieve header field value
 
    Returns string
@@ -247,6 +269,7 @@ Zend\\Http\\Header\\* Base Methods
 
 **toString**
    ``toString()``
+
    Cast to string as a well formed HTTP header line
 
    Returns in form of "NAME: VALUE\\r\\n"

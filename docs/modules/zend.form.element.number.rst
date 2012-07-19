@@ -48,6 +48,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 
 **getInputSpecification**
    ``getInputSpecification()``
+
    Returns a input filter specification, which includes ``Zend\Filter\StringTrim`` and will add the appropriate
    validators based on the values from the ``min``, ``max``, and ``step`` attributes.
 
