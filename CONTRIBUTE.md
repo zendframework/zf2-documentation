@@ -49,8 +49,6 @@ To render in a different language you have to specify the LANG in the command li
 
 For instance, to render the documentation in Italian, execute the following command:
 
-    ```sh
-    % make html LANG=it
-    ```
+    `make html LANG=it`
 
 You can find the supported languages in the `docs/languages` subdirectory.
