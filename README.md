@@ -16,6 +16,13 @@ Once the established milestones have been reached and the featureset has reached
 maturity and reasonable stability, we will freeze the API and prepare for
 Release Candidate (RC) status. 
 
+### VIEW THE DOCUMENTATION ONLINE
+
+We used the [readthedocs.org](http://readthedocs.org/) project to render online the documentation of Zend Framework 2.0.
+
+You can read the online documentation [here](http://zend-framework-2-doc.readthedocs.org/en/latest/).
+
+
 ### CONTRIBUTING
 
 If you wish to contribute to the documentation of Zend Framework 2.0, please read the
