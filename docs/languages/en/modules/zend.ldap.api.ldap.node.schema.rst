@@ -169,9 +169,7 @@ Additionally the common methods above apply to instances of *Zend\Ldap\Node\Sche
 ActiveDirectory
 ---------------
 
-.. note::
-
-   **Schema browsing on ActiveDirectory servers**
+.. note:: Schema browsing on ActiveDirectory servers
 
    Due to restrictions on Microsoft ActiveDirectory servers regarding the number of entries returned by generic
    search routines and due to the structure of the ActiveDirectory schema repository, schema browsing is currently

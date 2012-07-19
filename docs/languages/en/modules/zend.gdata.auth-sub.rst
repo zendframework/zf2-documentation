@@ -17,9 +17,7 @@ account credentials; the user is not required to enter her credentials interacti
 The account credentials supplied via the AuthSub mechanism are entered by the user of the web application.
 Therefore they must be account credentials that are known to that user.
 
-.. note::
-
-   **Registered applications**
+.. note:: Registered applications
 
    ``Zend_Gdata`` currently does not support use of secure tokens, because the AuthSub authentication does not
    support passing a digital certificate to acquire a secure token.
@@ -98,9 +96,7 @@ function. Otherwise, the token is still valid for some time.
        exit();
    }
 
-.. note::
-
-   **Security notes**
+.. note:: Security notes
 
    The treatment of the ``$php_self`` variable in the example above is a general security guideline, it is not
    specific to ``Zend_Gdata``. You should always filter content you output to *HTTP* headers.

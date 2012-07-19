@@ -28,9 +28,7 @@ In the case of the * ``File()`` methods, ``$src`` is the remote location of the 
 the form of a *URL* or a path. For the * ``Script()`` methods, ``$script`` is the client-side scripting directives
 you wish to use in the element.
 
-.. note::
-
-   **Setting Conditional Comments**
+.. note:: Setting Conditional Comments
 
    ``HeadScript`` allows you to wrap the script tag in conditional comments, which allows you to hide it from
    specific browsers. To add the conditional tags, pass the conditional value as part of the ``$attrs`` parameter
@@ -50,9 +48,7 @@ you wish to use in the element.
           array('conditional' => 'lt IE 7')
       );
 
-.. note::
-
-   **Preventing HTML style comments or CDATA wrapping of scripts**
+.. note:: Preventing HTML style comments or CDATA wrapping of scripts
 
    By default ``HeadScript`` will wrap scripts with HTML comments or it wraps scripts with XHTML cdata. This
    behavior can be problematic when you intend to use the script tag in an alternative way by setting the type to
@@ -91,17 +87,13 @@ optionally modify these items by simply modifying the object returned.
 The ``HeadScript`` helper is a concrete implementation of the :ref:`Placeholder helper
 <zend.view.helpers.initial.placeholder>`.
 
-.. note::
-
-   **Use InlineScript for HTML Body Scripts**
+.. note:: Use InlineScript for HTML Body Scripts
 
    ``HeadScript``'s sibling helper, :ref:`InlineScript <zend.view.helpers.initial.inlinescript>`, should be used
    when you wish to include scripts inline in the *HTML* **body**. Placing scripts at the end of your document is a
    good practice for speeding up delivery of your page, particularly when using 3rd party analytics scripts.
 
-.. note::
-
-   **Arbitrary Attributes are Disabled by Default**
+.. note:: Arbitrary Attributes are Disabled by Default
 
    By default, ``HeadScript`` only will render **<script>** attributes that are blessed by the W3C. These include
    'type', 'charset', 'defer', 'language', and 'src'. However, some javascript frameworks, notably `Dojo`_, utilize

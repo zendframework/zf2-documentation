@@ -48,9 +48,7 @@ by setting the locale, does not fit your needs, then you can also manually set a
    $validator = new Zend\Validator\PostCode('de_AT');
    $validator->setFormat('AT-\d{5}');
 
-.. note::
-
-   **Conventions for self defined formats**
+.. note:: Conventions for self defined formats
 
    When using self defined formats you should omit the starting (``'/^'``) and ending tags (``'$/'``). They are
    attached automatically.

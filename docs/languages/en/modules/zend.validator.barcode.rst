@@ -217,9 +217,7 @@ checksum validation. By using the ``checksum`` option you can define if the chec
        // input is invalid
    }
 
-.. note::
-
-   **Reduced security by disabling checksum validation**
+.. note:: Reduced security by disabling checksum validation
 
    By switching off checksum validation you will also reduce the security of the used barcodes. Additionally you
    should note that you can also turn off the checksum validation for those barcode types which must contain a

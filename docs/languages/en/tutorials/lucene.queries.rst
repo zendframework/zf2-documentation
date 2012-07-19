@@ -22,9 +22,7 @@ What follows are examples of some common query types and strategies.
 
 Searches for the word "hello" through all document fields.
 
-.. note::
-
-   **Default search field**
+.. note:: Default search field
 
    Important note! Java Lucene searches only through the "contents" field by default, but ``Zend_Search_Lucene``
    searches through **all** fields. This behavior can be modified using the

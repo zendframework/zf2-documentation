@@ -23,9 +23,7 @@ not be found, the validation will always fail.
 If you are in need of validation by using the *HTTP* fields which are provided by the user then you can turn on
 this feature by using the ``enableHeaderCheck()`` method.
 
-.. note::
-
-   **Security hint**
+.. note:: Security hint
 
    You should note that relying on the *HTTP* fields, which are provided by your user, is a security risk. They can
    easily be changed and could allow your user to provide a malcious file.

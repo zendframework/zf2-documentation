@@ -25,9 +25,7 @@ Getting Started
 Technorati requires a valid *API* key for usage. To get your own *API* Key you first need to `create a new
 Technorati account`_, then visit the `API Key section`_.
 
-.. note::
-
-   **API Key limits**
+.. note:: API Key limits
 
    You can make up to 500 Technorati *API* calls per day, at no charge. Other usage limitations may apply,
    depending on the current Technorati *API* license.

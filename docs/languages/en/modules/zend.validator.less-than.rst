@@ -5,9 +5,7 @@ LessThan
 
 ``Zend\Validator\LessThan`` allows you to validate if a given value is less than a maximum border value.
 
-.. note::
-
-   **Zend\Validator\LessThan supports only number validation**
+.. note:: Zend\\Validator\\LessThan supports only number validation
 
    It should be noted that ``Zend\Validator\LessThan`` supports only the validation of numbers. Strings or dates
    can not be validated with this validator.

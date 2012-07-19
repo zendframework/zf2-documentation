@@ -11,9 +11,7 @@ Introduction
 The ``Zend\Service\Rackspace`` is a class that provides a simple *API* to manage the Rackspace services Cloud Files
 and Cloud Servers.
 
-.. note::
-
-   **Load balancers service**
+.. note:: Load balancers service
 
    The load balancers service of Rackspace is not implemented yet. We are planning to release it in the next
    future.

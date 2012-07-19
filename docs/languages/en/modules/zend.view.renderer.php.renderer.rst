@@ -236,9 +236,7 @@ properties and methods. Thus, a very basic view script could look like this:
 
    <?php endif;?>
 
-.. note::
-
-   **Escape Output**
+.. note:: Escape Output
 
    The security mantra is "Filter input, escape output." If you are unsure of the source of a given variable --
    which is likely most of the time -- you should escape it based on which HTML context it is being injected into.

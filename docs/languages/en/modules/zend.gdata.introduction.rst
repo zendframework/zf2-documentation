@@ -41,9 +41,7 @@ The services that are accessible by ``Zend_Gdata`` include the following:
 
 
 
-.. note::
-
-   **Unsupported services**
+.. note:: Unsupported services
 
    ``Zend_Gdata`` does not provide an interface to any other Google service, such as Search, Gmail, Translation, or
    Maps. Only services that support the Google Data *API* are supported.

@@ -118,9 +118,7 @@ into one of the *XML-RPC* types according to this table:
    |DateTime                          |dateTime.iso8601|
    +----------------------------------+----------------+
 
-.. note::
-
-   **What type do empty arrays get cast to?**
+.. note:: What type do empty arrays get cast to?
 
    Passing an empty array to an *XML-RPC* method is problematic, as it could represent either an array or a struct.
    ``Zend\XmlRpc\Client`` detects such conditions and makes a request to the server's ``system.methodSignature``
@@ -197,9 +195,7 @@ subclasses directly, or use the static factory method ``Zend\XmlRpc\Value::getXm
    |struct          |Zend\\XmlRpc\\Value::XMLRPC_TYPE_STRUCT   |Zend\\XmlRpc\\Value\\Struct    |
    +----------------+------------------------------------------+-------------------------------+
 
-.. note::
-
-   **Automatic Conversion**
+.. note:: Automatic Conversion
 
    When building a new ``Zend\XmlRpc\Value`` object, its value is set by a *PHP* type. The *PHP* type will be
    converted to the specified type using *PHP* casting. For example, if a string is given as a value to the

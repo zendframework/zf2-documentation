@@ -26,9 +26,7 @@ the ``Zend_Rest_Client`` constructor.
 
    echo $client->sayHello('Davey', 'Day')->get(); // "Hello Davey, Good Day"
 
-.. note::
-
-   **Differences in calling**
+.. note:: Differences in calling
 
    ``Zend_Rest_Client`` attempts to make remote methods look as much like native methods as possible, the only
    difference being that you must follow the method call with one of either ``get()``, ``post()``, ``put()`` or
@@ -129,9 +127,7 @@ property as a method, you will receive the *PHP* value for the object, or an arr
 Here we are accessing the *firstname* and *lastname* properties. Even though these are not top-level elements, they
 are automatically returned when accessed by name.
 
-.. note::
-
-   **Multiple items**
+.. note:: Multiple items
 
    If multiple items are found when accessing a value by name, an array of SimpleXMLElements will be returned;
    accessing via method notation will return an array of *PHP* values.
@@ -171,9 +167,7 @@ You will notice that the first call of *$client->arg('value1');* resulted in bot
 *arg=value1*; this is so that ``Zend_Rest_Server`` can understand the request properly, rather than requiring
 pre-existing knowledge of the service.
 
-.. warning::
-
-   **Strictness of Zend_Rest_Client**
+.. warning:: Strictness of Zend_Rest_Client
 
    Any REST service that is strict about the arguments it receives will likely fail using ``Zend_Rest_Client``,
    because of the behavior described above. This is not a common practice and should not cause problems.

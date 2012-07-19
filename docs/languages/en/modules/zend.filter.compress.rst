@@ -76,9 +76,7 @@ adapter on instantiation).
        ),
    ));
 
-.. note::
-
-   **Default compression Adapter**
+.. note:: Default compression Adapter
 
    When no compression adapter is given, then the **Gz** adapter will be used.
 
@@ -108,9 +106,7 @@ Decompression works the same way.
    $compressed = $filter->filter('Compressed string');
    // Returns the uncompressed string
 
-.. note::
-
-   **Note on string compression**
+.. note:: Note on string compression
 
    Not all adapters support string compression. Compression formats like **Rar** can only handle files and
    directories. For details, consult the section for the adapter you wish to use.
@@ -137,9 +133,7 @@ parameter which holds the name of the archive we want to create.
 
 In the above example the uncompressed string is compressed, and is then written into the given archive file.
 
-.. note::
-
-   **Existing archives will be overwritten**
+.. note:: Existing archives will be overwritten
 
    The content of any existing file will be overwritten when the given filename of the archive already exists.
 
@@ -172,9 +166,7 @@ subdirectories will be compressed into the archive.
    $compressed = $filter->filter('C:\temp\somedir');
    // Returns true on success and creates the archive file
 
-.. note::
-
-   **Do not compress large or base directories**
+.. note:: Do not compress large or base directories
 
    You should never compress large or base directories like a complete partition. Compressing a complete partition
    is a very time consuming task which can lead to massive problems on your server when there is not enough space
@@ -211,9 +203,7 @@ parameter.
    // Returns true on success and decompresses the archive file
    // into the given target directory
 
-.. note::
-
-   **Directories to extract to must exist**
+.. note:: Directories to extract to must exist
 
    When you want to decompress an archive into a directory, then that directory must exist.
 
@@ -277,9 +267,7 @@ The Lzf Adapter can compress and decompress:
 
 - Strings
 
-.. note::
-
-   **Lzf supports only strings**
+.. note:: Lzf supports only strings
 
    The Lzf adapter can not handle files and directories.
 
@@ -298,17 +286,13 @@ The Rar Adapter can compress and decompress:
 
 - Directories
 
-.. note::
-
-   **Rar does not support strings**
+.. note:: Rar does not support strings
 
    The Rar Adapter can not handle strings.
 
 This adapter makes use of *PHP*'s Rar extension.
 
-.. note::
-
-   **Rar compression not supported**
+.. note:: Rar compression not supported
 
    Due to restrictions with the Rar compression format, there is no compression available for free. When you want
    to compress files into a new Rar archive, you must provide a callback to the adapter that can invoke a Rar
@@ -339,9 +323,7 @@ The Tar Adapter can compress and decompress:
 
 - Directories
 
-.. note::
-
-   **Tar does not support strings**
+.. note:: Tar does not support strings
 
    The Tar Adapter can not handle strings.
 
@@ -361,9 +343,7 @@ All options can be set at instantiation or by using a related method. For exampl
 are ``getTarget()`` and ``setTarget()``. You can also use the ``setOptions()`` method which accepts all options as
 array.
 
-.. note::
-
-   **Directory usage**
+.. note:: Directory usage
 
    When compressing directories with Tar then the complete file path is used. This means that created Tar files
    will not only have the subdirectory but the complete path for the compressed file.
@@ -381,9 +361,7 @@ The Zip Adapter can compress and decompress:
 
 - Directories
 
-.. note::
-
-   **Zip does not support string decompression**
+.. note:: Zip does not support string decompression
 
    The Zip Adapter can not handle decompression to a string; decompression will always be written to a file.
 

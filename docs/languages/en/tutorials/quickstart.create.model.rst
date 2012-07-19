@@ -639,9 +639,7 @@ And, of course, we need a view script to go along with that. Edit
        <?php endforeach ?>
    </dl>
 
-.. note::
-
-   **Checkpoint**
+.. note:: Checkpoint
 
    Now browse to "http://localhost/guestbook". You should see the following in your browser:
 
@@ -649,9 +647,7 @@ And, of course, we need a view script to go along with that. Edit
       :width: 525
       :align: center
 
-.. note::
-
-   **Using the data loader script**
+.. note:: Using the data loader script
 
    The data loader script introduced in this section (``scripts/load.sqlite.php``) can be used to create the
    database for each environment you have defined, as well as to load it with sample data. Internally, it utilizes

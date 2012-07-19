@@ -16,9 +16,7 @@ following Message Queue services are supported:
 
 - A local array. Useful for unit testing.
 
-.. note::
-
-   **Limitations**
+.. note:: Limitations
 
    Message transaction handling is not supported.
 

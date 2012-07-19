@@ -5,9 +5,7 @@ HeadStyle Helper
 
 The *HTML* **<style>** element is used to include *CSS* stylesheets inline in the *HTML* **<head>** element.
 
-.. note::
-
-   **Use HeadLink to link CSS files**
+.. note:: Use HeadLink to link CSS files
 
    :ref:`HeadLink <zend.view.helpers.initial.headlink>` should be used to create **<link>** elements for including
    external stylesheets. ``HeadStyle`` is used when you wish to define your stylesheets inline.
@@ -25,9 +23,7 @@ The ``HeadStyle`` helper supports the following methods for setting and adding s
 In all cases, ``$content`` is the actual *CSS* declarations. ``$attributes`` are any additional attributes you wish
 to provide to the ``style`` tag: lang, title, media, or dir are all permissible.
 
-.. note::
-
-   **Setting Conditional Comments**
+.. note:: Setting Conditional Comments
 
    ``HeadStyle`` allows you to wrap the style tag in conditional comments, which allows you to hide it from
    specific browsers. To add the conditional tags, pass the conditional value as part of the ``$attributes``
@@ -58,9 +54,7 @@ modify these items by simply modifying the object returned.
 The ``HeadStyle`` helper is a concrete implementation of the :ref:`Placeholder helper
 <zend.view.helpers.initial.placeholder>`.
 
-.. note::
-
-   **UTF-8 encoding used by default**
+.. note:: UTF-8 encoding used by default
 
    By default, Zend Framework uses *UTF-8* as its default encoding, and, specific to this case, ``Zend_View`` does
    as well. Character encoding can be set differently on the view object itself using the ``setEncoding()`` method

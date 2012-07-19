@@ -29,9 +29,7 @@ The ``Zend_Soap_Client`` constructor takes two parameters:
 Both of these parameters may be set later using ``setWsdl($wsdl)`` and ``setOptions($options)`` methods
 respectively.
 
-.. note::
-
-   **Important!**
+.. note:: Important!
 
    If you use ``Zend_Soap_Client`` component in non-WSDL mode, you **must** set the 'location' and 'uri' options.
 

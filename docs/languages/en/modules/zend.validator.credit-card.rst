@@ -44,9 +44,7 @@ The following issuing institutes are accepted:
 
   **Visa Electron**
 
-.. note::
-
-   **Invalid institutes**
+.. note:: Invalid institutes
 
    The institutes **Bankcard** and **Diners Club enRoute** do not exist anymore. Therefore they are treated as
    invalid.
@@ -171,9 +169,7 @@ You can also set or add institutes afterward instantiation by using the methods 
        Zend\Validator\CreditCard::VISA
    ));
 
-.. note::
-
-   **Default institute**
+.. note:: Default institute
 
    When no institute is given at initiation then ``ALL`` will be used, which sets all institutes at once.
 

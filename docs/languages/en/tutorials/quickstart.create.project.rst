@@ -32,9 +32,7 @@ That's it! Zend Framework is now installed and ready to use.
 Create Your Project
 -------------------
 
-.. note::
-
-   **zf Command Line Tool**
+.. note:: zf Command Line Tool
 
    In your Zend Framework installation is a ``bin/`` subdirectory, containing the scripts ``zf.sh`` and ``zf.bat``
    for Unix-based and Windows-based users, respectively. Make a note of the absolute path to this script.

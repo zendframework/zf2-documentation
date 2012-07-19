@@ -38,9 +38,7 @@ to resolve any class regardless of namespace prefix.
 
    $loader->setFallbackAutoloader(true);
 
-.. warning::
-
-   **Do not use as a fallback autoloader**
+.. warning:: Do not use as a fallback autoloader
 
    While it's tempting to use ``Zend_Loader_Autoloader`` as a fallback autoloader, we do not recommend the
    practice.
@@ -58,9 +56,7 @@ to resolve any class regardless of namespace prefix.
    messages. For these reasons, we recommend always configuring the namespace prefixes the autoloader should be
    aware of
 
-.. note::
-
-   **Namespace Prefixes vs PHP Namespaces**
+.. note:: Namespace Prefixes vs PHP Namespaces
 
    At the time this is written, *PHP* 5.3 has been released. With that version, *PHP* now has official namespace
    support.

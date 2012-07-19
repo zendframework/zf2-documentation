@@ -47,9 +47,7 @@ Read more on extending ``Zend_Navigation_Page`` in :ref:`Creating custom page ty
    |pages    |Array | Zend_Config | NULL                 |NULL   |Child pages of the page. This could be an Array or Zend_Config object containing either page options that can be passed to the factory() method, or actual Zend_Navigation_Page instances, or a mixture of both.                                                                                                                                                                                                                               |
    +---------+-------------------------------------------+-------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-.. note::
-
-   **Custom properties**
+.. note:: Custom properties
 
    All pages support setting and getting of custom properties by use of the magic methods ``__set($name, $value)``,
    ``__get($name)``, ``__isset($name)`` and ``__unset($name)``. Custom properties may have any value, and will be

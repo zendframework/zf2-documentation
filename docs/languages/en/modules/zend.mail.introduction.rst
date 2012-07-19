@@ -29,9 +29,7 @@ A simple e-mail consists of some recipients, a subject, a body and a sender. To 
    $mail->setSubject('TestSubject');
    $mail->send();
 
-.. note::
-
-   **Minimum definitions**
+.. note:: Minimum definitions
 
    In order to send an e-mail with ``Zend_Mail`` you have to specify at least one recipient, a sender (e.g., with
    ``setFrom()``), and a message body (text and/or *HTML*).
@@ -85,16 +83,12 @@ This example shows how to change the Return-Path of the `mail()`_ function.
    $mail->setSubject('TestSubject');
    $mail->send();
 
-.. note::
-
-   **Safe mode restrictions**
+.. note:: Safe mode restrictions
 
    The optional additional parameters will be cause the `mail()`_ function to fail if *PHP* is running in safe
    mode.
 
-.. warning::
-
-   **Sendmail Transport and Windows**
+.. warning:: Sendmail Transport and Windows
 
    As the *PHP* manual states the ``mail()`` function has different behaviour on Windows and on \*nix based
    systems. Using the Sendmail Transport on Windows will not work in combination with ``addBcc()``. The ``mail()``

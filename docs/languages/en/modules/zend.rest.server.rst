@@ -58,9 +58,7 @@ To call a ``Zend_Rest_Server`` service, you must supply a ``GET``/POST *method* 
 method you wish to call. You can then follow that up with any number of arguments using either the name of the
 argument (i.e. "who") or using *arg* following by the numeric position of the argument (i.e. "arg1").
 
-.. note::
-
-   **Numeric index**
+.. note:: Numeric index
 
    Numeric arguments use a 1-based index.
 

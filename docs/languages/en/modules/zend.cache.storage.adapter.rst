@@ -23,9 +23,7 @@ method, or alternately pass an associative array of options in either place (int
 an options class instance). Alternately, you can pass either the options instance or associative array to the
 ``Zend\Cache\StorageFactory::factory`` method.
 
-.. note::
-
-   **Many methods throw exceptions**
+.. note:: Many methods throw exceptions
 
    Because many caching methods can throw exceptions, you need to catch them manually or you can use the plug-in
    ``Zend\Cache\Storage\Plugin\ExceptionHandler`` to automatically catch them and redirect exceptions into a log

@@ -10,9 +10,7 @@ where it is running.
 To be independent from the actual time of the server, ``Zend_TimeSync`` works with the difference of the real time
 which is sent through NTP or SNTP and the internal server's time.
 
-.. note::
-
-   **Background**
+.. note:: Background
 
    ``Zend_TimeSync`` is not able to change the server's time, but it will return a ``DateTime`` instance from which
    the difference from the server's time can be worked with.

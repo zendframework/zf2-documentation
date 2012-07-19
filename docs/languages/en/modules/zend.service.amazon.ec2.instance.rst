@@ -19,9 +19,7 @@ One of the advantages of EC2 is that you pay by the instance hour, which makes i
 test the performance of your application on different instance families and types. One good way to determine the
 most appropriate instance family and instance type is to launch test instances and benchmark your application.
 
-.. note::
-
-   **Instance Types**
+.. note:: Instance Types
 
    The instance types are defined as constants in the code. Column eight in the table is the defined constant name
 
@@ -96,6 +94,7 @@ table containing the valid values.
          +----------------------+--------------------------------------------------------------------------------------------------------------------------------+--------+
 
 
+
 *run* will return information about each instance that is starting up.
 
 .. code-block:: php
@@ -142,9 +141,7 @@ once, each call will succeed.
                                                         'aws_secret_key');
    $return = $ec2_instance->terminate('instanceId');
 
-.. note::
-
-   **Terminated Instances**
+.. note:: Terminated Instances
 
    Terminated instances will remain visible after termination (approximately one hour).
 
@@ -175,9 +172,7 @@ fault is returned. If you specify an instance that you do not own, it will not b
                                                         'aws_secret_key');
    $return = $ec2_instance->describe('instanceId');
 
-.. note::
-
-   **Terminated Instances**
+.. note:: Terminated Instances
 
    Recently terminated instances might appear in the returned results. This interval is usually less than one hour.
    If you do not want terminated instances to be returned, pass in a second variable of boolean ``TRUE`` to
@@ -200,9 +195,7 @@ in imageId
                                                         'aws_secret_key');
    $return = $ec2_instance->describeByImageId('imageId');
 
-.. note::
-
-   **Terminated Instances**
+.. note:: Terminated Instances
 
    Recently terminated instances might appear in the returned results. This interval is usually less than one hour.
    If you do not want terminated instances to be returned, pass in a second variable of boolean ``TRUE`` to

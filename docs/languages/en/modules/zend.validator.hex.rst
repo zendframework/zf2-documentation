@@ -17,9 +17,7 @@ validate.
        // false
    }
 
-.. note::
-
-   **Invalid characters**
+.. note:: Invalid characters
 
    All other characters will return false, including whitespace and decimal point. Also unicode zeros and numbers
    from other scripts than latin will not be treated as valid.

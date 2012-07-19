@@ -13,9 +13,7 @@ non-read-only access.
 For more information on the *API*, including instructions for enabling *API* access, refer to the `Picasa Web
 Albums Data API Overview`_.
 
-.. note::
-
-   **Authentication**
+.. note:: Authentication
 
    The *API* provides authentication via AuthSub (recommended) and ClientAuth. *HTTP* connections must be
    authenticated for write support, but non-authenticated connections have read-only access.

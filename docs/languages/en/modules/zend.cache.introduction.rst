@@ -38,9 +38,7 @@ there are cache frontends that extend ``Zend_Cache_Core`` for convenience: **Out
                                 $frontendOptions,
                                 $backendOptions);
 
-.. note::
-
-   **Frontends and Backends Consisting of Multiple Words**
+.. note:: Frontends and Backends Consisting of Multiple Words
 
    Some frontends and backends are named using multiple words, such as 'ZendPlatform'. When specifying them to the
    factory, separate them using a word separator, such as a space (' '), hyphen ('-'), or period ('.').

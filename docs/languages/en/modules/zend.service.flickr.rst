@@ -29,9 +29,7 @@ In the following example, we use the ``tagSearch()`` method to search for photos
        echo $result->title . '<br />';
    }
 
-.. note::
-
-   **Optional parameter**
+.. note:: Optional parameter
 
    ``tagSearch()`` accepts an optional second parameter as an array of options.
 
@@ -90,9 +88,7 @@ Finding photos From a Group Pool
            echo $result->title . '<br />';
        }
 
-.. note::
-
-   **Optional parameter**
+.. note:: Optional parameter
 
    ``groupPoolGetPhotos()`` accepts an optional second parameter as an array of options.
 

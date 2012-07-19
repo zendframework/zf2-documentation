@@ -12,9 +12,7 @@ alongside the log message. For instance, if you wish to log an exception, you ca
 message, but pass the entire exception object to the function, and then inspect the object within the Zend Server
 event monitor.
 
-.. note::
-
-   **Zend Monitor must be installed and enabled**
+.. note:: Zend Monitor must be installed and enabled
 
    In order to use this log writer, Zend Monitor must be both installed and enabled. However, it is designed such
    that if Zend Monitor is not detected, it will simply act as a ``NULL`` logger.

@@ -27,9 +27,7 @@ These concerns and responsibilities can effectively be summed up by three questi
 
 - How do you control what a consumer has access to?
 
-.. note::
-
-   **Consumer Vs. User**
+.. note:: Consumer Vs. User
 
    Notice we use the term "consumer" instead of person. Increasingly, web applications are becoming service driven.
    This means that not only are real people ("users") with real web browsers consuming and using your application,

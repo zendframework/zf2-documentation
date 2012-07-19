@@ -7,9 +7,7 @@ Zend_ProgressBar_Adapter_Console
 widths but supports custom widths as well. You can define which elements are displayed with the progressbar and as
 well customize the order of them. You can also define the style of the progressbar itself.
 
-.. note::
-
-   **Automatic console width recognition**
+.. note:: Automatic console width recognition
 
    *shell_exec* is required for this feature to work on \*nix based systems. On windows, there is always a fixed
    terminal width of 80 character, so no recognition is required there.

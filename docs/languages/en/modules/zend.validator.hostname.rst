@@ -59,9 +59,7 @@ The ``Zend\Validator\Hostname`` constants are: ``ALLOW_DNS`` to allow only *DNS*
 IP addresses, ``ALLOW_LOCAL`` to allow local network names, ``ALLOW_URI`` to allow `RFC3986`_-compliant addresses,
 and ``ALLOW_ALL`` to allow all four above types.
 
-.. note::
-
-   **Additional Information on ALLOW_URI**
+.. note:: Additional Information on ALLOW_URI
 
    ``ALLOW_URI`` allows to check hostnames according to `RFC3986`_. These are registered names which are used by
    *WINS*, NetInfo and also local hostnames like those defined within your ``.hosts`` file.
@@ -100,9 +98,7 @@ Some Country Code Top Level Domains (ccTLDs), such as 'de' (Germany), support in
 names. These are known as International Domain Names (*IDN*). These domains can be matched by
 ``Zend\Validator\Hostname`` via extended characters that are used in the validation process.
 
-.. note::
-
-   **IDN domains**
+.. note:: IDN domains
 
    Until now more than 50 ccTLDs support *IDN* domains.
 
@@ -129,9 +125,7 @@ validation. If you are trying to match an *IDN* hostname which isn't currently s
 validation if it has any international characters in it. Where a ccTLD file doesn't exist in
 ``Zend/Validator/Hostname`` specifying the additional characters a normal hostname validation is performed.
 
-.. note::
-
-   **IDN validation**
+.. note:: IDN validation
 
    Please note that *IDN*\ s are only validated if you allow *DNS* hostnames to be validated.
 
@@ -160,9 +154,7 @@ validation via the second parameter.
 Alternatively you can either pass ``TRUE`` or ``FALSE`` to ``setValidateTld()`` to enable or disable *TLD*
 validation.
 
-.. note::
-
-   **TLD validation**
+.. note:: TLD validation
 
    Please note *TLD*\ s are only validated if you allow *DNS* hostnames to be validated.
 

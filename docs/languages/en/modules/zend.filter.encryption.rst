@@ -303,9 +303,7 @@ wished options for the compression adapter.
       'compression' => array('adapter' => 'zip', 'target' => '\usr\tmp\tmp.zip')
    ));
 
-.. note::
-
-   **Decryption with same settings**
+.. note:: Decryption with same settings
 
    When you want to decrypt a value which is additionally compressed, then you need to set the same compression
    settings for decryption as for encryption. Otherwise the decryption will fail.

@@ -167,9 +167,7 @@ The information provided in each set of options above is different mainly becaus
 in DN form when binding (see the ``bindRequiresDn`` option in the **Server Options** section below), which means we
 can omit a number of options associated with retrieving the DN for a username being authenticated.
 
-.. note::
-
-   **What is a Distinguished Name?**
+.. note:: What is a Distinguished Name?
 
    A DN or "distinguished name" is a string that represents the path to an object within the *LDAP* directory. Each
    comma-separated component is an attribute and value representing a node. The components are evaluated in
@@ -185,9 +183,7 @@ contain any special characters used by the associated file formats (e.g. the '**
 With multiple sets of server options, the adapter can authenticate users in multiple domains and provide failover
 so that if one server is not available, another will be queried.
 
-.. note::
-
-   **The Gory Details: What Happens in the Authenticate Method?**
+.. note:: The Gory Details: What Happens in the Authenticate Method?
 
    When the ``authenticate()`` method is called, the adapter iterates over each set of server options, sets them on
    the internal ``Zend\Ldap\Ldap`` instance, and calls the ``Zend\Ldap\Ldap::bind()`` method with the username and

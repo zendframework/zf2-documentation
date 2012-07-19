@@ -8,17 +8,13 @@ string, which is represented as *ASCII* art. FIGlets use a special font format, 
 default, one standard font is shipped with ``Zend_Text_Figlet``, but you can download additional fonts at
 `http://www.figlet.org`_.
 
-.. note::
-
-   **Compressed fonts**
+.. note:: Compressed fonts
 
    ``Zend_Text_Figlet`` supports gzipped fonts. This means that you can take an ``.flf`` file and gzip it. To allow
    ``Zend_Text_Figlet`` to recognize this, the gzipped font must have the extension ``.gz``. Further, to be able to
    use gzipped fonts, you have to have enabled the GZIP extension of *PHP*.
 
-.. note::
-
-   **Encoding**
+.. note:: Encoding
 
    ``Zend_Text_Figlet`` expects your strings to be UTF-8 encoded by default. If this is not the case, you can
    supply the character encoding as second parameter to the ``render()`` method.

@@ -7,18 +7,14 @@ Zend_File_Transfer
 for files plus functionality to change files with filters. Protocol adapters allow ``Zend_File_Transfer`` to expose
 the same *API* for transport protocols like *HTTP*, FTP, WEBDAV and more.
 
-.. note::
-
-   **Limitation**
+.. note:: Limitation
 
    The current implementation of ``Zend_File_Transfer`` is limited to *HTTP* Post Uploads. Other adapters
    supporting downloads and other protocols will be added in future releases. Unimplemented methods will throw an
    exception. For now, you should use ``Zend_File_Transfer_Adapter_Http`` directly. As soon as there are multiple
    adapters available you can use a common interface.
 
-.. note::
-
-   **Forms**
+.. note:: Forms
 
    When you are using ``Zend_Form`` you should use the *API*\ s provided by ``Zend_Form`` and not
    ``Zend_File_Transfer`` directly. The file transfer support in ``Zend_Form`` is implemented with
@@ -66,9 +62,7 @@ This code listing demonstrates the simplest usage of ``Zend_File_Transfer``. A l
 ``setDestination()`` method, then the ``receive()`` method is called. if there are any upload errors, an error will
 be returned.
 
-.. note::
-
-   **Attention**
+.. note:: Attention
 
    This example is suitable only for demonstrating the basic *API* of ``Zend_File_Transfer``. You should **never**
    use this code listing in a production environment, because severe security issues may be introduced. You should
@@ -209,9 +203,7 @@ set the second parameter, ``$path``, which will truncate the file path when set 
    $upload->setOption(array('useByteString' => false));
    $size = $upload->getFileSize();
 
-.. note::
-
-   **Client given filesize**
+.. note:: Client given filesize
 
    Note that the filesize which is given by the client is not seen as save input. Therefor the real size of the
    file will be detected and returned instead of the filesize sent by the client.
@@ -235,9 +227,7 @@ set the second parameter, ``$path``, which will truncate the file path when set 
    // Returns the hash for the 'foo' form element
    $names = $upload->getHash('crc32', 'foo');
 
-.. note::
-
-   **Return value**
+.. note:: Return value
 
    Note that if the given file or form name contains more than one file, the returned value will be an array.
 
@@ -259,23 +249,17 @@ a string.
    // Returns the mimetype for the 'foo' form element
    $names = $upload->getMimeType('foo');
 
-.. note::
-
-   **Client given mimetype**
+.. note:: Client given mimetype
 
    Note that the mimetype which is given by the client is not seen as save input. Therefor the real mimetype of the
    file will be detected and returned instead of the mimetype sent by the client.
 
-.. warning::
-
-   **Possible exception**
+.. warning:: Possible exception
 
    Note that this method uses the fileinfo extension if it is available. If this extension can not be found, it
    uses the mimemagic extension. When no extension was found it raises an exception.
 
-.. warning::
-
-   **Original data within $_FILES**
+.. warning:: Original data within $_FILES
 
    Due to security reasons also the original data within $_FILES will be overridden as soon as
    ``Zend_File_Transfer`` is initiated. When you want to omit this behaviour and have the original data simply set
@@ -382,9 +366,7 @@ The following example shows a possible manual usage:
        // do whatever you need
    }
 
-.. note::
-
-   **Knowing the file to get the progress from**
+.. note:: Knowing the file to get the progress from
 
    The above example works when your upload identified is set to 'progress_key'. When you are using another
    identifier within your form you must give the used identifier as first parameter to ``getProgress()`` on the

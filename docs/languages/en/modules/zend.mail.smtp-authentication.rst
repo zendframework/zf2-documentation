@@ -27,9 +27,7 @@ are PLAIN, LOGIN and CRAM-MD5 which all expect a 'username' and 'password' value
    $mail->setSubject('TestSubject');
    $mail->send($transport);
 
-.. note::
-
-   **Authentication types**
+.. note:: Authentication types
 
    The authentication type is case-insensitive but has no punctuation. E.g. to use CRAM-MD5 you would pass 'auth'
    => 'crammd5' in the ``Zend_Mail_Transport_Smtp`` constructor.

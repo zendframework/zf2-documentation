@@ -26,17 +26,13 @@ associated with each discovered plugin. You can then retrieve this information a
 
 ``PrefixPathLoader`` implements the ``ShortNameLocator`` and ``PrefixPathMapper`` interfaces.
 
-.. note::
-
-   **Case Sensitivity**
+.. note:: Case Sensitivity
 
    Unlike the :ref:`PluginClassLoader <zend.loader.plugin-class-loader>`, plugins resolved via the
    ``PrefixPathLoader`` are considered case sensitive. This is due to the fact that the lookup is done on the
    filesystem, and thus a file exactly matching the plugin name must exist.
 
-.. note::
-
-   **Preference is for Namespaces**
+.. note:: Preference is for Namespaces
 
    Unlike the Zend Framework 1 variant, the ``PrefixPathLoader`` assumes that "prefixes" are PHP 5.3 namespaces by
    default. You can override this behavior, however, per prefix/path you map. Please see the documentation and
