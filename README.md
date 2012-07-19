@@ -2,24 +2,25 @@
 
 ## RELEASE INFORMATION
 
-This documentation is based on *Zend Framework 2.0.0beta5*
+This documentation is based on *Zend Framework 2.0-DEV* (master branch)
 
-THE BETA5 RELEASE IS A DEVELOPMENT RELEASE AND NOT INTENDED FOR PRODUCTION USE.
-PLEASE USE AT YOUR OWN RISK.
 
-This is the fifth in a series of planned beta releases. The beta release
-cycle will follow the "gmail" style of betas, whereby new features will
-be added in each new release, and BC will not be guaranteed; beta
-releases will happen _approximately_ every six weeks. 
+### VIEW THE DOCUMENTATION ONLINE
 
-Once the established milestones have been reached and the featureset has reached
-maturity and reasonable stability, we will freeze the API and prepare for
-Release Candidate (RC) status. 
+We used the [readthedocs.org](http://readthedocs.org/) project to render online the development version of the
+documentation of Zend Framework 2.0.
+
+You can read the development online documentation in 
+[http://zend-framework-2-doc.readthedocs.org/en/latest/](http://zend-framework-2-doc.readthedocs.org/en/latest/).
+
+You can read the last stable documentation in 
+[http://packages.zendframework.com/docs/latest/manual/](http://packages.zendframework.com/docs/latest/manual/).
+
 
 ### CONTRIBUTING
 
-If you wish to contribute to Zend Framework 2.0 documentation, please read the
-[README-DEV.md](README-DEV.md) file.
+If you wish to contribute to the documentation of Zend Framework 2.0, please read the
+[CONTRIBUTE.md](CONTRIBUTE.md) file.
 
 
 ### LICENSE
@@ -29,6 +30,6 @@ You can find a copy of this license in [LICENSE.txt](LICENSE.txt).
 
 ### ACKNOWLEDGEMENTS
 
-The Zend Framework team would like to thank all the [contributors](https://github.com/zendframework/zf2/contributors) to the Zend
-Framework project, our corporate sponsor, and you, the Zend Framework user.
+The Zend Framework team would like to thank all the [contributors](https://github.com/zendframework/zf2-documentation/contributors) to the Zend
+Framework Documentation project, our corporate sponsor, and you, the Zend Framework user.
 Please visit us sometime soon at http://framework.zend.com.
