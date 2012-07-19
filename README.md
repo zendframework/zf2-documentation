@@ -18,8 +18,8 @@ Release Candidate (RC) status.
 
 ### CONTRIBUTING
 
-If you wish to contribute to Zend Framework 2.0 documentation, please read the
-[README-DEV.md](README-DEV.md) file.
+If you wish to contribute to the documentation of Zend Framework 2.0, please read the
+[CONTRIBUTE.md](CONTRIBUTE.md) file.
 
 
 ### LICENSE
@@ -29,6 +29,6 @@ You can find a copy of this license in [LICENSE.txt](LICENSE.txt).
 
 ### ACKNOWLEDGEMENTS
 
-The Zend Framework team would like to thank all the [contributors](https://github.com/zendframework/zf2/contributors) to the Zend
-Framework project, our corporate sponsor, and you, the Zend Framework user.
+The Zend Framework team would like to thank all the [contributors](https://github.com/zendframework/zf2-documentation/contributors) to the Zend
+Framework Documentation project, our corporate sponsor, and you, the Zend Framework user.
 Please visit us sometime soon at http://framework.zend.com.
