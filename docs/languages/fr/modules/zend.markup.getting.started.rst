@@ -1,0 +1,74 @@
+.. _zend.markup.getting-started:
+
+Guide de démarrage avec Zend_Markup
+===================================
+
+Ce guide pour vous aider à démarrer avec ``Zend_Markup`` utilisera le parseur BBCode et le moteur de rendu
+*HTML*. Les principes utilisés s'adaptent à d'autres formats.
+
+.. _zend.markup.getting-started.basic-usage:
+
+.. rubric:: Utilisation classique de Zend_Markup
+
+Nous allons d'abord instancier un objet ``Zend_Markup_Renderer_Html`` en utilisant la méthode
+``Zend_Markup::factory()``. Ceci créera aussi un objet a ``Zend_Markup_Parser_Bbcode`` qui sera ajouté à l'objet
+de rendu.
+
+Ensuite, nous utiliserons la méthode ``render()`` afin de convertir un bout de BBCode vers du *HTML*.
+
+.. code-block:: php
+   :linenos:
+
+   // Créer une instance de Zend_Markup_Renderer_Html,
+   // avec Zend_Markup_Parser_BbCode comme parseur
+   $bbcode = Zend_Markup::factory('Bbcode');
+
+   echo $bbcode->render('[b]bold text[/b] and [i]cursive text[/i]');
+   // Affiche: '<strong>bold text</strong> and <em>cursive text</em>'
+
+.. _zend.markup.getting-started.complicated-example:
+
+.. rubric:: Un exemple plus complexe de Zend_Markup
+
+Même chose ici, mais avec un bout de BBCode plus complexe.
+
+.. code-block:: php
+   :linenos:
+
+   $bbcode = Zend_Markup::factory('Bbcode');
+
+   $input = <<<EOT
+   [list]
+   [*]Zend Framework
+   [*]Foobar
+   [/list]
+   EOT;
+
+   echo $bbcode->render($input);
+   /*
+   Devrait afficher quelque chose comme:
+   <ul>
+   <li>Zend Framework</li>
+   <li>Foobar</li>
+   </ul>
+   */
+
+.. _zend.markup.getting-started.incorrect-input:
+
+.. rubric:: Traitement des entrées incorrectes
+
+En plus d'analyser et rendre des codes de type BBCode, ``Zend_Markup`` peut aussi traiter les entrées non valides.
+La plupart des processeurs de BBCode ne sont pas capables de rendre toute l'entrée sous forme de *XHTML* valide.
+``Zend_Markup`` corrige les entrées non valides et ajoute des tags de fermetures si nécessaire:
+
+.. code-block:: php
+   :linenos:
+
+   $bbcode = Zend_Markup::factory('Bbcode');
+
+   echo $bbcode->render('some [i]wrong [b]sample [/i] text');
+   // Remarquez que le tag '[b]' n'est pas fermé et est aussi mal niché
+   // dans l'arbre; mais Zend_Markup propose un rendu correct:
+   // some <em>wrong <strong>sample </strong></em><strong> text</strong>
+
+

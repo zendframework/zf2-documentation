@@ -1,0 +1,14 @@
+.. _zend.markup.introduction:
+
+Introduction
+============
+
+Le composant ``Zend_Markup`` offre des possibilités extensibles d'anakyse de texte et de rendu concernant les
+langages à balises comme BBcode et Textile. Il est disponible depuis Zend Framework version 1.10.
+
+``Zend_Markup`` utilise une fabrique pour instancier un moteur de rendu (renderer) qui étend
+``Zend_Markup_Renderer_Abstract``. La méthode de fabrique prend trois arguments. Le premier est le parseur à
+utiliser (e.g. BbCode). Le second est le moteur de rendu à utiliser, Html par défaut. Le troisième est un
+tableau d'options concernant le moteur de rendu.
+
+
