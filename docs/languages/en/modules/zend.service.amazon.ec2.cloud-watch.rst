@@ -31,17 +31,13 @@ a NextToken string that can be used to query for the next set of results.
 
 ``getMetricStatistics()`` Returns data for one or more statistics of given a metric.
 
+.. note::
 
-
-   .. note::
-
-      The maximum number of datapoints that the Amazon CloudWatch service will return in a single
-      GetMetricStatistics request is 1,440. If a request is made that would generate more datapoints than this
-      amount, Amazon CloudWatch will return an error. You can alter your request by narrowing the time range
-      (StartTime, EndTime) or increasing the Period in your single request. You may also get all of the data at the
-      granularity you originally asked for by making multiple requests with adjacent time ranges.
-
-
+   The maximum number of datapoints that the Amazon CloudWatch service will return in a single GetMetricStatistics
+   request is 1,440. If a request is made that would generate more datapoints than this amount, Amazon CloudWatch
+   will return an error. You can alter your request by narrowing the time range (StartTime, EndTime) or increasing
+   the Period in your single request. You may also get all of the data at the granularity you originally asked for
+   by making multiple requests with adjacent time ranges.
 
 ``getMetricStatistics()`` only requires two parameters but it also has four additional parameters that are
 optional.
