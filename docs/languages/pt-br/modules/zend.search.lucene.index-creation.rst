@@ -1,0 +1,266 @@
+.. _zend.search.lucene.index-creation:
+
+Construindo Índices
+===================
+
+.. _zend.search.lucene.index-creation.creating:
+
+Criando um Novo Índice
+----------------------
+
+As funcionalidades de criação e atualização de índices são implementadas tanto no componente
+``Zend_Search_Lucene`` como no projeto Java Lucene. Você pode usar qualquer uma destas opções para criar
+índices pesquisáveis pelo ``Zend_Search_Lucene``.
+
+O código *PHP* abaixo mostra um exemplo de como indexar um arquivo usando a *API* de indexação do
+``Zend_Search_Lucene``:
+
+.. code-block:: php
+   :linenos:
+
+   // Cria o índice
+   $index = Zend_Search_Lucene::create('/data/my-index');
+
+   $doc = new Zend_Search_Lucene_Document();
+
+   // Armazena a URL do documento para identificá-lo nos resultados da pesquisa
+   $doc->addField(Zend_Search_Lucene_Field::Text('url', $docUrl));
+
+   // Indexa os conteúdos do documento
+   $doc->addField(Zend_Search_Lucene_Field::UnStored('contents', $docContent));
+
+   // Adiciona o documento ao índice
+   $index->addDocument($doc);
+
+Documentos adicionados recentemente são imediatamente pesquisáveis no índice.
+
+.. _zend.search.lucene.index-creation.updating:
+
+Atualizando um Índice
+---------------------
+
+O mesmo procedimento é empregado para atualizar um índice existente. A única diferença é que o método open()
+é chamado no lugar do método create():
+
+.. code-block:: php
+   :linenos:
+
+   // Abre um índice existente
+   $index = Zend_Search_Lucene::open('/data/my-index');
+
+   $doc = new Zend_Search_Lucene_Document();
+   // Armazena a URL do documento para identificá-lo no resultado da pesquisa
+   $doc->addField(Zend_Search_Lucene_Field::Text('url', $docUrl));
+   // Indexa o conteúdo do documento
+   $doc->addField(Zend_Search_Lucene_Field::UnStored('contents',
+                                                     $docContent));
+
+   // Adiciona o documento ao índice
+   $index->addDocument($doc);
+
+.. _zend.search.lucene.index-creation.document-updating:
+
+Atualizando os Documentos
+-------------------------
+
+O formato de arquivo do índice Lucene não suporta a atualização do documento. Os documentos devem ser removidos
+e adicionados novamente ao índice para atualizá-los de forma eficaz.
+
+O método ``Zend_Search_Lucene::delete()`` funciona com uma identificação interna do índice do documento. Ela
+pode ser recuperada de uma consulta pela propriedade 'id':
+
+.. code-block:: php
+   :linenos:
+
+   $removePath = ...;
+   $hits = $index->find('path:' . $removePath);
+   foreach ($hits as $hit) {
+       $index->delete($hit->id);
+   }
+
+.. _zend.search.lucene.index-creation.counting:
+
+Recuperando o Tamanho do Índice
+-------------------------------
+
+Existem dois métodos para recuperar o tamanho de um índice no ``Zend_Search_Lucene``.
+
+O método ``Zend_Search_Lucene::maxDoc()`` retorna um número maior do que o maior número possível de documentos.
+É na verdade o número total de documentos no índice incluindo os documentos excluídos, por isso ele tem um
+sinônimo: ``Zend_Search_Lucene::count()``.
+
+O método ``Zend_Search_Lucene::numDocs()`` retorna o número total de documentos que não foram excluídos.
+
+.. code-block:: php
+   :linenos:
+
+   $indexSize = $index->count();
+   $documents = $index->numDocs();
+
+O método ``Zend_Search_Lucene::isDeleted($id)`` pode ser usado para verificar se um documento foi excluído.
+
+.. code-block:: php
+   :linenos:
+
+   for ($count = 0; $count < $index->maxDoc(); $count++) {
+       if ($index->isDeleted($count)) {
+           echo "O documento #$id foi excluído.\n";
+       }
+   }
+
+A otimização do índice remove os documentos excluídos e comprime as IDs dos documentos em um intervalo menor.
+Assim, uma id interna de um documento pode ser alterada durante a otimização do índice.
+
+.. _zend.search.lucene.index-creation.optimization:
+
+Otimização do Índice
+--------------------
+
+Um índice Lucene é composto por vários segmentos. Cada segmento é um conjunto de dados completamente
+independente.
+
+Os arquivos de segmento de índice Lucene não podem ser atualizados devido ao seu projeto. A atualização de um
+segmento necessita de uma reorganização completa do segmento. Veja os formatos de arquivos de índice Lucene para
+mais detalhes (`http://lucene.apache.org/java/2_3_0/fileformats.html`_) [#]_. Novos documentos são adicionados ao
+índice através da criação de um novo segmento.
+
+O aumento do número de segmentos reduz a qualidade do índice, mas uma otimização do índice resolverá o
+problema. Essencialmente, a otimização mescla vários segmentos em um novo. Além disso, este processo não
+atualiza os segmentos. Ele gera um novo grande segmento e atualiza a lista de segmentos (arquivo 'segments').
+
+A otimização completa do índice pode ser feita chamando o método ``Zend_Search_Lucene::optimize()``. Ele funde
+todos os segmentos de índice em um novo segmento:
+
+.. code-block:: php
+   :linenos:
+
+   // Abre um índice existente
+   $index = Zend_Search_Lucene::open('/data/my-index');
+
+   // Otimiza o índice
+   $index->optimize();
+
+A otimização automática do índice é realizada para manter os índices em um estado consistente.
+
+A otimização automática é um processo iterativo controlado por várias opções de índice. Ele funde segmentos
+muito pequenos para obter outros maiores, então mescla esses segmentos em segmentos ainda maiores e assim por
+diante.
+
+.. _zend.search.lucene.index-creation.optimization.maxbuffereddocs:
+
+Opção de auto-otimização MaxBufferedDocs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**MaxBufferedDocs** é o número mínimo de documentos necessários antes que os documentos presentes na memória
+dentro do buffer sejam escritos em um novo segmento.
+
+**MaxBufferedDocs** pode ser recuperado ou definido pelas chamadas *$index->getMaxBufferedDocs()* ou
+*$index->setMaxBufferedDocs($maxBufferedDocs)*.
+
+O valor padrão é 10.
+
+.. _zend.search.lucene.index-creation.optimization.maxmergedocs:
+
+Opção de auto-otimização MaxMergeDocs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**MaxMergeDocs** é o maior número de documentos já fundidos por addDocument(). Valores pequenos (p. ex., menores
+que 10.000) são os melhores para indexação interativa, visto que isso limita em alguns segundos a duração das
+pausas durante a indexação. Os maiores valores são os melhores para a indexação em lote e buscas rápidas.
+
+**MaxMergeDocs** pode ser recuperado ou definido pelas chamadas *$index->getMaxMergeDocs()* ou
+*$index->setMaxMergeDocs($maxMergeDocs)*.
+
+O valor padrão é PHP_INT_MAX.
+
+.. _zend.search.lucene.index-creation.optimization.mergefactor:
+
+Opção de auto-otimização MergeFactor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**MergeFactor** determina a frequência com que os índices de segmento são fundidos por addDocument(). Com
+valores menores, menos memória *RAM* é usada durante a indexação, e buscas em índices não otimizados são
+mais rápidas, mas a velocidade de indexação é mais lenta. Com valores maiores, mais memória *RAM* é usada
+durante a indexação, e, embora as buscas em índices não otimizados sejam mais lentas, a indexação é mais
+rápida. Desse modo, valores maiores (> 10) são melhores para a criação de índices em lotes, e os valores
+menores (< 10) são melhores para os índices que são mantidos de forma interativa.
+
+**MergeFactor** é uma boa estimativa para o número médio de segmentos fundidos em uma passagem de
+auto-otimização. Valores muito grandes produzem um grande número de segmentos, enquanto não são fundidos em um
+novo. Isso pode causar a mensagem de erro "failed to open stream: Too many open files". Essa limitação é
+dependente do sistema.
+
+**MergeFactor** pode ser recuperado ou definido pelas chamadas *$index->getMergeFactor()* ou
+*$index->setMergeFactor($mergeFactor)*.
+
+O valor padrão é 10.
+
+Lucene Java e Luke (Lucene Index Toolbox -`http://www.getopt.org/luke/`_) também podem ser usados para otimizar um
+índice. O último lançamento do Luke (v0.8) é baseado no Lucene v2.3 e é compatível com a atual
+implementação do componente ``Zend_Search_Lucene`` (Zend Framework 1.6). Versões anteriores das implementações
+do ``Zend_Search_Lucene`` necessitam de outras versões das ferramentas Java Lucene para serem compatíveis:
+
+
+
+   - Zend Framework 1.5 - Java Lucene 2.1 (Luke tool v0.7.1 -`http://www.getopt.org/luke/luke-0.7.1/`_)
+
+   - Zend Framework 1.0 - Java Lucene 1.4 - 2.1 (Luke tool v0.6 -`http://www.getopt.org/luke/luke-0.6/`_)
+
+
+
+.. _zend.search.lucene.index-creation.permissions:
+
+Permissões
+----------
+
+Por padrão, arquivos de índice estão disponíveis para leitura e escrita por todos.
+
+É possível substituir esse comportamento com o método
+``Zend_Search_Lucene_Storage_Directory_Filesystem::setDefaultFilePermissions()``:
+
+.. code-block:: php
+   :linenos:
+
+   // Recupera as permissões padrões
+   $currentPermissions =
+       Zend_Search_Lucene_Storage_Directory_Filesystem::getDefaultFilePermissions();
+
+   // Fornece permissões de leitura e escrita apenas para o usuário e grupo atuais
+   Zend_Search_Lucene_Storage_Directory_Filesystem::setDefaultFilePermissions(0660);
+
+.. _zend.search.lucene.index-creation.limitations:
+
+Limitações
+----------
+
+.. _zend.search.lucene.index-creation.limitations.index-size:
+
+Tamanho do Índice
+^^^^^^^^^^^^^^^^^
+
+O tamanho do índice é limitado em 2GB para plataformas 32-bit.
+
+Utilize plataformas 64-bit para índices maiores.
+
+.. _zend.search.lucene.index-creation.limitations.filesystems:
+
+Sistemas de Arquivos Suportados
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+``Zend_Search_Lucene`` utiliza ``flock()`` para fornecer pesquisas simultâneas, atualização de índice e
+otimização.
+
+De acordo com a `documentação`_ do *PHP*, "``flock()`` não funcionará em NFS ou em qualquer outro sistema de
+arquivos em rede.".
+
+Não utilize sistemas de arquivos em rede com o ``Zend_Search_Lucene``.
+
+
+
+.. _`http://lucene.apache.org/java/2_3_0/fileformats.html`: http://lucene.apache.org/java/2_3_0/fileformats.html
+.. _`http://www.getopt.org/luke/`: http://www.getopt.org/luke/
+.. _`http://www.getopt.org/luke/luke-0.7.1/`: http://www.getopt.org/luke/luke-0.7.1/
+.. _`http://www.getopt.org/luke/luke-0.6/`: http://www.getopt.org/luke/luke-0.6/
+.. _`documentação`: http://www.php.net/manual/en/function.flock.php
+
+.. [#] O formato de arquivo de índice Lucene atualmente suportado é a versão 2.3 (desde Zend Framework 1.6).
