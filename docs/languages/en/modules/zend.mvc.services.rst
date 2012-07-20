@@ -9,7 +9,8 @@ and the configuration options available.
 
 .. _zend.mvc.services.service-manager-configuration:
 
-.. rubric:: ServiceManagerConfiguration
+ServiceManagerConfiguration
+---------------------------
 
 This is the one service class referenced directly in the bootstrapping. It provides the following:
 
@@ -128,7 +129,8 @@ names ``Zend\ServiceManager\ServiceManagerInterface`` and ``Zend\ServiceManager\
 
 .. _zend.mvc.services.view-manager:
 
-.. rubric:: ViewManager
+ViewManager
+-----------
 
 The View layer within ``Zend\Mvc`` consists of a large number of collaborators and event listeners. As such,
 ``Zend\Mvc\View\ViewManager`` was created to handle creation of the various objects, as well as wiring them
@@ -199,7 +201,8 @@ the ``DefaultRenderingStrategy``).
 
 .. _zend.mvc.services.app-config:
 
-.. rubric:: Application Configuration Options
+Application Configuration Options
+---------------------------------
 
 The following options may be used to provide initial configuration for the ``ServiceManager``, ``ModuleManager``,
 and ``Application`` instances, allowing them to then find and aggregate the configuration used for the
@@ -249,7 +252,8 @@ and ``Application`` instances, allowing them to then find and aggregate the conf
 
 .. _zend.mvc.services.config:
 
-.. rubric:: Default Configuration Options
+Default Configuration Options
+-----------------------------
 
 The following options are available when using the default services configured by the
 ``ServiceManagerConfiguration`` and ``ViewManager``.
