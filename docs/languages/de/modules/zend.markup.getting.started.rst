@@ -1,0 +1,74 @@
+.. _zend.markup.getting-started:
+
+Beginnen mit Zend_Markup
+========================
+
+Dieser Beginner-Guide für ``Zend_Markup`` verwendet den BBCode Parser und den *HTML* Renderer. Die diskutierten
+Prinzipien können auf andere Parser und Renderer angewendet werden.
+
+.. _zend.markup.getting-started.basic-usage:
+
+.. rubric:: Grundsätzliche Verwendung von Zend_Markup
+
+Zuerst instanzieren wir ein ``Zend_Markup_Renderer_Html`` Objekt durch Verwendung der ``Zend_Markup::factory()``
+Methode. Das erstellt auch ein ``Zend_Markup_Parser_Bbcode`` Objekt welches dem Renderer Objekt hinzugefügt wird.
+
+Danach verwenden wir die ``render()`` Methode um ein Teil von BBCode auf *HTML* zu konvertieren.
+
+.. code-block:: php
+   :linenos:
+
+   // Erstellt eine Instanz von Zend_Markup_Renderer_Html
+   // mit Zend_Markup_Parser_BbCode als seinen Parser
+   $bbcode = Zend_Markup::factory('Bbcode');
+
+   echo $bbcode->render('[b]bold text[/b] and [i]cursive text[/i]');
+   // Ausgabe: '<strong>bold text</strong> and <em>cursive text</em>'
+
+.. _zend.markup.getting-started.complicated-example:
+
+.. rubric:: Ein komplizierteres Beispiel von Zend_Markup
+
+Jetzt wollen wir das gleiche wie zuerst machen, aber mit einem komplizierteren BBCode Markup.
+
+.. code-block:: php
+   :linenos:
+
+   $bbcode = Zend_Markup::factory('Bbcode');
+
+   $input = <<<EOT
+   [list]
+   [*]Zend Framework
+   [*]Foobar
+   [/list]
+   EOT;
+
+   echo $bbcode->render($input);
+   /*
+   Sollte etwas wie das folgende ausgeben:
+   <ul>
+   <li>Zend Framework</li>
+   <li>Foobar</li>
+   </ul>
+   */
+
+.. _zend.markup.getting-started.incorrect-input:
+
+.. rubric:: Falsche Eingaben bearbeiten
+
+Neben dem einfachen Parsen und Darstellen von Markup wie BBCode, ist ``Zend_Markup`` auch in der Lage falsche
+Eingaben zu behandeln. Die meisten BBCode Prozessoren sind nicht in der Lage jede Eingabe zu einer gültigen
+*XHTML* Ausgabe auszugeben. ``Zend_Markup`` korrigiert Eingaben die falsch Verknüpft sind, und schließt auch Tags
+die nicht geschlossen sind:
+
+.. code-block:: php
+   :linenos:
+
+   $bbcode = Zend_Markup::factory('Bbcode');
+
+   echo $bbcode->render('some [i]wrong [b]sample [/i] text');
+   // Es ist zu beachten dass das '[b]' Tag nicht geschlossen ist, und auch
+   // falsch verknüpft ist; trotzdem stellt es Zend_Markup korrakt wie folgt dar:
+   // some <em>wrong <strong>sample </strong></em><strong> text</strong>
+
+
