@@ -1,0 +1,122 @@
+.. _zend.search.lucene.advanced:
+
+Avancé
+======
+
+.. _zend.search.lucene.advanced.format_migration:
+
+Depuis Zend Framework 1.6, gestion des transformations de format d'index
+------------------------------------------------------------------------
+
+``Zend_Search_Lucene`` fonctionne avec les index Lucene Java 1.4-1.9, 2.1 et 2.3.
+
+Le format actuel de l'index peut être obtenu par *$index->getFormatVersion()*. Ceci retourne une de ces valeurs :
+
+   - ``Zend_Search_Lucene::FORMAT_PRE_2_1`` pour le format 1.4-1.9.
+
+   - ``Zend_Search_Lucene::FORMAT_2_1`` pour le format 2.1 (utilisé aussi pour 2.2).
+
+   - ``Zend_Search_Lucene::FORMAT_2_3`` pour le format 2.3.
+
+
+
+Les modifications de l'index n'arrivent **que** si une mise à jour de l'index est faite. Ceci arrive lorsqu'un
+nouveau document est ajouté à l'index, ou lors de l'optimisation manuelle de l'index par *$index->optimize()*.
+
+Dans un tel cas, Zend_Search_Lucene peut convertir l'index vers une version plus haute. Ceci arrive **toujours**
+pour le format ``Zend_Search_Lucene::FORMAT_PRE_2_1``, alors transformé en format 2.1.
+
+Vous pouvez gérer ces conversions et notamment le format d'arrivée avec *$index->setFormatVersion()*, qui prend
+comme paramètre ``Zend_Search_Lucene::FORMAT_2_1`` ou ``Zend_Search_Lucene::FORMAT_2_3``:
+
+   - ``Zend_Search_Lucene::FORMAT_2_1`` ne fait rien puisque les format pre-2.1 sont convertis vers ce format (2.1)
+
+   - ``Zend_Search_Lucene::FORMAT_2_3`` force la conversion vers le format 2.3.
+
+
+
+Les conversions vers des versions antérieure de formats ne sont pas supportées.
+
+.. note::
+
+   **Important!**
+
+   Les formats ne peuvent pas être convertis vers des versions antérieures. Gardez une copie de sauvegarde si
+   ceci s'avère nécessaire, car après une conversion il ne sera plus possible de faire marche arrière.
+
+.. _zend.search.lucene.advanced.static:
+
+Utiliser les propriétés statiques de l'index
+--------------------------------------------
+
+L'objet ``Zend_Search_Lucene`` utilise la méthode de destructeur pour valider ses changements et faire ses
+optimisations et nettoyages.
+
+Il stocke les documents ajoutés en mémoire et les vide dans un segment sur le disque en fonction du paramètre
+*MaxBufferedDocs*.
+
+Si la limite *MaxBufferedDocs* n'est pas atteinte, alors il y aura des documents non sauvegardés qui seront
+sauvés comme nouveau segment lors de la destruction de l'objet. La procédure d'optimisation automatique est
+lancée si nécessaire, cela dépend des paramètres *MaxBufferedDocs*, *MaxMergeDocs* et *MergeFactor*.
+
+Les propriétés statiques d'un objet sont détruites **après** la dernière ligne de code exécutée.
+
+   .. code-block:: php
+      :linenos:
+
+      class Searcher {
+          private static $_index;
+
+          public static function initIndex() {
+              self::$_index = Zend_Search_Lucene::open('path/to/index');
+          }
+      }
+
+      Searcher::initIndex();
+
+
+
+Aussi, le destructeur est correctement invoqué à ce point de l'exécution du programme.
+
+Un problème potentiel peut être les exceptions. Celles envoyées dans un destructeur d'un objet statique n'ont
+pas de contexte, car le destructeur est appelé après la fin d'exécution du script.
+
+Vous pouvez alors voir une "Fatal error: Exception thrown without a stack frame in Unknown on line 0" au lieu de
+l'exception décrivant réellement le contexte.
+
+``Zend_Search_Lucene`` propose alors un détournement de ce problème avec la méthode ``commit()``. Elle
+sauvegarde les changements et libère la mémoire utilisée pour stocker les segments. Vous pouvez utiliser la
+méthode commit n'importe quand, même plusieurs fois, pendant l'exécution de votre script. Vous pouvez aussi
+continuer à utiliser l'objet ``Zend_Search_Lucene`` pour rechercher, ajouter ou supprimer des document, même
+après une opération de commit (validation). L'appel à ``commit()`` est simplement une sécurité pour éviter
+les problème d'exception dans le destructeur de ``Zend_Search_Lucene``:
+
+   .. code-block:: php
+      :linenos:
+
+      class Searcher {
+          private static $_index;
+
+          public static function initIndex() {
+              self::$_index = Zend_Search_Lucene::open('path/to/index');
+          }
+
+          ...
+
+          public static function commit() {
+              self::$_index->commit();
+          }
+      }
+
+      Searcher::initIndex();
+
+      ...
+
+      // Script shutdown routine
+      ...
+      Searcher::commit();
+      ...
+
+
+
+
