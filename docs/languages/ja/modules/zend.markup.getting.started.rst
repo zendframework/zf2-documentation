@@ -1,0 +1,75 @@
+.. _zend.markup.getting-started:
+
+さあ始めましょう
+========
+
+これは ``Zend_Markup`` BBCode パーサーと *HTML* レンダラーを用いる ``Zend_Markup``
+を始めるためのガイドです。 他のパーサーやレンダラーに適用できる原則です。
+
+.. _zend.markup.getting-started.basic-usage:
+
+.. rubric:: 基本的な Zend_Markup 使用法
+
+まず初めに ``Zend_Markup::factory()`` メソッドを用いて、 ``Zend_Markup_Renderer_Html``
+オブジェクトを具象化します。 ``Zend_Markup_Parser_Bbcode`` オブジェクトがレンダラーに
+追加され作成されるでしょう。
+
+その後、 ``render()`` メソッドを BBCode から *HTML* の断片に変換するために使用します。
+
+.. code-block:: php
+   :linenos:
+
+   // Zend_Markup_Parser_BbCode を自身のパーサーとして、
+   // Zend_Markup_Renderer_Html のインスタンスを生成します。
+   $bbcode = Zend_Markup::factory('Bbcode');
+
+   echo $bbcode->render('[b]bold text[/b] and [i]cursive text[/i]');
+   // 出力: '<strong>bold text</strong> and <em>cursive text</em>'
+
+.. _zend.markup.getting-started.complicated-example:
+
+.. rubric:: Zend_Markup のより複雑な例
+
+今回、上記と同様なことを正確に行いますが、より複雑な BBCode の例です。
+
+.. code-block:: php
+   :linenos:
+
+   $bbcode = Zend_Markup::factory('Bbcode');
+
+   $input = <<<EOT
+   [list]
+   [*]Zend Framework
+   [*]Foobar
+   [/list]
+   EOT;
+
+   echo $bbcode->render($input);
+   /*
+   このように出力されるはずです:
+   <ul>
+   <li>Zend Framework</li>
+   <li>Foobar</li>
+   </ul>
+   */
+
+.. _zend.markup.getting-started.incorrect-input:
+
+.. rubric:: 不正確な入力でのプロセス
+
+BBCode のようなマークアップの簡潔な解析とレンダリングの側面から、 ``Zend_Markup``
+は誤った入力も扱えます。大抵の BBCode 処理機構は全ての入力に対し *XHTML*
+での正しい出力を行えません。 ``Zend_Markup`` は、
+不正確なネストや閉じられていない閉じタグを訂正します:
+
+.. code-block:: php
+   :linenos:
+
+   $bbcode = Zend_Markup::factory('Bbcode');
+
+   echo $bbcode->render('some [i]wrong [b]sample [/i] text');
+   // '[b]' は決して閉じられておらず、また不正確にネストされていることに注意しましょう。
+   // それにもかかわらず、 Zend_Markup は以下のように正確にレンダリングします:
+   // some <em>wrong <strong>sample </strong></em><strong> text</strong>
+
+
