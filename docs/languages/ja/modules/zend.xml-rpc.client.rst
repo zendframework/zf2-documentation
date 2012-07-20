@@ -188,33 +188,33 @@ Zend_XmlRpc_Value オブジェクトをパラメータとして渡す
 
 .. table:: Zend_XmlRpc_Value オブジェクトと対応する XML-RPC 型
 
-   +----------------+----------------------------------------+------------------------------------+
-   |XML-RPC 型       |対応する Zend_XmlRpc_Value 定数               |Zend_XmlRpc_Value オブジェクト            |
-   +================+========================================+====================================+
-   |int             |Zend_XmlRpc_Value::XMLRPC_TYPE_INTEGER  |Zend_XmlRpc_Value_Integer           |
-   +----------------+----------------------------------------+------------------------------------+
-   |i8              |Zend_XmlRpc_Value::XMLRPC_TYPE_I8       |Zend_XmlRpc_Value_BigInteger        |
-   +----------------+----------------------------------------+------------------------------------+
-   |ex:i8           |Zend_XmlRpc_Value::XMLRPC_TYPE_APACHEI8 |Zend_XmlRpc_Value_BigInteger        |
-   +----------------+----------------------------------------+------------------------------------+
-   |double          |Zend_XmlRpc_Value::XMLRPC_TYPE_DOUBLE   |Zend_XmlRpc_Value_Double            |
-   +----------------+----------------------------------------+------------------------------------+
-   |boolean         |Zend_XmlRpc_Value::XMLRPC_TYPE_BOOLEAN  |Zend_XmlRpc_Value_Boolean           |
-   +----------------+----------------------------------------+------------------------------------+
-   |string          |Zend_XmlRpc_Value::XMLRPC_TYPE_STRING   |Zend_XmlRpc_Value_String            |
-   +----------------+----------------------------------------+------------------------------------+
-   |nil             |Zend_XmlRpc_Value::XMLRPC_TYPE_NIL      |Zend_XmlRpc_Value_Nil               |
-   +----------------+----------------------------------------+------------------------------------+
-   |ex:nil          |Zend_XmlRpc_Value::XMLRPC_TYPE_APACHENIL|Zend_XmlRpc_Value_Nil               |
-   +----------------+----------------------------------------+------------------------------------+
-   |base64          |Zend_XmlRpc_Value::XMLRPC_TYPE_BASE64   |Zend_XmlRpc_Value_Base64            |
-   +----------------+----------------------------------------+------------------------------------+
-   |dateTime.iso8601|Zend_XmlRpc_Value::XMLRPC_TYPE_DATETIME |Zend_XmlRpc_Value_DateTime          |
-   +----------------+----------------------------------------+------------------------------------+
-   |array           |Zend_XmlRpc_Value::XMLRPC_TYPE_ARRAY    |Zend_XmlRpc_Value_Array             |
-   +----------------+----------------------------------------+------------------------------------+
-   |struct          |Zend_XmlRpc_Value::XMLRPC_TYPE_STRUCT   |Zend_XmlRpc_Value_Struct            |
-   +----------------+----------------------------------------+------------------------------------+
+   +----------------+----------------------------------------+----------------------------+
+   |XML-RPC 型       |対応する Zend_XmlRpc_Value 定数               |Zend_XmlRpc_Value オブジェクト    |
+   +================+========================================+============================+
+   |int             |Zend_XmlRpc_Value::XMLRPC_TYPE_INTEGER  |Zend_XmlRpc_Value_Integer   |
+   +----------------+----------------------------------------+----------------------------+
+   |i8              |Zend_XmlRpc_Value::XMLRPC_TYPE_I8       |Zend_XmlRpc_Value_BigInteger|
+   +----------------+----------------------------------------+----------------------------+
+   |ex:i8           |Zend_XmlRpc_Value::XMLRPC_TYPE_APACHEI8 |Zend_XmlRpc_Value_BigInteger|
+   +----------------+----------------------------------------+----------------------------+
+   |double          |Zend_XmlRpc_Value::XMLRPC_TYPE_DOUBLE   |Zend_XmlRpc_Value_Double    |
+   +----------------+----------------------------------------+----------------------------+
+   |boolean         |Zend_XmlRpc_Value::XMLRPC_TYPE_BOOLEAN  |Zend_XmlRpc_Value_Boolean   |
+   +----------------+----------------------------------------+----------------------------+
+   |string          |Zend_XmlRpc_Value::XMLRPC_TYPE_STRING   |Zend_XmlRpc_Value_String    |
+   +----------------+----------------------------------------+----------------------------+
+   |nil             |Zend_XmlRpc_Value::XMLRPC_TYPE_NIL      |Zend_XmlRpc_Value_Nil       |
+   +----------------+----------------------------------------+----------------------------+
+   |ex:nil          |Zend_XmlRpc_Value::XMLRPC_TYPE_APACHENIL|Zend_XmlRpc_Value_Nil       |
+   +----------------+----------------------------------------+----------------------------+
+   |base64          |Zend_XmlRpc_Value::XMLRPC_TYPE_BASE64   |Zend_XmlRpc_Value_Base64    |
+   +----------------+----------------------------------------+----------------------------+
+   |dateTime.iso8601|Zend_XmlRpc_Value::XMLRPC_TYPE_DATETIME |Zend_XmlRpc_Value_DateTime  |
+   +----------------+----------------------------------------+----------------------------+
+   |array           |Zend_XmlRpc_Value::XMLRPC_TYPE_ARRAY    |Zend_XmlRpc_Value_Array     |
+   +----------------+----------------------------------------+----------------------------+
+   |struct          |Zend_XmlRpc_Value::XMLRPC_TYPE_STRUCT   |Zend_XmlRpc_Value_Struct    |
+   +----------------+----------------------------------------+----------------------------+
 
 .. note::
 

@@ -259,22 +259,22 @@ Zend Framework 1.10 では、定数値は、一意であるように変更され
 
 .. table:: 利用可能なバリデータのメッセージ
 
-   +---------------+--------------+------------------+
-   |バリデータ          |定数            |値                 |
-   +===============+==============+==================+
-   |Alnum          |STRING_EMPTY  |alnumStringEmpty  |
-   +---------------+--------------+------------------+
-   |Alpha          |STRING_EMPTY  |alphaStringEmpty  |
-   +---------------+--------------+------------------+
-   |Barcode_Ean13  |INVALID       |ean13Invalid      |
-   +---------------+--------------+------------------+
-   |Barcode_Ean13  |INVALID_LENGTH|ean13InvalidLength|
-   +---------------+--------------+------------------+
-   |Barcode_UpcA   |INVALID       |upcaInvalid       |
-   +---------------+--------------+------------------+
-   |Barcode_UpcA   |INVALID_LENGTH|upcaInvalidLength |
-   +---------------+--------------+------------------+
-   |Digits         |STRING_EMPTY  |digitsStringEmpty |
-   +---------------+--------------+------------------+
+   +-------------+--------------+------------------+
+   |バリデータ        |定数            |値                 |
+   +=============+==============+==================+
+   |Alnum        |STRING_EMPTY  |alnumStringEmpty  |
+   +-------------+--------------+------------------+
+   |Alpha        |STRING_EMPTY  |alphaStringEmpty  |
+   +-------------+--------------+------------------+
+   |Barcode_Ean13|INVALID       |ean13Invalid      |
+   +-------------+--------------+------------------+
+   |Barcode_Ean13|INVALID_LENGTH|ean13InvalidLength|
+   +-------------+--------------+------------------+
+   |Barcode_UpcA |INVALID       |upcaInvalid       |
+   +-------------+--------------+------------------+
+   |Barcode_UpcA |INVALID_LENGTH|upcaInvalidLength |
+   +-------------+--------------+------------------+
+   |Digits       |STRING_EMPTY  |digitsStringEmpty |
+   +-------------+--------------+------------------+
 
 
