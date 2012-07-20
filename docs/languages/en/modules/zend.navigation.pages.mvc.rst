@@ -134,17 +134,13 @@ object.
 Routes can be used with *MVC* pages. If a page has a route, this route will be used in ``getHref()`` to generate
 the *URL* for the page.
 
+.. note::
 
-
-   .. note::
-
-      Note that when using the *route* property in a page, you should also specify the default params that the
-      route defines (module, controller, action, etc.), otherwise the ``isActive()`` method will not be able to
-      determine if the page is active. The reason for this is that there is currently no way to get the default
-      params from a ``Zend_Controller_Router_Route_Interface`` object, nor to retrieve the current route from a
-      ``Zend_Controller_Router_Interface`` object.
-
-
+   Note that when using the *route* property in a page, you should also specify the default params that the route
+   defines (module, controller, action, etc.), otherwise the ``isActive()`` method will not be able to determine if
+   the page is active. The reason for this is that there is currently no way to get the default params from a
+   ``Zend_Controller_Router_Route_Interface`` object, nor to retrieve the current route from a
+   ``Zend_Controller_Router_Interface`` object.
 
 .. code-block:: php
    :linenos:

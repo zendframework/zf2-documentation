@@ -93,7 +93,8 @@ the controller. It defines simply one method:
 
 .. _zend.mvc.controllers.interfaces.event-manager-aware:
 
-.. rubric:: EventManagerAware
+EventManagerAware
+^^^^^^^^^^^^^^^^^
 
 Typically, it's nice to be able to tie into a controller's workflow without needing to extend it or hardcode
 behavior into it. The solution for this at the framework level is to use the ``EventManager``.
