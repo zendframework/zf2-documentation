@@ -1,0 +1,474 @@
+.. _zend.search.lucene.query-language:
+
+Langage de requêtes
+===================
+
+Java Lucene et ``Zend_Search_Lucene`` fournissent des langages de requêtes plutôt puissants.
+
+Ces langages sont pratiquement pareils, exceptées les quelques différences ci-dessous.
+
+La syntaxe complète du langage de requêtes Java Lucene peut être trouvée `ici`_.
+
+.. _zend.search.lucene.query-language.terms:
+
+Termes
+------
+
+Une requête est décomposée en termes et opérateurs. Il y a 3 types de termes : le termes simples, les phrases
+et les sous-requêtes.
+
+Un terme simple est un simple mot, tel que "test" ou "hello".
+
+Une phrase est un groupe de mots inclus dans des double guillemets, tel que "hello dolly".
+
+Une sous-requête est une requête incluse dans des parenthèses, tel que "(hello dolly)".
+
+De multiples termes peuvent être combinés ensemble avec des opérateurs booléens pour former des requêtes
+complexes (voyez ci-dessous).
+
+.. _zend.search.lucene.query-language.fields:
+
+Champs
+------
+
+Lucene supporte les champs de données. Lorsque vous effectuez une recherche, vous pouvez soit spécifier un champ,
+soit utiliser le champ par défaut. Le nom du champ dépend des données indexées et le champ par défaut est
+défini par les paramètres courants.
+
+La première différence et la plus significative avec Java Lucene est que par défaut les termes sont cherchés
+dans **tous les champs**.
+
+Il y a deux méthodes statiques dans la classe ``Zend_Search_Lucene`` qui permettent au développeur de configurer
+ces paramètres :
+
+.. code-block:: php
+   :linenos:
+
+   $defaultSearchField = Zend_Search_Lucene::getDefaultSearchField();
+   ...
+   Zend_Search_Lucene::setDefaultSearchField('contents');
+
+La valeur ``NULL`` indique que la recherche est effectuée dans tous les champs. C'est le paramétrage par défaut
+
+Vous pouvez chercher dans des champs spécifiques en tapant le nom du champ suivi de ":", suivi du terme que vous
+cherchez.
+
+Par exemple, prenons un index Lucene contenant deux champs -title et text- avec text comme champ par défaut. Si
+vous voulez trouver le document ayant pour titre "The Right Way" qui contient le text "don't go this way", vous
+pouvez entrer :
+
+.. code-block:: text
+   :linenos:
+
+   title:"The Right Way" AND text:go
+
+or
+
+.. code-block:: text
+   :linenos:
+
+   title:"Do it right" AND go
+
+"text" étant le champ par défaut, l'indicateur de champ n'est pas requis.
+
+Note: Le champ n'est valable que pour le terme, la phrase ou la sous-requête qu'il précède directement, ainsi la
+requête
+
+   .. code-block:: text
+      :linenos:
+
+      title:Do it right
+
+ne trouvera que "Do" dans le champ 'title'. Elle trouvera "it" et "right" dans le champ par défaut (si le champ
+par défaut est défini) ou dans tous les champs indexés (si le champ par défaut est défini à ``NULL``).
+
+.. _zend.search.lucene.query-language.wildcard:
+
+Jokers (Wildcards)
+------------------
+
+Lucene supporte les recherches avec joker sur un ou plusieurs caractères au sein des termes simples (mais pas dans
+les phrases).
+
+Pour effectuez une recherche avec joker sur un seul caractère, utilisez le symbole "?".
+
+Pour effectuez une recherche avec joker sur plusieurs caractères, utilisez le symbole "\*".
+
+La recherche avec un joker sur un seul caractère va faire correspondre le terme avec le "?" remplacé par
+n'importe quel autre caractère unique. Par exemple, pour trouver "text" ou "test" vous pouvez utiliser la
+recherche :
+
+   .. code-block:: text
+      :linenos:
+
+      te?t
+
+
+
+La rechercher par joker sur plusieurs caractères recherche pour 0 ou plus caractères quand elle fait correspondre
+une chaîne avec les termes de recherche. Par exemple, pour trouver test, tests ou tester, on peut utiliser la
+recherche :
+
+   .. code-block:: text
+      :linenos:
+
+      test*
+
+
+
+Vous pouvez utiliser "?", "\*" ou les deux n'importe où dans un terme :
+
+   .. code-block:: text
+      :linenos:
+
+      *wr?t*
+
+Cela va chercher "write", "wrote", "written", "rewrite", "rewrote", etc.
+
+Depuis la version 1.7.7 du ZF, les termes avec joker requierent un préfixe. La longueur par défaut du préfixe
+est de 3 (comme dans Java Lucene). Ainsi les termes "\*", "te?t" ou "wr?t" causeront une exception [#]_.
+
+Ce paramètre peut être modifié à l'aide des méthodes
+*Zend_Search_Lucene_Search_Query_Wildcard::getMinPrefixLength()* et
+*Zend_Search_Lucene_Search_Query_Wildcard::setMinPrefixLength()*.
+
+.. _zend.search.lucene.query-language.modifiers:
+
+Modificateurs de termes
+-----------------------
+
+Lucene supporte la modification des termes pour fournir un large panel d'options de recherche.
+
+Le modificateur "~" peut être utilisé pour spécifier des recherches de proximité dans les phrases ou des
+recherches floues pour les termes individuels.
+
+.. _zend.search.lucene.query-language.range:
+
+Recherche par intervalle
+------------------------
+
+Dans une requêtes par intervalle, le développeur ou l'utilisateur peut rechercher des documents dont la valeur
+du/des champ(s) se trouve entre la borne inférieur et la borne supérieur de l'intervalle. Les requêtes
+d'intervalle peuvent être inclusives ou exclusives pour les bornes supérieures ou inférieures. Le tri est
+effectué de manière lexicographique.
+
+   .. code-block:: text
+      :linenos:
+
+      mod_date:[20020101 TO 20030101]
+
+Cela va trouver les documents dont la valeur du champ mod_date se trouve entre 20020101 et 20030101, bornes
+incluses. Notez que les requêtes d'intervalles ne sont pas réservées aux champs de date. Vous pouvez également
+les utiliser pour d'autres types de champ.
+
+   .. code-block:: text
+      :linenos:
+
+      title:{Aida TO Carmen}
+
+Cela va trouver tous les documents dont le titre serait triés entre Aida et Carmen, sans inclure ni Aida, ni
+Carmen.
+
+Les requêtes d'intervalles inclusives utilisent des crochets. Les exclusives utilisent des accolades.
+
+Si aucun champ n'est spécifié, par défaut ``Zend_Search_Lucene`` cherchera l'intervalle spécifié dans tous les
+champs.
+
+   .. code-block:: text
+      :linenos:
+
+      {Aida TO Carmen}
+
+
+
+.. _zend.search.lucene.query-language.fuzzy:
+
+Recherches floues
+-----------------
+
+``Zend_Search_Lucene`` tout comme Java Lucene supporte les recherches floues basées sur les algorithmes
+"Levenshtein Distance" ou "Edit Distance". Pour effectuer une recherche floue, utilisez le symbole tilde "~" à la
+fin du mot pour un terme simple. Par exemple pour chercher un terme similaire à "roam", utilisez la recherche
+floue suivante :
+
+   .. code-block:: text
+      :linenos:
+
+      roam~
+
+Cette recherche va trouver des termes tels que foam ou roams. Un paramètre additionnel (et optionnel) peut
+spécifier la similarité requise. La valeur doit se trouver entre 0 et 1. Avec une valeur proche de 1, seuls les
+termes très similaires vont correspondre. Par exemple :
+
+   .. code-block:: text
+      :linenos:
+
+      roam~0.8
+
+Si le paramètre n'est pas fourni, la valeur par défaut est à 0.5.
+
+.. _zend.search.lucene.query-language.matched-terms-limitations:
+
+Limitation des termes correspondants
+------------------------------------
+
+Les recherches floues, par intervalle ou par joker peuvent correspondre à trop de termes. Cela peut causer
+d'énormes baisses de performances.
+
+Du coup, Zend_Search_Lucene définit une limite dans le nombre de correspondances par requêtes (ou
+sous-requêtes). Cette limite peut être récupérée et définie à l'aide des méthodes
+*Zend_Search_Lucene::getTermsPerQueryLimit()*/*Zend_Search_Lucene::setTermsPerQueryLimit($limit)*.
+
+La limite du nombre de correspondances par requête est de 1024.
+
+.. _zend.search.lucene.query-language.proximity-search:
+
+Recherches de proximité
+-----------------------
+
+Lucene permet de trouver des mots dans une phrase qui se trouvent à une certaine distance les uns des autres dans
+une chaîne. Pour effectuer une recherche de proximité, utilisez le symbole tilde "~" à la fin de la phrase. Par
+exemple pour retrouver "Zend" et "Framework" avec 10 mots entre eux dans un document, utilisez la recherche :
+
+   .. code-block:: text
+      :linenos:
+
+      "Zend Framework"~10
+
+
+
+.. _zend.search.lucene.query-language.boosting:
+
+Booster un terme
+----------------
+
+Java Lucene et ``Zend_Search_Lucene`` fournissent le niveau de pertinence des documents basé sur les termes
+trouvés. Pour booster la pertinence d'un terme, utilisez le symbole circonflexe "^" avec un facteur de boost (un
+nombre) à la fin du terme que vous cherchez. Plus le facteur de boost est élevé, plus la pertinence du terme le
+sera.
+
+Le boostage vous permet de contrôler la pertinence d'un document en boostant les termes individuellement. Par
+exemple, si vous cherchez
+
+   .. code-block:: text
+      :linenos:
+
+      PHP framework
+
+et que vous voulez que le terme "PHP" soit plus pertinent, boostez le en utilisant le symbole ^ et son facteur de
+boost juste après le terme. Vous pourriez écrire :
+
+   .. code-block:: text
+      :linenos:
+
+      PHP^4 framework
+
+Cela fera en sorte que les documents possédant le terme PHP seront plus pertinents. Vous pouvez également booster
+des phrases ou des sous-requêtes, comme dans l'exemple ci-dessous :
+
+   .. code-block:: text
+      :linenos:
+
+      "PHP framework"^4 "Zend Framework"
+
+Par défaut, le facteur de boost est 1. Bien que le facteur de boost doive être positif, il peut être inférieur
+à 1 (p. ex. 0.2).
+
+.. _zend.search.lucene.query-language.boolean:
+
+Opérateurs booléens
+-------------------
+
+Les opérateurs booléens permettent de combiner des termes avec des opérateurs logiques. Lucene supporte AND,
+"+", OR, NOT et "-" en tant qu'opérateurs booléens. Dans Java Lucene, les opérateurs booléens doivent être en
+MAJUSCULE. Ce n'est pas nécessaire dans ``Zend_Search_Lucene``.
+
+Les opérateurs AND, OR et NOT et "+", "-" définissent deux styles différents pour construire des requêtes
+booléennes. Contrairement à Java Lucene, ``Zend_Search_Lucene`` ne permet pas de mixer ces deux styles.
+
+Si le style AND/OR/NOT est utilisé, un opérateur AND ou OR devra être présent entre chaque terme de requête.
+Chaque terme peut également être précédé de l'opérateur NOT. L'opérateur AND à la priorité sur
+l'opérateur OR. Cela diffère du comportement de Java Lucene.
+
+.. _zend.search.lucene.query-language.boolean.and:
+
+AND
+^^^
+
+L'opérateur AND signifie que tous les termes dans le "groupe AND" doivent correspondre à une partie du/des champs
+cherché(s).
+
+Pour chercher des documents qui contiennent "PHP framework" et "Zend Framework", utilisez la requête :
+
+   .. code-block:: text
+      :linenos:
+
+      "PHP framework" AND "Zend Framework"
+
+
+
+.. _zend.search.lucene.query-language.boolean.or:
+
+OR
+^^
+
+L'opérateur OR divise la requête en plusieurs termes optionnels.
+
+Pour chercher des documents qui contiennent "PHP framework" ou "Zend Framework", utilisez la requête :
+
+   .. code-block:: text
+      :linenos:
+
+      "PHP framework" OR "Zend Framework"
+
+
+
+.. _zend.search.lucene.query-language.boolean.not:
+
+NOT
+^^^
+
+L'opérateur NOT exclut les documents qui contiennent le terme situé après NOT. Mais un "groupe AND" qui contient
+uniquement des termes précédés de NOT ne retournera aucun résultat au lieu de retourner tous les documents
+indexés.
+
+Pour chercher des documents qui contiennent "PHP framework", mais pas "Zend Framework", utilisez la requête :
+
+   .. code-block:: text
+      :linenos:
+
+      "PHP framework" AND NOT "Zend Framework"
+
+
+
+.. _zend.search.lucene.query-language.boolean.other-form:
+
+Les opérateurs &&, \||, et !
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+&&, \||, et ! peuvent être utilisés à la place de la notation AND, OR, et NOT.
+
+.. _zend.search.lucene.query-language.boolean.plus:
+
+\+
+^^
+
+L'opérateur "+" ou 'requis' stipule que le terme après le symbole "+" doit correspondre au document.
+
+Pour chercher des documents qui doivent contenir "Zend" et peuvent contenir "Framework", utilisez la requête :
+
+   .. code-block:: text
+      :linenos:
+
+      +Zend Framework
+
+
+
+.. _zend.search.lucene.query-language.boolean.minus:
+
+\-
+^^
+
+L'opérateur "-" ou 'interdit' exclut les documents qui correspondent au terme suivant le symbole "-".
+
+Pour chercher des documents qui contiennent "PHP framework" mais pas "Zend Framework", utilisez la requête :
+
+   .. code-block:: text
+      :linenos:
+
+      "PHP framework" -"Zend Framework"
+
+
+
+.. _zend.search.lucene.query-language.boolean.no-operator:
+
+Pas d'opérateur
+^^^^^^^^^^^^^^^
+
+Si aucun opérateur n'est utilisé, le comportement de la recherche est définit par "l'opérateur booléen par
+défaut".
+
+Il est défini à *OR* par défaut.
+
+Cela implique que chaque terme est optionnel par défaut. Il peut être présent ou pas dans le document, mais les
+documents avec le terme recevront un score plus élevé.
+
+Pour chercher des documents qui doivent contenir "PHP framework" et peuvent contenir "Zend Framework", utilisez la
+requête :
+
+   .. code-block:: text
+      :linenos:
+
+      +"PHP framework" "Zend Framework"
+
+
+
+L'opérateur booléen par défaut peut être défini ou récupéré avec les méthodes
+``Zend_Search_Lucene_Search_QueryParser::setDefaultOperator($operator)`` et
+``Zend_Search_Lucene_Search_QueryParser::getDefaultOperator()``, respectivement.
+
+Ces méthodes travaillent avec les constantes ``Zend_Search_Lucene_Search_QueryParser::B_AND`` et
+``Zend_Search_Lucene_Search_QueryParser::B_OR``.
+
+.. _zend.search.lucene.query-language.grouping:
+
+Groupement
+----------
+
+Java Lucene et ``Zend_Search_Lucene`` supportent l'usage de parenthèses pour grouper des clauses et former des
+sous-requêtes. Cela peut s'avérer utile si vous voulez contrôler la priorité des opérateurs logiques pour une
+requête ou bien mixer différents styles de requête :
+
+   .. code-block:: text
+      :linenos:
+
+      +(framework OR library) +php
+
+``Zend_Search_Lucene`` supporte l'imbrication de requêtes à n'importe quel niveau.
+
+.. _zend.search.lucene.query-language.field-grouping:
+
+Groupement de champs
+--------------------
+
+Lucene supporte également l'usage des parenthèses pour grouper plusieurs clauses sur un simple champ.
+
+Pour chercher un titre (champ 'title') qui contient le mot "return" ET la phrase "pink panther", utilisez la
+requête :
+
+   .. code-block:: text
+      :linenos:
+
+      title:(+return +"pink panther")
+
+
+
+.. _zend.search.lucene.query-language.escaping:
+
+Echappement des caractères spéciaux
+-----------------------------------
+
+Lucene supporte l'échappement des caractères spéciaux qui sont utilisés dans la syntaxe de requête. La liste
+des caractères spéciaux est la suivante :
+
+\+ - && \|| ! ( ) { } [ ] ^ " ~ * ? : \\
+
+dans les termes simples, + et - sont automatiquement traités comme des caractères normaux.
+
+Pour d'autres occurences de ces caractères, utilisez le \\ avant chaque caractère spécial si vous voulez
+l'échapper. Par exemple, pour chercher (1+1):2, utilisez la requête :
+
+   .. code-block:: text
+      :linenos:
+
+      \(1\+1\)\:2
+
+
+
+
+
+.. _`ici`: http://lucene.apache.org/java/2_3_0/queryparsersyntax.html
+
+.. [#] Veuillez noter qu'il ne s'agit pas d'une *Zend_Search_Lucene_Search_QueryParserException*, mais d'une
+       *Zend_Search_Lucene_Exception*. Elle est levée pendant l'opération de réécriture de la requête
+       (exécution).
