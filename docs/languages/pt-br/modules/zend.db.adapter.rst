@@ -1144,37 +1144,37 @@ As chaves da matriz associativa retornada são os nomes das colunas da tabela. O
 
 .. table:: Campos de Metadados Devolvidos por describeTable()
 
-   +----------------+---------+---------------------------------------------------------------------------------+
-   |Key             |Type     |Description                                                                      |
-   +================+=========+=================================================================================+
-   |SCHEMA_NAME     |(string) |Nome do esquema do banco de dados no qual essa tabela existe.                    |
-   +----------------+---------+---------------------------------------------------------------------------------+
-   |TABLE_NAME      |(string) |Nome da tabela a qual esta coluna pertence.                                      |
-   +----------------+---------+---------------------------------------------------------------------------------+
-   |COLUMN_NAME     |(string) |Nome da coluna.                                                                  |
-   +----------------+---------+---------------------------------------------------------------------------------+
-   |COLUMN_POSITION |(integer)|Posição ordinal da coluna na tabela.                                             |
-   +----------------+---------+---------------------------------------------------------------------------------+
-   |DATA_TYPE       |(string) |Nome do tipo de dados do SGBDR da coluna.                                        |
-   +----------------+---------+---------------------------------------------------------------------------------+
-   |DEFAULT         |(string) |Valor padrão para a coluna, se houver.                                           |
-   +----------------+---------+---------------------------------------------------------------------------------+
-   |NULLABLE        |(boolean)|TRUE se a coluna aceita SQLNULL's, FALSE se a coluna tem uma restrição NOTNULL.  |
-   +----------------+---------+---------------------------------------------------------------------------------+
-   |LENGTH          |(integer)|Comprimento ou tamanho da coluna como informado pelo SGBDR.                      |
-   +----------------+---------+---------------------------------------------------------------------------------+
-   |SCALE           |(integer)|Escala de tipo SQLNUMERIC ou DECIMAL.                                            |
-   +----------------+---------+---------------------------------------------------------------------------------+
-   |PRECISION       |(integer)|Precisão de tipo SQLNUMERIC ou DECIMAL.                                          |
-   +----------------+---------+---------------------------------------------------------------------------------+
-   |UNSIGNED        |(boolean)|TRUE se um tipo baseado em inteiro for informado como UNSIGNED.                  |
-   +----------------+---------+---------------------------------------------------------------------------------+
-   |PRIMARY         |(boolean)|TRUE se a coluna é parte da chave primária dessa tabela.                         |
-   +----------------+---------+---------------------------------------------------------------------------------+
-   |PRIMARY_POSITION|(integer)|Posição ordinal (baseada em 1) da coluna na chave primária.                      |
-   +----------------+---------+---------------------------------------------------------------------------------+
-   |IDENTITY        |(boolean)|TRUE se a coluna usa um valor autogerado.                                        |
-   +----------------+---------+---------------------------------------------------------------------------------+
+   +----------------+---------+-------------------------------------------------------------------------------+
+   |Key             |Type     |Description                                                                    |
+   +================+=========+===============================================================================+
+   |SCHEMA_NAME     |(string) |Nome do esquema do banco de dados no qual essa tabela existe.                  |
+   +----------------+---------+-------------------------------------------------------------------------------+
+   |TABLE_NAME      |(string) |Nome da tabela a qual esta coluna pertence.                                    |
+   +----------------+---------+-------------------------------------------------------------------------------+
+   |COLUMN_NAME     |(string) |Nome da coluna.                                                                |
+   +----------------+---------+-------------------------------------------------------------------------------+
+   |COLUMN_POSITION |(integer)|Posição ordinal da coluna na tabela.                                           |
+   +----------------+---------+-------------------------------------------------------------------------------+
+   |DATA_TYPE       |(string) |Nome do tipo de dados do SGBDR da coluna.                                      |
+   +----------------+---------+-------------------------------------------------------------------------------+
+   |DEFAULT         |(string) |Valor padrão para a coluna, se houver.                                         |
+   +----------------+---------+-------------------------------------------------------------------------------+
+   |NULLABLE        |(boolean)|TRUE se a coluna aceita SQLNULL's, FALSE se a coluna tem uma restrição NOTNULL.|
+   +----------------+---------+-------------------------------------------------------------------------------+
+   |LENGTH          |(integer)|Comprimento ou tamanho da coluna como informado pelo SGBDR.                    |
+   +----------------+---------+-------------------------------------------------------------------------------+
+   |SCALE           |(integer)|Escala de tipo SQLNUMERIC ou DECIMAL.                                          |
+   +----------------+---------+-------------------------------------------------------------------------------+
+   |PRECISION       |(integer)|Precisão de tipo SQLNUMERIC ou DECIMAL.                                        |
+   +----------------+---------+-------------------------------------------------------------------------------+
+   |UNSIGNED        |(boolean)|TRUE se um tipo baseado em inteiro for informado como UNSIGNED.                |
+   +----------------+---------+-------------------------------------------------------------------------------+
+   |PRIMARY         |(boolean)|TRUE se a coluna é parte da chave primária dessa tabela.                       |
+   +----------------+---------+-------------------------------------------------------------------------------+
+   |PRIMARY_POSITION|(integer)|Posição ordinal (baseada em 1) da coluna na chave primária.                    |
+   +----------------+---------+-------------------------------------------------------------------------------+
+   |IDENTITY        |(boolean)|TRUE se a coluna usa um valor autogerado.                                      |
+   +----------------+---------+-------------------------------------------------------------------------------+
 
 .. note::
 
