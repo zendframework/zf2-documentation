@@ -14,6 +14,8 @@ The built-in plugins are:
 
 - ``Zend\Mvc\Controller\Plugin\Forward``
 
+- ``Zend\Mvc\Controller\Plugin\PostRedirectGet``
+
 - ``Zend\Mvc\Controller\Plugin\Redirect``
 
 - ``Zend\Mvc\Controller\Plugin\Url``
@@ -129,6 +131,43 @@ As an example:
        'somekey' => $somevalue,
        'foo'     => $foo,
    );
+
+.. _zend.mvc.controller-plugins.postredirectget:
+
+The Post/Redirect/Get Plugin
+----------------------------
+
+When a user sends a POST request (e.g. after submitting a form), their browser will try to protect them from
+sending the POST again, breaking the back button, causing browser warnings and pop-ups, and sometimes reposting
+the form. Instead, when receiving a POST, we should store the data in a session container and redirect the user
+to a GET request.
+
+This plugin can be invoked with two arguments:
+
+- ``$redirect``, a string containing the redirect location which can either be a named route or a URL, based on
+  the contents of the second parameter.
+- ``$redirectToUrl``, a boolean that when set to TRUE, causes the first parameter to be treated as a URL instead
+  of a route name (this is required when redirecting to a URL instead of a route). This argument defaults to false.
+
+.. code-block:: php
+   :linenos:
+
+   // Pass in the route/url you want to redirect to after the POST
+   $prg = $this->prg('/user/register', true);
+
+   if ($prg instanceof \Zend\Http\PhpEnvironment\Response) {
+       // returned a response to redirect us
+       return $prg;
+   } elseif ($prg === false) {
+       // this wasn't a POST request, but there were no params in the flash messenger
+       // probably this is the first time the form was loaded
+       return array('form' => $myForm);
+   }
+
+   // $prg is an array containing the POST params from the previous request
+   $form->setData($prg);
+
+   // ... your form processing code here
 
 .. _zend.mvc.controller-plugins.redirect:
 
