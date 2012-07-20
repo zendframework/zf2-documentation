@@ -1,0 +1,450 @@
+.. _zend.search.lucene.extending:
+
+Расширяемость
+=============
+
+.. _zend.search.lucene.extending.analysis:
+
+Анализ текста
+-------------
+
+Класс *Zend_Search_Lucene_Analysis_Analyzer* используется индексатором для
+разбиения текстовых полей документа на лексемы.
+
+Методы *Zend_Search_Lucene_Analysis_Analyzer::getDefault()* и
+*Zend_Search_Lucene_Analysis_Analyzer::setDefault()* используются для получения и
+установки анализатора по умолчанию.
+
+Таким образом, вы можете устанавливать собственный анализатор
+текста или выбирать его из ряда предопределенных
+анализаторов: *Zend_Search_Lucene_Analysis_Analyzer_Common_Text* и
+*Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive* (по умолчанию). Оба
+интерпретируют лексему как последовательность букв.
+*Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive* приводит лексемы к
+нижнему регистру.
+
+Переключение между анализаторами:
+
+.. code-block:: php
+   :linenos:
+   <?php
+   Zend_Search_Lucene_Analysis_Analyzer::setDefault(
+       new Zend_Search_Lucene_Analysis_Analyzer_Common_Text());
+   ...
+   $index->addDocument($doc);
+*Zend_Search_Lucene_Analysis_Analyzer_Common* спроектирован для того, чтобы быть
+родительским классом для всех анализаторов, определяемых
+пользователем. В наследующем классе достаточно определить
+методы *reset()* и *nextToken()*, которые берут строку из свойства $_input и
+возвращают лексемы шаг за шагом (``NULL`` означает конец потока).
+
+Метод *nextToken()* должен использовать метод *normalize()* для каждой
+лексемы. Это позволит использовать фильтры лексем с вашим
+анализатором.
+
+Ниже приведен пример пользовательского анализатора, котрорый
+принимает слова с цифрами как элементы:
+
+   .. rubric:: Собственный анализатор текста
+
+   .. code-block:: php
+      :linenos:
+      <?php
+      /** Это созданный пользователем текстовый анализатор, который интерпретирует слова с цифрами как один элемент. */
+
+      /** Zend_Search_Lucene_Analysis_Analyzer hierarchy */
+      require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
+
+      class My_Analyzer extends Zend_Search_Lucene_Analysis_Analyzer_Common
+      {
+          private $_position;
+
+          /**
+           * Установка позиции в начальное состояние
+           */
+          public function reset()
+          {
+              $this->_position = 0;
+          }
+
+          /**
+           * API для разбиения на лексемы
+           * Получение следующей лексемы
+           * Возвращает null, если достигнут конец потока
+           *
+           * @return Zend_Search_Lucene_Analysis_Token|null
+           */
+          public function nextToken()
+          {
+              if ($this->_input === null) {
+                  return null;
+              }
+
+              while ($this->_position < strlen($this->_input)) {
+                  // пропуск пробела
+                  while ($this->_position < strlen($this->_input) &&
+                         !ctype_alnum( $this->_input[$this->_position] )) {
+                      $this->_position++;
+                  }
+
+                  $termStartPosition = $this->_position;
+
+                  // чтение лексемы
+                  while ($this->_position < strlen($this->_input) &&
+                         ctype_alnum( $this->_input[$this->_position] )) {
+                      $this->_position++;
+                  }
+
+                  // Пустая лексема, конец потока
+                  if ($this->_position == $termStartPosition) {
+                      return null;
+                  }
+
+                  $token = new Zend_Search_Lucene_Analysis_Token(
+                                            substr($this->_input,
+                                                   $termStartPosition,
+                                                   $this->_position - $termStartPosition),
+                                            $termStartPosition,
+                                            $this->_position);
+                  $token = $this->normalize($token);
+                  if ($token !== null) {
+                      return $token;
+                  }
+                  // Продолжение, если лексема пропущена
+              }
+
+              return null;
+          }
+      }
+
+      Zend_Search_Lucene_Analysis_Analyzer::setDefault(
+          new My_Analyzer());
+
+
+.. _zend.search.lucene.extending.filters:
+
+Фильтрация лексем
+-----------------
+
+Анализатор *Zend_Search_Lucene_Analysis_Analyzer_Common* также предоставляет
+механизм фильтрации лексем.
+
+Класс *Zend_Search_Lucene_Analysis_TokenFilter* является уровнем абстракции для
+таких фильтров. Он должен использоваться как предок для ваших
+собственных фильтров.
+
+Пользовательские фильтры должны реализовать метод *normalize()*,
+который может преобразовывать лексему или сигнализировать,
+что лексема должна быть пропущена.
+
+В предоставляемом анализаторе уже определены три фильтра:
+
+   - *Zend_Search_Lucene_Analysis_TokenFilter_LowerCase*
+
+   - *Zend_Search_Lucene_Analysis_TokenFilter_ShortWords*
+
+   - *Zend_Search_Lucene_Analysis_TokenFilter_StopWords*
+
+
+
+Фильтр *LowerCase* уже используется для анализатора
+*Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive*, который применяется по
+умолчанию.
+
+*ShortWords* и *StopWords* могут использоваться с уже включенными
+анализаторами или вашими собственными:
+
+.. code-block:: php
+   :linenos:
+   <?php
+   $stopWords = array('a', 'an', 'at', 'the', 'and', 'or', 'is', 'am');
+   $stopWordsFilter = new Zend_Search_Lucene_Analysis_TokenFilter_StopWords($stopWords);
+
+   $analyzer = new Zend_Search_Lucene_Analysis_Analyzer_Common_TextNum_CaseInsensitive();
+   $analyzer->addFilter($stopWordsFilter);
+
+   Zend_Search_Lucene_Analysis_Analyzer::setDefault($analyzer);
+.. code-block:: php
+   :linenos:
+   <?php
+   $shortWordsFilter = new Zend_Search_Lucene_Analysis_TokenFilter_ShortWords();
+
+   $analyzer = new Zend_Search_Lucene_Analysis_Analyzer_Common_TextNum_CaseInsensitive();
+   $analyzer->addFilter($shortWordsFilter);
+
+   Zend_Search_Lucene_Analysis_Analyzer::setDefault($analyzer);
+Конструктор *Zend_Search_Lucene_Analysis_TokenFilter_StopWords* принимает массив
+стоп-слов в качестве аргумента. Но стоп-слова можно также
+загружать и из файла:
+
+.. code-block:: php
+   :linenos:
+   <?php
+   $stopWordsFilter = new Zend_Search_Lucene_Analysis_TokenFilter_StopWords();
+   $stopWordsFilter->loadFromFile($my_stopwords_file);
+
+   $analyzer = new Zend_Search_Lucene_Analysis_Analyzer_Common_TextNum_CaseInsensitive();
+   $analyzer->addFilter($stopWordsFilter);
+
+   Zend_Search_Lucene_Analysis_Analyzer::setDefault($analyzer);
+Файл должен быть текстовым с одним словом в каждой строке.
+Символом '#' помечаются строки с комментариями.
+
+Конструктор *Zend_Search_Lucene_Analysis_TokenFilter_ShortWords* имеет один
+необязательный параметр, это ограничение длины слова. Его
+значение по умолчанию равно 2.
+
+.. _zend.search.lucene.extending.scoring:
+
+Алгоритмы ранжирования
+----------------------
+
+Ранг ``q`` документа ``d`` определяется следующим образом:
+
+*score(q,d) = sum( tf(t in d) * idf(t) * getBoost(t.field in d) * lengthNorm(t.field in d) ) * coord(q,d) *
+queryNorm(q)*
+
+tf(t in d) -*Zend_Search_Lucene_Search_Similarity::tf($freq)*- коэффициент ранга,
+основанный на том, насколько часто встречается элемент или
+фраза в документе.
+
+idf(t) -*Zend_Search_Lucene_Search_SimilaritySimilarity::tf($term, $reader)*- коэффициент ранга
+для простого элемента применительно к определенному индексу.
+
+getBoost(t.field in d) - коэффициент усиления для поля элемента.
+
+lengthNorm($term) - значение нормализации для поля, получаемое из
+общего количества элементов, содержащихся в поле. Это значение
+хранится внутри индекса. Эти значения вместе с коэффициентом
+усиления поля хранятся в индексе, результатом их умножения
+является ранг для каждого поля.
+
+Совпадения в длинных полях менее точны, поэтому реализации
+этого метода обычно возвращают тем меньшие значения, чем
+больше число лексем, и тем большие значения, чем меньше число
+лексем.
+
+сoord(q,d) -*Zend_Search_Lucene_Search_Similarity::coord($overlap, $maxOverlap)*- коэффициент
+ранга, основанный на относительной доле всех элементов
+запроса, найденных в документе.
+
+Присутствие большого количества элементов запроса означает
+лучшее соответствие запросу, поэтому реализации этого метода
+обычно возвращают бОльшие значения, когда соотношение между
+этими параметрами большое и меньшие значения, когда
+соотношение между ними небольшое.
+
+queryNorm(q) - значение нормализации для запроса, получаемое из
+суммы возведенных в квадрат весов каждого из элементов
+запроса. Это значение затем умножается в вес каждого элемента
+запроса.
+
+Это не влияет на ранжирование, цель нормализации состоит в том,
+чтобы сделать соизмеримыми ранги, полученные при различных
+запросах.
+
+Алгоритм ранжирования может быть изменен через определение
+своего собственного класса. Для этого надо создать потомка
+класса Zend_Search_Lucene_Search_Similarity, как показано ниже, затем
+использовать метод *Zend_Search_Lucene_Search_Similarity::setDefault($similarity);* для
+установки объекта как используемого по умолчанию.
+
+.. code-block:: php
+   :linenos:
+   <?php
+
+   class MySimilarity extends Zend_Search_Lucene_Search_Similarity {
+       public function lengthNorm($fieldName, $numTerms) {
+           return 1.0/sqrt($numTerms);
+       }
+
+       public function queryNorm($sumOfSquaredWeights) {
+           return 1.0/sqrt($sumOfSquaredWeights);
+       }
+
+       public function tf($freq) {
+           return sqrt($freq);
+       }
+
+       /**
+        * Сейчас не используется. Подсчитывает сумму соответствий неточной фразе,
+        * основанную на изменяемом расстоянии.
+        */
+       public function sloppyFreq($distance) {
+           return 1.0;
+       }
+
+       public function idfFreq($docFreq, $numDocs) {
+           return log($numDocs/(float)($docFreq+1)) + 1.0;
+       }
+
+       public function coord($overlap, $maxOverlap) {
+           return $overlap/(float)$maxOverlap;
+       }
+   }
+
+   $mySimilarity = new MySimilarity();
+   Zend_Search_Lucene_Search_Similarity::setDefault($mySimilarity);
+
+   ?>
+.. _zend.search.lucene.extending.storage:
+
+Контейнеры хранения
+-------------------
+
+Абстрактный класс *Zend_Search_Lucene_Storage_Directory* определяет функционал
+директории.
+
+Конструктор *Zend_Search_Lucene* использует строку или объект
+*Zend_Search_Lucene_Storage_Directory* как входные данные.
+
+*Zend_Search_Lucene_Storage_Directory_Filesystem* реализует функционал директории
+для файловой системы.
+
+Если для конструктора *Zend_Search_Lucene* в качестве входных данных
+испольуется строка, то считыватель индекса (объект *Zend_Search_Lucene*)
+рассматривает ее как путь в файловой системе и сама
+инстанцирует объекты *Zend_Search_Lucene_Storage_Directory_Filesystem*.
+
+Вы можете определить собственную реализацию директории,
+создав потомка класса *Zend_Search_Lucene_Storage_Directory*.
+
+Методы *Zend_Search_Lucene_Storage_Directory*:
+
+.. code-block:: php
+   :linenos:
+   <?php
+
+   abstract class Zend_Search_Lucene_Storage_Directory {
+   /**
+    * Закрывает средство хранения.
+    *
+    * @return void
+    */
+   abstract function close();
+
+
+   /**
+    * Создает новый пустой файл с данным именем в директории.
+    *
+    * @param string $name
+    * @return void
+    */
+   abstract function createFile($filename);
+
+
+   /**
+    * Удаляет существующий файл в директории.
+    *
+    * @param string $filename
+    * @return void
+    */
+   abstract function deleteFile($filename);
+
+
+   /**
+    * Возвращает true, если файл с данным именем существует.
+    *
+    * @param string $filename
+    * @return boolean
+    */
+   abstract function fileExists($filename);
+
+
+   /**
+    * Возвращает длину файла в директории.
+    *
+    * @param string $filename
+    * @return integer
+    */
+   abstract function fileLength($filename);
+
+
+   /**
+    * Возвращает время последнего изменения файла в формате UNIX.
+    *
+    * @param string $filename
+    * @return integer
+    */
+   abstract function fileModified($filename);
+
+
+   /**
+    * Переименовывает существующий файл в директории.
+    *
+    * @param string $from
+    * @param string $to
+    * @return void
+    */
+   abstract function renameFile($from, $to);
+
+
+   /**
+    * Устанавливает время изменения файла в текущее.
+    *
+    * @param string $filename
+    * @return void
+    */
+   abstract function touchFile($filename);
+
+
+   /**
+    * Возвращает объект Zend_Search_Lucene_Storage_File для данного файла в директории.
+    *
+    * @param string $filename
+    * @return Zend_Search_Lucene_Storage_File
+    */
+   abstract function getFileObject($filename);
+
+   }
+
+   ?>
+Метод *getFileObject($filename)* класса *Zend_Search_Lucene_Storage_Directory* возвращает
+объект *Zend_Search_Lucene_Storage_File*.
+
+Абстрактный класс *Zend_Search_Lucene_Storage_File* реализует абстракцию
+файла и примитивы чтения файла индекса.
+
+Вы должны создать класс, наследующий от *Zend_Search_Lucene_Storage_File* для
+своей реализации директории.
+
+Только два метода класса *Zend_Search_Lucene_Storage_File* должны быть
+перегружены в вашей реализации:
+
+.. code-block:: php
+   :linenos:
+   <?php
+
+   class MyFile extends Zend_Search_Lucene_Storage_File {
+       /**
+        * Устанавливает индикатор позиции и перемещает указатель файла.
+        * Новая позиция, измеряемая в байтах от начала файла,
+        * получается добавлением смещения к позиции, определяемой аргументом $whence,
+        * который может принимать следующие значения:
+        * SEEK_SET - Устанавливает позицию равной смещению в байтах.
+        * SEEK_CUR - Устанавливает позицию равной текущей позиции плюс смещение.
+        * SEEK_END - Устанавливает позицию равной концу файла плюс смещение.
+        * (Для перемещения позиции относительно конца файла вы должны передать отрицательное значение смещения)
+        * В случае успеха возвращает 0; иначе -1
+        *
+        * @param integer $offset
+        * @param integer $whence
+        * @return integer
+        */
+       public function seek($offset, $whence=SEEK_SET) {
+           ...
+       }
+
+       /**
+        * Считывает $length байт из файла и перемещает указатель файла.
+        *
+        * @param integer $length
+        * @return string
+        */
+       protected function _fread($length=1) {
+           ...
+       }
+   }
+
+   ?>
+
