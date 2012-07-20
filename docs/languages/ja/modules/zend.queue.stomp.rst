@@ -1,0 +1,33 @@
+.. _zend.queue.stomp:
+
+Stomp
+=====
+
+``Zend_Queue_Stomp``\ は、 `Stomp`_\ 互換の一部のサーバと通信するために、
+基本的なクライアントを提供します。 一部のサーバ（例えばApache
+ActiveMQとRabbitMQ）では、 *HTTP*\ や *XMPP*\ のような
+他のメソッドで情報を交換できます。
+
+Stompプロトコルは、どんな `Javaメッセージサービス(JMS)`_
+でもサポートするStompConnectを提供します。 Stompは、 `Apache ActiveMQ`_\ や `RabbitMQ`_\ 、
+`stompserver`_\ 、そして `Gozirra`_\ で サポートされます。
+
+.. _zend.queue.adapters-configuration.stomp:
+
+Stomp - サポートするクラス
+-----------------
+
+- ``Zend_Queue_Stomp_Frame``\ 。
+  このクラスは、Stompフレームを操作するための基底関数を提供します。
+
+- ``Zend_Queue_Stomp_Client``. このクラスは  provides 基本関数 to ``send()`` and ``receive()``
+  ``Zend_Queue_Stomp_Frame``\ s to and from a Stomp互換サーバ
+
+
+
+.. _`Stomp`: http://stomp.codehaus.org/
+.. _`Javaメッセージサービス(JMS)`: http://java.sun.com/products/jms/
+.. _`Apache ActiveMQ`: http://activemq.apache.org/
+.. _`RabbitMQ`: http://www.rabbitmq.com/
+.. _`stompserver`: http://stompserver.rubyforge.org/
+.. _`Gozirra`: http://www.germane-software.com/software/Java/Gozirra/

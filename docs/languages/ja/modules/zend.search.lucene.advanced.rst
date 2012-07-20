@@ -1,0 +1,145 @@
+.. _zend.search.lucene.advanced:
+
+応用
+==
+
+.. _zend.search.lucene.advanced.format_migration:
+
+1.6 以降でサポートするインデックスフォーマット変換
+---------------------------
+
+``Zend_Search_Lucene`` コンポーネントは、Java Lucene 1.4-1.9、2.1 そして 2.3
+形式のインデックスフォーマットに対応しています。
+
+現在のインデックスフォーマットを知るには *$index->getFormatVersion()*
+を使用します。これは、次のいずれかの値を返します。
+
+   - ``Zend_Search_Lucene::FORMAT_PRE_2_1`` は Java Lucene 1.4-1.9
+     のインデックスフォーマットを表します。
+
+   - ``Zend_Search_Lucene::FORMAT_2_1`` は Java Lucene 2.1 のインデックスフォーマット (Lucene 2.2
+     でも使用可能) を表します。
+
+   - ``Zend_Search_Lucene::FORMAT_2_3`` は Java Lucene 2.3
+     のインデックスフォーマットを表します。
+
+
+
+インデックスの変更は、インデックスが更新されたときに **のみ**
+行います。インデックスの更新が行われるのは、
+新しいドキュメントがインデックスに追加された場合や *$index->optimize()*
+による最適化を手動で開始した場合です。
+
+``Zend_Search_Lucene``
+が、インデックスを上位バージョンのフォーマットに変換することがあります。
+``Zend_Search_Lucene::FORMAT_PRE_2_1`` フォーマットの場合はこれが **常に** 起こり、 自動的に
+2.1 フォーマットに変換されます。
+
+変換作業を管理するために、対象となるインデックスフォーマットを
+*$index->setFormatVersion()* で指定できます。ここでは定数 ``Zend_Search_Lucene::FORMAT_2_1``
+あるいは ``Zend_Search_Lucene::FORMAT_2_3`` をパラメータとして使用します。
+
+   - ``Zend_Search_Lucene::FORMAT_2_1`` は実際には何もしません。 2.1
+     より前のバージョンのインデックスは自動的に 2.1
+     フォーマットに変換されるからです。
+
+   - ``Zend_Search_Lucene::FORMAT_2_3`` は、強制的に 2.3 フォーマットへの変換を行います。
+
+
+
+下位バージョンへの変換はサポートしていません。
+
+.. note::
+
+   **重要!**
+
+   一度インデックスを上位バージョンに変換してしまうと、
+   元に戻すことはできません。
+   上位バージョンに変換したいけれど元に戻す可能性も残しておきたいという場合は、
+   インデックスのバックアップを取得しておきましょう。
+
+.. _zend.search.lucene.advanced.static:
+
+静的プロパティとしてのインデックスの使用
+--------------------
+
+``Zend_Search_Lucene`` オブジェクトは、
+デストラクタメソッド内で変更のコミットやリソースの後始末を行います。
+
+パラメータ *MaxBufferedDocs*
+の内容に応じて、メモリ内に追加されたドキュメントを保存したり
+新しいインデックスセグメントをディスクに書き出したりします。
+
+もし *MaxBufferedDocs* の制限に達していない場合は "保存されていない"
+ドキュメントが残ってしまい、
+これがオブジェクトのデストラクタで新しいセグメントとして保存されます。
+インデックスの自動最適化は、 *MaxBufferedDocs*\ 、 *MaxMergeDocs* および *MergeFactor*
+の設定内容により、必要に応じて行われます。
+
+静的オブジェクトプロパティ (以下を参照ください) は、
+"スクリプトが最後まで実行された"**後で** 破棄されます。
+
+   .. code-block:: php
+      :linenos:
+
+      class Searcher {
+          private static $_index;
+
+          public static function initIndex() {
+              self::$_index = Zend_Search_Lucene::open('path/to/index');
+          }
+      }
+
+      Searcher::initIndex();
+
+
+
+にもかかわらず、静的プロパティのオブジェクトのデストラクタは正常に起動し、
+やるべきことをすべて行う可能性があります。
+
+問題が起こる可能性があるとすれば、例外処理です。
+静的オブジェクトのデストラクタでスローされた例外は、コンテキストを保持していません。
+というのも、"スクリプトが最後まで実行された後" に実行されるものだからです。
+
+おそらく、そのような場合は例外ではなく "Fatal error: Exception thrown without a stack frame in
+Unknown on line 0" のようなエラーメッセージが表示されるでしょう。
+
+``Zend_Search_Lucene`` は、この問題を ``commit()``
+メソッドで処理できるようにしています。これは、未保存の変更内容をすべて保存し、
+新しいセグメントを保存するために使用しているメモリを解放します。
+コミット操作は、スクリプトの実行中にいつでも何度でも行うことができます。
+``Zend_Search_Lucene`` オブジェクトを使用して、
+コミット操作の後にもドキュメントの検索や追加、削除ができます。 しかし
+``commit()`` をコールすることで、
+もしそれ以降ドキュメントの追加や削除が行われていないのなら ``Zend_Search_Lucene``
+のデストラクタは何もせず、 例外もスローしないことが保証されます。
+
+   .. code-block:: php
+      :linenos:
+
+      class Searcher {
+          private static $_index;
+
+          public static function initIndex() {
+              self::$_index = Zend_Search_Lucene::open('path/to/index');
+          }
+
+          ...
+
+          public static function commit() {
+              self::$_index->commit();
+          }
+      }
+
+      Searcher::initIndex();
+
+      ...
+
+      // スクリプトの終了処理
+      ...
+      Searcher::commit();
+      ...
+
+
+
+
