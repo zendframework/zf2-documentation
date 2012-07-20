@@ -1,0 +1,132 @@
+.. _zend.search.lucene.advanced:
+
+Erweitert
+=========
+
+.. _zend.search.lucene.advanced.format_migration:
+
+Beginnend mit 1.6, Behandlung von Index Format Veränderungen
+------------------------------------------------------------
+
+Die ``Zend_Search_Lucene`` Komponente arbeitet mit den Index Formaten der Java Lucene Version 1.4-1.9, 2.1 und 2.3.
+
+Das aktuelle Indexformat kann durch den Aufruf von *$index->getFormatVersion()* abgefragt werden. Er gibt eine der
+folgenden Werte zurück:
+
+
+
+   - ``Zend_Search_Lucene::FORMAT_PRE_2_1`` für das Java Lucene Index Format 1.4-1.9.
+
+   - ``Zend_Search_Lucene::FORMAT_2_1`` für das Java Lucene Index Format 2.1 (es wird auch in Lucene 2.2
+     verwendet).
+
+   - ``Zend_Search_Lucene::FORMAT_2_3`` für das Java Lucene Index Format 2.3.
+
+
+
+Indexveränderungen werden **nur** durchgeführt wenn irgendein Update des Index durchgeführt wird. Das passiert
+wenn ein neues Dokument zu einem Index hinzugefügt wird, oder wenn manuell eine Indexoptimierung durch den Aufruf
+von *$index->optimize()* gestartet wird.
+
+In solch einem Fall kann ``Zend_Search_Lucene`` den Index in eine höhere Formatversion konvertieren. Das geschieht
+**immer** für Indezes welche im ``Zend_Search_Lucene::FORMAT_PRE_2_1`` sind. Diese werden automatisch ins Format
+2.1 konvertiert.
+
+Man kann den Konvertierungsprozess managen und Ziel-Indexformate durch *$index->setFormatVersion()* zuweisen
+welches entweder die ``Zend_Search_Lucene::FORMAT_2_1`` oder ``Zend_Search_Lucene::FORMAT_2_3`` Konstante
+entgegennimmt:
+
+
+
+   - ``Zend_Search_Lucene::FORMAT_2_1`` macht eigentlich gar nichts da pre-2.1 Indezes automatisch in das 2.1
+     Format konvertiert werden.
+
+   - ``Zend_Search_Lucene::FORMAT_2_3`` erzwingt die Konvertierung ins 2.3 Format.
+
+
+
+Rückwärts Konvertierungen werden nicht unterstützt.
+
+.. note::
+
+   **Wichtig!**
+
+   Sobald Indezes in eine höhere Version konvertiert wurden können Sie nicht zurück konvertiert werden. Deswegen
+   sollte man ein Backup der Indezes machen wenn man plant zu einer höheren Version zu migrieren, man aber die
+   Möglichkeit haben will wieder zurückzugehen.
+
+.. _zend.search.lucene.advanced.static:
+
+Den Index als statische Eigenschaft verwenden
+---------------------------------------------
+
+Das ``Zend_Search_Lucene`` Objekt verwendet einen Objekt Destruktor um Änderungen mitzuteilen und um Ressourcen zu
+löschen.
+
+Es speichert hinzugefügte Dokumente im Speicher und speichert neu indizierte Segmente auf die Platte abhängig vom
+*MaxBufferedDocs* Parameter.
+
+Wenn das *MaxBufferedDocs* Limit nicht erreicht wird, gibt es einige "ungespeicherte" Dokumente welche als neue
+Segmente in der Destruktor Methode des Objektes gespeichert werden. Die automatische Optimierungsprozedur des Index
+wird aufgerufen wenn das notwendig wird, abhängig von den *MaxBufferedDocs*, *MaxMergeDocs* und *MergeFactor*
+Parametern.
+
+Statische Objekteigenschaften (siehe anbei) werden **nach** der letzten Zeile des ausgeführten Skripts vernichtet.
+
+.. code-block:: php
+   :linenos:
+
+   class Searcher {
+       private static $_index;
+
+       public static function initIndex() {
+           self::$_index = Zend_Search_Lucene::open('path/to/index');
+       }
+   }
+
+   Searcher::initIndex();
+
+Auf die gleiche Art und Weise wird der Objektdestruktor für statische Eigenschaften an dieser Stelle des
+Programablaufes korrekt aufgerufen.
+
+Ein potentielles Problem ist die Behandlung von Ausnahmen. Ausnahmen die vom Destruktor eines statischen Objekts
+geworfen werden haben keinen Inhalt, weil der Destruktor ausgeführt wird nachdem das Skript bereits beendet wurde.
+
+Man kann in solchen Fällen eine "Fatal error: Exception thrown without a stack frame in Unknown on line 0"
+Fehlermeldung statt der Beschreibung einer Ausnahme sehen.
+
+``Zend_Search_Lucene`` bietet einen Workaround zu diesem Problem, mit der ``commit()`` Methode, an. Diese speichert
+alle ungespeicherten Änderungen und leert den Speicher der für das Speichern der neuen Segmente verwendet wird.
+Man kann die commit Operation jederzeit oder auch mehrmals während der Ausführung des Skripts anwenden. Man kann
+das ``Zend_Search_Lucene`` Objekt trotzdem für das suchen, hinzufügen oder löschen von Dokumenten nach der
+commit Operation verwenden. Aber der Aufruf von ``commit()`` garantiert, das wenn nach dem Aufruf von ``commit()``
+keine Dokumente hinzugefügt oder gelöscht werden, der Destruktor von ``Zend_Search_Lucene`` nichts zu tun hat,
+und er deswegen keine Ausnahme wirft:
+
+.. code-block:: php
+   :linenos:
+
+   class Searcher {
+       private static $_index;
+
+       public static function initIndex() {
+           self::$_index = Zend_Search_Lucene::open('path/to/index');
+       }
+
+       ...
+
+       public static function commit() {
+           self::$_index->commit();
+       }
+   }
+
+   Searcher::initIndex();
+
+   ...
+
+   // Sktipt Shutdorn Routine
+   ...
+   Searcher::commit();
+   ...
+
+

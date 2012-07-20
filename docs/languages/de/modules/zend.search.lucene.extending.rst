@@ -1,0 +1,429 @@
+.. _zend.search.lucene.extending:
+
+Erweiterbarkeit
+===============
+
+.. _zend.search.lucene.extending.analysis:
+
+Textanalyse
+-----------
+
+Die ``Zend_Search_Lucene_Analysis_Analyzer`` Klasse wird vom Indexer verwendet, um die Textfelder der Dokumente in
+Abschnitte aufzuteilen.
+
+Die ``Zend_Search_Lucene_Analysis_Analyzer::getDefault()`` und
+``Zend_Search_Lucene_Analysis_Analyzer::setDefault()`` Methoden werden verwendet, um den Standardanalysator zu
+bekommen oder festzulegen.
+
+Man kann einen eigenen Textanalysator zuordnen oder ihn aus den vordefinierten Analysatoren auswählen:
+``Zend_Search_Lucene_Analysis_Analyzer_Common_Text`` und
+``Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive`` (Standard). Beide interpretieren einen
+Abschnitt als eine Sequenz aus Buchstaben. ``Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive``
+konvertiert alle Abschnitte in Kleinbuchstaben.
+
+Um zwischen Analysatoren zu wechseln:
+
+.. code-block:: php
+   :linenos:
+
+   Zend_Search_Lucene_Analysis_Analyzer::setDefault(
+       new Zend_Search_Lucene_Analysis_Analyzer_Common_Text());
+   ...
+   $index->addDocument($doc);
+
+Die ``Zend_Search_Lucene_Analysis_Analyzer_Common`` Klasse wurde als Anker für alle benutzerdefinierten
+Analysatoren entwickelt. Benutzer sollten nur die ``reset()`` und ``nextToken()`` Methoden definieren, welche ihren
+String von der $_input Eigenschaft nimmt und die Abschnitte Stück für Stück zurückgibt (ein ``NULL`` Wert
+indiziert das Ende des Streams).
+
+Die ``nextToken()`` Methode sollte die ``normalize()`` Methode auf jedem Token aufrufen. Das erlaubt die Verwendung
+von Abschnittsfiltern im eigenen Analysator.
+
+Hier ist ein Beispiel für einen eigenen Analysator, welcher Wörter mit Ziffern als Begriffe akzeptiert:
+
+
+
+      .. _zend.search.lucene.extending.analysis.example-1:
+
+      .. rubric:: Eigener Textanalysator
+
+      .. code-block:: php
+         :linenos:
+
+         /**
+          * Hier ist ein eigener Textanalysator, der Worte mit Ziffern
+          * als einen Begriff behandelt
+          */
+
+         class My_Analyzer extends Zend_Search_Lucene_Analysis_Analyzer_Common
+         {
+             private $_position;
+
+             /**
+              * Setzt den Token Stream zurück
+              */
+             public function reset()
+             {
+                 $this->_position = 0;
+             }
+
+             /**
+              * Tokenization stream API
+              * Get next token
+              * Returns null at the end of stream
+              *
+              * @return Zend_Search_Lucene_Analysis_Token|null
+              */
+             public function nextToken()
+             {
+                 if ($this->_input === null) {
+                     return null;
+                 }
+
+                 while ($this->_position < strlen($this->_input)) {
+                     // skip white space
+                     while ($this->_position < strlen($this->_input) &&
+                            !ctype_alnum( $this->_input[$this->_position] )) {
+                         $this->_position++;
+                     }
+
+                     $termStartPosition = $this->_position;
+
+                     // read token
+                     while ($this->_position < strlen($this->_input) &&
+                            ctype_alnum( $this->_input[$this->_position] )) {
+                         $this->_position++;
+                     }
+
+                     // Empty token, end of stream.
+                     if ($this->_position == $termStartPosition) {
+                         return null;
+                     }
+
+                     $token = new Zend_Search_Lucene_Analysis_Token(
+                                               substr($this->_input,
+                                                      $termStartPosition,
+                                                      $this->_position -
+                                                      $termStartPosition),
+                                               $termStartPosition,
+                                               $this->_position);
+                     $token = $this->normalize($token);
+                     if ($token !== null) {
+                         return $token;
+                     }
+                     // Continue if token is skipped
+                 }
+
+                 return null;
+             }
+         }
+
+         Zend_Search_Lucene_Analysis_Analyzer::setDefault(
+             new My_Analyzer());
+
+
+
+.. _zend.search.lucene.extending.filters:
+
+Filtern von Tokens
+------------------
+
+Der ``Zend_Search_Lucene_Analysis_Analyzer_Common`` Analisator bietet auch einen Mechanismus zum Filtern von
+Tokens.
+
+Die ``Zend_Search_Lucene_Analysis_TokenFilter`` Klasse bietet ein abstraktes Interface für solche Filter. Eigene
+Filter sollten diese Klasse direkt oder indirekt erweitern.
+
+Alle eigenen Filter müssen die ``normalize()`` Methode implementieren, welche den Eingabe Token verändern oder
+signalisieren, dass der Token übersprungen werden sollte.
+
+Es gibt bereits drei Filter die im Analyse Unterpaket definierte sind:
+
+
+
+   - ``Zend_Search_Lucene_Analysis_TokenFilter_LowerCase``
+
+   - ``Zend_Search_Lucene_Analysis_TokenFilter_ShortWords``
+
+   - ``Zend_Search_Lucene_Analysis_TokenFilter_StopWords``
+
+
+
+Der *LowerCase* Filter wird bereits standardmäßig für den
+``Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive`` Analysator verwendet.
+
+Die *ShortWords* und *StopWords* Filter können mit bereits definierten oder eigenen Analysatoren wie folgt
+verwendet werden:
+
+.. code-block:: php
+   :linenos:
+
+   $stopWords = array('a', 'an', 'at', 'the', 'and', 'or', 'is', 'am');
+   $stopWordsFilter =
+       new Zend_Search_Lucene_Analysis_TokenFilter_StopWords($stopWords);
+
+   $analyzer =
+       new Zend_Search_Lucene_Analysis_Analyzer_Common_TextNum_CaseInsensitive();
+   $analyzer->addFilter($stopWordsFilter);
+
+   Zend_Search_Lucene_Analysis_Analyzer::setDefault($analyzer);
+
+.. code-block:: php
+   :linenos:
+
+   $shortWordsFilter = new Zend_Search_Lucene_Analysis_TokenFilter_ShortWords();
+
+   $analyzer =
+       new Zend_Search_Lucene_Analysis_Analyzer_Common_TextNum_CaseInsensitive();
+   $analyzer->addFilter($shortWordsFilter);
+
+   Zend_Search_Lucene_Analysis_Analyzer::setDefault($analyzer);
+
+Der ``Zend_Search_Lucene_Analysis_TokenFilter_StopWords`` Konstruktor nimmt ein Array mit Stopwörtern als Eingabe
+entgegen. Aber Stopwörter können auch aus einer Datei geladen werden:
+
+.. code-block:: php
+   :linenos:
+
+   $stopWordsFilter = new Zend_Search_Lucene_Analysis_TokenFilter_StopWords();
+   $stopWordsFilter->loadFromFile($my_stopwords_file);
+
+   $analyzer =
+       new Zend_Search_Lucene_Analysis_Analyzer_Common_TextNum_CaseInsensitive();
+   $analyzer->addFilter($stopWordsFilter);
+
+   Zend_Search_Lucene_Analysis_Analyzer::setDefault($analyzer);
+
+Die Datei sollte eine normale Textdatei mit einem Wort pro Zeile sein. Das '#' Zeichen markiert eine Zeile als
+Kommentar.
+
+Der ``Zend_Search_Lucene_Analysis_TokenFilter_ShortWords`` Konstruktor hat ein optionales Argument. Es ist das
+Limit für die Wortlänge, der standardmäßig 2 ist.
+
+.. _zend.search.lucene.extending.scoring:
+
+Algorithmen für Punktwertermittlung
+-----------------------------------
+
+Der Punktwert einer Abfrage ``q`` für das Dokument ``d`` ist wie folgt definiert:
+
+*score(q,d) = sum( tf(t in d) * idf(t) * getBoost(t.field in d) * lengthNorm(t.field in d) ) * coord(q,d) *
+queryNorm(q)*
+
+tf(t in d) -``Zend_Search_Lucene_Search_Similarity::tf($freq)``- ein Punktwertfaktor, der auf der Häufigkeit des
+Begriffes oder der Phrase innerhalb des Dokuments basiert.
+
+idf(t) -``Zend_Search_Lucene_Search_Similarity::idf($input, $reader)``- ein Punktwertfaktor für einen einfachen
+Begriff mit dem spezifischen Index.
+
+getBoost(t.field in d) - der Verstärkungsfaktor für das Begriffsfeld.
+
+lengthNorm($term) - der Normalisierungswert für ein Feld, der die Gesamtzahl der Begriffe innerhalb eines Fields
+enthält. Dieser Wert wird im Index abgelegt. Diese Wert werden zusammen mit dem Verstärkungsfaktor im Index
+abgelegt und vom Suchcode für alle Treffer eines Feldes zu Punktwerten multipliziert.
+
+Treffer in längeren Feldern sind weniger präzise, so dass Implementierungen dieser Methode normalerweise kleinere
+Werte zurückgeben, wenn numTokens groß ist, und größere Werte, wenn numTokens klein ist.
+
+coord(q,d) -``Zend_Search_Lucene_Search_Similarity::coord($overlap, $maxOverlap)``- ein Punktwertfaktor, der auf
+dem Anteil aller Abfragebegriffe basiert, die ein Dokument enthält.
+
+Das Vorhandensein eines grossen Teils der Abfragebegriffe gibt einen besseren Treffer für die Abfrage an, so dass
+Implementierungen dieser Methode normalerweise größere Werte zurückgeben, wenn das Verhältnis zwischen diesen
+Parametern groß ist, und kleinere Werte, wenn es klein ist.
+
+queryNorm(q) - der Normalisierungswert für eine Abfrage, welcher die Summe der quadrierten Gewichtungen jedes
+Begriffes eine Abfrage enthält. Dieser Wert wird für das Gewicht jedes Abfragebegriffes multipliziert. term.
+
+Dieses wirkt sich nicht auf die Reihenfolge ist, versucht aber, die Punktwerte für verschiedenen Abfragen
+vergleichbar zu machen.
+
+Der Algorithmen für die Punktwertermittlung kann durch die Definition einer eigenen Ähnlichkeitsklasse angepasst
+werden. Hierfür muss die ``Zend_Search_Lucene_Search_Similarity`` Klasse wie unten angegeben erweitert und
+anschließend die ``Zend_Search_Lucene_Search_Similarity::setDefault($similarity);`` Methode verwendet werden um
+Sie als Standard zu setzen.
+
+.. code-block:: php
+   :linenos:
+
+   class MySimilarity extends Zend_Search_Lucene_Search_Similarity {
+       public function lengthNorm($fieldName, $numTerms) {
+           return 1.0/sqrt($numTerms);
+       }
+
+       public function queryNorm($sumOfSquaredWeights) {
+           return 1.0/sqrt($sumOfSquaredWeights);
+       }
+
+       public function tf($freq) {
+           return sqrt($freq);
+       }
+
+       /**
+        * Es wird jetzt nicht verwendet. Berechnet den Wert eines Treffers
+        * für eine ungenauen Phrasenanfrage.
+        */
+       public function sloppyFreq($distance) {
+           return 1.0;
+       }
+
+       public function idfFreq($docFreq, $numDocs) {
+           return log($numDocs/(float)($docFreq+1)) + 1.0;
+       }
+
+       public function coord($overlap, $maxOverlap) {
+           return $overlap/(float)$maxOverlap;
+       }
+   }
+
+   $mySimilarity = new MySimilarity();
+   Zend_Search_Lucene_Search_Similarity::setDefault($mySimilarity);
+
+.. _zend.search.lucene.extending.storage:
+
+Storage Container
+-----------------
+
+Die abstrakte Klasse ``Zend_Search_Lucene_Storage_Directory`` definiert Funktionalitäten für Verzeichnisse.
+
+Der ``Zend_Search_Lucene`` Konstruktur verwendet als Eingabe entweder einen String oder ein
+``Zend_Search_Lucene_Storage_Directory`` Objekt.
+
+Die ``Zend_Search_Lucene_Storage_Directory_Filesystem`` Klasse implementiert Verzeichnisfunktionalitäten für ein
+Dateisystem.
+
+Wenn ein String als Eingabe für den ``Zend_Search_Lucene`` Konstruktur verwendet wird, behandelt der Indexleser
+(das ``Zend_Search_Lucene Objekt``) es wie einen Dateipfad und instanziiert das
+``Zend_Search_Lucene_Storage_Directory_Filesystem`` Objekt.
+
+Du kannst deinen eigenen Verzeichnisimplementation durch die Erweiterung der
+``Zend_Search_Lucene_Storage_Directory`` Klasse definieren.
+
+``Zend_Search_Lucene_Storage_Directory`` Methoden:
+
+.. code-block:: php
+   :linenos:
+
+   abstract class Zend_Search_Lucene_Storage_Directory {
+   /**
+    * Schließt den Speicher
+    *
+    * @return void
+    */
+   abstract function close();
+
+   /**
+    * Erstellt im Verzeichnis eine neue, leere Datei mit dem übergebenen Dateinamen $filename.
+    *
+    * @param string $name
+    * @return void
+    */
+   abstract function createFile($filename);
+
+   /**
+    * Entfernt eine vorhande Datei $filename aus dem Verzeichnis.
+    *
+    * @param string $filename
+    * @return void
+    */
+   abstract function deleteFile($filename);
+
+   /**
+    * Gibt true zurück, wenn eine Datei mit dem übergebenen Dateinamen $filename existiert
+    *
+    * @param string $filename
+    * @return boolean
+    */
+   abstract function fileExists($filename);
+
+   /**
+    * Gibt die länge eine Datei $filename im Verzeichnis zurück
+    *
+    * @param string $filename
+    * @return integer
+    */
+   abstract function fileLength($filename);
+
+   /**
+    * Gibt den UNIX Zeitstempel für die letzte Änderung der Datei $filename zurück.
+    *
+    * @param string $filename
+    * @return integer
+    */
+   abstract function fileModified($filename);
+
+   /**
+    * Benennt eine vorhandene Datei im Verzeichnis um.
+    *
+    * @param string $from
+    * @param string $to
+    * @return void
+    */
+   abstract function renameFile($from, $to);
+
+   /**
+    * Ändert die Änderungstzeit der Datei $filename auf jetzt um
+    *
+    * @param string $filename
+    * @return void
+    */
+   abstract function touchFile($filename);
+
+   /**
+    * Gibt ein Zend_Search_Lucene_Storage_File Objekt für den^
+    * Dateinamen $filename aus dem Verzeichnis zurück.
+    *
+    * @param string $filename
+    * @return Zend_Search_Lucene_Storage_File
+    */
+   abstract function getFileObject($filename);
+
+   }
+
+Die ``getFileObject($filename)`` Methode einer ``Zend_Search_Lucene_Storage_Directory`` Instanz gibt ein
+``Zend_Search_Lucene_Storage_File`` Objekt zurück.
+
+Die abstrakte Klasse ``Zend_Search_Lucene_Storage_File`` implementiert einfache Funktionen für Dateiabstraktion
+und das Lesen von Indexdateien.
+
+Es muß außerdem ``Zend_Search_Lucene_Storage_File`` für eine eigene Verzeichnisimplementation erweitert werden.
+
+Nur zwei Methoden der ``Zend_Search_Lucene_Storage_File`` Klasse müssen in der eigenen Implementation
+überschrieben werden:
+
+.. code-block:: php
+   :linenos:
+
+   class MyFile extends Zend_Search_Lucene_Storage_File {
+       /**
+        * Setzt den Indikator für die Dateiposition rückt den Dateizeiger
+        * voran. Die neue Position, gemessen in Bytes vom Dateianfangm
+        * wird erreicht durch das Hinzufügen eines Versatzes zu der
+        * angegebenen Position. Dessen Werte sind wie folgt definiert:
+        * SEEK_SET - Setze die Position auf den Versatz.
+        * SEEK_CUR - Setze die Position auf die aktuelle Position plus Versatz.
+        * SEEK_END - Setze die Position aufs Dateisende plus Versatz. (Um den
+        * Zeiger auf eine Position vor dem Dateiende zu bewegen, übergebe einen
+        * negativen Wert als Versatz.)
+        * Bei Erfolg wird 0, andernfalls -1 zurückgegeben
+        *
+        * @param integer $offset
+        * @param integer $whence
+        * @return integer
+        */
+       public function seek($offset, $whence=SEEK_SET) {
+           ...
+       }
+
+       /**
+        * Lese $length Bytes aus der Datei und setze den Dateizeiger vor.
+        *
+        * @param integer $length
+        * @return string
+        */
+       protected function _fread($length=1) {
+           ...
+       }
+   }
+
+
