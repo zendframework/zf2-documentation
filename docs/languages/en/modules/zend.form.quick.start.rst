@@ -155,7 +155,7 @@ store your forms as pure configuration; you can simply pass the configuration to
                'name' => 'captcha',
                'attributes' => array(
                    'label' => 'Please verify you are human',
-                   'captcha => array(
+                   'captcha' => array(
                        'class' => 'Dumb',
                    ),
                ),
@@ -242,7 +242,7 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
                'name' => 'captcha',
                'attributes' => array(
                    'label' => 'Please verify you are human',
-                   'captcha => array(
+                   'captcha' => array(
                        'class' => 'Dumb',
                    ),
                ),
@@ -337,7 +337,7 @@ defining a form for re-use in your application.
                'name' => 'captcha',
                'attributes' => array(
                    'label' => 'Please verify you are human',
-                   'captcha => $this->captcha,
+                   'captcha' => $this->captcha,
                ),
            )),
            $this->add(new Element\Csrf('security'));
