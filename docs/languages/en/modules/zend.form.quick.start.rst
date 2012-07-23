@@ -583,7 +583,7 @@ at other properties and composed objects.
 When preparing to render, you will likely want to call ``prepare()``. This method ensures that certain injections
 are done, and will likely in the future munge names to allow for ``scoped[array][notation]``.
 
-The most used and simplest view helpers available are ``Form``, ``FormElement``, ``FormLabel``, and
+The simplest view helpers available are ``Form``, ``FormElement``, ``FormLabel``, and
 ``FormElementErrors``. Let's use them to display the contact form.
 
 .. code-block:: php
@@ -656,25 +656,70 @@ markup generation toother view helpers; however, it can only guess what specific
 on the list it has. If you introduce new form view helpers, you'll need to extend the ``FormElement`` helper, or
 create your own.
 
-Currently, the complete list of available form helpers is: ``FormCaptcha``, ``FormInput`` (which handles any type
-that the input HTML element accepts), ``FormMultiCheckbox`` (for creating sets of related checkboxes),
-``FormRadio``, ``FormSelect`` (which can also handle optgroups), and ``FormTextarea``.
-
-In order to use these form view helpers in the first place, you need to inform the helper loader about them. The
-easiest way to do this is in your configuration; simply add an entry for ``Zend\Form\View\HelperLoader`` to the
-``helper_map`` key of the ``view_manager`` configuration:
+However, your view files can quickly become long and repetitive to write. While we do not currently provide a 
+single-line form view helper (as this reduces the form customization), the most simplest and recommended way to
+render your form is by using the ``FormRow`` view helper. This view helper automatically renders a label (if present), 
+the element itself using the ``FormElement`` helper, as well as any errors that could arise. Here is the previous form, 
+rewritten to take advantage of this helper :
 
 .. code-block:: php
    :linenos:
 
-   // In some module configuration, or a config/autoload/ configuration file:
-   return array(
-       'view_manager' => array(
-           'helper_map' => array(
-               'Zend\Form\View\HelperLoader,
-           ),
-       ),
-   );
+   <?php
+   // within a view script
+   $form = $this->form;
+   $form->prepare();
+
+   // Assuming the "contact/process" route exists...
+   $form->setAttribute('action', $this->url('contact/process'));
+
+   // Set the method attribute for the form
+   $form->setAttribute('method', 'post');
+
+   // Render the opening tag
+   echo $this->form()->openTag($form);
+   ?>
+   <div class="form_element">
+   <?php
+       $name = $form->get('name');
+       echo $this->formRow($name);
+   ?></div>
+
+   <div class="form_element">
+   <?php
+       $subject = $form->get('subject');
+       echo $this->formRow($subject);
+   ?></div>
+
+   <div class="form_element">
+   <?php
+       $message = $form->get('message');
+       echo $this->formRow($message);
+   ?></div>
+
+   <div class="form_element">
+   <?php
+       $captcha = $form->get('captcha');
+       echo $this->formRow($captcha);
+   ?></div>
+
+   <?php echo $this->formElement($form->get('security') ?>
+   <?php echo $this->formElement($form->get('send') ?>
+
+   <?php echo $this->form()->closeTag() ?>
+
+Note that ``FormRow`` helper automatically prepends the label. If you want it to be rendered after the element itself,
+you can pass an optional parameter to the ``FormRow`` view helper :
+
+.. code-block:: php
+   :linenos:
+
+   <div class="form_element">
+   <?php
+       $name = $form->get('name');
+       echo $this->formRow($name, **'append'**);
+   ?></div>
+
 
 .. _zend.form.quick-start.partial:
 
@@ -705,6 +750,24 @@ If you later want to reset the form to validate all, simply pass the ``FormInter
 
    use Zend\Form\FormInterface;
    $form->setValidationGroup(FormInterface::VALIDATE_ALL);
+   
+When your form contains nested fieldsets, you can use an array notation to validate only a subset of the fieldsets :
+
+.. code-block:: php
+   :linenos:
+
+   $form->setValidationGroup(array(
+   		'profile' => array(
+   	    	'firstname',
+   	    	'lastname'
+   		)
+   ));
+   $form->setData($data);
+   if ($form->isValid()) {
+       // Contains only the "firstname" and "lastname" values from the
+       // "profile" fieldset
+       $data = $form->getData();
+   }
 
 .. _zend.form.quick-start.annotations:
 
