@@ -888,7 +888,7 @@ and all elements.
 
    **You're not done**
 
-   In all liklihood, you'll need to add some more elements to the form you construct. For example, you'll want a
+   In all likelihood, you'll need to add some more elements to the form you construct. For example, you'll want a
    submit button, and likely a CSRF-protection element. We recommend creating a fieldset with common elements such
    as these that you can then attach to the form you build via annotations.
 
