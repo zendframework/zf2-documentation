@@ -239,7 +239,7 @@ In practice, that means our previous example could be re-written as follows:
        {
            return array(
                'message' => 'Hello world',
-           ));
+           );
        }
    }
 
