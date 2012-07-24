@@ -194,6 +194,16 @@ Zend\\Captcha
         * :doc:`modules/zend.captcha.operation`
         * :doc:`modules/zend.captcha.adapters`
 
+Zend\\Console
+^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.console.introduction`
+
+..
+        * :doc:`modules/zend.console.routes`
+        * :doc:`modules/zend.console.controllers`
+        * :doc:`modules/zend.console.modules`
+
 Zend\\Config
 ^^^^^^^^^^^^
 
