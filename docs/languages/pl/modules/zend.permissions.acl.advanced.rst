@@ -1,25 +1,25 @@
-.. _zend.acl.advanced:
+.. _zend.permissions.acl.advanced:
 
 Zaawansowane użycie
 ===================
 
-.. _zend.acl.advanced.storing:
+.. _zend.permissions.acl.advanced.storing:
 
 Trwałe przechowywanie danych ACL
 --------------------------------
 
-Klasa ``Zend_Acl`` została zaprojektowana w taki sposób, aby nie wymagała żadnej szczególnej technologii
+Klasa ``Zend\Permissions\Acl`` została zaprojektowana w taki sposób, aby nie wymagała żadnej szczególnej technologii
 backendu do przechowywania danych *ACL* takiej jak np. baza danych czy serwer buforujący. Kompletna implementacja
-w *PHP* pozwala na podstawie *Zend_Acl* budować dostosowane narzędzia administracyjne, które są relatywnie
-łatwe oraz elastyczne. Wiele sytuacji wymaga pewnej formy interaktywnego zarządzania *ACL*, a ``Zend_Acl``
+w *PHP* pozwala na podstawie *Zend\Permissions\Acl* budować dostosowane narzędzia administracyjne, które są relatywnie
+łatwe oraz elastyczne. Wiele sytuacji wymaga pewnej formy interaktywnego zarządzania *ACL*, a ``Zend\Permissions\Acl``
 zapewnia metody do ustawiania oraz odpytywania kontroli dostępu aplikacji.
 
 Przechowywanie danych *ACL* jest zadaniem pozostawionym dla programisty, dlatego, że przykłady użycia mogą się
-bardzo różnić w rozmaitych sytuacjach. Ponieważ możliwe jest serializowanie ``Zend_Acl``, obiekty *ACL* mogą
+bardzo różnić w rozmaitych sytuacjach. Ponieważ możliwe jest serializowanie ``Zend\Permissions\Acl``, obiekty *ACL* mogą
 być serializowane za pomocą funkcji *PHP* `serialize()`_, a wyniki mogą być przechowane tam gdzie określi to
 programista, na przykład w pliku, w bazie danych lub w mechanizmie buforowania.
 
-.. _zend.acl.advanced.assertions:
+.. _zend.permissions.acl.advanced.assertions:
 
 Tworzenie warunkowych reguł ACL z zapewnieniami
 -----------------------------------------------
@@ -27,20 +27,20 @@ Tworzenie warunkowych reguł ACL z zapewnieniami
 Czasem reguła przyznawania lub zabraniania dostępu roli do zasobu nie powinna być absolutna, ale powinna być
 oparta na różnych kryteriach. Na przykład załóżmy, że pewien dostęp powinien być przyznany, ale jedynie
 między godziną 8:00 a 17:00. Innym przykładem może być zabranie dostępu adresom IP, które zostały oznaczone
-jako źródło nadużyć. ``Zend_Acl`` ma wbudowaną obsługę implementowania reguł opartych na dowolnych
+jako źródło nadużyć. ``Zend\Permissions\Acl`` ma wbudowaną obsługę implementowania reguł opartych na dowolnych
 warunkach, wedle potrzeb programisty.
 
-``Zend_Acl`` zapewnia obsługę warunkowych reguł za pomocą interfejsu ``Zend_Acl_Assert_Interface``. W celu
+``Zend\Permissions\Acl`` zapewnia obsługę warunkowych reguł za pomocą interfejsu ``Zend\Permissions\Acl\Assert\AssertInterface``. W celu
 użycia interfejsu zapewnień reguł, programista pisze klasę, ktora implementuje metodę ``assert()`` interfejsu:
 
 .. code-block:: php
    :linenos:
 
-   class CleanIPAssertion implements Zend_Acl_Assert_Interface
+   class CleanIPAssertion implements Zend\Permissions\Acl\Assert\AssertInterface
    {
-       public function assert(Zend_Acl $acl,
-                              Zend_Acl_Role_Interface $role = null,
-                              Zend_Acl_Resource_Interface $resource = null,
+       public function assert(Zend\Permissions\Acl $acl,
+                              Zend\Permissions\Acl\Role\RoleInterface $role = null,
+                              Zend\Permissions\Acl\Resource\ResourceInterface $resource = null,
                               $privilege = null)
        {
            return $this->_isCleanIP($_SERVER['REMOTE_ADDR']);
@@ -59,7 +59,7 @@ zapewnienia zwróci logiczną wartośc ``TRUE``.
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
    $acl->allow(null, null, null, new CleanIPAssertion());
 
 Powyższy kod tworzy warunkową regułę dostępu, ktora pozwala na dostęp do wszystkich przywilejów do

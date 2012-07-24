@@ -14,7 +14,7 @@ Míg egymástól függetlenül is használhatók, a szabványos könyvtárban l�
 használható adatbázis-elvonatkoztató réteget és egy HTML űrlap megjelenítést, ellenőrzést és szűrést
 megvalósító – tehát a fejlesztők számára ezen teendőket egyetlen egyszerűen használható,
 objektumorientált felületen egyesítő – űrlap komponenst kínál. Más összetevők, mint a ``Zend_Auth`` és
-a ``Zend_Acl`` felhasználó hitelesítést és jogosítást nyújtanak minden bevett igazolvány tároló
+a ``Zend\Permissions\Acl`` felhasználó hitelesítést és jogosítást nyújtanak minden bevett igazolvány tároló
 megoldás esetére. Megint mások ügyfélkönyvtárakat alkotnak a legnépszerűbb webszolgáltatások elérése
 céljából. Bármilyen elvárásokat is támasszon egy alkalmazás, szinte biztos, hogy találni egy olyan Zend
 Framework összetevőt, amely drámaian lecsökkenti a fejlesztési időt, mélyrehatóan bevizsgált alapokra

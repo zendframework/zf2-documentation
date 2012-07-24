@@ -1,16 +1,16 @@
-.. _zend.acl.refining:
+.. _zend.permissions.acl.refining:
 
 Verfeinern der Zugriffskontrolle
 ================================
 
-.. _zend.acl.refining.precise:
+.. _zend.permissions.acl.refining.precise:
 
 Präzise Zugangsbeschränkung
 ---------------------------
 
-Die grundlegende *ACL*, wie sie im :ref:`vorherigen Kapitel <zend.acl.introduction>` definiert ist, zeigt wie
+Die grundlegende *ACL*, wie sie im :ref:`vorherigen Kapitel <zend.permissions.acl.introduction>` definiert ist, zeigt wie
 verschiedene Rechte für die gesamte *ACL* (alle Ressourcen) vergeben werden können. In der Praxis tendieren
-Zugangsbeschränkungen jedoch eher dahin, Ausnahmen und verschiedene Stufen von Komplexität zu haben. ``Zend_Acl``
+Zugangsbeschränkungen jedoch eher dahin, Ausnahmen und verschiedene Stufen von Komplexität zu haben. ``Zend\Permissions\Acl``
 erlaubt einem, diese Verfeinerungen auf einfache und flexible Weise zu bewerkstelligen.
 
 Für das Beispiel *CMS* wurde ermittelt, dass während die Gruppe 'staff' die Bedürfnisse der überwiegenden
@@ -31,7 +31,7 @@ Genehmigungen von 'staff' geerbt werden:
    :linenos:
 
    // Die neue Gruppe Marketing erbt Genehmigungen der Mitarbeiter
-   $acl->addRole(new Zend_Acl_Role('marketing'), 'staff');
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('marketing'), 'staff');
 
 Als nächstes ist zu beachten, dass sich die obige Zugangsbeschränkung auf bestimmte Ressourcen bezieht (z.B.
 "newsletter", "lastest news", "announcement news"). Nun fügen wir die Ressourcen hinzu:
@@ -42,16 +42,16 @@ Als nächstes ist zu beachten, dass sich die obige Zugangsbeschränkung auf best
    // Ressourcen für die Regeln erstellen
 
    // Newsletter
-   $acl->addResource(new Zend_Acl_Resource('newsletter'));
+   $acl->addResource(new Zend\Permissions\Acl\Resource\GenericResource('newsletter'));
 
    // Nachrichten
-   $acl->addResource(new Zend_Acl_Resource('news'));
+   $acl->addResource(new Zend\Permissions\Acl\Resource\GenericResource('news'));
 
    // Neueste Nachrichten
-   $acl->addResource(new Zend_Acl_Resource('latest'), 'news');
+   $acl->addResource(new Zend\Permissions\Acl\Resource\GenericResource('latest'), 'news');
 
    // Bekanntmachungen
-   $acl->addResource(new Zend_Acl_Resource('announcement'), 'news');
+   $acl->addResource(new Zend\Permissions\Acl\Resource\GenericResource('announcement'), 'news');
 
 Nun ist es nur eine Frage der Definition für diese spezifischeren Regeln auf die Zielbereiche der *ACL*:
 
@@ -109,7 +109,7 @@ Wir können nun die *ACL* hinsichtlich der letzten Änderungen abfragen:
         "allowed" : "denied";
    // verweigert
 
-.. _zend.acl.refining.removing:
+.. _zend.permissions.acl.refining.removing:
 
 Zugangsbeschränkungen entfernen
 -------------------------------

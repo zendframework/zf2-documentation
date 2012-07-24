@@ -1,16 +1,16 @@
-.. _zend.acl.refining:
+.. _zend.permissions.acl.refining:
 
 精细的访问控制
 =======
 
-.. _zend.acl.refining.precise:
+.. _zend.permissions.acl.refining.precise:
 
 精细的访问控制
 -------
 
-在 :ref:`前一章节 <zend.acl.introduction>`\ 中定义的基本的 ACL 显示如何在整个 ACL (所有的
+在 :ref:`前一章节 <zend.permissions.acl.introduction>`\ 中定义的基本的 ACL 显示如何在整个 ACL (所有的
 resources
-)允许各种各样的权限。然而在实践中，访问控制趋向于拥有例外和可变程度的复杂性。Zend_Acl
+)允许各种各样的权限。然而在实践中，访问控制趋向于拥有例外和可变程度的复杂性。Zend\Permissions\Acl
 允许你直截了当并灵活地完成这些精细准确的控制。
 
 对于CMS范例，'staff' 组覆盖了绝大多数用户的需求，同时，一个新的 'marketing'
@@ -27,7 +27,7 @@ resources
    :linenos:
 
    // 新 marketing 组从 staff 组继承许可
-   $acl->addRole(new Zend_Acl_Role('marketing'), 'staff');
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('marketing'), 'staff');
 
 
 然后， 注意上面的访问控制涉及到特定的 resources ( 例如 "newsletter", "latest news",
@@ -39,16 +39,16 @@ resources
    // Create Resources for the rules
 
    // newsletter
-   $acl->add(new Zend_Acl_Resource('newsletter'));
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('newsletter'));
 
    // news
-   $acl->add(new Zend_Acl_Resource('news'));
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('news'));
 
    // latest news
-   $acl->add(new Zend_Acl_Resource('latest'), 'news');
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('latest'), 'news');
 
    // announcement news
-   $acl->add(new Zend_Acl_Resource('announcement'), 'news');
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('announcement'), 'news');
 
 
 接着，这个是在 ACL 的目标区域定义更特定的规则的概况：
@@ -107,7 +107,7 @@ resources
    // denied
 
 
-.. _zend.acl.refining.removing:
+.. _zend.permissions.acl.refining.removing:
 
 除去访问控制
 ------

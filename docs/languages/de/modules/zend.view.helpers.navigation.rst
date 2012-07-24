@@ -23,7 +23,7 @@ Es gibt 2 eingebaute Helfer:
   anderen Navigations Helfern verwendet.
 
 Alle eingebauten Helfer erweitern ``Zend_View_Helper_Navigation_HelperAbstract``, welches die Integration von
-:ref:`ACL <zend.acl>` und :ref:`Übersetzung <zend.translator>` hinzufügt. Die abstrakte Klasse implementiert das
+:ref:`ACL <zend.permissions.acl>` und :ref:`Übersetzung <zend.translator>` hinzufügt. Die abstrakte Klasse implementiert das
 Interface ``Zend_View_Helper_Navigation_Helper`` welches die folgenden Methoden definiert:
 
 - ``getContainer()`` und ``setContainer()`` empfängt/setzt den Navigations Container mit dem der Helfer
@@ -34,8 +34,8 @@ Interface ``Zend_View_Helper_Navigation_Helper`` welches die folgenden Methoden 
   ob der Übersetzer aktiviert werden soll. Die Methode ``hasTranslator()`` prüft ob der Helfer einen Übersetzer
   registriert hat.
 
-- ``getAcl()``, ``setAcl()``, ``getRole()`` und ``setRole()`` empfangen und setzen *ACL* (``Zend_Acl``) Instanzen
-  und Rollen (``String`` oder ``Zend_Acl_Role_Interface``) die bei der Darstellung für das Filtern von Seiten
+- ``getAcl()``, ``setAcl()``, ``getRole()`` und ``setRole()`` empfangen und setzen *ACL* (``Zend\Permissions\Acl``) Instanzen
+  und Rollen (``String`` oder ``Zend\Permissions\Acl\Role\RoleInterface``) die bei der Darstellung für das Filtern von Seiten
   verwendet werden. ``getUseAcl()`` und ``setUseAcl()`` kontrolliert ob *ACL* aktiviert werden soll. Die Methoden
   ``hasAcl()`` und ``hasRole()`` prüfen ob der Helfer eine *ACL* Instanz oder Rolle registriert hat.
 
@@ -133,9 +133,9 @@ Integration mit ACL
 -------------------
 
 Alle navigatorischen View Helfer unterstützen *ACL* abgeleitet von der
-``Zend_View_Helper_Navigation_HelperAbstract`` Klasse. Ein ``Zend_Acl`` Objekt kann einer Instanz eines Helfers mit
+``Zend_View_Helper_Navigation_HelperAbstract`` Klasse. Ein ``Zend\Permissions\Acl`` Objekt kann einer Instanz eines Helfers mit
 *$helper->setAcl($acl)* hinzugefügt werden, und eine Rolle mit *$helper->setRole('member')* oder
-*$helper->setRole(new Zend_Acl_Role('member'))*. Wenn *ACL* im Helfer verwendet wird, muß es der Rolle im Helfer
+*$helper->setRole(new Zend\Permissions\Acl\Role\GenericRole('member'))*. Wenn *ACL* im Helfer verwendet wird, muß es der Rolle im Helfer
 vom *ACL* erlaubt sein auf die *Ressourcen* zuzugreifen und/oder das die *Privilegien* für diese Seite bei der
 Darstellung eingefügt werden dürfen.
 
@@ -365,11 +365,11 @@ Zusätzlich zum obigen Container, wird das folgende Setup angenommen:
    );
 
    // ACL Setup:
-   $acl = new Zend_Acl();
-   $acl->addRole(new Zend_Acl_Role('member'));
-   $acl->addRole(new Zend_Acl_Role('admin'));
-   $acl->add(new Zend_Acl_Resource('mvc:admin'));
-   $acl->add(new Zend_Acl_Resource('mvc:community.account'));
+   $acl = new Zend\Permissions\Acl\Acl();
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('member'));
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('admin'));
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('mvc:admin'));
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('mvc:community.account'));
    $acl->allow('member', 'mvc:community.account');
    $acl->allow('admin', null);
 

@@ -1,4 +1,4 @@
-.. _zend.acl.introduction:
+.. _zend.permissions.acl.introduction:
 
 導入
 ==
@@ -23,7 +23,7 @@
 要求してきたオブジェクト (ロール) が制限されたオブジェクト (リソース)
 へのアクセスを認められているかどうかを制御します。
 
-.. _zend.acl.introduction.resources:
+.. _zend.permissions.acl.introduction.resources:
 
 リソース
 ----
@@ -59,7 +59,7 @@
 もサポートしており、すべての権限あるいは一部の権限に影響を及ぼす規則を、
 リソースに対して割り当てることができます。
 
-.. _zend.acl.introduction.roles:
+.. _zend.permissions.acl.introduction.roles:
 
 ロール
 ---
@@ -87,7 +87,7 @@
 次の例は、あいまいな条件になったときに ``Zend_Acl``
 がそれをどう解決するかを示すものです。
 
-.. _zend.acl.introduction.roles.example.multiple_inheritance:
+.. _zend.permissions.acl.introduction.roles.example.multiple_inheritance:
 
 .. rubric:: ロールの多重継承
 
@@ -139,7 +139,7 @@
    複数の親をロールに指定する場合は、承認クエリでの規則の検索順を覚えておきましょう。
    最後に指定した親が最初に対象となります。
 
-.. _zend.acl.introduction.creating:
+.. _zend.permissions.acl.introduction.creating:
 
 アクセス制御リストの作成
 ------------
@@ -162,7 +162,7 @@
    開発者が "allow" 規則を指定しない限り、 ``Zend_Acl``
    はあらゆるロールのすべてのリソース上の権限からのアクセスも拒否します。
 
-.. _zend.acl.introduction.role_registry:
+.. _zend.permissions.acl.introduction.role_registry:
 
 ロールの登録
 ------
@@ -179,7 +179,7 @@
 '親の' グループから継承させ、 そのグループに固有の権限を追加で定義します。
 これらの権限を整理すると、次のようになります。
 
-.. _zend.acl.introduction.role_registry.table.example_cms_access_controls:
+.. _zend.permissions.acl.introduction.role_registry.table.example_cms_access_controls:
 
 .. table:: サンプル CMS 用のアクセス制御
 
@@ -223,7 +223,7 @@
    // Administrator はアクセス制御を受け継ぎません
    $acl->addRole(new Zend_Acl_Role('administrator'));
 
-.. _zend.acl.introduction.defining:
+.. _zend.permissions.acl.introduction.defining:
 
 アクセス制御の定義
 ---------
@@ -276,7 +276,7 @@
 上の ``allow()`` のコールにおける ``NULL`` は、
 規則をすべてのリソースに対して適用することを意味します。
 
-.. _zend.acl.introduction.querying:
+.. _zend.permissions.acl.introduction.querying:
 
 ACL への問い合わせ
 -----------

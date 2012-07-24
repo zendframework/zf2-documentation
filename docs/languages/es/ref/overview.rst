@@ -15,7 +15,7 @@ conforman un potente y extensible framework de aplicaciones web al combinarse. Z
 rendimiento y una robusta implementación *MVC*, una abstración de base de datos fácil de usar, y un componente
 de formularios que implementa la prestación de formularios *HTML*, validación y filtado para que los
 desarrolladores puedan consolidar todas las operaciones usando de una manera sencilla la interfaz orientada a
-objetos. Otros componentes, como ``Zend_Auth`` y ``Zend_Acl``, proveen autentificación de usuarios y autorización
+objetos. Otros componentes, como ``Zend_Auth`` y ``Zend\Permissions\Acl``, proveen autentificación de usuarios y autorización
 diferentes a las tiendas de certificados comunes. También existen componentes que implementan bibliotecas de
 cliente para acceder de forma sencilla a los web services más populares. Cualesquiera que sean las necesidades de
 su solicitud, usted tiene todas las posibilidades de encontrar un componente de Zend Framework que se pueda

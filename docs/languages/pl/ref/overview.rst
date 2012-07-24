@@ -14,7 +14,7 @@ po połączeniu tworzą potężny i elastyczny framework. ZF oferuje mocną i wy
 prosty w obsłudze interfejs komunikacji z bazą danych, a także komponent formularzy, który obsługuje
 renderowanie kodu HTML formularzy, weryfikację poprawności danych i filtrowanie dzięki czemu programiści mogą
 obsłużyć wszystkie te operacje za pomocą jednego łatwego w użyciu obiektowego interfejsu. Inne komponenty
-takie jak Zend_Auth czy Zend_Acl zapewniają użytkownikom możliwość uwierzytelniania i autoryzacji w oparciu o
+takie jak Zend_Auth czy Zend\Permissions\Acl zapewniają użytkownikom możliwość uwierzytelniania i autoryzacji w oparciu o
 najczęściej używane sposoby przechowywania danych uwierzytelniania. Oprócz tego jest dostępnych wiele
 bibliotek pozwalających na prostą obsługę najbardziej popularnych webserwisów. Jakiekolwiek są potrzeby
 Twojej aplikacji, najprawdopodobniej uda Ci się znaleźć komponent Zend Framework, który mocno zmniejszy czas

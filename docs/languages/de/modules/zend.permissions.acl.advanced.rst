@@ -1,25 +1,25 @@
-.. _zend.acl.advanced:
+.. _zend.permissions.acl.advanced:
 
 Fortgeschrittene Verwendung
 ===========================
 
-.. _zend.acl.advanced.storing:
+.. _zend.permissions.acl.advanced.storing:
 
 Dauerhafte Speicherung von ACL-Daten
 ------------------------------------
 
-``Zend_Acl`` wurde so entwickelt, dass keine spezielle Backend Technologie benötigt wird, wie z.B. eine Datenbank
+``Zend\Permissions\Acl`` wurde so entwickelt, dass keine spezielle Backend Technologie benötigt wird, wie z.B. eine Datenbank
 oder ein Cache Server, um die *ACL*-Daten zu speichern. Ihre vollständige *PHP*-Implementation ermöglicht
-angepasste Administrationstools, die relativ einfach und flexibel auf ``Zend_Acl`` aufbauen. Viele Situationen
-erfordern eine interaktive Wartung der *ACL* und ``Zend_Acl`` stellt Methoden für das Einrichten und Abfragen der
+angepasste Administrationstools, die relativ einfach und flexibel auf ``Zend\Permissions\Acl`` aufbauen. Viele Situationen
+erfordern eine interaktive Wartung der *ACL* und ``Zend\Permissions\Acl`` stellt Methoden für das Einrichten und Abfragen der
 Zugriffskontrolle einer Anwendung.
 
 Die Speicherung der *ACL*-Daten ist deshalb die Aufgabe des Entwicklers, da sich die Anwendungsfälle für
-verschiedene Situationen erwartungsgemäß stark unterscheiden. Da ``Zend_Acl`` serialisierbar ist, können
+verschiedene Situationen erwartungsgemäß stark unterscheiden. Da ``Zend\Permissions\Acl`` serialisierbar ist, können
 *ACL*-Objekte mit der *PHP*-Funktion `serialize()`_ serialisiert werden und das Ergebnis kann überall gespeichert
 werden, wo es der Entwickler möchte, wie z.B. in einer Datei, in einer Datenbank oder mit einem Cache-Mechanismus.
 
-.. _zend.acl.advanced.assertions:
+.. _zend.permissions.acl.advanced.assertions:
 
 Schreiben von bedingten ACL-Regeln mit Zusicherungen
 ----------------------------------------------------
@@ -27,22 +27,22 @@ Schreiben von bedingten ACL-Regeln mit Zusicherungen
 Manchmal soll eine Regel für das Erlauben oder Verbieten des Zugriffs auf eine Ressource nicht absolut sein,
 sondern von verschiedenen Kriterien abhängen. Nehmen wir zum Beispiel an, dass ein bestimmter Zugriff erlaubt sei,
 aber nur zwischen 08:00 und 17:00 Uhr. Ein anderes Beispiel könnte sein, dass der Zugriff verboten wird, weil eine
-Anfrage von einer bestimmten IP-Adresse kommt, die als Missbrauchsquelle markiert worden ist. ``Zend_Acl`` bietet
+Anfrage von einer bestimmten IP-Adresse kommt, die als Missbrauchsquelle markiert worden ist. ``Zend\Permissions\Acl`` bietet
 eine eingebaute Unterstützung für die Implementierung von Regeln, die auf Bedingungen basieren, die der
 Entwickler benötigt.
 
-``Zend_Acl`` bietet Unterstützung für bedingte Regeln mit dem ``Zend_Acl_Assert_Interface``. Um das
+``Zend\Permissions\Acl`` bietet Unterstützung für bedingte Regeln mit dem ``Zend\Permissions\Acl\Assert\AssertInterface``. Um das
 Regelzusicherungsinterface benutzen zu können, schreibt der Entwickler eine Klasse, welche die Methode
 ``assert()`` des Interfaces implementiert:
 
 .. code-block:: php
    :linenos:
 
-   class CleanIPAssertion implements Zend_Acl_Assert_Interface
+   class CleanIPAssertion implements Zend\Permissions\Acl\Assert\AssertInterface
    {
-       public function assert(Zend_Acl $acl,
-                              Zend_Acl_Role_Interface $role = null,
-                              Zend_Acl_Resource_Interface $resource = null,
+       public function assert(Zend\Permissions\Acl $acl,
+                              Zend\Permissions\Acl\Role\RoleInterface $role = null,
+                              Zend\Permissions\Acl\Resource\ResourceInterface $resource = null,
                               $privilege = null)
        {
            return $this->_isCleanIP($_SERVER['REMOTE_ADDR']);
@@ -61,7 +61,7 @@ wenn die Zusicherungsmethode ``TRUE`` zurück gibt.
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
    $acl->allow(null, null, null, new CleanIPAssertion());
 
 Der obige Code legt eine bedingte Erlaubnisregel an, die den Zugriff für alle Rechte auf alles und von jedem

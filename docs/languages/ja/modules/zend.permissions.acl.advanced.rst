@@ -1,29 +1,29 @@
-.. _zend.acl.advanced:
+.. _zend.permissions.acl.advanced:
 
 高度な使用法
 ======
 
-.. _zend.acl.advanced.storing:
+.. _zend.permissions.acl.advanced.storing:
 
 ACL データの保存による永続性の確保
 -------------------
 
-``Zend_Acl`` は、特定のバックエンド技術
+``Zend\Permissions\Acl`` は、特定のバックエンド技術
 (たとえばデータベースやキャッシュサーバを使用した *ACL* データの保存など)
 に依存しないように作られています。 すべて *PHP* のみで実装されているので、
-``Zend_Acl`` 用の管理ツールを独自に作成して
+``Zend\Permissions\Acl`` 用の管理ツールを独自に作成して
 管理の手間を省くことも可能になっています。 *ACL*
-の管理を対話的に行いたいという場面も数多く発生するでしょう。そのため ``Zend_Acl``
+の管理を対話的に行いたいという場面も数多く発生するでしょう。そのため ``Zend\Permissions\Acl``
 では、アプリケーションのアクセス制御を設定したり、
 それに対して問い合わせたりするためのメソッドを用意しています。
 
 データの使用法にはさまざまなものが考えられるので、 *ACL*
-データの保存は、場面に応じて開発者側で考えることになります。 ``Zend_Acl``
+データの保存は、場面に応じて開発者側で考えることになります。 ``Zend\Permissions\Acl``
 はシリアライズ可能なので、 *ACL* オブジェクトを *PHP* の `serialize()`_
 関数でシリアライズできます。シリアライズした結果を、
 ファイルやデータベースあるいはキャッシュなどのお好みの場所に保存できます。
 
-.. _zend.acl.advanced.assertions:
+.. _zend.permissions.acl.advanced.assertions:
 
 アサーションを使用した条件付き ACL 規則の作成
 -------------------------
@@ -33,21 +33,21 @@ ACL データの保存による永続性の確保
 たとえば、アクセスを認めるのは午前 8 時から午後 5
 時の間に限定するといった場合です。
 別の例としては、ブラックリストに載っている特定の IP
-アドレスからのアクセスのみを拒否するといったことがあります。 ``Zend_Acl``
+アドレスからのアクセスのみを拒否するといったことがあります。 ``Zend\Permissions\Acl``
 は、必要に応じた任意の条件にもとづく規則を組み込みでサポートしています。
 
-``Zend_Acl`` は、条件付きの規則を ``Zend_Acl_Assert_Interface``
+``Zend\Permissions\Acl`` は、条件付きの規則を ``Zend\Permissions\Acl\Assert\AssertInterface``
 でサポートしています。規則のアサーション用インターフェイスを使用するには、
 これを実装したクラスで ``assert()`` メソッドを作成します。
 
 .. code-block:: php
    :linenos:
 
-   class CleanIPAssertion implements Zend_Acl_Assert_Interface
+   class CleanIPAssertion implements Zend\Permissions\Acl\Assert\AssertInterface
    {
-       public function assert(Zend_Acl $acl,
-                              Zend_Acl_Role_Interface $role = null,
-                              Zend_Acl_Resource_Interface $resource = null,
+       public function assert(Zend\Permissions\Acl $acl,
+                              Zend\Permissions\Acl\Role\RoleInterface $role = null,
+                              Zend\Permissions\Acl\Resource\ResourceInterface $resource = null,
                               $privilege = null)
        {
            return $this->_isCleanIP($_SERVER['REMOTE_ADDR']);
@@ -67,7 +67,7 @@ ACL データの保存による永続性の確保
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
    $acl->allow(null, null, null, new CleanIPAssertion());
 
 上のコードが作成する条件付き規則は、

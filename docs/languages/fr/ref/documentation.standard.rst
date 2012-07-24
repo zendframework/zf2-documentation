@@ -101,7 +101,7 @@ revanche.
    </sect2></sect1>
    <!-- AUTORISÉ -->
    <para>
-       <classname>Zend_Magic</classname> n'existe pas. <classname>Zend_Acl</classname> existe.
+       <classname>Zend_Magic</classname> n'existe pas. <classname>Zend\Permissions\Acl</classname> existe.
    </para>
 
 .. _doc-standard.file-formatting.line-termination:

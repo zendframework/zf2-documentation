@@ -1,17 +1,17 @@
-.. _zend.acl.refining:
+.. _zend.permissions.acl.refining:
 
 アクセス制御の洗練
 =========
 
-.. _zend.acl.refining.precise:
+.. _zend.permissions.acl.refining.precise:
 
 的確なアクセス制御
 ---------
 
-:ref:`先ほどの節 <zend.acl.introduction>`\ で定義した基本的な *ACL* では、さまざまな規則を
+:ref:`先ほどの節 <zend.permissions.acl.introduction>`\ で定義した基本的な *ACL* では、さまざまな規則を
 *ACL* 全体 (すべてのリソース) に対して適用しました。
 しかし実際には、アクセス制御にはさまざまな例外がつきものですし、
-もっと複雑なものになるでしょう。 ``Zend_Acl``
+もっと複雑なものになるでしょう。 ``Zend\Permissions\Acl``
 では、このような目的のためにも直感的で柔軟な方法で対応できます。
 
 例にあげた *CMS* では大半のユーザを 'staff' グループでまとめて管理していました。
@@ -32,7 +32,7 @@
    :linenos:
 
    // 新しいグループ marketing は staff の権限を引き継ぎます
-   $acl->addRole(new Zend_Acl_Role('marketing'), 'staff');
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('marketing'), 'staff');
 
 次に、これらのアクセス制御は特定のリソース (例: "newsletter"、"latest news"、"announcement
 news") に限定されることに注目しましょう。ここで、これらのリソースを追加します。
@@ -43,16 +43,16 @@ news") に限定されることに注目しましょう。ここで、これら�
    // 規則を適用するリソースを作成します
 
    // ニュースレター
-   $acl->addResource(new Zend_Acl_Resource('newsletter'));
+   $acl->addResource(new Zend\Permissions\Acl\Resource\GenericResource('newsletter'));
 
    // ニュース
-   $acl->addResource(new Zend_Acl_Resource('news'));
+   $acl->addResource(new Zend\Permissions\Acl\Resource\GenericResource('news'));
 
    // 最新ニュース
-   $acl->addResource(new Zend_Acl_Resource('latest'), 'news');
+   $acl->addResource(new Zend\Permissions\Acl\Resource\GenericResource('latest'), 'news');
 
    // お知らせ
-   $acl->addResource(new Zend_Acl_Resource('announcement'), 'news');
+   $acl->addResource(new Zend\Permissions\Acl\Resource\GenericResource('announcement'), 'news');
 
 そして、次のような特別な規則を、 *ACL* の該当範囲に適用します。
 
@@ -107,7 +107,7 @@ news") に限定されることに注目しましょう。ここで、これら�
         "allowed" : "denied";
    // denied となります
 
-.. _zend.acl.refining.removing:
+.. _zend.permissions.acl.refining.removing:
 
 アクセス制御の削除
 ---------

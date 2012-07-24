@@ -15,7 +15,7 @@ forment un framework d'application web puissant et extensible quand ils sont com
 performante implémentation du motif MVC, une abstraction de base de données simple d'utilisation, et un composant
 de formulaire qui implémente un rendu HTML, la validation et le filtrage des données, ainsi les développeurs
 peuvent consolider toutes ces opérations en utilisant une interface orienté-objet facile d'utilisation. D'autres
-composants, comme ``Zend_Auth`` ou ``Zend_Acl``, fournissent l'authentification d'utilisateurs et l'autorisation
+composants, comme ``Zend_Auth`` ou ``Zend\Permissions\Acl``, fournissent l'authentification d'utilisateurs et l'autorisation
 envers les solutions de stockage de crédits habituels. D'autres encore, implémentent des librairies clientes pour
 simplifier l'accès aux services web disponibles les plus populaires. Quelque soit le besoin de votre application,
 vous avez toutes les chances de trouver un composant de Zend Framework qui peut être utilisé pour réduire

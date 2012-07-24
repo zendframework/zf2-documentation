@@ -38,6 +38,6 @@ Ces informations nous mènent à trois questions:
 
 Dans les chapitres qui suivent, nous nous attaquerons à ces problèmes que sont l'authentification,
 l'identification et les détails. Nous allons découvrir trois composants: ``Zend_Session``, ``Zend_Auth``, et
-``Zend_Acl``; nous montrerons des exemples concrets et des possibilités d'extension.
+``Zend\Permissions\Acl``; nous montrerons des exemples concrets et des possibilités d'extension.
 
 
