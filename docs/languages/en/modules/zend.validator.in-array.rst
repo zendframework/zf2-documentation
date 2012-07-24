@@ -3,8 +3,7 @@
 InArray
 =======
 
-``Zend\Validator\InArray`` allows you to validate if a given value is contained within an array. It is also able to
-validate multidimensional arrays.
+``Zend\Validator\InArray`` allows you to validate if a given value is contained within an array. It is also able to validate multidimensional arrays.
 
 .. _zend.validator.set.in_array.options:
 
@@ -17,7 +16,24 @@ The following options are supported for ``Zend\Validator\InArray``:
 
 - **recursive**: Defines if the validation should be done recursive. This option defaults to ``FALSE``.
 
-- **strict**: Defines if the validation should be done strict. This option defaults to ``FALSE``.
+- **strict**: Three modes of comparison are offered owing to an often overlooked, and potentially dangerous security issue when validating string input from user input.
+
+  - *InArray::COMPARE_STRICT*
+
+      This is a normal in_array strict comparison that checks value and type.
+
+  - *InArray::COMPARE_NOT_STRICT*
+
+      This is a normal in_array non-strict comparison that checks value only. 
+
+.. Warning:: This mode may give false positives when strings are compared against ints or floats owing to in_array's behaviour of converting strings to int in such cases. Therefore, *"foo"* would become *0*, *"43foo"* would become *43*, while *"foo43"* would also become *0*.
+..
+
+  - *InArray::COMPARE_NOT_STRICT_AND_PREVENT_STR_TO_INT_VULNERABILITY*
+
+      To remedy the above warning, this mode offers a middle-ground which allows string representations of numbers to be successfully matched against either their string or int counterpart and vice versa. For example: *"0"* will successfully match against *0*, but *"foo"* would not match against *0* as would be true in the ``*COMPARE_NOT_STRICT*`` mode. This is the safest option to use when validating web input, and is the default.
+
+Defines if the validation should be done strict. This option defaults to ``FALSE``.
 
 .. _zend.validator.set.in_array.basic:
 
@@ -29,8 +45,7 @@ The simplest way, is just to give the array which should be searched against at 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\InArray(array('key' => 'value',
-                                                'otherkey' => 'othervalue'));
+   $validator = new Zend\Validator\InArray(array('value1', 'value2',...'valueN'));
    if ($validator->isValid('value')) {
        // value found
    } else {
@@ -43,14 +58,14 @@ This will behave exactly like *PHP*'s ``in_array()`` method.
 
    Per default this validation is not strict nor can it validate multidimensional arrays.
 
-Of course you can give the array to validate against also afterwards by using the ``setHaystack()`` method.
+Alternatively, you can define the array to validate against after object construction by using the ``setHaystack()`` method.
 ``getHaystack()`` returns the actual set haystack array.
 
 .. code-block:: php
    :linenos:
 
    $validator = new Zend\Validator\InArray();
-   $validator->setHaystack(array('key' => 'value', 'otherkey' => 'othervalue'));
+   $validator->setHaystack(array('value1', 'value2',...'valueN'));
 
    if ($validator->isValid('value')) {
        // value found
@@ -60,37 +75,44 @@ Of course you can give the array to validate against also afterwards by using th
 
 .. _zend.validator.set.in_array.strict:
 
-Strict array validation
------------------------
+Array validation modes
+-------------------------------
 
-As mentioned before you can also do a strict validation within the array. Per default there would be no difference
-between the integer value **0** and the string **"0"**. When doing a strict validation this difference will also be
-validated and only same types are accepted.
+As previously mentioned, there are possible security issues when using the default non-strict comparison mode, so rather than restricting the developer, we've chosen to offer both strict and non-strict comparisons and adding a safer middle-ground.
 
-A strict validation can also be done by using two different ways. At initiation and by using a method. At
-initiation you have to give an array with the following structure:
+It's possible to set the strict mode at initialisation and afterwards with the ``setStrict`` method. ``InArray::COMPARE_STRICT`` equates to ``true`` and ``InArray::COMPARE_NOT_STRICT_AND_PREVENT_STR_TO_INT_VULNERABILITY`` equates to false.
 
 .. code-block:: php
    :linenos:
 
+   // defaults to InArray::COMPARE_NOT_STRICT_AND_PREVENT_STR_TO_INT_VULNERABILITY
    $validator = new Zend\Validator\InArray(
        array(
-           'haystack' => array('key' => 'value', 'otherkey' => 'othervalue'),
-           'strict'   => true
+            'haystack' => array('value1', 'value2',...'valueN'),
        )
    );
 
-   if ($validator->isValid('value')) {
-       // value found
-   } else {
-       // no value found
-   }
+   // set strict mode
+   $validator = new Zend\Validator\InArray(
+       array(
+            'haystack' => array('value1', 'value2',...'valueN'),
+            'strict'   => InArray::COMPARE_STRICT  // equates to ``true``
+       )
+   );
 
-The **haystack** key contains your array to validate against. And by setting the **strict** key to ``TRUE``, the
-validation is done by using a strict type check.
+   // set non-strict mode  
+   $validator = new Zend\Validator\InArray(
+       array(
+            'haystack' => array('value1', 'value2',...'valueN'),
+            'strict'   => InArray:COMPARE_NOT_STRICT  // equates to ``false``
+       )
+   );
 
-Of course you can also use the ``setStrict()`` method to change this setting afterwards and ``getStrict()`` to get
-the actual set state.
+   // or
+
+   $validator->setStrict(InArray::COMPARE_STRICT); 
+   $validator->setStrict(InArray::COMPARE_NOT_STRICT);
+   $validator->setStrict(InArray::COMPARE_NOT_STRICT_AND_PREVENT_STR_TO_INT_VULNERABILITY);
 
 .. note::
 
@@ -111,10 +133,8 @@ To validate multidimensional arrays you have to set the **recursive** option.
    $validator = new Zend\Validator\InArray(
        array(
            'haystack' => array(
-               'firstDimension' => array('key' => 'value',
-                                         'otherkey' => 'othervalue'),
-               'secondDimension' => array('some' => 'real',
-                                          'different' => 'key')),
+               'firstDimension' => array('value1', 'value2',...'valueN'),
+               'secondDimension' => array('foo1', 'foo2',...'fooN')),
            'recursive' => true
        )
    );
@@ -125,7 +145,7 @@ To validate multidimensional arrays you have to set the **recursive** option.
        // no value found
    }
 
-Your array will then be validated recursive to see if the given value is contained. Additionally you could use
+Your array will then be validated recursively to see if the given value is contained. Additionally you could use
 ``setRecursive()`` to set this option afterwards and ``getRecursive()`` to retrieve it.
 
 .. code-block:: php
@@ -133,12 +153,11 @@ Your array will then be validated recursive to see if the given value is contain
 
    $validator = new Zend\Validator\InArray(
        array(
-           'firstDimension' => array('key' => 'value',
-                                     'otherkey' => 'othervalue'),
-           'secondDimension' => array('some' => 'real',
-                                      'different' => 'key')
+           'firstDimension' => array('value1', 'value2',...'valueN'),
+           'secondDimension' => array('foo1', 'foo2',...'fooN')
        )
    );
+
    $validator->setRecursive(true);
 
    if ($validator->isValid('value')) {
@@ -159,5 +178,3 @@ Your array will then be validated recursive to see if the given value is contain
 
    When you are using the keys '``haystack``', '``strict``' or '``recursive``' within your haystack, then you must
    wrap the ``haystack`` key.
-
-
