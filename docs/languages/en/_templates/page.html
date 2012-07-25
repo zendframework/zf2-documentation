@@ -1,0 +1,141 @@
+{% extends "!page.html" %}
+
+{% block extrahead %}
+<script type="text/javascript">
+
+    // Store editor pop-up help state in localStorage
+    // so it does not re-pop-up itself between page loads.
+    // Do not even to pretend to support IE gracefully.
+    (function($) {
+
+        $(document).ready(function() {
+            var box = $("#editor-trap");
+            var klass = "toggled";
+            var storageKey = "toggled";
+
+            function toggle() {
+                box.toggleClass(klass);
+                // Store the toggle status in local storage as "has value string" or null
+                window.localStorage.setItem(storageKey, box.hasClass(klass) ? "toggled" : "not-toggled");
+            }
+
+            box.click(toggle);
+
+            // Check the persistent state of the editor pop-up
+            // Note that localStorage does not necessarily support boolean values (ugh!)
+            // http://stackoverflow.com/questions/3263161/cannot-set-boolean-values-in-localstorage
+            var v = window.localStorage.getItem(storageKey);
+            if(v == "toggled" || !v) {
+                box.addClass(klass);
+            }
+
+        });
+
+    })(jQuery);
+</script>
+<style type="text/css">
+    /* Styles for floating Edit on GitHub box */
+    #editor-trap {
+        margin: 1em;
+        padding: 1em;
+        border: 1px solid black;
+        box-shadow: 0 0 3px black;
+        width: 200px;
+
+        background: #fefabc;
+        position: fixed;
+        bottom: 1em;
+        left: 1em;
+        font-size: 90%;
+        text-align: left;
+        z-index: 2;
+
+        -moz-transform: rotate(-4deg);
+        -webkit-transform: rotate(-4deg);
+        -o-transform: rotate(-4deg);
+        -ms-transform: rotate(-4deg);
+        transform: rotate(-4deg);
+        box-shadow: 0px 4px 6px #333;
+        -moz-box-shadow: 0px 4px 6px #333;
+        -webkit-box-shadow: 0px 4px 6px #333;
+
+
+        cursor: pointer;
+    }
+
+    #editor-trap h3 {
+        margin: 0 0 0.5em 0;
+        padding: 0;
+        background: transparent;
+    }
+
+    #editor-trap ol {
+        margin: 0;
+        padding: 0 0 0 2em;
+    }
+
+    /* Hide trick */
+    #editor-trap.toggled > * {
+        display: none;
+    }
+
+
+    #editor-trap.toggled > h3 {
+        display: block;
+        font-size: 60%;
+    }
+</style>
+{% endblock %}
+
+{#
+
+Add Editor Help Pop Up HTML.
+
+Enable Analytics tracking on the docs.
+
+
+#}
+{% block footer %}
+{{ super() }}
+
+<div id="editor-trap">
+    <h3>Edit this document</h3>
+
+    <p>
+        The source code of this file is hosted on GitHub. Everyone can
+        update and fix errors in this document with few clicks -
+        no downloads needed.
+    <p>
+
+    <ol>
+
+        <li>
+            Go to
+            <a href="https://github.com/zendframework/zf2-documentation/edit/master/docs/languages/en/{{ pagename }}.rst">
+                {{ title }}
+            </a> on GitHub.
+        </li>
+
+        <li>
+            Edit file contents using GitHub's text editor in your web browser
+        </li>
+
+        <li>
+            Fill in the <b>Commit message</b> text box at the end of the page telling <i>why</i>
+            you did the changes. Press <b>Propose file change</b> button next to it when done.
+        </li>
+
+
+        <li>
+            On <i>Send a pull request</i> page you don't need to fill in text anymore. Just
+            press <b>Send pull request</b> button.
+        </li>
+
+        <li>
+            Your changes are now queued for review under project's <a href="https://github.com/zendframework/zf2-documentation/pulls">Pull requests</a> tab on GitHub.
+        </li>
+    </ol>
+
+</div>
+
+{% endblock %}
