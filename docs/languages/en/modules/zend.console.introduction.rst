@@ -53,6 +53,7 @@ following location inside config file:
 
 .. code-block:: php
     :linenos:
+
     array(
         'router' => array(
             'routes' => array(
@@ -73,6 +74,7 @@ Let's create our console route and point it to ``Application\IndexController::re
    
 .. code-block:: php
     :linenos:
+
     // we could define routes for Application\IndexController in Application module config file
     // which is usually located at modules/application/config/module.config.php
     array(
@@ -105,6 +107,7 @@ We will now add ``resetpassword`` action to ``Application\IndexController``:
 
 .. code-block:: php
     :linenos:
+
     <?php
     namespace Application\Controller;
 
@@ -174,6 +177,7 @@ Let's modify our ``Application\IndexController`` to provide usage info:
 
 .. code-block:: php
     :linenos:
+
     <?php
 
     namespace Application;
