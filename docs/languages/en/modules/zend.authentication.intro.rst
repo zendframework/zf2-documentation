@@ -10,7 +10,7 @@ adapters for common use case scenarios.
 loosely defined as determining whether an entity actually is what it purports to be (i.e., identification), based
 on some set of credentials. Authorization, the process of deciding whether to allow an entity access to, or to
 perform operations upon, other entities is outside the scope of ``Zend\Authentication``. For more information about
-authorization and access control with Zend Framework, please see the :ref:`Zend\\Acl <zend.acl>` component.
+authorization and access control with Zend Framework, please see the :ref:`Zend\\Permissions\\Acl <zend.permissions.acl>` component.
 
 .. note::
 

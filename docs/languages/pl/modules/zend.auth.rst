@@ -10,7 +10,7 @@ Komponent ``Zend_Auth`` jest związany tylko z **uwierzytelnianiem**, a nie z **
 luźno definiujemy jako określanie w oparciu o pewien zestaw danych tego, czy dana jednostka jest tym na co
 wygląda (np. identyfikacja). Autoryzacja, proces decydowania o tym, czy zezwolić danej jednostce na dostęp lub
 przeprowadzanie operacji na innych jednostkach, jest poza polem działania ``Zend_Auth``. Aby uzyskać więcej
-informacji o autoryzacji i kontroli dostępu za pomocą Zend Framework, proszę zobacz :ref:`Zend_Acl <zend.acl>`.
+informacji o autoryzacji i kontroli dostępu za pomocą Zend Framework, proszę zobacz :ref:`Zend\Permissions\Acl <zend.permissions.acl>`.
 
 .. note::
 

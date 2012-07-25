@@ -20,22 +20,22 @@ Authorisierung in seiner einfachsten Form ist die Komposition der folgenden Elem
 
 - und optional, was der Identität erlaubt ist mit der Ressource zu tun
 
-Im Zend Framework behandelt die Komponente ``Zend_Acl`` die Arbeit der Erstellung eines Baums von Rollen,
+Im Zend Framework behandelt die Komponente ``Zend\Permissions\Acl`` die Arbeit der Erstellung eines Baums von Rollen,
 Ressourcen und Privilegien um Authorisationsanfragen zu managen und abzufragen.
 
 .. _learning.multiuser.authorization.basic-usage:
 
-Grundsätzliche Verwendung von Zend_Acl
+Grundsätzliche Verwendung von Zend\Permissions\Acl
 --------------------------------------
 
-Wenn ``Zend_Acl`` verwendet wird können beliebige Modelle als Rollen oder Ressourcen fungieren indem einfach das
-richtige Interface implementiert wird. Um als Rolle verwendet zu werden muss die Klasse ``Zend_Acl_Role_Interface``
+Wenn ``Zend\Permissions\Acl`` verwendet wird können beliebige Modelle als Rollen oder Ressourcen fungieren indem einfach das
+richtige Interface implementiert wird. Um als Rolle verwendet zu werden muss die Klasse ``Zend\Permissions\Acl\Role\RoleInterface``
 implementieren, welche nur ``getRoleId()`` benötigt. Um als Ressource zu verwenden muss eine Klasse
-``Zend_Acl_Resource_Interface`` implementieren wofür die Klasse so ähnlich die ``getResourceId()`` Methode
+``Zend\Permissions\Acl\Resource\ResourceInterface`` implementieren wofür die Klasse so ähnlich die ``getResourceId()`` Methode
 implementieren muss.
 
 Anbei wird ein einfaches Benutzermodell demonstriert. Dieses Modell kann einen Teil in unserem *ACL* System
-übernehmen indem einfach ``Zend_Acl_Role_Interface`` implementiert wird. Die Methode ``getRoleId()`` gibt die Id
+übernehmen indem einfach ``Zend\Permissions\Acl\Role\RoleInterface`` implementiert wird. Die Methode ``getRoleId()`` gibt die Id
 "guest" zurück wenn die Id nicht bekannt ist, oder die Id der Rolle welche mit dem aktuellen Benutzerobjekt
 verknüpft ist. Dieser Wert kann effektiv von überall kommen, eine statische Definition oder vielleicht dynamisch
 von der Datenbankrolle des Benutzers selbst.
@@ -43,7 +43,7 @@ von der Datenbankrolle des Benutzers selbst.
 .. code-block:: php
    :linenos:
 
-   class Default_Model_User implements Zend_Acl_Role_Interface
+   class Default_Model_User implements Zend\Permissions\Acl\Role\RoleInterface
    {
        protected $_aclRoleId = null;
 
@@ -66,7 +66,7 @@ sein wenn das System dies benötigt.
 .. code-block:: php
    :linenos:
 
-   class Default_Model_BlogPost implements Zend_Acl_Resource_Interface
+   class Default_Model_BlogPost implements Zend\Permissions\Acl\Resource\ResourceInterface
    {
        public function getResourceId()
        {
@@ -83,7 +83,7 @@ Nehmen wir die folgenden Regeln an:
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
 
    // Die verschiedenen Rollen im System einstellen
    $acl->addRole('guest');
@@ -131,21 +131,21 @@ wir die folgende Annahme:
 .. code-block:: php
    :linenos:
 
-   class OwnerCanPublishBlogPostAssertion implements Zend_Acl_Assert_Interface
+   class OwnerCanPublishBlogPostAssertion implements Zend\Permissions\Acl\Assert\AssertInterface
    {
        /**
         * Diese Annahme sollte die aktuellen Benutzer und BlogPost Objekte
         * empfangen
         *
-        * @param Zend_Acl $acl
-        * @param Zend_Acl_Role_Interface $user
-        * @param Zend_Acl_Resource_Interface $blogPost
+        * @param Zend\Permissions\Acl $acl
+        * @param Zend\Permissions\Acl\Role\RoleInterface $user
+        * @param Zend\Permissions\Acl\Resource\ResourceInterface $blogPost
         * @param $privilege
         * @return bool
         */
-       public function assert(Zend_Acl $acl,
-                              Zend_Acl_Role_Interface $user = null,
-                              Zend_Acl_Resource_Interface $blogPost = null,
+       public function assert(Zend\Permissions\Acl $acl,
+                              Zend\Permissions\Acl\Role\RoleInterface $user = null,
+                              Zend\Permissions\Acl\Resource\ResourceInterface $blogPost = null,
                               $privilege = null)
        {
            if (!$user instanceof Default_Model_User) {

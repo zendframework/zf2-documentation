@@ -10,7 +10,7 @@ escenarios de casos de uso común.
 definido como: determinar si una entidad realmente es lo que pretende ser (o sea, identificación), basandose en un
 grupo de credenciales. Autorización, el proceso de decidir si se permite a una entidad: acceso a, o el realizar
 operaciones en, otras entidades esta fuera del alcance de ``Zend_Auth``. Para más información sobre autorización
-y control de acceso con Zend Framework, por favor vea :ref:`Zend_Acl <zend.acl>`.
+y control de acceso con Zend Framework, por favor vea :ref:`Zend\Permissions\Acl <zend.permissions.acl>`.
 
 .. note::
 

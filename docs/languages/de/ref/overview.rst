@@ -15,7 +15,7 @@ mächtigen und erweiterbaren Framework für Web Anwendungen wenn Sie kombiniert 
 robuste, hoch performante *MVC* Implementation, eine Datenbank Abstraktion die einfach zu verwenden ist, und eine
 Form Komponente die *HTML* Form Darstellung, Prüfung und Filterung implementiert, damit Entwickler alle diese
 Operationen konsolidieren können durch Verwendung eines einfach zu verwendenden, objekt-orientierten Interfaces.
-Andere Komponenten wie ``Zend_Auth`` und ``Zend_Acl``, bieten Benutzer Authentifizierung und Authorisierung
+Andere Komponenten wie ``Zend_Auth`` und ``Zend\Permissions\Acl``, bieten Benutzer Authentifizierung und Authorisierung
 gegenüber allen üblichen Arten von Zugangspunkten. Andere implementieren Client Bibliotheken um einfach Zugang zu
 den am meisten üblichen Web Services verfügbar zu machen. Was auch immer die eigene Anwendung benötigt, man
 findet eine Zend Framework Komponente mit einer durchgehend getesteten Basis, die verwendet werden kann um die

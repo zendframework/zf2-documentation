@@ -13,7 +13,7 @@ Biarpun bisa dipakai secara terpisah, komponen-komponen Zend Framework dalam ben
 merupakan framework aplikasi web yang mumpuni dan ekstensibel. ZF menawarkan implementasi MVC dengan performa
 prima, abstraksi database yang mudah digunakan, dan komponen form yang mengimplementasikan form HTML, validasi, dan
 filtering sekaligus sehingga developer dapat mengimplementasikan keseluruhan fungsionalitas ini dalam satu langkah
-mudah. Komponen lainnya seperti Zend_Auth dan Zend_Acl menyediakan fungsionalitas otentikasi dan otorisasi terhadap
+mudah. Komponen lainnya seperti Zend_Auth dan Zend\Permissions\Acl menyediakan fungsionalitas otentikasi dan otorisasi terhadap
 semua model credential yang umum dipakai. Komponen lain mengimplementasikan library client untuk mengakses web
 service populer yang ada saat ini. Apapun yang dibutuhkan aplikasi anda, anda akan sering mendapati Zend Framework
 mampu digunakan untuk mempersingkat waktu development anda. Dan lagi ZF dibangun dengan pondasi testing yang

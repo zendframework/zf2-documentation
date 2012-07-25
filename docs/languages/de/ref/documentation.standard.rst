@@ -102,7 +102,7 @@ Mehrere Block Tags in der gleichen Zeile sind nicht erlaubt; mehrere Inline Tags
 
    <!-- ERLAUBT -->
    <para>
-       <classname>Zend_Magic</classname> existiert nicht. <classname>Zend_Acl</classname> existiert.
+       <classname>Zend_Magic</classname> existiert nicht. <classname>Zend\Permissions\Acl</classname> existiert.
    </para>
 
 .. _doc-standard.file-formatting.line-termination:

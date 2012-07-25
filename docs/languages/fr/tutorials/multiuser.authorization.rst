@@ -18,28 +18,28 @@ différentes ressources (parties). Le procédé qui consiste à savoir "qui a le
 
 - et optionnellement le privilège - le droit (quoi?)
 
-Dans Zend Framework, le composant ``Zend_Acl`` vous propose de créer ces trois entités remarquables, de les
+Dans Zend Framework, le composant ``Zend\Permissions\Acl`` vous propose de créer ces trois entités remarquables, de les
 associer et de les interroger dans le futur.
 
 .. _learning.multiuser.authorization.basic-usage:
 
-Utilisation de base de Zend_Acl
+Utilisation de base de Zend\Permissions\Acl
 -------------------------------
 
-En utilisant ``Zend_Acl``, n'importe quel modèle peut servir de rôle ou de ressource en implémentant l'interface
-adéquate. Pour créer des rôles, implémentez ``Zend_Acl_Role_Interface``, qui définit la méthode
-``getRoleId()``. Pour créer des ressources, implémentez ``Zend_Acl_Resource_Interface`` qui définit la méthode
+En utilisant ``Zend\Permissions\Acl``, n'importe quel modèle peut servir de rôle ou de ressource en implémentant l'interface
+adéquate. Pour créer des rôles, implémentez ``Zend\Permissions\Acl\Role\RoleInterface``, qui définit la méthode
+``getRoleId()``. Pour créer des ressources, implémentez ``Zend\Permissions\Acl\Resource\ResourceInterface`` qui définit la méthode
 ``getResourceId()``.
 
 Nous allons faire une démonstration avec un modèle simple. On peut le relier avec notre système d'*ACL* en
-implémentant ``Zend_Acl_Role_Interface``. La méthode ``getRoleId()`` retournera "guest" lorsque l'ID est inconnu,
+implémentant ``Zend\Permissions\Acl\Role\RoleInterface``. La méthode ``getRoleId()`` retournera "guest" lorsque l'ID est inconnu,
 ou l'ID du rôle lorsque celui-ci aura été affecté. Cette valeur peut provenir de n'importe où, probablement
 qu'elle proviendra d'une définition faite en base de données.
 
 .. code-block:: php
    :linenos:
 
-   class Default_Model_User implements Zend_Acl_Role_Interface
+   class Default_Model_User implements Zend\Permissions\Acl\Role\RoleInterface
    {
        protected $_aclRoleId = null;
 
@@ -62,7 +62,7 @@ fonction du besoin.
 .. code-block:: php
    :linenos:
 
-   class Default_Model_BlogPost implements Zend_Acl_Resource_Interface
+   class Default_Model_BlogPost implements Zend\Permissions\Acl\Resource\ResourceInterface
    {
        public function getResourceId()
        {
@@ -79,7 +79,7 @@ Imaginons les règles suivantes:
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
 
    // mise en place des rôles
    $acl->addRole('guest');
@@ -125,20 +125,20 @@ assertion:
 .. code-block:: php
    :linenos:
 
-   class OwnerCanPublishBlogPostAssertion implements Zend_Acl_Assert_Interface
+   class OwnerCanPublishBlogPostAssertion implements Zend\Permissions\Acl\Assert\AssertInterface
    {
        /**
         * Cette assertion va recevoir le User et le BlogPost actuels.
         *
-        * @param Zend_Acl $acl
-        * @param Zend_Acl_Role_Interface $user
-        * @param Zend_Acl_Resource_Interface $blogPost
+        * @param Zend\Permissions\Acl $acl
+        * @param Zend\Permissions\Acl\Role\RoleInterface $user
+        * @param Zend\Permissions\Acl\Resource\ResourceInterface $blogPost
         * @param $privilege
         * @return bool
         */
-       public function assert(Zend_Acl $acl,
-                              Zend_Acl_Role_Interface $user = null,
-                              Zend_Acl_Resource_Interface $blogPost = null,
+       public function assert(Zend\Permissions\Acl $acl,
+                              Zend\Permissions\Acl\Role\RoleInterface $user = null,
+                              Zend\Permissions\Acl\Resource\ResourceInterface $blogPost = null,
                               $privilege = null)
        {
            if (!$user instanceof Default_Model_User) {

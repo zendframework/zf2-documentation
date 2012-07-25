@@ -1,16 +1,16 @@
-.. _zend.acl.refining:
+.. _zend.permissions.acl.refining:
 
 Refining Access Controls
 ========================
 
-.. _zend.acl.refining.precise:
+.. _zend.permissions.acl.refining.precise:
 
 Precise Access Controls
 -----------------------
 
-The basic *ACL* as defined in the :ref:`previous section <zend.acl.introduction>` shows how various privileges may
+The basic *ACL* as defined in the :ref:`previous section <zend.permissions.acl.introduction>` shows how various privileges may
 be allowed upon the entire *ACL* (all resources). In practice, however, access controls tend to have exceptions and
-varying degrees of complexity. ``Zend\Acl\Acl`` allows to you accomplish these refinements in a straightforward and
+varying degrees of complexity. ``Zend\Permissions\Acl\Acl`` allows to you accomplish these refinements in a straightforward and
 flexible manner.
 
 For the example *CMS*, it has been determined that whilst the 'staff' group covers the needs of the vast majority
@@ -30,9 +30,9 @@ same basic permissions as 'staff', so we define 'marketing' in such a way that i
    :linenos:
 
    // The new marketing group inherits permissions from staff
-   use Zend\Acl\Acl;
-   use Zend\Acl\Role\GenericRole as Role;
-   use Zend\Acl\Resource\GenericResource as Resource;
+   use Zend\Permissions\Acl\Acl;
+   use Zend\Permissions\Acl\Role\GenericRole as Role;
+   use Zend\Permissions\Acl\Resource\GenericResource as Resource;
 
    $acl = new Acl();
 
@@ -114,7 +114,7 @@ We can now query the *ACL* with respect to the latest changes:
         "allowed" : "denied";
    // denied
 
-.. _zend.acl.refining.removing:
+.. _zend.permissions.acl.refining.removing:
 
 Removing Access Controls
 ------------------------

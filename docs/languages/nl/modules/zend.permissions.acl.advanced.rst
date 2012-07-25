@@ -1,25 +1,25 @@
-.. _zend.acl.advanced:
+.. _zend.permissions.acl.advanced:
 
 Gevorderd gebruik
 =================
 
-.. _zend.acl.advanced.storing:
+.. _zend.permissions.acl.advanced.storing:
 
 Het opslaan van ACL data voor langere duur
 ------------------------------------------
 
-Zend_Acl is zo ontworpen dat het geen aparte achterliggende technologie zoals een database of een cache server voor
+Zend\Permissions\Acl is zo ontworpen dat het geen aparte achterliggende technologie zoals een database of een cache server voor
 het opslaan van ACL data nodig heeft. De complete PHP implementatie maakt het mogelijk om aangepaste administratie
-programma's te maken, gebouwd op Zend_Acl met relatief gemak en flexibiliteit. Veel situaties vereisen een vorm van
-interactief onderhoud van de ACL en Zend_Acl levert methodes om dit op te zetten en het raadplegen van, de
+programma's te maken, gebouwd op Zend\Permissions\Acl met relatief gemak en flexibiliteit. Veel situaties vereisen een vorm van
+interactief onderhoud van de ACL en Zend\Permissions\Acl levert methodes om dit op te zetten en het raadplegen van, de
 toegangscontrole van een applicatie.
 
 Het opslaan van de ACL Data is daarom overgelaten als een taak voor de ontwikkelaar, want de verwachting is dat de
-gebruikersprocessen veel variëren voor de verschillende situaties. Omdat Zend_Acl te ordenen is, kan een ACL
+gebruikersprocessen veel variëren voor de verschillende situaties. Omdat Zend\Permissions\Acl te ordenen is, kan een ACL
 object geordend worden met de PHP functie `serialize()`_ en het resultaat kan worden opgeslagen waar de
 ontwikkelaar dat wenst, zoals een bestand, database of een caching mechanisme.
 
-.. _zend.acl.advanced.assertions:
+.. _zend.permissions.acl.advanced.assertions:
 
 Schrijven van conditionele ACL regels met een vereising
 -------------------------------------------------------
@@ -27,22 +27,21 @@ Schrijven van conditionele ACL regels met een vereising
 Soms is een regel voor het toestaan of weigeren van een Rol om een Bron te gebruiken niet absoluut, maar hangt dit
 af van een aantal criteria. Als voorbeeld, stel dat iets moet worden toegestaan, maar alleen tussen 8:00 en 17:00.
 Een ander voorbeeld is het weigeren van toegang omdat het verzoek komt van een IP adres die gemarkeerd is als een
-bron van misbruik. Zend_Acl heeft een ingebouwde ondersteuning om regels, gebaseerd op wat voor condities de
+bron van misbruik. Zend\Permissions\Acl heeft een ingebouwde ondersteuning om regels, gebaseerd op wat voor condities de
 ontwikkelaar nodig heeft, te implementeren.
 
-Zend_Acl levert ondersteuning voor conditionele regels met *Zend_Acl_Assert_Interface*. Om de regel vereising
+Zend\Permissions\Acl levert ondersteuning voor conditionele regels met *Zend\Permissions\Acl\Assert\AssertInterface*. Om de regel vereising
 interface te gebruiken, schrijft de ontwikkelaar een class die de *assert()* methode van de interface
 implementeerd.
 
 .. code-block::
    :linenos:
    <?php
-   require_once 'Zend/Acl/Assert/Interface.php';
 
-   class schoonIPvereising implements Zend_Acl_Assert_Interface
+   class schoonIPvereising implements Zend\Permissions\Acl\Assert\AssertInterface
    {
-       public function assert(Zend_Acl $acl, Zend_Acl_Role_Interface $role = null,
-                              Zend_Acl_Resource_Interface $resource = null, $privilege = null)
+       public function assert(Zend\Permissions\Acl $acl, Zend\Permissions\Acl\Role\RoleInterface $role = null,
+                              Zend\Permissions\Acl\Resource\ResourceInterface $resource = null, $privilege = null)
        {
            return $this->_isEenSchoonIP($_SERVER['REMOTE_ADDR']);
        }
@@ -60,9 +59,8 @@ heeft terug gestuurd.
 .. code-block::
    :linenos:
    <?php
-   require_once 'Zend/Acl.php';
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
    $acl->allow(null, null, null, new schoonIPvereising());
 
 De bovenstaande code maakt een conditionele toestaan regel die gebruik toestaat van alle privileges op alles door

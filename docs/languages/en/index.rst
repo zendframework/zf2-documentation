@@ -12,9 +12,6 @@ Programmer's Reference Guide of Zend Framework 2
    ref/overview
    ref/installation
    tutorials/quickstart.di
-   modules/zend.acl.intro
-   modules/zend.acl.refining
-   modules/zend.acl.advanced
    modules/zend.authentication.intro
    modules/zend.authentication.adapter.dbtable
    modules/zend.authentication.adapter.digest
@@ -120,6 +117,9 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.mvc.controllers
    modules/zend.mvc.plugins
    modules/zend.mvc.examples
+   modules/zend.permissions.acl.intro
+   modules/zend.permissions.acl.refining
+   modules/zend.permissions.acl.advanced
    modules/zend.service.manager.intro
    modules/zend.service.manager.quick.start
    modules/zend.stdlib.hydrator
@@ -151,13 +151,6 @@ Learning Zend Framework
 
 Zend Framework Reference
 ------------------------
-
-Zend\\Acl
-^^^^^^^^^
-
-        * :doc:`modules/zend.acl.intro`
-        * :doc:`modules/zend.acl.refining`
-        * :doc:`modules/zend.acl.advanced`
 
 Zend\\Authentication
 ^^^^^^^^^^^^^^^^^^^^
@@ -339,6 +332,13 @@ Zend\\Mvc
         * :doc:`modules/zend.mvc.controllers`
         * :doc:`modules/zend.mvc.plugins`
         * :doc:`modules/zend.mvc.examples`
+
+Zend\\Permissions\\Acl
+^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.permissions.acl.intro`
+        * :doc:`modules/zend.permissions.acl.refining`
+        * :doc:`modules/zend.permissions.acl.advanced`
 
 Zend\\ServiceManager
 ^^^^^^^^^^^^^^^^^^^^

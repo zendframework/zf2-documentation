@@ -1,25 +1,25 @@
-.. _zend.acl.advanced:
+.. _zend.permissions.acl.advanced:
 
 Uso Avanzado
 ============
 
-.. _zend.acl.advanced.storing:
+.. _zend.permissions.acl.advanced.storing:
 
 Almacenamiento Permanente de los Datos ACL
 ------------------------------------------
 
-``Zend_Acl`` fue diseñado de tal manera que no requiere ninguna tecnología particular como bases de datos o un
+``Zend\Permissions\Acl`` fue diseñado de tal manera que no requiere ninguna tecnología particular como bases de datos o un
 servidor de cache para el almacenamiento de datos *ACL*. Al poseer una implementación completamente construida en
-*PHP*, es posible construir herramientas de administración personalizadas sobre ``Zend_Acl`` con relativa
+*PHP*, es posible construir herramientas de administración personalizadas sobre ``Zend\Permissions\Acl`` con relativa
 facilidad y flexibilidad. En muchas situaciones se requiere alguna forma de mantenimiento interactivo de una *ACL*,
-y ``Zend_Acl`` provee métodos para configurar, y consultar, los controles de acceso de una aplicación.
+y ``Zend\Permissions\Acl`` provee métodos para configurar, y consultar, los controles de acceso de una aplicación.
 
 El almacenamiento de los datos *ACL* es una tarea que se delega al desarrollador, puesto que la utilización
-variará extensamente en distintas situaciones. Dado que ``Zend_Acl`` es serializable, los objetos *ACL* pueden
+variará extensamente en distintas situaciones. Dado que ``Zend\Permissions\Acl`` es serializable, los objetos *ACL* pueden
 serializarse con la función `serialize()`_ de *PHP*, y los resultados pueden ser almacenados donde sea que el
 desarrollador lo desee, en un archivo, base de datos, o mecanismo de cache
 
-.. _zend.acl.advanced.assertions:
+.. _zend.permissions.acl.advanced.assertions:
 
 Escribiendo reglas condicionales ACL con aserciones
 ---------------------------------------------------
@@ -27,21 +27,21 @@ Escribiendo reglas condicionales ACL con aserciones
 A veces, una regla para permitir o negar una función de acceso a un recurso no debería ser absoluta sino que
 depende de varios criterios. Por ejemplo, supóngase que debe permitirse cierto acceso, pero únicamente entre las
 8:00am y 5:00pm. Otro ejemplo sería negar el acceso debido a una petición que proviene de una dirección IP que
-se ha marcado como una fuente de abusos. ``Zend_Acl``\ tiene soporte para la aplicación de normas basadas en
+se ha marcado como una fuente de abusos. ``Zend\Permissions\Acl``\ tiene soporte para la aplicación de normas basadas en
 cualquier condición que el desarrollador necesite.
 
-``Zend_Acl`` provee soporte para reglas condicionales con ``Zend_Acl_Assert_Interface``. Con el fin de utilizar la
+``Zend\Permissions\Acl`` provee soporte para reglas condicionales con ``Zend\Permissions\Acl\Assert\AssertInterface``. Con el fin de utilizar la
 regla de aserción de la interfaz, un desarrollador escribe una clase que implemente el método ``assert()`` de la
 interfaz:
 
 .. code-block:: php
    :linenos:
 
-   class CleanIPAssertion implements Zend_Acl_Assert_Interface
+   class CleanIPAssertion implements Zend\Permissions\Acl\Assert\AssertInterface
    {
-       public function assert(Zend_Acl $acl,
-                              Zend_Acl_Role_Interface $role = null,
-                              Zend_Acl_Resource_Interface $resource = null,
+       public function assert(Zend\Permissions\Acl $acl,
+                              Zend\Permissions\Acl\Role\RoleInterface $role = null,
+                              Zend\Permissions\Acl\Resource\ResourceInterface $resource = null,
                               $privilege = null)
        {
            return $this->_isCleanIP($_SERVER['REMOTE_ADDR']);
@@ -60,7 +60,7 @@ método de la aserción devuelve ``TRUE``.
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
    $acl->allow(null, null, null, new CleanIPAssertion());
 
 El código anterior crea una regla condicional que permite el acceso a todos los privilegios sobre todo, por todo

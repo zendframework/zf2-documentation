@@ -567,7 +567,7 @@ Authentication
 
 ``Zend_Amf_Server`` erlaubt es Authentifizierung und Authorisierungs- Hooks zu spezifizieren um den Zugriff auf
 Services zu kontrollieren. Es wird die Infrastruktur verwendet die von den :ref:`Zend_Auth <zend.auth>` und
-:ref:`Zend_Acl <zend.acl>` Komponenten angeboten wird.
+:ref:`Zend\Permissions\Acl <zend.permissions.acl>` Komponenten angeboten wird.
 
 Um Authentifizierung zu definieren, muß der Benutzer einen Authentifizierungs-Adapter anbieten der die abstrakte
 Klasse ``Zend_Amf_Auth_Abstract`` erweitert. Der Adapter sollte die ``authenticate()`` Methode implementieren so
@@ -591,13 +591,13 @@ Der Adapter wird zum Server verbunden indem die ``setAuth()`` Methode verwendet 
 
    $server->setAuth(new My_Amf_Auth());
 
-Die Zugriffskontrolle wird durchgeführt indem das ``Zend_Acl`` Objekt verwendet wird das von der ``setAcl()``
+Die Zugriffskontrolle wird durchgeführt indem das ``Zend\Permissions\Acl`` Objekt verwendet wird das von der ``setAcl()``
 Methode gesetzt wurde:
 
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
    createPermissions($acl); // Zugriffs-Struktur erstellen
    $server->setAcl($acl);
 

@@ -1,9 +1,9 @@
-.. _zend.acl.introduction:
+.. _zend.permissions.acl.introduction:
 
 Introduction
 ============
 
-``Zend_Acl`` fournit une implémentation légère et flexible de listes de contrôle d'accès (*ACL*) pour la
+``Zend\Permissions\Acl`` fournit une implémentation légère et flexible de listes de contrôle d'accès (*ACL*) pour la
 gestion de privilèges. En général, une application peut utiliser ces *ACL* pour contrôler l'accès à certains
 objets par d'autres objets demandeurs.
 
@@ -20,93 +20,93 @@ voiture est soumis à un contrôle.
 Grâce à la définition et à la mise en oeuvre d'une *ACL*, une application peut contrôler comment les objets
 demandeurs (rôles) reçoivent l'accès (ou non) à des objets protégés (ressources).
 
-.. _zend.acl.introduction.resources:
+.. _zend.permissions.acl.introduction.resources:
 
 A propos des ressources
 -----------------------
 
-Avec ``Zend_Acl``, créer une ressource est très simple. ``Zend_Acl`` fournit ``Zend_Acl_Resource_Interface`` pour
+Avec ``Zend\Permissions\Acl``, créer une ressource est très simple. ``Zend\Permissions\Acl`` fournit ``Zend\Permissions\Acl\Resource\ResourceInterface`` pour
 faciliter la tâche aux développeurs. Une classe a simplement besoin d'implémenter cette interface, qui consiste
-en une seule méthode, ``getResourceId()``, pour que ``Zend_Acl`` reconnaît l'objet comme étant une ressource.
-Par ailleurs, ``Zend_Acl_Resource`` est fourni par ``Zend_Acl`` comme une implémentation basique de ressource que
+en une seule méthode, ``getResourceId()``, pour que ``Zend\Permissions\Acl`` reconnaît l'objet comme étant une ressource.
+Par ailleurs, ``Zend\Permissions\Acl\Resource`` est fourni par ``Zend\Permissions\Acl`` comme une implémentation basique de ressource que
 les développeurs peuvent étendre si besoin.
 
-``Zend_Acl`` fournit une structure en arbre à laquelle plusieurs ressources (ou "zone sous contrôle d'accès")
+``Zend\Permissions\Acl`` fournit une structure en arbre à laquelle plusieurs ressources (ou "zone sous contrôle d'accès")
 peuvent être ajoutées. Puisque les ressources sont sauvées dans cet arbre, elles peuvent être organisées du
 général (via la racine de l'arbre) jusqu'au particulier (via les feuilles de l'arbre). Les requêtes envers une
 ressource spécifique vont automatiquement entraîner la recherche de règles sur ses parents au sein de la
 structure hiérarchique des ressources, ce qui permet un héritage simple des règles. Par exemple, si une règle
 par défaut doit être appliquée à tous les bâtiments d'une ville, on pourra simplement assigner la règle à la
 ville elle-même, au lieu de la répéter à tous les bâtiments. Mais certains bâtiments peuvent nécessiter des
-règles spécifiques, et ceci peut se faire aisément avec ``Zend_Acl`` en assignant les règles nécessaires à
+règles spécifiques, et ceci peut se faire aisément avec ``Zend\Permissions\Acl`` en assignant les règles nécessaires à
 chaque bâtiment de la ville qui nécessite une exception. Une ressource peut hériter d'un seul parent ressource,
 qui hérite lui même de son propre parent, et ainsi de suite.
 
-``Zend_Acl`` supporte aussi des privilèges pour chaque ressource (par exemple : "créer", "lire", "modifier",
+``Zend\Permissions\Acl`` supporte aussi des privilèges pour chaque ressource (par exemple : "créer", "lire", "modifier",
 "supprimer"), et le développeur peut assigner des règles qui affectent tous les privilèges ou seuls certains
 privilèges d'une ressource.
 
-.. _zend.acl.introduction.roles:
+.. _zend.permissions.acl.introduction.roles:
 
 A propos des rôles
 ------------------
 
 Comme pour les ressources, créer un rôle est très simple. Tout rôle doit implémenter
-``Zend_Acl_Role_Interface`` qui consiste en une seule méthode ``getRoleId()``. De plus, ``Zend_Acl_Role`` est
-inclus dans ``Zend_Acl`` comme une implémentation basique de rôle que les développeurs peuvent étendre si
+``Zend\Permissions\Acl\Role\RoleInterface`` qui consiste en une seule méthode ``getRoleId()``. De plus, ``Zend\Permissions\Acl\Role`` est
+inclus dans ``Zend\Permissions\Acl`` comme une implémentation basique de rôle que les développeurs peuvent étendre si
 besoin.
 
-Dans ``Zend_Acl``, un rôle peut hériter de un ou plusieurs rôles. Ceci permet de supporter l'héritage de
+Dans ``Zend\Permissions\Acl``, un rôle peut hériter de un ou plusieurs rôles. Ceci permet de supporter l'héritage de
 règles à travers plusieurs rôles. Par exemple, un rôle utilisateur, comme "Éric", peut appartenir à un ou
 plusieurs rôles d'action, tels que "éditeur" ou "administrateur". Le développeur peut créer des règles pour
 "éditeur" et "administrateur" séparément, et "Éric" va hériter des règles des deux sans avoir à définir des
 règles directement pour "Éric".
 
 Bien que la possibilité d'hériter de plusieurs rôles soit très utile, l'héritage multiple introduit aussi un
-certain degré de complexité. L'exemple ci-dessous illustre l'ambiguïté et la manière dont ``Zend_Acl`` la
+certain degré de complexité. L'exemple ci-dessous illustre l'ambiguïté et la manière dont ``Zend\Permissions\Acl`` la
 résout.
 
-.. _zend.acl.introduction.roles.example.multiple_inheritance:
+.. _zend.permissions.acl.introduction.roles.example.multiple_inheritance:
 
 .. rubric:: Héritages multiples entre rôles
 
 Le code ci-dessous définit trois rôles de base - "guest", "member", et "admin" - desquels d'autres rôles peuvent
 hériter. Ensuite, un rôle identifié par "someUser" est créé et hérite des trois autres rôles. L'ordre selon
 lequel ces rôles apparaissent dans le tableau ``$parents`` est important. Lorsque cela est nécessaire
-``Zend_Acl`` recherche les règles d'accès définies non seulement pour le rôle demandé (ici "someUser"), mais
+``Zend\Permissions\Acl`` recherche les règles d'accès définies non seulement pour le rôle demandé (ici "someUser"), mais
 aussi pour les autres rôles desquels le rôle recherché hérite (ici "guest", "member", et "admin") :
 
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
 
-   $acl->addRole(new Zend_Acl_Role('guest'))
-       ->addRole(new Zend_Acl_Role('member'))
-       ->addRole(new Zend_Acl_Role('admin'));
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('guest'))
+       ->addRole(new Zend\Permissions\Acl\Role\GenericRole('member'))
+       ->addRole(new Zend\Permissions\Acl\Role\GenericRole('admin'));
 
    $parents = array('guest', 'member', 'admin');
-   $acl->addRole(new Zend_Acl_Role('someUser'), $parents);
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('someUser'), $parents);
 
-   $acl->add(new Zend_Acl_Resource('someResource'));
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('someResource'));
 
    $acl->deny('invite', 'someResource');
    $acl->allow('membre', 'someResource');
 
    echo $acl->isAllowed('someUser', 'someResource') ? 'autorisé' : 'refusé';
 
-Puisqu'il n'y a pas de règle spécifiquement définie pour le rôle "someUser" et "someResource", ``Zend_Acl``
+Puisqu'il n'y a pas de règle spécifiquement définie pour le rôle "someUser" et "someResource", ``Zend\Permissions\Acl``
 doit rechercher des règles qui pourraient être définies pour des rôles dont "someUser" hérite. Premièrement,
 le rôle "admin" est contrôlé, et il n'y a pas de règle d'accès définie pour lui. Ensuite, le rôle "member"
-est visité, et ``Zend_Acl`` trouve qu'il y a une règle qui spécifie que "member" a un accès autorisé à
+est visité, et ``Zend\Permissions\Acl`` trouve qu'il y a une règle qui spécifie que "member" a un accès autorisé à
 "someResource".
 
-Si ``Zend_Acl`` continuait à examiner toutes les règles de tous les rôles parents, il trouverait que
+Si ``Zend\Permissions\Acl`` continuait à examiner toutes les règles de tous les rôles parents, il trouverait que
 "someResource" est interdit d'accès à "someResource". Ceci introduit une ambiguïté puisque maintenant
 "someUser" est à la fois autorisé et interdit d'accès à "someResource", puisqu'il hérite de règles opposées
 de ses différents parents.
 
-``Zend_Acl`` résout cette ambiguïté en arrêtant la recherche de règles d'accès dès qu'une première règle
+``Zend\Permissions\Acl`` résout cette ambiguïté en arrêtant la recherche de règles d'accès dès qu'une première règle
 est découverte. Dans notre exemple, puisque le rôle "member" est examiné avant le rôle "guest", le résultat
 devrait afficher "autorisé".
 
@@ -115,7 +115,7 @@ devrait afficher "autorisé".
    Lorsque vous spécifiez plusieurs parents pour un rôle, conservez à l'esprit que le dernier parent listé est
    le premier dans lequel une règle utilisable sera recherchée.
 
-.. _zend.acl.introduction.creating:
+.. _zend.permissions.acl.introduction.creating:
 
 Créer la Liste de Contrôle d'Accès
 ----------------------------------
@@ -128,14 +128,14 @@ qui comporte plusieurs niveaux de groupes au sein d'une grande variété de zone
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
 
 .. note::
 
-   Jusqu'à ce que le développeur spécifie une règle "allow", ``Zend_Acl`` refuse l'accès pour tous les
+   Jusqu'à ce que le développeur spécifie une règle "allow", ``Zend\Permissions\Acl`` refuse l'accès pour tous les
    privilèges sur chaque ressource pour chaque rôle.
 
-.. _zend.acl.introduction.role_registry:
+.. _zend.permissions.acl.introduction.role_registry:
 
 Registre des rôles
 ------------------
@@ -150,7 +150,7 @@ backup ou export. Cet ensemble de permissions peut être représenté dans un re
 chaque groupe d'hériter des privilèges des groupes "parents". Les permissions peuvent être rendues de la
 manière suivante :
 
-.. _zend.acl.introduction.role_registry.table.example_cms_access_controls:
+.. _zend.permissions.acl.introduction.role_registry.table.example_cms_access_controls:
 
 .. table:: Contrôles d'Accès pour un exemple de CMS
 
@@ -166,33 +166,33 @@ manière suivante :
    |Administrateur|(Reçoit tous les accès)     |N/A                    |
    +--------------+----------------------------+-----------------------+
 
-Pour cet exemple, ``Zend_Acl_Role`` est utilisé, mais n'importe quel objet qui implémente
-``Zend_Acl_Role_Interface`` est acceptable. Ces groupes peuvent être ajoutés au registre des rôles comme suit :
+Pour cet exemple, ``Zend\Permissions\Acl\Role`` est utilisé, mais n'importe quel objet qui implémente
+``Zend\Permissions\Acl\Role\RoleInterface`` est acceptable. Ces groupes peuvent être ajoutés au registre des rôles comme suit :
 
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
 
-   // Ajoute des groupes au registre des rôles en utilisant Zend_Acl_Role
+   // Ajoute des groupes au registre des rôles en utilisant Zend\Permissions\Acl\Role
 
    // Invité n'hérite d'aucun accès
-   $roleinvite = new Zend_Acl_Role('invite');
+   $roleinvite = new Zend\Permissions\Acl\Role\GenericRole('invite');
    $acl->addRole($roleinvite);
 
    // Staff hérite de Invité
-   $acl->addRole(new Zend_Acl_Role('staff'), $roleinvite);
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('staff'), $roleinvite);
 
    // Ce que précède pourrait aussi être écrit:
-   // $acl->addRole(new Zend_Acl_Role('staff'), 'invite');
+   // $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('staff'), 'invite');
 
    // Editeur hérite de staff
-   $acl->addRole(new Zend_Acl_Role('editeur'), 'staff');
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('editeur'), 'staff');
 
    // Administrateur n'hérite pas d'accès
-   $acl->addRole(new Zend_Acl_Role('administrateur'));
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('administrateur'));
 
-.. _zend.acl.introduction.defining:
+.. _zend.permissions.acl.introduction.defining:
 
 Définir les Contrôles d'Accès
 -----------------------------
@@ -200,12 +200,12 @@ Définir les Contrôles d'Accès
 Maintenant que l'*ACL* contient les rôles nécessaires, on peut établir des règles qui définissent comment les
 ressources accèdent aux rôles. Vous avez sans doute noté que nous n'avons défini aucune ressource particulière
 pour cet exemple, ce qui est plus simple pour illustrer comment les règles s'appliquent à toutes les ressources.
-``Zend_Acl`` fournit une implémentation dans laquelle les règles doivent simplement être assignées du général
+``Zend\Permissions\Acl`` fournit une implémentation dans laquelle les règles doivent simplement être assignées du général
 au particulier, ce qui réduit le nombre de règles spécifiques à ajouter. Ceci grâce à l'héritage.
 
 .. note::
 
-   Généralement ``Zend_Acl`` se conforme à une règle donnée si et seulement si une règle plus spécifique ne
+   Généralement ``Zend\Permissions\Acl`` se conforme à une règle donnée si et seulement si une règle plus spécifique ne
    s'applique pas.
 
 En conséquence, on peut définir un nombre assez complexe de règles avec un nombre minimal de code. Pour définir
@@ -214,13 +214,13 @@ les permissions comme définies ci-dessus :
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
 
-   $roleinvite = new Zend_Acl_Role('invité');
+   $roleinvite = new Zend\Permissions\Acl\Role\GenericRole('invité');
    $acl->addRole($roleinvite);
-   $acl->addRole(new Zend_Acl_Role('staff'), $roleinvite);
-   $acl->addRole(new Zend_Acl_Role('editeur'), 'staff');
-   $acl->addRole(new Zend_Acl_Role('administrateur'));
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('staff'), $roleinvite);
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('editeur'), 'staff');
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('administrateur'));
 
    // Invité peut uniquement voir le contenu
    $acl->allow($roleinvite, null, 'voir');
@@ -244,7 +244,7 @@ les permissions comme définies ci-dessus :
 Les valeurs ``NULL`` dans les appels ``allow()`` ci-dessus sont utilisées pour indiquer que les règles
 s'appliquent à toutes les ressources.
 
-.. _zend.acl.introduction.querying:
+.. _zend.permissions.acl.introduction.querying:
 
 Interroger les ACL
 ------------------
