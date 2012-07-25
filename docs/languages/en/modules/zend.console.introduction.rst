@@ -25,16 +25,22 @@ to a standard, :doc:`http route <zend.mvc.routing>` and can point to a
 
 Let's assume that we'd like our application to handle the following command line:
 
+.. code-block:: bash
+
     zf user reset-password user@mail.com
     
 When a user runs our application (``zf``) with these parameters, we'd like to call action ``resetpassword`` of 
 ``Application\IndexController``. First we want to create a **route definition**:
+
+.. code-block:: bash
 
     user reset-password <userEmail>
 
 This simple route definition expects exactly 3 arguments: a literal "user", literal "reset-password" followed by
 a parameter we're calling "userEmail". Let's assume we also accept one optional parameter, that will turn on 
 verbose operation:
+
+.. code-block:: bash
 
     user reset-password [--verbose|-v] <userEmail>
 
@@ -53,6 +59,7 @@ following location inside config file:
 
 .. code-block:: php
     :linenos:
+
     array(
         'router' => array(
             'routes' => array(
@@ -73,6 +80,7 @@ Let's create our console route and point it to ``Application\IndexController::re
    
 .. code-block:: php
     :linenos:
+
     // we could define routes for Application\IndexController in Application module config file
     // which is usually located at modules/application/config/module.config.php
     array(
@@ -105,6 +113,7 @@ We will now add ``resetpassword`` action to ``Application\IndexController``:
 
 .. code-block:: php
     :linenos:
+
     <?php
     namespace Application\Controller;
 
@@ -174,6 +183,7 @@ Let's modify our ``Application\IndexController`` to provide usage info:
 
 .. code-block:: php
     :linenos:
+
     <?php
 
     namespace Application;
@@ -213,6 +223,7 @@ Each module that implements ``ConsoleUsageProviderInterface`` will be queried fo
 mismatch, all info from all modules will be concatenated, formatted to console width and shown to the user.
 
 .. note::
+
    The order of usage info displayed in the console is the order modules load. If you want your application to
    display important usage info first, change the order your modules are loaded.
 
