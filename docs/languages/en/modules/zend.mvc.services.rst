@@ -30,7 +30,7 @@ This is the one service class referenced directly in the bootstrapping. It provi
 
   - ``Application``, mapping to ``Zend\Mvc\Service\ApplicationFactory``.
 
-  - ``Configuration``, mapping to ``Zend\Mvc\Service\ConfigurationFactory``. Internally, this pulls the
+  - ``Configuration``, mapping to ``end\Mvc\Service\ConfigFactory``. Internally, this pulls the
     ``ModuleManager`` service, and calls its ``loadModules()`` method, and retrieves the merged configuration from
     the module event. As such, this service contains the entire, merged application configuration.
 
@@ -245,7 +245,7 @@ and ``Application`` instances, allowing them to then find and aggregate the conf
        ),
 
        // Initial configuration with which to seed the ServiceManager.
-       // Should be compatible with Zend\ServiceManager\Configuration.
+       // Should be compatible with Zend\ServiceManager\Config.
        'service_manager' => array(
        ),
    );
@@ -282,7 +282,7 @@ The following options are available when using the default services configured b
        ),
 
        // The following is used to configure a Zend\Di\Di instance.
-       // The array should be in a format that Zend\Di\Configuration can understand.
+       // The array should be in a format that Zend\Di\Config can understand.
        'di' => array(
        ),
 

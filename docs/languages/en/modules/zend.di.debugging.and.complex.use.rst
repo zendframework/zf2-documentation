@@ -80,7 +80,7 @@ Setter Injection with Class Definition
 
    namespace {
        $di = new Zend\Di\Di;
-       $di->configure(new Zend\Di\Configuration(array(
+       $di->configure(new Zend\Di\Config(array(
            'definition' => array(
                'class' => array(
                    'Foo\Bar\Baz' => array(
@@ -119,7 +119,7 @@ Multiple Injections To A Single Injection Point
    namespace {
        include 'zf2bootstrap.php';
        $di = new Zend\Di\Di;
-       $di->configure(new Zend\Di\Configuration(array(
+       $di->configure(new Zend\Di\Config(array(
            'definition' => array(
                'class' => array(
                    'Application\Page' => array(
