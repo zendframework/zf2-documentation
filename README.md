@@ -14,7 +14,7 @@ You can read the development online documentation in
 [http://zend-framework-2-doc.readthedocs.org/en/latest/](http://zend-framework-2-doc.readthedocs.org/en/latest/).
 
 You can read the last stable documentation in 
-[http://packages.zendframework.com/docs/latest/manual/](http://packages.zendframework.com/docs/latest/manual/).
+[http://packages.zendframework.com/docs/latest/manual/en/](http://packages.zendframework.com/docs/latest/manual/en/).
 
 
 ### CONTRIBUTING
