@@ -11,8 +11,9 @@ ladění.
 
 .. rubric:: Příklad použití metody dump()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    Zend_Debug::dump($var, $label=null, $echo=true)

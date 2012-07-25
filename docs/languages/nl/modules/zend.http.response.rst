@@ -28,8 +28,9 @@ ontvangen te werken:
 
 .. rubric:: Met HTTP antwoorddata werken
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Http/Client.php';
    try {

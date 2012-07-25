@@ -24,7 +24,7 @@ This is the one service class referenced directly in the bootstrapping. It provi
 
   - ``RouteListener``, mapping to ``Zend\Mvc\RouteListener``.
 
-  - ``VeiwManager``, mapping to ``Zend\Mvc\View\ViewManager``.
+  - ``ViewManager``, mapping to ``Zend\Mvc\View\ViewManager``.
 
 - **Factories**
 
@@ -90,13 +90,13 @@ This is the one service class referenced directly in the bootstrapping. It provi
     ``Zend\View\Renderer\FeedRenderer`` instance.
 
   - ``ViewFeedStrategy``, mapping to ``Zend\Mvc\Service\ViewFeedStrategyFactory``. This instantiates a
-    ``Zend\View\Strategy\FeedStrategy`` instance with the ``VeiwFeedRenderer`` service.
+    ``Zend\View\Strategy\FeedStrategy`` instance with the ``ViewFeedRenderer`` service.
 
   - ``ViewJsonRenderer``, mapping to ``Zend\Mvc\Service\ViewJsonRendererFactory``, which simply returns a
     ``Zend\View\Renderer\JsonRenderer`` instance.
 
   - ``ViewJsonStrategy``, mapping to ``Zend\Mvc\Service\ViewJsonStrategyFactory``. This instantiates a
-    ``Zend\View\Strategy\JsonStrategy`` instance with the ``VeiwJsonRenderer`` service.
+    ``Zend\View\Strategy\JsonStrategy`` instance with the ``ViewJsonRenderer`` service.
 
 - **Aliases**
 

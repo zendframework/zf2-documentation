@@ -35,7 +35,7 @@ Java Broncode
 
 Het volgende Java programmavoorbeeld geeft een voorbeeld van hoe je een bestand indexeert via Java Lucene:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -77,7 +77,7 @@ vanaf de commandoregel aan te maken. Voor meer informatie over JAR bestanden kan
 
 LuceneIndexCreation.jar leest tekst bestanden door en maakt er een index voor aan. Gebruik:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
        java -jar LuceneIndexCreation.jar [-c] [-s] <document_pad> <index_pad>

@@ -108,7 +108,7 @@ hash。
 
 有两个同等简单的方法创建文件 Resolver:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $path     = 'files/passwd.txt';
@@ -117,7 +117,7 @@ hash。
 
 或者
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $path     = 'files/passwd.txt';
@@ -134,7 +134,7 @@ hash。
 
 首先，建立一个带有必需的配置值得数组：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $config = array(
@@ -151,7 +151,7 @@ hash。
 
 下一步, 创建 Zend_Auth_Adapter_Http 对象：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $adapter = new Zend_Auth_Adapter_Http($config);
@@ -162,7 +162,7 @@ hash。
 因为我们对基本和摘要认证都支持，所以我们需要两个不同的resolver对象。注意这仅仅简单地是两个不同的类：
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $basicResolver = new Zend_Auth_Adapter_Http_Resolver_File();
@@ -180,7 +180,7 @@ hash。
 最后，我们执行认证。为了完成认证，适配器对请求（Request）和响应（Response）都需要一个reference：
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       assert($request instanceof Zend_Controller_Request_Http);

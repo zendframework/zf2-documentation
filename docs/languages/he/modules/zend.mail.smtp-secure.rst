@@ -13,7 +13,7 @@
 
 .. rubric:: הפעלת חיבור מאובטח בעזרת *Zend_Mail_Transport_Smtp*
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $config = array('ssl' => 'tls',

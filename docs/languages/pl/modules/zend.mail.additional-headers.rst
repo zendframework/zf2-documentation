@@ -11,7 +11,7 @@ powinien mieć jedną czy wiele wartości:
 
 .. rubric:: Dodawanie nagłówków do wiadomości e-mail
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    require_once 'Zend/Mail.php';

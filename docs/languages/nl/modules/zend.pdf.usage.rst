@@ -11,8 +11,9 @@ Er is ook een ``test.pdf`` bestand dat met dit voorbeeld kan gebruikt worden om 
 
 .. rubric:: Zend_Pdf module voorbeeld
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    /**
     * @package Zend_Pdf

@@ -40,7 +40,7 @@
 ניתן להגדיר את אלמנט זה בכל שלב, אך רצוי לעשות זאת בתחילת
 המערכת, בקובץ ה bootstrap
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $doctypeHelper = new Zend_View_Helper_Doctype();
@@ -49,7 +49,7 @@
 
 ולאחר מכן להציג אותו בראש העמוד שלך:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php echo $this->doctype() ?>
@@ -62,7 +62,7 @@
 אם אתה צריך לדעת מהו הערך שהוגדר תוכל לעשות זאת על ידי קריאה
 למתודה *getDoctype()* על האובייקט, שמוחזר על ידי שימוש בתוסף.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $doctype = $view->doctype()->getDoctype();
@@ -71,7 +71,7 @@
 בדרך כלל תרצה לדעת אם הערך הוא תקין מבחינת XHTML או לא; בישביל זה
 שימוש ב *isXhtml()* יספיק:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    if ($view->doctype()->isXhtml()) {

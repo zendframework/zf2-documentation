@@ -17,7 +17,7 @@ $newSegmentOnly ma wartość true, wtedy zwracany jest nowy segment pliku PDF.
 
 .. rubric:: Zapisywanie dokumentu PDF.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...

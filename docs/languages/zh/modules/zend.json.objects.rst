@@ -17,7 +17,7 @@ JSON 不允许 object references，所以注意不要带递归 references 解码
 默认情况下， *Zend_Json*
 将解码JSON对象作为关联数组。但是如果你希望它返回一个对象， 以可以这样来指定：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 解码 JSON 对象作为 PHP 对象

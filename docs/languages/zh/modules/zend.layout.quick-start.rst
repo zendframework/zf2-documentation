@@ -16,7 +16,7 @@ Zend_Layout 快速入门
 
 如下例：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!DOCTYPE html
@@ -48,7 +48,7 @@ Zend_Layout 快速入门
 :ref:`占位符助手 <zend.view.helpers.initial.placeholder>`\ ，因为它允许为如
 <head>节（section）、导航（navigation）等区域获取内容：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!DOCTYPE html
@@ -88,8 +88,9 @@ Zend_Layout 快速入门
 
 首先，来看看如何初始化Zend_Layout来和MVC一起使用：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // In your bootstrap:
    Zend_Layout::startMvc();
@@ -99,8 +100,9 @@ Zend_Layout 快速入门
 
 在动作控制器例，你可以把局实例作为一个动作助手来访问：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class FooController extends Zend_Controller_Action
    {
@@ -120,15 +122,16 @@ Zend_Layout 快速入门
 在视图脚本里，可以通过 *layout*\
 视图助手来访问布局对象。这个视图助手和其它的有细微的区别：不带参数，返回一个对象而不是一个字符串值。这允许在布局对象里立即调用方法：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php $this->layout()->setLayout('foo'); // set alternate layout ?>
 
 在任何时候，通过 *getMvcInstance()* 静态方法获取和MVC一起注册的 *Zend_Layout*\ 的实例：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Returns null if startMvc() has not first been called
    $layout = Zend_Layout::getMvcInstance();
@@ -141,7 +144,7 @@ Zend_Layout 快速入门
 ，它解析内容给'nav'响应段。最后，转发给 *CommentController::fetchAction()*
 并取得一些注释，但是也解析那些给缺省响应段（追加内容给那个段）。视图脚本可以接着分别解析：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <body>
@@ -169,8 +172,9 @@ Zend_Layout 快速入门
 
 当用作独立组件，简单地初始化布局对象，使用不同的访问器来设置状态、设置变量为对象属性和解析布局：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $layout = new Zend_Layout();
 

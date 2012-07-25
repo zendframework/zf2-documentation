@@ -25,7 +25,7 @@ URIs 总是以一个schema(模式,协议)开始,后跟一个冒号(colon). *Zend
 
 .. rubric:: 使用 *Zend_Uri::factory()*\ 创建一个新的URI
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -53,7 +53,7 @@ URIs 总是以一个schema(模式,协议)开始,后跟一个冒号(colon). *Zend
 
 .. rubric:: 使用 *Zend_Uri::factory()*\ 操作一个现有的URI
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -78,7 +78,7 @@ URI 验证
 
 .. rubric:: 使用 *Zend_Uri::check()*\ 进行URI 验证
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -110,7 +110,7 @@ URI模式是冒号之前的部分.例如 *http://www.zend.com*\ 的模式是 *ht
 
 .. rubric:: 从 *Zend_Uri_** 对象取得模式
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -131,7 +131,7 @@ URI模式是冒号之前的部分.例如 *http://www.zend.com*\ 的模式是 *ht
 
 .. rubric:: 从一个 *Zend_Uri_** 对象取得整个URI
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -157,7 +157,7 @@ URI模式是冒号之前的部分.例如 *http://www.zend.com*\ 的模式是 *ht
 
 .. rubric:: 验证一个 *Zend_Uri_** 对象
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

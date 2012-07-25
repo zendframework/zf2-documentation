@@ -76,7 +76,7 @@ Zend_Db שימוש נכון למיטב הביצועים
 מקום" בשאילתות, והשתמשו בשילוב של *vsprintf* ו *array_walk* כדי להזין את
 אותם המשתנים אל השאילתות. לדוגמא:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // $adapter is the DB adapter. In Zend_Db_Table, retrieve

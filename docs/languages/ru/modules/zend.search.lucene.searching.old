@@ -52,6 +52,7 @@
 
 .. code-block:: php
    :linenos:
+
    <?php
    require_once('Zend/Search/Lucene.php');
 
@@ -95,6 +96,7 @@
 
    .. code-block:: php
       :linenos:
+
       <?php
       $userQuery = Zend_Search_Lucene_Search_QueryParser::parse($queryStr);
 
@@ -114,6 +116,7 @@
 
    .. code-block:: php
       :linenos:
+
       <?php
       $userQuery = Zend_Search_Lucene_Search_QueryParser::parse($queryStr, 'iso-8859-5');
 
@@ -125,6 +128,7 @@
 
    .. code-block:: php
       :linenos:
+
       <?php
       Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('iso-8859-5');
       ...
@@ -153,6 +157,7 @@ Zend_Search_Lucene_Search_QueryHit. Все эти объекты имеют дв
 
 .. code-block:: php
    :linenos:
+
    <?php
    require_once('Zend/Search/Lucene.php');
 
@@ -176,6 +181,7 @@ UTF-8.
 
 .. code-block:: php
    :linenos:
+
    <?php
    require_once('Zend/Search/Lucene.php');
 
@@ -225,6 +231,7 @@ Java Lucene. Результаты поиска по умолчанию сорт�
 
 .. code-block:: php
    :linenos:
+
    <?php
    $hits = $index->find($query);
 
@@ -250,6 +257,7 @@ Java Lucene. Результаты поиска по умолчанию сорт�
 
    .. code-block:: php
       :linenos:
+
       <?php
       $index->find($query [, $sortField [, $sortType [, $sortOrder]]] [, $sortField2 [, $sortType [, $sortOrder]]] ...);
 
@@ -270,18 +278,21 @@ Java Lucene. Результаты поиска по умолчанию сорт�
 
    .. code-block:: php
       :linenos:
+
       <?php
       $index->find($query, 'quantity', SORT_NUMERIC, SORT_DESC);
 
 
    .. code-block:: php
       :linenos:
+
       <?php
       $index->find($query, 'fname', SORT_STRING, 'lname', SORT_STRING);
 
 
    .. code-block:: php
       :linenos:
+
       <?php
       $index->find($query, 'name', SORT_STRING, 'quantity', SORT_NUMERIC, SORT_DESC);
 
@@ -302,6 +313,7 @@ HTML-документе элементы, присутствующие в кон
 
    .. code-block:: php
       :linenos:
+
       <?php
       $query = Zend_Search_Lucene_Search_QueryParser::parse($queryStr);
       $hits = $index->find($query);

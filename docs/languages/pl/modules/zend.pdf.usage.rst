@@ -13,7 +13,7 @@ Jest tam także plik ``test.pdf``, który może być użyty z tym przykładem .
 
 .. rubric:: Przykład użycia modułu Zend_Pdf
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**

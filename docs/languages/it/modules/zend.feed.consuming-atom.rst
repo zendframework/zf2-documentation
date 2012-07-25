@@ -15,8 +15,9 @@ più facilmente i feed che forniscono l'intero contenuto all'interno del feed st
 
 Lettura di un feed Atom e stampa di *title* e *summary* per ogni elemento:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $feed = new Zend_Feed_Atom('http://atom.example.com/feed/');

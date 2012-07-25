@@ -6,7 +6,7 @@
 *Zend_Json*\ 的使用包括使用现有的两个公共的static方法 : *Zend_Json::encode()* 和
 *Zend_Json::decode()*.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       // 获得一个value:

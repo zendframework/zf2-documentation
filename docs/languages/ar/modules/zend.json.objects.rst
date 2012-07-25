@@ -18,8 +18,9 @@ PHP , فتم أقتراح أن يتم تمرير معرف أسم class , ثم ي
 تحويلها إلى associative arrays , و لكن إن كنت تود أن يتم إرجاع كائن ,
 فيمكنك أن تحدد التالى :
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Decode objects as objects
    $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);

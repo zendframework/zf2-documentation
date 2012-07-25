@@ -11,7 +11,7 @@ będzie także użyty transport SMTP:
 
 .. rubric:: Wysyłanie e-maila przez SMTP
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $tr = new Zend_Mail_Transport_Smtp('mail.example.com');

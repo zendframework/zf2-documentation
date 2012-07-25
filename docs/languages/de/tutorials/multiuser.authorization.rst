@@ -26,7 +26,7 @@ Ressourcen und Privilegien um Authorisationsanfragen zu managen und abzufragen.
 .. _learning.multiuser.authorization.basic-usage:
 
 Grundsätzliche Verwendung von Zend\Permissions\Acl
---------------------------------------
+--------------------------------------------------
 
 Wenn ``Zend\Permissions\Acl`` verwendet wird können beliebige Modelle als Rollen oder Ressourcen fungieren indem einfach das
 richtige Interface implementiert wird. Um als Rolle verwendet zu werden muss die Klasse ``Zend\Permissions\Acl\Role\RoleInterface``

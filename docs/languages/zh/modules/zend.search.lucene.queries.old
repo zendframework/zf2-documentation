@@ -14,7 +14,7 @@
 
 查询字串：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
           $hits = $index->find('word1');
@@ -25,8 +25,9 @@
 
 通过 API 创建查询：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
 
           $term  = new Zend_Search_Lucene_Index_Term('word1');
@@ -61,8 +62,9 @@
 
 查询字串：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
 
       $hits = $index->find('+word1 author:word2 -word3');
@@ -84,8 +86,9 @@
 
 通过 API 创建查询：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
 
           $query = new Zend_Search_Lucene_Search_Query_MultiTerm();
@@ -121,8 +124,9 @@
 word2”的短语)。(可以使用分需程序生成以用于不同的用途。此外，搜索项可以被复制以提升该搜索项的权重或着一些同义词可以放在相同的地方。)因此目前短语查询只能通过
 API 创建：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $query1 = new Zend_Search_Lucene_Search_Query_Phrase();
 
@@ -157,8 +161,9 @@ API 创建：
 
 类 Zend_Search_Lucene_Search_Query_Phrase 的构造方法有三个可选的参数：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       Zend_Search_Lucene_Search_Query_Phrase([array $terms[, array $offsets[, string $field]]]);
 
 
@@ -174,27 +179,31 @@ null，那么默认的字段会被搜索。在这个版本的 Zend_Search_Lucene
 
 因此：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       $query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'framework'));
 将会搜索短语'zend framework'。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <$query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'download'), array(0, 2));
 将会搜索短语“zend ????? download”并匹配'zend platform download'、 'zend studio download'、 'zend
 core download'、 'zend framework download'这样的内容。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       $query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'framework'), null, 'title');
 将会搜索在'title'字段中搜索短语“zend framework”。
 
 方法 *Zend_Search_Lucene_Search_Query_Phrase::addTerm()* 有两个参数。必须的
 *Zend_Search_Lucene_Index_Term* 对象和可选的位置：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       Zend_Search_Lucene_Search_Query_Phrase::addTerm(Zend_Search_Lucene_Index_Term $term[, integer $position]);
 
 
@@ -205,23 +214,26 @@ core download'、 'zend framework download'这样的内容。
 
 因此：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       $query = new Zend_Search_Lucene_Search_Query_Phrase();
       $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'));
       $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'));
 将会搜索短语'zend framework'。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       $query = new Zend_Search_Lucene_Search_Query_Phrase();
       $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'), 0);
       $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'), 2);
 将会搜索短语'zend ????? download'并匹配'zend platform download'、 'zend studio download'、 'zend core
 download'、 'zend framework download'这样的内容。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       $query = new Zend_Search_Lucene_Search_Query_Phrase();
       $query->addTerm(new Zend_Search_Lucene_Index_Term('zend', 'title'));
       $query->addTerm(new Zend_Search_Lucene_Index_Term('framework', 'title'));
@@ -238,8 +250,9 @@ download'、 'zend framework download'这样的内容。
 
 模糊因子可以在查询创建后赋值：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // Query without a gap.

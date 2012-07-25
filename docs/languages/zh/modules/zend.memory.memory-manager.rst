@@ -15,7 +15,7 @@
 
 第二个参数 *$backendOptions*\ 是一个可选的后端选项参数.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $backendOptions = array(
@@ -29,7 +29,7 @@ Zend_Memory使用 :ref:`Zend_Cache backends <zend.cache.backends>`\ 作为存储
 
 除了标准的Zend_Cache后端之外,你可以使用特殊名称'*None*'作为后端名称.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $memoryManager = Zend_Memory::factory('None');
@@ -56,7 +56,7 @@ Zend_Memory使用 :ref:`Zend_Cache backends <zend.cache.backends>`\ 作为存储
 
 使用 *Zend_Memory_Manager::create([$data])* 方法创建可移动的对象 (对象可以被交换):
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $memObject = $memoryManager->create($data);
@@ -73,7 +73,7 @@ Zend_Memory使用 :ref:`Zend_Cache backends <zend.cache.backends>`\ 作为存储
 
 使用 *Zend_Memory_Manager::createLocked([$data])*\ 方法创建锁定的(对象不能被交换)对象:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $memObject = $memoryManager->createLocked($data);
@@ -90,7 +90,7 @@ Zend_Memory使用 :ref:`Zend_Cache backends <zend.cache.backends>`\ 作为存储
 
 当内存对象超出作用域它们被从内存管理器中自动销毁和删除:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       function foo()
@@ -137,7 +137,7 @@ Zend_Memory使用 :ref:`Zend_Cache backends <zend.cache.backends>`\ 作为存储
 
 你可以使用 *getMemoryLimit()* and *setMemoryLimit($newLimit)*\ 方法 检索和设置内存限制:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $oldLimit = $memoryManager->getMemoryLimit();  // Get memory limit in bytes
@@ -160,7 +160,7 @@ MinSize
 
 你可以分别使用 *getMinSize()* 和 *setMinSize($newSize)*\ 方法 检索和设置对象的最小大小:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $oldMinSize = $memoryManager->getMinSize();  // Get MinSize in bytes

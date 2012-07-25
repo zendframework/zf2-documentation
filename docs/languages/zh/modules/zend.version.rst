@@ -13,7 +13,7 @@
 
 .. rubric:: compareVersion()方法示例：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // returns -1, 0 or 1

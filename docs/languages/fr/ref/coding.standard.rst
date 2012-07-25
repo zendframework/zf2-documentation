@@ -229,7 +229,7 @@ compréhension du code.
 
 Voici des exemples de noms acceptables pour des fonctions :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       filterInput()
@@ -463,7 +463,7 @@ Lorsque de la déclaration de tableaux associatifs avec la construction *array*,
 définition sur plusieurs lignes. Dans ce cas, chaque ligne successive doit être remplie par des espaces pour que
 les clés et les valeurs soient alignées :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sampleArray = array('firstKey'  => 'firstValue',
@@ -514,7 +514,7 @@ lignes vides doivent séparer la classe du code PHP additionnel.
 
 Voici un exemple d'une déclaration de classe autorisée :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**

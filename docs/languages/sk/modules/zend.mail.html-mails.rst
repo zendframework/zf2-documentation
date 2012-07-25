@@ -9,7 +9,7 @@ verzia e-mailu výsledný e-mail bude typu multipart/alternative:
 
 .. rubric:: Vytvorenie a poslanie HTML e-mailu
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

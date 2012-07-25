@@ -20,8 +20,9 @@ Zend_Db_Table_Row对象集合的迭代器.通常来说,你不可以自己实例�
 
 首先,需要实例化一个Zend_Db_Table类.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 设置一个 adapter
    require_once 'Zend/Db.php';
@@ -46,8 +47,9 @@ Zend_Db_Table_Row对象集合的迭代器.通常来说,你不可以自己实例�
 接下来,可以使用Zend_Db_Table::find()方法和多个键值,或者使用Zend_Db_Table::fetchAll()方法对数据库进行查询,
 返回的结果是一个Zend_Db_Table_Rowset对象,可以通过该对象遍历结果集中的每一个Zend_Db_Table_Row对象.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 从表中取回多条记录
    $rowset = $table->fetchAll();
@@ -66,8 +68,9 @@ Zend_Db_Table_Rowset实现了简单程序设计语言的迭代器接口,也就�
 对象进行循环处理,就像使用foreach()函数处理数组一样.使用这种方法取回的每一个值都是一个对应表
 中数据的Zend_Db_Table_Row对象,你可以查看,修改和保存该对象的属性(即表中的字段值.)
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 连接到数据库中的表
    class RoundTable extends Zend_Db_Table {}

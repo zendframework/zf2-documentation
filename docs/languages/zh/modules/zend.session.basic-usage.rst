@@ -12,8 +12,9 @@
 每个 *Zend_Session_Namespace*\ 的实例对应于 *$_SESSION*\
 全局数组的一个条目，在那里命名空间被用作键。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       require_once 'Zend/Session/Namespace.php';
 
@@ -40,8 +41,9 @@
 
 .. rubric:: 页面浏览计数
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Session/Namespace.php';
 
@@ -67,8 +69,9 @@ Framework的核心模块可使用以"*Zend*"开头的命名空间的名称。
 
 .. rubric:: 新方法： 使用命名空间避免冲突
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Session/Namespace.php';
 
@@ -86,8 +89,9 @@ Framework的核心模块可使用以"*Zend*"开头的命名空间的名称。
 
 .. rubric:: 老方法: PHP会话访问
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $_SESSION['Zend_Auth']['user'] = "myusername";
    $_SESSION['Some_Web_Service']['user'] = "mywebusername";
@@ -104,8 +108,9 @@ Framework的核心模块可使用以"*Zend*"开头的命名空间的名称。
 
 .. rubric:: 会话迭代
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Session/Namespace.php';
 
@@ -127,8 +132,9 @@ Framework的核心模块可使用以"*Zend*"开头的命名空间的名称。
 
 .. rubric:: 访问会话数据
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Session/Namespace.php';
 

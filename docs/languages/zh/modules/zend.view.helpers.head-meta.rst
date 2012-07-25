@@ -48,7 +48,7 @@ $modifiers = array(), $placement = 'APPEND')*\ 。 *$keyValue* 是指定在 *$ke
 
 例如，如果想指定SEO关键字，要创建带有名为'keywords'和内容（在页面上和关键字有关联的）的meta名称标签：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php // setting meta keywords
@@ -57,7 +57,7 @@ $modifiers = array(), $placement = 'APPEND')*\ 。 *$keyValue* 是指定在 *$ke
 
 如果想设置一些客户端缓冲规则，最好设置带有想执行的规则的 http-equiv 标签：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php // 禁止客户端缓存
@@ -68,7 +68,7 @@ $modifiers = array(), $placement = 'APPEND')*\ 。 *$keyValue* 是指定在 *$ke
 
 meta标签的另一个流行用法是设置内容类型，字符集和语言：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php // setting content type and character set
@@ -78,7 +78,7 @@ meta标签的另一个流行用法是设置内容类型，字符集和语言：
 
 最后一个例子，可以使用"meta refresh" 来让页面转向，一个简单的办法来显示过渡消息：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php // 设置以下meta可使页面3秒钟后转向一个新的url
@@ -87,7 +87,7 @@ meta标签的另一个流行用法是设置内容类型，字符集和语言：
 
 在布局脚本(layout)中放置所有meta标签后，简单地echo助手，把所有内容输出：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?= $this->headMeta() ?>

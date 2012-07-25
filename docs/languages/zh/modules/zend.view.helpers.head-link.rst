@@ -43,7 +43,7 @@ trackback等。 *HeadLink*
 ，典型地，将在布局脚本里指定全局链接，并在应用程序视图脚本里指定特定的链接。在布局脚本里的
 <head> 部份，用echo来输出。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php // 在视图脚本中设置链接：

@@ -31,8 +31,9 @@ Zend_Form 的国际化
   相关的组件将自动发现一个翻译对象（这个对象在注册表中在 'Zend_Translator'
   键之下）并用它翻译和/或本地化：
 
-  .. code-block::
+  .. code-block:: php
      :linenos:
+
      <?php
      // use the 'Zend_Translator' key; $translate is a Zend_Translator object:
      Zend_Registry::set('Zend_Translator', $translate);
@@ -41,8 +42,9 @@ Zend_Form 的国际化
 
 - 如果你所担心的是翻译校验错误消息，可以用 *Zend_Validate_Abstract* 来注册翻译对象：
 
-  .. code-block::
+  .. code-block:: php
      :linenos:
+
      <?php
      // Tell all validation classes to use a specific translate adapter:
      Zend_Validate_Abstract::setDefaultTranslator($translate);
@@ -50,8 +52,9 @@ Zend_Form 的国际化
 - 另外，你可以（把它）附加到 *Zend_Form*
   对象作为全局翻译器。这个也有翻译校验错误消息的副作用：
 
-  .. code-block::
+  .. code-block:: php
      :linenos:
+
      <?php
      // Tell all form classes to use a specific translate adapter, as well as use
      // this adapter to translate validation error messages:
@@ -60,8 +63,9 @@ Zend_Form 的国际化
 - 最后，你可以用 *setTranslator()*
   方法附加一个翻译器到一个特定的表单实例或特定的元素：
 
-  .. code-block::
+  .. code-block:: php
      :linenos:
+
      <?php
      // Tell *this* form instance to use a specific translate adapter; it will also
      // be used to translate validation error messages for all elements:

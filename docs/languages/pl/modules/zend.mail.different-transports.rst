@@ -11,7 +11,7 @@ obiekt nadpisze domyślny transport dla aktualnego wywołania *send()*:
 
 .. rubric:: Używanie innych transportów
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $mail = new Zend_Mail();

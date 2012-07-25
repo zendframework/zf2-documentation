@@ -8,7 +8,7 @@
 :ref:`בהקדמה <zend.validate.introduction>`, איפה ששם המשתמש צריך להיות בין 6 ל 12
 תווים ובאותיות בלבד:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       // Create a validator chain and add validators to it
@@ -44,7 +44,7 @@
 של אימות שם המשתמש שהוא אותיות ומספרים בלבד לא הייתה מתבצעת
 במידה והבדיקה הראשונה תחזיר פסוק שקר:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validatorChain->addValidator(new Zend_Validate_StringLength(6, 12), true)

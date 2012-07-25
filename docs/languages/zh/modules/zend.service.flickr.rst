@@ -16,8 +16,9 @@ API Documentation`_.
 
 .. rubric:: 简单的 Flickr 照片搜索
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Service/Flickr.php';
 
@@ -52,8 +53,9 @@ API Documentation`_.
 
 在这个例子中, 我们有一个Flickr用户的e-mail 地址, 并用 *userSearch()* 方法获得用户的信息:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Service/Flickr.php';
 
@@ -78,8 +80,9 @@ API Documentation`_.
 
 一旦你有一个Flickr 图像的ID,获得它的详细信息将是小事一桩:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Service/Flickr.php';
 

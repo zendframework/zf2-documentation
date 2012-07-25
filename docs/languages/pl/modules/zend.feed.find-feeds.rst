@@ -7,7 +7,7 @@ Strony internetowe często zawierają tagi *<link>*, które odwołują się do k
 odpowiadających danej stronie. *Zend_Feed* pozwala odebrać wszystkie kanały informacyjne do których odwołuje
 się dana strona za pomocą wywołania prostej metody:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $feedArray = Zend_Feed::findFeeds('http://www.example.com/news.html');

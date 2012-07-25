@@ -33,7 +33,7 @@ filter”的意思是对输入数据执行一些转化。
 下面一个简单的例子，示范了在2个输入数据上使用过滤器，"*&*" 符号和双引号 (*"*)
 字符：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $htmlEntities = new Zend_Filter_HtmlEntities();
@@ -55,7 +55,7 @@ filter”的意思是对输入数据执行一些转化。
 名称空间有关。 *get()* 方法自动加载这个类，创建一个实例，并应用 *filter()*
 方法给数据输入。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       echo Zend_Filter::get('&', 'HtmlEntities');
@@ -65,7 +65,7 @@ filter”的意思是对输入数据执行一些转化。
 
 如果过滤器类需要，也可以传递一个数组构造参数
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       echo Zend_Filter::get('"', 'HtmlEntities', array(ENT_QUOTES));

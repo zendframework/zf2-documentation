@@ -12,8 +12,9 @@
 
 .. rubric:: 带附件的邮件
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();
@@ -24,8 +25,9 @@
 如果你想得到对此附件MIME段产生的更多控制，你可以使用 *createAttachment()*\
 方法的返回值来修改它的属性。方法 *createAttachment()*\ 返回了一个 *Zend_Mime_Part*\ 对象：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();
@@ -40,8 +42,9 @@
 
 创建 *Zend_Mime_Part* 实例和用 *addAttachment()* 添加它的替代方案：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();

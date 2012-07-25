@@ -51,7 +51,7 @@ Zend_Soap_AutoDiscovery supporte aussi la correspondance des types *PHP* vers `l
 Voici un exemple d'utilisation de l'auto découverte. La fonction ``handle()`` génère le fichier WSDL et l'envoie
 au navigateur :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       class My_SoapServer_Class {

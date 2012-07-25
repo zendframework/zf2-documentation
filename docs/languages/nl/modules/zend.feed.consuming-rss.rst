@@ -5,7 +5,7 @@ Een RSS Feed lezen
 
 Een RSS feed lezen is zo eenvoudig als het instantiëren van een *Zend_Feed_Rss* object met het URI van de feed:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -18,7 +18,7 @@ Indien er fouten optreden bij het verkrijgen van de feed zal een *Zend_Feed_Exce
 Als je eenmaal een feed object hebt, kan je toegang verkrijgen voor eender welke van de standaard RSS
 kanaaleigenschappen op een direkte wijze:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -33,7 +33,7 @@ tekst van eender welke individuele node te verkrijgen en toch volledig toegang t
 Indien kanaaleigenschappen attributen hebben zijn deze toegangkelijk door het gebruiken van de array syntax van
 PHP:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -47,7 +47,7 @@ attribuutwaarden.
 Meestal zal je door een feed willen loopen en iets met de entries willen doen. *Zend_Feed_Abstract* implementeert
 PHP's *Iterator* interface, dus het weergeven van alle titels van artikels in een kanaal is eenvoudig met:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -110,7 +110,7 @@ Gewone item elementen:
 
 Je kan in jouw code altijd testen of een element leeg is of niet met:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

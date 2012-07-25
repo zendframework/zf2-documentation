@@ -24,7 +24,7 @@ associer et de les interroger dans le futur.
 .. _learning.multiuser.authorization.basic-usage:
 
 Utilisation de base de Zend\Permissions\Acl
--------------------------------
+-------------------------------------------
 
 En utilisant ``Zend\Permissions\Acl``, n'importe quel modèle peut servir de rôle ou de ressource en implémentant l'interface
 adéquate. Pour créer des rôles, implémentez ``Zend\Permissions\Acl\Role\RoleInterface``, qui définit la méthode

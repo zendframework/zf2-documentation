@@ -11,7 +11,7 @@ Tutte le eccezioni lanciate dalle classi del Framework Zend dovrebbero estendere
 
 Il codice seguente dimostra come gestire un'eccezione lanciata all'interno di una classe del Framework Zend:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    try {

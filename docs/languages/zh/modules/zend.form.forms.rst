@@ -18,8 +18,9 @@
 
 最基本的事情是实例化一个表单对象：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Generic form object:
    $form = new Zend_Form();
@@ -29,8 +30,9 @@
    ?>
 你可以可选地传递配置参数，它用来设置对象状态以及可能生成新元素：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Passing in configuration options:
    $form = new Zend_Form($config);
@@ -97,8 +99,9 @@ documentation）中参见 :ref:`Custom Label example <zend.form.elements.loaders
 
 如一些例子：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Using an element instance:
    $element = new Zend_Form_Element_Text('foo');
@@ -129,8 +132,9 @@ documentation）中参见 :ref:`Custom Label example <zend.form.elements.loaders
 一旦元素被添加到表单，可以用名字来读取。通过使用 *getElement()*
 方法或者通过重载（overloading）使元素作为对象属性来访问：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // getElement():
    $foo = $form->getElement('foo');
@@ -141,8 +145,9 @@ documentation）中参见 :ref:`Custom Label example <zend.form.elements.loaders
 偶尔地，你只想生成一个元素并不想把它加到表单上（例如，你想利用众多的用表单注册的插件路径，但稍后把这些对象加到子表单上）。
 *createElement()* 方法可以完成这些：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // $username becomes a Zend_Form_Element_Text object:
    $username = $form->createElement('text', 'username');
@@ -156,8 +161,9 @@ documentation）中参见 :ref:`Custom Label example <zend.form.elements.loaders
 web 服务。你可以通过 *getValues()* 来读取所有元素的值， *getValue($name)*
 可以通过名字来读取一个单个的值：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Get all values:
    $values = $form->getValues();
@@ -168,15 +174,16 @@ web 服务。你可以通过 *getValues()* 来读取所有元素的值， *getVa
 有时候，在解析之前，你想用特定的值来组装表单，可以通过 *setDefaults()* 或 *populate()*
 方法来完成：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form->setDefaults($data);
    $form->populate($data);
    ?>
 在另一面，你可能想在组装和校验之前清除一个表单，可使用 *reset()* 方法来完成：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $form->reset();
@@ -194,8 +201,9 @@ web 服务。你可以通过 *getValues()* 来读取所有元素的值， *getVa
 
 可以通过类型来为所有的元素设置前缀路径，或者使用全局前缀，如这些例子：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Set global prefix path:
    // Creates paths for prefixes My_Foo_Filter, My_Foo_Validate,
@@ -220,8 +228,9 @@ web 服务。你可以通过 *getValues()* 来读取所有元素的值， *getVa
 一样，并对每个元素重写（overwrite）先前设置的装饰器。在本例中，我们为 ViewHelper
 和一个 Label 设置装饰器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form->setElementDecorators(array(
        'ViewHelper',
@@ -241,7 +250,7 @@ false，它将装饰 **除了** 这些在列表中的元素 **之外**
 
 在下面的片段中，我们只对 'foo' 和 'bar' 元素使用视图助手和标签装饰器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $form->setElementDecorators(
@@ -258,7 +267,7 @@ false，它将装饰 **除了** 这些在列表中的元素 **之外**
 另一方面，在这个片段中，我们对 **除了**'foo' 元素 'bar'**之外**\
 的所以元素使用视图助手和标签装饰器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $form->setElementDecorators(
@@ -294,8 +303,9 @@ false，它将装饰 **除了** 这些在列表中的元素 **之外**
 大多数情况下，你想对所有元素应用同一个过滤器，一个通常的用法是 *修整（trim()）*
 所有的值：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form->setElementFilters(array('StringTrim'));
    ?>
@@ -357,15 +367,17 @@ false，它将装饰 **除了** 这些在列表中的元素 **之外**
 假定元素 'username' 和 'password'已经在表单中，下面的代码将把它们组成一个
 'login'显示组：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form->addDisplayGroup(array('username', 'password'), 'login');
    ?>
 你可以用 *getDisplayGroup()* 方法来访问显示组，或用显示组的名称来重载（overloading）：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Using getDisplayGroup():
    $login = $form->getDisplayGroup('login');
@@ -380,8 +392,9 @@ false，它将装饰 **除了** 这些在列表中的元素 **之外**
    缺省地，缺省的装饰器在对象初始化过程中加载。你可以在生成显示组的时候通过传递
    'disableLoadDefaultDecorators' 选项来关闭（disable）它。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       $form->addDisplayGroup(
           array('foo', 'bar'),
@@ -405,8 +418,9 @@ false，它将装饰 **除了** 这些在列表中的元素 **之外**
 缺省地，显示组继承表单所使用的任何一个装饰器的路径，然而，如果它们在另外的位置，可以使用这个方法：
 *addDisplayGroupPrefixPath()*\ 。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form->addDisplayGroupPrefixPath('My_Foo_Decorator', 'My/Foo/Decorator');
    ?>
@@ -419,8 +433,9 @@ false，它将装饰 **除了** 这些在列表中的元素 **之外**
 一样，并将在每个显示组重写（overwrite）先前设置的装饰器。在这个例子中，我们给字段（为确保元素被迭代，FormElements
 装饰器是必需的）设置装饰器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form->setDisplayGroupDecorators(array(
        'FormElements',
@@ -437,8 +452,9 @@ false，它将装饰 **除了** 这些在列表中的元素 **之外**
 不允许传递一个具体的实例，但确实允许用 'displayGroupClass'
 键来指定一个类来作为它的一个选项：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Use the 'My_DisplayGroup' class
    $form->addDisplayGroup(
@@ -451,8 +467,9 @@ false，它将装饰 **除了** 这些在列表中的元素 **之外**
 
 你也可以指定一个缺省的显示组类来和表单一起使用，这样所有用这个表单对象生成的显示组将使用那个类：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Use the 'My_DisplayGroup' class for all display groups:
    $form->setDefaultDisplayGroupClass('My_DisplayGroup');
@@ -613,15 +630,17 @@ Zend_Form_DisplayGroup 方法
 对象。后者包含适合包含在大表单（例如，它不解析另外的 HTML
 表单标签，但解析组元素）里的装饰器。为了加上子表单，简单地把它添加到一个表单并给出名字：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form->addSubForm($subForm, 'subform');
    ?>
 可以用 *getSubForm($name)* 或用子表单名重载（overloading）它来读取子表单：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Using getSubForm():
    $subForm = $form->getSubForm('subform');
@@ -641,8 +660,9 @@ Zend_Form_DisplayGroup 方法
 方法来完成此任务。在下一个例子中，我们将为所有作为字段（为确保迭代它的元素，FormElements
 装饰器是必需的）的子表单设置装饰器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form->setSubFormDecorators(array(
        'FormElements',
@@ -684,8 +704,9 @@ HTML 属性）。
 
 可以使用名字访问器来设置和读取表单的名字：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Set the name:
    $form->setName('registration');
@@ -696,8 +717,9 @@ HTML 属性）。
 为了设置动作（到表单提交的 url ）和方法（提交的方法如 'POST' 或
 'GET'），使用动作和方法访问器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Set the action and method:
    $form->setAction('/user/login')
@@ -708,8 +730,9 @@ HTML 属性）。
 'application/x-www-form-urlencoded' 和 'multipart/form-data'；
 然而，你可以把它设置为任意的编码类型。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Set the action, method, and enctype:
    $form->setAction('/user/login')
@@ -722,16 +745,18 @@ HTML 属性）。
 
 *Zend_Form* 实现 *Countable* 接口，允许把它当作参数传递给计数器（count）：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $numItems = count($form);
    ?>
 设置任意元数据可通过属性访问器来完成。因为在 *Zend_Form*
 中重载用于访问元素、显示组和子表单，这是唯一的访问元数据的方法。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Setting attributes:
    $form->setAttrib('class', 'zend-form')
@@ -765,8 +790,9 @@ HTML 属性）。
 *Zend_Form* 的缺省装饰器是 FormElements，HtmlTag（ 封装在定义列表 ）和
 Form，生成它们的等同的代码如下：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form->setDecorators(array(
        'FormElements',
@@ -776,7 +802,7 @@ Form，生成它们的等同的代码如下：
    ?>
 生成输出如下：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <form action="/form/action" method="post">
@@ -794,8 +820,9 @@ Form，生成它们的等同的代码如下：
    缺省地，缺省的装饰器在对象初始化过程中加载。可通过传递 'disableLoadDefaultDecorators'
    选项给构造器来关闭（disable）它：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       $form = new Zend_Form(array('disableLoadDefaultDecorators' => true));
 
@@ -812,8 +839,9 @@ Form，生成它们的等同的代码如下：
    *addDecorator()*\
    ，而是传递一个带有单个元素的、带有指向装饰器对象或名字的别名的数组：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       // Alias to 'FooBar':
       $form->addDecorator(array('FooBar' => 'HtmlTag'), array('tag' => 'div'));
@@ -824,8 +852,9 @@ Form，生成它们的等同的代码如下：
    在 *addDecorators()* 和 *setDecorators()* 方法中，需要传递在表示装饰器的数组中的
    'decorator' 选项：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       // Add two 'HtmlTag' decorators, aliasing one to 'FooBar':
       $form->addDecorators(
@@ -871,8 +900,9 @@ HTML，你的装饰器可以潜在地使用从独立的元素或显示组来的�
 
 为了校验整个表单，使用 *isValid()* 方法：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    if (!$form->isValid($_POST)) {
        // failed validation
@@ -882,8 +912,9 @@ HTML，你的装饰器可以潜在地使用从独立的元素或显示组来的�
 
 有时候你可能只需要校验数据的一个子集，可以使用 *isValidPartial($data)*\ ：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    if (!$form->isValidPartial($data)) {
        // failed validation
@@ -895,8 +926,9 @@ HTML，你的装饰器可以潜在地使用从独立的元素或显示组来的�
 当为 AJAX 请求校验元素或元素组，你一般要校验表单的一个子集，并想要响应返回到
 JSON。用 *processAjax()* 正好：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $json = $form->processAjax($data);
    ?>
@@ -907,8 +939,9 @@ JSON。用 *processAjax()* 正好：
 对于校验失败的表单，你可以分别使用 *getErrors()* 和 *getMessages()*
 获取错误代码和错误消息：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $codes = $form->getErrors();
    $messages = $form->getMessage();
@@ -920,8 +953,9 @@ JSON。用 *processAjax()* 正好：
 
 你可以通过传递元素名为单个元素来获取代码和错误消息；
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $codes = $form->getErrors('username');
    $messages = $form->getMessages('username');
@@ -1175,7 +1209,7 @@ JSON。用 *processAjax()* 正好：
 
 作为一个例子，这里是一个为每个可配置数据传递配置的配置文件：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    [element]
@@ -1232,8 +1266,9 @@ JSON。用 *processAjax()* 正好：
 
 最典型的用例是使用 *init()* 方法来设置指定的表单元素和配置：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class My_Form_Login extends Zend_Form
    {
@@ -1278,8 +1313,9 @@ JSON。用 *processAjax()* 正好：
    ?>
 这个表单可以简单地实例化：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form = new My_Form_Login();
    ?>
@@ -1288,8 +1324,9 @@ JSON。用 *processAjax()* 正好：
 另一个普通的扩展原因是定义一组缺省的装饰器，可以通过覆盖（overriding）
 *loadDefaultDecorators()* 方法来完成：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class My_Form_Login extends Zend_Form
    {

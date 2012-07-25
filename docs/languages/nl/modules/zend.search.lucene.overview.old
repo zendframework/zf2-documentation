@@ -45,8 +45,9 @@ HTML formulier, etc.
 De *Zend_Search_Lucene_Field* klasse bied verschillende statische methodes om velden met verschillende
 eigenschappen aan te maken:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $doc = new Zend_Search_Lucene_Document();
 

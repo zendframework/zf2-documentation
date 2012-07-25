@@ -15,8 +15,9 @@ $newSegmentOnly TRUE is, wordt alleen het nieuwe PDF bestandssegment teruggestuu
 
 .. rubric:: Een PDF document opslaan
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    ...
    // PDF document laden.

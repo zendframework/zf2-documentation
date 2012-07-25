@@ -27,6 +27,7 @@
 
 .. code-block:: php
    :linenos:
+
    <?php
    Zend_Search_Lucene_Analysis_Analyzer::setDefault(
        new Zend_Search_Lucene_Analysis_Analyzer_Common_Text());
@@ -49,6 +50,7 @@
 
    .. code-block:: php
       :linenos:
+
       <?php
       /** Это созданный пользователем текстовый анализатор, который интерпретирует слова с цифрами как один элемент. */
 
@@ -156,6 +158,7 @@
 
 .. code-block:: php
    :linenos:
+
    <?php
    $stopWords = array('a', 'an', 'at', 'the', 'and', 'or', 'is', 'am');
    $stopWordsFilter = new Zend_Search_Lucene_Analysis_TokenFilter_StopWords($stopWords);
@@ -166,6 +169,7 @@
    Zend_Search_Lucene_Analysis_Analyzer::setDefault($analyzer);
 .. code-block:: php
    :linenos:
+
    <?php
    $shortWordsFilter = new Zend_Search_Lucene_Analysis_TokenFilter_ShortWords();
 
@@ -179,6 +183,7 @@
 
 .. code-block:: php
    :linenos:
+
    <?php
    $stopWordsFilter = new Zend_Search_Lucene_Analysis_TokenFilter_StopWords();
    $stopWordsFilter->loadFromFile($my_stopwords_file);
@@ -251,6 +256,7 @@ queryNorm(q) - значение нормализации для запроса, 
 
 .. code-block:: php
    :linenos:
+
    <?php
 
    class MySimilarity extends Zend_Search_Lucene_Search_Similarity {
@@ -313,6 +319,7 @@ queryNorm(q) - значение нормализации для запроса, 
 
 .. code-block:: php
    :linenos:
+
    <?php
 
    abstract class Zend_Search_Lucene_Storage_Directory {
@@ -413,6 +420,7 @@ queryNorm(q) - значение нормализации для запроса, 
 
 .. code-block:: php
    :linenos:
+
    <?php
 
    class MyFile extends Zend_Search_Lucene_Storage_File {

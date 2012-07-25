@@ -17,7 +17,7 @@ jest użycie w skryptach widoków kodu PHP, a dodatkowo dziedziczą one zakres w
 Dlatego ten drugi punkt jest tak ważny dla decyzji podejmowanych podczas projektowania. Wewnętrznie metoda
 *Zend_View::_run()* wygląda tak:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    protected function _run()

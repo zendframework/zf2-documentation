@@ -42,7 +42,7 @@
 下面的代码为in-memory数据库创建一个适配器，创建一个简单的表schema，并插入我们将来可以执行认证查询的一行（数据）。这个例子需要PDO
 SQLite extension可用：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 创建一个 in-memory SQLite 数据库连接
@@ -70,7 +70,7 @@ SQLite extension可用：
 随着数据库连接和表数据已经可用， *Zend_Auth_Adapter_DbTable*\
 可以被创建。配置选项的值可以传递给构造器或者延后在实例化以后用做setter方法的参数:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 用构造器参数来配置实例...
@@ -94,7 +94,7 @@ SQLite extension可用：
 在这点上，认证适配器实例已经可以接受认证查询。为了合成一个认证查询，在调用
 *authenticate()*\ 方法之前，输入的证书的值要传递给适配器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 设置输入的证书的值（例如，从登陆的表单）
@@ -110,7 +110,7 @@ SQLite extension可用：
 除了基于认证结果对象的 *getIdentity()* 方法的可用性之外， *Zend_Auth_Adapter_DbTable*\
 也支持从认证成功的表中读取一行数据：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 输出身份
@@ -145,7 +145,7 @@ SQLite extension可用：
 *getResultRowObject()* 方法返回一个 *stdClass*\
 对象解决了。下面的代码片段举例说明它的用法：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // authenticate with Zend_Auth_Adapter_DbTable
@@ -187,7 +187,7 @@ SQLite extension可用：
 用一点不恰当的免责声明，Zend_Auth_Adapter_DbTable
 有内建的机制可以用来利用添加另外的认证时的检查来解决一些普通的用户问题。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // The status field value of an account is not equal to "compromised"
@@ -214,7 +214,7 @@ SQLite extension可用：
 
 因此我们需要修改表来存储免疫的字符串：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $sqlAlter = "ALTER TABLE [users] "
@@ -226,7 +226,7 @@ SQLite extension可用：
 
 这里是在注册时给每个用户生成免疫字符串的简单的方法：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    for ($i = 0; $i < 50; $i++)
@@ -237,7 +237,7 @@ SQLite extension可用：
 
 构造适配器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $adapter = new Zend_Auth_Adapter_DbTable(

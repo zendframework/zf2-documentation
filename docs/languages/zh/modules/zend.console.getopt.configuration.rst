@@ -17,7 +17,7 @@
 
 .. rubric:: 使用 addRules()
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $opts = new Zend_Console_Getopt('abp:');
@@ -45,7 +45,7 @@
 
 .. rubric:: 使用 setHelp()
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $opts = new Zend_Console_Getopt('abp:');
@@ -79,7 +79,7 @@ flag
 
 .. rubric:: 使用 setAliases()
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $opts = new Zend_Console_Getopt('abp:');
@@ -111,7 +111,7 @@ flag
 
 .. rubric:: 使用 addArguments() 和 setArguments()
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 缺省地，构造器使用 $_SERVER['argv']
@@ -164,7 +164,7 @@ flag
 
 .. rubric:: 使用 setOption()
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $opts = new Zend_Console_Getopt('abp:');
@@ -178,7 +178,7 @@ flag
 
 .. rubric:: 使用 setOptions()
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $opts = new Zend_Console_Getopt('abp:');

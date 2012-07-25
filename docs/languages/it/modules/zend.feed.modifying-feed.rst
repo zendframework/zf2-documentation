@@ -11,8 +11,9 @@ in un file o l'invio ad un server.
 
 .. rubric:: Modifica di un elemento esistente in un feed
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
    $entry = $feed->current();
@@ -38,8 +39,9 @@ si specifica esplicitamente un namespace alternativo.
 
 .. rubric:: Creazione di un elemento di un feed Atom con namespace personalizzato
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $entry = new Zend_Feed_Entry_Atom();
    // id è sempre assegnato dal server ad Atom

@@ -11,7 +11,7 @@ znane specyfikacje dla adresów email oraz adresów serwerów.
 
 Poniżej podstawowy przykład użycia:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_EmailAddress();
@@ -47,7 +47,7 @@ Aby to zrobić, musisz utworzyć instancję *Zend_Validate_EmailAddress* przekaz
 adresów jakie chcesz akceptować. Więcej szczegółów znajdziesz w *Zend_Validate_Hostname*, jednak poniżej
 możesz zobaczyć przykład akceptowania zarówno adresów DNS jak i adresów lokalnych:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_EmailAddress(Zend_Validate_Hostname::ALLOW_DNS | Zend_Validate_Hostname::ALLOW_LOCAL);
@@ -73,7 +73,7 @@ email address itself is valid.
 MX checking is not enabled by default and at this time is only supported by UNIX platforms. To enable MX checking
 you can pass a second parameter to the *Zend_Validate_EmailAddress* constructor.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_EmailAddress(Zend_Validate_Hostname::ALLOW_DNS, true);
@@ -91,7 +91,7 @@ of the email address you wish to validate. Please be aware this will likely slow
 International Domain Name (IDN) support. This is enabled by default, though you can disable this by changing the
 setting via the internal *Zend_Validate_Hostname* object that exists within *Zend_Validate_EmailAddress*.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator->hostnameValidator->setValidateIdn(false);
@@ -108,7 +108,7 @@ By default a hostname will be checked against a list of known TLDs. This is enab
 disable this by changing the setting via the internal *Zend_Validate_Hostname* object that exists within
 *Zend_Validate_EmailAddress*.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator->hostnameValidator->setValidateTld(false);

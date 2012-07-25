@@ -12,7 +12,7 @@ booleano opzionale per istruire la logica della conversione ad ignorare o no gli
 trasformazione. Se non si fornisce questo parametro opzionale il comportamento predefinito consiste nell'ignorare
 gli attributi XML. La chiamata a questo funzione avviene nel modo seguente:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
            // la funzione fromXml accetta semplicemente una stringa
@@ -33,7 +33,7 @@ includa una rappresentazione degli attributi XML presenti nella stringa XML iniz
 
 La stringa XML passata alla funzione *Zend_Json::fromXml()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?xml version="1.0" encoding="UTF-8"?>
@@ -59,7 +59,7 @@ La stringa XML passata alla funzione *Zend_Json::fromXml()*:
 
 La stringa JSON restituita dalla funzione *Zend_Json::fromXml()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    {

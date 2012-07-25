@@ -16,8 +16,9 @@ je queries beter bestand te maken tegen SQL injectie aanvallen.
 De gemakkelijkste manier om een instantie van de Zend_Db_Select te verkrijgen is het gebruik van de
 Zend_Db_Adapter::select() methode.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    require_once 'Zend/Db.php';
@@ -38,8 +39,9 @@ Zend_Db_Adapter::select() methode.
 Dan maak je een SELECT query via dat object en zijn methodes en die maakt dan een string die je aan Zend_Db_Adapter
 kan doorgeven om queries of ophalingen uit te voeren.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    //
@@ -75,8 +77,9 @@ kan doorgeven om queries of ophalingen uit te voeren.
    ?>
 Je kan ook gebonden parameters gebruiken in je queries plaats van ze één per één te quoten.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    //
@@ -106,8 +109,9 @@ Om kolommen van een bepaalde tabel de selecteren gebruik je de from() methode, d
 wil verkijgen specificerend. Je kan zowel tabel als kolom aliassen gebruiken en je kan from() zoveel gebruiken als
 nodig is.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // maak een $db object en neem aan dat we de Mysql adapter gebruiken
@@ -135,8 +139,9 @@ Om kolommen van gejoinde tabellen te selecteren kan je de join() methode gebruik
 tabelnaam op, dan de join voorwaarde en uiteindelijk de kolommen die je van de join wil terugkrijgen. Je kan join()
 zoveel maal gebruiken als dat nodig is.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // maak een $db object en neem aan dat we de Mysql adapter gebruiken
@@ -166,8 +171,9 @@ door Zend_Db_Adapter::quoteInto() te gebruiken.
 Meerdere aanvragen aan where() zal de voorwaarden aan elkaar AND-en; als je een OR voorwaarde nodig hebt, gebruik
 dan orWhere().
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // maak a $db object en verkrijg een SELECT werktuig.
@@ -201,8 +207,9 @@ GROUP BY clausule
 
 Om rijen te groeperen gebruik je de group() methode zoveel maal als dat nodig is.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // maak a $db object en verkrijg een SELECT werktuig.
@@ -235,8 +242,9 @@ identieke werking als de where() methode.
 Indien je having() meerdere malen oproept worden de voorwaarden aaneen ge-AND; om OR voorwaarden te verkrijgen
 gebruik je orHaving().
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // maak a $db object en verkrijg een SELECT werktuig.
@@ -260,8 +268,9 @@ ORDER BY clausule
 
 Om kolommen te ordenen gebruik je de order() methode zoveel maal als dat nodig is.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // maak a $db object en verkrijg een SELECT werktuig.
@@ -298,8 +307,9 @@ on-the-fly herschrijven om de LIMIT functionaliteit van de voornoemde open sourc
 Om het teruggestuurde resultaat te LIMITeren per count en offset gebruik je de limit() methode met een count en een
 optionele offset.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // eerst een eenvoudige "LIMIT :count"
@@ -357,8 +367,9 @@ Zend_Db_Select biedt eveneens pagina-gebaseerde limits. Indien je een zeker aant
 ophalen gebruik je de limitPage() methode; geef eerste het paginanummer aan en dan het aantal rijen dat op elke
 pagina moet worden afgebeeld.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // bouw de basis select...

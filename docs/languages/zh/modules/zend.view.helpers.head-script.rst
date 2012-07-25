@@ -63,8 +63,9 @@ The *HeadScript* 助手是 :ref:`占位符助手 <zend.view.helpers.initial.plac
    ，利用定制的属性来修改行为。为了允许这样的属性，可以通过
    *setAllowArbitraryAttributes()* 方法来打开（enable）它们：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       $this->headScript()->setAllowArbitraryAttributes(true);
       ?>
@@ -74,7 +75,7 @@ The *HeadScript* 助手是 :ref:`占位符助手 <zend.view.helpers.initial.plac
 
 在任何时候可以指定一个新的脚本。如上所述，可以链接到外部资源文件或脚本自己。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php // adding scripts
@@ -85,7 +86,7 @@ The *HeadScript* 助手是 :ref:`占位符助手 <zend.view.helpers.initial.plac
 在客户端脚本编程中，顺序常常很重要，因为依赖的缘故，需要确保按特定的顺序来加载库，使用
 append、 prepend 和 offsetSet 指令来帮助完成任务：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php // 按顺序放置脚本文件
@@ -102,7 +103,7 @@ append、 prepend 和 offsetSet 指令来帮助完成任务：
 
 当准备好输出所有脚本到布局脚本，简单地 echo 这个助手：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?= $this->headScript() ?>
@@ -115,7 +116,7 @@ append、 prepend 和 offsetSet 指令来帮助完成任务：
 *HeadScript*
 可以实现这个功能，把一段JavaScript代码抓取到堆栈中暂存（道理同缓冲输出－－Haohappy注）：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php $this->headScript()->captureStart() ?>

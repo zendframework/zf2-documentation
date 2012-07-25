@@ -8,8 +8,9 @@ akceptuje iba prihlasovacie meno ktoré môže byť len z malých písmen. Tried
 jednoduchý spôsob ako vytvoriť postupnosť filtrov. Nasledujúci príklad ukazuje vytvorenie postupnosti dvoch
 filtrov pre prihlasovacie meno:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       // Provides filter chaining capability
       require_once 'Zend/Filter.php';

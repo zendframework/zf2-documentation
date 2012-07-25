@@ -13,8 +13,9 @@ Objekt, ktorý implementuje rozhranie môže byť zaradený do postupnosti filtr
 
 Nasledujúci príklad ukazuje ako vytvoriť vlastný filter:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       require_once 'Zend/Filter/Interface.php';
 
@@ -31,8 +32,9 @@ Nasledujúci príklad ukazuje ako vytvoriť vlastný filter:
 
 Pridanie inštancie uvedeného filtra do postupnosti filtrov:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       $filterChain = new Zend_Filter();
       $filterChain->addFilter(new MyFilter());

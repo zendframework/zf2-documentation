@@ -19,7 +19,7 @@ szybkiego i łatwego ustawiania elementów tytułu. Sygnaturą tej metody jest *
 Możesz określić tytuł w dowolnym momencie. Najczęściej będzie tak, że ustawisz segmenty dla poszczególnych
 części aplikacji: strony, kontrolera, akcji i prawdopodobnie zasobu.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // ustawienie nazwy kontrolera oraz akcji jako segmentów tytułu:
@@ -36,7 +36,7 @@ części aplikacji: strony, kontrolera, akcji i prawdopodobnie zasobu.
 
 Kiedy jesteś juz gotowy aby wyświetlić tytuł, możesz to zrobić w swoim pliku layoutu:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!-- wyświetla <action> / <controller> / Zend Framework -->

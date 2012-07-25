@@ -7,7 +7,7 @@
 תוכן רלוונטי לאותו עמוד. *Zend_Feed* מאפשר לך לקבל את כל הסנדקציות
 אשר נמצאות בעמוד מרוחק על ידי שימוש במתודה אחת פשוטה:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $feedArray = Zend_Feed::findFeeds('http://www.example.com/news.html');

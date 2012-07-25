@@ -12,7 +12,7 @@ JSON。它用任何任意的 XML
 XML 属性，如果没有给出这个参数，那么缺省的行为就是忽略 XML
 属性。本函数的调用示范如下：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
            // fromXml function simply takes a String containing XML contents as input.
@@ -31,7 +31,7 @@ JSON 字符串。本例使用可选的参数控制在转换过程中不忽略 XM
 
 XML 输入字符串传递给 *Zend_Json::fromXml()* 函数：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?xml version="1.0" encoding="UTF-8"?>
@@ -57,7 +57,7 @@ XML 输入字符串传递给 *Zend_Json::fromXml()* 函数：
 
 从 *Zend_Json::fromXml()* 函数返回的 JSON 输出字符串:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    {

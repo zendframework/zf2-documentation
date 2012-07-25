@@ -24,7 +24,7 @@
 
 .. rubric:: 捕捉 Getopt 异常
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    try {
@@ -57,7 +57,7 @@
 
 .. rubric:: 使用 getOption()
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $opts = new Zend_Console_Getopt('abp:');
@@ -72,7 +72,7 @@
 
 .. rubric:: 使用 \__get() 和 \__isset() 魔术方法
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $opts = new Zend_Console_Getopt('abp:');
@@ -118,7 +118,7 @@
 
 .. rubric:: 使用 getRemainingArgs()
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $opts = new Zend_Console_Getopt('abp:');

@@ -29,8 +29,9 @@ semplice array PHP, che può essere utilizzato per stampare i dati, salvarli in 
 
 .. rubric:: Lettura di un feed RSS con Zend_Feed
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Feed.php';
 

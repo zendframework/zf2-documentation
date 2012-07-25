@@ -20,7 +20,7 @@ Vista的widget，Haohappy注），这时我们就可以使用本功能。
 例如，假设你有一个 *CommentController*
 ，为了给当前请求输出评论列表，带一个可被调用的 *listAction()* 方法：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <div id="sidebar right">

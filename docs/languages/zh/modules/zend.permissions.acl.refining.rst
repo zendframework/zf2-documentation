@@ -23,7 +23,7 @@ resources
 首先我们修订 role 注册表来反映这些变化。我们已经确定 'marketing' 组和 'staff'
 组有着同样的基本许可，所以我们用从 'staff' 组继承许可的方法来定义 'marketing' 组
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 新 marketing 组从 staff 组继承许可
@@ -33,7 +33,7 @@ resources
 然后， 注意上面的访问控制涉及到特定的 resources ( 例如 "newsletter", "latest news",
 "announcement news"). 现在我们来添加这些 resources：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Create Resources for the rules
@@ -53,7 +53,7 @@ resources
 
 接着，这个是在 ACL 的目标区域定义更特定的规则的概况：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Marketing must be able to publish and archive newsletters and the
@@ -71,7 +71,7 @@ resources
 
 我们现在能够查询到 ACL 的最新变化：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    echo $acl->isAllowed('staff', 'newsletter', 'publish') ?
@@ -116,7 +116,7 @@ resources
 方法即可。如果提供一个 *null*\ 参数值给 *allow()* 和 *deny()*
 方法，则访问规则将应用到所有的角色，资源和/或权限上。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 除去 “禁止 staff 修订最近的新闻”(和marketing, 由于继承的原因)
@@ -147,7 +147,7 @@ resources
 Resources 一个一个地添加权限或禁止，而如果未指定权限参数值，即使用 *null*
 值，可以使得这些步骤简化，一次性地对某个Resource的所有权限进行允许或禁止。Jason注，Haohappy补）
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 允许 marketing 对 latest news 有所有的许可

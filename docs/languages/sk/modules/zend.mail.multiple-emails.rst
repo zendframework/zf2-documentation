@@ -9,7 +9,7 @@ spojenie pred zavolaním metódy *send()*, toto spojenie bude použité a nebude
 
 .. rubric:: Posielanie viacerých e-mailov cez jedno SMTP spojenie
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

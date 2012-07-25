@@ -21,8 +21,9 @@ filter,variable escaping等几个功能组件。
 
 下面是一个简单的例子。假设你有一个书籍清单，想把它打印出来。控制器代码可能看起来是这样的：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    //使用一个模型来获取书籍作者和标题相关数据。
    $data = array(
@@ -58,8 +59,9 @@ filter,variable escaping等几个功能组件。
 实例和类方法。(controller传递给 *Zend_View*\
 实例的变量是public的)。一段非常基本的视图代码看起来是这样的：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php if ($this->books): ?>
 
        <!-- 包含几本书信息的HTML表格. -->
@@ -96,7 +98,7 @@ filter,variable escaping等几个功能组件。
 - *basePath*: 指示一个基本路径，可以在下面设置script、 helper 和 filter
   路径。目录结构如下：
 
-  .. code-block::
+  .. code-block:: php
      :linenos:
 
      base/path/

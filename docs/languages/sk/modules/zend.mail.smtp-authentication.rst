@@ -9,8 +9,9 @@ CRAM-MD5 a všetky očakávajú zadané 'username' a 'password' v konfiguračnom
 
 .. rubric:: Nastavenie SMTP autentifikácie v Zend_Mail_Transport_Smtp
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    require_once 'Zend/Mail.php';

@@ -40,8 +40,9 @@
 طريقة جيدة لإنشاء frontend instance قابل لإستخدام من *Zend_Cache* نستعرضها
 فى المثال التالى :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
 
       # We "load" the Zend_Cache factory
@@ -86,8 +87,9 @@ parameters للـ backends التى تود إستخدامها.
 بالتالى ستستطيع حذف كل الـ cache records المنسوبة الى tag او مجموعة tags
 محددة.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $cache->save($huge_data, 'myUniqueID', array('tagA', 'tagB', 'tagC'));
@@ -101,8 +103,9 @@ parameters للـ backends التى تود إستخدامها.
 لحذف او تحديد معرف cache على انه غير قابل للإستخدام, يمكنك استخدام
 *()remove* كما فى المثال التالى :
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $cache->remove('idToRemove');
@@ -111,8 +114,9 @@ parameters للـ backends التى تود إستخدامها.
 لحذف او تحديد اكثر من معرف cache على انهم غير قابلين للإستخدام,
 يمكنك استخدام *()clean*, على سبيل المثال يمكنك حذف كل الـ cache records .
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // clean all records
@@ -125,8 +129,9 @@ parameters للـ backends التى تود إستخدامها.
 إن اردت حذف الـ cache records التى تنتمى الى tags محددة, مثلا 'tagA' و 'tagC'
 يمكنك استخدام :
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, array('tagA', 'tagC'));

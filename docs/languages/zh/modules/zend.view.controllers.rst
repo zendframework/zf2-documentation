@@ -12,7 +12,7 @@
 
 控制器需要向视图传递必要的变量，在它处理view的代码之前。通常你可以一次一个地完成变量赋值的工作。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View();
@@ -23,7 +23,7 @@
 
 然而这样比较麻烦，那么你可以将它们放进一个数组或对象中去。assign()方法允许你通过数组或对象进行赋值。下面这个例子和上例（一次一个赋值）的结果是一样的：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View();
@@ -47,7 +47,7 @@
 
 另外，你也可使用这样的方法： 第一个参数是变量名，第二个是变量的值。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View();
@@ -63,7 +63,7 @@
 
 完成所有变量赋值后，Controller通知Zend_View通过render()调用一段特定的视图代码。注意，这个方法将只返回处理后的视图，而不直接输出，所以你要用print或echo来打印输出。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View();
@@ -85,7 +85,7 @@ Zend_View希望你的View脚本和Controller脚本在同一目录下。比如说
 显然，你的View代码很可能放在其它地方，那么需要告诉 Zend_View去哪里找，可使用
 setScriptPath()方法。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View();
@@ -96,7 +96,7 @@ setScriptPath()方法。
 
 事实上，你可以通过addScriptPath()增加路径。Zend_View会到最近增加的路径目录下找View脚本。这样你可以改变默认的外观，通过定制和使用自己的皮肤或主题。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View();

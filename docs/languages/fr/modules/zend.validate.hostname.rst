@@ -60,7 +60,7 @@ Vous pouvez utiliser ``ALLOW_ALL`` pour accepter tous les types de domaines. De 
 configurations combinant ces différents types. Par exemple, pour accepter les domaines qualifiés et les domaines
 locaux, instanciez votre objet ``Zend_Validate_Hostname`` de la manière suivante :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validateur = new Zend_Validate_Hostname(Zend_Validate_Hostname::ALLOW_DNS |
@@ -85,7 +85,7 @@ par le passage d'un paramètre au constructeur ``Zend_Validate_Hostname`` ou via
 Vous pouvez aussi désactiver la validation IDN en passant un second paramètre au constructeur du
 ``Zend_Validate_Hostname`` comme ceci :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator =

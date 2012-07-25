@@ -25,7 +25,7 @@ Pertama, kita perlu merevisi role registry untuk mangakomodir kebutuhan baru ini
 'marketing' memiliki perizinan yang sama dengan 'staff', sehingga kita cukup mendefinisikan 'marketing' dengan
 mewarisi perizinan dari 'staff':
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Group baru bernama marketing yang mewarisi perizinan staff
@@ -34,7 +34,7 @@ mewarisi perizinan dari 'staff':
 
 Berikutnya, kita memerlukan tiga buah resource yaitu "newsletter", "latest news", dan "announcement news":
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // membuat resource
@@ -54,7 +54,7 @@ Berikutnya, kita memerlukan tiga buah resource yaitu "newsletter", "latest news"
 
 Selanjutnya tinggal mendifinisikan aturan-aturan spesifik sesuai kebutuhan di atas ke dalam ACL:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Marketing bisa mempublish and mengarsip (archive) newsletter dan
@@ -74,7 +74,7 @@ Selanjutnya tinggal mendifinisikan aturan-aturan spesifik sesuai kebutuhan di at
 
 Dari aturan baru yang sudah kita buat, kita bisa melakukan query seperti berikut:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    echo $acl->isAllowed('staff', 'newsletter', 'publish') ?
@@ -119,7 +119,7 @@ Untuk menghapus satu atau lebih aturan dari ACL, anda cukup menggunakan method *
 Seperti halnya *allow()* dan *deny()*, anda bisa menambahkan nilai *null* untuk mengindikasikan penghapusan aturan
 itu berlaku terhadap semua role, resource dan atau hak akses:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Membuat staff (dan juga marketing karena pewarisan) menjadi
@@ -148,7 +148,7 @@ itu berlaku terhadap semua role, resource dan atau hak akses:
 Hak akses dapat dimodifikasi secara spesifik untuk aksi tertentu (publish, archive) seperti ditunjukan di atas,
 tapi nilai *null* pada hak akses akan menimpah modifikasi semacam itu:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // kembali memperbolehkan marketing melakukan apapun terhadap

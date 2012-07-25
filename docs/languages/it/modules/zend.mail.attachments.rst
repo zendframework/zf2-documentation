@@ -12,8 +12,9 @@ passando uno o più parametri al metodo *createAttachment()*:
 
 .. rubric:: Messaggi e-mail con allegati
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();
@@ -25,8 +26,9 @@ Se si desidera maggiore controllo sul formato MIME generato per un singolo alleg
 valore di ritorno di *createAttachment()* per modificarne gli attributi. Il metodo *createAttachment()* restituisce
 un oggetto *Zend_Mime_Part*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();
@@ -41,8 +43,9 @@ un oggetto *Zend_Mime_Part*:
 
 Un'alternativa consiste nel creare un'istanza di Zend_Mime_Part ed aggiungere l'allegato con *addAttachment()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();

@@ -59,8 +59,9 @@ Bağdaştırıcı yapıcısı bağlantıyı tanımlamak için parametreler dizis
 
 .. rubric:: Bağdaştırıcı yapıcısı kullanmak
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
 
@@ -89,8 +90,9 @@ yapıcısına verilen parametreler dizisi gibidir.
 
 .. rubric:: Bağdaştırıcı factory metodunu kullanmak
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Db.php';
    // Zend_Db_Adapter_Pdo_Mysql sınıfını otomatik yükle ve instance'ını oluştur.
@@ -110,8 +112,9 @@ kullanabilirsiniz.
 
 .. rubric:: Bağdaştırıcı factory metodunun özel bağdaştırıcı sınıfı için kullanılması
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Db.php';
 
@@ -145,8 +148,9 @@ Aşağıdaki örnekte Zend_Config nesnesi diziden oluşturuldu. Ayrıca veriyi h
 yükleyebilirsiniz , örneğin :ref:`Zend_Config_Ini <zend.config.adapters.ini>` veya :ref:`Zend_Config_Xml
 <zend.config.adapters.xml>` ile.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Config.php';
    require_once 'Zend/Db.php';
@@ -206,8 +210,9 @@ sürücülerindeki sorgu sonuç setlerindeki string anahtarlarının küçük , 
 yarayan *ATTR_CASE* özniteliğine karşılık gelmektedir. Bu seçeneğin aldığı değerler
 *Zend_Db::CASE_NATURAL* (varsayılan), *Zend_Db::CASE_UPPER*, ve *Zend_Db::CASE_LOWER*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $options = array(
        Zend_Db::CASE_FOLDING => Zend_Db::CASE_UPPER
@@ -234,8 +239,9 @@ tanımlayıcılar kullanmayı kolaylaştırır. Eğer değer *false* ise tanıml
 sınırlandırılmaz. Eğer tanımlayıcıları sınırlamanız gerekiyorsa *quoteIdentifier()* metodunu kullanarak
 kendiniz yapmalısınız.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $options = array(
        Zend_Db::AUTO_QUOTE_IDENTIFIERS => false
@@ -255,8 +261,9 @@ kendiniz yapmalısınız.
 
 .. rubric:: PDO sürücü seçeneklerini factory'ye vermek
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $pdoParams = array(
        PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true
@@ -300,8 +307,9 @@ uygulama kodunuzu basitleştirmenize yardım edebilir.
 
 .. rubric:: Bağlantı exeption'larının idare edilmesi
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    try {
        $db = Zend_Db::factory('Pdo_Mysql', $parameters);
@@ -336,7 +344,7 @@ Takip eden SQL veri tanımlama dili sözde kodu(pseudocode) örnek veri tabanın
 Bu örnek tablolar Zend_Db için otomatikleştirilmiş birim testleri(unit test) tarafından yaygınca
 kullanılmıştır.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    CREATE TABLE accounts (
@@ -398,8 +406,9 @@ SELECT deyiminin string gösterimine dönüştürür.
 
 .. rubric:: fetchAll() kullanmak
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $sql = 'SELECT * FROM bugs WHERE bug_id = ?';
 
@@ -445,8 +454,9 @@ tarafından tanımlanmaktadır:
 
 .. rubric:: setFetchMode() Kullanımı
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->setFetchMode(Zend_Db::FETCH_OBJ);
 
@@ -466,8 +476,9 @@ Sonuç listesinin Birleşmeli Dizi olarak Alınması
 
 .. rubric:: fetchAssoc() Kullanımı
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->setFetchMode(Zend_Db::FETCH_OBJ);
 
@@ -490,8 +501,9 @@ Eğer ilk sütundan başka sütunu döndürmeniz gerkiyorsa bakınız :ref:`
 
 .. rubric:: fetchCol() Kullanımı
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->setFetchMode(Zend_Db::FETCH_OBJ);
 
@@ -517,8 +529,9 @@ sütunda birbirinin kopyası değerler bulunuyorsa birleşmeli dizideki kayıtla
 
 .. rubric:: fetchPairs() Kullanımı
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->setFetchMode(Zend_Db::FETCH_OBJ);
 
@@ -538,8 +551,9 @@ satırını döndürür.
 
 .. rubric:: fetchRow() Kullanımı
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->setFetchMode(Zend_Db::FETCH_OBJ);
 
@@ -560,8 +574,9 @@ döndürür , dizi veya nesne değil.
 
 .. rubric:: fetchOne() Kullanımı
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $result = $db->fetchOne('SELECT bug_status FROM bugs WHERE bug_id = 2');
 
@@ -588,8 +603,9 @@ adı, ve ikinci argüman ise sütun isimlerini veri değerlerine eşleyen birle�
 
 .. rubric:: Tabloya Veri Eklemek
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $data = array(
        'created_on'      => '2007-03-22',
@@ -616,8 +632,9 @@ veri dizisindeki değeri Zend_Db_Expre tipinde nesne olarak verin.
 
 .. rubric:: İfadelerin Tabloya Eklenmesi
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $data = array(
        'created_on'      => new Zend_Db_Expr('CURDATE()'),
@@ -644,8 +661,9 @@ Eğer tablonuz otomatik artan birincil anahtar ile tanımlanmış ise , ekleme a
 
 .. rubric:: Otomatik artış anahtarı için lastInsertId() kullanımı
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->insert('bugs', $data);
 
@@ -663,8 +681,9 @@ anahtar sütunlu "bugs" tablosu "bugs_bug_id_seq" olarak adlandırılmış seque
 
 .. rubric:: lastInsertId()'nin sequence için kullanılması
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->insert('bugs', $data);
 
@@ -681,8 +700,9 @@ kullanın. Bu metod sequence'i harfi harfine adlandıran tek bir string argüman
 
 .. rubric:: lastSequenceId() Kullanımı
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->insert('bugs', $data);
 
@@ -741,8 +761,9 @@ Geri döndürülen değer güncelleme işleminden etkilenen satır sayısıdır.
 
 .. rubric:: Satırların güncellenmesi
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $data = array(
        'updated_on'      => '2007-03-23',
@@ -761,8 +782,9 @@ terimler olarak birleştirilir.
 
 .. rubric:: Satırların ifadeler dizisi kullanılarak güncellenmesi
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $data = array(
        'updated_on'      => '2007-03-23',
@@ -796,8 +818,9 @@ Geri döndürülen değer silme işleminden etkilenen satır sayısıdır.
 
 .. rubric:: Satırların silinmesi
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $n = $db->delete('bugs', 'bug_id = 3');
 
@@ -815,7 +838,7 @@ SQL sorgularını biçimlendirdiğiniz zaman sık sık PHP değişkenlerinin de�
 gerekir.Bu risklidir çünkü , eğer PHP string'i tırnak sembolü gibi belli sembolleri içerirse geçersiz SQL'e
 sebep olur. Örneğin takip eden sorgudaki tırnakların dengesizliğine dikkat edin:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $name = "O'Reilly";
@@ -849,8 +872,9 @@ string değer sınırlayıcısı tek tırnaktır (*'*).
 
 .. rubric:: quote() Kullanımı
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $name = $db->quote("O'Reilly");
    echo $name;
@@ -870,7 +894,7 @@ Kullanıldıkları SQL veritipi bağlamında değerlerin tırnaklanması veya t�
 karşılaştırılıyorsa string gibi tırnaklanmamalı. Diğer bir ifadeyle , *intColumn*'un SQL veritipinin
 *INTEGER* olduğunu varsayarsak bazı SQL yürütmelerinde takip eden sorgu hata verecektir.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       SELECT * FROM atable WHERE intColumn = '123'
@@ -883,8 +907,9 @@ Belirttiğiniz SQL veritipi için opsiyonel ikinci argümanı kullanabilirsiniz.
 
 .. rubric:: quote()'un SQL tipi ile kullanımı
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $value = '1234';
    $sql = 'SELECT * FROM atable WHERE intColumn = '
@@ -917,8 +942,9 @@ stringi ile parametrelerin ayrılmasını , deyim RDBMS sunucusundaymış gibi a
 
 .. rubric:: quoteInto() Kullanımı
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $sql = $db->quoteInto("SELECT * FROM bugs WHERE reported_by = ?", "O'Reilly");
 
@@ -932,8 +958,9 @@ tipler tırnaklanmaz ve diğer tipler tırnaklanır.
 
 .. rubric:: quoteInto()'nun SQL tipi ile kullanımı
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $sql = $db->quoteInto("SELECT * FROM bugs WHERE bug_id = ?", '1234', 'INTEGER');
 
@@ -968,8 +995,9 @@ kullanır. Ayrıca *quoteIdentifier()* metodu string argüman içerisindeki öze
 
 .. rubric:: quoteIdentifier() Kullanımı
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // tablo adımız SQL ayrılmış kelimesi olabilir
    $tableName = $db->quoteIdentifier("order");
@@ -1021,8 +1049,9 @@ auto-commit modunu döndürür.
 
 .. rubric:: Tutarlılığı sağlamak için Hareketin Yönetilmesi
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Açıkca hareketi başlat.
    $db->beginTransaction();
@@ -1118,8 +1147,9 @@ olan veri tabanı bağlantısını kapatmak için kullanabilirsiniz.
 
 .. rubric:: Veri tabanı bağlantısının kapatılması
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->closeConnection();
 
@@ -1159,8 +1189,9 @@ erişebilirsiniz.
 
 .. rubric:: PDO bağdaştırıcısında hazırlanmamış deyim çalıştırmak
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $result = $db->getConnection()->exec('DROP TABLE bugs');
 

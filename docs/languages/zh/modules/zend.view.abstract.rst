@@ -14,8 +14,9 @@ Zend_View_Abstract
 
 It is this latter point that is salient to the design decisions. 在内部， *Zend_View::_run()* 做：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    protected function _run()
    {

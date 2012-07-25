@@ -18,6 +18,7 @@
 
 .. code-block:: php
    :linenos:
+
    <?php
    ...
    // Создание нового документа PDF
@@ -42,6 +43,7 @@
 
 .. code-block:: php
    :linenos:
+
    <?php
    ...
    // Загрузка предыдущей версии документа PDF

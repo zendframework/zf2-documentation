@@ -53,8 +53,9 @@ generatie. Ze doen elk automatisch de juiste output escaping. Ze zijn:
 Deze gebruiken in je scripts is heel eenvoudig. Hier is een voorbeeld. Merk op dat het enige je hoeft te doen is ze
 op te roepen, ze laden en instantiëren zichzelf wanneer dat nodig is.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // binnenin je view script verwijst $this naar de Zend_View instantie.
    //
@@ -76,8 +77,9 @@ op te roepen, ze laden en instantiëren zichzelf wanneer dat nodig is.
 
 Het resultaat van het view script zal op het volgende lijken:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <form action="aktie.php" method="post">
        <p><label>Jouw Email:
            <input type="text" name="email" value="you@example.com" size="32" />
@@ -105,8 +107,9 @@ Zoals met view scripts kan de controller een stapel van paden specifiëren waar 
 zoeken. Standaard kijkt Zend_View in "Zend/View/Helper/\*" voor helper klassen. Je kan Zend_View vertellen in
 andere plaatsen te kijken door de setHelperPath() en addHelperPath() methodes te gebruiken.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $view = new Zend_View();
    $view->setHelperPath('/pad/naar/meer/helpers');
@@ -117,8 +120,9 @@ toevoegt zal Zned_Viewer steeds in het meest-recent-toegevoegde pad naar de gevr
 laat je toe de initiële distributie van helpers uit te breiden (of zelfs te vervangen) door je eigen persoonlijke
 helpers.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $view = new Zend_View();
    $view->addHelperPath('/pad/naar/enige/helpers');
@@ -156,8 +160,9 @@ instantiëren en uitvoeren.
 
 Hier is een voorbeeld van onze SpeciaalDoel helpercode:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class Zend_View_Helper_SpeciaalDoel {
        protected $_count = 0;
@@ -173,8 +178,9 @@ Hier is een voorbeeld van onze SpeciaalDoel helpercode:
 Je kan de SpeciaalDoel helper zoveel keer oproepen als je wil een een view script; het zal éénmaal
 geïnstantieerd worden, en is dan blijvend aanwezig voor de gehele leefduur van de Zend_View instantie.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // denk eraan: in een view script verwijst $this naar de Zend_View instantie.
    echo $this->speciaalDoel();
@@ -184,8 +190,9 @@ geïnstantieerd worden, en is dan blijvend aanwezig voor de gehele leefduur van 
 
 De output zou hierop moeten lijken:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    Ik heb 'The Jerk' 1 keer gezien.
    Ik heb 'The Jerk' 2 keer gezien.
    Ik heb 'The Jerk' 3 keer gezien.

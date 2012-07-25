@@ -10,7 +10,7 @@
 
 .. rubric:: dump()方法使用示例
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
 

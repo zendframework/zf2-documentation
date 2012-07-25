@@ -50,7 +50,7 @@ Cascading Style Sheets 或用过提供使用 CSS 选择器 （ `Prototype's $$()
   类下面任意深度的子孙，而 'foo' 元素是 'div' 元素下任意深度的子孙。
   例如，在下面列表中，它将匹配带有 'One' 字符的链接：
 
-  .. code-block::
+  .. code-block:: php
      :linenos:
 
      <div>
@@ -76,7 +76,7 @@ Cascading Style Sheets 或用过提供使用 CSS 选择器 （ `Prototype's $$()
 *Iterator* 并在内部存储结果为 DOMNodes/DOMElements。
 作为例子，考虑下列的调用，它依靠上述的 HTML 来选择：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $dom = new Zend_Dom_Query($html);

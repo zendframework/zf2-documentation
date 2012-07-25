@@ -39,8 +39,9 @@ PDF 页面或者从 PDF 加载，或者生成新的。
 
 .. rubric:: PDF 文档页面管理
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
        ...
        // Reverse page order
@@ -67,8 +68,9 @@ PDF 页面或者从 PDF 加载，或者生成新的。
 
 .. rubric:: Cloning existing page.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
        ...
        // Store template page in a separate variable
