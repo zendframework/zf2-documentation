@@ -13,7 +13,7 @@ eigenschap in twee elementen: *summary* en *content*.
 
 Lees een Atom feed en beeld de *title* en *summary* van elke entry af:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

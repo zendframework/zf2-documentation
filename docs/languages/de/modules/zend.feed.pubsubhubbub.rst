@@ -426,7 +426,7 @@ Aktuell kann das Hinzufügen der Route zu einem Parameter welcher den Schlüssel
 mappen würde durchgeführt werden indem eine Routenkonfiguration wie im kommenden *INI* formatierten Beispiel für
 die Verwendung mit dem Bootstrapping von ``Zend_Application`` verwendet wird.
 
-.. code-block:: dosini
+.. code-block:: ini
    :linenos:
 
    ; Callback Route fürs Hinzufügen einer PuSH Aboschlüssel Abfrage zu aktivieren

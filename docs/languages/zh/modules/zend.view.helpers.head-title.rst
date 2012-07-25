@@ -18,8 +18,9 @@ $setType = 'APPEND')*\ ，缺省地是追加到堆栈（聚合标题元素）的
 
 你可以在任何时候指定一个标题标签。一般的用法可以让你在应用程序的每一个层次来设置标题段：站点、控制器、动作和潜在的资源。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // setting the controller and action name as title segments:
    //把控制器和动作的名称设置为标题的一部分
@@ -38,7 +39,7 @@ $setType = 'APPEND')*\ ，缺省地是追加到堆栈（聚合标题元素）的
 
 在布局脚本中准备好标题后，使用echo即可输出：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!-- renders <action> / <controller> / Zend Framework -->

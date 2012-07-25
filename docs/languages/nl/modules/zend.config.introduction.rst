@@ -19,8 +19,9 @@ Normaal gesproken wordt er verondersteld dat gebruikers één van de hulpklassen
 configuratiedata in een PHP array is opgeslaan, kan je de data direct aan *Zend_Config* doorgeven om een eenvoudig
 object geörienteerde interface te gebruiken:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Gegeven een array van configuratiedata
    $configArray = array(
@@ -57,8 +58,9 @@ de configuratiedata aan te spreken die aan zijn constructor werd doorgegeven.
 Samen met de object geörienteerde toegang tot de data waardes, heeft *Zend_Config* ook *get()* welke de gegeven
 standaard waarde zal terug geven, als het data element niet bestaat. Als voorbeeld:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $host = $config->database->get('host', 'localhost');
 
@@ -69,8 +71,9 @@ standaard waarde zal terug geven, als het data element niet bestaat. Als voorbee
 Het is vaak wenselijk om een puur op PHP gebaseerd configuratie bestand te gebruiken. De volgende code illustreerd
 hoe dat bereikt kan worden:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // config.php
    return array(
@@ -85,8 +88,9 @@ hoe dat bereikt kan worden:
            )
        )
    );
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Configuratie gebruiken
    require_once 'Zend/Config.php';

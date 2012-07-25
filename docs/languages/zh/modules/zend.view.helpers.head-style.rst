@@ -45,7 +45,7 @@ HeadStyle 助手
 
 在任何时候都可以指定一个新的样式标签：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php // adding styles
@@ -56,7 +56,7 @@ HeadStyle 助手
 cascade)，你需要确保样式表中的声明按特定的顺序加载。使用append、 prepend 和 offsetSet
 指令可帮助你达到目的：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php // Putting styles in order
@@ -73,7 +73,7 @@ cascade)，你需要确保样式表中的声明按特定的顺序加载。使用
 
 当准备好在布局脚本里输出所有样式声明，简单地 echo 助手：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?= $this->headStyle() ?>
@@ -86,7 +86,7 @@ cascade)，你需要确保样式表中的声明按特定的顺序加载。使用
 通常通过创建脚本和在PHP标签里做手脚会更容易些。 *HeadStyle*
 可以做这个，把它抓取到堆栈：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php $this->headStyle()->captureStart() ?>

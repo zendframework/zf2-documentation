@@ -11,8 +11,9 @@ da utilizzare. Questo è possibile grazie al metodo *setMimeBoundary()*, come di
 
 .. rubric:: Cambio del separatore MIME
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();

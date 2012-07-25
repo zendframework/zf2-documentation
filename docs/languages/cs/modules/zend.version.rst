@@ -13,8 +13,9 @@ pokud je verze stejná a +1 v případě, že parametr *$version* označuje nov�
 
 .. rubric:: Příklad využití metody compareVersion()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // vrací -1, 0, nebo 1

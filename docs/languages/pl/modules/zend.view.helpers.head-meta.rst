@@ -53,7 +53,7 @@ stronie klienta oraz dane SEO.
 Przykładowo, jeśli chcesz określić słowa kluczowe SEO, powinieneś utworzyć znacznik meta o nazwie
 'keywords', a jego zawartością powinny być słowa kluczowe, które chcesz połączyć z daną stroną:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // ustawienie słów kluczowych
@@ -62,7 +62,7 @@ Przykładowo, jeśli chcesz określić słowa kluczowe SEO, powinieneś utworzy�
 
 Jeśli chcesz ustalić zasady buforowania po stronie klienta, powinieneś ustawić znaczniki http-equiv:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // zablokowanie buforowania po stronie klienta
@@ -75,7 +75,7 @@ Jeśli chcesz ustalić zasady buforowania po stronie klienta, powinieneś ustawi
 Innym popularnym przykładem użycia znaczników meta jest ustawienie typu zawartości, zestawu znaków oraz
 języka:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // ustawienie typu zawartości i zestawu znaków
@@ -87,7 +87,7 @@ języka:
 Ostatnim przykład pokazuje jak można w łatwy sposób wyświetlić komunikat bezpośrednio przez przekierowaniem
 używając znacznika "meta refresh":
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // ustawienie czasu odświeżenia strony na 3 sekundy z nowym adresem URL:
@@ -97,7 +97,7 @@ używając znacznika "meta refresh":
 
 Jeśli jesteś gotowy na wyświetlenie znaczników meta w layoucie, po prostu wyświetl helper:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?= $this->headMeta() ?>

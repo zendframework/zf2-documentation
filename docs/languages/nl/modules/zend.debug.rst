@@ -11,8 +11,9 @@ speciale programma's of debug omgevingen nodig heeft.
 
 .. rubric:: Voorbeeld van de dump() methode
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    Zend_Debug::dump($var, $label=null, $echo=true);

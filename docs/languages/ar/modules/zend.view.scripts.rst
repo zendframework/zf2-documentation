@@ -17,8 +17,9 @@ view نفسه).
 
 لنتذكر من جديد, ها هو مثال كود الـ view من فصل "مقدمة الـ Zend_view" .
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php if ($this->books): ?>
 
        <!-- A table of some books. -->
@@ -58,8 +59,9 @@ view نفسه).
 Zend_View يأتى مع method يسمى ()escape و هو الذى يقوم لك بعملية التجاهل
 للمخرجات.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // bad view-script practice:
    echo $this->variable;
@@ -75,8 +77,9 @@ PHP المسمى ()htmlspecialchars لعمل تجاهل , لكن إعتمادا�
 Zend_View عن ما الذى يجب إستدعائه (callback) عند تنفيذ عملية تجاهل
 المخرجات.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // create a Zend_View instance
    $view = new Zend_View();
@@ -110,8 +113,9 @@ Zend_View عن ما الذى يجب إستدعائه (callback) عند تنفي�
 معالجة كائنات قوالب منفصلة , مثل قوالب PHPLIB-style , كود الـ view لهذا
 النوع من النشاطات من الممكن أن بيدو مثل هذا :
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    include_once 'template.inc';
    $tpl = new Template();
@@ -137,7 +141,7 @@ Zend_View عن ما الذى يجب إستدعائه (callback) عند تنفي�
 
 و هذه هى الملفات الأخرى ذات الصلة المفروض وجودها :
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!-- booklist.tpl -->

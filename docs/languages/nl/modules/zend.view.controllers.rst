@@ -15,8 +15,9 @@ Je controller script zou de nodige variabelen aan het view moeten toewijzen voor
 script overhandigd. Normaal gesproken kan je toewijzingen één per één doen door waarden aan de eigenschappen
 van de view instantie toe te wijzen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $view = new Zend_View();
    $view->a = "Hooi";
@@ -30,8 +31,9 @@ hebt.
 de assign() methode laat je "bulk" toewijzingen doen vanaf een array of objekt. De volgende voorbeelden hebben
 hetzelfde effekt als de hierboven beschreven één per één eigenschapstoewijzingen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $view = new Zend_View();
 
@@ -56,8 +58,9 @@ hetzelfde effekt als de hierboven beschreven één per één eigenschapstoewijzi
 Anderzijds kan je de toewijzingsmethode gebruiken om één per één toewijzingen te doen door een string
 variabelnaam door te geven, en dan de variabelwaarde.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $view = new Zend_View();
    $view->assign('a', "Hooi");
@@ -74,8 +77,9 @@ Eenmaal je al de nodige variabelen hebt toegewezen zou de controller Zend_View m
 view script moet weergeven. Dat doe je door de render() methode op te roepen. Merk op dat de methide het
 weergegeven view zal terugsturen en niet afprinten. Je moet het dus zelf afprinten of echo-en wanneer dat jou past.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $view = new Zend_View();
    $view->a = "Hooi";
@@ -96,8 +100,9 @@ $view->render('eenView.php') op, zal Zend_View naar "/map/naar/toepassing/contro
 waarschijnlijk zijn je scripts ergens anders ondergebracht. Om Zend_View daarvan op de hoogte te brengen gebruik je
 de setScriptPath() methode.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $view = new Zend_View();
    $view->setScriptPath('/map/naar/toepassing/views');
@@ -110,8 +115,9 @@ toevoegt zal Zend_View in het meest recente pad kijken voor het gevraagde view s
 te overschrijven met verpersoonlijkte views zodat je persoonlijke "thema's" of "skins" voor sommige views kan maken
 terwijl die niet op andere views van toepassing zijn.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $view = new Zend_View();
    $view->addScriptPath('/pad/naar/toepassing/views');

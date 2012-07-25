@@ -12,7 +12,7 @@
 
 .. rubric:: הפעלת האימות במחלקה *Zend_Mail_Transport_Smtp*
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $config = array('auth' => 'login',

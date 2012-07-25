@@ -97,7 +97,7 @@ attaché au document *PDF* (XMP -`eXtensible Metadata Platform`_).
 Ce document XML peut être récupéré et attaché au document PDF avec les méthodes ``Zend_Pdf::getMetadata()``
 et ``Zend_Pdf::setMetadata($metadata)``:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $pdf = Zend_Pdf::load($pdfPath);

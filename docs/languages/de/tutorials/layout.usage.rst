@@ -29,7 +29,7 @@ Der empfohlene Ort für Layouts ist im Unterverzeichnis "``layouts/scripts/``" i
 Um ``Zend_Layout`` zu initialisieren muss das folgende in die eigene Konfigurationsdatei eingefügt werden
 ("``application/configs/application.ini``"):
 
-.. code-block:: dosini
+.. code-block:: ini
    :linenos:
 
    resources.layout.layoutPath = APPLICATION_PATH "/layouts/scripts"

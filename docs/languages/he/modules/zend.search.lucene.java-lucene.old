@@ -36,7 +36,7 @@
 
 תוכנת ה Java המוצגת למעלה מדגימה כיצד לאנדקס קובץ בעזרת Java Lucene:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**

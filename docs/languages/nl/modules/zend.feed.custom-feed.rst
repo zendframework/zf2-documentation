@@ -12,7 +12,7 @@ namespaces hoeft bezig te houden.
 
 .. rubric:: De Atom Entry Class uitbreiden met aangepaste Namespaces
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -62,7 +62,7 @@ namespaces hoeft bezig te houden.
    ?>
 Om deze klasse nu te gebruiken moet je ze gewoon direct instantiëren en de *myUpdated* eigenschap zetten:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

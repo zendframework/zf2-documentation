@@ -11,8 +11,9 @@ CRAM-MD5，这些都需要在配置数组中设置“username”和“password�
 
 .. rubric:: 在 Zend_Mail_Transport_Smtp 中使用身份验证
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
                require_once 'Zend/Mail.php';

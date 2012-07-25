@@ -13,7 +13,7 @@
 
 .. rubric:: שליחת אימיילים עם צירוף קבצים
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $mail = new Zend_Mail();
@@ -29,7 +29,7 @@
 להשתמש בערך שמוחזר ממתודת ה *createAttachment()* כדי לערוך את הערכים שלה.
 מתודת ה *createAttachment()* מחזירה אובייקט מסוג *Zend_Mime_Part*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $mail = new Zend_Mail();
@@ -46,7 +46,7 @@
 לחלופין ניתן ליצור אובייקט של *Zend_Mime_Part* ולהוסיף אותו ל
 *addAttachment()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $mail = new Zend_Mail();

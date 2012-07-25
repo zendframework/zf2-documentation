@@ -77,7 +77,7 @@ klasy helperów to:
 
   Powyższe najlepiej podsumować za pomocą przykładów:
 
-  .. code-block::
+  .. code-block:: php
      :linenos:
 
      // '1' oraz '0' jako opcje dla pola zaznaczonego/niezaznaczonego;
@@ -188,7 +188,7 @@ klasy helperów to:
 Użycie tych metod w Twoim skrypcie jest bardzo łatwe, poniżej znajduje się przykład. Zauważ, że wszystko
 czego potrzebujesz to wywołanie tych metod; załadowanie ich i utworzenie instancji odbędzie się automatycznie.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // wewnątrz skryptu widoku, $this odnosi się do instancji Zend_View.
@@ -212,7 +212,7 @@ czego potrzebujesz to wywołanie tych metod; załadowanie ich i utworzenie insta
 
 Rezultat wyglądałby w ten sposób:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <form action="action.php" method="post">
@@ -257,7 +257,7 @@ katalog używając metod *setHelperPath()* oraz *addHelperPath()*. Dodatkowo mo�
 helperów znajdujących się w podanej ścieżce aby utworzyć przestrzenie nazw dla klas helperów. Domyślnie,
 gdy żaden przedrostek nie zostanie określony, przyjęty zostanie przedrostek 'Zend_View_Helper\_'.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View();
@@ -269,7 +269,7 @@ Oczywiście możesz dodawać ścieżki na stos używając metody *addHelperPath(
 *Zend_View* będzie szukać klasy helpera począwszy od ostatnio dodanej ścieżki. To pozwala na dodanie (lub
 nawet nadpisanie) podstawowego pakietu klas helperów swoimi własnymi klasami.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View();
@@ -325,7 +325,7 @@ klasę, utworzy instancję, i uruchomi metodę.
 
 Poniżej przykład kodu naszego przykładowego helpera *twojHelper*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    class My_View_Helper_TwojHelper extends Zend_View_Helper_Abstract
@@ -343,7 +343,7 @@ Poniżej przykład kodu naszego przykładowego helpera *twojHelper*:
 Teraz w skrypcie widoku możesz wywołać helpera *TwojHelper* tyle razy ile zechcesz; instancja zostanie utworzona
 raz i będzie ona istniała przez cały okres istnienia instancji *Zend_View*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // pamiętaj, że w skrypcie widoku $this odnosi się do instancji Zend_View.
@@ -354,7 +354,7 @@ raz i będzie ona istniała przez cały okres istnienia instancji *Zend_View*.
 
 Dane wyjściowe wyglądałyby w ten sposób:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    I have seen 'The Jerk' 1 time(s).
@@ -366,7 +366,7 @@ Czasem możesz potrzebować uzyskać dostęp do obiektu *Zend_View*-- na przykł
 zarejestrowanego kodowania, lub chcesz renderować inny skrypt widoku jako część klasy helpera. Aby uzyskać
 dostęp do obiektu widoku, klasa helpera powinna posiadać metodę *setView($view)*, tak jak poniżej:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    class My_View_Helper_ScriptPath

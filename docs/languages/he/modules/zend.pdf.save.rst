@@ -17,7 +17,7 @@
 
 .. rubric:: שמירת קבצי PDF
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...

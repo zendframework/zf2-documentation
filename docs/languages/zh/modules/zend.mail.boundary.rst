@@ -11,7 +11,7 @@ boundary)通常是随机生成的。但是在某些情况下，你也许会希�
 
 .. rubric:: 更改MIME分界线
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $mail = new Zend_Mail();

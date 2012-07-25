@@ -39,8 +39,9 @@ Zend_Config_Xml
 لكن دعونا نفترض أن بيانات الأعدادت التالية محفوظة على المسار
 *path/to/config.ini/*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?xml version="1.0"?>
    <configdata>
        <production>
@@ -66,8 +67,9 @@ Zend_Config_Xml
 هذه البيانات فقط عن طريق تحديد مسار ملف الـ XML و أسم قسم
 البيانات staging :
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Config/Xml.php';
 

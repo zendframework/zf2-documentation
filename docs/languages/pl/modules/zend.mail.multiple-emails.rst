@@ -11,7 +11,7 @@ utrzymane, przed każdym dostarczeniem widomości wysyłana jest komenda RSET.
 
 .. rubric:: Wysyłanie wielu maili podczas jednego połączenia SMTP
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Tworzenie transportu
@@ -38,7 +38,7 @@ każdym wysyłaniem, poprzez dostęp do obiektu protokołu transportu.
 
 .. rubric:: Ręczna obsługa połączenia
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Tworzenie transportu

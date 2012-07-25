@@ -11,8 +11,9 @@ RSET è inviato prima di ogni consegna per verificare il corretto funzionamento 
 
 .. rubric:: Invio multiplo di e-mail per connessione SMTP
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Carica le classi
    require_once 'Zend/Mail.php';
@@ -39,8 +40,9 @@ invio accedendo all'oggetto che rappresenta il protocollo di trasmissione.
 
 .. rubric:: Controllo manuale della connessione al transport
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // Carica le classi

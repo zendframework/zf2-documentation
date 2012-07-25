@@ -14,7 +14,7 @@ lifetime, אשר משמש בתור תקופת החיים של ה session (modifi
 
 .. rubric:: שימוש בסיסי
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    CREATE TABLE `session` (
@@ -26,7 +26,7 @@ lifetime, אשר משמש בתור תקופת החיים של ה session (modifi
    );
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    //get your database connection ready
@@ -65,7 +65,7 @@ Zend_Session_SaveHandler_DbTable.
 
 .. rubric:: שימוש במפתח ראשי לכמה עמודות
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    CREATE TABLE `session` (
@@ -79,7 +79,7 @@ Zend_Session_SaveHandler_DbTable.
    );
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    //setup your DB connection like before

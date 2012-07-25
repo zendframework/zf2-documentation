@@ -11,7 +11,7 @@ strumenti speciali o un ambiente di debug.
 
 .. rubric:: Esempio del metodo dump()
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
 

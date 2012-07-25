@@ -16,8 +16,9 @@ ontwikkelaar filteren welke queries geprofileerd worden.
 Activeren van de profiler kan op twee wijzen gebeuren: een directive aan de adapter constructor doorgeven, of door
 de adapter te vragen het later te activeren.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Db.php';
 
@@ -44,8 +45,9 @@ De Profiler Gebruiken
 
 De profiler kan op eender welk moment worden aangeroepen via de *getProfiler()* methode van de adapter:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $profiler = $db->getProfiler();
    ?>
@@ -73,8 +75,9 @@ De teruggegeven waarde van *getLastQueryProfile()* en de individuele elementen v
 De informatie die *Zend_Db_Profiler* verstrekt is handig voor het profileren van opstoppers in programma's en voor
 het debuggen van gebruikte queries. Bijvoorbeeld, om de exacte laatst uitgevoerde query te zien:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $query = $profiler->getLastQueryProfile();
 
@@ -84,8 +87,9 @@ Misschien doet een pagina er lang over om afgebeeld te worden; gebruik dan de pr
 seconden van alle queries te verkrijgen, en dan de queries één voor één te doorlopen om uit te vinden welke het
 langste duurde:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $totalTime    = $profiler->getTotalElapsedSecs();
    $queryCount   = $profiler->getTotalNumQueries();
@@ -121,8 +125,9 @@ Filteren op afgelopen tijd
 *setFilterElapsedSecs()* laat je toe om een minimum query tijd te definiëren voordat een query wordt geprofileerd.
 Geef een null tijd aan de methode door om de filter te verwijderen.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Profileer alleen queries die langer dan 5 seconden duren:
    $profiler->setFilterElapsedSecs(5);
@@ -156,8 +161,9 @@ geef je ze met een logische OR door. Query types zijn als de volgende *Zend_Db_P
 Zoals bij *setFilterElapsedSecs()* kan je elke bestaande filter verwijderen door *null* als enig argument door te
 geven.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // profileer enkel SELECT queries
    $profiler->setFilterQueryType(Zend_Db_Profiler::SELECT);
@@ -182,8 +188,9 @@ van *getQueryProfiles()* is dat het kan filteren terwijl de code loopt, door het
 combinatie van querytypes) als eerste argument door te geven; zie :ref:` <zend.db.profiler.advanced.filtertype>`
 voor een lijst van de querytype constanten.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Alleen SELECT query profielen verkrijgen
    $profiles = $profiler->getQueryProfiles(Zend_Db_Profiler::SELECT);

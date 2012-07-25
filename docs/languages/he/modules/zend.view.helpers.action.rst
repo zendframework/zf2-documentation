@@ -23,7 +23,7 @@ $module = null, array $params = array())*. *$action* ו *$controller* חובה �
 בתור דוגמא, נניח ויש לכם קונטרולר בשם *CommentController* אשר מכיל מתודה
 בשם *listAction()* אשר מציגה רשימה של תגובות לבקשה הנוכחית:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <div id="sidebar right">

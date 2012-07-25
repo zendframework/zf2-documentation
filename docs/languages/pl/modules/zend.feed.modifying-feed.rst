@@ -11,7 +11,7 @@ go do pliku lub wysłać na serwer.
 
 .. rubric:: Modyfikacja istniejącego wpisu
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
@@ -39,7 +39,7 @@ on utworzony w domyślnej przestrzeni nazw jeśli nie określisz precyzyjnie inn
 
 .. rubric:: Tworzenie wpisu Atom z elementami własnej przestrzeni nazw
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $entry = new Zend_Feed_Entry_Atom();

@@ -9,7 +9,7 @@ JSON 响应一起使用。
 
 JSON 助手设置下列的头：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    Content-Type: application/json
@@ -18,8 +18,9 @@ JSON 助手设置下列的头：
 
 JSON 助手的用法相当简单：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    <?= $this->json($this->data) ?>
    ?>

@@ -37,7 +37,7 @@ Możesz określić typ dokumentu w dowolnej chwili. Jednak helpery których dzia
 mogą sprawdzić ten typ tylko pod warunkiem że go wcześniej określisz, więc najlepiej będzie jak określisz
 typ dokumentu w pliku uruchamiającym:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $doctypeHelper = new Zend_View_Helper_Doctype();
@@ -46,7 +46,7 @@ typ dokumentu w pliku uruchamiającym:
 
 I teraz wyświetl definicję typu dokumentu w swoim skrypcie layoutu:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php echo $this->doctype() ?>
@@ -59,7 +59,7 @@ I teraz wyświetl definicję typu dokumentu w swoim skrypcie layoutu:
 Jeśli potrzebujesz sprawdzić typ dokumentu, możesz to zrobić wywołując metodę *getDoctype()* obiektu, który
 jest zwracany po wywołaniu helpera.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $doctype = $view->doctype()->getDoctype();
@@ -68,7 +68,7 @@ jest zwracany po wywołaniu helpera.
 Najczęściej będzie potrzebował sprawdzić czy dany typ dokumentu jest typem XHTML czy nie; do tego wystarczy
 metoda *isXhtml()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    if ($view->doctype()->isXhtml()) {

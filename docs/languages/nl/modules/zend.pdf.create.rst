@@ -13,8 +13,9 @@ werpen een exceptie op indien er een probleem optrad.
 
 .. rubric:: Maak een nieuw of laad een bestaand PDF document
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    ...
    // Maak een nieuw PDF document.
@@ -36,8 +37,9 @@ of worden opgevraagd door *Zend_Pdf::rollback()* [#]_
 
 .. rubric:: Een bepaalde revisie van een document opvragen
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    ...
    // Een vorige revisie van het PDF document opvragen.

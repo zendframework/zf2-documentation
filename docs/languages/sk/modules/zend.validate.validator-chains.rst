@@ -7,8 +7,9 @@ Reťazenie validátorov
 princíp ako to urobiť na príklade z :ref:`úvodu <zend.validate.introduction>`, kde bolo požadované, že meno
 používateľa musí mať 6 až 12 alfanumerických znakov:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
 
       // Triedy na reťazenie validátorov
@@ -45,8 +46,9 @@ umožňuje takéto správanie pomocou druhého parametra metódy *addValidator()
 všetky ostatné validácie, ktoré sú zbytočné, alebo nevhodné v danej situácii. Ak náš príklad upravíme
 nasledovne, potom alfanumerická validácia neprebehne ak bude neúspešná validácia na dĺžku reťazca:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
 
       $validatorChain->addValidator(new Zend_Validate_StringLength(6, 12), true)

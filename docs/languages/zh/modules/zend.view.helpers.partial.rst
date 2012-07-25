@@ -15,7 +15,7 @@ partial 视图脚本。
 
 partials 的基本用法是在它自己的视图范围内解析一个模板的片段。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php // partial.phtml ?>
@@ -26,7 +26,7 @@ partials 的基本用法是在它自己的视图范围内解析一个模板的�
 
 你可以这样从视图脚本里调用它：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?= $this->partial('partial.phtml', array(
@@ -35,7 +35,7 @@ partials 的基本用法是在它自己的视图范围内解析一个模板的�
 
 解析结果如下：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <ul>
@@ -63,7 +63,7 @@ partials 的基本用法是在它自己的视图范围内解析一个模板的�
    脚本，而不是把它系列化成一个数组变量。 你可以通过设置适当的助手的 'objectKey'
    属性来完成这个：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       // Tell partial to pass objects as 'model' variable
@@ -90,7 +90,7 @@ partials 的基本用法是在它自己的视图范围内解析一个模板的�
 
 让我们看一下下面的 partial 视图脚本：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <? // partialLoop.phtml ?>
@@ -100,8 +100,9 @@ partials 的基本用法是在它自己的视图范围内解析一个模板的�
 
 添加下列 "model"：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $model = array(
        array('key' => 'Mammal', 'value' => 'Camel'),
@@ -112,14 +113,14 @@ partials 的基本用法是在它自己的视图范围内解析一个模板的�
    ?>
 在视图脚本中，你可以这样调用 *PartialLoop* 助手：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <dl>
    <?= $this->partialLoop('partialLoop.phtml', $model) ?>
    </dl>
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <dl></dl>
@@ -147,7 +148,7 @@ partials 的基本用法是在它自己的视图范围内解析一个模板的�
 
 例如，如果一个你想用一个在 'list' 模块的 pager partial，就象下面这样来运用：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?= $this->partial('pager.phtml', 'list', $pagerData) ?>

@@ -16,8 +16,9 @@ Zend_Form_Decorator_Callback
 （传递给装饰器的原始内容）、 *$element* （被装饰的条目）和 一个 *$options*
 数组。这是个回调的例子：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class Util
    {
@@ -71,7 +72,7 @@ Zend_Form_Decorator_DtDdWrapper
 生成一个新的、空定义 term (*<dt>*) 并在新定义数据（ *<dd>*\ ）里封装它的内容
 。输出看起来是这样的：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <dt></dt>
@@ -215,8 +216,9 @@ ViewScript 装饰器要求一个 'viewScript'
 
 作为例子，你可以有下列元素：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Setting the decorator for the element to a single, ViewScript, decorator,
    // specifying the viewScript as an option, and some extra options:
@@ -231,7 +233,7 @@ ViewScript 装饰器要求一个 'viewScript'
    ?>
 你可以接着有一个如下的视图脚本：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <div class="<?= $this->class ?>">
@@ -253,8 +255,9 @@ ViewScript 装饰器要求一个 'viewScript'
    例如，如果你想封装它。你可以通过指定一个布尔 false 值给装饰器的 'placement'
    选项来做：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       // At decorator creation:
       $element->addDecorator('ViewScript', array('placement' => false));

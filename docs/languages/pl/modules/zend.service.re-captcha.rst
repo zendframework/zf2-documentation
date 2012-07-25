@@ -26,7 +26,7 @@ Najprostsze użycie
 
 Utwórz obiekt klasy *Zend_Service_ReCaptcha*, przekazując mu twoje klucze: publiczny oraz prywatny:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $recaptcha = new Zend_Service_ReCaptcha($pubKey, $privKey);
@@ -34,7 +34,7 @@ Utwórz obiekt klasy *Zend_Service_ReCaptcha*, przekazując mu twoje klucze: pub
 
 Aby wyświetlić element reCAPTCHA, po prostu wywołaj metodę *getHTML()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    echo $recaptcha->getHTML();
@@ -43,7 +43,7 @@ Aby wyświetlić element reCAPTCHA, po prostu wywołaj metodę *getHTML()*:
 Gdy formularz zostanie wysłany, powinieneś otrzymać dwa pola, 'recaptcha_challenge_field' oraz
 'recaptcha_response_field'. Przekaż je do metody *verify()* obiektu ReCaptcha:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $result = $recaptcha->verify(
@@ -55,7 +55,7 @@ Gdy formularz zostanie wysłany, powinieneś otrzymać dwa pola, 'recaptcha_chal
 Gdy posiadasz wynik, sprawdź czy jest pozytywny. Wynik działania metody jest obiektem klasy
 *Zend_Service_ReCaptcha_Response* i zapewnia on metodę *isValid()*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    if (!$result->isValid()) {

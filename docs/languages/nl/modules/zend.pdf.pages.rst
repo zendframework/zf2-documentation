@@ -32,8 +32,9 @@ gemanipuleerd worden als een array:
 
 .. rubric:: PDF pagina management
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    ...
    // De volgorde omkeren

@@ -33,8 +33,9 @@ developer needs.
 Zend\Permissions\Acl provides support for conditional rules with *Zend\Permissions\Acl\Assert\AssertInterface*. In order to use the rule
 assertion interface, a developer writes a class that implements the *assert()* method of the interface:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    class CleanIPAssertion implements Zend\Permissions\Acl\Assert\AssertInterface
@@ -54,8 +55,9 @@ assertion interface, a developer writes a class that implements the *assert()* m
 Once an assertion class is available, the developer must supply an instance of the assertion class when assigning
 conditional rules. A rule that is created with an assertion only applies when the assertion method returns true.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $acl = new Zend\Permissions\Acl\Acl();

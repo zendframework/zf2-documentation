@@ -12,7 +12,7 @@
 
 .. rubric:: עריכה של פריט בסנדקציה
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
@@ -41,7 +41,7 @@
 
 .. rubric:: יצירת אלמנטים לסנדקציה עם סוג מותאם אישית
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $entry = new Zend_Feed_Entry_Atom();

@@ -18,7 +18,7 @@ W poniższym przykladzie, używamy metody *tagSearch()* do wyszukiwania zdjęć 
 
 .. rubric:: Proste wyszukiwanie zdjęć Flickr
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $flickr = new Zend_Service_Flickr('MY_API_KEY');
@@ -58,7 +58,7 @@ Klasa *Zend_Service_Flickr* zapewnia kilka możliwości pobierania informacji o 
 W tym przykładzie, posiadamy adres e-mail użytkownika serwisu Flickr i szukamy publicznych zdjęć użytkownika
 używając metody *userSearch()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $flickr = new Zend_Service_Flickr('MY_API_KEY');
@@ -82,7 +82,7 @@ Klasa *Zend_Service_Flickr* pozwala na pobieranie zdjęć grupy w oparciu o jej 
 
 .. rubric:: Pobieranie zdjęć z Group Pool na podstawie ID grupy:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $flickr = new Zend_Service_Flickr('MY_API_KEY');
@@ -114,7 +114,7 @@ metody *getImageDetails()*, tak jak w poniższym przykładzie:
 
 Jeśli posiadasz ID zdjęcia Flickr, pobranie informacji o zdjęciu jest bardzo proste:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $flickr = new Zend_Service_Flickr('MY_API_KEY');

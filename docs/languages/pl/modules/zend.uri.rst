@@ -29,7 +29,7 @@ Tworzenie nowego URI
 
 .. rubric:: Tworzenie nowego URI za pomocą *Zend_Uri::factory()*
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Aby utworzyć URI z szablonu, przekaż tylko schemat.
@@ -55,7 +55,7 @@ Aby manipulować istniejącym URI, przekaż cały URI do *Zend_Uri::factory()*.
 
 .. rubric:: Manipulowanie istniejącym URI za pomocą *Zend_Uri::factory()*
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Aby manipulować istniejącym URI, przekaż go do metody fabryki.
@@ -80,7 +80,7 @@ URI.
 
 .. rubric:: Sprawdzanie poprawności URI za pomocą *Zend_Uri::check()*
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Sprawdź czy podany URI ma poprawny format
@@ -112,7 +112,7 @@ Nazwa schematu URI jest częścią URI, która znajduje się przed dwukropkiem. 
 
 .. rubric:: Pobieranie schematu z obiektu *Zend_Uri_**
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $uri = Zend_Uri::factory('http://www.zend.com');
@@ -131,7 +131,7 @@ Pobieranie całego URI
 
 .. rubric:: Pobieranie całego URI z obiektu *Zend_Uri_**
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $uri = Zend_Uri::factory('http://www.zend.com');
@@ -155,7 +155,7 @@ niepoprawny, po tym jak będziemy nim manipulować.
 
 .. rubric:: Sprawdzanie poprawności obiektu *Zend_Uri_**
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $uri = Zend_Uri::factory('http://www.zend.com');

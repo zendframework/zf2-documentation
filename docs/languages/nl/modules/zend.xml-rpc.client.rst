@@ -14,8 +14,9 @@ Specificeer het volledige adres van de service in de *Zend_XmlRpc_Client* constr
 
 .. rubric:: Een basis XML-RPC verzoek
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    /**
    * Maak verbinding met de framework.zend.com server en krijg een array met de beschikbare methodes.
@@ -72,8 +73,9 @@ in een van de overeenkomstige XML-RPC types aan de hand van de volgende tabel:
    |object           |array       |
    +-----------------+------------+
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    /** 2 parameters worden in deze procedure doorgegeven
@@ -133,8 +135,9 @@ constante aan te roepen.
    |struct          |Zend_XmlRpc_Value::XMLRPC_TYPE_STRUCT      |Zend_XmlRpc_Value_Struct  |
    +----------------+-------------------------------------------+--------------------------+
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    /** 2 parameters worden aan deze procedure doorgegeven
@@ -201,8 +204,9 @@ handtekening XML bestand aan te duiden kan de gebruiker de XML data als paramete
 
 .. rubric:: Een XML-RPC service aanroepen met type hints
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    /**
@@ -221,8 +225,9 @@ handtekening XML bestand aan te duiden kan de gebruiker de XML data als paramete
 
    ?>
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    /**
@@ -263,8 +268,9 @@ aanduidt. De antwoordopties zijn:
 
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $service->serviceProcedure();

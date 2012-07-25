@@ -19,8 +19,9 @@ există interfeţe care extind *Zend_Cache_Core* pentru convenienţă: *Output*,
 *Zend_Cache::factory()* creează instanţe ale obiectelor şi face legătura între ele. În acest prim exemplu,
 vom folosi interfaţa *Core* împreună cu adaptorul *File*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Cache.php';
 
@@ -52,8 +53,9 @@ Acum că avem o interfaţă, putem stoca orice tip de date (am pornit serializar
 rezultat al unei interogări foarte complexe în baza de date. După ce este stocat, nu mai este nevoie nici măcar
 să ne conectăm la baza de date; înregistrările sunt preluate din
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // $cache a fost iniţializat în exemplul anterior
 
@@ -89,8 +91,9 @@ afişat până când este executată metoda *end()* (este poate cel mai util exe
 La următoarea rulare, codul din secţiune nu va mai fi executat, rezultatul aflându-se deja în cache (cu
 condiţia ca înregistrarea din cache să fie validă).
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $frontendOptions = array(
       'lifetime' => 30,                  // timpul de viaţă este jumătate de minut

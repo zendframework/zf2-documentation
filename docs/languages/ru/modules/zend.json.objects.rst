@@ -28,6 +28,7 @@ JSON не поддерживает ссылки на объекты, поэто�
 
 .. code-block:: php
    :linenos:
+
    <?php
    // Декодировать объект как объект
    $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);

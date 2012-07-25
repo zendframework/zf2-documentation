@@ -12,7 +12,7 @@
 
 .. rubric:: דוגמא לשימוש
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
 

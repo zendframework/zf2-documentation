@@ -28,6 +28,7 @@ Zend_Server_Reflection
 
 .. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Server/Reflection.php';
    $class    = Zend_Server_Reflection::reflectClass('My_Class');

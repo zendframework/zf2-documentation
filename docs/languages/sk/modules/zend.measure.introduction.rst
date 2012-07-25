@@ -15,8 +15,9 @@ merania je potrebné vedieť hodnotu a jednotku hodnoty. Hodnota môže byt cel�
 alebo reťazec ktorý obsahuje číslo. Konvertovať je možné lem medzi jednotkami rovnakého typu (hmotnosť,
 plocha, teplota, rýchlosť, atď.) a nie vzájomne.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Measure/Length.php';
 
@@ -37,8 +38,9 @@ Meranie pomocou jednotky *meter*\ je určené na meranie vzdialeností, a teda j
 triede *Length*. Pre použitie tejto jednotky je potrebné použiť zápis *Length::METER*. Zobrazenie jednotky je
 *m*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Measure/Length.php';
 

@@ -41,6 +41,7 @@ In dit voorbeeld zoeken we naar PHP boeken op Amazon en doorlopen we de resultat
 
 .. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Service/Amazon.php';
    $amazon = new Zend_Service_Amazon('AMAZON_API_KEY&');
@@ -56,6 +57,7 @@ ontwerp patroon.
 
 .. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Service/Amazon/Query.php';
    $query = new Zend_Service_Amazon_Query('AMAZON_API_KEY');
@@ -78,6 +80,7 @@ de constructor:
 
 .. code-block:: php
    :linenos:
+
    <?php
    // Verbind met Amazon in Frankrijk
    require_once 'Zend/Service/Amazon.php';
@@ -98,6 +101,7 @@ De *itemLookup()* methode biedt de mogelijkheid om een specifiek Amazon item op 
 
 .. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Service/Amazon.php';
    $amazon = new Zend_Service_Amazon('AMAZON_API_KEY');
@@ -125,6 +129,7 @@ Het zoeken naar items gebaseerd op een van de verschillende voorhande criteria w
 
 .. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Service/Amazon.php';
    $amazon = new Zend_Service_Amazon('AMAZON_API_KEY');
@@ -166,6 +171,7 @@ respectievelijke waarden te specificeren:
 
 .. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Service/Amazon/Query.php';
    $query = new Zend_Service_Amazon_Query('MY_API_KEY');

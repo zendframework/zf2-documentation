@@ -10,8 +10,9 @@ basis klasse Zend_Exception.
 
 .. rubric:: Voorbeeld van het vangen van een uitzondering
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    try {

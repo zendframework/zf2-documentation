@@ -9,7 +9,7 @@ inhoud gebruikt zal er automatisch een multipart/alternative MIME message worden
 
 .. rubric:: HTML E-Mail zenden
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

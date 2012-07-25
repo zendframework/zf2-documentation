@@ -8,7 +8,7 @@ Ak má e-mail viac častí oddeľujú sa pomocou hranice ktorá sa generuje náh
 
 .. rubric:: Nastavenie hranice MIME
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

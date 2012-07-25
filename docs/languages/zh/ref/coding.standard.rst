@@ -128,7 +128,7 @@ Zend/Db/Table.php 文件里对应的类名称是 Zend_Db_Table。
 扩展名结尾，众所周知的视图脚本除外。下面这些例子给出 Zend Framework
 类可接受的文件名：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       Zend/Db.php
@@ -153,7 +153,7 @@ Zend/Db/Table.php 文件里对应的类名称是 Zend_Db_Table。
 
 这些是可接受的函数名的例子：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       filterInput()
@@ -219,8 +219,9 @@ PHP 代码划分（Demarcation）
 
 PHP 代码总是用完整的标准的 PHP 标签定界：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
 
       ?>
@@ -241,7 +242,7 @@ PHP 代码总是用完整的标准的 PHP 标签定界：
 
 当字符串是文字(不包含变量)，应当用单引号（ apostrophe ）来括起来：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $a = 'Example String';
@@ -255,7 +256,7 @@ PHP 代码总是用完整的标准的 PHP 标签定界：
 
 当文字字符串包含单引号（apostrophe ）就用双引号括起来，特别在 SQL 语句中有用：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sql = "SELECT `id`, `name` from `people` WHERE `name`='Fred' OR `name`='Susan'";
@@ -269,7 +270,7 @@ PHP 代码总是用完整的标准的 PHP 标签定界：
 
 变量替换有下面这些形式：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $greeting = "Hello $name, welcome back!";
@@ -280,7 +281,7 @@ PHP 代码总是用完整的标准的 PHP 标签定界：
 
 为保持一致，这个形式不允许：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $greeting = "Hello ${name}, welcome back!";
@@ -294,7 +295,7 @@ PHP 代码总是用完整的标准的 PHP 标签定界：
 
 字符串必需用 "." 操作符连接，在它的前后加上空格以提高可读性：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $company = 'Zend' . ' ' . 'Technologies';
@@ -305,7 +306,7 @@ PHP 代码总是用完整的标准的 PHP 标签定界：
 操作符连接字符串，鼓励把代码可以分成多个行，也是为提高可读性。在这些例子中，每个连续的行应当由
 whitespace 来填补，例如 "." 和 "=" 对齐：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sql = "SELECT `id`, `name` FROM `people` "
@@ -330,7 +331,7 @@ whitespace 来填补，例如 "." 和 "=" 对齐：
 
 当用 *array* 函数声明有索引的数组，在每个逗号的后面间隔空格以提高可读性：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sampleArray = array(1, 2, 3, 'Zend', 'Studio');
@@ -339,7 +340,7 @@ whitespace 来填补，例如 "." 和 "=" 对齐：
 
 可以用 "array" 声明多行有索引的数组，在每个连续行的开头要用空格填补对齐：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sampleArray = array(1, 2, 3, 'Zend', 'Studio',
@@ -356,7 +357,7 @@ whitespace 来填补，例如 "." 和 "=" 对齐：
 当用声明关联数组， *array*
 我们鼓励把代码分成多行，在每个连续行的开头用空格填补来对齐键和值：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sampleArray = array('firstKey'  => 'firstValue',
@@ -388,7 +389,7 @@ whitespace 来填补，例如 "." 和 "=" 对齐：
 
 下面是个可接受的类的例子： // 459 9506 － 441 9658 下次从这里开始
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -436,7 +437,7 @@ whitespace 来填补，例如 "." 和 "=" 对齐：
 
 下面是可接受的在类中的函数声明的例子：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -458,7 +459,7 @@ whitespace 来填补，例如 "." 和 "=" 对齐：
 
 **注：** 传址（Pass-by-reference）是在方法声明中允许的唯一的参数传递机制。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -480,7 +481,7 @@ whitespace 来填补，例如 "." 和 "=" 对齐：
 返回值不能在圆括号中，这妨碍可读性而且如果将来方法被修改成传址方式，代码会有问题。
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -515,7 +516,7 @@ whitespace 来填补，例如 "." 和 "=" 对齐：
 函数的参数应当用逗号和紧接着的空格分开，下面可接受的调用的例子中的函数带有三个参数：
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       threeArguments(1, 2, 3);
@@ -527,7 +528,7 @@ whitespace 来填补，例如 "." 和 "=" 对齐：
 带有数组参数的函数，函数的调用可包括 "array"
 提示并可以分成多行来提高可读性，同时，书写数组的标准仍然适用：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       threeArguments(array(1, 2, 3), 2, 3);
@@ -555,7 +556,7 @@ if/Else/Elseif
 前花括号必须和条件语句在同一行，后花括号单独在最后一行，其中的内容用四个空格缩进。
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       if ($a != 2) {
@@ -567,7 +568,7 @@ if/Else/Elseif
 对包括"elseif" 或 "else"的 "if" 语句，和 "if" 结构的格式类似， 下面的例子示例 "if"
 语句， 包括 "elseif" 或 "else" 的格式约定：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       if ($a != 2) {
@@ -599,7 +600,7 @@ Switch
 
 "switch" 里的代码必须有四个空格缩进，在"case"里的代码再缩进四个空格。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    switch ($numPeople) {
@@ -642,7 +643,7 @@ intentionally omitted" 这样的注释来表明 break 是故意忽略的。
 
 每个包含 PHP 代码的文件必须至少在文件顶部的 docblock 包含这些 phpDocumentor 标签：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -667,7 +668,7 @@ intentionally omitted" 这样的注释来表明 break 是故意忽略的。
 
 每个类必须至少包含这些 phpDocumentor 标签：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -706,7 +707,7 @@ intentionally omitted" 这样的注释来表明 break 是故意忽略的。
 
 如果函数/方法抛出一个异常，使用 @throws 于所有已知的异常类：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       @throws exceptionclass [description]

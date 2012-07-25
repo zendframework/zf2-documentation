@@ -11,8 +11,9 @@ come transport.
 
 .. rubric:: Invio di e-mail via SMTP
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail/Transport/Smtp.php';
    $tr = new Zend_Mail_Transport_Smtp('mail.example.com');

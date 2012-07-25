@@ -23,7 +23,7 @@ Zend_Memory组件用于在一个受限制的内存环境下管理数据.
 
 *Zend_Memory::factory()* 用指定的后端选项实例化内存管理器对象.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    require_once 'Zend/Memory.php';
@@ -85,7 +85,7 @@ Zend_Memory 组件操作有如下的概念:
 
 你可以作为对象属性操作这个 *值*\ 属性:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $memObject = $memoryManager->create($data);

@@ -14,8 +14,9 @@ Java Lucene. Je kan beide mogelijkheden gebruiken.
 Het volgende PHP code voorbeeld geeft een voorbeeld van hoe een bestand kan worden geïndexeerd door de
 Zend_Search_Lucene indexing API te gebruiken:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // Het tweede argument naar TRUE zetten maakt een nieuwe index
@@ -53,8 +54,9 @@ Index Updaten
 Dezelfde procedure wordt gebruikt om een bestaande index up te daten. Het enige verschil is dat de index zou moeten
 worden geopend zonder tweede parameter:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // Een bestaande index openen
@@ -93,8 +95,9 @@ verwijderd en opnieuw toegevoegd worden om de index up te daten.
 De *Zend_Search_Lucene::delete()* methode werkt met een intern document id index. Deze kan worden bekomen via een
 query hit per 'id' eigenschap:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $removePath = ...;
    $hits = $index->find('path:' . $removePath);

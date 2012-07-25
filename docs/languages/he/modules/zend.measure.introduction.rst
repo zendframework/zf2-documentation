@@ -19,7 +19,7 @@
 המספר המייצג אותו. המרות ניתן לבצע רק אם שני היחידות מאותו סוג,
 לא בין שני סוגים שונים.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $locale = new Zend_Locale('en');
@@ -43,7 +43,7 @@
 למציאה במחלקת *Length*. כדי להשתמש בסוג מדידה זה, יש להשתמש בסוג
 הציון *Length::METER*. יחידת התצוגה של סוג מדידה זה היא *m*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    echo Zend_Measure_Length::STANDARD;  // outputs 'Length::METER'

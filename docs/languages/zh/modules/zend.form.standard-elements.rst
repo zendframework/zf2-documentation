@@ -62,8 +62,9 @@ Zend_Form_Element_Hash
 哈希（hash）元素名是唯一的。建议使用 ``salt`` 选项，两个哈希有相同的名字和不同的
 salt 会有冲突的：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form->addElement('hash', 'no_csrf_foo', array('salt' => 'unique'));
    ?>
@@ -123,7 +124,7 @@ snap。像其它继承基础多重元素的元素，你可以指定一个选项�
 为了标记选中的条目，需要传递一个数组给 *setValue()* 。下面代码片段将检查 "bar" 和
 "bat":
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $element = new Zend_Form_Element_MultiCheckbox('foo', array(

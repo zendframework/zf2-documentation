@@ -67,6 +67,7 @@
 
 .. code-block:: php
    :linenos:
+
    <?php
    $options = array(
        'layout'     => 'foo',
@@ -76,6 +77,7 @@
    ?>
 .. code-block:: php
    :linenos:
+
    <?php
    /**
    [layout]
@@ -97,6 +99,7 @@
 
 .. code-block:: php
    :linenos:
+
    <?php
    // Использование конструктора:
    $layout = new Zend_Layout($options);
@@ -108,6 +111,7 @@
 
 .. code-block:: php
    :linenos:
+
    <?php
    $config = new Zend_Config_Ini('/path/to/layout.ini', 'layout');
 
@@ -130,6 +134,7 @@
 
 .. code-block:: php
    :linenos:
+
    <?php
    // Использование массива опций:
    $layout->setOptions($options);
@@ -152,6 +157,7 @@
 
 .. code-block:: php
    :linenos:
+
    <?php
    $layout->setLayout('foo')
           ->setLayoutPath('/path/to/layouts')

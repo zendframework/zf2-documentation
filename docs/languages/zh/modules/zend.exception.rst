@@ -9,8 +9,9 @@ Zend Framework 抛出的所有异常都必须是 Zend_Exception 的子类的对�
 
 .. rubric:: 捕捉一个异常的例子
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    try {

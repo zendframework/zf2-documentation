@@ -26,7 +26,7 @@
 
       .. rubric:: הדפסה אוטומטית
 
-      .. code-block::
+      .. code-block:: php
          :linenos:
 
          $locale = new Zend_Locale('de');
@@ -60,7 +60,7 @@
 
       .. rubric:: הדפסת ערך
 
-      .. code-block::
+      .. code-block:: php
          :linenos:
 
          $locale = new Zend_Locale('de');
@@ -91,7 +91,7 @@
 
       .. rubric:: הדפסה עם יחידת המדידה
 
-      .. code-block::
+      .. code-block:: php
          :linenos:
 
          $locale = new Zend_Locale('de');

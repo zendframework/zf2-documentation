@@ -59,8 +59,9 @@ Zend_Cache_Core
 بيانات من النوع bool ايضا بتشغيل الـ option المسمى "automaticSerialization" ) ,
 يمكنك ان تستخدم بنية كود ادق مثل هذه :
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // we assume you already have $cache
@@ -85,8 +86,9 @@ Zend_Cache_Core
 إن كنت تريد حفظ اكثر من بلوك او مجموعة بيانات مختلفة, فهى نفس
 الفكرة :
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // make sure you use unique identifiers:
@@ -154,8 +156,9 @@ Zend_Cache_Frontend_Output
 تم اعطاء مثال فى بداية هذا الفصل, ها هو مع بعض التعديلات
 الصغيرة:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // if it is a cache miss, output buffering is triggered
@@ -214,8 +217,9 @@ method واحد رئيسى يسمى *()call* و الذى يأخذ اسم الد�
 استخدام الـ method المسمى *()call* هو نفس طريقة استخدام دالة لغة PHP
 المسمى *()call_user_func_array*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $cache->call('veryExpensiveFunc', $params);
@@ -274,8 +278,9 @@ Zend_Cache_Frontend_Class
 
 مثال على عمل cache لأستدعائات الـ static methods:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    class test {
@@ -300,8 +305,9 @@ Zend_Cache_Frontend_Class
    ?>
 لعمل cache للـ methods العادية:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    class test {
@@ -425,8 +431,9 @@ cache لصفحة كاملة. فلا يمكن إستخدام *Zend_Cache_Frontend
 
 إستخدام Zend_Cache_Frontend_Page سهل جدا :
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // [...] // require, configuration and factory
@@ -441,8 +448,9 @@ cache لصفحة كاملة. فلا يمكن إستخدام *Zend_Cache_Frontend
 ملف bootstrap "ملف رئيسى لتشغيل البرنامج". (مثلا للإستخدام مع
 Zend_Controller)
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // [...] you should avoid to put too much lines before the cache section

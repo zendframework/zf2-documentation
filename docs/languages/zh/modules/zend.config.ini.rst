@@ -23,7 +23,7 @@ Zend_Config_Ini
    缺省地，键分离器字符是句号(*.*)。然而，这个可以通过当构造 *Zend_Config_Ini*\
    对象时修改 *$options* key *'nestSeparator'* 被修改。例如：
 
-      .. code-block::
+      .. code-block:: php
          :linenos:
 
          $options['nestSeparator'] = ':';
@@ -43,7 +43,7 @@ Zend_Config_Ini
 system）的配置数据。因为开发系统配置数据和生产系统的配置数据类似，所以开发系统的节从生产系统的节继承。在这个案例中，结果(decision)是任意的并且它可以反过来做，即生产系统节从开发系统节继承，尽管这不可能用于更复杂的情形。接着，假定下面的配置数据包含在
 */path/to/config.ini*\ 中：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ; 生产站点配置数据
@@ -64,7 +64,7 @@ system）的配置数据。因为开发系统配置数据和生产系统的配�
 
 接着，假定开发者需要从INI文件取开发配置数据。这非常简单，只要指定INI文件和开发系统节就可以加载这些数据了：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $config = new Zend_Config_Ini('/path/to/config.ini', 'staging');

@@ -12,8 +12,9 @@
 
 下面的 PHP 代码提供了一个如何使用 Zend_Search_Lucene 索引 API 的例子：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // Setting the second argument to TRUE creates a new index
@@ -49,8 +50,9 @@
 
 同样的过程可以用于更新现存的索引。唯一的区别是打开相应的索引是不需要第二个参数：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // Open existing index

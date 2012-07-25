@@ -11,8 +11,9 @@ HTML邮件
 
 .. rubric:: 发送HTML邮件
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();

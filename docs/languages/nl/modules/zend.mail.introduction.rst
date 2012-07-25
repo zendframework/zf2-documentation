@@ -11,8 +11,9 @@ kan gestuurd worden met *Zend_Mail* via de ingebouwde PHP functie `mail()`_ of v
 Een eenvoudige e-mail bestaat uit enkele geadresseerden, een onderwerp, een inhoud en een afzender. Om zo'n mail te
 sturen met de PHP `mail()`_ functie doe je het volgende:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();

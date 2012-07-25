@@ -14,7 +14,7 @@ gdy wersja ze zmiennej *$version* jest nowsza niż wersja Zend Framework.
 
 .. rubric:: Przykład użycia metody compareVersion()
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // zwraca -1, 0 lub 1

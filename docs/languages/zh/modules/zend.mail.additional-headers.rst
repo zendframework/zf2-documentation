@@ -10,8 +10,9 @@
 
 .. rubric:: 外加邮件头信息
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();

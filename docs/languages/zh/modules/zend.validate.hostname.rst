@@ -9,8 +9,9 @@ Zend_Validate_Hostname允许你根据一组已知的规范来校验主机名。�
 
 一个基本用法的例子如下：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       require_once 'Zend/Validate/Hostname.php';
       $validator = new Zend_Validate_Hostname();
@@ -37,8 +38,9 @@ Zend_Validate_Hostname 常量是： *ALLOW_DNS* 允许DNS主机名， *ALLOW_IP*
 允许本地网络名，和 *ALLOW_ALL* 允许所有三种类型。
 你可以用下面的例子仅仅检查IP地址：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       require_once 'Zend/Validate/Hostname.php';
       $validator = new Zend_Validate_Hostname(Zend_Validate_Hostname::ALLOW_IP);
@@ -59,8 +61,9 @@ Zend_Validate_Hostname 常量是： *ALLOW_DNS* 允许DNS主机名， *ALLOW_IP*
 来接受所有主机名类型。例如，你可以通过如下例子实例化Zend_Validate_Hostname对象来接受DNS和本地主机名:
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
 
       $validator = new Zend_Validate_Hostname(Zend_Validate_Hostname::ALLOW_DNS | Zend_Validate_Hostname::ALLOW_LOCAL);}
@@ -98,8 +101,9 @@ Zend_Validate_Hostname 常量是： *ALLOW_DNS* 允许DNS主机名， *ALLOW_IP*
 
 你可以象下面通过传递第二个参数给Zend_Validate_Hostname构造器来禁止IDN校验。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
 
       $validator = new Zend_Validate_Hostname(Zend_Validate_Hostname::ALLOW_DNS, false);
@@ -115,8 +119,9 @@ Zend_Validate_Hostname 常量是： *ALLOW_DNS* 允许DNS主机名， *ALLOW_IP*
 缺省地主机名通过已知的TLDs列表来检查。如果不需要这个功能，它可以被禁止，就像禁止IDN支持一样。你可以通过传递第三个参数给Zend_Validate_Hostname构造器来禁止TLD校验。在下面的例子中，我们通过第二个参数来支持IDN校验。
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
 
       $validator = new Zend_Validate_Hostname(Zend_Validate_Hostname::ALLOW_DNS, true, false);

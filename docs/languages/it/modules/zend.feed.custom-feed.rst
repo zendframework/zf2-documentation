@@ -14,8 +14,9 @@ debba preoccuparsi affatto dell'uso dei namespace.
 
 .. rubric:: Estensione della classe elemento Atom con namespace personalizzati
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    /**
     * La classe elemento personalizzata conosce l'URI del feed (opzionale) e
@@ -73,8 +74,9 @@ debba preoccuparsi affatto dell'uso dei namespace.
 A questo punto per utilizzare la classe è sufficiente crearne direttamente un'istanza ed impostare la proprietà
 *myUpdated*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $entry = new MyEntry();
    $entry->myUpdated = '2005-04-19T15:30';

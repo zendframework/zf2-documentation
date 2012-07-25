@@ -25,7 +25,7 @@ LDAP 认证
 为了快速把 *Zend_Auth_Adapter_Ldap* 认证集成到你的程序中，即使你不使用 *Zend_Controller*\
 ，代码的基本部分看起来是这样的：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $username = $this->_request->getParam('username');
@@ -73,7 +73,7 @@ LDAP 认证
 一节。 注意 *Zend_Config_Ini* 要求任何带有等号（ *=*\ ）的值需要括起来（如下面的
 DNs）。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       [production]
@@ -122,7 +122,7 @@ The API
 下面是一个选项参数包含两组服务器选项（ *s0.foo.net* 和 *dc1.w.net* （和上面 INI
 表示法一样的选项））的例子的 `print_r()`_ 输出：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       Array

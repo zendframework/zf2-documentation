@@ -22,8 +22,9 @@ kleine letters.
 
 Om tussen analysatoren te wisselen kan je de volgende code gebruiken:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    Zend_Search_Lucene_Analysis_Analyzer::setDefault(
@@ -43,8 +44,9 @@ Hier is een voorbeeld van een zelfgemaakte analysator, welke woorden met cijfers
 
    .. rubric:: Custom tekst Analysator
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       /** Dit is een zelfgemaakte tekst analysator, die woorden met cijfers als een enkele term beschouwt */
 
@@ -143,8 +145,9 @@ Het scoring algoritme kan verpersoonlijkt worden door je eigen Similarity klasse
 de Zend_Search_Lucene_Search_Similarity klasse uitbreiden zoals hierna is gedefinieerd, en dan de
 *Zend_Search_Lucene_Search_Similarity::setDefault($similarity);* methode gebruiken om het tot standaard te zetten.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    class MySimilarity extends Zend_Search_Lucene_Search_Similarity {
@@ -203,6 +206,7 @@ Zend_Search_Lucene_Storage_Directory methodes:
 
 .. code-block:: php
    :linenos:
+
    <?php
 
    abstract class Zend_Search_Lucene_Storage_Directory {
@@ -302,6 +306,7 @@ implementatie:
 
 .. code-block:: php
    :linenos:
+
    <?php
 
    class MyFile extends Zend_Search_Lucene_Storage_File {

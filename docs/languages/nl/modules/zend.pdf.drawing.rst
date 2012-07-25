@@ -13,7 +13,7 @@ afgemeten in points (1/72 van een duim).
 
 De grootte van een pagina kan worden verkregen van het pagina object:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $width  = $pdfPage->getWidth();
@@ -28,7 +28,7 @@ PDF heeft geweldig goede kleurweergavemogelijkheden. Zend_Pdf ondersteunt grijss
 van deze notaties kan worden gebruikt daar waar een *Zend_Pdf_Color* object nodig is. De
 *Zend_Pdf_Color_GrayScale*, *Zend_Pdf_Color_RGB* en *Zend_Pdf_Color_CMYK* klassen verstrekken deze functionaliteit:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // $grayLevel (float number). 0.0 (zwart) - 1.0 (wit)
@@ -49,7 +49,7 @@ Alle tekenoperaties kunnen worden uitgevoerd in de context van een PDF pagina.
 
 De *Zend_Pdf_Page* klasse verstrekt een set van teken methodes:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -62,7 +62,7 @@ De *Zend_Pdf_Page* klasse verstrekt een set van teken methodes:
     */
    public function drawLine($x1, $y1, $x2, $y2);
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -81,7 +81,7 @@ De *Zend_Pdf_Page* klasse verstrekt een set van teken methodes:
     */
    public function drawRectangle($x1, $y1, $x2, $y2, $fillType = Zend_Pdf_Const::SHAPEDRAW_FILLNSTROKE);
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -101,7 +101,7 @@ De *Zend_Pdf_Page* klasse verstrekt een set van teken methodes:
                                $fillType = Zend_Pdf_Const::SHAPEDRAW_FILLNSTROKE,
                                $fillMethod = Zend_Pdf_Const::FILLMETHOD_NONZEROWINDING);
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -131,7 +131,7 @@ De *Zend_Pdf_Page* klasse verstrekt een set van teken methodes:
     */
    public function  drawCircle($x, $y, $radius, $param4 = null, $param5 = null, $param6 = null);
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -162,7 +162,7 @@ Tekst schrijven
 
 Ook tekst wordt geschreven in de paginacontext:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -186,7 +186,7 @@ Lettertypes gebruiken
 De *Zend_Pdf_Page::drawText()* methode gebruikt het actieve lettertype die kan gezet worden door de
 *Zend_Pdf_Page::drawText()* methode:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -204,8 +204,9 @@ als argument:
 
 .. rubric:: Een standaard lettertype maken
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    ...
    // Een nieuw lettertype maken
@@ -255,7 +256,7 @@ Beelden tekenen
 
 De *Zend_Pdf_Page* klasse voorziet de *drawImage()* methode om beelden te tekenen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -275,8 +276,9 @@ Alleen JPG beelden zijn momenteel ondersteund:
 
 .. rubric:: Beelden tekenen
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    ...
    $image = new Zend_Pdf_Image_JPEG('my_image.jpg');
@@ -296,7 +298,7 @@ Lijnstijl tekenen
 De lijnstijl wordt gedefinieerd door lijndikte, lijnkleur en lijnstippenpatroon. Al deze parameters kunnen door de
 *Zend_Pdf_Page* klasse methodes worden aangegeven:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /** Zet lijnkleur. */
@@ -378,7 +380,7 @@ Rotaties
 Een PDF pagina kan geroteerd worden zo lang er nog niets op werd geschreven of getekend. Het wordt gedaan door de
 *Zend_Pdf_Page::rotate()* methode:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -399,7 +401,7 @@ data in een grafische staatstapel op, de hersteloperatie haalt ze er weer uit.
 
 Dit zijn de *Zend_Pdf_Page* klassemethodes om deze operaties uit te voeren:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -424,7 +426,7 @@ pagina die door tekenoperaties worden beïnvloed. Initieel is het de volledige p
 
 De *Zend_Pdf_Page* klasse verstrekt een set methodes voor clipoperaties.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -437,7 +439,7 @@ De *Zend_Pdf_Page* klasse verstrekt een set methodes voor clipoperaties.
     */
    public function clipRectangle($x1, $y1, $x2, $y2);
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -449,7 +451,7 @@ De *Zend_Pdf_Page* klasse verstrekt een set methodes voor clipoperaties.
     */
    public function clipPolygon($x, $y, $fillMethod = Zend_Pdf_Const::FILLMETHOD_NONZEROWINDING);
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -463,7 +465,7 @@ De *Zend_Pdf_Page* klasse verstrekt een set methodes voor clipoperaties.
     */
    public function clipCircle($x, $y, $radius, $startAngle = null, $endAngle = null);
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -494,7 +496,7 @@ De *Zend_Pdf_Style* klasse voorziet in stijlen
 Stijlen kunnen gebruikt worden om een set grafische parameters op te slaan en ze toe te brengen op een PDF pagina
 in één operatie:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -514,7 +516,7 @@ in één operatie:
 De *Zend_Pdf_Style* klasse voorziet in een set methodes om verschillende grafische staat parameters te zetten of te
 verkrijgen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -524,7 +526,7 @@ verkrijgen:
     */
    public function setLineColor(Zend_Pdf_Color $color);
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -534,7 +536,7 @@ verkrijgen:
     */
    public function getLineColor();
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -544,7 +546,7 @@ verkrijgen:
     */
    public function setLineWidth($width);
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -554,7 +556,7 @@ verkrijgen:
     */
    public function getLineWidth($width);
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -565,7 +567,7 @@ verkrijgen:
     */
    public function setLineDashingPattern($pattern, $phase = 0);
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -575,7 +577,7 @@ verkrijgen:
     */
    public function getLineDashingPattern();
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -585,7 +587,7 @@ verkrijgen:
     */
    public function getLineDashingPhase();
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -595,7 +597,7 @@ verkrijgen:
     */
    public function setFillColor(Zend_Pdf_Color $color);
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -605,7 +607,7 @@ verkrijgen:
     */
    public function getFillColor();
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -616,7 +618,7 @@ verkrijgen:
     */
    public function setFont(Zend_Pdf_Font $font, $fontSize);
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -626,7 +628,7 @@ verkrijgen:
     */
    public function setFontSize($fontSize);
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -636,7 +638,7 @@ verkrijgen:
     */
    public function getFont();
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
