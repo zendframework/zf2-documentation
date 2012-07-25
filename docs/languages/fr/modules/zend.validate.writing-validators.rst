@@ -166,7 +166,7 @@ mot de passe :
 
 La classe suivante implémente ces critères de validation :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       class MonValidateur_PasswordStrength extends Zend_Validate_Abstract

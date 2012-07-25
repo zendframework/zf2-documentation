@@ -19,8 +19,9 @@ altri pensano che questo possa creare alcuni sostanziali rischi di sicurezza.
 Per impostazione predefinita, *Zend_Json* decodifica gli oggetti JSON in array associativi, Tuttavia, se si
 desidera che il metodo restituisca un oggetto, è possibile specificarlo:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Decodifica gli oggetti JSON in oggetti PHP
    $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);

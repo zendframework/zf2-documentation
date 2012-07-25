@@ -6,8 +6,9 @@ Lettura di un feed RSS
 Leggere un feed RSS è tanto semplice quanto creare un'istanza di un nuovo oggetto *Zend_Feed_Rss* con l'URL del
 feed:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $channel = new Zend_Feed_Rss('http://rss.example.com/channelName');
 
@@ -16,8 +17,9 @@ Se qualche errore si verifica nel recuperare il feed, verrà generata un'eccezio
 Una volta a disposizione un oggetto feed si ha accesso ad ognuna delle proprietà standard di un canale RSS
 (channel), direttamente dall'oggetto:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    echo $channel->title();
 
@@ -29,8 +31,9 @@ ogni singolo nodo così come consente pieno accesso a tutti gli elementi figli d
 Se le proprietà di un canale contengono attributi è possibile accedervi utilizzando la sintassi tipica di un
 array in PHP:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    echo $channel->category['domain'];
 
@@ -40,8 +43,9 @@ per accedere ai valori degli attributi.
 Più comunemente si desidera scorrere il feed ed eseguire qualche azione con i suoi elementi. *Zend_Feed_Abstract*
 implementa l'interfaccia PHP *Iterator*, dunque stampare tutti i titoli degli articoli consiste esclusivamente in:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    foreach ($channel as $item) {
        echo $item->title() . "\n";
@@ -99,8 +103,9 @@ Tipici tag di un elemento:
 
 E' possibile verificare la presenza di un elemento all'interno del codice utilizzando:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    if ($item->propname()) {
        // ... proceed.

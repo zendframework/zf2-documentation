@@ -22,8 +22,9 @@ Controller Script
 As a simple example, let us say your controller has a list of book data that it wants to have rendered by a view.
 The controller script might look something like this:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // use a model to get the data for book authors and titles.
    $data = array(
@@ -59,8 +60,9 @@ executes inside the scope of the Zend_View instance, which means that references
 instance properties and methods. (Variables assigned to the instance by the controller are public properties of the
 Zend_View instance.) Thus, a very basic view script could look like this:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php if ($this->books): ?>
 
        <!-- A table of some books. -->
@@ -97,7 +99,7 @@ Options
 - *basePath:* indicate a base path from which to set the script, helper, and filter path. It assumes a directory
   structure of:
 
-  .. code-block::
+  .. code-block:: php
      :linenos:
 
      base/path/

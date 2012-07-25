@@ -17,8 +17,9 @@ oproepen met de naam van de van toepassing zijnde adapter en een array van param
 beschrijven. Bijvoorbeeld, om een verbinding tot stand te brengen op een MySQL database die "camelot" heet op
 localhost met een user genaamd "arthur":
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    require_once 'Zend/Db.php';
@@ -33,8 +34,9 @@ localhost met een user genaamd "arthur":
    ?>
 Om een verbinding te maken met een SQLite database genaamd "camelot":
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    require_once 'Zend/Db.php';
@@ -59,8 +61,9 @@ De eerste van deze methodes is de *quote()* methode. Het zal een scalaire waarde
 adapter; als je een array probeert te quoten zal het een komma-gescheiden string van arraywaarden terugsturen, elk
 van deze waarden met correcte quotes (dit is handig voor functies die een lijstparameter verwachten).
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // maak een $db object, we nemen aan dat de adapter Mysql is.
@@ -78,8 +81,9 @@ De tweede methode is de *quoteInto()* methode. Je geeft een basis string op met 
 één scalaire waarde of een array om erin te quoten. Dit is handig om queries en clausules te maken "as-you-go".
 Scalaire waarden en arrays werken hetzelfde als in de *quote()* methode.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // maak een $db object, we nemen aan dat de adapter Mysql is.
@@ -102,8 +106,9 @@ Eenmaal je een *Zend_Db_Adapter* instantie hebt, kan je queries direct in SQL ui
 die queries door aan het onderliggende PDO object, die de query klaarmaakt en uitvoert en dan een PDOStatement
 object teruggeeft met de resultaten (als die er zijn) voor jou om te behandelen.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // maak een $db object, en ondervraag de database
@@ -123,8 +128,9 @@ zetten, en dan een array kan doorgeven die de data bevat om de plaatshouders te 
 zullen automatisch de juiste quotes krijgen, en zodanig een grotere veiligheid verstrekken tegen SQL injectie
 aanvallen.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // maak een $db object, en ondervraag de database
@@ -141,8 +147,9 @@ aanvallen.
 Naar keuze zou je handmatig data willen voorbereiden en binden aan SQL verklaringen. Om dit te doen kan je de
 *prepare()* methode gebruiken om een voorbereid *PDOStatement* te verkrijgen dat je kan aanpassen.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // maak een $db object, en ondervraag de database
@@ -165,8 +172,9 @@ gecommit wanneer ze worden uitgevoerd. Indien je wenst dat ze in een transactie 
 eenvoudigweg de *beginTransaction()* methode oproepen en, naargelang, je veranderingen *commit()* of *rollBack()*.
 *Zend_Db_Adapter* keert terug naar "auto-commit" mode tot je opnieuw de *beginTransaction* methode aanroept.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // maak $db object, en begin een transactie
@@ -197,8 +205,9 @@ De terugkeerwaarde is **niet** de laatst ingevoegde ID omdat het kan zijn dat de
 heeft; in de plaats daarvan is de terugkeerwaarde het aantal rijen dat werd beïnvloedt (gewoonlijk 1). Als je de
 ID van de laatst ingevoegde rij wil, kan je de *lastInsertId()* methode oproepen na de invoeging.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    //
@@ -235,8 +244,9 @@ injectie aanvallen te voorkomen.
 Je kan een optionele WHERE clausule verstrekken om te determineren welke rijen moeten worden geupdate. (Merk op dat
 de WHERE clausule geen gebonden parameter is, de waarden ervan moet je dus zelf correct quoten.)
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    //
@@ -270,8 +280,9 @@ Voor jouw gemak kan je de *delete()* methode gebruiken om een DELETE verklaring 
 optionele WHERE clausule verstrekken om te definiëren welke rijen je wil verwijderen. (Merk op dat de WHERE
 clausule geen gebonden parameter is, de waarden ervan moet je dus zelf correct quoten.)
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    //
@@ -313,8 +324,9 @@ omringd en in de verklaring worden opgenomen. De *fetch\*()* methodes zijn:
 
 - *fetchRow()*
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // maak een $db object, en dan...

@@ -31,8 +31,9 @@ určuje poradie stránok a je sním možné manipulovať ako klasickým poľom:
 
 .. rubric:: PDF document pages management.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    ...
    // Otočenie poradia stránok

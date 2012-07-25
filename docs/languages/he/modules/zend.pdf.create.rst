@@ -16,7 +16,7 @@
 
 .. rubric:: יצירת קובץ PDF חדש או טעינה של אחד קיים
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -41,7 +41,7 @@
 
 .. rubric:: קבלת גרסא מסויימת של קובץ PDF
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...

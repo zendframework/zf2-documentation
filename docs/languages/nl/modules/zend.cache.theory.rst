@@ -33,8 +33,9 @@ De Zend_Cache factory methode
 Een goede manier om een bruikbare instantie van een *Zend_Cache* frontend te bouwen wordt gegeven in het volgende
 voorbeeld:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    # We "laden" de Zend_Cache factory.
@@ -74,8 +75,9 @@ Tags zijn een manier om je cache records te categoriseren. Wanneer je een cache 
 kan je een array zetten met tags voor deze record. Vervolgens heb je de mogelijkheid om alle cache records met een
 bepaalde tag of met bepaalde tags op te schonen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $cache->save($veel_data, 'mijnUniekeID', array('tagA', 'tagB', 'tagC'));
@@ -88,8 +90,9 @@ Opschonen van de cache
 
 Om een specifieke cache id te verwijderen/invalideren kan je de *remove()* methode gebruiken:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $cache->remove('idOmTeVerwijderen');
@@ -98,8 +101,9 @@ Om een specifieke cache id te verwijderen/invalideren kan je de *remove()* metho
 Om verschillende cache ids in een operatie te verwijderen/invalideren kan je de *clean()* methode gebruiken.
 Bijvoorbeeld om alle cache records te verwijderen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // Schoon alle cache records op
@@ -111,8 +115,9 @@ Bijvoorbeeld om alle cache records te verwijderen:
    ?>
 Als je cache records wil verwijderen die aan tags 'tagA' en 'tagC' voldoen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, array('tagA', 'tagC'));

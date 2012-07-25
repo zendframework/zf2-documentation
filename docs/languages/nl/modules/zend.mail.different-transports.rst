@@ -9,7 +9,7 @@ object zal het standaard transport vervangen voor het huidige *send()* verzoek:
 
 .. rubric:: Verschillende Transporten gebruiken
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

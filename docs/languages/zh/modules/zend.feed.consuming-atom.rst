@@ -13,8 +13,9 @@ Atom Feed的使用
 
 读取一个Atom Feed并打印出每个条目的 *title* 和 *summary*\ ：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $feed = new Zend_Feed_Atom('http://atom.example.com/feed/');

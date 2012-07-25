@@ -6,7 +6,7 @@ Importowanie kanałów informacyjnych
 *Zend_Feed* pozwala programistom bardzo łatwo odbierać wiadomości z kanałów informacyjnych. Jeśli znasz adres
 URI kanału, w prosty sposób użyj metody *Zend_Feed::import()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $feed = Zend_Feed::import('http://feeds.example.com/feedName');
@@ -14,7 +14,7 @@ URI kanału, w prosty sposób użyj metody *Zend_Feed::import()*:
 
 Możesz także użyć *Zend_Feed* do pobrania zawartości kanału z pliku lub z łańcucha znaków PHP:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // importowanie kanału z pliku tekstowego
@@ -45,7 +45,7 @@ locie, przez własne źródło danych implementujące interfejs *Zend_Feed_Build
 Importowanie własnej tablicy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // importowanie kanału z tablicy
@@ -61,7 +61,7 @@ Importowanie własnej tablicy
 
 Format tablicy musi zgadzać się z taką strukturą:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    array(
@@ -199,7 +199,7 @@ klasy *Zend_Feed_Builder_Header*, a metoda *getEntries()* musi zwracać tablicę
 
 Oto przykład użycia metody *Zend_Feed::importBuilder()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // importowanie kanału z własnego źródła
@@ -223,7 +223,7 @@ Zrzucanie zawartości kanału
 
 Aby zrzucić zawartość instancji *Zend_Feed_Abstract*, możesz użyć metody *send()* lub *saveXml()*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
 

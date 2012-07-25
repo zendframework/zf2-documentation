@@ -23,7 +23,7 @@ Zend_ProgressBar
 ולבחור בסוג המתאם לשימוש ולהצגת הנתונים. אם תרצו לעבד קובץ
 תצטרכו לעשות משהו כזה:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $progressBar = new Zend_ProgressBar($adapter, 0, $fileSize);

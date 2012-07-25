@@ -8,7 +8,7 @@ zajmuje helper JSON, a dodatkowo domyślnie wyłącza layouty (jeżeli są aktyw
 
 Helper JSON ustawia następujący nagłówek
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    Content-Type: application/json
@@ -19,7 +19,7 @@ zawartość.
 
 Użycie helpera jest następujące:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?= $this->json($this->data) ?>

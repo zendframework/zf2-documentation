@@ -7,7 +7,7 @@ Często do pewnej wartości potrzebujemy zastosować wiele weryfikatorów w okre
 demonstruje sposób rozwiązania przykładu z :ref:`wprowadzenia <zend.validate.introduction>`, gdzie nazwa
 użytkownika musi mieć długość między 6 a 12 alfanumerycznych znaków:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       // Tworzymy łańcuch weryfikatorów i dodajemy do niego weryfikatory
@@ -41,7 +41,7 @@ weryfikacji, które w danej sytuacji zostaną uznane za bezużyteczne. Jeśli po
 tak jak poniżej, wtedy weryfikacja znaków alfanumerycznych nie byłaby przeprowadzona jeśli długość
 łańcucha znaków byłaby nieodpowiednia:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validatorChain->addValidator(new Zend_Validate_StringLength(6, 12), true)

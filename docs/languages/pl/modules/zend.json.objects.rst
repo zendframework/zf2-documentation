@@ -19,7 +19,7 @@ mogłoby to być istotną luką w bezpieczeństwie.
 Domyślnie *Zend_Json* odkoduje obiekty JSON jako tablice asocjacyjne. Jednak jeśli chcesz odebrać obiekt,
 możesz to określić w ten sposób:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Odkoduj obiekty JSON jako obiekty PHP

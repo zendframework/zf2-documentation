@@ -19,8 +19,9 @@ nabije toekomst.
 We raden je sterk aan jouw data in ASCII om te schrijven [#]_ (zowel voor het opslaan als voor het queryen van de
 brondocumenten):
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $doc = new Zend_Search_Lucene_Document();
    ...

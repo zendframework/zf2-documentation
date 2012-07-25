@@ -75,7 +75,7 @@ Créer des objets verrouillés
 Créer des objets verrouillés (objets qui ne doivent pas être mis en cache) en utilisant la méthode
 ``Zend_Memory_Manager::createLocked([$data])``:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $memObject = $memoryManager->createLocked($data);
@@ -168,7 +168,7 @@ mise de cache/chargement
 Vous pouvez récupérer et régler la taille minimale en utilisant les méthodes ``getMinSize()`` et
 ``setMinSize($newSize)``:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $oldMinSize = $memoryManager->getMinSize();

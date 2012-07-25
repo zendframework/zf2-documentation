@@ -23,7 +23,7 @@ feed并将其中的一般部分相关数据保存到一个PHP数组中的简单�
 
 .. rubric:: 用Zend_Feed来处理RSS Feed数据
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

@@ -53,7 +53,7 @@ plus des constantes (*const*) qui correspondent aux identificateurs d'erreur.
 
 L'exemple suivant illustre la validation d'une adresse émail :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_EmailAddress();
@@ -134,7 +134,7 @@ classe de validation donnée. La propriété *value* est toujours accessible dan
 valeur fournie comme argument à ``isValid()``. D'autres propriétés peuvent être supportées au cas par cas par
 chaque classe de validation.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_StringLength(array('min' => 8, 'max' => 12));
@@ -175,7 +175,7 @@ donnée d'entrée.
 Vous pouvez aussi fournir un tableau de paramètres destinés au constructeur de la classe, s'ils sont nécessaires
 pour votre classe de validation.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       if (Zend_Validate::is($value,

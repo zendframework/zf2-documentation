@@ -14,8 +14,9 @@ de variabelen die intern zijn aan het script zelf.)
 
 Bij wijze van geheugenverfrisser vindt je hieronder het view script van de Zend_View inleiding:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php if ($this->books): ?>
 
        <!-- Een tabel van enige boeken. -->
@@ -52,8 +53,9 @@ altijd variabelen moeten escapen als je ze output.
 
 Zend_View komt met een methode escape() die veel van het escape werk voor je uitvoert.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // slecht gebruik van het view-script:
    echo $this->variable;
@@ -66,8 +68,9 @@ Standaard gebruikt de escape() methode de PHP functie htmlspecialchars() om data
 environment zou het kunnen dat je zou willen dat het escapen op een andere manier wordt uitgevoerd. Gebruik de
 setEscape() methode op controller niveau om Zend_View te laten weten welke escape callback te gebruiken.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Maak een Zend_View instantie
    $view = new Zend_View();
@@ -99,8 +102,9 @@ systeem is voor template designers. Daarom kan het view script gebruikt worden o
 instantiëren en te manipuleren, zoals een PHPLIB-stijl template. Het view script voor dit soort aktiviteir zou er
 als volgt kunnen uitzien:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    include_once 'template.inc';
    $tpl = new Template();
@@ -126,7 +130,7 @@ als volgt kunnen uitzien:
 
 Dit zouden de template bestanden zijn:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!-- boeklijst.tpl -->

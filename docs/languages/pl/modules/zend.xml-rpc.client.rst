@@ -28,7 +28,7 @@ eksplorowania komponentów *Zend_XmlRpc*.
 
 .. rubric:: Wywołanie metody XML-RPC
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $client = new Zend_XmlRpc_Client('http://framework.zend.com/xmlrpc');
@@ -50,7 +50,7 @@ tablicy wartości do przekazania do zdalnej metody:
 
 .. rubric:: Wywołanie metody XML-RPC z parametrem
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $client = new Zend_XmlRpc_Client('http://framework.zend.com/xmlrpc');
@@ -128,7 +128,7 @@ i skonwertowana do jednego z typów XML-RPC, zgodnie z tą tabelą:
    Aby całkowicie zablokować takie sprawdzanie, możesz wywołać metodę *setSkipSystemLookup()* przed
    wywołaniem metody XML-RPC call:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $client->setSkipSystemLookup(true);
@@ -209,7 +209,7 @@ przekazane do zdalnego serwera, a parametry będą przekazane jak do każdej inn
 
 .. rubric:: Rozszerzanie domyślnej przestrzeni nazw
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $client = new Zend_XmlRpc_Client('http://framework.zend.com/xmlrpc');
@@ -227,7 +227,7 @@ następnym przykładzie będzie rozszerzona przestrzeń nazw *test*:
 
 .. rubric:: Rozszerzanie dowolnej przestrzeni nazw
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $client = new Zend_XmlRpc_Client('http://framework.zend.com/xmlrpc');
@@ -261,7 +261,7 @@ zostanie wyjątek *Zend_XmlRpc_Client_HttpException*.
 
 .. rubric:: Obsługa błędów HTTP
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $client = new Zend_XmlRpc_Client('http://foo/404');
@@ -298,7 +298,7 @@ odpowiednich wartości oryginalnej odpowiedzi błędu XML-RPC.
 
 .. rubric:: Obsługa błędów XML-RPC
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $client = new Zend_XmlRpc_Client('http://framework.zend.com/xmlrpc');
@@ -350,7 +350,7 @@ Metoda *doRequest()* jest także dostępna dla bezpośredniego użycia:
 
 .. rubric:: Przetwarzanie żądania do odpowiedzi
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $client = new Zend_XmlRpc_Client('http://framework.zend.com/xmlrpc');

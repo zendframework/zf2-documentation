@@ -9,7 +9,7 @@ is voor *send()* word opgeroepen zal dat transport worden gebruikt en de verbind
 
 .. rubric:: Meerdere e-mails sturen via een SMTP verbinding
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

@@ -20,8 +20,9 @@ Zend_Db_Table_Row是Zend Framework的行数据网关.通常来说,你不可以�
 
 首先,需要实例化一个Zend_Db_Table类.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 设置一个 adapter
    require_once 'Zend/Db.php';
@@ -48,8 +49,9 @@ Zend_Db_Table_Row是Zend Framework的行数据网关.通常来说,你不可以�
 对象,该对象的属性名采用camelCaps的形式对应数据库中带下划线的表名.例如,表名
 若为first_name,那么类中的改属性则为firstName.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 从表中取回的结果数据是一个Zend_Db_Table_Row对象
    $row = $table->fetchRow('first_name = "Robin"');
@@ -74,8 +76,9 @@ Zend_Db_Table_Row是Zend Framework的行数据网关.通常来说,你不可以�
 修改行数据是一件很轻松的事情:只需要按照常规的方法修改类属性.然后调用save()方法
 就将改变的结果保存到了数据表中.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 连接到数据库中的表
    class RoundTable extends Zend_Db_Table {}
@@ -100,8 +103,9 @@ Zend_Db_Table_Row是Zend Framework的行数据网关.通常来说,你不可以�
 
 但是,你不能够修改主键的值.假如你试图进行改操作, Zend_Db_Table_Row将抛出一个异常.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 连接到数据库中的表
    class RoundTable extends Zend_Db_Table {}

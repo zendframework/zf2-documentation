@@ -10,7 +10,7 @@ Mobile
 
 Créer des objets mémoires mobiles en utilisant la méthode ``create([$data])`` du manager de mémoire :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $memObject = $memoryManager->create($data);
@@ -28,7 +28,7 @@ Verrouillé
 Créer des objets mémoires verrouillés en utilisant la méthode ``createLocked([$data])`` du manager de mémoire
 :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $memObject = $memoryManager->createLocked($data);
@@ -59,7 +59,7 @@ Propriété "value" du manager de mémoire
 Utilisez la propriété "*value*" du conteneur de mémoire (mobile ou verrouillé) pour travailler avec les
 données des objets mémoire :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $memObject = $memoryManager->create($data);

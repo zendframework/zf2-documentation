@@ -110,6 +110,7 @@ Zend_Cache ファクトリメソッド
 
 .. code-block:: php
    :linenos:
+
    // すべてのレコードを削除します
    $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
 

@@ -48,7 +48,7 @@ OpenID 认证协议自己。
 *$_POST['openid_action']* 设置给 *"login"*\ 时；第二次 － 在从 OpenID 服务器重定向 HTTP
 之后，当 *$_GET['openid_mode']* 或 *$_POST['openid_mode']* 被设置。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

@@ -61,8 +61,9 @@ Constructor를 이용하여 아답터의 인스탄트를 생성할수 있습니�
 
 .. rubric:: 아답터의 constructor 사용
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
 
@@ -90,8 +91,9 @@ constructor에 넘겨주는 인수의 배열과 같은 형식의 배열이 됩�
 
 .. rubric:: Adapter factory 메소드의 사용
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Db.php';
 
@@ -112,8 +114,9 @@ Zend_Db_Adapter_Abstract 클라스를 상속한 독자적인 클라스를 구성
 
 .. rubric:: 커스텀 아답터 클래스를 위한 Adapter factory 메소드 이용하기
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Db.php';
 
@@ -147,8 +150,9 @@ method is absent.
 <zend.config.adapters.ini>` 또는 :ref:`Zend_Config_Xml <zend.config.adapters.xml>`\ 을 이용하여 외부
 파일로부터도 데이터를 로드 할수 있습니다.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Config.php';
    require_once 'Zend/Db.php';
@@ -214,8 +218,9 @@ takes priority over any parameters supplied in the first argument.
 키 값을 변환합니다. 옵션 값으로는 *Zend_Db::CASE_NATURAL* (기본값), *Zend_Db::CASE_UPPER*,
 그리고 *Zend_Db::CASE_LOWER* 가 있습니다.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $options = array(
        Zend_Db::CASE_FOLDING => Zend_Db::CASE_UPPER
@@ -242,8 +247,9 @@ takes priority over any parameters supplied in the first argument.
 식별자의 자동쿼팅은 적용 되지않습니다. 만약 쿼트를 이용해야 할경우 *quoteIdentifier()*
 메소드를 이용하여 쿼팅할수 있습니다.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $options = array(
        Zend_Db::AUTO_QUOTE_IDENTIFIERS => false
@@ -263,8 +269,9 @@ takes priority over any parameters supplied in the first argument.
 
 .. rubric:: 팩토리에 PDP 드라이버 옵션 지정하기
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $pdoParams = array(
        PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true
@@ -307,8 +314,9 @@ instead of at the time of the first query against the database.
 
 .. rubric:: 접속 예외 처리
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    try {
        $db = Zend_Db::factory('Pdo_Mysql', $parameters);
@@ -341,7 +349,7 @@ database contains four tables:
 The following SQL data definition language pseudocode describes the tables in this example database. These example
 tables are used extensively by the automated unit tests for Zend_Db.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    CREATE TABLE accounts (
@@ -403,8 +411,9 @@ statement.
 
 .. rubric:: Using fetchAll()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $sql = 'SELECT * FROM bugs WHERE bug_id = ?';
 
@@ -451,8 +460,9 @@ identified by constants:
 
 .. rubric:: Using setFetchMode()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->setFetchMode(Zend_Db::FETCH_OBJ);
 
@@ -473,8 +483,9 @@ the fetch mode.
 
 .. rubric:: Using fetchAssoc()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->setFetchMode(Zend_Db::FETCH_OBJ);
 
@@ -497,8 +508,9 @@ discarded. If you need to return a column other than the first, see :ref:`
 
 .. rubric:: Using fetchCol()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->setFetchMode(Zend_Db::FETCH_OBJ);
 
@@ -524,8 +536,9 @@ values in the first column, entries in the associative array will be overwritten
 
 .. rubric:: Using fetchPairs()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->setFetchMode(Zend_Db::FETCH_OBJ);
 
@@ -545,8 +558,9 @@ the result set.
 
 .. rubric:: Using fetchRow()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->setFetchMode(Zend_Db::FETCH_OBJ);
 
@@ -568,8 +582,9 @@ it returns only a single scalar value, not an array or an object.
 
 .. rubric:: Using fetchOne()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $result = $db->fetchOne('SELECT bug_status FROM bugs WHERE bug_id = 2');
 
@@ -596,8 +611,9 @@ names the table, and the second argument is an associative array, mapping column
 
 .. rubric:: Inserting to a table
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $data = array(
        'created_on'      => '2007-03-22',
@@ -623,8 +639,9 @@ instead of a plain string.
 
 .. rubric:: Inserting expressions to a table
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $data = array(
        'created_on'      => new Zend_Db_Expr('CURDATE()'),
@@ -651,8 +668,9 @@ insert. This method returns the last value generated in the scope of the current
 
 .. rubric:: Using lastInsertId() for an auto-increment key
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->insert('bugs', $data);
 
@@ -670,8 +688,9 @@ would use a sequence named "bugs_bug_id_seq".
 
 .. rubric:: Using lastInsertId() for a sequence
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->insert('bugs', $data);
 
@@ -688,8 +707,9 @@ instead. This method takes a single string argument, naming the sequence literal
 
 .. rubric:: Using lastSequenceId()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->insert('bugs', $data);
 
@@ -748,8 +768,9 @@ The return value is the number of rows affected by the update operation.
 
 .. rubric:: Updating rows
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $data = array(
        'updated_on'      => '2007-03-23',
@@ -768,8 +789,9 @@ expression separated by *AND* operators.
 
 .. rubric:: Updating rows using an array of expressions
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $data = array(
        'updated_on'      => '2007-03-23',
@@ -804,8 +826,9 @@ The return value is the number of rows affected by the delete operation.
 
 .. rubric:: Deleting rows
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $n = $db->delete('bugs', 'bug_id = 3');
 
@@ -824,7 +847,7 @@ expressions. This is risky, because if the value in a PHP string contains certai
 symbol, it could result in invalid SQL. For example, notice the imbalanced quote characters in the following query:
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $name = "O'Reilly";
@@ -860,8 +883,9 @@ standard SQL string value delimiter is the single-quote (*'*).
 
 .. rubric:: Using quote()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $name = $db->quote("O'Reilly");
    echo $name;
@@ -881,7 +905,7 @@ instance, in some RDBMS brands, an integer value must not be quoted as a string 
 integer-type column or expression. In other words, the following is an error in some SQL implementations, assuming
 *intColumn* has a SQL datatype of *INTEGER*
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       SELECT * FROM atable WHERE intColumn = '123'
@@ -895,8 +919,9 @@ you specify.
 
 .. rubric:: Using quote() with a SQL type
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $value = '1234';
    $sql = 'SELECT * FROM atable WHERE intColumn = '
@@ -929,8 +954,9 @@ SQL string and the parameters as the statement is parsed in the RDBMS server.
 
 .. rubric:: Using quoteInto()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $sql = $db->quoteInto("SELECT * FROM bugs WHERE reported_by = ?", "O'Reilly");
 
@@ -944,8 +970,9 @@ quoted, and other types are quoted.
 
 .. rubric:: Using quoteInto() with a SQL type
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $sql = $db->quoteInto("SELECT * FROM bugs WHERE bug_id = ?", '1234', 'INTEGER');
 
@@ -977,8 +1004,9 @@ method also escapes special characters within the string argument.
 
 .. rubric:: Using quoteIdentifier()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // we might have a table name that is an SQL reserved word
    $tableName = $db->quoteIdentifier("order");
@@ -1027,8 +1055,9 @@ After you resolve this transaction, *Zend_Db_Adapter* returns to auto-commit mod
 
 .. rubric:: Managing a transaction to ensure consistency
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Start a transaction explicitly.
    $db->beginTransaction();
@@ -1122,8 +1151,9 @@ the connection, to avoid exhausting the capacity of your RDBMS server. You can u
 
 .. rubric:: Closing a database connection
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $db->closeConnection();
 
@@ -1162,8 +1192,9 @@ getConnection().
 
 .. rubric:: Running a non-prepared statement in a PDO adapter
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $result = $db->getConnection()->exec('DROP TABLE bugs');
 

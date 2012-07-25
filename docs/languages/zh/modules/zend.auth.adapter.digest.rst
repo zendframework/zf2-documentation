@@ -53,7 +53,7 @@
 健值的数组的身份形成。在 *authenticate()*\
 被调用之前，分别设置和这些健值关联的数组值为相符的值。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <

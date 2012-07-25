@@ -25,8 +25,9 @@ schrijven achter de sectienaam (*:*) en de naam van de sectie waarvan de data wo
    Standaard, is de punt (*.*) het teken om keys te scheiden. Dit kan worden gewijzigd, door de *$config* key
    *'nestSeparator'* te wijzigen als je een nieuwe *Zend_Config_Ini* object aanmaakt. Als voorbeeld:
 
-      .. code-block::
+      .. code-block:: php
          :linenos:
+
          <?php
          require_once 'Zend/Config/Ini.php';
          $config['nestSeparator'] = ':';
@@ -46,8 +47,9 @@ kunnen worden geschreven, de productieserver sectie zou erven van de preproducti
 het geval zou kunnen zijn in meer complexe situaties. Veronderstel dan dat de volgende configuratiedata in
 */path/to/config.ini* staat:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    ; Configuratiedata voor productieserver
    [productie]
    webhost           = www.example.com
@@ -66,8 +68,9 @@ het geval zou kunnen zijn in meer complexe situaties. Veronderstel dan dat de vo
 Veronderstel vervolgens dat de programmeur de preproductie configuratiedata van het INI bestand nodig heeft. Het is
 eenvoudig om die data in te laden door het INI bestand en de preproductie sectie te specifiëren:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Config/Ini.php';
 

@@ -17,8 +17,9 @@ ctype_alpha() 不支持 UTF-8，在不久的将来需要被替换为别的什么
 在此之前我们强烈推荐将你的数据转化成 ASCII 表示 [#]_
 (不管是存储原始文档，或者进行搜索)：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $doc = new Zend_Search_Lucene_Document();
    ...

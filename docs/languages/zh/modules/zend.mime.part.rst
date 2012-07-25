@@ -22,8 +22,9 @@ Zend_Mime_Part
 通过表示段的内容的字符串来实例化。缺省的内容类型为OCTET-STREAM，编码为8Bit。在
 *Zend_Mime_Part*\ 实例化之后, 可以直接访问它的属性来设置元信息：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    public $type = ZMime::TYPE_OCTETSTREAM;
    public $encoding = ZMime::ENCODING_8BIT;

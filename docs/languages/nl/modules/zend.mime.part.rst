@@ -22,8 +22,9 @@ Instantiëring
 dat het type van de inhoud OCTET-STREAM is, geëncodeerd op 8bits. Na het instantiëren van een *Zend_Mime_Part*
 kan je meta informatie zetten door onmiddellijk de attributen aan te spreken:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    public $type = ZMime::TYPE_OCTETSTREAM;
    public $encoding = ZMime::ENCODING_8BIT;

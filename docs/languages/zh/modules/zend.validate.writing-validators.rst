@@ -30,7 +30,7 @@ Framework返回一个布尔值。它们也提供关于 **why**\
 下面的例子演示如何编写一个非常简单的定制的校验器。在这个例子中，校验规则简单，输入值必须是浮点数值。
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       class MyValid_Float extends Zend_Validate_Abstract
@@ -80,7 +80,7 @@ Framework返回一个布尔值。它们也提供关于 **why**\
 
 这些校验失败的原因被翻译为在类中的定义：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       class MyValid_NumericBetween extends Zend_Validate_Abstract
@@ -156,7 +156,7 @@ Public 属性 *$minimum* 和 *$maximum*
 
 下面的类实现这些校验条件：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       class MyValid_PasswordStrength extends Zend_Validate_Abstract

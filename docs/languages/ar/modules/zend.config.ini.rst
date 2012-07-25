@@ -36,8 +36,9 @@ Zend_Config_Ini
 لكن دعونا نفترض أن بيانات الأعدادت التالية محفوظة على المسار
 *path/to/config.ini/*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    ; Production site configuration data
    [production]
    webhost           = www.example.com
@@ -58,8 +59,9 @@ Zend_Config_Ini
 هذه البيانات فقط عن طريق تحديد مسار ملف الـ INI و أسم قسم
 البيانات staging :
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Config/Ini.php';
 

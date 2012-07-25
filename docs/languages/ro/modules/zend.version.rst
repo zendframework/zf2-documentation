@@ -15,8 +15,9 @@ Framework.
 
 .. rubric:: Examplu pentru metoda compareVersion()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // returns -1, 0 or 1
    $cmp = Zend_Version::compareVersion('1.0.0');

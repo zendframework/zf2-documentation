@@ -17,7 +17,7 @@ op te vragen als eigenschappen van het layoutobject via de layout helper.
 
 Bijvoorbeeld:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!DOCTYPE html
@@ -49,7 +49,7 @@ gebruiken en heb je ook toegang tot alle viewvariabelen die reeds zijn ingesteld
 verschillende :ref:`placeholder helpers <zend.view.helpers.initial.placeholder>`, die je in staat stellen om
 velerlei gegevens voor bijvoorbeeld de <head>-sectie, navigatie, etc. op te vragen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!DOCTYPE html
@@ -92,8 +92,9 @@ view helper.
 
 Laten we om te beginnen kijken naar het initialiseren van *Zend_Layout* in een MVC-context.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // In de bootstrap:
    Zend_Layout::startMvc();
@@ -104,8 +105,9 @@ de instantie aan te passen aan jouw wensen. De verschillende beschikbare opties 
 
 In een actiecontroller kun je toegang tot het layoutobject krijgen alsof het een action helper is.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class FooController extends Zend_Controller_Action
    {
@@ -126,15 +128,16 @@ In je view scripts kun je toegang verkrijgen tot het layoutobject via de *layout
 verschilt van andere view helpers: hij neemt geen argumenten aan en geeft geen stringwaarde, maar een object terug.
 Dit stelt je in staat om het layoutobject verder direct te benaderen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php $this->layout()->setLayout('foo'); // Stel een alternatieve layout in ?>
 
 Je kunt te allen tijde het layoutobject (binnen MVC-context) opvragen via de statische methode *getMvcInstance()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Geeft null terug als startMvc() nog niet aangeroepen is
    $layout = Zend_Layout::getMvcInstance();
@@ -150,7 +153,7 @@ uitkomst in het 'default' response segment wordt geplaatst en de code vervolgens
 *CommentController::fetchAction()* wordt gestuurd, waarvan de uitkomst aan het eind van het 'default' response
 segment wordt toegevoegd. Je kunt dan beide segmenten apart door je layout script laten renderen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <body>
@@ -183,8 +186,9 @@ Als je *Zend_Layout* als standalone component gebruikt kun je simpelweg het layo
 verschillende accessoren gebruiken om het object te configureren, variabelen aan het object toe te wijzen en de
 layout te renderen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $layout = new Zend_Layout();
 

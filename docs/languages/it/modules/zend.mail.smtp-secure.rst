@@ -12,8 +12,9 @@ alternativa verranno usati i valori predefiniti 25 per TSL e 465 per SSL.
 
 .. rubric:: Abilitazione di una connessione sicura in Zend_Mail_Transport_Smtp
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    require_once 'Zend/Mail/Transport/Smtp.php';

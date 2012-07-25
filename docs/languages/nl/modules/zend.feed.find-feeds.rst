@@ -7,7 +7,7 @@ Web paginas bevatten dikwijls *alt;link>* afbakeningen die naar feeds met releva
 de pagina wijzen. *Zend_Feed* laat je toe om alle gereferenceerde feeds in een web pagina met één eenvoudige
 methode oproep te verkrijgen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

@@ -41,7 +41,7 @@ Zend_File_Transfer
 下一步是生成上载的接收者。在本例中接收者是 */file/upload* 。所以我们就编写
 带有动作 *upload* 的控制器 *file* 。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $adapter = new Zend_File_Transfer_Adapter_Http();

@@ -6,16 +6,18 @@ Importazione di feed
 *Zend_Feed* consente agli sviluppatori di recuperare i feed con facilità. Se si conosce l'URI di un feed è
 sufficiente utilizzare il metodo *Zend_Feed::import()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $feed = Zend_Feed::import('http://feeds.example.com/feedName');
 
 E' anche possibile usare *Zend_Feed* per recuperare il contenuto di un feed da un file o da una variabile stringa
 in PHP:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // importazione di un feed da un file di testo
    $feedDaFile = Zend_Feed::importFile('feed.xml');
@@ -44,8 +46,9 @@ personalizzata che implementa *Zend_Feed_Builder_Interface*.
 Importazione di un array personalizzato
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // importazione di un feed da un array
    $feedAtomDaArray = Zend_Feed::importArray($array);
@@ -59,8 +62,9 @@ Importazione di un array personalizzato
 
 Il formato dell'array deve essere conforme alla seguente struttura:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    array(
          'title'       => 'titolo del feed', // obbligatorio
@@ -191,8 +195,9 @@ un'istanza di *Zend_Feed_Builder_Header* e *getEntries()* deve restituire un arr
 
 Ecco un esempio di utilizzo di *Zend_Feed::importBuilder()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // importazione di un feed da un costruttore personalizzato
    $feedAtomDaArray = Zend_Feed::importBuilder(new Zend_Feed_Builder($array));
@@ -212,8 +217,9 @@ Stampa del contenuto di un feed
 Per stampare il contenuto di un'istanza di *Zend_Feed_Abstract* è possibile utilizzare i metodi *send()* o
 *saveXml()*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    assert($feed instanceof Zend_Feed_Abstract);
 

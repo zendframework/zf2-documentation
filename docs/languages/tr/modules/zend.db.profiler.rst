@@ -16,8 +16,9 @@ geliştiriciye hangi sorguların profilleneceğini filtrelemeye izin verir.
 Profilleyiciyi (profiler'ı) bağdaştırıcı yapıcısına gerekli direktifi vererek yada bağdaştırıcıdan
 sonra etkinleştirmesini isteyerek etkinleştirebilirsiniz.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Db.php';
 
@@ -43,7 +44,7 @@ kullanmalısınız ama diğer tipler profilleyicinin davranışını özelleşti
 Boole argüman *true* ise profilleyiciyi etkinleştirir , veya *false* ise etkisizleştirir. Profilleyici sınıfı
 bağdaştırıcı'nın varsayılan profilleyici sınıfı , örneğin *Zend_Db_Profiler*.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $params['profiler'] = true;
@@ -54,7 +55,7 @@ bağdaştırıcı'nın varsayılan profilleyici sınıfı , örneğin *Zend_Db_P
 Profilleyicinin bir instance'ı bağdaştırıcının o nesneyi kullanmasını sağlar. Nesne *Zend_Db_Profiler*
 veya bu nedenle altsınıf(subclass) tipinde olmalı.Profilleyicinin etkinleştirilmesi ayrı olarak yapıldı.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $profiler = MyProject_Db_Profiler();
@@ -70,7 +71,7 @@ anahtarı özel bir profilleyici kullanmak için bir sınıfı isimlendirmek iç
 *Zend_Db_Profiler* veya altsınıf olmalı. Sınıfın yapıcı argümanları olmadan intance'ı oluşturuldu.
 '*instance*' seçeneği sağlandığında '*class*' seçeneği gözardı edilir.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $params['profiler'] = array(
@@ -84,7 +85,7 @@ anahtarı özel bir profilleyici kullanmak için bir sınıfı isimlendirmek iç
 Son olarak argüman yukarıda açıklandığı gibi dizi anahtarları olarak işlem gören özellikler içeren
 *Zend_Config* tipinin nesnesi olabilir. Örneğin "config.ini" dosyası takip eden veriyi içerebilir:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       [main]
@@ -93,7 +94,7 @@ Son olarak argüman yukarıda açıklandığı gibi dizi anahtarları olarak iş
 
 Yapılandırma takip eden PHP kodu ile uygulanabilir:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $config = new Zend_Config_Ini('config.ini', 'main');
@@ -102,7 +103,7 @@ Yapılandırma takip eden PHP kodu ile uygulanabilir:
 
 '*instance*' özelliği aşağıdaki gibi kullanılabilir:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $profiler = new MyProject_Db_Profiler();
@@ -123,8 +124,9 @@ Profilleyiciyi Kullanma
 
 Herhangi bir noktada bağdaştırıcının *getProfiler()* metodu ile profilleyiciyi yakalayın:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $profiler = $db->getProfiler();
 
@@ -158,8 +160,9 @@ denetlenmesini sağlayan *Zend_Db_Profiler_Query* nesneleridir:
 *Zend_Db_Profiler*'ın sağladığı bilgi uygulamalardaki darboğazları profillemede ve çalıştırılan
 sorgularda hata ayıklamada yararlıdır. Örneğin , tam olarak son çalıştırılan sorguyu görmek için :
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $query = $profiler->getLastQueryProfile();
 
@@ -168,8 +171,9 @@ sorgularda hata ayıklamada yararlıdır. Örneğin , tam olarak son çalıştı
 Muhtemelen sayfa yavaş oluşturuluyor;ilk önce profilleyici ile tüm sorgular için toplam kaç saniye
 harcandığını belirleyin ve en uzun çalışan sorguyu bulmak için sorguları teker teker kontrol edin:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $totalTime    = $profiler->getTotalElapsedSecs();
    $queryCount   = $profiler->getTotalNumQueries();
@@ -205,8 +209,9 @@ Sorgu için harcanan süreye göre filtreleme
 *setFilterElapsedSecs()* geliştiriciye sorgunun profillenmesi için geçmesi gereken mininimum süreyi belirleme
 imkanı sağlar. Bu filtreyi kaldırmak için metoda null değer verin.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Sadece en az 5 saniye süren sorguları profille:
    $profiler->setFilterElapsedSecs(5);
@@ -239,8 +244,9 @@ tanımlanmıştır:
 
 *setFilterQueryType* ile var olan herhangi filtreyi argüman olarak sadece *null* vererek kaldırabilirsiniz.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Sadece SELECT sorgularını profille
    $profiler->setFilterQueryType(Zend_Db_Profiler::SELECT);
@@ -264,8 +270,9 @@ yararlı olabilir ama bunlara ihtiyacınız olduğu anda bakın. *getQueryProfil
 ilk argüman olarak sorgu tipini (veya sorgu tiplerinin mantıksal kombinasyonu) vererek bu filtrelemeyi anında
 yapabilmesidir ; sorgu tipi sabitleri listesi için bakınız :ref:` <zend.db.profiler.advanced.filtertype>`.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Sadece SELECT sorgusu profillerine eriş
    $profiles = $profiler->getQueryProfiles(Zend_Db_Profiler::SELECT);

@@ -20,8 +20,9 @@ Een Rowset verkrijgen
 
 Het eerste wat je moet doen is een Zend_Db_Table klasse instantiëren.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // een adapter opzetten
    require_once 'Zend/Db.php';
@@ -47,8 +48,9 @@ Verkrijg vele records van de database door Zend_Db_Table::find() met meerdere ke
 Zend_Db_Table::fetchAll() te gebruiken; het aldus bekomen resultaat zal een Zend_Db_Table_Rowset object zijn dat je
 toelaat door de individuele Zend_Db_Table_Row objecten in de recordset te lopen.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // verkrijg meerdere records van de tabel
    $rowset = $table->fetchAll();
@@ -69,8 +71,9 @@ objecten kan lopen zoals je dat doet met arrays door foreach() te gebruiken. Elk
 een Zend_Db_Table_Row object zijn dat overeenkomt met een record van de tabel. Je kan dan de eigenschappen ervan
 afbeelden, wijzigen en terug opslaan.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // verbinden met een tabel in de database
    class RoundTable extends Zend_Db_Table {}

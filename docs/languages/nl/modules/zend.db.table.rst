@@ -19,8 +19,9 @@ Om te beginnen
 Het eerste wat gedaan moet worden is een standaard database adapter te geven aan de abstracte Zend_Db_Table klasse;
 tenzij je het anders opgeeft zullen alle Zend_Db_Table instanties deze standaard adapter gebruiken.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // een adapter opzetten
    require_once 'Zend/Db.php';
@@ -43,8 +44,9 @@ gebruiken met deze database moet je eenvoudigweg Zend_Db_Table uitbreiden door e
 maken (merk op hoe we de round_table naam "kameleren"). Nu kunnen we via deze klasse rijen onderzoeken ,
 manipuleren en resultaten opvragen van de "round_table" tabel in de database.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class RoundTable extends Zend_Db_Table {}
    $table = new RoundTable();
@@ -60,8 +62,9 @@ omgezet van camelCaps naar underscore_woorden). Aldus, een Zend_Db_Table klasse 
 SQL tabel genaamd een_tabel_naam gemapt. Als je wil dat je klasse naar iets anders dan de underscore vorm van je
 klassenaam wordt gemapt, moet je de $_name eigenschap overschrijven wanneer je je klasse definieert.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class ClassName extends Zend_Db_Table
    {
@@ -75,8 +78,9 @@ Per definitie verwacht Zend_Db_Table dat jouw tabel een primaire key heeft die '
 deze kolom automatisch wordt geïncrementeerd, maar het is niet verplicht.) Indien jouw primaire key anders heet
 kan je de $_primary eigenschap van de klasse overschrijven wanneer je je klasse definieert.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class ClassName extends Zend_Db_Table
    {
@@ -89,8 +93,9 @@ kan je de $_primary eigenschap van de klasse overschrijven wanneer je je klasse 
 Op een andere manier mag je hetzelfde doen in de \_setup() methode van je uitgebreide klasse; maar wees er zeker
 van de parent::\_setup() methode op te roepen wanneer je klaar bent.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class ClassName extends Zend_Db_Table
    {
@@ -112,8 +117,9 @@ Om een nieuwe rij in jouw tabel in te voegen roep je gewoon insert() op met een 
 data. De data zal automatisch correct worden omwikkeld met quotes, en de laatst ingevoegde ID wordt teruggestuurd.
 (Merk op dat dit verschilt van Zend_Db_Adapter::insert(), waar het aantal beïnvloede rijen wordt teruggestuurd.)
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    //
    // INSERT INTO round_table
@@ -146,8 +152,9 @@ zal de tabel updaten en het aantal beïnvloede rijen teruggeven.
 De data die gezet moet worden zal automatisch correct worden omwikkeld met quotes, maar de WHERE clausule niet, die
 moet je dus zelf quoten met het Zend_Db_Adapter object van de tabel.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    //
    // UPDATE round_table
@@ -180,8 +187,9 @@ verwijderd moeten worden te identificeren. Het zal het aantal verwijderde rijen 
 De WHERE clausule zal niet in quotes worden omwikkeld, dus die moet je zelf quoten met het Zend_Db_Adapter object
 van de tabel.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    //
    // DELETE FROM round_table
@@ -207,8 +215,9 @@ Het is eenvoudig om rijen uit een tabel te verkrijgen door gebruik te maken van 
 find() methode. Deze methode keert een Zend_Db_Table_Row object terug indien je één enkele key probeert te
 vinden, of een Zend_Db_Table_Rowset objekt indien je meerdere keys probeert te vinden met find().
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class RoundTable extends Zend_Db_Table {}
 
@@ -234,8 +243,9 @@ met de eerste rij die aan de voorwaarden voldoet.
 De WHERE clausule zal niet in quotes worden omwikkeld, dus die moet je zelf quoten met het Zend_Db_Adapter object
 van de tabel.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    //
    // SELECT * FROM round_table
@@ -270,8 +280,9 @@ geselecteerde records.
 De WHERE clausule zal niet in quotes worden omwikkeld, dus die moet je zelf quoten met het Zend_Db_Adapter object
 van de tabel.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class RoundTable extends Zend_Db_Table {}
 
@@ -300,8 +311,9 @@ Als een tabelmodule leent Zend_Db_Table er zichzelf goed toe om je eigen domeinl
 je kan de insert() en update() methodes overschrijven om de gepostte data te manipuleren of te valideren voordat
 die naar de database wordt geschreven.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class RoundTable extends Zend_Db_Table
    {
@@ -328,8 +340,9 @@ die naar de database wordt geschreven.
 Op een gelijkaardige wijze kan je je eigen find() methoden toevoegen om records op te zoeken door iets anders dan
 hun primaire key te gebruiken.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class RoundTable extends Zend_Db_Table
    {

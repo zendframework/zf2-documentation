@@ -51,8 +51,9 @@ Zend_Layout 配置选项
 
 下面的例子假定使用 *$options*\ 数组和 *$config*\ 对象：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $options = array(
        'layout'     => 'foo',
@@ -60,8 +61,9 @@ Zend_Layout 配置选项
        'contentKey' => 'CONTENT',           // ignored when MVC not used
    );
    ?>
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    /**
    [layout]
@@ -80,8 +82,9 @@ Zend_Layout 配置选项
 
 首先，看一下传递数组：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Using constructor:
    $layout = new Zend_Layout($options);
@@ -91,8 +94,9 @@ Zend_Layout 配置选项
    ?>
 现在使用配置对象：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $config = new Zend_Config_Ini('/path/to/layout.ini', 'layout');
 
@@ -111,8 +115,9 @@ Zend_Layout 配置选项
 有时候在 *Zend_Layout* 对象初始化以后才需要配置； *setOptions()* 和 *setConfig()*\
 让你快速而起容易地来做：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Using an array of options:
    $layout->setOptions($options);
@@ -130,8 +135,9 @@ Zend_Layout 配置选项
 最后，通过访问器来配置 *Zend_Layout*
 实例。所有的访问器实现一个流畅的接口，意味这它们的调用可能被链接：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $layout->setLayout('foo')
           ->setLayoutPath('/path/to/layouts')

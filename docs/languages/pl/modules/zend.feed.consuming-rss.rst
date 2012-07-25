@@ -6,7 +6,7 @@ Odbieranie danych z kanału informacyjnego RSS
 Odczytywanie kanału RSS jest tak proste jak utworzenie obiektu *Zend_Feed_Rss* z adresem URL kanału przekazanym
 do konstruktora:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $channel = new Zend_Feed_Rss('http://rss.example.com/channelName');
@@ -18,7 +18,7 @@ Jeśli wystąpi jakiś błąd podczas obróbki danych pochodzących z kanału, z
 Kiedy już masz obiekt kanału informacyjnego, możesz łatwo uzyskać dostęp do standardowych właściwości
 kanału RSS bezpośrednio na obiekcie:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    echo $channel->title();
@@ -31,7 +31,7 @@ przy jednoczesnym dostępie do wszystkich niższych składników.
 
 Jeśli właściwości kanału mają atrybuty, są one dostępne przy użyciu składni tablic PHP:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    echo $channel->category['domain'];
@@ -43,7 +43,7 @@ Najczęściej będziesz chciał przejść pętlą po danych kanału i zrobić co
 *Zend_Feed_Abstract* implementuje wbudowany w PHP interfejs *Iterator*, więc wyświetlenie wszystkich tytułów
 artykułów z kanału jest bardzo proste:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    foreach ($channel as $item) {
@@ -103,7 +103,7 @@ Składniki elementu kanału:
 
 W twoim kodzie zawsze możesz sprawdzić czy element nie jest pusty za pomocą:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    if ($item->propname()) {

@@ -8,7 +8,7 @@ być formularz logowania akceptujący jedynie małe znaki alfabetu. *Zend_Filter
 której filtry mogą być wywoływane łańcuchowo. Poniższy kod ilustruje łańcuchowe wywołanie dwóch filtrów
 dla wysłanej nazwy użytkownika:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       // Tworzymy łańcuch filtrów i dodajemy filtry do łańcucha

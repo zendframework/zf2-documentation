@@ -15,7 +15,7 @@ wystąpi błąd.
 
 .. rubric:: Tworzenie nowego lub ładowanie istniejącego dokumentu PDF.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -41,7 +41,7 @@ pomocą wywołania *Zend_Pdf::rollback()* [#]_
 
 .. rubric:: Ładowanie określonej wersji dokumentu PDF.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...

@@ -27,7 +27,7 @@
 
 .. rubric:: 使用短语法
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $opts = new Zend_Console_Getopt('abp:');
@@ -63,7 +63,7 @@
 
 .. rubric:: 使用长语法
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $opts = new Zend_Console_Getopt(

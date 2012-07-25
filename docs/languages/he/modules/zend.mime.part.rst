@@ -24,7 +24,7 @@ Zend_Mime_Part
 8ביט. לאחר יצירת *Zend_Mime_Part*, ניתן להגדירו על ידי הצבת ערכים
 לתכונות שלו:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    public $type = Zend_Mime::TYPE_OCTETSTREAM;

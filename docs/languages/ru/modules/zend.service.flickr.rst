@@ -20,6 +20,7 @@ Flickr, обратитесь к `документации по API веб-вер
 
 .. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Service/Flickr.php';
 
@@ -64,6 +65,7 @@ Flickr, обратитесь к `документации по API веб-вер
 
 .. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Service/Flickr.php';
 
@@ -89,6 +91,7 @@ Flickr, обратитесь к `документации по API веб-вер
 
 .. code-block:: php
    :linenos:
+
    <?php
        require_once 'Zend/Service/Flickr.php';
 
@@ -123,6 +126,7 @@ Flickr, обратитесь к `документации по API веб-вер
 
 .. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Service/Flickr.php';
 

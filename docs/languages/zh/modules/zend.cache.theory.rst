@@ -27,7 +27,7 @@ Zend_Cache 工厂方法
 
 下面的示例给出了一个构造 *Zend_Cache*\ 前端实例的好方法:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // We choose a backend (for example 'File' or 'Sqlite'...)
@@ -64,7 +64,7 @@ Zend_Cache 工厂方法
 方法保存一个缓存时,你可以给该缓存纪录设置一个或多个标记,多个标记以数组形式组织在一起
 此后你不再需要该缓存纪录使,你可以清除所有指定标记的缓存纪录.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $cache->save($huge_data, 'myUniqueID', array('tagA', 'tagB', 'tagC'));
@@ -82,7 +82,7 @@ Zend_Cache 工厂方法
 
 删除特定id的Cache纪录,使用 *remove()*\ 方法:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $cache->remove('idToRemove');
@@ -90,7 +90,7 @@ Zend_Cache 工厂方法
 
 在单个操作中删除多个Cache纪录,可以使用 *clean()*\ 方法.例如,删除所有的缓存纪录:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 清除所有缓存纪录
@@ -103,7 +103,7 @@ Zend_Cache 工厂方法
 
 如果你想删除标记为'tagA'和'tagC'的缓存项:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, array('tagA', 'tagC'));

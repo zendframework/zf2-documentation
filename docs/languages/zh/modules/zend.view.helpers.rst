@@ -64,8 +64,9 @@ Haohappy注）： *fooBar()* 。
 
   上述内容可能最好汇总成一些例子：
 
-  .. code-block::
+  .. code-block:: php
      :linenos:
+
      <?php
      // '1' and '0' as checked/unchecked options; not checked
      echo $this->formCheckbox('foo');
@@ -148,8 +149,9 @@ Haohappy注）： *fooBar()* 。
 
 以上helper的使用非常简单，下面是个例子。注意你只需要调用即可，它们会根据需要自己加载并实例化。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 在你的view脚本内部, $this 指向 Zend_View 实例.
    //
@@ -171,8 +173,9 @@ Haohappy注）： *fooBar()* 。
 
 以上视图脚本会输出这样的结果：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <form action="action.php" method="post">
        <p><label>Your Email:
            <input type="text" name="email" value="you@example.com" size="32" />
@@ -213,8 +216,9 @@ Haohappy注）： *fooBar()* 。
 *setHelperPath()* 和 *addHelperPath()* 方法来告诉 *Zend_View*
 从其它地方来找路径。另外，你也可以指定类名的前缀，用于指定助手类所在的路径，允许给助手类命名空间。默认情况下，如果没有给出前缀，会假设使用“Zend_View_Helper_”。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $view = new Zend_View();
 
@@ -224,8 +228,9 @@ Haohappy注）： *fooBar()* 。
 你可以用 *addHelperPath()*\ 来增加helper的路径， *Zend_View*\
 将使用最近增加的路径。这样你可以使用自己的helper。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $view = new Zend_View();
    // Add /path/to/some/helpers with class prefix 'My_View_Helper'
@@ -260,8 +265,9 @@ Haohappy注）： *fooBar()* 。
 
 下面是一个 *SpecialPurpose* 助手代码的例子：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class My_View_Helper_SpecialPurpose
    {
@@ -277,8 +283,9 @@ Haohappy注）： *fooBar()* 。
 在视图代码中，可以调用 *SpecialPurpose* 助手任意次。它将被实例化一次，并且会在
 *Zend_View*\ 实例的生命周期内持久存在。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // remember, in a view script, $this refers to the Zend_View instance.
    echo $this->specialPurpose();
@@ -287,8 +294,9 @@ Haohappy注）： *fooBar()* 。
 
 输出结果如下所示：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    I have seen 'The Jerk' 1 time(s).
    I have seen 'The Jerk' 2 time(s).
    I have seen 'The Jerk' 3 time(s).
@@ -297,8 +305,9 @@ Haohappy注）： *fooBar()* 。
 对象－例如，如果需要使用已指定的编码字符集，或想解析其它视图脚本作为助手的一部分。为了访问视图对象，助手类应该有一个
 *setView($view)* 方法，如下：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class My_View_Helper_ScriptPath
    {

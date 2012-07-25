@@ -17,7 +17,7 @@ Zend_View_Abstract
 
 *Zend_View::_run()* מבצע את הדבר הבא:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    protected function _run()

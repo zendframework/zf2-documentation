@@ -327,6 +327,7 @@ Zend_Cache_Frontend_Class
 
 .. code-block:: php
    :linenos:
+
    <?php
    class Test {
 

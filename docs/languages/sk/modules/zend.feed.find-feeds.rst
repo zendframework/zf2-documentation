@@ -7,7 +7,7 @@ Web stránky často obsahujú *<link>* značku, ktorá odkazuje na zdroje s obsa
 konkrétnej stránke. *Zend_Feed* umožňuje získať referencie na všetky uvedené zdroje na web stránke pomocou
 jednoduchého volania metódy:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

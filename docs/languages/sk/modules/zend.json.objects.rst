@@ -16,8 +16,9 @@ a hodnoty z JSON objektu - ostatným sa to zdá ako značná bezpečnostná dier
 
 *Zend_Json* primárne vracia asociatívne pole, ak chcete aby bol vrátený objekt, môžete to urobiť nasledovne:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Decode objects as objects
    $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);

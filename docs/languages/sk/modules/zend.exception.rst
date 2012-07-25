@@ -9,8 +9,9 @@ Všetky výnimky generované triedami Zend Framework mali by byť odvodené od z
 
 .. rubric:: Príklad odchytenia výnimky
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    try {

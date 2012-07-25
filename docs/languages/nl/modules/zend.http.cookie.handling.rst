@@ -54,8 +54,9 @@ Instantiating a Cookie object can be done in two ways:
 
    .. rubric:: Instantiating a Zend_Http_Cookie object
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       // First, using the constructor. This cookie will expire in 2 hours
       $cookie = new Zend_Http_Cookie('foo', 'bar', '.example.com', time() + 7200, '/path');
@@ -84,8 +85,9 @@ produce a HTTP request "Cookie" header string, showing the cookie's name and val
 
    .. rubric:: Stringifying a Zend_Http_Cookie object
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       // Create a new cookie
       $cookie = new Zend_Http_Cookie('foo', 'two words', '.example.com', time() + 7200, '/path');
@@ -140,8 +142,9 @@ Additionally, several boolean tester methods are provided:
 
    .. rubric:: Using getter methods with Zend_Http_Cookie
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       // First, create the cookie
       $cookie = Zend_Http_Client('foo=two+words; domain=.example.com; path=/somedir; secure; expires=Wednesday, 28-Feb-05 20:41:22 UTC');
@@ -189,8 +192,9 @@ $matchSessionCookies, [int $now]]);*
 
    .. rubric:: Matching cookies
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       // Create the cookie object - first, a secure session cookie
       $cookie = Zend_Http_Client('foo=two+words; domain=.example.com; path=/somedir; secure;');

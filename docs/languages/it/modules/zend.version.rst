@@ -14,8 +14,9 @@ stessa e +1 se la versione indicata da *$version* è più recente.
 
 .. rubric:: Esempio del metodo compareVersion()
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // restituisce -1, 0 o 1
    $cmp = Zend_Version::compareVersion('1.0.0');

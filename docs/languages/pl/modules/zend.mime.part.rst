@@ -22,7 +22,7 @@ Obiekt *Zend_Mime_Part* jest tworzony z łańcuchem znaków zawierającym częś
 parametr konstruktora. Domyślny typ to OCTET-STREAM, a kodowanie to 8Bit. Po utworzeniu obiektu *Zend_Mime_Part*,
 jego podstawowe atrybuty mogą być zmienione bezpośrednio:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    public $type = ZMime::TYPE_OCTETSTREAM;

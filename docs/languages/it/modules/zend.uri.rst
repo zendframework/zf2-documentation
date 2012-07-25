@@ -29,8 +29,9 @@ Creazione di un nuovo URI
 
 .. rubric:: Esempio di creazione di un nuovo URI con *Zend_Uri::factory()*
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Uri.php';
 
@@ -56,8 +57,9 @@ Per manipolare un URI esistente passare l'intero URI a *Zend_Uri::factory()*.
 
 .. rubric:: Esempio di manipolazione di un URI esistente con *Zend_Uri::factory()*
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Uri.php';
 
@@ -81,8 +83,9 @@ Si può usare la funzione *Zend_Uri::check()* se è solo necessario validare un 
 
 .. rubric:: Esempio di validazione di un URI con *Zend_Uri::check()*
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Uri.php';
 
@@ -114,8 +117,9 @@ schema è *http*.
 
 .. rubric:: Esempio di restituzione dello schema di un oggetto *Zend_Uri_**
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Uri.php';
 
@@ -134,8 +138,9 @@ Restituzione dell'intero URI
 
 .. rubric:: Esempio di restituzione dell'intero URI di un oggetto *Zend_Uri_**
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Uri.php';
 
@@ -159,8 +164,9 @@ successivamente ad una manipolazione.
 
 .. rubric:: Esempio di validazione di un oggetto *Zend_Uri_**
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Uri.php';
 

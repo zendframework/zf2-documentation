@@ -10,7 +10,7 @@
 ניתן לשרשר פילטרים בתור מתודות על השם משתמש שהוזן בטופס
 התחברות:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       <// Create a filter chain and add filters to the chain

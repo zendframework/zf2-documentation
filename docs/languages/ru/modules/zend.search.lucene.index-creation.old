@@ -18,6 +18,7 @@ Zend_Search_Lucene для индексирования.
 
 .. code-block:: php
    :linenos:
+
    <?php
    // Создание индекса
    $index = Zend_Search_Lucene::create('/data/my-index');
@@ -48,6 +49,7 @@ Zend_Search_Lucene для индексирования.
 
 .. code-block:: php
    :linenos:
+
    <?php
    // Открытие существующего индекса
    $index = Zend_Search_Lucene::open('/data/my-index');
@@ -76,6 +78,7 @@ Zend_Search_Lucene для индексирования.
 
 .. code-block:: php
    :linenos:
+
    <?php
    $removePath = ...;
    $hits = $index->find('path:' . $removePath);
@@ -100,6 +103,7 @@ Zend_Search_Lucene для индексирования.
 
 .. code-block:: php
    :linenos:
+
    <?php
    $indexSize = $index->count();
    $documents = $index->numDocs();
@@ -109,6 +113,7 @@ Zend_Search_Lucene для индексирования.
 
 .. code-block:: php
    :linenos:
+
    <?php
    for ($count = 0; $count < $index->maxDoc(); $count++) {
        if ($index->isDeleted($count)) {
@@ -149,6 +154,7 @@ Zend_Search_Lucene для индексирования.
 
 .. code-block:: php
    :linenos:
+
    <?php
    // Открытие существующего индекса
    $index = Zend_Search_Lucene::open('/data/my-index');

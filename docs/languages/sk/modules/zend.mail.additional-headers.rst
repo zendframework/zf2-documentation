@@ -9,7 +9,7 @@ hodnôt:
 
 .. rubric:: Pridavanie iných e-mail hlavičiek
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

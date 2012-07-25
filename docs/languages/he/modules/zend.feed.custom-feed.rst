@@ -15,7 +15,7 @@
 
 .. rubric:: הרחבת מחלקת ניהול הסנדקציה של Atom
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -76,7 +76,7 @@
 אז כדי להשתמש במחלקה זו, יהיה צורך רק בליצור אובייקט שלה ולקרוא
 לערך *myUpdated*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $entry = new MyEntry();

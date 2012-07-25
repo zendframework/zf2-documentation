@@ -6,7 +6,7 @@
 כל האובייקטים המוחשיים של CAPTCHA מיישמים את *Zend_Captcha_Adapter*, שנראה
 ככה:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    interface Zend_Captcha_Adapter extends Zend_Validate_Interface
@@ -42,7 +42,7 @@
 
 דוגמא לשימוש סטנדרטי נראה כך:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Creating a Zend_View instance

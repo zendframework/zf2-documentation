@@ -31,8 +31,9 @@ kunnen worden geschreven, de productieserver sectie zou erven van de preproducti
 het geval zou kunnen zijn in meer complexe situaties. Veronderstel dan dat de volgende configuratiedata in
 */path/to/config.xml* staat:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?xml version="1.0"?>
    <configdata>
        <productie>
@@ -56,8 +57,9 @@ het geval zou kunnen zijn in meer complexe situaties. Veronderstel dan dat de vo
 Veronderstel vervolgens dat de programmeur de preproductie configuratiedata van het XML bestand nodig heeft. Het is
 eenvoudig om die data in te laden door het XML bestand en de preproductie sectie te specifiëren:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Config/Xml.php';
 

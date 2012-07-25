@@ -61,7 +61,7 @@ An example is given in the manual at the very beginning.
 
 如果你只向缓存中存储字符串(由于"automatic_serialization"选项,可能会存储一些布尔值),你可以使用更加简介的构造:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 假定你已经有 $cache
@@ -85,7 +85,7 @@ An example is given in the manual at the very beginning.
 
 如果你缓存多个块或则数据实例,意思是一样的:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 确保使用独一无二的 identifiers:
@@ -127,7 +127,7 @@ An example is given in the manual at the very beginning.
 如果你想缓存特殊值（带 "automatic_serialization"
 选项的布尔值）或不能用上述紧缩结构的空字符串，你需要正式地测试缓存记录。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // the compact construction
@@ -193,7 +193,7 @@ Zend_Cache_Frontend_Output
 
 An example is given in the manual at the very beginning. Here it is with minor changes:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // if it is a cache miss, output buffering is triggered
@@ -252,7 +252,7 @@ A可用的选项
 
 在PHP中使用 *call()* 函数于使用 *call_user_func_array()*\ 相同:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $cache->call('veryExpensiveFunc', $params);
@@ -312,7 +312,7 @@ Examples
 
 For example, to cache static calls :
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    class test {
@@ -337,7 +337,7 @@ For example, to cache static calls :
 
 To cache classic method calls :
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    class Test {
@@ -453,7 +453,7 @@ Examples
 
 Use of Zend_Cache_Frontend_Page is really trivial :
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // [...] // require, configuration and factory
@@ -467,7 +467,7 @@ Use of Zend_Cache_Frontend_Page is really trivial :
 a more complex example which shows a way to get a centralized cache management in a bootstrap file (for using with
 Zend_Controller for example)
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /*
@@ -529,7 +529,7 @@ Zend_Controller for example)
 返回代码时），你可能需要取消当前缓存处理，所以
 我们引入这个特别的前端，cancel()方法。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // [...] // require, configuration and factory

@@ -9,6 +9,7 @@
 
 .. code-block:: php
    :linenos:
+
    <?php
    // Получение значения:
    $phpNative = Zend_Json::decode($encodedValue);

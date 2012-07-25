@@ -19,7 +19,7 @@ Podstawowe użycie
 
 Przykład najbardziej podstawowego przypadku użycia:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $server = new Zend_XmlRpc_Server();
@@ -68,7 +68,7 @@ odpowiedników w typach PHP, więc powinny być rzutowane używając typów XML-
 
 Przykład wywołania przykładowej funkcji:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -93,7 +93,7 @@ XML-RPC sugeruje nawet, że metoda system.methodSignature powinna zwracać tabli
 metody (np. wszystkie możliwe kombinacje parametrów i zwracanych wartości). Możesz to zrobić tak jak robisz to
 w PhpDocumentor, używając operatora '\|':
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -132,7 +132,7 @@ Wewnątrz odpowiada to metodom o tych samych w obiekcie Zend_XmlRpc_Server.
 Jeśli chcesz dodać przestrzenie nazw do metod, które oferujesz, po prostu podaj przestrzeń nazw do odpowiedniej
 metody wtedy, gdy dołączasz funkcję lub klasę:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Wszystkie publiczne metody klasy My_Service_Class będą dostępne jako
@@ -183,7 +183,7 @@ Klasy wyjątków, które mają być użyte jako odpowiedzi błędów mogą być 
 wyjątków. Aby to zrobić wystarczy użyć metody Zend_XmlRpc_Server_Fault::attachFaultException() w celu
 przekazania klasy wyjątku do listy dozwolonych wyjątków:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    Zend_XmlRpc_Server_Fault::attachFaultException('My_Project_Exception');
@@ -211,7 +211,7 @@ serwera pomiędzy żądaniami. Gdy połączymy to z funkcją \__autoload(), moż
 
 Przykładowe użycie:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    function __autoload($class)
@@ -257,7 +257,7 @@ Podstawowe użycie
 Poniższy przykład dołącza funkcję jaką uruchamialną przez XML-RPC metodę i obsługuje przychodzące
 wywołania.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -283,7 +283,7 @@ Dołączanie klasy
 
 Poniższy przykład pokazuje dołączanie publicznych metod klasy jako uruchamialnych metod XML-RPC.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $server = new Zend_XmlRpc_Server();
@@ -298,7 +298,7 @@ Dołączanie wielu klas używając przestrzeni nazw
 
 Poniższy przykład pokazuje dołączanie kilku klas, każdej z własną przestrzenią nazw.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $server = new Zend_XmlRpc_Server();
@@ -316,7 +316,7 @@ Określenie wyjątków dla odpowiedzi błędów
 Poniższy przykład pozwala dowolnej klasie pochodzącej od Services_Exception na przekazywanie informacji o
 wyjątkach w postaci kodu i wiadomości w odpowiedzi błędu.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Pozwala na wyrzucanie wyjątku Services_Exceptions dla odpowiedzi błędu
@@ -336,7 +336,7 @@ Użycie własnego obiektu żądania
 
 Poniższy przykład tworzy instancję własnego obiektu żądania i przekazuje go do obiektu serwera.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Pozwala na wyrzucanie wyjątku Services_Exceptions dla odpowiedzi błędu
@@ -360,7 +360,7 @@ Użycie własnego obiektu odpowiedzi
 
 Poniższy przykład pokazuje określanie własnej klasy odpowiedzi dla zwracanej odpowiedzi.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Pozwala na wyrzucanie wyjątku Services_Exceptions dla odpowiedzi błędu
@@ -387,7 +387,7 @@ Buforowanie definicji serwera pomiędzy żądaniami
 
 Poniższy przykład pokazuje buforowanie definicji serwera pomiędzy żądaniami.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Określ plik cache

@@ -44,6 +44,7 @@ RSS フィードの使用
 
 .. code-block:: php
    :linenos:
+
    <?php
    foreach ($channel as $item) {
        echo $item->title() . "\n";

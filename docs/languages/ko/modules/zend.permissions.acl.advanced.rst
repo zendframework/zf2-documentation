@@ -35,8 +35,9 @@ Zend\Permissions\Acl는 조건부의 규칙을 *Zend\Permissions\Acl\Assert\Asse
 인터페이스를 사용하기 위해, 개발자는 인터페이스의 *assert()* 메소드를 implements한
 클래스를 작성합니다:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    class CleanIPAssertion implements Zend\Permissions\Acl\Assert\AssertInterface
@@ -57,8 +58,9 @@ Zend\Permissions\Acl는 조건부의 규칙을 *Zend\Permissions\Acl\Assert\Asse
 지정해야만 합니다. 검증을 포함하고, 작성된 규칙은 검증 메소드(assert)가 true를
 리턴할 때만 적용됩니다.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $acl = new Zend\Permissions\Acl\Acl();

@@ -11,7 +11,7 @@ Tato funkce přijímá jako vstupní parametr jakýkoliv XML řetězec. Také p�
 parametr zda ignorovat XML atributy během převodu. Pokud není tento volitelný parametr zadán, defaultní
 chování je ignorování XML atributů. Volání této funkce je naznačeno níže:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
            // Funkce fromXml jednoduše přijme String obsahující XML data jak vstup.
@@ -30,7 +30,7 @@ převodu. Proto vrácený JSON řetězec obsahuje reprezentaci XML atributů př
 
 XML řetězec předaný funkci *Zend_Json::fromXml()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?xml version="1.0" encoding="UTF-8"?>
@@ -56,7 +56,7 @@ XML řetězec předaný funkci *Zend_Json::fromXml()*:
 
 JSON výstup vrácený z funkce *Zend_Json::fromXml()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    {

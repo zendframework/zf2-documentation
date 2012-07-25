@@ -12,8 +12,9 @@ Zend_Form 快速起步
 
 创建表单对象非常简单：只要实现 *Zend_Form*\ ：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form = new Zend_Form;
    ?>
@@ -22,8 +23,9 @@ Zend_Form 快速起步
 
 如果想指定表单的动作和方法（总是好主意），用 *setAction()* 和 *setMethod()* 来完成：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form->setAction('/resource/process')
         ->setMethod('post');
@@ -34,8 +36,9 @@ POST，这将在解析的最后期间表现出来。
 你可以通过使用 setAttrib() 或 setAttribs() 方法为 *<form>* 标签设置另外的 HTML
 属性，例如：如果想设置 id, 则设置 "id" 属性：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form->setAttrib('id', 'login');
    ?>
@@ -74,8 +77,9 @@ POST，这将在解析的最后期间表现出来。
 
 一些例子：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Instantiating an element and passing to the form object:
    $form->addElement(new Zend_Form_Element_Text('username'));
@@ -90,8 +94,9 @@ POST，这将在解析的最后期间表现出来。
 让我们首先看看为一个具体的元素实例创建校验器。可以传递 *Zend_Validate_**
 对象，或校验器的名称：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $username = new Zend_Form_Element_Text('username');
 
@@ -103,8 +108,9 @@ POST，这将在解析的最后期间表现出来。
    ?>
 当使用第二个方法，如果校验器可接受构造器参数，可以把它们放到数组里作为第三个参数：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Pass a pattern
    $username->addValidator('regex', false, array('/^[a-z]/i'));
@@ -113,8 +119,9 @@ POST，这将在解析的最后期间表现出来。
 
 你也可能希望指定一个必需的元素，可以通过使用访问器或当创建该元素时传递一个选项来完成，在前面的例子中：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 使这个元素成为必需：
    $username->setRequired(true);
@@ -124,15 +131,17 @@ POST，这将在解析的最后期间表现出来。
 
 过滤器会像校验器一样注册，为了演示，让我们添加一个来把最终值变小写的过滤器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $username->addFilter('StringtoLower');
    ?>
 这样，最终元素设置看起来像这样：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $username->addValidator('alnum')
             ->addValidator('regex', false, array('/^[a-z]/'))
@@ -150,8 +159,9 @@ POST，这将在解析的最后期间表现出来。
 *Zend_Form::addElement()*
 创建一个新元素，我们可以可选地传递配置选项，包括校验器和过滤器。这样，可以简单地完成上述任务：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form->addElement('text', 'username', array(
        'validators' => array(
@@ -176,8 +186,9 @@ POST，这将在解析的最后期间表现出来。
 助手来解析，这样需要视图对象来解析。除了这以外，还有两个方法：使用表单的
 render() 方法或简单地 echo 它。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Explicitly calling render(), and passing an optional view object:
    echo $form->render($view);
@@ -189,7 +200,7 @@ render() 方法或简单地 echo 它。
 中初始化过的视图对象，你不需要在Zend Framework MVC
 中手工设置视图。在视图脚本中解析表单是如此的简单：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?= $this->form ?>
@@ -199,8 +210,9 @@ render() 方法或简单地 echo 它。
 full introspection 。结果，你可以组合多个装饰器来完成定制效果。缺省地，
 *Zend_Form_Element* 实际上组合了四个装饰器来完成输出，参见下例的设置：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $element->addDecorators(array(
        'ViewHelper',
@@ -213,7 +225,7 @@ full introspection 。结果，你可以组合多个装饰器来完成定制效�
 
 上述的例子创建的输出如下：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <dt><label for="username" class="required">Username</dt>
@@ -235,15 +247,17 @@ full introspection 。结果，你可以组合多个装饰器来完成定制效�
 
 元素或者按注册的顺序循环，或者如果元素包含顺序属性，就按这个顺序循环。可以使用下列方法设置元素顺序：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $element->setOrder(10);
    ?>
 或者，当创建元素，作为一个选项传递给它：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $form->addElement('text', 'username', array('order' => 10));
    ?>
@@ -257,8 +271,9 @@ null 值来校验。
 
 数据从哪里来？用 *$_POST* 或 *$_GET* 或者其它手头上的数据源 （例如 web 服务请求）：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    if ($form->isValid($_POST)) {
        // success!
@@ -270,8 +285,9 @@ null 值来校验。
 将校验局部的表单，不像 *isValid()*\
 ，如果特定的键没有出现，那个特定部分的元素就不校验：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    if ($form->isValidPartial($_POST)) {
        // elements present all passed validations
@@ -284,15 +300,17 @@ null 值来校验。
 
 假设校验都通过，现在就可以取得过滤后的值：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $values = $form->getValues();
    ?>
 如果任何时候需要没有过滤的值，使用：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $unfiltered = $form->getUnfilteredValues();
    ?>
@@ -303,8 +321,9 @@ null 值来校验。
 
 如果表单校验失败，在大多数情况下，可以再次解析表单，如果使用了缺省的装饰器，错误信息就会显示出来：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    if (!$form->isValid($_POST)) {
        echo $form;
@@ -338,8 +357,9 @@ null 值来校验。
 
 我们使用 *Zend_Form* 的配置选项的能力来建立表单：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
 
@@ -368,8 +388,9 @@ null 值来校验。
    ?>
 接着，我们将创建控制器来处理这些：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class UserController extends Zend_Controller_Action
    {
@@ -405,7 +426,7 @@ null 值来校验。
    ?>
 和一个视图脚本来显示表单：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <h2>Please login:</h2>
@@ -424,7 +445,7 @@ null 值来校验。
 'development'
 节，接着，为给定控制器（'user'）设置一个节，为表单（'login'）设置一个键：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    [development]
@@ -454,8 +475,9 @@ null 值来校验。
 
 接着，你可以把它传递给表单构造器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $config = new Zend_Config_Ini($configFile, 'development');
    $form   = new Zend_Form($config->user->login);

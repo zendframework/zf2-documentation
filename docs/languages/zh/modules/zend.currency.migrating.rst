@@ -14,7 +14,7 @@
 创建 *Zend_Currency* 的对象变得容易了。现在你不再需要给一个脚本或把它设置为
 null。可选的脚本参数现在可以通过 *setFormat()* 方法来设置。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $currency = new Zend_Currency($currency, $locale);
@@ -44,7 +44,7 @@ null。可选的脚本参数现在可以通过 *setFormat()* 方法来设置。
 
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $currency->setFormat(array $options);
@@ -53,7 +53,7 @@ null。可选的脚本参数现在可以通过 *setFormat()* 方法来设置。
 The *toCurrency()* 方法不再支持可选的 'script' 和 'locale'
 参数，而是它它带有一个选项数组，数组中包含和 *setFormat* 方法相同的键。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $currency->toCurrency($value, array $options);

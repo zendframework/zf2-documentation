@@ -19,8 +19,9 @@ potreby a jej spustenie je závislé na parametroch *MaxBufferedDocs*, *MaxMerge
 
 Statické vlastnosti objektu sú zničené **po**"poslednom riadku bežiaceho skriptu"
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       class Searcher {
           private static $_index;
@@ -50,8 +51,9 @@ možné používať *Zend_Search_Lucene* na vyhľadávanie, pridávanie, alebo z
 *commit()* zaistí, že už neexistujú žiadne dokumenty na pridanie, alebo zmazanie a teda deštruktor
 *Zend_Search_Lucene* neurobí nič a preto ani nevznikne žiadna výnimka:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       class Searcher {
           private static $_index;

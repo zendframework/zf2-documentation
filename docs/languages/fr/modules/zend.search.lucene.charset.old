@@ -81,7 +81,7 @@ Si vous voulez les analyseurs UTF-8 insensibles à la casse, mais que vous n'ave
 vos données avant de les indexer ainsi que vos requêtes avant vos recherches, ceci en les tranformant en casse
 minuscule :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       // Indexation

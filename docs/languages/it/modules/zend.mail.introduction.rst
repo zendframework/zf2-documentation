@@ -19,8 +19,9 @@ predefinito *Zend_Mail_Transport_Sendmail* oppure via *Zend_Mail_Transport_Smtp*
 Una semplice e-mail è composta da alcuni destinatario, un oggetto, un contenuto ed un mittente. Ecco come inviare
 l'e-mail via *Zend_Mail_Transport_Sendmail*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();
@@ -49,8 +50,9 @@ La maggior parte dei metodi di un oggetto Zend_Mail consente l'utilizzo di un'in
 fluida significa che ogni metodo restituisce un riferimento al metodo dal quale è stato chiamato consentendo di
 chiamare immediatamente un nuovo metodo in successione.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();
@@ -76,8 +78,9 @@ agire come transport predefinito per *Zend_Mail* sia essere passata al metodo *s
 
 Questo esempio mostra come cambiare l'intestazione Return-Path della funzione `mail()`_.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    require_once 'Zend/Mail/Transport/Sendmail.php';

@@ -33,7 +33,7 @@ Zdrojový kód v Java
 
 Nasledujúci Java kód poskytuje príklad ako indexovať súbor s použitím Java Lucene:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**

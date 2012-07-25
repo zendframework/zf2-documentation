@@ -40,7 +40,7 @@ Mająć ustaloną w ten sposób definicję filtra, możemy zapewnić podstawę d
 Poniżej jest podstawowy przykład użycia filtra na dwóch danych wyjściowych, na znaku Et (*&*) oraz na znaku
 podwójnego cudzysłowu (*"*):
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $htmlEntities = new Zend_Filter_HtmlEntities();
@@ -62,7 +62,7 @@ które chcesz przekazać do metody *filter()*. Drugi argument jest łańcuchem z
 nazwie klasy filtra, relatywnie do przestrzeni nazw Zend_Filter. Metoda *get()* automatycznie ładuje klasę,
 tworzy instancję i wywołuje metodę *filter()* na danych wejściowych.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       echo Zend_Filter::get('&', 'HtmlEntities');
@@ -72,7 +72,7 @@ tworzy instancję i wywołuje metodę *filter()* na danych wejściowych.
 
 Możesz także przekazać tablicę argumentów konstruktora, jeśli są one potrzebne w klasie filtra.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       echo Zend_Filter::get('"', 'HtmlEntities', array(ENT_QUOTES));

@@ -14,7 +14,7 @@
 
 .. rubric:: 生成新的或加载 PDF 文档
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -39,7 +39,7 @@ PDF 文件格式支持增量式文档更新。这样每次文档更新，就产�
 
 .. rubric:: 请求 PDF 文档的指定版本
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...

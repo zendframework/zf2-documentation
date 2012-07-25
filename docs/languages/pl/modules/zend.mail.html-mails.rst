@@ -11,7 +11,7 @@ automatycznie zostanie wygenerowana wiadomość o typie MIME *multipart/alternat
 
 .. rubric:: Wysyłanie e-maila w postaci HTML
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $mail = new Zend_Mail();

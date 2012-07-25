@@ -20,8 +20,9 @@ PUT en DELETE verzoeken maken.
 
    .. rubric:: Een basis GET verzoek maken
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
           require_once 'Zend/Http/Client.php';
           try {
@@ -50,8 +51,9 @@ de **constructor** geven, zoals in de volgende voorbeelden:
 
 .. rubric:: Een Basis Zend_Http_Client maken
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
        require_once 'Zend/Http/Client.php';
 
@@ -62,8 +64,9 @@ de **constructor** geven, zoals in de volgende voorbeelden:
 
 .. rubric:: Meerdere Headers sturen
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
        require_once 'Zend/Http/Client.php';
 
@@ -88,8 +91,9 @@ methode *Zend_Http_Client::setUri()*.
 
 .. rubric:: Multidomein verzoek
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
        require_once 'Zend/Http/Client.php';
 
@@ -142,8 +146,9 @@ De *delete()* methode heeft geen parameters.
 
 .. rubric:: POST data verzenden met Zend_Http_Client
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
        require_once 'Zend/Http/Client.php';
 

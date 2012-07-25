@@ -10,8 +10,9 @@ Controller完成变量赋值和调用render()之后，Zend_View就会调用视�
 
 为了说明，这里有一个例子：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php if ($this->books): ?>
 
        <!-- A table of some books. -->
@@ -45,8 +46,9 @@ View脚本的最重要的工作之一是保证输出的内容是合适的，比�
 
 Zend_View带有一个escape()方法来提供这个功能：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 不好的做法：
    echo $this->variable;
@@ -57,8 +59,9 @@ Zend_View带有一个escape()方法来提供这个功能：
 
 默认地，escape()方法使用PHP函数htmlspecialchars()来过滤，但你也可以通过setEscape()方法来在Controller内告诉Zend_View需要怎么过滤。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    //创建一个Zend_View实例
    $view = new Zend_View();
@@ -93,8 +96,9 @@ Zend_View带有一个escape()方法来提供这个功能：
 
 View脚本可能要被用来初始化和操作一个其它模板对象的实例，例如PHPLIB风格的模板。这时View脚本可能是这样的：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    include_once 'template.inc';
    $tpl = new Template();
@@ -119,7 +123,7 @@ View脚本可能要被用来初始化和操作一个其它模板对象的实例�
 
 下面是相关的模板文件：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!-- booklist.tpl -->
@@ -148,7 +152,7 @@ View脚本可能要被用来初始化和操作一个其它模板对象的实例�
 实现一个与Zend_View兼容的模板系统是很简单的。你只需要实现 *Zend_View_Interface*\
 接口即可，该接口定义了要实现兼容的最低要求。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -211,7 +215,7 @@ View脚本可能要被用来初始化和操作一个其它模板对象的实例�
 
 使用这个接口，把第三方的模板系统封装成Zend_View兼容的类是相当容易的。例如，下面是封装Smarty的示例代码：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    require_once 'Zend/View/Interface.php';
@@ -401,7 +405,7 @@ View脚本可能要被用来初始化和操作一个其它模板对象的实例�
 在这个示例中，实例化 *Zend_View_Smarty*\ 而不是 *Zend_View*\ ，然后就像使用 *Zend_View*\
 一样地使用它。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View_Smarty();

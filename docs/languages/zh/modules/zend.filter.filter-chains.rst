@@ -8,7 +8,7 @@
 提供了一个简单的方法，使过滤器可以链接在一起。下面的代码描述了怎样把2个过滤器链接起来且应用到提交上来的用户名值上：
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       // Create a filter chain and add filters to the chain

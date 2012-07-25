@@ -16,7 +16,7 @@ Writers
 要把日志写入到输出缓冲区,使用URL *php:://output*. 或则你可以直接发送日志数据到像
 *STDERR* 这样的流中(php://stderr).
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $writer = new Zend_Log_Writer_Stream('php://output');
@@ -29,7 +29,7 @@ Writers
 
 写入日志数据到一个文件,使用 `Filesystem URLs`_\ 之一:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $writer = new Zend_Log_Writer_Stream('/path/to/logfile');
@@ -43,7 +43,7 @@ Writers
 
 *Zend_Log_Writer_Stream*\ 还接受一个现有的流资源:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $stream = @fopen('/path/to/logfile', 'a', false);
@@ -68,7 +68,7 @@ Writers
 的构造函数接受一个 *Zend_Db_Adapter*
 实例,一个表名,和一个数据库字段到事件数据项的映射:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $params = array ('host'     => '127.0.0.1',
@@ -97,7 +97,7 @@ Writers
 *Zend_Log_Writer_Null*\ 是一个不向任何地方写入任何数据的存根.
 用于在测试期间关闭或踩熄日志.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $writer = new Zend_Log_Writer_Null;
@@ -117,7 +117,7 @@ Writers
 *Zend_Log_Writer_Mock*\
 是一个非常简单的Writer,它纪录所接收到的原始的数据到到作为public属性的 数组中.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $mock = new Zend_Log_Writer_Mock;
@@ -147,7 +147,7 @@ Writers
 
 没有复合Writer对象,但是一个Log实例可以有任意个Writer.使用 *addWriter*\ 方法 添加Writer:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $writer1 = new Zend_Log_Writer_Stream('/path/to/first/logfile');

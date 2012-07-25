@@ -18,8 +18,9 @@ alebo :ref:`Zend_Config_Xml <zend.config.adapters.xml>`, ale ak sú konfiguračn
 je možné predať toto pole *Zend_Config* konštruktoru a zužitkovať jednoduchý objektovo-orientovaný
 prístup:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // konfigurácia uložená v poli
    $configArray = array(
@@ -52,8 +53,9 @@ ktoré mu boli predané v konštruktore.
 Popri objektovo-orientovanom prístupe *Zend_Config* poskytuje metódu *get()* ktorá umožňuje vrátiť zadanú
 východziu hodnotu. Na príklad:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
        $host = $config->database->get('host', 'localhost');
 
