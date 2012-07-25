@@ -169,7 +169,7 @@ Adding console usage info
 It is a common practice for console application to display usage information when run for the first time (without any
 arguments). This is also handled by ``Zend\Console`` together with ``MVC``.
 
-Usage info in ZF2 console applications is provided by :doc:`loaded modules <zend.module.manager.intro>`. In case no
+Usage info in ZF2 console applications is provided by :doc:`loaded modules <zend.module-manager.intro>`. In case no
 console route matches console arguments, ``Zend\Console`` will query all loaded modules and ask for their console
 usage info.
 
