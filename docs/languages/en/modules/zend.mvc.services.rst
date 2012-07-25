@@ -30,7 +30,7 @@ This is the one service class referenced directly in the bootstrapping. It provi
 
   - ``Application``, mapping to ``Zend\Mvc\Service\ApplicationFactory``.
 
-  - ``Configuration``, mapping to ``end\Mvc\Service\ConfigFactory``. Internally, this pulls the
+  - ``Configuration``, mapping to ``Zend\Mvc\Service\ConfigFactory``. Internally, this pulls the
     ``ModuleManager`` service, and calls its ``loadModules()`` method, and retrieves the merged configuration from
     the module event. As such, this service contains the entire, merged application configuration.
 
