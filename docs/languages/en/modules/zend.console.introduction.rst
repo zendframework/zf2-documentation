@@ -27,7 +27,7 @@ Let's assume that we'd like our application to handle the following command line
 
 .. code-block:: bash
 
-    zf user reset-password user@mail.com
+    > zf user reset-password user@mail.com
     
 When a user runs our application (``zf``) with these parameters, we'd like to call action ``resetpassword`` of 
 ``Application\IndexController``. First we want to create a **route definition**:
@@ -210,11 +210,11 @@ Let's modify our ``Application\IndexController`` to provide usage info:
         public function getConsoleUsage(Console $console){
             return array(
                 // Describe available commands
-                'user reset-password [--verbose|-v] USER EMAIL'    => 'Reset password for a user',
+                'user reset-password [--verbose|-v] EMAIL'    => 'Reset password for a user',
 
                 // Describe expected parameters
-                array( 'USER NAME',       'Email of the user for a password reset' ),
-                array( '--verbose|-v',    '(optional) turn on verbose mode'        ),
+                array( 'EMAIL',            'Email of the user for a password reset' ),
+                array( '--verbose|-v',     '(optional) turn on verbose mode'        ),
             );
         }
     }
@@ -227,5 +227,5 @@ mismatch, all info from all modules will be concatenated, formatted to console w
    The order of usage info displayed in the console is the order modules load. If you want your application to
    display important usage info first, change the order your modules are loaded.
 
-Modules can also provide application banner (title). To learn more about the format expected from
+Modules can also provide an application banner (title). To learn more about the format expected from
 ``getConsoleUsage()`` and application banners, please follow to the following chapter: :doc:`zend.console.controllers`
