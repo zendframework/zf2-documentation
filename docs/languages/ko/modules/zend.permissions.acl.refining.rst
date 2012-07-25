@@ -1,16 +1,16 @@
-.. _zend.acl.refining:
+.. _zend.permissions.acl.refining:
 
 접근 제어의 정련(精鍊)
 =============
 
-.. _zend.acl.refining.precise:
+.. _zend.permissions.acl.refining.precise:
 
 정확한 접근 제어
 ---------
 
-:ref:`이전 장 <zend.acl.introduction>`\ 에서 정의한 기본적인 ACL에서는, 다양한 규칙을 ACL
+:ref:`이전 장 <zend.permissions.acl.introduction>`\ 에서 정의한 기본적인 ACL에서는, 다양한 규칙을 ACL
 전체(모든 자원)에 대해서 적용했습니다. 그러나 실제로 접근 제어에는 다양하고
-복잡한 단계와 예외사항을 만나기 쉽습니다. Zend_Acl은 이러한 경우에도 간단하고
+복잡한 단계와 예외사항을 만나기 쉽습니다. Zend\Permissions\Acl은 이러한 경우에도 간단하고
 유연한 방법으로 대응할 수 있습니다.
 
 예로 든 CMS에서 대부분의 유저를 'staff'그룹에서 정리해 관리하고 있었습니다.
@@ -31,7 +31,7 @@
    :linenos:
    <?php
    // 새로운 marketing그룹은 staff그룹으로부터 권한을 상속받습니다
-   $acl->addRole(new Zend_Acl_Role('marketing'), 'staff');
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('marketing'), 'staff');
 
 다음에, 위의 접근 제어는 특정 자원(예: "newsletter","latest news","announcement news")에 대해
 한정되는 것에 주의하시기 바랍니다. 이제 우리는 다음과 같이 이들 자원을
@@ -41,11 +41,10 @@
    :linenos:
    <?php
    // 규칙을 적용할 자원을 만듭니다
-   require_once 'Zend/Acl/Resource.php';
-   $acl->add(new Zend_Acl_Resource('newsletter'));           // newsletter
-   $acl->add(new Zend_Acl_Resource('news'));                 // news
-   $acl->add(new Zend_Acl_Resource('latest'), 'news');       // latest news
-   $acl->add(new Zend_Acl_Resource('announcement'), 'news'); // announcement news
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('newsletter'));           // newsletter
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('news'));                 // news
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('latest'), 'news');       // latest news
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('announcement'), 'news'); // announcement news
 
 그러면, 이들에게 ACL의 해당 범위에 특정 규칙들을 정의하는 문제는 간단합니다:
 
@@ -90,7 +89,7 @@
    echo $acl->isAllowed('administrator', 'announcement', 'archive') ?
         "allowed" : "denied"; // denied
 
-.. _zend.acl.refining.removing:
+.. _zend.permissions.acl.refining.removing:
 
 접근 제어의 삭제
 ---------

@@ -601,7 +601,7 @@ onFault 関数は、サーバから無効な結果が返ってきたときにコ
 
 ``Zend_Amf_Server`` では、認証と認可のフックを指定して
 サービスへのアクセスを制御できます。この仕組みは、 :ref:`Zend_Auth <zend.auth>` および
-:ref:`Zend_Acl <zend.acl>` コンポーネントが提供するものを使用しています。
+:ref:`Zend\Permissions\Acl <zend.permissions.acl>` コンポーネントが提供するものを使用しています。
 
 認証を定義するには、抽象クラス ``Zend_Amf_Auth_Abstract``
 を継承した認証アダプタを作成します。 このアダプタは、通常の :ref:`認証アダプタ
@@ -628,13 +628,13 @@ onFault 関数は、サーバから無効な結果が返ってきたときにコ
 
    $server->setAuth(new My_Amf_Auth());
 
-アクセス制御を行うには ``setAcl()`` メソッドで設定した ``Zend_Acl``
+アクセス制御を行うには ``setAcl()`` メソッドで設定した ``Zend\Permissions\Acl``
 オブジェクトを使用します。
 
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
    createPermissions($acl); // パーミッション情報を作成します
    $server->setAcl($acl);
 

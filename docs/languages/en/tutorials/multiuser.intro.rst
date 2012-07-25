@@ -38,7 +38,7 @@ These concerns and responsibilities can effectively be summed up by three questi
    concerns outlined above.
 
 In the following chapters, we'll take a look at these common problems relating to authentication and authorization
-in detail. We will discover how 3 main components: ``Zend_Session``, ``Zend_Auth``, and ``Zend_Acl``; provide an
+in detail. We will discover how 3 main components: ``Zend_Session``, ``Zend_Auth``, and ``Zend\Permissions\Acl``; provide an
 out-of-the-box solution as well as the extension points each have that will cater to a more customized solution.
 
 

@@ -1,9 +1,9 @@
-.. _zend.acl.introduction:
+.. _zend.permissions.acl.introduction:
 
 Introduction
 ============
 
-The ``Zend\Acl`` component provides a lightweight and flexible access control list (*ACL*) implementation for
+The ``Zend\Permissions\Acl`` component provides a lightweight and flexible access control list (*ACL*) implementation for
 privileges management. In general, an application may utilize such *ACL*'s to control access to certain protected
 objects by other requesting objects.
 
@@ -20,62 +20,62 @@ granted to everyone.
 Through the specification and use of an *ACL*, an application may control how roles are granted access to
 resources.
 
-.. _zend.acl.introduction.resources:
+.. _zend.permissions.acl.introduction.resources:
 
 Resources
 ---------
 
-Creating a resource using ``Zend\Acl\Acl`` is very simple. A resource interface
-``Zend\Acl\Resource\ResourceInterface`` is provided to facilitate creating resources in an application. A class
-need only implement this interface, which consists of a single method, ``getResourceId()``, for ``Zend\Acl\Acl`` to
-recognize the object as a resource. Additionally, ``Zend\Acl\Resource\GenericResource`` is provided as a basic
+Creating a resource using ``Zend\Permissions\Acl\Acl`` is very simple. A resource interface
+``Zend\Permissions\Acl\Resource\ResourceInterface`` is provided to facilitate creating resources in an application. A class
+need only implement this interface, which consists of a single method, ``getResourceId()``, for ``Zend\Permissions\Acl\Acl`` to
+recognize the object as a resource. Additionally, ``Zend\Permissions\Acl\Resource\GenericResource`` is provided as a basic
 resource implementation for developers to extend as needed.
 
-``Zend\Acl\Acl`` provides a tree structure to which multiple resources can be added. Since resources are stored in
+``Zend\Permissions\Acl\Acl`` provides a tree structure to which multiple resources can be added. Since resources are stored in
 such a tree structure, they can be organized from the general (toward the tree root) to the specific (toward the
 tree leaves). Queries on a specific resource will automatically search the resource's hierarchy for rules assigned
 to ancestor resources, allowing for simple inheritance of rules. For example, if a default rule is to be applied to
 each building in a city, one would simply assign the rule to the city, instead of assigning the same rule to each
 building. Some buildings may require exceptions to such a rule, however, and this can be achieved in
-``Zend\Acl\Acl`` by assigning such exception rules to each building that requires such an exception. A resource may
+``Zend\Permissions\Acl\Acl`` by assigning such exception rules to each building that requires such an exception. A resource may
 inherit from only one parent resource, though this parent resource can have its own parent resource, etc.
 
-``Zend\Acl\Acl`` also supports privileges on resources (e.g., "create", "read", "update", "delete"), so the
+``Zend\Permissions\Acl\Acl`` also supports privileges on resources (e.g., "create", "read", "update", "delete"), so the
 developer can assign rules that affect all privileges or specific privileges on one or more resources.
 
-.. _zend.acl.introduction.roles:
+.. _zend.permissions.acl.introduction.roles:
 
 Roles
 -----
 
-As with resources, creating a role is also very simple. All roles must implement ``Zend\Acl\Role\RoleInterface``.
-This interface consists of a single method, ``getRoleId()``, Additionally, ``Zend\Acl\Role\GenericRole`` is
-provided by the ``Zend\Acl`` component as a basic role implementation for developers to extend as needed.
+As with resources, creating a role is also very simple. All roles must implement ``Zend\Permissions\Acl\Role\RoleInterface``.
+This interface consists of a single method, ``getRoleId()``, Additionally, ``Zend\Permissions\Acl\Role\GenericRole`` is
+provided by the ``Zend\Permissions\Acl`` component as a basic role implementation for developers to extend as needed.
 
-In ``Zend\Acl\Acl``, a role may inherit from one or more roles. This is to support inheritance of rules among
+In ``Zend\Permissions\Acl\Acl``, a role may inherit from one or more roles. This is to support inheritance of rules among
 roles. For example, a user role, such as "sally", may belong to one or more parent roles, such as "editor" and
 "administrator". The developer can assign rules to "editor" and "administrator" separately, and "sally" would
 inherit such rules from both, without having to assign rules directly to "sally".
 
 Though the ability to inherit from multiple roles is very useful, multiple inheritance also introduces some degree
-of complexity. The following example illustrates the ambiguity condition and how ``Zend\Acl\Acl`` solves it.
+of complexity. The following example illustrates the ambiguity condition and how ``Zend\Permissions\Acl\Acl`` solves it.
 
-.. _zend.acl.introduction.roles.example.multiple_inheritance:
+.. _zend.permissions.acl.introduction.roles.example.multiple_inheritance:
 
 .. rubric:: Multiple Inheritance among Roles
 
 The following code defines three base roles - "guest", "member", and "admin" - from which other roles may inherit.
 Then, a role identified by "someUser" is established and inherits from the three other roles. The order in which
-these roles appear in the ``$parents`` array is important. When necessary, ``Zend\Acl\Acl`` searches for access
+these roles appear in the ``$parents`` array is important. When necessary, ``Zend\Permissions\Acl\Acl`` searches for access
 rules defined not only for the queried role (herein, "someUser"), but also upon the roles from which the queried
 role inherits (herein, "guest", "member", and "admin"):
 
 .. code-block:: php
    :linenos:
 
-   use Zend\Acl\Acl;
-   use Zend\Acl\Role\GenericRole as Role;
-   use Zend\Acl\Resource\GenericResource as Resource;
+   use Zend\Permissions\Acl\Acl;
+   use Zend\Permissions\Acl\Role\GenericRole as Role;
+   use Zend\Permissions\Acl\Resource\GenericResource as Resource;
 
    $acl = new Acl();
 
@@ -93,17 +93,17 @@ role inherits (herein, "guest", "member", and "admin"):
 
    echo $acl->isAllowed('someUser', 'someResource') ? 'allowed' : 'denied';
 
-Since there is no rule specifically defined for the "someUser" role and "someResource", ``Zend\Acl\Acl`` must
+Since there is no rule specifically defined for the "someUser" role and "someResource", ``Zend\Permissions\Acl\Acl`` must
 search for rules that may be defined for roles that "someUser" inherits. First, the "admin" role is visited, and
-there is no access rule defined for it. Next, the "member" role is visited, and ``Zend\Acl\Acl`` finds that there
+there is no access rule defined for it. Next, the "member" role is visited, and ``Zend\Permissions\Acl\Acl`` finds that there
 is a rule specifying that "member" is allowed access to "someResource".
 
-If ``Zend\Acl\Acl`` were to continue examining the rules defined for other parent roles, however, it would find
+If ``Zend\Permissions\Acl\Acl`` were to continue examining the rules defined for other parent roles, however, it would find
 that "guest" is denied access to "someResource". This fact introduces an ambiguity because now "someUser" is both
 denied and allowed access to "someResource", by reason of having inherited conflicting rules from different parent
 roles.
 
-``Zend\Acl\Acl`` resolves this ambiguity by completing a query when it finds the first rule that is directly
+``Zend\Permissions\Acl\Acl`` resolves this ambiguity by completing a query when it finds the first rule that is directly
 applicable to the query. In this case, since the "member" role is examined before the "guest" role, the example
 code would print "allowed".
 
@@ -112,7 +112,7 @@ code would print "allowed".
    When specifying multiple parents for a role, keep in mind that the last parent listed is the first one searched
    for rules applicable to an authorization query.
 
-.. _zend.acl.introduction.creating:
+.. _zend.permissions.acl.introduction.creating:
 
 Creating the Access Control List
 --------------------------------
@@ -125,15 +125,15 @@ parameters:
 .. code-block:: php
    :linenos:
 
-   use Zend\Acl\Acl;
+   use Zend\Permissions\Acl\Acl;
    $acl = new Acl();
 
 .. note::
 
-   Until a developer specifies an "allow" rule, ``Zend\Acl\Acl`` denies access to every privilege upon every
+   Until a developer specifies an "allow" rule, ``Zend\Permissions\Acl\Acl`` denies access to every privilege upon every
    resource by every role.
 
-.. _zend.acl.introduction.role_registry:
+.. _zend.permissions.acl.introduction.role_registry:
 
 Registering Roles
 -----------------
@@ -147,7 +147,7 @@ data, backup and export. This set of permissions can be represented in a role re
 inherit privileges from 'parent' groups, as well as providing distinct privileges for their unique group only. The
 permissions may be expressed as follows:
 
-.. _zend.acl.introduction.role_registry.table.example_cms_access_controls:
+.. _zend.permissions.acl.introduction.role_registry.table.example_cms_access_controls:
 
 .. table:: Access Controls for an Example CMS
 
@@ -163,19 +163,19 @@ permissions may be expressed as follows:
    |Administrator|(Granted all access)    |N/A                     |
    +-------------+------------------------+------------------------+
 
-For this example, ``Zend\Acl\Role\GenericRole`` is used, but any object that implements
-``Zend\Acl\Role\RoleInterface`` is acceptable. These groups can be added to the role registry as follows:
+For this example, ``Zend\Permissions\Acl\Role\GenericRole`` is used, but any object that implements
+``Zend\Permissions\Acl\Role\RoleInterface`` is acceptable. These groups can be added to the role registry as follows:
 
 .. code-block:: php
    :linenos:
 
-   use Zend\Acl\Acl;
-   use Zend\Acl\Role\GenericRole as Role;
-   use Zend\Acl\Resource\GenericResource as Resource;
+   use Zend\Permissions\Acl\Acl;
+   use Zend\Permissions\Acl\Role\GenericRole as Role;
+   use Zend\Permissions\Acl\Resource\GenericResource as Resource;
 
    $acl = new Acl();
 
-   // Add groups to the Role registry using Zend\Acl\Role\GenericRole
+   // Add groups to the Role registry using Zend\Permissions\Acl\Role\GenericRole
    // Guest does not inherit access controls
    $roleGuest = new Role('guest');
    $acl->addRole($roleGuest);
@@ -194,20 +194,20 @@ For this example, ``Zend\Acl\Role\GenericRole`` is used, but any object that imp
    // Administrator does not inherit access controls
    $acl->addRole(new Role('administrator'));
 
-.. _zend.acl.introduction.defining:
+.. _zend.permissions.acl.introduction.defining:
 
 Defining Access Controls
 ------------------------
 
 Now that the *ACL* contains the relevant roles, rules can be established that define how resources may be accessed
 by roles. You may have noticed that we have not defined any particular resources for this example, which is
-simplified to illustrate that the rules apply to all resources. ``Zend\Acl\Acl`` provides an implementation whereby
+simplified to illustrate that the rules apply to all resources. ``Zend\Permissions\Acl\Acl`` provides an implementation whereby
 rules need only be assigned from general to specific, minimizing the number of rules needed, because resources and
 roles inherit rules that are defined upon their ancestors.
 
 .. note::
 
-   In general, ``Zend\Acl\Acl`` obeys a given rule if and only if a more specific rule does not apply.
+   In general, ``Zend\Permissions\Acl\Acl`` obeys a given rule if and only if a more specific rule does not apply.
 
 Consequently, we can define a reasonably complex set of rules with a minimum amount of code. To apply the base
 permissions as defined above:
@@ -215,8 +215,8 @@ permissions as defined above:
 .. code-block:: php
    :linenos:
 
-   use Zend\Acl\Acl;
-   use Zend\Acl\Role\GenericRole as Role;
+   use Zend\Permissions\Acl\Acl;
+   use Zend\Permissions\Acl\Role\GenericRole as Role;
 
    $acl = new Acl();
 
@@ -248,7 +248,7 @@ permissions as defined above:
 The ``NULL`` values in the above ``allow()`` calls are used to indicate that the allow rules apply to all
 resources.
 
-.. _zend.acl.introduction.querying:
+.. _zend.permissions.acl.introduction.querying:
 
 Querying an ACL
 ---------------

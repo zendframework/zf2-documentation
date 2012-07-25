@@ -1,25 +1,25 @@
-.. _zend.acl.advanced:
+.. _zend.permissions.acl.advanced:
 
 Advanced Usage
 ==============
 
-.. _zend.acl.advanced.storing:
+.. _zend.permissions.acl.advanced.storing:
 
 Storing ACL Data for Persistence
 --------------------------------
 
-The ``Zend\Acl`` component was designed in such a way that it does not require any particular backend technology
+The ``Zend\Permissions\Acl`` component was designed in such a way that it does not require any particular backend technology
 such as a database or cache server for storage of the *ACL* data. Its complete *PHP* implementation enables
-customized administration tools to be built upon ``Zend\Acl\Acl`` with relative ease and flexibility. Many
-situations require some form of interactive maintenance of the *ACL*, and ``Zend\Acl\Acl`` provides methods for
+customized administration tools to be built upon ``Zend\Permissions\Acl\Acl`` with relative ease and flexibility. Many
+situations require some form of interactive maintenance of the *ACL*, and ``Zend\Permissions\Acl\Acl`` provides methods for
 setting up, and querying against, the access controls of an application.
 
 Storage of *ACL* data is therefore left as a task for the developer, since use cases are expected to vary widely
-for various situations. Because ``Zend\Acl\Acl`` is serializable, *ACL* objects may be serialized with *PHP*'s
+for various situations. Because ``Zend\Permissions\Acl\Acl`` is serializable, *ACL* objects may be serialized with *PHP*'s
 `serialize()`_ function, and the results may be stored anywhere the developer should desire, such as a file,
 database, or caching mechanism.
 
-.. _zend.acl.advanced.assertions:
+.. _zend.permissions.acl.advanced.assertions:
 
 Writing Conditional ACL Rules with Assertions
 ---------------------------------------------
@@ -27,21 +27,21 @@ Writing Conditional ACL Rules with Assertions
 Sometimes a rule for allowing or denying a role access to a resource should not be absolute but dependent upon
 various criteria. For example, suppose that certain access should be allowed, but only between the hours of 8:00am
 and 5:00pm. Another example would be denying access because a request comes from an IP address that has been
-flagged as a source of abuse. ``Zend\Acl\Acl`` has built-in support for implementing rules based on whatever
+flagged as a source of abuse. ``Zend\Permissions\Acl\Acl`` has built-in support for implementing rules based on whatever
 conditions the developer needs.
 
-``Zend\Acl\Acl`` provides support for conditional rules with ``Zend\Acl\Assertion\AssertionInterface``. In order to
+``Zend\Permissions\Acl\Acl`` provides support for conditional rules with ``Zend\Permissions\Acl\Assertion\AssertionInterface``. In order to
 use the rule assertion interface, a developer writes a class that implements the ``assert()`` method of the
 interface:
 
 .. code-block:: php
    :linenos:
 
-   class CleanIPAssertion implements Zend\Acl\Assertion\AssertionInterface
+   class CleanIPAssertion implements Zend\Permissions\Acl\Assertion\AssertionInterface
    {
-       public function assert(Zend\Acl $acl,
-                              Zend\Acl\Role\RoleInterface $role = null,
-                              Zend\Acl\Resource\ResourceInterface $resource = null,
+       public function assert(Zend\Permissions\Acl $acl,
+                              Zend\Permissions\Acl\Role\RoleInterface $role = null,
+                              Zend\Permissions\Acl\Resource\ResourceInterface $resource = null,
                               $privilege = null)
        {
            return $this->_isCleanIP($_SERVER['REMOTE_ADDR']);
@@ -60,7 +60,7 @@ conditional rules. A rule that is created with an assertion only applies when th
 .. code-block:: php
    :linenos:
 
-   use Zend\Acl\Acl;
+   use Zend\Permissions\Acl\Acl;
 
    $acl = new Acl();
    $acl->allow(null, null, null, new CleanIPAssertion());

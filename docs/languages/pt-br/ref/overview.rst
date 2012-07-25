@@ -15,7 +15,7 @@ poderoso e extensível framework para aplicações web quando combinados. Zend F
 implementação *MVC* robusta e de alto desempenho, uma abstração de banco de dados que é simples de usar, e um
 componente para formulários que implementa a renderização, validação e filtragem de formulários em *HTML* de
 modo que os desenvolvedores possam combinar todas estas operações utilizando uma interface orientada a objetos
-fácil de usar. Outros componentes, tais como ``Zend_Auth`` e ``Zend_Acl``, fornecem autenticação e autorização
+fácil de usar. Outros componentes, tais como ``Zend_Auth`` e ``Zend\Permissions\Acl``, fornecem autenticação e autorização
 de usuários junto à maioria das lojas credenciadas. Outros, ainda, implementam bibliotecas de cliente para
 simplificar o acesso aos serviços web mais populares. Quaisquer que sejam as necessidades de sua aplicação,
 você provavelmente irá encontrar um componente do Zend Framework que poderá ser usado para reduzir drasticamente

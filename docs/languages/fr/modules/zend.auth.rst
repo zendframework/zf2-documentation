@@ -11,7 +11,7 @@ d'autorisation**. L'authentification est définie de manière lâche (souple) af
 donnée est bien celle qu'elle prétend être (c.-à-d. identification), sur la base d'identifiants fournis.
 L'autorisation, l'action de décider si une entité donnée peut accéder à d'autres entités et / ou exécuter
 des opérations sur celles-ci ne fait pas partie des prérogatives de ``Zend_Auth``. Pour plus d'informations sur
-les autorisations et le contrôle d'accès via Zend Framework, voyez :ref:`Zend_Acl <zend.acl>`.
+les autorisations et le contrôle d'accès via Zend Framework, voyez :ref:`Zend\Permissions\Acl <zend.permissions.acl>`.
 
 .. note::
 

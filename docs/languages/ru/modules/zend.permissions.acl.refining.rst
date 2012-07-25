@@ -1,18 +1,18 @@
-.. _zend.acl.refining:
+.. _zend.permissions.acl.refining:
 
 Настройка управления доступом
 =============================
 
-.. _zend.acl.refining.precise:
+.. _zend.permissions.acl.refining.precise:
 
 Точное управление доступом
 --------------------------
 
 Базовый *ACL*, как было описано в :ref:`предыдущем разделе
-<zend.acl.introduction>`, демонстрирует, как различные привилегии могут
+<zend.permissions.acl.introduction>`, демонстрирует, как различные привилегии могут
 быть разрешены в *ACL* (ко всем ресурсам). Но на практике средства
 управления доступом имеют тенденцию к тому, чтобы иметь
-исключения из правил и различную степень сложности. ``Zend_Acl``
+исключения из правил и различную степень сложности. ``Zend\Permissions\Acl``
 позволяет производить детализацию просто и гибко.
 
 Для *CMS* из нашего примера было установлено, что хотя группа
@@ -38,7 +38,7 @@
    :linenos:
 
    // Новая группа 'маркетинг' наследует права от группы 'сотрудник'
-   $acl->addRole(new Zend_Acl_Role('marketing'), 'staff');
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('marketing'), 'staff');
 
 Далее обратите внимание, что указанные выше права доступа
 имеют отношение к особым ресурсам (например, "подписка",
@@ -50,16 +50,16 @@
    // Создаем ресурсы для этих ролей
 
    // подписка
-   $acl->add(new Zend_Acl_Resource('newsletter'));
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('newsletter'));
 
    // новости
-   $acl->add(new Zend_Acl_Resource('news'));
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('news'));
 
    // последние новости
-   $acl->add(new Zend_Acl_Resource('latest'), 'news');
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('latest'), 'news');
 
    // объявления
-   $acl->add(new Zend_Acl_Resource('announcement'), 'news');
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('announcement'), 'news');
 
 Затем определяются более точные правила для целевых областей
 *ACL*.
@@ -118,7 +118,7 @@
         "разрешен" : "запрещен";
    // запрещен
 
-.. _zend.acl.refining.removing:
+.. _zend.permissions.acl.refining.removing:
 
 Удаление правил доступа
 -----------------------

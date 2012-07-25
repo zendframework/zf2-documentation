@@ -101,7 +101,7 @@ Multiple block tags within the same line are not allowed; multiple inline tags a
 
    <!-- ALLOWED -->
    <para>
-       <classname>Zend_Magic</classname> does not exist. <classname>Zend_Acl</classname> does.
+       <classname>Zend_Magic</classname> does not exist. <classname>Zend\Permissions\Acl</classname> does.
    </para>
 
 .. _doc-standard.file-formatting.line-termination:

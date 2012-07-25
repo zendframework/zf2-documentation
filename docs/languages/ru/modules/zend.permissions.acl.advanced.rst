@@ -1,32 +1,32 @@
-.. _zend.acl.advanced:
+.. _zend.permissions.acl.advanced:
 
 Расширенное использование
 =========================
 
-.. _zend.acl.advanced.storing:
+.. _zend.permissions.acl.advanced.storing:
 
 Постоянное хранение данных ACL
 ------------------------------
 
-``Zend_Acl`` спроектирован таким образом, что не требует для
+``Zend\Permissions\Acl`` спроектирован таким образом, что не требует для
 хранения данных *ACL* использования строго определенных
 технологий хранения - таких, как база данных или сервер кеша.
 Его реализация на чистом *PHP* позволяет создавать
-административные инструменты под управлением ``Zend_Acl`` с
+административные инструменты под управлением ``Zend\Permissions\Acl`` с
 относительной простотой и гибкостью. Многие ситуации требуют
-некоторой интерактивной поддержки от *ACL*, и ``Zend_Acl``
+некоторой интерактивной поддержки от *ACL*, и ``Zend\Permissions\Acl``
 предоставляет методы для настройки, произведения запросов,
 контроля доступа приложением.
 
 Тем не менее, хранение данных *ACL* остается задачей
 разработчика, т.к. случаи использования могут сильно
-варьироваться в различных ситуациях. Поскольку ``Zend_Acl``
+варьироваться в различных ситуациях. Поскольку ``Zend\Permissions\Acl``
 доступен для сериализации, то можно сериализовать объекты *ACL*
 через PHP-функцию `serialize()`_, и результаты можно хранить там, где
 пожелает разработчик - например, в файле, базе данных или с
 помощью механизма кэширования.
 
-.. _zend.acl.advanced.assertions:
+.. _zend.permissions.acl.advanced.assertions:
 
 Написание условных правил ACL с утверждениями
 ---------------------------------------------
@@ -36,22 +36,22 @@
 Например, определенный доступ должен быть разрешен, но только
 с 8:00 до 17:00. Другой пример - доступ должен быть запрещен, если
 запрос поступил с IP-адреса, находящегося в "черном списке".
-``Zend_Acl`` имеет встроеную поддержку для применения правил,
+``Zend\Permissions\Acl`` имеет встроеную поддержку для применения правил,
 основанных на любых нужных разработчику условиях.
 
-``Zend_Acl`` предоставляет поддержку условных правил с помощью
-интерфейса ``Zend_Acl_Assert_Interface``. Чтобы использовать интерфейс
+``Zend\Permissions\Acl`` предоставляет поддержку условных правил с помощью
+интерфейса ``Zend\Permissions\Acl\Assert\AssertInterface``. Чтобы использовать интерфейс
 утверждений, разработчик должен написать класс, который
 реализует метод *assert()* интерфейса:
 
 .. code-block:: php
    :linenos:
 
-   class CleanIPAssertion implements Zend_Acl_Assert_Interface
+   class CleanIPAssertion implements Zend\Permissions\Acl\Assert\AssertInterface
    {
-       public function assert(Zend_Acl $acl,
-                              Zend_Acl_Role_Interface $role = null,
-                              Zend_Acl_Resource_Interface $resource = null,
+       public function assert(Zend\Permissions\Acl $acl,
+                              Zend\Permissions\Acl\Role\RoleInterface $role = null,
+                              Zend\Permissions\Acl\Resource\ResourceInterface $resource = null,
                               $privilege = null)
        {
            return $this->_isCleanIP($_SERVER['REMOTE_ADDR']);
@@ -71,7 +71,7 @@
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
    $acl->allow(null, null, null, new CleanIPAssertion());
 
 Код выше создает условное правило, разрешающее всем доступ ко

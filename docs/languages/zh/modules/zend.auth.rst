@@ -7,7 +7,7 @@ Zend_Auth 为认证（authentication）和一些通用用例情景的具体认�
 
 Zend_Auth 只涉及 **认证**\ 而不是 **授权**\
 。认证被宽松地定义为基于一些证书（credential）来确定一个实体（例如，身份）是否确实是它所声称的。授权是一个过程，它决定是否允许一个实体对其他实体进行访问、执行操作，它超出了Zend_Auth的范围。更多关于Zend
-Framework 授权和访问控制的信息，参见 :ref:`Zend_Acl <zend.acl>`.
+Framework 授权和访问控制的信息，参见 :ref:`Zend\Permissions\Acl <zend.permissions.acl>`.
 
 .. note::
 

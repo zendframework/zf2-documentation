@@ -41,7 +41,7 @@ Diese Bedenken und Verantwortlichkeiten können effektiv in drei Fragen zusammen
 
 In den folgenden Kapiteln, sehen wir uns diese gemeinsamen Probleme an welche im Detail auf Authentifizierung und
 Autorisierung Bezug nehmen. Wir werden die 3 Hauptkomponenten kennenlernen: ``Zend_Session``, ``Zend_Auth``, und
-``Zend_Acl``; eine sofort verwendbare Lösung anbieten sowie Erweiterungspunkte welche auf eine bessere anpassbare
+``Zend\Permissions\Acl``; eine sofort verwendbare Lösung anbieten sowie Erweiterungspunkte welche auf eine bessere anpassbare
 Lösung abzielen.
 
 

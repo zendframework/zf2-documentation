@@ -1,16 +1,16 @@
-.. _zend.acl.refining:
+.. _zend.permissions.acl.refining:
 
 Affiner les Contrôles d'Accès
 =============================
 
-.. _zend.acl.refining.precise:
+.. _zend.permissions.acl.refining.precise:
 
 Mieux définir les Contrôles d'Accès
 -----------------------------------
 
-L'*ACL* basique définie dans le :ref:`chapitre précédent <zend.acl.introduction>`\ montre comment plusieurs
+L'*ACL* basique définie dans le :ref:`chapitre précédent <zend.permissions.acl.introduction>`\ montre comment plusieurs
 privilèges peuvent être alloués pour l'ensemble de l'*ACL* (toutes les ressources). En pratique, toutefois, les
-contrôles d'accès ont souvent des exceptions et des degrés de complexité variables. ``Zend_Acl`` permet
+contrôles d'accès ont souvent des exceptions et des degrés de complexité variables. ``Zend\Permissions\Acl`` permet
 d'atteindre ce degré de finesse d'une manière directe et flexible.
 
 Pour l'exemple du *CMS*, nous avons déterminé que bien que le groupe "Staff" couvre les besoins de la plupart des
@@ -30,7 +30,7 @@ permissions de "staff".
    :linenos:
 
    // Le nouveau groupe Marketing hérite des permissions de Staff
-   $acl->addRole(new Zend_Acl_Role('marketing'), 'staff');
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('marketing'), 'staff');
 
 Ensuite, notez que les contrôles d'accès plus haut font référence à des ressources (ex. "newsletters",
 "dernières news", "annonces"). Maintenant, nous ajoutons ces Ressources :
@@ -41,16 +41,16 @@ Ensuite, notez que les contrôles d'accès plus haut font référence à des res
    // Créer les Ressources pour les règles
 
    // newsletter
-   $acl->addResource(new Zend_Acl_Resource('newsletter'));
+   $acl->addResource(new Zend\Permissions\Acl\Resource\GenericResource('newsletter'));
 
    // news
-   $acl->addResource(new Zend_Acl_Resource('news'));
+   $acl->addResource(new Zend\Permissions\Acl\Resource\GenericResource('news'));
 
    // dernières news
-   $acl->addResource(new Zend_Acl_Resource('latest'), 'news');
+   $acl->addResource(new Zend\Permissions\Acl\Resource\GenericResource('latest'), 'news');
 
    // annonces
-   $acl->addResource(new Zend_Acl_Resource('announcement'), 'news');
+   $acl->addResource(new Zend\Permissions\Acl\Resource\GenericResource('announcement'), 'news');
 
 Ensuite c'est simplement une manière de définir ces règles spécifiques sur les parties cibles de l'*ACL*\  :
 
@@ -100,7 +100,7 @@ On peut maintenant interroger les *ACL* sur base des dernières modifications :
    echo $acl->isAllowed('administrator', 'announcement', 'archive') ?
         "autorisé" : "refusé"; // refusé
 
-.. _zend.acl.refining.removing:
+.. _zend.permissions.acl.refining.removing:
 
 Retirer les Contrôles d'Accès
 -----------------------------

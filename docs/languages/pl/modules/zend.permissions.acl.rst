@@ -1,9 +1,9 @@
-.. _zend.acl.introduction:
+.. _zend.permissions.acl.introduction:
 
 Wprowadzenie
 ============
 
-``Zend_Acl`` zapewnia lekką i elastyczną obsługę implementacji list kontroli dostępu (*ACL*) do zarządzania
+``Zend\Permissions\Acl`` zapewnia lekką i elastyczną obsługę implementacji list kontroli dostępu (*ACL*) do zarządzania
 uprawnieniami. Ogólnie rzecz biorąc, aplikacja może używać list *ACL* do kontrolowania dostępu do
 określonych chronionych obiektów przez inne obiekty.
 
@@ -20,42 +20,42 @@ samochodu nie musi zostać przyznany każdemu.
 Dzięki określeniu i użyciu list kontroli dostępu (*ACL*), aplikacja może kontrolować to, w jaki sposób
 żądające obiekty (role) mają przydzielany dostęp do chronionych obiektów (zasobów).
 
-.. _zend.acl.introduction.resources:
+.. _zend.permissions.acl.introduction.resources:
 
 O zasobach
 ----------
 
-Tworzenie zasobu w Zend_Acl jest bardzo proste. ``Zend_Acl`` zapewnia interfejs ``Zend_Acl_Resource_Interface`` aby
+Tworzenie zasobu w Zend\Permissions\Acl jest bardzo proste. ``Zend\Permissions\Acl`` zapewnia interfejs ``Zend\Permissions\Acl\Resource\ResourceInterface`` aby
 ułatwić programistom tworzenie zasobów w aplikacji. Klasa jedynie implementuje ten interfejs, który składa
-się z jednej metody, ``getResourceId()``, dzięki ktorej ``Zend_Acl`` wie, że obiekt jest zasobem. Dodatkowo w
-``Zend_Acl`` dołączona jest klasa ``Zend_Acl_Resource``, która jest podstawową implementacją zasobu do użycia
+się z jednej metody, ``getResourceId()``, dzięki ktorej ``Zend\Permissions\Acl`` wie, że obiekt jest zasobem. Dodatkowo w
+``Zend\Permissions\Acl`` dołączona jest klasa ``Zend\Permissions\Acl\Resource``, która jest podstawową implementacją zasobu do użycia
 przez programistów gdy jest to potrzebne.
 
-``Zend_Acl`` zapewnia drzewiastą strukturę, w której mogą być dodawane zasoby (lub inaczej "obszary będące
+``Zend\Permissions\Acl`` zapewnia drzewiastą strukturę, w której mogą być dodawane zasoby (lub inaczej "obszary będące
 pod kontrolą"). Dzięki temu, że zasoby są przechowywane w strukturze drzewiastej, mogą być one organizowane
 od ogólnych (od korzeni) do szczegółowych (do gałęzi). Zapytanie do konkretnego zasobu automatycznie przeszuka
 całą hierarchię zasobów, dla reguł przypisanych do przodka zasobów, pozwalając na proste dziedziczenie
 reguł. Na przykład, jeśli domyślna reguła ma być zastosowana do każdego budynku w mieście, wystarczy
 przypisać regułę do miasta, zamiast przypisywać regułę to każdego z budynków z osobna. Niektóre z
-budynków mogą wymagać wyjątków od tej reguły i może być to osiągnięte w łatwy sposób w ``Zend_Acl``
+budynków mogą wymagać wyjątków od tej reguły i może być to osiągnięte w łatwy sposób w ``Zend\Permissions\Acl``
 poprzez przypisanie takiej wyjątkowej reguły dla każdego z budynków wymagających wyjątku. Zasób może
 dziedziczyć tylko od jednego zasobu rodzica, a ten rodzic może także dziedziczyć tylko od jednego zasobu itd.
 
-``Zend_Acl`` także obsługuje przywileje dla zasobów (np., "create", "read", "update", "delete") i programista
+``Zend\Permissions\Acl`` także obsługuje przywileje dla zasobów (np., "create", "read", "update", "delete") i programista
 może przypisać reguły, które mają zastosowanie do wszystkich przywilejów, lub dla konkretnych przywilejów
 dla jednego lub więcej zasobów.
 
-.. _zend.acl.introduction.roles:
+.. _zend.permissions.acl.introduction.roles:
 
 O rolach
 --------
 
 Tak jak tworzenie zasobów, tworzenie ról także jest bardzo proste. Wszystkie role muszą implementować
-interfejs ``Zend_Acl_Role_Interface`` Ten interfejs składa się z jednej metody, ``getRoleId()``, dzięki ktorej
-Zend_Acl wie, że obiekt jest rolą. Dodatkowo w Zend_Acl dołączona jest klasa ``Zend_Acl_Role``, która jest
+interfejs ``Zend\Permissions\Acl\Role\RoleInterface`` Ten interfejs składa się z jednej metody, ``getRoleId()``, dzięki ktorej
+Zend\Permissions\Acl wie, że obiekt jest rolą. Dodatkowo w Zend\Permissions\Acl dołączona jest klasa ``Zend\Permissions\Acl\Role``, która jest
 podstawową implementacją roli do użycia przez programistów gdy jest to potrzebne.
 
-W ``Zend_Acl`` rola może dziedziczyć z jednej lub więcej ról. Jest to po to, aby możliwe było dziedziczenie
+W ``Zend\Permissions\Acl`` rola może dziedziczyć z jednej lub więcej ról. Jest to po to, aby możliwe było dziedziczenie
 zasad dla ról. Na przykład rola, użytkownik "sally", może dziedziczyć z jednej lub więcej ról rodziców,
 takich jak na przykład "editor" oraz "administrator". Programista może przypisać reguły dla ról "editor" oraz
 "administrator" osobno, a "sally" będzie dziedziczyć te reguły od obu ról, bez konieczności przypisania reguł
@@ -63,31 +63,31 @@ bezpośrednio dla "sally".
 
 Chociaż możliwość dziedziczenia po wielu rolach jest bardzo użyteczna, to takie dziedziczenie wprowadza pewien
 stopień złożoności. Poniższy przykład ilustruje niejasny przypadek dziedziczenia i pokazuje w jaki sposób
-``Zend_Acl`` go rozwiązuje.
+``Zend\Permissions\Acl`` go rozwiązuje.
 
-.. _zend.acl.introduction.roles.example.multiple_inheritance:
+.. _zend.permissions.acl.introduction.roles.example.multiple_inheritance:
 
 .. rubric:: Dziedziczenie po wielu rolach
 
 Poniższy kod definiuje trzy podstawowe role, po których inne role mogą dziedziczyć - "guest", "member", oraz
 "admin". Następnie definiowana jest rola o nazwie "someUser", ktora dziedziczy po zdefiniowanych wcześniej trzech
 rolach. Ważna jest kolejność zdefiniowania tych trzech ról w tablicy ``$parents``. Gdy sprawdzamy reguły
-dostępu, ``Zend_Acl`` szuka reguł zdefiniowanych nie tylko dla danej roli (w tym przypadku someUser"), ale także
+dostępu, ``Zend\Permissions\Acl`` szuka reguł zdefiniowanych nie tylko dla danej roli (w tym przypadku someUser"), ale także
 dla ról, po których ta rola dziedziczy (w tym przypadku "guest", "member" oraz "admin"):
 
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
 
-   $acl->addRole(new Zend_Acl_Role('guest'))
-       ->addRole(new Zend_Acl_Role('member'))
-       ->addRole(new Zend_Acl_Role('admin'));
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('guest'))
+       ->addRole(new Zend\Permissions\Acl\Role\GenericRole('member'))
+       ->addRole(new Zend\Permissions\Acl\Role\GenericRole('admin'));
 
    $parents = array('guest', 'member', 'admin');
-   $acl->addRole(new Zend_Acl_Role('someUser'), $parents);
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('someUser'), $parents);
 
-   $acl->add(new Zend_Acl_Resource('someResource'));
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('someResource'));
 
    $acl->deny('guest', 'someResource');
    $acl->allow('member', 'someResource');
@@ -95,17 +95,17 @@ dla ról, po których ta rola dziedziczy (w tym przypadku "guest", "member" oraz
    echo $acl->isAllowed('someUser', 'someResource') ? 'allowed' : 'denied';
 
 Z tego względu, że nie ma zdefiniowanych reguł konkretnie dla roli "someUser" oraz dla zasobu "someResource",
-``Zend_Acl`` musi szukać zasad, ktore mogą być zdefiniowane dla ról, po których dziedziczy rola "someUser>".
+``Zend\Permissions\Acl`` musi szukać zasad, ktore mogą być zdefiniowane dla ról, po których dziedziczy rola "someUser>".
 Wpierw sprawdzana jest rola "admin", a dla niej nie ma zdefiniowanej żadnej reguły dostępu. Następnie
-sprawdzana jest rola "member" i ``Zend_Acl`` znajduje zdefiniowaną regułę zezwalająca roli "member" na dostęp
+sprawdzana jest rola "member" i ``Zend\Permissions\Acl`` znajduje zdefiniowaną regułę zezwalająca roli "member" na dostęp
 do zasobu "someResource".
 
-Jeśli ``Zend_Acl`` kontynuowałby sprawdzanie reguł zdefiniowanych dla innych ról rodziców, znalazłby regułę
+Jeśli ``Zend\Permissions\Acl`` kontynuowałby sprawdzanie reguł zdefiniowanych dla innych ról rodziców, znalazłby regułę
 zabraniającą roli "guest" dostępu do zasobu "someResource". Ten fakt wprowadza niejaność, ponieważ teraz rola
 "someUser" ma zarówno dozwolony jak i zabroniony dostęp do zasobu "someResource", z tego powodu, że posiada
 odziedziczone po dwóch rolach reguły, które są ze sobą sprzeczne.
 
-``Zend_Acl`` rozwiązuje tę niejaśność kończąc zapytanie wtedy, gdy znajdzie pierwszą regułę, wprost
+``Zend\Permissions\Acl`` rozwiązuje tę niejaśność kończąc zapytanie wtedy, gdy znajdzie pierwszą regułę, wprost
 pasującą do zapytania. W tym przypadku, z tego względu, że rola "member" jest sprawdzana przed rolą "guest",
 przykładowy kod wyświetliłby "allowed".
 
@@ -114,7 +114,7 @@ przykładowy kod wyświetliłby "allowed".
    Gdy określasz wielu rodziców dla roli, pamiętaj, że ostatni rodzic na liście jest pierwszym przeszukiwanym
    rodzicem w celu znalezienia ról pasujących do zapytania autoryzacyjnego.
 
-.. _zend.acl.introduction.creating:
+.. _zend.permissions.acl.introduction.creating:
 
 Tworzenie list kontroli dostępu
 -------------------------------
@@ -127,14 +127,14 @@ którym różnymi obszarami zarządza kilka poziomów grup. Aby utworzyć nowy o
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
 
 .. note::
 
-   Dopóki programista nie określi reguły "allow", ``Zend_Acl`` zabroni dostępu wszystkim rolom do wszystkich
+   Dopóki programista nie określi reguły "allow", ``Zend\Permissions\Acl`` zabroni dostępu wszystkim rolom do wszystkich
    przywilejów dla wszystkich zasobów.
 
-.. _zend.acl.introduction.role_registry:
+.. _zend.permissions.acl.introduction.role_registry:
 
 Rejestrowanie ról
 -----------------
@@ -149,7 +149,7 @@ kopii zapasowych/eksportu danych. Ten zestaw pozwoleń może być reprezentowany
 każdej grupie dziedziczyć uprawnienia z grup rodziców, a także umożliwiając każdej z grup posiadanie
 własnych unikalnych uprawnień. Uprawnienia mogą być wyrażone w taki sposób:
 
-.. _zend.acl.introduction.role_registry.table.example_cms_access_controls:
+.. _zend.permissions.acl.introduction.role_registry.table.example_cms_access_controls:
 
 .. table:: Kontrola dostępu dla przykładowego CMS
 
@@ -165,34 +165,34 @@ własnych unikalnych uprawnień. Uprawnienia mogą być wyrażone w taki sposób
    |Administrator|(posiada cały dostęp)   |N/A                     |
    +-------------+------------------------+------------------------+
 
-W tym przykładzie użyty jest obiekt ``Zend_Acl_Role``, ale dozwolony jest dowolny obiekt, który implementuje
-interfejs ``Zend_Acl_Role_Interface``. Te grupy mogą być dodane do rejestru ról w taki sposób:
+W tym przykładzie użyty jest obiekt ``Zend\Permissions\Acl\Role``, ale dozwolony jest dowolny obiekt, który implementuje
+interfejs ``Zend\Permissions\Acl\Role\RoleInterface``. Te grupy mogą być dodane do rejestru ról w taki sposób:
 
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
 
-   // Dodajemy grupy do rejestru ról używając obiektu Zend_Acl_Role
+   // Dodajemy grupy do rejestru ról używając obiektu Zend\Permissions\Acl\Role
    // Grupa guest nie dziedziczy kontroli dostępu
-   $roleGuest = new Zend_Acl_Role('guest');
+   $roleGuest = new Zend\Permissions\Acl\Role\GenericRole('guest');
    $acl->addRole($roleGuest);
 
    // Grupa staff dzidziczy od grupy guest
-   $acl->addRole(new Zend_Acl_Role('staff'), $roleGuest);
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('staff'), $roleGuest);
 
    /*
    alternatywnie, powyższe mogłoby wyglądać tak:
-   $acl->addRole(new Zend_Acl_Role('staff'), 'guest');
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('staff'), 'guest');
    */
 
    // Grupa editor dziedziczy od grupy staff
-   $acl->addRole(new Zend_Acl_Role('editor'), 'staff');
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('editor'), 'staff');
 
    // Administrator nie dziedziczy kontroli dostępu
-   $acl->addRole(new Zend_Acl_Role('administrator'));
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('administrator'));
 
-.. _zend.acl.introduction.defining:
+.. _zend.permissions.acl.introduction.defining:
 
 Definiowanie kontroli dostępu
 -----------------------------
@@ -200,13 +200,13 @@ Definiowanie kontroli dostępu
 Teraz gdy *ACL* zawiera stosowne role, możemy ustalić reguły, które definiują w jaki sposób role mają
 uzyskiwać dostęp do zasobów. Mogłeś zauważyć, że nie zdefiniowaliśmy w tym przykładzie żadnych
 konkretnych zasobów, co jest uproszczone w celu zilustrowania, że reguły mają zastosowanie do wszystkich
-zasobów. ``Zend_Acl`` zapewnia implementację dzięki której reguły mogą być przypisane od ogólnych do
+zasobów. ``Zend\Permissions\Acl`` zapewnia implementację dzięki której reguły mogą być przypisane od ogólnych do
 szczegółowych, minimalizując ilość potrzebnych reguł, ponieważ zasoby oraz role dziedziczą reguły, które
 są definiowane dla ich przodków.
 
 .. note::
 
-   W zasadzie ``Zend_Acl`` przestrzega danej reguły tylko wtedy, gdy nie ma zastosowania bardziej szczegółowa
+   W zasadzie ``Zend\Permissions\Acl`` przestrzega danej reguły tylko wtedy, gdy nie ma zastosowania bardziej szczegółowa
    reguła.
 
 Możemy więc zdefiniować rozsądny kompleksowy zestaw reguł przy minimalnej ilości kodu. Aby zastosować
@@ -215,13 +215,13 @@ podstawowe uprawnienia zdefiniowane wyżej zrób tak:
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Permissions\Acl\Acl();
 
-   $roleGuest = new Zend_Acl_Role('guest');
+   $roleGuest = new Zend\Permissions\Acl\Role\GenericRole('guest');
    $acl->addRole($roleGuest);
-   $acl->addRole(new Zend_Acl_Role('staff'), $roleGuest);
-   $acl->addRole(new Zend_Acl_Role('editor'), 'staff');
-   $acl->addRole(new Zend_Acl_Role('administrator'));
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('staff'), $roleGuest);
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('editor'), 'staff');
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('administrator'));
 
    // Grupa guest może tylko oglądać zawartość
    $acl->allow($roleGuest, null, 'view');
@@ -245,7 +245,7 @@ podstawowe uprawnienia zdefiniowane wyżej zrób tak:
 Wartości ``NULL`` w powyższych wywołaniach metod ``allow()`` oznaczają, że reguły dotyczą wszystkich
 zasobów.
 
-.. _zend.acl.introduction.querying:
+.. _zend.permissions.acl.introduction.querying:
 
 Zapytania ACL
 -------------

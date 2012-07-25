@@ -1,16 +1,16 @@
-.. _zend.acl.refining:
+.. _zend.permissions.acl.refining:
 
 Verfijning van toegangscontrole
 ===============================
 
-.. _zend.acl.refining.precise:
+.. _zend.permissions.acl.refining.precise:
 
 Precieze toegangscontrole
 -------------------------
 
-De basis ACL zoals gedefineerd in de :ref:`vorige sectie <zend.acl.introduction>` laat zien hoe verschillende
+De basis ACL zoals gedefineerd in de :ref:`vorige sectie <zend.permissions.acl.introduction>` laat zien hoe verschillende
 privileges kunnen worden toegestaan op de gehele ACL ( alle Bronnen ). Echter in de praktijk, neigen
-toegangscontroles naar het hebben van uitzonderingen en gevarieerde niveaus van complexiteit. Zend_Acl staat je toe
+toegangscontroles naar het hebben van uitzonderingen en gevarieerde niveaus van complexiteit. Zend\Permissions\Acl staat je toe
 deze verfijningen in een duidelijke en flexibele manier te bereiken.
 
 Voor het voorbeeld CMS, is vastgesteld dat terwijl de 'medewerker' groep de benodigheden voor het merendeel van de
@@ -29,7 +29,7 @@ de 'medewerkers', dus we defineren 'marketing' zo dat het de rechten overerft va
    :linenos:
    <?php
    // De nieuwe marketing groep erft de rechten van medewerker
-   $acl->addRole(new Zend_Acl_Role('marketing'), 'medewerker');
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('marketing'), 'medewerker');
 
 Vervolgens, zien we dat de bovenstaande toegangscontrole refereerd naar specifieke Bronnen ( o.a., "nieuwsbrief",
 "laatste nieuws", "Nieuws aankondigingen" ). Deze Bronnen gaan we nu toevoegen:
@@ -38,11 +38,10 @@ Vervolgens, zien we dat de bovenstaande toegangscontrole refereerd naar specifie
    :linenos:
    <?php
    // Maken van de Bronnen voor de regels
-   require_once 'Zend/Acl/Resource.php';
-   $acl->add(new Zend_Acl_Resource('nieuwsbrief'));            	// Nieuwsbrief
-   $acl->add(new Zend_Acl_Resource('nieuws'));                 	// Nieuws
-   $acl->add(new Zend_Acl_Resource('laatste_nieuws'), 'nieuws');   // Laatste nieuws
-   $acl->add(new Zend_Acl_Resource('aankondiging'), 'nieuws'); 	// Nieuws aankondiging
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('nieuwsbrief'));            	// Nieuwsbrief
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('nieuws'));                 	// Nieuws
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('laatste_nieuws'), 'nieuws');   // Laatste nieuws
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('aankondiging'), 'nieuws'); 	// Nieuws aankondiging
 
 Dan is het enkel nog een kwestie van het defineren van deze specifieke regels op de doel gebieden van de ACL:
 
@@ -87,7 +86,7 @@ We kunnen nu de ACL raadplegen met de nieuwste wijzigingen:
    echo $acl->isAllowed('administrator', 'aankondiging', 'archiveren') ?
         "toegestaan" : "geweigerd"; // geweigerd
 
-.. _zend.acl.refining.removing:
+.. _zend.permissions.acl.refining.removing:
 
 Verwijderen van toegangscontrole
 --------------------------------

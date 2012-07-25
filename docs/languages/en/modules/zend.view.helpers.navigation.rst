@@ -23,7 +23,7 @@ There are 5 built-in helpers:
   navigational helpers.
 
 All built-in helpers extend ``Zend_View_Helper_Navigation_HelperAbstract``, which adds integration with :ref:`ACL
-<zend.acl>` and :ref:`translation <zend.i18n.translating>`. The abstract class implements the interface
+<zend.permissions.acl>` and :ref:`translation <zend.i18n.translating>`. The abstract class implements the interface
 ``Zend_View_Helper_Navigation_Helper``, which defines the following methods:
 
 - ``getContainer()`` and ``setContainer()`` gets and sets the navigation container the helper should operate on by
@@ -33,8 +33,8 @@ All built-in helpers extend ``Zend_View_Helper_Navigation_HelperAbstract``, whic
   ``getUseTranslator()`` and ``setUseTranslator()`` controls whether the translator should be enabled. The method
   ``hasTranslator()`` checks if the helper has a translator registered.
 
-- ``getAcl()``, ``setAcl()``, ``getRole()`` and ``setRole()``, gets and sets *ACL* (``Zend_Acl``) instance and role
-  (``String`` or ``Zend_Acl_Role_Interface``) used for filtering out pages when rendering. ``getUseAcl()`` and
+- ``getAcl()``, ``setAcl()``, ``getRole()`` and ``setRole()``, gets and sets *ACL* (``Zend\Permissions\Acl``) instance and role
+  (``String`` or ``Zend\Permissions\Acl\Role\RoleInterface``) used for filtering out pages when rendering. ``getUseAcl()`` and
   ``setUseAcl()`` controls whether *ACL* should be enabled. The methods ``hasAcl()`` and ``hasRole()`` checks if
   the helper has an *ACL* instance or a role registered.
 
@@ -121,9 +121,9 @@ Integration with ACL
 --------------------
 
 All navigational view helpers support *ACL* inherently from the class
-``Zend_View_Helper_Navigation_HelperAbstract``. A ``Zend_Acl`` object can be assigned to a helper instance with
+``Zend_View_Helper_Navigation_HelperAbstract``. A ``Zend\Permissions\Acl`` object can be assigned to a helper instance with
 *$helper->setAcl($acl)*, and role with *$helper->setRole('member')* or *$helper->setRole(new
-Zend_Acl_Role('member'))*. If *ACL* is used in the helper, the role in the helper must be allowed by the *ACL* to
+Zend\Permissions\Acl\Role\GenericRole('member'))*. If *ACL* is used in the helper, the role in the helper must be allowed by the *ACL* to
 access a page's *resource* and/or have the page's *privilege* for the page to be included when rendering.
 
 If a page is not accepted by *ACL*, any descendant page will also be excluded from rendering.
@@ -350,11 +350,11 @@ In addition to the container above, the following setup is assumed:
    );
 
    // Setup ACL:
-   $acl = new Zend_Acl();
-   $acl->addRole(new Zend_Acl_Role('member'));
-   $acl->addRole(new Zend_Acl_Role('admin'));
-   $acl->add(new Zend_Acl_Resource('mvc:admin'));
-   $acl->add(new Zend_Acl_Resource('mvc:community.account'));
+   $acl = new Zend\Permissions\Acl\Acl();
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('member'));
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('admin'));
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('mvc:admin'));
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('mvc:community.account'));
    $acl->allow('member', 'mvc:community.account');
    $acl->allow('admin', null);
 

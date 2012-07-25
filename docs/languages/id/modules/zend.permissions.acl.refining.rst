@@ -1,16 +1,16 @@
-.. _zend.acl.refining:
+.. _zend.permissions.acl.refining:
 
 Kontrol Akses Yang Lebih Detail
 ===============================
 
-.. _zend.acl.refining.precise:
+.. _zend.permissions.acl.refining.precise:
 
 Kontrol Akses Yang Presisi
 --------------------------
 
-Dasar-dasar ACL yang dijelaskan dalam :ref:`sub bab sebelumnya <zend.acl.introduction>` memperlihatkan bagaimana
+Dasar-dasar ACL yang dijelaskan dalam :ref:`sub bab sebelumnya <zend.permissions.acl.introduction>` memperlihatkan bagaimana
 berbagai hak akses diterapkan terhadap seluruh ACL (semua resource). Namun dalam prakteknya, kontrol akses sering
-kali memiliki pengecualian-pengecualian dan beragam tingkat kompleksitas. Zend_Acl memungkinkan anda mengantisipasi
+kali memiliki pengecualian-pengecualian dan beragam tingkat kompleksitas. Zend\Permissions\Acl memungkinkan anda mengantisipasi
 hal-hal detail seperti ini dalam langkah jelas dan fleksibel.
 
 Sebagai contoh, dalam kasus CMS kita sebelumnya, role 'staff' memiliki hak akses yang mencakup semua kebutuhan
@@ -29,7 +29,7 @@ mewarisi perizinan dari 'staff':
    :linenos:
 
    // Group baru bernama marketing yang mewarisi perizinan staff
-   $acl->addRole(new Zend_Acl_Role('marketing'), 'staff');
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('marketing'), 'staff');
 
 
 Berikutnya, kita memerlukan tiga buah resource yaitu "newsletter", "latest news", dan "announcement news":
@@ -40,16 +40,16 @@ Berikutnya, kita memerlukan tiga buah resource yaitu "newsletter", "latest news"
    // membuat resource
 
    // newsletter
-   $acl->add(new Zend_Acl_Resource('newsletter'));
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('newsletter'));
 
    // news
-   $acl->add(new Zend_Acl_Resource('news'));
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('news'));
 
    // latest news yang merupakan anak dari news
-   $acl->add(new Zend_Acl_Resource('latest'), 'news');
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('latest'), 'news');
 
    // announcement news yang merupakan anak dari news
-   $acl->add(new Zend_Acl_Resource('announcement'), 'news');
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('announcement'), 'news');
 
 
 Selanjutnya tinggal mendifinisikan aturan-aturan spesifik sesuai kebutuhan di atas ke dalam ACL:
@@ -110,7 +110,7 @@ Dari aturan baru yang sudah kita buat, kita bisa melakukan query seperti berikut
    // denied
 
 
-.. _zend.acl.refining.removing:
+.. _zend.permissions.acl.refining.removing:
 
 Menghapus Aturan dari Kontrol Akses
 -----------------------------------

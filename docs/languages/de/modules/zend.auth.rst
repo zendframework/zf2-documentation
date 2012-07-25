@@ -11,7 +11,7 @@ definiert als das Ermitteln ob eine Entität aktuell das ist was Sie vorgibt zu 
 basierend auf einem Set von Zeugnissen. Authorisierung, der Prozess des Entscheidens ob es einer Entität erlaubt
 wird auf andere Entitäten Zugriff zu erhalten, oder um auf diesen Operationen durchzuführen, ist ausserhalb der
 Möglichkeit von ``Zend_Auth``. Für weitere Informationen über Authorisierung und Zugriffskontrolle mit dem Zend
-Framework, sollte :ref:`Zend_Acl <zend.acl>` angeschaut werden.
+Framework, sollte :ref:`Zend\Permissions\Acl <zend.permissions.acl>` angeschaut werden.
 
 .. note::
 

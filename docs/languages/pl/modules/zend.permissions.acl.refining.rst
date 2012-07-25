@@ -1,16 +1,16 @@
-.. _zend.acl.refining:
+.. _zend.permissions.acl.refining:
 
 Analiza kontroli dostępu
 ========================
 
-.. _zend.acl.refining.precise:
+.. _zend.permissions.acl.refining.precise:
 
 Precyzyjna kontrola dostępu
 ---------------------------
 
-Podstawowe *ACL* zdefiniowane w :ref:`poprzedniej sekcji <zend.acl.introduction>` pokazują jakie rozmaite
+Podstawowe *ACL* zdefiniowane w :ref:`poprzedniej sekcji <zend.permissions.acl.introduction>` pokazują jakie rozmaite
 uprawnienia mogą być dozwolone dla *ACL* (dla wszystkich zasobów). W praktyce, kontrola dostępu ma skłonność
-do posiadania wyjątków od reguł oraz różnych stopni skomplikowania. ``Zend_Acl`` pozwoli ci przeprowadzić te
+do posiadania wyjątków od reguł oraz różnych stopni skomplikowania. ``Zend\Permissions\Acl`` pozwoli ci przeprowadzić te
 analizy w przystępny i elastyczny sposób.
 
 W przykładowej aplikacji *CMS*, zostało zdecydowane, że podczas gdy grupa 'staff' pokryje potrzeby większości
@@ -30,7 +30,7 @@ uprawnienia od grupy 'staff':
    :linenos:
 
    // Nowa grupa marketing dziedziczy uprawnienia od grupy staff
-   $acl->addRole(new Zend_Acl_Role('marketing'), 'staff');
+   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('marketing'), 'staff');
 
 Zauważ, że powyższa kontrola dostępu odnosi się do określonych zasobów (np., "newsletter", "ostatnie
 nowości", "zapowiedzi"). Teraz dodamy te zasoby:
@@ -41,16 +41,16 @@ nowości", "zapowiedzi"). Teraz dodamy te zasoby:
    // Utwórz zasoby dla reguł
 
    // newsletter
-   $acl->add(new Zend_Acl_Resource('newsletter'));
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('newsletter'));
 
    // nowości
-   $acl->add(new Zend_Acl_Resource('news'));
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('news'));
 
    // ostatnie nowości
-   $acl->add(new Zend_Acl_Resource('latest'), 'news');
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('latest'), 'news');
 
    // zapowiedzi
-   $acl->add(new Zend_Acl_Resource('announcement'), 'news');
+   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('announcement'), 'news');
 
 Teraz prostą sprawą jest zdefiniowanie bardziej specyficznych reguł na docelowych obszarach *ACL*:
 
@@ -108,7 +108,7 @@ Teraz możemy przeprowadzić zapytanie do *ACL* z uwzględnieniem ostatnich zmia
         "allowed" : "denied";
    // zabronione
 
-.. _zend.acl.refining.removing:
+.. _zend.permissions.acl.refining.removing:
 
 Usuwanie kontroli dostępu
 -------------------------

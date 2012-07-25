@@ -13,7 +13,7 @@ While they can be used separately, Zend Framework components in the standard lib
 web application framework when combined. Zend Framework offers a robust, high performance *MVC* implementation, a
 database abstraction that is simple to use, and a forms component that implements *HTML* form rendering,
 validation, and filtering so that developers can consolidate all of these operations using one easy-to-use, object
-oriented interface. Other components, such as ``Zend_Auth`` and ``Zend_Acl``, provide user authentication and
+oriented interface. Other components, such as ``Zend_Auth`` and ``Zend\Permissions\Acl``, provide user authentication and
 authorization against all common credential stores. Still others implement client libraries to simply access to the
 most popular web services available. Whatever your application needs are, you're likely to find a Zend Framework
 component that can be used to dramatically reduce development time with a thoroughly tested foundation.
