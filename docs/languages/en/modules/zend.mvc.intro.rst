@@ -246,7 +246,6 @@ shipped with the MVC.
 
    use Zend\Loader\AutoloaderFactory;
    use Zend\Mvc\Service\ServiceManagerConfig;
-   use Zend\Mvc\Service\ServiceListenerFactory;
    use Zend\ServiceManager\ServiceManager;
 
    // setup autoloader
@@ -258,7 +257,6 @@ shipped with the MVC.
    // setup service manager
    $serviceManager = new ServiceManager(new ServiceManagerConfig());
    $serviceManager->setService('ApplicationConfig', $configuration);
-   $serviceManager->setFactory('ServiceListener', new ServiceListenerFactory());
 
    // load modules -- which will provide services, configuration, and more
    $serviceManager->get('ModuleManager')->loadModules();
