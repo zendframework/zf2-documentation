@@ -27,7 +27,7 @@ Zend_Service_ReCaptcha
 יצירת אובייקט *Zend_Service_ReCaptcha* חדש עם העברת המפתחות שלכם בתור
 פרמטרים:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $recaptcha = new Zend_Service_ReCaptcha($pubKey, $privKey);
@@ -35,7 +35,7 @@ Zend_Service_ReCaptcha
 
 כדי להציג את הטקסט יש להשתמש במתודה *getHTML()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    echo $recaptcha->getHTML();
@@ -44,7 +44,7 @@ Zend_Service_ReCaptcha
 כשהטופס נשלח, אתם תקבלו שני שדות, 'recaptcha_challenge_field' ו
 'recaptcha_response_field'. העבירו את שני השדות למתודה *verify()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $result = $recaptcha->verify(
@@ -56,7 +56,7 @@ Zend_Service_ReCaptcha
 ברגע שיש לכם את התוצאה מהמתודה, בדקו זאת אם היא תקינה. התוצאה
 הינה אובייקט של *Zend_Service_ReCaptcha_Response*, אשר מספק מתודה *isValid()*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    if (!$result->isValid()) {

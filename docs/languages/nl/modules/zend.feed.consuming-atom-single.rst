@@ -11,7 +11,7 @@ Als je een enkele entry leest zal je nog altijd een *Zend_Feed_Atom* object hebb
 
 .. rubric:: Een alleenstaande entry van een Atom Feed lezen
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -27,7 +27,7 @@ dat alleen *<entry>* elementen bevat:
 
 .. rubric:: Het Entry Object Direct gebruiken voor een Single-Entry Atom Feed
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

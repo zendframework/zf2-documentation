@@ -6,7 +6,7 @@ Feeds importeren met Zend_Feed
 *Zend_Feed* laat ontwikkelaars toe heel gemakkelijk feeds te verkrijgen. Indien je de URI van een feed kent,
 gebruik dan eenvoudigweg de *Zend_Feed::import()* methode:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -17,7 +17,7 @@ gebruik dan eenvoudigweg de *Zend_Feed::import()* methode:
 Je kan *Zend_Feed* ook gebruiken om de inhoud van een feed vanuit een bestand of een PHP string variabele te
 verkrijgen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

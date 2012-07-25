@@ -9,7 +9,7 @@ meerdere waarden zou moeten hebben:
 
 .. rubric:: E-mailbericht Headers toevoegen
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

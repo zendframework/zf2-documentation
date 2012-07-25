@@ -21,8 +21,9 @@
 
 使用下面代码更换分析程序：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    Zend_Search_Lucene_Analysis_Analyzer::setDefault(
@@ -42,8 +43,9 @@
 
    .. rubric:: 自定义文本分析程序
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       /** Here is a custome text analyser, which treats words with digits as one term */
 
@@ -139,8 +141,9 @@ queryNorm(q) -
 Zend_Search_Lucene_Search_Similarity 类，然后使用
 *Zend_Search_Lucene_Search_Similarity::setDefault($similarity);* 方法来将其设置为缺省的评分算法。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    class MySimilarity extends Zend_Search_Lucene_Search_Similarity {
@@ -198,6 +201,7 @@ Zend_Search_Lucene_Storage_Directory 的方法：
 
    .. code-block:: php
       :linenos:
+
       <?php
 
       abstract class Zend_Search_Lucene_Storage_Directory {
@@ -297,6 +301,7 @@ Zend_Search_Lucene_Storage_File 类中只有两个方法是你必须重载的：
 
    .. code-block:: php
       :linenos:
+
       <?php
 
       class MyFile extends Zend_Search_Lucene_Storage_File {

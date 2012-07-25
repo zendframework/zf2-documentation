@@ -286,6 +286,7 @@ zapytania uwierzytelniającego:
 
 .. code-block:: php
    :linenos:
+
    <?php
    // Instruujemy klasę Zend_Auth aby użyła niestandardowej klasy pojemnika
    Zend_Auth::getInstance()->setStorage(new MyStorage());

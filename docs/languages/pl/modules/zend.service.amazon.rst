@@ -155,7 +155,7 @@ Wyszukiwanie przedmiotów oparte na różnych dostępnych kryteriach jest przepr
 
 Opcja *ResponseGroup* używana jest do konfigurowania informacji jakie mają być zwracane w odpowiedzi.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $amazon = new Zend_Service_Amazon('AMAZON_API_KEY');

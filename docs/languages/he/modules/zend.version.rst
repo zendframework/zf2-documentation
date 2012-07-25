@@ -16,7 +16,7 @@
 
 .. rubric:: דוגמא לשימוש במתודת *compareVersion()*
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // returns -1, 0 or 1

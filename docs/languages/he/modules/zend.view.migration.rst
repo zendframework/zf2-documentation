@@ -19,7 +19,7 @@ Inclusion (LFI). בגרסאות קודמות ל 1.7.5 המתודה הזאת אפ
 לדוגמא "../" או "..\\" . זה מאפשר לפרצת אבטחה מסוג LFI אם הקובץ תצוגה
 שאמור להיות מוצג מתקבל על ידי הזנת משתמש לדוגמא:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Where $_GET['foobar'] = '../../../../etc/passwd'
@@ -39,7 +39,7 @@ Inclusion (LFI). בגרסאות קודמות ל 1.7.5 המתודה הזאת אפ
 הפרמטר 'lfiProtectionOn' כשיוצרים את אובייקט התצוגה, או על ידי קריאה
 למתודת ה *setLfiProtection()*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Disabling via constructor

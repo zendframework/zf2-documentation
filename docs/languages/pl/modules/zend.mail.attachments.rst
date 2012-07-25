@@ -11,7 +11,7 @@ założenie może być nadpisane przez przekazanie opcjonalnych parametrów do m
 
 .. rubric:: Wiadomości e-mail z załącznikami
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $mail = new Zend_Mail();
@@ -27,7 +27,7 @@ Jeśli chcesz mieć większą kontrolę nad częścią MIME wygenerowaną dla te
 wartości zwróconej przez *createAttachment()* aby zmodyfikować jej atrybuty. Metoda *createAttachment()* zwraca
 obiekt *Zend_Mime_Part*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $mail = new Zend_Mail();
@@ -43,7 +43,7 @@ obiekt *Zend_Mime_Part*:
 
 Alternatywą jest utworzenie instancji klasy *Zend_Mime_Part* i dodanie jej za pomocą metody *createAttachment()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $mail = new Zend_Mail();

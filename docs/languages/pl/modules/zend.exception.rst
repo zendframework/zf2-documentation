@@ -10,7 +10,7 @@ klasę Zend_Exception.
 
 .. rubric:: Przykład łapania wyjątku
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    try {

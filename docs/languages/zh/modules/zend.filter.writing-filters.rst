@@ -11,7 +11,7 @@ Zend_Filter提供了一系列常用的过滤器，但是开发者经常需要为
 
 下面的例子，示范了怎样编写一个定制的过滤器：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       class MyFilter implements Zend_Filter_Interface
@@ -29,7 +29,7 @@ Zend_Filter提供了一系列常用的过滤器，但是开发者经常需要为
 
 添加上述过滤器的实例到过滤器链中：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $filterChain = new Zend_Filter();

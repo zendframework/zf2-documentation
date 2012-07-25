@@ -23,7 +23,7 @@ Zend_Server_Reflection
 
 דוגמא לשימוש:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $class    = Zend_Server_Reflection::reflectClass('My_Class');

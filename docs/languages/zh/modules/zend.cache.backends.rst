@@ -132,7 +132,7 @@ Zend_Cache_Backend_ZendPlatform
 当使用 *Zend_Cache::factory()*\ 方法时,在字 'Zend' 和 'Platform'之间使用字分隔符-- '-', '.', ' ',
 or '\_'指定此后端:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $cache = Zend_Cache::factory('Core', 'Zend Platform');

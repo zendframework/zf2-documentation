@@ -26,8 +26,9 @@ ktoré môže byť použité pre zobrazenie dát, alebo ich uloženie do databá
 
 .. rubric:: Použitie Zend_Feed na získanie dát z RSS zdroja
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Feed.php';
 

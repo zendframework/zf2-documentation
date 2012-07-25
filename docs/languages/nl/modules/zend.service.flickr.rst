@@ -16,8 +16,9 @@ In het volgende voorbeeld gebruiken we de *tagSearch()* methode om foto's te zoe
 
 .. rubric:: Eenvoudige Flickr Photo zoekopdracht
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Service/Flickr.php';
 
@@ -52,8 +53,9 @@ Flickr gebruikers vinden
 In dit voorbeeld hebben we het e-mailadres van de Flickr gebruiker, en we verkrijgen de gebruikersinformatie door
 de *userSearch()* methode te gebruiken:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Service/Flickr.php';
 
@@ -77,8 +79,9 @@ gewoon de *getImageDetails()* methode zoals in het volgende voorbeeld:
 
 Wanneer je een Flickr beeld ID hebt is het eenvoudig informatie over dat beeld te verkrijgen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Service/Flickr.php';
 

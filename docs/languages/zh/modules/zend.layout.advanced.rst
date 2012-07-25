@@ -30,8 +30,9 @@ Zend_Layout 高级用法
 来解析布局脚本。简单地把定制的视图对象当作参数传递给 constructor/*startMvc()*\
 ，或者用 *setView()* 访问器来设置它：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $view = new My_Custom_View();
    $layout->setView($view);
@@ -53,8 +54,9 @@ Zend_Layout 高级用法
    做为替换方案，如果你的视图实现支持任何种类的插件，你可以通过'Zend_Layout'占位符使用
    :ref:`占位符助手 <zend.view.helpers.initial.placeholder>`\ ：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       $placeholders = new Zend_View_Helper_Placeholder();
       $layoutVars   = $placeholders->placeholder('Zend_Layout')->getArrayCopy();
@@ -110,8 +112,9 @@ Zend_Layout 高级用法
 缺省的 *Zend_Layout*\
 变形器对目标和脚本后缀使用静态地址(references)，并拥有访问器来设置这些值。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Set the inflector target:
    $layout->setInflectorTarget('layouts/:script.:suffix');
@@ -128,8 +131,9 @@ Zend_Layout 高级用法
 
 让我们假设你想用后缀'html'做为布局脚本的文件扩展名，并且想分离混合大小写字和驼峰字为下划线而不是短横线，还不想使用小写字母。另外，你想让它去'layouts'子目录去找脚本。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $layout->getInflector()->setTarget('layouts/:script.:suffix')
                           ->setStaticRule('suffix', 'html')
@@ -142,8 +146,9 @@ Zend_Layout 高级用法
 在大多数情况下，修改已存在的变形器已经足够。然而，你可能想有一个在多个地方使用的变形器，并带有不同的对象和类型。
 *Zend_Layout*\ 支持它。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $inflector = new Zend_Filter_Inflector('layouts/:script.:suffix');
    $inflector->addRules(array(

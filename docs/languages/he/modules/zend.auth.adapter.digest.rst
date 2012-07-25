@@ -56,7 +56,7 @@
 בתור מערך אשר מכיל מפתחות של *realm* ו *username*. הערכים במערך מקושרים
 למפתחות אשר הוגדרו לפני קריאה ל *authenticate()*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $adapter = new Zend_Auth_Adapter_Digest($filename,

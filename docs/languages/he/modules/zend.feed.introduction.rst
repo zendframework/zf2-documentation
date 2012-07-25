@@ -29,7 +29,7 @@
 
 .. rubric:: שימוש ב *Zend_Feed* על מידע מ RSS
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Fetch the latest Slashdot headlines

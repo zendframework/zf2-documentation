@@ -19,8 +19,9 @@
 一个简单邮件由一个或者几个收件人，一个主题，一个邮件主体和一个发件人组成。下面的步骤，使用
 *Zend_Mail_Transport_Sendmail* 来发送邮件：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();
@@ -46,8 +47,9 @@
 你也可以使用大部分带有方便的 fluent interface 的 *Zend_Mail* 对象的方法。 Fluent interface
 意思是每个方法返回一个引用到它被调用的对象，所以你可以立即调用其它方法。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();
@@ -73,8 +75,9 @@
 
 这个例子示范如何修改 `mail()`_ 函数的返回路径。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    require_once 'Zend/Mail/Transport/Sendmail.php';

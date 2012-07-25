@@ -14,7 +14,7 @@ kanał zawierający ten wpis.
 
 .. rubric:: Odczytywanie pojedynczego wpisu kanału Atom
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
@@ -30,7 +30,7 @@ pojedynczego wpisu *<entry>*:
 
 .. rubric:: Bezpośrednie użycie obiektu wpisu dla pojedynczego wpisu kanału Atom
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $entry = new Zend_Feed_Entry_Atom('http://atom.example.com/feed/1');

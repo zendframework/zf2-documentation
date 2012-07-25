@@ -73,8 +73,9 @@ placement、在传递进的内容和新生成的内容之间的分隔符、和�
 
 装饰器只需要实现 *Zend_Form_Decorator_Interface*\ 。接口说明如下：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    interface Zend_Form_Decorator_Interface
    {
@@ -98,8 +99,9 @@ placement、在传递进的内容和新生成的内容之间的分隔符、和�
 装饰器来处理标签（label）、元素、任何错误消息和描述的解析。你可以构造如下例的一个
 'Composite' 装饰器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class My_Decorator_Composite extends Zend_Form_Decorator_Abstract
    {
@@ -185,8 +187,9 @@ placement、在传递进的内容和新生成的内容之间的分隔符、和�
    ?>
 接着把它放到装饰器路径里：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // for an element:
    $element->addPrefixPath('My_Decorator', 'My/Decorator/', 'decorator');
@@ -196,8 +199,9 @@ placement、在传递进的内容和新生成的内容之间的分隔符、和�
    ?>
 然后指定这个装饰器为 'Composite' 并附加到一个元素：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Overwrite existing decorators with this single one:
    $element->setDecorators(array('Composite'));
@@ -209,8 +213,9 @@ placement、在传递进的内容和新生成的内容之间的分隔符、和�
 例如，如果你想在校验元素时显示发生的错误，但不想显示每个独立的校验错误消息，可以生成
 'Errors' 装饰器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class My_Decorator_Errors
    {

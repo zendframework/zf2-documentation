@@ -22,8 +22,9 @@ API，并且集成它来提供方法来获取参数和返回值类型和描述�
 
 基本用法很简单：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Server/Reflection.php';
    $class    = Zend_Server_Reflection::reflectClass('My_Class');

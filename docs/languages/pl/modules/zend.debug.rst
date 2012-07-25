@@ -11,7 +11,7 @@ narzędzi czy środowiska testowego.
 
 .. rubric:: Przykład użycia metody dump()
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    Zend_Debug::dump($var, $label=null, $echo=true);

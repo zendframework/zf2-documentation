@@ -36,7 +36,7 @@
 在任何时候都可以指定 doctype。然而，依赖 doctype
 输出的助手只在你设置后才认识它，所以最简单的用法是在 bootstrap 脚本中指定：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $doctypeHelper = new Zend_View_Helper_Doctype();
@@ -44,7 +44,7 @@
 
 然后在布局脚本中输出：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php echo $this->doctype() ?>
@@ -55,15 +55,17 @@
 
 如果需要知道文档类型，可以在由调用助手返回的对象中调用 *getDoctype()*\ 。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $doctype = $view->doctype()->getDoctype();
    ?>
 很常见地，你需要知道doctype是否XHTML；那么， *isXhtml()*\ 方法已经足够：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    if ($view->doctype()->isXhtml()) {
        // do something differently

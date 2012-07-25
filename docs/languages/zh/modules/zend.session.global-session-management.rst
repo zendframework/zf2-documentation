@@ -31,8 +31,9 @@
 使用 :ref:`Zend_Config_Ini <zend.config.adapters.ini>`\
 配置这个组件（Zend_Session），首先添加配置选项到INI文件：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    ; Accept defaults for production
    [production]
    ; bug_compat_42
@@ -74,8 +75,9 @@
 
 接着，加载配置文件并传递它的数组表达给 *Zend_Session::setOptions()*\ ：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Config/Ini.php';
    $config = new Zend_Config_Ini('myapp.ini', 'development');
@@ -215,8 +217,9 @@ cookie，这样就劫持受害者的会话。如果受害者访问了攻击者�
 
 .. rubric:: 会话固定
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Session/Namespace.php';
    $defaultNamespace = new Zend_Session_Namespace();

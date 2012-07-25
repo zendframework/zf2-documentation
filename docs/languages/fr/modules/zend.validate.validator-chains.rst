@@ -8,7 +8,7 @@ suivant décrit une méthode permettant de solutionner l'exemple de :ref:`l'intr
 <zend.validate.introduction>`, dans lequel un identifiant doit contenir précisément entre 6 et 12 caractères
 alphanumériques.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       // Creation d'une chaine de validateurs et ajout de validateurs

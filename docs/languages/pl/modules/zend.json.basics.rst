@@ -6,7 +6,7 @@ Podstawowe użycie
 Użycie *Zend_Json* sprowadza się do dwóch dostępnych statycznych metod: *Zend_Json::encode()* oraz
 *Zend_Json::decode()*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Odkoduj wartość:

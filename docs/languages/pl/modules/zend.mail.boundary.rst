@@ -11,7 +11,7 @@ rozgraniczające. Możesz to zrobić używając metody *setMimeBoundary()* jak w
 
 .. rubric:: Zmiana pola rozgraniczającego MIME
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $mail = new Zend_Mail();

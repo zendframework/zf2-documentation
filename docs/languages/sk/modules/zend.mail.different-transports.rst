@@ -9,7 +9,7 @@ prednastaveného pre aktuálne volanie *send()*:
 
 .. rubric:: Použitie rôznych spôsobov prenosu
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

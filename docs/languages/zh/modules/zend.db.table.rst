@@ -20,8 +20,9 @@ Zend_Db_Table 是Zend Framework的表模块.它通过zend_db_adapter连接到
 化,只能先继承该类,然后实例化子类)设定一个默认对数据库adapter;除非你
 指定其他类型数据库adapter,否则,所有的zend_db_table类实例都会使用 默认adapter.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 建立一个 adapter
    require_once 'Zend/Db.php';
@@ -44,8 +45,9 @@ Zend_Db_Table 是Zend Framework的表模块.它通过zend_db_adapter连接到
 新类.然后我就可以通过该类在数据库中的round_table表中检查,操作数据
 行并且取得数据结果.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class RoundTable extends Zend_Db_Table {}
    $table = new RoundTable();
@@ -61,8 +63,9 @@ Zend_Db_Table 是Zend Framework的表模块.它通过zend_db_adapter连接到
 数据库中就对应表”some_table_name”.假如不希望将类名与数据库表名以
 这种添加下划线的形式进行对应,可以在定义该类时对$_name进行重构.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class ClassName extends Zend_Db_Table
    {
@@ -76,8 +79,9 @@ zend_db_table类默认字段”id”为表的主键(该字段最好为自增的,
 是必须的).假如该表的主键并不是名为”$id”,你可以在定义表实体类时
 对$_primary进行重构
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class ClassName extends Zend_Db_Table
    {
@@ -90,8 +94,9 @@ zend_db_table类默认字段”id”为表的主键(该字段最好为自增的,
 你也可以通过表实体类中_setup()方法设定这些变量;但是需要确保在修改
 后再执行一次parent::\_setup()方法.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class ClassName extends Zend_Db_Table
    {
@@ -114,8 +119,9 @@ zend_db_table类默认字段”id”为表的主键(该字段最好为自增的,
 并返回插入的最后一行的id值(注意:这里不同于
 zend_db_adapter::insert方法,后者返回的是插入的行数).
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    //
    // INSERT INTO round_table
@@ -148,8 +154,9 @@ zend_db_adapter::insert方法,后者返回的是插入的行数).
 (Zend frameword)将会自动对修改对数据进行加引号处理,但是这种检查不包括
 条件分句,所以你需要使用该表的zend_db_adapter对象完成该工作.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    //
    // UPDATE round_table
@@ -182,8 +189,9 @@ Deleting Rows
 (zend framework)不会对条件分句进行加引号处理,所以你需要使用该表
 的zend_db_adapter对象完成该工作.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    //
    // DELETE FROM round_table
@@ -209,8 +217,9 @@ Deleting Rows
 一条数据,该方法将回返回一个zend_db_table_row对象,而当你想要查询多条记录时
 ,将会返回一个zend_db_table_rowset对象.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class RoundTable extends Zend_Db_Table {}
 
@@ -237,8 +246,9 @@ fetchRow()方法可以实现这个功能.我们可以通过一个where条件语�
 注意,(zend framework) 将不会对where语句进行加引号处理,所以你需要
 通过zend_db_adapter进行数据处理.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    //
    // SELECT * FROM round_table
@@ -273,8 +283,9 @@ Zend_Db_Table_Rowset对象返回.
 注意,(zend framework) 将不会对where语句进行加引号处理,所以你需要
 通过zend_db_adapter进行数据处理.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class RoundTable extends Zend_Db_Table {}
 
@@ -302,8 +313,9 @@ Adding Domain Logic
 作为Zend Framework的表模块,Zend_Db_Table将它自己很好的封装到独特的domain logic下.
 例如,你可以重载insert()和update()方法,以实现在数据更改提交前的操作和验证.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class RoundTable extends Zend_Db_Table
    {
@@ -329,8 +341,9 @@ Adding Domain Logic
 
 类似的,你也可以设定自己的find()方法,通过主键外的其他字段来查询数据.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class RoundTable extends Zend_Db_Table
    {

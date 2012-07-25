@@ -29,7 +29,7 @@ danych itp.
 
 .. rubric:: Użycie Zend_Feed do pobierania danych RSS
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Ściągamy najnowsze nagłówki ze Slashdot

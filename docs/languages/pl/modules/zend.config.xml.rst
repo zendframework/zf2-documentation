@@ -32,7 +32,7 @@ decyzja jest dowolna i mogłoby to być zrobione odwrotnie, z sekcją systemu pr
 sekcji systemu rozbudowywanego, chociaż nie może to być przykładem dla bardziej złożonych sytuacji.
 Załóżmy, że poniższe dane konfiguracyjne znajdują się w pliku */path/to/config.xml*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?xml version="1.0"?>
@@ -65,7 +65,7 @@ Następnie załóżmy, że programista aplikacji potrzebuje danych konfiguracyjn
 pliku XML. Prostą  sprawą jest załadowanie tych danych określając plik XML oraz sekcję dla aplikacji
 rozbudowywanej:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $config = new Zend_Config_Xml('/path/to/config.xml', 'staging');
@@ -84,7 +84,7 @@ rozszerzania sekcji oraz do alternatywnego sposobu użycia atrybutów), nie mog�
 sposobem użycia atrybutu jest dodanie go w elemencie rodzica. Zostanie on automatycznie przełożony jako element
 dziecko:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?xml version="1.0"?>
@@ -106,7 +106,7 @@ Kolejny sposób tak naprawdę nie zmniejsza objętości pliku konfiguracyjnego, 
 ponieważ eliminuje konieczność pisania nazw znaczników podwójnie. Po prostu tworzysz pusty znacznik, który
 zawiera swoją wartość wewnątrz atrybutu *value*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?xml version="1.0"?>

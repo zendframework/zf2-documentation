@@ -28,7 +28,7 @@ L'endroit recommandé pour stocker les layouts est "``layouts/scripts/``" dans l
 Pour initialiser ``Zend_Layout``, ajouter ceci à votre fichier de configuration
 ("``application/configs/application.ini``"):
 
-.. code-block:: dosini
+.. code-block:: ini
    :linenos:
 
    resources.layout.layoutPath = APPLICATION_PATH "/layouts/scripts"

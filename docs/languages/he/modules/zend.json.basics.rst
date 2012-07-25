@@ -6,7 +6,7 @@
 שימוש ב *Zend_Json* נעשה על ידי קריאה לשני מתודות סטטיות שהם:
 *Zend_Json::encode()* ו *Zend_Json::decode()*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Retrieve a value:

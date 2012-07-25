@@ -10,8 +10,9 @@ alebo 465 pre SSL.
 
 .. rubric:: Vytvorene zabezpečného spojenia pomocou Zend_Mail_Transport_Smtp
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    require_once 'Zend/Mail.php';

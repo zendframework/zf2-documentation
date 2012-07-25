@@ -11,8 +11,9 @@
 
 .. rubric:: 通过一个SMTP连接发送多个邮件
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Load classes
    require_once 'Zend/Mail.php';
@@ -38,8 +39,9 @@
 
 .. rubric:: 手工控制传送器连接
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // Load classes

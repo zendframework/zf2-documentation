@@ -14,8 +14,9 @@ Anche se si legge un singolo elemento, si dispone ancora di un valido oggetto *Z
 
 .. rubric:: Lettura di un feed Atom con un singolo elemento
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
@@ -29,8 +30,9 @@ nodo *<entry>*:
 
 .. rubric:: Utilizzo diretto dell'oggetto Entry per un singolo elemento del feed Atom
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $entry = new Zend_Feed_Entry_Atom('http://atom.example.com/feed/1');

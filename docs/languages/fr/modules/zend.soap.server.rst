@@ -201,7 +201,7 @@ La méthode ``Zend_Soap_Server::handle()`` utilise la requête depuis le flux d'
 Le comportement peut être changé en passant des paramètres à la méthode ``handle()`` ou en spécifiant sa
 propre requête grâce à la méthode ``setRequest()``:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       ...

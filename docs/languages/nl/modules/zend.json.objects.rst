@@ -14,8 +14,9 @@ JSON object; anderen denken dat dit een potentieel groot veiligheidsrisico inhou
 *Zend_Json* zal JSON objecten standaard als associatieve arrays decoderen. Als je liever een object terugkrijgt,
 kan je dit zo opvragen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Decodeer objecten als objecten
    $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);

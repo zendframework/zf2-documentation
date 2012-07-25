@@ -34,8 +34,9 @@ Alvorens te kiezen voor de aangeboden Query Parser, hou het volgende in gedachte
 
 Beide manieren gebruiken dezelfde API methode om door de index te zoeken:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    require_once('Zend/Search/Lucene.php');
@@ -67,8 +68,9 @@ Het Zend_Search_Lucene_Search_QueryHit object bied daarnaast ook ieder veld van 
 Zend_Search_Lucene_Document als een eigenschap. In het volgende voorbeeld wordt een resultaat teruggegeven en heeft
 het document twee velden: title en author.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    require_once('Zend/Search/Lucene.php');
@@ -90,8 +92,9 @@ Het originele Zend_Search_Lucene_Document object kan ook worden teruggegeven van
 Zend_Search_Lucene_Search_QueryHit. Je kan opgeslagen delen van het document verkrijgen door gebruik te maken van
 de *getDocument()*\ methode van het index object en dan de *getFieldValue()* methode te gebruiken:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    require_once('Zend/Search/Lucene.php');
@@ -137,8 +140,9 @@ lagere score.
 
 Score kan worden verkregen via de *score* eigenschap van het resultaat:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $hits = $index->find($query);
 

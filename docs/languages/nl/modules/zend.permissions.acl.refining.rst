@@ -25,8 +25,9 @@ moeten zijn om nieuws aankondigingen te archiveren, omdat deze een levensduur he
 Allereerst passen we de Rol lijst aan. We hebben ontdekt dat de 'marketing' groep de zelfde basis rechten heeft als
 de 'medewerkers', dus we defineren 'marketing' zo dat het de rechten overerft van 'medewerker':
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // De nieuwe marketing groep erft de rechten van medewerker
    $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('marketing'), 'medewerker');
@@ -34,8 +35,9 @@ de 'medewerkers', dus we defineren 'marketing' zo dat het de rechten overerft va
 Vervolgens, zien we dat de bovenstaande toegangscontrole refereerd naar specifieke Bronnen ( o.a., "nieuwsbrief",
 "laatste nieuws", "Nieuws aankondigingen" ). Deze Bronnen gaan we nu toevoegen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Maken van de Bronnen voor de regels
    $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('nieuwsbrief'));            	// Nieuwsbrief
@@ -45,8 +47,9 @@ Vervolgens, zien we dat de bovenstaande toegangscontrole refereerd naar specifie
 
 Dan is het enkel nog een kwestie van het defineren van deze specifieke regels op de doel gebieden van de ACL:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Marketing moet kunnen publiceren en archiveren van de nieuwsbrieven en het laatste nieuws
    $acl->allow('marketing', array('nieuwsbrief', 'laatste_nieuws'), array('publiceren', 'archiveren'));
@@ -59,8 +62,9 @@ Dan is het enkel nog een kwestie van het defineren van deze specifieke regels op
 
 We kunnen nu de ACL raadplegen met de nieuwste wijzigingen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    echo $acl->isAllowed('medewerker', 'nieuwsbrief', 'publiceren') ?
         "toegestaan" : "geweigerd"; // geweigerd
@@ -95,8 +99,9 @@ Om één of meer toegangregels te verwijderen van de ACL, gebruiken we simpelweg
 *removeDeny()* methodes. Net als bij *allow()* en *deny()*, mag je een *null* waarde gebruiken om aan te geven dat
 het voor alle Rollen, Bronnen en privileges geldt:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Verwijder het weigeren van herzien van het laatste nieuws voor medewerkers ( en marketing via overerving )
    $acl->removeDeny('medewerker', 'laatste_nieuws', 'herzien');
@@ -116,8 +121,9 @@ het voor alle Rollen, Bronnen en privileges geldt:
 Privileges kunnen oplopend worden aangepast zoals je hier boven zag, maar een *null* waarde voor de privileges
 overschrijft zo'n oplopende wijziging:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Sta marketing alles toe voor het laatste nieuws
    $acl->allow('marketing', 'laatste_nieuws');

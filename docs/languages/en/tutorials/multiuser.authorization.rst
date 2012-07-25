@@ -26,7 +26,7 @@ privileges to manage and query authorization requests against.
 .. _learning.multiuser.authorization.basic-usage:
 
 Basic Usage of Zend\Permissions\Acl
------------------------
+-----------------------------------
 
 When using ``Zend\Permissions\Acl``, any models can serve as roles or resources by simply implementing the proper interface. To
 be used in a role capacity, the class must implement the ``Zend\Permissions\Acl\Role\RoleInterface``, which requires only

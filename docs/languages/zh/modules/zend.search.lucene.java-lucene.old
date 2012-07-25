@@ -33,7 +33,7 @@ Java 源代码
 
 下面的 Java 程序提供了一个如何使用 Java Lucene 索引文件的例子：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**

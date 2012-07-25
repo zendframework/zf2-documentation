@@ -193,7 +193,7 @@ Il y a deux moyens qui peuvent permettre d'éviter ce problème.
 
 Le premier est de forcer l'index à sortir de la portée (du scope) :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $index = Zend_Search_Lucene::open($indexPath);
@@ -229,7 +229,7 @@ spécifiés.
 
 C'est plus efficace que d'utiliser la méthode ``find()``:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       // Récupération de documents avec la méthode find()

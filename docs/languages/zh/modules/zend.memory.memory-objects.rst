@@ -10,7 +10,7 @@
 
 使用内存管理器的 *create([$data])*\ 方法创建可移动的内存对象:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $memObject = $memoryManager->create($data);
@@ -27,7 +27,7 @@
 
 使用内存管理器的 *createLocked([$data])*\ 方法创建锁定的内存对象:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $memObject = $memoryManager->createLocked($data);
@@ -55,7 +55,7 @@ a string variable. The overhead is a single dereference to get the class propert
 
 使用内存容器(可移动或者锁定)'*值*'属性操作内存对象数据:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $memObject = $memoryManager->create($data);
@@ -88,7 +88,7 @@ a string variable. The overhead is a single dereference to get the class propert
 getRef() 方法
 ^^^^^^^^^^^
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    public function &getRef();
@@ -105,7 +105,7 @@ getRef() 方法
 返回字符串的引用,它直接由用户应用程序改变. 因此好的办法是使用 *getRef()*\
 方法进行值数据处理:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $memObject = $memoryManager->create($data);
@@ -125,7 +125,7 @@ getRef() 方法
 touch() 方法
 ^^^^^^^^^^
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    public function touch();
@@ -133,7 +133,7 @@ touch() 方法
 
 *touch()* 方法应该和 *getRef()*\ 一起使用.当对象值改变时它会发出信号.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $memObject = $memoryManager->create($data);
@@ -159,7 +159,7 @@ touch() 方法
 lock() 方法
 ^^^^^^^^^
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    public function lock();
@@ -170,7 +170,7 @@ lock() 方法
 
 在内存中锁定的对象还保证了在解锁对象前 *getRef()*\ 方法返回的引用是有效的:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $memObject1 = $memoryManager->create($data1);
@@ -199,7 +199,7 @@ lock() 方法
 unlock() 方法
 ^^^^^^^^^^^
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    public function unlock();
@@ -212,7 +212,7 @@ unlock() 方法
 isLocked() 方法
 ^^^^^^^^^^^^^
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    public function isLocked();

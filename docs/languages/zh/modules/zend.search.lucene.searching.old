@@ -30,8 +30,9 @@ Parser)来从字符串中创建查询。第二个方式通过 Zend_Search_Lucene
 
 两种途径都使用同样的 API 方法来搜索索引：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
 
       require_once('Zend/Search/Lucene.php');
@@ -63,8 +64,9 @@ Zend_Search_Lucene_Search_QueryHit 对象还能将 Zend_Search_Lucene_Document
 中的各个字段作为属性陈列出来。在下面这个例子中，搜索结果相应的文档具有两个字段：title
 和 author。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
 
       require_once('Zend/Search/Lucene.php');
@@ -88,8 +90,9 @@ Zend_Search_Lucene_Search_QueryHit 对象还能将 Zend_Search_Lucene_Document
 获得。你可以使用索引对象的 *getDocument()*
 方法来获取文档进行了索引的部分并接着使用 *getFieldValue()* 方法。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
 
       require_once('Zend/Search/Lucene.php');
@@ -132,8 +135,9 @@ Zend_Search_Lucene 使用和 Java Lucene
 
 可以通过 score 属性获取一个搜索结果的分值：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       $hits = $index->find($query);
 

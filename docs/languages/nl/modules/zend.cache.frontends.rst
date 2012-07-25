@@ -56,8 +56,9 @@ Een voorbeeld wordt gegeven aan het begin van de handleiding.
 Wanneer je alleen strings in de cache wil opslaan (want met "automaticSerialization" is het mogelijk ook sommige
 booleans op te slaan), kan je een compactere constructie gebruiken:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // we gaan er vanuit dat je $cache al hebt
@@ -81,8 +82,9 @@ booleans op te slaan), kan je een compactere constructie gebruiken:
    ?>
 Als je meerdere blokken of data instanties wilt cachen, is het idee hetzelfde:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // Zorg ervoor dat je unieke identifiers hebt:
@@ -148,8 +150,9 @@ Voorbeelden
 
 Een voorbeeld is in het begin van de handleiding gegeven. Hier is het met enkele kleine veranderingen:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // indien het een cache miss is, output buffering inroepen
@@ -205,8 +208,9 @@ Voorbeelden
 
 De *call()* functie gebruiken is hetzelfde als *call_user_func_array()* in PHP:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $cache->call('heelZwareFunctie', $params);
@@ -263,8 +267,9 @@ Voorbeelden
 
 Bijvoorbeeld, om statische oproepen te cachen :
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    class test {
@@ -289,8 +294,9 @@ Bijvoorbeeld, om statische oproepen te cachen :
    ?>
 Om klassieke methode oproepen te cachen :
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    class test {
@@ -403,8 +409,9 @@ Voorbeelden
 
 Het gebruik van Zend_Cache_Frontend_Page is echt eenvoudig :
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // [...] // require, configuratie en factory

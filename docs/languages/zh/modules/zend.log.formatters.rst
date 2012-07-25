@@ -17,8 +17,9 @@ Formatter是一个负责取得一个描述日志事件的 *event*\
 *Zend_Log_Formatter_Simple* 是默认的.当未指定任何formatter时使用.
 默认的配置等同于下面的配置:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       $format = '%timestamp% %priorityName% (%priority%): %message%' . PHP_EOL;
       $formatter = new Zend_Log_Formatter_Simple($format);
@@ -27,8 +28,9 @@ Formatter是一个负责取得一个描述日志事件的 *event*\
 
 使用Writer的 *steFormatter()*\ 方法在个别的Writer上设置Formatter:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       $writer = new Zend_Log_Writer_Stream('php://output');
       $formatter = new Zend_Log_Formatter_Simple('hello %message%' . PHP_EOL);
@@ -56,8 +58,9 @@ DEFAULT_FORMAT 常量，可以获取缺省键。
 *Zend_Log_Formatter_Xml*\ 格式化日志数据到XML字符串中.
 默认,它自动地纪录在事件数据数组中的所有项.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       $writer = new Zend_Log_Writer_Stream('php://output');
       $formatter = new Zend_Log_Formatter_Xml();
@@ -72,7 +75,7 @@ DEFAULT_FORMAT 常量，可以获取缺省键。
 
 上面的代码输出下面的XML(为清晰添加了空格):
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       <logEntry>
@@ -88,8 +91,9 @@ DEFAULT_FORMAT 常量，可以获取缺省键。
 的构造函数接受一个根元素名字
 的字符串作为第一个参数和一个元素映射的关联数组作为第二个参数:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       $writer = new Zend_Log_Writer_Stream('php://output');
       $formatter = new Zend_Log_Formatter_Xml('log', array('msg' => 'message', 'level' => 'priorityName'));
@@ -103,7 +107,7 @@ DEFAULT_FORMAT 常量，可以获取缺省键。
 上面的代码改变默认的根元素 *logEntry*\ 为 *log*. 还可以映射元素 *msg*\ 到事件数据项
 *message*,下面是输出结果:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       <log>

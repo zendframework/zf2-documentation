@@ -15,7 +15,7 @@ standardowy tag RSS *description* na dwa elementy, *summary* oraz *content*.
 
 Odczytywanie kanału Atom i wyświetlenie pól *title* i *summary* dla każdego z wpisów:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $feed = new Zend_Feed_Atom('http://atom.example.com/feed/');

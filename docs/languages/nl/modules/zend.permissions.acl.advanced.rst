@@ -34,8 +34,9 @@ Zend\Permissions\Acl levert ondersteuning voor conditionele regels met *Zend\Per
 interface te gebruiken, schrijft de ontwikkelaar een class die de *assert()* methode van de interface
 implementeerd.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    class schoonIPvereising implements Zend\Permissions\Acl\Assert\AssertInterface
@@ -56,8 +57,9 @@ Als een vereising klasse beschikbaar is, moet de ontwikkelaar een instantie hier
 conditionele regel toekent. Een regel die is gemaakt met een vereising wordt alleen toepast als de vereising waar
 heeft terug gestuurd.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $acl = new Zend\Permissions\Acl\Acl();

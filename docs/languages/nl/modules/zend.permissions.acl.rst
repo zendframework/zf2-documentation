@@ -75,8 +75,9 @@ volgorde waarin deze rollen staan in de *$ouders* array is van belang. Als het n
 naar toegangsregels voor de geraadpleegde Rol ( in dit voorbeeld "*eenGebruiker*"), maar ook in de Rollen waar de
 geraadpleegde Rol van erft (in dit voorbeeld "*gast*", "*lid*", en "*admin*"):
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $acl = new Zend\Permissions\Acl\Acl();
 
@@ -122,8 +123,9 @@ Een ACL kan iedere groep van fysieke en virtuele objecten bevatten die je wenst.
 basis Content Management Systeem ACL die verschillende niveaus van groepen bevat. Voor het maken van een ACL
 object, moeten we de ACL instantiëren zonder parameters:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $acl = new Zend\Permissions\Acl\Acl();
@@ -166,8 +168,9 @@ kunnen hebben. De rechten kunnen als volgt worden weergegeven:
 Als voorbeeld wordt *Zend\Permissions\Acl\Role* gebruikt, maar ieder object dat *Zend\Permissions\Acl\Role\RoleInterface* implementeert kan
 gebruikt worden. De groepen kunnen toegevoegd worden aan de Rol lijst op de volgende manier:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $acl = new Zend\Permissions\Acl\Acl();
@@ -209,8 +212,9 @@ Rollen erven regels die zijn gedefineerd voor hun ouders.
 We kunnen dus een redelijke complexe groep van regels defineren met een kleine hoeveelheid code. Om de basisregels
 toe te passen zoals hierboven staan beschreven:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $acl = new Zend\Permissions\Acl\Acl();
@@ -250,8 +254,9 @@ Raadplegen van de ACL
 We hebben nu een flexibele ACL die gebruikt kan worden om te bepalen of de aanvrager toestemming heeft om de actie
 uit te voeren binnen de web applicatie. Raadplegen is vrij simpel met het gebruik van de *isAllowed()* methode:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    echo $acl->isAllowed('gast', null, 'bekijk') ?
         "toegestaan" : "geweigerd"; // toegestaan

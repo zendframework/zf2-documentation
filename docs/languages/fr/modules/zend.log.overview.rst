@@ -58,7 +58,7 @@ Messages de logs
 Pour enregistrer un message, appelez la méthode ``log()`` de l'instance de l'enregistreur et passez lui le message
 avec son niveau de priorité.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $logger->log("Message d'information", Zend_Log::INFO);
@@ -168,7 +168,7 @@ est exigée pour ajouter un élément qui n'existerait pas dans le réglage par 
 Pour ajouter un nouvel élément à chaque futur événement, appeler la méthode ``setEventItem()`` en donnant une
 clé et une valeur :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $logger->setEventItem('pid', getmypid());

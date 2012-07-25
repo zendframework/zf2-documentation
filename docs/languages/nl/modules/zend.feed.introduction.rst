@@ -27,7 +27,7 @@ data op te slaan in een database enz...
 
 .. rubric:: Zend_Feed laten werken met RSS Feed Data
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

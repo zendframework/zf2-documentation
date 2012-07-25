@@ -12,7 +12,7 @@ Term queries zijn bedoeld voor het zoeken met een enkele term.
 
 Query string:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
        $hits = $index->find('word1');
@@ -21,8 +21,9 @@ of
 
 Query opbouw door API:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
        $term  = new Zend_Search_Lucene_Index_Term('word1');
@@ -58,8 +59,9 @@ Beide zoekmethodes kunnen worden gebruikt voor multiterm zoekopdrachten.
 
 Query string:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $hits = $index->find('+word1 author:word2 -word3');
@@ -80,8 +82,9 @@ of
 
 Query opbouw door API:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
        $query = new Zend_Search_Lucene_Search_Query_MultiTerm();
@@ -116,8 +119,9 @@ doeleinden. Voorbeeld: Een term kan gedupliceerd worden om een bepaalde term ext
 verschillende synoniemen kunnen op een plek worden geplaatst). De volgende phrase queries kunnen alleen door de API
 worden aangemaakt:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $query1 = new Zend_Search_Lucene_Search_Query_Phrase();
 
@@ -152,8 +156,9 @@ Phrase query kunnen worden aangemaakt met een enkele stap in de klasse construct
 
 Zend_Search_Lucene_Search_Query_Phrase klasse constructor accepteert drie optionele argumenten:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    Zend_Search_Lucene_Search_Query_Phrase([array $terms[, array $offsets[, string $field]]]);
 *$terms* is een array van strings, welke een set van zin termen bevat. Wanneer het niet wordt meegegeven of null
 is, wordt een lege query aangemaakt.
@@ -167,27 +172,31 @@ veld als standaard, maar het plan is dit aan te passen tot "ieder veld" in volge
 
 Dus:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    $query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'framework'));
 zoekt naar de 'zend framework' uitdrukking.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <$query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'download'), array(0, 2));
 zoekt naar 'zend ????? download' en dus voldoet 'zend platform download', 'zend studio download', 'zend core
 download', 'zend framework download' hieraan.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    $query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'framework'), null, 'title');
 zoekt naar 'zend framework' in het 'title' veld.
 
 *Zend_Search_Lucene_Search_Query_Phrase::addTerm()* methode accepteert twee argumenten. Noodzakelijk
 *Zend_Search_Lucene_Index_Term* object en optioneel positie:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    Zend_Search_Lucene_Search_Query_Phrase::addTerm(Zend_Search_Lucene_Index_Term $term[, integer $position]);
 *$term* omschrijft de volgende term binnen de uitdrukking. Het moet hetzelfde veld als eerdere termen omschrijven.
 Anders wordt er een exceptie opgeworpen.
@@ -196,23 +205,26 @@ Anders wordt er een exceptie opgeworpen.
 
 Dus:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    $query = new Zend_Search_Lucene_Search_Query_Phrase();
    $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'));
    $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'));
 zoekt naar de 'zend framework' uitdrukking.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    $query = new Zend_Search_Lucene_Search_Query_Phrase();
    $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'), 0);
    $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'), 2);
 zoekt naar de 'zend ????? download' uitdrukking en dus zal 'zend platform download', 'zend studio download', 'zend
 core download', 'zend framework download' hieraan voldoen.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    $query = new Zend_Search_Lucene_Search_Query_Phrase();
    $query->addTerm(new Zend_Search_Lucene_Index_Term('zend', 'title'));
    $query->addTerm(new Zend_Search_Lucene_Index_Term('framework', 'title'));
@@ -231,8 +243,9 @@ op exactheid. 'Slop' staat standaard op nul, waardoor exacte overeenkomsten nood
 
 Slop factor kan na het aanmaken van een query worden aangegeven:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // Query zonder een gat.

@@ -8,7 +8,7 @@
 
 .. rubric:: 修改一个已存在的条目
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
@@ -32,7 +32,7 @@
 
 .. rubric:: 用自定义的命名空间创建一个Atom条目元素
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $entry = new Zend_Feed_Entry_Atom();

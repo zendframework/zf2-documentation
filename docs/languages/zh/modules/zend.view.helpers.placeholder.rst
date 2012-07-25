@@ -14,7 +14,7 @@
 占位符的基本用法是将视图中的数据持久化。每个 *Placeholder*\
 助手的启用都需要一个占位符名称，助手接着返回一个占位符容器对象，你可以用来处理或者简单地输出。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php $this->placeholder('foo')->set("Some text for later") ?>
@@ -46,13 +46,13 @@
   可以用来给内容设置一个缩进的值。如果传递一个整数，就按这个数量来缩进；如果传递一个字符串，就按字符串的长度来缩进。任何时候使用
   *getIndent()* 来确定当前的设置是什么。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!-- first view script -->
    <?php $this->placeholder('foo')->exchangeArray($this->data) ?>
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!-- later view script -->
@@ -71,7 +71,7 @@
 因为 *Placeholder* 容器对象从 *ArrayObject*
 继承而来，所以你可以很容易地给特定的键赋值，而不是简单地把它压进容器。键可以作为对象属性或数组键来访问。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php $this->placeholder('foo')->bar = $this->data ?>
@@ -104,7 +104,7 @@
 
 - *captureEnd()* 使抓取内容停止，并根据 *captureStart()* 如何被调用来把它放到容器对象。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!-- Default capture: append -->
@@ -119,7 +119,7 @@
 
    <?php echo $this->placeholder('foo') ?>
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!-- Capture to key -->

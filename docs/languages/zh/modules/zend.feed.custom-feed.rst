@@ -14,8 +14,9 @@
 
 .. rubric:: 用自定义的命名空间继承Atom条目类
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    /**
     * 自定义的条目类自动地识别feed URI(可选)
@@ -72,8 +73,9 @@
 
 接下来你就可以直接实例化和设置 *myUpdated*\ 属性来使用这个类：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $entry = new MyEntry();
    $entry->myUpdated = '2005-04-19T15:30';

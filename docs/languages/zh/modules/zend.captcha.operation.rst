@@ -5,7 +5,7 @@ Captcha 操作
 
 所有具体的 CAPTCHA 对象实现 *Zend_Captcha_Adapter*\ ，如下所示：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    interface Zend_Captcha_Adapter extends Zend_Validate_Interface
@@ -37,7 +37,7 @@ Captcha 操作
 
 一般的用例如下：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Originating request:

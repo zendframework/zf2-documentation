@@ -14,7 +14,7 @@ skryptu).
 
 W celu przypomnienia, oto przykład skryptu widoku pokazanego we wprowadzeniu do Zend_View.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    if ($this->books): ?>
@@ -54,7 +54,7 @@ wyświetlić.
 
 Zend_View dostarcza metodę zwaną escape() która filtruje dane wyjściowe.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // zły zwyczaj wyświetlania zmiennej:
@@ -69,7 +69,7 @@ zależenie od Twojego środowiska możesz chcieć filtrować dane wyjściowe w i
 setEscape() na poziomie kontrolera by przekazać instancji Zend_View informację o tym, jakiej metody filtrowania
 ma używać.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // utwórz instancje Zend_View
@@ -110,7 +110,7 @@ Systemy szablonów używające skryptów widoku
 Skrypt widoku może być użyty w celu utworzenia instancji i manipulowania osobnym obiektem szablonu, takim jak
 np. szablon PHPLIB. Skrypt widoku w takim przypadku mógłby wyglądać mniej więcej tak:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    include_once 'template.inc';
@@ -137,7 +137,7 @@ np. szablon PHPLIB. Skrypt widoku w takim przypadku mógłby wyglądać mniej wi
 
 I mogłoby to być powiązane z takim plikiem szablonu:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!-- booklist.tpl -->
@@ -167,7 +167,7 @@ Systemy szablonów używające interfejsu Zend_View_Interface
 Niektórzy mogą zrobić to łatwiej zapewniając w prosty sposób system szablonów kompatybilny z Zend_View.
 *Zend_View_Interface* definiuje minimalny interfejs potrzebny dla kompatybilności.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -225,7 +225,7 @@ Niektórzy mogą zrobić to łatwiej zapewniając w prosty sposób system szablo
 Używając tego interfejsu, relatywnie proste staje się podpięcie zewnętrznego systemu szablonów jako klasy
 kompatybilnej z Zend_View. Przykładowo, poniższy przykład to podpięcie systemu Smarty:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    class Zend_View_Smarty implements Zend_View_Interface
@@ -416,7 +416,7 @@ kompatybilnej z Zend_View. Przykładowo, poniższy przykład to podpięcie syste
 W tym przykładzie powinieneś utworzyć instancję klasy *Zend_View_Smarty* zamiast *Zend_View*, a następnie
 używać jej w dokładnie w ten sam sposób jak *Zend_View*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View_Smarty();

@@ -33,8 +33,9 @@ tabella seguente.
 Semplice esempio usando Pop3
 ----------------------------
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $mail = new Zend_Mail_Storage_Pop3(array('host'     => 'localhost',
                                             'user'     => 'test',
@@ -56,15 +57,17 @@ semplice.
 Se si desidera leggere da un file Mbox è sufficiente fornire il nome del file al costruttore di
 *Zend_Mail_Storage_Mbox*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $mail = new Zend_Mail_Storage_Mbox(array('filename' => '/home/test/mail/inbox'));
 
 Maildir è molto simile ma necessita il nome di una cartella:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $mail = new Zend_Mail_Storage_Maildir(array('dirname' => '/home/test/mail/'));
 
@@ -79,8 +82,9 @@ Per quanto riguarda i sistemi di salvataggio remoto i due protocolli più popola
 Imap. Entrambi necessitano almeno di un host ed un utente per connettersi ed autenticarsi. La password predefinita
 è una stringa vuota, la porta predefinita quella specificata nel protocollo RFC.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // connessione con Pop3
    $mail = new Zend_Mail_Storage_Pop3(array('host'     => 'example.com'
@@ -101,8 +105,9 @@ Imap. Entrambi necessitano almeno di un host ed un utente per connettersi ed aut
 Per entrambi i protocolli sono supportate le connessioni SSL e TSL. Se si utilizza SSL, la porta predefinita cambia
 come specificato in RFC.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // esempi per Zend_Mail_Storage_Pop3, gli stessi funzionano per Zend_Mail_Storage_Imap
 
@@ -131,8 +136,9 @@ Una volta aperta la connessione, è possibile estrarre i messaggi. E' necessario
 rappresenta un contatore che parte da 1 per il primo messaggio. Per estrarre il messaggio si utilizza il metodo
 *getMessage()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $message = $mail->getMessage($messageNum);
 
@@ -140,15 +146,17 @@ L'accesso sotto forma di array è supportato, ma non consente di specificare alc
 *getMessage()*. Se questo non è un problema e si può vivere anche solo con i valori predefiniti, allora si può
 usare:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $message = $mail[$messageNum];
 
 L'interfaccia Iterator è implementata e consente di scorrere tutti i messaggi:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    foreach ($mail as $messageNum => $message) {
        // fai qualcosa ...
@@ -156,8 +164,9 @@ L'interfaccia Iterator è implementata e consente di scorrere tutti i messaggi:
 
 Per contare i messaggi salvati è possibile usare sia il metodo *countMessages()* sia l'accesso del tipo array:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // metodo
    $maxMessage = $mail->countMessages();
@@ -167,8 +176,9 @@ Per contare i messaggi salvati è possibile usare sia il metodo *countMessages()
 
 Per rimuovere un'e-mail si utilizzi il metodo *removeMessage()* o, nuovamente, l'accesso del tipo array:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // metodo
    $mail->removeMessage($messageNum);
@@ -187,8 +197,9 @@ singole parti di un messaggio multipart. Tutte le intestazioni sono accessibili 
 tutte le intestazioni sono convertite in minuscolo dunque il caso del testo nel nome non è importante. Inoltre, le
 intestazioni che contengono un trattino "-" possono essere scritte con la notazione CamelCase.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // recupera l'oggetto messaggio
    $message = $mail->getMessage(1);
@@ -202,8 +213,9 @@ intestazioni che contengono un trattino "-" possono essere scritte con la notazi
 In caso di più intestazioni con lo stesso nome, esempio l'intestazione *Received*, è possibile recuperare il
 valore come array invece che stringa con il metodo *getHeader()*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // recupera l'intestazione come proprietà
    // il risultato è sempre una stringa,
@@ -230,8 +242,9 @@ Il metodo *getHeaders()* restituisce tutte le intestazioni come array. Per ogni 
 nome dell'intestazione in minuscolo, il valore è un array nel caso di intestazioni multiple, una stringa per
 intestazioni singole.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // stampa tutte le intestazioni
    foreach ($message->getHeaders() as $name => $value) {
@@ -247,8 +260,9 @@ intestazioni singole.
 Se il messaggio non è di tipo multipart la sua lettura è immediata con il metodo *getContent()*. A differenza
 delle intestazioni, il contenuto è caricato solo in caso di necessità (late-fetch).
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // stampa il contenuto del messaggio
    echo '<pre>';
@@ -260,8 +274,9 @@ ottenere un'istanza di *Zend_Mail_Part* con il metodo *getPart()*. *Zend_Mail_Pa
 *Zend_Mail_Message*, quindi si ha accesso agli stessi metodi: *getHeader()*, *getHeaders()*, *getContent()*,
 *getPart()*, *isMultipart* e le proprietà per le intestazioni.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // recupera la prima parte non multipart
    $part = $message;
@@ -275,8 +290,9 @@ ottenere un'istanza di *Zend_Mail_Part* con il metodo *getPart()*. *Zend_Mail_Pa
 *Zend_Mail_Part* implementa *RecursiveIterator* che semplifica l'iterazione di tutte le parti. Inoltre, per
 agevolare l'ouput, implementa il metodo magico *__toString()* che restituisce il contenuto.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // stampa la prima parte text/plain
    $foundPart = null;
@@ -306,8 +322,9 @@ tipi di contrassegno IMAP e maildir conosciuti, chiamati *Zend_Mail_Storage::FLA
 contiene un metodo chiamato *hasFlag()* per eseguire un controllo dei contrassegni. Il metodo *getFlags()*
 restituisce invece tutti i contrassegni impostati.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // cerca i messaggi non letti
    echo "E-mail da leggere:\n";
@@ -350,8 +367,9 @@ Poiché IMAP permette all'utente o al client di definire contrassegni personaliz
 contrassegni senza una costante corrispondente in *Zend_Mail_Storage*. In questo caso i valori sono restituiti come
 stringa e possono essere verificati allo stesso modo con *hasFlag()*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // verifica il messaggio alla ricerca dei contrassegni
    // $IsSpam, $SpamTested impostati dal client
@@ -383,8 +401,9 @@ nel costruttore.
 Il supporto alle cartelle è nativo in *Zend_Mail_Storage_Imap*. Alcuni esempi per aprire questi sistemi di
 salvataggio:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // mbox con cartelle
    $mail = new Zend_Mail_Storage_Folder_Mbox(array('dirname' => '/home/test/mail/'));
@@ -432,8 +451,9 @@ restituito dal metodo magico *__toString()*. Alcune cartelle non sono selezionab
 salvare all'interno dei messaggi e se selezionate il risultato è un errore. E' possibile eseguire un controllo con
 il metodo *isSelectable()*. E' molto semplice stampare la visualizzazione dell'intero albero delle cartelle:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $folders = new RecursiveIteratorIterator($this->mail->getFolders(),
                                             RecursiveIteratorIterator::SELF_FIRST);
@@ -453,8 +473,9 @@ Il metodo *getSelectedFolder()* restituisce la cartella corrente selezionata. Pe
 il metodo *selectFolder()*, che necessita del nome globale come parametro. Per evitare di scrivere i delimitatori
 è possibile utilizzare le proprietà di un'istanza *Zend_Mail_Storage_Folder*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // a seconda del sistema di salvataggio e delle impostazioni $rootFolder->Archive->2005
    // è identico a:
@@ -479,8 +500,9 @@ Utilizzo di NOOP
 Se si utilizza un sistema di salvataggio remoto e si devono eseguire alcune attività di lunga durata, è
 necessario mantenere attiva la connessione via noop:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    foreach ($mail as $message) {
 
@@ -507,8 +529,9 @@ delle cartelle se una cartella è scomparsa (l'errore persiste, ma è possibile 
 successivamente). Ad ogni modo, è meglio mantenere qualcosa come un file indicatore dei cambiamenti e verificarlo
 prima di utilizzare un'istanza salvata in cache.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // non c'è alcuna classe/gestore per la cache specificato qui,
    // modificare il codice con il gestore di cache in uso
@@ -540,8 +563,9 @@ Per aggiungere ulteriori funzionalità ad un protocollo è possibile estendere l
 costruttore della classe principale. Per esempio si assuma di dover utilizzare una porta differente per aprire una
 connessione POP3.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Loader.php';
    Zend_Loader::loadClass('Zend_Mail_Storage_Pop3');

@@ -11,8 +11,9 @@
 
 .. rubric:: 使用不同的Transport对象
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();

@@ -14,7 +14,7 @@ Zend_Filter מספק כמה פילטרים שימושיים ונפוצים, אב
 
 הדוגמא הבאה מציגה כיצד ניתן לכתוב פילטר בעצמכם:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       class MyFilter implements Zend_Filter_Interface
@@ -33,7 +33,7 @@ Zend_Filter מספק כמה פילטרים שימושיים ונפוצים, אב
 כדי להוסיף את הפילטר שנכתב מעלה לשרשרת הפילטרים ניתן לבצע זאת
 בעזרת:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $filterChain = new Zend_Filter();

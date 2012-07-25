@@ -30,8 +30,9 @@ Adapter）。当然你也可以使用任何 *Zend_Translator* 的实例和 *Zend
 为使用已注册的实例就是创建一个 *Zend_Translator* 或者 *Zend_Translator_Adapter* 的实例并在
 *Zend_Registry* 里用 *Zend_Translator* 作为它的键。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 我们的例子适配器
    $adapter = new Zend_Translator('array', array('simple' => 'einfach'), 'de');
@@ -50,8 +51,9 @@ Adapter）。当然你也可以使用任何 *Zend_Translator* 的实例和 *Zend
 为了使用 fluent interface ，创建一个 *Zend_Translator* 或者 *Zend_Translator_Adapter*
 的实例，调用不带参数的助手并调用 *setTranslator* 方法。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 在视图里
    $adapter = new Zend_Translator('array', array('simple' => 'einfach'), 'de');
@@ -64,8 +66,9 @@ Adapter）。当然你也可以使用任何 *Zend_Translator* 的实例和 *Zend
 
 .. rubric:: 直接用法
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 我们的例子适配器
    $adapter = new Zend_Translator('array', array('simple' => 'einfach'), 'de');
@@ -85,8 +88,9 @@ Adapter）。当然你也可以使用任何 *Zend_Translator* 的实例和 *Zend
 
 使用单个参数就把它添加到这个方法。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 在视图里
    $date = "Monday";
@@ -103,8 +107,9 @@ Adapter）。当然你也可以使用任何 *Zend_Translator* 的实例和 *Zend
 
 使用参数列表并添加给方法。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 在视图里
    $date = "Monday";
@@ -119,8 +124,9 @@ Adapter）。当然你也可以使用任何 *Zend_Translator* 的实例和 *Zend
 
 使用参数数组并添加到方法。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 在视图里
    $date = array("Monday", "April", "11:20:55");
@@ -133,8 +139,9 @@ Adapter）。当然你也可以使用任何 *Zend_Translator* 的实例和 *Zend
 
 .. rubric:: 动态修改地点 （locale）
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 在视图里
    $date = array("Monday", "April", "11:20:55");
@@ -147,8 +154,9 @@ Adapter）。当然你也可以使用任何 *Zend_Translator* 的实例和 *Zend
 
 .. rubric:: 静态修改地点 （locale）
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 在视图里
    $date = array("Monday", "April", "11:20:55");
@@ -163,8 +171,9 @@ Adapter）。当然你也可以使用任何 *Zend_Translator* 的实例和 *Zend
 
 .. rubric:: 获得当前设置的地点
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 在视图里
    $date = array("Monday", "April", "11:20:55");

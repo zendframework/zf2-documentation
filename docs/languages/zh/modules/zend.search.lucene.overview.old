@@ -41,8 +41,9 @@ HTML 表单，等等。
 
 *Zend_Search_Lucene_Field* 类提供了一些静态方法用以创建具有不同特点的字段：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $doc = new Zend_Search_Lucene_Document();
 

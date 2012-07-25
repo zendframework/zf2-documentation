@@ -111,7 +111,7 @@ yerini almalı.
 
 Bunlar sınıflar için kabul edilebilir isimler :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       Zend_Db
@@ -132,7 +132,7 @@ Arayüzler
 Arayüz sınıfları diğer sınıflarla aynı kurallara uymalıdır (yukarıya bakın) , buna rağmen aşağıdaki
 örneklerde olduğu gibi mutlaka "Interface" kelimesi ile bitmeli :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       Zend_Log_Adapter_Interface
@@ -151,7 +151,7 @@ Boşluklar ve geri kalan karakterler kullanılamaz.
 PHP kodu içeren her dosya mutlaka ".php" dosya uzantısına sahip olmalıdır. Bu örnekler yukarıdaki
 bölümdeki sınıf isimlerini içererek kabul edilebilen dosya isimleri göstermektedir :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       Zend/Db.php
@@ -178,7 +178,7 @@ artırdığından , fonksiyon isimleri mümkün olduğunca uzun olmalı.
 
 Bunlar kabul edilebilir fonksiyon isimleri:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       filterInput()
@@ -242,8 +242,9 @@ PHP Kodu Sınırlaması
 
 PHP kodu her zaman için tam,standart PHP tagleri ile ayrılmalı :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
 
       ?>
@@ -265,7 +266,7 @@ Yalın Stringler
 Bir string yalın olduğunda (değişken değişimi olmadığında) , kesme işareti veya "tek tırnak" her zaman
 stringi ayırmak için kullanılır:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $a = 'Örnek String';
@@ -280,7 +281,7 @@ Kesme işareti içeren Yalın Stringler
 Bir yalın string kesme işareti içerdiği zaman string tırnak işareti veya çift tırnak ile ayrılmalı. Bu
 özellikle SQL ifadelerine uygun :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sql = "SELECT `id`, `name` from `people` WHERE `name`='Fred' OR `name`='Susan'";
@@ -294,7 +295,7 @@ Değişken Yerine koyma
 
 Değişken yerine koyma şu iki şekilde yapılabilir :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $greeting = "Merhaba $isim, tekrar hoşgeldin!";
@@ -305,7 +306,7 @@ Değişken yerine koyma şu iki şekilde yapılabilir :
 
 Tutarlılık için bu kullanıma izin verilmez :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $greeting = "Merhaba ${isim}, tekrar hoşgeldin!";
@@ -320,7 +321,7 @@ String Birleştirme
 Stringler "." operetörü ile birleştirilebilirler. Okunabilirliği artırmak için "." operatöründen önce ve
 sonra boşluk bırakılmalı :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $company = 'Zend' . 'Technologies';
@@ -331,7 +332,7 @@ Stringleri "." operetörü ile birleştirirken okunabilirliği artırmak için i
 bölebiliriz.Bu gibi durumlarda her başarılı satır "." operatörünün "=" operatörünün altına döşendiği
 gibi whitespace ile takviye edilmeli :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sql = "SELECT `id`, `name` FROM `people` "
@@ -358,7 +359,7 @@ başlangıç indeksi 0 olmalı.
 İndeksli dizileri *array* construct'ı ile tanımlarken , okunabilirliği artırmak için her virgül
 ayıracından sonra boşluk bırakılmalı :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sampleArray = array(1, 2, 3, 'Zend', 'Studio');
@@ -368,7 +369,7 @@ ayıracından sonra boşluk bırakılmalı :
 "array" construct'ı ile çok satırlı indeksli diziler de tanımlanabilir. Bu durumda aşağıda gösterildiği
 gibi her başarılı satırın başlangıcı aynı hizaya gelecek şekilde boşluklarla takviye edilmeli :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sampleArray = array(1, 2, 3, 'Zend', 'Studio',
@@ -385,7 +386,7 @@ Birleşmeli Diziler
 Birleşmeli dizileri *array* construct'ı ile tanımlarken ifadeyi satırlara bölmek tavsiye edilir. Bu durumda
 her başarılı satır her anahtar ve değer aynı hizaya gelecek şekilde whitespace ile takviye edilmeli:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sampleArray = array('ilkAnahtar'  => 'ilkDeger',
@@ -419,7 +420,7 @@ ek PHP kodunu birbirinden ayırmalı.
 
 Kabul edilebilir sınıf tanımlaması örneği :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -470,7 +471,7 @@ Genel kapsamda fonksiyon kullanmak kesinlikle uygun bulunmuyor.
 
 Bir sınıfta kabuledilebilir fonksiyon tanımlaması örneği :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -492,7 +493,7 @@ Bir sınıfta kabuledilebilir fonksiyon tanımlaması örneği :
 
 **NOT:** Referans atamasına sadece fonksiyon tanımlamasında izin veriliyor :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -514,7 +515,7 @@ Bir sınıfta kabuledilebilir fonksiyon tanımlaması örneği :
 Return değeri parantez içine anlınmamalı. Bu okunabilirliğe engel olabilir ayrıca ilerde eğer metod referans
 ile return yapacak şekilde değişirse kodun çalışmasını durdurabilir.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -549,7 +550,7 @@ Fonksiyon ve Metod Kullanımı
 Fonksiyon argümanları virgülden ayıracından sonra bir boşluk bırakılarak yazılır. Üç argüman alan bir
 fonksiyon için kabul edilebilir bir fonksiyon çağrısı örneği:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       threeArguments(1, 2, 3);
@@ -563,7 +564,7 @@ Argüman olarak dizileri alabilen fonksiyonlar için fonksiyon çağrısı "arra
 okunabilirliği artırmak için satırlara ayrılabilir. Bu gibi durumlarda dizi yazım kuralları geçerliliğini
 korur:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       threeArguments(array(1, 2, 3), 2, 3);
@@ -593,7 +594,7 @@ Daha geniş koşulların mantıksal gruplandırılmasını geliştirmesi için i
 Açılış parantezi koşullu ifade ile aynı satırda yazılır. Kapanış parantezi ise her zaman kendi
 satırına yazılır. Parantezler içindeki herhangi bir içerik dört boşluk bırakılarak yazılmalı.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       if ($a != 2) {
@@ -604,7 +605,7 @@ satırına yazılır. Parantezler içindeki herhangi bir içerik dört boşluk b
 
 "else" veya "else" içeren "if" ifadeleri için biçimlendirme bu örneklerdeki gib olmalı :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       if ($a != 2) {
@@ -639,7 +640,7 @@ kapanış parantezinden sonra bir boşluk bırakılmalı.
 "switch" ifadesi içindeki tüm içerik içerinden dört boşluk ile başlamalı. "case" ifadesi altındaki her
 içerik ek olarak içeriden dört boşluk ile başlamalı.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    switch ($numPeople) {
@@ -685,7 +686,7 @@ Dosyalar
 PHP kodu içeren her dosya üst kısmında en az aşağıdaki kadar phpDocumentor tagleri içerecek şekilde bir
 başlık kısmına sahip olmalı:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -710,7 +711,7 @@ Sınıflar
 
 Her sınıf en az aşağıdaki kadar phpDocumentor tagleri içerecek şekilde bilgilendirme kısmı içermeli :
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -750,7 +751,7 @@ tanımlandığı için "@access" taginin kullanılmasına gerek yoktur.
 
 Eğer fonksiyon/metod kural dışı durum(exception) fırlatabiliyorsa , @throws kullanın:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       @throws exceptionclass [açıklama]

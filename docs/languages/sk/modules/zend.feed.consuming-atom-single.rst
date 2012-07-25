@@ -13,8 +13,9 @@ zdroj, ktorý bude obsahovať túto položku.
 
 .. rubric:: Získanie jednej položky z Atom
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
@@ -30,8 +31,9 @@ jednopoložkovému dokumentu:
 
 .. rubric:: Použitie objektu položky pre získanie položky z Atom zdroja
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?phpi
    $entry = new Zend_Feed_Entry_Atom('http://atom.example.com/feed/1');
    echo $entry->title();

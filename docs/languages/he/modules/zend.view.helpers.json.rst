@@ -10,7 +10,7 @@
 
 פלאגין עזר ל JSON מגדיר את הכותר הבא:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    Content-Type: application/json
@@ -21,7 +21,7 @@
 
 השימוש בפלאגין עזר זה הוא ישיר:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?= $this->json($this->data) ?>

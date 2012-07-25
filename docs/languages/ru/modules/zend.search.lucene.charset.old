@@ -39,6 +39,7 @@ Zend_Search_Lucene также содержит совместимый с UTF-8 �
 
    .. code-block:: php
       :linenos:
+
       <?php
       Zend_Search_Lucene_Analysis_Analyzer::setDefault(
           new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
@@ -63,6 +64,7 @@ Zend_Search_Lucene также содержит совместимый с UTF-8 �
 
    .. code-block:: php
       :linenos:
+
       <?php
       setlocale(LC_CTYPE, 'de_DE.iso-8859-1');
 
@@ -90,6 +92,7 @@ Zend_Search_Lucene также содержит совместимый с UTF-8 �
 
    .. code-block:: php
       :linenos:
+
       <?php
       setlocale(LC_CTYPE, 'de_DE.iso-8859-1');
 

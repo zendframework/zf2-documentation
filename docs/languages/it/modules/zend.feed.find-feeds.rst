@@ -7,8 +7,9 @@ Le pagine web spesso contengono un tag *<link>* con riferimento ai feed con cont
 particolare pagina. *Zend_Feed* consente di recuperare tutti i feed indicati in una pagina web chiamando
 semplicemente un metodo:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $feedArray = Zend_Feed::findFeeds('http://www.example.com/news.html');
 
