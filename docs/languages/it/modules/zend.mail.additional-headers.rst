@@ -11,8 +11,9 @@ uno o più valori:
 
 .. rubric:: Aggiunta di intestazioni al messaggio e-mail
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();

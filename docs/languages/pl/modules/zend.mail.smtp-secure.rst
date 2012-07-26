@@ -12,7 +12,7 @@ użyta będzie domyślna wartość -- 25 dla TLS oraz 465 dla SSL.
 
 .. rubric:: Aktywowanie bezpiecznego połączenia w klasie Zend_Mail_Transport_Smtp
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $config = array('ssl' => 'tls',

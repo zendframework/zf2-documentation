@@ -18,8 +18,9 @@ voor specifieke doeleinden die *Zend_Cache_Core* uitbreiden: *Output*, *File*, *
 *Zend_Cache::factory()* instantieert juiste objecten en bindt ze samen. In dit eerste voorbeeld zullen we *Core*
 frontend gebruiken, samen met *File* backend.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Cache.php';
 
@@ -41,8 +42,9 @@ bijvoorbeeld het resultaat van een zeer "dure" database query cachen. Nadat het 
 zelfs niet meer nodig een verbinding met de database te maken; records worden uit de cache gehaald en
 gedeserialiseerd.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    // $cache die in het vorige voorbeeld werd geïnitialiseerd
@@ -78,8 +80,9 @@ Tussen de twee methodes output je je data zoals gewoonlijk - alle output zal wor
 *end()* methode tegenkomt. Bij de volgende uitvoering zal de hele sectie worden overgeslagen ten voordele van het
 verkrijgen van de data uit de cache (zolang de cache record geldig is).
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $frontendOptions = array(

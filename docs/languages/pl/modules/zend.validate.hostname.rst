@@ -12,7 +12,7 @@ kontekście adresów DNS.
 
 Poniżej podstawowy przykład użycia:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_Hostname();
@@ -40,7 +40,7 @@ Stałe klasy Zend_Validate_Hostname to: *ALLOW_DNS* aby zezwalać tylko na adres
 tylko na adresy IP, *ALLOW_LOCAL* aby zezwalać tylko na adresy lokalne, oraz *ALLOW_ALL* aby zezwalać na
 wszystkie typy. Aby tylko sprawdzić adres dla adresów IP możesz użyć poniższego przykładu:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_Hostname(Zend_Validate_Hostname::ALLOW_IP);
@@ -60,7 +60,7 @@ Tak samo dobrze jak używając stałej *ALLOW_ALL* do określenia akceptacji adr
 użyć dowolnej kombinacji tych typów. Na przykład aby akceptować adresy DNS oraz adresy lokalne, uwtórz
 instancję obiektu Zend_Validate_Hostname w taki sposób:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_Hostname(Zend_Validate_Hostname::ALLOW_DNS |
@@ -104,7 +104,7 @@ Zend_Validate_Hostname constructor or via the *$validator->setValidateIdn()* met
 You can disable IDN validation by passing a second parameter to the Zend_Validate_Hostname constructor in the
 following way.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator =
@@ -125,7 +125,7 @@ disabled in much the same way as disabling IDN support. You can disable TLD vali
 to the Zend_Validate_Hostname constructor. In the example below we are supporting IDN validation via the second
 parameter.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator =

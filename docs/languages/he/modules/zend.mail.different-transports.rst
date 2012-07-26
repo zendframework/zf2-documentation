@@ -12,7 +12,7 @@
 
 .. rubric:: שימוש בחיבורים שונים
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $mail = new Zend_Mail();

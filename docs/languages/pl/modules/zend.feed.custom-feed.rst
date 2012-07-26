@@ -14,7 +14,7 @@ martwić się o przestrzenie nazw.
 
 .. rubric:: Rozszerzanie klasy wpisu Atom z własnymi przestrzeniami nazw
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -76,7 +76,7 @@ martwić się o przestrzenie nazw.
 Teraz aby użyć tej klasy, musisz po prostu bezpośrednio utworzyć jej instancję i przypisać wartość
 właściwości *myUpdated*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $entry = new MyEntry();

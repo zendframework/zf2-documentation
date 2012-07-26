@@ -19,7 +19,8 @@ As an example, if you want to use the *XHTML1* Strict *DTD* , you can simply spe
 
 .. code-block:: php
     :linenos:
-    
+
+
     $this->doctype('XHTML1_STRICT');
     
 
@@ -54,7 +55,8 @@ You can assign the type and render the declaration in a single call:
 
 .. code-block:: php
     :linenos:
-    
+
+
     echo $this->doctype('XHTML1_STRICT');
     
 
@@ -62,7 +64,8 @@ However, the better approach is to assign the type in your bootstrap, and then r
 
 .. code-block:: php
     :linenos:
-    
+
+
     class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     {
         protected function _initDocType()
@@ -78,7 +81,8 @@ Then, in your layout script, simply ``echo()`` the helper at the top of the file
 
 .. code-block:: php
     :linenos:
-    
+
+
     <?php echo $this->doctype() ?>
     <html>
         <!-- ... -->
@@ -99,7 +103,8 @@ Typically, you should specify any segments common to all pages in your bootstrap
 
 .. code-block:: php
     :linenos:
-    
+
+
     class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     {
         // ...
@@ -123,7 +128,8 @@ Within a view script, we might want to add another segment:
 
 .. code-block:: php
     :linenos:
-    
+
+
     <?php $this->headTitle()->append('Some Page'); // place after other segments ?>
     <?php $this->headTitle()->prepend('Some Page'); // place before ?>
     
@@ -132,7 +138,8 @@ In our layout, we will simply echo the ``headTitle()`` helper:
 
 .. code-block:: php
     :linenos:
-    
+
+
     <?php echo $this->doctype() ?>
     <html>
         <?php echo $this->headTitle() ?>
@@ -143,7 +150,8 @@ This will generate the following output:
 
 .. code-block:: php
     :linenos:
-    
+
+
     <!-- If append() was used: -->
     <title>My Site :: Some Page</title>
     
@@ -164,7 +172,8 @@ In our example, we'll assume that all pages need to load the stylesheet located 
 
 .. code-block:: php
     :linenos:
-    
+
+
     class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     {
         // ...
@@ -191,7 +200,8 @@ Later, in a controller or action-specific view script, we can add more styleshee
 
 .. code-block:: php
     :linenos:
-    
+
+
     <?php $this->headLink()->appendStylesheet('/styles/user-list.css') ?>
     
 
@@ -199,7 +209,8 @@ Within our layout view script, once again, we simply echo the placeholder:
 
 .. code-block:: php
     :linenos:
-    
+
+
     <?php echo $this->doctype() ?>
     <html>
         <?php echo $this->headTitle() ?>
@@ -211,7 +222,8 @@ This will generate the following output:
 
 .. code-block:: php
     :linenos:
-    
+
+
     <link rel="stylesheet" type="text/css" href="/styles/site.css" />
     <link rel="stylesheet" type="text/css" href="/styles/user-list.css" />
     
@@ -231,7 +243,8 @@ In this example, we'll specify that a script, " ``/js/site.js`` " needs to be lo
 
 .. code-block:: php
     :linenos:
-    
+
+
     class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     {
         // ...
@@ -261,7 +274,8 @@ Within a view script, we might then add an extra script file to source, or captu
 
 .. code-block:: php
     :linenos:
-    
+
+
     <?php $this->headScript()->appendFile('/js/user-list.js') ?>
     <?php $this->headScript()->captureStart() ?>
     site = {
@@ -274,7 +288,8 @@ Within our layout script, we then simply echo the placeholder, just as we have a
 
 .. code-block:: php
     :linenos:
-    
+
+
     <?php echo $this->doctype() ?>
     <html>
         <?php echo $this->headTitle() ?>
@@ -287,7 +302,8 @@ This will generate the following output:
 
 .. code-block:: php
     :linenos:
-    
+
+
     <script type="text/javascript" src="/js/site.js"></script>
     <script type="text/javascript" src="/js/user-list.js"></script>
     <script type="text/javascript">

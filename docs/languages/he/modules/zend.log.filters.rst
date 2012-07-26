@@ -13,7 +13,7 @@
 כדי לסנן לפני כל הכותבים, ניתן להוסיף מספר אינסופי של סינונים
 לאובייקט לוגינג על ידי שימוש במתודת ה *addFilter()*:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $logger = new Zend_Log();
@@ -42,7 +42,7 @@
 כדי להוסיף סינון לאובייקט כתיבה ספציפי, השתמשו במתודת *addFilter*
 לאותו אובייקט כתיבה:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $logger = new Zend_Log();

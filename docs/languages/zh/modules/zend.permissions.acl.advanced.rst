@@ -32,7 +32,7 @@ Zend\Permissions\Acl 用 *Zend\Permissions\Acl\Assert\AssertInterface*
 提供支持有条件的规则。为了使用规则声明接口，开发者写了一个实现接口中 *assert()*
 方法的类。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    class CleanIPAssertion implements Zend\Permissions\Acl\Assert\AssertInterface
@@ -55,7 +55,7 @@ Zend\Permissions\Acl 用 *Zend\Permissions\Acl\Assert\AssertInterface*
 一旦声明类可用，当分配有条件的规则时，开发者必需提供声明类的一个实例。用声明建立的规则只适用于当声明方法返回
 true。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $acl = new Zend\Permissions\Acl\Acl();

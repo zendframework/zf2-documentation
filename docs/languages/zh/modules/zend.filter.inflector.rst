@@ -16,8 +16,9 @@ Zend_Filter_Inflector
 
 .. rubric:: 把混合大小写字（MixedCase）和驼峰字符 （camelCaseText） 变成其它格式
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $inflector = new Zend_Filter_Inflector('pages/:page.:suffix');
    $inflector->setRules(array(
@@ -60,8 +61,9 @@ Zend_Filter_Inflector
 为了访问带有那个前缀的过滤器，但发生在较深的等级结构里，如各种字过滤器，只需要剥离
 Zend_Filter 前缀：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // use Zend_Filter_Word_CamelCaseToDash as a rule
    $inflector->addRules(array('script' => 'Word_CamelCaseToDash'));
@@ -69,15 +71,17 @@ Zend_Filter 前缀：
 要设置备用的路径， *Zend_Filter_Inflector* 有个实用方法 *addFilterPrefixPath()*
 来代理插件加载器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $inflector->addFilterPrefixPath('My_Filter', 'My/Filter/');
    ?>
 另外，你可以从变形器获取插件加载器并和它直接互动：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $loader = $inflector->getPluginLoader();
    $loader->addPrefixPath('My_Filter', 'My/Filter/');
@@ -96,8 +100,9 @@ Zend_Filter 前缀：
 可用使用 *setTargetReplacementIdentifier()*
 方法来改变识别器，或把它当作第三个参数传递给构造器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Via constructor:
    $inflector = new Zend_Filter_Inflector('#foo/#bar.#sfx', null, '#');
@@ -108,8 +113,9 @@ Zend_Filter 前缀：
 一般地，通过构造器来设置目标。然而，你想在稍后重置目标（例如，在核心部件里修改缺省变形器，如
 *ViewRenderer* 或 *Zend_Layout* ）， 可使用 *setTarget()* ：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $inflector = $layout->getInflector();
    $inflector->setTarget('layouts/:script.phtml');
@@ -117,8 +123,9 @@ Zend_Filter 前缀：
 另外，你可能希望在你的类中有类成员，类用来保持变形器目标是最新的 －
 不需要每次直接更新目标 （这样节省调用方法）。 *setTargetReference()* 让你来做这个：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class Foo
    {
@@ -173,8 +180,9 @@ Zend_Filter 前缀：
 静态规则做简单的字符替换，当在静态目标里有片段，但你想让开发者修改的时候使用它们。
 使用 *setStaticRule()* 方法来设置或修改规则：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $inflector = new Zend_Filter_Inflector(':script.:suffix');
    $inflector->setStaticRule('suffix', 'phtml');
@@ -186,8 +194,9 @@ Zend_Filter 前缀：
 当你的类在内部使用变形器，并且你不想让用户为更新而抓取变形器，这通常很有用，
 *setStaticRuleReference()* 方法用来完成这个：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class Foo
    {
@@ -239,8 +248,9 @@ Zend_Filter 前缀：
 
 - **Array**. 如上所定义的一个或多个字符串或过滤器对象数组。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $inflector = new Zend_Filter_Inflector(':script.:suffix');
 
@@ -275,8 +285,9 @@ Zend_Filter 前缀：
 
 .. rubric:: 一次设置多重规则
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Could also use setRules() with this notation:
    $inflector->addRules(array(
@@ -334,8 +345,9 @@ Zend_Filter 前缀：
 
 .. rubric:: 使用 Zend_Config with Zend_Filter_Inflector
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // With the constructor:
    $config    = new Zend_Config($options);

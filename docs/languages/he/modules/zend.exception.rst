@@ -12,7 +12,7 @@ Zend Framework
 
 הקוד הבא מציג כיצד נתן לתפוס חריג שנזרק במערכת ה Zend Framework
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    try {

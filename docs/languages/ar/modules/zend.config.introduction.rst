@@ -19,8 +19,9 @@
 PHP عادية, يمكن تمرير هذه البيانات إلى *Zend_Config* فى الـ constructor , و
 ذلك يفضل لتغليف البيانات داخل واجهة كأنية.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Given an array of configuration data
    $configArray = array(

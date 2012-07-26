@@ -37,7 +37,7 @@ thing may be required for validation success or failure to be determined.
 The following example demonstrates how a very simple custom validator might be written. In this case the validation
 rules are simply that the input value must be a floating point value.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       class MyValid_Float extends Zend_Validate_Abstract
@@ -88,7 +88,7 @@ for exactly one of the following reasons:
 
 These validation failure reasons are then translated to definitions in the class:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       class MyValid_NumericBetween extends Zend_Validate_Abstract
@@ -168,7 +168,7 @@ criteria enforce that the password:
 
 The following class implements these validation criteria:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       class MyValid_PasswordStrength extends Zend_Validate_Abstract

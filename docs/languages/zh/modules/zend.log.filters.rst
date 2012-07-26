@@ -12,7 +12,7 @@
 
 要在所有writer之前过滤消息,你可以使用 *addFilter()*\ 方法添加任意数量的Filter到Log对象:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $logger = new Zend_Log();
@@ -39,7 +39,7 @@
 
 要在一个特定的Writer上进行消息过滤,使用该Writer对象的 *addFilter()*\ 方法:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $logger = new Zend_Log();

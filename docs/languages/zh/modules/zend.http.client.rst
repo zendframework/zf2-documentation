@@ -23,7 +23,7 @@ setUri()和setConfig()方法提供。
 
       .. rubric:: 初始化一个 Zend_Http_Client 对象
 
-      .. code-block::
+      .. code-block:: php
          :linenos:
 
          $client = new Zend_Http_Client('http://example.org', array(
@@ -91,7 +91,7 @@ setUri()和setConfig()方法提供。
 
       .. rubric:: 执行一个简单的 GET 请求
 
-      .. code-block::
+      .. code-block:: php
          :linenos:
 
          $client = new Zend_Http_Client('http://example.org');
@@ -111,7 +111,7 @@ setMethod()，那么缺省的请求方法是 GET（见上述的例子）。
 
       .. rubric:: 使用 GET 以外的请求方法
 
-      .. code-block::
+      .. code-block:: php
          :linenos:
 
          // 执行一个 POST 请求
@@ -141,7 +141,7 @@ URL的一部分，也可以通过使用 setParameterGet() 方法来添加。这�
 
       .. rubric:: 设置 GET 参数
 
-      .. code-block::
+      .. code-block:: php
          :linenos:
 
          // 使用 setParameterGet 方法设置一个 GET 参数
@@ -170,7 +170,7 @@ URL的一部分，也可以通过使用 setParameterGet() 方法来添加。这�
 
       .. rubric:: 设置 POST 参数
 
-      .. code-block::
+      .. code-block:: php
          :linenos:
 
          // 设置一个 POST 参数

@@ -11,7 +11,7 @@
 
 .. rubric:: שליחת אימיילים מרובים בחיבור SMTP אחד
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Create transport
@@ -38,7 +38,7 @@
 
 .. rubric:: שליטה ידנית לחיבורי השיחה
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Create transport

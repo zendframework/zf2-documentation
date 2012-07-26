@@ -11,8 +11,9 @@ L'oggetto fornito sovrascriverà il transport predefinito per la richiesta *send
 
 .. rubric:: Utilizzo di differenti transport
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();

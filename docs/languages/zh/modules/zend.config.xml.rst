@@ -25,7 +25,7 @@ elements）的下面来支持等级结构组织。叶一级（leaf-level）的XM
 system）的配置数据。因为开发系统配置数据和生产系统的配置数据类似，所以开发系统的节从生产系统的节继承。在这个案例中，结果(decision)是任意的并且它可以反过来做，即生产系统节从开发系统节继承，尽管这不可能用于更复杂的情形。接着，假定下面的配置数据包含在
 */path/to/config.xml*\ 中：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?xml version="1.0"?>
@@ -56,7 +56,7 @@ system）的配置数据。因为开发系统配置数据和生产系统的配�
 
 接着，假定开发者需要从XML文件取开发配置数据。这非常简单，只要指定XML文件和开发系统节就可以加载这些数据了：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $config = new Zend_Config_Xml('/path/to/config.xml', 'staging');
@@ -74,7 +74,7 @@ Zend_Config_Xml 也支持另外两种方法在配置文件里定义节点。它�
 属性是保留关键字（后者是第二种使用属性的方法），它们可能不被使用。
 第一种方法使用属性是把属性添加到父节点，它本身就变成了子节点：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?xml version="1.0"?>
@@ -95,7 +95,7 @@ Zend_Config_Xml 也支持另外两种方法在配置文件里定义节点。它�
 另一种方法也不会使配置文件变小，但使维护变得容易，是因为你需要要写标签名两次。你可以创建一个空标签，它在
 *value* 属性里包含它的值：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?xml version="1.0"?>

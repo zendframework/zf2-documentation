@@ -6,15 +6,17 @@
 *Zend_Feed* 能让开发者轻松获得 Feeds 。如果你知道 Feeds 的URI，用 *Zend_Feed::import()*\
 方法就可以非常容易的获得它:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $feed = Zend_Feed::import('http://feeds.example.com/feedName');
 
 你也能用 *Zend_Feed*\ 从一个文件或者一个PHP字符串变量来获得一个feed的内容:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // importing a feed from a text file
    $feedFromFile = Zend_Feed::importFile('feed.xml');
@@ -43,8 +45,9 @@ feed被导入，那么将返回一个 *Zend_Feed_Atom*\
 导入定制的数组
 ^^^^^^^
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 从数组导入 feed
    $atomFeedFromArray = Zend_Feed::importArray($array);
@@ -57,8 +60,9 @@ feed被导入，那么将返回一个 *Zend_Feed_Atom*\
 
 数组格式必须和这个结构一致：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    array(
          'title'       => 'title of the feed', //required
@@ -188,8 +192,9 @@ References:
 
 *Zend_Feed::importBuilder()* 用法的例子：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 从定制的 builder 源导入 feed
    $atomFeedFromArray = Zend_Feed::importBuilder(new Zend_Feed_Builder($array));
@@ -207,8 +212,9 @@ Dumping feed 内容
 
 为了 dump *Zend_Feed_Abstract* 实例的内容，使用 *send()* 或 *saveXml()* 方法。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    assert($feed instanceof Zend_Feed_Abstract);
 

@@ -10,7 +10,7 @@ Email 地址
 
 一个基本用法的例子如下：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_EmailAddress();
@@ -42,7 +42,7 @@ Email地址中的主机名部分依靠 :ref:`Zend_Validate_Hostname <zend.valida
 并传递一个参数来指明哪种主机名你想接受。更多的细节包含在 *Zend_Validate_Hostname*\
 中。 下面的例子显示如何同时接受DNS和本地主机名：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_EmailAddress(Zend_Validate_Hostname::ALLOW_DNS | Zend_Validate_Hostname::ALLOW_LOCAL);
@@ -66,7 +66,7 @@ MX
 检查不是缺省地激活的，并且目前只支持UNIX平台。为激活MX检查，你可以传递第二个参数给
 *Zend_Validate_EmailAddress*\ 构造器。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_EmailAddress(Zend_Validate_Hostname::ALLOW_DNS, true);
@@ -82,7 +82,7 @@ MX
 也将匹配存在于某些域名中的国际字符。这就是国际域名（IDN）支持。这个是缺省激活，你可以通过用存在于
 *Zend_Validate_EmailAddress* 中的内部的 *Zend_Validate_Hostname* 对象来改变设置来禁止。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator->hostnameValidator->setValidateIdn(false);
@@ -97,7 +97,7 @@ MX
 缺省地用已知的TLDs列表来检查主机名。你可以通过用存在于 *Zend_Validate_EmailAddress*
 中的内部的 *Zend_Validate_Hostname* 对象来改变设置来禁止。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator->hostnameValidator->setValidateTld(false);

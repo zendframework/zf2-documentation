@@ -11,8 +11,9 @@ byť poslaný pomocou vstavanej PHP funkcie `mail()`_ alebo cez SMTP spojenie.
 Jednoduchý e-mail pozostáva z niekoľkých prijímateľov, predmetu, tela a odosielateľa. Pre poslanie e-mailu
 pomocou PHP funkcie `mail()`_ stačí nasledujúce:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();
@@ -40,8 +41,9 @@ Väčšinu metód je možné použiť v pohodlnom plynulom rozhraní. Pohodlné 
 každé volanie vráti referenciu na objekt nad ktorým bola metóda volaná a hneď je teda možné zavolať inú
 metódu.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();

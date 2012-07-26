@@ -27,8 +27,9 @@ Zend_Http_Response
 
 .. rubric:: 处理HTTP应答
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Http/Client.php';
    try {

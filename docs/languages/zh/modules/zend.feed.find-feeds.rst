@@ -6,7 +6,7 @@
 在网页上与该页内容其相关的详细信息常被包含在一个用 *<link>*\ 标记关联的Feed中。
 *Zend_Feed*\ 能让你用一个简单的方法提取一个页面上所有关联的Feed:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $feedArray = Zend_Feed::findFeeds('http://www.example.com/news.html');

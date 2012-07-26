@@ -27,7 +27,7 @@ Crearea unui nou identificator de resursă (URI)
 
 .. rubric:: Crearea unui nou URI cu *Zend_Uri::factory()*
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -55,8 +55,9 @@ Pentru a manipula un identificator de resursă existent, pasaţi întregul ident
 
 .. rubric:: Manipularea unui identificator de resursă (UR) existent cu *Zend_Uri::factory()*
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Uri.php';
 
@@ -81,8 +82,9 @@ moment anume.
 
 .. rubric:: Validarea unui URI cu *Zend_Uri::check()*
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Uri.php';
 
@@ -114,8 +116,9 @@ Schema unui URI este partea acelui URI care precedă caracterul două puncte. De
 
 .. rubric:: Obţinerea schemei dintr-un obiect *Zend_Uri_**
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Uri.php';
 
@@ -134,8 +137,9 @@ Obţinerea întregului identificator (URI)
 
 .. rubric:: Obţinerea întregului identificator dintr-un obiect *Zend_Uri_**
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Uri.php';
 
@@ -159,8 +163,9 @@ invalid datorită manipulării părţilor sale componente.
 
 .. rubric:: Validarea unui obiect *Zend_Uri_**
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Uri.php';
 

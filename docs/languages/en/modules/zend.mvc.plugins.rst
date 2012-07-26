@@ -48,7 +48,7 @@ exposes a number of methods:
 
 - ``getSessionManager()`` allows you to retrieve the session manager registered.
 
-- ``getContainer()`` returns the ``Zend\Session\Container`` instance in which the flass messages are stored.
+- ``getContainer()`` returns the ``Zend\Session\Container`` instance in which the flash messages are stored.
 
 - ``setNamespace()`` allows you to specify a specific namespace in the container in which to store or from which to
   retrieve flash messages.

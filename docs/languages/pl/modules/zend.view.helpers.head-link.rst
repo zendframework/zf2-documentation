@@ -46,7 +46,7 @@ Możesz użyć helpera *headLink* w dowolnym momencie. Najczęściej będziesz o
 layoutu, a łącza specyficzne dla aplikacji w skryptach widoków. W skrypcie layoutu wyświetlisz na koniec
 wszystkie łącza w sekcji <head>.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php // ustawianie łącz w skrypcie widoku:

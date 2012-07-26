@@ -13,7 +13,7 @@ użytkownika. Obiekt, który implementuje ten interfejs może być dodany do ła
 
 Poniższy przykład pokazuje w jaki sposób pisze się własny filtr:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       class MyFilter implements Zend_Filter_Interface
@@ -31,7 +31,7 @@ Poniższy przykład pokazuje w jaki sposób pisze się własny filtr:
 
 Aby dodać instancję powyższego filtra do łańcucha filtrów:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $filterChain = new Zend_Filter();

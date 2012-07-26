@@ -77,7 +77,7 @@ array *$parents* sangat penting. Ketika dibutuhkan, Zend\Permissions\Acl akan me
 di-query (dalam hal ini "*someUser*"), tapi juga pada role yang mewarisinya (dalam hal ini "*guest*", "*member*",
 dan "*admin*"):
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $acl = new Zend\Permissions\Acl\Acl();
@@ -126,7 +126,7 @@ Sebuah ACL dapat merepresentasikan objek apa saja, baik fisik maupun virtual. Na
 coba membuat ACL untuk Content Management System (CMS) yang mengatur hak akses beberapa pihak terhadap area
 tertentu. Untuk membuat objek ACL, kita cukup inisialisasi ACL dengan tanpa parameter seperti berikut:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $acl = new Zend\Permissions\Acl\Acl();
@@ -170,7 +170,7 @@ diekspresikan sebagai berikut:
 Untuk contoh kasus ini kita akan menggunakan *Zend\Permissions\Acl\Role*, walaupun sembarang objek yang mengimplementasikan
 *Zend\Permissions\Acl\Role\RoleInterface* bisa digunakan. Group-group ini dapat ditambahkan ke role registry dengan cara berikut:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $acl = new Zend\Permissions\Acl\Acl();
@@ -214,7 +214,7 @@ sebelumnya.
 Sebagai konsekuensi hal ini, kita dapat mendefinisikan seperangkat aturan yang kompleks dengan kode yang minimal.
 Untuk contoh kasus kita di atas, berikut adalah kode untuk menerapkan aturan aksesnya:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $acl = new Zend\Permissions\Acl\Acl();
@@ -256,7 +256,7 @@ Sekarang kita sudah memiliki ACL yang fleksibel yang dapat digunakan untuk menen
 untuk melakukan fungsi tertentu dalam sebuah aplikasi web. Untuk mengambil (query) aturan ACL yang telah ditetapkan
 sebelumnya cukup dengan menggunakan method *isAllowed()* seperti berikut:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    echo $acl->isAllowed('guest', null, 'view') ?

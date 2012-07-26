@@ -13,8 +13,9 @@
 
 .. rubric:: 读取Atom Feed的单个条目
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
@@ -27,8 +28,9 @@
 
 .. rubric:: 用条目对象直接访问Atom Feed的单个条目
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
 
    $entry = new Zend_Feed_Entry_Atom('http://atom.example.com/feed/1');

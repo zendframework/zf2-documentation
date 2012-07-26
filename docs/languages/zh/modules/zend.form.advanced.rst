@@ -14,7 +14,7 @@ Zend_Form 的高级用法
 许多有经验的 web
 开发者喜欢在元素名上用数组符号把相关的表单元素组成组。例如，如果有两个地址在表单上，一个邮寄地址和一个帐单地址，你可能会有相同的元素，通过把它们用数组组成组，你可以确保它们能分别被抓取。用下面的表单做个例子：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <form>
@@ -69,7 +69,7 @@ Zend_Form 的高级用法
 
 在本例中，帐单地址和邮寄地址包含一些相同的字段，这意味着一个可能会覆盖另一个。我们可以用数组符号来解决这个问题：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <form>
@@ -176,8 +176,9 @@ Zend_Form 的高级用法
 
 首先，来生成表单，并在里面定义一些子表单：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class My_Form_Registration extends Zend_Form
    {
@@ -274,7 +275,7 @@ Zend_Form 的高级用法
 也要求有动作和方法（注：这里的方法是 'post' 或
 'get'）属性。来给我们的类添砖加瓦让它提供那些信息：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    class My_Form_Registration extends Zend_Form
@@ -356,8 +357,9 @@ Zend_Form 的高级用法
 
 让我们来创建控制器，并添加用于获取表单实例的方法：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class RegistrationController extends Zend_Controller_Action
    {
@@ -377,7 +379,7 @@ Zend_Form 的高级用法
 和
 列表。我们在可以通过检查出现在每个子表单上的特定键的会话命名空间确定哪个数据被提交。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    class RegistrationController extends Zend_Controller_Action
@@ -481,8 +483,9 @@ Zend_Form 的高级用法
 
 当我们收到表单提交，可以校验子表单并接着检查是否整个表单有效。为完成这些任务，我们需要另外的方法确保提交的数据添加到会话和什么时候校验整个表单，我们依靠从会话来的所有片段（segments）来校验：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class My_Form_Registration extends Zend_Form
    {
@@ -525,8 +528,9 @@ Zend_Form 的高级用法
 八字已经画了一撇，让我们来为控制器构造一个动作。我们需要为表单做一个 landing
 页面，接着'process' 动作来处理表单。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    class RegistrationController extends Zend_Controller_Action
    {
@@ -572,7 +576,7 @@ landing
 
 The view scripts are very simple:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <? // registration/index.phtml ?>

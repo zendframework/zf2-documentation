@@ -398,7 +398,7 @@ Actually adding the route which would map the path-appended key to a parameter f
 be accomplished using a Route configuration such as the *INI* formatted example below for use with
 ``Zend_Application`` bootstrapping.
 
-.. code-block:: dosini
+.. code-block:: ini
    :linenos:
 
    ; Callback Route to enable appending a PuSH Subscription's lookup key

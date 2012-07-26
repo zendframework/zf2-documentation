@@ -22,7 +22,7 @@ Skrypt kontrolera
 Aby pokazać prosty przykład załóżmy, że kontroler ma dane w postaci listy książek i chcemy aby były one
 przetworzone jako widok. Skrypt kontrolera mógłby wyglądać tak:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // użyjmy modelu aby uzyskać dane o autorach książek i ich tytułach
@@ -60,7 +60,7 @@ wykonywany w przestrzeni instancji Zend_View, co oznacza, że odnosi się on do 
 Zend_View za pomocą $this. Zmienne przekazane do tej instancji przez kontroler są publicznymi właściwościami
 instancji Zend_View) więc bardzo prosty skrypt mógłby wyglądać tak:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    if ($this->books): ?>
@@ -100,7 +100,7 @@ Opcje
 - *basePath:* określa bazową ścieżkę, wewnątrz której znajdują się skrypty widoków, klasy helperów oraz
   klasy filtrów. Zakładane jest, że struktura katalogów wygląda tak:
 
-  .. code-block::
+  .. code-block:: php
      :linenos:
 
      base/path/
@@ -147,7 +147,7 @@ W przypadku gdy chcesz użyć krótkich znaczników, a ich obsługa jest wyłąc
 
 - Włączyć krótkie znaczniki w pliku *.htaccess*:
 
-  .. code-block::
+  .. code-block:: php
      :linenos:
 
      php_value "short_open_tag" "on"
@@ -158,7 +158,7 @@ W przypadku gdy chcesz użyć krótkich znaczników, a ich obsługa jest wyłąc
 
 - Włączyć alternatywną obsługę strumienia danych, aby w locie konwertować krótkie znaczniki na pełne:
 
-  .. code-block::
+  .. code-block:: php
      :linenos:
 
      $view->setUseStreamWrapper(true);

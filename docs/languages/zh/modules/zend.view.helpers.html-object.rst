@@ -24,12 +24,13 @@ HTML *<object>* 元素在网页里用于嵌入媒体如 Flash 或 QuickTime。
 
 使用助手嵌入 Flash 到你的页面相当简单。唯一需要的参数是资源 URI。
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php echo $this->htmlFlash('/path/to/flash.swf'); ?>
 它输出下列 HTML:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <object data="/path/to/flash.swf" type="application/x-shockwave-flash"
@@ -51,7 +52,7 @@ HTML *<object>* 元素在网页里用于嵌入媒体如 Flash 或 QuickTime。
 元素，你将很快看到一个这样的例子。
 最后一个是提供另外的内容给对象的选项。来看一下使用所有参数的例子。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    echo $this->htmlObject(

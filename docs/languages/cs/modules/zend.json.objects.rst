@@ -19,8 +19,9 @@ bezpečnostní riziko.
 Defaultně, *Zend_Json* dekóduje JSON objekty jako asociativní pole. Nicméně, pokud vyžadujete vrácení
 objektu, můžete to určit takto:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Dekódovat JSON objekty jako PHP objekty
    $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);

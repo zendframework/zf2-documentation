@@ -19,7 +19,7 @@ Normalnie jest tak, że użytkownicy użyliby jednej z klas adaptera, takiej jak
 być też dostępne w tablicy PHP. Można w prosty sposób przekazać tablicę do konstruktora *Zend_Config* w celu
 uzyskania obiektu zawierającego dane konfiguracyjne:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Tablica danych konfiguracyjnych
@@ -57,7 +57,7 @@ właściwości obiektów w celu uzyskania dostępu do danych konfiguracyjnych pr
 Oprócz zorientowanego obiektowo dostępu do wartości klasa *Zend_Config* posiada także metodę *get()*
 umożliwiającą zwrócenie podanej domyślnej wartości jeśli element nie istnieje. Na przykład:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $host = $config->database->get('host', 'localhost');
@@ -70,7 +70,7 @@ umożliwiającą zwrócenie podanej domyślnej wartości jeśli element nie istn
 Często wskazane może być użycie do konfiguracji zwykłego pliku PHP. Poniższy kod pokazuje w jak łatwy
 sposób można to zrobić:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    return array(
@@ -87,7 +87,7 @@ sposób można to zrobić:
    );
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Załadowanie konfiguracji

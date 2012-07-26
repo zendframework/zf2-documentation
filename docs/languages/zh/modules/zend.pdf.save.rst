@@ -15,7 +15,7 @@ true，那么只有新的 PDF 文件段返回。
 
 .. rubric:: Save PDF document.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...

@@ -1,0 +1,76 @@
+.. _zend.search.lucene.java-lucene:
+
+שימוש ב Java Lucene
+===================
+
+.. _zend.search.lucene.index-creation.file-formats:
+
+סוגי קבצים
+----------
+
+אינדקס סוגי הקבצים של *Zend_Search_Lucene* תומכים בסוג בינארי עם Java Lucene
+גרסא 1.4 ומעלה.
+
+הסבר מלא אודות פורמט זה ניתן לקרוא כאן:
+`http://lucene.apache.org/java/docs/fileformats.html`_ [#]_.
+
+.. _zend.search.lucene.index-creation.index-directory:
+
+תיקית אינדקס
+------------
+
+לאחר יצירת האינדקס, תיקית האינדקס תכיל כמה דברים:
+
+- קובץ ה ``segments`` היא רשימת החלקים של האינדקס.
+
+- קבצי ה ``*.cfs`` מכילים חלקי אינדקס. הערה! אינדקס אשר כתוב כמו
+  שצריך תמיד יכיל חלק אחד.
+
+- הקובץ ``deletable`` מכיל רשימה של קבצים שכבר לא משומשים על ידי
+  האינדקס, אבל לא ניתן למחוק אותם.
+
+.. _zend.search.lucene.java-lucene.source-code:
+
+קוד המקור
+---------
+
+תוכנת ה Java המוצגת למעלה מדגימה כיצד לאנדקס קובץ בעזרת Java Lucene:
+
+.. code-block:: php
+   :linenos:
+
+   /**
+   * Index creation:
+   */
+   import org.apache.lucene.index.IndexWriter;
+   import org.apache.lucene.document.*;
+
+   import java.io.*
+
+   ...
+
+   IndexWriter indexWriter = new IndexWriter("/data/my_index",
+                                             new SimpleAnalyzer(), true);
+
+   ...
+
+   String filename = "/path/to/file-to-index.txt"
+   File f = new File(filename);
+
+   Document doc = new Document();
+   doc.add(Field.Text("path", filename));
+   doc.add(Field.Keyword("modified",DateField.timeToString(f.lastModified())));
+   doc.add(Field.Text("author", "unknown"));
+   FileInputStream is = new FileInputStream(f);
+   Reader reader = new BufferedReader(new InputStreamReader(is));
+   doc.add(Field.Text("contents", reader));
+
+   indexWriter.addDocument(doc);
+
+
+
+
+.. _`http://lucene.apache.org/java/docs/fileformats.html`: http://lucene.apache.org/java/docs/fileformats.html
+
+.. [#] הגרסא הנתמכת הנוכחית בפורמט אינדקס קבצים היא 2.3 החל מ Zend
+       Framework 1.6.

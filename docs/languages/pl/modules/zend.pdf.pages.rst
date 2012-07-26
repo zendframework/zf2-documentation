@@ -40,7 +40,7 @@ możemy nią manipulować jak zwykłą tablicą:
 
 .. rubric:: Zarządzanie stronami dokumentu PDF.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -70,7 +70,7 @@ parametrze.
 
 .. rubric:: Klonowanie istniejącej strony.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...

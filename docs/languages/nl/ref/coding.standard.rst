@@ -112,8 +112,9 @@ Dit zijn voorbeelden van aanvaardbare klassenamen:
 
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       Zend_Db
 
       Zend_View
@@ -133,8 +134,9 @@ bovendien eindigen op het woord "interface", zoals in deze voorbeelden:
 
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       Zend_Log_Adapter_Interface
       Zend_Controller_Dispatcher_Interface
 
@@ -152,8 +154,9 @@ bestandsnamen voor bestanden die klassen bevatten uit de voorbeelden in de vorig
 
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       Zend/Db.php
 
       Zend/Controller/Front.php
@@ -178,8 +181,9 @@ begrijpen van de code te vergemakkelijken.
 
 Dit zijn voorbeelden van aanvaardbare functienamen:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       filterInput()
 
       getElementById()
@@ -239,7 +243,7 @@ PHP Code Afbakening
 
 PHP code moet altijd worden afgebakend met de volledige standaard PHP markeringen:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       <?php
@@ -262,7 +266,7 @@ String Literals
 Wanneer een string letterlijk is (hij bevat geen variabelvervanging), moet altijd de apostroof of "enkele quote"
 gebruikt worden om de string af te bakenen:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $a = 'Voorbeeld String';
@@ -276,7 +280,7 @@ Letterlijke strings die apostrofen bevatten
 Wanneer een letterlijke string zelf apostrofen bevat is het toegelaten de string af te bakenen met aanhalingstekens
 ("double quotes"). Dit is dringend aangeraden voor SQL verklaringen:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sql = "SELECT `id`, `name` from `people` WHERE `name`='Fred' OR `name`='Susan'";
@@ -289,7 +293,7 @@ Variabelvervanging
 
 Variabelvervanging is toegestaan met respect voor de volgende vormen:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $greeting = "Hello $name, welcome back!";
@@ -299,7 +303,7 @@ Variabelvervanging is toegestaan met respect voor de volgende vormen:
 
 Om uniformiteit te respecteren is deze vorm niet toegestaan:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $greeting = "Hello ${name}, welcome back!";
@@ -313,7 +317,7 @@ String samenvoeging
 Strings kunnen samengevoegd worden met de "." operator. Er moet steeds een spatie vòòr en na de "." operator
 worden ingevoegd om de leesbaarheid te verbeteren:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $company = 'Zend' . 'Technologies';
@@ -323,7 +327,7 @@ Wanneer men strings samenvoegt met de "." operator is het toegelaten de verklari
 om de leesbaarheid te vergroten. In dat geval moet elke opeenvolgende regel met spaties worden opgevuld zodat de
 "." operator uitgelijnd is onder de "=" operator:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sql = "SELECT `id`, `name` FROM `people` "
@@ -349,7 +353,7 @@ aangeraden dat alle arrays een basisindex van 0 hebben.
 Wanneer men een geïndexeerde array definieert met het *array* concept moet er een spatie worden ingevoegd na elke
 komma afbakening om de leesbaarheid te verbeteren:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sampleArray = array(1, 2, 3, 'Zend', 'Studio');
@@ -358,7 +362,7 @@ komma afbakening om de leesbaarheid te verbeteren:
 Het is ook toegelaten om een geïndexeerde array op meerdere regels te definieren. In dat geval moet elke
 opeenvolgende regel met spaties worden opgevuld zodanig dat het begin van elke regel als volgt is uitgelijnd:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sampleArray = array(1, 2, 3, 'Zend', 'Studio',
@@ -375,7 +379,7 @@ Wanneer men associatieve arrays met het *array* concept definieert is het aanger
 regels op te breken. In dat geval moet elke opeenvolgende regel met spaties worden opgevuld zodat de indexen (keys)
 en waarden (values) uitgelijnd zijn:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sampleArray = array('firstKey'  => 'firstValue',
@@ -407,7 +411,7 @@ bijkomende code met twee lege regels worden gescheiden van de klassecode.
 
 Dit is een voorbeeld van een aanvaardbare klasseverklaring:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -457,7 +461,7 @@ Functies in het globale bereik zijn zeer sterk afgeraden.
 
 Dit is een voorbeeld van een aanvaardbare verklaring van een functie in een klasse:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /*
@@ -472,7 +476,7 @@ Dit is een voorbeeld van een aanvaardbare verklaring van een functie in een klas
 
 **NOTA:** Doorgeven per verwijzing (pass by reference) is alleen toegestaan in de functieverklaring:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       function sampleMethod(&$a)
@@ -484,7 +488,7 @@ Call-time pass by reference is verboden.
 De terugkeerwaarde mag niet tussen haakjes worden ingesloten. Dat kan de leesbaarheid hinderen en kan ook de code
 breken indien een methode later wordt veranderd om per verwijzing terug te sturen.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       function foo()
@@ -505,7 +509,7 @@ Functie- en Methodegebruik
 Functie-argumenten worden gescheiden door één enkele spatie na de komma afbakening. Dit is een voorbeeld van een
 aanvaardbare functie-aanroep voor een functie die drie argumenten heeft:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       threeArguments(1, 2, 3);
@@ -518,7 +522,7 @@ Voor functies welke arrays als argument aanvaardden mag de functieaanroep het "a
 in meerdere regels worden opgesplitst om de leesbaarheid te vergroten. In deze gevallen blijven de regels voor het
 schrijven van arrays van kracht:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       threeArguments(array(1, 2, 3), 2, 3);
@@ -548,7 +552,7 @@ De openingsaccolade wordt op dezelfde regel als de voorwaardeverklaring geschrev
 altijd op een alleenstaande regel geschreven. Alle inhoud binnenin de accolades moet steeds met vier spaties
 geïndenteerd worden.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       if ($a != 2) {
@@ -558,7 +562,7 @@ geïndenteerd worden.
 
 Voor "if" verklaringen die "else if" of "else" inhouden moet de vorm zoals in de volgende voorbeelden zijn:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       if ($a != 2) {
@@ -591,7 +595,7 @@ voorwaardeverklaring hebben, en een enkele spatie na de sluitende haakjes.
 Alle inhoud binnen een "switch" verklaring moet met vier spaties geïndenteerd worden. Inhoud onder elke "case"
 moet geïndenteerd worden met vier extra spaties.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    switch ($numPeople) {
@@ -636,7 +640,7 @@ Bestanden
 Elk bestand dat PHP code bevat moet een hoofdblok aan het begin van het bestand bevatten dat minstens de volgende
 phpDocumentor gegevens bevat:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -660,7 +664,7 @@ Klassen
 
 Elke klasse moet een docblock bevatten dat minstens de volgende phpDocumentor gegevens bevat:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -697,7 +701,7 @@ Het is niet nodig om de "@access" tags te gebruiken want de zichtbaarheid is ree
 
 Indien een functie of methode een exception mag teruggeven, gebruik @throws:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       @throws exceptionClass [beschrijving]

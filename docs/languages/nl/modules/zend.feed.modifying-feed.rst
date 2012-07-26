@@ -9,7 +9,7 @@ bestand op te slaan of naar een server te sturen.
 
 .. rubric:: Wijzigen van een bestaande Feed Entry
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -37,7 +37,7 @@ standaard namespace gaan als je niet uitdrukkelijk een andere namespace toewijst
 
 .. rubric:: Een Atom Entry met elementen van een aangepaste namespace
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

@@ -11,8 +11,9 @@ sono PLAIN, LOGIN e CRAM-MD5, che necessitano dei valori di 'username' e 'passwo
 
 .. rubric:: Abilitazione dell'autenticazione in Zend_Mail_Transport_Smtp
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    require_once 'Zend/Mail/Transport/Smtp.php';

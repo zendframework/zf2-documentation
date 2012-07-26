@@ -10,7 +10,7 @@ worden door meer parameters aan *addAttachment()* door te geven:
 
 .. rubric:: E-mails met bijlagen
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php
@@ -24,7 +24,7 @@ Als je meer controle wil over het MIME deel dat voor deze bijlage word gemaakt k
 *addAttachment()* wordt teruggegeven gebruiken om zijn attributen te veranderen. De *addAttachment* geeft een
 *Zend_Mime_Part* object terug:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

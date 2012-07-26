@@ -23,7 +23,7 @@
 כותרת בכל שלב במערכת: אתר, קונטרולר, מתודה ולפעמים גם דברים
 נוספים.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
     // setting the controller and action name as title segments:
@@ -41,7 +41,7 @@
 ברגע שהינך מוכן להציג את הכותרת בתבנית התצוגה, פשוט יש להדפיס
 את התוסף:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <!-- renders <action> / <controller> / Zend Framework -->

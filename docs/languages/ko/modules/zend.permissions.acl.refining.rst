@@ -27,8 +27,9 @@
 동일한 기본 권한을 가지는 'marketing'그룹을 만들기로 했으므로, 'marketing'그룹을
 만들고, 'staff'그룹으로 부터 권한을 상속받습니다:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 새로운 marketing그룹은 staff그룹으로부터 권한을 상속받습니다
    $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('marketing'), 'staff');
@@ -37,8 +38,9 @@
 한정되는 것에 주의하시기 바랍니다. 이제 우리는 다음과 같이 이들 자원을
 추가합니다:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // 규칙을 적용할 자원을 만듭니다
    $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('newsletter'));           // newsletter
@@ -48,8 +50,9 @@
 
 그러면, 이들에게 ACL의 해당 범위에 특정 규칙들을 정의하는 문제는 간단합니다:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Marketing그룹은 뉴스레터 및 최신 뉴스를 발행, 보존할 수 없으면 안됩니다
    $acl->allow('marketing', array('newsletter', 'latest'), array('publish', 'archive'));
@@ -62,8 +65,9 @@
 
 이것으로, 이제 최신 변경 내용을 반영한 ACL에 질의할 수 있습니다:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    echo $acl->isAllowed('staff', 'newsletter', 'publish') ?
         "allowed" : "denied"; // denied
@@ -98,8 +102,9 @@ ACL로부터 하나 또는 복수의 접근 규칙을 삭제하려면, *removeAl
 메소드를 사용합니다. *allow()* 및 *deny()*\ 와 같이, null값을 지정하면 모든 롤이나 자원,
 권한을 나타내게 됩니다:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // staff(그리고 상속에 의한 marketing)그룹으로부터 최신 뉴스의 수정 거부를 삭제합니다
    $acl->removeDeny('staff', 'latest', 'revise');
@@ -119,8 +124,9 @@ ACL로부터 하나 또는 복수의 접근 규칙을 삭제하려면, *removeAl
 위에서 설명한 것처럼, 서서히 권한을 변경해 나갈 수도 있습니다만, 권한에 대해서
 *null* 값을 설정하면, 이러한 변경을 일괄적으로 수행할 수 있습니다.
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // marketing그룹에 대해 최신 뉴스의 모든 권한을 허가합니다
    $acl->allow('marketing', 'latest');

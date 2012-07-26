@@ -17,7 +17,7 @@
 适配器类的其中之一，但如果配置数据在PHP数组里可用，为了使用一个简单的面向对象的接口，可以简单地传递数据到
 *Zend_Config*\ 构造器：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 给出一个配置数据的数组
@@ -55,7 +55,7 @@
 连同面向对象访问数据值， *Zend_Config*\ 也有 *get()*\
 方法，如果数据元素不存在，它将返回提供的缺省值，例如：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $host = $config->database->get('host', 'localhost');
@@ -68,7 +68,7 @@
 It is often desirable to use a pure PHP-based configuration file. The following code illustrates how easily this
 can be accomplished:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // config.php
@@ -86,7 +86,7 @@ can be accomplished:
    );
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Configuration consumption

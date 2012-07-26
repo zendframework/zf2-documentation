@@ -23,7 +23,7 @@
 
 .. rubric:: פרופילינג מסד נתונים בעזרת *Zend_Controller_Front*
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // In your bootstrap file
@@ -44,7 +44,7 @@
 
 .. rubric:: פרופילינג מסד נתונים ללא שימוש ב *Zend_Controller_Front*
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $profiler = new Zend_Db_Profiler_Firebug('All DB Queries');

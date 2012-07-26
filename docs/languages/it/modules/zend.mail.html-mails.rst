@@ -12,8 +12,9 @@ MIME:
 
 .. rubric:: Invio di e-mail HTML
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    require_once 'Zend/Mail.php';
    $mail = new Zend_Mail();

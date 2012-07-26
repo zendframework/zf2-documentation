@@ -5,7 +5,7 @@ RSS Feed的使用
 
 用一个 *Zend_Feed_Rss*\ 对象实例和一个Feed的URL来读取一个RSS Feed再简单不过了:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $channel = new Zend_Feed_Rss('http://rss.example.com/channelName');
@@ -16,7 +16,7 @@ RSS Feed的使用
 一旦你获得一个Feed对象，那么你就能在这个对象上直接访问任何RSS
 标准定义的channel属性:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    echo $channel->title();?>
@@ -28,7 +28,7 @@ RSS Feed的使用
 
 如果RSS的channel有属性，那么可以用访问 PHP 数组的语法获得他们:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    echo $channel->category['domain'];?>
@@ -39,7 +39,7 @@ RSS Feed的使用
 最常用的是您可以通过循环遍历Feed的条目来作些事情。 *Zend_Feed_Abstract* 实现的是PHP
 的Iterator接口，因此要打印channel中的文章标题可以像下面这样:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
 
@@ -99,7 +99,7 @@ RSS 的 *<item>* 组成没有严格的要求。但是 *title* 或 *description*\
 
 在你的代码中，一个非空元素总是被能测到:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    if ($item->propname()) {

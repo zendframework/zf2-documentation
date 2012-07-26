@@ -7,7 +7,7 @@
 :ref:`introduction <zend.validate.introduction>`\
 中的例子的要求，即用户名必须在6到12个字符的文字数字组合：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       // Create a validator chain and add validators to it
@@ -35,7 +35,7 @@
 ，如果校验失败，校验器将中断校验器链执行，这样就避免了在这个情形下运行其他已经被决定是不必要的或不适当的校验。如果上面的例子被写成如下，如果字串长度校验失败，文字数字组合校验就不会发生：
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validatorChain->addValidator(new Zend_Validate_StringLength(6, 12), true)

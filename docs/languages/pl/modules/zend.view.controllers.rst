@@ -14,7 +14,7 @@ Przekazywanie zmiennych
 Twój skrypt kontrolera powinien przypisać potrzebne zmienne do instancji widoku, zanim przekaże kontrolę do
 skryptu widoku. Możesz to zrobić przypisując zmienne do zmiennych instancji widoku:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View();
@@ -28,7 +28,7 @@ Jednak mogłoby być niewygodnie gdy zmienne, które masz przekazać są zebrane
 Metoda assign() pozwala na automatyczne przypisanie wszystkich zmiennych z tablicy lub obiektu. Poniższe
 przykłady dają taki sam efekt jak poprzedni przykład, w którym zmienne były przypisywane pojedynczo:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View();
@@ -56,7 +56,7 @@ przykłady dają taki sam efekt jak poprzedni przykład, w którym zmienne były
 Oczywiście możesz także przypisywać zmienne jedna po drugiej, przekazując nazwę zmiennej jako łańcuch
 znaków, a potem wartość zmiennej:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View();
@@ -75,7 +75,7 @@ wykonaniu konkretnego skryptu widoku. Zrób to wywołując metodę render(). Zau
 wygenerowany widok zamiast wyświetlając go, więc musisz sam go wyświetlić za pomocą funkcji echo() lub
 print().
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View();
@@ -97,7 +97,7 @@ $view->render('someView.php'), to Zend_View będzie szukać pliku "/path/to/app/
 Oczywiście, Twoje skrypty są pewnie umieszczone gdzieś indziej. Aby poinformować Zend_View o tym, gdzie ma
 szukać skryptów, użyj metody setScriptPath().
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View();
@@ -112,7 +112,7 @@ Zend_View będzie szukać skryptu widoku począwszy od ostatnio dodanej ścieżk
 domyślnych widoków za pomocą innych widoków, dzięki czemu możesz tworzyć różne "motywy" czy "skórki" dla
 niektórych widoków, zostawiając inne bez zmian.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $view = new Zend_View();

@@ -12,7 +12,7 @@
 
 .. rubric:: הוספת כותרים להודעות אימייל
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $mail = new Zend_Mail();

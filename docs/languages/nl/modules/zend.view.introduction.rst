@@ -22,8 +22,9 @@ Controller Script
 Als een eenvoudig voorbeeld, laat ons zeggen dat je controller een lijst van boekdata heeft dat het door een view
 wil hebben weergegeven. Het controller script zou als volgt kunnen zijn:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // gebruik een model om data voor auteurs en titels van boeken te verkrijgen
    $data = array(
@@ -61,8 +62,9 @@ naar de eigenschappen en methodes van de Zend_View instantie verwijzen. (Variabe
 toegwezen door de controller zijn publieke eigenschappen van de Zend_View instantie.) Zodoende zou een zeer
 eenvoudig script er als volgt kunnen uitzien:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php if ($this->books): ?>
 
        <!-- Een tabel van enige boeken. -->

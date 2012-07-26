@@ -47,7 +47,7 @@ stałych *const*, które odpowiadają identyfikatorom komunikatów o nieudanej w
 
 Poniższy przykład pokazuje weryfikację adresu e-mail:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_EmailAddress();
@@ -86,7 +86,7 @@ błędu, więc nie ma potrzeby dokładnego określania szablonu komunikatu, któ
 
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_StringLength(8);
@@ -110,7 +110,7 @@ błędu, więc nie ma potrzeby dokładnego określania szablonu komunikatu, któ
 Możesz ustawić wiele komunikatów na raz używając metody *setMessages()*. Jej argumentem jest tablica
 zawierająca pary klucz/komunikat.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_StringLength(8, 12);
@@ -131,7 +131,7 @@ klasę weryfikatora. Właściwość *value* jest zawsze dostępna w weryfikatorz
 została podana jako argument metody *isValid()*. Inne właściwości mogą być obsługiwane indywidualnie w
 każdej klasie weryfikatora.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $validator = new Zend_Validate_StringLength(8, 12);
@@ -160,7 +160,7 @@ dane wejściowe, które chcesz przekazać do metody *isValid()*. Drugi argument 
 odpowiada, bazowej nazwie klasy weryfikatora, relatywnie do przestrzeni nazw *Zend_Validate*. Metoda *is()*
 automatycznie ładuje klasę, tworzy instancję i wywołuje metodę *isValid()* na danych wejściowych.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       if (Zend_Validate::is($email, 'EmailAddress')) {
@@ -172,7 +172,7 @@ automatycznie ładuje klasę, tworzy instancję i wywołuje metodę *isValid()* 
 
 Możesz także przekazać tablicę argumentów konstruktora, jeśli są one potrzebne w klasie weryfikatora.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       if (Zend_Validate::is($value, 'Between', array(1, 12))) {

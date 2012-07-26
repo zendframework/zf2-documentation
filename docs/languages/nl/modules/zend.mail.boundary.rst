@@ -9,7 +9,7 @@ moet worden. Dat kan gedaan worden met de *setMimeBoundary()* methode, zoals in 
 
 .. rubric:: De MIME Boundary veranderen
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php

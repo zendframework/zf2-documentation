@@ -19,7 +19,7 @@
 *Zend_Cache::factory()* 实例化正确的对象并把他们捆绑到一起. 在这第一个例子中我们将把
 *Core* 前端和 *File* 后端一起使用.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $frontendOptions = array(
@@ -51,7 +51,7 @@
 
 现在有了一个前端,可用缓存任何类型的数据了(开了序列化'serialization').例如,能够缓存从昂贵的数据库查询中缓存一个结果.结果被缓存后,不再需要连接到数据库;数据直接在缓存中取回和反序列化.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // $cache 在先前的例子中已经初始化了
@@ -89,7 +89,7 @@
 在内部,像往常一样输出你的数据,当执行到 *end()*\
 方法时,所有之前的输出都被缓存.在下一次运行时,整个段(end()方法调用前的代码)将被跳过执行,直接从Cache中取回数据(只要缓存纪录是有效的).
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $frontendOptions = array(

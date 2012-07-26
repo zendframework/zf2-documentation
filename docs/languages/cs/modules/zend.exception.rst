@@ -9,8 +9,9 @@ Všechny výjimky vyhozené v Zend Frameworku by měly být odvozeny od hlavní 
 
 .. rubric:: Příklad zachycení výjimky
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    try {
        Zend_Loader::loadClass('neexistujicitrida');

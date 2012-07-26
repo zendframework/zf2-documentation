@@ -21,7 +21,7 @@ wymagane; jeśli moduł nie zostanie określony, przyjęty zostanie moduł domy�
 Przykładem może być kontroler *CommentController* zawierający akcję *listAction()*, którą chcesz wywołać
 aby pobrać dla obecnego żądania listę komentarzy:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <div id="sidebar right">

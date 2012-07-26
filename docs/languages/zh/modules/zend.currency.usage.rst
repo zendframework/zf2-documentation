@@ -15,7 +15,7 @@
 设置作为实际地方，通过使用不带参数创建 *Zend_Currency*\ 的实例从地方 'en_US'
 来使用实际货币，这导致带美元实例作为带有'en_US'格式规则的实际货币。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $currency = new Zend_Currency();
@@ -25,7 +25,7 @@
 也支持程序范围的地方的用法。你可以简单地如下设置 *Zend_Locale* 实例到注册表。
 如果你想多次使用同一地方，用这个符号你不需要记住对每个实例手工设置地方。
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // in your bootstrap file
@@ -65,7 +65,7 @@
 
 .. rubric:: 创建 Zend_Currency 实例的其它例子
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // expect standard locale 'de_AT'
@@ -110,7 +110,7 @@
 
 .. rubric:: 为货币创建输出
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // creates an instance with 'en_US' using 'USD' which is the default
@@ -216,7 +216,7 @@
 
 .. rubric:: 修改货币的显示格式
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // creates an instance with 'en_US' using 'USD', 'Latin' and 'en_US' as
@@ -273,7 +273,7 @@ EUR 是欧元，USD 是美元。第二个参数定义从哪个地方（ locale
 
 .. rubric:: 从货币中获取信息
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // creates an instance with 'en_US' using 'USD', 'Latin' and 'en_US'
@@ -309,7 +309,7 @@ EUR 是欧元，USD 是美元。第二个参数定义从哪个地方（ locale
 
 .. rubric:: 设置新地方
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 获得 US 货币
@@ -334,7 +334,7 @@ EUR 是欧元，USD 是美元。第二个参数定义从哪个地方（ locale
 
 .. rubric:: 缓存货币
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // 创建一个缓存对象

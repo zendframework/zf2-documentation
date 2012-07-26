@@ -35,7 +35,7 @@ Penerapan aturan kondisional seperti ini (atau assertion) dilakukan dengan mengg
 Untuk menggunakan interface ini, developer harus membuat sebuah class terlebih dahulu yang mengimplementasikan
 method *assert()* dari interface tersebut:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    class CleanIPAssertion implements Zend\Permissions\Acl\Assert\AssertInterface
@@ -62,7 +62,7 @@ Setelah class assertion ini siap, anda tinggal menambahkan instance class terseb
 Aturan yang disertai class assertion seperti ini hanya berlaku jika class assertion mengeluarkan nilai *true*
 (benar).
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $acl = new Zend\Permissions\Acl\Acl();

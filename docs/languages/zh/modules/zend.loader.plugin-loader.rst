@@ -19,7 +19,7 @@ LIFO 顺序来搜索。由于 LIFO
 
 首先，假定下面的目录结构和类文件，并且根（toplevel）目录和库目录在 include_path 中：
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    application/
@@ -43,8 +43,9 @@ LIFO 顺序来搜索。由于 LIFO
 
 现在，创建一个插件加载器来使各种各样的视图助手仓库可用：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $loader = new Zend_Loader_PluginLoader();
    $loader->addPrefixPath('Zend_View_Helper', 'Zend/View/Helper/')
@@ -53,8 +54,9 @@ LIFO 顺序来搜索。由于 LIFO
    ?>
 接着用类名中添加路径时定义的前缀后面的部分来加载一个给定的视图助手：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // load 'FormText' helper:
    $formTextClass = $loader->load('FormText'); // 'Zend_View_Helper_FormText';
@@ -80,8 +82,9 @@ LIFO 顺序来搜索。由于 LIFO
 
    你可以提供给构造器一个可选的“前缀/路径”对（或“前缀/多个路径”）数组参数：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       $loader = new Zend_Loader_PluginLoader(array(
           'Zend_View_Helper' => 'Zend/View/Helper/',
@@ -92,8 +95,9 @@ LIFO 顺序来搜索。由于 LIFO
 *Zend_Loader_PluginLoader*
 在不需要使用单态实例的情况下，也可选地允许共享插件，这是通过静态注册表来完成的，在实例化时需要注册表名作为构造器的第二个参数：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Store plugins in static registry 'foobar':
    $loader = new Zend_Loader_PluginLoader(array(), 'foobar');
@@ -130,8 +134,9 @@ LIFO 顺序来搜索。由于 LIFO
 *PluginLoader* 的另一个普通用例是确定已加载类的完全合格的插件类名， *getClassName()*
 提供该功能。一般地，这个和 *isLoaded()* 联合使用：
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    if ($loader->isLoaded('Adapter')) {
        $class   = $loader->getClassName('Adapter');

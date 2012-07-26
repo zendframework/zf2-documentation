@@ -25,7 +25,7 @@ poprzez dodanie za nazwą sekcji znaku dwukropka (*:*) oraz nazwy sekcji, z któ
    Domyślnie separatorem kluczy jest znak kropki (*.*). Może on być jednak zmieniony przez zmianę klucza
    *'nestSeparator'* z tablicy *$options* podczas tworzenia obiektu *Zend_Config_Ini*. Na przykład:
 
-      .. code-block::
+      .. code-block:: php
          :linenos:
 
          $options['nestSeparator'] = ':';
@@ -48,7 +48,7 @@ decyzja jest dowolna i mogłoby to być zrobione odwrotnie, z sekcją systemu pr
 sekcji systemu rozbudowywanego, chociaż nie może to być przykładem dla bardziej złożonych sytuacji.
 Załóżmy, że poniższe dane konfiguracyjne znajdują się w pliku */path/to/config.ini*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ; Podstawowe dane konfiguracyjne
@@ -72,7 +72,7 @@ Następnie załóżmy, że programista aplikacji potrzebuje danych konfiguracyjn
 pliku INI. Prostą  sprawą jest załadowanie tych danych określając plik INI oraz sekcję dla aplikacji
 rozbudowywanej:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $config = new Zend_Config_Ini('/path/to/config.ini', 'staging');

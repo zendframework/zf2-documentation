@@ -37,8 +37,9 @@ Zend_Validate
 
 下面的例子示例一个e-mail地址的校验：
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       require_once 'Zend/Validate/EmailAddress.php';
 
@@ -74,8 +75,9 @@ Zend_Validate
 
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       require_once 'Zend/Validate/StringLength.php';
 
@@ -97,8 +99,9 @@ Zend_Validate
 
 你可以用 *setMessages()*\ 方法设置多个消息。它的参数是一个包含key/message对的数组。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       require_once 'Zend/Validate/StringLength.php';
 
@@ -116,8 +119,9 @@ Zend_Validate
 *value*\ 属性在校验器中总是有效；它是一个你指定作为 *isValid()*\
 的参数的值。其他属性按照情况在每个校验类中被支持。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       require_once 'Zend/Validate/StringLength.php';
 
@@ -148,8 +152,9 @@ Zend_Validate
 名字空间相关。 *is()*\ 方法自动加载这个类，创建一个实例，并应用 *isValid()*\
 方法到数据输入。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       require_once 'Zend/Validate.php';
 
@@ -162,8 +167,9 @@ Zend_Validate
 
 如果校验器需要，你也可以传递一个构造器参数的数组。
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       require_once 'Zend/Validate.php';
 

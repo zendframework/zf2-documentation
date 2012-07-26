@@ -15,7 +15,7 @@ Rozmiar strony może być pobrany z obiektu strony:
 
 
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $width  = $pdfPage->getWidth();
@@ -33,7 +33,7 @@ PDF ma bardzo rozbudowane możliwości reprezentowania kolorów. Zend_Pdf wspier
 Każda z nich może być użyta wszędzie, gdzie jest wymagany obiekt *Zend_Pdf_Color*. Klasy
 *Zend_Pdf_Color_GrayScale*, *Zend_Pdf_Color_Rgb* oraz *Zend_Pdf_Color_Cmyk* zapewniają taką funkcjonalność:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // $grayLevel (liczba zmiennoprzecinkowa)
@@ -51,7 +51,7 @@ Każda z nich może być użyta wszędzie, gdzie jest wymagany obiekt *Zend_Pdf_
 
 HTML style colors are also provided with *Zend_Pdf_Color_Html* class:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $color1 = new Zend_Pdf_Color_Html('#3366FF');
@@ -68,7 +68,7 @@ Wszystkie operacje rysowania mogą być przeprowadzone w kontekście strony PDF.
 
 Klasa *Zend_Pdf_Page* zapewnia zestaw podstawowych operacji rysowania:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -82,7 +82,7 @@ Klasa *Zend_Pdf_Page* zapewnia zestaw podstawowych operacji rysowania:
    public function drawLine($x1, $y1, $x2, $y2);
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -104,7 +104,7 @@ Klasa *Zend_Pdf_Page* zapewnia zestaw podstawowych operacji rysowania:
                        $fillType = Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE);
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -127,7 +127,7 @@ Klasa *Zend_Pdf_Page* zapewnia zestaw podstawowych operacji rysowania:
                                    Zend_Pdf_Page::FILL_METHOD_NON_ZERO_WINDING);
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -164,7 +164,7 @@ Klasa *Zend_Pdf_Page* zapewnia zestaw podstawowych operacji rysowania:
                                $param6 = null);
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -198,7 +198,7 @@ Operacje wypisywania tekstu także są przeprowadzone w kontekście strony PDF M
 tekstu w dowolnym miejscu na stronie podając współrzędne x oraz y linii bazowej. W operacjach wypisywania
 tekstu używana jest czcionka o aktualnie ustawionym kroju oraz rozmiarze (zobacz poniżej szczegółowy opis).
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -218,7 +218,7 @@ tekstu używana jest czcionka o aktualnie ustawionym kroju oraz rozmiarze (zobac
 
 .. rubric:: Wypisywanie tekstu na stronie
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -236,7 +236,7 @@ kodowanie znaków podczas wypisywania tekstu i Zend_Pdf przeprowadzi dla ciebie 
 
 .. rubric:: Wypisywanie tekstu zakodowanego w UTF-8 na stronie
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -256,7 +256,7 @@ Użycie czcionek
 Metoda *Zend_Pdf_Page::drawText()* używa bieżącego kroju oraz rozmiaru czcionki dla strony, które ustawia się
 za pomocą metody *Zend_Pdf_Page::setFont()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -280,7 +280,7 @@ dla 14 standardowych czcionek PDF lub *Zend_Pdf_Font::fontWithPath($filePath)* d
 
 .. rubric:: Tworzenie standardowej czcionki
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -336,7 +336,7 @@ może on być odczytany, lub nie jest to czcionka TrueType, metoda fabryki wyrzu
 
 .. rubric:: Tworzenie czcionki TrueType
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -357,7 +357,7 @@ osadzaj' do metody fabryki:
 
 .. rubric:: Tworzenie czcionki TrueType, ale bez osadzania jej w dokumencie PDF.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -385,7 +385,7 @@ prosty sposób zignorować wyjątek:
 
 .. rubric:: Nie wyrzucanie wyjątku dla czcionek które nie mogą być osadzone.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -407,7 +407,7 @@ Jeśli z jakiegoś powodu nie chcesz kompresować plików czcionek, możesz to z
 
 .. rubric:: Nie kompresowanie osadzonych czcionek.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -422,7 +422,7 @@ Ostatecznie, jeśli potrzebujesz, możesz łączyć opcje osadzania czcionek uż
 
 .. rubric:: Łączenie opcji osadzania czcionki.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -450,7 +450,7 @@ lub stronie:
 
 .. rubric:: Wyciąganie czcionek z załadowanego dokumentu.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -478,7 +478,7 @@ lub stronie:
 
 .. rubric:: Wyciąganie czcionki z załadowanego dokumentu określając jej nazwę.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -499,7 +499,7 @@ lub stronie:
    ...
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -524,7 +524,7 @@ Wyciągnięte czcionki mogą być użyte w miejscu dowolnej innej czcionki z nas
    - Osadzona czcionka nie jest wyciągnięta. Wyciągnięta czcionka nie może być użyta do obliczenia
      poprawnych rozmiarów więc do tych obliczeń powinna być użyta oryginalna czcionka.
 
-        .. code-block::
+        .. code-block:: php
            :linenos:
 
            ...
@@ -556,7 +556,7 @@ Wstawianie obrazów
 
 Klasa *Zend_Pdf_Page*\ zapewnia metodę drawImage() do wstawiania obrazów:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -578,7 +578,7 @@ obsługiwane są obrazy JPG, PNG oraz TIFF):
 
 .. rubric:: Wstawianie obrazów
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    ...
@@ -603,7 +603,7 @@ Styl rysowania linii
 Styl rysowania linii jest zdefiniowany przez grubość, kolor linii oraz ozdobny wzór linii. Wszystkie te
 parametry mogą być zdefiniowane za pomocą metod klasy *Zend_Pdf_Page*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /** Ustaw kolor linii. */
@@ -685,7 +685,7 @@ Obracanie
 Strony PDF mogą być obracane zanim zostaną wykonane jakiekolwiek operacje rysowania. Może być to zrobione za
 pomocą metody *Zend_Pdf_Page::rotate()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -707,7 +707,7 @@ stanu grafiki, operacja przywrócenia przywraca je ze stosu.
 
 Są dwie metody w klasie *Zend_Pdf_Page* do tych operacji:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -735,7 +735,7 @@ strony, na który wpływają operacje rysowania. Na początku jest to cała stro
 
 Klasa *Zend_Pdf_Page* zapewnia zestaw metod dla operacji przycinania.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -749,7 +749,7 @@ Klasa *Zend_Pdf_Page* zapewnia zestaw metod dla operacji przycinania.
    public function clipRectangle($x1, $y1, $x2, $y2);
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -765,7 +765,7 @@ Klasa *Zend_Pdf_Page* zapewnia zestaw metod dla operacji przycinania.
                                     Zend_Pdf_Page::FILL_METHOD_NON_ZERO_WINDING);
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -784,7 +784,7 @@ Klasa *Zend_Pdf_Page* zapewnia zestaw metod dla operacji przycinania.
                               $endAngle = null);
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -821,7 +821,7 @@ Klasa *Zend_Pdf_Style* zapewnia funkcjonalność styli.
 Styles mogą być użyte w celu przechowania zestawu parametrów stanu grafiki i następnie zastosowania go na
 stronie PDF za pomocą jednej operacji:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -841,7 +841,7 @@ stronie PDF za pomocą jednej operacji:
 
 Klasa *Zend_Pdf_Style* zapewnia zestaw metod do ustawiania oraz pobierania różnych parametrów stanu grafiki:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -852,7 +852,7 @@ Klasa *Zend_Pdf_Style* zapewnia zestaw metod do ustawiania oraz pobierania róż
    public function setLineColor(Zend_Pdf_Color $color);
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -863,7 +863,7 @@ Klasa *Zend_Pdf_Style* zapewnia zestaw metod do ustawiania oraz pobierania róż
    public function getLineColor();
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -874,7 +874,7 @@ Klasa *Zend_Pdf_Style* zapewnia zestaw metod do ustawiania oraz pobierania róż
    public function setLineWidth($width);
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -885,7 +885,7 @@ Klasa *Zend_Pdf_Style* zapewnia zestaw metod do ustawiania oraz pobierania róż
    public function getLineWidth();
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -897,7 +897,7 @@ Klasa *Zend_Pdf_Style* zapewnia zestaw metod do ustawiania oraz pobierania róż
    public function setLineDashingPattern($pattern, $phase = 0);
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -908,7 +908,7 @@ Klasa *Zend_Pdf_Style* zapewnia zestaw metod do ustawiania oraz pobierania róż
    public function getLineDashingPattern();
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -919,7 +919,7 @@ Klasa *Zend_Pdf_Style* zapewnia zestaw metod do ustawiania oraz pobierania róż
    public function getLineDashingPhase();
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -930,7 +930,7 @@ Klasa *Zend_Pdf_Style* zapewnia zestaw metod do ustawiania oraz pobierania róż
    public function setFillColor(Zend_Pdf_Color $color);
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -941,7 +941,7 @@ Klasa *Zend_Pdf_Style* zapewnia zestaw metod do ustawiania oraz pobierania róż
    public function getFillColor();
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -953,7 +953,7 @@ Klasa *Zend_Pdf_Style* zapewnia zestaw metod do ustawiania oraz pobierania róż
    public function setFont(Zend_Pdf_Resource_Font $font, $fontSize);
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -964,7 +964,7 @@ Klasa *Zend_Pdf_Style* zapewnia zestaw metod do ustawiania oraz pobierania róż
    public function setFontSize($fontSize);
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -975,7 +975,7 @@ Klasa *Zend_Pdf_Style* zapewnia zestaw metod do ustawiania oraz pobierania róż
    public function getFont();
 
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    /**
@@ -995,7 +995,7 @@ Moduł *Zend_Pdf* pozwala na obsługę przezroczystości.
 
 Przezroczystość może być ustawiona za pomocą metody *Zend_Pdf_Page::setAlpha()*:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**

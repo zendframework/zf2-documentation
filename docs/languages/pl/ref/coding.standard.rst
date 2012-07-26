@@ -135,7 +135,7 @@ Nazwa każdego pliku zawierającego jakikolwiek kod PHP powinna być zakończona
 to skryptów widoków. Poniższe przykłady pokazują akceptowalne nazwy plików zawierających klasy Zend
 Framework:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       Zend/Db.php
@@ -164,7 +164,7 @@ pełni opisać ich zachowanie i zastosowanie.
 
 Oto przykłady akceptowalnych nazw funkcji:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       filterInput()
@@ -236,7 +236,7 @@ Odgraniczanie kodu PHP
 
 Kod PHP musi być zawsze odgraniczony za pomocą pełnych, standardowych znaczników PHP:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       <?php
@@ -262,7 +262,7 @@ Proste łańcuchy znaków
 Kiedy łańcuch znaków jest prosty (nie zawiera podstawienia zmiennych), do jego odgraniczenia powinien zostać
 użyty pojedynczy cudzysłów (apostrof):
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $a = 'Example String';
@@ -278,7 +278,7 @@ Proste łańcuchy znaków zawierające apostrofy
 Kiedy prosty łańcuch znaków zawiera wewnątrz apostrofy, dozwolone jest odgraniczenie łańcucha za pomocą
 cudzysłowów (podwójnych). Jest to szczególnie przydatne w wyrażeniach SQL:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sql = "SELECT `id`, `name` from `people` WHERE `name`='Fred' OR `name`='Susan'";
@@ -293,7 +293,7 @@ Podstawienia zmiennych
 
 Podstawienia zmiennych są dozwolone na dwa sposoby:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $greeting = "Hello $name, welcome back!";
@@ -305,7 +305,7 @@ Podstawienia zmiennych są dozwolone na dwa sposoby:
 
 Dla zachowania spójności, taka forma jest niedozwolona:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $greeting = "Hello ${name}, welcome back!";
@@ -321,7 +321,7 @@ Dla zachowania spójności, taka forma jest niedozwolona:
 Łańcuchy znaków mogą być łączone za pomocą operatora ".". Przed i za znakiem "." zawsze powinniśmy dodać
 znak odstępu:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $company = 'Zend' . 'Technologies';
@@ -333,7 +333,7 @@ Kiedy łączymy łańcuchy znaków za pomocą operatora ".", zalecane jest podzi
 celu zwiększenia czytelności. W takich przypadkach, każda linia powinna być wcięta za pomocą znaków odstępu
 aby wszystkie operatory "." leżały w jednej linii pod znakiem "=":
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sql = "SELECT `id`, `name` FROM `people` "
@@ -361,7 +361,7 @@ odradzane.
 Kiedy deklarujesz indeksowaną numerycznie tablicę za pomocą funkcji *array*, powinieneś dodać znak odstępu po
 każdym przecinku w celu zwiększenia czytelności:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sampleArray = array(1, 2, 3, 'Zend', 'Studio');
@@ -373,7 +373,7 @@ Dozwolone jest deklarowanie tablic indeksowanych numerycznie w wielu wierszach u
 takim przypadku, każdy następny wiersz musi być dopełniony, znakami odstępu aby początki wierszy były
 wyrównane:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sampleArray = array(1, 2, 3, 'Zend', 'Studio',
@@ -392,7 +392,7 @@ Kiedy deklarujesz tablice asocjacyjne za pomocą konstrukcji *array* zalecane je
 wierszy. W takim przypadku każdy następny wiersz powinien być dopełniony znakami odstępu, aby klucze i
 wartości były wyrównane:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $sampleArray = array('firstKey'  => 'firstValue',
@@ -426,7 +426,7 @@ oddzielać kod klasy od dodatkowego kodu PHP w pliku.
 
 Oto przykład poprawnej deklaracji klasy:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -476,7 +476,7 @@ Deklarowanie funkcji w przestrzeni globalnej jest odradzane.
 
 Oto przykład poprawnej deklaracji funkcji w klasie:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -499,7 +499,7 @@ Oto przykład poprawnej deklaracji funkcji w klasie:
 
 **UWAGA:** Przekazywanie przez referencję dozwolone jest tylko podczas deklaracji funkcji:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -522,7 +522,7 @@ Przekazywanie przez referencję podczas wywołania jest zabronione.
 Zwracana wartość nie może być objęta cudzysłowami. To mogłoby zmniejszyć czytelność kodu i może
 spowodować, że przestanie on działać, jeśli metoda w przyszłości będzie zwracać referencję.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -558,7 +558,7 @@ Użycie funkcji oraz metod
 Argumenty funkcji powinny być oddzielone jednym znakiem odstępu po przecinku. To jest przykład poprawnego
 wywołania funkcji przyjmującej trzy argumenty:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       threeArguments(1, 2, 3);
@@ -572,7 +572,7 @@ funkcji, aby poznać prawidłowy sposób przekazywania argumentów przez referen
 Funkcje które przyjmują tablice jako argumenty, mogą zawierać konstrukcję "array" i mogą być rozdzielone na
 wiele linii w celu zwiększenia czytelności. W tych przypadkach wciąż obowiązuje standard dla tablic:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       threeArguments(array(1, 2, 3), 2, 3);
@@ -604,7 +604,7 @@ Klamrowy nawias otwierający powinien znajdować się w tej samej linii co warun
 powinien znajdować się w osobnej nowej linii. Zawartość znajdująca się między nawiasami klamrowymi musi być
 wcięta za pomocą czterech znaków odstępu.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       if ($a != 2) {
@@ -617,7 +617,7 @@ wcięta za pomocą czterech znaków odstępu.
 Formatowanie instrukcji "if", które zawierają instrukcję "elseif" lub "else", powinno wyglądać tak jak w
 poniższym przykładzie:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       if ($a != 2) {
@@ -652,7 +652,7 @@ przed nawiasem jak i za nim.
 Cała zawartość wewnątrz instrukcji "switch" musi być wcięta na cztery spacje. Zawartość każdej instrukcji
 "case" musi być wcięta na kolejne cztery spacje.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    switch ($numPeople) {
@@ -699,7 +699,7 @@ Pliki
 Każdy plik zawierający kod PHP musi na samym początku posiadać blok dokumentacji zawierający przynajmniej
 następujące znaczniki standardu phpDocumentor:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -726,7 +726,7 @@ Klasy
 Każda klasa musi posiadać blok dokumentacji zawierający przynajmniej następujące znaczniki standardu
 phpDocumentor:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       /**
@@ -768,7 +768,7 @@ Nie jest konieczne użycie znacznika "@access" ponieważ poziom dostępu jest zn
 
 Jeśli funkcja/metoda może wyrzucać wyjątek, użyj znacznika "@throws":
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       @throws exceptionclass [opis wyjątku]

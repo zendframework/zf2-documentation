@@ -19,7 +19,7 @@ transportu *Zend_Mail_Transport_Sendmail* lub za pomocą *Zend_Mail_Transport_Sm
 Prosty e-mail składa się z odbiorców, z tematu, treści i z nadawcy. Aby wysłać taki e-mail używając
 *Zend_Mail_Transport_Sendmail* możesz zrobić to w ten sposób:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $mail = new Zend_Mail();
@@ -48,7 +48,7 @@ You also can use most methods of the *Zend_Mail* object with a convenient fluent
 means that each method returns a reference to the object on which it was called, so you can immediately call
 another method.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $mail = new Zend_Mail();
@@ -75,7 +75,7 @@ default *Zend_Mail* transport, or it can be passed to the *send()* method of *Ze
 
 This example shows how to change the Return-Path of the `mail()`_ function.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $tr = new Zend_Mail_Transport_Sendmail('-freturn_to_me@example.com');

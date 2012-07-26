@@ -23,7 +23,7 @@ Esempio di utilizzo base
 Innanzi tutto, si assuma la seguente struttura di cartelle e file contenenti classi e che le cartelle application e
 library siano incluse in *include_path*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    application/
@@ -47,8 +47,9 @@ library siano incluse in *include_path*:
 
 Si crei ora un plugin loader per caricare tutti i metodi a supporto (helper) per le viste (view) disponibili:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    $loader = new Zend_Loader_PluginLoader();
    $loader->addPrefixPath('Zend_View_Helper', 'Zend/View/Helper/')
@@ -58,8 +59,9 @@ Si crei ora un plugin loader per caricare tutti i metodi a supporto (helper) per
 Ora è possibile caricare un helper specifico utilizzando esclusivamente la porzione corrispondente al nome della
 classe dopo al prefisso così come specificato nell'aggiunta dei percorsi:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // load 'FormText' helper:
    $formTextClass = $loader->load('FormText'); // 'Zend_View_Helper_FormText';
@@ -88,8 +90,9 @@ Una volta che la classe è caricata, è possibile crearne una nuova istanza.
    Opzionalmente è possibile fornire un array di coppie prefisso / percorso (o prefisso / percorsi -- sono ammessi
    più percorsi) come parametro del costruttore:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
+
       <?php
       $loader = new Zend_Loader_PluginLoader(array(
           'Zend_View_Helper' => 'Zend/View/Helper/',
@@ -101,8 +104,9 @@ Una volta che la classe è caricata, è possibile crearne una nuova istanza.
 senza la necessità di utilizzare un'istanza singleton. Questo è possibile grazie ad un registro statico. Indicare
 il nome del registro in fase di creazione di una nuova istanza, come secondo parametro del costruttore:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    // Store plugins in static registry 'foobar':
    $loader = new Zend_Loader_PluginLoader(array(), 'foobar');
@@ -140,8 +144,9 @@ Un altro uso comune per *PluginLoader* è determinare i nomi completi delle clas
 classi caricate; questa funzionalità è offerta da *getClassName()*. Tipicamente, la si utilizza insieme a
 *isLoaded()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
+
    <?php
    if ($loader->isLoaded('Adapter')) {
        $class   = $loader->getClassName('Adapter');

@@ -72,7 +72,7 @@ méthode ``filter()`` à la donnée saisie.
 Vous pouvez aussi fournir un tableau de paramètres destinés au constructeur de la classe, s'ils sont nécessaires
 pour votre classe de filtre.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       echo Zend_Filter::filterStatic('"',

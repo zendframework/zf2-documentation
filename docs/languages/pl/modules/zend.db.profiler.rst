@@ -16,7 +16,7 @@ profilowane.
 Włącz profiler przekazując odpowiednią dyrektywę do konstruktora adaptera, lub wywołując później metodę
 adaptera.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $params = array (
@@ -43,7 +43,7 @@ do własnych potrzeb.
 Parametr logiczny włącza profiler jeśli ma wartość *true*, lub wyłącza jeśli ma wartość *false*. Klasą
 profilera domyślnie jest klasa *Zend_Db_Profiler*.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $params['profiler'] = true;
@@ -55,7 +55,7 @@ profilera domyślnie jest klasa *Zend_Db_Profiler*.
 Przekazanie instancji obiektu profilera powoduje jej użycie przez sterownik bazy danych. Musi to być obiekt klasy
 *Zend_Db_Profiler* lub klasy ją rozszerzającej. Aktywacja profilera odbywa się osobno.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $profiler = MyProject_Db_Profiler();
@@ -72,7 +72,7 @@ opisane powyżej. Klucz '*class*' jest używany do podania nazwy klasy jaka ma b
 Musi być to obiekt klasy *Zend_Db_Profiler* lub klasy ją rozszerzającej. Instancja klasy jest tworzona bez
 żadnych argumentów. Opcja '*class*' jest ingorowana jeśli podana jest opcja '*instance*'.
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $params['profiler'] = array(
@@ -87,7 +87,7 @@ Musi być to obiekt klasy *Zend_Db_Profiler* lub klasy ją rozszerzającej. Inst
 Ostatecznie, argument może być obiektem klasy *Zend_Config* zawierającym właściwości, które są traktowane
 jako klucze tablicy opisane powyżej. Przykładowo plik "config.ini" może zawierać następujące dane:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       [main]
@@ -97,7 +97,7 @@ jako klucze tablicy opisane powyżej. Przykładowo plik "config.ini" może zawie
 
 Konfiguracja może być przekazana za pomocą takiego kodu PHP:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $config = new Zend_Config_Ini('config.ini', 'main');
@@ -107,7 +107,7 @@ Konfiguracja może być przekazana za pomocą takiego kodu PHP:
 
 Właściwość '*instance*' może być użyta w następujący sposób:
 
-   .. code-block::
+   .. code-block:: php
       :linenos:
 
       $profiler = new MyProject_Db_Profiler();
@@ -129,7 +129,7 @@ Użycie profilera
 
 W dowolnym momencie możesz pobrać profiler używając metody adaptera *getProfiler()*:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $profiler = $db->getProfiler();
@@ -167,7 +167,7 @@ Informacja której dostarcza *Zend_Db_Profiler* jest użyteczna przy profilowani
 oraz do szukania błędów w wykonanych zapytaniach. Na przykład aby zobaczyć ostatnie zapytanie jakie było
 wykonane:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $query = $profiler->getLastQueryProfile();
@@ -178,7 +178,7 @@ wykonane:
 Możliwe, że strona generuje się powoli; użyj profilera aby ustalić czas wykonania wszystkich zapytań, a
 następnie przejść poprzez zapytania aby znaleść te, które trwało najdłużej:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $totalTime    = $profiler->getTotalElapsedSecs();
@@ -216,7 +216,7 @@ Filtrowanie ze względu na czas trwania zapytania
 *setFilterElapsedSecs()* pozwala programiście ustalić minimalny czas trwania zapytania jaki jest potrzebny do
 tego by zostało ono profilowane. Aby usunąć filtr, wywołaj metodę z wartością null w parametrze.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Profiluj tylko zapytania które trwają przynajmniej 5 sekund:
@@ -253,7 +253,7 @@ profilować zapytania wielu typów użyj logicznego operatora OR. Typy zapytań 
 Analogicznie jak w metodzie *setFilterElapsedSecs()*, możesz usunąć wszystkie istniejące filtry przekazując
 metodzie pusty parametr *null*.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // profiluj tylko zapytania SELECT
@@ -281,7 +281,7 @@ w locie, po przekazaniu typu zapytań (lub logicznej kombinacji typów zapytań)
 przejdź do :ref:` <zend.db.profiler.advanced.filtertype>` aby zobaczyć listę stałych określających typy
 zapytań.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    // Pobierz jedynie profile zapytań SELECT

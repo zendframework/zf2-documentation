@@ -14,7 +14,7 @@
 
 .. rubric:: קריאת ערך סנדקציה בודד
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
@@ -30,7 +30,7 @@
 
 .. rubric:: שימוש באובייקט סנדקציה ישירות לערך סנדקציה בודד
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $entry = new Zend_Feed_Entry_Atom('http://atom.example.com/feed/1');

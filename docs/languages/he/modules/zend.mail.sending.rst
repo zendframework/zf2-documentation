@@ -11,7 +11,7 @@
 
 .. rubric:: שליחת אימייל דרך SMTP
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    $tr = new Zend_Mail_Transport_Smtp('mail.example.com');

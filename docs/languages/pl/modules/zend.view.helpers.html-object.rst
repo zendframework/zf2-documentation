@@ -25,7 +25,7 @@ nich.
 
 Dołączanie plików Flash do twojej strony jest bardzo łatwe. Jedynym wymaganym argumentem jest adres URI pliku.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <?php echo $this->htmlFlash('/path/to/flash.swf'); ?>
@@ -33,7 +33,7 @@ Dołączanie plików Flash do twojej strony jest bardzo łatwe. Jedynym wymagany
 
 Wyświetli to następujący kod HTML:
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    <object data="/path/to/flash.swf"
@@ -58,7 +58,7 @@ Czwarty argument przyjmuje także tylko tablice elementów w postaci klucz-warto
 *<param>*. Ostatni argument umożliwia przekazanie dodatkowej zawartości do obiektu. Zobacz przykład używający
 wszystkich argumentów.
 
-.. code-block::
+.. code-block:: php
    :linenos:
 
    echo $this->htmlObject(
