@@ -25,16 +25,22 @@ to a standard, :doc:`http route <zend.mvc.routing>` and can point to a
 
 Let's assume that we'd like our application to handle the following command line:
 
-    zf user reset-password user@mail.com
+.. code-block:: bash
+
+    > zf user reset-password user@mail.com
     
 When a user runs our application (``zf``) with these parameters, we'd like to call action ``resetpassword`` of 
 ``Application\IndexController``. First we want to create a **route definition**:
+
+.. code-block:: bash
 
     user reset-password <userEmail>
 
 This simple route definition expects exactly 3 arguments: a literal "user", literal "reset-password" followed by
 a parameter we're calling "userEmail". Let's assume we also accept one optional parameter, that will turn on 
 verbose operation:
+
+.. code-block:: bash
 
     user reset-password [--verbose|-v] <userEmail>
 
@@ -204,11 +210,11 @@ Let's modify our ``Application\IndexController`` to provide usage info:
         public function getConsoleUsage(Console $console){
             return array(
                 // Describe available commands
-                'user reset-password [--verbose|-v] USER EMAIL'    => 'Reset password for a user',
+                'user reset-password [--verbose|-v] EMAIL'    => 'Reset password for a user',
 
                 // Describe expected parameters
-                array( 'USER NAME',       'Email of the user for a password reset' ),
-                array( '--verbose|-v',    '(optional) turn on verbose mode'        ),
+                array( 'EMAIL',            'Email of the user for a password reset' ),
+                array( '--verbose|-v',     '(optional) turn on verbose mode'        ),
             );
         }
     }
@@ -217,8 +223,9 @@ Each module that implements ``ConsoleUsageProviderInterface`` will be queried fo
 mismatch, all info from all modules will be concatenated, formatted to console width and shown to the user.
 
 .. note::
+
    The order of usage info displayed in the console is the order modules load. If you want your application to
    display important usage info first, change the order your modules are loaded.
 
-Modules can also provide application banner (title). To learn more about the format expected from
+Modules can also provide an application banner (title). To learn more about the format expected from
 ``getConsoleUsage()`` and application banners, please follow to the following chapter: :doc:`zend.console.controllers`
