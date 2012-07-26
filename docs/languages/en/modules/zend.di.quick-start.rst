@@ -1,4 +1,4 @@
-.. _zend.di.quickstart:
+.. _zend.di.quick-start:
 
 Zend\\Di Quickstart
 ===================
