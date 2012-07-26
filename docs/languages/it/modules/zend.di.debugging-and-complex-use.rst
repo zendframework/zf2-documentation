@@ -81,7 +81,7 @@ Iniezione di un Setter con il Class Definition
 
    namespace {
        $di = new Zend\Di\Di;
-       $di->configure(new Zend\Di\Configuration(array(
+       $di->configure(new Zend\Di\Config(array(
            'definition' => array(
                'class' => array(
                    'Foo\Bar\Baz' => array(
@@ -120,7 +120,7 @@ Multiple iniezioni su un singolo punto
    namespace {
        include 'zf2bootstrap.php';
        $di = new Zend\Di\Di;
-       $di->configure(new Zend\Di\Configuration(array(
+       $di->configure(new Zend\Di\Config(array(
            'definition' => array(
                'class' => array(
                    'Application\Page' => array(

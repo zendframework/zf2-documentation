@@ -9,7 +9,7 @@ providing services, invokable classes, aliases, and factories either via configu
 By default, the module manager listener ``Zend\ModuleManager\Listener\ServiceListener`` will do the following:
 
 - For modules implementing the ``Zend\ModuleManager\Feature\ServiceProvider`` interface, or the
-  ``getServiceConfiguration()`` method, it will call that method and merge the configuration.
+  ``getServiceConfig()`` method, it will call that method and merge the configuration.
 
 - After all modules have been processed, it will grab the configuration from the registered
   ``Zend\ModuleManager\Feature\ConfigListener``, and merge any configuration under the ``service_manager`` key.
@@ -55,17 +55,17 @@ Modules as Service Providers
 ----------------------------
 
 Modules may act as service configuration providers. To do so, the Module class must either implement
-``Zend\ModuleManager\Feature\ServiceProviderInterface`` or simply the method ``getServiceConfiguration()`` (which
+``Zend\ModuleManager\Feature\ServiceProviderInterface`` or simply the method ``getServiceConfig()`` (which
 is also defined in the interface). This method must return one of the following:
 
-- An array (or ``Traversable`` object) of configuration compatible with ``Zend\ServiceManager\Configuration``.
+- An array (or ``Traversable`` object) of configuration compatible with ``Zend\ServiceManager\Config``.
   (Basically, it should have the keys for configuration as discussed in :ref:`the previous section
   <zend.service-manager.quick-start.config>`.
 
-- A string providing the name of a class implementing ``Zend\ServiceManager\ConfigurationInterface``.
+- A string providing the name of a class implementing ``Zend\ServiceManager\ConfigInterface``.
 
-- An instance of either ``Zend\ServiceManager\Configuration``, or an object implementing
-  ``Zend\ServiceManager\ConfigurationInterface``.
+- An instance of either ``Zend\ServiceManager\Config``, or an object implementing
+  ``Zend\ServiceManager\ConfigInterface``.
 
 As noted previously, this configuration will be merged with the configuration returned from other modules as well
 as configuration files, prior to being passed to the ``ServiceManager``; this allows overriding configuration from
@@ -83,7 +83,7 @@ Examples
 The following is valid configuration for any configuration being merged in your application, and demonstrates each
 of the possible configuration keys. Configuration is merged in the following order:
 
-- Configuration returned from Module classes via the ``getServiceConfiguration()`` method, in the order in which
+- Configuration returned from Module classes via the ``getServiceConfig()`` method, in the order in which
   modules are processed.
 
 - Module configuration under the ``service_manager`` key, in the order in which modules are processed.
@@ -171,7 +171,7 @@ the array configuration from the previous example.
 
    class Module
    {
-       public function getServiceConfiguration()
+       public function getServiceConfig()
        {
            return array(
                'abstract_factories' => array(
@@ -237,7 +237,7 @@ First, let's create a class that holds configuration.
 
    use SomeModule\Authentication;
    use SomeModule\Form;
-   use Zend\ServiceManager\Configuration;
+   use Zend\ServiceManager\Config;
    use Zend\ServiceManager\ServiceManager;
 
    class ServiceConfiguration extends Configuration
@@ -275,7 +275,7 @@ Now, we'll consume it from our Module.
    // However, the module manager will still find the method without doing so.
    class Module
    {
-       public function getServiceConfiguration()
+       public function getServiceConfig()
        {
            return new Service\ServiceConfiguration();
            // OR:
