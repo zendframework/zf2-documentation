@@ -18,22 +18,13 @@ library folder to another – possibly shared – location on your file system.
   English only or in all available languages. If you anticipate working with the latest Zend Framework
   developments, consider using a Subversion (*SVN*) client.
 
-- Using a `Subversion`_ (*SVN*) client. Zend Framework is open source software, and the Subversion repository used
-  for its development is publicly available. Consider using *SVN* to get Zend Framework if you already use *SVN*
-  for your application development, want to contribute back to the framework, or need to upgrade your framework
+- Using a `Git`_ client. Zend Framework is open source software, and the Git repository used
+  for its development is publicly available on GitHub. Consider using Git to get Zend Framework if you already use
+  Git for your application development, want to contribute back to the framework, or need to upgrade your framework
   version more often than releases occur.
 
-  `Exporting`_ is useful if you want to get a particular framework revision without the ``.svn`` directories as
-  created in a working copy.
-
-  `Check out a working copy`_ if you want contribute to Zend Framework, a working copy can be updated any time with
-  `svn update`_ and changes can be commited to our *SVN* repository with the `svn commit`_ command.
-
-  An `externals definition`_ is quite convenient for developers already using *SVN* to manage their application's
-  working copies.
-
-  The *URL* for the trunk of Zend Framework's *SVN* repository is:
-  `http://framework.zend.com/svn/framework/standard/trunk`_
+  The *URL* for Zend Framework's *Git* repository is:
+  `https://github.com/zendframework/zf2`_
 
 Once you have a copy of Zend Framework available, your application needs to be able to access the framework
 classes. Though there are `several ways to achieve this`_, your *PHP* `include_path`_ needs to contain the path to
@@ -50,13 +41,8 @@ component-by-component basis.
 
 .. _`Download the latest stable release.`: http://framework.zend.com/download/latest
 .. _`Download the latest nightly snapshot.`: http://framework.zend.com/download/snapshot
-.. _`Subversion`: http://subversion.tigris.org
-.. _`Exporting`: http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.export.html
-.. _`Check out a working copy`: http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.checkout.html
-.. _`svn update`: http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.update.html
-.. _`svn commit`: http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.commit.html
-.. _`externals definition`: http://svnbook.red-bean.com/nightly/en/svn.advanced.externals.html
-.. _`http://framework.zend.com/svn/framework/standard/trunk`: http://framework.zend.com/svn/framework/standard/trunk
+.. _`Git`: http://git-scm.com/
+.. _`https://github.com/zendframework/zf2`: https://github.com/zendframework/zf2
 .. _`several ways to achieve this`: http://www.php.net/manual/en/configuration.changes.php
 .. _`include_path`: http://www.php.net/manual/en/ini.core.php#ini.include-path
 .. _`QuickStart`: http://framework.zend.com/docs/quickstart
