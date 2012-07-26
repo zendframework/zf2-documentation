@@ -245,7 +245,7 @@ shipped with the MVC.
    :linenos:
 
    use Zend\Loader\AutoloaderFactory;
-   use Zend\Mvc\Service\ServiceManagerConfiguration;
+   use Zend\Mvc\Service\ServiceManagerConfig;
    use Zend\ServiceManager\ServiceManager;
 
    // setup autoloader
@@ -255,8 +255,8 @@ shipped with the MVC.
    $configuration = include 'config/application.config.php';
 
    // setup service manager
-   $serviceManager = new ServiceManager(new ServiceManagerConfiguration());
-   $serviceManager->setService('ApplicationConfiguration', $configuration);
+   $serviceManager = new ServiceManager(new ServiceManagerConfig());
+   $serviceManager->setService('ApplicationConfig', $configuration);
 
    // load modules -- which will provide services, configuration, and more
    $serviceManager->get('ModuleManager')->loadModules();

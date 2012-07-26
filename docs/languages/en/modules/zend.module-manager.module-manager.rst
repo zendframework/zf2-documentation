@@ -94,11 +94,11 @@ By default, Zend Framework provides several useful module manager listeners.
 
 **Zend\ModuleManager\Listener\ServiceListener**
    If a module class implements ``Zend\ModuleManager\Feature\ServiceProviderInterface``, or simply defines an
-   ``getServiceConfiguration()`` method, this listener will call that method and aggregate the return values for
+   ``getServiceConfig()`` method, this listener will call that method and aggregate the return values for
    use in configuring the ``ServiceManager``.
 
-   The ``getServiceConfiguration()`` method may return either an array of configuration compatible with
-   ``Zend\ServiceManager\Configuration``, an instance of that class, or the string name of a class that extends it.
+   The ``getServiceConfig()`` method may return either an array of configuration compatible with
+   ``Zend\ServiceManager\Config``, an instance of that class, or the string name of a class that extends it.
    Values are merged and aggregated on completion, and then merged with any configuration from the
    ``ConfigListener`` falling under the ``service_manager`` key. For more information, see the ``ServiceManager``
    documentation.
