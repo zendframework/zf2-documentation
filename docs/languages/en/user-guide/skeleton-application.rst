@@ -73,11 +73,13 @@ http://zf2-tutorial.localhost.
 If you’ve done it right, you should see something like this:
 
 .. image:: ../images/user-guide.skeleton-application.hello-world.png
+    :width: 940 px
 
 To test that your ``.htaccess`` ﬁle is working, navigate to
 http://zf2-tutorial.localhost/1234 and you should see this:
 
 .. image:: ../images/user-guide.skeleton-application.404.png
+    :width: 940 px
 
 If you see a standard Apache 404 error, then you need to ﬁx ``.htaccess`` usage
 before continuing.

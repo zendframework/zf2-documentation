@@ -300,6 +300,7 @@ but for the two elements that are standalone, we use ``formHidden()`` and
 ``formInput()``. 
 
 .. image:: ../images/user-guide.forms-and-actions.add-album-form.png
+    :width: 940 px
 
 You should now be able to use the “Add new album” link on the home page of the
 application to add a new album record.

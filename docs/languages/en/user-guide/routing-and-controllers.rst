@@ -33,17 +33,17 @@ As we have four pages that all apply to albums, we will group them in a single
 controller ``AlbumController`` within our ``Album`` module as four actions. The
 four actions will be:
 
-+---------------+-----------------+--------+
-| Page          | Controller      | Action |
-+===============+=================+========+
-| Home          | AlbumController | index  |
-+---------------+-----------------+--------+
-| Add new album | AlbumController | add    |
-+---------------+-----------------+--------+
-| Edit album    | AlbumController | edit   |
-+---------------+-----------------+--------+
-| Delete album  | AlbumController | delete |
-+---------------+-----------------+--------+
++---------------+---------------------+------------+
+| Page          | Controller          | Action     |
++===============+=====================+============+
+| Home          | ``AlbumController`` | ``index``  |
++---------------+---------------------+------------+
+| Add new album | ``AlbumController`` | ``add``    |
++---------------+---------------------+------------+
+| Edit album    | ``AlbumController`` | ``edit``   |
++---------------+---------------------+------------+
+| Delete album  | ``AlbumController`` | ``delete`` |
++---------------+---------------------+------------+
 
 The mapping of a URL to a particular action is done using routes that are deﬁned
 in the module’s ``module.config.php`` file. We will add a route for our album
@@ -99,17 +99,17 @@ underscore or hyphen. We also limit the id to a number.
 
 This route allows us to have the following URLs:
 
-+-----------------+------------------------------+--------+
-| URL             | Page                         | Action |
-+=================+==============================+========+
-| /album          | Home (list of albums)        | index  |
-+-----------------+------------------------------+--------+
-| /album/add      | Add new album                | add    |
-+-----------------+------------------------------+--------+
-| /album/edit/2   | Edit album with an id of 2   | edit   |
-+-----------------+------------------------------+--------+
-| /album/delete/4 | Delete album with an id of 4 | edit   |
-+-----------------+------------------------------+--------+
++---------------------+------------------------------+------------+
+| URL                 | Page                         | Action     |
++=====================+==============================+============+
+| ``/album``          | Home (list of albums)        | ``index``  |
++---------------------+------------------------------+------------+
+| ``/album/add``      | Add new album                | ``add``    |
++---------------------+------------------------------+------------+
+| ``/album/edit/2``   | Edit album with an id of 2   | ``edit``   |
++---------------------+------------------------------+------------+
+| ``/album/delete/4`` | Delete album with an id of 4 | ``edit``   |
++---------------------+------------------------------+------------+
 
 Create the controller
 =====================
@@ -165,17 +165,17 @@ Note that we have already informed the module about our controller in the
 We have now set up the four actions that we want to use. They won’t work yet
 until we set up the views. The URLs for each action are:
 
-+--------------------------------------------+------------------------------------------------+
-| URL                                        | Method called                                  |
-+============================================+================================================+
-| http://zf2-tutorial.localhost/album        | Album\Controller\AlbumController::indexAction  |
-+--------------------------------------------+------------------------------------------------+
-| http://zf2-tutorial.localhost/album/add    | Album\Controller\AlbumController::addAction    |
-+--------------------------------------------+------------------------------------------------+
-| http://zf2-tutorial.localhost/album/edit   | Album\Controller\AlbumController::editAction   |
-+--------------------------------------------+------------------------------------------------+
-| http://zf2-tutorial.localhost/album/delete | Album\Controller\AlbumController::deleteAction |
-+--------------------------------------------+------------------------------------------------+
++--------------------------------------------+----------------------------------------------------+
+| URL                                        | Method called                                      |
++============================================+====================================================+
+| http://zf2-tutorial.localhost/album        | ``Album\Controller\AlbumController::indexAction``  |
++--------------------------------------------+----------------------------------------------------+
+| http://zf2-tutorial.localhost/album/add    | ``Album\Controller\AlbumController::addAction``    |
++--------------------------------------------+----------------------------------------------------+
+| http://zf2-tutorial.localhost/album/edit   | ``Album\Controller\AlbumController::editAction``   |
++--------------------------------------------+----------------------------------------------------+
+| http://zf2-tutorial.localhost/album/delete | ``Album\Controller\AlbumController::deleteAction`` |
++--------------------------------------------+----------------------------------------------------+
 
 We now have a working router and the actions are set up for each page of our
 application.

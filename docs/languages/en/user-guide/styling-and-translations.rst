@@ -31,4 +31,4 @@ To remove the copyright message, we need to edit the ``Application`` module’s
 The page now looks ever so slightly better now!
 
 .. image:: ../images/user-guide.styling-and-translations.translated-image.png
-
+    :width: 940 px

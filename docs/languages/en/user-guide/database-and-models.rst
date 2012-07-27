@@ -374,3 +374,4 @@ ourselves from XSS vulnerabilities.  If you open
 http://zf2-tutorial.localhost/album you should see this:
 
 .. image:: ../images/user-guide.database-and-models.album-list.png
+    :width: 940 px
