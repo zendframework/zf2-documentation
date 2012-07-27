@@ -86,7 +86,7 @@ role inherits (herein, "guest", "member", and "admin"):
    $parents = array('guest', 'member', 'admin');
    $acl->addRole(new Role('someUser'), $parents);
 
-   $acl->add(new Resource('someResource'));
+   $acl->addResource(new Resource('someResource'));
 
    $acl->deny('guest', 'someResource');
    $acl->allow('member', 'someResource');
