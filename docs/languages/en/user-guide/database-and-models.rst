@@ -44,7 +44,7 @@ writing!)
 We now have some data in a database and can write a very simple model for it.
 
 The model files
---------------
+---------------
 
 Zend Framework does not provide a ``Zend\Model`` component as the model is your
 business logic and it’s up to you to decide how you want it to work. There are
@@ -173,7 +173,7 @@ updates a row that already exists and ``deleteAlbum()`` removes the row
 completely. The code for each of these methods is, hopefully, self-explanatory.
 
 Using ServiceManager to configure the database credentials and inject into the controller
-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 
 In order to always use the same instance of our ``AlbumTable``, we will use the
 ``ServiceManager`` to define how to create one. This is most easily done in the
