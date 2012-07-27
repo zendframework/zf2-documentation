@@ -24,7 +24,7 @@ Setting up the Album module
 Start by creating a directory called ``Album`` under with the following
 subdirectories to hold the module’s ﬁles:
 
-.. code-block::
+.. code-block:: text
 
     zf2-tutorial/
         /module
