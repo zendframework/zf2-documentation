@@ -11,6 +11,14 @@ Programmer's Reference Guide of Zend Framework 2
 
    ref/overview
    ref/installation
+   user-guide/overview
+   user-guide/skeleton-application
+   user-guide/modules
+   user-guide/routing-and-controllers
+   user-guide/database-and-models
+   user-guide/styling-and-translations
+   user-guide/forms-and-actions
+   user-guide/conclusion
    tutorials/quickstart.di
    modules/zend.authentication.intro
    modules/zend.authentication.adapter.dbtable
@@ -143,6 +151,22 @@ Introduction to Zend Framework
 
     * :doc:`ref/overview` 
     * :doc:`ref/installation`
+
+User Guide
+----------
+
+The user guide is provided to take you through a non-trivial example, showing
+you various techniques and features of the framework in order to build an
+application.
+
+    * :doc:`user-guide/overview`
+    * :doc:`user-guide/skeleton-application`
+    * :doc:`user-guide/modules`
+    * :doc:`user-guide/routing-and-controllers`
+    * :doc:`user-guide/database-and-models`
+    * :doc:`user-guide/styling-and-translations`
+    * :doc:`user-guide/forms-and-actions`
+    * :doc:`user-guide/conclusion`
 
 Learning Zend Framework
 -----------------------
