@@ -48,7 +48,7 @@ Setting up the virtual host is usually done within ``httpd.conf`` or
 ``extra/httpd-vhosts.conf``. (If you are using ``httpd-vhosts.conf``, ensure
 that this ﬁle is included by your main ``httpd.conf`` ﬁle.) 
 
-Ensure that ``NameVirtualHost`` is deﬁned and set to “*:80” or similar, and then
+Ensure that ``NameVirtualHost`` is deﬁned and set to “\*:80” or similar, and then
 deﬁne a virtual host along these lines:
 
 .. code-block:: apache
