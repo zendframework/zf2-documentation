@@ -72,12 +72,12 @@ http://zf2-tutorial.localhost.
 
 If you’ve done it right, you should see something like this:
 
-.. Image showing hello world page goes here.
+.. image:: ../images/user-guide.skeleton-application.hello-world.png
 
 To test that your ``.htaccess`` ﬁle is working, navigate to
 http://zf2-tutorial.localhost/1234 and you should see this:
 
-.. Image showing 404 page goes here.
+.. image:: ../images/user-guide.skeleton-application.404.png
 
 If you see a standard Apache 404 error, then you need to ﬁx ``.htaccess`` usage
 before continuing.

@@ -299,7 +299,7 @@ close the form.  Then for each element with a label, we can use ``formRow()``,
 but for the two elements that are standalone, we use ``formHidden()`` and
 ``formInput()``. 
 
-.. Need the "add new album" form image here.
+.. image:: ../images/user-guide.forms-and-actions.add-album-form.png
 
 You should now be able to use the “Add new album” link on the home page of the
 application to add a new album record.

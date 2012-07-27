@@ -14,7 +14,7 @@ functionality for all the text. It uses ``.po`` files that live in
 open ``application/language/en_US.po``. Click on “Skeleton Application” in the
 list of ``Original`` strings and then type in “Tutorial” as the translation.
 
-.. Add image showing poedit dialog
+.. image:: ../images/user-guide.styling-and-translations.poedit.png
 
 Press Save in the toolbar and poedit will create an ``en_US.mo`` file for us.
 
@@ -30,5 +30,5 @@ To remove the copyright message, we need to edit the ``Application`` module’s
 
 The page now looks ever so slightly better now!
 
-.. Add image showing updated file with "Tutorial" in header and no footer
+.. image:: ../images/user-guide.styling-and-translations.translated-image.png
 

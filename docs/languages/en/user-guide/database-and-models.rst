@@ -373,4 +373,4 @@ Note that we always use the ``escapeHtml()`` view helper to help protect
 ourselves from XSS vulnerabilities.  If you open
 http://zf2-tutorial.localhost/album you should see this:
 
-.. Add the checkin image showing a list of albums
+.. image:: ../images/user-guide.database-and-models.album-list.png
