@@ -39,8 +39,10 @@ This is the one service class referenced directly in the bootstrapping. It provi
     ``factories`` subkeys. These are used to configure a scoped service manager container, from which controllers
     will be retrieved.
 
-    Additionally, the scoped container is configured to use the ``Di`` service as both an initializer as well as an
-    abstract service factory -- effectively allowing you to fall back to DI in order to retrieve your controllers.
+    Additionally, the scoped container is configured to use the ``Di`` service as an abstract service factory --
+    effectively allowing you to fall back to DI in order to retrieve your controllers.
+    If you want to use ``Zend\Di`` to retrieve your controllers, you must white-list them in your DI configuration
+    under the ``allowed_controllers`` key (otherwise, they will just be ignored).
 
     Finally, if the loaded controller is ``Pluggable``, an initializer will inject it with the
     ``ControllerPluginBroker`` service.
