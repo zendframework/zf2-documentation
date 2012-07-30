@@ -108,7 +108,7 @@ This route allows us to have the following URLs:
 +---------------------+------------------------------+------------+
 | ``/album/edit/2``   | Edit album with an id of 2   | ``edit``   |
 +---------------------+------------------------------+------------+
-| ``/album/delete/4`` | Delete album with an id of 4 | ``delete``   |
+| ``/album/delete/4`` | Delete album with an id of 4 | ``delete`` |
 +---------------------+------------------------------+------------+
 
 Create the controller
