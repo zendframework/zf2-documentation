@@ -166,7 +166,7 @@ http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prot
 for more details.
 
 We then create some helper methods that our application will use to interface
-with the database table.  ``fetchAll() ``retrieves all albums rows from the
+with the database table.  ``fetchAll()`` retrieves all albums rows from the
 database as a ``ResultSet``, ``getAlbum()`` retrieves a single row as an
 ``Album`` object, ``saveAlbum()`` either creates a new row in the database or
 updates a row that already exists and ``deleteAlbum()`` removes the row
