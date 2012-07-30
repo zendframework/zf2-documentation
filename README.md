@@ -11,7 +11,7 @@ We used the [readthedocs.org](http://readthedocs.org/) project to render online 
 documentation of Zend Framework 2.0.
 
 You can read the development online documentation in 
-[http://zend-framework-2-doc.readthedocs.org/en/latest/](http://zend-framework-2-doc.readthedocs.org/en/latest/).
+[zf2.readthedocs.org](http://zf2.readthedocs.org/en/latest/index.html).
 
 You can read the last stable documentation in 
 [http://packages.zendframework.com/docs/latest/manual/en/](http://packages.zendframework.com/docs/latest/manual/en/).

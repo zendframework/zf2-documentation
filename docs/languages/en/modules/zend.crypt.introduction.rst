@@ -23,13 +23,13 @@ Zend\\Crypt provides support of some cryptographic tools. The available features
 
 The main scope of this component is to offer an easy and secure way to protect and authenticate sensitive data in
 PHP. Because the use of cryptography is not so easy we recommend to use the ``Zend\Crypt`` component only if you
-have a minimum background on this topic. For a gentle introduction to cryptography we suggest the following
-references:
+have a minimum background on this topic. For an introduction to cryptography we suggest the following references:
 
-   - Dan Boneh `"Cryptography course"`_ Stanford University, Coursera - free online courses
+   - Dan Boneh `"Cryptography course"`_ Stanford University, Coursera - free online course
 
-   - N.Ferguson, B.Schneier, and T.Kohno, "Cryptography Engineering", John Wiley & Sons (2010)
+   - N.Ferguson, B.Schneier, and T.Kohno, `"Cryptography Engineering"`_, John Wiley & Sons (2010)
 
+   - B.Schneier `"Applied Cryptography"`_, John Wiley & Sons (1996)
 
 
 .. note::
@@ -41,8 +41,8 @@ references:
    It is meant to be easy to install and use, yet extensible and powerful enough for even the most experienced
    developer.
 
-
-
 .. _`"Cryptography course"`: https://www.coursera.org/course/crypto
+.. _`"Cryptography Engineering"`: http://www.schneier.com/book-ce.html
+.. _`"Applied Cryptography"`: http://www.schneier.com/book-applied.html
 .. _`PHP-CryptLib project`: https://github.com/ircmaxell/PHP-CryptLib
 .. _`Anthony Ferrara`: http://blog.ircmaxell.com/

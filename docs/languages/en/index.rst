@@ -40,6 +40,7 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.crypt.block-cipher
    modules/zend.crypt.key.derivation
    modules/zend.crypt.password
+   modules/zend.crypt.public-key
    modules/zend.db.adapter
    modules/zend.db.result-set
    modules/zend.db.sql
@@ -227,6 +228,7 @@ Zend\\Crypt
         * :doc:`modules/zend.crypt.block-cipher`
         * :doc:`modules/zend.crypt.key.derivation`
         * :doc:`modules/zend.crypt.password`
+        * :doc:`modules/zend.crypt.public-key`
 
 .. _zend.db:
 

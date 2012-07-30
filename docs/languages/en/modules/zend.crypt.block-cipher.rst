@@ -29,17 +29,18 @@ encryption key and we used the ``setKey()`` method for that scope. The encryptio
 method.
 
 The output of the encryption is a string, encoded in Base64 (default), that contains the HMAC value, the IV vector,
-and the encrypted text. The encryption mode used is the `CBC`_ (default with random `IV`_) and the hash algorithm
-of HMAC is SHA256 (default). The Mcrypt adapter encrypts using the `PKCS#7 padding`_ mechanism by default. You can
-specify a different padding technique using a special adapter for that (Zend\\Crypt\\Symmetric\\Padding). The
-encryption key and the authentication key for HMAC are generated using the `PBKDF2`_ algorithm as key derivation
-function.
+and the encrypted text. The encryption mode used is the `CBC`_ (with a random `IV`_ by default) and SHA256 as default
+hash algorithm of the HMAC.
+The Mcrypt adapter encrypts using the `PKCS#7 padding`_ mechanism by default. You can specify a different padding
+method using a special adapter for that (Zend\\Crypt\\Symmetric\\Padding). The encryption and authentication keys
+used by the ``BlockCipher`` are generated with the `PBKDF2`_ algorithm, used as key derivation function from the
+user's key specified using the ``setKey()`` method.
 
 .. note::
 
    **Key size**
 
-   The BlockCipher class uses always the longest size of the key, for a particular cipher. For instance, for the
+   BlockCipher try to use always the longest size of the key for the specified cipher. For instance, for the
    AES algorithm it uses 256 bits and for the `Blowfish`_ algorithm it uses 448 bits.
 
 You can change all the default settings passing the values to the factory parameters. For instance, if you want to
@@ -65,8 +66,7 @@ class as follow:
    the ``BlockCipher`` class. The default values are: AES algorithm, CBC mode, HMAC with SHA256, PKCS#7 padding.
 
 To decrypt a string we can use the ``decrypt()`` method. In order to successfully decrypt a string we have to
-configure the BlockCipher with the same parameters of the encryption. In the previous example that means to reuse
-the AES algorithm with the same encryption key.
+configure the BlockCipher with the same parameters of the encryption. 
 
 We can also initialize the BlockCipher manually without use the factory method. We can inject the symmetric cipher
 adapter directly to the constructor of the BlockCipher class. For instance, we can rewrite the previous example as
