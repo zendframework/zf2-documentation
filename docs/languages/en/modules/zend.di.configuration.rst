@@ -77,5 +77,4 @@ You can see an example of possible configurations here:
        ),
    );
 
-You will probably not need all of these configuration keys, but each has its use case, as described in the examples of
-this section of the manual.
+You will probably not need all of these configuration keys, but each has its use case, as described in the examples.
