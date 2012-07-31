@@ -113,6 +113,7 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.mail.transport
    modules/zend.mail.smtp.options
    modules/zend.mail.file.options
+   modules/zend.math.introduction
    modules/zend.module-manager.intro
    modules/zend.module-manager.module-manager
    modules/zend.module-manager.module-class
@@ -383,6 +384,13 @@ Zend\\Mail
         * :doc:`modules/zend.mail.transport`
         * :doc:`modules/zend.mail.smtp.options`
         * :doc:`modules/zend.mail.file.options`
+
+.. _zend.math:
+
+Zend\\Math
+^^^^^^^^^^
+
+        * :doc:`modules/zend.math.introduction`
 
 .. _zend.module-manager:
 
