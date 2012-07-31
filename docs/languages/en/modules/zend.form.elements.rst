@@ -18,7 +18,6 @@ the :ref:`Zend\\Form Quick Start <zend.form.quick-start.factory>` for more infor
 .. include:: zend.form.element.rst
 .. include:: zend.form.element.captcha.rst
 .. include:: zend.form.element.checkbox.rst
-
 .. include:: zend.form.element.collection.rst
 .. include:: zend.form.element.color.rst
 .. include:: zend.form.element.csrf.rst
