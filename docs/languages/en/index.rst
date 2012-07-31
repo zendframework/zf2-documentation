@@ -6,7 +6,7 @@
 Programmer's Reference Guide of Zend Framework 2
 ================================================
 
-.. toctree:: 
+.. toctree::
    :hidden:
 
    ref/overview
@@ -29,22 +29,22 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.barcode.creation
    modules/zend.barcode.objects
    modules/zend.barcode.renderers
-   modules/zend.cache.theory 
-   modules/zend.cache.introduction 
+   modules/zend.cache.theory
+   modules/zend.cache.introduction
    modules/zend.cache.frontends
    modules/zend.cache.storage.adapter
    modules/zend.cache.storage.capabilities
    modules/zend.cache.storage.plugin
    modules/zend.cache.pattern
-   modules/zend.captcha.intro 
+   modules/zend.captcha.intro
    modules/zend.captcha.operation
-   modules/zend.captcha.adapters 
-   modules/zend.config.introduction 
+   modules/zend.captcha.adapters
+   modules/zend.config.introduction
    modules/zend.config.theory-of-operation
    modules/zend.config.reader
    modules/zend.config.writer
    modules/zend.config.processor
-   modules/zend.crypt.introduction 
+   modules/zend.crypt.introduction
    modules/zend.crypt.block-cipher
    modules/zend.crypt.key.derivation
    modules/zend.crypt.password
@@ -66,20 +66,7 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.event-manager.event-manager
    modules/zend.form.intro
    modules/zend.form.quick-start
-   modules/zend.form.element
-   modules/zend.form.element.captcha
-   modules/zend.form.element.color
-   modules/zend.form.element.csrf
-   modules/zend.form.element.date
-   modules/zend.form.element.date.time.local
-   modules/zend.form.element.date.time
-   modules/zend.form.element.email
-   modules/zend.form.element.month
-   modules/zend.form.element.number
-   modules/zend.form.element.range
-   modules/zend.form.element.time
-   modules/zend.form.element.url
-   modules/zend.form.element.week
+   modules/zend.form.elements
    modules/zend.http
    modules/zend.http.request
    modules/zend.http.response
@@ -151,7 +138,7 @@ Programmer's Reference Guide of Zend Framework 2
 Introduction to Zend Framework
 ------------------------------
 
-    * :doc:`ref/overview` 
+    * :doc:`ref/overview`
     * :doc:`ref/installation`
 
 User Guide
@@ -204,8 +191,8 @@ Zend\\Barcode
 Zend\\Cache
 ^^^^^^^^^^^
 
-        * :doc:`modules/zend.cache.theory` 
-        * :doc:`modules/zend.cache.introduction` 
+        * :doc:`modules/zend.cache.theory`
+        * :doc:`modules/zend.cache.introduction`
         * :doc:`modules/zend.cache.frontends`
         * :doc:`modules/zend.cache.storage.adapter`
         * :doc:`modules/zend.cache.storage.capabilities`
@@ -217,7 +204,7 @@ Zend\\Cache
 Zend\\Captcha
 ^^^^^^^^^^^^^
 
-        * :doc:`modules/zend.captcha.intro` 
+        * :doc:`modules/zend.captcha.intro`
         * :doc:`modules/zend.captcha.operation`
         * :doc:`modules/zend.captcha.adapters`
 
@@ -238,7 +225,7 @@ Zend\\Console
 Zend\\Config
 ^^^^^^^^^^^^
 
-        * :doc:`modules/zend.config.introduction` 
+        * :doc:`modules/zend.config.introduction`
         * :doc:`modules/zend.config.theory-of-operation`
         * :doc:`modules/zend.config.reader`
         * :doc:`modules/zend.config.writer`
@@ -249,7 +236,7 @@ Zend\\Config
 Zend\\Crypt
 ^^^^^^^^^^^
 
-        * :doc:`modules/zend.crypt.introduction` 
+        * :doc:`modules/zend.crypt.introduction`
         * :doc:`modules/zend.crypt.block-cipher`
         * :doc:`modules/zend.crypt.key.derivation`
         * :doc:`modules/zend.crypt.password`
