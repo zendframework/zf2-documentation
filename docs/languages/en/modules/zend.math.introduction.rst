@@ -133,12 +133,14 @@ negative big integer of 100 digits.
 
    $byte = $bigInt->intToBin($x);
 
-   printf("The binary representation of the big integer with $digit digit:\n%s\nis (in Base64 format): %s\n", $x, base64_encode($byte));
+   printf("The binary representation of the big integer with $digit digit:\n%s\nis (in Base64 format): %s\n",
+          $x, base64_encode($byte));
    printf("Length in bytes: %d\n", strlen($byte));
 
    $byte = $bigInt->intToBin($x, true);
 
-   printf("The two's complement binary representation of the big integer with $digit digit:\n%s\nis (in Base64 format): %s\n", $x, base64_encode($byte));
+   printf("The two's complement binary representation of the big integer with $digit digit:\n%s\nis (in Base64 format): %s\n",
+          $x, base64_encode($byte));
    printf("Length in bytes: %d\n", strlen($byte));
 
 We generated the binary representation of the big integer number using the default binary format and the
