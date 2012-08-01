@@ -607,6 +607,7 @@ such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 .. _`TXD`: http://www.textcontrol.com/
 .. _`HTML`: http://en.wikipedia.org/wiki/Xhtml
 .. _`PDF`: http://en.wikipedia.org/wiki/Portable_Document_Format
+.. _`PDF/A`: http://en.wikipedia.org/wiki/PDF/A
 .. _`TXT`: http://en.wikipedia.org/wiki/Text_file
 .. _`BMP`: http://en.wikipedia.org/wiki/BMP_file_format
 .. _`GIF`: http://en.wikipedia.org/wiki/GIF
