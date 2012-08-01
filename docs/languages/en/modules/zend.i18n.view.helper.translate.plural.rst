@@ -14,18 +14,9 @@ The viewhelper acts as a wrapper for the ``Zend\I18n\Translator\Translator`` cla
 
 .. rubric:: TranslatePlural Setup
 
-Before using the ``TranslatePlural`` view helper, you must have first created a ``Translator`` object and have
-attached it to the view helper. If you use the ``Zend\I18n\Translator\TranslatorServiceFactory`` to create your
-``Translator`` object, this will be done automatically for you.
-
-If you are not using the ``TranslatorServiceFactory``, then you will need to manually attach your ``Translator``
-object, such as:
-
-.. code-block:: php
-   :linenos:
-
-   // Somewhere early in the process...
-   $serviceLocator->get('ViewHelperManager')->get('translateplural')->setTranslator($translator);
+Before using the ``TranslatePlural`` view helper, you must have first created a ``Translator`` object and
+have attached it to the view helper. If you use the ``Zend\View\HelperPluginManager`` to invoke the view helper,
+this will be done automatically for you.
 
 .. _zend.i18n.view.helper.translate-plural.usage:
 
@@ -55,5 +46,12 @@ object, such as:
 
 - ``$locale``: (Optional) Locale in which the message would be translated (locale name, e.g. en_US). If unset, it
   will use the default locale (``Locale::getDefault()``)
+
+.. _zend.i18n.view.helper.translate-plural.methods:
+
+.. rubric:: TranslatePlural Methods
+
+Public methods for setting a ``Zend\I18n\Translator\Translator`` and a default text domain are inherited from
+ :ref:`Zend\\I18n\\View\\Helper\\AbstractTranslatorHelper <zend.i18n.view.helper.abstract-translator-helper.methods>`.
 
 
