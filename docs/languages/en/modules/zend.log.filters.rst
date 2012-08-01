@@ -5,42 +5,7 @@ Filters
 
 A Filter object blocks a message from being written to the log.
 
-.. _zend.log.filters.all-writers:
-
-Filtering for All Writers
--------------------------
-
-To filter before all writers, you can add any number of Filters to a Logger object using the ``addFilter()``
-method:
-
-.. code-block:: php
-   :linenos:
-
-   use Zend\Log\Logger;
-
-   $logger = new Logger();
-
-   $writer = new Zend\Log\Writer\Stream('php://output');
-   $logger->addWriter($writer);
-
-   $filter = new Zend\Log\Filter\Priority(Logger::CRIT);
-   $logger->addFilter($filter);
-
-   // blocked
-   $logger->info('Informational message');
-
-   // logged
-   $logger->emerg('Emergency message');
-
-When you add one or more Filters to the Log object, the message must pass through all of the Filters before any
-Writers receives it.
-
-.. _zend.log.filters.single-writer:
-
-Filtering for a Writer Instance
--------------------------------
-
-To filter only on a specific Writer instance, use the ``addFilter()`` method of that Writer:
+You can add a filter to a specific Writer using ``addFilter()`` method of that Writer:
 
 .. code-block:: php
    :linenos:

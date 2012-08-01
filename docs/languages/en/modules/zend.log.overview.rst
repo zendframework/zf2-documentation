@@ -13,8 +13,8 @@ objects:
 
 - A Writer (inherits from ``Zend\Log\Writer\AbstractWriter``) is responsible for saving data to storage.
 
-- A Filter (implements ``Zend\Log\Filter``) blocks log data from being saved. A filter may be applied to an
-  individual Writer, or to a Logger where it is applied before all Writers. In either case, filters may be chained.
+- A Filter (implements ``Zend\Log\Filter``) blocks log data from being saved. A filter is applied to an  individual
+  writer. Filters can be chained.
 
 - A Formatter (inheriting from ``Zend\Log\Formatter\AbstractFormatter``) can format the log data before it is
   written by a Writer. Each Writer has exactly one Formatter.
@@ -37,6 +37,20 @@ To get started logging, instantiate a Writer and then pass it to a Logger instan
 It is important to note that the Logger must have at least one Writer. You can add any number of Writers using the
 Log's ``addWriter()`` method.
 
+You can also add a priority to each writer. The priority is specified as number and passed as second argument in
+the ``addWriter()`` method.
+
+Another way to add a writer to a Logger is to use the name of the writer as follow:
+
+.. code-block:: php
+   :linenos:
+
+   $logger = new Zend\Log\Logger;
+
+   $logger->addWriter('stream', null, array('stream' => 'php://output'));
+
+In this example we passed the stream ``php://output`` as parameter (as array).
+
 .. _zend.log.overview.logging-messages:
 
 Logging Messages
@@ -50,9 +64,9 @@ priority:
 
    $logger->log(Zend\Log\Logger::INFO, 'Informational message');
 
-The first parameter of the ``log()`` method is an integer ``priority`` and the second paramter is a string
+The first parameter of the ``log()`` method is an integer ``priority`` and the second parameter is a string
 ``message``. The priority must be one of the priorities recognized by the Logger instance. This is explained in the
-next section.
+next section. There is also an optional third parameter used to pass extra informations to the writer's log.
 
 A shortcut is also available. Instead of calling the ``log()`` method, you can call a method by the same name as
 the priority:
@@ -149,7 +163,7 @@ If you want to unregister the error handler you can use the ``unregisterErrorHan
 .. table:: Zend\\Log\\Logger events from PHP errors fields matching handler ( int $errno , string $errstr [, string $errfile [, int $errline [, array $errcontext ]]] ) from set_error_handler
 
    +-------+-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |Name   |Error Handler Paramater|Description                                                                                                                                                                                                                                                           |
+   |Name   |Error Handler Parameter|Description                                                                                                                                                                                                                                                           |
    +=======+=======================+======================================================================================================================================================================================================================================================================+
    |message|errstr                 |Contains the error message, as a string.                                                                                                                                                                                                                              |
    +-------+-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

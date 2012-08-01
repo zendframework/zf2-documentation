@@ -109,11 +109,10 @@ The code above changes the root element from its default of ``logEntry`` to ``lo
 
 .. _zend.log.formatters.firebug:
 
-Formatting to Firebug
+Formatting to FirePhp
 ---------------------
 
-``Zend\Log\Formatter\Firebug`` formats log data for the `Firebug`_ extension for Firefox.
-
+``Zend\Log\Formatter\FirePhp`` formats log data for the `Firebug`_ extension for Firefox.
 
 
 .. _`Firebug`: http://getfirebug.com/

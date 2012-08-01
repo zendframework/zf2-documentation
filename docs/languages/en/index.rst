@@ -96,6 +96,10 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.loader.classmap-generator
    modules/zend.loader.prefix-path-loader
    modules/zend.loader.prefix-path-mapper
+   modules/zend.log.overview
+   modules/zend.log.writers
+   modules/zend.log.filters
+   modules/zend.log.formatters
    modules/zend.mail.message
    modules/zend.mail.transport
    modules/zend.mail.smtp.options
@@ -361,6 +365,16 @@ Zend\\Loader
         * :doc:`modules/zend.loader.classmap-generator`
         * :doc:`modules/zend.loader.prefix-path-loader`
         * :doc:`modules/zend.loader.prefix-path-mapper`
+
+.. _zend.log:
+
+Zend\\Log
+^^^^^^^^^
+
+        * :doc:`modules/zend.log.overview`
+        * :doc:`modules/zend.log.writers`
+        * :doc:`modules/zend.log.filters`
+        * :doc:`modules/zend.log.formatters`
 
 .. _zend.mail:
 
