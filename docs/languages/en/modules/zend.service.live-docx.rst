@@ -182,7 +182,6 @@ To populate the merge fields in the above cropped screenshot of the `template`_ 
 code is as follows:
 
 .. code-block:: php
-   :linenos:
 
    use ZendService\LiveDocx\MailMerge;
 
