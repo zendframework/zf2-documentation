@@ -67,6 +67,7 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.form.intro
    modules/zend.form.quick-start
    modules/zend.form.elements
+   modules/zend.form.collections
    modules/zend.http
    modules/zend.http.request
    modules/zend.http.response
@@ -306,6 +307,7 @@ Zend\\Form
         * :doc:`modules/zend.form.element.time`
         * :doc:`modules/zend.form.element.url`
         * :doc:`modules/zend.form.element.week`
+        * :doc:`modules/zend.form.collections`
 
 .. _zend.http:
 
