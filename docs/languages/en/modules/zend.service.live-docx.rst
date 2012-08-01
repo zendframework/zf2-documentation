@@ -1,6 +1,6 @@
 .. _zend.service.livedocx:
 
-Zend_Service_LiveDocx
+ZendService\LiveDocx
 =====================
 
 .. _zend.service.livedocx.introduction:
@@ -12,18 +12,20 @@ LiveDocx is a *SOAP* service that allows developers to generate word processing 
 data from *PHP* with a template, created in a word processor. The resulting document can be saved as a *PDF*,
 *DOCX*, *DOC*, *HTML* or *RTF* file. LiveDocx implements `mail-merge`_ in *PHP*.
 
-The family of ``Zend_Service_LiveDocx`` components provides a clean and simple interface to the `LiveDocx API`_ and
+The family of ``ZendService\LiveDocx`` components provides a clean and simple interface to the `LiveDocx API`_ and
 additionally offers functionality to improve network performance.
 
-In addition to this section of the manual, if you are interested in learning more about ``Zend_Service_LiveDocx``
+``ZendService\LiveDocx`` is part of the official Zend Framework family, but has to be downloaded and installed in addition to the core components. Please refer to GitHub at https://github.com/zendframework/ZendServiceLiveDocx for download and installation instructions.
+
+In addition to this section of the manual, if you are interested in learning more about ``ZendService\LiveDocx``
 and the backend *SOAP* service LiveDocx, please take a look at the following resources:
 
 - **Shipped demonstration applications**. There are a large number of demonstration applications in the directory
-  **/demos/Zend/Service/LiveDocx** of the Zend Framework distribution file or trunk version, checked out of the
-  standard SVN repository. These are designed to get you up to speed with ``Zend_Service_LiveDocx`` within a matter
-  of minutes.
+  **/demos**. These are designed to
+  get you up to speed with ``ZendService\LiveDocx`` within a matter of minutes. They illustrate all functionality offered
+  by the LiveDocx service.
 
-- `Zend_Service_LiveDocx blog and web site`_.
+- `ZendService\LiveDocx blog and web site`_.
 
 - `LiveDocx SOAP API documentation`_.
 
@@ -38,7 +40,9 @@ Sign Up for an Account
 
 Before you can start using LiveDocx, you must first `sign up`_ for an account. The account is completely free of
 charge and you only need to specify a **username**, **password** and **e-mail address**. Your login credentials
-will be dispatched to the e-mail address you supply, so please type carefully.
+will be dispatched to the e-mail address you supply, so please type carefully. If, or when, your application
+gets really popular and you require high performance, or additional features, you can update from the free service to the
+premium service for a minimal monthly charge. For details of the various services, please refer to http://www.livedocx.com/pub/pricing.
 
 .. _zend.service.livedocx.templates-documents:
 
@@ -93,6 +97,8 @@ The resulting document can be saved in any of the following file formats:
 
 - `PDF`_- Acrobat Portable Document Format
 
+- `PDF/A`_- Acrobat Portable Document Format (ISO-standardized version)
+
 - `TXD`_- TX Text Control format
 
 - `TXT`_-*ANSI* plain text
@@ -118,10 +124,10 @@ The resulting document can be saved in any of the following graphical file forma
 
 .. _zend.service.livedocx.mailmerge:
 
-Zend_Service_LiveDocx_MailMerge
+MailMerge
 -------------------------------
 
-``Zend_Service_LiveDocx_MailMerge`` is the mail-merge object in the ``Zend_Service_LiveDocx`` family.
+``MailMerge`` is the mail-merge object in the ``ZendService\LiveDocx`` family.
 
 .. _zend.service.livedocx.mailmerge.generation:
 
@@ -178,20 +184,22 @@ code is as follows:
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   use ZendService\LiveDocx\MailMerge;
 
-   $phpLiveDocx->setUsername('myUsername')
-               ->setPassword('myPassword');
+   $mailMerge = new MailMerge();
 
-   $phpLiveDocx->setLocalTemplate('template.docx');
+   $mailMerge->setUsername('myUsername')
+             ->setPassword('myPassword');
 
-   $phpLiveDocx->assign('software', 'Magic Graphical Compression Suite v1.9')
-               ->assign('licensee', 'Henry Döner-Meyer')
-               ->assign('company',  'Co-Operation');
+   $mailMerge->setLocalTemplate('template.docx');
 
-   $phpLiveDocx->createDocument();
+   $mailMerge->assign('software', 'Magic Graphical Compression Suite v1.9')
+             ->assign('licensee', 'Henry Döner-Meyer')
+             ->assign('company',  'Co-Operation');
 
-   $document = $phpLiveDocx->retrieveDocument('pdf');
+   $mailMerge->createDocument();
+
+   $document = $mailMerge->retrieveDocument('pdf');
 
    file_put_contents('document.pdf', $document);
 
@@ -208,7 +216,7 @@ Resulting document as *PDF* in Document Viewer 2.26.1.
 Advanced Mail-Merge
 ^^^^^^^^^^^^^^^^^^^
 
-``Zend_Service_LiveDocx_MailMerge`` allows designers to insert any number of text fields into a template. These
+``MailMerge`` allows designers to insert any number of text fields into a template. These
 text fields are populated with data when **createDocument()** is called.
 
 In addition to text fields, it is also possible specify regions of a document, which should be repeated.
@@ -256,12 +264,14 @@ The following code populates the above template with data.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   use ZendService\LiveDocx\MailMerge;
 
-   $phpLiveDocx->setUsername('myUsername')
-               ->setPassword('myPassword');
+   $mailMerge = new MailMerge();
 
-   $phpLiveDocx->setLocalTemplate('template.doc');
+   $mailMerge->setUsername('myUsername')
+             ->setPassword('myPassword');
+
+   $mailMerge->setLocalTemplate('template.doc');
 
    $billConnections = array(
        array(
@@ -286,12 +296,12 @@ The following code populates the above template with data.
        ),
    );
 
-   $phpLiveDocx->assign('connection', $billConnections);
+   $mailMerge->assign('connection', $billConnections);
 
    // ... assign other data here ...
 
-   $phpLiveDocx->createDocument();
-   $document = $phpLiveDocx->retrieveDocument('pdf');
+   $mailMerge->createDocument();
+   $document = $mailMerge->retrieveDocument('pdf');
    file_put_contents('document.pdf', $document);
 
 The data, which is specified in the array ``$billConnections`` is repeated in the template in the block connection.
@@ -315,7 +325,7 @@ You can download the *DOC* `template file`_ and the resulting `PDF document`_.
 Generating bitmaps image files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In addition to document file formats, ``Zend_Service_LiveDocx_MailMerge`` also allows documents to be saved to a
+In addition to document file formats, ``MailMerge`` also allows documents to be saved to a
 number of image file formats (*BMP*, *GIF*, *JPG*, *PNG* and *TIFF*). Each page of the document is saved to one
 file.
 
@@ -330,33 +340,35 @@ The supported formats can be obtained by calling ``getImageExportFormats()``.
 .. code-block:: php
    :linenos:
 
+   use ZendService\LiveDocx\MailMerge;
+
    $date = new DateTime();
    $date->setLocale('en_US');
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   $mailMerge = new MailMerge();
 
-   $phpLiveDocx->setUsername('myUsername')
-               ->setPassword('myPassword');
+   $mailMerge->setUsername('myUsername')
+             ->setPassword('myPassword');
 
-   $phpLiveDocx->setLocalTemplate('template.docx');
+   $mailMerge->setLocalTemplate('template.docx');
 
-   $phpLiveDocx->assign('software', 'Magic Graphical Compression Suite v1.9')
-               ->assign('licensee', 'Daï Lemaitre')
-               ->assign('company',  'Megasoft Co-operation')
-               ->assign('date',     $date->format('Y-m-d'))
-               ->assign('time',     $date->format('H:i:s'))
-               ->assign('city',     'Lyon')
-               ->assign('country',  'France');
+   $mailMerge->assign('software', 'Magic Graphical Compression Suite v1.9')
+             ->assign('licensee', 'Daï Lemaitre')
+             ->assign('company',  'Megasoft Co-operation')
+             ->assign('date',     $date->format('Y-m-d'))
+             ->assign('time',     $date->format('H:i:s'))
+             ->assign('city',     'Lyon')
+             ->assign('country',  'France');
 
-   $phpLiveDocx->createDocument();
+   $mailMerge->createDocument();
 
    // Get all bitmaps
    // (zoomFactor, format)
-   $bitmaps = $phpLiveDocx->getAllBitmaps(100, 'png');
+   $bitmaps = $mailMerge->getAllBitmaps(100, 'png');
 
    // Get just bitmaps in specified range
    // (fromPage, toPage, zoomFactor, format)
-   // $bitmaps = $phpLiveDocx->getBitmaps(2, 2, 100, 'png');
+   // $bitmaps = $mailMerge->getBitmaps(2, 2, 100, 'png');
 
    foreach ($bitmaps as $pageNumber => $bitmapData) {
        $filename = sprintf('documentPage%d.png', $pageNumber);
@@ -394,12 +406,14 @@ The following code illustrates how to use a local template.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   use ZendService\LiveDocx\MailMerge;
 
-   $phpLiveDocx->setUsername('myUsername')
-               ->setPassword('myPassword');
+   $mailMerge = new MailMerge();
 
-   $phpLiveDocx->setLocalTemplate('./template.docx');
+   $mailMerge->setUsername('myUsername')
+             ->setPassword('myPassword');
+
+   $mailMerge->setLocalTemplate('./template.docx');
 
    // assign data and create document
 
@@ -413,24 +427,28 @@ The following code illustrates how to upload a template to the server:
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   use ZendService\LiveDocx\MailMerge;
 
-   $phpLiveDocx->setUsername('myUsername')
-               ->setPassword('myPassword');
+   $mailMerge = new MailMerge();
 
-   $phpLiveDocx->uploadTemplate('template.docx');
+   $mailMerge->setUsername('myUsername')
+             ->setPassword('myPassword');
+
+   $mailMerge->uploadTemplate('template.docx');
 
 The following code illustrates how to reference the remotely stored template on all subsequent requests:
 
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   use ZendService\LiveDocx\MailMerge;
 
-   $phpLiveDocx->setUsername('myUsername')
-               ->setPassword('myPassword');
+   $mailMerge = new MailMerge();
 
-   $phpLiveDocx->setRemoteTemplate('template.docx');
+   $mailMerge->setUsername('myUsername')
+             ->setPassword('myPassword');
+
+   $mailMerge->setRemoteTemplate('template.docx');
 
    // assign data and create document
 
@@ -439,7 +457,7 @@ The following code illustrates how to reference the remotely stored template on 
 Getting Information
 ^^^^^^^^^^^^^^^^^^^
 
-``Zend_Service_LiveDocx_MailMerge`` provides a number of methods to get information on field names, available fonts
+``MailMerge`` provides a number of methods to get information on field names, available fonts
 and supported formats.
 
 .. _zend.service.livedocx.mailmerge.information.getfieldname:
@@ -452,15 +470,17 @@ is useful, in the case that you create an application, in which an end-user can 
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   use ZendService\LiveDocx\MailMerge;
 
-   $phpLiveDocx->setUsername('myUsername')
-               ->setPassword('myPassword');
+   $mailMerge = new MailMerge();
+
+   $mailMerge->setUsername('myUsername')
+             ->setPassword('myPassword');
 
    $templateName = 'template-1-text-field.docx';
-   $phpLiveDocx->setLocalTemplate($templateName);
+   $mailMerge->setLocalTemplate($templateName);
 
-   $fieldNames = $phpLiveDocx->getFieldNames();
+   $fieldNames = $mailMerge->getFieldNames();
    foreach ($fieldNames as $fieldName) {
        printf('- %s%s', $fieldName, PHP_EOL);
    }
@@ -476,17 +496,19 @@ Before such templates can be populated, it is necessary to find out the names of
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   use ZendService\LiveDocx\MailMerge;
 
-   $phpLiveDocx->setUsername('myUsername')
-               ->setPassword('myPassword');
+   $mailMerge = new MailMerge();
+
+   $mailMerge->setUsername('myUsername')
+             ->setPassword('myPassword');
 
    $templateName = 'template-block-fields.doc';
-   $phpLiveDocx->setLocalTemplate($templateName);
+   $mailMerge->setLocalTemplate($templateName);
 
-   $blockNames = $phpLiveDocx->getBlockNames();
+   $blockNames = $mailMerge->getBlockNames();
    foreach ($blockNames as $blockName) {
-       $blockFieldNames = $phpLiveDocx->getBlockFieldNames($blockName);
+       $blockFieldNames = $mailMerge->getBlockFieldNames($blockName);
        foreach ($blockFieldNames as $blockFieldName) {
            printf('- %s::%s%s', $blockName, $blockFieldName, PHP_EOL);
        }
@@ -504,12 +526,14 @@ which are not available on the server, font-substitution will take place. This m
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   use ZendService\LiveDocx\MailMerge;
 
-   $phpLiveDocx->setUsername('myUsername')
-               ->setPassword('myPassword');
+   $mailMerge = new MailMerge();
 
-   Zend_Debug::dump($phpLiveDocx->getFontNames());
+   $mailMerge->setUsername('myUsername')
+             ->setPassword('myPassword');
+
+   Zend_Debug::dump($mailMerge->getFontNames());
 
 **NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
 such as ``Zend_Cache``- this will considerably speed up your application.
@@ -525,12 +549,14 @@ format of the documentation generation process.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge()
+   use ZendService\LiveDocx\MailMerge;
 
-   $phpLiveDocx->setUsername('myUsername')
-               ->setPassword('myPassword');
+   $mailMerge = new MailMerge()
 
-   Zend_Debug::dump($phpLiveDocx->getTemplateFormats());
+   $mailMerge->setUsername('myUsername')
+             ->setPassword('myPassword');
+
+   Zend_Debug::dump($mailMerge->getTemplateFormats());
 
 **NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
 such as ``Zend_Cache``- this will considerably speed up your application.
@@ -546,12 +572,14 @@ format of the documentation generation process.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   use ZendService\LiveDocx\MailMerge;
 
-   $phpLiveDocx->setUsername('myUsername')
-               ->setPassword('myPassword');
+   $mailMerge = new MailMerge();
 
-   Zend_Debug::dump($phpLiveDocx->getDocumentFormats());
+   $mailMerge->setUsername('myUsername')
+             ->setPassword('myPassword');
+
+   Zend_Debug::dump($mailMerge->getDocumentFormats());
 
 .. _zend.service.livedocx.mailmerge.information.getimageexportformats:
 
@@ -564,12 +592,14 @@ the documentation generation process.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   use ZendService\LiveDocx\MailMerge;
 
-   $phpLiveDocx->setUsername('myUsername')
-               ->setPassword('myPassword');
+   $mailMerge = new MailMerge();
 
-   Zend_Debug::dump($phpLiveDocx->getImageExportFormats());
+   $mailMerge->setUsername('myUsername')
+             ->setPassword('myPassword');
+
+   Zend_Debug::dump($mailMerge->getImageExportFormats());
 
 **NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
 such as ``Zend_Cache``- this will considerably speed up your application.
@@ -578,7 +608,7 @@ such as ``Zend_Cache``- this will considerably speed up your application.
 
 .. _`mail-merge`: http://en.wikipedia.org/wiki/Mail_merge
 .. _`LiveDocx API`: http://www.livedocx.com
-.. _`Zend_Service_LiveDocx blog and web site`: http://www.phplivedocx.org/
+.. _`ZendService\LiveDocx blog and web site`: http://www.phplivedocx.org/
 .. _`LiveDocx SOAP API documentation`: http://www.livedocx.com/pub/documentation/api.aspx
 .. _`LiveDocx WSDL`: https://api.livedocx.com/1.2/mailmerge.asmx?wsdl
 .. _`LiveDocx blog and web site`: https://www.livedocx.com/
