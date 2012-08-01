@@ -525,7 +525,7 @@ which are not available on the server, font-substitution will take place. This m
    Zend_Debug::dump($mailMerge->getFontNames());
 
 **NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
-such as ``Zend_Cache``- this will considerably speed up your application.
+such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 
 .. _zend.service.livedocx.mailmerge.information.gettemplateformats:
 
@@ -547,7 +547,7 @@ format of the documentation generation process.
    Zend_Debug::dump($mailMerge->getTemplateFormats());
 
 **NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
-such as ``Zend_Cache``- this will considerably speed up your application.
+such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 
 .. _zend.service.livedocx.mailmerge.information.getdocumentformats:
 
@@ -588,7 +588,7 @@ the documentation generation process.
    Zend_Debug::dump($mailMerge->getImageExportFormats());
 
 **NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
-such as ``Zend_Cache``- this will considerably speed up your application.
+such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 
 
 
