@@ -13,15 +13,12 @@ data from *PHP* with a template, created in a word processor. The resulting docu
 *DOCX*, *DOC*, *HTML* or *RTF* file. LiveDocx implements `mail-merge`_ in *PHP*.
 
 The family of ``ZendService\LiveDocx`` components provides a clean and simple interface to the `LiveDocx API`_ and
-additionally offers functionality to improve network performance.
+additionally offers functionality to improve network performance. ``ZendService\LiveDocx`` is part of the official Zend Framework family, but has to be downloaded and installed in addition to the core components of the Zend Framework. Please refer to GitHub at https://github.com/zendframework/ZendServiceLiveDocx for download and installation instructions.
 
-``ZendService\LiveDocx`` is part of the official Zend Framework family, but has to be downloaded and installed in addition to the core components. Please refer to GitHub at https://github.com/zendframework/ZendServiceLiveDocx for download and installation instructions.
-
-In addition to this section of the manual, if you are interested in learning more about ``ZendService\LiveDocx``
-and the backend *SOAP* service LiveDocx, please take a look at the following resources:
+In addition to this section of the manual, to learn more about ``ZendService\LiveDocx`` and the backend *SOAP* service LiveDocx, please take a look at the following resources:
 
 - **Shipped demonstration applications**. There are a large number of demonstration applications in the directory
-  **/demos**. These are designed to
+  ``/demos``. These are designed to
   get you up to speed with ``ZendService\LiveDocx`` within a matter of minutes. They illustrate all functionality offered
   by the LiveDocx service.
 
@@ -41,7 +38,7 @@ Sign Up for an Account
 Before you can start using LiveDocx, you must first `sign up`_ for an account. The account is completely free of
 charge and you only need to specify a **username**, **password** and **e-mail address**. Your login credentials
 will be dispatched to the e-mail address you supply, so please type carefully. If, or when, your application
-gets really popular and you require high performance, or additional features, you can update from the free service to the
+gets really popular and you require high performance, or additional features only supplied in the premium service, you can upgrade from the free service to the
 premium service for a minimal monthly charge. For details of the various services, please refer to http://www.livedocx.com/pub/pricing.
 
 .. _zend.service.livedocx.templates-documents:
