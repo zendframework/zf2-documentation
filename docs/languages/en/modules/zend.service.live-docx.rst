@@ -235,7 +235,6 @@ targets and their names in red:
 The format of a block is as follows:
 
 .. code-block:: text
-   :linenos:
 
    blockStart_ + unique name
    blockEnd_ + unique name
@@ -243,7 +242,6 @@ The format of a block is as follows:
 For example:
 
 .. code-block:: text
-   :linenos:
 
    blockStart_block1
    blockEnd_block1
@@ -261,7 +259,6 @@ Template, illustrating blocks in Microsoft Word 2007.
 The following code populates the above template with data.
 
 .. code-block:: php
-   :linenos:
 
    use ZendService\LiveDocx\MailMerge;
 
@@ -337,7 +334,6 @@ size. The range of this parameter is 10 to 400. ``$format`` is the format of the
 The supported formats can be obtained by calling ``getImageExportFormats()``.
 
 .. code-block:: php
-   :linenos:
 
    use ZendService\LiveDocx\MailMerge;
 
@@ -403,7 +399,6 @@ situations in which the content of the template is constantly changing.
 The following code illustrates how to use a local template.
 
 .. code-block:: php
-   :linenos:
 
    use ZendService\LiveDocx\MailMerge;
 
@@ -424,7 +419,6 @@ method.
 The following code illustrates how to upload a template to the server:
 
 .. code-block:: php
-   :linenos:
 
    use ZendService\LiveDocx\MailMerge;
 
@@ -438,7 +432,6 @@ The following code illustrates how to upload a template to the server:
 The following code illustrates how to reference the remotely stored template on all subsequent requests:
 
 .. code-block:: php
-   :linenos:
 
    use ZendService\LiveDocx\MailMerge;
 
@@ -467,7 +460,6 @@ The following code returns and displays an array of all field names in the speci
 is useful, in the case that you create an application, in which an end-user can update a template.
 
 .. code-block:: php
-   :linenos:
 
    use ZendService\LiveDocx\MailMerge;
 
@@ -493,7 +485,6 @@ functionality is useful, in the case that you create an application, in which an
 Before such templates can be populated, it is necessary to find out the names of the contained block fields.
 
 .. code-block:: php
-   :linenos:
 
    use ZendService\LiveDocx\MailMerge;
 
@@ -523,7 +514,6 @@ installed on the server, as only these fonts may be used in a template. In the c
 which are not available on the server, font-substitution will take place. This may lead to undesirable results.
 
 .. code-block:: php
-   :linenos:
 
    use ZendService\LiveDocx\MailMerge;
 
@@ -546,7 +536,6 @@ particularly useful in the case that a combo list should be displayed that allow
 format of the documentation generation process.
 
 .. code-block:: php
-   :linenos:
 
    use ZendService\LiveDocx\MailMerge;
 
@@ -569,7 +558,6 @@ particularly useful in the case that a combo list should be displayed that allow
 format of the documentation generation process.
 
 .. code-block:: php
-   :linenos:
 
    use ZendService\LiveDocx\MailMerge;
 
@@ -589,7 +577,6 @@ useful in the case that a combo list should be displayed that allows the end-use
 the documentation generation process.
 
 .. code-block:: php
-   :linenos:
 
    use ZendService\LiveDocx\MailMerge;
 
