@@ -21,7 +21,7 @@ The definition section expects the following information expressed as a PHP arra
            'runtime'  => array(/* @todo runtime information */),
            'class' => array(
                'instantiator' => '', // the name of the instantiator, by default this is __construct
-               'supertypes    => array(), // an array of supertypes the class implements
+               'supertypes'   => array(), // an array of supertypes the class implements
                'methods'      => array(
                    'setSomeParameter' => array( // a method name
                        'parameterName' => array(
