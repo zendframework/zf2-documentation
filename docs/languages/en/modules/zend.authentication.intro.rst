@@ -120,19 +120,19 @@ The following example illustrates how a developer may branch on the result code:
    :linenos:
 
    // inside of AuthController / loginAction
-   $result = $this->_auth->authenticate($adapter);
+   $result = $this->auth->authenticate($adapter);
 
    switch ($result->getCode()) {
 
-       case Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND:
+       case Result::FAILURE_IDENTITY_NOT_FOUND:
            /** do stuff for nonexistent identity **/
            break;
 
-       case Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID:
+       case Result::FAILURE_CREDENTIAL_INVALID:
            /** do stuff for invalid credential **/
            break;
 
-       case Zend_Auth_Result::SUCCESS:
+       case Result::SUCCESS:
            /** do stuff for successful authentication **/
            break;
 
