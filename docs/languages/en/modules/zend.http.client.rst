@@ -600,13 +600,13 @@ POST request, POST parameters are simply ignored.
    $request = new Request();
    $request->setUri('http://www.test.com');
    $request->setMethod('POST');
-   $request->setParameterPost(array('foo' => 'bar));
+   $request->setParameterPost(array('foo' => 'bar'));
 
    $client = new Client();
    $response = $client->dispatch($request);
 
    if ($response->isSuccess()) {
-       //  the POST was successfull
+       //  the POST was successful
    }
 
 
