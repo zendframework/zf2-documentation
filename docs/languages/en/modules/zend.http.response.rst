@@ -232,7 +232,7 @@ Available Methods
 
 .. _zend.http.response.methods.is-success:
 
-**isRedirect**
+**isSuccess**
    ``isSuccess()``
 
    Was the response successful?
