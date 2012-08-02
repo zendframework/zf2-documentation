@@ -125,7 +125,7 @@ Available Methods
 
    Load the connection adapter
 
-   While this method is not called more than one for a client, it is seperated from ->request() to preserve logic
+   While this method is not called more than one for a client, it is seperated from ->send() to preserve logic
    and readability
 
    Returns null
@@ -524,11 +524,11 @@ called, the default request method is ``GET`` (see the above example).
    use Zend\Http\Client;
    $client = new Client();
    // Preforming a POST request
-   $response = $client->request('POST');
+   $response = $client->send('POST');
 
    // Yet another way of preforming a POST request
    $client->setMethod(Client::POST);
-   $response = $client->request();
+   $response = $client->send();
 
 .. _zend.http.client.parameters.example-1:
 
