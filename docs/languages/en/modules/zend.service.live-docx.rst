@@ -185,7 +185,8 @@ code is as follows:
    $mailMerge = new MailMerge();
 
    $mailMerge->setUsername('myUsername')
-             ->setPassword('myPassword');
+             ->setPassword('myPassword')
+             ->setService (MailMerge::SERVICE_FREE);
 
    $mailMerge->setLocalTemplate('template.docx');
 
@@ -262,7 +263,8 @@ The following code populates the above template with data.
    $mailMerge = new MailMerge();
 
    $mailMerge->setUsername('myUsername')
-             ->setPassword('myPassword');
+             ->setPassword('myPassword')
+             ->setService (MailMerge::SERVICE_FREE);
 
    $mailMerge->setLocalTemplate('template.doc');
 
@@ -340,7 +342,8 @@ The supported formats can be obtained by calling ``getImageExportFormats()``.
     $mailMerge = new MailMerge();
 
     $mailMerge->setUsername('myUsername')
-              ->setPassword('myPassword');
+              ->setPassword('myPassword')
+              ->setService (MailMerge::SERVICE_FREE);
 
     $mailMerge->setLocalTemplate('template.docx');
 
@@ -402,7 +405,8 @@ The following code illustrates how to use a local template.
     $mailMerge = new MailMerge();
 
     $mailMerge->setUsername('myUsername')
-              ->setPassword('myPassword');
+              ->setPassword('myPassword')
+              ->setService (MailMerge::SERVICE_FREE);
 
     $mailMerge->setLocalTemplate('./template.docx');
 
@@ -422,7 +426,8 @@ The following code illustrates how to upload a template to the server:
     $mailMerge = new MailMerge();
 
     $mailMerge->setUsername('myUsername')
-              ->setPassword('myPassword');
+              ->setPassword('myPassword')
+              ->setService (MailMerge::SERVICE_FREE);
 
     $mailMerge->uploadTemplate('template.docx');
 
@@ -435,7 +440,8 @@ The following code illustrates how to reference the remotely stored template on 
     $mailMerge = new MailMerge();
 
     $mailMerge->setUsername('myUsername')
-              ->setPassword('myPassword');
+              ->setPassword('myPassword')
+              ->setService (MailMerge::SERVICE_FREE);
 
     $mailMerge->setRemoteTemplate('template.docx');
 
@@ -463,7 +469,8 @@ is useful, in the case that you create an application, in which an end-user can 
     $mailMerge = new MailMerge();
 
     $mailMerge->setUsername('myUsername')
-              ->setPassword('myPassword');
+              ->setPassword('myPassword')
+              ->setService (MailMerge::SERVICE_FREE);;
 
     $templateName = 'template-1-text-field.docx';
     $mailMerge->setLocalTemplate($templateName);
@@ -488,7 +495,8 @@ Before such templates can be populated, it is necessary to find out the names of
     $mailMerge = new MailMerge();
 
     $mailMerge->setUsername('myUsername')
-              ->setPassword('myPassword');
+              ->setPassword('myPassword')
+              ->setService (MailMerge::SERVICE_FREE);
 
     $templateName = 'template-block-fields.doc';
     $mailMerge->setLocalTemplate($templateName);
@@ -518,7 +526,8 @@ which are not available on the server, font-substitution will take place. This m
     $mailMerge = new MailMerge();
 
     $mailMerge->setUsername('myUsername')
-              ->setPassword('myPassword');
+              ->setPassword('myPassword')
+              ->setService (MailMerge::SERVICE_FREE);
 
     Debug::dump($mailMerge->getFontNames());
 
@@ -541,7 +550,8 @@ format of the documentation generation process.
     $mailMerge = new MailMerge()
 
     $mailMerge->setUsername('myUsername')
-              ->setPassword('myPassword');
+              ->setPassword('myPassword')
+              ->setService (MailMerge::SERVICE_FREE);
 
     Debug::dump($mailMerge->getTemplateFormats());
 
@@ -564,7 +574,8 @@ format of the documentation generation process.
     $mailMerge = new MailMerge();
 
     $mailMerge->setUsername('myUsername')
-              ->setPassword('myPassword');
+              ->setPassword('myPassword')
+              ->setService (MailMerge::SERVICE_FREE);
 
     Debug::dump($mailMerge->getDocumentFormats());
 
@@ -584,7 +595,8 @@ the documentation generation process.
     $mailMerge = new MailMerge();
 
     $mailMerge->setUsername('myUsername')
-              ->setPassword('myPassword');
+              ->setPassword('myPassword')
+              ->setService (MailMerge::SERVICE_FREE);
 
     Debug::dump($mailMerge->getImageExportFormats());
 
