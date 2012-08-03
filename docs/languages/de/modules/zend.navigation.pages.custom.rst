@@ -1,27 +1,27 @@
 .. _zend.navigation.pages.custom:
 
-Erstellung eigener Seiten Typen
+Erstellung eigener Seitentypen
 ===============================
 
-Wenn ``Zend_Navigation_Page`` erweiter wird, besteht normalerweise keine Notwendigkeit den Constructor oder die
-Methoden ``setOptions()`` oder ``setConfig()`` zu überladen. Der Constructor der Seite nimmt einen einzelnen
-Parameter, ein ``Array`` oder ein ``Zend_Config`` Objekt, welches an ``setOptions()`` oder an ``setConfig()``
-übergeben wird. Diese Methoden rufen dann die ``set()`` Methode auf, welche Optionen in native oder eigene
-Eigenschaften mappt. Wenn die Option ``internal_id`` angegeben wird, dann wird zuerst nach einer Methode geschaut
-die ``setInternalId()`` heißt und die Option wird an diese Methode übergeben wenn Sie existiert. Wenn die Methode
-nicht existiert, wird die Option als eigene Eigenschaft der Seite gesetzt, und ist über ``$internalId =
-$page->internal_id;`` oder ``$internalId = $page->get('internal_id');`` erreichbar.
+Wenn ``Zend\Navigation\Page`` erweitert wird, besteht normalerweise keine Notwendigkeit den Konstruktor oder die
+Methoden ``setOptions()`` oder ``setConfig()`` zu überladen. Der Konstruktor der Seite nimmt einen einzelnen
+Parameter (ein ``Array`` oder ein ``Zend\Config``-Objekt) entgegen, welches an ``setOptions()`` bzw. an ``setConfig()``
+weitergeleitet wird. Diese Methoden rufen dann die ``set()`` Methode auf, welche die Optionen in native oder eigene
+Eigenschaften mappt. Wenn beispielsweise die Option ``internal_id`` angegeben wird, dann wird zuerst nach einer 
+Methode gesucht, die ``setInternalId()`` heißt. Existiert diese Methode, dann wird die Option entsprechend übergeben.
+Wenn die Methode nicht existiert, wird die Option als eigene Eigenschaft der Seite gesetzt und ist über 
+``$internalId = $page->internal_id;`` oder ``$internalId = $page->get('internal_id');`` abrufbar.
 
 .. _zend.navigation.custom.example.simple:
 
-.. rubric:: Die einfachste eigene Seite
+.. rubric:: Die einfachste Variante einer eigenen Seite
 
-Das einzige Ding das eine eigene Seite implementieren muß ist die ``getHref()`` Methode.
+Die einzige Methode, die eine eigene Seite enthalten muß, ist die ``getHref()`` Methode.
 
 .. code-block:: php
    :linenos:
 
-   class My_Simple_Page extends Zend_Navigation_Page
+   class My\Simple\Page extends Zend\Navigation\Page\AbstractPage
    {
        public function getHref()
        {
@@ -33,35 +33,35 @@ Das einzige Ding das eine eigene Seite implementieren muß ist die ``getHref()``
 
 .. rubric:: Eine eigene Seite mit Eigenschaften
 
-Wenn Eigenschaften an eine erweiterte Seite angefügt werden, gibt es keine Notwendigkeit ``setOptions()`` oder
-``setConfig()`` zu Überladen/Modifizieren.
+Wenn Eigenschaften in eine erweiterte Seite eingefügt werden, dann müssen die Methoden ``setOptions()`` oder
+``setConfig()`` nicht überladen/modifizieren werden.
 
 .. code-block:: php
    :linenos:
 
-   class My_Navigation_Page extends Zend_Navigation_Page
+   class My\Navigation\Page extends Zend\Navigation\Page\AbstractPage
    {
-       private $_foo;
-       private $_fooBar;
+       protected $foo;
+       protected $fooBar;
 
        public function setFoo($foo)
        {
-           $this->_foo = $foo;
+           $this->foo = $foo;
        }
 
        public function getFoo()
        {
-           return $this->_foo;
+           return $this->foo;
        }
 
        public function setFooBar($fooBar)
        {
-           $this->_fooBar = $fooBar;
+           $this->fooBar = $fooBar;
        }
 
        public function getFooBar()
        {
-           return $this->_fooBar;
+           return $this->fooBar;
        }
 
        public function getHref()
@@ -71,16 +71,16 @@ Wenn Eigenschaften an eine erweiterte Seite angefügt werden, gibt es keine Notw
    }
 
    // Kann jetzt Erstellt werden mit
-   $page = new My_Navigation_Page(array(
-       'label'   => 'Namen von Eigenschaften werden auf Setter gemappt',
+   $page = new My\Navigation\Page(array(
+       'label'   => 'Namen von Eigenschaften werden auf Setter-Methoden gemappt',
        'foo'     => 'bar',
        'foo_bar' => 'baz'
    ));
 
    // ...oder
-   $page = Zend_Navigation_Page::factory(array(
-       'type'    => 'My_Navigation_Page',
-       'label'   => 'Namen von Eigenschaften werden auf Setter gemappt',
+   $page = Zend\Navigation\Page::factory(array(
+       'type'    => 'My\Navigation\Page',
+       'label'   => 'Namen von Eigenschaften werden auf Setter-Methoden gemappt',
        'foo'     => 'bar',
        'foo_bar' => 'baz'
    ));
