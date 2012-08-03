@@ -1,27 +1,26 @@
 .. _zend.navigation.pages.uri:
 
-Zend_Navigation_Page_Uri
+Zend\Navigation\Page\Uri
 ========================
 
-Seiten des Typs ``Zend_Navigation_Page_Uri`` können verwendet werden um auf Seiten von anderen Domains oder Sites
-zu verweisen, oder um eigene Logik für die Seite zu implementieren. *URI* Seiten sind einfach; zusätzlich zu den
-normalen Seitenoptionen nimmt eine *URI* Seite nur eine Option -*uri*. *uri* wird zurückgegeben wenn
-*$page->getHref()* aufgerufen wird, und kann ein ``String`` oder ``NULL`` sein.
+Seiten des Typs ``Zend\Navigation\Page\Uri`` können verwendet werden um auf Seiten von anderen Domains oder Websites
+zu verweisen, oder um eigene Logik für die Seite zu implementieren. *URI* Seiten sind sehr einfach gehalten.
+Zusätzlich zu den normalen Seitenoptionen kennt eine *URI*-Seite nur noch die Option *uri*. Der Wert von *uri* kann
+durch die Methode ``$page->getHref()`` zurückgegeben werden. Dies kann ``String`` oder ``NULL`` sein.
 
 .. note::
 
-   ``Zend_Navigation_Page_Uri`` versucht nicht zu erkennen ob es aktiv ist wenn *$page->isActive()* aufgerufen
-   wird. Es gibt zurück, was aktuell gesetzt ist. Um also eine *URI* Seite aktiv zu machen muß man händisch
-   *$page->setActive()* aufrufen oder *active* als eine Option der Seite bei der Erstellung spezifizieren.
+   ``Zend\Navigation\Page\Uri`` versucht nicht automatisch zu ermitteln, ob die Seite aktiv ist, wenn 
+   ``$page->isActive()`` aufgerufen wird. Die Methode liefert nur den aktuell festgelegten Wert zurück. Um also 
+   eine *URI*-Seite aktiv zu setzen, muß man händisch ``$page->setActive()`` aufrufen oder *active* als Option 
+   bei der Erstellung der Seite angeben.
 
 .. _zend.navigation.pages.uri.options:
 
-.. table:: URI Seiten Optionen
+.. table:: Optionen für URI-Seiten
 
-   +---------+------+--------+--------------------------------------------------+
-   |Schlüssel|Typ   |Standard|Beschreibung                                      |
-   +=========+======+========+==================================================+
-   |uri      |String|NULL    |URI zur Seite. Das kann ein String oder NULL sein.|
-   +---------+------+--------+--------------------------------------------------+
-
-
+   +------+------+--------+------------------------------------------------------+
+   |Option|Typ   |Standard|Beschreibung                                          |
+   +======+======+========+======================================================+
+   |uri   |String|NULL    |URI zur Seite. Das kann ``String`` oder ``NULL`` sein.|
+   +------+------+--------+------------------------------------------------------+
