@@ -4,7 +4,7 @@
 Routing and controllers
 #######################
 
-We are going to build a very simple inventory system to display our album
+We will build a very simple inventory system to display our album
 collection. The home page will list our collection and allow us to add, edit and
 delete albums. Hence the following pages are required:
 
