@@ -23,7 +23,7 @@ There are two primary implementations of the ``TableGatewayInterface`` that are 
 ``AbstractTableGateway`` and ``TableGateway``. The ``AbstractTableGateway`` is an abstract basic implementation
 that provides functionality for ``select()``, ``insert()``, ``update()``, ``delete()``, as well as an additional
 API for doing these same kinds of tasks with explicit SQL objects. These methods are ``selectWith()``,
-``insertWith()``, ``updateWith()`` and ``deleteWith()``. In addition, AbstracTableGateway also implements a
+``insertWith()``, ``updateWith()`` and ``deleteWith()``. In addition, AbstractTableGateway also implements a
 "Feature" API, that allows for expanding the behaviors of the base ``TableGateway`` implementation without having
 to extend the class with this new functionality. The ``TableGateway`` concrete implementation simply adds a
 sensible constructor to the ``AbstractTableGateway`` class so that out-of-the-box, ``TableGateway`` does not need
