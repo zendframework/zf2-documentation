@@ -39,9 +39,9 @@ This driver array is an abstraction for the extension level required parameters.
    +------------+----------------------+-------------------------------------------------------------+
    |hostname    |not generally required|the IP address or hostname to connect to                     |
    +------------+----------------------+-------------------------------------------------------------+
-   |port        |not generally required|not generally required the port to connect to (if applicable)|
+   |port        |not generally required|the port to connect to (if applicable)                       |
    +------------+----------------------+-------------------------------------------------------------+
-   |characterset|not generally required|not generally required the character set to use              |
+   |characterset|not generally required|the character set to use                                     |
    +------------+----------------------+-------------------------------------------------------------+
 
 \* other names will work as well. Effectively, if the PHP manual uses a particular naming, this naming will be
