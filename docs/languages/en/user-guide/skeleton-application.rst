@@ -4,8 +4,9 @@
 Getting started: A skeleton application
 #######################################
 
-In order to build our application, we are going to start with the
-ZendSkeletonApplication available from `github <https://github.com/>`_. 
+In order to build our application, we will start with the
+`ZendSkeletonApplication <https://github.com/zendframework/ZendSkeletonApplication>`_ 
+available on `github <https://github.com/>`_. 
 Go to https://github.com/zendframework/ZendSkeletonApplication and click the “Zip”
 button. This will download a ﬁle with a name like
 ``zendframework-ZendSkeletonApplication-zfrelease-2.0.0beta5-2-gc2c7315.zip`` or
