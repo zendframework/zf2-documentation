@@ -141,8 +141,8 @@ The conﬁg information passed to the relevant components by the
 ``ServiceManager``.  We need two initial sections: ``controller`` and
 ``view_manager``. The controller section provides a list of all the controllers
 provided by the module. We will need one controller, ``AlbumController``, which
-we’ll reference as ``Album\Controller\Album``. We call it this as the key must
-be unique across all modules, so we preﬁx with our module name.
+we’ll reference as ``Album\Controller\Album``. The controller key must
+be unique across all modules, so we preﬁx it with our module name.
 
 Within the ``view_manager`` section, we add our view directory to the
 ``TemplatePathStack`` conﬁguration. This will allow it to ﬁnd the view scripts for
