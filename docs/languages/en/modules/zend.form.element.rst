@@ -176,7 +176,7 @@ Available Methods
 
 .. _zend.form.element.methods.get-messages:
 
-**setMessages**
+**getMessages**
    ``getMessages()``
 
    Returns a list of validation failure messages, if any.
