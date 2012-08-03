@@ -119,7 +119,7 @@ is a class that is generally called ``{Controller name}Controller``. Note that
 ``{Controller name}`` must start with a capital letter.  This class lives in a ﬁle
 called ``{Controller name}Controller.php`` within the ``Controller`` directory for the
 module. In our case that is ``module/Album/src/Album/Controller``. Each action is
-a public function within the controller class that is named ``{action name}Action``.
+a public method within the controller class that is named ``{action name}Action``.
 In this case ``{action name}`` should start with a lower case letter.
 
 Note that this is by convention. Zend Framework 2 doesn’t provide many
