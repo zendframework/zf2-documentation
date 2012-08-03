@@ -161,8 +161,9 @@ to the adapter property of our class. We then need to tell the table gateway’s
 result set that whenever it creates a new row object, it should use an ``Album``
 object to do so. The ``TableGateway`` classes use the prototype pattern for
 creation of result sets and entities. This means that instead of instantiating
-when required, the system clones a previously instantiated object. See
-http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prototype-pattern
+when required, the system clones a previously instantiated object. See 
+`PHP Constructor Best Practices and the Prototype Pattern 
+<http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prototype-pattern>`_
 for more details.
 
 We then create some helper methods that our application will use to interface
