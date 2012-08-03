@@ -71,15 +71,15 @@ When adding properties to an extended page, there is no need to override/modify 
 
    // can now construct using
    $page = new My\Navigation\Page(array(
-       'label'  => 'Property names are mapped to setters',
-       'foo'    => 'bar',
-       'fooBar' => 'baz'
+       'label'   => 'Property names are mapped to setters',
+       'foo'     => 'bar',
+       'foo_bar' => 'baz'
    ));
 
    // ...or
    $page = Zend\Navigation\Page::factory(array(
-       'type'   => 'My\Navigation\Page',
-       'label'  => 'Property names are mapped to setters',
-       'foo'    => 'bar',
-       'fooBar' => 'baz'
+       'type'    => 'My\Navigation\Page',
+       'label'   => 'Property names are mapped to setters',
+       'foo'     => 'bar',
+       'foo_bar' => 'baz'
    ));
