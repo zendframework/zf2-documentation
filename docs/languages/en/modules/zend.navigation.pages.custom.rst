@@ -3,9 +3,9 @@
 Creating custom page types
 ==========================
 
-When extending ``Zend_Navigation_Page``, there is usually no need to override the constructor or the methods
+When extending ``Zend\Navigation\Page``, there is usually no need to override the constructor or the methods
 ``setOptions()`` or ``setConfig()``. The page constructor takes a single parameter, an ``Array`` or a
-``Zend_Config`` object, which is passed to ``setOptions()`` or ``setConfig()`` respectively. Those methods will in
+``Zend\Config`` object, which is passed to ``setOptions()`` or ``setConfig()`` respectively. Those methods will in
 turn call ``set()`` method, which will map options to native or custom properties. If the option ``internal_id`` is
 given, the method will first look for a method named ``setInternalId()``, and pass the option to this method if it
 exists. If the method does not exist, the option will be set as a custom property of the page, and be accessible
@@ -20,7 +20,7 @@ The only thing a custom page class needs to implement is the ``getHref()`` metho
 .. code-block:: php
    :linenos:
 
-   class My_Simple_Page extends Zend_Navigation_Page
+   class My\Simple\Page extends Zend\Navigation\Page
    {
        public function getHref()
        {
@@ -38,29 +38,29 @@ When adding properties to an extended page, there is no need to override/modify 
 .. code-block:: php
    :linenos:
 
-   class My_Navigation_Page extends Zend_Navigation_Page
+   class My\Navigation\Page extends Zend\Navigation\Page
    {
-       private $_foo;
-       private $_fooBar;
+       protected $foo;
+       protected $fooBar;
 
        public function setFoo($foo)
        {
-           $this->_foo = $foo;
+           $this->foo = $foo;
        }
 
        public function getFoo()
        {
-           return $this->_foo;
+           return $this->oo;
        }
 
        public function setFooBar($fooBar)
        {
-           $this->_fooBar = $fooBar;
+           $this->fooBar = $fooBar;
        }
 
        public function getFooBar()
        {
-           return $this->_fooBar;
+           return $this->fooBar;
        }
 
        public function getHref()
@@ -70,18 +70,16 @@ When adding properties to an extended page, there is no need to override/modify 
    }
 
    // can now construct using
-   $page = new My_Navigation_Page(array(
-       'label'   => 'Property names are mapped to setters',
-       'foo'     => 'bar',
-       'foo_bar' => 'baz'
+   $page = new My\Navigation\Page(array(
+       'label'  => 'Property names are mapped to setters',
+       'foo'    => 'bar',
+       'fooBar' => 'baz'
    ));
 
    // ...or
-   $page = Zend_Navigation_Page::factory(array(
-       'type'    => 'My_Navigation_Page',
-       'label'   => 'Property names are mapped to setters',
-       'foo'     => 'bar',
-       'foo_bar' => 'baz'
+   $page = Zend\Navigation\Page::factory(array(
+       'type'   => 'My\Navigation\Page',
+       'label'  => 'Property names are mapped to setters',
+       'foo'    => 'bar',
+       'fooBar' => 'baz'
    ));
-
-
