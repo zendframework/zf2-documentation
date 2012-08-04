@@ -1,15 +1,16 @@
 .. _zend.form.element.url:
 
-Zend\\Form\\Element\\Url
-========================
+Url Element
+-----------
 
-The ``Url`` element is meant to be paired with the ``Zend/Form/View/Helper/FormUrl`` for `HTML5 inputs with type
+``Zend\Form\Element\Url`` is meant to be paired with the ``Zend/Form/View/Helper/FormUrl`` for `HTML5 inputs with type
 url`_. This element adds filters and a ``Zend\Validator\Uri`` validator to it's input filter specification for
 validating HTML5 URL input values on the server.
 
 .. _zend.form.element.url.usage:
 
-.. rubric:: Basic Usage of Zend\\Form\\Element\\Url
+Basic Usage
+^^^^^^^^^^^
 
 This element automatically adds a ``"type"`` attribute of value ``"url"``.
 
@@ -27,16 +28,14 @@ This element automatically adds a ``"type"`` attribute of value ``"url"``.
 
 .. _zend.form.element.url.methods:
 
-Available Methods
------------------
+Public Methods
+^^^^^^^^^^^^^^
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.
 
-.. _zend.form.element.url.methods.get-input-specification:
-
-**getInputSpecification**
-   ``getInputSpecification()``
+.. function:: getInputSpecification()
+   :noindex:
 
    Returns a input filter specification, which includes a ``Zend\Filter\StringTrim`` filter, and a
    ``Zend\Validator\Uri`` to validate the URI string.

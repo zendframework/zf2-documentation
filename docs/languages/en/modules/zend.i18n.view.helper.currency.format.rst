@@ -1,14 +1,15 @@
 .. _zend.i18n.view.helper.currency-format:
 
 CurrencyFormat Helper
-=====================
+---------------------
 
 The ``CurrencyFormat`` view helper can be used to simplify rendering of localized currency values. It acts as a
 wrapper for the ``NumberFormatter`` class within the Internationalization extension (Intl).
 
 .. _zend.i18n.view.helper.currency-format.usage:
 
-.. rubric:: Basic Usage of CurrencyFormat
+Basic Usage
+^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -21,18 +22,19 @@ wrapper for the ``NumberFormatter`` class within the Internationalization extens
    echo $this->currencyFormat(1234.56, "EUR", "de_DE");
    // This returns: "1.234,56 €"
 
-``currencyFormat(float $number , string $currencyCode [, string $locale ])``
+.. function:: currencyFormat(float $number , string $currencyCode [, string $locale ])
+   :noindex:
 
-- ``$number``: The numeric currency value.
+   :param $number: The numeric currency value.
 
-- ``$currencyCode``: The 3-letter ISO 4217 currency code indicating the currency to use.
+   :param $currencyCode: The 3-letter ISO 4217 currency code indicating the currency to use.
 
-- ``$locale``: (Optional) Locale in which the currency would be formatted (locale name, e.g. en_US). If unset, it
-  will use the default locale (``Locale::getDefault()``)
+   :param $locale: (Optional) Locale in which the currency would be formatted (locale name, e.g. en_US). If unset, it will use the default locale (``Locale::getDefault()``)
 
 .. _zend.i18n.view.helper.currency-format.setter-usage:
 
-.. rubric:: CurrencyFormat Setters
+Public Methods
+^^^^^^^^^^^^^^
 
 The ``$currencyCode`` and ``$locale`` options can be set prior to formatting and will be applied each time the
 helper is used:

@@ -1,7 +1,7 @@
 .. _zend.form.view.helper.abstract-helper:
 
-Abstract Helper
-===============
+AbstractHelper
+--------------
 
 The ``AbstractHelper`` is used as a base abstract class for Form view helpers, providing methods
 for validating form HTML attributes, as well as controlling the doctype and character encoding.
@@ -11,53 +11,42 @@ that allows setting a translator and text domain.
 
 .. _zend.form.view.helper.abstract-helper.methods:
 
-Available Methods
------------------
+Public Methods
+^^^^^^^^^^^^^^
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\I18n\\View\\Helper\\AbstractTranslatorHelper
 <zend.i18n.view.helper.abstract-translator-helper.methods>`.
 
-.. _zend.form.view.helper.abstract-helper.methods.set-doctype:
+.. function:: setDoctype(string $doctype)
+   :noindex:
 
-**setDoctype**
+   Sets a doctype to use in the helper.
 
-   ``setDoctype($doctype)``
+.. function:: getDoctype()
+   :noindex:
 
-   Sets a doctype ``string`` to use in the helper.
+   Returns the doctype used in the helper.
 
-.. _zend.form.view.helper.abstract-helper.methods.get-doctype:
+   :rtype: string
 
-**getDoctype**
-
-   ``getDoctype()``
-
-   Returns the doctype ``string`` used in the helper.
-
-.. _zend.form.view.helper.abstract-helper.methods.set-encoding:
-
-**setEncoding**
-
-   ``setEncoding($textDomain = 'default')``
+.. function:: setEncoding(string $encoding)
+   :noindex:
 
    Set the translation text domain to use in helper when translating.
 
-.. _zend.form.view.helper.abstract-helper.methods.get-encoding:
+.. function:: getEncoding()
+   :noindex:
 
-**getEncoding**
+   Returns the character encoding used in the helper.
 
-   ``getEncoding()``
+   :rtype: string
 
-   Returns a ``string`` of the character encodingused in the helper.
+.. function:: getId()
+   :noindex:
 
-.. _zend.form.view.helper.abstract-helper.methods.get-id:
-
-**getId**
-
-   ``getId()``
-
-   Returns a ``string`` of the element id.
-
+   Returns the element id.
    If no ID attribute present, attempts to use the name attribute.
+   If name attribute is also not present, returns null.
 
-   If no name attribute is present, either, returns null.
+   :rtype: string or null
 

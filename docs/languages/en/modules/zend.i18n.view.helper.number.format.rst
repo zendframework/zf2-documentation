@@ -1,14 +1,15 @@
 .. _zend.i18n.view.helper.number-format:
 
 NumberFormat Helper
-===================
+-------------------
 
 The ``NumberFormat`` view helper can be used to simplify rendering of locale-specific number and percentage
 strings. It acts as a wrapper for the ``NumberFormatter`` class within the Internationalization extension (Intl).
 
 .. _zend.i18n.view.helper.number-format.usage:
 
-.. rubric:: Basic Usage of NumberFormat
+Basic Usage
+^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -42,22 +43,21 @@ strings. It acts as a wrapper for the ``NumberFormatter`` class within the Inter
    );
    // This returns: "1,23456789E-3"
 
-``numberFormat(number $number [, int $formatStyle [, int $formatType [, string $locale ]]])``
+.. function:: numberFormat(number $number [, int $formatStyle [, int $formatType [, string $locale ]]])
+   :noindex:
 
-- ``$number``: The numeric value.
+   :param $number: The numeric value.
 
-- ``$formatStyle``: (Optional) Style of the formatting, one of the `format style constants`_. If unset, it will use
-  ``NumberFormatter::DECIMAL`` as the default style.
+   :param $formatStyle: (Optional) Style of the formatting, one of the `format style constants`_. If unset, it will use ``NumberFormatter::DECIMAL`` as the default style.
 
-- ``$formatType``: (Optional) The `formatting type`_ to use. If unset, it will use
-  ``NumberFormatter::TYPE_DEFAULT`` as the default type.
+   :param $formatType: (Optional) The `formatting type`_ to use. If unset, it will use ``NumberFormatter::TYPE_DEFAULT`` as the default type.
 
-- ``$locale``: (Optional) Locale in which the number would be formatted (locale name, e.g. en_US). If unset, it
-  will use the default locale (``Locale::getDefault()``)
+   :param $locale: (Optional) Locale in which the number would be formatted (locale name, e.g. en_US). If unset, it will use the default locale (``Locale::getDefault()``)
 
 .. _zend.i18n.view.helper.number-format.setter-usage:
 
-.. rubric:: NumberFormat Setters
+Public Methods
+^^^^^^^^^^^^^^
 
 The ``$formatStyle``, ``$formatType``, and ``$locale`` options can be set prior to formatting and will be applied
 each time the helper is used.

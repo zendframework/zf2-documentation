@@ -1,7 +1,7 @@
 .. _zend.form.view.helpers:
 
-Zend\\Form\\View\\Helper
-===================
+Form View Helpers
+=================
 
 .. _zend.form.view.helpers.intro:
 

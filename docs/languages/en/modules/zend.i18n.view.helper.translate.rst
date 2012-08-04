@@ -1,14 +1,15 @@
 .. _zend.i18n.view.helper.translate:
 
 Translate Helper
-================
+----------------
 
 The ``Translate`` view helper can be used to translate content. It acts as a wrapper for the
 ``Zend\I18n\Translator\Translator`` class.
 
 .. _zend.i18n.view.helper.translate.setup:
 
-.. rubric:: Translate Setup
+Setup
+^^^^^
 
 Before using the ``Translate`` view helper, you must have first created a ``Translator`` object and have attached
 it to the view helper. If you use the ``Zend\View\HelperPluginManager`` to invoke the view helper,
@@ -16,7 +17,8 @@ this will be done automatically for you.
 
 .. _zend.i18n.view.helper.translate.usage:
 
-.. rubric:: Basic Usage of Translate
+Basic Usage
+^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -31,18 +33,19 @@ this will be done automatically for you.
 
    echo $this->translate("Translate in a specific locale", "default", "de_DE");
 
-``translate(string $message [, string $textDomain [, string $locale ]])``
+.. function:: translate(string $message [, string $textDomain [, string $locale ]])
+   :noindex:
 
-- ``$message``: The message to be translated.
+   :param $message: The message to be translated.
 
-- ``$textDomain``: (Optional) The text domain where this translation lives. Defaults to the value "default".
+   :param $textDomain: (Optional) The text domain where this translation lives. Defaults to the value "default".
 
-- ``$locale``: (Optional) Locale in which the message would be translated (locale name, e.g. en_US). If unset, it
-  will use the default locale (``Locale::getDefault()``)
+   :param $locale: (Optional) Locale in which the message would be translated (locale name, e.g. en_US). If unset, it will use the default locale (``Locale::getDefault()``)
 
 .. _zend.i18n.view.helper.translate.methods:
 
-.. rubric:: Translate Methods
+Public Methods
+^^^^^^^^^^^^^^
 
 Public methods for setting a ``Zend\I18n\Translator\Translator`` and a default text domain are inherited from
  :ref:`Zend\\I18n\\View\\Helper\\AbstractTranslatorHelper <zend.i18n.view.helper.abstract-translator-helper.methods>`.

@@ -1,7 +1,7 @@
 .. _zend.form.elements:
 
-Zend\\Form\\Element
-===================
+Form Elements
+=============
 
 .. _zend.form.elements.intro:
 

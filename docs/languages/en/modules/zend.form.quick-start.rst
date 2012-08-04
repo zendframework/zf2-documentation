@@ -1,7 +1,7 @@
 .. _zend.form.quick-start:
 
-Zend\\Form Quick Start
-======================
+Form Quick Start
+================
 
 Forms are relatively easy to create. At the bare minimum, each element or fieldset requires a name; typically,
 you'll also provide some attributes to hint to the view layer how it might render the item. The form itself will
@@ -656,10 +656,10 @@ markup generation toother view helpers; however, it can only guess what specific
 on the list it has. If you introduce new form view helpers, you'll need to extend the ``FormElement`` helper, or
 create your own.
 
-However, your view files can quickly become long and repetitive to write. While we do not currently provide a 
+However, your view files can quickly become long and repetitive to write. While we do not currently provide a
 single-line form view helper (as this reduces the form customization), the most simplest and recommended way to
-render your form is by using the ``FormRow`` view helper. This view helper automatically renders a label (if present), 
-the element itself using the ``FormElement`` helper, as well as any errors that could arise. Here is the previous form, 
+render your form is by using the ``FormRow`` view helper. This view helper automatically renders a label (if present),
+the element itself using the ``FormElement`` helper, as well as any errors that could arise. Here is the previous form,
 rewritten to take advantage of this helper :
 
 .. code-block:: php
@@ -750,7 +750,7 @@ If you later want to reset the form to validate all, simply pass the ``FormInter
 
    use Zend\Form\FormInterface;
    $form->setValidationGroup(FormInterface::VALIDATE_ALL);
-   
+
 When your form contains nested fieldsets, you can use an array notation to validate only a subset of the fieldsets :
 
 .. code-block:: php

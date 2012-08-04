@@ -1,15 +1,16 @@
 .. _zend.form.element.number:
 
-Zend\\Form\\Element\\Number
-===========================
+Number Element
+--------------
 
-The ``Number`` element is meant to be paired with the ``Zend/Form/View/Helper/FormNumber`` for `HTML5 inputs with
+``Zend\Form\Element\Number`` is meant to be paired with the ``Zend/Form/View/Helper/FormNumber`` for `HTML5 inputs with
 type number`_. This element adds filters and validators to it's input filter specification in order to validate
 HTML5 number input values on the server.
 
 .. _zend.form.element.number.usage:
 
-.. rubric:: Basic Usage of Zend\\Form\\Element\\Number
+Basic Usage
+^^^^^^^^^^^
 
 This element automatically adds a ``"type"`` attribute of value ``"number"``.
 
@@ -38,16 +39,16 @@ This element automatically adds a ``"type"`` attribute of value ``"number"``.
 
 .. _zend.form.element.number.methods:
 
-Available Methods
------------------
+Basic Usage
+^^^^^^^^^^^
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.
 
 .. _zend.form.element.number.methods.get-input-specification:
 
-**getInputSpecification**
-   ``getInputSpecification()``
+.. function:: getInputSpecification()
+   :noindex:
 
    Returns a input filter specification, which includes ``Zend\Filter\StringTrim`` and will add the appropriate
    validators based on the values from the ``min``, ``max``, and ``step`` attributes.
