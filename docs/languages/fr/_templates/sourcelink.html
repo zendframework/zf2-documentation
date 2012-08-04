@@ -1,0 +1,9 @@
+{%- if show_source and has_source and sourcename %}
+  <h3>{{ _('This Page') }}</h3>
+  <ul class="this-page-menu">
+    <li><a href="{{ pathto('_sources/' + sourcename, true)|e }}"
+           rel="nofollow">{{ _('Show Source') }}</a></li>
+    <li><a href="https://github.com/zendframework/zf2-documentation/edit/master/docs/languages/en/{{ pagename }}.rst"
+           rel="nofollow">{{ _('Edit Source') }}</a></li>
+  </ul>
+{%- endif %}

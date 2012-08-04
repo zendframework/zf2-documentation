@@ -1,51 +1,52 @@
 .. _zend.auth.adapter.openid:
 
-Authentification OpenID
-=======================
+Open ID Authentication
+======================
 
 .. _zend.auth.adapter.openid.introduction:
 
 Introduction
 ------------
 
-``Zend_Auth_Adapter_OpenId`` permet l'authentification à travers un serveur distant OpenID. Une telle
-authentification attend que l'utilisateur fournisse à l'application Web son identifiant OpenID. L'utilisateur est
-alors redirigé vers un fournisseur de services OpenID, afin de s'identifier en rapport avec l'application Web
-utilisée. Un mot de passe ou un autre procédé est utilisé, et celui-ci n'est jamais connu de l'application Web
-originale.
+The ``Zend_Auth_Adapter_OpenId`` adapter can be used to authenticate users using remote OpenID servers. This
+authentication method assumes that the user submits only their OpenID identity to the web application. They are
+then redirected to their OpenID provider to prove identity ownership using a password or some other method. This
+password is never provided to the web application.
 
-L'identité OpenID est juste une *URI* qui pointe vers une page avec des informations décrivant le serveur à
-utiliser et des informations sur l'utilisateur. Pour plus d'informations, consultez `le site officiel OpenID`_.
+The OpenID identity is just a *URI* that points to a web site with information about a user, along with special
+tags that describes which server to use and which identity to submit there. You can read more about OpenID at the
+`OpenID official site`_.
 
-La classe ``Zend_Auth_Adapter_OpenId`` utilise ``Zend_OpenId_Consumer`` qui sert à gérer le protocole OpenID.
+The ``Zend_Auth_Adapter_OpenId`` class wraps the ``Zend_OpenId_Consumer`` component, which implements the OpenID
+authentication protocol itself.
 
 .. note::
 
-   ``Zend_OpenId`` utilise `l'extension GMP`_, si disponible. L'utilisation de l'extension *GMP* est recommandée
-   pour améliorer les performances de ``Zend_Auth_Adapter_OpenId``.
+   ``Zend_OpenId`` takes advantage of the `GMP extension`_, where available. Consider enabling the *GMP* extension
+   for better performance when using ``Zend_Auth_Adapter_OpenId``.
 
 .. _zend.auth.adapter.openid.specifics:
 
-Spécifications
---------------
+Specifics
+---------
 
-Comme toute autre classe adaptateur de ``Zend_Auth``, ``Zend_Auth_Adapter_OpenId`` implémente
-``Zend_Auth_Adapter_Interface``, qui définit une seule méthode : ``authenticate()``. Elle est utilisée pour
-l'authentification elle-même, une fois que l'objet est prêt. La préparation d'un objet OpenID nécessite
-quelques options à passer à ``Zend_OpenId``.
+As is the case for all ``Zend_Auth`` adapters, the ``Zend_Auth_Adapter_OpenId`` class implements
+``Zend_Auth_Adapter_Interface``, which defines one method: ``authenticate()``. This method performs the
+authentication itself, but the object must be prepared prior to calling it. Such adapter preparation includes
+setting up the OpenID identity and some other ``Zend_OpenId`` specific options.
 
-A la différence des autres adaptateurs ``Zend_Auth``, l'adaptateur ``Zend_Auth_Adapter_OpenId`` utilise une
-authentification sur un serveur externe à l'application, et nécessitera donc deux requêtes *HTTP*. Ainsi
-``Zend_Auth_Adapter_OpenId::authenticate()`` devra être appelée deux fois : d'abord pour rediriger l'utilisateur
-vers le serveur OpenID (rien ne sera donc retourné par la méthode), qui lui-même redirigera l'utilisateur vers
-l'application, où un deuxième appel de méthode ``Zend_Auth_Adapter_OpenId::authenticate()`` vérifiera la
-signature et complétera le processus. Un objet ``Zend_Auth_Result`` sera alors cette fois-ci retourné.
+However, as opposed to other ``Zend_Auth`` adapters, ``Zend_Auth_Adapter_OpenId`` performs authentication on an
+external server in two separate *HTTP* requests. So the ``Zend_Auth_Adapter_OpenId::authenticate()`` method must be
+called twice. On the first invocation the method won't return, but will redirect the user to their OpenID server.
+Then after the user is authenticated on the remote server, they will be redirected back and the script for this
+second request must call ``Zend_Auth_Adapter_OpenId::authenticate()`` again to verify the signature which comes
+with the redirected request from the server to complete the authentication process. On this second invocation, the
+method will return the ``Zend_Auth_Result`` object as expected.
 
-L'exemple suivant montre l'utilisation de ``Zend_Auth_Adapter_OpenId``.
-``Zend_Auth_Adapter_OpenId::authenticate()`` est appelée deux fois. La première fois juste après avoir envoyé
-le formulaire *HTML*, lorsque ``$_POST['openid_action']`` vaut **"login"**, et la deuxième fois après la
-redirection *HTTP* du serveur OpenID vers l'application, lorsque ``$_GET['openid_mode']`` ou
-``$_POST['openid_mode']`` existe.
+The following example shows the usage of ``Zend_Auth_Adapter_OpenId``. As previously mentioned, the
+``Zend_Auth_Adapter_OpenId::authenticate()`` must be called two times. The first time is after the user submits the
+*HTML* form with the ``$_POST['openid_action']`` set to **"login"**, and the second time is after the *HTTP*
+redirection from OpenID server with ``$_GET['openid_mode']`` or ``$_POST['openid_mode']`` set.
 
 .. code-block:: php
    :linenos:
@@ -61,7 +62,7 @@ redirection *HTTP* du serveur OpenID vers l'application, lorsque ``$_GET['openid
        $result = $auth->authenticate(
            new Zend_Auth_Adapter_OpenId(@$_POST['openid_identifier']));
        if ($result->isValid()) {
-           $status = "You are logged-in as "
+           $status = "You are logged in as "
                    . $auth->getIdentity()
                    . "<br>\n";
        } else {
@@ -75,7 +76,7 @@ redirection *HTTP* du serveur OpenID vers l'application, lorsque ``$_GET['openid
            $_POST['openid_action'] == "logout") {
            $auth->clearIdentity();
        } else {
-           $status = "You are logged-in as "
+           $status = "You are logged in as "
                    . $auth->getIdentity()
                    . "<br>\n";
        }
@@ -85,19 +86,19 @@ redirection *HTTP* du serveur OpenID vers l'application, lorsque ``$_GET['openid
    <?php echo htmlspecialchars($status);?>
    <form method="post"><fieldset>
    <legend>OpenID Login</legend>
-
    <input type="text" name="openid_identifier" value="">
    <input type="submit" name="openid_action" value="login">
    <input type="submit" name="openid_action" value="logout">
    </fieldset></form></body></html>
+   */
 
-Il est possible de personnaliser le processus, pour par exemple demander une redirection du serveur OpenID vers
-l'application, sur une page différente de la première. Ceci peut être fait avec des objets personnalisés
-``Zend_OpenId_Consumer_Storage`` ou ``Zend_Controller_Response``. Vous pouvez aussi utiliser le procédé "Simple
-Registration" pour récupérer les informations au sujet de l'utilisateur, en provenance du serveur OpenID. Toutes
-ces possibilités sont écrites et détaillées dans le chapitre concernant ``Zend_OpenId_Consumer``.
+You may customize the OpenID authentication process in several way. You can, for example, receive the redirect from
+the OpenID server on a separate page, specifying the "root" of web site and using a custom
+``Zend_OpenId_Consumer_Storage`` or a custom ``Zend_Controller_Response``. You may also use the Simple Registration
+Extension to retrieve information about user from the OpenID server. All of these possibilities are described in
+more detail in the ``Zend_OpenId_Consumer`` chapter.
 
 
 
-.. _`le site officiel OpenID`: http://www.openid.net/
-.. _`l'extension GMP`: http://www.php.net/manual/fr/ref.gmp.php
+.. _`OpenID official site`: http://www.openid.net/
+.. _`GMP extension`: http://php.net/gmp

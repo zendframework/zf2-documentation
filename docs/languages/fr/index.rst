@@ -6,11 +6,19 @@
 Programmer's Reference Guide of Zend Framework 2
 ================================================
 
-.. toctree:: 
+.. toctree::
    :hidden:
 
    ref/overview
    ref/installation
+   user-guide/overview
+   user-guide/skeleton-application
+   user-guide/modules
+   user-guide/routing-and-controllers
+   user-guide/database-and-models
+   user-guide/styling-and-translations
+   user-guide/forms-and-actions
+   user-guide/conclusion
    tutorials/quickstart.di
    modules/zend.authentication.intro
    modules/zend.authentication.adapter.dbtable
@@ -21,25 +29,26 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.barcode.creation
    modules/zend.barcode.objects
    modules/zend.barcode.renderers
-   modules/zend.cache.theory 
-   modules/zend.cache.introduction 
+   modules/zend.cache.theory
+   modules/zend.cache.introduction
    modules/zend.cache.frontends
    modules/zend.cache.storage.adapter
    modules/zend.cache.storage.capabilities
    modules/zend.cache.storage.plugin
    modules/zend.cache.pattern
-   modules/zend.captcha.intro 
+   modules/zend.captcha.intro
    modules/zend.captcha.operation
-   modules/zend.captcha.adapters 
-   modules/zend.config.introduction 
+   modules/zend.captcha.adapters
+   modules/zend.config.introduction
    modules/zend.config.theory-of-operation
    modules/zend.config.reader
    modules/zend.config.writer
    modules/zend.config.processor
-   modules/zend.crypt.introduction 
+   modules/zend.crypt.introduction
    modules/zend.crypt.block-cipher
    modules/zend.crypt.key.derivation
    modules/zend.crypt.password
+   modules/zend.crypt.public-key
    modules/zend.db.adapter
    modules/zend.db.result-set
    modules/zend.db.sql
@@ -51,26 +60,14 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.di.definitions
    modules/zend.di.instance-manager
    modules/zend.di.configuration
-   modules/zend.di.debugging-and-complex-use
+   modules/zend.di.debugging-and-complex-use-cases
    modules/zend.dom.intro
    modules/zend.dom.query
    modules/zend.event-manager.event-manager
    modules/zend.form.intro
    modules/zend.form.quick-start
-   modules/zend.form.element
-   modules/zend.form.element.captcha
-   modules/zend.form.element.color
-   modules/zend.form.element.csrf
-   modules/zend.form.element.date
-   modules/zend.form.element.date.time.local
-   modules/zend.form.element.date.time
-   modules/zend.form.element.email
-   modules/zend.form.element.month
-   modules/zend.form.element.number
-   modules/zend.form.element.range
-   modules/zend.form.element.time
-   modules/zend.form.element.url
-   modules/zend.form.element.week
+   modules/zend.form.elements
+   modules/zend.form.collections
    modules/zend.http
    modules/zend.http.request
    modules/zend.http.response
@@ -100,10 +97,15 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.loader.classmap-generator
    modules/zend.loader.prefix-path-loader
    modules/zend.loader.prefix-path-mapper
+   modules/zend.log.overview
+   modules/zend.log.writers
+   modules/zend.log.filters
+   modules/zend.log.formatters
    modules/zend.mail.message
    modules/zend.mail.transport
    modules/zend.mail.smtp.options
    modules/zend.mail.file.options
+   modules/zend.math.introduction
    modules/zend.module-manager.intro
    modules/zend.module-manager.module-manager
    modules/zend.module-manager.module-class
@@ -131,7 +133,7 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.validator.messages
    modules/zend.view.quick-start
    modules/zend.view.renderer.php-renderer
-   modules/zend.view.php-renderer-scripts
+   modules/zend.view.php-renderer.scripts
    modules/zend.view.helpers
    modules/zend.xmlrpc.intro
    modules/zend.xmlrpc.client
@@ -141,8 +143,24 @@ Programmer's Reference Guide of Zend Framework 2
 Introduction to Zend Framework
 ------------------------------
 
-    * :doc:`ref/overview` 
+    * :doc:`ref/overview`
     * :doc:`ref/installation`
+
+User Guide
+----------
+
+The user guide is provided to take you through a non-trivial example, showing
+you various techniques and features of the framework in order to build an
+application.
+
+    * :doc:`user-guide/overview`
+    * :doc:`user-guide/skeleton-application`
+    * :doc:`user-guide/modules`
+    * :doc:`user-guide/routing-and-controllers`
+    * :doc:`user-guide/database-and-models`
+    * :doc:`user-guide/styling-and-translations`
+    * :doc:`user-guide/forms-and-actions`
+    * :doc:`user-guide/conclusion`
 
 Learning Zend Framework
 -----------------------
@@ -178,8 +196,8 @@ Zend\\Barcode
 Zend\\Cache
 ^^^^^^^^^^^
 
-        * :doc:`modules/zend.cache.theory` 
-        * :doc:`modules/zend.cache.introduction` 
+        * :doc:`modules/zend.cache.theory`
+        * :doc:`modules/zend.cache.introduction`
         * :doc:`modules/zend.cache.frontends`
         * :doc:`modules/zend.cache.storage.adapter`
         * :doc:`modules/zend.cache.storage.capabilities`
@@ -191,7 +209,7 @@ Zend\\Cache
 Zend\\Captcha
 ^^^^^^^^^^^^^
 
-        * :doc:`modules/zend.captcha.intro` 
+        * :doc:`modules/zend.captcha.intro`
         * :doc:`modules/zend.captcha.operation`
         * :doc:`modules/zend.captcha.adapters`
 
@@ -212,7 +230,7 @@ Zend\\Console
 Zend\\Config
 ^^^^^^^^^^^^
 
-        * :doc:`modules/zend.config.introduction` 
+        * :doc:`modules/zend.config.introduction`
         * :doc:`modules/zend.config.theory-of-operation`
         * :doc:`modules/zend.config.reader`
         * :doc:`modules/zend.config.writer`
@@ -223,10 +241,11 @@ Zend\\Config
 Zend\\Crypt
 ^^^^^^^^^^^
 
-        * :doc:`modules/zend.crypt.introduction` 
+        * :doc:`modules/zend.crypt.introduction`
         * :doc:`modules/zend.crypt.block-cipher`
         * :doc:`modules/zend.crypt.key.derivation`
         * :doc:`modules/zend.crypt.password`
+        * :doc:`modules/zend.crypt.public-key`
 
 .. _zend.db:
 
@@ -288,6 +307,7 @@ Zend\\Form
         * :doc:`modules/zend.form.element.time`
         * :doc:`modules/zend.form.element.url`
         * :doc:`modules/zend.form.element.week`
+        * :doc:`modules/zend.form.collections`
 
 .. _zend.http:
 
@@ -348,6 +368,16 @@ Zend\\Loader
         * :doc:`modules/zend.loader.prefix-path-loader`
         * :doc:`modules/zend.loader.prefix-path-mapper`
 
+.. _zend.log:
+
+Zend\\Log
+^^^^^^^^^
+
+        * :doc:`modules/zend.log.overview`
+        * :doc:`modules/zend.log.writers`
+        * :doc:`modules/zend.log.filters`
+        * :doc:`modules/zend.log.formatters`
+
 .. _zend.mail:
 
 Zend\\Mail
@@ -357,6 +387,13 @@ Zend\\Mail
         * :doc:`modules/zend.mail.transport`
         * :doc:`modules/zend.mail.smtp.options`
         * :doc:`modules/zend.mail.file.options`
+
+.. _zend.math:
+
+Zend\\Math
+^^^^^^^^^^
+
+        * :doc:`modules/zend.math.introduction`
 
 .. _zend.module-manager:
 
