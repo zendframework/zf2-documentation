@@ -11,7 +11,7 @@ Now that we have the ``Album`` module set up with controller action methods and
 view scripts, it is time to look at the model section of our application.
 Remember that the model is the part that deals with the application’s core
 purpose (the so-called “business rules”) and, in our case, deals with the
-database. We will make use of Zend Framework class
+database. We will make use of the Zend Framework class
 ``Zend\Db\TableGateway\TableGateway`` which is used to find, insert, update and
 delete rows from a database table.
 
