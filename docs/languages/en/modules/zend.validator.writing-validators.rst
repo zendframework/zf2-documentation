@@ -109,7 +109,7 @@ These validation failure reasons are then translated to definitions in the class
 
        public function isValid($value)
        {
-           $this->_setValue($value);
+           $this->setValue($value);
 
            if (!is_numeric($value)) {
                $this->error(self::MSG_NUMERIC);
