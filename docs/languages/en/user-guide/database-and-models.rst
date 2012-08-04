@@ -370,9 +370,12 @@ a colon and ``endforeach;`` as it is easier to scan than to try and match up
 braces. Again, the ``url()`` view helper is used to create the edit and delete
 links.
 
-Note that we always use the ``escapeHtml()`` view helper to help protect
-ourselves from XSS vulnerabilities.  If you open
-http://zf2-tutorial.localhost/album you should see this:
+.. note::
+
+    We always use the ``escapeHtml()`` view helper to help protect
+    ourselves from XSS vulnerabilities.  
+
+If you open http://zf2-tutorial.localhost/album you should see this:
 
 .. image:: ../images/user-guide.database-and-models.album-list.png
     :width: 940 px
