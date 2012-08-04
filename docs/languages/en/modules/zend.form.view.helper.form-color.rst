@@ -7,7 +7,7 @@ The ``FormColor`` view helper can be used to render a ``<input type="color"...>`
 It is meant to work with the :ref:`Zend\\Form\\Element\\Color <zend.form.element.color>`
 element, which provides a default input specification for validating HTML5 color values.
 
-All methods are inherited from :ref:`Zend\\Form\\View\\Helper\\FormInput <zend.form.view.helper.form-input.methods>`.
+``FormColor`` extends from :ref:`Zend\\Form\\View\\Helper\\FormInput <zend.form.view.helper.form-input.methods>`.
 
 .. _zend.form.view.helper.form-color.usage:
 

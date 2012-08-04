@@ -11,10 +11,7 @@ that allows setting a translator and text domain.
 
 .. _zend.form.view.helper.abstract-helper.methods:
 
-Public Methods
-++++++++++++++
-
-The following methods are in addition to the inherited :ref:`methods of Zend\\I18n\\View\\Helper\\AbstractTranslatorHelper
+The following public methods are in addition to the inherited :ref:`methods of Zend\\I18n\\View\\Helper\\AbstractTranslatorHelper
 <zend.i18n.view.helper.abstract-translator-helper.methods>`.
 
 .. function:: setDoctype(string $doctype)

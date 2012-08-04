@@ -7,7 +7,7 @@ The ``FormDateTime`` view helper can be used to render a ``<input type="datetime
 HTML5 element. It is meant to work with the :ref:`Zend\\Form\\Element\\DateTime <zend.form.element.date-time>`
 element, which provides a default input specification for validating HTML5 datetime values.
 
-All methods are inherited from :ref:`Zend\\Form\\View\\Helper\\FormInput <zend.form.view.helper.form-input.methods>`.
+``FormDateTime`` extends from :ref:`Zend\\Form\\View\\Helper\\FormInput <zend.form.view.helper.form-input.methods>`.
 
 .. _zend.form.view.helper.form-date-time.usage:
 

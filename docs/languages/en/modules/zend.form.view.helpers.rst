@@ -17,6 +17,8 @@ See the section on :ref:`view helpers <zend.view.helpers>` for more information.
 Standard Helpers
 ----------------
 
+.. include:: zend.form.view.helper.form.rst
+.. include:: zend.form.view.helper.form-button.rst
 .. include:: zend.form.view.helper.form-input.rst
 .. include:: zend.form.view.helper.abstract-helper.rst
 
