@@ -122,13 +122,15 @@ module. In our case that is ``module/Album/src/Album/Controller``. Each action i
 a public method within the controller class that is named ``{action name}Action``.
 In this case ``{action name}`` should start with a lower case letter.
 
-Note that this is by convention. Zend Framework 2 doesn’t provide many
-restrictions on controllers other than that they must implement the
-``Zend\Stdlib\Dispatchable`` interface. The framework provides two abstract
-classes that do this for us: ``Zend\Mvc\Controller\AbstractActionController``
-and ``Zend\Mvc\Controller\AbstractRestfulController``. We’ll be using the
-standard ``AbstractActionController``, but if you’re intending to write a
-RESTful web service, ``AbstractRestfulController`` may be useful.
+.. note::
+
+    This is by convention. Zend Framework 2 doesn’t provide many
+    restrictions on controllers other than that they must implement the
+    ``Zend\Stdlib\Dispatchable`` interface. The framework provides two abstract
+    classes that do this for us: ``Zend\Mvc\Controller\AbstractActionController``
+    and ``Zend\Mvc\Controller\AbstractRestfulController``. We’ll be using the
+    standard ``AbstractActionController``, but if you’re intending to write a
+    RESTful web service, ``AbstractRestfulController`` may be useful.
 
 Let’s go ahead and create our controller class:
 
