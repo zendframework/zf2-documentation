@@ -1,7 +1,7 @@
 .. _zend.form.view.helper.abstract-helper:
 
 AbstractHelper
---------------
+^^^^^^^^^^^^^^
 
 The ``AbstractHelper`` is used as a base abstract class for Form view helpers, providing methods
 for validating form HTML attributes, as well as controlling the doctype and character encoding.
@@ -12,7 +12,7 @@ that allows setting a translator and text domain.
 .. _zend.form.view.helper.abstract-helper.methods:
 
 Public Methods
-^^^^^^^^^^^^^^
+++++++++++++++
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\I18n\\View\\Helper\\AbstractTranslatorHelper
 <zend.i18n.view.helper.abstract-translator-helper.methods>`.
