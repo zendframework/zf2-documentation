@@ -3,7 +3,7 @@
 FormInput
 ^^^^^^^^^
 
-The ``FormInput`` view helper is used to render a ``<input>`` HTML element.
+The ``FormInput`` view helper is used to render a ``<input>`` HTML form input tag.
 It acts as a base class for all of the specifically typed form input helpers
 (FormText, FormCheckbox, FormSubmit, etc.), and is not suggested for direct use.
 
