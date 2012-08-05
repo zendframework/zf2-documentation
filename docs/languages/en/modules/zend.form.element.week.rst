@@ -9,8 +9,7 @@ input values on the server.
 
 .. _zend.form.element.week.usage:
 
-Basic Usage
-^^^^^^^^^^^
+**Basic Usage**
 
 This element automatically adds a ``"type"`` attribute of value ``"week"``.
 
@@ -39,8 +38,7 @@ This element automatically adds a ``"type"`` attribute of value ``"week"``.
 
 .. _zend.form.element.week.methods:
 
-Public Methods
-^^^^^^^^^^^^^^
+**Public Methods**
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element\\DateTime
 <zend.form.element.date-time.methods>`.

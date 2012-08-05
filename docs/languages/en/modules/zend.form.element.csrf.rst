@@ -9,8 +9,7 @@ Protection is achieved by adding a hash element to a form and verifying it when 
 
 .. _zend.form.element.csrf.usage:
 
-Basic Usage
-^^^^^^^^^^^
+**Basic Usage**
 
 This element automatically adds a ``"type"`` attribute of value ``"hidden"``.
 
@@ -27,8 +26,7 @@ This element automatically adds a ``"type"`` attribute of value ``"hidden"``.
 
 .. _zend.form.element.csrf.methods:
 
-Public Methods
-^^^^^^^^^^^^^^
+**Public Methods**
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.

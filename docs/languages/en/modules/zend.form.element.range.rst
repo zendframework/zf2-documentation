@@ -9,8 +9,7 @@ HTML5 range values on the server.
 
 .. _zend.form.element.range.usage:
 
-Basic Usage
-^^^^^^^^^^^
+**Basic Usage**
 
 This element automatically adds a ``"type"`` attribute of value ``"range"``.
 
@@ -39,8 +38,7 @@ This element automatically adds a ``"type"`` attribute of value ``"range"``.
 
 .. _zend.form.element.range.methods:
 
-Public Methods
-^^^^^^^^^^^^^^
+**Public Methods**
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element\\Number
 <zend.form.element.number.methods>`.

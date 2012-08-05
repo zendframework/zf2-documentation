@@ -9,8 +9,7 @@ validate HTML5 datetime input values on the server.
 
 .. _zend.form.element.date-time.usage:
 
-Basic Usage
-^^^^^^^^^^^
+**Basic Usage**
 
 This element automatically adds a ``"type"`` attribute of value ``"datetime"``.
 
@@ -39,8 +38,7 @@ This element automatically adds a ``"type"`` attribute of value ``"datetime"``.
 
 .. _zend.form.element.date-time.methods:
 
-Public Methods
-^^^^^^^^^^^^^^
+**Public Methods**
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.

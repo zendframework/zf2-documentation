@@ -10,8 +10,7 @@ It can be used with the ``Zend/Form/View/Helper/FormHidden`` view helper.
 
 .. _zend.form.element.hidden.usage:
 
-Basic Usage
-^^^^^^^^^^^
+**Basic Usage**
 
 This element automatically adds a ``"type"`` attribute of value ``"hidden"``.
 

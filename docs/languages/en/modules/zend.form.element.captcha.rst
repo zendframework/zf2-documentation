@@ -9,8 +9,7 @@ type of *CAPTCHA* adapter in use.
 
 .. _zend.form.element.captcha.usage:
 
-Basic Usage
-^^^^^^^^^^^
+**Basic Usage**
 
 A *CAPTCHA* adapter must be attached in order for validation to be included in the element's input filter
 specification. See the section on :ref:`Zend CAPTCHA Adapters <zend.captcha.adapters>` for more information on what
@@ -33,8 +32,7 @@ adapters are available.
 
 .. _zend.form.element.captcha.methods:
 
-Public Methods
-^^^^^^^^^^^^^^
+**Public Methods**
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.

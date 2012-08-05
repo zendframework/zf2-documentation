@@ -8,8 +8,7 @@ Sometimes, you may want to add input (or a set of inputs) multiple times, either
 
 .. _zend.form.element.collection.usage:
 
-Basic Usage
-^^^^^^^^^^^
+**Basic Usage**
 
 .. code-block:: php
    :linenos:
@@ -28,8 +27,7 @@ Basic Usage
 
 .. _zend.form.element.collection.methods:
 
-Public Methods
-^^^^^^^^^^^^^^
+**Public Methods**
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element <zend.form.element.methods>` .
 

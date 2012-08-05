@@ -9,8 +9,7 @@ validating HTML5 URL input values on the server.
 
 .. _zend.form.element.url.usage:
 
-Basic Usage
-^^^^^^^^^^^
+**Basic Usage**
 
 This element automatically adds a ``"type"`` attribute of value ``"url"``.
 
@@ -28,8 +27,7 @@ This element automatically adds a ``"type"`` attribute of value ``"url"``.
 
 .. _zend.form.element.url.methods:
 
-Public Methods
-^^^^^^^^^^^^^^
+**Public Methods**
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.
