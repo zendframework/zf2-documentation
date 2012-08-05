@@ -15,30 +15,32 @@ Basic usage:
    $element = new Element\Button('my-button');
    $element->setLabel("Reset");
 
+   // Within your view...
+
    /**
-    * Example #1: Within your view, render entire button in one shot...
+    * Example #1: Render entire button in one shot...
     */
    echo $this->formButton($element);
-   // Returns: <button name="my-button" type="button">Reset</button>
+   // <button name="my-button" type="button">Reset</button>
 
    /**
     * Example #2: Render button in 3 steps
     */
    // Render the opening tag
    echo $this->formButton()->openTag($element);
-   // Returns: <button name="my-button" type="button">
+   // <button name="my-button" type="button">
 
    echo '<span class="inner">' . $element->getLabel() . '</span>';
 
    // Render the closing tag
    echo $this->formButton()->closeTag();
-   // Returns: </button>
+   // </button>
 
    /**
     * Example #3: Override the element label
     */
    echo $this->formButton()->render($element, 'My Content');
-   // Returns: <button name="my-button" type="button">My Content</button>
+   // <button name="my-button" type="button">My Content</button>
 
 .. _zend.form.view.helper.form-button.methods:
 

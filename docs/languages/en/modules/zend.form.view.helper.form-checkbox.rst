@@ -26,7 +26,6 @@ Basic usage:
     * Example #1: Default options
     */
    echo $this->formCheckbox($element);
-   // Returns:
    // <input type="hidden" name="my-checkbox" value="0">
    // <input type="checkbox" name="my-checkbox" value="1">
 
@@ -35,7 +34,6 @@ Basic usage:
     */
    $element->setUseHiddenElement(false);
    echo $this->formCheckbox($element);
-   // Returns:
    // <input type="checkbox" name="my-checkbox" value="1">
 
    /**
@@ -45,7 +43,6 @@ Basic usage:
            ->setUncheckedValue('no')
            ->setCheckedValue('yes');
    echo $this->formCheckbox($element);
-   // Returns:
    // <input type="hidden" name="my-checkbox" value="no">
    // <input type="checkbox" name="my-checkbox" value="yes">
 

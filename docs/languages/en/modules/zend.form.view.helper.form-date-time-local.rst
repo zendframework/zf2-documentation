@@ -20,8 +20,8 @@ Basic usage:
 
    $element = new Element\DateTimeLocal('my-datetime');
 
-   // Within your view
-   echo $this->formDateTimeLocal($element);
+   // Within your view...
 
-   // Returns: <input type="datetime-local" name="my-datetime" value="">
+   echo $this->formDateTimeLocal($element);
+   // <input type="datetime-local" name="my-datetime" value="">
 

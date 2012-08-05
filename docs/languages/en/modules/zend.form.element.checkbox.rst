@@ -39,7 +39,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 
    Set options for an element of type Checkbox. Accepted options, in addition to the inherited options of Zend\\Form\\Element <zend.form.element.methods.set-options>` , are: ``"use_hidden_element"``, ``"checked_value"`` and ``"unchecked_value"`` , which call ``setUseHiddenElement``, ``setCheckedValue`` and ``setUncheckedValue`` , respectively.
 
-.. function:: setUseHiddenElement($useHiddenElement)
+.. function:: setUseHiddenElement(boolean $useHiddenElement)
    :noindex:
 
    If set to true (which is default), the view helper will generate a hidden element that contains the unchecked value. Therefore, when using custom unchecked value, this option have to be set to true.
@@ -49,7 +49,9 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 
    Return if a hidden element is generated.
 
-.. function:: setCheckedValue($checkedValue)
+   :rtype: boolean
+
+.. function:: setCheckedValue(string $checkedValue)
    :noindex:
 
    Set the value to use when the checkbox is checked.
@@ -59,7 +61,9 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 
    Return the value used when the checkbox is checked.
 
-.. function:: setUncheckedValue($uncheckedValue)
+   :rtype: string
+
+.. function:: setUncheckedValue(string $uncheckedValue)
    :noindex:
 
    Set the value to use when the checkbox is unchecked. For this to work, you must make sure that use_hidden_element is set to true.
@@ -69,9 +73,11 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 
    Return the value used when the checkbox is unchecked.
 
+   :rtype: string
+
 .. function:: getInputSpecification()
    :noindex:
 
    Returns a input filter specification, which includes a ``Zend\Validator\InArray`` to validate if the value is either checked value or unchecked value.
 
-   Returns array
+   :rtype: array

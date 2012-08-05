@@ -10,7 +10,10 @@ Basic usage:
 .. code-block:: php
    :linenos:
 
+   use Zend\Form\Form;
    use Zend\Form\Element;
+
+   // Within your view...
 
    $form = new Form();
    // ...add elements and input filter to form...
@@ -24,19 +27,19 @@ Basic usage:
 
    // Render the opening tag
    echo $this->form()->openTag($form);
-   // Returns: <form action="/contact/process" method="post">
+   // <form action="/contact/process" method="post">
 
-   // ...loop through and render the form elements...
+   // ...render the form elements...
 
    // Render the closing tag
    echo $this->form()->closeTag();
-   // Returns: </form>
+   // </form>
 
 
 .. _zend.form.view.helper.form.methods:
 
 The following public methods are in addition to those inherited from
-:ref:`Zend\\Form\\View\\Helper\\FormInput <zend.form.view.helper.form-input.methods>`.
+:ref:`Zend\\Form\\View\\Helper\\AbstractHelper <zend.form.view.helper.abstract-helper.methods>`.
 
 .. function:: openTag(FormInterface $form = null)
    :noindex:

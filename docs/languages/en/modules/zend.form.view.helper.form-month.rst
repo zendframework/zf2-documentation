@@ -20,8 +20,8 @@ Basic usage:
 
    $element = new Element\Month('my-month');
 
-   // Within your view
-   echo $this->formMonth($element);
+   // Within your view...
 
-   // Returns: <input type="month" name="my-month" value="">
+   echo $this->formMonth($element);
+   // <input type="month" name="my-month" value="">
 

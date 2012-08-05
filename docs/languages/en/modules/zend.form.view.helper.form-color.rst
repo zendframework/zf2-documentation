@@ -20,8 +20,8 @@ Basic usage:
 
    $element = new Element\Color('my-color');
 
-   // Within your view
-   echo $this->formColor($element);
+   // Within your view...
 
-   // Returns: <input type="color" name="my-color" value="">
+   echo $this->formColor($element);
+   // <input type="color" name="my-color" value="">
 

@@ -20,8 +20,8 @@ Basic usage:
 
    $element = new Element\DateTime('my-datetime');
 
-   // Within your view
-   echo $this->formDateTime($element);
+   // Within your view...
 
-   // Returns: <input type="datetime" name="my-datetime" value="">
+   echo $this->formDateTime($element);
+   // <input type="datetime" name="my-datetime" value="">
 

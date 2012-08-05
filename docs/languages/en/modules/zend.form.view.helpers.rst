@@ -20,6 +20,9 @@ Standard Helpers
 .. include:: zend.form.view.helper.form.rst
 .. include:: zend.form.view.helper.form-button.rst
 .. include:: zend.form.view.helper.form-checkbox.rst
+.. include:: zend.form.view.helper.form-element.rst
+.. include:: zend.form.view.helper.form-element-errors.rst
+.. include:: zend.form.view.helper.form-hidden.rst
 .. include:: zend.form.view.helper.form-input.rst
 .. include:: zend.form.view.helper.abstract-helper.rst
 
@@ -30,6 +33,7 @@ HTML5 Helpers
 .. include:: zend.form.view.helper.form-date.rst
 .. include:: zend.form.view.helper.form-date-time.rst
 .. include:: zend.form.view.helper.form-date-time-local.rst
+.. include:: zend.form.view.helper.form-email.rst
 .. include:: zend.form.view.helper.form-month.rst
 .. include:: zend.form.view.helper.form-time.rst
 .. include:: zend.form.view.helper.form-week.rst

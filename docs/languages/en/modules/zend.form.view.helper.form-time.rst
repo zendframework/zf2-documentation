@@ -20,8 +20,8 @@ Basic usage:
 
    $element = new Element\Time('my-time');
 
-   // Within your view
-   echo $this->formTime($element);
+   // Within your view...
 
-   // Returns: <input type="time" name="my-time" value="">
+   echo $this->formTime($element);
+   // <input type="time" name="my-time" value="">
 

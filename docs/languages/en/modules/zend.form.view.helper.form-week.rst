@@ -20,8 +20,8 @@ Basic usage:
 
    $element = new Element\Week('my-week');
 
-   // Within your view
-   echo $this->formWeek($element);
+   // Within your view...
 
-   // Returns: <input type="week" name="my-week" value="">
+   echo $this->formWeek($element);
+   // <input type="week" name="my-week" value="">
 
