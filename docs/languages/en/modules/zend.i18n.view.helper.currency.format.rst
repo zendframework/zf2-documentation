@@ -8,8 +8,7 @@ wrapper for the ``NumberFormatter`` class within the Internationalization extens
 
 .. _zend.i18n.view.helper.currency-format.usage:
 
-Basic Usage
-^^^^^^^^^^^
+**Basic Usage**
 
 .. code-block:: php
    :linenos:
@@ -33,8 +32,7 @@ Basic Usage
 
 .. _zend.i18n.view.helper.currency-format.setter-usage:
 
-Public Methods
-^^^^^^^^^^^^^^
+**Public Methods**
 
 The ``$currencyCode`` and ``$locale`` options can be set prior to formatting and will be applied each time the
 helper is used:

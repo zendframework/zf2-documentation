@@ -12,8 +12,7 @@ The viewhelper acts as a wrapper for the ``Zend\I18n\Translator\Translator`` cla
 
 .. _zend.i18n.view.helper.translate-plural.setup:
 
-Setup
-^^^^^
+**Setup**
 
 Before using the ``TranslatePlural`` view helper, you must have first created a ``Translator`` object and
 have attached it to the view helper. If you use the ``Zend\View\HelperPluginManager`` to invoke the view helper,
@@ -21,8 +20,7 @@ this will be done automatically for you.
 
 .. _zend.i18n.view.helper.translate-plural.usage:
 
-Basic Usage
-^^^^^^^^^^^
+**Basic Usage**
 
 .. code-block:: php
    :linenos:
@@ -51,8 +49,7 @@ Basic Usage
 
 .. _zend.i18n.view.helper.translate-plural.methods:
 
-Public Methods
-^^^^^^^^^^^^^^
+**Public Methods**
 
 Public methods for setting a ``Zend\I18n\Translator\Translator`` and a default text domain are inherited from
  :ref:`Zend\\I18n\\View\\Helper\\AbstractTranslatorHelper <zend.i18n.view.helper.abstract-translator-helper.methods>`.

@@ -8,8 +8,7 @@ strings. It acts as a wrapper for the ``NumberFormatter`` class within the Inter
 
 .. _zend.i18n.view.helper.number-format.usage:
 
-Basic Usage
-^^^^^^^^^^^
+**Basic Usage**
 
 .. code-block:: php
    :linenos:
@@ -56,8 +55,7 @@ Basic Usage
 
 .. _zend.i18n.view.helper.number-format.setter-usage:
 
-Public Methods
-^^^^^^^^^^^^^^
+**Public Methods**
 
 The ``$formatStyle``, ``$formatType``, and ``$locale`` options can be set prior to formatting and will be applied
 each time the helper is used.
