@@ -23,7 +23,9 @@ Standard Helpers
 .. include:: zend.form.view.helper.form-element.rst
 .. include:: zend.form.view.helper.form-element-errors.rst
 .. include:: zend.form.view.helper.form-hidden.rst
+.. include:: zend.form.view.helper.form-image.rst
 .. include:: zend.form.view.helper.form-input.rst
+.. include:: zend.form.view.helper.form-label.rst
 .. include:: zend.form.view.helper.abstract-helper.rst
 
 HTML5 Helpers
