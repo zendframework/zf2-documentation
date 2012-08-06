@@ -555,7 +555,7 @@ several ``GET`` parameters need to be set.
    // Adding several parameters with one call
    $client->setParameterGet(array(
        'first_name'  => 'Bender',
-       'middle_name' => 'Bending'
+       'middle_name' => 'Bending',
        'made_in'     => 'Mexico',
    ));
 
