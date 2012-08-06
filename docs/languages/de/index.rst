@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Programmer's Reference Guide of Zend Framework 2
-================================================
+Zend Framework 2 - Referenzhandbuch
+===================================
 
 .. toctree:: 
    :hidden:
@@ -138,19 +138,19 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.xmlrpc.server
    ref/copyrights
 
-Introduction to Zend Framework
-------------------------------
+Einführung zum Zend Framework
+-----------------------------
 
     * :doc:`ref/overview` 
     * :doc:`ref/installation`
 
-Learning Zend Framework
------------------------
+Einstieg ins Zend Framework
+---------------------------
 
     * :doc:`tutorials/quickstart.di`
 
-Zend Framework Reference
-------------------------
+Zend Framework-Referenz
+-----------------------
 
 .. _zend.authentication:
 
@@ -446,12 +446,12 @@ Zend\\XmlRpc
 
 .. _zend.copyright:
 
-Copyright
----------
+Urheberrechtsinformationen
+--------------------------
 
     * :doc:`ref/copyrights`
 
-Indices and tables
+Index and Tabellen
 ==================
 
 * :ref:`genindex`
