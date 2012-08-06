@@ -9,7 +9,8 @@ available.
 
 .. _zend.form.element.usage:
 
-**Basic Usage**
+Basic Usage
+^^^^^^^^^^^
 
 At the bare minimum, each element or fieldset requires a name. You will also typically provide some attributes to
 hint to the view layer how it might render the item.
@@ -44,7 +45,8 @@ hint to the view layer how it might render the item.
 
 .. _zend.form.element.methods:
 
-**Public Methods**
+Public Methods
+^^^^^^^^^^^^^^
 
 .. function:: setName(string $name)
    :noindex:

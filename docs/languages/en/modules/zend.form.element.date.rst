@@ -9,7 +9,8 @@ input values on the server.
 
 .. _zend.form.element.date.usage:
 
-**Basic Usage**
+Basic Usage
+^^^^^^^^^^^
 
 This element automatically adds a ``"type"`` attribute of value ``"date"``.
 
@@ -38,7 +39,8 @@ This element automatically adds a ``"type"`` attribute of value ``"date"``.
 
 .. _zend.form.element.date.methods:
 
-**Public Methods**
+Public Methods
+^^^^^^^^^^^^^^
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element\\DateTime
 <zend.form.element.date-time.methods>`.

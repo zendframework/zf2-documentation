@@ -9,7 +9,8 @@ order to validate HTML5 a local datetime input values on the server.
 
 .. _zend.form.element.date-time-local.usage:
 
-**Basic Usage**
+Basic Usage
+^^^^^^^^^^^
 
 This element automatically adds a ``"type"`` attribute of value ``"datetime-local"``.
 
@@ -38,7 +39,8 @@ This element automatically adds a ``"type"`` attribute of value ``"datetime-loca
 
 .. _zend.form.element.date-time-local.methods:
 
-**Public Methods**
+Public Methods
+^^^^^^^^^^^^^^
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element\\DateTime
 <zend.form.element.date-time.methods>`.

@@ -9,7 +9,8 @@ HTML5 number input values on the server.
 
 .. _zend.form.element.number.usage:
 
-**Basic Usage**
+Basic Usage
+^^^^^^^^^^^
 
 This element automatically adds a ``"type"`` attribute of value ``"number"``.
 
@@ -38,7 +39,8 @@ This element automatically adds a ``"type"`` attribute of value ``"number"``.
 
 .. _zend.form.element.number.methods:
 
-**Public Methods**
+Public Methods
+^^^^^^^^^^^^^^
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.

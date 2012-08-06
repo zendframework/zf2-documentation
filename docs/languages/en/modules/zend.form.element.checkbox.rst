@@ -7,7 +7,8 @@ Checkbox Element
 
 .. _zend.form.element.checkbox.usage:
 
-**Basic Usage**
+Basic Usage
+^^^^^^^^^^^
 
 This element automatically adds a ``"type"`` attribute of value ``"checkbox"``.
 
@@ -28,7 +29,8 @@ This element automatically adds a ``"type"`` attribute of value ``"checkbox"``.
 
 .. _zend.form.element.checkbox.methods:
 
-**Public Methods**
+Public Methods
+^^^^^^^^^^^^^^
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element <zend.form.element.methods>` .
 

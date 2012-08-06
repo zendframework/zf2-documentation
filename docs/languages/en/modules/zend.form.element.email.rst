@@ -9,7 +9,8 @@ type email`_. This element adds filters and validators to it's input filter spec
 
 .. _zend.form.element.email.usage:
 
-**Basic Usage**
+Basic Usage
+^^^^^^^^^^^
 
 This element automatically adds a ``"type"`` attribute of value ``"email"``.
 
@@ -40,7 +41,8 @@ This element automatically adds a ``"type"`` attribute of value ``"email"``.
 
 .. _zend.form.element.email.methods:
 
-**Public Methods**
+Public Methods
+^^^^^^^^^^^^^^
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.
