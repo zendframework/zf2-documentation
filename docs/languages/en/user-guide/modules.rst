@@ -92,7 +92,7 @@ the ``ClassmapAutoloader`` and also add this module’s namespace to the
 ``StandardAutoloader``. The standard autoloader requires a namespace and the
 path where to ﬁnd the ﬁles for that namespace. It is PSR-0 compliant and so
 classes map directly to ﬁles as per the `PSR-0 rules
-<https://github.com/php-fig/fig-standards/blog/master/accepted/PSR-0.md>`_.
+<https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_.
 
 As we are in development, we don’t need to load ﬁles via the classmap, so we provide an empty array for the 
 classmap autoloader. Create ``autoload_classmap.php`` with these contents:
