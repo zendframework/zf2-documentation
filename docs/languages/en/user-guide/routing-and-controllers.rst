@@ -190,7 +190,7 @@ Initialise the view scripts
 ---------------------------
 
 To integrate the view into our application all we need to do is create some view
-script files. These ﬁles will be executed by the ``DefaultViewStrategy`` and be
+script files. These ﬁles will be executed by the ``DefaultViewStrategy`` and will be
 passed any variables or view models that are returned from the controller action
 method. These view scripts are stored in our module’s views directory within a
 directory named after the controller. Create these four empty files now:
