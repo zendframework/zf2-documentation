@@ -66,8 +66,9 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.event-manager.event-manager
    modules/zend.form.intro
    modules/zend.form.quick-start
-   modules/zend.form.elements
    modules/zend.form.collections
+   modules/zend.form.elements
+   modules/zend.form.view.helpers
    modules/zend.http
    modules/zend.http.request
    modules/zend.http.response
@@ -293,21 +294,9 @@ Zend\\Form
 
         * :doc:`modules/zend.form.intro`
         * :doc:`modules/zend.form.quick-start`
-        * :doc:`modules/zend.form.element`
-        * :doc:`modules/zend.form.element.captcha`
-        * :doc:`modules/zend.form.element.color`
-        * :doc:`modules/zend.form.element.csrf`
-        * :doc:`modules/zend.form.element.date`
-        * :doc:`modules/zend.form.element.date.time.local`
-        * :doc:`modules/zend.form.element.date.time`
-        * :doc:`modules/zend.form.element.email`
-        * :doc:`modules/zend.form.element.month`
-        * :doc:`modules/zend.form.element.number`
-        * :doc:`modules/zend.form.element.range`
-        * :doc:`modules/zend.form.element.time`
-        * :doc:`modules/zend.form.element.url`
-        * :doc:`modules/zend.form.element.week`
         * :doc:`modules/zend.form.collections`
+        * :doc:`modules/zend.form.elements`
+        * :doc:`modules/zend.form.view.helpers`
 
 .. _zend.http:
 

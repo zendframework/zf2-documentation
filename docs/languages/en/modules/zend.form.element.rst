@@ -1,7 +1,7 @@
 .. _zend.form.element:
 
-Zend\\Form\\Element
-===================
+Element Base Class
+------------------
 
 ``Zend\Form\Element`` is a base class for all specialized elements and Zend\\Form\\Fieldset, but can also be used
 for all generic ``text``, ``select``, ``radio``, etc. type form inputs which do not have a specialized element
@@ -9,7 +9,7 @@ available.
 
 .. _zend.form.element.usage:
 
-.. rubric:: Basic Usage of Zend\\Form\\Element
+**Basic Usage**
 
 At the bare minimum, each element or fieldset requires a name. You will also typically provide some attributes to
 hint to the view layer how it might render the item.
@@ -44,140 +44,109 @@ hint to the view layer how it might render the item.
 
 .. _zend.form.element.methods:
 
-Available Methods
------------------
+**Public Methods**
 
-.. _zend.form.element.methods.set-name:
-
-**setName**
-   ``setName(string $name)``
+.. function:: setName(string $name)
+   :noindex:
 
    Set the name for this element.
 
    Returns ``Zend\Form\Element``
 
-.. _zend.form.element.methods.get-name:
-
-**getName**
-   ``getName()``
+.. function:: getName()
+   :noindex:
 
    Return the name for this element.
 
    Returns string
 
-.. _zend.form.element.methods.set-label:
-
-**setLabel**
-   ``setLabel(string $label)``
+.. function:: setLabel(string $label)
+   :noindex:
 
    Set the label content for this element.
 
    Returns ``Zend\Form\Element``
 
-.. _zend.form.element.methods.get-label:
-
-**getLabel**
-   ``getLabel()``
+.. function:: getLabel()
+   :noindex:
 
    Return the label content for this element.
 
    Returns string
 
-.. _zend.form.element.methods.set-label-attributes:
-
-**setLabelAttributes**
-   ``setLabelAttributes(array $labelAttributes)``
+.. function:: setLabelAttributes(array $labelAttributes)
+   :noindex:
 
    Set the attributes to use with the label.
 
    Returns ``Zend\Form\Element``
 
-.. _zend.form.element.methods.get-label-attributes:
-
-**getLabelAttributes**
-   ``getLabelAttributes()``
+.. function:: getLabelAttributes()
+   :noindex:
 
    Return the attributes to use with the label.
 
    Returns array
 
-.. _zend.form.element.methods.set-options:
-
-**setOptions**
-   ``setOptions(array $options)``
+.. function:: setOptions(array $options)
+   :noindex:
 
    Set options for an element. Accepted options are: ``"label"`` and ``"label_attributes"``, which call
    ``setLabel`` and ``setLabelAttributes``, respectively.
 
    Returns ``Zend\Form\Element``
 
-.. _zend.form.element.methods.set-attribute:
-
-**setAttribute**
-   ``setAttribute(string $key, mixed $value)``
+.. function:: setAttribute(string $key, mixed $value)
+   :noindex:
 
    Set a single element attribute.
 
    Returns ``Zend\Form\Element``
 
-.. _zend.form.element.methods.get-attribute:
-
-**getAttribute**
-   ``getAttribute(string $key)``
+.. function:: getAttribute(string $key)
+   :noindex:
 
    Retrieve a single element attribute.
 
    Returns mixed
 
-.. _zend.form.element.methods.has-attribute:
-
-**hasAttribute**
-   ``hasAttribute(string $key)``
+.. function:: hasAttribute(string $key)
+   :noindex:
 
    Check if a specific attribute exists for this element.
 
    Returns boolean
 
-.. _zend.form.element.methods.set-attributes:
-
-**setAttributes**
-   ``setAttributes(array|Traversable $arrayOrTraversable)``
+.. function:: setAttributes(array|Traversable $arrayOrTraversable)
+   :noindex:
 
    Set many attributes at once. Implementation will decide if this will overwrite or merge.
 
    Returns ``Zend\Form\Element``
 
-.. _zend.form.element.methods.get-attributes:
-
-**getAttributes**
-   ``getAttributes()``
+.. function:: getAttributes()
+   :noindex:
 
    Retrieve all attributes at once.
 
    Returns array|Traversable
 
-.. _zend.form.element.methods.clear-attributes:
-
-**clearAttributes**
-   ``clearAttributes()``
+.. function:: clearAttributes()
+   :noindex:
 
    Clear all attributes for this element.
 
    Returns ``Zend\Form\Element``
 
-.. _zend.form.element.methods.set-messages:
-
-**setMessages**
-   ``setMessages(array|Traversable $messages)``
+.. function:: setMessages(array|Traversable $messages)
+   :noindex:
 
    Set a list of messages to report when validation fails.
 
    Returns ``Zend\Form\Element``
 
-.. _zend.form.element.methods.get-messages:
-
-**getMessages**
-   ``getMessages()``
+.. function:: getMessages()
+   :noindex:
 
    Returns a list of validation failure messages, if any.
 
