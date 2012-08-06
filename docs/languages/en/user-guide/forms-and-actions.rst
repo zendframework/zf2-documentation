@@ -334,6 +334,7 @@ This time we use ``editAction()`` in the ``AlbumController``:
             $request = $this->getRequest();
             if ($request->isPost()) {
                 $form->setData($request->getPost());
+                $form->setInputFilter($album->getInputFilter());
 
                 if ($form->isValid()) {
                     $this->getAlbumTable()->saveAlbum($album);
