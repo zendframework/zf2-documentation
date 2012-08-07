@@ -40,6 +40,14 @@ this will be done automatically for you.
 
    :param $locale: (Optional) Locale in which the message would be translated (locale name, e.g. en_US). If unset, it will use the default locale (``Locale::getDefault()``)
 
+**Gettext**
+
+The ``xgettext`` utility can be used to compile \*.po files from PHP source files containing the translate view helper::
+
+   % xgettext --language=php --add-location --keyword=translate my-view-file.phtml
+
+See the `Gettext Wikipedia page <http://en.wikipedia.org/wiki/Gettext>`_ for more information.
+
 .. _zend.i18n.view.helper.translate.methods:
 
 **Public Methods**
