@@ -47,7 +47,7 @@ peut utiliser l'extension si elle est disponible mais fonctionnera malgré tout 
 composants utiliseront automatiquement les extensions si elles sont disponibles afin d'optimiser les performances
 mais pourront exécuter du code similaire dans le propre code du composant si elles ne le sont pas.
 
-.. include:: ../../en/ref/requirements.php.extensions.table.rst
+.. include:: requirements.php.extensions.table.rst
 .. _requirements.zendcomponents:
 
 Les composants de Zend Framework
@@ -63,7 +63,7 @@ peut utiliser l'extension si elle est disponible mais fonctionnera malgré tout 
 composants utiliseront automatiquement les extensions si elles sont disponibles afin d'optimiser les performances
 mais pourront exécuter du code similaire dans le propre code du composant si elles ne le sont pas.
 
-.. include:: ../../en/ref/requirements.zendcomponents.table.rst
+.. include:: requirements.zendcomponents.table.rst
 .. _requirements.dependencies:
 
 Dépendances internes de Zend Framework
@@ -83,5 +83,5 @@ avoir besoin du composant dans certains cas.
    devriez avoir à l'esprit que ceci peut entraîner des problèmes quand des fichiers sont manquants ou que des
    composants sont utilisés dynamiquement.
 
-.. include:: ../../en/ref/requirements.dependencies.table.rst
+.. include:: requirements.dependencies.table.rst
 

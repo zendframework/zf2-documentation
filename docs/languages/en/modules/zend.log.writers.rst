@@ -113,9 +113,6 @@ separator for the log events managed by an array. For instance, if we have a log
 fields, this will be translated in 'extra-field', where '-' is the character separator (default) and field is the
 subname of the specific extra field.
 
-.. include:: zend.log.writers.mail.rst
-.. include:: zend.log.writers.syslog.rst
-.. include:: zend.log.writers.zend-monitor.rst
 .. _zend.log.writers.null:
 
 Stubbing Out the Writer

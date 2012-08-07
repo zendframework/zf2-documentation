@@ -47,7 +47,7 @@ componentes utilizarão automaticamente determinadas extensões, se estas estive
 desempenho, mas vão executar um código com funcionalidade similar no próprio componente caso as extensões
 estejam indisponíveis.
 
-.. include:: ../../en/ref/requirements.php.extensions.table.rst
+.. include:: requirements.php.extensions.table.rst
 .. _requirements.zendcomponents:
 
 Componentes do Zend Framework
@@ -64,7 +64,7 @@ componentes utilizarão automaticamente determinadas extensões, se estas estive
 desempenho, mas vão executar um código com funcionalidade similar no próprio componente caso as extensões
 estejam indisponíveis.
 
-.. include:: ../../en/ref/requirements.zendcomponents.table.rst
+.. include:: requirements.zendcomponents.table.rst
 .. _requirements.dependencies:
 
 Dependências do Zend Framework
@@ -87,5 +87,5 @@ subcomponentes em situações especiais ou com adaptadores especiais.
    em mente que isso pode levar a problemas quando os arquivos são perdidos ou os componentes são usados de
    dinamicamente.
 
-.. include:: ../../en/ref/requirements.dependencies.table.rst
+.. include:: requirements.dependencies.table.rst
 
