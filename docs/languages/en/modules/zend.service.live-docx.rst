@@ -128,8 +128,8 @@ The resulting document can be saved in any of the following graphical file forma
 
 .. _zend.service.livedocx.mailmerge:
 
-MailMerge
--------------------------------
+ZendService\LiveDocx\MailMerge
+------------------------------
 
 ``MailMerge`` is the mail-merge object in the ``ZendService\LiveDocx`` family.
 
