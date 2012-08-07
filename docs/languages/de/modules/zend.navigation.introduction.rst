@@ -45,7 +45,7 @@ Lesen Sie mehr über Container im Kapitel :ref:`Container <zend.navigation.conta
 .. _zend.navigation.introduction.separation:
 
 Trennung von Daten (Model) und Darstellung (View)
---------------------------------------------------
+-------------------------------------------------
 
 Klassen im Namensraum von ``Zend\Navigation`` handhaben keine Darstellung von Navigationselementen. Die 
 Darstellung wird von den Navigations-View-Helfern durchgeführt. Trotzdem enthalten Seiten Informationen die von 
