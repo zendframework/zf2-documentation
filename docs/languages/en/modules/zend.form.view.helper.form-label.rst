@@ -44,6 +44,25 @@ Basic usage:
    echo $this->formLabel()->closeTag();
    // </label>
 
+Attaching a translator and setting a text domain:
+
+.. code-block:: php
+   :linenos:
+
+   // Setting a translator
+   $this->formLabel()->setTranslator($translator);
+
+   // Setting a text domain
+   $this->formLabel()->setTranslatorTextDomain('my-text-domain');
+
+   // Setting both
+   $this->formLabel()->setTranslator($translator, 'my-text-domain');
+   
+.. note::
+
+   Note: If you have a translator in the Service Manager under the key, 'translator', the view helper plugin 
+   manager will automatically attach the translator to the FormLabel view helper. See 
+   ``Zend\\View\\HelperPluginManager::injectTranslator()`` for more information.
 
 .. _zend.form.view.helper.form-label.methods:
 
