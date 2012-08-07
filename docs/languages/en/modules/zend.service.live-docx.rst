@@ -186,7 +186,7 @@ code is as follows:
 
    $mailMerge->setUsername('myUsername')
              ->setPassword('myPassword')
-             ->setService (MailMerge::SERVICE_FREE);  // for premium service, use MailMerge::SERVICE_PREMIUM
+             ->setService (MailMerge::SERVICE_FREE);
 
    $mailMerge->setLocalTemplate('template.docx');
 
@@ -264,7 +264,7 @@ The following code populates the above template with data.
 
    $mailMerge->setUsername('myUsername')
              ->setPassword('myPassword')
-             ->setService (MailMerge::SERVICE_FREE);  // for premium service, use MailMerge::SERVICE_PREMIUM
+             ->setService (MailMerge::SERVICE_FREE);
 
    $mailMerge->setLocalTemplate('template.doc');
 
@@ -343,7 +343,7 @@ The supported formats can be obtained by calling ``getImageExportFormats()``.
 
     $mailMerge->setUsername('myUsername')
               ->setPassword('myPassword')
-              ->setService (MailMerge::SERVICE_FREE);  // for premium service, use MailMerge::SERVICE_PREMIUM
+              ->setService (MailMerge::SERVICE_FREE);
 
     $mailMerge->setLocalTemplate('template.docx');
 
@@ -406,7 +406,7 @@ The following code illustrates how to use a local template.
 
     $mailMerge->setUsername('myUsername')
               ->setPassword('myPassword')
-              ->setService (MailMerge::SERVICE_FREE);  // for premium service, use MailMerge::SERVICE_PREMIUM
+              ->setService (MailMerge::SERVICE_FREE);
 
     $mailMerge->setLocalTemplate('./template.docx');
 
@@ -427,7 +427,7 @@ The following code illustrates how to upload a template to the server:
 
     $mailMerge->setUsername('myUsername')
               ->setPassword('myPassword')
-              ->setService (MailMerge::SERVICE_FREE);  // for premium service, use MailMerge::SERVICE_PREMIUM
+              ->setService (MailMerge::SERVICE_FREE);
 
     $mailMerge->uploadTemplate('template.docx');
 
@@ -441,7 +441,7 @@ The following code illustrates how to reference the remotely stored template on 
 
     $mailMerge->setUsername('myUsername')
               ->setPassword('myPassword')
-              ->setService (MailMerge::SERVICE_FREE);  // for premium service, use MailMerge::SERVICE_PREMIUM
+              ->setService (MailMerge::SERVICE_FREE);
 
     $mailMerge->setRemoteTemplate('template.docx');
 
@@ -470,7 +470,7 @@ is useful, in the case that you create an application, in which an end-user can 
 
     $mailMerge->setUsername('myUsername')
               ->setPassword('myPassword')
-              ->setService (MailMerge::SERVICE_FREE);  // for premium service, use MailMerge::SERVICE_PREMIUM;
+              ->setService (MailMerge::SERVICE_FREE);;
 
     $templateName = 'template-1-text-field.docx';
     $mailMerge->setLocalTemplate($templateName);
@@ -496,7 +496,7 @@ Before such templates can be populated, it is necessary to find out the names of
 
     $mailMerge->setUsername('myUsername')
               ->setPassword('myPassword')
-              ->setService (MailMerge::SERVICE_FREE);  // for premium service, use MailMerge::SERVICE_PREMIUM
+              ->setService (MailMerge::SERVICE_FREE);
 
     $templateName = 'template-block-fields.doc';
     $mailMerge->setLocalTemplate($templateName);
@@ -527,7 +527,7 @@ which are not available on the server, font-substitution will take place. This m
 
     $mailMerge->setUsername('myUsername')
               ->setPassword('myPassword')
-              ->setService (MailMerge::SERVICE_FREE);  // for premium service, use MailMerge::SERVICE_PREMIUM
+              ->setService (MailMerge::SERVICE_FREE);
 
     Debug::dump($mailMerge->getFontNames());
 
@@ -551,7 +551,7 @@ format of the documentation generation process.
 
     $mailMerge->setUsername('myUsername')
               ->setPassword('myPassword')
-              ->setService (MailMerge::SERVICE_FREE);  // for premium service, use MailMerge::SERVICE_PREMIUM
+              ->setService (MailMerge::SERVICE_FREE);
 
     Debug::dump($mailMerge->getTemplateFormats());
 
@@ -575,7 +575,7 @@ format of the documentation generation process.
 
     $mailMerge->setUsername('myUsername')
               ->setPassword('myPassword')
-              ->setService (MailMerge::SERVICE_FREE);  // for premium service, use MailMerge::SERVICE_PREMIUM
+              ->setService (MailMerge::SERVICE_FREE);
 
     Debug::dump($mailMerge->getDocumentFormats());
 
@@ -596,7 +596,7 @@ the documentation generation process.
 
     $mailMerge->setUsername('myUsername')
               ->setPassword('myPassword')
-              ->setService (MailMerge::SERVICE_FREE);  // for premium service, use MailMerge::SERVICE_PREMIUM
+              ->setService (MailMerge::SERVICE_FREE);
 
     Debug::dump($mailMerge->getImageExportFormats());
 
@@ -605,11 +605,88 @@ such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 
 
 
+Upgrading From LiveDocx Free to LiveDocx Premium Service
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+LiveDocx Free is provided by Text Control GmbH completely free for charge. It is free for all to use in an unlimited number of applications. However, there are times when you may like to update to LiveDocx Premium. For example, you need to generate a very large number of documents concurrently, or your application requires documents to be created faster than LiveDocx Free permits. For such scenarios, Text Control GmbH offers LiveDocx Premium, a paid service with a number of benefits. For an overview of the benefits, please take a look at the `LiveDocx pricing page`_.
+
+This section of the manual offers a technical overview of how to upgrade from LiveDocx Free to LiveDocx Premium.
+
+All you have to do, is make a very small change to the code that runs with LiveDocx Free: Your instantiation and initialization of LiveDocx Free probably looks as follows:
+
+.. code-block:: php
+
+    use ZendService\LiveDocx\MailMerge;
+
+    $mailMerge = new MailMerge()
+
+    $mailMerge->setUsername('myUsername')
+              ->setPassword('myPassword')
+              ->setService (MailMerge::SERVICE_FREE);
+    
+    // rest of your application here
+
+To use LiveDocx Premium, you simply need to change the service value from ``MailMerge::SERVICE_FREE`` to ``MailMerge::SERVICE_PREMIUM``, and set the username and password assigned to you for Livedocx Premium. This may, or may not be the same as the credentials for LiveDocx Free. For example:
+
+.. code-block:: php
+
+    use ZendService\LiveDocx\MailMerge;
+
+    $mailMerge = new MailMerge()
+
+    $mailMerge->setUsername('myPremiumUsername')
+              ->setPassword('myPremiumPassword')
+              ->setService (MailMerge::SERVICE_PREMIUM);
+    
+    // rest of your application here
+
+And that is all there is to it. The assignment of the premium WSDL to the component is handled internally and automatically. You are now using LiveDocx Premium.
+
+Upgrading From LiveDocx Free or LiveDocx Premium to LiveDocx Fully Licensed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+LiveDocx Free and Livedocx Premium are provided by Text Control GmbH as a service. They are addressed over the Internet. However, for certain applications, for example, ones that process very sensitive data (banking, health or financial), you may not want to send your data across the Internet to a third party service, regardless of the SSL encryption that both LiveDocx Free and Livedocx Premium offer as standard. For such scenarios, you can license LiveDocx and install an entire LiveDocx server in your own network. As such, you completely control the flow of data between your application and the backend LiveDocx server. For an overview of the benefits of LiveDocx Fully Licensed, please take a look at the `LiveDocx pricing page`_.
+
+This section of the manual offers a technical overview of how to upgrade from LiveDocx Free or LiveDocx Premium to LiveDocx Fully Licensed.
+
+All you have to do, is make a very small change to the code that runs with LiveDocx Free or LiveDocx Premium: Your instantiation and initialization of LiveDocx Free probably looks as follows:
+
+.. code-block:: php
+
+    use ZendService\LiveDocx\MailMerge;
+
+    $mailMerge = new MailMerge()
+
+    $mailMerge->setUsername('myUsername')
+              ->setPassword('myPassword')
+              ->setService (MailMerge::SERVICE_FREE); 
+             // or
+             // ->setService (MailMerge::SERVICE_PREMIUM);
+    
+    // rest of your application here
+
+To use LiveDocx Fully Licensed, you simply need to set the WSDL of the backend LiveDocx server in your own network. You can do this as follows:
+
+.. code-block:: php
+
+    use ZendService\LiveDocx\MailMerge;
+
+    $mailMerge = new MailMerge()
+
+    $mailMerge->setUsername('myFullyLicensedUsername')
+              ->setPassword('myFullyLicensedPassword')
+              ->setWsdl    ('http://api.example.com/2.1/mailmerge.asmx?wsdl');
+    
+    // rest of your application here
+
+And that is all there is to it. You are now using LiveDocx Fully Licensed.
+
+.. _`LiveDocx pricing page`: http://www.livedocx.com/pub/pricing
 .. _`mail-merge`: http://en.wikipedia.org/wiki/Mail_merge
 .. _`LiveDocx API`: http://www.livedocx.com
 .. _`ZendService\LiveDocx blog and web site`: http://www.phplivedocx.org/
 .. _`LiveDocx SOAP API documentation`: http://www.livedocx.com/pub/documentation/api.aspx
-.. _`LiveDocx WSDL`: https://api.livedocx.com/1.2/mailmerge.asmx?wsdl
+.. _`LiveDocx WSDL`: https://api.livedocx.com/2.1/mailmerge.asmx?wsdl
 .. _`LiveDocx blog and web site`: https://www.livedocx.com/
 .. _`sign up`: https://www.livedocx.com/user/account_registration.aspx
 .. _`example template`: http://www.phplivedocx.org/wp-content/uploads/2009/01/license-agreement-template.docx
