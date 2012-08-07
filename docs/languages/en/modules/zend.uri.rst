@@ -1,7 +1,7 @@
 .. _zend.uri.chapter:
 
 Zend\\Uri
-========
+=========
 
 .. _zend.uri.overview:
 
@@ -142,7 +142,7 @@ object.
 .. _zend.uri.instance-methods.getuserinfo:
 
 Getting the Userinfo of the URI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The userinfo of the *URI* is the optional part of the *URI* that follows the 
 colon and comes before the host-part. For example, the userinfo of 
@@ -165,7 +165,7 @@ object.
 .. _zend.uri.instance-methods.gethost:
 
 Getting the host of the URI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The host of the *URI* is the optional part of the *URI* that follows the 
 user-part and comes before the path-part. For example, the host of 
@@ -188,7 +188,7 @@ object.
 .. _zend.uri.instance-methods.getport:
 
 Getting the port of the URI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The port of the *URI* is the optional part of the *URI* that follows the 
 host-part and comes before the path-part. For example, the host of 
@@ -224,7 +224,7 @@ object.
 .. _zend.uri.instance-methods.getpath:
 
 Getting the path of the URI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The path of the *URI* is the mandatory part of the *URI* that follows the 
 port and comes before the query-part. For example, the path of 
@@ -247,7 +247,7 @@ The ``getPath()``  method returns only the path of the *URI* object.
 .. _zend.uri.instance-methods.getquery:
 
 Getting the query-part of the URI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The query-part of the *URI* is the optional part of the *URI* that follows the 
 path and comes before the fragment. For example, the query of 
@@ -287,7 +287,7 @@ an associative array. This array can be retrieved using ``getQueryAsArray()``
 .. _zend.uri.instance-methods.getfragment:
 
 Getting the fragment-part of the URI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The fragment-part of the *URI* is the optional part of the *URI* that follows the 
 query. For example, the fragment of 
