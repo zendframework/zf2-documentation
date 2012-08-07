@@ -1,7 +1,7 @@
 .. _zend.navigation.pages.custom:
 
 Erstellung eigener Seitentypen
-===============================
+==============================
 
 Wenn ``Zend\Navigation\Page`` erweitert wird, besteht normalerweise keine Notwendigkeit den Konstruktor oder die
 Methoden ``setOptions()`` oder ``setConfig()`` zu überladen. Der Konstruktor der Seite nimmt einen einzelnen
@@ -16,7 +16,7 @@ Wenn die Methode nicht existiert, wird die Option als eigene Eigenschaft der Sei
 
 .. rubric:: Die einfachste Variante einer eigenen Seite
 
-Die einzige Methode, die eine eigene Seite enthalten muß, ist die ``getHref()`` Methode.
+Die einzige Methode, die eine eigene Seite enthalten muss, ist die ``getHref()`` Methode.
 
 .. code-block:: php
    :linenos:
