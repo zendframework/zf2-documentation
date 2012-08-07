@@ -221,9 +221,8 @@ Zend\\Console
         * :doc:`modules/zend.console.introduction`
         * :doc:`modules/zend.console.routes`
         * :doc:`modules/zend.console.modules`
-
-..
         * :doc:`modules/zend.console.controllers`
+
 
 .. _zend.config:
 

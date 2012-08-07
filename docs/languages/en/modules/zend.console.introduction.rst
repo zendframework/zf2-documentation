@@ -123,7 +123,7 @@ We will now add ``resetpassword`` action to ``Application\IndexController``:
 
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
-    use Zend\Console\Request;
+    use Zend\Console\Request as ConsoleRequest;
     use Zend\Math\Rand;
 
     class IndexController extends AbstractActionController
