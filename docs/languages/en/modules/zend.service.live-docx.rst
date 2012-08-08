@@ -187,25 +187,40 @@ code is as follows:
 
 .. code-block:: php
 
-   use ZendService\LiveDocx\MailMerge;
+    use ZendService\LiveDocx\MailMerge;
 
-   $mailMerge = new MailMerge();
+    $locale    = Locale::getDefault();
+    $timestamp = time();
 
-   $mailMerge->setUsername('myUsername')
-             ->setPassword('myPassword')
-             ->setService (MailMerge::SERVICE_FREE);
+    $intlTimeFormatter = new IntlDateFormatter($locale,
+            IntlDateFormatter::NONE, IntlDateFormatter::SHORT);
 
-   $mailMerge->setLocalTemplate('template.docx');
+    $intlDateFormatter = new IntlDateFormatter($locale,
+            IntlDateFormatter::LONG, IntlDateFormatter::NONE);
 
-   $mailMerge->assign('software', 'Magic Graphical Compression Suite v1.9')
-             ->assign('licensee', 'Henry Döner-Meyer')
-             ->assign('company',  'Co-Operation');
+    $mailMerge = new MailMerge();
 
-   $mailMerge->createDocument();
+    $mailMerge->setUsername(DEMOS_ZENDSERVICE_LIVEDOCX_FREE_USERNAME)
+              ->setPassword(DEMOS_ZENDSERVICE_LIVEDOCX_FREE_PASSWORD)
+              ->setService (MailMerge::SERVICE_FREE);
 
-   $document = $mailMerge->retrieveDocument('pdf');
+    $mailMerge->setLocalTemplate('license-agreement-template.docx');
 
-   file_put_contents('document.pdf', $document);
+    $mailMerge->assign('software', 'Magic Graphical Compression Suite v1.9')
+              ->assign('licensee', 'Henry Döner-Meyer')
+              ->assign('company',  'Co-Operation')
+              ->assign('date',     $intlDateFormatter->format($timestamp))
+              ->assign('time',     $intlTimeFormatter->format($timestamp))
+              ->assign('city',     'Lyon')
+              ->assign('country',  'France');
+
+    $mailMerge->createDocument();
+
+    $document = $mailMerge->retrieveDocument('pdf');
+
+    file_put_contents('license-agreement-document.pdf', $document);
+
+    unset($mailMerge);
 
 The resulting document is written to disk in the file **document.pdf**. This file can now be post-processed, sent
 via e-mail or simply displayed, as is illustrated below in **Document Viewer 2.26.1** on **Ubuntu 9.04**:
