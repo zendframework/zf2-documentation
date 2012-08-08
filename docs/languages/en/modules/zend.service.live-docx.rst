@@ -236,8 +236,8 @@ For executable demo applications, which illustrate the above, please take a look
 Advanced Mail-Merge
 ^^^^^^^^^^^^^^^^^^^
 
-``MailMerge`` allows designers to insert any number of text fields into a template. These
-text fields are populated with data when **createDocument()** is called.
+``ZendService\LiveDocx\MailMerge`` allows designers to insert any number of text fields into a 
+template. These text fields are populated with data when **createDocument()** is called.
 
 In addition to text fields, it is also possible specify regions of a document, which should be repeated.
 
