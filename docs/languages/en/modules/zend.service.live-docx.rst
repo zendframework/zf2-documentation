@@ -760,8 +760,8 @@ such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/supported-formats``.
 
-Upgrading From LiveDocx Free to LiveDocx Premium Service
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Upgrading From LiveDocx Free to LiveDocx Premium
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 LiveDocx Free is provided by *Text Control GmbH* completely free for charge. It is free for all to use in an
 unlimited number of applications. However, there are times when you may like to update to LiveDocx Premium. For
