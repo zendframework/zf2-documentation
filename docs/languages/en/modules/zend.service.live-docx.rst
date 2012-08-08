@@ -1,7 +1,7 @@
 .. _zend.service.livedocx:
 
-ZendService\LiveDocx
-====================
+``ZendService\LiveDocx``
+========================
 
 .. _zend.service.livedocx.introduction:
 
@@ -9,14 +9,16 @@ Introduction to LiveDocx
 ------------------------
 
 LiveDocx is a *SOAP* service that allows developers to generate word processing documents by combining structured
-data from *PHP* with a template, created in a word processor. The resulting document can be saved as a *PDF*,
-*DOCX*, *DOC*, *HTML* or *RTF* file. LiveDocx implements `mail-merge`_ in *PHP*.
+textual or image data from *PHP* with a template, created in a word processor. The resulting document can be 
+saved as a *PDF*, *DOCX*, *DOC*, *HTML* or *RTF* file. LiveDocx implements `mail-merge`_ in *PHP*.
 
-The family of ``ZendService\LiveDocx`` components provides a clean and simple interface to the `LiveDocx API`_ and
-additionally offers functionality to improve network performance. ``ZendService\LiveDocx`` is part of the official 
-Zend Framework family, but has to be downloaded and installed in addition to the core components of the Zend 
-Framework. Please refer to GitHub at https://github.com/zendframework/ZendServiceLiveDocx for download and 
-installation instructions.
+The family of ``ZendService\LiveDocx`` components provides a clean and simple interface to *LiveDocx Free*,
+*LiveDocx Premium* and *LiveDocx Fully Licensed* and additionally offers functionality to improve network
+performance.
+
+``ZendService\LiveDocx`` is part of the official Zend Framework family, but has to be downloaded and installed
+in addition to the core components of the Zend Framework, as do all other service components. Please refer to 
+`GitHub (ZendServiceLiveDocx)`_ for download and installation instructions.
 
 In addition to this section of the manual, to learn more about ``ZendService\LiveDocx`` and the backend *SOAP* 
 service LiveDocx, please take a look at the following resources:
@@ -27,7 +29,7 @@ service LiveDocx, please take a look at the following resources:
   to read all the  code in the ``/demos`` directory. It is well commented and explains all you need to know about 
   LiveDocx and ``ZendService\LiveDocx``.
 
-- `ZendService\LiveDocx blog and web site`_.
+- `LiveDocx in PHP`_.
 
 - `LiveDocx SOAP API documentation`_.
 
@@ -882,11 +884,11 @@ For executable demo applications, which illustrate the above, please take a look
 ``/demos/ZendService/LiveDocx/MailMerge/instantiation``.
 
 
-
+.. _`GitHub (ZendServiceLiveDocx)`: https://github.com/zendframework/ZendServiceLiveDocx
 .. _`LiveDocx pricing page`: http://www.livedocx.com/pub/pricing
 .. _`mail-merge`: http://en.wikipedia.org/wiki/Mail_merge
 .. _`LiveDocx API`: http://www.livedocx.com
-.. _`ZendService\LiveDocx blog and web site`: http://www.phplivedocx.org/
+.. _`LiveDocx in PHP`: http://www.phplivedocx.org/
 .. _`LiveDocx SOAP API documentation`: http://www.livedocx.com/pub/documentation/api.aspx
 .. _`LiveDocx WSDL`: https://api.livedocx.com/2.1/mailmerge.asmx?wsdl
 .. _`LiveDocx blog and web site`: https://www.livedocx.com/
