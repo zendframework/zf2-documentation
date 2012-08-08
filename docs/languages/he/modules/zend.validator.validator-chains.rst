@@ -1,11 +1,12 @@
-.. _zend.validate.validator_chains:
+.. EN-Revision: none
+.. _zend.validator.validator_chains:
 
 שרשור פונקציות אימות
 ====================
 
 לפעמים יהיה צורך בלבצע מספר בדיקות ואימותים שונים על אותו ערך
 בסדר מסויים. הדוגמא הבאה מציגה כיצד לפתור את הבעיה אשר מוצגת
-:ref:`בהקדמה <zend.validate.introduction>`, איפה ששם המשתמש צריך להיות בין 6 ל 12
+:ref:`בהקדמה <zend.validator.introduction>`, איפה ששם המשתמש צריך להיות בין 6 ל 12
 תווים ובאותיות בלבד:
 
    .. code-block:: php

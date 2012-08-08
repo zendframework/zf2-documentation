@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.session.savehandler.dbtable:
 
 Zend_Session_SaveHandler_DbTable

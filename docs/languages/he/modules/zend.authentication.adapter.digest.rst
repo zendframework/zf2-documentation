@@ -1,9 +1,10 @@
-.. _zend.auth.adapter.digest:
+.. EN-Revision: none
+.. _zend.authentication.adapter.digest:
 
 אימות מתקדם
 ===========
 
-.. _zend.auth.adapter.digest.introduction:
+.. _zend.authentication.adapter.digest.introduction:
 
 הקדמה
 -----
@@ -29,7 +30,7 @@
    someUser:Some Realm:fde17b91c3a510ecbaf7dbd37f59d4f8
 
 
-.. _zend.auth.adapter.digest.specifics:
+.. _zend.authentication.adapter.digest.specifics:
 
 מאפיינים
 --------
@@ -47,7 +48,7 @@
 
 פרמטרים אלו צריכים להיות מוגדרים לפני הקריאה אל *authenticate()*.
 
-.. _zend.auth.adapter.digest.identity:
+.. _zend.authentication.adapter.digest.identity:
 
 זהות
 ----
