@@ -1,4 +1,5 @@
-.. _zend.validate.writing_validators:
+.. EN-Revision: none
+.. _zend.validator.writing_validators:
 
 Escribiendo Validadores
 =======================
@@ -32,7 +33,7 @@ archivo no puede abrirse, que un servidor *LDAP* no pudiera ser contactado, o un
 estuviera disponible. Estos son casos en los que puede ser necesario determinar el éxito o fracaso de la
 validación.
 
-.. _zend.validate.writing_validators.example.simple:
+.. _zend.validator.writing_validators.example.simple:
 
 .. rubric:: Crear una Clase de Validación sencilla
 
@@ -69,7 +70,7 @@ al valor probado, si éste falla en la validación. La llamada a ``_error()`` si
 razón por el fracaso de la validación. Dado que esta clase sólo define un mensaje de fallo, no es necesario
 darle a ``_error()`` el nombre de la plantilla del mensaje de fallo.
 
-.. _zend.validate.writing_validators.example.conditions.dependent:
+.. _zend.validator.writing_validators.example.conditions.dependent:
 
 .. rubric:: Escribiendo una Clase de Validación habiendo Condiciones Dependientes
 
@@ -143,7 +144,7 @@ posteriores reglas de validación. Sin embargo, esta necesidad no será el caso.
 escribir una clase con reglas de validación independientes, donde el objeto validación puede devolver múltiples
 razones por las cuales fracasó un intento de validación en particular.
 
-.. _zend.validate.writing_validators.example.conditions.independent:
+.. _zend.validator.writing_validators.example.conditions.independent:
 
 .. rubric:: Validación con Condiciones Independientes, Múltiples Razones del Fracaso
 

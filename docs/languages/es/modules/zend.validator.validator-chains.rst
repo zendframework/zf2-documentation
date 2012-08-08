@@ -1,10 +1,11 @@
-.. _zend.validate.validator_chains:
+.. EN-Revision: none
+.. _zend.validator.validator_chains:
 
 Cadenas de Validadores
 ======================
 
 Frecuentemente deben aplicarse múltiples validaciones a algún valor en un orden particular. El siguiente código
-demuestra una forma de resolver el ejemplo de la :ref:`introducción <zend.validate.introduction>`, donde el nombre
+demuestra una forma de resolver el ejemplo de la :ref:`introducción <zend.validator.introduction>`, donde el nombre
 de usuario debe tener entre 6 y 12 caracteres alfanuméricos.
 
 .. code-block:: php

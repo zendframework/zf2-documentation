@@ -1,9 +1,10 @@
-.. _zend.auth.adapter.http:
+.. EN-Revision: none
+.. _zend.authentication.adapter.http:
 
 Adaptador de Autenticación HTTP
 ===============================
 
-.. _zend.auth.adapter.http.introduction:
+.. _zend.authentication.adapter.http.introduction:
 
 Introducción
 ------------
@@ -33,7 +34,7 @@ Hay algunas características notables del *RFC-2617* no implementadas todavía:
 
 - Cabecera de información de la autenticación *HTTP*.
 
-.. _zend.auth.adapter.design_overview:
+.. _zend.authentication.adapter.design_overview:
 
 Descripción del diseño
 ----------------------
@@ -44,7 +45,7 @@ Utiliza un Resolver para buscar la identidad de un cliente en los datos almacena
 texto), y recuperar las credenciales de los datos almacenados. Las credenciales del "Resolved" se comparan con los
 valores presentados por el cliente para determinar si la autenticación es satisfactoria.
 
-.. _zend.auth.adapter.configuration_options:
+.. _zend.authentication.adapter.configuration_options:
 
 Opciones de Configuración
 -------------------------
@@ -52,7 +53,7 @@ Opciones de Configuración
 La clase ``Zend_Auth_Adapter_Http`` requiere un array configurado que pasará a su constructor. Hay varias opciones
 de configuración disponibles, y algunas son obligatorias:
 
-.. _zend.auth.adapter.configuration_options.table:
+.. _zend.authentication.adapter.configuration_options.table:
 
 .. table:: Opciones de Configuración
 
@@ -77,7 +78,7 @@ de configuración disponibles, y algunas son obligatorias:
    una información de autenticación del cliente es aceptada. Actualmente, si se establece en 3600 (por ejemplo),
    hará que el adaptador indique al cliente las nuevas credenciales cada hora, a la hora en punto.
 
-.. _zend.auth.adapter.http.resolvers:
+.. _zend.authentication.adapter.http.resolvers:
 
 Resolvers
 ---------
@@ -91,7 +92,7 @@ coma). Actualmente, sólo se admite el algoritmo de hash *MD5*.
 Un archivo de texto de la clase "Resolve" se incluye con este adaptador, pero cualquier otro tipo de "resolver"
 puede ser creado simplemente implementando la interfaz del "resolver".
 
-.. _zend.auth.adapter.http.resolvers.file:
+.. _zend.authentication.adapter.http.resolvers.file:
 
 Archivo Resolver
 ^^^^^^^^^^^^^^^^
@@ -131,7 +132,7 @@ o
 
 Si la ruta está vacía o no se puede leer, se lanza una excepción.
 
-.. _zend.auth.adapter.http.basic_usage:
+.. _zend.authentication.adapter.http.basic_usage:
 
 Uso Básico
 ----------

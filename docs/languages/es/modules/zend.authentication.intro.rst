@@ -1,4 +1,5 @@
-.. _zend.auth.introduction:
+.. EN-Revision: none
+.. _zend.authentication.introduction:
 
 Introducción
 ============
@@ -18,7 +19,7 @@ y control de acceso con Zend Framework, por favor vea :ref:`Zend\Permissions\Acl
    través de su método estático ``getInstance()``. Esto significa que usar el operador **new** y la keyword
    **clone** no va a funcionar con la clase ``Zend_Auth``: use ``Zend_Auth::getInstance()`` en su lugar.
 
-.. _zend.auth.introduction.adapters:
+.. _zend.authentication.introduction.adapters:
 
 Adaptadores
 -----------
@@ -73,7 +74,7 @@ una clase derivada de ``Zend_Auth_Result``). Si por alguna razón es imposible r
 autenticación, ``authenticate()`` debería arrojar una excepción que se derive de
 ``Zend_Auth_Adapter_Exception``.
 
-.. _zend.auth.introduction.results:
+.. _zend.authentication.introduction.results:
 
 Resultados
 ----------
@@ -140,7 +141,7 @@ El siguiente ejemplo ilustra como un desarrollador podría ramificar basado en e
            break;
    }
 
-.. _zend.auth.introduction.persistence:
+.. _zend.authentication.introduction.persistence:
 
 Persistencia de Identidad
 -------------------------
@@ -152,7 +153,7 @@ con cada petición.
 *HTTP* es un protocolo sin estado, sin embargo, se han desarrollado técnicas como las cookies y sesiones a fin de
 facilitar mantener el estado a través de multiples peticiones en aplicaciones web del lado del servidor.
 
-.. _zend.auth.introduction.persistence.default:
+.. _zend.authentication.introduction.persistence.default:
 
 Persistencia por Defecto en la Sesión PHP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -170,7 +171,7 @@ implemente ``Zend_Auth_Storage_Interface`` a ``Zend_Auth::setStorage()``
    entonces los desarrolladores podrían dejar de usar la clase ``Zend_Auth`` al mismo tiempo, utilizando en su
    lugar una clase adaptadora directamente.
 
-.. _zend.auth.introduction.persistence.default.example:
+.. _zend.authentication.introduction.persistence.default.example:
 
 .. rubric:: Modifying the Session Namespace
 
@@ -196,7 +197,7 @@ autenticación, ya que ``Zend_Auth::authenticate()`` realiza el almacenamiento a
    // suceso
    $result = $auth->authenticate($authAdapter);
 
-.. _zend.auth.introduction.persistence.custom:
+.. _zend.authentication.introduction.persistence.custom:
 
 Implementando Almacenamiento Personalizado
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -205,7 +206,7 @@ En ocaciones los desarrolladores podrían necesitar usar un diferente comportami
 que el provisto por ``Zend_Auth_Storage_Session``. Para esos casos los desarrolladores podrían simplemente
 implementar ``Zend_Auth_Storage_Interface`` y suplir una instancia de la clase a ``Zend_Auth::setStorage()``.
 
-.. _zend.auth.introduction.persistence.custom.example:
+.. _zend.authentication.introduction.persistence.custom.example:
 
 .. rubric:: Usando una Clase de Almacenamiento Personalizada
 
@@ -295,7 +296,7 @@ intentar una petición de autenticación:
    // si hay exito
    $result = Zend_Auth::getInstance()->authenticate($authAdapter);
 
-.. _zend.auth.introduction.using:
+.. _zend.authentication.introduction.using:
 
 Uso
 ---

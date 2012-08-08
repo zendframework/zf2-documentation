@@ -1,9 +1,10 @@
-.. _zend.auth.adapter.digest:
+.. EN-Revision: none
+.. _zend.authentication.adapter.digest:
 
 Autenticación "Digest"
 ======================
 
-.. _zend.auth.adapter.digest.introduction:
+.. _zend.authentication.adapter.digest.introduction:
 
 Introducción
 ------------
@@ -29,7 +30,7 @@ Los elementos anteriores están separados por dos puntos, como en el ejemplo sig
 
    someUser:Some Realm:fde17b91c3a510ecbaf7dbd37f59d4f8
 
-.. _zend.auth.adapter.digest.specifics:
+.. _zend.authentication.adapter.digest.specifics:
 
 Detalles Específicos
 --------------------
@@ -46,7 +47,7 @@ El adaptador de autenticación "Digest", ``Zend_Auth_Adapter_Digest``, requiere 
 
 Estos parámetros deben ser establecidos antes de llamar a ``authenticate()``.
 
-.. _zend.auth.adapter.digest.identity:
+.. _zend.authentication.adapter.digest.identity:
 
 Identidad
 ---------

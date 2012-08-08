@@ -1,4 +1,5 @@
-.. _zend.validate.introduction:
+.. EN-Revision: none
+.. _zend.validator.introduction:
 
 Introducción
 ============
@@ -7,7 +8,7 @@ Cuando se necesita validar algún tipo de dato, el componente ``Zend_Validate`` 
 como así también un sencillo mecanismo de encadenado de validaciones por el cual múltiples validadores pueden
 aplicarse a un dato en un orden definido por el usuario.
 
-.. _zend.validate.introduction.definition:
+.. _zend.validator.introduction.definition:
 
 ¿Qué es un validador?
 ---------------------
@@ -21,7 +22,7 @@ de longitud y que sólo puede contener caracteres alfanuméricos. Se puede usar 
 usuarios cumplan estos requisitos. Si el nombre de usuario elegido no cumple con uno o ambos de los requisitos,
 sería útil saber cuál de estos requisitos no se cumple.
 
-.. _zend.validate.introduction.using:
+.. _zend.validator.introduction.using:
 
 Uso básico de validadores
 -------------------------
@@ -61,7 +62,7 @@ El siguiente ejemplo ilustra la validación de una dirección de e-mail:
        }
    }
 
-.. _zend.validate.introduction.messages:
+.. _zend.validator.introduction.messages:
 
 Personalizar los mensajes
 -------------------------
@@ -139,7 +140,7 @@ esquema de caso por caso.
 
 
 
-.. _zend.validate.introduction.static:
+.. _zend.validator.introduction.static:
 
 Utilizando el método estático is()
 ----------------------------------
@@ -181,7 +182,7 @@ una instancia del objeto validador y llamando a su método ``isValid()``.
 También la clase ``Zend_Filter_Input`` le permite crear ejemplos y ejecutar múltiples filtros y clases de
 validadores por demanda, para procesar juegos de datos de entrada. Ver :ref:` <zend.filter.input>`.
 
-.. _zend.validate.introduction.static.namespaces:
+.. _zend.validator.introduction.static.namespaces:
 
 Namespaces
 ^^^^^^^^^^
@@ -226,7 +227,7 @@ For your convinience there are following methods which allow the handling of nam
 - **Zend_Validate::hasDefaultNamespaces()**: Returns ``TRUE`` when one or more default namespaces are set, and
   ``FALSE`` when no default namespaces are set.
 
-.. _zend.validate.introduction.translation:
+.. _zend.validator.introduction.translation:
 
 Translating messages
 --------------------

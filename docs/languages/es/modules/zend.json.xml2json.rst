@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.json.xml2json:
 
 Conversión de XML a JSON

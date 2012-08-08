@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.auth.adapter.openid:
 
 Autenticación con Open ID

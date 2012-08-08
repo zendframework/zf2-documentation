@@ -1,9 +1,10 @@
-.. _zend.auth.adapter.dbtable:
+.. EN-Revision: none
+.. _zend.authentication.adapter.dbtable:
 
 Tabla de base de datos de autenticación
 =======================================
 
-.. _zend.auth.adapter.dbtable.introduction:
+.. _zend.authentication.adapter.dbtable.introduction:
 
 Introducción
 ------------
@@ -32,7 +33,7 @@ Las opciones de configuración disponibles incluyen:
   específicas de los *RDBMS*, debemos consultar el manual de la base de datos para comprobar la disponibilidad de
   tales funciones para su sistema de base de datos.
 
-.. _zend.auth.adapter.dbtable.introduction.example.basic_usage:
+.. _zend.authentication.adapter.dbtable.introduction.example.basic_usage:
 
 .. rubric:: Uso Básico
 
@@ -133,7 +134,7 @@ Además de la disponibilidad del método ``getIdentity()`` sobre el objeto resul
 Ya que la fila de la tabla contiene el valor de la credencial, es importante proteger los valores contra accesos no
 deseados.
 
-.. _zend.auth.adapter.dbtable.advanced.storing_result_row:
+.. _zend.authentication.adapter.dbtable.advanced.storing_result_row:
 
 Advanced Usage: Manteniendo el resultado del Objeto DbTable
 -----------------------------------------------------------
@@ -173,7 +174,7 @@ almacenamiento de un objeto identidad ``Zend_Auth`` que contiene información ú
 
    }
 
-.. _zend.auth.adapter.dbtable.advanced.advanced_usage:
+.. _zend.authentication.adapter.dbtable.advanced.advanced_usage:
 
 Ejemplo de Uso Avanzado
 -----------------------

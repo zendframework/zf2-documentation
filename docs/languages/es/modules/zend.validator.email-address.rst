@@ -1,4 +1,5 @@
-.. _zend.validate.set.email_address:
+.. EN-Revision: none
+.. _zend.validator.set.email_address:
 
 Dirección de Email
 ==================
@@ -7,7 +8,7 @@ Dirección de Email
 dirección de email en la parte local @ nombre de host e intenta igualar a estos contra especificaciones conocidas
 para direcciones y nombres de host para el correo electrónico.
 
-.. _zend.validate.set.email_address.basic:
+.. _zend.validator.set.email_address.basic:
 
 Utilización básica
 ------------------
@@ -30,7 +31,7 @@ Un ejemplo básico de uso se ve a continuación:
 Esto coincide con el correo electrónico ``$email`` y si fracasa, alimenta *$validator->getMessages()* con mensajes
 de error útiles.
 
-.. _zend.validate.set.email_address.options:
+.. _zend.validator.set.email_address.options:
 
 >Partes locales complejas
 -------------------------
@@ -40,7 +41,7 @@ with the related options, or afterwards, by using ``setOptions()``. The followin
 
 - **allow**: Defines which type of domain names are accepted. This option is used in conjunction with the hostname
   option to set the hostname validator. For more informations about possible values of this option, look at
-  :ref:`Hostname <zend.validate.set.hostname>` and possible ``ALLOW`` * constants. This option defaults to
+  :ref:`Hostname <zend.validator.set.hostname>` and possible ``ALLOW`` * constants. This option defaults to
   ``ALLOW_DNS``.
 
 - **hostname**: Sets the hostname validator with which the domain part of the email address will be validated.
@@ -62,7 +63,7 @@ with the related options, or afterwards, by using ``setOptions()``. The followin
    $validator = new Zend_Validate_EmailAddress();
    $validator->setOptions(array('domain' => false));
 
-.. _zend.validate.set.email_address.complexlocal:
+.. _zend.validator.set.email_address.complexlocal:
 
 Complex local parts
 -------------------
@@ -74,7 +75,7 @@ y *"bob jones"@domain.com*
 Algunos formatos obsoletos de email actualmente no validan (por ejemplo los retornos de carro o "\\" un caracter en
 una dirección de correo electrónico).
 
-.. _zend.validate.set.email_address.purelocal:
+.. _zend.validator.set.email_address.purelocal:
 
 Validating only the local part
 ------------------------------
@@ -89,13 +90,13 @@ validation of the hostname, you can set the ``domain`` option to ``FALSE``. This
    $validator = new Zend_Validate_EmailAddress();
    $validator->setOptions(array('domain' => FALSE));
 
-.. _zend.validate.set.email_address.hostnametype:
+.. _zend.validator.set.email_address.hostnametype:
 
 Validating different types of hostnames
 ---------------------------------------
 
 La parte nombre de host de una dirección de correo es validado contra :ref:`Zend_Validate_Hostname
-<zend.validate.set.hostname>`. Por defecto sólo son aceptados nombres de host DNS de la forma ``domain.com``,
+<zend.validator.set.hostname>`. Por defecto sólo son aceptados nombres de host DNS de la forma ``domain.com``,
 aunque si lo desea también puede aceptar direcciones IP y nombres de host locales.
 
 Para ello necesita instanciar a ``Zend_Validate_EmailAddress`` pasando un parámetro para indicar el tipo de
@@ -117,7 +118,7 @@ hay un ejemplo de cómo aceptar tanto nombres de host DNS y locales:
        }
    }
 
-.. _zend.validate.set.email_address.checkacceptance:
+.. _zend.validator.set.email_address.checkacceptance:
 
 Verificar si el nombre de host realmente acepta email
 -----------------------------------------------------
@@ -185,7 +186,7 @@ deep MX validation. This can be done at initiation by setting the ``deep`` optio
    You should note that MX validation is only accepted for external servers. When deep MX validation is enabled,
    then local IP addresses like ``192.168.*`` or ``169.254.*`` are not accepted.
 
-.. _zend.validate.set.email_address.validateidn:
+.. _zend.validator.set.email_address.validateidn:
 
 Validating International Domains Names
 --------------------------------------
@@ -205,7 +206,7 @@ Sobre el uso de ``setValidateIdn()`` encontrará más información en la documen
 
 Tenga en cuenta que los IDNs se validarán solo si usted permite que nombres de host DNS sean validados.
 
-.. _zend.validate.set.email_address.validatetld:
+.. _zend.validator.set.email_address.validatetld:
 
 Validación de dominios de nivel superior
 ----------------------------------------
@@ -224,7 +225,7 @@ Encontrará más información sobre el uso de ``setValidateTld()`` en la documen
 
 Tenga en cuenta que los TLDs se validarán solo si usted permite que nombres de host DNS sean validados.
 
-.. _zend.validate.set.email_address.setmessage:
+.. _zend.validator.set.email_address.setmessage:
 
 Setting messages
 ----------------

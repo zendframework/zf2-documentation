@@ -1,4 +1,5 @@
-.. _zend.validate.set.hostname:
+.. EN-Revision: none
+.. _zend.validator.set.hostname:
 
 Hostname (Nombre de Host)
 =========================
