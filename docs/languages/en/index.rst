@@ -2,9 +2,11 @@
    sphinx-quickstart on Fri Jul  6 18:55:07 2012.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
-
-Programmer's Reference Guide of Zend Framework 2
-================================================
+   TO TRANSLATORS: You don't need to copy this file to your translation, use
+   translated-snippets.rst to translate title if you want
+   
+|ProgrammersReferenceGuideofZendFramework2|
+===========================================
 
 .. toctree::
    :hidden:
@@ -141,18 +143,16 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.xmlrpc.server
    ref/copyrights
 
-Introduction to Zend Framework
-------------------------------
+|IntroductiontoZendFramework|
+-----------------------------
 
     * :doc:`ref/overview`
     * :doc:`ref/installation`
 
-User Guide
-----------
+|UserGuide|
+-----------
 
-The user guide is provided to take you through a non-trivial example, showing
-you various techniques and features of the framework in order to build an
-application.
+|UserGuideIntroduction|
 
     * :doc:`user-guide/overview`
     * :doc:`user-guide/skeleton-application`
@@ -163,12 +163,12 @@ application.
     * :doc:`user-guide/forms-and-actions`
     * :doc:`user-guide/conclusion`
 
-Learning Zend Framework
+|LearningZendFramework|
 -----------------------
 
     * :doc:`tutorials/quickstart.di`
 
-Zend Framework Reference
+|ZendFrameworkReference|
 ------------------------
 
 .. _zend.authentication:
@@ -477,7 +477,7 @@ Copyright
 
     * :doc:`ref/copyrights`
 
-Indices and tables
+|IndicesAndTables|
 ==================
 
 * :ref:`genindex`

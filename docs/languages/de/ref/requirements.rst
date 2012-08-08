@@ -47,7 +47,7 @@ Viele Komponenten verwenden bestimmte Erweiterungen wenn Sie vorhanden sind um d
 aber Code mit ähnlicher Funktionalität in der Komponente selbst ausführen wenn die Erweiterung nicht vorhanden
 ist.
 
-.. include:: ../../en/ref/requirements.php.extensions.table.rst
+.. include:: requirements.php.extensions.table.rst
 .. _requirements.zendcomponents:
 
 Zend Framework Komponenten
@@ -64,7 +64,7 @@ Viele Komponenten verwenden bestimmte Erweiterungen wenn Sie vorhanden sind um d
 aber Code mit ähnlicher Funktionalität in der Komponente selbst ausführen wenn die Erweiterung nicht vorhanden
 ist.
 
-.. include:: ../../en/ref/requirements.zendcomponents.table.rst
+.. include:: requirements.zendcomponents.table.rst
 .. _requirements.dependencies:
 
 Zend Framework Abhängigkeiten
@@ -87,5 +87,5 @@ Situationen oder mit speziellen Adaptern verwendet werden könnte.
    sollte man trotzdem wissen dass dies zu Problemen führen kann wenn Dateien fehlen oder Komponenten dynamisch
    verwendet werden.
 
-.. include:: ../../en/ref/requirements.dependencies.table.rst
+.. include:: requirements.dependencies.table.rst
 
