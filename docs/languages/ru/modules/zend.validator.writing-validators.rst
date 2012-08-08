@@ -1,4 +1,5 @@
-.. _zend.validate.writing_validators:
+.. EN-Revision: none
+.. _zend.validator.writing_validators:
 
 Написание валидаторов
 =====================
@@ -41,7 +42,7 @@ Zend Framework, возвращают булево значение, означа
 файл (недоступен сервер LDAP, нет соединения с базой данных), и
 процесс валидации не может быть продолжен.
 
-.. _zend.validate.writing_validators.example.simple:
+.. _zend.validator.writing_validators.example.simple:
 
 .. rubric:: Создание простого класса валидации
 
@@ -82,7 +83,7 @@ Zend Framework, возвращают булево значение, означа
 необходимости передавать методу *_error()* имя шаблона сообщения
 об ошибке.
 
-.. _zend.validate.writing_validators.example.conditions.dependent:
+.. _zend.validator.writing_validators.example.conditions.dependent:
 
 .. rubric:: Написание классов валидации с подчиненными условиями
 
@@ -168,7 +169,7 @@ Zend Framework, возвращают булево значение, означа
 возвращать несколько причин, по которым валидация не была
 пройдена.
 
-.. _zend.validate.writing_validators.example.conditions.independent:
+.. _zend.validator.writing_validators.example.conditions.independent:
 
 .. rubric:: Валидация с независимыми условиями и возвратом нескольких причин непрохождения валидации
 

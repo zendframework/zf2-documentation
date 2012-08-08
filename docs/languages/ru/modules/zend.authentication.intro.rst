@@ -1,4 +1,5 @@
-.. _zend.auth.introduction:
+.. EN-Revision: none
+.. _zend.authentication.introduction:
 
 Введение
 ========
@@ -25,7 +26,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
    будут работать с классом ``Zend_Auth``. Вместо них используйте
    ``Zend_Auth::getInstance()``.
 
-.. _zend.auth.introduction.adapters:
+.. _zend.authentication.introduction.adapters:
 
 Адаптеры
 --------
@@ -82,7 +83,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 причине выполнение аутентификации невозможно, ``authenticate()``
 должен бросить исключение, происходящее от ``Zend_Auth_Adapter_Exception``.
 
-.. _zend.auth.introduction.results:
+.. _zend.authentication.introduction.results:
 
 Результат аутентификации
 ------------------------
@@ -160,7 +161,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
            break;
    }
 
-.. _zend.auth.introduction.persistence:
+.. _zend.authentication.introduction.persistence:
 
 Постоянное хранение идентификатора пользователя
 -----------------------------------------------
@@ -174,7 +175,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 технологии как куки(cookies) и сессии для поддержки состояния на
 стороне сервера между несколькими запросами к веб приложению.
 
-.. _zend.auth.introduction.persistence.default:
+.. _zend.authentication.introduction.persistence.default:
 
 Сохранение идентификатора в сессии PHP, по умолчанию
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -197,7 +198,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
    отказаться от использования класса ``Zend_Auth`` и использовать
    адаптер напрямую.
 
-.. _zend.auth.introduction.persistence.default.example:
+.. _zend.authentication.introduction.persistence.default.example:
 
 .. rubric:: Изменение пространства имен в сессии
 
@@ -226,7 +227,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
    // при успехе.
    $result = $auth->authenticate($authAdapter);
 
-.. _zend.auth.introduction.persistence.custom:
+.. _zend.authentication.introduction.persistence.custom:
 
 Реализация пользовательского хранилища
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -236,7 +237,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 ``Zend_Auth_Storage_Session``. В том случае он может реализовать
 ``Zend_Auth_Storage_Interface`` и передать экземпляр методу ``Zend_Auth::setStorage()``.
 
-.. _zend.auth.introduction.persistence.custom.example:
+.. _zend.authentication.introduction.persistence.custom.example:
 
 .. rubric:: Использование пользовательского хранилища
 
@@ -327,7 +328,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
    // при успехе.
    $result = Zend_Auth::getInstance()->authenticate($authAdapter);
 
-.. _zend.auth.introduction.using:
+.. _zend.authentication.introduction.using:
 
 Использование
 -------------

@@ -1,4 +1,5 @@
-.. _zend.validate.introduction:
+.. EN-Revision: none
+.. _zend.validator.introduction:
 
 Введение
 ========
@@ -9,7 +10,7 @@
 которого к одним и тем же данным может быть применено
 несколько валидаторов в порядке, заданном пользователем.
 
-.. _zend.validate.introduction.definition:
+.. _zend.validator.introduction.definition:
 
 Что такое валидатор?
 --------------------
@@ -29,7 +30,7 @@
 будет также полезно знать, каким именно требованиям не
 соответствует имя пользователя.
 
-.. _zend.validate.introduction.using:
+.. _zend.validator.introduction.using:
 
 Базовое использование валидаторов
 ---------------------------------
@@ -78,7 +79,7 @@
 
 
 
-.. _zend.validate.introduction.messages:
+.. _zend.validator.introduction.messages:
 
 Установка собственных сообщений от ошибках
 ------------------------------------------
@@ -172,7 +173,7 @@
 
 
 
-.. _zend.validate.introduction.static:
+.. _zend.validator.introduction.static:
 
 Использование статического метода is()
 --------------------------------------
@@ -221,7 +222,7 @@
 запускать более одного класса фильтра и валидации для
 обработки набора входных данных. Читайте :ref:` <zend.filter.input>`.
 
-.. _zend.validate.introduction.translation:
+.. _zend.validator.introduction.translation:
 
 Перевод сообщений
 -----------------

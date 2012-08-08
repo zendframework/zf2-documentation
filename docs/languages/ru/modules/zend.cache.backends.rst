@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.cache.backends:
 
 Бэкэнды Zend_Cache

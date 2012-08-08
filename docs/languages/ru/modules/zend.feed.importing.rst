@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.importing:
 
 Импортирование лент с помощью Zend_Feed

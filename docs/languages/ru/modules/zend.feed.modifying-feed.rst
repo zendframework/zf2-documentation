@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.modifying-feed:
 
 Изменение структуры лент и их сообщений
