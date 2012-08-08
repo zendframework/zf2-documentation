@@ -9,7 +9,7 @@ Introduction to LiveDocx
 ------------------------
 
 LiveDocx is a *SOAP* service that allows developers to generate word processing documents by combining structured
-textual or image data from *PHP* with a template, created in a word processor. The resulting document can be 
+textual or image data from *PHP* with a template, created in a word processor. The resulting document can be
 saved as a *PDF*, *DOCX*, *DOC*, *HTML* or *RTF* file. LiveDocx implements `mail-merge`_ in *PHP*.
 
 The family of ``ZendService\LiveDocx`` components provides a clean and simple interface to *LiveDocx Free*,
@@ -17,16 +17,16 @@ The family of ``ZendService\LiveDocx`` components provides a clean and simple in
 performance.
 
 ``ZendService\LiveDocx`` is part of the official Zend Framework family, but has to be downloaded and installed
-in addition to the core components of the Zend Framework, as do all other service components. Please refer to 
+in addition to the core components of the Zend Framework, as do all other service components. Please refer to
 `GitHub (ZendServiceLiveDocx)`_ for download and installation instructions.
 
-In addition to this section of the manual, to learn more about ``ZendService\LiveDocx`` and the backend *SOAP* 
+In addition to this section of the manual, to learn more about ``ZendService\LiveDocx`` and the backend *SOAP*
 service LiveDocx, please take a look at the following resources:
 
 - **Shipped demonstration applications**. There is a large number of demonstration applications in the
   directory ``/demos``. They illustrate all functionality offered by LiveDocx. Where appropriate this part of the
-  user manual references the demonstration applications at the end of each section. It is **highly recommended** 
-  to read all the  code in the ``/demos`` directory. It is well commented and explains all you need to know about 
+  user manual references the demonstration applications at the end of each section. It is **highly recommended**
+  to read all the  code in the ``/demos`` directory. It is well commented and explains all you need to know about
   LiveDocx and ``ZendService\LiveDocx``.
 
 - `LiveDocx in PHP`_.
@@ -45,7 +45,7 @@ Sign Up for an Account
 Before you can start using LiveDocx, you must first `sign up`_ for an account. The account is completely free of
 charge and you only need to specify a **username**, **password** and **e-mail address**. Your login credentials
 will be dispatched to the e-mail address you supply, so please type carefully. If, or when, your application
-gets really popular and you require high performance, or additional features only supplied in the premium service, 
+gets really popular and you require high performance, or additional features only supplied in the premium service,
 you can upgrade from the *LiveDocx Free* to *LiveDocx Premium* for a minimal monthly charge. For details of the
 various services, please refer to `LiveDocx pricing`_.
 
@@ -223,7 +223,7 @@ code is as follows:
 
     unset($mailMerge);
 
-The resulting document is written to disk in the file **document.pdf**. This file can now be post-processed, sent
+The resulting document is written to disk in the file **license-agreement-document.pdf**. This file can now be post-processed, sent
 via e-mail or simply displayed, as is illustrated below in **Document Viewer 2.26.1** on **Ubuntu 9.04**:
 
 .. image:: ../images/zend.service.livedocx.mailmerge.templates-msworddocument_zoom.png
@@ -233,7 +233,7 @@ Resulting document as *PDF* in Document Viewer 2.26.1.
 
 .. _zend.service.livedocx.mailmerge.advanced:
 
-For executable demo applications, which illustrate the above, please take a look at 
+For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/license-agreement``.
 
 Advanced Mail-Merge
@@ -360,8 +360,9 @@ The data, which is specified in the array ``$billConnections`` is repeated in th
 The keys of the array (``connection_number``, ``connection_duration`` and ``fee``) are the block field names -
 their data is inserted, one row per iteration.
 
-The resulting document is written to disk in the file **document.pdf**. This file can now be post-processed, sent
-via e-mail or simply displayed, as is illustrated below in **Document Viewer 2.26.1** on **Ubuntu 9.04**:
+The resulting document is written to disk in the file **telephone-bill-document.pdf**. This file can now be
+post-processed, sent via e-mail or simply displayed, as is illustrated below in **Document Viewer 2.26.1**
+on **Ubuntu 9.04**:
 
 .. image:: ../images/zend.service.livedocx.mailmerge.advanced-mswordblocksdocument_zoom.png
 
@@ -372,7 +373,7 @@ You can download the *DOC* `template file`_ and the resulting `PDF document`_.
 
 **NOTE:** blocks may not be nested.
 
-For executable demo applications, which illustrate the above, please take a look at 
+For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/telephone-bill``.
 
 .. _zend.service.livedocx.mailmerge.images:
@@ -384,8 +385,8 @@ In addition to assigning textual data, it is also possible to merge image data i
 populates a conference badge template with the photo ``dailemaitre.jpg``, in addition to some textual data.
 
 The first step is to upload the image to the backend service. Once you have done this, you can assign the filename
-of image to the template just as you would any other textual data. Note the syntax of the field name containing an
-image. It must start with ``image:``
+of the image to the template just as you would any other textual data. Note the syntax of the field name containing
+an image - it must start with ``image:``
 
 .. code-block:: php
 
@@ -403,10 +404,6 @@ image. It must start with ``image:``
               ->setPassword('myPassword')
               ->setService (MailMerge::SERVICE_FREE);  // for LiveDocx Premium, use MailMerge::SERVICE_PREMIUM
 
-    /**
-     * Image Source:
-     * iStock_000003413016Medium_business-man-with-hands-up.jpg
-     */
     $photoFilename = __DIR__ . '/dailemaitre.jpg';
     $photoFile     = basename($photoFilename);
 
@@ -431,7 +428,7 @@ image. It must start with ``image:``
 
     unset($mailMerge);
 
-For executable demo applications, which illustrate the above, please take a look at 
+For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/conference-pass``.
 
 
@@ -498,34 +495,32 @@ The supported formats can be obtained by calling ``getImageExportFormats()``.
 
     unset($mailMerge);
 
-This produces two files (``license-agreement-page-1.png`` and ``license-agreement-page-2.png``) 
+This produces two files (``license-agreement-page-1.png`` and ``license-agreement-page-2.png``)
 and writes them to disk in the same directory as the executable *PHP* file.
 
 .. image:: ../images/zend.service.livedocx.mailmerge.bitmaps-documentpage1_zoom.png
-
 
 license-agreement-page-1.png.
 
 .. image:: ../images/zend.service.livedocx.mailmerge.bitmaps-documentpage2_zoom.png
 
-
 license-agreement-page-2.png.
 
 .. _zend.service.livedocx.mailmerge.templates-types:
 
-For executable demo applications, which illustrate the above, please take a look at 
+For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/bitmaps``.
 
 
 Local vs. Remote Templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Templates can be stored **locally**, on the client machine, or **remotely**, on the server. There are advantages
+Templates can be stored **locally**, on the client machine, or **remotely**, by LiveDocx. There are advantages
 and disadvantages to each approach.
 
-In the case that a template is stored locally, it must be transfered from the client to the server on every
+In the case that a template is stored locally, it must be transfered from the client to LiveDocx on every
 request. If the content of the template rarely changes, this approach is inefficient. Similarly, if the template is
-several megabytes in size, it may take considerable time to transfer it to the server. Local template are useful in
+several megabytes in size, it may take considerable time to transfer it to LiveDocx. Local template are useful in
 situations in which the content of the template is constantly changing.
 
 The following code illustrates how to use a local template.
@@ -546,7 +541,7 @@ The following code illustrates how to use a local template.
 
     unset($mailMerge);
 
-In the case that a template is stored remotely, it is uploaded once to the server and then simply referenced on all
+In the case that a template is stored remotely, it is uploaded once to LiveDocx and then simply referenced on all
 subsequent requests. Obviously, this is much quicker than using a local template, as the template does not have to
 be transfered on every request. For speed critical applications, it is recommended to use the remote template
 method.
@@ -585,7 +580,7 @@ The following code illustrates how to reference the remotely stored template on 
 
     unset($mailMerge);
 
-For executable demo applications, which illustrate the above, please take a look at 
+For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/templates``.
 
 .. _zend.service.livedocx.mailmerge.information:
@@ -593,8 +588,8 @@ For executable demo applications, which illustrate the above, please take a look
 Getting Information
 ^^^^^^^^^^^^^^^^^^^
 
-``MailMerge`` provides a number of methods to get information on field names, available fonts
-and supported formats.
+``ZendService\LiveDocx\MailMerge`` provides a number of methods to get information on field names,
+available fonts and supported formats.
 
 .. _zend.service.livedocx.mailmerge.information.getfieldname:
 
@@ -623,7 +618,7 @@ is useful, in the case that you create an application, in which an end-user can 
 
     unset($mailMerge);
 
-For executable demo applications, which illustrate the above, please take a look at 
+For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/template-info``.
 
 .. _zend.service.livedocx.mailmerge.information.getblockfieldname:
@@ -657,7 +652,7 @@ Before such templates can be populated, it is necessary to find out the names of
 
     unset($mailMerge);
 
-For executable demo applications, which illustrate the above, please take a look at 
+For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/template-info``.
 
 .. _zend.service.livedocx.mailmerge.information.getfontnames:
@@ -687,7 +682,7 @@ which are not available on the server, font-substitution will take place. This m
 **NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
 such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 
-For executable demo applications, which illustrate the above, please take a look at 
+For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/supported-fonts``.
 
 .. _zend.service.livedocx.mailmerge.information.gettemplateformats:
@@ -716,7 +711,7 @@ format of the documentation generation process.
 **NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
 such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 
-For executable demo applications, which illustrate the above, please take a look at 
+For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/supported-formats``.
 
 .. _zend.service.livedocx.mailmerge.information.getdocumentformats:
@@ -742,7 +737,7 @@ format of the documentation generation process.
 
     unset($mailMerge);
 
-For executable demo applications, which illustrate the above, please take a look at 
+For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/supported-formats``.
 
 .. _zend.service.livedocx.mailmerge.information.getimageexportformats:
@@ -771,22 +766,22 @@ the documentation generation process.
 **NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
 such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 
-For executable demo applications, which illustrate the above, please take a look at 
+For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/supported-formats``.
 
 Upgrading From LiveDocx Free to LiveDocx Premium Service
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-LiveDocx Free is provided by *Text Control GmbH* completely free for charge. It is free for all to use in an 
-unlimited number of applications. However, there are times when you may like to update to LiveDocx Premium. For 
-example, you need to generate a very large number of documents concurrently, or your application requires 
-documents to be created faster than LiveDocx Free permits. For such scenarios, *Text Control GmbH* offers LiveDocx 
-Premium, a paid service with a number of benefits. For an overview of the benefits, please take a look at the 
-`LiveDocx pricing page`_.
+LiveDocx Free is provided by *Text Control GmbH* completely free for charge. It is free for all to use in an
+unlimited number of applications. However, there are times when you may like to update to LiveDocx Premium. For
+example, you need to generate a very large number of documents concurrently, or your application requires
+documents to be created faster than LiveDocx Free permits. For such scenarios, *Text Control GmbH* offers LiveDocx
+Premium, a paid service with a number of benefits. For an overview of the benefits, please take a look at
+`LiveDocx pricing`_.
 
 This section of the manual offers a technical overview of how to upgrade from LiveDocx Free to LiveDocx Premium.
 
-All you have to do, is make a very small change to the code that runs with LiveDocx Free. Your instantiation and 
+All you have to do, is make a very small change to the code that runs with LiveDocx Free. Your instantiation and
 initialization of LiveDocx Free probably looks as follows:
 
 .. code-block:: php
@@ -798,13 +793,13 @@ initialization of LiveDocx Free probably looks as follows:
     $mailMerge->setUsername('myUsername')
               ->setPassword('myPassword')
               ->setService (MailMerge::SERVICE_FREE);
-    
+
     // rest of your application here
 
     unset($mailMerge);
 
-To use LiveDocx Premium, you simply need to change the service value from ``MailMerge::SERVICE_FREE`` to 
-``MailMerge::SERVICE_PREMIUM``, and set the username and password assigned to you for Livedocx Premium. This may, 
+To use LiveDocx Premium, you simply need to change the service value from ``MailMerge::SERVICE_FREE`` to
+``MailMerge::SERVICE_PREMIUM``, and set the username and password assigned to you for Livedocx Premium. This may,
 or may not be the same as the credentials for LiveDocx Free. For example:
 
 .. code-block:: php
@@ -816,33 +811,33 @@ or may not be the same as the credentials for LiveDocx Free. For example:
     $mailMerge->setUsername('myPremiumUsername')
               ->setPassword('myPremiumPassword')
               ->setService (MailMerge::SERVICE_PREMIUM);
-    
+
     // rest of your application here
 
     unset($mailMerge);
 
-And that is all there is to it. The assignment of the premium WSDL to the component is handled internally and 
+And that is all there is to it. The assignment of the premium WSDL to the component is handled internally and
 automatically. You are now using LiveDocx Premium.
 
-For executable demo applications, which illustrate the above, please take a look at 
+For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/instantiation``.
 
 Upgrading From LiveDocx Free or LiveDocx Premium to LiveDocx Fully Licensed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-LiveDocx Free and Livedocx Premium are provided by *Text Control GmbH* as a service. They are addressed over the 
-Internet. However, for certain applications, for example, ones that process very sensitive data (banking, health 
-or financial), you may not want to send your data across the Internet to a third party service, regardless of the 
-SSL encryption that both LiveDocx Free and Livedocx Premium offer as standard. For such scenarios, you can license 
-LiveDocx and install an entire LiveDocx server in your own network. As such, you completely control the flow of 
-data between your application and the backend LiveDocx server. For an overview of the benefits of LiveDocx Fully 
-Licensed, please take a look at the `LiveDocx pricing page`_.
+LiveDocx Free and Livedocx Premium are provided by *Text Control GmbH* as a service. They are addressed over the
+Internet. However, for certain applications, for example, ones that process very sensitive data (banking, health
+or financial), you may not want to send your data across the Internet to a third party service, regardless of the
+SSL encryption that both LiveDocx Free and Livedocx Premium offer as standard. For such scenarios, you can license
+LiveDocx and install an entire LiveDocx server in your own network. As such, you completely control the flow of
+data between your application and the backend LiveDocx server. For an overview of the benefits of LiveDocx Fully
+Licensed, please take a look at `LiveDocx pricing`_.
 
-This section of the manual offers a technical overview of how to upgrade from LiveDocx Free or LiveDocx Premium to 
+This section of the manual offers a technical overview of how to upgrade from LiveDocx Free or LiveDocx Premium to
 LiveDocx Fully Licensed.
 
-All you have to do, is make a very small change to the code that runs with LiveDocx Free or LiveDocx Premium. Your 
-instantiation and initialization of LiveDocx Free probably looks as follows:
+All you have to do, is make a very small change to the code that runs with LiveDocx Free or LiveDocx Premium. Your
+instantiation and initialization of LiveDocx Free or LiveDocx Premium probably looks as follows:
 
 .. code-block:: php
 
@@ -855,12 +850,12 @@ instantiation and initialization of LiveDocx Free probably looks as follows:
               ->setService (MailMerge::SERVICE_FREE);
            // or
            // ->setService (MailMerge::SERVICE_PREMIUM);
-    
+
     // rest of your application here
 
     unset($mailMerge);
 
-To use LiveDocx Fully Licensed, you simply need to set the WSDL of the backend LiveDocx server in your own 
+To use LiveDocx Fully Licensed, you simply need to set the WSDL of the backend LiveDocx server in your own
 network. You can do this as follows:
 
 .. code-block:: php
@@ -872,19 +867,18 @@ network. You can do this as follows:
     $mailMerge->setUsername('myFullyLicensedUsername')
               ->setPassword('myFullyLicensedPassword')
               ->setWsdl    ('http://api.example.com/2.1/mailmerge.asmx?wsdl');
-    
+
     // rest of your application here
 
     unset($mailMerge);
 
 And that is all there is to it. You are now using LiveDocx Fully Licensed.
 
-For executable demo applications, which illustrate the above, please take a look at 
+For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/instantiation``.
 
-.. _`LiveDocx pricing` : http://www.livedocx.com/pub/pricing
 .. _`GitHub (ZendServiceLiveDocx)`: https://github.com/zendframework/ZendServiceLiveDocx
-.. _`LiveDocx pricing page`: http://www.livedocx.com/pub/pricing
+.. _`LiveDocx pricing`: http://www.livedocx.com/pub/pricing
 .. _`mail-merge`: http://en.wikipedia.org/wiki/Mail_merge
 .. _`LiveDocx API`: http://www.livedocx.com
 .. _`LiveDocx in PHP`: http://www.phplivedocx.org/
