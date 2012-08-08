@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.windowsazure.storage.table:
 
 Zend_Service_WindowsAzure_Storage_Table

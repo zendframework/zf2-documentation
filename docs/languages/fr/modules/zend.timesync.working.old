@@ -1,0 +1,225 @@
+.. EN-Revision: none
+.. _zend.timesync.working:
+
+Utiliser Zend_TimeSync
+======================
+
+``Zend_TimeSync`` peut retourner le temps de n'importe quel serveur via **NTP** ou **SNTP**. Il peut aussi gérer
+de multiples serveurs.
+
+.. note::
+
+   Dans tous les exemples qui suivront, nous utiliserons un pool de serveurs générique public :
+   **0.europe.pool.ntp.org**. De votre côté, il est conseillé d'utiliser le pool le plus proche possible
+   géographiquement de votre position. Lisez `http://www.pool.ntp.org`_ pour plus d'informations.
+
+.. _zend.timesync.working.generic:
+
+Requêter un serveur de temps public
+-----------------------------------
+
+Cette opération est très simple, il suffit de préciser le serveur de temps à utiliser.
+
+.. code-block:: php
+   :linenos:
+
+   $server = new Zend_TimeSync('0.pool.ntp.org');
+
+   print $server->getDate()->getIso();
+
+Que se passe-t-il en arrière plan de ``Zend_TimeSync``? Tout d'abord la syntaxe est vérifiée. Ainsi,
+"*0.pool.ntp.org*" est vérifié et reconnu comme pouvant être un serveur de temps. Ensuite l'appel à
+``getDate()`` génère une requête vers le serveur de temps qui retourne son temps. ``Zend_TimeSync`` va alors
+calculer la différence entre ce temps retourné, et le temps actuel du serveur sur lequel le script tourne, et
+retourner finalement un objet ``Zend_Date`` représentant le temps actuel, juste et corrigé.
+
+Pour plus de détails sur les objets ``Zend_Date`` et leurs méthodes, voyez la documentation de :ref:`Zend_Date
+<zend.date.introduction>`.
+
+.. _zend.timesync.working.multiple:
+
+Serveurs de temps multiples
+---------------------------
+
+Tous les serveurs de temps ne sont pas disponibles tout le temps, à 100%. Il peuvent subir des opérations de
+maintenance, ou tout simplement se retrouver saturés. Dans de tels cas, une exception sera levée.
+
+``Zend_TimeSync`` peut gérer plusieurs serveurs, et se connecter automatiquement au suivant, si le précédent ne
+répond pas. Passez un tableau de serverus de temps au constructeur de l'objet, ou utilisez la méthode
+``addServer()``:
+
+.. code-block:: php
+   :linenos:
+
+   $server = new Zend_TimeSync(array('0.pool.ntp.org',
+                                     '1.pool.ntp.org',
+                                     '2.pool.ntp.org'));
+   $server->addServer('3.pool.ntp.org');
+
+   print $server->getDate()->getIso();
+
+Vous pouvez ajouter une infinité de serveurs, et ``Zend_TimeSync`` basculera automatiquement au suivant, si un ne
+répond pas.
+
+Vous devriez aussi nommer vos serveurs de temps. Ceci se fait au moyen de la clé du tableau de serveurs, ou en
+second paramètre de la méthode addServer() :
+
+.. code-block:: php
+   :linenos:
+
+   $server = new Zend_TimeSync(array('generic'  => '0.pool.ntp.org',
+                                     'fallback' => '1.pool.ntp.org',
+                                     'reserve'  => '2.pool.ntp.org'));
+   $server->addServer('3.pool.ntp.org', 'additional');
+
+   print $server->getDate()->getIso();
+
+En nommant vos serveurs, vous pourrez en interroger un en particulier comme nous allons le voir.
+
+.. _zend.timesync.working.protocol:
+
+Les protocoles des serveurs de temps
+------------------------------------
+
+La plupart des serveurs publics de temps utilisent le protocole **NTP**. Mais d'autres protocoles existent.
+
+Vous pouvez spécifier le protocole dans l'adresse du serveur de temps. ``Zend_TimeSync`` en supporte deux
+actuellement. Celui par défaut est **NTP**. Si vous omettez le protocole dans l'adresse, c'est NTP qui sera
+utilisé.
+
+.. code-block:: php
+   :linenos:
+
+   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+                                     'fallback' => 'ntp:\\1.pool.ntp.org',
+                                     'reserve'  => 'ntp:\\2.pool.ntp.org'));
+   $server->addServer('sntp:\\internal.myserver.com', 'additional');
+
+   print $server->getDate()->getIso();
+
+``Zend_TimeSync`` peut donc gérer plusieurs serveurs, et plusieurs protocoles, en même temps.
+
+.. _zend.timesync.working.ports:
+
+Utiliser les ports pour les serveurs de temps
+---------------------------------------------
+
+Comme tous les protocoles, **NTP** et **SNTP** utilisent des ports par défaut.
+
+Quelque fois il peut être nécessaire de préciser le port à utiliser. Si c'est le cas, rajoutez le simplement à
+l'adresse du serveur à utiliser, sinon ``Zend_TimeSync`` utilisera celui par défaut.
+
+.. code-block:: php
+   :linenos:
+
+   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org:200',
+                                     'fallback' => 'ntp:\\1.pool.ntp.org'));
+   $server->addServer('sntp:\\internal.myserver.com:399', 'additional');
+
+   print $server->getDate()->getIso();
+
+.. _zend.timesync.working.options:
+
+Options pour les serveurs de temps
+----------------------------------
+
+Actuellement seule une option est utilisée en interne par ``Zend_TimeSync``. Mais vous pouvez en utiliser autant
+que vous voulez.
+
+L'option **timeout** définit le nombre de secondes au delà duquel la connexion sera considérée comme cassée.
+La valeur par défaut est **1**, donc ``Zend_TimeSync`` changera de serveur si la réponse du serveur actuellement
+interrogé met plus d'une seconde à arriver.
+
+Grâce à ``setOptions()``, vous passez un tableau d'options que vous voulez. La clé du tableau représente le nom
+de l'option en question et la valeur, sa valeur. Pour voir les options déjà affectées, utilisez la méthode
+``getOptions()``. Elle accepte une clé nommant l'option à récupérer, ou alors si aucun paramètre ne lui est
+passé, la méthode retournera toutes les options connues.
+
+.. code-block:: php
+   :linenos:
+
+   Zend_TimeSync::setOptions(array('timeout' => 3, 'myoption' => 'timesync'));
+   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+                                     'fallback' => 'ntp:\\1.pool.ntp.org'));
+   $server->addServer('sntp:\\internal.myserver.com', 'additional');
+
+   print $server->getDate()->getIso();
+   print_r(Zend_TimeSync::getOptions();
+   print "Timeout = " . Zend_TimeSync::getOptions('timeout');
+
+Comme vous pouvez le noter, les options de ``Zend_TimeSync`` sont statiques, ainsi chaque instance de
+``Zend_TimeSync`` possèdera les mêmes options.
+
+.. _zend.timesync.working.different:
+
+Utiliser des serveurs de temps différents
+-----------------------------------------
+
+Par défaut la requête utilisera le premier serveur défini, et ainsi de suite. Il peut être nécessaire parfois,
+de spécifier un serveur précis que l'on souhaite interroger. Utilisez ``setServer()`` et passez lui le nom du
+serveur que vous souhaitez interroger prochainement. Pour savoir le serveur qui va être utilisé, ``getServer()``
+vous sera utile.
+
+.. code-block:: php
+   :linenos:
+
+   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+                                     'fallback' => 'ntp:\\1.pool.ntp.org'));
+   $server->addServer('sntp:\\internal.myserver.com', 'additional');
+
+   $actual = $server->getServer();
+   $server = $server->setServer('additional');
+
+.. _zend.timesync.working.informations:
+
+Informations sur les serveurs de temps
+--------------------------------------
+
+Les serveurs de temps fournissent certes le temps, mais aussi d'autres informations. Pour prendre connaissance de
+ces informations, utilisez la méthode ``getInfo()``.
+
+.. code-block:: php
+   :linenos:
+
+   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+                                     'fallback' => 'ntp:\\1.pool.ntp.org'));
+
+   print_r ($server->getInfo());
+
+Des protocoles et des serveurs différents, retourneront des informations différentes.
+
+.. _zend.timesync.working.exceptions:
+
+Gérer les exceptions
+--------------------
+
+Les exceptions sont collectées pour tous les serveurs et sont retournées en tant que tableau. Vous pourrez ainsi
+itérer sur vos exceptions, voyez plutôt :
+
+.. code-block:: php
+   :linenos:
+
+   $serverlist = array(
+           // invalid servers
+           'invalid_a'  => 'ntp://a.foo.bar.org',
+           'invalid_b'  => 'sntp://b.foo.bar.org',
+   );
+
+   $server = new Zend_TimeSync($serverlist);
+
+   try {
+       $result = $server->getDate();
+       echo $result->getIso();
+   } catch (Zend_TimeSync_Exception $e) {
+
+       $exceptions = $e->get();
+
+       foreach ($exceptions as $key => $myException) {
+           echo $myException->getMessage();
+           echo '<br />';
+       }
+   }
+
+
+
+.. _`http://www.pool.ntp.org`: http://www.pool.ntp.org

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.amazon.sqs:
 
 Zend_Service_Amazon_Sqs

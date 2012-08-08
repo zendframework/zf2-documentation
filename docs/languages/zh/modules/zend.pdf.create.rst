@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.pdf.create:
 
 生成和加载 PDF 文档

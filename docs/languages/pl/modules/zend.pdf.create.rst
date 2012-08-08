@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.pdf.create:
 
 Tworzenie oraz ładowanie dokumentów PDF.

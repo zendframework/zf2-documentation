@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.view.helpers.initial.inlinescript:
 
 InlineScript ヘルパー

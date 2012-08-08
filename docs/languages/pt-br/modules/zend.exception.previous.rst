@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.exception.previous:
 
 Exceções Precedentes

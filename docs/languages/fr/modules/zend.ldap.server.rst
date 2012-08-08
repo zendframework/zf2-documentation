@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.ldap.server:
 
 Récupérer des informations depuis un serveur LDAP

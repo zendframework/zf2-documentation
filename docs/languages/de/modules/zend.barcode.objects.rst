@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.barcode.objects:
 
 Zend_Barcode Objekte

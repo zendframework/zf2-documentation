@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.character-sets:
 
 Jeux de caractères

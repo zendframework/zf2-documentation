@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.paginator.intro:
 
 Einführung

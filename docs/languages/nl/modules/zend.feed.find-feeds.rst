@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.findFeeds:
 
 Feeds verkregen van Web Paginas

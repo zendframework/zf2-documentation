@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _performance.localization:
 
 גלובאליזציה (i18n) ותמיכה בשפות שונות (l10n)

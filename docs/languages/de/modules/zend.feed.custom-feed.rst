@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.custom-feed:
 
 Eigene Klassen für Feeds und Einträge

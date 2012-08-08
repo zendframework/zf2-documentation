@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.boundary:
 
 控制MIME分界线

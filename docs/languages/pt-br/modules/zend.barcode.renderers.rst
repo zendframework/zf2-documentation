@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.barcode.renderers:
 
 Renderizadores do Zend_Barcode

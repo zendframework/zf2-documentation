@@ -1,0 +1,47 @@
+.. EN-Revision: none
+.. _zend.log.writers.syslog:
+
+Ecrire dans lee journal du système
+==================================
+
+``Zend_Log_Writer_Syslog`` écrit les rapports de log dans le journal système (syslog). En interne, il utilise les
+fonctions *PHP* ``openlog()``, ``closelog()``, et ``syslog()``.
+
+Un cas d'utilisation intéressant de ``Zend_Log_Writer_Syslog`` est le cluster de machines. La fonctionnalité de
+journal système permet de faire en sorte que chaque machine enregistre dans un fichier de journal centralisé, ce
+qui simplifie l'administration.
+
+Par défaut, tous les messages gérés sont préfixés par "Zend_Log". Si vous souhaitez changer ce nom, utilisez
+le constructeur ou l'accesseur:
+
+.. code-block:: php
+   :linenos:
+
+   // A l'instanciation
+   $writer = new Zend_Log_Writer_Syslog(array('application' => 'FooBar'));
+
+   // Plus tard:
+   $writer->setApplicationName('BarBaz');
+
+Le journal système vous aidera aussi à identifier les messages par types d'application ("facility"), les
+programmes de journalisation système vont générer des fichiers journaux différents en fonction des types
+d'application, ce qui là encore, peut aider dans l'administration.
+
+Pour spécifier le type d'application, utilisez le constructeur ou l'accesseur. Cette option peut être l'une des
+constantes utilisées par ``openlog()``, définies dans la page `du manuel de openlog()`_.
+
+.. code-block:: php
+   :linenos:
+
+   // A l'instanciation
+   $writer = new Zend_Log_Writer_Syslog(array('facility' => LOG_AUTH));
+
+   // Plus tard
+   $writer->setFacility(LOG_USER);
+
+En utilisant l'objet de log, continuez d'utiliser les constantes de ``Zend_Log``, elles vont être converties en
+leurs valeurs par ``syslog()``.
+
+
+
+.. _`du manuel de openlog()`: http://php.net/openlog

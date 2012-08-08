@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.session.basic_usage:
 
 Usage basique

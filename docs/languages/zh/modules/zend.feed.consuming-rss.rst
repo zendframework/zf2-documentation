@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.consuming-rss:
 
 RSS Feed的使用

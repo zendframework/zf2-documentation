@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.lucene.index-structure:
 
 Structure d'index Lucene

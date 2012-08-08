@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.cache.frontends:
 
 Zend_Cache前端

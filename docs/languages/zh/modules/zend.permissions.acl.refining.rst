@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.permissions.acl.refining:
 
 精细的访问控制

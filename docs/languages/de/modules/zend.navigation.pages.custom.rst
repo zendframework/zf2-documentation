@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.navigation.pages.custom:
 
 Erstellung eigener Seitentypen

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.memory.memory-objects:
 
 Objet mémoire

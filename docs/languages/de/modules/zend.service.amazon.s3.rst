@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.amazon.s3:
 
 Zend_Service_Amazon_S3

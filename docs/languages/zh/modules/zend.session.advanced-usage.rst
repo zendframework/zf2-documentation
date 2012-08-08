@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.session.advanced_usage:
 
 高级用法

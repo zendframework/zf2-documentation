@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _migration.introduction:
 
 導入

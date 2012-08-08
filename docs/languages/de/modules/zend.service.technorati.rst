@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.technorati:
 
 Zend_Service_Technorati

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.ldap.api.reference.zend-ldap-ldif-encoder:
 
 Zend_Ldif_Encoder

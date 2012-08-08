@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.multiuser.intro:
 
 Erstellung von Multi-User Anwendungen mit Zend Framework

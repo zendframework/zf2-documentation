@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.multiple-emails:
 
 שליחת אימיילים מרובים בחיבור SMTP אחד

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.consuming-atom-single-entry:
 
 单个Atom条目的处理

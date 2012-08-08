@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.gdata.gapps:
 
 Google Apps Provisionierung verwenden

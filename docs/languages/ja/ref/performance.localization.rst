@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _performance.localization:
 
 国際化(i18n)とローカライズ(l10n)

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.gdata.photos:
 
 Picasa Web Alben verwenden

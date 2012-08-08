@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.json.advanced:
 
 Fortgeschrittene Verwendung von Zend_Json

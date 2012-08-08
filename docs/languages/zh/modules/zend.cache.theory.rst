@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.cache.theory:
 
 缓存原理

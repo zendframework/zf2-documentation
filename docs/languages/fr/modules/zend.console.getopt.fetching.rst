@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.console.getopt.fetching:
 
 Extraire les options et les arguments

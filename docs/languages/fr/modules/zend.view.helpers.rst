@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.view.helpers:
 
 Aides de vue
@@ -223,7 +224,6 @@ La sortie résultante du script de vue ressemblera à ceci :
 
 .. include:: zend.view.helpers.action.rst
 .. include:: zend.view.helpers.base-url.rst
-.. include:: zend.view.helpers.currency.rst
 .. include:: zend.view.helpers.cycle.rst
 .. include:: zend.view.helpers.partial.rst
 .. include:: zend.view.helpers.placeholder.rst
@@ -237,7 +237,6 @@ La sortie résultante du script de vue ressemblera à ceci :
 .. include:: zend.view.helpers.inline-script.rst
 .. include:: zend.view.helpers.json.rst
 .. include:: zend.view.helpers.navigation.rst
-.. include:: zend.view.helpers.translator.rst
 .. _zend.view.helpers.paths:
 
 Chemin des aides

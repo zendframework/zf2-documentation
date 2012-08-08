@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.oauth.introduction.protocol-workflow:
 
 Workflow des Protokolls

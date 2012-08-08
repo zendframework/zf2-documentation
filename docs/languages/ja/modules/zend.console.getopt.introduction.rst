@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.console.getopt.introduction:
 
 導入

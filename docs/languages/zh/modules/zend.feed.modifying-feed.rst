@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.modifying-feed:
 
 修改Feed和条目结构

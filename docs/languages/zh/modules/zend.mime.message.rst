@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mime.message:
 
 Zend_Mime_Message

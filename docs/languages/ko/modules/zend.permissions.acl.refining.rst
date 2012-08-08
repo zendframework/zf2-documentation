@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.permissions.acl.refining:
 
 접근 제어의 정련(精鍊)

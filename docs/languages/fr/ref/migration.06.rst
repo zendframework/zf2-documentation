@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _migration.06:
 
 Zend Framework 0.6

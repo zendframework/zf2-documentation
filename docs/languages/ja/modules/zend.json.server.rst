@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.json.server:
 
 Zend_Json_Server - JSON-RPCサーバー

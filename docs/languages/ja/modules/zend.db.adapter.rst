@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.db.adapter:
 
 Zend_Db_Adapter

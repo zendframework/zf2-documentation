@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.view.helpers.initial.headstyle:
 
 L'aide de vue HeadStyle

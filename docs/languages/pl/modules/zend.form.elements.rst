@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.form.elements:
 
 Tworzenie elementów formularza za pomocą klasy Zend_Form_Element

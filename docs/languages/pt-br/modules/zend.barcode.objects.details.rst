@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.barcode.objects.details:
 
 Descrição dos códigos de barras embarcados

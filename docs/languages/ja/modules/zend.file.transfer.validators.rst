@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.file.transfer.validators:
 
 Zend_File_Transfer 用のバリデータ

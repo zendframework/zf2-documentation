@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.importing:
 
 フィードの読み込み

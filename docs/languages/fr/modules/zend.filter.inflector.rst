@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.filter.inflector:
 
 Zend_Filter_Inflector

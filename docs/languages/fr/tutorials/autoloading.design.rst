@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.autoloading.design:
 
 Architecture et buts

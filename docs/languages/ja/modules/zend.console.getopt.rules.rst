@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.console.getopt.rules:
 
 Getopt の規則の宣言

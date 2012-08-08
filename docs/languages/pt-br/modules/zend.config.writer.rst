@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.config.writer.introduction:
 
 Zend_Config_Writer

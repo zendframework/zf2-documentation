@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.twitter:
 
 Zend_Service_Twitter

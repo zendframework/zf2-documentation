@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.json.basics:
 
 Grundlegende Verwendung

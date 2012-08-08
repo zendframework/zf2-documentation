@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.ldap.server:
 
 LDAPサーバから情報を取得

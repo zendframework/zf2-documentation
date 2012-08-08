@@ -1,0 +1,259 @@
+.. EN-Revision: none
+.. _zend.timesync.working:
+
+Zend_TimeSync の動作
+=================
+
+``Zend_TimeSync`` は、指定した任意の **NTP** タイムサーバあるいは **SNTP**
+タイムサーバから実際の時刻を返します。
+自動的に複数のサーバを処理することができ、シンプルなインターフェイスを提供します。
+
+.. note::
+
+   この章のすべてのサンプルでは、一般に公開されているタイムサーバのひとつを使用します。
+   私たちは **0.europe.pool.ntp.org**
+   を使用しますが、あなたの環境にあわせて最も近いタイムサーバを使うことをお勧めします。
+   詳細は `http://www.pool.ntp.org`_ を参照ください。
+
+.. _zend.timesync.working.generic:
+
+一般的なタイムサーバへのリクエスト
+-----------------
+
+タイムサーバから時刻を取得するのはきわめて簡単です。
+単に時刻を取得したいタイムサーバを指定するだけでいいのです。
+
+.. code-block:: php
+   :linenos:
+
+   $server = new Zend_TimeSync('0.pool.ntp.org');
+
+   print $server->getDate()->getIso();
+
+このとき ``Zend_TimeSync`` の裏側では何が起こっているのでしょうか?
+まず、指定したサーバの構文をチェックします。つまり今回の例では、
+'**0.pool.ntp.org**' がタイムサーバのアドレスとして正しい形式かどうかを確認します。
+それから、 ``getDate()`` をコールする際に実際にタイムサーバを設定し、
+そのサーバの時刻を返します。 ``Zend_TimeSync``
+は、スクリプトが動作しているサーバの時刻と返された時刻とを比較し、
+修正済みの時刻を表す ``Zend_Date`` オブジェクトを返します。
+
+``Zend_Date`` やそのメソッドについての詳細は :ref:`Zend_Date <zend.date.introduction>`
+を参照ください。
+
+.. _zend.timesync.working.multiple:
+
+複数のタイムサーバ
+---------
+
+すべてのタイムサーバが常に使用可能で時刻を返してくれるとは限りません。
+たとえばメンテナンス中などの理由でサーバに到達できないこともありえます。
+タイムサーバから時刻を取得できなかった場合は、例外が発生します。
+
+この問題への対策として、 ``Zend_TimeSync``
+では複数のタイムサーバを処理できるようになっており、
+ひとつのタイムサーバが使用できなくても代替サーバを使用できるようになっています。
+これを利用するには二通りの方法があります。
+インスタンスを作成する際にタイムサーバの配列を指定するか、 後から ``addServer()``
+メソッドでタイムサーバを追加するかのいずれかです。
+
+.. code-block:: php
+   :linenos:
+
+   $server = new Zend_TimeSync(array('0.pool.ntp.org',
+                                     '1.pool.ntp.org',
+                                     '2.pool.ntp.org'));
+   $server->addServer('3.pool.ntp.org');
+
+   print $server->getDate()->getIso();
+
+追加できるタイムサーバの数には制限はありません。
+あるタイムサーバへの接続に失敗すると、 ``Zend_TimeSync``
+はその次に指定されたタイムサーバへの接続を試みます。
+
+タイムサーバは複数指定することをお勧めします。
+その場合は、タイムサーバに名前をつけなければなりません。
+名前は配列のキーで指定することもできますが、 初期化やタイムサーバの追加の際に
+2 番目のパラメータで指定することもできます。
+
+.. code-block:: php
+   :linenos:
+
+   $server = new Zend_TimeSync(array('generic'  => '0.pool.ntp.org',
+                                     'fallback' => '1.pool.ntp.org',
+                                     'reserve'  => '2.pool.ntp.org'));
+   $server->addServer('3.pool.ntp.org', 'additional');
+
+   print $server->getDate()->getIso();
+
+タイムサーバの名前を設定することで、
+特定のタイムサーバにリクエストを送ることができるようになります。
+その方法については本章の後半で説明します。
+
+.. _zend.timesync.working.protocol:
+
+タイムサーバのプロトコル
+------------
+
+タイムサーバにはさまざまな形式があります。
+公開されているタイムサーバのほとんどは、 **NTP** プロトコルを使用するものです。
+しかし、それ以外のプロトコルを使用しているサーバもあります。
+
+タイムサーバのアドレスに、適切なプロトコルを指定できます。 ``Zend_TimeSync``
+がサポートしているプロトコルは 2 種類で、 デフォルトのプロトコルは **NTP** です。
+NTP
+しか使用しないのなら、先ほどまでの例のようにプロトコル指定を省略しても構いません。
+
+.. code-block:: php
+   :linenos:
+
+   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+                                     'fallback' => 'ntp:\\1.pool.ntp.org',
+                                     'reserve'  => 'ntp:\\2.pool.ntp.org'));
+   $server->addServer('sntp:\\internal.myserver.com', 'additional');
+
+   print $server->getDate()->getIso();
+
+``Zend_TimeSync`` は複数のタイムサーバを使用できます。
+特定のプロトコルだけでなく、個々のサーバに対して別のプロトコルも指定できるようになっています。
+
+.. _zend.timesync.working.ports:
+
+タイムサーバのポートの指定
+-------------
+
+ウェブにおけるさまざまな他のプロトコルと同様、 **NTP** や **SNTP**
+にも標準のポート番号があります。 NTP が使用するポートは **123** で、 SNTP は **37**
+を使用します。
+
+しかし、実際には使われているポートが違うこともあります。
+使用するポートは、サーバごとにアドレス内に指定できます。
+ポートを指定するには、アドレスに続けてその数字を指定します。
+ポートを指定しなかった場合は、 ``Zend_TimeSync`` は標準のポートを使用します。
+
+.. code-block:: php
+   :linenos:
+
+   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org:200',
+                                     'fallback' => 'ntp:\\1.pool.ntp.org'));
+   $server->addServer('sntp:\\internal.myserver.com:399', 'additional');
+
+   print $server->getDate()->getIso();
+
+.. _zend.timesync.working.options:
+
+タイムサーバ用のオプション
+-------------
+
+実際のところ ``Zend_TimeSync`` で使用するオプションはひとつだけで、
+それも内部的に使用するものです。しかし、必要に応じて任意のオプションを指定して
+リクエストを送信できます。
+
+**timeout** オプションは、
+応答がない状態が何秒続けば接続に失敗したとみなすのかを表します。
+デフォルトの値は **1** で、 タイムサーバからの応答が 1
+秒以内に返ってこなかった場合に ``Zend_TimeSync``
+は別のタイムサーバに処理を移します。
+
+``setOptions()`` メソッドを使用すれば、任意のオプションを指定できます。
+このメソッドには、オプション名とその値を関連付けた配列を指定します。
+既に設定済みのオプションは、新しい値で上書きされます。
+どんなオプションが設定されているのかを知りたい場合は ``getOptions()``
+メソッドを使用します。
+このメソッドにキーを指定した場合はそのオプションの値を返します。
+指定しなかった場合は、すべてのオプションを返します。
+
+.. code-block:: php
+   :linenos:
+
+   Zend_TimeSync::setOptions(array('timeout' => 3, 'myoption' => 'timesync'));
+   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+                                     'fallback' => 'ntp:\\1.pool.ntp.org'));
+   $server->addServer('sntp:\\internal.myserver.com', 'additional');
+
+   print $server->getDate()->getIso();
+   print_r(Zend_TimeSync::getOptions();
+   print "Timeout = " . Zend_TimeSync::getOptions('timeout');
+
+ご覧のとおり、 ``Zend_TimeSync`` のオプションは静的なものです。 つまり、すべての
+``Zend_TimeSync`` のインスタンスで同じ設定が共用されます。
+
+.. _zend.timesync.working.different:
+
+別のタイムサーバの使用法
+------------
+
+時間を取得したい場合、デフォルトでは最初に指定したサーバにリクエストを送信します。
+しかし、別のタイムサーバを指定してリクエストしたほうが便利なこともあります。
+その場合は ``setServer()`` メソッドを使用します。
+使用するタイムサーバを指定するには、
+タイムサーバのエイリアスをこのメソッドのパラメータとして指定します。
+実際に使われるタイムサーバを知りたい場合は、単に ``getServer()``
+メソッドをコールします。
+タイムサーバのエイリアスを指定すると、そのタイムサーバを返します。
+パラメータを省略した場合は、現在のタイムサーバを返します。
+
+.. code-block:: php
+   :linenos:
+
+   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+                                     'fallback' => 'ntp:\\1.pool.ntp.org'));
+   $server->addServer('sntp:\\internal.myserver.com', 'additional');
+
+   $actual = $server->getServer();
+   $server = $server->setServer('additional');
+
+.. _zend.timesync.working.informations:
+
+タイムサーバからの情報
+-----------
+
+タイムサーバは、時刻以外にも付加情報を提供します。 この情報を取得するには
+``getInfo()`` メソッドを使用します。
+
+.. code-block:: php
+   :linenos:
+
+   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+                                     'fallback' => 'ntp:\\1.pool.ntp.org'));
+
+   print_r ($server->getInfo());
+
+どのような情報が得られるのかは、
+使用しているプロトコルやサーバによってさまざまに異なります。
+
+.. _zend.timesync.working.exceptions:
+
+例外処理
+----
+
+すべてのタイムサーバで発生した例外は、ひとつの配列にまとめて返されます。
+発生した例外をすべて処理するには、次の例のようにします。
+
+.. code-block:: php
+   :linenos:
+
+   $serverlist = array(
+           // 無効なサーバを指定します
+           'invalid_a'  => 'ntp://a.foo.bar.org',
+           'invalid_b'  => 'sntp://b.foo.bar.org',
+   );
+
+   $server = new Zend_TimeSync($serverlist);
+
+   try {
+       $result = $server->getDate();
+       echo $result->getIso();
+   } catch (Zend_TimeSync_Exception $e) {
+
+       $exceptions = $e->get();
+
+       foreach ($exceptions as $key => $myException) {
+           echo $myException->getMessage();
+           echo '<br />';
+       }
+   }
+
+
+
+.. _`http://www.pool.ntp.org`: http://www.pool.ntp.org

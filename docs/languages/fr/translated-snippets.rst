@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. TO TRANSLATORS: Copy this file to your translation directory
 
 .. |ProgrammersReferenceGuideofZendFramework2| replace:: Guide de référence de Zend Framework 2 destiné au programmeur

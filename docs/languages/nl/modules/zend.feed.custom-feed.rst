@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.custom-feed:
 
 Aangepaste Feed en Entry klassen

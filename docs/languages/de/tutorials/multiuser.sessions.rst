@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.multiuser.sessions:
 
 User Session im Zend Framework managen

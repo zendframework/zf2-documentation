@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.progressbar.adapter.jspull:
 
 Zend_ProgressBar_Adapter_JsPull
