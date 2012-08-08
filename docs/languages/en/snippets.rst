@@ -3,7 +3,7 @@
 
 .. |ProgrammersReferenceGuideofZendFramework2| replace:: Programmer's Reference Guide of Zend Framework 2
 
-.. |IntroductiontoZendFramework| replace:: Introduction to Zend Framework
+.. |IntroductiontoZendFramework| replace:: Introduction to Zend Framework 2
 
 .. |UserGuide| replace:: User Guide
 
@@ -11,8 +11,8 @@
    you various techniques and features of the framework in order to build an
    application.
 
-.. |LearningZendFramework| replace:: Learning Zend Framework
+.. |LearningZendFramework| replace:: Learning Zend Framework 2
 
-.. |ZendFrameworkReference| replace:: Zend Framework Reference
+.. |ZendFrameworkReference| replace:: Zend Framework 2 Reference
 
 .. |IndicesAndTables| replace:: Indices and tables
