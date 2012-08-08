@@ -352,9 +352,9 @@ The following code populates the above template with data.
 
     $document = $mailMerge->retrieveDocument('pdf');
 
-    unset($mailMerge);
-
     file_put_contents('telephone-bill-document.pdf', $document);
+
+    unset($mailMerge);
 
 The data, which is specified in the array ``$billConnections`` is repeated in the template in the block connection.
 The keys of the array (``connection_number``, ``connection_duration`` and ``fee``) are the block field names -
