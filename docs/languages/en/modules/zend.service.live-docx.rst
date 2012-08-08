@@ -283,46 +283,77 @@ The following code populates the above template with data.
 
 .. code-block:: php
 
-   use ZendService\LiveDocx\MailMerge;
+    use ZendService\LiveDocx\MailMerge;
 
-   $mailMerge = new MailMerge();
+    $locale    = Locale::getDefault();
+    $timestamp = time();
 
-   $mailMerge->setUsername('myUsername')
-             ->setPassword('myPassword')
-             ->setService (MailMerge::SERVICE_FREE);
+    $intlDateFormatter1 = new IntlDateFormatter($locale,
+            IntlDateFormatter::LONG, IntlDateFormatter::NONE);
 
-   $mailMerge->setLocalTemplate('template.doc');
+    $intlDateFormatter2 = new IntlDateFormatter($locale,
+            null, null, null, null, 'LLLL yyyy');
 
-   $billConnections = array(
-       array(
-           'connection_number'   => '+49 421 335 912',
-           'connection_duration' => '00:00:07',
-           'fee'                 => '€ 0.03',
-       ),
-       array(
-           'connection_number'   => '+49 421 335 913',
-           'connection_duration' => '00:00:07',
-           'fee'                 => '€ 0.03',
-       ),
-       array(
-           'connection_number'   => '+49 421 335 914',
-           'connection_duration' => '00:00:07',
-           'fee'                 => '€ 0.03',
-       ),
-       array(
-           'connection_number'   => '+49 421 335 916',
-           'connection_duration' => '00:00:07',
-           'fee'                 => '€ 0.03',
-       ),
-   );
+    $mailMerge = new MailMerge();
 
-   $mailMerge->assign('connection', $billConnections);
+    $mailMerge->setUsername(DEMOS_ZENDSERVICE_LIVEDOCX_FREE_USERNAME)
+              ->setPassword(DEMOS_ZENDSERVICE_LIVEDOCX_FREE_PASSWORD)
+              ->setService (MailMerge::SERVICE_FREE);
 
-   // ... assign other data here ...
+    $mailMerge->setLocalTemplate('telephone-bill-template.doc');
 
-   $mailMerge->createDocument();
-   $document = $mailMerge->retrieveDocument('pdf');
-   file_put_contents('document.pdf', $document);
+    $mailMerge->assign('customer_number', sprintf("#%'10s", rand(0,1000000000)))
+              ->assign('invoice_number',  sprintf("#%'10s", rand(0,1000000000)))
+              ->assign('account_number',  sprintf("#%'10s", rand(0,1000000000)));
+
+    $billData = array (
+        'phone'         => '+22 (0)333 444 555',
+        'date'          => $intlDateFormatter1->format($timestamp),
+        'name'          => 'James Henry Brown',
+        'service_phone' => '+22 (0)333 444 559',
+        'service_fax'   => '+22 (0)333 444 558',
+        'month'         => $intlDateFormatter2->format($timestamp),
+        'monthly_fee'   => '15.00',
+        'total_net'     => '19.60',
+        'tax'           => '19.00',
+        'tax_value'     =>  '3.72',
+        'total'         => '23.32'
+    );
+
+    $mailMerge->assign($billData);
+
+    $billConnections = array(
+        array(
+            'connection_number'   => '+11 (0)222 333 441',
+            'connection_duration' => '00:01:01',
+            'fee'                 => '1.15'
+        ),
+        array(
+            'connection_number'   => '+11 (0)222 333 442',
+            'connection_duration' => '00:01:02',
+            'fee'                 => '1.15'
+        ),
+        array(
+            'connection_number'   => '+11 (0)222 333 443',
+            'connection_duration' => '00:01:03',
+            'fee'                 => '1.15'
+        ),
+        array(
+            'connection_number'   => '+11 (0)222 333 444',
+            'connection_duration' => '00:01:04',
+            'fee'                 => '1.15'
+        )
+    );
+
+    $mailMerge->assign('connection', $billConnections);
+
+    $mailMerge->createDocument();
+
+    $document = $mailMerge->retrieveDocument('pdf');
+
+    unset($mailMerge);
+
+    file_put_contents('telephone-bill-document.pdf', $document);
 
 The data, which is specified in the array ``$billConnections`` is repeated in the template in the block connection.
 The keys of the array (``connection_number``, ``connection_duration`` and ``fee``) are the block field names -
