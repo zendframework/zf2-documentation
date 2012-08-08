@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.pubsubhubbub.introduction:
 
 Zend_Feed_Pubsubhubbub

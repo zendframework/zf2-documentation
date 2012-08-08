@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.amazon.ec2.ebs:
 
 Zend_Service_Amazon_Ec2: Elastischer Block Speicher (EBS)

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.openid.provider:
 
 Zend_OpenId_Provider

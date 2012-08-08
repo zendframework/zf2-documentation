@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.console.getopt.configuration:
 
 Konfigurieren von Zend_Console_Getopt

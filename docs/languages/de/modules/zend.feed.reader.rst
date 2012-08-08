@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.reader:
 
 Zend_Feed_Reader

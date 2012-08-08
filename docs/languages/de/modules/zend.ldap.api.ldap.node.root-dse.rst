@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.ldap.api.reference.zend-ldap-node-rootdse:
 
 Zend_Ldap_Node_RootDse

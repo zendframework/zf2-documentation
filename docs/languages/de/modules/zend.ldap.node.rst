@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.ldap.node:
 
 Objektorientierter Zugriff auf den LDAP Baum durch Verwendung von Zend_Ldap_Node

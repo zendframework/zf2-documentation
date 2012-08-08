@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.lucene.indexing:
 
 Indizierung

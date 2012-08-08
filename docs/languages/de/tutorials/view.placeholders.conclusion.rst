@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.view.placeholders.conclusion:
 
 View Platzhalter: Fazit

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.sending:
 
 Versand über SMTP

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.gdata.docs:
 
 Verwenden der Google Dokumente Listen Daten API
