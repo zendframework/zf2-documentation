@@ -19,9 +19,9 @@ We only ask you to use a couple of conventions:
 If you want to work on a document in a language different from English, you have to
 include the name of the language in the branch name.
 
->  For instance, if you want to propose a new document in Italian you have to use the
->  following naming convention: `feature/it/<doc>`, where `it` is Italian.
->  The same convention is applied on the fix or update: `fix/it/<doc>`.
+For instance, if you want to propose a new document in Italian you have to use the
+following naming convention: `feature/it/<doc>`, where `it` is Italian.
+The same convention is applied on the fix or update: `fix/it/<doc>`.
 
 You can find the supported languages in the `docs/languages` subdirectory.
 
@@ -41,20 +41,36 @@ There is a soft limit on the max line length of 115 characters. Is recommended t
 
 ## RENDER THE DOCUMENTATION
 
-In order to render the documentation you have to install [Sphinx](http://sphinx.pocoo.org/).
+In order to render the documentation you have to install [Sphinx](http://sphinx.pocoo.org/) version 1.1.0 or newer.
+Sphinx requires Python and several Python libraries to run.
+
+If your system already has a package with Sphinx, make sure that it is version 1.1 or higher. At the time of writing
+this, Debian systems provide Sphinx version 0.6 or 1.0.8 and will refuse to work correctly with this documentation.
+
+To install latest Sphinx on a Debian-based system, use the following commands:
+
+    > apt-get install python-setuptools python-pygments
+    > east_install -U Sphinx
+    > sphinx-build --version
+      Sphinx v1.1.3
+      Usage: /usr/local/bin/sphinx-build ....
 
 To render the documentation in HTML format:
 
- -  enter the `docs/` subdirectory;
- -  execute the `make html` command.
+ 1. Clone the [git repository](git://github.com/zendframework/zf2-documentation.git) or download and extract an
+ archive with documentation.
+ 1. Enter the `docs/` subdirectory;
+ 1. Run `make html`
 
-The documentation will be generated in the `_build/html` subdirectory.
+The HTML documentation will be generated in `docs/_build/html`.
 
 By default, the `make html` command renders the documentation in English.
 To render in a different language you have to specify the LANG in the command line. 
 
-For instance, to render the documentation in Italian, execute the following command:
+For instance, to render the documentation in Italian (`it`), execute the following command:
 
-    `make html LANG=it`
+    make html LANG=it
 
 You can find the supported languages in the `docs/languages` subdirectory.
+
+After you've made changes to .rst files, you can run `make html` again to update HTML for changed pages.
