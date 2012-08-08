@@ -796,7 +796,7 @@ initialization of LiveDocx Free probably looks as follows:
 
     $mailMerge->setUsername('myUsername')
               ->setPassword('myPassword')
-              ->setService (MailMerge::SERVICE_FREE);  // for LiveDocx Premium, use MailMerge::SERVICE_PREMIUM
+              ->setService (MailMerge::SERVICE_FREE);
     
     // rest of your application here
 
@@ -851,7 +851,7 @@ instantiation and initialization of LiveDocx Free probably looks as follows:
 
     $mailMerge->setUsername('myUsername')
               ->setPassword('myPassword')
-              ->setService (MailMerge::SERVICE_FREE);  // for LiveDocx Premium, use MailMerge::SERVICE_PREMIUM 
+              ->setService (MailMerge::SERVICE_FREE);
            // or
            // ->setService (MailMerge::SERVICE_PREMIUM);
     
