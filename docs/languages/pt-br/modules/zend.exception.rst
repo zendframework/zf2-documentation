@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.exception.using:
 
 Usando as Exceções
