@@ -13,11 +13,9 @@ downloads. Because we used the new features of the PHP 5.3, *ZF2* is not backwar
 requires PHP 5.2. We also tested *ZF2* on PHP 5.4 and it works fine but we decided to have PHP 5.3 as requirement.
 
 The component structure of Zend Framework 2 is somewhat unique; each component is designed with few
-dependencies on other components. 
-We used also the `dependency injection`_ design pattern to manage the dependencies between components (we
-implemented a DiC, dependency injection container, framework in ``Zend\Di``). This loosely coupled architecture
-allows developers to use components individually (we support `Pyrus`_ and `Composer`_). 
-We often call this a "use-at-will" design.
+dependencies on other components. During the implementation we followed the `SOLID`_ object oriented design
+principle. This loosely coupled architecture allows developers to use components individually (we support `Pyrus`_
+and `Composer`_). We often call this a "use-at-will" design.
 
 While they can be used separately, Zend Framework components in the standard library form a powerful and extensible
 web application framework when combined. Zend Framework offers a robust, high performance *MVC* implementation, a
@@ -44,7 +42,7 @@ address it.
 .. _`namespaces`: http://php.net/manual/en/language.namespaces.php
 .. _`late static binding`: http://it.php.net/lsb
 .. _`lambda functions and closures`: http://it2.php.net/manual/en/functions.anonymous.php
-.. _`dependency injection`: http://en.wikipedia.org/wiki/Dependency_injection
+.. _`SOLID`: http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29
 .. _`Pyrus`: http://pear.php.net/manual/en/pyrus.php
 .. _`Composer`: http://getcomposer.org/
 .. _`PHPUnit`: http://www.phpunit.de
