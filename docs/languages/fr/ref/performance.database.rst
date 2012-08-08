@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _performance.database:
 
 Performance de Zend_Db

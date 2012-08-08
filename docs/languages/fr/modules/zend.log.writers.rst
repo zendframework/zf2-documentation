@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.log.writers:
 
 Rédacteurs (Writers)
@@ -89,10 +90,6 @@ L'exemple ci-dessus écrit une ligne unique de données de log dans la table app
 colonne de base de données appelée *niveau* reçoit le niveau de priorité et la colonne appelée *msg* reçoit
 le message de log.
 
-.. include:: zend.log.writers.firebug.rst
-.. include:: zend.log.writers.mail.rst
-.. include:: zend.log.writers.syslog.rst
-.. include:: zend.log.writers.zend-monitor.rst
 .. _zend.log.writers.null:
 
 Déraciner les rédacteurs

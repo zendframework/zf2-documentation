@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.soap.autodiscovery:
 
 Auto découverte

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.multiuser.sessions:
 
 Gérer les sessions dans ZF

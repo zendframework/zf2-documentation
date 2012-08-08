@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.findFeeds:
 
 Obtenir des flux à partir de pages Web

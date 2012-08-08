@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.paginator.control:
 
 Contrôles de la pagination et styles de défilement

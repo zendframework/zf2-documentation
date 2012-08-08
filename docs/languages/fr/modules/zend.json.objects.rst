@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.json.objects:
 
 Utilisation avancée de Zend_Json

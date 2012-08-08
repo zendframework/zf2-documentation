@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.custom-feed:
 
 Classes personnalisées pour les flux et entrées

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.sending:
 
 Envoyer des émail en utilisant SMTP

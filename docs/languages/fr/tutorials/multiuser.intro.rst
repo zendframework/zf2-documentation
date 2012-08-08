@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.multiuser.intro:
 
 Fabrique une application Multi-Utilisateurs avec Zend Framework
