@@ -21,11 +21,11 @@ installation instructions.
 In addition to this section of the manual, to learn more about ``ZendService\LiveDocx`` and the backend *SOAP* 
 service LiveDocx, please take a look at the following resources:
 
-- **Shipped demonstration applications**. There are a large number of demonstration applications in the directory 
-``/demos``. They illustrate all functionality offered by LiveDocx. Where appropriate this part of the user manual 
-references the demonstration applications at the end of each section. It is **highly recommended** to read all the 
-code in the ``/demos`` directory. It is well commented and explains all you need to know about LiveDocx and 
-``ZendService\LiveDocx``.
+- **Shipped demonstration applications**. There are a large number of demonstration applications in the
+  directory ``/demos``. They illustrate all functionality offered by LiveDocx. Where appropriate this part of the
+  user manual references the demonstration applications at the end of each section. It is **highly recommended** 
+  to read all the  code in the ``/demos`` directory. It is well commented and explains all you need to know about 
+  LiveDocx and ``ZendService\LiveDocx``.
 
 - `ZendService\LiveDocx blog and web site`_.
 
