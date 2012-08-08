@@ -46,7 +46,7 @@ Before you can start using LiveDocx, you must first `sign up`_ for an account. T
 charge and you only need to specify a **username**, **password** and **e-mail address**. Your login credentials
 will be dispatched to the e-mail address you supply, so please type carefully. If, or when, your application
 gets really popular and you require high performance, or additional features only supplied in the premium service, 
-you can upgrade from the free service to the premium service for a minimal monthly charge. For details of the
+you can upgrade from the *LiveDocx Free* to *LiveDocx Premium* for a minimal monthly charge. For details of the
 various services, please refer to `LiveDocx pricing`_.
 
 .. _zend.service.livedocx.templates-documents:
