@@ -437,8 +437,8 @@ The supported formats can be obtained by calling ``getImageExportFormats()``.
 
     unset($mailMerge);
 
-This produces two files (``documentPage1.png`` and ``documentPage2.png``) and writes them to disk in the same
-directory as the executable *PHP* file.
+This produces two files (``license-agreement-page-1.png`` and ``license-agreement-page-2.png``) 
+and writes them to disk in the same directory as the executable *PHP* file.
 
 .. image:: ../images/zend.service.livedocx.mailmerge.bitmaps-documentpage1_zoom.png
 
@@ -479,9 +479,11 @@ The following code illustrates how to use a local template.
               ->setPassword('myPassword')
               ->setService (MailMerge::SERVICE_FREE);
 
-    $mailMerge->setLocalTemplate('./template.docx');
+    $mailMerge->setLocalTemplate('template.docx');
 
     // assign data and create document
+
+    unset($mailMerge);
 
 In the case that a template is stored remotely, it is uploaded once to the server and then simply referenced on all
 subsequent requests. Obviously, this is much quicker than using a local template, as the template does not have to
@@ -502,6 +504,8 @@ The following code illustrates how to upload a template to the server:
 
     $mailMerge->uploadTemplate('template.docx');
 
+    unset($mailMerge);
+
 The following code illustrates how to reference the remotely stored template on all subsequent requests:
 
 .. code-block:: php
@@ -517,6 +521,8 @@ The following code illustrates how to reference the remotely stored template on 
     $mailMerge->setRemoteTemplate('template.docx');
 
     // assign data and create document
+
+    unset($mailMerge);
 
 For executable demo applications, which illustrate the above, please take a look at 
 ``/demos/ZendService/LiveDocx/MailMerge/templates``.
@@ -554,6 +560,8 @@ is useful, in the case that you create an application, in which an end-user can 
         printf('- %s%s', $fieldName, PHP_EOL);
     }
 
+    unset($mailMerge);
+
 For executable demo applications, which illustrate the above, please take a look at 
 ``/demos/ZendService/LiveDocx/MailMerge/template-info``.
 
@@ -586,6 +594,8 @@ Before such templates can be populated, it is necessary to find out the names of
         }
     }
 
+    unset($mailMerge);
+
 For executable demo applications, which illustrate the above, please take a look at 
 ``/demos/ZendService/LiveDocx/MailMerge/template-info``.
 
@@ -610,6 +620,8 @@ which are not available on the server, font-substitution will take place. This m
               ->setService (MailMerge::SERVICE_FREE);
 
     Debug::dump($mailMerge->getFontNames());
+
+    unset($mailMerge);
 
 **NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
 such as ``Zend\Cache\Cache``- this will considerably speed up your application.
@@ -638,6 +650,8 @@ format of the documentation generation process.
 
     Debug::dump($mailMerge->getTemplateFormats());
 
+    unset($mailMerge);
+
 **NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
 such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 
@@ -665,6 +679,8 @@ format of the documentation generation process.
 
     Debug::dump($mailMerge->getDocumentFormats());
 
+    unset($mailMerge);
+
 For executable demo applications, which illustrate the above, please take a look at 
 ``/demos/ZendService/LiveDocx/MailMerge/supported-formats``.
 
@@ -688,6 +704,8 @@ the documentation generation process.
               ->setService (MailMerge::SERVICE_FREE);
 
     Debug::dump($mailMerge->getImageExportFormats());
+
+    unset($mailMerge);
 
 **NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
 such as ``Zend\Cache\Cache``- this will considerably speed up your application.
@@ -722,6 +740,8 @@ initialization of LiveDocx Free probably looks as follows:
     
     // rest of your application here
 
+    unset($mailMerge);
+
 To use LiveDocx Premium, you simply need to change the service value from ``MailMerge::SERVICE_FREE`` to 
 ``MailMerge::SERVICE_PREMIUM``, and set the username and password assigned to you for Livedocx Premium. This may, 
 or may not be the same as the credentials for LiveDocx Free. For example:
@@ -737,6 +757,8 @@ or may not be the same as the credentials for LiveDocx Free. For example:
               ->setService (MailMerge::SERVICE_PREMIUM);
     
     // rest of your application here
+
+    unset($mailMerge);
 
 And that is all there is to it. The assignment of the premium WSDL to the component is handled internally and 
 automatically. You are now using LiveDocx Premium.
@@ -775,6 +797,8 @@ instantiation and initialization of LiveDocx Free probably looks as follows:
     
     // rest of your application here
 
+    unset($mailMerge);
+
 To use LiveDocx Fully Licensed, you simply need to set the WSDL of the backend LiveDocx server in your own 
 network. You can do this as follows:
 
@@ -789,6 +813,8 @@ network. You can do this as follows:
               ->setWsdl    ('http://api.example.com/2.1/mailmerge.asmx?wsdl');
     
     // rest of your application here
+
+    unset($mailMerge);
 
 And that is all there is to it. You are now using LiveDocx Fully Licensed.
 
