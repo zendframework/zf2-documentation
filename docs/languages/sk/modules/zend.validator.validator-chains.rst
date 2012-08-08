@@ -1,10 +1,11 @@
-.. _zend.validate.validator_chains:
+.. EN-Revision: none
+.. _zend.validator.validator_chains:
 
 Reťazenie validátorov
 =====================
 
 Často je potrebné aplikovať viac typov validácie na hodnotu v istom poradí. Nasledujúca ukážka objasní
-princíp ako to urobiť na príklade z :ref:`úvodu <zend.validate.introduction>`, kde bolo požadované, že meno
+princíp ako to urobiť na príklade z :ref:`úvodu <zend.validator.introduction>`, kde bolo požadované, že meno
 používateľa musí mať 6 až 12 alfanumerických znakov:
 
    .. code-block:: php
