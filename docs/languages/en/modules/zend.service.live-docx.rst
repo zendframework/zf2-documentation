@@ -55,7 +55,7 @@ Templates and Documents
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 LiveDocx differentiates between the following terms: 1) **template** and 2) **document**. In order to fully
-understand the documentation and indeed the actual *API*, it is important that any programmer deploying LiveDocx
+understand the documentation and indeed LiveDocx itself, it is important that any programmer deploying LiveDocx
 understands the difference.
 
 The term **template** is used to refer to the input file, created in a word processor, containing formatting and
