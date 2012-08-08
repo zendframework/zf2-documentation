@@ -101,14 +101,14 @@ Let's add it to our controller.
             $users = array();
             switch ($mode) {
                 case 'disabled':
-                    $users = $this->getServiceManager()->get('users')->fetchDisabledUsers();
+                    $users = $this->getServiceLocator()->get('users')->fetchDisabledUsers();
                     break;
                 case 'deleted':
-                    $users = $this->getServiceManager()->get('users')->fetchDeletedUsers();
+                    $users = $this->getServiceLocator()->get('users')->fetchDeletedUsers();
                     break;
                 case 'all':
                 default:
-                    $users = $this->getServiceManager()->get('users')->fetchAllUsers();
+                    $users = $this->getServiceLocator()->get('users')->fetchAllUsers();
                     break;
             }
         }
@@ -140,14 +140,14 @@ example to output a list of users:
         $users = array();
         switch ($mode) {
             case 'disabled':
-                $users = $this->getServiceManager()->get('users')->fetchDisabledUsers();
+                $users = $this->getServiceLocator()->get('users')->fetchDisabledUsers();
                 break;
             case 'deleted':
-                $users = $this->getServiceManager()->get('users')->fetchDeletedUsers();
+                $users = $this->getServiceLocator()->get('users')->fetchDeletedUsers();
                 break;
             case 'all':
             default:
-                $users = $this->getServiceManager()->get('users')->fetchAllUsers();
+                $users = $this->getServiceLocator()->get('users')->fetchAllUsers();
                 break;
         }
 

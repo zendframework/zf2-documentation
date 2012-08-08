@@ -10,6 +10,15 @@ perform any numer of task prior to returning a result, that will be displayed to
 
 There are several routes you can use with Console. All of them are defined in ``Zend\Mvc\Router\Console\*`` classes.
 
+
+.. seealso::
+
+    Routes are used to handle real commands, but they are not used to create help messages (usage information).
+    When a zf2 application is run in console for the first time (without arguments) it can
+    :doc:`display usage information <zend.console.modules>` that is provided by modules. To learn more about
+    providing usage information, please read this chapter: :doc:`zend.console.modules`.
+
+
 Router configuration
 --------------------
 
@@ -72,6 +81,14 @@ invoked.
 Basic route
 -----------
 This is the default route type for console. It recognizes the following types of parameters:
+
+* :ref:`Literal parameters <literal-params>` (i.e. ``create object (external|internal)``)
+* :ref:`Literal flags <literal-flags>` (i.e. ``--verbose --direct [-d] [-a]``)
+* :ref:`Positional value parameters <value-positional>` (i.e. ``create <modelName> [<destination>]``)
+* :ref:`Value flags <value-flags>` (i.e. ``--name=NAME [--method=METHOD]``)
+
+
+.. _literal-params:
 
 Literal parameters
 ^^^^^^^^^^^^^^^^^^^
@@ -158,6 +175,7 @@ commands such:
    definition is equivalent to: ``show [  all | deleted | locked | admin  ]   users``
 
 
+.. _literal-flags:
 
 Literal flags
 ^^^^^^^^^^^^^^
@@ -239,7 +257,7 @@ Now we can use short versions of our flags:
     > zf check users -v --thorough
     > zf check users -t -f -v
 
-
+.. _value-positional:
 
 Positional value parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -324,7 +342,7 @@ This allows us to capture commands such as:
 
         > zf create user "Johnan Tom" Bravo john@acme.org "Head of the Entertainment Department"
 
-
+.. _value-flags:
 
 Value flag parameters
 ^^^^^^^^^^^^^^^^^^^^^

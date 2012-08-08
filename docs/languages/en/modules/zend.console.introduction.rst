@@ -10,12 +10,16 @@ this fact and prepare ``Zend\Mvc`` components to handle the request. Console sup
 but to function properly it requires at least one :doc:`console route <zend.console.routes>` and 
 :doc:`one action controller <zend.mvc.controllers>` to handle the request.
 
-``Zend\Console`` provides direct console access via :doc:`Console adapters<zend.console.adapter>`. This
-includes reading from console and writing to it, working around various bugs on different operating systems.
-
-``Zend\Console\Prompt`` is a collection of easy to use :doc:`console prompts<zend.console.prompts>`
-that can be used to build interactive apps.
-
+* :doc:`Console routing <zend.console.routes>` allows you to invoke controllers and action depending on command
+  line parameters provided by the user.
+* :doc:`Module Manager integration <zend.console.modules>` allows ZF2 applications and modules to display help and usage
+  information, in case the command line has not been understood (no route matched).
+* :doc:`Console-aware action controllers <zend.console.controllers>` will receive a console request containing all named
+  parameters and flags. The are able to send output back to the console window.
+* :doc:`Console adapters<zend.console.adapter>` provide a level of abstraction for interacting with console on
+  different operating systems.
+* :doc:`Console prompts <zend.console.prompts>` can be used to interact with the user by asking him questions and
+  retrieving input.
 
 Writing console routes
 ----------------------
