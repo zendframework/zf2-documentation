@@ -1,9 +1,10 @@
-.. _zend.auth.adapter.http:
+.. EN-Revision: none
+.. _zend.authentication.adapter.http:
 
 HTTP 认证适配器
 ==========
 
-.. _zend.auth.adapter.http.introduction:
+.. _zend.authentication.adapter.http.introduction:
 
 简介
 --
@@ -33,7 +34,7 @@ HTTP 认证适配器
 
 
 
-.. _zend.auth.adapter.design_overview:
+.. _zend.authentication.adapter.design_overview:
 
 设计回顾
 ----
@@ -42,7 +43,7 @@ HTTP 认证适配器
 authentication类封装了实现基本和摘要认证的逻辑。它使用Resolver在数据存储（缺省是文本文件）中查找客户的身份并取出证书。"resolved"
 的证书和客户的输入相比较来决定认证是否成功。
 
-.. _zend.auth.adapter.configuration_options:
+.. _zend.authentication.adapter.configuration_options:
 
 配置选项
 ----
@@ -52,7 +53,7 @@ authentication类封装了实现基本和摘要认证的逻辑。它使用Resolv
 
 
 
-      .. _zend.auth.adapter.configuration_options.table:
+      .. _zend.authentication.adapter.configuration_options.table:
 
       .. table:: 配置选项
 
@@ -77,7 +78,7 @@ authentication类封装了实现基本和摘要认证的逻辑。它使用Resolv
    当前的 *nonce_timeout*\
    实现有一些有趣的副作用。这个设置用来决定给定的nonce的有效寿命，或者客户端的认证信息多长时间被有效地接受。目前，如果它被设置为3600（例如），它将导致适配器准点地每个小时提示客户端提供新的证书。一旦nonce跟踪和stale支持实现，这在将来的版本中被解决。
 
-.. _zend.auth.adapter.http.resolvers:
+.. _zend.authentication.adapter.http.resolvers:
 
 Resolvers
 ---------
@@ -87,7 +88,7 @@ Resolver的作用是接受用户名和领域，并返回证书值。基本认证
 *Zend_Auth_Adapter_Http* 依靠对象实现 *Zend_Auth_Adapter_Http_Resolver_Interface*\
 。适配器中包含一个文本文件resolver类，但任何其它种类的resolver可以通过实现resolver接口来创建。
 
-.. _zend.auth.adapter.http.resolvers.file:
+.. _zend.authentication.adapter.http.resolvers.file:
 
 文件 Resolver
 ^^^^^^^^^^^
@@ -127,7 +128,7 @@ hash。
 
 如果给定的路径是空的或不可读，将抛出一个异常。
 
-.. _zend.auth.adapter.http.basic_usage:
+.. _zend.authentication.adapter.http.basic_usage:
 
 基本用法
 ----

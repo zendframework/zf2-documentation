@@ -1,11 +1,12 @@
-.. _zend.validate.set:
+.. EN-Revision: none
+.. _zend.validator.set:
 
 标准校验类
 =====
 
 Zend Framework 带有一组标准的校验类供你使用。
 
-.. _zend.validate.set.alnum:
+.. _zend.validator.set.alnum:
 
 Alnum
 -----
@@ -13,7 +14,7 @@ Alnum
 当且仅当 *$value*\ 只包含字母和数字字符，返回 *true*\
 。这个校验器包括一个考虑空白字符是否有效的选项。
 
-.. _zend.validate.set.alpha:
+.. _zend.validator.set.alpha:
 
 Alpha
 -----
@@ -21,7 +22,7 @@ Alpha
 当且仅当 *$value*\ 只包含字母字符，返回 *true*\
 。这个校验器包括一个考虑空白字符是否有效的选项。
 
-.. _zend.validate.set.barcode:
+.. _zend.validator.set.barcode:
 
 Barcode
 -------
@@ -31,7 +32,7 @@ Barcode
 （欧洲商品码）条码类型，当且仅当输入成功通过条码校验算法的校验， *isValid()* 返回
 true。你应该从输入中删除除了数字0到9（0-9）以外的其它字符，然后传递给校验器。
 
-.. _zend.validate.set.between:
+.. _zend.validator.set.between:
 
 Between
 -------
@@ -41,14 +42,14 @@ Between
 可以等于边界值），尽管为了做精确地比较这个可以被覆盖。所谓精确地比较，就是
 *$value*\ 必须大于最小值和小于最大值。
 
-.. _zend.validate.set.ccnum:
+.. _zend.validator.set.ccnum:
 
 Ccnum
 -----
 
 当且仅当 *$value*\ 遵循Luhn(mod-10 checksum)算法，返回 *true* 。
 
-.. _zend.validate.set.date:
+.. _zend.validator.set.date:
 
 日期
 --
@@ -58,37 +59,37 @@ Ccnum
 选项被设置成这个格式用来校验。关于选项参数的细节参见 :ref:`Zend_Date::isDate()
 <zend.date.others.comparison.table>`\ 。
 
-.. _zend.validate.set.digits:
+.. _zend.validator.set.digits:
 
 数字
 --
 
 当且仅当 *$value*\ 只包含数字字符，返回 *true*\ 。
 
-.. include:: zend.validate.email-address.rst
-.. _zend.validate.set.float:
+.. include:: zend.validator.email-address.rst
+.. _zend.validator.set.float:
 
 浮点数
 ---
 
 当且仅当 *$value*\ 是一个浮点数值，返回 *true*\ 。
 
-.. _zend.validate.set.greater_than:
+.. _zend.validator.set.greater_than:
 
 GreaterThan
 -----------
 
 当且仅当 *$value*\ 大于最小值，返回 *true*\ 。
 
-.. _zend.validate.set.hex:
+.. _zend.validator.set.hex:
 
 十六进制数
 -----
 
 当且仅当 *$value*\ 只包含十六进制的数字字符，返回 *true*\ 。
 
-.. include:: zend.validate.hostname.rst
-.. _zend.validate.set.in_array:
+.. include:: zend.validator.hostname.rst
+.. _zend.validator.set.in_array:
 
 InArray
 -------
@@ -96,42 +97,42 @@ InArray
 当且仅当一个"needle"*$value*\ 包含在一个"haystack"数组，返回 *true*\ 。如果精确选项是
 *true*\ ，那么 *$value*\ 的类型也被检查。
 
-.. _zend.validate.set.int:
+.. _zend.validator.set.int:
 
 整数
 --
 
 当且仅当 *$value*\ 是一个有效的整数，返回 *true*\ 。
 
-.. _zend.validate.set.ip:
+.. _zend.validator.set.ip:
 
 Ip
 --
 
 当且仅当 *$value*\ 是一个有效的IP地址，返回 *true*\ 。
 
-.. _zend.validate.set.less_than:
+.. _zend.validator.set.less_than:
 
 LessThan
 --------
 
 当且仅当 *$value*\ 小于最大值，返回 *true*\ 。
 
-.. _zend.validate.set.not_empty:
+.. _zend.validator.set.not_empty:
 
 NotEmpty
 --------
 
 当且仅当 *$value*\ 非空，返回 *true*\ 。
 
-.. _zend.validate.set.regex:
+.. _zend.validator.set.regex:
 
 Regex
 -----
 
 当且仅当 *$value*\ 匹配一个正则表达式，返回 *true*\ 。
 
-.. _zend.validate.set.string_length:
+.. _zend.validator.set.string_length:
 
 StringLength
 ------------

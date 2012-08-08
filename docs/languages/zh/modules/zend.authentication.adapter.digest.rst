@@ -1,9 +1,10 @@
-.. _zend.auth.adapter.digest:
+.. EN-Revision: none
+.. _zend.authentication.adapter.digest:
 
 摘要式认证
 =====
 
-.. _zend.auth.adapter.digest.introduction:
+.. _zend.authentication.adapter.digest.introduction:
 
 简介
 --
@@ -27,7 +28,7 @@
    someUser:Some Realm:fde17b91c3a510ecbaf7dbd37f59d4f8
 
 
-.. _zend.auth.adapter.digest.specifics:
+.. _zend.authentication.adapter.digest.specifics:
 
 规范（Specifics）
 -------------
@@ -44,7 +45,7 @@
 
 在调用 *authenticate()*\ 之前必需要设定这些参数。
 
-.. _zend.auth.adapter.digest.identity:
+.. _zend.authentication.adapter.digest.identity:
 
 身份（Identity）
 ------------

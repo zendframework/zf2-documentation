@@ -1,4 +1,5 @@
-.. _zend.validate.set.hostnames:
+.. EN-Revision: none
+.. _zend.validator.set.hostnames:
 
 主机名
 ===

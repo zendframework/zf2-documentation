@@ -1,4 +1,5 @@
-.. _zend.validate.introduction:
+.. EN-Revision: none
+.. _zend.validator.introduction:
 
 简介
 ==
@@ -6,7 +7,7 @@
 Zend_Validate
 组件提供一组通用的校验器。它也提供了一个简单的校验器链机制，即在用户定义的顺序下，多个校验器可以被用于单个的数据。
 
-.. _zend.validate.introduction.definition:
+.. _zend.validator.introduction.definition:
 
 什么是校验器（validator）?
 ------------------
@@ -16,7 +17,7 @@ Zend_Validate
 例如，一个 web 应用可能要求一个用户名的长度在6
 到12个字符并可能只包含数字和文字。一个校验器可以被用来确保用户名符合要求。如果一个用户名不符合一个或者全部两个要求，知道它到底不符合哪个要求将非常有用。
 
-.. _zend.validate.introduction.using:
+.. _zend.validator.introduction.using:
 
 校验器的基本用法
 --------
@@ -57,7 +58,7 @@ Zend_Validate
 
 
 
-.. _zend.validate.introduction.messages:
+.. _zend.validator.introduction.messages:
 
 定制消息
 ----
@@ -140,7 +141,7 @@ Zend_Validate
 
 
 
-.. _zend.validate.introduction.static:
+.. _zend.validator.introduction.static:
 
 使用静态 is() 方法
 ------------

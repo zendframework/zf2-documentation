@@ -1,10 +1,11 @@
-.. _zend.validate.validator_chains:
+.. EN-Revision: none
+.. _zend.validator.validator_chains:
 
 校验器链
 ====
 
 通常，多个校验器按照特定的顺序被用于某些值。下面的代码示范一个办法去解决
-:ref:`introduction <zend.validate.introduction>`\
+:ref:`introduction <zend.validator.introduction>`\
 中的例子的要求，即用户名必须在6到12个字符的文字数字组合：
 
    .. code-block:: php

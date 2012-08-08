@@ -1,4 +1,5 @@
-.. _zend.auth.introduction:
+.. EN-Revision: none
+.. _zend.authentication.introduction:
 
 简介
 ==
@@ -15,7 +16,7 @@ Framework 授权和访问控制的信息，参见 :ref:`Zend\Permissions\Acl <ze
    只有一个实例可用。这意味着使用 *new*\ 操作符和 *clone* 关键字将不能在 *Zend_Auth*
    类中工作，而要使用 *Zend_Auth::getInstance()*\ 来代替。
 
-.. _zend.auth.introduction.adapters:
+.. _zend.authentication.introduction.adapters:
 
 适配器
 ---
@@ -62,7 +63,7 @@ Zend_Auth适配器被用来依靠特定的认证服务（例如LDAP、RDBMS或�
 派生的一个类的实例）。如果因为某些原因认证查询不能执行， *authenticate()*\
 应该抛出一个由 *Zend_Auth_Adapter_Exception*\ 产生的异常。
 
-.. _zend.auth.introduction.results:
+.. _zend.authentication.introduction.results:
 
 结果
 --
@@ -128,7 +129,7 @@ Zend_Auth适配器被用来依靠特定的认证服务（例如LDAP、RDBMS或�
 
 
 
-.. _zend.auth.introduction.persistence:
+.. _zend.authentication.introduction.persistence:
 
 身份的持久（Persistence）
 ------------------
@@ -137,7 +138,7 @@ Zend_Auth适配器被用来依靠特定的认证服务（例如LDAP、RDBMS或�
 
 HTTP是一个无连接的协议，然而，象cookie和session这样的技术已经被开发出来使在服务器端的web应用维护多请求状态变得容易。
 
-.. _zend.auth.introduction.persistence.default:
+.. _zend.authentication.introduction.persistence.default:
 
 在PHP Session 中的缺省持久（Persistence）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -154,7 +155,7 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
    对于特定的用例，如果身份的持久存储不合适，开发者可以放弃使用 *Zend_Auth*\
    类，替代地，而直接使用适配器类。
 
-.. _zend.auth.introduction.persistence.default.example:
+.. _zend.authentication.introduction.persistence.default.example:
 
 .. rubric:: 修改 Session 名字空间
 
@@ -183,7 +184,7 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
 
 
 
-.. _zend.auth.introduction.persistence.custom:
+.. _zend.authentication.introduction.persistence.custom:
 
 实现订制存储
 ^^^^^^
@@ -192,7 +193,7 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
 提供的。对于这样的案例开发者可以简单地实现 *Zend_Auth_Storage_Interface*\ 并给
 *Zend_Auth::setStorage()*\ 提供一个类的实例。
 
-.. _zend.auth.introduction.persistence.custom.example:
+.. _zend.authentication.introduction.persistence.custom.example:
 
 .. rubric:: 使用定制存储类
 
@@ -287,7 +288,7 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
 
 
 
-.. _zend.auth.introduction.using:
+.. _zend.authentication.introduction.using:
 
 使用Zend_Auth
 -----------

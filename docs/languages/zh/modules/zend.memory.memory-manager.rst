@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.memory.memory-manager:
 
 内存管理器

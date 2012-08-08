@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.view.helpers:
 
 视图助手（View Helper）

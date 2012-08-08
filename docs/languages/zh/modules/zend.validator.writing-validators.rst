@@ -1,4 +1,5 @@
-.. _zend.validate.writing_validators:
+.. EN-Revision: none
+.. _zend.validator.writing_validators:
 
 编写校验器
 =====
@@ -23,7 +24,7 @@ Framework返回一个布尔值。它们也提供关于 **why**\
 一般地， *isValid()*\
 方法不应该抛出任何异常，除了不可能决定输入值是否有效。一些抛出异常的合情合理的例子可能是如果文件不能被打开，LDAP服务器不能被联系，或者数据库连接无效，并且有些事情必须由校验成功或失败来决定。
 
-.. _zend.validate.writing_validators.example.simple:
+.. _zend.validator.writing_validators.example.simple:
 
 .. rubric:: 创建简单校验类
 
@@ -61,7 +62,7 @@ Framework返回一个布尔值。它们也提供关于 **why**\
 的调用跟踪校验失败的原因。因为这个类只定义了一个失败消息，没有必要为 *_error()*\
 提供带有失败消息名字的模板。
 
-.. _zend.validate.writing_validators.example.conditions.dependent:
+.. _zend.validator.writing_validators.example.conditions.dependent:
 
 .. rubric:: 编写有独立条件的校验类
 
@@ -135,7 +136,7 @@ Public 属性 *$minimum* 和 *$maximum*
 中的校验检查失败，一个恰当的失败消息被准备，并且方法立即返回 *false*\
 。这些校验规则因此继续独立。换句话说，如果一个测试失败，不需要测试任何后来的校验规则。然而这本来不是个案例。下面的例子示例如何编写带有独立校验规则的类，校验对象返回什么校验企图失败的。
 
-.. _zend.validate.writing_validators.example.conditions.independent:
+.. _zend.validator.writing_validators.example.conditions.independent:
 
 .. rubric:: 带有独立条件、多重失败原因的校验
 

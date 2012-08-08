@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.sending:
 
 通过SMTP发送邮件

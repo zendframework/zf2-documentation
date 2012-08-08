@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.custom-feed:
 
 自定义Feed和条目类

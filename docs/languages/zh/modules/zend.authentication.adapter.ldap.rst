@@ -1,9 +1,10 @@
-.. _zend.auth.adapter.ldap:
+.. EN-Revision: none
+.. _zend.authentication.adapter.ldap:
 
 LDAP 认证
 =======
 
-.. _zend.auth.adapter.ldap.introduction:
+.. _zend.authentication.adapter.ldap.introduction:
 
 简介
 --
@@ -17,7 +18,7 @@ LDAP 认证
 、各种可用选项的大纲、认证问题故障排除的诊断信息和Active Directory 与 OpenLDAP
 服务器的范例选项。
 
-.. _zend.auth.adapter.ldap.usage:
+.. _zend.authentication.adapter.ldap.usage:
 
 用法
 --
@@ -108,7 +109,7 @@ DNs）。
 风格的域名，我们仍在这里提供它以保证命名正规化 （参见下面的 **Username
 Canonicalization** 一节）。
 
-.. _zend.auth.adapter.ldap.api:
+.. _zend.authentication.adapter.ldap.api:
 
 The API
 -------
@@ -194,7 +195,7 @@ INI 属性分隔符，XML 条目参考 '*&*' 等）的特殊字符。
 登录表单提供的证书（credentials））。另外，也可以通过 *setUsername()* 和 *setPassword()*
 方法来设置。
 
-.. _zend.auth.adapter.ldap.server-options:
+.. _zend.authentication.adapter.ldap.server-options:
 
 服务器选项
 -----
@@ -205,7 +206,7 @@ INI 属性分隔符，XML 条目参考 '*&*' 等）的特殊字符。
 
 
 
-      .. _zend.auth.adapter.ldap.server-options.table:
+      .. _zend.authentication.adapter.ldap.server-options.table:
 
       .. table:: 服务器选项
 
@@ -246,7 +247,7 @@ INI 属性分隔符，XML 条目参考 '*&*' 等）的特殊字符。
    客户端库你信任这个服务器。另外如果涉及到服务器可能被欺骗，你可以输出 LDAP
    服务器的根证书并把它放到 web 服务器，这样 OpenLDAP 客户端可以校验服务器的身份。
 
-.. _zend.auth.adapter.ldap.debugging:
+.. _zend.authentication.adapter.ldap.debugging:
 
 收集调试信息
 ------
@@ -256,7 +257,7 @@ INI 属性分隔符，XML 条目参考 '*&*' 等）的特殊字符。
 
 
 
-      .. _zend.auth.adapter.ldap.debugging.table:
+      .. _zend.authentication.adapter.ldap.debugging.table:
 
       .. table:: 调试信息 （Messages）
 
@@ -274,12 +275,12 @@ INI 属性分隔符，XML 条目参考 '*&*' 等）的特殊字符。
 作为日志，如果收集到调试信息， index 2 和它以后的 index
 也作为日志（尽管最终的信息总是从 index 1 的字符串开始）。
 
-.. _zend.auth.adapter.ldap.options-common-server-specific:
+.. _zend.authentication.adapter.ldap.options-common-server-specific:
 
 特定服务器的通用选项
 ----------
 
-.. _zend.auth.adapter.ldap.options-common-server-specific.active-directory:
+.. _zend.authentication.adapter.ldap.options-common-server-specific.active-directory:
 
 Active Directory 的选项
 ^^^^^^^^^^^^^^^^^^^^
@@ -288,7 +289,7 @@ Active Directory 的选项
 
 
 
-      .. _zend.auth.adapter.ldap.options-common-server-specific.active-directory.table:
+      .. _zend.authentication.adapter.ldap.options-common-server-specific.active-directory.table:
 
       .. table:: Active Directory 的选项
 
@@ -316,7 +317,7 @@ Active Directory 的选项
    实现进行跨域认证是没有危险的，因为服务器域是被显式检查的，但对将来的实现未必是对的，如在运行时发现域名或者如果使用替代的适配器（例如
    Kerberos）。一般来说，含糊的账户名是安全问题的来源，所以最好使用合格的账户名称。
 
-.. _zend.auth.adapter.ldap.options-common-server-specific.openldap:
+.. _zend.authentication.adapter.ldap.options-common-server-specific.openldap:
 
 OpenLDAP 的选项
 ^^^^^^^^^^^^
@@ -325,7 +326,7 @@ OpenLDAP 的选项
 
 
 
-      .. _zend.auth.adapter.ldap.options-common-server-specific.openldap.table:
+      .. _zend.authentication.adapter.ldap.options-common-server-specific.openldap.table:
 
       .. table:: OpenLDAP 的选项
 

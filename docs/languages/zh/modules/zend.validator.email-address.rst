@@ -1,4 +1,5 @@
-.. _zend.validate.set.email_addresses:
+.. EN-Revision: none
+.. _zend.validator.set.email_addresses:
 
 Email 地址
 ========
@@ -36,7 +37,7 @@ Email 地址
 
 **校验不同类型的主机名**
 
-Email地址中的主机名部分依靠 :ref:`Zend_Validate_Hostname <zend.validate.set.hostnames>`\
+Email地址中的主机名部分依靠 :ref:`Zend_Validate_Hostname <zend.validator.set.hostnames>`\
 来校验。尽管你希望IP地址和本地主机名也被接受，但缺省地只有像 *domain.com*\
 格式的DNS主机名被接受。 当然如果你想如愿，需要实例化 *Zend_Validate_EmailAddress*\
 并传递一个参数来指明哪种主机名你想接受。更多的细节包含在 *Zend_Validate_Hostname*\

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.different-transports:
 
 使用不同的Transport对象

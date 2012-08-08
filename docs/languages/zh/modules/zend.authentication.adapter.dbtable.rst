@@ -1,9 +1,10 @@
-.. _zend.auth.adapter.dbtable:
+.. EN-Revision: none
+.. _zend.authentication.adapter.dbtable:
 
 数据库表认证
 ======
 
-.. _zend.auth.adapter.dbtable.introduction:
+.. _zend.authentication.adapter.dbtable.introduction:
 
 简介
 --
@@ -32,7 +33,7 @@
 
 
 
-.. _zend.auth.adapter.dbtable.introduction.example.basic_usage:
+.. _zend.authentication.adapter.dbtable.introduction.example.basic_usage:
 
 .. rubric:: 基本用法
 
@@ -134,7 +135,7 @@ SQLite extension可用：
 
 因为表行里包含证书值，通过防止无意识地访问来安全化这个值很重要。
 
-.. _zend.auth.adapter.dbtable.advanced.storing_result_row:
+.. _zend.authentication.adapter.dbtable.advanced.storing_result_row:
 
 高级使用：持久一个 DbTable 结果对象
 ----------------------
@@ -176,7 +177,7 @@ SQLite extension可用：
    }
 
 
-.. _zend.auth.adapter.dbtable.advanced.advanced_usage:
+.. _zend.authentication.adapter.dbtable.advanced.advanced_usage:
 
 高级用法范例
 ------
