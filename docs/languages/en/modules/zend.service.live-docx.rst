@@ -23,7 +23,7 @@ in addition to the core components of the Zend Framework, as do all other servic
 In addition to this section of the manual, to learn more about ``ZendService\LiveDocx`` and the backend *SOAP* 
 service LiveDocx, please take a look at the following resources:
 
-- **Shipped demonstration applications**. There are a large number of demonstration applications in the
+- **Shipped demonstration applications**. There is a large number of demonstration applications in the
   directory ``/demos``. They illustrate all functionality offered by LiveDocx. Where appropriate this part of the
   user manual references the demonstration applications at the end of each section. It is **highly recommended** 
   to read all the  code in the ``/demos`` directory. It is well commented and explains all you need to know about 
@@ -46,9 +46,8 @@ Before you can start using LiveDocx, you must first `sign up`_ for an account. T
 charge and you only need to specify a **username**, **password** and **e-mail address**. Your login credentials
 will be dispatched to the e-mail address you supply, so please type carefully. If, or when, your application
 gets really popular and you require high performance, or additional features only supplied in the premium service, 
-you can upgrade from the free service to the
-premium service for a minimal monthly charge. For details of the various services, please refer to 
-http://www.livedocx.com/pub/pricing.
+you can upgrade from the free service to the premium service for a minimal monthly charge. For details of the
+various services, please refer to `LiveDocx pricing`_.
 
 .. _zend.service.livedocx.templates-documents:
 
@@ -883,7 +882,7 @@ And that is all there is to it. You are now using LiveDocx Fully Licensed.
 For executable demo applications, which illustrate the above, please take a look at 
 ``/demos/ZendService/LiveDocx/MailMerge/instantiation``.
 
-
+.. _`LiveDocx pricing` : http://www.livedocx.com/pub/pricing
 .. _`GitHub (ZendServiceLiveDocx)`: https://github.com/zendframework/ZendServiceLiveDocx
 .. _`LiveDocx pricing page`: http://www.livedocx.com/pub/pricing
 .. _`mail-merge`: http://en.wikipedia.org/wiki/Mail_merge
