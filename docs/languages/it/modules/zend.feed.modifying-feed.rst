@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.modifying-feed:
 
 Modifica della struttura e degli elementi di un feed

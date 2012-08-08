@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.boundary:
 
 Controllo del separatore MIME

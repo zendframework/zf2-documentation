@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.read:
 
 Lettura di messaggi e-mail
