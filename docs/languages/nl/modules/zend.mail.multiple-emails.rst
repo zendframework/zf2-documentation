@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.multiple-emails:
 
 Meerdere e-mails sturen via een SMTP verbinding

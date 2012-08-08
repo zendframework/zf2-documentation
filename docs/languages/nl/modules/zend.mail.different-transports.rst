@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.different-transports:
 
 Verschillende Transporten gebruiken
