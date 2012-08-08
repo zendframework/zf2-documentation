@@ -200,8 +200,8 @@ code is as follows:
 
     $mailMerge = new MailMerge();
 
-    $mailMerge->setUsername(DEMOS_ZENDSERVICE_LIVEDOCX_FREE_USERNAME)
-              ->setPassword(DEMOS_ZENDSERVICE_LIVEDOCX_FREE_PASSWORD)
+    $mailMerge->setUsername('myUsername')
+              ->setPassword('myPassword')
               ->setService (MailMerge::SERVICE_FREE);
 
     $mailMerge->setLocalTemplate('license-agreement-template.docx');
@@ -296,8 +296,8 @@ The following code populates the above template with data.
 
     $mailMerge = new MailMerge();
 
-    $mailMerge->setUsername(DEMOS_ZENDSERVICE_LIVEDOCX_FREE_USERNAME)
-              ->setPassword(DEMOS_ZENDSERVICE_LIVEDOCX_FREE_PASSWORD)
+    $mailMerge->setUsername('myUsername')
+              ->setPassword('myPassword')
               ->setService (MailMerge::SERVICE_FREE);
 
     $mailMerge->setLocalTemplate('telephone-bill-template.doc');
@@ -406,8 +406,8 @@ The supported formats can be obtained by calling ``getImageExportFormats()``.
 
     $mailMerge = new MailMerge();
 
-    $mailMerge->setUsername(DEMOS_ZENDSERVICE_LIVEDOCX_FREE_USERNAME)
-              ->setPassword(DEMOS_ZENDSERVICE_LIVEDOCX_FREE_PASSWORD)
+    $mailMerge->setUsername('myUsername')
+              ->setPassword('myPassword')
               ->setService (MailMerge::SERVICE_FREE);
 
     $mailMerge->setLocalTemplate('license-agreement-template.docx');
@@ -716,10 +716,10 @@ For executable demo applications, which illustrate the above, please take a look
 Upgrading From LiveDocx Free to LiveDocx Premium Service
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-LiveDocx Free is provided by Text Control GmbH completely free for charge. It is free for all to use in an 
+LiveDocx Free is provided by *Text Control GmbH* completely free for charge. It is free for all to use in an 
 unlimited number of applications. However, there are times when you may like to update to LiveDocx Premium. For 
 example, you need to generate a very large number of documents concurrently, or your application requires 
-documents to be created faster than LiveDocx Free permits. For such scenarios, Text Control GmbH offers LiveDocx 
+documents to be created faster than LiveDocx Free permits. For such scenarios, *Text Control GmbH* offers LiveDocx 
 Premium, a paid service with a number of benefits. For an overview of the benefits, please take a look at the 
 `LiveDocx pricing page`_.
 
@@ -769,7 +769,7 @@ For executable demo applications, which illustrate the above, please take a look
 Upgrading From LiveDocx Free or LiveDocx Premium to LiveDocx Fully Licensed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-LiveDocx Free and Livedocx Premium are provided by Text Control GmbH as a service. They are addressed over the 
+LiveDocx Free and Livedocx Premium are provided by *Text Control GmbH* as a service. They are addressed over the 
 Internet. However, for certain applications, for example, ones that process very sensitive data (banking, health 
 or financial), you may not want to send your data across the Internet to a third party service, regardless of the 
 SSL encryption that both LiveDocx Free and Livedocx Premium offer as standard. For such scenarios, you can license 
