@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.windowsazure:
 
 Zend_Service_WindowsAzure

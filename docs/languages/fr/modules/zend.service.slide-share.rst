@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.slideshare:
 
 Zend_Service_SlideShare

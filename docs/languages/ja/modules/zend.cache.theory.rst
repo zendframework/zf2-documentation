@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.cache.theory:
 
 キャッシュの仕組み

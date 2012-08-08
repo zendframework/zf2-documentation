@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.quickstart.intro:
 
 Zend Framework & wprowadzenie do MVC

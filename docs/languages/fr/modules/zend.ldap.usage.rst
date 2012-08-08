@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.ldap.usage:
 
 Scénarios d'utilisation

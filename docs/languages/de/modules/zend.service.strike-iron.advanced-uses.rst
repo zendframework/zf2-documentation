@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.strikeiron.advanced-uses:
 
 Zend_Service_StrikeIron: Erweiterte Verwendung

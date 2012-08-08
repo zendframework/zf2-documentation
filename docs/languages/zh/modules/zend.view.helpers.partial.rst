@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.view.helpers.initial.partial:
 
 区域助手（Partial Helper）

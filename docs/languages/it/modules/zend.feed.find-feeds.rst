@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.findFeeds:
 
 Individuazione e recupero di feed da pagine web

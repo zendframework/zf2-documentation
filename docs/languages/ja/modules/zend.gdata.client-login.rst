@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.gdata.clientlogin:
 
 ClientLogin による認証

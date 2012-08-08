@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.ldap.ldif:
 
 Serialiser des données LDAP depuis/vers LDIF

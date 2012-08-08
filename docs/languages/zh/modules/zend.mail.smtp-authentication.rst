@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.smtp-authentication:
 
 SMTP 身份验证

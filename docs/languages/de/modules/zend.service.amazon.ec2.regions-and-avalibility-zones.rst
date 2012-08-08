@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.amazon.ec2.zones:
 
 Zend_Service_Amazon_Ec2: Regionen und Availability Zones

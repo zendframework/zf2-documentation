@@ -22,7 +22,7 @@ pre-build:
 	@mkdir -p tmp/$(LANG)
 	@cp -R languages/en/* tmp/$(LANG)/
 ifneq ($(LANG),en)
-	@for f in $$(cd languages/$(LANG) && find . -type f \( ! -iname ".*" \)); do \
+	@for f in $$(cd languages/$(LANG) && find . -type f \( ! -iname ".*" \) | sort); do \
 		if [ -f languages/en/$$f ]; then \
 			if [ $$(stat -c %s languages/$(LANG)/$$f) = $$(stat -c %s languages/en/$$f) ]; then \
 				echo "The file '$$f' seems to be exactly the same as English one, perhaps it could be deleted"; \
@@ -172,3 +172,15 @@ doctest:
 	$(SPHINXBUILD) -b doctest $(ALLSPHINXOPTS) $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
+
+add-missing-revchecktag:
+ifneq ($(LANG),en)
+	@for f in $$(cd languages/$(LANG) && find . -type f \( ! -iname ".*" \)); do \
+		if [ -f languages/en/$$f ]; then \
+			rev=$$(head -n 3 languages/$(LANG)/$$f | grep -i EN-Revision | cut -f2 -d ':' | tr -d ' '); \
+			if [ "$$rev" = "" ]; then \
+				echo ".. EN-Revision: none"|cat - languages/$(LANG)/$$f > /tmp/zftmpfile && mv /tmp/zftmpfile languages/$(LANG)/$$f; \
+			fi; \
+		fi; \
+	done
+endif

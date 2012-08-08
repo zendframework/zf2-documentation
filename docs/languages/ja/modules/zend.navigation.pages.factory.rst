@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.navigation.pages.factory:
 
 ページ・ファクトリを使ってページを作成

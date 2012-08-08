@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.pdf.save:
 
 PDF ドキュメントへの変更内容の保存

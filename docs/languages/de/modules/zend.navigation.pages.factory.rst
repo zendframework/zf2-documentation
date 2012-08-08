@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.navigation.pages.factory:
 
 Erstellen von Seiten durch Verwendung der Page Factory

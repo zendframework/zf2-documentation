@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.http.client:
 
 導入

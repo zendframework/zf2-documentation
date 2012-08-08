@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.http.cookies:
 
 Zend_Http_Cookie および Zend_Http_CookieJar

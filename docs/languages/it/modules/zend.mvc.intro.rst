@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mvc.intro:
 
 Introduzione al layer MVC

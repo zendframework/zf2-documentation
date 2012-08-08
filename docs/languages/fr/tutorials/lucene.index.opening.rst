@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.lucene.index-opening:
 
 Ouverture et création d'index

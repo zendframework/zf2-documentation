@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.lucene.intro:
 
 Introduction à Zend_Search_Lucene

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.gdata.exception:
 
 Gdata Ausnahmen auffangen

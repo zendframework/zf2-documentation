@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.form.quickstart:
 
 Schnellstart mit Zend_Form

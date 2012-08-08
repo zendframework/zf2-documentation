@@ -1,0 +1,136 @@
+.. EN-Revision: none
+.. _zend.log.writers.mail:
+
+Email への書き込み
+============
+
+``Zend_Log_Writer_Mail`` は、 ``Zend_Mail``
+を使ってログエントリをメールのメッセージに書き出します。 ``Zend_Log_Writer_Mail``
+のコンストラクタは ``Zend_Mail`` オブジェクトを受け取り、 またオプションで
+``Zend_Layout`` オブジェクトを受け取ります。
+
+``Zend_Log_Writer_Mail`` の主な使い道は、 開発者やシステム管理者など関係者に対して
+*PHP* スクリプトで発生したエラーを通知することです。
+「何か問題がおこったら、すぐに人間に通知しないとね。
+そうすればすぐに適切な対応ができるわけだから」そんなアイデアを元に
+``Zend_Log_Writer_Mail`` が誕生しました。
+
+基本的な使い方は以下のとおりです。
+
+.. code-block:: php
+   :linenos:
+
+   $mail = new Zend_Mail();
+   $mail->setFrom('errors@example.org')
+        ->addTo('project_developers@example.org');
+
+   $writer = new Zend_Log_Writer_Mail($mail);
+
+   // 件名に使用するテキストを設定します。実際にメッセージを送信する前に、
+   // 発生したエラー数がこの件名に付け加えられます
+   $writer->setSubjectPrependText('Errors with script foo.php');
+
+   // 警告レベル以上の場合にのみメールを送信します
+   $writer->addFilter(Zend_Log::WARN);
+
+   $log = new Zend_Log();
+   $log->addWriter($writer);
+
+   // なにかが起こりました！
+   $log->error('unable to connect to database');
+
+   // ライターの処理が終了すると Zend_Mail::send() が立ち上がり、
+   // 上の Zend_Log フィルタレベル以上のすべてのログメッセージが送信されます
+
+``Zend_Log_Writer_Mail`` は、デフォルトで
+メールの本文をプレーンテキスト形式でレンダリングします。
+
+指定したフィルタレベル以上のすべてのログエントリが、
+ひとつのメールにまとめて送られます。たとえば、
+警告レベル以上を送信するよう設定しているときに 2 つの警告と 5
+つのエラーが発生したら、 メールには 7
+つのログエントリが含まれることになります。
+
+.. _zend.log.writers.mail.layoutusage:
+
+Zend_Layout の使用法
+----------------
+
+``Zend_Layout`` のインスタンスを使用して、 マルチパートメールの *HTML*
+部を作成できます。 ``Zend_Layout`` のインスタンスが用いられた場合、
+``Zend_Log_Writer_Mail`` は *HTML* をレンダリングするものとみなし、 ``Zend_Layout``
+がレンダリングした値をメッセージの本文 *HTML* として設定します。
+
+``Zend_Log_Writer_Mail`` で ``Zend_Layout`` のインスタンスを使う場合には、 ``setLayoutFormatter()``
+メソッドで独自のフォーマッタを指定できます。 ``Zend_Layout``
+用のエントリフォーマッタを指定しなかった場合は、
+現在使用中のものをそのまま使います。 ``Zend_Layout``
+で独自のフォーマッタを使用する方法を以下に示します。
+
+.. code-block:: php
+   :linenos:
+
+   $mail = new Zend_Mail();
+   $mail->setFrom('errors@example.org')
+        ->addTo('project_developers@example.org');
+   // 件名は Zend_Mail のインスタンスには設定していないことに注意しましょう!
+
+   // シンプルに、デフォルトの Zend_Layout のインスタンスを使用します
+   $layout = new Zend_Layout();
+
+   // エントリを li タグで囲むフォーマッタを作成します
+   $layoutFormatter = new Zend_Log_Formatter_Simple(
+       '<li>' . Zend_Log_Formatter_Simple::DEFAULT_FORMAT . '</li>'
+   );
+
+   $writer = new Zend_Log_Writer_Mail($mail, $layout);
+
+   // Zend_Layout でレンダリングするための、エントリのフォーマッタを適用します
+   $writer->setLayoutFormatter($layoutFormatter);
+   $writer->setSubjectPrependText('Errors with script foo.php');
+   $writer->addFilter(Zend_Log::WARN);
+
+   $log = new Zend_Log();
+   $log->addWriter($writer);
+
+   // なにかが起こりました！
+   $log->error('unable to connect to database');
+
+   // ライターの処理が終了すると Zend_Mail::send() が立ち上がり、
+   // 上の Zend_Log フィルタレベル以上のすべてのログメッセージが送信されます
+   // メールは、プレーンテキストと HTML パートの両方を含む形式になります
+
+.. _zend.log.writers.mail.dynamicsubjectline:
+
+件名でのエラーの概要
+----------
+
+``setSubjectPrependText()`` メソッドを ``Zend_Mail::setSubject()`` のかわりに使用すると、
+メールを送信する直前に件名を動的に書き込むことができます。たとえば、
+件名のテキストが "Errors from script" だとすると、 2 つの警告と 5
+つのエラーが発生した場合に ``Zend_Log_Writer_Mail`` が作成するメールの件名は "Errors from
+script (warn = 2; error = 5)" となります。 ``Zend_Log_Writer_Mail``
+で件名のテキストを設定しなかった場合、もし ``Zend_Mail``
+で設定されていればそれを使用します。
+
+.. _zend.log.writers.mail.caveats:
+
+警告
+--
+
+ログエントリをメールでおくるのは危険なこともあります。
+スクリプト内でのエラー条件の処理が不適切だったり
+エラーレベルの使用法を間違えたりすると、
+エラーの発生頻度によっては何百通何千通ものメールを送信してしまう可能性があります。
+
+現時点では、 ``Zend_Log_Writer_Mail``
+にはメッセージを抑制したりひとつにまとめたりする機能はありません。
+そのような機能が必要な場合は自前で実装する必要があります。
+
+もう一度言いますが、 ``Zend_Log_Writer_Mail``
+の第一の目標は、人間に向けてエラーの情報を積極的に伝えることです。
+これらのエラーがタイミングよく処理され、
+このような状況が避けられるような機能が実装されたときには、
+メールによるエラー通知は便利な道具となることでしょう。
+
+

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.navigation.pages.factory:
 
 Créer des pages avec la fabrique

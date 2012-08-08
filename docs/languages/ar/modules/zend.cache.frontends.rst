@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.cache.frontends:
 
 الـ frontends المتوفرة فى Zend_Cache

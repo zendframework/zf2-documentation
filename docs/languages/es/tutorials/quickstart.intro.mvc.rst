@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.quickstart.intro:
 
 Introducción a MVC & ZF

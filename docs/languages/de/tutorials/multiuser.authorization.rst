@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.multiuser.authorization:
 
 Erstellung eines Authorisations Systems in Zend Framework

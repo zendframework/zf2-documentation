@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _performance.localization:
 
 Internationalisierung (I18n) und Lokalisierung (L10n)

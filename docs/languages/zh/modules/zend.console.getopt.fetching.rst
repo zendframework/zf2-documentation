@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.console.getopt.fetching:
 
 读取（Fetching）选项和参数

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.http.response:
 
 Zend_Http_Response

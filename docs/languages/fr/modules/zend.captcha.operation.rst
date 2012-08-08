@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.captcha.operation:
 
 Opération Captcha

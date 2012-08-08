@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.di.quick-start:
 
 Zend\\Di Quickstart

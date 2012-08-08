@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.navigation.pages.custom:
 
 Créer des pages de type personnalisé

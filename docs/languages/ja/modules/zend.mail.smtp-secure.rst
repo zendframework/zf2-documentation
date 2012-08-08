@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.smtp-secure:
 
 セキュアな SMTP トランスポート

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.pdf.usage:
 
 Przykład użycia modułu Zend_Pdf

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.multiple-emails:
 
 Posielanie viacerých e-mailov cez jedno SMTP spojenie

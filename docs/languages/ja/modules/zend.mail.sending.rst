@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.sending:
 
 SMTP 経由での送信

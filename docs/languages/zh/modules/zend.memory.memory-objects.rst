@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.memory.memory-objects:
 
 内存对象

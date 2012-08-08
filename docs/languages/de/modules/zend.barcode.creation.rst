@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.barcode.creation:
 
 Barcodes mit Hilfe der Zend_Barcode Klasse erstellen

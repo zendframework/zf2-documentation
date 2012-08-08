@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.filter.writing_filters:
 
 编写过滤器

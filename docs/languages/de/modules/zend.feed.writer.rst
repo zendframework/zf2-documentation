@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.writer:
 
 Zend_Feed_Writer

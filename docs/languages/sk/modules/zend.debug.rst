@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.debug.dumping:
 
 Zobrazovanie obsahu premenených

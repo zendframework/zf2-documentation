@@ -1,0 +1,125 @@
+.. EN-Revision: none
+.. _zend.timesync.introduction:
+
+Introduction
+============
+
+``Zend_TimeSync`` est capable de recevoir une information temporelle depuis un serveur de temps, en utilisant les
+protocoles **NTP** ou **SNTP**. Avec ``Zend_TimeSync``, Zend Framework peut fonctionner sans se soucier de la
+configuration du temps (de la date) du serveur sur lequel il tourne.
+
+Pour se rendre indépendant du temps actuel sur le serveur, ``Zend_TimeSync`` fonctionne en calculant des
+différences entre le temps du serveur, et le temps réel actuel, en envoyant et recevant des paquets vers un
+serveur de gestion du temps, grâce aux protocoles NTP ou SNTP.
+
+.. note::
+
+   **En tâche de fond**
+
+   ``Zend_TimeSync`` ne peut pas changer le temps sur le serveur, mais il peut en revanche retourner un objet
+   :ref:`Zend_Date <zend.date.introduction>` de différence de temps, pour travailler avec.
+
+.. _zend.timesync.introduction.why:
+
+Pourquoi Zend_TimeSync ?
+------------------------
+
+Pourquoi donc utiliser ``Zend_TimeSync``?
+
+En théorie, sur un serveur, un service (démon) tourne sur le système d'exploitation, pour s'occuper de la
+synchronisation précise du temps, avec un serveur distant de temps. Cependant il est possible que votre OS ne
+supporte pas ceci, ou que vous n'ayez pas les droits, ou la possibilité de gérer un tel service de
+synchronisation. ``Zend_TimeSync`` prend alors tout son sens.
+
+Voici quelques exemples dans lesquels ``Zend_TimeSync`` est tout à fait adapté et utile :
+
+- **Serveur sans service de synchronisation du temps**
+
+  Si votre application tourne sur un serveur qui ne possède pas de service de synchronisation du temps, alors
+  utiliser ``Zend_TimeSync`` vous permettra de gérer le temps dans votre application.
+
+- **Serveurs de base de données séparés**
+
+  Si votre serveur de base de données est installé sur un serveur distant, et qu'il n'est pas synchronisé
+  temporellement avec votre serveur applicatif, alors vous rencontrerez des problèmes si vous utilisez des
+  timestamps.
+
+- **Serveurs multiples**
+
+  Si votre application fonctionne au travers de multiples serveurs applicatifs, il est possible que ceux-ci ne
+  soient pas synchronisés au niveau du temps, et entre eux. Des problèmes vont alors apparaître lorsque des
+  données proviennent de plusieurs serveurs différents, et sont traitées ensemble.
+
+- **Processus de Batch**
+
+  Si vous utilisez des fichiers batchs, ou des applications en ligne de commande, et que celles-ci nécessitent une
+  synchronisation temporelle absente sur votre système.
+
+Dans tous ces cas là, ``Zend_TimeSync`` est une solution parfaite lorsque vous ne pouvez installer de service sur
+vos serveurs.
+
+.. _zend.timesync.introduction.ntp:
+
+Qu'est ce que NTP ?
+-------------------
+
+Le *Network Time Protocol* (**NTP**) est un protocole utilisé pour la synchronisation du temps des systèmes
+informatiques au travers du réseau. NTP utilise le port UDP 123 comme couche de transport. Voyez cet `article
+wikipédia`_ pour plus d'informations sur le protocole.
+
+.. _zend.timesync.introduction.sntp:
+
+Qu'est ce que SNTP?
+-------------------
+
+Le *Simple Network Time Protocol* (**SNTP**) est un protocole utilisé pour la synchronisation du temps des
+systèmes informatiques au travers du réseau. SNTP utilise le port UDP 37 comme couche de transport. Il est très
+semblable à ``NTP``, mais plus simple (comme son nom l'indique).
+
+.. _zend.timesync.introduction.problematic:
+
+Problèmes courants d'utilisation
+--------------------------------
+
+Faites attention avec l'utilisation de ``Zend_TimeSync``. Vous devrez garder en tête certains détails concernant
+la structure de la synchronisation temporelle, et du Web lui-même. Les bonnes pratiques pour éviter ces
+problèmes sont décrites ici. Lisez les bien avant d'utiliser ``Zend_TimeSync``.
+
+.. _zend.timesync.introduction.decision:
+
+Décider quel serveur de temps utiliser
+--------------------------------------
+
+Décider du serveur de temps à utiliser est assez minutieux. Vous devrez prendre en considération les paramètres
+suivants :
+
+- La distance
+
+  Bien entendu la distance entre votre serveur et le serveur de temps est importante. Afin de réduire la charge
+  réseau et d'obtenir des réponses plus rapides, veillez à utiliser un serveur de temps proche géographiquement
+  de votre serveur applicatif.
+
+- La vitesse
+
+  La vitesse à laquelle les serveur de temps vont vous répondre est importante. Certains sont souvent saturés.
+  Faîtes des mesures.
+
+- Leur nombre
+
+  N'utilisez pas systématiquement le même serveur de temps pour vous synchroniser. Si vous envoyez trop de
+  requêtes vers un serveur de temps, celui-ci pourra vous bannir. Utilisez un pool de serveurs dont vous assurerez
+  la rotation.
+
+Mais où donc trouver des serveurs de temps ? Déjà, essayez votre LAN. En effet il est possible que vous
+disposiez d'un serveur de temps interne à votre structure. Sinon vous pouvez utiliser l'un des nombreux serveurs
+publics. Il sera alors intéressant d'utiliser un pool de serveurs. Un pool est un serveur vous donnant
+aléatoirement l'adresse d'un serveur de temps, en fonction de critères, comme la distance. C'est une solution
+tout à fait adaptée pour assurer une rotation des serveurs, et éviter tous les problèmes mentionnés ci-dessus.
+
+Voyez `www.pool.ntp.org`_ afin de récupérer le pool le plus proche de vous. Par exemple pour un serveur en France
+*0.europe.pool.ntp.org* pourra faire l'affaire.
+
+
+
+.. _`article wikipédia`: http://fr.wikipedia.org/wiki/Network_Time_Protocol
+.. _`www.pool.ntp.org`: http://www.pool.ntp.org

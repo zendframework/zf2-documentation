@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.importing:
 
 Feeds importeren met Zend_Feed

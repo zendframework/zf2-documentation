@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.permissions.acl.advanced:
 
 高度な使用法

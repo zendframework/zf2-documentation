@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.barcode.creation:
 
 Criação de código de barras usando a classe Zend_Barcode

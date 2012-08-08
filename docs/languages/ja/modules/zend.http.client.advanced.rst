@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.http.client.advanced:
 
 Zend_Http_Client - 高度な使用法

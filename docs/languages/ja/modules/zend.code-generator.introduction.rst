@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.codegenerator.introduction:
 
 導入

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.smtp-secure:
 
 Messa in sicurezza del trasporto SMTP

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.gdata.books:
 
 Die Buchsuche Daten API verwenden

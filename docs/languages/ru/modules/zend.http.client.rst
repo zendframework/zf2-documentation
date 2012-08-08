@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.http.client:
 
 Zend_Http_Client - Введение

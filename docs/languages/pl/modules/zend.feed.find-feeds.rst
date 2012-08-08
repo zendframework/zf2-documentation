@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.findFeeds:
 
 Odbieranie kanałów informacyjnych ze stron internetowych
