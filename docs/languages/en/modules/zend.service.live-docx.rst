@@ -225,7 +225,6 @@ via e-mail or simply displayed, as is illustrated below in **Document Viewer 2.2
 
 .. image:: ../images/zend.service.livedocx.mailmerge.templates-msworddocument_zoom.png
 
-
 Resulting document as *PDF* in Document Viewer 2.26.1.
 
 .. _zend.service.livedocx.mailmerge.advanced:
@@ -252,7 +251,6 @@ targets and their names in red:
 
 .. image:: ../images/zend.service.livedocx.mailmerge.advanced-mergefieldblockformat_zoom.png
 
-
 The format of a block is as follows:
 
 .. code-block:: text
@@ -273,7 +271,6 @@ template. The data for block fields is specified in *PHP* as a multi-assoc array
 The following screenshot of a template in Microsoft Word 2007 shows how block fields are used:
 
 .. image:: ../images/zend.service.livedocx.mailmerge.advanced-mswordblockstemplate_zoom.png
-
 
 Template, illustrating blocks in Microsoft Word 2007.
 
@@ -427,7 +424,6 @@ an image - it must start with ``image:``
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/conference-pass``.
 
-
 .. _zend.service.livedocx.mailmerge.bitmaps:
 
 Generating Bitmaps Image Files
@@ -506,7 +502,6 @@ license-agreement-page-2.png.
 
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/bitmaps``.
-
 
 Local vs. Remote Templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
