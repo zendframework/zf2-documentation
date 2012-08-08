@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.paginator.configuration:
 
 設定

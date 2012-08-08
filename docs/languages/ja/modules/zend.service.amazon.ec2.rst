@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.amazon.ec2:
 
 Zend_Service_Amazon_Ec2

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.gdata.calendar:
 
 Google Calendar の使用法

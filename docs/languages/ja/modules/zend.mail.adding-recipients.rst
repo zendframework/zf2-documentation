@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.adding-recipients:
 
 受信者の追加

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.gdata.youtube:
 
 YouTube Data API の使用法

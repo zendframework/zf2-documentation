@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.console.getopt.fetching:
 
 オプションおよび引数の取得

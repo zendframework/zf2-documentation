@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.cache.introduction:
 
 導入

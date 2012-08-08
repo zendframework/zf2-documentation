@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.gdata.spreadsheets:
 
 Google Spreadsheets の使用法

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _performance.classloading:
 
 クラスの読み込み

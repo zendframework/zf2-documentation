@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.gdata.introduction:
 
 導入

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.tag.introduction:
 
 導入

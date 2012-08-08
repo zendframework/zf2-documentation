@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.pdf.usage:
 
 Zend_Pdf モジュールの使用例

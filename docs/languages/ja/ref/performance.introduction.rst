@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _performance.introduction:
 
 導入

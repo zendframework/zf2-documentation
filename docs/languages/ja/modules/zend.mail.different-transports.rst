@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.different-transports:
 
 異なる転送手段の使用
