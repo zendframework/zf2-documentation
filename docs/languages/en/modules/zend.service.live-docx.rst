@@ -128,8 +128,8 @@ The resulting document can be saved in any of the following graphical file forma
 
 .. _zend.service.livedocx.mailmerge:
 
-ZendService\LiveDocx\MailMerge
-------------------------------
+``ZendService\LiveDocx\MailMerge``
+----------------------------------
 
 ``MailMerge`` is the mail-merge object in the ``ZendService\LiveDocx`` family.
 
@@ -374,6 +374,66 @@ You can download the *DOC* `template file`_ and the resulting `PDF document`_.
 For executable demo applications, which illustrate the above, please take a look at 
 ``/demos/ZendService/LiveDocx/MailMerge/telephone-bill``.
 
+.. _zend.service.livedocx.mailmerge.images:
+
+Merging image data into a template
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In addition to assigning textual data, it is also possible to merge image data into a template. The following code
+populates a conference badge template with the photo ``dailemaitre.jpg``, in addition to some textual data.
+
+The first step is to upload the image to the backend service. Once you have done this, you can assign the filename
+of image to the template just as you would any other textual data. Note the syntax of the field name containing an
+image. It must start with ``image:``
+
+.. code-block:: php
+
+    use ZendService\LiveDocx\MailMerge;
+
+    $locale    = Locale::getDefault();
+    $timestamp = time();
+
+    $intlDateFormatter = new IntlDateFormatter($locale,
+            IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+
+    $mailMerge = new MailMerge();
+
+    $mailMerge->setUsername('myUsername')
+              ->setPassword('myPassword')
+              ->setService (MailMerge::SERVICE_FREE);  // for LiveDocx Premium, use MailMerge::SERVICE_PREMIUM
+
+    /**
+     * Image Source:
+     * iStock_000003413016Medium_business-man-with-hands-up.jpg
+     */
+    $photoFilename = __DIR__ . '/dailemaitre.jpg';
+    $photoFile     = basename($photoFilename);
+
+    if (!$mailMerge->imageExists($photoFile)) {         // pass image file *without* path
+        $mailMerge->uploadImage($photoFilename);        // pass image file *with* path
+    }
+
+    $mailMerge->setLocalTemplate('conference-pass-template.docx');
+
+    $mailMerge->assign('name',        'Daï Lemaitre')
+              ->assign('company',     'Megasoft Co-operation')
+              ->assign('date',        $intlDateFormatter->format($timestamp))
+              ->assign('image:photo', $photoFile);      // pass image file *without* path
+
+    $mailMerge->createDocument();
+
+    $document = $mailMerge->retrieveDocument('pdf');
+
+    file_put_contents('conference-pass-document.pdf', $document);
+
+    $mailMerge->deleteImage($photoFilename);
+
+    unset($mailMerge);
+
+For executable demo applications, which illustrate the above, please take a look at 
+``/demos/ZendService/LiveDocx/MailMerge/conference-pass``.
+
+
 .. _zend.service.livedocx.mailmerge.bitmaps:
 
 Generating bitmaps image files
@@ -443,12 +503,12 @@ and writes them to disk in the same directory as the executable *PHP* file.
 .. image:: ../images/zend.service.livedocx.mailmerge.bitmaps-documentpage1_zoom.png
 
 
-documentPage1.png.
+license-agreement-page-1.png.
 
 .. image:: ../images/zend.service.livedocx.mailmerge.bitmaps-documentpage2_zoom.png
 
 
-documentPage2.png.
+license-agreement-page-2.png.
 
 .. _zend.service.livedocx.mailmerge.templates-types:
 
