@@ -395,22 +395,28 @@ The supported formats can be obtained by calling ``getImageExportFormats()``.
 
     use ZendService\LiveDocx\MailMerge;
 
-    $date = new DateTime();
-    $date->setLocale('en_US');
+    $locale    = Locale::getDefault();
+    $timestamp = time();
+
+    $intlTimeFormatter = new IntlDateFormatter($locale,
+            IntlDateFormatter::NONE, IntlDateFormatter::SHORT);
+
+    $intlDateFormatter = new IntlDateFormatter($locale,
+            IntlDateFormatter::LONG, IntlDateFormatter::NONE);
 
     $mailMerge = new MailMerge();
 
-    $mailMerge->setUsername('myUsername')
-              ->setPassword('myPassword')
+    $mailMerge->setUsername(DEMOS_ZENDSERVICE_LIVEDOCX_FREE_USERNAME)
+              ->setPassword(DEMOS_ZENDSERVICE_LIVEDOCX_FREE_PASSWORD)
               ->setService (MailMerge::SERVICE_FREE);
 
-    $mailMerge->setLocalTemplate('template.docx');
+    $mailMerge->setLocalTemplate('license-agreement-template.docx');
 
     $mailMerge->assign('software', 'Magic Graphical Compression Suite v1.9')
-              ->assign('licensee', 'Daï Lemaitre')
-              ->assign('company',  'Megasoft Co-operation')
-              ->assign('date',     $date->format('Y-m-d'))
-              ->assign('time',     $date->format('H:i:s'))
+              ->assign('licensee', 'Henry Döner-Meyer')
+              ->assign('company',  'Co-Operation')
+              ->assign('date',     $intlDateFormatter->format($timestamp))
+              ->assign('time',     $intlTimeFormatter->format($timestamp))
               ->assign('city',     'Lyon')
               ->assign('country',  'France');
 
@@ -422,12 +428,14 @@ The supported formats can be obtained by calling ``getImageExportFormats()``.
 
     // Get just bitmaps in specified range
     // (fromPage, toPage, zoomFactor, format)
-    // $bitmaps = $mailMerge->getBitmaps(2, 2, 100, 'png');
+    //$bitmaps = $mailMerge->getBitmaps(2, 2, 100, 'png');
 
     foreach ($bitmaps as $pageNumber => $bitmapData) {
-        $filename = sprintf('documentPage%d.png', $pageNumber);
+        $filename = sprintf('license-agreement-page-%d.png', $pageNumber);
         file_put_contents($filename, $bitmapData);
     }
+
+    unset($mailMerge);
 
 This produces two files (``documentPage1.png`` and ``documentPage2.png``) and writes them to disk in the same
 directory as the executable *PHP* file.
