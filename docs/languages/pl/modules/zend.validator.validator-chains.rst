@@ -1,10 +1,11 @@
-.. _zend.validate.validator_chains:
+.. EN-Revision: none
+.. _zend.validator.validator_chains:
 
 Łańcuchy weryfikatorów
 ======================
 
 Często do pewnej wartości potrzebujemy zastosować wiele weryfikatorów w określonej kolejności. Poniższy kod
-demonstruje sposób rozwiązania przykładu z :ref:`wprowadzenia <zend.validate.introduction>`, gdzie nazwa
+demonstruje sposób rozwiązania przykładu z :ref:`wprowadzenia <zend.validator.introduction>`, gdzie nazwa
 użytkownika musi mieć długość między 6 a 12 alfanumerycznych znaków:
 
    .. code-block:: php

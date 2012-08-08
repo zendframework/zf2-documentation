@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.pdf.save:
 
 Zapisywanie zmian w dokumencie PDF.

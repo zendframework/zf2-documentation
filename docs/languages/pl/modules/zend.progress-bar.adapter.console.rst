@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.progressbar.adapter.console:
 
 Zend_ProgressBar_Adapter_Console

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.akismet:
 
 Zend_Service_Akismet

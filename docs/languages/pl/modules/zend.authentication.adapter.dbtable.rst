@@ -1,9 +1,10 @@
-.. _zend.auth.adapter.dbtable:
+.. EN-Revision: none
+.. _zend.authentication.adapter.dbtable:
 
 Uwierzytelnianie w oparciu o tabelę bazy danych
 ===============================================
 
-.. _zend.auth.adapter.dbtable.introduction:
+.. _zend.authentication.adapter.dbtable.introduction:
 
 Wprowadzenie
 ------------
@@ -32,7 +33,7 @@ Dostępne opcje konfiguracyjne to:
   uwierzytelniających. Z tego względu, że te funkcje są specyficzne dla konkretnych systemów baz danych,
   zajrzyj do odpowiednich dokumentacji aby sprawdzić dostępność takich funkcji dla twojego systemu bazy danych.
 
-.. _zend.auth.adapter.dbtable.introduction.example.basic_usage:
+.. _zend.authentication.adapter.dbtable.introduction.example.basic_usage:
 
 .. rubric:: Podstawowe użycie
 
@@ -134,7 +135,7 @@ Oprócz możliwości użycia metody ``getIdentity()`` obiektu rezultatu uwierzyt
 Z tego względu, że wiersz tabeli zawiera dane potrzebne do uwierzytelniania, ważne jest, aby dane były
 zabezpieczone przed dostępem przez osoby nieuprawnione.
 
-.. _zend.auth.adapter.dbtable.advanced.storing_result_row:
+.. _zend.authentication.adapter.dbtable.advanced.storing_result_row:
 
 Zaawansowane użycie: Stałe przechowywanie obiektu DbTable Result
 ----------------------------------------------------------------
@@ -176,7 +177,7 @@ ilustruje sposób jego użycia:
 
    }
 
-.. _zend.auth.adapter.dbtable.advanced.advanced_usage:
+.. _zend.authentication.adapter.dbtable.advanced.advanced_usage:
 
 Przykład zaawansowanego użycia
 ------------------------------

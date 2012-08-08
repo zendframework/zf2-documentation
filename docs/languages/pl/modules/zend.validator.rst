@@ -1,4 +1,5 @@
-.. _zend.validate.introduction:
+.. EN-Revision: none
+.. _zend.validator.introduction:
 
 Wprowadzenie
 ============
@@ -7,7 +8,7 @@ Komponent Zend_Validate zapewnia zestaw najczęściej potrzebnych weryfikatorów
 łańcuchowego wywoływania weryfikatorów, dzięki ktoremu wiele filtrów może być dodanych do jednej danej w
 kolejności zdefiniowanej przez programistę.
 
-.. _zend.validate.introduction.definition:
+.. _zend.validator.introduction.definition:
 
 Czym jest weryfikator?
 ----------------------
@@ -21,7 +22,7 @@ a dwunastoma znakami, a znaki te były jedynie z grupy znaków alfanumerycznych.
 sprawdzenia czy nazwa użytkownika spełnia te wymagania. Jeśli wybrana nazwa użytkownika nie spełni jednego lub
 obu tych wymagań, użytecznie by było wiedzieć, które z wymagań nie zostało spełnione.
 
-.. _zend.validate.introduction.using:
+.. _zend.validator.introduction.using:
 
 Podstawowe użycie weryfikatorów
 -------------------------------
@@ -64,7 +65,7 @@ Poniższy przykład pokazuje weryfikację adresu e-mail:
 
 
 
-.. _zend.validate.introduction.messages:
+.. _zend.validator.introduction.messages:
 
 Własne komunikaty
 -----------------
@@ -149,7 +150,7 @@ każdej klasie weryfikatora.
 
 
 
-.. _zend.validate.introduction.static:
+.. _zend.validator.introduction.static:
 
 Użycie statycznej metody is()
 -----------------------------

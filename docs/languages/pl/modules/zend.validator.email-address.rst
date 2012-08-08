@@ -1,4 +1,5 @@
-.. _zend.validate.set.email_address:
+.. EN-Revision: none
+.. _zend.validator.set.email_address:
 
 EmailAddress
 ============
@@ -40,7 +41,7 @@ albo znak "\\" w adresie email).
 **Weryfikacja dla różnych typów adresów serwerów**
 
 Część adresu email zawierająca adres serwera jest weryfikowana za pomocą :ref:`Zend_Validate_Hostname
-<zend.validate.set.hostname>`. Domyślnie akceptowane są jedynie adresy DNS w stylu *domain.com*, ale jeśli
+<zend.validator.set.hostname>`. Domyślnie akceptowane są jedynie adresy DNS w stylu *domain.com*, ale jeśli
 chcesz, to możesz włączyć akceptowanie także adresów IP oraz adresów lokalnych.
 
 Aby to zrobić, musisz utworzyć instancję *Zend_Validate_EmailAddress* przekazując parametr określający typ

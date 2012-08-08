@@ -1,4 +1,5 @@
-.. _zend.auth.introduction:
+.. EN-Revision: none
+.. _zend.authentication.introduction:
 
 Wprowadzenie
 ============
@@ -18,7 +19,7 @@ informacji o autoryzacji i kontroli dostępu za pomocą Zend Framework, proszę 
    statycznej metody ``getInstance()``. Oznacza to, że użycie operatorów **new** oraz **clone** nie będzie
    możliwe z klasą ``Zend_Auth``; zamiast nich użyj metody ``Zend_Auth::getInstance()``.
 
-.. _zend.auth.introduction.adapters:
+.. _zend.authentication.introduction.adapters:
 
 Adaptery
 --------
@@ -73,7 +74,7 @@ instancję klasy rozszerzającej ``Zend_Auth_Result``). Jeśli z jakiegoś powod
 uwierzytelniającego jest niemożliwe, metoda ``authenticate()`` powinna wyrzucić wyjątek rozszerzający
 ``Zend_Auth_Adapter_Exception``.
 
-.. _zend.auth.introduction.results:
+.. _zend.authentication.introduction.results:
 
 Resultat
 --------
@@ -142,7 +143,7 @@ Poniższy przykład pokazuje w jaki sposób programista może obsłużyć to kod
            break;
    }
 
-.. _zend.auth.introduction.persistence:
+.. _zend.authentication.introduction.persistence:
 
 Trwałość uwierzytelnionej tożsamości
 ------------------------------------
@@ -154,7 +155,7 @@ każdego żądania.
 *HTTP* jest protokołem niezachowującym stanu pomiędzy żądaniami, a techniki takie jak pliki cookie oraz sesje
 zostały stworzone w celu ułatwienia zarządzania stanem pomiędzy żądaniami w aplikacjach serwerowych.
 
-.. _zend.auth.introduction.persistence.default:
+.. _zend.authentication.introduction.persistence.default:
 
 Domyślne przechowywanie w sesji PHP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -172,7 +173,7 @@ własna klasa implementująca interfejs ``Zend_Auth_Storage_Interface``.
    przypadku użycia, to programiści mogą obyć się bez klasy ``Zend_Auth``, a zamiast niej użyć bezpośrednio
    klasy adaptera.
 
-.. _zend.auth.introduction.persistence.default.example:
+.. _zend.authentication.introduction.persistence.default.example:
 
 .. rubric:: Modyfikowanie przestrzeni nazw sesji
 
@@ -199,7 +200,7 @@ zapisuje dane tożsamości.
    // po udanym uwierzytelnieniu
    $result = $auth->authenticate($authAdapter);
 
-.. _zend.auth.introduction.persistence.custom:
+.. _zend.authentication.introduction.persistence.custom:
 
 Implementacja własnego pojemnika
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -208,7 +209,7 @@ Czasem programiści mogą potrzebować użyć innego sposobu trwałego przechowy
 zapewniony przez ``Zend_Auth_Storage_Session``. W takich przypadkach programiści mogą po prostu zaimplementować
 interfejs ``Zend_Auth_Storage_Interface`` i przekazać instancję klasy do metody ``Zend_Auth::setStorage()``.
 
-.. _zend.auth.introduction.persistence.custom.example:
+.. _zend.authentication.introduction.persistence.custom.example:
 
 .. rubric:: Użycie własnej klasy do przechowywania tożsamości
 
@@ -298,7 +299,7 @@ zapytania uwierzytelniającego:
    // Uwierzytelniamy, zapisując wynik i przechowując tożsamość po udanym uwierzytelnieniu
    $result = Zend_Auth::getInstance()->authenticate($authAdapter);
 
-.. _zend.auth.introduction.using:
+.. _zend.authentication.introduction.using:
 
 Użycie
 ------

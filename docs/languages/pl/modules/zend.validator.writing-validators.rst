@@ -1,4 +1,5 @@
-.. _zend.validate.writing_validators:
+.. EN-Revision: none
+.. _zend.validator.writing_validators:
 
 Pisanie weryfikatorów
 =====================
@@ -30,7 +31,7 @@ whether or not the input value is valid. A few examples of reasonable cases for 
 file cannot be opened, an LDAP server could not be contacted, or a database connection is unavailable, where such a
 thing may be required for validation success or failure to be determined.
 
-.. _zend.validate.writing_validators.example.simple:
+.. _zend.validator.writing_validators.example.simple:
 
 .. rubric:: Creating a Simple Validation Class
 
@@ -68,7 +69,7 @@ message automatically, should the value fail validation. The call to *_error()* 
 failure. Since this class only defines one failure message, it is not necessary to provide *_error()* with the name
 of the failure message template.
 
-.. _zend.validate.writing_validators.example.conditions.dependent:
+.. _zend.validator.writing_validators.example.conditions.dependent:
 
 .. rubric:: Writing a Validation Class having Dependent Conditions
 
@@ -146,7 +147,7 @@ one test should fail, there is no need to test any subsequent validation rules. 
 The following example illustrates how to write a class having independent validation rules, where the validation
 object may return multiple reasons why a particular validation attempt failed.
 
-.. _zend.validate.writing_validators.example.conditions.independent:
+.. _zend.validator.writing_validators.example.conditions.independent:
 
 .. rubric:: Validation with Independent Conditions, Multiple Reasons for Failure
 

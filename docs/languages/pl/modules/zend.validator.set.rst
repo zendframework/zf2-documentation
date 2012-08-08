@@ -1,11 +1,12 @@
-.. _zend.validate.set:
+.. EN-Revision: none
+.. _zend.validator.set:
 
 Standardowe klasy weryfikatorów
 ===============================
 
 Zend Framework posiada standardowy zestaw gotowych do użycia klas weryfikatorów.
 
-.. _zend.validate.set.alnum:
+.. _zend.validator.set.alnum:
 
 Alnum
 -----
@@ -13,7 +14,7 @@ Alnum
 Zwraca wartość *true* tylko wtedy, gdy wartość *$value* zawiera tylko znaki alfabetu oraz cyfry. Ten
 weryfikator posiada także opcję, służącą do określenia, czy białe znaki mąją być uznane za prawidłowe.
 
-.. _zend.validate.set.alpha:
+.. _zend.validator.set.alpha:
 
 Alpha
 -----
@@ -21,7 +22,7 @@ Alpha
 Zwraca wartość *true* tylko wtedy, gdy wartość *$value* zawiera tylko znaki alfabetu. Ten weryfikator posiada
 także opcję, służącą do określenia, czy białe znaki mąją być uznane za prawidłowe.
 
-.. _zend.validate.set.barcode:
+.. _zend.validator.set.barcode:
 
 Barcode
 -------
@@ -31,7 +32,7 @@ Ten weryfikator jest pomocny przy sprawdzaniu poprawności wartości kodu kresko
 *true* tylko w przypadku poprawnej weryfikacji poprzez algorytm kodów kreskowych. Powinieneś usunąć wszystkie
 znaki nie będące cyframi od zera do dziewiątki (0-9) przed podaniem wartości do weryfikatora.
 
-.. _zend.validate.set.between:
+.. _zend.validator.set.between:
 
 Between
 -------
@@ -41,7 +42,7 @@ zadaną graniczną wartością. Porównanie domyślnie nie jest ostre (wartość
 granicznej wartości), ale może być to nadpisane w celu uzyskania ścisłego porównania, w którym wartość
 *$value* musi być ściśle większa od wartości minimalnej i ściśle mniejsza od wartości maksymalnej.
 
-.. _zend.validate.set.ccnum:
+.. _zend.validator.set.ccnum:
 
 Ccnum
 -----
@@ -49,7 +50,7 @@ Ccnum
 Zwraca wartość *true* tylko wtedy, gdy wartość *$value* jest prawidłowym numerem karty kredytowej według
 algorytmu Luhn'a (suma kontrolna mod-10).
 
-.. _zend.validate.set.date:
+.. _zend.validator.set.date:
 
 Date
 ----
@@ -59,22 +60,22 @@ opcjonalny parametr *locale* wtedy data będzie sprawdzana zgodnie z podaną lok
 opcjonalny parametr *format* będzie on podstawą do sprawdzenia poprawności daty. Sprawdź
 :ref:`Zend_Date::isDate() <zend.date.others.comparison.table>` aby uzyskać szczegóły opcjonalnych parametrów.
 
-.. _zend.validate.set.digits:
+.. _zend.validator.set.digits:
 
 Digits
 ------
 
 Zwraca wartość *true* tylko wtedy, gdy wartość *$value* zawiera tylko cyfry.
 
-.. include:: zend.validate.email-address.rst
-.. _zend.validate.set.float:
+.. include:: zend.validator.email-address.rst
+.. _zend.validator.set.float:
 
 Float
 -----
 
 Zwraca wartość *true* tylko wtedy, gdy wartość *$value* jest wartością zmiennoprzecinkową.
 
-.. _zend.validate.set.greater_than:
+.. _zend.validator.set.greater_than:
 
 GreaterThan
 -----------
@@ -82,15 +83,15 @@ GreaterThan
 Zwraca wartość *true* tylko wtedy, gdy wartość *$value* jest większa od zadanej minimalnej granicznej
 wartości.
 
-.. _zend.validate.set.hex:
+.. _zend.validator.set.hex:
 
 Hex
 ---
 
 Zwraca wartość *true* tylko wtedy, gdy wartość *$value* zawiera tylko znaki szesnastkowe.
 
-.. include:: zend.validate.hostname.rst
-.. _zend.validate.set.in_array:
+.. include:: zend.validator.hostname.rst
+.. _zend.validator.set.in_array:
 
 InArray
 -------
@@ -98,21 +99,21 @@ InArray
 Zwraca wartość *true* tylko wtedy gdy wartość *$value* znajduje się w zadanej tablicy. Jeśli opcja ścisłego
 sprawdzania ma wartość *true*, wtedy typ wartości *$value* jest także sprawdzany.
 
-.. _zend.validate.set.int:
+.. _zend.validator.set.int:
 
 Int
 ---
 
 Zwraca wartość *true* tylko wtedy, gdy wartość *$value* jest poprawną wartością całkowitą.
 
-.. _zend.validate.set.ip:
+.. _zend.validator.set.ip:
 
 Ip
 --
 
 Zwraca wartość *true* tylko wtedy, gdy wartość *$value* jest poprawnym adresem IP.
 
-.. _zend.validate.set.less_than:
+.. _zend.validator.set.less_than:
 
 LessThan
 --------
@@ -120,21 +121,21 @@ LessThan
 Zwraca wartość *true* tylko wtedy, gdy wartość *$value* jest mniejsza od zadanej maksymalnej granicznej
 wartości.
 
-.. _zend.validate.set.not_empty:
+.. _zend.validator.set.not_empty:
 
 NotEmpty
 --------
 
 Zwraca wartość *true* tylko wtedy, gdy wartość *$value* nie jest pustą wartością.
 
-.. _zend.validate.set.regex:
+.. _zend.validator.set.regex:
 
 Regex
 -----
 
 Zwraca wartość *true* tylko wtedy, gdy wartość *$value* pasuje do zadanego wyrażenia regularnego.
 
-.. _zend.validate.set.string_length:
+.. _zend.validator.set.string_length:
 
 StringLength
 ------------
