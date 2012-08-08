@@ -163,14 +163,12 @@ looks as follows:
 
 .. image:: ../images/zend.service.livedocx.mailmerge.templates-msworddialog_zoom.png
 
-
 Microsoft Word 2007 Field dialog box.
 
 Using this dialog, you can insert the required merge fields into your document. Below is a screenshot of a license
 agreement in Microsoft Word 2007. The merge fields are marked as ``{ MERGEFIELD FieldName }``:
 
 .. image:: ../images/zend.service.livedocx.mailmerge.templates-mswordtemplatefull_zoom.png
-
 
 Template in Microsoft Word 2007.
 
@@ -179,7 +177,6 @@ Now, save the template as **template.docx**.
 In the next step, we are going to populate the merge fields with textual data from *PHP*.
 
 .. image:: ../images/zend.service.livedocx.mailmerge.templates-mswordtemplatecropped_zoom.png
-
 
 Cropped template in Microsoft Word 2007.
 
@@ -366,7 +363,6 @@ on **Ubuntu 9.04**:
 
 .. image:: ../images/zend.service.livedocx.mailmerge.advanced-mswordblocksdocument_zoom.png
 
-
 Resulting document as *PDF* in Document Viewer 2.26.1.
 
 You can download the *DOC* `template file`_ and the resulting `PDF document`_.
@@ -378,7 +374,7 @@ For executable demo applications, which illustrate the above, please take a look
 
 .. _zend.service.livedocx.mailmerge.images:
 
-Merging image data into a template
+Merging Image Data into a Template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In addition to assigning textual data, it is also possible to merge image data into a template. The following code
@@ -434,7 +430,7 @@ For executable demo applications, which illustrate the above, please take a look
 
 .. _zend.service.livedocx.mailmerge.bitmaps:
 
-Generating bitmaps image files
+Generating Bitmaps Image Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In addition to document file formats, ``MailMerge`` also allows documents to be saved to a
