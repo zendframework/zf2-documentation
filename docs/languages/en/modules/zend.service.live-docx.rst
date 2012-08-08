@@ -13,8 +13,8 @@ textual or image data from *PHP* with a template, created in a word processor. T
 saved as a *PDF*, *DOCX*, *DOC*, *HTML* or *RTF* file. LiveDocx implements `mail-merge`_ in *PHP*.
 
 The family of ``ZendService\LiveDocx`` components provides a clean and simple interface to *LiveDocx Free*,
-*LiveDocx Premium* and *LiveDocx Fully Licensed* and additionally offers functionality to improve network
-performance.
+*LiveDocx Premium* and *LiveDocx Fully Licensed*, authored by *Text Control GmbH*, and additionally offers 
+functionality to improve network performance.
 
 ``ZendService\LiveDocx`` is part of the official Zend Framework family, but has to be downloaded and installed
 in addition to the core components of the Zend Framework, as do all other service components. Please refer to
