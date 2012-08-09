@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
    TO TRANSLATORS: You don't need to copy this file to your translation, use
    translated-snippets.rst to translate title if you want
-   
+
 |ProgrammersReferenceGuideofZendFramework2|
 ===========================================
 
@@ -470,6 +470,13 @@ Zend\\XmlRpc
         * :doc:`modules/zend.xmlrpc.intro`
         * :doc:`modules/zend.xmlrpc.client`
         * :doc:`modules/zend.xmlrpc.server`
+
+.. _zendservice:
+
+ZendService
+^^^^^^^^^^^^
+
+        * :doc:`modules/zendservice.livedocx.rst`
 
 .. _zend.copyright:
 
