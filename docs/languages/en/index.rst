@@ -141,7 +141,7 @@
    modules/zend.xmlrpc.intro
    modules/zend.xmlrpc.client
    modules/zend.xmlrpc.server
-   modules/zendservice.livedocx.rst
+   modules/zendservice.livedocx
    ref/copyrights
 
 |IntroductiontoZendFramework|
