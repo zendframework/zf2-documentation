@@ -42,9 +42,11 @@ this will be done automatically for you.
 
 **Gettext**
 
-The ``xgettext`` utility can be used to compile \*.po files from PHP source files containing the translate view helper::
+The ``xgettext`` utility can be used to compile \*.po files from PHP source files containing the translate view helper.
 
-   % xgettext --language=php --add-location --keyword=translate my-view-file.phtml
+.. code-block:: bash
+
+   xgettext --language=php --add-location --keyword=translate my-view-file.phtml
 
 See the `Gettext Wikipedia page <http://en.wikipedia.org/wiki/Gettext>`_ for more information.
 
