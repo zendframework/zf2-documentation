@@ -474,10 +474,13 @@ Zend\\XmlRpc
 
 .. _zendservice:
 
-ZendService
-^^^^^^^^^^^
+|ZendServiceReference|
+----------------------
 
-        * :doc:`modules/zendservice.livedocx.rst`
+ZendService\\LiveDocx
+^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zendservice.livedocx`
 
 .. _zend.copyright:
 

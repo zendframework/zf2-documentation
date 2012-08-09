@@ -1,9 +1,9 @@
-.. _zend.service.livedocx:
+.. _zendservice.livedocx:
 
 ``ZendService\LiveDocx``
 ========================
 
-.. _zend.service.livedocx.introduction:
+.. _zendservice.livedocx.introduction:
 
 Introduction to LiveDocx
 ------------------------
@@ -37,7 +37,7 @@ service LiveDocx, please take a look at the following resources:
 
 - `LiveDocx blog and web site`_.
 
-.. _zend.service.livedocx.account:
+.. _zendservice.livedocx.account:
 
 Sign Up for an Account
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -49,7 +49,7 @@ gets really popular and you require high performance, or additional features onl
 you can upgrade from the *LiveDocx Free* to *LiveDocx Premium* for a minimal monthly charge. For details of the
 various services, please refer to `LiveDocx pricing`_.
 
-.. _zend.service.livedocx.templates-documents:
+.. _zendservice.livedocx.templates-documents:
 
 Templates and Documents
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -63,14 +63,14 @@ text fields. You can download an `example template`_, stored as a *DOCX* file. T
 refer to the output file that contains the template file, populated with data - i.e. the finished document. You can
 download an `example document`_, stored as a *PDF* file.
 
-.. _zend.service.livedocx.formats:
+.. _zendservice.livedocx.formats:
 
 Supported File Formats
 ^^^^^^^^^^^^^^^^^^^^^^
 
 LiveDocx supports the following file formats:
 
-.. _zend.service.livedocx.formats.template:
+.. _zendservice.livedocx.formats.template:
 
 Template File Formats (input)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -85,7 +85,7 @@ Templates can be saved in any of the following file formats:
 
 - `TXD`_- TX Text Control format
 
-.. _zend.service.livedocx.formats.document:
+.. _zendservice.livedocx.formats.document:
 
 Document File Formats (output):
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -108,7 +108,7 @@ The resulting document can be saved in any of the following file formats:
 
 - `TXT`_-*ANSI* plain text
 
-.. _zend.service.livedocx.formats.image:
+.. _zendservice.livedocx.formats.image:
 
 Image File Formats (output):
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -127,14 +127,14 @@ The resulting document can be saved in any of the following graphical file forma
 
 - `WMF`_- Windows Meta File format
 
-.. _zend.service.livedocx.mailmerge:
+.. _zendservice.livedocx.mailmerge:
 
 ``ZendService\LiveDocx\MailMerge``
 ----------------------------------
 
 ``MailMerge`` is the mail-merge object in the ``ZendService\LiveDocx`` family.
 
-.. _zend.service.livedocx.mailmerge.generation:
+.. _zendservice.livedocx.mailmerge.generation:
 
 Document Generation Process
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -153,7 +153,7 @@ Data is inserted into template to create a document.
 A template, created in a word processing application, such as Microsoft Word, is loaded into LiveDocx. Data is then
 inserted into the template and the resulting document is saved to any supported format.
 
-.. _zend.service.livedocx.mailmerge.templates:
+.. _zendservice.livedocx.mailmerge.templates:
 
 Creating Templates in Microsoft Word 2007
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -228,7 +228,7 @@ via e-mail or simply displayed, as is illustrated below in **Document Viewer 2.2
 
 Resulting document as *PDF* in Document Viewer 2.26.1.
 
-.. _zend.service.livedocx.mailmerge.advanced:
+.. _zendservice.livedocx.mailmerge.advanced:
 
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/license-agreement``.
@@ -371,7 +371,7 @@ You can download the *DOC* `template file`_ and the resulting `PDF document`_.
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/telephone-bill``.
 
-.. _zend.service.livedocx.mailmerge.images:
+.. _zendservice.livedocx.mailmerge.images:
 
 Merging Image Data into a Template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -427,7 +427,7 @@ an image - it must start with ``image:``
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/conference-pass``.
 
-.. _zend.service.livedocx.mailmerge.bitmaps:
+.. _zendservice.livedocx.mailmerge.bitmaps:
 
 Generating Bitmaps Image Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -502,7 +502,7 @@ license-agreement-page-1.png.
 
 license-agreement-page-2.png.
 
-.. _zend.service.livedocx.mailmerge.templates-types:
+.. _zendservice.livedocx.mailmerge.templates-types:
 
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/bitmaps``.
@@ -581,7 +581,7 @@ The following code illustrates how to reference the remotely stored template on 
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/templates``.
 
-.. _zend.service.livedocx.mailmerge.information:
+.. _zendservice.livedocx.mailmerge.information:
 
 Getting Information
 ^^^^^^^^^^^^^^^^^^^
@@ -589,7 +589,7 @@ Getting Information
 ``ZendService\LiveDocx\MailMerge`` provides a number of methods to get information on field names,
 available fonts and supported formats.
 
-.. _zend.service.livedocx.mailmerge.information.getfieldname:
+.. _zendservice.livedocx.mailmerge.information.getfieldname:
 
 .. rubric:: Get Array of Field Names in Template
 
@@ -620,7 +620,7 @@ is useful, in the case that you create an application, in which an end-user can 
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/template-info``.
 
-.. _zend.service.livedocx.mailmerge.information.getblockfieldname:
+.. _zendservice.livedocx.mailmerge.information.getblockfieldname:
 
 .. rubric:: Get Array of Block Field Names in Template
 
@@ -655,7 +655,7 @@ Before such templates can be populated, it is necessary to find out the names of
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/template-info``.
 
-.. _zend.service.livedocx.mailmerge.information.getfontnames:
+.. _zendservice.livedocx.mailmerge.information.getfontnames:
 
 .. rubric:: Get Array of Fonts Installed on Server
 
@@ -686,7 +686,7 @@ such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/supported-fonts``.
 
-.. _zend.service.livedocx.mailmerge.information.gettemplateformats:
+.. _zendservice.livedocx.mailmerge.information.gettemplateformats:
 
 .. rubric:: Get Array of Supported Template File Formats
 
@@ -716,7 +716,7 @@ such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/supported-formats``.
 
-.. _zend.service.livedocx.mailmerge.information.getdocumentformats:
+.. _zendservice.livedocx.mailmerge.information.getdocumentformats:
 
 .. rubric:: Get Array of Supported Document File Formats
 
@@ -743,7 +743,7 @@ format of the documentation generation process.
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/supported-formats``.
 
-.. _zend.service.livedocx.mailmerge.information.getimageexportformats:
+.. _zendservice.livedocx.mailmerge.information.getimageexportformats:
 
 .. rubric:: Get Array of Supported Image File Formats
 
