@@ -208,7 +208,7 @@ application by using an array syntax.
 The following example illustrates a basic use of ``Zend\Config\Reader\Json`` for loading configuration data from a
 *JSON* file. Suppose we have the following *JSON* configuration file:
 
-.. code-block:: json
+.. code-block:: text
    :linenos:
 
    {
@@ -241,7 +241,7 @@ Using ``Zend\Config\Reader\Json`` we can include the content of a JSON file in a
 This is provided using the special syntax ``@include``. Suppose we have a JSON file that contains only the database
 configuration:
 
-.. code-block:: json
+.. code-block:: text
    :linenos:
 
    {
@@ -258,7 +258,7 @@ configuration:
 
 We can include this configuration in another JSON file, for instance:
 
-.. code-block:: json
+.. code-block:: text
    :linenos:
 
    {

@@ -217,7 +217,7 @@ This example illustrates the basic use of ``Zend\Config\Writer\Json`` to create 
 
 The result of this code is a JSON string contains the following values:
 
-.. code-block:: json
+.. code-block:: text
    :linenos:
 
    { "webhost"  : "www.example.com",
