@@ -13,7 +13,7 @@ textual or image data from *PHP* with a template, created in a word processor. T
 saved as a *PDF*, *DOCX*, *DOC*, *HTML* or *RTF* file. LiveDocx implements `mail-merge`_ in *PHP*.
 
 The family of ``ZendService\LiveDocx`` components provides a clean and simple interface to *LiveDocx Free*,
-*LiveDocx Premium* and *LiveDocx Fully Licensed*, authored by *Text Control GmbH*, and additionally offers 
+*LiveDocx Premium* and *LiveDocx Fully Licensed*, authored by *Text Control GmbH*, and additionally offers
 functionality to improve network performance.
 
 ``ZendService\LiveDocx`` is part of the official Zend Framework family, but has to be downloaded and installed
@@ -145,7 +145,7 @@ The document generation process can be simplified with the following equation:
 
 Or expressed by the following diagram:
 
-.. image:: ../images/zend.service.livedocx.mailmerge.generation-diabasic_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.generation-diabasic_zoom.png
 
 
 Data is inserted into template to create a document.
@@ -161,14 +161,14 @@ Creating Templates in Microsoft Word 2007
 Start off by launching Microsoft Word and creating a new document. Next, open up the **Field** dialog box. This
 looks as follows:
 
-.. image:: ../images/zend.service.livedocx.mailmerge.templates-msworddialog_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.templates-msworddialog_zoom.png
 
 Microsoft Word 2007 Field dialog box.
 
 Using this dialog, you can insert the required merge fields into your document. Below is a screenshot of a license
 agreement in Microsoft Word 2007. The merge fields are marked as ``{ MERGEFIELD FieldName }``:
 
-.. image:: ../images/zend.service.livedocx.mailmerge.templates-mswordtemplatefull_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.templates-mswordtemplatefull_zoom.png
 
 Template in Microsoft Word 2007.
 
@@ -176,7 +176,7 @@ Now, save the template as **template.docx**.
 
 In the next step, we are going to populate the merge fields with textual data from *PHP*.
 
-.. image:: ../images/zend.service.livedocx.mailmerge.templates-mswordtemplatecropped_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.templates-mswordtemplatecropped_zoom.png
 
 Cropped template in Microsoft Word 2007.
 
@@ -223,7 +223,7 @@ code is as follows:
 The resulting document is written to disk in the file **license-agreement-document.pdf**. This file can now be post-processed, sent
 via e-mail or simply displayed, as is illustrated below in **Document Viewer 2.26.1** on **Ubuntu 9.04**:
 
-.. image:: ../images/zend.service.livedocx.mailmerge.templates-msworddocument_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.templates-msworddocument_zoom.png
 
 Resulting document as *PDF* in Document Viewer 2.26.1.
 
@@ -235,7 +235,7 @@ For executable demo applications, which illustrate the above, please take a look
 Advanced Mail-Merge
 ^^^^^^^^^^^^^^^^^^^
 
-``ZendService\LiveDocx\MailMerge`` allows designers to insert any number of text fields into a 
+``ZendService\LiveDocx\MailMerge`` allows designers to insert any number of text fields into a
 template. These text fields are populated with data when **createDocument()** is called.
 
 In addition to text fields, it is also possible specify regions of a document, which should be repeated.
@@ -249,7 +249,7 @@ number of **block fields** can be specified.
 Blocks consist of two consecutive document targets with a unique name. The following screenshot illustrates these
 targets and their names in red:
 
-.. image:: ../images/zend.service.livedocx.mailmerge.advanced-mergefieldblockformat_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.advanced-mergefieldblockformat_zoom.png
 
 The format of a block is as follows:
 
@@ -270,7 +270,7 @@ template. The data for block fields is specified in *PHP* as a multi-assoc array
 
 The following screenshot of a template in Microsoft Word 2007 shows how block fields are used:
 
-.. image:: ../images/zend.service.livedocx.mailmerge.advanced-mswordblockstemplate_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.advanced-mswordblockstemplate_zoom.png
 
 Template, illustrating blocks in Microsoft Word 2007.
 
@@ -358,7 +358,7 @@ The resulting document is written to disk in the file **telephone-bill-document.
 post-processed, sent via e-mail or simply displayed, as is illustrated below in **Document Viewer 2.26.1**
 on **Ubuntu 9.04**:
 
-.. image:: ../images/zend.service.livedocx.mailmerge.advanced-mswordblocksdocument_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.advanced-mswordblocksdocument_zoom.png
 
 Resulting document as *PDF* in Document Viewer 2.26.1.
 
@@ -490,11 +490,11 @@ The supported formats can be obtained by calling ``getImageExportFormats()``.
 This produces two files (``license-agreement-page-1.png`` and ``license-agreement-page-2.png``)
 and writes them to disk in the same directory as the executable *PHP* file.
 
-.. image:: ../images/zend.service.livedocx.mailmerge.bitmaps-documentpage1_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.bitmaps-documentpage1_zoom.png
 
 license-agreement-page-1.png.
 
-.. image:: ../images/zend.service.livedocx.mailmerge.bitmaps-documentpage2_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.bitmaps-documentpage2_zoom.png
 
 license-agreement-page-2.png.
 
