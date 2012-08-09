@@ -60,7 +60,7 @@ event data array:
    $formatter = new Zend\Log\Formatter\Xml();
    $writer->setFormatter($formatter);
 
-   $logger = new Zend_Log();
+   $logger = new Zend\Log\Logger();
    $logger->addWriter($writer);
 
    $logger->info('informational message');
