@@ -475,7 +475,7 @@ Zend\\XmlRpc
 .. _zendservice:
 
 ZendService
-^^^^^^^^^^^^
+^^^^^^^^^^^
 
         * :doc:`modules/zendservice.livedocx.rst`
 
