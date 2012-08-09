@@ -184,6 +184,7 @@ To populate the merge fields in the above cropped screenshot of the `template`_ 
 code is as follows:
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -277,6 +278,7 @@ Template, illustrating blocks in Microsoft Word 2007.
 The following code populates the above template with data.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -382,6 +384,7 @@ of the image to the template just as you would any other textual data. Note the 
 an image - it must start with ``image:``
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -442,6 +445,7 @@ size. The range of this parameter is 10 to 400. ``$format`` is the format of the
 The supported formats can be obtained by calling ``getImageExportFormats()``.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -517,6 +521,7 @@ situations in which the content of the template is constantly changing.
 The following code illustrates how to use a local template.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -540,6 +545,7 @@ method.
 The following code illustrates how to upload a template to the server:
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -556,6 +562,7 @@ The following code illustrates how to upload a template to the server:
 The following code illustrates how to reference the remotely stored template on all subsequent requests:
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -590,6 +597,7 @@ The following code returns and displays an array of all field names in the speci
 is useful, in the case that you create an application, in which an end-user can update a template.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -621,6 +629,7 @@ functionality is useful, in the case that you create an application, in which an
 Before such templates can be populated, it is necessary to find out the names of the contained block fields.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -656,6 +665,7 @@ installed on the server, as only these fonts may be used in a template. In the c
 which are not available on the server, font-substitution will take place. This may lead to undesirable results.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
     use Zend\Debug\Debug;
@@ -685,6 +695,7 @@ particularly useful in the case that a combo list should be displayed that allow
 format of the documentation generation process.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
     use Zend\Debug\Debug;
@@ -714,6 +725,7 @@ particularly useful in the case that a combo list should be displayed that allow
 format of the documentation generation process.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
     use Zend\Debug\Debug;
@@ -740,6 +752,7 @@ useful in the case that a combo list should be displayed that allows the end-use
 the documentation generation process.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
     use Zend\Debug\Debug;
@@ -776,6 +789,7 @@ All you have to do, is make a very small change to the code that runs with LiveD
 initialization of LiveDocx Free probably looks as follows:
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -794,6 +808,7 @@ To use LiveDocx Premium, you simply need to change the service value from ``Mail
 or may not be the same as the credentials for LiveDocx Free. For example:
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -831,6 +846,7 @@ All you have to do, is make a very small change to the code that runs with LiveD
 instantiation and initialization of LiveDocx Free or LiveDocx Premium probably looks as follows:
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -850,6 +866,7 @@ To use LiveDocx Fully Licensed, you simply need to set the WSDL of the backend L
 network. You can do this as follows:
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
