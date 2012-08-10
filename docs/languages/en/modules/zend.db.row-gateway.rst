@@ -39,7 +39,7 @@ The following use case demonstrates Zend\\Db\\RowGateway\\RowGateway usage in it
    $resultSet = $adapter->query('SELECT * FROM `user` WHERE `id` = ?', array(2));
 
    // get array of data
-   $rowData = $resultSet->current()->toArray();
+   $rowData = $resultSet->current()->getArrayCopy();
 
    // row gateway
    $rowGateway = new RowGateway('id', 'my_table', $adapter);
