@@ -169,7 +169,7 @@ custom class may instead be used by providing an object that implements
 .. note::
 
    If automatic persistent storage of the identity is not appropriate for a particular use case, then developers
-   may forgot using the ``Zend\Authentication\AuthenticationService`` class altogether, instead using an adapter
+   may forego using the ``Zend\Authentication\AuthenticationService`` class altogether, instead using an adapter
    class directly.
 
 .. _zend.authentication.introduction.persistence.default.example:
