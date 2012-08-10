@@ -85,7 +85,7 @@ ready for iteration.
    $projectTable = new TableGateway('project', $adapter);
    $rowset = $projectTable->select(array('type' => 'PHP'));
 
-   echo 'Projects of type PHP: ' .
+   echo 'Projects of type PHP: ';
    foreach ($rowset as $projectRow) {
    	echo $projectRow['name'] . PHP_EOL;
    }
