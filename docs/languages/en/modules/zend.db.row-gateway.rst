@@ -58,13 +58,14 @@ that is then capable of producing valid Row Gateway objects. Its usage looks lik
 .. code-block:: php
    :linenos:
 
-   use Zend\Db\TableGateway;
-   use Zend\Db\TableGateway\Feature;
-
-   $table = new TableGateway('artist', $adapter, new Feature\RowGatewayFeature('id'));
+   use Zend\Db\TableGateway\Feature\RowGatewayFeature;
+   use Zend\Db\TableGateway\TableGateway;
+   use Zend\Db\RowGateway\RowGateway;
+   
+   $table = new TableGateway('artist', $adapter, new RowGatewayFeature('id'));
    $results = $table->select(array('id' => 2));
 
-   $artistRow = $results->current(); // Zend\Db\RowGateway\RowGateway
+   $artistRow = $results->current();
    $artistRow->name = 'New Name';
    $artistRow->save();
 
