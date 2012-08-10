@@ -35,8 +35,8 @@ The following use case demonstrates Zend\\Db\\RowGateway\\RowGateway usage in it
 
    use Zend\Db\RowGateway\RowGateway;
 
-   // naturally, you'd use parameterization where possible and proper quoting
-   $resultSet = $adapter->query('SELECT * FROM "user" WHERE "id" = 2');
+   // query the database
+   $resultSet = $adapter->query('SELECT * FROM `user` WHERE `id` = ?', array(2));
 
    // get array of data
    $rowData = $resultSet->current()->toArray();
