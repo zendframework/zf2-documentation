@@ -235,7 +235,7 @@ Creating a Driver and Vendor portable Query, Preparing and Iterating Result
        . ' SET ' . $qi('name') . ' = ' . $fp('name')
        . ' WHERE ' . $qi('id') . ' = ' . $fp('id');
 
-   /* @var $statement Zend\Db\Adapter\DriverStatementInterface */
+   /* @var $statement Zend\Db\Adapter\Driver\StatementInterface */
    $statement = $adapter->query($sql);
 
    $parameters = array(
