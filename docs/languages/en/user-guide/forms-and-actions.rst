@@ -188,7 +188,7 @@ is done within the ``AlbumController``’s ``addAction()``:
     // module/Album/src/Album/Controller/AlbumController.php:
 
     //...
-    use Zend\Mvc\Controller\ActionController;
+    use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
     use Album\Model\Album;          // <-- Add this import
     use Album\Form\AlbumForm;       // <-- Add this import
