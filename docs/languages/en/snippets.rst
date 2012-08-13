@@ -15,4 +15,6 @@
 
 .. |ZendFrameworkReference| replace:: Zend Framework 2 Reference
 
+.. |ZendServiceReference| replace:: Services for Zend Framework 2 Reference
+
 .. |IndicesAndTables| replace:: Indices and tables
