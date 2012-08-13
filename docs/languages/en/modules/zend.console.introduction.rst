@@ -200,7 +200,7 @@ Let's modify our ``Application\IndexController`` to provide usage info:
 
     use Zend\ModuleManager\Feature\ConfigProviderInterface;
     use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
-    use Zend\Console\AdapterInterface as Console;
+    use Zend\Console\Adapter\AdapterInterface as Console;
 
     class Module implements
         AutoloaderProviderInterface,
