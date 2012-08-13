@@ -284,7 +284,7 @@ set():
 .. code-block:: php
    :linenos:
 
-   $update->set(array('foo' => 'bar', 'baz' => bax'));
+   $update->set(array('foo' => 'bar', 'baz' => 'bax'));
 
 where():
 
