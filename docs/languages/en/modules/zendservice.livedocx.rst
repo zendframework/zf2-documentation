@@ -1,9 +1,9 @@
-.. _zend.service.livedocx:
+.. _zendservice.livedocx:
 
 ``ZendService\LiveDocx``
 ========================
 
-.. _zend.service.livedocx.introduction:
+.. _zendservice.livedocx.introduction:
 
 Introduction to LiveDocx
 ------------------------
@@ -13,7 +13,7 @@ textual or image data from *PHP* with a template, created in a word processor. T
 saved as a *PDF*, *DOCX*, *DOC*, *HTML* or *RTF* file. LiveDocx implements `mail-merge`_ in *PHP*.
 
 The family of ``ZendService\LiveDocx`` components provides a clean and simple interface to *LiveDocx Free*,
-*LiveDocx Premium* and *LiveDocx Fully Licensed*, authored by *Text Control GmbH*, and additionally offers 
+*LiveDocx Premium* and *LiveDocx Fully Licensed*, authored by *Text Control GmbH*, and additionally offers
 functionality to improve network performance.
 
 ``ZendService\LiveDocx`` is part of the official Zend Framework family, but has to be downloaded and installed
@@ -37,7 +37,7 @@ service LiveDocx, please take a look at the following resources:
 
 - `LiveDocx blog and web site`_.
 
-.. _zend.service.livedocx.account:
+.. _zendservice.livedocx.account:
 
 Sign Up for an Account
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -49,7 +49,7 @@ gets really popular and you require high performance, or additional features onl
 you can upgrade from the *LiveDocx Free* to *LiveDocx Premium* for a minimal monthly charge. For details of the
 various services, please refer to `LiveDocx pricing`_.
 
-.. _zend.service.livedocx.templates-documents:
+.. _zendservice.livedocx.templates-documents:
 
 Templates and Documents
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -63,14 +63,14 @@ text fields. You can download an `example template`_, stored as a *DOCX* file. T
 refer to the output file that contains the template file, populated with data - i.e. the finished document. You can
 download an `example document`_, stored as a *PDF* file.
 
-.. _zend.service.livedocx.formats:
+.. _zendservice.livedocx.formats:
 
 Supported File Formats
 ^^^^^^^^^^^^^^^^^^^^^^
 
 LiveDocx supports the following file formats:
 
-.. _zend.service.livedocx.formats.template:
+.. _zendservice.livedocx.formats.template:
 
 Template File Formats (input)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -85,7 +85,7 @@ Templates can be saved in any of the following file formats:
 
 - `TXD`_- TX Text Control format
 
-.. _zend.service.livedocx.formats.document:
+.. _zendservice.livedocx.formats.document:
 
 Document File Formats (output):
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -108,7 +108,7 @@ The resulting document can be saved in any of the following file formats:
 
 - `TXT`_-*ANSI* plain text
 
-.. _zend.service.livedocx.formats.image:
+.. _zendservice.livedocx.formats.image:
 
 Image File Formats (output):
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -127,14 +127,14 @@ The resulting document can be saved in any of the following graphical file forma
 
 - `WMF`_- Windows Meta File format
 
-.. _zend.service.livedocx.mailmerge:
+.. _zendservice.livedocx.mailmerge:
 
 ``ZendService\LiveDocx\MailMerge``
 ----------------------------------
 
 ``MailMerge`` is the mail-merge object in the ``ZendService\LiveDocx`` family.
 
-.. _zend.service.livedocx.mailmerge.generation:
+.. _zendservice.livedocx.mailmerge.generation:
 
 Document Generation Process
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -145,7 +145,7 @@ The document generation process can be simplified with the following equation:
 
 Or expressed by the following diagram:
 
-.. image:: ../images/zend.service.livedocx.mailmerge.generation-diabasic_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.generation-diabasic_zoom.png
 
 
 Data is inserted into template to create a document.
@@ -153,7 +153,7 @@ Data is inserted into template to create a document.
 A template, created in a word processing application, such as Microsoft Word, is loaded into LiveDocx. Data is then
 inserted into the template and the resulting document is saved to any supported format.
 
-.. _zend.service.livedocx.mailmerge.templates:
+.. _zendservice.livedocx.mailmerge.templates:
 
 Creating Templates in Microsoft Word 2007
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -161,14 +161,14 @@ Creating Templates in Microsoft Word 2007
 Start off by launching Microsoft Word and creating a new document. Next, open up the **Field** dialog box. This
 looks as follows:
 
-.. image:: ../images/zend.service.livedocx.mailmerge.templates-msworddialog_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.templates-msworddialog_zoom.png
 
 Microsoft Word 2007 Field dialog box.
 
 Using this dialog, you can insert the required merge fields into your document. Below is a screenshot of a license
 agreement in Microsoft Word 2007. The merge fields are marked as ``{ MERGEFIELD FieldName }``:
 
-.. image:: ../images/zend.service.livedocx.mailmerge.templates-mswordtemplatefull_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.templates-mswordtemplatefull_zoom.png
 
 Template in Microsoft Word 2007.
 
@@ -176,7 +176,7 @@ Now, save the template as **template.docx**.
 
 In the next step, we are going to populate the merge fields with textual data from *PHP*.
 
-.. image:: ../images/zend.service.livedocx.mailmerge.templates-mswordtemplatecropped_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.templates-mswordtemplatecropped_zoom.png
 
 Cropped template in Microsoft Word 2007.
 
@@ -184,6 +184,7 @@ To populate the merge fields in the above cropped screenshot of the `template`_ 
 code is as follows:
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -223,11 +224,11 @@ code is as follows:
 The resulting document is written to disk in the file **license-agreement-document.pdf**. This file can now be post-processed, sent
 via e-mail or simply displayed, as is illustrated below in **Document Viewer 2.26.1** on **Ubuntu 9.04**:
 
-.. image:: ../images/zend.service.livedocx.mailmerge.templates-msworddocument_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.templates-msworddocument_zoom.png
 
 Resulting document as *PDF* in Document Viewer 2.26.1.
 
-.. _zend.service.livedocx.mailmerge.advanced:
+.. _zendservice.livedocx.mailmerge.advanced:
 
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/license-agreement``.
@@ -235,7 +236,7 @@ For executable demo applications, which illustrate the above, please take a look
 Advanced Mail-Merge
 ^^^^^^^^^^^^^^^^^^^
 
-``ZendService\LiveDocx\MailMerge`` allows designers to insert any number of text fields into a 
+``ZendService\LiveDocx\MailMerge`` allows designers to insert any number of text fields into a
 template. These text fields are populated with data when **createDocument()** is called.
 
 In addition to text fields, it is also possible specify regions of a document, which should be repeated.
@@ -249,7 +250,7 @@ number of **block fields** can be specified.
 Blocks consist of two consecutive document targets with a unique name. The following screenshot illustrates these
 targets and their names in red:
 
-.. image:: ../images/zend.service.livedocx.mailmerge.advanced-mergefieldblockformat_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.advanced-mergefieldblockformat_zoom.png
 
 The format of a block is as follows:
 
@@ -270,13 +271,14 @@ template. The data for block fields is specified in *PHP* as a multi-assoc array
 
 The following screenshot of a template in Microsoft Word 2007 shows how block fields are used:
 
-.. image:: ../images/zend.service.livedocx.mailmerge.advanced-mswordblockstemplate_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.advanced-mswordblockstemplate_zoom.png
 
 Template, illustrating blocks in Microsoft Word 2007.
 
 The following code populates the above template with data.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -358,7 +360,7 @@ The resulting document is written to disk in the file **telephone-bill-document.
 post-processed, sent via e-mail or simply displayed, as is illustrated below in **Document Viewer 2.26.1**
 on **Ubuntu 9.04**:
 
-.. image:: ../images/zend.service.livedocx.mailmerge.advanced-mswordblocksdocument_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.advanced-mswordblocksdocument_zoom.png
 
 Resulting document as *PDF* in Document Viewer 2.26.1.
 
@@ -369,7 +371,7 @@ You can download the *DOC* `template file`_ and the resulting `PDF document`_.
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/telephone-bill``.
 
-.. _zend.service.livedocx.mailmerge.images:
+.. _zendservice.livedocx.mailmerge.images:
 
 Merging Image Data into a Template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -382,6 +384,7 @@ of the image to the template just as you would any other textual data. Note the 
 an image - it must start with ``image:``
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -424,7 +427,7 @@ an image - it must start with ``image:``
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/conference-pass``.
 
-.. _zend.service.livedocx.mailmerge.bitmaps:
+.. _zendservice.livedocx.mailmerge.bitmaps:
 
 Generating Bitmaps Image Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -442,6 +445,7 @@ size. The range of this parameter is 10 to 400. ``$format`` is the format of the
 The supported formats can be obtained by calling ``getImageExportFormats()``.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -490,15 +494,15 @@ The supported formats can be obtained by calling ``getImageExportFormats()``.
 This produces two files (``license-agreement-page-1.png`` and ``license-agreement-page-2.png``)
 and writes them to disk in the same directory as the executable *PHP* file.
 
-.. image:: ../images/zend.service.livedocx.mailmerge.bitmaps-documentpage1_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.bitmaps-documentpage1_zoom.png
 
 license-agreement-page-1.png.
 
-.. image:: ../images/zend.service.livedocx.mailmerge.bitmaps-documentpage2_zoom.png
+.. image:: ../images/zendservice.livedocx.mailmerge.bitmaps-documentpage2_zoom.png
 
 license-agreement-page-2.png.
 
-.. _zend.service.livedocx.mailmerge.templates-types:
+.. _zendservice.livedocx.mailmerge.templates-types:
 
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/bitmaps``.
@@ -517,6 +521,7 @@ situations in which the content of the template is constantly changing.
 The following code illustrates how to use a local template.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -540,6 +545,7 @@ method.
 The following code illustrates how to upload a template to the server:
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -556,6 +562,7 @@ The following code illustrates how to upload a template to the server:
 The following code illustrates how to reference the remotely stored template on all subsequent requests:
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -574,7 +581,7 @@ The following code illustrates how to reference the remotely stored template on 
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/templates``.
 
-.. _zend.service.livedocx.mailmerge.information:
+.. _zendservice.livedocx.mailmerge.information:
 
 Getting Information
 ^^^^^^^^^^^^^^^^^^^
@@ -582,7 +589,7 @@ Getting Information
 ``ZendService\LiveDocx\MailMerge`` provides a number of methods to get information on field names,
 available fonts and supported formats.
 
-.. _zend.service.livedocx.mailmerge.information.getfieldname:
+.. _zendservice.livedocx.mailmerge.information.getfieldname:
 
 .. rubric:: Get Array of Field Names in Template
 
@@ -590,6 +597,7 @@ The following code returns and displays an array of all field names in the speci
 is useful, in the case that you create an application, in which an end-user can update a template.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -612,7 +620,7 @@ is useful, in the case that you create an application, in which an end-user can 
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/template-info``.
 
-.. _zend.service.livedocx.mailmerge.information.getblockfieldname:
+.. _zendservice.livedocx.mailmerge.information.getblockfieldname:
 
 .. rubric:: Get Array of Block Field Names in Template
 
@@ -621,6 +629,7 @@ functionality is useful, in the case that you create an application, in which an
 Before such templates can be populated, it is necessary to find out the names of the contained block fields.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -646,7 +655,7 @@ Before such templates can be populated, it is necessary to find out the names of
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/template-info``.
 
-.. _zend.service.livedocx.mailmerge.information.getfontnames:
+.. _zendservice.livedocx.mailmerge.information.getfontnames:
 
 .. rubric:: Get Array of Fonts Installed on Server
 
@@ -656,6 +665,7 @@ installed on the server, as only these fonts may be used in a template. In the c
 which are not available on the server, font-substitution will take place. This may lead to undesirable results.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
     use Zend\Debug\Debug;
@@ -676,7 +686,7 @@ such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/supported-fonts``.
 
-.. _zend.service.livedocx.mailmerge.information.gettemplateformats:
+.. _zendservice.livedocx.mailmerge.information.gettemplateformats:
 
 .. rubric:: Get Array of Supported Template File Formats
 
@@ -685,6 +695,7 @@ particularly useful in the case that a combo list should be displayed that allow
 format of the documentation generation process.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
     use Zend\Debug\Debug;
@@ -705,7 +716,7 @@ such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/supported-formats``.
 
-.. _zend.service.livedocx.mailmerge.information.getdocumentformats:
+.. _zendservice.livedocx.mailmerge.information.getdocumentformats:
 
 .. rubric:: Get Array of Supported Document File Formats
 
@@ -714,6 +725,7 @@ particularly useful in the case that a combo list should be displayed that allow
 format of the documentation generation process.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
     use Zend\Debug\Debug;
@@ -731,7 +743,7 @@ format of the documentation generation process.
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/supported-formats``.
 
-.. _zend.service.livedocx.mailmerge.information.getimageexportformats:
+.. _zendservice.livedocx.mailmerge.information.getimageexportformats:
 
 .. rubric:: Get Array of Supported Image File Formats
 
@@ -740,6 +752,7 @@ useful in the case that a combo list should be displayed that allows the end-use
 the documentation generation process.
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
     use Zend\Debug\Debug;
@@ -776,6 +789,7 @@ All you have to do, is make a very small change to the code that runs with LiveD
 initialization of LiveDocx Free probably looks as follows:
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -794,6 +808,7 @@ To use LiveDocx Premium, you simply need to change the service value from ``Mail
 or may not be the same as the credentials for LiveDocx Free. For example:
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -831,6 +846,7 @@ All you have to do, is make a very small change to the code that runs with LiveD
 instantiation and initialization of LiveDocx Free or LiveDocx Premium probably looks as follows:
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
@@ -850,6 +866,7 @@ To use LiveDocx Fully Licensed, you simply need to set the WSDL of the backend L
 network. You can do this as follows:
 
 .. code-block:: php
+   :linenos:
 
     use ZendService\LiveDocx\MailMerge;
 
