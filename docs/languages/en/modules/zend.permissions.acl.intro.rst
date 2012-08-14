@@ -171,7 +171,6 @@ For this example, ``Zend\Permissions\Acl\Role\GenericRole`` is used, but any obj
 
    use Zend\Permissions\Acl\Acl;
    use Zend\Permissions\Acl\Role\GenericRole as Role;
-   use Zend\Permissions\Acl\Resource\GenericResource as Resource;
 
    $acl = new Acl();
 
