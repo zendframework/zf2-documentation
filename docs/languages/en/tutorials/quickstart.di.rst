@@ -15,7 +15,7 @@ of this quickstart, we'll explain the act of injecting dependencies simply with 
 .. code-block:: php
    :linenos:
 
-   $b = new B(new A));
+   $b = new B(new A());
 
 Above, A is a dependency of B, and A was **injected** into B. If you are not familar with the concept of dependency
 injection, here are a couple of great reads: Matthew Weier O'Phinney's `Analogy`_, Ralph Schindler's `Learning
