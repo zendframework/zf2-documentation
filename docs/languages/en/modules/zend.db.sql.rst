@@ -40,7 +40,8 @@ To prepare (using a Select object):
    :linenos:
 
    use Zend\Db\Sql\Sql;
-   $select = new Sql($adapter);
+   $sql = new Sql($adapter);
+   $select = $sql->select();
    $select->from('foo');
    $select->where(array('id' => 2));
 
@@ -53,7 +54,8 @@ To execute (using a Select object)
    :linenos:
 
    use Zend\Db\Sql\Sql;
-   $select = new Sql($adapter);
+   $sql = new Sql($adapter);
+   $select = $sql->select();
    $select->from('foo');
    $select->where(array('id' => 2));
 
@@ -67,7 +69,8 @@ delete object, they are all primarily seeded with the same table when produced.
    :linenos:
 
    use Zend\Db\Sql\Sql;
-   $select = new Sql($adapter, 'foo');
+   $sql = new Sql($adapter, 'foo');
+   $select = $sql->select();
    $select->where(array('id' => 2)); // $select already has the from('foo') applied
 
 .. _zend.db.sql.sql-objects:
