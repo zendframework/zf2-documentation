@@ -60,8 +60,7 @@ that is then capable of producing valid Row Gateway objects. Its usage looks lik
 
    use Zend\Db\TableGateway\Feature\RowGatewayFeature;
    use Zend\Db\TableGateway\TableGateway;
-   use Zend\Db\RowGateway\RowGateway;
-   
+
    $table = new TableGateway('artist', $adapter, new RowGatewayFeature('id'));
    $results = $table->select(array('id' => 2));
 
