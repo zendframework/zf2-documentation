@@ -85,7 +85,7 @@ ready for iteration.
    $projectTable = new TableGateway('project', $adapter);
    $rowset = $projectTable->select(array('type' => 'PHP'));
 
-   echo 'Projects of type PHP: ' .
+   echo 'Projects of type PHP: ';
    foreach ($rowset as $projectRow) {
    	echo $projectRow['name'] . PHP_EOL;
    }
@@ -95,7 +95,7 @@ ready for iteration.
    $rowset = $artistTable->select(array('id' => 2));
    $artistRow = $rowset->current();
 
-   var_dump($artistRow->toArray());
+   var_dump($artistRow);
 
 The ``select()`` method takes the same arguments as ``Zend\Db\Sql\Select::where()`` with the addition of also being
 able to accept a closure, which in turn, will be passed the current Select object that is being used to build the

@@ -35,11 +35,11 @@ The following use case demonstrates Zend\\Db\\RowGateway\\RowGateway usage in it
 
    use Zend\Db\RowGateway\RowGateway;
 
-   // naturally, you'd use parameterization where possible and proper quoting
-   $resultSet = $adapter->query('SELECT * FROM "user" WHERE "id" = 2');
+   // query the database
+   $resultSet = $adapter->query('SELECT * FROM `user` WHERE `id` = ?', array(2));
 
    // get array of data
-   $rowData = $resultSet->current()->toArray();
+   $rowData = $resultSet->current()->getArrayCopy();
 
    // row gateway
    $rowGateway = new RowGateway('id', 'my_table', $adapter);
@@ -58,13 +58,13 @@ that is then capable of producing valid Row Gateway objects. Its usage looks lik
 .. code-block:: php
    :linenos:
 
-   use Zend\Db\TableGateway;
-   use Zend\Db\TableGateway\Feature;
+   use Zend\Db\TableGateway\Feature\RowGatewayFeature;
+   use Zend\Db\TableGateway\TableGateway;
 
-   $table = new TableGateway('artist', $adapter, new Feature\RowGatewayFeature('id'));
+   $table = new TableGateway('artist', $adapter, new RowGatewayFeature('id'));
    $results = $table->select(array('id' => 2));
 
-   $artistRow = $results->current(); // Zend\Db\RowGateway\RowGateway
+   $artistRow = $results->current();
    $artistRow->name = 'New Name';
    $artistRow->save();
 
