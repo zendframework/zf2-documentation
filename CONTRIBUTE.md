@@ -50,7 +50,7 @@ this, Debian systems provide Sphinx version 0.6 or 1.0.8 and will refuse to work
 To install latest Sphinx on a Debian-based system, use the following commands:
 
     > apt-get install python-setuptools python-pygments
-    > east_install -U Sphinx
+    > easy_install -U Sphinx
     > sphinx-build --version
       Sphinx v1.1.3
       Usage: /usr/local/bin/sphinx-build ....
