@@ -28,26 +28,9 @@ Available Methods
 
 **__construct**
    ``__construct(stdClass $marker, array $capabilities = array ( ), null|Zend\Cache\Storage\Capabilities $baseCapabilities)``
+   ``__construct(Zend\Cache\Storage\StorageInterface $storage, stdClass $marker, array $capabilities = array(), Capabilities $baseCapabilities = null)``
 
-   Returns void
-
-.. _zend.cache.storage.capabilities.methods.has-event-manager:
-
-**hasEventManager**
-   ``hasEventManager()``
-
-   Returns if the dependency of Zend\\EventManager is available.
-
-   Returns boolean
-
-.. _zend.cache.storage.capabilities.methods.get-event-manager:
-
-**getEventManager**
-   ``getEventManager()``
-
-   Get the event manager
-
-   Returns Zend\\EventManager\\EventCollection instance.
+   Constructor
 
 .. _zend.cache.storage.capabilities.methods.get-supported-datatypes:
 
@@ -84,6 +67,26 @@ Available Methods
    Set supported metadata
 
    Implements a fluent interface.
+
+
+.. _zend.cache.storage.capabilities.methods.get-min-ttl:
+
+**getMinTtl**
+   ``getMinTtl()``
+
+   Get minimum supported time-to-live
+
+   Returns int (0 means items never expire)
+
+.. _zend.cache.storage.capabilities.methods.set-min-ttl:
+
+**setMinTtl**
+   ``setMinTtl(stdClass $marker, int $minTtl)``
+
+   Set minimum supported time-to-live
+
+   Implements a fluent interface.
+
 
 .. _zend.cache.storage.capabilities.methods.get-max-ttl:
 
@@ -229,60 +232,6 @@ Available Methods
 
    Implements a fluent interface.
 
-.. _zend.cache.storage.capabilities.methods.get-iterable:
-
-**getIterable**
-   ``getIterable()``
-
-   Get if items are iterable.
-
-   Returns boolean
-
-.. _zend.cache.storage.capabilities.methods.set-iterable:
-
-**setIterable**
-   ``setIterable(stdClass $marker, boolean $flag)``
-
-   Set if items are iterable.
-
-   Implements a fluent interface.
-
-.. _zend.cache.storage.capabilities.methods.get-clear-all-namespaces:
-
-**getClearAllNamespaces**
-   ``getClearAllNamespaces()``
-
-   Get flag indicating support to clear items of all namespaces.
-
-   Returns boolean
-
-.. _zend.cache.storage.capabilities.methods.set-clear-all-namespaces:
-
-**setClearAllNamespaces**
-   ``setClearAllNamespaces(stdClass $marker, boolean $flag)``
-
-   Set flag indicating support to clear items of all namespaces.
-
-   Implements a fluent interface.
-
-.. _zend.cache.storage.capabilities.methods.get-clear-by-namespace:
-
-**getClearByNamespace**
-   ``getClearByNamespace()``
-
-   Get flag indicating support to clear items by namespace.
-
-   Returns boolean
-
-.. _zend.cache.storage.capabilities.methods.set-clear-by-namespace:
-
-**setClearByNamespace**
-   ``setClearByNamespace(stdClass $marker, boolean $flag)``
-
-   Set flag indicating support to clear items by namespace.
-
-   Implements a fluent interface.
-
 .. _zend.cache.storage.capabilities.examples:
 
 Examples
@@ -298,16 +247,13 @@ Examples
    use Zend\Cache\StorageFactory;
 
    $cache = StorageFactory::adapterFactory('filesystem');
-   $capabilities = $cache->getCapabilities();
+   $supportedDatatypes = $cache->getCapabilities()->getSupportedDatatypes();
 
    // now you can run specific stuff in base of supported feature
-   if ($capabilities->getIterable()) {
-       $cache->find();
-       while ( ($item => $cache->fetch()) ) {
-           echo $item['key'] . ': ' . $item['value'] . "\n";
-       }
+   if ($supportedDatatypes['object']) {
+       $cache->set($key, $object);
    } else {
-       echo 'Iterating cached items not supported.';
+       $cache->set($key, serialize($object));
    }
 
 
@@ -323,19 +269,11 @@ Examples
    $cache = StorageFactory::adapterFactory('filesystem', array(
        'no_atime' => false,
    ));
-   $capabilities = $cache->getCapabilities();
 
-   // Catching the change event
-   $capabilities->getEventManager()->attach('change', function() {
-       echo 'Capabilities changed';
+   // Catching capability changes
+   $cache->getEventManager()->attach('capability', function($event) {
+       echo count($event->getParams()) . ' capabilities changed';
    });
 
    // change option which changes capabilities
    $cache->getOptions()->setNoATime(true);
-
-   /*
-    * Will output:
-    * "Capabilities changed"
-    */
-
-
