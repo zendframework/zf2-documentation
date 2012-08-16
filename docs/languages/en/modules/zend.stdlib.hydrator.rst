@@ -51,7 +51,7 @@ Usage is quite simple: simply instantiate the hydrator, and then pass informatio
    :linenos:
 
    use Zend\Stdlib\Hydrator;
-   $hydrator = Hydrator\ArraySerializable();
+   $hydrator = new Hydrator\ArraySerializable();
 
    $object = new ArrayObject(array());
 
