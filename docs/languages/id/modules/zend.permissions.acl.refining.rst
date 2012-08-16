@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.permissions.acl.refining:
 
 Kontrol Akses Yang Lebih Detail

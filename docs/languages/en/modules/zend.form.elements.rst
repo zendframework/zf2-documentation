@@ -1,7 +1,7 @@
 .. _zend.form.elements:
 
-Zend\\Form\\Element
-===================
+Form Elements
+=============
 
 .. _zend.form.elements.intro:
 
@@ -25,6 +25,7 @@ the :ref:`Zend\\Form Quick Start <zend.form.quick-start.factory>` for more infor
 .. include:: zend.form.element.date.time.rst
 .. include:: zend.form.element.date.time.local.rst
 .. include:: zend.form.element.email.rst
+.. include:: zend.form.element.hidden.rst
 .. include:: zend.form.element.month.rst
 .. include:: zend.form.element.number.rst
 .. include:: zend.form.element.range.rst

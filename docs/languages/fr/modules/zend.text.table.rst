@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.text.table.introduction:
 
 Zend_Text_Table

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.ldap.usage:
 
 利用シナリオ

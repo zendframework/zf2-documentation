@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.navigation.pages.common:
 
 Übliche Seiten Features

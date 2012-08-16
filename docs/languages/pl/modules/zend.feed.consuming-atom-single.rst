@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.consuming-atom-single-entry:
 
 Pobieranie pojedynczego wpisu kanału Atom

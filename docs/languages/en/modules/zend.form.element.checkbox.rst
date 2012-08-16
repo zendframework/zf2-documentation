@@ -1,13 +1,14 @@
 .. _zend.form.element.checkbox:
 
-Zend\\Form\\Element\\Checkbox
-=============================
+Checkbox Element
+----------------
 
-The ``Checkbox`` element is meant to be paired with the ``Zend/Form/View/Helper/FormCheckbox`` for HTML inputs with type checkbox. This element adds an ``InArray`` validator to its input filter specification in order to validate on the server if the checkbox contains either the checked value or the unchecked value.
+``Zend\Form\Element\Checkbox`` is meant to be paired with the ``Zend/Form/View/Helper/FormCheckbox`` for HTML inputs with type checkbox. This element adds an ``InArray`` validator to its input filter specification in order to validate on the server if the checkbox contains either the checked value or the unchecked value.
 
 .. _zend.form.element.checkbox.usage:
 
-.. rubric:: Basic Usage of Zend\\Form\\Element\\Checkbox
+Basic Usage
+^^^^^^^^^^^
 
 This element automatically adds a ``"type"`` attribute of value ``"checkbox"``.
 
@@ -28,76 +29,55 @@ This element automatically adds a ``"type"`` attribute of value ``"checkbox"``.
 
 .. _zend.form.element.checkbox.methods:
 
-Available Methods
------------------
+Public Methods
+^^^^^^^^^^^^^^
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element <zend.form.element.methods>` .
 
-.. _zend.form.element.checkbox.methods.set-options:
+.. function:: setOptions(array $options)
+   :noindex:
 
-**setOptions**
+   Set options for an element of type Checkbox. Accepted options, in addition to the inherited options of Zend\\Form\\Element <zend.form.element.methods.set-options>` , are: ``"use_hidden_element"``, ``"checked_value"`` and ``"unchecked_value"`` , which call ``setUseHiddenElement``, ``setCheckedValue`` and ``setUncheckedValue`` , respectively.
 
-    ``setOptions(array $options)``
+.. function:: setUseHiddenElement(boolean $useHiddenElement)
+   :noindex:
 
-Set options for an element of type Checkbox. Accepted options, in addition to the inherited options of Zend\\Form\\Element <zend.form.element.methods.set-options>` , are: ``"use_hidden_element"``, ``"checked_value"`` and ``"unchecked_value"`` , which call ``setUseHiddenElement``, ``setCheckedValue`` and ``setUncheckedValue`` , respectively.
+   If set to true (which is default), the view helper will generate a hidden element that contains the unchecked value. Therefore, when using custom unchecked value, this option have to be set to true.
 
-.. _zend.form.element.checkbox.methods.set-use-hidden-element:
+.. function:: useHiddenElement()
+   :noindex:
 
-**setUseHiddenElement**
+   Return if a hidden element is generated.
 
-    ``setUseHiddenElement($useHiddenElement)``
+   :rtype: boolean
 
-If set to true (which is default), the view helper will generate a hidden element that contains the unchecked value. Therefore, when using custom unchecked value, this option have to be set to true.
+.. function:: setCheckedValue(string $checkedValue)
+   :noindex:
 
-.. _zend.form.element.checkbox.methods.use-hidden-element:
+   Set the value to use when the checkbox is checked.
 
-**useHiddenElement**
+.. function:: getCheckedValue()
+   :noindex:
 
-    ``useHiddenElement()``
+   Return the value used when the checkbox is checked.
 
-Return if a hidden element is generated.
+   :rtype: string
 
-.. _zend.form.element.checkbox.methods.set-checked-value:
+.. function:: setUncheckedValue(string $uncheckedValue)
+   :noindex:
 
-**setCheckedValue**
+   Set the value to use when the checkbox is unchecked. For this to work, you must make sure that use_hidden_element is set to true.
 
-    ``setCheckedValue($checkedValue)``
+.. function:: getUncheckedValue()
+   :noindex:
 
-Set the value to use when the checkbox is checked.
+   Return the value used when the checkbox is unchecked.
 
-.. _zend.form.element.checkbox.methods.get-checked-value:
+   :rtype: string
 
-**getCheckedValue**
+.. function:: getInputSpecification()
+   :noindex:
 
-    ``getCheckedValue()``
+   Returns a input filter specification, which includes a ``Zend\Validator\InArray`` to validate if the value is either checked value or unchecked value.
 
-Return the value used when the checkbox is checked.
-
-.. _zend.form.element.checkbox.methods.set-unchecked-value:
-
-**setUncheckedValue**
-
-    ``setUncheckedValue($uncheckedValue)``
-
-Set the value to use when the checkbox is unchecked. For this to work, you must make sure that use_hidden_element is set to true.
-
-.. _zend.form.element.checkbox.methods.get-unchecked-value:
-
-**getUncheckedValue**
-
-    ``getUncheckedValue()``
-
-Return the value used when the checkbox is unchecked.
-
-.. _zend.form.element.checkbox.methods.get-input-specification:
-
-**getInputSpecification**
-
-
-    ``getInputSpecification()``
-
-
-Returns a input filter specification, which includes a ``Zend\Validator\InArray`` to validate if the value is either checked value or
-unchecked value.
-
-Returns array
+   :rtype: array

@@ -1,15 +1,16 @@
 .. _zend.form.element.date-time:
 
-Zend\\Form\\Element\\DateTime
-=============================
+DateTime Element
+----------------
 
-The ``DateTime`` element is meant to be paired with the ``Zend/Form/View/Helper/FormDateTime`` for `HTML5 inputs
+``Zend\Form\Element\DateTime`` is meant to be paired with the ``Zend/Form/View/Helper/FormDateTime`` for `HTML5 inputs
 with type datetime`_. This element adds filters and validators to it's input filter specification in order to
 validate HTML5 datetime input values on the server.
 
 .. _zend.form.element.date-time.usage:
 
-.. rubric:: Basic Usage of Zend\\Form\\Element\\DateTime
+Basic Usage
+^^^^^^^^^^^
 
 This element automatically adds a ``"type"`` attribute of value ``"datetime"``.
 
@@ -38,16 +39,16 @@ This element automatically adds a ``"type"`` attribute of value ``"datetime"``.
 
 .. _zend.form.element.date-time.methods:
 
-Available Methods
------------------
+Public Methods
+^^^^^^^^^^^^^^
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.
 
 .. _zend.form.element.date-time.methods.get-input-specification:
 
-**getInputSpecification**
-   ``getInputSpecification()``
+.. function:: getInputSpecification()
+   :noindex:
 
    Returns a input filter specification, which includes ``Zend\Filter\StringTrim`` and will add the appropriate
    validators based on the values from the ``min``, ``max``, and ``step`` attributes.

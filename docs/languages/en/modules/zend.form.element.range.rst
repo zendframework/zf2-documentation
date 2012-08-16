@@ -1,15 +1,16 @@
 .. _zend.form.element.range:
 
-Zend\\Form\\Element\\Range
-==========================
+Range Element
+-------------
 
-The ``Range`` element is meant to be paired with the ``Zend/Form/View/Helper/FormRange`` for `HTML5 inputs with
+``Zend\Form\Element\Range`` is meant to be paired with the ``Zend/Form/View/Helper/FormRange`` for `HTML5 inputs with
 type range`_. This element adds filters and validators to it's input filter specification in order to validate
 HTML5 range values on the server.
 
 .. _zend.form.element.range.usage:
 
-.. rubric:: Basic Usage of Zend\\Form\\Element\\Range
+Basic Usage
+^^^^^^^^^^^
 
 This element automatically adds a ``"type"`` attribute of value ``"range"``.
 
@@ -38,16 +39,14 @@ This element automatically adds a ``"type"`` attribute of value ``"range"``.
 
 .. _zend.form.element.range.methods:
 
-Available Methods
------------------
+Public Methods
+^^^^^^^^^^^^^^
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element\\Number
 <zend.form.element.number.methods>`.
 
-.. _zend.form.element.range.methods.get-input-specification:
-
-**getInputSpecification**
-   ``getInputSpecification()``
+.. function:: getInputSpecification()``
+   :noindex:
 
    Returns a input filter specification, which includes ``Zend\Filter\StringTrim`` and will add the appropriate
    validators based on the values from the ``min``, ``max``, and ``step`` attributes. See

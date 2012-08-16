@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.ldap.node:
 
 Zend_Ldap_Nodeを使用してLDAPツリーへのオブジェクト指向アクセス

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.console.getopt.rules:
 
 Déclarer les règles Getopt

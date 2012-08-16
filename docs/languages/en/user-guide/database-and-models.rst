@@ -11,7 +11,7 @@ Now that we have the ``Album`` module set up with controller action methods and
 view scripts, it is time to look at the model section of our application.
 Remember that the model is the part that deals with the application’s core
 purpose (the so-called “business rules”) and, in our case, deals with the
-database. We will make use of Zend Framework class
+database. We will make use of the Zend Framework class
 ``Zend\Db\TableGateway\TableGateway`` which is used to find, insert, update and
 delete rows from a database table.
 
@@ -49,7 +49,7 @@ The model files
 Zend Framework does not provide a ``Zend\Model`` component as the model is your
 business logic and it’s up to you to decide how you want it to work. There are
 many components that you can use for this depending on your needs. One approach
-is to have model classes that represent each entity in your application and then
+is to have model classes represent each entity in your application and then
 use mapper objects that load and save entities to the database. Another is to
 use an ORM like Doctrine or Propel.
 
@@ -161,8 +161,9 @@ to the adapter property of our class. We then need to tell the table gateway’s
 result set that whenever it creates a new row object, it should use an ``Album``
 object to do so. The ``TableGateway`` classes use the prototype pattern for
 creation of result sets and entities. This means that instead of instantiating
-when required, the system clones a previously instantiated object. See
-http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prototype-pattern
+when required, the system clones a previously instantiated object. See 
+`PHP Constructor Best Practices and the Prototype Pattern 
+<http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prototype-pattern>`_
 for more details.
 
 We then create some helper methods that our application will use to interface
@@ -232,7 +233,7 @@ you should commit to your version control system.You can use ``local.php``
     return array(
         'db' => array(
             'driver'         => 'Pdo',
-            'dsn'            => 'mysql:dbname=zf2tutorial;hostname=localhost',
+            'dsn'            => 'mysql:dbname=zf2tutorial;host=localhost',
             'driver_options' => array(
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
             ),
@@ -369,9 +370,12 @@ a colon and ``endforeach;`` as it is easier to scan than to try and match up
 braces. Again, the ``url()`` view helper is used to create the edit and delete
 links.
 
-Note that we always use the ``escapeHtml()`` view helper to help protect
-ourselves from XSS vulnerabilities.  If you open
-http://zf2-tutorial.localhost/album you should see this:
+.. note::
+
+    We always use the ``escapeHtml()`` view helper to help protect
+    ourselves from XSS vulnerabilities.  
+
+If you open http://zf2-tutorial.localhost/album you should see this:
 
 .. image:: ../images/user-guide.database-and-models.album-list.png
     :width: 940 px

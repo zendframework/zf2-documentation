@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.lucene.pagination:
 
 Seitendarstellung von Suchergebnissen

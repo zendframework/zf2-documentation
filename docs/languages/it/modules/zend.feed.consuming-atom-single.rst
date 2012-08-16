@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.consuming-atom-single-entry:
 
 Lettura di un singolo elemento di un feed Atom

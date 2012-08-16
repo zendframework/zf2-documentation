@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.config.theory_of_operation:
 
 動作原理

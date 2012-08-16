@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.pdf.pages:
 
 Les pages d'un document

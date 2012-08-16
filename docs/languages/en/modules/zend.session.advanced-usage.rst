@@ -404,4 +404,4 @@ closed the session before using ``exec()``.
 .. _`HTTP headers`: http://www.php.net/headers_sent
 .. _`PHP references`: http://www.php.net/references
 .. _`registry`: http://www.martinfowler.com/eaaCatalog/registry.html
-.. _`serialized`: http://www.php.net/manual/en/language.oop.serialization.php
+.. _`serialized`: http://www.php.net/manual/en/language.oop5.serialization.php

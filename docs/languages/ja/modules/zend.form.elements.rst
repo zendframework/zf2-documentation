@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.form.elements:
 
 Zend_Form_Element を用いたフォーム要素の作成

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.pdf.usage:
 
 Anwendungsbeispiel für die Zend_Pdf Komponente

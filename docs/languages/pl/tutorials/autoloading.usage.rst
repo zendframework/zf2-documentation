@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.autoloading.usage:
 
 Podstawowe użycie autoloadera

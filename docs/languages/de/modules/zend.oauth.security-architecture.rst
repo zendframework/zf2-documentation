@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.oauth.introduction.security-architecture:
 
 Architektur der Sicherheit

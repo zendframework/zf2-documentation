@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.version.reading:
 
 Lire la version de Zend Framework

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mvc.quick-start:
 
 Quick Start

@@ -1,24 +1,21 @@
+.. EN-Revision: none
 .. _zend.navigation.pages:
 
 Seiten
 ======
 
-``Zend_Navigation`` wird mit zwei Seiten Typen ausgeliefert:
+``Zend\Navigation`` wird mit zwei Seitentypen ausgeliefert:
 
+- :ref:`MVC-Seiten <zend.navigation.pages.mvc>` – diese verwenden die Klasse ``Zend\Navigation\Page\Mvc``
+- :ref:`URI-Seiten <zend.navigation.pages.uri>` – diese verwenden die Klasse ``Zend\Navigation\Page\Uri``
 
-
-   - :ref:`MVC Seiten <zend.navigation.pages.mvc>` – diese Verwenden die Klasse ``Zend_Navigation_Page_Mvc``
-
-   - :ref:`URI Seiten <zend.navigation.pages.uri>` – diese Verwenden die Klasse ``Zend_Navigation_Page_Uri``
-
-MVC Seiten werden auf On-Site Webseiten verlinkt, und definiert indem MVC Parameter verwendet werden (*action*,
-*controller*, *module*, *route*, *params*). URI Seiten werden durch eine einzelne Eigenschaft *uri* definiert,
-welche die komplette Funktionalität bietet auf Off-Site Seiten zu verlinken, oder andere Dinge mit erstellten
-Linkt durchzuführen (z.B. eine URI die zu *<a href="#">foo<a>* wird).
+MVC-Seiten zeigen auf Seiten der eigenen Webanwendung, welche durch MVC-Parameter (*action*,
+*controller*, *route*, *params*) definiert werden. URI-Seiten haben nur die Eigenschaft *uri*,
+welche die Möglichkeit bietet, auf externe Webesiten zu verlinken oder sonstige Links zu erzeugen
+(z.B. *<a href="#">foo<a>*).
 
 .. include:: zend.navigation.pages.common.rst
 .. include:: zend.navigation.pages.mvc.rst
 .. include:: zend.navigation.pages.uri.rst
 .. include:: zend.navigation.pages.custom.rst
 .. include:: zend.navigation.pages.factory.rst
-

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.custom-feed:
 
 Classi personalizzate per feed ed elementi

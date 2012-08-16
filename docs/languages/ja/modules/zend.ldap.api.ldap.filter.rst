@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.ldap.api.reference.zend-ldap-filter:
 
 Zend_Ldap_Filter

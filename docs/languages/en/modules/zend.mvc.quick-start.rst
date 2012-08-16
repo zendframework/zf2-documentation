@@ -264,7 +264,7 @@ Now that we have a controller and a view script, we need to create a route to it
    recommended practice. The application will look for a ``Zend\Mvc\Router\RouteStack`` instance to setup routing.
    The default generated router is a ``Zend\Mvc\Router\Http\TreeRouteStack``.
 
-   To use the "default route" functionality, you will need to add a the following route definition to your module.
+   To use the "default route" functionality, you will need to add the following route definition to your module.
    Replace
 
    .. code-block:: php

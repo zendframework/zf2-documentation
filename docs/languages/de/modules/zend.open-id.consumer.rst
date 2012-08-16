@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.openid.consumer:
 
 Zend_OpenId_Consumer Grundlagen

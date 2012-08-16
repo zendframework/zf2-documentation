@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.json.objects:
 
 JSON 对象

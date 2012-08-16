@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.gdata.authsub:
 
 Authentifizierung mit AuthSub

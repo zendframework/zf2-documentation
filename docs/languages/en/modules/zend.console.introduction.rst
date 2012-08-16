@@ -10,12 +10,16 @@ this fact and prepare ``Zend\Mvc`` components to handle the request. Console sup
 but to function properly it requires at least one :doc:`console route <zend.console.routes>` and 
 :doc:`one action controller <zend.mvc.controllers>` to handle the request.
 
-``Zend\Console`` provides direct console access via :doc:`Console adapters<zend.console.adapter>`. This
-includes reading from console and writing to it, working around various bugs on different operating systems.
-
-``Zend\Console\Prompt`` is a collection of easy to use :doc:`console prompts<zend.console.prompts>`
-that can be used to build interactive apps.
-
+* :doc:`Console routing <zend.console.routes>` allows you to invoke controllers and action depending on command
+  line parameters provided by the user.
+* :doc:`Module Manager integration <zend.console.modules>` allows ZF2 applications and modules to display help and usage
+  information, in case the command line has not been understood (no route matched).
+* :doc:`Console-aware action controllers <zend.console.controllers>` will receive a console request containing all named
+  parameters and flags. The are able to send output back to the console window.
+* :doc:`Console adapters<zend.console.adapter>` provide a level of abstraction for interacting with console on
+  different operating systems.
+* :doc:`Console prompts <zend.console.prompts>` can be used to interact with the user by asking him questions and
+  retrieving input.
 
 Writing console routes
 ----------------------
@@ -30,7 +34,9 @@ Let's assume that we'd like our application to handle the following command line
     > zf user reset-password user@mail.com
     
 When a user runs our application (``zf``) with these parameters, we'd like to call action ``resetpassword`` of 
-``Application\IndexController``. First we want to create a **route definition**:
+``Application\IndexController``.
+
+First we need to create a **route definition**:
 
 .. code-block:: bash
 
@@ -44,7 +50,7 @@ verbose operation:
 
     user reset-password [--verbose|-v] <userEmail>
 
-Now our console route expects the same 3 parameters but will also recognise an optional ``--verbose`` flag, or it's
+Now our console route expects the same 3 parameters but will also recognise an optional ``--verbose`` flag, or its
 shorthand version: ``-v``.
 
 .. note::
@@ -100,8 +106,10 @@ Let's create our console route and point it to ``Application\IndexController::re
             )
         )
     )
-    
-To learn more about console routes and how to use them, follow this link: :doc:`zend.console.routes`
+
+.. seealso::
+
+    To learn more about console routes and how to use them, please read this chapter: :doc:`zend.console.routes`
 
     
 Handling console requests
@@ -119,7 +127,7 @@ We will now add ``resetpassword`` action to ``Application\IndexController``:
 
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
-    use Zend\Console\Request;
+    use Zend\Console\Request as ConsoleRequest;
     use Zend\Math\Rand;
 
     class IndexController extends AbstractActionController
@@ -135,7 +143,7 @@ We will now add ``resetpassword`` action to ``Application\IndexController``:
             // Make sure that we are running in a console and the user has not tricked our
             // application into running this action from a public web server.
             if (!$request instanceof ConsoleRequest){
-                thrown new \RuntimeException('You can only use this action from a console!');
+                throw new \RuntimeException('You can only use this action from a console!');
             }
             
             // Get user email from console and check if the user used --verbose or -v flag
@@ -167,8 +175,10 @@ by a booleans, where ``true`` means a flag has been used and ``false`` otherwise
 
 When our action has finished working it returns a simple ``string`` that will be shown to the user in console window. 
 
-There are different ways you can interact with console from a controller. It has been covered in more detail 
-in the following chapter: :doc:`zend.console.controllers`
+.. seealso::
+
+    There are different ways you can interact with console from a controller. It has been covered in more detail
+    in the following chapter: :doc:`zend.console.controllers`
 
 Adding console usage info
 -------------------------
@@ -190,7 +200,7 @@ Let's modify our ``Application\IndexController`` to provide usage info:
 
     use Zend\ModuleManager\Feature\ConfigProviderInterface;
     use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
-    use Zend\Console\AdapterInterface as Console;
+    use Zend\Console\Adapter\AdapterInterface as Console;
 
     class Module implements
         AutoloaderProviderInterface,
@@ -227,5 +237,8 @@ mismatch, all info from all modules will be concatenated, formatted to console w
    The order of usage info displayed in the console is the order modules load. If you want your application to
    display important usage info first, change the order your modules are loaded.
 
-Modules can also provide an application banner (title). To learn more about the format expected from
-``getConsoleUsage()`` and application banners, please follow to the following chapter: :doc:`zend.console.controllers`
+.. seealso::
+
+    Modules can also provide an application banner (title). To learn more about the format expected from
+    ``getConsoleUsage()`` and about application banners, please read this chapter:
+    :doc:`zend.console.modules`

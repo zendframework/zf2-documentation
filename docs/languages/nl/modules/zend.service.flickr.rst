@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.flickr:
 
 Zend_Service_Flickr

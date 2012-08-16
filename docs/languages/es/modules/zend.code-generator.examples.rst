@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.codegenerator.examples:
 
 Ejemplos de Zend_CodeGenerator

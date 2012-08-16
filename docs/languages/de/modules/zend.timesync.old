@@ -1,0 +1,127 @@
+.. EN-Revision: none
+.. _zend.timesync.introduction:
+
+Einführung
+==========
+
+``Zend_TimeSync`` ist fähig, die Internet- oder Netzwerkzeit von einem Zeitserver zu empfangen, indem es das
+**NTP** oder **SNTP** Protokoll verwendet. Mit ``Zend_TimeSync`` wird Zend Framework ermöglicht, unabhängig von
+den Zeiteinstellungen des Servers, auf dem es läuft, zu agieren.
+
+Um unabhängig von der aktuellen Zeit des Servers zu sein, arbeitet ``Zend_TimeSync`` intern nur mit dem
+Unterschied der wirklichen Zeit der über NTP oder SNTP empfangenen und der internen Zeit des Servers.
+
+.. note::
+
+   **Hintergrund**
+
+   ``Zend_TimeSync`` ist nicht fähig die Zeit des Servers zu ändern, jedoch gibt es eine Instanz von
+   :ref:`Zend_Date <zend.date.introduction>` zurück, mit der der Unterschied zur Serverzeit verarbeitet werden
+   kann.
+
+.. _zend.timesync.introduction.why:
+
+Warum Zend_TimeSync ?
+---------------------
+
+Warum würde jemand ``Zend_TimeSync`` verwenden ?
+
+Normalerweise hat jeder Server in einer Multiserver Farm einen Service laufen, der die eigene Zeit mit einem
+Zeitserver syncronisiert. In einer Standardumgebung sollte es also nicht notwendig sein, ``Zend_TimeSync`` zu
+verwenden. Aber manchmal ist es sehr nützlich, wenn es keinen Service gibt und wenn man nicht das Recht hat, einen
+solchen Service zu installieren.
+
+Hier sind ein paar Beispiele, wo ``Zend_TimeSync`` perfekt passt:
+
+- **Server ohne Zeitservice**
+
+  Wenn eine Anwendung auf einem Server läuft und auf diesem Server kein Zeitservice läuft, kann es Sinn machen
+  ``Zend_TimeSync`` in der eigenen Anwendung zu verwenden.
+
+- **Separater Datenbank Server**
+
+  Wenn eine Datenbank auf einem anderen Server läuft und dieser Server nicht mit **NTP** oder **SNTP** an dem
+  Anwendungsserver angebunden ist, kann man Probleme haben, Zeitstempel zu speichern und zu verwenden.
+
+- **Mehrere Server**
+
+  Wenn die Anwendung auf mehr als einem Server läuft, und die Zeitbasis dieser Server nicht miteinander gekoppelt
+  ist, kann das zu Problemen in der Anwendung führen, wenn Teile der Anwendung von einem Server und andere von
+  einem anderen Server kommen.
+
+- **Batch Ausführung**
+
+  Wenn man mit einem Zeitserver arbeiten oder in einer Batchdatei oder in einer Kommandozeilen Anwendung verwenden
+  möchte, kann ``Zend_TimeSync`` nützlich sein.
+
+``Zend_TimeSync`` kann in allen diesen Fällen eine gute Lösung bieten und kann verwendet werden, wenn man nicht
+in der Lage ist, Services auf dem Server zu starten.
+
+.. _zend.timesync.introduction.ntp:
+
+Was ist NTP ?
+-------------
+
+Das Network Time Protocol (**NTP**) ist ein Protokoll für die Synchronisierung von mehreren Systemuhren über
+Paket-geführte, variabel laufende Datennetzwerke. NTP verwendet den UDP Port 123 als Transportschicht. Siehe
+`diesen Wikipedia Artikel`_ für Details über das Protokoll.
+
+.. _zend.timesync.introduction.sntp:
+
+Was ist SNTP?
+-------------
+
+Das Simple Network Time Protocol (**SNTP**) ist ein Protokoll für die Synchronisierung von mehreren Systemuhren
+über Paket-geführte, variabel laufende Datennetzwerke. SNTP verwendet den UDP Port 37 als Transportschicht. Es
+ist fast identisch mit dem Network Time Protokoll, aber einfacher.
+
+.. _zend.timesync.introduction.problematic:
+
+Problematische Verwendung
+-------------------------
+
+Vorsicht das man sich, wenn ``Zend_TimeSync`` verwendet wird, einige Gedanken über Details, betreffend der
+Struktur von Zeitsynchronisierung und dem Internet selbst machen muß. Die richtige Verwendung und die beste Praxis
+werden hier beschrieben. Bevor man ``Zend_TimeSync`` verwendet, sollte das hier sorgfältig durchgelesen werden.
+
+.. _zend.timesync.introduction.decision:
+
+Auswählen welcher Server verwendet werden soll
+----------------------------------------------
+
+Der Zeitserver, der verwendet werden soll, muß anhand der folgenden Kriterien, sehr sorgfältig ausgewählt
+werden:
+
+- Distanz
+
+  Die Distanz vom Server auf dem die Anwendung läuft und dem angefragten Zeitserver. Wenn der Server in Europa
+  lokalisiert ist, macht es wenig Sinn, einen Zeitserver aus Tahiti zu verwenden. Es sollte immer ein Server
+  ausgewählt werden, der nicht weit entfernt ist. Das reduziert die Zeit für die Anfrage und es reduziert die
+  Last im Netzwerk.
+
+- Geschwindigkeit
+
+  Wie lange es dauert, eine Anfrage zu empfangen ist auch relevant. Es sollten andere Server probiert werden, um
+  das beste Ergebnis zu erhalten. Wenn ein Server angefragt wird, auf den nie zugegriffen werden kann, wird man
+  immer unnötige Verzögerungen haben.
+
+- Aufteilung
+
+  Es sollte nicht immer der gleiche Server verwendet werden. Alle Zeitserver sperren Anfragen von Servern, welche
+  sie überfluten. Wenn eine Anwendung exzessiv Zeitserver verwendet, sollte man, wie anbei beschrieben einen Pool
+  verwenden.
+
+Wo kann man also einen Zeitserver finden? Generell kann jeder bekannte Zeitserver verwendet werden. Das kann ein
+Zeitserver im eigenen LAN oder ein öffentlicher Zeitserver sein, auf den man Zugriff hat. Wenn man sich für einen
+öffentlichen Zeitserver entscheidet, sollte man einen Pool-Server verwenden. Serverpools sind öffentliche
+Adressen, von denen man einen zufälligen Zeitserver auf dem Pool erhält, wenn man die Zeit anfrägt. Auf diesem
+Weg muss man seine Anfragen nicht aufteilen. Es gibt öffentliche Serverpools für verschiedene Regionen, so dass
+man die vorher erwähnten Probleme nicht hat.
+
+Siehe `pool.ntp.org`_, um den am nächsten liegenden Serverpool zu finden. Wenn zum Beispiel der eigene Server also
+in Deutschland liegt, kann man sich auf **0.europe.pool.ntp.org** verbinden.
+
+
+
+.. _`diesen Wikipedia Artikel`: http://en.wikipedia.org/wiki/Network_Time_Protocol
+.. _`pool.ntp.org`: http://www.pool.ntp.org

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.view.helpers.initial.placeholder:
 
 占位符助手（Placeholder Helper）

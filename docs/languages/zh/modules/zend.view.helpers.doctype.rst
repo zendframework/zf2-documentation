@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.view.helpers.initial.doctype:
 
 文档类型助手（Doctype Helper）

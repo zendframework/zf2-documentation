@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.filter.set:
 
 Classes de filtre standards
@@ -11,14 +12,10 @@ Zend Framework est fourni avec un jeu de filtres standards, qui sont directement
 .. include:: zend.filter.boolean.rst
 .. include:: zend.filter.callback.rst
 .. include:: zend.filter.compress.rst
-.. include:: zend.filter.decryption.rst
 .. include:: zend.filter.digits.rst
 .. include:: zend.filter.dir.rst
-.. include:: zend.filter.encryption.rst
 .. include:: zend.filter.html-entities.rst
 .. include:: zend.filter.int.rst
-.. include:: zend.filter.localized-to-normalized.rst
-.. include:: zend.filter.normalized-to-localized.rst
 .. include:: zend.filter.null.rst
 .. include:: zend.filter.preg-replace.rst
 .. include:: zend.filter.real-path.rst

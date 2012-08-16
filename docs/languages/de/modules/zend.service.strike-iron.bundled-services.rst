@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.strikeiron.bundled-services:
 
 Zend_Service_StrikeIron: Mitgelieferte Services

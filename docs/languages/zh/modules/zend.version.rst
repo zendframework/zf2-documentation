@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.version.reading:
 
 读取Zend Framework的当前版本

@@ -4,7 +4,7 @@
 Routing and controllers
 #######################
 
-We are going to build a very simple inventory system to display our album
+We will build a very simple inventory system to display our album
 collection. The home page will list our collection and allow us to add, edit and
 delete albums. Hence the following pages are required:
 
@@ -119,16 +119,18 @@ is a class that is generally called ``{Controller name}Controller``. Note that
 ``{Controller name}`` must start with a capital letter.  This class lives in a ﬁle
 called ``{Controller name}Controller.php`` within the ``Controller`` directory for the
 module. In our case that is ``module/Album/src/Album/Controller``. Each action is
-a public function within the controller class that is named ``{action name}Action``.
+a public method within the controller class that is named ``{action name}Action``.
 In this case ``{action name}`` should start with a lower case letter.
 
-Note that this is by convention. Zend Framework 2 doesn’t provide many
-restrictions on controllers other than that they must implement the
-``Zend\Stdlib\Dispatchable`` interface. The framework provides two abstract
-classes that do this for us: ``Zend\Mvc\Controller\AbstractActionController``
-and ``Zend\Mvc\Controller\AbstractRestfulController``. We’ll be using the
-standard ``AbstractActionController``, but if you’re intending to write a
-RESTful web service, ``AbstractRestfulController`` may be useful.
+.. note::
+
+    This is by convention. Zend Framework 2 doesn’t provide many
+    restrictions on controllers other than that they must implement the
+    ``Zend\Stdlib\Dispatchable`` interface. The framework provides two abstract
+    classes that do this for us: ``Zend\Mvc\Controller\AbstractActionController``
+    and ``Zend\Mvc\Controller\AbstractRestfulController``. We’ll be using the
+    standard ``AbstractActionController``, but if you’re intending to write a
+    RESTful web service, ``AbstractRestfulController`` may be useful.
 
 Let’s go ahead and create our controller class:
 
@@ -159,8 +161,10 @@ Let’s go ahead and create our controller class:
         }
     }
 
-Note that we have already informed the module about our controller in the
-‘controller’ section of ``config/module.config.php``.
+.. note::
+
+    We have already informed the module about our controller in the
+    ‘controller’ section of ``config/module.config.php``.
 
 We have now set up the four actions that we want to use. They won’t work yet
 until we set up the views. The URLs for each action are:
@@ -186,7 +190,7 @@ Initialise the view scripts
 ---------------------------
 
 To integrate the view into our application all we need to do is create some view
-script files. These ﬁles will be executed by the ``DefaultViewStrategy`` and be
+script files. These ﬁles will be executed by the ``DefaultViewStrategy`` and will be
 passed any variables or view models that are returned from the controller action
 method. These view scripts are stored in our module’s views directory within a
 directory named after the controller. Create these four empty files now:

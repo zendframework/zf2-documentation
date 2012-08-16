@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.modifying-feed:
 
 Feed en Entry structuren wijzigen

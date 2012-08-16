@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.autoloading.resources:
 
 Auto-chargement de resources

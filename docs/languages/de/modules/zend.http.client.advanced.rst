@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.http.client.advanced:
 
 Zend_Http_Client - Fortgeschrittende Nutzung

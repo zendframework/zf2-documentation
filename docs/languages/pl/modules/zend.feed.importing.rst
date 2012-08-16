@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.importing:
 
 Importowanie kanałów informacyjnych

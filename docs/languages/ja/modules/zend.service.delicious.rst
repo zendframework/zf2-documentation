@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.service.delicious:
 
 Zend_Service_Delicious

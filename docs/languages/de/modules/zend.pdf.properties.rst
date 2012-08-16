@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.pdf.info:
 
 Dokument Informationen und Metadaten

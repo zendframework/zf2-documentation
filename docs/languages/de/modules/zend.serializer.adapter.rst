@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.serializer.adapter:
 
 Zend_Serializer_Adapter

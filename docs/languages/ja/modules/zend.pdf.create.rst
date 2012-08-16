@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.pdf.create:
 
 PDF ドキュメントの作成および読み込み

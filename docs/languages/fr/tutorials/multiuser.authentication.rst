@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.multiuser.authentication:
 
 Authentification d'utilisateurs dans Zend Framework

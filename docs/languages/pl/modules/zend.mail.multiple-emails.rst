@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.multiple-emails:
 
 Wysyłanie wielu maili podczas jednego połączenia SMTP

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.quickstart.create-form:
 
 Créer un formulaire

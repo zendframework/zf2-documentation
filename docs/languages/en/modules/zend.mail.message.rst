@@ -420,7 +420,7 @@ Available Methods
 
 .. _zend.mail.message.methods.get-body:
 
-**getBoidy**
+**getBody**
    ``getBody()``
 
    Return the currently set message body.

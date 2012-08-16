@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.codegenerator.reference:
 
 Referencias de Zend_CodeGenerator

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.view.helpers.initial.action:
 
 动作视图助手

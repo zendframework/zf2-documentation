@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _requirements:
 
 **********************
@@ -54,7 +55,7 @@ PHP の拡張モジュール
 何らかの拡張モジュールでパフォーマンスを最適化できる場合は自動的にそれを使用します。
 使用できない場合は、同等の機能をコンポーネント自身で提供します。
 
-.. include:: ../../en/ref/requirements.php.extensions.table.rst
+.. include:: requirements.php.extensions.table.rst
 .. _requirements.zendcomponents:
 
 Zend Framework のコンポーネント
@@ -75,7 +76,7 @@ Zend Framework のコンポーネント
 何らかの拡張モジュールでパフォーマンスを最適化できる場合は自動的にそれを使用します。
 使用できない場合は、同等の機能をコンポーネント自身で提供します。
 
-.. include:: ../../en/ref/requirements.zendcomponents.table.rst
+.. include:: requirements.zendcomponents.table.rst
 .. _requirements.dependencies:
 
 Zend Framework の依存性
@@ -100,5 +101,5 @@ Zend Framework の依存性
    ファイルが存在しなかったりコンポーネントを動的に使用したりといった場合に
    問題が発生する可能性があることに気をつけておきましょう。
 
-.. include:: ../../en/ref/requirements.dependencies.table.rst
+.. include:: requirements.dependencies.table.rst
 

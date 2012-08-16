@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.character-sets:
 
 字符集

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.feed.consuming-atom:
 
 Consommer un flux Atom

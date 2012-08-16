@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.quickstart.create-model:
 
 Créer un modèle et une table en base de données

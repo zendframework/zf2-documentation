@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.console.getopt.fetching:
 
 Holen von Optionen und Argumenten

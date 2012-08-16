@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.view.helpers.initial.headlink:
 
 L'aide de vue HeadLink

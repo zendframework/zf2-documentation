@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.read:
 
 Lesen von Mail Nachrichten

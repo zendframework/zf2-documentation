@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.di.configuration:
 
 Configurazione Zend\\Di

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.session.global_session_management:
 
 Globales Session Management

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.captcha.adapters:
 
 Captcha 适配器

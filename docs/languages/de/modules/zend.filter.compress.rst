@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.filter.set.compress:
 
 Compress und Decompress

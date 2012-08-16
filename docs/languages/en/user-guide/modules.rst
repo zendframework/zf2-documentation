@@ -92,7 +92,7 @@ the ``ClassmapAutoloader`` and also add this module’s namespace to the
 ``StandardAutoloader``. The standard autoloader requires a namespace and the
 path where to ﬁnd the ﬁles for that namespace. It is PSR-0 compliant and so
 classes map directly to ﬁles as per the `PSR-0 rules
-<https://github.com/php-fig/fig-standards/blog/master/accepted/PSR-0.md>`_.
+<https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_.
 
 As we are in development, we don’t need to load ﬁles via the classmap, so we provide an empty array for the 
 classmap autoloader. Create ``autoload_classmap.php`` with these contents:
@@ -106,11 +106,13 @@ classmap autoloader. Create ``autoload_classmap.php`` with these contents:
 As this is an empty array, whenever the autoloader looks for a class within the
 ``Album`` namespace, it will fall back to the to ``StandardAutoloader`` for us.
 
-Note that as we are using Composer, as an alternative, you could not implement
-``getAutoloaderConfig()`` and instead add ``"Application":
-"module/Application/src"`` to the ``psr-0`` key in ``composer.json``. If you go
-this way, then you need to run ``php composer.phar update`` to update the
-composer autoloading ﬁles.
+.. note::
+
+    Note that as we are using Composer, as an alternative, you could not implement
+    ``getAutoloaderConfig()`` and instead add ``"Application":
+    "module/Application/src"`` to the ``psr-0`` key in ``composer.json``. If you go
+    this way, then you need to run ``php composer.phar update`` to update the
+    composer autoloading ﬁles.
 
 Configuration
 -------------
@@ -141,8 +143,8 @@ The conﬁg information is passed to the relevant components by the
 ``ServiceManager``.  We need two initial sections: ``controller`` and
 ``view_manager``. The controller section provides a list of all the controllers
 provided by the module. We will need one controller, ``AlbumController``, which
-we’ll reference as ``Album\Controller\Album``. We call it this as the key must
-be unique across all modules, so we preﬁx with our module name.
+we’ll reference as ``Album\Controller\Album``. The controller key must
+be unique across all modules, so we preﬁx it with our module name.
 
 Within the ``view_manager`` section, we add our view directory to the
 ``TemplatePathStack`` conﬁguration. This will allow it to ﬁnd the view scripts for

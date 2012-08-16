@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.mail.additional-headers:
 
 Iné e-mail hlavičky

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.ldap.api.reference.zend-ldap-dn:
 
 Zend_Ldap_Dn

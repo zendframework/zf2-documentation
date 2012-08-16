@@ -42,7 +42,7 @@ ArrayObject-like object or an array of row data. The following workflow is based
    $result = $stmt->execute();
 
    if ($result instanceof ResultInterface && $result->isQueryResult()) {
-       $resultSet = new ResultSet
+       $resultSet = new ResultSet;
        $resultSet->initialize($result);
 
        foreach ($resultSet as $row) {
@@ -72,8 +72,8 @@ object:
    use Zend\Stdlib\Hydrator\Reflection as ReflectionHydrator;
 
    class UserEntity {
-       protected function $first_name;
-       protected function $last_name;
+       protected $first_name;
+       protected $last_name;
        public function getFirstName() { return $this->first_name; }
        public function getLastName() { return $this->last_name; }
    }

@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _learning.quickstart.create-project:
 
 Créer votre projet

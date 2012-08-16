@@ -1,3 +1,4 @@
+.. EN-Revision: none
 .. _zend.version.reading:
 
 הצגת גרסאת Zend Framework
