@@ -8,7 +8,7 @@ Zend Framework 2 is an open source framework for developing web applications and
 Framework 2 is implemented using 100% object-oriented code and uses most of the new features of PHP 5.3 namely 
 `namespaces`_, `late static binding`_, `lambda functions and closures`_.
 
-Zend Framework 2 evolved from Zend Framework 1, a successfull PHP framework with over 15 million 
+Zend Framework 2 evolved from Zend Framework 1, a successful PHP framework with over 15 million 
 downloads. 
 
 .. note::
@@ -19,7 +19,10 @@ downloads.
 The component structure of Zend Framework 2 is unique; each component is designed with few
 dependencies on other components. ZF2 follows the `SOLID`_ object oriented design principle. This loosely coupled 
 architecture allows developers to use whichever components they want. We call this a "use-at-will" design. 
-'Pyrus`_ and `Composer`_ are supported.
+We support 'Pyrus`_ and `Composer`_ as installation  and dependency tracking mechanisms for the framework and 
+each component, further enhancing this design.
+
+We use `PHPUnit`_ to test our code and `Travis CI`_ as a continuous integration service.
 
 Some of the features offered by Zend Framework:
 - Robust, high performance `M-V-C`_ implementation. 
@@ -29,9 +32,16 @@ Some of the features offered by Zend Framework:
 - User authentication and authorization, such as ``Zend\Authentication`` and ``Zend\Permissions\Acl``.
 - Comprehensive documentation
 
-Whatever your application needs, you are likely to find a thoroughly tested Zend Framework
-component available to dramatically reduce your development time.  We use `PHPUnit`_ to test our code and 
-`Travis CI`_ as a continuous integration service.
+While they can be used separately, Zend Framework components in the standard library form a powerful and extensible
+web application framework when combined. Zend Framework offers a robust, high performance *MVC* implementation, a
+database abstraction that is simple to use, and a forms component that implements *HTML* form rendering,
+validation, and filtering so that developers can consolidate all of these operations using one easy-to-use, object
+oriented interface. Other components, such as ``Zend\Authentication`` and ``Zend\Permissions\Acl``, provide user
+authentication and authorization against all common credential stores. 
+
+Still others, with the ``ZendService`` namespace, implement client libraries to simply access the most
+popular web services available. Whatever your application needs are, you're likely to find a Zend Framework
+component that can be used to dramatically reduce development time with a thoroughly tested foundation.
  
 The principal sponsor of the project 'Zend Framework' is `Zend Technologies`_, but many companies have contributed 
 components or significant features to the framework. Companies such as Google, Microsoft, and StrikeIron have 
