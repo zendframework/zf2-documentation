@@ -31,9 +31,6 @@
    modules/zend.barcode.creation
    modules/zend.barcode.objects
    modules/zend.barcode.renderers
-   modules/zend.cache.theory
-   modules/zend.cache.introduction
-   modules/zend.cache.frontends
    modules/zend.cache.storage.adapter
    modules/zend.cache.storage.capabilities
    modules/zend.cache.storage.plugin
@@ -198,9 +195,6 @@ Zend\\Barcode
 Zend\\Cache
 ^^^^^^^^^^^
 
-        * :doc:`modules/zend.cache.theory`
-        * :doc:`modules/zend.cache.introduction`
-        * :doc:`modules/zend.cache.frontends`
         * :doc:`modules/zend.cache.storage.adapter`
         * :doc:`modules/zend.cache.storage.capabilities`
         * :doc:`modules/zend.cache.storage.plugin`
