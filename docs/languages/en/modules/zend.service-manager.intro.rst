@@ -3,9 +3,25 @@
 Zend\\ServiceManager
 ====================
 
-The ``ServiceManager`` is a Service Locator implementation. A Service Locator is a well-known object in which you
-may register objects and later retrieve them. The implementation within Zend Framework provides the following
-features:
+The `Service Locator design pattern`_ is implemented by the ``ServiceManager``.  The Service Locator is a 
+service/object locator, tasked with retrieving other objects. You may interact with the ``ServiceManger`` 
+via the following methods
+
+.. code-block:: php
+  // /library/Zend/ServiceManager/ServiceLocatorInterface.php
+	namespace Zend\ServiceManager;
+
+	interface ServiceLocatorInterface
+	{
+		public function get($name);
+		public function has($name);
+	}
+	
+- ``has($name)``, tests whether the ``ServiceManager`` has a named service;
+
+- ``get($name)``, retrieves a service by the given name.
+
+In addition to above methods, the ``ServiceManger`` can be instantiated via the following features:
 
 - **Service registration**. You can register an object under a given name (*$services->setService('foo',
   $object)*).
@@ -32,10 +48,5 @@ features:
 In addition to the above, the ``ServiceManager`` also provides optional ties to ``Zend\Di``, allowing ``Di`` to act
 as an initializer or an abstract factory for the manager.
 
-Your typical interaction with a ``ServiceManager``, however, will be via two methods:
 
-- ``has($name)``, for testing whether the ``ServiceManager`` has a named service;
-
-- ``get($name)``, for retrieving a service by the given name.
-
-
+.. _`Service Locator design pattern`: http://en.wikipedia.org/wiki/Service_locator_pattern
