@@ -8,7 +8,7 @@ Zend Framework 2 is an open source framework for developing web applications and
 Framework 2 is implemented using 100% object-oriented code and uses most of the new features of PHP 5.3 such as
 `namespaces`_, `late static binding`_, `lambda functions and closures`_.
 
-Zend Framework 2 is the evolution of Zend Framework 1 a successfully PHP framework with more than 15 million of
+Zend Framework 2 is the evolution of Zend Framework 1 - a successfully PHP framework with more than 15 million 
 downloads. Because we used the new features of the PHP 5.3, *ZF2* is not backward compatible with *ZF1* that
 requires PHP 5.2. We also tested *ZF2* on PHP 5.4 and it works fine but we decided to have PHP 5.3 as requirement.
 
