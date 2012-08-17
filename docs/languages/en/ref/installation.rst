@@ -1,5 +1,4 @@
 .. _introduction.installation:
-NOTES: 
 
 ************
 Installation
@@ -7,20 +6,17 @@ Installation
 
 See the :ref:`requirements appendix <requirements>` for a detailed list of requirements for Zend Framework.
 
-- **New to Zend Framework ?** 
-`Download latest stable release.`_ Available in ``.zip`` and ``.tar.gz`` formats.
+- **New to Zend Framework?** 
+  `Download the latest stable release.`_ Available in ``.zip`` and ``.tar.gz`` formats, from 
+  `http://packages.zendframework.com/`_.
 
-- **Brave cutting edge ?**
-`Download the latest nightly snapshot.`_ . The nightly snapshots represent the latest progress of Zend Framework 2 
-development. Snapshots are bundled with documentation either in English only or in all available languages. If you 
-anticipate working with the latest Zend Framework developments, consider using a Subversion (*SVN*) client.
-
-Using a `Git`_ client. Zend Framework is open source software, and the Git repository used for its development is 
-publicly available on GitHub. Consider using Git to get Zend Framework if you already use Git for your application 
-development, want to contribute back to the framework, or need to upgrade your framework version more often than 
-releases occur.
-
-The *URL* for Zend Framework's *Git* repository is: `https://github.com/zendframework/zf2`_
+- **Brave, cutting edge?**
+  Using a `Git`_ client. Zend Framework is open source software, and the Git repository used for its development is 
+  publicly available on GitHub. Consider using Git to get Zend Framework if you already use Git for your application 
+  development, want to contribute back to the framework, or need to upgrade your framework version more often than 
+  releases occur.
+  
+  The *URL* for Zend Framework's *Git* repository is: `https://github.com/zendframework/zf2`_
 
 Once you have a copy of Zend Framework available, your application needs to be able to access the framework classes 
 found in the library folder. Though there are `several ways to achieve this`_, your *PHP* `include_path`_ needs to 
@@ -31,8 +27,8 @@ Other Zend Framework community members are actively working on `expanding the tu
 
 
 
-.. _`Download the latest stable release.`: http://framework.zend.com/download/latest
-.. _`Download the latest nightly snapshot.`: http://framework.zend.com/download/snapshot
+.. _`Download the latest stable release.`: http://packages.zendframework.com/
+.. _`http://packages.zendframework.com/`: http://packages.zendframework.com/
 .. _`Git`: http://git-scm.com/
 .. _`https://github.com/zendframework/zf2`: https://github.com/zendframework/zf2
 .. _`several ways to achieve this`: http://www.php.net/manual/en/configuration.changes.php
