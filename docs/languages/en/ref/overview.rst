@@ -10,8 +10,11 @@ Framework 2 is implemented using 100% object-oriented code and uses most of the 
 
 Zend Framework 2 evolved from Zend Framework 1, a successfull PHP framework with over 15 million 
 downloads. 
-**Note:** *ZF2* is not backward compatible with *ZF1*, because of the new features in PHP 5.3+ implemented by 
-the framework.
+
+.. note::
+
+    *ZF2* is not backward compatible with *ZF1*, because of the new features in PHP 5.3+ implemented by 
+    the framework, and due to major rewrites of many components.
 
 The component structure of Zend Framework 2 is unique; each component is designed with few
 dependencies on other components. ZF2 follows the `SOLID`_ object oriented design principle. This loosely coupled 
@@ -19,7 +22,7 @@ architecture allows developers to use whichever components they want. We call th
 'Pyrus`_ and `Composer`_ are supported.
 
 Some of the features offered by Zend Framework:
-- Robust high performance `M-V-C`_ implementation. 
+- Robust, high performance `M-V-C`_ implementation. 
 - Database abstraction that is simple to use.
 - Forms component that implements `valid HTML form`_ rendering, validation, and filtering in an easy-to-use, 
 *OOP* interface. 
@@ -27,8 +30,8 @@ Some of the features offered by Zend Framework:
 - Comprehensive documentation
 
 Whatever your application needs, you are likely to find a thoroughly tested Zend Framework
-component available to dramatically reduce your development time.  We used `PHPUnit`_ to test our code and 
-`Travis CI`_ as continuous integration service.
+component available to dramatically reduce your development time.  We use `PHPUnit`_ to test our code and 
+`Travis CI`_ as a continuous integration service.
  
 The principal sponsor of the project 'Zend Framework' is `Zend Technologies`_, but many companies have contributed 
 components or significant features to the framework. Companies such as Google, Microsoft, and StrikeIron have 
