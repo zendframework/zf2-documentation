@@ -6,8 +6,8 @@ Introduction
 Zend Framework 2 features built-in console support.
 
 When a ``Zend\Application`` is run from a console window (a shell window or Windows command prompt), it will recognize
-this fact and prepare ``Zend\Mvc`` components to handle the request. Console support support is enabled by default,
-but to function properly it requires at least one :doc:`console route <zend.console.routes>` and 
+this fact and prepare ``Zend\Mvc`` components to handle the request. Console support is enabled by default,
+but to function properly it requires at least one :doc:`console route <zend.console.routes>` and
 :doc:`one action controller <zend.mvc.controllers>` to handle the request.
 
 * :doc:`Console routing <zend.console.routes>` allows you to invoke controllers and action depending on command
@@ -24,16 +24,16 @@ but to function properly it requires at least one :doc:`console route <zend.cons
 Writing console routes
 ----------------------
 A console route defines required and optional command line parameters. When a route matches, it behaves analogical
-to a standard, :doc:`http route <zend.mvc.routing>` and can point to a 
-:doc:`MVC controller <zend.mvc.controllers>` and an action. 
+to a standard, :doc:`http route <zend.mvc.routing>` and can point to a
+:doc:`MVC controller <zend.mvc.controllers>` and an action.
 
 Let's assume that we'd like our application to handle the following command line:
 
 .. code-block:: bash
 
     > zf user reset-password user@mail.com
-    
-When a user runs our application (``zf``) with these parameters, we'd like to call action ``resetpassword`` of 
+
+When a user runs our application (``zf``) with these parameters, we'd like to call action ``resetpassword`` of
 ``Application\IndexController``.
 
 First we need to create a **route definition**:
@@ -43,7 +43,7 @@ First we need to create a **route definition**:
     user reset-password <userEmail>
 
 This simple route definition expects exactly 3 arguments: a literal "user", literal "reset-password" followed by
-a parameter we're calling "userEmail". Let's assume we also accept one optional parameter, that will turn on 
+a parameter we're calling "userEmail". Let's assume we also accept one optional parameter, that will turn on
 verbose operation:
 
 .. code-block:: bash
@@ -55,12 +55,12 @@ shorthand version: ``-v``.
 
 .. note::
 
-   The order of flags is ignored by ``Zend\Console``. Flags can appear before positional parameters, after them or 
+   The order of flags is ignored by ``Zend\Console``. Flags can appear before positional parameters, after them or
    anywhere in between. The order of multiple flags is also irrelevant. This applies both to route definitions and the
    order that flags are used on the command line.
 
 
-Let's use the definition above and configure our console route. Console routes are automatically loaded from the 
+Let's use the definition above and configure our console route. Console routes are automatically loaded from the
 following location inside config file:
 
 .. code-block:: php
@@ -69,10 +69,10 @@ following location inside config file:
     array(
         'router' => array(
             'routes' => array(
-                // HTTP routes are defined here 
+                // HTTP routes are defined here
             )
         ),
-        
+
         'console' => array(
             'router' => array(
                 'routes' => array(
@@ -83,7 +83,7 @@ following location inside config file:
     )
 
 Let's create our console route and point it to ``Application\IndexController::resetpasswordAction()``
-   
+
 .. code-block:: php
     :linenos:
 
@@ -111,7 +111,7 @@ Let's create our console route and point it to ``Application\IndexController::re
 
     To learn more about console routes and how to use them, please read this chapter: :doc:`zend.console.routes`
 
-    
+
 Handling console requests
 -------------------------
 When a user runs our application from command line and arguments match our console route, a ``controller``
@@ -139,23 +139,23 @@ We will now add ``resetpassword`` action to ``Application\IndexController``:
 
         public function resetpasswordAction(){
             $request = $this->getRequest();
-            
+
             // Make sure that we are running in a console and the user has not tricked our
             // application into running this action from a public web server.
             if (!$request instanceof ConsoleRequest){
                 throw new \RuntimeException('You can only use this action from a console!');
             }
-            
+
             // Get user email from console and check if the user used --verbose or -v flag
             $userEmail   = $request->getParam('userEmail');
             $verbose     = $request->getParam('verbose');
-            
+
             // reset new password
             $newPassword = Rand::getString(16);
-            
+
             //  Fetch the user and change his password, then email him ...
             // [...]
-            
+
             if(!$verbose){
                 return "Done! $userEmail has received an email with his new password.\n";
             }else{
@@ -163,17 +163,17 @@ We will now add ``resetpassword`` action to ``Application\IndexController``:
             }
         }
     }
-    
+
 We have created ``resetpasswordAction()`` than retrieves current request and checks if it's really coming from the
 console (as a precaution). In this example we do not want our action to be invocable from a web page. Because we have
-not defined any http route pointing to it, it should never be possible. However in the future, we might define a 
+not defined any http route pointing to it, it should never be possible. However in the future, we might define a
 wildcard route or a 3rd party module might erroneously route some requests to our action - that is why we want to make
 sure that the request is always coming from a Console environment.
 
 All console arguments supplied by the user are accessible via ``$request->getParam()`` method. Flags will be represented
 by a booleans, where ``true`` means a flag has been used and ``false`` otherwise.
 
-When our action has finished working it returns a simple ``string`` that will be shown to the user in console window. 
+When our action has finished working it returns a simple ``string`` that will be shown to the user in console window.
 
 .. seealso::
 
