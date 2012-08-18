@@ -34,7 +34,7 @@ ifneq ($(LANG),en)
 	done
 endif
 	@cp languages/en/conf.py tmp/$(LANG)/conf.py
-	@sed -i 's/#language = None/language = "$(LANG)"/' tmp/$(LANG)/conf.py
+	@sed -i.bak 's/#language = None/language = "$(LANG)"/' tmp/$(LANG)/conf.py
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
