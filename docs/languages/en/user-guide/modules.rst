@@ -125,7 +125,7 @@ Create the following conﬁguration ﬁle for the ``Album`` module:
 
 .. code-block:: php
 
-    // module/Album/conﬁg/module.conﬁg.php:
+    // module/Album/conﬁg/module.config.php:
     return array(
         'controllers' => array(
             'invokables' => array(
