@@ -123,7 +123,7 @@ As such, you have a variety of ways to override service manager configuration se
                    $form = new SomeModule\Form\User();
 
                    // Retrieve a dependency from the service manager and inject it!
-                   $form->setInputFilter($serviceManager->get('UserInputFilter'),
+                   $form->setInputFilter($serviceManager->get('UserInputFilter'));
                    return $form;
                },
            ),
