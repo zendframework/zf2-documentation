@@ -43,21 +43,20 @@ through the constructor. By having the dependency injected through the construct
 .. code-block:: php
    :linenos:
 
-   namespace My {
+   namespace My;
 
-       class A
-       {
-           /* Some useful functionality */
-       }
-
-       class B
-       {
-           protected $a = null;
-           public function __construct(A $a)
-           {
-               $this->a = $a;
-           }
-       }
+   class A
+   {
+     /* Some useful functionality */
+   }
+   
+   class B
+   {
+     protected $a = null;
+     public function __construct(A $a)
+     {
+         $this->a = $a;
+     }
    }
 
 To create ``B`` by hand, a developer would follow this work flow, or a similar workflow to this:
@@ -68,7 +67,7 @@ To create ``B`` by hand, a developer would follow this work flow, or a similar w
    $b = new B(new A());
 
 If this workflow becomes repeated throughout your application multiple times, this creates an opportunity where one
-might want to DRY up the code. While there are several ways to do this, using a dependency injection container is
+might want to `DRY`_ up the code. While there are several ways to do this, using a dependency injection container is
 one of these solutions. With Zend's dependency injection container ``Zend\Di\DependencyInjector``, the above use
 case can be taken care of with no configuration (provided all of your autoloading is already configured properly)
 with the following usage:
@@ -134,7 +133,6 @@ configuration values (which are generally scalar in nature). To do this, we need
 .. code-block:: php
    :linenos:
 
-   $di = new Zend\Di\DependencyInjector;
    $di->getInstanceManager()->setProperty('A', 'username', 'MyUsernameValue');
    $di->getInstanceManager()->setProperty('A', 'password', 'MyHardToGuessPassword%$#');
 
@@ -554,3 +552,4 @@ so, and then in your environment, specify the container class to use.
 .. _`Analogy`: http://weierophinney.net/matthew/archives/260-Dependency-Injection-An-analogy.html
 .. _`Learning DI`: http://ralphschindler.com/2011/05/18/learning-about-dependency-injection-and-php
 .. _`Series on DI`: http://fabien.potencier.org/article/11/what-is-dependency-injection
+.. _ 'DRY': http://en.wikipedia.org/wiki/Don't_repeat_yourself
