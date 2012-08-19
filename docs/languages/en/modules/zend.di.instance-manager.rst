@@ -174,11 +174,11 @@ Note: Aliases can also have parameters registered at alias time
 
    // add aliases for specific instances
    $im->addAlias('dbadapter-readonly', 'MyLibrary\DbAdapter', array(
-       'username' => $config->db->readAdapter->useranme,
+       'username' => $config->db->readAdapter->username,
        'password' => $config->db->readAdapter->password,
    ));
    $im->addAlias('dbadapter-readwrite', 'MyLibrary\DbAdapter', array(
-       'username' => $config->db->readWriteAdapter>useranme,
+       'username' => $config->db->readWriteAdapter>username,
        'password' => $config->db->readWriteAdapter>password,
    ));
 
