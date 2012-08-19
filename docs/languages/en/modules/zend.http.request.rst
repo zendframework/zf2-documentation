@@ -485,7 +485,7 @@ Examples
 
 .. _zend.http.request.examples.to-string:
 
-.. rubric:: Generating an formatted HTTP Request from an Request object
+.. rubric:: Generating a formatted HTTP Request from an Request object
 
 .. code-block:: php
    :linenos:
