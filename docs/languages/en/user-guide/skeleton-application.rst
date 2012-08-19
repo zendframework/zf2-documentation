@@ -71,6 +71,11 @@ Make sure that you update your ``/etc/hosts`` or
 is mapped to ``127.0.0.1``. The website can then be accessed using
 http://zf2-tutorial.localhost.  
 
+.. code-block:: bash
+
+    127.0.0.1               localhost.localdomain localhost
+    127.0.0.1               zf2-tutorial.localhost localhost
+
 If you’ve done it right, you should see something like this:
 
 .. image:: ../images/user-guide.skeleton-application.hello-world.png
