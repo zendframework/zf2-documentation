@@ -180,7 +180,7 @@ the ``addWriter()`` method:
    $logger->info('Informational message');
 
 You can also specify the priority number for each writer to change the order of writing. The priority number is an
-integer number passed as second parameter in the ``addWriter()`` method.
+integer number (greater or equal to 1) passed as second parameter in the ``addWriter()`` method.
 
 
 
