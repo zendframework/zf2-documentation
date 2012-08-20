@@ -9,7 +9,7 @@ and the configuration options available.
 
 .. _zend.mvc.services.service-manager-configuration:
 
-ServiceManagerConfiguration
+ServiceManagerConfig
 ---------------------------
 
 This is the one service class referenced directly in the bootstrapping. It provides the following:
@@ -116,7 +116,7 @@ This is the one service class referenced directly in the bootstrapping. It provi
     ensure that when falling through to DI, classes are still injected via the ``ServiceManager``.
 
 Additionally, two initializers are registered. Initializers are run on created instances, and may be used to
-further configure them. The two initializers the ``ServiceManagerConfiguration`` class creates and registers do the
+further configure them. The two initializers the ``ServiceManagerConfig`` class creates and registers do the
 following:
 
 - For objects that implement ``Zend\EventManager\EventManagerAwareInterface``, the ``EventManager`` service will be
@@ -258,7 +258,7 @@ Default Configuration Options
 -----------------------------
 
 The following options are available when using the default services configured by the
-``ServiceManagerConfiguration`` and ``ViewManager``.
+``ServiceManagerConfig`` and ``ViewManager``.
 
 .. code-block:: php
    :linenos:
