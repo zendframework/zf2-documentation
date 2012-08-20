@@ -16,7 +16,9 @@ list of ``Original`` strings and then type in “Tutorial” as the translation.
 
 .. image:: ../images/user-guide.styling-and-translations.poedit.png
 
-Press Save in the toolbar and poedit will create an ``en_US.mo`` file for us.
+Press Save in the toolbar and poedit will `create 
+<https://github.com/zendframework/ZendSkeletonApplication/tree/master/module/Application/language>`_ 
+an ``en_US.mo`` file for us.
 
 To remove the copyright message, we need to edit the ``Application`` module’s
 ``layout.phtml`` view script:
