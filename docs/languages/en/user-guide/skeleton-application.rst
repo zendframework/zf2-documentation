@@ -36,6 +36,27 @@ from the ``zf2-tutorial`` folder. This takes a while. You should see an output l
 
     Generating autoload files
 
+.. note::
+
+    If you see this message: 
+
+    .. code-block:: bash
+
+        [RuntimeException]      
+          The process timed out. 
+    your connection was too slow to download the entire package in time, and composer
+    timed out. To avoid this, instead of running
+
+    .. code-block:: bash
+
+        php composer.phar install
+
+    run 
+
+    .. code-block:: bash
+
+        COMPOSER_PROCESS_TIMEOUT=5000 php composer.phar install
+
 We can now move on to the virtual host.
 
 Virtual host
