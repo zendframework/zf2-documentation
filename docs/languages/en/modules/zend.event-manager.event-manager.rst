@@ -545,18 +545,21 @@ Here is the class in which we want caching:
        }
    }
 
-Now, let's create a ``ListenerAggregate`` that can handle caching for us:
+Now, let's create a ``ListenerAggregateInterface`` that can handle caching for us:
 
 .. code-block:: php
    :linenos:
 
    use Zend\Cache\Cache;
    use Zend\EventManager\EventCollection;
-   use Zend\EventManager\ListenerAggregate;
+   use Zend\EventManager\ListenerAggregateInterface;
+   use Zend\EventManager\EventInterface;
 
-   class CacheListener implements ListenerAggregate
+   class CacheListener implements ListenerAggregateInterface
    {
        protected $cache;
+
+       protected $listeners = array();
 
        public function __construct(Cache $cache)
        {
@@ -565,11 +568,20 @@ Now, let's create a ``ListenerAggregate`` that can handle caching for us:
 
        public function attach(EventCollection $events)
        {
-           $events->attach('get.pre', array($this, 'load'), 100);
-           $events->attach('get.post', array($this, 'save'), -100);
+           $this->listeners[] = $events->attach('get.pre', array($this, 'load'), 100);
+           $this->listeners[] = $events->attach('get.post', array($this, 'save'), -100);
        }
 
-       public function load($e)
+       public function detach(EventManagerInterface $events)
+       {
+           foreach ($this->listeners as $index => $listener) {
+               if ($events->detach($listener)) {
+                   unset($this->listeners[$index]);
+               }
+           }
+       }
+
+       public function load(EventInterface $e)
        {
            $id = get_class($e->getTarget()) . '-' . json_encode($e->getParams());
            if (false !== ($content = $this->cache->load($id))) {
@@ -578,7 +590,7 @@ Now, let's create a ``ListenerAggregate`` that can handle caching for us:
            }
        }
 
-       public function save($e)
+       public function save(EventInterface $e)
        {
            $params  = $e->getParams();
            $content = $params['__RESULT__'];
