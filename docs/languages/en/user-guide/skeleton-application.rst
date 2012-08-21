@@ -44,14 +44,15 @@ from the ``zf2-tutorial`` folder. This takes a while. You should see an output l
 
         [RuntimeException]      
           The process timed out. 
-    your connection was too slow to download the entire package in time, and composer
-    timed out. To avoid this, instead of running
+
+    then your connection was too slow to download the entire package in time, and composer
+    timed out. To avoid this, instead of running:
 
     .. code-block:: bash
 
         php composer.phar install
 
-    run 
+    run instead:
 
     .. code-block:: bash
 
