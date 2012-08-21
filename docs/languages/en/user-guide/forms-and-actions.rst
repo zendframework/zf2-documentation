@@ -297,7 +297,7 @@ provides some view helpers to make this a little easier. The ``form()`` view
 helper has an ``openTag()`` and ``closeTag()`` method which we use to open and
 close the form.  Then for each element with a label, we can use ``formRow()``,
 but for the two elements that are standalone, we use ``formHidden()`` and
-``formInput()``. 
+``formSubmit()``. 
 
 .. image:: ../images/user-guide.forms-and-actions.add-album-form.png
     :width: 940 px
@@ -333,6 +333,7 @@ This time we use ``editAction()`` in the ``AlbumController``:
             
             $request = $this->getRequest();
             if ($request->isPost()) {
+                $form->setInputFilter($album->getInputFilter());
                 $form->setData($request->getPost());
 
                 if ($form->isValid()) {
