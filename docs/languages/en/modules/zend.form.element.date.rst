@@ -1,7 +1,7 @@
 .. _zend.form.element.date:
 
 Date Element
-------------
+^^^^^^^^^^^^
 
 ``Zend\Form\Element\Date`` is meant to be paired with the ``Zend/Form/View/Helper/FormDate`` for `HTML5 inputs with type
 date`_. This element adds filters and validators to it's input filter specification in order to validate HTML5 date
@@ -10,7 +10,7 @@ input values on the server.
 .. _zend.form.element.date.usage:
 
 Basic Usage
-^^^^^^^^^^^
+"""""""""""
 
 This element automatically adds a ``"type"`` attribute of value ``"date"``.
 
@@ -40,7 +40,7 @@ This element automatically adds a ``"type"`` attribute of value ``"date"``.
 .. _zend.form.element.date.methods:
 
 Public Methods
-^^^^^^^^^^^^^^
+""""""""""""""
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element\\DateTime
 <zend.form.element.date-time.methods>`.
@@ -56,7 +56,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    One difference from ``Zend\Form\Element\DateTime`` is that the ``Zend\Validator\DateStep`` validator will expect
    the ``step`` attribute to use an interval of days (default is 1 day).
 
-   Returns array
+   :rtype: array
 
 
 

@@ -1,14 +1,14 @@
 .. _zend.form.element.checkbox:
 
 Checkbox Element
-----------------
+^^^^^^^^^^^^^^^^
 
 ``Zend\Form\Element\Checkbox`` is meant to be paired with the ``Zend/Form/View/Helper/FormCheckbox`` for HTML inputs with type checkbox. This element adds an ``InArray`` validator to its input filter specification in order to validate on the server if the checkbox contains either the checked value or the unchecked value.
 
 .. _zend.form.element.checkbox.usage:
 
 Basic Usage
-^^^^^^^^^^^
+"""""""""""
 
 This element automatically adds a ``"type"`` attribute of value ``"checkbox"``.
 
@@ -30,7 +30,7 @@ This element automatically adds a ``"type"`` attribute of value ``"checkbox"``.
 .. _zend.form.element.checkbox.methods:
 
 Public Methods
-^^^^^^^^^^^^^^
+""""""""""""""
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element <zend.form.element.methods>` .
 
