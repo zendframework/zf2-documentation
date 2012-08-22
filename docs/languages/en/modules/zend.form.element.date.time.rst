@@ -1,7 +1,7 @@
 .. _zend.form.element.date-time:
 
 DateTime Element
-----------------
+^^^^^^^^^^^^^^^^
 
 ``Zend\Form\Element\DateTime`` is meant to be paired with the ``Zend/Form/View/Helper/FormDateTime`` for `HTML5 inputs
 with type datetime`_. This element adds filters and validators to it's input filter specification in order to
@@ -9,8 +9,7 @@ validate HTML5 datetime input values on the server.
 
 .. _zend.form.element.date-time.usage:
 
-Basic Usage
-^^^^^^^^^^^
+**Basic Usage**
 
 This element automatically adds a ``"type"`` attribute of value ``"datetime"``.
 
@@ -39,8 +38,7 @@ This element automatically adds a ``"type"`` attribute of value ``"datetime"``.
 
 .. _zend.form.element.date-time.methods:
 
-Public Methods
-^^^^^^^^^^^^^^
+**Public Methods**
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.
@@ -63,7 +61,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    ``Zend\Validator\DateStep`` validator will be added to ensure the date value is within a certain interval of
    minutes (default is 1 minute).
 
-   Returns array
+   :rtype: array
 
 
 

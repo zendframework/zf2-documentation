@@ -1,7 +1,7 @@
 .. _zend.form.element.range:
 
 Range Element
--------------
+^^^^^^^^^^^^^
 
 ``Zend\Form\Element\Range`` is meant to be paired with the ``Zend/Form/View/Helper/FormRange`` for `HTML5 inputs with
 type range`_. This element adds filters and validators to it's input filter specification in order to validate
@@ -9,8 +9,7 @@ HTML5 range values on the server.
 
 .. _zend.form.element.range.usage:
 
-Basic Usage
-^^^^^^^^^^^
+**Basic Usage**
 
 This element automatically adds a ``"type"`` attribute of value ``"range"``.
 
@@ -39,8 +38,7 @@ This element automatically adds a ``"type"`` attribute of value ``"range"``.
 
 .. _zend.form.element.range.methods:
 
-Public Methods
-^^^^^^^^^^^^^^
+**Public Methods**
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element\\Number
 <zend.form.element.number.methods>`.
@@ -57,7 +55,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    ``Zend\Validator\LessThan`` validators will always be present. The default minimum is 1, and the default maximum
    is 100.
 
-   Returns array
+   :rtype: array
 
 
 

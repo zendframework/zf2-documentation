@@ -1,7 +1,7 @@
 .. _zend.form.element.time:
 
 Time Element
-------------
+^^^^^^^^^^^^
 
 ``Zend\Form\Element\Time`` is meant to be paired with the ``Zend/Form/View/Helper/FormTime`` for `HTML5 inputs with type
 time`_. This element adds filters and validators to it's input filter specification in order to validate HTML5 time
@@ -9,8 +9,7 @@ input values on the server.
 
 .. _zend.form.element.time.usage:
 
-Basic Usage
-^^^^^^^^^^^
+**Basic Usage**
 
 This element automatically adds a ``"type"`` attribute of value ``"time"``.
 
@@ -39,8 +38,7 @@ This element automatically adds a ``"type"`` attribute of value ``"time"``.
 
 .. _zend.form.element.time.methods:
 
-Public Methods
-^^^^^^^^^^^^^^
+**Public Methods**
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element\\DateTime
 <zend.form.element.date-time.methods>`.
@@ -56,7 +54,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    One difference from ``Zend\Form\Element\DateTime`` is that the ``Zend\Validator\DateStep`` validator will expect
    the ``step`` attribute to use an interval of seconds (default is 60 seconds).
 
-   Returns array
+   :rtype: array
 
 
 
