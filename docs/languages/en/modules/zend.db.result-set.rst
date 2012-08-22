@@ -22,13 +22,16 @@ like this:
        public function getFieldCount();
    }
 
-.. _zend.db.result-set.result-set:
+.. _zend.db.result-set.quickstart:
 
 Quickstart
 ----------
 
 ``Zend\Db\ResultSet\ResultSet`` is the most basic form of a ResultSet object that will expose each row as either an
-ArrayObject-like object or an array of row data. The following workflow is based on that inside
+ArrayObject-like object or an array of row data.  By default, ``Zend\Db\Adapter\Adapter`` will use a prototypical
+``Zend\Db\ResultSet\ResultSet`` object for iterating when using the ``Zend\Db\Adapter\Adapter::query()`` method.
+
+The following is an example workflow similar to what one might find inside
 ``Zend\Db\Adapter\Adapter::query()``:
 
 .. code-block:: php
@@ -37,7 +40,7 @@ ArrayObject-like object or an array of row data. The following workflow is based
    use Zend\Db\Adapter\Driver\ResultInterface;
    use Zend\Db\ResultSet\ResultSet;
 
-   $stmt = $driver->createStatement($sql);
+   $stmt = $driver->createStatement('SELECT * FROM users');
    $stmt->prepare($parameters);
    $result = $stmt->execute();
 
@@ -49,6 +52,38 @@ ArrayObject-like object or an array of row data. The following workflow is based
            echo $row->my_column . PHP_EOL;
        }
    }
+
+.. _zend.db.result-set.result-set:
+
+Zend\\Db\\ResultSet\\ResultSet and Zend\\Db\\ResultSet\\AbstractResultSet
+---------------------------------------
+
+For most purposes, either a instance of ``Zend\\Db\\ResultSet\\ResultSet`` or a
+derivative of ``Zend\\Db\\ResultSet\\AbstractResultSet`` will be being used.  The implementation of
+the ``AbstractResultSet`` offers the following core functionality:
+
+.. code-block:: php
+   :linenos:
+
+    abstract class AbstractResultSet implements Iterator, ResultSetInterface
+    {
+        public function initialize($dataSource)
+        public function getDataSource()
+        public function getFieldCount()
+        
+        /** Iterator */
+        public function next()
+        public function key()
+        public function current()
+        public function valid()
+        public function rewind()
+        
+        /** countable */
+        public function count()
+        
+        /** get rows as array */
+        public function toArray()
+    }
 
 .. _zend.db.result-set.hydrating-result-set:
 

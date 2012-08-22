@@ -54,28 +54,37 @@ So, for example, a MySQL connection using ext/mysqli:
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend\Db\Adapter\Adapter(array(
+    $adapter = new Zend\Db\Adapter\Adapter(array(
        'driver' => 'Mysqli',
        'database' => 'zend_db_example',
        'username' => 'developer',
        'password' => 'developer-password'
-   ));
+    ));
 
 Another example, of a Sqlite connection via PDO:
 
 .. code-block:: php
    :linenos:
 
-               $adapter = new Zend\Db\Adapter\Adapter(array(
-                   'driver' => 'Pdo_Sqlite',
-                   'database' => 'path/to/sqlite.db'
-               ));
+    $adapter = new Zend\Db\Adapter\Adapter(array(
+       'driver' => 'Pdo_Sqlite',
+       'database' => 'path/to/sqlite.db'
+    ));
 
 It is important to know that by using this style of adapter creation, the Adapter will attempt to create any
 dependencies that were not explicitly provided. A Driver object will be created from the contents of the $driver
 array provided in the constructor. A Platform object will be created based off the type of Driver object that was
 instantiated. And lastly, a default ResultSet object is created and utilized. Any of these objects can be injected,
 to do this, see the next section.
+
+The list of officially supported drivers:
+
+* ``Mysqli``: The ext/mysqli driver
+* ``Pgsql``: The ext/pgsql driver
+* ``Sqlsrv``: The ext/sqlsrv driver (from Microsoft)
+* ``Pdo_Mysql``: MySQL through the PDO extension
+* ``Pdo_Sqlite``: SQLite though the PDO extension
+* ``Pdo_Pgsql``: PostgreSQL through the PDO extension
 
 .. _zend.db.adapter.instantiating:
 
@@ -98,10 +107,9 @@ constructor, which has the following signature (in pseudo-code):
 
 What can be injected:
 
-$driver - an array or an instance of ``Zend\Db\Adapter\Driver\DriverInterface`` $platform - (optional) an instance
-of ``Zend\Db\Platform\PlatformInterface``, the default will be created based off the driver implementation
-$queryResultSetPrototype - (optional) an instance of ``Zend\Db\ResultSet\ResultSet``, to understand this object's
-role, see the section below on querying through the adapter
+* $driver - an array of connection parameters (see above) or an instance of ``Zend\Db\Adapter\Driver\DriverInterface``
+* $platform - (optional) an instance of ``Zend\Db\Platform\PlatformInterface``, the default will be created based off the driver implementation
+* $queryResultSetPrototype - (optional) an instance of ``Zend\Db\ResultSet\ResultSet``, to understand this object's role, see the section below on querying through the adapter
 
 .. _zend.db.adapter.query-preparing:
 
@@ -119,19 +127,13 @@ those placeholders are supplied separately. An example of this workflow with ``Z
 
 The above example will go through the following steps:
 
-- create a new Statement object
-
-- prepare an array into a ParameterContainer if necessary
-
-- inject the ParameterContainer into the Statement object
-
-- execute the Statement object, producing a Result object
-
-- check the Result object to check if the supplied sql was a "query", or a result set producing statement
-
-- if it is a result set producing query, clone the ResultSet prototype, inject Result as datasource, return it
-
-- else, return the Result
+* create a new Statement object
+* prepare an array into a ParameterContainer if necessary
+* inject the ParameterContainer into the Statement object
+* execute the Statement object, producing a Result object
+* check the Result object to check if the supplied sql was a "query", or a result set producing statement
+* if it is a result set producing query, clone the ResultSet prototype, inject Result as datasource, return it
+* else, return the Result
 
 .. _zend.db.adapter.query-execution:
 
@@ -145,7 +147,7 @@ extensions and vendor platforms), are un-preparable. An example of executing:
 .. code-block:: php
    :linenos:
 
-               $adapter->query('ALTER TABLE ADD INDEX(`foo_index`) ON (`foo_column`))', Adapter::QUERY_MODE_EXECUTE);
+   $adapter->query('ALTER TABLE ADD INDEX(`foo_index`) ON (`foo_column`))', Adapter::QUERY_MODE_EXECUTE);
 
 The primary difference to notice is that you must provide the Adapter::QUERY_MODE_EXECUTE (execute) as the second
 parameter.
@@ -163,8 +165,96 @@ create a Driver specific Statement to use so you can manage your own prepare-the
 .. code-block:: php
    :linenos:
 
+   // with optional parameters to bind up-front
    $statement = $adapter->createStatement($sql, $optionalParameters);
    $result = $statement->execute();
+
+.. _zend.db.adapter.driver:
+
+Using the Driver Object
+-----------------------
+
+The Driver object is the primary place where  ``Zend\Db\Adapter\Adapter`` implements the connection level
+abstraction making it possible to use all of Zend\Db's interfaces via the various ext/mysqli, ext/sqlsrv,
+PDO, and other PHP level drivers.  To make this possible, each driver is composed of 3 objects:
+
+* A connection: ``Zend\Db\Adapter\Driver\ConnectionInterface``
+* A statement: ``Zend\Db\Adapter\Driver\StatementInterface``
+* A result: ``Zend\Db\Adapter\Driver\ResultInterface``
+
+Each of the built-in drivers practices "prytotyping" as a means of creating objects when new instances
+are requested.  The workflow looks like this:
+
+* An adapter is created with a set of connection parameters
+* The adapter chooses the proper driver to instantiate, for example ``Zend\Db\Adapter\Driver\Mysqli``
+* That driver object is instantiated
+* If no connection, statement or result objects are injected, defaults are instantiated
+
+This driver is now ready to be called on when particular workflows are requested.  Here is what the
+Driver API looks like:
+
+.. code-block:: php
+   :linenos:
+
+    interface DriverInterface
+    {
+        const PARAMETERIZATION_POSITIONAL = 'positional';
+        const PARAMETERIZATION_NAMED = 'named';
+        const NAME_FORMAT_CAMELCASE = 'camelCase';
+        const NAME_FORMAT_NATURAL = 'natural';
+        public function getDatabasePlatformName($nameFormat = self::NAME_FORMAT_CAMELCASE);
+        public function checkEnvironment();
+        public function getConnection();
+        public function createStatement($sqlOrResource = null);
+        public function createResult($resource);
+        public function getPrepareType();
+        public function formatParameterName($name, $type = null);
+        public function getLastGeneratedValue();
+    }
+
+From this DriverInterface, you can
+
+* Determine the name of the platform this driver supports (useful for choosing the proper platform object)
+* Check that the environment can support this driver
+* Return the Connnection object
+* Create a Statement object which is optionally seeded by an SQL statement (this will generally be a clone of a prototypical statement object)
+* Create a Result object which is optionally seeded by a statement resource (this will generally be a clone of a prototypical result object)
+* Format parameter names, important to distinguish the difference between the various ways parameters are named between extensions
+* Retrieve the overall last generated value (such as an auto-increment value)
+
+Statement objects generally look like this:
+
+.. code-block:: php
+   :linenos:
+   
+   interface StatementInterface extends StatementContainerInterface
+   {
+       public function getResource();
+       public function prepare($sql = null);
+       public function isPrepared();
+       public function execute($parameters = null);
+
+       /** Inherited from StatementContainerInterface */
+       public function setSql($sql);
+       public function getSql();
+       public function setParameterContainer(ParameterContainer $parameterContainer);
+       public function getParameterContainer();
+   }
+   
+Result objects generally look like this:
+
+.. code-block:: php
+   :linenos:
+   
+   interface ResultInterface extends \Countable, \Iterator
+   {
+       public function buffer();
+       public function isQueryResult();
+       public function getAffectedRows();
+       public function getGeneratedValue();
+       public function getResource();
+       public function getFieldCount();
+   }
 
 .. _zend.db.adapter.platform:
 
@@ -184,21 +274,17 @@ object looks like this:
        public function getName();
        public function getQuoteIdentifierSymbol();
        public function quoteIdentifier($identifier);
+       public function quoteIdentifierChain($identiferChain)
        public function getQuoteValueSymbol();
        public function quoteValue($value);
+       public function quoteValueList($valueList);
        public function getIdentifierSeparator();
        public function quoteIdentifierInFragment($identifier, array $additionalSafeWords = array());
    }
 
-For example, to quote a column name, specific to MySQL's way of quoting:
-
-.. code-block:: php
-   :linenos:
-
-   $platform = new Zend\Db\Adapter\Platform\Mysql;
-   $column = $platform->quoteIdentifier('first_name'); // returns `first_name`
-
-Generally speaking, it is easier to get the proper Platform instance from the adapter:
+While one can instantiate your own Plaform object, generally speaking, it is easier to get the proper
+Platform instance from the configured adapter (by default the Platform type will match the underlying
+driver implementation):
 
 .. code-block:: php
    :linenos:
@@ -207,6 +293,43 @@ Generally speaking, it is easier to get the proper Platform instance from the ad
    // or
    $platform = $adapter->platform; // magic property access
 
+The following is a couple of example of Platform usage:
+
+.. code-block:: php
+  :linenos:
+
+  /** @var $adapter Zend\Db\Adapter\Adapter */
+  /** @var $platform Zend\Db\Adapter\Platform\Sql92 */
+  $platform = $adapter->getPlatform();
+  
+  // "first_name"
+  echo $platform->quoteIdentifier('first_name');
+  
+  // " 
+  echo $platform->getQuoteIdentifierSymbol(); 
+  
+  // "schema"."mytable"
+  echo $platform->quoteIdentifierChain(array('schema','mytable')));
+  
+  // '
+  echo $platform->getQuoteValueSymbol();
+  
+  // 'myvalue'
+  echo $platform->quoteValue('myvalue');
+  
+  // 'value', 'Foo O\\'Bar'
+  echo $platform->quoteValueList(array('value',"Foo O'Bar")));
+  
+  // .
+  echo $platform->getIdentifierSeparator();
+  
+  // "foo" as "bar"
+  echo $platform->quoteIdentifierInFragment('foo as bar');
+  
+  // additionally, with some safe words:
+  // ("foo"."bar" = "boo"."baz")
+  echo $platform->quoteIdentifierInFragment('(foo.bar = boo.baz)', array('(', ')', '='));
+  
 .. _zend.db.adapter.parameter-container:
 
 Using The Parameter Container
@@ -214,7 +337,66 @@ Using The Parameter Container
 
 The ParameterContainer object is a container for the various parameters that need to be passed into a Statement
 object to fulfill all the various parameterized parts of the SQL statement. This object implements the ArrayAccess
-interface.
+interface.  Below is the ParameterContainer API:
+
+.. code-block:: php
+
+    class ParameterContainer implements \Iterator, \ArrayAccess, \Countable {
+        public function __construct(array $data = array())
+        
+        /** methods to interact with values */
+        public function offsetExists($name)
+        public function offsetGet($name)
+        public function offsetSetReference($name, $from)
+        public function offsetSet($name, $value, $errata = null)
+        public function offsetUnset($name)
+        
+        /** set values from array (will reset first) */
+        public function setFromArray(Array $data)
+        
+        /** methods to interact with value errata */
+        public function offsetSetErrata($name, $errata)
+        public function offsetGetErrata($name)
+        public function offsetHasErrata($name)
+        public function offsetUnsetErrata($name)
+        
+        /** errata only iterator */
+        public function getErrataIterator()
+        
+        /** get array with named keys */
+        public function getNamedArray()
+        
+        /** get array with int keys, ordered by position */
+        public function getPositionalArray()
+        
+        /** iterator: */
+        public function count()
+        public function current()
+        public function next()
+        public function key()
+        public function valid()
+        public function rewind()
+        
+        /** merge existing array of parameters with existing parameters */
+        public function merge($parameters)    
+    }
+
+
+In addition to handling parameter names and values, the container will assist in tracking parameter
+types for PHP type to SQL type handling.  For example, it might be important that:
+
+.. code-block:: php
+    
+    $container->offsetSet('limit', 5);
+    
+be bound as an integer.  To achieve this, pass in the ParameterContainer::TYPE_INTEGER constant as the 3rd parameter:
+
+.. code-block:: php
+    
+    $container->offsetSet('limit', 5, $container::TYPE_INTEGER);
+    
+This will ensure that if the underlying driver supports typing of bound parameters, that this translated
+information will also be passed along to the actual php database driver.
 
 .. _zend.db.adapter.parameter-container.examples:
 
@@ -235,7 +417,7 @@ Creating a Driver and Vendor portable Query, Preparing and Iterating Result
        . ' SET ' . $qi('name') . ' = ' . $fp('name')
        . ' WHERE ' . $qi('id') . ' = ' . $fp('id');
 
-   /* @var $statement Zend\Db\Adapter\Driver\StatementInterface */
+   /** @var $statement Zend\Db\Adapter\Driver\StatementInterface */
    $statement = $adapter->query($sql);
 
    $parameters = array(

@@ -83,8 +83,12 @@ Each of these objects implement the following (2) interfaces:
 .. code-block:: php
    :linenos:
 
-   public function prepareStatement(Adapter $adapter, StatementInterface $statement);
-   public function getSqlString(PlatformInterface $adapterPlatform = null);
+   interface PreparableSqlInterface {
+        public function prepareStatement(Adapter $adapter, StatementInterface $statement);
+   }
+   interface SqlInterface {
+        public function getSqlString(PlatformInterface $adapterPlatform = null);
+   }
 
 These are the functions you can call to either produce (a) a prepared statement, or (b) a string to be executed.
 
@@ -137,6 +141,7 @@ parts:
    }
 
 from():
+.......
 
 .. code-block:: php
    :linenos:
@@ -155,6 +160,7 @@ from():
    $select->from(new TableIdentifier(array('t' => 'table')));
 
 columns():
+..........
 
 .. code-block:: php
    :linenos:
@@ -168,6 +174,7 @@ columns():
    $select->columns(array('foo' => 'bar', 'baz' => 'bax'));
 
 join():
+.......
 
 .. code-block:: php
    :linenos:
@@ -184,13 +191,90 @@ join():
        'f.foo_id = b.foo_id');         // join expression
 
 where(), having():
+..................
+
+The ``Zend\Db\Sql\Select`` object provides bit of flexibility as it regards to what kind of
+parameters are acceptable when calling where() or having().  The method signature is listed as:
 
 .. code-block:: php
-   :linenos:
+    :linenos:
+    
+    /**
+     * Create where clause
+     *
+     * @param  Where|\Closure|string|array $predicate
+     * @param  string $combination One of the OP_* constants from Predicate\PredicateSet
+     * @return Select
+     */
+    public function where($predicate, $combination = Predicate\PredicateSet::OP_AND);
+    
+As you can see, there are a number of different ways to pass criteria to both having() and
+where().  
 
-   see Where/Having section below
+If you provide a ``Zend\Db\Sql\Where`` object to where() or a
+``Zend\Db\Sql\Having`` object to having(), the internal objects for Select will be replaced
+completely.  When the where/having() is processed, this object will be iterated to produce
+the WHERE or HAVING section of the SELECT statement.
+
+If you provide a ``Closure`` to where() or having(), this function will be called with
+the Select's ``Where`` object as the only parameter.  So the following is possible:
+
+.. code-block:: php
+    :linenos:
+    
+    $spec = function (Where $where) {
+        $where->like('username', 'ralph%');
+    };
+    
+    $select->where($spec);
+
+If you provide a string, this string will be used to instantiate a
+``Zend\Db\Sql\Predicate\Expression`` object so that it's contents will be applied
+as is.  This means that there will be no quoting in the fragment provided.
+
+Consider the following code:
+
+.. code-block:: php
+    :linenos:
+    
+    // SELECT "foo".* FROM "foo" WHERE x = 5
+    $select->from('foo')->where('x = 5');
+
+If you provide an array who's values are keyed by an integer, the value can either 
+be a string that will be then used to build a ``Predicate\Expression`` or any object
+that implements ``Predicate\PredicateInterface``.  These objects are pushed onto the
+Where stack with the $combination provided.
+
+Consider the following code:
+
+.. code-block:: php
+    :linenos:
+    
+    // SELECT "foo".* FROM "foo" WHERE x = 5 AND y = z
+    $select->from('foo')->where(array('x = 5', 'y = z'));
+
+If you provide an array who's values are keyed with a string, these values will
+be handled in the following:
+
+* PHP value nulls will be made into a ``Predicate\IsNull`` object
+* PHP value array()s will be made into a ``Predicate\In`` object
+* PHP value strings will be made into a ``Predicate\Operator`` object such that the string key will be identifier, and the value will target value.
+
+Consider the following code:
+
+.. code-block:: php
+    :linenos:
+    
+    // SELECT "foo".* FROM "foo" WHERE "c1" IS NULL AND "c2" IN (?, ?, ?) AND "c3" IS NOT NULL
+    $select->from('foo')->where(array(
+        'c1' => null,
+        'c2' => array(1, 2, 3),
+        new \Zend\Db\Sql\Predicate\IsNotNull('c3')
+    ));
+        
 
 order():
+........
 
 .. code-block:: php
    :linenos:
@@ -206,6 +290,7 @@ order():
    $select->order(array('name ASC', 'age DESC')); // produces 'name' ASC, 'age' DESC
 
 limit() and offset():
+.....................
 
 .. code-block:: php
    :linenos:
@@ -238,6 +323,7 @@ The Insert API:
 Similarly to Select objects, the table can be set at construction time or via into().
 
 columns():
+..........
 
 .. code-block:: php
    :linenos:
@@ -245,6 +331,7 @@ columns():
    $insert->columns(array('foo', 'bar')); // set the valid columns
 
 values():
+.........
 
 .. code-block:: php
    :linenos:
@@ -283,6 +370,7 @@ Zend\\Db\\Sql\\Update
    }
 
 set():
+......
 
 .. code-block:: php
    :linenos:
@@ -290,11 +378,9 @@ set():
    $update->set(array('foo' => 'bar', 'baz' => 'bax'));
 
 where():
+........
 
-.. code-block:: php
-   :linenos:
-
-   See where section below.
+See where section below.
 
 .. _zend.db.sql.delete:
 
@@ -313,11 +399,9 @@ Zend\\Db\\Sql\\Delete
    }
 
 where():
+........
 
-.. code-block:: php
-   :linenos:
-
-   See where section below.
+See where section below.
 
 .. _zend.db.sql.where:
 
@@ -346,44 +430,44 @@ The Zend\\Db\\Sql\\Where (Predicate/PredicateSet) API:
    // Where & Having:
    class Predicate extends PredicateSet
    {
-   	public $and;
-   	public $or;
-   	public $AND;
-   	public $OR;
-   	public $NEST;
-   	public $UNNSET;
+        public $and;
+        public $or;
+        public $AND;
+        public $OR;
+        public $NEST;
+        public $UNNSET;
 
-       public function nest();
-       public function setUnnest(Predicate $predicate);
-       public function unnest();
-       public function equalTo($left, $right, $leftType = self::TYPE_IDENTIFIER, $rightType = self::TYPE_VALUE);
-       public function lessThan($left, $right, $leftType = self::TYPE_IDENTIFIER, $rightType = self::TYPE_VALUE);
-       public function greaterThan($left, $right, $leftType = self::TYPE_IDENTIFIER, $rightType = self::TYPE_VALUE);
-       public function lessThanOrEqualTo($left, $right, $leftType = self::TYPE_IDENTIFIER, $rightType = self::TYPE_VALUE);
-       public function greaterThanOrEqualTo($left, $right, $leftType = self::TYPE_IDENTIFIER, $rightType = self::TYPE_VALUE);
-       public function like($identifier, $like);
-       public function literal($literal, $parameter);
-       public function isNull($identifier);
-       public function isNotNull($identifier);
-       public function in($identifier, array $valueSet = array());
-       public function between($identifier, $minValue, $maxValue);
+        public function nest();
+        public function setUnnest(Predicate $predicate);
+        public function unnest();
+        public function equalTo($left, $right, $leftType = self::TYPE_IDENTIFIER, $rightType = self::TYPE_VALUE);
+        public function lessThan($left, $right, $leftType = self::TYPE_IDENTIFIER, $rightType = self::TYPE_VALUE);
+        public function greaterThan($left, $right, $leftType = self::TYPE_IDENTIFIER, $rightType = self::TYPE_VALUE);
+        public function lessThanOrEqualTo($left, $right, $leftType = self::TYPE_IDENTIFIER, $rightType = self::TYPE_VALUE);
+        public function greaterThanOrEqualTo($left, $right, $leftType = self::TYPE_IDENTIFIER, $rightType = self::TYPE_VALUE);
+        public function like($identifier, $like);
+        public function literal($literal, $parameter);
+        public function isNull($identifier);
+        public function isNotNull($identifier);
+        public function in($identifier, array $valueSet = array());
+        public function between($identifier, $minValue, $maxValue);
 
 
-      	// Inherited From PredicateSet
+        // Inherited From PredicateSet
 
-       public function addPredicate(PredicateInterface $predicate, $combination = null);
-       public function getPredicates();
-       public function orPredicate(PredicateInterface $predicate);
-       public function andPredicate(PredicateInterface $predicate);
-       public function getExpressionData();
-       public function count();
-
+        public function addPredicate(PredicateInterface $predicate, $combination = null);
+        public function getPredicates();
+        public function orPredicate(PredicateInterface $predicate);
+        public function andPredicate(PredicateInterface $predicate);
+        public function getExpressionData();
+        public function count();
    }
 
-Each method in the Where API will produce a coresponding Predicate object of a similarly named type, described
+Each method in the Where API will produce a corresponding Predicate object of a similarly named type, described
 below, with the full API of the object:
 
 equalTo(), lessThan(), greaterThan(), lessThanOrEqualTo(), greaterThanOrEqualTo():
+..................................................................................
 
 .. code-block:: php
    :linenos:
@@ -425,6 +509,7 @@ equalTo(), lessThan(), greaterThan(), lessThanOrEqualTo(), greaterThanOrEqualTo(
    }
 
 like($identifier, $like):
+.........................
 
 .. code-block:: php
    :linenos:
@@ -448,6 +533,7 @@ like($identifier, $like):
    }
 
 literal($literal, $parameter);
+..............................
 
 .. code-block:: php
    :linenos:
@@ -473,6 +559,7 @@ literal($literal, $parameter);
    }
 
 isNull($identifier);
+....................
 
 .. code-block:: php
    :linenos:
@@ -493,6 +580,7 @@ isNull($identifier);
    }
 
 isNotNull($identifier);
+.......................
 
 .. code-block:: php
    :linenos:
@@ -513,6 +601,7 @@ isNotNull($identifier);
    }
 
 in($identifier, array $valueSet = array());
+...........................................
 
 .. code-block:: php
    :linenos:
@@ -535,6 +624,7 @@ in($identifier, array $valueSet = array());
    }
 
 between($identifier, $minValue, $maxValue);
+...........................................
 
 .. code-block:: php
    :linenos:
