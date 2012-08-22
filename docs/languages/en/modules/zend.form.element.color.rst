@@ -9,7 +9,8 @@ validate a `HTML5 valid simple color`_ value on the server.
 
 .. _zend.form.element.color.usage:
 
-**Basic Usage**
+Basic Usage
+"""""""""""
 
 This element automatically adds a ``"type"`` attribute of value ``"color"``.
 
@@ -27,7 +28,8 @@ This element automatically adds a ``"type"`` attribute of value ``"color"``.
 
 .. _zend.form.element.color.methods:
 
-**Public Methods**
+Public Methods
+""""""""""""""
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.
