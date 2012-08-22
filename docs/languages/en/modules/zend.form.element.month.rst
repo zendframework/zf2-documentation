@@ -1,7 +1,7 @@
 .. _zend.form.element.month:
 
 Month Element
--------------
+^^^^^^^^^^^^^
 
 ``Zend\Form\Element\Month`` is meant to be paired with the ``Zend/Form/View/Helper/FormMonth`` for `HTML5 inputs with
 type month`_. This element adds filters and validators to it's input filter specification in order to validate
@@ -10,7 +10,7 @@ HTML5 month input values on the server.
 .. _zend.form.element.month.usage:
 
 Basic Usage
-^^^^^^^^^^^
+"""""""""""
 
 This element automatically adds a ``"type"`` attribute of value ``"month"``.
 
@@ -40,7 +40,7 @@ This element automatically adds a ``"type"`` attribute of value ``"month"``.
 .. _zend.form.element.month.methods:
 
 Public Methods
-^^^^^^^^^^^^^^
+""""""""""""""
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element\\DateTime
 <zend.form.element.date-time.methods>`.
@@ -56,7 +56,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    One difference from ``Zend\Form\Element\DateTime`` is that the ``Zend\Validator\DateStep`` validator will expect
    the ``step`` attribute to use an interval of months (default is 1 month).
 
-   Returns array
+   :rtype: array
 
 
 

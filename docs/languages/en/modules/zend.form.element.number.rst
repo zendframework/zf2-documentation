@@ -1,7 +1,7 @@
 .. _zend.form.element.number:
 
 Number Element
---------------
+^^^^^^^^^^^^^^
 
 ``Zend\Form\Element\Number`` is meant to be paired with the ``Zend/Form/View/Helper/FormNumber`` for `HTML5 inputs with
 type number`_. This element adds filters and validators to it's input filter specification in order to validate
@@ -10,7 +10,7 @@ HTML5 number input values on the server.
 .. _zend.form.element.number.usage:
 
 Basic Usage
-^^^^^^^^^^^
+"""""""""""
 
 This element automatically adds a ``"type"`` attribute of value ``"number"``.
 
@@ -40,7 +40,7 @@ This element automatically adds a ``"type"`` attribute of value ``"number"``.
 .. _zend.form.element.number.methods:
 
 Public Methods
-^^^^^^^^^^^^^^
+""""""""""""""
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.
@@ -63,7 +63,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    ``Zend\Validator\Step`` validator will be added to ensure the number value is within a certain interval (default
    is 1). The ``step`` value should be either "any" or a `valid floating point number`_.
 
-   Returns array
+   :rtype: array
 
 
 

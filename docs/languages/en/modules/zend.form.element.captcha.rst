@@ -1,7 +1,7 @@
 .. _zend.form.element.captcha:
 
 Captcha Element
----------------
+^^^^^^^^^^^^^^^
 
 ``Zend\Form\Element\Captcha`` can be used with forms where authenticated users are not necessary, but you want to prevent
 spam submissions. It is pairs with one of the ``Zend/Form/View/Helper/Captcha/*`` view helpers that matches the
@@ -10,7 +10,7 @@ type of *CAPTCHA* adapter in use.
 .. _zend.form.element.captcha.usage:
 
 Basic Usage
-^^^^^^^^^^^
+"""""""""""
 
 A *CAPTCHA* adapter must be attached in order for validation to be included in the element's input filter
 specification. See the section on :ref:`Zend CAPTCHA Adapters <zend.captcha.adapters>` for more information on what
@@ -34,7 +34,7 @@ adapters are available.
 .. _zend.form.element.captcha.methods:
 
 Public Methods
-^^^^^^^^^^^^^^
+""""""""""""""
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.
@@ -47,14 +47,12 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    Set the *CAPTCHA* adapter for this element. If ``$captcha`` is an array, ``Zend\Captcha\Factory::factory()``
    will be run to create the adapter from the array configuration.
 
-   Returns ``Zend\Form\Element\Captcha``
-
 .. function:: getCaptcha()
    :noindex:
 
    Return the *CAPTCHA* adapter for this element.
 
-   Returns ``Zend\Captcha\AdapterInterface``
+   :rtype: ``Zend\Captcha\AdapterInterface``
 
 .. function:: getInputSpecification()
    :noindex:
@@ -62,4 +60,4 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    Returns a input filter specification, which includes a ``Zend\Filter\StringTrim`` filter, and a *CAPTCHA*
    validator.
 
-   Returns array
+   :rtype: array

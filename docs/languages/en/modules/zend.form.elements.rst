@@ -16,20 +16,27 @@ A ``Factory`` is provided to facilitate creation of elements, fieldsets, forms, 
 the :ref:`Zend\\Form Quick Start <zend.form.quick-start.factory>` for more information.
 
 .. include:: zend.form.element.rst
+
+Standard Elements
+-----------------
+
 .. include:: zend.form.element.captcha.rst
 .. include:: zend.form.element.checkbox.rst
 .. include:: zend.form.element.collection.rst
-.. include:: zend.form.element.color.rst
 .. include:: zend.form.element.csrf.rst
+.. include:: zend.form.element.email.rst
+.. include:: zend.form.element.hidden.rst
+.. include:: zend.form.element.url.rst
+
+HTML5 Elements
+--------------
+
+.. include:: zend.form.element.color.rst
 .. include:: zend.form.element.date.rst
 .. include:: zend.form.element.date.time.rst
 .. include:: zend.form.element.date.time.local.rst
-.. include:: zend.form.element.email.rst
-.. include:: zend.form.element.hidden.rst
 .. include:: zend.form.element.month.rst
 .. include:: zend.form.element.number.rst
 .. include:: zend.form.element.range.rst
 .. include:: zend.form.element.time.rst
-.. include:: zend.form.element.url.rst
 .. include:: zend.form.element.week.rst
-
