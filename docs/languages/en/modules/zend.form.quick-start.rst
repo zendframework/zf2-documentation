@@ -30,41 +30,39 @@ If nothing else, you can simply start creating elements, fieldsets, and forms an
    use Zend\InputFilter\InputFilter;
 
    $name = new Element('name');
+   $name->setLabel('Your name');
    $name->setAttributes(array(
-       'type'  => 'text',
-       'label' => 'Your name',
+       'type'  => 'text'
    ));
 
    $email = new Element('email');
+   $email->setLabel('Your email address');
    $email->setAttributes(array(
-       'type'  => 'email',
-       'label' => 'Your email address',
+       'type'  => 'email'
    ));
 
    $subject = new Element('subject');
+   $subject->setLabel('Subject');
    $subject->setAttributes(array(
-       'type'  => 'text',
-       'label' => 'Subject',
+       'type'  => 'text'
    ));
 
    $message = new Element('message');
+   $message->setLabel('Message');
    $message->setAttributes(array(
-       'type'  => 'textarea',
-       'label' => 'Message',
+       'type'  => 'textarea'
    ));
 
    $captcha = new Element\Captcha('captcha');
    $captcha->setCaptcha(new Captcha\Dumb());
-   $captcha->setAttributes(array(
-       'label' => 'Please verify you are human',
-   ));
+   $captcha->setLabel('Please verify you are human');
 
    $csrf = new Element\Csrf('security');
 
    $submit = new Element('send');
+   $submit->setLabel('Send');
    $submit->setAttributes(array(
-       'type'  => 'submit',
-       'label' => 'Send',
+       'type'  => 'submit'
    ));
 
 
@@ -124,37 +122,47 @@ store your forms as pure configuration; you can simply pass the configuration to
        'elements' => array(
            array(
                'name' => 'name',
-               'attributes' => array(
-                   'type'  => 'text',
+               'options' => array(
                    'label' => 'Your name',
+               ),
+               'attributes' => array(
+                   'type'  => 'text'
                ),
            ),
            array(
                'name' => 'email',
+               'options' => array(
+                   'label' => 'Your email address',
+               ),
                'attributes' => array(
                    'type'  => 'email',
-                   'label' => 'Your email address',
                ),
            ),
            array(
                'name' => 'subject',
+               'options' => array(
+                   'label' => 'Subject',
+               ),
                'attributes' => array(
                    'type'  => 'text',
-                   'label' => 'Subject',
                ),
            ),
            array(
                'name' => 'message',
+               'options' => array(
+                   'label' => 'Message',
+               ),
                'attributes' => array(
                    'type'  => 'textarea',
-                   'label' => 'Message',
                ),
            ),
            array(
                'type' => 'Zend\Form\Element\Captcha',
                'name' => 'captcha',
-               'attributes' => array(
+               'options' => array(
                    'label' => 'Please verify you are human',
+               ),
+               'attributes' => array(
                    'captcha' => array(
                        'class' => 'Dumb',
                    ),
@@ -166,9 +174,11 @@ store your forms as pure configuration; you can simply pass the configuration to
            ),
            array(
                'name' => 'send',
+               'options' => array(
+                   'label' => 'Send',
+               ),
                'attributes' => array(
                    'type'  => 'submit',
-                   'label' => 'Send',
                ),
            ),
        ),
@@ -202,16 +212,20 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
                'elements' => array(
                    array(
                        'name' => 'name',
-                       'attributes' => array(
-                           'type'  => 'text',
+                       'options' => array(
                            'label' => 'Your name',
+               		   ),
+                       'attributes' => array(
+                           'type'  => 'text'
                        ),
                    ),
                    array(
                        'name' => 'email',
+                       'options' => array(
+                           'label' => 'Your email address',
+               		   ),
                        'attributes' => array(
                            'type'  => 'email',
-                           'label' => 'Your email address',
                        ),
                    ),
                ),
@@ -221,16 +235,20 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
                'elements' => array(
                    array(
                        'name' => 'subject',
+                       'options' => array(
+                           'label' => 'Subject',
+               		   ),
                        'attributes' => array(
                            'type'  => 'text',
-                           'label' => 'Subject',
                        ),
                    ),
                    array(
                        'name' => 'message',
+                       'options' => array(
+                           'label' => 'Message',
+               		   ),
                        'attributes' => array(
                            'type'  => 'textarea',
-                           'label' => 'Message',
                        ),
                    ),
                ),
@@ -240,8 +258,10 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
            array(
                'type' => 'Zend\Form\Element\Captcha',
                'name' => 'captcha',
-               'attributes' => array(
+               'options' => array(
                    'label' => 'Please verify you are human',
+               ),
+               'attributes' => array(
                    'captcha' => array(
                        'class' => 'Dumb',
                    ),
@@ -253,9 +273,11 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
            ),
            array(
                'name' => 'send',
+               'options' => array(
+                   'label' => 'Send',
+               ),
                'attributes' => array(
                    'type'  => 'submit',
-                   'label' => 'Send',
                ),
            ),
        ),
@@ -306,46 +328,58 @@ defining a form for re-use in your application.
 
            $this->add(array(
                'name' => 'name',
+               'options' => array(
+                   'label' => 'Your name',
+               ),
                'attributes' => array(
                    'type'  => 'text',
-                   'label' => 'Your name',
                ),
            ));
            $this->add(array(
                'name' => 'email',
+               'options' => array(
+                   'label' => 'Your email address',
+               ),
                'attributes' => array(
                    'type'  => 'email',
-                   'label' => 'Your email address',
                ),
            ));
            $this->add(array(
                'name' => 'subject',
+               'options' => array(
+                   'label' => 'Subject',
+               ),
                'attributes' => array(
                    'type'  => 'text',
-                   'label' => 'Subject',
                ),
            ));
            $this->add(array(
                'name' => 'message',
+               'options' => array(
+                   'label' => 'Message',
+               ),
                'attributes' => array(
                    'type'  => 'textarea',
-                   'label' => 'Message',
                ),
            ));
            $this->add(array(
                'type' => 'Zend\Form\Element\Captcha',
                'name' => 'captcha',
-               'attributes' => array(
+               'options' => array(
                    'label' => 'Please verify you are human',
+               ),
+               'attributes' => array(
                    'captcha' => $this->captcha,
                ),
            )),
            $this->add(new Element\Csrf('security'));
            $this->add(array(
                'name' => 'send',
+               'options' => array(
+                   'label' => 'Send',
+               ),
                'attributes' => array(
                    'type'  => 'submit',
-                   'label' => 'Send',
                ),
            ));
 
