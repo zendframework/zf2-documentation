@@ -59,12 +59,11 @@ objects with the containing information. This is best demonstrated by the script
    foreach ($tableNames as $tableName) {
        echo 'In Table ' . $tableName . PHP_EOL;
 
-       /** @var $table Zend\Db\Metadata\Object\TableObject */
        $table = $metadata->getTable($tableName);
+
 
        echo '    With columns: ' . PHP_EOL;
        foreach ($table->getColumns() as $column) {
-           /** @var $column Zend\Db\Metadata\Object\ColumnObject */
            echo '        ' . $column->getName()
                . ' -> ' . $column->getDataType()
                . PHP_EOL;
