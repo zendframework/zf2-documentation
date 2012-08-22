@@ -1,7 +1,7 @@
 .. _zend.form.element.checkbox:
 
 Checkbox Element
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
 
 ``Zend\Form\Element\Checkbox`` is meant to be paired with the ``Zend/Form/View/Helper/FormCheckbox`` for HTML inputs with type checkbox. This element adds an ``InArray`` validator to its input filter specification in order to validate on the server if the checkbox contains either the checked value or the unchecked value.
 
