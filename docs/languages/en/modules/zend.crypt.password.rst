@@ -3,10 +3,10 @@
 Password secure storing
 =======================
 
-``Zend\Crypt\Password`` stores a users password in a secure way using dedicated adapters like the `bcrypt`_
+``Zend\Crypt\Password`` stores a user's password in a secure way using dedicated adapters like the `bcrypt`_
 algorithm.
 
-The example below shows how to use the bcrypt algorithm to store a users password:
+The example below shows how to use the bcrypt algorithm to store a user's password:
 
 .. code-block:: php
    :linenos:
