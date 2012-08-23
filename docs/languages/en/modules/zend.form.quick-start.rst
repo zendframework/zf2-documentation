@@ -818,7 +818,7 @@ Annotations allow us to solve this problem. You can define the following behavio
 - *AllowEmpty*: mark an input as allowing an empty value. This annotation does not require a value.
 
 - *Attributes*: specify the form, fieldset, or element attributes. This annotation requires an associative array of
-  values, in a JSON object format: *@Attributes({"class":"zend_form","type":"text"})*.
+  values, in a JSON object format: ``@Attributes({"class":"zend_form","type":"text"})``.
 
 - *ComposedObject*: specify another object with annotations to parse. Typically, this is used if a property
   references another object, which will then be added to your form as an additional fieldset. Expects a string
@@ -831,11 +831,11 @@ Annotations allow us to solve this problem. You can define the following behavio
 
 - *Filter*: provide a specification for a filter to use on a given element. Expects an associative array of values,
   with a "name" key pointing to a string filter name, and an "options" key pointing to an associatve array of
-  filter options for the constructor: *@Filter({"name": "Boolean", "options": {"casting":true}})*. This annotation
+  filter options for the constructor: ``@Filter({"name": "Boolean", "options": {"casting":true}})``. This annotation
   may be specified multiple times.
 
 - *Flags*: flags to pass to the fieldset or form composing an element or fieldset; these are usually used to
-  specify the name or priority. The annotation expects an associative array: *@Flags({"priority": 100})*.
+  specify the name or priority. The annotation expects an associative array: ``@Flags({"priority": 100})``.
 
 - *Hydrator*: specify the hydrator class to use for this given form or fieldset. A string value is expected.
 
@@ -846,8 +846,8 @@ Annotations allow us to solve this problem. You can define the following behavio
 - *Name*: specify the name of the current element, fieldset, or form. A string value is expected.
 
 - *Options*: options to pass to the fieldset or form that are used to inform behavior -- things that are not
-  attributes; e.g. labels, CAPTCHA adapters, etc. The annotation expects an associative array: *@Options({"label":
-  "Username:"})*.
+  attributes; e.g. labels, CAPTCHA adapters, etc. The annotation expects an associative array: ``@Options({"label":
+  "Username:"})``.
 
 - *Required*: indicate whether an element is required. A boolean value is expected. By default, all elements are
   required, so this annotation is mainly present to allow disabling a requirement.
@@ -856,8 +856,8 @@ Annotations allow us to solve this problem. You can define the following behavio
 
 - *Validator*: provide a specification for a validator to use on a given element. Expects an associative array of
   values, with a "name" key pointing to a string validator name, and an "options" key pointing to an associatve
-  array of validator options for the constructor: *@Validator({"name": "StringLength", "options": {"min":3, "max":
-  25}})*. This annotation may be specified multiple times.
+  array of validator options for the constructor: ``@Validator({"name": "StringLength", "options": {"min":3, "max":
+  25}})``. This annotation may be specified multiple times.
 
 To use annotations, you simply include them in your class and/or property docblocks. Annotation names will be
 resolved according to the import statements in your class; as such, you can make them as long or as short as you
