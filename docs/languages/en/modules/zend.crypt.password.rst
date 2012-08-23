@@ -1,6 +1,6 @@
 .. _zend.crypt.password:
 
-Password secure storing
+Secure Password Storing
 =======================
 
 The ``Zend\Crypt\Password`` store a user's password in a secure way using dedicated adapters like the `bcrypt`_
