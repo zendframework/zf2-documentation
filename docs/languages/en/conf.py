@@ -92,7 +92,16 @@ rst_epilog = "\n.. include:: /%s/snippets.rst\n\n.. include:: /%s/translated-sni
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+html_theme = 'gnbit'
+
+html_theme_options = {
+    'analytics_code': 'UA-538026-10',
+    'github_user': 'benjamingb',
+    'github_repo': 'zf2-documentation',
+    'twitter_username': 'benjamingb',
+    'home_url': '#',
+    'disqus_shortname': 'gnbit',
+}
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
