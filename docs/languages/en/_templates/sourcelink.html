@@ -1,9 +1,15 @@
 {%- if show_source and has_source and sourcename %}
   <h3>{{ _('This Page') }}</h3>
   <ul class="this-page-menu">
-    <li><a href="{{ pathto('_sources/' + sourcename, true)|e }}"
+    <li>
+        <!--<a href="{{ pathto('_sources/' + sourcename, true)|e }}"-->
+        <a href="https://github.com/zendframework/zf2-documentation/blob/master/docs/languages/en/{{ pagename }}.rst"
            rel="nofollow">{{ _('Show Source') }}</a></li>
     <li><a href="https://github.com/zendframework/zf2-documentation/edit/master/docs/languages/en/{{ pagename }}.rst"
-           rel="nofollow">{{ _('Edit Source') }}</a></li>
+           rel="nofollow">{{ _('Edit Source') }}</a>
+    </li>
   </ul>
+        <p style="font-size: 12px">
+            Note: For edit the files you need stay logged with your <a href="http://www.github.com">GitHub account</a> first.
+        </p>
 {%- endif %}
