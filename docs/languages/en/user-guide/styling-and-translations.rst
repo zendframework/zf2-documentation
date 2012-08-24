@@ -9,7 +9,7 @@ change the title and and remove the copyright message.
 
 The ZendSkeletonApplication is set up to use ``Zend\I18n``’s translation
 functionality for all the text. It uses ``.po`` files that live in
-``application/language``, and you need to use `poedit
+``Application/language``, and you need to use `poedit
 <http://www.poedit.net/download.php/>`_ to change the text. Start poedit and
 open ``application/language/en_US.po``. Click on “Skeleton Application” in the
 list of ``Original`` strings and then type in “Tutorial” as the translation.
