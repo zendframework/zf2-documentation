@@ -78,7 +78,7 @@ deﬁne a virtual host along these lines:
 
     <VirtualHost \*:80>
         ServerName zf2-tutorial.localhost
-        DocumentRoot /path/to/zf-2tutorial/public
+        DocumentRoot /path/to/zf2-tutorial/public
         SetEnv APPLICATION_ENV "development"
         <Directory /path/to/zf2-tutorial/public>
             DirectoryIndex index.php
