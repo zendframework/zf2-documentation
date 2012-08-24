@@ -38,7 +38,7 @@ To verify if a given password is valid against a bcrypt value you can use the ``
    }
 
 By default, the ``Zend\Crypt\Password\Bcrypt`` class uses a value of 14 for bcrypts cost parameter. The cost parameter is an integer between 4 to
-33. A greater value means longer execution time for bcrypt, thus more secure against brute force or
+31. A greater value means longer execution time for bcrypt, thus more secure against brute force or
 dictionary attacks.
 
 If you want to change the cost parameter of the bcrypt algorithm you can use the ``setCost()`` method.
