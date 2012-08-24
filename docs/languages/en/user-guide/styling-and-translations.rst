@@ -16,7 +16,9 @@ list of ``Original`` strings and then type in “Tutorial” as the translation.
 
 .. image:: ../images/user-guide.styling-and-translations.poedit.png
 
-Press Save in the toolbar and poedit will create an ``en_US.mo`` file for us.
+Press Save in the toolbar and poedit will create an ``en_US.mo`` file for us.  
+If you find that no .mo file is generated, check Preferences -> Editor -> Behavior 
+and see if the checkbox marked 'Automatically compile .mo file on save' is checked.
 
 To remove the copyright message, we need to edit the ``Application`` module’s
 ``layout.phtml`` view script:
