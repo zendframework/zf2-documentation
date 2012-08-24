@@ -76,7 +76,7 @@ deﬁne a virtual host along these lines:
 
 .. code-block:: apache
 
-    <VirtualHost \*:80>
+    <VirtualHost *:80>
         ServerName zf2-tutorial.localhost
         DocumentRoot /path/to/zf-2tutorial/public
         SetEnv APPLICATION_ENV "development"
