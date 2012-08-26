@@ -44,7 +44,7 @@ Usage
 
 This manual section is designed to show you typical usage patterns of the view layer when using it within the Zend
 Framework MVC. The assumptions are that you are using :ref:`Dependency Injection <zend.di>`, and that you are using
-the default :ref:`default MVC view strategies <zend.mvc.view>`.
+the :ref:`default MVC view strategies <zend.mvc.view>`.
 
 .. _zend.view.quick-start.usage.config:
 
@@ -386,7 +386,7 @@ Within Zend Framework, layouts are handled via nesting of view models (see the :
 <zend.view.quick-start.usage.controllers>` for examples of view model nesting). The MVC event composes a View Model
 which acts as the "root" for nested view models, as such, it should contain the skeleton, or layout, template for
 the site (configuration refers to this as the "layoutTemplate"). All other content is then rendered and captured to
-view variables ov this root view model.
+view variables of this root view model.
 
 The default rendering strategy sets the layout template as "layout". To change this, you can add some configuration
 for the Dependency Injector.
@@ -416,7 +416,7 @@ for the Dependency Injector.
 
 A listener on the controllers, ``Zend\Mvc\View\InjectViewModelListener``, will take a view model returned from a
 controller and inject it as a child of the root (layout) view model. By default, view models will capture to the
-"content" variable of the root view model. This means you can do the following in your layout view script.
+"content" variable of the root view model. This means you can do the following in your layout view script:
 
 .. code-block:: php
    :linenos:
@@ -430,8 +430,8 @@ controller and inject it as a child of the root (layout) view model. By default,
        </body>
    </html>
 
-If you want to specify a different view variable to which to capture, explicitly create a view model in your
-controller, and set it's "capture to" value.
+If you want to specify a different view variable for which to capture, explicitly create a view model in your
+controller, and set its "capture to" value:
 
 .. code-block:: php
    :linenos:
