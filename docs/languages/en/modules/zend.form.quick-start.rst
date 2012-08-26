@@ -691,7 +691,7 @@ on the list it has. If you introduce new form view helpers, you'll need to exten
 create your own.
 
 However, your view files can quickly become long and repetitive to write. While we do not currently provide a
-single-line form view helper (as this reduces the form customization), the most simplest and recommended way to
+single-line form view helper (as this reduces the form customization), the simplest and most recommended way to
 render your form is by using the ``FormRow`` view helper. This view helper automatically renders a label (if present),
 the element itself using the ``FormElement`` helper, as well as any errors that could arise. Here is the previous form,
 rewritten to take advantage of this helper :
