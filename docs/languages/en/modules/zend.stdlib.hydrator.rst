@@ -65,17 +65,17 @@ Usage is quite simple: simply instantiate the hydrator, and then pass informatio
 Available Implementations
 -------------------------
 
-- **Zend\Stdlib\Hydrator\ArraySerializable**
+- **Zend\\Stdlib\\Hydrator\\ArraySerializable**
 
   Follows the definition of ``ArrayObject``. Objects must implement either the the ``exchangeArray()`` or
   ``populate()`` methods to support hydration, and the ``getArrayCopy()`` method to support extraction.
 
-- **Zend\Stdlib\Hydrator\ClassMethods**
+- **Zend\\Stdlib\\Hydrator\\ClassMethods**
 
   Any data key matching a setter method will be called in order to hydrate; any method matching a getter method
   will be called for extraction.
 
-- **Zend\Stdlib\Hydrator\ObjectProperty**
+- **Zend\\Stdlib\\Hydrator\\ObjectProperty**
 
   Any data key matching a publically accessible property will be hydrated; any public properties will be used for
   extration.
