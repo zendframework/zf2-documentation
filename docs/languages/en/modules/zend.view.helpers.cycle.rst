@@ -18,7 +18,7 @@ To add elements to cycle just specify them in constructor or use ``assign(array 
      <tr style="background-color:<?php echo $this->cycle(array("#F0F0F0",
                                                                "#FFFFFF"))
                                                  ->next()?>">
-     <td><?php echo $this->escape($book['author']) ?></td>
+     <td><?php echo $this->escapeHtml($book['author']) ?></td>
    </tr>
    <?php endforeach;?>
 
@@ -54,7 +54,7 @@ To use two cycles you have to specify the names of cycles. Just set second param
                                                                "#FFFFFF"))
                                                  ->next()?>">
      <td><?php echo $this->cycle(array(1,2,3),'number')->next()?></td>
-     <td><?php echo $this->escape($book['author'])?></td>
+     <td><?php echo $this->escapeHtml($book['author'])?></td>
    </tr>
    <?php endforeach;?>
 
