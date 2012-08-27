@@ -9,13 +9,13 @@ Traversable object. The ``Zend\Config\Writer`` is an interface that defines two 
 
 - ``Zend\Config\Writer\Ini``
 
-- ``Zend\Config\Write\Xml``
+- ``Zend\Config\Writer\Xml``
 
-- ``Zend\Config\Write\PhpArray``
+- ``Zend\Config\Writer\PhpArray``
 
-- ``Zend\Config\Write\Json``
+- ``Zend\Config\Writer\Json``
 
-- ``Zend\Config\Write\Yaml``
+- ``Zend\Config\Writer\Yaml``
 
 .. _zend.config.writer.ini:
 
