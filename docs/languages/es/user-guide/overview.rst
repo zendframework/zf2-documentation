@@ -1,8 +1,8 @@
 .. _user-guide.overview:
 
-#####################################
+###############################
 Introducción a Zend Framework 2
-#####################################
+###############################
 
 Este tutorial está diseñado para brindar una introducción al uso de Zend Framework 2 
 mediante la creación de una aplicación simple con una base de datos, utilizando el paradigma 
@@ -13,11 +13,11 @@ revisar el código para saber mas acerca de como funciona todo.
 Algunas suposiciones
 -------------------
 
-Este tutorial asumimos que está ejecutando PHP 5.3.10 con el servidor web Apache
+En este tutorial asumimos que está ejecutando PHP 5.3.10 con el servidor web Apache
 y MySQL, accesible mediante la extensión PDO. La instalación de Apache debe tener
-instalado y configurado la extensión mod_rewrite.
+instalada y configurada la extensión mod_rewrite.
 
-También debes asegurarte que Apache este configurado para soportar archivos `.htaccess``. Este
+También debes asegurarte que Apache esté configurado para soportar archivos `.htaccess``. Este
 cambio generalmente se realiza en la configuración 
 
 .. code-block:: apache
@@ -29,11 +29,6 @@ a
 .. code-block:: apache
 
     AllowOverride  All
-
-in your ``httpd.conf`` ﬁle. Check with your distribution’s documentation for
-exact details. You will not be able to navigate to any page other than the home
-page in this tutorial if you have not conﬁgured mod_rewrite and .htaccess usage
-correctly
 
 en el archivo ``httpd.conf``. Revisa la documentación de tu distribución para detalles más exactos. 
 No vas a poder navegar a ninguna página aparte de la página de inicio de este tutorial si no tienes 
@@ -65,7 +60,7 @@ También vamos a necesitar guardar la información en una base de datos.
 Vamos a necesitar una sola tabla con estos campos:
 
 +------------+--------------+-------+-----------------------------+
-| Comapo     | Tipo         | Null? | Notas                       |
+| Compo     | Tipo         | Null? | Notas                       |
 +============+==============+=======+=============================+
 | id         | integer      | No    | Primary key, auto-increment |
 +------------+--------------+-------+-----------------------------+
