@@ -224,8 +224,8 @@ merged config system. Zend Framework 2’s ``ModuleManager`` merges all the
 configuration from each module’s ``module.config.php`` file and then merges in
 the files in ``config/autoload`` (``*.global.php`` and then ``*.local.php``
 files). We’ll add our database configuration information to ``global.php`` which
-you should commit to your version control system.You can use ``local.php``
-(outside of the VCS) to store the credentials for your database if you want to.
+you should commit to your version control system. You can use ``local.php``
+(outside of the VCS) to store the credentials for your database if you want to:
 
 .. code-block:: php
 

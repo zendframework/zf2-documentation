@@ -5,17 +5,17 @@ Zend\\Config\\Writer
 
 ``Zend\Config\Writer`` gives you the ability to write config files out of array, ``Zend\Config\Config`` and any
 Traversable object. The ``Zend\Config\Writer`` is an interface that defines two methods: ``toFile()`` and
-``toString()``. We have three specific writers that implement this interface:
+``toString()``. We have five specific writers that implement this interface:
 
 - ``Zend\Config\Writer\Ini``
 
-- ``Zend\Config\Write\Xml``
+- ``Zend\Config\Writer\Xml``
 
-- ``Zend\Config\Write\PhpArray``
+- ``Zend\Config\Writer\PhpArray``
 
-- ``Zend\Config\Write\Json``
+- ``Zend\Config\Writer\Json``
 
-- ``Zend\Config\Write\Yaml``
+- ``Zend\Config\Writer\Yaml``
 
 .. _zend.config.writer.ini:
 

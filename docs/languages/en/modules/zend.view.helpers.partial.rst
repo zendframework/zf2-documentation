@@ -30,8 +30,8 @@ script:
 
    <?php // partial.phtml ?>
    <ul>
-       <li>From: <?php echo $this->escape($this->from) ?></li>
-       <li>Subject: <?php echo $this->escape($this->subject) ?></li>
+       <li>From: <?php echo $this->escapeHtml($this->from) ?></li>
+       <li>Subject: <?php echo $this->escapeHtml($this->subject) ?></li>
    </ul>
 
 You would then call it from your view script using the following:
