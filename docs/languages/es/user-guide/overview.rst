@@ -48,7 +48,7 @@ modificar y eliminar CDs. Vamos a necesitar cuatro páginas en nuestro sitio web
 |                    | editar y borrar. Ademas nos brindará, un enlace que nos permita |
 |                    | agregar nuevos discos                                           |
 +--------------------+-----------------------------------------------------------------+
-| Agregar nuevo disco| Esta página tendrá un formulario para agregar nuevos Discos     |
+| Agregar nuevodisco | Esta página tendrá un formulario para agregar nuevos Discos     |
 +--------------------+-----------------------------------------------------------------+
 | Editar un disco    | Esta página tendrá un formulario para agregar nuevos Discos     |
 +--------------------+-----------------------------------------------------------------+
