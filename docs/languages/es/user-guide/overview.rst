@@ -44,16 +44,16 @@ modificar y eliminar CDs. Vamos a necesitar cuatro páginas en nuestro sitio web
 +--------------------+-----------------------------------------------------------------+
 | Página             | Descripción												       |
 +====================+=================================================================+
-| Listado de discos  | Mostrará el listado de Discos y nos brinndará enlaces para poder|
-|                    | editar  y borrar. Ademas nos brindará, un enlace que nos permita|
-|                    | agregar nuevos Discos                                           |
+| Listado de discos  | Mostrará el listado de discos y nos brindará enlaces para poder |
+|                    | editar y borrar. Ademas nos brindará, un enlace que nos permita |
+|                    | agregar nuevos discos                                           |
 +--------------------+-----------------------------------------------------------------+
 | Agregar nuevo disco| Esta página tendrá un formulario para agregar nuevos Discos     |
 +--------------------+-----------------------------------------------------------------+
-| Editar un disco    |Esta página tendrá un formulario para agregar nuevos Discos      |
+| Editar un disco    | Esta página tendrá un formulario para agregar nuevos Discos     |
 +--------------------+-----------------------------------------------------------------+
 | Eliminar un disco  | Esta página confimará si que queremos eliminar un disco   	   |
-|                    | y luego se eliminará.                                           |
+|                    | y luego se eliminará                                            |
 +--------------------+-----------------------------------------------------------------+
 
 También vamos a necesitar guardar la información en una base de datos. 
