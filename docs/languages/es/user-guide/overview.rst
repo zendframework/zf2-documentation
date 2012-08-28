@@ -51,7 +51,7 @@ modificar y eliminar CDs. Vamos a necesitar cuatro páginas en nuestro sitio web
 | Agregar nuevo disco| Esta página tendrá un formulario para agregar nuevos Discos     |
 +--------------------+-----------------------------------------------------------------+
 | Editar un disco    |Esta página tendrá un formulario para agregar nuevos Discos      |
-+----------------+---------------------------------------------------------------------+
++--------------------+-----------------------------------------------------------------+
 | Eliminar un disco  | Esta página confimará si que queremos eliminar un disco   	   |
 |                    | y luego se eliminará.                                           |
 +--------------------+-----------------------------------------------------------------+
@@ -60,7 +60,7 @@ También vamos a necesitar guardar la información en una base de datos.
 Vamos a necesitar una sola tabla con estos campos:
 
 +------------+--------------+-------+-----------------------------+
-| Compo      | Tipo         | Null? | Notas                       |
+| Campo      | Tipo         | Null? | Notas                       |
 +============+==============+=======+=============================+
 | id         | integer      | No    | Primary key, auto-increment |
 +------------+--------------+-------+-----------------------------+
