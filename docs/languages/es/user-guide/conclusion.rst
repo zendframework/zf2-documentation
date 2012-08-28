@@ -1,8 +1,8 @@
 .. _user-guide.conclusion:
 
 ##########
-Conclusion
+Conclusión
 ##########
 
-This concludes our brief look at building a simple, but fully functional, MVC
-application using Zend Framework 2. 
+Esto concluye nuestra breve mirada de la construcción de una simple, pero completa y funcional aplicación MVC, 
+usando Zend Framework 2.

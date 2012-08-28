@@ -1,23 +1,28 @@
 .. _user-guide.database-and-models:
 
-###################
-Database and models
-###################
+#######################
+Base de Datos y Modelos 
+#######################
 
-The database
-------------
+La base de datos
+----------------
 
-Now that we have the ``Album`` module set up with controller action methods and
-view scripts, it is time to look at the model section of our application.
-Remember that the model is the part that deals with the application’s core
-purpose (the so-called “business rules”) and, in our case, deals with the
-database. We will make use of the Zend Framework class
-``Zend\Db\TableGateway\TableGateway`` which is used to find, insert, update and
-delete rows from a database table.
+Ahora que tenemos configurado el módulo ``Album`` con el controlador, acciones y vistas, 
+es momento de mirar el modelo de nuestra aplicación. Recuerda que el modelo es la parte 
+central de la aplicación (conocido como “reglas de negocio“) y, 
+en nuestro caso, se refiere a la base de datos. Haremos uso de la 
+clase ``Zend\Db\TableGateway\TableGateway`` de Zend Framework que se utiliza para buscar, 
+agregar, actualizar y eliminar filas de una tabla de una base de datos.
+
+
 
 We are going to use MySQL, via PHP’s PDO driver, so create a database called
 ``zf2tutorial``, and run these SQL statements to create the album table with some
 data in it.
+
+Nosotros vamos a utilizar MySQL, a través del driver PDO de PHP, para crear una 
+base de datos llamada ``zf2tutorial`` y ejecutar las siguientes sentencias SQL 
+para crear la tabla album con algunos datos.
 
 .. code-block:: sql
 
@@ -38,10 +43,11 @@ data in it.
     INSERT INTO album (artist, title)
         VALUES  ('Gotye',  'Making  Mirrors');
 
-(The test data chosen happens to be the Bestsellers on Amazon UK at the time of
-writing!)
+(La datos de prueba elegida, son el listado de Bestsellers de 
+Amazon UK al momento de escribir la versión de este tutorial!)
 
-We now have some data in a database and can write a very simple model for it.
+Ahora tenemos algunos datos en nuestra base de datos y podemos escribir 
+un modelo muy simple para este.
 
 The model files
 ---------------
