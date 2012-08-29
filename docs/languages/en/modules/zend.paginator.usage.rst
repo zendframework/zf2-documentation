@@ -8,149 +8,161 @@ Usage
 Paginating data collections
 ---------------------------
 
-In order to paginate items into pages, ``Zend_Paginator`` must have a generic way of accessing that data. For that
+In order to paginate items into pages, ``Zend\Paginator`` must have a generic way of accessing that data. For that
 reason, all data access takes place through data source adapters. Several adapters ship with Zend Framework by
 default:
 
 .. _zend.paginator.usage.paginating.adapters:
 
-.. table:: Adapters for Zend_Paginator
+.. table:: Adapters for Zend\\Paginator
 
    +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Adapter      |Description                                                                                                                                                                          |
    +=============+=====================================================================================================================================================================================+
-   |Array        |Use a PHP array                                                                                                                                                                      |
+   |Array        |Accepts a PHP array                                                                                                                                                                  |
    +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |DbSelect     |Use a Zend_Db_Select instance, which will return an array                                                                                                                            |
+   |DbSelect     |Accepts a Zend\\Db\\Sql\\Select plus either a Zend\\Db\\Adapter\\Adapter or Zend\\Db\\Sql\\Sql to paginate rows from a database                                                      |
    +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |DbTableSelect|Use a Zend_Db_Table_Select instance, which will return an instance of Zend_Db_Table_Rowset_Abstract. This provides additional information about the result set, such as column names.|
+   |Iterator     |Accepts an Iterator instance                                                                                                                                                         |
    +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |Iterator     |Use an Iterator instance                                                                                                                                                             |
-   +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |Null         |Do not use Zend_Paginator to manage data pagination. You can still take advantage of the pagination control feature.                                                                 |
+   |Null         |Does not use Zend\\Paginator to manage data pagination. You can still take advantage of the pagination control feature.                                                              |
    +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. note::
 
-   Instead of selecting every matching row of a given query, the DbSelect and DbTableSelect adapters retrieve only
-   the smallest amount of data necessary for displaying the current page.
+   Instead of selecting every matching row of a given query, the DbSelect adapter retrieves only
+   the smallest amount of data necessary for displaying the current page.  Because of this, a second query is dynamically generated to determine the total number of matching rows.
 
-   Because of this, a second query is dynamically generated to determine the total number of matching rows.
-   However, it is possible to directly supply a count or count query yourself. See the ``setRowCount()`` method in
-   the DbSelect adapter for more information.
-
-To create an instance of ``Zend_Paginator``, you must supply an adapter to the constructor:
+To create an instance of ``Zend\Paginator``, you must supply an adapter to the constructor:
 
 .. code-block:: php
    :linenos:
 
-   $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($array));
-
-For convenience, you may take advantage of the static ``factory()`` method for the adapters packaged with Zend
-Framework:
-
-.. code-block:: php
-   :linenos:
-
-   $paginator = Zend_Paginator::factory($array);
-
-.. note::
+   $paginator = new Zend\Paginator(new Zend\Paginator\Adapter\Array($array));
 
    In the case of the ``Null`` adapter, in lieu of a data collection you must supply an item count to its
    constructor.
 
 Although the instance is technically usable in this state, in your controller action you'll need to tell the
-paginator what page number the user requested. This allows him to advance through the paginated data.
+paginator what page number the user requested. This allows advancing through the paginated data.
 
 .. code-block:: php
    :linenos:
 
    $paginator->setCurrentPageNumber($page);
 
-The simplest way to keep track of this value is through a *URL*. Although we recommend using a
-``Zend_Controller_Router_Interface``-compatible router to handle this, it is not a requirement.
-
-The following is an example route you might use in an *INI* configuration file:
+The simplest way to keep track of this value is through a *URL* parameter.  The following is an example route you might use in an *Array* configuration file:
 
 .. code-block:: php
    :linenos:
 
-   routes.example.route = articles/:articleName/:page
-   routes.example.defaults.controller = articles
-   routes.example.defaults.action = view
-   routes.example.defaults.page = 1
-   routes.example.reqs.articleName = \w+
-   routes.example.reqs.page = \d+
+   return array(
+       'routes' => array(
+           'paginator' => array(
+               'type' => 'segment',
+               'options' => array(
+                   'route' => '/list/[page/:page]',
+                   'defaults' => array(
+                       'page' => 1,
+                   ),
+               ),
+           ),
+       ),
+   );
 
-With the above route (and using Zend Framework *MVC* components), you might set the current page number like this:
+With the above route (and using Zend Framework *MVC* components), you might set the current page number in your controller action like so:
 
 .. code-block:: php
    :linenos:
 
-   $paginator->setCurrentPageNumber($this->_getParam('page'));
+   $paginator->setCurrentPageNumber($this->params()->fromRoute('page'));
 
 There are other options available; see :ref:`Configuration <zend.paginator.configuration>` for more on them.
 
-Finally, you'll need to assign the paginator instance to your view. If you're using ``Zend_View`` with the
-ViewRenderer action helper, the following will work:
+Finally, you'll need to assign the paginator instance to your view. If you're using Zend Framework *MVC* component, you can assign the paginator object to your view model:
 
 .. code-block:: php
    :linenos:
 
-   $this->view->paginator = $paginator;
+   $vm = new ViewModel();
+   $vm->setVariable('paginator', $paginator);
+   return $vm;
 
 .. _zend.paginator.usage.dbselect:
 
-The DbSelect and DbTableSelect adapter
+The DbSelect adapter
 --------------------------------------
 
-The usage of most adapters is pretty straight-forward. However, the database adapters require a more detailed
+The usage of most adapters is pretty straight-forward. However, the database adapter requires a more detailed
 explanation regarding the retrieval and count of the data from the database.
 
-To use the DbSelect and DbTableSelect adapters you don't have to retrieve the data upfront from the database. Both
-adapters do the retrieval for you, aswell as the counting of the total pages. If additional work has to be done on
-the database results the adapter ``getItems()`` method has to be extended in your application.
+To use the DbSelect adapter you don't have to retrieve the data upfront from the database. The adapter will do the 
+retrieval for you, as well as the counting of the total pages. If additional work has to be done on the database results 
+which cannot be expressed via the provided ``Zend\Db\Sql\Select`` object you must extend the adapter and override the 
+``getItems()`` method.
 
-Additionally these adapters do **not** fetch all records from the database in order to count them. Instead, the
-adapters manipulates the original query to produce the corresponding COUNT query. Paginator then executes that
+Additionally this adapter does **not** fetch all records from the database in order to count them. Instead, the
+adapter manipulates the original query to produce a corresponding COUNT query. Paginator then executes that
 COUNT query to get the number of rows. This does require an extra round-trip to the database, but this is many
-times faster than fetching an entire result set and using ``count()``. Especially with large collections of data.
+times faster than fetching an entire result set and using ``count()``, especially with large collections of data.
 
-The database adapters will try and build the most efficient query that will execute on pretty much all modern
-databases. However, depending on your database or even your own schema setup, there might be more efficient ways to
-get a rowcount. For this scenario the database adapters allow you to set a custom COUNT query. For example, if you
-keep track of the count of blog posts in a separate table, you could achieve a faster count query with the
+The database adapter will try and build the most efficient query that will execute on pretty much any modern
+database. However, depending on your database or even your own schema setup, there might be more efficient ways to
+get a rowcount. For this scenario, you can extend the provided DbSelect adapter and implement a custom ``getRowCount``
+method.  For example, if you keep track of the count of blog posts in a separate table, you could achieve a faster count query with the
 following setup:
 
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Paginator_Adapter_DbSelect($db->select()->from('posts'));
-   $adapter->setRowCount(
-       $db->select()
-          ->from(
-               'item_counts',
-               array(
-                  Zend_Paginator_Adapter_DbSelect::ROW_COUNT_COLUMN => 'post_count'
-               )
-            )
-   );
+   class MyDbSelect extends Zend\Paginator\Adapter\DbSelect
+   {
+       public function count()
+       {
+           $sql = new Zend\Db\Sql\Select();
+           $sql->from('item_counts')->columns(array('c'=>'post_count'));
 
-   $paginator = new Zend_Paginator($adapter);
+           $statement = $this->sql->prepareStatementForSqlObject($select);
+           $result    = $statement->execute();
+           $row       = $result->current();
+           $this->rowCount = $row['c'];
+
+           return $this->rowCount;
+       }
+   }
+
+   $adapter = new MyDbSelect($query, $adapter);
+   $paginator = new Zend\Paginator\Paginator($adapter);
 
 This approach will probably not give you a huge performance gain on small collections and/or simple select queries.
 However, with complex queries and large collections, a similar approach could give you a significant performance
 boost.
+
+The DbSelect adapter also supports returning of fetched records using the ``Zend\Db\ResultSet`` component of ``Zend\Db``.  
+You can override the concrete RowSet implementation by passing an object implementing ``Zend\Db\ResultSet\ResultSetInterface`` 
+as the third constructor argument to the DbSelect adapter:
+
+.. code-block:: php
+   :linenos:
+
+   // $objectPrototype is an instance of our custom entity
+   // $hydrator is a custom hydrator for our entity (implementing Zend\Stdlib\Hydrator\HydratorInterface)
+   $resultSet = new Zend\Db\ResultSet\HydratingResultSet($hydrator, $objectPrototype); 
+
+   $adapter = new Zend\Paginator\Adapter\DbSelect($query, $dbAdapter, $resultSet)
+   $paginator = new Zend\Paginator\Paginator($adapter);
+
+Now when we iterate over ``$paginator`` we will get instances of our custom entity instead of key-value-pair arrays.
 
 .. _zend.paginator.rendering:
 
 Rendering pages with view scripts
 ---------------------------------
 
-The view script is used to render the page items (if you're using ``Zend_Paginator`` to do so) and display the
+The view script is used to render the page items (if you're using ``Zend\Paginator`` to do so) and display the
 pagination control.
 
-Because ``Zend_Paginator`` implements the *SPL* interface `IteratorAggregate`_, looping over your items and
+Because ``Zend\Paginator`` implements the *SPL* interface `IteratorAggregate`_, looping over your items and
 displaying them is simple.
 
 .. code-block:: php
@@ -169,16 +181,16 @@ displaying them is simple.
 
    <?php echo $this->paginationControl($this->paginator,
                                        'Sliding',
-                                       'my_pagination_control.phtml'); ?>
+                                       'my_pagination_control'); ?>
    </body>
    </html>
 
 Notice the view helper call near the end. PaginationControl accepts up to four parameters: the paginator instance,
-a scrolling style, a view partial, and an array of additional parameters.
+a scrolling style, a view script name, and an array of additional parameters.
 
-The second and third parameters are very important. Whereas the view partial is used to determine how the
+The second and third parameters are very important. Whereas the view script name is used to determine how the
 pagination control should **look**, the scrolling style is used to control how it should **behave**. Say the view
-partial is in the style of a search pagination control, like the one below:
+script is in the style of a search pagination control, like the one below:
 
 .. image:: ../images/zend.paginator.usage.rendering.control.png
    :align: center
@@ -192,7 +204,7 @@ There are four scrolling styles packaged with Zend Framework:
 
 .. _zend.paginator.usage.rendering.scrolling-styles:
 
-.. table:: Scrolling styles for Zend_Paginator
+.. table:: Scrolling styles for Zend\\Paginator
 
    +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Scrolling style|Description                                                                                                                                                          |
@@ -207,20 +219,19 @@ There are four scrolling styles packaged with Zend Framework:
    +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 The fourth and final parameter is reserved for an optional associative array of additional variables that you want
-available in your view partial (available via ``$this``). For instance, these values could include extra *URL*
+available in your view (available via ``$this``). For instance, these values could include extra *URL*
 parameters for pagination links.
 
-By setting the default view partial, default scrolling style, and view instance, you can eliminate the calls to
+By setting the default view script name, default scrolling style, and view instance, you can eliminate the calls to
 PaginationControl completely:
 
 .. code-block:: php
    :linenos:
 
-   Zend_Paginator::setDefaultScrollingStyle('Sliding');
-   Zend_View_Helper_PaginationControl::setDefaultViewPartial(
-       'my_pagination_control.phtml'
+   Zend\Paginator\Paginator::setDefaultScrollingStyle('Sliding');
+   Zend\View\Helper\PaginationControl::setDefaultViewPartial(
+       'my_pagination_control'
    );
-   $paginator->setView($view);
 
 When all of these values are set, you can render the pagination control inside your view script with a simple echo
 statement:
@@ -232,7 +243,7 @@ statement:
 
 .. note::
 
-   Of course, it's possible to use ``Zend_Paginator`` with other template engines. For example, with Smarty you
+   Of course, it's possible to use ``Zend\Paginator`` with other template engines. For example, with Smarty you
    might do the following:
 
    .. code-block:: php
@@ -380,7 +391,7 @@ Dropdown pagination:
 Listing of properties
 ^^^^^^^^^^^^^^^^^^^^^
 
-The following options are available to pagination control view partials:
+The following options are available to pagination control view scripts:
 
 .. _zend.paginator.usage.rendering.properties.table:
 

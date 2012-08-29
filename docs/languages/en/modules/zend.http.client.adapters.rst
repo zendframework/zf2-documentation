@@ -184,7 +184,7 @@ You can access the stream context using the following methods of ``Zend_Http_Cli
    $context = $adapter->getStreamContext();
    stream_context_set_option($context, $options);
 
-   // Now, preform the request
+   // Now, perform the request
    $response = $client->request();
 
    // If everything went well, you can now access the context again
@@ -193,9 +193,9 @@ You can access the stream context using the following methods of ``Zend_Http_Cli
 
 .. note::
 
-   Note that you must set any stream context options before using the adapter to preform actual requests. If no
-   context is set before preforming *HTTP* requests with the Socket adapter, a default stream context will be
-   created. This context resource could be accessed after preforming any requests using the ``getStreamContext()``
+   Note that you must set any stream context options before using the adapter to perform actual requests. If no
+   context is set before performing *HTTP* requests with the Socket adapter, a default stream context will be
+   created. This context resource could be accessed after performing any requests using the ``getStreamContext()``
    method.
 
 .. _zend.http.client.adapters.proxy:
