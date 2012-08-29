@@ -328,11 +328,11 @@ name}``. We can now fill in the ``index.phtml`` view script:
             'action'=>'add'));?>">Add new album</a></p>
 
     <table class="table">
-    <tr>
+    <thead>
         <th>Title</th>
         <th>Artist</th>
         <th>&nbsp;</th>
-    </tr>
+    </thead>
     <?php foreach($albums as $album) : ?>
     <tr>
         <td><?php echo $this->escapeHtml($album->title);?></td>
