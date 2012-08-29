@@ -523,10 +523,10 @@ called, the default request method is ``GET`` (see the above example).
 
    use Zend\Http\Client;
    $client = new Client();
-   // Preforming a POST request
+   // Performing a POST request
    $response = $client->send('POST');
 
-   // Yet another way of preforming a POST request
+   // Yet another way of performing a POST request
    $client->setMethod(Client::POST);
    $response = $client->send();
 
