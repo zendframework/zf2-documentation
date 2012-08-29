@@ -3,9 +3,9 @@
 Introduction
 ============
 
-``Zend_Paginator`` is a flexible component for paginating collections of data and presenting that data to users.
+``Zend\Paginator`` is a flexible component for paginating collections of data and presenting that data to users.
 
-The primary design goals of ``Zend_Paginator`` are as follows:
+The primary design goals of ``Zend\Paginator`` are as follows:
 
 
 
@@ -15,8 +15,8 @@ The primary design goals of ``Zend_Paginator`` are as follows:
 
    - Do not force users to adhere to only one way of displaying data or rendering pagination controls
 
-   - Loosely couple ``Zend_Paginator`` to other Zend Framework components so that users who wish to use it
-     independently of ``Zend_View``, ``Zend_Db``, etc. can do so
+   - Loosely couple ``Zend\Paginator`` to other Zend Framework components so that users who wish to use it
+     independently of ``Zend\View``, ``Zend\Db``, etc. can do so
 
 
 

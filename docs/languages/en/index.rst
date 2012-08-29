@@ -119,6 +119,10 @@
    modules/zend.mvc.controllers
    modules/zend.mvc.plugins
    modules/zend.mvc.examples
+   modules/zend.paginator.introduction
+   modules/zend.paginator.usage
+   modules/zend.paginator.configuration
+   modules/zend.paginator.advanced
    modules/zend.permissions.acl.intro
    modules/zend.permissions.acl.refining
    modules/zend.permissions.acl.advanced
@@ -404,6 +408,16 @@ Zend\\Mvc
         * :doc:`modules/zend.mvc.controllers`
         * :doc:`modules/zend.mvc.plugins`
         * :doc:`modules/zend.mvc.examples`
+
+.. _zend.paginator:
+
+Zend\\Paginator
+^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.paginator.introduction`
+        * :doc:`modules/zend.paginator.usage`
+        * :doc:`modules/zend.paginator.configuration`
+        * :doc:`modules/zend.paginator.advanced`
 
 .. _zend.permissions.acl:
 
