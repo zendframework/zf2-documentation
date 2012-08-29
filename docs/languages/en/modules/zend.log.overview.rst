@@ -152,7 +152,7 @@ the error along as well.
 
    $logger->addWriter($writer);
 
-   Logger::registerErrorHandler($logger);
+   Zend\Log\Logger::registerErrorHandler($logger);
 
 If you want to unregister the error handler you can use the ``unregisterErrorHandler()`` static method.
 
