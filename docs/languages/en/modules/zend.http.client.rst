@@ -8,7 +8,7 @@ Zend\\Http\\Client
 Overview
 --------
 
-``Zend\Http\Client`` provides an easy interface for preforming Hyper-Text Transfer Protocol (HTTP) requests.
+``Zend\Http\Client`` provides an easy interface for performing Hyper-Text Transfer Protocol (HTTP) requests.
 ``Zend\Http\Client`` supports most simple features expected from an *HTTP* client, as well as some more complex
 features such as *HTTP* authentication and file uploads. Successful requests (and most unsuccessful ones too)
 return a ``Zend\Http\Response`` object, which provides access to the response's headers and body (see :ref:`this
