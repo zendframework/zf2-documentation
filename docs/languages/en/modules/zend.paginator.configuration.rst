@@ -3,11 +3,11 @@
 Configuration
 =============
 
-``Zend_Paginator`` has several configuration methods that can be called:
+``Zend\Paginator`` has several configuration methods that can be called:
 
 .. _zend.paginator.configuration.table:
 
-.. table:: Configuration methods for Zend_Paginator
+.. table:: Configuration methods for Zend\\Paginator\\Paginator
 
    +--------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Method              |Description                                                                                                                                                                                                                                          |
