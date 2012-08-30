@@ -53,7 +53,7 @@ modificar y eliminar CDs. Vamos a necesitar cuatro páginas en nuestro sitio web
 +--------------------+---------------------------------------------------------------+
 | Editar un disco    | Esta página tendrá un formulario para editar nuevos Discos    |
 +--------------------+---------------------------------------------------------------+
-| Eliminar un disco  | T Esta página confimará si que queremos eliminar un disco     |
+| Eliminar un disco  | Esta página confimará si que queremos eliminar un disco       |
 |                    | y luego se eliminará.                                         |
 +--------------------+---------------------------------------------------------------+
 
