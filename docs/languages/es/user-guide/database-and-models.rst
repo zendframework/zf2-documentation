@@ -10,7 +10,7 @@ La base de datos
 Ahora que tenemos configurado el módulo ``Album`` con el controlador, acciones y vistas, 
 es momento de mirar el modelo de nuestra aplicación. Recuerda que el modelo es la parte 
 central de la aplicación (conocido como “reglas de negocio“) y, 
-en nuestro caso, se refiere a la base de datos. Haremos uso de la 
+en nuestro caso, se refiere a la base de datos. Haremos uso de la
 clase ``Zend\Db\TableGateway\TableGateway`` de Zend Framework que se utiliza para buscar, 
 agregar, actualizar y eliminar filas de una tabla de una base de datos.
 
@@ -44,8 +44,8 @@ Amazon UK al momento de escribir la versión de este tutorial)
 Ahora tenemos algunos datos en nuestra base de datos y podemos escribir 
 un modelo muy simple para esto.
 
-Los archivos de modelo 
-----------------------
+Los archivos del modelo 
+-----------------------
 
 Zend Framework no proporciona un componente Zend\Model puesto que el modelo 
 es la lógica de negocio y te toca decidir cómo quieres que funcione. Hay muchos 
@@ -290,8 +290,8 @@ We can now call ``getAlbumTable()`` from within our controller whenever we need
 to interact with our model. Let’s start with a list of albums when the ``index``
 action is called.
 
-Listing albums
---------------
+Listado de álbumes 
+------------------
 
 In order to list the albums, we need to retrieve them from the model and pass
 them to the view. To do this, we fill in ``indexAction()`` within
