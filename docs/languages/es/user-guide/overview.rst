@@ -6,25 +6,26 @@ Introducción a Zend Framework 2
 
 Este tutorial está diseñado para brindar una introducción al uso de Zend Framework 2 
 mediante la creación de una aplicación simple con una base de datos, utilizando el paradigma 
-Modelo-Vista-Controlador. Al final tendrás una aplicación ZF2 funcionando y podrás 
+Modelo-Vista-Controlador. Al final tendrás una simple pero funcional aplicación ZF2 y podrás 
 revisar el código para saber mas acerca de como funciona todo.
+
 .. _user-guide.overview.assumptions:
 
 Algunas suposiciones
 -------------------
 
-En este tutorial asumimos que está ejecutando PHP 5.3.10 con el servidor web Apache
+En este tutorial asumimos que estás ejecutando PHP 5.3.10 con el servidor web Apache
 y MySQL, accesible mediante la extensión PDO. La instalación de Apache debe tener
 instalada y configurada la extensión mod_rewrite.
 
-También debes asegurarte que Apache esté configurado para soportar archivos `.htaccess``. Este
-cambio generalmente se realiza en la configuración 
+También debes asegurarte que Apache esté configurado para soportar archivos ``.htaccess``. Esto
+generalmente se realiza cambiando en la configuración 
 
 .. code-block:: apache
 
     AllowOverride None
 
-a
+por
 
 .. code-block:: apache
 
@@ -37,14 +38,14 @@ configurado correctamente mod_rewrite y el archivo .htaccess
 Tutorial de la aplicación 
 -------------------------
 
-La aplicación que vamos a crear es un simple sistema de inventario para mostrar
+La aplicación que vamos a crear es un simple sistema de inventarios para mostrar
 los discos que poseemos. La página principal va a listar nuestra colección y nos va a permitir agregar, 
 modificar y eliminar CDs. Vamos a necesitar cuatro páginas en nuestro sitio web:
 
 +--------------------+---------------------------------------------------------------+
 | Página             | Descripción                                                   |
 +====================+===============================================================+
-| Lista de discos    | Mostrará el listado de discos y nos brindará enlaces para     |
+| Listar  discos     | Mostrará el listado de discos y nos brindará enlaces para     |
 |                    | poder editar y borrar. Ademas nos brindará, un enlace que nos |
 |                    | permita agregar nuevos discos                                 |
 +--------------------+---------------------------------------------------------------+
