@@ -32,7 +32,7 @@ por
     AllowOverride  All
 
 en el archivo ``httpd.conf``. Revisa la documentación de tu distribución para detalles más exactos. 
-No vas a poder navegar a ninguna página aparte de la página de inicio de este tutorial si no tienes 
+No vas a poder navegar a ninguna página,: aparte de la página de inicio de este tutorial si no tienes 
 configurado correctamente mod_rewrite y el archivo .htaccess
 
 Tutorial de la aplicación 
