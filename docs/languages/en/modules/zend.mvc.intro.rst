@@ -3,50 +3,54 @@
 Introduction to the MVC Layer
 =============================
 
-``Zend\Mvc`` is a brand new MVC implementation designed from the ground up for Zend Framework 2.0. The focus of
-this implementation is performance and flexibility.
+``Zend\Mvc`` is a brand new MVC implementation designed from the ground up for Zend Framework 2.0,
+with a focus on performance and flexibility.
 
 The MVC layer is built on top of the following components:
 
-- ``Zend\ServiceManager``. Zend Framework provides a set of default service definitions to use in order to create
-  and configure your application instance and workflow.
+- ``Zend\ServiceManager``. Zend Framework provides a set of default service definitions set up at
+  ``Zend\Mvc\Service``. The ``ServiceManager`` creates and configures your application instance and
+  workflow.
 
-- ``Zend\EventManager``, which is used everywhere from initial bootstrapping of the application to returning the
-  response; the MVC is event driven.
+- ``Zend\EventManager``. The MVC is event driven, and this component is used everywhere 
+  from its initial bootstrapping of the application, to returning response and request calls, 
+  to setting and retrieving routes and matched routes, as well as view rendering.
 
-- ``Zend\Http``, specifically the request and response objects, which are used with:
+- ``Zend\Http``, specifically the request and response objects, used within:
 
-- ``Zend\Stdlib\DispatchableInterface``; all "controllers" are simply dispatchable objects
+- ``Zend\Stdlib\DispatchableInterface``. All "controllers" are simply dispatchable objects.
 
-Within the MVC layer, several subcomponents are exposed:
+Within the MVC layer, several sub-components are exposed:
 
-- ``Zend\Mvc\Router`` contains classes pertaining to routing a request (the act of matching a request to a
-  controller, or dispatchable)
+- ``Zend\Mvc\Router`` contains classes pertaining to routing a request. In other words, it matches
+  the request to its respective controller (or dispatchable).
 
-- ``Zend\Mvc\PhpEnvironment``, a set of decorators for the HTTP ``Request`` and ``Response`` objects that ensure
-  the request is injected with the current environment (including query parameters, POST parameters, HTTP headers,
-  etc.)
+- ``Zend\Http\PhpEnvironment`` provides a set of decorators for the HTTP ``Request`` and
+  ``Response`` objects that ensure the request is injected with the current environment (including
+  query parameters, POST parameters, HTTP headers, etc.)
 
-- ``Zend\Mvc\Controller``, a set of abstract "controller" classes with basic responsibilities such as event wiring,
-  action dispatching, etc.
+- ``Zend\Mvc\Controller``, a set of abstract "controller" classes with basic responsibilities such
+  as event wiring, action dispatching, etc.
 
-- ``Zend\Mvc\Service``, which provides a set of ``ServiceManager`` factories and definitions for the default
-  application workflow.
+- ``Zend\Mvc\Service`` provides a set of ``ServiceManager`` factories and definitions for the
+  default application workflow.
 
-- ``Zend\Mvc\View``, which provides the default wiring for renderer selection, view script resolution, helper
-  registration, and more; additionally, it provides a number of listeners that tie into the MVC workflow to provide
-  features such as automated template name resolution, automated view model creation and injection, and more.
+- ``Zend\Mvc\View`` provides default wiring for renderer selection, view script resolution, helper
+  registration, and more; additionally, it provides a number of listeners that tie into the MVC
+  workflow to provide features such as automated template name resolution, automated view model
+  creation and injection, and more.
 
-The gateway to the MVC is the ``Zend\Mvc\Application`` object (referred to simply as ``Application`` from this
-point forward). Its primary responsibilities are to **bootstrap** resources, **route** the request, and to retrieve
-and **dispatch** the controller discovered. Once accomplished, it returns a response, which can then be **sent**.
+The gateway to the MVC is the `Zend\Mvc\Application`_ object (referred to as ``Application``
+henceforth).  Its primary responsibilities are to **bootstrap** resources, **route** the request,
+and to retrieve and **dispatch** the controller matched during routing. Once accomplished, it
+will **render** the view, and **finish** the request, returning and sending the response.
 
 .. _zend.mvc.intro.basic-application-structure:
 
 Basic Application Structure
 ---------------------------
 
-The basic structure of an application is as follows:
+The basic application structure follows:
 
 
 ::
@@ -65,18 +69,21 @@ The basic structure of an application is as follows:
            .htaccess
            index.php
 
-The ``public/index.php`` performs the basic work of martialling configuration and configuring the ``Application``.
-Once done, it ``run()``\ s the ``Application`` and ``send()``\ s the response returned.
+The ``public/index.php`` marshalls all user requests to your website, retrieving an array of
+configuration located in ``config/application.php``. On return, it ``run()``\ s the ``Application``,
+processing the request and returning a response to the user.
 
-The ``config`` directory will typically contain configuration used by ``Zend\Module\Manager`` in order to load
-modules and merge configuration; we will detail this more later.
+The ``config`` directory as described above contains configuration used by the
+``Zend\Module\Manager`` to load modules and merge configuration (e.g., database configuration and
+credentials); we will detail this more later.
 
-The ``vendor`` subdirectory should contain any third-party modules or libraries on which your application depends.
-This might include Zend Framework, custom libraries from your organization, or other third-party libraries from
-other projects. Libraries and modules placed in the ``vendor`` subdirectory should not be modified from their
-original, distributed state.
+The ``vendor`` sub-directory should contain any third-party modules or libraries on which your
+application depends.  This might include Zend Framework, custom libraries from your organization, or
+other third-party libraries from other projects. Libraries and modules placed in the ``vendor``
+sub-directory should not be modified from their original, distributed state.
 
-Finally, the ``module`` directory will contain one or more modules delivering your application's functionality.
+Finally, the ``module`` directory will contain one or more modules delivering your application's
+functionality.
 
 Let's now turn to modules, as they are the basic units of a web application.
 
@@ -85,17 +92,18 @@ Let's now turn to modules, as they are the basic units of a web application.
 Basic Module Structure
 ----------------------
 
-A module may contain just about anything: PHP code, including MVC functionality; library code; view scripts; and/or
-or public assets such as images, CSS, and JavaScript. The one requirement -- and even this is optional -- is that a
-module acts as a PHP namespace and that it contains a ``Module`` class under that namespace. This class will then
-be consumed by ``Zend\Module\Manager`` in order to perform a number of tasks.
+A module may contain anything: PHP code, including MVC functionality; library code; view scripts;
+and/or or public assets such as images, CSS, and JavaScript. The only requirement -- and even this
+is optional -- is that a module acts as a PHP namespace and that it contains a ``Module.php`` class
+under that namespace. This class is eventually consumed by ``Zend\Module\Manager`` to perform a
+number of tasks.
 
-The recommended structure of a module is as follows:
+The recommended module structure follows:
 
 
 ::
 
-   module_root/
+   module_root<named-after-module-namespace>/
        Module.php
        autoload_classmap.php
        autoload_function.php
@@ -119,11 +127,11 @@ The recommended structure of a module is as follows:
                <dir-named-after-a-controller>/
                    <.phtml files>
 
-Since a module acts as a namespace, the module root directory should be that namespace. Typically, this namespace
-will also include a vendor prefix of sorts. As an example a module centered around "User" functionality delivered
+Since a module acts as a namespace, the module root directory should be that namespace. This namespace
+could also include a vendor prefix of sorts. As an example a module centered around "User" functionality delivered
 by Zend might be named "ZendUser", and this is also what the module root directory will be named.
 
-The ``Module.php`` file directly under the module root directory will be in the module namespace.
+The ``Module.php`` file directly under the module root directory will be in the module namespace shown below.
 
 .. code-block:: php
    :linenos:
@@ -134,12 +142,12 @@ The ``Module.php`` file directly under the module root directory will be in the 
    {
    }
 
-By default, if an ``init()`` method is defined, this method will be triggered by a ``Zend\Module\Manager`` listener
-when it loads the module class, and passed an instance of the manager. This allows you to perform tasks such as
-setting up module-specific event listeners. The ``init()`` method is called for **every** module on **every** page
+When an ``init()`` method is defined, this method will be triggered by a ``Zend\Module\Manager`` listener
+when it loads the module class, and passed an instance of the manager by default.  This allows you to perform tasks such as
+setting up module-specific event listeners.  But be cautious, the ``init()`` method is called for **every** module on **every** page
 request and should **only** be used for performing **lightweight** tasks such as registering event listeners.
-Similarly, an ``onBootstrap()`` method (which accepts an ``MvcEvent`` instance) may be defined; it will be
-triggered for every page request, and should be used for lightweight tasks only.
+Similarly, an ``onBootstrap()`` method (which accepts an ``MvcEvent`` instance) may be defined; it is also
+triggered for every page request, and should be used for lightweight tasks as well.
 
 The three ``autoload_*.php`` files are not required, but recommended. They provide the following:
 
@@ -162,7 +170,7 @@ configuration, "module.config.php". Typically, you will create configuration for
 dependency injector.
 
 The ``src`` directory should be a `PSR-0 compliant directory structure`_ with your module's source code. Typically,
-you should at least have one subdirectory named after your module namespace; however, you can ship code from
+you should at least have one sub-directory named after your module namespace; however, you can ship code from
 multiple namespaces if desired.
 
 The ``test`` directory should contain your unit tests. Typically, these will be written using `PHPUnit`_, and
@@ -292,7 +300,7 @@ complicated? It's not.
 Configuring the Module Manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The first step is configuring the module manager. You simply inform the module manager which modules to load, and
+The first step is configuring the module manager.  Simply inform the module manager which modules to load, and
 potentially provide configuration for the module listeners.
 
 Remember the ``application.php`` from earlier? We're going to provide some configuration.
@@ -348,6 +356,6 @@ is a lightweight and simple approach to enforcing a modular architecture that en
 concerns and code re-use.
 
 
-
+.._`Zend\Mvc\Application`: https://github.com/zendframework/zf2/blob/master/library/Zend/Mvc/Application.php
 .. _`PSR-0 compliant directory structure`: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 .. _`PHPUnit`: http://phpunit.de

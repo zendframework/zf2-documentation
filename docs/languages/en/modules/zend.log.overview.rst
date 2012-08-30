@@ -147,14 +147,12 @@ the error along as well.
 .. code-block:: php
    :linenos:
 
-   use Zend\Log\Logger;
-   use Zend\Log\Writer\Stream as StreamWriter;
+   $logger = new Zend\Log\Logger;
+   $writer = new Zend\Log\Writer\Stream('php://output');
 
-   $logger = new Logger;
-   $writer = new StreamWriter('php://output');
    $logger->addWriter($writer);
 
-   Logger::registerErrorHandler($this->logger);
+   Zend\Log\Logger::registerErrorHandler($logger);
 
 If you want to unregister the error handler you can use the ``unregisterErrorHandler()`` static method.
 
