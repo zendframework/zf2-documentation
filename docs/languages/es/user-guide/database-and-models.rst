@@ -59,10 +59,10 @@ Para este tutorial, vamos a crear un modelo muy simple mediante la creación de
 una clase ``AlbumTable`` que hereda de ``Zend\Db\TableGateway\TableGateway`` donde cada 
 objeto album es un objeto de ``Album`` (conocido como una *entidad*). Esto es una 
 implementación del patrón de diseño Table Data Gateway el cual permite la interconexión 
-con los datos de una tabla de la base de datos. Ten en cuenta que el patron 
+con los datos de una tabla de la base de datos. Ten en cuenta que el patrón 
 Table Data Gateway puede llegar a ser limitante en sistemas más grandes. 
 También existe la tentación de poner el código de acceso a la base de datos 
-en el en los métodos Action del controlador ya que están expuestos por ``Zend\Db\TableGateway\AbstractTableGateway``. 
+en los métodos Action del controlador ya que están expuestos por ``Zend\Db\TableGateway\AbstractTableGateway``. 
 ¡No me hagas esto!
 
 Vamos a empezar con nuestra clase ``Album`` que se encuentra dentro del directorio ``Model``:
@@ -86,7 +86,7 @@ Vamos a empezar con nuestra clase ``Album`` que se encuentra dentro del director
         }
     }
 
-Nuestra objeto ``Album`` es uma simple clase PHP. Para poder trabajar con la clase
+Nuestro objeto ``Album`` es uma simple clase PHP. Para poder trabajar con la clase
 ``Zend\Db``’s ``AbstractTableGateway``, tenemos que usar el método
 ``exchangeArray()``. This method simply copies the data from the passed
 in array to our entity’s properties. We will add an input filter for use with

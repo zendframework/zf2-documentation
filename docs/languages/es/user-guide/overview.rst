@@ -6,13 +6,13 @@ Introducción a Zend Framework 2
 
 Este tutorial está diseñado para brindar una introducción al uso de Zend Framework 2 
 mediante la creación de una aplicación simple con una base de datos, utilizando el paradigma 
-Modelo-Vista-Controlador. Al final tendrás una simple pero funcional aplicación ZF2 y podrás 
-revisar el código para saber mas acerca de como funciona todo.
+Modelo-Vista-Controlador. Al final tendrás una simple, pero funcional, aplicación ZF2 y podrás 
+revisar el código para saber mas acerca de cómo funciona todo.
 
 .. _user-guide.overview.assumptions:
 
 Algunas suposiciones
--------------------
+--------------------
 
 En este tutorial asumimos que estás ejecutando PHP 5.3.10 con el servidor web Apache
 y MySQL, accesible mediante la extensión PDO. La instalación de Apache debe tener
