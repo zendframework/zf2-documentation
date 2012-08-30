@@ -15,11 +15,6 @@ clase ``Zend\Db\TableGateway\TableGateway`` de Zend Framework que se utiliza par
 agregar, actualizar y eliminar filas de una tabla de una base de datos.
 
 
-
-We are going to use MySQL, via PHP’s PDO driver, so create a database called
-``zf2tutorial``, and run these SQL statements to create the album table with some
-data in it.
-
 Nosotros vamos a utilizar MySQL, a través del driver PDO de PHP, para crear una 
 base de datos llamada ``zf2tutorial`` y ejecutar las siguientes sentencias SQL 
 para crear la tabla album con algunos datos.
@@ -43,32 +38,34 @@ para crear la tabla album con algunos datos.
     INSERT INTO album (artist, title)
         VALUES  ('Gotye',  'Making  Mirrors');
 
-(La datos de prueba elegida, son el listado de Bestsellers de 
-Amazon UK al momento de escribir la versión de este tutorial!)
+(La datos de prueba elegida, fueron el listado de Bestsellers de 
+Amazon UK al momento de escribir la versión de este tutorial)
 
 Ahora tenemos algunos datos en nuestra base de datos y podemos escribir 
-un modelo muy simple para este.
+un modelo muy simple para esto.
 
-The model files
----------------
+Los archivos de modelo 
+----------------------
 
-Zend Framework does not provide a ``Zend\Model`` component as the model is your
-business logic and it’s up to you to decide how you want it to work. There are
-many components that you can use for this depending on your needs. One approach
-is to have model classes represent each entity in your application and then
-use mapper objects that load and save entities to the database. Another is to
-use an ORM like Doctrine or Propel.
+Zend Framework no proporciona un componente Zend\Model puesto que el modelo 
+es la lógica de negocio y te toca decidir cómo quieres que funcione. Hay muchos 
+componentes que puedes utilizar dependiendo de tus necesidades. Un enfoque consiste 
+en tener clases del modelo que representen a cada entidad de tu aplicación y luego 
+usar objetos de mapeo para cargar y guardar las entidades en la base de datos. 
+Otra es utilizar un ORM como Doctrine o Propel.
 
-For this tutorial, we are going to create a very simple model by creating an
-``AlbumTable`` class that extends ``Zend\Db\TableGateway\TableGateway`` where
-each album object is an ``Album`` object (known as an *entity*). This is an
-implementation of the Table Data Gateway design pattern to allow for interfacing
-with data in a database table. Be aware though that the Table Data Gateway
-pattern can become limiting in larger systems. There is also a temptation to put
-database access code into controller action methods as these are exposed by
-``Zend\Db\TableGateway\AbstractTableGateway``. *Don’t do this*!
 
-Let’s start with our ``Album`` entity class within the ``Model`` directory:
+Para este tutorial, vamos a crear un modelo muy simple mediante la creación de 
+una clase ``AlbumTable`` que hereda de ``Zend\Db\TableGateway\TableGateway`` donde cada 
+objeto album es un objeto de ``Album`` (conocido como una *entidad*). Esto es una 
+implementación del patrón de diseño Table Data Gateway el cual permite la interconexión 
+con los datos de una tabla de la base de datos. Ten en cuenta que el patron 
+Table Data Gateway puede llegar a ser limitante en sistemas más grandes. 
+También existe la tentación de poner el código de acceso a la base de datos 
+en el en los métodos Action del controlador ya que están expuestos por ``Zend\Db\TableGateway\AbstractTableGateway``. 
+¡No me hagas esto!
+
+Vamos a empezar con nuestra clase ``Album`` que se encuentra dentro del directorio ``Model``:
 
 .. code-block:: php
 
@@ -89,9 +86,9 @@ Let’s start with our ``Album`` entity class within the ``Model`` directory:
         }
     }
 
-Our ``Album`` entity object is a simple PHP class. In order to work with
-``Zend\Db``’s ``AbstractTableGateway`` class, we need to implement the
-``exchangeArray()`` method. This method simply copies the data from the passed
+Nuestra objeto ``Album`` es uma simple clase PHP. Para poder trabajar con la clase
+``Zend\Db``’s ``AbstractTableGateway``, tenemos que usar el método
+``exchangeArray()``. This method simply copies the data from the passed
 in array to our entity’s properties. We will add an input filter for use with
 our form later.
 
