@@ -125,6 +125,7 @@ Create the following conﬁguration ﬁle for the ``Album`` module:
 
 .. code-block:: php
 
+    <?php
     // module/Album/conﬁg/module.config.php:
     return array(
         'controllers' => array(
