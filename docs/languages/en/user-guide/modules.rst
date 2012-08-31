@@ -55,6 +55,7 @@ Create ``Module.php`` in the ``Album`` module:
 
 .. code-block:: php
 
+    <?php
     // module/Album/Module.php
     namespace Album;
     
