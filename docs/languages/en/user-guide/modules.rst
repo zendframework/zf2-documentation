@@ -99,7 +99,6 @@ classmap autoloader. Create ``autoload_classmap.php`` with these contents:
 
 .. code-block:: php
 
-    <?php
     // module/Album/autoload_classmap.php:
     return array();
 
