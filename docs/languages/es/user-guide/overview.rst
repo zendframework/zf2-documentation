@@ -7,7 +7,7 @@ Introducción a Zend Framework 2
 Este tutorial está diseñado para brindar una introducción al uso de Zend Framework 2 
 mediante la creación de una aplicación simple con una base de datos, utilizando el paradigma 
 Modelo-Vista-Controlador. Al final tendrás una simple, pero funcional, aplicación ZF2 y podrás 
-revisar el código para saber mas acerca de cómo funciona todo.
+revisar el código para saber más acerca de cómo funciona todo.
 
 .. _user-guide.overview.assumptions:
 
@@ -32,7 +32,7 @@ por
     AllowOverride  All
 
 en el archivo ``httpd.conf``. Revisa la documentación de tu distribución para detalles más exactos. 
-No vas a poder navegar a ninguna página,: aparte de la página de inicio de este tutorial si no tienes 
+No vas a poder navegar a ninguna página, aparte de la página de inicio de este tutorial, si no tienes 
 configurado correctamente mod_rewrite y el archivo .htaccess
 
 Tutorial de la aplicación 
