@@ -63,9 +63,7 @@ The ``InjectApplicationEventInterface`` defines simply two methods:
 .. code-block:: php
    :linenos:
 
-   use Zend\EventManager\EventDescription as Event;
-
-   public function setEvent(Event $event);
+   public function setEvent(Zend\EventManager\EventInterface $event);
    public function getEvent();
 
 .. _zend.mvc.controllers.interfaces.service-manager-aware:
