@@ -297,7 +297,7 @@ this:
 
 .. code-block:: php
 
-    module/Album/src/Album/Controller/AlbumController.php:
+    // module/Album/src/Album/Controller/AlbumController.php:
     // ...
         public function indexAction()
         {
