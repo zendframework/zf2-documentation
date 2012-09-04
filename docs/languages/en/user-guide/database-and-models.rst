@@ -246,12 +246,12 @@ you should commit to your version control system. You can use ``local.php``
         ),
     );
 
-You should put your database credentials in ``config/autoloader/local.php`` so
+You should put your database credentials in ``config/autoload/local.php`` so
 that they are not in the git repository (as ``local.php`` is ignored):
 
 .. code-block:: php
 
-    // config.autoload/local.php:
+    // config/autoload/local.php:
     return array(
         'db' => array(
             'username' => 'YOUR USERNAME HERE',
