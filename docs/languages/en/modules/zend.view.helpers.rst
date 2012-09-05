@@ -53,7 +53,7 @@ route-based *URL*\ s and *HTML* lists, as well as declaring variables. Additiona
 helpers for providing values for, and rendering, the various HTML *<head>* tags, such as ``HeadTitle``,
 ``HeadLink``, and ``HeadScript``. The currently shipped helpers include:
 
-- ``url($urlOptions, $name, $reset)``: Creates a *URL* string based on a named route. ``$urlOptions`` should be an
+- ``url($name, $urlOptions, $reset)``: Creates a *URL* string based on a named route. ``$urlOptions`` should be an
   associative array of key/value pairs used by the particular route.
 
 - ``htmlList($items, $ordered, $attribs, $escape)``: generates unordered and ordered lists based on the ``$items``
