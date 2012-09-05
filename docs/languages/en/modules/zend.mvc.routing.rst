@@ -442,24 +442,22 @@ An example of its usage would be
 
    $route = Part::factory(array(
        'home' => array(
-           'page'    => 'segment',
+           'type'    => 'segment',
            'options' => array(
                'route'    => '/page[/:name]',
                'constraints' => array(
-                   'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                   'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                   'name' => '[a-zA-Z][a-zA-Z0-9_-]*',
                ),
                'defaults' => array(
-                   'controller' => 'page',
-                   'action'     => 'index',
+                   'name' => 'home',
                ),
            )
-       ),
-       'may_terminate' => true,
-       'route_broker'  => $routeBroker,
-       'child_routes'  => array(
-           'query' => array(
-               'type' => 'Query',
+           'may_terminate' => true,
+           'route_broker'  => $routeBroker,
+           'child_routes'  => array(
+               'query' => array(
+                   'type' => 'Query',
+               ),
            ),
        ),
    ));
