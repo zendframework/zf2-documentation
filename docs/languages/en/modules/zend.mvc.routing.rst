@@ -446,12 +446,10 @@ An example of its usage would be
            'options' => array(
                'route'    => '/page[/:name]',
                'constraints' => array(
-                   'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                   'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                   'name' => '[a-zA-Z][a-zA-Z0-9_-]*',
                ),
                'defaults' => array(
-                   'controller' => 'page',
-                   'action'     => 'index',
+                   'name' => 'home',
                ),
            )
        ),
