@@ -139,8 +139,8 @@ Create the following conﬁguration ﬁle for the ``Album`` module:
     );
 
 The conﬁg information is passed to the relevant components by the
-``ServiceManager``.  We need two initial sections: ``controller`` and
-``view_manager``. The controller section provides a list of all the controllers
+``ServiceManager``.  We need two initial sections: ``controllers`` and
+``view_manager``. The controllers section provides a list of all the controllers
 provided by the module. We will need one controller, ``AlbumController``, which
 we’ll reference as ``Album\Controller\Album``. The controller key must
 be unique across all modules, so we preﬁx it with our module name.
