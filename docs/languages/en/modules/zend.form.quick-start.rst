@@ -676,8 +676,8 @@ The simplest view helpers available are ``Form``, ``FormElement``, ``FormLabel``
        echo $formLabel->closeTag();
    ?></div>
 
-   <?php echo $this->formElement($form->get('security') ?>
-   <?php echo $this->formElement($form->get('send') ?>
+   <?php echo $this->formElement($form->get('security')) ?>
+   <?php echo $this->formElement($form->get('send')) ?>
 
    <?php echo $this->form()->closeTag() ?>
 
