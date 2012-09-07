@@ -181,7 +181,7 @@ displaying them is simple.
 
    <?php echo $this->paginationControl($this->paginator,
                                        'Sliding',
-                                       'my_pagination_control'); ?>
+                                       'my_pagination_control', array('route' => 'application/paginator')); ?>
    </body>
    </html>
 
@@ -278,7 +278,7 @@ Search pagination:
    <div class="paginationControl">
    <!-- Previous page link -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
+     <a href="<?php echo $this->url($this->route, array('page' => $this->previous)); ?>">
        < Previous
      </a> |
    <?php else: ?>
@@ -288,7 +288,7 @@ Search pagination:
    <!-- Numbered page links -->
    <?php foreach ($this->pagesInRange as $page): ?>
      <?php if ($page != $this->current): ?>
-       <a href="<?php echo $this->url(array('page' => $page)); ?>">
+       <a href="<?php echo $this->url($this->route, array('page' => $page)); ?>">
            <?php echo $page; ?>
        </a> |
      <?php else: ?>
@@ -298,7 +298,7 @@ Search pagination:
 
    <!-- Next page link -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->next)); ?>">
+     <a href="<?php echo $this->url($this->route, array('page' => $this->next)); ?>">
        Next >
      </a>
    <?php else: ?>
@@ -332,7 +332,7 @@ Item pagination:
 
    <!-- Previous page link -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
+     <a href="<?php echo $this->url($this->route, array('page' => $this->previous)); ?>">
        < Previous
      </a> |
    <?php else: ?>
@@ -341,7 +341,7 @@ Item pagination:
 
    <!-- Next page link -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->next)); ?>">
+     <a href="<?php echo $this->url($this->route, array('page' => $this->next)); ?>">
        Next >
      </a> |
    <?php else: ?>
@@ -350,7 +350,7 @@ Item pagination:
 
    <!-- Last page link -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->last)); ?>">
+     <a href="<?php echo $this->url($this->route, array('page' => $this->last)); ?>">
        Last
      </a>
    <?php else: ?>
@@ -370,7 +370,7 @@ Dropdown pagination:
    <?php foreach ($this->pagesInRange as $page): ?>
      <?php $selected = ($page == $this->current) ? ' selected="selected"' : ''; ?>
      <option value="<?php
-           echo $this->url(array('page' => $page));?>"<?php echo $selected ?>>
+           echo $this->url($this->route, array('page' => $page));?>"<?php echo $selected ?>>
        <?php echo $page; ?>
      </option>
    <?php endforeach; ?>
