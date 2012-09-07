@@ -118,67 +118,81 @@ store your forms as pure configuration; you can simply pass the configuration to
    use Zend\Form\Factory;
    $factory = new Factory();
    $form    = $factory->createForm(array(
-       'hydrator' => 'Zend\Stdlib\Hydrator\ArraySerializable'
+       'hydrator' => 'Zend\Stdlib\Hydrator\ArraySerializable',
        'elements' => array(
            array(
-               'name' => 'name',
-               'options' => array(
-                   'label' => 'Your name',
-               ),
-               'attributes' => array(
-                   'type'  => 'text'
-               ),
+               'spec' => array(
+                   'name' => 'name',
+                   'options' => array(
+                       'label' => 'Your name',
+                   ),
+                   'attributes' => array(
+                       'type'  => 'text'
+                   ),
+               )
            ),
            array(
-               'name' => 'email',
-               'options' => array(
-                   'label' => 'Your email address',
-               ),
-               'attributes' => array(
-                   'type'  => 'email',
-               ),
-           ),
-           array(
-               'name' => 'subject',
-               'options' => array(
-                   'label' => 'Subject',
-               ),
-               'attributes' => array(
-                   'type'  => 'text',
-               ),
-           ),
-           array(
-               'name' => 'message',
-               'options' => array(
-                   'label' => 'Message',
-               ),
-               'attributes' => array(
-                   'type'  => 'textarea',
-               ),
-           ),
-           array(
-               'type' => 'Zend\Form\Element\Captcha',
-               'name' => 'captcha',
-               'options' => array(
-                   'label' => 'Please verify you are human',
-               ),
-               'attributes' => array(
-                   'captcha' => array(
-                       'class' => 'Dumb',
+               'spec' => array(
+                   'name' => 'email',
+                   'options' => array(
+                       'label' => 'Your email address',
+                   ),
+                   'attributes' => array(
+                       'type'  => 'email',
                    ),
                ),
            ),
            array(
-               'type' => 'Zend\Form\Element\Csrf',
-               'name' => 'security',
+               'spec' => array(
+                   'name' => 'subject',
+                   'options' => array(
+                       'label' => 'Subject',
+                   ),
+                   'attributes' => array(
+                       'type'  => 'text',
+                   ),
+               ),
            ),
            array(
-               'name' => 'send',
-               'options' => array(
-                   'label' => 'Send',
+               'spec' => array(
+                   'name' => 'message',
+                   'options' => array(
+                       'label' => 'Message',
+                   ),
+                   'attributes' => array(
+                       'type'  => 'textarea',
+                   ),
                ),
-               'attributes' => array(
-                   'type'  => 'submit',
+           ),
+           array(
+               'spec' => array(
+                   'type' => 'Zend\Form\Element\Captcha',
+                   'name' => 'captcha',
+                   'options' => array(
+                       'label' => 'Please verify you are human',
+                   ),
+                   'attributes' => array(
+                       'captcha' => array(
+                           'class' => 'Dumb',
+                       ),
+                   ),
+               ),
+           ),
+           array(
+               'spec' => array(
+                   'type' => 'Zend\Form\Element\Csrf',
+                   'name' => 'security',
+               ),
+           ),
+           array(
+               'spec' => array(
+                   'name' => 'send',
+                   'options' => array(
+                       'label' => 'Send',
+                   ),
+                   'attributes' => array(
+                       'type'  => 'submit',
+                   ),
                ),
            ),
        ),
