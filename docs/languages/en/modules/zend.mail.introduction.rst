@@ -79,8 +79,8 @@ This example shows how to change the Return-Path of the `mail()`_ function.
    
    $mail = new Mail\Message();
    $mail->setBody('This is the text of the email.');
-   $mail->setFrom('Freeaqingme@example.org', 'Sender\'s name');
-   $mail->addTo('dolfschimmel@gmail.com', 'Name o. recipient');
+   $mail->setFrom('Freeaqingme@example.org', 'Dolf');
+   $mail->addTo('matthew@example.com', 'Matthew');
    $mail->setSubject('TestSubject');
    
    $transport = new Mail\Transport\Sendmail('-freturn_to_me@example.com');
