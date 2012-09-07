@@ -737,8 +737,8 @@ rewritten to take advantage of this helper :
        echo $this->formRow($captcha);
    ?></div>
 
-   <?php echo $this->formElement($form->get('security') ?>
-   <?php echo $this->formElement($form->get('send') ?>
+   <?php echo $this->formElement($form->get('security')) ?>
+   <?php echo $this->formElement($form->get('send')) ?>
 
    <?php echo $this->form()->closeTag() ?>
 
