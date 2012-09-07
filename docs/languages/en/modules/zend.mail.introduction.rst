@@ -38,8 +38,8 @@ A simple email consists of one or more recipients, a subject, a body and a sende
 
    **Minimum definitions**
 
-   In order to send an email using ``Zend\Mail`` you have to specify at least one recipient, a sender (e.g., with
-   ``setFrom()``), and a message body.
+   In order to send an email using ``Zend\Mail`` you have to specify at least one recipient as well as a message body.
+   Please note that each Transport may require additional parameters to be set.
 
 For most mail attributes there are "get" methods to read the information stored in the message object. for further
 details, please refer to the *API* documentation.
@@ -98,10 +98,12 @@ This example shows how to change the Return-Path of the `mail()`_ function.
    Although the sendmail transport is the transport that requires only minimal
    configuration, it may not be suitable for your production environment. This
    is because emails sent using the sendmail transport will be more often delivered
-   to SPAM-boxes. This can partly be remedied by using the SMTP transport combined
+   to SPAM-boxes. This can partly be remedied by using the `SMTP transport`_ combined
    with an SMTP server that has an overall good reputation. Additionally, techniques
    such as SPF and DKIM may be employed to ensure even more email messages are
    delivered as should.
+
+.. _SMTP transport: zend.mail.transport.quick-start.smtp-usage
 
 .. warning::
 
@@ -112,7 +114,6 @@ This example shows how to change the Return-Path of the `mail()`_ function.
    function will sent to the BCC recipient such that all the other recipients can see him as recipient!
 
    Therefore if you want to use BCC on a windows server, use the SMTP transport for sending!
-
 
 
 .. _`mail()`: http://php.net/mail

@@ -101,6 +101,7 @@
    modules/zend.log.writers
    modules/zend.log.filters
    modules/zend.log.formatters
+   modules/zend.mail.introduction
    modules/zend.mail.message
    modules/zend.mail.transport
    modules/zend.mail.smtp.options
@@ -372,6 +373,7 @@ Zend\\Log
 Zend\\Mail
 ^^^^^^^^^^
 
+        * :doc:`modules/zend.mail.introduction`
         * :doc:`modules/zend.mail.message`
         * :doc:`modules/zend.mail.transport`
         * :doc:`modules/zend.mail.smtp.options`
