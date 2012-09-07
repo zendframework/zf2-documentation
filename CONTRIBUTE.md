@@ -16,7 +16,7 @@ We only ask you to use a couple of conventions:
  - To fix or update a document we use the `fix/<doc>` branch name convention,
    where `<doc>` is the name of the document that you want to create;
 
-If you want to work on a document in a language different from English, you have to
+If you want to work on a document in a language different from English, please
 include the name of the language in the branch name.
 
 For instance, if you want to propose a new document in Italian you have to use the
