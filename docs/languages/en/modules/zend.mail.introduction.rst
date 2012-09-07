@@ -92,18 +92,19 @@ This example shows how to change the Return-Path of the `mail()`_ function.
 
    Supplying additional parameters to the transport will cause the `mail()`_ 
    function to fail if *PHP* is running in safe mode.
-   
+
+.. note::
+
    **Choosing your transport wisely**
    
    Although the sendmail transport is the transport that requires only minimal
    configuration, it may not be suitable for your production environment. This
    is because emails sent using the sendmail transport will be more often delivered
-   to SPAM-boxes. This can partly be remedied by using the `SMTP transport`_ combined
+   to SPAM-boxes. This can partly be remedied by using the 
+   :ref:`SMTP Transport <zend.mail.transport.quick-start.smtp-usage>` combined
    with an SMTP server that has an overall good reputation. Additionally, techniques
    such as SPF and DKIM may be employed to ensure even more email messages are
    delivered as should.
-
-.. _SMTP transport: zend.mail.transport.quick-start.smtp-usage
 
 .. warning::
 
