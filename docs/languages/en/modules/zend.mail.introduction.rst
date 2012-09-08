@@ -8,89 +8,103 @@ Introduction
 Getting started
 ---------------
 
-``Zend_Mail`` provides generalized functionality to compose and send both text and *MIME*-compliant multipart
-e-mail messages. Mail can be sent with ``Zend_Mail`` via the default ``Zend_Mail_Transport_Sendmail`` transport or
-via ``Zend_Mail_Transport_Smtp``.
+``Zend\Mail`` provides generalized functionality to compose and send both text and *MIME*-compliant multipart
+email messages. Mail can be sent with ``Zend\Mail`` via the ``Mail\Transport\Sendmail``,
+``Mail\Transport\Smtp`` or the ``Mail\Transport\File`` transport. Of course, you can also implement
+your own transport by implementing the ``Mail\Transport\TransportInterface``.
 
 .. _zend.mail.introduction.example-1:
 
-.. rubric:: Simple E-Mail with Zend_Mail
+.. rubric:: Simple email with Zend\Mail
 
-A simple e-mail consists of some recipients, a subject, a body and a sender. To send such a mail using
+A simple email consists of one or more recipients, a subject, a body and a sender. To send such a mail using
 ``Zend_Mail_Transport_Sendmail``, do the following:
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
-   $mail->setBodyText('This is the text of the mail.');
-   $mail->setFrom('somebody@example.com', 'Some Sender');
-   $mail->addTo('somebody_else@example.com', 'Some Recipient');
+   use Zend\Mail;
+   
+   $mail = new Mail\Message();
+   $mail->setBody('This is the text of the email.');
+   $mail->setFrom('Freeaqingme@example.org', 'Sender\'s name');
+   $mail->addTo('Matthew@example.com', 'Name o. recipient');
    $mail->setSubject('TestSubject');
-   $mail->send();
+   
+   $transport = new Mail\Transport\Sendmail();
+   $transport->send($mail);
 
 .. note::
 
    **Minimum definitions**
 
-   In order to send an e-mail with ``Zend_Mail`` you have to specify at least one recipient, a sender (e.g., with
-   ``setFrom()``), and a message body (text and/or *HTML*).
+   In order to send an email using ``Zend\Mail`` you have to specify at least one recipient as well as a message body.
+   Please note that each Transport may require additional parameters to be set.
 
-For most mail attributes there are "get" methods to read the information stored in the mail object. for further
-details, please refer to the *API* documentation. A special one is ``getRecipients()``. It returns an array with
-all recipient e-mail addresses that were added prior to the method call.
+For most mail attributes there are "get" methods to read the information stored in the message object. for further
+details, please refer to the *API* documentation.
 
-For security reasons, ``Zend_Mail`` filters all header fields to prevent header injection with newline (**\n**)
-characters. Double quotation is changed to single quotation and angle brackets to square brackets in the name of
-sender and recipients. If the marks are in email address, the marks will be removed.
-
-You also can use most methods of the ``Zend_Mail`` object with a convenient fluent interface.
+You also can use most methods of the ``Mail\Message`` object with a convenient fluent interface.
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
-   $mail->setBodyText('This is the text of the mail.')
-       ->setFrom('somebody@example.com', 'Some Sender')
-       ->addTo('somebody_else@example.com', 'Some Recipient')
-       ->setSubject('TestSubject')
-       ->send();
+   use Zend\Mail;
+   
+   $mail = new Mail\Message();
+   $mail->setBody('This is the text of the mail.')
+        ->setFrom('somebody@example.com', 'Some Sender')
+        ->addTo('somebody_else@example.com', 'Some Recipient')
+        ->setSubject('TestSubject');
 
 .. _zend.mail.introduction.sendmail:
 
 Configuring the default sendmail transport
 ------------------------------------------
 
-The default transport for a ``Zend_Mail`` instance is ``Zend_Mail_Transport_Sendmail``. It is essentially a wrapper
+The most simple to use transport is the ``Mail\Transport\Sendmail`` transport class. It is essentially a wrapper
 to the *PHP* `mail()`_ function. If you wish to pass additional parameters to the `mail()`_ function, simply create
-a new transport instance and pass your parameters to the constructor. The new transport instance can then act as
-the default ``Zend_Mail`` transport, or it can be passed to the ``send()`` method of ``Zend_Mail``.
+a new transport instance and pass your parameters to the constructor.
 
 .. _zend.mail.introduction.sendmail.example-1:
 
-.. rubric:: Passing additional parameters to the Zend_Mail_Transport_Sendmail transport
+.. rubric:: Passing additional parameters to the Zend\Mail\Transport\Sendmail transport.
 
 This example shows how to change the Return-Path of the `mail()`_ function.
 
 .. code-block:: php
    :linenos:
 
-   $tr = new Zend_Mail_Transport_Sendmail('-freturn_to_me@example.com');
-   Zend_Mail::setDefaultTransport($tr);
-
-   $mail = new Zend_Mail();
-   $mail->setBodyText('This is the text of the mail.');
-   $mail->setFrom('somebody@example.com', 'Some Sender');
-   $mail->addTo('somebody_else@example.com', 'Some Recipient');
+   use Zend\Mail;
+   
+   $mail = new Mail\Message();
+   $mail->setBody('This is the text of the email.');
+   $mail->setFrom('Freeaqingme@example.org', 'Dolf');
+   $mail->addTo('matthew@example.com', 'Matthew');
    $mail->setSubject('TestSubject');
-   $mail->send();
-
+   
+   $transport = new Mail\Transport\Sendmail('-freturn_to_me@example.com');
+   $transport->send($mail);
+   
 .. note::
 
    **Safe mode restrictions**
 
-   The optional additional parameters will be cause the `mail()`_ function to fail if *PHP* is running in safe
-   mode.
+   Supplying additional parameters to the transport will cause the `mail()`_ 
+   function to fail if *PHP* is running in safe mode.
+
+.. note::
+
+   **Choosing your transport wisely**
+   
+   Although the sendmail transport is the transport that requires only minimal
+   configuration, it may not be suitable for your production environment. This
+   is because emails sent using the sendmail transport will be more often delivered
+   to SPAM-boxes. This can partly be remedied by using the 
+   :ref:`SMTP Transport <zend.mail.transport.quick-start.smtp-usage>` combined
+   with an SMTP server that has an overall good reputation. Additionally, techniques
+   such as SPF and DKIM may be employed to ensure even more email messages are
+   delivered as should.
 
 .. warning::
 
@@ -101,7 +115,6 @@ This example shows how to change the Return-Path of the `mail()`_ function.
    function will sent to the BCC recipient such that all the other recipients can see him as recipient!
 
    Therefore if you want to use BCC on a windows server, use the SMTP transport for sending!
-
 
 
 .. _`mail()`: http://php.net/mail
