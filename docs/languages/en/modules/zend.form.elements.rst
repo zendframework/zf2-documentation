@@ -33,9 +33,11 @@ HTML5 Elements
 
 .. include:: zend.form.element.color.rst
 .. include:: zend.form.element.date.rst
+.. include:: zend.form.element.date.select.rst
 .. include:: zend.form.element.date.time.rst
 .. include:: zend.form.element.date.time.local.rst
 .. include:: zend.form.element.month.rst
+.. include:: zend.form.element.month.select.rst
 .. include:: zend.form.element.number.rst
 .. include:: zend.form.element.range.rst
 .. include:: zend.form.element.time.rst
