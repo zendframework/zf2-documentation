@@ -36,7 +36,9 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 .. function:: setOptions(array $options)
    :noindex:
 
-   Set options for an element of type Collection. Accepted options, in addition to the inherited options of Zend\\Form\\Element <zend.form.element.methods.set-options>` , are: ``"target_element"``, ``"count"``, ``"allow_add"``, ``"allow_remove"``, ``"should_create_template"`` and ``"template_placeholder"`` , which call ``setTargetElement``, ``setCount``, ``setAllowAdd``, ``setAllowRemove``, ``setShouldCreateTemplate`` and ``setTemplatePlaceholder`` , respectively.
+   Set options for an element of type Collection. Accepted options, in addition to the inherited options of Zend\\Form\\Element <zend.form.element.methods.set-options>` , are: ``"target_element"``, ``"count"``, ``"allow_add"``, ``"allow_remove"``, ``"should_create_template"`` and ``"template_placeholder"`` .
+   
+    Those options respectively call ``setTargetElement``, ``setCount``, ``setAllowAdd``, ``setAllowRemove``, ``setShouldCreateTemplate`` and ``setTemplatePlaceholder`` .
 
 .. function:: setCount($count)
    :noindex:
@@ -70,7 +72,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 .. function:: setAllowRemove($allowRemove)
    :noindex:
 
-   If allowRemove is set to true (which is the default), the number of submitted elements can be inferior to what was specified initially with the count option (for instance using JavaScript).
+   If allowRemove is set to true (which is the default), the number of submitted elements can be fewer to what was specified initially with the count option (for instance using JavaScript).
    
 .. function:: getAllowRemove()
    :noindex:
