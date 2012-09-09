@@ -254,12 +254,12 @@ and ``Application`` instances, allowing them to then find and aggregate the conf
 
        // Used to create an own service manager. May contain one or more child arrays.
        'service_listener_options' => array(
-       // array(
-       //     'service_manager' => $stringServiceManagerName,
-       //     'config_key'      => $stringConfigKey,
-       //     'interface'       => $stringOptionalInterface,
-       //     'method'          => $stringRequiredMethodName,
-       // ),
+          array(
+            'service_manager' => $stringServiceManagerName,
+            'config_key'      => $stringConfigKey,
+            'interface'       => $stringOptionalInterface,
+            'method'          => $stringRequiredMethodName,
+          ),
        )
 
        // Initial configuration with which to seed the ServiceManager.
