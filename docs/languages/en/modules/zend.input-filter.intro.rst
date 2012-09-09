@@ -132,7 +132,7 @@ appropriate object. You may create either ``Input`` or ``InputFilter`` objects i
 
    // Adding a single input
    $filter->add(array(
-       'name' => 'password',
+       'name' => 'username',
        'required' => true,
        'validators' => array(
            array(
@@ -141,15 +141,15 @@ appropriate object. You may create either ``Input`` or ``InputFilter`` objects i
            array(
                'name' => 'string_length',
                'options' => array(
-                   'min' => 8
+                   'min' => 5
                ),
            ),
        ),
    ));
 
-   // Adding an input filter composing a single input to the current filter
+   // Adding another input filter what also contains a single input. Merging both.
    $filter->add(array(
-       'type' => 'Zend\Filter\InputFilter',
+       'type' => 'Zend\InputFilter\InputFilter',
        'password' => array(
            'name' => 'password',
            'required' => true,
