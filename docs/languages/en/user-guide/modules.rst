@@ -160,6 +160,7 @@ skeleton application. Update this file so that its ``modules`` section contains 
 (Changes required are highlighted using comments.)
 
 .. code-block:: php
+    :emphasize-lines: 5
 
     // conﬁg/application.conﬁg.php:
     return array(

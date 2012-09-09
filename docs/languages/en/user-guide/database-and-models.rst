@@ -189,6 +189,7 @@ object when the ``ServiceManager`` needs it. We start by implementing
 this method to the bottom of the ``Module`` class.
 
 .. code-block:: php
+    :emphasize-lines: 4-5,11-23
 
     // module/Album/Module.php:
     namespace Album;
