@@ -30,14 +30,12 @@ This is the one service class referenced directly in the bootstrapping. It provi
 
   - ``Application``, mapping to ``Zend\Mvc\Service\ApplicationFactory``.
 
-  - ``Configuration``, mapping to ``Zend\Mvc\Service\ConfigFactory``. Internally, this pulls the
+  - ``Config``, mapping to ``Zend\Mvc\Service\ConfigFactory``. Internally, this pulls the
     ``ModuleManager`` service, and calls its ``loadModules()`` method, and retrieves the merged configuration from
     the module event. As such, this service contains the entire, merged application configuration.
 
-  - ``ControllerLoader``, mapping to ``Zend\Mvc\Service\ControllerLoaderFactory``. Internally, this pulls the
-    ``Configuration`` service, and, if it contains a ``controller`` key, inspects that for ``classes`` and
-    ``factories`` subkeys. These are used to configure a scoped service manager container, from which controllers
-    will be retrieved.
+  - ``ControllerLoader``, mapping to ``Zend\Mvc\Service\ControllerLoaderFactory``. This scoped container will be
+    populated by the ``ServiceListener`.`
 
     Additionally, the scoped container is configured to use the ``Di`` service as an abstract service factory --
     effectively allowing you to fall back to DI in order to retrieve your controllers.
@@ -45,17 +43,14 @@ This is the one service class referenced directly in the bootstrapping. It provi
     under the ``allowed_controllers`` key (otherwise, they will just be ignored).
 
     Finally, if the loaded controller is ``Pluggable``, an initializer will inject it with the
-    ``ControllerPluginBroker`` service.
+    ``ControllerPluginManager`` service.
 
-  - ``ControllerPluginBroker``, mapping to ``Zend\Mvc\Service\ControllerPluginBrokerFactory``. This instantiates
-    the ``Zend\Mvc\Controller\PluginBroker`` instance, passing it the ``ControllerPluginLoader`` service as well as
-    the service manager instance.
+  - ``ControllerPluginManager``, mapping to ``Zend\Mvc\Service\ControllerPluginManagerFactory``. This instantiates
+    the ``Zend\Mvc\Controller\PluginManager`` instance, passing it the service manager instance. It also uses the
+    ``Di`` service as an abstract service factory -- effectively allowing you to fall back to DI in order to retrieve
+    your controller plugins.
 
-  - ``ControllerPluginLoader``, mapping to ``Zend\Mvc\Service\ControllerPluginLoaderFactory``. This grabs the
-    ``Configuration`` service, and looks for a ``controller`` key with a ``map`` subkey. If found, this value is
-    passed to the constructor of ``Zend\Mvc\Controller\PluginLoader`` (otherwise, an empty array is passed).
-
-  - ``DependencyInjector``, mapping to ``Zend\Mvc\Service\DiFactory``. This pulls the ``Configuration`` service,
+  - ``DependencyInjector``, mapping to ``Zend\Mvc\Service\DiFactory``. This pulls the ``Config`` service,
     and looks for a "di" key; if found, that value is used to configure a new ``Zend\Di\Di`` instance.
     Additionally, the ``Di`` instance is used to seed a ``Zend\ServiceManager\Di\DiAbstractServiceFactory``
     instance which is then attached to the service manager as an abstract factory -- effectively enabling DI as a
@@ -68,13 +63,15 @@ This is the one service class referenced directly in the bootstrapping. It provi
 
   - ``ModuleManager``, mapping to ``Zend\Mvc\Service\ModuleManagerFactory``.
 
-    This is perhaps the most complex factory in the MVC stack. It expects that an ``ApplicationConfiguration``
+    This is perhaps the most complex factory in the MVC stack. It expects that an ``ApplicationConfig``
     service has been injected, with keys for ``module_listener_options`` and ``modules``; see the quick start for
     samples.
 
     It instantiates an instance of ``Zend\ModuleManager\Listener\DefaultListenerAggregate``, using the
-    "module_listener_options" retrieved. It also instantiates an instance of
-    ``Zend\ModuleManager\Listener\ServiceListener``, providing it the service manager.
+    "module_listener_options" retrieved. Checks if a service with the name ``ServiceListener`` exists, otherwise
+    falls back to the ``ServiceListenerFactory``, and instantiates it. A bunch of service listerns will be added
+    to the ``ServiceListener``, like listeners for the ``getServiceConfig``, ``getControllerConfig``,
+    ``getControllerPluginConfig``, ``getViewHelperConfig`` module methods.
 
     Next, it retrieves the ``EventManager`` service, and attaches the above listeners.
 
@@ -84,7 +81,16 @@ This is the one service class referenced directly in the bootstrapping. It provi
     Finally, it instantiates a ``Zend\ModuleManager\ModuleManager`` instance, and injects the ``EventManager`` and
     ``ModuleEvent``.
 
-  - ``Router``, mapping to ``Zend\Mvc\Service\RouterFactory``. This grabs the ``Configuration`` service, and pulls
+  - ``ServiceListenerFactory``, mapping to ``Zend\Mvc\Service\ServiceListenerFactory``. The fatory is used to
+    instantiate the ``ServiceListener``, while allowing easy extending. It checks if a service with the name
+    ``ServiceListenerInterface`` exists, which must implement ``Zend\ModuleManager\Listener\ServiceListenerInterface``,
+    before instantiating the default ``ServiceListener``.
+
+    In addition to this, it retrieves the ``ApplicationConfig`` and looks for the ``service_listener_options`` key.
+    This allows you to register own listerns for module methods and configuration keys to create an own service
+    manager; see the application configuration options for samples.
+
+  - ``Router``, mapping to ``Zend\Mvc\Service\RouterFactory``. This grabs the ``Config`` service, and pulls
     from the ``router`` key, passing it to ``Zend\Mvc\Router\Http\TreeRouteStack::factory`` in order to get a
     configured router instance.
 
@@ -102,7 +108,7 @@ This is the one service class referenced directly in the bootstrapping. It provi
 
 - **Aliases**
 
-  - ``Config``, mapping to the ``Configuration`` service.
+  - ``Config``, mapping to the ``Config`` service.
 
   - ``Di``, mapping to the ``DependencyInjector`` service.
 
@@ -208,7 +214,7 @@ Application Configuration Options
 
 The following options may be used to provide initial configuration for the ``ServiceManager``, ``ModuleManager``,
 and ``Application`` instances, allowing them to then find and aggregate the configuration used for the
-``Configuration`` service, which is intended for configuring all other objects in the system.
+``Config`` service, which is intended for configuring all other objects in the system.
 
 .. code-block:: php
    :linenos:
@@ -246,6 +252,16 @@ and ``Application`` instances, allowing them to then find and aggregate the conf
            'cache_dir' => $stringPath,
        ),
 
+       // Used to create an own service manager. May contain one or more child arrays.
+       'service_listener_options' => array(
+       // array(
+       //     'service_manager' => $stringServiceManagerName,
+       //     'config_key'      => $stringConfigKey,
+       //     'interface'       => $stringOptionalInterface,
+       //     'method'          => $stringRequiredMethodName,
+       // ),
+       )
+
        // Initial configuration with which to seed the ServiceManager.
        // Should be compatible with Zend\ServiceManager\Config.
        'service_manager' => array(
@@ -265,22 +281,29 @@ The following options are available when using the default services configured b
 
    <?php
    return array(
-       // The following are used to configure controller or controller plugin loading
-       'controller' => array(
+       // The following are used to configure controller loader
+       // Should be compatible with Zend\ServiceManager\Config.
+       'controllers' => array(
            // Map of controller "name" to class
            // This should be used if you do not need to inject any dependencies
            // in your controller
-           'classes' => array(
+           'invokables' => array(
            ),
 
            // Map of controller "name" to factory for creating controller instance
            // You may provide either the class name of a factory, or a PHP callback.
            'factories' => array(
            ),
+       ),
 
-           // Map of controller plugin names to their classes
-           'map' => array(
-           ),
+       // The following are used to configure controller plugin loader
+       // Should be compatible with Zend\ServiceManager\Config.
+       'controller_plugins' => array(
+       ),
+
+       // The following are used to configure view helper manager
+       // Should be compatible with Zend\ServiceManager\Config.
+       'controller_plugins' => array(
        ),
 
        // The following is used to configure a Zend\Di\Di instance.
@@ -299,15 +322,6 @@ The following options are available when using the default services configured b
 
        // ViewManager configuration
        'view_manager' => array(
-           // Defined helpers.
-           // Typically helper name/helper class pairs. Can contain values without keys
-           // that refer to either Traversable classes or Zend\Loader\PluginClassLoader
-           // instances as well.
-           'helper_map' => array(
-               'foo' => 'My\Helper\Foo',      // name/class pair
-               'Zend\Form\View\HelperLoader', // additional helper loader to seed
-           ),
-
            // Base URL path to the application
            'base_path' => $stringBasePath,
 

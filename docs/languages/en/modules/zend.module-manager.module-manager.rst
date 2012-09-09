@@ -50,39 +50,39 @@ By default, Zend Framework provides several useful module manager listeners.
 
 .. rubric:: Provided Module Manager Listeners
 
-**Zend\ModuleManager\Listener\DefaultListenerAggregate**
+**Zend\\ModuleManager\\Listener\\DefaultListenerAggregate**
    To help simplify the most common use case of the module manager, ZF2 provides this default aggregate listener.
    In most cases, this will be the only listener you will need to attach to use the module manager, as it will take
    care of properly attaching the requisite listeners (those listed below) for the module system to function
    properly.
 
-**Zend\ModuleManager\Listener\AutoloaderListener**
+**Zend\\ModuleManager\\Listener\\AutoloaderListener**
    This listener checks each module to see if it has implemented
    ``Zend\ModuleManager\Feature\AutoloaderProviderInterface`` or simply defined the ``getAutoloaderConfig()``
    method. If so, it calls the ``getAutoloaderConfig()`` method on the module class and passes the returned array
    to ``Zend\Loader\AutoloaderFactory``.
 
-**Zend\ModuleManager\Listener\ConfigListener**
+**Zend\\ModuleManager\\Listener\\ConfigListener**
    If a module class has a ``getConfig()`` method, this listener will call it and merge the returned array (or
    ``Traversable`` object) into the main application configuration.
 
-**Zend\ModuleManager\Listener\InitTrigger**
+**Zend\\ModuleManager\\Listener\\InitTrigger**
    If a module class either implements ``Zend\ModuleManager\Feature\InitProviderInterface``, or simply defines an
    ``init()`` method, this listener will call ``init()`` and pass the current instance of
    ``Zend\ModuleManager\ModuleManager`` as the sole parameter. The ``init()`` method is called for **every** module
    implementing this feature, on **every** page request and should **only** be used for performing **lightweight**
    tasks such as registering event listeners.
 
-**Zend\ModuleManager\Listener\LocatorRegistrationListener**
+**Zend\\ModuleManager\\Listener\\LocatorRegistrationListener**
    If a module class implements ``Zend\ModuleManager\Feature\LocatorRegisteredInterface``, this listener will
    inject the module class instance into the ``ServiceManager`` using the module class name as the service name.
    This allows you to later retrieve the module class from the ``ServiceManager``.
 
-**Zend\ModuleManager\Listener\ModuleResolverListener**
+**Zend\\ModuleManager\\Listener\\ModuleResolverListener**
    This is the default module resolver. It attaches to the "loadModule.resolve" event and simply returns an
    instance of ``{moduleName}\Module``.
 
-**Zend\ModuleManager\Listener\OnBootstrapListener**
+**Zend\\ModuleManager\\Listener\\OnBootstrapListener**
    If a module class implements ``Zend\ModuleManager\Feature\BootstrapListenerInterface``, or simply defines an
    ``onBootstrap()`` method, this listener will register the ``onBootstrap()`` method with the
    ``Zend\Mvc\Application`` ``bootstrap`` event. This method will then be triggered during the ``bootstrap`` event
@@ -92,7 +92,7 @@ By default, Zend Framework provides several useful module manager listeners.
    on **every** page request, and should **only** be used for performing **lightweight** tasks such as registering
    event listeners.
 
-**Zend\ModuleManager\Listener\ServiceListener**
+**Zend\\ModuleManager\\Listener\\ServiceListener**
    If a module class implements ``Zend\ModuleManager\Feature\ServiceProviderInterface``, or simply defines an
    ``getServiceConfig()`` method, this listener will call that method and aggregate the return values for
    use in configuring the ``ServiceManager``.
