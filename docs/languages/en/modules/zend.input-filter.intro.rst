@@ -71,10 +71,10 @@ uses filtering without validation.
          ->attachByName('stringtrim')
          ->attachByName('alpha');
 
-   $inputfilter = new InputFilter();
-   $inputfilter->add($input, 'foo')
+   $inputFilter = new InputFilter();
+   $inputFilter->add($input)
                ->setData(array(
-                   'foo' => ' Bar3 ';
+                   'foo' => ' Bar3 ',
                ));
 
    echo "Before:\n";
