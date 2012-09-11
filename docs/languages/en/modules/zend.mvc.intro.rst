@@ -356,6 +356,6 @@ is a lightweight and simple approach to enforcing a modular architecture that en
 concerns and code re-use.
 
 
-.._`Zend\Mvc\Application`: https://github.com/zendframework/zf2/blob/master/library/Zend/Mvc/Application.php
+.. _`Zend\Mvc\Application`: https://github.com/zendframework/zf2/blob/master/library/Zend/Mvc/Application.php
 .. _`PSR-0 compliant directory structure`: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 .. _`PHPUnit`: http://phpunit.de
