@@ -22,7 +22,7 @@ The base unit of routing is a ``Route``:
 
    use zend\Stdlib\RequestInterface as Request;
 
-   interface Route
+   interface RouteInterface
    {
        public static function factory(array $options = array());
        public function match(Request $request);
@@ -65,7 +65,7 @@ aggregate, usually implementing ``RouteStack``:
 
    namespace Zend\Mvc\Router;
 
-   interface RouteStack extends Route
+   interface RouteStackInterface extends RouteInterface
    {
        public function addRoute($name, $route, $priority = null);
        public function addRoutes(array $routes);
@@ -89,6 +89,7 @@ register routes either one at a time using ``addRoute()``, or in bulk using ``ad
    ));
    $router->addRoute('foo', $route);
 
+   // In bulk:
    $router->addRoutes(array(
        // using already instantiated routes:
        'foo' => $route,
