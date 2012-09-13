@@ -334,9 +334,9 @@ reads as follows:
                ),
            ),
        ),
-       'controller' => array(
-           'classes' => array(
-               '<module namespace>-Hello' => '<module namespace>\Controller\HelloController',
+       'controllers' => array(
+           'invokables' => array(
+               '<module namespace>\Controller\Hello' => '<module namespace>\Controller\HelloController',
            ),
        ),
        // ... other configuration ...
