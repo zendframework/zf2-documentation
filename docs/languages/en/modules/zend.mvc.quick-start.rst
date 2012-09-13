@@ -277,7 +277,7 @@ Now that we have a controller and a view script, we need to create a route to it
                   'route'    => '/<module-name>',
                   'defaults' => array(
                       '__NAMESPACE__' => '<module-namespace>\Controller',
-                      'controller'    => '<module-name>-Index',
+                      'controller'    => 'Index',
                       'action'        => 'index',
                   ),
               ),
@@ -328,7 +328,8 @@ reads as follows:
                    'options' => array(
                    'route' => '/hello/world',
                    'defaults' => array(
-                       'controller' => '<module namespace>-Hello',
+                       '__NAMESPACE__' => '<module name>\Controller',
+                       'controller' => 'Hello',
                        'action'     => 'world',
                    ),
                ),
