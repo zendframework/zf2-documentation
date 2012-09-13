@@ -297,9 +297,9 @@ Now that we have a controller and a view script, we need to create a route to it
                   ),
               ),
           ),
-          'controller' => array(
-              'classes' => array(
-                  '<module-name>-Index' => '<module-namespace>\Controller\IndexController',
+          'controllers' => array(
+              'invokables' => array(
+                  '<module-namespace>\Controller\Index' => '<module-namespace>\Controller\IndexController',
                   // Do similar for each other controller in your module
               ),
           ),
