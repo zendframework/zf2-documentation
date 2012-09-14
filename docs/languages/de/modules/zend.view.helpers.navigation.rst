@@ -4,7 +4,7 @@
 Navigations Helfer
 ==================
 
-Die Navigations Helfer werden von :ref:`Zend_Navigation_Container <zend.navigation.containers>` für die
+Die Navigations Helfer werden von :ref:`Zend\Navigation\Container <zend.navigation.containers>` für die
 Darstellung von Navigations Elementen verwendet.
 
 Es gibt 2 eingebaute Helfer:
@@ -23,9 +23,9 @@ Es gibt 2 eingebaute Helfer:
 - :ref:`Navigation <zend.view.helpers.initial.navigation.navigation>`, wird für die Weiterleitung von Aufrufen zu
   anderen Navigations Helfern verwendet.
 
-Alle eingebauten Helfer erweitern ``Zend_View_Helper_Navigation_HelperAbstract``, welches die Integration von
+Alle eingebauten Helfer erweitern ``Zend\View\Helper\Navigation\HelperAbstract``, welches die Integration von
 :ref:`ACL <zend.permissions.acl>` und :ref:`Übersetzung <zend.translator>` hinzufügt. Die abstrakte Klasse implementiert das
-Interface ``Zend_View_Helper_Navigation_Helper`` welches die folgenden Methoden definiert:
+Interface ``Zend\View\Helper\Navigation\Helper`` welches die folgenden Methoden definiert:
 
 - ``getContainer()`` und ``setContainer()`` empfängt/setzt den Navigations Container mit dem der Helfer
   standardmäßig arbeiten soll, und ``hasContainer()`` prüft ob der Helfer Container registriert hat.
@@ -73,7 +73,7 @@ Zusätzlich zu den Methoden die vom Interface kommen, implementiert die abstrakt
   ``$maxDepth`` inklusive liegen. Gibt ein Array zurück das Referenzen zu der gefundenen Instanz der Seite
   enthält, und die Tiefe bei der die Seite gefunden wurde.
 
-- ``htmlify()`` stellt ein **'a'** *HTML* Element von einer ``Zend_Navigation_Page`` Instanz dar.
+- ``htmlify()`` stellt ein **'a'** *HTML* Element von einer ``Zend\Navigation\Page`` Instanz dar.
 
 - ``accept()`` wird verwendet um zu erkennen ub eine Seite akzeptiert werden soll wenn durch Container iteriert
   wird. Diese Methode prüft die Sichtbarkeit der Seite und verifiziert das die Rolle des Helfers auf die
@@ -87,8 +87,8 @@ Zusätzlich zu den Methoden die vom Interface kommen, implementiert die abstrakt
 
 Wenn ein Navigations Container nicht explizit in einem Helfer durch Verwendung von ``$helper->setContainer($nav)``
 gesetzt ist, schaut der Helfer in :ref:`der Registry <zend.registry>` nach einer Container Instanz mit dem
-Schlüssel ``Zend_Navigation``. Wenn ein Container nicht explizit gesetzt wurde, oder nicht in der Registry
-gefunden wird, erstellt der Helfer einen leeren ``Zend_Navigation`` Container wenn ``$helper->getContainer()``
+Schlüssel ``Zend\Navigation``. Wenn ein Container nicht explizit gesetzt wurde, oder nicht in der Registry
+gefunden wird, erstellt der Helfer einen leeren ``Zend\Navigation`` Container wenn ``$helper->getContainer()``
 aufgerufen wird.
 
 .. _zend.view.helpers.initial.navigation.proxy.example:
@@ -113,9 +113,9 @@ Der obige Aufruf fügt eine Seite zum Container im ``Navigation`` Helfer hinzu.
 ---------------------------------
 
 Der Navigations Helfer unterstützt die Übersetzung von SeitenLabels und Überschriften. Man kann einen
-Übersetzer vom Typ ``Zend_Translator`` oder ``Zend_Translator_Adapter`` im Helfer setzen indem
+Übersetzer vom Typ ``Zend\Translator`` oder ``Zend\Translator\Adapter`` im Helfer setzen indem
 ``$helper->setTranslator($translator)`` verwendet wird, oder wie in allen anderen I18n-fähigen Komponenten; durch
-das Hinzufügen des Übersetzers in :ref:`die Registry <zend.registry>` indem der Schlüssel ``Zend_Translator``
+das Hinzufügen des Übersetzers in :ref:`die Registry <zend.registry>` indem der Schlüssel ``Zend\Translator``
 verwendet wird.
 
 Wenn man die Übersetzung ausschalten will, sollte man ``$helper->setUseTranslator(false)`` verwenden.
@@ -134,7 +134,7 @@ Integration mit ACL
 -------------------
 
 Alle navigatorischen View Helfer unterstützen *ACL* abgeleitet von der
-``Zend_View_Helper_Navigation_HelperAbstract`` Klasse. Ein ``Zend\Permissions\Acl`` Objekt kann einer Instanz eines Helfers mit
+``Zend\View\Helper\Navigation\HelperAbstract`` Klasse. Ein ``Zend\Permissions\Acl`` Objekt kann einer Instanz eines Helfers mit
 *$helper->setAcl($acl)* hinzugefügt werden, und eine Rolle mit *$helper->setRole('member')* oder
 *$helper->setRole(new Zend\Permissions\Acl\Role\GenericRole('member'))*. Wenn *ACL* im Helfer verwendet wird, muß es der Rolle im Helfer
 vom *ACL* erlaubt sein auf die *Ressourcen* zuzugreifen und/oder das die *Privilegien* für diese Seite bei der
@@ -173,7 +173,7 @@ Notizen zum Setup:
    /*
     * Navigations Container (config/array)
 
-    * Jedes Element im Array wird an Zend_Navigation_Page::factory()
+    * Jedes Element im Array wird an Zend\Navigation\Page::factory()
     * übergeben wenn der unten angezeigt Navigations Container
     * erstellt wird.
     */
@@ -331,7 +331,7 @@ Notizen zum Setup:
    );
 
    // Container von einem Array erstellen
-   $container = new Zend_Navigation($pages);
+   $container = new Zend\Navigation($pages);
 
    // Den Container im Proxy Helfer speichern
    $view->getHelper('navigation')->setContainer($container);
@@ -340,7 +340,7 @@ Notizen zum Setup:
    $view->navigation($container);
 
    // ...oder ihn einfach in der Registry speichern:
-   Zend_Registry::set('Zend_Navigation', $container);
+   Zend_Registry::set('Zend\Navigation', $container);
 
 Zusätzlich zum obigen Container, wird das folgende Setup angenommen:
 
@@ -378,8 +378,8 @@ Zusätzlich zum obigen Container, wird das folgende Setup angenommen:
    $view->navigation()->setAcl($acl)->setRole('member');
 
    // ...oder ein standard ACL und Rolle statisch setzen:
-   Zend_View_Helper_Navigation_HelperAbstract::setDefaultAcl($acl);
-   Zend_View_Helper_Navigation_HelperAbstract::setDefaultRole('member');
+   Zend\View\Helper\Navigation\HelperAbstract::setDefaultAcl($acl);
+   Zend\View\Helper\Navigation\HelperAbstract::setDefaultRole('member');
 
 .. _zend.view.helpers.initial.navigation.breadcrumbs:
 
@@ -394,7 +394,7 @@ die Darstellung durch Verwendung eines partiellen View Skripts.
 
 Der Breabcrumbs Helfer funktioniert wie folgt; er findet die tiefste aktive Seite in einem Navigations Container,
 und stellt den aufwärtsgerichteten Pfad zum Root dar. Für *MVC* Seiten wird die "Aktivität" einer Seite erkannt
-indem das Anfrage Objekt angeschaut wird, wie im Kapitel :ref:`Zend_Navigation_Page_Mvc
+indem das Anfrage Objekt angeschaut wird, wie im Kapitel :ref:`Zend\Navigation\Page\Mvc
 <zend.navigation.pages.mvc>` beschrieben.
 
 Der Helfer setzt die Eigenschaft *minDepth* standardmäßig auf 1, was bedeutet das Breadcrumbs nicht dargestellt
@@ -579,8 +579,8 @@ durch eine Suche gefunden werden können:
 .. note::
 
    Wenn in der Instanz der Seite nach Beziehungen gesehen wird ( (*$page->getRel($type)* oder
-   *$page->getRev($type)*), akzeptiert der Helfer Wert vom Typ ``String``, ``Array``, ``Zend_Config``, oder
-   ``Zend_Navigation_Page``. Wenn ein String gefunden wird, wird dieser zu einer ``Zend_Navigation_Page_Uri``
+   *$page->getRev($type)*), akzeptiert der Helfer Wert vom Typ ``String``, ``Array``, ``Zend\Config``, oder
+   ``Zend\Navigation\Page``. Wenn ein String gefunden wird, wird dieser zu einer ``Zend\Navigation\Page\Uri``
    konvertiert. Wenn ein Array oder eine Config gefunden wird, wird diese in ein oder mehrere Seiteninstanzen
    konvertiert, und jedes Element wird an die :ref:`Seiten Factory <zend.navigation.pages.factory>` übergeben.
    Wenn der erste Schlüssel nicht nummerische ist, wird das Array/Config direkt an die Seiten Factory übergeben,
@@ -598,39 +598,39 @@ werden um festzustellen ob die Beziehung zu der die render Konstante gehört, da
 Siehe das :ref:`folgende Beispiel <zend.view.helpers.initial.navigation.links.example3>` für weitere
 Informationen.
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_ALTERNATE``
+- ``Zend\View\Helper\Navigation\Links::RENDER_ALTERNATE``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_STYLESHEET``
+- ``Zend\View\Helper\Navigation\Links::RENDER_STYLESHEET``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_START``
+- ``Zend\View\Helper\Navigation\Links::RENDER_START``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_NEXT``
+- ``Zend\View\Helper\Navigation\Links::RENDER_NEXT``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_PREV``
+- ``Zend\View\Helper\Navigation\Links::RENDER_PREV``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_CONTENTS``
+- ``Zend\View\Helper\Navigation\Links::RENDER_CONTENTS``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_INDEX``
+- ``Zend\View\Helper\Navigation\Links::RENDER_INDEX``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_GLOSSARY``
+- ``Zend\View\Helper\Navigation\Links::RENDER_GLOSSARY``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_COPYRIGHT``
+- ``Zend\View\Helper\Navigation\Links::RENDER_COPYRIGHT``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_CHAPTER``
+- ``Zend\View\Helper\Navigation\Links::RENDER_CHAPTER``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_SECTION``
+- ``Zend\View\Helper\Navigation\Links::RENDER_SECTION``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_SUBSECTION``
+- ``Zend\View\Helper\Navigation\Links::RENDER_SUBSECTION``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_APPENDIX``
+- ``Zend\View\Helper\Navigation\Links::RENDER_APPENDIX``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_HELP``
+- ``Zend\View\Helper\Navigation\Links::RENDER_HELP``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_BOOKMARK``
+- ``Zend\View\Helper\Navigation\Links::RENDER_BOOKMARK``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_CUSTOM``
+- ``Zend\View\Helper\Navigation\Links::RENDER_CUSTOM``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_ALL``
+- ``Zend\View\Helper\Navigation\Links::RENDER_ALL``
 
 Die Konstanten von ``RENDER_ALTERNATE`` bis ``RENDER_BOOKMARK`` stellen standardmäßige *HTML* Linktypen dar.
 ``RENDER_CUSTOM`` stellt eine nicht-standardmäßige Beziehung dar die in der Seite spezifiziert ist.
@@ -662,7 +662,7 @@ Dieses Beispiel zeigt wir Beziehungen in Seiten spezifiziert werden können.
 .. code-block:: php
    :linenos:
 
-   $container = new Zend_Navigation(array(
+   $container = new Zend\Navigation(array(
        array(
            'label' => 'Strings für Beziehungen verwenden',
            'rel'   => array(
@@ -684,7 +684,7 @@ Dieses Beispiel zeigt wir Beziehungen in Seiten spezifiziert werden können.
        array(
            'label' => 'Konfigurationen für Beziehungen verwenden',
            'rel'   => array(
-               'alternate' => new Zend_Config(array(
+               'alternate' => new Zend\Config(array(
                    'label' => 'Example.org',
                    'uri'   => 'http://www.example.org/'
                ))
@@ -693,7 +693,7 @@ Dieses Beispiel zeigt wir Beziehungen in Seiten spezifiziert werden können.
        array(
            'label' => 'Instanzen von Seiten für Beziehungen verwenden',
            'rel'   => array(
-               'alternate' => Zend_Navigation_Page::factory(array(
+               'alternate' => Zend\Navigation\Page::factory(array(
                    'label' => 'Example.org',
                    'uri'   => 'http://www.example.org/'
                ))
@@ -735,9 +735,9 @@ Dieses Beispiel zeigt wie spezifiziert werden kann, welche Beziehungen zu finden
    :linenos:
 
    Nur start, next und prev darstellen:
-   $helper->setRenderFlag(Zend_View_Helper_Navigation_Links::RENDER_START |
-                          Zend_View_Helper_Navigation_Links::RENDER_NEXT |
-                          Zend_View_Helper_Navigation_Links::RENDER_PREV);
+   $helper->setRenderFlag(Zend\View\Helper\Navigation\Links::RENDER_START |
+                          Zend\View\Helper\Navigation\Links::RENDER_NEXT |
+                          Zend\View\Helper\Navigation\Links::RENDER_PREV);
 
    Ausgabe:
    <link rel="start" href="/" title="Home">
@@ -748,8 +748,8 @@ Dieses Beispiel zeigt wie spezifiziert werden kann, welche Beziehungen zu finden
    :linenos:
 
    Nur native Linktypen darstellen:
-   $helper->setRenderFlag(Zend_View_Helper_Navigation_Links::RENDER_ALL ^
-                          Zend_View_Helper_Navigation_Links::RENDER_CUSTOM);
+   $helper->setRenderFlag(Zend\View\Helper\Navigation\Links::RENDER_ALL ^
+                          Zend\View\Helper\Navigation\Links::RENDER_CUSTOM);
 
    Ausgabe:
    <link rel="alternate" href="/products/server/faq/format/xml">
@@ -765,8 +765,8 @@ Dieses Beispiel zeigt wie spezifiziert werden kann, welche Beziehungen zu finden
    :linenos:
 
    Alles ausser Kapitel darstellen:
-   $helper->setRenderFlag(Zend_View_Helper_Navigation_Links::RENDER_ALL ^
-                          Zend_View_Helper_Navigation_Links::RENDER_CHAPTER);
+   $helper->setRenderFlag(Zend\View\Helper\Navigation\Links::RENDER_ALL ^
+                          Zend\View\Helper\Navigation\Links::RENDER_CHAPTER);
 
    Ausgabe:
    <link rel="alternate" href="/products/server/faq/format/xml">
@@ -1531,9 +1531,9 @@ Darstellen der Sitemap mit Verwendung einer maximalen Tiefe von 1.
    **Standardmäßig wird die UTF-8 Kodierung verwendet**
 
    Standardmäßig verwendet Zend Framework *UTF-8* als seine Standardkodierung, und speziell in diesem Fall, macht
-   das ``Zend_View`` genauso. Die Zeichenkodierung kann im View Objekt selbst auf etwas anderes gesetzt werden
+   das ``Zend\View`` genauso. Die Zeichenkodierung kann im View Objekt selbst auf etwas anderes gesetzt werden
    indem die Methode ``setEncoding()`` verwendet wird (oder der Parameter ``encoding`` bei der Instanzierung
-   angegeben wird). Trotzdem, da ``Zend_View_Interface`` keine Zugriffsmethoden für die Kodierung anbietet ist es
+   angegeben wird). Trotzdem, da ``Zend\View\Interface`` keine Zugriffsmethoden für die Kodierung anbietet ist es
    möglich dass, wenn man eine eigene View Implementation verwendet, man keine ``getEncoding()`` Methode hat,
    welche der View Helfer intern für die Erkennung des Zeichensets verwendet in das kodiert werden soll.
 
@@ -1547,12 +1547,12 @@ Navigation Helfer
 
 Der Navigation Helfer ist ein Proxy Helfer der Aufrufe zu anderen Navigations Helfern durchführt. Er kann als
 Einstiegspunkt für alle navigations-basierenden View Tasks verwendet werden. Die vorher erwähnten Navigations
-Helfer sind im Namespace ``Zend_View_Helper_Navigation`` und würden es deshalb benötigen, den Pfad
+Helfer sind im Namespace ``Zend\View\Helper\Navigation`` und würden es deshalb benötigen, den Pfad
 *Zend/View/Helper/Navigation* als Helfer Pfad der View hinzuzufügen. Mit dem Proxy Helfer der im
-``Zend_View_Helper`` Namespace sitzt, ist er immer vorhanden, ohne das irgendein Helfer Pfad an der View
+``Zend\View\Helper`` Namespace sitzt, ist er immer vorhanden, ohne das irgendein Helfer Pfad an der View
 hinzugefügt werden muß.
 
-Der Navigations Helfer findet andere Helfer die das ``Zend_View_Helper_Navigation_Helper`` Interface
+Der Navigations Helfer findet andere Helfer die das ``Zend\View\Helper\Navigation\Helper`` Interface
 implementieren, was bedeuet das auch auf eigene View Helfer weitergeleitet wird. Das würde trotzdem das
 Hinzufügen des eigenen Helfer Pfades zur View benötigen.
 
