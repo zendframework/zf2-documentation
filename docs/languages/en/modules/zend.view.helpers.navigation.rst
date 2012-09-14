@@ -572,39 +572,39 @@ relation that belongs to the render constant should be rendered.
 
 See the :ref:`example below <zend.view.helpers.initial.navigation.links.example3>` for more information.
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_ALTERNATE``
+- ``Zend_View_Helper_Navigation_Links::RENDER_ALTERNATE``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_STYLESHEET``
+- ``Zend_View_Helper_Navigation_Links::RENDER_STYLESHEET``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_START``
+- ``Zend_View_Helper_Navigation_Links::RENDER_START``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_NEXT``
+- ``Zend_View_Helper_Navigation_Links::RENDER_NEXT``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_PREV``
+- ``Zend_View_Helper_Navigation_Links::RENDER_PREV``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_CONTENTS``
+- ``Zend_View_Helper_Navigation_Links::RENDER_CONTENTS``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_INDEX``
+- ``Zend_View_Helper_Navigation_Links::RENDER_INDEX``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_GLOSSARY``
+- ``Zend_View_Helper_Navigation_Links::RENDER_GLOSSARY``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_COPYRIGHT``
+- ``Zend_View_Helper_Navigation_Links::RENDER_COPYRIGHT``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_CHAPTER``
+- ``Zend_View_Helper_Navigation_Links::RENDER_CHAPTER``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_SECTION``
+- ``Zend_View_Helper_Navigation_Links::RENDER_SECTION``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_SUBSECTION``
+- ``Zend_View_Helper_Navigation_Links::RENDER_SUBSECTION``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_APPENDIX``
+- ``Zend_View_Helper_Navigation_Links::RENDER_APPENDIX``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_HELP``
+- ``Zend_View_Helper_Navigation_Links::RENDER_HELP``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_BOOKMARK``
+- ``Zend_View_Helper_Navigation_Links::RENDER_BOOKMARK``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_CUSTOM``
+- ``Zend_View_Helper_Navigation_Links::RENDER_CUSTOM``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_ALL``
+- ``Zend_View_Helper_Navigation_Links::RENDER_ALL``
 
 The constants from ``RENDER_ALTERNATE`` to ``RENDER_BOOKMARK`` denote standard *HTML* link types. ``RENDER_CUSTOM``
 denotes non-standard relations that specified in pages. ``RENDER_ALL`` denotes standard and non-standard relations.
