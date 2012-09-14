@@ -3,7 +3,7 @@
 Navigation Helpers
 ==================
 
-The navigation helpers are used for rendering navigational elements from :ref:`Zend_Navigation_Container
+The navigation helpers are used for rendering navigational elements from :ref:`Zend\Navigation\Container
 <zend.navigation.containers>` instances.
 
 There are 5 built-in helpers:
@@ -22,9 +22,9 @@ There are 5 built-in helpers:
 - :ref:`Navigation <zend.view.helpers.initial.navigation.navigation>`, used for proxying calls to other
   navigational helpers.
 
-All built-in helpers extend ``Zend_View_Helper_Navigation_HelperAbstract``, which adds integration with :ref:`ACL
+All built-in helpers extend ``Zend\View\Helper\Navigation\HelperAbstract``, which adds integration with :ref:`ACL
 <zend.permissions.acl>` and :ref:`translation <zend.i18n.translating>`. The abstract class implements the interface
-``Zend_View_Helper_Navigation_Helper``, which defines the following methods:
+``Zend\View\Helper\Navigation\Helper``, which defines the following methods:
 
 - ``getContainer()`` and ``setContainer()`` gets and sets the navigation container the helper should operate on by
   default, and ``hasContainer()`` checks if the helper has container registered.
@@ -67,7 +67,7 @@ In addition to the method stubs from the interface, the abstract class also impl
   ``getMaxDepth()``. The deepest active page must be between ``$minDepth`` and ``$maxDepth`` inclusively. Returns
   an array containing a reference to the found page instance and the depth at which the page was found.
 
-- ``htmlify()`` renders an **'a'** *HTML* element from a ``Zend_Navigation_Page`` instance.
+- ``htmlify()`` renders an **'a'** *HTML* element from a ``Zend\Navigation\Page`` instance.
 
 - ``accept()`` is used for determining if a page should be accepted when iterating containers. This method checks
   for page visibility and verifies that the helper's role is allowed access to the page's resource and privilege.
@@ -77,8 +77,8 @@ In addition to the method stubs from the interface, the abstract class also impl
 - The static method ``setDefaultRole()`` is used for setting a default *ACL* that will be used by helpers
 
 If a navigation container is not explicitly set in a helper using ``$helper->setContainer($nav)``, the helper will
-look for a container instance with the key ``Zend_Navigation`` in :ref:`the registry <zend.registry>`. If a
-container is not explicitly set or found in the registry, the helper will create an empty ``Zend_Navigation``
+look for a container instance with the key ``Zend\Navigation`` in :ref:`the registry <zend.registry>`. If a
+container is not explicitly set or found in the registry, the helper will create an empty ``Zend\Navigation``
 container when calling ``$helper->getContainer()``.
 
 .. _zend.view.helpers.initial.navigation.proxy.example:
@@ -121,7 +121,7 @@ Integration with ACL
 --------------------
 
 All navigational view helpers support *ACL* inherently from the class
-``Zend_View_Helper_Navigation_HelperAbstract``. A ``Zend\Permissions\Acl`` object can be assigned to a helper instance with
+``Zend\View\Helper\Navigation\HelperAbstract``. A ``Zend\Permissions\Acl`` object can be assigned to a helper instance with
 *$helper->setAcl($acl)*, and role with *$helper->setRole('member')* or *$helper->setRole(new
 Zend\Permissions\Acl\Role\GenericRole('member'))*. If *ACL* is used in the helper, the role in the helper must be allowed by the *ACL* to
 access a page's *resource* and/or have the page's *privilege* for the page to be included when rendering.
@@ -158,7 +158,7 @@ Notes on the setup:
     * Navigation container (config/array)
 
     * Each element in the array will be passed to
-    * Zend_Navigation_Page::factory() when constructing
+    * Zend\Navigation\Page::factory() when constructing
     * the navigation container below.
     */
    $pages = array(
@@ -315,7 +315,7 @@ Notes on the setup:
    );
 
    // Create container from array
-   $container = new Zend_Navigation($pages);
+   $container = new Zend\Navigation($pages);
 
    // Store the container in the proxy helper:
    $view->getHelper('navigation')->setContainer($container);
@@ -324,7 +324,7 @@ Notes on the setup:
    $view->navigation($container);
 
    // ...or store it in the reigstry:
-   Zend_Registry::set('Zend_Navigation', $container);
+   Zend_Registry::set('Zend\Navigation', $container);
 
 In addition to the container above, the following setup is assumed:
 
@@ -362,8 +362,8 @@ In addition to the container above, the following setup is assumed:
    $view->navigation()->setAcl($acl)->setRole('member');
 
    // ...or set default ACL and role statically:
-   Zend_View_Helper_Navigation_HelperAbstract::setDefaultAcl($acl);
-   Zend_View_Helper_Navigation_HelperAbstract::setDefaultRole('member');
+   Zend\View\Helper\Navigation\HelperAbstract::setDefaultAcl($acl);
+   Zend\View\Helper\Navigation\HelperAbstract::setDefaultRole('member');
 
 .. _zend.view.helpers.initial.navigation.breadcrumbs:
 
@@ -378,7 +378,7 @@ script.
 
 The Breadcrumbs helper works like this; it finds the deepest active page in a navigation container, and renders an
 upwards path to the root. For *MVC* pages, the "activeness" of a page is determined by inspecting the request
-object, as stated in the section on :ref:`Zend_Navigation_Page_Mvc <zend.navigation.pages.mvc>`.
+object, as stated in the section on :ref:`Zend\Navigation\Page\Mvc <zend.navigation.pages.mvc>`.
 
 The helper sets the *minDepth* property to 1 by default, meaning breadcrumbs will not be rendered if the deepest
 active page is a root page. If *maxDepth* is specified, the helper will stop rendering when at the specified depth
@@ -554,8 +554,8 @@ searching:
 .. note::
 
    When looking for relations in the page instance (*$page->getRel($type)* or *$page->getRev($type)*), the helper
-   accepts the values of type ``String``, ``Array``, ``Zend_Config``, or ``Zend_Navigation_Page``. If a string is
-   found, it will be converted to a ``Zend_Navigation_Page_Uri``. If an array or a config is found, it will be
+   accepts the values of type ``String``, ``Array``, ``Zend\Config``, or ``Zend\Navigation\Page``. If a string is
+   found, it will be converted to a ``Zend\Navigation\Page\Uri``. If an array or a config is found, it will be
    converted to one or several page instances. If the first key of the array/config is numeric, it will be
    considered to contain several pages, and each element will be passed to the :ref:`page factory
    <zend.navigation.pages.factory>`. If the first key is not numeric, the array/config will be passed to the page
@@ -572,39 +572,39 @@ relation that belongs to the render constant should be rendered.
 
 See the :ref:`example below <zend.view.helpers.initial.navigation.links.example3>` for more information.
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_ALTERNATE``
+- ``Zend\View\Helper\Navigation\Links::RENDER_ALTERNATE``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_STYLESHEET``
+- ``Zend\View\Helper\Navigation\Links::RENDER_STYLESHEET``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_START``
+- ``Zend\View\Helper\Navigation\Links::RENDER_START``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_NEXT``
+- ``Zend\View\Helper\Navigation\Links::RENDER_NEXT``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_PREV``
+- ``Zend\View\Helper\Navigation\Links:::RENDER_PREV``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_CONTENTS``
+- ``Zend\View\Helper\Navigation\Links::RENDER_CONTENTS``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_INDEX``
+- ``Zend\View\Helper\Navigation\Links::RENDER_INDEX``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_GLOSSARY``
+- ``Zend\View\Helper\Navigation\Links::RENDER_GLOSSARY``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_COPYRIGHT``
+- ``Zend\View\Helper\Navigation\Links:::RENDER_COPYRIGHT``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_CHAPTER``
+- ``Zend\View\Helper\Navigation\Links::RENDER_CHAPTER``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_SECTION``
+- ``Zend\View\Helper\Navigation\Links::RENDER_SECTION``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_SUBSECTION``
+- ``Zend\View\Helper\Navigation\Links::RENDER_SUBSECTION``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_APPENDIX``
+- ``Zend\View\Helper\Navigation\Links::RENDER_APPENDIX``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_HELP``
+- ``Zend\View\Helper\Navigation\Links::RENDER_HELP``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_BOOKMARK``
+- ``Zend\View\Helper\Navigation\Links::RENDER_BOOKMARK``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_CUSTOM``
+- ``Zend\View\Helper\Navigation\Links::RENDER_CUSTOM``
 
-- ``Zend_View_Helper_Navigation_Link::RENDER_ALL``
+- ``Zend\View\Helper\Navigation\Links::RENDER_ALL``
 
 The constants from ``RENDER_ALTERNATE`` to ``RENDER_BOOKMARK`` denote standard *HTML* link types. ``RENDER_CUSTOM``
 denotes non-standard relations that specified in pages. ``RENDER_ALL`` denotes standard and non-standard relations.
@@ -634,7 +634,7 @@ This example shows how to specify relations in pages.
 .. code-block:: php
    :linenos:
 
-   $container = new Zend_Navigation(array(
+   $container = new Zend\Navigation(array(
        array(
            'label' => 'Relations using strings',
            'rel'   => array(
@@ -656,7 +656,7 @@ This example shows how to specify relations in pages.
        array(
            'label' => 'Relations using configs',
            'rel'   => array(
-               'alternate' => new Zend_Config(array(
+               'alternate' => new Zend\Config(array(
                    'label' => 'Example.org',
                    'uri'   => 'http://www.example.org/'
                ))
@@ -665,7 +665,7 @@ This example shows how to specify relations in pages.
        array(
            'label' => 'Relations using pages instance',
            'rel'   => array(
-               'alternate' => Zend_Navigation_Page::factory(array(
+               'alternate' => Zend\Navigation\Page::factory(array(
                    'label' => 'Example.org',
                    'uri'   => 'http://www.example.org/'
                ))
@@ -706,9 +706,9 @@ This example shows how to specify which relations to find and render.
    :linenos:
 
    Render only start, next, and prev:
-   $helper->setRenderFlag(Zend_View_Helper_Navigation_Links::RENDER_START |
-                          Zend_View_Helper_Navigation_Links::RENDER_NEXT |
-                          Zend_View_Helper_Navigation_Links::RENDER_PREV);
+   $helper->setRenderFlag(Zend\View\Helper\Navigation\Links::RENDER_START |
+                          Zend\View\Helper\Navigation\Links::RENDER_NEXT |
+                          Zend\View\Helper\Navigation\Links::RENDER_PREV);
 
    Output:
    <link rel="start" href="/" title="Home">
@@ -719,8 +719,8 @@ This example shows how to specify which relations to find and render.
    :linenos:
 
    Render only native link types:
-   $helper->setRenderFlag(Zend_View_Helper_Navigation_Links::RENDER_ALL ^
-                          Zend_View_Helper_Navigation_Links::RENDER_CUSTOM);
+   $helper->setRenderFlag(Zend\View\Helper\Navigation\Links::RENDER_ALL ^
+                          Zend\View\Helper\Navigation\Links::RENDER_CUSTOM);
 
    Output:
    <link rel="alternate" href="/products/server/faq/format/xml">
@@ -736,8 +736,8 @@ This example shows how to specify which relations to find and render.
    :linenos:
 
    Render all but chapter:
-   $helper->setRenderFlag(Zend_View_Helper_Navigation_Links::RENDER_ALL ^
-                          Zend_View_Helper_Navigation_Links::RENDER_CHAPTER);
+   $helper->setRenderFlag(Zend\View\Helper\Navigation\Links::RENDER_ALL ^
+                          Zend\View\Helper\Navigation\Links::RENDER_CHAPTER);
 
    Output:
    <link rel="alternate" href="/products/server/faq/format/xml">
@@ -1493,9 +1493,9 @@ Render the sitemap using a maximum depth of 1.
 
    **UTF-8 encoding used by default**
 
-   By default, Zend Framework uses *UTF-8* as its default encoding, and, specific to this case, ``Zend_View`` does
+   By default, Zend Framework uses *UTF-8* as its default encoding, and, specific to this case, ``Zend\View`` does
    as well. Character encoding can be set differently on the view object itself using the ``setEncoding()`` method
-   (or the the ``encoding`` instantiation parameter). However, since ``Zend_View_Interface`` does not define
+   (or the the ``encoding`` instantiation parameter). However, since ``Zend\View\Interface`` does not define
    accessors for encoding, it's possible that if you are using a custom view implementation with the Dojo view
    helper, you will not have a ``getEncoding()`` method, which is what the view helper uses internally for
    determining the character set in which to encode.
@@ -1510,11 +1510,11 @@ Navigation Helper
 
 The Navigation helper is a proxy helper that relays calls to other navigational helpers. It can be considered an
 entry point to all navigation-related view tasks. The aforementioned navigational helpers are in the namespace
-``Zend_View_Helper_Navigation``, and would thus require the path *Zend/View/Helper/Navigation* to be added as a
-helper path to the view. With the proxy helper residing in the ``Zend_View_Helper`` namespace, it will always be
+``Zend\View\Helper\Navigation``, and would thus require the path *Zend/View/Helper/Navigation* to be added as a
+helper path to the view. With the proxy helper residing in the ``Zend\View\Helper`` namespace, it will always be
 available, without the need to add any helper paths to the view.
 
-The Navigation helper finds other helpers that implement the ``Zend_View_Helper_Navigation_Helper`` interface,
+The Navigation helper finds other helpers that implement the ``Zend\View\Helper\Navigation\Helper`` interface,
 which means custom view helpers can also be proxied. This would, however, require that the custom helper path is
 added to the view.
 
