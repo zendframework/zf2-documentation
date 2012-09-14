@@ -10,7 +10,7 @@ the skeleton is used to provide bootstrapping, error and routing conﬁguration 
 the whole application. It is usually used to provide application level
 controllers for, say, the home page of an application, but we are not going to
 use the default one provided in this tutorial as we want our album list to be
-the home page, which will live in our own module.  
+the home page, which will live in our own module.
 
 We are going to put all our code into the Album module which will contain our
 controllers, models, forms and views, along with conﬁguration. We’ll also tweak
@@ -49,7 +49,7 @@ In order to load and conﬁgure a module, Zend Framework 2 has a
 ``ModuleManager``. This will look for ``Module.php`` in the root of the module
 directory (``module/Album``) and expect to ﬁnd a class called ``Album\Module``
 within it. That is, the classes within a given module will have the namespace of
-the module’s name, which is the directory name of the module. 
+the module’s name, which is the directory name of the module.
 
 Create ``Module.php`` in the ``Album`` module:
 
@@ -57,7 +57,7 @@ Create ``Module.php`` in the ``Album`` module:
 
     // module/Album/Module.php
     namespace Album;
-    
+
     class Module
     {
         public function getAutoloaderConfig()
@@ -73,7 +73,7 @@ Create ``Module.php`` in the ``Album`` module:
                 ),
             );
         }
-    
+
         public function getConfig()
         {
             return include __DIR__ . '/config/module.config.php';
@@ -94,7 +94,7 @@ path where to ﬁnd the ﬁles for that namespace. It is PSR-0 compliant and so
 classes map directly to ﬁles as per the `PSR-0 rules
 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_.
 
-As we are in development, we don’t need to load ﬁles via the classmap, so we provide an empty array for the 
+As we are in development, we don’t need to load ﬁles via the classmap, so we provide an empty array for the
 classmap autoloader. Create ``autoload_classmap.php`` with these contents:
 
 .. code-block:: php
@@ -147,7 +147,7 @@ be unique across all modules, so we preﬁx it with our module name.
 
 Within the ``view_manager`` section, we add our view directory to the
 ``TemplatePathStack`` conﬁguration. This will allow it to ﬁnd the view scripts for
-the ``Album`` module that are stored in our ``views/`` directory.
+the ``Album`` module that are stored in our ``view/`` directory.
 
 Informing the application about our new module
 ----------------------------------------------
@@ -167,7 +167,7 @@ skeleton application. Update this file so that its ``modules`` section contains 
             'Application',
             'Album',                  // <-- Add this line
         ),
-        'module_listener_options' => array( 
+        'module_listener_options' => array(
             'config_glob_paths'    => array(
                 'config/autoload/{,*.}{global,local}.php',
             ),
@@ -179,6 +179,6 @@ skeleton application. Update this file so that its ``modules`` section contains 
     );
 
 As you can see, we have added our ``Album`` module into the list of modules
-after the ``Application`` module.    
+after the ``Application`` module.
 
 We have now set up the module ready for putting our custom code into it.
