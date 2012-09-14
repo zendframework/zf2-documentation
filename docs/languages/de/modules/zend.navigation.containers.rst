@@ -13,13 +13,13 @@ durchlaufen werden kann indem die SPL Klasse ``RecursiveIteratorIterator`` verwe
 Erstellen von Containern
 ------------------------
 
-``Zend_Navigation_Container`` ist abstrakt, und kann nicht direkt instanziiert werden. Verwende ``Zend_Navigation``
+``Zend\Navigation\Container`` ist abstrakt, und kann nicht direkt instanziiert werden. Verwende ``Zend\Navigation``
 wenn ein Container instanziiert werden soll.
 
-``Zend_Navigation`` kann komplett leer erstellt werden, oder indem ein Array genommen wird, oder ein
-``Zend_Config`` Objekt mit Seiten in den Container gegeben wird. Jede seite in dem gegebenen Array/Config wird
+``Zend\Navigation`` kann komplett leer erstellt werden, oder indem ein Array genommen wird, oder ein
+``Zend\Config`` Objekt mit Seiten in den Container gegeben wird. Jede seite in dem gegebenen Array/Config wird
 eventuell an die ``addPage()`` Methode der Container Klasse übergeben, was bedeutet das jedes Element im
-Array/Config ein Array oder Config Objekt sein kann, oder eine Instanz von ``Zend_Navigation_Page``.
+Array/Config ein Array oder Config Objekt sein kann, oder eine Instanz von ``Zend\Navigation\Page``.
 
 .. _zend.navigation.containers.creating.example.array:
 
@@ -31,10 +31,10 @@ Array/Config ein Array oder Config Objekt sein kann, oder eine Instanz von ``Zen
    /*
     * Erstellt einen Container von einem Array
     *
-    * Jedes Element im Array wird an Zend_Navigation_Page::factory() übergeben
+    * Jedes Element im Array wird an Zend\Navigation\Page::factory() übergeben
     * wenn es erstellt wird.
     */
-   $container = new Zend_Navigation(array(
+   $container = new Zend\Navigation(array(
        array(
            'label' => 'Seite 1',
            'id' => 'home-link',
@@ -389,8 +389,8 @@ Array/Config ein Array oder Config Objekt sein kann, oder eine Instanz von ``Zen
    </config>
     */
 
-   $config = new Zend_Config_Xml('/path/to/navigation.xml', 'nav');
-   $container = new Zend_Navigation($config);
+   $config = new Zend\Config\Xml('/path/to/navigation.xml', 'nav');
+   $container = new Zend\Navigation($config);
 
 .. _zend.navigation.containers.adding:
 
@@ -408,10 +408,10 @@ Das Hinzufügen von Seiten in einen Container kann mit den Methoden ``addPage()`
    :linenos:
 
    // Container erstellen
-   $container = new Zend_Navigation();
+   $container = new Zend\Navigation();
 
    // Seite durch die Angabe eine Instanz einer Page hinzufügen
-   $container->addPage(Zend_Navigation_Page::factory(array(
+   $container->addPage(Zend\Navigation\Page::factory(array(
        'uri' => 'http://www.example.com/'
    )))
 
@@ -421,7 +421,7 @@ Das Hinzufügen von Seiten in einen Container kann mit den Methoden ``addPage()`
    )))
 
    // Seite durch die Angabe eines Config Objekts hinzufügen
-   $container->addPage(new Zend_Config(array(
+   $container->addPage(new Zend\Config(array(
        'uri' => 'http://www.example.com/'
    )))
 
@@ -458,7 +458,7 @@ Seite hat. Die letztere Methode entfernt alle Seiten vom Container.
 .. code-block:: php
    :linenos:
 
-   $container = new Zend_Navigation(array(
+   $container = new Zend\Navigation(array(
        array(
            'label'  => 'Seite 1',
            'action' => 'page1'
@@ -597,7 +597,7 @@ dem Label 'Home' zu finden. Andere Kombinationen sind ``findByLabel(...)``, ``fi
 Container durchsuchen
 ---------------------
 
-``Zend_Navigation_Container`` implementiert ``RecursiveIteratorIterator``, und kann mit jeder ``Iterator`` Klasse
+``Zend\Navigation\Container`` implementiert ``RecursiveIteratorIterator``, und kann mit jeder ``Iterator`` Klasse
 durchsucht werden. Um einen Container rekursiv zu durchsuchen, kann die ``RecursiveIteratorIterator`` Klasse
 verwendet werden.
 
@@ -611,7 +611,7 @@ verwendet werden.
    /*
     * Erstellt einen Container von einem Array
     */
-   $container = new Zend_Navigation(array(
+   $container = new Zend\Navigation(array(
        array(
            'label' => 'Seite 1',
            'uri'   => '#'
@@ -656,7 +656,7 @@ verwendet werden.
 Andere Operationen
 ------------------
 
-Die Methode ``hasPage(Zend_Navigation_Page $page)`` prüft ob der Container die angegebene Seite besitzt. Die
+Die Methode ``hasPage(Zend\Navigation\Page $page)`` prüft ob der Container die angegebene Seite besitzt. Die
 Methode ``hasPages()`` prüft ob irgendeine Seite im Container existiert, und ist gleich mit ``count($container) >
 1``.
 
@@ -670,7 +670,7 @@ Serialisierung und das Debugging nützlich sein.
 .. code-block:: php
    :linenos:
 
-   $container = new Zend_Navigation(array(
+   $container = new Zend\Navigation(array(
        array(
            'label' => 'Seite 1',
            'uri'   => '#'
@@ -710,7 +710,7 @@ Serialisierung und das Debugging nützlich sein.
        ["privilege"]=> NULL
        ["active"]=> bool(false)
        ["visible"]=> bool(true)
-       ["type"]=> string(23) "Zend_Navigation_Page_Uri"
+       ["type"]=> string(23) "Zend\Navigation\Page\Uri"
        ["pages"]=> array(0) {
        }
        ["uri"]=> string(1) "#"
@@ -730,7 +730,7 @@ Serialisierung und das Debugging nützlich sein.
        ["privilege"]=> NULL
        ["active"]=> bool(false)
        ["visible"]=> bool(true)
-       ["type"]=> string(23) "Zend_Navigation_Page_Uri"
+       ["type"]=> string(23) "Zend\Navigation\Page\Uri"
        ["pages"]=> array(2) {
          [0]=> array(15) {
            ["label"]=> string(8) "Seite 2.1"
@@ -747,7 +747,7 @@ Serialisierung und das Debugging nützlich sein.
            ["privilege"]=> NULL
            ["active"]=> bool(false)
            ["visible"]=> bool(true)
-           ["type"]=> string(23) "Zend_Navigation_Page_Uri"
+           ["type"]=> string(23) "Zend\Navigation\Page\Uri"
            ["pages"]=> array(0) {
            }
            ["uri"]=> string(1) "#"
@@ -768,7 +768,7 @@ Serialisierung und das Debugging nützlich sein.
            ["privilege"]=> NULL
            ["active"]=> bool(false)
            ["visible"]=> bool(true)
-           ["type"]=> string(23) "Zend_Navigation_Page_Uri"
+           ["type"]=> string(23) "Zend\Navigation\Page\Uri"
            ["pages"]=> array(0) {
            }
            ["uri"]=> string(1) "#"
