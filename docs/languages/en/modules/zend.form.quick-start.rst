@@ -424,8 +424,8 @@ if any.
    $form->setInputFilter(new Contact\ContactFilter());
 
    // Get the data. In an MVC application, you might try:
-   $data = $request->post();  // for POST data
-   $data = $request->query(); // for GET (or query string) data
+   $data = $request->getPost();  // for POST data
+   $data = $request->getQuery(); // for GET (or query string) data
 
    $form->setData($data);
 
