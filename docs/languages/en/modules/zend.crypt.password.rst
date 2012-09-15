@@ -31,7 +31,7 @@ To verify if a given password is valid against a bcrypt value you can use the ``
    $securePass = 'the stored bcrypt value';
    $password = 'the password to check';
 
-   if ($bcrypt->verify($password, $bcrypt)) {
+   if ($bcrypt->verify($password, $securePass)) {
        echo "The password is correct! \n";
    } else {
        echo "The password is NOT correct.\n";
