@@ -10,22 +10,22 @@ possibilities are endless.
 
 .. note::
 
-   The module system in ZF2 has been designed to be useful as a generic and powerful foundation from which
+   The module system in ZF2 has been designed to be a generic and powerful foundation from which
    developers and other projects can build their own module or plugin systems.
 
    For a better understanding of the event-driven concepts behind the ZF2 module system, it may be helpful to read
-   the :ref:`EventManager documentation. <zend.event-manager.event-manager>`.
+   the :ref:`EventManager documentation <zend.event-manager.event-manager>`.
 
 The module system is made up of the following:
 
-- **The Module Autoloader**-``Zend\Loader\ModuleAutoloader`` is a specialized autoloader that is responsible for
-  the locating and loading of modules'``Module`` classes from a variety of sources.
+- **The Module Autoloader** - ``Zend\Loader\ModuleAutoloader`` is a specialized autoloader that is responsible for
+  the locating and loading of modules' ``Module`` classes from a variety of sources.
 
-- :ref:`The Module Manager <zend.module-manager.module-manager>`-``Zend\ModuleManager\ModuleManager`` simply takes
+- :ref:`The Module Manager <zend.module-manager.module-manager>` - ``Zend\ModuleManager\ModuleManager`` simply takes
   an array of module names and fires a sequence of events for each one, allowing the behavior of the module system
   to be defined entirely by the listeners which are attached to the module manager.
 
-- **ModuleManager Listeners**- Event listeners can be attached to the module manager's various events. These
+- **ModuleManager Listeners** - Event listeners can be attached to the module manager's various events. These
   listeners can do everything from resolving and loading modules to performing complex initialization tasks and
   introspection into each returned module object.
 
