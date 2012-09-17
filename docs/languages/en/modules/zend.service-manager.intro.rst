@@ -8,6 +8,7 @@ service/object locator, tasked with retrieving other objects. You may interact w
 via the following methods
 
 .. code-block:: php
+
   // /library/Zend/ServiceManager/ServiceLocatorInterface.php
 	namespace Zend\ServiceManager;
 
