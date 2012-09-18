@@ -108,8 +108,10 @@ Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
         public function __construct(Adapter $adapter)
         {
             $this->adapter = $adapter;
+
             $this->resultSetPrototype = new ResultSet();
             $this->resultSetPrototype->setArrayObjectPrototype(new Album());
+
             $this->initialize();
         }
 
@@ -122,11 +124,17 @@ Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
         public function getAlbum($id)
         {
             $id  = (int) $id;
-            $rowset = $this->select(array('id' => $id));
+
+            $rowset = $this->select(array(
+                'id' => $id,
+            ));
+
             $row = $rowset->current();
+
             if (!$row) {
                 throw new \Exception("Could not find row $id");
             }
+
             return $row;
         }
 
@@ -136,21 +144,28 @@ Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
                 'artist' => $album->artist,
                 'title'  => $album->title,
             );
-            $id = (int)$album->id;
+
+            $id = (int) $album->id;
+
             if ($id == 0) {
                 $this->insert($data);
+            } elseif ($this->getAlbum($id)) {
+                $this->update(
+                    $data, 
+                    array(
+                        'id' => $id,
+                    )
+                );
             } else {
-                if ($this->getAlbum($id)) {
-                    $this->update($data, array('id' => $id));
-                } else {
-                    throw new \Exception('Form id does not exist');
-                }
+                throw new \Exception('Form id does not exist');
             }
         }
 
         public function deleteAlbum($id)
         {
-            $this->delete(array('id' => $id));
+            $this->delete(array(
+                'id' => $id,
+            ));
         }
     }
 
@@ -323,9 +338,9 @@ name}``. We can now fill in the ``index.phtml`` view script:
     $this->headTitle($title);
     ?>
     <h1><?php echo $this->escapeHtml($title); ?></h1>
-
-    <p><a href="<?php echo $this->url('album', array( 
-            'action'=>'add'));?>">Add new album</a></p>
+    <p>
+        <a href="<?php echo $this->url('album', array('action'=>'add'));?>">Add new album</a>
+    </p>
 
     <table class="table">
     <tr>
@@ -333,10 +348,11 @@ name}``. We can now fill in the ``index.phtml`` view script:
         <th>Artist</th>
         <th>&nbsp;</th>
     </tr>
-    <?php foreach($albums as $album) : ?>
+    <?php foreach ($albums as $album) : ?>
     <tr>
         <td><?php echo $this->escapeHtml($album->title);?></td>
-        <td><?php echo $this->escapeHtml($album->artist);?></td>    <td>
+        <td><?php echo $this->escapeHtml($album->artist);?></td>    
+        <td>
             <a href="<?php echo $this->url('album',
                 array('action'=>'edit', 'id' => $album->id));?>">Edit</a>
             <a href="<?php echo $this->url('album',
@@ -353,7 +369,7 @@ add a new album.
 
 The ``url()`` view helper is provided by Zend Framework 2 and is used to create
 the links we need. The first parameter to ``url()`` is the route name we wish to use
-for construction of the URL, and the the second parameter is an array of all the
+for construction of the URL, and the second parameter is an array of all the
 variables to fit into the placeholders to use. In this case we use our ‘album’
 route which is set up to accept two placeholder variables: ``action`` and ``id``. 
 
