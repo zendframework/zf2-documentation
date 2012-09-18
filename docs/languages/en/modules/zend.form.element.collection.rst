@@ -1,4 +1,3 @@
-
 Collection Element
 ^^^^^^^^^^^^^^^^^^
 
@@ -70,7 +69,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 .. function:: allowAdd()
    :noindex:
 
-   Return if new elements can by dynamically added in the collection.
+   Return if new elements can be dynamically added in the collection.
 
    :rtype: boolean
 
@@ -82,7 +81,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 .. function:: allowRemove()
    :noindex:
 
-   Return if new elements can by dynamically added in the collection.
+   Return if new elements can be dynamically removed from the collection.
 
    :rtype: boolean
 
