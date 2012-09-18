@@ -24,11 +24,11 @@ via the following methods
 
 In addition to above methods, the ``ServiceManger`` can be instantiated via the following features:
 
-- **Service registration**. You can register an object under a given name (*$services->setService('foo',
-  $object)*).
+- **Service registration**. You can register an object under a given name ``$services->setService('foo',
+  $object)``.
 
 - **Lazy-loaded service objects**. You can tell the manager what class to instantiate on first request
-  (*$services->setInvokableClass('foo', 'Fully\Qualified\Classname')*).
+  ``$services->setInvokableClass('foo', 'Fully\Qualified\Classname')``.
 
 - **Service factories**. Instead of an actual object instance or a class name, you can tell the manager to invoke
   the provided factory in order to get the object instance. Factories may be either any PHP callable, an object
