@@ -564,7 +564,7 @@ And finally, the view:
 
 A few new things here :
 
-- the ``prepare()`` method. You *msut* call it prior to rendering anything in
+- the ``prepare()`` method. You *must* call it prior to rendering anything in
   the view (this function is only meant to be called in views, not in
   controllers).
 - the ``FormRow`` helper renders a label (if present), the input itself, and
