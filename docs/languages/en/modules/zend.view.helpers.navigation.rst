@@ -76,9 +76,7 @@ In addition to the method stubs from the interface, the abstract class also impl
 
 - The static method ``setDefaultRole()`` is used for setting a default *ACL* that will be used by helpers
 
-If a navigation container is not explicitly set in a helper using ``$helper->setContainer($nav)``, the helper will
-look for a container instance with the key ``Zend\Navigation`` in :ref:`the registry <zend.registry>`. If a
-container is not explicitly set or found in the registry, the helper will create an empty ``Zend\Navigation``
+If a container is not explicitly set, the helper will create an empty ``Zend\Navigation``
 container when calling ``$helper->getContainer()``.
 
 .. _zend.view.helpers.initial.navigation.proxy.example:
@@ -322,9 +320,6 @@ Notes on the setup:
 
    // ...or simply:
    $view->navigation($container);
-
-   // ...or store it in the reigstry:
-   Zend_Registry::set('Zend\Navigation', $container);
 
 In addition to the container above, the following setup is assumed:
 
@@ -1520,7 +1515,7 @@ added to the view.
 
 When proxying to other helpers, the Navigation helper can inject its container, *ACL*/role, and translator. This
 means that you won't have to explicitly set all three in all navigational helpers, nor resort to injecting by means
-of ``Zend_Registry`` or static methods.
+of static methods.
 
 - ``findHelper()`` finds the given helper, verifies that it is a navigational helper, and injects container,
   *ACL*/role and translator.
