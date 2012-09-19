@@ -288,8 +288,7 @@ Now, we'll consume it from our Module.
 .. rubric:: Creating a ServiceManager-aware class
 
 By default, the Zend Framework MVC registers an initializer that will inject the ``ServiceManager`` instance into
-any class implementing ``Zend\ServiceManager\ServiceManagerAwareInterface``. The default controller implementations
-implement this interface, as do a small number of other objects. A simple implementation looks like the following.
+any class implementing ``Zend\ServiceManager\ServiceManagerAwareInterface``. A simple implementation looks like the following.
 
 .. code-block:: php
    :linenos:
