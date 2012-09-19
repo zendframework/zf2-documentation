@@ -7,14 +7,14 @@ Introduction to Zend\\Form
 layer of objects representing form elements, an :ref:`InputFilter <zend.input-filter>`, and a small number of
 methods for binding data to and from the form and attached objects.
 
-The component consists of:
+The ``Zend\Form`` component consists of the following objects:
 
 - ``Elements``, which simply consist of a name and attributes.
 
 - ``Fieldsets``, which extend from ``Elements``, but allow composing other fieldsets and elements.
 
-- ``Forms``, which extend from ``Fieldsets`` (and thus ``Elements``), provide data and object binding, and compose
-  ``InputFilters``. Data binding is done via ``Zend\Stdlib\Hydrator``.
+- ``Forms``, which extend from ``Fieldsets`` (and thus ``Elements``). They provide data and object binding, and compose
+  :ref:`InputFilters <zend.input-filter.intro>`. Data binding is done via :ref:`Zend\Stdlib\Hydrator <zend.stdlib.hydrator>`.
 
 To facilitate usage with the view layer, the ``Zend\Form`` component also aggregates a number of form-specific view
 helpers. These accept elements, fieldsets, and/or forms, and use the attributes they compose to render markup.
