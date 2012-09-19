@@ -24,7 +24,7 @@ delete albums. Hence the following pages are required:
 |               | then delete it.                                            |
 +---------------+------------------------------------------------------------+
 
-Before we set up our ﬁles, it’s important to understand how the framework
+Before we set up our files, it’s important to understand how the framework
 expects the pages to be organised. Each page of the application is known as an
 *action* and actions are grouped into *controllers* within *modules*. Hence, you
 would generally group related actions into a controller; for instance, a news
@@ -46,13 +46,13 @@ four actions will be:
 | Delete album  | ``AlbumController`` | ``delete`` |
 +---------------+---------------------+------------+
 
-The mapping of a URL to a particular action is done using routes that are deﬁned
+The mapping of a URL to a particular action is done using routes that are defined
 in the module’s ``module.config.php`` file. We will add a route for our album
-actions. This is the updated conﬁg file with the new code commented.
+actions. This is the updated config file with the new code commented.
 
 .. code-block:: php
 
-    // module/Album/conﬁg/module.conﬁg.php:
+    // module/Album/config/module.config.php:
     return array(
         'controllers' => array(
             'invokables' => array(
@@ -91,7 +91,7 @@ The name of the route is ‘album’ and has a type of ‘segment’. The segmen
 allows us to specify placeholders in the URL pattern (route) that will be mapped
 to named parameters in the matched route. In this case, the route is
 **``/album[/:action][/:id]``** which will match any URL that starts with
-``/album``. The next segment will be an optional action name, and then ﬁnally
+``/album``. The next segment will be an optional action name, and then finally
 the next segment will be mapped to an optional id. The square brackets indicate
 that a segment is optional. The constraints section allows us to ensure that the
 characters within a segment are as expected, so we have limited actions to
@@ -117,7 +117,7 @@ Create the controller
 
 We are now ready to set up our controller. In Zend Framework 2, the controller
 is a class that is generally called ``{Controller name}Controller``. Note that
-``{Controller name}`` must start with a capital letter.  This class lives in a ﬁle
+``{Controller name}`` must start with a capital letter.  This class lives in a file
 called ``{Controller name}Controller.php`` within the ``Controller`` directory for the
 module. In our case that is ``module/Album/src/Album/Controller``. Each action is
 a public function within the controller class that is named ``{action name}Action``.
@@ -187,7 +187,7 @@ Initialise the view scripts
 ---------------------------
 
 To integrate the view into our application all we need to do is create some view
-script files. These ﬁles will be executed by the ``DefaultViewStrategy`` and be
+script files. These files will be executed by the ``DefaultViewStrategy`` and be
 passed any variables or view models that are returned from the controller action
 method. These view scripts are stored in our module’s views directory within a
 directory named after the controller. Create these four empty files now:
