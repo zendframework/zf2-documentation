@@ -85,11 +85,8 @@ Zusätzlich zu den Methoden die vom Interface kommen, implementiert die abstrakt
 - Die statische Methode ``setDefaultRole()`` wird für das Setzen der standardmäßigen *ACL* verwendet, die dann
   von Helfern verwendet wird.
 
-Wenn ein Navigations Container nicht explizit in einem Helfer durch Verwendung von ``$helper->setContainer($nav)``
-gesetzt ist, schaut der Helfer in :ref:`der Registry <zend.registry>` nach einer Container Instanz mit dem
-Schlüssel ``Zend\Navigation``. Wenn ein Container nicht explizit gesetzt wurde, oder nicht in der Registry
-gefunden wird, erstellt der Helfer einen leeren ``Zend\Navigation`` Container wenn ``$helper->getContainer()``
-aufgerufen wird.
+Wenn ein Container nicht explizit gesetzt wurde erstellt der Helfer einen
+leeren ``Zend\Navigation`` Container wenn ``$helper->getContainer()`` aufgerufen wird.
 
 .. _zend.view.helpers.initial.navigation.proxy.example:
 
@@ -114,9 +111,7 @@ Der obige Aufruf fügt eine Seite zum Container im ``Navigation`` Helfer hinzu.
 
 Der Navigations Helfer unterstützt die Übersetzung von SeitenLabels und Überschriften. Man kann einen
 Übersetzer vom Typ ``Zend\Translator`` oder ``Zend\Translator\Adapter`` im Helfer setzen indem
-``$helper->setTranslator($translator)`` verwendet wird, oder wie in allen anderen I18n-fähigen Komponenten; durch
-das Hinzufügen des Übersetzers in :ref:`die Registry <zend.registry>` indem der Schlüssel ``Zend\Translator``
-verwendet wird.
+``$helper->setTranslator($translator)`` verwendet wird.
 
 Wenn man die Übersetzung ausschalten will, sollte man ``$helper->setUseTranslator(false)`` verwenden.
 
@@ -338,9 +333,6 @@ Notizen zum Setup:
 
    // ...oder einfach:
    $view->navigation($container);
-
-   // ...oder ihn einfach in der Registry speichern:
-   Zend_Registry::set('Zend\Navigation', $container);
 
 Zusätzlich zum obigen Container, wird das folgende Setup angenommen:
 
@@ -1558,7 +1550,7 @@ Hinzufügen des eigenen Helfer Pfades zur View benötigen.
 
 Wenn auf andere Helfer weitergeleitet wird, kann der Navigations Helfer seinen Container, *ACL*/Rolle und
 Übersetzer injizieren. Das bedeutet weder das man diese drei nicht explizit in allen navigatorischen Helfern
-setzen muß, noch das diese in ``Zend_Registry`` oder in statische Methoden injiziert werden muß.
+setzen muß, noch das diese in statische Methoden injiziert werden muß.
 
 - ``findHelper()`` findet alle angegebenen Helfer, prüft das dieser ein navigatorischer Helfer ist, und injiziiert
   Container, *ACL*/Rolle und Übersetzer.
