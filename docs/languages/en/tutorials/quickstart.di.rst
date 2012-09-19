@@ -361,26 +361,31 @@ Creating a precompiled definition for others to use
 If you are a 3rd party code developer, it makes sense to produce a ``Definition`` file that describes your code so
 that others can utilize this ``Definition`` without having to ``Reflect`` it via the ``RuntimeDefintion``, or
 create it via the ``Compiler``. To do this, use the same technique as above. Instead of writing the resulting array
-to disk, you would write the information into a definition directly, by way of ``Zend\CodeGenerator``:
+to disk, you would write the information into a definition directly, by way of ``Zend\Code\Generator``:
 
 .. code-block:: php
    :linenos:
 
    // First, compile the information
-   $compiler = new Zend\Di\Definition\Compiler();
-   $compiler->addCodeScannerDirectory(new Zend\Code\Scanner\DirectoryScanner(__DIR__ . '/My/'));
-   $definition = $compiler->compile();
+   $compiler = new Zend\Di\Definition\CompilerDefinition();
+   $compiler->addDirectoryScanner(
+       new Zend\Code\Scanner\DirectoryScanner(__DIR__ . '/My/')
+   );
+   $compiler->compile();
+   $definition = $compiler->toArrayDefinition();
 
    // Now, create a Definition class for this information
-   $codeGenerator = new Zend\CodeGenerator\Php\PhpFile();
-   $codeGenerator->setClass(($class = new Zend\CodeGenerator\Php\PhpClass()));
+   $codeGenerator = new Zend\Code\Generator\FileGenerator();
+   $codeGenerator->setClass(($class = new Zend\Code\Generator\ClassGenerator()));
    $class->setNamespaceName('My');
    $class->setName('DiDefinition');
    $class->setExtendedClass('\Zend\Di\Definition\ArrayDefinition');
-   $class->setMethod(array(
-       'name' => '__construct',
-       'body' => 'parent::__construct(' . var_export($definition->toArray(), true) . ');'
-   ));
+   $class->addMethod(
+       '__construct',
+       array(),
+       \Zend\Code\Generator\MethodGenerator::FLAG_PUBLIC,
+       'parent::__construct(' . var_export($definition->toArray(), true) . ');'
+   );
    file_put_contents(__DIR__ . '/My/DiDefinition.php', $codeGenerator->generate());
 
 .. _learning.di.using-multiple-definitions-from-multiple-sources:
