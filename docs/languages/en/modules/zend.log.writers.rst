@@ -20,7 +20,8 @@ directly to a stream like ``STDERR`` (``php://stderr``).
    :linenos:
 
    $writer = new Zend\Log\Writer\Stream('php://output');
-   $logger = new Zend\Log\Logger($writer);
+   $logger = new Zend\Log\Logger();
+   $logger->addWriter($writer);
 
    $logger->info('Informational message');
 
@@ -30,7 +31,8 @@ To write data to a file, use one of the `Filesystem URLs`_:
    :linenos:
 
    $writer = new Zend\Log\Writer\Stream('/path/to/logfile');
-   $logger = new Zend\Log\Logger($writer);
+   $logger = new Zend\Log\Logger();
+   $logger->addWriter($writer);
 
    $logger->info('Informational message');
 
@@ -48,7 +50,8 @@ The constructor of ``Zend\Log\Writer\Stream`` also accepts an existing stream re
    }
 
    $writer = new Zend\Log\Writer\Stream($stream);
-   $logger = new Zend\Log\Logger($writer);
+   $logger = new Zend\Log\Logger();
+   $logger->addWriter($writer);
 
    $logger->info('Informational message');
 
@@ -75,7 +78,8 @@ array:
    $db = new Zend\Db\Adapter\Adapter($dbconfig);
 
    $writer = new Zend\Log\Writer\Db($db, 'log_table_name');
-   $logger = new Zend\Log\Logger($writer);
+   $logger = new Zend\Log\Logger();
+   $logger->addWriter($writer);
 
    $logger->info('Informational message');
 
@@ -101,7 +105,8 @@ selected fields.
        'message'   => 'event'
    );
    $writer = new Zend\Log\Writer\Db($db, 'log_table_name', $mapping);
-   $logger = new Zend\Log\Logger($writer);
+   $logger = new Zend\Log\Logger();
+   $logger->addWriter($writer);
 
    $logger->info('Informational message');
 
@@ -125,7 +130,8 @@ or stubbing out logging during tests:
    :linenos:
 
    $writer = new Zend\Log\Writer\Null;
-   $logger = new Zend\Log\Logger($writer);
+   $logger = new Zend\Log\Logger();
+   $logger->addWriter($writer);
 
    // goes nowhere
    $logger->info('Informational message');
@@ -142,7 +148,8 @@ public property.
    :linenos:
 
    $mock = new Zend\Log\Writer\Mock;
-   $logger = new Zend\Log\Logger($mock);
+   $logger = new Zend\Log\Logger();
+   $logger->addWriter($mock);
 
    $logger->info('Informational message');
 
