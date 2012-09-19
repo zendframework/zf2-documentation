@@ -184,6 +184,7 @@ We now need to get the form to display and then process it on submission. This
 is done within the ``AlbumController``’s ``addAction()``:
 
 .. code-block:: php
+    :emphasize-lines: 6-7,10-31
 
     // module/Album/src/Album/Controller/AlbumController.php:
 
@@ -392,6 +393,7 @@ which expects to find two methods in the model: ``getArrayCopy()`` and
 ``Album`` entity, so just need to write ``getArrayCopy()``:
 
 .. code-block:: php
+    :emphasize-lines: 10-14
 
     // module/Album/src/Album/Model/Album.php:
     // ...
@@ -564,6 +566,7 @@ Change the ``controller`` from ``Application\Controller\Index`` to
 ``Album\Controller\Album``:
 
 .. code-block:: php
+    :emphasize-lines: 6
 
     'home' => array(
         'type' => 'Zend\Mvc\Router\Http\Literal',
