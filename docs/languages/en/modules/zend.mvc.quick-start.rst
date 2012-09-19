@@ -277,7 +277,7 @@ Now that we have a controller and a view script, we need to create a route to it
                   'route'    => '/<module-name>',
                   'defaults' => array(
                       '__NAMESPACE__' => '<module-namespace>\Controller',
-                      'controller'    => '<module-name>-Index',
+                      'controller'    => 'Index',
                       'action'        => 'index',
                   ),
               ),
@@ -297,9 +297,9 @@ Now that we have a controller and a view script, we need to create a route to it
                   ),
               ),
           ),
-          'controller' => array(
-              'classes' => array(
-                  '<module-name>-Index' => '<module-namespace>\Controller\IndexController',
+          'controllers' => array(
+              'invokables' => array(
+                  '<module-namespace>\Controller\Index' => '<module-namespace>\Controller\IndexController',
                   // Do similar for each other controller in your module
               ),
           ),
@@ -328,15 +328,16 @@ reads as follows:
                    'options' => array(
                    'route' => '/hello/world',
                    'defaults' => array(
-                       'controller' => '<module namespace>-Hello',
+                       '__NAMESPACE__' => '<module name>\Controller',
+                       'controller' => 'Hello',
                        'action'     => 'world',
                    ),
                ),
            ),
        ),
-       'controller' => array(
-           'classes' => array(
-               '<module namespace>-Hello' => '<module namespace>\Controller\HelloController',
+       'controllers' => array(
+           'invokables' => array(
+               '<module namespace>\Controller\Hello' => '<module namespace>\Controller\HelloController',
            ),
        ),
        // ... other configuration ...
