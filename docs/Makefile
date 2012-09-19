@@ -37,12 +37,8 @@ endif
 	@sed -i.bak 's/#language = None/language = "$(LANG)"/' tmp/$(LANG)/conf.py
 	@rm -f tmp/$(LANG)/conf.py.bak
 
-# LaTeX and especially PDFLaTeX can't handle the "fi" ligature in common use in
-# the rst files.  It should probably be removed completely, since the HTML doesn't
-# need it, but this is a temporary hack.
-pre-latex: pre-build
-	find tmp/$(LANG) -type f -exec sed -i 's/ﬁ/fi/g' {} \;
-
+# Process latex to strip non-ascii characters and perform other necessary
+# changes
 post-latex: latex
 	./post-latex.sh $(BUILDDIR)/latex/ZendFramework2.tex
 
