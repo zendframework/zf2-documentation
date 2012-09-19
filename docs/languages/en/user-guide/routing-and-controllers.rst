@@ -50,6 +50,7 @@ in the module’s ``module.config.php`` file. We will add a route for our album
 actions. This is the updated conﬁg file with the new code commented.
 
 .. code-block:: php
+    :emphasize-lines: 9-26
 
     // module/Album/conﬁg/module.conﬁg.php:
     return array(
