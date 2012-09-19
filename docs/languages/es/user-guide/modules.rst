@@ -5,15 +5,15 @@ Modules
 #######
 
 Zend Framework 2 uses a module system and you organise your main
-application-speciﬁc code within each module. The Application module provided by
-the skeleton is used to provide bootstrapping, error and routing conﬁguration to
+application-specific code within each module. The Application module provided by
+the skeleton is used to provide bootstrapping, error and routing configuration to
 the whole application. It is usually used to provide application level
 controllers for, say, the home page of an application, but we are not going to
 use the default one provided in this tutorial as we want our album list to be
 the home page, which will live in our own module.  
 
 We are going to put all our code into the Album module which will contain our
-controllers, models, forms and views, along with conﬁguration. We’ll also tweak
+controllers, models, forms and views, along with configuration. We’ll also tweak
 the Application module as required.
 
 Let’s start with the directories required.
@@ -22,7 +22,7 @@ Setting up the Album module
 ---------------------------
 
 Start by creating a directory called ``Album`` under with the following
-subdirectories to hold the module’s ﬁles:
+subdirectories to hold the module’s files:
 
 .. code-block:: text
 
@@ -40,14 +40,14 @@ subdirectories to hold the module’s ﬁles:
                         /album
 
 As you can see the ``Album`` module has separate directories for the different
-types of ﬁles we will have. The PHP ﬁles that contain classes within the
+types of files we will have. The PHP files that contain classes within the
 ``Album`` namespace live in the ``src/Album`` directory so that we can have
 multiple namespaces within our module should we require it. The view directory
 also has a sub-folder called ``album`` for our module’s view scripts.
 
-In order to load and conﬁgure a module, Zend Framework 2 has a
+In order to load and configure a module, Zend Framework 2 has a
 ``ModuleManager``. This will look for ``Module.php`` in the root of the module
-directory (``module/Album``) and expect to ﬁnd a class called ``Album\Module``
+directory (``module/Album``) and expect to find a class called ``Album\Module``
 within it. That is, the classes within a given module will have the namespace of
 the module’s name, which is the directory name of the module. 
 
@@ -83,18 +83,18 @@ Create ``Module.php`` in the ``Album`` module:
 The ``ModuleManager`` will call ``getAutoloaderConfig()`` and ``getConfig()``
 automatically for us.
 
-Autoloading ﬁles
+Autoloading files
 ^^^^^^^^^^^^^^^^
 
 Our ``getAutoloaderConfig()`` method returns an array that is compatible with
-ZF2’s ``AutoloaderFactory``. We conﬁgure it so that we add a class map ﬁle to
+ZF2’s ``AutoloaderFactory``. We configure it so that we add a class map file to
 the ``ClassmapAutoloader`` and also add this module’s namespace to the
 ``StandardAutoloader``. The standard autoloader requires a namespace and the
-path where to ﬁnd the ﬁles for that namespace. It is PSR-0 compliant and so
-classes map directly to ﬁles as per the `PSR-0 rules
+path where to find the files for that namespace. It is PSR-0 compliant and so
+classes map directly to files as per the `PSR-0 rules
 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_.
 
-As we are in development, we don’t need to load ﬁles via the classmap, so we provide an empty array for the 
+As we are in development, we don’t need to load files via the classmap, so we provide an empty array for the 
 classmap autoloader. Create ``autoload_classmap.php`` with these contents:
 
 .. code-block:: php
@@ -112,20 +112,20 @@ As this is an empty array, whenever the autoloader looks for a class within the
     ``getAutoloaderConfig()`` and instead add ``"Application":
     "module/Application/src"`` to the ``psr-0`` key in ``composer.json``. If you go
     this way, then you need to run ``php composer.phar update`` to update the
-    composer autoloading ﬁles.
+    composer autoloading files.
 
 Configuration
 -------------
 
 Having registered the autoloader, let’s have a quick look at the ``getConfig()``
 method in ``Album\Module``.  This method simply loads the
-``config/module.config.php`` ﬁle.
+``config/module.config.php`` file.
 
-Create the following conﬁguration ﬁle for the ``Album`` module:
+Create the following configuration file for the ``Album`` module:
 
 .. code-block:: php
 
-    // module/Album/conﬁg/module.config.php:
+    // module/Album/config/module.config.php:
     return array(
         'controllers' => array(
             'invokables' => array(
@@ -139,15 +139,15 @@ Create the following conﬁguration ﬁle for the ``Album`` module:
         ),
     );
 
-The conﬁg information is passed to the relevant components by the
+The config information is passed to the relevant components by the
 ``ServiceManager``.  We need two initial sections: ``controller`` and
 ``view_manager``. The controller section provides a list of all the controllers
 provided by the module. We will need one controller, ``AlbumController``, which
 we’ll reference as ``Album\Controller\Album``. The controller key must
-be unique across all modules, so we preﬁx it with our module name.
+be unique across all modules, so we prefix it with our module name.
 
 Within the ``view_manager`` section, we add our view directory to the
-``TemplatePathStack`` conﬁguration. This will allow it to ﬁnd the view scripts for
+``TemplatePathStack`` configuration. This will allow it to find the view scripts for
 the ``Album`` module that are stored in our ``views/`` directory.
 
 Informing the application about our new module
@@ -162,7 +162,7 @@ skeleton application. Update this file so that its ``modules`` section contains 
 
 .. code-block:: php
 
-    // conﬁg/application.conﬁg.php:
+    // config/application.config.php:
     return array(
         'modules' => array(
             'Application',

@@ -7,7 +7,7 @@ Getting Started with Zend Framework 2
 This tutorial is intended to give an introduction to using Zend Framework 2 by
 creating a simple database driven application using the Model-View-Controller
 paradigm. By the end you will have a working ZF2 application and you can then
-poke around the code to ﬁnd out more about how it all works and ﬁts together.
+poke around the code to find out more about how it all works and fits together.
 
 .. _user-guide.overview.assumptions:
 
@@ -16,9 +16,9 @@ Some assumptions
 
 This tutorial assumes that you are running PHP 5.3.10 with the Apache web server
 and MySQL, accessible via the PDO extension. Your Apache installation must have
-the mod_rewrite extension installed and conﬁgured.
+the mod_rewrite extension installed and configured.
 
-You must also ensure that Apache is conﬁgured to support ``.htaccess`` ﬁles. This is
+You must also ensure that Apache is configured to support ``.htaccess`` files. This is
 usually done by changing the setting:
 
 .. code-block:: apache
@@ -31,9 +31,9 @@ to
 
     AllowOverride  All
 
-in your ``httpd.conf`` ﬁle. Check with your distribution’s documentation for
+in your ``httpd.conf`` file. Check with your distribution’s documentation for
 exact details. You will not be able to navigate to any page other than the home
-page in this tutorial if you have not conﬁgured mod_rewrite and .htaccess usage
+page in this tutorial if you have not configured mod_rewrite and .htaccess usage
 correctly
 
 The tutorial application
@@ -59,7 +59,7 @@ to add, edit and delete CDs. We are going to need four pages in our website:
 +----------------+------------------------------------------------------------+
 
 We will also need to store our data into a database. We will only need one table
-with these ﬁelds in it:
+with these fields in it:
 
 +------------+--------------+-------+-----------------------------+
 | Field name | Type         | Null? | Notes                       |
