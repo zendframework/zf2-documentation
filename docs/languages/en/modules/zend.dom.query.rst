@@ -85,7 +85,7 @@ above:
    use Zend\Dom\Query;
 
    $dom = new Query($html);
-   $results = $dom->query('.foo .bar a');
+   $results = $dom->execute('.foo .bar a');
 
    $count = count($results); // get number of matches: 4
    foreach ($results as $result) {
