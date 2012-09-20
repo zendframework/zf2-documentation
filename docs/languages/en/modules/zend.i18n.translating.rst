@@ -49,7 +49,7 @@ translations to the file system, without touching your code. Patterns are added 
    use Zend\I18n\Translator\Translator;
 
    $translator = new Translator();
-   $translator->addTranslationPattern($type, $pattern, $textDomain);
+   $translator->addTranslationFilePattern($type, $pattern, $textDomain);
 
 The parameters for adding patterns is pretty similar to adding individual files, except that don't specify a locale
 and give the file location as sprtinf pattern. The locale is passed to the sprintf call, so you can either use %s
