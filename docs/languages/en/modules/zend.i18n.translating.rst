@@ -41,7 +41,7 @@ translated strings are from and is only required for formats which contain trans
 
 When storing one locale per file, you should specify those files via a pattern. This allows you to add new
 translations to the file system, without touching your code. Patterns are added with the
-``addTranslationPattern()`` method:
+``addTranslationFilePattern()`` method:
 
 .. code-block:: php
    :linenos:
