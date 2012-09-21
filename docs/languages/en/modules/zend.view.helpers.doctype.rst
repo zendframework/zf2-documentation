@@ -44,7 +44,7 @@ recognize it only after you have set it, so the easiest approach is to specify i
 .. code-block:: php
    :linenos:
 
-   $doctypeHelper = new Zend_View_Helper_Doctype();
+   $doctypeHelper = new Zend\View\Helper\Doctype();
    $doctypeHelper->doctype('XHTML1_STRICT');
 
 And then print it out on top of your layout script:
@@ -95,7 +95,7 @@ to use the `Resource Description Framework`_ within an *XHTML* document.
 .. code-block:: php
    :linenos:
 
-   $doctypeHelper = new Zend_View_Helper_Doctype();
+   $doctypeHelper = new Zend\View\Helper\Doctype();
    $doctypeHelper->doctype('XHTML1_RDFA');
 
 The RDFa doctype allows XHTML to validate when the 'property' meta tag attribute is used per the Open Graph
