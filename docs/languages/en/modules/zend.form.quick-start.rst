@@ -59,9 +59,9 @@ If nothing else, you can simply start creating elements, fieldsets, and forms an
 
    $csrf = new Element\Csrf('security');
 
-   $submit = new Element('send');
-   $submit->setLabel('Send');
-   $submit->setAttributes(array(
+   $send = new Element('send');
+   $send->setValue('Submit');
+   $send->setAttributes(array(
        'type'  => 'submit'
    ));
 
