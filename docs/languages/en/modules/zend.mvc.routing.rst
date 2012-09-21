@@ -273,54 +273,54 @@ the ``TreeRouteStack``.
                'defaults' => array(
                    'controller' => 'ItsHomePage',
                ),
-           )
-       ),
-       'may_terminate' => true,
-       'route_broker'  => $routeBroker,
-       'child_routes'  => array(
-           'blog' => array(
-               'type'    => 'literal',
-               'options' => array(
-                   'route'    => 'blog',
-                   'defaults' => array(
-                       'controller' => 'ItsBlog',
-                   ),
-               ),
-               'may_terminate' => true,
-               'child_routes'  => array(
-                   'rss' => array(
-                       'type'    => 'literal',
-                       'options' => array(
-                           'route'    => '/rss',
-                           'defaults' => array(
-                               'controller' => 'ItsRssBlog',
-                           ),
-                       ),
-                       'child_routes'  => array(
-                           'sub' => array(
-                               'type'    => 'literal',
-                               'options' => array(
-                                   'route'    => '/sub',
-                                   'defaults' => array(
-                                       'action' => 'ItsSubRss',
-                                   ),
-                               )
-                           ),
-                       ),
-                   ),
-               ),
-           ),
-           'forum' => array(
-               'type'    => 'literal',
-               'options' => array(
-                   'route'    => 'forum',
-                   'defaults' => array(
-                       'controller' => 'ItsForum',
-                   ),
-               ),
-           ),
-       ),
-   ));
+            ),
+            'may_terminate' => true,
+            'route_broker'  => $routeBroker,
+            'child_routes'  => array(
+                'blog' => array(
+                    'type'    => 'literal',
+                    'options' => array(
+                        'route'    => 'blog',
+                        'defaults' => array(
+                            'controller' => 'ItsBlog',
+                        ),
+                    ),
+                    'may_terminate' => true,
+                    'child_routes'  => array(
+                        'rss' => array(
+                            'type'    => 'literal',
+                            'options' => array(
+                                'route'    => '/rss',
+                                'defaults' => array(
+                                    'controller' => 'ItsRssBlog',
+                                ),
+                            ),
+                            'child_routes'  => array(
+                                'sub' => array(
+                                    'type'    => 'literal',
+                                    'options' => array(
+                                        'route'    => '/sub',
+                                        'defaults' => array(
+                                            'action' => 'ItsSubRss',
+                                        ),
+                                    )
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+                'forum' => array(
+                    'type'    => 'literal',
+                    'options' => array(
+                        'route'    => 'forum',
+                        'defaults' => array(
+                            'controller' => 'ItsForum',
+                        ),
+                    ),
+                ),
+            ),
+        ),
+    ));
 
 The above would match the following:
 
