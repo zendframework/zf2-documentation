@@ -188,7 +188,7 @@ values as noted below. The following services are created and managed by the ``V
   service.
 
 - ``ExceptionStrategy``, representing and aliased to ``Zend\Mvc\View\ExceptionStrategy``. If the
-  ``dislay_exceptions`` or ``exception_template`` keys are present, they are usd to configure the strategy.
+  ``dislay_exceptions`` or ``exception_template`` keys are present, they are used to configure the strategy.
 
 - ``RouteNotFoundStrategy``, representing and aliased to ``Zend\Mvc\View\RouteNotFoundStrategy`` and
   ``404Stategy``. If the ``display_not_found_reason`` or ``not_found_template`` keys are present, they are used to
