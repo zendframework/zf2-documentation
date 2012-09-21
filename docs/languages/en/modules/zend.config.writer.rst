@@ -77,7 +77,7 @@ You can use the method ``toFile()`` to store the INI data in a file.
 Zend\\Config\\Writer\\Xml
 -------------------------
 
-The ``Zend\Config\Writer\Xml``\ can be used to generate an XML string or file starting from a
+The ``Zend\Config\Writer\Xml`` can be used to generate an XML string or file starting from a
 ``Zend\Config\Config`` object.
 
 .. _zend.config.writer.xml.example:
@@ -131,7 +131,7 @@ You can use the method ``toFile()`` to store the XML data in a file.
 Zend\\Config\\Writer\\PhpArray
 ------------------------------
 
-The ``Zend\Config\Writer\PhpArray``\ can be used to generate a PHP code that returns an array representation of an
+The ``Zend\Config\Writer\PhpArray`` can be used to generate a PHP code that returns an array representation of an
 ``Zend\Config\Config`` object.
 
 .. _zend.config.writer.phparray.example:
@@ -188,7 +188,7 @@ You can use the method ``toFile()`` to store the PHP script in a file.
 Zend\\Config\\Writer\\Json
 --------------------------
 
-The ``Zend\Config\Writer\Json``\ can be used to generate a PHP code that returns the JSON representation of a
+The ``Zend\Config\Writer\Json`` can be used to generate a PHP code that returns the JSON representation of a
 ``Zend\Config\Config`` object.
 
 .. _zend.config.writer.json.example:
@@ -240,7 +240,7 @@ The ``Zend\Config\Writer\Json`` class uses the ``Zend\Json\Json`` component to c
 Zend\\Config\\Writer\\Yaml
 --------------------------
 
-The ``Zend\Config\Writer\Yaml``\ can be used to generate a PHP code that returns the YAML representation of a
+The ``Zend\Config\Writer\Yaml`` can be used to generate a PHP code that returns the YAML representation of a
 ``Zend\Config\Config`` object. In order to use the YAML writer we need to pass a callback to an external PHP
 library or use the `Yaml PECL extension`_.
 
