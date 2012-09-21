@@ -106,7 +106,7 @@ manager's "loadModules.post" event makes this easy.
 
    class Module
    {
-       public function init(ModuleManager $moduleManger)
+       public function init(ModuleManager $moduleManager)
        {
            // Remember to keep the init() method as lightweight as possible
            $events = $moduleManager->getEventManager();
