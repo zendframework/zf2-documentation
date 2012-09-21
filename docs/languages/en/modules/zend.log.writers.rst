@@ -129,23 +129,22 @@ to install the FirePHPCore Server Library and the FirePHP browser extension.
 To install the FirePHPCore Library you can use composer. Add the repository and the required line to your topmost composer.json:
 
 .. code-block:: php
-    :linenos:
-    {
-        [ .. ]
+   :linenos:
+   {
+      [ .. ]
 
 
-        "repositories": [{
-            "type" : "pear",
-            "url" : "pear.firephp.org",
-            "vendor-alias" : "firephp"
-        }],
-        "minimum-stability": "dev",
-        "require" : {
-            [ ... ]
-            "firephp/FirePHPCore" : "*"
-        }
-    }
-
+      "repositories": [{
+         "type" : "pear",
+         "url" : "pear.firephp.org",
+         "vendor-alias" : "firephp"
+      }],
+      "minimum-stability": "dev",
+      "require" : {
+         [ ... ]
+         "firephp/FirePHPCore" : "*"
+      }
+   }
 
 
 .. _zend.log.writers.null:
