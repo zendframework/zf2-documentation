@@ -118,6 +118,36 @@ separator for the log events managed by an array. For instance, if we have a log
 fields, this will be translated in 'extra-field', where '-' is the character separator (default) and field is the
 subname of the specific extra field.
 
+.. _zend.log.writers.firephp:
+
+Writing to FirePHP
+------------------
+
+``Zend\Log\Writer\FirePHP`` writes log information to the  `FirePHP`_ Firefox extension. In order to use this you have
+to install the FirePHPCore Server Library and the FirePHP browser extension.
+
+To install the FirePHPCore Library you can use composer. Add the repository and the required line to your topmost composer.json:
+
+.. code-block:: php
+    :linenos:
+    {
+        [ .. ]
+
+
+        "repositories": [{
+            "type" : "pear",
+            "url" : "pear.firephp.org",
+            "vendor-alias" : "firephp"
+        }],
+        "minimum-stability": "dev",
+        "require" : {
+            [ ... ]
+            "firephp/FirePHPCore" : "*"
+        }
+    }
+
+
+
 .. _zend.log.writers.null:
 
 Stubbing Out the Writer
@@ -193,3 +223,4 @@ integer number (greater or equal to 1) passed as second parameter in the ``addWr
 
 .. _`PHP stream`: http://www.php.net/stream
 .. _`Filesystem URLs`: http://www.php.net/manual/en/wrappers.php#wrappers.file
+.. _`FirePHP`: http://www.firephp.org/
