@@ -338,7 +338,7 @@ This time we use ``editAction()`` in the ``AlbumController``:
                 $form->setData($request->getPost());
 
                 if ($form->isValid()) {
-                    $this->getAlbumTable()->saveAlbum($form->getData());
+                    $this->getAlbumTable()->saveAlbum($album);
 
                     // Redirect to list of albums
                     return $this->redirect()->toRoute('album');
