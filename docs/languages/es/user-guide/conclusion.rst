@@ -4,5 +4,5 @@
 Conclusión
 ##########
 
-Esto concluye nuestra breve mirada de la construcción de una simple, pero completa y funcional aplicación MVC, 
+Así concluye nuestra breve mirada en la construcción de una simple, pero completa y funcional aplicación MVC, 
 usando Zend Framework 2.
