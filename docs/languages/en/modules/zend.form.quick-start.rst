@@ -217,6 +217,7 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
    :linenos:
 
    use Zend\Form\Factory;
+
    $factory = new Factory();
    $form    = $factory->createForm(array(
        'hydrator'  => 'Zend\Stdlib\Hydrator\ArraySerializable'
@@ -273,9 +274,7 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
                'type' => 'Zend\Form\Element\Captcha',
                'name' => 'captcha',
                'options' => array(
-                   'label' => 'Please verify you are human',
-               ),
-               'attributes' => array(
+                   'label' => 'Please verify you are human. ',
                    'captcha' => array(
                        'class' => 'Dumb',
                    ),
@@ -287,11 +286,9 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
            ),
            array(
                'name' => 'send',
-               'options' => array(
-                   'label' => 'Send',
-               ),
                'attributes' => array(
                    'type'  => 'submit',
+                   'value' => 'Submit',
                ),
            ),
        ),
