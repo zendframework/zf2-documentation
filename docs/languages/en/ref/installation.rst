@@ -26,7 +26,7 @@ Failing to find a Zend Framework 2 installation, the following error occurs::
 
 To fix that, you can add the Zend Framework's library path to the *PHP* `include_path`_.
 Also, you should set an environment path named 'ZF2_PATH' in httpd.conf (or equivalent).
-i.e.  'SetEnv ZF2_PATH /var/ZF2' running Linux.
+i.e.  ``SetEnv ZF2_PATH /var/ZF2`` running Linux.
 
 `Rob Allen`_ has kindly provided the community with an introduction to :user-guide:`Getting Started with Zend Framework 2 <overview>`. 
 Other Zend Framework community members are actively working on `expanding the tutorial`_.
