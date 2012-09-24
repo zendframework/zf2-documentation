@@ -221,7 +221,7 @@ associated with it. If not, it will inspect the controller matched during routin
 parameter in order to create a template name. This will be "controller/action", with the controller and action
 normalized to lowercase, dash-separated words.
 
-As an example, the controller ``Bar\Controller\BazBatController``, with action "doSomethingCrazy", would be mapped
+As an example, the controller ``Foo\Controller\BazBatController``, with action "doSomethingCrazy", would be mapped
 to the template ``baz-bat/do-something-crazy``.
 
 In practice, that means our previous example could be re-written as follows:
@@ -233,7 +233,7 @@ In practice, that means our previous example could be re-written as follows:
 
    use Zend\Mvc\Controller\AbstractActionController;
 
-   class BarController extends AbstractActionController
+   class BazBatController extends AbstractActionController
    {
        public function doSomethingCrazyAction()
        {
