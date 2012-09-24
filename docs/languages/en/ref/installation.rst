@@ -18,12 +18,11 @@ Installation
 Once you have a copy of Zend Framework available, your application needs to be able to access the framework classes 
 found in the library folder. There are `several ways to achieve this`_.
 
-Failing to find a Zend Framework 2 installation, the following error occurs:
+Failing to find a Zend Framework 2 installation, the following error occurs::
 
-.. code-block::
-   Fatal error: Uncaught exception 'RuntimeException' with message
-   'Unable to load ZF2. Run `php composer.phar install` or define 
-   a ZF2_PATH environment variable.'
+>Fatal error: Uncaught exception 'RuntimeException' with message
+>'Unable to load ZF2. Run `php composer.phar install` or define 
+>a ZF2_PATH environment variable.'
 
 To fix that, you can add the Zend Framework's library path to the *PHP* `include_path`_.
 Also, you should set an environment path named 'ZF2_PATH' in httpd.conf (or equivalent).
