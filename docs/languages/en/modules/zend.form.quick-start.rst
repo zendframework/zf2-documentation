@@ -700,7 +700,7 @@ highlighting, we use helpers to both open and close the form and label tags. Sec
 happening here; we could easily create a partial view script or a composite helper to reduce boilerplate. Third,
 note that not all elements are created equal -- the CSRF and submit elements don't need labels or error messages
 necessarily. Finally, note that the ``FormElement`` helper tries to do the right thing -- it delegates actual
-markup generation toother view helpers; however, it can only guess what specific form helper to delegate to based
+markup generation to other view helpers; however, it can only guess what specific form helper to delegate to based
 on the list it has. If you introduce new form view helpers, you'll need to extend the ``FormElement`` helper, or
 create your own.
 
