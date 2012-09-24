@@ -657,7 +657,7 @@ The simplest view helpers available are ``Form``, ``FormElement``, ``FormLabel``
    <div class="form_element">
    <?php
        $name = $form->get('name');
-       echo $formLabel->openTag() . $name->getAttribute('label');
+       echo $formLabel->openTag() . $name->getOption('label');
        echo $this->formInput($name);
        echo $this->formElementErrors($name);
        echo $formLabel->closeTag();
@@ -666,7 +666,7 @@ The simplest view helpers available are ``Form``, ``FormElement``, ``FormLabel``
    <div class="form_element">
    <?php
        $subject = $form->get('subject');
-       echo $formLabel->openTag() . $subject->getAttribute('label');
+       echo $formLabel->openTag() . $subject->getOption('label');
        echo $this->formInput($subject);
        echo $this->formElementErrors($subject);
        echo $formLabel->closeTag();
@@ -675,8 +675,8 @@ The simplest view helpers available are ``Form``, ``FormElement``, ``FormLabel``
    <div class="form_element">
    <?php
        $message = $form->get('message');
-       echo $formLabel->openTag() . $message->getAttribute('label');
-       echo $this->formInput($message);
+       echo $formLabel->openTag() . $message->getOption('label');
+       echo $this->formTextarea($message);
        echo $this->formElementErrors($message);
        echo $formLabel->closeTag();
    ?></div>
@@ -684,8 +684,8 @@ The simplest view helpers available are ``Form``, ``FormElement``, ``FormLabel``
    <div class="form_element">
    <?php
        $captcha = $form->get('captcha');
-       echo $formLabel->openTag() . $captcha->getAttribute('label');
-       echo $this->formInput($captcha);
+       echo $formLabel->openTag() . $captcha->getOption('label');
+       echo $this->formCaptcha($captcha);
        echo $this->formElementErrors($captcha);
        echo $formLabel->closeTag();
    ?></div>
