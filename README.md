@@ -22,6 +22,8 @@ You can read the last stable documentation in
 If you wish to contribute to the documentation of Zend Framework 2.0, please read the
 [CONTRIBUTE.md](CONTRIBUTE.md) file.
 
+If you don't know where to begin, or where you can best help, please review the
+[TODO.md](TODO.md) file.
 
 ### LICENSE
 
