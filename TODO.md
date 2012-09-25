@@ -55,6 +55,7 @@ example section is present, but full documentation is missing.
 - Db
 - Di
 - EventManager
+- Form
 - I18n
 - InputFilter
 - Log
