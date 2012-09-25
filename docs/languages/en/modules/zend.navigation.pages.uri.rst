@@ -1,7 +1,7 @@
 .. _zend.navigation.pages.uri:
 
-Zend\Navigation\Page\Uri
-========================
+Zend\\Navigation\\Page\\Uri
+===========================
 
 Pages of type ``Zend\Navigation\Page\Uri`` can be used to link to pages on other domains or sites, or to implement
 custom logic for the page. *URI* pages are simple; in addition to the common page options, a *URI* page takes only
