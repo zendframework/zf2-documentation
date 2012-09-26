@@ -108,8 +108,8 @@ By default, Zend Framework provides several useful module manager listeners.
    current ``ServiceManager`` instance before being registered with the ``ModuleManager`` events.
 
    Additionally, this listener manages a variety of plugin managers, including
-   :role:`view helpers <zend.view.helpers>`, :role:`controllers
-   <zend.mvc.controllers>`, and :role:`controller plugins <zend.mvc.plugins>`.
+   :ref:`view helpers <zend.view.helpers>`, :ref:`controllers
+   <zend.mvc.controllers>`, and :ref:`controller plugins <zend.mvc.controller-plugins>`.
    In each case, you may either specify configuration to define plugins, or
    provide configuration via a ``Module`` class. Configuration follows the same
    format as for the ``ServiceManager``. The following table outlines the plugin
@@ -131,7 +131,7 @@ By default, Zend Framework provides several useful module manager listeners.
    | ``Zend\Mvc\Controller\PluginManager``     | ``controller_plugins`` | ``ControllerPluginProviderInterface`` | ``getControllerPluginConfig`` |
    +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
 
-   Configuration follows the examples in the :role:`ServiceManager configuration
+   Configuration follows the examples in the :ref:`ServiceManager configuration
    section <zend.service-manager.quick-start.config>`. As a brief recap, the
    following configuration keys and values are allowed:
 
