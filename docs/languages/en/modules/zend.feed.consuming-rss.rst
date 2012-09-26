@@ -3,44 +3,45 @@
 Consuming an RSS Feed
 =====================
 
-Reading an *RSS* feed is as simple as instantiating a ``Zend_Feed_Rss`` object with the *URL* of the feed:
+Reading an *RSS* feed is as simple as passing the *URL* of the feed to ``Zend\Feed\Reader\Reader``'s ``import``
+method.
 
 .. code-block:: php
    :linenos:
 
-   $channel = new Zend_Feed_Rss('http://rss.example.com/channelName');
+   $channel = new Zend\Feed\Reader\Reader::import('http://rss.example.com/channelName');
 
-If any errors occur fetching the feed, a ``Zend_Feed_Exception`` will be thrown.
+If any errors occur fetching the feed, a ``Zend\Feed\Reader\Exception\RuntimeException`` will be thrown.
 
-Once you have a feed object, you can access any of the standard *RSS*"channel" properties directly on the object:
-
-.. code-block:: php
-   :linenos:
-
-   echo $channel->title();
-
-Note the function syntax. ``Zend_Feed`` uses a convention of treating properties as *XML* object if they are
-requested with variable "getter" syntax (``$obj->property``) and as strings if they are access with method syntax
-(``$obj->property()``). This enables access to the full text of any individual node while still allowing full
-access to all children.
-
-If channel properties have attributes, they are accessible using *PHP*'s array syntax:
+Once you have a feed object, you can access any of the standard *RSS* "channel" properties directly on the object:
 
 .. code-block:: php
    :linenos:
 
-   echo $channel->category['domain'];
+   echo $channel->getTitle();
 
-Since *XML* attributes cannot have children, method syntax is not necessary for accessing attribute values.
+Properties of the channel can be accessed via getter methods, such as ``getTitle``, ``getAuthor`` ...
 
-Most commonly you'll want to loop through the feed and do something with its entries. ``Zend_Feed_Abstract``
-implements *PHP*'s ``Iterator`` interface, so printing all titles of articles in a channel is just a matter of:
+If channel properties have attributes, the getter method will return a key/value pair, where the key is the
+attribute name, and the value is the attribute value.
+
+.. code-block:: php
+   :linenos:
+
+   $author = $channel->getAuthor();
+   echo $author['name'];
+
+Most commonly you'll want to loop through the feed and do something with its entries. ``Zend\Feed\Reader\Feed\Rss``
+internally converts all entries to a ``Zend\Feed\Reader\Entry\Rss``. Entry properties, similary to channel
+properties, can be accessed via getter methods, such as ``getTitle``, ``getDescription`` ...
+
+An example of printing all titles of articles in a channel is:
 
 .. code-block:: php
    :linenos:
 
    foreach ($channel as $item) {
-       echo $item->title() . "\n";
+       echo $item->getTitle() . "\n";
    }
 
 If you are not familiar with *RSS*, here are the standard elements you can expect to be available in an *RSS*
@@ -86,16 +87,87 @@ In your code you can always test to see if an element is non-empty with:
 .. code-block:: php
    :linenos:
 
-   if ($item->propname()) {
+   if ($item->getPropname()) {
        // ... proceed.
    }
-
-If you use ``$item->propname`` instead, you will always get an empty object which will evaluate to ``TRUE``, so
-your check will fail.
 
 For further information, the official *RSS* 2.0 specification is available at:
 `http://blogs.law.harvard.edu/tech/rss`_
 
+Channel element getter methods
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+``Zend\Feed\Reader\Feed\Rss`` has the following getter methods for accessing common channel elements:
+
+
+- ``getAuthor`` - Get one channel author. This method accepts an index to access a single author.
+
+- ``getAuthors`` - Get all channel authors.
+
+- ``getCopyright`` - Get the copyright entry of the channel.
+
+- ``getDateCreated`` - Get the feed creation date.
+
+- ``getDateModified`` - Get the feed modification date.
+
+- ``getLastBuildDate`` - Get the feed last build date.
+
+- ``getDescription`` - Get the feed description.
+
+- ``getId`` - Get the feed ID.
+
+- ``getImage`` - Get the feed image data.
+
+- ``getLanguage`` - Get the feed language.
+
+- ``getLink`` - Get a link to the feed.
+
+- ``getFeedLink`` - Get a link to the feed XML.
+
+- ``getGenerator`` - Get the feed generator entry.
+
+- ``getTitle`` - Get the title of the channel.
+
+- ``getHubs`` - Get an array of any supported Pusubhubbub endpoints.
+
+- ``getCategories`` - Get all channel categories.
+
+Entry element getter methods
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+``Zend\Feed\Reader\Feed\Entry\Rss`` has the following getter methods for accessing common entry elements:
+
+- ``getAuthor`` - Get one entry author. This method accepts an index to access a single author.
+
+- ``getAuthors`` - Get all entry authors.
+
+- ``getContent`` - Get the entry content.
+
+- ``getDateCreated`` - Get the entry creation date.
+
+- ``getDateModified`` - Get the entry modification date.
+
+- ``getDescription`` - Get the entry description.
+
+- ``getEnclosure`` - Get the entry enclosure.
+
+- ``getId`` - Get the entry ID.
+
+- ``getLink`` - Get a specific link.  This method accepts an index to access a single link.
+
+- ``getLinks`` - Get all links.
+
+- ``getCategories`` - Get all entry categories.
+
+- ``getPermalink`` - Get a permalink to the entry.
+
+- ``getTitle`` - Get the entry title.
+
+- ``getCommentCount`` - Get the number of comments for the entry.
+
+- ``getCommentLink`` - Returns a URI pointing to the HTML page where comments can be made on an entry.
+
+- ``getCommentFeedLink`` - Returns a URI pointing to a feed of all comments for an entry.
 
 
 .. _`http://blogs.law.harvard.edu/tech/rss`: http://blogs.law.harvard.edu/tech/rss
