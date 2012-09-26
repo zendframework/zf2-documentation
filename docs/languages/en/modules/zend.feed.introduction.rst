@@ -3,14 +3,15 @@
 Introduction
 ============
 
-``Zend_Feed`` provides functionality for consuming *RSS* and Atom feeds. It provides a natural syntax for accessing
-elements of feeds, feed attributes, and entry attributes. ``Zend_Feed`` also has extensive support for modifying
+``Zend\Feed`` provides functionality for consuming *RSS* and *Atom* feeds. It provides a natural syntax for accessing
+elements of feeds, feed attributes, and entry attributes. ``Zend\Feed`` also has extensive support for modifying
 feed and entry structure with the same natural syntax, and turning the result back into *XML*. In the future, this
 modification support could provide support for the Atom Publishing Protocol.
 
-Programmatically, ``Zend_Feed`` consists of a base ``Zend_Feed`` class, abstract ``Zend_Feed_Abstract`` and
-``Zend_Feed_Entry_Abstract`` base classes for representing Feeds and Entries, specific implementations of feeds and
-entries for *RSS* and Atom, and a behind-the-scenes helper for making the natural syntax magic work.
+``Zend\Feed`` consists of ``Zend\Feed\Reader`` for reading *RSS* and *Atom* feeds, ``Zend\Feed\Writer``
+for writing *RSS* and *Atom* feeds, and ``Zend\Feed\PubSubHubbub`` for working with Hub servers.
+Further on, both ``Zend\Feed\Reader`` and ``Zend\Feed\Writer`` support extensions which allows for
+working with additional data in feeds, not covered in the core *API*.
 
 In the example below, we demonstrate a simple use case of retrieving an *RSS* feed and saving relevant portions of
 the feed data to a simple *PHP* array, which could then be used for printing the data, storing to a database, etc.
@@ -24,7 +25,7 @@ the feed data to a simple *PHP* array, which could then be used for printing the
 
 .. _zend.feed.introduction.example.rss:
 
-.. rubric:: Putting Zend_Feed to Work on RSS Feed Data
+.. rubric:: Reading RSS Feed Data with Zend\\Feed\\Reader
 
 .. code-block:: php
    :linenos:
@@ -32,8 +33,8 @@ the feed data to a simple *PHP* array, which could then be used for printing the
    // Fetch the latest Slashdot headlines
    try {
        $slashdotRss =
-           Zend_Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
-   } catch (Zend_Feed_Exception $e) {
+           Zend\Feed\Reader\Reader::import('http://rss.slashdot.org/Slashdot/slashdot');
+   } catch (Zend\Feed\Exception\Reader\RuntimeException $e) {
        // feed import failed
        echo "Exception caught importing feed: {$e->getMessage()}\n";
        exit;
@@ -41,18 +42,18 @@ the feed data to a simple *PHP* array, which could then be used for printing the
 
    // Initialize the channel data array
    $channel = array(
-       'title'       => $slashdotRss->title(),
-       'link'        => $slashdotRss->link(),
-       'description' => $slashdotRss->description(),
+       'title'       => $slashdotRss->getTitle(),
+       'link'        => $slashdotRss->getLink(),
+       'description' => $slashdotRss->getDescription(),
        'items'       => array()
        );
 
    // Loop over each channel item and store relevant data
    foreach ($slashdotRss as $item) {
        $channel['items'][] = array(
-           'title'       => $item->title(),
-           'link'        => $item->link(),
-           'description' => $item->description()
+           'title'       => $item->getTitle(),
+           'link'        => $item->getLink(),
+           'description' => $item->getDescription()
            );
    }
 
