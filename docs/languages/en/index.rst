@@ -288,6 +288,23 @@ Zend\\EventManager
 
         * :doc:`modules/zend.event-manager.event-manager`
 
+.. _zend.feed:
+
+Zend\\Feed
+^^^^^^^^^^
+
+        * :doc:`modules/zend.feed.introduction`
+        * :doc:`modules/zend.feed.importing`
+        * :doc:`modules/zend.feed.find-feeds`
+        * :doc:`modules/zend.feed.consuming-rss`
+        * :doc:`modules/zend.feed.consuming-atom`
+        * :doc:`modules/zend.feed.consuming-atom-single`
+        * :doc:`modules/zend.feed.modifying-feed`
+        * :doc:`modules/zend.feed.custom-feed`
+        * :doc:`modules/zend.feed.reader`
+        * :doc:`modules/zend.feed.writer`
+        * :doc:`modules/zend.feed.pubsubhubbub`
+
 .. _zend.form:
 
 Zend\\Form
