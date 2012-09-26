@@ -51,14 +51,24 @@ then echo the helper to output it.
    :linenos:
 
    <?php // setting links in a view script:
-   $this->headLink()->appendStylesheet('/styles/basic.css')
-                    ->headLink(array('rel' => 'icon',
-                                     'href' => '/img/favicon.ico'),
-                                     'PREPEND')
-                    ->prependStylesheet('/styles/moz.css',
-                                        'screen',
-                                        true,
-                                        array('id' => 'my_stylesheet'));
+   $this
+       ->headLink(
+           array(
+               'rel' => 'favicon',
+               'href' => '/img/favicon.ico',
+           ),
+           'PREPEND'
+       )
+       ->appendStylesheet('/styles/basic.css')
+       ->prependStylesheet(
+           '/styles/moz.css',
+           'screen',
+           true,
+           array(
+               'id' => 'my_stylesheet',
+           )
+       )
+   ;
    ?>
    <?php // rendering the links: ?>
    <?php echo $this->headLink() ?>
