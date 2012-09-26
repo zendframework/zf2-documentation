@@ -445,6 +445,14 @@ Zend\\Stdlib
 
         * :doc:`modules/zend.stdlib.hydrator`
 
+.. _zend.tag:
+
+Zend\\Tag
+^^^^^^^^^
+
+        * :doc:`modules/zend.tag.introduction`
+        * :doc:`modules/zend.tag.cloud`
+
 .. _zend.uri:
 
 Zend\\Uri
