@@ -26,6 +26,7 @@ Standard Elements
 .. include:: zend.form.element.csrf.rst
 .. include:: zend.form.element.email.rst
 .. include:: zend.form.element.hidden.rst
+.. include:: zend.form.element.select.rst
 .. include:: zend.form.element.url.rst
 
 HTML5 Elements
