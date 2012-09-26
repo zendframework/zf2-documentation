@@ -21,7 +21,7 @@ and potentially updating code samples to reflect any API changes.
 - Markup (Note that this is now in its own repository, and the API may change in
   the future)
 - Mime
-- Navigation
+- Navigation (Quickstart is missing, View helpers need to be revised, copy config [examples from ZF1](http://framework.zend.com/manual/1.12/en/zend.navigation.containers.html#zend.navigation.containers.creating))
 - Paginator
 - ProgressBar
 - Serializer
