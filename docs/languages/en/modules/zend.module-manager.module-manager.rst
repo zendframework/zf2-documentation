@@ -107,4 +107,83 @@ By default, Zend Framework provides several useful module manager listeners.
    created and instantiated within the ``Zend\Mvc\Service\ModuleManagerFactory``, where it is injected with the
    current ``ServiceManager`` instance before being registered with the ``ModuleManager`` events.
 
+   Additionally, this listener manages a variety of plugin managers, including
+   :role:`view helpers <zend.view.helpers>`, :role:`controllers
+   <zend.mvc.controllers>`, and :role:`controller plugins <zend.mvc.plugins>`.
+   In each case, you may either specify configuration to define plugins, or
+   provide configuration via a ``Module`` class. Configuration follows the same
+   format as for the ``ServiceManager``. The following table outlines the plugin
+   managers that may be configured this way (including the ``ServiceManager``),
+   the configuration key to use, the ``ModuleManager`` feature interface to
+   optionally implement (all interfaces specified live in the
+   ``Zend\ModuleManager\Feature`` namespace) , and the module method to
+   optionally define to provide configuration.
+
+   +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | Plugin Manager                            | Config Key             | Interface                             | Module Method                 |
+   +===========================================+========================+=======================================+===============================+
+   | ``Zend\ServiceManager\ServiceManager``    | ``services``           | ``ServiceProviderInterface``          | ``getServiceConfig``          |
+   +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | ``Zend\View\HelperPluginManager``         | ``view_helpers``       | ``ViewHelperProviderInterface``       | ``getViewHelperConfig``       |
+   +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | ``Zend\Mvc\Controller\ControllerManager`` | ``controllers``        | ``ControllerProviderInterface``       | ``getControllerConfig``       |
+   +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | ``Zend\Mvc\Controller\PluginManager``     | ``controller_plugins`` | ``ControllerPluginProviderInterface`` | ``getControllerPluginConfig`` |
+   +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+
+   Configuration follows the examples in the :role:`ServiceManager configuration
+   section <zend.service-manager.quick-start.config>`. As a brief recap, the
+   following configuration keys and values are allowed:
+
+   +------------------------+------------------------------------------------------------+
+   | Config Key             | Allowed values                                             |
+   +========================+============================================================+
+   | ``services``           | service name/instance pairs (these should likely be        |
+   |                        | defined only in ``Module`` classes)                        |
+   +------------------------+------------------------------------------------------------+
+   | ``invokables``         | service name/class name pairs of classes that may be       |
+   |                        | invoked without constructor arguments                      |
+   +------------------------+------------------------------------------------------------+
+   | ``factories``          | service names pointing to factories. Factories may be any  |
+   |                        | PHP callable, or a string class name of a class            |
+   |                        | implementing ``Zend\ServiceManager\FactoryInterface``, or  |
+   |                        | of a class implementing the ``__invoke`` method  (if a     |
+   |                        | callable is used, it should be defined only in ``Module``  |
+   |                        | classes)                                                   |
+   +------------------------+------------------------------------------------------------+
+   | ``abstract_factories`` | array of either concrete instances of                      |
+   |                        | ``Zend\ServiceManager\AbstractFactoryInterface``, or       |
+   |                        | string class names of classes implementing that interface  |
+   |                        | (if an instance is used, it should be defined only in      |
+   |                        | ``Module`` classes)                                        |
+   +------------------------+------------------------------------------------------------+
+   | ``initializers``       | array of PHP callables or string class names of classes    |
+   |                        | implementing ``Zend\ServiceManager\InitializerInterface``  |
+   |                        | (if a callable is used, it should be defined only in       |
+   |                        | ``Module`` classes)                                        |
+   +------------------------+------------------------------------------------------------+
+
+   When working with plugin managers, you will be passed the plugin manager
+   instance to factories, abstract factories, and initializers. If you need
+   access to the application services, you can use the ``getServiceLocator()``
+   method, as in the following example:
+
+   .. code-block:: php
+       :linenos:
+
+       public function getViewHelperConfig()
+       {
+           return array('factories' => array(
+               'foo' => function ($helpers) {
+                   $services = $helpers->getServiceLocator();
+                   $someService = $services->get('SomeService');
+                   $helper = new Helper\Foo($someService);
+                   return $helper;
+               },
+           ));
+       }
+
+   This is a powerful technique, as it allows your various plugins to remain
+   agnostic with regards to where and how dependencies are injected, and thus
+   allows you to use Inversion of Control principals even with plugins.
 
