@@ -217,8 +217,6 @@ Here is the ``Brand`` fieldset:
             $this->setHydrator(new ClassMethodsHydrator(false))
                 ->setObject(new Brand());
     
-            $this->setLabel('Brand');
-    
             $this->add(array(
                 'name' => 'name',
                 'options' => array(
@@ -478,7 +476,8 @@ not forms. And only ``Form`` instances can be validated. So here is the form :
             $this->add(array(
                 'name' => 'submit',
                 'attributes' => array(
-                    'type' => 'submit'
+                    'type' => 'submit',
+                    'value' => 'Envoyer'
                 )
             ));
         }
@@ -800,7 +799,8 @@ all the elements we want to validate.  Our ``CreateForm`` now looks like this:
             $this->add(array(
                 'name' => 'submit',
                 'attributes' => array(
-                    'type' => 'submit'
+                    'type' => 'submit',
+                    'value' => 'Envoyer'
                 )
             ));
     
