@@ -63,6 +63,17 @@
    modules/zend.dom.intro
    modules/zend.dom.query
    modules/zend.event-manager.event-manager
+   modules/zend.feed.introduction
+   modules/zend.feed.importing
+   modules/zend.feed.find-feeds
+   modules/zend.feed.consuming-rss
+   modules/zend.feed.consuming-atom
+   modules/zend.feed.consuming-atom-single
+   modules/zend.feed.modifying-feed
+   modules/zend.feed.custom-feed
+   modules/zend.feed.reader
+   modules/zend.feed.writer
+   modules/zend.feed.pubsubhubbub
    modules/zend.form.intro
    modules/zend.form.quick-start
    modules/zend.form.collections
