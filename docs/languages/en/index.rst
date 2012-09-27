@@ -69,8 +69,6 @@
    modules/zend.feed.consuming-rss
    modules/zend.feed.consuming-atom
    modules/zend.feed.consuming-atom-single
-   modules/zend.feed.modifying-feed
-   modules/zend.feed.custom-feed
    modules/zend.feed.reader
    modules/zend.feed.writer
    modules/zend.feed.pubsubhubbub
@@ -310,8 +308,6 @@ Zend\\Feed
         * :doc:`modules/zend.feed.consuming-rss`
         * :doc:`modules/zend.feed.consuming-atom`
         * :doc:`modules/zend.feed.consuming-atom-single`
-        * :doc:`modules/zend.feed.modifying-feed`
-        * :doc:`modules/zend.feed.custom-feed`
         * :doc:`modules/zend.feed.reader`
         * :doc:`modules/zend.feed.writer`
         * :doc:`modules/zend.feed.pubsubhubbub`
