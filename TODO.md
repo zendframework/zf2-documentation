@@ -14,7 +14,7 @@ Typically, this will mean updating class names to reference namespaced versions,
 and potentially updating code samples to reflect any API changes.
 
 - Dom  (Lead: Matthew Weier O'Phinney (weierophinney))
-- Feed (Lead: Pádraic Brady (PadraicB); work begun by Adam Lundrigan (adamlundrigan, Adam_L))
+- Feed (Lead: Pádraic Brady (PadraicB); work begun by Robert Basic (robertbasic))
 - File (Lead: Chris Martin (cgmartin))
 - Filter (Lead: Ben Scholzen (DASPRiD))
 - Json (Lead: Matthew Weier O'Phinney (weierophinney))
@@ -27,7 +27,7 @@ and potentially updating code samples to reflect any API changes.
 - Serializer (Lead: Marc Bennewitz (marc-mabe))
 - Server (Lead: Matthew Weier O'Phinney (weierophinney))
 - Soap (Lead: Ralph Schindler (ralphschindler))
-- Tag (Lead: Ben Scholzen (DASPRiD))
+- Tag (Lead: Ben Scholzen (DASPRiD); work begun by Robert Basic (robertbasic))
 - Text (Lead: Ben Scholzen (DASPRiD))
 - XmlRpc (Lead: Matthew Weier O'Phinney (weierophinney))
 
