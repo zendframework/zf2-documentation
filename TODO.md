@@ -55,6 +55,7 @@ example section is present, but full documentation is missing.
 - Db (Lead: Ralph Schindler (ralphschindler))
 - Di (Lead: Ralph Schindler (ralphschindler))
 - EventManager (Lead: Matthew Weier O'Phinney (weierophinney))
+- Form (Lead: Chris Martin (cgmartin) and Michael Gallego (Bakura))
 - I18n (Lead: Ben Scholzen (DASPRiD))
 - InputFilter (Lead: Matthew Weier O'Phinney (weierophinney))
 - Log (Lead: Enrico Zimuel (ezimuel))
