@@ -1,7 +1,7 @@
 .. _zend.feed.reader:
 
 Zend\\Feed\\Reader\\Reader
-================
+==========================
 
 .. _zend.feed.reader.introduction:
 
@@ -146,12 +146,12 @@ Cache Support and Intelligent Requests
 
 .. _zend.feed.reader.cache-request.cache:
 
-Adding Cache Support to Zend\Feed\Reader
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Adding Cache Support to Zend\Feed\Reader\Reader
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``Zend\Feed\Reader\Reader`` supports using an instance of ``Zend\Cache`` to cache feeds (as *XML*) to avoid
 unnecessary network requests. Adding a cache is as simple here as it is for other Zend Framework components,
-create and configure your cache and then tell ``Zend\Feed\Reader`` to use it! The cache key used is 
+create and configure your cache and then tell ``Zend\Feed\Reader\Reader`` to use it! The cache key used is 
 "``Zend_Feed_Reader_``" followed by the *MD5* hash of the feed's *URI*.
 
 .. code-block:: php
@@ -610,7 +610,7 @@ methods. As an alternative, you can also directly access any Extension object fo
 .. _zend.feed.reader.extending.feed:
 
 Writing Zend\Feed\Reader\Reader Extensions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Inevitably, there will be times when the ``Zend\Feed\Reader\Reader`` *API* is just not capable of getting 
 something you need from a feed or entry. You can use the underlying source objects, like DOMDocument, to get 
