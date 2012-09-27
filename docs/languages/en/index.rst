@@ -130,6 +130,8 @@
    modules/zend.service-manager.intro
    modules/zend.service-manager.quick-start
    modules/zend.stdlib.hydrator
+   modules/zend.tag.introduction
+   modules/zend.tag.cloud
    modules/zend.uri
    modules/zend.validator
    modules/zend.validator.set
