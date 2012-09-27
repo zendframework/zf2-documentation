@@ -285,31 +285,31 @@ Now, we'll consume it from our Module.
 
 .. _zend.service-manager.quick-start.examples.service-manager-aware:
 
-.. rubric:: Creating a ServiceManager-aware class
+.. rubric:: Creating a ServiceLocator-aware class
 
-By default, the Zend Framework MVC registers an initializer that will inject the ``ServiceManager`` instance into
-any class implementing ``Zend\ServiceManager\ServiceManagerAwareInterface``. A simple implementation looks like the following.
+By default, the Zend Framework MVC registers an initializer that will inject the ``ServiceManager`` instance, which is an implementation of ``Zend\ServiceManager\ServiceLocatorInterface``, into
+any class implementing ``Zend\ServiceManager\ServiceLocatorAwareInterface``. A simple implementation looks like the following.
 
 .. code-block:: php
    :linenos:
 
    namespace SomeModule\Controller\BareController;
 
-   use Zend\ServiceManager\ServiceManager;
-   use Zend\ServiceManager\ServiceManagerAwareInterface;
+   use Zend\ServiceManager\ServiceLocatorAwareInterface;
+   use Zend\ServiceManager\ServiceLocatorInterface;
    use Zend\Stdlib\DispatchableInterface as Dispatchable;
    use Zend\Stdlib\RequestInterface as Request;
    use Zend\Stdlib\ResponseInterface as Response;
 
    class BareController implements
        Dispatchable,
-       ServiceManagerAwareInterface
+       ServiceLocatorAwareInterface
    {
        protected $services;
 
-       public function setServiceManager(ServiceManager $serviceManager)
+       public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
        {
-           $this->services = $serviceManager;
+           $this->services = $serviceLocator;
        }
 
        public function dispatch(Request $request, Response $response = null)
