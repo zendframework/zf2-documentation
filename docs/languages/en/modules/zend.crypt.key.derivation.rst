@@ -132,7 +132,7 @@ Below is reported a usage example of the ``Scrypt`` adapter.
    attacks. As the others derivation function, more time (and memory) we spent to run the
    algorithm and more secure will be the derived key.
    Unfortunately a pure PHP implementation of the scrypt algorithm is very slow compared with
-   a C implementation (this is always true, if you compare eecution time of C with PHP).
+   the C implementation (this is always true, if you compare eecution time of C with PHP).
    If you want use a faster scrypt algorithm we suggest to use the C implementation of scrypt,
    supported by this `Scrypt extension for PHP`_ (please note that this PHP extension is not
    official supported by `php.net`_). The Scrypt adapter of Zend Framework is able to recognize
