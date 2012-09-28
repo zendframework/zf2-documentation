@@ -41,7 +41,8 @@ By default, the ``Zend\Crypt\Password\Bcrypt`` class uses a value of 14 for bcry
 31. A greater value means longer execution time for bcrypt, thus more secure against brute force or
 dictionary attacks.
 
-If you want to change the cost parameter of the bcrypt algorithm you can use the ``setCost()`` method.
+If you want to change the cost parameter of the bcrypt algorithm you can use the ``setCost()`` method. Please note that if you change the cost
+parameter, the resulting hash will be different. If you change the cost for existing user passwords you need to regenerate  all the passwords.
 
 .. note::
 
