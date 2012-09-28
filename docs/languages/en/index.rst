@@ -15,6 +15,7 @@
    ref/installation
    user-guide/overview
    user-guide/skeleton-application
+   user-guide/unit-testing
    user-guide/modules
    user-guide/routing-and-controllers
    user-guide/database-and-models
@@ -159,6 +160,7 @@
 
     * :doc:`user-guide/overview`
     * :doc:`user-guide/skeleton-application`
+    * :doc:`user-guide/unit-testing`
     * :doc:`user-guide/modules`
     * :doc:`user-guide/routing-and-controllers`
     * :doc:`user-guide/database-and-models`

@@ -142,21 +142,21 @@ Let’s go ahead and create our controller class:
 
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
-    
+
     class AlbumController extends AbstractActionController
     {
         public function indexAction()
         {
         }
-    
+
         public function addAction()
         {
         }
-    
+
         public function editAction()
         {
         }
-    
+
         public function deleteAction()
         {
         }
@@ -202,3 +202,99 @@ directory named after the controller. Create these four empty files now:
 * ``module/Album/view/album/album/delete.phtml``
 
 We can now start filling everything in, starting with our database and models.
+
+Write the tests
+---------------
+
+Our Album controller doesn't do much yet, so it should be easy to test.
+
+Create ``zf2-tutorial/tests/module/Album/src/Album/Controller/AlbumControllerTest.php``
+with the following contents:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Album\Controller;
+
+    use Album\Controller\AlbumController;
+    use Zend\Http\Request;
+    use Zend\Http\Response;
+    use Zend\Mvc\MvcEvent;
+    use Zend\Mvc\Router\RouteMatch;
+    use PHPUnit_Framework_TestCase;
+
+    class AlbumControllerTest extends PHPUnit_Framework_TestCase
+    {
+        protected $controller;
+        protected $request;
+        protected $response;
+        protected $routeMatch;
+        protected $event;
+
+        public function testAddActionCanBeAccessed()
+        {
+            $this->routeMatch->setParam('action', 'add');
+
+            $result   = $this->controller->dispatch($this->request);
+            $response = $this->controller->getResponse();
+
+            $this->assertEquals(200, $response->getStatusCode());
+            $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
+        }
+
+        public function testDeleteActionCanBeAccessed()
+        {
+            $this->routeMatch->setParam('action', 'edit');
+
+            $result   = $this->controller->dispatch($this->request);
+            $response = $this->controller->getResponse();
+
+            $this->assertEquals(200, $response->getStatusCode());
+            $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
+        }
+
+        public function testEditActionCanBeAccessed()
+        {
+            $this->routeMatch->setParam('action', 'edit');
+
+            $result   = $this->controller->dispatch($this->request);
+            $response = $this->controller->getResponse();
+
+            $this->assertEquals(200, $response->getStatusCode());
+            $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
+        }
+
+        public function testIndexActionCanBeAccessed()
+        {
+            $this->routeMatch->setParam('action', 'index');
+
+            $result   = $this->controller->dispatch($this->request);
+            $response = $this->controller->getResponse();
+
+            $this->assertEquals(200, $response->getStatusCode());
+            $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
+        }
+
+        public function setUp()
+        {
+            $this->controller = new AlbumController();
+            $this->request    = new Request();
+            $this->routeMatch = new RouteMatch(array('controller' => 'album'));
+            $this->event      = new MvcEvent();
+            $this->event->setRouteMatch($this->routeMatch);
+            $this->controller->setEvent($this->event);
+        }
+    }
+
+And execute ``phpunit``.
+
+.. code-block:: text
+
+    PHPUnit 3.5.15 by Sebastian Bergmann.
+
+    .....
+
+    Time: 0 seconds, Memory: 5.75Mb
+
+    OK (5 tests, 10 assertions)
