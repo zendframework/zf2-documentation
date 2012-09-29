@@ -128,6 +128,7 @@
    modules/zend.permissions.acl.intro
    modules/zend.permissions.acl.refining
    modules/zend.permissions.acl.advanced
+   modules/zend.navigation.introduction
    modules/zend.service-manager.intro
    modules/zend.service-manager.quick-start
    modules/zend.stdlib.hydrator
@@ -412,6 +413,16 @@ Zend\\Mvc
         * :doc:`modules/zend.mvc.controllers`
         * :doc:`modules/zend.mvc.plugins`
         * :doc:`modules/zend.mvc.examples`
+
+.. _zend.navigation:
+
+Zend\\Navigation
+^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.navigation.intro`
+        * :doc:`modules/zend.navigation.quick-start`
+        * :doc:`modules/zend.navigation.pages`
+        * :doc:`modules/zend.navigation.containers`
 
 .. _zend.paginator:
 
