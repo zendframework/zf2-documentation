@@ -65,6 +65,7 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
 .. include:: zend.view.helpers.cycle.rst
 .. include:: zend.view.helpers.partial.rst
 .. include:: zend.view.helpers.placeholder.rst
+.. include:: zend.view.helpers.plural.rst
 .. include:: zend.view.helpers.doctype.rst
 .. include:: zend.view.helpers.head-link.rst
 .. include:: zend.view.helpers.head-meta.rst
