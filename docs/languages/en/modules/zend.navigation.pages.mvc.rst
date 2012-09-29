@@ -1,68 +1,76 @@
 .. _zend.navigation.pages.mvc:
 
-Zend_Navigation_Page_Mvc
+Zend\Navigation\Page\Mvc
 ========================
 
-*MVC* pages are defined using *MVC* parameters known from the ``Zend_Controller`` component. An *MVC* page will use
-``Zend_Controller_Action_Helper_Url`` internally in the ``getHref()`` method to generate hrefs, and the
-``isActive()`` method will intersect the ``Zend_Controller_Request_Abstract`` params with the page's params to
+*MVC* pages are defined using *MVC* parameters known from the ``Zend\Mvc`` component. An *MVC* page will use
+``Zend\Mvc\Router\RouteStackInterface`` internally in the ``getHref()`` method to generate hrefs, and the
+``isActive()`` method will compare the ``Zend\Mvc\Router\RouteMatch`` params with the page's params to
 determine if the page is active.
 
 .. _zend.navigation.pages.mvc.options:
 
 .. table:: MVC page options
 
-   +------------+------+-------+---------------------------------------------------------------------+
-   |Key         |Type  |Default|Description                                                          |
-   +============+======+=======+=====================================================================+
-   |action      |String|NULL   |Action name to use when generating href to the page.                 |
-   +------------+------+-------+---------------------------------------------------------------------+
-   |controller  |String|NULL   |Controller name to use when generating href to the page.             |
-   +------------+------+-------+---------------------------------------------------------------------+
-   |module      |String|NULL   |Module name to use when generating href to the page.                 |
-   +------------+------+-------+---------------------------------------------------------------------+
-   |params      |Array |array()|User params to use when generating href to the page.                 |
-   +------------+------+-------+---------------------------------------------------------------------+
-   |route       |String|NULL   |Route name to use when generating href to the page.                  |
-   +------------+------+-------+---------------------------------------------------------------------+
-   |reset_params|bool  |TRUE   |Whether user params should be reset when generating href to the page.|
-   +------------+------+-------+---------------------------------------------------------------------+
+   +----------+---------------------+---------------+--------------------------------------------------------+
+   |Key       |Type                 |Default|Description                                                     |
+   +==========+=====================+=======+================================================================+
+   |action    |String               |NULL   |Action name to use when generating href to the page.            |
+   +----------+---------------------+-------+----------------------------------------------------------------+
+   |controller|String               |NULL   |Controller name to use when generating href to the page.        |
+   +----------+---------------------+-------+----------------------------------------------------------------+
+   |params    |Array                |array()|User params to use when generating href to the page.            |
+   +----------+---------------------+-------+----------------------------------------------------------------+
+   |route     |String               |NULL   |Route name to use when generating href to the page.             |
+   +----------+---------------------+-------+----------------------------------------------------------------+
+   |routeMatch|Zend\\Mvc\\Router    |NULL   |RouteInterface matches used for routing parameters and testing  |
+   |          |\\RouteMatch         |       |validity.                                                       |
+   +----------+---------------------+-------+----------------------------------------------------------------+
+   |router    |Zend\\Mvc\\Router    |NULL   |Router for assembling URLs                                      |
+   |          |\\RouteStackInterface|       |                                                                |
+   +----------+---------------------+-------+----------------------------------------------------------------+
 
 .. note::
 
-   The three examples below assume a default *MVC* setup with the *default* route in place.
-
-   The *URI* returned is relative to the *baseUrl* in ``Zend_Controller_Front``. In the examples, the baseUrl is
-   '/' for simplicity.
+   The *URI* returned is relative to the *baseUrl* in ``Zend\Mvc\Router\Http\TreeRouteStack``. In the examples, 
+   the baseUrl is '/' for simplicity.
 
 .. _zend.navigation.pages.mvc.example.getHref:
 
 .. rubric:: getHref() generates the page URI
 
-This example show that *MVC* pages use ``Zend_Controller_Action_Helper_Url`` internally to generate *URI*\ s when
+This example show that *MVC* pages use ``Zend\Mvc\Router\RouteStackInterface`` internally to generate *URI*\ s when
 calling *$page->getHref()*.
 
 .. code-block:: php
    :linenos:
 
-   // getHref() returns /
-   $page = new Zend_Navigation_Page_Mvc(array(
-       'action'     => 'index',
-       'controller' => 'index'
+   // Create route
+   $route = Zend\Mvc\Router\Http\Segment::factory(array(
+      'route'       => '/[:controller[/:action][/:id]]',
+      'constraints' => array(
+         'controller' => '[a-zA-Z][a-zA-Z0-9_-]+',
+         'action'     => '[a-zA-Z][a-zA-Z0-9_-]+',
+         'id'         => '[0-9]+',
+      ),
+      array(
+         'controller' => 'Album\Controller\Album',
+         'action'     => 'index',
+      )
+   ));
+   $router = new Zend\Mvc\Router\Http\TreeRouteStack();
+   $router->addRoute('default', $route);
+
+   // getHref() returns /album/add
+   $page = new Zend\Navigation\Page\Mvc(array(
+       'action'     => 'add',
+       'controller' => 'album'
    ));
 
-   // getHref() returns /blog/post/view
-   $page = new Zend_Navigation_Page_Mvc(array(
-       'action'     => 'view',
-       'controller' => 'post',
-       'module'     => 'blog'
-   ));
-
-   // getHref() returns /blog/post/view/id/1337
-   $page = new Zend_Navigation_Page_Mvc(array(
-       'action'     => 'view',
-       'controller' => 'post',
-       'module'     => 'blog',
+   // getHref() returns /album/edit/id/1337
+   $page = new Zend\Navigation\Page\Mvc(array(
+       'action'     => 'edit',
+       'controller' => 'album',
        'params'     => array('id' => 1337)
    ));
 
@@ -70,57 +78,52 @@ calling *$page->getHref()*.
 
 .. rubric:: isActive() determines if page is active
 
-This example show that *MVC* pages determine whether they are active by using the params found in the request
-object.
+This example show that *MVC* pages determine whether they are active by using the params found in the route
+match object.
 
 .. code-block:: php
    :linenos:
 
-   /*
+   /**
     * Dispatched request:
-    * - module:     default
-    * - controller: index
+    * - controller: album
     * - action:     index
     */
-   $page1 = new Zend_Navigation_Page_Mvc(array(
+   $page1 = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'index',
-       'controller' => 'index'
+       'controller' => 'album'
    ));
 
-   $page2 = new Zend_Navigation_Page_Mvc(array(
-       'action'     => 'bar',
-       'controller' => 'index'
+   $page2 = new Zend\Navigation\Page\Mvc(array(
+       'action'     => 'edit',
+       'controller' => 'album'
    ));
 
    $page1->isActive(); // returns true
    $page2->isActive(); // returns false
 
-   /*
+   /**
     * Dispatched request:
-    * - module:     blog
-    * - controller: post
-    * - action:     view
+    * - controller: poalbumst
+    * - action:     edit
     * - id:         1337
     */
-   $page = new Zend_Navigation_Page_Mvc(array(
-       'action'     => 'view',
-       'controller' => 'post',
-       'module'     => 'blog'
+   $page = new Zend\Navigation\Page\Mvc(array(
+       'action'     => 'edit',
+       'controller' => 'album',
    ));
 
-   // returns true, because request has the same module, controller and action
+   // returns true, because request has the same controller and action
    $page->isActive();
 
-   /*
+   /**
     * Dispatched request:
-    * - module:     blog
-    * - controller: post
-    * - action:     view
+    * - controller: album
+    * - action:     edit
     */
-   $page = new Zend_Navigation_Page_Mvc(array(
-       'action'     => 'view',
-       'controller' => 'post',
-       'module'     => 'blog',
+   $page = new Zend\Navigation\Page\Mvc(array(
+       'action'     => 'edit',
+       'controller' => 'album',
        'params'     => array('id' => null)
    ));
 
@@ -136,36 +139,30 @@ the *URL* for the page.
 
 .. note::
 
-   Note that when using the *route* property in a page, you should also specify the default params that the route
-   defines (module, controller, action, etc.), otherwise the ``isActive()`` method will not be able to determine if
-   the page is active. The reason for this is that there is currently no way to get the default params from a
-   ``Zend_Controller_Router_Route_Interface`` object, nor to retrieve the current route from a
-   ``Zend_Controller_Router_Interface`` object.
+   Note that when using the *route* property in a page, you do not need to specify the default params that the route
+   defines (controller, action, etc.).
 
 .. code-block:: php
    :linenos:
 
    // the following route is added to the ZF router
-   Zend_Controller_Front::getInstance()->getRouter()->addRoute(
-       'article_view', // route name
-       new Zend_Controller_Router_Route(
-           'a/:id',
-           array(
-               'module'     => 'news',
-               'controller' => 'article',
-               'action'     => 'view',
-               'id'         => null
-           )
-       )
-   );
+   $route = Zend\Mvc\Router\Http\Segment::factory(array(
+      'route'       => '/a/:id',
+      'constraints' => array(
+         'id' => '[0-9]+',
+      ),
+      array(
+         'controller' => 'Album\Controller\Album',
+         'action'     => 'index',
+      )
+   ));
+   $router = new Zend\Mvc\Router\Http\TreeRouteStack();
+   $router->addRoute('default', $route);
 
    // a page is created with a 'route' option
-   $page = new Zend_Navigation_Page_Mvc(array(
+   $page = new Zend\Navigation\Page\Mvc(array(
        'label'      => 'A news article',
-       'route'      => 'article_view',
-       'module'     => 'news',    // required for isActive(), see note above
-       'controller' => 'article', // required for isActive(), see note above
-       'action'     => 'view',    // required for isActive(), see note above
+       'route'      => 'default',
        'params'     => array('id' => 42)
    ));
 
