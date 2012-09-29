@@ -4,8 +4,7 @@ The Module Autoloader
 =====================
 
 Zend Framework 2 ships with a default module autoloader. ``Zend\Loader\ModuleAutoloader`` is a specialized
-autoloader that is responsible for location of, and on-demand loading of, the ``Module`` classes from a variety of
-sources.
+autoloader responsible for locating and loading modules.
 
 .. _zend.module-manager.module-autoloader.usage:
 
@@ -13,7 +12,7 @@ Module Autoloader Usage
 -----------------------
 
 If you are using the provided ``Zend\ModuleManager\Listener\DefaultListenerAggregate``, then it is very simple to
-set up the module autoloader. You simply need to provide an array of module paths, either absolute or relative to
+set up the module autoloader. You need to provide an array of module paths, either absolute or relative to
 the application's root, for the module autoloader to check when loading modules. The default listener aggregate
 will take care of instantiating and registering the module autoloader for you.
 
