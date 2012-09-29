@@ -134,7 +134,7 @@ MX checking is not enabled by default. To enable MX checking you can pass a seco
    $validator = new Zend\Validator\EmailAddress(
        array(
            'allow' => Zend\Validator\Hostname::ALLOW_DNS,
-           'mx'    => true
+           'useMxCheck'    => true
        )
    );
 
@@ -162,8 +162,8 @@ to set deep MX validation. This can be done at initiation by setting the ``deep`
    $validator = new Zend\Validator\EmailAddress(
        array(
            'allow' => Zend\Validator\Hostname::ALLOW_DNS,
-           'mx'    => true,
-           'deep'  => true
+           'useMxCheck'    => true,
+           'useDeepMxCheck'  => true
        )
    );
 
