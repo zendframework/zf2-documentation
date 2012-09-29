@@ -89,6 +89,73 @@ Our ``Album`` entity object is a simple PHP class. In order to work with
 in array to our entity’s properties. We will add an input filter for use with
 our form later.
 
+But first, does the Album model we have so far work the way we expect it to? Let's write a few tests to be sure.
+
+.. code-block:: php
+
+    // tests/module/Album/src/Album/Model/AlbumTest.php:
+    namespace Album\Model;
+
+    use PHPUnit_Framework_TestCase;
+
+    class AlbumTest extends PHPUnit_Framework_TestCase
+    {
+        public function testAlbumInitialState()
+        {
+            $album = new Album();
+
+            $this->assertNull($album->artist, '"artist" should initially be null');
+            $this->assertNull($album->id, '"id" should initially be null');
+            $this->assertNull($album->title, '"title" should initially be null');
+        }
+
+        public function testExchangeArraySetsPropertiesCorrectly()
+        {
+            $album = new Album();
+            $data  = array('artist' => 'some artist',
+                           'id'     => 'some id',
+                           'title'  => 'some title');
+
+            $album->exchangeArray($data);
+
+            $this->assertSame($data['artist'], $album->artist, '"artist" was not set correctly');
+            $this->assertSame($data['id'], $album->id, '"title" was not set correctly');
+            $this->assertSame($data['title'], $album->title, '"title" was not set correctly');
+        }
+
+        public function testExchangeArraySetsPropertiesToNullIfKeysAreNotPresent()
+        {
+            $album = new Album();
+
+            $album->exchangeArray(array('artist' => 'some artist',
+                                        'id'     => 'some id',
+                                        'title'  => 'some title'));
+            $album->exchangeArray(array());
+
+            $this->assertNull($album->artist, '"artist" should have defaulted to null');
+            $this->assertNull($album->id, '"title" should have defaulted to null');
+            $this->assertNull($album->title, '"title" should have defaulted to null');
+        }
+    }
+
+We are testing for 3 things:
+
+1. Are all of the Album's properties initially set to NULL?
+2. Will the Album's properties be set correctly when we call ``exchangeArray()``?
+3. Will a default value of NULL be used for properties whose keys are not present in the ``$data`` array?
+
+If we run ``phpunit`` again, we'll see that the answer to all three questions is "YES":
+
+.. code-block:: text
+
+    PHPUnit 3.5.15 by Sebastian Bergmann.
+
+    ........
+
+    Time: 0 seconds, Memory: 5.50Mb
+
+    OK (8 tests, 19 assertions)
+
 Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
 ``AlbumTable`` class in the module’s ``Model`` directory like this:
 
@@ -151,7 +218,7 @@ Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
                 $this->insert($data);
             } elseif ($this->getAlbum($id)) {
                 $this->update(
-                    $data, 
+                    $data,
                     array(
                         'id' => $id,
                     )
@@ -176,8 +243,8 @@ to the adapter property of our class. We then need to tell the table gateway’s
 result set that whenever it creates a new row object, it should use an ``Album``
 object to do so. The ``TableGateway`` classes use the prototype pattern for
 creation of result sets and entities. This means that instead of instantiating
-when required, the system clones a previously instantiated object. See 
-`PHP Constructor Best Practices and the Prototype Pattern 
+when required, the system clones a previously instantiated object. See
+`PHP Constructor Best Practices and the Prototype Pattern
 <http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prototype-pattern>`_
 for more details.
 
@@ -256,7 +323,7 @@ you should commit to your version control system. You can use ``local.php``
         ),
         'service_manager' => array(
             'factories' => array(
-                'Zend\Db\Adapter\Adapter' 
+                'Zend\Db\Adapter\Adapter'
                         => 'Zend\Db\Adapter\AdapterServiceFactory',
             ),
         ),
@@ -332,7 +399,7 @@ name}``. We can now fill in the ``index.phtml`` view script:
 
 .. code-block:: php
 
-    <?php 
+    <?php
     // module/Album/view/album/album/index.phtml:
 
     $title = 'My albums';
@@ -352,7 +419,7 @@ name}``. We can now fill in the ``index.phtml`` view script:
     <?php foreach ($albums as $album) : ?>
     <tr>
         <td><?php echo $this->escapeHtml($album->title);?></td>
-        <td><?php echo $this->escapeHtml($album->artist);?></td>    
+        <td><?php echo $this->escapeHtml($album->artist);?></td>
         <td>
             <a href="<?php echo $this->url('album',
                 array('action'=>'edit', 'id' => $album->id));?>">Edit</a>
@@ -366,19 +433,19 @@ name}``. We can now fill in the ``index.phtml`` view script:
 The first thing we do is to set the title for the page (used in the layout) and
 also set the title for the ``<head>`` section using the ``headTitle()`` view
 helper which will display in the browser’s title bar. We then create a link to
-add a new album. 
+add a new album.
 
 The ``url()`` view helper is provided by Zend Framework 2 and is used to create
 the links we need. The first parameter to ``url()`` is the route name we wish to use
 for construction of the URL, and the second parameter is an array of all the
 variables to fit into the placeholders to use. In this case we use our ‘album’
-route which is set up to accept two placeholder variables: ``action`` and ``id``. 
+route which is set up to accept two placeholder variables: ``action`` and ``id``.
 
 We iterate over the ``$albums`` that we assigned from the controller action. The
 Zend Framework 2 view system automatically ensures that these variables are
 extracted into the scope of the view script, so that we don’t have to worry
 about prefixing them with ``$this->`` as we used to have to do with Zend
-Framework 1; however you can do so if you wish. 
+Framework 1; however you can do so if you wish.
 
 We then create a table to display each album’s title and artist, and provide
 links to allow for editing and deleting the record. A standard ``foreach:`` loop
@@ -390,7 +457,7 @@ links.
 .. note::
 
     We always use the ``escapeHtml()`` view helper to help protect
-    ourselves from XSS vulnerabilities.  
+    ourselves from XSS vulnerabilities.
 
 If you open http://zf2-tutorial.localhost/album you should see this:
 
