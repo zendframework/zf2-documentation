@@ -27,7 +27,7 @@ and potentially updating code samples to reflect any API changes.
 - Serializer
 - Server
 - Soap
-- Tag (PR sent by @robertbasic)
+- Tag
 - Text
 - XmlRpc
 
