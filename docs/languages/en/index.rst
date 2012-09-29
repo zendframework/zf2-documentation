@@ -81,6 +81,11 @@
    modules/zend.i18n.view.helpers
    modules/zend.i18n.filters
    modules/zend.input-filter.intro
+   modules/zend.json.introduction
+   modules/zend.json.basics
+   modules/zend.json.objects
+   modules/zend.json.xml2json
+   modules/zend.json.server
    modules/zend.ldap.introduction
    modules/zend.ldap.api
    modules/zend.ldap.usage
@@ -332,6 +337,17 @@ Zend\\InputFilter
 ^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zend.input-filter.intro`
+
+.. _zend.json:
+
+Zend\\Json
+^^^^^^^^^^
+
+        * :doc:`modules/zend.json.introduction`
+        * :doc:`modules/zend.json.basics`
+        * :doc:`modules/zend.json.objects`
+        * :doc:`modules/zend.json.xml2json`
+        * :doc:`modules/zend.json.server`
 
 .. _zend.ldap:
 
