@@ -35,7 +35,9 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 .. function:: setOptions(array $options)
    :noindex:
 
-   Set options for an element of type Collection. Accepted options, in addition to the inherited options of Zend\\Form\\Element <zend.form.element.methods.set-options>` , are: ``"target_element"``, ``"count"``, ``"allow_add"``, ``"should_create_template"`` and ``"template_placeholder"`` , which call ``setTargetElement``, ``setCount``, ``setAllowAdd``, ``setShouldCreateTemplate`` and ``setTemplatePlaceholder`` , respectively.
+   Set options for an element of type Collection. Accepted options, in addition to the inherited options of Zend\\Form\\Element <zend.form.element.methods.set-options>` , are: ``"target_element"``, ``"count"``, ``"allow_add"``, ``"allow_remove"``, ``"should_create_template"`` and ``"template_placeholder"`` .
+   
+    Those options respectively call ``setTargetElement``, ``setCount``, ``setAllowAdd``, ``setAllowRemove``, ``setShouldCreateTemplate`` and ``setTemplatePlaceholder`` .
 
 .. function:: setCount($count)
    :noindex:
@@ -65,6 +67,16 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    :noindex:
 
    If allowAdd is set to true (which is the default), new elements added dynamically in the form (using JavaScript, for instance) will also be validated and retrieved.
+   
+.. function:: setAllowRemove($allowRemove)
+   :noindex:
+
+   If allowRemove is set to true (which is the default), the number of submitted elements can be fewer to what was specified initially with the count option (for instance using JavaScript).
+   
+.. function:: getAllowRemove()
+   :noindex:
+
+   Return if new elements can be dynamically removed from the collection.
 
 .. function:: allowAdd()
    :noindex:
