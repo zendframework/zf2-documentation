@@ -119,8 +119,8 @@ following setup:
    {
        public function count()
        {
-           $sql = new Zend\Db\Sql\Select();
-           $sql->from('item_counts')->columns(array('c'=>'post_count'));
+           $select = new Zend\Db\Sql\Select();
+           $select->from('item_counts')->columns(array('c'=>'post_count'));
 
            $statement = $this->sql->prepareStatementForSqlObject($select);
            $result    = $statement->execute();

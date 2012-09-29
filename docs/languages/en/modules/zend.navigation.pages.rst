@@ -3,7 +3,7 @@
 Pages
 =====
 
-``Zend_Navigation`` ships with two page types:
+``Zend\Navigation`` ships with two page types:
 
 - :ref:`MVC pages <zend.navigation.pages.mvc>` – using the class ``Zend\Navigation\Page\Mvc``
 - :ref:`URI pages <zend.navigation.pages.uri>` – using the class ``Zend\Navigation\Page\Uri``
