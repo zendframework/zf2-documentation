@@ -121,6 +121,10 @@
    modules/zend.mvc.controllers
    modules/zend.mvc.plugins
    modules/zend.mvc.examples
+   modules/zend.navigation.intro
+   modules/zend.navigation.quick-start
+   modules/zend.navigation.pages
+   modules/zend.navigation.containers
    modules/zend.paginator.introduction
    modules/zend.paginator.usage
    modules/zend.paginator.configuration
@@ -128,7 +132,6 @@
    modules/zend.permissions.acl.intro
    modules/zend.permissions.acl.refining
    modules/zend.permissions.acl.advanced
-   modules/zend.navigation.introduction
    modules/zend.service-manager.intro
    modules/zend.service-manager.quick-start
    modules/zend.stdlib.hydrator
