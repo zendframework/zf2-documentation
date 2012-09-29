@@ -120,7 +120,7 @@ the following way.
        new Zend\Validator\Hostname(
            array(
                'allow' => Zend\Validator\Hostname::ALLOW_DNS,
-               'idn'   => false
+               'useIdnCheck'   => false
            )
        );
 
@@ -152,8 +152,8 @@ validation via the second parameter.
        new Zend\Validator\Hostname(
            array(
                'allow' => Zend\Validator\Hostname::ALLOW_DNS,
-               'idn'   => true,
-               'tld'   => false
+               'useIdnCheck'   => true,
+               'useTldCheck'   => false
            )
        );
 
