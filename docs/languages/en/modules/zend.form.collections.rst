@@ -477,7 +477,7 @@ not forms. And only ``Form`` instances can be validated. So here is the form :
                 'name' => 'submit',
                 'attributes' => array(
                     'type' => 'submit',
-                    'value' => 'Envoyer'
+                    'value' => 'Send'
                 )
             ));
         }
@@ -800,7 +800,7 @@ all the elements we want to validate.  Our ``CreateForm`` now looks like this:
                 'name' => 'submit',
                 'attributes' => array(
                     'type' => 'submit',
-                    'value' => 'Envoyer'
+                    'value' => 'Send'
                 )
             ));
     
