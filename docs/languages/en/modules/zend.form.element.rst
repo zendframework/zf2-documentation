@@ -3,7 +3,7 @@
 Element Base Class
 ------------------
 
-``Zend\Form\Element`` is a base class for all specialized elements and ``Zend\\Form\\Fieldset``.
+``Zend\Form\Element`` is a base class for all specialized elements and ``Zend\Form\Fieldset``.
 
 .. _zend.form.element.usage:
 
@@ -21,7 +21,7 @@ hint to the view layer how it might render the item.
 
    $username = new Element\Text('username');
    $username
-       ->setLabel('Username');
+       ->setLabel('Username')
        ->setAttributes(array(
            'class' => 'username',
            'size'  => '30',
@@ -29,7 +29,7 @@ hint to the view layer how it might render the item.
 
    $password = new Element\Password('password');
    $password
-       ->setLabel('Password');
+       ->setLabel('Password')
        ->setAttributes(array(
            'size'  => '30',
        ));
