@@ -113,7 +113,7 @@ But first, does the Album model we have so far work the way we expect it to? Let
         {
             $album = new Album();
             $data  = array('artist' => 'some artist',
-                           'id'     => 'some id',
+                           'id'     => 123,
                            'title'  => 'some title');
 
             $album->exchangeArray($data);
@@ -128,7 +128,7 @@ But first, does the Album model we have so far work the way we expect it to? Let
             $album = new Album();
 
             $album->exchangeArray(array('artist' => 'some artist',
-                                        'id'     => 'some id',
+                                        'id'     => 123,
                                         'title'  => 'some title'));
             $album->exchangeArray(array());
 
