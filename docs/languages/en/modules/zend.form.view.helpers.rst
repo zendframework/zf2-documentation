@@ -26,6 +26,9 @@ Standard Helpers
 .. include:: zend.form.view.helper.form-image.rst
 .. include:: zend.form.view.helper.form-input.rst
 .. include:: zend.form.view.helper.form-label.rst
+.. include:: zend.form.view.helper.form-multicheckbox.rst
+.. include:: zend.form.view.helper.form-radio.rst
+.. include:: zend.form.view.helper.form-select.rst
 .. include:: zend.form.view.helper.abstract-helper.rst
 
 HTML5 Helpers

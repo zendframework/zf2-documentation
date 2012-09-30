@@ -26,6 +26,22 @@ This element automatically adds a ``"type"`` attribute of value ``"color"``.
    $form = new Form('my-form');
    $form->add($color);
 
+Here is the same example using the array notation:
+
+.. code-block:: php
+   :linenos:
+
+    use Zend\Form\Form;
+
+    $form = new Form('my-form');
+    $form->add(array(
+    	'type' => 'Zend\Form\Element\Color',
+    	'name' => 'color',
+    	'options => array(
+    		'label' => 'Background color'
+    	)
+    ));
+
 .. _zend.form.element.color.methods:
 
 Public Methods

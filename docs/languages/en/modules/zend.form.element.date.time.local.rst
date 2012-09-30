@@ -32,6 +32,27 @@ This element automatically adds a ``"type"`` attribute of value ``"datetime-loca
    $form = new Form('my-form');
    $form->add($dateTimeLocal);
 
+Here is with the array notation:
+
+.. code-block:: php
+   :linenos:
+
+    use Zend\Form\Form;
+
+    $form = new Form('my-form');
+    $form->add(array(
+    	'type' => 'Zend\Form\Element\DateTimeLocal',
+    	'name' => 'appointment-date-time',
+    	'options => array(
+    		'label' => 'Appointment Date'
+    	),
+    	'attributes' => array(
+    		'min' => '2010-01-01T00:00:00',
+    		'max' => '2020-01-01T00:00:00',
+    		'step' => '1', // minutes; default step interval is 1 min
+    	)
+    ));
+
 .. note::
 
    Note: the ``min``, ``max``, and ``step`` attributes should be set prior to calling Zend\\Form::prepare().

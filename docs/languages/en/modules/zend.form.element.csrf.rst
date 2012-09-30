@@ -25,6 +25,24 @@ This element automatically adds a ``"type"`` attribute of value ``"hidden"``.
    $form = new Form('my-form');
    $form->add($csrf);
 
+You can change the options of the CSRF validator using the ``setCsrfValidatorOptions`` function, or by using the ``"csrf_options"`` key. Here is an example using the array notation:
+
+.. code-block:: php
+   :linenos:
+
+    use Zend\Form\Form;
+
+    $form = new Form('my-form');
+    $form->add(array(
+    	'type' => 'Zend\Form\Element\Csrf',
+    	'name' => 'csrf',
+    	'options => array(
+    		'csrf_options' => array(
+    			'timeout' => 600
+    		)
+    	)
+    ));
+
 .. _zend.form.element.csrf.methods:
 
 Public Methods
@@ -40,3 +58,27 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    ``Zend\Validator\Csrf`` to validate the *CSRF* value.
 
    :rtype: array
+   
+.. function:: setCsrfValidatorOptions(array $options)
+   :noindex:
+
+   Set the options that are used by the CSRF validator.
+
+.. function:: getCsrfValidatorOptions()
+   :noindex:
+
+   Get the options that are used by the CSRF validator.
+   
+   :rtype: array
+   
+.. function:: setCsrfValidator(CsrfValidator $validator)
+   :noindex:
+
+   Override the default CSRF validator by setting another one.
+
+.. function:: getCsrfValidator()
+   :noindex:
+
+   Get the CSRF validator.
+   
+   :rtype: CsrfValidator 
