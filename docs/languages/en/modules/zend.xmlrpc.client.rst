@@ -163,39 +163,41 @@ reasons for doing this are:
 
 
 There are two ways to create a ``Zend\XmlRpc\Value`` object: instantiate one of the ``Zend\XmlRpc\Value``
-subclasses directly, or use the static factory method ``Zend\XmlRpc\Value::getXmlRpcValue()``.
+subclasses directly, or use the static factory method ``Zend\XmlRpc\AbstractValue::getXmlRpcValue()``.
 
 .. _zend.xmlrpc.value.parameters.xmlrpc-value.table-1:
 
 .. table:: Zend\\XmlRpc\\Value Objects for XML-RPC Types
 
-   +----------------+------------------------------------------+-------------------------------+
-   |XML-RPC Type    |Zend\\XmlRpc\\Value Constant              |Zend\\XmlRpc\\Value Object     |
-   +================+==========================================+===============================+
-   |int             |Zend\\XmlRpc\\Value::XMLRPC_TYPE_INTEGER  |Zend\\XmlRpc\\Value\\Integer   |
-   +----------------+------------------------------------------+-------------------------------+
-   |i8              |Zend\\XmlRpc\\Value::XMLRPC_TYPE_I8       |Zend\\XmlRpc\\Value\\BigInteger|
-   +----------------+------------------------------------------+-------------------------------+
-   |ex:i8           |Zend\\XmlRpc\\Value::XMLRPC_TYPE_APACHEI8 |Zend\\XmlRpc\\Value\\BigInteger|
-   +----------------+------------------------------------------+-------------------------------+
-   |double          |Zend\\XmlRpc\\Value::XMLRPC_TYPE_DOUBLE   |Zend\\XmlRpc\\Value_Double     |
-   +----------------+------------------------------------------+-------------------------------+
-   |boolean         |Zend\\XmlRpc\\Value::XMLRPC_TYPE_BOOLEAN  |Zend\\XmlRpc\\Value\\Boolean   |
-   +----------------+------------------------------------------+-------------------------------+
-   |string          |Zend\\XmlRpc\\Value::XMLRPC_TYPE_STRING   |Zend\\XmlRpc\\Value\\String    |
-   +----------------+------------------------------------------+-------------------------------+
-   |nil             |Zend\\XmlRpc\\Value::XMLRPC_TYPE_NIL      |Zend\\XmlRpc\\Value\\Nil       |
-   +----------------+------------------------------------------+-------------------------------+
-   |ex:nil          |Zend\\XmlRpc\\Value::XMLRPC_TYPE_APACHENIL|Zend\\XmlRpc\\Value\\Nil       |
-   +----------------+------------------------------------------+-------------------------------+
-   |base64          |Zend\\XmlRpc\\Value::XMLRPC_TYPE_BASE64   |Zend\\XmlRpc\\Value\\Base64    |
-   +----------------+------------------------------------------+-------------------------------+
-   |dateTime.iso8601|Zend\\XmlRpc\\Value::XMLRPC_TYPE_DATETIME |Zend\\XmlRpc\\Value\\DateTime  |
-   +----------------+------------------------------------------+-------------------------------+
-   |array           |Zend\\XmlRpc\\Value::XMLRPC_TYPE_ARRAY    |Zend\\XmlRpc\\Value\\Array     |
-   +----------------+------------------------------------------+-------------------------------+
-   |struct          |Zend\\XmlRpc\\Value::XMLRPC_TYPE_STRUCT   |Zend\\XmlRpc\\Value\\Struct    |
-   +----------------+------------------------------------------+-------------------------------+
+   +----------------+--------------------------------------------------+-------------------------------+
+   |XML-RPC Type    |Zend\\XmlRpc\\AbstractValue Constant              |Zend\\XmlRpc\\Value Object     |
+   +================+==================================================+===============================+
+   |int             |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_INTEGER  |Zend\\XmlRpc\\Value\\Integer   |
+   +----------------+--------------------------------------------------+-------------------------------+
+   |i4              |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_I4       |Zend\\XmlRpc\\Value\\Integer   |
+   +----------------+--------------------------------------------------+-------------------------------+
+   |i8              |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_I8       |Zend\\XmlRpc\\Value\\BigInteger|
+   +----------------+--------------------------------------------------+-------------------------------+
+   |ex:i8           |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_APACHEI8 |Zend\\XmlRpc\\Value\\BigInteger|
+   +----------------+--------------------------------------------------+-------------------------------+
+   |double          |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_DOUBLE   |Zend\\XmlRpc\\Value_Double     |
+   +----------------+--------------------------------------------------+-------------------------------+
+   |boolean         |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_BOOLEAN  |Zend\\XmlRpc\\Value\\Boolean   |
+   +----------------+--------------------------------------------------+-------------------------------+
+   |string          |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_STRING   |Zend\\XmlRpc\\Value\\String    |
+   +----------------+--------------------------------------------------+-------------------------------+
+   |nil             |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_NIL      |Zend\\XmlRpc\\Value\\Nil       |
+   +----------------+--------------------------------------------------+-------------------------------+
+   |ex:nil          |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_APACHENIL|Zend\\XmlRpc\\Value\\Nil       |
+   +----------------+--------------------------------------------------+-------------------------------+
+   |base64          |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_BASE64   |Zend\\XmlRpc\\Value\\Base64    |
+   +----------------+--------------------------------------------------+-------------------------------+
+   |dateTime.iso8601|Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_DATETIME |Zend\\XmlRpc\\Value\\DateTime  |
+   +----------------+--------------------------------------------------+-------------------------------+
+   |array           |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_ARRAY    |Zend\\XmlRpc\\Value\\Array     |
+   +----------------+--------------------------------------------------+-------------------------------+
+   |struct          |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_STRUCT   |Zend\\XmlRpc\\Value\\Struct    |
+   +----------------+--------------------------------------------------+-------------------------------+
 
 .. note::
 
@@ -341,6 +343,29 @@ Some *XML-RPC* servers support the de facto introspection methods under the *XML
 
 A ``Zend\XmlRpc\Client\ServerIntrospection`` instance may be retrieved by calling the ``getIntrospector()`` method
 of ``Zend\XmlRpc\Client``. It can then be used to perform introspection operations on the server.
+
+.. code-block:: php
+    :linenos:
+
+    $client = new Zend\XmlRpc\Client('http://example.com/xmlrpcserver.php');
+    $introspector = $client->getIntrospector();
+    foreach ($introspector->listMethods() as $method) {
+        echo "Method: " . $method . "\n";
+    }
+
+The following methods are available for introspection:
+
+- ``getSignatureForEachMethod``: Returns the signature for each method on the server
+
+- ``getSignatureForEachMethodByMulticall($methods=null)``: Attempt to get the method signatures in one request via
+  system.multicall(). Optionally pass an array of method names.
+
+- ``getSignatureForEachMethodByLooping($methods=null)``: Get the method signatures for every method by successively
+  calling system.methodSignature. Optionally pass an array of method names
+  
+- ``getMethodSignature($method)``: Get the method's signature for $method
+
+- ``listMethods``: List all methods on the server
 
 .. _zend.xmlrpc.client.request-to-response:
 
