@@ -59,8 +59,11 @@ Programmatically, you would then do something like this:
        'index/index' => __DIR__ . '/view/index/index.phtml',
    ));
    $stack = new Resolver\TemplatePathStack(array(
-       __DIR__ . '/view',
-       $someOtherPath,
+       array(
+         'script_paths' => array(
+            __DIR__ . '/view',
+            $someOtherPath,
+      ),
    ));
 
    $resolver->attach($map)    // this will be consulted first
