@@ -21,7 +21,8 @@ the feed data to a simple *PHP* array, which could then be used for printing the
    **Be aware**
 
    Many *RSS* feeds have different channel and item properties available. The *RSS* specification provides for many
-   optional properties, so be aware of this when writing code to work with *RSS* data. ``Zend\Feed`` supports all optional properties of the core *RSS* and *Atom* specifications.
+   optional properties, so be aware of this when writing code to work with *RSS* data. ``Zend\Feed`` supports all 
+   optional properties of the core *RSS* and *Atom* specifications.
 
 .. _zend.feed.introduction.example.rss:
 
@@ -57,4 +58,6 @@ the feed data to a simple *PHP* array, which could then be used for printing the
            );
    }
 
-Your ``$channel`` array now contains the basic meta-information for the RSS channel and all items that it contained. The process is identical for *Atom* feeds since ``Zend\Feed`` features a common denominator API, i.e. all getters and setters are the same regardless of feed format.
+Your ``$channel`` array now contains the basic meta-information for the RSS channel and all items that it contained.
+The process is identical for *Atom* feeds since ``Zend\Feed`` features a common denominator API, i.e. all getters 
+and setters are the same regardless of feed format.

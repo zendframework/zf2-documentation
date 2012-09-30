@@ -29,7 +29,8 @@ You can examine all feed links located by iterating across the collection:
             break;
     }
 
-Each ``Zend\Feed\Reader\FeedSet`` object will expose the rel, href, type and title properties of detected links for all *RSS*, *Atom* or *RDF* feeds. You can always select the first encountered link of each type by using a shortcut:
+Each ``Zend\Feed\Reader\FeedSet`` object will expose the rel, href, type and title properties of detected links for
+all *RSS*, *Atom* or *RDF* feeds. You can always select the first encountered link of each type by using a shortcut:
 
 .. code-block:: php
     :linenos:

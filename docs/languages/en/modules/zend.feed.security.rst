@@ -104,8 +104,8 @@ The following examples will show a basic usage of HTMLPurifier, but developers a
 
 .. note::
     
-    For the sake of this example, the HTMLPurifier's cache is disabled, but it is recommended to configure caching and use its standalone include file
-    as it can improve the performance of HTMLPurifier substantially.
+    For the sake of this example, the HTMLPurifier's cache is disabled, but it is recommended to configure caching
+    and use its standalone include file as it can improve the performance of HTMLPurifier substantially.
 
 .. _zend.feed.security.escaping:
 
@@ -158,7 +158,8 @@ CSS and URLs before outputing any potentially insecure data to the users.
         );
     }
 
-The feed data is now safe for output to HTML templates. You can, of course, skip escaping when simply storing the data persistently but remember to escape it on output later!
+The feed data is now safe for output to HTML templates. You can, of course, skip escaping when simply storing the 
+data persistently but remember to escape it on output later!
 
 Of course, these are just basic examples, and cannot cover all possible scenarios that you, as a developer, can,
 and most likely will, encounter. Your responsibility is to learn what libraries and tools are at your disposal,

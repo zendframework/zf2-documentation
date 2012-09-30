@@ -11,8 +11,8 @@ If you know the *URI* of a feed, simply use the ``Zend\Feed\Reader\Reader::impor
 
    $feed = Zend\Feed\Reader\Reader::import('http://feeds.example.com/feedName');
 
-You can also use ``Zend\Feed\Reader\Reader`` to fetch the contents of a feed from a file or the contents of a *PHP* string
-variable:
+You can also use ``Zend\Feed\Reader\Reader`` to fetch the contents of a feed from a file or the contents of a *PHP*
+string variable:
 
 .. code-block:: php
    :linenos:

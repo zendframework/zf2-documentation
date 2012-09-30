@@ -61,7 +61,8 @@ Atom entries commonly have the following properties:
 
 - ``updated``- the date the entry was last updated, in *RFC* 3339 format
 
-Where relevant, ``Zend\Feed`` supports a number of common RSS extensions including Dublin Core and the Content, Slash, Syndication, Syndication/Thread and several other extensions in common use on blogs.
+Where relevant, ``Zend\Feed`` supports a number of common RSS extensions including Dublin Core and the Content,
+Slash, Syndication, Syndication/Thread and several other extensions in common use on blogs.
 
 For more information on Atom and plenty of resources, see `http://www.atomenabled.org/`_.
 
