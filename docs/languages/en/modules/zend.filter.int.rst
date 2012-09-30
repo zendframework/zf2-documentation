@@ -3,14 +3,14 @@
 Int
 ===
 
-``Zend_Filter_Int`` allows you to transform a sclar value which contains into an integer.
+``Zend\Filter\Int`` allows you to transform a sclar value which contains into an integer.
 
 .. _zend.filter.set.int.options:
 
-Supported options for Zend_Filter_Int
+Supported options for Zend\Filter\Int
 -------------------------------------
 
-There are no additional options for ``Zend_Filter_Int``.
+There are no additional options for ``Zend\Filter\Int``.
 
 .. _zend.filter.set.int.basic:
 
@@ -22,7 +22,7 @@ A basic example of usage is below:
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Int();
+   $filter = new Zend\Filter\Int();
 
    print $filter->filter('-4 is less than 0');
 

@@ -7,10 +7,10 @@ This filter modifies a given string such that certain characters are removed fro
 
 .. _zend.filter.set.stringtrim.options:
 
-Supported options for Zend_Filter_StringTrim
+Supported options for Zend\Filter\StringTrim
 --------------------------------------------
 
-The following options are supported for ``Zend_Filter_StringTrim``:
+The following options are supported for ``Zend\Filter\StringTrim``:
 
 - **charlist**: List of characters to remove from the beginning and end of the string. If this is not set or is
   null, the default behavior will be invoked, which is to remove only whitespace from the beginning and end of the
@@ -26,7 +26,7 @@ A basic example of usage is below:
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringTrim();
+   $filter = new Zend\Filter\StringTrim();
 
    print $filter->filter(' This is (my) content: ');
 
@@ -34,19 +34,19 @@ The above example returns 'This is (my) content:'. Notice that the whitespace ch
 
 .. _zend.filter.set.stringtrim.types:
 
-Default behaviour for Zend_Filter_StringTrim
+Default behaviour for Zend\Filter\StringTrim
 --------------------------------------------
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringTrim(':');
-   // or new Zend_Filter_StringTrim(array('charlist' => ':'));
+   $filter = new Zend\Filter\StringTrim(':');
+   // or new Zend\Filter\StringTrim(array('charlist' => ':'));
 
    print $filter->filter(' This is (my) content:');
 
 The above example returns 'This is (my) content'. Notice that the whitespace characters and colon are removed. You
-can also provide an instance of ``Zend_Config`` or an array with a 'charlist' key. To set the desired character
+can also provide an instance of ``Zend\Config`` or an array with a 'charlist' key. To set the desired character
 list after instantiation, use the ``setCharList()`` method. The ``getCharList()`` return the values set for
 charlist.
 

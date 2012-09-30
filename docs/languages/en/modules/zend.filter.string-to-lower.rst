@@ -7,10 +7,10 @@ This filter converts any input to be lowercased.
 
 .. _zend.filter.set.stringtolower.options:
 
-Supported options for Zend_Filter_StringToLower
+Supported options for Zend\Filter\StringToLower
 -----------------------------------------------
 
-The following options are supported for ``Zend_Filter_StringToLower``:
+The following options are supported for ``Zend\Filter\StringToLower``:
 
 - **encoding**: This option can be used to set an encoding which has to be used.
 
@@ -24,7 +24,7 @@ This is a basic example:
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringToLower();
+   $filter = new Zend\Filter\StringToLower();
 
    print $filter->filter('SAMPLE');
    // returns "sample"
@@ -43,10 +43,10 @@ environment. Simply set the wished encoding when initiating the ``StringToLower`
    :linenos:
 
    // using UTF-8
-   $filter = new Zend_Filter_StringToLower('UTF-8');
+   $filter = new Zend\Filter\StringToLower('UTF-8');
 
    // or give an array which can be useful when using a configuration
-   $filter = new Zend_Filter_StringToLower(array('encoding' => 'UTF-8'));
+   $filter = new Zend\Filter\StringToLower(array('encoding' => 'UTF-8'));
 
    // or do this afterwards
    $filter->setEncoding('ISO-8859-1');

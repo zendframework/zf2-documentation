@@ -3,14 +3,14 @@
 PregReplace
 ===========
 
-``Zend_Filter_PregReplace`` performs a search using regular expressions and replaces all found elements.
+``Zend\Filter\PregReplace`` performs a search using regular expressions and replaces all found elements.
 
 .. _zend.filter.set.pregreplace.options:
 
-Supported options for Zend_Filter_PregReplace
+Supported options for Zend\Filter\PregReplace
 ---------------------------------------------
 
-The following options are supported for ``Zend_Filter_PregReplace``:
+The following options are supported for ``Zend\Filter\PregReplace``:
 
 - **match**: The pattern which will be searched for.
 
@@ -32,7 +32,7 @@ a single pattern, or an array of strings for multiple pattern.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_PregReplace(array(
+   $filter = new Zend\Filter\PregReplace(array(
        'match'   => '/bob/',
        'replace' => 'john',
    ));
@@ -47,7 +47,7 @@ replacement pattern you can use ``getReplacement()`` and ``setReplacement()``.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_PregReplace();
+   $filter = new Zend\Filter\PregReplace();
    $filter->setMatchPattern(array('bob', 'Hy'))
          ->setReplacement(array('john', 'Bye'));
    $input  = 'Hy bob!";
