@@ -133,6 +133,8 @@
    modules/zend.stdlib.hydrator
    modules/zend.tag.introduction
    modules/zend.tag.cloud
+   modules/zend.text.figlet
+   modules/zend.text.table
    modules/zend.uri
    modules/zend.validator
    modules/zend.validator.set
@@ -456,6 +458,12 @@ Zend\\Tag
 
         * :doc:`modules/zend.tag.introduction`
         * :doc:`modules/zend.tag.cloud`
+
+Zend\\Text
+^^^^^^^^^^
+
+        * :doc:`modules/zend.text.figlet`
+        * :doc:`modules/zend.text.table`
 
 .. _zend.uri:
 
