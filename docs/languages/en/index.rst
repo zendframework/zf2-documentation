@@ -128,6 +128,8 @@
    modules/zend.permissions.acl.intro
    modules/zend.permissions.acl.refining
    modules/zend.permissions.acl.advanced
+   modules/zend.server
+   modules/zend.server.reflection
    modules/zend.service-manager.intro
    modules/zend.service-manager.quick-start
    modules/zend.stdlib.hydrator
@@ -433,6 +435,14 @@ Zend\\Permissions\\Acl
         * :doc:`modules/zend.permissions.acl.intro`
         * :doc:`modules/zend.permissions.acl.refining`
         * :doc:`modules/zend.permissions.acl.advanced`
+
+.. _zend.server:
+
+Zend\\Server
+^^^^^^^^^^^^
+
+        * :doc:`modules/zend.server`
+        * :doc:`modules/zend.server.reflection`
 
 .. _zend.service-manager:
 
