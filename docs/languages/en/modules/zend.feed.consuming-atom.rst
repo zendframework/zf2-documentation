@@ -5,7 +5,7 @@ Consuming an Atom Feed
 
 ``Zend\Feed\Reader\Feed\Atom`` is used in much the same way as ``Zend\Feed\Reader\Feed\Rss``. It provides the
 same access to feed-level properties and iteration over entries in the feed. The main difference is in the 
-structure of the Atom protocol itself. Atom is a successor to *RSS*; it is more generalized protocol and it is
+structure of the Atom protocol itself. Atom is a successor to *RSS*; it is a more generalized protocol and it is
 designed to deal more easily with feeds that provide their full content inside the feed, splitting *RSS*'
 ``description`` tag into two elements, ``summary`` and ``content``, for that purpose.
 
@@ -60,6 +60,8 @@ Atom entries commonly have the following properties:
 - ``published``- the date the entry was published, in *RFC* 3339 format
 
 - ``updated``- the date the entry was last updated, in *RFC* 3339 format
+
+Where relevant, ``Zend\Feed`` supports a number of common RSS extensions including Dublin Core and the Content, Slash, Syndication, Syndication/Thread and several other extensions in common use on blogs.
 
 For more information on Atom and plenty of resources, see `http://www.atomenabled.org/`_.
 
