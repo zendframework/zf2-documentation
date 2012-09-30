@@ -31,6 +31,24 @@ adapters are available.
    $form = new Form('my-form');
    $form->add($captcha);
 
+Here is with the array notation:
+
+.. code-block:: php
+   :linenos:
+
+	use Zend\Captcha;
+    use Zend\Form\Form;
+
+    $form = new Form('my-form');
+    $form->add(array(
+    	'type' => 'Zend\Form\Element\Captcha',
+    	'name' => 'captcha',
+    	'options => array(
+    		'label' => 'Please verify you are human',
+    		'captcha' => new Captcha\Dumb(),
+    	),
+    ));
+    
 .. _zend.form.element.captcha.methods:
 
 Public Methods

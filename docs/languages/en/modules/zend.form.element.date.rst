@@ -32,6 +32,27 @@ This element automatically adds a ``"type"`` attribute of value ``"date"``.
    $form = new Form('my-form');
    $form->add($date);
 
+Here is with the array notation:
+
+.. code-block:: php
+   :linenos:
+
+    use Zend\Form\Form;
+
+    $form = new Form('my-form');
+    $form->add(array(
+    	'type' => 'Zend\Form\Element\Date',
+    	'name' => 'appointment-date',
+    	'options => array(
+    		'label' => 'Appointment Date'
+    	),
+    	'attributes' => array(
+    		'min' => '2012-01-01',
+    		'max' => '2020-01-01',
+    		'step' => '1', // days; default step interval is 1 day
+    	)
+    ));
+
 .. note::
 
    Note: the ``min``, ``max``, and ``step`` attributes should be set prior to calling Zend\\Form::prepare().

@@ -24,9 +24,11 @@ Standard Elements
 .. include:: zend.form.element.checkbox.rst
 .. include:: zend.form.element.collection.rst
 .. include:: zend.form.element.csrf.rst
-.. include:: zend.form.element.email.rst
 .. include:: zend.form.element.hidden.rst
-.. include:: zend.form.element.url.rst
+.. include:: zend.form.element.multicheckbox.rst
+.. include:: zend.form.element.radio.rst
+.. include:: zend.form.element.select.rst
+
 
 HTML5 Elements
 --------------
@@ -35,8 +37,10 @@ HTML5 Elements
 .. include:: zend.form.element.date.rst
 .. include:: zend.form.element.date.time.rst
 .. include:: zend.form.element.date.time.local.rst
+.. include:: zend.form.element.email.rst
 .. include:: zend.form.element.month.rst
 .. include:: zend.form.element.number.rst
 .. include:: zend.form.element.range.rst
 .. include:: zend.form.element.time.rst
+.. include:: zend.form.element.url.rst
 .. include:: zend.form.element.week.rst

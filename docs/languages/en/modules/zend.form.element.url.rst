@@ -25,6 +25,22 @@ This element automatically adds a ``"type"`` attribute of value ``"url"``.
 
    $form = new Form('my-form');
    $form->add($url);
+   
+Here is the same example using the array notation:
+
+.. code-block:: php
+   :linenos:
+
+    use Zend\Form\Form;
+
+    $form = new Form('my-form');
+    $form->add(array(
+    	'type' => 'Zend\Form\Element\Url',
+    	'name' => 'webpage-url',
+    	'options => array(
+    		'label' => 'Webpage URL'
+    	)
+    ));
 
 .. _zend.form.element.url.methods:
 
