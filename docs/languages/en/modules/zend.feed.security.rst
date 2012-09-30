@@ -8,11 +8,11 @@ Zend\\Feed and Security
 Introduction
 ------------
 
-As with any data coming from a source that is out of the developer's control, special attention needs to be given
-to securing, validating and filtering that data. Similary to data input to our application by users, data coming
+As with any data coming from a source that is beyond the developer's control, special attention needs to be given
+to securing, validating and filtering that data. Similar to data input to our application by users, data coming
 from *RSS* and Atom feeds should also be considered unsafe and potentially dangerous, as it allows the delivery of
 *HTML* and *xHTML* [#f1]_. Because data validation and filtration is out of ``Zend\Feed``'s scope, this task is 
-left for implementation to the developer, by using libraries such as ``Zend\Escaper`` for escaping and `HTMLPurifier`_
+left for implementation by the developer, by using libraries such as ``Zend\Escaper`` for escaping and `HTMLPurifier`_
 for validating and filtering feed data.
 
 Escaping and filtering of potentially insecure data is highly recommended before outputting it anywhere in our
@@ -23,8 +23,8 @@ application or before storing that data in some storage engine (be it a simple f
 Filtering data using HTMLPurifier
 ---------------------------------
 
-Currently the best available library for filtering and validating *(x)HTML* data in PHP is `HTMLPurifier`_, and as
-such is the recommended tool for this task. HTMLPurifier works by filtering out all *(x)HTML* from the data, except
+Currently the best available library for filtering and validating *(x)HTML* data in PHP is `HTMLPurifier`_ and, as
+such, is the recommended tool for this task. HTMLPurifier works by filtering out all *(x)HTML* from the data, except
 for the tags and attributes specifically allowed in a whitelist, and by checking and fixing nesting of tags, ensuring
 a standards-compliant output.
 
@@ -99,12 +99,13 @@ The following examples will show a basic usage of HTMLPurifier, but developers a
 .. note::
 
     HTMLPurifier is using the PHP `Tidy extension`_ to clean and repair the final output. If this extension is
-    not available, it will silently fail.
+    not available, it will silently fail but its availability has no impact on
+    the library's security.
 
 .. note::
     
-    For the sake of this example, the HTMLPurifier's cache is disabled, but it is recommended to configure caching,
-    as it can improve performance of HTMLPurifier.
+    For the sake of this example, the HTMLPurifier's cache is disabled, but it is recommended to configure caching and use its standalone include file
+    as it can improve the performance of HTMLPurifier substantially.
 
 .. _zend.feed.security.escaping:
 
@@ -156,6 +157,8 @@ CSS and URLs before outputing any potentially insecure data to the users.
             'description' => $escaper->escapeHtml($item->getDescription())
         );
     }
+
+The feed data is now safe for output to HTML templates. You can, of course, skip escaping when simply storing the data persistently but remember to escape it on output later!
 
 Of course, these are just basic examples, and cannot cover all possible scenarios that you, as a developer, can,
 and most likely will, encounter. Your responsibility is to learn what libraries and tools are at your disposal,
