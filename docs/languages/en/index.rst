@@ -359,8 +359,6 @@ Zend\\Loader
         * :doc:`modules/zend.loader.class-map-autoloader`
         * :doc:`modules/zend.loader.standard-autoloader`
         * :doc:`modules/zend.loader.classmap-generator`
-        * :doc:`modules/zend.loader.prefix-path-loader`
-        * :doc:`modules/zend.loader.prefix-path-mapper`
 
 .. _zend.log:
 
