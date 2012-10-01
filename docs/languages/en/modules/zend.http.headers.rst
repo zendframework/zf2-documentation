@@ -9,7 +9,7 @@ Overview
 --------
 
 The ``Zend\Http\Headers`` class is a container for HTTP headers. It is typically accessed as part of a
-``Zend\Http\Request`` or ``Zend\Http\Response`` ``header()`` call. The Headers container will lazily load actual
+``Zend\Http\Request`` or ``Zend\Http\Response`` ``getHeaders()`` call. The Headers container will lazily load actual
 Header objects as to reduce the overhead of header specific parsing.
 
 The ``Zend\Http\Header\*`` classes are the domain specific implementations for the various types of Headers that
@@ -80,7 +80,7 @@ Available Methods
 
 .. _zend.http.headers.methods.add-header-line:
 
-**addHeaders**
+**addHeaderLine**
    ``addHeaderLine(string $headerFieldNameOrLine, string $fieldValue)``
 
    Add a raw header line, either in name => value, or as a single string 'name: value'
@@ -96,8 +96,6 @@ Available Methods
    ``addHeader(Zend\Http\Header\HeaderInterface $header)``
 
    Add a Header to this container, for raw values see ``addHeaderLine()`` and ``addHeaders()``.
-
-
 
    Returns ``Zend\Http\Headers``
 
@@ -127,8 +125,6 @@ Available Methods
    ``get(string $name)``
 
    Get all headers of a certain name/type
-
-
 
    Returns false| ``Zend\Http\Header\HeaderInterface``\ | ``ArrayIterator``
 
@@ -225,13 +221,6 @@ Available Methods
    By calling this, it will force parsing and loading of all headers, after this ``count()`` will be accurate
 
    Returns bool
-
-.. _zend.http.headers.examples:
-
-Examples
---------
-
-
 
 .. _zend.http.headers.header-description:
 
@@ -393,4 +382,8 @@ List of Http Header Types
    |WWWAuthenticate   |N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+.. _zend.http.headers.examples:
+
+Examples
+--------
 
