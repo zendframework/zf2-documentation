@@ -49,17 +49,17 @@ completely empty object to start with, by simply instantiating the ``Zend\Http\R
 
    foo=bar&
    EOS);
-
+f
    // OR, the completely equivalent
 
    $request = new Request();
    $request->setMethod(Request::METHOD_POST);
    $request->setUri('/foo');
-   $request->header()->addHeaders(array(
+   $request->getHeaders()->addHeaders(array(
        'HeaderField1' => 'header-field-value',
        'HeaderField2' => 'header-field-value2',
    );
-   $request->post()->set('foo', 'bar');
+   $request->getPost()->set('foo', 'bar');
 
 
 .. _zend.http.request.options:
@@ -104,7 +104,7 @@ Available Methods
 .. _zend.http.request.methods.set-uri:
 
 **setUri**
-   ``setUri(string|\Zend\Stdlib\RequestInterface|\Zend\Stdlib\Message|\Zend\Stdlib\ParametersInterface|\Zend\Stdlib\Parameters|\Zend\Uri\Http $uri)``
+   ``setUri(string|\Zend\Uri\Http $uri)``
 
    Set the URI/URL for this request; this can be a string or an instance of ``Zend\Uri\Http``.
 
@@ -117,16 +117,16 @@ Available Methods
 
    Return the URI for this request object.
 
-   Returns string.
-
-.. _zend.http.request.methods.uri:
-
-**uri**
-   ``uri()``
-
-   Return the URI for this request object as an instance of ``Zend\Uri\Http``.
-
    Returns ``Zend\Uri\Http``.
+
+.. _zend.http.request.methods.get-uri-string
+
+**getUriString**
+   ``getUriString()``
+
+   Return the URI for this request object as a string.
+
+   Returns ``string``.
 
 .. _zend.http.request.methods.set-version:
 
@@ -139,7 +139,7 @@ Available Methods
 
 .. _zend.http.request.methods.get-version:
 
-**setVersion**
+**getVersion**
    ``getVersion()``
 
    Return the HTTP version for this request
@@ -152,18 +152,18 @@ Available Methods
    ``setQuery(Zend\Stdlib\ParametersInterface $query)``
 
    Provide an alternate Parameter Container implementation for query parameters in this object. (This is NOT the
-   primary API for value setting; for that, see ``query()``.)
+   primary API for value setting; for that, see ``getQuery()``.)
 
    Returns Zend\\Http\\Request
 
-.. _zend.http.request.methods.query:
+.. _zend.http.request.methods.get-query:
 
-**setQuery**
-   ``query()``
+**getQuery**
+   ``getQuery($name = null, $default=null)``
 
-   Return the parameter container responsible for query parameters.
+   Return the parameter container responsible for query parameters or a single query parameter
 
-   Returns ``Zend\Stdlib\ParametersInterface``
+   Returns ``string``, ``Zend\Stdlib\ParametersInterface``, or ``null`` depending on value of ``$name`` argument.
 
 .. _zend.http.request.methods.set-post:
 
@@ -175,117 +175,100 @@ Available Methods
 
    Returns ``Zend\Http\Request``
 
-.. _zend.http.request.methods.post:
+.. _zend.http.request.methods.get-post:
 
-**post**
-   ``post()``
+**getPost**
+   ``getPost($name = null, $default=null)``
 
-   Return the parameter container responsible for post parameters.
+   Return the parameter container responsible for post parameters or a single post parameter
 
-   Returns ``Zend\Stdlib\ParametersInterface``
+   Returns ``string``, ``Zend\Stdlib\ParametersInterface``, or ``null`` depending on value of ``$name`` argument.
 
-.. _zend.http.request.methods.cookie:
+.. _zend.http.request.methods.get-cookie:
 
-**cookie**
-   ``cookie()``
+**getCookie**
+   ``getCookie()``
 
-   Return the Cookie header, this is the same as calling *$request->header()->get('Cookie');*.
+   Return the Cookie header, this is the same as calling *$request->getHeaders()->get('Cookie');*.
 
    Returns ``Zend\Http\Header\Cookie``
 
-.. _zend.http.request.methods.set-file:
+.. _zend.http.request.methods.set-files:
 
-**setFile**
-   ``setFile(Zend\Stdlib\ParametersInterface $files)``
+**setFiles**
+   ``setFiles(Zend\Stdlib\ParametersInterface $files)``
 
    Provide an alternate Parameter Container implementation for file parameters in this object. (This is NOT the
-   primary API for value setting; for that, see ``file()``.)
+   primary API for value setting; for that, see ``getFiles()``.)
 
    Returns ``Zend\Http\Request``
 
-.. _zend.http.request.methods.file:
+.. _zend.http.request.methods.get-files:
 
-**file**
-   ``file()``
+**getFiles**
+   ``getFiles($name = null, $default=null)``
 
-   Return the parameter container responsible for file parameters
+   Return the parameter container responsible for file parameters or a single file parameter
 
-   Returns ``Zend\Stdlib\ParametersInterface``
+   Returns ``string``, ``Zend\Stdlib\ParametersInterface``, or ``null`` depending on value of ``$name`` argument.
 
 .. _zend.http.request.methods.set-server:
 
-**setServer**
-   ``setServer(Zend\Stdlib\ParametersInterface $server)``
-
-   Provide an alternate Parameter Container implementation for server parameters in this object. (This is NOT the
-   primary API for value setting; for that, see ``server()``.)
-
-   Returns ``Zend\Http\Request``
-
-.. _zend.http.request.methods.server:
-
-**server**
-   ``server()``
-
-   Return the parameter container responsible for server parameters
-
-   Returns ``Zend\Stdlib\ParametersInterface``
-
-.. _zend.http.request.methods.set-env:
-
-**setEnv**
-   ``setEnv(Zend\Stdlib\ParametersInterface $env)``
-
-   Provide an alternate Parameter Container implementation for env parameters in this object. (This is NOT the
-   primary API for value setting; for that, see ``env()``.)
-
-   Returns ``Zend\Http\Request``
-
-.. _zend.http.request.methods.env:
-
-**env**
-   ``env()``
-
-   Return the parameter container responsible for env parameters
-
-   Returns ``Zend\Stdlib\ParametersInterface``
-
-.. _zend.http.request.methods.set-header:
-
-**setHeader**
-   ``setHeader(Zend\Http\Headers $headers)``
+**setHeaders**
+   ``setHeaders(Zend\Http\Headers $headers)``
 
    Provide an alternate Parameter Container implementation for headers in this object. (This is NOT the primary API
-   for value setting; for that, see ``header()``.)
+   for value setting; for that, see ``getHeaders()``.)
 
    Returns ``Zend\Http\Request``
 
-.. _zend.http.request.methods.header:
+.. _zend.http.request.methods.get-headers:
 
-**header**
-   ``header()``
+**getHeaders**
+   ``getHeaders($name = null, $default=false)``
 
-   Return the header container responsible for headers
+   Return the parameter container responsible for headers parameters or all headers of a certain name/type
 
-   Returns ``Zend\Http\Headers``
+   Returns ``Zend\Http\Headers`` or ``Zend\Http\Header\HeaderInterface`` depending on value of ``$name`` argument.
 
-.. _zend.http.request.methods.set-raw-body:
+.. _zend.stdlib.message.methods.set-metadata:
 
-**setRawBody**
-   ``setRawBody(string $string)``
+**setMetadata**
+   ``setMetadata(string|int|array|Traversable $spec, mixed $value)``
 
-   Set the raw body for the request
+   Set message metadata
+
+   Non-destructive setting of message metadata; always adds to the metadata, never overwrites the entire metadata
+   container.
 
    Returns ``Zend\Http\Request``
 
-.. _zend.http.request.methods.get-raw-body:
+.. _zend.stdlib.message.methods.get-metadata:
 
-**getRawBody**
-   ``getRawBody()``
+**getMetadata**
+   ``getMetadata(null|string|int $key, null|mixed $default)``
 
-   Get the raw body for the request
+   Retrieve all metadata or a single metadatum as specified by key
 
-   Returns string
+   Returns mixed
+
+.. _zend.stdlib.message.methods.set-content:
+
+**setContent**
+   ``setContent(mixed $value)``
+
+   Set request body (content)
+
+   Returns ``Zend\Http\Request``
+
+.. _zend.stdlib.message.methods.get-content:
+
+**getContent**
+   ``getContent()``
+
+   Get request body (content)
+
+   Returns mixed
 
 .. _zend.http.request.methods.is-options:
 
@@ -359,6 +342,33 @@ Available Methods
 
    Returns bool
 
+.. _zend.http.request.methods.is-patch:
+
+**isPatch**
+   ``isPatch()``
+
+   Is this a PATCH method request?
+
+   Returns bool
+
+.. _zend.http.request.methods.is-xml-http-request:
+
+**isXmlHttpRequest**
+   ``isXmlHttpRequest()``
+
+   Is this a Javascript XMLHttpRequest?
+
+   Returns bool
+
+.. _zend.http.request.methods.is-flash-request:
+
+**isFlashRequest**
+   ``isFlashRequest()``
+
+   Is this a Flash request?
+
+   Returns bool
+
 .. _zend.http.request.methods.render-request-line:
 
 **renderRequestLine**
@@ -384,45 +394,6 @@ Available Methods
 
    Returns string
 
-.. _zend.stdlib.message.methods.set-metadata:
-
-**setMetadata**
-   ``setMetadata(string|int|array|Traversable $spec, mixed $value)``
-
-   Set message metadata
-
-   Non-destructive setting of message metadata; always adds to the metadata, never overwrites the entire metadata
-   container.
-
-   Returns ``Zend\Stdlib\Message``
-
-.. _zend.stdlib.message.methods.get-metadata:
-
-**getMetadata**
-   ``getMetadata(null|string|int $key, null|mixed $default)``
-
-   Retrieve all metadata or a single metadatum as specified by key
-
-   Returns mixed
-
-.. _zend.stdlib.message.methods.set-content:
-
-**setContent**
-   ``setContent(mixed $value)``
-
-   Set message content
-
-   Returns ``Zend\Stdlib\Message``
-
-.. _zend.stdlib.message.methods.get-content:
-
-**getContent**
-   ``getContent()``
-
-   Get message content
-
-   Returns mixed
-
 .. _zend.http.request.examples:
 
 Examples
@@ -439,10 +410,10 @@ Examples
    $string = "GET /foo HTTP/1.1\r\n\r\nSome Content";
    $request = Request::fromString($string);
 
-   $request->getMethod();  // returns Request::METHOD_GET
-   $request->getUri();     // returns '/foo'
-   $request->getVersion(); // returns Request::VERSION_11 or '1.1'
-   $request->getRawBody(); // returns 'Some Content'
+   $request->getMethod();     // returns Request::METHOD_GET
+   $request->getUriString();  // returns '/foo'
+   $request->getVersion();    // returns Request::VERSION_11 or '1.1'
+   $request->getContent();    // returns 'Some Content'
 
 .. _zend.http.request.examples.from-array:
 
@@ -478,10 +449,10 @@ Examples
    use Zend\Http\Request;
    $request = new Request();
 
-   // post() and get() both return, by default, a Parameters object, which extends ArrayObject
-   $request->post()->foo = 'value';
-   echo $request->get()->myVar;
-   echo $request->get()->offsetGet('myVar');
+   // getPost() and getQuery() both return, by default, a Parameters object, which extends ArrayObject
+   $request->getPost()->foo = 'value';
+   echo $request->getQuery()->myVar;
+   echo $request->getQuery()->offsetGet('myVar');
 
 .. _zend.http.request.examples.to-string:
 
@@ -494,11 +465,11 @@ Examples
    $request = new Request();
    $request->setMethod(Request::METHOD_POST);
    $request->setUri('/foo');
-   $request->header()->addHeaders(array(
+   $request->getHeaders()->addHeaders(array(
        'HeaderField1' => 'header-field-value',
        'HeaderField2' => 'header-field-value2',
    );
-   $request->post()->set('foo', 'bar');
+   $request->getPost()->set('foo', 'bar');
    echo $request->toString();
 
    /** Will produce:
