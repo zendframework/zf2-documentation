@@ -49,7 +49,7 @@ completely empty object to start with, by simply instantiating the ``Zend\Http\R
 
    foo=bar&
    EOS);
-f
+
    // OR, the completely equivalent
 
    $request = new Request();
