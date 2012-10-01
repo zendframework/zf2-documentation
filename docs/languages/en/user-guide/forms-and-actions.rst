@@ -314,7 +314,7 @@ This time we use ``editAction()`` in the ``AlbumController``:
 
 .. code-block:: php
 
-    // module/Album/src/Album/AlbumController.php:
+    // module/Album/src/Album/Controller/AlbumController.php:
     //...
 
         // Add content to this method:
@@ -468,7 +468,7 @@ Let’s start with the action code in ``AlbumController::deleteAction()``:
 
 .. code-block:: php
 
-    // module/Album/src/Album/AlbumController.php:
+    // module/Album/src/Album/Controller/AlbumController.php:
     //...
         // Add content to the following method:
         public function deleteAction()
