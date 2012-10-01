@@ -247,8 +247,8 @@ these will add a 'Proxy-Authentication' header to the request. If your proxy doe
 can leave these two options out.
 
 ``proxy_auth`` sets the proxy authentication type, if your proxy server requires authentication. Possibly values are
-similar to the ones accepted by the ``Zend\Http\Client::setAuth()`` method.  Both Basic Authentication
-(``Zend\Http\Client::AUTH_BASIC``) and Digest Authentication (``Zend\Http\Client::AUTH_DIGEST``) are supported.
+similar to the ones accepted by the ``Zend\Http\Client::setAuth()`` method.  Currently, only basic authentication 
+(``Zend\Http\Client::AUTH_BASIC``) is supported.
 
 .. _zend.http.client.adapters.proxy.example-1:
 
