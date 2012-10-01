@@ -19,7 +19,7 @@ Extending and adding roles via instantation.
     use Zend\Permissions\Rbac\Rbac;
     use Zend\Permissions\Rbac\Role;
 
-    class MyRole extends AbstractRole()
+    class MyRole extends AbstractRole
     {
         // .. implementation
     }
