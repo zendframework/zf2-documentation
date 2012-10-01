@@ -342,13 +342,13 @@ The Test Adapter
 Sometimes, it is very hard to test code that relies on *HTTP* connections. For example, testing an application that
 pulls an *RSS* feed from a remote server will require a network connection, which is not always available.
 
-For this reason, the ``Zend_Http_Client_Adapter_Test`` adapter is provided. You can write your application to use
-``Zend_Http_Client``, and just for testing purposes, for example in your unit testing suite, you can replace the
+For this reason, the ``Zend\Http\Client\Adapter\Test`` adapter is provided. You can write your application to use
+``Zend\Http\Client``, and just for testing purposes, for example in your unit testing suite, you can replace the
 default adapter with a Test adapter (a mock object), allowing you to run tests without actually performing server
 connections.
 
-The ``Zend_Http_Client_Adapter_Test`` adapter provides an additional method, setResponse() method. This method
-takes one parameter, which represents an *HTTP* response as either text or a ``Zend_Http_Response`` object. Once
+The ``Zend\Http\Client\Adapter\Test`` adapter provides an additional method, ``setResponse()``. This method
+takes one parameter, which represents an *HTTP* response as either text or a ``Zend\Http\Response`` object. Once
 set, your Test adapter will always return this response, without even performing an actual *HTTP* request.
 
 .. _zend.http.client.adapters.test.example-1:
@@ -359,8 +359,8 @@ set, your Test adapter will always return this response, without even performing
    :linenos:
 
    // Instantiate a new adapter and client
-   $adapter = new Zend_Http_Client_Adapter_Test();
-   $client = new Zend_Http_Client('http://www.example.com', array(
+   $adapter = new Zend\Http\Client\Adapter\Test();
+   $client = new Zend\Http\Client('http://www.example.com', array(
        'adapter' => $adapter
    ));
 
@@ -379,7 +379,7 @@ set, your Test adapter will always return this response, without even performing
        // and so on...
        '</rss>');
 
-   $response = $client->request('GET');
+   $response = $client->send();
    // .. continue parsing $response..
 
 The above example shows how you can preset your *HTTP* client to return the response you need. Then, you can
@@ -398,8 +398,8 @@ your program might need before returning to the caller.
    :linenos:
 
    // Instantiate a new adapter and client
-   $adapter = new Zend_Http_Client_Adapter_Test();
-   $client = new Zend_Http_Client('http://www.example.com', array(
+   $adapter = new Zend\Http\Client\Adapter\Test();
+   $client = new Zend\Http\Client('http://www.example.com', array(
        'adapter' => $adapter
    ));
 
@@ -427,8 +427,8 @@ your program might need before returning to the caller.
    // inject the http client object ($client) into your object
    // being tested and then test your object's behavior below
 
-The setResponse() method clears any responses in the ``Zend_Http_Client_Adapter_Test``'s buffer and sets the first
-response that will be returned. The addResponse() method will add successive responses.
+The ``setResponse()`` method clears any responses in the ``Zend\Http\Client\Adapter\Test``'s buffer and sets the first
+response that will be returned. The ``addResponse()`` method will add successive responses.
 
 The responses will be replayed in the order that they were added. If more requests are made than the number of
 responses stored, the responses will cycle again in order.
@@ -436,14 +436,14 @@ responses stored, the responses will cycle again in order.
 In the example above, the adapter is configured to test your object's behavior when it encounters a 302 redirect.
 Depending on your application, following a redirect may or may not be desired behavior. In our example, we expect
 that the redirect will be followed and we configure the test adapter to help us test this. The initial 302 response
-is set up with the setResponse() method and the 200 response to be returned next is added with the addResponse()
+is set up with the ``setResponse()`` method and the 200 response to be returned next is added with the ``addResponse()``
 method. After configuring the test adapter, inject the *HTTP* client containing the adapter into your object under
 test and test its behavior.
 
 If you need the adapter to fail on demand you can use ``setNextRequestWillFail($flag)``. The method will cause the
-next call to ``connect()`` to throw an ``Zend_Http_Client_Adapter_Exception`` exception. This can be useful when
-your application caches content from an external site (in case the site goes down) and you want to test this
-feature.
+next call to ``connect()`` to throw an ``Zend\Http\Client\Adapter\Exception\RuntimeException`` exception. This can
+be useful when our application caches content from an external site (in case the site goes down) and you want to 
+test this feature.
 
 .. _zend.http.client.adapters.test.example-3:
 
@@ -453,8 +453,8 @@ feature.
    :linenos:
 
    // Instantiate a new adapter and client
-   $adapter = new Zend_Http_Client_Adapter_Test();
-   $client = new Zend_Http_Client('http://www.example.com', array(
+   $adapter = new Zend\Http\Client\Adapter\Test();
+   $client = new Zend\Http\Client('http://www.example.com', array(
        'adapter' => $adapter
    ));
 
@@ -462,9 +462,9 @@ feature.
    $adapter->setNextRequestWillFail(true);
 
    try {
-       // This call will result in a Zend_Http_Client_Adapter_Exception
+       // This call will result in a Zend\Http\Client\Adapter\Exception\RuntimeException
        $client->request();
-   } catch (Zend_Http_Client_Adapter_Exception $e) {
+   } catch (Zend\Http\Client\Adapter\Exception\RuntimeException $e) {
        // ...
    }
 
