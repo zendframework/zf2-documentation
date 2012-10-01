@@ -476,12 +476,12 @@ test this feature.
 Creating your own connection adapters
 -------------------------------------
 
-You can create your own connection adapters and use them. You could, for example, create a connection adapter that
-uses persistent sockets, or a connection adapter with caching abilities, and use them as needed in your
-application.
+``Zend\Http\Client`` has been designed so that you can create and use your own connection adapters. 
+You could, for example, create a connection adapter that uses persistent sockets, or a connection 
+adapter with caching abilities, and use them as needed in your application.
 
 In order to do so, you must create your own adapter class that implements the
-``Zend_Http_Client_Adapter_Interface`` interface. The following example shows the skeleton of a user-implemented
+``Zend\Http\Client\Adapter\AdapterInterface`` interface. The following example shows the skeleton of a user-implemented
 adapter class. All the public functions defined in this example must be defined in your adapter as well:
 
 .. _zend.http.client.adapters.extending.example-1:
@@ -491,18 +491,18 @@ adapter class. All the public functions defined in this example must be defined 
 .. code-block:: php
    :linenos:
 
-   class MyApp_Http_Client_Adapter_BananaProtocol
-       implements Zend_Http_Client_Adapter_Interface
+   class MyApp\Http\Client\Adapter\BananaProtocol
+       implements Zend\Http\Client\Adapter\AdapterInterface
    {
        /**
-        * Set the configuration array for the adapter
+        * Set Adapter Options
         *
         * @param array $config
         */
-       public function setConfig($config = array())
+       public function setOptions($config = array())
        {
            // This rarely changes - you should usually copy the
-           // implementation in Zend_Http_Client_Adapter_Socket.
+           // implementation in Zend\Http\Client\Adapter\Socket.
        }
 
        /**
@@ -559,8 +559,8 @@ adapter class. All the public functions defined in this example must be defined 
    }
 
    // Then, you could use this adapter:
-   $client = new Zend_Http_Client(array(
-       'adapter' => 'MyApp_Http_Client_Adapter_BananaProtocol'
+   $client = new Zend\Http\Client(array(
+       'adapter' => 'MyApp\Http\Client\Adapter\BananaProtocol'
    ));
 
 
