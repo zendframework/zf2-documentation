@@ -277,7 +277,7 @@ optionally, according to a configuration parameter.
 
 .. note::
 
-   Since the proxy adapter inherits from ``Zend\Http\Client\_Adapter\Socket``, you can use the stream context access
+   Since the proxy adapter inherits from ``Zend\Http\Client\Adapter\Socket``, you can use the stream context access
    method (see :ref:`this section <zend.http.client.adapters.socket.streamcontext>`) to set stream context options
    on Proxy connections as demonstrated above.
 
@@ -299,10 +299,10 @@ mechanisms and shines in applications that move large files around between serve
    :linenos:
 
    $config = array(
-       'adapter'   => 'Zend_Http_Client_Adapter_Curl',
+       'adapter'   => 'Zend\Http\Client\Adapter\Curl',
        'curloptions' => array(CURLOPT_FOLLOWLOCATION => true),
    );
-   $client = new Zend_Http_Client($uri, $config);
+   $client = new Zend\Http\Client($uri, $config);
 
 By default the cURL adapter is configured to behave exactly like the Socket Adapter and it also accepts the same
 configuration parameters as the Socket and Proxy adapters. You can also change the cURL options by either
@@ -322,16 +322,17 @@ You can use cURL to transfer very large files over *HTTP* by filehandle.
    $putFileSize   = filesize("filepath");
    $putFileHandle = fopen("filepath", "r");
 
-   $adapter = new Zend_Http_Client_Adapter_Curl();
-   $client = new Zend_Http_Client();
+   $adapter = new Zend\Http\Client\Adapter\Curl();
+   $client = new Zend\Http\Client();
    $client->setAdapter($adapter);
-   $adapter->setConfig(array(
+   $client->setMethod('PUT');
+   $adapter->setOptions(array(
        'curloptions' => array(
            CURLOPT_INFILE => $putFileHandle,
            CURLOPT_INFILESIZE => $putFileSize
        )
    ));
-   $client->request("PUT");
+   $client->send();
 
 .. _zend.http.client.adapters.test:
 
