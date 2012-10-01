@@ -233,7 +233,7 @@ Using the Proxy adapter requires several additional configuration parameters to 
          +----------+------------------------------+-------------+--------------------------------------+
          |proxy_pass|Proxy password, if required   |string       |'secret' or '' for none (default)     |
          +----------+------------------------------+-------------+--------------------------------------+
-         |proxy_auth|Proxy HTTP authentication type|string       |Zend_Http_Client::AUTH_BASIC (default)|
+         |proxy_auth|Proxy HTTP authentication type|string       |Zend\Http\Client::AUTH_BASIC (default)|
          +----------+------------------------------+-------------+--------------------------------------+
 
 
