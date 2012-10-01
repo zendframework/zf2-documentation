@@ -79,7 +79,7 @@ Available Methods
 **Request::fromString**
    ``Request::fromString(string $string)``
 
-   A factory that produces a Request object from a well-formed Http Request string
+   A factory that produces a Request object from a well-formed HTTP Request string
 
    Returns ``Zend\Http\Request``
 
@@ -170,8 +170,8 @@ Available Methods
 **setPost**
    ``setPost(Zend\Stdlib\ParametersInterface $post)``
 
-   Provide an alternate Parameter Container implementation for post parameters in this object. (This is NOT the
-   primary API for value setting; for that, see ``post()``.)
+   Provide an alternate Parameter Container implementation for POST parameters in this object. (This is NOT the
+   primary API for value setting; for that, see ``getPost()``.)
 
    Returns ``Zend\Http\Request``
 
@@ -180,7 +180,7 @@ Available Methods
 **getPost**
    ``getPost($name = null, $default=null)``
 
-   Return the parameter container responsible for post parameters or a single post parameter
+   Return the parameter container responsible for POST parameters or a single POST parameter
 
    Returns ``string``, ``Zend\Stdlib\ParametersInterface``, or ``null`` depending on value of ``$name`` argument.
 
@@ -227,7 +227,7 @@ Available Methods
 **getHeaders**
    ``getHeaders($name = null, $default=false)``
 
-   Return the parameter container responsible for headers parameters or all headers of a certain name/type
+   Return the container responsible for headers or all headers of a certain name/type
 
    Returns ``Zend\Http\Headers`` or ``Zend\Http\Header\HeaderInterface`` depending on value of ``$name`` argument.
 
