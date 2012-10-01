@@ -209,9 +209,9 @@ You can access the stream context using the following methods of ``Zend\Http\Cli
 The Proxy Adapter
 -----------------
 
-The ``Zend_Http_Client_Adapter_Proxy`` adapter is similar to the default Socket adapter - only the connection is
+The ``Zend\Http\Client\Adapter\Proxy`` adapter is similar to the default Socket adapter - only the connection is
 made through an *HTTP* proxy server instead of a direct connection to the target server. This allows usage of
-``Zend_Http_Client`` behind proxy servers - which is sometimes needed for security or performance reasons.
+``Zend\Http\Client`` behind proxy servers - which is sometimes needed for security or performance reasons.
 
 Using the Proxy adapter requires several additional configuration parameters to be set, in addition to the default
 'adapter' option:
@@ -238,28 +238,28 @@ Using the Proxy adapter requires several additional configuration parameters to 
 
 
 
-proxy_host should always be set - if it is not set, the client will fall back to a direct connection using
-``Zend_Http_Client_Adapter_Socket``. proxy_port defaults to '8080' - if your proxy listens on a different port you
+``proxy_host`` should always be set - if it is not set, the client will fall back to a direct connection using
+``Zend\Http\Client\Adapter\Socket``. ``proxy_port`` defaults to '8080' - if your proxy listens on a different port you
 must set this one as well.
 
-proxy_user and proxy_pass are only required if your proxy server requires you to authenticate. Providing these will
-add a 'Proxy-Authentication' header to the request. If your proxy does not require authentication, you can leave
-these two options out.
+``proxy_user`` and ``proxy_pass`` are only required if your proxy server requires you to authenticate. Providing 
+these will add a 'Proxy-Authentication' header to the request. If your proxy does not require authentication, you 
+can leave these two options out.
 
-proxy_auth sets the proxy authentication type, if your proxy server requires authentication. Possibly values are
-similar to the ones accepted by the Zend_Http_Client::setAuth() method. Currently, only basic authentication
-(Zend_Http_Client::AUTH_BASIC) is supported.
+``proxy_auth`` sets the proxy authentication type, if your proxy server requires authentication. Possibly values are
+similar to the ones accepted by the ``Zend\Http\Client::setAuth()`` method.  Both Basic Authentication
+(``Zend\Http\Client::AUTH_BASIC``) and Digest Authentication (``Zend\Http\Client::AUTH_DIGEST``) are supported.
 
 .. _zend.http.client.adapters.proxy.example-1:
 
-.. rubric:: Using Zend_Http_Client behind a proxy server
+.. rubric:: Using Zend\\Http\\Client behind a proxy server
 
 .. code-block:: php
    :linenos:
 
    // Set the configuration parameters
    $config = array(
-       'adapter'    => 'Zend_Http_Client_Adapter_Proxy',
+       'adapter'    => 'Zend\Http\Client\Adapter\Proxy',
        'proxy_host' => 'proxy.int.zend.com',
        'proxy_port' => 8000,
        'proxy_user' => 'shahar.e',
@@ -267,17 +267,17 @@ similar to the ones accepted by the Zend_Http_Client::setAuth() method. Currentl
    );
 
    // Instantiate a client object
-   $client = new Zend_Http_Client('http://www.example.com', $config);
+   $client = new Zend\Http\Client('http://www.example.com', $config);
 
    // Continue working...
 
-As mentioned, if proxy_host is not set or is set to a blank string, the connection will fall back to a regular
+As mentioned, if ``proxy_host`` is not set or is set to a blank string, the connection will fall back to a regular
 direct connection. This allows you to easily write your application in a way that allows a proxy to be used
 optionally, according to a configuration parameter.
 
 .. note::
 
-   Since the proxy adapter inherits from ``Zend_Http_Client_Adapter_Socket``, you can use the stream context access
+   Since the proxy adapter inherits from ``Zend\Http\Client\_Adapter\Socket``, you can use the stream context access
    method (see :ref:`this section <zend.http.client.adapters.socket.streamcontext>`) to set stream context options
    on Proxy connections as demonstrated above.
 
