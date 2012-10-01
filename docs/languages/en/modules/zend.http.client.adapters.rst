@@ -1,6 +1,6 @@
 .. _zend.http.client.adapters:
 
-Zend_Http_Client - Connection Adapters
+Zend\\Http\\Client - Connection Adapters
 ======================================
 
 .. _zend.http.client.adapters.overview:
@@ -8,29 +8,29 @@ Zend_Http_Client - Connection Adapters
 Overview
 --------
 
-``Zend_Http_Client`` is based on a connection adapter design. The connection adapter is the object in charge of
+``Zend\Http\Client`` is based on a connection adapter design. The connection adapter is the object in charge of
 performing the actual connection to the server, as well as writing requests and reading responses. This connection
 adapter can be replaced, and you can create and extend the default connection adapters to suite your special needs,
 without the need to extend or replace the entire *HTTP* client class, and with the same interface.
 
-Currently, the ``Zend_Http_Client`` class provides four built-in connection adapters:
+Currently, the ``Zend\Http\Client`` class provides four built-in connection adapters:
 
 
 
-   - ``Zend_Http_Client_Adapter_Socket`` (default)
+   - ``Zend\Http\Client\Adapter\Socket`` (default)
 
-   - ``Zend_Http_Client_Adapter_Proxy``
+   - ``Zend\Http\Client\Adapter\Proxy``
 
-   - ``Zend_Http_Client_Adapter_Curl``
+   - ``Zend\Http\Client\Adapter\Curl``
 
-   - ``Zend_Http_Client_Adapter_Test``
+   - ``Zend\Http\Client\Adapter\Test``
 
 
 
-The ``Zend_Http_Client`` object's adapter connection adapter is set using the 'adapter' configuration option. When
+The ``Zend\Http\Client`` object's adapter connection adapter is set using the 'adapter' configuration option. When
 instantiating the client object, you can set the 'adapter' configuration option to a string containing the
-adapter's name (eg. 'Zend_Http_Client_Adapter_Socket') or to a variable holding an adapter object (eg. ``new
-Zend_Http_Client_Adapter_Test``). You can also set the adapter later, using the ``Zend_Http_Client->setConfig()``
+adapter's name (eg. 'Zend\\Http\\Client\\Adapter\\Socket') or to a variable holding an adapter object (eg. ``new
+Zend\Http\Client\Adapter\Socket``). You can also set the adapter later, using the ``Zend\Http\Client->setAdapter()``
 method.
 
 .. _zend.http.client.adapters.socket:
@@ -38,32 +38,38 @@ method.
 The Socket Adapter
 ------------------
 
-The default connection adapter is the ``Zend_Http_Client_Adapter_Socket`` adapter - this adapter will be used
+The default connection adapter is the ``Zend\Http\Client\Adapter\Socket`` adapter - this adapter will be used
 unless you explicitly set the connection adapter. The Socket adapter is based on *PHP*'s built-in fsockopen()
 function, and does not require any special extensions or compilation flags.
 
 The Socket adapter allows several extra configuration options that can be set using
-``Zend_Http_Client->setConfig()`` or passed to the client constructor.
+``Zend\Http\Client->setOptions()`` or passed to the client constructor.
 
 
 
       .. _zend.http.client.adapter.socket.configuration.table:
 
-      .. table:: Zend_Http_Client_Adapter_Socket configuration parameters
+      .. table:: Zend\\Http\\Client\\Adapter\\Socket configuration parameters
 
-         +-------------+------------------------------------------------------------------------------------+-------------+-------------+
-         |Parameter    |Description                                                                         |Expected Type|Default Value|
-         +=============+====================================================================================+=============+=============+
-         |persistent   |Whether to use persistent TCP connections                                           |boolean      |FALSE        |
-         +-------------+------------------------------------------------------------------------------------+-------------+-------------+
-         |ssltransport |SSL transport layer (eg. 'sslv2', 'tls')                                            |string       |ssl          |
-         +-------------+------------------------------------------------------------------------------------+-------------+-------------+
-         |sslcert      |Path to a PEM encoded SSL certificate                                               |string       |NULL         |
-         +-------------+------------------------------------------------------------------------------------+-------------+-------------+
-         |sslpassphrase|Passphrase for the SSL certificate file                                             |string       |NULL         |
-         +-------------+------------------------------------------------------------------------------------+-------------+-------------+
-         |sslusecontext|Enables proxied connections to use SSL even if the proxy connection itself does not.|boolean      |FALSE        |
-         +-------------+------------------------------------------------------------------------------------+-------------+-------------+
+         +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
+         |Parameter          |Description                                                                         |Expected Type|Default Value|
+         +===================+====================================================================================+=============+=============+
+         |persistent         |Whether to use persistent TCP connections                                           |boolean      |FALSE        |
+         +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
+         |ssltransport       |SSL transport layer (eg. 'sslv2', 'tls')                                            |string       |ssl          |
+         +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
+         |sslcert            |Path to a PEM encoded SSL certificate                                               |string       |NULL         |
+         +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
+         |sslpassphrase      |Passphrase for the SSL certificate file                                             |string       |NULL         |
+         +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
+         |sslverifypeer      |Whether to verify the SSL peer                                                      |string       |NULL         |
+         +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
+         |sslcapath          |Path to SSL certificate directory                                                   |string       |NULL         |
+         +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
+         |sslallowselfsigned |Whether to allow self-signed certificates                                           |string       |NULL         |
+         +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
+         |sslusecontext      |Enables proxied connections to use SSL even if the proxy connection itself does not.|boolean      |FALSE        |
+         +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
 
 
 
@@ -106,7 +112,7 @@ The Socket adapter allows several extra configuration options that can be set us
 
    // Set the configuration parameters
    $config = array(
-       'adapter'      => 'Zend_Http_Client_Adapter_Socket',
+       'adapter'      => 'Zend\Http\Client\Adapter\Socket',
        'ssltransport' => 'tls'
    );
 
@@ -114,7 +120,7 @@ The Socket adapter allows several extra configuration options that can be set us
    $client = new Zend_Http_Client('https://www.example.com', $config);
 
    // The following request will be sent over a TLS secure connection.
-   $response = $client->request();
+   $response = $client->send();
 
 The result of the example above will be similar to opening a *TCP* connection using the following *PHP* command:
 
@@ -125,11 +131,11 @@ The result of the example above will be similar to opening a *TCP* connection us
 Customizing and accessing the Socket adapter stream context
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Starting from Zend Framework 1.9, ``Zend_Http_Client_Adapter_Socket`` provides direct access to the underlying
+``Zend\Http\Client\Adapter\Socket`` provides direct access to the underlying
 `stream context`_ used to connect to the remote server. This allows the user to pass specific options and
 parameters to the *TCP* stream, and to the *SSL* wrapper in case of *HTTPS* connections.
 
-You can access the stream context using the following methods of ``Zend_Http_Client_Adapter_Socket``:
+You can access the stream context using the following methods of ``Zend\Http\Client\Adapter\Socket``:
 
 
 
@@ -169,8 +175,8 @@ You can access the stream context using the following methods of ``Zend_Http_Cli
    );
 
    // Create an adapter object and attach it to the HTTP client
-   $adapter = new Zend_Http_Client_Adapter_Socket();
-   $client = new Zend_Http_Client();
+   $adapter = new Zend\Http\Client\Adapter\Socket();
+   $client = new Zend\Http\Client();
    $client->setAdapter($adapter);
 
    // Method 1: pass the options array to setStreamContext()
@@ -185,7 +191,7 @@ You can access the stream context using the following methods of ``Zend_Http_Cli
    stream_context_set_option($context, $options);
 
    // Now, perform the request
-   $response = $client->request();
+   $response = $client->send();
 
    // If everything went well, you can now access the context again
    $opts = stream_context_get_options($adapter->getStreamContext());
