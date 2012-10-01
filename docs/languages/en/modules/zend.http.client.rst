@@ -88,7 +88,7 @@ The constructor and setOptions() method accept an associative array of configura
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
          |outputstream   |Destination for streaming of received data (options: string (filename), true for temp file, false/null to disable streaming)                                                        |boolean        |FALSE                                |
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
-         |rfc3986strict  |Whether to strictly adhere to RFC 3986 (in practice, this means replacing all '+' with '%20'                                                                                        |boolean        |FALSE                                |
+         |rfc3986strict  |Whether to strictly adhere to RFC 3986 (in practice, this means replacing '+' with '%20')                                                                                       |boolean        |FALSE                                |
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
 
 .. _zend.http.client.methods:
