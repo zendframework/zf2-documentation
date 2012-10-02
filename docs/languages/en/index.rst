@@ -64,6 +64,16 @@
    modules/zend.dom.intro
    modules/zend.dom.query
    modules/zend.event-manager.event-manager
+   modules/zend.feed.introduction
+   modules/zend.feed.importing
+   modules/zend.feed.find-feeds
+   modules/zend.feed.consuming-rss
+   modules/zend.feed.consuming-atom
+   modules/zend.feed.consuming-atom-single
+   modules/zend.feed.security
+   modules/zend.feed.reader
+   modules/zend.feed.writer
+   modules/zend.feed.pubsubhubbub
    modules/zend.form.intro
    modules/zend.form.quick-start
    modules/zend.form.collections
@@ -291,6 +301,22 @@ Zend\\EventManager
 ^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zend.event-manager.event-manager`
+
+.. _zend.feed:
+
+Zend\\Feed
+^^^^^^^^^^
+
+        * :doc:`modules/zend.feed.introduction`
+        * :doc:`modules/zend.feed.importing`
+        * :doc:`modules/zend.feed.find-feeds`
+        * :doc:`modules/zend.feed.consuming-rss`
+        * :doc:`modules/zend.feed.consuming-atom`
+        * :doc:`modules/zend.feed.consuming-atom-single`
+        * :doc:`modules/zend.feed.security`
+        * :doc:`modules/zend.feed.reader`
+        * :doc:`modules/zend.feed.writer`
+        * :doc:`modules/zend.feed.pubsubhubbub`
 
 .. _zend.form:
 
