@@ -116,7 +116,7 @@ Quick Start
    // Setup SMTP transport using LOGIN authentication
    $transport = new SmtpTransport();
    $options   = new SmtpOptions(array(
-       'name'              => 'localhost.localdomain',
+       'name'              => 'example.com',
        'host'              => '127.0.0.1',
        'port'              => 587, // Notice port change for TLS is 587
        'connection_class'  => 'plain',
