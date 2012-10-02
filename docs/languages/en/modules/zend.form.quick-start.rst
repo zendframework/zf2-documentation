@@ -116,6 +116,7 @@ store your forms as pure configuration; you can simply pass the configuration to
    :linenos:
 
    use Zend\Form\Factory;
+
    $factory = new Factory();
    $form    = $factory->createForm(array(
        'hydrator' => 'Zend\Stdlib\Hydrator\ArraySerializable',
@@ -169,9 +170,7 @@ store your forms as pure configuration; you can simply pass the configuration to
                    'type' => 'Zend\Form\Element\Captcha',
                    'name' => 'captcha',
                    'options' => array(
-                       'label' => 'Please verify you are human',
-                   ),
-                   'attributes' => array(
+                       'label' => 'Please verify you are human.',
                        'captcha' => array(
                            'class' => 'Dumb',
                        ),
@@ -187,11 +186,9 @@ store your forms as pure configuration; you can simply pass the configuration to
            array(
                'spec' => array(
                    'name' => 'send',
-                   'options' => array(
-                       'label' => 'Send',
-                   ),
                    'attributes' => array(
                        'type'  => 'submit',
+                       'value' => 'Submit',
                    ),
                ),
            ),
@@ -377,27 +374,23 @@ defining a form for re-use in your application.
                'type' => 'Zend\Form\Element\Captcha',
                'name' => 'captcha',
                'options' => array(
-                   'label' => 'Please verify you are human',
-               ),
-               'attributes' => array(
+                   'label' => 'Please verify you are human.',
                    'captcha' => $this->captcha,
                ),
-           )),
+           ));
            $this->add(new Element\Csrf('security'));
            $this->add(array(
                'name' => 'send',
-               'options' => array(
-                   'label' => 'Send',
-               ),
                'attributes' => array(
                    'type'  => 'submit',
+                   'value' => 'Submit',
                ),
            ));
 
            // We could also define the input filter here, or
            // lazy-create it in the getInputFilter() method.
        }
-   ));
+   }
 
 You'll note that this example introduces a method, ``prepareElements()``. This is done to allow altering and/or
 configuring either the form or input filter factory instances, which could then have bearing on how elements,
