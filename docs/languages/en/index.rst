@@ -35,6 +35,7 @@
    modules/zend.cache.storage.adapter
    modules/zend.cache.storage.capabilities
    modules/zend.cache.storage.plugin
+   modules/zend.cache.backend
    modules/zend.cache.pattern
    modules/zend.captcha.intro
    modules/zend.captcha.operation
