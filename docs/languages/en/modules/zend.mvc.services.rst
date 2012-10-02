@@ -311,7 +311,7 @@ The following options are available when using the default services configured b
 
        // The following are used to configure view helper manager
        // Should be compatible with Zend\ServiceManager\Config.
-       'controller_plugins' => array(
+       'view_helpers' => array(
        ),
 
        // The following is used to configure a Zend\Di\Di instance.
