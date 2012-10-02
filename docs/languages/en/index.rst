@@ -131,6 +131,10 @@
    modules/zend.mvc.controllers
    modules/zend.mvc.plugins
    modules/zend.mvc.examples
+   modules/zend.navigation.intro
+   modules/zend.navigation.quick-start
+   modules/zend.navigation.pages
+   modules/zend.navigation.containers
    modules/zend.paginator.introduction
    modules/zend.paginator.usage
    modules/zend.paginator.configuration
@@ -440,6 +444,16 @@ Zend\\Mvc
         * :doc:`modules/zend.mvc.controllers`
         * :doc:`modules/zend.mvc.plugins`
         * :doc:`modules/zend.mvc.examples`
+
+.. _zend.navigation:
+
+Zend\\Navigation
+^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.navigation.intro`
+        * :doc:`modules/zend.navigation.quick-start`
+        * :doc:`modules/zend.navigation.pages`
+        * :doc:`modules/zend.navigation.containers`
 
 .. _zend.paginator:
 
