@@ -152,6 +152,10 @@
    modules/zend.server.reflection
    modules/zend.service-manager.intro
    modules/zend.service-manager.quick-start
+   modules/zend.soap.server
+   modules/zend.soap.client
+   modules/zend.soap.wsdl
+   modules/zend.soap.auto-discovery
    modules/zend.stdlib.hydrator
    modules/zend.tag.introduction
    modules/zend.tag.cloud
@@ -516,6 +520,16 @@ Zend\\ServiceManager
         * :doc:`modules/zend.service-manager.intro`
         * :doc:`modules/zend.service-manager.quick-start`
 
+.. _zend.soap:
+
+Zend\\Soap
+^^^^^^^^^^
+
+        * :doc:`modules/zend.soap.server`
+        * :doc:`modules/zend.soap.client`
+        * :doc:`modules/zend.soap.wsdl`
+        * :doc:`modules/zend.soap.auto-discovery`
+        
 .. _zend.stdlib:
 
 Zend\\Stdlib
