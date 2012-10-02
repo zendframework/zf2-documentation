@@ -9,7 +9,7 @@ Overview
 --------
 
 The ``Zend\Http\Headers`` class is a container for HTTP headers. It is typically accessed as part of a
-``Zend\Http\Request`` or ``Zend\Http\Response`` ``header()`` call. The Headers container will lazily load actual
+``Zend\Http\Request`` or ``Zend\Http\Response`` ``getHeaders()`` call. The Headers container will lazily load actual
 Header objects as to reduce the overhead of header specific parsing.
 
 The ``Zend\Http\Header\*`` classes are the domain specific implementations for the various types of Headers that
@@ -80,7 +80,7 @@ Available Methods
 
 .. _zend.http.headers.methods.add-header-line:
 
-**addHeaders**
+**addHeaderLine**
    ``addHeaderLine(string $headerFieldNameOrLine, string $fieldValue)``
 
    Add a raw header line, either in name => value, or as a single string 'name: value'
@@ -96,8 +96,6 @@ Available Methods
    ``addHeader(Zend\Http\Header\HeaderInterface $header)``
 
    Add a Header to this container, for raw values see ``addHeaderLine()`` and ``addHeaders()``.
-
-
 
    Returns ``Zend\Http\Headers``
 
@@ -127,8 +125,6 @@ Available Methods
    ``get(string $name)``
 
    Get all headers of a certain name/type
-
-
 
    Returns false| ``Zend\Http\Header\HeaderInterface``\ | ``ArrayIterator``
 
@@ -226,13 +222,6 @@ Available Methods
 
    Returns bool
 
-.. _zend.http.headers.examples:
-
-Examples
---------
-
-
-
 .. _zend.http.headers.header-description:
 
 Zend\\Http\\Header\\* Base Methods
@@ -278,7 +267,7 @@ Zend\\Http\\Header\\* Base Methods
 
 .. _zend.http.header-types.list:
 
-List of Http Header Types
+List of HTTP Header Types
 -------------------------
 
 .. table:: Zend\\Http\\Header\\* Classes
@@ -324,7 +313,8 @@ List of Http Header Types
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |ContentType       |N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |Cookie            |Extends \\ArrayObjectsetEncodeValue() / getEncodeValue() - Whether or not to encode values                                                                                                                                                                                                                                                                                                                                                                    |
+   |Cookie            |Extends \\ArrayObject                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+   |                  |setEncodeValue() / getEncodeValue() - Whether or not to encode values                                                                                                                                                                                                                                                                                                                                                                                         |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Date              |N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -372,7 +362,18 @@ List of Http Header Types
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Server            |N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |SetCookie         |getName() / setName() - The cookies namegetValue() / setValue() - The cookie valuegetDomain() / setDomain() - The domain the cookie applies togetExpires() / setExpires() - The time frame the cookie is valid for, null is a session cookiegetPath() / setPath() - The uri path the cookie is bound toisSecure() / setSecure() - Whether the cookies contains the Secure flagisHttponly() / setHttponly() - Whether the cookies can be accessed via HTTP only|
+   |SetCookie         |getName() / setName() - The cookie name                                                                                                                                                                                                                                                                                                                                                                                                                       |
+   |                  |getValue() / setValue() - The cookie value                                                                                                                                                                                                                                                                                                                                                                                                                    |
+   |                  |getExpires() / setExpires() - The time frame the cookie is valid for, null is a session cookie                                                                                                                                                                                                                                                                                                                                                                |
+   |                  |getPath() / setPath() - The uri path the cookie is bound to                                                                                                                                                                                                                                                                                                                                                                                                   |
+   |                  |getDomain() / setDomain() - The domain the cookie applies to                                                                                                                                                                                                                                                                                                                                                                                                  |
+   |                  |getMaxAge() / setMaxAge() - The maximum age of the cookie                                                                                                                                                                                                                                                                                                                                                                                                     |
+   |                  |getVersion() / setVersion() - The cookie version                                                                                                                                                                                                                                                                                                                                                                                                              |
+   |                  |isSecure() / setSecure() - Whether the cookies contains the Secure flag                                                                                                                                                                                                                                                                                                                                                                                       |
+   |                  |isHttponly() / setHttponly() - Whether the cookies can be accessed via HTTP only                                                                                                                                                                                                                                                                                                                                                                              |
+   |                  |isSessionCookie() - Whether the cookie is a session cookie                                                                                                                                                                                                                                                                                                                                                                                                    |
+   |                  |isExpired() - Whether the cookie is expired                                                                                                                                                                                                                                                                                                                                                                                                                   |
+   |                  |isValidForRequest() - Whether the cookie is valid for a given request domain, path and isSecure                                                                                                                                                                                                                                                                                                                                                               |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |TE                |N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -393,4 +394,8 @@ List of Http Header Types
    |WWWAuthenticate   |N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+.. _zend.http.headers.examples:
+
+Examples
+--------
 
