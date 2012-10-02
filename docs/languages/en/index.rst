@@ -121,6 +121,9 @@
    modules/zend.mail.smtp.options
    modules/zend.mail.file.options
    modules/zend.math.introduction
+   modules/zend.mime
+   modules/zend.mime.message
+   modules/zend.mime.part
    modules/zend.module-manager.intro
    modules/zend.module-manager.module-manager
    modules/zend.module-manager.module-class
@@ -435,6 +438,13 @@ Zend\\Math
 ^^^^^^^^^^
 
         * :doc:`modules/zend.math.introduction`
+
+Zend\\Mime
+^^^^^^^^^^
+
+        * :doc:`modules/zend.mime`
+        * :doc:`modules/zend.mime.message`
+        * :doc:`modules/zend.mime.part`
 
 .. _zend.module-manager:
 
