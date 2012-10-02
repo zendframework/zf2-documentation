@@ -1,6 +1,6 @@
 .. _zend.http.client.advanced:
 
-Zend_Http_Client - Advanced Usage
+Zend\\Http\\Client - Advanced Usage
 =================================
 
 .. _zend.http.client.redirections:
@@ -8,98 +8,123 @@ Zend_Http_Client - Advanced Usage
 HTTP Redirections
 -----------------
 
-By default, ``Zend_Http_Client`` automatically handles *HTTP* redirections, and will follow up to 5 redirections.
-This can be changed by setting the 'maxredirects' configuration parameter.
+``Zend\Http\Client`` automatically handles *HTTP* redirections, and by default will follow up to 5 redirections.
+This can be changed by setting the ``maxredirects`` configuration parameter.
 
 According to the *HTTP*/1.1 RFC, *HTTP* 301 and 302 responses should be treated by the client by resending the same
 request to the specified location - using the same request method. However, most clients to not implement this and
-always use a ``GET`` request when redirecting. By default, ``Zend_Http_Client`` does the same - when redirecting on
+always use a ``GET`` request when redirecting. By default, ``Zend\Http\Client`` does the same - when redirecting on
 a 301 or 302 response, all ``GET`` and POST parameters are reset, and a ``GET`` request is sent to the new
-location. This behavior can be changed by setting the 'strictredirects' configuration parameter to boolean
+location. This behavior can be changed by setting the ``strictredirects`` configuration parameter to boolean
 ``TRUE``:
 
+.. _zend.http.client.redirections.example-1:
 
+.. rubric:: Forcing RFC 2616 Strict Redirections on 301 and 302 Responses
 
-      .. _zend.http.client.redirections.example-1:
+.. code-block:: php
+   :linenos:
 
-      .. rubric:: Forcing RFC 2616 Strict Redirections on 301 and 302 Responses
+   // Strict Redirections
+   $client->setOptions(array('strictredirects' => true));
 
-      .. code-block:: php
-         :linenos:
-
-         // Strict Redirections
-         $client->setConfig(array('strictredirects' => true));
-
-         // Non-strict Redirections
-         $client->setConfig(array('strictredirects' => false));
+   // Non-strict Redirections
+   $client->setOptions(array('strictredirects' => false));
 
 
 
-You can always get the number of redirections done after sending a request using the getRedirectionsCount() method.
+You can always get the number of redirections done after sending a request using the ``getRedirectionsCount()`` method.
 
 .. _zend.http.client.cookies:
 
 Adding Cookies and Using Cookie Persistence
 -------------------------------------------
 
-``Zend_Http_Client`` provides an easy interface for adding cookies to your request, so that no direct header
-modification is required. This is done using the setCookie() method. This method can be used in several ways:
+``Zend\Http\Client`` provides an easy interface for adding cookies to your request, so that no direct header
+modification is required. Cookies can be added using either the `addCookie()` or ``setCookies`` method.  The 
+``addCookie`` method has a number of operating modes:
+
+.. _zend.http.client.cookies.example-1:
+
+.. rubric:: Setting Cookies Using addCookie()
+
+.. code-block:: php
+   :linenos:
+
+    // Easy and simple: by providing a cookie name and cookie value
+    $client->addCookie('flavor', 'chocolate chips');
+
+    // By directly providing a raw cookie string (name=value)
+    // Note that the value must be already URL encoded
+    $client->addCookie('flavor=chocolate%20chips');
+
+    // By providing a Zend\Http\Header\SetCookie object
+    $cookie = Zend\Http\Header\SetCookie::fromString('flavor=chocolate%20chips');
+    $client->addCookie($cookie);
+
+    // Multiple cookies can be set at once by providing an
+    // array of Zend\Http\Header\SetCookie objects
+    $cookies = array(
+        Zend\Http\Header\SetCookie::fromString('flavorOne=chocolate%20chips'),
+        Zend\Http\Header\SetCookie::fromString('flavorTwo=vanilla'),
+    );
+    $client->addCookie($cookies);
+
+The ``setCookies()`` method works in a similar manner, except that it requires an array
+of cookie values as its only argument and also clears the cookie container before 
+adding the new cookies:
+
+.. _zend.http.client.cookies.example-2:
+
+.. rubric:: Setting Cookies Using setCookies()
+
+.. code-block:: php
+   :linenos:
+
+    // setCookies accepts an array of cookie values, which
+    // can be in either of the following formats:
+    $client->setCookies(array(
+
+        // A raw cookie string (name=value)
+        // Note that the value must be already URL encoded
+        'flavor=chocolate%20chips',
+
+        // A Zend\Http\Header\SetCookie object
+        Zend\Http\Header\SetCookie::fromString('flavor=chocolate%20chips'),
+
+    ));
 
 
+For more information about ``Zend\Http\Header\SetCookie`` objects, see :ref:`this section <zend.http.header.set-cookie>`.
 
-      .. _zend.http.client.cookies.example-1:
-
-      .. rubric:: Setting Cookies Using setCookie()
-
-      .. code-block:: php
-         :linenos:
-
-         // Easy and simple: by providing a cookie name and cookie value
-         $client->setCookie('flavor', 'chocolate chips');
-
-         // By directly providing a raw cookie string (name=value)
-         // Note that the value must be already URL encoded
-         $client->setCookie('flavor=chocolate%20chips');
-
-         // By providing a Zend_Http_Cookie object
-         $cookie = Zend_Http_Cookie::fromString('flavor=chocolate%20chips');
-         $client->setCookie($cookie);
-
-For more information about ``Zend_Http_Cookie`` objects, see :ref:`this section <zend.http.cookies>`.
-
-``Zend_Http_Client`` also provides the means for cookie stickiness - that is having the client internally store all
-sent and received cookies, and resend them automatically on subsequent requests. This is useful, for example when
+``Zend\Http\Client`` also provides a means for simplifying cookie stickiness - that is having the client internally store all
+sent and received cookies, and resend them on subsequent requests: ``Zend\Http\Client\Cookies``. This is useful, for example when
 you need to log in to a remote site first and receive and authentication or session ID cookie before sending
 further requests.
 
+.. _zend.http.client.cookies.example-3:
 
+.. rubric:: Enabling Cookie Stickiness
 
-      .. _zend.http.client.cookies.example-2:
+.. code-block:: php
+   :linenos:
 
-      .. rubric:: Enabling Cookie Stickiness
+   $cookies = new Zend\Http\Cookies();
 
-      .. code-block:: php
-         :linenos:
+   // First request: log in and start a session
+   $client->setUri('http://example.com/login.php');
+   $client->setParameterPost(array('user' => 'h4x0r'));
+   $client->setParameterPost(array('password' => 'l33t'));
+   $response = $client->request('POST');
+   $cookies->addCookiesFromResponse($response, $client->getUri());
 
-         // To turn cookie stickiness on, set a Cookie Jar
-         $client->setCookieJar();
+   // Now we can send our next request
+   $client->setUri('http://example.com/read_member_news.php');
+   $client->addCookies($cookies->getMatchingCookies($client->getUri());
+   $client->request('GET');
 
-         // First request: log in and start a session
-         $client->setUri('http://example.com/login.php');
-         $client->setParameterPost('user', 'h4x0r');
-         $client->setParameterPost('password', '1337');
-         $client->request('POST');
-
-         // The Cookie Jar automatically stores the cookies set
-         // in the response, like a session ID cookie.
-
-         // Now we can send our next request - the stored cookies
-         // will be automatically sent.
-         $client->setUri('http://example.com/read_member_news.php');
-         $client->request('GET');
-
-For more information about the ``Zend_Http_CookieJar`` class, see :ref:`this section
-<zend.http.cookies.cookiejar>`.
+For more information about the ``Zend\Http\Client\Cookies`` class, see :ref:`this section
+<zend.http.client.cookies>`.
 
 .. _zend.http.client.custom_headers:
 
