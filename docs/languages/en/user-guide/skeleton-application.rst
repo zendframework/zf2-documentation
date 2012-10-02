@@ -71,9 +71,9 @@ Setting up the virtual host is usually done within ``httpd.conf`` or
 ``extra/httpd-vhosts.conf``.  If you are using ``httpd-vhosts.conf``, ensure
 that this file is included by your main ``httpd.conf`` file.  Some Linux distributions 
 (ex: Ubuntu) package Apache so that configuration files are stored in ``/etc/apache2`` 
-and create one file per virtual host inside folder ``/etc/apache2/hosts-enabled``.  In 
+and create one file per virtual host inside folder ``/etc/apache2/sites-enabled``.  In 
 this case, you would place the virtual host block below into the file 
-``/etc/apache2/hosts-enabled/zf2-tutorial``.
+``/etc/apache2/sites-enabled/zf2-tutorial``.
 
 Ensure that ``NameVirtualHost`` is defined and set to “\*:80” or similar, and then
 define a virtual host along these lines:
