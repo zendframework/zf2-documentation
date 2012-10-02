@@ -106,7 +106,7 @@ The Forward Plugin
 Occasionally, you may want to dispatch additional controllers from within the matched controller -- for instance,
 you might use this approach to build up "widgetized" content. The ``Forward`` plugin helps enable this.
 
-For the ``Forward`` plugin to work, the controller calling it must be ``ServiceManagerAware``; otherwise, the
+For the ``Forward`` plugin to work, the controller calling it must be ``ServiceLocatorAware``; otherwise, the
 plugin will be unable to retrieve a configured and injected instance of the requested controller.
 
 The plugin exposes a single method, ``dispatch()``, which takes two arguments:
