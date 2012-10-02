@@ -1,42 +1,39 @@
 .. _zend.feed.writer:
 
-Zend_Feed_Writer
-================
+Zend\\Feed\\Writer\\Writer
+==========================
 
 .. _zend.feed.writer.introduction:
 
 Introduction
 ------------
 
-``Zend_Feed_Writer`` is the sibling component to ``Zend_Feed_Reader`` responsible for generating feeds for output.
-It supports the Atom 1.0 specification (*RFC* 4287) and *RSS* 2.0 as specified by the *RSS* Advisory Board (*RSS*
-2.0.11). It does not deviate from these standards. It does, however, offer a simple Extension system which allows
-for any extension and module for either of these two specifications to be implemented if they are not provided out
-of the box.
+``Zend\Feed\Writer\Writer`` is the sibling component to ``Zend\Feed\Reader\Reader`` responsible for generating 
+feeds for output.  It supports the Atom 1.0 specification (*RFC* 4287) and *RSS* 2.0 as specified by the *RSS*
+Advisory Board (*RSS* 2.0.11). It does not deviate from these standards. It does, however, offer a simple Extension
+system which allows for any extension and module for either of these two specifications to be implemented if they
+are not provided out of the box.
 
-In many ways, ``Zend_Feed_Writer`` is the inverse of ``Zend_Feed_Reader``. Where ``Zend_Feed_Reader`` focuses on
-providing an easy to use architecture fronted by getter methods, ``Zend_Feed_Writer`` is fronted by similarly named
-setters or mutators. This ensures the *API* won't pose a learning curve to anyone familiar with
-``Zend_Feed_Reader``.
+In many ways, ``Zend\Feed\Writer\Writer`` is the inverse of ``Zend\Feed\Reader\Reader``. Where ``Zend\Feed\Reader\Reader``
+focuses on providing an easy to use architecture fronted by getter methods, ``Zend\Feed\Writer\Writer`` is fronted by
+similarly named setters or mutators. This ensures the *API* won't pose a learning curve to anyone familiar with
+``Zend\Feed\Reader\Reader``.
 
-As a result of this design, the rest may even be obvious. Behind the scenes, data set on any ``Zend_Feed_Writer``
+As a result of this design, the rest may even be obvious. Behind the scenes, data set on any ``Zend\Feed\Writer\Writer``
 Data Container object is translated at render time onto a DOMDocument object using the necessary feed elements. For
 each supported feed type there is both an Atom 1.0 and *RSS* 2.0 renderer. Using a DOMDocument class rather than a
 templating solution has numerous advantages, the most obvious being the ability to export the DOMDocument for
 additional processing and relying on *PHP* *DOM* for correct and valid rendering.
-
-As with ``Zend_Feed_Reader``, ``Zend_Feed_Writer`` is a standalone replacement for ``Zend_Feed``'s Builder
-architecture and is not compatible with those classes.
 
 .. _zend.feed.writer.architecture:
 
 Architecture
 ------------
 
-The architecture of ``Zend_Feed_Writer`` is very simple. It has two core sets of classes: data containers and
-renderers.
+The architecture of ``Zend\Feed\Writer\Writer`` is very simple. It has two core sets of classes: data containers 
+and renderers.
 
-The containers include the ``Zend_Feed_Writer_Feed`` and ``Zend_Feed_Writer_Entry`` classes. The Entry classes can
+The containers include the ``Zend\Feed\Writer\Feed`` and ``Zend\Feed\Writer\Entry`` classes. The Entry classes can
 be attached to any Feed class. The sole purpose of these containers is to collect data about the feed to generate
 using a simple interface of setter methods. These methods perform some data validity testing. For example, it will
 validate any passed *URI*\ s, dates, etc. These checks are not tied to any of the feed standards definitions. The
@@ -44,7 +41,7 @@ container objects also contain methods to allow for fast rendering and export of
 reused at will.
 
 In addition to the main data container classes, there are two additional Atom 2.0 specific classes.
-``Zend_Feed_Writer_Source`` and ``Zend_Feed_Writer_Deleted``. The former implements Atom 2.0 source elements which
+``Zend\Feed\Writer\Source`` and ``Zend\Feed\Writer\Deleted``. The former implements Atom 2.0 source elements which
 carry source feed metadata for a specific entry within an aggregate feed (i.e. the current feed is not the entry's
 original source). The latter implements the Atom Tombstones *RFC* allowing feeds to carry references to entries
 which have been deleted.
@@ -72,8 +69,8 @@ core classes. We'll meet Extensions in more detail at the end of this section.
 Getting Started
 ---------------
 
-Using ``Zend_Feed_Writer`` is as simple as setting data and triggering the renderer. Here is an example to generate
-a minimal Atom 1.0 feed. As this demonstrates, each feed or entry uses a separate data container.
+Using ``Zend\Feed\Writer\Writer`` is as simple as setting data and triggering the renderer. Here is an example to
+generate a minimal Atom 1.0 feed. As this demonstrates, each feed or entry uses a separate data container.
 
 .. code-block:: php
    :linenos:
@@ -81,7 +78,7 @@ a minimal Atom 1.0 feed. As this demonstrates, each feed or entry uses a separat
    /**
     * Create the parent feed
     */
-   $feed = new Zend_Feed_Writer_Feed;
+   $feed = new Zend\Feed\Writer\Feed;
    $feed->setTitle('Paddy\'s Blog');
    $feed->setLink('http://www.example.com');
    $feed->setFeedLink('http://www.example.com/atom', 'atom');
@@ -130,7 +127,7 @@ The output rendered should be as follows:
        <subtitle type="text">Writing about PC Games since 176 BC.</subtitle>
        <updated>2009-12-14T20:28:18+00:00</updated>
        <generator uri="http://framework.zend.com" version="1.10.0alpha">
-           Zend_Feed_Writer
+           Zend\Feed\Writer
        </generator>
        <link rel="alternate" type="text/html" href="http://www.example.com"/>
        <link rel="self" type="application/atom+xml"
@@ -169,7 +166,7 @@ The output rendered should be as follows:
 This is a perfectly valid Atom 1.0 example. It should be noted that omitting an obligatory point of data, such as a
 title, will trigger an ``Exception`` when rendering as Atom 1.0. This will differ for *RSS* 2.0 since a title may
 be omitted so long as a description is present. This gives rise to Exceptions that differ between the two standards
-depending on the renderer in use. By design, ``Zend_Feed_Writer`` will not render an invalid feed for either
+depending on the renderer in use. By design, ``Zend\Feed\Writer\Writer`` will not render an invalid feed for either
 standard unless the end-user deliberately elects to ignore all Exceptions. This built in safeguard was added to
 ensure users without in-depth knowledge of the relevant specifications have a bit less to worry about.
 
@@ -180,26 +177,26 @@ Setting Feed Data Points
 
 Before you can render a feed, you must first setup the data necessary for the feed being rendered. This utilises a
 simple setter style *API* which doubles as an initial method for validating the data being set. By design, the
-*API* closely matches that for ``Zend_Feed_Reader`` to avoid undue confusion and uncertainty.
+*API* closely matches that for ``Zend\Feed\Reader\Reader`` to avoid undue confusion and uncertainty.
 
 .. note::
 
    Users have commented that the lack of a simple array based notation for input data gives rise to lengthy tracts
    of code. This will be addressed in a future release.
 
-``Zend_Feed_Writer`` offers this *API* via its data container classes ``Zend_Feed_Writer_Feed`` and
-``Zend_Feed_Writer_Entry`` (not to mention the Atom 2.0 specific and Extension classes). These classes merely store
+``Zend\Feed\Writer\Writer`` offers this *API* via its data container classes ``Zend\Feed\Writer\Feed`` and
+``Zend\Feed\Writer\Entry`` (not to mention the Atom 2.0 specific and Extension classes). These classes merely store
 all feed data in a type-agnostic manner, meaning you may reuse any data container with any renderer without
 requiring additional work. Both classes are also amenable to Extensions, meaning that an Extension may define its
 own container classes which are registered to the base container classes as extensions, and are checked when any
 method call triggers the base container's ``__call()`` method.
 
 Here's a summary of the Core *API* for Feeds. You should note it comprises not only the basic *RSS* and Atom
-standards, but also accounts for a number of included Extensions bundled with ``Zend_Feed_Writer``. The naming of
-these Extension sourced methods remain fairly generic - all Extension methods operate at the same level as the Core
-*API* though we do allow you to retrieve any specific Extension object separately if required.
+standards, but also accounts for a number of included Extensions bundled with ``Zend\Feed\Writer\Writer``. The naming
+of these Extension sourced methods remain fairly generic - all Extension methods operate at the same level as the 
+Core *API* though we do allow you to retrieve any specific Extension object separately if required.
 
-The Feed Level *API* for data is contained in ``Zend_Feed_Writer_Feed``. In addition to the *API* detailed below,
+The Feed Level *API* for data is contained in ``Zend\Feed\Writer\Feed``. In addition to the *API* detailed below,
 the class also implements the ``Countable`` and ``Iterator`` interfaces.
 
 .. table:: Feed Level API Methods
@@ -227,23 +224,23 @@ the class also implements the ``Countable`` and ``Iterator`` interfaces.
    +------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |setLanguage()     |Sets the language of the feed. This will be omitted unless set.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
    +------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |setGenerator()    |Allows the setting of a generator. The parameter should be an array containing the keys "name", "version" and "uri". If omitted a default generator will be added referencing Zend_Feed_Writer, the current Zend Framework version and the Framework's URI.                                                                                                                                                                                                                                                           |
+   |setGenerator()    |Allows the setting of a generator. The parameter should be an array containing the keys "name", "version" and "uri". If omitted a default generator will be added referencing Zend\Feed\Writer, the current Zend Framework version and the Framework's URI.                                                                                                                                                                                                                                                           |
    +------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |setCopyright()    |Sets a copyright notice associated with the feed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
    +------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |addHubs()         |Accepts an array of Pubsubhubbub Hub Endpoints to be rendered in the feed as Atom links so that PuSH Subscribers may subscribe to your feed. Note that you must implement a Pubsubhubbub Publisher in order for real-time updates to be enabled. A Publisher may be implemented using Zend_Feed_Pubsubhubbub_Publisher. The method addHub() allows adding a single hub at a time.                                                                                                                                     |
+   |addHubs()         |Accepts an array of Pubsubhubbub Hub Endpoints to be rendered in the feed as Atom links so that PuSH Subscribers may subscribe to your feed. Note that you must implement a Pubsubhubbub Publisher in order for real-time updates to be enabled. A Publisher may be implemented using Zend\Feed\Pubsubhubbub\Publisher. The method addHub() allows adding a single hub at a time.                                                                                                                                     |
    +------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |addCategories()   |Accepts an array of categories for rendering, where each element is itself an array whose possible keys include "term", "label" and "scheme". The "term" is a typically a category name suitable for inclusion in a URI. The "label" may be a human readable category name supporting special characters (it is HTML encoded during rendering) and is a required key. The "scheme" (called the domain in RSS) is optional but must be a valid URI. The method addCategory() allows adding a single category at a time.|
    +------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |setImage()        |Accepts an array of image metadata for an RSS image or Atom logo. Atom 1.0 only requires a URI. RSS 2.0 requires a URI, HTML link, and an image title. RSS 2.0 optionally may send a width, height and image description. The array parameter may contain these using the keys: uri, link, title, description, height and width. The RSS 2.0 HTML link should point to the feed source's HTML page.                                                                                                                   |
    +------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |createEntry()     |Returns a new instance of Zend_Feed_Writer_Entry. This is the Entry level data container. New entries are not automatically assigned to the current feed, so you must explicitly call addEntry() to add the entry for rendering.                                                                                                                                                                                                                                                                                      |
+   |createEntry()     |Returns a new instance of Zend\Feed\Writer\Entry. This is the Entry level data container. New entries are not automatically assigned to the current feed, so you must explicitly call addEntry() to add the entry for rendering.                                                                                                                                                                                                                                                                                      |
    +------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |addEntry()        |Adds an instance of Zend_Feed_Writer_Entry to the current feed container for rendering.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+   |addEntry()        |Adds an instance of Zend\Feed\Writer\Entry to the current feed container for rendering.                                                                                                                                                                                                                                                                                                                                                                                                                               |
    +------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |createTombstone() |Returns a new instance of Zend_Feed_Writer_Deleted. This is the Atom 2.0 Tombstone level data container. New entries are not automatically assigned to the current feed, so you must explicitly call addTombstone() to add the deleted entry for rendering.                                                                                                                                                                                                                                                           |
+   |createTombstone() |Returns a new instance of Zend\Feed\Writer\Deleted. This is the Atom 2.0 Tombstone level data container. New entries are not automatically assigned to the current feed, so you must explicitly call addTombstone() to add the deleted entry for rendering.                                                                                                                                                                                                                                                           |
    +------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |addTombstone()    |Adds an instance of Zend_Feed_Writer_Deleted to the current feed container for rendering.                                                                                                                                                                                                                                                                                                                                                                                                                             |
+   |addTombstone()    |Adds an instance of Zend\Feed\Writer\Deleted to the current feed container for rendering.                                                                                                                                                                                                                                                                                                                                                                                                                             |
    +------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |removeEntry()     |Accepts a parameter indicating an array index of the entry to remove from the feed.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
    +------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -261,11 +258,11 @@ Setting Entry Data Points
 -------------------------
 
 Here's a summary of the Core *API* for Entries and Items. You should note it comprises not only the basic *RSS* and
-Atom standards, but also accounts for a number of included Extensions bundled with ``Zend_Feed_Writer``. The naming
-of these Extension sourced methods remain fairly generic - all Extension methods operate at the same level as the
-Core *API* though we do allow you to retrieve any specific Extension object separately if required.
+Atom standards, but also accounts for a number of included Extensions bundled with ``Zend\Feed\Writer\Writer``. The
+naming of these Extension sourced methods remain fairly generic - all Extension methods operate at the same level 
+as the Core *API* though we do allow you to retrieve any specific Extension object separately if required.
 
-The Entry Level *API* for data is contained in ``Zend_Feed_Writer_Entry``.
+The Entry Level *API* for data is contained in ``Zend\Feed\Writer\Entry``.
 
 .. table:: Entry Level API Methods
 
