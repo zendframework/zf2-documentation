@@ -131,6 +131,8 @@
    modules/zend.service-manager.intro
    modules/zend.service-manager.quick-start
    modules/zend.stdlib.hydrator
+   modules/zend.tag.introduction
+   modules/zend.tag.cloud
    modules/zend.uri
    modules/zend.validator
    modules/zend.validator.set
@@ -446,6 +448,14 @@ Zend\\Stdlib
 ^^^^^^^^^^^^
 
         * :doc:`modules/zend.stdlib.hydrator`
+
+.. _zend.tag:
+
+Zend\\Tag
+^^^^^^^^^
+
+        * :doc:`modules/zend.tag.introduction`
+        * :doc:`modules/zend.tag.cloud`
 
 .. _zend.uri:
 
