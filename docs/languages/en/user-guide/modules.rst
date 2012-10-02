@@ -21,7 +21,7 @@ Let’s start with the directories required.
 Setting up the Album module
 ---------------------------
 
-Start by creating a directory called ``Album`` under with the following
+Start by creating a directory called ``Album`` under ``module`` with the following
 subdirectories to hold the module’s files:
 
 .. code-block:: text
