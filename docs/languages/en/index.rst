@@ -111,8 +111,6 @@
    modules/zend.loader.class-map-autoloader
    modules/zend.loader.standard-autoloader
    modules/zend.loader.classmap-generator
-   modules/zend.loader.prefix-path-loader
-   modules/zend.loader.prefix-path-mapper
    modules/zend.log.overview
    modules/zend.log.writers
    modules/zend.log.filters
@@ -405,8 +403,6 @@ Zend\\Loader
         * :doc:`modules/zend.loader.class-map-autoloader`
         * :doc:`modules/zend.loader.standard-autoloader`
         * :doc:`modules/zend.loader.classmap-generator`
-        * :doc:`modules/zend.loader.prefix-path-loader`
-        * :doc:`modules/zend.loader.prefix-path-mapper`
 
 .. _zend.log:
 
