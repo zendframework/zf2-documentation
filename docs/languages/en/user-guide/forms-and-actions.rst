@@ -225,7 +225,7 @@ Let’s look at the ``addAction()`` code in a little more detail:
 .. code-block:: php
 
     $form = new AlbumForm();
-    $form->submit->setValue('Add');
+    $form->get('submit')->setValue('Add');
 
 We instantiate `AlbumForm` and set the label on the submit button to “Add”. We
 do this here as we’ll want to re-use the form when editing an album and will use
