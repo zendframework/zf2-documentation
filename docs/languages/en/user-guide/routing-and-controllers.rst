@@ -245,7 +245,7 @@ with the following contents:
 
         public function testDeleteActionCanBeAccessed()
         {
-            $this->routeMatch->setParam('action', 'edit');
+            $this->routeMatch->setParam('action', 'delete');
 
             $result   = $this->controller->dispatch($this->request);
             $response = $this->controller->getResponse();
