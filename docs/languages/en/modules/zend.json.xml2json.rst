@@ -3,35 +3,35 @@
 XML to JSON conversion
 ======================
 
-``Zend_Json`` provides a convenience method for transforming *XML* formatted data into *JSON* format. This feature
+``Zend\Json`` provides a convenience method for transforming *XML* formatted data into *JSON* format. This feature
 was inspired from an `IBM developerWorks article`_.
 
-``Zend_Json`` includes a static function called ``Zend_Json::fromXml()``. This function will generate *JSON* from a
-given *XML* input. This function takes any arbitrary *XML* string as an input parameter. It also takes an optional
-boolean input parameter to instruct the conversion logic to ignore or not ignore the *XML* attributes during the
-conversion process. If this optional input parameter is not given, then the default behavior is to ignore the *XML*
-attributes. This function call is made as shown below:
+``Zend\Json`` includes a static function called ``Zend\Json\Json::fromXml()``. This function will generate *JSON* 
+from a given *XML* input. This function takes any arbitrary *XML* string as an input parameter. It also takes an 
+optional boolean input parameter to instruct the conversion logic to ignore or not ignore the *XML* attributes 
+during the conversion process. If this optional input parameter is not given, then the default behavior is to ignore
+the *XML* attributes. This function call is made as shown below:
 
 .. code-block:: php
    :linenos:
 
    // fromXml function simply takes a String containing XML contents
    // as input.
-   $jsonContents = Zend_Json::fromXml($xmlStringContents, true);
+   $jsonContents = Zend\Json\Json::fromXml($xmlStringContents, true);
 
-``Zend_Json::fromXml()`` function does the conversion of the *XML* formatted string input parameter and returns the
-equivalent *JSON* formatted string output. In case of any *XML* input format error or conversion logic error, this
-function will throw an exception. The conversion logic also uses recursive techniques to traverse the *XML* tree.
-It supports recursion upto 25 levels deep. Beyond that depth, it will throw a ``Zend_Json_Exception``. There are
-several *XML* files with varying degree of complexity provided in the tests directory of Zend Framework. They can
-be used to test the functionality of the xml2json feature.
+``Zend\Json\Json::fromXml()`` function does the conversion of the *XML* formatted string input parameter and returns
+the equivalent *JSON* formatted string output. In case of any *XML* input format error or conversion logic error,
+this function will throw an exception. The conversion logic also uses recursive techniques to traverse the *XML*
+tree.  It supports recursion upto 25 levels deep. Beyond that depth, it will throw a ``Zend\Json\Exception``. There
+are several *XML* files with varying degree of complexity provided in the tests directory of Zend Framework. They
+can be used to test the functionality of the xml2json feature.
 
 The following is a simple example that shows both the *XML* input string passed to and the *JSON* output string
-returned as a result from the ``Zend_Json::fromXml()`` function. This example used the optional function parameter
+returned as a result from the ``Zend\Json\Json::fromXml()`` function. This example used the optional function parameter
 as not to ignore the *XML* attributes during the conversion. Hence, you can notice that the resulting *JSON* string
 includes a representation of the *XML* attributes present in the *XML* input string.
 
-*XML* input string passed to ``Zend_Json::fromXml()`` function:
+*XML* input string passed to ``Zend\Json\Json::fromXml()`` function:
 
 .. code-block:: php
    :linenos:
@@ -57,7 +57,7 @@ includes a representation of the *XML* attributes present in the *XML* input str
        </book>
    </books>
 
-*JSON* output string returned from ``Zend_Json::fromXml()`` function:
+*JSON* output string returned from ``Zend\Json\Json::fromXml()`` function:
 
 .. code-block:: php
    :linenos:
@@ -99,4 +99,4 @@ More details about this xml2json feature can be found in the original proposal i
 
 
 .. _`IBM developerWorks article`: http://www.ibm.com/developerworks/xml/library/x-xml2jsonphp/
-.. _`Zend_xml2json proposal`: http://tinyurl.com/2tfa8z
+.. _`Zend_xml2json proposal`: http://framework.zend.com/wiki/display/ZFPROP/Zend_xml2json+-+Senthil+Nathan
