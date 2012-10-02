@@ -131,10 +131,9 @@ For more information about the ``Zend\Http\Client\Cookies`` class, see :ref:`thi
 Setting Custom Request Headers
 ------------------------------
 
-Setting custom headers can be done by using the setHeaders() method. This method is quite diverse and can be used
-in several ways, as the following example shows:
-
-
+Setting custom headers is performed by first fetching the header container from the client's 
+``Zend\Http\Request`` object.  This method is quite diverse and can be used in several ways, 
+as the following example shows:
 
       .. _zend.http.client.custom_headers.example-1:
 
@@ -143,25 +142,38 @@ in several ways, as the following example shows:
       .. code-block:: php
          :linenos:
 
-         // Setting a single header, overwriting any previous value
-         $client->setHeaders('Host', 'www.example.com');
+         // Fetch the container
+         $headers = $client->getRequest()->getHeaders();
+
+         // Setting a single header. Will not overwrite any 
+         // previously-added headers of the same name.
+         $client->addHeaderLine('Host', 'www.example.com');
 
          // Another way of doing the exact same thing
-         $client->setHeaders('Host: www.example.com');
+         $client->addHeaderLine('Host: www.example.com');
 
-         // Setting several values for the same header
-         // (useful mostly for Cookie headers):
-         $client->setHeaders('Cookie', array(
-             'PHPSESSID=1234567890abcdef1234567890abcdef',
-             'language=he'
+         // Another way of doing the exact same thing using
+         // the provided Zend\Http\Header class
+         $client->addHeader(Zend\Http\Header\Host::fromString('Host: www.example.com'));
+
+         // You can also add multiple headers at once by passing an
+         // array to addHeaders using any of the formats below:
+         $client->addHeaders(array(
+            // Zend\Http\Header\* object
+            Zend\Http\Header\Host::fromString('Host: www.example.com'),
+
+            // Header name as array key, header value as array key value
+            'Cookie' => 'PHPSESSID=1234567890abcdef1234567890abcdef',
+
+            // Raw header string
+            'Cookie: language=he',
          ));
 
 
-
-setHeader() can also be easily used to set multiple headers in one call, by providing an array of headers as a
-single parameter:
-
-
+``Zend\Http\Client`` also provides a convenience method for setting request headers, ``setHeaders``.
+This method will create a new header container, add the specified headers and then store the new
+header container in it's ``Zend\Http\Request`` object.  As a consequence, any pre-existing headers
+will be erased.
 
       .. _zend.http.client.custom_headers.example-2:
 
@@ -170,18 +182,13 @@ single parameter:
       .. code-block:: php
          :linenos:
 
-         // Setting multiple headers, overwriting any previous value
+         // Setting multiple headers.  Will remove all existing
+         // headers and add new ones to the Request header container
          $client->setHeaders(array(
-             'Host' => 'www.example.com',
+             Zend\Http\Header\Host::fromString('Host: www.example.com'),
              'Accept-encoding' => 'gzip,deflate',
-             'X-Powered-By' => 'Zend Framework'));
-
-         // The array can also contain full array strings:
-         $client->setHeaders(array(
-             'Host: www.example.com',
-             'Accept-encoding: gzip,deflate',
-             'X-Powered-By: Zend Framework'));
-
+             'X-Powered-By: Zend Framework'
+         ));
 
 
 .. _zend.http.client.file_uploads:
@@ -191,12 +198,12 @@ File Uploads
 
 You can upload files through *HTTP* using the setFileUpload method. This method takes a file name as the first
 parameter, a form name as the second parameter, and data as a third optional parameter. If the third data parameter
-is ``NULL``, the first file name parameter is considered to be a real file on disk, and ``Zend_Http_Client`` will
+is ``NULL``, the first file name parameter is considered to be a real file on disk, and ``Zend\Http\Client`` will
 try to read this file and upload it. If the data parameter is not ``NULL``, the first file name parameter will be
 sent as the file name, but no actual file needs to exist on the disk. The second form name parameter is always
 required, and is equivalent to the "name" attribute of an >input< tag, if the file was to be uploaded through an
 *HTML* form. A fourth optional parameter provides the file's content-type. If not specified, and
-``Zend_Http_Client`` reads the file from the disk, the mime_content_type function will be used to guess the file's
+``Zend\Http\Client`` reads the file from the disk, the ``mime_content_type`` function will be used to guess the file's
 content type, if it is available. In any case, the default MIME type will be application/octet-stream.
 
 
@@ -216,11 +223,12 @@ content type, if it is available. In any case, the default MIME type will be app
          $client->setFileUpload('/tmp/Backup.tar.gz', 'bufile');
 
          // Send the files
-         $client->request('POST');
+         $client->setMethod('POST');
+         $client->send();
 
-In the first example, the $text variable is uploaded and will be available as $_FILES['upload'] on the server side.
-In the second example, the existing file /tmp/Backup.tar.gz is uploaded to the server and will be available as
-$_FILES['bufile']. The content type will be guesses automatically if possible - and if not, the content type will
+In the first example, the ``$text`` variable is uploaded and will be available as ``$_FILES['upload']`` on the server side.
+In the second example, the existing file ``/tmp/Backup.tar.gz`` is uploaded to the server and will be available as
+``$_FILES['bufile']``. The content type will be guesses automatically if possible - and if not, the content type will
 be set to 'application/octet-stream'.
 
 .. note::
@@ -228,7 +236,7 @@ be set to 'application/octet-stream'.
    **Uploading files**
 
    When uploading files, the *HTTP* request content-type is automatically set to multipart/form-data. Keep in mind
-   that you must send a POST or PUT request in order to upload files. Most servers will ignore the requests body on
+   that you must send a POST or PUT request in order to upload files. Most servers will ignore the request body on
    other request methods.
 
 .. _zend.http.client.raw_post_data:
@@ -236,10 +244,9 @@ be set to 'application/octet-stream'.
 Sending Raw POST Data
 ---------------------
 
-You can use a ``Zend_Http_Client`` to send raw POST data using the setRawData() method. This method takes two
-parameters: the first is the data to send in the request body. The second optional parameter is the content-type of
-the data. While this parameter is optional, you should usually set it before sending the request - either using
-setRawData(), or with another method: setEncType().
+You can use a ``Zend\Http\Client`` to send raw POST data using the ``setRawBody()`` method. This method takes one
+parameter: the data to send in the request body. When sending raw POST data, it is advisable to also set the
+encoding type using ``setEncType()``.
 
 
 
@@ -255,14 +262,13 @@ setRawData(), or with another method: setEncType().
                 '  <author>Ernest Hemingway</author>' .
                 '  <year>1970</year>' .
                 '</book>';
+         $client->setMethod('POST');
+         $client->setRawBody($xml);
+         $client->setEncType('text/xml');
+         $client->send();
 
-         $client->setRawData($xml, 'text/xml')->request('POST');
-
-         // Another way to do the same thing:
-         $client->setRawData($xml)->setEncType('text/xml')->request('POST');
-
-The data should be available on the server side through *PHP*'s $HTTP_RAW_POST_DATA variable or through the
-php://input stream.
+The data should be available on the server side through *PHP*'s ``$HTTP_RAW_POST_DATA`` variable or through the
+``php://input`` stream.
 
 .. note::
 
@@ -277,7 +283,7 @@ php://input stream.
 HTTP Authentication
 -------------------
 
-Currently, ``Zend_Http_Client`` only supports basic *HTTP* authentication. This feature is utilized using the
+Currently, ``Zend\Http\Client`` only supports basic *HTTP* authentication. This feature is utilized using the
 ``setAuth()`` method, or by specifying a username and a password in the URI. The ``setAuth()`` method takes 3
 parameters: The user name, the password and an optional authentication type parameter. As mentioned, currently only
 basic authentication is supported (digest authentication support is planned).
@@ -307,7 +313,7 @@ basic authentication is supported (digest authentication support is planned).
 Sending Multiple Requests With the Same Client
 ----------------------------------------------
 
-``Zend_Http_Client`` was also designed specifically to handle several consecutive requests with the same object.
+``Zend\Http\Client`` was also designed specifically to handle several consecutive requests with the same object.
 This is useful in cases where a script requires data to be fetched from several places, or when accessing a
 specific *HTTP* resource requires logging in and obtaining a session cookie, for example.
 
@@ -317,26 +323,24 @@ once all requests are done and the Client object is destroyed. This prevents the
 *TCP* connections to the server.
 
 When you perform several requests with the same client, but want to make sure all the request-specific parameters
-are cleared, you should use the resetParameters() method. This ensures that ``GET`` and POST parameters, request
-body and request-specific headers are reset and are not reused in the next request.
+are cleared, you should use the ``resetParameters()`` method. This ensures that GET and POST parameters, request
+body and headers are reset and are not reused in the next request.
 
 .. note::
 
    **Resetting parameters**
 
-   Note that non-request specific headers are not reset by default when the ``resetParameters()`` method is used.
-   Only the 'Content-length' and 'Content-type' headers are reset. This allows you to set-and-forget headers like
-   'Accept-language' and 'Accept-encoding'
+   Note that cookies not reset by default when the ``resetParameters()`` method is used.
+   To clean all cookies as well, use ``resetParameters(true)``, or call ``clearCookies()`` after
+   calling ``resetParameters()``.
 
-   To clean all headers and other data except for URI and method, use ``resetParameters(true)``.
-
-Another feature designed specifically for consecutive requests is the Cookie Jar object. Cookie Jars allow you to
-automatically save cookies set by the server in the first request, and send them on consecutive requests
-transparently. This allows, for example, going through an authentication request before sending the actual data
-fetching request.
+Another feature designed specifically for consecutive requests is the ``Zend\Http\Client\Cookies`` object. 
+This "Cookie Jar" allow you to save cookies set by the server in a request, and send them back on consecutive
+requests transparently. This allows, for example, going through an authentication request before sending 
+the actual data-fetching request.
 
 If your application requires one authentication request per user, and consecutive requests might be performed in
-more than one script in your application, it might be a good idea to store the Cookie Jar object in the user's
+more than one script in your application, it might be a good idea to store the Cookies object in the user's
 session. This way, you will only need to authenticate the user once every session.
 
 .. _zend.http.client.multiple_requests.example-1:
@@ -347,24 +351,24 @@ session. This way, you will only need to authenticate the user once every sessio
    :linenos:
 
    // First, instantiate the client
-   $client = new Zend_Http_Client('http://www.example.com/fetchdata.php', array(
+   $client = new Zend\Http\Client('http://www.example.com/fetchdata.php', array(
        'keepalive' => true
    ));
 
    // Do we have the cookies stored in our session?
    if (isset($_SESSION['cookiejar']) &&
-       $_SESSION['cookiejar'] instanceof Zend_Http_CookieJar) {
+       $_SESSION['cookiejar'] instanceof Zend\Http\Client\Cookies) {
 
-       $client->setCookieJar($_SESSION['cookiejar']);
+       $cookieJar = $_SESSION['cookiejar'];
    } else {
        // If we don't, authenticate and store cookies
-       $client->setCookieJar();
        $client->setUri('http://www.example.com/login.php');
        $client->setParameterPost(array(
            'user' => 'shahar',
            'pass' => 'somesecret'
        ));
-       $client->request(Zend_Http_Client::POST);
+       $response = $client->setMethod('POST')->send();
+       $cookieJar = Zend\Http\Client\Cookies::fromResponse($response);
 
        // Now, clear parameters and set the URI to the original one
        // (note that the cookies that were set by the server are now
@@ -373,45 +377,27 @@ session. This way, you will only need to authenticate the user once every sessio
        $client->setUri('http://www.example.com/fetchdata.php');
    }
 
-   $response = $client->request(Zend_Http_Client::GET);
+   // Add the cookies to the new request
+   $client->setCookies($cookieJar->getMatchingCookies($client->getUri()));
+   $response = $client->setMethod('GET')->send();
 
    // Store cookies in session, for next page
-   $_SESSION['cookiejar'] = $client->getCookieJar();
+   $_SESSION['cookiejar'] = $cookieJar;
 
 .. _zend.http.client.streaming:
 
 Data Streaming
 --------------
 
-By default, ``Zend_Http_Client`` accepts and returns data as *PHP* strings. However, in many cases there are big
-files to be sent or received, thus keeping them in memory might be unnecessary or too expensive. For these cases,
-``Zend_Http_Client`` supports reading data from files (and in general, *PHP* streams) and writing data to files
-(streams).
-
-In order to use stream to pass data to ``Zend_Http_Client``, use ``setRawData()`` method with data argument being
-stream resource (e.g., result of ``fopen()``).
-
-
-
-      .. _zend.http.client.streaming.example-1:
-
-      .. rubric:: Sending file to HTTP server with streaming
-
-      .. code-block:: php
-         :linenos:
-
-         $fp = fopen("mybigfile.zip", "r");
-         $client->setRawData($fp, 'application/zip')->request('PUT');
-
-
-
-Only PUT requests currently support sending streams to *HTTP* server.
+By default, ``Zend\Http\Client`` accepts and returns data as *PHP* strings. However, in many cases there are big
+files to be received, thus keeping them in memory might be unnecessary or too expensive. For these cases,
+``Zend\Http\Client`` supports writing data to files (streams).
 
 In order to receive data from the server as stream, use ``setStream()``. Optional argument specifies the filename
 where the data will be stored. If the argument is just ``TRUE`` (default), temporary file will be used and will be
 deleted once response object is destroyed. Setting argument to ``FALSE`` disables the streaming functionality.
 
-When using streaming, ``request()`` method will return object of class ``Zend_Http_Client_Response_Stream``, which
+When using streaming, ``send()`` method will return object of class ``Zend\Http\Response\Stream``, which
 has two useful methods: ``getStreamName()`` will return the name of the file where the response is stored, and
 ``getStream()`` will return stream from which the response could be read.
 
@@ -428,15 +414,12 @@ write it to another file using regular stream functions.
          :linenos:
 
          $client->setStream(); // will use temp file
-         $response = $client->request('GET');
+         $response = $client->send();
          // copy file
          copy($response->getStreamName(), "my/downloads/file");
          // use stream
          $fp = fopen("my/downloads/file2", "w");
          stream_copy_to_stream($response->getStream(), $fp);
          // Also can write to known file
-         $client->setStream("my/downloads/myfile)->request('GET');
-
-
-
+         $client->setStream("my/downloads/myfile")->send();
 
