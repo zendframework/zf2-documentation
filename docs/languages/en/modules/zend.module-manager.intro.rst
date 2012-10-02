@@ -31,7 +31,7 @@ The module system is made up of the following:
 
 .. note::
 
-   The name of a module in a typical Zend Framework 2 application is simply a `PHP namespace`_ and must follow all
+   The name of a module in a typical Zend Framework 2 application is a `PHP namespace`_ and must follow all
    of the same rules for naming.
 
 The recommended structure of a typical MVC-oriented ZF2 module is as follows:
