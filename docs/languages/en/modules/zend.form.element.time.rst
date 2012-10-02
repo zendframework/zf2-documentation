@@ -32,6 +32,27 @@ This element automatically adds a ``"type"`` attribute of value ``"time"``.
    $form = new Form('my-form');
    $form->add($time);
 
+Here is the same example using the array notation:
+
+.. code-block:: php
+   :linenos:
+
+    use Zend\Form\Form;
+
+    $form = new Form('my-form');
+    $form->add(array(
+    	'type' => 'Zend\Form\Element\Month',
+    	'name' => 'time',
+    	'options => array(
+    		'label' => 'Time'
+    	),
+    	'attributes' => array(
+    		'min' => '00:00:00',
+    		'max' => '23:59:59',
+    		'step' => '60', // seconds; default step interval is 60 seconds
+    	)
+    ));
+
 .. note::
 
    Note: the ``min``, ``max``, and ``step`` attributes should be set prior to calling Zend\\Form::prepare().

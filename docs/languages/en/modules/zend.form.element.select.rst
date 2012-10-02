@@ -3,47 +3,38 @@
 Select Element
 ^^^^^^^^^^^^^^
 
-``Zend\Form\Element\Select`` is meant to be paired with the ``Zend/Form/View/Helper/FormSelect`` for HTML inputs with type select. This element adds an InArray validator to validate if the selected value is one of the available values originally provided by the select element.
-Use ``$select->setAttribute('multiple', 'multiple');`` to allow multiple selections. To select one option by default use ``$select->setValue('bar');``
+``Zend\Form\Element\Select`` is meant to be paired with the ``Zend/Form/View/Helper/FormSelect`` for HTML inputs with type select. This element adds an ``InArray`` validator to its input filter specification in order to validate on the server if the selected value belongs to the values. This element can be used as a multi-select element by adding the "multiple" HTML attribute to the element.
 
 .. _zend.form.element.select.usage:
 
 Basic Usage
 """""""""""
 
-.. code-block:: php
-   :linenos:
-
-   use Zend\Form\Element;
-   use Zend\Form\Form;
-
-   $select = new Element\Select('select');
-   $select->setLabel('A select')
-          ->setValueOptions(array(
-              'foo' => 'Foo',
-              'bar' => 'Bar',
-              'baz' => 'Baz',
-          ));
-   $select->value('bar'); // select one option
-
-   $form = new Form('my-form');
-   $form->add($select);
-
-The above could be altered as follows in order to select one option:
+This element automatically adds a ``"type"`` attribute of value ``"select"``.
 
 .. code-block:: php
    :linenos:
 
-   $select->setLabel('A select')
-          ->setValueOptions(array(
-              'foo' => 'Foo',
-              array(
-                'selected' => 'selected',
-                'value'    => 'bar',
-                'label'    => 'Bar',
-              ),
-              'baz' => 'Baz',
-          ));
+   	use Zend\Form\Element;
+   	use Zend\Form\Form;
+
+   	$select = new Element\Select('language');
+   	$select->setLabel('Which is your mother tongue?');
+   	$select->setValueOptions(array(
+   		'options' => array(
+   			'European languages' => array(
+   				'0' => 'French',
+   				'1' => 'Italian',
+   			),
+   			'Asian languages' => array(
+   				'2' => 'Japanese',
+   				'3' => 'Chinese',
+   			)
+   		)   		
+   	));
+
+   	$form = new Form('language');
+   	$form->add($select);
 
 .. _zend.form.element.select.methods:
 
@@ -52,36 +43,67 @@ Public Methods
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element <zend.form.element.methods>` .
 
+.. function:: setOptions(array $options)
+   :noindex:
+
+   Set options for an element of type Checkbox. Accepted options, in addition to the inherited options of Zend\\Form\\Element\\Checkbox <zend.form.element.checkbox.methods.set-options>` , are: ``"value_options"`` and ``"empty_option"``, which call ``setValueOptions`` and ``setEmptyOption``, respectively.
+   
 .. function:: setValueOptions(array $options)
    :noindex:
 
-   Set the available select options. Accepts key/value pair array of values and labels.
-
-   :rtype: Select
+   Set the value options for every checkbox of the multi-checkbox. The array must contain a key => value for every checkbox.
 
 .. function:: getValueOptions()
    :noindex:
 
-   Return all current select options as key/value pair array. Empty options do not get included.
+   Return the value options.
 
    :rtype: array
-
-.. function:: setEmptyOption(string $emptyOption)
+   
+.. function:: setEmptyOption($emptyOption)
    :noindex:
 
-   Set empty select option with given text and no value. If set to null, no option will be added.
+   Optionally set a label for an empty option (option with no value). It is set to "null" by default, which means that no empty option will be rendered.
 
-   :rtype: Select
-
-.. function:: getEmptyOption()
+.. function:: setEmptyOption()
    :noindex:
 
-   Return the label text for the empty select option.
+   Get the label for the empty option (null if none).
 
-   :rtype: string|null
+   :rtype: string
 
-.. function:: getInputSpecification()
+.. _zend.form.element.select.methods:
+
+Public Methods
+""""""""""""""
+
+The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element <zend.form.element.methods>` .
+
+.. function:: setOptions(array $options)
    :noindex:
 
-   Returns a input filter specification, which includes a ``Zend\Validator\InArray`` to validate if the selected value is one of the available values originally provided by the select element.
+   Set options for an element of type Checkbox. Accepted options, in addition to the inherited options of Zend\\Form\\Element\\Checkbox <zend.form.element.checkbox.methods.set-options>` , are: ``"value_options"`` and ``"empty_option"``, which call ``setValueOptions`` and ``setEmptyOption``, respectively.
+   
+.. function:: setValueOptions(array $options)
+   :noindex:
+
+   Set the value options for every checkbox of the multi-checkbox. The array must contain a key => value for every checkbox.
+
+.. function:: getValueOptions()
+   :noindex:
+
+   Return the value options.
+
    :rtype: array
+   
+.. function:: setEmptyOption($emptyOption)
+   :noindex:
+
+   Optionally set a label for an empty option (option with no value). It is set to "null" by default, which means that no empty option will be rendered.
+
+.. function:: setEmptyOption()
+   :noindex:
+
+   Get the label for the empty option (null if none).
+
+   :rtype: string

@@ -32,6 +32,27 @@ This element automatically adds a ``"type"`` attribute of value ``"range"``.
    $form = new Form('my-form');
    $form->add($range);
 
+Here is with the array notation:
+
+.. code-block:: php
+   :linenos:
+
+    use Zend\Form\Form;
+
+    $form = new Form('my-form');
+    $form->add(array(
+    	'type' => 'Zend\Form\Element\Range',
+    	'name' => 'range',
+    	'options => array(
+    		'label' => 'Minimum and Maximum Amount'
+    	),
+    	'attributes' => array(
+    		'min' => 0, // default minimum is 0
+    		'max' => 100, // default maximum is 100
+    		'step' => 1 // default interval is 1
+    	)
+    ));
+
 .. note::
 
    Note: the ``min``, ``max``, and ``step`` attributes should be set prior to calling Zend\\Form::prepare().
