@@ -1,14 +1,14 @@
 .. _zend.server.reflection:
 
-Zend_Server_Reflection
-======================
+Zend\\Server\\Reflection
+========================
 
 .. _zend.server.reflection.introduction:
 
 Introduction
 ------------
 
-``Zend_Server_Reflection`` provides a standard mechanism for performing function and class introspection for use
+``Zend\Server\Reflection`` provides a standard mechanism for performing function and class introspection for use
 with server classes. It is based on *PHP* 5's Reflection *API*, augmenting it with methods for retrieving parameter
 and return value types and descriptions, a full list of function and method prototypes (i.e., all possible valid
 calling combinations), and function or method descriptions.
@@ -25,11 +25,11 @@ Basic usage is simple:
 .. code-block:: php
    :linenos:
 
-   $class    = Zend_Server_Reflection::reflectClass('My_Class');
-   $function = Zend_Server_Reflection::reflectFunction('my_function');
+   $class    = Zend\Server\Reflection::reflectClass('My\Class');
+   $function = Zend\Server\Reflection::reflectFunction('my_function');
 
    // Get prototypes
-   $prototypes = $reflection->getPrototypes();
+   $prototypes = $function->getPrototypes();
 
    // Loop through each prototype for the function
    foreach ($prototypes as $prototype) {
@@ -50,10 +50,10 @@ Basic usage is simple:
    // Get namespace for a class, function, or method.
    // Namespaces may be set at instantiation time (second argument), or using
    // setNamespace()
-   $reflection->getNamespace();
+   $class->getNamespace();
 
-``reflectFunction()`` returns a ``Zend_Server_Reflection_Function`` object; ``reflectClass()`` returns a
-``Zend_Server_Reflection_Class`` object. Please refer to the *API* documentation to see what methods are available
+``reflectFunction()`` returns a ``Zend\Server\Reflection\Function`` object; ``reflectClass()`` returns a
+``Zend\Server\Reflection\Class`` object. Please refer to the *API* documentation to see what methods are available
 to each.
 
 
