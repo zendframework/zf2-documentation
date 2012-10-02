@@ -1,7 +1,7 @@
 Collection Element
 ^^^^^^^^^^^^^^^^^^
 
-Sometimes, you may want to add input (or a set of inputs) multiple times, either because you don't want to duplicate code, or because you does not know in advance how many elements you need (in the case of elements dynamically added to a form using JavaScript, for instance).
+Sometimes, you may want to add input (or a set of inputs) multiple times, either because you don't want to duplicate code, or because you does not know in advance how many elements you need (in the case of elements dynamically added to a form using JavaScript, for instance). For more information about Collection, please refer to :ref:`Zend\\Collection tutorial <zend.form.collections>`
 
 ``Zend\Form\Element\Collection`` is meant to be paired with the ``Zend\Form\View\Helper\FormCollection``.
 
@@ -25,6 +25,25 @@ Basic Usage
    $form = new Form('my-form');
    $form->add($colors);
 
+Using the array notation:
+
+.. code-block:: php
+   :linenos:
+   
+    use Zend\Form\Element;
+    use Zend\Form\Form;
+    
+   	$form = new Form('my-form');   	
+   	$form->add(array(
+   		'type' => 'Zend\Form\Element\Collection',
+   		'options' => array(
+   			'label' => 'Colors',
+   			'count' => 2,
+   			'should_create_template' => true,
+   			'target_element' => new Element\Color()
+   		)
+   	));
+
 .. _zend.form.element.collection.methods:
 
 Public Methods
@@ -35,12 +54,12 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 .. function:: setOptions(array $options)
    :noindex:
 
-   Set options for an element of type Collection. Accepted options, in addition to the inherited options of Zend\\Form\\Element <zend.form.element.methods.set-options>` , are: ``"target_element"``, ``"count"``, ``"allow_add"``, ``"should_create_template"`` and ``"template_placeholder"`` , which call ``setTargetElement``, ``setCount``, ``setAllowAdd``, ``setShouldCreateTemplate`` and ``setTemplatePlaceholder`` , respectively.
+   Set options for an element of type Collection. Accepted options, in addition to the inherited options of Zend\\Form\\Element <zend.form.element.methods.set-options>` , are: ``"target_element"``, ``"count"``, ``"allow_add"``, ``"allow_remove"``, ``"should_create_template"`` and ``"template_placeholder"``. Those option keys respectively call call ``setTargetElement``, ``setCount``, ``setAllowAdd``, ``setAllowRemove``, ``setShouldCreateTemplate`` and ``setTemplatePlaceholder``.
 
 .. function:: setCount($count)
    :noindex:
 
-   Defines how many times the target element will be rendered by the ``Zend/Form/View/Helper/FormCollection`` view helper.
+   Defines how many times the target element will be initially rendered by the ``Zend/Form/View/Helper/FormCollection`` view helper.
 
 .. function:: getCount()
    :noindex:

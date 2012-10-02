@@ -55,6 +55,18 @@ Public Methods
    Return the name for this element.
 
    :rtype: string
+   
+.. function:: setValue(string $value)
+   :noindex:
+
+   Set the value for this element.
+
+.. function:: getValue()
+   :noindex:
+
+   Return the value for this element.
+
+   :rtype: string
 
 .. function:: setLabel(string $label)
    :noindex:

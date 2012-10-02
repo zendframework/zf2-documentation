@@ -32,6 +32,27 @@ This element automatically adds a ``"type"`` attribute of value ``"week"``.
    $form = new Form('my-form');
    $form->add($week);
 
+Here is the same example using the array notation:
+
+.. code-block:: php
+   :linenos:
+
+    use Zend\Form\Form;
+
+    $form = new Form('my-form');
+    $form->add(array(
+    	'type' => 'Zend\Form\Element\Week',
+    	'name' => 'week',
+    	'options => array(
+    		'label' => 'Week'
+    	),
+    	'attributes' => array(
+    		'min' => '2012-W01',
+    		'max' => '2020-W01',
+    		'step' => '1', // weeks; default step interval is 1 week
+    	)
+    ));
+    
 .. note::
 
    Note: the ``min``, ``max``, and ``step`` attributes should be set prior to calling Zend\\Form::prepare().

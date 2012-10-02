@@ -26,3 +26,19 @@ This element automatically adds a ``"type"`` attribute of value ``"hidden"``.
 
    $form = new Form('my-form');
    $form->add($hidden);
+
+Here is with the array notation:
+
+.. code-block:: php
+   :linenos:
+
+    use Zend\Form\Form;
+
+    $form = new Form('my-form');
+    $form->add(array(
+    	'type' => 'Zend\Form\Element\Hidden',
+    	'name' => 'my-hidden',
+    	'attributes' => array(
+    		'value' => 'foo'
+    	)
+    ));

@@ -32,6 +32,27 @@ This element automatically adds a ``"type"`` attribute of value ``"number"``.
    $form = new Form('my-form');
    $form->add($number);
 
+Here is with the array notation:
+
+.. code-block:: php
+   :linenos:
+
+    use Zend\Form\Form;
+
+    $form = new Form('my-form');
+    $form->add(array(
+    	'type' => 'Zend\Form\Element\Number',
+    	'name' => 'quantity',
+    	'options => array(
+    		'label' => 'Quantity'
+    	),
+    	'attributes' => array(
+    		'min' => '0',
+    		'max' => '10',
+    		'step' => '1', // default step interval is 1
+    	)
+    ));
+
 .. note::
 
    Note: the ``min``, ``max``, and ``step`` attributes should be set prior to calling Zend\\Form::prepare().
