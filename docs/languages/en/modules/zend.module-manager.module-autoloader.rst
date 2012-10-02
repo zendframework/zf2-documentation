@@ -17,8 +17,11 @@ set up the module autoloader. You simply need to provide an array of module path
 the application's root, for the module autoloader to check when loading modules. The default listener aggregate
 will take care of instantiating and registering the module autoloader for you.
 
-Keep in mind that in order for paths relative to your application directory to work, you must have the directive
-*chdir(dirname(__DIR__));* in your ``public/index.php``.
+
+.. note::
+
+   Keep in mind that in order for paths relative to your application directory to work, 
+   you must have the directive ``chdir(dirname(__DIR__));`` in your ``public/index.php``.
 
 .. _zend.module-manager.module-autoloader.example.module-autoloading:
 
