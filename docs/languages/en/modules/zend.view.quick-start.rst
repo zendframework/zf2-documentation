@@ -661,7 +661,7 @@ priority to ensure they match before the ``PhpRendererStrategy``. As an example,
            $app          = $e->getTarget();
            $locator      = $app->getServiceManager();
            $view         = $locator->get('Zend\View\View');
-           $jsonStrategy = $locator->get('Zend\View\Strategy\JsonStrategy');
+           $jsonStrategy = $locator->get('ViewJsonStrategy');
 
            // Attach strategy, which is a listener aggregate, at high priority
            $view->getEventManager()->attach($jsonStrategy, 100);
@@ -707,7 +707,7 @@ the layout for a specific module.
            $app          = $e->getTarget();
            $locator      = $app->getServiceManager();
            $view         = $locator->get('Zend\View\View');
-           $jsonStrategy = $locator->get('Zend\View\Strategy\JsonStrategy');
+           $jsonStrategy = $locator->get('ViewJsonStrategy');
 
            // Attach strategy, which is a listener aggregate, at high priority
            $view->getEventManager()->attach($jsonStrategy, 100);
