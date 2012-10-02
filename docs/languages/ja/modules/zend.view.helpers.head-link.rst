@@ -62,24 +62,14 @@ HTML の *<link>* 要素は複数使用することができ、
    :linenos:
 
    <?php // ビュースクリプトのリンクを設定します
-   $this
-       ->headLink(
-           array(
-               'rel' => 'favicon',
-               'href' => '/img/favicon.ico',
-           ),
-           'PREPEND'
-       )
-       ->appendStylesheet('/styles/basic.css')
-       ->prependStylesheet(
-           '/styles/moz.css',
-           'screen',
-           true,
-           array(
-               'id' => 'my_stylesheet',
-           )
-       )
-   ;
+   $this->headLink(array('rel' => 'favicon',
+                         'href' => '/img/favicon.ico'),
+                         'PREPEND')
+        ->appendStylesheet('/styles/basic.css')
+        ->prependStylesheet('/styles/moz.css',
+                            'screen',
+                            true,
+                            array('id' => 'my_stylesheet'));
    ?>
    <?php // リンクをレンダリングします ?>
    <?php echo $this->headLink() ?>

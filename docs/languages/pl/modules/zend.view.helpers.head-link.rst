@@ -51,24 +51,14 @@ wszystkie łącza w sekcji <head>.
    :linenos:
 
    <?php // ustawianie łącz w skrypcie widoku:
-   $this
-       ->headLink(
-           array(
-               'rel' => 'favicon',
-               'href' => '/img/favicon.ico',
-           ),
-           'PREPEND'
-       )
-       ->appendStylesheet('/styles/basic.css')
-       ->prependStylesheet(
-           '/styles/moz.css',
-           'screen',
-           true,
-           array(
-               'id' => 'my_stylesheet',
-           )
-       )
-   ;
+   $this->headLink(array('rel' => 'favicon',
+                         'href' => '/img/favicon.ico'),
+                         'PREPEND')
+        ->appendStylesheet('/styles/basic.css')
+        ->prependStylesheet('/styles/moz.css',
+                            'screen',
+                            true,
+                            array('id' => 'my_stylesheet'));
    ?>
    <?php // generowaie łącz: ?>
    <?= $this->headLink() ?>
