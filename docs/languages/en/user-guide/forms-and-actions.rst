@@ -303,6 +303,19 @@ but for the two elements that are standalone, we use ``formHidden()`` and
 .. image:: ../images/user-guide.forms-and-actions.add-album-form.png
     :width: 940 px
 
+Alternatively, the process of rendering the form can be simplified by using the 
+bundled ``formCollection`` view helper.  For example, in the view script above replace 
+all the form-rendering echo statements with:
+
+.. code-block:: php
+
+    echo $this->formCollection($form);
+
+This will iterate over the form structure, calling the appropriate label, element
+and error view helpers for each element, and wrap the result in open and close form tags.
+This helps reduce the complexity of your view script in situations where the default 
+HTML rendering of the form is acceptable.
+
 You should now be able to use the “Add new album” link on the home page of the
 application to add a new album record.
 
