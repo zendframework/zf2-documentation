@@ -48,9 +48,14 @@ trackback等。 *HeadLink*
    :linenos:
 
    <?php // 在视图脚本中设置链接：
-   $this->headLink()->appendStylesheet('/styles/basic.css')
-                    ->headLink(array('rel' => 'favicon', 'href' => '/img/favicon.ico'), 'PREPEND')
-                    ->prependStylesheet('/styles/moz.css', 'screen', true);
+   $this->headLink(array('rel' => 'favicon',
+                         'href' => '/img/favicon.ico'),
+                         'PREPEND')
+        ->appendStylesheet('/styles/basic.css')
+        ->prependStylesheet('/styles/moz.css',
+                            'screen',
+                            true,
+                            array('id' => 'my_stylesheet'));
    ?>
    <?php // 解析链接：?>
    <?= $this->headLink() ?>
