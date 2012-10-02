@@ -34,6 +34,33 @@ This element automatically adds a ``"type"`` attribute of value ``"email"``.
        ->setAttribute('multiple', true);
    $form->add($emails);
 
+Here is with the array notation:
+
+.. code-block:: php
+   :linenos:
+
+    use Zend\Form\Form;
+
+    $form = new Form('my-form');
+    $form->add(array(
+    	'type' => 'Zend\Form\Element\Email',
+    	'name' => 'email',
+    	'options => array(
+    		'label' => 'Email Address'
+    	),
+    ));
+    
+    $form->add(array(
+    	'type' => 'Zend\Form\Element\Email',
+    	'name' => 'emails',
+    	'options' => array(
+    		'label' => 'Email Addresses'
+    	),
+    	'attributes' => array(
+    		'multiple' => true
+    	)
+    ));
+    
 .. note::
 
    Note: the ``multiple`` attribute should be set prior to calling Zend\\Form::prepare(). Otherwise, the default
