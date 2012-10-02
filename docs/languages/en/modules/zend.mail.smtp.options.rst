@@ -103,6 +103,32 @@ Quick Start
    ));
    $transport->setOptions($options);
 
+.. _zend.mail.smtp-options.quick-start.plain-smtp-with-ssl-usage:
+
+.. rubric:: SMTP Transport Usage with PLAIN AUTH
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Mail\Transport\Smtp as SmtpTransport;
+   use Zend\Mail\Transport\SmtpOptions;
+
+   // Setup SMTP transport using LOGIN authentication
+   $transport = new SmtpTransport();
+   $options   = new SmtpOptions(array(
+       'name'              => 'example.com',
+       'host'              => '127.0.0.1',
+       'port'              => 587, // Notice port change for TLS is 587
+       'connection_class'  => 'plain',
+       'connection_config' => array(
+           'username' => 'user',
+           'password' => 'pass',
+           'ssl'      => 'tls',
+       ),
+   ));
+   $transport->setOptions($options);
+
+
 .. _zend.mail.smtp-options.options:
 
 Configuration Options
@@ -140,7 +166,8 @@ Configuration Options
    Optional associative array of parameters to pass to the :ref:`connection class
    <zend.mail.smtp-options.options.connection-class>` in order to configure it. By default this is empty. For
    connection classes other than the default, you will typically need to define the "username" and "password"
-   options.
+   options. For secure connections you will use the "ssl" => "tls" and port 587 for TLS or "ssl" => "ssl"
+   and port 465 for SSL.
 
 .. _zend.mail.smtp-options.methods:
 
