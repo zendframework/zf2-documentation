@@ -66,9 +66,9 @@ The ``InjectApplicationEventInterface`` defines simply two methods:
    public function setEvent(Zend\EventManager\EventInterface $event);
    public function getEvent();
 
-.. _zend.mvc.controllers.interfaces.service-manager-aware:
+.. _zend.mvc.controllers.interfaces.service-locator-aware:
 
-ServiceManagerAware
+ServiceLocatorAware
 ^^^^^^^^^^^^^^^^^^^
 
 In most cases, you should define your controllers such that dependencies are injected by the application's
@@ -78,16 +78,17 @@ However, occasionally you may have objects you wish to use in your controller th
 paths. Examples include forms, paginators, navigation, etc. In these cases, you may decide that it doesn't make
 sense to inject those objects every time the controller is used.
 
-The ``ServiceManagerAwareInterface`` interface hints to the ``ServiceManager`` that it should inject itself into
-the controller. It defines simply one method:
+The ``ServiceLocatorAwareInterface`` interface hints to the ``ServiceManager`` that it should inject itself into
+the controller. It defines two simple methods:
 
 .. code-block:: php
    :linenos:
 
-   use Zend\ServiceManager\ServiceManager;
-   use Zend\ServiceManager\ServiceManagerAwareInterface;
+   use Zend\ServiceManager\ServiceLocatorInterface;
+   use Zend\ServiceManager\ServiceLocatorAwareInterface;
 
-   public function setServiceManager(ServiceManager $serviceManager);
+   public function setServiceLocator(ServiceLocatorInterface $serviceLocator);
+   public function getServiceLocator();
 
 .. _zend.mvc.controllers.interfaces.event-manager-aware:
 
@@ -223,7 +224,7 @@ Interfaces and Collaborators
 
 - ``Zend\Mvc\InjectApplicationEventInterface``
 
-- ``Zend\ServiceManager\ServiceManagerAwareInterface``
+- ``Zend\ServiceManager\ServiceLocatorAwareInterface``
 
 - ``Zend\EventManager\EventManagerAwareInterface``
 
@@ -282,7 +283,7 @@ Interfaces and Collaborators
 
 - ``Zend\Mvc\InjectApplicationEventInterface``
 
-- ``Zend\ServiceManager\ServiceManagerAwareInterface``
+- ``Zend\ServiceManager\ServiceLocatorAwareInterface``
 
 - ``Zend\EventManager\EventManagerAwareInterface``
 

@@ -21,7 +21,7 @@ application will typically rely on good configuration in the ``ServiceManager`` 
 configured correctly with their dependencies. When creating factories, however, you may want to interact with the
 ``ServiceManager`` to retrieve other services to inject as dependencies. Additionally, there are some cases where
 you may want to receive the ``ServiceManager`` to lazy-retrieve dependencies; as such, you'll want to implement
-``ServiceManagerAwareInterface``, and learn the API of the ``ServiceManager``.
+``ServiceLocatorAwareInterface``, and learn the API of the ``ServiceManager``.
 
 .. _zend.service-manager.quick-start.config:
 

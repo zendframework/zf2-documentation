@@ -129,7 +129,7 @@ following:
   retrieved and injected. This service is **not** shared, though each instance it creates is injected with a shared
   instance of ``SharedEventManager``.
 
-- For objects that implement ``Zend\ServiceManager\ServiceManagerAwareInterface``, the ``ServiceManager`` will
+- For objects that implement ``Zend\ServiceManager\ServiceLocatorAwareInterface``, the ``ServiceManager`` will
   inject itself into the object.
 
 Finally, the ``ServiceManager`` registers itself as the ``ServiceManager`` service, and aliases itself to the class
