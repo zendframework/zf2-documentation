@@ -61,7 +61,7 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
   ``TRUE`` (default), individual items will be escaped using the view objects registered escaping mechanisms; pass
   a ``FALSE`` value if you want to allow markup in your lists.
 
-.. include:: zend.view.helpers.base-url.rst
+.. include:: zend.view.helpers.base-path.rst
 .. include:: zend.view.helpers.cycle.rst
 .. include:: zend.view.helpers.partial.rst
 .. include:: zend.view.helpers.placeholder.rst
