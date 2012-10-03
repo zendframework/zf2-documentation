@@ -62,15 +62,15 @@ And a file called ``bootstrap.php``, also under ``zf-tutorial/tests/``:
 
 .. code-block:: php
 
-    <?php
     chdir(dirname(__DIR__));
 
     include __DIR__ . '/../init_autoloader.php';
 
-    Zend\Mvc\Application::init(include 'config/application.config.php');
-
-The contents of the bootstrap file are nearly identical to those of
-``zf-tutorial/public/index.php``.
+The contents of the bootstrap file are similar to those of
+``zf-tutorial/public/index.php``, except we don't initialize the application.
+We'll be doing that in our tests to ensure that each test is executed against
+a freshly initialized instance of our application without any previous tests
+influencing the current test's results.
 
 Your first Controller test
 --------------------------
@@ -100,20 +100,26 @@ the following contents:
         protected $routeMatch;
         protected $event;
 
-        public function setUp()
+        protected function setUp()
         {
+            $bootstrap        = \Zend\Mvc\Application::init(include 'config/application.config.php');
             $this->controller = new IndexController();
             $this->request    = new Request();
             $this->routeMatch = new RouteMatch(array('controller' => 'index'));
-            $this->event      = new MvcEvent();
+            $this->event      = $bootstrap->getMvcEvent();
             $this->event->setRouteMatch($this->routeMatch);
             $this->controller->setEvent($this->event);
+            $this->controller->setEventManager($bootstrap->getEventManager());
+            $this->controller->setServiceLocator($bootstrap->getServiceManager());
         }
     }
 
-For a detailed explanation of what's going on here, visit Tom Oram's
+Here, we expand a bit on the setup in Tom Oram's
 `Unit Testing a ZF 2 Controller <http://devblog.x2k.co.uk/unit-testing-a-zend-framework-2-controller/>`_
-blog entry.
+blog entry by initializing our application in the ``setUp()`` method and
+setting the ``EventManager`` and ``ServiceLocator`` directly on the controller.
+This isn't important right now, but we'll need it later on when writing more
+advanced tests.
 
 Now, add the following function to the ``IndexControllerTest`` class:
 
