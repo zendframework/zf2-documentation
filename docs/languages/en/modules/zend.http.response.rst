@@ -76,7 +76,7 @@ completely empty object to start with, by simply instantiating the ``Zend\Http\R
 Configuration Options
 ---------------------
 
-None currently available
+No configuration options are available.
 
 .. _zend.http.response.methods:
 
@@ -350,7 +350,7 @@ Examples
 
 .. _zend.http.response.examples.construct-response:
 
-.. rubric:: Generating a Response object from a string
+.. rubric:: Generating a formatted HTTP Response from a Response object
 
 .. code-block:: php
    :linenos:

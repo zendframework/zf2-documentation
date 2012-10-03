@@ -17,13 +17,13 @@ Currently, the ``Zend\Http\Client`` class provides four built-in connection adap
 
 
 
-   - ``Zend\Http\Client\Adapter\Socket`` (default)
+- ``Zend\Http\Client\Adapter\Socket`` (default)
 
-   - ``Zend\Http\Client\Adapter\Proxy``
+- ``Zend\Http\Client\Adapter\Proxy``
 
-   - ``Zend\Http\Client\Adapter\Curl``
+- ``Zend\Http\Client\Adapter\Curl``
 
-   - ``Zend\Http\Client\Adapter\Test``
+- ``Zend\Http\Client\Adapter\Test``
 
 
 
@@ -117,7 +117,7 @@ The Socket adapter allows several extra configuration options that can be set us
    );
 
    // Instantiate a client object
-   $client = new Zend_Http_Client('https://www.example.com', $config);
+   $client = new Zend\Http\Client('https://www.example.com', $config);
 
    // The following request will be sent over a TLS secure connection.
    $response = $client->send();
