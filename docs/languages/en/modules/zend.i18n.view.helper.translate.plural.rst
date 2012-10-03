@@ -32,7 +32,7 @@ this will be done automatically for you.
    echo $this->translatePlural("monitor", "monitors", $num, "customDomain");
 
    // Change locale
-   echo $this->translate("locale", "locales", $num, "default", "de_DE");
+   echo $this->translatePlural("locale", "locales", $num, "default", "de_DE");
 
 .. function:: translatePlural(string $singular, string $plural, int $number [, string $textDomain [, string $locale ]])
    :noindex:
