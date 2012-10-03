@@ -107,7 +107,7 @@ Available Methods
 .. _zend.http.request.methods.set-uri:
 
 **setUri**
-   ``setUri(string|Zend\Stdlib\RequestInterface|Zend\Stdlib\Message|Zend\Stdlib\ParametersInterface|Zend\Stdlib\Parameters|Zend\Uri\Http $uri)``
+   ``setUri(string|Zend\Uri\Http $uri)``
 
    Set the URI/URL for this request; this can be a string or an instance of ``Zend\Uri\Http``.
 
