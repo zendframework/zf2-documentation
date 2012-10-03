@@ -10,12 +10,12 @@ This filter can strip XML and HTML tags from given content.
    Zend\\Filter\\StripTags is potentially unsecure
    ===============================================
 
-   Be warned that Zend\Filter\StripTags should only be used to strip all available tags.
+   Be warned that Zend\\Filter\\StripTags should only be used to strip all available tags.
 
-   Using Zend\Filter\StripTags to make your site secure by stripping some unwanted tags will lead 
+   Using Zend\\Filter\\StripTags to make your site secure by stripping some unwanted tags will lead 
    to unsecure and dangerous code.
 
-   Zend\Filter\StripTags must not be used to prevent XSS attacks. This filter is no replacement for 
+   Zend\\Filter\\StripTags must not be used to prevent XSS attacks. This filter is no replacement for 
    using Tidy or HtmlPurifier. 
 
 .. _zend.filter.set.striptags.options:

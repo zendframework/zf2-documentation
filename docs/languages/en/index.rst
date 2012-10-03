@@ -64,6 +64,10 @@
    modules/zend.dom.intro
    modules/zend.dom.query
    modules/zend.event-manager.event-manager
+   modules/zend.filter
+   modules/zend.filter.set
+   modules/zend.filter.filter-chains
+   modules/zend.filter.writing-filters
    modules/zend.form.intro
    modules/zend.form.quick-start
    modules/zend.form.collections
@@ -291,6 +295,16 @@ Zend\\EventManager
 ^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zend.event-manager.event-manager`
+
+.. _zend.filter:
+
+Zend\\Filter
+^^^^^^^^^^^^
+
+        * :doc:`modules/zend.filter`
+        * :doc:`modules/zend.filter.set`
+        * :doc:`modules/zend.filter.filter-chains`
+        * :doc:`modules/zend.filter.writing-filters`
 
 .. _zend.form:
 
