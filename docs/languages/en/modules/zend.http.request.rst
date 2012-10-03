@@ -24,10 +24,10 @@ A typical HTTP request looks like this:
    |         BODY           |
    --------------------------
 
-In simplified terms, the request consist of a method, *URI* and the HTTP version number which all make up the
-"Request Line." Next is a set of headers; there can be 0 or an unlimited number of headers. After that is the
-request body, which is typically used when a client wishes to send data to the server in the form of an encoded
-file, or include a set of POST parameters, for example. More information on the structure and specification of an
+In simplified terms, the request consists of a method, *URI* and HTTP version number which together make up the 
+"Request Line." Next come the HTTP headers, of which there can be 0 or more. After that is the equest body, 
+which is typically used when a client wishes to send data to the server in the form of an encoded file,
+or include a set of POST parameters, for example. More information on the structure and specification of a 
 HTTP request can be found in `RFC-2616 on the W3.org site`_.
 
 .. _zend.http.request.quick-start:
