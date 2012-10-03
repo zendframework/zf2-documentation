@@ -265,8 +265,10 @@ Here's a simple way to generate a salt string for every user at registration:
 .. code-block:: php
    :linenos:
 
+   $dynamicSalt = '';
    for ($i = 0; $i < 50; $i++) {
        $dynamicSalt .= chr(rand(33, 126));
+   }
 
 And now let's build the adapter:
 
