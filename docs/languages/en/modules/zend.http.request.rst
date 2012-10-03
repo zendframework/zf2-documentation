@@ -230,9 +230,12 @@ Available Methods
 **getHeaders**
    ``getHeaders(string|null $name, mixed|null $default)``
 
-   Return the header container responsible for headers or all headers of a certain name/type.
+   Return the container responsible for storing HTTP headers.  This container exposes the primary API for
+   manipulating headers set in the HTTP request.  See :ref:`the section on Zend\\Http\\Headers<zend.http.headers>`
+   for more information.
 
-   Returns ``Zend\Http\Headers`` or ``Zend\Http\Header\HeaderInterface`` depending on value of ``$name`` argument.
+   Returns ``Zend\Http\Headers`` if ``$name`` is ``null``.
+   Returns ``Zend\Http\Header\HeaderInterface`` or ``ArrayIterator`` if ``$name`` matches one or more stored headers, respectively.
 
 .. _zend.stdlib.message.methods.set-metadata:
 

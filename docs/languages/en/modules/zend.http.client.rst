@@ -46,10 +46,8 @@ be left out, and set later using the setUri() and setConfig() methods.
 
 .. note::
 
-   ``Zend\Http\Client`` uses ``Zend\Uri\Http`` to validate URLs. This means that some special characters like the
-   pipe symbol ('\|') or the caret symbol ('^') will not be accepted in the URL by default. This can be modified by
-   setting the 'allowunwise' option of ``Zend\Uri\Http`` to '``TRUE``'. See :ref:`this section
-   <zend.uri.validation.allowunwise>` for more information.
+   ``Zend\Http\Client`` uses ``Zend\Uri\Http`` to validate URLs.  See the :ref:`Zend\\Uri manual page<zend.uri>`
+   for more information on the validation process.
 
 .. _zend.http.client.options:
 

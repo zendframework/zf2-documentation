@@ -116,7 +116,9 @@ Available Methods
 **getHeaders**
    ``getHeaders()``
 
-   Return the parameter container responsible for headers parameters
+   Return the container responsible for storing HTTP headers.  This container exposes the primary API for
+   manipulating headers set in the HTTP response.  See :ref:`the section on Zend\\Http\\Headers<zend.http.headers>`
+   for more information.
 
    Returns ``Zend\Http\Headers``
 
