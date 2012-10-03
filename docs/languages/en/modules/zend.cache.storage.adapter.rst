@@ -1,6 +1,6 @@
 ﻿.. _zend.cache.storage.adapter:
 
-Zend\Cache\Storage\Adapter
+Zend\\Cache\\Storage\\Adapter
 =============================
 
 .. _zend.cache.storage.adapter.intro:
