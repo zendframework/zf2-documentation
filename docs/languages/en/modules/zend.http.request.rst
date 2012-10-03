@@ -414,10 +414,11 @@ Examples
    $string = "GET /foo HTTP/1.1\r\n\r\nSome Content";
    $request = Request::fromString($string);
 
-   $request->getMethod();  // returns Request::METHOD_GET
-   $request->getUri();     // returns '/foo'
-   $request->getVersion(); // returns Request::VERSION_11 or '1.1'
-   $request->getContent(); // returns 'Some Content'
+   $request->getMethod();    // returns Request::METHOD_GET
+   $request->getUri();       // returns Zend\Uri\Http object
+   $request->getUriString(); // returns '/foo'
+   $request->getVersion();   // returns Request::VERSION_11 or '1.1'
+   $request->getContent();   // returns 'Some Content'
 
 .. _zend.http.request.examples.from-array:
 
