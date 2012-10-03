@@ -3,7 +3,7 @@
 Button Element
 ^^^^^^^^^^^^^^
 
-``Zend\Form\Element\Button`` is meant to be paired with the ``Zend/Form/View/Helper/FormButton`` view helper.
+``Zend\Form\Element\Button`` is meant to be paired with the ``Zend\Form\View\Helper\FormButton`` view helper.
 
 ``Zend\Form\Element\Button`` extends from :ref:`Zend\\Form\\Element <zend.form.element>`.
 
@@ -12,7 +12,7 @@ Button Element
 Basic Usage
 """""""""""
 
-This element automatically adds a ``"type"`` attribute of value ``"button"``.
+This element automatically adds a ``type`` attribute of value ``button``.
 
 .. code-block:: php
    :linenos:
