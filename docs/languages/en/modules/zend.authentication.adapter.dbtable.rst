@@ -133,8 +133,43 @@ In addition to the availability of the ``getIdentity()`` method upon the authent
        [password] => my_password
        [real_name] => My Real Name
    )
+   */
 
 Since the table row contains the credential value, it is important to secure the values against unintended access.
+
+When retrieving the result object, we can either specify what columns to return, or what columns to omit:
+
+.. code-block:: php
+    :linenos:
+
+    $columnsToReturn = array(
+        'id', 'username', 'real_name'
+    );
+    print_r($authAdapter->getResultRowObject($columnsToReturn));
+
+    /* Output:
+
+    Array
+    (
+       [id] => 1
+       [username] => my_username
+       [real_name] => My Real Name
+    )
+    */
+
+    $columnsToOmit = array('password');
+    print_r($authAdapter->getResultRowObject(null, $columnsToOmit);
+
+    /* Output:
+
+    Array
+    (
+       [id] => 1
+       [username] => my_username
+       [real_name] => My Real Name
+    )
+    */
+
 
 .. _zend.authentication.adapter.dbtable.advanced.storing_result_row:
 
