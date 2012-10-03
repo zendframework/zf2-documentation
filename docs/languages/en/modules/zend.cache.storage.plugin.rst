@@ -46,87 +46,105 @@ all given plugins at once.
    $plugin = new Zend\Cache\Storage\Plugin\Serializer();
    $cache->addPlugin($plugin);
 
-.. _zend.cache.storage.plugin.options:
+.. _zend.cache.storage.plugin.clear-expired-by-factor
 
-Configuration Options
----------------------
+Zend\\Cache\\Storage\\Adapter\\ClearExpiredByFactor
+---------------------------------------------------
 
-.. _zend.cache.storage.plugin.options.clearing-factor:
+   This plugin calls the storage method ``clearExpired()`` randomly (by factor)
+   after every call of ``setItem()``, ``setItems()``, ``addItem()`` and ``addItems()``.
 
-**clearing_factor**
-   Set the automatic clearing factor. Used by the ``ClearByFactor`` plugin.
+.. _zend.cache.storage.plugin.clear-expired-by-factor.options
 
-   - ``setClearingFactor(int $clearingFactor)``
-     Implements a fluent interface.
+.. table:: Plugin specific options
 
-   - ``getClearingFactor()``
-     Returns int
+   +--------------------+------------+---------------+--------------------------------------------+
+   |Name                |Data Type   |Default Value  |Describtion                                 |
+   +====================+============+===============+============================================+
+   |clearing_factor     |``integer`` |0              |The automatic clearing factor               |
+   +--------------------+------------+---------------+--------------------------------------------+
 
-.. _zend.cache.storage.plugin.options.clear-by-namespace:
+.. _zend.cache.storage.plugin.exaption-handler
 
-**clear_by_namespace**
-   Flag indicating whether or not to clear by namespace. Used by the ``ClearByFactor`` plugin.
+Zend\\Cache\\Storage\\Adapter\\ExceptionHandler
+-----------------------------------------------
 
-   - ``setClearByNamespace(bool $clearByNamespace)``
-     Implements a fluent interface.
+   This plugin catches all exceptions thown on reading or writing to cache
+   and sends the exception to a defined callack function.
+   
+   It's configurable if the plugin should re-throw the catched exception.
+   
 
-   - ``getClearByNamespace()``
-     Returns bool
+.. _zend.cache.storage.plugin.exaption-handler.options
 
-.. _zend.cache.storage.plugin.options.exception-callback:
+.. table:: Plugin specific options
 
-**exception_callback**
-   Set callback to call on intercepted exception. Used by the ``ExceptionHandler`` plugin.
+   +--------------------+----------------------+---------------+--------------------------------------------+
+   |Name                |Data Type             |Default Value  |Describtion                                 |
+   +====================+======================+===============+============================================+
+   |exception_callback  |``callable`` ``null`` |``null``       |Callback will be called on an exception     |
+   |                    |                      |               |and get the exception as argument           |
+   +--------------------+----------------------+---------------+--------------------------------------------+
+   |throw_exceptions    |``boolean``           |``true``       |Re-throw catched excaptions                 |
+   +--------------------+----------------------+---------------+--------------------------------------------+
 
-   - ``setExceptionCallback(callable $exceptionCallback)``
-     Implements a fluent interface.
+.. _zend.cache.storage.plugin.ignore-user-abort
 
-   - ``getExceptionCallback()``
-     Returns null|callable
+Zend\\Cache\\Storage\\Adapter\\IgnoreUserAbort
+----------------------------------------------
 
-.. _zend.cache.storage.plugin.options.optimizing-factor:
+   This plugin ignores script terminations by users until write operations to cache finished.
 
-**optimizing_factor**
-   Set automatic optimizing factor. Used by the ``OptimizeByFactor`` plugin.
+.. _zend.cache.storage.plugin.ignore-user-abort.options
 
-   - ``setOptimizingFactor(int $optimizingFactor)``
-     Implements a fluent interface.
+.. table:: Plugin specific options
 
-   - ``getOptimizingFactor()``
-     Returns int
+   +--------------------+-------------+---------------+-----------------------------------------------------+
+   |Name                |Data Type    |Default Value  |Describtion                                          |
+   +====================+=============+===============+=====================================================+
+   |exit_on_abort       |``boolean``  |``true``       |Terminate script execution if user abort the script  |
+   +--------------------+----------------------+---------------+--------------------------------------------+
 
-.. _zend.cache.storage.plugin.options.serializer:
+.. _zend.cache.storage.plugin.optimize-by-factor
 
-**serializer**
-   Set serializer adapter to use. Used by ``Serializer`` plugin.
+Zend\\Cache\\Storage\\Adapter\\OptimizeByFactor
+----------------------------------------------
 
-   - ``setSerializer(string|Zend\Serializer\Adapter $serializer)``
-     Implements a fluent interface.
+   This plugin calls the storage method ``optimize()`` randomly (by factor)
+   after removing items from cache.
 
-   - ``getSerializer()``
-     Returns Zend\\Serializer\\Adapter
+.. _zend.cache.storage.plugin.optimize-by-factor.options
 
-.. _zend.cache.storage.plugin.options.serializer-options:
+.. table:: Plugin specific options
 
-**serializer_options**
-   Set configuration options for instantiating a serializer adapter. Used by the ``Serializer`` plugin.
+   +--------------------+-------------+---------------+-----------------------------------------------------+
+   |Name                |Data Type    |Default Value  |Describtion                                          |
+   +====================+=============+===============+=====================================================+
+   |optimizing_factor   |``integer``  |0              |The automatic optimization factor                    |
+   +--------------------+-------------+---------------+-----------------------------------------------------+
 
-   - ``setSerializerOptions(array $serializerOptions)``
-     Implements a fluent interface.
+.. _zend.cache.storage.plugin.serializer
 
-   - ``getSerializerOptions()``
-     Returns array
+Zend\\Cache\\Storage\\Adapter\\Serializer
+----------------------------------------------
 
-.. _zend.cache.storage.plugin.options.throw-exceptions:
+   This plugin will serialize data on writing to cache and unserialize on reading.
+   So it's possible to store different datatypes into cache storages only support strings.
 
-**throw_exceptions**
-   Set flag indicating we should re-throw exceptions. Used by the ``ExceptionHandler`` plugin.
+.. _zend.cache.storage.plugin.serializer.options
 
-   - ``setThrowExceptions(bool $throwExceptions)``
-     Implements a fluent interface.
+.. table:: Plugin specific options
 
-   - ``getThrowExceptions()``
-     Returns bool
+   +--------------------+-----------------------------------------------------------------+---------------+-------------------------------------------------------------------------+
+   |Name                |Data Type                                                        |Default Value  |Describtion                                                              |
+   +====================+=================================================================+===============+=========================================================================+
+   |serializer          |``null`` ``string`` ``Zend\Serializer\Adapter\AdapterInterface`` |``null``       |The serializer to use                                                    |
+   |                    |                                                                 |               |                                                                         |
+   |                    |                                                                 |               | - If ``null`` use the default serializer                                |
+   |                    |                                                                 |               | - If ``string`` instantiate the serializer with ``serializer_options``  |
+   +--------------------+-----------------------------------------------------------------+---------------+-------------------------------------------------------------------------+
+   |serializer_options  |``array``                                                        |``[]``         |Array of serializer options used to instantiate the serializer           |
+   +--------------------+-----------------------------------------------------------------+---------------+-------------------------------------------------------------------------+
 
 .. _zend.cache.storage.plugin.methods:
 
@@ -171,9 +189,61 @@ Available Methods
 
 .. _zend.cache.storage.plugin.examples:
 
-TODO: Examples
+Examples
 --------------
 
+.. _zend.cache.storage.plugin.examples.write-basics:
 
+.. rubric:: Basics of writing an own storage plugin
 
+.. code-block:: php
+   :linenos:
 
+   use Zend\Cache\Storage\Event;
+   use Zend\Cache\Storage\Plugin\AbstractPlugin;
+   use Zend\EventManager\EventManagerInterface;
+   
+   class MyPlugin extends AbstractPlugin
+   {
+       
+       protected $handles = array();
+       
+       // This method have to attach all events required by this plugin
+       public function attach(EventManagerInterface $events)
+       {
+           $this->handles[] = $events->attach('getItem.pre', array($this, 'onGetItemPre'));
+           $this->handles[] = $events->attach('getItem.post', array($this, 'onGetItemPost'));
+           return $this;
+       }
+       
+       // This method have to attach all events required by this plugin
+       public function detach(EventManagerInterface $events)
+       {
+           foreach ($this->handles as $handle) {
+              $events->detach($handle);
+           }
+           $this->handles = array();
+           return $this;
+       }
+       
+       public function onGetItemPre(Event $event)
+       {
+           $params = $event->getParams();
+           echo sprintf("Method 'getItem' with key '%s' started\n", params['key']);
+       }
+       
+       public function onGetItemPost(Event $event)
+       {
+           $params = $event->getParams();
+           echo sprintf("Method 'getItem' with key '%s' finished\n", params['key']);
+       }
+   }
+   
+   // After defining this basic plugin we can instantiate and add it to an adapter instance
+   $plugin = new MyPlugin();
+   $cache->addPlugin($plugin);
+   
+   // Now on calling getItem our basic plugin should print the expacted output
+   $cache->getItem('cache-key');
+   // Method 'getItem' with key 'cache-key' started
+   // Method 'getItem' with key 'cache-key' finished

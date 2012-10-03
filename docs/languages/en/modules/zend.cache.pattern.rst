@@ -51,247 +51,111 @@ instantiating one of the ``Zend\Cache\Pattern\*`` classes.
        'cache_output' => true,
    )));
 
-.. _zend.cache.pattern.options:
-
-Configuration Options
----------------------
-
-.. _zend.cache.pattern.options.cache-by-default:
-
-**cache_by_default**
-   Flag indicating whether or not to cache by default. Used by the ``ClassCache`` and ``ObjectCache`` patterns.
-
-   - ``setCacheByDefault(bool $cacheByDefault)``
-     Implements a fluent interface.
-
-   - ``getCacheByDefault()``
-     Returns boolean.
-
-.. _zend.cache.pattern.options.cache-output:
-
-**cache_output**
-   Used by the ``CallbackCache``, ``ClassCache``, and ``ObjectCache`` patterns. Flag used to determine whether or
-   not to cache output.
-
-   - ``setCacheOutput(bool $cacheOutput)``
-     Implements a fluent interface.
-
-   - ``getCacheOutput()``
-     Returns boolean
-
-.. _zend.cache.pattern.options.class:
-
-**class**
-   Set the name of the class to cache. Used by the ``ClassCache`` pattern.
-
-   - ``setclass(string $class)``
-     Implements a fluent interface.
-
-   - ``getClass()``
-     Returns null|string
-
-.. _zend.cache.pattern.options.class-cache-methods:
-
-**class_cache_methods**
-   Set list of method return values to cache. Used by ``ClassCache`` Pattern.
-
-   - ``setClassCacheMethods(array $classCacheMethods)``
-     Implements a fluent interface.
-
-   - ``getClassCacheMethods()``
-     Returns array
-
-.. _zend.cache.pattern.options.class-non-cache-methods:
-
-**class_non_cache_methods**
-   Set list of method return values that should **not** be cached. Used by the ``ClassCache`` pattern.
-
-   - ``setClassNonCacheMethods(array $classNonCacheMethods)``
-     Implements a fluent interface.
-
-   - ``getClassNonCacheMethods()``
-     Returns array
-
-.. _zend.cache.pattern.options.dir-perm:
-
-**dir_perm**
-   Set directory permissions; proxies to "dir_umask" property, setting the inverse of the provided value. Used by
-   the ``CaptureCache`` pattern.
-
-   - ``setDirPerm(string|int $dirPerm)``
-     Implements a fluent interface.
-
-   - ``getDirPerm()``
-     Returns int
-
-.. _zend.cache.pattern.options.dir-umask:
-
-**dir_umask**
-   Set the directory umask value. Used by the ``CaptureCache`` pattern.
-
-   - ``setDirUmask(int $dirUmask)``
-     Implements a fluent interface.
-
-   - ``getDirUmask()``
-     Returns int
-
-.. _zend.cache.pattern.options.file-locking:
-
-**file_locking**
-   Set whether or not file locking should be used. Used by the ``CaptureCache`` pattern.
-
-   - ``setFileLocking(bool $fileLocking)``
-     Implements a fluent interface.
-
-   - ``getFileLocking()``
-     Returns bool
-
-.. _zend.cache.pattern.options.file-perm:
-
-**file_perm**
-   Set file permissions; proxies to the "file_umask" property, setting the inverse of the value provided. Used by
-   the ``CaptureCache`` pattern.
-
-   - ``setFilePerm(int|string $filePerm)``
-     Implements a fluent interface.
-
-   - ``getFilePerm()``
-     Returns int
-
-.. _zend.cache.pattern.pattern-options.methods.set-file-umask:
-
-**file_umask**
-   Set file umask; used by the ``CaptureCache`` pattern.
-
-   - ``setFileUmask(int $fileUmask)``
-     Implements a fluent interface.
-
-   - ``getFileUmask()``
-     Returns int
-
-.. _zend.cache.pattern.options.index-filename:
-
-**index_filename**
-   Set value for index filename. Used by the ``CaptureCache`` pattern.
-
-   - ``setIndexFilename(string $indexFilename)``
-     Implements a fluent interface.
-
-   - ``getIndexFilename()``
-     Returns string
-
-.. _zend.cache.pattern.options.object:
-
-**object**
-   Set object to cache; used by the ``ObjectCache`` pattern.
-
-   - ``setObject(object $object)``
-     Implements a fluent interface.
-
-   - ``getObject()``
-     Returns null|object.
-
-.. _zend.cache.pattern.options.object-cache-magic-properties:
-
-**object_cache_magic_properties**
-   Set flag indicating whether or not to cache magic properties. Used by the ``ObjectCache`` pattern.
-
-   - ``setObjectCacheMagicProperties(bool $objectCacheMagicProperties)``
-     Implements a fluent interface.
-
-   - ``getObjectCacheMagicProperties()``
-     Returns bool
-
-.. _zend.cache.pattern.options.object-cache-methods:
-
-**object_cache_methods**
-   Set list of object methods for which to cache return values. Used by ``ObjectCache`` pattern.
-
-   - ``setObjectCacheMethods(array $objectCacheMethods)``
-     Implements a fluent interface.
-
-   - ``getObjectCacheMethods()``
-     Returns array
-
-.. _zend.cache.pattern.options.object-key:
-
-**object_key**
-   Set the object key part; used to generate a callback key in order to speed up key generation. Used by the
-   ``ObjectCache`` pattern.
-
-   - ``setObjectKey(null|string $objectKey)``
-     Implements a fluent interface.
-
-   - ``getObjectKey()``
-     Returns null|string
-
-.. _zend.cache.pattern.options.object-non-cache-methods:
-
-**object_non_cache_methods**
-   Set list of object methods for which **not** to cache return values. Used by the ``ObjectCache`` pattern.
-
-   - ``setObjectNonCacheMethods(array $objectNonCacheMethods)``
-     Implements a fluent interface.
-
-   - ``getObjectNonCacheMethods()``
-     Returns array
-
-.. _zend.cache.pattern.options.public-dir:
-
-**public_dir**
-   Set location of public directory; used by the ``CaptureCache`` pattern.
-
-   - ``setPublicDir()``
-     Implements a fluent interface.
-
-   - ``getPublicDir()``
-     Returns null|string
-
-.. _zend.cache.pattern.options.storage:
-
-**storage**
-   Set the storage adapter. Required for the following Pattern classes: ``CallbackCache``, ``ClassCache``,
-   ``ObjectCache``, ``OutputCache``.
-
-   - ``setStorage(string|array|Zend\Cache\Storage\Adapter $storage)``
-     Implements a fluent interface.
-
-   - ``getStorage()``
-     Returns null|Zend\\Cache\\Storage\\Adapter
-
-.. _zend.cache.pattern.options.tag-key:
-
-**tag_key**
-   Set the prefix used for tag keys. Used by the ``CaptureCache`` pattern.
-
-   - ``setTagKey(string $tagKey)``
-     Implements a fluent interface.
-
-   - ``getTagKey()``
-     Returns string
-
-.. _zend.cache.pattern.options.tags:
-
-**tags**
-   Set list of tags to use for captured content. Used by the ``CaptureCache`` pattern.
-
-   - ``setTags(array $tags)``
-     Implements a fluent interface.
-
-   - ``getTags()``
-     Returns array
-
-.. _zend.cache.pattern.options.tag-storage:
-
-   Set storage adapter to use for tags. Used by the ``CaptureCache`` pattern.
-
-   - ``setTagStorage(string|array|Zend\Cache\Storage\Adapter $tagStorage)``
-     Implements a fluent interface.
-
-   - ``getTagStorage()``
-     Returns null|Zend\\Cache\\Storage\\Adapter
-
-.. _zend.cache.pattern.methods:
+.. _zend.cache.pattern.callbackcache:
+
+Zend\\Cache\\Pattern\\CallbackCache
+-----------------------------------
+
+   This cache pattern caches calls of not specific functions and methods given as a callback.
+
+.. _zend.cache.pattern.callbackcache.options:
+
+.. table:: Configuration options
+
+   +--------------+--------------------------------------------------------------+----------------+-------------------------------------------------+
+   |Option        |Data Type                                                     |Default Value   |Description                                      |
+   +==============+==============================================================+================+=================================================+
+   |storage       |``string`` ``array`` ``Zend\Cache\Storage\StorageInterface``  |<none>          |The storage to write/read cached data            |
+   +--------------+--------------------------------------------------------------+----------------+-------------------------------------------------+
+   |cache_output  |``boolean``                                                   |``true``        |Cache output of callback                         |
+   +--------------+--------------------------------------------------------------+----------------+-------------------------------------------------+
+
+.. _zend.cache.pattern.classcache:
+
+Zend\\Cache\\Pattern\\ClassCache
+--------------------------------
+
+   This cache pattern caches calls of static class methods.
+
+.. _zend.cache.pattern.classcache.options:
+
+.. table:: Configuration options
+
+   +------------------------+--------------------------------------------------------------+----------------+-----------------------------------------------------------------+
+   |Option                  |Data Type                                                     |Default Value   |Description                                                      |
+   +========================+==============================================================+================+=================================================================+
+   |storage                 |``string`` ``array`` ``Zend\Cache\Storage\StorageInterface``  |<none>          |The storage to write/read cached data                            |
+   +------------------------+--------------------------------------------------------------+----------------+-----------------------------------------------------------------+
+   |class                   |``string``                                                    |<none>          |The class name                                                   |
+   +------------------------+--------------------------------------------------------------+----------------+-----------------------------------------------------------------+
+   |cache_output            |``boolean``                                                   |``true``        |Cache output of callback                                         |
+   +------------------------+--------------------------------------------------------------+----------------+-----------------------------------------------------------------+
+   |cache_by_default        |``boolean``                                                   |``true``        |Cache method calls by default                                    |
+   +------------------------+--------------------------------------------------------------+----------------+-----------------------------------------------------------------+
+   |class_cache_methods     |``array``                                                     |``[]``          |List of methods to cache (If ``cache_by_default`` is disabled)   |
+   +------------------------+--------------------------------------------------------------+----------------+-----------------------------------------------------------------+
+   |class_non_cache_methods |``array``                                                     |``[]``          |List of methods to no-cache (If ``cache_by_default`` is enabled) |
+   +------------------------+--------------------------------------------------------------+----------------+-----------------------------------------------------------------+
+
+.. _zend.cache.pattern.objectcache:
+
+Zend\\Cache\\Pattern\\ObjectCache
+---------------------------------
+
+   This cache pattern caches calls of object methods.
+
+.. _zend.cache.pattern.objectcache.options:
+
+.. table:: Configuration options
+
+   +------------------------------+--------------------------------------------------------------+------------------------+-----------------------------------------------------------------+
+   |Option                        |Data Type                                                     |Default Value           |Description                                                      |
+   +==============================+==============================================================+========================+=================================================================+
+   |storage                       |``string`` ``array`` ``Zend\Cache\Storage\StorageInterface``  |<none>                  |The storage to write/read cached data                            |
+   +------------------------------+--------------------------------------------------------------+------------------------+-----------------------------------------------------------------+
+   |object                        |``object``                                                    |<none>                  |The object to cache methods calls of                             |
+   +------------------------------+--------------------------------------------------------------+------------------------+-----------------------------------------------------------------+
+   |object_key                    |``null`` ``string``                                           |<Class name of object>  |A hopefully unique key of the object                             |
+   +------------------------------+--------------------------------------------------------------+------------------------+-----------------------------------------------------------------+
+   |cache_output                  |``boolean``                                                   |``true``                |Cache output of callback                                         |
+   +------------------------------+--------------------------------------------------------------+------------------------+-----------------------------------------------------------------+
+   |cache_by_default              |``boolean``                                                   |``true``                |Cache method calls by default                                    |
+   +------------------------------+--------------------------------------------------------------+------------------------+-----------------------------------------------------------------+
+   |object_cache_methods          |``array``                                                     |``[]``                  |List of methods to cache (If ``cache_by_default`` is disabled)   |
+   +------------------------------+--------------------------------------------------------------+------------------------+-----------------------------------------------------------------+
+   |object_non_cache_methods      |``array``                                                     |``[]``                  |List of methods to no-cache (If ``cache_by_default`` is enabled) |
+   +------------------------------+--------------------------------------------------------------+------------------------+-----------------------------------------------------------------+
+   |object_cache_magic_properties |``boolean``                                                   |``false``               |Cache calls of magic object properties                           |
+   +------------------------------+--------------------------------------------------------------+------------------------+-----------------------------------------------------------------+
+
+.. _zend.cache.pattern.capturecache:
+
+Zend\\Cache\\Pattern\\CaptureCache
+----------------------------------
+
+   This cache pattern writes the output of the script to the requested file.
+   So for next requests the webserver can response with a static file
+   instead of starting PHP again to generate the response again.
+
+.. _zend.cache.pattern.capturecache.options:
+
+.. table:: Configuration options
+
+   +------------------+--------------------------+------------------------+-----------------------------------------------------------------+
+   |Option            |Data Type                 |Default Value           |Description                                                      |
+   +==================+==========================+========================+=================================================================+
+   |public_dir        |``string``                |<none>                  |Location of public directory to write output to                  |
+   +------------------+--------------------------+------------------------+-----------------------------------------------------------------+
+   |index_filename    |``string``                |"index.html"            |The name of the first file if only a directory was requested     |
+   +------------------+--------------------------+------------------------+-----------------------------------------------------------------+
+   |file_locking      |``boolean``               |``true``                |Locking output files on writing                                  |
+   +------------------+--------------------------+------------------------+-----------------------------------------------------------------+
+   |file_permission   |``integer`` ``boolean``   |0600 (``false`` on win) |Set permissions of generated output files                        |
+   +------------------+--------------------------+------------------------+-----------------------------------------------------------------+
+   |dir_permission    |``integer`` ``boolean``   |0700 (``false`` on win) |Set permissions of generated output directories                  |
+   +------------------+--------------------------+------------------------+-----------------------------------------------------------------+
+   |umask             |``integer`` ``boolean``   |``false``               |Using umask on generationg output files / directories            |
+   +------------------+--------------------------+------------------------+-----------------------------------------------------------------+
 
 Available Methods
 -----------------

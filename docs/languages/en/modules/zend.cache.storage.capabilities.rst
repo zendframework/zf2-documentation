@@ -27,7 +27,6 @@ Available Methods
 .. _zend.cache.storage.capabilities.methods.__construct:
 
 **__construct**
-   ``__construct(stdClass $marker, array $capabilities = array ( ), null|Zend\Cache\Storage\Capabilities $baseCapabilities)``
    ``__construct(Zend\Cache\Storage\StorageInterface $storage, stdClass $marker, array $capabilities = array(), Capabilities $baseCapabilities = null)``
 
    Constructor
@@ -37,9 +36,9 @@ Available Methods
 **getSupportedDatatypes**
    ``getSupportedDatatypes()``
 
-   Get supported datatypes.
+   Get supported datatypes
 
-   Returns array.
+   Returns ``array``
 
 .. _zend.cache.storage.capabilities.methods.set-supported-datatypes:
 
