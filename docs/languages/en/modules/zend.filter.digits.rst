@@ -7,8 +7,8 @@ Returns the string ``$value``, removing all but digits.
 
 .. _zend.filter.set.digits.options:
 
-Supported options for Zend\Filter\Digits
-----------------------------------------
+Supported options for Zend\\Filter\\Digits
+------------------------------------------
 
 There are no additional options for ``Zend\Filter\Digits``.
 

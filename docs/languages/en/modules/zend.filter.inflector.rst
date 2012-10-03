@@ -1,7 +1,7 @@
 .. _zend.filter.inflector:
 
-Zend\Filter\Inflector
-=====================
+Zend\\Filter\\Inflector
+=======================
 
 ``Zend\Filter\Inflector`` is a general purpose tool for rules-based inflection of strings to a given target.
 
@@ -9,7 +9,7 @@ As an example, you may find you need to transform MixedCase or camelCasedWords i
 policies, or other reasons, you also need to lower case this, and you want to separate the words using a dash
 ('-'). An inflector can do this for you.
 
-``Zend\Filter\Inflector`` implements ``Zend\Filter\Interface``; you perform inflection by calling ``filter()`` on
+``Zend\Filter\Inflector`` implements ``Zend\Filter\FilterInterface``; you perform inflection by calling ``filter()`` on
 the object instance.
 
 .. _zend.filter.inflector.camel_case_example:
@@ -57,9 +57,10 @@ As an example, you can use any ``Zend\Filter`` concrete implementations; however
 Setting Paths To Alternate Filters
 ----------------------------------
 
-``Zend\Filter\Inflector`` uses ``Zend\Loader\PluginLoader`` to manage loading filters to use with inflection. By
-default, any filter prefixed with ``Zend\Filter`` will be available. To access filters with that prefix but which
-occur deeper in the hierarchy, such as the various Word filters, simply strip off the ``Zend\Filter`` prefix:
+``Zend\Filter\Inflector`` uses ``Zend\Filter\FilterPluginManager`` to manage loading filters to use with inflection.
+By default, filters registered with Zend\Filter\FilterPluginManager are available. To access filters with that
+prefix but which occur deeper in the hierarchy, such as the various Word filters, simply strip off the
+``Zend\Filter`` prefix:
 
 .. code-block:: php
    :linenos:
@@ -242,7 +243,7 @@ one of the following ways:
 - **String**. The string may be a filter class name, or a class name segment minus any prefix set in the
   inflector's plugin loader (by default, minus the '``Zend\Filter``' prefix).
 
-- **Filter object**. Any object instance implementing ``Zend\Filter\Interface`` may be passed as a filter.
+- **Filter object**. Any object instance implementing ``Zend\Filter\FilterInterface`` may be passed as a filter.
 
 - **Array**. An array of one or more strings or filter objects as defined above.
 
@@ -321,11 +322,12 @@ manipulating and retrieving rules, and controlling if and when exceptions are th
 
 .. _zend.filter.inflector.config:
 
-Using Zend\Config with Zend\Filter\Inflector
---------------------------------------------
+Using a Traversable or an array with Zend\\Filter\\Inflector
+------------------------------------------------------------
 
-You can use ``Zend\Config`` to set rules, filter prefix paths, and other object state in your inflectors, either by
-passing a ``Zend\Config`` object to the constructor or ``setOptions()``. The following settings may be specified:
+You can use a Traversable or an array to set rules, filter prefix paths, and other object state in your inflectors,
+either by passing a Traversable object or an array to the constructor or ``setOptions()``. The following settings
+may be specified:
 
 - ``target`` specifies the inflection target.
 
@@ -342,17 +344,17 @@ passing a ``Zend\Config`` object to the constructor or ``setOptions()``. The fol
 
 .. _zend.filter.inflector.config.example:
 
-.. rubric:: Using Zend\Config with Zend\Filter\Inflector
+.. rubric:: Using a Traversable or an array with Zend\Filter\Inflector
 
 .. code-block:: php
    :linenos:
 
    // With the constructor:
-   $config    = new Zend\Config($options);
-   $inflector = new Zend\Filter\Inflector($config);
+   $options; // implements Traversable
+   $inflector = new Zend\Filter\Inflector($options);
 
    // Or with setOptions():
    $inflector = new Zend\Filter\Inflector();
-   $inflector->setOptions($config);
+   $inflector->setOptions($options);
 
 

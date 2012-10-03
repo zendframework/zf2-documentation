@@ -8,8 +8,8 @@ exist.
 
 .. _zend.filter.set.htmlentities.options:
 
-Supported options for Zend\Filter\HtmlEntities
-----------------------------------------------
+Supported options for Zend\\Filter\\HtmlEntities
+------------------------------------------------
 
 The following options are supported for ``Zend\Filter\HtmlEntities``:
 
@@ -23,7 +23,7 @@ The following options are supported for ``Zend\Filter\HtmlEntities``:
 
   .. note::
 
-     This option can also be set via the ``$options`` parameter as a ``Zend\Config`` object or array. The option
+     This option can also be set via the ``$options`` parameter as a Traversable object or array. The option
      key will be accepted as either charset or encoding.
 
 - **doublequote**: Equivalent to the *PHP* htmlentities native function parameter **double_encode**. If set to

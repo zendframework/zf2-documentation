@@ -8,8 +8,8 @@ adapters for the ``Mcrypt`` and ``OpenSSL`` extensions from *PHP*.
 
 .. _zend.filter.set.encrypt.options:
 
-Supported options for Zend\Filter\Encrypt and Zend\Filter\Decrypt
------------------------------------------------------------------
+Supported options for Zend\\Filter\\Encrypt and Zend\\Filter\\Decrypt
+---------------------------------------------------------------------
 
 The following options are supported for ``Zend\Filter\Encrypt`` and ``Zend\Filter\Decrypt``:
 

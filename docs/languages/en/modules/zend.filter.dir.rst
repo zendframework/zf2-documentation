@@ -7,8 +7,8 @@ Given a string containing a path to a file, this function will return the name o
 
 .. _zend.filter.set.dir.options:
 
-Supported options for Zend\Filter\Dir
--------------------------------------
+Supported options for Zend\\Filter\\Dir
+---------------------------------------
 
 There are no additional options for ``Zend\Filter\Dir``.
 

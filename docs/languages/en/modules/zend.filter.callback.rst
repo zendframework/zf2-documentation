@@ -8,8 +8,8 @@ filter when you already have a method which does the job.
 
 .. _zend.filter.set.callback.options:
 
-Supported options for Zend\Filter\Callback
-------------------------------------------
+Supported options for Zend\\Filter\\Callback
+--------------------------------------------
 
 The following options are supported for ``Zend\Filter\Callback``:
 

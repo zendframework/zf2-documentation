@@ -8,8 +8,8 @@ filter includes an option to also allow white space characters.
 
 .. _zend.filter.set.alpha.options:
 
-Supported options for Zend\Filter\Alpha
----------------------------------------
+Supported options for Zend\\Filter\\Alpha
+-----------------------------------------
 
 The following options are supported for ``Zend\Filter\Alpha``:
 

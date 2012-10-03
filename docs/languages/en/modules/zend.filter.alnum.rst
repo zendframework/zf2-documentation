@@ -8,8 +8,8 @@ supressed.
 
 .. _zend.filter.set.alnum.options:
 
-Supported options for Zend\Filter\Alnum
----------------------------------------
+Supported options for Zend\\Filter\\Alnum
+-----------------------------------------
 
 The following options are supported for ``Zend\Filter\Alnum``:
 

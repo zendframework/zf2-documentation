@@ -7,8 +7,8 @@ These two filters are capable of compressing and decompressing strings, files, a
 
 .. _zend.filter.set.compress.options:
 
-Supported options for Zend\Filter\Compress and Zend\Filter\Decompress
----------------------------------------------------------------------
+Supported options for Zend\\Filter\\Compress and Zend\\Filter\\Decompress
+-------------------------------------------------------------------------
 
 The following options are supported for ``Zend\Filter\Compress`` and ``Zend\Filter\Decompress``:
 
@@ -62,7 +62,7 @@ desired adapter.
 
 To use a different adapter, you simply specify it to the constructor.
 
-You may also provide an array of options or ``Zend\Config`` object. If you do, provide minimally the key "adapter",
+You may also provide an array of options or a Traversable object. If you do, provide minimally the key "adapter",
 and then either the key "options" or "adapterOptions" (which should be an array of options to provide to the
 adapter on instantiation).
 

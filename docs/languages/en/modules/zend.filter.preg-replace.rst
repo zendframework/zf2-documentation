@@ -7,8 +7,8 @@ PregReplace
 
 .. _zend.filter.set.pregreplace.options:
 
-Supported options for Zend\Filter\PregReplace
----------------------------------------------
+Supported options for Zend\\Filter\\PregReplace
+-----------------------------------------------
 
 The following options are supported for ``Zend\Filter\PregReplace``:
 

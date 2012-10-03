@@ -7,8 +7,8 @@ This filter converts any input to be lowercased.
 
 .. _zend.filter.set.stringtolower.options:
 
-Supported options for Zend\Filter\StringToLower
------------------------------------------------
+Supported options for Zend\\Filter\\StringToLower
+-------------------------------------------------
 
 The following options are supported for ``Zend\Filter\StringToLower``:
 

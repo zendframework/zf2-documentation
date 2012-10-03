@@ -7,8 +7,8 @@ This filter converts any input to be uppercased.
 
 .. _zend.filter.set.stringtoupper.options:
 
-Supported options for Zend\Filter\StringToUpper
------------------------------------------------
+Supported options for Zend\\Filter\\StringToUpper
+-------------------------------------------------
 
 The following options are supported for ``Zend\Filter\StringToUpper``:
 

@@ -8,8 +8,8 @@ you work with databases and want to have a ``NULL`` value instead of a boolean o
 
 .. _zend.filter.set.null.options:
 
-Supported options for Zend\Filter\Null
---------------------------------------
+Supported options for Zend\\Filter\\Null
+----------------------------------------
 
 The following options are supported for ``Zend\Filter\Null``:
 
@@ -17,8 +17,8 @@ The following options are supported for ``Zend\Filter\Null``:
 
 .. _zend.filter.set.null.default:
 
-Default behaviour for Zend\Filter\Null
---------------------------------------
+Default behaviour for Zend\\Filter\\Null
+----------------------------------------
 
 Per default this filter works like *PHP*'s ``empty()`` method; in other words, if ``empty()`` returns a boolean
 ``TRUE``, then a ``NULL`` value will be returned.
@@ -38,8 +38,8 @@ Any other value will be returned as is, without any changes.
 
 .. _zend.filter.set.null.types:
 
-Changing behaviour for Zend\Filter\Null
----------------------------------------
+Changing behaviour for Zend\\Filter\\Null
+-----------------------------------------
 
 Sometimes it's not enough to filter based on ``empty()``. Therefor ``Zend\Filter\Null`` allows you to configure
 which type will be converted and which not.
@@ -86,7 +86,7 @@ them, you can give an array, you can use constants, or you can give a textual st
        'integer',
    ));
 
-You can also give an instance of ``Zend\Config`` to set the wished types. To set types afterwards use
+You can also give a Traversable or an array to set the wished types. To set types afterwards use
 ``setType()``.
 
 

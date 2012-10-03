@@ -13,7 +13,9 @@ The following example demonstrates how to write a custom filter:
 
 .. code-block:: php
    :linenos:
-
+   
+   namespace Application\Filter;
+   
    class MyFilter implements Zend\Filter\FilterInterface
    {
        public function filter($value)
@@ -30,4 +32,4 @@ To attach an instance of the filter defined above to a filter chain:
    :linenos:
 
    $filterChain = new Zend\Filter\FilterChain();
-   $filterChain->attach(new MyFilter());
+   $filterChain->attach(new Application\Filter\MyFilter());

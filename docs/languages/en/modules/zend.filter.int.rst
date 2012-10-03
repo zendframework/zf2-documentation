@@ -7,8 +7,8 @@ Int
 
 .. _zend.filter.set.int.options:
 
-Supported options for Zend\Filter\Int
--------------------------------------
+Supported options for Zend\\Filter\\Int
+---------------------------------------
 
 There are no additional options for ``Zend\Filter\Int``.
 

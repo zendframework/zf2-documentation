@@ -7,8 +7,8 @@ This filter will resolve given links and pathnames and returns canonicalized abs
 
 .. _zend.filter.set.realpath.options:
 
-Supported options for Zend\Filter\RealPath
-------------------------------------------
+Supported options for Zend\\Filter\\RealPath
+--------------------------------------------
 
 The following options are supported for ``Zend\Filter\RealPath``:
 

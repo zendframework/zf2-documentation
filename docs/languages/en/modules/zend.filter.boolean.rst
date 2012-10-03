@@ -8,8 +8,8 @@ when processing form values.
 
 .. _zend.filter.set.boolean.options:
 
-Supported options for Zend\Filter\Boolean
------------------------------------------
+Supported options for Zend\\Filter\\Boolean
+-------------------------------------------
 
 The following options are supported for ``Zend\Filter\Boolean``:
 
@@ -22,8 +22,8 @@ The following options are supported for ``Zend\Filter\Boolean``:
 
 .. _zend.filter.set.boolean.default:
 
-Default behaviour for Zend\Filter\Boolean
------------------------------------------
+Default behaviour for Zend\\Filter\\Boolean
+-------------------------------------------
 
 By default, this filter works by casting the input to a ``BOOLEAN`` value; in other words, it operates in a similar
 fashion to calling ``(boolean) $value``.
@@ -41,8 +41,8 @@ This means that without providing any configuration, ``Zend\Filter\Boolean`` acc
 
 .. _zend.filter.set.boolean.types:
 
-Changing behaviour for Zend\Filter\Boolean
-------------------------------------------
+Changing behaviour for Zend\\Filter\\Boolean
+--------------------------------------------
 
 Sometimes casting with ``(boolean)`` will not suffice. ``Zend\Filter\Boolean`` allows you to configure specific
 types to convert, as well as which to omit.
