@@ -420,15 +420,6 @@ Examples
    $request->getVersion();   // returns Request::VERSION_11 or '1.1'
    $request->getContent();   // returns 'Some Content'
 
-.. _zend.http.request.examples.from-array:
-
-.. rubric:: Generating a Request object from an array
-
-.. code-block:: php
-   :linenos:
-
-   N/A
-
 .. _zend.http.request.examples.headers:
 
 .. rubric:: Retrieving and setting headers
