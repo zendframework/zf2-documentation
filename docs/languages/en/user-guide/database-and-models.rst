@@ -170,7 +170,7 @@ Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
 
     class AlbumTable extends AbstractTableGateway
     {
-        protected $table ='album';
+        protected $table = 'album';
 
         public function __construct(Adapter $adapter)
         {
@@ -224,7 +224,7 @@ Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
                     )
                 );
             } else {
-                throw new \Exception('Form id does not exist');
+                throw new \Exception("Could not find row $id");
             }
         }
 
