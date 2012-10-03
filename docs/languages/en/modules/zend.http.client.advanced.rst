@@ -135,39 +135,39 @@ Setting custom headers is performed by first fetching the header container from 
 ``Zend\Http\Request`` object.  This method is quite diverse and can be used in several ways, 
 as the following example shows:
 
-      .. _zend.http.client.custom_headers.example-1:
+.. _zend.http.client.custom_headers.example-1:
 
-      .. rubric:: Setting A Single Custom Request Header
+.. rubric:: Setting A Single Custom Request Header
 
-      .. code-block:: php
-         :linenos:
+.. code-block:: php
+    :linenos:
 
-         // Fetch the container
-         $headers = $client->getRequest()->getHeaders();
+    // Fetch the container
+    $headers = $client->getRequest()->getHeaders();
 
-         // Setting a single header. Will not overwrite any 
-         // previously-added headers of the same name.
-         $client->addHeaderLine('Host', 'www.example.com');
+    // Setting a single header. Will not overwrite any 
+    // previously-added headers of the same name.
+    $client->addHeaderLine('Host', 'www.example.com');
 
-         // Another way of doing the exact same thing
-         $client->addHeaderLine('Host: www.example.com');
+    // Another way of doing the exact same thing
+    $client->addHeaderLine('Host: www.example.com');
 
-         // Another way of doing the exact same thing using
-         // the provided Zend\Http\Header class
-         $client->addHeader(Zend\Http\Header\Host::fromString('Host: www.example.com'));
+    // Another way of doing the exact same thing using
+    // the provided Zend\Http\Header class
+    $client->addHeader(Zend\Http\Header\Host::fromString('Host: www.example.com'));
 
-         // You can also add multiple headers at once by passing an
-         // array to addHeaders using any of the formats below:
-         $client->addHeaders(array(
-            // Zend\Http\Header\* object
-            Zend\Http\Header\Host::fromString('Host: www.example.com'),
+    // You can also add multiple headers at once by passing an
+    // array to addHeaders using any of the formats below:
+    $client->addHeaders(array(
+        // Zend\Http\Header\* object
+        Zend\Http\Header\Host::fromString('Host: www.example.com'),
 
-            // Header name as array key, header value as array key value
-            'Cookie' => 'PHPSESSID=1234567890abcdef1234567890abcdef',
+        // Header name as array key, header value as array key value
+        'Cookie' => 'PHPSESSID=1234567890abcdef1234567890abcdef',
 
-            // Raw header string
-            'Cookie: language=he',
-         ));
+        // Raw header string
+        'Cookie: language=he',
+    ));
 
 
 ``Zend\Http\Client`` also provides a convenience method for setting request headers, ``setHeaders``.
@@ -175,20 +175,20 @@ This method will create a new header container, add the specified headers and th
 header container in it's ``Zend\Http\Request`` object.  As a consequence, any pre-existing headers
 will be erased.
 
-      .. _zend.http.client.custom_headers.example-2:
+.. _zend.http.client.custom_headers.example-2:
 
-      .. rubric:: Setting Multiple Custom Request Headers
+.. rubric:: Setting Multiple Custom Request Headers
 
-      .. code-block:: php
-         :linenos:
+.. code-block:: php
+    :linenos:
 
-         // Setting multiple headers.  Will remove all existing
-         // headers and add new ones to the Request header container
-         $client->setHeaders(array(
-             Zend\Http\Header\Host::fromString('Host: www.example.com'),
-             'Accept-encoding' => 'gzip,deflate',
-             'X-Powered-By: Zend Framework'
-         ));
+    // Setting multiple headers.  Will remove all existing
+    // headers and add new ones to the Request header container
+    $client->setHeaders(array(
+     Zend\Http\Header\Host::fromString('Host: www.example.com'),
+     'Accept-encoding' => 'gzip,deflate',
+     'X-Powered-By: Zend Framework'
+    ));
 
 
 .. _zend.http.client.file_uploads:
@@ -207,28 +207,27 @@ required, and is equivalent to the "name" attribute of an >input< tag, if the fi
 content type, if it is available. In any case, the default MIME type will be application/octet-stream.
 
 
+.. _zend.http.client.file_uploads.example-1:
 
-      .. _zend.http.client.file_uploads.example-1:
+.. rubric:: Using setFileUpload to Upload Files
 
-      .. rubric:: Using setFileUpload to Upload Files
+.. code-block:: php
+    :linenos:
 
-      .. code-block:: php
-         :linenos:
+    // Uploading arbitrary data as a file
+    $text = 'this is some plain text';
+    $client->setFileUpload('some_text.txt', 'upload', $text, 'text/plain');
 
-         // Uploading arbitrary data as a file
-         $text = 'this is some plain text';
-         $client->setFileUpload('some_text.txt', 'upload', $text, 'text/plain');
+    // Uploading an existing file
+    $client->setFileUpload('/tmp/Backup.tar.gz', 'bufile');
 
-         // Uploading an existing file
-         $client->setFileUpload('/tmp/Backup.tar.gz', 'bufile');
-
-         // Send the files
-         $client->setMethod('POST');
-         $client->send();
+    // Send the files
+    $client->setMethod('POST');
+    $client->send();
 
 In the first example, the ``$text`` variable is uploaded and will be available as ``$_FILES['upload']`` on the server side.
 In the second example, the existing file ``/tmp/Backup.tar.gz`` is uploaded to the server and will be available as
-``$_FILES['bufile']``. The content type will be guesses automatically if possible - and if not, the content type will
+``$_FILES['bufile']``. The content type will be guessed automatically if possible - and if not, the content type will
 be set to 'application/octet-stream'.
 
 .. note::
@@ -249,23 +248,22 @@ parameter: the data to send in the request body. When sending raw POST data, it 
 encoding type using ``setEncType()``.
 
 
+.. _zend.http.client.raw_post_data.example-1:
 
-      .. _zend.http.client.raw_post_data.example-1:
+.. rubric:: Sending Raw POST Data
 
-      .. rubric:: Sending Raw POST Data
+.. code-block:: php
+    :linenos:
 
-      .. code-block:: php
-         :linenos:
-
-         $xml = '<book>' .
-                '  <title>Islands in the Stream</title>' .
-                '  <author>Ernest Hemingway</author>' .
-                '  <year>1970</year>' .
-                '</book>';
-         $client->setMethod('POST');
-         $client->setRawBody($xml);
-         $client->setEncType('text/xml');
-         $client->send();
+    $xml = '<book>' .
+        '  <title>Islands in the Stream</title>' .
+        '  <author>Ernest Hemingway</author>' .
+        '  <year>1970</year>' .
+        '</book>';
+    $client->setMethod('POST');
+    $client->setRawBody($xml);
+    $client->setEncType('text/xml');
+    $client->send();
 
 The data should be available on the server side through *PHP*'s ``$HTTP_RAW_POST_DATA`` variable or through the
 ``php://input`` stream.
@@ -289,22 +287,21 @@ parameters: The user name, the password and an optional authentication type para
 basic authentication is supported (digest authentication support is planned).
 
 
+.. _zend.http.client.http_authentication.example-1:
 
-      .. _zend.http.client.http_authentication.example-1:
+.. rubric:: Setting HTTP Authentication User and Password
 
-      .. rubric:: Setting HTTP Authentication User and Password
+.. code-block:: php
+    :linenos:
 
-      .. code-block:: php
-         :linenos:
+    // Using basic authentication
+    $client->setAuth('shahar', 'myPassword!', Zend_Http_Client::AUTH_BASIC);
 
-         // Using basic authentication
-         $client->setAuth('shahar', 'myPassword!', Zend_Http_Client::AUTH_BASIC);
+    // Since basic auth is default, you can just do this:
+    $client->setAuth('shahar', 'myPassword!');
 
-         // Since basic auth is default, you can just do this:
-         $client->setAuth('shahar', 'myPassword!');
-
-         // You can also specify username and password in the URI
-         $client->setUri('http://christer:secret@example.com');
+    // You can also specify username and password in the URI
+    $client->setUri('http://christer:secret@example.com');
 
 
 
@@ -330,7 +327,7 @@ body and headers are reset and are not reused in the next request.
 
    **Resetting parameters**
 
-   Note that cookies not reset by default when the ``resetParameters()`` method is used.
+   Note that cookies are not reset by default when the ``resetParameters()`` method is used.
    To clean all cookies as well, use ``resetParameters(true)``, or call ``clearCookies()`` after
    calling ``resetParameters()``.
 

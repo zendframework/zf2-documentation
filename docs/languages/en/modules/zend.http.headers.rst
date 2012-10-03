@@ -30,7 +30,7 @@ container from a request or response object.
 Configuration Options
 ---------------------
 
-None currently available.
+No configuration options are available.
 
 .. _zend.http.headers.methods:
 
