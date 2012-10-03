@@ -4,47 +4,80 @@ Filter Chains
 =============
 
 Often multiple filters should be applied to some value in a particular order. For example, a login form accepts a
-username that should be only lowercase, alphabetic characters. ``Zend_Filter`` provides a simple method by which
-filters may be chained together. The following code illustrates how to chain together two filters for the submitted
-username:
+username that should be only lowercase, alphabetic characters. ``Zend\Filter\FilterChain`` provides a simple method 
+by which filters may be chained together. The following code illustrates how to chain together two filters for the 
+submitted username:
 
 .. code-block:: php
    :linenos:
 
    // Create a filter chain and add filters to the chain
-   $filterChain = new Zend_Filter();
-   $filterChain->addFilter(new Zend_Filter_Alpha())
-               ->addFilter(new Zend_Filter_StringToLower());
+   $filterChain = new Zend\Filter\FilterChain();
+   $filterChain->attach(new Zend\Filter\Alpha())
+               ->attach(new Zend\Filter\StringToLower());
 
    // Filter the username
    $username = $filterChain->filter($_POST['username']);
 
-Filters are run in the order they were added to ``Zend_Filter``. In the above example, the username is first
-removed of any non-alphabetic characters, and then any uppercase characters are converted to lowercase.
+Filters are run in the order they were added to ``Zend\Filter\FilterChain``. In the above example, the username is 
+first removed of any non-alphabetic characters, and then any uppercase characters are converted to lowercase.
 
-Any object that implements ``Zend_Filter_Interface`` may be used in a filter chain.
+Any object that implements ``Zend\Filter\FilterInterface`` may be used in a filter chain.
 
 .. _zend.filter.filter_chains.order:
 
-Changing filter chain order
+Setting filter chain order
 ---------------------------
 
-Since 1.10, the ``Zend_Filter`` chain also supports altering the chain by prepending or appending filters. For
-example, the next piece of code does exactly the same as the other username filter chain example:
+For each filter added to the ``FilterChain`` you can set a priority to define the chain order. The default value is
+``1000``. In the following example, any uppercase characters are converted to lowercase before any non-alphabetic 
+characters are removed.
 
 .. code-block:: php
    :linenos:
 
    // Create a filter chain and add filters to the chain
-   $filterChain = new Zend_Filter();
+   $filterChain = new Zend\Filter\FilterChain();
+   $filterChain->attach(new Zend\Filter\Alpha())
+               ->attach(new Zend\Filter\StringToLower(), 500);
 
-   // this filter will be appended to the filter chain
-   $filterChain->appendFilter(new Zend_Filter_StringToLower());
+.. _zend.filter.filter_chains.plugin_manager:
 
-   // this filter will be prepended at the beginning of the filter chain.
-   $filterChain->prependFilter(new Zend_Filter_Alpha());
+Using the plugin manager
+------------------------
 
-   // Filter the username
-   $username = $filterChain->filter($_POST['username']);
+To every ``FilterChain`` object an instance of the ``FilterPluginManager`` is attached. Every filter that is used 
+in a ``FilterChain`` must be know by this ``FilterPluginManager``. To add a filter that is known by the 
+``FilterPluginManager`` you can use the ``attachByName()`` method. The first parameter is the name of the filter 
+within the ``FilterPluginManager``. The second paramater takes any options for creating the filter instance. The
+third parameter is the priority. 
 
+.. code-block:: php
+   :linenos:
 
+   // Create a filter chain and add filters to the chain
+   $filterChain = new Zend\Filter\FilterChain();
+   $filterChain->attachByName('alpha')
+               ->attachByName('stringtolower', array('encoding' => 'utf-8'), 500);
+
+The following example shows how to add a custom filter to the ``FilterPluginManager`` and the ``FilterChain``. 
+
+.. code-block:: php
+   :linenos:
+
+   $filterChain = new Zend\Filter\FilterChain();
+   $filterChain->getPluginManager()->setInvokableClass(
+       'myNewFilter', 'MyCustom\Filter\MyNewFilter'
+   );
+   $filterChain->attach(new Zend\Filter\Alpha())
+               ->attach(new MyCustom\Filter\MyNewFilter());
+
+You can also add your own ``FilterPluginManager`` implementation.
+
+.. code-block:: php
+   :linenos:
+
+   $filterChain = new Zend\Filter\FilterChain();
+   $filterChain->setPluginManager(new MyFilterPluginManager());
+   $filterChain->attach(new Zend\Filter\Alpha())
+               ->attach(new MyCustom\Filter\MyNewFilter());
