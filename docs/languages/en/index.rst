@@ -35,6 +35,7 @@
    modules/zend.cache.storage.adapter
    modules/zend.cache.storage.capabilities
    modules/zend.cache.storage.plugin
+   modules/zend.cache.backend
    modules/zend.cache.pattern
    modules/zend.captcha.intro
    modules/zend.captcha.operation
@@ -64,6 +65,16 @@
    modules/zend.dom.intro
    modules/zend.dom.query
    modules/zend.event-manager.event-manager
+   modules/zend.feed.introduction
+   modules/zend.feed.importing
+   modules/zend.feed.find-feeds
+   modules/zend.feed.consuming-rss
+   modules/zend.feed.consuming-atom
+   modules/zend.feed.consuming-atom-single
+   modules/zend.feed.security
+   modules/zend.feed.reader
+   modules/zend.feed.writer
+   modules/zend.feed.pubsubhubbub
    modules/zend.form.intro
    modules/zend.form.quick-start
    modules/zend.form.collections
@@ -81,6 +92,11 @@
    modules/zend.i18n.view.helpers
    modules/zend.i18n.filters
    modules/zend.input-filter.intro
+   modules/zend.json.introduction
+   modules/zend.json.basics
+   modules/zend.json.objects
+   modules/zend.json.xml2json
+   modules/zend.json.server
    modules/zend.ldap.introduction
    modules/zend.ldap.api
    modules/zend.ldap.usage
@@ -96,8 +112,6 @@
    modules/zend.loader.class-map-autoloader
    modules/zend.loader.standard-autoloader
    modules/zend.loader.classmap-generator
-   modules/zend.loader.prefix-path-loader
-   modules/zend.loader.prefix-path-mapper
    modules/zend.log.overview
    modules/zend.log.writers
    modules/zend.log.filters
@@ -108,6 +122,9 @@
    modules/zend.mail.smtp.options
    modules/zend.mail.file.options
    modules/zend.math.introduction
+   modules/zend.mime
+   modules/zend.mime.message
+   modules/zend.mime.part
    modules/zend.module-manager.intro
    modules/zend.module-manager.module-manager
    modules/zend.module-manager.module-class
@@ -121,6 +138,10 @@
    modules/zend.mvc.controllers
    modules/zend.mvc.plugins
    modules/zend.mvc.examples
+   modules/zend.navigation.intro
+   modules/zend.navigation.quick-start
+   modules/zend.navigation.pages
+   modules/zend.navigation.containers
    modules/zend.paginator.introduction
    modules/zend.paginator.usage
    modules/zend.paginator.configuration
@@ -128,11 +149,19 @@
    modules/zend.permissions.acl.intro
    modules/zend.permissions.acl.refining
    modules/zend.permissions.acl.advanced
+   modules/zend.server
+   modules/zend.server.reflection
    modules/zend.service-manager.intro
    modules/zend.service-manager.quick-start
+   modules/zend.soap.server
+   modules/zend.soap.client
+   modules/zend.soap.wsdl
+   modules/zend.soap.auto-discovery
    modules/zend.stdlib.hydrator
    modules/zend.tag.introduction
    modules/zend.tag.cloud
+   modules/zend.text.figlet
+   modules/zend.text.table
    modules/zend.uri
    modules/zend.validator
    modules/zend.validator.set
@@ -292,6 +321,22 @@ Zend\\EventManager
 
         * :doc:`modules/zend.event-manager.event-manager`
 
+.. _zend.feed:
+
+Zend\\Feed
+^^^^^^^^^^
+
+        * :doc:`modules/zend.feed.introduction`
+        * :doc:`modules/zend.feed.importing`
+        * :doc:`modules/zend.feed.find-feeds`
+        * :doc:`modules/zend.feed.consuming-rss`
+        * :doc:`modules/zend.feed.consuming-atom`
+        * :doc:`modules/zend.feed.consuming-atom-single`
+        * :doc:`modules/zend.feed.security`
+        * :doc:`modules/zend.feed.reader`
+        * :doc:`modules/zend.feed.writer`
+        * :doc:`modules/zend.feed.pubsubhubbub`
+
 .. _zend.form:
 
 Zend\\Form
@@ -333,6 +378,17 @@ Zend\\InputFilter
 
         * :doc:`modules/zend.input-filter.intro`
 
+.. _zend.json:
+
+Zend\\Json
+^^^^^^^^^^
+
+        * :doc:`modules/zend.json.introduction`
+        * :doc:`modules/zend.json.basics`
+        * :doc:`modules/zend.json.objects`
+        * :doc:`modules/zend.json.xml2json`
+        * :doc:`modules/zend.json.server`
+
 .. _zend.ldap:
 
 Zend\\Ldap
@@ -359,8 +415,6 @@ Zend\\Loader
         * :doc:`modules/zend.loader.class-map-autoloader`
         * :doc:`modules/zend.loader.standard-autoloader`
         * :doc:`modules/zend.loader.classmap-generator`
-        * :doc:`modules/zend.loader.prefix-path-loader`
-        * :doc:`modules/zend.loader.prefix-path-mapper`
 
 .. _zend.log:
 
@@ -390,6 +444,13 @@ Zend\\Math
 
         * :doc:`modules/zend.math.introduction`
 
+Zend\\Mime
+^^^^^^^^^^
+
+        * :doc:`modules/zend.mime`
+        * :doc:`modules/zend.mime.message`
+        * :doc:`modules/zend.mime.part`
+
 .. _zend.module-manager:
 
 Zend\\ModuleManager
@@ -415,6 +476,16 @@ Zend\\Mvc
         * :doc:`modules/zend.mvc.plugins`
         * :doc:`modules/zend.mvc.examples`
 
+.. _zend.navigation:
+
+Zend\\Navigation
+^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.navigation.intro`
+        * :doc:`modules/zend.navigation.quick-start`
+        * :doc:`modules/zend.navigation.pages`
+        * :doc:`modules/zend.navigation.containers`
+
 .. _zend.paginator:
 
 Zend\\Paginator
@@ -434,6 +505,14 @@ Zend\\Permissions\\Acl
         * :doc:`modules/zend.permissions.acl.refining`
         * :doc:`modules/zend.permissions.acl.advanced`
 
+.. _zend.server:
+
+Zend\\Server
+^^^^^^^^^^^^
+
+        * :doc:`modules/zend.server`
+        * :doc:`modules/zend.server.reflection`
+
 .. _zend.service-manager:
 
 Zend\\ServiceManager
@@ -442,6 +521,16 @@ Zend\\ServiceManager
         * :doc:`modules/zend.service-manager.intro`
         * :doc:`modules/zend.service-manager.quick-start`
 
+.. _zend.soap:
+
+Zend\\Soap
+^^^^^^^^^^
+
+        * :doc:`modules/zend.soap.server`
+        * :doc:`modules/zend.soap.client`
+        * :doc:`modules/zend.soap.wsdl`
+        * :doc:`modules/zend.soap.auto-discovery`
+        
 .. _zend.stdlib:
 
 Zend\\Stdlib
@@ -456,6 +545,12 @@ Zend\\Tag
 
         * :doc:`modules/zend.tag.introduction`
         * :doc:`modules/zend.tag.cloud`
+
+Zend\\Text
+^^^^^^^^^^
+
+        * :doc:`modules/zend.text.figlet`
+        * :doc:`modules/zend.text.table`
 
 .. _zend.uri:
 

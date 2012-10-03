@@ -129,7 +129,7 @@ following:
   retrieved and injected. This service is **not** shared, though each instance it creates is injected with a shared
   instance of ``SharedEventManager``.
 
-- For objects that implement ``Zend\ServiceManager\ServiceManagerAwareInterface``, the ``ServiceManager`` will
+- For objects that implement ``Zend\ServiceManager\ServiceLocatorAwareInterface``, the ``ServiceManager`` will
   inject itself into the object.
 
 Finally, the ``ServiceManager`` registers itself as the ``ServiceManager`` service, and aliases itself to the class
@@ -303,7 +303,7 @@ The following options are available when using the default services configured b
 
        // The following are used to configure view helper manager
        // Should be compatible with Zend\ServiceManager\Config.
-       'controller_plugins' => array(
+       'view_helpers' => array(
        ),
 
        // The following is used to configure a Zend\Di\Di instance.

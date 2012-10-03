@@ -15,7 +15,7 @@ validated values.
 
 .. _zend.form.quick-start.programmatic:
 
-.. rubric:: Programmatic Form Creation
+## Programmatic Form Creation
 
 If nothing else, you can simply start creating elements, fieldsets, and forms and wiring them together.
 
@@ -35,11 +35,8 @@ If nothing else, you can simply start creating elements, fieldsets, and forms an
        'type'  => 'text'
    ));
 
-   $email = new Element('email');
+   $email = new Element\Email('email');
    $email->setLabel('Your email address');
-   $email->setAttributes(array(
-       'type'  => 'email'
-   ));
 
    $subject = new Element('subject');
    $subject->setLabel('Subject');
@@ -47,11 +44,8 @@ If nothing else, you can simply start creating elements, fieldsets, and forms an
        'type'  => 'text'
    ));
 
-   $message = new Element('message');
+   $message = new Element\Textarea('message');
    $message->setLabel('Message');
-   $message->setAttributes(array(
-       'type'  => 'textarea'
-   ));
 
    $captcha = new Element\Captcha('captcha');
    $captcha->setCaptcha(new Captcha\Dumb());
@@ -107,7 +101,7 @@ Regardles of approach, as you can see, this can be tedious.
 
 .. _zend.form.quick-start.factory:
 
-.. rubric:: Creation via Factory
+## Creation via Factory
 
 You can create the entire form, and input filter, using the ``Factory``. This is particularly nice if you want to
 store your forms as pure configuration; you can simply pass the configuration to the factory and be done.
@@ -116,6 +110,7 @@ store your forms as pure configuration; you can simply pass the configuration to
    :linenos:
 
    use Zend\Form\Factory;
+
    $factory = new Factory();
    $form    = $factory->createForm(array(
        'hydrator' => 'Zend\Stdlib\Hydrator\ArraySerializable',
@@ -133,13 +128,11 @@ store your forms as pure configuration; you can simply pass the configuration to
            ),
            array(
                'spec' => array(
+                   'type' => 'Zend\Form\Element\Email',
                    'name' => 'email',
                    'options' => array(
                        'label' => 'Your email address',
-                   ),
-                   'attributes' => array(
-                       'type'  => 'email',
-                   ),
+                   )
                ),
            ),
            array(
@@ -155,13 +148,11 @@ store your forms as pure configuration; you can simply pass the configuration to
            ),
            array(
                'spec' => array(
+                   'type' => 'Zend\Form\Element\Textarea',
                    'name' => 'message',
                    'options' => array(
                        'label' => 'Message',
-                   ),
-                   'attributes' => array(
-                       'type'  => 'textarea',
-                   ),
+                   )
                ),
            ),
            array(
@@ -169,9 +160,7 @@ store your forms as pure configuration; you can simply pass the configuration to
                    'type' => 'Zend\Form\Element\Captcha',
                    'name' => 'captcha',
                    'options' => array(
-                       'label' => 'Please verify you are human',
-                   ),
-                   'attributes' => array(
+                       'label' => 'Please verify you are human.',
                        'captcha' => array(
                            'class' => 'Dumb',
                        ),
@@ -187,11 +176,9 @@ store your forms as pure configuration; you can simply pass the configuration to
            array(
                'spec' => array(
                    'name' => 'send',
-                   'options' => array(
-                       'label' => 'Send',
-                   ),
                    'attributes' => array(
                        'type'  => 'submit',
+                       'value' => 'Submit',
                    ),
                ),
            ),
@@ -235,13 +222,11 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
                        ),
                    ),
                    array(
+                       'type' => 'Zend\Form\Element\Email',
                        'name' => 'email',
                        'options' => array(
                            'label' => 'Your email address',
                		   ),
-                       'attributes' => array(
-                           'type'  => 'email',
-                       ),
                    ),
                ),
            ),
@@ -258,13 +243,10 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
                        ),
                    ),
                    array(
-                       'name' => 'message',
+                       'type' => 'Zend\Form\Element\Textarea',
                        'options' => array(
                            'label' => 'Message',
                		   ),
-                       'attributes' => array(
-                           'type'  => 'textarea',
-                       ),
                    ),
                ),
            ),
@@ -307,7 +289,7 @@ significant whitespace.
 
 .. _zend.form.quick-start.extension:
 
-.. rubric:: Factory-backed Form Extension
+## Factory-backed Form Extension
 
 The default ``Form`` implementation is backed by the ``Factory``. This allows you to extend it, and define your
 form internally. This has the benefit of allowing a mixture of programmatic and factory-backed creation, as well as
@@ -347,12 +329,10 @@ defining a form for re-use in your application.
                ),
            ));
            $this->add(array(
+               'type' => 'Zend\Form\Element\Email',
                'name' => 'email',
                'options' => array(
                    'label' => 'Your email address',
-               ),
-               'attributes' => array(
-                   'type'  => 'email',
                ),
            ));
            $this->add(array(
@@ -365,39 +345,33 @@ defining a form for re-use in your application.
                ),
            ));
            $this->add(array(
+               'type' => 'Zend\Form\Element\Textarea',
                'name' => 'message',
                'options' => array(
                    'label' => 'Message',
-               ),
-               'attributes' => array(
-                   'type'  => 'textarea',
                ),
            ));
            $this->add(array(
                'type' => 'Zend\Form\Element\Captcha',
                'name' => 'captcha',
                'options' => array(
-                   'label' => 'Please verify you are human',
-               ),
-               'attributes' => array(
+                   'label' => 'Please verify you are human.',
                    'captcha' => $this->captcha,
                ),
-           )),
+           ));
            $this->add(new Element\Csrf('security'));
            $this->add(array(
                'name' => 'send',
-               'options' => array(
-                   'label' => 'Send',
-               ),
                'attributes' => array(
                    'type'  => 'submit',
+                   'value' => 'Submit',
                ),
            ));
 
            // We could also define the input filter here, or
            // lazy-create it in the getInputFilter() method.
        }
-   ));
+   }
 
 You'll note that this example introduces a method, ``prepareElements()``. This is done to allow altering and/or
 configuring either the form or input filter factory instances, which could then have bearing on how elements,
@@ -406,7 +380,7 @@ it elsewhere in our application and inject it into the form.
 
 .. _zend.form.quick-start.validation:
 
-.. rubric:: Validating Forms
+## Validating Forms
 
 Validating forms requires three steps. First, the form must have an input filter attached. Second, you must inject
 the data to validate into the form. Third, you validate the form. If invalid, you can retrieve the error messages,
@@ -445,7 +419,7 @@ You can get the raw data if you want, by accessing the composed input filter.
 
 .. _zend.form.quick-start.input-specification:
 
-.. rubric:: Hinting to the Input Filter
+## Hinting to the Input Filter
 
 Often, you'll create elements that you expect to behave in the same way on each usage, and for which you'll want
 specific filters or validation as well. Since the input filter is a separate object, how can you achieve these
@@ -461,41 +435,77 @@ they must implement ``Zend\InputFilter\InputFilterProviderInterface``, which def
 ``getInputFilterSpecification()`` method.
 
 In the case of an element, the ``getInputSpecification()`` method should return data to be used by the input filter
-factory to create an input.
+factory to create an input. Every HTML5 (email, url, color…) elements have a built-in element that use this logic. For instance, here is how the ``Zend\Form\Element\Color`` element is defined:
 
 .. code-block:: php
    :linenos:
 
-   namespace Contact\Form;
+    namespace Zend\Form\Element;
 
-   use Zend\Form\Element;
-   use Zend\InputFilter\InputProviderInterface;
-   use Zend\Validator;
-
-   class EmailElement extends Element implements InputProviderInterface
-   {
-       protected $attributes = array(
-           'type' => 'email',
-       );
-
-       public function getInputSpecification()
-       {
-           return array(
-               'name'     => $this->getName(),
-               'required' => true,
-               'filters'  => array(
-                   array('name' => 'Zend\Filter\StringTrim'),
-               ),
-               'validators' => array(
-                   new Validator\EmailAddress(),
-               ),
-           );
-       }
-   }
+	use Zend\Form\Element;
+	use Zend\InputFilter\InputProviderInterface;
+	use Zend\Validator\Regex as RegexValidator;
+	use Zend\Validator\ValidatorInterface;
+	
+	/**
+	 * @category   Zend
+	 * @package    Zend_Form
+	 * @subpackage Element
+	 */
+	class Color extends Element implements InputProviderInterface
+	{
+	    /**
+	     * Seed attributes
+	     *
+	     * @var array
+	     */
+	    protected $attributes = array(
+	        'type' => 'color',
+	    );
+	
+	    /**
+	     * @var ValidatorInterface
+	     */
+	    protected $validator;
+	
+	    /**
+	     * Get validator
+	     *
+	     * @return ValidatorInterface
+	     */
+	    protected function getValidator()
+	    {
+	        if (null === $this->validator) {
+	            $this->validator = new RegexValidator('/^#[0-9a-fA-F]{6}$/');
+	        }
+	        return $this->validator;
+	    }
+	
+	    /**
+	     * Provide default input rules for this element
+	     *
+	     * Attaches an email validator.
+	     *
+	     * @return array
+	     */
+	    public function getInputSpecification()
+	    {
+	        return array(
+	            'name' => $this->getName(),
+	            'required' => true,
+	            'filters' => array(
+	                array('name' => 'Zend\Filter\StringTrim'),
+	                array('name' => 'Zend\Filter\StringToLower'),
+	            ),
+	            'validators' => array(
+	                $this->getValidator(),
+	            ),
+	        );
+	    }
+	}
 
 The above would hint to the input filter to create and attach an input named after the element, marking it as
-required, and giving it a ``StringTrim`` filter and an ``Email`` validator. Note that you can either rely on the
-input filter to create filters and validators, or directly instantiate them.
+required, and giving it a ``StringTrim`` and ``StringToLower`` filters and a ``Regex`` validator. Note that you can either rely on the input filter to create filters and validators, or directly instantiate them.
 
 For fieldsets, you do very similarly; the difference is that ``getInputFilterSpecification()`` must return
 configuration for an input filter.
@@ -538,7 +548,7 @@ additional user configuration!
 
 .. _zend.form.quick-start.binding:
 
-.. rubric:: Binding an object
+## Binding an object
 
 As noted in the intro, forms in Zend Framework bridge the domain model and the view layer. Let's see that in
 action.
@@ -546,8 +556,8 @@ action.
 When you ``bind()`` an object to the form, the following happens:
 
 - The composed ``Hydrator`` calls ``extract()`` on the object, and uses the values returned, if any, to populate
-  the ``value`` attributes of all elements.
-
+  the ``value`` attributes of all elements. If a form contains a fieldset that itself contains another fieldset, the form will recursively extract the values.
+  
 - When ``isValid()`` is called, if ``setData()`` has not been previously set, the form uses the composed
   ``Hydrator`` to extract values from the object, and uses those during validation.
 
@@ -607,7 +617,7 @@ implementing ``Zend\Stdlib\Hydrator\HydratorInterface``, which looks like this:
 
    namespace Zend\Stdlib\Hydrator;
 
-   interface Hydrator
+   interface HydratorInterface
    {
        /** @return array */
        public function extract($object);
@@ -616,7 +626,7 @@ implementing ``Zend\Stdlib\Hydrator\HydratorInterface``, which looks like this:
 
 .. _zend.form.quick-start.rendering:
 
-.. rubric:: Rendering
+## Rendering
 
 As noted previously, forms are meant to bridge the domain model and view layer. We've discussed the domain model
 binding, but what about the view?
@@ -765,10 +775,32 @@ you can pass an optional parameter to the ``FormRow`` view helper :
        echo $this->formRow($name, **'append'**);
    ?></div>
 
+### Taking advantage of HTML5 input attributes
+
+HTML5 brings a lot of exciting features, one of them being a simplified client form validations. Adding HTML5 attributes is simple as you just need to add specify the attributes. However, please note that adding those attributes does not automatically add Zend validators to the form's input filter. You still need to manually add them.
+
+.. code-block:: php
+   :linenos:
+
+   	$form->add(array(
+   		'name' => 'phoneNumber',
+   		'options' => array(
+   			'label' => 'Your phone number'
+   		),
+   		'attributes' => array(
+   			'type' => 'tel'
+   			'required' => 'required',
+   			'pattern'  => '^0[1-68]([-. ]?[0-9]{2}){4}$'
+   		)
+   	));
+
+View helpers will automatically render those attributes, and hence allowing modern browsers to perform automatic validation.
+
+> Note: although client validation is nice from a user experience point of view, it has to be used in addition with server validation, as client validation can be easily fooled.
 
 .. _zend.form.quick-start.partial:
 
-.. rubric:: Validation Groups
+## Validation Groups
 
 Sometimes you want to validate only a subset of form elements. As an example, let's say we're re-using our contact
 form over a web service; in this case, the ``Csrf``, ``Captcha``, and submit button elements are not of interest,
@@ -813,10 +845,11 @@ When your form contains nested fieldsets, you can use an array notation to valid
        // "profile" fieldset
        $data = $form->getData();
    }
+   
 
 .. _zend.form.quick-start.annotations:
 
-.. rubric:: Using Annotations
+## Using Annotations
 
 Creating a complete forms solution can often be tedious: you'll create some domain model object, an input filter
 for validating it, a form object for providing a representation for it, and potentially a hydrator for mapping the

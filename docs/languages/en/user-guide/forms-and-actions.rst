@@ -225,7 +225,7 @@ Let’s look at the ``addAction()`` code in a little more detail:
 .. code-block:: php
 
     $form = new AlbumForm();
-    $form->submit->setValue('Add');
+    $form->get('submit')->setValue('Add');
 
 We instantiate `AlbumForm` and set the label on the submit button to “Add”. We
 do this here as we’ll want to re-use the form when editing an album and will use
@@ -303,6 +303,19 @@ but for the two elements that are standalone, we use ``formHidden()`` and
 .. image:: ../images/user-guide.forms-and-actions.add-album-form.png
     :width: 940 px
 
+Alternatively, the process of rendering the form can be simplified by using the 
+bundled ``formCollection`` view helper.  For example, in the view script above replace 
+all the form-rendering echo statements with:
+
+.. code-block:: php
+
+    echo $this->formCollection($form);
+
+This will iterate over the form structure, calling the appropriate label, element
+and error view helpers for each element, and wrap the result in open and close form tags.
+This helps reduce the complexity of your view script in situations where the default 
+HTML rendering of the form is acceptable.
+
 You should now be able to use the “Add new album” link on the home page of the
 application to add a new album record.
 
@@ -314,7 +327,7 @@ This time we use ``editAction()`` in the ``AlbumController``:
 
 .. code-block:: php
 
-    // module/Album/src/Album/AlbumController.php:
+    // module/Album/src/Album/Controller/AlbumController.php:
     //...
 
         // Add content to this method:
@@ -468,7 +481,7 @@ Let’s start with the action code in ``AlbumController::deleteAction()``:
 
 .. code-block:: php
 
-    // module/Album/src/Album/AlbumController.php:
+    // module/Album/src/Album/Controller/AlbumController.php:
     //...
         // Add content to the following method:
         public function deleteAction()

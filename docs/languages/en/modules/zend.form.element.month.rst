@@ -31,6 +31,27 @@ This element automatically adds a ``"type"`` attribute of value ``"month"``.
 
    $form = new Form('my-form');
    $form->add($month);
+   
+Here is with the array notation:
+
+.. code-block:: php
+   :linenos:
+
+    use Zend\Form\Form;
+
+    $form = new Form('my-form');
+    $form->add(array(
+    	'type' => 'Zend\Form\Element\Month',
+    	'name' => 'month',
+    	'options => array(
+    		'label' => 'Month'
+    	),
+    	'attributes' => array(
+    		'min' => '2012-12',
+    		'max' => '2020-01',
+    		'step' => '1', // months; default step interval is 1 month
+    	)
+    ));
 
 .. note::
 

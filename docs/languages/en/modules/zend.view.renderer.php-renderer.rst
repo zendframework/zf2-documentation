@@ -54,13 +54,17 @@ Programmatically, you would then do something like this:
 
    $resolver = new Resolver\AggregateResolver();
 
+   $renderer->setResolver($resolver);
+
    $map = new Resolver\TemplateMapResolver(array(
        'layout'      => __DIR__ . '/view/layout.phtml',
        'index/index' => __DIR__ . '/view/index/index.phtml',
    ));
    $stack = new Resolver\TemplatePathStack(array(
-       __DIR__ . '/view',
-       $someOtherPath,
+       'script_paths' => array(
+           __DIR__ . '/view',
+           $someOtherPath
+       )
    ));
 
    $resolver->attach($map)    // this will be consulted first

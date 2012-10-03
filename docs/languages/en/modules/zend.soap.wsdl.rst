@@ -20,17 +20,14 @@ Zend\\Soap\\Wsdl constructor
 
 
 
-   . ``$name``- name of the Web Service being described.
+- ``$name`` - name of the Web Service being described.
 
-   . ``$uri``-*URI* where the WSDL will be available (could also be a reference to the file in the filesystem.)
+- ``$uri`` - *URI* where the WSDL will be available (could also be a reference to the file in the filesystem.)
 
-   . ``$strategy``- optional flag used to identify the strategy for complex types (objects) detection. To read more
-     on complex type detection strategies go to the section: :ref:`Add complex types
-     <zend.soap.wsdl.types.add_complex>`.
+- ``$strategy`` - optional flag used to identify the strategy for complex types (objects) detection. To read more on
+  complex type detection strategies go to the section: :ref:`Add complex types <zend.soap.wsdl.types.add_complex>`.
 
-   . ``$classMap``- Optional array of class name translations from PHP Type (key) to WSDL type (value).
-
-
+- ``$classMap`` - Optional array of class name translations from PHP Type (key) to WSDL type (value).
 
 .. _zend.soap.wsdl.addmessage:
 
@@ -42,9 +39,9 @@ element).
 
 Each message correspond to methods in terms of ``Zend\Soap\Server`` and ``Zend\Soap\Client`` functionality.
 
-``$name`` parameter represents message name.
+``$name`` parameter represents the message name.
 
-``$parts`` parameter is an array of message parts which describe *SOAP* call parameters. It's an associative array:
+``$parts`` parameter is an array of message parts which describes *SOAP* call parameters. It's an associative array:
 'part name' (SOAP call parameter name) => 'part type'.
 
 Type mapping management is performed using ``addTypes()``, ``addTypes()`` and ``addComplexType()`` methods (see
@@ -97,14 +94,9 @@ parameters.
       ``Zend\Soap\Server`` component generates two messages for each port operation while describing service based
       on ``Zend\Soap\Server`` class:
 
-
-
          - input message with name *$methodName . 'Request'*.
 
          - output message with name *$methodName . 'Response'*.
-
-
-
 
 
 See `http://www.w3.org/TR/wsdl#_request-response`_ for the details.
@@ -131,7 +123,7 @@ addBindingOperation() method
 ``addBindingOperation($binding, $name, $input = false, $output = false, $fault = false)`` method adds an operation
 to a binding element (/definitions/binding/operation) with the specified name.
 
-It takes *XML_Tree_Node* object returned by ``addBinding()`` as an input (``$binding`` parameter) to add
+It takes an *XML_Tree_Node* object returned by ``addBinding()`` as an input (``$binding`` parameter) to add
 'operation' element with input/output/false entries depending on specified parameters
 
 ``Zend\Soap\Server`` implementation adds corresponding binding entry for each Web Service method with input and
@@ -184,15 +176,13 @@ WSDL 1.1 allows to have several port types (sets of operations) per service. Thi
 
 ``Zend\Soap\Server`` implementation uses:
 
+- *$name . 'Service'* as a Web Service name,
 
+- *$name . 'Port'* as a port type name,
 
-   - *$name . 'Service'* as a Web Service name,
+- *'tns:' . $name . 'Binding'* [#]_ as binding name,
 
-   - *$name . 'Port'* as a port type name,
-
-   - *'tns:' . $name . 'Binding'* [#]_ as binding name,
-
-   - script *URI* [#]_ as a service URI for Web Service definition using classes.
+- script *URI* [#]_ as a service URI for Web Service definition using classes.
 
 where ``$name`` is a class name for the Web Service definition mode using class and script name for the Web Service
 definition mode using set of functions.
@@ -206,26 +196,23 @@ Type mapping
 
 ``Zend_Soap`` WSDL accessor implementation uses the following type mapping between *PHP* and *SOAP* types:
 
+- PHP strings <-> *xsd:string*.
 
+- PHP integers <-> *xsd:int*.
 
-   - PHP strings <-> *xsd:string*.
+- PHP floats and doubles <-> *xsd:float*.
 
-   - PHP integers <-> *xsd:int*.
+- PHP booleans <-> *xsd:boolean*.
 
-   - PHP floats and doubles <-> *xsd:float*.
+- PHP arrays <-> *soap-enc:Array*.
 
-   - PHP booleans <-> *xsd:boolean*.
+- PHP object <-> *xsd:struct*.
 
-   - PHP arrays <-> *soap-enc:Array*.
+- *PHP* class <-> based on complex type strategy (See: :ref:`this section <zend.soap.wsdl.types.add_complex>`) [#]_.
 
-   - PHP object <-> *xsd:struct*.
+- PHP void <-> empty type.
 
-   - *PHP* class <-> based on complex type strategy (See: :ref:`this section <zend.soap.wsdl.types.add_complex>`)
-     [#]_.
-
-   - PHP void <-> empty type.
-
-   - If type is not matched to any of these types by some reason, then *xsd:anyType* is used.
+- If type is not matched to any of these types by some reason, then *xsd:anyType* is used.
 
 Where *xsd:* is "http://www.w3.org/2001/XMLSchema" namespace, *soap-enc:* is a
 "http://schemas.xmlsoap.org/soap/encoding/" namespace, *tns:* is a "target namespace" for a service.
@@ -282,14 +269,14 @@ exist:
   types such as int, string, boolean, float aswell as objects and arrays of objects.
 
 - Class ``Zend\Soap\Wsdl\ComplexTypeStrategy\ArrayOfTypeComplex``: This strategy allows to detect very complex
-  arrays of objects. Objects types are detected based on the ``Zend\Soap\Wsdl_Strategy_DefaultComplexType`` and an
+  arrays of objects. Objects types are detected based on the ``Zend\Soap\Wsdl\Strategy\DefaultComplexType`` and an
   array is wrapped around that definition.
 
 - Class ``Zend\Soap\Wsdl\ComplexTypeStrategy\Composite``: This strategy can combine all strategies by connecting
   *PHP* Complex types (Classnames) to the desired strategy via the ``connectTypeToStrategy($type, $strategy)``
   method. A complete typemap can be given to the constructor as an array with ``$type``-> ``$strategy`` pairs. The
   second parameter specifies the default strategy that will be used if an unknown type is requested for adding.
-  This parameter defaults to the ``Zend\Soap\Wsdl_Strategy_DefaultComplexType`` strategy.
+  This parameter defaults to the ``Zend\Soap\Wsdl\Strategy\DefaultComplexType`` strategy.
 
 ``addComplexType()`` method creates '/definitions/types/xsd:schema/xsd:complexType' element for each described
 complex type with name of the specified *PHP* class.
@@ -324,8 +311,6 @@ Get finalized WSDL document
 ``toXML()``, ``toDomDocument()`` and ``dump($filename = false)`` methods may be used to get WSDL document as an
 *XML*, DOM structure or a file.
 
-
-
 .. _`http://www.w3.org/TR/wsdl#_messages`: http://www.w3.org/TR/wsdl#_messages
 .. _`http://schemas.xmlsoap.org/soap/encoding/`: http://schemas.xmlsoap.org/soap/encoding/
 .. _`http://www.w3.org/TR/wsdl#_porttypes`: http://www.w3.org/TR/wsdl#_porttypes
@@ -339,9 +324,9 @@ Get finalized WSDL document
 .. [#] *'tns:' namespace* is defined as script *URI* (*'http://' .$_SERVER['HTTP_HOST'] .
        $_SERVER['SCRIPT_NAME']*).
 .. [#] *'http://' .$_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']*
-.. [#] By default ``Zend\Soap\Wsdl`` will be created with the ``Zend\Soap\Wsdl_Strategy_DefaultComplexType``
+.. [#] By default ``Zend\Soap\Wsdl`` will be created with the ``Zend\Soap\Wsdl\ComplexTypeStrategy\DefaultComplexType``
        class as detection algorithm for complex types. The first parameter of the AutoDiscover constructor
-       takes any complex type strategy implementing ``Zend\Soap\Wsdl_Strategy_Interface`` or a string with the
-       name of the class. For backwards compatibility with ``$extractComplexType`` boolean variables are
-       parsed the following way: If ``TRUE``, ``Zend\Soap\Wsdl_Strategy_DefaultComplexType``, if ``FALSE``
-       ``Zend\Soap\Wsdl_Strategy_AnyType``.
+       takes any complex type strategy implementing ``Zend\Soap\Wsdl\ComplexTypeStrategy\ComplexTypeStrategyInterface``
+       or a string with the name of the class. For backwards compatibility with ``$extractComplexType`` boolean 
+       variables are parsed the following way: If ``TRUE``, ``Zend\Soap\Wsdl\ComplexTypeStrategy\DefaultComplexType``,
+       if ``FALSE`` ``Zend\Soap\Wsdl\ComplexTypeStrategy\AnyType``.

@@ -26,6 +26,26 @@ This element automatically adds a ``"type"`` attribute of value ``"checkbox"``.
 
    $form = new Form('my-form');
    $form->add($checkbox);
+   
+Using the array notation:
+
+.. code-block:: php
+   :linenos:
+   
+    use Zend\Form\Form;
+    
+   	$form = new Form('my-form');   	
+   	$form->add(array(
+   		'type' => 'Zend\Form\Element\Checkbox',
+   		'name' => 'checkbox',
+   		'options' => array(
+   			'label' => 'A checkbox',
+   			'use_hidden_element' => true,
+   			'checked_value' => 'good',
+   			'unchecked_value' => 'bad'
+   		)
+   	));
+   
 
 .. _zend.form.element.checkbox.methods:
 
