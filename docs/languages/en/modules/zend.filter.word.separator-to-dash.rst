@@ -1,14 +1,14 @@
 .. _zend.filter.set.separatortodash:
 
 Word\\SeparatorToDash
-=====================
+---------------------
 
 This filter modifies a given string such that 'words with separators' are converted to 'words-with-separators'.
 
 .. _zend.filter.set.separatortodash.options:
 
 Supported options for Zend\\Filter\\Word\\SeparatorToDash
----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\Word\SeparatorToDash``:
 
@@ -17,7 +17,7 @@ The following options are supported for ``Zend\Filter\Word\SeparatorToDash``:
 .. _zend.filter.set.separatortodash.basic:
 
 Basic usage
------------
+^^^^^^^^^^^
 
 A basic example of usage is below:
 
@@ -32,7 +32,7 @@ A basic example of usage is below:
 The above example returns 'this-is-my-content'.
 
 Default behaviour for Zend\\Filter\\Word\\SeparatorToDash
----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

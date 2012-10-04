@@ -1,14 +1,14 @@
 .. _zend.filter.set.camelcasetoseparator:
 
 Word\\CamelCaseToSeparator
-===========================
+--------------------------
 
 This filter modifies a given string such that 'CamelCaseWords' are converted to 'camel case words'.
 
 .. _zend.filter.set.camelcasetoseparator.options:
 
 Supported options for Zend\\Filter\\Word\\CamelCaseToSeparator
----------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\Word\CamelCaseToSeparator``:
 
@@ -17,7 +17,7 @@ The following options are supported for ``Zend\Filter\Word\CamelCaseToSeparator`
 .. _zend.filter.set.camelcasetoseparator.basic:
 
 Basic usage
------------
+^^^^^^^^^^^
 
 A basic example of usage is below:
 
@@ -32,7 +32,7 @@ A basic example of usage is below:
 The above example returns 'this:is:my:content'.
 
 Default behaviour for Zend\\Filter\\Word\\CamelCaseToSeparator
---------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
