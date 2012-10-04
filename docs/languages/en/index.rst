@@ -105,12 +105,12 @@
    modules/zend.ldap.server
    modules/zend.ldap.ldif
    modules/zend.loader.autoloader-factory
+   modules/zend.loader.standard-autoloader
+   modules/zend.loader.class-map-autoloader
+   modules/zend.loader.spl-autoloader
    modules/zend.loader.plugin-class-loader
    modules/zend.loader.short-name-locator
    modules/zend.loader.plugin-class-locator
-   modules/zend.loader.spl-autoloader
-   modules/zend.loader.class-map-autoloader
-   modules/zend.loader.standard-autoloader
    modules/zend.loader.classmap-generator
    modules/zend.log.overview
    modules/zend.log.writers
@@ -138,8 +138,7 @@
    modules/zend.mvc.controllers
    modules/zend.mvc.plugins
    modules/zend.mvc.examples
-   modules/zend.navigation.intro
-   modules/zend.navigation.quick-start
+   modules/zend.navigation.intro modules/zend.navigation.quick-start
    modules/zend.navigation.pages
    modules/zend.navigation.containers
    modules/zend.paginator.introduction
@@ -408,12 +407,12 @@ Zend\\Loader
 ^^^^^^^^^^^^
 
         * :doc:`modules/zend.loader.autoloader-factory`
+        * :doc:`modules/zend.loader.standard-autoloader`
+        * :doc:`modules/zend.loader.class-map-autoloader`
+        * :doc:`modules/zend.loader.spl-autoloader`
         * :doc:`modules/zend.loader.plugin-class-loader`
         * :doc:`modules/zend.loader.short-name-locator`
         * :doc:`modules/zend.loader.plugin-class-locator`
-        * :doc:`modules/zend.loader.spl-autoloader`
-        * :doc:`modules/zend.loader.class-map-autoloader`
-        * :doc:`modules/zend.loader.standard-autoloader`
         * :doc:`modules/zend.loader.classmap-generator`
 
 .. _zend.log:
