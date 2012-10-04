@@ -75,7 +75,7 @@ Of course you can combine ``format`` and ``locale``. In this case you can also u
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\Date(array('format' => 'yyyy MMMM', 'locale' => 'de));
+   $validator = new Zend\Validator\Date(array('format' => 'yyyy MMMM', 'locale' => 'de'));
 
    $validator->isValid('2010 Dezember'); // returns true
    $validator->isValid('2010 June');     // returns false

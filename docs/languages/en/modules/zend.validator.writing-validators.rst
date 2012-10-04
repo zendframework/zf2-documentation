@@ -3,9 +3,8 @@
 Writing Validators
 ==================
 
-``Zend\Validator\AbstractValidator`` supplies a set of commonly needed validators, but inevitably, developers will
-wish to write custom validators for their particular needs. The task of writing a custom validator is described in
-this section.
+``Zend\Validator`` supplies a set of commonly needed validators, but inevitably, developers will wish to write 
+custom validators for their particular needs. The task of writing a custom validator is described in this section.
 
 ``Zend\Validator\ValidatorInterface`` defines two methods, ``isValid()`` and ``getMessages()``, that may be
 implemented by user classes in order to create custom validation objects. An object that implements
