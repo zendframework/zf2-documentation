@@ -1,15 +1,15 @@
 .. _zend.filter.inflector:
 
-Zend_Filter_Inflector
-=====================
+Zend\\Filter\\Inflector
+=======================
 
-``Zend_Filter_Inflector`` is a general purpose tool for rules-based inflection of strings to a given target.
+``Zend\Filter\Inflector`` is a general purpose tool for rules-based inflection of strings to a given target.
 
 As an example, you may find you need to transform MixedCase or camelCasedWords into a path; for readability, OS
 policies, or other reasons, you also need to lower case this, and you want to separate the words using a dash
 ('-'). An inflector can do this for you.
 
-``Zend_Filter_Inflector`` implements ``Zend_Filter_Interface``; you perform inflection by calling ``filter()`` on
+``Zend\Filter\Inflector`` implements ``Zend\Filter\FilterInterface``; you perform inflection by calling ``filter()`` on
 the object instance.
 
 .. _zend.filter.inflector.camel_case_example:
@@ -19,9 +19,9 @@ the object instance.
 .. code-block:: php
    :linenos:
 
-   $inflector = new Zend_Filter_Inflector('pages/:page.:suffix');
+   $inflector = new Zend\Filter\Inflector('pages/:page.:suffix');
    $inflector->setRules(array(
-       ':page'  => array('Word_CamelCaseToDash', 'StringToLower'),
+       ':page'  => array('Word\CamelCaseToDash', 'StringToLower'),
        'suffix' => 'html'
    ));
 
@@ -45,46 +45,37 @@ When calling ``filter()``, you then pass in an array of key and value pairs corr
 target.
 
 Each variable in the target can have zero or more rules associated with them. Rules may be either **static** or
-refer to a ``Zend_Filter`` class. Static rules will replace with the text provided. Otherwise, a class matching the
+refer to a ``Zend\Filter`` class. Static rules will replace with the text provided. Otherwise, a class matching the
 rule provided will be used to inflect the text. Classes are typically specified using a short name indicating the
 filter name stripped of any common prefix.
 
-As an example, you can use any ``Zend_Filter`` concrete implementations; however, instead of referring to them as
-'``Zend_Filter_Alpha``' or '``Zend_Filter_StringToLower``', you'd specify only '``Alpha``' or '``StringToLower``'.
+As an example, you can use any ``Zend\Filter`` concrete implementations; however, instead of referring to them as
+'``Zend\Filter\Alpha``' or '``Zend\Filter\StringToLower``', you'd specify only '``Alpha``' or '``StringToLower``'.
 
-.. _zend.filter.inflector.paths:
+.. _zend.filter.inflector.custom-filters:
 
-Setting Paths To Alternate Filters
-----------------------------------
+Using Custom Filters
+--------------------
 
-``Zend_Filter_Inflector`` uses ``Zend_Loader_PluginLoader`` to manage loading filters to use with inflection. By
-default, any filter prefixed with ``Zend_Filter`` will be available. To access filters with that prefix but which
-occur deeper in the hierarchy, such as the various Word filters, simply strip off the ``Zend_Filter`` prefix:
-
-.. code-block:: php
-   :linenos:
-
-   // use Zend_Filter_Word_CamelCaseToDash as a rule
-   $inflector->addRules(array('script' => 'Word_CamelCaseToDash'));
-
-To set alternate paths, ``Zend_Filter_Inflector`` has a utility method that proxies to the plugin loader,
-``addFilterPrefixPath()``:
+``Zend\Filter\Inflector`` uses ``Zend\Filter\FilterPluginManager`` to manage loading filters to use with inflection.
+By default, filters registered with ``Zend\Filter\FilterPluginManager`` are available. To access filters with that
+prefix but which occur deeper in the hierarchy, such as the various ``Word`` filters, simply strip off the
+``Zend\Filter`` prefix:
 
 .. code-block:: php
    :linenos:
 
-   $inflector->addFilterPrefixPath('My_Filter', 'My/Filter/');
+   // use Zend\Filter\Word\CamelCaseToDash as a rule
+   $inflector->addRules(array('script' => 'Word\CamelCaseToDash'));
 
-Alternatively, you can retrieve the plugin loader from the inflector, and interact with it directly:
+To use custom filters, you have two choices: reference them by fully qualified class name (e.g.,
+``My\Custom\Filter\Mungify``), or manipulate the composed ``FilterPluginManager`` instance.
 
 .. code-block:: php
    :linenos:
 
-   $loader = $inflector->getPluginLoader();
-   $loader->addPrefixPath('My_Filter', 'My/Filter/');
-
-For more options on modifying the paths to filters, please see :ref:`the PluginLoader documentation
-<zend.loader.pluginloader>`.
+   $filters = $inflector->getPluginManager();
+   $filters->addInvokableClass('mungify', 'My\Custom\Filter\Mungify');
 
 .. _zend.filter.inflector.targets:
 
@@ -102,13 +93,13 @@ argument to the constructor:
    :linenos:
 
    // Via constructor:
-   $inflector = new Zend_Filter_Inflector('#foo/#bar.#sfx', null, '#');
+   $inflector = new Zend\Filter\Inflector('#foo/#bar.#sfx', null, '#');
 
    // Via accessor:
    $inflector->setTargetReplacementIdentifier('#');
 
 Typically, you will set the target via the constructor. However, you may want to re-set the target later (for
-instance, to modify the default inflector in core components, such as the ``ViewRenderer`` or ``Zend_Layout``).
+instance, to modify the default inflector in core components, such as the ``ViewRenderer`` or ``Zend\Layout``).
 ``setTarget()`` can be used for this purpose:
 
 .. code-block:: php
@@ -137,7 +128,7 @@ updated -- without needing to directly update the target each time (thus saving 
         */
        public function __construct()
        {
-           $this->_inflector = new Zend_Filter_Inflector();
+           $this->_inflector = new Zend\Filter\Inflector();
            $this->_inflector->setTargetReference($this->_target);
        }
 
@@ -182,7 +173,7 @@ the rule:
 .. code-block:: php
    :linenos:
 
-   $inflector = new Zend_Filter_Inflector(':script.:suffix');
+   $inflector = new Zend\Filter\Inflector(':script.:suffix');
    $inflector->setStaticRule('suffix', 'phtml');
 
    // change it later:
@@ -209,7 +200,7 @@ method is used to accomplish this:
         */
        public function __construct()
        {
-           $this->_inflector = new Zend_Filter_Inflector(':script.:suffix');
+           $this->_inflector = new Zend\Filter\Inflector(':script.:suffix');
            $this->_inflector->setStaticRuleReference('suffix', $this->_suffix);
        }
 
@@ -231,7 +222,7 @@ method is used to accomplish this:
 Filter Inflector Rules
 ^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_Filter`` filters may be used as inflector rules as well. Just like static rules, these are bound to a target
+``Zend\Filter`` filters may be used as inflector rules as well. Just like static rules, these are bound to a target
 variable; unlike static rules, you may define multiple filters to use when inflecting. These filters are processed
 in order, so be careful to register them in an order that makes sense for the data you receive.
 
@@ -240,27 +231,27 @@ Rules may be added using ``setFilterRule()`` (which overwrites any previous rule
 one of the following ways:
 
 - **String**. The string may be a filter class name, or a class name segment minus any prefix set in the
-  inflector's plugin loader (by default, minus the '``Zend_Filter``' prefix).
+  inflector's plugin loader (by default, minus the '``Zend\Filter``' prefix).
 
-- **Filter object**. Any object instance implementing ``Zend_Filter_Interface`` may be passed as a filter.
+- **Filter object**. Any object instance implementing ``Zend\Filter\FilterInterface`` may be passed as a filter.
 
 - **Array**. An array of one or more strings or filter objects as defined above.
 
 .. code-block:: php
    :linenos:
 
-   $inflector = new Zend_Filter_Inflector(':script.:suffix');
+   $inflector = new Zend\Filter\Inflector(':script.:suffix');
 
-   // Set rule to use Zend_Filter_Word_CamelCaseToDash filter
-   $inflector->setFilterRule('script', 'Word_CamelCaseToDash');
+   // Set rule to use Zend\Filter\Word\CamelCaseToDash filter
+   $inflector->setFilterRule('script', 'Word\CamelCaseToDash');
 
    // Add rule to lowercase string
-   $inflector->addFilterRule('script', new Zend_Filter_StringToLower());
+   $inflector->addFilterRule('script', new Zend\Filter\StringToLower());
 
    // Set rules en-masse
    $inflector->setFilterRule('script', array(
-       'Word_CamelCaseToDash',
-       new Zend_Filter_StringToLower()
+       'Word\CamelCaseToDash',
+       new Zend\Filter\StringToLower()
    ));
 
 .. _zend.filter.inflector.rules.multiple:
@@ -269,7 +260,7 @@ Setting Many Rules At Once
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Typically, it's easier to set many rules at once than to configure a single variable and its inflection rules at a
-time. ``Zend_Filter_Inflector``'s ``addRules()`` and ``setRules()`` method allow this.
+time. ``Zend\Filter\Inflector``'s ``addRules()`` and ``setRules()`` method allow this.
 
 Each method takes an array of variable and rule pairs, where the rule may be whatever the type of rule accepts
 (string, filter object, or array). Variable names accept a special notation to allow setting static rules and
@@ -301,11 +292,12 @@ filter rules, according to the following notation:
 Utility Methods
 ---------------
 
-``Zend_Filter_Inflector`` has a number of utility methods for retrieving and setting the plugin loader,
+``Zend\Filter\Inflector`` has a number of utility methods for retrieving and setting the plugin loader,
 manipulating and retrieving rules, and controlling if and when exceptions are thrown.
 
-- ``setPluginLoader()`` can be used when you have configured your own plugin loader and wish to use it with
-  ``Zend_Filter_Inflector``; ``getPluginLoader()`` retrieves the currently set one.
+- ``setPluginManager()`` can be used when you have configured your own
+  ``Zend\Filter\FilterPluginManager`` instance  and wish to use it with ``Zend\Filter\Inflector``;
+  ``getPluginManager()`` retrieves the currently set one.
 
 - ``setThrowTargetExceptionsOn()`` can be used to control whether or not ``filter()`` throws an exception when a
   given replacement identifier passed to it is not found in the target. By default, no exceptions are thrown.
@@ -321,15 +313,18 @@ manipulating and retrieving rules, and controlling if and when exceptions are th
 
 .. _zend.filter.inflector.config:
 
-Using Zend_Config with Zend_Filter_Inflector
---------------------------------------------
+Using a Traversable or an array with Zend\\Filter\\Inflector
+------------------------------------------------------------
 
-You can use ``Zend_Config`` to set rules, filter prefix paths, and other object state in your inflectors, either by
-passing a ``Zend_Config`` object to the constructor or ``setOptions()``. The following settings may be specified:
+You can use a ``Traversable`` or an array to set rules and other object state in your inflectors,
+either by passing a ``Traversable`` object or an array to the constructor or ``setOptions()``. The
+following settings may be specified:
 
 - ``target`` specifies the inflection target.
 
-- ``filterPrefixPath`` specifies one or more filter prefix and path pairs for use with the inflector.
+- ``pluginManager`` specifies the ``Zend\Filter\FilterPluginManager`` instance or extension to use
+  for obtaining plugins; alternately, you may specify a class name of a class that extends the
+  ``FilterPluginManager``.
 
 - ``throwTargetExceptionsOn`` should be a boolean indicating whether or not to throw exceptions when a replacement
   identifier is still present after inflection.
@@ -342,17 +337,16 @@ passing a ``Zend_Config`` object to the constructor or ``setOptions()``. The fol
 
 .. _zend.filter.inflector.config.example:
 
-.. rubric:: Using Zend_Config with Zend_Filter_Inflector
+.. rubric:: Using a Traversable or an array with ``Zend\Filter\Inflector``
 
 .. code-block:: php
    :linenos:
 
    // With the constructor:
-   $config    = new Zend_Config($options);
-   $inflector = new Zend_Filter_Inflector($config);
+   $options; // implements Traversable
+   $inflector = new Zend\Filter\Inflector($options);
 
    // Or with setOptions():
-   $inflector = new Zend_Filter_Inflector();
-   $inflector->setOptions($config);
-
+   $inflector = new Zend\Filter\Inflector();
+   $inflector->setOptions($options);
 

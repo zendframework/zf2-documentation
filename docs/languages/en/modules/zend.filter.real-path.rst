@@ -7,10 +7,10 @@ This filter will resolve given links and pathnames and returns canonicalized abs
 
 .. _zend.filter.set.realpath.options:
 
-Supported options for Zend_Filter_RealPath
-------------------------------------------
+Supported options for Zend\\Filter\\RealPath
+--------------------------------------------
 
-The following options are supported for ``Zend_Filter_RealPath``:
+The following options are supported for ``Zend\Filter\RealPath``:
 
 - **exists**: This option defaults to ``TRUE`` which checks if the given path really exists.
 
@@ -23,14 +23,14 @@ For any given link of pathname its absolute path will be returned. References to
 '``/``' characters in the input path will be stripped. The resulting path will not have any symbolic link,
 '``/./``' or '``/../``' character.
 
-``Zend_Filter_RealPath`` will return ``FALSE`` on failure, e.g. if the file does not exist. On *BSD* systems
-``Zend_Filter_RealPath`` doesn't fail if only the last path component doesn't exist, while other systems will
+``Zend\Filter\RealPath`` will return ``FALSE`` on failure, e.g. if the file does not exist. On *BSD* systems
+``Zend\Filter\RealPath`` doesn't fail if only the last path component doesn't exist, while other systems will
 return ``FALSE``.
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_RealPath();
+   $filter = new Zend\Filter\RealPath();
    $path   = '/www/var/path/../../mypath';
    $filtered = $filter->filter($path);
 
@@ -47,7 +47,7 @@ which you want to create. You can then either give a ``FALSE`` at initiation, or
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_RealPath(false);
+   $filter = new Zend\Filter\RealPath(false);
    $path   = '/www/var/path/../../non/existing/path';
    $filtered = $filter->filter($path);
 

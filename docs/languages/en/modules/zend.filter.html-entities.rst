@@ -8,10 +8,10 @@ exist.
 
 .. _zend.filter.set.htmlentities.options:
 
-Supported options for Zend_Filter_HtmlEntities
-----------------------------------------------
+Supported options for Zend\\Filter\\HtmlEntities
+------------------------------------------------
 
-The following options are supported for ``Zend_Filter_HtmlEntities``:
+The following options are supported for ``Zend\Filter\HtmlEntities``:
 
 - **quotestyle**: Equivalent to the *PHP* htmlentities native function parameter **quote_style**. This allows you
   to define what will be done with 'single' and "double" quotes. The following constants are accepted:
@@ -23,7 +23,7 @@ The following options are supported for ``Zend_Filter_HtmlEntities``:
 
   .. note::
 
-     This option can also be set via the ``$options`` parameter as a ``Zend_Config`` object or array. The option
+     This option can also be set via the ``$options`` parameter as a Traversable object or array. The option
      key will be accepted as either charset or encoding.
 
 - **doublequote**: Equivalent to the *PHP* htmlentities native function parameter **double_encode**. If set to
@@ -43,7 +43,7 @@ See the following example for the default behaviour of this filter.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_HtmlEntities();
+   $filter = new Zend\Filter\HtmlEntities();
 
    print $filter->filter('<');
 
@@ -52,13 +52,13 @@ See the following example for the default behaviour of this filter.
 Quote Style
 -----------
 
-``Zend_Filter_HtmlEntities`` allows changing the quote style used. This can be useful when you want to leave
+``Zend\Filter\HtmlEntities`` allows changing the quote style used. This can be useful when you want to leave
 double, single, or both types of quotes un-filtered. See the following example:
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_HtmlEntities(array('quotestyle' => ENT_QUOTES));
+   $filter = new Zend\Filter\HtmlEntities(array('quotestyle' => ENT_QUOTES));
 
    $input  = "A 'single' and " . '"double"';
    print $filter->filter($input);
@@ -69,7 +69,7 @@ filtered.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_HtmlEntities(array('quotestyle' => ENT_COMPAT));
+   $filter = new Zend\Filter\HtmlEntities(array('quotestyle' => ENT_COMPAT));
 
    $input  = "A 'single' and " . '"double"';
    print $filter->filter($input);
@@ -80,7 +80,7 @@ quotes are not altered.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_HtmlEntities(array('quotestyle' => ENT_NOQUOTES));
+   $filter = new Zend\Filter\HtmlEntities(array('quotestyle' => ENT_NOQUOTES));
 
    $input  = "A 'single' and " . '"double"';
    print $filter->filter($input);
@@ -99,7 +99,7 @@ following constants are accepted: ``ENT_COMPAT``, ``ENT_QUOTES``, ``ENT_NOQUOTES
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_HtmlEntities();
+   $filter = new Zend\Filter\HtmlEntities();
 
    $filter->setQuoteStyle(ENT_QUOTES);
    print $filter->getQuoteStyle(ENT_QUOTES);
@@ -111,7 +111,7 @@ for a list of supported character sets.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_HtmlEntities();
+   $filter = new Zend\Filter\HtmlEntities();
 
    $filter->setQuoteStyle(ENT_QUOTES);
    print $filter->getQuoteStyle(ENT_QUOTES);
@@ -122,7 +122,7 @@ To change or retrieve the ``doublequote`` option after instantiation, the two me
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_HtmlEntities();
+   $filter = new Zend\Filter\HtmlEntities();
 
    $filter->setQuoteStyle(ENT_QUOTES);
    print $filter->getQuoteStyle(ENT_QUOTES);
