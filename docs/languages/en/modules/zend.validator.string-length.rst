@@ -7,7 +7,7 @@ This validator allows you to validate if a given string is between a defined len
 
 .. note::
 
-   **Zend\Validator\StringLength supports only string validation**
+   **Zend\\Validator\\StringLength supports only string validation**
 
    It should be noted that ``Zend\Validator\StringLength`` supports only the validation of strings. Integers,
    floats, dates or objects can not be validated with this validator.

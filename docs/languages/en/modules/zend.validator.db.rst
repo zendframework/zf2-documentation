@@ -8,8 +8,8 @@ record exists in a given table of a database, with a given value.
 
 .. _zend.validator.set.db.options:
 
-Supported options for Zend\\Validator\\Db_*
--------------------------------------------
+Supported options for Zend\\Validator\\Db\\*
+--------------------------------------------
 
 The following options are supported for ``Zend\Validator\Db\NoRecordExists`` and
 ``Zend\Validator\Db\RecordExists``:

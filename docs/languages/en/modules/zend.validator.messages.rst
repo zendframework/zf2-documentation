@@ -71,7 +71,7 @@ So to translate all validation messages to German for example, all you have to d
        'phpArray'
        'resources/languages/en.php',
        'default',
-       'en_US
+       'en_US'
    );
    Zend\Validator\AbstractValidator::setDefaultTranslator($translator);
 
