@@ -1,14 +1,14 @@
 .. _zend.filter.set.pregreplace:
 
 PregReplace
-===========
+-----------
 
 ``Zend\Filter\PregReplace`` performs a search using regular expressions and replaces all found elements.
 
 .. _zend.filter.set.pregreplace.options:
 
 Supported options for Zend\\Filter\\PregReplace
------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\PregReplace``:
 
@@ -19,7 +19,7 @@ The following options are supported for ``Zend\Filter\PregReplace``:
 .. _zend.filter.set.pregreplace.basic:
 
 Basic usage
------------
+^^^^^^^^^^^
 
 To use this filter properly you must give two options:
 

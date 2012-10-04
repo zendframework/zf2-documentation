@@ -1,7 +1,7 @@
 .. _zend.filter.set.htmlentities:
 
 HtmlEntities
-============
+------------
 
 Returns the string ``$value``, converting characters to their corresponding *HTML* entity equivalents where they
 exist.
@@ -9,7 +9,7 @@ exist.
 .. _zend.filter.set.htmlentities.options:
 
 Supported options for Zend\\Filter\\HtmlEntities
-------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\HtmlEntities``:
 
@@ -36,7 +36,7 @@ The following options are supported for ``Zend\Filter\HtmlEntities``:
 .. _zend.filter.set.htmlentities.basic:
 
 Basic usage
------------
+^^^^^^^^^^^
 
 See the following example for the default behaviour of this filter.
 
@@ -50,7 +50,7 @@ See the following example for the default behaviour of this filter.
 .. _zend.filter.set.htmlentities.quotestyle:
 
 Quote Style
------------
+^^^^^^^^^^^
 
 ``Zend\Filter\HtmlEntities`` allows changing the quote style used. This can be useful when you want to leave
 double, single, or both types of quotes un-filtered. See the following example:
@@ -90,7 +90,7 @@ The above example returns **A 'single' and "double"**. Notice that neither "doub
 .. _zend.filter.set.htmlentities.:
 
 Helper Methods
---------------
+^^^^^^^^^^^^^^
 
 To change or retrieve the ``quotestyle`` after instantiation, the two methods ``setQuoteStyle()`` and
 ``getQuoteStyle()`` may be used respectively. ``setQuoteStyle()`` accepts one parameter ``$quoteStyle``. The

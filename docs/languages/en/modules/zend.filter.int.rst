@@ -1,21 +1,21 @@
 .. _zend.filter.set.int:
 
 Int
-===
+---
 
 ``Zend\Filter\Int`` allows you to transform a sclar value which contains into an integer.
 
 .. _zend.filter.set.int.options:
 
 Supported options for Zend\\Filter\\Int
----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are no additional options for ``Zend\Filter\Int``.
 
 .. _zend.filter.set.int.basic:
 
 Basic usage
------------
+^^^^^^^^^^^
 
 A basic example of usage is below:
 

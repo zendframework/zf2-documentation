@@ -1,21 +1,21 @@
 .. _zend.filter.set.dir:
 
 Dir
-===
+---
 
 Given a string containing a path to a file, this function will return the name of the directory.
 
 .. _zend.filter.set.dir.options:
 
 Supported options for Zend\\Filter\\Dir
----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are no additional options for ``Zend\Filter\Dir``.
 
 .. _zend.filter.set.dir.basic:
 
 Basic usage
------------
+^^^^^^^^^^^
 
 A basic example of usage is below:
 

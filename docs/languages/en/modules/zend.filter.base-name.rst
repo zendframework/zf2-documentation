@@ -1,7 +1,7 @@
 .. _zend.filter.set.basename:
 
 BaseName
-========
+--------
 
 ``Zend\Filter\BaseName`` allows you to filter a string which contains the path to a file and it will return the
 base name of this file.
@@ -9,14 +9,14 @@ base name of this file.
 .. _zend.filter.set.basename.options:
 
 Supported options for Zend\\Filter\\BaseName
---------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are no additional options for ``Zend\Filter\BaseName``.
 
 .. _zend.filter.set.basename.basic:
 
 Basic usage
------------
+^^^^^^^^^^^
 
 A basic example of usage is below:
 
