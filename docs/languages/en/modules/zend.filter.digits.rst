@@ -1,21 +1,21 @@
 .. _zend.filter.set.digits:
 
 Digits
-======
+------
 
 Returns the string ``$value``, removing all but digits.
 
 .. _zend.filter.set.digits.options:
 
 Supported options for Zend\\Filter\\Digits
-------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are no additional options for ``Zend\Filter\Digits``.
 
 .. _zend.filter.set.digits.basic:
 
 Basic usage
------------
+^^^^^^^^^^^
 
 A basic example of usage is below:
 

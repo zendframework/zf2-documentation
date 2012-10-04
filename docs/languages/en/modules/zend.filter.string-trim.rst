@@ -1,14 +1,14 @@
 .. _zend.filter.set.stringtrim:
 
 StringTrim
-==========
+----------
 
 This filter modifies a given string such that certain characters are removed from the beginning and end.
 
 .. _zend.filter.set.stringtrim.options:
 
 Supported options for Zend\\Filter\\StringTrim
-----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\StringTrim``:
 
@@ -19,7 +19,7 @@ The following options are supported for ``Zend\Filter\StringTrim``:
 .. _zend.filter.set.stringtrim.basic:
 
 Basic usage
------------
+^^^^^^^^^^^
 
 A basic example of usage is below:
 
@@ -35,7 +35,7 @@ The above example returns 'This is (my) content:'. Notice that the whitespace ch
 .. _zend.filter.set.stringtrim.types:
 
 Default behaviour for Zend\\Filter\\StringTrim
-----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
