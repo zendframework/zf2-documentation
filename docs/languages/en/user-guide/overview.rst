@@ -34,7 +34,7 @@ to
 in your ``httpd.conf`` file. Check with your distribution’s documentation for
 exact details. You will not be able to navigate to any page other than the home
 page in this tutorial if you have not configured mod_rewrite and .htaccess usage
-correctly
+correctly.
 
 The tutorial application
 ------------------------

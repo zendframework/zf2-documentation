@@ -47,7 +47,7 @@ four actions will be:
 
 The mapping of a URL to a particular action is done using routes that are defined
 in the module’s ``module.config.php`` file. We will add a route for our album
-actions. This is the updated config file with the new code commented.
+actions. This is the updated module config file with the new code commented.
 
 .. code-block:: php
     :emphasize-lines: 9-26
