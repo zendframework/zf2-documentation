@@ -317,9 +317,9 @@ Usage
 
 There are two provided ways to use ``Zend\Authentication`` adapters:
 
-. indirectly, through ``Zend\Authentication\AuthenticationService::authenticate()``
+- indirectly, through ``Zend\Authentication\AuthenticationService::authenticate()``
 
-. directly, through the adapter's ``authenticate()`` method
+- directly, through the adapter's ``authenticate()`` method
 
 The following example illustrates how to use a ``Zend\Authentication`` adapter indirectly, through the use of the
 ``Zend\Authentication\AuthenticationService`` class:

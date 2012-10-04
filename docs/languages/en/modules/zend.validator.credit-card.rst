@@ -20,29 +20,29 @@ The following issuing institutes are accepted:
 
 - **American Express**
 
-  **China UnionPay**
+- **China UnionPay**
 
-  **Diners Club Card Blanche**
+- **Diners Club Card Blanche**
 
-  **Diners Club International**
+- **Diners Club International**
 
-  **Diners Club US & Canada**
+- **Diners Club US & Canada**
 
-  **Discover Card**
+- **Discover Card**
 
-  **JCB**
+- **JCB**
 
-  **Laser**
+- **Laser**
 
-  **Maestro**
+- **Maestro**
 
-  **MasterCard**
+- **MasterCard**
 
-  **Solo**
+- **Solo**
 
-  **Visa**
+- **Visa**
 
-  **Visa Electron**
+- **Visa Electron**
 
 .. note::
 
@@ -129,35 +129,35 @@ this case you have to provide the institutes with the ``type`` array key as simu
 
 .. table:: Constants for credit card institutes
 
-   +-------------------------+----------------+
-   |Institute                |Constant        |
-   +=========================+================+
-   |American Express         |AMERICAN_EXPRESS|
-   +-------------------------+----------------+
-   |China UnionPay           |UNIONPAY        |
-   +-------------------------+----------------+
-   |Diners Club Card Blanche |DINERS_CLUB     |
-   +-------------------------+----------------+
-   |Diners Club International|DINERS_CLUB     |
-   +-------------------------+----------------+
-   |Diners Club US & Canada  |DINERS_CLUB_US  |
-   +-------------------------+----------------+
-   |Discover Card            |DISCOVER        |
-   +-------------------------+----------------+
-   |JCB                      |JCB             |
-   +-------------------------+----------------+
-   |Laser                    |LASER           |
-   +-------------------------+----------------+
-   |Maestro                  |MAESTRO         |
-   +-------------------------+----------------+
-   |MasterCard               |MASTERCARD      |
-   +-------------------------+----------------+
-   |Solo                     |SOLO            |
-   +-------------------------+----------------+
-   |Visa                     |VISA            |
-   +-------------------------+----------------+
-   |Visa Electron            |VISA            |
-   +-------------------------+----------------+
+   +-------------------------+-------------------------------------------+
+   |Institute                |Constant                                   |
+   +=========================+===========================================+
+   |American Express         |Zend\Validator\CreditCard::AMERICAN_EXPRESS|
+   +-------------------------+-------------------------------------------+
+   |China UnionPay           |Zend\Validator\CreditCard::UNIONPAY        |
+   +-------------------------+-------------------------------------------+
+   |Diners Club Card Blanche |Zend\Validator\CreditCard::DINERS_CLUB     |
+   +-------------------------+-------------------------------------------+
+   |Diners Club International|Zend\Validator\CreditCard::DINERS_CLUB     |
+   +-------------------------+-------------------------------------------+
+   |Diners Club US & Canada  |Zend\Validator\CreditCard::DINERS_CLUB_US  |
+   +-------------------------+-------------------------------------------+
+   |Discover Card            |Zend\Validator\CreditCard::DISCOVER        |
+   +-------------------------+-------------------------------------------+
+   |JCB                      |Zend\Validator\CreditCard::JCB             |
+   +-------------------------+-------------------------------------------+
+   |Laser                    |Zend\Validator\CreditCard::LASER           |
+   +-------------------------+-------------------------------------------+
+   |Maestro                  |Zend\Validator\CreditCard::MAESTRO         |
+   +-------------------------+-------------------------------------------+
+   |MasterCard               |Zend\Validator\CreditCard::MASTERCARD      |
+   +-------------------------+-------------------------------------------+
+   |Solo                     |Zend\Validator\CreditCard::SOLO            |
+   +-------------------------+-------------------------------------------+
+   |Visa                     |Zend\Validator\CreditCard::VISA            |
+   +-------------------------+-------------------------------------------+
+   |Visa Electron            |Zend\Validator\CreditCard::VISA            |
+   +-------------------------+-------------------------------------------+
 
 You can also set or add institutes afterward instantiation by using the methods ``setType()``, ``addType()`` and
 ``getType()``.

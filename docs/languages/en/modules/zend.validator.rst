@@ -158,11 +158,6 @@ you from setting a translator manually for all validator classes, and simplifies
 
    Zend\Validator\AbstractValidator::setDefaultTranslator($translate);
 
-.. note::
-
-   When you have set an application wide locale within your registry, then this locale will be used as default
-   translator.
-
 Sometimes it is necessary to disable the translator within a validator. To archive this you can use the
 ``setDisableTranslator()`` method, which accepts a boolean parameter, and ``isTranslatorDisabled()`` to get the set
 value.

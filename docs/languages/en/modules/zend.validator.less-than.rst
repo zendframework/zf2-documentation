@@ -7,7 +7,7 @@ LessThan
 
 .. note::
 
-   **Zend\Validator\LessThan supports only number validation**
+   **Zend\\Validator\\LessThan supports only number validation**
 
    It should be noted that ``Zend\Validator\LessThan`` supports only the validation of numbers. Strings or dates
    can not be validated with this validator.
