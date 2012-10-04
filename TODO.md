@@ -14,21 +14,15 @@ Typically, this will mean updating class names to reference namespaced versions,
 and potentially updating code samples to reflect any API changes.
 
 - Dom  (Lead: Matthew Weier O'Phinney (weierophinney))
-- Feed (Lead: Pádraic Brady (PadraicB); work begun by Robert Basic (robertbasic))
 - File (Lead: Chris Martin (cgmartin))
-- Filter (Lead: Ben Scholzen (DASPRiD))
+- Filter (Lead: Ben Scholzen (DASPRiD)); work begun by Ralf Eggert (RalfEggert)
 - Json (Lead: Matthew Weier O'Phinney (weierophinney)); work begun by Robert Basic (robertbasic))
 - Markup (Note that this is now in its own repository, and the API may change in
   the future)
-- Mime (Lead: Dolf Schimmel (Freeaqingme))
 - Navigation (Lead: Kyle Spraggs (spiffyjr))
 - Paginator (Lead: Matthew Weier O'Phinney (weierophinney))
 - ProgressBar (Lead: Ben Scholzen (DASPRiD))
 - Serializer (Lead: Marc Bennewitz (marc-mabe))
-- Server (Lead: Matthew Weier O'Phinney (weierophinney))
-- Soap (Lead: Ralph Schindler (ralphschindler))
-- Text (Lead: Ben Scholzen (DASPRiD))
-- XmlRpc (Lead: Matthew Weier O'Phinney (weierophinney))
 
 New Components needing documentation
 ------------------------------------
@@ -71,7 +65,7 @@ that happened before release. You will likely need to contact somebody in IRC or
 on the mailing list to determine what needs to be fixed.
 
 - Cache (Lead: Marc Bennewitz (marc-mabe))
-- Http (Lead: Dolf Schimmel (Freeaqingme))
+- Http (Lead: Dolf Schimmel (Freeaqingme)); work begun by Adam Lundrigan (adamlundrigan)
 - Loader (Lead: Matthew Weier O'Phinney (weierophinney))
 - ModuleManager (Lead: Evan Coury (EvanDotPro))
 - Mvc (Lead: Matthew Weier O'Phinney (weierophinney))
