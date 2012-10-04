@@ -60,7 +60,7 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
    // in a configuration array (i.e. returned by module.config.php)
     'router' => array(
         'routes' => array(
-            'solon' => array(
+            'auth' => array(
                 'type' => 'segment',
                 'options' => array(
                     'route' => '/auth[/:action][/:id]',
@@ -76,7 +76,7 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
         )
     ),
    // i.e. (in a view template)
-   <a href="<?= $this->url('solon', array('action' => 'logout', 'id' => $id)); ?>">Logout</a>
+   <a href="<?= $this->url('auth', array('action' => 'logout', 'id' => $id)); ?>">Logout</a>
    
 
 - ``htmlList($items, $ordered, $attribs, $escape)``: generates unordered and ordered lists based on the ``$items``
@@ -111,7 +111,7 @@ name by which you wish to refer to it to the actual class name of the helper/plu
 
 Programmatically, this is done as follows:
 
-c
+.. code-block:: php
    :linenos:
 
    // $view is an instance of PhpRenderer
