@@ -1,7 +1,7 @@
 .. _zend.view.helpers.initial.navigation:
 
 Navigation Helpers
-==================
+------------------
 
 The navigation helpers are used for rendering navigational elements from :ref:`Zend\Navigation\Container
 <zend.navigation.containers>` instances.
@@ -98,7 +98,7 @@ The call above will add a page to the container in the ``Navigation`` helper.
 .. _zend.view.helpers.initial.navigation.i18n:
 
 Translation of labels and titles
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The navigation helpers support translation of page labels and titles. You can set a translator of type
 ``Zend\I18n\Translator`` in the helper using ``$helper->setTranslator($translator)``.
@@ -116,7 +116,7 @@ helper it proxies to if the proxied helper doesn't already have a translator.
 .. _zend.view.helpers.initial.navigation.acl:
 
 Integration with ACL
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 All navigational view helpers support *ACL* inherently from the class
 ``Zend\View\Helper\Navigation\HelperAbstract``. A ``Zend\Permissions\Acl`` object can be assigned to a helper instance with
@@ -134,7 +134,7 @@ The examples below all show how *ACL* affects rendering.
 .. _zend.view.helpers.initial.navigation.setup:
 
 Navigation setup used in examples
----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows the setup of a navigation container for a fictional software company.
 
@@ -363,7 +363,7 @@ In addition to the container above, the following setup is assumed:
 .. _zend.view.helpers.initial.navigation.breadcrumbs:
 
 Breadcrumbs Helper
-------------------
+^^^^^^^^^^^^^^^^^^
 
 Breadcrumbs are used for indicating where in a sitemap a user is currently browsing, and are typically rendered
 like this: "You are here: Home > Products > FantasticProduct 1.0". The breadcrumbs helper follows the guidelines
@@ -503,7 +503,7 @@ Output:
 .. _zend.view.helpers.initial.navigation.links:
 
 Links Helper
-------------
+^^^^^^^^^^^^
 
 The links helper is used for rendering *HTML* ``LINK`` elements. Links are used for describing document
 relationships of the currently active page. Read more about links and link types at `Document relationships: the
@@ -745,7 +745,7 @@ This example shows how to specify which relations to find and render.
 .. _zend.view.helpers.initial.navigation.menu:
 
 Menu Helper
------------
+^^^^^^^^^^^
 
 The Menu helper is used for rendering menus from navigation containers. By default, the menu will be rendered using
 *HTML* *UL* and *LI* tags, but the helper also allows using a partial view script.
@@ -1234,7 +1234,7 @@ Output:
 .. _zend.view.helpers.initial.navigation.sitemap:
 
 Sitemap Helper
---------------
+^^^^^^^^^^^^^^
 
 The Sitemap helper is used for generating *XML* sitemaps, as defined by the `Sitemaps XML format`_. Read more about
 `Sitemaps on Wikpedia`_.
@@ -1501,7 +1501,7 @@ Render the sitemap using a maximum depth of 1.
 .. _zend.view.helpers.initial.navigation.navigation:
 
 Navigation Helper
------------------
+^^^^^^^^^^^^^^^^^
 
 The Navigation helper is a proxy helper that relays calls to other navigational helpers. It can be considered an
 entry point to all navigation-related view tasks. The aforementioned navigational helpers are in the namespace

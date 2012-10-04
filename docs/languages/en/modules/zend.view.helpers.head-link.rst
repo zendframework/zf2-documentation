@@ -1,7 +1,7 @@
 .. _zend.view.helpers.initial.headlink:
 
 HeadLink Helper
-===============
+---------------
 
 The *HTML* **<link>** element is increasingly used for linking a variety of resources for your site: stylesheets,
 feeds, favicons, trackbacks, and more. The ``HeadLink`` helper provides a simple interface for creating and
