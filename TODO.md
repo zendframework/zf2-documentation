@@ -15,7 +15,6 @@ and potentially updating code samples to reflect any API changes.
 
 - Dom  (Lead: Matthew Weier O'Phinney (weierophinney))
 - File (Lead: Chris Martin (cgmartin))
-- Filter (Lead: Ben Scholzen (DASPRiD)); work begun by Ralf Eggert (RalfEggert)
 - Json (Lead: Matthew Weier O'Phinney (weierophinney)); work begun by Robert Basic (robertbasic))
 - Markup (Note that this is now in its own repository, and the API may change in
   the future)
