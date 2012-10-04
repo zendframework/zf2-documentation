@@ -1,7 +1,7 @@
 .. _zend.view.helpers.initial.json:
 
 JSON Helper
-===========
+-----------
 
 When creating views that return *JSON*, it's important to also set the appropriate response header. The *JSON* view
 helper does exactly that. In addition, by default, it disables layouts (if currently enabled), as layouts generally
