@@ -21,7 +21,7 @@ Quick Start
 -----------
 
 You may run the script over any directory containing source code. By default, it will look in the current
-directory, and will write the script to ``.classmap.php`` in the directory you specify.
+directory, and will write the script to ``autoloader_classmap.php`` in the directory you specify.
 
 .. code-block:: sh
    :linenos:
@@ -43,7 +43,10 @@ Configuration Options
    it will assume the current working directory.
 
 **--output or -o**
-   Where to write the autoload class map file. If not provided, assumes ".classmap.php" in the library directory.
+   Where to write the autoload class map file. If not provided, assumes "autoload_classmap.php" in the library directory.
+
+**--append or -a**
+   Append to autoload file if it exists.
 
 **--overwrite or -w**
    If an autoload class map file already exists with the name as specified via the ``--output`` option, you can
