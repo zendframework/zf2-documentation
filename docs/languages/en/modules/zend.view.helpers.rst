@@ -46,7 +46,7 @@ composes. Please refer to the :ref:`plugin broker documentation <zend.loader.plu
 .. _zend.view.helpers.initial:
 
 Included Helpers
-----------------
+================
 
 Zend Framework comes with an initial set of helper classes. In particular, there are helpers for creating
 route-based *URL*\ s and *HTML* lists, as well as declaring variables. Additionally, there are a rich set of
@@ -76,6 +76,9 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
 .. include:: zend.view.helpers.json.rst
 .. include:: zend.view.helpers.navigation.rst
 .. _zend.view.helpers.register:
+
+Advanced Usage
+==============
 
 Registering Helpers
 -------------------
