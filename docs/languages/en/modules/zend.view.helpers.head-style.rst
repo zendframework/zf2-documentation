@@ -1,7 +1,7 @@
 .. _zend.view.helpers.initial.headstyle:
 
 HeadStyle Helper
-================
+----------------
 
 The *HTML* **<style>** element is used to include *CSS* stylesheets inline in the *HTML* **<head>** element.
 

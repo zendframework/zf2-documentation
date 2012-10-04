@@ -1,7 +1,7 @@
 .. _zend.view.helpers.initial.headscript:
 
 HeadScript Helper
-=================
+-----------------
 
 The *HTML* **<script>** element is used to either provide inline client-side scripting elements or link to a remote
 resource containing client-side scripting code. The ``HeadScript`` helper allows you to manage both.
