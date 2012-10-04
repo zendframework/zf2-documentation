@@ -75,6 +75,11 @@
    modules/zend.feed.reader
    modules/zend.feed.writer
    modules/zend.feed.pubsubhubbub
+   modules/zend.filter
+   modules/zend.filter.set
+   modules/zend.filter.filter-chains
+   modules/zend.filter.inflector
+   modules/zend.filter.writing-filters
    modules/zend.form.intro
    modules/zend.form.quick-start
    modules/zend.form.collections
@@ -336,6 +341,17 @@ Zend\\Feed
         * :doc:`modules/zend.feed.reader`
         * :doc:`modules/zend.feed.writer`
         * :doc:`modules/zend.feed.pubsubhubbub`
+
+.. _zend.filter:
+
+Zend\\Filter
+^^^^^^^^^^^^
+
+        * :doc:`modules/zend.filter`
+        * :doc:`modules/zend.filter.set`
+        * :doc:`modules/zend.filter.filter-chains`
+        * :doc:`modules/zend.filter.inflector`
+        * :doc:`modules/zend.filter.writing-filters`
 
 .. _zend.form:
 
