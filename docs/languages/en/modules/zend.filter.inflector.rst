@@ -52,14 +52,14 @@ filter name stripped of any common prefix.
 As an example, you can use any ``Zend\Filter`` concrete implementations; however, instead of referring to them as
 '``Zend\Filter\Alpha``' or '``Zend\Filter\StringToLower``', you'd specify only '``Alpha``' or '``StringToLower``'.
 
-.. _zend.filter.inflector.paths:
+.. _zend.filter.inflector.custom-filters:
 
-Setting Paths To Alternate Filters
-----------------------------------
+Using Custom Filters
+--------------------
 
 ``Zend\Filter\Inflector`` uses ``Zend\Filter\FilterPluginManager`` to manage loading filters to use with inflection.
-By default, filters registered with Zend\Filter\FilterPluginManager are available. To access filters with that
-prefix but which occur deeper in the hierarchy, such as the various Word filters, simply strip off the
+By default, filters registered with ``Zend\Filter\FilterPluginManager`` are available. To access filters with that
+prefix but which occur deeper in the hierarchy, such as the various ``Word`` filters, simply strip off the
 ``Zend\Filter`` prefix:
 
 .. code-block:: php
@@ -68,24 +68,14 @@ prefix but which occur deeper in the hierarchy, such as the various Word filters
    // use Zend\Filter\Word\CamelCaseToDash as a rule
    $inflector->addRules(array('script' => 'Word\CamelCaseToDash'));
 
-To set alternate paths, ``Zend\Filter\Inflector`` has a utility method that proxies to the plugin loader,
-``addFilterPrefixPath()``:
+To use custom filters, you have two choices: reference them by fully qualified class name (e.g.,
+``My\Custom\Filter\Mungify``), or manipulate the composed ``FilterPluginManager`` instance.
 
 .. code-block:: php
    :linenos:
 
-   $inflector->addFilterPrefixPath('My_Filter', 'My/Filter/');
-
-Alternatively, you can retrieve the plugin loader from the inflector, and interact with it directly:
-
-.. code-block:: php
-   :linenos:
-
-   $loader = $inflector->getPluginLoader();
-   $loader->addPrefixPath('My_Filter', 'My/Filter/');
-
-For more options on modifying the paths to filters, please see :ref:`the PluginLoader documentation
-<zend.loader.pluginloader>`.
+   $filters = $inflector->getPluginManager();
+   $filters->addInvokableClass('mungify', 'My\Custom\Filter\Mungify');
 
 .. _zend.filter.inflector.targets:
 
@@ -305,8 +295,9 @@ Utility Methods
 ``Zend\Filter\Inflector`` has a number of utility methods for retrieving and setting the plugin loader,
 manipulating and retrieving rules, and controlling if and when exceptions are thrown.
 
-- ``setPluginLoader()`` can be used when you have configured your own plugin loader and wish to use it with
-  ``Zend\Filter\Inflector``; ``getPluginLoader()`` retrieves the currently set one.
+- ``setPluginManager()`` can be used when you have configured your own
+  ``Zend\Filter\FilterPluginManager`` instance  and wish to use it with ``Zend\Filter\Inflector``;
+  ``getPluginManager()`` retrieves the currently set one.
 
 - ``setThrowTargetExceptionsOn()`` can be used to control whether or not ``filter()`` throws an exception when a
   given replacement identifier passed to it is not found in the target. By default, no exceptions are thrown.
@@ -325,13 +316,15 @@ manipulating and retrieving rules, and controlling if and when exceptions are th
 Using a Traversable or an array with Zend\\Filter\\Inflector
 ------------------------------------------------------------
 
-You can use a Traversable or an array to set rules, filter prefix paths, and other object state in your inflectors,
-either by passing a Traversable object or an array to the constructor or ``setOptions()``. The following settings
-may be specified:
+You can use a ``Traversable`` or an array to set rules and other object state in your inflectors,
+either by passing a ``Traversable`` object or an array to the constructor or ``setOptions()``. The
+following settings may be specified:
 
 - ``target`` specifies the inflection target.
 
-- ``filterPrefixPath`` specifies one or more filter prefix and path pairs for use with the inflector.
+- ``pluginManager`` specifies the ``Zend\Filter\FilterPluginManager`` instance or extension to use
+  for obtaining plugins; alternately, you may specify a class name of a class that extends the
+  ``FilterPluginManager``.
 
 - ``throwTargetExceptionsOn`` should be a boolean indicating whether or not to throw exceptions when a replacement
   identifier is still present after inflection.
@@ -344,7 +337,7 @@ may be specified:
 
 .. _zend.filter.inflector.config.example:
 
-.. rubric:: Using a Traversable or an array with Zend\Filter\Inflector
+.. rubric:: Using a Traversable or an array with ``Zend\Filter\Inflector``
 
 .. code-block:: php
    :linenos:
@@ -356,5 +349,4 @@ may be specified:
    // Or with setOptions():
    $inflector = new Zend\Filter\Inflector();
    $inflector->setOptions($options);
-
 

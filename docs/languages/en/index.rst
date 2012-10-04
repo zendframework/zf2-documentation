@@ -78,6 +78,7 @@
    modules/zend.filter
    modules/zend.filter.set
    modules/zend.filter.filter-chains
+   modules/zend.filter.inflector
    modules/zend.filter.writing-filters
    modules/zend.form.intro
    modules/zend.form.quick-start
@@ -349,6 +350,7 @@ Zend\\Filter
         * :doc:`modules/zend.filter`
         * :doc:`modules/zend.filter.set`
         * :doc:`modules/zend.filter.filter-chains`
+        * :doc:`modules/zend.filter.inflector`
         * :doc:`modules/zend.filter.writing-filters`
 
 .. _zend.form:
