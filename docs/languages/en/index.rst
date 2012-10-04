@@ -149,6 +149,9 @@
    modules/zend.permissions.acl.intro
    modules/zend.permissions.acl.refining
    modules/zend.permissions.acl.advanced
+   modules/zend.permissions.rbac.intro
+   modules/zend.permissions.rbac.quick-start
+   modules/zend.permissions.rbac.examples
    modules/zend.server
    modules/zend.server.reflection
    modules/zend.service-manager.intro
@@ -504,6 +507,15 @@ Zend\\Permissions\\Acl
         * :doc:`modules/zend.permissions.acl.intro`
         * :doc:`modules/zend.permissions.acl.refining`
         * :doc:`modules/zend.permissions.acl.advanced`
+
+.. _zend.permissions.rbac:
+
+Zend\\Permissions\\Rbac
+^^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.permissions.rbac.intro`
+        * :doc:`modules/zend.permissions.rbac.methods`
+        * :doc:`modules/zend.permissions.rbac.examples`
 
 .. _zend.server:
 
