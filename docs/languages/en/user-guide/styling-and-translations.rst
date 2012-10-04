@@ -5,7 +5,7 @@ Styling and Translations
 ########################
 
 We’ve picked up the SkeletonApplication’s styling, which is fine, but we need to
-change the title and and remove the copyright message. 
+change the title and remove the copyright message. 
 
 The ZendSkeletonApplication is set up to use ``Zend\I18n``’s translation
 functionality for all the text. It uses ``.po`` files that live in
