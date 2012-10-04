@@ -28,8 +28,9 @@ While they can be used separately, Zend Framework 2 components in the standard l
 web application framework when combined. Also, it offers a robust, high performance `MVC`_ implementation, a
 database abstraction that is simple to use, and a forms component that implements `HTML5 form rendering`_,
 validation, and filtering so that developers can consolidate all of these operations using one easy-to-use, object
-oriented interface. Other components, such as :doc:`Zend\Authentication <zend.authentication.intro>` and :doc:`Zend\Permissions\Acl <zend.permissions.acl.intro>`, provide user
-authentication and authorization against all common credential stores. 
+oriented interface. Other components, such as :doc:`Zend\\Authentication <zend.authentication.intro>` and
+:doc:`Zend\\Permissions\\Acl <zend.permissions.acl.intro>`, provide user authentication and authorization against 
+all common credential stores. 
 
 Still others, with the ``ZendService`` namespace, implement client libraries to simply access the most
 popular web services available. Whatever your application needs are, you're likely to find a Zend Framework 2
