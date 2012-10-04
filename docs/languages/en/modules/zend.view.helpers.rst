@@ -57,26 +57,29 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
   ``$urlParams`` should be an associative array of key/value pairs used by the particular route.
 
 .. code-block:: php
-   // in a configuration array (i.e. returned by module.config.php)
-    'router' => array(
-        'routes' => array(
-            'auth' => array(
-                'type' => 'segment',
-                'options' => array(
-                    'route' => '/auth[/:action][/:id]',
-                    'constraints' => array(
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
-                    ),
-                    'defaults' => array(
-                        'controller' => 'solon\solon',
-                        'action' => 'index'
-                    )
-                )
-            )
-        )
-    ),
-   // i.e. (in a view template)
-   <a href="<?= $this->url('auth', array('action' => 'logout', 'id' => $id)); ?>">Logout</a>
+   :linenos:
+
+   // In a configuration array (e.g. returned by some module's module.config.php)
+   'router' => array(
+       'routes' => array(
+           'auth' => array(
+               'type' => 'segment',
+               'options' => array(
+                   'route' => '/auth[/:action][/:id]',
+                   'constraints' => array(
+                       'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                   ),
+                   'defaults' => array(
+                       'controller' => 'solon\solon',
+                       'action' => 'index'
+                   )
+               )
+           )
+       )
+   ),
+
+   // In a view template:
+   <a href="<?php echo $this->url('auth', array('action' => 'logout', 'id' => $id)); ?>">Logout</a>
    
 
 - ``htmlList($items, $ordered, $attribs, $escape)``: generates unordered and ordered lists based on the ``$items``
