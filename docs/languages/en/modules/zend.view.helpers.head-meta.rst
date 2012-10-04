@@ -1,7 +1,7 @@
 .. _zend.view.helpers.initial.headmeta:
 
 HeadMeta Helper
-===============
+---------------
 
 The *HTML* **<meta>** element is used to provide meta information about your *HTML* document -- typically keywords,
 document character set, caching pragmas, etc. Meta tags may be either of the 'http-equiv' or 'name' types, must
