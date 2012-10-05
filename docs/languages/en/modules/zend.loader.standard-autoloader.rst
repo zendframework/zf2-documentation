@@ -99,7 +99,7 @@ directory above where its own classfile is located on the filesystem.
 
 The ``StandardAutoloader`` may also be configured at instantiation. Please note:
 
-- The argument passed may be either an array or a ``Traversable`` object (such as a ``Zend\Config`` object.
+- The argument passed may be either an array or a ``Traversable`` object.
 
 - The argument passed is also a valid argument for passing to the ``setOptions()`` method.
 
@@ -135,7 +135,7 @@ The ``StandardAutoloader`` defines the following options.
 **namespaces**
    An associative array of namespace/path pairs. The path should be an absolute path or path relative to the
    calling script, and contain only classes that live in that namespace (or its subnamespaces). By default, the
-   "Zend" namespace is registered, pointing to the arent directory of the file defining the ``StandardAutoloader``.
+   "Zend" namespace is registered, pointing to the parent directory of the file defining the ``StandardAutoloader``.
 
 **prefixes**
    An associative array of vendor prefix/path pairs. The path should be an absolute path or path relative to the
@@ -173,7 +173,7 @@ setOptions
 
    **setOptions()**
    Takes an argument of either an associative array or ``Traversable`` object. Recognized keys are detailed under
-   :ref:` <zend.loader.standard-autoloader.options>`, with the following behaviors:
+   :ref:`Configuration options <zend.loader.standard-autoloader.options>`, with the following behaviors:
 
    - The ``namespaces`` value will be passed to :ref:`registerNamespaces()
      <zend.loader.standard-autoloader.methods.register-namespaces>`.
