@@ -107,6 +107,36 @@ getRegisteredAutoloaders
    This method is **static**, and may be used to retrieve a list of all autoloaders registered via the
    ``factory()`` method. It returns simply an array of autoloader instances.
 
+.. _zend.loader.autoloader-factory.methods.get-registered-autoloader:
+
+getRegisteredAutoloader
+    Retrieve an autoloader by class name
+    ``getRegisteredAutoloader($class)``
+
+    **getRegisteredAutoloader()**
+    This method is **static**, and is used to retrieve a specific autoloader. It expects a string with the autoloader
+    class name. If the autoloader is not registered, an exception will be thrown.
+
+.. _zend.loader.autoloader-factory.methods.unregister-autoloaders:
+
+unregisterAutoloaders
+    Unregister all autoloaders registered via the factory.
+    ``unregisterAutoloaders()``
+
+    **unregisterAutoloaders()**
+    This method is **static**, and can be used to unregister all autoloaders that were registered via the factory.
+    Note that this will **not** unregister autoloaders that were registered outside of the factory.
+
+.. _zend.loader.autoloader-factory.methods.unregister-autoloader:
+
+unregisterAutoloader
+    Unregister an autoloader registered via the factory.
+    ``unregisterAutoloader($class)``
+
+    **unregisterAutoloader()**
+    This method is **static**, and can be used to unregister an autoloader that was registered via the factory.
+    Note that this will **not** unregister autoloaders that were registered outside of the factory. If the
+    autoloader is registered via the factory, after unregistering it will return ``TRUE``, otherwise ``FALSE``.
 
 .. _zend.loader.autoloader-factory.examples:
 

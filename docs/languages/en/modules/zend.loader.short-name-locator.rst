@@ -23,8 +23,7 @@ alias an alternate class to utilize.
 
 Classes implementing the ``ShortNameLocator`` interface provide a mechanism for resolving a short name to a fully
 qualified class name; how they do so is left to the implementers, and may combine strategies defined by other
-interfaces, such as :ref:`PluginClassLocator <zend.loader.plugin-class-locator>` or :ref:`PrefixPathMapper
-<zend.loader.prefix-path-mapper>`.
+interfaces, such as :ref:`PluginClassLocator <zend.loader.plugin-class-locator>`.
 
 .. _zend.loader.short-name-locator.quick-start:
 
