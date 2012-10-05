@@ -312,7 +312,7 @@ all the form-rendering echo statements with:
     echo $this->formCollection($form);
 
 This will iterate over the form structure, calling the appropriate label, element
-and error view helpers for each element, and wrap the result in open and close form tags.
+and error view helpers for each element, but you still have to wrap formCollection($form) with the open and close form tags.
 This helps reduce the complexity of your view script in situations where the default 
 HTML rendering of the form is acceptable.
 
