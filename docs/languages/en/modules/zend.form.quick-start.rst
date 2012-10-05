@@ -15,7 +15,8 @@ validated values.
 
 .. _zend.form.quick-start.programmatic:
 
-## Programmatic Form Creation
+Programmatic Form Creation
+--------------------------
 
 If nothing else, you can simply start creating elements, fieldsets, and forms and wiring them together.
 
@@ -101,7 +102,8 @@ Regardles of approach, as you can see, this can be tedious.
 
 .. _zend.form.quick-start.factory:
 
-## Creation via Factory
+Creation via Factory
+--------------------
 
 You can create the entire form, and input filter, using the ``Factory``. This is particularly nice if you want to
 store your forms as pure configuration; you can simply pass the configuration to the factory and be done.
@@ -289,7 +291,8 @@ significant whitespace.
 
 .. _zend.form.quick-start.extension:
 
-## Factory-backed Form Extension
+Factory-backed Form Extension
+-----------------------------
 
 The default ``Form`` implementation is backed by the ``Factory``. This allows you to extend it, and define your
 form internally. This has the benefit of allowing a mixture of programmatic and factory-backed creation, as well as
@@ -380,7 +383,8 @@ it elsewhere in our application and inject it into the form.
 
 .. _zend.form.quick-start.validation:
 
-## Validating Forms
+Validating Forms
+----------------
 
 Validating forms requires three steps. First, the form must have an input filter attached. Second, you must inject
 the data to validate into the form. Third, you validate the form. If invalid, you can retrieve the error messages,
@@ -419,7 +423,8 @@ You can get the raw data if you want, by accessing the composed input filter.
 
 .. _zend.form.quick-start.input-specification:
 
-## Hinting to the Input Filter
+Hinting to the Input Filter
+---------------------------
 
 Often, you'll create elements that you expect to behave in the same way on each usage, and for which you'll want
 specific filters or validation as well. Since the input filter is a separate object, how can you achieve these
@@ -548,7 +553,8 @@ additional user configuration!
 
 .. _zend.form.quick-start.binding:
 
-## Binding an object
+Binding an object
+-----------------
 
 As noted in the intro, forms in Zend Framework bridge the domain model and the view layer. Let's see that in
 action.
@@ -626,7 +632,8 @@ implementing ``Zend\Stdlib\Hydrator\HydratorInterface``, which looks like this:
 
 .. _zend.form.quick-start.rendering:
 
-## Rendering
+Rendering
+---------
 
 As noted previously, forms are meant to bridge the domain model and view layer. We've discussed the domain model
 binding, but what about the view?
@@ -775,7 +782,8 @@ you can pass an optional parameter to the ``FormRow`` view helper :
        echo $this->formRow($name, **'append'**);
    ?></div>
 
-### Taking advantage of HTML5 input attributes
+Taking advantage of HTML5 input attributes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 HTML5 brings a lot of exciting features, one of them being a simplified client form validations. Adding HTML5 attributes is simple as you just need to add specify the attributes. However, please note that adding those attributes does not automatically add Zend validators to the form's input filter. You still need to manually add them.
 
@@ -800,7 +808,8 @@ View helpers will automatically render those attributes, and hence allowing mode
 
 .. _zend.form.quick-start.partial:
 
-## Validation Groups
+Validation Groups
+-----------------
 
 Sometimes you want to validate only a subset of form elements. As an example, let's say we're re-using our contact
 form over a web service; in this case, the ``Csrf``, ``Captcha``, and submit button elements are not of interest,
@@ -849,7 +858,8 @@ When your form contains nested fieldsets, you can use an array notation to valid
 
 .. _zend.form.quick-start.annotations:
 
-## Using Annotations
+Using Annotations
+-----------------
 
 Creating a complete forms solution can often be tedious: you'll create some domain model object, an input filter
 for validating it, a form object for providing a representation for it, and potentially a hydrator for mapping the
