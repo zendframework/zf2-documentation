@@ -33,29 +33,29 @@ name associations, and then using it to retrieve the class name associated with 
 .. code-block:: php
    :linenos:
 
-   use Zend\View\HelperLoader;
+   use Zend\Http\HeaderLoader;
 
    // Provide a global map, or override defaults:
-   HelperLoader::addStaticMap(array(
-       'url' => 'My\Custom\UrlHelper',
+   HeaderLoader::addStaticMap(array(
+       'xrequestedfor' => 'My\Http\Header\XRequestedFor',
    ));
 
    // Instantiate the loader:
-   $loader = new Zend\View\HelperLoader();
+   $loader = new Zend\Http\HeaderLoader();
 
    // Register a new plugin:
-   $loader->registerPlugin('bugUrl', 'My\Custom\BugUrlHelper');
+   $loader->registerPlugin('xForwardedFor', 'My\Http\Header\XForwardedFor');
 
    // Load/retrieve the associated plugin class:
-   $class = $loader->load('url'); // 'My\Custom\UrlHelper'
+   $class = $loader->load('xrequestedfor'); // 'My\Http\Header\XRequestedFor'
 
 .. note::
 
    **Case Sensitivity**
 
    The ``PluginClassLoader`` is designed to do case-insensitive plugin name lookups. While the above example
-   defines a "bugUrl" plugin name, internally, this will be stored as simply "bugurl". If another plugin is
-   registered with simply a different word case, it will overwrite this entry.
+   defines a "xForwarededFor" plugin name, internally, this will be stored as simply "xforwardedfor". If another
+   plugin is registered with simply a different word case, it will overwrite this entry.
 
 .. _zend.loader.plugin-class-loader.options:
 
@@ -219,7 +219,7 @@ This can be done using the ``addStaticMap()`` method:
    use Zend\Loader\PluginClassLoader;
 
    PluginClassLoader::addStaticMap(array(
-       'url' => 'Zend\View\Helper\Url',
+       'xrequestedfor' => 'My\Http\Header\XRequestedFor',
    ));
 
 Any later instances created will now have this map defined, allowing you to load that plugin.
@@ -230,7 +230,7 @@ Any later instances created will now have this map defined, allowing you to load
    use Zend\Loader\PluginClassLoader;
 
    $loader = new PluginClassLoader();
-   $helper = $loader->load('url'); // Zend\View\Helper\Url
+   $class = $loader->load('xrequestedfor'); // My\Http\Header\XRequestedFor
 
 .. _zend.loader.plugin-class-loader.examples.extended-loader:
 
@@ -290,7 +290,7 @@ To inject the static map, use the extending class' name to call the static ``add
    :linenos:
 
    PluginLoader::addStaticMap(array(
-       'url' => 'Zend\View\Helper\Url',
+       'baz'    => 'My\Plugins\Baz',
    ));
 
 .. _zend.loader.plugin-class-loader.examples.using-as-plugin-map:
@@ -314,7 +314,7 @@ passed to the constructor or ``registerPlugins()``.
    namespace My\Plugins;
 
    use Zend\Loader\PluginClassLoader;
-   use Zend\View\Helper\HelperLoader;
+   use Zend\Http\HeaderLoader;
 
    class PluginLoader extends PluginClassLoader
    {
@@ -329,8 +329,8 @@ passed to the constructor or ``registerPlugins()``.
    }
 
    // Inject in constructor:
-   $loader = new HelperLoader('My\Plugins\PluginLoader');
-   $loader = new HelperLoader(new PluginLoader());
+   $loader = new HeaderLoader('My\Plugins\PluginLoader');
+   $loader = new HeaderLoader(new PluginLoader());
 
    // Or via registerPlugins():
    $loader->registerPlugins('My\Plugins\PluginLoader');
