@@ -107,6 +107,7 @@
    modules/zend.loader.autoloader-factory
    modules/zend.loader.standard-autoloader
    modules/zend.loader.class-map-autoloader
+   modules/zend.loader.module-autoloader
    modules/zend.loader.spl-autoloader
    modules/zend.loader.plugin-class-loader
    modules/zend.loader.short-name-locator
@@ -409,6 +410,7 @@ Zend\\Loader
         * :doc:`modules/zend.loader.autoloader-factory`
         * :doc:`modules/zend.loader.standard-autoloader`
         * :doc:`modules/zend.loader.class-map-autoloader`
+        * :doc:`modules/zend.loader.module-autoloader`
         * :doc:`modules/zend.loader.spl-autoloader`
         * :doc:`modules/zend.loader.plugin-class-loader`
         * :doc:`modules/zend.loader.short-name-locator`
