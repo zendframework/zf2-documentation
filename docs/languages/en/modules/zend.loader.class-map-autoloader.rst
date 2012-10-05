@@ -13,14 +13,9 @@ class, see if it's in the map, and, if so, load the file associated with the cla
 unnecessary filesystem operations, and can also ensure the autoloader "plays nice" with opcode caches and PHP's
 realpath cache.
 
-In order to use the ``ClassMapAutoloader``, you first need class maps. Zend Framework ships with a class map per
-component or, if you grabbed the entire ZF distribution, a class map for the entire Zend Framework. These maps are
-typically in a file named ``.classmap.php`` within either the "Zend" directory, or an individual component's source
-directory.
-
-Zend Framework also provides a tool for generating these class maps; you can find it in
-``bin/classmap_generator.php`` of the distribution. Full documentation of this too is provided in :ref:`
-<zend.loader.classmap-generator>`.
+Zend Framework provides a tool for generating these class maps; you can find it in
+``bin/classmap_generator.php`` of the distribution. Full documentation of this is provided in the :ref:`Class Map
+generator <zend.loader.classmap-generator>` section.
 
 .. _zend.loader.class-map-autoloader.quick-start:
 
@@ -35,8 +30,8 @@ underneath it.
 
    php classmap_generator.php Some/Directory/
 
-This will create a file named ``Some/Directory/.classmap.php``, which is a PHP file returning an associative array
-that represents the class map.
+This will create a file named ``Some/Directory/autoload_classmap.php``, which is a PHP file returning an associative
+array that represents the class map.
 
 Within your code, you will now instantiate the ``ClassMapAutoloader``, and provide it the location of the map.
 
@@ -50,7 +45,7 @@ Within your code, you will now instantiate the ``ClassMapAutoloader``, and provi
    $loader = new Zend\Loader\ClassMapAutoloader();
 
    // Register the class map:
-   $loader->registerAutoloadMap('Some/Directory/.classmap.php');
+   $loader->registerAutoloadMap('Some/Directory/autoload_classmap.php');
 
    // Register with spl_autoload:
    $loader->register();
@@ -77,7 +72,7 @@ The ``ClassMapAutoloader`` defines the following options.
 
       // Configuration defining both a file-based class map, and an array map
       $config = array(
-          __DIR__ . '/library/.classmap.php', // file-based class map
+          __DIR__ . '/library/autoloader_classmap.php', // file-based class map
           array(                              // array class map
               'Application\Bootstrap' => __DIR__ . '/application/Bootstrap.php',
               'Test\Bootstrap'        => __DIR__ . '/tests/Bootstrap.php',
@@ -188,7 +183,7 @@ used to configure the autoloader:
 
    // Configuration defining both a file-based class map, and an array map
    $config = array(
-   APPLICATION_PATH . '/../library/.classmap.php', // file-based class map
+       APPLICATION_PATH . '/../library/autoloader_classmap.php', // file-based class map
        array(                              // array class map
            'Application\Bootstrap' => APPLICATION_PATH . '/Bootstrap.php',
            'Test\Bootstrap'        => APPLICATION_PATH . '/../tests/Bootstrap.php',
@@ -200,7 +195,7 @@ An eqivalent INI style configuration might look like this:
 .. code-block:: ini
    :linenos:
 
-   classmap.library = APPLICATION_PATH "/../library/.classmap.php"
+   classmap.library = APPLICATION_PATH "/../library/autoloader_classmap.php"
    classmap.resources.Application\Bootstrap = APPLICATION_PATH "/Bootstrap.php"
    classmap.resources.Test\Bootstrap = APPLICATION_PATH "/../tests/Bootstrap.php"
 
