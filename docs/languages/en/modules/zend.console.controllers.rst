@@ -65,9 +65,9 @@ This route will match commands such as:
 
 .. code-block:: bash
 
-    > zf show users
-    > zf show all users
-    > zf show disabled users
+    > php public/index.php show users
+    > php public/index.php show all users
+    > php public/index.php show disabled users
 
 This route points to the method ``Application\IndexController::showUsersAction()``.
 
