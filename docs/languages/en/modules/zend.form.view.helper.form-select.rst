@@ -32,4 +32,3 @@ Basic usage:
     * Example
     */
    echo $this->formSelect($element);
-
