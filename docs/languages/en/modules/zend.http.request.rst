@@ -55,7 +55,7 @@ completely empty object to start with, by simply instantiating the ``Zend\Http\R
    $request = new Request();
    $request->setMethod(Request::METHOD_POST);
    $request->setUri('/foo');
-   $request->header()->addHeaders(array(
+   $request->getheaders()->addHeaders(array(
        'HeaderField1' => 'header-field-value',
        'HeaderField2' => 'header-field-value2',
    );
@@ -262,11 +262,12 @@ Available Methods
 
 .. _zend.http.request.methods.header:
 
-**header**
-   ``header()``
+**getHeaders**
+   ``getHeaders()``
 
    Return the header container responsible for headers
-
+   Provide an optional 1st argument ($name) Header name to retrieve, or null(the defualt) to get the whole container.
+   Provide an optional 2nd argument ($default) Default value to use when the requested header is missing.
    Returns ``Zend\Http\Headers``
 
 .. _zend.http.request.methods.set-raw-body:
