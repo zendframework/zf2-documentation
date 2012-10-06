@@ -7,24 +7,38 @@ The default and recommended way to write Zend Framework applications uses a set 
 ``Zend\Mvc\Service`` namespace. This chapter details what each of those services are, the classes they represent,
 and the configuration options available.
 
+.. _zend.mvc.services.intro:
+
+Theory of Operation
+-------------------
+
+To allow easy configuration of all the different parts of the `MVC` system, a somewhat complex set of services and
+their factories has been created. We'll try to give a simplified explanation of the proccess. 
+
+When a ``Zend\Mvc\Application`` is created, a ``Zend\ServiceManager\ServiceManager`` object is created and configured
+via ``Zend\Mvc\Service\ServiceManagerConfig``. The ``ServiceManagerConfig`` gets the configuration from
+``application.config.php`` (or some other `application` configuration you passed to the ``Application`` when creating
+it). From all the service and factories provided in the ``Zend\Mvc\Service`` namespace, ``ServiceManagerConfig`` is
+responsible of configuring only three: ``SharedEventManager``, ``EventManager``, and ``ModuleManager``.
+
+After this, the ``Application`` calls for the ``ModuleManager``. At this point, the ``ModuleManager`` further
+configures the ``ServiceManager`` with services and factories provided in ``Zend\Mvc\Service\ServiceLocator``.
+This approach allows to keep the main application configuration as simple as possible, and to give the developer
+the power to configure different parts of the `MVC` system from within the modules, overriding any default
+configuration in these `MVC` services.
+
 .. _zend.mvc.services.service-manager-configuration:
 
 ServiceManager
 --------------
 
-This is the one service class referenced directly in the bootstrapping. It provides the following:
+This is the one service class referenced directly in the application bootstrapping. It provides the following:
 
 - **Invokable services**
 
   - ``DispatchListener``, mapping to ``Zend\Mvc\DispatchListener``.
 
-  - ``Request``, mapping to ``Zend\Http\PhpEnvironment\Request``.
-
-  - ``Response``, mapping to ``Zend\Http\PhpEnvironment\Response``.
-
   - ``RouteListener``, mapping to ``Zend\Mvc\RouteListener``.
-
-  - ``ViewManager``, mapping to ``Zend\Mvc\View\ViewManager``.
 
 - **Factories**
 
@@ -35,20 +49,29 @@ This is the one service class referenced directly in the bootstrapping. It provi
     the module event. As such, this service contains the entire, merged application configuration.
 
   - ``ControllerLoader``, mapping to ``Zend\Mvc\Service\ControllerLoaderFactory``. This scoped container will be
-    populated by the ``ServiceListener`.`
+    populated by the ``ServiceListener``.
 
     Additionally, the scoped container is configured to use the ``Di`` service as an abstract service factory --
     effectively allowing you to fall back to DI in order to retrieve your controllers.
     If you want to use ``Zend\Di`` to retrieve your controllers, you must white-list them in your DI configuration
     under the ``allowed_controllers`` key (otherwise, they will just be ignored).
 
-    Finally, if the loaded controller is ``Pluggable``, an initializer will inject it with the
-    ``ControllerPluginManager`` service.
+    If the controller implements the ``Zend\ServiceManager\ServiceLocatorAwareInterface`` interface, an instance
+    of the ``ServiceManager`` will be injected into it.
+
+    If the controller implements the ``Zend\EventManager\EventManagerAwareInterface`` interface, an instance of
+    the ``EventManager`` will be injected into it.
+
+    Finally, an initializer will inject it with the ``ControllerPluginManager`` service, as long as the
+    ``setPluginManager`` is implemented.
 
   - ``ControllerPluginManager``, mapping to ``Zend\Mvc\Service\ControllerPluginManagerFactory``. This instantiates
     the ``Zend\Mvc\Controller\PluginManager`` instance, passing it the service manager instance. It also uses the
     ``Di`` service as an abstract service factory -- effectively allowing you to fall back to DI in order to retrieve
     your controller plugins.
+
+    It registers a set of default controller plugins, and contains an initializer for injecting plugins
+    with the current controller.
 
   - ``DependencyInjector``, mapping to ``Zend\Mvc\Service\DiFactory``. This pulls the ``Config`` service,
     and looks for a "di" key; if found, that value is used to configure a new ``Zend\Di\Di`` instance.
@@ -81,7 +104,7 @@ This is the one service class referenced directly in the bootstrapping. It provi
     Finally, it instantiates a ``Zend\ModuleManager\ModuleManager`` instance, and injects the ``EventManager`` and
     ``ModuleEvent``.
 
-  - ``ServiceListenerFactory``, mapping to ``Zend\Mvc\Service\ServiceListenerFactory``. The fatory is used to
+  - ``ServiceListenerFactory``, mapping to ``Zend\Mvc\Service\ServiceListenerFactory``. The factory is used to
     instantiate the ``ServiceListener``, while allowing easy extending. It checks if a service with the name
     ``ServiceListenerInterface`` exists, which must implement ``Zend\ModuleManager\Listener\ServiceListenerInterface``,
     before instantiating the default ``ServiceListener``.
@@ -90,9 +113,36 @@ This is the one service class referenced directly in the bootstrapping. It provi
     This allows you to register own listerns for module methods and configuration keys to create an own service
     manager; see the application configuration options for samples.
 
+  - ``Request``, mapping to ``Zend\Mvc\Service\RequestFactory``. The factory is used to create and return a
+    request instance, according to the current environment. If the current environment is ``cli``, it will
+    create a ``Zend\Console\Request``, or a ``Zend\Http\PhpEnvironment\Request`` if the current environment is
+    `HTTP`.
+
+  - ``Response``, mapping to ``Zend\Mvc\Service\ResponseFactory``. The factory is used to create and return a
+    response instance, according to the current environment. If the current environment is ``cli``, it will
+    create a ``Zend\Console\Response``, or a ``Zend\Http\PhpEnvironment\Response`` if the current environment is
+    `HTTP`.
+
   - ``Router``, mapping to ``Zend\Mvc\Service\RouterFactory``. This grabs the ``Config`` service, and pulls
     from the ``router`` key, passing it to ``Zend\Mvc\Router\Http\TreeRouteStack::factory`` in order to get a
     configured router instance.
+
+  - ``ViewManager``, mapping to ``Zend\Mvc\Service\ViewManagerFactory``. The factory is used to create and return
+    a view manager, according to the current environment.  If the current environment is ``cli``, it will
+    create a ``Zend\Mvc\View\Console\ViewManager``, or a ``Zend\Mvc\View\Http\ViewManager`` if the current
+    environment is `HTTP`.
+
+  - ``ViewResolver``, mapping to ``Zend\Mvc\Service\ViewResolverFactory``, which creates and returns the aggregate
+    view resolver. It also attaches the ``ViewTemplateMapResolver`` and ``ViewTemplatePathStack`` services to it.
+
+  - ``ViewTemplateMapResolver``, mapping to ``Zend\Mvc\Service\ViewTemplateMapResolverFactory`` which creates,
+    configures and returns the ``Zend\View\Resolver\TemplateMapResolver``.
+
+  - ``ViewTemplatePathStack``, mapping to ``Zend\Mvc\Service\ViewTemplatePathStackFactory`` which creates,
+    configures and returns the ``Zend\View\Resolver\TemplatePathStack``.
+
+  - ``ViewHelperManager``, mapping to ``Zend\Mvc\Service\ViewHelperManagerFactory``, which creates, configures
+    and returns the view helper manager.
 
   - ``ViewFeedRenderer``, mapping to ``Zend\Mvc\Service\ViewFeedRendererFactory``, which simply returns a
     ``Zend\View\Renderer\FeedRenderer`` instance.
@@ -150,18 +200,15 @@ from the ``Application`` object, as well as its composed ``EventManager``.
 Configuration for all members of the ``ViewManager`` fall under the ``view_manager`` configuration key, and expect
 values as noted below. The following services are created and managed by the ``ViewManager``:
 
-- ``ViewHelperLoader``, representing and aliased to ``Zend\View\HelperLoader``. If a ``helper_map`` subkey is
-  provided, its value will be used as a map to seed the helper loader.
+- ``ViewHelperManager``, representing and aliased to ``Zend\View\HelperPluginManager``. It is seeded with the
+  ``ServiceManager``. Created via the ``Zend\Mvc\Service\ViewHelperManagerFactory``.
 
-- ``ViewHelperBroker``, representing and aliased to ``Zend\View\HelperBroker``. It is seeded with the
-  ``ViewHelperLoader`` service, as well as the ``ServiceManager`` itself.
+  - The ``Router`` service is retrieved, and injected into the ``Url`` helper.
 
-  The ``Router`` service is retrieved, and injected into the ``Url`` helper.
+  - If the ``base_path`` key is present, it is used to inject the ``BasePath`` view helper; otherwise, the
+    ``Request`` service is retrieved, and the value of its ``getBasePath()`` method is used.
 
-  If the ``base_path`` key is present, it is used to inject the ``BasePath`` view helper; otherwise, the
-  ``Request`` service is retrieved, and the value of its ``getBasePath()`` method is used.
-
-  If the ``doctype`` key is present, it will be used to set the value of the ``Doctype`` view helper.
+  - If the ``doctype`` key is present, it will be used to set the value of the ``Doctype`` view helper.
 
 - ``ViewTemplateMapResolver``, representing and aliased to ``Zend\View\Resolver\TemplateMapResolver``. If a
   ``template_map`` key is present, it will be used to seed the template map.
@@ -184,7 +231,7 @@ values as noted below. The following services are created and managed by the ``V
   attaches the ``ViewPhpRendererStrategy`` as an aggregate listener.
 
 - ``DefaultRenderingStrategy``, representing and aliased to ``Zend\Mvc\View\DefaultRenderingStrategy``. If the
-  ``layout`` key is prsent, it is used to seed the strategy's layout template. It is seeded with the ``View``
+  ``layout`` key is present, it is used to seed the strategy's layout template. It is seeded with the ``View``
   service.
 
 - ``ExceptionStrategy``, representing and aliased to ``Zend\Mvc\View\ExceptionStrategy``. If the
@@ -195,7 +242,7 @@ values as noted below. The following services are created and managed by the ``V
   configure the strategy.
 
 - ``ViewModel``. In this case, no service is registered; the ``ViewModel`` is simply retrieved from the
-  ``MvcEvent`` and injected with the layout template name. template
+  ``MvcEvent`` and injected with the layout template name.
 
 The ``ViewManager`` also creates several other listeners, but does not expose them as services; these include
 ``Zend\Mvc\View\CreateViewModelListener``, ``Zend\Mvc\View\InjectTemplateListener``, and
@@ -214,7 +261,8 @@ Application Configuration Options
 
 The following options may be used to provide initial configuration for the ``ServiceManager``, ``ModuleManager``,
 and ``Application`` instances, allowing them to then find and aggregate the configuration used for the
-``Config`` service, which is intended for configuring all other objects in the system.
+``Config`` service, which is intended for configuring all other objects in the system. These configuration
+directives go to the ``config/application.config.php`` file.
 
 .. code-block:: php
    :linenos:
@@ -276,13 +324,17 @@ and ``Application`` instances, allowing them to then find and aggregate the conf
        ),
    );
 
+For an example, see the `ZendSkeletonApplication configuration file`_.
+
 .. _zend.mvc.services.config:
 
 Default Configuration Options
 -----------------------------
 
-The following options are available when using the default services configured by the
-``ServiceManagerConfig`` and ``ViewManager``.
+The following options are available when using the default services configured by the ``ServiceManagerConfig``
+and ``ViewManager``. These configuration directives can go to the ``config/autoload/{,*.}{global,local}.php``
+files, or in the ``module/<module name>/config/module.config.php`` configuration files. Note that configuration
+values from module configuration files are overriden with values from the `global` and `local` files.
 
 .. code-block:: php
    :linenos:
@@ -368,4 +420,8 @@ The following options are available when using the default services configured b
        ),
    );
 
+For an example, see the `Application module configuration file`_ in the `ZendSkeletonApplication`.
 
+
+.. _`ZendSkeletonApplication configuration file`: https://github.com/zendframework/ZendSkeletonApplication/blob/master/config/application.config.php
+.. _`Application module configuration file`: https://github.com/zendframework/ZendSkeletonApplication/blob/master/module/Application/config/module.config.php
