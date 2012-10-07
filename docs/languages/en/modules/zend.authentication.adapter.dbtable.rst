@@ -33,7 +33,8 @@ The available configuration options include:
 
 .. _zend.authentication.adapter.dbtable.introduction.example.basic_usage:
 
-.. rubric:: Basic Usage
+Basic Usage
+-----------
 
 As explained in the introduction, the ``Zend\Authentication\Adapter\DbTable`` constructor requires an instance of
 ``Zend\Db\Adapter\Adapter`` that serves as the database connection to which the authentication adapter instance is
@@ -214,7 +215,7 @@ mechanism of ``Zend\Authentication`` an identity object containing other useful 
 .. _zend.authentication.adapter.dbtable.advanced.advanced_usage:
 
 Advanced Usage By Example
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 While the primary purpose of the ``Zend\Authentication`` component (and consequently
 ``Zend\Authentication\Adapter\DbTable``) is primarily **authentication** and not **authorization**, there are a few
