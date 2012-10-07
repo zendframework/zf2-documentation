@@ -32,7 +32,7 @@ input. A filter that escapes the *HTML* entities, however, transforms the input 
 Basic usage of filters
 ----------------------
 
-Having this filter definition established provides the foundation for ``Zend\Filter\Interface``, which requires a
+Having this filter definition established provides the foundation for ``Zend\Filter\FilterInterface``, which requires a
 single method named ``filter()`` to be implemented by a filter class.
 
 Following is a basic example of using a filter upon two input data, the ampersand (**&**) and double quote (**"**)
@@ -45,6 +45,17 @@ characters:
 
    echo $htmlEntities->filter('&'); // &
    echo $htmlEntities->filter('"'); // "
+
+Also, if a Filter inherits from ``Zend\Filter\AbstractFilter`` (just like all out-of-the-box Filters) 
+you can also use them as such:
+
+.. code-block:: php
+   :linenos:
+
+   $strtolower = new Zend\Filter\StringToLower;
+
+   echo $strtolower('I LOVE ZF2!'); // i love zf2!
+   $zf2love = $strtolower('I LOVE ZF2!');
 
 .. include:: zend.filter.static-filter.rst
 
