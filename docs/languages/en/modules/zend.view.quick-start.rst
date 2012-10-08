@@ -61,117 +61,64 @@ module from the framework's "ZendSkeletonApplication", or to one of your autoloa
    :linenos:
 
    return array(
-       'di' => array(
-           'instance' => array(
-           // The above lines will likely already be present; it's the following
-           // definitions that you will want to ensure are present within the DI
-           // instance configuration.
-
-               // Setup the View layer
-               // This sets up an "AggregateResolver", which allows you to have
-               // multiple template resolution strategies. We recommend using the
-               // TemplateMapResolver as the primary solution, with the
-               // TemplatePathStack as a backup.
-               'Zend\View\Resolver\AggregateResolver' => array(
-                   'injections' => array(
-                       'Zend\View\Resolver\TemplateMapResolver',
-                       'Zend\View\Resolver\TemplatePathStack',
-                   ),
-               ),
-
-               // The TemplateMapResolver allows you to directly map template names
-               // to specific templates. The following map would provide locations
-               // for a "home" template, as well as for the "site/layout",
-               // "site/error", and "site/404" templates, resolving them to view
-               // scripts in this module.
-               'Zend\View\Resolver\TemplateMapResolver' => array(
-                   'parameters' => array(
-                       'map'  => array(
-                           'home'        => __DIR__ . '/../view/home.phtml',
-                           'site/layout' => __DIR__ . '/../view/site/layout.phtml',
-                           'site/error'  => __DIR__ . '/../view/site/error.phtml',
-                           'site/404'    => __DIR__ . '/../view/site/404.phtml',
-                       ),
-                   ),
-               ),
-
-               // The TemplatePathStack takes an array of directories. Directories
-               // are then searched in LIFO order (it's a stack) for the requested
-               // view script. This is a nice solution for rapid application
-               // development, but potentially introduces performance expense in
-               // production due to the number of stat calls necessary.
-               //
-               // The following maps adds an entry pointing to the view directory
-               // of the current module. Make sure your keys differ between modules
-               // to ensure that they are not overwritten!
-               'Zend\View\Resolver\TemplatePathStack' => array(
-                   'parameters' => array(
-                       'paths'  => array(
-                           'application' => __DIR__ . '/../view',
-                       ),
-                   ),
-               ),
-
-               // We'll now define the PhpRenderer, and inject it with the
-               // AggregateResolver we defined earlier. By default, the MVC layer
-               // registers a rendering strategy that uses the PhpRenderer.
-               'Zend\View\Renderer\PhpRenderer' => array(
-                   'parameters' => array(
-                       'resolver' => 'Zend\View\Resolver\AggregateResolver',
-                   ),
-               ),
-
-               // By default, the MVC's default rendering strategy uses the
-               // template name "layout" for the site layout. Let's tell it to use
-               // "site/layout" (which we mapped via the TemplateMapResolver,
-               // above).
-               'Zend\Mvc\View\DefaultRenderingStrategy' => array(
-                   'parameters' => array(
-                       'layoutTemplate' => 'site/layout',
-                   ),
-               ),
-
-               // By default, the MVC registers an "exception strategy", which is
-               // triggered when a requested action raises an exception; it creates
-               // a custom view model that wraps the exception, and selects a
-               // template. This template is "error" by default; let's change it to
-               // "site/error" (which we mapped via the TemplateMapResolver,
-               // above).
-               //
-               // Additionally, we'll tell it that we want to display an exception
-               // stack trace; you'll likely want to disable this by default.
-               'Zend\Mvc\View\ExceptionStrategy' => array(
-                   'parameters' => array(
-                       'displayExceptions' => true,
-                       'exceptionTemplate' => 'site/error',
-                   ),
-               ),
-
-               // Another strategy the MVC registers by default is a "route not
-               // found" strategy. Basically, this gets triggered if (a) no route
-               // matches the current request, (b) the controller specified in the
-               // route match cannot be found in the locator, (c) the controller
-               // specified in the route match does not implement the DispatchableInterface
-               // interface, or (d) if a response from a controller sets the
-               // response status to 404.
-               //
-               // The default template used in such situations is "error", just
-               // like the exception strategy. Let's tell it to use the "site/404"
-               // template, (which we mapped via the TemplateMapResolver, above).
-               //
-               // You can opt in to inject the reason for a 404 situation; see the
-               // various Application::ERROR_* constants for a list of values.
-               // Additionally, a number of 404 situations derive from exceptions
-               // raised during routing or dispatching. You can opt-in to display
-               // these.
-               'Zend\Mvc\View\RouteNotFoundStrategy' => array(
-                   'parameters' => array(
-                       'displayExceptions'     => true,
-                       'displayNotFoundReason' => true,
-                       'notFoundTemplate'      => 'site/404',
-                   ),
-               ),
+       'view_manager' => array(
+           // The TemplateMapResolver allows you to directly map template names
+           // to specific templates. The following map would provide locations
+           // for a home page template ("application/index/index"), as well as for 
+           // the layout ("layout/layout"), error pages ("error/index"), and 
+           // 404 page ("error/404"), resolving them to view scripts.
+           'template_map' => array(
+               'application/index/index' => __DIR__ .  '/../view/application/index/index.phtml',
+               'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
+               'error/index'             => __DIR__ . '/../view/error/index.phtml',
+               'error/404'               => __DIR__ . '/../view/error/404.phtml',
            ),
+
+           // The TemplatePathStack takes an array of directories. Directories
+           // are then searched in LIFO order (it's a stack) for the requested
+           // view script. This is a nice solution for rapid application
+           // development, but potentially introduces performance expense in
+           // production due to the number of stat calls necessary.
+           //
+           // The following adds an entry pointing to the view directory
+           // of the current module. Make sure your keys differ between modules
+           // to ensure that they are not overwritten -- or simply omit the key!
+           'template_path_stac' => array(
+               'application' => __DIR__ . '/../view',
+           ),
+
+           // Set the template name for layouts.
+           'layout' => 'layout/layout',
+
+           // By default, the MVC registers an "exception strategy", which is
+           // triggered when a requested action raises an exception; it creates
+           // a custom view model that wraps the exception, and selects a
+           // template. We'll set it to "error/index".
+           //
+           // Additionally, we'll tell it that we want to display an exception
+           // stack trace; you'll likely want to disable this by default.
+           'display_exceptions' => true,
+           'exception_template' => 'error/index',
+
+          // Another strategy the MVC registers by default is a "route not
+          // found" strategy. Basically, this gets triggered if (a) no route
+          // matches the current request, (b) the controller specified in the
+          // route match cannot be found in the locator, (c) the controller
+          // specified in the route match does not implement the DispatchableInterface
+          // interface, or (d) if a response from a controller sets the
+          // response status to 404.
+          //
+          // The default template used in such situations is "error", just
+          // like the exception strategy. Let's tell it to use the "error/404"
+          // template, (which we mapped via the TemplateMapResolver, above).
+          //
+          // You can opt in to inject the reason for a 404 situation; see the
+          // various Application::ERROR_* constants for a list of values.
+          // Additionally, a number of 404 situations derive from exceptions
+          // raised during routing or dispatching. You can opt-in to display
+          // these.
+          'display_not_found_reason' => true,
+          'not_found_template'       => 'error/404',
        ),
    );
 
@@ -192,22 +139,22 @@ The most explicit way is to create them in your controllers and return them.
    use Zend\Mvc\Controller\AbstractActionController;
    use Zend\View\Model\ViewModel;
 
-   class BarController extends AbstractActionController
+   class BazBatController extends AbstractActionController
    {
-       public function doSomethingAction()
+       public function doSomethingCrazyAction()
        {
            $view = new ViewModel(array(
                'message' => 'Hello world',
            ));
-           $view->setTemplate('bar/do-something');
+           $view->setTemplate('foo/baz-bat/do-something-crazy');
            return $view;
        }
    }
 
-This sets a "message" variable in the view model, and sets the template name "bar/do-something". The view model is
+This sets a "message" variable in the view model, and sets the template name "foo/baz-bat/do-something-crazy". The view model is
 then returned.
 
-Considering that in most cases, you'll likely have a template name based on the controller and action, and simply
+Considering that in most cases, you'll likely have a template name based on the module namespace, controller, and action, and simply
 be passing some variables, could this be made simpler? Definitely.
 
 The MVC registers a couple of listeners for controllers to automate this. The first will look to see if you
@@ -217,12 +164,12 @@ see if you returned nothing or null; if so, it will create a view model without 
 model also replaces the MVC event's result.
 
 The second listener checks to see if the MVC event result is a view model, and, if so, if it has a template
-associated with it. If not, it will inspect the controller matched during routing, and, if available, it's "action"
-parameter in order to create a template name. This will be "controller/action", with the controller and action
+associated with it. If not, it will inspect the controller matched during routing to determine the module namespace and the controller class name, and, if available, it's "action"
+parameter in order to create a template name. This will be "module/controller/action", with the module, controller, and action
 normalized to lowercase, dash-separated words.
 
 As an example, the controller ``Foo\Controller\BazBatController``, with action "doSomethingCrazy", would be mapped
-to the template ``baz-bat/do-something-crazy``.
+to the template ``foo/baz-bat/do-something-crazy``.
 
 In practice, that means our previous example could be re-written as follows:
 
@@ -441,9 +388,9 @@ controller, and set its "capture to" value:
    use Zend\Mvc\Controller\AbstractActionController;
    use Zend\View\Model\ViewModel;
 
-   class BarController extends AbstractActionController
+   class BazBatController extends AbstractActionController
    {
-       public function doSomethingAction()
+       public function doSomethingCrazyAction()
        {
            $view = new ViewModel(array(
                'message' => 'Hello world',
@@ -470,9 +417,9 @@ model to instead replace the layout view model.
    use Zend\Mvc\Controller\AbstractActionController;
    use Zend\View\Model\ViewModel;
 
-   class BarController extends AbstractActionController
+   class BazBatController extends AbstractActionController
    {
-       public function doSomethingAction()
+       public function doSomethingCrazyAction()
        {
            $view = new ViewModel(array(
                'message' => 'Hello world',
