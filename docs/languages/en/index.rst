@@ -255,6 +255,17 @@ Zend\\Captcha
         * :doc:`modules/zend.captcha.operation`
         * :doc:`modules/zend.captcha.adapters`
 
+.. _zend.config:
+
+Zend\\Config
+^^^^^^^^^^^^
+
+        * :doc:`modules/zend.config.introduction`
+        * :doc:`modules/zend.config.theory-of-operation`
+        * :doc:`modules/zend.config.reader`
+        * :doc:`modules/zend.config.writer`
+        * :doc:`modules/zend.config.processor`
+
 .. _zend.console:
 
 Zend\\Console
@@ -267,17 +278,6 @@ Zend\\Console
         * :doc:`modules/zend.console.adapter`
         * :doc:`modules/zend.console.prompts`
 
-
-.. _zend.config:
-
-Zend\\Config
-^^^^^^^^^^^^
-
-        * :doc:`modules/zend.config.introduction`
-        * :doc:`modules/zend.config.theory-of-operation`
-        * :doc:`modules/zend.config.reader`
-        * :doc:`modules/zend.config.writer`
-        * :doc:`modules/zend.config.processor`
 
 .. _zend.crypt:
 
