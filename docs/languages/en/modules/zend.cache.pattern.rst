@@ -157,6 +157,23 @@ Zend\\Cache\\Pattern\\CaptureCache
    |umask             |``integer`` ``boolean``   |``false``               |Using umask on generationg output files / directories            |
    +------------------+--------------------------+------------------------+-----------------------------------------------------------------+
 
+.. _zend.cache.pattern.capturecache:
+
+Zend\\Cache\\Pattern\\OutputCache
+----------------------------------
+
+   This cache pattern caches script output between calls to ``start(string $key)`` and ``end()``.
+
+.. _zend.cache.pattern.outputcache.options:
+
+.. table:: Configuration options
+
+   +------------------------------+--------------------------------------------------------------+------------------------+-----------------------------------------------------------------+
+   |Option                        |Data Type                                                     |Default Value           |Description                                                      |
+   +==============================+==============================================================+========================+=================================================================+
+   |storage                       |``string`` ``array`` ``Zend\Cache\Storage\StorageInterface``  |<none>                  |The storage to write/read cached data                            |
+   +------------------------------+--------------------------------------------------------------+------------------------+-----------------------------------------------------------------+
+
 Available Methods
 -----------------
 
