@@ -389,6 +389,7 @@ Zend\\I18n
         * :doc:`modules/zend.i18n.translating`
         * :doc:`modules/zend.i18n.view.helpers`
         * :doc:`modules/zend.i18n.filters`
+        * :doc:`modules/zend.i18n.validators.rst`
 
 .. _zend.input-filter:
 
