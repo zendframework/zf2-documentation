@@ -12,8 +12,8 @@ The factory has two purposes
 .. note::
 
    Storing the configuration will be done to *one* file. The factory is not aware of merging two 
-   or more files and will not store it to multiple files. If you want to store particalar configuration sections to a different file
-   you should seperate it manually.
+   or more configurations and will not store it into multiple files. If you want to store particular configuration sections to a different file
+   you should separate it manually.
 
 Loading configuration file
 --------------------------
@@ -27,7 +27,7 @@ The next example illustrates how to load a single configuration file
    $config = Zend\Config\Factory::fromFile(__DIR__.'/config/my.config.php');
 
    //Load a xml file as Config object
-   $config = Zend\Config\Factory::fromFile(__DIR__.'/config/my.config.xml');
+   $config = Zend\Config\Factory::fromFile(__DIR__.'/config/my.config.xml', true);
 
 For merging multiple configuration files
 
