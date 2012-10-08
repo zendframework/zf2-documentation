@@ -1,17 +1,17 @@
 .. _zend.filter.set.callback:
 
 Callback
-========
+--------
 
-This filter allows you to use own methods in conjunction with ``Zend_Filter``. You don't have to create a new
+This filter allows you to use own methods in conjunction with ``Zend\Filter``. You don't have to create a new
 filter when you already have a method which does the job.
 
 .. _zend.filter.set.callback.options:
 
-Supported options for Zend_Filter_Callback
-------------------------------------------
+Supported options for Zend\\Filter\\Callback
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following options are supported for ``Zend_Filter_Callback``:
+The following options are supported for ``Zend\Filter\Callback``:
 
 - **callback**: This sets the callback which should be used.
 
@@ -20,14 +20,14 @@ The following options are supported for ``Zend_Filter_Callback``:
 .. _zend.filter.set.callback.basic:
 
 Basic usage
------------
+^^^^^^^^^^^
 
 The usage of this filter is quite simple. Let's expect we want to create a filter which reverses a string.
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Callback('strrev');
+   $filter = new Zend\Filter\Callback('strrev');
 
    print $filter->filter('Hello!');
    // returns "!olleH"
@@ -45,7 +45,7 @@ which is defined within a class, by giving an array as callback.
    }
 
    // The filter definition
-   $filter = new Zend_Filter_Callback(array('MyClass', 'Reverse'));
+   $filter = new Zend\Filter\Callback(array('MyClass', 'Reverse'));
    print $filter->filter('Hello!');
 
 To get the actual set callback use ``getCallback()`` and to set another callback use ``setCallback()``.
@@ -59,7 +59,7 @@ To get the actual set callback use ``getCallback()`` and to set another callback
 .. _zend.filter.set.callback.parameters:
 
 Default parameters within a callback
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is also possible to define default parameters, which are given to the called method as array when the filter is
 executed. This array will be concatenated with the value which will be filtered.
@@ -67,7 +67,7 @@ executed. This array will be concatenated with the value which will be filtered.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Callback(
+   $filter = new Zend\Filter\Callback(
        array(
            'callback' => 'MyMethod',
            'options'  => array('key' => 'param1', 'key2' => 'param2')

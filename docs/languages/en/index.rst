@@ -75,6 +75,11 @@
    modules/zend.feed.reader
    modules/zend.feed.writer
    modules/zend.feed.pubsubhubbub
+   modules/zend.filter
+   modules/zend.filter.set
+   modules/zend.filter.filter-chains
+   modules/zend.filter.inflector
+   modules/zend.filter.writing-filters
    modules/zend.form.intro
    modules/zend.form.quick-start
    modules/zend.form.collections
@@ -105,12 +110,13 @@
    modules/zend.ldap.server
    modules/zend.ldap.ldif
    modules/zend.loader.autoloader-factory
+   modules/zend.loader.standard-autoloader
+   modules/zend.loader.class-map-autoloader
+   modules/zend.loader.module-autoloader
+   modules/zend.loader.spl-autoloader
    modules/zend.loader.plugin-class-loader
    modules/zend.loader.short-name-locator
    modules/zend.loader.plugin-class-locator
-   modules/zend.loader.spl-autoloader
-   modules/zend.loader.class-map-autoloader
-   modules/zend.loader.standard-autoloader
    modules/zend.loader.classmap-generator
    modules/zend.log.overview
    modules/zend.log.writers
@@ -138,8 +144,7 @@
    modules/zend.mvc.controllers
    modules/zend.mvc.plugins
    modules/zend.mvc.examples
-   modules/zend.navigation.intro
-   modules/zend.navigation.quick-start
+   modules/zend.navigation.intro modules/zend.navigation.quick-start
    modules/zend.navigation.pages
    modules/zend.navigation.containers
    modules/zend.paginator.introduction
@@ -149,6 +154,9 @@
    modules/zend.permissions.acl.intro
    modules/zend.permissions.acl.refining
    modules/zend.permissions.acl.advanced
+   modules/zend.permissions.rbac.intro
+   modules/zend.permissions.rbac.quick-start
+   modules/zend.permissions.rbac.examples
    modules/zend.server
    modules/zend.server.reflection
    modules/zend.service-manager.intro
@@ -337,6 +345,17 @@ Zend\\Feed
         * :doc:`modules/zend.feed.writer`
         * :doc:`modules/zend.feed.pubsubhubbub`
 
+.. _zend.filter:
+
+Zend\\Filter
+^^^^^^^^^^^^
+
+        * :doc:`modules/zend.filter`
+        * :doc:`modules/zend.filter.set`
+        * :doc:`modules/zend.filter.filter-chains`
+        * :doc:`modules/zend.filter.inflector`
+        * :doc:`modules/zend.filter.writing-filters`
+
 .. _zend.form:
 
 Zend\\Form
@@ -408,12 +427,13 @@ Zend\\Loader
 ^^^^^^^^^^^^
 
         * :doc:`modules/zend.loader.autoloader-factory`
+        * :doc:`modules/zend.loader.standard-autoloader`
+        * :doc:`modules/zend.loader.class-map-autoloader`
+        * :doc:`modules/zend.loader.module-autoloader`
+        * :doc:`modules/zend.loader.spl-autoloader`
         * :doc:`modules/zend.loader.plugin-class-loader`
         * :doc:`modules/zend.loader.short-name-locator`
         * :doc:`modules/zend.loader.plugin-class-locator`
-        * :doc:`modules/zend.loader.spl-autoloader`
-        * :doc:`modules/zend.loader.class-map-autoloader`
-        * :doc:`modules/zend.loader.standard-autoloader`
         * :doc:`modules/zend.loader.classmap-generator`
 
 .. _zend.log:
@@ -504,6 +524,15 @@ Zend\\Permissions\\Acl
         * :doc:`modules/zend.permissions.acl.intro`
         * :doc:`modules/zend.permissions.acl.refining`
         * :doc:`modules/zend.permissions.acl.advanced`
+
+.. _zend.permissions.rbac:
+
+Zend\\Permissions\\Rbac
+^^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.permissions.rbac.intro`
+        * :doc:`modules/zend.permissions.rbac.methods`
+        * :doc:`modules/zend.permissions.rbac.examples`
 
 .. _zend.server:
 

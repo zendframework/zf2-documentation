@@ -75,6 +75,18 @@ registered directories.
        }
    }
 
+To use this ``ModifiedIncludePathAutoloader`` from the previous example:
+
+.. code-block:: php
+   :linenos:
+
+   $options = array(
+      '/path/one',
+      '/path/two'
+   );
+   $autoloader = new Custom\ModifiedIncludePathAutoloader($options);
+   $autoloader->register();
+
 .. _zend.loader.spl-autoloader.options:
 
 Configuration Options

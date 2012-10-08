@@ -75,7 +75,7 @@ constructor and then set the method and then create four form elements for the
 id, artist, title, and submit button. For each item we set various attributes
 and options, including the label to be displayed.
 
-We also need to set up validation for this form. In Zend Framework 2 is this
+We also need to set up validation for this form. In Zend Framework 2 this is
 done using an input filter which can either be standalone or within any class
 that implements ``InputFilterAwareInterface``, such as a model entity. We are
 going to add the input filter to our ``Album`` entity:
@@ -227,7 +227,7 @@ Let’s look at the ``addAction()`` code in a little more detail:
     $form = new AlbumForm();
     $form->get('submit')->setValue('Add');
 
-We instantiate `AlbumForm` and set the label on the submit button to “Add”. We
+We instantiate ``AlbumForm`` and set the label on the submit button to “Add”. We
 do this here as we’ll want to re-use the form when editing an album and will use
 a different label.
 
@@ -312,7 +312,7 @@ all the form-rendering echo statements with:
     echo $this->formCollection($form);
 
 This will iterate over the form structure, calling the appropriate label, element
-and error view helpers for each element, and wrap the result in open and close form tags.
+and error view helpers for each element, but you still have to wrap formCollection($form) with the open and close form tags.
 This helps reduce the complexity of your view script in situations where the default 
 HTML rendering of the form is acceptable.
 

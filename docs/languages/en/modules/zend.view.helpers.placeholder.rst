@@ -1,7 +1,7 @@
 .. _zend.view.helpers.initial.placeholder:
 
 Placeholder Helper
-==================
+------------------
 
 The ``Placeholder`` view helper is used to persist content between view scripts and view instances. It also offers
 some useful features such as aggregating content, capturing view script content for later use, and adding pre- and
@@ -141,7 +141,7 @@ Occasionally you may have content for a placeholder in a view script that is eas
 .. _zend.view.helpers.initial.placeholder.implementations:
 
 Concrete Placeholder Implementations
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zend Framework ships with a number of "concrete" placeholder implementations. These are for commonly used
 placeholders: doctype, page title, and various <head> elements. In all cases, calling the placeholder with no

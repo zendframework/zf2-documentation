@@ -1,16 +1,16 @@
 .. _zend.filter.set.compress:
 
 Compress and Decompress
-=======================
+-----------------------
 
 These two filters are capable of compressing and decompressing strings, files, and directories.
 
 .. _zend.filter.set.compress.options:
 
-Supported options for Zend_Filter_Compress and Zend_Filter_Decompress
----------------------------------------------------------------------
+Supported options for Zend\\Filter\\Compress and Zend\\Filter\\Decompress
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following options are supported for ``Zend_Filter_Compress`` and ``Zend_Filter_Decompress``:
+The following options are supported for ``Zend\Filter\Compress`` and ``Zend\Filter\Decompress``:
 
 - **adapter**: The compression adapter which should be used. It defaults to ``Gz``.
 
@@ -20,7 +20,7 @@ The following options are supported for ``Zend_Filter_Compress`` and ``Zend_Filt
 .. _zend.filter.set.compress.basic:
 
 Supported compression adapters
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following compression formats are supported by their own adapter:
 
@@ -43,33 +43,33 @@ approximately the same ways, and differ primarily in the options available and t
 .. _zend.filter.set.compress.generic:
 
 Generic handling
-----------------
+^^^^^^^^^^^^^^^^
 
 To create a compression filter you need to select the compression format you want to use. The following description
 takes the **Bz2** adapter. Details for all other adapters are described after this section.
 
-The two filters are basically identical, in that they utilize the same backends. ``Zend_Filter_Compress`` should be
-used when you wish to compress items, and ``Zend_Filter_Decompress`` should be used when you wish to decompress
+The two filters are basically identical, in that they utilize the same backends. ``Zend\Filter\Compress`` should be
+used when you wish to compress items, and ``Zend\Filter\Decompress`` should be used when you wish to decompress
 items.
 
-For instance, if we want to compress a string, we have to initiate ``Zend_Filter_Compress`` and indicate the
+For instance, if we want to compress a string, we have to initiate ``Zend\Filter\Compress`` and indicate the
 desired adapter.
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Compress('Bz2');
+   $filter = new Zend\Filter\Compress('Bz2');
 
 To use a different adapter, you simply specify it to the constructor.
 
-You may also provide an array of options or ``Zend_Config`` object. If you do, provide minimally the key "adapter",
+You may also provide an array of options or a Traversable object. If you do, provide minimally the key "adapter",
 and then either the key "options" or "adapterOptions" (which should be an array of options to provide to the
 adapter on instantiation).
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Compress(array(
+   $filter = new Zend\Filter\Compress(array(
        'adapter' => 'Bz2',
        'options' => array(
            'blocksize' => 8,
@@ -87,7 +87,7 @@ Almost the same usage is we want to decompress a string. We just have to use the
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Decompress('Bz2');
+   $filter = new Zend\Filter\Decompress('Bz2');
 
 To get the compressed string, we have to give the original string. The filtered value is the compressed version of
 the original string.
@@ -95,7 +95,7 @@ the original string.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Compress('Bz2');
+   $filter     = new Zend\Filter\Compress('Bz2');
    $compressed = $filter->filter('Uncompressed string');
    // Returns the compressed string
 
@@ -104,7 +104,7 @@ Decompression works the same way.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Decompress('Bz2');
+   $filter     = new Zend\Filter\Decompress('Bz2');
    $compressed = $filter->filter('Compressed string');
    // Returns the uncompressed string
 
@@ -118,7 +118,7 @@ Decompression works the same way.
 .. _zend.filter.set.compress.archive:
 
 Creating an archive
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 Creating an archive file works almost the same as compressing a string. However, in this case we need an additional
 parameter which holds the name of the archive we want to create.
@@ -126,7 +126,7 @@ parameter which holds the name of the archive we want to create.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Compress(array(
+   $filter     = new Zend\Filter\Compress(array(
        'adapter' => 'Bz2',
        'options' => array(
            'archive' => 'filename.bz2',
@@ -148,7 +148,7 @@ When you want to compress a file, then you must give the name of the file with i
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Compress(array(
+   $filter     = new Zend\Filter\Compress(array(
        'adapter' => 'Bz2',
        'options' => array(
            'archive' => 'filename.bz2'
@@ -163,7 +163,7 @@ subdirectories will be compressed into the archive.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Compress(array(
+   $filter     = new Zend\Filter\Compress(array(
        'adapter' => 'Bz2',
        'options' => array(
            'archive' => 'filename.bz2'
@@ -183,7 +183,7 @@ subdirectories will be compressed into the archive.
 .. _zend.filter.set.compress.decompress:
 
 Decompressing an archive
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Decompressing an archive file works almost like compressing it. You must specify either the ``archive`` parameter,
 or give the filename of the archive when you decompress the file.
@@ -191,7 +191,7 @@ or give the filename of the archive when you decompress the file.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Decompress('Bz2');
+   $filter     = new Zend\Filter\Decompress('Bz2');
    $compressed = $filter->filter('filename.bz2');
    // Returns true on success and decompresses the archive file
 
@@ -201,7 +201,7 @@ parameter.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Decompress(array(
+   $filter     = new Zend\Filter\Decompress(array(
        'adapter' => 'Zip',
        'options' => array(
            'target' => 'C:\temp',
@@ -220,7 +220,7 @@ parameter.
 .. _zend.filter.set.compress.bz2:
 
 Bz2 Adapter
------------
+^^^^^^^^^^^
 
 The Bz2 Adapter can compress and decompress:
 
@@ -245,7 +245,7 @@ accepts all options as array.
 .. _zend.filter.set.compress.gz:
 
 Gz Adapter
-----------
+^^^^^^^^^^
 
 The Gz Adapter can compress and decompress:
 
@@ -271,7 +271,7 @@ All options can be set at initiation or by using a related method. For example, 
 .. _zend.filter.set.compress.lzf:
 
 Lzf Adapter
------------
+^^^^^^^^^^^
 
 The Lzf Adapter can compress and decompress:
 
@@ -290,7 +290,7 @@ There are no options available to customize this adapter.
 .. _zend.filter.set.compress.rar:
 
 Rar Adapter
------------
+^^^^^^^^^^^
 
 The Rar Adapter can compress and decompress:
 
@@ -331,7 +331,7 @@ array.
 .. _zend.filter.set.compress.tar:
 
 Tar Adapter
------------
+^^^^^^^^^^^
 
 The Tar Adapter can compress and decompress:
 
@@ -371,7 +371,7 @@ array.
 .. _zend.filter.set.compress.zip:
 
 Zip Adapter
------------
+^^^^^^^^^^^
 
 The Zip Adapter can compress and decompress:
 

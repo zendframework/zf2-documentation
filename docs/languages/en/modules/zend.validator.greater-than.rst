@@ -7,7 +7,7 @@ GreaterThan
 
 .. note::
 
-   **Zend\Validator\GreaterThan supports only number validation**
+   **Zend\\Validator\\GreaterThan supports only number validation**
 
    It should be noted that ``Zend\Validator\GreaterThan`` supports only the validation of numbers. Strings or dates
    can not be validated with this validator.

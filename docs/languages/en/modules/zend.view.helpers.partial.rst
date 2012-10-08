@@ -1,7 +1,7 @@
 .. _zend.view.helpers.initial.partial:
 
 Partial Helper
-==============
+--------------
 
 The ``Partial`` view helper is used to render a specified template within its own variable scope. The primary use
 is for reusable template fragments with which you do not need to worry about variable name clashes. Additionally,

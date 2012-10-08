@@ -5,12 +5,12 @@ Styling and Translations
 ########################
 
 We’ve picked up the SkeletonApplication’s styling, which is fine, but we need to
-change the title and and remove the copyright message. 
+change the title and remove the copyright message. 
 
 The ZendSkeletonApplication is set up to use ``Zend\I18n``’s translation
 functionality for all the text. It uses ``.po`` files that live in
 ``Application/language``, and you need to use `poedit
-<http://www.poedit.net/download.php/>`_ to change the text. Start poedit and
+<http://www.poedit.net/download.php>`_ to change the text. Start poedit and
 open ``application/language/en_US.po``. Click on “Skeleton Application” in the
 list of ``Original`` strings and then type in “Tutorial” as the translation.
 

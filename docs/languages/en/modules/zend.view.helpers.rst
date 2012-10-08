@@ -46,22 +46,48 @@ composes. Please refer to the :ref:`plugin broker documentation <zend.loader.plu
 .. _zend.view.helpers.initial:
 
 Included Helpers
-----------------
+================
 
 Zend Framework comes with an initial set of helper classes. In particular, there are helpers for creating
 route-based *URL*\ s and *HTML* lists, as well as declaring variables. Additionally, there are a rich set of
 helpers for providing values for, and rendering, the various HTML *<head>* tags, such as ``HeadTitle``,
 ``HeadLink``, and ``HeadScript``. The currently shipped helpers include:
 
-- ``url($name, $urlParams, $routeOptions, $reuseMatchedParams)``: Creates a *URL* string based on a named route. ``$urlParams`` should be an
-  associative array of key/value pairs used by the particular route.
+- ``url($name, $urlParams, $routeOptions, $reuseMatchedParams)``: Creates a *URL* string based on a named route. 
+  ``$urlParams`` should be an associative array of key/value pairs used by the particular route.
+
+.. code-block:: php
+   :linenos:
+
+   // In a configuration array (e.g. returned by some module's module.config.php)
+   'router' => array(
+       'routes' => array(
+           'auth' => array(
+               'type' => 'segment',
+               'options' => array(
+                   'route' => '/auth[/:action][/:id]',
+                   'constraints' => array(
+                       'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                   ),
+                   'defaults' => array(
+                       'controller' => 'solon\solon',
+                       'action' => 'index'
+                   )
+               )
+           )
+       )
+   ),
+
+   // In a view template:
+   <a href="<?php echo $this->url('auth', array('action' => 'logout', 'id' => $id)); ?>">Logout</a>
+   
 
 - ``htmlList($items, $ordered, $attribs, $escape)``: generates unordered and ordered lists based on the ``$items``
   passed to it. If ``$items`` is a multidimensional array, a nested list will be built. If the ``$escape`` flag is
   ``TRUE`` (default), individual items will be escaped using the view objects registered escaping mechanisms; pass
   a ``FALSE`` value if you want to allow markup in your lists.
 
-.. include:: zend.view.helpers.base-url.rst
+.. include:: zend.view.helpers.base-path.rst
 .. include:: zend.view.helpers.cycle.rst
 .. include:: zend.view.helpers.partial.rst
 .. include:: zend.view.helpers.placeholder.rst
@@ -76,6 +102,9 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
 .. include:: zend.view.helpers.json.rst
 .. include:: zend.view.helpers.navigation.rst
 .. _zend.view.helpers.register:
+
+Advanced Usage
+==============
 
 Registering Helpers
 -------------------

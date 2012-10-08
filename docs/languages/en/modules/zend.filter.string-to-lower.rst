@@ -1,30 +1,30 @@
 .. _zend.filter.set.stringtolower:
 
 StringToLower
-=============
+-------------
 
 This filter converts any input to be lowercased.
 
 .. _zend.filter.set.stringtolower.options:
 
-Supported options for Zend_Filter_StringToLower
------------------------------------------------
+Supported options for Zend\\Filter\\StringToLower
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following options are supported for ``Zend_Filter_StringToLower``:
+The following options are supported for ``Zend\Filter\StringToLower``:
 
 - **encoding**: This option can be used to set an encoding which has to be used.
 
 .. _zend.filter.set.stringtolower.basic:
 
 Basic usage
------------
+^^^^^^^^^^^
 
 This is a basic example:
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringToLower();
+   $filter = new Zend\Filter\StringToLower();
 
    print $filter->filter('SAMPLE');
    // returns "sample"
@@ -32,7 +32,7 @@ This is a basic example:
 .. _zend.filter.set.stringtolower.encoding:
 
 Different encoded strings
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Per default it will only handle characters from the actual locale of your server. Characters from other charsets
 would be ignored. Still, it's possible to also lowercase them when the mbstring extension is available in your
@@ -43,10 +43,10 @@ environment. Simply set the wished encoding when initiating the ``StringToLower`
    :linenos:
 
    // using UTF-8
-   $filter = new Zend_Filter_StringToLower('UTF-8');
+   $filter = new Zend\Filter\StringToLower('UTF-8');
 
    // or give an array which can be useful when using a configuration
-   $filter = new Zend_Filter_StringToLower(array('encoding' => 'UTF-8'));
+   $filter = new Zend\Filter\StringToLower(array('encoding' => 'UTF-8'));
 
    // or do this afterwards
    $filter->setEncoding('ISO-8859-1');

@@ -1,17 +1,17 @@
 .. _zend.filter.set.encrypt:
 
 Encrypt and Decrypt
-===================
+-------------------
 
 These filters allow to encrypt and decrypt any given string. Therefor they make use of Adapters. Actually there are
 adapters for the ``Mcrypt`` and ``OpenSSL`` extensions from *PHP*.
 
 .. _zend.filter.set.encrypt.options:
 
-Supported options for Zend_Filter_Encrypt and Zend_Filter_Decrypt
------------------------------------------------------------------
+Supported options for Zend\\Filter\\Encrypt and Zend\\Filter\\Decrypt
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following options are supported for ``Zend_Filter_Encrypt`` and ``Zend_Filter_Decrypt``:
+The following options are supported for ``Zend\Filter\Encrypt`` and ``Zend\Filter\Decrypt``:
 
 - **adapter**: This sets the encryption adapter which should be used
 
@@ -55,7 +55,7 @@ The following options are supported for ``Zend_Filter_Encrypt`` and ``Zend_Filte
 .. _zend.filter.set.encrypt.adapterusage:
 
 Adapter usage
--------------
+^^^^^^^^^^^^^
 
 As these two encryption methodologies work completely different, also the usage of the adapters differ. You have to
 select the adapter you want to use when initiating the filter.
@@ -64,10 +64,10 @@ select the adapter you want to use when initiating the filter.
    :linenos:
 
    // Use the Mcrypt adapter
-   $filter1 = new Zend_Filter_Encrypt(array('adapter' => 'mcrypt'));
+   $filter1 = new Zend\Filter\Encrypt(array('adapter' => 'mcrypt'));
 
    // Use the OpenSSL adapter
-   $filter2 = new Zend_Filter_Encrypt(array('adapter' => 'openssl'));
+   $filter2 = new Zend\Filter\Encrypt(array('adapter' => 'openssl'));
 
 To set another adapter you can also use ``setAdapter()``, and the ``getAdapter()`` method to receive the actual set
 adapter.
@@ -76,7 +76,7 @@ adapter.
    :linenos:
 
    // Use the Mcrypt adapter
-   $filter = new Zend_Filter_Encrypt();
+   $filter = new Zend\Filter\Encrypt();
    $filter->setAdapter('openssl');
 
 .. note::
@@ -87,7 +87,7 @@ adapter.
 .. _zend.filter.set.encrypt.mcrypt:
 
 Encryption with Mcrypt
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 When you have installed the ``Mcrypt`` extension you can use the ``Mcrypt`` adapter. If you provide a string
 instead of an array of options, this string will be used as key.
@@ -116,7 +116,7 @@ truncated or padded to the needed vector size of the used algorithm.
    :linenos:
 
    // Use the default blowfish settings
-   $filter = new Zend_Filter_Encrypt('myencryptionkey');
+   $filter = new Zend\Filter\Encrypt('myencryptionkey');
 
    // Set a own vector, otherwise you must call getVector()
    // and store this vector for later decryption
@@ -131,7 +131,7 @@ truncated or padded to the needed vector size of the used algorithm.
 .. _zend.filter.set.encrypt.mcryptdecrypt:
 
 Decryption with Mcrypt
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 For decrypting content which was previously encrypted with ``Mcrypt`` you need to have the options with which the
 encryption has been called.
@@ -146,7 +146,7 @@ As soon as you have provided all options decryption is as simple as encryption.
    :linenos:
 
    // Use the default blowfish settings
-   $filter = new Zend_Filter_Decrypt('myencryptionkey');
+   $filter = new Zend\Filter\Decrypt('myencryptionkey');
 
    // Set the vector with which the content was encrypted
    $filter->setVector('myvector');
@@ -166,7 +166,7 @@ As soon as you have provided all options decryption is as simple as encryption.
 .. _zend.filter.set.encrypt.openssl:
 
 Encryption with OpenSSL
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 When you have installed the ``OpenSSL`` extension you can use the ``OpenSSL`` adapter. You can get or set the
 public keys also afterwards with the ``getPublicKey()`` and ``setPublicKey()`` methods. The private key can also be
@@ -176,7 +176,7 @@ get and set with the related ``getPrivateKey()`` and ``setPrivateKey()`` methods
    :linenos:
 
    // Use openssl and provide a private key
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
       'adapter' => 'openssl',
       'private' => '/path/to/mykey/private.pem'
    ));
@@ -199,7 +199,7 @@ the passphrase to decode the encrypted key.
    :linenos:
 
    // Use openssl and provide a private key
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
       'adapter' => 'openssl',
       'private' => '/path/to/mykey/private.pem'
    ));
@@ -223,7 +223,7 @@ So our complete example for encrypting content with ``OpenSSL`` look like this.
    :linenos:
 
    // Use openssl and provide a private key
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
       'adapter' => 'openssl',
       'private' => '/path/to/mykey/private.pem'
    ));
@@ -244,7 +244,7 @@ So our complete example for encrypting content with ``OpenSSL`` look like this.
 .. _zend.filter.set.encrypt.openssl.simplified:
 
 Simplified usage with Openssl
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++++++++++++
 
 As seen before, you need to get the envelope key to be able to decrypt the previous encrypted value. This can be
 very annoying when you work with multiple values.
@@ -255,7 +255,7 @@ To have a simplified usage you can set the ``package`` option to ``TRUE``. The d
    :linenos:
 
    // Use openssl and provide a private key
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
       'adapter' => 'openssl',
       'private' => '/path/to/mykey/private.pem',
       'public'  => '/public/key/path/public.pem',
@@ -269,15 +269,15 @@ To have a simplified usage you can set the ``package`` option to ``TRUE``. The d
 
 Now the returned value contains the encrypted value and the envelope. You don't need to get them after the
 compression. But, and this is the negative aspect of this feature, the encrypted value can now only be decrypted by
-using ``Zend_Filter_Encrypt``.
+using ``Zend\Filter\Encrypt``.
 
 .. _zend.filter.set.encrypt.openssl.compressed:
 
 Compressing the content
-^^^^^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++++++
 
 Based on the original value, the encrypted value can be a very large string. To reduce the value
-``Zend_Filter_Encrypt`` allows the usage of compression.
+``Zend\Filter\Encrypt`` allows the usage of compression.
 
 The ``compression`` option can eighter be set to the name of a compression adapter, or to an array which sets all
 wished options for the compression adapter.
@@ -286,7 +286,7 @@ wished options for the compression adapter.
    :linenos:
 
    // Use basic compression adapter
-   $filter1 = new Zend_Filter_Encrypt(array(
+   $filter1 = new Zend\Filter\Encrypt(array(
       'adapter'     => 'openssl',
       'private'     => '/path/to/mykey/private.pem',
       'public'      => '/public/key/path/public.pem',
@@ -295,7 +295,7 @@ wished options for the compression adapter.
    ));
 
    // Use basic compression adapter
-   $filter2 = new Zend_Filter_Encrypt(array(
+   $filter2 = new Zend\Filter\Encrypt(array(
       'adapter'     => 'openssl',
       'private'     => '/path/to/mykey/private.pem',
       'public'      => '/public/key/path/public.pem',
@@ -313,7 +313,7 @@ wished options for the compression adapter.
 .. _zend.filter.set.encrypt.openssldecrypt:
 
 Decryption with OpenSSL
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Decryption with ``OpenSSL`` is as simple as encryption. But you need to have all data from the person who encrypted
 the content. See the following example:
@@ -322,7 +322,7 @@ the content. See the following example:
    :linenos:
 
    // Use openssl and provide a private key
-   $filter = new Zend_Filter_Decrypt(array(
+   $filter = new Zend\Filter\Decrypt(array(
       'adapter' => 'openssl',
       'private' => '/path/to/mykey/private.pem'
    ));
@@ -344,7 +344,7 @@ Optionally it could be necessary to provide the passphrase for decrypting the ke
    :linenos:
 
    // Use openssl and provide a private key
-   $filter = new Zend_Filter_Decrypt(array(
+   $filter = new Zend\Filter\Decrypt(array(
       'adapter' => 'openssl',
       'private' => '/path/to/mykey/private.pem'
    ));
@@ -362,7 +362,7 @@ At last, decode the content. Our complete example for decrypting the previously 
    :linenos:
 
    // Use openssl and provide a private key
-   $filter = new Zend_Filter_Decrypt(array(
+   $filter = new Zend\Filter\Decrypt(array(
       'adapter' => 'openssl',
       'private' => '/path/to/mykey/private.pem'
    ));

@@ -1,7 +1,7 @@
 .. _zend.view.helpers.initial.cycle:
 
 Cycle Helper
-============
+------------
 
 The ``Cycle`` helper is used to alternate a set of values.
 

@@ -3,7 +3,7 @@
 Introduction
 ============
 
-The ``Zend_Filter`` component provides a set of commonly needed data filters. It also provides a simple filter
+The ``Zend\Filter`` component provides a set of commonly needed data filters. It also provides a simple filter
 chaining mechanism by which multiple filters may be applied to a single datum in a user-defined order.
 
 .. _zend.filter.introduction.definition:
@@ -25,14 +25,14 @@ escaped. Of course, which approach is more appropriate depends on the situation.
 entities operates within the scope of the first definition of filter - an operator that produces a subset of the
 input. A filter that escapes the *HTML* entities, however, transforms the input (e.g., "&" is transformed to
 "&amp;"). Supporting such use cases for web developers is important, and "to filter," in the context of using
-``Zend_Filter``, means to perform some transformations upon input data.
+``Zend\Filter``, means to perform some transformations upon input data.
 
 .. _zend.filter.introduction.using:
 
 Basic usage of filters
 ----------------------
 
-Having this filter definition established provides the foundation for ``Zend_Filter_Interface``, which requires a
+Having this filter definition established provides the foundation for ``Zend\Filter\Interface``, which requires a
 single method named ``filter()`` to be implemented by a filter class.
 
 Following is a basic example of using a filter upon two input data, the ampersand (**&**) and double quote (**"**)
@@ -41,12 +41,13 @@ characters:
 .. code-block:: php
    :linenos:
 
-   $htmlEntities = new Zend_Filter_HtmlEntities();
+   $htmlEntities = new Zend\Filter\HtmlEntities();
 
    echo $htmlEntities->filter('&'); // &
    echo $htmlEntities->filter('"'); // "
 
 .. include:: zend.filter.static-filter.rst
+
 .. _zend.filter.introduction.caveats:
 
 Double filtering
@@ -61,11 +62,11 @@ output by using the opposite filter. Take the following example:
    $original = "my_original_content";
 
    // Attach a filter
-   $filter   = new Zend_Filter_Word_UnderscoreToCamelCase();
+   $filter   = new Zend\Filter\Word\UnderscoreToCamelCase();
    $filtered = $filter->filter($original);
 
    // Use it's opposite
-   $filter2  = new Zend_Filter_Word_CamelCaseToUnderscore();
+   $filter2  = new Zend\Filter\Word\CamelCaseToUnderscore();
    $filtered = $filter2->filter($filtered)
 
 The above code example could lead to the impression that you will get the original output after the second filter

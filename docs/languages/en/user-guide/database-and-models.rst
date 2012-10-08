@@ -54,8 +54,8 @@ use mapper objects that load and save entities to the database. Another is to
 use an ORM like Doctrine or Propel.
 
 For this tutorial, we are going to create a very simple model by creating an
-``AlbumTable`` class that extends ``Zend\Db\TableGateway\TableGateway`` where
-each album object is an ``Album`` object (known as an *entity*). This is an
+``AlbumTable`` class that extends ``Zend\Db\TableGateway\AbstractTableGateway``
+where each album object is an ``Album`` object (known as an *entity*). This is an
 implementation of the Table Data Gateway design pattern to allow for interfacing
 with data in a database table. Be aware though that the Table Data Gateway
 pattern can become limiting in larger systems. There is also a temptation to put
@@ -170,7 +170,7 @@ Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
 
     class AlbumTable extends AbstractTableGateway
     {
-        protected $table ='album';
+        protected $table = 'album';
 
         public function __construct(Adapter $adapter)
         {
@@ -224,7 +224,7 @@ Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
                     )
                 );
             } else {
-                throw new \Exception('Form id does not exist');
+                throw new \Exception("Could not find row $id");
             }
         }
 
