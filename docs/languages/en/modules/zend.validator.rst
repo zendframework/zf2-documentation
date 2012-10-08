@@ -16,7 +16,7 @@ successfully validates against the requirements. If the input does not meet the 
 additionally provide information about which requirement(s) the input does not meet.
 
 For example, a web application might require that a username be between six and twelve characters in length and may
-only contain alphanumeric characters. A validator can be used for ensuring that that a username meet these requirements.
+only contain alphanumeric characters. A validator can be used for ensuring that a username meets these requirements.
 If a chosen username does not meet one or both of the requirements, it would be useful to know which of the
 requirements the username fails to meet.
 
