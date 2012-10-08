@@ -726,13 +726,13 @@ through the HTTP Accept header, and selects the appropriate renderer based on wh
    namespace Content\View;
 
    use Zend\EventManager\EventCollection;
-   use Zend\EventManager\ListenerAggregate;
+   use Zend\EventManager\ListenerAggregateInterface;
    use Zend\Feed\Writer\Feed;
    use Zend\View\Renderer\FeedRenderer;
    use Zend\View\Renderer\JsonRenderer;
    use Zend\View\Renderer\PhpRenderer;
 
-   class AcceptStrategy implements ListenerAggregate
+   class AcceptStrategy implements ListenerAggregateInterface
    {
        protected $feedRenderer;
        protected $jsonRenderer;
