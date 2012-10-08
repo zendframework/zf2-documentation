@@ -96,6 +96,7 @@
    modules/zend.i18n.translating
    modules/zend.i18n.view.helpers
    modules/zend.i18n.filters
+   modules/zend.i18n.validators.rst
    modules/zend.input-filter.intro
    modules/zend.json.introduction
    modules/zend.json.basics
