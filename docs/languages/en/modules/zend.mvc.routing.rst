@@ -49,10 +49,9 @@ A ``Route`` accepts a ``Request``, and determines if it matches. If so, it retur
    class RouteMatch
    {
        public function __construct(array $params);
-       public function setParam($name, $value);
-       public function merge(RouteMatch $match);
-       public function getRoute();
+       public function setMatchedRouteName($name);
        public function getMatchedRouteName();
+       public function setParam($name, $value);
        public function getParams();
        public function getParam($name, $default = null);
    }
