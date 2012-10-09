@@ -1,7 +1,7 @@
 .. _zend.http.request:
 
-Zend\\Http\\Request
-===================
+The Request Class
+=================
 
 .. _zend.http.request.intro:
 

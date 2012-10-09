@@ -1,7 +1,7 @@
 .. _zend.http.client.advanced:
 
-Zend\\Http\\Client - Advanced Usage
-=================================
+HTTP Client - Advanced Usage
+============================
 
 .. _zend.http.client.redirections:
 

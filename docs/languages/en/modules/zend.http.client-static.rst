@@ -1,7 +1,7 @@
 .. _zend.http.client-static:
 
-Zend\\Http\\ClientStatic
-=======================
+HTTP Client - Static Usage
+==========================
 
 .. _zend.http.client-static.intro:
 

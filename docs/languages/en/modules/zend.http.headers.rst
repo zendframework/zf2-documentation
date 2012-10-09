@@ -1,7 +1,7 @@
 .. _zend.http.headers:
 
-Zend\\Http\\Headers And The Various Header Classes
-==================================================
+The Headers Class
+=================
 
 .. _zend.http.headers.intro:
 

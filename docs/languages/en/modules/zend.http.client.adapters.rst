@@ -1,7 +1,7 @@
 .. _zend.http.client.adapters:
 
-Zend\\Http\\Client - Connection Adapters
-======================================
+HTTP Client - Connection Adapters
+=================================
 
 .. _zend.http.client.adapters.overview:
 

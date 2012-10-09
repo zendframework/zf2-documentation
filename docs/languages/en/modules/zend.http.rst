@@ -1,7 +1,7 @@
 .. _zend.http.overview:
 
-Zend\\Http
-==========
+Overview of Zend\\Http
+======================
 
 .. _zend.http.overview.intro:
 

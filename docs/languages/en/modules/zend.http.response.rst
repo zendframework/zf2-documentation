@@ -1,7 +1,7 @@
 .. _zend.http.response:
 
-Zend\\Http\\Response
-====================
+The Response Class
+==================
 
 .. _zend.http.response.intro:
 
