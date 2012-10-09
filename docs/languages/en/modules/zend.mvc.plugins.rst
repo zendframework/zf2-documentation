@@ -153,6 +153,13 @@ As an example:
 
     $this->layout()->setTemplate('layout/newlayout');
 
+It also implements the ``__invoke`` magic method, which allows for even easier setting of the template:
+
+.. code-block:: php
+    :linenos:
+
+    $this->layout('layout/newlayout');
+
 .. _zend.mvc.controller-plugins.params:
 
 The Params Plugin
@@ -176,6 +183,15 @@ It exposes several methods, one for each parameter source:
 
 - ``fromRoute($param=null,$default=null)``, for retrieving all, or one single route parameter. If ``$param`` is
   `null`, all route parameters will be returned.
+
+It also implements the ``__invoke`` magic method, which allows for short circuiting to the ``fromRoute`` method:
+
+.. code-block:: php
+    :linenos:
+
+    $this->params()->fromRoute('param', $default);
+    // or
+    $this->params('param', $default);
 
 .. _zend.mvc.controller-plugins.postredirectget:
 
