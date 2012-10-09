@@ -113,7 +113,12 @@ http://zf2-tutorial.localhost/1234 and you should see this:
     :width: 940 px
 
 If you see a standard Apache 404 error, then you need to fix ``.htaccess`` usage
-before continuing.
+before continuing.  If you're are using IIS with the URL Rewrite Module, import the following:
+
+.. code-block:: apache
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^.*$ index.php [NC,L]
 
 You now have a working skeleton application and we can start adding the specifics
 for our application.
