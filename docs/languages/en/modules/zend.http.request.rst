@@ -175,10 +175,10 @@ Available Methods
 
    Returns ``Zend\Http\Request``
 
-.. _zend.http.request.methods.post:
+.. _zend.http.request.methods.get-post:
 
-**post**
-   ``post()``
+**getPost**
+   ``getPost()``
 
    Return the parameter container responsible for post parameters.
 
@@ -478,10 +478,10 @@ Examples
    use Zend\Http\Request;
    $request = new Request();
 
-   // post() and get() both return, by default, a Parameters object, which extends ArrayObject
-   $request->post()->foo = 'value';
-   echo $request->get()->myVar;
-   echo $request->get()->offsetGet('myVar');
+   // getPost() and getQuery() both return, by default, a Parameters object, which extends ArrayObject
+   $request->getPost()->foo = 'value';
+   echo $request->getQuery()->myVar;
+   echo $request->getQuery()->offsetGet('myVar');
 
 .. _zend.http.request.examples.to-string:
 
@@ -494,11 +494,11 @@ Examples
    $request = new Request();
    $request->setMethod(Request::METHOD_POST);
    $request->setUri('/foo');
-   $request->header()->addHeaders(array(
+   $request->getHeaders()->addHeaders(array(
        'HeaderField1' => 'header-field-value',
        'HeaderField2' => 'header-field-value2',
    );
-   $request->post()->set('foo', 'bar');
+   $request->getPost()->set('foo', 'bar');
    echo $request->toString();
 
    /** Will produce:
