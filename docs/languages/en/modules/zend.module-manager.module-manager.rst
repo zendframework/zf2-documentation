@@ -63,8 +63,8 @@ By default, Zend Framework provides several useful module manager listeners.
    to ``Zend\Loader\AutoloaderFactory``.
 
 **Zend\\ModuleManager\\Listener\\ConfigListener**
-   If a module class has a ``getConfig()`` method, this listener will call it and merge the returned array (or
-   ``Traversable`` object) into the main application configuration.
+   If a module class has a ``getConfig()`` method, or implements ``Zend\ModuleManager\Feature\ConfigProviderInterface``,
+   this listener will call it and merge the returned array (or ``Traversable`` object) into the main application configuration.
 
 **Zend\\ModuleManager\\Listener\\InitTrigger**
    If a module class either implements ``Zend\ModuleManager\Feature\InitProviderInterface``, or simply defines an
