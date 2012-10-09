@@ -332,9 +332,21 @@ Default Configuration Options
 -----------------------------
 
 The following options are available when using the default services configured by the ``ServiceManagerConfig``
-and ``ViewManager``. These configuration directives can go to the ``config/autoload/{,*.}{global,local}.php``
-files, or in the ``module/<module name>/config/module.config.php`` configuration files. Note that configuration
-values from module configuration files are overriden with values from the `global` and `local` files.
+and ``ViewManager``. 
+
+These configuration directives can go to the ``config/autoload/{,*.}{global,local}.php`` files, or in the
+``module/<module name>/config/module.config.php`` configuration files. The merging of these configuration
+files is done by the ``ModuleManager``. It first merges each module's ``module.config.php`` file, and then
+the files in ``config/autoload`` (first the ``*.global.php`` and then the ``*.local.php`` files). The order
+of the merge is relevant so you can override a module's configuration with your application configuration. 
+If you have both a ``config/autoload/my.global.config.php`` and ``config/autoload/my.local.config.php``, the
+local configuration file overrides the global configuration.
+
+.. warning::
+
+    Local configuration files are intended to keep sensitive information, such as database credentials, and as
+    such, it is highly recommended to keep these local configuration files out of your VCS. The 
+    ``ZendSkeletonApplication``\'s ``config/autoload/.gitignore`` file ignores ``*.local.php`` files by default.
 
 .. code-block:: php
    :linenos:
