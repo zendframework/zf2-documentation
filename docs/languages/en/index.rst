@@ -313,7 +313,6 @@ Zend\\Http
         * :doc:`modules/zend.http.request`
         * :doc:`modules/zend.http.response`
         * :doc:`modules/zend.http.headers`
-        * :doc:`modules/zend.http.cookie.handling`
         * :doc:`modules/zend.http.client`
         * :doc:`modules/zend.http.client.adapters`
         * :doc:`modules/zend.http.client.advanced`
