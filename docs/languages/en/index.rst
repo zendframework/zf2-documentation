@@ -77,6 +77,7 @@
    modules/zend.http.client
    modules/zend.http.client.adapters
    modules/zend.http.client.advanced
+   modules/zend.http.client-static
    modules/zend.i18n.translating
    modules/zend.i18n.view.helpers
    modules/zend.i18n.filters
@@ -316,6 +317,7 @@ Zend\\Http
         * :doc:`modules/zend.http.client`
         * :doc:`modules/zend.http.client.adapters`
         * :doc:`modules/zend.http.client.advanced`
+        * :doc:`modules/zend.http.client-static`
 
 .. _zend.i18n:
 
