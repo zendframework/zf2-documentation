@@ -6,7 +6,7 @@ Text Element
 ``Zend\Form\Element\Text`` represents a text form input.
 It can be used with the ``Zend\Form\View\Helper\FormText`` view helper.
 
-``Zend\Form\Element\Text`` extends from :ref:`Zend\\Form\\Element <zend.form.element>`.
+``Zend\Form\Element\Text`` extends from :ref:`Zend\Form\Element <zend.form.element>`.
 
 .. _zend.form.element.text.usage:
 

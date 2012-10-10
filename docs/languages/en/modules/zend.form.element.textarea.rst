@@ -6,7 +6,7 @@ Textarea Element
 ``Zend\Form\Element\Textarea`` represents a textarea form input.
 It can be used with the ``Zend\Form\View\Helper\FormTextarea`` view helper.
 
-``Zend\Form\Element\Textarea`` extends from :ref:`Zend\\Form\\Element <zend.form.element>`.
+``Zend\Form\Element\Textarea`` extends from :ref:`Zend\Form\Element <zend.form.element>`.
 
 .. _zend.form.element.textarea.usage:
 

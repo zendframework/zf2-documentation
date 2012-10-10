@@ -3,7 +3,10 @@
 Select Element
 ^^^^^^^^^^^^^^
 
-``Zend\Form\Element\Select`` is meant to be paired with the ``Zend/Form/View/Helper/FormSelect`` for HTML inputs with type select. This element adds an ``InArray`` validator to its input filter specification in order to validate on the server if the selected value belongs to the values. This element can be used as a multi-select element by adding the "multiple" HTML attribute to the element.
+``Zend\Form\Element\Select`` is meant to be paired with the ``Zend\Form\View\Helper\FormSelect`` for HTML inputs
+with type select. This element adds an ``InArray`` validator to its input filter specification in order to validate
+on the server if the selected value belongs to the values. This element can be used as a multi-select element by adding
+the "multiple" HTML attribute to the element.
 
 .. _zend.form.element.select.usage:
 

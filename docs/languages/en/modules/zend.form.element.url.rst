@@ -3,7 +3,7 @@
 Url Element
 ^^^^^^^^^^^
 
-``Zend\Form\Element\Url`` is meant to be paired with the ``Zend/Form/View/Helper/FormUrl`` for `HTML5 inputs with type
+``Zend\Form\Element\Url`` is meant to be paired with the ``Zend\Form\View\Helper\FormUrl`` for `HTML5 inputs with type
 url`_. This element adds filters and a ``Zend\Validator\Uri`` validator to it's input filter specification for
 validating HTML5 URL input values on the server.
 

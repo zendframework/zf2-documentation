@@ -6,7 +6,7 @@ File Element
 ``Zend\Form\Element\File`` represents a form file input.
 It can be used with the ``Zend\Form\View\Helper\FormFile`` view helper.
 
-``Zend\Form\Element\File`` extends from :ref:`Zend\\Form\\Element <zend.form.element>`.
+``Zend\Form\Element\File`` extends from :ref:`Zend\Form\Element <zend.form.element>`.
 
 .. _zend.form.element.file.usage:
 

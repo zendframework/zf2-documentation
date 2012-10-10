@@ -3,7 +3,7 @@
 Week Element
 ^^^^^^^^^^^^
 
-``Zend\Form\Element\Week`` is meant to be paired with the ``Zend/Form/View/Helper/FormWeek`` for `HTML5 inputs with type
+``Zend\Form\Element\Week`` is meant to be paired with the ``Zend\Form\View\Helper\FormWeek`` for `HTML5 inputs with type
 week`_. This element adds filters and validators to it's input filter specification in order to validate HTML5 week
 input values on the server.
 
