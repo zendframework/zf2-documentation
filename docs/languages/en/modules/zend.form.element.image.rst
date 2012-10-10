@@ -1,19 +1,19 @@
-.. _zend.form.element.button:
+.. _zend.form.element.image:
 
-Button Element
-^^^^^^^^^^^^^^
+Image Element
+^^^^^^^^^^^^^
 
-``Zend\Form\Element\Button`` represents a button form input.
-It can be used with the ``Zend/Form/View/Helper/FormButton`` view helper.
+``Zend\Form\Element\Image`` represents a image button form input.
+It can be used with the ``Zend\Form\View\Helper\FormImage`` view helper.
 
-``Zend\Form\Element\Button`` extends from :ref:`Zend\\Form\\Element <zend.form.element>`.
+``Zend\Form\Element\Image`` extends from :ref:`Zend\\Form\\Element <zend.form.element>`.
 
-.. _zend.form.element.button.usage:
+.. _zend.form.element.image.usage:
 
 Basic Usage
 """""""""""
 
-This element automatically adds a ``"type"`` attribute of value ``"button"``.
+This element automatically adds a ``"type"`` attribute of value ``"image"``.
 
 .. code-block:: php
    :linenos:
@@ -21,9 +21,8 @@ This element automatically adds a ``"type"`` attribute of value ``"button"``.
    use Zend\Form\Element;
    use Zend\Form\Form;
 
-   $button = new Element\Button('my-button');
-   $button->setLabel('My Button')
-          ->setValue('foo');
+   $image = new Element\Image('my-image');
+   $image->setAttribute('src', 'http://my.image.url'); // Src attribute is required
 
    $form = new Form('my-form');
-   $form->add($button);
+   $form->add($image);
