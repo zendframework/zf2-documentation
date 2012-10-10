@@ -1,7 +1,7 @@
 .. _zend.http.response:
 
-Zend\\Http\\Response
-====================
+The Response Class
+==================
 
 .. _zend.http.response.intro:
 
@@ -63,7 +63,7 @@ completely empty object to start with, by simply instantiating the ``Zend\Http\R
        'HeaderField1' => 'header-field-value',
        'HeaderField2' => 'header-field-value2',
    );
-   $response->setRawBody(<<<EOS
+   $response->setContent(<<<EOS
    <html>
    <body>
        Hello World
@@ -76,7 +76,7 @@ completely empty object to start with, by simply instantiating the ``Zend\Http\R
 Configuration Options
 ---------------------
 
-None currently available
+No configuration options are available.
 
 .. _zend.http.response.methods:
 
@@ -101,37 +101,53 @@ Available Methods
 
    Returns string
 
-.. _zend.http.response.methods.set-headers:
+.. _zend.http.request.methods.set-server:
 
 **setHeaders**
    ``setHeaders(Zend\Http\Headers $headers)``
 
-   Set response headers
+   Provide an alternate Parameter Container implementation for headers in this object. (This is NOT the primary API
+   for value setting; for that, see ``getHeaders()``.)
 
-   Returns ``Zend\Http\Response``
+   Returns ``Zend\Http\Request``
 
-.. _zend.http.response.methods.headers:
+.. _zend.http.request.methods.get-headers:
 
-**headers**
-   ``headers()``
+**getHeaders**
+   ``getHeaders()``
 
-   Get response headers
+   Return the container responsible for storing HTTP headers.  This container exposes the primary API for
+   manipulating headers set in the HTTP response.  See :ref:`the section on Zend\\Http\\Headers<zend.http.headers>`
+   for more information.
 
    Returns ``Zend\Http\Headers``
 
-.. _zend.http.response.methods.set-version:
+.. _zend.http.request.methods.set-version:
 
 **setVersion**
    ``setVersion(string $version)``
 
-   Returns ``Zend\Http\Response``
+   Set the HTTP version for this object, one of 1.0 or 1.1 (``Request::VERSION_10``, ``Request::VERSION_11``).
 
-.. _zend.http.response.methods.get-version:
+   Returns ``Zend\Http\Request``.
+
+.. _zend.http.request.methods.get-version:
 
 **getVersion**
    ``getVersion()``
 
+   Return the HTTP version for this request
+
    Returns string
+
+.. _zend.http.response.methods.set-status-code:
+
+**setStatusCode**
+   ``setStatusCode(numeric $code)``
+
+   Set HTTP status code
+
+   Returns ``Zend\Http\Response``
 
 .. _zend.http.response.methods.get-status-code:
 
@@ -147,6 +163,8 @@ Available Methods
 **setReasonPhrase**
    ``setReasonPhrase(string $reasonPhrase)``
 
+   Set custom HTTP status message
+
    Returns ``Zend\Http\Response``
 
 .. _zend.http.response.methods.get-reason-phrase:
@@ -157,15 +175,6 @@ Available Methods
    Get HTTP status message
 
    Returns string
-
-.. _zend.http.response.methods.set-status-code:
-
-**setStatusCode**
-   ``setStatusCode(numeric $code)``
-
-   Set HTTP status code and (optionally) message
-
-   Returns ``Zend\Http\Response``
 
 .. _zend.http.response.methods.is-client-error:
 
@@ -261,7 +270,7 @@ Available Methods
 
 .. _zend.http.response.methods.decode-deflate:
 
-**decodeGzip**
+**decodeDeflate**
    ``decodeDeflate(string $body)``
 
    Decode a zlib deflated message (when Content-encoding = deflate)
@@ -307,8 +316,6 @@ Available Methods
 
    Get message content
 
-
-
    Returns mixed
 
 .. _zend.http.response._parent_.zend.stdlib.message.methods.to-string:
@@ -345,7 +352,7 @@ Examples
 
 .. _zend.http.response.examples.construct-response:
 
-.. rubric:: Generating a Response object from a string
+.. rubric:: Generating a formatted HTTP Response from a Response object
 
 .. code-block:: php
    :linenos:
@@ -357,7 +364,7 @@ Examples
        'HeaderField1' => 'header-field-value',
        'HeaderField2' => 'header-field-value2',
    );
-   $response->setRawBody(<<<EOS
+   $response->setContent(<<<EOS
    <html>
    <body>
        Hello World
