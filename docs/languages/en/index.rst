@@ -45,6 +45,7 @@
    modules/zend.config.reader
    modules/zend.config.writer
    modules/zend.config.processor
+   modules/zend.config.factory
    modules/zend.crypt.introduction
    modules/zend.crypt.block-cipher
    modules/zend.crypt.key.derivation
@@ -278,6 +279,7 @@ Zend\\Config
         * :doc:`modules/zend.config.reader`
         * :doc:`modules/zend.config.writer`
         * :doc:`modules/zend.config.processor`
+        * :doc:`modules/zend.config.factory`
 
 .. _zend.crypt:
 
