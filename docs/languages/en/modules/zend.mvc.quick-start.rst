@@ -322,15 +322,17 @@ reads as follows:
    :linenos:
 
    return array(
-       'routes' => array(
-           '<module name>-hello-world' => array(
-               'type'    => 'Literal',
-                   'options' => array(
-                   'route' => '/hello/world',
-                   'defaults' => array(
-                       '__NAMESPACE__' => '<module name>\Controller',
-                       'controller' => 'Hello',
-                       'action'     => 'world',
+       'router' => array(
+           'routes' => array(
+               '<module name>-hello-world' => array(
+                   'type'    => 'Literal',
+                       'options' => array(
+                       'route' => '/hello/world',
+                       'defaults' => array(
+                           '__NAMESPACE__' => '<module name>\Controller',
+                           'controller' => 'Hello',
+                           'action'     => 'world',
+                       ),
                    ),
                ),
            ),
