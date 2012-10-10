@@ -73,7 +73,6 @@
    modules/zend.http.request
    modules/zend.http.response
    modules/zend.http.headers
-   modules/zend.http.cookie.handling
    modules/zend.http.client
    modules/zend.http.client.adapters
    modules/zend.http.client.advanced
