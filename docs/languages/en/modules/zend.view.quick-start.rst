@@ -6,7 +6,7 @@ Zend\\View Quick Start
 .. _zend.view.quick-start.intro:
 
 Overview
---------
+========
 
 ``Zend\View`` provides the "View" layer of Zend Framework's MVC system. It is a multi-tiered system allowing a
 variety of mechanisms for extension, substitution, and more.
@@ -40,7 +40,7 @@ Additionally, Zend Framework provides integration with the MVC via a number of e
 .. _zend.view.quick-start.usage:
 
 Usage
------
+=====
 
 This manual section is designed to show you typical usage patterns of the view layer when using it within the Zend
 Framework MVC. The assumptions are that you are using :ref:`Dependency Injection <zend.di>`, and that you are using
@@ -48,7 +48,8 @@ the :ref:`default MVC view strategies <zend.mvc.view>`.
 
 .. _zend.view.quick-start.usage.config:
 
-.. rubric:: Configuration
+Configuration
+-------------
 
 The default configuration for the framework will typically work out-of-the-box. However, you will still need to
 select resolver strategies and configure them, as well as potentially indicate alternate template names for things
@@ -177,7 +178,8 @@ module from the framework's "ZendSkeletonApplication", or to one of your autoloa
 
 .. _zend.view.quick-start.usage.controllers:
 
-.. rubric:: Controllers and View Models
+Controllers and View Models
+---------------------------
 
 ``Zend\View\View`` consumes ``ViewModels``, passing them to the selected renderer. Where do you create these,
 though?
@@ -376,7 +378,8 @@ rendering isolated from the request/reponse lifecycle of the controller.
 
 .. _zend.view.quick-start.usage.layouts:
 
-.. rubric:: Dealing with Layouts
+Dealing with Layouts
+--------------------
 
 Most sites enforce a cohesive look-and-feel, which we typically call the site "layout". The site layout includes
 the default stylesheets and JavaScript necessary, if any, as well as the basic markup structure into which all site
@@ -612,7 +615,8 @@ event.
 
 .. _zend.view.quick-start.usage.strategies:
 
-.. rubric:: Creating and Registering Alternate Rendering and Response Strategies
+Creating and Registering Alternate Rendering and Response Strategies
+--------------------------------------------------------------------
 
 ``Zend\View\View`` does very little. Its workflow is essentially to martial a ``ViewEvent``, and then trigger two
 events, "renderer" and "response". You can attach "strategies" to these events, using the methods
