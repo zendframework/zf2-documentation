@@ -321,14 +321,16 @@ reads as follows:
    :linenos:
 
    return array(
-       'routes' => array(
-           '<module name>-hello-world' => array(
-               'type'    => 'Literal',
-                   'options' => array(
-                   'route' => '/hello/world',
-                   'defaults' => array(
-                       'controller' => '<module name>\Controller\Hello',
-                       'action'     => 'world',
+       'router' => array(
+           'routes' => array(
+               '<module name>-hello-world' => array(
+                   'type'    => 'Literal',
+                       'options' => array(
+                       'route' => '/hello/world',
+                       'defaults' => array(
+                           'controller' => '<module name>\Controller\Hello',
+                           'action'     => 'world',
+                       ),
                    ),
                ),
            ),
