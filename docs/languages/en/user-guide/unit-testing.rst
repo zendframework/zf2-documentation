@@ -92,7 +92,7 @@ the following contents:
     use Zend\Mvc\Router\RouteMatch;
     use PHPUnit_Framework_TestCase;
 
-    class ApplicationControllerTest extends PHPUnit_Framework_TestCase
+    class IndexControllerTest extends PHPUnit_Framework_TestCase
     {
         protected $controller;
         protected $request;
@@ -115,7 +115,7 @@ For a detailed explanation of what's going on here, visit Tom Oram's
 `Unit Testing a ZF 2 Controller <http://devblog.x2k.co.uk/unit-testing-a-zend-framework-2-controller/>`_
 blog entry.
 
-Now, add the following function to the ``ApplicationControllerTest`` class:
+Now, add the following function to the ``IndexControllerTest`` class:
 
 .. code-block:: php
 
