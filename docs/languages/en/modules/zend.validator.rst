@@ -118,7 +118,7 @@ may be supported on a case-by-case basis in each validation class.
 
    $validator = new Zend\Validator\StringLength(array('min' => 8, 'max' => 12));
 
-   if (!validator->isValid('word')) {
+   if (!$validator->isValid('word')) {
        echo 'Word failed: '
            . $validator->value
            . '; its length is not between '
