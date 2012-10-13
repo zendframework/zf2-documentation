@@ -98,27 +98,25 @@ EventManagerAware
 Typically, it's nice to be able to tie into a controller's workflow without needing to extend it or hardcode
 behavior into it. The solution for this at the framework level is to use the ``EventManager``.
 
-You can hint to the ``ServiceManager`` that you want an ``EventManager`` injected by implementing the interfaces
-``EventManagerAwareInterface`` and ``EventsCapableInterface``; the former tells the ``ServiceManager`` to inject an
-``EventManager``, the latter to other objects that this class has an accessible ``EventManager`` instance.
+You can hint to the ``ServiceManager`` that you want an ``EventManager`` injected by implementing the interface
+``EventManagerAwareInterface``, which  tells the ``ServiceManager`` to inject an ``EventManager``.
 
-Combined, you define two methods. The first, a setter, should also set any ``EventManager`` identifiers you want to
-listen on, and the second, a getter, should simply return the composed ``EventManager`` instance
+You define two methods. The first, a setter, should also set any ``EventManager`` identifiers you want to
+listen on, and the second, a getter, should simply return the composed ``EventManager`` instance.
 
 .. code-block:: php
    :linenos:
 
    use Zend\EventManager\EventManagerAwareInterface;
    use Zend\EventManager\EventManagerInterface;
-   use Zend\EventManager\EventsCapableInterface;
 
    public function setEventManager(EventManagerInterface $events);
    public function getEventManager();
 
 .. _zend.mvc.controllers.interfaces.pluggable:
 
-Pluggable
-^^^^^^^^^
+Controller Plugins
+^^^^^^^^^^^^^^^^^^
 
 Code re-use is a common goal for developers. Another common goal is convenience. However, this is often difficult
 to achieve cleanly in abstract, general systems.
@@ -135,33 +133,35 @@ examples:
 - Invoking and dispatching additional controllers
 
 To facilitate these actions while also making them available to alternate controller implementations, we've created
-a ``PluginBroker`` implementation for the controller layer, ``Zend\Mvc\Controller\PluginBroker``, building on the
-``Zend\Loader\PluginBroker`` functionality. To utilize it, you simply need to implement the
-``Zend\Loader\Pluggable`` interface, and set up your code to use the controller-specific implementation by default:
+a ``PluginManager`` implementation for the controller layer, ``Zend\Mvc\Controller\PluginManager``, building on the
+``Zend\ServiceManager\AbstractPluginManager`` functionality. To utilize it, you simply need to implement the
+``setPluginManager(PluginManager $plugins)`` method, and set up your code to use the controller-specific implementation by default:
 
 .. code-block:: php
    :linenos:
 
-   use Zend\Loader\Broker;
-   use Zend\Mvc\Controller\PluginBroker;
+   use Zend\Mvc\Controller\PluginManager;
 
-   public function setBroker(Broker $broker)
+   public function setPluginManager(PluginManager $plugins)
    {
-       $this->broker = $broker;
+       $this->plugins = $plugins;
+       $this->plugins->setController($this);
+
        return $this;
    }
 
-   public function getBroker()
+   public function getPluginManager()
    {
-       if (!$this->broker instanceof Broker) {
-           $this->setBroker(new PluginBroker);
+       if (!$this->plugins) {
+           $this->setPluginManager(new PluginManager());
        }
-       return $this->broker;
+
+       return $this->plugins;
    }
 
-   public function plugin($plugin, array $options = null)
+   public function plugin($name, array $options = null)
    {
-       return $this->getBroker()->load($plugin, $options);
+       return $this->getPluginManager()->get($name, $options);
    }
 
 .. _zend.mvc.controllers.action-controller:
@@ -181,7 +181,7 @@ interfaces, and uses the following assumptions:
 - The "action" parameter is converted to a camelCased format and appended with the word "Action" to create a method
   name. As examples: "foo" maps to "fooAction", "foo-bar" or "foo.bar" or "foo_bar" to "fooBarAction". The
   controller then checks to see if that method exists. If not, the ``notFoundAction()`` method is invoked;
-  otherwise, the discovered method.
+  otherwise, the discovered method is called.
 
 - The results of executing the given action method are injected into the ``MvcEvent``'s "result" property (via
   ``setResult()``, and accesible via ``getResult()``).
@@ -220,15 +220,11 @@ Interfaces and Collaborators
 
 - ``Zend\Stdlib\DispatchableInterface``
 
-- ``Zend\Loader\Pluggable``
-
 - ``Zend\Mvc\InjectApplicationEventInterface``
 
 - ``Zend\ServiceManager\ServiceLocatorAwareInterface``
 
 - ``Zend\EventManager\EventManagerAwareInterface``
-
-- ``Zend\EventManager\EventsCapableInterface``
 
 The composed ``EventManager`` will be configured to listen on the following contexts:
 
@@ -279,15 +275,11 @@ Interfaces and Collaborators
 
 - ``Zend\Stdlib\DispatchableInterface``
 
-- ``Zend\Loader\Pluggable``
-
 - ``Zend\Mvc\InjectApplicationEventInterface``
 
 - ``Zend\ServiceManager\ServiceLocatorAwareInterface``
 
 - ``Zend\EventManager\EventManagerAwareInterface``
-
-- ``Zend\EventManager\EventsCapableInterface``
 
 The composed ``EventManager`` will be configured to listen on the following contexts:
 
