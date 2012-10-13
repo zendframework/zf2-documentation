@@ -96,7 +96,7 @@
    modules/zend.i18n.translating
    modules/zend.i18n.view.helpers
    modules/zend.i18n.filters
-   modules/zend.i18n.validators.rst
+   modules/zend.i18n.validators
    modules/zend.input-filter.intro
    modules/zend.json.introduction
    modules/zend.json.basics
@@ -390,7 +390,7 @@ Zend\\I18n
         * :doc:`modules/zend.i18n.translating`
         * :doc:`modules/zend.i18n.view.helpers`
         * :doc:`modules/zend.i18n.filters`
-        * :doc:`modules/zend.i18n.validators.rst`
+        * :doc:`modules/zend.i18n.validators`
 
 .. _zend.input-filter:
 
