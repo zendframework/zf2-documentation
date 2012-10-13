@@ -4,8 +4,8 @@ Introduction to the Module System
 =================================
 
 Zend Framework 2.0 introduces a new and powerful approach to modules. This new module system is designed with
-flexibility, simplicity, and re-usability in mind. A module may contain just about anything: PHP code, including
-MVC functionality; library code; view scripts; and/or public assets such as images, CSS, and JavaScript. The
+flexibility, simplicity, and re-usability in mind. A module may contain just about anything: PHP code, 
+MVC functionality, library code, view scripts, assets (e.g. images, CSS, and JavaScript). The
 possibilities are endless.
 
 .. note::
@@ -18,12 +18,12 @@ possibilities are endless.
 
 The module system is made up of the following:
 
-- **The Module Autoloader** - ``Zend\Loader\ModuleAutoloader`` is a specialized autoloader that is responsible for
-  the locating and loading of modules' ``Module`` classes from a variety of sources.
+- :ref:**The Module Autoloader <zend.module-manager.module-autoloader>** - ``Zend\Loader\ModuleAutoloader`` 
+  is a specialized autoloader responsible for locating and loading modules.
 
-- :ref:`The Module Manager <zend.module-manager.module-manager>` - ``Zend\ModuleManager\ModuleManager`` simply takes
-  an array of module names and fires a sequence of events for each one, allowing the behavior of the module system
-  to be defined entirely by the listeners which are attached to the module manager.
+- :ref:**The Module Manager <zend.module-manager.module-manager>** - ``Zend\ModuleManager\ModuleManager`` accepts
+  an array of module names and triggers a sequence of events for each module. This allows the behavior of 
+  the module system to be defined entirely by the listeners which are attached to the module manager.
 
 - **ModuleManager Listeners** - Event listeners can be attached to the module manager's various events. These
   listeners can do everything from resolving and loading modules to performing complex initialization tasks and
