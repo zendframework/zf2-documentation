@@ -1,7 +1,7 @@
 .. _zend.http.client:
 
-Zend\\Http\\Client
-==================
+HTTP Client - Overview
+======================
 
 .. _zend.http.client.intro:
 
@@ -35,28 +35,26 @@ be left out, and set later using the setUri() and setConfig() methods.
    // This is actually exactly the same:
    $client = new Client();
    $client->setUri('http://example.org');
-   $client->setConfig(array(
+   $client->setOptions(array(
        'maxredirects' => 0,
        'timeout'      => 30
    ));
 
-   // You can also use a Zend\Config\Ini object to set the client's configuration
-   $config = new Zend\Config\Ini('httpclient.ini', 'secure');
-   $client->setConfig($config);
+   // You can also pass a Zend\Config\Config object to set the client's configuration
+   $config = Zend\Config\Factory::fromFile('httpclient.ini');
+   $client->setOptions($config);
 
 .. note::
 
-   ``Zend\Http\Client`` uses ``Zend\Uri\Http`` to validate URLs. This means that some special characters like the
-   pipe symbol ('\|') or the caret symbol ('^') will not be accepted in the URL by default. This can be modified by
-   setting the 'allowunwise' option of ``Zend\Uri`` to '``TRUE``'. See :ref:`this section
-   <zend.uri.validation.allowunwise>` for more information.
+   ``Zend\Http\Client`` uses ``Zend\Uri\Http`` to validate URLs.  See the :ref:`Zend\\Uri manual page<zend.uri>`
+   for more information on the validation process.
 
 .. _zend.http.client.options:
 
 Configuration Options
 ---------------------
 
-The constructor and setConfig() method accept an associative array of configuration parameters, or a
+The constructor and setOptions() method accept an associative array of configuration parameters, or a
 ``Zend\Config\Config`` object. Setting these parameters is optional, as they all have default values.
 
 
@@ -69,8 +67,6 @@ The constructor and setConfig() method accept an associative array of configurat
          |Parameter      |Description                                                                                                                                                                         |Expected Values|Default Value                        |
          +===============+====================================================================================================================================================================================+===============+=====================================+
          |maxredirects   |Maximum number of redirections to follow (0 = none)                                                                                                                                 |integer        |5                                    |
-         +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
-         |strict         |Whether perform validation on header names. When set to FALSE, validation functions will be skipped. Usually this should not be changed                                             |boolean        |TRUE                                 |
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
          |strictredirects|Whether to strictly follow the RFC when redirecting (see this section)                                                                                                              |boolean        |FALSE                                |
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
@@ -88,8 +84,10 @@ The constructor and setConfig() method accept an associative array of configurat
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
          |encodecookies  |Whether to pass the cookie value through urlencode/urldecode. Enabling this breaks support with some web servers. Disabling this limits the range of values the cookies can contain.|boolean        |TRUE                                 |
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
-
-
+         |outputstream   |Destination for streaming of received data (options: string (filename), true for temp file, false/null to disable streaming)                                                        |boolean        |FALSE                                |
+         +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
+         |rfc3986strict  |Whether to strictly adhere to RFC 3986 (in practice, this means replacing '+' with '%20')                                                                                       |boolean        |FALSE                                |
+         +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
 
 .. _zend.http.client.methods:
 
@@ -99,7 +97,7 @@ Available Methods
 .. _zend.http.client.methods.__construct:
 
 **__construct**
-   ``__construct(string $uri, array $config)``
+   ``__construct(string $uri, array|Traversable $config)``
 
    Constructor
 
@@ -107,14 +105,12 @@ Available Methods
 
    Returns void
 
-.. _zend.http.client.methods.set-config:
+.. _zend.http.client.methods.set-options:
 
-**setConfig**
-   ``setConfig(Config|array $config = array ( ))``
+**setOptions**
+   ``setOptions(array|Traversable $config = array ())``
 
    Set configuration parameters for this HTTP client
-
-
 
    Returns Zend\\Http\\Client
 
@@ -125,85 +121,71 @@ Available Methods
 
    Load the connection adapter
 
-   While this method is not called more than one for a client, it is seperated from ->send() to preserve logic
+   While this method is not called more than once for a client, it is seperated from ->send() to preserve logic
    and readability
 
-   Returns null
+   Returns Zend\\Http\\Client
 
 .. _zend.http.client.methods.get-adapter:
 
 **getAdapter**
    ``getAdapter()``
 
-   Load the connection adapter
+   Retrieve the connection adapter
 
-
-
-   Returns Zend\\Http\\Client\\Adapter
-
-.. _zend.http.client.methods.get-request:
-
-**getRequest**
-   ``getRequest()``
-
-   Get Request
-
-
-
-   Returns Request
-
-.. _zend.http.client.methods.get-response:
-
-**getResponse**
-   ``getResponse()``
-
-   Get Response
-
-
-
-   Returns Response
+   Returns Zend\\Http\\Client\\Adapter\\AdapterInterface
 
 .. _zend.http.client.methods.set-request:
 
 **setRequest**
    ``setRequest(Zend\Http\Zend\Http\Request $request)``
 
-   Set request
-
-
+   Set request object
 
    Returns void
+
+.. _zend.http.client.methods.get-request:
+
+**getRequest**
+   ``getRequest()``
+
+   Get Request object
+
+   Returns Zend\\Http\\Request
+
+.. _zend.http.client.methods.get-last-raw-request:
+
+**getLastRawRequest**
+   ``getLastRawRequest()``
+
+   Get the last request (as a string)
+
+   Returns string
 
 .. _zend.http.client.methods.set-response:
 
 **setResponse**
-   ``setResponse(Zend\Http\Zend\Http\Response $response)``
+   ``setResponse(Zend\Http\Response $response)``
 
    Set response
 
+   Returns Zend\\Http\\Client
 
+.. _zend.http.client.methods.get-response:
 
-   Returns void
+**getResponse**
+   ``getResponse()``
 
-.. _zend.http.client.methods.get-last-request:
+   Get Response object
 
-**getLastRequest**
-   ``getLastRequest()``
+   Returns Zend\\Http\\Response
 
-   Get the last request (as a string)
+.. _zend.http.client.methods.get-last-raw-response:
 
-
-
-   Returns string
-
-.. _zend.http.client.methods.get-last-response:
-
-**getLastResponse**
-   ``getLastResponse()``
+**getLastRawResponse**
+   ``getLastRawResponse()``
 
    Get the last response (as a string)
-
-
 
    Returns string
 
@@ -214,8 +196,6 @@ Available Methods
 
    Get the redirections count
 
-
-
    Returns integer
 
 .. _zend.http.client.methods.set-uri:
@@ -225,9 +205,7 @@ Available Methods
 
    Set Uri (to the request)
 
-
-
-   Returns void
+   Returns Zend\\Http\\Client
 
 .. _zend.http.client.methods.get-uri:
 
@@ -236,9 +214,7 @@ Available Methods
 
    Get uri (from the request)
 
-
-
-   Returns Zend\\Http\\Zend\\Uri\\Http
+   Returns Zend\\Uri\\Http
 
 .. _zend.http.client.methods.set-method:
 
@@ -246,8 +222,6 @@ Available Methods
    ``setMethod(string $method)``
 
    Set the HTTP method (to the request)
-
-
 
    Returns Zend\\Http\\Client
 
@@ -258,8 +232,6 @@ Available Methods
 
    Get the HTTP method
 
-
-
    Returns string
 
 .. _zend.http.client.methods.set-enc-type:
@@ -268,8 +240,6 @@ Available Methods
    ``setEncType(string $encType, string $boundary)``
 
    Set the encoding type and the boundary (if any)
-
-
 
    Returns void
 
@@ -280,8 +250,6 @@ Available Methods
 
    Get the encoding type
 
-
-
    Returns type
 
 .. _zend.http.client.methods.set-raw-body:
@@ -290,8 +258,6 @@ Available Methods
    ``setRawBody(string $body)``
 
    Set raw body (for advanced use cases)
-
-
 
    Returns Zend\\Http\\Client
 
@@ -302,8 +268,6 @@ Available Methods
 
    Set the POST parameters
 
-
-
    Returns Zend\\Http\\Client
 
 .. _zend.http.client.methods.set-parameter-get:
@@ -312,8 +276,6 @@ Available Methods
    ``setParameterGet(array $query)``
 
    Set the GET parameters
-
-
 
    Returns Zend\\Http\\Client
 
@@ -324,18 +286,14 @@ Available Methods
 
    Return the current cookies
 
-
-
    Returns array
 
 .. _zend.http.client.methods.add-cookie:
 
 **addCookie**
-   ``addCookie(ArrayIterator|SetCookie|string $cookie, string $value, string $domain, string $expire, string $path, boolean $secure = false, boolean $httponly = true)``
+   ``addCookie(ArrayIterator|SetCookie|string $cookie, string $value = null, string $expire = null, string $path = null, string $domain = null, boolean $secure = false, boolean $httponly = true, string $maxAge = null, string $version = null)``
 
    Add a cookie
-
-
 
    Returns Zend\\Http\\Client
 
@@ -439,10 +397,22 @@ Available Methods
 
    Returns void
 
+.. _zend.http.client.methods.dispatch:
+
+**dispatch**
+   ``dispatch(Zend\Stdlib\RequestInterface $request, Zend\Stdlib\ResponseInterface $response= null)``
+
+   Dispatch HTTP request
+
+
+
+   Returns Response
+
+
 .. _zend.http.client.methods.send:
 
 **send**
-   ``send(Request $request)``
+   ``send(Zend\Http\Request $request)``
 
    Send HTTP request
 
@@ -453,7 +423,7 @@ Available Methods
 .. _zend.http.client.methods.set-file-upload:
 
 **setFileUpload**
-   ``setFileUpload(string $filename, string $formname, string $data, string $ctype)``
+   ``setFileUpload(string $filename, string $formname, string $data = null, string $ctype = null)``
 
    Set a file to upload (using a POST request)
 
@@ -478,7 +448,7 @@ Available Methods
 .. _zend.http.client.methods.encode-form-data:
 
 **encodeFormData**
-   ``encodeFormData(string $boundary, string $name, mixed $value, string $filename, array $headers = array ( ))``
+   ``encodeFormData(string $boundary, string $name, mixed $value, string $filename = null, array $headers = array ( ))``
 
    Encode data to a multipart/form-data part suitable for a POST request.
 
@@ -524,9 +494,6 @@ called, the default request method is ``GET`` (see the above example).
    use Zend\Http\Client;
    $client = new Client();
    // Performing a POST request
-   $response = $client->send('POST');
-
-   // Yet another way of performing a POST request
    $client->setMethod(Client::POST);
    $response = $client->send();
 
@@ -535,19 +502,14 @@ called, the default request method is ``GET`` (see the above example).
 .. rubric:: Adding GET and POST parameters
 
 Adding ``GET`` parameters to an *HTTP* request is quite simple, and can be done either by specifying them as part
-of the URL, or by using the setParameterGet() method. This method takes the ``GET`` parameter's name as its first
-parameter, and the ``GET`` parameter's value as its second parameter. For convenience, the setParameterGet() method
-can also accept a single associative array of name => value ``GET`` variables - which may be more comfortable when
-several ``GET`` parameters need to be set.
+of the URL, or by using the setParameterGet() method. This method takes the ``GET`` parameters as an associative 
+array of name => value ``GET`` variables.
 
 .. code-block:: php
    :linenos:
 
    use Zend\Http\Client;
    $client = new Client();
-
-   // Setting a get parameter using the setParameterGet method
-   $client->setParameterGet('knight', 'lancelot');
 
    // This is equivalent to setting such URL:
    $client->setUri('http://example.com/index.php?knight=lancelot');
@@ -572,8 +534,6 @@ the setParameterPost() method, which is similar to the setParameterGet() method 
 
    use Zend\Http\Client;
    $client = new Client();
-   // Setting a POST parameter
-   $client->setParameterPost('language', 'fr');
 
    // Setting several POST parameters, one of them with several values
    $client->setParameterPost(array(
@@ -600,7 +560,7 @@ POST request, POST parameters are simply ignored.
    $request = new Request();
    $request->setUri('http://www.test.com');
    $request->setMethod('POST');
-   $request->setParameterPost(array('foo' => 'bar'));
+   $request->getPost()->set('foo', 'bar');
 
    $client = new Client();
    $response = $client->dispatch($request);
