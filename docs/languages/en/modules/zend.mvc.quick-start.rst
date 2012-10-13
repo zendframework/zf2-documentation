@@ -230,7 +230,7 @@ So, with that in mind, let's create a view script.
 Create a view script
 --------------------
 
-Create the directory ``view/<module-name>hello``. Inside that directory, create a file named ``world.phtml``.
+Create the directory ``view/<module-name>/hello``. Inside that directory, create a file named ``world.phtml``.
 Inside that, paste in the following:
 
 .. code-block:: php
@@ -265,7 +265,7 @@ Now that we have a controller and a view script, we need to create a route to it
    The default generated router is a ``Zend\Mvc\Router\Http\TreeRouteStack``.
 
    To use the "default route" functionality, you will need to add the following route definition to your module.
-   Replace
+   Replace <module-name> with the name of your module.
 
    .. code-block:: php
       :linenos:
@@ -276,8 +276,7 @@ Now that we have a controller and a view script, we need to create a route to it
               'options' => array(
                   'route'    => '/<module-name>',
                   'defaults' => array(
-                      '__NAMESPACE__' => '<module-namespace>\Controller',
-                      'controller'    => 'Index',
+                      'controller'    => '<module-namespace>\Controller\Index',
                       'action'        => 'index',
                   ),
               ),
@@ -322,15 +321,16 @@ reads as follows:
    :linenos:
 
    return array(
-       'routes' => array(
-           '<module name>-hello-world' => array(
-               'type'    => 'Literal',
-                   'options' => array(
-                   'route' => '/hello/world',
-                   'defaults' => array(
-                       '__NAMESPACE__' => '<module name>\Controller',
-                       'controller' => 'Hello',
-                       'action'     => 'world',
+       'router' => array(
+           'routes' => array(
+               '<module name>-hello-world' => array(
+                   'type'    => 'Literal',
+                       'options' => array(
+                       'route' => '/hello/world',
+                       'defaults' => array(
+                           'controller' => '<module name>\Controller\Hello',
+                           'action'     => 'world',
+                       ),
                    ),
                ),
            ),
@@ -353,7 +353,7 @@ One problem: we haven't told our application about our new module!
 By default, modules are not parsed unless we tell the module manager about them. As such, we need to notify the
 application about them.
 
-Remember the ``config/application.php`` file? Let's modify it to add our new module. Once done, it should read as
+Remember the ``config/application.config.php`` file? Let's modify it to add our new module. Once done, it should read as
 follows:
 
 .. code-block:: php

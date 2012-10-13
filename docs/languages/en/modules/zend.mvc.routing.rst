@@ -8,10 +8,20 @@ Routing is the act of matching a request to a given controller.
 Typically, routing will examine the request URI, and attempt to match the URI path segment against provided
 constraints. If the constraints match, a set of "matches" are returned, one of which should be the controller name
 to execute. Routing can utilize other portions of the request URI or environment as well -- for example, the host
-or scheme, query parametes, headers, request method, and more.
+or scheme, query parameters, headers, request method, and more.
 
 Routing has been written from the ground up for Zend Framework 2.0. Execution is quite similar, but the internal
 workings are more consistent, performant, and often simpler.
+
+.. note::
+
+    If you are a developer with knowledge of the routing system in Zend Framework 1.x, you should know that some of
+    the old terminology does not apply in Zend Framework 2.x. In the new routing system we don't have a router as
+    such, as every route can match and assemble URIs by themselves, which makes them routers, too.
+
+    That said, in most cases the developer does not need to worry about this, because Zend Framework 2.x will take
+    care of this "under the hood". The work of the router will done by ``Zend\Mvc\Router\SimpleRouteStack``
+    or ``Zend\Mvc\Router\Http\TreeRouteStack``.
 
 The base unit of routing is a ``Route``:
 
@@ -39,10 +49,11 @@ A ``Route`` accepts a ``Request``, and determines if it matches. If so, it retur
    class RouteMatch
    {
        public function __construct(array $params);
+       public function setMatchedRouteName($name);
+       public function getMatchedRouteName();
        public function setParam($name, $value);
-       public function merge(RouteMatch $match);
+       public function getParams();
        public function getParam($name, $default = null);
-       public function getRoute();
    }
 
 Typically, when a ``Route`` matches, it will define one or more parameters. These are passed into the
@@ -70,6 +81,7 @@ aggregate, usually implementing ``RouteStack``:
        public function addRoute($name, $route, $priority = null);
        public function addRoutes(array $routes);
        public function removeRoute($name);
+       public function setRoutes(array $routes);
    }
 
 Typically, routes should be queried in a LIFO order, and hence the reason behind the name ``RouteStack``. Zend
@@ -113,7 +125,8 @@ Router Types
 ------------
 
 Two routers are provided, the ``SimpleRouteStack`` and ``TreeRouteStack``. Each works with the above interface, but
-utilize slightly different options and execution paths.
+utilize slightly different options and execution paths. By default, the ``Zend\Mvc`` uses the ``TreeRouteStack`` as
+the router.
 
 .. _zend.mvc.routing.router-types.simple-route-stack:
 
@@ -139,7 +152,7 @@ A ``TreeRouteStack`` will consist of the following configuration:
 
 - A base "route", which describes the base match needed, the root of the tree.
 
-- An optional "route_broker", which is a configured ``Zend\Mvc\Router\RouteBroker`` that can lazy-load routes.
+- An optional "route_plugins", which is a configured ``Zend\Mvc\Router\RoutePluginManager`` that can lazy-load routes.
 
 - The option "may_terminate", which hints to the router that no other segments will follow it.
 
@@ -155,14 +168,14 @@ application.
 
 An example of a ``TreeRouteStack`` is provided in the documentation of the ``Part`` route.
 
-.. _zend.mvc.routing.route-types:
+.. _zend.mvc.routing.http-route-types:
 
-Route Types
------------
+HTTP Route Types
+----------------
 
-Zend Framework 2.0 ships with the following route types.
+Zend Framework 2.0 ships with the following HTTP route types.
 
-.. _zend.mvc.routing.route-types.hostname:
+.. _zend.mvc.routing.http-route-types.hostname:
 
 Zend\\Mvc\\Router\\Http\\Hostname
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -209,7 +222,7 @@ defaults.
 
 When matched, the above will return two keys in the ``RouteMatch``, "subdomain" and "type".
 
-.. _zend.mvc.routing.route-types.literal:
+.. _zend.mvc.routing.http-route-types.literal:
 
 Zend\\Mvc\\Router\\Http\\Literal
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -223,14 +236,15 @@ want to match, and the "defaults", or parameters you want returned on a match.
    $route = Literal::factory(array(
        'route' => '/foo',
        'defaults' => array(
-           'controller' => 'foo-index',
+           'controller' => 'Application\Controller\IndexController',
+           'action' => 'foo'
        ),
    ));
 
 The above route would match a path "/foo", and return the key "controller" in the ``RouteMatch``, with the value
 "foo-index".
 
-.. _zend.mvc.routing.route-types.method:
+.. _zend.mvc.routing.http-route-types.method:
 
 Zend\\Mvc\\Router\\Http\\Method
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -245,6 +259,7 @@ tokens.
    $route = Method::factory(array(
        'verb' => 'post,put',
        'defaults' => array(
+           'controller' => 'Application\Controller\IndexController',
            'action' => 'form-submit'
        ),
    ));
@@ -252,7 +267,7 @@ tokens.
 The above route would match an http "POST" or "PUT" request and return a ``RouteMatch`` object containing a key
 "action" with a value of "form-submit".
 
-.. _zend.mvc.routing.route-types.part:
+.. _zend.mvc.routing.http-route-types.part:
 
 Zend\\Mvc\\Router\\Http\\Part
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -263,80 +278,118 @@ the ``TreeRouteStack``.
 ``Part`` routes are difficult to describe, so we'll simply provide a sample one here.
 
 .. code-block:: php
-   :linenos:
+    :linenos:
 
-   $route = Part::factory(array(
-       'route' => array(
-           'type'    => 'literal',
-           'options' => array(
-               'route'    => '/',
-               'defaults' => array(
-                   'controller' => 'ItsHomePage',
-               ),
-            ),
-            'may_terminate' => true,
-            'route_broker'  => $routeBroker,
-            'child_routes'  => array(
-                'blog' => array(
-                    'type'    => 'literal',
-                    'options' => array(
-                        'route'    => 'blog',
-                        'defaults' => array(
-                            'controller' => 'ItsBlog',
-                        ),
-                    ),
-                    'may_terminate' => true,
-                    'child_routes'  => array(
-                        'rss' => array(
-                            'type'    => 'literal',
-                            'options' => array(
-                                'route'    => '/rss',
-                                'defaults' => array(
-                                    'controller' => 'ItsRssBlog',
-                                ),
-                            ),
-                            'child_routes'  => array(
-                                'sub' => array(
-                                    'type'    => 'literal',
-                                    'options' => array(
-                                        'route'    => '/sub',
-                                        'defaults' => array(
-                                            'action' => 'ItsSubRss',
-                                        ),
-                                    )
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
-                'forum' => array(
-                    'type'    => 'literal',
-                    'options' => array(
-                        'route'    => 'forum',
-                        'defaults' => array(
-                            'controller' => 'ItsForum',
-                        ),
-                    ),
-                ),
+    $route = Part::factory(array(
+        'route' => array(
+            'type' => 'literal',
+            'options' => array(
+                'route' => '/',
+                'defaults' => array(
+                    'controller' => 'Application\Controller\IndexController',
+                    'action' => 'index'
+                )
             ),
         ),
+        'route_plugins' => $routePlugins,
+        'may_terminate' => true,
+        'child_routes' => array(
+            'blog' => array(
+                'type' => 'literal',
+                'options' => array(
+                    'route' => 'blog',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\BlogController',
+                        'action' => 'index'
+                    )
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'rss' => array(
+                        'type' => 'literal',
+                        'options' => array(
+                            'route' => '/rss',
+                            'defaults' => array(
+                                'action' => 'rss'
+                            )
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'subrss' => array(
+                                'type' => 'literal',
+                                'options' => array(
+                                    'route' => '/sub',
+                                    'defaults' => array(
+                                        'action' => 'subrss'
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            ),
+            'forum' => array(
+                'type' => 'literal',
+                'options' => array(
+                    'route' => 'forum',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\ForumController',
+                        'action' => 'index'
+                    )
+                )
+            )
+        )
     ));
+
 
 The above would match the following:
 
-- "/" would load the "ItsHomePage" controller
+- "/" would load the "Index" controller, "index" action.
 
-- "/blog" would load the "ItsBlog" controller
+- "/blog" would load the "Blog" controller, "index" action.
 
-- "/blog/rss" would load the "ItsRssBlog" controller
+- "/blog/rss" would load the "Blog" controller, "rss" action.
 
-- "/blog/rss/sub" would load the "ItsSubRss" controller
+- "/blog/rss/sub" would load the "Blog" controller, "subrss" action.
 
-- "/forum" would load the "ItsForum" controller
+- "/forum" would load the "Forum" controller, "index" action.
 
 You may use any route type as a child route of a ``Part`` route.
 
-.. _zend.mvc.routing.route-types.regex:
+.. note::
+
+    ``Part`` routes are not meant to be used directly. When you add definitions for ``child_routes`` to any route
+    type, that route will become a ``Part`` route. As already said, describing ``Part`` routes with words is 
+    difficult, so hopefully the additional :ref:`examples at the end <zend.mvc.routing.http-route-types.examples>`
+    will provide further insight.
+
+.. note::
+    
+    In the above example, the ``$routePlugins`` is an instance of ``Zend\Mvc\Router\RoutePluginManager``.
+
+    .. code-block:: php
+        :linenos:
+
+        $routePlugins = new Zend\Mvc\Router\RoutePluginManager();
+        $plugins = array(
+            'hostname' => 'Zend\Mvc\Http\Route\Hostname',
+            'literal' => 'Zend\Mvc\Http\Route\Literal',
+            'part' => 'Zend\Mvc\Http\Route\Part',
+            'regex' => 'Zend\Mvc\Http\Route\Regex',
+            'scheme' => 'Zend\Mvc\Http\Route\Scheme',
+            'segment' => 'Zend\Mvc\Http\Route\Segment',
+            'wildcard' => 'Zend\Mvc\Http\Route\Wildcard',
+            'query' => 'Zend\Mvc\Http\Route\Query',
+            'method' => 'Zend\Mvc\Http\Route\Method'
+        );
+        $foreach ($plugins as $name => $class) {
+            $routePlugins->setInvokableClass($name, $class);
+        }
+
+    When using ``Zend\Mvc\Router\Http\TreeRouteStack``, the ``RoutePluginManager`` is set up by default, and the
+    developer does not need to worry about the autoloading of standard HTTP routes.
+
+.. _zend.mvc.routing.http-route-types.regex:
 
 Zend\\Mvc\\Router\\Http\\Regex
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -358,17 +411,18 @@ succesfully matched.
    $route = Regex::factory(array(
        'regex' => '/blog/(?<id>[a-zA-Z0-9_-]+)(\.(?<format>(json|html|xml|rss)))?',
        'defaults' => array(
-           'controller' => 'blog-entry',
+           'controller' => 'Application\Controller\BlogController',
+           'action'     => 'view',
            'format'     => 'html',
        ),
        'spec' => '/blog/%id%.%format%',
    ));
 
-The above would match "/blog/001-some-blog_slug-here.html", and return three items in the ``RouteMatch``, an "id",
-the "controller", and the "format". When assembling a URL from this route, the "id" and "format" values would be
+The above would match "/blog/001-some-blog_slug-here.html", and return four items in the ``RouteMatch``, an "id",
+the "controller", the "action", and the "format". When assembling a URL from this route, the "id" and "format" values would be
 used to fill the specification.
 
-.. _zend.mvc.routing.route-types.scheme:
+.. _zend.mvc.routing.http-route-types.scheme:
 
 Zend\\Mvc\\Router\\Http\\Scheme
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -389,7 +443,7 @@ The ``Scheme`` route matches the URI scheme only, and must be an exact match. As
 The above route would match the "https" scheme, and return the key "https" in the ``RouteMatch`` with a boolean
 ``true`` value.
 
-.. _zend.mvc.routing.route-types.segment:
+.. _zend.mvc.routing.http-route-types.segment:
 
 Zend\\Mvc\\Router\\Http\\Segment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -421,12 +475,12 @@ As a complex example:
            'action'     => '[a-zA-Z][a-zA-Z0-9_-]+',
        ),
        'defaults' => array(
-           'controller' => 'application-index',
+           'controller' => 'Application\Controller\IndexController',
            'action'     => 'index',
        ),
    ));
 
-.. _zend.mvc.routing.route-types.query:
+.. _zend.mvc.routing.http-route-types.query:
 
 Zend\\Mvc\\Router\\Http\\Query
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -442,23 +496,24 @@ An example of its usage would be
    :linenos:
 
    $route = Part::factory(array(
-       'home' => array(
-           'type'    => 'segment',
+       'route' => array(
+           'type'    => 'literal',
            'options' => array(
-               'route'    => '/page[/:name]',
-               'constraints' => array(
-                   'name' => '[a-zA-Z][a-zA-Z0-9_-]*',
-               ),
+               'route'    => 'page',
                'defaults' => array(
-                   'name' => 'home',
                ),
-           )
-           'may_terminate' => true,
-           'route_broker'  => $routeBroker,
-           'child_routes'  => array(
-               'query' => array(
-                   'type' => 'Query',
-               ),
+           ),
+       ),
+       'may_terminate' => true,
+       'route_plugins'  => $routePlugins,
+       'child_routes'  => array(
+           'query' => array(
+               'type' => 'Query',
+               'options' => array(
+                   'defaults' => array(
+                       'foo' => 'bar'
+                   )
+               )
            ),
        ),
    ));
@@ -484,6 +539,130 @@ specify "/query" in the route name then no query string will be appended.
 Our example "page" route has only one defined parameter of "name" ("/page[/:name]"), meaning that the remaining
 parameters of "format" and "limit" will then be appended as a query string.
 
-The output from our example should then be "/page/mys-test-page?format=rss&limit=10"
+The output from our example should then be "/page/my-test-page?format=rss&limit=10"
 
+.. _zend.mvc.routing.http-route-types.examples:
 
+HTTP Routing Examples
+---------------------
+
+Most of the routing definitions will be done in module configuration files, so the following examples will show
+how to set up routes in config files.
+
+.. rubric:: Simple example with two literal routes
+
+.. code-block:: php
+    :linenos:
+
+    return array(
+        'router' => array(
+            'routes' => array(
+                // Literal route named "home"
+                'home' => array(
+                    'type' => 'literal',
+                    'options' => array(
+                        'route' => '/',
+                        'defaults' => array(
+                            'controller' => 'Application\Controller\IndexController',
+                            'action' => 'index'
+                        )
+                    )
+                ),
+                // Literal route named "contact"
+                'contact' => array(
+                    'type' => 'literal',
+                    'options' => array(
+                        'route' => 'contact',
+                        'defaults' => array(
+                            'controller' => 'Application\Controller\ContactController',
+                            'action' => 'form'
+                        )
+                    )
+                )
+            )
+        )
+    );
+
+.. rubric:: A complex example with child routes
+
+.. code-block:: php
+    :linenos:
+
+    return array(
+        'router' => array(
+            'routes' => array(
+                // Literal route named "home"
+                'home' => array(
+                    'type' => 'literal',
+                    'options' => array(
+                        'route' => '/',
+                        'defaults' => array(
+                            'controller' => 'Application\Controller\IndexController',
+                            'action' => 'index'
+                        )
+                    )
+                ),
+                // Literal route named "blog", with child routes
+                'blog' => array(
+                    'type' => 'literal',
+                    'options' => array(
+                        'route' => '/blog',
+                        'defaults' => array(
+                            'controller' => 'Applicaton\Controller\BlogController',
+                            'action' => 'index'
+                        ),
+                    ),
+                    'may_terminate' => true,
+                    'child_routes' => array(
+                        // Segment route for viewing one blog post
+                        'post' => array(
+                            'type' => 'segment',
+                            'options' => array(
+                                'route' => '/[:slug]',
+                                'constraints' => array(
+                                    'slug' => '[a-zA-Z0-9_-]+'
+                                ),
+                                'defaults' => array(
+                                    'action' => 'view'
+                                )
+                            )
+                        ),
+                        // Literal route for viewing blog RSS feed
+                        'rss' => array(
+                            'type' => 'literal',
+                            'options' => array(
+                                'route' => '/rss',
+                                'defaults' => array(
+                                    'action' => 'rss'
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    );
+
+When using child routes, naming of the routes follows the ``parent/child`` pattern, so to use the child routes
+from the above example:
+
+.. code-block:: php
+    :linenos:
+
+    echo $this->url('blog'); // gives "/blog"
+    echo $this->url('blog/post', array('slug' => 'my-post')); // gives "/blog/my-post"
+    echo $this->url('blog/rss'); // gives "/blog/rss"
+
+.. warning::
+
+    When defining child routes pay attentiont that the ``may_terminate`` and ``child_routes`` definitions
+    are in same level as the ``options`` and ``type`` definitions. A common pitfal is to have those two
+    definitions nested in ``options``, which will not result in the desired routes.
+
+.. _zend.mvc.routing.console-route-types:
+
+Console Route Types
+-------------------
+
+Zend Framework 2.0 also comes with routes for writing Console based applications, which is explained in the
+:ref:`Console routes and routing <zend.console.routes>` section.
