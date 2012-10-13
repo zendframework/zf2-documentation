@@ -31,7 +31,7 @@ Let's assume that we'd like our application to handle the following command line
 
 .. code-block:: bash
 
-    > zf user reset-password user@mail.com
+    > zf user resetpassword user@mail.com
 
 When a user runs our application (``zf``) with these parameters, we'd like to call action ``resetpassword`` of
 ``Application\IndexController``.
@@ -40,15 +40,15 @@ First we need to create a **route definition**:
 
 .. code-block:: bash
 
-    user reset-password <userEmail>
+    user resetpassword <userEmail>
 
-This simple route definition expects exactly 3 arguments: a literal "user", literal "reset-password" followed by
+This simple route definition expects exactly 3 arguments: a literal "user", literal "resetpassword" followed by
 a parameter we're calling "userEmail". Let's assume we also accept one optional parameter, that will turn on
 verbose operation:
 
 .. code-block:: bash
 
-    user reset-password [--verbose|-v] <userEmail>
+    user resetpassword [--verbose|-v] <userEmail>
 
 Now our console route expects the same 3 parameters but will also recognise an optional ``--verbose`` flag, or its
 shorthand version: ``-v``.
@@ -95,7 +95,7 @@ Let's create our console route and point it to ``Application\IndexController::re
                 'routes' => array(
                     'user-reset-password' => array(
                         'options' => array(
-                            'route'    => 'user reset-password [--verbose|-v] <userEmail>',
+                            'route'    => 'user resetpassword [--verbose|-v] <userEmail>',
                             'defaults' => array(
                                 'controller' => 'Application\Index',
                                 'action'     => 'password'
@@ -220,7 +220,7 @@ Let's modify our ``Application\IndexController`` to provide usage info:
         public function getConsoleUsage(Console $console){
             return array(
                 // Describe available commands
-                'user reset-password [--verbose|-v] EMAIL'    => 'Reset password for a user',
+                'user resetpassword [--verbose|-v] EMAIL'    => 'Reset password for a user',
 
                 // Describe expected parameters
                 array( 'EMAIL',            'Email of the user for a password reset' ),
