@@ -149,6 +149,8 @@ This plugin can be invoked with two arguments:
 - ``$redirectToUrl``, a boolean that when set to TRUE, causes the first parameter to be treated as a URL instead
   of a route name (this is required when redirecting to a URL instead of a route). This argument defaults to false.
 
+When no arguments are provided, the current matched route is used.
+
 .. code-block:: php
    :linenos:
 
