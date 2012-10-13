@@ -18,8 +18,8 @@ possibilities are endless.
 
 The module system is made up of the following:
 
-- **The Module Autoloader** - ``Zend\Loader\ModuleAutoloader`` is a specialized autoloader that is responsible for
-  the locating and loading of modules' ``Module`` classes from a variety of sources.
+- :ref:`The Module Autoloader <zend.loader.module-autoloader>` - ``Zend\Loader\ModuleAutoloader`` is a specialized 
+  autoloader that is responsible for the locating and loading of modules' ``Module`` classes from a variety of sources.
 
 - :ref:`The Module Manager <zend.module-manager.module-manager>` - ``Zend\ModuleManager\ModuleManager`` simply takes
   an array of module names and fires a sequence of events for each one, allowing the behavior of the module system
@@ -53,12 +53,12 @@ The recommended structure of a typical MVC-oriented ZF2 module is as follows:
        src/
            <module_namespace>/
                <code files>
-       tests/
+       test/
            phpunit.xml
            bootstrap.php
            <module_namespace>/
                <test code files>
-       views/
+       view/
            <dir-named-after-module-namespace>/
                <dir-named-after-a-controller>/
                    <.phtml files>
