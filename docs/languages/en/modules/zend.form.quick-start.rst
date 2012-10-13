@@ -919,8 +919,8 @@ want depending on what you import.
 
 .. note::
 
-    Form annotations require ``Doctrine\\Common``, which contains an annotation
-    parsering engine. The simplest way to install ``Doctrine\\Common`` is if you
+    Form annotations require ``Doctrine\Common``, which contains an annotation
+    parsering engine. The simplest way to install ``Doctrine\Common`` is if you
     are using ``Composer``; simply update your ``composer.json`` and add the
     following line to the ``require`` section:
 
