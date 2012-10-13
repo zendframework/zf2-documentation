@@ -60,6 +60,8 @@ and ``AbstractRestfulController`` do), you can access this object from the attac
 
 Once you have the ``RouteMatch`` object, you can pull parameters from it.
 
+The same can be done using the :ref:`Params plugin<zend.mvc.controller-plugins.params>`.
+
 .. _zend.mvc.examples.controllers.returning-early:
 
 Returning early
