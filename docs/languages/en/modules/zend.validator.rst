@@ -16,7 +16,7 @@ successfully validates against the requirements. If the input does not meet the 
 additionally provide information about which requirement(s) the input does not meet.
 
 For example, a web application might require that a username be between six and twelve characters in length and may
-only contain alphanumeric characters. A validator can be used for ensuring that usernames meet these requirements.
+only contain alphanumeric characters. A validator can be used for ensuring that a username meets these requirements.
 If a chosen username does not meet one or both of the requirements, it would be useful to know which of the
 requirements the username fails to meet.
 
@@ -118,7 +118,7 @@ may be supported on a case-by-case basis in each validation class.
 
    $validator = new Zend\Validator\StringLength(array('min' => 8, 'max' => 12));
 
-   if (!validator->isValid('word')) {
+   if (!$validator->isValid('word')) {
        echo 'Word failed: '
            . $validator->value
            . '; its length is not between '

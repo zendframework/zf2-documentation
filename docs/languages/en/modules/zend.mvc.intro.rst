@@ -16,7 +16,7 @@ The MVC layer is built on top of the following components:
   from its initial bootstrapping of the application, to returning response and request calls, 
   to setting and retrieving routes and matched routes, as well as view rendering.
 
-- ``Zend\Http``, specifically the request and response objects, used within:
+- ``Zend\Http``, specifically the request and response objects, used within.
 
 - ``Zend\Stdlib\DispatchableInterface``. All "controllers" are simply dispatchable objects.
 
@@ -40,7 +40,7 @@ Within the MVC layer, several sub-components are exposed:
   workflow to provide features such as automated template name resolution, automated view model
   creation and injection, and more.
 
-The gateway to the MVC is the `Zend\Mvc\Application`_ object (referred to as ``Application``
+The gateway to the MVC is the `Zend\\Mvc\\Application`_ object (referred to as ``Application``
 henceforth).  Its primary responsibilities are to **bootstrap** resources, **route** the request,
 and to retrieve and **dispatch** the controller matched during routing. Once accomplished, it
 will **render** the view, and **finish** the request, returning and sending the response.
@@ -57,7 +57,7 @@ The basic application structure follows:
 
    application_root/
        config/
-           application.php
+           application.config.php
            autoload/
                global.php
                local.php
@@ -68,13 +68,14 @@ The basic application structure follows:
        public/
            .htaccess
            index.php
+       init_autoloader.php
 
 The ``public/index.php`` marshalls all user requests to your website, retrieving an array of
 configuration located in ``config/application.php``. On return, it ``run()``\ s the ``Application``,
 processing the request and returning a response to the user.
 
 The ``config`` directory as described above contains configuration used by the
-``Zend\Module\Manager`` to load modules and merge configuration (e.g., database configuration and
+``Zend\ModuleManager`` to load modules and merge configuration (e.g., database configuration and
 credentials); we will detail this more later.
 
 The ``vendor`` sub-directory should contain any third-party modules or libraries on which your
@@ -95,7 +96,7 @@ Basic Module Structure
 A module may contain anything: PHP code, including MVC functionality; library code; view scripts;
 and/or or public assets such as images, CSS, and JavaScript. The only requirement -- and even this
 is optional -- is that a module acts as a PHP namespace and that it contains a ``Module.php`` class
-under that namespace. This class is eventually consumed by ``Zend\Module\Manager`` to perform a
+under that namespace. This class is eventually consumed by ``Zend\ModuleManager`` to perform a
 number of tasks.
 
 The recommended module structure follows:
@@ -142,7 +143,7 @@ The ``Module.php`` file directly under the module root directory will be in the 
    {
    }
 
-When an ``init()`` method is defined, this method will be triggered by a ``Zend\Module\Manager`` listener
+When an ``init()`` method is defined, this method will be triggered by a ``Zend\ModuleManager`` listener
 when it loads the module class, and passed an instance of the manager by default.  This allows you to perform tasks such as
 setting up module-specific event listeners.  But be cautious, the ``init()`` method is called for **every** module on **every** page
 request and should **only** be used for performing **lightweight** tasks such as registering event listeners.
@@ -155,13 +156,13 @@ The three ``autoload_*.php`` files are not required, but recommended. They provi
   resolved via the ``__DIR__`` magic constant).
 
 - ``autoload_function.php`` should return a PHP callback that can be passed to ``spl_autoload_register()``.
-  Typically, this callback should utilize the map returned by ``autoload_filemap.php``.
+  Typically, this callback should utilize the map returned by ``autoload_classmap.php``.
 
 - ``autoload_register.php`` should register a PHP callback (typically that returned by ``autoload_function.php``
   with ``spl_autoload_register()``.
 
 The point of these three files is to provide reasonable default mechanisms for autoloading the classes contained in
-the module, thus providing a trivial way to consume the module without requiring ``Zend\Module`` (e.g., for use
+the module, thus providing a trivial way to consume the module without requiring ``Zend\ModuleManager`` (e.g., for use
 outside a ZF2 application).
 
 The ``config`` directory should contain any module-specific configuration. These files may be in any format
@@ -188,7 +189,7 @@ Bootstrapping an Application
 
 The ``Application`` has six basic dependencies.
 
-- **configuration**, usually an array or object implementing ``ArrayAccess``.
+- **configuration**, usually an array or object implementing ``Traversable``.
 
 - **ServiceManager** instance.
 
@@ -213,7 +214,7 @@ These may be satisfied at instantiation:
    use Zend\Mvc\Application;
    use Zend\ServiceManager\ServiceManager;
 
-   $config = include 'config/application.php';
+   $config = include 'config/application.config.php';
 
    $serviceManager = new ServiceManager();
    $serviceManager->setService('EventManager', new EventManager());
@@ -342,8 +343,8 @@ Each ``Module`` class that has configuration it wants the ``Application`` to kno
    }
 
 There are a number of other methods you can define for tasks ranging from providing autoloader configuration, to
-providing services to the ``ServiceManager``, to listening to the bootstrap event. The ModuleManager documentation
-goes into more detail on these.
+providing services to the ``ServiceManager``, to listening to the bootstrap event. The :ref:`ModuleManager documentation
+<zend.module-manager.intro>` goes into more detail on these.
 
 .. _zend.mvc.intro.conclusion:
 
@@ -356,6 +357,6 @@ is a lightweight and simple approach to enforcing a modular architecture that en
 concerns and code re-use.
 
 
-.. _`Zend\Mvc\Application`: https://github.com/zendframework/zf2/blob/master/library/Zend/Mvc/Application.php
+.. _`Zend\\Mvc\\Application`: https://github.com/zendframework/zf2/blob/master/library/Zend/Mvc/Application.php
 .. _`PSR-0 compliant directory structure`: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 .. _`PHPUnit`: http://phpunit.de

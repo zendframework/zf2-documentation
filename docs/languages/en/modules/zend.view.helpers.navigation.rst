@@ -230,7 +230,7 @@ Notes on the setup:
                        ),
                        array(
                            'label'      => 'Support',
-                           'module'     => 'prodcts',
+                           'module'     => 'products',
                            'controller' => 'studio',
                            'action'     => 'support'
                        )
@@ -843,7 +843,7 @@ filtered out based on visibility and *ACL*.
                            <a href="/products/studio/customers">Customer Stories</a>
                        </li>
                        <li>
-                           <a href="/prodcts/studio/support">Support</a>
+                           <a href="/products/studio/support">Support</a>
                        </li>
                    </ul>
                </li>
@@ -1044,7 +1044,7 @@ $options)`` with the following options:
                    <a href="/products/studio/customers">Customer Stories</a>
                </li>
                <li>
-                   <a href="/prodcts/studio/support">Support</a>
+                   <a href="/products/studio/support">Support</a>
                </li>
            </ul>
        </li>
@@ -1344,7 +1344,7 @@ Notice how pages that are invisible or pages with *ACL* roles incompatible with 
        <loc>http://www.example.com/products/studio/customers</loc>
      </url>
      <url>
-       <loc>http://www.example.com/prodcts/studio/support</loc>
+       <loc>http://www.example.com/products/studio/support</loc>
      </url>
      <url>
        <loc>http://www.example.com/company/about</loc>
@@ -1412,7 +1412,7 @@ Render the sitemap using no *ACL* role (should filter out /community/account):
        <loc>http://www.example.com/products/studio/customers</loc>
      </url>
      <url>
-       <loc>http://www.example.com/prodcts/studio/support</loc>
+       <loc>http://www.example.com/products/studio/support</loc>
      </url>
      <url>
        <loc>http://www.example.com/company/about</loc>

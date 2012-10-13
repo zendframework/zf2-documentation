@@ -140,14 +140,12 @@ Within an MVC application, you will typically simply pass a map of plugins to th
 
    // From within a configuration file
    return array(
-       'di' => array('instance' => array(
-           'Zend\View\HelperLoader' => array('parameters' => array(
-               'map' => array(
-                   'lowercase' => 'My\Helper\LowerCase',
-                   'uppercase' => 'My\Helper\UpperCase',
-               ),
-           )),
-       )),
+      'view_helpers' => array(
+         'invokables' => array(
+            'lowercase' => 'My\Helper\LowerCase',
+            'uppercase' => 'My\Helper\UpperCase',
+         ),
+      ),
    );
 
 The above can be done in each module that needs to register helpers with the ``PhpRenderer``; however, be aware

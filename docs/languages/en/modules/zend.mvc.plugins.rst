@@ -3,10 +3,9 @@
 Controller Plugins
 ==================
 
-When using the ``AbstractActionController`` or ``AbstractRestfulController``, or if you compose the
-``Zend\Mvc\Controller\PluginBroker`` in your custom controllers, you have access to a number of pre-built plugins.
-Additionally, you can register your own custom plugins with the broker, just as you would with
-``Zend\Loader\PluginBroker``.
+When using the ``AbstractActionController`` or ``AbstractRestfulController``, or if you implement the
+``setPluginManager`` method in your custom controllers, you have access to a number of pre-built plugins.
+Additionally, you can register your own custom plugins with the manager.
 
 The built-in plugins are:
 
@@ -14,14 +13,18 @@ The built-in plugins are:
 
 - ``Zend\Mvc\Controller\Plugin\Forward``
 
+- ``Zend\Mvc\Controller\Plugin\Layout``
+
+- ``Zend\Mvc\Controller\Plugin\Params``
+
 - ``Zend\Mvc\Controller\Plugin\PostRedirectGet``
 
 - ``Zend\Mvc\Controller\Plugin\Redirect``
 
 - ``Zend\Mvc\Controller\Plugin\Url``
 
-If your controller implements the ``Zend\Loader\Pluggable`` interface, you can access these using their shortname
-via the ``plugin()`` method:
+If your controller implements the ``setPluginManager``, ``getPluginManager`` and ``plugin`` methods, you can access
+these using their shortname via the ``plugin()`` method:
 
 .. code-block:: php
    :linenos:
@@ -132,6 +135,64 @@ As an example:
        'foo'     => $foo,
    );
 
+.. _zend.mvc.controller-plugins.layout:
+
+The Layout Plugin
+-----------------
+
+The ``Layout`` plugin allows for changing layout templates from within controller actions.
+
+It exposes a single method, ``setTemplate()``, which takes one argument:
+
+- ``$template``, the name of the template to set.
+
+As an example:
+
+.. code-block:: php
+    :linenos:
+
+    $this->layout()->setTemplate('layout/newlayout');
+
+It also implements the ``__invoke`` magic method, which allows for even easier setting of the template:
+
+.. code-block:: php
+    :linenos:
+
+    $this->layout('layout/newlayout');
+
+.. _zend.mvc.controller-plugins.params:
+
+The Params Plugin
+-----------------
+
+The ``Params`` plugin allows for accessing parameters in actions from different sources.
+
+It exposes several methods, one for each parameter source:
+
+- ``fromFiles($name=null,$default=null)``, for retrieving all, or one single file. If ``$name`` is `null`, all files
+  will be returned.
+
+- ``fromHeader($header=null,$default=null)``, for retrieving all, or one single header parameter. If ``$header``
+  is `null`, all header parameters will be returned.
+
+- ``fromPost($param=null,$default=null)``, for retrieving all, or one single post parameter. If ``$param`` is
+  `null`, all post parameters will be returned.
+
+- ``fromQuery($param=null,$default=null)``, for retrieving all, or one single query parameter. If ``$param`` is
+  `null`, all query parameters will be returned.
+
+- ``fromRoute($param=null,$default=null)``, for retrieving all, or one single route parameter. If ``$param`` is
+  `null`, all route parameters will be returned.
+
+It also implements the ``__invoke`` magic method, which allows for short circuiting to the ``fromRoute`` method:
+
+.. code-block:: php
+    :linenos:
+
+    $this->params()->fromRoute('param', $default);
+    // or
+    $this->params('param', $default);
+
 .. _zend.mvc.controller-plugins.postredirectget:
 
 The Post/Redirect/Get Plugin
@@ -148,6 +209,8 @@ This plugin can be invoked with two arguments:
   the contents of the second parameter.
 - ``$redirectToUrl``, a boolean that when set to TRUE, causes the first parameter to be treated as a URL instead
   of a route name (this is required when redirecting to a URL instead of a route). This argument defaults to false.
+
+When no arguments are provided, the current matched route is used.
 
 .. code-block:: php
    :linenos:
@@ -193,8 +256,10 @@ The ``Redirect`` plugin does this work for you. It offers two methods:
 In each case, the ``Response`` object is returned. If you return this immediately, you can effectively
 short-circuit execution of the request.
 
-One note: this plugin requires that the controller invoking it implements ``InjectApplicationEvent``, and thus has
-an ``MvcEvent`` composed, as it retrieves the router from the event object.
+.. note::
+
+    This plugin requires that the controller invoking it implements ``InjectApplicationEvent``, and thus has
+    an ``MvcEvent`` composed, as it retrieves the router from the event object.
 
 As an example:
 
@@ -232,7 +297,8 @@ The ``fromRoute()`` method is the only public method defined, and has the follow
 
    public function fromRoute($route, array $params = array(), array $options = array())
 
-One note: this plugin requires that the controller invoking it implements ``InjectApplicationEvent``, and thus has
-an ``MvcEvent`` composed, as it retrieves the router from the event object.
+.. note::
 
+    This plugin requires that the controller invoking it implements ``InjectApplicationEvent``, and thus has
+    an ``MvcEvent`` composed, as it retrieves the router from the event object.
 

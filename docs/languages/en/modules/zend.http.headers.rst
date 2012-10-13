@@ -1,7 +1,7 @@
 .. _zend.http.headers:
 
-Zend\\Http\\Headers And The Various Header Classes
-==================================================
+The Headers Class
+=================
 
 .. _zend.http.headers.intro:
 
@@ -9,7 +9,7 @@ Overview
 --------
 
 The ``Zend\Http\Headers`` class is a container for HTTP headers. It is typically accessed as part of a
-``Zend\Http\Request`` or ``Zend\Http\Response`` ``header()`` call. The Headers container will lazily load actual
+``Zend\Http\Request`` or ``Zend\Http\Response`` ``getHeaders()`` call. The Headers container will lazily load actual
 Header objects as to reduce the overhead of header specific parsing.
 
 The ``Zend\Http\Header\*`` classes are the domain specific implementations for the various types of Headers that
@@ -25,12 +25,45 @@ Quick Start
 The quickest way to get started interacting with header objects is by getting an already populated Headers
 container from a request or response object.
 
+.. code-block:: php
+   :linenos:
+
+   // $client is an instance of Zend\Http\Client
+
+   // You can retrieve the request headers by first retrieving
+   // the Request object and then calling getHeaders on it
+   $requestHeaders  = $client->getRequest()->getHeaders();
+
+   // The same method also works for retrieving Response headers
+   $responseHeaders = $client->getResponse()->getHeaders();
+
+``Zend\Http\Headers`` can also extract headers from a string:
+
+.. code-block:: php
+   :linenos:
+
+   $headerString = <<<EOB
+   Host: www.example.com
+   Content-Type: text/html
+   Content-Length: 1337
+   EOB;
+
+   $headers = Zend\Http\Headers::fromString($headerString);
+   // $headers is now populated with three objects
+   //   (1) Zend\Http\Header\Host
+   //   (2) Zend\Http\Header\ContentType
+   //   (3) Zend\Http\Header\ContentLength
+
+Now that you have an instance of ``Zend\Http\Headers`` you can manipulate the individual headers it contains using
+the provided public API methods outlined in the ":ref:`Available Methods<zend.http.headers.methods>`" section.
+
+
 .. _zend.http.headers.options:
 
 Configuration Options
 ---------------------
 
-None currently available.
+No configuration options are available.
 
 .. _zend.http.headers.methods:
 
@@ -80,7 +113,7 @@ Available Methods
 
 .. _zend.http.headers.methods.add-header-line:
 
-**addHeaders**
+**addHeaderLine**
    ``addHeaderLine(string $headerFieldNameOrLine, string $fieldValue)``
 
    Add a raw header line, either in name => value, or as a single string 'name: value'
@@ -96,8 +129,6 @@ Available Methods
    ``addHeader(Zend\Http\Header\HeaderInterface $header)``
 
    Add a Header to this container, for raw values see ``addHeaderLine()`` and ``addHeaders()``.
-
-
 
    Returns ``Zend\Http\Headers``
 
@@ -127,8 +158,6 @@ Available Methods
    ``get(string $name)``
 
    Get all headers of a certain name/type
-
-
 
    Returns false| ``Zend\Http\Header\HeaderInterface``\ | ``ArrayIterator``
 
@@ -226,13 +255,6 @@ Available Methods
 
    Returns bool
 
-.. _zend.http.headers.examples:
-
-Examples
---------
-
-
-
 .. _zend.http.headers.header-description:
 
 Zend\\Http\\Header\\* Base Methods
@@ -278,7 +300,7 @@ Zend\\Http\\Header\\* Base Methods
 
 .. _zend.http.header-types.list:
 
-List of Http Header Types
+List of HTTP Header Types
 -------------------------
 
 .. table:: Zend\\Http\\Header\\* Classes
@@ -324,7 +346,8 @@ List of Http Header Types
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |ContentType       |N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |Cookie            |Extends \\ArrayObjectsetEncodeValue() / getEncodeValue() - Whether or not to encode values                                                                                                                                                                                                                                                                                                                                                                    |
+   |Cookie            |Extends \\ArrayObject                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+   |                  |setEncodeValue() / getEncodeValue() - Whether or not to encode values                                                                                                                                                                                                                                                                                                                                                                                         |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Date              |N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -372,7 +395,18 @@ List of Http Header Types
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Server            |N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |SetCookie         |getName() / setName() - The cookies namegetValue() / setValue() - The cookie valuegetDomain() / setDomain() - The domain the cookie applies togetExpires() / setExpires() - The time frame the cookie is valid for, null is a session cookiegetPath() / setPath() - The uri path the cookie is bound toisSecure() / setSecure() - Whether the cookies contains the Secure flagisHttponly() / setHttponly() - Whether the cookies can be accessed via HTTP only|
+   |SetCookie         |getName() / setName() - The cookie name                                                                                                                                                                                                                                                                                                                                                                                                                       |
+   |                  |getValue() / setValue() - The cookie value                                                                                                                                                                                                                                                                                                                                                                                                                    |
+   |                  |getExpires() / setExpires() - The time frame the cookie is valid for, null is a session cookie                                                                                                                                                                                                                                                                                                                                                                |
+   |                  |getPath() / setPath() - The uri path the cookie is bound to                                                                                                                                                                                                                                                                                                                                                                                                   |
+   |                  |getDomain() / setDomain() - The domain the cookie applies to                                                                                                                                                                                                                                                                                                                                                                                                  |
+   |                  |getMaxAge() / setMaxAge() - The maximum age of the cookie                                                                                                                                                                                                                                                                                                                                                                                                     |
+   |                  |getVersion() / setVersion() - The cookie version                                                                                                                                                                                                                                                                                                                                                                                                              |
+   |                  |isSecure() / setSecure() - Whether the cookies contains the Secure flag                                                                                                                                                                                                                                                                                                                                                                                       |
+   |                  |isHttponly() / setHttponly() - Whether the cookies can be accessed via HTTP only                                                                                                                                                                                                                                                                                                                                                                              |
+   |                  |isSessionCookie() - Whether the cookie is a session cookie                                                                                                                                                                                                                                                                                                                                                                                                    |
+   |                  |isExpired() - Whether the cookie is expired                                                                                                                                                                                                                                                                                                                                                                                                                   |
+   |                  |isValidForRequest() - Whether the cookie is valid for a given request domain, path and isSecure                                                                                                                                                                                                                                                                                                                                                               |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |TE                |N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -393,4 +427,106 @@ List of Http Header Types
    |WWWAuthenticate   |N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+.. _zend.http.headers.examples:
+
+Examples
+--------
+
+.. _zend.http.headers.examples.retrieving-headers:
+
+.. rubric:: Retrieving headers from a Zend\\Http\\Headers object
+
+.. code-block:: php
+   :linenos:
+
+   // $client is an instance of Zend\Http\Client
+   $response = $client->send();
+   $headers = $response->getHeaders();
+
+   // We can check if the Request contains a specific header by
+   // using the ``has`` method. Returns boolean ``TRUE`` if at least
+   // one matching header found, and ``FALSE`` otherwise
+   $headers->has('Content-Type');
+
+   // We can retrieve all instances of a specific header by using
+   // the ``get`` method:
+   $contentTypeHeaders = $headers->get('Content-Type');
+
+There are three possibilities for the return value of the above call to the ``get`` method:
+
+ -  If no Content-Type header was set in the Request, ``get`` will return false.
+ 
+ -  If only one Content-Type header was set in the Request,
+    ``get`` will return an instance of ``Zend\Http\Header\ContentType``.
+
+ -  If more than one Content-Type header was set in the Request,
+    ``get`` will return an ArrayIterator containing one
+    ``Zend\Http\Header\ContentType`` instance per header. 
+
+.. _zend.http.headers.examples.adding-headers:
+
+.. rubric:: Adding headers to a Zend\\Http\\Headers object
+
+.. code-block:: php
+   :linenos:
+
+   $headers = new Zend\Http\Headers();
+
+   // We can directly add any object that implements Zend\Http\Header\HeaderInterface
+   $typeHeader = Zend\Http\Header\ContentType::fromString('Content-Type: text/html');
+   $headers->addHeader($typeHeader);
+
+   // We can add headers using the raw string representation, either
+   // passing the header name and value as separate arguments...
+   $headers->addHeaderLine('Content-Type', 'text/html');
+
+   // .. or we can pass the entire header as the only argument
+   $headers->addHeaderLine('Content-Type: text/html');
+
+   // We can also add headers in bulk using addHeaders, which accepts
+   // an array of individual header definitions that can be in any of 
+   // the accepted formats outlined below:
+   $headers->addHeaders(array(
+
+       // An object implementing Zend\Http\Header\HeaderInterface
+       Zend\Http\Header\ContentType::fromString('Content-Type: text/html'),
+
+       // A raw header string
+       'Content-Type: text/html',
+
+       // We can also pass the header name as the array key and the
+       // header content as that array key's value
+       'Content-Type' => 'text/html');
+
+   ));
+
+.. _zend.http.headers.examples.removing-headers:
+
+.. rubric:: Removing headers from a Zend\\Http\\Headers object
+
+We can remove all headers of a specific type using the ``removeHeader`` method, 
+which accepts a single object implementing ``Zend\Http\Header\HeaderInterface``
+
+.. code-block:: php
+   :linenos:
+
+   // $headers is a pre-configured instance of Zend\Http\Headers
+
+   // We can also delete individual headers or groups of headers
+   $matches = $headers->get('Content-Type');
+
+   // If more than one header was found, iterate over the collection
+   // and remove each one individually
+   if ($matches instanceof ArrayIterator) {
+       foreach ($headers as $header) {
+           $headers->removeHeader($header);
+       }
+   // If only a single header was found, remove it directly
+   } elseif ($matches instanceof Zend\Http\Header\HeaderInterface) {
+       $headers->removeHeader($header);
+   }
+
+   // In addition to this, we can clear all the headers currently stored in 
+   // the container by calling the clearHeaders() method
+   $matches->clearHeaders();
 

@@ -54,6 +54,20 @@ The methods it defines are:
 
 - ``getViewModel()``
 
+- ``isError()``
+
+- ``setError()``
+
+- ``getError()``
+
+- ``getController()``
+
+- ``setController($name)``
+
+- ``getControllerClass()``
+
+- ``setControllerClass($class)``
+
 The ``Application``, ``Request``, ``Response``, ``Router``, and ``ViewModel`` are all injected during the
 ``bootstrap`` event. Following the ``route`` event, it will be injected also with the ``RouteMatch`` object
 encapsulating the results of routing.

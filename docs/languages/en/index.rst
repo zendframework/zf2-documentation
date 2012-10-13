@@ -37,6 +37,11 @@
    modules/zend.cache.storage.plugin
    modules/zend.cache.backend
    modules/zend.cache.pattern
+   modules/zend.cache.pattern.callback-cache
+   modules/zend.cache.pattern.class-cache
+   modules/zend.cache.pattern.object-cache
+   modules/zend.cache.pattern.output-cache
+   modules/zend.cache.pattern.capture-cache
    modules/zend.captcha.intro
    modules/zend.captcha.operation
    modules/zend.captcha.adapters
@@ -90,10 +95,10 @@
    modules/zend.http.request
    modules/zend.http.response
    modules/zend.http.headers
-   modules/zend.http.cookie.handling
    modules/zend.http.client
    modules/zend.http.client.adapters
    modules/zend.http.client.advanced
+   modules/zend.http.client-static
    modules/zend.i18n.translating
    modules/zend.i18n.view.helpers
    modules/zend.i18n.filters
@@ -246,6 +251,11 @@ Zend\\Cache
         * :doc:`modules/zend.cache.storage.capabilities`
         * :doc:`modules/zend.cache.storage.plugin`
         * :doc:`modules/zend.cache.pattern`
+        * :doc:`modules/zend.cache.pattern.callback-cache`
+        * :doc:`modules/zend.cache.pattern.class-cache`
+        * :doc:`modules/zend.cache.pattern.object-cache`
+        * :doc:`modules/zend.cache.pattern.output-cache`
+        * :doc:`modules/zend.cache.pattern.capture-cache`
 
 .. _zend.captcha:
 
@@ -255,6 +265,18 @@ Zend\\Captcha
         * :doc:`modules/zend.captcha.intro`
         * :doc:`modules/zend.captcha.operation`
         * :doc:`modules/zend.captcha.adapters`
+
+.. _zend.config:
+
+Zend\\Config
+^^^^^^^^^^^^
+
+        * :doc:`modules/zend.config.introduction`
+        * :doc:`modules/zend.config.theory-of-operation`
+        * :doc:`modules/zend.config.reader`
+        * :doc:`modules/zend.config.writer`
+        * :doc:`modules/zend.config.processor`
+        * :doc:`modules/zend.config.factory`
 
 .. _zend.console:
 
@@ -268,18 +290,6 @@ Zend\\Console
         * :doc:`modules/zend.console.adapter`
         * :doc:`modules/zend.console.prompts`
 
-
-.. _zend.config:
-
-Zend\\Config
-^^^^^^^^^^^^
-
-        * :doc:`modules/zend.config.introduction`
-        * :doc:`modules/zend.config.theory-of-operation`
-        * :doc:`modules/zend.config.reader`
-        * :doc:`modules/zend.config.writer`
-        * :doc:`modules/zend.config.processor`
-        * :doc:`modules/zend.config.factory`
 
 .. _zend.crypt:
 
@@ -378,10 +388,10 @@ Zend\\Http
         * :doc:`modules/zend.http.request`
         * :doc:`modules/zend.http.response`
         * :doc:`modules/zend.http.headers`
-        * :doc:`modules/zend.http.cookie.handling`
         * :doc:`modules/zend.http.client`
         * :doc:`modules/zend.http.client.adapters`
         * :doc:`modules/zend.http.client.advanced`
+        * :doc:`modules/zend.http.client-static`
 
 .. _zend.i18n:
 

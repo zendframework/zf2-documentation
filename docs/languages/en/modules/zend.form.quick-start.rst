@@ -405,7 +405,7 @@ if any.
    $form->setData($data);
 
    // Validate the form
-   if ($form->isValid() {
+   if ($form->isValid()) {
        $validatedData = $form->getData();
    } else {
        $messages = $form->getMessages();
@@ -916,6 +916,23 @@ Annotations allow us to solve this problem. You can define the following behavio
 To use annotations, you simply include them in your class and/or property docblocks. Annotation names will be
 resolved according to the import statements in your class; as such, you can make them as long or as short as you
 want depending on what you import.
+
+.. note::
+
+    Form annotations require ``Doctrine\Common``, which contains an annotation
+    parsering engine. The simplest way to install ``Doctrine\Common`` is if you
+    are using ``Composer``; simply update your ``composer.json`` and add the
+    following line to the ``require`` section:
+
+    .. code-block:: javascript
+
+       "doctrine/common": ">=2.1",
+
+    Then run ``php composer.phar update`` to install the dependency.
+
+    If you're not using ``Composer``, visit `the Doctrine project website
+    <http://www.doctrine-project.org/projects/common.html>`_ for more details on
+    installation.
 
 Here's a simple example.
 

@@ -29,4 +29,11 @@ When creating a ZF2 module, there are some best practices you should keep in min
   module namespace with a vendor prefix. As an example, the (incomplete) developer tools module distributed by Zend
   is named "ZendDeveloperTools" instead of simply "DeveloperTools".
 
+- **Utilize a module prefix for service names.** If you define services in the top-level Service Manager, you are
+  encouraged to prefix these services with the name of your module to avoid conflicts with other modules' services.
+  For example, the database adapter used by MyModule should be called "MyModule\DbAdapter" rather than simply
+  "DbAdapter."  If you need to share a service with other modules, remember that the Service Manager "alias"
+  feature can be used in a merged configuration to override factories defined by individual modules.  Ideally,
+  modules should define their own service dependencies, but aliases can be configured at the application level to
+  ensure that common services in individual modules all refer to the same instance.
 

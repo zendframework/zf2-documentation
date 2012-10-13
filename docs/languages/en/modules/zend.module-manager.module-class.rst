@@ -151,4 +151,8 @@ event, once *$application->bootstrap()* is called.
        }
    }
 
+.. note::
 
+   The ``onBootstrap()`` method is called for **every** module implementing this feature,
+   on **every** page request, and should **only** be used for performing **lightweight** tasks such as registering
+   event listeners.
