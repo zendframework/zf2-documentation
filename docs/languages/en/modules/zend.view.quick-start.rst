@@ -83,7 +83,7 @@ module from the framework's "ZendSkeletonApplication", or to one of your autoloa
            // The following adds an entry pointing to the view directory
            // of the current module. Make sure your keys differ between modules
            // to ensure that they are not overwritten -- or simply omit the key!
-           'template_path_stac' => array(
+           'template_path_stack' => array(
                'application' => __DIR__ . '/../view',
            ),
 
