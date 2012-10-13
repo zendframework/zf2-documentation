@@ -405,7 +405,7 @@ if any.
    $form->setData($data);
 
    // Validate the form
-   if ($form->isValid() {
+   if ($form->isValid()) {
        $validatedData = $form->getData();
    } else {
        $messages = $form->getMessages();
