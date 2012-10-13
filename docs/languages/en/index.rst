@@ -37,6 +37,11 @@
    modules/zend.cache.storage.plugin
    modules/zend.cache.backend
    modules/zend.cache.pattern
+   modules/zend.cache.pattern.callback-cache
+   modules/zend.cache.pattern.class-cache
+   modules/zend.cache.pattern.object-cache
+   modules/zend.cache.pattern.output-cache
+   modules/zend.cache.pattern.capture-cache
    modules/zend.captcha.intro
    modules/zend.captcha.operation
    modules/zend.captcha.adapters
@@ -245,6 +250,11 @@ Zend\\Cache
         * :doc:`modules/zend.cache.storage.capabilities`
         * :doc:`modules/zend.cache.storage.plugin`
         * :doc:`modules/zend.cache.pattern`
+        * :doc:`modules/zend.cache.pattern.callback-cache`
+        * :doc:`modules/zend.cache.pattern.class-cache`
+        * :doc:`modules/zend.cache.pattern.object-cache`
+        * :doc:`modules/zend.cache.pattern.output-cache`
+        * :doc:`modules/zend.cache.pattern.capture-cache`
 
 .. _zend.captcha:
 
