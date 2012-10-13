@@ -69,19 +69,19 @@ To create ``B`` by hand, a developer would follow this work flow, or a similar w
 
 If this workflow becomes repeated throughout your application multiple times, this creates an opportunity where one
 might want to `DRY`_ up the code. While there are several ways to do this, using a dependency injection container is
-one of these solutions. With Zend's dependency injection container ``Zend\Di\DependencyInjector``, the above use
+one of these solutions. With Zend's dependency injection container ``Zend\Di\Di``, the above use
 case can be taken care of with no configuration (provided all of your autoloading is already configured properly)
 with the following usage:
 
 .. code-block:: php
    :linenos:
 
-   $di = new Zend\Di\DependencyInjector;
+   $di = new Zend\Di\Di;
    $b = $di->get('My\B'); // will produce a B object that is consuming an A object
 
-Moreover, by using the ``DependencyInjector::get()`` method, you are ensuring that the same exact object is
+Moreover, by using the ``Di::get()`` method, you are ensuring that the same exact object is
 returned on subsequent calls. To force new objects to be created on each and every request, one would use the
-``DependencyInjector::newInstance()`` method:
+``Di::newInstance()`` method:
 
 .. code-block:: php
    :linenos:
@@ -127,14 +127,14 @@ expanded to this (we'll throw a 3rd class in for good measure):
 
    }
 
-With the above, we need to ensure that our ``DependencyInjector`` is capable of seeing the ``A`` class with a few
+With the above, we need to ensure that our ``Di`` is capable of seeing the ``A`` class with a few
 configuration values (which are generally scalar in nature). To do this, we need to interact with the
 ``InstanceManager``:
 
 .. code-block:: php
    :linenos:
 
-   $di = new Zend\Di\DependencyInjector;
+   $di = new Zend\Di\Di;
    $di->getInstanceManager()->setProperty('A', 'username', 'MyUsernameValue');
    $di->getInstanceManager()->setProperty('A', 'password', 'MyHardToGuessPassword%$#');
 
@@ -149,7 +149,7 @@ consumes ``B`` and in turn consumes ``A``, the usage scenario is still the same:
    $c = $di->newInstance('My\C');
 
 Simple enough, but what if we wanted to pass in these parameters at call time? Assuming a default
-``DependencyInjector`` object (``$di = new Zend\Di\DependencyInjector()`` without any configuration to the
+``Di`` object (``$di = new Zend\Di\Di()`` without any configuration to the
 ``InstanceManager``), we could do the following:
 
 .. code-block:: php
@@ -182,7 +182,7 @@ previous example with the exception, for example, of our ``B`` class now looking
        }
    }
 
-Since the method is prefixed with set, and is followed by a capital letter, the ``DependencyInjector`` knows that
+Since the method is prefixed with set, and is followed by a capital letter, the ``Di`` knows that
 this method is used for setter injection, and again, the use case ``$c = $di->get('C')``, will once again know how
 to fill the dependencies when needed to create an object of type ``C``.
 
@@ -195,14 +195,14 @@ Simplest Usage Case Without Type-hints
 --------------------------------------
 
 If your code does not have type-hints or you are using 3rd party code that does not have type-hints but does
-practice dependency injection, you can still use the ``DependencyInjector``, but you might find you need to
+practice dependency injection, you can still use the ``Di``, but you might find you need to
 describe your dependencies explicitly. To do this, you will need to interact with one of the definitions that is
 capable of letting a developer describe, with objects, the map between classes. This particular definition is
 called the ``BuilderDefinition`` and can work with, or in place of, the default ``RuntimeDefinition``.
 
-Definitions are a part of the ``DependencyInjector`` that attempt to describe the relationship between classes so
-that ``DependencyInjector::newInstance()`` and ``DependencyInjector::get()`` can know what the dependencies are
-that need to be filled for a particular class/object. With no configuration, ``DependencyInjector`` will use the
+Definitions are a part of the ``Di`` that attempt to describe the relationship between classes so
+that ``Di::newInstance()`` and ``Di::get()`` can know what the dependencies are
+that need to be filled for a particular class/object. With no configuration, ``Di`` will use the
 ``RuntimeDefinition`` which uses reflection and the type-hints in your code to determine the dependency map.
 Without type-hints, it will assume that all dependencies are scalar or required configuration parameters.
 
@@ -230,7 +230,7 @@ You'll notice the only change is that setA now does not include any type-hinting
 .. code-block:: php
    :linenos:
 
-   use Zend\Di\DependencyInjector;
+   use Zend\Di\Di;
    use Zend\Di\Definition;
    use Zend\Di\Definition\Builder;
 
@@ -250,8 +250,8 @@ You'll notice the only change is that setA now does not include any type-hinting
    $aDef->addDefinition($builder);
    $aDef->addDefinition(new Definition\RuntimeDefinition);
 
-   // Now make sure the DependencyInjector understands it
-   $di = new DependencyInjector;
+   // Now make sure the Di understands it
+   $di = new Di;
    $di->setDefinition($aDef);
 
    // and finally, create C
@@ -273,7 +273,7 @@ Simplest usage case with Compiled Definition
 --------------------------------------------
 
 Without going into the gritty details, as you might expect, PHP at its core is not DI friendly. Out-of-the-box, the
-``DependencyInjector`` uses a ``RuntimeDefinition`` which does all class map resolution via PHP's ``Reflection``
+``Di`` uses a ``RuntimeDefinition`` which does all class map resolution via PHP's ``Reflection``
 extension. Couple that with the fact that PHP does not have a true application layer capable of storing objects
 in-memory between requests, and you get a recipe that is less performant than similar solutions you'll find in Java
 and .Net (where there is an application layer with in-memory object storage.)
@@ -293,7 +293,7 @@ is a breakdown of the job of each definition type:
   up in the order the definitions were provided to this aggregate.
 
 - ``ArrayDefinition``- This definition takes an array of information and exposes it via the interface provided by
-  ``Zend\Di\Definition`` suitable for usage by ``DependencyInjector`` or an ``AggregateDefinition``
+  ``Zend\Di\Definition`` suitable for usage by ``Di`` or an ``AggregateDefinition``
 
 - ``BuilderDefinition``- Creates a definition based on an object graph consisting of various ``Builder\PhpClass``
   objects and ``Builder\InectionMethod`` objects that describe the mapping needs of the target codebase and …
@@ -312,13 +312,13 @@ The following is an example of producing a definition via a ``DirectoryScanner``
    );
    $definition = $compiler->compile();
 
-This definition can then be directly used by the ``DependencyInjector`` (assuming the above ``A, B, C`` scenario
+This definition can then be directly used by the ``Di`` (assuming the above ``A, B, C`` scenario
 was actually a file per class on disk):
 
 .. code-block:: php
    :linenos:
 
-   $di = new Zend\Di\DependencyInjector;
+   $di = new Zend\Di\Di;
    $di->setDefinition($definition);
    $di->getInstanceManager()->setProperty('My\A', 'username', 'foo');
    $di->getInstanceManager()->setProperty('My\A', 'password', 'bar');
@@ -400,11 +400,11 @@ multiple places:
 .. code-block:: php
    :linenos:
 
-   use Zend\Di\DependencyInjector;
+   use Zend\Di\Di;
    use Zend\Di\Definition;
    use Zend\Di\Definition\Builder;
 
-   $di = new DependencyInjector;
+   $di = new Di;
    $diDefAggregate = new Definition\Aggregate();
 
    // first add in provided Definitions, for example
