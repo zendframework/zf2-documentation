@@ -3,7 +3,7 @@
 Range Element
 ^^^^^^^^^^^^^
 
-``Zend\Form\Element\Range`` is meant to be paired with the ``Zend/Form/View/Helper/FormRange`` for `HTML5 inputs with
+``Zend\Form\Element\Range`` is meant to be paired with the ``Zend\Form\View\Helper\FormRange`` for `HTML5 inputs with
 type range`_. This element adds filters and validators to it's input filter specification in order to validate
 HTML5 range values on the server.
 

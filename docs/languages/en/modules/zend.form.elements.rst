@@ -20,15 +20,21 @@ the :ref:`Zend\\Form Quick Start <zend.form.quick-start.factory>` for more infor
 Standard Elements
 -----------------
 
+.. include:: zend.form.element.button.rst
 .. include:: zend.form.element.captcha.rst
 .. include:: zend.form.element.checkbox.rst
 .. include:: zend.form.element.collection.rst
 .. include:: zend.form.element.csrf.rst
+.. include:: zend.form.element.file.rst
 .. include:: zend.form.element.hidden.rst
+.. include:: zend.form.element.image.rst
 .. include:: zend.form.element.multicheckbox.rst
+.. include:: zend.form.element.password.rst
 .. include:: zend.form.element.radio.rst
 .. include:: zend.form.element.select.rst
-
+.. include:: zend.form.element.submit.rst
+.. include:: zend.form.element.text.rst
+.. include:: zend.form.element.textarea.rst
 
 HTML5 Elements
 --------------
