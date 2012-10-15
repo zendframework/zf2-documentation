@@ -3,26 +3,20 @@
 The MvcEvent
 ============
 
-The ZF2 MVC layer incorporates and utilizes a custom ``Zend\EventManager\EventDescription`` type,
-``Zend\Mvc\MvcEvent``. This event is created during ``Zend\Mvc\Application::run()``, and is passed directly to all
-events that method triggers. Additionally, if you mark your controllers with the
-``Zend\Mvc\InjectApplicationEvent`` interface, it will be injected into those controllers.
+The MVC layer of Zend Framework 2 incorporates and utilizes a custom ``Zend\EventManager\Event`` implementation - 
+``Zend\Mvc\MvcEvent``. This event is created during ``Zend\Mvc\Application::run()`` and is passed directly to all
+the events that method triggers. Additionally, if your controllers implement the
+``Zend\Mvc\InjectApplicationEventInterface``, ``MvcEvent`` will be injected into those controllers.
 
 The ``MvcEvent`` adds accessors and mutators for the following:
 
-- ``Application`` object
-
-- ``Request`` object
-
-- ``Response`` object
-
-- ``Router`` object
-
-- ``RouteMatch`` object
-
-- "Result", usually the result of dispatching a controller
-
-- ``ViewModel`` object, typically representing the layout view model
+- ``Application`` object.
+- ``Request`` object.
+- ``Response`` object.
+- ``Router`` object.
+- ``RouteMatch`` object.
+- Result - usually the result of dispatching a controller.
+- ``ViewModel`` object, typically representing the layout view model.
 
 The methods it defines are:
 
