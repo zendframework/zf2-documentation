@@ -50,6 +50,12 @@
    modules/zend.config.reader
    modules/zend.config.writer
    modules/zend.config.processor
+   modules/zend.console.introduction
+   modules/zend.console.routes
+   modules/zend.console.modules
+   modules/zend.console.controllers
+   modules/zend.console.adapter
+   modules/zend.console.prompts
    modules/zend.crypt.introduction
    modules/zend.crypt.block-cipher
    modules/zend.crypt.key.derivation
