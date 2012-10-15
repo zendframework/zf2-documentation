@@ -35,7 +35,7 @@ The ``Zend\Math\Rand`` class offers the following methods to generate random val
     - ``getInteger($min, $max, $strong = false)`` to generate a random integer between ``$min`` and ``$max``;
     - ``getFloat($strong = false)`` to generate a random float number between 0 and 1;
     - ``getString($length, $charlist = null, $strong = false)`` to generate a random string of $length characters
-      using the alphabet $chalist (if not provided the default alphabet is the `Base64`_).
+      using the alphabet $charlist (if not provided the default alphabet is the `Base64`_).
 
 In all these methods the parameter ``$strong`` specify the usage of a strong random number generator. We suggest to
 set the $strong to true if you need to generate random number for cryptographic and security implementation.
