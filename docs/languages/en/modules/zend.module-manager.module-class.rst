@@ -3,7 +3,7 @@
 The Module Class
 ================
 
-By default, the Zend FRamework 2 module system simply expects each module name to be capable of resolving to an object
+By default, the Zend Framework 2 module system simply expects each module name to be capable of resolving to an object
 instance. The default module resolver, ``Zend\ModuleManager\Listener\ModuleResolverListener``, simply instantiates 
 an instance of ``{moduleName}\Module`` for each enabled module.
 
