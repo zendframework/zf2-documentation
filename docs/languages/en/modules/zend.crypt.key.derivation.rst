@@ -129,13 +129,13 @@ Below is reported a usage example of the ``Scrypt`` adapter.
    **Performance of the scrypt implementation**
 
    The aim of the scrypt algorithm is to generate secure derived key preventing brute force
-   attacks. As the others derivation function, more time (and memory) we spent to run the
-   algorithm and more secure will be the derived key.
+   attacks. Just like the other derivation functions, the more time (and memory) we spent executing the
+   algorithm, the more secure the derived key will be.
    Unfortunately a pure PHP implementation of the scrypt algorithm is very slow compared with
-   the C implementation (this is always true, if you compare eecution time of C with PHP).
+   the C implementation (this is always true, if you compare execution time of C with PHP).
    If you want use a faster scrypt algorithm we suggest to use the C implementation of scrypt,
    supported by this `Scrypt extension for PHP`_ (please note that this PHP extension is not
-   official supported by `php.net`_). The Scrypt adapter of Zend Framework is able to recognize
+   officially supported by `php.net`_). The Scrypt adapter of Zend Framework is able to recognize
    if this extension is loaded and use it instead of the pure PHP implementation.
 
 .. _`base64_encode()`: http://php.net/manual/en/function.base64-encode.php
