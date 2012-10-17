@@ -323,7 +323,7 @@ Item pagination:
 
    <!-- First page link -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->first)); ?>">
+     <a href="<?php echo $this->url($this->route, array('page' => $this->first)); ?>">
        First
      </a> |
    <?php else: ?>
