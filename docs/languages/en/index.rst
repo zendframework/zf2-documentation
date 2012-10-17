@@ -80,6 +80,7 @@
    modules/zend.feed.reader
    modules/zend.feed.writer
    modules/zend.feed.pubsubhubbub
+   modules/zend.file.class-file-locator
    modules/zend.filter
    modules/zend.filter.set
    modules/zend.filter.filter-chains
@@ -355,6 +356,13 @@ Zend\\Feed
         * :doc:`modules/zend.feed.reader`
         * :doc:`modules/zend.feed.writer`
         * :doc:`modules/zend.feed.pubsubhubbub`
+
+.. _zend.file:
+
+Zend\\File
+^^^^^^^^^^^^
+
+        * :doc:`modules/zend.file.class-file-locator`
 
 .. _zend.filter:
 
