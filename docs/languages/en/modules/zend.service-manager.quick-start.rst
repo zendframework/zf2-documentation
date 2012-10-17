@@ -163,7 +163,7 @@ As such, you have a variety of ways to override service manager configuration se
 Module Returning an Array
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following demonstrates returning an array of configuration from a module class. It can substantively be the same as
+The following demonstrates returning an array of configuration from a module class. It can be substantively the same as
 the array configuration from the previous example.
 
 .. code-block:: php
