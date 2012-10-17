@@ -90,7 +90,7 @@ functions such as `Pbkdf2`_ or `bcrypt`_.
 
 The scrypt algorithm is based on the idea of memory-hard algorithms and sequential memory-hard functions. 
 A memory-hard algorithm is thus an algorithm which asymptotically uses almost as many memory locations as it uses
-operations. A natural way to reduce the advantage provided by an attacker’s ability to construct highly parallel
+operations[#f1]_. A natural way to reduce the advantage provided by an attacker’s ability to construct highly parallel
 circuits is to increase the size of a single key derivation circuit — if a circuit is twice as large, only half
 as many copies can be placed on a given area of silicon — while still operating within the resources available
 to software implementations, including a powerful CPU and large amounts of RAM.
@@ -148,3 +148,4 @@ Below is reported a usage example of the ``Scrypt`` adapter.
 .. _`bcrypt`: http://en.wikipedia.org/wiki/Bcrypt
 .. _`Scrypt extension for PHP`: https://github.com/DomBlack/php-scrypt
 .. _`php.net`: http://www.php.net
+.. [#f1] See Colin Percival's slides on scrypt from BSDCan'09: http://www.tarsnap.com/scrypt/scrypt-slides.pdf
