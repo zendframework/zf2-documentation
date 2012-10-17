@@ -9,7 +9,7 @@ Overview
 --------
 
 The ``CaptureCache`` pattern is useful to auto-generate static resources in base of a HTTP request.
-The Webserver needs to be configured to run a PHP script generating the requested resource so firther
+The Webserver needs to be configured to run a PHP script generating the requested resource so further
 requests for the same resource can be shipped without calling PHP again.
 
 It comes with basic logic to manage generated resources.
