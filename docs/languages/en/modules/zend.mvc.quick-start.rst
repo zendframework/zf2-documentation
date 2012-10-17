@@ -3,7 +3,7 @@
 Quick Start
 ===========
 
-Now that you have basic knowledge of applications, modules and how are structured, we'll show you the easy way to get
+Now that you have basic knowledge of applications, modules, and how they are each structured, we'll show you the easy way to get
 started.
 
 .. _zend.mvc.quick-start.install:
