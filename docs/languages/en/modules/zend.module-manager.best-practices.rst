@@ -5,13 +5,13 @@ Best Practices when Creating Modules
 
 When creating a ZF2 module, there are some best practices you should keep in mind.
 
-- **Keep the init() method lightweight.** Be conservative with the actions you perform in the ``init()`` and
+- **Keep the ``init()`` and ``onBootstrap()`` methods lightweight.** Be conservative with the actions you perform in the ``init()`` and
   ``onBootstrap()`` methods of your ``Module`` class. These methods are run for **every** page request, and should
   not perform anything heavy. As a rule of thumb, registering event listeners is an appropriate task to perform in
   these methods. Such lightweight tasks will generally not have a measurable impact on the performance of your
   application, even with many modules enabled. It is considered bad practice to utilize these methods for setting
   up or configuring instances of application resources such as a database connection, application logger, or
-  mailer. Tasks such as these are better served through the service manager capabilities of Zend Framework 2.
+  mailer. Tasks such as these are better served through the ``ServiceManager`` capabilities of Zend Framework 2.
 
 - **Do not perform writes within a module.** You should **never** code your module to perform or expect any writes
   within the module's directory. Once installed, the files within a module's directory should always match the
