@@ -276,14 +276,17 @@ with the following contents:
             $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
         }
 
-        public function setUp()
+        protected function setUp()
         {
+            $bootstrap        = \Zend\Mvc\Application::init(include 'config/application.config.php');
             $this->controller = new AlbumController();
             $this->request    = new Request();
-            $this->routeMatch = new RouteMatch(array('controller' => 'album'));
-            $this->event      = new MvcEvent();
+            $this->routeMatch = new RouteMatch(array('controller' => 'index'));
+            $this->event      = $bootstrap->getMvcEvent();
             $this->event->setRouteMatch($this->routeMatch);
             $this->controller->setEvent($this->event);
+            $this->controller->setEventManager($bootstrap->getEventManager());
+            $this->controller->setServiceLocator($bootstrap->getServiceManager());
         }
     }
 
