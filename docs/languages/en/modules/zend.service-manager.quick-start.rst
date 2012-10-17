@@ -240,7 +240,7 @@ First, let's create a class that holds configuration.
    use Zend\ServiceManager\Config;
    use Zend\ServiceManager\ServiceManager;
 
-   class ServiceConfiguration extends Configuration
+   class ServiceConfiguration extends Config
    {
        /**
         * This is hard-coded for brevity.
