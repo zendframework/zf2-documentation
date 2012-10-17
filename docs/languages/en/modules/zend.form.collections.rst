@@ -583,10 +583,10 @@ Here is the result:
 As you can see, collections are wrapped inside a fieldset, and every item in the
 collection is itself wrapped in the fieldset. In fact, the ``Collection``
 element uses label for each item in the collection, while the label of the
-``Collection`` element itself is used as the legend of the fieldset. If you
-don't want the fieldset created (just the elements within it), just add a
-boolean ``false`` as the second parameter of the ``FormCollection`` view
-helper.
+``Collection`` element itself is used as the legend of the fieldset. You must have
+a label on every element in order to use this feature. If you don't want the fieldset 
+created, but just the elements within it, simply add a boolean ``false`` as the second 
+parameter of the ``FormCollection`` view helper.
 
 If you validate, all elements will show errors (this is normal, as we've marked
 them as required). As soon as the form is valid, this is what we get :
