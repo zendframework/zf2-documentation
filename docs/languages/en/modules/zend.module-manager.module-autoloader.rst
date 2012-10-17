@@ -3,8 +3,8 @@
 The Module Autoloader
 =====================
 
-Zend Framework 2 ships with a default module autoloader. ``Zend\Loader\ModuleAutoloader`` is a specialized
-autoloader that is responsible for location of, and on-demand loading of, the ``Module`` classes from a variety of
+Zend Framework 2 ships with the default module autoloader ``Zend\Loader\ModuleAutoloader``. It is a specialized
+autoloader responsible for locating and on-demand loading of, the ``Module`` classes from a variety of
 sources.
 
 .. _zend.module-manager.module-autoloader.usage:
@@ -12,23 +12,24 @@ sources.
 Module Autoloader Usage
 -----------------------
 
-If you are using the provided ``Zend\ModuleManager\Listener\DefaultListenerAggregate``, then it is very simple to
-set up the module autoloader. You simply need to provide an array of module paths, either absolute or relative to
-the application's root, for the module autoloader to check when loading modules. The default listener aggregate
-will take care of instantiating and registering the module autoloader for you.
+By default, the provided ``Zend\ModuleManager\Listener\DefaultListenerAggregate`` sets up the
+``ModuleAutoloader``; as a developer, you need only provide an array of module paths, either
+absolute or relative to the application's root, for the ``ModuleAutoloader`` to check when loading
+modules. The ``DefaultListenerAggregate`` will take care of instantiating and registering the
+``ModuleAutoloader`` for you.
 
 
 .. note::
 
-   Keep in mind that in order for paths relative to your application directory to work, 
-   you must have the directive ``chdir(dirname(__DIR__));`` in your ``public/index.php``.
+   In order for paths relative to your application directory to work, you must have the directive 
+   ``chdir(dirname(__DIR__));`` in your ``public/index.php`` file.
 
 .. _zend.module-manager.module-autoloader.example.module-autoloading:
 
-.. rubric:: Registering module paths with the default listener aggregate
+.. rubric:: Registering module paths with the ``DefaultListenerAggregate``
 
-The following example will search for modules in three different paths. Two are local directories for this
-application, and the third is a system-wide shared directory.
+The following example will search for modules in three different ``module_paths``. Two are local directories of this
+application and the third is a system-wide shared directory.
 
 .. code-block:: php
    :linenos:
@@ -62,7 +63,7 @@ application, and the third is a system-wide shared directory.
 
 .. note::
 
-   Module paths behave very similar to the PHP include path, and are searched in the order they are defined. If you
+   Module paths behave very similar to PHP's ``include_path`` and are searched in the order they are defined. If you
    have modules with the same name in more than one registered module path, the module autoloader will return the
    first one it finds.
 
