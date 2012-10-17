@@ -3,7 +3,9 @@
 MultiCheckbox Element
 ^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Form\Element\MultiCheckbox`` is meant to be paired with the ``Zend/Form/View/Helper/FormMultiCheckbox`` for HTML inputs with type checkbox. This element adds an ``InArray`` validator to its input filter specification in order to validate on the server if the checkbox contains values from the multiple checkboxes.
+``Zend\Form\Element\MultiCheckbox`` is meant to be paired with the ``Zend\Form\View\Helper\FormMultiCheckbox``
+for HTML inputs with type checkbox. This element adds an ``InArray`` validator to its input filter specification
+in order to validate on the server if the checkbox contains values from the multiple checkboxes.
 
 .. _zend.form.element.multicheckbox.usage:
 

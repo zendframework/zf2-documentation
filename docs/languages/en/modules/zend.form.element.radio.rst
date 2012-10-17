@@ -3,7 +3,9 @@
 Radio Element
 ^^^^^^^^^^^^^
 
-``Zend\Form\Element\Radio`` is meant to be paired with the ``Zend/Form/View/Helper/FormRadio`` for HTML inputs with type radio. This element adds an ``InArray`` validator to its input filter specification in order to validate on the server if the value is contains within the radio value elements.
+``Zend\Form\Element\Radio`` is meant to be paired with the ``Zend\Form\View\Helper\FormRadio`` for HTML inputs
+with type radio. This element adds an ``InArray`` validator to its input filter specification in order to validate
+on the server if the value is contains within the radio value elements.
 
 .. _zend.form.element.radio.usage:
 

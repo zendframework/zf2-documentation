@@ -3,7 +3,7 @@
 Number Element
 ^^^^^^^^^^^^^^
 
-``Zend\Form\Element\Number`` is meant to be paired with the ``Zend/Form/View/Helper/FormNumber`` for `HTML5 inputs with
+``Zend\Form\Element\Number`` is meant to be paired with the ``Zend\Form\View\Helper\FormNumber`` for `HTML5 inputs with
 type number`_. This element adds filters and validators to it's input filter specification in order to validate
 HTML5 number input values on the server.
 
