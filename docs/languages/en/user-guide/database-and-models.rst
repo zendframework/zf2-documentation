@@ -54,8 +54,8 @@ use mapper objects that load and save entities to the database. Another is to
 use an ORM like Doctrine or Propel.
 
 For this tutorial, we are going to create a very simple model by creating an
-``AlbumTable`` class that extends ``Zend\Db\TableGateway\AbstractTableGateway``
-where each album object is an ``Album`` object (known as an *entity*). This is an
+``AlbumTable`` class that uses the ``Zend\Db\TableGateway\TableGateway`` class
+in which each album object is an ``Album`` object (known as an *entity*). This is an
 implementation of the Table Data Gateway design pattern to allow for interfacing
 with data in a database table. Be aware though that the Table Data Gateway
 pattern can become limiting in larger systems. There is also a temptation to put
@@ -84,10 +84,9 @@ Let’s start with our ``Album`` entity class within the ``Model`` directory:
     }
 
 Our ``Album`` entity object is a simple PHP class. In order to work with
-``Zend\Db``’s ``AbstractTableGateway`` class, we need to implement the
-``exchangeArray()`` method. This method simply copies the data from the passed
-in array to our entity’s properties. We will add an input filter for use with
-our form later.
+``Zend\Db``’s ``TableGateway`` class, we need to implement the ``exchangeArray()``
+method. This method simply copies the data from the passed in array to our entity’s
+properties. We will add an input filter for use with our form later.
 
 But first, does the Album model we have so far work the way we expect it to? Let's write a few tests to be sure.
 
@@ -136,6 +135,11 @@ But first, does the Album model we have so far work the way we expect it to? Let
             $this->assertNull($album->id, '"title" should have defaulted to null');
             $this->assertNull($album->title, '"title" should have defaulted to null');
         }
+
+        protected function setUp()
+        {
+            \Zend\Mvc\Application::init(include 'config/application.config.php');
+        }
     }
 
 We are testing for 3 things:
@@ -156,52 +160,38 @@ If we run ``phpunit`` again, we'll see that the answer to all three questions is
 
     OK (8 tests, 19 assertions)
 
-Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
-``AlbumTable`` class in the module’s ``Model`` directory like this:
+Next, we create our ``AlbumTable`` class in the module's ``Model`` directory like this:
 
 .. code-block:: php
 
     // module/Album/src/Album/Model/AlbumTable.php:
     namespace Album\Model;
 
-    use Zend\Db\Adapter\Adapter;
-    use Zend\Db\ResultSet\ResultSet;
-    use Zend\Db\TableGateway\AbstractTableGateway;
+    use Zend\Db\TableGateway\TableGateway;
 
-    class AlbumTable extends AbstractTableGateway
+    class AlbumTable
     {
-        protected $table = 'album';
+        protected $tableGateway;
 
-        public function __construct(Adapter $adapter)
+        public function __construct(TableGateway $tableGateway)
         {
-            $this->adapter = $adapter;
-
-            $this->resultSetPrototype = new ResultSet();
-            $this->resultSetPrototype->setArrayObjectPrototype(new Album());
-
-            $this->initialize();
+            $this->tableGateway = $tableGateway;
         }
 
         public function fetchAll()
         {
-            $resultSet = $this->select();
+            $resultSet = $this->tableGateway->select();
             return $resultSet;
         }
 
         public function getAlbum($id)
         {
             $id  = (int) $id;
-
-            $rowset = $this->select(array(
-                'id' => $id,
-            ));
-
+            $rowset = $this->tableGateway->select(array('id' => $id));
             $row = $rowset->current();
-
             if (!$row) {
                 throw new \Exception("Could not find row $id");
             }
-
             return $row;
         }
 
@@ -212,50 +202,37 @@ Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
                 'title'  => $album->title,
             );
 
-            $id = (int) $album->id;
-
+            $id = (int)$album->id;
             if ($id == 0) {
-                $this->insert($data);
-            } elseif ($this->getAlbum($id)) {
-                $this->update(
-                    $data,
-                    array(
-                        'id' => $id,
-                    )
-                );
+                $this->tableGateway->insert($data);
             } else {
-                throw new \Exception("Could not find row $id");
+                if ($this->getAlbum($id)) {
+                    $this->tableGateway->update($data, array('id' => $id));
+                } else {
+                    throw new \Exception('Form id does not exist');
+                }
             }
         }
 
         public function deleteAlbum($id)
         {
-            $this->delete(array(
-                'id' => $id,
-            ));
+            $this->tableGateway->delete(array('id' => $id));
         }
     }
 
-There’s a lot going on here. Firstly, we set the protected property ``$table``
-to the name of the database table, ‘album’ in this case. We then write a
-constructor that takes a database adapter as its only parameter and assigns it
-to the adapter property of our class. We then need to tell the table gateway’s
-result set that whenever it creates a new row object, it should use an ``Album``
-object to do so. The ``TableGateway`` classes use the prototype pattern for
-creation of result sets and entities. This means that instead of instantiating
-when required, the system clones a previously instantiated object. See
-`PHP Constructor Best Practices and the Prototype Pattern
-<http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prototype-pattern>`_
-for more details.
+
+There’s a lot going on here. Firstly, we set the protected property ``$tableGateway``
+to the ``TableGateway`` instance passed in the constructor. We will use this to
+perform operations on the database table for our albums.
 
 We then create some helper methods that our application will use to interface
-with the database table.  ``fetchAll()`` retrieves all albums rows from the
+with the table gateway.  ``fetchAll()`` retrieves all albums rows from the
 database as a ``ResultSet``, ``getAlbum()`` retrieves a single row as an
 ``Album`` object, ``saveAlbum()`` either creates a new row in the database or
 updates a row that already exists and ``deleteAlbum()`` removes the row
 completely. The code for each of these methods is, hopefully, self-explanatory.
 
-Using ServiceManager to configure the database credentials and inject into the controller
+Using ServiceManager to configure the table gateway and inject into the AlbumTable
 -----------------------------------------------------------------------------------------
 
 In order to always use the same instance of our ``AlbumTable``, we will use the
@@ -271,13 +248,16 @@ object when the ``ServiceManager`` needs it. We start by implementing
 this method to the bottom of the ``Module`` class.
 
 .. code-block:: php
-    :emphasize-lines: 4-5,11-23
+    :emphasize-lines: 5-8,14-32
 
     // module/Album/Module.php:
     namespace Album;
 
-    // Add this import statement:
+    // Add these import statements:
+    use Album\Model\Album;
     use Album\Model\AlbumTable;
+    use Zend\Db\ResultSet\ResultSet;
+    use Zend\Db\TableGateway\TableGateway;
 
     class Module
     {
@@ -289,9 +269,15 @@ this method to the bottom of the ``Module`` class.
             return array(
                 'factories' => array(
                     'Album\Model\AlbumTable' =>  function($sm) {
-                        $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                        $table     = new AlbumTable($dbAdapter);
+                        $tableGateway = $sm->get('AlbumTableGateway');
+                        $table = new AlbumTable($tableGateway);
                         return $table;
+                    },
+                    'AlbumTableGateway' => function ($sm) {
+                        $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                        $resultSetPrototype = new ResultSet();
+                        $resultSetPrototype->setArrayObjectPrototype(new Album());
+                        return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
                     },
                 ),
             );
@@ -299,8 +285,20 @@ this method to the bottom of the ``Module`` class.
     }
 
 This method returns an array of ``factories`` that are all merged together by
-the ``ModuleManager`` before passing to the ``ServiceManager``. We also need to
-configure the ``ServiceManager`` so that it knows how to get a
+the ``ModuleManager`` before passing to the ``ServiceManager``. The factory
+for ``Album\Model\AlbumTable`` uses the ``ServiceManager`` to create an
+``AlbumTableGateway`` to pass to the ``AlbumTable``. We also tell the
+``ServiceManager`` that an ``AlbumTableGateway`` is created by getting a
+``Zend\Db\Adapter\Adapter`` (also from the ``ServiceManager``) and using it
+to create a ``TableGateway`` object. The ``TableGateway`` is told to use an
+``Album`` object whenever it creates a new result row. The TableGateway
+classes use the prototype pattern for creation of result sets and entities.
+This means that instead of instantiating when required, the system clones a
+previously instantiated object. See
+`PHP Constructor Best Practices and the Prototype Pattern <http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prototype-pattern>`_
+for more details.
+
+Finally, we need to configure the ``ServiceManager`` so that it knows how to get a
 ``Zend\Db\Adapter\Adapter``. This is done using a factory called
 ``Zend\Db\Adapter\AdapterServiceFactory`` which we can configure within the
 merged config system. Zend Framework 2’s ``ModuleManager`` merges all the
@@ -342,6 +340,174 @@ that they are not in the git repository (as ``local.php`` is ignored):
         ),
     );
 
+Testing
+-------
+
+Let's write a few tests for all this code we've just written. First, we need
+to create a test class for the ``AlbumTable``.
+
+.. code-block:: php
+
+    // tests/module/Album/src/Album/Model/AlbumTableTest.php:
+    namespace Album\Model;
+
+    use PHPUnit_Framework_TestCase;
+
+    class AlbumTableTest extends PHPUnit_Framework_TestCase
+    {
+        protected function setUp()
+        {
+            \Zend\Mvc\Application::init(include 'config/application.config.php');
+        }
+    }
+
+And write our first test. Add this method to the test class:
+
+.. code-block:: php
+
+    public function testFetchAllReturnsAllAlbums()
+    {
+        $resultSet        = new ResultSet();
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway',
+                                           array('select'), array(), '', false);
+        $mockTableGateway->expects($this->once())
+                         ->method('select')
+                         ->with()
+                         ->will($this->returnValue($resultSet));
+
+        $albumTable = new AlbumTable($mockTableGateway);
+
+        $this->assertSame($resultSet, $albumTable->fetchAll());
+    }
+
+In this test, we introduce the concept of `Mock objects
+<http://www.phpunit.de/manual/3.6/en/test-doubles.html#test-doubles.mock-objects>`_.
+A thorough explanation of what a Mock object is goes beyond the scope of this tutorial,
+but it's basically an object that takes the place of another object and behaves in
+a predefined way. Since we are testing the ``AlbumTable`` here and NOT the ``TableGateway``
+class (the Zend team has already tested the ``TableGateway`` class and we know it works),
+we just want to make sure that our ``AlbumTable`` class is interacting with the ``TableGatway``
+class the way that we expect it to. Above, we're testing to see if the ``fetchAll()`` method
+of ``AlbumTable`` will call the ``select()`` method of the ``$tableGateway`` property with
+no parameters. If it does, it should return a ``ResultSet`` object. Finally, we expect that
+this same ``ResultSet`` object will be returned to the calling method. This test should run
+fine, so now we can add the rest of the test methods:
+
+.. code-block:: php
+
+    public function testCanRetrieveAnAlbumByItsId()
+    {
+        $album = new Album();
+        $album->exchangeArray(array('id'     => 123,
+                                    'artist' => 'The Military Wives',
+                                    'title'  => 'In My Dreams'));
+
+        $resultSet = new ResultSet();
+        $resultSet->setArrayObjectPrototype(new Album());
+        $resultSet->initialize(array($album));
+
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('select'), array(), '', false);
+        $mockTableGateway->expects($this->once())
+                         ->method('select')
+                         ->with(array('id' => 123))
+                         ->will($this->returnValue($resultSet));
+
+        $albumTable = new AlbumTable($mockTableGateway);
+
+        $this->assertSame($album, $albumTable->getAlbum(123));
+    }
+
+    public function testCanDeleteAnAlbumByItsId()
+    {
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('delete'), array(), '', false);
+        $mockTableGateway->expects($this->once())
+                         ->method('delete')
+                         ->with(array('id' => 123));
+
+        $albumTable = new AlbumTable($mockTableGateway);
+        $albumTable->deleteAlbum(123);
+    }
+
+    public function testSaveAlbumWillInsertNewAlbumsIfTheyDontAlreadyHaveAnId()
+    {
+        $albumData = array('artist' => 'The Military Wives', 'title' => 'In My Dreams');
+        $album     = new Album();
+        $album->exchangeArray($albumData);
+
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('insert'), array(), '', false);
+        $mockTableGateway->expects($this->once())
+                         ->method('insert')
+                         ->with($albumData);
+
+        $albumTable = new AlbumTable($mockTableGateway);
+        $albumTable->saveAlbum($album);
+    }
+
+    public function testSaveAlbumWillUpdateExistingAlbumsIfTheyAlreadyHaveAnId()
+    {
+        $albumData = array('id' => 123, 'artist' => 'The Military Wives', 'title' => 'In My Dreams');
+        $album     = new Album();
+        $album->exchangeArray($albumData);
+
+        $resultSet = new ResultSet();
+        $resultSet->setArrayObjectPrototype(new Album());
+        $resultSet->initialize(array($album));
+
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway',
+                                           array('select', 'update'), array(), '', false);
+        $mockTableGateway->expects($this->once())
+                         ->method('select')
+                         ->with(array('id' => 123))
+                         ->will($this->returnValue($resultSet));
+        $mockTableGateway->expects($this->once())
+                         ->method('update')
+                         ->with(array('artist' => 'The Military Wives', 'title' => 'In My Dreams'),
+                                array('id' => 123));
+
+        $albumTable = new AlbumTable($mockTableGateway);
+        $albumTable->saveAlbum($album);
+    }
+
+    public function testExceptionIsThrownWhenGettingNonexistentAlbum()
+    {
+        $resultSet = new ResultSet();
+        $resultSet->setArrayObjectPrototype(new Album());
+        $resultSet->initialize(array());
+
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('select'), array(), '', false);
+        $mockTableGateway->expects($this->once())
+                         ->method('select')
+                         ->with(array('id' => 123))
+                         ->will($this->returnValue($resultSet));
+
+        $albumTable = new AlbumTable($mockTableGateway);
+
+        try
+        {
+            $albumTable->getAlbum(123);
+        }
+        catch (\Exception $e)
+        {
+            $this->assertSame('Could not find row 123', $e->getMessage());
+            return;
+        }
+
+        $this->fail('Expected exception was not thrown');
+    }
+
+Let's review our tests. We are testing that:
+
+1. We can retrieve an individual album by its ID.
+2. We can delete albums.
+3. We can save new album.
+4. We can update existing albums.
+5. We will encounter an exception if we're trying to retrieve an album that doesn't exist.
+
+Great - our ``AlbumTable`` class is tested. Let's move on!
+
+Back to the controller
+----------------------
+
 Now that the ``ServiceManager`` can create an ``AlbumTable`` instance for us, we
 can add a method to the controller to retrieve it. Add ``getAlbumTable()`` to
 the ``AlbumController`` class:
@@ -367,8 +533,19 @@ You should also add:
 to the top of the class.
 
 We can now call ``getAlbumTable()`` from within our controller whenever we need
-to interact with our model. Let’s start with a list of albums when the ``index``
-action is called.
+to interact with our model. Let's make sure it works by writing a test.
+
+Add this test to your ``AlbumControllerTest`` class:
+
+.. code-block:: php
+
+    public function testGetAlbumTableReturnsAnInstanceOfAlbumTable()
+    {
+        $this->assertInstanceOf('Album\Model\AlbumTable', $this->controller->getAlbumTable());
+    }
+
+If the service locator was configured correctly in ``Module.php``, then we
+should get an instance of ``Album\Model\AlbumTable`` when calling ``getAlbumTable()``.
 
 Listing albums
 --------------
