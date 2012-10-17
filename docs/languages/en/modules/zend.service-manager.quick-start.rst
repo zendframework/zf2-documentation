@@ -78,7 +78,8 @@ Examples
 
 .. _zend.service-manager.quick-start.examples.config-array:
 
-.. rubric:: Sample configuration
+Sample Configuration
+^^^^^^^^^^^^^^^^^^^^
 
 The following is valid configuration for any configuration being merged in your application, and demonstrates each
 of the possible configuration keys. Configuration is merged in the following order:
@@ -159,9 +160,10 @@ As such, you have a variety of ways to override service manager configuration se
 
 .. _zend.service-manager.quick-start.examples.return-array:
 
-.. rubric:: Module returning an array
+Module Returning an Array
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following demonstrates returning an array of configuration from a module class. It is substantively the same as
+The following demonstrates returning an array of configuration from a module class. It can substantively be the same as
 the array configuration from the previous example.
 
 .. code-block:: php
@@ -174,52 +176,12 @@ the array configuration from the previous example.
        public function getServiceConfig()
        {
            return array(
-               'abstract_factories' => array(
-                   // Valid values include names of classes implementing
-                   // AbstractFactoryInterface, instances of classes implementing
-                   // AbstractFactoryInterface, or any PHP callbacks
-                   'SomeModule\Service\FallbackFactory',
-               ),
-               'aliases' => array(
-                   // Aliasing a FQCN to a service name
-                   'SomeModule\Model\User' => 'User',
-                   // Aliasing a name to a known service name
-                   'AdminUser' => 'User',
-                   // Aliasing to an alias
-                   'SuperUser' => 'AdminUser',
-               ),
-               'factories' => array(
-                   // Keys are the service names.
-                   // Valid values include names of classes implementing
-                   // FactoryInterface, instances of classes implementing
-                   // FactoryInterface, or any PHP callbacks
-                   'User'     => 'SomeModule\Service\UserFactory',
-                   'UserForm' => function ($serviceManager) {
-                       // Note: we're already in the "SomeModule" namespace
-                       $form = new Form\User();
-
-                       // Retrieve a dependency from the service manager and inject it!
-                       $form->setInputFilter($serviceManager->get('UserInputFilter'),
-                       return $form;
-                   },
-               ),
-               'invokables' => array(
-                   // Keys are the service names
-                   // Values are valid class names to instantiate.
-                   'UserInputFiler' => 'SomeModule\InputFilter\User',
-               ),
-               'services' => array(
-                   // Keys are the service names
-                   // Values are objects
-                   // Note: we're already in the "SomeModule" namespace
-                   'Auth' => new Authentication\AuthenticationService(),
-               ),
-               'shared' => array(
-                   // Usually, you'll only indicate services that should _NOT_ be
-                   // shared -- i.e., ones where you want a different instance
-                   // every time.
-                   'UserForm' => false,
-               ),
+               'abstract_factories' => array(),
+               'aliases' => array(),
+               'factories' => array(),
+               'invokables' => array(),
+               'services' => array(),
+               'shared' => array(),
            );
        }
    }
