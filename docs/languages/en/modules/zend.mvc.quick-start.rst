@@ -3,7 +3,7 @@
 Quick Start
 ===========
 
-Now that you know the basics of how applications and modules are structured, we'll show you the easy way to get
+Now that you have basic knowledge of applications, modules and how are structured, we'll show you the easy way to get
 started.
 
 .. _zend.mvc.quick-start.install:
@@ -47,7 +47,7 @@ Simply clone the ``ZendSkeletonApplication`` repository, using the ``--recursive
 
 .. _zend.mvc.quick-start.install.manual-installation:
 
-Manual installation
+Manual Installation
 ^^^^^^^^^^^^^^^^^^^
 
 - Download a tarball of the ``ZendSkeletonApplication`` repository:
@@ -64,10 +64,10 @@ Manual installation
 
 .. _zend.mvc.quick-start.create-a-new-module:
 
-Create a new module
+Create a New Module
 -------------------
 
-By default, one module is provided with the ``ZendSkeletonApplication``, named "Application". It provides simply a
+By default, one module is provided with the ``ZendSkeletonApplication``, named "Application". It simply provides a
 controller to handle the "home" page of the application, the layout template, and templates for 404 and error
 pages.
 
@@ -89,7 +89,7 @@ At this point, it's time to create some functionality.
 
 .. _zend.mvc.quick-start.update-the-module-class:
 
-Update the Module class
+Update the Module Class
 -----------------------
 
 Let's update the module class. We'll want to make sure the namespace is correct, configuration is enabled and
@@ -161,8 +161,8 @@ At this point, you now have your module configured properly. Let's create a cont
 Create a Controller
 -------------------
 
-Controllers are simply objects that implement ``Zend\Stdlib\DispatchableInterface``. This means they simply need to
-implement a ``dispatch()`` method that takes minimally a ``Response`` object as an argument.
+Controllers are simply objects that implement ``Zend\Stdlib\DispatchableInterface``. This means they need to
+implement a ``dispatch()`` method that takes minimally a ``Request`` object as an argument.
 
 In practice, though, this would mean writing logic to branch based on matched routing within every controller. As
 such, we've created two base controller classes for you to start with:
@@ -171,8 +171,8 @@ such, we've created two base controller classes for you to start with:
   after the action will be called by the controller. As an example, if you had a route that returned "foo" for the
   "action" key, the "fooAction" method would be invoked.
 
-- ``Zend\Mvc\Controller\AbstractRestfulController`` introspects the Request to determine what HTTP method was used,
-  and calls a method based on that accordingly.
+- ``Zend\Mvc\Controller\AbstractRestfulController`` introspects the ``Request`` to determine what HTTP method was used,
+  and calls a method according to that .
 
   - ``GET`` will call either the ``getList()`` method, or, if an "id" was matched during routing, the ``get()``
     method (with that identifer value).
@@ -184,7 +184,7 @@ such, we've created two base controller classes for you to start with:
 
   - ``DELETE`` expects an "id" to be matched during routing, and will call the ``delete()`` method.
 
-To get started, we'll simply create a "hello world" style controller, with a single action. First, create the
+To get started, we'll simply create a "hello world"-style controller, with a single action. First, create the
 directory ``src/<module name>/Controller``, and then create the file ``HelloController.php`` inside it. Edit it in
 your favorite text editor or IDE, and insert the following contents:
 
@@ -215,7 +215,7 @@ So, what are we doing here?
 - We're pulling a message from the query parameters (yes, this is a superbly bad idea in production! Always
   sanitize your inputs!).
 
-- We're returning a ViewModel with an array of values that will get processed later.
+- We're returning a ViewModel with an array of values to be processed later.
 
 We return a ``ViewModel``. The view layer will use this when rendering the view, pulling variables and the template
 name from it. By default, you can omit the template name, and it will resolve to
@@ -227,7 +227,7 @@ So, with that in mind, let's create a view script.
 
 .. _zend.mvc.quick-start.create-a-view-script:
 
-Create a view script
+Create a View Script
 --------------------
 
 Create the directory ``view/<module-name>/hello``. Inside that directory, create a file named ``world.phtml``.
@@ -251,7 +251,7 @@ That's it. Save the file.
 
 .. _zend.mvc.quick-start.create-a-route:
 
-Create a route
+Create a Route
 --------------
 
 Now that we have a controller and a view script, we need to create a route to it.
@@ -264,12 +264,13 @@ Now that we have a controller and a view script, we need to create a route to it
    recommended practice. The application will look for a ``Zend\Mvc\Router\RouteStack`` instance to setup routing.
    The default generated router is a ``Zend\Mvc\Router\Http\TreeRouteStack``.
 
-   To use the "default route" functionality, you will need to add the following route definition to your module.
+   To use the "default route" functionality, you will need to have the following route definition in your module.
    Replace <module-name> with the name of your module.
 
    .. code-block:: php
       :linenos:
 
+      // module.config.php
       return array(
           '<module-name>' => array(
               'type'    => 'Literal',
@@ -296,16 +297,24 @@ Now that we have a controller and a view script, we need to create a route to it
                   ),
               ),
           ),
+          // ... other configuration ...
+      );
+
+Additionally, we need to tell the application we have a controller:
+
+   .. code-block:: php
+      :linenos:
+
+      // module.config.php
+      return array(
           'controllers' => array(
               'invokables' => array(
                   '<module-namespace>\Controller\Index' => '<module-namespace>\Controller\IndexController',
                   // Do similar for each other controller in your module
               ),
           ),
-          // ... other configuration ...
+         // ... other configuration ...
       );
-
-Additionally, we need to tell the application we have a controller.
 
 .. note::
 
@@ -345,7 +354,7 @@ reads as follows:
 
 .. _zend.mvc.quick-start.tell-the-application-about-our-module:
 
-Tell the application about our module
+Tell the Application About our Module
 -------------------------------------
 
 One problem: we haven't told our application about our new module!
@@ -377,13 +386,13 @@ Replace ``<module namespace>`` with the namespace of your module.
 
 .. _zend.mvc.quick-start.test-it-out:
 
-Test it out!
+Test it Out!
 ------------
 
 Now we can test things out! Create a new vhost pointing its document root to the ``public`` directory of your
 application, and fire it up in a browser. You should see the default homepage template of ZendSkeletonApplication.
 
-Now alter the location in your URL to append the path "hello/world", and load the page. You should now get the
+Now alter the location in your URL to append the path "/hello/world", and load the page. You should now get the
 following content:
 
 .. code-block:: html
