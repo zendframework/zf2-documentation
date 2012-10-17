@@ -133,7 +133,7 @@ may be supported on a case-by-case basis in each validation class.
 Translating messages
 --------------------
 
-Validator classes provide a ``setTranslator()`` method with which you can specify a instance of
+Validator classes provide a ``setTranslator()`` method with which you can specify an instance of
 ``Zend\I18n\Translator\Translator`` which will translate the messages in case of a validation failure. The
 ``getTranslator()`` method returns the set translator instance.
 
