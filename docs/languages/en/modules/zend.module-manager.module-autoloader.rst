@@ -12,10 +12,11 @@ sources.
 Module Autoloader Usage
 -----------------------
 
-If you are using the provided ``Zend\ModuleManager\Listener\DefaultListenerAggregate``, it is very simple to
-set up the ``ModuleAutoloader``. You simply need to provide an array of module paths, either absolute or relative to
-the application's root, for the ``ModuleAutoloader`` to check when loading modules. The ``DefaultListenerAggregate``
-will take care of instantiating and registering the ``ModuleAutoloader`` for you.
+By default, the provided ``Zend\ModuleManager\Listener\DefaultListenerAggregate`` sets up the
+``ModuleAutoloader``; as a developer, you need only provide an array of module paths, either
+absolute or relative to the application's root, for the ``ModuleAutoloader`` to check when loading
+modules. The ``DefaultListenerAggregate`` will take care of instantiating and registering the
+``ModuleAutoloader`` for you.
 
 
 .. note::
@@ -62,7 +63,7 @@ application and the third is a system-wide shared directory.
 
 .. note::
 
-   Module paths behave very similar to PHP's include_path and are searched in the order they are defined. If you
+   Module paths behave very similar to PHP's ``include_path`` and are searched in the order they are defined. If you
    have modules with the same name in more than one registered module path, the module autoloader will return the
    first one it finds.
 
