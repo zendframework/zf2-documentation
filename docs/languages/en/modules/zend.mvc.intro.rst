@@ -3,20 +3,20 @@
 Introduction to the MVC Layer
 =============================
 
-``Zend\Mvc`` is a brand new MVC implementation designed from the ground up for Zend Framework 2.0,
-with a focus on performance and flexibility.
+``Zend\Mvc`` is a brand new MVC implementation designed from the ground up for Zend Framework 2,
+focusing on performance and flexibility.
 
 The MVC layer is built on top of the following components:
 
-- ``Zend\ServiceManager``. Zend Framework provides a set of default service definitions set up at
+- ``Zend\ServiceManager`` - Zend Framework provides a set of default service definitions set up at
   ``Zend\Mvc\Service``. The ``ServiceManager`` creates and configures your application instance and
   workflow.
 
-- ``Zend\EventManager``. The MVC is event driven, and this component is used everywhere 
-  from its initial bootstrapping of the application, to returning response and request calls, 
-  to setting and retrieving routes and matched routes, as well as view rendering.
+- ``Zend\EventManager`` - The MVC is event driven. This component is used everywhere 
+  from initial bootstrapping of the application, through returning response and request calls, 
+  to setting and retrieving routes and matched routes, as well as render views.
 
-- ``Zend\Http``, specifically the request and response objects, used within.
+- ``Zend\Http`` - specifically the request and response objects, used within:
 
 - ``Zend\Stdlib\DispatchableInterface``. All "controllers" are simply dispatchable objects.
 
@@ -37,7 +37,7 @@ Within the MVC layer, several sub-components are exposed:
 
 - ``Zend\Mvc\View`` provides default wiring for renderer selection, view script resolution, helper
   registration, and more; additionally, it provides a number of listeners that tie into the MVC
-  workflow to provide features such as automated template name resolution, automated view model
+  workflow, providing features such as automated template name resolution, automated view model
   creation and injection, and more.
 
 The gateway to the MVC is the `Zend\\Mvc\\Application`_ object (referred to as ``Application``
@@ -71,7 +71,7 @@ The basic application structure follows:
        init_autoloader.php
 
 The ``public/index.php`` marshalls all user requests to your website, retrieving an array of
-configuration located in ``config/application.php``. On return, it ``run()``\ s the ``Application``,
+configuration located in ``config/application.config.php``. On return, it ``run()``\ s the ``Application``,
 processing the request and returning a response to the user.
 
 The ``config`` directory as described above contains configuration used by the
@@ -158,7 +158,7 @@ The three ``autoload_*.php`` files are not required, but recommended. They provi
 - ``autoload_function.php`` should return a PHP callback that can be passed to ``spl_autoload_register()``.
   Typically, this callback should utilize the map returned by ``autoload_classmap.php``.
 
-- ``autoload_register.php`` should register a PHP callback (typically that returned by ``autoload_function.php``
+- ``autoload_register.php`` should register a PHP callback (is typically returned by ``autoload_function.php``
   with ``spl_autoload_register()``.
 
 The point of these three files is to provide reasonable default mechanisms for autoloading the classes contained in
@@ -174,7 +174,7 @@ The ``src`` directory should be a `PSR-0 compliant directory structure`_ with yo
 you should at least have one sub-directory named after your module namespace; however, you can ship code from
 multiple namespaces if desired.
 
-The ``test`` directory should contain your unit tests. Typically, these will be written using `PHPUnit`_, and
+The ``test`` directory should contain your unit tests. Typically, these are written using `PHPUnit`_, and
 contain artifacts related to its configuration (e.g., ``phpunit.xml``, ``bootstrap.php``).
 
 The ``public`` directory can be used for assets that you may want to expose in your application's document root.
@@ -291,9 +291,9 @@ While the previous approach largely works, where does the configuration come fro
 application, the assumption will be that it's from the modules themselves. How do we get that information and
 aggregate it, then?
 
-The answer is via ``Zend\ModuleManager\ModuleManager``. This component allows you to specify where modules exist,
-and it will then locate each module and initialize it. Module classes can tie into various listeners on the
-``ModuleManager`` in order to provide configuration, services, listeners, and more to the application. Sound
+The answer is via ``Zend\ModuleManager\ModuleManager``. This component allows you to specify where modules exist.
+Then, it will locate each module and initialize it. Module classes can tie into various listeners on the
+``ModuleManager`` in order to provide configuration, services, listeners, and more to the application. Sounds
 complicated? It's not.
 
 .. _zend.mvc.intro.bootstrapping-a-modular-application.configuring-the-module-manager:
@@ -304,13 +304,13 @@ Configuring the Module Manager
 The first step is configuring the module manager.  Simply inform the module manager which modules to load, and
 potentially provide configuration for the module listeners.
 
-Remember the ``application.php`` from earlier? We're going to provide some configuration.
+Remember the ``application.config.php`` from earlier? We're going to provide some configuration.
 
 .. code-block:: php
    :linenos:
 
    <?php
-   // config/application.php
+   // config/application.config.php
    return array(
        'modules' => array(
            /* ... */
@@ -352,7 +352,7 @@ Conclusion
 ----------
 
 The ZF2 MVC layer is incredibly flexible, offering an opt-in, easy to create modular infrastructure, as well as the
-ability to craft your own application workflows via the ``ServiceManager`` and ``EventManager``. The module manager
+ability to craft your own application workflows via the ``ServiceManager`` and ``EventManager``. The ``ModuleManager``
 is a lightweight and simple approach to enforcing a modular architecture that encourages clean separation of
 concerns and code re-use.
 
