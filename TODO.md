@@ -1,8 +1,8 @@
 TODO
 ====
 
-The following is a list of documentation that needs work. If you plan to work on
-a component, please drop a note to the ZF contributors mailing list
+The following is a list of documentation that needs work. Everyone is welcome to fork and edit the documentation, 
+but if you plan to seriously work on a component, please drop a note to the ZF contributors mailing list
 (http://framework.zend.com/archives/contributors) and/or
 [the #zftalk.dev IRC channel](irc://irc.freenode.net/zftalk.dev).
 
