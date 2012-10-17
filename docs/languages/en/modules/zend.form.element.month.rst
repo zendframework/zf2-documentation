@@ -3,7 +3,7 @@
 Month Element
 ^^^^^^^^^^^^^
 
-``Zend\Form\Element\Month`` is meant to be paired with the ``Zend/Form/View/Helper/FormMonth`` for `HTML5 inputs with
+``Zend\Form\Element\Month`` is meant to be paired with the ``Zend\Form\View\Helper\FormMonth`` for `HTML5 inputs with
 type month`_. This element adds filters and validators to it's input filter specification in order to validate
 HTML5 month input values on the server.
 

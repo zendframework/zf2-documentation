@@ -3,7 +3,7 @@
 Time Element
 ^^^^^^^^^^^^
 
-``Zend\Form\Element\Time`` is meant to be paired with the ``Zend/Form/View/Helper/FormTime`` for `HTML5 inputs with type
+``Zend\Form\Element\Time`` is meant to be paired with the ``Zend\Form\View\Helper\FormTime`` for `HTML5 inputs with type
 time`_. This element adds filters and validators to it's input filter specification in order to validate HTML5 time
 input values on the server.
 

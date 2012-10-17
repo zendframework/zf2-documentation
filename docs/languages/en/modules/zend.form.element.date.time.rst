@@ -3,7 +3,7 @@
 DateTime Element
 ^^^^^^^^^^^^^^^^
 
-``Zend\Form\Element\DateTime`` is meant to be paired with the ``Zend/Form/View/Helper/FormDateTime`` for `HTML5 inputs
+``Zend\Form\Element\DateTime`` is meant to be paired with the ``Zend\Form\View\Helper\FormDateTime`` for `HTML5 inputs
 with type datetime`_. This element adds filters and validators to it's input filter specification in order to
 validate HTML5 datetime input values on the server.
 

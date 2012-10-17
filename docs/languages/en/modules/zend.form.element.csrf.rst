@@ -3,7 +3,7 @@
 Csrf Element
 ^^^^^^^^^^^^
 
-``Zend\Form\Element\Csrf`` pairs with the ``Zend/Form/View/Helper/FormHidden`` to provide protection from *CSRF* attacks
+``Zend\Form\Element\Csrf`` pairs with the ``Zend\Form\View\Helper\FormHidden`` to provide protection from *CSRF* attacks
 on forms, ensuring the data is submitted by the user session that generated the form and not by a rogue script.
 Protection is achieved by adding a hash element to a form and verifying it when the form is submitted.
 

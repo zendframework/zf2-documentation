@@ -3,7 +3,7 @@
 DateTimeLocal Element
 ^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Form\Element\DateTimeLocal`` is meant to be paired with the ``Zend/Form/View/Helper/FormDateTimeLocal`` for `HTML5
+``Zend\Form\Element\DateTimeLocal`` is meant to be paired with the ``Zend\Form\View\Helper\FormDateTimeLocal`` for `HTML5
 inputs with type datetime-local`_. This element adds filters and validators to it's input filter specification in
 order to validate HTML5 a local datetime input values on the server.
 
