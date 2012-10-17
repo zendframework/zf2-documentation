@@ -69,9 +69,11 @@ By default, Zend Framework provides several useful module manager listeners.
 **Zend\\ModuleManager\\Listener\\InitTrigger**
    If a module class either implements ``Zend\ModuleManager\Feature\InitProviderInterface``, or simply defines an
    ``init()`` method, this listener will call ``init()`` and pass the current instance of
-   ``Zend\ModuleManager\ModuleManager`` as the sole parameter. The ``init()`` method is called for **every** module
-   implementing this feature, on **every** page request and should **only** be used for performing **lightweight**
-   tasks such as registering event listeners.
+   ``Zend\ModuleManager\ModuleManager`` as the sole parameter.
+
+   Like the ``OnBootstrapListener``, the ``init()`` method is called for **every** module implementing this feature, 
+   on **every** page request and should **only** be used for performing **lightweight** tasks such as registering 
+   event listeners.
 
 **Zend\\ModuleManager\\Listener\\LocatorRegistrationListener**
    If a module class implements ``Zend\ModuleManager\Feature\LocatorRegisteredInterface``, this listener will
@@ -122,7 +124,7 @@ By default, Zend Framework provides several useful module manager listeners.
    +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
    | Plugin Manager                            | Config Key             | Interface                             | Module Method                 |
    +===========================================+========================+=======================================+===============================+
-   | ``Zend\ServiceManager\ServiceManager``    | ``services``           | ``ServiceProviderInterface``          | ``getServiceConfig``          |
+   | ``Zend\ServiceManager\ServiceManager``    | ``service_manager``    | ``ServiceProviderInterface``          | ``getServiceConfig``          |
    +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
    | ``Zend\View\HelperPluginManager``         | ``view_helpers``       | ``ViewHelperProviderInterface``       | ``getViewHelperConfig``       |
    +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
@@ -132,36 +134,7 @@ By default, Zend Framework provides several useful module manager listeners.
    +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
 
    Configuration follows the examples in the :ref:`ServiceManager configuration
-   section <zend.service-manager.quick-start.config>`. As a brief recap, the
-   following configuration keys and values are allowed:
-
-   +------------------------+------------------------------------------------------------+
-   | Config Key             | Allowed values                                             |
-   +========================+============================================================+
-   | ``services``           | service name/instance pairs (these should likely be        |
-   |                        | defined only in ``Module`` classes)                        |
-   +------------------------+------------------------------------------------------------+
-   | ``invokables``         | service name/class name pairs of classes that may be       |
-   |                        | invoked without constructor arguments                      |
-   +------------------------+------------------------------------------------------------+
-   | ``factories``          | service names pointing to factories. Factories may be any  |
-   |                        | PHP callable, or a string class name of a class            |
-   |                        | implementing ``Zend\ServiceManager\FactoryInterface``, or  |
-   |                        | of a class implementing the ``__invoke`` method  (if a     |
-   |                        | callable is used, it should be defined only in ``Module``  |
-   |                        | classes)                                                   |
-   +------------------------+------------------------------------------------------------+
-   | ``abstract_factories`` | array of either concrete instances of                      |
-   |                        | ``Zend\ServiceManager\AbstractFactoryInterface``, or       |
-   |                        | string class names of classes implementing that interface  |
-   |                        | (if an instance is used, it should be defined only in      |
-   |                        | ``Module`` classes)                                        |
-   +------------------------+------------------------------------------------------------+
-   | ``initializers``       | array of PHP callables or string class names of classes    |
-   |                        | implementing ``Zend\ServiceManager\InitializerInterface``  |
-   |                        | (if a callable is used, it should be defined only in       |
-   |                        | ``Module`` classes)                                        |
-   +------------------------+------------------------------------------------------------+
+   section <zend.service-manager.quick-start.config>`.
 
    When working with plugin managers, you will be passed the plugin manager
    instance to factories, abstract factories, and initializers. If you need
