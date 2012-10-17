@@ -3,7 +3,7 @@
 Email Element
 ^^^^^^^^^^^^^
 
-``Zend\Form\Element\Email`` is meant to be paired with the ``Zend/Form/View/Helper/FormEmail`` for `HTML5 inputs with
+``Zend\Form\Element\Email`` is meant to be paired with the ``Zend\Form\View\Helper\FormEmail`` for `HTML5 inputs with
 type email`_. This element adds filters and validators to it's input filter specification in order to validate
 `HTML5 valid email address`_ on the server.
 

@@ -3,7 +3,7 @@
 Date Element
 ^^^^^^^^^^^^
 
-``Zend\Form\Element\Date`` is meant to be paired with the ``Zend/Form/View/Helper/FormDate`` for `HTML5 inputs with type
+``Zend\Form\Element\Date`` is meant to be paired with the ``Zend\Form\View\Helper\FormDate`` for `HTML5 inputs with type
 date`_. This element adds filters and validators to it's input filter specification in order to validate HTML5 date
 input values on the server.
 
