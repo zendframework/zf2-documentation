@@ -68,8 +68,6 @@ And a file called ``bootstrap.php``, also under ``zf-tutorial/tests/``:
 
     include __DIR__ . '/../init_autoloader.php';
 
-    ?>
-
 The contents of the bootstrap file are similar to those of
 ``zf-tutorial/public/index.php``, except we don't initialize the application.
 We'll be doing that in our tests to ensure that each test is executed against
