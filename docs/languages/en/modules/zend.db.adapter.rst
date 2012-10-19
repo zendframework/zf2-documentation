@@ -3,31 +3,32 @@
 Zend\\Db\\Adapter
 =================
 
-The Adapter object is the most important sub-component of Zend\\Db. It is responsible for adapting any code written
+The Adapter object is the most important sub-component of ``Zend\Db``. It is responsible for adapting any code written
 in or for Zend\\Db to the targeted php extensions and vendor databases. In doing this, it creates an abstraction
-layer for the PHP extensions, which is called the "Driver" portion of the Zend\\Db adapter. It also creates a
-lightweight abstraction layer for the various idiosyncrasies that each vendor specific platform might have in it's
-SQL/RDBMS implementation which is called the "Platform" portion of the adapter.
+layer for the PHP extensions, which is called the "Driver" portion of the ``Zend\Db`` adapter. It also creates a
+lightweight abstraction layer, called the "Platform" portion of the adapter, for the various idiosyncrasies that 
+each vendor-specific platform might have in its SQL/RDBMS implementation.
 
 .. _zend.db.adapter.quickstart:
 
-Creating an Adapter (Quickstart)
+Creating an Adapter - Quickstart
 --------------------------------
 
 Creating an adapter can simply be done by instantiating the ``Zend\Db\Adapter\Adapter`` class. The most common use
-case, while not the most explicit, is to pass an array of information to the Adapter.
+case, while not the most explicit, is to pass an array of configuration to the ``Adapter``.
 
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend\Db\Adapter\Adapter($driverArray);
+   $adapter = new Zend\Db\Adapter\Adapter($configArray);
 
 This driver array is an abstraction for the extension level required parameters. Here is a table for the
+key-value pairs that should be in configuration array.
 
-.. table:: Connection Array Keys
+.. table:: 
 
    +------------+----------------------+-------------------------------------------------------------+
-   |Name        |Required              |Notes                                                        |
+   |Key         |Is Required?          |Value                                                        |
    +============+======================+=============================================================+
    |driver      |required              |Mysqli, Sqlsrv, Pdo_Sqlite, Pdo_Mysql, Pdo=OtherPdoDriver    |
    +------------+----------------------+-------------------------------------------------------------+
@@ -44,10 +45,12 @@ This driver array is an abstraction for the extension level required parameters.
    |characterset|not generally required|the character set to use                                     |
    +------------+----------------------+-------------------------------------------------------------+
 
-\* other names will work as well. Effectively, if the PHP manual uses a particular naming, this naming will be
-supported by our Driver. For example, dbname in most cases will also work for 'database'. Another example is that
-in the case of Sqlsrv, UID will work in place of username. Which format you chose is up to you, but the above table
-represents the official abstraction names.
+.. note:: 
+
+   Other names will work as well. Effectively, if the PHP manual uses a particular naming, this naming will be
+   supported by our Driver. For example, dbname in most cases will also work for 'database'. Another example is that
+   in the case of Sqlsrv, UID will work in place of username. Which format you chose is up to you, but the above table
+   represents the official abstraction names.
 
 So, for example, a MySQL connection using ext/mysqli:
 
@@ -71,8 +74,8 @@ Another example, of a Sqlite connection via PDO:
        'database' => 'path/to/sqlite.db'
     ));
 
-It is important to know that by using this style of adapter creation, the Adapter will attempt to create any
-dependencies that were not explicitly provided. A Driver object will be created from the contents of the $driver
+It is important to know that by using this style of adapter creation, the ``Adapter`` will attempt to create any
+dependencies that were not explicitly provided. A Driver object will be created from the configuration
 array provided in the constructor. A Platform object will be created based off the type of Driver object that was
 instantiated. And lastly, a default ResultSet object is created and utilized. Any of these objects can be injected,
 to do this, see the next section.
@@ -88,8 +91,8 @@ The list of officially supported drivers:
 
 .. _zend.db.adapter.instantiating:
 
-Creating an Adapter (By Injecting Dependencies)
------------------------------------------------
+Creating an Adapter Using Dependency Injection
+----------------------------------------------
 
 The more expressive and explicit way of creating an adapter is by injecting all your dependencies up front.
 ``Zend\Db\Adapter\Adapter`` uses constructor injection, and all required dependencies are injected through the
