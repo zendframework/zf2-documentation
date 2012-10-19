@@ -53,7 +53,7 @@ translations to the file system, without touching your code. Patterns are added 
 
 The parameters for adding patterns is pretty similar to adding individual files, except that don't specify a locale
 and give the file location as sprtinf pattern. The locale is passed to the sprintf call, so you can either use %s
-oder %1$s where it should be substituted. So when youf translation files are located in
+or the %1$s where it should be substituted. So when your translation files are located in
 /var/messages/LOCALE/messages.mo, you would specify your pattern as /var/messages/%s/messages.mo.
 
 .. _zend.i18n.translating.supported-formats:

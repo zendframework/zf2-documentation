@@ -62,6 +62,8 @@ And a file called ``bootstrap.php``, also under ``zf-tutorial/tests/``:
 
 .. code-block:: php
 
+    <?php
+
     chdir(dirname(__DIR__));
 
     include __DIR__ . '/../init_autoloader.php';
