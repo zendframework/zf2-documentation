@@ -14,7 +14,7 @@ Simply put, we'll explain the act of injecting dependencies simply with this bel
 .. code-block:: php
    :linenos:
 
-   $b = new MovieLister(new MovieFinder));
+   $b = new MovieLister(new MovieFinder());
 
 Above, MovieFinder is a dependency of MovieLister, and MovieFinder was injected into MovieLister. If you are not
 familiar with the concept of DI, here are a couple of great reads: `Matthew Weier O'Phinney's Analogy`_, `Ralph
