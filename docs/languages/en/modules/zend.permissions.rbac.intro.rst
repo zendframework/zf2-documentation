@@ -39,4 +39,4 @@ Dynamic Assertions
 
 In certain situations simply checking a permission key for access may not be enough. For example, assume two users,
 Foo and Bar, both have *article.edit* permission. What's to stop Bar from editing Foo's articles? The answer is
-dynamic assertions which all you to specify extra runtime credentials that must pass for access to be granted.
+dynamic assertions which allow you to specify extra runtime credentials that must pass for access to be granted.
