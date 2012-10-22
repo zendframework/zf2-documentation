@@ -12,23 +12,22 @@ determine if the page is active.
 
 .. table:: MVC page options
 
-   +----------+---------------------+---------------+--------------------------------------------------------+
-   |Key       |Type                 |Default|Description                                                     |
-   +==========+=====================+=======+================================================================+
-   |action    |String               |NULL   |Action name to use when generating href to the page.            |
-   +----------+---------------------+-------+----------------------------------------------------------------+
-   |controller|String               |NULL   |Controller name to use when generating href to the page.        |
-   +----------+---------------------+-------+----------------------------------------------------------------+
-   |params    |Array                |array()|User params to use when generating href to the page.            |
-   +----------+---------------------+-------+----------------------------------------------------------------+
-   |route     |String               |NULL   |Route name to use when generating href to the page.             |
-   +----------+---------------------+-------+----------------------------------------------------------------+
-   |routeMatch|Zend\\Mvc\\Router    |NULL   |RouteInterface matches used for routing parameters and testing  |
-   |          |\\RouteMatch         |       |validity.                                                       |
-   +----------+---------------------+-------+----------------------------------------------------------------+
-   |router    |Zend\\Mvc\\Router    |NULL   |Router for assembling URLs                                      |
-   |          |\\RouteStackInterface|       |                                                                |
-   +----------+---------------------+-------+----------------------------------------------------------------+
+   +----------+---------------------------------------+-------+--------------------------------------------------------+
+   |Key       |Type                                   |Default|Description                                             |
+   +==========+=======================================+=======+========================================================+
+   |action    |String                                 |NULL   |Action name to use when generating href to the page.    |
+   +----------+---------------------------------------+-------+--------------------------------------------------------+
+   |controller|String                                 |NULL   |Controller name to use when generating href to the page.|
+   +----------+---------------------------------------+-------+--------------------------------------------------------+
+   |params    |Array                                  |array()|User params to use when generating href to the page.    |
+   +----------+---------------------------------------+-------+--------------------------------------------------------+
+   |route     |String                                 |NULL   |Route name to use when generating href to the page.     |
+   +----------+---------------------------------------+-------+--------------------------------------------------------+
+   |routeMatch|``Zend\Mvc\Router\RouteMatch``         |NULL   |RouteInterface matches used for routing parameters and  |
+   |          |                                       |       |testing validity.                                       |
+   +----------+---------------------------------------+-------+--------------------------------------------------------+
+   |router    |``Zend\Mvc\Router\RouteStackInterface``|NULL   |Router for assembling URLs                              |
+   +----------+---------------------------------------+-------+--------------------------------------------------------+
 
 .. note::
 
@@ -64,14 +63,14 @@ calling *$page->getHref()*.
    // getHref() returns /album/add
    $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'add',
-       'controller' => 'album'
+       'controller' => 'album',
    ));
 
    // getHref() returns /album/edit/id/1337
    $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'edit',
        'controller' => 'album',
-       'params'     => array('id' => 1337)
+       'params'     => array('id' => 1337),
    ));
 
 .. _zend.navigation.pages.mvc.example.isActive:
@@ -91,12 +90,12 @@ match object.
     */
    $page1 = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'index',
-       'controller' => 'album'
+       'controller' => 'album',
    ));
 
    $page2 = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'edit',
-       'controller' => 'album'
+       'controller' => 'album',
    ));
 
    $page1->isActive(); // returns true
@@ -104,7 +103,7 @@ match object.
 
    /**
     * Dispatched request:
-    * - controller: poalbumst
+    * - controller: album
     * - action:     edit
     * - id:         1337
     */
@@ -124,7 +123,7 @@ match object.
    $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'edit',
        'controller' => 'album',
-       'params'     => array('id' => null)
+       'params'     => array('id' => null),
    ));
 
    // returns false, because page requires the id param to be set in the request
@@ -153,16 +152,16 @@ the *URL* for the page.
       ),
       array(
          'controller' => 'Album\Controller\Album',
-         'action'     => 'index',
+         'action'     => 'show',
       )
    ));
    $router = new Zend\Mvc\Router\Http\TreeRouteStack();
-   $router->addRoute('default', $route);
+   $router->addRoute('albumShow', $route);
 
    // a page is created with a 'route' option
    $page = new Zend\Navigation\Page\Mvc(array(
-       'label'      => 'A news article',
-       'route'      => 'default',
+       'label'      => 'Show album',
+       'route'      => 'albumShow',
        'params'     => array('id' => 42)
    ));
 
