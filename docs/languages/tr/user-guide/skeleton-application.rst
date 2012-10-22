@@ -16,9 +16,9 @@ adını ``zf2-tutorial`` olarak değiştirin
 
 ZendSkeletonApplication, gerekliliklerini edinebilmek için Composer
 (http://getcomposer.org) ile kullanıma uygun olarak ayarlanmıştır. Bu durumda gereklilik
-Zend Framework 2'nin kendisidir.
+Zend Framework 2’nin kendisidir.
 
-Uygulamanıza Zend Framework 2'yi kurmak için ``zf2-tutorial`` dizini içinde konsola:
+Uygulamanıza Zend Framework 2’yi kurmak için ``zf2-tutorial`` dizini içinde konsola:
 
 .. code-block:: bash
 
@@ -44,7 +44,7 @@ yazın. Bu işlem biraz zaman alacak. Aşağıdakine benzer bir çıktı görece
         [RuntimeException]
           The process timed out.
 
-    Bağlantınız gerekli paketi zamanında indirebilmek için çok yavaş ve composer'ın süresi
+    Bağlantınız gerekli paketi zamanında indirebilmek için çok yavaş ve composer’ın süresi
     doldu demektir. Bundan kaçınmak için aşağıdaki komutu çalıştırmak yerine:
 
     .. code-block:: bash
@@ -68,12 +68,12 @@ Sanal Sunucu (Virtual host)
 Sanal sunucu oluşturmak genelde ``httpd.conf`` veya ``extra/httpd-vhosts.conf```
 dosyasında yapılır. Eğer ``httpd-vhosts.conf`` dosyasını kullanıyorsanız,
 ``httpd.conf`` içinde bu dosyanın çağırıldığına emin olun. Bazı Linux sürümleri
-(örn: Ubuntu) Apache'yi paketler. Böylelikle konfigürasyon dosyaları ``/etc/apache2``
+(örn: Ubuntu) Apache’yi paketler. Böylelikle konfigürasyon dosyaları ``/etc/apache2``
 içinde depolanır ve her sanal sunucu için ``/etc/apache2/sites-enabled`` dizininde
 ayrı bir dosya oluşturulabilir. Bu durumda sanal sunucu bloğunu
 ``/etc/apache2/sites-enabled/zf2-tutorial`` dizinine yerleştireceksiniz.
 
-``NameVirtualHost``'un tanımlanmış ve “\*:80” ya da benzeri olarak ayarlanmıl
+``NameVirtualHost``’un tanımlanmış ve “\*:80” ya da benzeri olarak ayarlanmıl
 olduğuna emin olun ve aşağıdaki satırlarla bir sanal sunucu tanımlayın
 
 .. code-block:: apache

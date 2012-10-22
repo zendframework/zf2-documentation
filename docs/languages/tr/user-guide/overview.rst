@@ -6,12 +6,12 @@ Zend Framework 2'ye Başlarken
 
 Bu ders serisi, Zend Framework 2 kullanımı hakkında başlangıç bilgisi vermesi
 amacıyla, Model-View-Controller mimarisi kullanılarak, veritabanı destekli basit
-bir uygulama oluşturulmasını kapsayacaktır. Dersler bittiğinde ZF2'nin nasıl işlediğini
+bir uygulama oluşturulmasını kapsayacaktır. Dersler bittiğinde ZF2’nin nasıl işlediğini
 öğrenebilmeniz için kurcalayabileceğiniz çalışan bir ZF2 uygulamasına sahip olacaksınız.
 
 .. note::
 
-    Bu ders boyunca bazı önemli unsurlar orjinalliğini koruması için ingilizce
+    Bu ders boyunca bazı önemli terimler orjinalliğini koruması için ingilizce
     anlamlarıyla kullanılacaktır.
 
 .. _user-guide.overview.assumptions:
@@ -20,17 +20,17 @@ Bazı varsayımlar
 ----------------
 
 Bu ders serisi Apache web sunucusu üzerinde PHP 5.3.10 ve PDO uzantısı ile ulaşılabilen
-bir MySQL sunucusuna sahip olduğunuzu varsayar. Apache kurulumunuz, mod_rewrite
+bir MySQL sunucusuna sahip olduğunuzu varsayar. Apache kurulumunuz, ``mod_rewrite``
 eklentisine kurulu ve çalışır halde sahip olması gerekiyor.
 
 Ayrıca Apache kurulumunuzun ``.htaccess`` dosyalarını desteklediğinden emin olmanız
-gerekiyor. Bunu sağlamak için genelde aşağıdaki değişikliği:
+gerekiyor. Bunu sağlamak için genelde aşağıdaki kısmı:
 
 .. code-block:: apache
 
     AllowOverride None
 
-to
+aşağıdaki ile değiştirip
 
 .. code-block:: apache
 

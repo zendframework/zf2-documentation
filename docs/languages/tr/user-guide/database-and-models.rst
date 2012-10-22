@@ -38,7 +38,7 @@ PHP'nin PDO sürücüsünün yardımı ile MySQL veritabanını kullanacağız.
     INSERT INTO album (artist, title)
         VALUES  ('Gotye',  'Making  Mirrors');
 
-(Test verisi, bu dersin yapım zamanında Amazon UK'un en çok satanlar listesinden
+(Test verisi, bu dersin yapım zamanında Amazon UK’un en çok satanlar listesinden
 alınmıştır!)
 
 Artık veritabanımızda biraz veri var. Şimdi bu veriler için basit bir model

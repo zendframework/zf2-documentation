@@ -6,28 +6,22 @@ Modüller
 
 Zend Framework 2 modül sistemi kullanır ve siz ana uygulamaya özel kodlarınızı
 modüller içinde organize edersiniz. İskelet uygulama tarafından sağlanan
-Application modülü bütün uygulamaya önyükleme, hata ve rota (route) konfigürasyonu
-sağlamak için kullanılır.
+Application modülü bütün uygulamaya önyükleme, hata ve route konfigürasyonu
+sağlamak için hazırlanmıştır. Bu modül genelde uygulama seviyesinde controller’lar,
+uygulamanın anasayfası için kullanılır. Fakat bu derslerde albüm listesinin
+ana sayfada olmasını istediğimiz için varsayılanı kullanmayacağız.
 
-Zend Framework 2 uses a module system and you organise your main
-application-specific code within each module. The Application module provided by
-the skeleton is used to provide bootstrapping, error and routing configuration to
-the whole application. It is usually used to provide application level
-controllers for, say, the home page of an application, but we are not going to
-use the default one provided in this tutorial as we want our album list to be
-the home page, which will live in our own module.
+Bütün kodlarımızı konfigürasyon ile birlikte, controller’lar, modeller, formlar ve
+view’leri kapsayacak ``Album`` adında bir modüle koyacağız. Ayrıca gerektikçe
+``Application`` modülünde ufak değişiklikler yapacağız.
 
-We are going to put all our code into the Album module which will contain our
-controllers, models, forms and views, along with configuration. We’ll also tweak
-the Application module as required.
+Şimdi gerekli olan dizinlerle başlayalım..
 
-Let’s start with the directories required.
+Album modülünü kurmak
+---------------------
 
-Setting up the Album module
----------------------------
-
-Start by creating a directory called ``Album`` under ``module`` with the following
-subdirectories to hold the module’s files:
+``module`` dizini altında ``Album`` isimli bir dizin oluşturun ve içindeki
+dizinleri aşağıdaki gibi oluşturun:
 
 .. code-block:: text
 
@@ -44,19 +38,19 @@ subdirectories to hold the module’s files:
                     /album
                         /album
 
-As you can see the ``Album`` module has separate directories for the different
-types of files we will have. The PHP files that contain classes within the
-``Album`` namespace live in the ``src/Album`` directory so that we can have
-multiple namespaces within our module should we require it. The view directory
-also has a sub-folder called ``album`` for our module’s view scripts.
+Gördüğünüz gibi ``Album`` modülü farklı tipteki dosyalar için farklı dizinlere
+sahip. ``Album`` isimuzayında yaşayacak olan PHP dosyalarındaki sınıflar
+``src/Album`` dizinine yerleştirilmeli. Böylece modülümüz içinde birden fazla
+isimuzayı (namespace) bulundurabiliriz. View dizini ayrıca ``album`` adında
+modülümüzün view scriptlerini barındırabileceği bir alt dizine sahip.
 
-In order to load and configure a module, Zend Framework 2 has a
-``ModuleManager``. This will look for ``Module.php`` in the root of the module
-directory (``module/Album``) and expect to find a class called ``Album\Module``
-within it. That is, the classes within a given module will have the namespace of
-the module’s name, which is the directory name of the module.
+Modülü yükleyip konfigüre edebilmek için, Zend Framework 2 ``ModuleManager``
+komponenti sağlıyor. Bu komponent, ana dizinin modül dizininde (``module/Album``)
+``Module.php`` dosyasına bakacak ve ``Album\Module`` isimli bir sınıf bulmayı
+umacak. Bunun sebebi, verilen modülün isimuzayının verilen modül ismiyle aynı
+olması gerektiğidir.
 
-Create ``Module.php`` in the ``Album`` module:
+``Album`` modülinde ``Module.php`` isimli bir dosya oluşturun:
 
 .. code-block:: php
 
@@ -85,47 +79,51 @@ Create ``Module.php`` in the ``Album`` module:
         }
     }
 
-The ``ModuleManager`` will call ``getAutoloaderConfig()`` and ``getConfig()``
-automatically for us.
+``ModuleManager``, ``getAutoloaderConfig()`` ve ``getConfig()`` metodlarını
+bizim için otomatik olarak çağıracaktır.
 
-Autoloading files
-^^^^^^^^^^^^^^^^
+Dosyaların otomatik olarak yüklenmesi (Autoloading)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Our ``getAutoloaderConfig()`` method returns an array that is compatible with
-ZF2’s ``AutoloaderFactory``. We configure it so that we add a class map file to
-the ``ClassmapAutoloader`` and also add this module’s namespace to the
-``StandardAutoloader``. The standard autoloader requires a namespace and the
-path where to find the files for that namespace. It is PSR-0 compliant and so
-classes map directly to files as per the `PSR-0 rules
+``getAutoloaderConfig()`` metodumuz, ZF2’nin ``AutoloaderFactory`` sınıfı ile
+uyumlu bir dizi değişken (array) döndürür. Bu dizi değişkeni düzenleyerek
+``ClassmapAutoloader`` için bir sınıf haritası dosyası tanımlıyoruz. Ayrıca
+bu modülün isimuzayını (namespace) ``StandardAutoloader``’a ekliyoruz. Standart
+otomatik yükleyici (Autoloader), bir isim uzayına ve bu isim uzayını nerede
+bulacağını ister. PSR-0 uyumludur ve sınıf isimleri direkt olarak dosyalarını
+işaret eder. `PSR-0 kuralları
 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_.
 
-As we are in development, we don’t need to load files via the classmap, so we provide an empty array for the
-classmap autoloader. Create ``autoload_classmap.php`` with these contents:
+Geliştirme süreci içinde olduğumuzdan dosyaları classmap ile yüklememiz gerekmiyor.
+Yani boş bir dizi değişken (array) döndüren bir dosya oluşturmamız yeterli.
+``autoload_classmap.php`` adında bir dosya oluşturun ve içine aşağıdaki kodu
+ekleyin:
 
 .. code-block:: php
 
     // module/Album/autoload_classmap.php:
     return array();
 
-As this is an empty array, whenever the autoloader looks for a class within the
-``Album`` namespace, it will fall back to the to ``StandardAutoloader`` for us.
+Bu dosya içinde boş bir dizi değişken (array) verdiğimiz için otomatik yükleyici
+ne zaman ``Album`` isimuzayı içinde bir sınıfa bakmak istese ``StandardAutoloader``’ı
+fallback olarak kullanır.
 
 .. note::
 
-    Note that as we are using Composer, as an alternative, you could not implement
-    ``getAutoloaderConfig()`` and instead add ``"Application":
-    "module/Application/src"`` to the ``psr-0`` key in ``composer.json``. If you go
-    this way, then you need to run ``php composer.phar update`` to update the
-    composer autoloading files.
+    Composer’ı kullandığımız için, alternatif olarak ``getAutoloaderConfig()``
+    metodunu uygulamak yerine ``"Application": "module/Application/src"``
+    tanımını ``composer.json`` dosyasında ``psr-0`` anahtarı altına ekleyebilirsiniz.
+    Eğer bu şekilde devam ederseniz, ``php composer.phar update`` komutunu
+    Composer’ın otomatik yükleme dosyalarını güncellemesi için çalıştırmalısınız.
 
-Configuration
+Konfigürasyon
 -------------
 
-Having registered the autoloader, let’s have a quick look at the ``getConfig()``
-method in ``Album\Module``.  This method simply loads the
-``config/module.config.php`` file.
+Otomatik yükleyiciyi kayıt ettiğimize göre şimdi ``getConfig()`` metoduna hızlı
+bir bakış atalım. Bu metod basit olarak ``config/module.config.php`` dosyasını
+yüklüyor.
 
-Create the following configuration file for the ``Album`` module:
+``Album`` modülü için aşağıdaki konfigürasyon dosyasını oluşturun:
 
 .. code-block:: php
 
@@ -143,24 +141,24 @@ Create the following configuration file for the ``Album`` module:
         ),
     );
 
-The config information is passed to the relevant components by the
-``ServiceManager``.  We need two initial sections: ``controllers`` and
-``view_manager``. The controllers section provides a list of all the controllers
-provided by the module. We will need one controller, ``AlbumController``, which
-we’ll reference as ``Album\Controller\Album``. The controller key must
-be unique across all modules, so we prefix it with our module name.
+Konfigürasyon bilgisi, ilgili komponentlere ``ServiceManager`` tarafından
+aktarılır. Bize iki temel bölüm gerekiyor: ``controllers`` ve
+``view_manager``. Controllers bölümü modül tarafından sağlanan controller’ların
+listesini tutar. Biz, ``AlbumController`` adında ``Album\Controller\Album``’ün
+refere ettiği tek bir controller’a ihtiyaç duyacağız. Controller anahtarı
+tüm modüller içinde eşsiz olmalıdır. Bu sebeple önüne modülümüzün adını ekledik.
 
-Within the ``view_manager`` section, we add our view directory to the
-``TemplatePathStack`` configuration. This will allow it to find the view scripts for
-the ``Album`` module that are stored in our ``view/`` directory.
+``view_manager`` bölümü içinde, ``TemplatePathStack`` konfigürasyonuna view
+dizinimizi bildireceğiz. Bu durum ``Album`` modülünün view scriptlerinin
+``view/`` dizininde bulunmasını sağlıyor.
 
-Informing the application about our new module
-----------------------------------------------
+Uygulamaya yeni modülümüz hakkında bilgilendirmek
+-------------------------------------------------
 
-We now need to tell the ``ModuleManager`` that this new module exists. This is done
-in the application’s ``config/application.config.php`` file which is provided by the
-skeleton application. Update this file so that its ``modules`` section contains the
-``Album`` module as well, so the file now looks like this:
+Şimdi ``ModuleManager``’a bu yeni modülün varlığını bildirmemiz gerekiyor. Bu işlem
+iskelet uygulama tarafından sağlanan ``config/application.config.php`` dosyası
+içinde yapılır. Bu dosyayı güncelleyerek ``modules`` bölümüne ``Album`` modülünü
+ekleyin. İşlemden sonra dosya aşağıdaki gibi gözükecektir:
 
 (Changes required are highlighted using comments.)
 
@@ -184,7 +182,7 @@ skeleton application. Update this file so that its ``modules`` section contains 
         ),
     );
 
-As you can see, we have added our ``Album`` module into the list of modules
-after the ``Application`` module.
+Gördüğünüz gibi ``Album`` modülümüzü ``Application`` modülünden sonra
+modül listesine ekledik.
 
-We have now set up the module ready for putting our custom code into it.
+Modülümüz artık kendi kodlarımızı içine ekleyebilmemiz için hazır

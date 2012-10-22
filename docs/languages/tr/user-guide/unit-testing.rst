@@ -11,10 +11,10 @@ yapıtığınızda uygulamanızın komponentlerini otomatik olarak test edecek v
 birşey çalışmadığında testleri yazdığınız zamanki gibi çalışmadığını
 söyleyecektir.
 
-Zend Framework 2 API'si `PHPUnit <http://phpunit.de/>`_ kullanıyor aynı şekilde
+Zend Framework 2 API’si `PHPUnit <http://phpunit.de/>`_ kullanıyor aynı şekilde
 bu ders uygulamasıda... Birim testlerinin ayrıntılı anlatımı bu ders kapsamının
 dışında olduğu için sadece takip eden sayfalardaki komponentlerin örnek
-testlerini sağlayacağız. Bu ders, PHPUnit'e sahip olduğunuzu varsayar.
+testlerini sağlayacağız. Bu ders, PHPUnit’e sahip olduğunuzu varsayar.
 
 Testlerin dizinini ayarlamak
 ----------------------------
@@ -109,7 +109,7 @@ dosyaya ekleyin:
         }
     }
 
-Bu kodlarda neler olup bittiğinin ayrıntılı açıklaması için Tom Oram'ın
+Bu kodlarda neler olup bittiğinin ayrıntılı açıklaması için Tom Oram’ın
 `Unit Testing a ZF 2 Controller <http://devblog.x2k.co.uk/unit-testing-a-zend-framework-2-controller/>`_
 yazısını okuyabilirsiniz..
 
@@ -128,7 +128,7 @@ yazısını okuyabilirsiniz..
         $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
     }
 
-Bu test, anasayfa cevabının HTTP statüsünün 200 olduğunu ve controller'ın return
+Bu test, anasayfa cevabının HTTP statüsünün 200 olduğunu ve controller’ın return
 değerinin ``Zend\View\Model\ViewModel`` oturumu olup olmadığını doğrular.
 
 Testing
