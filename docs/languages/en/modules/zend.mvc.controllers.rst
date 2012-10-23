@@ -52,7 +52,7 @@ A controller that has the ``MvcEvent`` injected, then, can retrieve or inject th
    $matches = $this->getEvent()->getRouteMatch();
    $id      = $matches->getParam('id', false);
    if (!$id) {
-       $this->getResponse();
+       $response = $this->getResponse();
        $response->setStatusCode(500);
        $this->getEvent()->setResult('Invalid identifier; cannot complete request');
        return;
