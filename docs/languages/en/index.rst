@@ -658,7 +658,6 @@ Copyright
 |IndicesAndTables|
 ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
+* :ref:`index`
 * :ref:`search`
 
