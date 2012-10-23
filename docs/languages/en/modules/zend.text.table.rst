@@ -99,6 +99,7 @@ This will result in the following output:
 
    ┌──────────┬────────────────────┐
    │Zend      │Framework           │
+   |──────────|────────────────────|
+   │Zend      │Framework           │
    └──────────┴────────────────────┘
-
 
