@@ -110,6 +110,7 @@ match object.
    $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'edit',
        'controller' => 'album',
+       'params'     => array('id' => 1337),
    ));
 
    // returns true, because request has the same controller and action
