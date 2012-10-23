@@ -41,7 +41,7 @@ Adding roles directly to RBAC with the default ``Zend\Permission\Rbac\Role``.
     use Zend\Permissions\Rbac\Rbac;
 
     $rbac = new Rbac();
-    $rbac->addRole($foo);
+    $rbac->addRole('foo');
 
     var_dump($rbac->hasRole('foo')); // true
 
@@ -59,7 +59,7 @@ Handling roles with children.
     $bar  = new Role('bar');
 
     // 1 - Add a role with child role directly with instantiated objects.
-    $foo->addChild($foo);
+    $foo->addChild($bar);
     $rbac->addRole($foo);
 
     // 2 - Same as one, only via rbac container.
@@ -168,7 +168,6 @@ Performing the same as above with a Closure.
 
     <?php
     // assume same variables from previous example
-
 
     $assertion = function($rbac) use ($user, $news) {
         return $user->getId() == $news->getUserId();
