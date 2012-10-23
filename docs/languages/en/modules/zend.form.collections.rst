@@ -682,10 +682,10 @@ element by validating it, filtering it and retrieving it:
 .. image:: ../images/zend.form.collections.dynamic-elements.result.png
 
 Of course, if you don't want to allow adding elements in a collection, you must
-to set the option ``allow_add`` to ```false`. This way, even if new elements are
-added, they won't be validated and, hence, not added to the entity. Here is how
-you do it (and, as we don't want elements to be added, we don't need the data
-template, either):
+to set the option ``allow_add`` to ``false``. This way, even if new elements are
+added, they won't be validated and hence, not added to the entity. Also, as we don't 
+want elements to be added, we don't need the data template, either. Here's how
+you do it:
 
 .. code-block:: php
 
@@ -703,7 +703,7 @@ template, either):
         )
     ));
 
-There are some limitations of this capability:
+There are some limitations to this capability:
 
 - Although you can add new elements and remove them, you *CANNOT* remove more
   elements in a collection than the initial count (for instance, if your code
@@ -825,7 +825,7 @@ validated too (but notice that I didn't write the submit element, as we don't
 care about it). You can recursively select the elements you want.
 
 There is one simple limitation currently: validation groups for collections are
-set on a per-collection basis, not element in a collection basis. This means you
+set on a per-collection basis, not per-element in a collection basis. This means you
 cannot say, "validate the name input for the first element of the categories
 collection, but don't validate it for the second one." But, honestly, this is
 really an edge-case.
