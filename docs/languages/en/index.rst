@@ -169,7 +169,7 @@
    modules/zend.permissions.acl.refining
    modules/zend.permissions.acl.advanced
    modules/zend.permissions.rbac.intro
-   modules/zend.permissions.rbac.quick-start
+   modules/zend.permissions.rbac.methods
    modules/zend.permissions.rbac.examples
    modules/zend.server
    modules/zend.server.reflection
