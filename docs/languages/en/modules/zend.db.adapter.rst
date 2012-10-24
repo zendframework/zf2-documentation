@@ -42,7 +42,7 @@ key-value pairs that should be in configuration array.
    +------------+----------------------+-------------------------------------------------------------+
    |port        |not generally required|the port to connect to (if applicable)                       |
    +------------+----------------------+-------------------------------------------------------------+
-   |characterset|not generally required|the character set to use                                     |
+   |charset     |not generally required|the character set to use                                     |
    +------------+----------------------+-------------------------------------------------------------+
 
 .. note:: 
