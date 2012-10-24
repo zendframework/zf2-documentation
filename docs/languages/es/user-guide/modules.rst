@@ -5,8 +5,8 @@ Módulos
 #######
 
 Zend Framework 2 utiliza un sistema de módulos para organizar el código específico
-para cada etapa en su correspondiente módulo. El módulo Application que provee la
-aplicación esqueleto se utiliza para proveer la configuración de bootstrapping, error y
+en su correspondiente módulo. El módulo Application que provee la aplicación
+esqueleto se utiliza para proveer la configuración de inicialización, error y
 enrutamiento para toda la aplicación. Se utiliza habitualmente para proveer controladores
 de nivel de aplicación para, se podría decir, la página de inicio de una aplicación, pero 
 no vamos a utilizar la que viene por defecto en este tutorial, pues queremos que la página
@@ -84,18 +84,19 @@ El ``ModuleManager`` llamará a ``getAutoloaderConfig()`` y ``getConfig()``
 automáticamente por nosotros.
 
 Autoload de archivos
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 Nuestro método ``getAutoloaderConfig()`` devuelve un array que es compatible con
-el método ``AutoloaderFactory`` de ZF2. Lo configuramos para agregar un archivo classmap al
-``ClassmapAutoloader``, y además agregar el namespace del módulo a
+el método ``AutoloaderFactory`` de ZF2. Lo configuramos para agregar un archivo
+classmap al ``ClassmapAutoloader``, y además agregar el namespace del módulo a
 ``StandardAutoloader``. El autoloader estándar requiere un namespace y la
-ruta donde encontrar los archivos de ese namespace. Es obediente con PSR-0 por lo que
-las clases se referencian directamente a sus archivos por las reglas PSR-0
+ruta donde encontrar los archivos de ese namespace. Es compatible con PSR-0 por
+lo que las clases se referencian directamente a sus archivos por las reglas PSR-0
 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_.
 
-Como estamos en modo desarrollo, no necesitamos cargar archivos a través del classmap, por lo que proveemos un array
-vacío para el classmap autoloader. Creamos ``autoload_classmap.php`` con este contenido:
+Como estamos en modo desarrollo, no necesitamos cargar archivos a través del classmap,
+por lo que proveemos un array vacío para el classmap autoloader. Creamos
+``autoload_classmap.php`` con este contenido:
 
 .. code-block:: php
 
