@@ -1,32 +1,30 @@
 .. _user-guide.skeleton-application:
 
-#######################################
-Getting started: A skeleton application
-#######################################
+###################################
+Comenzando: la aplicación esqueleto
+###################################
 
-In order to build our application, we will start with the
-`ZendSkeletonApplication <https://github.com/zendframework/ZendSkeletonApplication>`_ 
-available on `github <https://github.com/>`_. 
-Go to https://github.com/zendframework/ZendSkeletonApplication and click the “Zip”
-button. This will download a file with a name like
-``zendframework-ZendSkeletonApplication-zfrelease-2.0.0beta5-2-gc2c7315.zip`` or
-similar. 
+Para construir nuestra aplicación, vamos a comenzar con 
+`ZendSkeletonApplication <https://github.com/zendframework/ZendSkeletonApplication>`_
+disponible en `github <https://github.com/>`_.
+Vaya a https://github.com/zendframework/ZendSkeletonApplication y haga clic en el botón “Zip”.
+Esto descargará un archivo con un nombre similar a
+``zendframework-ZendSkeletonApplication-zfrelease-2.0.0beta5-2-gc2c7315.zip``.
 
-Unzip this file into the directory where you keep all your vhosts and rename the
-resultant directory to ``zf2-tutorial``. 
+Descomprima este archivo en el directorio donde mantiene todos sus vhosts y renombre el
+directorio resultante a ``zf2-tutorial``.
 
-ZendSkeletonApplication is set up to use Composer (http://getcomposer.org) to
-resolve its dependencies. In this case, the dependency is Zend Framework 2
-itself.
+ZendSkeletonApplication está montado para utilizar Composer (http://getcomposer.org) para
+resolver sus dependencias. En este caso, la dependencia es Zend Framework 2 en sí mismo.
 
-To install Zend Framework 2 into our application we simply type:
+Para instalar Zend Framework 2 en nuestra aplicación simplemente escribimos:
 
 .. code-block:: bash
 
     php composer.phar self-update
     php composer.phar install
 
-from the ``zf2-tutorial`` folder. This takes a while. You should see an output like:
+desde el directorio ``zf2-tutorial``. Esto lleva un tiempo. Debería ver una salida como:
 
 .. code-block:: bash
 
@@ -38,41 +36,41 @@ from the ``zf2-tutorial`` folder. This takes a while. You should see an output l
 
 .. note::
 
-    If you see this message: 
+    Si ve este mensaje:
 
     .. code-block:: bash
 
         [RuntimeException]      
           The process timed out. 
 
-    then your connection was too slow to download the entire package in time, and composer
-    timed out. To avoid this, instead of running:
+    entonces su conexión fue demasiado lenta para descargar el paquete completo a tiempo,
+    y composer expiró. Para evitar esto, en vez de ejecutar:
 
     .. code-block:: bash
 
         php composer.phar install
 
-    run instead:
+    Ejecute:
 
     .. code-block:: bash
 
         COMPOSER_PROCESS_TIMEOUT=5000 php composer.phar install
 
-We can now move on to the virtual host.
+Ahora podemos movernos al virtual host.
 
 Virtual host
 ------------
 
-You now need to create an Apache virtual host for the application and edit your
-hosts file so that http://zf2-tutorial.localhost will serve ``index.php`` from the
-``zf2-tutorial/public`` directory.
+Ahora necesita crear un virtual host Apache para la aplicación y editar su
+archivo hosts para que http://zf2-tutorial.localhost acceda a ``index.php`` desde el
+directorio ``zf2-tutorial/public``.
 
-Setting up the virtual host is usually done within ``httpd.conf`` or
-``extra/httpd-vhosts.conf``. (If you are using ``httpd-vhosts.conf``, ensure
-that this file is included by your main ``httpd.conf`` file.) 
+Para configurar el virtual host normalmente se realiza a través del archivo ``httpd.conf`` o
+``extra/httpd-vhosts.conf``. (Si está utilizando ``httpd-vhosts.conf``, asegúrese
+de que este archivo esté incluido en el archivo principal ``httpd.conf``.)
 
-Ensure that ``NameVirtualHost`` is defined and set to “\*:80” or similar, and then
-define a virtual host along these lines:
+Asegúrese de que ``NameVirtualHost`` esté definido y apuntando a “\*:80” o similar, y después
+defina un virtual host según las siguientes líneas:
 
 .. code-block:: apache
 
@@ -88,28 +86,28 @@ define a virtual host along these lines:
         </Directory>
     </VirtualHost>
 
-Make sure that you update your ``/etc/hosts`` or
-``c:\windows\system32\drivers\etc\hosts`` file so that ``zf2-tutorial.localhost``
-is mapped to ``127.0.0.1``. The website can then be accessed using
-http://zf2-tutorial.localhost.  
+Asegúrese de que actualiza su fichero ``/etc/hosts`` o 
+``c:\windows\system32\drivers\etc\hosts`` para que ``zf2-tutorial.localhost``
+apunte a ``127.0.0.1``. De esta manera, el sitio web puede ser accedido usando
+http://zf2-tutorial.localhost. 
 
 .. code-block:: txt
 
     127.0.0.1               zf2-tutorial.localhost localhost
 
-If you’ve done it right, you should see something like this:
+Si lo hizo correctamente, debería ver algo parecido a esto:
 
 .. image:: ../images/user-guide.skeleton-application.hello-world.png
     :width: 940 px
 
-To test that your ``.htaccess`` file is working, navigate to
-http://zf2-tutorial.localhost/1234 and you should see this:
+Para verificar que el archivo ``.htaccess`` funciona, navegue a
+http://zf2-tutorial.localhost/1234 y debería ver esto:
 
 .. image:: ../images/user-guide.skeleton-application.404.png
     :width: 940 px
 
-If you see a standard Apache 404 error, then you need to fix ``.htaccess`` usage
-before continuing.
+Si lo que ve es un error estándar 404 de Apache, entonces necesita arreglar ``.htaccess``
+antes de continuar.
 
-You now have a working skeleton application and we can start adding the specifics
-for our application.
+Ahora tiene una aplicación esqueleto funcionando y podemos comenzar a añadir contenido
+a nuestra aplicación.
