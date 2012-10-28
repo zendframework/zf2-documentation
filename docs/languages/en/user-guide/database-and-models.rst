@@ -118,7 +118,7 @@ But first, does the Album model we have so far work the way we expect it to? Let
             $album->exchangeArray($data);
 
             $this->assertSame($data['artist'], $album->artist, '"artist" was not set correctly');
-            $this->assertSame($data['id'], $album->id, '"title" was not set correctly');
+            $this->assertSame($data['id'], $album->id, '"id" was not set correctly');
             $this->assertSame($data['title'], $album->title, '"title" was not set correctly');
         }
 
@@ -132,7 +132,7 @@ But first, does the Album model we have so far work the way we expect it to? Let
             $album->exchangeArray(array());
 
             $this->assertNull($album->artist, '"artist" should have defaulted to null');
-            $this->assertNull($album->id, '"title" should have defaulted to null');
+            $this->assertNull($album->id, '"id" should have defaulted to null');
             $this->assertNull($album->title, '"title" should have defaulted to null');
         }
 
