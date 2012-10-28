@@ -27,12 +27,11 @@ the following subdirectories:
 .. code-block:: text
 
     zf2-tutorial/
-        /tests
-            /module
-                /Application
-                    /src
-                        /Application
-                            /Controller
+        /module
+            /Application
+                /test
+                    /ApplicationTest
+                        /Controller
 
 The structure of the ``tests`` directory matches exactly with that of the
 project's source files, and it will allow you to keep your tests
@@ -43,49 +42,172 @@ IndexController for the Application module.
 Bootstrapping your tests
 ------------------------
 
-Next, create a file called ``phpunit.xml`` under ``zf-tutorial/tests/``:
+Next, create a file called ``phpunit.xml`` under ``zf2-tutorial/module/Application/test``:
 
 .. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
 
-    <phpunit bootstrap="bootstrap.php">
+    <phpunit bootstrap="Bootstrap.php">
         <testsuites>
             <testsuite name="zf2tutorial">
-                <directory>./</directory>
+                <directory>./AplicationTest</directory>
             </testsuite>
         </testsuites>
     </phpunit>
 
 
-And a file called ``bootstrap.php``, also under ``zf-tutorial/tests/``:
+A file called ``Bootstrap.php``, also under ``zf-tutorial/module/Application/test``:
+This is a Bootstrap written by Evan Coury which can just be dropped in, only the namespace needs changing.
 
 .. code-block:: php
 
     <?php
+    namespace ApplicationTest;//Change this namespace for your test
 
-    chdir(dirname(__DIR__));
+    use Zend\Loader\AutoloaderFactory;
+    use Zend\Mvc\Service\ServiceManagerConfig;
+    use Zend\ServiceManager\ServiceManager;
+    use Zend\Stdlib\ArrayUtils;
+    use RuntimeException;
 
-    include __DIR__ . '/../init_autoloader.php';
+    error_reporting(E_ALL | E_STRICT);
+    chdir(__DIR__);
 
-The contents of the bootstrap file are similar to those of
-``zf-tutorial/public/index.php``, except we don't initialize the application.
-We'll be doing that in our tests to ensure that each test is executed against
-a freshly initialized instance of our application without any previous tests
-influencing the current test's results.
+    class Bootstrap
+    {
+        protected static $serviceManager;
+        protected static $config;
+        protected static $bootstrap;
+
+        public static function init()
+        {
+            // Load the user-defined test configuration file, if it exists; otherwise, load
+            if (is_readable(__DIR__ . '/TestConfig.php')) {
+                $testConfig = include __DIR__ . '/TestConfig.php';
+            } else {
+                $testConfig = include __DIR__ . '/TestConfig.php.dist';
+            }
+
+            $zf2ModulePaths = array();
+
+            if(isset($testConfig['module_listener_options']['module_paths'])) {
+                $modulePaths = $testConfig['module_listener_options']['module_paths'];
+                foreach($modulePaths as $modulePath) {
+                    if (($path = static::findParentPath($modulePath)) ) {
+                        $zf2ModulePaths[] = $path;
+                    }
+                }
+            }
+
+            $zf2ModulePaths  = implode(PATH_SEPARATOR, $zf2ModulePaths) . PATH_SEPARATOR;
+            $zf2ModulePaths .= getenv('ZF2_MODULES_TEST_PATHS') ?: (defined('ZF2_MODULES_TEST_PATHS') ? ZF2_MODULES_TEST_PATHS : '');
+
+            static::initAutoloader();
+
+            // use ModuleManager to load this module and it's dependencies
+            $baseConfig = array(
+                'module_listener_options' => array(
+                    'module_paths' => explode(PATH_SEPARATOR, $zf2ModulePaths),
+                ),
+            );
+
+            $config = ArrayUtils::merge($baseConfig, $testConfig);
+
+            $serviceManager = new ServiceManager(new ServiceManagerConfig());
+            $serviceManager->setService('ApplicationConfig', $config);
+            $serviceManager->get('ModuleManager')->loadModules();
+
+            static::$serviceManager = $serviceManager;
+            static::$config = $config;
+        }
+
+        public static function getServiceManager()
+        {
+            return static::$serviceManager;
+        }
+
+        public static function getConfig()
+        {
+            return static::$config;
+        }
+
+        protected static function initAutoloader()
+        {
+            $vendorPath = static::findParentPath('vendor');
+
+            if (is_readable($vendorPath . '/autoload.php')) {
+                $loader = include $vendorPath . '/autoload.php';
+            } else {
+                $zf2Path = getenv('ZF2_PATH') ?: (defined('ZF2_PATH') ? ZF2_PATH : (is_dir($vendorPath . '/ZF2/library') ? $vendorPath . '/ZF2/library' : false));
+
+                if (!$zf2Path) {
+                    throw new RuntimeException('Unable to load ZF2. Run `php composer.phar install` or define a ZF2_PATH environment variable.');
+                }
+
+                include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
+
+            }
+
+            AutoloaderFactory::factory(array(
+                'Zend\Loader\StandardAutoloader' => array(
+                    'autoregister_zf' => true,
+                    'namespaces' => array(
+                        __NAMESPACE__ => __DIR__ . '/' . __NAMESPACE__,
+                    ),
+                ),
+            ));
+        }
+
+        protected static function findParentPath($path)
+        {
+            $dir = __DIR__;
+            $previousDir = '.';
+            while (!is_dir($dir . '/' . $path)) {
+                $dir = dirname($dir);
+                if ($previousDir === $dir) return false;
+                $previousDir = $dir;
+            }
+            return $dir . '/' . $path;
+        }
+    }
+
+    Bootstrap::init();
+
+And a file called TestConfig.php.dist
+
+.. code-block:: php
+
+    <?php
+    return array(
+        'modules' => array(
+            'Application',
+        ),
+        'module_listener_options' => array(
+            'config_glob_paths'    => array(
+                '../../../config/autoload/{,*.}{global,local}.php',
+            ),
+            'module_paths' => array(
+                'module',
+                'vendor',
+            ),
+        ),
+    );
+
+This is basically the same as config/application.config.php but we define only the modules which are required for this test
 
 Your first Controller test
 --------------------------
 
 Next, create ``IndexControllerTest.php`` under
-``zf-tutorial/tests/module/Application/src/Application/Controller`` with
+``zf-tutorial/module/Application/test/ApplicationTest/Controller`` with
 the following contents:
 
 .. code-block:: php
 
     <?php
 
-    namespace Application\Controller;
+    namespace ApplicationTest\Controller;
 
     use Application\Controller\IndexController;
     use Zend\Http\Request;
@@ -104,15 +226,19 @@ the following contents:
 
         protected function setUp()
         {
-            $bootstrap        = \Zend\Mvc\Application::init(include 'config/application.config.php');
+            $serviceManager = Bootstrap::getServiceManager();
             $this->controller = new IndexController();
             $this->request    = new Request();
             $this->routeMatch = new RouteMatch(array('controller' => 'index'));
-            $this->event      = $bootstrap->getMvcEvent();
+            $this->event      = new MvcEvent();
+            $config = $serviceManager->get('Config');
+            $routerConfig = isset($config['router']) ? $config['router'] : array();
+            $router = HttpRouter::factory($routerConfig);
+
+            $this->event->setRouter($router);
             $this->event->setRouteMatch($this->routeMatch);
             $this->controller->setEvent($this->event);
-            $this->controller->setEventManager($bootstrap->getEventManager());
-            $this->controller->setServiceLocator($bootstrap->getServiceManager());
+            $this->controller->setServiceLocator($serviceManager);
         }
     }
 
@@ -135,7 +261,6 @@ Now, add the following function to the ``IndexControllerTest`` class:
         $response = $this->controller->getResponse();
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
     }
 
 The test is verifying that the homepage responds with HTTP status code 200 and

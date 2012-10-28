@@ -52,7 +52,7 @@ actions. This is the updated module config file with the new code highlighted.
 .. code-block:: php
     :emphasize-lines: 9-27
 
-    // module/Album/config/module.config.php:
+    <?php
     return array(
         'controllers' => array(
             'invokables' => array(
@@ -133,11 +133,11 @@ In this case ``{action name}`` should start with a lower case letter.
     standard ``AbstractActionController``, but if you’re intending to write a
     RESTful web service, ``AbstractRestfulController`` may be useful.
 
-Let’s go ahead and create our controller class:
+Let’s go ahead and create our controller class ``IndexController.php`` at ``zf2-tutorials/module/Album/src/Album/Controller`` :
 
 .. code-block:: php
 
-    // module/Album/src/Album/Controller/AlbumController.php:
+    <?php
     namespace Album\Controller;
 
     use Zend\Mvc\Controller\AbstractActionController;
@@ -208,20 +208,42 @@ Write the tests
 
 Our Album controller doesn't do much yet, so it should be easy to test.
 
-Create ``zf2-tutorial/tests/module/Album/src/Album/Controller/AlbumControllerTest.php``
+Create a directory structure like described in the previous section `Unit Testing<http://framework.zend.com/manual/2.0/en/user-guide/routing-and-controllers.html/>
+
+Create the follwing subdirectories:
+
+.. code-block:: text
+
+    zf2-tutorial/
+        /module
+            /Album
+                /test
+                    /AlbumTest
+                        /Controller
+
+
+Add the 3 files as described in unit Testing
+* ``Bootstrap.php``
+* ``phpunit.xml``
+* ``TestConfig.php.dist``
+
+Remeber here to change the namespace in ``Bootstrap.php`` and change the Module ``Application`` to ``Album in the ``TestConfig.php.dist``.
+In phpunit.xml change the directory to point at `AlbumTest`
+
+Create ``zf2-tutorial/Album/module/Album/test/AlbumTest/Controller/AlbumControllerTest.php```
 with the following contents:
 
 .. code-block:: php
 
-    <?php
+    namespace AlbumTest\Controller;
 
-    namespace Album\Controller;
-
+    use AlbumTest\Bootstrap;
     use Album\Controller\AlbumController;
     use Zend\Http\Request;
     use Zend\Http\Response;
     use Zend\Mvc\MvcEvent;
     use Zend\Mvc\Router\RouteMatch;
+    use Zend\Mvc\Router\Http\TreeRouteStack as HttpRouter;
     use PHPUnit_Framework_TestCase;
 
     class AlbumControllerTest extends PHPUnit_Framework_TestCase
@@ -232,6 +254,22 @@ with the following contents:
         protected $routeMatch;
         protected $event;
 
+        protected function setUp()
+        {
+            $serviceManager = Bootstrap::getServiceManager();
+            $this->controller = new AlbumController();
+            $this->request    = new Request();
+            $this->routeMatch = new RouteMatch(array('controller' => 'index'));
+            $this->event      = new MvcEvent();
+            $config = $serviceManager->get('Config');
+            $routerConfig = isset($config['router']) ? $config['router'] : array();
+            $router = HttpRouter::factory($routerConfig);
+            $this->event->setRouter($router);
+            $this->event->setRouteMatch($this->routeMatch);
+            $this->controller->setEvent($this->event);
+            $this->controller->setServiceLocator($serviceManager);
+        }
+
         public function testAddActionCanBeAccessed()
         {
             $this->routeMatch->setParam('action', 'add');
@@ -240,7 +278,6 @@ with the following contents:
             $response = $this->controller->getResponse();
 
             $this->assertEquals(200, $response->getStatusCode());
-            $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
         }
 
         public function testDeleteActionCanBeAccessed()
@@ -251,7 +288,6 @@ with the following contents:
             $response = $this->controller->getResponse();
 
             $this->assertEquals(200, $response->getStatusCode());
-            $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
         }
 
         public function testEditActionCanBeAccessed()
@@ -262,7 +298,6 @@ with the following contents:
             $response = $this->controller->getResponse();
 
             $this->assertEquals(200, $response->getStatusCode());
-            $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
         }
 
         public function testIndexActionCanBeAccessed()
@@ -273,20 +308,6 @@ with the following contents:
             $response = $this->controller->getResponse();
 
             $this->assertEquals(200, $response->getStatusCode());
-            $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
-        }
-
-        protected function setUp()
-        {
-            $bootstrap        = \Zend\Mvc\Application::init(include 'config/application.config.php');
-            $this->controller = new AlbumController();
-            $this->request    = new Request();
-            $this->routeMatch = new RouteMatch(array('controller' => 'index'));
-            $this->event      = $bootstrap->getMvcEvent();
-            $this->event->setRouteMatch($this->routeMatch);
-            $this->controller->setEvent($this->event);
-            $this->controller->setEventManager($bootstrap->getEventManager());
-            $this->controller->setServiceLocator($bootstrap->getServiceManager());
         }
     }
 
