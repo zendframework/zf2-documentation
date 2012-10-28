@@ -20,15 +20,15 @@ You can read the last stable documentation in
 ### CONTRIBUTING
 
 If you wish to contribute to the documentation of Zend Framework 2.0, please read the
-[CONTRIBUTE.md](CONTRIBUTE.md) file.
+CONTRIBUTING.md file.
 
 If you don't know where to begin, or where you can best help, please review the
-[TODO.md](TODO.md) file.
+TODO.md file.
 
 ### LICENSE
 
 The files in this archive are released under the Zend Framework license.
-You can find a copy of this license in [LICENSE.txt](LICENSE.txt).
+You can find a copy of this license in LICENSE.txt.
 
 ### ACKNOWLEDGEMENTS
 
