@@ -677,7 +677,7 @@ how to set up routes in config files.
                     )
                 ),
                 // Segment route named "about"
-                'contact' => array(
+                'about' => array(
                     'type' => 'segment',
                     'options' => array(
                         'route' => '/about',
