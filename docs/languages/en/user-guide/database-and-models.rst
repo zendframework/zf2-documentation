@@ -62,11 +62,11 @@ pattern can become limiting in larger systems. There is also a temptation to put
 database access code into controller action methods as these are exposed by
 ``Zend\Db\TableGateway\AbstractTableGateway``. *Don’t do this*!
 
-Let’s start with our ``Album`` entity class within the ``Model`` directory:
+Let’s start by creating a file called ``Album.php`` under ``module/Album/src/Album/Model``:
 
 .. code-block:: php
 
-    // module/Album/src/Album/Model/Album.php:
+    <?php
     namespace Album\Model;
 
     class Album
@@ -89,12 +89,14 @@ method. This method simply copies the data from the passed in array to our entit
 properties. We will add an input filter for use with our form later.
 
 But first, does the Album model we have so far work the way we expect it to? Let's write a few tests to be sure.
+Create a file called ``AlbumTest.php`` under ``module/Album/test/AlbumTest/Model``:
+
 
 .. code-block:: php
 
-    // tests/module/Album/src/Album/Model/AlbumTest.php:
-    namespace Album\Model;
+    namespace AlbumTest\Model;
 
+    use Album\Model\Album;
     use PHPUnit_Framework_TestCase;
 
     class AlbumTest extends PHPUnit_Framework_TestCase
@@ -135,11 +137,6 @@ But first, does the Album model we have so far work the way we expect it to? Let
             $this->assertNull($album->id, '"id" should have defaulted to null');
             $this->assertNull($album->title, '"title" should have defaulted to null');
         }
-
-        protected function setUp()
-        {
-            \Zend\Mvc\Application::init(include 'config/application.config.php');
-        }
     }
 
 We are testing for 3 things:
@@ -160,11 +157,11 @@ If we run ``phpunit`` again, we'll see that the answer to all three questions is
 
     OK (8 tests, 19 assertions)
 
-Next, we create our ``AlbumTable`` class in the module's ``Model`` directory like this:
+Next, we create our ``AlbumTable.php`` file in ``module/Album/src/Album/Model`` directory like this:
 
 .. code-block:: php
 
-    // module/Album/src/Album/Model/AlbumTable.php:
+    <?php
     namespace Album\Model;
 
     use Zend\Db\TableGateway\TableGateway;
@@ -245,12 +242,12 @@ To configure the ``ServiceManager``, we can either supply the name of the class
 to be instantiated or a factory (closure or callback) that instantiates the
 object when the ``ServiceManager`` needs it. We start by implementing
 ``getServiceConfig()`` to provide a factory that creates an ``AlbumTable``. Add
-this method to the bottom of the ``Module`` class.
+this method to the bottom of the ``Module.php`` file in ``module/Album``.
 
 .. code-block:: php
     :emphasize-lines: 5-8,14-32
 
-    // module/Album/Module.php:
+    <?php
     namespace Album;
 
     // Add these import statements:
@@ -306,11 +303,12 @@ configuration from each module’s ``module.config.php`` file and then merges in
 the files in ``config/autoload`` (``*.global.php`` and then ``*.local.php``
 files). We’ll add our database configuration information to ``global.php`` which
 you should commit to your version control system. You can use ``local.php``
-(outside of the VCS) to store the credentials for your database if you want to:
+(outside of the VCS) to store the credentials for your database if you want to.
+Modify ``config/autoload/global.php`` with following code:
 
 .. code-block:: php
 
-    // config/autoload/global.php:
+    <?php
     return array(
         'db' => array(
             'driver'         => 'Pdo',
@@ -332,7 +330,7 @@ that they are not in the git repository (as ``local.php`` is ignored):
 
 .. code-block:: php
 
-    // config/autoload/local.php:
+    <?php
     return array(
         'db' => array(
             'username' => 'YOUR USERNAME HERE',
@@ -345,40 +343,36 @@ Testing
 
 Let's write a few tests for all this code we've just written. First, we need
 to create a test class for the ``AlbumTable``.
+Create a file ``AlbumTableTest.php`` in ``module/Album/test/AlbumTableTest/Model``
 
 .. code-block:: php
 
-    // tests/module/Album/src/Album/Model/AlbumTableTest.php:
-    namespace Album\Model;
+    <?php
+    namespace AlbumTest\Model;
 
+    use Album\Model\AlbumTable;
+    use Album\Model\Album;
+    use Zend\Db\ResultSet\ResultSet;
     use PHPUnit_Framework_TestCase;
 
     class AlbumTableTest extends PHPUnit_Framework_TestCase
     {
-        protected function setUp()
+        public function testFetchAllReturnsAllAlbums()
         {
-            \Zend\Mvc\Application::init(include 'config/application.config.php');
+            $resultSet        = new ResultSet();
+            $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway',
+                                               array('select'), array(), '', false);
+            $mockTableGateway->expects($this->once())
+                             ->method('select')
+                             ->with()
+                             ->will($this->returnValue($resultSet));
+
+            $albumTable = new AlbumTable($mockTableGateway);
+
+            $this->assertSame($resultSet, $albumTable->fetchAll());
         }
     }
 
-And write our first test. Add this method to the test class:
-
-.. code-block:: php
-
-    public function testFetchAllReturnsAllAlbums()
-    {
-        $resultSet        = new ResultSet();
-        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway',
-                                           array('select'), array(), '', false);
-        $mockTableGateway->expects($this->once())
-                         ->method('select')
-                         ->with()
-                         ->will($this->returnValue($resultSet));
-
-        $albumTable = new AlbumTable($mockTableGateway);
-
-        $this->assertSame($resultSet, $albumTable->fetchAll());
-    }
 
 In this test, we introduce the concept of `Mock objects
 <http://www.phpunit.de/manual/3.6/en/test-doubles.html#test-doubles.mock-objects>`_.

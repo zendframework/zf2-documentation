@@ -52,10 +52,11 @@ within it. That is, the classes within a given module will have the namespace of
 the module’s name, which is the directory name of the module.
 
 Create ``Module.php`` in the ``Album`` module:
+Create a file called ``Module.php`` under ``zf2-tutorial/module/Album``:
 
 .. code-block:: php
 
-    // module/Album/Module.php
+    <?php
     namespace Album;
 
     class Module
@@ -95,11 +96,11 @@ classes map directly to files as per the `PSR-0 rules
 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_.
 
 As we are in development, we don’t need to load files via the classmap, so we provide an empty array for the
-classmap autoloader. Create ``autoload_classmap.php`` with these contents:
+classmap autoloader. Create a file called ``autoload_classmap.php`` under ``zf2-tutorial/module/Album``:
 
 .. code-block:: php
 
-    // module/Album/autoload_classmap.php:
+    <?php
     return array();
 
 As this is an empty array, whenever the autoloader looks for a class within the
@@ -120,11 +121,11 @@ Having registered the autoloader, let’s have a quick look at the ``getConfig()
 method in ``Album\Module``.  This method simply loads the
 ``config/module.config.php`` file.
 
-Create the following configuration file for the ``Album`` module:
+Create a file called ``module.config.php`` under ``zf2-tutorial/module/Album/config``:
 
 .. code-block:: php
 
-    // module/Album/config/module.config.php:
+    <?php
     return array(
         'controllers' => array(
             'invokables' => array(
@@ -162,7 +163,7 @@ skeleton application. Update this file so that its ``modules`` section contains 
 .. code-block:: php
     :emphasize-lines: 5
 
-    // config/application.config.php:
+    <?php
     return array(
         'modules' => array(
             'Application',
