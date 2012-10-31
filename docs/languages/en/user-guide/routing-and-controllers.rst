@@ -222,9 +222,9 @@ Create the follwing subdirectories:
                         /Controller
 
 
-Add the 3 files as described in unit Testing
+Add the 3 files as described in unit Testing to ``module/Album/test
 * ``Bootstrap.php``
-* ``phpunit.xml``
+* ``phpunit.xml.dist``
 * ``TestConfig.php.dist``
 
 Remeber here to change the namespace in ``Bootstrap.php`` and change the Module ``Application`` to ``Album in the ``TestConfig.php.dist``.
@@ -311,7 +311,7 @@ with the following contents:
         }
     }
 
-And execute ``phpunit``.
+And execute ``phpunit`` from ``module/Album/test``.
 
 .. code-block:: text
 

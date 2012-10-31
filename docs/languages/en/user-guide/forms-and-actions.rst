@@ -17,7 +17,7 @@ We use ``Zend\Form`` to do this. The ``Zend\Form`` component manages the form
 and for validation, we add a ``Zend\InputFilter`` to our ``Album`` entity. We
 start by creating a new class ``Album\Form\AlbumForm`` that extends from
 ``Zend\Form\Form`` to define our form.
-Create a file called ``AlbumForm.php`` in ``zf2-tutorials/module/Album/srcalbum/Form``:
+Create a file called ``AlbumForm.php`` in ``module/Album/src/Album/Form``:
 
 .. code-block:: php
 
@@ -76,7 +76,7 @@ and options, including the label to be displayed.
 We also need to set up validation for this form. In Zend Framework 2 this is
 done using an input filter which can either be standalone or within any class
 that implements ``InputFilterAwareInterface``, such as a model entity. We are
-going to add the input filter to our ``Album.php`` file in ``zf2-tutorial/module/Album/src/Album/Model``:
+going to add the input filter to our ``Album.php`` file in ``module/Album/src/Album/Model``:
 
 .. code-block:: php
 
@@ -317,7 +317,7 @@ HTML rendering of the form is acceptable.
 You should now be able to use the “Add new album” link on the home page of the
 application to add a new album record.
 
-And execute ``phpunit``.
+And execute ``phpunit`` from ``module/Album/test``.
 
 .. code-block:: text
 
@@ -474,7 +474,7 @@ the ‘edit’ action too.
 
 You should now be able to edit albums.
 
-And execute ``phpunit``.
+And execute ``phpunit`` from ``module/Album/test``.
 
 .. code-block:: text
 
@@ -494,7 +494,7 @@ And execute ``phpunit``.
     FAILURES!
     Tests: 14, Assertions: 23, Failures: 1.
 
-We need to change the test for edit 'AlbumControllerTest'  in ``zf2-tutorial/module/Album/test/Album/Controller`` :
+We need to change the test for edit 'AlbumControllerTest'  in ``module/Album/test/AlbumTest/Controller`` :
 
 .. code-block:: php
 
@@ -530,7 +530,7 @@ Add the following also to ``AlbumControllerTest.php``
         $this->assertEquals(302, $response->getStatusCode());
     }
 
-And execute ``phpunit``.
+And execute ``phpunit`` from ``module/Album/test``.
 
 .. code-block:: text
 
@@ -632,7 +632,7 @@ In this script, we display a confirmation message to the user and then a form
 with "Yes" and "No" buttons. In the action, we checked specifically for the “Yes”
 value when doing the deletion.
 
-Modify the tests in ``AlbumControllerTest.php`` in ``zf2-tutorial/module/Album/test/AlbumTest/Controller``:
+Modify the tests in ``AlbumControllerTest.php`` in ``module/Album/test/AlbumTest/Controller``:
 
 .. code-block:: php
 

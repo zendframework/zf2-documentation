@@ -62,7 +62,7 @@ pattern can become limiting in larger systems. There is also a temptation to put
 database access code into controller action methods as these are exposed by
 ``Zend\Db\TableGateway\AbstractTableGateway``. *Don’t do this*!
 
-Let’s start by creating a file called ``Album.php`` under ``zf2-tutorial/module/Album/src/Album/Model``:
+Let’s start by creating a file called ``Album.php`` under ``module/Album/src/Album/Model``:
 
 .. code-block:: php
 
@@ -89,7 +89,7 @@ method. This method simply copies the data from the passed in array to our entit
 properties. We will add an input filter for use with our form later.
 
 But first, does the Album model we have so far work the way we expect it to? Let's write a few tests to be sure.
-Create a file called ``AlbumTest.php`` under ``zf2-tutorial/module/Album/test/Album/Model``:
+Create a file called ``AlbumTest.php`` under ``module/Album/test/AlbumTest/Model``:
 
 
 .. code-block:: php
@@ -157,7 +157,7 @@ If we run ``phpunit`` again, we'll see that the answer to all three questions is
 
     OK (8 tests, 19 assertions)
 
-Next, we create our ``AlbumTable.php`` file in ``zf2-tutorial/module/Album/src/Album/Model`` directory like this:
+Next, we create our ``AlbumTable.php`` file in ``module/Album/src/Album/Model`` directory like this:
 
 .. code-block:: php
 
@@ -242,7 +242,7 @@ To configure the ``ServiceManager``, we can either supply the name of the class
 to be instantiated or a factory (closure or callback) that instantiates the
 object when the ``ServiceManager`` needs it. We start by implementing
 ``getServiceConfig()`` to provide a factory that creates an ``AlbumTable``. Add
-this method to the bottom of the ``Module.php`` class in ``zf2-tutorial/module/Album``.
+this method to the bottom of the ``Module.php`` file in ``module/Album``.
 
 .. code-block:: php
     :emphasize-lines: 5-8,14-32
@@ -304,7 +304,7 @@ the files in ``config/autoload`` (``*.global.php`` and then ``*.local.php``
 files). We’ll add our database configuration information to ``global.php`` which
 you should commit to your version control system. You can use ``local.php``
 (outside of the VCS) to store the credentials for your database if you want to.
-Modify ``zf2-tutorial/config/autoload/global.php`` with following code:
+Modify ``config/autoload/global.php`` with following code:
 
 .. code-block:: php
 
@@ -325,7 +325,7 @@ Modify ``zf2-tutorial/config/autoload/global.php`` with following code:
         ),
     );
 
-You should put your database credentials in ``zf2-tutorial/config/autoload/local.php`` so
+You should put your database credentials in ``config/autoload/local.php`` so
 that they are not in the git repository (as ``local.php`` is ignored):
 
 .. code-block:: php
@@ -343,7 +343,7 @@ Testing
 
 Let's write a few tests for all this code we've just written. First, we need
 to create a test class for the ``AlbumTable``.
-Create a file ``AlbumTest.php`` in ``zf2-tutorial/module/Album/test/AlbumTest/Model``
+Create a file ``AlbumTableTest.php`` in ``module/Album/test/AlbumTableTest/Model``
 
 .. code-block:: php
 

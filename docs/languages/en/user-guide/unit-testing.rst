@@ -42,7 +42,7 @@ IndexController for the Application module.
 Bootstrapping your tests
 ------------------------
 
-Next, create a file called ``phpunit.xml`` under ``zf2-tutorial/module/Application/test``:
+Next, create a file called ``phpunit.xml.dist`` under ``zf2-tutorial/module/Application/test``:
 
 .. code-block:: xml
 
@@ -269,7 +269,7 @@ that the controller's return value is an instance of ``Zend\View\Model\ViewModel
 Testing
 -----------
 
-Finally, ``cd`` to ``zf-tutorial/tests/`` and run ``phpunit``. If you see something like
+Finally, ``cd`` to ``zf-tutorial/module/Application/test/`` and run ``phpunit``. If you see something like
 this, then your application is ready for more tests!
 
 .. code-block:: text
