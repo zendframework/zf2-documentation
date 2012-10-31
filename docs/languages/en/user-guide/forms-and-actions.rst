@@ -12,18 +12,16 @@ this part:
 
 * Display a form for user to provide details
 * Process the form submission and store to database
-  
+
 We use ``Zend\Form`` to do this. The ``Zend\Form`` component manages the form
 and for validation, we add a ``Zend\InputFilter`` to our ``Album`` entity. We
 start by creating a new class ``Album\Form\AlbumForm`` that extends from
-``Zend\Form\Form`` to define our form. The class is stored in the
-``AlbumForm.php`` file within the ``module/Album/src/Album/Form`` directory.
-
-Create this file file now:
+``Zend\Form\Form`` to define our form.
+Create a file called ``AlbumForm.php`` in ``module/Album/src/Album/Form``:
 
 .. code-block:: php
 
-    // module/Album/src/Album/Form/AlbumForm.php:
+    <?php
     namespace Album\Form;
 
     use Zend\Form\Form;
@@ -65,7 +63,7 @@ Create this file file now:
                     'type'  => 'submit',
                     'value' => 'Go',
                     'id' => 'submitbutton',
-                ),        
+                ),
             ));
         }
     }
@@ -78,11 +76,11 @@ and options, including the label to be displayed.
 We also need to set up validation for this form. In Zend Framework 2 this is
 done using an input filter which can either be standalone or within any class
 that implements ``InputFilterAwareInterface``, such as a model entity. We are
-going to add the input filter to our ``Album`` entity:
+going to add the input filter to our ``Album.php`` file in ``module/Album/src/Album/Model``:
 
 .. code-block:: php
 
-    // module/Album/src/Album/Model/Album.php:
+    <?php
     namespace Album\Model;
 
     use Zend\InputFilter\Factory as InputFactory;
@@ -95,7 +93,7 @@ going to add the input filter to our ``Album`` entity:
         public $id;
         public $artist;
         public $title;
-        protected $inputFilter;
+        protected $inputFilter;//Add this variable
 
         public function exchangeArray($data)
         {
@@ -120,7 +118,7 @@ going to add the input filter to our ``Album`` entity:
                     'required' => true,
                     'filters'  => array(
                         array('name' => 'Int'),
-                    ),            
+                    ),
                 )));
 
                 $inputFilter->add($factory->createInput(array(
@@ -161,7 +159,7 @@ going to add the input filter to our ``Album`` entity:
                     ),
                 )));
 
-                $this->inputFilter = $inputFilter;        
+                $this->inputFilter = $inputFilter;
             }
 
             return $this->inputFilter;
@@ -243,7 +241,7 @@ a different label.
 If the ``Request`` object’s ``isPost()`` method is true, then the form has been
 submitted and so we set the form’s input filter from an album instance. We then
 set the posted data to the form and check to see if it is valid using the
-``isValid()`` member function of the form.                
+``isValid()`` member function of the form.
 
 .. code-block:: php
 
@@ -298,13 +296,13 @@ provides some view helpers to make this a little easier. The ``form()`` view
 helper has an ``openTag()`` and ``closeTag()`` method which we use to open and
 close the form.  Then for each element with a label, we can use ``formRow()``,
 but for the two elements that are standalone, we use ``formHidden()`` and
-``formSubmit()``. 
+``formSubmit()``.
 
 .. image:: ../images/user-guide.forms-and-actions.add-album-form.png
     :width: 940 px
 
-Alternatively, the process of rendering the form can be simplified by using the 
-bundled ``formCollection`` view helper.  For example, in the view script above replace 
+Alternatively, the process of rendering the form can be simplified by using the
+bundled ``formCollection`` view helper.  For example, in the view script above replace
 all the form-rendering echo statements with:
 
 .. code-block:: php
@@ -313,11 +311,23 @@ all the form-rendering echo statements with:
 
 This will iterate over the form structure, calling the appropriate label, element
 and error view helpers for each element, but you still have to wrap formCollection($form) with the open and close form tags.
-This helps reduce the complexity of your view script in situations where the default 
+This helps reduce the complexity of your view script in situations where the default
 HTML rendering of the form is acceptable.
 
 You should now be able to use the “Add new album” link on the home page of the
 application to add a new album record.
+
+And execute ``phpunit`` from ``module/Album/test``.
+
+.. code-block:: text
+
+    PHPUnit 3.5.15 by Sebastian Bergmann.
+
+    ..............
+
+    Time: 1 seconds, Memory: 12.25Mb
+
+    OK (14 tests, 23 assertions)
 
 Editing an album
 ----------------
@@ -344,7 +354,7 @@ This time we use ``editAction()`` in the ``AlbumController``:
             $form  = new AlbumForm();
             $form->bind($album);
             $form->get('submit')->setAttribute('value', 'Edit');
-            
+
             $request = $this->getRequest();
             if ($request->isPost()) {
                 $form->setInputFilter($album->getInputFilter());
@@ -444,7 +454,7 @@ album:
     <?php
     $form = $this->form;
     $form->setAttribute('action', $this->url(
-        'album', 
+        'album',
         array(
             'action' => 'edit',
             'id'     => $this->id,
@@ -463,6 +473,76 @@ The only changes are to use the ‘Edit Album’ title and set the form’s acti
 the ‘edit’ action too.
 
 You should now be able to edit albums.
+
+And execute ``phpunit`` from ``module/Album/test``.
+
+.. code-block:: text
+
+    PHPUnit 3.5.15 by Sebastian Bergmann.
+
+    ...F...........
+
+    Time: 1 second, Memory: 13.00Mb
+
+    There was 1 failure:
+
+    1) AlbumTest\Controller\AlbumControllerTest::testEditActionCanBeAccessed
+    Failed asserting that 302 matches expected 200.
+
+    /var/www/tutorial/module/Album/test/AlbumTest/Controller/AlbumControllerTest.php:65
+
+    FAILURES!
+    Tests: 14, Assertions: 23, Failures: 1.
+
+We need to change the test for edit 'AlbumControllerTest'  in ``module/Album/test/AlbumTest/Controller`` :
+
+.. code-block:: php
+
+    <?php
+    ...
+    public function testAddActionCanBeAccessed()
+    {
+        $this->routeMatch->setParam('action', 'add');
+        $this->routeMatch->setParam('id', '1');//Add this Row
+
+        $result   = $this->controller->dispatch($this->request);
+        $response = $this->controller->getResponse();
+
+        $this->assertEquals(200, $response->getStatusCode());
+    }
+
+If we do not send any ``id`` parameter the Controller will redirect us to the ``album`` route which returns the HTTP Status Code ``302``
+
+We will also add another test to check if the redirection works.
+Add the following also to ``AlbumControllerTest.php``
+
+.. code-block:: phps
+
+    <?php
+    ...
+    public function testEditActionRedirect()
+    {
+        $this->routeMatch->setParam('action', 'edit');
+
+        $result   = $this->controller->dispatch($this->request);
+        $response = $this->controller->getResponse();
+
+        $this->assertEquals(302, $response->getStatusCode());
+    }
+
+And execute ``phpunit`` from ``module/Album/test``.
+
+.. code-block:: text
+
+    PHPUnit 3.5.15 by Sebastian Bergmann.
+
+    ...............
+
+    Time: 1 second, Memory: 13.00Mb
+
+
+    OK (15 tests, 24 assertions)
+
 
 Deleting an album
 -----------------
@@ -530,15 +610,15 @@ The view script is a simple form:
     ?>
     <h1><?php echo $this->escapeHtml($title); ?></h1>
 
-    <p>Are you sure that you want to delete 
-        '<?php echo $this->escapeHtml($album->title); ?>' by 
+    <p>Are you sure that you want to delete
+        '<?php echo $this->escapeHtml($album->title); ?>' by
         '<?php echo $this->escapeHtml($album->artist); ?>'?
     </p>
-    <?php 
+    <?php
     $url = $this->url('album', array(
-        'action' => 'delete', 
+        'action' => 'delete',
         'id'     => $this->id,
-    )); 
+    ));
     ?>
     <form action="<?php echo $url; ?>" method="post">
     <div>
@@ -552,11 +632,37 @@ In this script, we display a confirmation message to the user and then a form
 with "Yes" and "No" buttons. In the action, we checked specifically for the “Yes”
 value when doing the deletion.
 
+Modify the tests in ``AlbumControllerTest.php`` in ``module/Album/test/AlbumTest/Controller``:
+
+.. code-block:: php
+
+        public function testDeleteActionCanBeAccessed()
+        {
+            $this->routeMatch->setParam('action', 'delete');
+            $this->routeMatch->setParam('id', '1');
+
+            $result   = $this->controller->dispatch($this->request);
+            $response = $this->controller->getResponse();
+
+            $this->assertEquals(200, $response->getStatusCode());
+        }
+
+        public function testDeleteActionRedirect()
+        {
+            $this->routeMatch->setParam('action', 'delete');
+
+            $result   = $this->controller->dispatch($this->request);
+            $response = $this->controller->getResponse();
+
+            $this->assertEquals(302, $response->getStatusCode());
+        }
+
+
 Ensuring that the home page displays the list of albums
 -------------------------------------------------------
 
 One final point. At the moment, the home page, http://zf2-tutorial.localhost/
-doesn’t display the list of albums. 
+doesn’t display the list of albums.
 
 This is due to a route set up in the ``Application`` module’s
 ``module.config.php``. To change it, open
