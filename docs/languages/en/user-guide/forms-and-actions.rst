@@ -511,12 +511,12 @@ We need to change the test for edit 'AlbumControllerTest'  in ``module/Album/tes
         $this->assertEquals(200, $response->getStatusCode());
     }
 
-If we do not send any ``id`` parameter the Controller will redirect us to the ``album`` route which return the Http status code ``302``
+If we do not send any ``id`` parameter the Controller will redirect us to the ``album`` route which returns the HTTP Status Code ``302``
 
 We will also add another test to check if the redirection works.
 Add the following also to ``AlbumControllerTest.php``
 
-.. code-block:: php
+.. code-block:: phps
 
     <?php
     ...
