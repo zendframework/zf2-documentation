@@ -516,7 +516,7 @@ If we do not send any ``id`` parameter the Controller will redirect us to the ``
 We will also add another test to check if the redirection works.
 Add the following also to ``AlbumControllerTest.php``
 
-.. code-block:: phps
+.. code-block:: php
 
     <?php
     ...
