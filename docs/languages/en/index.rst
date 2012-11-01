@@ -157,7 +157,8 @@
    modules/zend.mvc.controllers
    modules/zend.mvc.plugins
    modules/zend.mvc.examples
-   modules/zend.navigation.intro modules/zend.navigation.quick-start
+   modules/zend.navigation.intro
+   modules/zend.navigation.quick-start
    modules/zend.navigation.pages
    modules/zend.navigation.containers
    modules/zend.paginator.introduction
