@@ -196,7 +196,21 @@
    modules/zend.xmlrpc.intro
    modules/zend.xmlrpc.client
    modules/zend.xmlrpc.server
+   modules/zendservice.akismet
+   modules/zendservice.amazon
+   modules/zendservice.audioscrobbler
+   modules/zendservice.delicious
+   modules/zendservice.developer-garden
+   modules/zendservice.flickr
    modules/zendservice.livedocx
+   modules/zendservice.nirvanix
+   modules/zendservice.rackspace
+   modules/zendservice.re-captcha
+   modules/zendservice.slide-share
+   modules/zendservice.strike-iron.overview
+   modules/zendservice.technorati
+   modules/zendservice.twitter
+   modules/zendservice.windows-azure
    ref/copyrights
 
 |IntroductiontoZendFramework|
@@ -643,10 +657,80 @@ Zend\\XmlRpc
 |ZendServiceReference|
 ----------------------
 
+ZendService\\Akismet
+^^^^^^^^^^^^^^^^^^^^
+
+        * :doc: `modules/zendservice.akismet`
+
+ZendService\\Amazon
+^^^^^^^^^^^^^^^^^^^
+
+        * :doc: `modules/zendservice.amazon`
+
+ZendService\\Audioscrobbler
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc: `modules/zendservice.audioscrobbler`
+
+ZendService\\Del.icio.us
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc: `modules/zendservice.delicious`
+
+ZendService\\Developer Garden
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc: `modules/zendservice.developer-garden`
+
+ZendService\\Flickr
+^^^^^^^^^^^^^^^^^^^
+
+        * :doc: `modules/zendservice.flickr`
+
 ZendService\\LiveDocx
 ^^^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.livedocx`
+
+ZendService\\Nirvanix
+^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc: `modules/zendservice.nirvanix`
+
+ZendService\\Rackspace
+^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc: `modules/zendservice.rackspace`
+
+ZendService\\ReCaptcha
+^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc: `modules/zendservice.recaptcha`
+
+ZendService\\SlideShare
+^^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc: `modules/zendservice.slideshare`
+
+ZendService\\StrikeIron
+^^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc: `modules/zendservice.strikeiron`
+
+ZendService\\Technorati
+^^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc: `modules/zendservice.technorati`
+
+ZendService\\Twitter
+^^^^^^^^^^^^^^^^^^^^
+
+        * :doc: `modules/zendservice.twitter`
+
+ZendService\\Windows Azure
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc: `modules/zendservice.windowsazure`
 
 .. _zend.copyright:
 
