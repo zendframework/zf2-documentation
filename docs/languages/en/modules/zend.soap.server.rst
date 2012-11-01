@@ -226,7 +226,11 @@ Response pre-processing
 
 ``Zend\Soap\Server::handle()`` method automatically emits generated response to the output stream. It may be
 blocked using ``setReturnResponse()`` with ``TRUE`` or ``FALSE`` as a parameter [#]_. Generated response is
-returned by ``handle()`` method in this case.
+returned by ``handle()`` method in this case. Returned response can be a string or a SoapFault exception object.
+
+.. caution::
+   Check always the returned response type for avoid return SoapFault object as string, which will return to
+   the customer a string with the exception stacktrace.
 
 .. code-block:: php
    :linenos:
@@ -239,6 +243,11 @@ returned by ``handle()`` method in this case.
    $server->setReturnResponse(true);
    ...
    $response = $server->handle();
+   if ($response instanceof \SoapFault) {
+       ...
+   } else {
+       ...
+   }
    ...
 
 Last response may be also retrieved by ``getLastResponse()`` method for some post-processing:
@@ -251,6 +260,11 @@ Last response may be also retrieved by ``getLastResponse()`` method for some pos
    ...
    $server->handle();
    $response = $server->getLastResponse();
+   if ($response instanceof \SoapFault) {
+       ...
+   } else {
+       ...
+   }
    ...
 
 .. _zend.soap.server.documentliteral:
