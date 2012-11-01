@@ -4,42 +4,42 @@
 Gdata の例外処理
 ===========
 
-``Zend_Gdata_App_Exception`` は、 ``Zend_Gdata`` がスローする例外の基底クラスです。 *Zedn_Gdata*
-がスローする例外は、すべて ``Zend_Gdata_App_Exception`` でキャッチできます。
+``ZendGData_App\Exception`` は、 ``ZendGData`` がスローする例外の基底クラスです。 *Zedn_Gdata*
+がスローする例外は、すべて ``ZendGData_App\Exception`` でキャッチできます。
 
 .. code-block:: php
    :linenos:
 
    try {
        $client =
-           Zend_Gdata_ClientLogin::getHttpClient($username, $password);
-   } catch(Zend_Gdata_App_Exception $ex) {
+           ZendGData\ClientLogin::getHttpClient($username, $password);
+   } catch(ZendGData_App\Exception $ex) {
        // 例外の内容をユーザに報告します
        die($ex->getMessage());
    }
 
-``Zend_Gdata`` では、以下のような例外サブクラスを使用しています。
+``ZendGData`` では、以下のような例外サブクラスを使用しています。
 
 
 
-   - ``Zend_Gdata_App_AuthException``
+   - ``ZendGData_App\AuthException``
      は、ユーザのアカウントの情報が無効であることを表します。
 
-   - ``Zend_Gdata_App_BadMethodCallException``
+   - ``ZendGData_App\BadMethodCallException``
      は、そのサービスがサポートしていないメソッドをコールしたことを表します。
      たとえば、CodeSearch サービスは ``post()`` をサポートしていません。
 
-   - ``Zend_Gdata_App_HttpException`` は、 *HTTP* リクエストが失敗したことを表します。
-     ``Zend_Http_Response`` オブジェクトの中身を調べることで、
+   - ``ZendGData_App\HttpException`` は、 *HTTP* リクエストが失敗したことを表します。
+     ``Zend\Http\Response`` オブジェクトの中身を調べることで、
      実際の原因がわかります。この場合は ``$e->getMessage()``
      の情報だけでは不十分です。
 
-   - ``Zend_Gdata_App_InvalidArgumentException``
+   - ``ZendGData_App\InvalidArgumentException``
      は、その状況では無効な値を指定したことを表します。
      たとえば、カレンダーの可視性に "banana" を指定したり、blog の名前を省略して
      Blogger のフィードを取得したりといった場合です。
 
-   - ``Zend_Gdata_App_CaptchaRequiredException`` は、ClientLogin を試みた際に認証サービスから
+   - ``ZendGData_App\CaptchaRequiredException`` は、ClientLogin を試みた際に認証サービスから
      CAPTCHA(tm) チャレンジを受け取った場合にスローされます。
      この例外の中には、トークン ID および CAPTCHA(tm) チャレンジ画像への *URL*
      が含まれています。この画像はパズルのようなもので、
@@ -53,21 +53,21 @@ Gdata の例外処理
 
 
 これらの例外サブクラスを使用すると、より細やかな例外処理を行なえます。 どの
-``Zend_Gdata`` のメソッドがどんな例外サブクラスをスローするのかについては、 *API*
+``ZendGData`` のメソッドがどんな例外サブクラスをスローするのかについては、 *API*
 ドキュメントを参照ください。
 
 .. code-block:: php
    :linenos:
 
    try {
-       $client = Zend_Gdata_ClientLogin::getHttpClient($username,
+       $client = ZendGData\ClientLogin::getHttpClient($username,
                                                        $password,
                                                        $service);
-   } catch(Zend_Gdata_App_AuthException $authEx) {
+   } catch(ZendGData_App\AuthException $authEx) {
        // ユーザの認証に失敗しました
        // もう一度認証を行うなどの処置が適切でしょう
        ...
-   } catch(Zend_Gdata_App_HttpException $httpEx) {
+   } catch(ZendGData_App\HttpException $httpEx) {
        // Google Data のサーバに接続できませんでした
        die($httpEx->getMessage);}
 

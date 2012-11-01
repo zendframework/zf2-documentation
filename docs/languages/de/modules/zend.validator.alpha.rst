@@ -4,16 +4,16 @@
 Alpha
 =====
 
-``Zend_Validate_Alpha`` erlaubt es zu prüfen ob ein angegebener Wert nur alphabetische Zeichen enthält. Es gibt
+``Zend\Validate\Alpha`` erlaubt es zu prüfen ob ein angegebener Wert nur alphabetische Zeichen enthält. Es gibt
 keine Begrenzung der Länge für die Eingabe welche man prüfen will. Diese Prüfung ist ähnlich wie die
-``Zend_Validate_Alnum`` Prüfung mit der Ausnahme dass Sie keine Ziffern akzeptiert.
+``Zend\Validate\Alnum`` Prüfung mit der Ausnahme dass Sie keine Ziffern akzeptiert.
 
 .. _zend.validate.set.alpha.options:
 
-Unterstützte Optionen für Zend_Validate_Alpha
+Unterstützte Optionen für Zend\Validate\Alpha
 ---------------------------------------------
 
-Die folgenden Optionen werden von ``Zend_Validate_Alpha`` unterstützt:
+Die folgenden Optionen werden von ``Zend\Validate\Alpha`` unterstützt:
 
 - **allowWhiteSpace**: Ob Leerzeichen erlaubt sind. Diese Option ist standardmäßig ``FALSE``
 
@@ -27,7 +27,7 @@ Das folgende ist ein standardmäßiges Beispiel:
 .. code-block:: .validator.
    :linenos:
 
-   $validator = new Zend_Validate_Alpha();
+   $validator = new Zend\Validate\Alpha();
    if ($validator->isValid('Abcd')) {
        // Der Wert enthält nur erlaubte Zeichen
    } else {
@@ -49,7 +49,7 @@ wird. Um den aktuellen Zustand zu erhalten kann ``getAllowWhiteSpace()`` verwend
 .. code-block:: .validator.
    :linenos:
 
-   $validator = new Zend_Validate_Alpha(array('allowWhiteSpace' => true));
+   $validator = new Zend\Validate\Alpha(array('allowWhiteSpace' => true));
    if ($validator->isValid('Abcd and efg')) {
        // Der Wert enthält nur erlaubte Zeichen
    } else {
@@ -61,7 +61,7 @@ wird. Um den aktuellen Zustand zu erhalten kann ``getAllowWhiteSpace()`` verwend
 Andere Sprachen verwenden
 -------------------------
 
-Wenn ``Zend_Validate_Alpha`` verwendet wird dann wird jene Sprache verwendet, welche der Benutzer in seinem Browser
+Wenn ``Zend\Validate\Alpha`` verwendet wird dann wird jene Sprache verwendet, welche der Benutzer in seinem Browser
 gesetzt hat, um die erlaubten Zeichen zu setzen. Das bedeutet, wenn ein Benutzer **de** für Deutsch setzt dann
 kann er auch Zeichen wie **ä**, **ö** und **ü** zusätzlich zu den Zeichen des englischen Alphabeths setzen.
 

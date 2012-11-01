@@ -12,16 +12,16 @@
 храниться на различных носителях информации, поддерживающих
 хранение данных в виде иерархии. На данный момент ``Zend_Config``
 предоставляет адаптеры для конфигурационных данных,
-хранящихся в текстовых файлах: :ref:`Zend_Config_Ini <zend.config.adapters.ini>` и
-:ref:`Zend_Config_Xml <zend.config.adapters.xml>`.
+хранящихся в текстовых файлах: :ref:`Zend\Config\Ini <zend.config.adapters.ini>` и
+:ref:`Zend\Config\Xml <zend.config.adapters.xml>`.
 
 .. _zend.config.introduction.example.using:
 
 .. rubric:: Использование Zend_Config
 
 Обычно предполагается, что используется один из классов
-адаптеров, например, :ref:`Zend_Config_Ini <zend.config.adapters.ini>` или
-:ref:`Zend_Config_Xml <zend.config.adapters.xml>`. Но если конфигурационные данные
+адаптеров, например, :ref:`Zend\Config\Ini <zend.config.adapters.ini>` или
+:ref:`Zend\Config\Xml <zend.config.adapters.xml>`. Но если конфигурационные данные
 доступны в виде массива *PHP*, то можно передавать эти данные
 конструктору ``Zend_Config``, чтобы использовать преимущества
 простого объектно-ориентированного интерфейса.
@@ -45,18 +45,18 @@
 
    // Создание объектно-ориентированной обертки для конфигурационных данных
    require_once 'Zend/Config.php';
-   $config = new Zend_Config($configArray);
+   $config = new Zend\Config\Config($configArray);
 
    // Вывод элемента конфигурационных данных (результатом будет 'www.example.com')
    echo $config->webhost;
 
    // Использование конфигурационных данных для соединения с базой данных
-   $db = Zend_Db::factory($config->database->adapter,
+   $db = Zend\Db\Db::factory($config->database->adapter,
                           $config->database->params->toArray());
 
    // Альтернативный способ - просто передавайте объект Zend_Config.
    // Фабрика Zend_Db знает, как его интерпретировать.
-   $db = Zend_Db::factory($config->database);
+   $db = Zend\Db\Db::factory($config->database);
 
 Как показано в предыдущем примере, в ``Zend_Config`` для доступа к
 конфигурационным данным, переданным его конструктору,
@@ -100,7 +100,7 @@
    :linenos:
 
    // Использование конфигурации
-   $config = new Zend_Config(require 'config.php');
+   $config = new Zend\Config\Config(require 'config.php');
 
    // Вывод элемента конфигурационных данных (результатом будет 'www.example.com')
    echo $config->webhost;

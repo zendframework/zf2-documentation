@@ -45,6 +45,6 @@ disable caching by using the ``disableCache()`` method.
 .. code-block:: php
    :linenos:
 
-   Zend_Locale::disableCache(true);
+   Zend\Locale\Locale::disableCache(true);
 
 

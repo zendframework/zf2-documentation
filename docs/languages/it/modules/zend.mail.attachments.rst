@@ -18,43 +18,43 @@ passando uno o più parametri al metodo *createAttachment()*:
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    // crea il messaggio...
    $mail->createAttachment($someBinaryString);
-   $mail->createAttachment($myImage, 'image/gif', Zend_Mime::DISPOSITION_INLINE, Zend_Mime::ENCODING_8BIT);
+   $mail->createAttachment($myImage, 'image/gif', Zend\Mime\Mime::DISPOSITION_INLINE, Zend\Mime\Mime::ENCODING_8BIT);
 
 Se si desidera maggiore controllo sul formato MIME generato per un singolo allegato è possibile utilizzare il
 valore di ritorno di *createAttachment()* per modificarne gli attributi. Il metodo *createAttachment()* restituisce
-un oggetto *Zend_Mime_Part*:
+un oggetto *Zend\Mime\Part*:
 
 .. code-block:: php
    :linenos:
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
 
    $at = $mail->createAttachment($myImage);
    $at->type        = 'image/gif';
-   $at->disposition = Zend_Mime::DISPOSITION_INLINE;
-   $at->encoding    = Zend_Mime::ENCODING_8BIT;
+   $at->disposition = Zend\Mime\Mime::DISPOSITION_INLINE;
+   $at->encoding    = Zend\Mime\Mime::ENCODING_8BIT;
    $at->filename    = 'test.gif';
 
    $mail->send();
 
-Un'alternativa consiste nel creare un'istanza di Zend_Mime_Part ed aggiungere l'allegato con *addAttachment()*:
+Un'alternativa consiste nel creare un'istanza di Zend\Mime\Part ed aggiungere l'allegato con *addAttachment()*:
 
 .. code-block:: php
    :linenos:
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
 
-   $at = new Zend_Mime_Part($myImage);
+   $at = new Zend\Mime\Part($myImage);
    $at->type        = 'image/gif';
-   $at->disposition = Zend_Mime::DISPOSITION_INLINE;
-   $at->encoding    = Zend_Mime::ENCODING_8BIT;
+   $at->disposition = Zend\Mime\Mime::DISPOSITION_INLINE;
+   $at->encoding    = Zend\Mime\Mime::ENCODING_8BIT;
    $at->filename    = 'test.gif';
 
    $mail->addAttachment($at);

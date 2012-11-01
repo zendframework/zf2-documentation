@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.progressbar.adapter.jspull:
 
-Zend_ProgressBar_Adapter_JsPull
+Zend\ProgressBar_Adapter\JsPull
 ===============================
 
-Adapter ``Zend_ProgressBar_Adapter_JsPull`` jest przeciwieństwem jsPush. W jego przypadku niezbędne jest
+Adapter ``Zend\ProgressBar_Adapter\JsPull`` jest przeciwieństwem jsPush. W jego przypadku niezbędne jest
 "wyciągnięcie" aktualizacji zamiast "wypchnięcia" z przeglądarki. Generalnie zaleca się użycie tego adaptera
 z opcją utrwalania postępu ``Zend_ProgressBar``. Jego działanie polega na wysłaniu do przeglądarki łańcucha
 znaków (w formacie *JSON*), który wygląda tak jak string *JSON* wysyłany przez adapter jsPush. Jedyną

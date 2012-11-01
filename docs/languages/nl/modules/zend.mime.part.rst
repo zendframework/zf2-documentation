@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.mime.part:
 
-Zend_Mime_Part
+Zend\Mime\Part
 ==============
 
 .. _zend.mime.part.introduction:
@@ -11,7 +11,7 @@ Inleiding
 
 Deze klasse stelt een enkel deel van een MIME bericht voor. Het bevat de inhoud van het berichtdeel, plus
 informatie over de encodering, inhoudstype en oorspronkelijke bestandsnaam ervan. Het biedt een methode om een
-string te genereren vanaf opgeslagen data. *Zend_Mime_Part* objecten kunnen aan :ref:`Zend_Mime_Message
+string te genereren vanaf opgeslagen data. *Zend\Mime\Part* objecten kunnen aan :ref:`Zend\Mime\Message
 <zend.mime.message>` worden toegevoegd om een compleet mulitpart bericht te assembleren.
 
 .. _zend.mime.part.instantiation:
@@ -19,8 +19,8 @@ string te genereren vanaf opgeslagen data. *Zend_Mime_Part* objecten kunnen aan 
 Instantiëring
 -------------
 
-*Zend_Mime_Part* word geïnstantieert met een string die de inhoud van het nieuwe deel bevat. Het wordt aangenomen
-dat het type van de inhoud OCTET-STREAM is, geëncodeerd op 8bits. Na het instantiëren van een *Zend_Mime_Part*
+*Zend\Mime\Part* word geïnstantieert met een string die de inhoud van het nieuwe deel bevat. Het wordt aangenomen
+dat het type van de inhoud OCTET-STREAM is, geëncodeerd op 8bits. Na het instantiëren van een *Zend\Mime\Part*
 kan je meta informatie zetten door onmiddellijk de attributen aan te spreken:
 
 .. code-block:: php
@@ -41,7 +41,7 @@ Methodes om een berichtdeel naar een string te schrijven
 --------------------------------------------------------
 
 *->getContent()* geeft de geëncodeerde inhoud van de Mime_Part als een string weer, geëncodeert volgens de in het
-attribuut $encoding gespecificeerde encodage. Toegestane waarden zijn Zend_Mime::ENCODING_* karakterset. Er worden
+attribuut $encoding gespecificeerde encodage. Toegestane waarden zijn Zend\Mime\Mime::ENCODING_* karakterset. Er worden
 geen conversies uitgevoerd.
 
 *->getHeaders()* geeft de Mime-Headers terug voor een Mime_Part zoals die werden gegenereerd vanaf de informatie in

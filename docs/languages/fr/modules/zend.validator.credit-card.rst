@@ -4,17 +4,17 @@
 CreditCard
 ==========
 
-``Zend_Validate_CreditCard`` permet de valider si une valeur est susceptible de représenter un numéro de carte de
+``Zend\Validate\CreditCard`` permet de valider si une valeur est susceptible de représenter un numéro de carte de
 crédit.
 
 Une carte de crédit contient plein de données, incluant un hologramme, un numéro de compte, un logo, une date
 d'expiration, un code de sécurité et le nom du détenteur. L'algorithme qui vérifie la combinaison de ces
 données n'est connu que des entreprises délivrant les cartes et devrait être vérifié lors d'un paiement.
 Cependant, il est utile de savoir si le numéro de la carte est valable **avant** d'effectuer de telles
-vérifications complexes. ``Zend_Validate_CreditCard`` vérifie simplement que le numéro est bien formé.
+vérifications complexes. ``Zend\Validate\CreditCard`` vérifie simplement que le numéro est bien formé.
 
 Dans les cas où vous possederiez un service capable d'effectuer des vérifications complètes,
-``Zend_Validate_CreditCard`` vous permet de passer une fonction de rappel à utiliser si le numéro a été
+``Zend\Validate\CreditCard`` vous permet de passer une fonction de rappel à utiliser si le numéro a été
 vérifié comme valide. Le retour de la fonction de rappel servira alors de retour général du validateur.
 
 Les institutions suivantes sont acceptées:
@@ -55,10 +55,10 @@ Les institutions suivantes sont acceptées:
 
 .. _zend.validator.set.creditcard.options:
 
-Options supportées par Zend_Validate_CreditCard
+Options supportées par Zend\Validate\CreditCard
 -----------------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_CreditCard``\  :
+Les options suivantes sont supportées par ``Zend\Validate\CreditCard``\  :
 
 - **service**\  : une fonction de rappel vers un service en ligne qui sera utilisé en plus pour la validation.
 
@@ -70,13 +70,13 @@ Les options suivantes sont supportées par ``Zend_Validate_CreditCard``\  :
 Utilisation classique
 ---------------------
 
-Il y a plusieurs institutions qui peuvent être validées par ``Zend_Validate_CreditCard``. Par défaut, toutes les
+Il y a plusieurs institutions qui peuvent être validées par ``Zend\Validate\CreditCard``. Par défaut, toutes les
 institutions connues sont acceptées:
 
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_CreditCard();
+   $valid = new Zend\Validate\CreditCard();
    if ($valid->isValid($input)) {
        // input semble valide
    } else {
@@ -91,7 +91,7 @@ Accepter seulement certains types de cartes
 -------------------------------------------
 
 Il peut arriver que vous ne vouliez valider que certains types de cartes plutôt que toutes les institutions
-connues. ``Zend_Validate_CreditCard`` permet ceci.
+connues. ``Zend\Validate\CreditCard`` permet ceci.
 
 Pour utiliser une limite, spécifiez les institutions accéptées à l'initialisation ou après, grâce à
 ``setType()``. Plusieurs arguments sont utilisables.
@@ -101,8 +101,8 @@ Vous pouvez préciser une seule institution:
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_CreditCard(
-       Zend_Validate_CreditCard::AMERICAN_EXPRESS
+   $valid = new Zend\Validate\CreditCard(
+       Zend\Validate\CreditCard::AMERICAN_EXPRESS
    );
 
 Plusieurs institutions se précisent au moyen d'un tableau:
@@ -110,9 +110,9 @@ Plusieurs institutions se précisent au moyen d'un tableau:
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_CreditCard(array(
-       Zend_Validate_CreditCard::AMERICAN_EXPRESS,
-       Zend_Validate_CreditCard::VISA
+   $valid = new Zend\Validate\CreditCard(array(
+       Zend\Validate\CreditCard::AMERICAN_EXPRESS,
+       Zend\Validate\CreditCard::VISA
    ));
 
 Et comme pour tout validateur, vous pouvez passer un tableau global ou un objet ``Zend_Config``. Dans ce cas, les
@@ -121,8 +121,8 @@ institutions se précisent au moyen de la clé ``type``:
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_CreditCard(array(
-       'type' => array(Zend_Validate_CreditCard::AMERICAN_EXPRESS)
+   $valid = new Zend\Validate\CreditCard(array(
+       'type' => array(Zend\Validate\CreditCard::AMERICAN_EXPRESS)
    ));
 
 .. _zend.validator.set.creditcard.institute.table:
@@ -165,10 +165,10 @@ Vous pouvez aussi configurer les institutions valides après la construction, au
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_CreditCard();
+   $valid = new Zend\Validate\CreditCard();
    $valid->setType(array(
-       Zend_Validate_CreditCard::AMERICAN_EXPRESS,
-       Zend_Validate_CreditCard::VISA
+       Zend\Validate\CreditCard::AMERICAN_EXPRESS,
+       Zend\Validate\CreditCard::VISA
    ));
 
 .. note::
@@ -185,12 +185,12 @@ Vous pouvez aussi configurer les institutions valides après la construction, au
 Validation par fonction de rappel
 ---------------------------------
 
-Comme déja dit, ``Zend_Validate_CreditCard`` ne valide que le numéro de la carte. Heureusement, certaines
+Comme déja dit, ``Zend\Validate\CreditCard`` ne valide que le numéro de la carte. Heureusement, certaines
 institutions proposent des *API*\ s pour valider des numéros de carte de crédit qui ne sont pas publiques. Ces
 services sont très souvent payants, ainsi cette vérification est par défaut désactivée.
 
 Lorsque vous avez accès à de telles *API*\ s, vous pouvez les utiliser comme fonctions additionnelles à
-``Zend_Validate_CreditCard`` et ainsi augmenter la sécurité de la validation.
+``Zend\Validate\CreditCard`` et ainsi augmenter la sécurité de la validation.
 
 Pour ce faire, vous devez simplement préciser une fonction de rappel qui sera appelée après que la validation
 "classique" ait réussi. Ceci évite un appel à l'*API* avec un numéro de toute façon non valide et augmentera
@@ -214,7 +214,7 @@ documentation du validateur :ref:`Callback <zend.validator.set.callback>`.
 
    // La validation
    $service = new CcService();
-   $valid   = new Zend_Validate_CreditCard(Zend_Validate_CreditCard::VISA);
+   $valid   = new Zend\Validate\CreditCard(Zend\Validate\CreditCard::VISA);
    $valid->setService(array($service, 'checkOnline'));
 
 Ici le service sera appelé avec le numéro de carte comme premier paramètre, et les types accéptés comme

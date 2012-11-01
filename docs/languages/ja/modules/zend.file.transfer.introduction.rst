@@ -1,13 +1,13 @@
 .. EN-Revision: none
 .. _zend.file.transfer.introduction:
 
-Zend_File_Transfer
+Zend\File\Transfer
 ==================
 
-``Zend_File_Transfer`` を使用すると、
+``Zend\File\Transfer`` を使用すると、
 ファイルのアップロードやダウンロードを管理できます。
 組み込みのバリデータを使ってファイルを検証したり、
-フィルタによってファイルを変更したりという機能があります。 ``Zend_File_Transfer``
+フィルタによってファイルを変更したりという機能があります。 ``Zend\File\Transfer``
 はアダプタ形式を採用しており、 *HTTP* や FTP、WEBDAV
 などのさまざまな転送プロトコルを同じ *API* で使用できます。
 
@@ -15,11 +15,11 @@ Zend_File_Transfer
 
    **制限**
 
-   現在の ``Zend_File_Transfer`` の実装では、 *HTTP* Post
+   現在の ``Zend\File\Transfer`` の実装では、 *HTTP* Post
    によるアップロードにしか対応していません。
    ファイルのダウンロードやその他のアダプタについては次のリリースで追加される予定です。
    実装されていないメソッドを実行すると例外をスローします。
-   したがって、実際のところは ``Zend_File_Transfer_Adapter_Http``
+   したがって、実際のところは ``Zend\File\Transfer\Adapter\Http``
    のインスタンスを直接操作することになります。
    これは、将来複数のアダプタが使用可能になった段階で変更される予定です。
 
@@ -27,13 +27,13 @@ Zend_File_Transfer
 
    **フォーム**
 
-   ``Zend_Form`` を使う場合は ``Zend_Form`` の *API* を使うようにし、 ``Zend_File_Transfer``
+   ``Zend_Form`` を使う場合は ``Zend_Form`` の *API* を使うようにし、 ``Zend\File\Transfer``
    を直接使わないようにしましょう。 ``Zend_Form`` のファイル転送機能は
-   ``Zend_File_Transfer`` で実装されているので、この章の説明は ``Zend_Form``
+   ``Zend\File\Transfer`` で実装されているので、この章の説明は ``Zend_Form``
    のユーザにも有用です。
 
-``Zend_File_Transfer`` の使い方はきわめて単純です。 ふたつの部分から成り立っており、
-アップロードを行う *HTTP* フォームとアップロードされたファイルを ``Zend_File_Transfer``
+``Zend\File\Transfer`` の使い方はきわめて単純です。 ふたつの部分から成り立っており、
+アップロードを行う *HTTP* フォームとアップロードされたファイルを ``Zend\File\Transfer``
 で処理するコードを作成します。 次の例を参照ください。
 
 .. _zend.file.transfer.introduction.example:
@@ -54,7 +54,7 @@ Zend_File_Transfer
        <input type="submit" value="アップロード" />
    </form>
 
-*HTML* を直接作成するのではなく、利便性を考慮して :ref:`Zend_Form_Element_File
+*HTML* を直接作成するのではなく、利便性を考慮して :ref:`Zend\Form_Element\File
 <zend.form.standardElements.file>` を使っていることに注意しましょう。
 
 次はアップロードしたファイルを受け取る側です。 今回の例では、受け取る側は
@@ -64,7 +64,7 @@ Zend_File_Transfer
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_File_Transfer_Adapter_Http();
+   $adapter = new Zend\File\Transfer\Adapter\Http();
 
    $adapter->setDestination('C:\temp');
 
@@ -73,7 +73,7 @@ Zend_File_Transfer
        echo implode("\n", $messages);
    }
 
-このコードは ``Zend_File_Transfer`` のもっともシンプルな使用法を示すものです。
+このコードは ``Zend\File\Transfer`` のもっともシンプルな使用法を示すものです。
 ローカルの保存先を ``setDestination()`` メソッドで指定して ``receive()``
 メソッドをコールします。 アップロード時に何らかのエラーが発生した場合は、
 返された例外の中でその情報を取得できます。
@@ -82,17 +82,17 @@ Zend_File_Transfer
 
    **注意**
 
-   この例は、 ``Zend_File_Transfer`` の基本的な *API* を説明するためだけのものです。
+   この例は、 ``Zend\File\Transfer`` の基本的な *API* を説明するためだけのものです。
    これをそのまま実際の環境で使用しては **いけません**\ 。
    深刻なセキュリティ問題を引き起こしてしまいます。
    常にバリデータを使用してセキュリティを向上させるようにしなければなりません。
 
 .. _zend.file.transfer.introduction.adapters:
 
-Zend_File_Transfer がサポートするアダプタ
+Zend\File\Transfer がサポートするアダプタ
 ------------------------------
 
-``Zend_File_Transfer`` は、
+``Zend\File\Transfer`` は、
 さまざまなアダプタと転送方向をサポートするように作られています。
 ファイルのアップロードやダウンロードだけでなく、転送
 (あるアダプタでのアップロードと別のアダプタでのダウンロードを同時に行う)
@@ -101,10 +101,10 @@ Zend_File_Transfer がサポートするアダプタ
 
 .. _zend.file.transfer.introduction.options:
 
-Zend_File_Transfer のオプション
+Zend\File\Transfer のオプション
 -------------------------
 
-``Zend_File_Transfer`` やそのアダプタはさまざまなオプションをサポートしています。
+``Zend\File\Transfer`` やそのアダプタはさまざまなオプションをサポートしています。
 オプションはコンストラクタで指定することもできますし、 ``setOptions($options)``
 で指定することもできます。 ``getOptions()``
 は、実際に設定されているオプションを返します。
@@ -120,7 +120,7 @@ Zend_File_Transfer のオプション
 ファイルのチェック
 ---------
 
-``Zend_File_Transfer``
+``Zend\File\Transfer``
 のメソッドの中には、さまざまな前提条件をチェックするためのものもあります。
 これらは、アップロードされたファイルを処理する際に便利です。
 
@@ -146,7 +146,7 @@ Zend_File_Transfer のオプション
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // すべての既知の内部ファイル情報を返します
    $files = $upload->getFileInfo();
@@ -172,7 +172,7 @@ Zend_File_Transfer のオプション
 さらなるファイル情報
 ----------
 
-``Zend_File_Transfer`` は、ファイルについてのさらなる情報を返すことができます。
+``Zend\File\Transfer`` は、ファイルについてのさらなる情報を返すことができます。
 次のメソッドが使用可能です。
 
 - **getFileName($file = null, $path = true)**:
@@ -207,7 +207,7 @@ Zend_File_Transfer のオプション
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
    $upload->receive();
 
    // すべてのファイルのファイル名を返します
@@ -234,7 +234,7 @@ Zend_File_Transfer のオプション
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
    $upload->receive();
 
    // 複数のファイルがアップロードされた場合は、すべてのファイルのサイズを配列で返します
@@ -263,7 +263,7 @@ Zend_File_Transfer のオプション
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
    $upload->receive();
 
    // 複数のファイルがアップロードされた場合は、すべてのファイルのハッシュを配列で返します
@@ -288,7 +288,7 @@ Zend_File_Transfer のオプション
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
    $upload->receive();
 
    $mime = $upload->getMimeType();
@@ -318,17 +318,17 @@ Zend_File_Transfer のオプション
    **Original data within $_FILES**
 
    Due to security reasons also the original data within $_FILES will be overridden as soon as
-   ``Zend_File_Transfer`` is initiated. When you want to omit this behaviour and have the original data simply set
+   ``Zend\File\Transfer`` is initiated. When you want to omit this behaviour and have the original data simply set
    the ``detectInfos`` option to ``FALSE`` at initiation.
 
-   This option will have no effect after you initiated ``Zend_File_Transfer``.
+   This option will have no effect after you initiated ``Zend\File\Transfer``.
 
 .. _zend.file.transfer.introduction.uploadprogress:
 
 ファイルアップロードの進捗
 -------------
 
-``Zend_File_Transfer`` では、ファイルアップロードの進捗状況を知ることができます。
+``Zend\File\Transfer`` では、ファイルアップロードの進捗状況を知ることができます。
 この機能を使用するには、 *APC* 拡張モジュール (ほとんどの *PHP*
 環境においてデフォルトで提供されています) あるいは ``uploadprogress``
 拡張モジュールが必要です。
@@ -339,7 +339,7 @@ Zend_File_Transfer のオプション
 の機能は ``php.ini`` で無効化できることに注意しましょう。
 
 次に、ファイルを送信するフォームの中に適切な hidden
-フィールドを追加しなければなりません。 ``Zend_Form_Element_File`` を使う場合は、この
+フィールドを追加しなければなりません。 ``Zend\Form_Element\File`` を使う場合は、この
 hidden フィールドは ``Zend_Form`` が自動的に追加します。
 
 これらふたつの条件さえ満たせば、ファイルアップロードの進捗状況を *getProgress*
@@ -354,7 +354,7 @@ progressbar アダプタを使用する
 実際の進捗状況を取得した上でそれをシンプルにユーザに見せることができます。
 
 そのためには、 ``getProgress()`` を最初にコールするときにお望みの
-**Zend_ProgressBar_Adapter** を追加しなければなりません。
+**Zend\ProgressBar\Adapter** を追加しなければなりません。
 どのアダプタを使用すればいいのかについては :ref:`Zend_ProgressBar の標準のアダプタ
 <zend.progressbar.adapters>` の章を参照ください。
 
@@ -365,12 +365,12 @@ progressbar アダプタを使用する
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_ProgressBar_Adapter_Console();
-   $upload  = Zend_File_Transfer_Adapter_Http::getProgress($adapter);
+   $adapter = new Zend\ProgressBar_Adapter\Console();
+   $upload  = Zend\File\Transfer\Adapter\Http::getProgress($adapter);
 
    $upload = null;
    while (!$upload['done']) {
-       $upload = Zend_File_Transfer_Adapter_Http:getProgress($upload);
+       $upload = Zend\File\Transfer\Adapter\Http:getProgress($upload);
    }
 
 完全な処理は、バックグラウンドで ``getProgress()`` によって行われます。
@@ -406,14 +406,14 @@ getProgress() を手動で使用する
   「問題」とは、何もアップロード中でない場合や
   進捗状況の取得に失敗した場合、あるいはアップロードがキャンセルされた場合を意味します。
 
-- **progress**: このオプションキーには ``Zend_ProgressBar_Adapter`` あるいは Zend_ProgressBar
+- **progress**: このオプションキーには ``Zend\ProgressBar\Adapter`` あるいは Zend_ProgressBar
   のインスタンスが含まれ、
   プログレスバー内から実際のアップロード状況を取得できるようになります。
 
 - **session**: このオプションキーには ``Zend_ProgressBar``
   内で使用するセッション名前空間の名前が含まれます。
   このキーが与えられなかったときのデフォルトは
-  ``Zend_File_Transfer_Adapter_Http_ProgressBar`` です。
+  ``Zend\File\Transfer\Adapter\Http\ProgressBar`` です。
 
 それ以外に返されるキーについては各拡張モジュールが直接返すものであり、
 チェックしていません。
@@ -427,10 +427,10 @@ getProgress() を手動で使用する
 .. code-block:: php
    :linenos:
 
-   $upload  = Zend_File_Transfer_Adapter_Http::getProgress();
+   $upload  = Zend\File\Transfer\Adapter\Http::getProgress();
 
    while (!$upload['done']) {
-       $upload = Zend_File_Transfer_Adapter_Http:getProgress($upload);
+       $upload = Zend\File\Transfer\Adapter\Http:getProgress($upload);
        print "\nActual progress:".$upload['message'];
        // 何か必要な処理をします
    }

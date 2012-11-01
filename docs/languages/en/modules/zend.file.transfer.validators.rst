@@ -1,12 +1,12 @@
 .. _zend.file.transfer.validators:
 
-Validators for Zend_File_Transfer
+Validators for Zend\File\Transfer
 =================================
 
-``Zend_File_Transfer`` is delivered with several file-related validators which can be used to increase security and
+``Zend\File\Transfer`` is delivered with several file-related validators which can be used to increase security and
 prevent possible attacks. Note that these validators are only as effective as how effectively you apply them. All
-validators provided with ``Zend_File_Transfer`` can be found in the ``Zend_Validator`` component and are named
-``Zend_Validate_File_*``. The following validators are available:
+validators provided with ``Zend\File\Transfer`` can be found in the ``Zend\Validator`` component and are named
+``Zend\Validate\File\*``. The following validators are available:
 
 - ``Count``: This validator checks for the number of files. A minimum and maximum range can be specified. An error
   will be thrown if either limit is crossed.
@@ -57,7 +57,7 @@ validators provided with ``Zend_File_Transfer`` can be found in the ``Zend_Valid
   and will throw an error when either of these thesholds are crossed.
 
 - ``Upload``: This validator is internal. It checks if an upload has resulted in an error. You must not set it, as
-  it's automatically set by ``Zend_File_Transfer`` itself. So you do not use this validator directly. You should
+  it's automatically set by ``Zend\File\Transfer`` itself. So you do not use this validator directly. You should
   only know that it exists.
 
 - ``WordCount``: This validator is able to check the number of words within files. It provides a minimum and
@@ -65,7 +65,7 @@ validators provided with ``Zend_File_Transfer`` can be found in the ``Zend_Valid
 
 .. _zend.file.transfer.validators.usage:
 
-Using Validators with Zend_File_Transfer
+Using Validators with Zend\File\Transfer
 ----------------------------------------
 
 Putting validators to work is quite simple. There are several methods for adding and manipulating validators:
@@ -102,7 +102,7 @@ Putting validators to work is quite simple. There are several methods for adding
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Set a file size with 20000 bytes
    $upload->addValidator('Size', false, 20000);
@@ -127,7 +127,7 @@ argument can be used to specify a particular file or array of files on which to 
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Set a file size with 20000 bytes and limits it only to 'file2'
    $upload->addValidator('Size', false, 20000, 'file2');
@@ -145,7 +145,7 @@ couple the calls as shown below:
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Set a file size with 20000 bytes
    $upload->addValidator('Size', false, 20000)
@@ -169,7 +169,7 @@ the form element. If no parameter or null is given all files will be validated
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Set a file size with 20000 bytes
    $upload->addValidator('Size', false, 20000)
@@ -221,7 +221,7 @@ the actual set values.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Limit the amount of files to maximum 2
    $upload->addValidator('Count', false, 2);
@@ -254,7 +254,7 @@ extension from *PHP* with the crc32 algorithm. It supports the following options
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Checks whether the content of the uploaded file has the given hash
    $upload->addValidator('Crc32', false, '3b3652f');
@@ -290,7 +290,7 @@ case-sensitive fashion.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Do not allow files with extension php or exe
    $upload->addValidator('ExcludeExtension', false, 'php,exe');
@@ -334,7 +334,7 @@ the methods ``setMimeType()``, ``addMimeType()``, and ``getMimeType()`` to set a
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Does not allow MIME type of gif images for all files
    $upload->addValidator('ExcludeMimeType', false, 'image/gif');
@@ -376,7 +376,7 @@ the methods ``setDirectory()``, ``addDirectory()``, and ``getDirectory()`` to se
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Add the temp directory to check for
    $upload->addValidator('Exists', false, '\temp');
@@ -416,7 +416,7 @@ In some cases it is useful to test in a case-sensitive fashion. Therefore the co
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Limit the extensions to jpg and png files
    $upload->addValidator('Extension', false, 'jpg,png');
@@ -470,7 +470,7 @@ bytes, 1MB is equal to 1024kB, and so on.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Limit the size of all files to be uploaded to 40000 bytes
    $upload->addValidator('FilesSize', false, 40000);
@@ -523,7 +523,7 @@ To bypass validation of a particular dimension, the relevent option simply shoul
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Limit the size of a image to a height of 100-200 and a width of
    // 40-80 pixel
@@ -553,7 +553,7 @@ validator to particular compression types with the methods described there.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Checks is the uploaded file is a compressed archive
    $upload->addValidator('IsCompressed', false);
@@ -586,7 +586,7 @@ particular image types with the methods described there.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Checks whether the uploaded file is a image file
    $upload->addValidator('IsImage', false);
@@ -627,7 +627,7 @@ extension from *PHP*. It supports the following options:
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Checks if the content of the uploaded file contains the given hash
    $upload->addValidator('Hash', false, '3b3652f');
@@ -666,7 +666,7 @@ extension for *PHP* with the md5 algorithm. It supports the following options:
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Checks if the content of the uploaded file has the given hash
    $upload->addValidator('Md5', false, '3b3652f336522365223');
@@ -714,7 +714,7 @@ magicfile parameter. This methods are available since Zend Framework 1.7.1.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Limit the MIME type of all given files to gif images
    $upload->addValidator('MimeType', false, 'image/gif');
@@ -774,7 +774,7 @@ the methods ``setDirectory()``, ``addDirectory()``, and ``getDirectory()`` to se
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Add the temp directory to check
    $upload->addValidator('NotExists', false, '\temp');
@@ -810,7 +810,7 @@ extension for *PHP* with the sha1 algorithm. It supports the following options:
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Checks if the content of the uploaded file has the given hash
    $upload->addValidator('sha1', false, '3b3652f336522365223');
@@ -852,7 +852,7 @@ bytes, 1MB is equal to 1024kB, and so on.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Limit the size of a file to 40000 bytes
    $upload->addValidator('Size', false, 40000);
@@ -889,7 +889,7 @@ the actual set values.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Limit the amount of words within files to maximum 2000
    $upload->addValidator('WordCount', false, 2000);

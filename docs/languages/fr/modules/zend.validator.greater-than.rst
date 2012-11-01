@@ -4,20 +4,20 @@
 GreaterThan
 ===========
 
-``Zend_Validate_GreaterThan`` permet de valider qu'une valeur est plus grande qu'une autre (la borne).
+``Zend\Validate\GreaterThan`` permet de valider qu'une valeur est plus grande qu'une autre (la borne).
 
 .. note::
 
-   **Zend_Validate_GreaterThan ne supporte que les nombres**
+   **Zend\Validate\GreaterThan ne supporte que les nombres**
 
-   Zend_Validate_GreaterThan ne fonctionnera pas avec les chaines ou les dates.
+   Zend\Validate\GreaterThan ne fonctionnera pas avec les chaines ou les dates.
 
 .. _zend.validator.set.greaterthan.options:
 
-Options supportées par Zend_Validate_GreaterThan
+Options supportées par Zend\Validate\GreaterThan
 ------------------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_GreaterThan``:
+Les options suivantes sont supportées par ``Zend\Validate\GreaterThan``:
 
 - **min**: Affecte la borne inférieure.
 
@@ -31,7 +31,7 @@ Voyez l'exemple ci-après.
 .. code-block:: php
    :linenos:
 
-   $valid  = new Zend_Validate_GreaterThan(array('min' => 10));
+   $valid  = new Zend\Validate\GreaterThan(array('min' => 10));
    $value  = 10;
    $return = $valid->isValid($value);
    // retourne true

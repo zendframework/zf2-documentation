@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.elasticip:
 
-Zend_Service_Amazon_Ec2: Elastische IP Adressen
+Zend\Service_Amazon\Ec2: Elastische IP Adressen
 ===============================================
 
 Standardmäßig werden allen Amazon EC2 Instanzen beim Starten zwei IP Adressen zugeordnet: eine private (RFC 1918)
@@ -31,7 +31,7 @@ eigene öffentliche IP Adresse schnell auf jede Instanz im eigenen Account verkn
 .. code-block:: php
    :linenos:
 
-   $ec2_eip = new Zend_Service_Amazon_Ec2_Elasticip('aws_key','aws_secret_key');
+   $ec2_eip = new Zend\Service\Amazon\Ec2\Elasticip('aws_key','aws_secret_key');
    $ip = $ec2_eip->allocate();
 
    // Gibt die neu verknüpfte elastische IP Adresse aus;
@@ -50,7 +50,7 @@ publicIp und instanceId enthalten wenn diese assoziiert sind.
 .. code-block:: php
    :linenos:
 
-   $ec2_eip = new Zend_Service_Amazon_Ec2_Elasticip('aws_key','aws_secret_key');
+   $ec2_eip = new Zend\Service\Amazon\Ec2\Elasticip('aws_key','aws_secret_key');
    // Beschreibe alle
    $ips = $ec2_eip->describe();
 
@@ -71,7 +71,7 @@ Gibt ein boolsches ``TRUE`` oder ``FALSE`` zurück.
 .. code-block:: php
    :linenos:
 
-   $ec2_eip = new Zend_Service_Amazon_Ec2_Elasticip('aws_key','aws_secret_key');
+   $ec2_eip = new Zend\Service\Amazon\Ec2\Elasticip('aws_key','aws_secret_key');
    $ec2_eip->release('ipaddress');
 
 .. _zend.service.amazon.ec2.elasticip.associate:
@@ -85,7 +85,7 @@ Gibt ein boolsches ``TRUE`` oder ``FALSE`` zurück.
 .. code-block:: php
    :linenos:
 
-   $ec2_eip = new Zend_Service_Amazon_Ec2_Elasticip('aws_key','aws_secret_key');
+   $ec2_eip = new Zend\Service\Amazon\Ec2\Elasticip('aws_key','aws_secret_key');
    $ec2_eip->associate('instance_id', 'ipaddress');
 
 .. _zend.service.amazon.ec2.elasticip.disassociate:
@@ -100,7 +100,7 @@ Gibt ein boolsches ``TRUE`` oder ``FALSE`` zurück.
 .. code-block:: php
    :linenos:
 
-   $ec2_eip = new Zend_Service_Amazon_Ec2_Elasticip('aws_key','aws_secret_key');
+   $ec2_eip = new Zend\Service\Amazon\Ec2\Elasticip('aws_key','aws_secret_key');
    $ec2_eip->disassociate('ipaddress');
 
 

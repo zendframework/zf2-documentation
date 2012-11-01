@@ -13,11 +13,11 @@
       :linenos:
 
       // バリデータチェインを作成し、そこにバリデータを追加します
-      $validatorChain = new Zend_Validate();
+      $validatorChain = new Zend\Validate\Validate();
       $validatorChain->addValidator(
-                          new Zend_Validate_StringLength(array('min' => 6,
+                          new Zend\Validate\StringLength(array('min' => 6,
                                                                'max' => 12)))
-                     ->addValidator(new Zend_Validate_Alnum());
+                     ->addValidator(new Zend\Validate\Alnum());
 
       // ユーザ名を検証します
       if ($validatorChain->isValid($username)) {
@@ -50,14 +50,14 @@
       :linenos:
 
       $validatorChain->addValidator(
-                          new Zend_Validate_StringLength(array('min' => 6,
+                          new Zend\Validate\StringLength(array('min' => 6,
                                                                'max' => 12)),
                           true)
-                     ->addValidator(new Zend_Validate_Alnum());
+                     ->addValidator(new Zend\Validate\Alnum());
 
 
 
-``Zend_Validate_Interface`` を実装したオブジェクトなら何でも、
+``Zend\Validate\Interface`` を実装したオブジェクトなら何でも、
 バリデータチェインで使用できます。
 
 

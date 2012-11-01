@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2:
 
-Zend_Service_Amazon_Ec2
+Zend\Service_Amazon\Ec2
 =======================
 
 .. _zend.service.amazon.ec2.introduction:
@@ -9,7 +9,7 @@ Zend_Service_Amazon_Ec2
 Einführung
 ----------
 
-``Zend_Service_Amazon_Ec2`` bietet ein Interface zu Amazon's Elastic Clound Computing (EC2).
+``Zend\Service_Amazon\Ec2`` bietet ein Interface zu Amazon's Elastic Clound Computing (EC2).
 
 .. _zend.service.amazon.ec2.whatis:
 
@@ -37,7 +37,7 @@ Construktor übergeben.
 .. code-block:: php
    :linenos:
 
-   Zend_Service_Amazon_Ec2_Ebs::setKeys('aws_key','aws_secret_key');
+   Zend\Service\Amazon\Ec2\Ebs::setKeys('aws_key','aws_secret_key');
 
 Um die Region zu setzen in der man arbeitet kann man *setRegion* aufrufen um die Amazon Ec2 Region zu setzen in der
 man arbeitet. Aktuell sind nur zwei Regionen vorhanden, us-east-1 und eu-west-1. Wenn ein ungültiger Wert
@@ -50,7 +50,7 @@ man arbeitet. Aktuell sind nur zwei Regionen vorhanden, us-east-1 und eu-west-1.
 .. code-block:: php
    :linenos:
 
-   Zend_Service_Amazon_Ec2_Ebs::setRegion('us-east-1');
+   Zend\Service\Amazon\Ec2\Ebs::setRegion('us-east-1');
 
 .. note::
 

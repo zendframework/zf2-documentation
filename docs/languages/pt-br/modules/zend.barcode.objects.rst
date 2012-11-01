@@ -29,19 +29,19 @@ ser definidas em quatro formas:
    $options = array('text' => 'ZEND-FRAMEWORK', 'barHeight' => 40);
 
    // Caso 1: construtor
-   $barcode = new Zend_Barcode_Object_Code39($options);
+   $barcode = new Zend\Barcode_Object\Code39($options);
 
    // Caso 2: setOptions()
-   $barcode = new Zend_Barcode_Object_Code39();
+   $barcode = new Zend\Barcode_Object\Code39();
    $barcode->setOptions($options);
 
    // Caso 3: setConfig()
-   $config  = new Zend_Config($options);
-   $barcode = new Zend_Barcode_Object_Code39();
+   $config  = new Zend\Config\Config($options);
+   $barcode = new Zend\Barcode_Object\Code39();
    $barcode->setConfig($config);
 
    // Caso 4: métodos de acesso individuais
-   $barcode = new Zend_Barcode_Object_Code39();
+   $barcode = new Zend\Barcode_Object\Code39();
    $barcode->setText('ZEND-FRAMEWORK')
            ->setBarHeight(40);
 
@@ -64,7 +64,7 @@ a letra inicial da opção para maiúscula e colocando o prefixo "set" (por exem
    +------------------+-----------------+-------------------+--------------------------------------------------------------------------------------------------------------------------+
    |Opção             |Tipo de Dado     |Valor Padrão       |Descrição                                                                                                                 |
    +==================+=================+===================+==========================================================================================================================+
-   |barcodeNamespace  |String           |Zend_Barcode_Object|Namespace do código de barras; por exemplo, se você precisar estender os objetos incorporados                             |
+   |barcodeNamespace  |String           |Zend\Barcode\Object|Namespace do código de barras; por exemplo, se você precisar estender os objetos incorporados                             |
    +------------------+-----------------+-------------------+--------------------------------------------------------------------------------------------------------------------------+
    |barHeight         |Integer          |50                 |Altura das barras                                                                                                         |
    +------------------+-----------------+-------------------+--------------------------------------------------------------------------------------------------------------------------+
@@ -107,24 +107,24 @@ O caso particular do setBarcodeFont() estático
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Você pode definir uma fonte comum para todos os seus objetos usando o método estático
-``Zend_Barcode_Object::setBarcodeFont()``. Este valor pode ser substituído por objetos individuais usando o
+``Zend\Barcode\Object::setBarcodeFont()``. Este valor pode ser substituído por objetos individuais usando o
 método ``setFont()``.
 
 .. code-block:: php
    :linenos:
 
    // Em seu arquivo bootstrap:
-   Zend_Barcode_Object::setBarcodeFont('my_font.ttf');
+   Zend\Barcode\Object::setBarcodeFont('my_font.ttf');
 
    // Depois em seu código:
-   Zend_Barcode::render(
+   Zend\Barcode\Barcode::render(
        'code39',
        'pdf',
        array('text' => 'ZEND-FRAMEWORK')
    ); // utilizará 'my_font.ttf'
 
    // or:
-   Zend_Barcode::render(
+   Zend\Barcode\Barcode::render(
        'code39',
        'image',
        array(
@@ -147,7 +147,7 @@ Métodos de Leitura Comuns Adicionais
    +-----------------------------------+------------+------------------------------------------------------------------------------------------------------------------------------------+
    |Método de Leitura                  |Tipo de Dado|Descrição                                                                                                                           |
    +===================================+============+====================================================================================================================================+
-   |getType()                          |String      |Retorna o nome da classe de código de barras sem o namespace (por exemplo, Zend_Barcode_Object_Code39 retorna simplesmente "code39")|
+   |getType()                          |String      |Retorna o nome da classe de código de barras sem o namespace (por exemplo, Zend\Barcode_Object\Code39 retorna simplesmente "code39")|
    +-----------------------------------+------------+------------------------------------------------------------------------------------------------------------------------------------+
    |getRawText()                       |String      |Retorna o texto original fornecido pelo objeto                                                                                      |
    +-----------------------------------+------------+------------------------------------------------------------------------------------------------------------------------------------+

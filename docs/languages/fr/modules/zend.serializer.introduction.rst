@@ -16,9 +16,9 @@ Pour instancier un sérialiseur, vous devriez utiliser la méthode de fabrique d
 .. code-block:: php
    :linenos:
 
-   $serializer = Zend_Serializer::factory('PhpSerialize');
-   // $serializer est instance de Zend_Serializer_Adapter_AdapterInterface,
-   // précisémment Zend_Serializer_Adapter_PhpSerialize
+   $serializer = Zend\Serializer\Serializer::factory('PhpSerialize');
+   // $serializer est instance de Zend\Serializer_Adapter\AdapterInterface,
+   // précisémment Zend\Serializer_Adapter\PhpSerialize
 
    try {
        $serialized = $serializer->serialize($data);
@@ -26,14 +26,14 @@ Pour instancier un sérialiseur, vous devriez utiliser la méthode de fabrique d
 
        $unserialized = $serializer->unserialize($serialized);
        // ici $data == $unserialized
-   } catch (Zend_Serializer_Exception $e) {
+   } catch (Zend\Serializer\Exception $e) {
        echo $e;
    }
 
 La méhode ``serialize`` génère une chaine. Pour regénérer la donnée utilisez la méthode ``unserialize``.
 
 Si une erreur survient à la sérialisation ou désérialisation, ``Zend_Serializer`` enverra une
-``Zend_Serializer_Exception``.
+``Zend\Serializer\Exception``.
 
 Pour configurer l'adaptateur, vous pouvez passer un tableau ou un objet instance de ``Zend_Config`` à la méthode
 ``factory`` ou aux méthode ``un-/serialize``:
@@ -41,14 +41,14 @@ Pour configurer l'adaptateur, vous pouvez passer un tableau ou un objet instance
 .. code-block:: php
    :linenos:
 
-   $serializer = Zend_Serializer::factory('Wddx', array(
+   $serializer = Zend\Serializer\Serializer::factory('Wddx', array(
        'comment' => 'serialized by Zend_Serializer',
    ));
 
    try {
        $serialized = $serializer->serialize($data, array('comment' => 'change comment'));
        $unserialized = $serializer->unserialize($serialized, array(/* options pour unserialize */));
-   } catch (Zend_Serializer_Exception $e) {
+   } catch (Zend\Serializer\Exception $e) {
        echo $e;
    }
 
@@ -67,15 +67,15 @@ moyen de la méthode statique ``setDefaultAdapter()``.
 .. code-block:: php
    :linenos:
 
-   Zend_Serializer::setDefaultAdapter('PhpSerialize', $options);
+   Zend\Serializer\Serializer::setDefaultAdapter('PhpSerialize', $options);
    // ou
-   $serializer = Zend_Serializer::factory('PhpSerialize', $options);
-   Zend_Serializer::setDefaultAdapter($serializer);
+   $serializer = Zend\Serializer\Serializer::factory('PhpSerialize', $options);
+   Zend\Serializer\Serializer::setDefaultAdapter($serializer);
 
    try {
-       $serialized   = Zend_Serializer::serialize($data, $options);
-       $unserialized = Zend_Serializer::unserialize($serialized, $options);
-   } catch (Zend_Serializer_Exception $e) {
+       $serialized   = Zend\Serializer\Serializer::serialize($data, $options);
+       $unserialized = Zend\Serializer\Serializer::unserialize($serialized, $options);
+   } catch (Zend\Serializer\Exception $e) {
        echo $e;
    }
 

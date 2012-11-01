@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.form.elements:
 
-使用 Zend_Form_Element 生成表单元素
+使用 Zend\Form\Element 生成表单元素
 ===========================
 
-表单由元素组成，它一般对应于 HTML 表单输入。Zend_Form_Element
+表单由元素组成，它一般对应于 HTML 表单输入。Zend\Form\Element
 封装了单个表单元素，并完成下列工作：
 
 - 校验（提交的数据有效乎？）
@@ -17,7 +17,7 @@
 
 - 元数据和属性（什么信息进一步修饰元素？）
 
-基础类 *Zend_Form_Element*
+基础类 *Zend\Form\Element*
 对许多类有合理的缺省设置，但最好还是继承这个类来完成特殊意图的元素。另外，Zend
 Framework 带有许多标准的 XHTML 元素，请阅读 :ref:`在标准元素一章 <zend.form.standardElements>`
 的有关文档。
@@ -27,7 +27,7 @@ Framework 带有许多标准的 XHTML 元素，请阅读 :ref:`在标准元素�
 插件加载器
 -----
 
-*Zend_Form_Element* 利用 :ref:`Zend_Loader_PluginLoader <zend.loader.pluginloader>`
+*Zend\Form\Element* 利用 :ref:`Zend\Loader\PluginLoader <zend.loader.pluginloader>`
 来使开发者指定替代校验器、过滤器和装饰器的位置。每个都有它自己携带的插件加载器，并使用通用的访问器来读取或修改它们。
 
 下列加载器类型和各种各样的插件加载器方法一起使用：'validate'、 'filter' 和
@@ -65,7 +65,7 @@ Framework 带有许多标准的 XHTML 元素，请阅读 :ref:`在标准元素�
 .. code-block::
    :linenos:
    <?php
-   class My_Decorator_Label extends Zend_Form_Decorator_Abstract
+   class My_Decorator_Label extends Zend\Form_Decorator\Abstract
    {
        protected $_placement = 'PREPEND';
 
@@ -130,7 +130,7 @@ Framework 带有许多标准的 XHTML 元素，请阅读 :ref:`在标准元素�
 在校验之前对输入执行规范化常常是有用的并/或必需的 － 例如，你可能想要剥离所有
 HTML，在剩下的东东上运行校验来确保提交有效。或者你可能想把输入的数据两边的空格都消掉，这样
 StringLength 校验器就不会返回失败。这些操作使用 *Zend_Filter* 来执行，并且
-*Zend_Form_Element* 对过滤链有支持，让你指定多个连续的过滤器来用。在校验期间和通过
+*Zend\Form\Element* 对过滤链有支持，让你指定多个连续的过滤器来用。在校验期间和通过
 *getValue()* 读取元素值的时候都会发生校验：
 
 .. code-block::
@@ -150,10 +150,10 @@ StringLength 校验器就不会返回失败。这些操作使用 *Zend_Filter* �
    :linenos:
    <?php
    // 具体的过滤器实例：
-   $element->addFilter(new Zend_Filter_Alnum());
+   $element->addFilter(new Zend\Filter\Alnum());
 
    // 合格的全类名：
-   $element->addFilter('Zend_Filter_Alnum');
+   $element->addFilter('Zend\Filter\Alnum');
 
    // 短过滤器名：
    $element->addFilter('Alnum');
@@ -166,8 +166,8 @@ StringLength 校验器就不会返回失败。这些操作使用 *Zend_Filter* �
 
    **使用定制的过滤器类**
 
-   如果你有自己的一组过滤器，可以通过 *addPrefixPath()* 来告诉 *Zend_Form_Element*\
-   。例如，如果你在 'My_Filter' 前缀下有过滤器，这样来告诉 *Zend_Form_Element*\ ：
+   如果你有自己的一组过滤器，可以通过 *addPrefixPath()* 来告诉 *Zend\Form\Element*\
+   。例如，如果你在 'My_Filter' 前缀下有过滤器，这样来告诉 *Zend\Form\Element*\ ：
 
    .. code-block::
       :linenos:
@@ -207,7 +207,7 @@ StringLength 校验器就不会返回失败。这些操作使用 *Zend_Filter* �
 ---
 
 如果你赞同安全咒语“过滤输入，转义输出”，你将会校验（“过滤输入”）你的表单输入。
-在 *Zend_Form* 里，每个元素包含它自己的由 *Zend_Validate_** 校验器组成的校验器链。
+在 *Zend_Form* 里，每个元素包含它自己的由 *Zend\Validate\** 校验器组成的校验器链。
 
 两个办法添加校验器到校验器链：
 
@@ -221,10 +221,10 @@ StringLength 校验器就不会返回失败。这些操作使用 *Zend_Filter* �
    :linenos:
    <?php
    // Concrete validator instance:
-   $element->addValidator(new Zend_Validate_Alnum());
+   $element->addValidator(new Zend\Validate\Alnum());
 
    // Fully qualified class name:
-   $element->addValidator('Zend_Validate_Alnum');
+   $element->addValidator('Zend\Validate\Alnum');
 
    // Short validator name:
    $element->addValidator('Alnum');
@@ -237,8 +237,8 @@ StringLength 校验器就不会返回失败。这些操作使用 *Zend_Filter* �
 
    **使用定制的校验器类**
 
-   如果你有自己的一组校验器，可以通过 *addPrefixPath()* 来告诉 *Zend_Form_Element*\
-   。例如，如果你在 'My_Validator' 前缀下有校验器，这样来告诉 *Zend_Form_Element*\ ：
+   如果你有自己的一组校验器，可以通过 *addPrefixPath()* 来告诉 *Zend\Form\Element*\
+   。例如，如果你在 'My_Validator' 前缀下有校验器，这样来告诉 *Zend\Form\Element*\ ：
 
    .. code-block::
       :linenos:
@@ -263,22 +263,22 @@ StringLength 校验器就不会返回失败。这些操作使用 *Zend_Filter* �
    $element->addValidator('StringLength', false, array(6, 20));
    ?>
 这样传递参数应该按照它们在构造器里定义的顺序进行。上述例子将带参数 *$min* 和
-*$max* 实例化 *Zend_Validate_StringLenth* 类：
+*$max* 实例化 *Zend\Validate\StringLenth* 类：
 
 .. code-block::
    :linenos:
    <?php
-   $validator = new Zend_Validate_StringLength(6, 20);
+   $validator = new Zend\Validate\StringLength(6, 20);
    ?>
 .. note::
 
    **提供定制的校验错误消息**
 
-   有些开发者可能想为校验器提供定制的错误消息。 *Zend_Form_Element::addValidator()* 的
+   有些开发者可能想为校验器提供定制的错误消息。 *Zend\Form\Element::addValidator()* 的
    *$options* 参数让你通过提供 'messages'
    键并把它设置为键/值对（用来设置消息模板）的数组来完成。你需要知道特定校验器的各种各样的校验错误类型的错误代码。
 
-   稍好的选择是在表单中使用 *Zend_Translator_Adapter*\
+   稍好的选择是在表单中使用 *Zend\Translator\Adapter*\
    。错误代码通过缺省的错误装饰器自动传递给适配器，然后你可以通过为你的校验器的各种错误代码设置翻译来指定自己的错误消息字符串。
 
 你也可以使用 *addValidators()*
@@ -340,21 +340,21 @@ StringLength 校验器就不会返回失败。这些操作使用 *Zend_Filter* �
 
    **在过滤后的值上校验**
 
-   *Zend_Form_Element::isValid()* 在校验之前通过提供过滤器链来过滤（输入）值。见 See
+   *Zend\Form\Element::isValid()* 在校验之前通过提供过滤器链来过滤（输入）值。见 See
    :ref:`过滤器一节 <zend.form.elements.filters>` 有更多信息。
 
 .. note::
 
    **校验上下文**
 
-   *Zend_Form_Element::isValid()* 支持另外的参数 *$context*\ 。当校验一个表单 *Zend_Form::isValid()*
-   传递由 *$context* 处理过的数据的整个数组， *Zend_Form_Element::isValid()*
+   *Zend\Form\Element::isValid()* 支持另外的参数 *$context*\ 。当校验一个表单 *Zend\Form\Form::isValid()*
+   传递由 *$context* 处理过的数据的整个数组， *Zend\Form\Element::isValid()*
    接着把它传递给每个校验器。这意味着你可以写知道数据传递给其它表单元素的校验器，例如，标准的注册表单有密码和密码确认元素，得有一个校验它们是否匹配。这样的校验器看起来如下：
 
    .. code-block::
       :linenos:
       <?php
-      class My_Validate_PasswordConfirmation extends Zend_Validate_Abstract
+      class My_Validate_PasswordConfirmation extends Zend\Validate\Abstract
       {
           const NOT_MATCH = 'notMatch';
 
@@ -414,9 +414,9 @@ false，如果没有值传递给 *isValid()*\
 
 .. note::
 
-   **使用 Zend_Form_Elements 作为通用的校验器**
+   **使用 Zend\Form\Elements 作为通用的校验器**
 
-   *Zend_Form_Element* 实现 *Zend_Validate_Interface*\
+   *Zend\Form\Element* 实现 *Zend\Validate\Interface*\
    ，意味着元素可以在其它非表单相关的校验链里被用做校验器。
 
 校验相关的方法包括：
@@ -486,22 +486,22 @@ false，如果没有值传递给 *isValid()*\
 是一个典型，并且，如果他们对用户很好，需要为显示校验错误消息生成
 markup。在页面元素越多，任务就越不琐碎。
 
-*Zend_Form_Element* 试图用 "装饰器"
+*Zend\Form\Element* 试图用 "装饰器"
 来解决这个问题。装饰器就是个类，可以访问元素和用于解析内容的方法。更多关于装饰器如何工作，参见
-:ref:`Zend_Form_Decorator <zend.form.decorators>`\ 。
+:ref:`Zend\Form\Decorator <zend.form.decorators>`\ 。
 
-*Zend_Form_Element* 所使用的缺省的装饰器是：
+*Zend\Form\Element* 所使用的缺省的装饰器是：
 
 - **ViewHelper**: 指定一个视图助手用于解析元素。'helper'
-  元素属性可用来指定使用哪个视图助手。缺省地， *Zend_Form_Element* 指定 'formText'
+  元素属性可用来指定使用哪个视图助手。缺省地， *Zend\Form\Element* 指定 'formText'
   视图助手，但个别的子类指定不同的助手。
 
-- **Errors**: 使用 *Zend_View_Helper_FormErrors*
+- **Errors**: 使用 *Zend\View_Helper\FormErrors*
   追加错误消息给元素，如果没有错误，就不追加。
 
 - **HtmlTag**: 在一个 HTML <dd> 标签里封装元素和错误。
 
-- **Label**: 使用 *Zend_View_Helper_FormLabel* 预先准备一个标签给元素，并把它封装在一个 <dt>
+- **Label**: 使用 *Zend\View_Helper\FormLabel* 预先准备一个标签给元素，并把它封装在一个 <dt>
   标签里。如果没有提供标签（Label），就解析定义术语（definition term）标签（tag）。
 
 .. note::
@@ -514,7 +514,7 @@ markup。在页面元素越多，任务就越不琐碎。
    .. code-block::
       :linenos:
       <?php
-      $element = new Zend_Form_Element('foo', array('disableLoadDefaultDecorators' => true));
+      $element = new Zend\Form\Element('foo', array('disableLoadDefaultDecorators' => true));
 
    该选项可以和企图选项混合，它们都是数组选项或在 *Zend_Config* 对象里。
 
@@ -549,13 +549,13 @@ markup。在页面元素越多，任务就越不琐碎。
        </ul>
    </dd>
 
-关于装饰器的更多信息，请阅读 :ref:`Zend_Form_Decorator 一节 <zend.form.decorators>`\ 。
+关于装饰器的更多信息，请阅读 :ref:`Zend\Form\Decorator 一节 <zend.form.decorators>`\ 。
 
 .. note::
 
    **使用同类型的多重装饰器**
 
-   在内部，当读取装饰器时， *Zend_Form_Element*
+   在内部，当读取装饰器时， *Zend\Form\Element*
    使用装饰器的类作为查询机制。结果，你不能注册同类型的多重装饰器，后来的装饰器就重写以前存在的装饰器。
 
    为解决这个问题，你可以使用 **aliases**\
@@ -611,7 +611,7 @@ markup。在页面元素越多，任务就越不琐碎。
 元数据和属性
 ------
 
-*Zend_Form_Element* 处理广泛的属性和元素元数据，基本属性包括：
+*Zend\Form\Element* 处理广泛的属性和元素元数据，基本属性包括：
 
 - **name**: 元素名，使用 *setName()* 和 *getName()* 访问器。
 
@@ -646,7 +646,7 @@ id，有一组访问器来完成它：
 
 - **getAttribs()**: 以键/值对读取所有属性
 
-然而大多数时候，你可以把它们当作对象属性来访问，因为 *Zend_Form_Element*
+然而大多数时候，你可以把它们当作对象属性来访问，因为 *Zend\Form\Element*
 利用重载来简便访问它们：
 
 .. code-block::
@@ -668,10 +668,10 @@ HTML 属性来解析。
 
 .. _zend.form.elements.methods:
 
-Zend_Form_Element 方法
+Zend\Form\Element 方法
 --------------------
 
-*Zend_Form_Element* 有许多许多方法。下面是一个快速概要，按类分组：
+*Zend\Form\Element* 有许多许多方法。下面是一个快速概要，按类分组：
 
 - 配置：
 
@@ -681,7 +681,7 @@ Zend_Form_Element 方法
 
 - I18n:
 
-  - *setTranslator(Zend_Translator_Adapter $translator = null)*
+  - *setTranslator(Zend\Translator\Adapter $translator = null)*
 
   - *getTranslator()*
 
@@ -741,7 +741,7 @@ Zend_Form_Element 方法
 
 - 插件加载器和路径：
 
-  - *setPluginLoader(Zend_Loader_PluginLoader_Interface $loader, $type)*
+  - *setPluginLoader(Zend\Loader_PluginLoader\Interface $loader, $type)*
 
   - *getPluginLoader($type)*
 
@@ -789,7 +789,7 @@ Zend_Form_Element 方法
 
 - 解析：
 
-  - *setView(Zend_View_Interface $view = null)*
+  - *setView(Zend\View\Interface $view = null)*
 
   - *getView()*
 
@@ -807,17 +807,17 @@ Zend_Form_Element 方法
 
   - *clearDecorators()*
 
-  - *render(Zend_View_Interface $view = null)*
+  - *render(Zend\View\Interface $view = null)*
 
 .. _zend.form.elements.config:
 
 配置
 --
 
-*Zend_Form_Element* 的构造器接受选项数组或包含选项的 *Zend_Config* 的对象，它也可以用
+*Zend\Form\Element* 的构造器接受选项数组或包含选项的 *Zend_Config* 的对象，它也可以用
 *setOptions()* 或 *setConfig()* 来配置。一般来说，命名键如下：
 
-- 如果 'set' + 键指向 *Zend_Form_Element* 方法，那么提供的值就传递给这个方法。
+- 如果 'set' + 键指向 *Zend\Form\Element* 方法，那么提供的值就传递给这个方法。
 
 - 否则，这个值就用来设置属性。
 
@@ -875,7 +875,7 @@ Zend_Form_Element 方法
 定制元素
 ----
 
-通过继承 *Zend_Form_Element* 类，你可以生成自己的定制元素，这样做的原因是：
+通过继承 *Zend\Form\Element* 类，你可以生成自己的定制元素，这样做的原因是：
 
 - 共享通用的校验器和/或过滤器的元素
 
@@ -891,7 +891,7 @@ Zend_Form_Element 方法
 .. code-block::
    :linenos:
    <?php
-   class My_Element_Text extends Zend_Form_Element
+   class My_Element_Text extends Zend\Form\Element
    {
        public function init()
        {
@@ -915,13 +915,13 @@ Zend_Form_Element 方法
    ?>
 'foo' 元素现在是 *My_Element_Text* 类型并展示你描画的行为。
 
-当继承 *Zend_Form_Element* 时你想 override 的另一个特殊方法是 *loadDefaultDecorators()*\
+当继承 *Zend\Form\Element* 时你想 override 的另一个特殊方法是 *loadDefaultDecorators()*\
 。这个方法有条件地为你的元素加载一组缺省装饰器，你可能想在你的继承类里替换你自己的装饰器。
 
 .. code-block::
    :linenos:
    <?php
-   class My_Element_Text extends Zend_Form_Element
+   class My_Element_Text extends Zend\Form\Element
    {
        public function loadDefaultDecorators()
        {
@@ -932,6 +932,6 @@ Zend_Form_Element 方法
        }
    }
    ?>
-有许多办法定制元素。别忘了阅读 *Zend_Form_Element* API 文档来获知所有的可用方法。
+有许多办法定制元素。别忘了阅读 *Zend\Form\Element* API 文档来获知所有的可用方法。
 
 

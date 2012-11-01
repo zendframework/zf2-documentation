@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.amf.server:
 
-Zend_Amf_Server
+ZendAmf\Server
 ===============
 
-``Zend_Amf_Server`` proporciona un servidor al estilo *RPC* para tramitar solicitudes hechas desde Adobe Flash
+``ZendAmf\Server`` proporciona un servidor al estilo *RPC* para tramitar solicitudes hechas desde Adobe Flash
 Player utilizando el protocolo *AMF*. Al igual que todas las clases de servidor, Zend Framework sigue la *API* de
 SoapServer, proporcionando una interfaz para crear servidores fácil de recordar.
 
@@ -18,7 +18,7 @@ crear un servidor *AMF*:
 .. code-block:: php
    :linenos:
 
-   $servidor = new Zend_Amf_Server();
+   $servidor = new ZendAmf\Server();
    $servidor->setClass('Foo');
    $respuesta = $servidor->handle();
    echo $respuesta;
@@ -28,7 +28,7 @@ Alternativamente, en su lugar puede elegir agregar una función simple como llam
 .. code-block:: php
    :linenos:
 
-   $servidor = new Zend_Amf_Server();
+   $servidor = new ZendAmf\Server();
    $servidor->addFunction('myUberCoolFunction');
    $respuesta = $servidor->handle();
    echo $respuesta;
@@ -40,14 +40,14 @@ simplemente pasando una segunda cadena de argumentos para cualquier ``addFunctio
 .. code-block:: php
    :linenos:
 
-   $servidor = new Zend_Amf_Server();
+   $servidor = new ZendAmf\Server();
    $servidor->addFunction('myUberCoolFunction', 'my')
           ->setClass('Foo', 'foo')
           ->setClass('Bar', 'bar');
    $respuesta = $servidor->handle();
    echo $respuesta;
 
-El ``Zend_Amf_Server`` también permite cargar servicios dinámicamente, en función de una ruta de directorio ya
+El ``ZendAmf\Server`` también permite cargar servicios dinámicamente, en función de una ruta de directorio ya
 suministrada. Puede añadir al servidor tantos directorios como desee. El orden en que se añadan los directorios
 al servidor será el orden en que se realizarán las búsquedas *LIFO* en los directorios para coincidir con la
 clase. El método ``addDirectory()`` realiza la acción de añadir directorios.
@@ -116,8 +116,8 @@ Todos las solicitudes *AMF* enviadas al script serán manejadas por el servidor,
 Conectándose al Servidor desde Flex
 -----------------------------------
 
-Conectarse a ``Zend_Amf_Server`` desde su proyecto Flex es bastante simple; solo necesita apuntar el final del
-*URI* a su script ``Zend_Amf_Server``.
+Conectarse a ``ZendAmf\Server`` desde su proyecto Flex es bastante simple; solo necesita apuntar el final del
+*URI* a su script ``ZendAmf\Server``.
 
 Por ejemplo, digamos que ya ha creado su servidor y lo ha puesto en el fichero ``server.php`` en el directorio
 raíz (root) de su aplicación, por lo tanto la *URI* es ``http://example.com/server.php``. En este caso, usted
@@ -177,7 +177,7 @@ Asegúrese también de guardar el fichero.
    </services-config>
 
 Hay dos puntos clave en el ejemplo. En primer lugar, pero último en el listado, creamos un canal *AMF*, y
-especificamos el punto final como la *URL* a nuestro ``Zend_Amf_Server``:
+especificamos el punto final como la *URL* a nuestro ``ZendAmf\Server``:
 
 .. code-block:: xml
    :linenos:
@@ -282,7 +282,7 @@ de devolverla.
    :linenos:
 
    $respuesta = $servidor->handle();
-   $respuesta->addAmfHeader(new Zend_Amf_Value_MessageHeader('foo', true, 'bar'))
+   $respuesta->addAmfHeader(new ZendAmf_Value\MessageHeader('foo', true, 'bar'))
    echo $respuesta;
 
 .. _zend.amf.server.typedobjects:
@@ -293,7 +293,7 @@ Objetos tipados
 Similarmente a *SOAP*, *AMF* permite pasar objetos entre cliente y servidor. Esto le da una gran flexibilidad y
 coherencia a ambos entornos.
 
-``Zend_Amf`` ofrece tres métodos para mapear ActionScript y objetos *PHP*.
+``ZendAmf`` ofrece tres métodos para mapear ActionScript y objetos *PHP*.
 
 - Primero, usted puede crear uniones explícitas a nivel del servidor, utilizando el método ``setClassMap()``. El
   primer argumento es el nombre de la clase de ActionScript, el segundo es el nombre de la clase *PHP* que lo
@@ -380,7 +380,7 @@ de Flex. Cualquier cosa que esté ligada a myContact será actualizada con los d
 Recursos
 --------
 
-``Zend_Amf`` proporciona herramientas para el mapeo de los tipos de recursos devueltos por las clases de servicio
+``ZendAmf`` proporciona herramientas para el mapeo de los tipos de recursos devueltos por las clases de servicio
 en los datos de consumo de ActionScript.
 
 In order to handle specific resource type, the user needs to create a plugin class named after the resource name,
@@ -389,26 +389,26 @@ e.g. ``My_MysqlResult``. This class should implement one method, ``parse()``, re
 - and returning the value that should be sent to ActionScript. The class should be located in the file named after
 the last component of the name, e.g. ``MysqlResult.php``.
 
-The directory containing the resource handling plugins should be registered with ``Zend_Amf`` type loader:
+The directory containing the resource handling plugins should be registered with ``ZendAmf`` type loader:
 
 .. code-block:: php
    :linenos:
 
-   Zend_Amf_Parse_TypeLoader::addResourceDirectory(
+   ZendAmf_Parse\TypeLoader::addResourceDirectory(
        "My",
        "application/library/resources/My"
    );
 
 For detailed discussion of loading plugins, please see the :ref:`plugin loader <zend.loader.pluginloader>` section.
 
-Default directory for ``Zend_Amf`` resources is registered automatically and currently contains handlers for "mysql
+Default directory for ``ZendAmf`` resources is registered automatically and currently contains handlers for "mysql
 result" and "stream" resources.
 
 .. code-block:: php
    :linenos:
 
    // Example class implementing handling resources of type mysql result
-   class Zend_Amf_Parse_Resource_MysqlResult
+   class ZendAmf\Parse\Resource\MysqlResult
    {
        /**
         * Parse resource into array
@@ -432,10 +432,10 @@ Trying to return unknown resource type (i.e., one for which no handler plugin ex
 Conectándose al Servidor desde Flash
 ------------------------------------
 
-La conexión a ``Zend_Amf_Server`` desde su proyecto Flash es ligeramente distinta a la de Flex. Sin embargo una
-vez que la conexión con Flash funcione con ``Zend_Amf_Server`` lo hará igual modo que con Flex. El siguiente
+La conexión a ``ZendAmf\Server`` desde su proyecto Flash es ligeramente distinta a la de Flex. Sin embargo una
+vez que la conexión con Flash funcione con ``ZendAmf\Server`` lo hará igual modo que con Flex. El siguiente
 ejemplo también puede ser utilizado desde un fichero Flex *AS3*. Para nuestra conexión vamos a reutilizar la
-misma configuracion ``Zend_Amf_Server`` junto a la clase Mundo.
+misma configuracion ``ZendAmf\Server`` junto a la clase Mundo.
 
 Abra Flash CS y cree un nuevo fichero Flash (ActionScript 3). Nombre al documento como ``ZendExample.fla`` y
 guárdelo en una carpeta que utilizará para este ejemplo. Cree una nuevo fichero *AS3* en el mismo directorio y
@@ -496,7 +496,7 @@ de la llamada.
    import flash.net.Responder;
 
 En la clase necesitaremos tres variables para representar a NetConnection, Responder, y la *URL* del gateway a
-nuestra instalación ``Zend_Amf_Server``.
+nuestra instalación ``ZendAmf\Server``.
 
 .. code-block:: as
    :linenos:
@@ -506,7 +506,7 @@ nuestra instalación ``Zend_Amf_Server``.
    private var responder:Responder;
 
 En el constructor Main creamos un Responder(respondedor) y una nueva conexión al punto final de
-``Zend_Amf_Server``. El respondedor define dos diferentes métodos para manejar la respuesta desde el servidor. Por
+``ZendAmf\Server``. El respondedor define dos diferentes métodos para manejar la respuesta desde el servidor. Por
 simplicidad los hemos llamado onResult y onFault.
 
 .. code-block:: as
@@ -517,7 +517,7 @@ simplicidad los hemos llamado onResult y onFault.
    connection.connect(gateway);
 
 La función onComplete se ejecuta tan pronto como la construcción ha concluido, enviando los datos al servidor.
-Necesitamos añadir una línea más que hace una llamada a la función ``Zend_Amf_Server`` Mundo->hola.
+Necesitamos añadir una línea más que hace una llamada a la función ``ZendAmf\Server`` Mundo->hola.
 
 .. code-block:: as
    :linenos:
@@ -548,7 +548,7 @@ relacionada con la conexión.
    }
 
 La inclusión de ActionScript para realizar la conexión remota ha finalizado. Al ejecutar el fichero ZendExample,
-se establece una conexión con ``Zend_Amf``. En resumen, se han añadido las variables requeridas para abrir una
+se establece una conexión con ``ZendAmf``. En resumen, se han añadido las variables requeridas para abrir una
 conexión con el servidor remoto, se han definido qué métodos se deben utilizar cuando su aplicación recibe una
 respuesta desde el servidor, y finalmente se han mostrado los datos de salida devueltos a través de ``trace()``.
 
@@ -557,14 +557,14 @@ respuesta desde el servidor, y finalmente se han mostrado los datos de salida de
 Authentication
 --------------
 
-``Zend_Amf_Server`` allows you to specify authentication and authorization hooks to control access to the services.
+``ZendAmf\Server`` allows you to specify authentication and authorization hooks to control access to the services.
 It is using the infrastructure provided by :ref:`Zend_Auth <zend.auth>` and :ref:`Zend\Permissions\Acl <zend.permissions.acl>` components.
 
-In order to define authentication, the user provides authentication adapter extening ``Zend_Amf_Auth_Abstract``
+In order to define authentication, the user provides authentication adapter extening ``ZendAmf_Auth\Abstract``
 abstract class. The adapter should implement the ``authenticate()`` method just like regular :ref:`authentication
 adapter <zend.auth.introduction.adapters>`.
 
-The adapter should use properties **_username** and **_password** from the parent ``Zend_Amf_Auth_Abstract`` class
+The adapter should use properties **_username** and **_password** from the parent ``ZendAmf_Auth\Abstract`` class
 in order to authenticate. These values are set by the server using ``setCredentials()`` method before call to
 ``authenticate()`` if the credentials are received in the *AMF* request headers.
 
@@ -606,7 +606,7 @@ be denied.
        return true;
    } else {
        require_once 'Zend/Amf/Server/Exception.php';
-       throw new Zend_Amf_Server_Exception("Access not allowed");
+       throw new ZendAmf_Server\Exception("Access not allowed");
    }
 
 

@@ -9,7 +9,7 @@ Migrations Hinweise beachten.
 
 .. _migration.110.zend.controller.front:
 
-Zend_Controller_Front
+Zend\Controller\Front
 ---------------------
 
 Ein fehlerhaftes Verhalten wurde behoben, welches aufgetreten ist wenn keine Modell Route und keine Route mit der
@@ -17,7 +17,7 @@ angegebenen Anfrage übereinstimmt. Vorher hat der Router das nicht modifizierte
 der Frontcontroller hat damit nur den Standardcontroller und die Standardaktion angezeigt. Seit Zend Framework 1.10
 wirft der Router korrekterweise, wie im Router Interface beschrieben, eine Exception wenn keine passende Route
 vorhanden ist. Das Error Plugin fängt die Exception und leitet Sie an den Errorcontroller weiter. Man kann mit der
-Konstante ``Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE`` auf einen spezifischen Fehler testen:
+Konstante ``Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ROUTE`` auf einen spezifischen Fehler testen:
 
 .. code-block:: php
    :linenos:
@@ -30,8 +30,8 @@ Konstante ``Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE`` auf einen 
            $errors = $this->_getParam('error_handler');
 
            switch ($errors->type) {
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_CONTROLLER:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ACTION:
        // ...
 
    /**
@@ -42,9 +42,9 @@ Konstante ``Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE`` auf einen 
            $errors = $this->_getParam('error_handler');
 
            switch ($errors->type) {
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ROUTE:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_CONTROLLER:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ACTION:
         // ...
 
 .. _migration.110.zend.feed.reader:
@@ -53,7 +53,7 @@ Migrating from 1.9.6 to 1.10 or later
 -------------------------------------
 
 Mit der Einführung von Zend Framework 1.10 wurde die Behandlung für das Empfangen von Autoren und Entwicklern in
-``Zend_Feed_Reader`` geändert. Diese Änderung war ein Weg die Behandlung solcher Daten zwischen RSS und Atom
+``Zend\Feed\Reader`` geändert. Diese Änderung war ein Weg die Behandlung solcher Daten zwischen RSS und Atom
 Klassen zwischen den Komponenten zu harmonisieren und die Rückgabe von Autoren und Entwicklern in einer besseren,
 verwendbareren und detailuerteren Form zu ermöglichen. Das korrigiert auch einen Fehler bei dem angenommen wurde
 das jedes Autor Element auf einen Namen zeigt. In RSS ist das falsch, da ein Autor Element aktuell nur eine Email
@@ -62,7 +62,7 @@ einer Reduzierung der Nützlichkeit des Parsers mit diesem Format führte.
 
 Die Änderung bedeutet das Methoden wie ``getAuthors()`` und ``getContributors`` nicht länger ein einfaches Array
 von Strings zurückgeben die von den relevanten RSS und Atom Elementen geparst wurden Statt dessen ist der
-Rückgabewert eine Unterklasse von ``ArrayObject`` die ``Zend_Feed_Reader_Collection_Author`` genannt wird und ein
+Rückgabewert eine Unterklasse von ``ArrayObject`` die ``Zend\Feed\Reader\Collection\Author`` genannt wird und ein
 aufzählbares multidimensionales Array an Autoren simuliert. Jedes Mitglied dieses Objekts ist ein einfaches Array
 mit drei potentiellen Schlüsseln (wie in den Quelldaten erlaubt). Diese beinhalten name, email und uri.
 
@@ -71,7 +71,7 @@ versucht einen einzelnen Namen zu präsentieren, aber in der Realität war dies 
 gibt die das Format der RSS Autor Strings leiten.
 
 Die einfachste Methode der Simulation des originalen Verhaltens dieser Methoden ist die Verwendung von
-``Zend_Feed_Reader_Collection_Author``'s ``getValues()`` welche auch ein einfaches Array an Strings darstellt und
+``Zend\Feed\Reader\Collection\Author``'s ``getValues()`` welche auch ein einfaches Array an Strings darstellt und
 die "relevantesten Daten" repräsentiert. Für Autoren wird deren Name angenommen. Jeder Wert in resultierenden
 Array wird vom "name" Wert abgeleitet welcher jedem Autor angehängt ist (wenn vorhanden). In den meisten Fällen
 ist diese einfache Änderung einfach durchzuführen wie anbei demonstriert.
@@ -82,22 +82,22 @@ ist diese einfache Änderung einfach durchzuführen wie anbei demonstriert.
    /**
     * In 1.9.6
     */
-   $feed = Zend_Feed_Reader::import('http://example.com/feed');
+   $feed = Zend\Feed\Reader::import('http://example.com/feed');
    $authors = $feed->getAuthors();
 
    /**
     * Äquivalent in 1.10
     */
-   $feed = Zend_Feed_Reader::import('http://example.com/feed');
+   $feed = Zend\Feed\Reader::import('http://example.com/feed');
    $authors = $feed->getAuthors()->getValues();
 
 .. _migration.110.zend.filter.html-entities:
 
-Zend_Filter_HtmlEntities
+Zend\Filter\HtmlEntities
 ------------------------
 
 Um zu einem höheren Sicherheitsstandard für die Zeichenkodierung zu kommen, ist der Standardwert von
-``Zend_Filter_HtmlEntities`` jetzt *UTF-8* statt *ISO-8859-1*.
+``Zend\Filter\HtmlEntities`` jetzt *UTF-8* statt *ISO-8859-1*.
 
 Zusätzlich, weil der aktuelle Mechanismus mit Zeichenkodierung handelt und nicht mit Zeichensets, wurden zwei
 Methoden hinzugefügt. ``setEncoding()`` und ``getEncoding()``. Die vorhergehenden Methoden ``setCharSet()`` und
@@ -108,10 +108,10 @@ prüfen um sicherzustellen das weiterhin alles funktioniert.
 
 .. _migration.110.zend.filter.strip-tags:
 
-Zend_Filter_StripTags
+Zend\Filter\StripTags
 ---------------------
 
-``Zend_Filter_StripTags`` enthielt in voehergehenden Versionen ein ``commentsAllowed`` Flag, welches es erlaubt hat
+``Zend\Filter\StripTags`` enthielt in voehergehenden Versionen ein ``commentsAllowed`` Flag, welches es erlaubt hat
 *HTML* Kommentare in von dieser Klasse gefiltertem *HTML* Text als erlaubt zu markieren. Aber das öffnet den Weg
 für *XSS* Attacken, speziell im Internet Explorer (der es erlaubt konditionelle Funktionalität über *HTML*
 Kommentare zu spezifizieren). Beginnend mit Version 1.9.7 (und retour mit den Versionen 1.8.5 und 1.7.9), hat das
@@ -120,7 +120,7 @@ oder untergeordnete Kommentare enthalten, werden von der endgültigen Aufgabe de
 
 .. _migration.110.zend.file.transfer:
 
-Zend_File_Transfer
+Zend\File\Transfer
 ------------------
 
 .. _migration.110.zend.file.transfer.files:
@@ -128,14 +128,14 @@ Zend_File_Transfer
 Sicherheitsänderung
 ^^^^^^^^^^^^^^^^^^^
 
-Aus Gründen der Sicherheit speichert ``Zend_File_Transfer`` nicht länger die originalen Mimetypen und
+Aus Gründen der Sicherheit speichert ``Zend\File\Transfer`` nicht länger die originalen Mimetypen und
 Dateigrößen welche vom anfragenden Client angegeben wurden in seinem internen Speicher. Stattdessen werden die
 echten Werte bei der Instanzierung erkannt.
 
 Zusätzlich werden die originalen Werte in ``$_FILES`` bei der Instanzierung mit den echten Werten überschrieben.
 Das macht auch ``$_FILES`` sicher.
 
-Wenn man die originalen Werte benötigt, kann man diese entweder vor der Instanzierung von ``Zend_File_Transfer``
+Wenn man die originalen Werte benötigt, kann man diese entweder vor der Instanzierung von ``Zend\File\Transfer``
 speichern, oder bei der Instanzierung die Option ``disableInfos`` verwenden. Es ist zu beachten das diese Option
 sinnlos ist wenn Sie nach der Instanzierung verwendet wird.
 
@@ -182,7 +182,7 @@ wird.
 .. code-block:: php
    :linenos:
 
-   $trans = new Zend_Translator(
+   $trans = new Zend\Translator\Translator(
        'xliff', '/path/to/source', $locale, array('useId' => false)
    );
 
@@ -207,7 +207,7 @@ der Benutzer nicht die Nachricht erhält die man erwartet.
 .. code-block:: php
    :linenos:
 
-   My_Validator extends Zend_Validate_Abstract
+   My_Validator extends Zend\Validate\Abstract
    {
        public isValid($value)
        {
@@ -223,7 +223,7 @@ aufgerufen zu werden.
 .. code-block:: php
    :linenos:
 
-   My_Validator extends Zend_Validate_Abstract
+   My_Validator extends Zend\Validate\Abstract
    {
        public isValid($value)
        {

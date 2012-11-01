@@ -15,7 +15,7 @@ inhoud gebruikt zal er automatisch een multipart/alternative MIME message worden
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setBodyText('Mijn mooie testtekst');
    $mail->setBodyHtml('Mijn mooie <b>test</b>tekst');
    $mail->setFrom('somebody@example.com', 'Een afzender');

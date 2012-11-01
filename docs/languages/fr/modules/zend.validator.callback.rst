@@ -4,14 +4,14 @@
 Callback (fonction de rappel)
 =============================
 
-``Zend_Validate_Callback`` permet de fournir une fonction de rappel utilisée pour valider la valeur.
+``Zend\Validate\Callback`` permet de fournir une fonction de rappel utilisée pour valider la valeur.
 
 .. _zend.validator.set.callback.options:
 
-Options supportées par Zend_Validate_Callback
+Options supportées par Zend\Validate\Callback
 ---------------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_Callback``\  :
+Les options suivantes sont supportées par ``Zend\Validate\Callback``\  :
 
 - **callback**\  : spécifie la fonction de rappel qui sera utilisée pour la validation.
 
@@ -34,12 +34,12 @@ fonction ci-après :
        return true;
    }
 
-Pour l'utiliser avec ``Zend_Validate_Callback`` vous devez simplement effectuer votre appel comme ceci:
+Pour l'utiliser avec ``Zend\Validate\Callback`` vous devez simplement effectuer votre appel comme ceci:
 
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Callback('myMethod');
+   $valid = new Zend\Validate\Callback('myMethod');
    if ($valid->isValid($input)) {
        // input semble valide
    } else {
@@ -52,13 +52,13 @@ Utilisation avec les fonctions anonymes (closures)
 --------------------------------------------------
 
 PHP 5.3 introduit les `fonctions anonymes`_ ou fonctions de **fermeture**. PHP traite les fonctions anonymes comme
-des fonctions de rappel valides, et il est donc possible d'utiliser celles-ci avec ``Zend_Validate_Callback``.
+des fonctions de rappel valides, et il est donc possible d'utiliser celles-ci avec ``Zend\Validate\Callback``.
 Exemple:
 
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Callback(function($value){
+   $valid = new Zend\Validate\Callback(function($value){
        // Validation ici
        return true;
    });
@@ -95,7 +95,7 @@ méthode à appeler:
    :linenos:
 
    $object = new MyClass;
-   $valid = new Zend_Validate_Callback(array($object, 'myMethod'));
+   $valid = new Zend\Validate\Callback(array($object, 'myMethod'));
    if ($valid->isValid($input)) {
        // input semble valide
    } else {
@@ -116,7 +116,7 @@ Il est aussi possible d'utiliser une méthode statique comme fonction de rappel:
        }
    }
 
-   $valid = new Zend_Validate_Callback(array('MyClass', 'test'));
+   $valid = new Zend\Validate\Callback(array('MyClass', 'test'));
    if ($valid->isValid($input)) {
        // input semble valide
    } else {
@@ -139,7 +139,7 @@ fonction de rappel:
    }
 
    $object = new MyClass();
-   $valid = new Zend_Validate_Callback($object);
+   $valid = new Zend\Validate\Callback($object);
    if ($valid->isValid($input)) {
        // input semble valide
    } else {
@@ -151,7 +151,7 @@ fonction de rappel:
 Ajouter des options
 -------------------
 
-``Zend_Validate_Callback`` permet d'utiliser des options, celles-ci seront alors passées comme argument
+``Zend\Validate\Callback`` permet d'utiliser des options, celles-ci seront alors passées comme argument
 supplémentaires à la fonction de callback.
 
 Soit la définition suivante:
@@ -176,7 +176,7 @@ Via le constructeur, passez un tableau contenant les clés "callback" et "option
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Callback(array(
+   $valid = new Zend\Validate\Callback(array(
        'callback' => array('MyClass', 'myMethod'),
        'options'  => $option,
    ));
@@ -192,7 +192,7 @@ Sinon, vous pouvez passer les options après:
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Callback(array('MyClass', 'myMethod'));
+   $valid = new Zend\Validate\Callback(array('MyClass', 'myMethod'));
    $valid->setOptions($option);
 
    if ($valid->isValid($input)) {
@@ -207,7 +207,7 @@ supplémentaires lors de l'appel à la fonction de rappel, mais avant les option
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Callback(array('MyClass', 'myMethod'));
+   $valid = new Zend\Validate\Callback(array('MyClass', 'myMethod'));
    $valid->setOptions($option);
 
    if ($valid->isValid($input, $additional)) {

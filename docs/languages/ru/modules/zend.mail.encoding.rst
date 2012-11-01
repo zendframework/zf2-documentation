@@ -26,13 +26,13 @@ base64 через метод ``setHeaderEncoding()``. Все другие вло
 .. code-block:: php
    :linenos:
 
-   // По умолчанию используется Zend_Mime::ENCODING_QUOTEDPRINTABLE
-   $mail = new Zend_Mail('UTF-8');
+   // По умолчанию используется Zend\Mime\Mime::ENCODING_QUOTEDPRINTABLE
+   $mail = new Zend\Mail\Mail('UTF-8');
 
    // Переключение на base64
-   $mail->setHeaderEncoding(Zend_Mime::ENCODING_BASE64);
+   $mail->setHeaderEncoding(Zend\Mime\Mime::ENCODING_BASE64);
 
-``Zend_Mail_Transport_Smtp`` кодирует строки, начинающиеся с одной или двух
+``Zend\Mail_Transport\Smtp`` кодирует строки, начинающиеся с одной или двух
 точек, поэтому сообщение не будет нарушать протокол SMTP.
 
 

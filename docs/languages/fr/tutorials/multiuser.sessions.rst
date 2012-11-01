@@ -29,12 +29,12 @@ Utilisation classique de Zend_Session
 
 Le composant Zend_Session est un gestionnaire de session et une API pour stocker des données dans la session de
 manière objet. L'API de la classe Zend_Session API permet de régler des options et de démarrer/arrêter la
-session alors que Zend_Session_Namespace représente un objet contenant des données à stocker en session.
+session alors que Zend\Session\Namespace représente un objet contenant des données à stocker en session.
 
 C'est générallement une bonne pratique que de démarrer sa session en bootstrap, cependant la première création
-d'un objet Zend_Session_Namespace démarrera la session par défaut.
+d'un objet Zend\Session\Namespace démarrera la session par défaut.
 
-Zend_Application peut permettre de configurer Zend_Session grâce aux parties Zend_Application_Resource. Pour les
+Zend_Application peut permettre de configurer Zend_Session grâce aux parties Zend\Application\Resource. Pour les
 utiliser, en supposant que votre projet utilise Zend_Application, ajoutez le code suivant à application.ini:
 
 .. code-block:: php
@@ -51,17 +51,17 @@ sessions.
 
 La plupart des composants de Zend Framework utilisant les sessions n'ont rien besoin de plus. Dès lors, vous
 pouvez utiliser un composant faisant appel à la session, ou manipuler la session vous-même au travers d'un ou
-plusieurs objets Zend_Session_Namespace.
+plusieurs objets Zend\Session\Namespace.
 
-Zend_Session_Namespace est une classe qui guide ses données vers $_SESSION. La classe s'appelle
-Zend_Session_Namespace car elle crée des espaces de noms au sein de $_SESSION, autorisant plusieurs composants ou
+Zend\Session\Namespace est une classe qui guide ses données vers $_SESSION. La classe s'appelle
+Zend\Session\Namespace car elle crée des espaces de noms au sein de $_SESSION, autorisant plusieurs composants ou
 objets à stocker des valeurs sans se marcher dessus. Nous allons voir dans l'exemple qui suit comment créer un
 simple compteur de session qui commence à 1000 et se remet à zéro après 1999.
 
 .. code-block:: php
    :linenos:
 
-   $mysession = new Zend_Session_Namespace('mysession');
+   $mysession = new Zend\Session\Namespace('mysession');
 
    if (!isset($mysession->counter)) {
        $mysession->counter = 1000;
@@ -88,7 +88,7 @@ options à application.ini:
 .. code-block:: php
    :linenos:
 
-   resources.session.saveHandler.class = "Zend_Session_SaveHandler_DbTable"
+   resources.session.saveHandler.class = "Zend\Session_SaveHandler\DbTable"
    resources.session.saveHandler.options.name = "session"
    resources.session.saveHandler.options.primary.session_id = "session_id"
    resources.session.saveHandler.options.primary.save_path = "save_path"

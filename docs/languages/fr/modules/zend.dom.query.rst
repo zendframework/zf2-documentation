@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.dom.query:
 
-Zend_Dom_Query
+Zend\Dom\Query
 ==============
 
-``Zend_Dom_Query`` fournit des mécanismes pour requêter dans les documents *XML* et (X)HTML en utilisant soit
+``Zend\Dom\Query`` fournit des mécanismes pour requêter dans les documents *XML* et (X)HTML en utilisant soit
 XPath ou les sélecteurs *CSS*. Il a été développé pour faciliter les tests fonctionnels des applications
 *MVC*, mais pourrait également être employé pour le développement rapide de "screen scrapers".
 
@@ -19,12 +19,12 @@ librairies Javascript qui fournissent pour sélectionner des noeuds en utilisant
 Aspect théorique
 ----------------
 
-Pour utiliser ``Zend_Dom_Query``, vous instanciez un objet ``Zend_Dom_Query``, en fournissant optionnellement un
+Pour utiliser ``Zend\Dom\Query``, vous instanciez un objet ``Zend\Dom\Query``, en fournissant optionnellement un
 document à analyser (sous la forme d'une chaîne). Une fois que vous avez un document, vous pouvez utiliser
 indifféremment les méthodes ``query()`` ou ``queryXpath()``\  ; chaque méthode retournera un objet
-``Zend_Dom_Query_Result`` avec tout noeud trouvé.
+``Zend\Dom_Query\Result`` avec tout noeud trouvé.
 
-La différence principale entre ``Zend_Dom_Query`` et l'utilisation de DOMDocument + DOMXPath est la possibilité
+La différence principale entre ``Zend\Dom\Query`` et l'utilisation de DOMDocument + DOMXPath est la possibilité
 de requêter avec les sélecteurs *CSS*. Vous pouvez utiliser n'importe quel élément suivant, dans n'importe
 quelle combinaison :
 
@@ -81,14 +81,14 @@ quelle combinaison :
 
 Une fois que vous avez réalisé votre recherche, vous pouvez ensuite travailler avec l'objet de résultat pour
 déterminer les informations sur les noeuds, ainsi que pour les récupérer eux et/ou leurs contenus directement
-afin de les examiner et les manipuler. ``Zend_Dom_Query_Result`` implémente *Countable* and *Iterator*, et stocke
+afin de les examiner et les manipuler. ``Zend\Dom_Query\Result`` implémente *Countable* and *Iterator*, et stocke
 le résultat en interne sous la forme DOMNodes/DOMElements. En exemple, considérons l'appel suivant sur l'HTML
 ci-dessus :
 
 .. code-block:: php
    :linenos:
 
-   $dom = new Zend_Dom_Query($html);
+   $dom = new Zend\Dom\Query($html);
    $results = $dom->query('.foo .bar a');
 
    $count = count($results);    // trouvera 4 correspondances
@@ -96,23 +96,23 @@ ci-dessus :
        // $result is a DOMElement
    }
 
-``Zend_Dom_Query`` permet aussi de faire directement des recherches de type XPath en utilisant la méthode
+``Zend\Dom\Query`` permet aussi de faire directement des recherches de type XPath en utilisant la méthode
 ``queryXpath()``; vous pouvez fournir toute requête XPath valide à cette méthode, et elle retournera un objet
-``Zend_Dom_Query_Result``.
+``Zend\Dom_Query\Result``.
 
 .. _zend.dom.query.methods:
 
 Méthodes disponibles
 --------------------
 
-La famille des classes ``Zend_Dom_Query`` possèdent les méthodes suivantes.
+La famille des classes ``Zend\Dom\Query`` possèdent les méthodes suivantes.
 
 .. _zend.dom.query.methods.zenddomquery:
 
-Zend_Dom_Query
+Zend\Dom\Query
 ^^^^^^^^^^^^^^
 
-Ces méthodes sont disponibles pour ``Zend_Dom_Query``\  :
+Ces méthodes sont disponibles pour ``Zend\Dom\Query``\  :
 
 - ``setDocumentXml($document)``\  : spécifie une chaîne *XML* dans laquelle requêter.
 
@@ -120,7 +120,7 @@ Ces méthodes sont disponibles pour ``Zend_Dom_Query``\  :
 
 - ``setDocumentHtml($document)``\  : spécifie une chaîne HTML dans laquelle requêter.
 
-- ``setDocument($document)``\  : spécifie une chaîne dans laquelle requêter ; ``Zend_Dom_Query`` tentera alors
+- ``setDocument($document)``\  : spécifie une chaîne dans laquelle requêter ; ``Zend\Dom\Query`` tentera alors
   de détecter automatiquement le type de document.
 
 - ``getDocument()``\  : récupère le document original fourni à l'objet.
@@ -134,16 +134,16 @@ Ces méthodes sont disponibles pour ``Zend_Dom_Query``\  :
 
 .. _zend.dom.query.methods.zenddomqueryresult:
 
-Zend_Dom_Query_Result
+Zend\Dom_Query\Result
 ^^^^^^^^^^^^^^^^^^^^^
 
-Comme mentionné auparavant, ``Zend_Dom_Query_Result`` implémente à la fois *Iterator* et *Countable*, et en tant
+Comme mentionné auparavant, ``Zend\Dom_Query\Result`` implémente à la fois *Iterator* et *Countable*, et en tant
 que tel peut être utilisé dans une boucle *foreach* ainsi qu'avec la fonction ``count()``. De plus il expose les
 méthodes suivantes :
 
 - ``getCssQuery()``\  : retourne le sélecteur *CSS* utilisé pour produire le résultat (si fourni).
 
-- ``getXpathQuery()``\  : retourne la requête XPath utilisé pour produire le résultat, ``Zend_Dom_Query``
+- ``getXpathQuery()``\  : retourne la requête XPath utilisé pour produire le résultat, ``Zend\Dom\Query``
   convertit les recherches de type sélecteur *CSS* en notation XPath, donc cette valeur sera toujours présente.
 
 - ``getDocument()``\  : récupère l'élément DOMDocument dans lequel la recherche à été effectuée.

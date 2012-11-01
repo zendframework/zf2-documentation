@@ -21,14 +21,14 @@ Header Kodierung zu wechseln, wie im folgenden Beispiel beschrieben:
 .. code-block:: php
    :linenos:
 
-   // Standardmäßig Zend_Mime::ENCODING_QUOTEDPRINTABLE
-   $mail = new Zend_Mail('KOI8-R');
+   // Standardmäßig Zend\Mime\Mime::ENCODING_QUOTEDPRINTABLE
+   $mail = new Zend\Mail\Mail('KOI8-R');
 
    // Auf Base64 Kodierung zurücksetzen da russisch ausgedrückt in KOI8-R zu
    // Römisch basierten Buchstaben sehr unterschiedlich ist
-   $mail->setHeaderEncoding(Zend_Mime::ENCODING_BASE64);
+   $mail->setHeaderEncoding(Zend\Mime\Mime::ENCODING_BASE64);
 
-``Zend_Mail_Transport_Smtp`` kodiert die Zeilen beginnend mit einem oder zwei Punkten, so dass die Mail das SMTP
+``Zend\Mail_Transport\Smtp`` kodiert die Zeilen beginnend mit einem oder zwei Punkten, so dass die Mail das SMTP
 Protokoll nicht missachtet.
 
 

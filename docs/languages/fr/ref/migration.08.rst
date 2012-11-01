@@ -17,26 +17,26 @@ Pour les versions précédentes, l'utilisation basique des composants *MVC* rest
 .. code-block:: php
    :linenos:
 
-   Zend_Controller_Front::run('/chemin/vers/controleurs');
+   Zend\Controller\Front::run('/chemin/vers/controleurs');
 
 Cependant, la structure des dossiers a subi une réorganisation, certains composants ont été effacés, et
 d'autres ont été soit renommés soit ajoutés. Les changements incluent :
 
-- ``Zend_Controller_Router`` a été effacé en faveur du routeur de réécriture ("rewrite router").
+- ``Zend\Controller\Router`` a été effacé en faveur du routeur de réécriture ("rewrite router").
 
-- ``Zend_Controller_RewriteRouter`` a été renommé en ``Zend_Controller_Router_Rewrite``, et promu en tant que
-  routeur standard fourni avec le framework ; ``Zend_Controller_Front`` l'utilise par défaut si aucun autre
+- ``Zend\Controller\RewriteRouter`` a été renommé en ``Zend\Controller_Router\Rewrite``, et promu en tant que
+  routeur standard fourni avec le framework ; ``Zend\Controller\Front`` l'utilise par défaut si aucun autre
   routeur n'est fourni.
 
 - Une nouvelle classe de route à utiliser avec le routeur de réécriture a été introduite,
-  ``Zend_Controller_Router_Route_Module``; elle couvre la route par défaut utilisée par le *MVC*, et supporte les
+  ``Zend\Controller\Router\Route\Module``; elle couvre la route par défaut utilisée par le *MVC*, et supporte les
   :ref:`modules de contrôleurs <zend.controller.modular>`.
 
-- ``Zend_Controller_Router_StaticRoute`` a été renommé en ``Zend_Controller_Router_Route_Static``.
+- ``Zend\Controller_Router\StaticRoute`` a été renommé en ``Zend\Controller\Router\Route\Static``.
 
-- ``Zend_Controller_Dispatcher`` a été renommé en ``Zend_Controller_Dispatcher_Standard``.
+- ``Zend\Controller\Dispatcher`` a été renommé en ``Zend\Controller_Dispatcher\Standard``.
 
-- Les arguments de ``Zend_Controller_Action::_forward()`` ont changés. La signature est maintenant :
+- Les arguments de ``Zend\Controller\Action::_forward()`` ont changés. La signature est maintenant :
 
   .. code-block:: php
      :linenos:

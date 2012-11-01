@@ -8,16 +8,16 @@ Diese Prüfung erlaubt es zu prüfen ob ein angegebener String einer definierten
 
 .. _zend.validator.set.regex.options:
 
-Unterstützte Optionen für Zend_Validate_Regex
+Unterstützte Optionen für Zend\Validate\Regex
 ---------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Validate_Regex`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Validate\Regex`` unterstützt:
 
 - **pattern**: Setzt das Pattern der Regular Expression für diese Prüfung.
 
 .. _zend.validator.set.regex.basic:
 
-Prüfen mit Zend_Validate_Regex
+Prüfen mit Zend\Validate\Regex
 ------------------------------
 
 Die Prüfung mit Regular Expressions erlaubt es komplizierte Prüfungen durchzuführen, ohne das eine eigene
@@ -27,7 +27,7 @@ uns ein Beispiel an:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Regex(array('pattern' => '/^Test/');
+   $validator = new Zend\Validate\Regex(array('pattern' => '/^Test/');
 
    $validator->isValid("Test"); // Gibt true zurück
    $validator->isValid("Testing"); // Gibt true zurück
@@ -47,7 +47,7 @@ gesetzte Pattern mit ``getPattern()`` erhalten.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Regex(array('pattern' => '/^Test/');
+   $validator = new Zend\Validate\Regex(array('pattern' => '/^Test/');
    $validator->setPattern('ing$/');
 
    $validator->isValid("Test"); // Gibt false zurück

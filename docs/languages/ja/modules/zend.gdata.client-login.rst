@@ -29,19 +29,19 @@ ClientLogin 認証済みの Http クライアントの作成
 --------------------------------
 
 ClientLogin を使用した認証済みの *HTTP* クライアントを作成するには、 静的関数
-``Zend_Gdata_ClientLogin::getHttpClient()`` をコールし、Google
+``ZendGData\ClientLogin::getHttpClient()`` をコールし、Google
 アカウントの認証情報をプレーンテキストで渡します。 この関数の返り値は、
-``Zend_Http_Client`` クラスのオブジェクトとなります。
+``Zend\Http\Client`` クラスのオブジェクトとなります。
 
 オプションの三番目のパラメータには、Google Data
 サービスの名前が指定できます。たとえば、'cl' は Google Calendar
 を表します。デフォルトは 'xapi' で、 これは Google Data
 サーバの汎用的なサービス名を表します。
 
-オプションの四番目のパラメータには ``Zend_Http_Client``
+オプションの四番目のパラメータには ``Zend\Http\Client``
 のインスタンスを指定できます。これによって、
 たとえばプロキシサーバなどのクライアント設定を行うことができます。
-このパラメータに ``NULL`` を渡すと、 汎用的な ``Zend_Http_Client``
+このパラメータに ``NULL`` を渡すと、 汎用的な ``Zend\Http\Client``
 オブジェクトが作成されます。
 
 オプションの五番目のパラメータには、Google Data
@@ -60,7 +60,7 @@ ClientLogin を使用した認証済みの *HTTP* クライアントを作成す
 チャレンジを受け取った後の再ログイン時のみです。
 
 以下の例は、 *PHP* のウェブアプリケーションのコードです。 Google Calendar
-サービスに対する認証を行い、 認証済みの ``Zend_Http_Client`` を使用して ``Zend_Gdata``
+サービスに対する認証を行い、 認証済みの ``Zend\Http\Client`` を使用して ``ZendGData``
 クライアントオブジェクトを作成します。
 
 .. code-block:: php
@@ -70,15 +70,15 @@ ClientLogin を使用した認証済みの *HTTP* クライアントを作成す
    $email = 'johndoe@gmail.com';
    $passwd = 'xxxxxxxx';
    try {
-      $client = Zend_Gdata_ClientLogin::getHttpClient($email, $passwd, 'cl');
-   } catch (Zend_Gdata_App_CaptchaRequiredException $cre) {
+      $client = ZendGData\ClientLogin::getHttpClient($email, $passwd, 'cl');
+   } catch (ZendGData_App\CaptchaRequiredException $cre) {
        echo 'CAPTCHA 画像の URL: ' . $cre->getCaptchaUrl() . "\n";
        echo 'トークン ID: ' . $cre->getCaptchaToken() . "\n";
-   } catch (Zend_Gdata_App_AuthException $ae) {
+   } catch (ZendGData_App\AuthException $ae) {
       echo '認証に失敗: ' . $ae->exception() . "\n";
    }
 
-   $cal = new Zend_Gdata_Calendar($client);
+   $cal = new ZendGData\Calendar($client);
 
 .. _zend.gdata.clientlogin.terminating:
 

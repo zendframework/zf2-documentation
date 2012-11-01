@@ -21,14 +21,14 @@ les en-têtes comme décrit dans les exemples suivants :
 .. code-block:: php
    :linenos:
 
-   // Par défaut Zend_Mime::ENCODING_QUOTEDPRINTABLE
-   $mail = new Zend_Mail('KOI8-R');
+   // Par défaut Zend\Mime\Mime::ENCODING_QUOTEDPRINTABLE
+   $mail = new Zend\Mail\Mail('KOI8-R');
 
    // Bascule en encodage Base64 parce que le Russe exprimé en KOI8-R est
    // considérablement différent des langues basées sur des lettres romaines
-   $mail->setHeaderEncoding(Zend_Mime::ENCODING_BASE64);
+   $mail->setHeaderEncoding(Zend\Mime\Mime::ENCODING_BASE64);
 
-``Zend_Mail_Transport_Smtp`` encode les lignes commençant par un ou deux points, ainsi l'émail ne viole pas le
+``Zend\Mail_Transport\Smtp`` encode les lignes commençant par un ou deux points, ainsi l'émail ne viole pas le
 protocole SMTP.
 
 

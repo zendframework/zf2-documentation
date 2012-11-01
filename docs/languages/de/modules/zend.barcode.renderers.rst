@@ -24,19 +24,19 @@ Renderer haben einige gemeinsame Optionen. Diese Optionen können auf vier Wegen
    $options = array('topOffset' => 10);
 
    // Fall 1
-   $renderer = new Zend_Barcode_Renderer_Pdf($options);
+   $renderer = new Zend\Barcode_Renderer\Pdf($options);
 
    // Fall 2
-   $renderer = new Zend_Barcode_Renderer_Pdf();
+   $renderer = new Zend\Barcode_Renderer\Pdf();
    $renderer->setOptions($options);
 
    // Fall 3
-   $config   = new Zend_Config($options);
-   $renderer = new Zend_Barcode_Renderer_Pdf();
+   $config   = new Zend\Config\Config($options);
+   $renderer = new Zend\Barcode_Renderer\Pdf();
    $renderer->setConfig($config);
 
    // Fall 4
-   $renderer = new Zend_Barcode_Renderer_Pdf();
+   $renderer = new Zend\Barcode_Renderer\Pdf();
    $renderer->setTopOffset(10);
 
 .. _zend.barcode.renderers.common.options:
@@ -57,7 +57,7 @@ Getter dem "get" vorangestellt ist (z.B. "getBarHeight"). Die vorhandenen Option
    +--------------------+-------------------+---------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Option              |Daten Typ          |Standardwert         |Beschreibung                                                                                                                                                                                                                                                         |
    +====================+===================+=====================+=====================================================================================================================================================================================================================================================================+
-   |rendererNamespace   |String             |Zend_Barcode_Renderer|Namespace des Renderers; zum Beispiel wenn man den Renderer erweitern muss                                                                                                                                                                                           |
+   |rendererNamespace   |String             |Zend\Barcode\Renderer|Namespace des Renderers; zum Beispiel wenn man den Renderer erweitern muss                                                                                                                                                                                           |
    +--------------------+-------------------+---------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |horizontalPosition  |String             |"left"               |Kann "left", "center" oder "right" sein. Das kann bei PDF nützlich sein, oder wenn die setWidth() Methode mit einem Image Renderer verwendet wird.                                                                                                                   |
    +--------------------+-------------------+---------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -71,15 +71,15 @@ Getter dem "get" vorangestellt ist (z.B. "getBarHeight"). Die vorhandenen Option
    +--------------------+-------------------+---------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |moduleSize          |Float              |1                    |Größe eines darstellenden Moduls im Support.                                                                                                                                                                                                                         |
    +--------------------+-------------------+---------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |barcode             |Zend_Barcode_Object|NULL                 |Das Barcode Objekt welches dargestellt werden soll.                                                                                                                                                                                                                  |
+   |barcode             |Zend\Barcode\Object|NULL                 |Das Barcode Objekt welches dargestellt werden soll.                                                                                                                                                                                                                  |
    +--------------------+-------------------+---------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Es existiert ein zusätzlicher Getter: ``getType()``. Er gibt den Namen der Renderer Klasse ohne den Namespace
-zurück (z.B. gibt ``Zend_Barcode_Renderer_Image``"image" zurück.
+zurück (z.B. gibt ``Zend\Barcode_Renderer\Image``"image" zurück.
 
 .. _zend.barcode.renderers.image:
 
-Zend_Barcode_Renderer_Image
+Zend\Barcode_Renderer\Image
 ---------------------------
 
 Der Image Renderer zeichnet die Anweisungsliste des Barcode Obejekts in eine Bild Ressource. Die Komponente
@@ -89,7 +89,7 @@ Vorhandene Optionen sind:
 
 .. _zend.barcode.renderers.image.table:
 
-.. table:: Zend_Barcode_Renderer_Image Optionen
+.. table:: Zend\Barcode_Renderer\Image Optionen
 
    +---------+---------+------------+-------------------------------------------------------------------------------------------------------------------------------+
    |Option   |Daten Typ|Standardwert|Beschreibung                                                                                                                   |
@@ -103,7 +103,7 @@ Vorhandene Optionen sind:
 
 .. _zend.barcode.renderers.pdf:
 
-Zend_Barcode_Renderer_Pdf
+Zend\Barcode_Renderer\Pdf
 -------------------------
 
 Der *PDF* Renderer zeichnet die Anweisungsliste des Barcode Objekts in ein *PDF* Dokument. Die Standardbreite eines

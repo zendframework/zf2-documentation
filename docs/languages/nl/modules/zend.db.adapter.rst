@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.db.adapter:
 
-Zend_Db_Adapter
+Zend\Db\Adapter
 ===============
 
 .. _zend.db.adapter.introduction:
@@ -9,11 +9,11 @@ Zend_Db_Adapter
 Inleiding
 ---------
 
-*Zend_Db_Adapter* is de database API abstractielaag voor het Zend Framework, gebaseerd op PDO. Je kan
-*Zend_Db_Adapter* gebruiken om je te verbinden en te werken met alle ondersteunde SQL database systemen die
+*Zend\Db\Adapter* is de database API abstractielaag voor het Zend Framework, gebaseerd op PDO. Je kan
+*Zend\Db\Adapter* gebruiken om je te verbinden en te werken met alle ondersteunde SQL database systemen die
 dezelfde API gebruiken. Deze houden onder andere in: Microsoft SQL Server, MySQL, PostgreSQL, SQLite, en anderen.
 
-Om een instantie van *Zend_Db_Adapter* voor jouw specifieke database op te roepen, moet je *Zend_Db::factory()*
+Om een instantie van *Zend\Db\Adapter* voor jouw specifieke database op te roepen, moet je *Zend\Db\Db::factory()*
 oproepen met de naam van de van toepassing zijnde adapter en een array van parameters die de verbinding
 beschrijven. Bijvoorbeeld, om een verbinding tot stand te brengen op een MySQL database die "camelot" heet op
 localhost met een user genaamd "arthur":
@@ -30,7 +30,7 @@ localhost met een user genaamd "arthur":
                     'password' => '******',
                     'dbname'   => 'camelot');
 
-   $db = Zend_Db::factory('PDO_MYSQL', $params);
+   $db = Zend\Db\Db::factory('PDO_MYSQL', $params);
 
    ?>
 Om een verbinding te maken met een SQLite database genaamd "camelot":
@@ -44,7 +44,7 @@ Om een verbinding te maken met een SQLite database genaamd "camelot":
 
    $params = array ('dbname' => 'camelot');
 
-   $db = Zend_Db::factory('PDO_SQLITE', $params);
+   $db = Zend\Db\Db::factory('PDO_SQLITE', $params);
 
    ?>
 In elk geval zal je exact dezelfde API kunnen gebruiken om de database te ondervragen.
@@ -55,7 +55,7 @@ Quoting tegen SQL Injectie
 --------------------------
 
 Je moet altijd waarden quoten die gebruikt moeten worden in een SQL verklaring; dit om SQL injectie aanvallen te
-helpen voorkomen. *Zend_Db_Adapter* verstrekt twee methodes (via het onderliggende PDO object) om je te helpen
+helpen voorkomen. *Zend\Db\Adapter* verstrekt twee methodes (via het onderliggende PDO object) om je te helpen
 handmatig waarden te quoten.
 
 De eerste van deze methodes is de *quote()* methode. Het zal een scalaire waarde correct quoten voor jouw database
@@ -103,7 +103,7 @@ Scalaire waarden en arrays werken hetzelfde als in de *quote()* methode.
 Directe Queries
 ---------------
 
-Eenmaal je een *Zend_Db_Adapter* instantie hebt, kan je queries direct in SQL uitvoeren. *Zend_Db_Adapter* geeft
+Eenmaal je een *Zend\Db\Adapter* instantie hebt, kan je queries direct in SQL uitvoeren. *Zend\Db\Adapter* geeft
 die queries door aan het onderliggende PDO object, die de query klaarmaakt en uitvoert en dan een PDOStatement
 object teruggeeft met de resultaten (als die er zijn) voor jou om te behandelen.
 
@@ -168,10 +168,10 @@ Naar keuze zou je handmatig data willen voorbereiden en binden aan SQL verklarin
 Transacties
 -----------
 
-Standaard is PDO (en dus ook *Zend_Db_Adapter*) in "auto-commit" mode. Dit betekent dat alle queries worden
+Standaard is PDO (en dus ook *Zend\Db\Adapter*) in "auto-commit" mode. Dit betekent dat alle queries worden
 gecommit wanneer ze worden uitgevoerd. Indien je wenst dat ze in een transactie worden uitgevoerd kan je
 eenvoudigweg de *beginTransaction()* methode oproepen en, naargelang, je veranderingen *commit()* of *rollBack()*.
-*Zend_Db_Adapter* keert terug naar "auto-commit" mode tot je opnieuw de *beginTransaction* methode aanroept.
+*Zend\Db\Adapter* keert terug naar "auto-commit" mode tot je opnieuw de *beginTransaction* methode aanroept.
 
 .. code-block:: php
    :linenos:

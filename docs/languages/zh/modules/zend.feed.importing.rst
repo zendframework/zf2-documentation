@@ -4,14 +4,14 @@
 导入Feeds
 =======
 
-*Zend_Feed* 能让开发者轻松获得 Feeds 。如果你知道 Feeds 的URI，用 *Zend_Feed::import()*\
+*Zend_Feed* 能让开发者轻松获得 Feeds 。如果你知道 Feeds 的URI，用 *Zend\Feed\Feed::import()*\
 方法就可以非常容易的获得它:
 
 .. code-block:: php
    :linenos:
 
    <?php
-   $feed = Zend_Feed::import('http://feeds.example.com/feedName');
+   $feed = Zend\Feed\Feed::import('http://feeds.example.com/feedName');
 
 你也能用 *Zend_Feed*\ 从一个文件或者一个PHP字符串变量来获得一个feed的内容:
 
@@ -20,17 +20,17 @@
 
    <?php
    // importing a feed from a text file
-   $feedFromFile = Zend_Feed::importFile('feed.xml');
+   $feedFromFile = Zend\Feed\Feed::importFile('feed.xml');
 
    // importing a feed from a PHP string variable
-   $feedFromPHP = Zend_Feed::importString($feedString);
+   $feedFromPHP = Zend\Feed\Feed::importString($feedString);
 
-在上面的例子中，根据feed类型的不同，一个从 *Zend_Feed_Abstract*\
-继承而来的类对象被返回。如果导入方法获得的是一个RSS feed，那么一个 *Zend_Feed_Rss*\
+在上面的例子中，根据feed类型的不同，一个从 *Zend\Feed\Abstract*\
+继承而来的类对象被返回。如果导入方法获得的是一个RSS feed，那么一个 *Zend\Feed\Rss*\
 对象将被返回(Seateng译注:以Factory模式实现)。另一方面，如果一个Atom
-feed被导入，那么将返回一个 *Zend_Feed_Atom*\
+feed被导入，那么将返回一个 *Zend\Feed\Atom*\
 对象。如果feed不可读或者不符合规范，导致导入失败那么Zend_Feed将抛出一个
-*Zend_Feed_Exception*\ 异常。
+*Zend\Feed\Exception*\ 异常。
 
 .. _zend.feed.importing.custom:
 
@@ -38,8 +38,8 @@ feed被导入，那么将返回一个 *Zend_Feed_Atom*\
 --------
 
 *Zend_Feed* 能让开发者轻松创建定制 feeds，只需要创建一个数组用 Zend_Feed
-导入它。这个数组可以用 *Zend_Feed::importArray()* 或 *Zend_Feed::importBuilder()*
-导入。最后数组用定制的实现了 *Zend_Feed_Builder_Interface* 数据源来处理。
+导入它。这个数组可以用 *Zend\Feed\Feed::importArray()* 或 *Zend\Feed\Feed::importBuilder()*
+导入。最后数组用定制的实现了 *Zend\Feed_Builder\Interface* 数据源来处理。
 
 .. _zend.feed.importing.custom.importarray:
 
@@ -51,13 +51,13 @@ feed被导入，那么将返回一个 *Zend_Feed_Atom*\
 
    <?php
    // 从数组导入 feed
-   $atomFeedFromArray = Zend_Feed::importArray($array);
+   $atomFeedFromArray = Zend\Feed\Feed::importArray($array);
 
-   // 下面一行和上面相同；缺省地 Zend_Feed_Atom 实例被返回
-   $atomFeedFromArray = Zend_Feed::importArray($array, 'atom');
+   // 下面一行和上面相同；缺省地 Zend\Feed\Atom 实例被返回
+   $atomFeedFromArray = Zend\Feed\Feed::importArray($array, 'atom');
 
    // 从数组导入 rss feed
-   $rssFeedFromArray = Zend_Feed::importArray($array, 'rss');
+   $rssFeedFromArray = Zend\Feed\Feed::importArray($array, 'rss');
 
 数组格式必须和这个结构一致：
 
@@ -179,45 +179,45 @@ References:
 导入定制的数据源
 ^^^^^^^^
 
-你可以从任何实现 *Zend_Feed_Builder_Interface* 的数据源创建 Zeed_Feed 实例，只需要实现
-*getHeader()* 和 *getEntries()* 方法来和 *Zend_Feed::importBuilder()*
-一起使用你的对象。作为一个简单的参考实现，你可以使用 *Zend_Feed_Builder*
+你可以从任何实现 *Zend\Feed_Builder\Interface* 的数据源创建 Zeed_Feed 实例，只需要实现
+*getHeader()* 和 *getEntries()* 方法来和 *Zend\Feed\Feed::importBuilder()*
+一起使用你的对象。作为一个简单的参考实现，你可以使用 *Zend\Feed\Builder*
 它在构造器里带有一个数组，执行一些校验，然后可以在 *importBuilder()* 方法中使用。
-*getHeader()* 方法必须返回 *Zend_Feed_Builder_Header* 的实例， *getEntries()* 必须返回
-*Zend_Feed_Builder_Entry* 实例的数组。
+*getHeader()* 方法必须返回 *Zend\Feed_Builder\Header* 的实例， *getEntries()* 必须返回
+*Zend\Feed_Builder\Entry* 实例的数组。
 
 .. note::
 
-   *Zend_Feed_Builder* 作为具体实现来实现它的用法，（我们）鼓励用户写自己的类来实现
-   *Zend_Feed_Builder_Interface*\ 。
+   *Zend\Feed\Builder* 作为具体实现来实现它的用法，（我们）鼓励用户写自己的类来实现
+   *Zend\Feed_Builder\Interface*\ 。
 
-*Zend_Feed::importBuilder()* 用法的例子：
+*Zend\Feed\Feed::importBuilder()* 用法的例子：
 
 .. code-block:: php
    :linenos:
 
    <?php
    // 从定制的 builder 源导入 feed
-   $atomFeedFromArray = Zend_Feed::importBuilder(new Zend_Feed_Builder($array));
+   $atomFeedFromArray = Zend\Feed\Feed::importBuilder(new Zend\Feed\Builder($array));
 
-   // 和上面一样，缺省地 Zend_Feed_Atom 实例被返回
-   $atomFeedFromArray = Zend_Feed::importArray(new Zend_Feed_Builder($array), 'atom');
+   // 和上面一样，缺省地 Zend\Feed\Atom 实例被返回
+   $atomFeedFromArray = Zend\Feed\Feed::importArray(new Zend\Feed\Builder($array), 'atom');
 
    // 从定制的 builder 数组导入 rss feed
-   $rssFeedFromArray = Zend_Feed::importArray(new Zend_Feed_Builder($array), 'rss');
+   $rssFeedFromArray = Zend\Feed\Feed::importArray(new Zend\Feed\Builder($array), 'rss');
 
 .. _zend.feed.importing.custom.dump:
 
 Dumping feed 内容
 ^^^^^^^^^^^^^^^
 
-为了 dump *Zend_Feed_Abstract* 实例的内容，使用 *send()* 或 *saveXml()* 方法。
+为了 dump *Zend\Feed\Abstract* 实例的内容，使用 *send()* 或 *saveXml()* 方法。
 
 .. code-block:: php
    :linenos:
 
    <?php
-   assert($feed instanceof Zend_Feed_Abstract);
+   assert($feed instanceof Zend\Feed\Abstract);
 
    // dump feed 到标准输出
    print $feed->saveXML();

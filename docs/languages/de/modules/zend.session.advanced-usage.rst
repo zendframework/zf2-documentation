@@ -23,11 +23,11 @@ Bootstrap Datei gestartet werden:
 .. code-block:: php
    :linenos:
 
-   Zend_Session::start();
+   Zend\Session\Session::start();
 
 Durch das Starten der Session in der Bootstrap Datei verhindert man das die Session gestartet werden könnte
 nachdem die Header an den Browser gesendet wurde, was zu einer Ausnahme und möglicherweise zu einer fehlerhaften
-Seiten im Browser führen würde. Viele gehobenen Features benötigen zuerst ``Zend_Session::start()``. (Mehr dazu
+Seiten im Browser führen würde. Viele gehobenen Features benötigen zuerst ``Zend\Session\Session::start()``. (Mehr dazu
 später in den gehobenen Features)
 
 Es gibt vier Wege eine Session zustarten wenn ``Zend_Session`` verwendet wird. Zwei sind falsch.
@@ -43,37 +43,37 @@ Es gibt vier Wege eine Session zustarten wenn ``Zend_Session`` verwendet wird. Z
      php_value session.auto_start 0
 
 . Falsch: *PHP*'s `session_start()`_ Funktion darf nicht direkt verwendet werden. Wenn ``session_start()`` direkt,
-  und anschließend ``Zend_Session_Namespace`` verwendet wird, wird von ``Zend_Session::start()`` eine Ausnahme
-  geworfen ("session has already been started"). Wenn ``Zend_Session::start()`` ausgerufen wird, nachdem
-  ``Zend_Session_Namespace`` verwendet wird oder ``Zend_Session::start()`` explizit verwendet wird, wird ein Fehler
+  und anschließend ``Zend\Session\Namespace`` verwendet wird, wird von ``Zend\Session\Session::start()`` eine Ausnahme
+  geworfen ("session has already been started"). Wenn ``Zend\Session\Session::start()`` ausgerufen wird, nachdem
+  ``Zend\Session\Namespace`` verwendet wird oder ``Zend\Session\Session::start()`` explizit verwendet wird, wird ein Fehler
   vom Level ``E_NOTICE`` erzeugt und der Aufruf wird ignoriert.
 
-. Richtig: Verwenden von ``Zend_Session::start()``. Wenn es gewünscht ist, das alle Anfragen eine Session haben
+. Richtig: Verwenden von ``Zend\Session\Session::start()``. Wenn es gewünscht ist, das alle Anfragen eine Session haben
   und verwenden, sollte diese Funktion sehr früh, direkt und entscheidungslos in der Bootstrap Datei aufgerufen
   werden. Session haben einigen Overhead. Wenn einige Anfragen Sessions benötigen aber andere Anfragen keine
   Sessions verwenden, dann:
 
-  - Entscheidungslos, die *strict* Option auf ``TRUE`` setzen durch Verwendung von ``Zend_Session::setOptions()``
+  - Entscheidungslos, die *strict* Option auf ``TRUE`` setzen durch Verwendung von ``Zend\Session\Session::setOptions()``
     in der Bootstrap Datei.
 
-  - Aufruf von ``Zend_Session::start()`` nur für die Anfragen die eine Session verwenden müssen und vor jeglichen
-    ``Zend_Session_Namespace`` initiiert werden.
+  - Aufruf von ``Zend\Session\Session::start()`` nur für die Anfragen die eine Session verwenden müssen und vor jeglichen
+    ``Zend\Session\Namespace`` initiiert werden.
 
-  - Normales verwenden von "*new Zend_Session_Namespace()*" wo es benötigt wird, aber sicherstellen das davor
-    ``Zend_Session::start()`` ausgerufen wurde.
+  - Normales verwenden von "*new Zend\Session\Namespace()*" wo es benötigt wird, aber sicherstellen das davor
+    ``Zend\Session\Session::start()`` ausgerufen wurde.
 
-  Die Option *strict* verhindert das *new Zend_Session_Namespace()* automatisch eine Session startet und dabei
-  ``Zend_Session::start()`` verwendet. Deshalb hilft diese Option Anwendungs Entwicklern, sich für ein Design
+  Die Option *strict* verhindert das *new Zend\Session\Namespace()* automatisch eine Session startet und dabei
+  ``Zend\Session\Session::start()`` verwendet. Deshalb hilft diese Option Anwendungs Entwicklern, sich für ein Design
   entscheiden zu können welches verhindert das für bestimmte Anfragen Sessions verwendet werden, da es eine
-  Ausnahme verursachen würde wenn ``Zend_Session_Namespace`` instanziiert wird, bevor ``Zend_Session::start()``
+  Ausnahme verursachen würde wenn ``Zend\Session\Namespace`` instanziiert wird, bevor ``Zend\Session\Session::start()``
   aufgerufen wird. Entwickler sollten vorsichtig entscheiden welchen Einfluß die Verwendung von
-  ``Zend_Session::setOptions()`` hat, da diese Optionen globale Seiteneffekte hat, in Folge der Korrespondenz der
+  ``Zend\Session\Session::setOptions()`` hat, da diese Optionen globale Seiteneffekte hat, in Folge der Korrespondenz der
   darunterliegenden Optionen für ext/session.
 
-. Richtig: Einfach *new Zend_Session_Namespace()* instanzieren wo dies auch immer notwendig ist, und die
+. Richtig: Einfach *new Zend\Session\Namespace()* instanzieren wo dies auch immer notwendig ist, und die
   darunterliegende *PHP* Session wird automatisch gestartet. Das bietet eine extrem simple Handhabung die in den
   meisten Situationen gut funktioniert. Trotzdem ist man dann dafür verantwortlich darauf zu schauen dass das
-  erste *new Zend_Session_Namespace()* passiert **bevor** irgendeine Ausgabe (z.B. `HTTP headers`_) von *PHP* an
+  erste *new Zend\Session\Namespace()* passiert **bevor** irgendeine Ausgabe (z.B. `HTTP headers`_) von *PHP* an
   den Client gesendet wird, wenn standardmäßige, Cookie-basierte Sessions verwendet werden (sehr empfehlenswert).
   Siehe :ref:`dieses Kapitel <zend.session.global_session_management.headers_sent>` für weitere Informationen.
 
@@ -88,7 +88,7 @@ nur-lesbaren Namensraum les- und schreibbar, und ``isLocked()`` prüft ob ein Na
 Sperren sind flüchtig und bestehen nicht von einer Anfrage zur nächsten. Die Sperre des Namensraumes hat keinen
 Effekt auf Setz-Methoden von Objekten welche im Namensraum gespeichert sind, aber sie verhindert die Verwendung der
 Setz-Methoden des Namensraumes welche das gespeicherte Objekt direkt im Namensraum löschen oder ersetzen.
-Gleichwohl verhindert das Sperren von ``Zend_Session_Namespace`` Instanzen nicht die Verwendung von symbolischen
+Gleichwohl verhindert das Sperren von ``Zend\Session\Namespace`` Instanzen nicht die Verwendung von symbolischen
 Tabellen-Aliasen auf die gleichen Daten (siehe `PHP references`_).
 
 .. _zend.session.advanced_usage.locking.example.basic:
@@ -98,7 +98,7 @@ Tabellen-Aliasen auf die gleichen Daten (siehe `PHP references`_).
 .. code-block:: php
    :linenos:
 
-   $userProfileNamespace = new Zend_Session_Namespace('userProfileNamespace');
+   $userProfileNamespace = new Zend\Session\Namespace('userProfileNamespace');
 
    // marking session as read only locked
    $userProfileNamespace->lock();
@@ -127,7 +127,7 @@ stattfindet.
 .. code-block:: php
    :linenos:
 
-   $s = new Zend_Session_Namespace('expireAll');
+   $s = new Zend\Session\Namespace('expireAll');
    $s->a = 'Apfel';
    $s->p = 'Pfirsich';
    $s->o = 'Orange';
@@ -170,7 +170,7 @@ Benutzer der Anwendung 300 Sekunden Zeit gegeben die angezeigte Frage zu beantwo
 
    // ...
    // Im Frage-View Controller
-   $testSpace = new Zend_Session_Namespace('testSpace');
+   $testSpace = new Zend\Session\Namespace('testSpace');
    $testSpace->setExpirationSeconds(300, 'accept_answer');
    // Nur diese Variable ablaufen lassen
    $testSpace->accept_answer = true;
@@ -184,7 +184,7 @@ oder nach basierend darauf ob der Benutzer die Antwort in der erlaubten Zeit üb
 
    // ...
    // Im Frage-Prozess Controller
-    $testSpace = new Zend_Session_Namespace('testSpace');
+    $testSpace = new Zend\Session\Namespace('testSpace');
     if ($testSpace->accept_answer === true) {
         // innerhalb der Zeit
     }
@@ -199,11 +199,11 @@ Mehrfache Instanzen pro Namensraum verhindern
 ---------------------------------------------
 
 Obwohl :ref:`session locking <zend.session.advanced_usage.locking>` einen guten Grad von Schutz gegen unerlaubte
-Verwendung von Session Daten in einem Namensraum bietet, bietet ``Zend_Session_Namespace`` auch die Fähigkeit die
+Verwendung von Session Daten in einem Namensraum bietet, bietet ``Zend\Session\Namespace`` auch die Fähigkeit die
 Erzeugung von mehreren Instanzen zu verhindern die zu einem einzelnen Namensraum korrespondieren.
 
 Um dieses Verhalten einzuschalten, muß ``TRUE`` als zweites Argument im Konstruktor angegeben werden wenn die
-letzte erlaubt Instanz von ``Zend_Session_Namespace`` erzeugt wurde. Jeder weitere Versuch den selben Namensraum zu
+letzte erlaubt Instanz von ``Zend\Session\Namespace`` erzeugt wurde. Jeder weitere Versuch den selben Namensraum zu
 instanzieren wird in einer geworfenen Ausnahme resultieren.
 
 .. _zend.session.advanced_usage.single_instance.example:
@@ -214,11 +214,11 @@ instanzieren wird in einer geworfenen Ausnahme resultieren.
    :linenos:
 
    // Eine Instanz eines Namensraumes erstellen
-   $authSpaceAccessor1 = new Zend_Session_Namespace('Zend_Auth');
+   $authSpaceAccessor1 = new Zend\Session\Namespace('Zend_Auth');
 
    // Eine weitere Instanz des selben Namensraumes erstellen,
    // aber weitere Instanzen verbieten
-   $authSpaceAccessor2 = new Zend_Session_Namespace('Zend_Auth', true);
+   $authSpaceAccessor2 = new Zend\Session\Namespace('Zend_Auth', true);
 
    // Eine Referenz erstellen ist immer noch möglich
    $authSpaceAccessor3 = $authSpaceAccessor2;
@@ -228,13 +228,13 @@ instanzieren wird in einer geworfenen Ausnahme resultieren.
    assert($authSpaceAccessor2->foo, 'bar');
 
    try {
-       $aNamespaceObject = new Zend_Session_Namespace('Zend_Auth');
-   } catch (Zend_Session_Exception $e) {
+       $aNamespaceObject = new Zend\Session\Namespace('Zend_Auth');
+   } catch (Zend\Session\Exception $e) {
        echo 'Dieser Namensraum kann nicht instanziert werden da ' .
             '$authSpaceAccessor2 erstellt wurde\n';
    }
 
-Der zweite Parameter oben im Konstruktor sagt ``Zend_Session_Namespace`` das alle zukünftigen Instanzen mit dem
+Der zweite Parameter oben im Konstruktor sagt ``Zend\Session\Namespace`` das alle zukünftigen Instanzen mit dem
 ``Zend_Auth`` Namensraum nicht erlaubt sind. Der Versuch solche Instanzen zu erstellen verursacht eine Ausnahme die
 vom Konstruktor geworfen wird. Der Entwickler wird darauf aufmerksam gemacht eine Referenz zu einer Instanz des
 Objektes irgendwo zu speichern (``$authSpaceAccessor1``, ``$authSpaceAccessor2``, oder ``$authSpaceAccessor3`` im
@@ -261,7 +261,7 @@ Das folgende illustriert wie das Problem reproduziert werden kann:
 .. code-block:: php
    :linenos:
 
-   $sessionNamespace = new Zend_Session_Namespace();
+   $sessionNamespace = new Zend\Session\Namespace();
    $sessionNamespace->array = array();
    // wird nicht wie gewünscht funktionieren vor PHP 5.2.1
    $sessionNamespace->array['testKey'] = 1;
@@ -277,7 +277,7 @@ nachdem alle gewünschten Arraywerte gesetzt wurden.
 .. code-block:: php
    :linenos:
 
-   $sessionNamespace = new Zend_Session_Namespace('Foo');
+   $sessionNamespace = new Zend\Session\Namespace('Foo');
    $sessionNamespace->array = array('a', 'b', 'c');
 
 Wenn eine betroffene Version von *PHP* verwendet wird and ein Array modifiziert werden soll nachdem es mit einem
@@ -294,7 +294,7 @@ Kopie erstellt wurde zugeordnet wobei das originale Array überschrieben wird.
 .. code-block:: php
    :linenos:
 
-   $sessionNamespace = new Zend_Session_Namespace();
+   $sessionNamespace = new Zend\Session\Namespace();
 
    // Das ursprüngliche Array hinzufügen
    $sessionNamespace->array = array('tree' => 'apple');
@@ -320,7 +320,7 @@ dann indirekt zugegriffen werden.
 .. code-block:: php
    :linenos:
 
-   $myNamespace = new Zend_Session_Namespace('myNamespace');
+   $myNamespace = new Zend\Session\Namespace('myNamespace');
    $a = array(1, 2, 3);
    $myNamespace->someArray = array( &$a );
    $a['foo'] = 'bar';
@@ -346,9 +346,9 @@ Zend Framework vertraut auf PHPUnit um das Testen von sich selbst zu ermögliche
 existierende Sammlung von Unit Tests um den Code in deren Anwendungen anzudecken. Die Ausnahme "**Zend_Session ist
 aktuell als nur-lesbar markiert**" wird geworfen wärend Unit Tests durchgeführt werden, wenn irgendeine
 schreibende Methode verwendet wird nachdem Ende der Session. Trotzdem benötigen Unit Tests die ``Zend_Session``
-verwenden besondere Aufmerksamkeit weil das Schließen (``Zend_Session::writeClose()``) oder Zerstören einer
-Session (``Zend_Session::destroy()``) weitere Änderungen oder Rücknahmen von Schlüsseln in jeder Instanz von
-``Zend_Session_Namespace`` verhindert. Dieses Verhalten ist ein direktes Resultat des darunterliegenden ext/session
+verwenden besondere Aufmerksamkeit weil das Schließen (``Zend\Session\Session::writeClose()``) oder Zerstören einer
+Session (``Zend\Session\Session::destroy()``) weitere Änderungen oder Rücknahmen von Schlüsseln in jeder Instanz von
+``Zend\Session\Namespace`` verhindert. Dieses Verhalten ist ein direktes Resultat des darunterliegenden ext/session
 Mechanismus und *PHP*'s ``session_destroy()`` und ``session_write_close()`` welche keinen "rückgängig machen"
 Mechanismus unterstützen um Setup/Teardown innerhalb der Unit Tests zu unterstützen.
 
@@ -368,13 +368,13 @@ verfügbar, ermöglicht wenn der Elternprozess die Session beendet hat, bevor ``
 
    // testen von setExpirationSeconds()
    $script = 'SessionTestHelper.php';
-   $s = new Zend_Session_Namespace('space');
+   $s = new Zend\Session\Namespace('space');
    $s->a = 'apple';
    $s->o = 'orange';
    $s->setExpirationSeconds(5);
 
-   Zend_Session::regenerateId();
-   $id = Zend_Session::getId();
+   Zend\Session\Session::regenerateId();
+   $id = Zend\Session\Session::getId();
    // Session freigeben damit der untere Prozess Sie verwenden kann
    session_write_close();
    sleep(4); // nicht lange genug damit die Dinge ablaufen
@@ -396,7 +396,7 @@ verfügbar, ermöglicht wenn der Elternprozess die Session beendet hat, bevor ``
    // Das könnte in einen separaten Test abgeteilt werden, aber aktuell, wenn
    // irgendwas vom darüberleigenden Test den darunterliegenden Test
    // kontaminiert, ist das auch ein Fehler den wir wissen wollen.
-   $s = new Zend_Session_Namespace('expireGuava');
+   $s = new Zend\Session\Namespace('expireGuava');
    $s->setExpirationSeconds(5, 'g'); // Versuch nur einen Schlüssel im
                                      // Namensraum ablaufen zu lassen
    $s->g = 'guava';

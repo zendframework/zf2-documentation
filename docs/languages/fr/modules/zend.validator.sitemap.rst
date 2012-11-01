@@ -34,7 +34,7 @@ Retourne ``TRUE`` si et seulement si la valeur est une chaîne et qu'elle est va
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Sitemap_Lastmod();
+   $validator = new Zend\Validate_Sitemap\Lastmod();
    $validator->isValid('1999-11-11T22:23:52-02:00'); // true
    $validator->isValid('2008-05-12T00:42:52+02:00'); // true
    $validator->isValid('1999-11-11'); // true
@@ -51,7 +51,7 @@ Sitemap_Loc
 -----------
 
 Valide si oui ou non une chaîne utilisable en tant qu'élément "loc" dans un document *XML* Sitemap. Ceci utilise
-en interne la méthode ``Zend_Form::check()``. Vous pouvez en lire davantage avec la :ref:`validation d'URI
+en interne la méthode ``Zend\Form\Form::check()``. Vous pouvez en lire davantage avec la :ref:`validation d'URI
 <zend.uri.validation>`.
 
 .. _zend.validator.sitemap.priority:
@@ -70,7 +70,7 @@ textuelles.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Sitemap_Priority();
+   $validator = new Zend\Validate_Sitemap\Priority();
    $validator->isValid('0.1'); // true
    $validator->isValid('0.789'); // true
    $validator->isValid(0.8); // true
@@ -83,7 +83,7 @@ textuelles.
 
 .. _zend.validator.set.sitemap.options:
 
-Options supportées par Zend_Validate_Sitemap_*
+Options supportées par Zend\Validate_Sitemap\*
 ----------------------------------------------
 
 Il n'y a pas d'options supportées par ce validateur.

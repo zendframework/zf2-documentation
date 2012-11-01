@@ -4,7 +4,7 @@
 Structure d'index Lucene
 ========================
 
-Afin d'utiliser l'intégralité des fonctionnalités de ``Zend_Search_Lucene`` avec un maximum de performances, il
+Afin d'utiliser l'intégralité des fonctionnalités de ``Zend\Search\Lucene`` avec un maximum de performances, il
 est nécessaire que vous compreniez la structure interne d'un index.
 
 Un **index** est stocké dans un ensemble de fichier au sein d'un seul répertoire.
@@ -60,6 +60,6 @@ d'auto-optimisation).
 
 
 .. [#] Depuis Lucene 2.3, les fichiers de stockage de document peuvent être partagés entre les segments;
-       cependant, ``Zend_Search_Lucene`` n'utilise pas cette possibilité
+       cependant, ``Zend\Search\Lucene`` n'utilise pas cette possibilité
 .. [#] Cet appel est fourni uniquement par Java Lucene pour le moment, mais il est prévu d'étendre l'*API*
-       ``Zend_Search_Lucene`` avec une fonctionnalité similaire
+       ``Zend\Search\Lucene`` avec une fonctionnalité similaire

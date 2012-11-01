@@ -4,7 +4,7 @@
 Einführung
 ==========
 
-``Zend_OpenId`` ist eine Zend Framework Komponente die eine einfache *API* für das Erstellen von
+``ZendOpenId`` ist eine Zend Framework Komponente die eine einfache *API* für das Erstellen von
 OpenID-verwendenden Sites und Identitäts Providern bietet.
 
 .. _zend.openid.introduction.what:
@@ -32,7 +32,7 @@ Für weitere Informationen über OpenId siehe die `offizielle OpenID Seite`_.
 Wie funktioniert das ?
 ----------------------
 
-Der Zweck der ``Zend_OpenId`` Komponente ist es das OpenID Authentifizierungsprotokoll zu implementieren, wie im
+Der Zweck der ``ZendOpenId`` Komponente ist es das OpenID Authentifizierungsprotokoll zu implementieren, wie im
 folgenden Sequenzdiagramm beschrieben:
 
 .. image:: ../images/zend.openid.protocol.jpg
@@ -70,28 +70,28 @@ folgenden Sequenzdiagramm beschrieben:
 
 .. _zend.openid.introduction.structure:
 
-Zend_OpenId Struktur
+ZendOpenId Struktur
 --------------------
 
-``Zend_OpenId`` besteht aus zwei Unterpaketen. Das erste ist ``Zend_OpenId_Consumer`` für die Entwicklung von
-OpenID-verwendenden Servern und der zweite ist ``Zend_OpenId_Provider`` für die Entwicklung von OpenID Servern.
+``ZendOpenId`` besteht aus zwei Unterpaketen. Das erste ist ``ZendOpenId\Consumer`` für die Entwicklung von
+OpenID-verwendenden Servern und der zweite ist ``ZendOpenId\Provider`` für die Entwicklung von OpenID Servern.
 Diese sind komplett unabhängig voneinander und können separat verwendet werden.
 
 Der einzige gemeinsame Code der von diesen Unterpaketen verwendet wird ist die OpenID Simply Registry Erweiterung
-die von der ``Zend_OpenId_Extension_Sreg`` Klasse implementiert wird und ein Set von Hilfs Funktionen die von der
-``Zend_OpenId`` Klasse implementiert werden.
+die von der ``ZendOpenId_Extension\Sreg`` Klasse implementiert wird und ein Set von Hilfs Funktionen die von der
+``ZendOpenId`` Klasse implementiert werden.
 
 .. note::
 
-   ``Zend_OpenId`` hat Vorteile davon wenn die `GMP Erweiterung`_ vorhanden ist. Es sollte Angedacht werden die GMP
-   Erweiterung für eine verbesserte Performance einzuschalten wenn ``Zend_OpenId`` verwendet wird.OpenID
+   ``ZendOpenId`` hat Vorteile davon wenn die `GMP Erweiterung`_ vorhanden ist. Es sollte Angedacht werden die GMP
+   Erweiterung für eine verbesserte Performance einzuschalten wenn ``ZendOpenId`` verwendet wird.OpenID
 
 .. _zend.openid.introduction.standards:
 
 Unterstützte OpenId Standards
 -----------------------------
 
-Die ``Zend_OpenId`` Komponente unterstützt die folgenden Standards:
+Die ``ZendOpenId`` Komponente unterstützt die folgenden Standards:
 
 - OpenID Authentifizierungs Protokoll Version 1.1
 

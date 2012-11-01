@@ -393,8 +393,8 @@ The ``doRequest()`` method is also available for use directly:
 
    $client->doRequest($request);
 
-   // $client->getLastRequest() returns instanceof Zend_XmlRpc_Request
-   // $client->getLastResponse() returns instanceof Zend_XmlRpc_Response
+   // $client->getLastRequest() returns instanceof Zend\XmlRpc\Request
+   // $client->getLastResponse() returns instanceof Zend\XmlRpc\Response
 
 Whenever an *XML-RPC* method call is made by the client through any means, either the ``call()`` method,
 ``doRequest()`` method, or server proxy, the last request object and its resultant response object will always be

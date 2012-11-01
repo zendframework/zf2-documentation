@@ -47,7 +47,7 @@ Il y a deux façons d'utiliser Zend Framework pour une application serveur *SOAP
 
 Ces deux façons sont supportées par la fonctionnalité d'auto génération de Zend Framework.
 
-Zend_Soap_AutoDiscovery supporte aussi la correspondance des types *PHP* vers `les types XSD`_.
+Zend\Soap\AutoDiscovery supporte aussi la correspondance des types *PHP* vers `les types XSD`_.
 
 Voici un exemple d'utilisation de l'auto découverte. La fonction ``handle()`` génère le fichier WSDL et l'envoie
 au navigateur :
@@ -59,7 +59,7 @@ au navigateur :
       ...
       }
 
-      $autodiscover = new Zend_Soap_AutoDiscover();
+      $autodiscover = new Zend\Soap\AutoDiscover();
       $autodiscover->setClass('My_SoapServer_Class');
       $autodiscover->handle();
 
@@ -71,14 +71,14 @@ AutoDiscover fournit.
 
 .. note::
 
-   **Zend_Soap_Autodiscover n'est pas un serveur SOAP**
+   **Zend\Soap\Autodiscover n'est pas un serveur SOAP**
 
-   Il est très important de noter, que la classe ``Zend_Soap_Autodiscover`` n'agit pas en tant que serveur *SOAP*
+   Il est très important de noter, que la classe ``Zend\Soap\Autodiscover`` n'agit pas en tant que serveur *SOAP*
    elle-même. Elle génère seulement le WSDL et le fournit à ceux qui accèdent à l'URL qu'elle écoute.
 
    Par défaut l'URI de *SOAP* est *'http://' .$_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']*, mais ceci peut
    être changé avec la méthode ``setUri()`` ou le paramètre de constructeur de la classe
-   ``Zend_Soap_AutoDiscover``. L'URI doit correspondre à un ``Zend_Soap_Server`` qui écoute les requêtes.
+   ``Zend\Soap\AutoDiscover``. L'URI doit correspondre à un ``Zend\Soap\Server`` qui écoute les requêtes.
 
 
 
@@ -86,12 +86,12 @@ AutoDiscover fournit.
          :linenos:
 
          if(isset($_GET['wsdl'])) {
-             $autodiscover = new Zend_Soap_AutoDiscover();
+             $autodiscover = new Zend\Soap\AutoDiscover();
              $autodiscover->setClass('HelloWorldService');
              $autodiscover->handle();
          } else {
              // pointing to the current file here
-             $soap = new Zend_Soap_Server("http://example.com/soap.php?wsdl");
+             $soap = new Zend\Soap\Server("http://example.com/soap.php?wsdl");
              $soap->setClass('HelloWorldService');
              $soap->handle();
          }
@@ -104,12 +104,12 @@ Auto découverte de classe
 -------------------------
 
 Si une classe est utilisée dans un serveur SOAP, alors celle-ci devrait aussi être fournie à
-``Zend_Soap_AutoDiscovery`` afin d'en générer le fichier WSDL :
+``Zend\Soap\AutoDiscovery`` afin d'en générer le fichier WSDL :
 
    .. code-block:: php
       :linenos:
 
-      $autodiscover = new Zend_Soap_AutoDiscover();
+      $autodiscover = new Zend\Soap\AutoDiscover();
       $autodiscover->setClass('My_SoapServer_Class');
       $autodiscover->handle();
 
@@ -157,12 +157,12 @@ Auto découverte des fonctions
 -----------------------------
 
 Si des fonctions doivent être utilisées (partagées) via un serveur SOAP, alors elles doivent être passées à
-``Zend_Soap_AutoDiscovery`` pour générer un fichier WSDL :
+``Zend\Soap\AutoDiscovery`` pour générer un fichier WSDL :
 
    .. code-block:: php
       :linenos:
 
-      $autodiscover = new Zend_Soap_AutoDiscover();
+      $autodiscover = new Zend\Soap\AutoDiscover();
       $autodiscover->addFunction('function1');
       $autodiscover->addFunction('function2');
       $autodiscover->addFunction('function3');
@@ -253,7 +253,7 @@ méthode *setClass* ou *addFunction* de la classe *AutoDiscover*.
    .. code-block:: php
       :linenos:
 
-      $autodiscover = new Zend_Soap_AutoDiscover();
+      $autodiscover = new Zend\Soap\AutoDiscover();
       // Par défaut il s'agit de 'use' => 'encoded'
       // et 'encodingStyle' => 'http://schemas.xmlsoap.org/soap/encoding/'
       $autodiscover->setOperationBodyStyle(array('use' => 'literal', 'namespace' => 'http://framework.zend.com'));
@@ -274,10 +274,10 @@ méthode *setClass* ou *addFunction* de la classe *AutoDiscover*.
 .. _`les types XSD`: http://www.w3.org/TR/xmlschema-2/
 .. _`Port Type`: http://www.w3.org/TR/wsdl#_porttypes
 
-.. [#] ``Zend_Soap_AutoDiscover`` sera créé avec la classe ``Zend_Soap_Wsdl_Strategy_DefaultComplexType`` en
+.. [#] ``Zend\Soap\AutoDiscover`` sera créé avec la classe ``Zend\Soap\Wsdl\Strategy\DefaultComplexType`` en
        tant qu'algorithme de détection pour les types complexes. Le premier paramètre du constructeur
        AutoDiscover accepte toute stratégie de types complexes implémentant
-       ``Zend_Soap_Wsdl_Strategy_Interface`` ou une chaîne correspondant au nom de la classe. Pour une
+       ``Zend\Soap\Wsdl\Strategy\Interface`` ou une chaîne correspondant au nom de la classe. Pour une
        compatibilité ascendante, avec ``$extractComplexType`` les variables booléennes sont analysées comme
-       avec Zend_Soap_Wsdl. Regardez le manuel :ref:`Zend_Soap_Wsdl sur l'ajout des types complexes
+       avec Zend\Soap\Wsdl. Regardez le manuel :ref:`Zend\Soap\Wsdl sur l'ajout des types complexes
        <zend.soap.wsdl.types.add_complex>` pour plus d'informations.

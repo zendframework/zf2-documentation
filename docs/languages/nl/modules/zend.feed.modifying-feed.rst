@@ -15,7 +15,7 @@ bestand op te slaan of naar een server te sturen.
 
    <?php
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/1');
    $entry = $feed->current();
 
    $entry->title = 'Dit is een nieuwe titel';
@@ -32,7 +32,7 @@ Je kan zoveel niveaus van *->* aandoen als je wil voor een toewijzing te doen; a
 worden aangemaakt indien nodig.
 
 Als je een andere namespace wil gebruiken dan *atom:*, *rss:* of *osrss:* in je entry, moet je de namespace
-registreren aan *Zend_Feed* door *Zend_Feed::registerNamespace()* te gebruiken. Als je een bestaand element wil
+registreren aan *Zend_Feed* door *Zend\Feed\Feed::registerNamespace()* te gebruiken. Als je een bestaand element wil
 wijzigen zal het steeds zijn oorspronkelijke namespace behouden. Als je een nieuw element toevoegt zal het in de
 standaard namespace gaan als je niet uitdrukkelijk een andere namespace toewijst.
 
@@ -43,14 +43,14 @@ standaard namespace gaan als je niet uitdrukkelijk een andere namespace toewijst
 
    <?php
 
-   $entry = new Zend_Feed_Entry_Atom();
+   $entry = new Zend\Feed_Entry\Atom();
    // id wordt altijd via de server toegewezen in Atom
    $entry->title = 'mijn aangepaste entry';
    $entry->author->name = 'Voorbeeldauteur';
    $entry->author->email = 'me@example.com';
 
    // Doe nu de aanpassing
-   Zend_Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
+   Zend\Feed\Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
 
    $entry->{'myns:myelement_one'} = 'mijn eerste aangepaste waarde';
    $entry->{'myns:container_elt'}->part1 = 'eerste genesteld aangepast deel';

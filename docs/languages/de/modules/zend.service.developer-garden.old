@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.developergarden:
 
-Zend_Service_DeveloperGarden
+Zend\Service\DeveloperGarden
 ============================
 
 .. _zend.service.developergarden.introduction:
@@ -13,7 +13,7 @@ Developer Garden ist der Name für die Entwicker Community der Deutschen Telekom
 Zugriff auf die zentralen Services der Deutschen Telekom, wie z.B. Sprache Verbindungen oder der Versand von SMS
 Nachrichten über die Open Apis. Der Zugriff auf die *API* Services erfolgt über *SOAP* oder *REST*.
 
-Die Familie der ``Zend_Service_DeveloperGarden`` Komponenten bietet ein klares und einfaches Interface zur
+Die Familie der ``Zend\Service\DeveloperGarden`` Komponenten bietet ein klares und einfaches Interface zur
 `DeveloperGarden API`_ und bietet zusätzlich Funktionalitäten um die Behandlung und Geschwindigkeit zu
 verbessern.
 
@@ -89,9 +89,9 @@ Man kann allen Klassen ein Array an Konfigurationswerten übergeben. Mögliche W
    $config = array(
        'username'    => 'meinBenutzername',
        'password'    => 'meinPasswort',
-       'environment' => Zend_Service_DeveloperGarden_SendSms::ENV_PRODUCTION,
+       'environment' => Zend\Service_DeveloperGarden\SendSms::ENV_PRODUCTION,
    );
-   $service = new Zend_Service_DeveloperGarden_SendSms($config);
+   $service = new Zend\Service_DeveloperGarden\SendSms($config);
 
 .. _zend.service.developergarden.baseuserservice:
 
@@ -110,7 +110,7 @@ Die Methode ``getAccountBalance()`` kann ein Array von Account Id's mit dem aktu
 .. code-block:: php
    :linenos:
 
-   $service = new Zend_Service_DeveloperGarden_BaseUserService($config);
+   $service = new Zend\Service_DeveloperGarden\BaseUserService($config);
    print_r($service->getAccountBalance());
 
 .. _zend.service.developergarden.baseuserservice.getquotainformation:
@@ -127,9 +127,9 @@ Man kann mit den angebotenen Methoden Quoteninformationen für ein spezifisches 
 .. code-block:: php
    :linenos:
 
-   $service = new Zend_Service_DeveloperGarden_BaseUserService($config);
+   $service = new Zend\Service_DeveloperGarden\BaseUserService($config);
    $result = $service->getSmsQuotaInformation(
-       Zend_Service_DeveloperGarden_BaseUserService::ENV_PRODUCTION
+       Zend\Service_DeveloperGarden\BaseUserService::ENV_PRODUCTION
    );
    echo 'Sms Quote:<br />';
    echo 'Max Quote: ', $result->getMaxQuota(), '<br />';
@@ -167,10 +167,10 @@ ist der neue Poolwert und der zweite ist die Umgebung.
 .. code-block:: php
    :linenos:
 
-   $service = new Zend_Service_DeveloperGarden_BaseUserService($config);
+   $service = new Zend\Service_DeveloperGarden\BaseUserService($config);
    $result = $service->changeSmsQuotaPool(
        1000,
-       Zend_Service_DeveloperGarden_BaseUserService::ENV_PRODUCTION
+       Zend\Service_DeveloperGarden\BaseUserService::ENV_PRODUCTION
    );
    if (!$result->hasError()) {
        echo 'updated Quota Pool';
@@ -210,11 +210,11 @@ Es gibt einige Einschränkungen:
 .. code-block:: php
    :linenos:
 
-   $service = new Zend_Service_DeveloperGarden_IpLocation($config);
+   $service = new Zend\Service_DeveloperGarden\IpLocation($config);
    $service->setEnvironment(
-       Zend_Service_DeveloperGarden_IpLocation::ENV_MOCK
+       Zend\Service_DeveloperGarden\IpLocation::ENV_MOCK
    );
-   $ip = new Zend_Service_DeveloperGarden_IpLocation_IpAddress('127.0.0.1');
+   $ip = new Zend\Service\DeveloperGarden\IpLocation\IpAddress('127.0.0.1');
    print_r($service->locateIp($ip));
 
 .. _zend.service.developergarden.localsearch:
@@ -232,8 +232,8 @@ Details wird auf `die Dokumentation`_ verwiesen.
 .. code-block:: php
    :linenos:
 
-   $service = new Zend_Service_DeveloperGarden_LocalSearch($config);
-   $search  = new Zend_Service_DeveloperGarden_LocalSearch_SearchParameters();
+   $service = new Zend\Service_DeveloperGarden\LocalSearch($config);
+   $search  = new Zend\Service\DeveloperGarden\LocalSearch\SearchParameters();
    /**
     * @see http://www.developergarden.com/static/docu/en/ch04s02s06s04.html
     */
@@ -277,7 +277,7 @@ Die folgenden Einschränkungen sind auf die Verwendung des SMS Service anzuwende
 .. code-block:: php
    :linenos:
 
-   $service = new Zend_Service_DeveloperGarden_SendSms($config);
+   $service = new Zend\Service_DeveloperGarden\SendSms($config);
    $sms = $service->createSms(
        '+49-172-123456; +49-177-789012',
        'die Testnachricht',
@@ -307,7 +307,7 @@ einer jeden.
 .. code-block:: php
    :linenos:
 
-   $service = new Zend_Service_DeveloperGarden_SmsValidation($config);
+   $service = new Zend\Service_DeveloperGarden\SmsValidation($config);
    print_r($service->sendValidationKeyword('+49-172-123456'));
 
 .. _zend.service.developergarden.smsvalidation.validate.example:
@@ -317,7 +317,7 @@ einer jeden.
 .. code-block:: php
    :linenos:
 
-   $service = new Zend_Service_DeveloperGarden_SmsValidation($config);
+   $service = new Zend\Service_DeveloperGarden\SmsValidation($config);
    print_r($service->validate('DasSchlüsselWort', '+49-172-123456'));
 
 Um eine geprüft Nummer als ungeprüft zu markieren muss die Methode ``inValidate()`` aufgerufen werden.
@@ -347,7 +347,7 @@ Normalerweise arbeitet der Service wie folgt:
 .. code-block:: php
    :linenos:
 
-   $service = new Zend_Service_DeveloperGarden_VoiceCall($config);
+   $service = new Zend\Service_DeveloperGarden\VoiceCall($config);
    $aNumber = '+49-30-000001';
    $bNumber = '+49-30-000002';
    $expiration  = 30;  // Sekunden
@@ -366,7 +366,7 @@ Parameter der Methode ``callStatus()`` erweitert die Ablaufzeit für diesen Anru
 .. code-block:: php
    :linenos:
 
-   $service = new Zend_Service_DeveloperGarden_VoiceCall($config);
+   $service = new Zend\Service_DeveloperGarden\VoiceCall($config);
    $aNumber = '+49-30-000001';
    $bNumber = '+49-30-000002';
    $expiration  = 30; // Sekunden
@@ -454,10 +454,10 @@ Hier ist eine Liste der aktuell implementierten *API* Methoden:
 .. code-block:: php
    :linenos:
 
-   $client = new Zend_Service_DeveloperGarden_ConferenceCall($config);
+   $client = new Zend\Service_DeveloperGarden\ConferenceCall($config);
 
    $conferenceDetails =
-       new Zend_Service_DeveloperGarden_ConferenceCall_ConferenceDetail(
+       new Zend\Service\DeveloperGarden\ConferenceCall\ConferenceDetail(
            'Zend-Conference',                    // Name der Konferenz
            'this is my private zend conference', // Beschreibung
            60                                    // Dauer in Sekunden
@@ -465,7 +465,7 @@ Hier ist eine Liste der aktuell implementierten *API* Methoden:
 
    $conference = $client->createConference('MeinName', $conferenceDetails);
 
-   $part1 = new Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail(
+   $part1 = new Zend\Service\DeveloperGarden\ConferenceCall\ParticipantDetail(
        'Jon',
        'Doe',
        '+49-123-4321',
@@ -495,7 +495,7 @@ Als erstes müssen die Cachewerte des internen SoapClients (PHP) eingestellt wer
 .. code-block:: php
    :linenos:
 
-   Zend_Service_DeveloperGarden_SecurityTokenServer_Cache::setWsdlCache(
+   Zend\Service\DeveloperGarden\SecurityTokenServer\Cache::setWsdlCache(
        [PHP KONSTANTE]
    );
 
@@ -519,8 +519,8 @@ einrichten und diese an ``setCache()`` übergeben.
 .. code-block:: php
    :linenos:
 
-   $cache = Zend_Cache::factory('Core', ...);
-   Zend_Service_DeveloperGarden_SecurityTokenServer_Cache::setCache($cache);
+   $cache = Zend\Cache\Cache::factory('Core', ...);
+   Zend\Service\DeveloperGarden\SecurityTokenServer\Cache::setCache($cache);
 
 
 

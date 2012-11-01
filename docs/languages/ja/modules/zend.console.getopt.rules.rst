@@ -4,7 +4,7 @@
 Getopt の規則の宣言
 =============
 
-``Zend_Console_Getopt`` クラスのコンストラクタは、
+``Zend\Console\Getopt`` クラスのコンストラクタは、
 ひとつから三つの引数を指定します。最初の引数では、
 このアプリケーションでサポートするオプションを宣言します。
 このクラスは、オプションを宣言するためのもうひとつの構文もサポートしています。
@@ -15,7 +15,7 @@ Getopt の規則の宣言
 コマンドライン引数です。デフォルトは ``$_SERVER['argv']`` となります。
 
 コンストラクタの三番目の引数には、設定オプションを指定します。 これで
-``Zend_Console_Getopt`` の振る舞いを変更します。 使用可能なオプションについては
+``Zend\Console\Getopt`` の振る舞いを変更します。 使用可能なオプションについては
 :ref:`設定の追加 <zend.console.getopt.configuration.config>` を参照ください。
 
 .. _zend.console.getopt.rules.short:
@@ -23,7 +23,7 @@ Getopt の規則の宣言
 短い形式のオプションの宣言
 -------------
 
-``Zend_Console_Getopt`` は、 *GNU* Getopt
+``Zend\Console\Getopt`` は、 *GNU* Getopt
 と似た形式のコンパクトな構文をサポートしています
 (`http://www.gnu.org/software/libc/manual/html_node/Getopt.html`_ を参照ください)。
 この構文は、一文字のフラグでのみ使用できます。
@@ -38,9 +38,9 @@ Getopt の規則の宣言
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
 
-上の例は、 ``Zend_Console_Getopt`` を用いて、 使用するオプションを ``-a`` や ``-b``
+上の例は、 ``Zend\Console\Getopt`` を用いて、 使用するオプションを ``-a`` や ``-b``
 あるいは ``-p`` と宣言するものです。
 最後のフラグにはパラメータが必要となります。
 
@@ -83,7 +83,7 @@ Getopt の規則の宣言
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt(
+   $opts = new Zend\Console\Getopt(
      array(
        'apple|a'    => 'リンゴです。パラメータは不要です。',
        'banana|b=i' => 'バナナです。整数パラメータが必須です。',

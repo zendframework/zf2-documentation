@@ -12,7 +12,7 @@
 同梱のアダプタでは対応していないようなデータ形式を処理したくなることもあるでしょう。
 そんな場合は自分でアダプタを書く必要があります。
 
-そのためには ``Zend_Paginator_Adapter_Interface``
+そのためには ``Zend\Paginator_Adapter\Interface``
 を実装しなければなりません。このインターフェイスでは 2
 つのメソッドが必須となっています。
 
@@ -45,7 +45,7 @@ protected あるいは private
 
 
 
-同梱のアダプタ (すべて ``Zend_Paginator_Adapter_Interface`` を実装しています) を見れば、
+同梱のアダプタ (すべて ``Zend\Paginator_Adapter\Interface`` を実装しています) を見れば、
 自分のアダプタでこれをどのように実装すればいいのか参考になるでしょう。
 
 .. _zend.paginator.advanced.scrolling-styles:
@@ -53,7 +53,7 @@ protected あるいは private
 独自のスクロール形式
 ----------
 
-独自のスクロール形式を作成するには ``Zend_Paginator_ScrollingStyle_Interface``
+独自のスクロール形式を作成するには ``Zend\Paginator_ScrollingStyle\Interface``
 を実装しなければなりません。このインターフェイスには ``getPages()``
 メソッドが定義されています。
 
@@ -69,7 +69,7 @@ protected あるいは private
 このメソッドは、いわゆる "ローカル" ページ (現在のページの周辺のページたち)
 の範囲のページの最小値・ 最大値を計算しなければなりません。
 
-他のスクロール形式を継承している (たとえば ``Zend_Paginator_ScrollingStyle_Elastic``)
+他のスクロール形式を継承している (たとえば ``Zend\Paginator_ScrollingStyle\Elastic``)
 のでない限り、自作のスクロール形式は必ずといっていいほど
 次のようなコードで終わることになるでしょう。
 
@@ -96,7 +96,7 @@ protected あるいは private
 
       $prefix = 'My_Paginator_ScrollingStyle';
       $path   = 'My/Paginator/ScrollingStyle/';
-      Zend_Paginator::addScrollingStylePrefixPath($prefix, $path);
+      Zend\Paginator\Paginator::addScrollingStylePrefixPath($prefix, $path);
 
 
 
@@ -108,22 +108,22 @@ protected あるいは private
 ``Zend_Paginator`` は、渡されたデータをキャッシュする機能があります。
 これを使用すると、アダプタが毎回データを取得することを回避できます。
 アダプタのデータを自動的にキャッシュさせるよう設定するには、 ``setCache()``
-メソッドに ``Zend_Cache_Core`` のインスタンスを渡します。
+メソッドに ``Zend\Cache\Core`` のインスタンスを渡します。
 
 
 
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
       $fO = array('lifetime' => 3600, 'automatic_serialization' => true);
       $bO = array('cache_dir'=>'/tmp');
-      $cache = Zend_cache::factory('Core', 'File', $fO, $bO);
-      Zend_Paginator::setCache($cache);
+      $cache = Zend\cache\cache::factory('Core', 'File', $fO, $bO);
+      Zend\Paginator\Paginator::setCache($cache);
 
 
 
-``Zend_Paginator`` が ``Zend_Cache_Core`` のインスタンスを受け取ると、
+``Zend_Paginator`` が ``Zend\Cache\Core`` のインスタンスを受け取ると、
 データがキャッシュされるようになります。キャッシュインスタンスを渡した後でも、
 場合によってはデータをキャッシュしたくないこともあるでしょう。そんな場合は
 ``setCacheEnable()`` を使用します。
@@ -133,9 +133,9 @@ protected あるいは private
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
-      // $cache は Zend_Cache_Core のインスタンスです
-      Zend_Paginator::setCache($cache);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
+      // $cache は Zend\Cache\Core のインスタンスです
+      Zend\Paginator\Paginator::setCache($cache);
       // ... スクリプトの後半で次のようにすると
       $paginator->setCacheEnable(false);
       // キャッシュが無効になります
@@ -153,8 +153,8 @@ protected あるいは private
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
-      Zend_Paginator::setCache($cache);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
+      Zend\Paginator\Paginator::setCache($cache);
       $items = $paginator->getCurrentItems();
       // これで 1 ページ目がキャッシュに入りました
       $page3Items = $paginator->getItemsByPage(3);
@@ -176,8 +176,8 @@ protected あるいは private
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
-      Zend_Paginator::setCache($cache);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
+      Zend\Paginator\Paginator::setCache($cache);
       // アイテムを取得します
       $items = $paginator->getCurrentItems();
 
@@ -194,9 +194,9 @@ protected あるいは private
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
       $paginator->setItemCountPerPage(3);
-      Zend_Paginator::setCache($cache);
+      Zend\Paginator\Paginator::setCache($cache);
 
       // アイテムを取得します
       $items = $paginator->getCurrentItems();
@@ -209,14 +209,14 @@ protected あるいは private
 
 .. _zend.paginator.advanced.aggregator:
 
-Zend_Paginator_AdapterAggregate インターフェイス
+Zend\Paginator\AdapterAggregate インターフェイス
 ----------------------------------------
 
 作成するアプリケーションによっては、「内部のデータ構造は既存のアダプタと同じだけれども
 そのデータにアクセスするためにカプセル化を崩したくない」ということもあるでしょう。
-あるいは、 ``Zend_Paginator_Adapter_Abstract`` が提供するような「オブジェクト "is-a"
+あるいは、 ``Zend\Paginator_Adapter\Abstract`` が提供するような「オブジェクト "is-a"
 アダプタ」形式ではなく 「オブジェクト "has-a"
-アダプタ」形式であることもあるでしょう。 そんな場合は ``Zend_Paginator_AdapterAggregate``
+アダプタ」形式であることもあるでしょう。 そんな場合は ``Zend\Paginator\AdapterAggregate``
 インターフェイスを使用します。これは、 *PHP* の SPL 拡張モジュールにある
 ``IteratorAggregate`` と同じ動きをします。
 
@@ -225,20 +225,20 @@ Zend_Paginator_AdapterAggregate インターフェイス
    .. code-block:: php
       :linenos:
 
-      interface Zend_Paginator_AdapterAggregate
+      interface Zend\Paginator\AdapterAggregate
       {
           /**
            * Return a fully configured Paginator Adapter from this method.
            *
-           * @return Zend_Paginator_Adapter_Abstract
+           * @return Zend\Paginator_Adapter\Abstract
            */
           public function getPaginatorAdapter();
       }
 
 
 
-このインターフェイスは小さく、ただ ``Zend_Paginator_Adapter_Abstract``
-のインスタンスを返すだけのものです。このインスタンスは *Zend_Paginator::factory*
+このインターフェイスは小さく、ただ ``Zend\Paginator_Adapter\Abstract``
+のインスタンスを返すだけのものです。このインスタンスは *Zend\Paginator\Paginator::factory*
 および Zend_Paginator コンストラクタの両方で使用可能で、適切に処理されます。
 
 

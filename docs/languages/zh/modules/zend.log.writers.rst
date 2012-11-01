@@ -4,7 +4,7 @@
 Writers
 =======
 
-一个Writer是继承自 *Zend_Log_Writer_Abstract*\
+一个Writer是继承自 *Zend\Log_Writer\Abstract*\
 类的一个对象.Writer的职责是向存储后端纪录日志数据.
 
 .. _zend.log.writers.stream:
@@ -12,7 +12,7 @@ Writers
 写入到流(Streams)
 -------------
 
-*Zend_Log_Writer_Stream* 写入日志数据到 `PHP 流`_\ 中.
+*Zend\Log_Writer\Stream* 写入日志数据到 `PHP 流`_\ 中.
 
 要把日志写入到输出缓冲区,使用URL *php:://output*. 或则你可以直接发送日志数据到像
 *STDERR* 这样的流中(php://stderr).
@@ -20,8 +20,8 @@ Writers
    .. code-block:: php
       :linenos:
 
-      $writer = new Zend_Log_Writer_Stream('php://output');
-      $logger = new Zend_Log($writer);
+      $writer = new Zend\Log_Writer\Stream('php://output');
+      $logger = new Zend\Log\Log($writer);
 
       $logger->info('Informational message');
 
@@ -33,16 +33,16 @@ Writers
    .. code-block:: php
       :linenos:
 
-      $writer = new Zend_Log_Writer_Stream('/path/to/logfile');
-      $logger = new Zend_Log($writer);
+      $writer = new Zend\Log_Writer\Stream('/path/to/logfile');
+      $logger = new Zend\Log\Log($writer);
 
       $logger->info('Informational message');
 
 
-默认情况流一个追加(*"a"*)的方式打开.要以不同的模式打开,Zend_Log_Writer_Stream
+默认情况流一个追加(*"a"*)的方式打开.要以不同的模式打开,Zend\Log_Writer\Stream
 构造函数接受第二个参数作为可选的模式参数.
 
-*Zend_Log_Writer_Stream*\ 还接受一个现有的流资源:
+*Zend\Log_Writer\Stream*\ 还接受一个现有的流资源:
 
    .. code-block:: php
       :linenos:
@@ -52,21 +52,21 @@ Writers
           throw new Exception('Failed to open stream');
       }
 
-      $writer = new Zend_Log_Writer_Stream($stream);
-      $logger = new Zend_Log($writer);
+      $writer = new Zend\Log_Writer\Stream($stream);
+      $logger = new Zend\Log\Log($writer);
 
       $logger->info('Informational message');
 
 
-你不能给现有的流资源指定模式.这样作将导致抛出一个 *Zend_Log_Exception*\ 异常.
+你不能给现有的流资源指定模式.这样作将导致抛出一个 *Zend\Log\Exception*\ 异常.
 
 .. _zend.log.writers.database:
 
 写入到数据库
 ------
 
-*Zend_Log_Writer_Db*\ 使用 *Zend_Db*\ 写入日志信息到数据库表中. *Zend_Log_Writer_Db*\
-的构造函数接受一个 *Zend_Db_Adapter*
+*Zend\Log_Writer\Db*\ 使用 *Zend_Db*\ 写入日志信息到数据库表中. *Zend\Log_Writer\Db*\
+的构造函数接受一个 *Zend\Db\Adapter*
 实例,一个表名,和一个数据库字段到事件数据项的映射:
 
    .. code-block:: php
@@ -76,12 +76,12 @@ Writers
                        'username' => 'malory',
                        'password' => '******',
                        'dbname'   => 'camelot');
-      $db = Zend_Db::factory('PDO_MYSQL', $params);
+      $db = Zend\Db\Db::factory('PDO_MYSQL', $params);
 
       $columnMapping = array('lvl' => 'priority', 'msg' => 'message');
-      $writer = new Zend_Log_Writer_Db($db, 'log_table_name', $columnMapping);
+      $writer = new Zend\Log_Writer\Db($db, 'log_table_name', $columnMapping);
 
-      $logger = new Zend_Log($writer);
+      $logger = new Zend\Log\Log($writer);
 
       $logger->info('Informational message');
 
@@ -95,14 +95,14 @@ Writers
 踩熄Writer
 --------
 
-*Zend_Log_Writer_Null*\ 是一个不向任何地方写入任何数据的存根.
+*Zend\Log_Writer\Null*\ 是一个不向任何地方写入任何数据的存根.
 用于在测试期间关闭或踩熄日志.
 
    .. code-block:: php
       :linenos:
 
-      $writer = new Zend_Log_Writer_Null;
-      $logger = new Zend_Log($writer);
+      $writer = new Zend\Log_Writer\Null;
+      $logger = new Zend\Log\Log($writer);
 
       // goes nowhere
       $logger->info('Informational message');
@@ -115,14 +115,14 @@ Writers
 测试 Mock
 -------
 
-*Zend_Log_Writer_Mock*\
+*Zend\Log_Writer\Mock*\
 是一个非常简单的Writer,它纪录所接收到的原始的数据到到作为public属性的 数组中.
 
    .. code-block:: php
       :linenos:
 
-      $mock = new Zend_Log_Writer_Mock;
-      $logger = new Zend_Log($mock);
+      $mock = new Zend\Log_Writer\Mock;
+      $logger = new Zend\Log\Log($mock);
 
       $logger->info('Informational message');
 
@@ -151,10 +151,10 @@ Writers
    .. code-block:: php
       :linenos:
 
-      $writer1 = new Zend_Log_Writer_Stream('/path/to/first/logfile');
-      $writer2 = new Zend_Log_Writer_Stream('/path/to/second/logfile');
+      $writer1 = new Zend\Log_Writer\Stream('/path/to/first/logfile');
+      $writer2 = new Zend\Log_Writer\Stream('/path/to/second/logfile');
 
-      $logger = new Zend_Log();
+      $logger = new Zend\Log\Log();
       $logger->addWriter($writer1);
       $logger->addWriter($writer2);
 

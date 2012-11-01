@@ -4,15 +4,15 @@
 Float
 =====
 
-``Zend_Validate_Float`` erlaubt es zu prüfen ob ein angegebener Wert eine Gleitkommazahl enthält. Diese Prüfung
+``Zend\Validate\Float`` erlaubt es zu prüfen ob ein angegebener Wert eine Gleitkommazahl enthält. Diese Prüfung
 kann auch lokalisierte Eingaben prüfen.
 
 .. _zend.validator.set.float.options:
 
-Unterstützte Optionen für Zend_Validate_Float
+Unterstützte Optionen für Zend\Validate\Float
 ---------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Validate_Float`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Validate\Float`` unterstützt:
 
 - **locale**: Setzt das Gebietsschema welches verwendet wird um lokalisierte Gleitkommazahlen zu prüfen.
 
@@ -27,7 +27,7 @@ verwendet wird, dann wird das Gebietsschema der Umgebung für die Prüfung verwe
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Float();
+   $validator = new Zend\Validate\Float();
 
    $validator->isValid(1234.5);   // Gibt true zurück
    $validator->isValid('10a01'); // Gibt false zurück
@@ -44,13 +44,13 @@ Oft ist es nützlich in der Lage zu sein lokalisierte Werte zu prüfen. Gleitkom
 oft unterschiedlich geschrieben. Wird zum Beispiel englisch verwendet wird "1.5" geschrieben. Im deutschen wird man
 "1,5" schreiben und in anderen Sprachen können Gruppierungen verwendet werden.
 
-``Zend_Validate_Float`` ist in der Lage solche Schreibweisen zu verwenden. Aber es ist auf das Gebietsschema
+``Zend\Validate\Float`` ist in der Lage solche Schreibweisen zu verwenden. Aber es ist auf das Gebietsschema
 begrenzt welches man verwendet. Siehe den folgenden Code:
 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Float(array('locale' => 'de'));
+   $validator = new Zend\Validate\Float(array('locale' => 'de'));
 
    $validator->isValid(1234.5); // Gibt true zurück
    $validator->isValid("1 234,5"); // Gibt false zurück

@@ -14,7 +14,7 @@ API для построения запросов
    .. code-block:: php
       :linenos:
       <?php
-      $query = Zend_Search_Lucene_Search_QueryParser::parse($queryString);
+      $query = Zend\Search\Lucene\Search\QueryParser::parse($queryString);
 
 
 .. _zend.search.lucene.queries.exceptions:
@@ -24,28 +24,28 @@ API для построения запросов
 
 Парсер запросов может генерировать два типа исключений:
 
-   - *Zend_Search_Lucene_Exception* бросается, если ошибка произошла в самом
+   - *Zend\Search_Lucene\Exception* бросается, если ошибка произошла в самом
      парсере запросов.
 
-   - *Zend_Search_Lucene_Search_QueryParserException* бросается в случае ошибки
+   - *Zend\Search\Lucene\Search\QueryParserException* бросается в случае ошибки
      синтаксиса запроса.
 
 Будет хорошей идеей отлавливать запросы
-Zend_Search_Lucene_Search_QueryParserException и выводить соответствующее
+Zend\Search\Lucene\Search\QueryParserException и выводить соответствующее
 сообщение.
 
    .. code-block:: php
       :linenos:
       <?php
       try {
-          $query = Zend_Search_Lucene_Search_QueryParser::parse($queryString);
-      } catch (Zend_Search_Lucene_Search_QueryParserException $e) {
+          $query = Zend\Search\Lucene\Search\QueryParser::parse($queryString);
+      } catch (Zend\Search\Lucene\Search\QueryParserException $e) {
           echo "Query syntax error: " . $e->getMessage() . "\n";
       }
 
 
 Тот же самый подход может (и должен) применяться для метода find()
-объекта Zend_Search_Lucene.
+объекта Zend\Search\Lucene.
 
 .. _zend.search.lucene.queries.term-query:
 
@@ -67,18 +67,18 @@ Zend_Search_Lucene_Search_QueryParserException и выводить соотве�
 .. code-block:: php
    :linenos:
    <?php
-   $term  = new Zend_Search_Lucene_Index_Term('word1', 'field1');
-   $query = new Zend_Search_Lucene_Search_Query_Term($term);
+   $term  = new Zend\Search\Lucene\Index\Term('word1', 'field1');
+   $query = new Zend\Search\Lucene\Search\Query\Term($term);
    $hits  = $index->find($query);
 Параметр, задающий поле для поиска ('field1'), является
-опциональным. Zend_Search_Lucene производит поиск по всем полям, если
+опциональным. Zend\Search\Lucene производит поиск по всем полям, если
 поля для поиска не заданы.
 
    .. code-block:: php
       :linenos:
       <?php
-      $term  = new Zend_Search_Lucene_Index_Term('word1');  // Search 'word1' through all indexed fields
-      $query = new Zend_Search_Lucene_Search_Query_Term($term);
+      $term  = new Zend\Search\Lucene\Index\Term('word1');  // Search 'word1' through all indexed fields
+      $query = new Zend\Search\Lucene\Search\Query\Term($term);
       $hits  = $index->find($query);
 
 
@@ -137,11 +137,11 @@ Zend_Search_Lucene_Search_QueryParserException и выводить соотве�
 .. code-block:: php
    :linenos:
    <?php
-   $query = new Zend_Search_Lucene_Search_Query_MultiTerm();
+   $query = new Zend\Search\Lucene\Search\Query\MultiTerm();
 
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('word1'), true);
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('word2'), null);
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('word3'), false);
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('word1'), true);
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('word2'), null);
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('word3'), false);
 
    $hits  = $index->find($query);
 Массив ``$signs`` содержит информацию о типах элементов:
@@ -175,43 +175,43 @@ Zend_Search_Lucene_Search_QueryParserException и выводить соотве�
 .. code-block:: php
    :linenos:
    <?php
-   $query1 = new Zend_Search_Lucene_Search_Query_Phrase();
+   $query1 = new Zend\Search\Lucene\Search\Query\Phrase();
 
    // Добавление 'word1' в относительную позицию 0.
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word1'));
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word1'));
 
    // Добавление 'word2' в относительную позицию 1.
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word2'));
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word2'));
 
    // Добавление 'word3' в относительную позицию 3.
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word3'), 3);
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word3'), 3);
 
    ...
 
-   $query2 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query2 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2', 'word3'), array(0,1,3));
 
    ...
 
    // Запрос без промежутков.
-   $query3 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query3 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2', 'word3'));
 
    ...
 
-   $query4 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query4 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2'), array(0,1), 'annotation');
 Фразовый запрос может строиться сразу с помощью конструктора
 класса или пошагово с помощью метода
-*Zend_Search_Lucene_Search_Query_Phrase::addTerm()*.
+*Zend\Search\Lucene\Search\Query\Phrase::addTerm()*.
 
-Конструктор класса *Zend_Search_Lucene_Search_Query_Phrase* принимает три
+Конструктор класса *Zend\Search\Lucene\Search\Query\Phrase* принимает три
 необязательных параметра:
 
 .. code-block:: php
    :linenos:
    <?php
-   Zend_Search_Lucene_Search_Query_Phrase([array $terms[, array $offsets[, string $field]]]);
+   Zend\Search\Lucene\Search\Query\Phrase([array $terms[, array $offsets[, string $field]]]);
 ``$terms`` является массивом строк, который содержит набор
 элементов фразы. Если он опущен или равен ``NULL``, то строится
 пустой запрос.
@@ -223,7 +223,7 @@ Zend_Search_Lucene_Search_QueryParserException и выводить соотве�
 ``$field`` является строкой, которая указывает поле документа, в
 котором производится поиск. Если он опущен или равен ``NULL``, то
 поиск производится в поле по умолчанию. Данная версия
-Zend_Search_Lucene трактует поле 'contents' как поле, выбираемое по
+Zend\Search\Lucene трактует поле 'contents' как поле, выбираемое по
 умолчанию, но в следующих версиях планируется добавить
 возможность указания любого поля, как выбираемого по
 умолчанию.
@@ -233,13 +233,13 @@ Zend_Search_Lucene трактует поле 'contents' как поле, выб�
 .. code-block:: php
    :linenos:
    <?php
-   $query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'framework'));
+   $query = new Zend\Search\Lucene\Search\Query\Phrase(array('zend', 'framework'));
 будет искать фразу 'zend framework'.
 
 .. code-block:: php
    :linenos:
    <?php
-   $query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'download'), array(0, 2));
+   $query = new Zend\Search\Lucene\Search\Query\Phrase(array('zend', 'download'), array(0, 2));
 будет искать фразу 'zend ????? download', такой запрос соответствует
 фразам 'zend platform download', 'zend studio download', 'zend core download', 'zend framework download' и
 т.д.
@@ -247,17 +247,17 @@ Zend_Search_Lucene трактует поле 'contents' как поле, выб�
 .. code-block:: php
    :linenos:
    <?php
-   $query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'framework'), null, 'title');
+   $query = new Zend\Search\Lucene\Search\Query\Phrase(array('zend', 'framework'), null, 'title');
 будет искать фразу 'zend framework' в поле 'title'.
 
-Метод *Zend_Search_Lucene_Search_Query_Phrase::addTerm()* принимает два аргумента —
-объект элемента *Zend_Search_Lucene_Index_Term* в качестве обязательного
+Метод *Zend\Search\Lucene\Search\Query\Phrase::addTerm()* принимает два аргумента —
+объект элемента *Zend\Search\Lucene\Index\Term* в качестве обязательного
 параметра и позицию элемента в качестве необязательного:
 
 .. code-block:: php
    :linenos:
    <?php
-   Zend_Search_Lucene_Search_Query_Phrase::addTerm(Zend_Search_Lucene_Index_Term $term[, integer $position]);
+   Zend\Search\Lucene\Search\Query\Phrase::addTerm(Zend\Search\Lucene\Index\Term $term[, integer $position]);
 ``$term`` описывает следующий элемент во фразе. Он должен
 указывать на то же самое поле, что и предыдущие элементы, иначе
 будет сгенерировано исключение.
@@ -269,17 +269,17 @@ Zend_Search_Lucene трактует поле 'contents' как поле, выб�
 .. code-block:: php
    :linenos:
    <?php
-   $query = new Zend_Search_Lucene_Search_Query_Phrase();
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'));
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'));
+   $query = new Zend\Search\Lucene\Search\Query\Phrase();
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('zend'));
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('framework'));
 будет искать фразу 'zend framework'.
 
 .. code-block:: php
    :linenos:
    <?php
-   $query = new Zend_Search_Lucene_Search_Query_Phrase();
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'), 0);
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'), 2);
+   $query = new Zend\Search\Lucene\Search\Query\Phrase();
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('zend'), 0);
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('framework'), 2);
 будет искать фразу 'zend ????? download', такой запрос соответствует
 фразам 'zend platform download', 'zend studio download', 'zend core download', 'zend framework download' и
 т.д.
@@ -287,9 +287,9 @@ Zend_Search_Lucene трактует поле 'contents' как поле, выб�
 .. code-block:: php
    :linenos:
    <?php
-   $query = new Zend_Search_Lucene_Search_Query_Phrase();
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('zend', 'title'));
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('framework', 'title'));
+   $query = new Zend\Search\Lucene\Search\Query\Phrase();
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('zend', 'title'));
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('framework', 'title'));
 будет искать фразу 'zend framework' в поле 'title'.
 
 Коэффициент расстояния устанавливает допустимое количество
@@ -317,7 +317,7 @@ Zend_Search_Lucene трактует поле 'contents' как поле, выб�
    :linenos:
    <?php
    // Запрос без пропусков.
-   $query = new Zend_Search_Lucene_Search_Query_Phrase(array('word1', 'word2'));
+   $query = new Zend\Search\Lucene\Search\Query\Phrase(array('word1', 'word2'));
 
    // Поиск 'word1 word2', 'word1 ... word2'
    $query->setSlop(1);

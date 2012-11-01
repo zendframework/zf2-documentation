@@ -37,7 +37,7 @@ Picasa Web Albums *API* は、その他の GData *API* と同様に Atom Publish
 で行われ、認証済みの接続と未認証の接続の両方が利用できます。
 
 何らかのトランザクションが発生する際には、 必ず接続を確立する必要があります。
-Picasa サーバとの接続は、まず *HTTP* クライアントを作成して ``Zend_Gdata_Photos``
+Picasa サーバとの接続は、まず *HTTP* クライアントを作成して ``ZendGData\Photos``
 サービスのインスタンスをそこにバインドするという手順で行います。
 
 .. _zend.gdata.photos.connecting.authentication:
@@ -63,7 +63,7 @@ Google Picasa *API* を使用すると、公開カレンダーだけでなく
   セキュリティリスクもありません。 ウェブベースのアプリケーションでは、
   これは最適な選択肢となります。
 
-``Zend_Gdata`` ライブラリは、 これらのすべての方式に対応しています。
+``ZendGData`` ライブラリは、 これらのすべての方式に対応しています。
 これ以降の説明は、認証方式については理解しており
 適切な認証方式で接続できるようになっていることを前提として進めていきます。
 詳細な情報は、このマニュアルの :ref:`認証に関するセクション
@@ -75,17 +75,17 @@ Overview`_ を参照ください。
 サービスのインスタンスの作成
 ^^^^^^^^^^^^^^
 
-サーバとのやりとりを行うためのクラスとして、このライブラリでは ``Zend_Gdata_Photos``
+サーバとのやりとりを行うためのクラスとして、このライブラリでは ``ZendGData\Photos``
 サービスクラスを用意しています。 このクラスは Google Data や Atom Publishing Protocol
 モデルへの共通インターフェイスを提供し、
 サーバとのリクエストのやりとりを支援します。
 
-使用する認証方式を決めたら、次に ``Zend_Gdata_Photos`` のインスタンスを作成します。
-このクラスのコンストラクタには、引数として ``Zend_Http_Client``
+使用する認証方式を決めたら、次に ``ZendGData\Photos`` のインスタンスを作成します。
+このクラスのコンストラクタには、引数として ``Zend\Http\Client``
 のインスタンスを渡します。 これは、AuthSub 認証および ClientAuth
 認証へのインターフェイスを提供します。
 これらの認証を使用する場合には、認証済みの *HTTP* クライアントが必要です。
-引数を省略した場合は、未認証の ``Zend_Http_Client``
+引数を省略した場合は、未認証の ``Zend\Http\Client``
 のインスタンスを自動的に作成して使用します。
 
 以下の例は、ClientAuth 認証を使用してサービスクラスを作成するものです。
@@ -94,15 +94,15 @@ Overview`_ を参照ください。
    :linenos:
 
    // ClientAuth 認証用のパラメータ
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
    $user = "sample.user@gmail.com";
    $pass = "pa$$w0rd";
 
    // 認証済みの HTTP クライアントを作成します
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
 
    // サービスのインスタンスを作成します
-   $service = new Zend_Gdata_Photos($client);
+   $service = new ZendGData\Photos($client);
 
 AuthSub を使用するサービスを作成するのもほぼ同様ですが、 少々長めになります。
 
@@ -163,7 +163,7 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
        $scope = 'http://picasaweb.google.com/data';
        $secure = false;
        $session = true;
-       return Zend_Gdata_AuthSub::getAuthSubTokenUri($next, $scope, $secure,
+       return ZendGData\AuthSub::getAuthSubTokenUri($next, $scope, $secure,
            $session);
    }
 
@@ -175,16 +175,16 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
     * 保存します。Google での認証に成功したユーザのリダイレクト先 URL
     * に含まれる一回限りのトークンは、$_GET['token'] から取得します
     *
-    * @return Zend_Http_Client
+    * @return Zend\Http\Client
     */
    function getAuthSubHttpClient()
    {
        global $_SESSION, $_GET;
        if (!isset($_SESSION['sessionToken']) && isset($_GET['token'])) {
            $_SESSION['sessionToken'] =
-               Zend_Gdata_AuthSub::getAuthSubSessionToken($_GET['token']);
+               ZendGData\AuthSub::getAuthSubSessionToken($_GET['token']);
        }
-       $client = Zend_Gdata_AuthSub::getHttpClient($_SESSION['sessionToken']);
+       $client = ZendGData\AuthSub::getHttpClient($_SESSION['sessionToken']);
        return $client;
    }
 
@@ -192,7 +192,7 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
     * サービスのインスタンスを作成し、
     * 必要に応じてユーザを AuthSub サーバにリダイレクトします
     */
-   $service = new Zend_Gdata_Photos(getAuthSubHttpClient());
+   $service = new ZendGData\Photos(getAuthSubHttpClient());
 
 未認証のサーバを作成して、公開フィードへのアクセスに使用できます。
 
@@ -200,7 +200,7 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
    :linenos:
 
    // サービスのインスタンスを、未認証の HTTP クライアントで作成します
-   $service = new Zend_Gdata_Photos();
+   $service = new ZendGData\Photos();
 
 .. _zend.gdata.photos.queries:
 
@@ -222,11 +222,11 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_UserQuery();
+   $query = new ZendGData_Photos\UserQuery();
    $query->setUser("sample.user");
 
 各クエリで検索結果を絞り込むために使用するパラメータを取得したり設定したりするには、
@@ -295,13 +295,13 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
    try {
        $userFeed = $service->getUserFeed("sample.user");
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 
@@ -310,16 +310,16 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_UserQuery();
+   $query = new ZendGData_Photos\UserQuery();
    $query->setUser("sample.user");
 
    try {
        $userFeed = $service->getUserFeed(null, $query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 
@@ -328,17 +328,17 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_UserQuery();
+   $query = new ZendGData_Photos\UserQuery();
    $query->setUser("sample.user");
    $query->setType("entry");
 
    try {
        $userEntry = $service->getUserEntry($query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 
@@ -355,17 +355,17 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_AlbumQuery();
+   $query = new ZendGData_Photos\AlbumQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
 
    try {
        $albumFeed = $service->getAlbumFeed($query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 
@@ -379,18 +379,18 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_AlbumQuery();
+   $query = new ZendGData_Photos\AlbumQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setType("entry");
 
    try {
        $albumEntry = $service->getAlbumEntry($query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 
@@ -407,18 +407,18 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_PhotoQuery();
+   $query = new ZendGData_Photos\PhotoQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setPhotoId("100");
 
    try {
        $photoFeed = $service->getPhotoFeed($query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 
@@ -427,11 +427,11 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_PhotoQuery();
+   $query = new ZendGData_Photos\PhotoQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setPhotoId("100");
@@ -439,7 +439,7 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 
    try {
        $photoEntry = $service->getPhotoEntry($query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 
@@ -457,11 +457,11 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_PhotoQuery();
+   $query = new ZendGData_Photos\PhotoQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setPhotoId("100");
@@ -471,11 +471,11 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
        $photoFeed = $service->getPhotoFeed($query);
 
        foreach ($photoFeed as $entry) {
-           if ($entry instanceof Zend_Gdata_Photos_CommentEntry) {
+           if ($entry instanceof ZendGData_Photos\CommentEntry) {
                // コメントに対して何らかの処理をします
            }
        }
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 
@@ -493,11 +493,11 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_PhotoQuery();
+   $query = new ZendGData_Photos\PhotoQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setPhotoId("100");
@@ -507,11 +507,11 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
        $photoFeed = $service->getPhotoFeed($query);
 
        foreach ($photoFeed as $entry) {
-           if ($entry instanceof Zend_Gdata_Photos_TagEntry) {
+           if ($entry instanceof ZendGData_Photos\TagEntry) {
                // タグに対して何らかの処理をします
            }
        }
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 
@@ -532,11 +532,11 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $entry = new Zend_Gdata_Photos_AlbumEntry();
+   $entry = new ZendGData_Photos\AlbumEntry();
    $entry->setTitle($service->newTitle("test album"));
 
    $service->insertAlbumEntry($entry);
@@ -551,20 +551,20 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
    // $photo は、HTML フォームからアップロードされたファイルの名前です
 
    $fd = $service->newMediaFileSource($photo["tmp_name"]);
    $fd->setContentType($photo["type"]);
 
-   $entry = new Zend_Gdata_Photos_PhotoEntry();
+   $entry = new ZendGData_Photos\PhotoEntry();
    $entry->setMediaSource($fd);
    $entry->setTitle($service->newTitle($photo["name"]));
 
-   $albumQuery = new Zend_Gdata_Photos_AlbumQuery;
+   $albumQuery = new ZendGData_Photos\AlbumQuery;
    $albumQuery->setUser("sample.user");
    $albumQuery->setAlbumId("1");
 
@@ -582,15 +582,15 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $entry = new Zend_Gdata_Photos_CommentEntry();
+   $entry = new ZendGData_Photos\CommentEntry();
    $entry->setTitle($service->newTitle("comment"));
    $entry->setContent($service->newContent("comment"));
 
-   $photoQuery = new Zend_Gdata_Photos_PhotoQuery;
+   $photoQuery = new ZendGData_Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -610,14 +610,14 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $entry = new Zend_Gdata_Photos_TagEntry();
+   $entry = new ZendGData_Photos\TagEntry();
    $entry->setTitle($service->newTitle("tag"));
 
-   $photoQuery = new Zend_Gdata_Photos_PhotoQuery;
+   $photoQuery = new ZendGData_Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -644,11 +644,11 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $albumQuery = new Zend_Gdata_Photos_AlbumQuery;
+   $albumQuery = new ZendGData_Photos\AlbumQuery;
    $albumQuery->setUser("sample.user");
    $albumQuery->setAlbumId("1");
    $albumQuery->setType('entry');
@@ -667,11 +667,11 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $photoQuery = new Zend_Gdata_Photos_PhotoQuery;
+   $photoQuery = new ZendGData_Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -691,11 +691,11 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $photoQuery = new Zend_Gdata_Photos_PhotoQuery;
+   $photoQuery = new ZendGData_Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -717,11 +717,11 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $photoQuery = new Zend_Gdata_Photos_PhotoQuery;
+   $photoQuery = new ZendGData_Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -731,7 +731,7 @@ AuthSub を使用するサービスを作成するのもほぼ同様ですが、
    $photoFeed = $service->getPhotoFeed($query);
 
    foreach ($photoFeed as $entry) {
-       if ($entry instanceof Zend_Gdata_Photos_TagEntry) {
+       if ($entry instanceof ZendGData_Photos\TagEntry) {
            if ($entry->getContent() == $tagContent) {
                $tagEntry = $entry;
            }
@@ -762,10 +762,10 @@ concurrency) を実装しています。
    // $album は、削除したい albumEntry です
    try {
        $this->delete($album);
-   } catch (Zend_Gdata_App_HttpException $e) {
+   } catch (ZendGData_App\HttpException $e) {
        if ($e->getMessage()->getStatus() === 409) {
            $entry =
-               new Zend_Gdata_Photos_AlbumEntry($e->getMessage()->getBody());
+               new ZendGData_Photos\AlbumEntry($e->getMessage()->getBody());
            $this->delete($entry->getLink('edit')->href);
        } else {
            throw $e;

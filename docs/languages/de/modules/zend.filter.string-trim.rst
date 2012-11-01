@@ -9,10 +9,10 @@ werden.
 
 .. _zend.filter.set.stringtrim.options:
 
-Unterstützte Optionen für Zend_Filter_StringTrim
+Unterstützte Optionen für Zend\Filter\StringTrim
 ------------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Filter_StringTrim`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Filter\StringTrim`` unterstützt:
 
 - **charlist**: Liste der Zeichen welche vom Anfang und vom Ende des Strings entfernt werden sollen. Wenn sie nicht
   gesetzt wird oder null ist, wird das Standardverhalten verwendet, welches nur Leerzeichen vom Beginn und vom Ende
@@ -28,7 +28,7 @@ Ein einfaches Beispiel der Verwendung ist nachfolgend zu finden:
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringTrim();
+   $filter = new Zend\Filter\StringTrim();
 
    print $filter->filter(' Das ist (mein) Inhalt: ');
 
@@ -37,14 +37,14 @@ wurden.
 
 .. _zend.filter.set.stringtrim.types:
 
-Standardverhalten für Zend_Filter_StringTrim
+Standardverhalten für Zend\Filter\StringTrim
 --------------------------------------------
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringTrim(':');
-   // oder new Zend_Filter_StringTrim(array('charlist' => ':'));
+   $filter = new Zend\Filter\StringTrim(':');
+   // oder new Zend\Filter\StringTrim(array('charlist' => ':'));
 
    print $filter->filter(' Das ist (mein) Inhalt:');
 

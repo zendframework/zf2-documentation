@@ -7,7 +7,7 @@ Conversão de XML para JSON
 ``Zend_Json`` fornece um conveniente método para transformar dados formatados em *XML* para o formato *JSON*. Este
 recurso foi inspirado em um `artigo do IBM developerWorks`_.
 
-``Zend_Json`` inclui uma função estática chamada ``Zend_Json::fromXml()``. Esta função irá gerar um *JSON* a
+``Zend_Json`` inclui uma função estática chamada ``Zend\Json\Json::fromXml()``. Esta função irá gerar um *JSON* a
 partir de uma entrada em *XML*. Esta função recebe qualquer string arbitrária em *XML* como um parâmetro de
 entrada. Tem também um parâmetro de entrada opcional do tipo booleano que instrui a lógica de conversão para
 ignorar ou não os atributos *XML* durante o processo de conversão. Se esse parâmetro de entrada opcional não é
@@ -19,22 +19,22 @@ abaixo:
 
    // a função fromXml simplesmente recebe uma String contendo conteúdo
    // em XML como entrada.
-   $jsonContents = Zend_Json::fromXml($xmlStringContents, true);
+   $jsonContents = Zend\Json\Json::fromXml($xmlStringContents, true);
 
-A função ``Zend_Json::fromXml()`` faz a conversão da string formata em *XML* do parâmetro de entrada e retorna
+A função ``Zend\Json\Json::fromXml()`` faz a conversão da string formata em *XML* do parâmetro de entrada e retorna
 o equivalente como uma string formatada em *JSON*. No caso de qualquer erro de formatação do *XML* ou erro na
 lógica de conversão, esta função irá lançar uma exceção. A lógica de conversão também utiliza técnicas
 recursivas para percorrer a árvore *XML*. Ele suporta até 25 níveis de profundidade de recursão. Se passar
-dessa profundidade, será lançado um ``Zend_Json_Exception``. Existem vários arquivos *XML* com vários graus de
+dessa profundidade, será lançado um ``Zend\Json\Exception``. Existem vários arquivos *XML* com vários graus de
 complexidade fornecidos no diretório de testes de Zend Framework. Eles podem ser usados para testar a
 funcionalidade do recurso xml2json.
 
 O simples exemplo a seguir mostra uma string *XML* passada como entrada e uma string *JSON* de saída retornada
-como resultado da função ``Zend_Json::fromXml()``. Este exemplo usa o parâmetro opcional da função para não
+como resultado da função ``Zend\Json\Json::fromXml()``. Este exemplo usa o parâmetro opcional da função para não
 ignorar os atributos *XML* durante a conversão. Consequentemente, você pode notar que a string *JSON* resultante
 inclui uma representação dos atributos *XML* presentes na string *XML* de entrada.
 
-String *XML* passada como entrada para a função ``Zend_Json::fromXml()``:
+String *XML* passada como entrada para a função ``Zend\Json\Json::fromXml()``:
 
 .. code-block:: php
    :linenos:
@@ -60,7 +60,7 @@ String *XML* passada como entrada para a função ``Zend_Json::fromXml()``:
        </book>
    </books>
 
-String *JSON* de saída retornada da função ``Zend_Json::fromXml()``:
+String *JSON* de saída retornada da função ``Zend\Json\Json::fromXml()``:
 
 .. code-block:: php
    :linenos:

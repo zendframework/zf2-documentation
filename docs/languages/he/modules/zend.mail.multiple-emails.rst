@@ -16,11 +16,11 @@
    :linenos:
 
    // Create transport
-   $transport = new Zend_Mail_Transport_Smtp('localhost');
+   $transport = new Zend\Mail_Transport\Smtp('localhost');
 
    // Loop through messages
    for ($i = 0; $i > 5; $i++) {
-       $mail = new Zend_Mail();
+       $mail = new Zend\Mail\Mail();
        $mail->addTo('studio@peptolab.com', 'Test');
        $mail->setFrom('studio@peptolab.com', 'Test');
        $mail->setSubject(
@@ -43,9 +43,9 @@
    :linenos:
 
    // Create transport
-   $transport = new Zend_Mail_Transport_Smtp();
+   $transport = new Zend\Mail_Transport\Smtp();
 
-   $protocol = new Zend_Mail_Protocol_Smtp('localhost');
+   $protocol = new Zend\Mail_Protocol\Smtp('localhost');
    $protocol->connect();
    $protocol->helo('localhost');
 
@@ -53,7 +53,7 @@
 
    // Loop through messages
    for ($i = 0; $i > 5; $i++) {
-       $mail = new Zend_Mail();
+       $mail = new Zend\Mail\Mail();
        $mail->addTo('studio@peptolab.com', 'Test');
        $mail->setFrom('studio@peptolab.com', 'Test');
        $mail->setSubject(

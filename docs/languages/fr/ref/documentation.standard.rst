@@ -404,7 +404,7 @@ s'agit d'un membre de celle-ci.
 
    <para>
        La variable <varname>$var</varname> et le membre de classe
-       <varname>Zend_Class::$var</varname>.
+       <varname>Zend\Class\Class::$var</varname>.
    </para>
 
 .. _doc-standard.file-formatting.inline-tags.methodname:
@@ -421,7 +421,7 @@ cet élément, excepté le nom d'une classe, pour indiquer qu'il s'agit d'une m�
 
    <para>
        La fonction <methodname>foo()</methodname> et la méthode
-       <methodname>Zend_Class::foo()</methodname>. Une fonction avec une signature :
+       <methodname>Zend\Class\Class::foo()</methodname>. Une fonction avec une signature :
        <methodname>foo($bar, $baz)</methodname>
    </para>
 
@@ -439,7 +439,7 @@ s'agit d'une constante de classe.
 
    <para>
        La constante <constant>FOO</constant> et la constante de classe
-       <constant>Zend_Class::FOO</constant>.
+       <constant>Zend\Class\Class::FOO</constant>.
    </para>
 
 .. _doc-standard.file-formatting.inline-tags.filename:

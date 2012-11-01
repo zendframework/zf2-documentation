@@ -9,8 +9,8 @@ Memory Manager
 Erstellen eines Memory Manager
 ------------------------------
 
-Ein neuer Memory Manager (``Zend_Memory_Manager`` object) kann erstellt werden durch Verwendung der
-``Zend_Memory::factory($backendName [, $backendOprions])`` Methode.
+Ein neuer Memory Manager (``Zend\Memory\Manager`` object) kann erstellt werden durch Verwendung der
+``Zend\Memory\Memory::factory($backendName [, $backendOprions])`` Methode.
 
 Das erste Argument ``$backendName`` ist eine Zeichenkette die eine der Backend Implementationen benennt welche
 durch ``Zend_Cache`` unterstützt werden.
@@ -25,7 +25,7 @@ Das zweite Argument ``$backendOptions`` ist ein optionales Array für die Option
        'cache_dir' => './tmp/'
    );
 
-   $memoryManager = Zend_Memory::factory('File', $backendOptions);
+   $memoryManager = Zend\Memory\Memory::factory('File', $backendOptions);
 
 ``Zend_Memory`` verwendet :ref:`Zend_Cache Backends <zend.cache.backends>` als Speicheranbieter.
 
@@ -35,7 +35,7 @@ Backends.
 .. code-block:: php
    :linenos:
 
-   $memoryManager = Zend_Memory::factory('None');
+   $memoryManager = Zend\Memory\Memory::factory('None');
 
 Wenn 'None' als Backend Name verwendet wird, dann tauscht der Memory Manager niemals die Memory Blöcke. Das ist
 nützlich wenn man weiß das Speicher nicht limitiert ist oder die Gesamtgröße der Objekte nie das Speicherlimit
@@ -57,7 +57,7 @@ Erstellung verschiebbarer Objekte
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Verschiebbare Objekte (Objekte, welche verschoben werden können) können erstellt werden mit Hilfe der
-``Zend_Memory_Manager::create([$data])`` Methode:
+``Zend\Memory\Manager::create([$data])`` Methode:
 
 .. code-block:: php
    :linenos:
@@ -73,7 +73,7 @@ Erstellen verschlüsselter Objekte
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Verschlüsselte Objekte (Objekte, welche niemals getauscht werden) können erstellt werden mit Hilfe der
-``Zend_Memory_Manager::createLocked([$data])`` Methode:
+``Zend\Memory\Manager::createLocked([$data])`` Methode:
 
 .. code-block:: php
    :linenos:

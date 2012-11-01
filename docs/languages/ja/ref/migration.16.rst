@@ -17,7 +17,7 @@ Zend_Controller
 ディスパッチャインターフェイスの変更
 ^^^^^^^^^^^^^^^^^^
 
-``Zend_Controller_Front`` と ``Zend_Controller_Router_Route_Module``
+``Zend\Controller\Front`` と ``Zend\Controller\Router\Route\Module``
 は、ディスパッチャインターフェイスにないメソッドを使用していました。 次の 3
 つのメソッドを追加し、
 自作のディスパッチャが同梱の実装と共存できるようにしています。
@@ -30,7 +30,7 @@ Zend_Controller
 
 .. _migration.16.zend.file.transfer:
 
-Zend_File_Transfer
+Zend\File\Transfer
 ------------------
 
 .. _migration.16.zend.file.transfer.validators:
@@ -38,12 +38,12 @@ Zend_File_Transfer
 バリデータを使う際の変更点
 ^^^^^^^^^^^^^
 
-``Zend_File_Transfer`` のバリデータが ``Zend_Form``
+``Zend\File\Transfer`` のバリデータが ``Zend_Form``
 のデフォルトのものと同じようには動作しないという指摘がありました。 ``Zend_Form``
 では ``$breakChainOnFailure`` パラメータを利用でき、検証エラーが発生した際に
 それ以降のバリデータを動作させないようにすることができます。
 
-そこで、 ``Zend_File_Transfer``
+そこで、 ``Zend\File\Transfer``
 の既存のバリデータにもこのパラメータを追加することにしました。
 
 - 古い形式の *API*: ``addValidator($validator, $options, $files)``.
@@ -61,12 +61,12 @@ Zend_File_Transfer
    :linenos:
 
    // 1.6.1 での例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('FilesSize', array('1B', '100kB'));
 
    // 同じ例を 1.6.2 以降用にしたもの
    // boolean false が追加されていることに注意しましょう
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('FilesSize', false, array('1B', '100kB'));
 
 

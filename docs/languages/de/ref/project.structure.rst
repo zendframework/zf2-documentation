@@ -102,7 +102,7 @@ Nachfolgend ist der Verwendungszweck für jedes Verzeichnis angeführt.
     eigenen Anwendung angeboten werden, oder für die Implementierung eines `Service Layers`_ für eigene Modelle.
 
   - **Bootstrap.php**: Diese Datei ist der Eistiegspunkt für die eigene Anwendung, und sollte
-    ``Zend_Application_Bootstrap_Bootstrapper`` implementieren. Das Ziel diese Datei ist es die Anwendung zu
+    ``Zend\Application_Bootstrap\Bootstrapper`` implementieren. Das Ziel diese Datei ist es die Anwendung zu
     starten und Komponenten der Anwendung zur Verfügung zu stellen indem diese initialisiert werden.
 
 - **data/**: Dieses Verzeichnis bietet einen Ort an dem Anwendungsdaten gespeichert werden die angreifbar und

@@ -110,11 +110,11 @@ gespeichert.
 
 Klassennamen dürfen nur alphanumerische Zeichen enthalten. Nummern sind in Klassennamen gestattet es wird aber von
 Ihnen in den meisten Fällen abgeraten. Unterstriche sind nur gestattet im Platz des Pfadseparators -- der
-Dateiname "``Zend/Db/Table.php``" muß übereinstimmen mit dem Klassennamen "``Zend_Db_Table``".
+Dateiname "``Zend/Db/Table.php``" muß übereinstimmen mit dem Klassennamen "``Zend\Db\Table``".
 
 Wenn ein Klassenname aus mehr als einem Wort besteht, muß der erste Buchstabe von jedem neuen Wort
-großgeschrieben werden. Durchgehende Großbuchstaben sind nicht erlaubt, z.B. eine Klasse "Zend_PDF" ist nicht
-erlaubt, aber "``Zend_Pdf``" ist akzeptierbar.
+großgeschrieben werden. Durchgehende Großbuchstaben sind nicht erlaubt, z.B. eine Klasse "ZendPDF" ist nicht
+erlaubt, aber "``ZendPdf``" ist akzeptierbar.
 
 Diese Konventionen definieren einen Pseudo-Namespace Mechanismus für Zend Framework. Zend Framework wird das *PHP*
 Namespace Feature einbauen sobald es verfügbar ist und es für unsere Entwickler in deren Anwendungen ohne
@@ -136,8 +136,8 @@ Abstrakte Klassen
 Generell folgen abstrakte Klassen der gleichen Konvention wie :ref:`Klassen
 <coding-standard.naming-conventions.classes>`, mit einer zusätzlichen Regel: Die Namen von abstrakten Klassen
 müssen mit derm Term "Abstract" enden, und dem Term darf kein Unterstrich vorangestellt sein. Als Beispiel wird
-``Zend_Controller_Plugin_Abstract`` als ungültig angenommen, aber ``Zend_Controller_PluginAbstract`` oder
-``Zend_Controller_Plugin_PluginAbstract`` wären gültige Namen.
+``Zend\Controller_Plugin\Abstract`` als ungültig angenommen, aber ``Zend\Controller\PluginAbstract`` oder
+``Zend\Controller_Plugin\PluginAbstract`` wären gültige Namen.
 
 .. note::
 
@@ -151,7 +151,7 @@ müssen mit derm Term "Abstract" enden, und dem Term darf kein Unterstrich voran
    beide sind reservierte Schlüsselwörter in *PHP*. Wenn wir den Namen der (Unter)Komponente dem Klassennamen
    voranstellen können wir diese Probleme vermeiden.
 
-   Um die Situation zu illustrieren, nehmen wir an dass die Klasse ``Zend_Controller_Request_Abstract`` konvertiert
+   Um die Situation zu illustrieren, nehmen wir an dass die Klasse ``Zend\Controller_Request\Abstract`` konvertiert
    wird um Namespaces zu verwenden:
 
    .. code-block:: php
@@ -187,8 +187,8 @@ Interfaces
 
 Generell folgen Interfaces der gleichen Konvention wie :ref:`Klassen <coding-standard.naming-conventions.classes>`,
 mit einer zusätzlichen Regel: Die Namen von Interfaces können optional mit dem Term "Interface" enden, aber dem
-Term darf kein Unterstrich vorangestellt sein. Als Beispiel wird ``Zend_Controller_Plugin_Interface`` als ungültig
-angenommen, aber ``Zend_Controller_PluginInterface`` oder ``Zend_Controller_Plugin_PluginInterface`` wären
+Term darf kein Unterstrich vorangestellt sein. Als Beispiel wird ``Zend\Controller_Plugin\Interface`` als ungültig
+angenommen, aber ``Zend\Controller\PluginInterface`` oder ``Zend\Controller_Plugin\PluginInterface`` wären
 gültige Namen.
 
 Wärend diese Regel nicht benötigt wird, wird Sie stark empfohlen, da Sie Entwicklern einen guten visuellen
@@ -896,7 +896,7 @@ in der Datei enthalten ist; typischerweise wird dieser zwei Segmente haben, den 
 Komponente.
 
 Das ``@subpackage`` Tag ist optional. Wenn es angegeben wird, sollte es der Name der Subkomponente sein, ohne den
-Präfix der Klasse. Im obigen Beispiel ist die Annahme das die Klasse in der Datei entweder "``Zend_Magic_Wand``"
+Präfix der Klasse. Im obigen Beispiel ist die Annahme das die Klasse in der Datei entweder "``Zend\Magic\Wand``"
 ist oder den Klassennamen als Teil seines Präfixes verwendet.
 
 .. _coding-standards.inline-documentation.classes:
@@ -931,7 +931,7 @@ Das ``@package`` Tag muß hinzugefügt sein, und sollte mit der Komponente ident
 typischerweise wird dieser zwei Segmente haben, den Präfix "Zend", und den Namen der Komponente.
 
 Das ``@subpackage`` Tag ist optional. Wenn es angegeben wird, sollte es der Name der Subkomponente sein, ohne den
-Präfix der Klasse. Im obigen Beispiel ist die Annahme das die Klasse in der Datei entweder "``Zend_Magic_Wand``"
+Präfix der Klasse. Im obigen Beispiel ist die Annahme das die Klasse in der Datei entweder "``Zend\Magic\Wand``"
 ist oder den Klassennamen als Teil seines Präfixes verwendet.
 
 .. _coding-standards.inline-documentation.functions:

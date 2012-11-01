@@ -5,12 +5,12 @@ Importowanie kanałów informacyjnych
 ===================================
 
 *Zend_Feed* pozwala programistom bardzo łatwo odbierać wiadomości z kanałów informacyjnych. Jeśli znasz adres
-URI kanału, w prosty sposób użyj metody *Zend_Feed::import()*:
+URI kanału, w prosty sposób użyj metody *Zend\Feed\Feed::import()*:
 
 .. code-block:: php
    :linenos:
 
-   $feed = Zend_Feed::import('http://feeds.example.com/feedName');
+   $feed = Zend\Feed\Feed::import('http://feeds.example.com/feedName');
 
 
 Możesz także użyć *Zend_Feed* do pobrania zawartości kanału z pliku lub z łańcucha znaków PHP:
@@ -19,17 +19,17 @@ Możesz także użyć *Zend_Feed* do pobrania zawartości kanału z pliku lub z 
    :linenos:
 
    // importowanie kanału z pliku tekstowego
-   $feedFromFile = Zend_Feed::importFile('feed.xml');
+   $feedFromFile = Zend\Feed\Feed::importFile('feed.xml');
 
    // importowanie kanału z łańcucha znaków PHP
-   $feedFromPHP = Zend_Feed::importString($feedString);
+   $feedFromPHP = Zend\Feed\Feed::importString($feedString);
 
 
 We wszystkich powyższych przykładach w razie powodzenia operacji zwracany jest obiekt klasy rozszerzającej
-*Zend_Feed_Abstract*, zależenie od typu kanału. Jeśli zostały odebrane dane RSS za pomocą jednej z powyższych
-metod importu, wtedy będzie zwrócony obiekt *Zend_Feed_Rss*. Z drugiej strony, gdy będą importowane dane
-kanału Atom, zwrócony zostanie obiekt *Zend_Feed_Atom*. Metody importu w razie niepowodzenia wyrzucają wyjątek
-*Zend_Feed_Exception*, czyli na przykład wtedy gdy nie jest możliwe odczytanie kanału lub gdy dane są błędne.
+*Zend\Feed\Abstract*, zależenie od typu kanału. Jeśli zostały odebrane dane RSS za pomocą jednej z powyższych
+metod importu, wtedy będzie zwrócony obiekt *Zend\Feed\Rss*. Z drugiej strony, gdy będą importowane dane
+kanału Atom, zwrócony zostanie obiekt *Zend\Feed\Atom*. Metody importu w razie niepowodzenia wyrzucają wyjątek
+*Zend\Feed\Exception*, czyli na przykład wtedy gdy nie jest możliwe odczytanie kanału lub gdy dane są błędne.
 
 .. _zend.feed.importing.custom:
 
@@ -38,8 +38,8 @@ Własne kanały
 
 *Zend_Feed* pozwala programistom na bardzo łatwe tworzenie własnych kanałów. Musisz jedynie utworzyć tablicę
 i zaimportować ją za pomocą Zend_Feed. Ta tablica może być zaimportowana za pomocą metody
-*Zend_Feed::importArray()* lub *Zend_Feed::importBuilder()*. W tym drugim przypadku tablica zostanie utworzona w
-locie, przez własne źródło danych implementujące interfejs *Zend_Feed_Builder_Interface*.
+*Zend\Feed\Feed::importArray()* lub *Zend\Feed\Feed::importBuilder()*. W tym drugim przypadku tablica zostanie utworzona w
+locie, przez własne źródło danych implementujące interfejs *Zend\Feed_Builder\Interface*.
 
 .. _zend.feed.importing.custom.importarray:
 
@@ -50,14 +50,14 @@ Importowanie własnej tablicy
    :linenos:
 
    // importowanie kanału z tablicy
-   $atomFeedFromArray = Zend_Feed::importArray($array);
+   $atomFeedFromArray = Zend\Feed\Feed::importArray($array);
 
    // poniższy kod odpowiada kodowi powyżej;
-   // domyślnie zwracana jest instancja Zend_Feed_Atom
-   $atomFeedFromArray = Zend_Feed::importArray($array, 'atom');
+   // domyślnie zwracana jest instancja Zend\Feed\Atom
+   $atomFeedFromArray = Zend\Feed\Feed::importArray($array, 'atom');
 
    // importowanie kanału rss z tablicy
-   $rssFeedFromArray = Zend_Feed::importArray($array, 'rss');
+   $rssFeedFromArray = Zend\Feed\Feed::importArray($array, 'rss');
 
 
 Format tablicy musi zgadzać się z taką strukturą:
@@ -186,35 +186,35 @@ Importowanie własnego źródła danych
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Możesz utworzyć instancję Zend_Feed z dowolnego źródła danych implementując interfejs
-*Zend_Feed_Builder_Interface*. Aby użyć swojego obiektu za pomocą metody *Zend_Feed::importBuilder()* musisz po
+*Zend\Feed_Builder\Interface*. Aby użyć swojego obiektu za pomocą metody *Zend\Feed\Feed::importBuilder()* musisz po
 prostu zaimplementować metody *getHeader()* oraz *getEntries()*. Jako przykład implementacji możesz użyć klasy
-*Zend_Feed_Builder*, która przyjmuje tablicę jako argument konstruktora, przeprowadza pewną weryfikację, a
+*Zend\Feed\Builder*, która przyjmuje tablicę jako argument konstruktora, przeprowadza pewną weryfikację, a
 następnie może być użyta za pomocą metody *importBuilder()*. Metoda *getHeader()* musi zwracać instancję
-klasy *Zend_Feed_Builder_Header*, a metoda *getEntries()* musi zwracać tablicę instancji klasy
-*Zend_Feed_Builder_Entry*.
+klasy *Zend\Feed_Builder\Header*, a metoda *getEntries()* musi zwracać tablicę instancji klasy
+*Zend\Feed_Builder\Entry*.
 
 .. note::
 
-   *Zend_Feed_Builder* jest konkretną implementacją pokazującą sposób użycia. Namawiamy użytkownika do
-   napisania własnej klasy, implementującej interfejs *Zend_Feed_Builder_Interface*.
+   *Zend\Feed\Builder* jest konkretną implementacją pokazującą sposób użycia. Namawiamy użytkownika do
+   napisania własnej klasy, implementującej interfejs *Zend\Feed_Builder\Interface*.
 
-Oto przykład użycia metody *Zend_Feed::importBuilder()*:
+Oto przykład użycia metody *Zend\Feed\Feed::importBuilder()*:
 
 .. code-block:: php
    :linenos:
 
    // importowanie kanału z własnego źródła
    $atomFeedFromArray =
-       Zend_Feed::importBuilder(new Zend_Feed_Builder($array));
+       Zend\Feed\Feed::importBuilder(new Zend\Feed\Builder($array));
 
    // poniższy kod odpowiada kodowi powyżej;
-   // domyślnie zwracana jest instancja Zend_Feed_Atom
+   // domyślnie zwracana jest instancja Zend\Feed\Atom
    $atomFeedFromArray =
-       Zend_Feed::importArray(new Zend_Feed_Builder($array), 'atom');
+       Zend\Feed\Feed::importArray(new Zend\Feed\Builder($array), 'atom');
 
    // importowanie kanału rss z własnego źródła
    $rssFeedFromArray =
-       Zend_Feed::importArray(new Zend_Feed_Builder($array), 'rss');
+       Zend\Feed\Feed::importArray(new Zend\Feed\Builder($array), 'rss');
 
 
 .. _zend.feed.importing.custom.dump:
@@ -222,13 +222,13 @@ Oto przykład użycia metody *Zend_Feed::importBuilder()*:
 Zrzucanie zawartości kanału
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Aby zrzucić zawartość instancji *Zend_Feed_Abstract*, możesz użyć metody *send()* lub *saveXml()*.
+Aby zrzucić zawartość instancji *Zend\Feed\Abstract*, możesz użyć metody *send()* lub *saveXml()*.
 
 .. code-block:: php
    :linenos:
 
 
-   assert($feed instanceof Zend_Feed_Abstract);
+   assert($feed instanceof Zend\Feed\Abstract);
 
    // zrzuca kanał do standardowego wyjścia
    print $feed->saveXML();

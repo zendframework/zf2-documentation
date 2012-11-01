@@ -8,7 +8,7 @@ Introduction
 applications. Il fournit une interface utilisateur basée sur des propriétés d'objets imbriquées. Les données
 de configuration peuvent venir de sources variées supportant une organisation hiérarchique des données.
 Actuellement ``Zend_Config`` fournit des adaptateurs pour les données de configuration qui sont stockées dans des
-fichier textes avec :ref:`Zend_Config_Ini <zend.config.adapters.ini>` et :ref:`Zend_Config_Xml
+fichier textes avec :ref:`Zend\Config\Ini <zend.config.adapters.ini>` et :ref:`Zend\Config\Xml
 <zend.config.adapters.xml>`.
 
 .. _zend.config.introduction.example.using:
@@ -16,7 +16,7 @@ fichier textes avec :ref:`Zend_Config_Ini <zend.config.adapters.ini>` et :ref:`Z
 .. rubric:: Utilisation native de Zend_Config
 
 Normalement on s'attend à ce que les utilisateurs emploient une des classes d'adaptateur telles que
-:ref:`Zend_Config_Ini <zend.config.adapters.ini>` ou :ref:`Zend_Config_Xml <zend.config.adapters.xml>`, mais si les
+:ref:`Zend\Config\Ini <zend.config.adapters.ini>` ou :ref:`Zend\Config\Xml <zend.config.adapters.xml>`, mais si les
 données de configuration sont disponibles dans un tableau *PHP*, on peut simplement passer les données au
 constructeur de ``Zend_Config`` afin d'utiliser une interface orientée objet simple :
 
@@ -38,7 +38,7 @@ constructeur de ``Zend_Config`` afin d'utiliser une interface orientée objet si
    );
 
    // Crée un objet à partir des données de configuration
-   $config = new Zend_Config($configArray);
+   $config = new Zend\Config\Config($configArray);
 
    // Affiche une donnée de configuration en particulier
    // (résultat : 'www.example.com')
@@ -46,12 +46,12 @@ constructeur de ``Zend_Config`` afin d'utiliser une interface orientée objet si
 
    // Utilise les données de configuration pour se connecter
    // à une base de données
-   $db = Zend_Db::factory($config->database->adapter,
+   $db = Zend\Db\Db::factory($config->database->adapter,
                           $config->database->params->toArray());
 
    // Autre possibilité : fournir simplement l'objet Zend_Config.
    // Zend_Db factory sait comment l'interpréter.
-   $db = Zend_Db::factory($config->database);
+   $db = Zend\Db\Db::factory($config->database);
 
 Comme illustré dans l'exemple ci-dessus, ``Zend_Config`` fournit une syntaxe de propriétés d'objets imbriquées
 pour accéder aux données de configuration passées à son constructeur.
@@ -92,7 +92,7 @@ ceci peut être facilement réalisé :
    :linenos:
 
    // Lecture de la configuration
-   $config = new Zend_Config(require 'config.php');
+   $config = new Zend\Config\Config(require 'config.php');
 
    // Affiche une donnée de configuration ('www.example.com')
    echo $config->webhost;

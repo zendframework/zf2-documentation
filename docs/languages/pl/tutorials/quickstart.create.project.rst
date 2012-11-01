@@ -122,7 +122,7 @@ mowa później) ustawionym na ``application/controllers/``. Klasa przedstawia si
 
    // application/Bootstrap.php
 
-   class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
    {
    }
 
@@ -193,7 +193,7 @@ Domyślnie ``IndexController`` wygląda następująco:
 
    // application/controllers/IndexController.php
 
-   class IndexController extends Zend_Controller_Action
+   class IndexController extends Zend\Controller\Action
    {
 
        public function init()
@@ -214,7 +214,7 @@ Domyślny ``ErrorController`` przedstawia się jak poniżej:
 
    // application/controllers/ErrorController.php
 
-   class ErrorController extends Zend_Controller_Action
+   class ErrorController extends Zend\Controller\Action
    {
 
        public function errorAction()
@@ -222,9 +222,9 @@ Domyślny ``ErrorController`` przedstawia się jak poniżej:
            $errors = $this->_getParam('error_handler');
 
            switch ($errors->type) {
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ROUTE:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_CONTROLLER:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ACTION:
 
                    // błąd 404 -- brak kontrolera i/lub akcji
                    $this->getResponse()->setHttpResponseCode(404);

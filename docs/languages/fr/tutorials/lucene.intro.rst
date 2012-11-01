@@ -1,17 +1,17 @@
 .. EN-Revision: none
 .. _learning.lucene.intro:
 
-Introduction à Zend_Search_Lucene
+Introduction à Zend\Search\Lucene
 =================================
 
-Le composant ``Zend_Search_Lucene`` est prévu pour fournir une solution de recherche full-text prête à l'emploi.
+Le composant ``Zend\Search\Lucene`` est prévu pour fournir une solution de recherche full-text prête à l'emploi.
 Il ne nécessite aucunes extensions *PHP* [#]_ ni que des logiciels supplémentaires soient installés, et peut
 être utilisé tout de suite après l'installation du Framework Zend.
 
-``Zend_Search_Lucene`` est un portage *PHP* du moteur de recherche full-text open source populaire connu comme
+``Zend\Search\Lucene`` est un portage *PHP* du moteur de recherche full-text open source populaire connu comme
 Apache Lucene. Voir `http://lucene.apache.org/`_ pour plus de détails.
 
-L'information doit être indexée pour être disponible à la recherche. ``Zend_Search_Lucene`` et Java Lucene
+L'information doit être indexée pour être disponible à la recherche. ``Zend\Search\Lucene`` et Java Lucene
 utilise un concept de document connu sous le nom d'"indexation atomique d'élément."
 
 Chaque document est un ensemble de champs : paires <nom, valeur> où le nom et la valeur sont des chaînes *UTF-8*
@@ -22,7 +22,7 @@ Les valeurs de champs peuvent être indexées segmentées durant l'indexation. S
 alors la valeur du champ est stockée comme un seul terme ; autrement, l'analyseur courant est utilisé pour la
 segmentation.
 
-Plusieurs analyseurs sont fournis dans le paquet ``Zend_Search_Lucene``. L'analyseur par défaut fonctionne avec du
+Plusieurs analyseurs sont fournis dans le paquet ``Zend\Search\Lucene``. L'analyseur par défaut fonctionne avec du
 texte *ASCII* (comme l'analyseur *UTF-8* a besoin que l'extension **mbstring** soit activée). Il n'est pas
 sensible à la case, et saute les nombres. Utilisez d'autres analyseurs ou créez votre propre analyseur si vous
 avez besoin de changer ce comportement.

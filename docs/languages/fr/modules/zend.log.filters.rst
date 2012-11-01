@@ -17,12 +17,12 @@ enregistreur en utilisant la méthode ``addFilter()``:
    .. code-block:: php
       :linenos:
 
-      $logger = new Zend_Log();
+      $logger = new Zend\Log\Log();
 
-      $redacteur = new Zend_Log_Writer_Stream('php://output');
+      $redacteur = new Zend\Log_Writer\Stream('php://output');
       $logger->addWriter($redacteur);
 
-      $filtre = new Zend_Log_Filter_Priority(Zend_Log::CRIT);
+      $filtre = new Zend\Log_Filter\Priority(Zend\Log\Log::CRIT);
       $logger->addFilter($filtre);
 
       // bloqué
@@ -45,18 +45,18 @@ rédacteur :
    .. code-block:: php
       :linenos:
 
-      $logger = new Zend_Log();
+      $logger = new Zend\Log\Log();
 
       $redacteur1 =
-          new Zend_Log_Writer_Stream('/chemin/vers/premier/fichierdelog');
+          new Zend\Log_Writer\Stream('/chemin/vers/premier/fichierdelog');
       $logger->addWriter($redacteur1);
 
       $redacteur2 =
-          new Zend_Log_Writer_Stream('/chemin/vers/second/fichierdelog');
+          new Zend\Log_Writer\Stream('/chemin/vers/second/fichierdelog');
       $logger->addWriter($redacteur2);
 
       // ajoute le filter seulement pour le redacteur2
-      $filter = new Zend_Log_Filter_Priority(Zend_Log::CRIT);
+      $filter = new Zend\Log_Filter\Priority(Zend\Log\Log::CRIT);
       $redacteur2->addFilter($filter);
 
       // écrit par le redacteur1, bloqué par le redacteur2

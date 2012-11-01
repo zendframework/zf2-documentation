@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.twitter.search:
 
-Zend_Service_Twitter_Search
+Zend\Service_Twitter\Search
 ===========================
 
 .. _zend.service.twitter.search.introduction:
@@ -9,7 +9,7 @@ Zend_Service_Twitter_Search
 Einführung
 ----------
 
-``Zend_Service_Twitter_Search`` bietet einen Client für die `Such API von Twitter`_. Das Twitter Suchservice wird
+``Zend\Service_Twitter\Search`` bietet einen Client für die `Such API von Twitter`_. Das Twitter Suchservice wird
 verwendet um in Twitter zu suchen. Aktuell gibt es Daten nur im Atom oder *JSON* Format zurück, aber ein
 komplettes *REST* Service kommt in Zukunft welche auch *XML* Antworten unterstützen wird.
 
@@ -25,7 +25,7 @@ unterstützt die Such *API* für Trends nur eine Rückgabe von *JSON* weswegen d
 .. code-block:: php
    :linenos:
 
-   $twitterSearch = new Zend_Service_Twitter_Search();
+   $twitterSearch = new Zend\Service_Twitter\Search();
    $twitterTrends = $twitterSearch->trends();
 
    foreach($twitterTrends as $trend) {
@@ -75,19 +75,19 @@ Das folgende Codebeispiel gibt ein Array mit den Suchergebnissen zurück.
 .. code-block:: php
    :linenos:
 
-   $twitterSearch = new Zend_Service_Twitter_Search('json');
+   $twitterSearch = new Zend\Service_Twitter\Search('json');
    $searchResults = $twitterSearch->search('zend', array('lang' => 'en'));
 
 .. _zend.service.twitter.search.search.atom:
 
 .. rubric:: Suchbeispiel für ATOM
 
-Das folgende Codebeispiel gibt ein ``Zend_Feed_Atom`` Objekt zurück.
+Das folgende Codebeispiel gibt ein ``Zend\Feed\Atom`` Objekt zurück.
 
 .. code-block:: php
    :linenos:
 
-   $twitterSearch = new Zend_Service_Twitter_Search('atom');
+   $twitterSearch = new Zend\Service_Twitter\Search('atom');
    $searchResults = $twitterSearch->search('zend', array('lang' => 'en'));
 
 .. _zend.service.twitter.search.accessors:
@@ -95,7 +95,7 @@ Das folgende Codebeispiel gibt ein ``Zend_Feed_Atom`` Objekt zurück.
 Zend-Spezifische Zugriffsmethoden
 ---------------------------------
 
-Wärend die Such *API* von Twitter nur zwei Methoden spezifiziert, hat ``Zend_Service_Twitter_Search`` zusätzliche
+Wärend die Such *API* von Twitter nur zwei Methoden spezifiziert, hat ``Zend\Service_Twitter\Search`` zusätzliche
 Methoden die für das Empfangen und die Modifizierung von internen Eigenschaften verwendet werden können.
 
 - ``getResponseType()`` und ``setResponseType()`` erlauben es den Antworttype der Suche zu empfangen und, zwischen

@@ -6,7 +6,7 @@ Frontendy Zend_Cache
 
 .. _zend.cache.core:
 
-Zend_Cache_Core
+Zend\Cache\Core
 ---------------
 
 .. _zend.cache.core.introduction:
@@ -14,12 +14,12 @@ Zend_Cache_Core
 Wprowadzenie
 ^^^^^^^^^^^^
 
-``Zend_Cache_Core`` jest specjalnym frontendem ponieważ jest on jądrem modułu. Jest on podstawowym frontendem
+``Zend\Cache\Core`` jest specjalnym frontendem ponieważ jest on jądrem modułu. Jest on podstawowym frontendem
 bufora i jest rozszerzany przez inne klasy.
 
 .. note::
 
-   Wszystkie frontendy dziedziczą z klasy ``Zend_Cache_Core`` więc jej metody i opcje (opisane niżej) są także
+   Wszystkie frontendy dziedziczą z klasy ``Zend\Cache\Core`` więc jej metody i opcje (opisane niżej) są także
    dostępne w innych frontendach, dlatego nie będą tu opisane.
 
 .. _zend.cache.core.options:
@@ -168,7 +168,7 @@ przedstawionej powyżej. Musisz jawnie sprawdzić rekord bufora.
 
 .. _zend.cache.frontend.output:
 
-Zend_Cache_Frontend_Output
+Zend\Cache_Frontend\Output
 --------------------------
 
 .. _zend.cache.frontend.output.introduction:
@@ -176,7 +176,7 @@ Zend_Cache_Frontend_Output
 Wprowadzenie
 ^^^^^^^^^^^^
 
-``Zend_Cache_Frontend_Output`` jest frontendem przechwytującym dane wyjściowe. Przejmuje on wyświetlanie danych
+``Zend\Cache_Frontend\Output`` jest frontendem przechwytującym dane wyjściowe. Przejmuje on wyświetlanie danych
 wyjściowych w PHP przechwytując wszystko co jest pomiędzy metodami ``start()`` oraz ``end()``.
 
 .. _zend.cache.frontend.output.options:
@@ -184,7 +184,7 @@ wyjściowych w PHP przechwytując wszystko co jest pomiędzy metodami ``start()`
 Dostępne opcje
 ^^^^^^^^^^^^^^
 
-Ten frontend nie ma żadnych specyficznych opcji innych niż te z ``Zend_Cache_Core``.
+Ten frontend nie ma żadnych specyficznych opcji innych niż te z ``Zend\Cache\Core``.
 
 .. _zend.cache.frontend.output.examples:
 
@@ -213,7 +213,7 @@ projekcie przy małej ilości przeróbek w kodzie lub przy ich braku.
 
 .. _zend.cache.frontend.function:
 
-Zend_Cache_Frontend_Function
+Zend\Cache_Frontend\Function
 ----------------------------
 
 .. _zend.cache.frontend.function.introduction:
@@ -221,7 +221,7 @@ Zend_Cache_Frontend_Function
 Wprowadzenie
 ^^^^^^^^^^^^
 
-Frontend ``Zend_Cache_Frontend_Function`` buforuje rezultaty wywołań funkcji. Posiada on jedną metodą nazwaną
+Frontend ``Zend\Cache_Frontend\Function`` buforuje rezultaty wywołań funkcji. Posiada on jedną metodą nazwaną
 ``call()``, ktora przyjmuje nazwę funkcji oraz parametry do wywołania w tablicy.
 
 .. _zend.cache.frontend.function.options:
@@ -257,7 +257,7 @@ Użycie funkcji ``call()`` jest takie samo jak użycie funkcji ``call_user_func_
    // przykładowo aby wywołać (z buforowaniem) funkcję veryExpensiveFunc(1, 'foo', 'bar'), użyj
    // $cache->call('veryExpensiveFunc', array(1, 'foo', 'bar'))
 
-Frontend ``Zend_Cache_Frontend_Function`` jest na tyle sprytny, że buforuje zarówno wartość zwracaną przez
+Frontend ``Zend\Cache_Frontend\Function`` jest na tyle sprytny, że buforuje zarówno wartość zwracaną przez
 funkcję, jak i wszystkie dane wyjściowe, które ona wypisuje.
 
 .. note::
@@ -267,7 +267,7 @@ funkcję, jak i wszystkie dane wyjściowe, które ona wypisuje.
 
 .. _zend.cache.frontend.class:
 
-Zend_Cache_Frontend_Class
+Zend\Cache_Frontend\Class
 -------------------------
 
 .. _zend.cache.frontend.class.introduction:
@@ -275,7 +275,7 @@ Zend_Cache_Frontend_Class
 Wprowadzenie
 ^^^^^^^^^^^^
 
-Frontend ``Zend_Cache_Frontend_Class`` różnie się od frontendu ``Zend_Cache_Frontend_Function`` tym, że
+Frontend ``Zend\Cache_Frontend\Class`` różnie się od frontendu ``Zend\Cache_Frontend\Function`` tym, że
 umożliwia buforowanie wywołań metod obiektów (także statycznych)
 
 .. _zend.cache.frontend.class.options:
@@ -356,7 +356,7 @@ Aby buforować klasyczne wywołania metod:
 
 .. _zend.cache.frontends.file:
 
-Zend_Cache_Frontend_File
+Zend\Cache_Frontend\File
 ------------------------
 
 .. _zend.cache.frontends.file.introduction:
@@ -364,11 +364,11 @@ Zend_Cache_Frontend_File
 Wprowadzenie
 ^^^^^^^^^^^^
 
-``Zend_Cache_Frontend_File`` jeest frontendem działającym w oparciu o datę modyfikacji "głównego pliku". Jest
+``Zend\Cache_Frontend\File`` jeest frontendem działającym w oparciu o datę modyfikacji "głównego pliku". Jest
 to bardzo interesujące, na przykład przy zagadnieniach związanych z konfiguracją czy szablonami.
 
 Na przykład, jeśli masz plik konfiguracyjny XML, który jest analizowany przez funkcję zwracającą obiekt
-konfiguracji (na przykład ``Zend_Config``). Za pomocą frontendu ``Zend_Cache_Frontend_File``, możesz przechować
+konfiguracji (na przykład ``Zend_Config``). Za pomocą frontendu ``Zend\Cache_Frontend\File``, możesz przechować
 obiekt konfiguracji w buforze (aby zapobiec analizowaniu pliku konfiguracyjnego XML za każdym razem), ale przy
 zależności od "głównego pliku". Więc jeśli plik konfiguracyjny XML zostanie zmodyfikowany, bufor natychmiast
 straci ważność.
@@ -393,12 +393,12 @@ Dostępne opcje
 Przykłady
 ^^^^^^^^^
 
-Użycie tego frontendu jest takie same jak ``Zend_Cache_Core``. Nie ma potrzeby zamieszczania specyficznego
+Użycie tego frontendu jest takie same jak ``Zend\Cache\Core``. Nie ma potrzeby zamieszczania specyficznego
 przykładu - jedyną rzeczą do zrobienia jest zdefiniowanie pliku **master_file** gdy używamy metody fabryki.
 
 .. _zend.cache.frontends.page:
 
-Zend_Cache_Frontend_Page
+Zend\Cache_Frontend\Page
 ------------------------
 
 .. _zend.cache.frontends.page.introduction:
@@ -406,8 +406,8 @@ Zend_Cache_Frontend_Page
 Wprowadzenie
 ^^^^^^^^^^^^
 
-Frontend ``Zend_Cache_Frontend_Page`` działa jak ``Zend_Cache_Frontend_Output`` ale jest zaprojektowany dla
-kompletnej strony. Nie jest możliwe użycie ``Zend_Cache_Frontend_Page`` do buforowania pojedynczego bloku.
+Frontend ``Zend\Cache_Frontend\Page`` działa jak ``Zend\Cache_Frontend\Output`` ale jest zaprojektowany dla
+kompletnej strony. Nie jest możliwe użycie ``Zend\Cache_Frontend\Page`` do buforowania pojedynczego bloku.
 
 Z drugiej strony, identyfikator bufora jest obliczany na podstawie ``$_SERVER['REQUEST_URI']`` oraz (zależnie od
 opcji) ``$_GET``, ``$_POST``, ``$_SESSION``, ``$_COOKIE``, ``$_FILES``. Jeszcze lepiej, masz tylko jedną metodę
@@ -445,7 +445,7 @@ Dostępne opcje (for this frontend in Zend_Cache factory)
 Przykłady
 ^^^^^^^^^
 
-Użycie ``Zend_Cache_Frontend_Page`` jest naprawdę łatwe:
+Użycie ``Zend\Cache_Frontend\Page`` jest naprawdę łatwe:
 
 .. code-block:: php
    :linenos:
@@ -466,7 +466,7 @@ bardziej kompleksowy przykład, który pokazuje sposób centralnego zarządzania
    /**
     * Powinieneś unikać tworzenia dużej ilości kodu przed sekcją buforowania na
     * przykład, w celu optymalizacji, instrukcje "require_once" lub
-    * "Zend_Loader::loadClass" powinny znajdować się za sekcją buforowania
+    * "Zend\Loader\Loader::loadClass" powinny znajdować się za sekcją buforowania
     */
 
    $frontendOptions = array(
@@ -500,8 +500,8 @@ bardziej kompleksowy przykład, który pokazuje sposób centralnego zarządzania
        'cache_dir' => '/tmp/'
    );
 
-   // pobieranie obiektu Zend_Cache_Frontend_Page
-   $cache = Zend_Cache::factory('Page',
+   // pobieranie obiektu Zend\Cache_Frontend\Page
+   $cache = Zend\Cache\Cache::factory('Page',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);

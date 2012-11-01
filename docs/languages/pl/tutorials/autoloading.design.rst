@@ -33,7 +33,7 @@ w kodzie aplikacji, innych bibliotek itp.
 Konwencja nazewnictwa i budowa autoloadera
 ------------------------------------------
 
-Obsługa autoloadera w Zend Framework udostępniona głównie poprzez ``Zend_Loader_Autoloader`` charakteryzuje
+Obsługa autoloadera w Zend Framework udostępniona głównie poprzez ``Zend\Loader\Autoloader`` charakteryzuje
 się poniższymi celami i elementami budowy:
 
 - **Zapewnia przeszukiwanie przestrzeni nazw**. Jeśli prefiks przestrzeni nazw klasy nie znajduje się na liście
@@ -52,8 +52,8 @@ się poniższymi celami i elementami budowy:
   **chce** ją włączyć to jest to umożliwione.
 
 - **Umożliwienie skonfigurowania własnych funkcji oferujących funkcjonalność autoloadera**. Część
-  deweloperów nie będzie chciała używać ``Zend_Loader::loadClass()`` jednocześnie nie rezygnując z
-  mechanizmów Zend Framework. Klasa ``Zend_Loader_Autoloader`` umożliwia wyszczególnienie alternatywnej funkcji
+  deweloperów nie będzie chciała używać ``Zend\Loader\Loader::loadClass()`` jednocześnie nie rezygnując z
+  mechanizmów Zend Framework. Klasa ``Zend\Loader\Autoloader`` umożliwia wyszczególnienie alternatywnej funkcji
   oferującej taką samą funkcjonalność.
 
 - **Umożliwienie manipulacji łańcuchem funkcji autoload w SPL**. Celem tego założenia jest pozwolenie na

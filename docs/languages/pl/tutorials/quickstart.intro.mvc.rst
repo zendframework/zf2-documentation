@@ -16,7 +16,7 @@ wzorca projektowego Model-Widok-Kontroler (Model-View-Controller -*MVC*), która
 skonstruowania podstawowej struktury aplikacji. Pełna lista komponentów Zend Framework razem z krótkim opisem
 znajduje się w dziale `omówienie komponentów`_. Wprowadzenie "QuickStart" stanowi wstęp do poznania
 najczęściej używanych komponentów Zend Framework, takich jak: ``Zend_Controller``, ``Zend_Layout``,
-``Zend_Config``, ``Zend_Db``, ``Zend_Db_Table``, ``Zend_Registry``, oraz kilku klas pomocniczych (view helpers).
+``Zend_Config``, ``Zend_Db``, ``Zend\Db\Table``, ``Zend_Registry``, oraz kilku klas pomocniczych (view helpers).
 
 Za pomocą tych komponentów w ciągu kilkudziesięciu minut zostanie utworzona prosta aplikacja oparta na bazie
 danych - księga gości (guest book). Pełny kod źródłowy tej aplikacji jest dostępny w następujących

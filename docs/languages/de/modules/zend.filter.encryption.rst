@@ -15,10 +15,10 @@ auswählen.
    :linenos:
 
    // Verwenden des Mcrypt Adapters
-   $filter1 = new Zend_Filter_Encrypt(array('adapter' => 'mcrypt'));
+   $filter1 = new Zend\Filter\Encrypt(array('adapter' => 'mcrypt'));
 
    // Verwendung des OpenSSL Adapters
-   $filter2 = new Zend_Filter_Encrypt(array('adapter' => 'openssl'));
+   $filter2 = new Zend\Filter\Encrypt(array('adapter' => 'openssl'));
 
 Um einen anderen Adapter zu setzen kann man auch ``setAdapter()`` verwenden, und die ``getAdapter()`` Methode um
 den aktuell gesetzten Adapter zu erhalten.
@@ -27,7 +27,7 @@ den aktuell gesetzten Adapter zu erhalten.
    :linenos:
 
    // Verwenden des Mcrypt Adapters
-   $filter = new Zend_Filter_Encrypt();
+   $filter = new Zend\Filter\Encrypt();
    $filter->setAdapter('openssl');
 
 .. note::
@@ -96,7 +96,7 @@ aufgefüllt.
    :linenos:
 
    // Verwendet die standardmäßigen Blowfish Einstellungen
-   $filter = new Zend_Filter_Encrypt('myencryptionkey');
+   $filter = new Zend\Filter\Encrypt('myencryptionkey');
 
    // Setzt einen eigenen Vektor, andernfalls muß man getVector()
    // ausrufen und diesen Vektor für spätere Entschlüsselung speichern
@@ -137,7 +137,7 @@ erhalten und setzen. Auch der private Schlüssel kann mit den entsprechenden Met
    :linenos:
 
    // Verwende openssl und gib einen privaten Schlüssel an
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
        'adapter' => 'openssl',
        'private' => '/path/to/mykey/private.pem'
    ));
@@ -163,7 +163,7 @@ entschlüsseln.
    :linenos:
 
    // Verwende openssl und gib einen privaten Schlüssel an
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
        'adapter' => 'openssl',
        'private' => '/path/to/mykey/private.pem'
    ));
@@ -188,7 +188,7 @@ Unser komplettes Beispiel für die Verschlüsselung von Inhalten mit ``OpenSSL``
    :linenos:
 
    // Verwende openssl und gib einen privaten Schlüssel an
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
        'adapter' => 'openssl',
        'private' => '/path/to/mykey/private.pem'
    ));
@@ -222,7 +222,7 @@ Für eine vereinfachte Verwendung kann man die ``package`` Option auf ``TRUE`` s
    :linenos:
 
    // Verwende openssl und gib einen privaten Schlüssel an
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
        'adapter' => 'openssl',
        'private' => '/path/to/mykey/private.pem',
        'public'  => '/public/key/path/public.pem',
@@ -236,7 +236,7 @@ Für eine vereinfachte Verwendung kann man die ``package`` Option auf ``TRUE`` s
 
 Jetzt enthält der zurückgegebene Wert sowohl den verschlüsselten Wert als auch den Umschlagschlüssel. Man muss
 diesen also nicht mehr nach der Verschlüsselung holen. Aber, und das ist der negative Aspekt dieses Features, der
-verschlüsselte Wert kann jetzt nur mehr entschlüsselt werden indem man ``Zend_Filter_Encrypt`` verwendet.
+verschlüsselte Wert kann jetzt nur mehr entschlüsselt werden indem man ``Zend\Filter\Encrypt`` verwendet.
 
 .. _zend.filter.set.encrypt.openssl.compressed:
 
@@ -244,7 +244,7 @@ Komprimieren des Inhalts
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Basierend auf dem originalen Wert, kann der verschlüsselte Wert ein sehr langer String sein. Um den Wert zu
-reduzieren erlaubt ``Zend_Filter_Encrypt`` die Verwendung von Kompression.
+reduzieren erlaubt ``Zend\Filter\Encrypt`` die Verwendung von Kompression.
 
 Die ``compression`` Option kann entweder auf den Namen eines Komprimierungsadapters gesetzt werden, oder auf ein
 Array welches alle gewünschten Optionen für den Komprimierungsadapter setzt.
@@ -253,7 +253,7 @@ Array welches alle gewünschten Optionen für den Komprimierungsadapter setzt.
    :linenos:
 
    // Verwende nur den grundsätzlichen Komprimierungsadapter
-   $filter1 = new Zend_Filter_Encrypt(array(
+   $filter1 = new Zend\Filter\Encrypt(array(
        'adapter'     => 'openssl',
        'private'     => '/path/to/mykey/private.pem',
        'public'      => '/public/key/path/public.pem',
@@ -262,7 +262,7 @@ Array welches alle gewünschten Optionen für den Komprimierungsadapter setzt.
    ));
 
    // Verwende den Basis Komprimierungsadapter
-   $filter2 = new Zend_Filter_Encrypt(array(
+   $filter2 = new Zend\Filter\Encrypt(array(
        'adapter'     => 'openssl',
        'private'     => '/path/to/mykey/private.pem',
        'public'      => '/public/key/path/public.pem',

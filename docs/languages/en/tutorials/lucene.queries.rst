@@ -3,10 +3,10 @@
 Supported queries
 =================
 
-``Zend_Search_Lucene`` and Java Lucene support a powerful query language. It allows searching for individual terms,
+``Zend\Search\Lucene`` and Java Lucene support a powerful query language. It allows searching for individual terms,
 phrases, ranges of terms; using wildcards and fuzzy search; combining queries using boolean operators; and so on.
 
-A detailed query language description can be found in the :ref:`Zend_Search_Lucene component documentation
+A detailed query language description can be found in the :ref:`Zend\Search\Lucene component documentation
 <zend.search.lucene.query-language>`.
 
 What follows are examples of some common query types and strategies.
@@ -26,9 +26,9 @@ Searches for the word "hello" through all document fields.
 
    **Default search field**
 
-   Important note! Java Lucene searches only through the "contents" field by default, but ``Zend_Search_Lucene``
+   Important note! Java Lucene searches only through the "contents" field by default, but ``Zend\Search\Lucene``
    searches through **all** fields. This behavior can be modified using the
-   ``Zend_Search_Lucene::setDefaultSearchField($fieldName)`` method.
+   ``Zend\Search\Lucene::setDefaultSearchField($fieldName)`` method.
 
 .. _learning.lucene.queries.multiple-words:
 
@@ -176,7 +176,7 @@ Fuzzy search for the word "roam".
 
 Boolean query.
 
-All supported queries can be constructed through ``Zend_Search_Lucene``'s :ref:`query construction API
+All supported queries can be constructed through ``Zend\Search\Lucene``'s :ref:`query construction API
 <zend.search.lucene.query-api>`. Moreover, query parsing and query constructing may be combined:
 
 .. _learning.lucene.queries.combining:
@@ -186,9 +186,9 @@ All supported queries can be constructed through ``Zend_Search_Lucene``'s :ref:`
 .. code-block:: php
    :linenos:
 
-   $userQuery = Zend_Search_Lucene_Search_QueryParser::parse($queryStr);
+   $userQuery = Zend\Search\Lucene\Search\QueryParser::parse($queryStr);
 
-   $query = new Zend_Search_Lucene_Search_Query_Boolean();
+   $query = new Zend\Search\Lucene\Search\Query\Boolean();
    $query->addSubquery($userQuery, true  /* required */);
    $query->addSubquery($constructedQuery, true  /* required */);
 

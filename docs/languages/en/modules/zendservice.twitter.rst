@@ -13,7 +13,7 @@ the public timeline. If you provide a username and OAuth details for Twitter, it
 your status, reply to friends, direct message friends, mark tweets as favorite, and much more.
 
 ``ZendService\Twitter`` implements a *REST* service, and all methods return an instance of
-``Zend_Rest_Client_Result``.
+``Zend\Rest\Client\Result``.
 
 ``ZendService\Twitter`` is broken up into subsections so you can easily identify which type of call is being
 requested.
@@ -43,7 +43,7 @@ Authentication
 
 With the exception of fetching the public timeline, ``ZendService\Twitter`` requires authentication as a valid
 user. This is achieved using the OAuth authentication protocol. OAuth is the only supported authentication mode for
-Twitter as of August 2010. The OAuth implementation used by ``ZendService\Twitter`` is ``Zend_Oauth``.
+Twitter as of August 2010. The OAuth implementation used by ``ZendService\Twitter`` is ``ZendOAuth``.
 
 .. _zendservice.twitter.authentication.example:
 
@@ -53,11 +53,11 @@ Twitter as of August 2010. The OAuth implementation used by ``ZendService\Twitte
 public timeline). This must be accomplished using OAuth since Twitter has disabled it's basic HTTP authentication
 as of August 2010.
 
-There are two options to establishing authorization. The first is to implement the workflow of ``Zend_Oauth`` via
-``ZendService\Twitter`` which proxies to an internal ``Zend_Oauth_Consumer`` object. Please refer to the
-``Zend_Oauth`` documentation for a full example of this workflow - you can call all documented
-``Zend_Oauth_Consumer`` methods on ``ZendService\Twitter`` including constructor options. You may also use
-``Zend_Oauth`` directly and only pass the resulting access token into ``ZendService\Twitter``. This is the normal
+There are two options to establishing authorization. The first is to implement the workflow of ``ZendOAuth`` via
+``ZendService\Twitter`` which proxies to an internal ``ZendOAuth\Consumer`` object. Please refer to the
+``ZendOAuth`` documentation for a full example of this workflow - you can call all documented
+``ZendOAuth\Consumer`` methods on ``ZendService\Twitter`` including constructor options. You may also use
+``ZendOAuth`` directly and only pass the resulting access token into ``ZendService\Twitter``. This is the normal
 workflow once you have established a reusable access token for a particular Twitter user. The resulting OAuth
 access token should be stored to a database for future use (otherwise you will need to authorize for every new
 instance of ``ZendService\Twitter``). Bear in mind that authorization via OAuth results in your user being
@@ -66,9 +66,9 @@ tokens). This will require additional work (i.e. redirecting users and hosting a
 HTTP authentication mechanism where a user just needed to allow applications to store their username and password.
 
 The following example demonstrates setting up ``ZendService\Twitter`` which is given an already established OAuth
-access token. Please refer to the ``Zend_Oauth`` documentation to understand the workflow involved. The access
+access token. Please refer to the ``ZendOAuth`` documentation to understand the workflow involved. The access
 token is a serializable object, so you may store the serialized object to a database, and unserialize it at
-retrieval time before passing the objects into ``ZendService\Twitter``. The ``Zend_Oauth`` documentation
+retrieval time before passing the objects into ``ZendService\Twitter``. The ``ZendOAuth`` documentation
 demonstrates the workflow and objects involved.
 
 .. code-block:: php
@@ -76,7 +76,7 @@ demonstrates the workflow and objects involved.
 
    /**
     * We assume $serializedToken is the serialized token retrieved from a database
-    * or even $_SESSION (if following the simple Zend_Oauth documented example)
+    * or even $_SESSION (if following the simple ZendOAuth documented example)
     */
    $token = unserialize($serializedToken);
 

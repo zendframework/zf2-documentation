@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.rest.server:
 
-Zend_Rest_Server
+Zend\Rest\Server
 ================
 
 .. _zend.rest.server.introduction:
@@ -9,7 +9,7 @@ Zend_Rest_Server
 導入
 --
 
-``Zend_Rest_Server`` は、完全に機能する REST サーバを作成するためのものです。
+``Zend\Rest\Server`` は、完全に機能する REST サーバを作成するためのものです。
 
 .. _zend.rest.server.usage:
 
@@ -18,18 +18,18 @@ REST サーバの使用法
 
 .. _zend.rest.server.usage.example-1:
 
-.. rubric:: 基本的な Zend_Rest_Server の使用法 - クラス
+.. rubric:: 基本的な Zend\Rest\Server の使用法 - クラス
 
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_Rest_Server();
+   $server = new Zend\Rest\Server();
    $server->setClass('My_Service_Class');
    $server->handle();
 
 .. _zend.rest.server.usage.example-2:
 
-.. rubric:: 基本的な Zend_Rest_Server の使用法 - 関数
+.. rubric:: 基本的な Zend\Rest\Server の使用法 - 関数
 
 .. code-block:: php
    :linenos:
@@ -46,16 +46,16 @@ REST サーバの使用法
        return "Hello $who, Good $when";
    }
 
-   $server = new Zend_Rest_Server();
+   $server = new Zend\Rest\Server();
    $server->addFunction('sayHello');
    $server->handle();
 
 .. _zend.rest.server.args:
 
-Zend_Rest_Server サービスのコール
+Zend\Rest\Server サービスのコール
 -------------------------
 
-``Zend_Rest_Server`` サービスをコールするには、 GET/POST 時の引数 *method*
+``Zend\Rest\Server`` サービスをコールするには、 GET/POST 時の引数 *method*
 にそのメソッド名を指定しなければなりません。
 その後に、任意の数の引数を続けることができます。これは、引数の名前 (たとえば
 "who") を指定するか、あるいは引数の位置を表す数値 (たとえば "arg1") を指定します。
@@ -100,7 +100,7 @@ Zend_Rest_Server サービスのコール
        return array('msg' => "An Error Occurred", 'status' => false);
    }
 
-   $server = new Zend_Rest_Server();
+   $server = new Zend\Rest\Server();
    $server->addFunction('sayHello');
    $server->handle();
 
@@ -138,7 +138,7 @@ Zend_Rest_Server サービスのコール
        return $xml;
    }
 
-   $server = new Zend_Rest_Server();
+   $server = new Zend\Rest\Server();
    $server->addFunction('sayHello');
 
    $server->handle();

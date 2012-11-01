@@ -26,7 +26,7 @@ les données. Si vous voulez travailler avec un fichier, vous pouvez faire comme
 .. code-block:: php
    :linenos:
 
-   $progressBar = new Zend_ProgressBar(0, $fileSize, $adapter);
+   $progressBar = new Zend\ProgressBar\ProgressBar(0, $fileSize, $adapter);
 
    while (!feof($fp)) {
        // Faire quelque chose

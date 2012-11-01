@@ -8,32 +8,32 @@ Zend Framework 缺省地带有下列适配器。
 
 .. _zend.captcha.adapters.word:
 
-Zend_Captcha_Word
+Zend\Captcha\Word
 -----------------
 
-Zend_Captcha_Word 是个摘要适配器，它是 Dumb、Figlet 和 Image 适配器的基础。
+Zend\Captcha\Word 是个摘要适配器，它是 Dumb、Figlet 和 Image 适配器的基础。
 ，它提供了增变器用来指定字符长度、会话 TTL 、会话命名空间对象，如果你不想 使用
-Zend_Session_Namespace，它提供了会话命名空间来用于持久。
+Zend\Session\Namespace，它提供了会话命名空间来用于持久。
 另外，它封装了所有校验逻辑。
 
-缺省地，字符长度为 8，会话超时为 5 分钟，Zend_Session_Namespace
-用于持久（使用命名空间"Zend_Form_Captcha_<captcha ID>"）。
+缺省地，字符长度为 8，会话超时为 5 分钟，Zend\Session\Namespace
+用于持久（使用命名空间"Zend\Form_Captcha\<captcha ID>"）。
 
-除了 *Zend_Captcha_Adapter* 接口要求的标准方法外， *Zend_Captcha_Word* 还有下列方法：
+除了 *Zend\Captcha\Adapter* 接口要求的标准方法外， *Zend\Captcha\Word* 还有下列方法：
 
 - *setWordLen($length)* 和 *getWordLen()* 指定生成的“字符”的长度和获取当前值。
 
 - *setTimeout($ttl)* 和 *getTimeout()* 指定会话令牌的 time-to-live 和获取当前值。 *$ttl*
   以秒计。
 
-- *setSessionClass($class)* 和 *getSessionClass()* 指定替代的 *Zend_Session_Namespace* 实现来持久
+- *setSessionClass($class)* 和 *getSessionClass()* 指定替代的 *Zend\Session\Namespace* 实现来持久
   captcha 令牌和获取当前值。
 
 - *getId()* 获取当前令牌标识符。
 
 - *getWord()* 获取用于 captcha 的生成字符，如果以前没有生成，它将生成一个。
 
-- *setSession(Zend_Session_Namespace $session)* 指定一个会话对象用来持久 captcha 令牌；
+- *setSession(Zend\Session\Namespace $session)* 指定一个会话对象用来持久 captcha 令牌；
   *getSession()* 获取当前会话对象。
 
 所有字符 captchas 传递一个选项数组给构造器，或者把它们传递给 *setOptions()*
@@ -46,33 +46,33 @@ Zend_Session_Namespace，它提供了会话命名空间来用于持久。
 
 .. _zend.captcha.adapters.dumb:
 
-Zend_Captcha_Dumb
+Zend\Captcha\Dumb
 -----------------
 
 Dumb 适配器通常是自解释的。它提供了随机字符串需要用反序输入来校验。
 这样，它不是一个好的 CAPTCHA 方案，只用于测试或者最后的方案。 它继承
-*Zend_Captcha_Word*\ 。
+*Zend\Captcha\Word*\ 。
 
 .. _zend.captcha.adapters.figlet:
 
-Zend_Captcha_Figlet
+Zend\Captcha\Figlet
 -------------------
 
-Figlet 适配器利用 :ref:`Zend_Text_Figlet <zend.text.figlet>` 来展示一个 Figlet 给用户。Figlet
+Figlet 适配器利用 :ref:`Zend\Text\Figlet <zend.text.figlet>` 来展示一个 Figlet 给用户。Figlet
 captchas 只限于字符。
 
-传递给构造器的选项也可以传递给适配器使用的 :ref:`Zend_Text_Figlet <zend.text.figlet>`
+传递给构造器的选项也可以传递给适配器使用的 :ref:`Zend\Text\Figlet <zend.text.figlet>`
 对象。 请参考关于配置选项的细节的文档。
 
 .. _zend.captcha.adapters.image:
 
-Zend_Captcha_Image
+Zend\Captcha\Image
 ------------------
 
 Image 适配器使用生成的字符并解析为图像，并把它变换成难以自动解密。 它需要 `GD
 extension`_\ ，使用 TrueType 或 Freetype 支持的编译。目前，Image 适配器只能产生 PNG 图像。
 
-*Zend_Captcha_Image* 集成 *Zend_Captcha_Word*\ ，并附加了下列方法：
+*Zend\Captcha\Image* 集成 *Zend\Captcha\Word*\ ，并附加了下列方法：
 
 - *setExpiration($expiration)* 和 *getExpiration()* 指定 captcha 图像可以保留在文件系统
   中的最大生命周期。一般长于会话的生命周期。每次调用 captcha 对象，
@@ -108,10 +108,10 @@ extension`_\ ，使用 TrueType 或 Freetype 支持的编译。目前，Image �
 
 .. _zend.captcha.adapters.recaptcha:
 
-Zend_Captcha_ReCaptcha
+Zend\Captcha\ReCaptcha
 ----------------------
 
-ReCaptcha 适配器利用 :ref:`Zend_Service_ReCaptcha <zend.service.recaptcha>` 来生成校验
+ReCaptcha 适配器利用 :ref:`Zend\Service\ReCaptcha <zend.service.recaptcha>` 来生成校验
 captchas。它有下列方法：
 
 - *setPrivKey($key)* 和 *getPrivKey()* 让你指定和 ReCaptcha
@@ -120,7 +120,7 @@ captchas。它有下列方法：
 - *setPubKey($key)* 和 *getPubKey()* 让你指定和 ReCaptcha
   服务一起使用的公钥。这必需在构造期间指定，尽管任何时候它都可以被覆盖。
 
-- *setService(Zend_Service_ReCaptcha $service)* 和 *getService()* 让你指定并和 ReCaptcha
+- *setService(Zend\Service\ReCaptcha $service)* 和 *getService()* 让你指定并和 ReCaptcha
   服务对象交互使用。
 
 

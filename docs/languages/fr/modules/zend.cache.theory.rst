@@ -8,11 +8,11 @@ Il y a trois concepts clés dans ``Zend_Cache``. Le premier est l'identifiant un
 pour identifier les enregistrements de cache. Le second est la directive **"lifeTime"** vue dans les exemples ;
 elle définit combien de temps la ressource de cache est considérée comme à jour. Le troisième est l'exécution
 conditionnelle, ainsi chaque partie de votre code peut être évitée entièrement, pour améliorer methodname
-performances. La fonction principale du frontend (``Zend_Cache_Core::get()``) est toujours faite pour retourner
+performances. La fonction principale du frontend (``Zend\Cache\Core::get()``) est toujours faite pour retourner
 ``FALSE`` en cas de cache manquant, si cela donne du sens à la nature d'un frontend. Cela permet aux utilisateurs
 d'entourer des parties de code qu'ils veulent mettre en cache (et éviter) dans une instruction **if(){ ... }** où
 la condition est une méthode ``Zend_Cache``. A la fin de ces blocs, vous devez sauvegarder ce que vous avez
-généré (par exemple ``Zend_Cache_Core::save()``).
+généré (par exemple ``Zend\Cache\Core::save()``).
 
 .. note::
 
@@ -52,7 +52,7 @@ suivant :
 
    // Nous créons la bonne instance
    // Bien sur, les deux derniers arguments sont optionnels
-   $cache = Zend_Cache::factory($frontendName,
+   $cache = Zend\Cache\Cache::factory($frontendName,
                                 $backendName,
                                 $frontendOptions,
                                 $backendOptions);
@@ -62,7 +62,7 @@ valide, et que vous comprenez comment passer des paramètres à vos backends.
 
 .. note::
 
-   Utilisez toujours ``Zend_Cache::factory()`` pour obtenir des instances de frontend. Instancier des frontends et
+   Utilisez toujours ``Zend\Cache\Cache::factory()`` pour obtenir des instances de frontend. Instancier des frontends et
    des backends par vous-même ne fonctionnera pas comme prévu.
 
 .. _zend.cache.tags:
@@ -107,17 +107,17 @@ méthode ``clean()``. Par exemple, pour supprimer tous les caches :
    :linenos:
 
    // nettoie tous les enregistrements
-   $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_ALL);
 
    // nettoie uniquement les caches obsolètes
-   $cache->clean(Zend_Cache::CLEANING_MODE_OLD);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_OLD);
 
 Si vous voulez effacer les caches correspondant aux balises "tagA" et "tagC" :
 
 .. code-block:: php
    :linenos:
 
-   $cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG,
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_MATCHING_TAG,
                  array('tagA', 'tagC'));
 
 Si vous voulez effacer les caches ne correspondant pas aux balises "tagA" et "tagC" :
@@ -125,7 +125,7 @@ Si vous voulez effacer les caches ne correspondant pas aux balises "tagA" et "ta
 .. code-block:: php
    :linenos:
 
-   $cache->clean(Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG,
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_NOT_MATCHING_TAG,
                  array('tagA', 'tagC'));
 
 Si vous voulez effacer les caches correspondant aux balises "tagA" ou "tagC" :
@@ -133,7 +133,7 @@ Si vous voulez effacer les caches correspondant aux balises "tagA" ou "tagC" :
 .. code-block:: php
    :linenos:
 
-   $cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG,
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_MATCHING_ANY_TAG,
                  array('tagA', 'tagC'));
 
 Les modes disponibles de nettoyage sont ``CLEANING_MODE_ALL``, ``CLEANING_MODE_OLD``,

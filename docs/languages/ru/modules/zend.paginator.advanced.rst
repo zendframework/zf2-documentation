@@ -13,7 +13,7 @@
 которого в Zend Framework-е не предусмотрено адаптера. В этом случае
 нужно создать собственный адаптер.
 
-Для этого нужно реализовать интерфейс ``Zend_Paginator_Adapter_Interface``. Он
+Для этого нужно реализовать интерфейс ``Zend\Paginator_Adapter\Interface``. Он
 включает в себя два метода:
 
 - count()
@@ -42,7 +42,7 @@
    return array_slice($this->_array, $offset, $itemCountPerPage);
 
 Посмотрите исходники адаптеров, входящих в поставку Zend Framework
-(все они реализуют ``Zend_Paginator_Adapter_Interface``), чтобы получить
+(все они реализуют ``Zend\Paginator_Adapter\Interface``), чтобы получить
 представление о том, как можно реализовать свой адаптер.
 
 .. _zend.paginator.advanced.scrolling-styles:
@@ -51,7 +51,7 @@
 -------------------------------
 
 При создании своего стиля прокрутки реализуйте интерфейс
-``Zend_Paginator_ScrollingStyle_Interface``, который определяет единственный
+``Zend\Paginator_ScrollingStyle\Interface``, который определяет единственный
 метод, ``getPages()``:
 
 .. code-block:: php
@@ -64,7 +64,7 @@
 находятся рядом с текущей страницей).
 
 Если только ваш стиль прокрутки не наследует от уже
-существующего (для примера смотрите ``Zend_Paginator_ScrollingStyle_Elastic``), то
+существующего (для примера смотрите ``Zend\Paginator_ScrollingStyle\Elastic``), то
 этот метод должен иметь в конце что-то вроде следующего:
 
 .. code-block:: php
@@ -86,7 +86,7 @@
 
    $prefix = 'My_Paginator_ScrollingStyle';
    $path   = 'My/Paginator/ScrollingStyle/';
-   Zend_Paginator::addScrollingStylePrefixPath($prefix, $path);
+   Zend\Paginator\Paginator::addScrollingStylePrefixPath($prefix, $path);
 
 .. _zend.paginator.advanced.caching:
 
@@ -96,25 +96,25 @@
 Можно указать ``Zend_Paginator``-у, чтобы он кэшировал получаемые
 данные, чтобы они не извлекались через адаптер всякий раз,
 когда будет в них нужда. Для этого просто передайте его методу
-``setCache()`` экземпляр ``Zend_Cache_Core``.
+``setCache()`` экземпляр ``Zend\Cache\Core``.
 
 
 
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
       $fO = array('lifetime' => 3600, 'automatic_serialization' => true);
       $bO = array('cache_dir'=>'/tmp');
-      $cache = Zend_cache::factory('Core', 'File', $fO, $bO);
-      Zend_Paginator::setCache($cache);
+      $cache = Zend\cache\cache::factory('Core', 'File', $fO, $bO);
+      Zend\Paginator\Paginator::setCache($cache);
 
 
 
-После того, как ``Zend_Paginator`` получит экземпляр ``Zend_Cache_Core``, все
+После того, как ``Zend_Paginator`` получит экземпляр ``Zend\Cache\Core``, все
 данные будут кэшироваться. Иногда возникает необходимость
 отключать кэширование данных даже после того, как вы передали
-эекземпляр ``Zend_Cache_Core``. Для этого вы можете использовать метод
+эекземпляр ``Zend\Cache\Core``. Для этого вы можете использовать метод
 ``setCacheEnable()``.
 
 
@@ -122,9 +122,9 @@
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
       // $cache является экземпляром
-      Zend_Paginator::setCache($cache);
+      Zend\Paginator\Paginator::setCache($cache);
       // ... ниже в коде
       $paginator->setCacheEnable(false);
       // теперь кэширование отключено
@@ -144,8 +144,8 @@
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
-      Zend_Paginator::setCache($cache);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
+      Zend\Paginator\Paginator::setCache($cache);
       $items = $paginator->getCurrentItems();
       // теперь страница 1 в кэше
       $page3Items = $paginator->getItemsByPage(3);
@@ -168,8 +168,8 @@
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
-      Zend_Paginator::setCache($cache);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
+      Zend\Paginator\Paginator::setCache($cache);
       // извлечение некоторых элементов
       $items = $paginator->getCurrentItems();
 
@@ -186,9 +186,9 @@
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
       $paginator->setItemCountPerPage(3);
-      Zend_Paginator::setCache($cache);
+      Zend\Paginator\Paginator::setCache($cache);
 
       // извлечение некоторых элементов
       $items = $paginator->getCurrentItems();
@@ -201,7 +201,7 @@
 
 .. _zend.paginator.advanced.aggregator:
 
-Интерфейс Zend_Paginator_AdapterAggregate
+Интерфейс Zend\Paginator\AdapterAggregate
 -----------------------------------------
 
 В зависимости от разрабатываемого приложения может
@@ -211,8 +211,8 @@
 инкапсуляцию для того, что предоставлять доступ к этим данным.
 В других случаях объект может участвовать в связи
 "имеет-адаптер" вместо связи "является-адаптером", которую
-предлагает ``Zend_Paginator_Adapter_Abstract``. В этих случаях вы можете
-использовать интерфейс ``Zend_Paginator_AdapterAggregate``, который по
+предлагает ``Zend\Paginator_Adapter\Abstract``. В этих случаях вы можете
+использовать интерфейс ``Zend\Paginator\AdapterAggregate``, который по
 поведению значительно похож на интерфейс ``IteratorAggregate`` из
 расширения SPL.
 
@@ -221,12 +221,12 @@
    .. code-block:: php
       :linenos:
 
-      interface Zend_Paginator_AdapterAggregate
+      interface Zend\Paginator\AdapterAggregate
       {
           /**
            * Возвращайте из этого метода полностью сконфигурированный адаптер.
            *
-           * @return Zend_Paginator_Adapter_Abstract
+           * @return Zend\Paginator_Adapter\Abstract
            */
           public function getPaginatorAdapter();
       }
@@ -234,9 +234,9 @@
 
 
 Как видно из кода, интерфейс довольно небольшой и от вас
-ожидается только возврат экземпляра ``Zend_Paginator_Adapter_Abstract``.
-Фабричный метод ``Zend_Paginator::factory`` и конструктор класса ``Zend_Paginator``
-после этого распознают экземпляр ``Zend_Paginator_AdapterAggregate`` и
+ожидается только возврат экземпляра ``Zend\Paginator_Adapter\Abstract``.
+Фабричный метод ``Zend\Paginator\Paginator::factory`` и конструктор класса ``Zend_Paginator``
+после этого распознают экземпляр ``Zend\Paginator\AdapterAggregate`` и
 обрабатывают его должным образом.
 
 

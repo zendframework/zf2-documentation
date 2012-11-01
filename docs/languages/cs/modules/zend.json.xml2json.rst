@@ -7,7 +7,7 @@ Převod XML do JSON
 *Zend_Json* poskytuje metodu pro převod dat formátovaných pomocí XML do JSON formátu. Tato vlastnost je
 inspirována `článkem na IBM developerWorks`_.
 
-*Zend_Json* zahrnuje statickou metodu *Zend_Json::fromXml()*. Tato funkce generuje JSON ze vstupu ve formátu XML.
+*Zend_Json* zahrnuje statickou metodu *Zend\Json\Json::fromXml()*. Tato funkce generuje JSON ze vstupu ve formátu XML.
 Tato funkce přijímá jako vstupní parametr jakýkoliv XML řetězec. Také přijímá druhý, volitelný
 parametr zda ignorovat XML atributy během převodu. Pokud není tento volitelný parametr zadán, defaultní
 chování je ignorování XML atributů. Volání této funkce je naznačeno níže:
@@ -16,20 +16,20 @@ chování je ignorování XML atributů. Volání této funkce je naznačeno ní
    :linenos:
 
            // Funkce fromXml jednoduše přijme String obsahující XML data jak vstup.
-           $jsonContents = Zend_Json::fromXml($xmlStringContents, true);?>
+           $jsonContents = Zend\Json\Json::fromXml($xmlStringContents, true);?>
 
-Funkce *Zend_Json::fromXml()* provádí konverzi vstupního XML řetězce a vrací odpovídající zápis ve
+Funkce *Zend\Json\Json::fromXml()* provádí konverzi vstupního XML řetězce a vrací odpovídající zápis ve
 formátu JSON. V případě chyby v XML nebo chyby při převodu, tato funkce vyhazuje výjimku. Tato konverze
 také využívá rekurzivitu při procházení XML stromu. Podporuje zanoření do 25 úrovní. Za touto hloubkou
-vyhodí *Zend_Json_Exception*. V adresáři tests Zend Frameworku je několik XML souborů s různým stupněm
+vyhodí *Zend\Json\Exception*. V adresáři tests Zend Frameworku je několik XML souborů s různým stupněm
 komplexity pro otestování funkčnosti funkce xml2json.
 
 Následující jednoduchý příklad ukazuje jak předaný XML vstup tak JSON výstup z funkce
-*Zend_Json::fromXml()*. Tento příklad využívá volitelného parametru pro neignorování XML atributů během
+*Zend\Json\Json::fromXml()*. Tento příklad využívá volitelného parametru pro neignorování XML atributů během
 převodu. Proto vrácený JSON řetězec obsahuje reprezentaci XML atributů přítomných ve vstupním XML
 řetězci.
 
-XML řetězec předaný funkci *Zend_Json::fromXml()*:
+XML řetězec předaný funkci *Zend\Json\Json::fromXml()*:
 
 .. code-block:: php
    :linenos:
@@ -55,7 +55,7 @@ XML řetězec předaný funkci *Zend_Json::fromXml()*:
        </book>
    </books> ?>
 
-JSON výstup vrácený z funkce *Zend_Json::fromXml()*:
+JSON výstup vrácený z funkce *Zend\Json\Json::fromXml()*:
 
 .. code-block:: php
    :linenos:

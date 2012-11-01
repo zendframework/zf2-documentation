@@ -3,7 +3,7 @@
 Attachments
 ===========
 
-Files can be attached to an e-mail using the ``createAttachment()`` method. The default behavior of ``Zend_Mail``
+Files can be attached to an e-mail using the ``createAttachment()`` method. The default behavior of ``Zend\Mail\Message``
 is to assume the attachment is a binary object (``application/octet-stream``), that it should be transferred with
 base64 encoding, and that it is handled as an attachment. These assumptions can be overridden by passing more
 parameters to ``createAttachment()``:
@@ -15,42 +15,42 @@ parameters to ``createAttachment()``:
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Message();
    // build message...
    $mail->createAttachment($someBinaryString);
    $mail->createAttachment($myImage,
                            'image/gif',
-                           Zend_Mime::DISPOSITION_INLINE,
-                           Zend_Mime::ENCODING_BASE64);
+                           Zend\Mime\Mime::DISPOSITION_INLINE,
+                           Zend\Mime\Mime::ENCODING_BASE64);
 
 If you want more control over the *MIME* part generated for this attachment you can use the return value of
-``createAttachment()`` to modify its attributes. The ``createAttachment()`` method returns a ``Zend_Mime_Part``
+``createAttachment()`` to modify its attributes. The ``createAttachment()`` method returns a ``Zend\Mime\Part``
 object:
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Message();
 
    $at = $mail->createAttachment($myImage);
    $at->type        = 'image/gif';
-   $at->disposition = Zend_Mime::DISPOSITION_INLINE;
-   $at->encoding    = Zend_Mime::ENCODING_BASE64;
+   $at->disposition = Zend\Mime\Mime::DISPOSITION_INLINE;
+   $at->encoding    = Zend\Mime\Mime::ENCODING_BASE64;
    $at->filename    = 'test.gif';
 
    $mail->send();
 
-An alternative is to create an instance of ``Zend_Mime_Part`` and add it with ``addAttachment()``:
+An alternative is to create an instance of ``Zend\Mime\Part`` and add it with ``addAttachment()``:
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Message();
 
-   $at = new Zend_Mime_Part($myImage);
+   $at = new Zend\Mime\Part($myImage);
    $at->type        = 'image/gif';
-   $at->disposition = Zend_Mime::DISPOSITION_INLINE;
-   $at->encoding    = Zend_Mime::ENCODING_BASE64;
+   $at->disposition = Zend\Mime\Mime::DISPOSITION_INLINE;
+   $at->encoding    = Zend\Mime\Mime::ENCODING_BASE64;
    $at->filename    = 'test.gif';
 
    $mail->addAttachment($at);

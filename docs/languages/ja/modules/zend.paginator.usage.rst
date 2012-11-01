@@ -23,9 +23,9 @@ Zend Framework には、いくつかのアダプタが標準で同梱されて�
    +=============+=================================================================================================================================================================================================================================+
    |Array        |PHP の配列を使用します。                                                                                                                                                                                                                   |
    +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |DbSelect     |Zend_Db_Select のインスタンスを使用し、配列を返します。                                                                                                                                                                                              |
+   |DbSelect     |Zend\Db\Select のインスタンスを使用し、配列を返します。                                                                                                                                                                                              |
    +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |DbTableSelect|Zend_Db_Table_Select のインスタンスを使用し、 Zend_Db_Table_Rowset_Abstract のインスタンスを返します。 これは、結果セットについての追加情報 (カラム名など) を提供します。                                                                                                                |
+   |DbTableSelect|Zend\Db_Table\Select のインスタンスを使用し、 Zend\Db\Table\Rowset\Abstract のインスタンスを返します。 これは、結果セットについての追加情報 (カラム名など) を提供します。                                                                                                                |
    +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Iterator     |Iterator のインスタンスを使用します。                                                                                                                                                                                                          |
    +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -48,7 +48,7 @@ Zend Framework には、いくつかのアダプタが標準で同梱されて�
 .. code-block:: php
    :linenos:
 
-   $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($array));
+   $paginator = new Zend\Paginator\Paginator(new Zend\Paginator_Adapter\Array($array));
 
 利便性を確保するために、Zend Framework に同梱されているアダプタ用の静的メソッド
 ``factory()`` も用意されています。
@@ -56,7 +56,7 @@ Zend Framework には、いくつかのアダプタが標準で同梱されて�
 .. code-block:: php
    :linenos:
 
-   $paginator = Zend_Paginator::factory($array);
+   $paginator = Zend\Paginator\Paginator::factory($array);
 
 .. note::
 
@@ -73,7 +73,7 @@ Zend Framework には、いくつかのアダプタが標準で同梱されて�
    $paginator->setCurrentPageNumber($page);
 
 ページ番号は *URL* で指定するのがもっともシンプルな方法でしょう。
-``Zend_Controller_Router_Interface`` 互換のルータを使うことを推奨しますが、
+``Zend\Controller_Router\Interface`` 互換のルータを使うことを推奨しますが、
 それが必須というわけではありません。
 
 *INI* ファイルで定義するルートの例を次に示します。
@@ -143,18 +143,18 @@ DbSelect アダプタや DbTableSelect アダプタを使う際には、
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Paginator_Adapter_DbSelect($db->select()->from('posts'));
+   $adapter = new Zend\Paginator_Adapter\DbSelect($db->select()->from('posts'));
    $adapter->setRowCount(
        $db->select()
           ->from(
                'item_counts',
                array(
-                  Zend_Paginator_Adapter_DbSelect::ROW_COUNT_COLUMN => 'post_count'
+                  Zend\Paginator_Adapter\DbSelect::ROW_COUNT_COLUMN => 'post_count'
                )
             )
    );
 
-   $paginator = new Zend_Paginator($adapter);
+   $paginator = new Zend\Paginator\Paginator($adapter);
 
 この方法は、小規模なデータや単純な select
 クエリの場合にはあまり劇的な効果を得られません。
@@ -245,8 +245,8 @@ PaginationControl 4 つまでのパラメータを受け取ります。 paginato
 .. code-block:: php
    :linenos:
 
-   Zend_Paginator::setDefaultScrollingStyle('Sliding');
-   Zend_View_Helper_PaginationControl::setDefaultViewPartial(
+   Zend\Paginator\Paginator::setDefaultScrollingStyle('Sliding');
+   Zend\View_Helper\PaginationControl::setDefaultViewPartial(
        'my_pagination_control.phtml'
    );
    $paginator->setView($view);

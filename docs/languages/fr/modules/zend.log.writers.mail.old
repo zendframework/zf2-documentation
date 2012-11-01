@@ -4,13 +4,13 @@
 Écrire vers un courriel
 =======================
 
-``Zend_Log_Writer_Mail`` va écrire les entrées du log dans un message courriel en utilisant ``Zend_Mail``. Le
-constructeur de ``Zend_Log_Writer_Mail`` requière un objet ``Zend_Mail`` et optionnellement un objet
+``Zend\Log_Writer\Mail`` va écrire les entrées du log dans un message courriel en utilisant ``Zend_Mail``. Le
+constructeur de ``Zend\Log_Writer\Mail`` requière un objet ``Zend_Mail`` et optionnellement un objet
 ``Zend_Layout``.
 
-Le cas d'utilisation principal de ``Zend_Log_Writer_Mail`` est la notification les développeurs, les
+Le cas d'utilisation principal de ``Zend\Log_Writer\Mail`` est la notification les développeurs, les
 administrateurs ou toute personne concernée, d'une erreur qui peut survenir dans des scripts.
-``Zend_Log_Writer_Mail`` a été crée avec l'idée que si quelque chose ne tourne pas rond, une intervention
+``Zend\Log_Writer\Mail`` a été crée avec l'idée que si quelque chose ne tourne pas rond, une intervention
 humaine est nécessaire.
 
 Voici un exemple d'utilisation basique :
@@ -18,28 +18,28 @@ Voici un exemple d'utilisation basique :
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setFrom('errors@example.org')
         ->addTo('project_developers@example.org');
 
-   $writer = new Zend_Log_Writer_Mail($mail);
+   $writer = new Zend\Log_Writer\Mail($mail);
 
    // Ecrit le sujet. Un résumé des erreurs est ajouté à la suite
    $writer->setSubjectPrependText('Errors with script foo.php');
 
    // Limite uniquement au niveau Warning ou supérieur
-   $writer->addFilter(Zend_Log::WARN);
+   $writer->addFilter(Zend\Log\Log::WARN);
 
-   $log = new Zend_Log();
+   $log = new Zend\Log\Log();
    $log->addWriter($writer);
 
    // Essai
    $log->error('unable to connect to database');
 
-   // A la fermeture, Zend_Mail::send() est inviqué et concernera
+   // A la fermeture, Zend\Mail\Mail::send() est inviqué et concernera
    // tous les logs passés dans le filtre.
 
-``Zend_Log_Writer_Mail`` utilisera un corps de message en texte plein (plain text) par défaut.
+``Zend\Log_Writer\Mail`` utilisera un corps de message en texte plein (plain text) par défaut.
 
 Le filtre est géré. Par exemple si le filtre est réglé sur Warnings, et que 2 évènements warnings et 5
 évènements erreurs se produisent, alors 7 évènements seront envoyés.
@@ -50,43 +50,43 @@ Utilisation avec Zend_Layout
 ----------------------------
 
 Une instance de ``Zend_Layout`` peut être utilisée pour générer du HTML qui fera partie du courriel multipart.
-Si ``Zend_Layout`` est utilisé, ``Zend_Log_Writer_Mail`` considérera que le corps HTML du message sera la valeur
+Si ``Zend_Layout`` est utilisé, ``Zend\Log_Writer\Mail`` considérera que le corps HTML du message sera la valeur
 du rendu de ``Zend_Layout``.
 
-En utilisant ``Zend_Log_Writer_Mail`` avec un objet ``Zend_Layout`` vous pouvez utiliser un formateur personnalisé
+En utilisant ``Zend\Log_Writer\Mail`` avec un objet ``Zend_Layout`` vous pouvez utiliser un formateur personnalisé
 grâce à ``setLayoutFormatter()``. Si aucun formateur spécifique ``Zend_Layout`` n'est indiqué, le formateur en
 cours d'utilisation sera appelé. Voici un exemple :
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setFrom('errors@example.org')
         ->addTo('project_developers@example.org');
    // Nous ne spécifions pas le sujet du message dans l'objet Zend_Mail !
 
    // Utilisons un simple objet Zend_Layout
-   $layout = new Zend_Layout();
+   $layout = new Zend\Layout\Layout();
 
    // Créons un formateur à base de listes
-   $layoutFormatter = new Zend_Log_Formatter_Simple(
-       '<li>' . Zend_Log_Formatter_Simple::DEFAULT_FORMAT . '</li>'
+   $layoutFormatter = new Zend\Log_Formatter\Simple(
+       '<li>' . Zend\Log_Formatter\Simple::DEFAULT_FORMAT . '</li>'
    );
 
-   $writer = new Zend_Log_Writer_Mail($mail, $layout);
+   $writer = new Zend\Log_Writer\Mail($mail, $layout);
 
    // Appliquons le formateur sur le rendu de Zend_Layout.
    $writer->setLayoutFormatter($layoutFormatter);
    $writer->setSubjectPrependText('Errors with script foo.php');
-   $writer->addFilter(Zend_Log::WARN);
+   $writer->addFilter(Zend\Log\Log::WARN);
 
-   $log = new Zend_Log();
+   $log = new Zend\Log\Log();
    $log->addWriter($writer);
 
    // essai
    $log->error('unable to connect to database');
 
-   // A la fermeture, Zend_Mail::send() est inviqué et concernera
+   // A la fermeture, Zend\Mail\Mail::send() est inviqué et concernera
    // tous les logs passés dans le filtre.
    // l'email contiendra une partie "plain text", et une partie HTML
 
@@ -95,11 +95,11 @@ cours d'utilisation sera appelé. Voici un exemple :
 Ligne du sujet dynamique
 ------------------------
 
-La méthode ``setSubjectPrependText()`` est utilisée à la place de ``Zend_Mail::setSubject()`` pour que la ligne
+La méthode ``setSubjectPrependText()`` est utilisée à la place de ``Zend\Mail\Mail::setSubject()`` pour que la ligne
 de sujet dans le courriel soit générée dynamiquement avant l'envoi de ce dernier. Par exemple, si le texte
-indiqué est "Erreurs depuis ce script", le sujet du courriel généré par ``Zend_Log_Writer_Mail`` avec 2
+indiqué est "Erreurs depuis ce script", le sujet du courriel généré par ``Zend\Log_Writer\Mail`` avec 2
 warnings et 5 errors sera alors "Erreurs depuis ce script (warn = 2; error = 5)". Si le sujet n'est pas indiqué
-via ``Zend_Log_Writer_Mail``, la ligne de sujet de ``Zend_Mail``, si il y en a une, sera utilisée.
+via ``Zend\Log_Writer\Mail``, la ligne de sujet de ``Zend_Mail``, si il y en a une, sera utilisée.
 
 .. _zend.log.writers.mail.caveats:
 
@@ -110,11 +110,11 @@ Envoyer des rapports d'erreurs par emails peut être dangereux. Si votre systèm
 pas correct ou a un problème, vous risquez de vous retrouver inondé de tonnes d'emails en provenance de votre
 application.
 
-A l'heure actuelle, il n'existe dans ``Zend_Log_Writer_Mail`` aucun système de limitation ou de contrôle du
+A l'heure actuelle, il n'existe dans ``Zend\Log_Writer\Mail`` aucun système de limitation ou de contrôle du
 nombre ou de la fréquence d'envoi des emails. Si vous nécessitez un tel système, vous devrez l'implémenter
 vous-même.
 
-Encore une fois, l'unique but de ``Zend_Log_Writer_Mail`` est la notification d'un humain au sujet d'une erreur. Si
+Encore une fois, l'unique but de ``Zend\Log_Writer\Mail`` est la notification d'un humain au sujet d'une erreur. Si
 ce système est clairement contrôlé, alors il peut devenir un avantage très appréciable.
 
 

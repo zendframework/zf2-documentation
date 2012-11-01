@@ -14,7 +14,7 @@ Framework 授权和访问控制的信息，参见 :ref:`Zend\Permissions\Acl <ze
 
    *Zend_Auth* 类通过它的 *getInstance()*\ 方法实现 Singleton 模式 -
    只有一个实例可用。这意味着使用 *new*\ 操作符和 *clone* 关键字将不能在 *Zend_Auth*
-   类中工作，而要使用 *Zend_Auth::getInstance()*\ 来代替。
+   类中工作，而要使用 *Zend\Auth\Auth::getInstance()*\ 来代替。
 
 .. _zend.authentication.introduction.adapters:
 
@@ -23,7 +23,7 @@ Framework 授权和访问控制的信息，参见 :ref:`Zend\Permissions\Acl <ze
 
 Zend_Auth适配器被用来依靠特定的认证服务（例如LDAP、RDBMS或基于文件的存储）来认证。不同的适配器可能有不同的选项和行为，但有些基本的事情在认证适配器中是通用的。例如，接受认证证书（包括声称身份）、依靠认证服务执行查询、返回结果在Zend_Auth适配器中是通用的。
 
-每个Zend_Auth适配器类都实现 *Zend_Auth_Adapter_Interface*\ 。这个接口定义了一个方法
+每个Zend_Auth适配器类都实现 *Zend\Auth_Adapter\Interface*\ 。这个接口定义了一个方法
 *authenticate()*\ ，适配器必须为执行认证查询而实现它。在调用 *authenticate()*\
 之前，每个适配器必需准备就绪。这样适配器准备包括设置证书（例如，用户名和密码）并为适配器专用的配置选项定义一些值，例如为数据库表适配器做的连接设置。
 
@@ -33,7 +33,7 @@ Zend_Auth适配器被用来依靠特定的认证服务（例如LDAP、RDBMS或�
    .. code-block:: php
       :linenos:
 
-      class MyAuthAdapter implements Zend_Auth_Adapter_Interface
+      class MyAuthAdapter implements Zend\Auth_Adapter\Interface
       {
           /**
            * Sets username and password for authentication
@@ -48,9 +48,9 @@ Zend_Auth适配器被用来依靠特定的认证服务（例如LDAP、RDBMS或�
           /**
            * Performs an authentication attempt
            *
-           * @throws Zend_Auth_Adapter_Exception If authentication cannot
+           * @throws Zend\Auth_Adapter\Exception If authentication cannot
            *                                     be performed
-           * @return Zend_Auth_Result
+           * @return Zend\Auth\Result
            */
           public function authenticate()
           {
@@ -59,9 +59,9 @@ Zend_Auth适配器被用来依靠特定的认证服务（例如LDAP、RDBMS或�
       }
 
 
-如上面所示， *authenticate()*\ 必需返回一个 *Zend_Auth_Result*\ 的实例（或从 *Zend_Auth_Result*\
+如上面所示， *authenticate()*\ 必需返回一个 *Zend\Auth\Result*\ 的实例（或从 *Zend\Auth\Result*\
 派生的一个类的实例）。如果因为某些原因认证查询不能执行， *authenticate()*\
-应该抛出一个由 *Zend_Auth_Adapter_Exception*\ 产生的异常。
+应该抛出一个由 *Zend\Auth_Adapter\Exception*\ 产生的异常。
 
 .. _zend.authentication.introduction.results:
 
@@ -69,12 +69,12 @@ Zend_Auth适配器被用来依靠特定的认证服务（例如LDAP、RDBMS或�
 --
 
 为了表示一个认证尝试的结果，Zend_Auth适配器返回一个带有 *authenticate()*\ 的
-*Zend_Auth_Result*\ 的实例。适配器基于结构组成 *Zend_Auth_Result*\
+*Zend\Auth\Result*\ 的实例。适配器基于结构组成 *Zend\Auth\Result*\
 对象，下面四个方法提供了一组基本的用户面临的通用Zend_Auth适配器结果的操作：
 
    - *isValid()*- 返回 true 当且仅当结果表示一个成功的认证尝试
 
-   - *getCode()*- 返回一个 *Zend_Auth_Result*
+   - *getCode()*- 返回一个 *Zend\Auth\Result*
      常量标识符用来决定认证失败的类型或者是否认证成功。这个可以用于开发者希望区别若干认证结果类型的情形，例如，这允许开发者维护详细的认证结果统计。尽管开发这被鼓励去考虑提供这样详细的原因给用户的风险，替而代之使用一般的认证失败信息，这个功能的其它用法是由于可用性的原因提供专用的，定制的信息给用户。更多的信息，参见下面的注释。
 
    - *getIdentity()*- 返回认证尝试的身份
@@ -89,12 +89,12 @@ Zend_Auth适配器被用来依靠特定的认证服务（例如LDAP、RDBMS或�
    .. code-block:: php
       :linenos:
 
-      Zend_Auth_Result::SUCCESS
-      Zend_Auth_Result::FAILURE
-      Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND
-      Zend_Auth_Result::FAILURE_IDENTITY_AMBIGUOUS
-      Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID
-      Zend_Auth_Result::FAILURE_UNCATEGORIZED
+      Zend\Auth\Result::SUCCESS
+      Zend\Auth\Result::FAILURE
+      Zend\Auth\Result::FAILURE_IDENTITY_NOT_FOUND
+      Zend\Auth\Result::FAILURE_IDENTITY_AMBIGUOUS
+      Zend\Auth\Result::FAILURE_CREDENTIAL_INVALID
+      Zend\Auth\Result::FAILURE_UNCATEGORIZED
 
 
 
@@ -109,15 +109,15 @@ Zend_Auth适配器被用来依靠特定的认证服务（例如LDAP、RDBMS或�
 
       switch ($result->getCode()) {
 
-          case Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND:
+          case Zend\Auth\Result::FAILURE_IDENTITY_NOT_FOUND:
               /** do stuff for nonexistent identity **/
               break;
 
-          case Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID:
+          case Zend\Auth\Result::FAILURE_CREDENTIAL_INVALID:
               /** do stuff for invalid credential **/
               break;
 
-          case Zend_Auth_Result::SUCCESS:
+          case Zend\Auth\Result::SUCCESS:
               /** do stuff for successful authentication **/
               break;
 
@@ -145,9 +145,9 @@ HTTP是一个无连接的协议，然而，象cookie和session这样的技术已
 
 缺省地， *Zend_Auth*\ 从使用PHP
 session成功的认证尝试中提供身份的持久存储。基于一个成功的认证尝试，
-*Zend_Auth::authenticate()*\ 通过把认证结果放入持久存储中来保存身份。除非另有配置，
-*Zend_Auth* 使用名称为 *Zend_Auth_Storage_Session* 的存储类，这个类使用 :ref:`Zend_Session
-<zend.session>`\ 。通过实现 *Zend_Auth_Storage_Interface*\ 给 *Zend_Auth::setStorage()*\
+*Zend\Auth\Auth::authenticate()*\ 通过把认证结果放入持久存储中来保存身份。除非另有配置，
+*Zend_Auth* 使用名称为 *Zend\Auth_Storage\Session* 的存储类，这个类使用 :ref:`Zend_Session
+<zend.session>`\ 。通过实现 *Zend\Auth_Storage\Interface*\ 给 *Zend\Auth\Auth::setStorage()*\
 提供一个对象，一个定制的类可以被替代使用。
 
 .. note::
@@ -159,19 +159,19 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
 
 .. rubric:: 修改 Session 名字空间
 
-*Zend_Auth_Storage_Session*\ 使用 *'Zend_Auth'*\ 的seesion名字空间。通过给 *Zend_Auth_Storage_Session*\
+*Zend\Auth_Storage\Session*\ 使用 *'Zend_Auth'*\ 的seesion名字空间。通过给 *Zend\Auth_Storage\Session*\
 的构造器传递不同的值，这个名字空间可以被替换，并且这个值被从内部传递给
-*Zend_Session_Namespace*\ 的构造器。这应该发生在认证尝试之前，因为 *Zend_Auth::authenticate()*\
+*Zend\Session\Namespace*\ 的构造器。这应该发生在认证尝试之前，因为 *Zend\Auth\Auth::authenticate()*\
 执行身份的自动存储。
 
    .. code-block:: php
       :linenos:
 
       // Save a reference to the Singleton instance of Zend_Auth
-      $auth = Zend_Auth::getInstance();
+      $auth = Zend\Auth\Auth::getInstance();
 
       // Use 'someNamespace' instead of 'Zend_Auth'
-      $auth->setStorage(new Zend_Auth_Storage_Session('someNamespace'));
+      $auth->setStorage(new Zend\Auth_Storage\Session('someNamespace'));
 
       /**
        * @todo Set up the auth adapter, $authAdapter
@@ -189,26 +189,26 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
 实现订制存储
 ^^^^^^
 
-有时候开发者需要使用不同的身份持久行为，而不是 *Zend_Auth_Storage_Session*\
-提供的。对于这样的案例开发者可以简单地实现 *Zend_Auth_Storage_Interface*\ 并给
-*Zend_Auth::setStorage()*\ 提供一个类的实例。
+有时候开发者需要使用不同的身份持久行为，而不是 *Zend\Auth_Storage\Session*\
+提供的。对于这样的案例开发者可以简单地实现 *Zend\Auth_Storage\Interface*\ 并给
+*Zend\Auth\Auth::setStorage()*\ 提供一个类的实例。
 
 .. _zend.authentication.introduction.persistence.custom.example:
 
 .. rubric:: 使用定制存储类
 
-为了使用不同于 *Zend_Auth_Storage_Session*\ 的身份之久存储类，开发者可实现
-*Zend_Auth_Storage_Interface*\ ：
+为了使用不同于 *Zend\Auth_Storage\Session*\ 的身份之久存储类，开发者可实现
+*Zend\Auth_Storage\Interface*\ ：
 
    .. code-block:: php
       :linenos:
 
-      class MyStorage implements Zend_Auth_Storage_Interface
+      class MyStorage implements Zend\Auth_Storage\Interface
       {
           /**
            * Returns true if and only if storage is empty
            *
-           * @throws Zend_Auth_Storage_Exception If it is impossible to
+           * @throws Zend\Auth_Storage\Exception If it is impossible to
            *                                     determine whether storage
            *                                     is empty
            * @return boolean
@@ -225,7 +225,7 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
            *
            * Behavior is undefined when storage is empty.
            *
-           * @throws Zend_Auth_Storage_Exception If reading contents from
+           * @throws Zend\Auth_Storage\Exception If reading contents from
            *                                     storage is impossible
            * @return mixed
            */
@@ -240,7 +240,7 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
            * Writes $contents to storage
            *
            * @param  mixed $contents
-           * @throws Zend_Auth_Storage_Exception If writing $contents to
+           * @throws Zend\Auth_Storage\Exception If writing $contents to
            *                                     storage is impossible
            * @return void
            */
@@ -254,7 +254,7 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
           /**
            * Clears contents from storage
            *
-           * @throws Zend_Auth_Storage_Exception If clearing contents from
+           * @throws Zend\Auth_Storage\Exception If clearing contents from
            *                                     storage is impossible
            * @return void
            */
@@ -269,13 +269,13 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
 
 
 
-为了使用这个定制的存储类，在认证查询被尝试前， *Zend_Auth::setStorage()*\ 被调用：
+为了使用这个定制的存储类，在认证查询被尝试前， *Zend\Auth\Auth::setStorage()*\ 被调用：
 
    .. code-block:: php
       :linenos:
 
       // Instruct Zend_Auth to use the custom storage class
-      Zend_Auth::getInstance()->setStorage(new MyStorage());
+      Zend\Auth\Auth::getInstance()->setStorage(new MyStorage());
 
       /**
        * @todo Set up the auth adapter, $authAdapter
@@ -283,7 +283,7 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
 
       // Authenticate, saving the result, and persisting the identity on
       // success
-      $result = Zend_Auth::getInstance()->authenticate($authAdapter);
+      $result = Zend\Auth\Auth::getInstance()->authenticate($authAdapter);
 
 
 
@@ -295,7 +295,7 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
 
 这里提供了两种方法使用Zend_Auth适配器：
 
-   . 非直接地，通过 *Zend_Auth::authenticate()*
+   . 非直接地，通过 *Zend\Auth\Auth::authenticate()*
 
    . 直接地，通过适配器的 *authenticate()* 方法
 
@@ -308,7 +308,7 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
 
       // Get a reference to the singleton instance of Zend_Auth
       require_once 'Zend/Auth.php';
-      $auth = Zend_Auth::getInstance();
+      $auth = Zend\Auth\Auth::getInstance();
 
       // Set up the authentication adapter
       $authAdapter = new MyAuthAdapter($username, $password);
@@ -337,7 +337,7 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
    .. code-block:: php
       :linenos:
 
-      $auth = Zend_Auth::getInstance();
+      $auth = Zend\Auth\Auth::getInstance();
       if ($auth->hasIdentity()) {
           // Identity exists; get it
           $identity = $auth->getIdentity();
@@ -352,7 +352,7 @@ session成功的认证尝试中提供身份的持久存储。基于一个成功�
    .. code-block:: php
       :linenos:
 
-      Zend_Auth::getInstance()->clearIdentity();
+      Zend\Auth\Auth::getInstance()->clearIdentity();
 
 
 

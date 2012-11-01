@@ -9,7 +9,7 @@ von *HTTPS* nicht notwendig obwohl es natürlich wünschenswert wäre wenn es vo
 Verbindung möglich sein bietet OAuth die Implementation einer Signaturmethode an welche PLAINTEXT heißt und
 verwendet werden kann. Über eine typische unsichere *HTTP* Verbindung muss die Verwendung von PLAINTEXT verhindert
 werden und ein alternatives Schema wird verwendet. Die OAuth Spezifikation definiert zwei solcher Signaturmethoden:
-HMAC-SHA1 und RSA-SHA1. Beide werden von ``Zend_Oauth`` vollständig unterstützt.
+HMAC-SHA1 und RSA-SHA1. Beide werden von ``ZendOauth`` vollständig unterstützt.
 
 Diese Signaturmethoden sind recht einfach zu verstehen. Wie man sich vorstellen kann macht die PLAINTEXT
 Signaturmethode nichts das erwähnenswert wäre da Sie auf *HTTPS* aufsetzt. Wenn man aber PLAINTEXT über *HTTP*

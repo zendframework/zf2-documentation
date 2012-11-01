@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.service.strikeiron:
 
-Zend_Service_StrikeIron
+Zend\Service\StrikeIron
 =======================
 
-``Zend_Service_StrikeIron`` は、StrikeIron ウェブサービス用の *PHP* 5
+``Zend\Service\StrikeIron`` は、StrikeIron ウェブサービス用の *PHP* 5
 クライアントです。以下のセクションを参照ください。
 
 
@@ -40,17 +40,17 @@ StrikeIron はまた、すべてのサービスの支払いを単一のアカウ
 StrikeIron のサービスは、 `PHP 5 の SOAP 拡張モジュール`_
 のみでも使用することができるでしょう。 しかし、StrikeIron
 をこの方法で使用すると、 真の *PHP*
-風インターフェイスを活用することができません。 ``Zend_Service_StrikeIron``
+風インターフェイスを活用することができません。 ``Zend\Service\StrikeIron``
 コンポーネントは、 *SOAP*
 拡張モジュールの上にもう一枚薄い皮をかぶせることによって、 StrikeIron
 のサービスをより便利かつ *PHP* らしく使えるようにしています。
 
 .. note::
 
-   ``Zend_Service_StrikeIron`` を使うには、 *PHP* 5 の *SOAP*
+   ``Zend\Service\StrikeIron`` を使うには、 *PHP* 5 の *SOAP*
    拡張モジュールがインストールされて有効になっている必要があります。
 
-``Zend_Service_StrikeIron`` コンポーネントが提供する機能を以下にまとめます。
+``Zend\Service\StrikeIron`` コンポーネントが提供する機能を以下にまとめます。
 
 
 
@@ -73,10 +73,10 @@ StrikeIron のサービスは、 `PHP 5 の SOAP 拡張モジュール`_
 StrikeIron への登録
 ---------------
 
-``Zend_Service_StrikeIron`` を使用するには、まず StrikeIron
+``Zend\Service\StrikeIron`` を使用するには、まず StrikeIron
 開発者アカウントを取得するために `登録`_ する必要があります。
 
-登録したら、StrikeIron のユーザ名とパスワードを受け取ります。 ``Zend_Service_StrikeIron``
+登録したら、StrikeIron のユーザ名とパスワードを受け取ります。 ``Zend\Service\StrikeIron``
 で StrikeIron に接続する際には、 このユーザ名とパスワードを使用します。
 
 また、StrikeIron の Super Data Pack Web Service にも `登録`_ する必要があります。
@@ -90,9 +90,9 @@ StrikeIron への登録
 ----------
 
 StrikeIron のアカウントを `取得`_ して `Super Data Pack`_ にも参加したら、
-``Zend_Service_StrikeIron`` を使うための準備は完了です。
+``Zend\Service\StrikeIron`` を使うための準備は完了です。
 
-StrikeIron には何百ものさまざまなウェブサービスが存在します。 Zend_Service_StrikeIron
+StrikeIron には何百ものさまざまなウェブサービスが存在します。 Zend\Service\StrikeIron
 はこれらのサービスの多くで利用可能ですが、 特に以下の 3
 つについてはラッパークラスを用意しています。
 
@@ -102,14 +102,14 @@ StrikeIron には何百ものさまざまなウェブサービスが存在しま
 
 - :ref:`Sales & Use Tax Basic <zend.service.strikeiron.bundled-services.sales-use-tax-basic>`
 
-``Zend_Service_StrikeIron`` クラスには、 そのコンストラクタで StrikeIron
+``Zend\Service\StrikeIron`` クラスには、 そのコンストラクタで StrikeIron
 アカウント情報やその他のオプションを設定できます。 また、StrikeIron
 の各種サービス用のクライアントを帰すファクトリメソッドも用意しています。
 
    .. code-block:: php
       :linenos:
 
-      $strikeIron = new Zend_Service_StrikeIron(array('username' => 'あなたのユーザ名',
+      $strikeIron = new Zend\Service\StrikeIron(array('username' => 'あなたのユーザ名',
                                                       'password' => 'あなたのパスワード'));
 
       $taxBasic = $strikeIron->getService(array('class' => 'SalesUseTaxBasic'));
@@ -118,7 +118,7 @@ StrikeIron には何百ものさまざまなウェブサービスが存在しま
 
 ``getService()`` メソッドは、StrikeIron のサービス用のクライアントを帰します。引数には
 *PHP* のラッパークラスの名前を指定します。 この場合の *SalesUseTaxBasic*
-は、ラッパークラス ``Zend_Service_StrikeIron_SalesUseTaxBasic``
+は、ラッパークラス ``Zend\Service_StrikeIron\SalesUseTaxBasic``
 を指しています。標準で組み込まれている 3 つのラッパーについては
 :ref:`バンドルされているサービス <zend.service.strikeiron.bundled-services>` で説明します。
 
@@ -137,7 +137,7 @@ StrikeIron には何百ものさまざまなウェブサービスが存在しま
    .. code-block:: php
       :linenos:
 
-      $strikeIron = new Zend_Service_StrikeIron(array('username' => 'あなたのユーザ名',
+      $strikeIron = new Zend\Service\StrikeIron(array('username' => 'あなたのユーザ名',
                                                       'password' => 'あなたのパスワード'));
 
       // Sales & Use Tax Basic サービス用のクライアントを取得します
@@ -172,7 +172,7 @@ StrikeIron サービスについての詳細は :ref:`バンドルされてい�
 
 StrikeIron サービスについて学習したりデバッグしたりする際には、
 メソッドから返された内容を出力できると便利です。 メソッドの返り値は常に
-``Zend_Service_StrikeIron_Decorator`` のインスタンスとなります。 これはちょっとした
+``Zend\Service_StrikeIron\Decorator`` のインスタンスとなります。 これはちょっとした
 `デコレータ`_ オブジェクトであり、メソッドのコール結果をラップしています。
 
 サービスが返した結果を調べる最も単純な方法は、 `print_r()`_ のような *PHP*
@@ -182,7 +182,7 @@ StrikeIron サービスについて学習したりデバッグしたりする際
       :linenos:
 
       <?php
-      $strikeIron = new Zend_Service_StrikeIron(array('username' => 'あなたのユーザ名',
+      $strikeIron = new Zend\Service\StrikeIron(array('username' => 'あなたのユーザ名',
                                                       'password' => 'あなたのパスワード'));
 
       $taxBasic = $strikeIron->getService(array('class' => 'SalesUseTaxBasic'));
@@ -191,7 +191,7 @@ StrikeIron サービスについて学習したりデバッグしたりする際
       print_r($rateInfo);
       ?>
 
-      Zend_Service_StrikeIron_Decorator Object
+      Zend\Service_StrikeIron\Decorator Object
       (
           [_name:protected] => GetTaxRateCanadaResult
           [_object:protected] => stdClass Object
@@ -243,7 +243,7 @@ StrikeIron はエラーを発します。
    .. code-block:: php
       :linenos:
 
-      $strikeIron = new Zend_Service_StrikeIron(array('username' => 'あなたのユーザ名',
+      $strikeIron = new Zend\Service\StrikeIron(array('username' => 'あなたのユーザ名',
                                                       'password' => 'あなたのパスワード'));
 
       $taxBasic = $strikeIron->getService(array('class' => 'SalesUseTaxBasic'));
@@ -252,14 +252,14 @@ StrikeIron はエラーを発します。
 
         $taxBasic->getTaxRateCanada(array('province' => 'ontario'));
 
-      } catch (Zend_Service_StrikeIron_Exception $e) {
+      } catch (Zend\Service_StrikeIron\Exception $e) {
 
         // 接続時のエラーなどの場合の
         // エラー処理をここで行います
 
       }
 
-スローされる例外は、常に ``Zend_Service_StrikeIron_Exception`` となります。
+スローされる例外は、常に ``Zend\Service_StrikeIron\Exception`` となります。
 
 メソッドコール時の通常の失敗と例外の違いはしっかり把握しておきましょう。
 例外が発生するのは、 **例外的な**
@@ -292,7 +292,7 @@ StrikeIron にはさまざまなサービスがあります。
       :linenos:
 
       // Sales & Use Tax Basic サービス用のクライアントを取得します
-      $strikeIron = new Zend_Service_StrikeIron(array('username' => 'あなたのユーザ名',
+      $strikeIron = new Zend\Service\StrikeIron(array('username' => 'あなたのユーザ名',
                                                       'password' => 'あなたのパスワード'));
 
       $taxBasic = $strikeIron->getService(array('class => 'SalesUseTaxBasic'));

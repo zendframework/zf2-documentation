@@ -174,7 +174,7 @@ le prompteur shell) :
 
 Cette ligne unique (coupée en deux pour la lisibilité) itère parmi les fichiers PHP et y remplace toute les
 instances de *require_once* par *//require_once*, c'est-à-dire en commentant toutes ces lignes (tout en maintenant
-les appels à ``require_once`` dans ``Zend_Application`` et ``Zend_Loader_Autoloader``, puisque ces classes
+les appels à ``require_once`` dans ``Zend_Application`` et ``Zend\Loader\Autoloader``, puisque ces classes
 tomberont en erreur sans ceux-ci).
 
 Cette commande peut être simplement ajoutée à un script de construction automatique ou à un processus de mise
@@ -186,7 +186,7 @@ votre fichier ``public/index.php`` en ajoutant le code suivant :
    :linenos:
 
    require_once 'Zend/Loader/Autoloader.php';
-   Zend_Loader_Autoloader::getInstance();
+   Zend\Loader\Autoloader::getInstance();
 
 .. _performance.classloading.pluginloader:
 
@@ -208,13 +208,13 @@ l'imaginer, tout ceci entraîne des appels aux stats du système de fichiers.
 Multipliez ceci par le nombre de composants qui utilisent le PluginLoader, et vous aurez une idée de l'importance
 de ce problème. Au moment de l'écriture de ce document, les composants suivants utilisent le PluginLoader :
 
-- ``Zend_Controller_Action_HelperBroker``\  : aides d'action
+- ``Zend\Controller_Action\HelperBroker``\  : aides d'action
 
-- ``Zend_File_Transfer``\  : adaptateurs
+- ``Zend\File\Transfer``\  : adaptateurs
 
-- ``Zend_Filter_Inflector``\  : filtres (utilisé par l'aide d'action *ViewRenderer* et ``Zend_Layout``)
+- ``Zend\Filter\Inflector``\  : filtres (utilisé par l'aide d'action *ViewRenderer* et ``Zend_Layout``)
 
-- ``Zend_Filter_Input``\  : filtres et validateurs
+- ``Zend\Filter\Input``\  : filtres et validateurs
 
 - ``Zend_Form``\  : éléments, validateurs, filtres, décorateurs, captcha et adaptateur pour les transferts de
   fichiers

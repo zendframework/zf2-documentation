@@ -1,11 +1,11 @@
 .. EN-Revision: none
 .. _zend.form.elements:
 
-Zend_Form_Element を用いたフォーム要素の作成
+Zend\Form\Element を用いたフォーム要素の作成
 ===============================
 
 フォームは、いくつかの要素から構成されています。 これらの要素は、 *HTML*
-フォームの入力項目に対応します。 ``Zend_Form_Element``
+フォームの入力項目に対応します。 ``Zend\Form\Element``
 は個々のフォーム要素をカプセル化し、 以下の機能を提供します。
 
 - バリデーション (入力されたデータが妥当か?)
@@ -18,7 +18,7 @@ Zend_Form_Element を用いたフォーム要素の作成
 
 - メタデータおよび属性 (その要素についての詳細な情報は?)
 
-基底クラスである ``Zend_Form_Element`` は、
+基底クラスである ``Zend\Form\Element`` は、
 ほとんどの場合にうまく利用できるデフォルトを定義しています。
 しかし、よく使われる特別な要素については
 それを継承したクラスを作成するほうがいいでしょう。 さらに、Zend Framework
@@ -30,7 +30,7 @@ Zend_Form_Element を用いたフォーム要素の作成
 プラグインローダー
 ---------
 
-``Zend_Form_Element`` は、 :ref:`Zend_Loader_PluginLoader <zend.loader.pluginloader>`
+``Zend\Form\Element`` は、 :ref:`Zend\Loader\PluginLoader <zend.loader.pluginloader>`
 を使用しており、バリデータやフィルタ、デコレータの場所を指定できます。
 それぞれに独自のプラグインローダーが関連付けられており、
 アクセサを使用して個別に取得したり変更したりできます。
@@ -79,7 +79,7 @@ Zend_Form_Element を用いたフォーム要素の作成
 .. code-block:: php
    :linenos:
 
-   class My_Decorator_Label extends Zend_Form_Decorator_Abstract
+   class My_Decorator_Label extends Zend\Form_Decorator\Abstract
    {
        protected $_placement = 'PREPEND';
 
@@ -149,7 +149,7 @@ Zend_Form_Element を用いたフォーム要素の作成
 タグを除去した後の内容を検証したりといった場合です。
 あるいは、入力の前後に含まれるスペースを取り除いてから検証を行わないと
 StringLength バリデータが正しい判断をできないなどという場合もあります。
-これらの操作は ``Zend_Filter`` が行います。 ``Zend_Form_Element``
+これらの操作は ``Zend_Filter`` が行います。 ``Zend\Form\Element``
 はフィルタチェインをサポートしているので、 複数のフィルタを順に適用できます。
 フィルタリングは、バリデーションの際や要素の値を *getValue()*
 で取得する際に行われます。
@@ -171,10 +171,10 @@ StringLength バリデータが正しい判断をできないなどという場�
    :linenos:
 
    // フィルタのインスタンス
-   $element->addFilter(new Zend_Filter_Alnum());
+   $element->addFilter(new Zend\Filter\Alnum());
 
    // 完全なクラス名
-   $element->addFilter('Zend_Filter_Alnum');
+   $element->addFilter('Zend\Filter\Alnum');
 
    // 短い形式のフィルタ名
    $element->addFilter('Alnum');
@@ -189,8 +189,8 @@ StringLength バリデータが正しい判断をできないなどという場�
    **独自のフィルタクラスの使用**
 
    自作のフィルタクラスを使う場合は、 *addPrefixPath()* を用いてそれを
-   ``Zend_Form_Element`` に教えます。 たとえば、'My_Filter'
-   プレフィックス配下のフィルタを使う場合は ``Zend_Form_Element``
+   ``Zend\Form\Element`` に教えます。 たとえば、'My_Filter'
+   プレフィックス配下のフィルタを使う場合は ``Zend\Form\Element``
    に次のように通知します。
 
    .. code-block:: php
@@ -235,7 +235,7 @@ StringLength バリデータが正しい判断をできないなどという場�
 セキュリティ界で有名なお言葉 "入力はフィルタリングせよ。
 出力はエスケープせよ。" に賛同する人なら、フォームの入力を検証
 ("入力のフィルタリング") したくなるでしょう。 ``Zend_Form``
-では、各要素が個別にバリデータチェインを保持しています。 これは ``Zend_Validate_*``
+では、各要素が個別にバリデータチェインを保持しています。 これは ``Zend\Validate\*``
 のバリデータでできています。
 
 バリデータをチェインに追加する方法は、次のふたつです。
@@ -250,7 +250,7 @@ StringLength バリデータが正しい判断をできないなどという場�
    :linenos:
 
    // バリデータのインスタンス
-   $element->addValidator(new Zend_Validate_Alnum());
+   $element->addValidator(new Zend\Validate\Alnum());
 
    // 短い形式の名前
    $element->addValidator('Alnum');
@@ -265,8 +265,8 @@ StringLength バリデータが正しい判断をできないなどという場�
    **独自のバリデータクラスの使用**
 
    自作のバリデータクラスを使う場合は、 *addPrefixPath()* を用いてそれを
-   ``Zend_Form_Element`` に教えます。 たとえば、'My_Validator'
-   プレフィックス配下のバリデータを使う場合は ``Zend_Form_Element``
+   ``Zend\Form\Element`` に教えます。 たとえば、'My_Validator'
+   プレフィックス配下のバリデータを使う場合は ``Zend\Form\Element``
    に次のように通知します。
 
    .. code-block:: php
@@ -296,26 +296,26 @@ StringLength バリデータが正しい判断をできないなどという場�
    $element->addValidator('StringLength', false, array(6, 20));
 
 この方式で引数を渡す場合は、コンストラクタで定義されているとおりの順で指定する必要があります。
-上の例では、 ``Zend_Validate_StringLenth`` クラスのインスタンスを作成する際にパラメータ
+上の例では、 ``Zend\Validate\StringLenth`` クラスのインスタンスを作成する際にパラメータ
 *$min* と *$max* を指定しています。
 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(6, 20);
+   $validator = new Zend\Validate\StringLength(6, 20);
 
 .. note::
 
    **独自のバリデートエラーメッセージの指定**
 
    バリデータのエラーメッセージをカスタマイズしたいこともあるでしょう。
-   その場合は、 ``Zend_Form_Element::addValidator()`` の引数 *$options* で、キー 'messages'
+   その場合は、 ``Zend\Form\Element::addValidator()`` の引数 *$options* で、キー 'messages'
    にメッセージテンプレートを指定します。 これは キー/値
    のペアの配列となります。
    これを使用するには、そのバリデータのさまざまな検証エラーに対応する
    エラーコードを知っておく必要があります。
 
-   もっとよいやりかたは、 ``Zend_Translator_Adapter``
+   もっとよいやりかたは、 ``Zend\Translator\Adapter``
    をフォームで使用することでしょう。エラーコードは、
    デフォルトのエラーデコレータが自動的にアダプタに渡します。
    そこで、バリデータのエラーコードに対応する翻訳文字列を設定すればいいのです。
@@ -381,16 +381,16 @@ StringLength バリデータが正しい判断をできないなどという場�
 
    **フィルタリング後の値の検証**
 
-   ``Zend_Form_Element::isValid()`` は、 フィルタチェインを通した後の値を検証します。
+   ``Zend\Form\Element::isValid()`` は、 フィルタチェインを通した後の値を検証します。
    詳細は :ref:`フィルタの説明 <zend.form.elements.filters>` を参照ください。
 
 .. note::
 
    **バリデーションコンテキスト**
 
-   ``Zend_Form_Element::isValid()`` は、 追加の引数 *$context* をサポートしています。
-   ``Zend_Form::isValid()`` は、 フォームをバリデートする際にデータの配列を *$context*
-   に渡します。一方、 ``Zend_Form_Element::isValid()``
+   ``Zend\Form\Element::isValid()`` は、 追加の引数 *$context* をサポートしています。
+   ``Zend\Form\Form::isValid()`` は、 フォームをバリデートする際にデータの配列を *$context*
+   に渡します。一方、 ``Zend\Form\Element::isValid()``
    はそれを個々のバリデータに渡します。
    つまり、他の要素に渡された内容を使用するバリデータも作成できるということです。
    たとえば、パスワードの確認用の入力欄を持つ登録フォームを考えてみましょう。
@@ -401,7 +401,7 @@ StringLength バリデータが正しい判断をできないなどという場�
    .. code-block:: php
       :linenos:
 
-      class My_Validate_PasswordConfirmation extends Zend_Validate_Abstract
+      class My_Validate_PasswordConfirmation extends Zend\Validate\Abstract
       {
           const NOT_MATCH = 'notMatch';
 
@@ -474,9 +474,9 @@ the behavior of your validator chain can be modified in a number of ways:
 
 .. note::
 
-   **Zend_Form_Elements の汎用バリデータとしての使用法**
+   **Zend\Form\Elements の汎用バリデータとしての使用法**
 
-   ``Zend_Form_Element`` は ``Zend_Validate_Interface`` を実装しています。
+   ``Zend\Form\Element`` は ``Zend\Validate\Interface`` を実装しています。
    つまり、フォーム以外のバリデータチェインでも
    フォーム要素を使用できるということです。
 
@@ -485,11 +485,11 @@ the behavior of your validator chain can be modified in a number of ways:
    **When is an element detected as empty?**
 
    As mentioned the 'NotEmpty' validator is used to detect if an element is empty or not. But
-   ``Zend_Validate_NotEmpty`` does, per default, not work like *PHP*'s method ``empty()``.
+   ``Zend\Validate\NotEmpty`` does, per default, not work like *PHP*'s method ``empty()``.
 
    This means when an element contains an integer **0** or an string **'0'** then the element will be seen as not
    empty. If you want to have a different behaviour you must create your own instance of
-   ``Zend_Validate_NotEmpty``. There you can define the behaviour of this validator. See `Zend_Validate_NotEmpty`_
+   ``Zend\Validate\NotEmpty``. There you can define the behaviour of this validator. See `Zend\Validate\NotEmpty`_
    for details.
 
 検証関係のメソッドを以下にまとめます。
@@ -576,20 +576,20 @@ the behavior of your validator chain can be modified in a number of ways:
 ユーザの使いやすさを考慮して検証エラーメッセージも表示させなければなりません。
 要素の数が増えれば増えるほど、この作業量は無視できなくなります。
 
-``Zend_Form_Element`` は、この問題を解決するために "デコレータ"
+``Zend\Form\Element`` は、この問題を解決するために "デコレータ"
 を使用します。デコレータは、
 要素にアクセスしてその中身をレンダリングするためのメソッドを持つクラスです。
-デコレータの動作原理については、 :ref:`Zend_Form_Decorator <zend.form.decorators>`
+デコレータの動作原理については、 :ref:`Zend\Form\Decorator <zend.form.decorators>`
 のセクションを参照ください。
 
-``Zend_Form_Element`` がデフォルトで使用するデコレータは次のとおりです。
+``Zend\Form\Element`` がデフォルトで使用するデコレータは次のとおりです。
 
 - **ViewHelper**: 要素のレンダリング用のビューヘルパーを指定します。 要素の 'helper'
   属性を使用して、どのヘルパーを使用するのかを指定します。 デフォルトで
-  ``Zend_Form_Element`` は 'formText' ビューヘルパーを使用しますが、
+  ``Zend\Form\Element`` は 'formText' ビューヘルパーを使用しますが、
   サブクラスで別のヘルパーを指定することもできます。
 
-- **Errors**: ``Zend_View_Helper_FormErrors``
+- **Errors**: ``Zend\View_Helper\FormErrors``
   を用いて要素の後にエラーメッセージを追加します。
   エラーが発生していない場合は何も行いません。
 
@@ -599,7 +599,7 @@ the behavior of your validator chain can be modified in a number of ways:
 
 - **HtmlTag**: ラベルや要素、そしてエラーメッセージを *HTML* の <dd> タグで囲みます。
 
-- **Label**: ``Zend_View_Helper_FormLabel`` を用いて要素の前にラベルを追加し、それを <dt>
+- **Label**: ``Zend\View_Helper\FormLabel`` を用いて要素の前にラベルを追加し、それを <dt>
   タグで囲みます。
   ラベルが存在しない場合は、用語定義タグのみをレンダリングします。
 
@@ -615,7 +615,7 @@ the behavior of your validator chain can be modified in a number of ways:
    .. code-block:: php
       :linenos:
 
-      $element = new Zend_Form_Element('foo',
+      $element = new Zend\Form\Element('foo',
                                        array('disableLoadDefaultDecorators' =>
                                             true)
                                       );
@@ -667,14 +667,14 @@ the behavior of your validator chain can be modified in a number of ways:
        </p>
    </dd>
 
-デコレータについての詳細な情報は :ref:`Zend_Form_Decorator のセクション
+デコレータについての詳細な情報は :ref:`Zend\Form\Decorator のセクション
 <zend.form.decorators>` を参照ください。
 
 .. note::
 
    **同じ型の複数のデコレータの使用法**
 
-   内部的には、 ``Zend_Form_Element``
+   内部的には、 ``Zend\Form\Element``
    はデコレータのクラス名をもとにしてデコレータを取得しています。
    つまり、同じ型のデコレータを複数登録することはできないということです。
    複数回登録すると、それまでに登録されていたデコレータを上書きします。
@@ -729,7 +729,7 @@ the behavior of your validator chain can be modified in a number of ways:
 
 - *clearDecorators()* (すべてのデコレータを削除します)
 
-``Zend_Form_Element`` は、
+``Zend\Form\Element`` は、
 オーバーロードを使用して特定のデコレータをレンダリングすることもできます。
 'render' で始まる名前のメソッドを *__call()*
 で捕捉し、メソッド名の残りの部分にもとづいてデコレータを探します。
@@ -753,7 +753,7 @@ the behavior of your validator chain can be modified in a number of ways:
 メタデータおよび属性
 ----------
 
-``Zend_Form_Element`` は、 要素の属性やメタデータを処理できます。
+``Zend\Form\Element`` は、 要素の属性やメタデータを処理できます。
 基本的な属性には次のようなものがあります。
 
 - **name**: 要素名。 *setName()* および *getName()* でアクセスします。
@@ -797,7 +797,7 @@ the behavior of your validator chain can be modified in a number of ways:
 - **getAttribs()**: すべての属性を キー/値 のペアで取得します。
 
 しかし、たいていの場合はもっとシンプルにオブジェクトのプロパティとしてアクセスすることになるでしょう。
-``Zend_Form_Element`` はオーバーロードを使用してこの機能を実現しています。
+``Zend\Form\Element`` はオーバーロードを使用してこの機能を実現しています。
 
 .. code-block:: php
    :linenos:
@@ -819,10 +819,10 @@ the behavior of your validator chain can be modified in a number of ways:
 
 .. _zend.form.elements.methods:
 
-Zend_Form_Element のメソッド
+Zend\Form\Element のメソッド
 -----------------------
 
-``Zend_Form_Element`` には非常にたくさんのメソッドがあります。
+``Zend\Form\Element`` には非常にたくさんのメソッドがあります。
 以下に、それらのシグネチャを種類別に分けて簡単にまとめました。
 
 - 設定
@@ -833,7 +833,7 @@ Zend_Form_Element のメソッド
 
 - I18n
 
-  - ``setTranslator(Zend_Translator_Adapter $translator = null)``
+  - ``setTranslator(Zend\Translator\Adapter $translator = null)``
 
   - ``getTranslator()``
 
@@ -893,7 +893,7 @@ Zend_Form_Element のメソッド
 
 - プラグインローダーとパス
 
-  - ``setPluginLoader(Zend_Loader_PluginLoader_Interface $loader, $type)``
+  - ``setPluginLoader(Zend\Loader_PluginLoader\Interface $loader, $type)``
 
   - ``getPluginLoader($type)``
 
@@ -941,7 +941,7 @@ Zend_Form_Element のメソッド
 
 - レンダリング
 
-  - ``setView(Zend_View_Interface $view = null)``
+  - ``setView(Zend\View\Interface $view = null)``
 
   - ``getView()``
 
@@ -959,18 +959,18 @@ Zend_Form_Element のメソッド
 
   - ``clearDecorators()``
 
-  - ``render(Zend_View_Interface $view = null)``
+  - ``render(Zend\View\Interface $view = null)``
 
 .. _zend.form.elements.config:
 
 設定
 --
 
-``Zend_Form_Element`` のコンストラクタには、配列あるいは ``Zend_Config``
+``Zend\Form\Element`` のコンストラクタには、配列あるいは ``Zend_Config``
 オブジェクトでオプションを指定できます。 また、 ``setOptions()`` や ``setConfig()``
 で設定を変更することもできます。 一般に、キーの名前は次のようになります。
 
-- 'set' + キーの名前のメソッドが ``Zend_Form_Element``
+- 'set' + キーの名前のメソッドが ``Zend\Form\Element``
   にあれば、値をそのメソッドに渡します。
 
 - それ以外の場合は、属性を使用して値を設定します。
@@ -1030,7 +1030,7 @@ Zend_Form_Element のメソッド
 カスタム要素
 ------
 
-独自の要素を作成するには ``Zend_Form_Element`` クラスを継承したクラスを作成します。
+独自の要素を作成するには ``Zend\Form\Element`` クラスを継承したクラスを作成します。
 独自の要素を作成することになるのは、たとえば次のような場合です。
 
 - 共通のバリデータやフィルタを持つ要素を作成する
@@ -1050,7 +1050,7 @@ Zend_Form_Element のメソッド
 .. code-block:: php
    :linenos:
 
-   class My_Element_Text extends Zend_Form_Element
+   class My_Element_Text extends Zend\Form\Element
    {
        public function init()
        {
@@ -1076,7 +1076,7 @@ Zend_Form_Element のメソッド
 'foo' 要素はこれで ``My_Element_Text``
 型となりました。先ほど説明したような機能を持つテキストボックスです。
 
-``Zend_Form_Element`` を継承したクラスでオーバーライドしたくなる
+``Zend\Form\Element`` を継承したクラスでオーバーライドしたくなる
 その他のメソッドとして、 ``loadDefaultDecorators()``
 があります。このメソッドは、条件付きで
 要素にデフォルトのデコレータセットを読み込みます。
@@ -1085,7 +1085,7 @@ Zend_Form_Element のメソッド
 .. code-block:: php
    :linenos:
 
-   class My_Element_Text extends Zend_Form_Element
+   class My_Element_Text extends Zend\Form\Element
    {
        public function loadDefaultDecorators()
        {
@@ -1097,9 +1097,9 @@ Zend_Form_Element のメソッド
        }
    }
 
-要素のカスタマイズにはさまざまな方法があります。 ``Zend_Form_Element`` の *API*
+要素のカスタマイズにはさまざまな方法があります。 ``Zend\Form\Element`` の *API*
 ドキュメントを熟読し、 どんな機能が使用できるのかを覚えていきましょう。
 
 
 
-.. _`Zend_Validate_NotEmpty`: zend.validate.set.notempty
+.. _`Zend\Validate\NotEmpty`: zend.validate.set.notempty

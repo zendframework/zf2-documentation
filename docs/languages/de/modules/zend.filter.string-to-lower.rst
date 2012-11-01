@@ -9,7 +9,7 @@ Dieser Filter konvertiert alle Eingabe so das Sie kleingeschrieben sind.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringToLower();
+   $filter = new Zend\Filter\StringToLower();
 
    print $filter->filter('SAMPLE');
    // gibt "sample" zurück
@@ -24,11 +24,11 @@ Kodierung im Nachhinein zu ändern.
    :linenos:
 
    // Verwendung von UTF-8
-   $filter = new Zend_Filter_StringToLower('UTF-8');
+   $filter = new Zend\Filter\StringToLower('UTF-8');
 
    // Oder ein Array angeben was bei der Verwendung einer
    // Konfiguration nützlich sein kann
-   $filter = new Zend_Filter_StringToLower(array('encoding' => 'UTF-8'));
+   $filter = new Zend\Filter\StringToLower(array('encoding' => 'UTF-8'));
 
    // Oder im Nachinein
    $filter->setEncoding('ISO-8859-1');

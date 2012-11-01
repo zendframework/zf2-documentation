@@ -4,8 +4,8 @@
 Consommer un flux Atom
 ======================
 
-La classe ``Zend_Feed_Atom`` est utilisée pratiquement de la même manière que ``Zend_Feed_Rss``. Tout comme
-``Zend_Feed_Rss``, elle offre aussi un accès aux propriétés du flux et elle permet d'itérer sur les entrées du
+La classe ``Zend\Feed\Atom`` est utilisée pratiquement de la même manière que ``Zend\Feed\Rss``. Tout comme
+``Zend\Feed\Rss``, elle offre aussi un accès aux propriétés du flux et elle permet d'itérer sur les entrées du
 flux. La différence principale réside dans la structure du protocole Atom lui-même. Atom est le successeur de
 *RSS*\  ; c'est un protocole plus général et il est conçu pour prendre en charge plus facilement les flux qui
 incluent directement leur contenu, et ce en divisant la balise *RSS* *description* en deux éléments : *summary*
@@ -13,7 +13,7 @@ incluent directement leur contenu, et ce en divisant la balise *RSS* *descriptio
 
 .. _zend.feed.consuming-atom.example.usage:
 
-.. rubric:: Emploi basique de Zend_Feed_Atom
+.. rubric:: Emploi basique de Zend\Feed\Atom
 
 Pour lire un flux Atom et afficher le titre (propriété *title*) et le résumé (propriété *summary*) de chaque
 entrée :
@@ -21,7 +21,7 @@ entrée :
 .. code-block:: php
    :linenos:
 
-   $flux = new Zend_Feed_Atom('http://atom.exemple.com/flux/');
+   $flux = new Zend\Feed\Atom('http://atom.exemple.com/flux/');
    echo 'Le flux contient ' . $flux->count() . ' entrée(s).' . "\n\n";
    foreach ($flux as $entree) {
        echo 'Titre : ' . $entree->title() . "\n";

@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.progressbar.adapter.jspush:
 
-Zend_ProgressBar_Adapter_JsPush
+Zend\ProgressBar_Adapter\JsPush
 ===============================
 
-``Zend_ProgressBar_Adapter_JsPush`` は、 ブラウザ内のプログレスバーを Javascript の Push
+``Zend\ProgressBar_Adapter\JsPush`` は、 ブラウザ内のプログレスバーを Javascript の Push
 で更新するアダプタです。
 つまり、実行中のプロセスの情報を取得するために改めて接続を行う必要がなく、
 そのプロセス自身が状況を直接ブラウザに送信するということです。
@@ -14,7 +14,7 @@ Zend_ProgressBar_Adapter_JsPush
 ``Zend_Config`` インスタンスを渡します。 使用できるオプションは次のとおりです。
 
 - *updateMethodName*: 毎回の更新時にコールされる javascript のメソッド。 デフォルト値は
-  ``Zend_ProgressBar_Update`` です。
+  ``Zend\ProgressBar\Update`` です。
 
 - *finishMethodName*: 状態を設定した後にコールされる javascript のメソッド。
   デフォルト値は ``NULL`` で、この場合は何も行われません。
@@ -88,7 +88,7 @@ json オブジェクトには次のパラメータが含まれています。
 .. code-block:: javascript
    :linenos:
 
-   function Zend_ProgressBar_Update(data)
+   function Zend\ProgressBar\Update(data)
    {
        document.getElementById('zend-progressbar-done').style.width =
             data.percent + '%';

@@ -9,7 +9,7 @@ StringToUpper
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringToUpper();
+   $filter = new Zend\Filter\StringToUpper();
 
    print $filter->filter('Sample');
    // "SAMPLE" を返します
@@ -21,7 +21,7 @@ StringToUpper
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringToUpper(array('encoding' => 'UTF-8'));
+   $filter = new Zend\Filter\StringToUpper(array('encoding' => 'UTF-8'));
 
    //または後でこのようにします
    $filter->setEncoding('ISO-8859-1');

@@ -4,7 +4,7 @@
 Introducción
 ============
 
-``Zend_Amf`` provee apoyo para el Formato de Mensajes de ActionScript `Action Message Format`_ (*AMF*) de Adobe,
+``ZendAmf`` provee apoyo para el Formato de Mensajes de ActionScript `Action Message Format`_ (*AMF*) de Adobe,
 que permite la comunicación entre Adobe `Flash Player`_ y *PHP*. Específicamente, proporciona una aplicación
 para un servidor gateway que tramita las solicitudes enviadas desde Flash Player al servidor, mapeando estos
 requerimientos al objeto y a sus métodos de clase, como así también a llamadas arbitrarias de comunicación.

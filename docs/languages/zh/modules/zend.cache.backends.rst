@@ -6,7 +6,7 @@ Zend_Cache后端
 
 .. _zend.cache.backends.file:
 
-Zend_Cache_Backend_File
+Zend\Cache_Backend\File
 -----------------------
 
 此后端把缓存纪录存储到文件中去(在一个选定的目录中).
@@ -41,7 +41,7 @@ Zend_Cache_Backend_File
 
 .. _zend.cache.backends.sqlite:
 
-Zend_Cache_Backend_Sqlite
+Zend\Cache_Backend\Sqlite
 -------------------------
 
 此后端把缓存纪录存储到SQLite数据库中.
@@ -62,7 +62,7 @@ Zend_Cache_Backend_Sqlite
 
 .. _zend.cache.backends.memcached:
 
-Zend_Cache_Backend_Memcached
+Zend\Cache_Backend\Memcached
 ----------------------------
 
 本后端把缓存纪录存储到memcached服务器. `memcached`_
@@ -87,7 +87,7 @@ Zend_Cache_Backend_Memcached
 
 .. _zend.cache.backends.apc:
 
-Zend_Cache_Backend_Apc
+Zend\Cache_Backend\Apc
 ----------------------
 
 此后端通过 `APC`_ (Alternative PHP Cache) 扩展把缓存纪录存储于共享内存中
@@ -99,7 +99,7 @@ Zend_Cache_Backend_Apc
 
 .. _zend.cache.backends.xcache:
 
-Zend_Cache_Backend_Xcache
+Zend\Cache_Backend\Xcache
 -------------------------
 
 整个后端通过 `XCache`_ 扩展（它当然需要使用这个后端）
@@ -123,20 +123,20 @@ Zend_Cache_Backend_Xcache
 
 .. _zend.cache.backends.platform:
 
-Zend_Cache_Backend_ZendPlatform
+Zend\Cache_Backend\ZendPlatform
 -------------------------------
 
 本后端使用 `Zend Platform`_\ 产品的内容缓存API. 要使用此后端必须安装Zend Platform.
 
 本后端支持标记(tags),但不支持 *CLEANING_MODE_NOT_MATCHING_TAG*\ 清除模式.
 
-当使用 *Zend_Cache::factory()*\ 方法时,在字 'Zend' 和 'Platform'之间使用字分隔符-- '-', '.', ' ',
+当使用 *Zend\Cache\Cache::factory()*\ 方法时,在字 'Zend' 和 'Platform'之间使用字分隔符-- '-', '.', ' ',
 or '\_'指定此后端:
 
 .. code-block:: php
    :linenos:
 
-   $cache = Zend_Cache::factory('Core', 'Zend Platform');
+   $cache = Zend\Cache\Cache::factory('Core', 'Zend Platform');
 
 
 此后端没有选项.

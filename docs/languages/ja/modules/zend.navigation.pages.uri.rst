@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.navigation.pages.uri:
 
-Zend_Navigation_Page_Uri
+Zend\Navigation_Page\Uri
 ========================
 
-``Zend_Navigation_Page_Uri``\ タイプの画面は、
+``Zend\Navigation_Page\Uri``\ タイプの画面は、
 他のドメインやサイトの画面にリンクするためや、、
 画面にカスタムロジックを実装したりするために使われることができます。 *URI*\
 画面は単純です; 画面の共通オプションに加えて、 *URI*\
@@ -13,7 +13,7 @@ Zend_Navigation_Page_Uri
 
 .. note::
 
-   ``Zend_Navigation_Page_Uri``\ は *$page->isActive()*\
+   ``Zend\Navigation_Page\Uri``\ は *$page->isActive()*\
    を呼び出したときに活動状態かどうか決定しようとはしません。
    ただ単に現在設定されているものを返すだけで、 *URI*\
    画面を活動状態にするには、 手動で *$page->setActive()*\ を呼び出すか、

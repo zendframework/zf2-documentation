@@ -28,7 +28,7 @@ champ login et password puis vérification en base de données. Cet exemple supp
 
 ``Zend_Auth`` effectue deux tâches. D'abord elle doit récupérer un adaptateur d'authentification afin de
 déclencher le processus d'authentification, puis si celui-ci est correct, elle doit faire persister ces
-informations entre requêtes. Pour assurer cette persistance, ``Zend_Auth`` utilise un ``Zend_Session_Namespace``,
+informations entre requêtes. Pour assurer cette persistance, ``Zend_Auth`` utilise un ``Zend\Session\Namespace``,
 mais en général vous n'aurez pas besoin d'agir sur cet objet.
 
 Supposant une table de base de données suivante:
@@ -91,7 +91,7 @@ Le code suivant montre comment construire l'adaptateur d'authentification et l'i
 .. code-block:: php
    :linenos:
 
-   class AuthController extends Zend_Controller_Action
+   class AuthController extends Zend\Controller\Action
    {
 
        public function loginAction()
@@ -102,7 +102,7 @@ Le code suivant montre comment construire l'adaptateur d'authentification et l'i
 
            if ($loginForm->isValid()) {
 
-               $adapter = new Zend_Auth_Adapter_DbTable(
+               $adapter = new Zend\Auth_Adapter\DbTable(
                    $db,
                    'users',
                    'username',

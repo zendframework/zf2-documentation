@@ -9,12 +9,12 @@ LDAP 认证
 简介
 --
 
-*Zend_Auth_Adapter_Ldap* 用 LDAP 服务支持 web
+*Zend\Auth_Adapter\Ldap* 用 LDAP 服务支持 web
 程序认证。它的功能包括用户名和域名规范化、多域认证和实效切（failover）换能力。经测试，它能与
 `Microsoft Active Directory`_ 和 `OpenLDAP`_ 一起工作，它也应该能和其它 LDAP
 服务提供者一起工作。
 
-本文档包括使用 *Zend_Auth_Adapter_Ldap* 的指南、它的 API
+本文档包括使用 *Zend\Auth_Adapter\Ldap* 的指南、它的 API
 、各种可用选项的大纲、认证问题故障排除的诊断信息和Active Directory 与 OpenLDAP
 服务器的范例选项。
 
@@ -23,7 +23,7 @@ LDAP 认证
 用法
 --
 
-为了快速把 *Zend_Auth_Adapter_Ldap* 认证集成到你的程序中，即使你不使用 *Zend_Controller*\
+为了快速把 *Zend\Auth_Adapter\Ldap* 认证集成到你的程序中，即使你不使用 *Zend_Controller*\
 ，代码的基本部分看起来是这样的：
 
    .. code-block:: php
@@ -32,15 +32,15 @@ LDAP 认证
       $username = $this->_request->getParam('username');
       $password = $this->_request->getParam('password');
 
-      $auth = Zend_Auth::getInstance();
+      $auth = Zend\Auth\Auth::getInstance();
 
-      $config = new Zend_Config_Ini('../application/config/config.ini',
+      $config = new Zend\Config\Ini('../application/config/config.ini',
                                     'production');
       $log_path = $config->ldap->log_path;
       $options = $config->ldap->toArray();
       unset($options['log_path']);
 
-      $adapter = new Zend_Auth_Adapter_Ldap($options, $username,
+      $adapter = new Zend\Auth_Adapter\Ldap($options, $username,
                                             $password);
 
       $result = $auth->authenticate($adapter);
@@ -48,30 +48,30 @@ LDAP 认证
       if ($log_path) {
           $messages = $result->getMessages();
 
-          $logger = new Zend_Log();
-          $logger->addWriter(new Zend_Log_Writer_Stream($log_path));
-          $filter = new Zend_Log_Filter_Priority(Zend_Log::DEBUG);
+          $logger = new Zend\Log\Log();
+          $logger->addWriter(new Zend\Log_Writer\Stream($log_path));
+          $filter = new Zend\Log_Filter\Priority(Zend\Log\Log::DEBUG);
           $logger->addFilter($filter);
 
           foreach ($messages as $i => $message) {
               if ($i-- > 1) { // $messages[2] and up are log messages
                   $message = str_replace("\n", "\n  ", $message);
-                  $logger->log("Ldap: $i: $message", Zend_Log::DEBUG);
+                  $logger->log("Ldap: $i: $message", Zend\Log\Log::DEBUG);
               }
           }
       }
 
 
-虽然日志（ logging ）代码是可选的，还是强烈建议使用日志。 *Zend_Auth_Adapter_Ldap*
+虽然日志（ logging ）代码是可选的，还是强烈建议使用日志。 *Zend\Auth_Adapter\Ldap*
 将记录任何想要的信息细节到 *$messages*
 （更多的信息看下面），对于难以调试的程序来说，有历史记录这是个很好的功能。
 
-上面用到 *Zend_Config_Ini*
+上面用到 *Zend\Config\Ini*
 的代码是来加载适配器选项，它也是可选的，使用一个规则的数组来完成工作。下面是带有两个单独的服务器选项的
 *application/config/config.ini*
 文件的例子。带有多组服务器选项的适配器将按顺序来尝试每个服务器直到资格被成功认证。服务器的名字
 （例如 *server1* and *server2*\ ）是任意的，关于选项数组的细节，参见下面 **Server Options**
-一节。 注意 *Zend_Config_Ini* 要求任何带有等号（ *=*\ ）的值需要括起来（如下面的
+一节。 注意 *Zend\Config\Ini* 要求任何带有等号（ *=*\ ）的值需要括起来（如下面的
 DNs）。
 
    .. code-block:: php
@@ -100,7 +100,7 @@ DNs）。
       ldap.server2.baseDn = "CN=Users,DC=w,DC=net"
 
 
-上述的配置将指示 *Zend_Auth_Adapter_Ldap* 首先来尝试用 OpenLDAP 服务器 *s0.foo.net*
+上述的配置将指示 *Zend\Auth_Adapter\Ldap* 首先来尝试用 OpenLDAP 服务器 *s0.foo.net*
 来认证用户，如果不论什么原因认证失败，将尝试 AD 服务器 *dc1.w.net*\ 。
 
 这个配置示例了在不同的域的服务器的多域认证，也可以在同一域中用多个服务器来提供冗余。
@@ -114,7 +114,7 @@ Canonicalization** 一节）。
 The API
 -------
 
-*Zend_Auth_Adapter_Ldap* 构造器接受三个参数。
+*Zend\Auth_Adapter\Ldap* 构造器接受三个参数。
 
 *$options* 参数是必需的并且是一个包含一组或多组选项的数组。注意它是 :ref:`Zend_Ldap
 <zend.ldap>` 选项的 **数组的数组** 。即使你只使用一个 LDAP
@@ -178,20 +178,20 @@ INI 属性分隔符，XML 条目参考 '*&*' 等）的特殊字符。
    **非常详细的介绍 （The Gory Details）－ 在认证方法中到底发生了什么？**
 
    当调用 *authenticate()* 方法，适配器反复把每组服务器选项设置到内部 *Zend_Ldap*
-   实例并带用于认证的用户名和密码调用 *Zend_Ldap::bind()* 方法。 *Zend_Ldap*
+   实例并带用于认证的用户名和密码调用 *Zend\Ldap\Ldap::bind()* 方法。 *Zend_Ldap*
    类检查用户名是否在域中合格 （例如，有域的组件如 **alice@foo.net** 或 **FOO\alice**\
    ）。如果域存在，但它不匹配任何一种服务器的域名（ **foo.net** 或 **FOO**\
-   ），就抛出一个特殊的异常并由 *Zend_Auth_Adapter_Ldap*
+   ），就抛出一个特殊的异常并由 *Zend\Auth_Adapter\Ldap*
    捕捉，这样那个服务器就被忽略并且选择下个服务器选项。如果域名 **确实**
    匹配，但是如果用户没有提供一个合格的用户名， *Zend_Ldap*
    继续尝试绑定被提供的证书（credentials）。如果绑定不成功， *Zend_Ldap* 抛出一个由
-   *Zend_Auth_Adapter_Ldap* 捕捉的 *Zend_Ldap_Exception*
+   *Zend\Auth_Adapter\Ldap* 捕捉的 *Zend\Ldap\Exception*
    并尝试下一组服务器选项。如果绑定成功，反复尝试（迭代？(iteration)）就停止，并且适配器的
    *authenticate()*
    方法返回一个成功的结果。如果所有服务器选项都试过了而且都不成功，认证就失败了，
    *authenticate()* 返回一个失败的结果并带有最后一个尝试的错误消息。
 
-*Zend_Auth_Adapter_Ldap* 构造器的用户名和密码参数是要被认证的证书（例如，用户通过 HTML
+*Zend\Auth_Adapter\Ldap* 构造器的用户名和密码参数是要被认证的证书（例如，用户通过 HTML
 登录表单提供的证书（credentials））。另外，也可以通过 *setUsername()* 和 *setPassword()*
 方法来设置。
 
@@ -200,8 +200,8 @@ INI 属性分隔符，XML 条目参考 '*&*' 等）的特殊字符。
 服务器选项
 -----
 
-**在 Zend_Auth_Adapter_Ldap 的上下文中**
-的每组服务器选项包含下列选项，它们基本上不可修改地传递给 *Zend_Ldap::setOptions()*\ ：
+**在 Zend\Auth_Adapter\Ldap 的上下文中**
+的每组服务器选项包含下列选项，它们基本上不可修改地传递给 *Zend\Ldap\Ldap::setOptions()*\ ：
 
 
 
@@ -227,7 +227,7 @@ INI 属性分隔符，XML 条目参考 '*&*' 等）的特殊字符。
          +----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
          |baseDn                |定位所有被认证账户下的 DN，这个选项是必需的。如果你不能确定正确的 baseDn 值，可以用 DC= 组件从用户的 DNS 域来产生它，例如，如果用户的基本名是 alice@foo.net，DC=foo,DC=net 的 baseDn 应当工作。然而更精确的位置（例如 OU=Sales,DC=foo,DC=net ）将更有效。                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
          +----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-         |accountCanonicalForm  |一个是 2、3 或 4 的值，用来指示那个账户名在成功认证后需要规范化。值的解释具体如下：2 表示传统的用户名（例如 alice ），3 表示反斜杠式（backslash-style）名称（例如 FOO\\alice），或者 4 表示基本式用户名（例如 alice@foo.net）。缺省值为 4 （例如 alice@foo.net ）。例如，当值为 3，由 Zend_Auth_Result::getIdentity() （如果使用了 Zend_Auth，则是 Zend_Auth::getIdentity()，） 返回的身份（identity）将总是 FOO\\alice，不论 Alice 提供了什么格式，如 alice、 alice@foo.net、 FOO\\alice、FoO\\aLicE、 foo.net\\alice 等。见 Zend_Ldap 中的 Account Name Canonicalization 一节有更多的细节。注意当使用多组服务器选项时，建议但不要求所有服务器选项使用相同的 accountCanonicalForm，这样，用户名对于同一格式总是规范化的（例如，对于 AD 服务器规范化为 EXAMPLE\\username，但对于 OpenLDAP 服务器规范化为 username@example.com，对于程序的高水平（high-level）逻辑，这可能很不好用。）|
+         |accountCanonicalForm  |一个是 2、3 或 4 的值，用来指示那个账户名在成功认证后需要规范化。值的解释具体如下：2 表示传统的用户名（例如 alice ），3 表示反斜杠式（backslash-style）名称（例如 FOO\\alice），或者 4 表示基本式用户名（例如 alice@foo.net）。缺省值为 4 （例如 alice@foo.net ）。例如，当值为 3，由 Zend\Auth\Result::getIdentity() （如果使用了 Zend_Auth，则是 Zend\Auth\Auth::getIdentity()，） 返回的身份（identity）将总是 FOO\\alice，不论 Alice 提供了什么格式，如 alice、 alice@foo.net、 FOO\\alice、FoO\\aLicE、 foo.net\\alice 等。见 Zend_Ldap 中的 Account Name Canonicalization 一节有更多的细节。注意当使用多组服务器选项时，建议但不要求所有服务器选项使用相同的 accountCanonicalForm，这样，用户名对于同一格式总是规范化的（例如，对于 AD 服务器规范化为 EXAMPLE\\username，但对于 OpenLDAP 服务器规范化为 username@example.com，对于程序的高水平（high-level）逻辑，这可能很不好用。）|
          +----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
          |accountDomainName     |目标 LDAP 服务器的 FQDN 域名是一个授权（authority）（例如 example.com）。该选项用来规范化名字，这样用户提供的用户名可以为绑定按需转换。它也可用来决定是否服务器对用户名是一个授权（例如 accountDomainName 是 foo.net 并且用户提供了 bob@bar.net，将不查询服务器并导致一个错误）。该选项不是必需的，但如果不提供，那就不支持用户名为基本名（principal name）格式（例如 alice@foo.net）。强烈建议使用该选项，因为许多用例要求生成基本名格式。                                                                                                                                                                                                                                                                                                                                                      |
          +----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -252,8 +252,8 @@ INI 属性分隔符，XML 条目参考 '*&*' 等）的特殊字符。
 收集调试信息
 ------
 
-*Zend_Auth_Adapter_Ldap* 在它的 *authenticate()* 方法里收集调试信息。这个信息存储在
-*Zend_Auth_Result* 对象里。下面描述由 *Zend_Auth_Result::getMessages()* 返回的数组：
+*Zend\Auth_Adapter\Ldap* 在它的 *authenticate()* 方法里收集调试信息。这个信息存储在
+*Zend\Auth\Result* 对象里。下面描述由 *Zend\Auth\Result::getMessages()* 返回的数组：
 
 
 
@@ -313,7 +313,7 @@ Active Directory 的选项
 
 .. note::
 
-   从技术角度讲，用当前的 *Zend_Auth_Adapter_Ldap*
+   从技术角度讲，用当前的 *Zend\Auth_Adapter\Ldap*
    实现进行跨域认证是没有危险的，因为服务器域是被显式检查的，但对将来的实现未必是对的，如在运行时发现域名或者如果使用替代的适配器（例如
    Kerberos）。一般来说，含糊的账户名是安全问题的来源，所以最好使用合格的账户名称。
 

@@ -30,17 +30,17 @@ Developer Keys および Client ID
 開発者を識別するためのものです。クライアント ID
 は、ログの記録やデバッグなどの際にアプリケーションを識別するものです。
 `http://code.google.com/apis/youtube/dashboard/`_ でデベロッパーキーとクライアント ID
-を取得できます。 下の例は、デベロッパーキーとクライアント ID を `Zend_Gdata_YouTube`_
+を取得できます。 下の例は、デベロッパーキーとクライアント ID を `ZendGData\YouTube`_
 サービスオブジェクトに渡すものです。
 
 .. _zend.gdata.youtube.developer_key.example:
 
-.. rubric:: Developer Key と ClientID を Zend_Gdata_YouTube に渡す
+.. rubric:: Developer Key と ClientID を ZendGData\YouTube に渡す
 
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube($httpClient,
+   $yt = new ZendGData\YouTube($httpClient,
                                 $applicationId,
                                 $clientId,
                                 $developerKey);
@@ -75,7 +75,7 @@ YouTube data *API* はさまざまなフィードを提供しており、
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube();
+   $yt = new ZendGData\YouTube();
    $query = $yt->newVideoQuery();
    $query->videoQuery = 'cat';
    $query->startIndex = 10;
@@ -94,7 +94,7 @@ YouTube data *API* はさまざまなフィードを提供しており、
    }
 
 その他のクエリパラメータの詳細は `リファレンスガイド`_\ を参照ください。
-`Zend_Gdata_YouTube_VideoQuery`_
+`ZendGData_YouTube\VideoQuery`_
 には、これらのパラメータ用のヘルパー関数もあります。詳細は `PHP Developer's Guide`_
 を参照ください。
 
@@ -114,7 +114,7 @@ YouTube data *API* はさまざまなフィードを提供しており、
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube();
+   $yt = new ZendGData\YouTube();
    $query = $yt->newVideoQuery();
    $query->category = 'Comedy/dog';
 
@@ -127,9 +127,9 @@ YouTube data *API* はさまざまなフィードを提供しており、
 ^^^^^^^
 
 YouTube Data *API* が提供する `標準フィード`_ にはさまざまなものがあります。
-これらの標準フィードは、 *URL* を指定することで `Zend_Gdata_YouTube_VideoFeed`_
-オブジェクトとして取得できます。 *URL* の指定には `Zend_Gdata_YouTube`_
-クラスの定義済み定数 (たとえば Zend_Gdata_YouTube::STANDARD_TOP_RATED_URI)
+これらの標準フィードは、 *URL* を指定することで `ZendGData_YouTube\VideoFeed`_
+オブジェクトとして取得できます。 *URL* の指定には `ZendGData\YouTube`_
+クラスの定義済み定数 (たとえば ZendGData\YouTube::STANDARD_TOP_RATED_URI)
 を使用するか、あるいは定義済みヘルパーメソッド (下のコードを参照ください)
 を使用します。
 
@@ -142,7 +142,7 @@ YouTube Data *API* が提供する `標準フィード`_ にはさまざまな�
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube();
+   $yt = new ZendGData\YouTube();
    $videoFeed = $yt->getTopRatedVideoFeed();
 
 取得する標準フィードの期間を指定するクエリパラメータもあります。
@@ -151,12 +151,12 @@ YouTube Data *API* が提供する `標準フィード`_ にはさまざまな�
 
 .. _zend.gdata.youtube.videos.standard.example-2:
 
-.. rubric:: Zend_Gdata_YouTube_VideoQuery を使用した動画の取得
+.. rubric:: ZendGData_YouTube\VideoQuery を使用した動画の取得
 
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube();
+   $yt = new ZendGData\YouTube();
    $query = $yt->newVideoQuery();
    $query->setTime('today');
    $videoFeed = $yt->getTopRatedVideoFeed($query);
@@ -170,7 +170,7 @@ YouTube Data *API* が提供する `標準フィード`_ にはさまざまな�
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube();
+   $yt = new ZendGData\YouTube();
    $url = 'http://gdata.youtube.com/feeds/standardfeeds/top_rated?time=today'
    $videoFeed = $yt->getVideoFeed($url);
 
@@ -189,7 +189,7 @@ YouTube Data *API* が提供する `標準フィード`_ にはさまざまな�
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube();
+   $yt = new ZendGData\YouTube();
    $videoFeed = $yt->getUserUploads('liz');
 
 .. _zend.gdata.youtube.videos.favorites:
@@ -207,7 +207,7 @@ YouTube Data *API* が提供する `標準フィード`_ にはさまざまな�
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube();
+   $yt = new ZendGData\YouTube();
    $videoFeed = $yt->getUserFavorites('liz');
 
 .. _zend.gdata.youtube.videos.responses:
@@ -225,7 +225,7 @@ YouTube Data *API* が提供する `標準フィード`_ にはさまざまな�
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube();
+   $yt = new ZendGData\YouTube();
    $videoFeed = $yt->getVideoResponseFeed('abc123813abc');
 
 .. _zend.gdata.youtube.comments:
@@ -243,7 +243,7 @@ YouTube の動画に対するコメントを取得するにはいくつかの方
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube();
+   $yt = new ZendGData\YouTube();
    $commentFeed = $yt->getVideoCommentFeed('abc123813abc');
 
    foreach ($commentFeed as $commentEntry) {
@@ -251,17 +251,17 @@ YouTube の動画に対するコメントを取得するにはいくつかの方
        echo $commentEntry->content->text . "\n\n\n";
    }
 
-もし既にその動画を表す `Zend_Gdata_YouTube_VideoEntry`_
+もし既にその動画を表す `ZendGData_YouTube\VideoEntry`_
 オブジェクトがあるのなら、それを用いてその動画のコメントを取得することもできます。
 
 .. _zend.gdata.youtube.videos.comments.example-2:
 
-.. rubric:: Zend_Gdata_YouTube_VideoEntry からの動画へのコメントのフィードの取得
+.. rubric:: ZendGData_YouTube\VideoEntry からの動画へのコメントのフィードの取得
 
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube();
+   $yt = new ZendGData\YouTube();
    $videoEntry = $yt->getVideoEntry('abc123813abc');
    // 動画の ID がわからなくても、このようにして URL を取得できます
    $commentFeed = $yt->getVideoCommentFeed(null,
@@ -290,7 +290,7 @@ YouTube data *API* を使用すると、
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube();
+   $yt = new ZendGData\YouTube();
    $playlistListFeed = $yt->getPlaylistListFeed('liz');
 
    foreach ($playlistListFeed as $playlistEntry) {
@@ -324,7 +324,7 @@ YouTube data *API* を使用すると、
 ------------------
 
 ユーザは、チャンネルやタグ、お気に入りなどの内容を購読できます。
-`Zend_Gdata_YouTube_SubscriptionEntry`_ を使用して、それらの購読内容を表します。
+`ZendGData_YouTube\SubscriptionEntry`_ を使用して、それらの購読内容を表します。
 
 ユーザ 'liz' のすべての購読内容を取得するには、次のようにします。
 
@@ -335,7 +335,7 @@ YouTube data *API* を使用すると、
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube();
+   $yt = new ZendGData\YouTube();
    $subscriptionFeed = $yt->getSubscriptionFeed('liz');
 
    foreach ($subscriptionFeed as $subscriptionEntry) {
@@ -357,7 +357,7 @@ YouTube data *API* を使用すると、
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube();
+   $yt = new ZendGData\YouTube();
    $userProfile = $yt->getUserProfile('liz');
    echo "ユーザ名: " . $userProfile->username->text . "\n";
    echo "年齢: " . $userProfile->age->text . "\n";
@@ -373,7 +373,7 @@ YouTube への動画のアップロード
 動画を直接送信するか、単に動画のメタデータだけを送信して動画は HTML
 フォームでアップロードさせるかです。
 
-動画を直接アップロードするには、まず新しい `Zend_Gdata_YouTube_VideoEntry`_
+動画を直接アップロードするには、まず新しい `ZendGData_YouTube\VideoEntry`_
 オブジェクトを作成して必須メタデータを指定しなければなりません。
 次の例は、Quicktime 動画 "mytestmovie.mov" を以下のプロパティで YouTube
 にアップロードするものです。
@@ -404,10 +404,10 @@ YouTube への動画のアップロード
    |Developer Tags |mydevelopertag, anotherdevelopertag|
    +---------------+-----------------------------------+
 
-下のコードは、アップロード用に空の `Zend_Gdata_YouTube_VideoEntry`_ を作成します。次に
-`Zend_Gdata_App_MediaFileSource`_
+下のコードは、アップロード用に空の `ZendGData_YouTube\VideoEntry`_ を作成します。次に
+`ZendGData_App\MediaFileSource`_
 オブジェクトを使用して実際の動画ファイルを保持させます。水面下では、
-`Zend_Gdata_YouTube_Extension_MediaGroup`_
+`ZendGData\YouTube\Extension\MediaGroup`_
 オブジェクトを使用して動画のすべてのメタデータを保持します。
 以下で説明するヘルパーメソッドを使用すると、
 メディアグループオブジェクトのことを気にせず動画のメタデータを設定できます。
@@ -422,8 +422,8 @@ $userName で指定することもできますし、 シンプルに 'default'
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube($httpClient);
-   $myVideoEntry = new Zend_Gdata_YouTube_VideoEntry();
+   $yt = new ZendGData\YouTube($httpClient);
+   $myVideoEntry = new ZendGData_YouTube\VideoEntry();
 
    $filesource = $yt->newMediaFileSource('mytestmovie.mov');
    $filesource->setContentType('video/quicktime');
@@ -445,8 +445,8 @@ $userName で指定することもできますし、 シンプルに 'default'
                                               'anotherdevelopertag'));
 
    // オプションで、動画の撮影場所を指定します
-   $yt->registerPackage('Zend_Gdata_Geo');
-   $yt->registerPackage('Zend_Gdata_Geo_Extension');
+   $yt->registerPackage('ZendGData\Geo');
+   $yt->registerPackage('ZendGData_Geo\Extension');
    $where = $yt->newGeoRssWhere();
    $position = $yt->newGmlPos('37.0 -122.0');
    $where->point = $yt->newGmlPoint($position);
@@ -456,16 +456,16 @@ $userName で指定することもできますし、 シンプルに 'default'
    $uploadUrl =
        'http://uploads.gdata.youtube.com/feeds/users/default/uploads';
 
-   // 動画をアップロードし、Zend_Gdata_App_HttpException あるいは通常の
-   // Zend_Gdata_App_Exception を捕捉します
+   // 動画をアップロードし、ZendGData_App\HttpException あるいは通常の
+   // ZendGData_App\Exception を捕捉します
 
    try {
        $newEntry = $yt->insertEntry($myVideoEntry,
                                     $uploadUrl,
-                                    'Zend_Gdata_YouTube_VideoEntry');
-   } catch (Zend_Gdata_App_HttpException $httpException) {
+                                    'ZendGData_YouTube\VideoEntry');
+   } catch (ZendGData_App\HttpException $httpException) {
        echo $httpException->getRawResponseBody();
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo $e->getMessage();
    }
 
@@ -479,7 +479,7 @@ $userName で指定することもできますし、 シンプルに 'default'
 --------------
 
 ブラウザベースのアップロードも直接のアップロードとほとんど同じ処理ですが、
-作成した `Zend_Gdata_YouTube_VideoEntry`_ に `Zend_Gdata_App_MediaFileSource`_
+作成した `ZendGData_YouTube\VideoEntry`_ に `ZendGData_App\MediaFileSource`_
 オブジェクトをアタッチしないという点が異なります。
 そのかわりに、動画のすべてのメタデータを送信してトークン要素を受け取り、
 それを用いて HTML アップロードフォームを作成します。
@@ -491,9 +491,9 @@ $userName で指定することもできますし、 シンプルに 'default'
 .. code-block:: php
    :linenos:
 
-   $yt = new Zend_Gdata_YouTube($httpClient);
+   $yt = new ZendGData\YouTube($httpClient);
 
-   $myVideoEntry= new Zend_Gdata_YouTube_VideoEntry();
+   $myVideoEntry= new ZendGData_YouTube\VideoEntry();
    $myVideoEntry->setVideoTitle('My Test Movie');
    $myVideoEntry->setVideoDescription('My Test Movie');
 
@@ -542,7 +542,7 @@ $nextUrl を上の $postUrl に追加します。 これは、AuthSub リンク�
 しかし、公開手続きがすむまではサイト上では公開されません。
 却下された動画やアップロードが正常終了しなかった動画についても、
 認証ユーザのアップロードフィードのみに現れるようになります。 次のコードは、
-`Zend_Gdata_YouTube_VideoEntry`_
+`ZendGData_YouTube\VideoEntry`_
 の状態をチェックして、公開されているかいないか、また却下されたのかどうかを調べます。
 
 .. _zend.gdata.youtube.uploads.status.example:
@@ -554,16 +554,16 @@ $nextUrl を上の $postUrl に追加します。 これは、AuthSub リンク�
 
    try {
        $control = $videoEntry->getControl();
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo $e->getMessage();
    }
 
-   if ($control instanceof Zend_Gdata_App_Extension_Control) {
+   if ($control instanceof ZendGData\App\Extension\Control) {
        if ($control->getDraft() != null &&
            $control->getDraft()->getText() == 'yes') {
            $state = $videoEntry->getVideoState();
 
-           if ($state instanceof Zend_Gdata_YouTube_Extension_State) {
+           if ($state instanceof ZendGData\YouTube\Extension\State) {
                print 'アップロード状況: '
                      . $state->getName()
                      .' '. $state->getText();
@@ -592,15 +592,15 @@ $nextUrl を上の $postUrl に追加します。 これは、AuthSub リンク�
 .. _`PHP Developer's Guide`: http://code.google.com/apis/youtube/developers_guide_php.html
 .. _`PHP Developer's Guide の認証のセクション`: http://code.google.com/apis/youtube/developers_guide_php.html#Authentication
 .. _`http://code.google.com/apis/youtube/dashboard/`: http://code.google.com/apis/youtube/dashboard/
-.. _`Zend_Gdata_YouTube`: http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube.html
+.. _`ZendGData\YouTube`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData\YouTube.html
 .. _`YouTube API リファレンスガイド`: http://code.google.com/apis/youtube/reference.html#Video_Feeds
 .. _`リファレンスガイド`: http://code.google.com/apis/youtube/reference.html#Searching_for_videos
-.. _`Zend_Gdata_YouTube_VideoQuery`: http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube_VideoQuery.html
+.. _`ZendGData_YouTube\VideoQuery`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData_YouTube\VideoQuery.html
 .. _`専用の URL を作成します`: http://code.google.com/apis/youtube/reference.html#Category_search
 .. _`標準フィード`: http://code.google.com/apis/youtube/reference.html#Standard_feeds
-.. _`Zend_Gdata_YouTube_VideoFeed`: http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube_VideoFeed.html
-.. _`Zend_Gdata_YouTube_VideoEntry`: http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube_VideoEntry.html
-.. _`Zend_Gdata_YouTube_SubscriptionEntry`: http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube_SubscriptionEntry.html
+.. _`ZendGData_YouTube\VideoFeed`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData_YouTube\VideoFeed.html
+.. _`ZendGData_YouTube\VideoEntry`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData_YouTube\VideoEntry.html
+.. _`ZendGData_YouTube\SubscriptionEntry`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData_YouTube\SubscriptionEntry.html
 .. _`プロトコルガイド`: http://code.google.com/apis/youtube/developers_guide_protocol.html#Process_Flows_for_Uploading_Videos
-.. _`Zend_Gdata_App_MediaFileSource`: http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_App_MediaFileSource.html
-.. _`Zend_Gdata_YouTube_Extension_MediaGroup`: http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube_Extension_MediaGroup.html
+.. _`ZendGData_App\MediaFileSource`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData_App\MediaFileSource.html
+.. _`ZendGData\YouTube\Extension\MediaGroup`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData\YouTube\Extension\MediaGroup.html

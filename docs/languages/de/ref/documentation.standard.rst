@@ -421,7 +421,7 @@ der eine Klassenvariable anzeigt.
 
    <para>
        Die Variable <varname>$var</varname> und die Klassenvariable
-       <varname>Zend_Class::$var</varname>.
+       <varname>Zend\Class\Class::$var</varname>.
    </para>
 
 .. _doc-standard.file-formatting.inline-tags.methodname:
@@ -438,7 +438,7 @@ dieses Tags erlaubt, ausser es wird ein Klassenname verwendet der eine Klassenme
 
    <para>
        Die Methode <methodname>foo()</methodname> und die Klassenmethode
-       <methodname>Zend_Class::foo()</methodname>. Eine Methode mit der kompletten
+       <methodname>Zend\Class\Class::foo()</methodname>. Eine Methode mit der kompletten
        Signatur <methodname>foo($bar, $baz)</methodname>
    </para>
 
@@ -456,7 +456,7 @@ verwendet, der eine Klassenkonstante anzeigt.
 
    <para>
        Die Konstante <constant>FOO</constant> und die Klassenkonstante
-       <constant>Zend_Class::FOO</constant>.
+       <constant>Zend\Class\Class::FOO</constant>.
    </para>
 
 .. _doc-standard.file-formatting.inline-tags.filename:

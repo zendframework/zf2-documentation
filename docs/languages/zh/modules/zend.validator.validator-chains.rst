@@ -12,9 +12,9 @@
       :linenos:
 
       // Create a validator chain and add validators to it
-      $validatorChain = new Zend_Validate();
-      $validatorChain->addValidator(new Zend_Validate_StringLength(6, 12))
-                     ->addValidator(new Zend_Validate_Alnum());
+      $validatorChain = new Zend\Validate\Validate();
+      $validatorChain->addValidator(new Zend\Validate\StringLength(6, 12))
+                     ->addValidator(new Zend\Validate\Alnum());
 
       // Validate the username
       if ($validatorChain->isValid($username)) {
@@ -39,12 +39,12 @@
    .. code-block:: php
       :linenos:
 
-      $validatorChain->addValidator(new Zend_Validate_StringLength(6, 12), true)
-                     ->addValidator(new Zend_Validate_Alnum());
+      $validatorChain->addValidator(new Zend\Validate\StringLength(6, 12), true)
+                     ->addValidator(new Zend\Validate\Alnum());
 
 
 
 
-任何实现 *Zend_Validate_Interface*\ 的对象都可以被用作校验器链。
+任何实现 *Zend\Validate\Interface*\ 的对象都可以被用作校验器链。
 
 

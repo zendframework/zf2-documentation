@@ -25,14 +25,14 @@
 .. code-block:: php
    :linenos:
 
-   // デフォルトは Zend_Mime::ENCODING_QUOTEDPRINTABLE です
-   $mail = new Zend_Mail('KOI8-R');
+   // デフォルトは Zend\Mime\Mime::ENCODING_QUOTEDPRINTABLE です
+   $mail = new Zend\Mail\Mail('KOI8-R');
 
    // KOI8-R で表現されるロシア語はラテン文字ベースの言語と
    // 大きく異なるので、Base64 エンコーディングに変更します
-   $mail->setHeaderEncoding(Zend_Mime::ENCODING_BASE64);
+   $mail->setHeaderEncoding(Zend\Mime\Mime::ENCODING_BASE64);
 
-``Zend_Mail_Transport_Smtp`` は、行頭がドット 1 文字あるいはドット 2
+``Zend\Mail_Transport\Smtp`` は、行頭がドット 1 文字あるいはドット 2
 文字の場合にその行をエンコードします。これにより、 SMTP
 プロトコルに違反するメールを作成しないようにします。
 

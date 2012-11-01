@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.cloudwatch:
 
-Zend_Service_Amazon_Ec2: CloudWatch Monitoring
+Zend\Service_Amazon\Ec2: CloudWatch Monitoring
 ==============================================
 
 Amazon CloudWatch ist ein einfach zu verwendender Web Service der vollständiges Monitoring für Amazon Elastic
@@ -24,7 +24,7 @@ erhalten.
 .. code-block:: php
    :linenos:
 
-   $ec2_ebs = new Zend_Service_Amazon_Ec2_CloudWatch('aws_key','aws_secret_key');
+   $ec2_ebs = new Zend\Service\Amazon\Ec2\CloudWatch('aws_key','aws_secret_key');
    $return = $ec2_ebs->listMetrics();
 
 .. _zend.service.amazon.ec2.cloudwatch.usage.getmetricstatistics:
@@ -80,7 +80,7 @@ erhalten.
 .. code-block:: php
    :linenos:
 
-   $ec2_ebs = new Zend_Service_Amazon_Ec2_CloudWatch('aws_key','aws_secret_key');
+   $ec2_ebs = new Zend\Service\Amazon\Ec2\CloudWatch('aws_key','aws_secret_key');
    $return = $ec2_ebs->getMetricStatistics(
                                         array('MeasureName' => 'NetworkIn',
                                               'Statistics' => array('Average')));

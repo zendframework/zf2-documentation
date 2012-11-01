@@ -6,7 +6,7 @@ Zend_Cache backends
 
 .. _zend.cache.backends.file:
 
-Zend_Cache_Backend_File
+Zend\Cache_Backend\File
 -----------------------
 
 هذا الـ backend يقوم بحفظ الـ cache records فى ملفات (داخل مجلد يتم
@@ -14,7 +14,7 @@ Zend_Cache_Backend_File
 
 الـ options المتوفرة
 
-.. table:: الـ options المتوفرة لـ Zend_Cache_Backend_File
+.. table:: الـ options المتوفرة لـ Zend\Cache_Backend\File
 
    +--------------------+-------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |الـ Option          |الـ Data Type|الـ Default Value|الوصف                                                                                                                                                                                                                                                                                                                              |
@@ -34,14 +34,14 @@ Zend_Cache_Backend_File
 
 .. _zend.cache.backends.sqlite:
 
-Zend_Cache_Backend_Sqlite
+Zend\Cache_Backend\Sqlite
 -------------------------
 
 هذه الـ backend تقوم بحفظ الـ cache records فى قاعدة بيانات SQLite.
 
 الـ options المتوفرة:
 
-.. table:: الـ options المتوفرة لـ Zend_Cache_Backend_Sqlite
+.. table:: الـ options المتوفرة لـ Zend\Cache_Backend\Sqlite
 
    +-------------------------------+-------------+-----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |الـ Option                     |الـ Data Type|الـ Default Value|الوصف                                                                                                                                                                                                                                                                                                                                                                                              |
@@ -53,7 +53,7 @@ Zend_Cache_Backend_Sqlite
 
 .. _zend.cache.backends.memcached:
 
-Zend_Cache_Backend_Memcached
+Zend\Cache_Backend\Memcached
 ----------------------------
 
 هذه الـ backend تقوم بحفظ الـ cache records فى memcached server. `memcached`_ عبارة عن
@@ -65,7 +65,7 @@ Zend_Cache_Backend_Memcached
 
 الـ options المتوفرة :
 
-.. table:: الـ options المتوفرة لـ Zend_Cache_Backend_Memcached
+.. table:: الـ options المتوفرة لـ Zend\Cache_Backend\Memcached
 
    +-----------+-------------+-------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |الـ Option |الـ Data Type|الـ Default Value                                                        |الوصف                                                                                                                                                                                                                                                                                            |
@@ -77,7 +77,7 @@ Zend_Cache_Backend_Memcached
 
 .. _zend.cache.backends.apc:
 
-Zend_Cache_Backend_APC
+Zend\Cache_Backend\APC
 ----------------------
 
 هذه الـ backend تقوم بحفظ الـ cache records فى ذاكرة مشتركة من خلال الـ

@@ -17,45 +17,45 @@
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    // build message...
    $mail->createAttachment($someBinaryString);
    $mail->createAttachment($myImage,
                            'image/gif',
-                           Zend_Mime::DISPOSITION_INLINE,
-                           Zend_Mime::ENCODING_8BIT);
+                           Zend\Mime\Mime::DISPOSITION_INLINE,
+                           Zend\Mime\Mime::ENCODING_8BIT);
 
 
 אם דרושה שליטה נוספת על סוג ה MIME שנוצר ונשלח לאותו צירוף, ניתן
 להשתמש בערך שמוחזר ממתודת ה *createAttachment()* כדי לערוך את הערכים שלה.
-מתודת ה *createAttachment()* מחזירה אובייקט מסוג *Zend_Mime_Part*:
+מתודת ה *createAttachment()* מחזירה אובייקט מסוג *Zend\Mime\Part*:
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
 
    $at = $mail->createAttachment($myImage);
    $at->type        = 'image/gif';
-   $at->disposition = Zend_Mime::DISPOSITION_INLINE;
-   $at->encoding    = Zend_Mime::ENCODING_8BIT;
+   $at->disposition = Zend\Mime\Mime::DISPOSITION_INLINE;
+   $at->encoding    = Zend\Mime\Mime::ENCODING_8BIT;
    $at->filename    = 'test.gif';
 
    $mail->send();
 
 
-לחלופין ניתן ליצור אובייקט של *Zend_Mime_Part* ולהוסיף אותו ל
+לחלופין ניתן ליצור אובייקט של *Zend\Mime\Part* ולהוסיף אותו ל
 *addAttachment()*:
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
 
-   $at = new Zend_Mime_Part($myImage);
+   $at = new Zend\Mime\Part($myImage);
    $at->type        = 'image/gif';
-   $at->disposition = Zend_Mime::DISPOSITION_INLINE;
-   $at->encoding    = Zend_Mime::ENCODING_8BIT;
+   $at->disposition = Zend\Mime\Mime::DISPOSITION_INLINE;
+   $at->encoding    = Zend\Mime\Mime::ENCODING_8BIT;
    $at->filename    = 'test.gif';
 
    $mail->addAttachment($at);

@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.openid.consumer:
 
-Zend_OpenId_Consumer の基本
+ZendOpenId\Consumer の基本
 ========================
 
-``Zend_OpenId_Consumer`` を使用して、 ウェブサイト上の OpenID 認証スキーマを実装します。
+``ZendOpenId\Consumer`` を使用して、 ウェブサイト上の OpenID 認証スキーマを実装します。
 
 .. _zend.openid.consumer.authentication:
 
@@ -20,7 +20,7 @@ OpenID Authentication
 . OpenID プロバイダからの応答を検証する。
 
 実際のところ、OpenID 認証プロトコルはもう少し複雑な手順を踏んでいます。
-しかしその大半は ``Zend_OpenId_Consumer``
+しかしその大半は ``ZendOpenId\Consumer``
 の中にカプセル化されており、開発者側が意識する必要はありません。
 
 OpenID 認証手続きはエンドユーザ側から始まるもので、
@@ -44,7 +44,7 @@ OpenID 認証手続きはエンドユーザ側から始まるもので、
 
 このフォームを送信すると、OpenID 識別子が継ぎの *PHP*
 スクリプトに渡されます。このスクリプトが、 認証の第二段階を処理します。 この
-*PHP* スクリプトで必要なのは、 ``Zend_OpenId_Consumer::login()``
+*PHP* スクリプトで必要なのは、 ``ZendOpenId\Consumer::login()``
 メソッドをコールすることだけです。 このメソッドの最初の引数は OpenID 識別子で、
 2 番目の引数はスクリプトの *URL* となります。
 ここで指定したスクリプトが認証の第三段階を処理します。
@@ -56,12 +56,12 @@ OpenID 認証手続きはエンドユーザ側から始まるもので、
 .. code-block:: php
    :linenos:
 
-   $consumer = new Zend_OpenId_Consumer();
+   $consumer = new ZendOpenId\Consumer();
    if (!$consumer->login($_POST['openid_identifier'], 'example-1_3.php')) {
        die("OpenID でのログインに失敗しました。");
    }
 
-``Zend_OpenId_Consumer::login()``
+``ZendOpenId\Consumer::login()``
 は指定された識別子を調べ、成功した場合には識別プロバイダのアドレスと
 そのローカル識別子を取得します。そして、 そのプロバイダとの関連付けを行い、
 サイトとプロバイダが同じ秘密情報を共有するようにします。
@@ -78,7 +78,7 @@ OpenID サーバがユーザに通常たずねるのは、 パスワード
 これらのやりとりは、OpenID 対応のサイトからは見えない状態になるので、
 ユーザのパスワードやその他の情報はオープンにはなりません。
 
-成功した場合は ``Zend_OpenId_Consumer::login()`` は何も返さずに *HTTP*
+成功した場合は ``ZendOpenId\Consumer::login()`` は何も返さずに *HTTP*
 リダイレクトを行います。 エラーが発生した場合は ``FALSE`` を返します。
 エラーが発生するのは、たとえば識別子が無効だったり
 プロバイダが死んでいたり、通信障害が発生したりした場合などです。
@@ -95,14 +95,14 @@ OpenID サーバがユーザに通常たずねるのは、 パスワード
 .. code-block:: php
    :linenos:
 
-   $consumer = new Zend_OpenId_Consumer();
+   $consumer = new ZendOpenId\Consumer();
    if ($consumer->verify($_GET, $id)) {
        echo "有効 " . htmlspecialchars($id);
    } else {
        echo "無効 " . htmlspecialchars($id);
    }
 
-この検証は ``Zend_OpenId_Consumer::verify`` メソッドで行います。このメソッドは、 *HTTP*
+この検証は ``ZendOpenId\Consumer::verify`` メソッドで行います。このメソッドは、 *HTTP*
 リクエストの引数の配列全体を受け取って、 そのレスポンスが適切な OpenID
 プロバイダによって署名されたものかどうかを調べます。
 また、エンドユーザが最初に入力した OpenID 識別子を 2 番目の (オプションの)
@@ -134,13 +134,13 @@ OpenID サーバがユーザに通常たずねるのは、 パスワード
        $_POST['openid_action'] == "login" &&
        !empty($_POST['openid_identifier'])) {
 
-       $consumer = new Zend_OpenId_Consumer();
+       $consumer = new ZendOpenId\Consumer();
        if (!$consumer->login($_POST['openid_identifier'])) {
            $status = "OpenID でのログインに失敗しました。";
        }
    } else if (isset($_GET['openid_mode'])) {
        if ($_GET['openid_mode'] == "id_res") {
-           $consumer = new Zend_OpenId_Consumer();
+           $consumer = new ZendOpenId\Consumer();
            if ($consumer->verify($_GET, $id)) {
                $status = "有効 " . htmlspecialchars($id);
            } else {
@@ -186,7 +186,7 @@ OpenID 対応のサイトがプロバイダへの認証リクエストを通過�
 際と全体で共通のログインスクリプトを使用している場合や、
 ひとつのドメインで複数のサーバを組み合わせて使用している場合などです。
 
-このような場合は、レルムの値を ``Zend_OpenId_Consumer::login`` メソッドの 3
+このような場合は、レルムの値を ``ZendOpenId\Consumer::login`` メソッドの 3
 番目の引数として渡すことができます。 次の例は、すべての php.net
 サイトへの信頼済みアクセスを一度に確認するものです。
 
@@ -197,7 +197,7 @@ OpenID 対応のサイトがプロバイダへの認証リクエストを通過�
 .. code-block:: php
    :linenos:
 
-   $consumer = new Zend_OpenId_Consumer();
+   $consumer = new ZendOpenId\Consumer();
    if (!$consumer->login($_POST['openid_identifier'],
                          'example-3_3.php',
                          'http://*.php.net/')) {
@@ -214,8 +214,8 @@ OpenID 対応のサイトがプロバイダへの認証リクエストを通過�
 
 場合によっては、信頼済み OpenID サーバにそのユーザがログインしているかどうかを
 ユーザとのやりとりなしに知りたいこともあります。
-そのような場合に最適なメソッドが ``Zend_OpenId_Consumer::check``
-です。このメソッドの引数は ``Zend_OpenId_Consumer::login``
+そのような場合に最適なメソッドが ``ZendOpenId\Consumer::check``
+です。このメソッドの引数は ``ZendOpenId\Consumer::login``
 とまったく同じですが、ユーザ側には OpenID サーバのページを一切見せません。
 したがって、ユーザ側から見れば処理は透過的に行われ、
 まるで他のサイトに一切移動していないように見えるようになります。
@@ -229,7 +229,7 @@ OpenID 対応のサイトがプロバイダへの認証リクエストを通過�
 .. code-block:: php
    :linenos:
 
-   $consumer = new Zend_OpenId_Consumer();
+   $consumer = new ZendOpenId\Consumer();
    if (!$consumer->check($_POST['openid_identifier'], 'example-4_3.php')) {
        die("OpenID でのログインに失敗しました。");
    }
@@ -239,22 +239,22 @@ OpenID 対応のサイトがプロバイダへの認証リクエストを通過�
 
 .. _zend.openid.consumer.storage:
 
-Zend_OpenId_Consumer_Storage
+ZendOpenId_Consumer\Storage
 ----------------------------
 
 OpenID の認証手続きは三段階に分かれており、 それぞれで別々の *HTTP*
 リクエストを使用します。 それらのリクエスト間で情報を保存するため、
-``Zend_OpenId_Consumer`` では内部ストレージを使用します。
+``ZendOpenId\Consumer`` では内部ストレージを使用します。
 
 開発者は特にこのストレージを気にする必要はありません。 デフォルトで、
-``Zend_OpenId_Consumer`` は /tmp 配下のファイルベースのストレージを使用するからです。
+``ZendOpenId\Consumer`` は /tmp 配下のファイルベースのストレージを使用するからです。
 これは *PHP* のセッションと同じ挙動です。
 しかし、このストレージがあらゆる場合にうまく使えるというわけではありません。
 たとえばその手の情報はデータベースに保存したいという人もいるでしょうし、
 大規模なウェブファームで共通のストレージを使用したいこともあるでしょう。
 幸いなことに、このデフォルトのストレージは簡単に変更できます。
-そのために必要なのは、 ``Zend_OpenId_Consumer_Storage``
-クラスを継承した独自のストレージクラスを実装して それを ``Zend_OpenId_Consumer``
+そのために必要なのは、 ``ZendOpenId_Consumer\Storage``
+クラスを継承した独自のストレージクラスを実装して それを ``ZendOpenId\Consumer``
 のコンストラクタへの最初の引数として渡すことだけです。
 
 次の例は、バックエンドとして ``Zend_Db``
@@ -271,14 +271,14 @@ OpenID の認証手続きは三段階に分かれており、 それぞれで別
 .. code-block:: php
    :linenos:
 
-   class DbStorage extends Zend_OpenId_Consumer_Storage
+   class DbStorage extends ZendOpenId_Consumer\Storage
    {
        private $_db;
        private $_association_table;
        private $_discovery_table;
        private $_nonce_table;
 
-       // Zend_Db_Adapter オブジェクトと
+       // Zend\Db\Adapter オブジェクトと
        // テーブル名を渡します
        public function __construct($db,
                                    $association_table = "association",
@@ -455,7 +455,7 @@ OpenID の認証手続きは三段階に分かれており、 それぞれで別
                $ret = $this->_db->insert($table, array(
                    'nonce' => $nonce,
                ));
-           } catch (Zend_Db_Statement_Exception $e) {
+           } catch (Zend\Db_Statement\Exception $e) {
                return false;
            }
            return true;
@@ -466,10 +466,10 @@ OpenID の認証手続きは三段階に分かれており、 それぞれで別
        }
    }
 
-   $db = Zend_Db::factory('Pdo_Sqlite',
+   $db = Zend\Db\Db::factory('Pdo_Sqlite',
        array('dbname'=>'/tmp/openid_consumer.db'));
    $storage = new DbStorage($db);
-   $consumer = new Zend_OpenId_Consumer($storage);
+   $consumer = new ZendOpenId\Consumer($storage);
 
 このサンプルには OpenID の認証コードそのものは含まれません。
 しかし、先ほどの例やこの後の例と同じロジックに基づいています。
@@ -516,7 +516,7 @@ OpenID 対応のウェブサイトからは、
 また、いくつかの情報についてのみ厳密に問い合わせを行い、
 それ以外の情報については開示するかしないかをユーザに決めさせることもできます。
 次の例は、 **nickname** およびオプションで **email** と **fullname** を要求する
-``Zend_OpenId_Extension_Sreg`` クラスのオブジェクトを作成するものです。
+``ZendOpenId_Extension\Sreg`` クラスのオブジェクトを作成するものです。
 
 .. _zend.openid.consumer.example-6_2:
 
@@ -525,11 +525,11 @@ OpenID 対応のウェブサイトからは、
 .. code-block:: php
    :linenos:
 
-   $sreg = new Zend_OpenId_Extension_Sreg(array(
+   $sreg = new ZendOpenId_Extension\Sreg(array(
        'nickname'=>true,
        'email'=>false,
        'fullname'=>false), null, 1.1);
-   $consumer = new Zend_OpenId_Consumer();
+   $consumer = new ZendOpenId\Consumer();
    if (!$consumer->login($_POST['openid_identifier'],
                          'example-6_3.php',
                          null,
@@ -537,15 +537,15 @@ OpenID 対応のウェブサイトからは、
        die("OpenID でのログインに失敗しました。");
    }
 
-見てのとおり、 ``Zend_OpenId_Extension_Sreg``
+見てのとおり、 ``ZendOpenId_Extension\Sreg``
 のコンストラクタに渡すのは問い合わせたいフィールドの配列です。
 この配列のインデックスはフィールド名、値はフラグとなります。 ``TRUE``
 はそのフィールドが必須であること、そして ``FALSE``
-はそのフィールドがオプションであることを表します。 ``Zend_OpenId_Consumer::login`` の 4
+はそのフィールドがオプションであることを表します。 ``ZendOpenId\Consumer::login`` の 4
 番目の引数には、 extension あるいは extension のリストを指定できます。
 
-認証の第三段階で、 ``Zend_OpenId_Extension_Sreg`` オブジェクトが ``Zend_OpenId_Consumer::verify``
-に渡されます。そして、認証に成功すると、 ``Zend_OpenId_Extension_Sreg::getProperties``
+認証の第三段階で、 ``ZendOpenId_Extension\Sreg`` オブジェクトが ``ZendOpenId\Consumer::verify``
+に渡されます。そして、認証に成功すると、 ``ZendOpenId_Extension\Sreg::getProperties``
 は要求されたフィールドの配列を返します。
 
 .. _zend.openid.consumer.example-6_3:
@@ -555,11 +555,11 @@ OpenID 対応のウェブサイトからは、
 .. code-block:: php
    :linenos:
 
-   $sreg = new Zend_OpenId_Extension_Sreg(array(
+   $sreg = new ZendOpenId_Extension\Sreg(array(
        'nickname'=>true,
        'email'=>false,
        'fullname'=>false), null, 1.1);
-   $consumer = new Zend_OpenId_Consumer();
+   $consumer = new ZendOpenId\Consumer();
    if ($consumer->verify($_GET, $id, $sreg)) {
        echo "有効 " . htmlspecialchars($id) . "<br>\n";
        $data = $sreg->getProperties();
@@ -576,22 +576,22 @@ OpenID 対応のウェブサイトからは、
        echo "無効 " . htmlspecialchars($id);
    }
 
-引数を渡さずに ``Zend_OpenId_Extension_Sreg``
+引数を渡さずに ``ZendOpenId_Extension\Sreg``
 を作成した場合は、必要なデータが存在するかどうかを
 ユーザ側のコードで調べなければなりません。
 しかし、第二段階で必要となるフィールドと同じ内容のリストでオブジェクトを作成した場合は、
 必要なデータの存在は自動的にチェックされます。
-この場合、必須フィールドのいずれかが存在しなければ ``Zend_OpenId_Consumer::verify`` は
+この場合、必須フィールドのいずれかが存在しなければ ``ZendOpenId\Consumer::verify`` は
 ``FALSE`` を返します。
 
-デフォルトでは ``Zend_OpenId_Extension_Sreg`` はバージョン 1.0 を使用します。バージョン
+デフォルトでは ``ZendOpenId_Extension\Sreg`` はバージョン 1.0 を使用します。バージョン
 1.1 の仕様はまだ確定していないからです。 しかし、中にはバージョン 1.0
 の機能では完全にはサポートしきれないライブラリもあります。 たとえば
 www.myopenid.com ではリクエストに SREG 名前空間が必須となりますが、これは 1.1
-にしか存在しません。 このサーバを使用する場合は、 ``Zend_OpenId_Extension_Sreg``
+にしか存在しません。 このサーバを使用する場合は、 ``ZendOpenId_Extension\Sreg``
 のコンストラクタで明示的にバージョン 1.1 を指定する必要があります。
 
-``Zend_OpenId_Extension_Sreg`` のコンストラクタの 2 番目の引数は、 ポリシーの *URL*
+``ZendOpenId_Extension\Sreg`` のコンストラクタの 2 番目の引数は、 ポリシーの *URL*
 です。これは、識別プロバイダがエンドユーザに提供する必要があります。
 
 .. _zend.openid.consumer.auth:
@@ -600,9 +600,9 @@ Zend_Auth との統合
 --------------
 
 Zend Framework には、ユーザ認証用のクラスが用意されています。 そう、 ``Zend_Auth``
-のことです。 このクラスを ``Zend_OpenId_Consumer``
+のことです。 このクラスを ``ZendOpenId\Consumer``
 と組み合わせて使うこともできます。次の例は、 *OpenIdAdapter* が
-``Zend_Auth_Adapter_Interface`` の *authenticate* メソッドを実装する方法を示すものです。
+``Zend\Auth_Adapter\Interface`` の *authenticate* メソッドを実装する方法を示すものです。
 これは、認証問い合わせと検証を行います。
 
 このアダプタと既存のアダプタの大きな違いは、 このアダプタが 2 回の *HTTP*
@@ -617,7 +617,7 @@ Zend Framework には、ユーザ認証用のクラスが用意されていま�
    :linenos:
 
    <?php
-   class OpenIdAdapter implements Zend_Auth_Adapter_Interface {
+   class OpenIdAdapter implements Zend\Auth_Adapter\Interface {
        private $_id = null;
 
        public function __construct($id = null) {
@@ -627,13 +627,13 @@ Zend Framework には、ユーザ認証用のクラスが用意されていま�
        public function authenticate() {
            $id = $this->_id;
            if (!empty($id)) {
-               $consumer = new Zend_OpenId_Consumer();
+               $consumer = new ZendOpenId\Consumer();
                if (!$consumer->login($id)) {
                    $ret = false;
                    $msg = "認証に失敗しました。";
                }
            } else {
-               $consumer = new Zend_OpenId_Consumer();
+               $consumer = new ZendOpenId\Consumer();
                if ($consumer->verify($_GET, $id)) {
                    $ret = true;
                    $msg = "認証に成功しました。";
@@ -642,12 +642,12 @@ Zend Framework には、ユーザ認証用のクラスが用意されていま�
                    $msg = "認証に失敗しました。";
                }
            }
-           return new Zend_Auth_Result($ret, $id, array($msg));
+           return new Zend\Auth\Result($ret, $id, array($msg));
        }
    }
 
    $status = "";
-   $auth = Zend_Auth::getInstance();
+   $auth = Zend\Auth\Auth::getInstance();
    if ((isset($_POST['openid_action']) &&
         $_POST['openid_action'] == "login" &&
         !empty($_POST['openid_identifier'])) ||
@@ -655,7 +655,7 @@ Zend Framework には、ユーザ認証用のクラスが用意されていま�
        $adapter = new OpenIdAdapter(@$_POST['openid_identifier']);
        $result = $auth->authenticate($adapter);
        if ($result->isValid()) {
-           Zend_OpenId::redirect(Zend_OpenId::selfURL());
+           ZendOpenId\OpenId::redirect(ZendOpenId\OpenId::selfURL());
        } else {
            $auth->clearIdentity();
            foreach ($result->getMessages() as $message) {
@@ -682,7 +682,7 @@ Zend Framework には、ユーザ認証用のクラスが用意されていま�
 
 ``Zend_Auth`` と組み合わせた場合、
 エンドユーザの識別子はセッションに保存されます。 これを取得するには
-``Zend_Auth::hasIdentity`` および ``Zend_Auth::getIdentity`` を使用します。
+``Zend\Auth\Auth::hasIdentity`` および ``Zend\Auth\Auth::getIdentity`` を使用します。
 
 .. _zend.openid.consumer.mvc:
 
@@ -692,15 +692,15 @@ Zend_Controller との統合
 最後に、Model-View-Controller
 アプリケーションへの組み込みについて簡単に説明しておきます。 Zend Framework
 のアプリケーションは ``Zend_Controller`` クラスを使用して実装されており、
-エンドユーザのウェブブラウザに返す *HTTP* レスポンスは ``Zend_Controller_Response_Http``
+エンドユーザのウェブブラウザに返す *HTTP* レスポンスは ``Zend\Controller_Response\Http``
 クラスのオブジェクトを使用して準備しています。
 
-``Zend_OpenId_Consumer`` には GUI 機能はありませんが、 ``Zend_OpenId_Consumer::login`` および
-``Zend_OpenId_Consumer::check`` に成功した場合に *HTTP* リダイレクトを行います。
+``ZendOpenId\Consumer`` には GUI 機能はありませんが、 ``ZendOpenId\Consumer::login`` および
+``ZendOpenId\Consumer::check`` に成功した場合に *HTTP* リダイレクトを行います。
 もしそれ以前に何らかの情報がウェブブラウザに送信されていると、
 このリダイレクトがうまく動作しません。 *MVC* コードで *HTTP*
-リダイレクトを正しく機能させるため、 ``Zend_OpenId_Consumer::login`` あるいは
-``Zend_OpenId_Consumer::check`` の最後の引数に ``Zend_Controller_Response_Http``
+リダイレクトを正しく機能させるため、 ``ZendOpenId\Consumer::login`` あるいは
+``ZendOpenId\Consumer::check`` の最後の引数に ``Zend\Controller_Response\Http``
 を渡す必要があります。
 
 

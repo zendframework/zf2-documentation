@@ -1,28 +1,28 @@
 .. EN-Revision: none
 .. _zend.soap.client:
 
-Zend_Soap_Client
+Zend\Soap\Client
 ================
 
-``Zend_Soap_Client``\ により *PHP*\ プログラマーにとって *SOAP*\
+``Zend\Soap\Client``\ により *PHP*\ プログラマーにとって *SOAP*\
 クライアントの開発が簡単になります。
 
 WSDLモードまたは非WSDLモードで使用できるでしょう。
 
-WSDLモードでは、 ``Zend_Soap_Client``\ コンポーネントは
+WSDLモードでは、 ``Zend\Soap\Client``\ コンポーネントは
 トランスポート層オプションを定めるためにWSDLドキュメントを使います。
 
 WSDL記述は通常、クライアントがアクセスするウェブ・サービスによって提供されます。
-WSDL記述が利用できるようにならなければ、非WSDLモードで ``Zend_Soap_Client``\
+WSDL記述が利用できるようにならなければ、非WSDLモードで ``Zend\Soap\Client``\
 を使いたいかもしれません。 すべての *SOAP*\ プロトコル・オプションは、
-このモードで明示的に ``Zend_Soap_Client``\ クラス上に設定されなければなりません。
+このモードで明示的に ``Zend\Soap\Client``\ クラス上に設定されなければなりません。
 
 .. _zend.soap.client.constructor:
 
-Zend_Soap_Clientコンストラクタ
+Zend\Soap\Clientコンストラクタ
 -----------------------
 
-``Zend_Soap_Client``\ コンストラクタには引数が２つあります:
+``Zend\Soap\Client``\ コンストラクタには引数が２つあります:
 
    - *$wsdl*- WSDLファイルの *URI*
 
@@ -35,7 +35,7 @@ Zend_Soap_Clientコンストラクタ
 
    **重要**
 
-   もし非WSDLモードで ``Zend_Soap_Client``\ コンポーネントを使う場合、 'location' および
+   もし非WSDLモードで ``Zend\Soap\Client``\ コンポーネントを使う場合、 'location' および
    'uri' オプションを設定し **なければなりません**\ 。
 
 下記のオプションが許されています:
@@ -52,7 +52,7 @@ Zend_Soap_Clientコンストラクタ
 
    - 'wsdl'``setWsdl($wsdlValue)``\ 呼び出しと同じです。
 
-     このオプションを変更すると、 ``Zend_Soap_Client``\
+     このオプションを変更すると、 ``Zend\Soap\Client``\
      オブジェクトをWSDLモードに、または、から切り替えるかもしれません。
 
    - 'uri' -*SOAP*\ サービスのためのターゲットのネームスペース
@@ -79,17 +79,17 @@ Zend_Soap_Clientコンストラクタ
            :linenos:
 
            // レスポンスの圧縮を受け付けます
-           $client = new Zend_Soap_Client("some.wsdl",
+           $client = new Zend\Soap\Client("some.wsdl",
              array('compression' => SOAP_COMPRESSION_ACCEPT));
            ...
 
            // 圧縮レベル５でqzipを使ってリクエストを圧縮します
-           $client = new Zend_Soap_Client("some.wsdl",
+           $client = new Zend\Soap\Client("some.wsdl",
              array('compression' => SOAP_COMPRESSION_ACCEPT | SOAP_COMPRESSION_GZIP | 5));
            ...
 
            // deflate 圧縮を使ってリクエストを圧縮します
-           $client = new Zend_Soap_Client("some.wsdl",
+           $client = new Zend\Soap\Client("some.wsdl",
              array('compression' => SOAP_COMPRESSION_ACCEPT | SOAP_COMPRESSION_DEFLATE));
 
 
@@ -101,11 +101,11 @@ Zend_Soap_Clientコンストラクタ
 SOAPリクエストの実行
 ------------
 
-``Zend_Soap_Client``\ オブジェクトを作成したら、 *SOAP*\
+``Zend\Soap\Client``\ オブジェクトを作成したら、 *SOAP*\
 リクエストを実行する準備ができます。
 
 ウェブ・サービス・メソッドそれぞれで、 一般的な *PHP*\ 型のパラメータを持つ仮想
-``Zend_Soap_Client``\ オブジェクト・メソッドにマップされます。
+``Zend\Soap\Client``\ オブジェクト・メソッドにマップされます。
 
 それを下記の例のように使います:
 
@@ -140,7 +140,7 @@ SOAPリクエストの実行
       //     ...
       // }
       // ...
-      // $server = new Zend_Soap_Server(null, $options);
+      // $server = new Zend\Soap\Server(null, $options);
       // $server->setClass('MyClass');
       // ...
       // $server->handle();
@@ -149,7 +149,7 @@ SOAPリクエストの実行
       //                サーバのコード終了
       //****************************************************************
 
-      $client = new Zend_Soap_Client("MyService.wsdl");
+      $client = new Zend\Soap\Client("MyService.wsdl");
       ...
 
       // $result1 は string です。

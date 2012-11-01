@@ -17,7 +17,7 @@ pomocou PHP funkcie `mail()`_ stačí nasledujúce:
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setBodyText('This is the text of the mail.');
    $mail->setFrom('somebody@example.com', 'Some Sender');
    $mail->addTo('somebody_else@example.com', 'Some Recipient');
@@ -47,7 +47,7 @@ metódu.
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setBodyText('This is the text of the mail.')
        ->setFrom('somebody@example.com', 'Some Sender')
        ->addTo('somebody_else@example.com', 'Some Recipient')

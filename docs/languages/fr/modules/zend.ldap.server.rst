@@ -26,7 +26,7 @@ Voyez les documents qui suivent pour plus d'informations sur les attributs conte
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $rootdse = $ldap->getRootDse();
    $serverType = $rootdse->getServerType();
 
@@ -43,7 +43,7 @@ Parcours de Schema
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $schema = $ldap->getSchema();
    $classes = $schema->getObjectClasses();
 

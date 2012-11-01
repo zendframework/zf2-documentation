@@ -28,10 +28,10 @@ PDF использует ту же самую геометрию, что и Post
 -----
 
 PDF имеет мощные возможности для представления цветов. Модуль
-Zend_Pdf поддерживает шкалу серого цвета, цветовые пространства RGB
+ZendPdf поддерживает шкалу серого цвета, цветовые пространства RGB
 и CMYK. Они могут использоваться в любом месте, где требуется
-объект *Zend_Pdf_Color*. Классы *Zend_Pdf_Color_GrayScale*, *Zend_Pdf_Color_RGB* и
-*Zend_Pdf_Color_CMYK* предоставляют этот функционал:
+объект *ZendPdf\Color*. Классы *ZendPdf_Color\GrayScale*, *ZendPdf_Color\RGB* и
+*ZendPdf_Color\CMYK* предоставляют этот функционал:
 
 .. code-block:: php
    :linenos:
@@ -39,15 +39,15 @@ Zend_Pdf поддерживает шкалу серого цвета, цвето
    <?php
    // $grayLevel (число с плавающей точкой)
    // 0.0 (черный) - 1.0 (белый)
-   $color1 = new Zend_Pdf_Color_GrayScale($grayLevel);
+   $color1 = new ZendPdf_Color\GrayScale($grayLevel);
 
    // $r, $g, $b (числа с плавающей точкой)
    // 0.0 (минимальная интенсивность) - 1.0 (максимальная интенсивность)
-   $color2 = new Zend_Pdf_Color_RGB($r, $g, $b);
+   $color2 = new ZendPdf_Color\RGB($r, $g, $b);
 
    // $c, $m, $y, $k (числа с плавающей точкой)
    // 0.0 (минимальная интенсивность) - 1.0 (максимальная интенсивность)
-   $color3 = new Zend_Pdf_Color_CMYK($c, $m, $y, $k);
+   $color3 = new ZendPdf_Color\CMYK($c, $m, $y, $k);
 
 .. _zend.pdf.drawing.shape-drawing:
 
@@ -57,7 +57,7 @@ Zend_Pdf поддерживает шкалу серого цвета, цвето
 Все операции прорисовки могут быть выполнены в контексте
 страницы PDF.
 
-Класс *Zend_Pdf_Page* предоставляет набор примитивов для рисования:
+Класс *ZendPdf\Page* предоставляет набор примитивов для рисования:
 
 .. code-block:: php
    :linenos:
@@ -81,9 +81,9 @@ Zend_Pdf поддерживает шкалу серого цвета, цвето
     * Рисует прямоугольник.
     *
     * Fill types:
-    * Zend_Pdf_Const::SHAPEDRAW_FILLNSTROKE - заполнить прямоугольник и заштриховать (значение по умолчанию)
-    * Zend_Pdf_Const::SHAPEDRAW_STROKE      - заштриховать прямоугольник
-    * Zend_Pdf_Const::SHAPEDRAW_FILL        - заполнить прямоугольник
+    * ZendPdf\Const::SHAPEDRAW_FILLNSTROKE - заполнить прямоугольник и заштриховать (значение по умолчанию)
+    * ZendPdf\Const::SHAPEDRAW_STROKE      - заштриховать прямоугольник
+    * ZendPdf\Const::SHAPEDRAW_FILL        - заполнить прямоугольник
     *
     * @param float $x1
     * @param float $y1
@@ -91,7 +91,7 @@ Zend_Pdf поддерживает шкалу серого цвета, цвето
     * @param float $y2
     * @param integer $fillType
     */
-   public function drawRectangle($x1, $y1, $x2, $y2, $fillType = Zend_Pdf_Const::SHAPEDRAW_FILLNSTROKE);
+   public function drawRectangle($x1, $y1, $x2, $y2, $fillType = ZendPdf\Const::SHAPEDRAW_FILLNSTROKE);
 
 .. code-block:: php
    :linenos:
@@ -100,8 +100,8 @@ Zend_Pdf поддерживает шкалу серого цвета, цвето
    /**
     * Риcует многоугольник.
     *
-    * Если $fillType (тип заполнения) равен Zend_Pdf_Const::SHAPEDRAW_FILLNSTROKE
-    * или Zend_Pdf_Const::SHAPEDRAW_FILL, то многоугольник будет автоматически замкнут.
+    * Если $fillType (тип заполнения) равен ZendPdf\Const::SHAPEDRAW_FILLNSTROKE
+    * или ZendPdf\Const::SHAPEDRAW_FILL, то многоугольник будет автоматически замкнут.
     * См. более подробное описание этих методов в документации PDF
     * (section 4.4.2 Path painting Operators, Filling)
     *
@@ -111,8 +111,8 @@ Zend_Pdf поддерживает шкалу серого цвета, цвето
     * @param integer $fillMethod
     */
    public function drawPolygon($x, $y,
-                               $fillType = Zend_Pdf_Const::SHAPEDRAW_FILLNSTROKE,
-                               $fillMethod = Zend_Pdf_Const::FILLMETHOD_NONZEROWINDING);
+                               $fillType = ZendPdf\Const::SHAPEDRAW_FILLNSTROKE,
+                               $fillMethod = ZendPdf\Const::FILLMETHOD_NONZEROWINDING);
 
 .. code-block:: php
    :linenos:
@@ -189,7 +189,7 @@ Zend_Pdf поддерживает шкалу серого цвета, цвето
     * @param string $text
     * @param float $x
     * @param float $y
-    * @throws Zend_Pdf_Exception
+    * @throws ZendPdf\Exception
     */
    public function drawText($text, $x, $y );
 
@@ -201,8 +201,8 @@ Zend_Pdf поддерживает шкалу серого цвета, цвето
 Применение шрифтов
 ------------------
 
-Метод *Zend_Pdf_Page::drawText()* использует текущий шрифт, который может
-быть установлен методом *Zend_Pdf_Page::setFont()*:
+Метод *ZendPdf\Page::drawText()* использует текущий шрифт, который может
+быть установлен методом *ZendPdf\Page::setFont()*:
 
 .. code-block:: php
    :linenos:
@@ -211,15 +211,15 @@ Zend_Pdf поддерживает шкалу серого цвета, цвето
    /**
     * Устанавливает текущий шрифт.
     *
-    * @param Zend_Pdf_Font $font
+    * @param ZendPdf\Font $font
     * @param float $fontSize
     */
-   public function setFont(Zend_Pdf_Font $font, $fontSize);
+   public function setFont(ZendPdf\Font $font, $fontSize);
 
 PDF поддерживает Type1, TrueType, Type3 и составные шрифты. Он
 предоставляет еще 14 стандартных шрифтов Type1. На данный момент
-модуль *Zend_Pdf* предусматривает только эти стандартные шрифты.
-Они могут быть получены с помощью класса *Zend_Pdf_Font_Standard*.
+модуль *ZendPdf* предусматривает только эти стандартные шрифты.
+Они могут быть получены с помощью класса *ZendPdf_Font\Standard*.
 Конкретный шрифт указывается в качестве аргумента
 конструктора.
 
@@ -231,7 +231,7 @@ PDF поддерживает Type1, TrueType, Type3 и составные шри
    <?php
    ...
    // Создание нового шрифта
-   $font = new Zend_Pdf_Font_Standard(Zend_Pdf_Const::FONT_HELVETICA);
+   $font = new ZendPdf_Font\Standard(ZendPdf\Const::FONT_HELVETICA);
 
    // Применение шрифта
    $pdfPage->setFont($font, 36);
@@ -239,35 +239,35 @@ PDF поддерживает Type1, TrueType, Type3 и составные шри
    ?>
 
 Константы для 14 стандартных шрифтов определены с помощью
-класса *Zend_Pdf_Const*:
+класса *ZendPdf\Const*:
 
-   - Zend_Pdf_Const::FONT_TIMES_ROMAN
+   - ZendPdf\Const::FONT_TIMES_ROMAN
 
-   - Zend_Pdf_Const::FONT_TIMES_BOLD
+   - ZendPdf\Const::FONT_TIMES_BOLD
 
-   - Zend_Pdf_Const::FONT_TIMES_ITALIC
+   - ZendPdf\Const::FONT_TIMES_ITALIC
 
-   - Zend_Pdf_Const::FONT_TIMES_BOLDITALIC
+   - ZendPdf\Const::FONT_TIMES_BOLDITALIC
 
-   - Zend_Pdf_Const::FONT_HELVETICA
+   - ZendPdf\Const::FONT_HELVETICA
 
-   - Zend_Pdf_Const::FONT_HELVETICA_BOLD
+   - ZendPdf\Const::FONT_HELVETICA_BOLD
 
-   - Zend_Pdf_Const::FONT_HELVETICA_ITALIC
+   - ZendPdf\Const::FONT_HELVETICA_ITALIC
 
-   - Zend_Pdf_Const::FONT_HELVETICA_BOLDITALIC
+   - ZendPdf\Const::FONT_HELVETICA_BOLDITALIC
 
-   - Zend_Pdf_Const::FONT_COURIER
+   - ZendPdf\Const::FONT_COURIER
 
-   - Zend_Pdf_Const::FONT_COURIER_BOLD
+   - ZendPdf\Const::FONT_COURIER_BOLD
 
-   - Zend_Pdf_Const::FONT_COURIER_ITALIC
+   - ZendPdf\Const::FONT_COURIER_ITALIC
 
-   - Zend_Pdf_Const::FONT_COURIER_BOLDITALIC
+   - ZendPdf\Const::FONT_COURIER_BOLDITALIC
 
-   - Zend_Pdf_Const::FONT_SYMBOL
+   - ZendPdf\Const::FONT_SYMBOL
 
-   - Zend_Pdf_Const::FONT_ZAPFDINGBATS
+   - ZendPdf\Const::FONT_ZAPFDINGBATS
 
 
 
@@ -285,16 +285,16 @@ PDF поддерживает Type1, TrueType, Type3 и составные шри
    /**
     * Рисует изображение в заданной позиции на странице.
     *
-    * @param Zend_Pdf_Resource_Image $image
+    * @param ZendPdf_Resource\Image $image
     * @param float $x1
     * @param float $y1
     * @param float $x2
     * @param float $y2
     */
-   public function drawImage(Zend_Pdf_Resource_Image $image, $x1, $y1, $x2, $y2);
+   public function drawImage(ZendPdf_Resource\Image $image, $x1, $y1, $x2, $y2);
 
 Объекты изображений должны создаваться через метод
-*Zend_Pdf_Image::imageWithPath($filePath)* (сейчас поддерживаются изображения JPG,
+*ZendPdf\Image::imageWithPath($filePath)* (сейчас поддерживаются изображения JPG,
 PNG и TIFF):
 
 .. rubric:: Рисование изображения
@@ -305,7 +305,7 @@ PNG и TIFF):
    <?php
    ...
    // Загрузка изображения
-   $image = Zend_Pdf_Image::imageWithPath('my_image.jpg');
+   $image = ZendPdf\Image::imageWithPath('my_image.jpg');
 
    $pdfPage->drawImage($image, 100, 100, 400, 300);
    ...
@@ -326,14 +326,14 @@ PNG и TIFF):
 
 Стили рисования линий определяются толщиной линии, цветом
 линии и шаблоном пунктира. Все эти параметры могут быть
-определены методами класса *Zend_Pdf_Page*.
+определены методами класса *ZendPdf\Page*.
 
 .. code-block:: php
    :linenos:
 
    <?php
    /** Установка цвета линии. */
-   public function setLineColor(Zend_Pdf_Color $color);
+   public function setLineColor(ZendPdf\Color $color);
 
    /** Установка толщины линии. */
    public function setLineWidth(float $width);
@@ -355,21 +355,21 @@ PNG и TIFF):
 Стиль заполнения
 ----------------
 
-Методы *Zend_Pdf_Page::drawRectangle()*, *Zend_Pdf_Page::drawPoligon()*, *Zend_Pdf_Page::drawCircle()* и
-*Zend_Pdf_Page::drawEllipse()* принимают аргумент ``$fillType`` как
+Методы *ZendPdf\Page::drawRectangle()*, *ZendPdf\Page::drawPoligon()*, *ZendPdf\Page::drawCircle()* и
+*ZendPdf\Page::drawEllipse()* принимают аргумент ``$fillType`` как
 необязательный параметр. Это может быть:
 
-- Zend_Pdf_Const::SHAPEDRAW_STROKE - штрихует фигуру
+- ZendPdf\Const::SHAPEDRAW_STROKE - штрихует фигуру
 
-- Zend_Pdf_Const::SHAPEDRAW_FILL - заполняет фигуру
+- ZendPdf\Const::SHAPEDRAW_FILL - заполняет фигуру
 
-- Zend_Pdf_Const::SHAPEDRAW_FILLNSTROKE - заполняет и штрихует (поведение по
+- ZendPdf\Const::SHAPEDRAW_FILLNSTROKE - заполняет и штрихует (поведение по
   умолчанию)
 
-Метод *Zend_Pdf_Page::drawPoligon()* принимает дополнительный параметр
+Метод *ZendPdf\Page::drawPoligon()* принимает дополнительный параметр
 ``$fillMethod``:
 
-- Zend_Pdf_Const::FILLMETHOD_NONZEROWINDING (поведение по умолчанию)
+- ZendPdf\Const::FILLMETHOD_NONZEROWINDING (поведение по умолчанию)
 
   :t:`Справка по PDF`  описывает это правило следующим образом:
   | Правило ненулевого количества витков определяет, находится
@@ -405,7 +405,7 @@ PNG и TIFF):
 
 
 
-- Zend_Pdf_Const::FILLMETHOD_EVENODD
+- ZendPdf\Const::FILLMETHOD_EVENODD
 
   :t:`Справка по PDF`  описывает это правило следующим образом:
   | Альтернативой правилу ненулевого количества витков
@@ -436,7 +436,7 @@ PNG и TIFF):
 
 Страница PDF может быть повернута перед применением любых
 операций рисования. Это может быть сделано методом
-*Zend_Pdf_Page::rotate()*:
+*ZendPdf\Page::rotate()*:
 
 .. code-block:: php
    :linenos:
@@ -461,7 +461,7 @@ PNG и TIFF):
 стек графического состояния, операция восстановления
 извлекает данные из стека.
 
-Методы в классе *Zend_Pdf_Page* для этих операций:
+Методы в классе *ZendPdf\Page* для этих операций:
 
 .. code-block:: php
    :linenos:
@@ -487,12 +487,12 @@ PNG и TIFF):
 Ограничение области рисования
 -----------------------------
 
-PDF и модуль Zend_Pdf поддерживают ограничение области рисования.
+PDF и модуль ZendPdf поддерживают ограничение области рисования.
 Ограничение определяет область страницы, затрагиваемой
 операциями рисования. Вначале эта область представляет собой
 всю страницу.
 
-Класс *Zend_Pdf_Page* предоставляет набор методов для операций
+Класс *ZendPdf\Page* предоставляет набор методов для операций
 ограничения.
 
 .. code-block:: php
@@ -520,7 +520,7 @@ PDF и модуль Zend_Pdf поддерживают ограничение о�
     * @param array $y  - массив чисел с плавающей точкой (Y-координаты верхушек)
     * @param integer $fillMethod
     */
-   public function clipPolygon($x, $y, $fillMethod = Zend_Pdf_Const::FILLMETHOD_NONZEROWINDING);
+   public function clipPolygon($x, $y, $fillMethod = ZendPdf\Const::FILLMETHOD_NONZEROWINDING);
 
 .. code-block:: php
    :linenos:
@@ -564,7 +564,7 @@ PDF и модуль Zend_Pdf поддерживают ограничение о�
 Стили
 -----
 
-Класс *Zend_Pdf_Style* предоставляет набор функциональных
+Класс *ZendPdf\Style* предоставляет набор функциональных
 возможностей для работы со стилями.
 
 Стили могут использоваться для сохранения набора параметров
@@ -578,18 +578,18 @@ PDF и модуль Zend_Pdf поддерживают ограничение о�
    /**
     * Установить стиль для будущих операций рисования на данной странице
     *
-    * @param Zend_Pdf_Style $style
+    * @param ZendPdf\Style $style
     */
-   public function setStyle(Zend_Pdf_Style $style);
+   public function setStyle(ZendPdf\Style $style);
 
    /**
     * Возвращает стили, используемые на странице
     *
-    * @return Zend_Pdf_Style|null
+    * @return ZendPdf\Style|null
     */
    public function getStyle();
 
-Класс *Zend_Pdf_Style* предоставляет набор методов для установки или
+Класс *ZendPdf\Style* предоставляет набор методов для установки или
 получения различных параметров графического состояния:
 
 .. code-block:: php
@@ -599,9 +599,9 @@ PDF и модуль Zend_Pdf поддерживают ограничение о�
    /**
     * Устанавливает цвет линии.
     *
-    * @param Zend_Pdf_Color $color
+    * @param ZendPdf\Color $color
     */
-   public function setLineColor(Zend_Pdf_Color $color);
+   public function setLineColor(ZendPdf\Color $color);
 
 .. code-block:: php
    :linenos:
@@ -610,7 +610,7 @@ PDF и модуль Zend_Pdf поддерживают ограничение о�
    /**
     * Возвращает цвет линии.
     *
-    * @return Zend_Pdf_Color|null
+    * @return ZendPdf\Color|null
     */
    public function getLineColor();
 
@@ -677,9 +677,9 @@ PDF и модуль Zend_Pdf поддерживают ограничение о�
    /**
     * Устанавливает цвет заполнения.
     *
-    * @param Zend_Pdf_Color $color
+    * @param ZendPdf\Color $color
     */
-   public function setFillColor(Zend_Pdf_Color $color);
+   public function setFillColor(ZendPdf\Color $color);
 
 .. code-block:: php
    :linenos:
@@ -688,7 +688,7 @@ PDF и модуль Zend_Pdf поддерживают ограничение о�
    /**
     * Возвращает цвет заполнения.
     *
-    * @return Zend_Pdf_Color|null
+    * @return ZendPdf\Color|null
     */
    public function getFillColor();
 
@@ -699,10 +699,10 @@ PDF и модуль Zend_Pdf поддерживают ограничение о�
    /**
     * Устанавливает текущий шрифт.
     *
-    * @param Zend_Pdf_Font $font
+    * @param ZendPdf\Font $font
     * @param float $fontSize
     */
-   public function setFont(Zend_Pdf_Font $font, $fontSize);
+   public function setFont(ZendPdf\Font $font, $fontSize);
 
 .. code-block:: php
    :linenos:
@@ -722,7 +722,7 @@ PDF и модуль Zend_Pdf поддерживают ограничение о�
    /**
     * Возвращает текущий шрифт.
     *
-    * @return Zend_Pdf_Font $font
+    * @return ZendPdf\Font $font
     */
    public function getFont();
 

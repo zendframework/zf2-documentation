@@ -1,17 +1,17 @@
 .. _zend.progressbar.adapter.jspush:
 
-Zend_ProgressBar_Adapter_JsPush
+Zend\ProgressBar\Adapter\JsPush
 ===============================
 
-``Zend_ProgressBar_Adapter_JsPush`` is an adapter which let's you update a progressbar in a browser via Javascript
+``Zend\ProgressBar\Adapter\JsPush`` is an adapter which let's you update a progressbar in a browser via Javascript
 Push. This means that no second connection is required to gather the status about a running process, but that the
 process itself sends its status directly to the browser.
 
-You can set the adapter options either via the *set** methods or give an array or a ``Zend_Config`` instance with
+You can set the adapter options either via the *set** methods or give an array or a ``Zend\Config\Config`` instance with
 options as first parameter to the constructor. The available options are:
 
 - *updateMethodName*: The javascript method which should be called on every update. Default value is
-  ``Zend_ProgressBar_Update``.
+  ``Zend\ProgressBar\Update``.
 
 - *finishMethodName*: The javascript method which should be called after finish status was set. Default value is
   ``NULL``, which means nothing is done.
@@ -79,7 +79,7 @@ This example illustrates a basic setup of *HTML*, *CSS* and JavaScript for the J
 .. code-block:: javascript
    :linenos:
 
-   function Zend_ProgressBar_Update(data)
+   function Zend\ProgressBar\Update(data)
    {
        document.getElementById('zend-progressbar-done').style.width =
             data.percent + '%';

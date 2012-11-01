@@ -9,9 +9,9 @@ exemple, formater une date, générer des éléments de formulaire, afficher des
 utiliser des classes d'aide pour effectuer ce genre de tâches.
 
 Une aide est simplement une classe. Par exemple, nous voulons une aide nommée "foobar". Par défaut, la classe est
-préfixée avec *"Zend_View_Helper_"* (vous pouvez spécifier un préfixe personnalisé en paramétrant votre
+préfixée avec *"Zend\View_Helper\"* (vous pouvez spécifier un préfixe personnalisé en paramétrant votre
 chemin d'aide), et le dernier segment du nom de classe est le nom de l'aide ; ce segment peut être avec des
-CaracteresMajuscules ; le nom complet de la classe est alors : ``Zend_View_Helper_FooBar``. Cette classe doit
+CaracteresMajuscules ; le nom complet de la classe est alors : ``Zend\View_Helper\FooBar``. Cette classe doit
 contenir au moins une méthode, nommée comme l'aide avec la notationCamel : ``fooBar()``.
 
 .. note::
@@ -23,7 +23,7 @@ contenir au moins une méthode, nommée comme l'aide avec la notationCamel : ``f
    notationCamel.
 
 Pour utiliser une aide dans votre script de vue, appelez la en utilisant *$this->nomAide()*. Dans les coulisses,
-``Zend_View`` va charger la classe ``Zend_View_Helper_NomAide``, créer une instance de cet objet, et appeler sa
+``Zend_View`` va charger la classe ``Zend\View_Helper\NomAide``, créer une instance de cet objet, et appeler sa
 méthode ``nomAide()``. L'instance de l'objet est persistante dans l'instance de ``Zend_View``, et est réutilisée
 pour tous les appels futurs à *$this->nomAide()*.
 
@@ -247,12 +247,12 @@ cherchera les classes d'aides. Par défaut, ``Zend_View`` cherche dans "Zend/Vie
 ``Zend_View`` de regarder dans d'autres chemins en utilisant les méthodes ``setHelperPath()`` et
 ``addHelperPath()``. De plus, vous pouvez indiquer un préfixe de classe pour utiliser les aides dans le
 répertoire fourni, et permettre de donner des espaces de noms à vos classes d'aide. Par défaut, si aucun
-préfixe n'est fourni, "Zend_View_Helper\_" est utilisé.
+préfixe n'est fourni, "Zend\View\Helper\_" est utilisé.
 
 .. code-block:: php
    :linenos:
 
-   $view = new Zend_View();
+   $view = new Zend\View\View();
    $view->setHelperPath('/chemin/vers/plus/de/classes/d-aides',
                         'Ma_View_Helper');
 
@@ -264,7 +264,7 @@ aides personnalisées.
 .. code-block:: php
    :linenos:
 
-   $view = new Zend_View();
+   $view = new Zend\View\View();
 
    // Ajoute /chemin/vers/des/aides avec le préfixe
    // de classe 'Ma_View_Helper'
@@ -281,7 +281,7 @@ aides personnalisées.
    // dans /chemin/vers/des/aides/HelperName.php en utilisant la classe
    // "Ma_View_Helper_HelperName", et finalement dans
    // Zend/View/Helpers/HelperName.php en utilisant la classe
-   // "Zend_View_Helper_HelperName"
+   // "Zend\View_Helper\HelperName"
 
 .. _zend.view.helpers.custom:
 
@@ -291,7 +291,7 @@ aides personnalisées.
 Écrire des aides personnalisées est facile, vous devez juste suivre ces règles :
 
 - Bien qu'il ne soit pas strictement nécessaire, il est recommandé soit d'implémenter
-  ``Zend_View_Helper_Interface`` ou d'étendre ``Zend_View_Helper_Abstract`` quand vous créez vos aides. Introduit
+  ``Zend\View_Helper\Interface`` ou d'étendre ``Zend\View_Helper\Abstract`` quand vous créez vos aides. Introduit
   en 1.6.0, ceux-ci définissent la méthode ``setView()``; cependant, dans les prochaines releases, nous
   prévoyons d'implémenter un motif de conception Stratégie qui permettra de simplifier en grande partie le
   schéma de nomination détaillé ci-dessous. Contruire sur ces bases à partir de maintenant vous aidera pour vos
@@ -364,7 +364,7 @@ accès à votre objet de vue, votre classe d'aide doit avoir une méthode ``setV
    {
        public $view;
 
-       public function setView(Zend_View_Interface $view)
+       public function setView(Zend\View\Interface $view)
        {
            $this->view = $view;
        }

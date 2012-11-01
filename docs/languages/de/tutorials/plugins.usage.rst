@@ -4,7 +4,7 @@
 Verwenden von Plugins
 =====================
 
-Komponenten die Plugins verwenden, verwenden typischerweise ``Zend_Loader_PluginLoader`` um Ihre Arbeit zu tun.
+Komponenten die Plugins verwenden, verwenden typischerweise ``Zend\Loader\PluginLoader`` um Ihre Arbeit zu tun.
 Diese Klasse registriert Plugins indem ein oder mehrere "Präfix Pfade" spezifiziert werden. Diese Komponente ruft
 anschließend die ``load()`` Methode des PluginLoader's auf, und übergibt Ihm den Kurznamen des Plugins. Der
 PluginLoader wird anschließend jeden Präfix Pfad abfragen um zu sehen ob eine Klasse passt die dem Kurznamen
@@ -32,7 +32,7 @@ sicherstellt das eine Zahl ein Vielfaches von 12 ist). Die drei könnten wie fol
    |   |   |-- Even.php
    |   |   |-- Dozens.php
 
-Jetzt informieren wir eine ``Zend_Form_Element`` Instanz über diesen Präfix Pfad. ``Zend_Form_Element``'s
+Jetzt informieren wir eine ``Zend\Form\Element`` Instanz über diesen Präfix Pfad. ``Zend\Form\Element``'s
 ``addPrefixPath()`` Methode erwartet ein drittes Argument welches den Typ des Plugins zeigt für den der Pfad
 registriert wird; in diesem Fall ist es ein "validate" Plugin.
 
@@ -54,7 +54,7 @@ Beispiel verwenden wir einen Mix aus Standardprüfungen ("NotEmpty", "Int") und 
            ->addValidator('Dozens');
 
 Wenn das Element geprüft werden soll, ruft es die Plugin Klasse vom PluginLoader ab. Die ersten zwei Prüfungen
-werden zu ``Zend_Validate_NotEmpty`` und ``Zend_Validate_Int`` aufgelöst; die nächsten zwei werden zu
+werden zu ``Zend\Validate\NotEmpty`` und ``Zend\Validate\Int`` aufgelöst; die nächsten zwei werden zu
 ``Foo_Validate_Even`` und ``Foo_Validate_Dozens`` aufgelöst.
 
 .. note::
@@ -69,7 +69,7 @@ werden zu ``Zend_Validate_NotEmpty`` und ``Zend_Validate_Int`` aufgelöst; die n
    Plugin Namen passt. Wenn die Datei nicht gefunden wird, geht er auf den nächsten Präfix Pfad weiter.
 
    Sobald der Stack von Präfix Pfaden erschöpft ist, und keine passende Datei gefunden wurde, wirft es eine
-   ``Zend_Loader_PluginLoader_Exception``.
+   ``Zend\Loader_PluginLoader\Exception``.
 
 .. _learning.plugins.usage.override:
 
@@ -79,7 +79,7 @@ Eine Stärke des PluginLoaders ist dessen Verwendung eines LIFO Stacks welche es
 überladen indem eine eigene Version lokal mit einem anderen Präfix Pfad erstellt wird, und der Präfix Pfad
 später im Stack registriert wird.
 
-Nehmen wir zum Beispiel ``Zend_View_Helper_FormButton`` an (View Helfer sind eine Form von Plugins). Dieser View
+Nehmen wir zum Beispiel ``Zend\View_Helper\FormButton`` an (View Helfer sind eine Form von Plugins). Dieser View
 Helfer akzeptiert drei Argumente, ein Elementname (der auch als DOM Identifikator des Elements verwendet wird),
 einen Wert (der als Button Label verwendet wird), und ein optionales Array an Attributen. Der Helfer erzeugt dann
 das *HTML* Markup für ein Formular Eingabeelement.
@@ -102,8 +102,8 @@ gibt. Wir registrieren den Präfix Pfad in der View:
 .. code-block:: php
    :linenos:
 
-   // Zend_View::addHelperPath() verwendet den PluginLoader; Trotzdem invertiert
-   // er die Argumente, da er den Standardwert "Zend_View_Helper" für den Plugin
+   // Zend\View\View::addHelperPath() verwendet den PluginLoader; Trotzdem invertiert
+   // er die Argumente, da er den Standardwert "Zend\View\Helper" für den Plugin
    // Präfix anbietet.
    //
    // Anbei nehmen wir an das die eigene Klasse im Verzeichnis

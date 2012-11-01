@@ -17,43 +17,43 @@
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    // メッセージを作成します...
    $mail->createAttachment($someBinaryString);
    $mail->createAttachment($myImage,
                            'image/gif',
-                           Zend_Mime::DISPOSITION_INLINE,
-                           Zend_Mime::ENCODING_BASE64);
+                           Zend\Mime\Mime::DISPOSITION_INLINE,
+                           Zend\Mime\Mime::ENCODING_BASE64);
 
 添付ファイル用の *MIME* パートを細かく制御するには、 ``createAttachment()``
 の返す値を使用してその属性を変更します。 ``createAttachment()`` メソッドの返す値は
-``Zend_Mime_Part`` オブジェクトです。
+``Zend\Mime\Part`` オブジェクトです。
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
 
    $at = $mail->createAttachment($myImage);
    $at->type        = 'image/gif';
-   $at->disposition = Zend_Mime::DISPOSITION_INLINE;
-   $at->encoding    = Zend_Mime::ENCODING_BASE64;
+   $at->disposition = Zend\Mime\Mime::DISPOSITION_INLINE;
+   $at->encoding    = Zend\Mime\Mime::ENCODING_BASE64;
    $at->filename    = 'test.gif';
 
    $mail->send();
 
-もうひとつの方法は、 ``Zend_Mime_Part`` のインスタンスを作成して それを
+もうひとつの方法は、 ``Zend\Mime\Part`` のインスタンスを作成して それを
 ``addAttachment()`` で追加するものです。
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
 
-   $at = new Zend_Mime_Part($myImage);
+   $at = new Zend\Mime\Part($myImage);
    $at->type        = 'image/gif';
-   $at->disposition = Zend_Mime::DISPOSITION_INLINE;
-   $at->encoding    = Zend_Mime::ENCODING_BASE64;
+   $at->disposition = Zend\Mime\Mime::DISPOSITION_INLINE;
+   $at->encoding    = Zend\Mime\Mime::ENCODING_BASE64;
    $at->filename    = 'test.gif';
 
    $mail->addAttachment($at);

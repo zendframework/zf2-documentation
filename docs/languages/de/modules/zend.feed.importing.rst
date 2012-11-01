@@ -5,12 +5,12 @@ Feeds importieren
 =================
 
 ``Zend_Feed`` ermöglicht es Entwicklern, Feeds sehr einfach abzurufen. Wenn Du die *URI* eines Feeds kennst,
-verwende einfach die ``Zend_Feed::import()`` Methode:
+verwende einfach die ``Zend\Feed\Feed::import()`` Methode:
 
 .. code-block:: php
    :linenos:
 
-   $feed = Zend_Feed::import('http://feeds.example.com/feedName');
+   $feed = Zend\Feed\Feed::import('http://feeds.example.com/feedName');
 
 Du kannst ``Zend_Feed`` außerdem verwenden, um Inhalte eines Feeds aus einer Datei oder die Inhalte aus einem
 *PHP* String Variable zu abzurufen.
@@ -19,16 +19,16 @@ Du kannst ``Zend_Feed`` außerdem verwenden, um Inhalte eines Feeds aus einer Da
    :linenos:
 
    // Feeds von einer Textdatei importieren
-   $feedFromFile = Zend_Feed::importFile('feed.xml');
+   $feedFromFile = Zend\Feed\Feed::importFile('feed.xml');
 
    // Feeds von einer PHP String Variable importieren
-   $feedFromPHP = Zend_Feed::importString($feedString);
+   $feedFromPHP = Zend\Feed\Feed::importString($feedString);
 
 In jedem der obigen Beispiele wird bei Erfolg abhängig vom Typ des Feeds ein Objekt einer Klasse zurück gegeben,
-welche ``Zend_Feed_Abstract`` erweitert. Wird ein *RSS* Feed durch eine der obigen Importiermethoden abgerufen,
-wird eine ``Zend_Feed_Rss`` Objekt zurückgegeben. Auf der anderen Seite wird beim Importieren eines Atom Feeds ein
-``Zend_Feed_Atom`` Objekt zurückgegeben. Bei Fehlern, wie z.B. ein unlesbarer oder nicht wohlgeformter Feed,
-werfen die Importiermethoden auch ein ``Zend_Feed_Exception`` Objekt.
+welche ``Zend\Feed\Abstract`` erweitert. Wird ein *RSS* Feed durch eine der obigen Importiermethoden abgerufen,
+wird eine ``Zend\Feed\Rss`` Objekt zurückgegeben. Auf der anderen Seite wird beim Importieren eines Atom Feeds ein
+``Zend\Feed\Atom`` Objekt zurückgegeben. Bei Fehlern, wie z.B. ein unlesbarer oder nicht wohlgeformter Feed,
+werfen die Importiermethoden auch ein ``Zend\Feed\Exception`` Objekt.
 
 .. _zend.feed.importing.custom:
 
@@ -36,9 +36,9 @@ Eigene Feeds
 ------------
 
 ``Zend_Feed`` ermöglicht es Entwicklern Ihre eigenen Feeds sehr einfach zu erstellen. Man muß nur ein Array
-erstellen und es in ``Zend_Feed`` importieren, Dieses Array kann mit ``Zend_Feed::importArray()`` oder mit
-``Zend_Feed::importBuilder()`` importiert werden. Im letzteren Fall wird das Array on the Fly durch eine eigene
-Datenquelle berechnet die ``Zend_Feed_Builder_Interface`` implementiert.
+erstellen und es in ``Zend_Feed`` importieren, Dieses Array kann mit ``Zend\Feed\Feed::importArray()`` oder mit
+``Zend\Feed\Feed::importBuilder()`` importiert werden. Im letzteren Fall wird das Array on the Fly durch eine eigene
+Datenquelle berechnet die ``Zend\Feed_Builder\Interface`` implementiert.
 
 .. _zend.feed.importing.custom.importarray:
 
@@ -49,14 +49,14 @@ Importieren eines eigenen Arrays
    :linenos:
 
    // Importieren eines Feeds von einem Array
-   $atomFeedFromArray = Zend_Feed::importArray($array);
+   $atomFeedFromArray = Zend\Feed\Feed::importArray($array);
 
    // Die folgende Zeile ist identisch mit der obigen; standardmäßig
-   // wird eine Zend_Feed_Atom Instanz zurückgegeben
-   $atomFeedFromArray = Zend_Feed::importArray($array, 'atom');
+   // wird eine Zend\Feed\Atom Instanz zurückgegeben
+   $atomFeedFromArray = Zend\Feed\Feed::importArray($array, 'atom');
 
    // Importieren eines RSS Feeds von einem Array
-   $rssFeedFromArray = Zend_Feed::importArray($array, 'rss');
+   $rssFeedFromArray = Zend\Feed\Feed::importArray($array, 'rss');
 
 Das Format des Arrays muß dieser Struktur entsprechen:
 
@@ -268,49 +268,49 @@ Referenzen:
 Importieren einer eigenen Daten Quelle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Eine ``Zend_Feed`` Instanz kann von jeder Datenquelle erstellt werden die ``Zend_Feed_Builder_Interface``
+Eine ``Zend_Feed`` Instanz kann von jeder Datenquelle erstellt werden die ``Zend\Feed_Builder\Interface``
 implementiert. Die ``getHeader()`` und ``getEntries()`` Methoden müssen implementiert werden damit das Objekt mit
-``Zend_Feed::importBuilder()`` verwendet werden kann. Als einfache Referenz Implementation kann
-``Zend_Feed_Builder`` verwendet werden, welches ein Array im Contructor entgegen nimmt, einige einfache Prüfungen
+``Zend\Feed\Feed::importBuilder()`` verwendet werden kann. Als einfache Referenz Implementation kann
+``Zend\Feed\Builder`` verwendet werden, welches ein Array im Contructor entgegen nimmt, einige einfache Prüfungen
 durchführt, und anschließend in der ``importBuilder()`` Methode verwendet werden kann. Die ``getHeader()``
-Methode muß eine Instanz von ``Zend_Feed_Builder_Header`` zurückgeben, und ``getEntries()`` muß ein Array von
-``Zend_Feed_Builder_Entry`` Instanzen zurückgeben.
+Methode muß eine Instanz von ``Zend\Feed_Builder\Header`` zurückgeben, und ``getEntries()`` muß ein Array von
+``Zend\Feed_Builder\Entry`` Instanzen zurückgeben.
 
 .. note::
 
-   ``Zend_Feed_Builder`` arbeitet als konkrete Implementation um die Verwendung zu demonstrieren. Benutzer sind
-   angehlaten Ihre eigenen Klassen zu Erstellen um ``Zend_Feed_Builder_Interface`` zu implementieren.
+   ``Zend\Feed\Builder`` arbeitet als konkrete Implementation um die Verwendung zu demonstrieren. Benutzer sind
+   angehlaten Ihre eigenen Klassen zu Erstellen um ``Zend\Feed_Builder\Interface`` zu implementieren.
 
-Hier ist ein Beispiel der Verwendung von ``Zend_Feed::importBuilder()``:
+Hier ist ein Beispiel der Verwendung von ``Zend\Feed\Feed::importBuilder()``:
 
 .. code-block:: php
    :linenos:
 
    // Einen Feed von einer eigenen Erstellungsquelle importieren
    $atomFeedFromArray =
-       Zend_Feed::importBuilder(new Zend_Feed_Builder($array));
+       Zend\Feed\Feed::importBuilder(new Zend\Feed\Builder($array));
 
    // Die folgende Zeile ist mit der obigen äquivalent; standardmäßig
-   // wird eine Zend_Feed_Atom Instanz zurückgegeben
+   // wird eine Zend\Feed\Atom Instanz zurückgegeben
    $atomFeedFromArray =
-       Zend_Feed::importBuilder(new Zend_Feed_Builder($array), 'atom');
+       Zend\Feed\Feed::importBuilder(new Zend\Feed\Builder($array), 'atom');
 
    // Einen RSS Feeed von einem Array von eigenen Erstellungsquellen importieren
    $rssFeedFromArray =
-       Zend_Feed::importBuilder(new Zend_Feed_Builder($array), 'rss');
+       Zend\Feed\Feed::importBuilder(new Zend\Feed\Builder($array), 'rss');
 
 .. _zend.feed.importing.custom.dump:
 
 Ausgeben des Inhalts eines Feeds
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Um den Inhalt einer ``Zend_Feed_Abstract`` Instanz auszugeben können die ``send()`` oder ``saveXml()`` Methoden
+Um den Inhalt einer ``Zend\Feed\Abstract`` Instanz auszugeben können die ``send()`` oder ``saveXml()`` Methoden
 verwendet werden.
 
 .. code-block:: php
    :linenos:
 
-   assert($feed instanceof Zend_Feed_Abstract);
+   assert($feed instanceof Zend\Feed\Abstract);
 
    // Den Feed an der Standardausgabe ausgeben
    print $feed->saveXML();

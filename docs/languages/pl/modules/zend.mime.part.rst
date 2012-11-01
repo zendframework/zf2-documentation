@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.mime.part:
 
-Zend_Mime_Part
+Zend\Mime\Part
 ==============
 
 .. _zend.mime.part.introduction:
@@ -11,16 +11,16 @@ Wprowadzenie
 
 Ta klasa reprezentuje pojedynczą część wiadomości MIME. Zawiera ona aktualną zawartość części wiadomości
 oraz informacje o jej kodowaniu, typie oraz o oryginalej nazwie pliku. Dostarcza ona metody do generowania
-łańcuchów znaków z przechowywanych danych. Obiekty *Zend_Mime_Part* mogą być dodane do
-:ref:`Zend_Mime_Message <zend.mime.message>` aby zebrać kompletną wieloczęściową wiadomość.
+łańcuchów znaków z przechowywanych danych. Obiekty *Zend\Mime\Part* mogą być dodane do
+:ref:`Zend\Mime\Message <zend.mime.message>` aby zebrać kompletną wieloczęściową wiadomość.
 
 .. _zend.mime.part.instantiation:
 
 Tworzenie instancji
 -------------------
 
-Obiekt *Zend_Mime_Part* jest tworzony z łańcuchem znaków zawierającym część wiadomości podanym jako
-parametr konstruktora. Domyślny typ to OCTET-STREAM, a kodowanie to 8Bit. Po utworzeniu obiektu *Zend_Mime_Part*,
+Obiekt *Zend\Mime\Part* jest tworzony z łańcuchem znaków zawierającym część wiadomości podanym jako
+parametr konstruktora. Domyślny typ to OCTET-STREAM, a kodowanie to 8Bit. Po utworzeniu obiektu *Zend\Mime\Part*,
 jego podstawowe atrybuty mogą być zmienione bezpośrednio:
 
 .. code-block:: php

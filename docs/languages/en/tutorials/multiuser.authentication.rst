@@ -32,7 +32,7 @@ application using ``Zend_Application``, and that inside that application you hav
 The job of the ``Zend_Auth`` class is twofold. First, it should be able to accept an authentication adapter to use
 to authenticate a user. Secondly, after a successful authentication of a user, it should persist throughout each
 and every request that might need to know if the current user has indeed been authenticated. To persist this data,
-``Zend_Auth`` consumes ``Zend_Session_Namespace``, but you will generally never need to interact with this session
+``Zend_Auth`` consumes ``Zend\Session\Namespace``, but you will generally never need to interact with this session
 object.
 
 Lets assume we have the following database table setup:
@@ -98,7 +98,7 @@ The following code will demonstrate how to construct the proper adapter, integra
 .. code-block:: php
    :linenos:
 
-   class AuthController extends Zend_Controller_Action
+   class AuthController extends Zend\Controller\Action
    {
 
        public function loginAction()
@@ -109,7 +109,7 @@ The following code will demonstrate how to construct the proper adapter, integra
 
            if ($loginForm->isValid()) {
 
-               $adapter = new Zend_Auth_Adapter_DbTable(
+               $adapter = new Zend\Auth_Adapter\DbTable(
                    $db,
                    'users',
                    'username',

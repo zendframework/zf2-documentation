@@ -18,22 +18,22 @@ use controllers in this manner.
 .. code-block:: php
    :linenos:
 
-   class IndexController extends Zend_Controller_Action
+   class IndexController extends Zend\Controller\Action
    {
        public function indexAction()
        {
            // Setup pagination control view script. See the pagation control tutorial page
            // for more information about this view script.
-           Zend_View_Helper_PaginationControl::setDefaultViewPartial('controls.phtml');
+           Zend\View_Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
 
            // Fetch an already instantiated database connection from the registry
-           $db = Zend_Registry::get('db');
+           $db = Zend\Registry\Registry::get('db');
 
            // Create a select object which fetches blog posts, sorted decending by date of creation
            $select = $db->select()->from('posts')->order('date_created DESC');
 
            // Create a Paginator for the blog posts query
-           $paginator = Zend_Paginator::factory($select);
+           $paginator = Zend\Paginator\Paginator::factory($select);
 
            // Read the current page number from the request. Default to 1 if no explicit page number is provided.
            $paginator->setCurrentPageNumber($this->_getParam('page', 1));

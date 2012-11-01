@@ -192,7 +192,7 @@ findおよびsedコマンドを使ってrequire_onceの呼び出しを取り去�
 
 (読みやすくするために２行に分けていますが) この一行コマンドは各 *PHP*\
 ファイルを繰り返し処理しながら、 'require_once' を '// require_once' で置換し、
-効果的にその命令をコメントアウトします (``Zend_Application`` と ``Zend_Loader_Autoloader``
+効果的にその命令をコメントアウトします (``Zend_Application`` と ``Zend\Loader\Autoloader``
 の中にある ``require_once`` はそのままにしてあります。
 そうしないと処理が失敗するからです)。
 
@@ -206,7 +206,7 @@ findおよびsedコマンドを使ってrequire_onceの呼び出しを取り去�
    :linenos:
 
    require_once 'Zend/Loader/Autoloader.php';
-   Zend_Loader_Autoloader::getInstance();
+   Zend\Loader\Autoloader::getInstance();
 
 .. _performance.classloading.pluginloader:
 
@@ -234,14 +234,14 @@ Frameworkとともに出荷された既存の標準プラグインを上書き�
 そしてこの問題の範囲のアイデアが得られます。
 この文章を記載した時点では、下記のコンポーネントがプラグインローダーを使います。
 
-- ``Zend_Controller_Action_HelperBroker``: ヘルパ
+- ``Zend\Controller_Action\HelperBroker``: ヘルパ
 
-- ``Zend_File_Transfer``: アダプタ
+- ``Zend\File\Transfer``: アダプタ
 
-- ``Zend_Filter_Inflector``: フィルタ (ViewRendererアクションヘルパおよび ``Zend_Layout``
+- ``Zend\Filter\Inflector``: フィルタ (ViewRendererアクションヘルパおよび ``Zend_Layout``
   に使用されます)
 
-- ``Zend_Filter_Input``: フィルタおよびバリデータ
+- ``Zend\Filter\Input``: フィルタおよびバリデータ
 
 - ``Zend_Form``: 要素、バリデータ、フィルタ、
   デコレータ、キャプチャ、ファイル転送アダプタ

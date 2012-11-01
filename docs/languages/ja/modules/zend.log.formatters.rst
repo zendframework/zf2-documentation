@@ -18,7 +18,7 @@
 単純なフォーマット
 ---------
 
-``Zend_Log_Formatter_Simple`` はデフォルトのフォーマッタです。
+``Zend\Log_Formatter\Simple`` はデフォルトのフォーマッタです。
 これは、何もフォーマッタを指定しなかった場合に自動的に設定されます。
 デフォルトの設定は、次のようになります。
 
@@ -26,7 +26,7 @@
    :linenos:
 
    $format = '%timestamp% %priorityName% (%priority%): %message%' . PHP_EOL;
-   $formatter = new Zend_Log_Formatter_Simple($format);
+   $formatter = new Zend\Log_Formatter\Simple($format);
 
 フォーマッタを個々のライターオブジェクトに対して設定するには、ライターの
 ``setFormatter()`` メソッドを使用します。
@@ -34,22 +34,22 @@
 .. code-block:: php
    :linenos:
 
-   $writer = new Zend_Log_Writer_Stream('php://output');
-   $formatter = new Zend_Log_Formatter_Simple('hello %message%' . PHP_EOL);
+   $writer = new Zend\Log_Writer\Stream('php://output');
+   $formatter = new Zend\Log_Formatter\Simple('hello %message%' . PHP_EOL);
    $writer->setFormatter($formatter);
 
-   $logger = new Zend_Log();
+   $logger = new Zend\Log\Log();
    $logger->addWriter($writer);
 
    $logger->info('there');
 
    // "hello there" と出力します
 
-``Zend_Log_Formatter_Simple`` のコンストラクタには、
+``Zend\Log_Formatter\Simple`` のコンストラクタには、
 パラメータとして書式指定文字列を渡すことができます。
 この文字列には、キーをパーセント記号で囲んだもの (例. ``%message%``) を含めます。
 書式指定文字列には、イベントデータの配列の任意のキーを含めることができます。
-デフォルトのキーを取得するには、 ``Zend_Log_Formatter_Simple`` の定数 DEFAULT_FORMAT
+デフォルトのキーを取得するには、 ``Zend\Log_Formatter\Simple`` の定数 DEFAULT_FORMAT
 を使用します。
 
 .. _zend.log.formatters.xml:
@@ -57,17 +57,17 @@
 XML へのフォーマット
 ------------
 
-``Zend_Log_Formatter_Xml`` は、ログのデータを *XML* 文字列に変換します。
+``Zend\Log_Formatter\Xml`` は、ログのデータを *XML* 文字列に変換します。
 デフォルトでは、イベントデータ配列のすべての項目を自動的に記録します。
 
 .. code-block:: php
    :linenos:
 
-   $writer = new Zend_Log_Writer_Stream('php://output');
-   $formatter = new Zend_Log_Formatter_Xml();
+   $writer = new Zend\Log_Writer\Stream('php://output');
+   $formatter = new Zend\Log_Formatter\Xml();
    $writer->setFormatter($formatter);
 
-   $logger = new Zend_Log();
+   $logger = new Zend\Log\Log();
    $logger->addWriter($writer);
 
    $logger->info('通知メッセージ');
@@ -87,21 +87,21 @@ XML へのフォーマット
 
 ルート要素を変更したり、 *XML*
 の要素名とイベントデータ配列の項目名の対応を指定したりすることも可能です。
-``Zend_Log_Formatter_Xml`` のコンストラクタの最初のパラメータには、
+``Zend\Log_Formatter\Xml`` のコンストラクタの最初のパラメータには、
 ルート要素の名前を指定します。また、
 二番目のパラメータには要素名の対応を表す連想配列を指定します。
 
 .. code-block:: php
    :linenos:
 
-   $writer = new Zend_Log_Writer_Stream('php://output');
-   $formatter = new Zend_Log_Formatter_Xml('log',
+   $writer = new Zend\Log_Writer\Stream('php://output');
+   $formatter = new Zend\Log_Formatter\Xml('log',
                                            array('msg' => 'message',
                                                  'level' => 'priorityName')
                                           );
    $writer->setFormatter($formatter);
 
-   $logger = new Zend_Log();
+   $logger = new Zend\Log\Log();
    $logger->addWriter($writer);
 
    $logger->info('通知メッセージ');

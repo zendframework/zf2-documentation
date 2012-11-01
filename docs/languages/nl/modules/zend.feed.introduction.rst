@@ -10,8 +10,8 @@ uitgebreide ondersteuning voor het wijzigen van de structuur van een feed of een
 syntax, en om de resultaten terug in XLM te gieten. In de toekomst zou deze wijzigingsondersteuning ook het Atom
 Publishing Protocol kunnen ondersteunen.
 
-Programmeerswijs bestaat *Zend_Feed* uit een basisklasse *Zend_Feed*, de abstracte klasse *Zend_Feed_Abstract* en
-de basisklasse *Zend_Feed_Entry_Abstract* om Feeds en Entries voor te stellen, om specifieke implementaties van
+Programmeerswijs bestaat *Zend_Feed* uit een basisklasse *Zend_Feed*, de abstracte klasse *Zend\Feed\Abstract* en
+de basisklasse *Zend\Feed_Entry\Abstract* om Feeds en Entries voor te stellen, om specifieke implementaties van
 feeds en entries voor RSS en Atom voor te stellen, en een achter-de-scène helper om de intuïtieve syntax magie te
 doen werken.
 
@@ -36,8 +36,8 @@ data op te slaan in een database enz...
 
    // Haal de laatste Slashdot hoofdtitels
    try {
-       $slashdotRss = Zend_Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
-   } catch (Zend_Feed_Exception $e) {
+       $slashdotRss = Zend\Feed\Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
+   } catch (Zend\Feed\Exception $e) {
        // feed import mislukt
        echo "Uitzondering gevangen bij het importeren van feed: {$e->getMessage()}\n";
        exit;

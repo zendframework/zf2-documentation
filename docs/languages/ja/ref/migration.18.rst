@@ -51,6 +51,6 @@ Zend Framework 1.8 以降、デフォルトのキャッシュ処理が追加さ�
 .. code-block:: php
    :linenos:
 
-   Zend_Locale::disableCache(true);
+   Zend\Locale\Locale::disableCache(true);
 
 

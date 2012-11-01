@@ -4,21 +4,21 @@
 Between
 =======
 
-``Zend_Validate_Between`` erlaubt es zu prüfen ob ein angegebener Wert zwischen zwei anderen Werten ist.
+``Zend\Validate\Between`` erlaubt es zu prüfen ob ein angegebener Wert zwischen zwei anderen Werten ist.
 
 .. note::
 
-   **Zend_Validate_Between unterstützt nur die Prüfung von Nummern**
+   **Zend\Validate\Between unterstützt nur die Prüfung von Nummern**
 
-   Es ist zu beachten das ``Zend_Validate_Between`` nur die Prüfung von Nummern unterstützt. Strings, oder ein
+   Es ist zu beachten das ``Zend\Validate\Between`` nur die Prüfung von Nummern unterstützt. Strings, oder ein
    Datum können mit dieser Prüfung nicht geprüft werden.
 
 .. _zend.validate.set.between.options:
 
-Unterstützte Optionen für Zend_Validate_Between
+Unterstützte Optionen für Zend\Validate\Between
 -----------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Validate_Between`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Validate\Between`` unterstützt:
 
 - **inclusive**: Definiert ob die Prüfung inklusive oder explusive der minimalen und maximalen Grenzwerte ist. Sie
   ist standardmäßig ``TRUE``.
@@ -29,7 +29,7 @@ Die folgenden Optionen werden für ``Zend_Validate_Between`` unterstützt:
 
 .. _zend.validate.set.between.basic:
 
-Standardverhalten für Zend_Validate_Between
+Standardverhalten für Zend\Validate\Between
 -------------------------------------------
 
 Standardmäßig prüft diese Prüfung ob ein Wert zwischen ``min`` und ``max`` liegt wobei beide Grenzwerte als
@@ -38,7 +38,7 @@ Wert erlaubt sind.
 .. code-block:: .validator.
    :linenos:
 
-   $valid  = new Zend_Validate_Between(array('min' => 0, 'max' => 10));
+   $valid  = new Zend\Validate\Between(array('min' => 0, 'max' => 10));
    $value  = 10;
    $result = $valid->isValid($value);
    // Gibt true zurück
@@ -58,7 +58,7 @@ Beispiel:
 .. code-block:: .validator.
    :linenos:
 
-   $valid  = new Zend_Validate_Between(
+   $valid  = new Zend\Validate\Between(
        array(
            'min' => 0,
            'max' => 10,

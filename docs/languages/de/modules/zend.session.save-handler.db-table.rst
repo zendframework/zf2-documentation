@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.session.savehandler.dbtable:
 
-Zend_Session_SaveHandler_DbTable
+Zend\Session_SaveHandler\DbTable
 ================================
 
-Das Basis Setup für ``Zend_Session_SaveHandler_DbTable`` muß zumindest vier Spalten haben, die wie folgt im
+Das Basis Setup für ``Zend\Session_SaveHandler\DbTable`` muß zumindest vier Spalten haben, die wie folgt im
 Config Array oder ``Zend_Config`` Objekt beschrieben werden: primary, ist der Primary-Key und standardmäßig nur
 die SessionID welche standardmäßig ein String der Länge 32 ist; modified, ist der Unix-Timestamp des Datums der
 letzten Änderung; lifetime, ist die Lebenszeit der Session (``modified + lifetime > time();``); und data, sind die
@@ -29,16 +29,16 @@ serialisierten Daten die in der Session gespeichert werden.
    :linenos:
 
    // Datenbank Verbindung vorbereiten
-   $db = Zend_Db::factory('Pdo_Mysql', array(
+   $db = Zend\Db\Db::factory('Pdo_Mysql', array(
        'host'     =>'example.com',
        'username' => 'dbuser',
        'password' => '******',
        'dbname'   => 'dbname'
    ));
 
-   // Entweder den Standardadapter Zend_Db_Table setzen
+   // Entweder den Standardadapter Zend\Db\Table setzen
    // oder eine DB-Verbindung direkt an den save Handler $config übergeben
-   Zend_Db_Table_Abstract::setDefaultAdapter($db);
+   Zend\Db_Table\Abstract::setDefaultAdapter($db);
    $config = array(
        'name'           => 'session',
        'primary'        => 'id',
@@ -47,16 +47,16 @@ serialisierten Daten die in der Session gespeichert werden.
        'lifetimeColumn' => 'lifetime'
    );
 
-   // Erstellen der Zend_Session_SaveHandler_DbTable und
+   // Erstellen der Zend\Session_SaveHandler\DbTable und
    // Setzen des save Handlers für Zend_Session
-   Zend_Session::setSaveHandler(new Zend_Session_SaveHandler_DbTable($config));
+   Zend\Session\Session::setSaveHandler(new Zend\Session_SaveHandler\DbTable($config));
 
    // Session starten
-   Zend_Session::start();
+   Zend\Session\Session::start();
 
    // Jetzt kann Zend_Session wie sonst verwendet werden
 
-Man kann auch mehrere Spalten im Primarykey für ``Zend_Session_SaveHandler_DbTable`` verwenden.
+Man kann auch mehrere Spalten im Primarykey für ``Zend\Session_SaveHandler\DbTable`` verwenden.
 
 .. _zend.session.savehandler.dbtable.multi-column-key:
 
@@ -79,10 +79,10 @@ Man kann auch mehrere Spalten im Primarykey für ``Zend_Session_SaveHandler_DbTa
    :linenos:
 
    // Die DB Verbindung wie vorher einrichten
-   // BEACHTE: Diese Config wird auch an Zend_Db_Table übergeben sodas
+   // BEACHTE: Diese Config wird auch an Zend\Db\Table übergeben sodas
    // spezielles für die Tabelle genauso in die Config gegeben werden kann
    $config = array(
-       'name'              => 'session', // Tabellenname von Zend_Db_Table
+       'name'              => 'session', // Tabellenname von Zend\Db\Table
        'primary'           => array(
            'session_id',   // Die SessionID von PHP
            'save_path',    // session.save_path
@@ -101,10 +101,10 @@ Man kann auch mehrere Spalten im Primarykey für ``Zend_Session_SaveHandler_DbTa
    );
 
    // Zend_Session mitteilen das der Save Handler verwendet werden soll
-   Zend_Session::setSaveHandler(new Zend_Session_SaveHandler_DbTable($config));
+   Zend\Session\Session::setSaveHandler(new Zend\Session_SaveHandler\DbTable($config));
 
    // Session starten
-   Zend_Session::start();
+   Zend\Session\Session::start();
 
    // Zend_Session wie normal verwenden
 

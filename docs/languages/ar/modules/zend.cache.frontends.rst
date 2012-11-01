@@ -6,7 +6,7 @@
 
 .. _zend.cache.core:
 
-Zend_Cache_Core
+Zend\Cache\Core
 ---------------
 
 .. _zend.cache.core.introduction:
@@ -14,12 +14,12 @@ Zend_Cache_Core
 مقدمة
 ^^^^^
 
-*Zend_Cache_Core* هو frontend مميز لأنه جوهر الـ module . هو عبارة cache frontend عام و
+*Zend\Cache\Core* هو frontend مميز لأنه جوهر الـ module . هو عبارة cache frontend عام و
 هناك classes أخرى ممتدة منه.
 
 .. note::
 
-   كل الـ frontends ترث من *Zend_Cache_Core* و بهذا كل الـ methods و الـ options
+   كل الـ frontends ترث من *Zend\Cache\Core* و بهذا كل الـ methods و الـ options
    الخاصة به (سيتم توضيحها لاحقاً) متوفرة فى الـ frontends الأخرى ,
    لذلك لن نقوم بشرحها هناك.
 
@@ -31,7 +31,7 @@ Zend_Cache_Core
 هذه الـ options يتم تمريرها الى الـ factory method كما كان موضحاً فى امثلة
 سابقة.
 
-.. table:: الـ options المتوفرة لـ Zend_Cache_Core
+.. table:: الـ options المتوفرة لـ Zend\Cache\Core
 
    +-----------------------+-------------+-----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |الـ Option             |الـ Data Type|الـ Default Value|الوصف                                                                                                                                                                                                                                                                                                                |
@@ -130,7 +130,7 @@ Zend_Cache_Core
    ?>
 .. _zend.cache.frontend.output:
 
-Zend_Cache_Frontend_Output
+Zend\Cache_Frontend\Output
 --------------------------
 
 .. _zend.cache.frontend.output.introduction:
@@ -138,7 +138,7 @@ Zend_Cache_Frontend_Output
 مقدمة
 ^^^^^
 
-*Zend_Cache_Frontend_Output* هو frontend يستخدم فى التقاط البيانات المخرجة.
+*Zend\Cache_Frontend\Output* هو frontend يستخدم فى التقاط البيانات المخرجة.
 يستخدم خاصية الـ output buffering التى تقدمها لغة PHP ليلتقط كل شئ يتم
 اخراجه بين الـ methods المسمى *()start* و *()end*.
 
@@ -147,7 +147,7 @@ Zend_Cache_Frontend_Output
 الـ options المتوفرة
 ^^^^^^^^^^^^^^^^^^^^
 
-هذا الـ frontend لا يحتوى اى options جديدة بخلاف الموجودة فى *Zend_Cache_Core*.
+هذا الـ frontend لا يحتوى اى options جديدة بخلاف الموجودة فى *Zend\Cache\Core*.
 
 .. _zend.cache.frontend.output.examples:
 
@@ -181,7 +181,7 @@ refactoring.
 
 .. _zend.cache.frontend.function:
 
-Zend_Cache_Frontend_Function
+Zend\Cache_Frontend\Function
 ----------------------------
 
 .. _zend.cache.frontend.function.introduction:
@@ -189,7 +189,7 @@ Zend_Cache_Frontend_Function
 مقدمة
 ^^^^^
 
-تقوم *Zend_Cache_Frontend_Function* بعمل cache لناتج استدعاء دالة ما, و لديها
+تقوم *Zend\Cache_Frontend\Function* بعمل cache لناتج استدعاء دالة ما, و لديها
 method واحد رئيسى يسمى *()call* و الذى يأخذ اسم الدالة المراد
 استدعائها و array تحتوتى الـ parameters التى سيتم تمريرها لهذه الدالة.
 
@@ -198,7 +198,7 @@ method واحد رئيسى يسمى *()call* و الذى يأخذ اسم الد�
 الـ options المتوفرة
 ^^^^^^^^^^^^^^^^^^^^
 
-.. table:: الـ options المتوفرة لـ Zend_Cache_Frontend_Function
+.. table:: الـ options المتوفرة لـ Zend\Cache_Frontend\Function
 
    +------------------+-------------+-----------------+-------------------------------------------------------------------------------------+
    |الـ Option        |الـ Data Type|الـ Default Value|الوصف                                                                                |
@@ -230,7 +230,7 @@ method واحد رئيسى يسمى *()call* و الذى يأخذ اسم الد�
    # $cache->call('veryExpensiveFunc', array(1, 'foo', 'bar'))
 
    ?>
-*Zend_Cache_Frontend_Function* ذكية كفاية لتقوم بعمل cache لكل من ناتج الدالة
+*Zend\Cache_Frontend\Function* ذكية كفاية لتقوم بعمل cache لكل من ناتج الدالة
 العائد من "return" و البيانات المخرجة داخل الدالة (مثل عمل طباعة
 لبعض البيانات من داخل الدالة).
 
@@ -242,7 +242,7 @@ method واحد رئيسى يسمى *()call* و الذى يأخذ اسم الد�
 
 .. _zend.cache.frontend.class:
 
-Zend_Cache_Frontend_Class
+Zend\Cache_Frontend\Class
 -------------------------
 
 .. _zend.cache.frontend.class.introduction:
@@ -250,7 +250,7 @@ Zend_Cache_Frontend_Class
 مقدمة
 ^^^^^
 
-يختلف *Zend_Cache_Frontend_Class* عن *Zend_Cache_Frontend_Function* حيث انه يقوم بعمل cache
+يختلف *Zend\Cache_Frontend\Class* عن *Zend\Cache_Frontend\Function* حيث انه يقوم بعمل cache
 لعمليات استدعاء الـ objects و الـ static methods.
 
 .. _zend.cache.frontend.class.options:
@@ -258,7 +258,7 @@ Zend_Cache_Frontend_Class
 الـ options المتوفر
 ^^^^^^^^^^^^^^^^^^^
 
-.. table:: الـ options المتوفرة لـ Zend_Cache_Frontend_Class
+.. table:: الـ options المتوفرة لـ Zend\Cache_Frontend\Class
 
    +--------------------+-------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |الـ Option          |الـ Data Type|الـ Default Value|الوصف                                                                                                                                                                                                                  |
@@ -335,7 +335,7 @@ Zend_Cache_Frontend_Class
    ?>
 .. _zend.cache.frontends.file:
 
-Zend_Cache_Frontend_File
+Zend\Cache_Frontend\File
 ------------------------
 
 .. _zend.cache.frontends.file.introduction:
@@ -343,14 +343,14 @@ Zend_Cache_Frontend_File
 مقدمة
 ^^^^^
 
-*Zend_Cache_Frontend_File* هو frontend يعتمد على اخر وقت تعديل ملف معين "master file".
+*Zend\Cache_Frontend\File* هو frontend يعتمد على اخر وقت تعديل ملف معين "master file".
 يتم استخدامه على سبيل المثال مع ملفات الـ configuration او الملفات
 التى تخص الـ templating.
 
 على سبيل المثال: انت لديك ملف XML يحتوى على الـ configurations الخاصة
 ببرنامجك, هذا الملف يتم قرائة محتوياته بإستخدام دالة معينة و
 التى تعيد "return" إلينا "config object" (مثل *Zend_Config*). عن طريق
-*Zend_Cache_Frontend_File* يمكنك حفظ الـ "config object" فى الـ cache (لتتجنب عملية
+*Zend\Cache_Frontend\File* يمكنك حفظ الـ "config object" فى الـ cache (لتتجنب عملية
 قرائة ملف الـ XML عند كل مرة) لكن بالأعتماد بشدة على الـ "master file"
 اى ملف الـ XML. إذاً, إن تم تعديل ملف الـ XML سيتم اعتبار النسخة فى
 الـ cache غير صالحة للإستخدام و سيتم إنشاء اخرى جديدة.
@@ -360,7 +360,7 @@ Zend_Cache_Frontend_File
 الـ options المتوفرة
 ^^^^^^^^^^^^^^^^^^^^
 
-.. table:: الـ options المتوفرة لـ Zend_Cache_Frontend_File
+.. table:: الـ options المتوفرة لـ Zend\Cache_Frontend\File
 
    +-------------------+-------------+-----------------+----------------------------------+
    |الـ Option         |الـ Data Type|الـ Default Value|الوصف                             |
@@ -373,13 +373,13 @@ Zend_Cache_Frontend_File
 امثلة
 ^^^^^
 
-إستخدام هذا الـ frontend هو نفس طريقة استخدام *Zend_Cache_Core*, لذلك لا
+إستخدام هذا الـ frontend هو نفس طريقة استخدام *Zend\Cache\Core*, لذلك لا
 يوجد حاجة إلى مثال جديد, الشئ الوحيد الذى ستقوم به هو تعريف قيمة
 *masterFile* عند إستخدام الـ factory.
 
 .. _zend.cache.frontends.page:
 
-Zend_Cache_Frontend_Page
+Zend\Cache_Frontend\Page
 ------------------------
 
 .. _zend.cache.frontends.page.introduction:
@@ -387,8 +387,8 @@ Zend_Cache_Frontend_Page
 مقدمة
 ^^^^^
 
-*Zend_Cache_Frontend_Page* يتشابه مع *Zend_Cache_Frontend_Output* إلا انه تم تصميمه لعمل
-cache لصفحة كاملة. فلا يمكن إستخدام *Zend_Cache_Frontend_Page* لعمل cache لجزء او
+*Zend\Cache_Frontend\Page* يتشابه مع *Zend\Cache_Frontend\Output* إلا انه تم تصميمه لعمل
+cache لصفحة كاملة. فلا يمكن إستخدام *Zend\Cache_Frontend\Page* لعمل cache لجزء او
 بلوك معين فقط.
 
 على الجانب الأخر, الـ "cache id" يتم حسابه من خلال *['SERVER['REQUEST_URI_$* و
@@ -403,7 +403,7 @@ cache لصفحة كاملة. فلا يمكن إستخدام *Zend_Cache_Frontend
 
 .. note::
 
-   Zend_Cache_Frontend_Page يعتبر فى المرحلة alpha الأن , إى انه سيتم عمل
+   Zend\Cache_Frontend\Page يعتبر فى المرحلة alpha الأن , إى انه سيتم عمل
    تطويرات جديدة له مع مرور الوقت.
 
 .. _zend.cache.frontends.page.options:
@@ -411,7 +411,7 @@ cache لصفحة كاملة. فلا يمكن إستخدام *Zend_Cache_Frontend
 الـ options المتوفرة
 ^^^^^^^^^^^^^^^^^^^^
 
-.. table:: الـ options المتوفرة لـ Zend_Cache_Frontend_Page
+.. table:: الـ options المتوفرة لـ Zend\Cache_Frontend\Page
 
    +---------------+-------------+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |الـ Option     |الـ Data Type|الـ Default Value  |الوصف                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -430,7 +430,7 @@ cache لصفحة كاملة. فلا يمكن إستخدام *Zend_Cache_Frontend
 امثلة
 ^^^^^
 
-إستخدام Zend_Cache_Frontend_Page سهل جدا :
+إستخدام Zend\Cache_Frontend\Page سهل جدا :
 
 .. code-block:: php
    :linenos:
@@ -455,7 +455,7 @@ Zend_Controller)
    <?php
 
    // [...] you should avoid to put too much lines before the cache section
-   // [...] for example, for optimal performances, "require_once" or "Zend_Loader::loadClass" should be
+   // [...] for example, for optimal performances, "require_once" or "Zend\Loader\Loader::loadClass" should be
    // [...] after the cache section
 
    require_once 'Zend/Cache.php';
@@ -478,8 +478,8 @@ Zend_Controller)
        'cacheDir' => '/tmp/'
    );
 
-   // getting a Zend_Cache_Frontend_Page object
-   $cache = Zend_Cache::factory('Page', 'File', $frontendOptions, $backendOptions);
+   // getting a Zend\Cache_Frontend\Page object
+   $cache = Zend\Cache\Cache::factory('Page', 'File', $frontendOptions, $backendOptions);
 
    $cache->start();
    // if the cache is hit, the result is sent to the browser and the script stop here

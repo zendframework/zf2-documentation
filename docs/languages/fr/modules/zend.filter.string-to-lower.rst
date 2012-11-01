@@ -9,7 +9,7 @@ Ce filtre convertit toute entrée vers des caractères minuscules.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringToLower();
+   $filter = new Zend\Filter\StringToLower();
 
    print $filter->filter('SAMPLE');
    // retourne "sample"
@@ -23,10 +23,10 @@ méthode ``setEncoding()``.
    :linenos:
 
    // utiliser UTF-8
-   $filter = new Zend_Filter_StringToLower('UTF-8');
+   $filter = new Zend\Filter\StringToLower('UTF-8');
 
    // ou passer un tableau
-   $filter = new Zend_Filter_StringToLower(array('encoding' => 'UTF-8'));
+   $filter = new Zend\Filter\StringToLower(array('encoding' => 'UTF-8'));
 
    // ou encore faire cela après coup
    $filter->setEncoding('ISO-8859-1');

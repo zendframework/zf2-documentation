@@ -24,7 +24,7 @@ części aplikacji: strony, kontrolera, akcji i prawdopodobnie zasobu.
    :linenos:
 
    // ustawienie nazwy kontrolera oraz akcji jako segmentów tytułu:
-   $request = Zend_Controller_Front::getInstance()->getRequest();
+   $request = Zend\Controller\Front::getInstance()->getRequest();
    $this->headTitle($request->getActionName())
         ->headTitle($request->getControllerName());
 

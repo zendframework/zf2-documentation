@@ -1,22 +1,22 @@
 .. EN-Revision: none
 .. _zend.file.transfer.introduction:
 
-Zend_File_Transfer
+Zend\File\Transfer
 ==================
 
-``Zend_File_Transfer`` permet aux développeurs de contrôler l'upload de fichiers mais aussi le téléchargement.
+``Zend\File\Transfer`` permet aux développeurs de contrôler l'upload de fichiers mais aussi le téléchargement.
 Il vous permet d'utiliser les validateurs incorporés pour le traitement de fichier et même la possibilité de
-changer les fichiers avec des filtres. ``Zend_File_Transfer`` fonctionne avec des adaptateurs ce qui vous permet
+changer les fichiers avec des filtres. ``Zend\File\Transfer`` fonctionne avec des adaptateurs ce qui vous permet
 d'utiliser la même *API* pour différents protocoles de transfert *HTTP*, FTP, WEBDAV et plus encore.
 
 .. note::
 
    **Limitation**
 
-   L'implémentation actuelle de ``Zend_File_Transfer`` est limitée aux uploads de type *HTTP* Post. Le
+   L'implémentation actuelle de ``Zend\File\Transfer`` est limitée aux uploads de type *HTTP* Post. Le
    téléchargement de fichiers et les autres adaptateurs seront ajoutés dans les prochaines versions. Les
    méthodes non implémentées pour le moment lèveront une exception. Donc réellement vous devriez directement
-   utiliser une instance de ``Zend_File_Transfer_Adapter_Http``. Ceci changera dans le futur, dès qu'il existera
+   utiliser une instance de ``Zend\File\Transfer\Adapter\Http``. Ceci changera dans le futur, dès qu'il existera
    des adaptateurs disponibles.
 
 .. note::
@@ -24,19 +24,19 @@ d'utiliser la même *API* pour différents protocoles de transfert *HTTP*, FTP, 
    **Formulaires**
 
    Quand vous utilisez ``Zend_Form`` vous devriez lire et suivre les exemples décrits dans le chapitre
-   ``Zend_Form`` et ne pas utiliser manuellement ``Zend_File_Transfer``. Mais les informations que vous pourrez
+   ``Zend_Form`` et ne pas utiliser manuellement ``Zend\File\Transfer``. Mais les informations que vous pourrez
    lire dans le présent chapitre vous seront malgré tout utile, même si vous ne l'utilisez pas directement.
-   Toutes les considérations, descriptions et solutions sont les mêmes quand vous utilisez ``Zend_File_Transfer``
+   Toutes les considérations, descriptions et solutions sont les mêmes quand vous utilisez ``Zend\File\Transfer``
    au travers de ``Zend_Form``.
 
-L'utilisation de ``Zend_File_Transfer`` est assez simple. Il consiste en deux parties. Le formulaire *HTTP* qui
-réalise l'upload, et la gestion des fichiers uploadés avec ``Zend_File_Transfer``. Regardez l'exemple suivant :
+L'utilisation de ``Zend\File\Transfer`` est assez simple. Il consiste en deux parties. Le formulaire *HTTP* qui
+réalise l'upload, et la gestion des fichiers uploadés avec ``Zend\File\Transfer``. Regardez l'exemple suivant :
 
 .. _zend.file.transfer.introduction.example:
 
 .. rubric:: Formulaire simple d'upload de fichier
 
-Cet exemple illustre un upload de fichier basique avec ``Zend_File_Transfer``. La première partie est le
+Cet exemple illustre un upload de fichier basique avec ``Zend\File\Transfer``. La première partie est le
 formulaire. Dans notre exemple, il n'y a qu'un seul fichier que nous souhaitons uploadé.
 
 .. code-block:: php
@@ -50,7 +50,7 @@ formulaire. Dans notre exemple, il n'y a qu'un seul fichier que nous souhaitons 
        <input type="submit" value="Upload File" />
    </form>
 
-Notez que vous devriez utiliser :ref:`Zend_Form_Element_File <zend.form.standardElements.file>` par simplicité
+Notez que vous devriez utiliser :ref:`Zend\Form_Element\File <zend.form.standardElements.file>` par simplicité
 plutôt que de créer le HTML manuellement.
 
 L'étape suivante est de créer le récepteur de l'upload. Dans notre exemple le récepteur est "*/file/upload*".
@@ -59,7 +59,7 @@ Donc nous créons le contrôleur *file* avec l'action *upload*.
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_File_Transfer_Adapter_Http();
+   $adapter = new Zend\File\Transfer\Adapter\Http();
 
    $adapter->setDestination('C:\temp');
 
@@ -82,19 +82,19 @@ récupérerez grâce à une exception qui sera retournée.
 
 .. _zend.file.transfer.introduction.adapters:
 
-Adaptateurs supportés par Zend_File_Transfer
+Adaptateurs supportés par Zend\File\Transfer
 --------------------------------------------
 
-``Zend_File_Transfer`` est construit pour supporter différents adaptateurs et différentes directions. Il est
+``Zend\File\Transfer`` est construit pour supporter différents adaptateurs et différentes directions. Il est
 conçu pour permettre l'upload, le téléchargement et même l'envoi bidirectionnel (upload avec un adaptateur et
 télécharge avec un autre adaptateur en même temps) de fichiers.
 
 .. _zend.file.transfer.introduction.options:
 
-Options de Zend_File_Transfer
+Options de Zend\File\Transfer
 -----------------------------
 
-``Zend_File_Transfer`` et ses adaptateurs supportent plusieurs options. Vous pouvez paramétrer toutes les options
+``Zend\File\Transfer`` et ses adaptateurs supportent plusieurs options. Vous pouvez paramétrer toutes les options
 soit en les fournissant au constructeur, ou en utilisant ``setOptions($options)``. ``getOptions()`` retournera les
 options actuellement paramétrées. Ci-dessous, vous trouverez la liste des options supportées :
 
@@ -107,7 +107,7 @@ options actuellement paramétrées. Ci-dessous, vous trouverez la liste des opti
 Vérification des fichiers
 -------------------------
 
-``Zend_File_Transfer`` possède plusieurs méthodes qui permettent de vérifier suivant différentes
+``Zend\File\Transfer`` possède plusieurs méthodes qui permettent de vérifier suivant différentes
 considérations. Ceci est particulièrement utile quand vous devez travailler avec des fichiers qui ont été
 uploadés.
 
@@ -129,7 +129,7 @@ uploadés.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Retourne toutes les informations connues sur le fichier
    $files = $upload->getFileInfo();
@@ -155,7 +155,7 @@ uploadés.
 Informations complémentaires sur les fichiers
 ---------------------------------------------
 
-``Zend_File_Transfer`` peut fournir de multiples informations complémentaires sur les fichiers. Les méthodes
+``Zend\File\Transfer`` peut fournir de multiples informations complémentaires sur les fichiers. Les méthodes
 suivantes sont disponibles :
 
 - ``getFileName($file = null, $path = true)``: cette méthode retourne le vrai nom de fichier d'un fichier
@@ -186,7 +186,7 @@ le chemin.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
    $upload->receive();
 
    // Retourne le nom de fichier pour tous les fichiers
@@ -212,7 +212,7 @@ récupérerez *2kB* au lieu de ``2048``. Si vous voulez la taille brute, utilise
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
    $upload->receive();
 
    // Retourne les tailles de tous les fichiers sous la forme
@@ -241,7 +241,7 @@ défaut sera *crc32*.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
    $upload->receive();
 
    // Retourne le hachage de fichier pour tous les fichiers sous la forme
@@ -268,7 +268,7 @@ tableau, sinon c'est une chaîne.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
    $upload->receive();
 
    $mime = $upload->getMimeType();
@@ -295,17 +295,17 @@ tableau, sinon c'est une chaîne.
    **Original data within $_FILES**
 
    Due to security reasons also the original data within $_FILES will be overridden as soon as
-   ``Zend_File_Transfer`` is initiated. When you want to omit this behaviour and have the original data simply set
+   ``Zend\File\Transfer`` is initiated. When you want to omit this behaviour and have the original data simply set
    the ``detectInfos`` option to ``FALSE`` at initiation.
 
-   This option will have no effect after you initiated ``Zend_File_Transfer``.
+   This option will have no effect after you initiated ``Zend\File\Transfer``.
 
 .. _zend.file.transfer.introduction.uploadprogress:
 
 Progress for file uploads
 -------------------------
 
-``Zend_File_Transfer`` can give you the actual state of a fileupload in progress. To use this feature you need
+``Zend\File\Transfer`` can give you the actual state of a fileupload in progress. To use this feature you need
 either the ``APC`` extension which is provided with most default *PHP* installations, or the *uploadprogress*
 extension. Both extensions are detected and used automatically. To be able to get the progress you need to meet
 some prerequisites.
@@ -314,7 +314,7 @@ First, you need to have either ``APC`` or *uploadprogress* to be enabled. Note t
 ``APC`` within your php.ini.
 
 Second, you need to have the proper hidden fields added in the form which sends the files. When you use
-``Zend_Form_Element_File`` this hidden fields are automatically added by ``Zend_Form``.
+``Zend\Form_Element\File`` this hidden fields are automatically added by ``Zend_Form``.
 
 When the above two points are provided then you are able to get the actual progress of the file upload by using the
 *getProgress* method. Actually there are 2 official ways to handle this.
@@ -327,7 +327,7 @@ Using a progressbar adapter
 You can use the convinient **Zend_ProgressBar** to get the actual progress and can display it in a simple manner to
 your user.
 
-To archive this, you have to add the wished **Zend_ProgressBar_Adapter** to ``getProgress()`` when you are calling
+To archive this, you have to add the wished **Zend\ProgressBar\Adapter** to ``getProgress()`` when you are calling
 it the first time. For details about the right adapter to use, look into the chapter :ref:`Zend_ProgressBar
 Standard Adapters <zend.progressbar.adapters>`.
 
@@ -338,12 +338,12 @@ Standard Adapters <zend.progressbar.adapters>`.
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_ProgressBar_Adapter_Console();
-   $upload  = Zend_File_Transfer_Adapter_Http::getProgress($adapter);
+   $adapter = new Zend\ProgressBar_Adapter\Console();
+   $upload  = Zend\File\Transfer\Adapter\Http::getProgress($adapter);
 
    $upload = null;
    while (!$upload['done']) {
-       $upload = Zend_File_Transfer_Adapter_Http:getProgress($upload);
+       $upload = Zend\File\Transfer\Adapter\Http:getProgress($upload);
    }
 
 The complete handling is done by ``getProgress()`` for you in the background.
@@ -373,11 +373,11 @@ the used *PHP* extension. But the following keys are given independently of the 
   in the case of a problem. Problems could be, that there is no upload in progress, that there was a failure while
   retrieving the data for the progress, or that the upload has been canceled.
 
-- **progress**: This optional key takes a instance of Zend_ProgressBar_Adapter or Zend_ProgressBar and allows to
+- **progress**: This optional key takes a instance of Zend\ProgressBar\Adapter or Zend_ProgressBar and allows to
   get the actual upload state within a progressbar.
 
 - **session**: This optional key takes the name of a session namespace which will be used within Zend_ProgressBar.
-  When this key is not given it defaults to ``Zend_File_Transfer_Adapter_Http_ProgressBar``.
+  When this key is not given it defaults to ``Zend\File\Transfer\Adapter\Http\ProgressBar``.
 
 All other returned keys are provided directly from the extensions and will not be checked.
 
@@ -390,10 +390,10 @@ The following example shows a possible manual usage:
 .. code-block:: php
    :linenos:
 
-   $upload  = Zend_File_Transfer_Adapter_Http::getProgress();
+   $upload  = Zend\File\Transfer\Adapter\Http::getProgress();
 
    while (!$upload['done']) {
-       $upload = Zend_File_Transfer_Adapter_Http:getProgress($upload);
+       $upload = Zend\File\Transfer\Adapter\Http:getProgress($upload);
        print "\nActual progress:".$upload['message'];
        // do whatever you need
    }

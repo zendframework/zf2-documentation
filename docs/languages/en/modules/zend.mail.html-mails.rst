@@ -14,7 +14,7 @@ multipart/alternative *MIME* message will automatically be generated:
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Message();
    $mail->setBodyText('My Nice Test Text');
    $mail->setBodyHtml('My Nice <b>Test</b> Text');
    $mail->setFrom('somebody@example.com', 'Some Sender');

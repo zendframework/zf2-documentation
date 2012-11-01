@@ -14,8 +14,8 @@ JSON オブジェクト
 
 *JSON* はオブジェクトへの参照を扱うことができません。
 再帰的な参照を伴うオブジェクトをエンコードしないように気をつけましょう。
-再帰に関する問題が発生しないよう、 ``Zend_Json::encode()`` および
-``Zend_Json_Encoder::encode()``
+再帰に関する問題が発生しないよう、 ``Zend\Json\Json::encode()`` および
+``Zend\Json\Encoder::encode()``
 のオプションの二番目のパラメータで再帰をチェックできます。
 オブジェクトが二度シリアライズされると、例外がスローされるようになります。
 
@@ -33,7 +33,7 @@ JSON オブジェクト
    :linenos:
 
    // JSONオブジェクトをPHPオブジェクトにデコードします
-   $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);
+   $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
 
 このようにしてデコードされたオブジェクトは *StdClass* オブジェクトとなり、 *JSON*
 の キー/値 のペアに対応するプロパティを保持します。
@@ -77,7 +77,7 @@ PHP オブジェクトのエンコード
 .. code-block:: php
    :linenos:
 
-   Zend_Json::$useBuiltinEncoderDecoder = true:
+   Zend\Json\Json::$useBuiltinEncoderDecoder = true:
 
 .. _zend.json.advanced.expr:
 
@@ -91,10 +91,10 @@ Javascript では無名関数のコールバックを多用します。 そし�
 オブジェクトを javascript コールバックとして正しい形式でエンコードできます。
 これは、 ``json_encode()`` と内部エンコーダの両方で動作します。
 
-javascript コールバックは ``Zend_Json_Expr`` オブジェクトで表されます。 これは value object
+javascript コールバックは ``Zend\Json\Expr`` オブジェクトで表されます。 これは value object
 パターンを実装しており、不変 (immutable) です。 javascript
 の式を、コンストラクタの最初の引数として指定できます。 デフォルトでは
-``Zend_Json::encode`` は javascript
+``Zend\Json\Json::encode`` は javascript
 コールバックをエンコードしません。エンコードするには、 オプション
 *'enableJsonExprFinder' = true* を *encode*
 関数に渡さなければなりません。これを有効にすると、
@@ -105,12 +105,12 @@ javascript コールバックは ``Zend_Json_Expr`` オブジェクトで表さ�
    :linenos:
 
    $data = array(
-       'onClick' => new Zend_Json_Expr('function() {'
+       'onClick' => new Zend\Json\Expr('function() {'
                  . 'alert("I am a valid javascript callback '
                  . 'created by Zend_Json"); }'),
        'other' => 'no expression',
    );
-   $jsonObjectWithExpression = Zend_Json::encode(
+   $jsonObjectWithExpression = Zend\Json\Json::encode(
        $data,
        false,
        array('enableJsonExprFinder' => true)

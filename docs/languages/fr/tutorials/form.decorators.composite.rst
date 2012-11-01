@@ -22,7 +22,7 @@ Dans :ref:`la dernière section <learning.form.decorators.individual>`, nous avi
            'size' => 4, 'maxlength' => 4)) ?>
    </div>
 
-Comment représenteriez-vous cet élément en tant que ``Zend_Form_Element``? Comment écrire un décorateur qui
+Comment représenteriez-vous cet élément en tant que ``Zend\Form\Element``? Comment écrire un décorateur qui
 s'assure de son rendu ?
 
 .. _learning.form.decorators.composite.element:
@@ -61,7 +61,7 @@ Voici à quoi ressemblerait la classe:
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend_Form_Element_Xhtml
+   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
    {
        protected $_dateFormat = '%year%-%month%-%day%';
        protected $_day;
@@ -160,7 +160,7 @@ rendu final.
 .. code-block:: php
    :linenos:
 
-   class My_Form_Decorator_Date extends Zend_Form_Decorator_Abstract
+   class My_Form_Decorator_Date extends Zend\Form_Decorator\Abstract
    {
        public function render($content)
        {
@@ -171,7 +171,7 @@ rendu final.
            }
 
            $view = $element->getView();
-           if (!$view instanceof Zend_View_Interface) {
+           if (!$view instanceof Zend\View\Interface) {
                // Nous utilisons des aides de vue, si aucune vue n'existe
                // nous ne rendons rien
                return $content;
@@ -211,7 +211,7 @@ informer l'élément du chemin vers notre décorateur. Nous pouvons effectuer ce
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend_Form_Element_Xhtml
+   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
    {
        // ...
 
@@ -239,7 +239,7 @@ décorateur ``Date``:
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend_Form_Element_Xhtml
+   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
    {
        // ...
 
@@ -275,7 +275,7 @@ A qyuoi ressemble le rendu final ? Considérons l'élément suivant:
 
    $d = new My_Form_Element_Date('dateOfBirth');
    $d->setLabel('Date de naissance: ')
-     ->setView(new Zend_View());
+     ->setView(new Zend\View\View());
 
    // Ces deux procédés sont équivalents:
    $d->setValue('20 April 2009');

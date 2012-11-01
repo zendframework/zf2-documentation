@@ -9,7 +9,7 @@ Interoperatie met Java Lucene
 Bestandsformaten
 ----------------
 
-Het bestandsformaat van het Zend_Search_Lucene index bestand is binary compatible met Lucene versie 1.4 en hoger.
+Het bestandsformaat van het Zend\Search\Lucene index bestand is binary compatible met Lucene versie 1.4 en hoger.
 
 Een gedetailleerde beschrijving van dit formaat is beschikbaar op:
 `http://lucene.apache.org/java/docs/fileformats.html`_.
@@ -72,7 +72,7 @@ Het volgende Java programmavoorbeeld geeft een voorbeeld van hoe je een bestand 
 LuceneIndexCreation.jar gebruiken
 ---------------------------------
 
-Om snel te kunnen starten met Zend_Search_Lucene werd een JAR bestand (Java) aangemaakt dat je toelaat een index
+Om snel te kunnen starten met Zend\Search\Lucene werd een JAR bestand (Java) aangemaakt dat je toelaat een index
 vanaf de commandoregel aan te maken. Voor meer informatie over JAR bestanden kan je terecht op:
 `http://java.sun.com/docs/books/tutorial/jar/basics/index.html`_.
 

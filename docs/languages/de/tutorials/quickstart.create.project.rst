@@ -124,7 +124,7 @@ später). Die Klasse sieht wie folgt aus:
 
    // application/Bootstrap.php
 
-   class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
    {
    }
 
@@ -197,7 +197,7 @@ Der standardmäßige ``IndexController`` ist wie folgt:
 
    // application/controllers/IndexController.php
 
-   class IndexController extends Zend_Controller_Action
+   class IndexController extends Zend\Controller\Action
    {
 
        public function init()
@@ -218,7 +218,7 @@ Und der standardmäßige ``ErrorController`` ist wie folgt:
 
    // application/controllers/ErrorController.php
 
-   class ErrorController extends Zend_Controller_Action
+   class ErrorController extends Zend\Controller\Action
    {
 
        public function errorAction()
@@ -226,9 +226,9 @@ Und der standardmäßige ``ErrorController`` ist wie folgt:
            $errors = $this->_getParam('error_handler');
 
            switch ($errors->type) {
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ROUTE:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_CONTROLLER:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ACTION:
 
                    // 404 Fehler -- Controller oder Action nicht gefunden
                    $this->getResponse()->setHttpResponseCode(404);

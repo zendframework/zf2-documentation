@@ -11,21 +11,21 @@
 
 ``Zend_Mail`` は、テキストメールや *MIME*
 マルチパートメールを作成・送信するための一般的な機能を提供します。 ``Zend_Mail``
-を使用すると、デフォルトの ``Zend_Mail_Transport_Sendmail`` か、あるいは
-``Zend_Mail_Transport_Smtp`` を使用してメールを送信できます。
+を使用すると、デフォルトの ``Zend\Mail_Transport\Sendmail`` か、あるいは
+``Zend\Mail_Transport\Smtp`` を使用してメールを送信できます。
 
 .. _zend.mail.introduction.example-1:
 
 .. rubric:: Zend_Mail を使用したシンプルなメール送信
 
 受信者、表題、本文および送信者を指定しただけの単純なメールです。
-このようなメールを ``Zend_Mail_Transport_Sendmail``
+このようなメールを ``Zend\Mail_Transport\Sendmail``
 を用いて送信するには、次のようにします。
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setBodyText('This is the text of the mail.');
    $mail->setFrom('somebody@example.com', 'Some Sender');
    $mail->addTo('somebody_else@example.com', 'Some Recipient');
@@ -55,7 +55,7 @@
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setBodyText('This is the text of the mail.')
        ->setFrom('somebody@example.com', 'Some Sender')
        ->addTo('somebody_else@example.com', 'Some Recipient')
@@ -67,7 +67,7 @@
 デフォルトの sendmail トランスポートの設定
 --------------------------
 
-``Zend_Mail`` がデフォルトで使用するのは ``Zend_Mail_Transport_Sendmail`` です。これは、単に
+``Zend_Mail`` がデフォルトで使用するのは ``Zend\Mail_Transport\Sendmail`` です。これは、単に
 *PHP* の `mail()`_ 関数をラップしただけのものです。 `mail()`_
 関数に追加のパラメータを渡したい場合は、
 新しいインスタンスを作成する際のコンストラクタにパラメータを渡します。
@@ -77,17 +77,17 @@
 
 .. _zend.mail.introduction.sendmail.example-1:
 
-.. rubric:: Zend_Mail_Transport_Sendmail トランスポートへの追加パラメータの渡し方
+.. rubric:: Zend\Mail_Transport\Sendmail トランスポートへの追加パラメータの渡し方
 
 この例は、 `mail()`_ 関数の Return-Path を変更する方法を示すものです。
 
 .. code-block:: php
    :linenos:
 
-   $tr = new Zend_Mail_Transport_Sendmail('-freturn_to_me@example.com');
-   Zend_Mail::setDefaultTransport($tr);
+   $tr = new Zend\Mail_Transport\Sendmail('-freturn_to_me@example.com');
+   Zend\Mail\Mail::setDefaultTransport($tr);
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setBodyText('This is the text of the mail.');
    $mail->setFrom('somebody@example.com', 'Some Sender');
    $mail->addTo('somebody_else@example.com', 'Some Recipient');

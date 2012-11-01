@@ -9,7 +9,7 @@ Agir avec Lucene Java
 Formats de fichier
 ------------------
 
-Les formats des fichiers d'index de ``Zend_Search_Lucene`` sont compatibles avec la version de Lucene Java 1.4 ou
+Les formats des fichiers d'index de ``Zend\Search\Lucene`` sont compatibles avec la version de Lucene Java 1.4 ou
 plus.
 
 Une description détaillée de ce format est disponible ici:

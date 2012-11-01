@@ -7,7 +7,7 @@ Získanie jednej položky z Atom
 Jednotlivé položky Atom (*<entry>*) sú validné aj samé o sebe. Zvyčajne je URL týchto položiek nasledované
 */<entryId>*, ako napríklad URL *http://atom.example.com/feed/1*, ktoré sa bude ďalej používať v príkladoch.
 
-Ak získate jednu položku, stále budete mať *Zend_Feed_Atom* objekt, ale automaticky bude vytvorený "anonymný"
+Ak získate jednu položku, stále budete mať *Zend\Feed\Atom* objekt, ale automaticky bude vytvorený "anonymný"
 zdroj, ktorý bude obsahovať túto položku.
 
 .. _zend.feed.consuming-atom-single-entry.example.atom:
@@ -19,7 +19,7 @@ zdroj, ktorý bude obsahovať túto položku.
 
    <?php
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/1');
    echo 'The feed has: ' . $feed->count() . ' entry.';
 
    $entry = $feed->current();
@@ -36,7 +36,7 @@ jednopoložkovému dokumentu:
    :linenos:
 
    <?phpi
-   $entry = new Zend_Feed_Entry_Atom('http://atom.example.com/feed/1');
+   $entry = new Zend\Feed_Entry\Atom('http://atom.example.com/feed/1');
    echo $entry->title();
 
    ?>

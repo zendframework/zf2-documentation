@@ -9,7 +9,7 @@ HTTP 认证适配器
 简介
 --
 
-*Zend_Auth_Adapter_Http*\ 提供一个大部分符合 `RFC-2617`_\ 的 `基本`_ 和 `摘要`_ HTTP
+*Zend\Auth_Adapter\Http*\ 提供一个大部分符合 `RFC-2617`_\ 的 `基本`_ 和 `摘要`_ HTTP
 认证。摘要认证是一个认证的方法，它在基本认证的基础上做了改进，不需要在网络上传输明文密码。
 
 **主要特性：**
@@ -48,7 +48,7 @@ authentication类封装了实现基本和摘要认证的逻辑。它使用Resolv
 配置选项
 ----
 
-*Zend_Auth_Adapter_Http*
+*Zend\Auth_Adapter\Http*
 类需要一个配置数组传递给它的构造器。有若干个配置选项有效，其中一些是必需的：
 
 
@@ -85,7 +85,7 @@ Resolvers
 
 Resolver的作用是接受用户名和领域，并返回证书值。基本认证期望接收用户密码的Base64编码版本。摘要认证期望接收用户的用户名，领域和密码（用冒号分隔）的hash。当前，唯一支持的hash算法是MD5。
 
-*Zend_Auth_Adapter_Http* 依靠对象实现 *Zend_Auth_Adapter_Http_Resolver_Interface*\
+*Zend\Auth_Adapter\Http* 依靠对象实现 *Zend\Auth\Adapter\Http\Resolver\Interface*\
 。适配器中包含一个文本文件resolver类，但任何其它种类的resolver可以通过实现resolver接口来创建。
 
 .. _zend.authentication.adapter.http.resolvers.file:
@@ -113,7 +113,7 @@ hash。
       :linenos:
 
       $path     = 'files/passwd.txt';
-      $resolver = new Zend_Auth_Adapter_Http_Resolver_File($path);
+      $resolver = new Zend\Auth\Adapter\Http\Resolver\File($path);
 
 
 或者
@@ -122,7 +122,7 @@ hash。
       :linenos:
 
       $path     = 'files/passwd.txt';
-      $resolver = new Zend_Auth_Adapter_Http_Resolver_File();
+      $resolver = new Zend\Auth\Adapter\Http\Resolver\File();
       $resolver->setFile($path);
 
 
@@ -150,12 +150,12 @@ hash。
 */my_account*\ 之下的区域认证访问。领域值通常在浏览器中密码对话框中显示。
 *nonce_timeout*\ ，当然，会有上述的行为。
 
-下一步, 创建 Zend_Auth_Adapter_Http 对象：
+下一步, 创建 Zend\Auth_Adapter\Http 对象：
 
    .. code-block:: php
       :linenos:
 
-      $adapter = new Zend_Auth_Adapter_Http($config);
+      $adapter = new Zend\Auth_Adapter\Http($config);
 
 
 
@@ -166,10 +166,10 @@ hash。
    .. code-block:: php
       :linenos:
 
-      $basicResolver = new Zend_Auth_Adapter_Http_Resolver_File();
+      $basicResolver = new Zend\Auth\Adapter\Http\Resolver\File();
       $basicResolver->setFile('files/basicPasswd.txt');
 
-      $digestResolver = new Zend_Auth_Adapter_Http_Resolver_File();
+      $digestResolver = new Zend\Auth\Adapter\Http\Resolver\File();
       $digestResolver->setFile('files/digestPasswd.txt');
 
       $adapter->setBasicResolver($basicResolver);
@@ -184,8 +184,8 @@ hash。
    .. code-block:: php
       :linenos:
 
-      assert($request instanceof Zend_Controller_Request_Http);
-      assert($response instanceof Zend_Controller_Response_Http);
+      assert($request instanceof Zend\Controller_Request\Http);
+      assert($response instanceof Zend\Controller_Response\Http);
 
       $adapter->setRequest($request);
       $adapter->setResponse($response);

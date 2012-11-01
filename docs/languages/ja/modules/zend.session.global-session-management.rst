@@ -7,8 +7,8 @@
 セッションのデフォルトの挙動を変更するには、 ``Zend_Session``
 の静的メソッドを使用します。グローバルセッションの管理や操作には、すべて
 ``Zend_Session`` を使用します。たとえば `ext/session のオプション`_ を設定するには、
-``Zend_Session::setOptions()`` を使用します。 また、安全な *save_path* を使わなかったり
-ext/session で一意なクッキー名を使用しなかったりすると、 ``Zend_Session::setOptions()``
+``Zend\Session\Session::setOptions()`` を使用します。 また、安全な *save_path* を使わなかったり
+ext/session で一意なクッキー名を使用しなかったりすると、 ``Zend\Session\Session::setOptions()``
 はセキュリティの問題を引き起こします。
 
 .. _zend.session.global_session_management.configuration_options:
@@ -16,14 +16,14 @@ ext/session で一意なクッキー名を使用しなかったりすると、 `
 設定オプション
 -------
 
-セッション名前空間が要求されると、事前に :ref:`Zend_Session::start()
+セッション名前空間が要求されると、事前に :ref:`Zend\Session\Session::start()
 <zend.session.advanced_usage.starting_a_session>` で開始されていない場合には ``Zend_Session``
 が自動的にセッションを開始します。 もととなる PHP セッションの設定は
 ``Zend_Session`` のデフォルトを使用します。これを変更するには、事前に
-``Zend_Session::setOptions()`` を使用して設定しておきます。
+``Zend\Session\Session::setOptions()`` を使用して設定しておきます。
 
 オプションを指定するには、そのベース名 ("*session.*" の後に続く部分) を
-``Zend_Session::setOptions()`` に渡す配列のキーとします。
+``Zend\Session\Session::setOptions()`` に渡す配列のキーとします。
 配列の値が、そのセッションオプションの値として用いられます。
 何もオプションを設定しなければ、 ``Zend_Session``
 はまずデフォルトオプションを使用し、 それがなければ php.ini の設定を使用します。
@@ -34,7 +34,7 @@ ext/session で一意なクッキー名を使用しなかったりすると、 `
 
 .. rubric:: Zend_Config による Zend_Session の設定
 
-このコンポーネントを :ref:`Zend_Config_Ini <zend.config.adapters.ini>`
+このコンポーネントを :ref:`Zend\Config\Ini <zend.config.adapters.ini>`
 で設定するには、まず設定オプションを *INI* ファイルに追加します。
 
 .. code-block:: ini
@@ -80,21 +80,21 @@ ext/session で一意なクッキー名を使用しなかったりすると、 `
    ; セッション ID クッキーを持続させる場合は、その有効期限を 10 日にします
    remember_me_seconds = 864000
 
-次に、この設定ファイルを読み込んで、その内容を配列として ``Zend_Session::setOptions()``
+次に、この設定ファイルを読み込んで、その内容を配列として ``Zend\Session\Session::setOptions()``
 に渡します。
 
 .. code-block:: php
    :linenos:
 
-   $config = new Zend_Config_Ini('myapp.ini', 'development');
+   $config = new Zend\Config\Ini('myapp.ini', 'development');
 
-   Zend_Session::setOptions($config->toArray());
+   Zend\Session\Session::setOptions($config->toArray());
 
 上の例であげたほとんどのオプションについては、 PHP
 のドキュメントで説明されているので、ここでの説明は不要でしょう。
 しかし、いくつか重要なものについては説明しておきます。
 
-   - boolean *strict*-*new Zend_Session_Namespace()* を使用する際に、 ``Zend_Session``
+   - boolean *strict*-*new Zend\Session\Namespace()* を使用する際に、 ``Zend_Session``
      が自動的に開始しないようにします。
 
    - integer *remember_me_seconds*- ユーザエージェントが終了した
@@ -252,7 +252,7 @@ PHP の出力バッファリングを使用している場合は例外です。
 はセッションデータを古いセッション ID から新しいほうに移すので、古いセッション
 ID からはどのデータにもアクセスできなくなります。
 
-いつ regenerateId() を使うのか?: ``Zend_Session::regenerateId()`` を Zend Framework
+いつ regenerateId() を使うのか?: ``Zend\Session\Session::regenerateId()`` を Zend Framework
 の起動ファイルに追加するのが、もっとも安全かつ確実に
 ユーザエージェントのクッキーにあるセッション ID を再生成する方法です。
 セッション ID をいつ再生成するのかについての条件判断がない場合は、
@@ -299,7 +299,7 @@ Javascript を注入し、 犠牲者のブラウザに既知の値のセッシ�
 しかし、開発者が *save_path* オプションに正しい値を設定しておくと、 攻撃者は PHP
 セッションのサーバ側の状態を任意に変更できることはなくなります。
 
-それ単体では、セッションを最初に使用する際に ``Zend_Session::regenerateId()``
+それ単体では、セッションを最初に使用する際に ``Zend\Session\Session::regenerateId()``
 をコールしてもセッション固定化攻撃は防げません。そのセッションが、
 攻撃者によって偽装されたものであるかどうかを判別できる必要があります。
 先ほど説明したこととは矛盾しているように感じられるかもしれません。
@@ -342,10 +342,10 @@ Javascript を注入し、 犠牲者のブラウザに既知の値のセッシ�
 .. code-block:: php
    :linenos:
 
-   $defaultNamespace = new Zend_Session_Namespace();
+   $defaultNamespace = new Zend\Session\Namespace();
 
    if (!isset($defaultNamespace->initialized)) {
-       Zend_Session::regenerateId();
+       Zend\Session\Session::regenerateId();
        $defaultNamespace->initialized = true;
    }
 
@@ -358,10 +358,10 @@ rememberMe(integer $seconds)
 つまりユーザがウェブブラウザと閉じたときです。
 しかし、アプリケーション側で、ブラウザを閉じた後でもユーザセッションを有効にしておくこともできます。
 この機能を実現するには、持続クッキーを使用します。 セッションの開始前に
-``Zend_Session::rememberMe()``
+``Zend\Session\Session::rememberMe()``
 を使用すると、セッションクッキーの有効期限を制御できます。
 秒数を指定しなかった場合は、セッションクッキーの持続期間はデフォルトの
-*remember_me_seconds* となります。このデフォルト値は ``Zend_Session::setOptions()``
+*remember_me_seconds* となります。このデフォルト値は ``Zend\Session\Session::setOptions()``
 で設定します。 セッションの固定化/のっとり を防ぐには、
 ユーザがアプリケーションの認証を通過したとき (「ログイン」フォームなどから)
 にこの関数を使用します。
@@ -383,28 +383,28 @@ sessionExists()
 このメソッドを使用して、現在のユーザエージェント/リクエスト
 に対応するセッションが既に存在するかどうかを調べます。
 これはセッションを開始する前に使用します。その他の ``Zend_Session`` および
-``Zend_Session_Namespace`` のメソッドとは独立しています。
+``Zend\Session\Namespace`` のメソッドとは独立しています。
 
 .. _zend.session.global_session_management.destroy:
 
 destroy(bool $remove_cookie = true, bool $readonly = true)
 ----------------------------------------------------------
 
-``Zend_Session::destroy()`` は、
+``Zend\Session\Session::destroy()`` は、
 現在のセッションに関連付けられているすべての持続的データを破棄します。
 しかし、PHP の変数の値は何の影響も受けません。
-したがって、名前空間つきのセッション (``Zend_Session_Namespace`` のインスタンス)
+したがって、名前空間つきのセッション (``Zend\Session\Namespace`` のインスタンス)
 は読み込み可能な状態のままです。
 「ログアウト」を行うには、オプションのパラメータを ``TRUE`` (デフォルト)
 に設定し、 ユーザエージェントのセッション ID クッキーを削除します。
-オプションのパラメータ *$readonly* を使用すると、 ``Zend_Session_Namespace``
+オプションのパラメータ *$readonly* を使用すると、 ``Zend\Session\Namespace``
 のインスタンスを作成したり ``Zend_Session``
 のメソッドからセッションデータへ書き込んだりすることができなくなります。
 
 "Cannot modify header information - headers already sent"
 というエラーが出た場合は、最初の引数として ``TRUE`` (セッションクッキーを削除)
 を使用しないようにするか、あるいは :ref:` <zend.session.global_session_management.headers_sent>`
-を参照ください。 つまり、 ``Zend_Session::destroy(true)`` をコールするなら PHP が HTTP
+を参照ください。 つまり、 ``Zend\Session\Session::destroy(true)`` をコールするなら PHP が HTTP
 ヘッダを送信する前にするか、
 あるいは出力バッファリングを有効にしなければなりません。
 また、出力データの大きさが、設定したバッファサイズをこえてはいけません。
@@ -426,7 +426,7 @@ stop()
 このメソッドは、単に ``Zend_Session`` のフラグを切り替え、
 セッションデータへの書き込みをできないようにするだけのものです。
 その他どのような機能を実装するかについては、フィードバックを受付中です。
-潜在的な使用法としては、一時的に ``Zend_Session_Namespace`` インスタンスや ``Zend_Session``
+潜在的な使用法としては、一時的に ``Zend\Session\Namespace`` インスタンスや ``Zend_Session``
 のメソッドから セッションデータに書き込めなくすることがあります。
 この場合、実行はビュー関連のコードに移譲されます。
 これらのインスタンスやメソッドからの書き込みを含むアクションは、
@@ -441,7 +441,7 @@ writeClose($readonly = true)
 をバックエンドから切り離します。
 これにより、このリクエストにおける内部データの変換が終了します。
 オプションのパラメータ *$readonly* を使用すると、書き込み権限をなくします
-(``Zend_Session`` あるいは ``Zend_Session_Namespace``
+(``Zend_Session`` あるいは ``Zend\Session\Namespace``
 のメソッドから書き込みを試みると、例外をスローします)。
 
 .. note::
@@ -467,7 +467,7 @@ expireSessionCookie()
 
 .. _zend.session.global_session_management.savehandler:
 
-setSaveHandler(Zend_Session_SaveHandler_Interface $interface)
+setSaveHandler(Zend\Session_SaveHandler\Interface $interface)
 -------------------------------------------------------------
 
 ほとんどの開発者にとっては、デフォルトの保存ハンドラで十分でしょう。
@@ -494,7 +494,7 @@ namespaceIsset($namespace)
 namespaceUnset($namespace)
 --------------------------
 
-``Zend_Session::namespaceUnset($namespace)`` を使用すると、
+``Zend\Session\Session::namespaceUnset($namespace)`` を使用すると、
 名前空間全体およびその内容を効率的に削除できます。 PHP のすべての配列と同様、
 配列を含む変数を初期化しても配列の中身のオブジェクトまでは初期化されません。
 もしそのオブジェクトへの参照が別の配列/オブジェクトにも格納されていたとすると、
@@ -515,7 +515,7 @@ namespaceUnset($namespace)
 namespaceGet($namespace)
 ------------------------
 
-非推奨: ``Zend_Session_Namespace`` の ``getIterator()`` を使用しましょう。このメソッドは、
+非推奨: ``Zend\Session\Namespace`` の ``getIterator()`` を使用しましょう。このメソッドは、
 *$namespace* の内容を配列で返します。このメソッドを外部から使用し続けたいという
 論理的な理由がある場合は、メーリングリスト `fw-auth@lists.zend.com`_
 にフィードバックをお願いします。

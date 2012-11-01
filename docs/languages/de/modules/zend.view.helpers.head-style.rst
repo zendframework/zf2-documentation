@@ -68,7 +68,7 @@ Der ``HeadStyle`` Helfer ist eine konkrete Implementation des :ref:`Platzhalter 
    Standardmäßig verwendet Zend Framework *UTF-8* als seine Standardkodierung, und speziell in diesem Fall, macht
    das ``Zend_View`` genauso. Die Zeichenkodierung kann im View Objekt selbst auf etwas anderes gesetzt werden
    indem die Methode ``setEncoding()`` verwendet wird (oder der Parameter ``encoding`` bei der Instanzierung
-   angegeben wird). Trotzdem, da ``Zend_View_Interface`` keine Zugriffsmethoden für die Kodierung anbietet ist es
+   angegeben wird). Trotzdem, da ``Zend\View\Interface`` keine Zugriffsmethoden für die Kodierung anbietet ist es
    möglich dass, wenn man eine eigene View Implementation verwendet, man keine ``getEncoding()`` Methode hat,
    welche der View Helfer intern für die Erkennung des Zeichensets verwendet in das kodiert werden soll.
 

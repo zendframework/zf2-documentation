@@ -4,16 +4,16 @@
 Lettura di un feed RSS
 ======================
 
-Leggere un feed RSS è tanto semplice quanto creare un'istanza di un nuovo oggetto *Zend_Feed_Rss* con l'URL del
+Leggere un feed RSS è tanto semplice quanto creare un'istanza di un nuovo oggetto *Zend\Feed\Rss* con l'URL del
 feed:
 
 .. code-block:: php
    :linenos:
 
    <?php
-   $channel = new Zend_Feed_Rss('http://rss.example.com/channelName');
+   $channel = new Zend\Feed\Rss('http://rss.example.com/channelName');
 
-Se qualche errore si verifica nel recuperare il feed, verrà generata un'eccezione *Zend_Feed_Exception*.
+Se qualche errore si verifica nel recuperare il feed, verrà generata un'eccezione *Zend\Feed\Exception*.
 
 Una volta a disposizione un oggetto feed si ha accesso ad ognuna delle proprietà standard di un canale RSS
 (channel), direttamente dall'oggetto:
@@ -41,7 +41,7 @@ array in PHP:
 Poiché gli attributi XML non possono contenere figli, la sintassi caratteristica di un metodo non è necessaria
 per accedere ai valori degli attributi.
 
-Più comunemente si desidera scorrere il feed ed eseguire qualche azione con i suoi elementi. *Zend_Feed_Abstract*
+Più comunemente si desidera scorrere il feed ed eseguire qualche azione con i suoi elementi. *Zend\Feed\Abstract*
 implementa l'interfaccia PHP *Iterator*, dunque stampare tutti i titoli degli articoli consiste esclusivamente in:
 
 .. code-block:: php

@@ -4,12 +4,12 @@
 Maken en laden van PDF documenten
 =================================
 
-De *Zend_Pdf* klasse stelt het PDF document zelf op en verstrekt functionaliteit op document niveau.
+De *ZendPdf* klasse stelt het PDF document zelf op en verstrekt functionaliteit op document niveau.
 
-Om een nieuw document aan te maken moet je een nieuw *Zend_Pdf* object aanmaken.
+Om een nieuw document aan te maken moet je een nieuw *ZendPdf* object aanmaken.
 
-De *Zend_Pdf* klasse verstrekt ook twee statische methodes om bestaande PDF documenten te laden. Deze zijn de
-*Zend_Pdf::load()* en *Zend_Pdf::parse()* methodes. Beiden geven een *Zend_Pdf* object als resultaat terug of
+De *ZendPdf* klasse verstrekt ook twee statische methodes om bestaande PDF documenten te laden. Deze zijn de
+*ZendPdf\Pdf::load()* en *ZendPdf\Pdf::parse()* methodes. Beiden geven een *ZendPdf* object als resultaat terug of
 werpen een exceptie op indien er een probleem optrad.
 
 .. rubric:: Maak een nieuw of laad een bestaand PDF document
@@ -20,21 +20,21 @@ werpen een exceptie op indien er een probleem optrad.
    <?php
    ...
    // Maak een nieuw PDF document.
-   $pdf1 = new Zend_Pdf();
+   $pdf1 = new ZendPdf\Pdf();
 
    // Laad een PDF document van een bestand.
-   $pdf2 = Zend_Pdf::load($fileName);
+   $pdf2 = ZendPdf\Pdf::load($fileName);
 
    // Laad een PDF document van een string.
-   $pdf3 = Zend_Pdf::parse($pdfString);
+   $pdf3 = ZendPdf\Pdf::parse($pdfString);
    ...
    ?>
 Het PDF bestandsformaat ondersteund incremental document update. Dus elke keer als een document wordt aangepast
-word er een nieuwe revisie van het document gemaakt. De *Zend_Pdf* module ondersteunt het opvragen van een bepaalde
+word er een nieuwe revisie van het document gemaakt. De *ZendPdf* module ondersteunt het opvragen van een bepaalde
 revisie.
 
-De revisie kan worden bepaald als een tweede parameter voor de *Zend_Pdf::load()* en *Zend_Pdf::parse()* methodes
-of worden opgevraagd door *Zend_Pdf::rollback()* [#]_
+De revisie kan worden bepaald als een tweede parameter voor de *ZendPdf\Pdf::load()* en *ZendPdf\Pdf::parse()* methodes
+of worden opgevraagd door *ZendPdf\Pdf::rollback()* [#]_
 
 .. rubric:: Een bepaalde revisie van een document opvragen
 
@@ -44,18 +44,18 @@ of worden opgevraagd door *Zend_Pdf::rollback()* [#]_
    <?php
    ...
    // Een vorige revisie van het PDF document opvragen.
-   $pdf1 = Zend_Pdf::load($fileName, 1);
+   $pdf1 = ZendPdf\Pdf::load($fileName, 1);
 
    // Een vorige revisie van het PDF document opvragen.
-   $pdf2 = Zend_Pdf::parse($pdfString, 1);
+   $pdf2 = ZendPdf\Pdf::parse($pdfString, 1);
 
    // De eerste revisie van het PDF document opvragen.
-   $pdf3 = Zend_Pdf::load($fileName);
+   $pdf3 = ZendPdf\Pdf::load($fileName);
    $revisions = $pdf3->revisions();
    $pdf3->rollback($revisions - 1);
    ...
    ?>
 
 
-.. [#] De *Zend_Pdf::rollback()* methode moet aangeroepen worden voor er enige veranderingen aan het document
+.. [#] De *ZendPdf\Pdf::rollback()* methode moet aangeroepen worden voor er enige veranderingen aan het document
        worden doorgevoerd. Indien dit niet het geval is is het gedrag onvoorspelbaar.

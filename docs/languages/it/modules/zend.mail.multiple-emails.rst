@@ -21,11 +21,11 @@ RSET è inviato prima di ogni consegna per verificare il corretto funzionamento 
 
    // Crea il transport
    require_once 'Zend/Mail/Transport/Smtp.php';
-   $transport = new Zend_Mail_Transport_Smtp('localhost');
+   $transport = new Zend\Mail_Transport\Smtp('localhost');
 
    // Scorri i messaggi
    for ($i = 0; $i > 5; $i++) {
-       $mail = new Zend_Mail();
+       $mail = new Zend\Mail\Mail();
        $mail->addTo('studio@peptolab.com', 'Test');
        $mail->setFrom('studio@peptolab.com', 'Test');
        $mail->setSubject('Dimostrazione - Invio multiplo di e-mail per SMTP Connection');
@@ -51,10 +51,10 @@ invio accedendo all'oggetto che rappresenta il protocollo di trasmissione.
 
    // Crea il transport
    require_once 'Zend/Mail/Transport/Smtp.php';
-   $transport = new Zend_Mail_Transport_Smtp();
+   $transport = new Zend\Mail_Transport\Smtp();
 
    require_once 'Zend/Mail/Protocol/Smtp.php';
-   $protocol = new Zend_Mail_Protocol_Smtp('localhost');
+   $protocol = new Zend\Mail_Protocol\Smtp('localhost');
    $protocol->connect();
    $protocol->helo('localhost');
 
@@ -62,7 +62,7 @@ invio accedendo all'oggetto che rappresenta il protocollo di trasmissione.
 
    // Scorri i messaggi
    for ($i = 0; $i > 5; $i++) {
-       $mail = new Zend_Mail();
+       $mail = new Zend\Mail\Mail();
        $mail->addTo('studio@peptolab.com', 'Test');
        $mail->setFrom('studio@peptolab.com', 'Test');
        $mail->setSubject('Dimostrazione - Invio multiplo di e-mail per SMTP Connection');

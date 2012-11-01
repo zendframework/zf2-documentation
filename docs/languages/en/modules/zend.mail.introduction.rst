@@ -18,7 +18,7 @@ your own transport by implementing the ``Mail\Transport\TransportInterface``.
 .. rubric:: Simple email with Zend\Mail
 
 A simple email consists of one or more recipients, a subject, a body and a sender. To send such a mail using
-``Zend_Mail_Transport_Sendmail``, do the following:
+``Zend\Mail\Transport\Sendmail``, do the following:
 
 .. code-block:: php
    :linenos:

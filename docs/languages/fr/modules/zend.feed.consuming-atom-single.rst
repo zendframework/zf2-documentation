@@ -8,7 +8,7 @@ Les éléments Atom *<entry>* sont aussi valides tout seuls. Généralement l'UR
 flux suivie de */<idEntree>*, par exemple *http://atom.exemple.com/flux/1* si on reprend l'URL que nous avons
 utilisée ci-dessus.
 
-Si vous lisez une entrée seule, vous obtiendrez toujours un objet ``Zend_Feed_Atom`` mais cette classe créera
+Si vous lisez une entrée seule, vous obtiendrez toujours un objet ``Zend\Feed\Atom`` mais cette classe créera
 automatiquement un flux "anonyme" pour contenir l'entrée.
 
 .. _zend.feed.consuming-atom-single-entry.example.atom:
@@ -18,7 +18,7 @@ automatiquement un flux "anonyme" pour contenir l'entrée.
 .. code-block:: php
    :linenos:
 
-   $flux = new Zend_Feed_Atom('http://atom.exemple.com/flux/1');
+   $flux = new Zend\Feed\Atom('http://atom.exemple.com/flux/1');
    echo 'Le flux possède : ' . $flux->count() . ' entrée(s).';
 
    $entree = $flux->current();
@@ -28,12 +28,12 @@ Vous pouvez aussi instancier directement la classe représentant les entrées si
 
 .. _zend.feed.consuming-atom-single-entry.example.entryatom:
 
-.. rubric:: Utiliser directement l'objet Zend_Feed_Entry_Atom
+.. rubric:: Utiliser directement l'objet Zend\Feed_Entry\Atom
 
 .. code-block:: php
    :linenos:
 
-   $entree = new Zend_Feed_Entry_Atom('http://atom.exemple.com/flux/1');
+   $entree = new Zend\Feed_Entry\Atom('http://atom.exemple.com/flux/1');
    echo $entree->title();
 
 

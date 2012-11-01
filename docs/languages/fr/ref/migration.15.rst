@@ -45,17 +45,17 @@ Si vous constatez que vous comptiez sur ce "dispositif", vous avez plusieurs opt
   beaucoup de scripts de vue basés sur l'ancien, comportement fortuit, vous aurez beaucoup de renommage à faire.
 
 - Seconde meilleure option : le *ViewRenderer* délégue maintenant la résolution des scripts de vue à
-  ``Zend_Filter_Inflector``; vous pouvez modifier les règles de l'inflecteur pour ne plus séparer les mots d'une
+  ``Zend\Filter\Inflector``; vous pouvez modifier les règles de l'inflecteur pour ne plus séparer les mots d'une
   action avec un tiret :
 
   .. code-block:: php
      :linenos:
 
      $viewRenderer =
-         Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
+         Zend\Controller_Action\HelperBroker::getStaticHelper('viewRenderer');
      $inflector = $viewRenderer->getInflector();
      $inflector->setFilterRule(':action', array(
-         new Zend_Filter_PregReplace(
+         new Zend\Filter\PregReplace(
              '#[^a-z0-9' . preg_quote(DIRECTORY_SEPARATOR, '#') . ']+#i',
              ''
          ),

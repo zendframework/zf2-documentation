@@ -197,7 +197,7 @@ may be used for retrieving and modifying internal properties.
 
   The value used to set the user agent should be of the form *some user agent/version | Akismet/version*. The
   default is *Zend Framework/ZF-VERSION | Akismet/1.11*, where *ZF-VERSION* is the current Zend Framework version
-  as stored in the ``Zend_Framework::VERSION`` constant.
+  as stored in the ``Zend\Version\Version::VERSION`` constant.
 
 
 

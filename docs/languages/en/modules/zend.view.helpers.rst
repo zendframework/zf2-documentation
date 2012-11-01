@@ -222,7 +222,7 @@ once, and then it persists for the life of that ``PhpRenderer`` instance.
 .. code-block:: php
    :linenos:
 
-   // remember, in a view script, $this refers to the Zend_View instance.
+   // remember, in a view script, $this refers to the Zend\View instance.
    echo $this->specialPurpose();
    echo $this->specialPurpose();
    echo $this->specialPurpose();

@@ -12,13 +12,13 @@ adapters مثل (*File*, *Sqlite*, *Memcache*...) و يستخدم ايضا IDs �
 يكن من السهل حذف مجموعات محددة من السجلات بعد ذلك. على سبيل
 المثال ("حذف كل سجلات الـ cache المعرفة بـ tag معين")
 
-Core هو (*Zend_Cache_Core*) و هو يمثل المرونة و الشمولية و قابلية تعديل
+Core هو (*Zend\Cache\Core*) و هو يمثل المرونة و الشمولية و قابلية تعديل
 الخصائص (configurable). حتى الأن يوجد مجموعة من الـ cache frontends تمتد عن
-*Zend_Cache_Core* و التى ستخدم احتياجاتك. و هى : *Output*, *File*, *Function* و *Class*.
+*Zend\Cache\Core* و التى ستخدم احتياجاتك. و هى : *Output*, *File*, *Function* و *Class*.
 
-.. rubric:: إنشاء frontend بواسطة *()Zend_Cache::factory*
+.. rubric:: إنشاء frontend بواسطة *()Zend\Cache\Cache::factory*
 
-*()Zend_Cache::factory* ينشئ الـ objects المتوافقة معا و التى ستحتاجها لإتمام
+*()Zend\Cache\Cache::factory* ينشئ الـ objects المتوافقة معا و التى ستحتاجها لإتمام
 عملك. فى هذا المثال, سنستخدم frontend و هو *Core* و سنستخدم ايضا backend
 وهو *File*.
 
@@ -37,8 +37,8 @@ Core هو (*Zend_Cache_Core*) و هو يمثل المرونة و الشمولي�
           'cacheDir' => './tmp/' // Directory where to put the cache files
       );
 
-      // getting a Zend_Cache_Core object
-      $cache = Zend_Cache::factory('Core', 'File', $frontendOptions, $backendOptions);
+      // getting a Zend\Cache\Core object
+      $cache = Zend\Cache\Cache::factory('Core', 'File', $frontendOptions, $backendOptions);
 
       ?>
 
@@ -62,7 +62,7 @@ cache لهذه البيانات, لن نحتاج الى ان نتصل حتى ب�
 
           // cache miss; connect to the database
 
-          $db = Zend_Db::factory( [...] );
+          $db = Zend\Db\Db::factory( [...] );
 
           $result = $db->fetchAll('SELECT * FROM huge_table');
 
@@ -105,7 +105,7 @@ cache له عندما يتم الوصول الى *()end*. عند تشغيل هذ
 
       $backendOptions = array('cacheDir' => './tmp/');
 
-      $cache = Zend_Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
+      $cache = Zend\Cache\Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
 
       // we pass a unique identifier to the start() method
       if(!$cache->start('mypage')) {

@@ -4,14 +4,14 @@
 שמירת שינויים בטפסי PDF
 =======================
 
-ישנם שני מתודות אשר שומרות שינויים לטפסי PDF: *Zend_Pdf::save()* ו
-*Zend_Pdf::render()*.
+ישנם שני מתודות אשר שומרות שינויים לטפסי PDF: *ZendPdf\Pdf::save()* ו
+*ZendPdf\Pdf::render()*.
 
-*Zend_Pdf::save($filename, $updateOnly = false)* שומר את טופס ה PDF לקובץ. אם $updateOnly
+*ZendPdf\Pdf::save($filename, $updateOnly = false)* שומר את טופס ה PDF לקובץ. אם $updateOnly
 מוגדר ל true, אז רק השינויים החדשים מצורפים לקובץ. אחרת הקובץ
 משוכתב מחדש.
 
-*Zend_Pdf::render($newSegmentOnly = false)* מחזיר את הטופס PDF כסטרינג. אם $newSegmentOnly
+*ZendPdf\Pdf::render($newSegmentOnly = false)* מחזיר את הטופס PDF כסטרינג. אם $newSegmentOnly
 מוגדר ל true, אז רק השינויים החדשים מוחזרים.
 
 .. _zend.pdf.save.example-1:
@@ -23,7 +23,7 @@
 
    ...
    // Load the PDF document
-   $pdf = Zend_Pdf::load($fileName);
+   $pdf = ZendPdf\Pdf::load($fileName);
    ...
    // Update the PDF document
    $pdf->save($fileName, true);

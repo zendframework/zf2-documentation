@@ -9,7 +9,7 @@ Interoperando com Java Lucene
 Formatos de Arquivo
 -------------------
 
-Os formatos de arquivos de índice do ``Zend_Search_Lucene`` são binários compatíveis com Java Lucene versão
+Os formatos de arquivos de índice do ``Zend\Search\Lucene`` são binários compatíveis com Java Lucene versão
 1.4 e superior.
 
 Uma descrição detalhada deste formato está disponível aqui:

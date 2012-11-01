@@ -30,13 +30,13 @@
 ----
 
 ``Zend_Acl`` では、リソースを作成するのは簡単です。 ``Zend_Acl`` の
-``Zend_Acl_Resource_Interface`` に、
+``Zend\Acl_Resource\Interface`` に、
 開発者がリソースを作成するの手助けする機能が含まれています。
 リソースクラスは、単にこのインターフェイスを実装するだけで作成できます。
 このインターフェイスに含まれるメソッドはひとつだけで、それは ``getResourceId()``
 です。このメソッドにより、 ``Zend_Acl``
 ではそのオブジェクトがリソースであると判断します。さらに、
-基本的なリソースの実装を含む ``Zend_Acl_Resource`` が ``Zend_Acl``
+基本的なリソースの実装を含む ``Zend\Acl\Resource`` が ``Zend_Acl``
 にインクルードされています。
 開発者は、必要な部分だけを拡張することでリソースを作成できます。
 
@@ -65,13 +65,13 @@
 ロール
 ---
 
-リソースと同様、ロールを作成するのも簡単です。Zend_Acl の ``Zend_Acl_Role_Interface``
+リソースと同様、ロールを作成するのも簡単です。Zend_Acl の ``Zend\Acl_Role\Interface``
 に、 開発者がロールを作成するの手助けする機能が含まれています。
 ロールクラスは、単にこのインターフェイスを実装するだけで作成できます。
 このインターフェイスに含まれるメソッドはひとつだけで、それは ``getRoleId()``
 です。このメソッドにより、 Zend_Acl
 はそのオブジェクトがロールであると判断します。さらに、
-基本的なロールの実装を含む ``Zend_Acl_Role`` が ``Zend_Acl``
+基本的なロールの実装を含む ``Zend\Acl\Role`` が ``Zend_Acl``
 にインクルードされています。
 開発者は、必要な部分だけを拡張することでリソースを作成できます。
 
@@ -102,16 +102,16 @@
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
-   $acl->addRole(new Zend_Acl_Role('guest'))
-       ->addRole(new Zend_Acl_Role('member'))
-       ->addRole(new Zend_Acl_Role('admin'));
+   $acl->addRole(new Zend\Acl\Role('guest'))
+       ->addRole(new Zend\Acl\Role('member'))
+       ->addRole(new Zend\Acl\Role('admin'));
 
    $parents = array('guest', 'member', 'admin');
-   $acl->addRole(new Zend_Acl_Role('someUser'), $parents);
+   $acl->addRole(new Zend\Acl\Role('someUser'), $parents);
 
-   $acl->add(new Zend_Acl_Resource('someResource'));
+   $acl->add(new Zend\Acl\Resource('someResource'));
 
    $acl->deny('guest', 'someResource');
    $acl->allow('member', 'someResource');
@@ -156,7 +156,7 @@
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
 .. note::
 
@@ -196,33 +196,33 @@
    |Administrator|(すべてのアクセスを許可)                      |なし                            |
    +-------------+-----------------------------------+------------------------------+
 
-この例では ``Zend_Acl_Role`` を用いていますが、 ``Zend_Acl_Role_Interface``
+この例では ``Zend\Acl\Role`` を用いていますが、 ``Zend\Acl_Role\Interface``
 を実装しているオブジェクトなら何でも使用可能です。
 これらのグループを、次のようにしてロールレジストリに追加します。
 
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
-   // Zend_Acl_Role を使用して、グループをロールレジストリに追加します
+   // Zend\Acl\Role を使用して、グループをロールレジストリに追加します
    // Guest はアクセス制御を受け継ぎません
-   $roleGuest = new Zend_Acl_Role('guest');
+   $roleGuest = new Zend\Acl\Role('guest');
    $acl->addRole($roleGuest);
 
    // Staff は guest の権限を継承します
-   $acl->addRole(new Zend_Acl_Role('staff'), $roleGuest);
+   $acl->addRole(new Zend\Acl\Role('staff'), $roleGuest);
 
    /*
    あるいは、上の内容は次のように書くこともできます
-   $acl->addRole(new Zend_Acl_Role('staff'), 'guest');
+   $acl->addRole(new Zend\Acl\Role('staff'), 'guest');
    */
 
    // Editor は staff の権限を継承します
-   $acl->addRole(new Zend_Acl_Role('editor'), 'staff');
+   $acl->addRole(new Zend\Acl\Role('editor'), 'staff');
 
    // Administrator はアクセス制御を受け継ぎません
-   $acl->addRole(new Zend_Acl_Role('administrator'));
+   $acl->addRole(new Zend\Acl\Role('administrator'));
 
 .. _zend.permissions.acl.introduction.defining:
 
@@ -248,13 +248,13 @@
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
-   $roleGuest = new Zend_Acl_Role('guest');
+   $roleGuest = new Zend\Acl\Role('guest');
    $acl->addRole($roleGuest);
-   $acl->addRole(new Zend_Acl_Role('staff'), $roleGuest);
-   $acl->addRole(new Zend_Acl_Role('editor'), 'staff');
-   $acl->addRole(new Zend_Acl_Role('administrator'));
+   $acl->addRole(new Zend\Acl\Role('staff'), $roleGuest);
+   $acl->addRole(new Zend\Acl\Role('editor'), 'staff');
+   $acl->addRole(new Zend\Acl\Role('administrator'));
 
    // Guest は、コンテンツを閲覧することのみが可能です
    $acl->allow($roleGuest, null, 'view');

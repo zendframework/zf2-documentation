@@ -31,8 +31,8 @@
 
       <?php
 
-          $term  = new Zend_Search_Lucene_Index_Term('word1');
-          $query = new Zend_Search_Lucene_Search_Query_Term($term);
+          $term  = new Zend\Search\Lucene\Index\Term('word1');
+          $query = new Zend\Search\Lucene\Search\Query\Term($term);
           $hits  = $index->find($query);
 
       ?>
@@ -92,11 +92,11 @@
 
       <?php
 
-          $query = new Zend_Search_Lucene_Search_Query_MultiTerm();
+          $query = new Zend\Search\Lucene\Search\Query\MultiTerm();
 
-          $query->addTerm(new Zend_Search_Lucene_Index_Term('word1'), true);
-          $query->addTerm(new Zend_Search_Lucene_Index_Term('word2'), null);
-          $query->addTerm(new Zend_Search_Lucene_Index_Term('word3'), false);
+          $query->addTerm(new Zend\Search\Lucene\Index\Term('word1'), true);
+          $query->addTerm(new Zend\Search\Lucene\Index\Term('word2'), null);
+          $query->addTerm(new Zend\Search\Lucene\Index\Term('word3'), false);
 
           $hits  = $index->find($query);
 
@@ -129,43 +129,43 @@ API 创建：
    :linenos:
 
    <?php
-   $query1 = new Zend_Search_Lucene_Search_Query_Phrase();
+   $query1 = new Zend\Search\Lucene\Search\Query\Phrase();
 
    // Add 'word1' at 0 relative position.
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word1'));
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word1'));
 
    // Add 'word2' at 1 relative position.
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word2'));
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word2'));
 
    // Add 'word3' at 3 relative position.
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word3'), 3);
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word3'), 3);
 
    ...
 
-   $query2 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query2 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2', 'word3'), array(0,1,3));
 
    ...
 
    // Query without a gap.
-   $query3 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query3 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2', 'word3'));
 
    ...
 
-   $query4 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query4 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2'), array(0,1), 'annotation');
 
    ?>
 短语查询可以使用类的构造方法一次性创建，也可以使用
-*Zend_Search_Lucene_Search_Query_Phrase::addTerm()* 方法一步步的创建。
+*Zend\Search\Lucene\Search\Query\Phrase::addTerm()* 方法一步步的创建。
 
-类 Zend_Search_Lucene_Search_Query_Phrase 的构造方法有三个可选的参数：
+类 Zend\Search\Lucene\Search\Query\Phrase 的构造方法有三个可选的参数：
 
    .. code-block:: php
       :linenos:
 
-      Zend_Search_Lucene_Search_Query_Phrase([array $terms[, array $offsets[, string $field]]]);
+      Zend\Search\Lucene\Search\Query\Phrase([array $terms[, array $offsets[, string $field]]]);
 
 
 *$terms* 是字符串数组，包含一组短语搜索项。如果它被省略或者为
@@ -175,7 +175,7 @@ null，那么将会创建一个空查询。
 null，那么搜索项的位置被认为是 *array(0, 1, 2, 3, ...)*\ 。
 
 *$field* 是一个字符串，表示要搜索的文档字段。如果它被省略或者为
-null，那么默认的字段会被搜索。在这个版本的 Zend_Search_Lucene
+null，那么默认的字段会被搜索。在这个版本的 Zend\Search\Lucene
 中是“contents”，但是下个版本中计划变更为“any field”。
 
 因此：
@@ -183,29 +183,29 @@ null，那么默认的字段会被搜索。在这个版本的 Zend_Search_Lucene
    .. code-block:: php
       :linenos:
 
-      $query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'framework'));
+      $query = new Zend\Search\Lucene\Search\Query\Phrase(array('zend', 'framework'));
 将会搜索短语'zend framework'。
 
    .. code-block:: php
       :linenos:
 
-      <$query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'download'), array(0, 2));
+      <$query = new Zend\Search\Lucene\Search\Query\Phrase(array('zend', 'download'), array(0, 2));
 将会搜索短语“zend ????? download”并匹配'zend platform download'、 'zend studio download'、 'zend
 core download'、 'zend framework download'这样的内容。
 
    .. code-block:: php
       :linenos:
 
-      $query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'framework'), null, 'title');
+      $query = new Zend\Search\Lucene\Search\Query\Phrase(array('zend', 'framework'), null, 'title');
 将会搜索在'title'字段中搜索短语“zend framework”。
 
-方法 *Zend_Search_Lucene_Search_Query_Phrase::addTerm()* 有两个参数。必须的
-*Zend_Search_Lucene_Index_Term* 对象和可选的位置：
+方法 *Zend\Search\Lucene\Search\Query\Phrase::addTerm()* 有两个参数。必须的
+*Zend\Search\Lucene\Index\Term* 对象和可选的位置：
 
    .. code-block:: php
       :linenos:
 
-      Zend_Search_Lucene_Search_Query_Phrase::addTerm(Zend_Search_Lucene_Index_Term $term[, integer $position]);
+      Zend\Search\Lucene\Search\Query\Phrase::addTerm(Zend\Search\Lucene\Index\Term $term[, integer $position]);
 
 
 *$term*
@@ -218,26 +218,26 @@ core download'、 'zend framework download'这样的内容。
    .. code-block:: php
       :linenos:
 
-      $query = new Zend_Search_Lucene_Search_Query_Phrase();
-      $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'));
-      $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'));
+      $query = new Zend\Search\Lucene\Search\Query\Phrase();
+      $query->addTerm(new Zend\Search\Lucene\Index\Term('zend'));
+      $query->addTerm(new Zend\Search\Lucene\Index\Term('framework'));
 将会搜索短语'zend framework'。
 
    .. code-block:: php
       :linenos:
 
-      $query = new Zend_Search_Lucene_Search_Query_Phrase();
-      $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'), 0);
-      $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'), 2);
+      $query = new Zend\Search\Lucene\Search\Query\Phrase();
+      $query->addTerm(new Zend\Search\Lucene\Index\Term('zend'), 0);
+      $query->addTerm(new Zend\Search\Lucene\Index\Term('framework'), 2);
 将会搜索短语'zend ????? download'并匹配'zend platform download'、 'zend studio download'、 'zend core
 download'、 'zend framework download'这样的内容。
 
    .. code-block:: php
       :linenos:
 
-      $query = new Zend_Search_Lucene_Search_Query_Phrase();
-      $query->addTerm(new Zend_Search_Lucene_Index_Term('zend', 'title'));
-      $query->addTerm(new Zend_Search_Lucene_Index_Term('framework', 'title'));
+      $query = new Zend\Search\Lucene\Search\Query\Phrase();
+      $query->addTerm(new Zend\Search\Lucene\Index\Term('zend', 'title'));
+      $query->addTerm(new Zend\Search\Lucene\Index\Term('framework', 'title'));
 将会搜索在'title'字段中搜索短语“zend framework”。
 
 模糊因子设置了查询短语中两个词之间允许出现的其它词的数量。如果是
@@ -257,7 +257,7 @@ download'、 'zend framework download'这样的内容。
    <?php
 
    // Query without a gap.
-   $query = new Zend_Search_Lucene_Search_Query_Phrase(array('word1', 'word2'));
+   $query = new Zend\Search\Lucene\Search\Query\Phrase(array('word1', 'word2'));
 
    // Search for 'word1 word2', 'word1 ... word2'
    $query->setSlop(1);

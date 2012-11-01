@@ -8,21 +8,21 @@
 développeurs souhaiteront écrire des validateurs sur mesure pour leurs besoins particuliers. La méthode
 d'écriture d'un validateur personnalisé est décrit dans cette section.
 
-``Zend_Validate_Interface`` définit trois méthodes, ``isValid()``, ``getMessages()``, et ``getErrors()``, qui
+``Zend\Validate\Interface`` définit trois méthodes, ``isValid()``, ``getMessages()``, et ``getErrors()``, qui
 peuvent être implémentées par des classes d'utilisateur afin de créer les objets de validation sur mesure. Un
-objet qui implémente l'interface ``Zend_Validate_Interface`` peut être ajouté à une chaîne de validateur avec
-``Zend_Validate::addValidator()``. De tels objets peuvent également être employés avec :ref:`Zend_Filter_Input
+objet qui implémente l'interface ``Zend\Validate\Interface`` peut être ajouté à une chaîne de validateur avec
+``Zend\Validate\Validate::addValidator()``. De tels objets peuvent également être employés avec :ref:`Zend\Filter\Input
 <zend.filter.input>`.
 
-Comme vous avez déjà pu déduire de la description ci-dessus de ``Zend_Validate_Interface``, les classes de
+Comme vous avez déjà pu déduire de la description ci-dessus de ``Zend\Validate\Interface``, les classes de
 validation fournie avec Zend Framework retourne une valeur booléenne pour savoir si une valeur est validée ou
 non. Elles fournissent également des informations sur la raison pour laquelle la validation a échoué sur une
 valeur. La mise à disposition de ces raisons d'échec de validation peut être utilisée par une application dans
 différents buts, tels que fournir des statistiques pour l'analyse de la facilité d'utilisation.
 
-La fonctionnalité de base de message d'échec de validation est implémentée dans ``Zend_Validate_Abstract``.
+La fonctionnalité de base de message d'échec de validation est implémentée dans ``Zend\Validate\Abstract``.
 Pour inclure cette fonctionnalité en créant une classe de validation, étendez simplement
-``Zend_Validate_Abstract``. Dans la classe étendue vous implémenteriez la logique de la méthode ``isValid()`` et
+``Zend\Validate\Abstract``. Dans la classe étendue vous implémenteriez la logique de la méthode ``isValid()`` et
 définiriez les variables de message et les modèles de message qui correspondent aux types d'échecs de validation
 qui peuvent se produire. Si une valeur ne passe pas vos essais de validation, alors ``isValid()`` devrait renvoyer
 ``FALSE``. Si la valeur passe vos essais de validation, alors ``isValid()`` devrait renvoyer ``TRUE``.
@@ -43,7 +43,7 @@ les règles de validation sont simplement que la valeur d'entrée doit être une
    .. code-block:: php
       :linenos:
 
-      class MonValidateur_Float extends Zend_Validate_Abstract
+      class MonValidateur_Float extends Zend\Validate\Abstract
       {
           const FLOAT = 'float';
 
@@ -91,7 +91,7 @@ Ces raisons d'échec de validation sont alors traduites dans les définitions de
    .. code-block:: php
       :linenos:
 
-      class MonValidateur_NumericBetween extends Zend_Validate_Abstract
+      class MonValidateur_NumericBetween extends Zend\Validate\Abstract
       {
           const MSG_NUMERIC = 'msgNumeric';
           const MSG_MINIMUM = 'msgMinimum';
@@ -170,7 +170,7 @@ La classe suivante implémente ces critères de validation :
    .. code-block:: php
       :linenos:
 
-      class MonValidateur_PasswordStrength extends Zend_Validate_Abstract
+      class MonValidateur_PasswordStrength extends Zend\Validate\Abstract
       {
           const LENGTH = 'length';
           const UPPER  = 'upper';

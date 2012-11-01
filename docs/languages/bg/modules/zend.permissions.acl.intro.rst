@@ -32,10 +32,10 @@ control list(ACL). и мениджмънт на привилегии. На кр�
 ----------------
 
 В Zend_Acl, създаването на Resource е много лесно. Zend_Acl предоставя
-*Zend_Acl_Resource_Interface* за да се създаде Resources.Даден клас просто трябва
+*Zend\Acl_Resource\Interface* за да се създаде Resources.Даден клас просто трябва
 да наследява от този интерфейс , който се състои от единствения
 метод, *getResourceId()*, тъй че Zend_Acl да счете този обект за Resource. Нещо
-повече, *Zend_Acl_Resource* е включен със Zend_Acl като базов Resource от който
+повече, *Zend\Acl\Resource* е включен със Zend_Acl като базов Resource от който
 може да се онаследява, кодето е нужно.
 
 Zend_Acl предоставя дървовидна структура към която множество
@@ -67,10 +67,10 @@ Resources (или система под контрол) може да бъде �
 -------------
 
 Както и Ресурса така и създаването Рole е много лесно. Zend_Acl
-излага *Zend_Acl_Role_Interface* за да подпомогне програмиста да създаде
+излага *Zend\Acl_Role\Interface* за да подпомогне програмиста да създаде
 Role. Даден клас тряба само да приложи този интерфейс, който се
 състои от единствен метод, *getRoleId()*, за да се счете обекта за Role
-от гледна точка на Zend_Acl. Нещо повече, *Zend_Acl_Role* е включен със
+от гледна точка на Zend_Acl. Нещо повече, *Zend\Acl\Role* е включен със
 *Zend_Acl* като базово приложение на Role за да може програмиста да го
 допълни където е нужно.
 
@@ -103,18 +103,18 @@ Roles. Например, нека имаме Role наречена Penka, коя
    :linenos:
    <?php
    require_once 'Zend/Acl.php';
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
    require_once 'Zend/Acl/Role.php';
-   $acl->addRole(new Zend_Acl_Role('guest'))
-       ->addRole(new Zend_Acl_Role('member'))
-       ->addRole(new Zend_Acl_Role('admin'));
+   $acl->addRole(new Zend\Acl\Role('guest'))
+       ->addRole(new Zend\Acl\Role('member'))
+       ->addRole(new Zend\Acl\Role('admin'));
 
    $parents = array('guest', 'member', 'admin');
-   $acl->addRole(new Zend_Acl_Role('someUser'), $parents);
+   $acl->addRole(new Zend\Acl\Role('someUser'), $parents);
 
    require_once 'Zend/Acl/Resource.php';
-   $acl->add(new Zend_Acl_Resource('someResource'));
+   $acl->add(new Zend\Acl\Resource('someResource'));
 
    $acl->deny('guest', 'someResource');
    $acl->allow('member', 'someResource');
@@ -161,7 +161,7 @@ variety of areas. To create a new ACL object, we instantiate the ACL with no par
    <?php
    require_once 'Zend/Acl.php';
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
 .. note::
 
@@ -206,8 +206,8 @@ Content Management Systems почти винаги ще изискват йер�
    |Administrator|(Granted all access)    |N/A              |
    +-------------+------------------------+-----------------+
 
-За този пример, *Zend_Acl_Role* е използван, но всеки обект прилагащ
-*Zend_Acl_Role_Interface* може да се ползва. Тези групи могат да се добавят
+За този пример, *Zend\Acl\Role* е използван, но всеки обект прилагащ
+*Zend\Acl_Role\Interface* може да се ползва. Тези групи могат да се добавят
 до регитъра по следния начин.
 
 .. code-block::
@@ -215,27 +215,27 @@ Content Management Systems почти винаги ще изискват йер�
    <?php
    require_once 'Zend/Acl.php';
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
-   // Add groups to the Role registry using Zend_Acl_Role
+   // Add groups to the Role registry using Zend\Acl\Role
    require_once 'Zend/Acl/Role.php';
 
    // Guest does not inherit access controls
-   $roleGuest = new Zend_Acl_Role('guest');
+   $roleGuest = new Zend\Acl\Role('guest');
    $acl->addRole($roleGuest);
 
    // Staff онаследява от  guest
-   $acl->addRole(new Zend_Acl_Role('staff'), $roleGuest);
+   $acl->addRole(new Zend\Acl\Role('staff'), $roleGuest);
 
    /* последното може да бъде написано и по този начин:
-   $roleGuest = $acl->addRole(new Zend_Acl_Role('staff'), 'guest');
+   $roleGuest = $acl->addRole(new Zend\Acl\Role('staff'), 'guest');
    //*/
 
    // Editor онаследява от staff
-   $acl->addRole(new Zend_Acl_Role('editor'), 'staff');
+   $acl->addRole(new Zend\Acl\Role('editor'), 'staff');
 
    // Администратора не онаследява
-   $acl->addRole(new Zend_Acl_Role('administrator'));
+   $acl->addRole(new Zend\Acl\Role('administrator'));
 
 .. _zend.acl.introduction.defining:
 
@@ -261,15 +261,15 @@ Content Management Systems почти винаги ще изискват йер�
    <?php
    require_once 'Zend/Acl.php';
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
    require_once 'Zend/Acl/Role.php';
 
-   $roleGuest = new Zend_Acl_Role('guest');
+   $roleGuest = new Zend\Acl\Role('guest');
    $acl->addRole($roleGuest);
-   $acl->addRole(new Zend_Acl_Role('staff'), $roleGuest);
-   $acl->addRole(new Zend_Acl_Role('editor'), 'staff');
-   $acl->addRole(new Zend_Acl_Role('administrator'));
+   $acl->addRole(new Zend\Acl\Role('staff'), $roleGuest);
+   $acl->addRole(new Zend\Acl\Role('editor'), 'staff');
+   $acl->addRole(new Zend\Acl\Role('administrator'));
 
    // Guest може само да вижда съдържание
    $acl->allow($roleGuest, null, 'view');

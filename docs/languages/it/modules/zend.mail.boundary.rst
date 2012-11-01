@@ -17,7 +17,7 @@ da utilizzare. Questo è possibile grazie al metodo *setMimeBoundary()*, come di
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setMimeBoundary('=_' . md5(microtime(1) . $someId++);
    // crea il messaggio...
 

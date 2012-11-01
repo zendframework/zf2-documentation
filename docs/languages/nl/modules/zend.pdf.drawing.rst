@@ -25,21 +25,21 @@ De grootte van een pagina kan worden verkregen van het pagina object:
 Kleur
 -----
 
-PDF heeft geweldig goede kleurweergavemogelijkheden. Zend_Pdf ondersteunt grijsschalen, RGB en CMYK kleuren. Elk
-van deze notaties kan worden gebruikt daar waar een *Zend_Pdf_Color* object nodig is. De
-*Zend_Pdf_Color_GrayScale*, *Zend_Pdf_Color_RGB* en *Zend_Pdf_Color_CMYK* klassen verstrekken deze functionaliteit:
+PDF heeft geweldig goede kleurweergavemogelijkheden. ZendPdf ondersteunt grijsschalen, RGB en CMYK kleuren. Elk
+van deze notaties kan worden gebruikt daar waar een *ZendPdf\Color* object nodig is. De
+*ZendPdf_Color\GrayScale*, *ZendPdf_Color\RGB* en *ZendPdf_Color\CMYK* klassen verstrekken deze functionaliteit:
 
 .. code-block:: php
    :linenos:
 
    // $grayLevel (float number). 0.0 (zwart) - 1.0 (wit)
-   $color1 = new Zend_Pdf_Color_GrayScale($grayLevel);
+   $color1 = new ZendPdf_Color\GrayScale($grayLevel);
 
    // $r, $g, $b (float numbers). 0.0 (minimum intensiteit) - 1.0 (maximum intensiteit)
-   $color2 = new Zend_Pdf_Color_RGB($r, $g, $b);
+   $color2 = new ZendPdf_Color\RGB($r, $g, $b);
 
    // $c, $m, $y, $k (float numbers). 0.0 (minimum intensiteit) - 1.0 (maximum intensiteit)
-   $color3 = new Zend_Pdf_Color_CMYK($c, $m, $y, $k);
+   $color3 = new ZendPdf_Color\CMYK($c, $m, $y, $k);
 
 .. _zend.pdf.drawing.shape-drawing:
 
@@ -48,7 +48,7 @@ Vormen tekenen
 
 Alle tekenoperaties kunnen worden uitgevoerd in de context van een PDF pagina.
 
-De *Zend_Pdf_Page* klasse verstrekt een set van teken methodes:
+De *ZendPdf\Page* klasse verstrekt een set van teken methodes:
 
 .. code-block:: php
    :linenos:
@@ -70,9 +70,9 @@ De *Zend_Pdf_Page* klasse verstrekt een set van teken methodes:
     * Teken een rechthoek.
     *
     * Vultypes:
-    * Zend_Pdf_Const::SHAPEDRAW_FILLNSTROKE - vul rechthoek en streep door (standaard)
-    * Zend_Pdf_Const::SHAPEDRAW_STROKE      - streep rechthoek door
-    * Zend_Pdf_Const::SHAPEDRAW_FILL        - vul rechthoek op
+    * ZendPdf\Const::SHAPEDRAW_FILLNSTROKE - vul rechthoek en streep door (standaard)
+    * ZendPdf\Const::SHAPEDRAW_STROKE      - streep rechthoek door
+    * ZendPdf\Const::SHAPEDRAW_FILL        - vul rechthoek op
     *
     * @param float $x1
     * @param float $y1
@@ -80,7 +80,7 @@ De *Zend_Pdf_Page* klasse verstrekt een set van teken methodes:
     * @param float $y2
     * @param integer $fillType
     */
-   public function drawRectangle($x1, $y1, $x2, $y2, $fillType = Zend_Pdf_Const::SHAPEDRAW_FILLNSTROKE);
+   public function drawRectangle($x1, $y1, $x2, $y2, $fillType = ZendPdf\Const::SHAPEDRAW_FILLNSTROKE);
 
 .. code-block:: php
    :linenos:
@@ -88,7 +88,7 @@ De *Zend_Pdf_Page* klasse verstrekt een set van teken methodes:
    /**
     * Een polygoon tekenen.
     *
-    * Als $fillType een Zend_Pdf_Const::SHAPEDRAW_FILLNSTROKE of Zend_Pdf_Const::SHAPEDRAW_FILL is,
+    * Als $fillType een ZendPdf\Const::SHAPEDRAW_FILLNSTROKE of ZendPdf\Const::SHAPEDRAW_FILL is,
     * zal de polygoon automatisch gesloten zijn.
     * Zie een gedetailleerde beschrijving van deze methodes in een PDF documentatie
     * (sectie 4.4.2 Path painting Operators, Opvulling)
@@ -99,8 +99,8 @@ De *Zend_Pdf_Page* klasse verstrekt een set van teken methodes:
     * @param integer $fillMethod
     */
    public function drawPolygon($x, $y,
-                               $fillType = Zend_Pdf_Const::SHAPEDRAW_FILLNSTROKE,
-                               $fillMethod = Zend_Pdf_Const::FILLMETHOD_NONZEROWINDING);
+                               $fillType = ZendPdf\Const::SHAPEDRAW_FILLNSTROKE,
+                               $fillMethod = ZendPdf\Const::FILLMETHOD_NONZEROWINDING);
 
 .. code-block:: php
    :linenos:
@@ -172,7 +172,7 @@ Ook tekst wordt geschreven in de paginacontext:
     * @param string $text
     * @param float $x
     * @param float $y
-    * @throws Zend_Pdf_Exception
+    * @throws ZendPdf\Exception
     */
    public function drawText($text, $x, $y );
 
@@ -184,8 +184,8 @@ beschrijving hieronder.
 Lettertypes gebruiken
 ---------------------
 
-De *Zend_Pdf_Page::drawText()* methode gebruikt het actieve lettertype die kan gezet worden door de
-*Zend_Pdf_Page::drawText()* methode:
+De *ZendPdf\Page::drawText()* methode gebruikt het actieve lettertype die kan gezet worden door de
+*ZendPdf\Page::drawText()* methode:
 
 .. code-block:: php
    :linenos:
@@ -193,14 +193,14 @@ De *Zend_Pdf_Page::drawText()* methode gebruikt het actieve lettertype die kan g
    /**
     * Actief lettertype zetten.
     *
-    * @param Zend_Pdf_Font $font
+    * @param ZendPdf\Font $font
     * @param float $fontSize
     */
-   public function setFont(Zend_Pdf_Font $font, $fontSize);
+   public function setFont(ZendPdf\Font $font, $fontSize);
 
 PDF ondersteunt Type1, TrueType, Type3 and composite lettertypes. Er zijn ook 14 standaard Type1 lettertypes
-voorzien in PDF. De Zend_Pdf module verstrekt op dit moment alleen de 14 standaard lettertypes. Die kunnen
-verkregen worden door de *Zend_Pdf_Font_Standard* klasse te gebruiken. Een bepaalde lettertype moet worden gebruikt
+voorzien in PDF. De ZendPdf module verstrekt op dit moment alleen de 14 standaard lettertypes. Die kunnen
+verkregen worden door de *ZendPdf_Font\Standard* klasse te gebruiken. Een bepaalde lettertype moet worden gebruikt
 als argument:
 
 .. rubric:: Een standaard lettertype maken
@@ -211,42 +211,42 @@ als argument:
    <?php
    ...
    // Een nieuw lettertype maken
-   $font = new Zend_Pdf_Font_Standard(Zend_Pdf_Const::FONT_HELVETICA);
+   $font = new ZendPdf_Font\Standard(ZendPdf\Const::FONT_HELVETICA);
 
    // lettertype actief maken
    $pdfPage->setFont($font, 36);
    ...
    ?>
 
-De *Zend_Pdf_Const* verstrekt constanten voor de 14 standaard lettertypes:
+De *ZendPdf\Const* verstrekt constanten voor de 14 standaard lettertypes:
 
-   - Zend_Pdf_Const::FONT_TIMES_ROMAN
+   - ZendPdf\Const::FONT_TIMES_ROMAN
 
-   - Zend_Pdf_Const::FONT_TIMES_BOLD
+   - ZendPdf\Const::FONT_TIMES_BOLD
 
-   - Zend_Pdf_Const::FONT_TIMES_ITALIC
+   - ZendPdf\Const::FONT_TIMES_ITALIC
 
-   - Zend_Pdf_Const::FONT_TIMES_BOLDITALIC
+   - ZendPdf\Const::FONT_TIMES_BOLDITALIC
 
-   - Zend_Pdf_Const::FONT_HELVETICA
+   - ZendPdf\Const::FONT_HELVETICA
 
-   - Zend_Pdf_Const::FONT_HELVETICA_BOLD
+   - ZendPdf\Const::FONT_HELVETICA_BOLD
 
-   - Zend_Pdf_Const::FONT_HELVETICA_ITALIC
+   - ZendPdf\Const::FONT_HELVETICA_ITALIC
 
-   - Zend_Pdf_Const::FONT_HELVETICA_BOLDITALIC
+   - ZendPdf\Const::FONT_HELVETICA_BOLDITALIC
 
-   - Zend_Pdf_Const::FONT_COURIER
+   - ZendPdf\Const::FONT_COURIER
 
-   - Zend_Pdf_Const::FONT_COURIER_BOLD
+   - ZendPdf\Const::FONT_COURIER_BOLD
 
-   - Zend_Pdf_Const::FONT_COURIER_ITALIC
+   - ZendPdf\Const::FONT_COURIER_ITALIC
 
-   - Zend_Pdf_Const::FONT_COURIER_BOLDITALIC
+   - ZendPdf\Const::FONT_COURIER_BOLDITALIC
 
-   - Zend_Pdf_Const::FONT_SYMBOL
+   - ZendPdf\Const::FONT_SYMBOL
 
-   - Zend_Pdf_Const::FONT_ZAPFDINGBATS
+   - ZendPdf\Const::FONT_ZAPFDINGBATS
 
 
 
@@ -255,7 +255,7 @@ De *Zend_Pdf_Const* verstrekt constanten voor de 14 standaard lettertypes:
 Beelden tekenen
 ---------------
 
-De *Zend_Pdf_Page* klasse voorziet de *drawImage()* methode om beelden te tekenen:
+De *ZendPdf\Page* klasse voorziet de *drawImage()* methode om beelden te tekenen:
 
 .. code-block:: php
    :linenos:
@@ -263,15 +263,15 @@ De *Zend_Pdf_Page* klasse voorziet de *drawImage()* methode om beelden te tekene
    /**
     * Teken een beeld op de bepaalde positie.
     *
-    * @param Zend_Pdf_Image $image
+    * @param ZendPdf\Image $image
     * @param float $x1
     * @param float $y1
     * @param float $x2
     * @param float $y2
     */
-   public function drawImage(Zend_Pdf_Image $image, $x1, $y1, $x2, $y2);
+   public function drawImage(ZendPdf\Image $image, $x1, $y1, $x2, $y2);
 
-Beeldobjecten worden door afstammelingen van de *Zend_Pdf_Image* klasse voorgesteld.
+Beeldobjecten worden door afstammelingen van de *ZendPdf\Image* klasse voorgesteld.
 
 Alleen JPG beelden zijn momenteel ondersteund:
 
@@ -282,12 +282,12 @@ Alleen JPG beelden zijn momenteel ondersteund:
 
    <?php
    ...
-   $image = new Zend_Pdf_Image_JPEG('my_image.jpg');
+   $image = new ZendPdf_Image\JPEG('my_image.jpg');
    $pdfPage->drawImage($image, 100, 100, 400, 300);;
    ...
    ?>
 
-**Belangrijk! De Zend_Pdf_Image_JPEG klasse heeft de PHP GD extensie nodig.**
+**Belangrijk! De ZendPdf_Image\JPEG klasse heeft de PHP GD extensie nodig.**
 
 Zie de PHP documentatie voor meer informatie (`http://www.php.net/manual/nl/ref.image.php`_).
 
@@ -297,13 +297,13 @@ Lijnstijl tekenen
 -----------------
 
 De lijnstijl wordt gedefinieerd door lijndikte, lijnkleur en lijnstippenpatroon. Al deze parameters kunnen door de
-*Zend_Pdf_Page* klasse methodes worden aangegeven:
+*ZendPdf\Page* klasse methodes worden aangegeven:
 
 .. code-block:: php
    :linenos:
 
    /** Zet lijnkleur. */
-   public function setLineColor(Zend_Pdf_Color $color);
+   public function setLineColor(ZendPdf\Color $color);
 
    /** Zet lijndikte. */
    public function setLineWidth(float $width);
@@ -324,18 +324,18 @@ De lijnstijl wordt gedefinieerd door lijndikte, lijnkleur en lijnstippenpatroon.
 Vulstijl
 --------
 
-De *Zend_Pdf_Page::drawRectangle()*, *Zend_Pdf_Page::drawPoligon()*, *Zend_Pdf_Page::drawCircle()* en
-*Zend_Pdf_Page::drawEllipse()* methodes aanvaarden het optionele argument *$fillType*. Dit kan het volgende zijn:
+De *ZendPdf\Page::drawRectangle()*, *ZendPdf\Page::drawPoligon()*, *ZendPdf\Page::drawCircle()* en
+*ZendPdf\Page::drawEllipse()* methodes aanvaarden het optionele argument *$fillType*. Dit kan het volgende zijn:
 
-- Zend_Pdf_Const::SHAPEDRAW_STROKE - streep
+- ZendPdf\Const::SHAPEDRAW_STROKE - streep
 
-- Zend_Pdf_Const::SHAPEDRAW_FILL - alleen opvullen
+- ZendPdf\Const::SHAPEDRAW_FILL - alleen opvullen
 
-- Zend_Pdf_Const::SHAPEDRAW_FILLNSTROKE - opvullen en doorstrepen (standaard)
+- ZendPdf\Const::SHAPEDRAW_FILLNSTROKE - opvullen en doorstrepen (standaard)
 
-De *Zend_Pdf_Page::drawPoligon()* methode accepteert ook een optionele parameter *$fillMethod*:
+De *ZendPdf\Page::drawPoligon()* methode accepteert ook een optionele parameter *$fillMethod*:
 
-- Zend_Pdf_Const::FILLMETHOD_NONZEROWINDING (standaard)
+- ZendPdf\Const::FILLMETHOD_NONZEROWINDING (standaard)
 
   :t:`De PDF referentie`  beschrijft deze regel als volgt (originele tekst):
   | The nonzero winding number rule determines whether a given point is inside a path by conceptually drawing a ray
@@ -358,7 +358,7 @@ De *Zend_Pdf_Page::drawPoligon()* methode accepteert ook een optionele parameter
 
 
 
-- Zend_Pdf_Const::FILLMETHOD_EVENODD
+- ZendPdf\Const::FILLMETHOD_EVENODD
 
   :t:`De PDF referentie`  beschrijft deze regel als volgt (originele tekst):
   | An alternative to the nonzero winding number rule is the even-odd rule. This rule determines the "insideness"
@@ -379,7 +379,7 @@ Rotaties
 --------
 
 Een PDF pagina kan geroteerd worden zo lang er nog niets op werd geschreven of getekend. Het wordt gedaan door de
-*Zend_Pdf_Page::rotate()* methode:
+*ZendPdf\Page::rotate()* methode:
 
 .. code-block:: php
    :linenos:
@@ -400,7 +400,7 @@ Op eender welk moment kan een grafische staat van een pagina (huidig lettertype,
 vulkleur, lijnstijl, paginarotatie, clip area) worden opgeslagen en worden hersteld. De opsla-operatie slaat de
 data in een grafische staatstapel op, de hersteloperatie haalt ze er weer uit.
 
-Dit zijn de *Zend_Pdf_Page* klassemethodes om deze operaties uit te voeren:
+Dit zijn de *ZendPdf\Page* klassemethodes om deze operaties uit te voeren:
 
 .. code-block:: php
    :linenos:
@@ -422,10 +422,10 @@ Dit zijn de *Zend_Pdf_Page* klassemethodes om deze operaties uit te voeren:
 Clipping draw area
 ------------------
 
-PDF en de Zend_Pdf module ondersteunen clippen van een teken area. De actieve clip area begrenst de regios van de
+PDF en de ZendPdf module ondersteunen clippen van een teken area. De actieve clip area begrenst de regios van de
 pagina die door tekenoperaties worden beïnvloed. Initieel is het de volledige pagina.
 
-De *Zend_Pdf_Page* klasse verstrekt een set methodes voor clipoperaties.
+De *ZendPdf\Page* klasse verstrekt een set methodes voor clipoperaties.
 
 .. code-block:: php
    :linenos:
@@ -450,7 +450,7 @@ De *Zend_Pdf_Page* klasse verstrekt een set methodes voor clipoperaties.
     * @param array $y  - array of float (the Y co-ordinates of the vertices)
     * @param integer $fillMethod
     */
-   public function clipPolygon($x, $y, $fillMethod = Zend_Pdf_Const::FILLMETHOD_NONZEROWINDING);
+   public function clipPolygon($x, $y, $fillMethod = ZendPdf\Const::FILLMETHOD_NONZEROWINDING);
 
 .. code-block:: php
    :linenos:
@@ -492,7 +492,7 @@ De *Zend_Pdf_Page* klasse verstrekt een set methodes voor clipoperaties.
 Stijlen
 -------
 
-De *Zend_Pdf_Style* klasse voorziet in stijlen
+De *ZendPdf\Style* klasse voorziet in stijlen
 
 Stijlen kunnen gebruikt worden om een set grafische parameters op te slaan en ze toe te brengen op een PDF pagina
 in één operatie:
@@ -503,18 +503,18 @@ in één operatie:
    /**
     * Zet de stijl voor de komende tekenoperaties voor deze pagina
     *
-    * @param Zend_Pdf_Style $style
+    * @param ZendPdf\Style $style
     */
-   public function setStyle(Zend_Pdf_Style $style);
+   public function setStyle(ZendPdf\Style $style);
 
    /**
     * Geef de stijl terug en breng ze op de pagina aan.
     *
-    * @return Zend_Pdf_Style|null
+    * @return ZendPdf\Style|null
     */
    public function getStyle();
 
-De *Zend_Pdf_Style* klasse voorziet in een set methodes om verschillende grafische staat parameters te zetten of te
+De *ZendPdf\Style* klasse voorziet in een set methodes om verschillende grafische staat parameters te zetten of te
 verkrijgen:
 
 .. code-block:: php
@@ -523,9 +523,9 @@ verkrijgen:
    /**
     * Zet de lijnkleur.
     *
-    * @param Zend_Pdf_Color $color
+    * @param ZendPdf\Color $color
     */
-   public function setLineColor(Zend_Pdf_Color $color);
+   public function setLineColor(ZendPdf\Color $color);
 
 .. code-block:: php
    :linenos:
@@ -533,7 +533,7 @@ verkrijgen:
    /**
     * verkrijg de lijnkleur.
     *
-    * @return Zend_Pdf_Color|null
+    * @return ZendPdf\Color|null
     */
    public function getLineColor();
 
@@ -594,9 +594,9 @@ verkrijgen:
    /**
     * Zet de vulkleur
     *
-    * @param Zend_Pdf_Color $color
+    * @param ZendPdf\Color $color
     */
-   public function setFillColor(Zend_Pdf_Color $color);
+   public function setFillColor(ZendPdf\Color $color);
 
 .. code-block:: php
    :linenos:
@@ -604,7 +604,7 @@ verkrijgen:
    /**
     * Verkrijg de vulkleur
     *
-    * @return Zend_Pdf_Color|null
+    * @return ZendPdf\Color|null
     */
    public function getFillColor();
 
@@ -614,10 +614,10 @@ verkrijgen:
    /**
     * Zet actief lettertype
     *
-    * @param Zend_Pdf_Font $font
+    * @param ZendPdf\Font $font
     * @param float $fontSize
     */
-   public function setFont(Zend_Pdf_Font $font, $fontSize);
+   public function setFont(ZendPdf\Font $font, $fontSize);
 
 .. code-block:: php
    :linenos:
@@ -635,7 +635,7 @@ verkrijgen:
    /**
     * Verkrijg huidig lettertype
     *
-    * @return Zend_Pdf_Font $font
+    * @return ZendPdf\Font $font
     */
    public function getFont();
 

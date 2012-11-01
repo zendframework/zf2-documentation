@@ -17,11 +17,11 @@
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    // build message...
    require_once 'Zend/Mail/Transport/Smtp.php';
-   $tr1 = new Zend_Mail_Transport_Smtp('server@example.com');
-   $tr2 = new Zend_Mail_Transport_Smtp('other_server@example.com');
+   $tr1 = new Zend\Mail_Transport\Smtp('server@example.com');
+   $tr2 = new Zend\Mail_Transport\Smtp('other_server@example.com');
    $mail->send($tr1);
    $mail->send($tr2);
    $mail->send();  // use default again?>
@@ -30,6 +30,6 @@
 
    **外加的transports**
 
-   外加transport，需要实现 *Zend_Mail_Transport_Interface*\ 接口。
+   外加transport，需要实现 *Zend\Mail_Transport\Interface*\ 接口。
 
 

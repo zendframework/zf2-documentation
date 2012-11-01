@@ -7,7 +7,7 @@ Een enkele Atom entry lezen
 Een Atom *<entry>* element is ook alleenstaand geldig. Gewoonlijk is de URL van een entry gelijk aan de URL van de
 feed gevolgd door *<entryId>* zoals *http://atom.example.com/feed/1*, het voorbeeld van hierboven volgend.
 
-Als je een enkele entry leest zal je nog altijd een *Zend_Feed_Atom* object hebben maar het zal automatisch een
+Als je een enkele entry leest zal je nog altijd een *Zend\Feed\Atom* object hebben maar het zal automatisch een
 "anonieme" feed aanmaken om de entry in te kapselen.
 
 .. rubric:: Een alleenstaande entry van een Atom Feed lezen
@@ -17,7 +17,7 @@ Als je een enkele entry leest zal je nog altijd een *Zend_Feed_Atom* object hebb
 
    <?php
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/1');
    echo 'De feed heeft: ' . $feed->count() . ' entry.';
 
    $entry = $feed->current();
@@ -33,7 +33,7 @@ dat alleen *<entry>* elementen bevat:
 
    <?php
 
-   $entry = new Zend_Feed_Entry_Atom('http://atom.example.com/feed/1');
+   $entry = new Zend\Feed_Entry\Atom('http://atom.example.com/feed/1');
    echo $entry->title();
 
    ?>

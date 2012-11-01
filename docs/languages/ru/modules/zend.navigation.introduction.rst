@@ -22,7 +22,7 @@
 Страницы
 ^^^^^^^^
 
-Страница (``Zend_Navigation_Page``) в ``Zend_Navigation`` в своем основном
+Страница (``Zend\Navigation\Page``) в ``Zend_Navigation`` в своем основном
 проявлении является объектом, которй хранит ссылку на
 веб-страницу. Кроме собственно ссылки, объект страницы
 содержит и другие свойства, которые, как правило, относятся к
@@ -36,7 +36,7 @@
 Контейнеры
 ^^^^^^^^^^
 
-Контейнер (``Zend_Navigation_Container``) в ``Zend_Navigation`` является
+Контейнер (``Zend\Navigation\Container``) в ``Zend_Navigation`` является
 классом-контейнером для страниц. Он имеет методы для
 добавления, извлечения, удаления и обхода страниц. Класс
 контейнера реализует интерфейсы из `SPL`_ ``RecursiveIterator`` и ``Countable``,
@@ -48,7 +48,7 @@
 
 .. note::
 
-   ``Zend_Navigation_Page`` расширяет ``Zend_Navigation_Container``, это значит, что
+   ``Zend\Navigation\Page`` расширяет ``Zend\Navigation\Container``, это значит, что
    любая страница может содержать подстраницы.
 
 .. _zend.navigation.introduction.separation:

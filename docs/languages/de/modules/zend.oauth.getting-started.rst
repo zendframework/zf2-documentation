@@ -10,7 +10,7 @@ um einen OAuth Konsumentenschlüssel und ein Konsumentengeheimnis zu empfangen. 
 Zugriffstoken zu erhalten bevor wir die Twitter *API* verwenden um eine Statusmeldung zu schicken.
 
 Angenommen wir haben einen Schlüssel und ein Geheimnis bekommen, dann können wir den OAuth Workflow starten indem
-eine ``Zend_Oauth_Consumer`` Instanz wie folgt eingerichtet und eine Konfiguration übergeben wird (entweder ein
+eine ``ZendOauth\Consumer`` Instanz wie folgt eingerichtet und eine Konfiguration übergeben wird (entweder ein
 Array oder ein ``Zend_Config`` Objekt).
 
 .. code-block:: php
@@ -22,7 +22,7 @@ Array oder ein ``Zend_Config`` Objekt).
        'consumerKey' => 'gg3DsFTW9OU9eWPnbuPzQ',
        'consumerSecret' => 'tFB0fyWLSMf74lkEu9FTyoHXcazOWpbrAjTCCK48A'
    );
-   $consumer = new Zend_Oauth_Consumer($config);
+   $consumer = new ZendOauth\Consumer($config);
 
 callbackUrl ist die URI von der wir wollen das Sie Twitter von unserem Server anfragt wenn Informationen gesendet
 werden. Wir sehen uns das später an. siteUrl ist die Basis URL der OAuth *API* Endpunkte von Twitter. Die
@@ -42,12 +42,12 @@ Alle diese Konfigurationsoptionen müssen durch Verwendung von Methodenaufrufen 
 von callbackUrl auf setCallbackUrl() konvertiert werden.
 
 Zusätzlich sollte beachtet werden das verschiedene andere Konfigurationswerte nicht explizit verwendet werden:
-requestMethod und requestScheme. Standardmäßig sendet ``Zend_Oauth_Consumer`` Anfragen als POST (ausgenommen bei
+requestMethod und requestScheme. Standardmäßig sendet ``ZendOauth\Consumer`` Anfragen als POST (ausgenommen bei
 einer Weiterleitung welche ``GET`` verwendet). Der konsumierende Client (siehe später) enthält auch seine
 Authorisierung in Art eines Headers. Einige Services können, zu Ihrer Diskretion, Alternativen benötigen. Man
-kann requestMethod (welche standardmäßig Zend_Oauth::POST ist) zum Beispiel auf Zend_Oauth::GET zurückgesetzt,
-und requestScheme von seinem Standardwert Zend_Oauth::REQUEST_SCHEME_HEADER entweder auf
-Zend_Oauth::REQUEST_SCHEME_POSTBODY oder auf Zend_Oauth::REQUEST_SCHEME_QUERYSTRING. Typischerweise sollten die
+kann requestMethod (welche standardmäßig ZendOauth\Oauth::POST ist) zum Beispiel auf ZendOauth\Oauth::GET zurückgesetzt,
+und requestScheme von seinem Standardwert ZendOauth\Oauth::REQUEST_SCHEME_HEADER entweder auf
+ZendOauth\Oauth::REQUEST_SCHEME_POSTBODY oder auf ZendOauth\Oauth::REQUEST_SCHEME_QUERYSTRING. Typischerweise sollten die
 Standardwerte bis auf ein paar bestimmte Ausnahmen problemlos funktionieren. Für Details sehen Sie bitte in die
 Dokumentation des Service Providers.
 
@@ -70,12 +70,12 @@ wird:
        'consumerKey' => 'gg3DsFTW9OU9eWPnbuPzQ',
        'consumerSecret' => 'tFB0fyWLSMf74lkEu9FTyoHXcazOWpbrAjTCCK48A'
    );
-   $consumer = new Zend_Oauth_Consumer($config);
+   $consumer = new ZendOauth\Consumer($config);
 
    // Holt den Anfragetoken
    $token = $consumer->getRequestToken();
 
-Der neue Anfragetoken (eine Instanz von ``Zend_Oauth_Token_Request``) ist nicht authorisiert. Um Ihn mit einem
+Der neue Anfragetoken (eine Instanz von ``ZendOauth_Token\Request``) ist nicht authorisiert. Um Ihn mit einem
 authorisierten Token zu wechseln mit dem wir auf die Twitter *API* zugreifen können, muss Ihn der Benutzer
 authorisieren. Wir bewerkstelligen das indem der Benutzer auf den Authorisierungsendpunkt von Twitter umgeleitet
 wird:
@@ -89,7 +89,7 @@ wird:
        'consumerKey' => 'gg3DsFTW9OU9eWPnbuPzQ',
        'consumerSecret' => 'tFB0fyWLSMf74lkEu9FTyoHXcazOWpbrAjTCCK48A'
    );
-   $consumer = new Zend_Oauth_Consumer($config);
+   $consumer = new ZendOauth\Consumer($config);
 
    // Holt den Anfragetoken
    $token = $consumer->getRequestToken();
@@ -126,7 +126,7 @@ deshalb wirklich in einer Datenbank abgespeichert werden.
        'consumerKey' => 'gg3DsFTW9OU9eWPnbuPzQ',
        'consumerSecret' => 'tFB0fyWLSMf74lkEu9FTyoHXcazOWpbrAjTCCK48A'
    );
-   $consumer = new Zend_Oauth_Consumer($config);
+   $consumer = new ZendOauth\Consumer($config);
 
    if (!empty($_GET) && isset($_SESSION['TWITTER_REQUEST_TOKEN'])) {
        $token = $consumer->getAccessToken(
@@ -143,8 +143,8 @@ deshalb wirklich in einer Datenbank abgespeichert werden.
    }
 
 Erfolg! Wir haben einen authorisierten Zugriffstoken - zu dieser Zeit verwenden wir schon die *API* von Twitter. Da
-dieser Zugriffstoken bei jeder einzelnen *API* Anfrage enthalten sein muss, bietet ``Zend_Oauth_Consumer`` einen
-fix-fertigen *HTTP* Client an (eine Subklasse von ``Zend_Http_Client``) welcher entweder für sich verwendet
+dieser Zugriffstoken bei jeder einzelnen *API* Anfrage enthalten sein muss, bietet ``ZendOauth\Consumer`` einen
+fix-fertigen *HTTP* Client an (eine Subklasse von ``Zend\Http\Client``) welcher entweder für sich verwendet
 werden, oder der als eigener *HTTP* Client an eine andere Bibliothek oder Komponente übergeben werden kann. Hier
 ist ein Beispiel für die eigenständige Verwendung. Das kann von überall aus der Anwendung heraus getan werden,
 solange man Zugriff auf die OAuth Konfiguration hat, und den endgültigen authorisierten Zugriffstoken empfangen
@@ -160,16 +160,16 @@ kann.
        'consumerSecret' => 'tFB0fyWLSMf74lkEu9FTyoHXcazOWpbrAjTCCK48A'
    );
 
-   $statusMessage = 'Ich sende über Twitter und verwende Zend_Oauth!';
+   $statusMessage = 'Ich sende über Twitter und verwende ZendOauth!';
 
    $token = unserialize($_SESSION['TWITTER_ACCESS_TOKEN']);
    $client = $token->getHttpClient($configuration);
    $client->setUri('http://twitter.com/statuses/update.json');
-   $client->setMethod(Zend_Http_Client::POST);
+   $client->setMethod(Zend\Http\Client::POST);
    $client->setParameterPost('status', $statusMessage);
    $response = $client->request();
 
-   $data = Zend_Json::decode($response->getBody());
+   $data = Zend\Json\Json::decode($response->getBody());
    $result = $response->getBody();
    if (isset($data->text)) {
        $result = 'true';
@@ -177,7 +177,7 @@ kann.
    echo $result;
 
 Als Notiz zum eigenen Client, kann dieser an den meisten Services von Zend Framework übergeben werden, oder an
-andere Klassen welche ``Zend_Http_Client`` verwenden um damit den Standardclient zu ersetzen welcher andernfalls
+andere Klassen welche ``Zend\Http\Client`` verwenden um damit den Standardclient zu ersetzen welcher andernfalls
 verwendet werden würde.
 
 

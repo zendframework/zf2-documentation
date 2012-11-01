@@ -9,8 +9,8 @@ Manager de mémoire
 Créer un manager de mémoire
 ---------------------------
 
-Vous pouvez créer un nouveau manager de mémoire (objet ``Zend_Memory_Manager``) en utilisant la méthode
-``Zend_Memory::factory($backendName [, $backendOprions])``.
+Vous pouvez créer un nouveau manager de mémoire (objet ``Zend\Memory\Manager``) en utilisant la méthode
+``Zend\Memory\Memory::factory($backendName [, $backendOprions])``.
 
 Le premier argument ``$backendName`` est le nom d'un type de backend supporté par ``Zend_Cache``
 
@@ -24,7 +24,7 @@ Le second argument ``$backendOptions`` est un tableau optionnel indiquant les op
        // Dossier où les blocks de mémoire peuvent être stockés
    );
 
-   $memoryManager = Zend_Memory::factory('File', $backendOptions);
+   $memoryManager = Zend\Memory\Memory::factory('File', $backendOptions);
 
 Zend_Memory utilise les :ref:`backends Zend_Cache <zend.cache.backends>` comme fournisseurs de stockage.
 
@@ -33,7 +33,7 @@ Vous pouvez de plus utiliser le nom spécial '*None*' en tant que nom de backend
    .. code-block:: php
       :linenos:
 
-      $memoryManager = Zend_Memory::factory('None');
+      $memoryManager = Zend\Memory\Memory::factory('None');
 
 
 
@@ -56,7 +56,7 @@ Créer des objets mobiles
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Créer des objets mobiles (objets qui peuvent être mis en cache) en utilisant la méthode
-``Zend_Memory_Manager::create([$data])``:
+``Zend\Memory\Manager::create([$data])``:
 
    .. code-block:: php
       :linenos:
@@ -74,7 +74,7 @@ Créer des objets verrouillés
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Créer des objets verrouillés (objets qui ne doivent pas être mis en cache) en utilisant la méthode
-``Zend_Memory_Manager::createLocked([$data])``:
+``Zend\Memory\Manager::createLocked([$data])``:
 
    .. code-block:: php
       :linenos:

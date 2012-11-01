@@ -330,15 +330,15 @@ Properties
 
 .. table:: ZendService\Amazon\Image Properties
 
-   +------+--------+---------------------------------+
-   |Name  |Type    |Description                      |
-   +======+========+=================================+
-   |Url   |Zend_Uri|Remote URL for the Image         |
-   +------+--------+---------------------------------+
-   |Height|int     |The Height of the image in pixels|
-   +------+--------+---------------------------------+
-   |Width |int     |The Width of the image in pixels |
-   +------+--------+---------------------------------+
+   +------+------------+---------------------------------+
+   |Name  |Type        |Description                      |
+   +======+============+=================================+
+   |Url   |Zend\Uri\Uri|Remote URL for the Image         |
+   +------+------------+---------------------------------+
+   |Height|int         |The Height of the image in pixels|
+   +------+------------+---------------------------------+
+   |Width |int         |The Width of the image in pixels |
+   +------+------------+---------------------------------+
 
 :ref:`Back to Class List <zendservice.amazon.classes>`
 

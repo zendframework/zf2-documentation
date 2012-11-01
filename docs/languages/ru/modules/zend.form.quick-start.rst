@@ -94,7 +94,7 @@ Zend_Form - Быстрый старт
    :linenos:
 
    // Инстанцирование элемента и его передача объекту формы:
-   $form->addElement(new Zend_Form_Element_Text('username'));
+   $form->addElement(new Zend\Form_Element\Text('username'));
 
    // Передача типа элемента объекту формы
    $form->addElement('text', 'username');
@@ -109,16 +109,16 @@ Zend_Form - Быстрый старт
 из объекта формы и их конфигурирования.
 
 Сначала рассмотрим создание валидаторов для конкретного
-объекта элемента. Вы можете передавать объекты *Zend_Validate_** или
+объекта элемента. Вы можете передавать объекты *Zend\Validate\** или
 имена валидаторов:
 
 .. code-block:: php
    :linenos:
 
-   $username = new Zend_Form_Element_Text('username');
+   $username = new Zend\Form_Element\Text('username');
 
-   // Передача объекта Zend_Validate_*:
-   $username->addValidator(new Zend_Validate_Alnum());
+   // Передача объекта Zend\Validate\*:
+   $username->addValidator(new Zend\Validate\Alnum());
 
    // Передача имени валидатора:
    $username->addValidator('alnum');
@@ -187,7 +187,7 @@ Zend_Form - Быстрый старт
 Выполнение этих действий для каждого элемента по отдельности
 может показаться несколько утомительным. Попробуем вариант (b)
 из перечисленных выше. Когда мы создаем новый элемент,
-используя *Zend_Form::addElement()* в качестве фабрики, то можем
+используя *Zend\Form\Form::addElement()* в качестве фабрики, то можем
 опционально передавать опции конфигурирования. Они могут
 включать в себя валидаторы и фильтры для использования. Таким
 образом, чтобы неявным образом сделать все это, попробуйте
@@ -210,7 +210,7 @@ Zend_Form - Быстрый старт
 
    Если вы обнаружили, что настраиваете элементы, используя
    одни и те же опции во многих местах, то можете создать
-   подкласс *Zend_Form_Element* и использовать его вместо выполнения
+   подкласс *Zend\Form\Element* и использовать его вместо выполнения
    этих процедур; это может избавить от лишней работы по набору
    кода.
 
@@ -252,7 +252,7 @@ Zend Framework-а. Код для визуализации формы в скри
 переданного элемента, производить добавления в его начало и
 конец, производить наблюдение за ним. В результате вы можете
 комбинировать несколько декораторов для достижения нужного
-эффекта. По умолчанию в *Zend_Form_Element* используется четыре
+эффекта. По умолчанию в *Zend\Form\Element* используется четыре
 декоратора для получения нужного вывода; их установка
 выглядит приблизительно так:
 
@@ -434,7 +434,7 @@ Zend Framework-а. Код для визуализации формы в скри
 .. code-block:: php
    :linenos:
 
-   $form = new Zend_Form();
+   $form = new Zend\Form\Form();
    $form->setAction('/user/login')
         ->setMethod('post');
 
@@ -465,7 +465,7 @@ Zend Framework-а. Код для визуализации формы в скри
 .. code-block:: php
    :linenos:
 
-   class UserController extends Zend_Controller_Action
+   class UserController extends Zend\Controller\Action
    {
        public function getForm()
        {
@@ -558,8 +558,8 @@ Zend Framework-а. Код для визуализации формы в скри
 .. code-block:: php
    :linenos:
 
-   $config = new Zend_Config_Ini($configFile, 'development');
-   $form   = new Zend_Form($config->user->login);
+   $config = new Zend\Config\Ini($configFile, 'development');
+   $form   = new Zend\Form\Form($config->user->login);
 
 ... и вся форма будет определена.
 

@@ -108,11 +108,11 @@ sont stockées de façon hiérarchique sous ces dossiers racines.
 
 Les noms de classes ne peuvent contenir que des caractères alphanumériques. Les nombres sont autorisés, mais
 déconseillés. Les tirets bas ("\_") ne sont autorisés que pour être utilisés comme séparateur de chemin ; le
-nom de fichier "Zend/Db/Table.php" doit mener à la classe appelée "Zend_Db_Table".
+nom de fichier "Zend/Db/Table.php" doit mener à la classe appelée "Zend\Db\Table".
 
 Si un nom de classe comprend plus d'un mot, la première lettre de chaque nouveau mot doit être mis en majuscule.
-La mise en majuscule de lettres successives n'est pas autorisée, c'est-à-dire qu'une classe "Zend_PDF" est
-interdit alors que "Zend_Pdf" est autorisé.
+La mise en majuscule de lettres successives n'est pas autorisée, c'est-à-dire qu'une classe "ZendPDF" est
+interdit alors que "ZendPdf" est autorisé.
 
 Ces conventions définissent un pseudo mécanisme d'espace de noms pour Zend Framework. Zend Framework adoptera la
 fonctionnalité des espaces de noms de PHP quand celle-ci sera disponible et qu'il sera possible pour les
@@ -129,8 +129,8 @@ Abstract Classes
 
 In general, abstract classes follow the same conventions as :ref:`classes
 <coding-standard.naming-conventions.classes>`, with one additional rule: abstract class names must end in the term,
-"Abstract", and that term must not be preceded by an underscore. As an example, ``Zend_Controller_Plugin_Abstract``
-is considered an invalid name, but ``Zend_Controller_PluginAbstract`` or ``Zend_Controller_Plugin_PluginAbstract``
+"Abstract", and that term must not be preceded by an underscore. As an example, ``Zend\Controller_Plugin\Abstract``
+is considered an invalid name, but ``Zend\Controller\PluginAbstract`` or ``Zend\Controller_Plugin\PluginAbstract``
 would be valid names.
 
 .. note::
@@ -144,7 +144,7 @@ would be valid names.
    simply "Abstract" or "Interface" -- both of which are reserved keywords in *PHP*. If we prepend the
    (sub)component name to the classname, we can avoid these issues.
 
-   To illustrate the situation, consider converting the class ``Zend_Controller_Request_Abstract`` to use
+   To illustrate the situation, consider converting the class ``Zend\Controller_Request\Abstract`` to use
    namespaces:
 
    .. code-block:: php
@@ -179,8 +179,8 @@ Interfaces
 
 In general, interfaces follow the same conventions as :ref:`classes <coding-standard.naming-conventions.classes>`,
 with one additional rule: interface names may optionally end in the term, "Interface", but that term must not be
-preceded by an underscore. As an example, ``Zend_Controller_Plugin_Interface`` is considered an invalid name, but
-``Zend_Controller_PluginInterface`` or ``Zend_Controller_Plugin_PluginInterface`` would be valid names.
+preceded by an underscore. As an example, ``Zend\Controller_Plugin\Interface`` is considered an invalid name, but
+``Zend\Controller\PluginInterface`` or ``Zend\Controller_Plugin\PluginInterface`` would be valid names.
 
 While this rule is not required, it is strongly recommended, as it provides a good visual cue to developers as to
 which files contain interfaces rather than classes.

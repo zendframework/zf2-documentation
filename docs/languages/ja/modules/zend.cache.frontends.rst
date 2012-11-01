@@ -6,7 +6,7 @@ Zend_Cache のフロントエンド
 
 .. _zend.cache.frontends.core:
 
-Zend_Cache_Core
+Zend\Cache\Core
 ---------------
 
 .. _zend.cache.frontends.core.introduction:
@@ -14,13 +14,13 @@ Zend_Cache_Core
 導入
 ^^
 
-``Zend_Cache_Core`` は特別なフロントエンドであり、
+``Zend\Cache\Core`` は特別なフロントエンドであり、
 モジュールのコアに含まれています。これはキャッシュフロントエンドの
 基本機能を実装したものであり、他のクラスによってオーバーライドされます。
 
 .. note::
 
-   その他のフロントエンドクラスは、すべて ``Zend_Cache_Core``
+   その他のフロントエンドクラスは、すべて ``Zend\Cache\Core``
    を継承しており、以下で説明しているメソッドおよびオプションは
    他のフロントエンドでも使用可能です。そのため、ここではこれらについての
    詳しい説明は省略します。
@@ -173,7 +173,7 @@ Zend_Cache_Core
 
 .. _zend.cache.frontends.output:
 
-Zend_Cache_Frontend_Output
+Zend\Cache_Frontend\Output
 --------------------------
 
 .. _zend.cache.frontends.output.introduction:
@@ -181,7 +181,7 @@ Zend_Cache_Frontend_Output
 導入
 ^^
 
-``Zend_Cache_Frontend_Output`` は、出力を横取りするフロントエンドです。 これは *PHP*
+``Zend\Cache_Frontend\Output`` は、出力を横取りするフロントエンドです。 これは *PHP*
 の出力バッファリング処理を使いやすくしたもので、 ``start()`` メソッドと ``end()``
 メソッドの間の出力を横取りします。
 
@@ -190,7 +190,7 @@ Zend_Cache_Frontend_Output
 使用可能なオプション
 ^^^^^^^^^^
 
-``Zend_Cache_Core`` のオプション以外に、
+``Zend\Cache\Core`` のオプション以外に、
 このフロントエンドが独自に使用するオプションはありません。
 
 .. _zend.cache.frontends.output.examples:
@@ -221,7 +221,7 @@ Zend_Cache_Frontend_Output
 
 .. _zend.cache.frontends.function:
 
-Zend_Cache_Frontend_Function
+Zend\Cache_Frontend\Function
 ----------------------------
 
 .. _zend.cache.frontends.function.introduction:
@@ -229,7 +229,7 @@ Zend_Cache_Frontend_Function
 導入
 ^^
 
-``Zend_Cache_Frontend_Function`` は、関数コールの結果をキャッシュします。 ``call()``
+``Zend\Cache_Frontend\Function`` は、関数コールの結果をキャッシュします。 ``call()``
 というメソッドを保持しており、
 関数名とパラメータを配列にしてこのメソッドに渡します。
 
@@ -268,7 +268,7 @@ Zend_Cache_Frontend_Function
    // 例えば、veryExpensiveFunc(1, 'foo', 'bar') のコールをキャッシュするには
    // $cache->call('veryExpensiveFunc', array(1, 'foo', 'bar')) とします。
 
-``Zend_Cache_Frontend_Function`` は、
+``Zend\Cache_Frontend\Function`` は、
 関数の返り値だけでなく関数内部での出力もキャッシュします。
 
 .. note::
@@ -279,7 +279,7 @@ Zend_Cache_Frontend_Function
 
 .. _zend.cache.frontends.class:
 
-Zend_Cache_Frontend_Class
+Zend\Cache_Frontend\Class
 -------------------------
 
 .. _zend.cache.frontends.class.introduction:
@@ -287,7 +287,7 @@ Zend_Cache_Frontend_Class
 導入
 ^^
 
-``Zend_Cache_Frontend_Class`` は、 ``Zend_Cache_Frontend_Function``
+``Zend\Cache_Frontend\Class`` は、 ``Zend\Cache_Frontend\Function``
 と異なり、オブジェクトおよびスタティックメソッドのコールをキャッシュします。
 
 .. _zend.cache.frontends.class.options:
@@ -368,7 +368,7 @@ Zend_Cache_Frontend_Class
 
 .. _zend.cache.frontends.file:
 
-Zend_Cache_Frontend_File
+Zend\Cache_Frontend\File
 ------------------------
 
 .. _zend.cache.frontends.file.introduction:
@@ -376,13 +376,13 @@ Zend_Cache_Frontend_File
 導入
 ^^
 
-``Zend_Cache_Frontend_File`` は、マスタファイルの
+``Zend\Cache_Frontend\File`` は、マスタファイルの
 「更新時刻」にもとづいて動作するフロントエンドです。
 これは、例えば設定ファイルやテンプレートなどで有効に使えるでしょう。
 複数のマスタファイルを使用することもできます。
 
 例えば、 *XML* の設定ファイルを使用しており、それが「設定オブジェクト」
-(``Zend_Config`` など) を返す関数でパースされるとしましょう。 ``Zend_Cache_Frontend_File``
+(``Zend_Config`` など) を返す関数でパースされるとしましょう。 ``Zend\Cache_Frontend\File``
 を使用すると、その「設定オブジェクト」 をキャッシュすることができ
 (これにより、 *XML*
 ファイルを毎回パースする必要がなくなります)、さらに「マスタファイル」
@@ -405,7 +405,7 @@ Zend_Cache_Frontend_File
    +---------------------------+------------+---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |master_files               |Array       |array()                          |マスタファイル群へのフルパスの配列。                                                                                                                                                                                                                                                                                                                                             |
    +---------------------------+------------+---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |master_files_mode          |String      |Zend_Cache_Frontend_File::MODE_OR|Zend_Cache_Frontend_File::MODE_AND あるいは Zend_Cache_Frontend_File::MODE_OR。 MODE_AND の場合は、 すべてのマスタファイルにアクセスがあるまでキャッシュが無効化されません。 MODE_OR の場合は、 どれかひとつのマスタファイルにアクセスがあればキャッシュを無効化します。                                                                                                                                                                              |
+   |master_files_mode          |String      |Zend\Cache_Frontend\File::MODE_OR|Zend\Cache_Frontend\File::MODE_AND あるいは Zend\Cache_Frontend\File::MODE_OR。 MODE_AND の場合は、 すべてのマスタファイルにアクセスがあるまでキャッシュが無効化されません。 MODE_OR の場合は、 どれかひとつのマスタファイルにアクセスがあればキャッシュを無効化します。                                                                                                                                                                              |
    +---------------------------+------------+---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |ignore_missing_master_files|Boolean     |FALSE                            |TRUE の場合は、マスタファイルが存在しない場合は無視します (それ以外の場合は例外が発生します)。                                                                                                                                                                                                                                                                                                            |
    +---------------------------+------------+---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -415,14 +415,14 @@ Zend_Cache_Frontend_File
 例
 ^
 
-このフロントエンドの使用法は ``Zend_Cache_Core`` と同じです。
+このフロントエンドの使用法は ``Zend\Cache\Core`` と同じです。
 そのため、特に例は用意していません。唯一しなければならないことは、
 ファクトリを使用する際に、バックエンドのオプションとして **master_file**
 を設定することだけです。
 
 .. _zend.cache.frontends.page:
 
-Zend_Cache_Frontend_Page
+Zend\Cache_Frontend\Page
 ------------------------
 
 .. _zend.cache.frontends.page.introduction:
@@ -430,9 +430,9 @@ Zend_Cache_Frontend_Page
 導入
 ^^
 
-``Zend_Cache_Frontend_Page`` は ``Zend_Cache_Frontend_Output``
+``Zend\Cache_Frontend\Page`` は ``Zend\Cache_Frontend\Output``
 と似ていますが、ページ全体をキャッシュする目的で設計されています。
-``Zend_Cache_Frontend_Page`` を使用して、
+``Zend\Cache_Frontend\Page`` を使用して、
 ページの一部だけをキャッシュすることはできません。
 
 一方、「キャッシュ ID」は自動的に生成されます。この ID は、 ``$_SERVER['REQUEST_URI']``
@@ -451,7 +451,7 @@ Zend_Cache_Frontend_Page
 
    This frontend operates by registering a callback function to be called when the output buffering it uses is
    cleaned. In order for this to operate correctly, it must be the final output buffer in the request. To guarantee
-   this, the output buffering used by the Dispatcher **must** be disabled by calling ``Zend_Controller_Front``'s
+   this, the output buffering used by the Dispatcher **must** be disabled by calling ``Zend\Controller\Front``'s
    ``setParam()`` method, for example, ``$front->setParam('disableOutputBuffering', true);`` or adding
    "resources.frontcontroller.params.disableOutputBuffering = true" to your bootstrap configuration file (assumed
    *INI*) if using ``Zend_Application``.
@@ -484,7 +484,7 @@ Zend_Cache_Frontend_Page
 例
 ^
 
-``Zend_Cache_Frontend_Page`` の使用法は、きわめて簡単です。
+``Zend\Cache_Frontend\Page`` の使用法は、きわめて簡単です。
 
 .. code-block:: php
    :linenos:
@@ -505,7 +505,7 @@ Zend_Cache_Frontend_Page
 
    /*
     * キャッシュセクションの前には、あまり多くの行を書かないようにしましょう。
-    * 例えば、処理速度を最適化するためには "require_once" や "Zend_Loader::loadClass"
+    * 例えば、処理速度を最適化するためには "require_once" や "Zend\Loader\Loader::loadClass"
     * をキャッシュセクションの後におくべきです。
     */
 
@@ -539,8 +539,8 @@ Zend_Cache_Frontend_Page
        'cache_dir' => '/tmp/'
    );
 
-   // Zend_Cache_Frontend_Page オブジェクトを取得します
-   $cache = Zend_Cache::factory('Page',
+   // Zend\Cache_Frontend\Page オブジェクトを取得します
+   $cache = Zend\Cache\Cache::factory('Page',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);
@@ -577,7 +577,7 @@ Zend_Cache_Frontend_Page
 
 .. _zend.cache.frontends.capture:
 
-Zend_Cache_Frontend_Capture
+Zend\Cache_Frontend\Capture
 ---------------------------
 
 .. _zend.cache.frontends.capture.introduction:
@@ -585,18 +585,18 @@ Zend_Cache_Frontend_Capture
 Introduction
 ^^^^^^^^^^^^
 
-``Zend_Cache_Frontend_Capture`` is like ``Zend_Cache_Frontend_Output`` but designed for a complete page. It's
-impossible to use ``Zend_Cache_Frontend_Capture`` for caching only a single block. This class is specifically
-designed to operate in concert only with the ``Zend_Cache_Backend_Static`` backend to assist in caching entire
+``Zend\Cache_Frontend\Capture`` is like ``Zend\Cache_Frontend\Output`` but designed for a complete page. It's
+impossible to use ``Zend\Cache_Frontend\Capture`` for caching only a single block. This class is specifically
+designed to operate in concert only with the ``Zend\Cache_Backend\Static`` backend to assist in caching entire
 pages of *HTML*/*XML* or other content to a physical static file on the local filesystem.
 
-Please refer to the documentation on ``Zend_Cache_Backend_Static`` for all use cases pertaining to this class.
+Please refer to the documentation on ``Zend\Cache_Backend\Static`` for all use cases pertaining to this class.
 
 .. note::
 
    This frontend operates by registering a callback function to be called when the output buffering it uses is
    cleaned. In order for this to operate correctly, it must be the final output buffer in the request. To guarantee
-   this, the output buffering used by the Dispatcher **must** be disabled by calling ``Zend_Controller_Front``'s
+   this, the output buffering used by the Dispatcher **must** be disabled by calling ``Zend\Controller\Front``'s
    ``setParam()`` method, for example, ``$front->setParam('disableOutputBuffering', true);`` or adding
    "resources.frontcontroller.params.disableOutputBuffering = true" to your bootstrap configuration file (assumed
    *INI*) if using ``Zend_Application``.

@@ -38,7 +38,7 @@ Serialiser une entrée LDAP vers LDIF
        'cn;lang-en'                 => array('Rodney Ogasawara'),
        'title;lang-en'              => array('Sales, Director'),
    );
-   $ldif = Zend_Ldap_Ldif_Encoder::encode($data, array('sort' => false,
+   $ldif = Zend\Ldap_Ldif\Encoder::encode($data, array('sort' => false,
                                                        'version' => null));
    /*
    $ldif contains:
@@ -100,7 +100,7 @@ Desérialiser une chaine LDIF dans une entrée LDAP
    sn;lang-en: Ogasawara
    cn;lang-en: Rodney Ogasawara
    title;lang-en: Sales, Director";
-   $data = Zend_Ldap_Ldif_Encoder::decode($ldif);
+   $data = Zend\Ldap_Ldif\Encoder::decode($ldif);
    /*
    $data = array(
        'dn'                         => 'uid=rogasawara,ou=営業部,o=Airius',

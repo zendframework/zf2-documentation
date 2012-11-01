@@ -13,8 +13,8 @@ Bei der Kodierung von *PHP* Objekten nach *JSON* werden alle öffentlichen Eigen
 Objekt kodiert.
 
 *JSON* erlaubt keine Objektreferenzen, deshalb sollte dafür Sorge getragen werden, dass keine Objekte mit
-rekursiver Referenz kodiert werden. Wenn man Probleme mit Rekursion hat, erlauben ``Zend_Json::encode()`` und
-``Zend_Json_Encoder::encode()`` die Angabe eines optionalen, zweiten Parameters, um auf Rekursion zu prüfen; wenn
+rekursiver Referenz kodiert werden. Wenn man Probleme mit Rekursion hat, erlauben ``Zend\Json\Json::encode()`` und
+``Zend\Json\Encoder::encode()`` die Angabe eines optionalen, zweiten Parameters, um auf Rekursion zu prüfen; wenn
 ein Objekt doppelt serialisiert wird, wird eine Ausnahme geworfen.
 
 Das Dekodieren von *JSON* Objekten stellt eine weitere Schwierigkeit dar, allerdings entsprechen Javascript Objekte
@@ -29,7 +29,7 @@ wünscht, dass ein Objekt zurück gegeben wird, kannst du dies angeben:
    :linenos:
 
    // Dekodiere JSON Objekte als PHP Objekte
-   $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);
+   $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
 
 Jedes dekodierte Objekte wird als ``StdClass`` Objekt mit Eigenschaften entsprechend der Schlüssel/Wert Paare der
 *JSON* Notation zuürckgegeben.
@@ -65,7 +65,7 @@ das durch folgenden Aufruf erzwingen:
 .. code-block:: php
    :linenos:
 
-   Zend_Json::$useBuiltinEncoderDecoder = true:
+   Zend\Json\Json::$useBuiltinEncoderDecoder = true:
 
 .. _zend.json.advanced.expr:
 
@@ -78,9 +78,9 @@ werden können. Trotzdem funktionieren Sie nur wenn Sie nicht in doppelten Anfü
 mit gültigen Javascript Callbacks kodiert werden. Das funktioniert sowohl für ``json_encode()`` als auch den
 internen Kodierer.
 
-Ein Javascript Callback wird repräsentiert indem das ``Zend_Json_Expr`` Objekt verwendet wird. Es implementiert
+Ein Javascript Callback wird repräsentiert indem das ``Zend\Json\Expr`` Objekt verwendet wird. Es implementiert
 das Wert-Objekt Pattern und ist nicht änderbar. Man kann den Javascript Ausdruck als erstes Argument des
-Konstruktors setzen. Standardmäßig kodiert ``Zend_Json::encode`` keine Javascript Callbacks, wenn man die Option
+Konstruktors setzen. Standardmäßig kodiert ``Zend\Json\Json::encode`` keine Javascript Callbacks, wenn man die Option
 ``enableJsonExprFinder`` auf ``TRUE`` setzt und der ``encode()`` Funktion übergibt. Aktiviert, unterstützt
 arbeiten Ausdrücke für alle enthaltenen Ausdrücke in großen Objektstrukturen. Ein Verwendungsbeispiel würde
 wie folgt aussehen:
@@ -89,12 +89,12 @@ wie folgt aussehen:
    :linenos:
 
    $data = array(
-       'onClick' => new Zend_Json_Expr('function() { '
+       'onClick' => new Zend\Json\Expr('function() { '
                  . 'alert("Ich bin ein gültiger Javascript Callback '
                  . 'erstellt von Zend_Json"); }'),
        'other' => 'no expression',
    );
-   $jsonObjectWithExpression = Zend_Json::encode(
+   $jsonObjectWithExpression = Zend\Json\Json::encode(
        $data,
        false,
        array('enableJsonExprFinder' => true)

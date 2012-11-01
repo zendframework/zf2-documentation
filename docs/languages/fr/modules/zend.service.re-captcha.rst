@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.recaptcha:
 
-Zend_Service_ReCaptcha
+Zend\Service\ReCaptcha
 ======================
 
 .. _zend.service.recaptcha.introduction:
@@ -9,7 +9,7 @@ Zend_Service_ReCaptcha
 Introduction
 ------------
 
-``Zend_Service_ReCaptcha`` fournit un client pour le `Service Web reCAPTCHA`_. D'après le site de reCAPTCHA,
+``Zend\Service\ReCaptcha`` fournit un client pour le `Service Web reCAPTCHA`_. D'après le site de reCAPTCHA,
 "reCAPTCHA est un service gratuit de CAPTCHA qui aide à la numérisation de livres." Chaque reCAPTCHA requière
 que l'utilisateur saisisse 2 mots, le premier est le CAPTCHA, et le second est issu de texte scanné que les OCR
 (Optical Character Recognition) ne peuvent identifier.
@@ -22,7 +22,7 @@ d'utilisation afin de générer une clé publique et une privée.
 Utilisation la plus simple
 --------------------------
 
-Instanciez un objet ``Zend_Service_ReCaptcha`` en lui passant vos clés publique et privée :
+Instanciez un objet ``Zend\Service\ReCaptcha`` en lui passant vos clés publique et privée :
 
 .. _zend.service.recaptcha.example-1:
 
@@ -31,7 +31,7 @@ Instanciez un objet ``Zend_Service_ReCaptcha`` en lui passant vos clés publique
 .. code-block:: php
    :linenos:
 
-   $recaptcha = new Zend_Service_ReCaptcha($pubKey, $privKey);
+   $recaptcha = new Zend\Service\ReCaptcha($pubKey, $privKey);
 
 Pour rendre le reCAPTCHA, appelez simplement la méthode ``getHTML()``:
 
@@ -56,7 +56,7 @@ Lorsque le formulaire est envoyé, vous devriez recevoir 2 champs 'recaptcha_cha
    );
 
 Une fois que vous possédez le résultat, vérifiez sa validité. Il s'agit d'un objet
-``Zend_Service_ReCaptcha_Response`` qui possède une méthode ``isValid()``.
+``Zend\Service_ReCaptcha\Response`` qui possède une méthode ``isValid()``.
 
 .. _zend.service.recaptcha.example-3:
 
@@ -79,7 +79,7 @@ vous.
 Hiding email addresses
 ----------------------
 
-``Zend_Service_ReCaptcha_MailHide`` can be used to hide email addresses. It will replace a part of an email address
+``Zend\Service_ReCaptcha\MailHide`` can be used to hide email addresses. It will replace a part of an email address
 with a link that opens a popup window with a ReCaptcha challenge. Solving the challenge will reveal the complete
 email address.
 
@@ -98,7 +98,7 @@ API.
 
    // Create an instance of the mailhide component, passing it your public and private keys as well as
    // the mail address you want to hide
-   $mailHide = new Zend_Service_ReCaptcha_Mailhide();
+   $mailHide = new Zend\Service_ReCaptcha\Mailhide();
    $mailHide->setPublicKey($pubKey);
    $mailHide->setPrivateKey($privKey);
    $mailHide->setEmail($mail);
@@ -117,7 +117,7 @@ the following table:
 
       .. _zend.service.recaptcha.mailhide.options.table:
 
-      .. table:: Zend_Service_ReCaptcha_MailHide options
+      .. table:: Zend\Service_ReCaptcha\MailHide options
 
          +--------------+-------------------------------------+---------------+----------------------------+
          |Option        |Description                          |Expected Values|Default Value               |
@@ -145,7 +145,7 @@ The configuration options can be set by sending it as the fourth argument to the
 
    // Create an instance of the mailhide component, passing it your public and private keys as well as
    // well the mail address you want to hide
-   $mailHide = new Zend_Service_ReCaptcha_Mailhide();
+   $mailHide = new Zend\Service_ReCaptcha\Mailhide();
    $mailHide->setPublicKey($pubKey);
    $mailHide->setPrivateKey($privKey);
    $mailHide->setOptions(array(

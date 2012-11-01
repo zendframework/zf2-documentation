@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.filter.input:
 
-Zend_Filter_Input
+Zend\Filter\Input
 =================
 
-Zend_Filter_Input 提供了一个声明接口来联合多重过滤器和校验器，使用
+Zend\Filter\Input 提供了一个声明接口来联合多重过滤器和校验器，使用
 它们来收集数据并在用过滤器和校验器处理之后来获取输入值。为 HTML 输出
 安区起见，缺省的返回值是转义格式。
 
@@ -28,7 +28,7 @@ Zend_Filter_Input 提供了一个声明接口来联合多重过滤器和校验�
   标签，如果包含这些字符 的字符串输出到 HTML 上下文，在它们之间的文本可能影响
   HTML 的输出和功能。转义字符除掉了特殊意义，所以它们 的输出就是文字输出了。
 
-为使用 Zend_Filter_Input，执行下列步骤：
+为使用 Zend\Filter\Input，执行下列步骤：
 
 . 声明过滤器和校验器规则
 
@@ -45,11 +45,11 @@ Zend_Filter_Input 提供了一个声明接口来联合多重过滤器和校验�
 声明过滤器和校验器规则
 -----------
 
-在创建 Zend_Filter_Input 实例之前，声明过滤器规则数组和校验器规则数组。
+在创建 Zend\Filter\Input 实例之前，声明过滤器规则数组和校验器规则数组。
 这个关联数组映射规则名到过滤器或校验器，或者过滤器或校验器链。
 
-在下面的例子中，过滤器规则设置声明 'month' 字段由 Zend_Filter_Digits 来过滤，'account'
-字段由 Zend_Filter_StringTrim 来过滤。校验器规则设置 声明只有如果 'account'
+在下面的例子中，过滤器规则设置声明 'month' 字段由 Zend\Filter\Digits 来过滤，'account'
+字段由 Zend\Filter\StringTrim 来过滤。校验器规则设置 声明只有如果 'account'
 字段只包含字母字符时有效。
 
 .. code-block::
@@ -80,12 +80,12 @@ Zend_Filter_Input 提供了一个声明接口来联合多重过滤器和校验�
 
 
 
-- 实现 Zend_Filter_Interface 或 Zend_Validate_Interface 的类的一个对象实例。
+- 实现 Zend\Filter\Interface 或 Zend\Validate\Interface 的类的一个对象实例。
 
      .. code-block::
         :linenos:
         <?php
-        $digits = new Zend_Validate_Digits();
+        $digits = new Zend\Validate\Digits();
 
         $validators = array(
             'month'   => $digits
@@ -104,7 +104,7 @@ Zend_Filter_Input 提供了一个声明接口来联合多重过滤器和校验�
         $validators = array(
             'month'   => array(
                 'Digits',                // string
-                new Zend_Validate_Int(), // object instance
+                new Zend\Validate\Int(), // object instance
                 array('Between', 1, 12)  // string with constructor arguments
             )
         );
@@ -133,34 +133,34 @@ Zend_Filter_Input 提供了一个声明接口来联合多重过滤器和校验�
 生成过滤器和校验器的处理器
 -------------
 
-在声明过滤器或校验器数组后，把它们用作 Zend_Filter_Input 的构造器的参数。
+在声明过滤器或校验器数组后，把它们用作 Zend\Filter\Input 的构造器的参数。
 它返回一个知道所有过滤和校验规则的对象，你可以用这个对象来处理一组或多组输入数据。
 
 .. code-block::
    :linenos:
    <?php
-   $input = new Zend_Filter_Input($filters, $validators);
+   $input = new Zend\Filter\Input($filters, $validators);
 
 你可以指定输入数据为第三个构造器参数。数据结构是个关联数组。
 键是字段名，值是数据值。在 PHP 中标准的 *$_GET* 和 *$_POST* 全局变量是该格式的例子。
-你可以使用这些变量的一个作为 Zend_Filter_Input 的输入数据。
+你可以使用这些变量的一个作为 Zend\Filter\Input 的输入数据。
 
 .. code-block::
    :linenos:
    <?php
    $data = $_GET;
 
-   $input = new Zend_Filter_Input($filters, $validators, $data);
+   $input = new Zend\Filter\Input($filters, $validators, $data);
 
 另外，使用 *setData()* 方法，用和上述相同的格式传递一个键/值对的关联数组。
 
 .. code-block::
    :linenos:
    <?php
-   $input = new Zend_Filter_Input($filters, $validators);
+   $input = new Zend\Filter\Input($filters, $validators);
    $input->setData($newData);
 
-*setData()* 方法在一个已存在的 Zend_Filter_Input 对象中
+*setData()* 方法在一个已存在的 Zend\Filter\Input 对象中
 在不改变过滤和校验规则下重定义数据。使用该方法，你可以对不同的数据集
 运行相同的规则。
 
@@ -242,7 +242,7 @@ The *getErrors()* 方法返回一个关联数组，映射规则名到错误识�
 错误识别器是规定字符串，用来识别校验错误的原因，消息可以定制。 参见 :ref:`
 <zend.validate.introduction.using>` 有更多信息。
 
-你可以指定使用 'missingMessage' 选项的 *getMissing()* 返回的消息作为 Zend_Filter_Input
+你可以指定使用 'missingMessage' 选项的 *getMissing()* 返回的消息作为 Zend\Filter\Input
 构造器的参数或者使用 *setOptions()* 方法。
 
 .. code-block::
@@ -252,11 +252,11 @@ The *getErrors()* 方法返回一个关联数组，映射规则名到错误识�
        'missingMessage' => "Field '%field%' is required"
    );
 
-   $input = new Zend_Filter_Input($filters, $validators, $data, $options);
+   $input = new Zend\Filter\Input($filters, $validators, $data, $options);
 
    // alternative method:
 
-   $input = new Zend_Filter_Input($filters, $validators, $data);
+   $input = new Zend\Filter\Input($filters, $validators, $data);
    $input->setOptions($options);
 
 *getUnknown()* 方法的结果是一个关联数组，映射字段名到字段值。
@@ -278,7 +278,7 @@ The *getErrors()* 方法返回一个关联数组，映射规则名到错误识�
    $m = $input->getEscaped('month');   // escaped output
    $m = $input->getUnescaped('month'); // not escaped
 
-缺省地，当读取一个值时，用 Zend_Filter_HtmlEntities 来过滤。 因为它是在 HTML
+缺省地，当读取一个值时，用 Zend\Filter\HtmlEntities 来过滤。 因为它是在 HTML
 中输出字段值的最普通的用法，所以它是缺省的。 HtmlEntities
 过滤器有助于防止无意识的、可能会导致安全问题的代码输出。
 
@@ -293,15 +293,15 @@ The *getErrors()* 方法返回一个关联数组，映射规则名到错误识�
    :linenos:
    <?php
    $options = array('escapeFilter' => 'StringTrim');
-   $input = new Zend_Filter_Input($filters, $validators, $data, $options);
+   $input = new Zend\Filter\Input($filters, $validators, $data, $options);
 
 另外，你也可以使用 *setDefaultEscapeFilter()* 方法：
 
 .. code-block::
    :linenos:
    <?php
-   $input = new Zend_Filter_Input($filters, $validators, $data);
-   $input->setDefaultEscapeFilter(new Zend_Filter_StringTrim());
+   $input = new Zend\Filter\Input($filters, $validators, $data);
+   $input->setDefaultEscapeFilter(new Zend\Filter\StringTrim());
 
 对于任何一种用法，你可以指定转义过滤器作为过滤器类的字符串基础名
 或者过滤器类的对象实例。转义过滤器可以是过滤器链的实例、Zend_Filter 类的对象。
@@ -312,8 +312,8 @@ The *getErrors()* 方法返回一个关联数组，映射规则名到错误识�
 
 只有一个方法 *getEscaped()*\
 ，所以你只可以为转义（尽管这个过滤器可以是个过滤器链）指定一个过滤器。
-如果需要一个单个的 Zend_Filter_Input
-实例来返回使用超过一个过滤器方法的转义输出，你应该继承 Zend_Filter_Input
+如果需要一个单个的 Zend\Filter\Input
+实例来返回使用超过一个过滤器方法的转义输出，你应该继承 Zend\Filter\Input
 并在你的子类里实现新方法来用不同的方法获取数值。
 
 .. _zend.filter.input.metacommands:
@@ -322,7 +322,7 @@ The *getErrors()* 方法返回一个关联数组，映射规则名到错误识�
 ----------------------------
 
 除了声明从字段到过滤器或校验器的映射，你可以在数组声明中指定一些 "metacommands"
-，开控制一些 Zend_Filter_Input 的可选的行为。 Metacommands
+，开控制一些 Zend\Filter\Input 的可选的行为。 Metacommands
 在给定的过滤器或校验器数组值里以字符串索引条目的形式出现。
 
 .. _zend.filter.input.metacommands.fields:
@@ -333,7 +333,7 @@ The FIELDS metacommand
 如果过滤器或校验器的规则名和需要应用规则的字段名不同，可以用 'fields' metacommand
 来指定字段名。
 
-可以用类常量 *Zend_Filter_Input::FIELDS* 而不是字符串来指定这个 metacommand。
+可以用类常量 *Zend\Filter\Input::FIELDS* 而不是字符串来指定这个 metacommand。
 
 .. code-block::
    :linenos:
@@ -368,7 +368,7 @@ The FIELDS metacommand
            'fields' => array('password1', 'password2')
        )
    );
-   // Invokes hypothetical class Zend_Validate_StringEquals, passing an array argument
+   // Invokes hypothetical class Zend\Validate\StringEquals, passing an array argument
    // containing the values of the two input data fields named 'password1' and 'password2'.
 
 如果这个规则校验失败，规则键（ *'password'*\ ）用于 *getInvalid()* 的返回值，不是命名在
@@ -382,7 +382,7 @@ The PRESENCE metacommand
 在校验器数组里的每个条目可能有一个叫做 'presence' 的 metacommand。 如果这个 metacommand
 的值是 'required'，那么字段必需存在于输入数据， 否则，就报告为丢失字段。
 
-你可以用类常量 *Zend_Filter_Input::PRESENCE* 而不是字符串来指定这个 metacommand。
+你可以用类常量 *Zend\Filter\Input::PRESENCE* 而不是字符串来指定这个 metacommand。
 
 .. code-block::
    :linenos:
@@ -404,7 +404,7 @@ The DEFAULT_VALUE metacommand
 如果字段没有出现在输入数据里，并且你为了规则为 'default' metacommand 指定一个值，
 这个字段就用 metacommand 的值。
 
-你可以用类常量 *Zend_Filter_Input::DEFAULT_VALUE* 而不是字符串来指定这个 metacommand。
+你可以用类常量 *Zend\Filter\Input::DEFAULT_VALUE* 而不是字符串来指定这个 metacommand。
 
 在任何校验器被调用之前，这个缺省值被分配给字段。缺省值只为当前规则应用于字段，
 如果同样的字段在后来的规则被引用，当评估规则时字段没有值。
@@ -423,7 +423,7 @@ The DEFAULT_VALUE metacommand
    // no value for 'month' field
    $data = array();
 
-   $input = new Zend_Filter_Input(null, $validators, $data);
+   $input = new Zend\Filter\Input(null, $validators, $data);
    echo $input->month; // echoes 1
 
 如果你的规则使用 *FIELDS* metacommand 来定义多重字段的数组， 你可以为 *DEFAULT_VALUE*
@@ -444,7 +444,7 @@ The ALLOW_EMPTY metacommand
 如果读你来说空字符应当认为有效，你可以设置 metacommand 'allowEmpty' 为 *true*\ 。
 这样空字符的输入数据就可以通过校验。
 
-你可以用类常量 *Zend_Filter_Input::ALLOW_EMPTY* 而不是字符串来指定这个 metacommand。
+你可以用类常量 *Zend\Filter\Input::ALLOW_EMPTY* 而不是字符串来指定这个 metacommand。
 
 .. code-block::
    :linenos:
@@ -459,8 +459,8 @@ The ALLOW_EMPTY metacommand
 这个 metacommand 的缺省值是 *false*\ 。
 
 在非正常情况下你声明没有校验器的校验规则，但 'allowEmpty' metacommand 是 *false*
-（即如果字段是空的就被认为无效）， Zend_Filter_Input 返回缺省错误消息，你可以用
-*getMessages()* 来读取。 你可以用 'notEmptyMessage' 选项作为 Zend_Filter_Input
+（即如果字段是空的就被认为无效）， Zend\Filter\Input 返回缺省错误消息，你可以用
+*getMessages()* 来读取。 你可以用 'notEmptyMessage' 选项作为 Zend\Filter\Input
 构造器的参数或使用 *setOptions()* 方法来指定这个消息。
 
 .. code-block::
@@ -470,11 +470,11 @@ The ALLOW_EMPTY metacommand
        'notEmptyMessage' => "A non-empty value is required for field '%field%'"
    );
 
-   $input = new Zend_Filter_Input($filters, $validators, $data, $options);
+   $input = new Zend\Filter\Input($filters, $validators, $data, $options);
 
    // alternative method:
 
-   $input = new Zend_Filter_Input($filters, $validators, $data);
+   $input = new Zend\Filter\Input($filters, $validators, $data);
    $input->setOptions($options);
 
 .. _zend.filter.input.metacommands.break-chain:
@@ -488,7 +488,7 @@ The BREAK_CHAIN metacommand
 校验器链在第一次校验失败时就终止，输入数据不再被链中的后来的校验器检查，
 即使你纠正被报告的那一个，也很可能导致更多的冲突。
 
-你可以用类常量 *Zend_Filter_Input::BREAK_CHAIN* 而不是字符串来指定这个 metacommand。
+你可以用类常量 *Zend\Filter\Input::BREAK_CHAIN* 而不是字符串来指定这个 metacommand。
 
 .. code-block::
    :linenos:
@@ -496,16 +496,16 @@ The BREAK_CHAIN metacommand
    $validators = array(
        'month' => array(
            'Digits',
-           new Zend_Validate_Between(1,12),
-           new Zend_Validate_GreaterThan(0),
+           new Zend\Validate\Between(1,12),
+           new Zend\Validate\GreaterThan(0),
            'breakChainOnFailure' => true
        )
    );
-   $input = new Zend_Filter_Input(null, $validators);
+   $input = new Zend\Filter\Input(null, $validators);
 
 这个 metacommand 的缺省值是 *false*\ 。
 
-校验器链类 Zend_Validate 在中断链执行方面比 Zend_Filter_Input 更灵活。
+校验器链类 Zend_Validate 在中断链执行方面比 Zend\Filter\Input 更灵活。
 对于前者，你可以设置选项来对链中每个校验器独立地根据失败来中断链。
 对于后者，'breakChainOnFailure' metacommand
 的定义值对规则来说一律适用所有规则中的校验器。
@@ -515,16 +515,16 @@ The BREAK_CHAIN metacommand
    :linenos:
    <?php
    // Create validator chain with non-uniform breakChainOnFailure attributes
-   $chain = new Zend_Validate();
-   $chain->addValidator(new Zend_Validate_Digits(), true);
-   $chain->addValidator(new Zend_Validate_Between(1,12), false);
-   $chain->addValidator(new Zend_Validate_GreaterThan(0), true);
+   $chain = new Zend\Validate\Validate();
+   $chain->addValidator(new Zend\Validate\Digits(), true);
+   $chain->addValidator(new Zend\Validate\Between(1,12), false);
+   $chain->addValidator(new Zend\Validate\GreaterThan(0), true);
 
    // Declare validator rule using the chain defined above
    $validators = array(
        'month' => $chain
    );
-   $input = new Zend_Filter_Input(null, $validators);
+   $input = new Zend\Filter\Input(null, $validators);
 
 .. _zend.filter.input.metacommands.messages:
 
@@ -535,7 +535,7 @@ The MESSAGES metacommand
 的值在规则中根据你是否有多重校验器而不同，
 或者如果你想在给定的校验器中为特定错误条件设置消息。
 
-你可以用类常量 *Zend_Filter_Input::MESSAGES* 而不是字符串来指定这个 metacommand。
+你可以用类常量 *Zend\Filter\Input::MESSAGES* 而不是字符串来指定这个 metacommand。
 
 下面是为单个校验器设置缺省错误消息的例子。
 
@@ -561,7 +561,7 @@ The MESSAGES metacommand
    $validators = array(
        'month' => array(
            'digits',
-           new Zend_Validate_Between(1, 12),
+           new Zend\Validate\Between(1, 12),
            'messages' => array(
                // use default message for validator [0]
                // set new message for validator [1]
@@ -580,13 +580,13 @@ The MESSAGES metacommand
    <?php
    $validators = array(
        'month' => array(
-           'digits', new Zend_Validate_Between(1, 12),
+           'digits', new Zend\Validate\Between(1, 12),
            'messages' => array(
                'A month must consist only of digits',
                array(
-                   Zend_Validate_Between::NOT_BETWEEN =>
+                   Zend\Validate\Between::NOT_BETWEEN =>
                        'Month value %value% must be between %min% and %max%',
-                   Zend_Validate_Between::NOT_BETWEEN_STRICT =>
+                   Zend\Validate\Between::NOT_BETWEEN_STRICT =>
                        'Month value %value% must be strictly between %min% and %max%'
                )
            )
@@ -600,7 +600,7 @@ The MESSAGES metacommand
 对所有的规则使用选项来设置 metacommands
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-'allowEmpty'、 'breakChainOnFailure' 和 'presence' metacommands 的缺省值可以使用 Zend_Filter_Input
+'allowEmpty'、 'breakChainOnFailure' 和 'presence' metacommands 的缺省值可以使用 Zend\Filter\Input
 构造器的 *$options* 参数来为所有的规则设置。
 它让你为所有的规则设置缺省值而不需要为每个规则设置 metacommand。
 
@@ -619,7 +619,7 @@ The MESSAGES metacommand
        )
    );
 
-   $input = new Zend_Filter_Input($filters, $validators, $data, $options);
+   $input = new Zend\Filter\Input($filters, $validators, $data, $options);
 
 'fields'、'messages' 和 'default' metacommands 不能用这个技术来设置。
 
@@ -628,19 +628,19 @@ The MESSAGES metacommand
 添加过滤器类命名空间
 ----------
 
-缺省地，当声明一个过滤器或校验器为一个字符串，Zend_Filter_Input 就搜索在 Zend_Filter 或
+缺省地，当声明一个过滤器或校验器为一个字符串，Zend\Filter\Input 就搜索在 Zend_Filter 或
 Zend_Validate 命名空间下的相应的类。 例如：名为字符串 'digits' 的过滤器在
-Zend_Filter_digits 类中。
+Zend\Filter\digits 类中。
 
 如果你写自己的过滤器或校验器类，或使用由第三方提供的过滤器或校验器，这些类存在于不同于
-Zend_Filter 或 Zend_Validate 的命名空间。 你可以告诉 Zend_Filter_Input 搜索更多的命名空间，
+Zend_Filter 或 Zend_Validate 的命名空间。 你可以告诉 Zend\Filter\Input 搜索更多的命名空间，
 你可以在构造器选项里指定命名空间：
 
 .. code-block::
    :linenos:
    <?php
    $options = array('inputNamespace' => 'My_Namespace');
-   $input = new Zend_Filter_Input($filters, $validators, $data, $options);
+   $input = new Zend\Filter\Input($filters, $validators, $data, $options);
 
 另外，你可以使用 addNamespace() 方法：
 
@@ -661,8 +661,8 @@ Zend_Filter 或 Zend_Validate 的命名空间。 你可以告诉 Zend_Filter_Inp
 
 .. note::
 
-   从版本 1.0.4 开始， *Zend_Filter_Input::NAMESPACE*, 把值 *namespace* 改成
-   *Zend_Filter_Input::INPUT_NAMESPACE*\ ，使用值 *inputNamespace* 是为了服从 PHP 5.3 的保留字
+   从版本 1.0.4 开始， *Zend\Filter\Input::NAMESPACE*, 把值 *namespace* 改成
+   *Zend\Filter\Input::INPUT_NAMESPACE*\ ，使用值 *inputNamespace* 是为了服从 PHP 5.3 的保留字
    *namespace* 。
 
 

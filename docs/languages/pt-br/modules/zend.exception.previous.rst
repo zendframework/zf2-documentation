@@ -20,7 +20,7 @@ Exceções precedentes são indicadas como o terceiro argumento para um construt
 
    try {
        $db->query($sql);
-   } catch (Zend_Db_Statement_Exception $e) {
+   } catch (Zend\Db_Statement\Exception $e) {
        if ($e->getPrevious()) {
            echo '[' . get_class($e)
                . '] possui a exceção precedente de ['

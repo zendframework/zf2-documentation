@@ -31,13 +31,13 @@ auch *CJKV*) Sprachen. Wenn man Chinesisch verwendet, kann man auch *HZ-GB-2312*
        return mb_convert_encoding($string, 'ISO-2022-JP', 'UTF-8');
    }
 
-   $mail = new Zend_Mail('ISO-2022-JP');
+   $mail = new Zend\Mail\Mail('ISO-2022-JP');
    // In diesem Fall kann ENCODING_7BIT verwendet werden,
    // weil ISO-2022-JP MSB nicht verwendet
    $mail->setBodyText(myConvert('This is the text of the mail.'),
                                 null,
-                                Zend_Mime::ENCODING_7BIT);
-   $mail->setHeaderEncoding(Zend_Mime::ENCODING_BASE64);
+                                Zend\Mime\Mime::ENCODING_7BIT);
+   $mail->setHeaderEncoding(Zend\Mime\Mime::ENCODING_BASE64);
    $mail->setFrom('somebody@example.com', myConvert('Some Sender'));
    $mail->addTo('somebody_else@example.com', myConvert('Some Recipient'));
    $mail->setSubject(myConvert('TestSubject'));

@@ -4,15 +4,15 @@
 Iban
 ====
 
-``Zend_Validate_Iban`` valide si un nombre donnée est un numéro *IBAN* number. *IBAN* est l'abréviation de
+``Zend\Validate\Iban`` valide si un nombre donnée est un numéro *IBAN* number. *IBAN* est l'abréviation de
 "International Bank Account Number".
 
 .. _zend.validator.set.iban.options:
 
-Options supportées par Zend_Validate_Iban
+Options supportées par Zend\Validate\Iban
 -----------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_Iban``:
+Les options suivantes sont supportées par ``Zend\Validate\Iban``:
 
 - **locale**: Affecte la locale à utiliser pour la validation du format du numéro *IBAN*.
 
@@ -23,7 +23,7 @@ Validation IBAN
 
 Les numéros *IBAN* sont toujours relatifs à un pays. Ceci signifie que différents pays utilisent des formats
 différents de numéros *IBAN*. C'est la raison pour laquelle les numéros *IBAN* ont toujours besoin d'une locale.
-Sachant cela, nous savons déja utiliser ``Zend_Validate_Iban``.
+Sachant cela, nous savons déja utiliser ``Zend\Validate\Iban``.
 
 .. _zend.validator.set.iban.basic.application:
 
@@ -31,16 +31,16 @@ Locale globale à l'application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Nous pourrions utiliser la locale globale à l'application. Ainsi si on ne passe aucune option à l'initialisation
-de ``Zend_Validate_Iban``, celui-ci va chercher la locale globale. Voyez le code qui suit:
+de ``Zend\Validate\Iban``, celui-ci va chercher la locale globale. Voyez le code qui suit:
 
 .. code-block:: php
    :linenos:
 
    // dans le bootstrap
-   Zend_Registry::set('Zend_Locale', new Zend_Locale('de_AT'));
+   Zend\Registry\Registry::set('Zend_Locale', new Zend\Locale\Locale('de_AT'));
 
    // dans le module
-   $validator = new Zend_Validate_Iban();
+   $validator = new Zend\Validate\Iban();
 
    if ($validator->isValid('AT611904300234573201')) {
        // IBAN est valide
@@ -69,7 +69,7 @@ Il peut arriver parfois que vous ayiez juste besoin de vérifier le format du nu
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Iban(array('locale' => false));
+   $validator = new Zend\Validate\Iban(array('locale' => false));
    // Note: Vous pouvez aussi passer FALSE comme paramètre unique (sans tableau)
 
    if ($validator->isValid('AT611904300234573201')) {
@@ -92,7 +92,7 @@ Pour valider par rapport à un pays/région, passez simplement la locale désir�
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Iban(array('locale' => 'de_AT'));
+   $validator = new Zend\Validate\Iban(array('locale' => 'de_AT'));
 
    if ($validator->isValid('AT611904300234573201')) {
        // IBAN est valide

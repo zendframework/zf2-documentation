@@ -12,13 +12,13 @@
    :linenos:
 
    // 構成オプションのために
-   // @see Zend_Queue_Adapater::__construct()
+   // @see Zend\Queue\Adapater::__construct()
    $options = array(
        'name' => 'queue1',
    );
 
    // 配列待ち行列の作成
-   $queue = new Zend_Queue('Array', $options);
+   $queue = new Zend\Queue\Queue('Array', $options);
 
    // 待ち行列一覧の取得
    foreach ($queue->getQueues() as $name) {

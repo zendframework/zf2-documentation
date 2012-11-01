@@ -4,41 +4,41 @@
 基本的な使用法
 =======
 
-``Zend_Session_Namespace`` のインスタンスが、Zend Framework
+``Zend\Session\Namespace`` のインスタンスが、Zend Framework
 のセッションデータを操作するための基本的な *API* を提供します。
 名前空間を使用するとセッションデータを個別に扱うことができますが、
 セッションデータ全体をひとつの名前空間で扱いたい人のためのデフォルト名前空間も用意されています。
-``Zend_Session_Namespace`` は、ext/session およびスーパーグローバル変数 *$_SESSION*
+``Zend\Session\Namespace`` は、ext/session およびスーパーグローバル変数 *$_SESSION*
 を使用して、セッション状態のデータを保存します。 *$_SESSION*
 はグローバルにアクセス可能ですが、
 開発者はこれに対して直接アクセスするのはやめるべきです。 ``Zend_Session`` および
-``Zend_Session_Namespace`` を用いることで、
+``Zend\Session\Namespace`` を用いることで、
 セッション関連の機能をより効率的かつ安全に使用できるようになります。
 
-``Zend_Session_Namespace`` の各インスタンスが、 スーパーグローバル配列 *$_SESSION*
+``Zend\Session\Namespace`` の各インスタンスが、 スーパーグローバル配列 *$_SESSION*
 のエントリに対応します。 名前空間をキーとして使用します。
 
    .. code-block:: php
       :linenos:
 
-      $myNamespace = new Zend_Session_Namespace('myNamespace');
+      $myNamespace = new Zend\Session\Namespace('myNamespace');
 
       // $myNamespace は $_SESSION['myNamespace'] に対応します
 
 Zend_Session は、 *$_SESSION*
 を直接使用するその他のコードと組み合わせて使用することもできます。
 しかし、問題が起こることをさけるために、 *$_SESSION* を直接使用するのは
-``Zend_Session_Namespace`` のインスタンスに関連しないキーに限るようにしましょう。
+``Zend\Session\Namespace`` のインスタンスに関連しないキーに限るようにしましょう。
 
 .. _zend.session.basic_usage.basic_examples:
 
 チュートリアル
 -------
 
-何も名前空間を指定せずに ``Zend_Session_Namespace`` のインスタンスを作成すると、
+何も名前空間を指定せずに ``Zend\Session\Namespace`` のインスタンスを作成すると、
 すべてのデータは透過的に "*Default*" という名前の名前空間に保存されます。
 ``Zend_Session`` は、セッション名前空間コンテナの内容を
-直接操作するためのものではあります。そのかわりとして ``Zend_Session_Namespace``
+直接操作するためのものではあります。そのかわりとして ``Zend\Session\Namespace``
 を使用します。 以下の例は、このデフォルトの名前空間を使用して
 セッション内でのクライアントからのリクエストの回数を数えるものです。
 
@@ -49,7 +49,7 @@ Zend_Session は、 *$_SESSION*
 .. code-block:: php
    :linenos:
 
-   $defaultNamespace = new Zend_Session_Namespace('Default');
+   $defaultNamespace = new Zend\Session\Namespace('Default');
 
    if (isset($defaultNamespace->numberOfPageRequests)) {
        // これが、ページが読み込まれるたびに加算されます
@@ -61,9 +61,9 @@ Zend_Session は、 *$_SESSION*
    echo "このセッションでページがリクエストされた回数: ",
        $defaultNamespace->numberOfPageRequests;
 
-複数のモジュールが別々の名前空間で ``Zend_Session_Namespace``
+複数のモジュールが別々の名前空間で ``Zend\Session\Namespace``
 のインスタンスを使用するようにすると、各モジュールのデータをセッション内でカプセル化できます。
-``Zend_Session_Namespace`` のコンストラクタでオプションの引数 *$namespace* を指定すると、
+``Zend\Session\Namespace`` のコンストラクタでオプションの引数 *$namespace* を指定すると、
 セッションデータを個別の名前空間に分割できます。
 名前空間は、セッションデータで名前の衝突による事故を防ぐための方法として、
 効率的で人気のある方法です。
@@ -81,11 +81,11 @@ Zend_Session は、 *$_SESSION*
    :linenos:
 
    // Zend_Auth コンポーネント用
-   $authNamespace = new Zend_Session_Namespace('Zend_Auth');
+   $authNamespace = new Zend\Session\Namespace('Zend_Auth');
    $authNamespace->user = "myusername";
 
    // ウェブサービスコンポーネント用
-   $webServiceNamespace = new Zend_Session_Namespace('Some_Web_Service');
+   $webServiceNamespace = new Zend\Session\Namespace('Some_Web_Service');
    $webServiceNamespace->user = "mywebusername";
 
 上の例は、この下のコードと同じ結果になります。
@@ -106,7 +106,7 @@ Zend_Session は、 *$_SESSION*
 セッション名前空間の順次処理
 --------------
 
-``Zend_Session_Namespace`` は `IteratorAggregate インターフェイス`_ を完全に実装しており、
+``Zend\Session\Namespace`` は `IteratorAggregate インターフェイス`_ を完全に実装しており、
 *foreach* 文をサポートしています。
 
 .. _zend.session.basic_usage.iteration.example:
@@ -117,7 +117,7 @@ Zend_Session は、 *$_SESSION*
    :linenos:
 
    $aNamespace =
-       new Zend_Session_Namespace('some_namespace_with_data_present');
+       new Zend\Session\Namespace('some_namespace_with_data_present');
 
    foreach ($aNamespace as $index => $value) {
        echo "aNamespace->$index = '$value';\n";
@@ -128,7 +128,7 @@ Zend_Session は、 *$_SESSION*
 セッション名前空間へのアクセス方法
 -----------------
 
-``Zend_Session_Namespace`` は ``__get()``\ 、 ``__set()``\ 、 ``__isset()`` そして ``__unset()`` といった
+``Zend\Session\Namespace`` は ``__get()``\ 、 ``__set()``\ 、 ``__isset()`` そして ``__unset()`` といった
 `マジックメソッド`_
 を実装しています。これらは、自分のサブクラス以外から直接コールされることはありません。
 次の例に示すように、通常の演算の際に自動的にコールされることになります。
@@ -140,7 +140,7 @@ Zend_Session は、 *$_SESSION*
 .. code-block:: php
    :linenos:
 
-   $namespace = new Zend_Session_Namespace(); // デフォルトの名前空間
+   $namespace = new Zend\Session\Namespace(); // デフォルトの名前空間
 
    $namespace->foo = 100;
 

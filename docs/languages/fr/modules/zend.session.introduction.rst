@@ -15,17 +15,17 @@ ne sont pas stockées du côté client, et elles sont seulement partagées avec 
 côté serveur rend volontairement disponible les données par l'intermédiaire d'une réponse à une demande du
 client. Dans le cadre de ce composant et de cette documentation, le terme "données de session" se rapportent aux
 données du côté serveur stockées dans `$_SESSION`_, contrôlées par ``Zend_Session``, et individuellement
-manipulées par des objets ``Zend_Session_Namespace``. **Les espaces de noms de session** permettent d'accéder aux
+manipulées par des objets ``Zend\Session\Namespace``. **Les espaces de noms de session** permettent d'accéder aux
 données de session en utilisant les `espaces de noms`_ classiques implémentés logiquement en tant que groupes
 nommés de tableaux associatifs, indexés par des chaînes (semblables aux tableaux habituels de *PHP*).
 
-Les instances ``Zend_Session_Namespace`` sont des objets accesseurs pour les sous-parties nommées de
+Les instances ``Zend\Session\Namespace`` sont des objets accesseurs pour les sous-parties nommées de
 ``$_SESSION``. Le composant ``Zend_Session`` encapsule l'extension session de *PHP* existante avec une interface
-d'administration et de gestion, afin de fournir une *API* à ``Zend_Session_Namespace`` pour les espaces de noms de
-session persistants. ``Zend_Session_Namespace`` fournit une interface normalisée et orientée objet pour
+d'administration et de gestion, afin de fournir une *API* à ``Zend\Session\Namespace`` pour les espaces de noms de
+session persistants. ``Zend\Session\Namespace`` fournit une interface normalisée et orientée objet pour
 travailler en espaces de noms persistants à l'intérieur du mécanisme standard des sessions de *PHP*. Le support
 existe pour les espaces de noms anonymes et les espaces de nom de session authentifiés (par exemple, "login").
-``Zend_Auth``, le composant d'authentification de Zend Framework emploie ``Zend_Session_Namespace`` pour stocker
+``Zend_Auth``, le composant d'authentification de Zend Framework emploie ``Zend\Session\Namespace`` pour stocker
 les informations liées aux utilisateurs authentifiés. Puisque ``Zend_Session`` emploie les fonctions normales de
 l'extension session de *PHP*, tous les options et réglages familiers de configuration s'appliquent (voir
 `http://www.php.net/session`_), avec en bonus la facilité d'accès par une interface orientée objet et un

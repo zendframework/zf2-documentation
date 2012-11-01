@@ -78,7 +78,7 @@ The following code sample will return an array with the search results.
 
 .. rubric:: ATOM Search Example
 
-The following code sample will return a ``Zend_Feed_Atom`` object.
+The following code sample will return a ``Zend\Feed\Atom`` object.
 
 .. code-block:: php
    :linenos:

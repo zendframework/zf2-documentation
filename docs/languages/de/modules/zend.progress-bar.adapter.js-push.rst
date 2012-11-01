@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.progressbar.adapter.jspush:
 
-Zend_ProgressBar_Adapter_JsPush
+Zend\ProgressBar_Adapter\JsPush
 ===============================
 
-``Zend_ProgressBar_Adapter_JsPush`` ist ein Adapter der es erlaubt den Fortschrittsbalken in einem Browser über
+``Zend\ProgressBar_Adapter\JsPush`` ist ein Adapter der es erlaubt den Fortschrittsbalken in einem Browser über
 Javascript Push zu aktualisieren. Das bedeutet das keine zweite Verbindung benötigt wird um den Status über den
 aktuell laufenden Prozess zu erhalten, sondern das der Prozess selbst seinen Status direkt an den Browser schickt.
 
@@ -13,7 +13,7 @@ oder einer Instanz von ``Zend_Config``, an den Constructor mit dem Optionen als 
 Optionen sind:
 
 - *updateMethodName*: Die Javascript Methode die bei jeder Aktualisierung aufgerufen werden soll. Standardwert ist
-  ``Zend_ProgressBar_Update``.
+  ``Zend\ProgressBar\Update``.
 
 - *finishMethodName*: Die Javascript Methode die aufgerufen werden soll wenn der Beendet-Status gesetzt wurde. Der
   Standardwert ist ``NULL``, was bedeutet das nichts passiert.
@@ -82,7 +82,7 @@ Dieses Beispiel zeigt ein grundsätzliches Setup von *HTML*, *CSS* und JavaScrip
 .. code-block:: javascript
    :linenos:
 
-   function Zend_ProgressBar_Update(data)
+   function Zend\ProgressBar\Update(data)
    {
        document.getElementById('zend-progressbar-done').style.width =
            data.percent + '%';

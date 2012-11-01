@@ -35,7 +35,7 @@ Powyższe elementy są oddzielone dwukropkami, tak jak w poniższym przykładzie
 Parametry
 ---------
 
-Adapter uwierzytelniania digest, ``Zend_Auth_Adapter_Digest``, wymaga ustawienia kilku wejściowych parametrów:
+Adapter uwierzytelniania digest, ``Zend\Auth_Adapter\Digest``, wymaga ustawienia kilku wejściowych parametrów:
 
 - filename - plik na podstawie którego przeprowadzane są zapytania uwierzytelniania
 
@@ -52,14 +52,14 @@ Te parametry muszą być ustawione przed wywołaniem metody ``authenticate()``.
 Tożsamość
 ---------
 
-Adapter uwierzytelniania digest zwraca obiekt ``Zend_Auth_Result``, który został wypełniony danymi tożsamości
+Adapter uwierzytelniania digest zwraca obiekt ``Zend\Auth\Result``, który został wypełniony danymi tożsamości
 w postaci tablicy posiadajacej klucze **realm** oraz **username**. Odpowiednie wartości tablicy powiązane z tymi
 kluczami odpowiadają wartościom ustawionym przed wywołaniem metody ``authenticate()``.
 
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Auth_Adapter_Digest($filename,
+   $adapter = new Zend\Auth_Adapter\Digest($filename,
                                            $realm,
                                            $username,
                                            $password);

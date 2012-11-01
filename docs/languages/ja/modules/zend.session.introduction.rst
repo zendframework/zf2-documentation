@@ -19,24 +19,24 @@ Zend Framework Auth team は皆さんのフィードバックや協力をお待�
 クライアントからのリクエストへの応答として使用できるようになった場合のみです。
 このコンポーネントのドキュメントにおいて「セッションデータ」という用語は、
 `$_SESSION`_ に保存されたり ``Zend_Session`` で管理されたり、 独立して
-``Zend_Session_Namespace`` のアクセス用オブジェクトで管理されたりする
+``Zend\Session\Namespace`` のアクセス用オブジェクトで管理されたりする
 サーバ側のデータをさすものとします。 **セッション名前空間**
 により、セッションデータに対して昔ながらの `名前空間`_
 を使用したアクセスが可能となります。
 これは、文字列をキーとした連想配列形式で実装されています。 (通常の *PHP*
 の配列と同じです)。
 
-``Zend_Session_Namespace`` のインスタンスは、 ``$_SESSION``
+``Zend\Session\Namespace`` のインスタンスは、 ``$_SESSION``
 の一部を切り取って名前空間つきでアクセスするためのオブジェクトとなります。
 ``Zend_Session`` コンポーネントは、 *PHP* の既存の ext/session
-をラップして管理用インターフェイスを提供します。また、 ``Zend_Session_Namespace``
-のセッション名前空間を持続させるための *API* も提供します。 ``Zend_Session_Namespace``
+をラップして管理用インターフェイスを提供します。また、 ``Zend\Session\Namespace``
+のセッション名前空間を持続させるための *API* も提供します。 ``Zend\Session\Namespace``
 は、標準化されたオブジェクト指向のインターフェイスで
 名前空間を扱います。これは、 *PHP* 標準のセッションの仕組みを使用しています。
 匿名セッションおよび認証済み ("ログイン")
 セッション名前空間の両方をサポートしています。 Zend Framework
-の認証コンポーネントである ``Zend_Auth`` は、 ``Zend_Session_Namespace`` を使用して "Zend_Auth"
-名前空間に認証済みユーザの情報を保存します。 ``Zend_Session_Core``
+の認証コンポーネントである ``Zend_Auth`` は、 ``Zend\Session\Namespace`` を使用して "Zend_Auth"
+名前空間に認証済みユーザの情報を保存します。 ``Zend\Session\Core``
 が内部で使用しているのは通常の *PHP* ext/session
 関数なので、おなじみのオプションや設定が適用されます (`http://www.php.net/session`_
 を参照ください)。これは、オブジェクト指向で扱えたりデフォルトをサポートしていたりという点で

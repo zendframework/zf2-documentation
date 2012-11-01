@@ -33,16 +33,16 @@ utilisera l'adaptateur **Bz2**. Les détails des autres adaptateurs seront préc
 suivante.
 
 Les deux filtres (compression et décompression) sont identiques lorsqu'ils utilisent le même adaptateur.
-Simplement ``Zend_Filter_Compress`` est utilisé pour les opérations de compression alors que
-``Zend_Filter_Decompress`` est utilisé pour la décompression.
+Simplement ``Zend\Filter\Compress`` est utilisé pour les opérations de compression alors que
+``Zend\Filter\Decompress`` est utilisé pour la décompression.
 
-Par exemple, si nous voulons compresser une chaine nous devons instancier ``Zend_Filter_Compress`` et indiquer un
+Par exemple, si nous voulons compresser une chaine nous devons instancier ``Zend\Filter\Compress`` et indiquer un
 adaptateur.
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Compress('Bz2');
+   $filter = new Zend\Filter\Compress('Bz2');
 
 Les adaptateurs se spécifient donc dans le constructeur.
 
@@ -53,7 +53,7 @@ préciser des options, vous devez alors au minimum indiquer la clé "adapter". L
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Compress(array(
+   $filter = new Zend\Filter\Compress(array(
        'adapter' => 'Bz2',
        'options' => array(
            'blocksize' => 8,
@@ -71,7 +71,7 @@ Concernant la décompression, le principe est exactement identique.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Decompress('Bz2');
+   $filter = new Zend\Filter\Decompress('Bz2');
 
 Pour récupérer une chaine compressée, il faut indiquer la chaine originale. La valeur "filtrée" récupérée
 sera alors la chaine compressée, tout simplement.
@@ -79,7 +79,7 @@ sera alors la chaine compressée, tout simplement.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Compress('Bz2');
+   $filter     = new Zend\Filter\Compress('Bz2');
    $compressed = $filter->filter('Uncompressed string');
    // Retourne la chaine compressée
 
@@ -88,7 +88,7 @@ La décompression suit exactement le même principe.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Decompress('Bz2');
+   $filter     = new Zend\Filter\Decompress('Bz2');
    $compressed = $filter->filter('Compressed string');
    // Retourne la chaine décompressée
 
@@ -111,7 +111,7 @@ cas, nous devons préciser une options supplémentaire indiquant le nom de l'arc
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Compress(array(
+   $filter     = new Zend\Filter\Compress(array(
        'adapter' => 'Bz2',
        'options' => array(
            'archive' => 'filename.bz2',
@@ -133,7 +133,7 @@ Si vous souhaitez compresser un fichier, vous devez fournir son chemin.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Compress(array(
+   $filter     = new Zend\Filter\Compress(array(
        'adapter' => 'Bz2',
        'options' => array(
            'archive' => 'filename.bz2'
@@ -148,7 +148,7 @@ compressé, récursivement.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Compress(array(
+   $filter     = new Zend\Filter\Compress(array(
        'adapter' => 'Bz2',
        'options' => array(
            'archive' => 'filename.bz2'
@@ -176,7 +176,7 @@ paramètre ``archive`` ou préciser le nom du fichier.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Decompress('Bz2');
+   $filter     = new Zend\Filter\Decompress('Bz2');
    $compressed = $filter->filter('filename.bz2');
    // Retourne true en cas de succès et décompresse le fichier d'archive
 
@@ -186,7 +186,7 @@ Certains adaptateurs permettent la décompression d'une archive dans un dossier 
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Decompress(array(
+   $filter     = new Zend\Filter\Decompress(array(
        'adapter' => 'Zip',
        'options' => array(
            'target' => 'C:\temp',

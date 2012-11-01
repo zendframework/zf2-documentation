@@ -30,14 +30,14 @@ Grundsätzliche Verwendung von Zend_Session
 
 Die Komponente ``Zend_Session`` ist sowohl ein Session Manager als auch eine *API* für das Speichern von Daten im
 Session Objekt für eine Langzeit-Verfügbarkeit. Die *API* von ``Zend_Session`` ist für das Managen der Optionen
-und des Verhaltens einer Session, wie Optionen, Starten und Stoppen einer Session, und ``Zend_Session_Namespace``
+und des Verhaltens einer Session, wie Optionen, Starten und Stoppen einer Session, und ``Zend\Session\Namespace``
 ist das aktuelle Objekt welches zum Speichern der Daten verwendet wird.
 
 Wärend es generell eine gute Praxis ist eine Session im Bootstrap Prozess zu starten, ist dies generell nicht
-notwendig da alle Sessions bei der ersten Erstellung eines ``Zend_Session_Namespace`` Objekts automatisch gestartet
+notwendig da alle Sessions bei der ersten Erstellung eines ``Zend\Session\Namespace`` Objekts automatisch gestartet
 werden.
 
-``Zend_Application`` ist in der Lage ``Zend_Session`` als Teil des ``Zend_Application_Resource`` Systems zu
+``Zend_Application`` ist in der Lage ``Zend_Session`` als Teil des ``Zend\Application\Resource`` Systems zu
 konfigurieren. Um das zu verwenden, nehmen wir an dass das Projekt ``Zend_Application`` für das Bootstrappen
 verwendet. Man würde den folgenden Code in der Datei application.ini hinzufügen:
 
@@ -55,10 +55,10 @@ Konstante APPLICATION_PATH verwenden und relativ auf das Verzeichnis der Session
 
 Die meisten Zend Framework Komponenten welche Sessions verwenden benötigen nichts zusätzliches um
 ``Zend_Session`` zu verwenden. An diesem Punkt verwendet man entweder eine Komponente welche ``Zend_Session``
-verwendet, oder startet das Speichern eigener Daten in einer Session mit ``Zend_Session_Namespace``.
+verwendet, oder startet das Speichern eigener Daten in einer Session mit ``Zend\Session\Namespace``.
 
-``Zend_Session_Namespace`` ist eine einfache Klasse welche auf Daten über eine einfach zu verwendende *API* in der
-von ``Zend_Session`` gemanagten superglobalen $_SESSION verweist. Der Grund warum es ``Zend_Session_Namespace``
+``Zend\Session\Namespace`` ist eine einfache Klasse welche auf Daten über eine einfach zu verwendende *API* in der
+von ``Zend_Session`` gemanagten superglobalen $_SESSION verweist. Der Grund warum es ``Zend\Session\Namespace``
 genannt wird ist, das es die Daten in $_SESSION effektiv namespaced, und es so mehreren Komponenten und Objekten
 erlaubt Daten sicher zu speichern und zu empfangen. Im folgenden Code sehen wir wie ein einfacher hochzählender
 Counter für Sessions erstellt werden kann der bei 1000 anfängt und sich selbst nach 1999 zurücksetzt.
@@ -66,7 +66,7 @@ Counter für Sessions erstellt werden kann der bei 1000 anfängt und sich selbst
 .. code-block:: php
    :linenos:
 
-   $mysession = new Zend_Session_Namespace('mysession');
+   $mysession = new Zend\Session\Namespace('mysession');
 
    if (!isset($mysession->counter)) {
        $mysession->counter = 1000;
@@ -93,7 +93,7 @@ Code in der application.ini hinzufügen:
 .. code-block:: php
    :linenos:
 
-   resources.session.saveHandler.class = "Zend_Session_SaveHandler_DbTable"
+   resources.session.saveHandler.class = "Zend\Session_SaveHandler\DbTable"
    resources.session.saveHandler.options.name = "session"
    resources.session.saveHandler.options.primary.session_id = "session_id"
    resources.session.saveHandler.options.primary.save_path = "save_path"

@@ -414,7 +414,7 @@ is allowed within this tag, unless a class name is used, which indicates a class
 
    <para>
        The variable <varname>$var</varname> and the class variable
-       <varname>Zend_Class::$var</varname>.
+       <varname>Zend\Class\Class::$var</varname>.
    </para>
 
 .. _doc-standard.file-formatting.inline-tags.methodname:
@@ -431,7 +431,7 @@ name is used, which indicates a class method.
 
    <para>
        The method <methodname>foo()</methodname> and the class method
-       <methodname>Zend_Class::foo()</methodname>. A method with a full signature:
+       <methodname>Zend\Class\Class::foo()</methodname>. A method with a full signature:
        <methodname>foo($bar, $baz)</methodname>
    </para>
 
@@ -448,7 +448,7 @@ allowed within this tag, unless a class name is used, which indicates a class co
 
    <para>
        The constant <constant>FOO</constant> and the class constant
-       <constant>Zend_Class::FOO</constant>.
+       <constant>Zend\Class\Class::FOO</constant>.
    </para>
 
 .. _doc-standard.file-formatting.inline-tags.filename:

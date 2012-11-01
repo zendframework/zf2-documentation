@@ -9,9 +9,9 @@ Uwierzytelnianie w oparciu o tabelę bazy danych
 Wprowadzenie
 ------------
 
-``Zend_Auth_Adapter_DbTable`` zapewnia możliwość przeprowadzenia uwierzytelniania w oparciu o dane przechowywane
-w tabeli bazy danych. Z tego względu, że klasa ``Zend_Auth_Adapter_DbTable`` wymaga przekazania instancji klasy
-``Zend_Db_Adapter_Abstract`` do jej konstruktora, każda ta instancja jest powiązana z konkretnym połączeniem do
+``Zend\Auth_Adapter\DbTable`` zapewnia możliwość przeprowadzenia uwierzytelniania w oparciu o dane przechowywane
+w tabeli bazy danych. Z tego względu, że klasa ``Zend\Auth_Adapter\DbTable`` wymaga przekazania instancji klasy
+``Zend\Db_Adapter\Abstract`` do jej konstruktora, każda ta instancja jest powiązana z konkretnym połączeniem do
 bazy danych. Inne opcje konfiguracyjne mogą być ustawione za pomocą konstruktora lub za pomocą metod instancji,
 po jednej dla każdej z opcji.
 
@@ -37,8 +37,8 @@ Dostępne opcje konfiguracyjne to:
 
 .. rubric:: Podstawowe użycie
 
-Jak wyjaśniono we wprowadzeniu, konstruktor klasy ``Zend_Auth_Adapter_DbTable`` wymaga przekazania mu instancji
-klasy ``Zend_Db_Adapter_Abstract``, zapewniającej połączenie do bazy danych, z którym powiązana jest instancja
+Jak wyjaśniono we wprowadzeniu, konstruktor klasy ``Zend\Auth_Adapter\DbTable`` wymaga przekazania mu instancji
+klasy ``Zend\Db_Adapter\Abstract``, zapewniającej połączenie do bazy danych, z którym powiązana jest instancja
 adaptera uwierzytelniania. Na początku powinno być utworzone połączenie do bazy danych.
 
 Poniższy kod tworzy adapter bazy danych przechowywanej w pamięci, tworzy prostą strukturę tabeli, a następnie
@@ -49,7 +49,7 @@ dostępnego rozszerzenia PDO SQLite:
    :linenos:
 
    // Tworzymy połączenie do bazy danych SQLite przechowywanej w pamięci
-   $dbAdapter = new Zend_Db_Adapter_Pdo_Sqlite(array('dbname' =>
+   $dbAdapter = new Zend\Db\Adapter\Pdo\Sqlite(array('dbname' =>
                                                      ':memory:'));
 
    // Budujemy zapytanie tworzące prostą tabelę
@@ -71,14 +71,14 @@ dostępnego rozszerzenia PDO SQLite:
    $dbAdapter->query($sqlInsert);
 
 Gdy połączenie do bazy danych oraz dane w tabeli są już dostępne, możesz utworzyć instancję klasy
-``Zend_Auth_Adapter_DbTable``. Opcje konfiguracyjne mogą być przekazane do konstruktora lub przekazane jako
+``Zend\Auth_Adapter\DbTable``. Opcje konfiguracyjne mogą być przekazane do konstruktora lub przekazane jako
 parametry do metod dostępowych już po utworzeniu instancji:
 
 .. code-block:: php
    :linenos:
 
    // Konfigurujemy instancję za pomocą parametrów konstruktora
-   $authAdapter = new Zend_Auth_Adapter_DbTable(
+   $authAdapter = new Zend\Auth_Adapter\DbTable(
        $dbAdapter,
        'users',
        'username',
@@ -86,7 +86,7 @@ parametry do metod dostępowych już po utworzeniu instancji:
    );
 
    // ...lub konfigurujemy instancję za pomocą metod dostępowych
-   $authAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
+   $authAdapter = new Zend\Auth_Adapter\DbTable($dbAdapter);
    $authAdapter
        ->setTableName('users')
        ->setIdentityColumn('username')
@@ -109,7 +109,7 @@ celu utworzenia zapytania, wejściowe dane uwierzytelniania są przekazywane do 
    $result = $authAdapter->authenticate();
 
 Oprócz możliwości użycia metody ``getIdentity()`` obiektu rezultatu uwierzytelniania, obiekt
-``Zend_Auth_Adapter_DbTable`` pozwala także na odebranie wiersza tabeli po udanym uwierzytelnieniu.
+``Zend\Auth_Adapter\DbTable`` pozwala także na odebranie wiersza tabeli po udanym uwierzytelnieniu.
 
 .. code-block:: php
    :linenos:
@@ -140,7 +140,7 @@ zabezpieczone przed dostępem przez osoby nieuprawnione.
 Zaawansowane użycie: Stałe przechowywanie obiektu DbTable Result
 ----------------------------------------------------------------
 
-Domyślnie ``Zend_Auth_Adapter_DbTable`` po udanym uwierzytelnieniu zwraca do obiektu uwierzytelniającego
+Domyślnie ``Zend\Auth_Adapter\DbTable`` po udanym uwierzytelnieniu zwraca do obiektu uwierzytelniającego
 spowrotem tę samą tożsamość. W innym przykładzie użycia programista może chcieć przechować w stałym
 mechanizmie przechowywania ``Zend_Auth`` obiekt tożsamości zawierający inne użyteczne informacje. W takim
 przypadku może użyć metody ``getResultRowObject()`` aby zwrócić obiekt klasy ``stdClass``. Poniższy kod
@@ -149,7 +149,7 @@ ilustruje sposób jego użycia:
 .. code-block:: php
    :linenos:
 
-   // uwierzytelniamy za pomocą Zend_Auth_Adapter_DbTable
+   // uwierzytelniamy za pomocą Zend\Auth_Adapter\DbTable
    $result = $this->_auth->authenticate($adapter);
 
    if ($result->isValid()) {
@@ -182,19 +182,19 @@ ilustruje sposób jego użycia:
 Przykład zaawansowanego użycia
 ------------------------------
 
-O ile głównym przeznaczeniem komponentu ``Zend_Auth`` (i odpowiednio ``Zend_Auth_Adapter_DbTable``) jest
+O ile głównym przeznaczeniem komponentu ``Zend_Auth`` (i odpowiednio ``Zend\Auth_Adapter\DbTable``) jest
 **uwierzytelnianie** a nie **autoryzacja**, jest kilka problemów które możemy rozwiązać odrobinę
 przekraczając pole zastosowań komponentu. Zależnie od tego jak zdecydujesz wyjaśnić swój problem, czasem
 może być przydatne rozwiązanie problemu autoryzacji podczas uwierzytelniania.
 
-Komponent ``Zend_Auth_Adapter_DbTable`` posiada pewien wbudowany mechanizm, który może być użyty do dodania
+Komponent ``Zend\Auth_Adapter\DbTable`` posiada pewien wbudowany mechanizm, który może być użyty do dodania
 dodatkowych warunków podczas uwierzytelniania, dzięki czemu można rozwiązać niektóre problemy.
 
 .. code-block:: php
    :linenos:
 
    // Wartość pola "status" dla tego konta nie jest równa wartości "compromised"
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
@@ -203,7 +203,7 @@ dodatkowych warunków podczas uwierzytelniania, dzięki czemu można rozwiązać
    );
 
    // Wartość pola "active" dla tego konta jest równa wartości "TRUE"
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
@@ -242,13 +242,13 @@ I skonfigurujmy sterownik bazy danych:
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
        'password',
        "MD5(CONCAT('"
-       . Zend_Registry::get('staticSalt')
+       . Zend\Registry\Registry::get('staticSalt')
        . "', ?, password_salt))"
    );
 
@@ -259,8 +259,8 @@ I skonfigurujmy sterownik bazy danych:
    pomocą ataku *SQL* injection), a nie będzie miał dostępu do kodu źródłowego, hasła wciąż będą dla
    niego nieprzydatne.
 
-Innym sposobem jest użycie metody ``getDbSelect()`` klasy ``Zend_Auth_Adapter_DbTable`` po utworzeniu adaptera. Ta
-metoda zwróci obiekt klasy ``Zend_Db_Select``, który ma być użyty do przeprowadzenia uwierzytalniania. Ważne
+Innym sposobem jest użycie metody ``getDbSelect()`` klasy ``Zend\Auth_Adapter\DbTable`` po utworzeniu adaptera. Ta
+metoda zwróci obiekt klasy ``Zend\Db\Select``, który ma być użyty do przeprowadzenia uwierzytalniania. Ważne
 jest, że ta metoda zawsze zwróci ten sam obiekt, niezależnie od tego czy metoda ``authenticate()`` została
 wywołana czy nie. Ten obiekt **nie będzie** posiadał żadnych informacji dotyczących nazwy tożsamości i
 hasła, ponieważ te dane będą umieszczone tam dopiero w czasie wywołania metody ``authenticate()``.
@@ -272,7 +272,7 @@ użytkownika, czyli sprawdzenia czy konto użytkownika jest aktywne.
    :linenos:
 
    // Kontynuując poprzedni przykład
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
@@ -280,7 +280,7 @@ użytkownika, czyli sprawdzenia czy konto użytkownika jest aktywne.
        'MD5(?)'
    );
 
-   // pobieramy obiekt Zend_Db_Select (przez referencję)
+   // pobieramy obiekt Zend\Db\Select (przez referencję)
    $select = $adapter->getDbSelect();
    $select->where('active = "TRUE"');
 

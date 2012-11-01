@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.openid.provider:
 
-Zend_OpenId_Provider
+ZendOpenId\Provider
 ====================
 
-``Zend_OpenId_Provider`` は、OpenID サーバを実装するために使用するものです。
+``ZendOpenId\Provider`` は、OpenID サーバを実装するために使用するものです。
 本章では、とりあえず動作するサーバを作成するための初歩的な例を説明します。
 しかし、実際に運用する OpenID サーバ (`www.myopenid.com`_ などのようなもの)
 を実装するには、より複雑な問題に対応する必要があります。
@@ -14,7 +14,7 @@ Zend_OpenId_Provider
 クイックスタート
 --------
 
-以下の識別子は、 ``Zend_OpenId_Provider::register``
+以下の識別子は、 ``ZendOpenId\Provider::register``
 を使用してユーザアカウントを作成するコードを含みます。 *rel="openid.server"*
 が指定されているリンク要素は、
 自前のサーバスクリプトを指しています。この識別子を OpenID
@@ -33,10 +33,10 @@ Zend_OpenId_Provider
 
    <?php
    // テスト用の識別子を準備します
-   define("TEST_SERVER", Zend_OpenId::absoluteURL("example-8.php"));
-   define("TEST_ID", Zend_OpenId::selfURL());
+   define("TEST_SERVER", ZendOpenId\OpenId::absoluteURL("example-8.php"));
+   define("TEST_ID", ZendOpenId\OpenId::selfURL());
    define("TEST_PASSWORD", "123");
-   $server = new Zend_OpenId_Provider();
+   $server = new ZendOpenId\Provider();
    if (!$server->hasUser(TEST_ID)) {
        $server->register(TEST_ID, TEST_PASSWORD);
    }
@@ -49,11 +49,11 @@ Zend_OpenId_Provider
 
 次の識別サーバスクリプトは、OpenID 対応のサイトからの二種類のリクエスト
 (関連付けと認証) を処理します。どちらについても、同じメソッド
-``Zend_OpenId_Provider::handle`` で処理します。 ``Zend_OpenId_Provider`` へ渡すふたつの引数は
+``ZendOpenId\Provider::handle`` で処理します。 ``ZendOpenId\Provider`` へ渡すふたつの引数は
 ログイン *URL* と信頼済みページの *URL* で、
 これらはエンドユーザから指定されたものです。
 
-成功した場合、 ``Zend_OpenId_Provider::handle``
+成功した場合、 ``ZendOpenId\Provider::handle``
 メソッドは文字列を返します。これはそのまま OpenID
 対応のサイトに戻さなければなりません。 失敗した場合は ``FALSE`` を返します。
 この例では、失敗した場合に *HTTP* 403 レスポンスを返しています。
@@ -67,7 +67,7 @@ Zend_OpenId_Provider
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_OpenId_Provider("example-8-login.php",
+   $server = new ZendOpenId\Provider("example-8-login.php",
                                       "example-8-trust.php");
    $ret = $server->handle();
    if (is_string($ret)) {
@@ -82,16 +82,16 @@ Zend_OpenId_Provider
    この処理、そしてその後の対話形式のスクリプトではセキュアな接続 (HTTPS)
    を使うことをお勧めします。 これは、パスワードの漏洩を防ぐためです。
 
-次のスクリプトは、識別サーバ ``Zend_OpenId_Provider``
+次のスクリプトは、識別サーバ ``ZendOpenId\Provider``
 用のログイン画面を実装したものです。
 ユーザがまだログインしていない場合は、このページにリダイレクトします。
 このページでユーザがパスワードを入力してログインを行います。
 
 この識別子スクリプトからのユーザ登録時のパスワードは "123" です。
 
-送信すると、このスクリプトは ``Zend_OpenId_Provider::login``
+送信すると、このスクリプトは ``ZendOpenId\Provider::login``
 にエンドユーザの識別子とパスワードを渡し、識別プロバイダのスクリプトにリダイレクトします。
-成功した場合、 ``Zend_OpenId_Provider::login``
+成功した場合、 ``ZendOpenId\Provider::login``
 はエンドユーザと識別プロバイダの間のセッションを確立し、
 ログインしたユーザの情報を保存します。
 それ以降、同一ユーザからのリクエストでは (別の OpenID
@@ -110,7 +110,7 @@ Zend_OpenId_Provider
    :linenos:
 
    <?php
-   $server = new Zend_OpenId_Provider();
+   $server = new ZendOpenId\Provider();
 
    if ($_SERVER['REQUEST_METHOD'] == 'POST' &&
        isset($_POST['openid_action']) &&
@@ -119,7 +119,7 @@ Zend_OpenId_Provider
        isset($_POST['openid_password'])) {
        $server->login($_POST['openid_identifier'],
                       $_POST['openid_password']);
-       Zend_OpenId::redirect("example-8.php", $_GET);
+       ZendOpenId\OpenId::redirect("example-8.php", $_GET);
    }
    ?>
    <html>
@@ -175,7 +175,7 @@ Zend_OpenId_Provider
    :linenos:
 
    <?php
-   $server = new Zend_OpenId_Provider();
+   $server = new ZendOpenId\Provider();
 
    if ($_SERVER['REQUEST_METHOD'] == 'POST' &&
        isset($_POST['openid_action']) &&
@@ -190,7 +190,7 @@ Zend_OpenId_Provider
            if (isset($_POST['forever'])) {
                $server->denySite($server->getSiteRoot($_GET));
            }
-           Zend_OpenId::redirect($_GET['openid_return_to'],
+           ZendOpenId\OpenId::redirect($_GET['openid_return_to'],
                                  array('openid.mode'=>'cancel'));
        }
    }
@@ -228,7 +228,7 @@ Zend_OpenId_Provider
 ----------
 
 プロバイダのすべての関数をひとつのスクリプトにまとめることもできます。
-この場合はログイン *URL* と信頼済み *URL* は省略され、 ``Zend_OpenId_Provider``
+この場合はログイン *URL* と信頼済み *URL* は省略され、 ``ZendOpenId\Provider``
 は同一ページに GET 引数 "openid.action" を追加した場所を指すことになります。
 
 .. note::
@@ -245,9 +245,9 @@ Zend_OpenId_Provider
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_OpenId_Provider();
+   $server = new ZendOpenId\Provider();
 
-   define("TEST_ID", Zend_OpenId::absoluteURL("example-9-id.php"));
+   define("TEST_ID", ZendOpenId\OpenId::absoluteURL("example-9-id.php"));
    define("TEST_PASSWORD", "123");
 
    if ($_SERVER['REQUEST_METHOD'] == 'GET' &&
@@ -255,7 +255,7 @@ Zend_OpenId_Provider
        $_GET['openid_action'] === 'login') {
        $server->login(TEST_ID, TEST_PASSWORD);
        unset($_GET['openid_action']);
-       Zend_OpenId::redirect(Zend_OpenId::selfUrl(), $_GET);
+       ZendOpenId\OpenId::redirect(ZendOpenId\OpenId::selfUrl(), $_GET);
    } else if ($_SERVER['REQUEST_METHOD'] == 'GET' &&
        isset($_GET['openid_action']) &&
        $_GET['openid_action'] === 'trust') {
@@ -296,19 +296,19 @@ Simple Registration Extension
    :linenos:
 
    <?php
-   define("TEST_SERVER", Zend_OpenId::absoluteURL("example-10.php"));
-   define("TEST_ID", Zend_OpenId::selfURL());
+   define("TEST_SERVER", ZendOpenId\OpenId::absoluteURL("example-10.php"));
+   define("TEST_ID", ZendOpenId\OpenId::selfURL());
    define("TEST_PASSWORD", "123");
-   $server = new Zend_OpenId_Provider();
+   $server = new ZendOpenId\Provider();
    if (!$server->hasUser(TEST_ID)) {
        $server->register(TEST_ID, TEST_PASSWORD);
        $server->login(TEST_ID, TEST_PASSWORD);
-       $sreg = new Zend_OpenId_Extension_Sreg(array(
+       $sreg = new ZendOpenId_Extension\Sreg(array(
            'nickname' =>'test',
            'email' => 'test@test.com'
        ));
-       $root = Zend_OpenId::absoluteURL(".");
-       Zend_OpenId::normalizeUrl($root);
+       $root = ZendOpenId\OpenId::absoluteURL(".");
+       ZendOpenId\OpenId::normalizeUrl($root);
        $server->allowSite($root, $sreg);
        $server->logout();
    }
@@ -330,12 +330,12 @@ Simple Registration Extension
 自動ログインの仕組みは同様に使用していますが、
 信頼済みページに関する情報は含んでいません。
 ユーザは既に、このサンプルのスクリプトを "永久に" 信頼しています。
-これを行っているのは、識別子スクリプトの ``Zend_OpenId_Provider::alowSite``
+これを行っているのは、識別子スクリプトの ``ZendOpenId\Provider::alowSite``
 メソッドです。 同じメソッドでプロファイルと信頼済み *URL* を関連付け、 信頼済み
 *URL* からリクエストがあった場合にこのプロファイルが自動的に返されます。
 
-Simple Registration Extension を動作させるために唯一必要なのは、 ``Zend_OpenId_Extension_Sreg``
-のオブジェクトを ``Zend_OpenId_Provider::handle`` の 2 番目の引数として渡すことです。
+Simple Registration Extension を動作させるために唯一必要なのは、 ``ZendOpenId_Extension\Sreg``
+のオブジェクトを ``ZendOpenId\Provider::handle`` の 2 番目の引数として渡すことです。
 
 .. _zend.openid.provider.example-7:
 
@@ -344,10 +344,10 @@ Simple Registration Extension を動作させるために唯一必要なのは�
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_OpenId_Provider();
-   $sreg = new Zend_OpenId_Extension_Sreg();
+   $server = new ZendOpenId\Provider();
+   $sreg = new ZendOpenId_Extension\Sreg();
 
-   define("TEST_ID", Zend_OpenId::absoluteURL("example-10-id.php"));
+   define("TEST_ID", ZendOpenId\OpenId::absoluteURL("example-10-id.php"));
    define("TEST_PASSWORD", "123");
 
    if ($_SERVER['REQUEST_METHOD'] == 'GET' &&
@@ -355,7 +355,7 @@ Simple Registration Extension を動作させるために唯一必要なのは�
        $_GET['openid_action'] === 'login') {
        $server->login(TEST_ID, TEST_PASSWORD);
        unset($_GET['openid_action']);
-       Zend_OpenId::redirect(Zend_OpenId::selfUrl(), $_GET);
+       ZendOpenId\OpenId::redirect(ZendOpenId\OpenId::selfUrl(), $_GET);
    } else if ($_SERVER['REQUEST_METHOD'] == 'GET' &&
        isset($_GET['openid_action']) &&
        $_GET['openid_action'] === 'trust') {
@@ -377,7 +377,7 @@ Simple Registration Extension を動作させるために唯一必要なのは�
 
 OpenID サーバの作成は、 OpenID
 対応のサイトの作成ほど頻繁に行うものではありません。 そこで、
-``Zend_OpenId_Consumer`` のマニュアルとは異なり ``Zend_OpenId_Provider``
+``ZendOpenId\Consumer`` のマニュアルとは異なり ``ZendOpenId\Provider``
 のマニュアルではすべての機能を網羅することをやめます。
 
 残っている機能について簡単にまとめると、次のようになります。
@@ -387,16 +387,16 @@ OpenID サーバの作成は、 OpenID
 
 - ユーザやサイト、プロファイルといった情報を格納するための抽象化された保存レイヤ。
   ここには、プロバイダと OpenID 対応サイトとの関連付け情報も保存します。
-  このレイヤは ``Zend_OpenId_Consumer`` のものと非常によく似ています。
+  このレイヤは ``ZendOpenId\Consumer`` のものと非常によく似ています。
   デフォルトではファイルストレージを使用しますが、
   別の実装で置き換えることも可能です。
 
 - エンドユーザのウェブブラウザとログイン識別子を関連付けるための、
   ユーザ関連付けの抽象化レイヤ。
 
-``Zend_OpenId_Provider`` は、 OpenID
+``ZendOpenId\Provider`` は、 OpenID
 サーバが実装できる全機能をサポートしているわけではありません
-(たとえばデジタル証明書など)。しかし、 ``Zend_OpenId_Extension``
+(たとえばデジタル証明書など)。しかし、 ``ZendOpenId\Extension``
 を使用したり子クラスを作成したりして、 簡単に拡張することが可能です。
 
 

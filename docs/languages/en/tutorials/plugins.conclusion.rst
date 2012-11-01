@@ -8,9 +8,9 @@ many components within the framework. Plugins are used in a variety of places:
 
 - ``Zend_Application``: resources.
 
-- ``Zend_Controller_Action``: action helpers.
+- ``Zend\Controller\Action``: action helpers.
 
-- ``Zend_Feed_Reader``: plugins.
+- ``Zend\Feed\Reader``: plugins.
 
 - ``Zend_Form``: elements, filters, validators, and decorators.
 
@@ -23,7 +23,7 @@ Zend Framework.
 
    **Caveat**
 
-   We'll note here that ``Zend_Controller_Front`` has a plugin system - but it does not adhere to any of the
+   We'll note here that ``Zend\Controller\Front`` has a plugin system - but it does not adhere to any of the
    guidelines offerred in this tutorial. The plugins registered with the front controller must be instantiated
    directly and registered individually with it. The reason for this is that this system predates any other plugin
    system in the framework, and changes to it must be carefully weighed to ensure existing plugins written by

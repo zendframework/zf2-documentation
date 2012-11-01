@@ -3,7 +3,7 @@
 Additional Headers
 ==================
 
-``Zend_Mail`` provides several methods to set additional Mail Headers:
+``Zend\Mail\Message`` provides several methods to set additional Mail Headers:
 
 
 
@@ -37,7 +37,7 @@ have only one or multiple values:
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Message();
    $mail->addHeader('X-MailGenerator', 'MyCoolApplication');
    $mail->addHeader('X-greetingsTo', 'Mom', true); // multiple values
    $mail->addHeader('X-greetingsTo', 'Dad', true);

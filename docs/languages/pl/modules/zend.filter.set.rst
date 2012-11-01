@@ -73,8 +73,8 @@ Rozwiązauje wszystkie dowiązania symboliczne oraz odniesienia do elementów '/
 ścieżce i zwraca absolutną nazwę ścieżki. Zwrócona ścieżka nie będzie posiadała dowiązań
 symbolicznych, a także elementów '/./' czy '/../'.
 
-*Zend_Filter_RealPath* zwróci wartość logiczną *FALSE* gdy się to nie uda, np. jeśli plik nie istnieje. W
-systemach BSD filtr *Zend_Filter_RealPath* nie zwróci wartośći *FALSE* jeśli tylko ostatnia część ścieżki
+*Zend\Filter\RealPath* zwróci wartość logiczną *FALSE* gdy się to nie uda, np. jeśli plik nie istnieje. W
+systemach BSD filtr *Zend\Filter\RealPath* nie zwróci wartośći *FALSE* jeśli tylko ostatnia część ścieżki
 nie istnieje, a w pozostałych systemach zwróci wartość *FALSE*.
 
 .. _zend.filter.set.stringtolower:

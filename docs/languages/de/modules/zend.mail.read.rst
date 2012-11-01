@@ -39,7 +39,7 @@ Einfaches Beispiel für POP3
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail_Storage_Pop3(array('host'     => 'localhost',
+   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'localhost',
                                             'user'     => 'test',
                                             'password' => 'test'));
 
@@ -56,12 +56,12 @@ Einfaches Beispiel für POP3
 Mbox und Maildir sind zwei unterstützte Formate für lokale Mailspeicher, beide in Ihrem einfachsten Format.
 
 Wenn von einer Mbox Datei gelesen werden soll muß nur der Dateiname an den Konstruktor von
-``Zend_Mail_Storage_Mbox`` übergeben werden:
+``Zend\Mail_Storage\Mbox`` übergeben werden:
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail_Storage_Mbox(array('filename' =>
+   $mail = new Zend\Mail_Storage\Mbox(array('filename' =>
                                                 '/home/test/mail/inbox'));
 
 Maildir ist sehr einfach benötigt aber einen Verzeichnisnamen:
@@ -69,10 +69,10 @@ Maildir ist sehr einfach benötigt aber einen Verzeichnisnamen:
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail_Storage_Maildir(array('dirname' =>
+   $mail = new Zend\Mail_Storage\Maildir(array('dirname' =>
                                                    '/home/test/mail/'));
 
-Beide Konstruktoren werfen eine ``Zend_Mail_Exception`` Ausnahme wenn der Speicher nicht gelesen werden kann.
+Beide Konstruktoren werfen eine ``Zend\Mail\Exception`` Ausnahme wenn der Speicher nicht gelesen werden kann.
 
 .. _zend.mail.read-open-remote:
 
@@ -87,17 +87,17 @@ String, der Standardport wie im *RFC* Protokoll definiert.
    :linenos:
 
    // Verbinden mit Pop3
-   $mail = new Zend_Mail_Storage_Pop3(array('host'     => 'example.com',
+   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'example.com',
                                             'user'     => 'test',
                                             'password' => 'test'));
 
    // Verbinden mit Imap
-   $mail = new Zend_Mail_Storage_Imap(array('host'     => 'example.com',
+   $mail = new Zend\Mail_Storage\Imap(array('host'     => 'example.com',
                                             'user'     => 'test',
                                             'password' => 'test'));
 
    // Beispiel für einen nicht Standardport
-   $mail = new Zend_Mail_Storage_Pop3(array('host'     => 'example.com',
+   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'example.com',
                                             'port'     => 1120
                                             'user'     => 'test',
                                             'password' => 'test'));
@@ -108,24 +108,24 @@ geändert.
 .. code-block:: php
    :linenos:
 
-   // Beispiel für Zend_Mail_Storage_Pop3
-   // funktioniert auch für Zend_Mail_Storage_Imap
+   // Beispiel für Zend\Mail_Storage\Pop3
+   // funktioniert auch für Zend\Mail_Storage\Imap
 
    // SSL mit einem unterschiedlichen Port verwenden
    // (Standard ist 995 für Pop3 und 993 für Imap)
-   $mail = new Zend_Mail_Storage_Pop3(array('host'     => 'example.com',
+   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'example.com',
                                             'user'     => 'test',
                                             'password' => 'test',
                                             'ssl'      => 'SSL'));
 
    // Verwenden von TLS
-   $mail = new Zend_Mail_Storage_Pop3(array('host'     => 'example.com',
+   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'example.com',
                                             'user'     => 'test',
                                             'password' => 'test',
                                             'ssl'      => 'TLS'));
 
-Beide Konstruktoren können eine ``Zend_Mail_Exception`` oder ``Zend_Mail_Protocol_Exception`` werfen (erweitert
-``Zend_Mail_Exception``), abhängig vom Typ des Fehlers.
+Beide Konstruktoren können eine ``Zend\Mail\Exception`` oder ``Zend\Mail_Protocol\Exception`` werfen (erweitert
+``Zend\Mail\Exception``), abhängig vom Typ des Fehlers.
 
 .. _zend.mail.read-fetching:
 
@@ -266,8 +266,8 @@ Anders als die Kopfzeilen wird der Inhalt nur geholt wenn dies benötigt wird (w
    echo '</pre>';
 
 Die Prüfung auf mehrteilige Nachrichten wird in der Methode ``isMultipart()`` gemacht. Wenn eine mehrteilige
-Nachricht vorliegt kann eine Instanz von ``Zend_Mail_Part`` mit der Methode ``getPart()`` geholt werden.
-``Zend_Mail_Part`` ist die Basisklasse von ``Zend_Mail_Message``, sie hat also die gleichen Methoden:
+Nachricht vorliegt kann eine Instanz von ``Zend\Mail\Part`` mit der Methode ``getPart()`` geholt werden.
+``Zend\Mail\Part`` ist die Basisklasse von ``Zend\Mail\Message``, sie hat also die gleichen Methoden:
 ``getHeader()``, ``getHeaders()``, ``getContent()``, ``getPart()``, ``isMultipart()`` und die Eigenschaften der
 Kopfzeilen.
 
@@ -283,7 +283,7 @@ Kopfzeilen.
    echo "Inhalt:\n";
    echo $part->getContent();
 
-``Zend_Mail_Part`` implementiert auch den ``RecursiveIterator``, welcher es sehr einfach macht alle Teile zu
+``Zend\Mail\Part`` implementiert auch den ``RecursiveIterator``, welcher es sehr einfach macht alle Teile zu
 durchsuchen. Und für die einfache Ausgabe wurde auch die magische Methode ``__toString()`` implementiert, welche
 den Inhalt zurückgibt.
 
@@ -298,7 +298,7 @@ den Inhalt zurückgibt.
                $foundPart = $part;
                break;
            }
-       } catch (Zend_Mail_Exception $e) {
+       } catch (Zend\Mail\Exception $e) {
            // ignorieren
        }
    }
@@ -313,9 +313,9 @@ den Inhalt zurückgibt.
 Auf Flags prüfen
 ----------------
 
-Maildir und IMAP unterstützen das Speichern von Flags. Die Klasse ``Zend_Mail_Storage`` hat Konstanten für alle
-bekannten maildir und IMAP System Flags, welche ``Zend_Mail_Storage::FLAG_<flagname>`` heißen. Um auf Flags zu
-Prüfen hat ``Zend_Mail_Message`` eine Methode die ``hasFlag()`` heißt. Mit ``getFlags()`` erhält man alle
+Maildir und IMAP unterstützen das Speichern von Flags. Die Klasse ``Zend\Mail\Storage`` hat Konstanten für alle
+bekannten maildir und IMAP System Flags, welche ``Zend\Mail\Storage::FLAG_<flagname>`` heißen. Um auf Flags zu
+Prüfen hat ``Zend\Mail\Message`` eine Methode die ``hasFlag()`` heißt. Mit ``getFlags()`` erhält man alle
 gesetzten Flags.
 
 .. code-block:: php
@@ -324,11 +324,11 @@ gesetzten Flags.
    // Finde ungelesene Nachrichten
    echo "Ungelesene Nachrichten:\n";
    foreach ($mail as $message) {
-       if ($message->hasFlag(Zend_Mail_Storage::FLAG_SEEN)) {
+       if ($message->hasFlag(Zend\Mail\Storage::FLAG_SEEN)) {
            continue;
        }
        // Vorherige/Neue Nachrichten markieren
-       if ($message->hasFlag(Zend_Mail_Storage::FLAG_RECENT)) {
+       if ($message->hasFlag(Zend\Mail\Storage::FLAG_RECENT)) {
            echo '! ';
        } else {
            echo '  ';
@@ -341,10 +341,10 @@ gesetzten Flags.
    echo "Nachricht wurde markiert als: ";
    foreach ($flags as $flag) {
        switch ($flag) {
-           case Zend_Mail_Storage::FLAG_ANSWERED:
+           case Zend\Mail\Storage::FLAG_ANSWERED:
                echo 'Beantwortet ';
                break;
-           case Zend_Mail_Storage::FLAG_FLAGGED:
+           case Zend\Mail\Storage::FLAG_FLAGGED:
                echo 'Markiert ';
                break;
 
@@ -358,7 +358,7 @@ gesetzten Flags.
    }
 
 Da IMAP Benutzern oder auch Clients selbstdefinierte Flags erlaubt, können auch Flags empfangen werden die keine
-Konstante in ``Zend_Mail_Storage`` haben. Stattdessen werden sie als String zurückgegeben und können auf dem
+Konstante in ``Zend\Mail\Storage`` haben. Stattdessen werden sie als String zurückgegeben und können auf dem
 selben Weg mit ``hasFlag()`` geprüft werden.
 
 .. code-block:: php
@@ -379,49 +379,49 @@ Verwenden von Ordnern
 ---------------------
 
 Alle Speicher, ausser Pop3, unterstützen Ordner, welche Mailboxen genannt werden. Das Interface das von allen
-Speichern implementiert wurde und Ordner unterstützt heißt ``Zend_Mail_Storage_Folder_Interface``. Alle diese
+Speichern implementiert wurde und Ordner unterstützt heißt ``Zend\Mail\Storage\Folder\Interface``. Alle diese
 Klassen besitzen auch einen zusätzlichen optionalen Parameter welcher ``folder`` heißt, was der ausgewählt
 Ordner nach dem Login, im Konstruktor ist.
 
-Für den lokalen Speicher müssen die eigenen Klassen ``Zend_Mail_Storage_Folder_Mbox`` oder
-``Zend_Mail_Storage_Folder_Maildir`` genannt verwendet werden. Beide benötigen einen Parameter der ``dirname``
+Für den lokalen Speicher müssen die eigenen Klassen ``Zend\Mail\Storage\Folder\Mbox`` oder
+``Zend\Mail\Storage\Folder\Maildir`` genannt verwendet werden. Beide benötigen einen Parameter der ``dirname``
 heißt mit dem Namen des Basisverzeichnisses. Das Format für Maildir ist wie in Maildir++ definiert (mit einem
 Punkt als Standardbegrenzer), Mbox ist eine Verzeichnisstruktur mit Mbox Dateien. Wenn im Mbox Basisverzeichnis
 keine Mbox Datei vorhanden ist die INBOX heißt, muß ein anderer Ordner im Konstruktor gesetzt werden.
 
-``Zend_Mail_Storage_Imap`` unterstützt Ordner schon standardmäßig. Beispiele für das Öffnen solcher Speicher:
+``Zend\Mail_Storage\Imap`` unterstützt Ordner schon standardmäßig. Beispiele für das Öffnen solcher Speicher:
 
 .. code-block:: php
    :linenos:
 
    // MBox mit Ordnern
-   $mail = new Zend_Mail_Storage_Folder_Mbox(array('dirname' =>
+   $mail = new Zend\Mail\Storage\Folder\Mbox(array('dirname' =>
                                                        '/home/test/mail/'));
 
    // MBox mit standard Ordner der nicht INBOX heißt, funktioniert auch
-   // mit Zend_Mail_Storage_Folder_Maildir und Zend_Mail_Storage_Imap
-   $mail = new Zend_Mail_Storage_Folder_Mbox(array('dirname' =>
+   // mit Zend\Mail\Storage\Folder\Maildir und Zend\Mail_Storage\Imap
+   $mail = new Zend\Mail\Storage\Folder\Mbox(array('dirname' =>
                                                        '/home/test/mail/',
                                                    'folder'  =>
                                                        'Archive'));
 
    // Maildir mit Ordnern
-   $mail = new Zend_Mail_Storage_Folder_Maildir(array('dirname' =>
+   $mail = new Zend\Mail\Storage\Folder\Maildir(array('dirname' =>
                                                           '/home/test/mail/'));
 
    // Maildir mir Doppelpunkt als Begrenzung, wie in Maildir++ empfohlen
-   $mail = new Zend_Mail_Storage_Folder_Maildir(array('dirname' =>
+   $mail = new Zend\Mail\Storage\Folder\Maildir(array('dirname' =>
                                                           '/home/test/mail/',
                                                       'delim'   => ':'));
 
    // IMAP ist genauso mit und ohne Ordner
-   $mail = new Zend_Mail_Storage_Imap(array('host'     => 'example.com',
+   $mail = new Zend\Mail_Storage\Imap(array('host'     => 'example.com',
                                             'user'     => 'test',
                                             'password' => 'test'));
 
 Mit der Methode getFolders($root = null) kann die Verzeichnisstruktur beginnend mit dem Basisverzeichnis oder einem
-angegebenen Ordner ausgegeben werden. Sie wird als Instanz von ``Zend_Mail_Storage_Folder`` zurückgegeben, welche
-``RecursiveIterator`` implementiert und alle Kinder sind genauso Instanzen von ``Zend_Mail_Storage_Folder``. Jede
+angegebenen Ordner ausgegeben werden. Sie wird als Instanz von ``Zend\Mail_Storage\Folder`` zurückgegeben, welche
+``RecursiveIterator`` implementiert und alle Kinder sind genauso Instanzen von ``Zend\Mail_Storage\Folder``. Jede
 dieser Instanzen hat einen lokalen und einen globalen Namen der durch die Methoden ``getLocalName()`` und
 ``getGlobalName()`` zurückgegeben wird. Der globale Name ist der absolute Name des Basisordners (inklusive
 Begrenzer), der lokale Name ist der Name im Elternordner.
@@ -467,7 +467,7 @@ Ansicht auszugeben:
 Der aktuell ausgewählte Ordner wird durch die Methode ``getSelectedFolder()`` zurückgegeben. Das Ändern von
 Ordnern wird mit der Methode ``selectFolder()`` durchgeführt, welche den globalen Namen als Parameter benötigt.
 Wenn das Schreiben von Begrenzern vermieden werden soll, können auch die Eigenschaften einer
-``Zend_Mail_Storage_Folder`` Instanz verwendet werden:
+``Zend\Mail_Storage\Folder`` Instanz verwendet werden:
 
 .. code-block:: php
    :linenos:
@@ -516,8 +516,8 @@ Verbindung über noop am Leben zu halten:
 Instanzen cachen
 ^^^^^^^^^^^^^^^^
 
-``Zend_Mail_Storage_Mbox``, ``Zend_Mail_Storage_Folder_Mbox``, ``Zend_Mail_Storage_Maildir`` und
-``Zend_Mail_Storage_Folder_Maildir`` implementieren die magischen Methoden ``__sleep()`` und ``__wakeup()`` was
+``Zend\Mail_Storage\Mbox``, ``Zend\Mail\Storage\Folder\Mbox``, ``Zend\Mail_Storage\Maildir`` und
+``Zend\Mail\Storage\Folder\Maildir`` implementieren die magischen Methoden ``__sleep()`` und ``__wakeup()`` was
 bedeutet das Sie serialisierbar sind. Das vermeidet das Parsen von Dateien oder Verzeichnisbäumen mehr als einmal.
 Der Nachteil ist das der Mbox oder Maildir Speicher sich nicht Ändern sollte. Einige einfache Prüfungen werden
 durchgeführt, wie das neuparsen der aktuellen Mbox Datei wenn sich der Bearbeitungszeitpunkt ändert oder das
@@ -537,7 +537,7 @@ haben, und diese zu Prüfen bevor eine gecachete Instanz verwendet wird.
    $cache = new Your_Cache_Class();
    if (!$cache->isCached($cache_id) ||
        filemtime($signal_file) > $cache->getMTime($cache_id)) {
-       $mail = new Zend_Mail_Storage_Folder_Pop3(array('dirname' =>
+       $mail = new Zend\Mail\Storage\Folder\Pop3(array('dirname' =>
                                                            $mbox_basedir));
    } else {
        $mail = $cache->get($cache_id);
@@ -552,7 +552,7 @@ haben, und diese zu Prüfen bevor eine gecachete Instanz verwendet wird.
 Prokoll Klassen erweitern
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Entfernte Speicher verwenden zwei Klassen: ``Zend_Mail_Storage_<Name>`` und ``Zend_Mail_Protocol_<Name>``. Die
+Entfernte Speicher verwenden zwei Klassen: ``Zend\Mail_Storage\<Name>`` und ``Zend\Mail_Protocol\<Name>``. Die
 Protkoll Klasse übersetzt die Protokollbefehle und antwortet von und zu *PHP*, wie Methoden für die Befehle oder
 Variablen mit verschiedenen Strukturen für Daten. Die andere/Haupt Klasse implementiert das Standard Interface.
 
@@ -563,15 +563,15 @@ bevor auf POP3 verbunden werden kann.
 .. code-block:: php
    :linenos:
 
-   class Example_Mail_Exception extends Zend_Mail_Exception
+   class Example_Mail_Exception extends Zend\Mail\Exception
    {
    }
 
-   class Example_Mail_Protocol_Exception extends Zend_Mail_Protocol_Exception
+   class Example_Mail_Protocol_Exception extends Zend\Mail_Protocol\Exception
    {
    }
 
-   class Example_Mail_Protocol_Pop3_Knock extends Zend_Mail_Protocol_Pop3
+   class Example_Mail_Protocol_Pop3_Knock extends Zend\Mail_Protocol\Pop3
    {
        private $host, $port;
 
@@ -602,7 +602,7 @@ bevor auf POP3 verbunden werden kann.
        }
    }
 
-   class Example_Mail_Pop3_Knock extends Zend_Mail_Storage_Pop3
+   class Example_Mail_Pop3_Knock extends Zend\Mail_Storage\Pop3
    {
        public function __construct(array $params)
        {
@@ -639,7 +639,7 @@ wenn der Server das im aktuellen Status nicht zulässt.
 Quote verwenden (seit 1.5)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_Mail_Storage_Writable_Maildir`` bietet Unterstützung für Maildir++ Quoten. Diese sind standardmäßig
+``Zend\Mail\Storage\Writable\Maildir`` bietet Unterstützung für Maildir++ Quoten. Diese sind standardmäßig
 ausgeschaltet, aber es ist möglich Sie manuell zu verwenden, wenn automatische Checks nicht gewünscht sind (das
 bedeutet ``appendMessage()``, ``removeMessage()`` und ``copyMessage()`` führen keine Checks durch und fügen
 keinen Eintrag zur maildirsize Datei hinzu). Wenn aktiviert, wird eine Ausnahme geworfen wenn versucht wird in
@@ -650,7 +650,7 @@ Es gibt drei Methoden die für Quoten verwendet werden: ``getQuota()``, ``setQuo
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail_Storage_Writable_Maildir(array('dirname' =>
+   $mail = new Zend\Mail\Storage\Writable\Maildir(array('dirname' =>
                                                       '/home/test/mail/'));
    $mail->setQuota(true); // true zum einschalten, false zum ausschalten
    echo 'Quotenprüfung ist jetzt ', $mail->getQuota() ? 'eingeschaltet'
@@ -686,18 +686,18 @@ kann das mit ``setQuota()`` getan werden:
 
 Wenn eigene Quotenchecks hinzugefügt werden sollen können einzelne Buchstaben als Schlüssel verwendet werden und
 Sie werden reserviert (aber logischerweise nicht geprüft). Es ist auch möglich
-``Zend_Mail_Storage_Writable_Maildir`` zu erweitern um eigene Quoten zu definieren wenn die maildirsize Datei fehlt
+``Zend\Mail\Storage\Writable\Maildir`` zu erweitern um eigene Quoten zu definieren wenn die maildirsize Datei fehlt
 (was in Maildir++ vorkommen kann):
 
 .. code-block:: php
    :linenos:
 
-   class Example_Mail_Storage_Maildir extends Zend_Mail_Storage_Writable_Maildir {
+   class Example_Mail_Storage_Maildir extends Zend\Mail\Storage\Writable\Maildir {
        // getQuota wird mit $fromStorage = true durch die Quotenprüfung aufgerufen
        public function getQuota($fromStorage = false) {
            try {
                return parent::getQuota($fromStorage);
-           } catch (Zend_Mail_Storage_Exception $e) {
+           } catch (Zend\Mail_Storage\Exception $e) {
                if (!$fromStorage) {
                    // unbekannter Fehler:
                    throw $e;

@@ -1,26 +1,26 @@
 .. EN-Revision: none
 .. _zend.soap.client:
 
-Zend_Soap_Client
+Zend\Soap\Client
 ================
 
-Die ``Zend_Soap_Client`` Klasse vereinfacht die Entwicklung von *SOAP* Clients für *PHP* Programmierern.
+Die ``Zend\Soap\Client`` Klasse vereinfacht die Entwicklung von *SOAP* Clients für *PHP* Programmierern.
 
 Sie kann im WSDL oder im nicht-WSDL Modus verwendet werden.
 
-Im WSDL Modus verwendet die ``Zend_Soap_Client`` Komponente ein bereits vorbereitetes WSDL Dokument um die Optionen
+Im WSDL Modus verwendet die ``Zend\Soap\Client`` Komponente ein bereits vorbereitetes WSDL Dokument um die Optionen
 des Transport Layers zu definieren.
 
 Die WSDL Beschreibung wird normalerweise vom Web Service bereitgestellt auf das der Client zugreift. Wenn die WSDL
-Beschreibung nicht verfügbar gemacht wurde, kann man ``Zend_Soap_Client`` im nicht-WSDL Modus verwenden. In diesem
-Modus müssen alle *SOAP* Protokolloptionen explizit an der ``Zend_Soap_Client`` Klasse gesetzt werden.
+Beschreibung nicht verfügbar gemacht wurde, kann man ``Zend\Soap\Client`` im nicht-WSDL Modus verwenden. In diesem
+Modus müssen alle *SOAP* Protokolloptionen explizit an der ``Zend\Soap\Client`` Klasse gesetzt werden.
 
 .. _zend.soap.client.constructor:
 
-Der Zend_Soap_Client Konstruktor
+Der Zend\Soap\Client Konstruktor
 --------------------------------
 
-Der ``Zend_Soap_Client`` Konstruktor nimmt zwei Parameter:
+Der ``Zend\Soap\Client`` Konstruktor nimmt zwei Parameter:
 
 
 
@@ -35,7 +35,7 @@ verwendet werden.
 
    **Wichtig!**
 
-   Wenn die ``Zend_Soap_Client`` Komponente im nicht-WSDL Modus verwendet wird, **müssen** die 'location' und
+   Wenn die ``Zend\Soap\Client`` Komponente im nicht-WSDL Modus verwendet wird, **müssen** die 'location' und
    'uri' Optionen gesetzt werden.
 
 Die folgenden Optionen werden erkannt:
@@ -52,7 +52,7 @@ Die folgenden Optionen werden erkannt:
 
    - 'wsdl' welcher dem Aufruf von ``setWsdl($wsdlValue)`` entspricht.
 
-     Das Ändern dieser Option kann das ``Zend_Soap_Client`` Objekt von oder zum WSDL Modus wechseln.
+     Das Ändern dieser Option kann das ``Zend\Soap\Client`` Objekt von oder zum WSDL Modus wechseln.
 
    - 'uri' - Der Ziel-Namespace für den *SOAP* Service (benötigt im nicht-WSDL Modus, funktioniert nicht im WSDL
      Modus).
@@ -78,17 +78,17 @@ Die folgenden Optionen werden erkannt:
         :linenos:
 
         // Komprimierung der Antworten akzeptieren
-        $client = new Zend_Soap_Client("some.wsdl",
+        $client = new Zend\Soap\Client("some.wsdl",
           array('compression' => SOAP_COMPRESSION_ACCEPT));
         ...
 
         // Anfragen komprimieren durch Verwendung von gzip mit Komprimierungs-Level 5
-        $client = new Zend_Soap_Client("some.wsdl",
+        $client = new Zend\Soap\Client("some.wsdl",
           array('compression' => SOAP_COMPRESSION_ACCEPT | SOAP_COMPRESSION_GZIP | 5));
         ...
 
         // Anfragen komprimieren durch Verwendung der Deflate Komprimierung
-        $client = new Zend_Soap_Client("some.wsdl",
+        $client = new Zend\Soap\Client("some.wsdl",
           array('compression' => SOAP_COMPRESSION_ACCEPT | SOAP_COMPRESSION_DEFLATE));
 
 
@@ -98,9 +98,9 @@ Die folgenden Optionen werden erkannt:
 SOAP Anfragen durchführen
 -------------------------
 
-Nachdem ein ``Zend_Soap_Client`` Objekt erstellt wurde sind wir bereit um *SOAP* Anfragen durchzuführen.
+Nachdem ein ``Zend\Soap\Client`` Objekt erstellt wurde sind wir bereit um *SOAP* Anfragen durchzuführen.
 
-Jede Methode des Web Services wird auf eine virtuelle ``Zend_Soap_Client`` Objekt-Methode gemappt welche Parameter
+Jede Methode des Web Services wird auf eine virtuelle ``Zend\Soap\Client`` Objekt-Methode gemappt welche Parameter
 mit üblichen *PHP* Typen entgegen nimmt.
 
 Es ist wie im folgenden Beispiel zu verwenden:
@@ -136,7 +136,7 @@ Es ist wie im folgenden Beispiel zu verwenden:
    //     ...
    // }
    // ...
-   // $server = new Zend_Soap_Server(null, $options);
+   // $server = new Zend\Soap\Server(null, $options);
    // $server->setClass('MyClass');
    // ...
    // $server->handle();
@@ -145,7 +145,7 @@ Es ist wie im folgenden Beispiel zu verwenden:
    //                Ende des Server Codes
    //****************************************************************
 
-   $client = new Zend_Soap_Client("MyService.wsdl");
+   $client = new Zend\Soap\Client("MyService.wsdl");
    ...
 
    // $result1 ist ein String

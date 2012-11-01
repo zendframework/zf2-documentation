@@ -1,16 +1,16 @@
 .. EN-Revision: none
 .. _zend.filter.inflector:
 
-Zend_Filter_Inflector
+Zend\Filter\Inflector
 =====================
 
-*Zend_Filter_Inflector* 是一个为基于规则的把字符串变形到给定目标的一般意义上的工具。
+*Zend\Filter\Inflector* 是一个为基于规则的把字符串变形到给定目标的一般意义上的工具。
 
 例如，你可能发现你需要把混合大小写字（MixedCase）或驼峰字符（ camelCasedWords）
 变成路径，对于可读性，OS 策略或其它原因，
 你也需要把它变成小写，并且你想用短横线（'-'）来隔离单词。变形器（inflector）可以帮你做这些。
 
-*Zend_Filter_Inflector* 实现 *Zend_Filter_Interface*\ ， 你可以通过在对象实例中调用 *filter()*
+*Zend\Filter\Inflector* 实现 *Zend\Filter\Interface*\ ， 你可以通过在对象实例中调用 *filter()*
 来执行变形。
 
 .. _zend.filter.inflector.camel_case_example:
@@ -21,7 +21,7 @@ Zend_Filter_Inflector
    :linenos:
 
    <?php
-   $inflector = new Zend_Filter_Inflector('pages/:page.:suffix');
+   $inflector = new Zend\Filter\Inflector('pages/:page.:suffix');
    $inflector->setRules(array(
        ':page'  => array('Word_CamelCaseToDash', 'StringToLower'),
        'suffix' => 'html'
@@ -49,15 +49,15 @@ Zend_Filter_Inflector
 静态规则将用提供的文本替换，否则，和提供的规则匹配的类将用于变形这个文本。
 类一般使用指示从任何普通前缀剥离的滤器名的短名来指定。
 
-例如，你可以使用 *Zend_Filter* 的任何具体实现，然而，不用引用它们为 'Zend_Filter_Alpha'
-或 'Zend_Filter_StringToLower'， 而是只指定 'Alpha' 或 'StringToLower'。
+例如，你可以使用 *Zend_Filter* 的任何具体实现，然而，不用引用它们为 'Zend\Filter\Alpha'
+或 'Zend\Filter\StringToLower'， 而是只指定 'Alpha' 或 'StringToLower'。
 
 .. _zend.filter.inflector.paths:
 
 设置到预备的过滤器的路径
 ------------
 
-*Zend_Filter_Inflector* 使用 *Zend_Loader_PluginLoader* 来管理加载和变形一起使用的过滤器。
+*Zend\Filter\Inflector* 使用 *Zend\Loader\PluginLoader* 来管理加载和变形一起使用的过滤器。
 缺省地，任何带有 *Zend_Filter* 前缀的过滤器都可用。
 为了访问带有那个前缀的过滤器，但发生在较深的等级结构里，如各种字过滤器，只需要剥离
 Zend_Filter 前缀：
@@ -66,10 +66,10 @@ Zend_Filter 前缀：
    :linenos:
 
    <?php
-   // use Zend_Filter_Word_CamelCaseToDash as a rule
+   // use Zend\Filter_Word\CamelCaseToDash as a rule
    $inflector->addRules(array('script' => 'Word_CamelCaseToDash'));
    ?>
-要设置备用的路径， *Zend_Filter_Inflector* 有个实用方法 *addFilterPrefixPath()*
+要设置备用的路径， *Zend\Filter\Inflector* 有个实用方法 *addFilterPrefixPath()*
 来代理插件加载器：
 
 .. code-block:: php
@@ -106,7 +106,7 @@ Zend_Filter 前缀：
 
    <?php
    // Via constructor:
-   $inflector = new Zend_Filter_Inflector('#foo/#bar.#sfx', null, '#');
+   $inflector = new Zend\Filter\Inflector('#foo/#bar.#sfx', null, '#');
 
    // Via accessor:
    $inflector->setTargetReplacementIdentifier('#');
@@ -141,7 +141,7 @@ Zend_Filter 前缀：
         */
        public function __construct()
        {
-           $this->_inflector = new Zend_Filter_Inflector();
+           $this->_inflector = new Zend\Filter\Inflector();
            $this->_inflector->setTargetReference($this->_target);
        }
 
@@ -185,7 +185,7 @@ Zend_Filter 前缀：
    :linenos:
 
    <?php
-   $inflector = new Zend_Filter_Inflector(':script.:suffix');
+   $inflector = new Zend\Filter\Inflector(':script.:suffix');
    $inflector->setStaticRule('suffix', 'phtml');
 
    // change it later:
@@ -212,7 +212,7 @@ Zend_Filter 前缀：
         */
        public function __construct()
        {
-           $this->_inflector = new Zend_Filter_Inflector(':script.:suffix');
+           $this->_inflector = new Zend\Filter\Inflector(':script.:suffix');
            $this->_inflector->setStaticRuleReference('suffix', $this->_suffix);
        }
 
@@ -245,7 +245,7 @@ Zend_Filter 前缀：
 - **String**. 字符串可以是过滤器的类名，或者一个类名段去掉任何
   在变形器的插件加载器里的前缀（缺省地，去掉 'Zend_Filter' 前缀）。
 
-- **Filter object**. 任何实现 *Zend_Filter_Interface* 的对象实例可当作过滤器来传递。
+- **Filter object**. 任何实现 *Zend\Filter\Interface* 的对象实例可当作过滤器来传递。
 
 - **Array**. 如上所定义的一个或多个字符串或过滤器对象数组。
 
@@ -253,18 +253,18 @@ Zend_Filter 前缀：
    :linenos:
 
    <?php
-   $inflector = new Zend_Filter_Inflector(':script.:suffix');
+   $inflector = new Zend\Filter\Inflector(':script.:suffix');
 
-   // Set rule to use Zend_Filter_Word_CamelCaseToDash filter
+   // Set rule to use Zend\Filter_Word\CamelCaseToDash filter
    $inflector->setFilterRule('script', 'Word_CamelCaseToDash');
 
    // Add rule to lowercase string
-   $inflector->addFilterRule('script', new Zend_Filter_StringToLower());
+   $inflector->addFilterRule('script', new Zend\Filter\StringToLower());
 
    // Set rules en-masse
    $inflector->setFilterRule('script', array(
        'Word_CamelCaseToDash',
-       new Zend_Filter_StringToLower()
+       new Zend\Filter\StringToLower()
    ));
    ?>
 .. _zend.filter.inflector.rules.multiple:
@@ -273,7 +273,7 @@ Zend_Filter 前缀：
 ^^^^^^^^
 
 一般地，一次设置多个规则比每次配置一个单个的变量和它的变形器规则要容易。
-*Zend_Filter_Inflector* 的 *addRules()* 和 *setRules()* 方法允许这样做。
+*Zend\Filter\Inflector* 的 *addRules()* 和 *setRules()* 方法允许这样做。
 
 每个方法带有一个变量/规则对的数组，这里规则是接受的任何规则（字符串、过滤器对象或数组）。
 变量名接受一个特殊的符号来允许设置静态规则和过滤器规则，符号有：
@@ -305,10 +305,10 @@ Zend_Filter 前缀：
 实用方法
 ----
 
-*Zend_Filter_Inflector*
+*Zend\Filter\Inflector*
 有很多实用方法用来读取和设置插件加载器、处理和读取规则以及当有异常抛出时的控制。
 
-- 当你配置了自己的插件加载器并希望它和 *Zend_Filter_Inflector*\ 一起使用， 可以使用
+- 当你配置了自己的插件加载器并希望它和 *Zend\Filter\Inflector*\ 一起使用， 可以使用
   *setPluginLoader()*\ ； *getPluginLoader()* 读取当前设置的一个。
 
 - 当给定的替换识别器传递给它，并在目标中找不到， *setThrowTargetExceptionsOn()*
@@ -325,7 +325,7 @@ Zend_Filter 前缀：
 
 .. _zend.filter.inflector.config:
 
-对 Zend_Filter_Inflector 使用 Zend_Config
+对 Zend\Filter\Inflector 使用 Zend_Config
 --------------------------------------
 
 你可以通过传递 *Zend_Config* 对象给构造器或 *setConfig()*\ 来使用 *Zend_Config*
@@ -344,18 +344,18 @@ Zend_Filter 前缀：
 
 .. _zend.filter.inflector.config.example:
 
-.. rubric:: 使用 Zend_Config with Zend_Filter_Inflector
+.. rubric:: 使用 Zend_Config with Zend\Filter\Inflector
 
 .. code-block:: php
    :linenos:
 
    <?php
    // With the constructor:
-   $config    = new Zend_Config($options);
-   $inflector = new Zend_Filter_Inflector($config);
+   $config    = new Zend\Config\Config($options);
+   $inflector = new Zend\Filter\Inflector($config);
 
    // Or with setConfig():
-   $inflector = new Zend_Filter_Inflector();
+   $inflector = new Zend\Filter\Inflector();
    $inflector->setConfig($config);
    ?>
 

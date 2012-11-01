@@ -11,7 +11,7 @@ Zend_CodeGenerator リファレンス
 
 .. _zend.codegenerator.reference.abstracts.abstract:
 
-Zend_CodeGenerator_Abstract
+Zend\CodeGenerator\Abstract
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 すべての CodeGenerator クラスが継承する基底のクラスは、
@@ -20,7 +20,7 @@ Zend_CodeGenerator_Abstract
 .. code-block:: php
    :linenos:
 
-   abstract class Zend_CodeGenerator_Abstract
+   abstract class Zend\CodeGenerator\Abstract
    {
        final public function __construct(Array $options = array())
        public function setOptions(Array $options)
@@ -49,10 +49,10 @@ Zend Framework のほとんどのクラスのように、 ``setOptions()``
 
 .. _zend.codegenerator.reference.abstracts.php-abstract:
 
-Zend_CodeGenerator_Php_Abstract
+Zend\CodeGenerator_Php\Abstract
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Abstract`` は ``Zend_CodeGenerator_Abstract`` を拡張し、
+``Zend\CodeGenerator_Php\Abstract`` は ``Zend\CodeGenerator\Abstract`` を拡張し、
 生成されたコンテンツの前に現れなければならないインデントの量だけでなく、
 コンテンツが変わったかどうか追跡するための若干のプロパティも加えます。 その
 *API* は下記の通りです。:
@@ -60,8 +60,8 @@ Zend_CodeGenerator_Php_Abstract
 .. code-block:: php
    :linenos:
 
-   abstract class Zend_CodeGenerator_Php_Abstract
-       extends Zend_CodeGenerator_Abstract
+   abstract class Zend\CodeGenerator_Php\Abstract
+       extends Zend\CodeGenerator\Abstract
    {
        public function setSourceDirty($isSourceDirty = true)
        public function isSourceDirty()
@@ -71,10 +71,10 @@ Zend_CodeGenerator_Php_Abstract
 
 .. _zend.codegenerator.reference.abstracts.php-member-abstract:
 
-Zend_CodeGenerator_Php_Member_Abstract
+Zend\CodeGenerator\Php\Member\Abstract
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Member_Abstract`` は クラスのメンバー - プロパティとメソッド -
+``Zend\CodeGenerator\Php\Member\Abstract`` は クラスのメンバー - プロパティとメソッド -
 を生成するための基底クラスで、
 可視性を確立するためのアクセッサとミューテータを提供します;
 メンバーやメンバー名が abstract 、 static または final のいずれにせよ。 その *API*
@@ -83,8 +83,8 @@ Zend_CodeGenerator_Php_Member_Abstract
 .. code-block:: php
    :linenos:
 
-   abstract class Zend_CodeGenerator_Php_Member_Abstract
-       extends Zend_CodeGenerator_Php_Abstract
+   abstract class Zend\CodeGenerator\Php\Member\Abstract
+       extends Zend\CodeGenerator_Php\Abstract
    {
        public function setAbstract($isAbstract)
        public function isAbstract()
@@ -103,10 +103,10 @@ CodeGenerator クラスを確立
 
 .. _zend.codegenerator.reference.concrete.php-body:
 
-Zend_CodeGenerator_Php_Body
+Zend\CodeGenerator_Php\Body
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Body`` は、
+``Zend\CodeGenerator_Php\Body`` は、
 ファイルの中に含む任意の手続き的なコードを生成することを目的とします。
 そのように、単にコンテンツをオブジェクトに設定し、 ``generate()``
 を実施すると、それはそのコンテンツを返します。
@@ -116,7 +116,7 @@ Zend_CodeGenerator_Php_Body
 .. code-block:: php
    :linenos:
 
-   class Zend_CodeGenerator_Php_Body extends Zend_CodeGenerator_Php_Abstract
+   class Zend\CodeGenerator_Php\Body extends Zend\CodeGenerator_Php\Abstract
    {
        public function setContent($content)
        public function getContent()
@@ -125,10 +125,10 @@ Zend_CodeGenerator_Php_Body
 
 .. _zend.codegenerator.reference.concrete.php-class:
 
-Zend_CodeGenerator_Php_Class
+Zend\CodeGenerator_Php\Class
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Class`` は、 *PHP* クラスを生成することを目的とします。
+``Zend\CodeGenerator_Php\Class`` は、 *PHP* クラスを生成することを目的とします。
 基本的機能では *PHP* クラスそのものを生成し、 また、任意で関連した *PHP*
 DocBlockも生成します。
 クラスは他のクラスを実装するかもしれませんし、継承するかもしれません。
@@ -141,12 +141,12 @@ DocBlockも生成します。
 .. code-block:: php
    :linenos:
 
-   class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
+   class Zend\CodeGenerator_Php\Class extends Zend\CodeGenerator_Php\Abstract
    {
        public static function fromReflection(
-           Zend_Reflection_Class $reflectionClass
+           Zend\Reflection\Class $reflectionClass
        )
-       public function setDocblock(Zend_CodeGenerator_Php_Docblock $docblock)
+       public function setDocblock(Zend\CodeGenerator_Php\Docblock $docblock)
        public function getDocblock()
        public function setName($name)
        public function getName()
@@ -169,25 +169,25 @@ DocBlockも生成します。
        public function generate()
    }
 
-``setProperty()`` メソッドは、 ``Zend_CodeGenerator_Php_Property`` インスタンスを生成するために
-用いられるかもしれない情報の配列、 またはただ単に ``Zend_CodeGenerator_Php_Property``
-インスタンス、 を受け入れます。 同様に ``setMethod()`` は、 ``Zend_CodeGenerator_Php_Method``
+``setProperty()`` メソッドは、 ``Zend\CodeGenerator_Php\Property`` インスタンスを生成するために
+用いられるかもしれない情報の配列、 またはただ単に ``Zend\CodeGenerator_Php\Property``
+インスタンス、 を受け入れます。 同様に ``setMethod()`` は、 ``Zend\CodeGenerator_Php\Method``
 インスタンスを生成するための、
 情報の配列またはそのクラスの具体化したインスタンスを受け入れます。
 
-``setDocBlock()`` が ``Zend_CodeGenerator_Php_DocBlock`` の
+``setDocBlock()`` が ``Zend\CodeGenerator_Php\DocBlock`` の
 インスタンスを期待することも注意してください。
 
 .. _zend.codegenerator.reference.concrete.php-docblock:
 
-Zend_CodeGenerator_Php_Docblock
+Zend\CodeGenerator_Php\Docblock
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Docblock`` は、 すべての標準的な docblock 機能を含む任意の *PHP*
+``Zend\CodeGenerator_Php\Docblock`` は、 すべての標準的な docblock 機能を含む任意の *PHP*
 docblock を生成することで使用できます: 短い、または長い説明や注釈タグ。
 
 注釈タグは ``setTag()`` や ``setTags()`` メソッドを用いてセットされるかもしれません;
-これらは ``Zend_CodeGenerator_Php_Docblock_Tag``
+これらは ``Zend\CodeGenerator\Php\Docblock\Tag``
 コンストラクタに渡されるかもしれないタグを記述している配列、
 またはそのクラスのインスタンスどちらもそれぞれ\ take
 
@@ -196,10 +196,10 @@ docblock を生成することで使用できます: 短い、または長い説
 .. code-block:: php
    :linenos:
 
-   class Zend_CodeGenerator_Php_Docblock extends Zend_CodeGenerator_Php_Abstract
+   class Zend\CodeGenerator_Php\Docblock extends Zend\CodeGenerator_Php\Abstract
    {
        public static function fromReflection(
-           Zend_Reflection_Docblock $reflectionDocblock
+           Zend\Reflection\Docblock $reflectionDocblock
        )
        public function setShortDescription($shortDescription)
        public function getShortDescription()
@@ -213,10 +213,10 @@ docblock を生成することで使用できます: 短い、または長い説
 
 .. _zend.codegenerator.reference.concrete.php-docblock-tag:
 
-Zend_CodeGenerator_Php_Docblock_Tag
+Zend\CodeGenerator\Php\Docblock\Tag
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Docblock_Tag`` は、 *PHP* docblock
+``Zend\CodeGenerator\Php\Docblock\Tag`` は、 *PHP* docblock
 に含む任意の注釈タグを作成することを目的とします。
 タグは、名前（＠記号にすぐ続く部分）と説明（タグ名に続いているすべて）を含むことになっています。
 
@@ -225,11 +225,11 @@ Zend_CodeGenerator_Php_Docblock_Tag
 .. code-block:: php
    :linenos:
 
-   class Zend_CodeGenerator_Php_Docblock_Tag
-       extends Zend_CodeGenerator_Php_Abstract
+   class Zend\CodeGenerator\Php\Docblock\Tag
+       extends Zend\CodeGenerator_Php\Abstract
    {
        public static function fromReflection(
-           Zend_Reflection_Docblock_Tag $reflectionTag
+           Zend\Reflection_Docblock\Tag $reflectionTag
        )
        public function setName($name)
        public function getName()
@@ -240,10 +240,10 @@ Zend_CodeGenerator_Php_Docblock_Tag
 
 .. _zend.codegenerator.reference.concrete.php-docblock-tag-param:
 
-Zend_CodeGenerator_Php_DocBlock_Tag_Param
+Zend\CodeGenerator\Php\DocBlock\Tag\Param
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_DocBlock_Tag_Param`` は ``Zend_CodeGenerator_Php_DocBlock_Tag``
+``Zend\CodeGenerator\Php\DocBlock\Tag\Param`` は ``Zend\CodeGenerator\Php\DocBlock\Tag``
 の分化したバージョンで、 メソッド・パラメータを表します。 そこで、タグ名は(
 "param" )として知られています、
 しかし、この注釈タグを構成するパラメータ名とデータ型を生成するために、
@@ -254,11 +254,11 @@ Zend_CodeGenerator_Php_DocBlock_Tag_Param
 .. code-block:: php
    :linenos:
 
-   class Zend_CodeGenerator_Php_Docblock_Tag_Param
-       extends Zend_CodeGenerator_Php_Docblock_Tag
+   class Zend\CodeGenerator\Php\Docblock\Tag\Param
+       extends Zend\CodeGenerator\Php\Docblock\Tag
    {
        public static function fromReflection(
-           Zend_Reflection_Docblock_Tag $reflectionTagParam
+           Zend\Reflection_Docblock\Tag $reflectionTagParam
        )
        public function setDatatype($datatype)
        public function getDatatype()
@@ -269,10 +269,10 @@ Zend_CodeGenerator_Php_DocBlock_Tag_Param
 
 .. _zend.codegenerator.reference.concrete.php-docblock-tag-return:
 
-Zend_CodeGenerator_Php_DocBlock_Tag_Return
+Zend\CodeGenerator\Php\DocBlock\Tag\Return
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-param docblock tag variant のように、 ``Zend_CodeGenerator_Php_Docblock_Tab_Return`` は
+param docblock tag variant のように、 ``Zend\CodeGenerator\Php\Docblock\Tab\Return`` は
 メソッドの戻り値を表すための注釈\ tag variantです。 この場合、注釈タグ名は( "return"
 )として知られていますが、戻す型を必要とします。
 
@@ -281,11 +281,11 @@ param docblock tag variant のように、 ``Zend_CodeGenerator_Php_Docblock_Tab
 .. code-block:: php
    :linenos:
 
-   class Zend_CodeGenerator_Php_Docblock_Tag_Param
-       extends Zend_CodeGenerator_Php_Docblock_Tag
+   class Zend\CodeGenerator\Php\Docblock\Tag\Param
+       extends Zend\CodeGenerator\Php\Docblock\Tag
    {
        public static function fromReflection(
-           Zend_Reflection_Docblock_Tag $reflectionTagReturn
+           Zend\Reflection_Docblock\Tag $reflectionTagReturn
        )
        public function setDatatype($datatype)
        public function getDatatype()
@@ -294,18 +294,18 @@ param docblock tag variant のように、 ``Zend_CodeGenerator_Php_Docblock_Tab
 
 .. _zend.codegenerator.reference.concrete.php-file:
 
-Zend_CodeGenerator_Php_File
+Zend\CodeGenerator_Php\File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_File`` は、 *PHP*
+``Zend\CodeGenerator_Php\File`` は、 *PHP*
 コードを含むファイルの完全なコンテンツを生成することに使われます。
 ファイル・レベルの docblock と同様に必要に応じて、 ファイルはクラスまたは任意の
 *PHP* コードを含むかもしれません。
 
-クラスをファイルに加えるとき、 ``Zend_CodeGenerator_Php_Class``
+クラスをファイルに加えるとき、 ``Zend\CodeGenerator_Php\Class``
 コンストラクタに渡す情報の配列か、
 そのクラスのインスタンスのどちらかを渡す必要があります。 同様に docblock で、
-``Zend_CodeGenerator_Php_Docblock`` コンストラクタが消費する情報、
+``Zend\CodeGenerator_Php\Docblock`` コンストラクタが消費する情報、
 またはクラスのインスタンスを渡す必要があります。
 
 そのクラスの *API* は下記の通りです。:
@@ -313,14 +313,14 @@ Zend_CodeGenerator_Php_File
 .. code-block:: php
    :linenos:
 
-   class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
+   class Zend\CodeGenerator_Php\File extends Zend\CodeGenerator_Php\Abstract
    {
        public static function fromReflectedFilePath(
            $filePath,
            $usePreviousCodeGeneratorIfItExists = true,
            $includeIfNotAlreadyIncluded = true)
-       public static function fromReflection(Zend_Reflection_File $reflectionFile)
-       public function setDocblock(Zend_CodeGenerator_Php_Docblock $docblock)
+       public static function fromReflection(Zend\Reflection\File $reflectionFile)
+       public function setDocblock(Zend\CodeGenerator_Php\Docblock $docblock)
        public function getDocblock()
        public function setRequiredFiles($requiredFiles)
        public function getRequiredFiles()
@@ -338,10 +338,10 @@ Zend_CodeGenerator_Php_File
 
 .. _zend.codegenerator.reference.concrete.php-member-container:
 
-Zend_CodeGenerator_Php_Member_Container
+Zend\CodeGenerator\Php\Member\Container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Member_Container`` は、 ``Zend_CodeGenerator_Php_Class`` によって、
+``Zend\CodeGenerator\Php\Member\Container`` は、 ``Zend\CodeGenerator_Php\Class`` によって、
 内部的にクラスのメンバー - プロパティやメソッドなど -
 の経過を追う目的に使われます。
 
@@ -350,25 +350,25 @@ Zend_CodeGenerator_Php_Member_Container
 .. code-block:: php
    :linenos:
 
-   class Zend_CodeGenerator_Php_Member_Container extends ArrayObject
+   class Zend\CodeGenerator\Php\Member\Container extends ArrayObject
    {
        public function __construct($type = self::TYPE_PROPERTY)
    }
 
 .. _zend.codegenerator.reference.concrete.php-method:
 
-Zend_CodeGenerator_Php_Method
+Zend\CodeGenerator_Php\Method
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Method`` は、 クラス・メソッドを記述して、
+``Zend\CodeGenerator_Php\Method`` は、 クラス・メソッドを記述して、
 メソッドのためにコードと docblock を生成できます。 その親クラス、
-``Zend_CodeGenerator_Php_Member_Abstract`` の通りに、 static 、 abstract または final
+``Zend\CodeGenerator\Php\Member\Abstract`` の通りに、 static 、 abstract または final
 としての可視性と状態が指示されるかもしれません。
 最後に、メソッドのパラメータと戻り値は、指定されるかもしれません。
 
 パラメータは ``setParameter()`` または ``setParameters()``
 を用いて設定されるかもしれません。 それぞれの場合、パラメータは
-``Zend_CodeGenerator_Php_Parameter`` コンストラクタに渡す情報の配列か、
+``Zend\CodeGenerator_Php\Parameter`` コンストラクタに渡す情報の配列か、
 またはそのクラスのインスタンスでなければいけません。
 
 そのクラスの *API* は下記の通りです。:
@@ -376,13 +376,13 @@ Zend_CodeGenerator_Php_Method
 .. code-block:: php
    :linenos:
 
-   class Zend_CodeGenerator_Php_Method
-       extends Zend_CodeGenerator_Php_Member_Abstract
+   class Zend\CodeGenerator_Php\Method
+       extends Zend\CodeGenerator\Php\Member\Abstract
    {
        public static function fromReflection(
-           Zend_Reflection_Method $reflectionMethod
+           Zend\Reflection\Method $reflectionMethod
        )
-       public function setDocblock(Zend_CodeGenerator_Php_Docblock $docblock)
+       public function setDocblock(Zend\CodeGenerator_Php\Docblock $docblock)
        public function getDocblock()
        public function setFinal($isFinal)
        public function setParameters(Array $parameters)
@@ -395,10 +395,10 @@ Zend_CodeGenerator_Php_Method
 
 .. _zend.codegenerator.reference.concrete.php-parameter:
 
-Zend_CodeGenerator_Php_Parameter
+Zend\CodeGenerator_Php\Parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Parameter`` は、
+``Zend\CodeGenerator_Php\Parameter`` は、
 メソッドのパラメータを指定することに使われるかもしれません。
 各々のパラメータは、位置やデフォルト値、データ型を持つかもしれません;
 パラメータ名は必須です。
@@ -409,10 +409,10 @@ Zend_CodeGenerator_Php_Parameter
 .. code-block:: php
    :linenos:
 
-   class Zend_CodeGenerator_Php_Parameter extends Zend_CodeGenerator_Php_Abstract
+   class Zend\CodeGenerator_Php\Parameter extends Zend\CodeGenerator_Php\Abstract
    {
        public static function fromReflection(
-           Zend_Reflection_Parameter $reflectionParameter
+           Zend\Reflection\Parameter $reflectionParameter
        )
        public function setType($type)
        public function getType()
@@ -429,18 +429,18 @@ Zend_CodeGenerator_Php_Parameter
 
 既定値として ``NULL`` 、ブーリアンまたは配列を設定しようとすると、
 いくつかの問題が起きるかもしれません。
-このために、バリューホルダー・オブジェクト ``Zend_CodeGenerator_Php_ParameterDefaultValue``
+このために、バリューホルダー・オブジェクト ``Zend\CodeGenerator_Php\ParameterDefaultValue``
 を利用できます。例えば:
 
 .. code-block:: php
    :linenos:
 
-   $parameter = new Zend_CodeGenerator_Php_Parameter();
+   $parameter = new Zend\CodeGenerator_Php\Parameter();
    $parameter->setDefaultValue(
-       new Zend_CodeGenerator_Php_Parameter_DefaultValue("null")
+       new Zend\CodeGenerator\Php\Parameter\DefaultValue("null")
    );
    $parameter->setDefaultValue(
-       new Zend_CodeGenerator_Php_Parameter_DefaultValue("array('foo', 'bar')")
+       new Zend\CodeGenerator\Php\Parameter\DefaultValue("array('foo', 'bar')")
    );
 
 内部的には ``setDefaultValue()`` も *PHP*
@@ -448,13 +448,13 @@ Zend_CodeGenerator_Php_Parameter
 
 .. _zend.codegenerator.reference.concrete.php-property:
 
-Zend_CodeGenerator_Php_Property
+Zend\CodeGenerator_Php\Property
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_CodeGenerator_Php_Property`` はクラスのプロパティを記述します。
+``Zend\CodeGenerator_Php\Property`` はクラスのプロパティを記述します。
 それは定数か変数であるかもしれません。
 どちらの場合も、プロパティには関連するデフォルト値をオプションで持つかもしれません。
-さらに、親クラス（ ``Zend_CodeGenerator_Php_Member_Abstract`` ）を通じて
+さらに、親クラス（ ``Zend\CodeGenerator\Php\Member\Abstract`` ）を通じて
 変数のプロパティの可視性が設定されるかもしれません。
 
 そのクラスの *API* は下記の通りです。:
@@ -462,11 +462,11 @@ Zend_CodeGenerator_Php_Property
 .. code-block:: php
    :linenos:
 
-   class Zend_CodeGenerator_Php_Property
-       extends Zend_CodeGenerator_Php_Member_Abstract
+   class Zend\CodeGenerator_Php\Property
+       extends Zend\CodeGenerator\Php\Member\Abstract
    {
        public static function fromReflection(
-           Zend_Reflection_Property $reflectionProperty
+           Zend\Reflection\Property $reflectionProperty
        )
        public function setConst($const)
        public function isConst()

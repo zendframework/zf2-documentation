@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.console.getopt.configuration:
 
-Konfigurieren von Zend_Console_Getopt
+Konfigurieren von Zend\Console\Getopt
 =====================================
 
 .. _zend.console.getopt.configuration.addrules:
@@ -9,7 +9,7 @@ Konfigurieren von Zend_Console_Getopt
 Regeln für das Hinzufügen von Optionen
 --------------------------------------
 
-Man kann mehr Optionsregeln hinzufügen, zusätzlich zu denen die schon im ``Zend_Console_Getopt`` Constructor
+Man kann mehr Optionsregeln hinzufügen, zusätzlich zu denen die schon im ``Zend\Console\Getopt`` Constructor
 definiert wurden, durch Verwendung der ``addRules()`` Methode. Das Argument für ``addRules()`` ist das gleiche wie
 das erste Argument für den Constructor der Klasse. Es ist entweder eine Zeichenkette im Format der kurzen Syntax
 wie für das Definieren für Optionen definiert, oder ein assoziatives Array im Format der langen Syntax wie für
@@ -23,7 +23,7 @@ Details über die Syntax für die Definition von Optionen.
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->addRules(
      array(
        'verbose|v' => 'Druckt zusätzliche Ausgaben'
@@ -32,7 +32,7 @@ Details über die Syntax für die Definition von Optionen.
 
 Das obige Beispiel zeigt das hinzufügen der ``--verbose`` Option mit einem Alias von ``-v`` zu einem Set von
 Optionen welche bereits im Aufruf durch den Constructor definiert wurden. Man kann kurze Format Optionen und lange
-Format Optionen in der gleichen Instanz von ``Zend_Console_Getopt`` vermischen.
+Format Optionen in der gleichen Instanz von ``Zend\Console\Getopt`` vermischen.
 
 .. _zend.console.getopt.configuration.addhelp:
 
@@ -51,7 +51,7 @@ betreffende Hilfetext.
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setHelp(
        array(
            'a' => 'Apfel Option, ohne Parameter',
@@ -77,7 +77,7 @@ Aliase werden mit jedem existierenden Alias für dieses Flag gemischt. Mit ander
 Aliase sind noch immer in Verwendung.
 
 Ein Alias kann nur einmal definiert werden. Wenn versucht wird einen Alias nochmals zu definieren wird eine
-``Zend_Console_Getopt_Exception`` geworfen.
+``Zend\Console_Getopt\Exception`` geworfen.
 
 .. _zend.console.getopt.configuration.addaliases.example:
 
@@ -86,7 +86,7 @@ Ein Alias kann nur einmal definiert werden. Wenn versucht wird einen Alias nochm
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setAliases(
        array(
            'a' => 'apple',
@@ -106,7 +106,7 @@ definiert wurden.
 Argument Listen hinzufügen
 --------------------------
 
-Standardmäßig verwendet ``Zend_Console_Getopt`` ``$_SERVER['argv']`` für die Analyse des Arrays von
+Standardmäßig verwendet ``Zend\Console\Getopt`` ``$_SERVER['argv']`` für die Analyse des Arrays von
 Kommandozeilen Argumenten. Alternativ kann das Array mit Argumenten als zweites Argument dem Constructor angegeben
 werden. Letztendlich können zusätzliche Argumente zu den bereits in Verwendung befindlichen hinzugefügt werden,
 durch Verwendung der ``addArguments()`` Methode, oder es kann das aktuelle Array von Argumenten ersetzt werden mit
@@ -121,7 +121,7 @@ von Zeichenketten, und die letztere Methode substituiert das Array für seine ak
    :linenos:
 
    // Normalerweise verwendet der Constructor $_SERVER['argv']
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
 
    // Ein Array zu den bestehenden Argumenten hinzufügen
    $opts->addArguments(array('-a', '-p', 'p_parameter', 'non_option_arg'));
@@ -134,7 +134,7 @@ von Zeichenketten, und die letztere Methode substituiert das Array für seine ak
 Konfiguration hinzufügen
 ------------------------
 
-Der dritte Parameter des ``Zend_Console_Getopt`` Constructors ist ein Array von Optionen zur Konfiguration welche
+Der dritte Parameter des ``Zend\Console\Getopt`` Constructors ist ein Array von Optionen zur Konfiguration welche
 das Verhalten der zurückgegebenen Objektinstanz beeinflusst. Es können auch durch Verwendung der ``setOptions()``
 Optionen für die Konfiguration definiert werden, oder es können auch individuelle Optionen mit der
 ``setOption()`` Methode verwendet werden.
@@ -143,26 +143,26 @@ Optionen für die Konfiguration definiert werden, oder es können auch individue
 
    **Klarstellung des Ausdrucks "Option"**
 
-   Der Ausdruck "Option" wird für die Konfiguration der ``Zend_Console_Getopt`` Klasse verwendet um der
+   Der Ausdruck "Option" wird für die Konfiguration der ``Zend\Console\Getopt`` Klasse verwendet um der
    Terminologie zu folgen die überall im Zend Framework benutzt wird. Das ist nicht das selbe wie die
-   Kommandozeilen Optionen die von der ``Zend_Console_Getopt`` Klasse analysiert werden.
+   Kommandozeilen Optionen die von der ``Zend\Console\Getopt`` Klasse analysiert werden.
 
 Die aktuell unterstützten Optionen sind durch Konstanten in der Klasse definiert. Diese Optionen, bzw deren
 konstanter Bezeichner (mit wörtlichem Wert in Großschreibweise) sind anbei gelistet:
 
-- ``Zend_Console_Getopt::CONFIG_DASHDASH`` ("dashDash"), wenn es ``TRUE`` ist, ermöglicht dieses spezielle Flag
+- ``Zend\Console\Getopt::CONFIG_DASHDASH`` ("dashDash"), wenn es ``TRUE`` ist, ermöglicht dieses spezielle Flag
   ``--`` das Ende von Flags zu signieren. Kommendozeilen Argumente welche dem Doppel-Bindestrich Zeichen folgen
   werden nicht als Option interpretiert selbst wenn das Argument mit einem Bindestrich beginnt. Diese
   Konfigurationsoption ist standardmäßig ``TRUE``.
 
-- ``Zend_Console_Getopt::CONFIG_IGNORECASE`` ("ignoreCase"), wenn es ``TRUE`` ist, werden Flags als Aliase
+- ``Zend\Console\Getopt::CONFIG_IGNORECASE`` ("ignoreCase"), wenn es ``TRUE`` ist, werden Flags als Aliase
   voneinander betrachtet wenn Sie sich nur in der Groß- oder Kleinschreibung unterscheiden. Das bedeutet das
   ``-a`` und ``-A`` als gleiche Flags angesehen werden. Diese Konfigurationsoption ist standardmäßig ``FALSE``.
 
-- ``Zend_Console_Getopt::CONFIG_RULEMODE`` ("ruleMode") kann die Werte ``Zend_Console_Getopt::MODE_ZEND`` ("zend")
-  und ``Zend_Console_Getopt::MODE_GNU`` ("gnu") haben. Diese Option sollte nicht verwendet werden ausser die Klasse
+- ``Zend\Console\Getopt::CONFIG_RULEMODE`` ("ruleMode") kann die Werte ``Zend\Console\Getopt::MODE_ZEND`` ("zend")
+  und ``Zend\Console\Getopt::MODE_GNU`` ("gnu") haben. Diese Option sollte nicht verwendet werden ausser die Klasse
   wird erweiter um zusätzliche Syntax Formen zu unterstützen. Die zwei Modi die in der Basisklasse
-  ``Zend_Console_Getopt`` unterstützt werden sind eindeutig. Wenn die Angabe eine Zeichenkette ist, nimmt die
+  ``Zend\Console\Getopt`` unterstützt werden sind eindeutig. Wenn die Angabe eine Zeichenkette ist, nimmt die
   Klasse ``MODE_GNU`` an, sonst wird ``MODE_ZEND`` angenommen. Aber wenn die Klasse erweitert wird, und
   zusätzliche Syntaxformen hinzugefügt werden, kann der Modus durch Verwendung dieser Option definiert werden.
 
@@ -178,7 +178,7 @@ Option.
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setOption('ignoreCase', true);
 
 Das Argument für die ``setOptions()`` Methode ist ein assoziatives Array. Die Schlüssel dieses Arrays sind die
@@ -193,7 +193,7 @@ Konfiguration zusammengefügt; es müssen also nicht alle Optionen angegeben wer
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setOptions(
        array(
            'ignoreCase' => true,

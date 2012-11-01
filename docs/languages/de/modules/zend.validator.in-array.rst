@@ -4,15 +4,15 @@
 InArray
 =======
 
-``Zend_Validate_InArray`` erlaubt es zu prüfen ob ein gegebener Wert in einem Array enthalten ist. Er ist auch in
+``Zend\Validate\InArray`` erlaubt es zu prüfen ob ein gegebener Wert in einem Array enthalten ist. Er ist auch in
 der Lage mehrdimensionale Arrays zu prüfen.
 
 .. _zend.validator.set.in_array.options:
 
-Unterstützte Optionen für Zend_Validate_InArray
+Unterstützte Optionen für Zend\Validate\InArray
 -----------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Validate_InArray`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Validate\InArray`` unterstützt:
 
 - **haystack**: Setzt den Haystack für die Prüfung.
 
@@ -32,7 +32,7 @@ Der einfachste Weg ist es, das Array welches durchsucht werden soll, bei der Ini
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray(array('key' => 'value',
+   $validator = new Zend\Validate\InArray(array('key' => 'value',
                                                 'otherkey' => 'othervalue'));
    if ($validator->isValid('value')) {
        // Wert gefunden
@@ -52,7 +52,7 @@ Natürlich kann man das Array gegen das geprüft werden soll auch im Nachhinein 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray();
+   $validator = new Zend\Validate\InArray();
    $validator->setHaystack(array('key' => 'value', 'otherkey' => 'othervalue'));
 
    if ($validator->isValid('value')) {
@@ -76,7 +76,7 @@ Verwendung einer Methode. Bei der Initiierung muß hierfür ein Array mit der fo
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray(
+   $validator = new Zend\Validate\InArray(
        array(
            'haystack' => array('key' => 'value', 'otherkey' => 'othervalue'),
            'strict'   => true
@@ -112,7 +112,7 @@ Um mehrdimensionale Array zu prüfen muß die **recursive** Option gesetzt werde
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray(
+   $validator = new Zend\Validate\InArray(
        array(
            'haystack' => array(
                'firstDimension' => array('key' => 'value',
@@ -136,7 +136,7 @@ erhalten.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray(
+   $validator = new Zend\Validate\InArray(
        array(
            'firstDimension' => array('key' => 'value',
                                      'otherkey' => 'othervalue'),

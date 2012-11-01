@@ -8,7 +8,7 @@ Es gibt zwei Arten von Backends: Standard und erweiterte. Natürlich bieten erwe
 
 .. _zend.cache.backends.file:
 
-Zend_Cache_Backend_File
+Zend\Cache_Backend\File
 -----------------------
 
 Dieses (erweiterte) Backend speichert Cache Datensätze in Dateien (in einem gewählten Verzeichnis).
@@ -43,7 +43,7 @@ Mögliche Optionen sind :
 
 .. _zend.cache.backends.sqlite:
 
-Zend_Cache_Backend_Sqlite
+Zend\Cache_Backend\Sqlite
 -------------------------
 
 Dieses (erweiterte) Backend speichert die Cache Datensätze in einer SQLite Datenbank.
@@ -64,7 +64,7 @@ Mögliche Optionen sind :
 
 .. _zend.cache.backends.memcached:
 
-Zend_Cache_Backend_Memcached
+Zend\Cache_Backend\Memcached
 ----------------------------
 
 Dieses (erweiterte) Backend speichert Cache Datensätze in einem Memcached Server. `memcached`_ ist ein
@@ -92,7 +92,7 @@ Mögliche Optionen sind :
 
 .. _zend.cache.backends.apc:
 
-Zend_Cache_Backend_Apc
+Zend\Cache_Backend\Apc
 ----------------------
 
 Dieses (erweiterte) Backend speichert Cache Datensätze im Shared Memory durch die `APC`_ (Alternativer *PHP*
@@ -105,7 +105,7 @@ Es gibt keine Optionen für dieses Backend.
 
 .. _zend.cache.backends.xcache:
 
-Zend_Cache_Backend_Xcache
+Zend\Cache_Backend\Xcache
 -------------------------
 
 Dieses Backend speichert Cache Einträge im Shared Memory durch die `XCache`_ Erweiterung (welche natürlich
@@ -130,7 +130,7 @@ Mögliche Optionen sind:
 
 .. _zend.cache.backends.platform:
 
-Zend_Cache_Backend_ZendPlatform
+Zend\Cache_Backend\ZendPlatform
 -------------------------------
 
 Dieses Backend verwendet die Content Caching *API* des `Zend Platform`_ Produktes. Natürlich muss man die Zend
@@ -139,18 +139,18 @@ Platform installiert haben, um dieses Backend verwenden zu können.
 Dieses Backend unterstützt Tags, aber nicht den ``CLEANING_MODE_NOT_MATCHING_TAG`` Löschmodus.
 
 Bei Definition dieses Backends muß ein Trennzeichen -- '-', '.', ' ', oder '\_' -- zwischen den Wörtern 'Zend'
-und 'Platform' definiert sein wenn die ``Zend_Cache::factory()`` Methode verwendet wird:
+und 'Platform' definiert sein wenn die ``Zend\Cache\Cache::factory()`` Methode verwendet wird:
 
 .. code-block:: php
    :linenos:
 
-   $cache = Zend_Cache::factory('Core', 'Zend Platform');
+   $cache = Zend\Cache\Cache::factory('Core', 'Zend Platform');
 
 Es gibt keine Optionen für dieses Backend.
 
 .. _zend.cache.backends.twolevels:
 
-Zend_Cache_Backend_TwoLevels
+Zend\Cache_Backend\TwoLevels
 ----------------------------
 
 Dieses (erweiterte) Backend ist ein Hybrides. Es speichert Cache Einträge in zwei anderen Backends: Ein schnelles
@@ -160,12 +160,12 @@ Dieses Backend verwendet den Priority Parameter (der auf Frontend Level angegebe
 wird) und den verbleibenden Platz im schnellen Backend um die Verwendung dieser zwei Backends zu optimieren.
 
 Dieses Backend sollte mit Verwendung eines Word Separators -- '-', '.', ' ', oder '\_' -- zwischen den Wörtern
-'Two' und 'Levels' spezifiziert werden wenn die ``Zend_Cache::factory()`` Methode verwendet wird:
+'Two' und 'Levels' spezifiziert werden wenn die ``Zend\Cache\Cache::factory()`` Methode verwendet wird:
 
 .. code-block:: php
    :linenos:
 
-   $cache = Zend_Cache::factory('Core', 'Two Levels');
+   $cache = Zend\Cache\Cache::factory('Core', 'Two Levels');
 
 Vorhandene Optionen sind:
 
@@ -184,9 +184,9 @@ Vorhandene Optionen sind:
    +--------------------------+--------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |fast_backend_options      |Array   |array()     |Die "schnellen" Backendoptionen                                                                                                                                                                                                                |
    +--------------------------+--------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |slow_backend_custom_naming|Boolean |FALSE       |Wenn TRUE, wird das slow_backend Argument als kompletter Klassenname verwendet; wenn FALSE, wird das frontend Argument als Ende des "Zend_Cache_Backend_[...]" Klassennamens verwendet                                                         |
+   |slow_backend_custom_naming|Boolean |FALSE       |Wenn TRUE, wird das slow_backend Argument als kompletter Klassenname verwendet; wenn FALSE, wird das frontend Argument als Ende des "Zend\Cache_Backend\[...]" Klassennamens verwendet                                                         |
    +--------------------------+--------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |fast_backend_custom_naming|Boolean |FALSE       |Wenn TRUE, wird das fast_backend Argument als kompletter Klassenname verwendet; wenn FALSE, wird das frontend Argument als Ende des "Zend_Cache_Backend_[...]" Klassennamens verwendet                                                         |
+   |fast_backend_custom_naming|Boolean |FALSE       |Wenn TRUE, wird das fast_backend Argument als kompletter Klassenname verwendet; wenn FALSE, wird das frontend Argument als Ende des "Zend\Cache_Backend\[...]" Klassennamens verwendet                                                         |
    +--------------------------+--------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |slow_backend_autoload     |Boolean |FALSE       |Wenn TRUE, wird kein require_once für das langsame Backend verwendet (nur für eigene Backends nützlich)                                                                                                                                        |
    +--------------------------+--------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -199,7 +199,7 @@ Vorhandene Optionen sind:
 
 .. _zend.cache.backends.zendserver:
 
-Zend_Cache_Backend_ZendServer_Disk und Zend_Cache_Backend_ZendServer_ShMem
+Zend\Cache\Backend\ZendServer\Disk und Zend\Cache\Backend\ZendServer\ShMem
 --------------------------------------------------------------------------
 
 Diese Backends speichern Cacheeinträge indem Sie die Caching Funktionalitäten von `Zend Server`_ verwenden.
@@ -211,31 +211,31 @@ Diese Backends arbeiten nur in einer Zend Server Umgebung für Seiten die über 
 wurden und nicht für Kommandozeilen Ausführung.
 
 Dieses Backend muß durch Verwendung des **customBackendNaming** Parameter mit ``TRUE`` spezifiziert werden wenn
-die Methode ``Zend_Cache::factory()`` verwendet wird:
+die Methode ``Zend\Cache\Cache::factory()`` verwendet wird:
 
 .. code-block:: php
    :linenos:
 
-   $cache = Zend_Cache::factory('Core', 'Zend_Cache_Backend_ZendServer_Disk',
+   $cache = Zend\Cache\Cache::factory('Core', 'Zend\Cache\Backend\ZendServer\Disk',
                                 $frontendOptions, $backendOptions, false, true);
 
 Es gibt keine Optionen für diese Backends.
 
 .. _zend.cache.backends.static:
 
-Zend_Cache_Backend_Static
+Zend\Cache_Backend\Static
 -------------------------
 
-Dieses Backend arbeitet in Verbindung mit ``Zend_Cache_Frontend_Capture`` (diese zwei müssen zusammen verwendet
+Dieses Backend arbeitet in Verbindung mit ``Zend\Cache_Frontend\Capture`` (diese zwei müssen zusammen verwendet
 werden) um die Ausgabe von Anfragen als statische Dateien zu speichern. Dies bedeutet das die statischen Dateien
 bei weiteren Anfragen direkt serviert werden ohne dass *PHP* oder sogar Zend Framework involviert sind.
 
 .. note::
 
-   ``Zend_Cache_Frontend_Capture`` arbeitet indem es eine Callback Funktion registriert welche aufgerufen wird wenn
+   ``Zend\Cache_Frontend\Capture`` arbeitet indem es eine Callback Funktion registriert welche aufgerufen wird wenn
    der Ausgabebuffer den es verwendet gelöscht wird. Damit das richtig funktioniert muss er der letzte
    Ausgabebuffer in der Anfrage sein. Um dies zu garantieren **muss** der Ausgabebuffer welcher vom Dispacher
-   verwendet wird ausgeschaltet sein indem ``Zend_Controller_Front``'s Methode ``setParam()`` verwendet wird, zum
+   verwendet wird ausgeschaltet sein indem ``Zend\Controller\Front``'s Methode ``setParam()`` verwendet wird, zum
    Beispiel ``$front->setParam('disableOutputBuffering', true);`` oder indem
    "resources.frontcontroller.params.disableOutputBuffering = true" in der Bootstrap Konfigurationsdatei (wir
    nehmen *INI* an) wenn ``Zend_Application`` verwendet wird.
@@ -288,16 +288,16 @@ Durch die Natur des Cachens von statischen Dateien bietet die Backend Klasse zwe
 ``remove()`` und ``removeRecursively()``. Beide akzeptieren eine Anfrage *URI* welche, wenn Sie mit dem
 "public_dir" in dem statische Dateien gecacht werden verknüpft wird, und eine vor-gespeicherte Erweiterung
 angehängt wird, entweder den Namen einer statischen Datei anbietet welche zu löschen ist, oder einen
-Verzeichnispfad welcher rekursiv zu löschen ist. Durch die Einschränkung von ``Zend_Cache_Backend_Interface``
+Verzeichnispfad welcher rekursiv zu löschen ist. Durch die Einschränkung von ``Zend\Cache_Backend\Interface``
 akzeptieren alle anderen Methoden wie ``save()`` eine ID welche durch Anwendung von ``bin2hex()`` auf eine Anfrage
 *URI* berechnet wird.
 
 Durch das Level an dem das statische Cachen arbeitet ist das statische Dateicaching auf eine einfachere Verwendung
-mit ``Zend_Controller_Action_Helper_Cache`` ausgelegt. Dieser Helfer assistiert beim Einstellen welche Aktionen
+mit ``Zend\Controller\Action\Helper\Cache`` ausgelegt. Dieser Helfer assistiert beim Einstellen welche Aktionen
 eines Controllers zu cachen sind, mit welchen Tags, und mit welcher Erweiterung. Er bietet auch Methoden für das
 Entleeren des Caches durch die Anfrage *URI* oder Tag. Statischen Dateicaching wird auch durch
-``Zend_Cache_Manager`` unterstützt welcher vorkonfigurierte Konfigurationstemplates für den statischen Cache
-enthält (als ``Zend_Cache_Manager::PAGECACHE`` oder "page"). Die Standardwerte können hierbei wie benötigt
+``Zend\Cache\Manager`` unterstützt welcher vorkonfigurierte Konfigurationstemplates für den statischen Cache
+enthält (als ``Zend\Cache\Manager::PAGECACHE`` oder "page"). Die Standardwerte können hierbei wie benötigt
 konfiguriert werden um einen "public_dir" Ort für das Cachen zu setzen, usw.
 
 .. note::
@@ -328,7 +328,7 @@ konfiguriert werden um einen "public_dir" Ort für das Cachen zu setzen, usw.
    +---------------------+--------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |cache_directory_umask|Integer |0700        |Umask für Verzeichnisse welche im public_dir erstellt wurden.                                                                                                                                                                                                                                                                                                 |
    +---------------------+--------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |file_extension       |String  |'.html'     |Standardmäßige Dateierweiterung für erstellt statische Dateien. Diese kann im Fluge konfiguriert werden, siehe Zend_Cache_Backend_Static::save() obwohl generell empfohlen wird sich auf Zend_Controller_Action_Helper_Cache zu verlassen wenn man das macht, weil es ein einfacherer Weg ist als mit Arrays oder der manuellen Serialisierung herumzuspielen.|
+   |file_extension       |String  |'.html'     |Standardmäßige Dateierweiterung für erstellt statische Dateien. Diese kann im Fluge konfiguriert werden, siehe Zend\Cache_Backend\Static::save() obwohl generell empfohlen wird sich auf Zend\Controller\Action\Helper\Cache zu verlassen wenn man das macht, weil es ein einfacherer Weg ist als mit Arrays oder der manuellen Serialisierung herumzuspielen.|
    +---------------------+--------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |index_filename       |String  |'index'     |Wenn eine Anfrage URI nicht genügend Informationen enthält um eine statische Datei zu erstellen (normalerweise bedeutet dies einen Indexaufruf, z.B. die URI von '/'), dann wir stattdessen index_filename verwendet. Deshalb würden '' oder '/' auf 'index.html' verweisen (in der Annahme das die standardmäßige file_extension '.html' ist).               |
    +---------------------+--------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

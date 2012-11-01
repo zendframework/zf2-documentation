@@ -17,8 +17,8 @@ Zend_Controller
 Changement dans l'interface Dispatcher
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Les utilisateurs ont porté à notre connaissance le fait que ``Zend_Controller_Front`` et
-``Zend_Controller_Router_Route_Module`` utilisent tous les deux des méthodes du distributeur qui ne sont pas dans
+Les utilisateurs ont porté à notre connaissance le fait que ``Zend\Controller\Front`` et
+``Zend\Controller\Router\Route\Module`` utilisent tous les deux des méthodes du distributeur qui ne sont pas dans
 l'interface associée. Nous avons donc ajouté les trois méthodes suivantes pour s'assurer que les distributeurs
 personnalisés continueront à fonctionner avec les implémentations embarquées :
 
@@ -30,7 +30,7 @@ personnalisés continueront à fonctionner avec les implémentations embarquées
 
 .. _migration.16.zend.file.transfer:
 
-Zend_File_Transfer
+Zend\File\Transfer
 ------------------
 
 .. _migration.16.zend.file.transfer.validators:
@@ -38,12 +38,12 @@ Zend_File_Transfer
 Changements quand vous utilisez des validateurs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Certaines remarques des utilisateurs indiquaient que les validateurs de ``Zend_File_Transfer`` ne fonctionnaient
+Certaines remarques des utilisateurs indiquaient que les validateurs de ``Zend\File\Transfer`` ne fonctionnaient
 pas comme ceux par défaut fournis avec ``Zend_Form``. ``Zend_Form`` permet par exemple l'utilisation du paramètre
 *breakChainOnFailure* qui stoppe la validation de tous les validateurs suivants dès qu'une erreur de validation
 apparaît.
 
-Nous avons donc ajouter ce paramètre à tous les validateurs existants pour ``Zend_File_Transfer``.
+Nous avons donc ajouter ce paramètre à tous les validateurs existants pour ``Zend\File\Transfer``.
 
 - Ancienne *API*\  : *addValidator($validator, $options, $files)*.
 
@@ -60,12 +60,12 @@ souhaité.
    :linenos:
 
    // Exemple pour 1.6.1
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('FilesSize', array('1B', '100kB'));
 
    // Même exemple pour 1.6.2 et plus récent
    // Notez l'ajout du booléen false
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('FilesSize', false, array('1B', '100kB'));
 
 
