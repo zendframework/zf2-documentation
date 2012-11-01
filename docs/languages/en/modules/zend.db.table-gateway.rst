@@ -137,7 +137,7 @@ There are a number of features built-in and shipped with Zend\\Db:
   .. code-block:: php
      :linenos:
 
-     class MyTableGateway extends <classname>AbstractTableGateway</classname>
+     class MyTableGateway extends AbstractTableGateway
      {
      	public function __construct()
      	{
