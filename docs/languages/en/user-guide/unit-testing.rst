@@ -51,7 +51,7 @@ Next, create a file called ``phpunit.xml.dist`` under ``zf2-tutorial/module/Appl
     <phpunit bootstrap="Bootstrap.php">
         <testsuites>
             <testsuite name="zf2tutorial">
-                <directory>./AplicationTest</directory>
+                <directory>./ApplicationTest</directory>
             </testsuite>
         </testsuites>
     </phpunit>
