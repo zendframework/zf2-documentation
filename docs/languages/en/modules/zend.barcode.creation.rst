@@ -32,7 +32,7 @@ first example, we will use the **Code39** barcode type together with the **Image
 .. code-block:: php
    :linenos:
 
-   use Zend\Barcode;
+   use Zend\Barcode\Barcode;
 
    // Only the text to draw is required
    $barcodeOptions = array('text' => 'ZEND-FRAMEWORK');
@@ -53,8 +53,8 @@ example is functionally equivalent to the previous.
 .. code-block:: php
    :linenos:
 
-   use Zend\Config;
-   use Zend\Barcode;
+   use Zend\Config\Config;
+   use Zend\Barcode\Barcode;
 
    // Using only one Zend\Config\Config object
    $config = new Config(array(
@@ -81,7 +81,7 @@ call the ``draw()`` of the renderer, or simply use the proxy method provided by 
 .. code-block:: php
    :linenos:
 
-   use Zend\Barcode;
+   use Zend\Barcode\Barcode;
 
    // Only the text to draw is required
    $barcodeOptions = array('text' => 'ZEND-FRAMEWORK');
@@ -101,7 +101,7 @@ call the ``draw()`` of the renderer, or simply use the proxy method provided by 
 .. code-block:: php
    :linenos:
 
-   use Zend\Barcode;
+   use Zend\Barcode\Barcode;
 
    // Only the text to draw is required
    $barcodeOptions = array('text' => 'ZEND-FRAMEWORK');
@@ -130,7 +130,7 @@ provided by ``Zend\Barcode\Barcode``.
 .. code-block:: php
    :linenos:
 
-   use Zend\Barcode;
+   use Zend\Barcode\Barcode;
 
    // Only the text to draw is required
    $barcodeOptions = array('text' => 'ZEND-FRAMEWORK');
@@ -157,7 +157,7 @@ This will generate this barcode:
 .. code-block:: php
    :linenos:
 
-   use Zend\Barcode;
+   use Zend\Barcode\Barcode;
 
    // Only the text to draw is required
    $barcodeOptions = array('text' => 'ZEND-FRAMEWORK');
