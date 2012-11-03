@@ -124,7 +124,7 @@ the initial letter to lowercase: "suffix", "height", "imgUrl", etc.
 Zend\\Captcha\\ReCaptcha
 ------------------------
 
-The ``Zend\Captcha\ReCaptcha`` adapter uses :ref:`Zend\\Service\\ReCaptcha\\ReCaptcha <zend.service.recaptcha>` to
+The ``Zend\Captcha\ReCaptcha`` adapter uses :ref:`Zend\\Service\\ReCaptcha\\ReCaptcha <zendservice.recaptcha>` to
 generate and validate *CAPTCHA*\ s. It exposes the following methods:
 
 - ``setPrivKey($key)`` and ``getPrivKey()`` allow you to specify the private key to use for the ReCaptcha service.
@@ -133,7 +133,7 @@ generate and validate *CAPTCHA*\ s. It exposes the following methods:
 - ``setPubKey($key)`` and ``getPubKey()`` allow you to specify the public key to use with the ReCaptcha service.
   This must be specified during construction, although it may be overridden at any point.
 
-- ``setService(Zend\Service\ReCaptcha\ReCaptcha $service)`` and ``getService()`` allow you to set and get the
+- ``setService(ZendService\ReCaptcha\ReCaptcha $service)`` and ``getService()`` allow you to set and get the
   ReCaptcha service object.
 
 
