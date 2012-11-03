@@ -133,7 +133,7 @@ In this case ``{action name}`` should start with a lower case letter.
     standard ``AbstractActionController``, but if you’re intending to write a
     RESTful web service, ``AbstractRestfulController`` may be useful.
 
-Let’s go ahead and create our controller class ``IndexController.php`` at ``zf2-tutorials/module/Album/src/Album/Controller`` :
+Let’s go ahead and create our controller class ``AlbumController.php`` at ``zf2-tutorials/module/Album/src/Album/Controller`` :
 
 .. code-block:: php
 
@@ -165,7 +165,7 @@ Let’s go ahead and create our controller class ``IndexController.php`` at ``zf
 .. note::
 
     We have already informed the module about our controller in the
-    ‘controller’ section of ``config/module.config.php``.
+    ‘controller’ section of ``module/Album/config/module.config.php``.
 
 We have now set up the four actions that we want to use. They won’t work yet
 until we set up the views. The URLs for each action are:
