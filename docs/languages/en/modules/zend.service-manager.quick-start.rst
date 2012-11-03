@@ -158,6 +158,9 @@ As such, you have a variety of ways to override service manager configuration se
    For instances that require factories, write a factory. If you'd like to inject specific, configured instances,
    use the Module class to do so, or a listener.
 
+   Additionally you will lose the ability to use the caching feature of the configuration files when you use 
+   closures within them. This is a limitation of PHP which can't (de)serialized closures.
+
 .. _zend.service-manager.quick-start.examples.return-array:
 
 Module Returning an Array
