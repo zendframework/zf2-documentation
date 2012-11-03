@@ -660,32 +660,32 @@ Zend\\XmlRpc
 ZendService\\Akismet
 ^^^^^^^^^^^^^^^^^^^^
 
-        * :doc: `modules/zendservice.akismet`
+        * :doc:`modules/zendservice.akismet`
 
 ZendService\\Amazon
 ^^^^^^^^^^^^^^^^^^^
 
-        * :doc: `modules/zendservice.amazon`
+        * :doc:`modules/zendservice.amazon`
 
 ZendService\\Audioscrobbler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc: `modules/zendservice.audioscrobbler`
+        * :doc:`modules/zendservice.audioscrobbler`
 
 ZendService\\Del.icio.us
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc: `modules/zendservice.delicious`
+        * :doc:`modules/zendservice.delicious`
 
 ZendService\\Developer Garden
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc: `modules/zendservice.developer-garden`
+        * :doc:`modules/zendservice.developer-garden`
 
 ZendService\\Flickr
 ^^^^^^^^^^^^^^^^^^^
 
-        * :doc: `modules/zendservice.flickr`
+        * :doc:`modules/zendservice.flickr`
 
 ZendService\\LiveDocx
 ^^^^^^^^^^^^^^^^^^^^^
@@ -695,42 +695,42 @@ ZendService\\LiveDocx
 ZendService\\Nirvanix
 ^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc: `modules/zendservice.nirvanix`
+        * :doc:`modules/zendservice.nirvanix`
 
 ZendService\\Rackspace
 ^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc: `modules/zendservice.rackspace`
+        * :doc:`modules/zendservice.rackspace`
 
 ZendService\\ReCaptcha
 ^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc: `modules/zendservice.recaptcha`
+        * :doc:`modules/zendservice.recaptcha`
 
 ZendService\\SlideShare
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc: `modules/zendservice.slideshare`
+        * :doc:`modules/zendservice.slideshare`
 
 ZendService\\StrikeIron
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc: `modules/zendservice.strikeiron`
+        * :doc:`modules/zendservice.strikeiron`
 
 ZendService\\Technorati
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc: `modules/zendservice.technorati`
+        * :doc:`modules/zendservice.technorati`
 
 ZendService\\Twitter
 ^^^^^^^^^^^^^^^^^^^^
 
-        * :doc: `modules/zendservice.twitter`
+        * :doc:`modules/zendservice.twitter`
 
 ZendService\\Windows Azure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc: `modules/zendservice.windowsazure`
+        * :doc:`modules/zendservice.windowsazure`
 
 .. _zend.copyright:
 
