@@ -706,17 +706,17 @@ ZendService\\Rackspace
 ZendService\\ReCaptcha
 ^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc:`modules/zendservice.recaptcha`
+        * :doc:`modules/zendservice.re-captcha`
 
 ZendService\\SlideShare
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc:`modules/zendservice.slideshare`
+        * :doc:`modules/zendservice.slide-share`
 
 ZendService\\StrikeIron
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc:`modules/zendservice.strikeiron`
+        * :doc:`modules/zendservice.strike-iron`
 
 ZendService\\Technorati
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -731,7 +731,7 @@ ZendService\\Twitter
 ZendService\\Windows Azure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc:`modules/zendservice.windowsazure`
+        * :doc:`modules/zendservice.windows-azure`
 
 .. _zend.copyright:
 
