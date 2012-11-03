@@ -80,7 +80,7 @@ demonstrates the workflow and objects involved.
     */
    $token = unserialize($serializedToken);
 
-   $twitter = new ZendService\Twitter(array(
+   $twitter = new ZendService\Twitter\Twitter(array(
        'username' => 'johndoe',
        'accessToken' => $token
    ));
@@ -113,7 +113,7 @@ Account Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -128,7 +128,7 @@ Account Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -144,7 +144,7 @@ Account Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -181,7 +181,7 @@ Status Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -203,7 +203,7 @@ Status Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -230,7 +230,7 @@ Status Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -246,7 +246,7 @@ Status Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -266,7 +266,7 @@ Status Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -290,7 +290,7 @@ Status Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -311,7 +311,7 @@ User Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -335,7 +335,7 @@ User Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -357,7 +357,7 @@ User Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -377,7 +377,7 @@ Direct Message Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -401,7 +401,7 @@ Direct Message Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -426,7 +426,7 @@ Direct Message Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -442,7 +442,7 @@ Direct Message Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -462,7 +462,7 @@ Friendship Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -477,7 +477,7 @@ Friendship Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -493,7 +493,7 @@ Friendship Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -514,7 +514,7 @@ Favorite Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -535,7 +535,7 @@ Favorite Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -550,7 +550,7 @@ Favorite Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -571,7 +571,7 @@ Block Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -596,7 +596,7 @@ Block Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -612,7 +612,7 @@ Block Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -627,7 +627,7 @@ Block Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));

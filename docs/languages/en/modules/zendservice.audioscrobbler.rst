@@ -3,7 +3,7 @@
 ZendService\Audioscrobbler
 ===========================
 
-.. _zendservice.audioscrobbler.introduction:
+.. _zendservice.introduction:
 
 Introduction
 ------------
@@ -97,7 +97,7 @@ profile information:
 .. code-block:: php
    :linenos:
 
-   $as = new ZendService\Audioscrobbler();
+   $as = new ZendService\Audioscrobbler\Audioscrobbler();
    // Set the user whose profile information we want to retrieve
    $as->setUser('BigDaddy71');
    // Retrieve BigDaddy71's profile information
@@ -113,7 +113,7 @@ profile information:
 .. code-block:: php
    :linenos:
 
-   $as = new ZendService\Audioscrobbler();
+   $as = new ZendService\Audioscrobbler\Audioscrobbler();
    // Set the user whose profile weekly artist chart we want to retrieve
    $as->setUser('lo_fye');
    // Retrieves a list of previous weeks for which there are chart data
@@ -142,7 +142,7 @@ profile information:
 Artists
 -------
 
-``ZendService\Audioscrobbler`` provides several methods for retrieving data about a specific artist, specified via
+``ZendService\Audioscrobbler\Audioscrobbler`` provides several methods for retrieving data about a specific artist, specified via
 the ``setArtist()`` method:
 
 
@@ -171,7 +171,7 @@ the ``setArtist()`` method:
 .. code-block:: php
    :linenos:
 
-   $as = new ZendService\Audioscrobbler();
+   $as = new ZendService\Audioscrobbler\Audioscrobbler();
    // Set the artist for whom you would like to retrieve related artists
    $as->setArtist('LCD Soundsystem');
    // Retrieve the related artists
@@ -186,7 +186,7 @@ the ``setArtist()`` method:
 Tracks
 ------
 
-``ZendService\Audioscrobbler`` provides two methods for retrieving data specific to a single track, specified via
+``ZendService\Audioscrobbler\Audioscrobbler`` provides two methods for retrieving data specific to a single track, specified via
 the ``setTrack()`` method:
 
 
@@ -204,7 +204,7 @@ the ``setTrack()`` method:
 Tags
 ----
 
-``ZendService\Audioscrobbler`` provides several methods for retrieving data specific to a single tag, specified
+``ZendService\Audioscrobbler\Audioscrobbler`` provides several methods for retrieving data specific to a single tag, specified
 via the ``setTag()`` method:
 
 
@@ -228,7 +228,7 @@ via the ``setTag()`` method:
 Groups
 ------
 
-``ZendService\Audioscrobbler`` provides several methods for retrieving data specific to a single group, specified
+``ZendService\Audioscrobbler\Audioscrobbler`` provides several methods for retrieving data specific to a single group, specified
 via the ``setGroup()`` method:
 
 
@@ -266,7 +266,7 @@ via the ``setGroup()`` method:
 Forums
 ------
 
-``ZendService\Audioscrobbler`` provides a method for retrieving data specific to a single forum, specified via the
+``ZendService\Audioscrobbler\Audioscrobbler`` provides a method for retrieving data specific to a single forum, specified via the
 ``setForum()`` method:
 
 

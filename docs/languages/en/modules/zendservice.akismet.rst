@@ -26,7 +26,7 @@ specifying a 'blog' key in the various method calls.
 Verify an API key
 -----------------
 
-``ZendService\Akismet::verifyKey($key)`` is used to verify that an Akismet *API* key is valid. In most cases, you
+``ZendService\Akismet\Akismet::verifyKey($key)`` is used to verify that an Akismet *API* key is valid. In most cases, you
 will not need to check, but if you need a sanity check, or to determine if a newly acquired key is active, you may
 do so with this method.
 
@@ -35,7 +35,7 @@ do so with this method.
 
    // Instantiate with the API key and a URL to the application or
    // resource being used
-   $akismet = new ZendService\Akismet($apiKey,
+   $akismet = new ZendService\Akismet\Akismet($apiKey,
                                        'http://framework.zend.com/wiki/');
    if ($akismet->verifyKey($apiKey) {
        echo "Key is valid.\n";
@@ -52,7 +52,7 @@ If called with no arguments, ``verifyKey()`` uses the *API* key provided to the 
 Check for spam
 --------------
 
-``ZendService\Akismet::isSpam($data)`` is used to determine if the data provided is considered spam by Akismet. It
+``ZendService\Akismet\Akismet::isSpam($data)`` is used to determine if the data provided is considered spam by Akismet. It
 accepts an associative array as the sole argument. That array requires the following keys be set:
 
 - *user_ip*, the IP address of the user submitting the data (not your IP address, but that of a user on your site).
@@ -151,7 +151,7 @@ Data will occasionally be trapped erroneously as spam by Akismet. For this reaso
 of all data trapped as spam by Akismet and review it periodically. If you find such occurrences, you can submit the
 data to Akismet as "ham", or a false positive (ham is good, spam is not).
 
-``ZendService\Akismet::submitHam()`` takes the same data array as passed to ``isSpam()`` or ``submitSpam()``, and,
+``ZendService\Akismet\Akismet::submitHam()`` takes the same data array as passed to ``isSpam()`` or ``submitSpam()``, and,
 like ``submitSpam()``, does not return a value. An exception will be raised if the *API* key used is invalid.
 
 .. _zendservice.akismet.submitham.example-1:
@@ -179,7 +179,7 @@ like ``submitSpam()``, does not return a value. An exception will be raised if t
 Zend-specific Methods
 ---------------------
 
-While the Akismet *API* only specifies four methods, ``ZendService\Akismet`` has several additional methods that
+While the Akismet *API* only specifies four methods, ``ZendService\Akismet\Akismet`` has several additional methods that
 may be used for retrieving and modifying internal properties.
 
 - ``getBlogUrl()`` and ``setBlogUrl()`` allow you to retrieve and modify the blog *URL* used in requests.

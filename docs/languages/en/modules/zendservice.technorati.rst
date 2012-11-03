@@ -51,7 +51,7 @@ one of the available query methods, and call it providing required arguments.
 
    // create a new ZendService\Technorati
    // with a valid API_KEY
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
    // search Technorati for PHP keyword
    $resultSet = $technorati->search('PHP');
@@ -67,7 +67,7 @@ Each query method accepts an array of optional parameters that can be used to re
 
    // create a new ZendService\Technorati
    // with a valid API_KEY
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
    // filter your query including only results
    // with some authority (Results from blogs with a handful of links)
@@ -88,7 +88,7 @@ for each query call; simply use your current ``ZendService\Technorati`` object a
 
    // create a new ZendService\Technorati
    // with a valid API_KEY
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
    // search Technorati for PHP keyword
    $search = $technorati->search('PHP');
@@ -117,7 +117,7 @@ a collection of result objects. It extends the basic ``ZendService\Technorati\Re
 
    // create a new ZendService\Technorati
    // with a valid API_KEY
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
    // search Technorati for PHP keyword
    // $resultSet is an instance of ZendService\Technorati\SearchResultSet
@@ -138,9 +138,9 @@ specific result object using its position in the result collection.
 .. code-block:: php
    :linenos:
 
-   // create a new ZendService\Technorati
+   // create a new ZendService\Technorati\Technorati
    // with a valid API_KEY
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
    // search Technorati for PHP keyword
    // $resultSet is an instance of ZendService\Technorati\SearchResultSet
@@ -166,9 +166,9 @@ additional objects, such as ``ZendService\Technorati\Author`` and ``ZendService\
 .. code-block:: php
    :linenos:
 
-   // create a new ZendService\Technorati
+   // create a new ZendService\Technorati\Technorati
    // with a valid API_KEY
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
    // get info about weppos author
    $result = $technorati->getInfo('weppos');
@@ -207,7 +207,7 @@ You should always wrap a Technorati query with a ``try ... catch`` block.
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    try {
        $resultSet = $technorati->search('PHP');
    } catch(ZendService\Technorati\Exception $e) {
@@ -234,7 +234,7 @@ please see the `API reference guide`_.
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $key = $technorati->keyInfo();
 
    echo "API Key: " . $key->getApiKey() . "<br />";
@@ -284,7 +284,7 @@ details please see ``ZendService\Technorati::cosmos()`` in the `API reference gu
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $resultSet = $technorati->cosmos('http://devzone.zend.com/');
 
    echo "<p>Reading " . $resultSet->totalResults() .
@@ -303,7 +303,7 @@ Technorati Search
 
 The `Search`_ query lets you see what blogs contain a given search string. It returns a
 :ref:`ZendService\Technorati\SearchResultSet <zendservice.technorati.classes.searchresultset>` object. For full
-details please see ``ZendService\Technorati::search()`` in the `API reference guide`_.
+details please see ``ZendService\Technorati\Technorati::search()`` in the `API reference guide`_.
 
 .. _zendservice.technorati.queries.search.example-1:
 
@@ -312,7 +312,7 @@ details please see ``ZendService\Technorati::search()`` in the `API reference gu
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $resultSet = $technorati->search('zend framework');
 
    echo "<p>Reading " . $resultSet->totalResults() .
@@ -331,7 +331,7 @@ Technorati Tag
 
 The `Tag`_ query lets you see what posts are associated with a given tag. It returns a
 :ref:`ZendService\Technorati\TagResultSet <zendservice.technorati.classes.tagresultset>` object. For full details
-please see ``ZendService\Technorati::tag()`` in the `API reference guide`_.
+please see ``ZendService\Technorati\Technorati::tag()`` in the `API reference guide`_.
 
 .. _zendservice.technorati.queries.tag.example-1:
 
@@ -340,7 +340,7 @@ please see ``ZendService\Technorati::tag()`` in the `API reference guide`_.
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $resultSet = $technorati->tag('php');
 
    echo "<p>Reading " . $resultSet->totalResults() .
@@ -368,7 +368,7 @@ For full details please see ``ZendService\Technorati::dailyCounts()`` in the `AP
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $resultSet = $technorati->dailyCounts('php');
 
    foreach ($resultSet as $result) {
@@ -384,7 +384,7 @@ Technorati TopTags
 
 The `TopTags`_ query provides information on top tags indexed by Technorati. It returns a
 :ref:`ZendService\Technorati\TagsResultSet <zendservice.technorati.classes.tagsresultset>` object. For full
-details please see ``ZendService\Technorati::topTags()`` in the `API reference guide`_.
+details please see ``ZendService\Technorati\Technorati::topTags()`` in the `API reference guide`_.
 
 .. _zendservice.technorati.queries.toptags.example-1:
 
@@ -393,7 +393,7 @@ details please see ``ZendService\Technorati::topTags()`` in the `API reference g
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $resultSet = $technorati->topTags();
 
    echo "<p>Reading " . $resultSet->totalResults() .
@@ -412,7 +412,7 @@ Technorati BlogInfo
 
 The `BlogInfo`_ query provides information on what blog, if any, is associated with a given *URL*. It returns a
 :ref:`ZendService\Technorati\BlogInfoResult <zendservice.technorati.classes.bloginforesult>` object. For full
-details please see ``ZendService\Technorati::blogInfo()`` in the `API reference guide`_.
+details please see ``ZendService\Technorati\Technorati::blogInfo()`` in the `API reference guide`_.
 
 .. _zendservice.technorati.queries.bloginfo.example-1:
 
@@ -421,7 +421,7 @@ details please see ``ZendService\Technorati::blogInfo()`` in the `API reference 
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $result = $technorati->blogInfo('http://devzone.zend.com/');
 
    echo '<h2><a href="' . (string) $result->getWeblog()->getUrl() . '">' .
@@ -434,7 +434,7 @@ Technorati BlogPostTags
 
 The `BlogPostTags`_ query provides information on the top tags used by a specific blog. It returns a
 :ref:`ZendService\Technorati\TagsResultSet <zendservice.technorati.classes.tagsresultset>` object. For full
-details please see ``ZendService\Technorati::blogPostTags()`` in the `API reference guide`_.
+details please see ``ZendService\Technorati\Technorati::blogPostTags()`` in the `API reference guide`_.
 
 .. _zendservice.technorati.queries.blogposttags.example-1:
 
@@ -443,7 +443,7 @@ details please see ``ZendService\Technorati::blogPostTags()`` in the `API refere
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $resultSet = $technorati->blogPostTags('http://devzone.zend.com/');
 
    echo "<p>Reading " . $resultSet->totalResults() .
@@ -462,7 +462,7 @@ Technorati GetInfo
 
 The `GetInfo`_ query tells you things that Technorati knows about a member. It returns a
 :ref:`ZendService\Technorati\GetInfoResult <zendservice.technorati.classes.getinforesult>` object. For full
-details please see ``ZendService\Technorati::getInfo()`` in the `API reference guide`_.
+details please see ``ZendService\Technorati\Technorati::getInfo()`` in the `API reference guide`_.
 
 .. _zendservice.technorati.queries.getinfo.example-1:
 
@@ -490,7 +490,7 @@ Technorati KeyInfo
 
 The KeyInfo query provides information on daily usage of an *API* key. It returns a
 :ref:`ZendService\Technorati\KeyInfoResult <zendservice.technorati.classes.keyinforesult>` object. For full
-details please see ``ZendService\Technorati::keyInfo()`` in the `API reference guide`_.
+details please see ``ZendService\Technorati\Technorati::keyInfo()`` in the `API reference guide`_.
 
 .. _zendservice.technorati.classes:
 
@@ -571,7 +571,7 @@ result objects via the *PHP* ``foreach()`` statement.
    :linenos:
 
    // run a simple query
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $resultSet = $technorati->search('php');
 
    // $resultSet is now an instance of

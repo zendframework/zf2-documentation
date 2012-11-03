@@ -25,7 +25,7 @@ Canadian postal code:
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new ZendService\StrikeIron(array('username' => 'your-username',
+   $strikeIron = new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    // Get a client for the Zip Code Information service
@@ -82,7 +82,7 @@ The service contains a ``verifyAddressUSA()`` method that will verify an address
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new ZendService\StrikeIron(array('username' => 'your-username',
+   $strikeIron = new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    // Get a client for the Zip Code Information service
@@ -135,7 +135,7 @@ tax data for the United States and Canada, respectively.
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new ZendService\StrikeIron(array('username' => 'your-username',
+   $strikeIron = new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    // Get a client for the Sales & Use Tax Basic service

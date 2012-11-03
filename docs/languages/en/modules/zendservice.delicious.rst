@@ -19,7 +19,7 @@ public data of all users.
 .. code-block:: php
    :linenos:
 
-   $delicious = new ZendService\Delicious('username', 'password');
+   $delicious = new ZendService\Delicious\Delicious('username', 'password');
    $posts = $delicious->getAllPosts();
 
    foreach ($posts as $post) {
@@ -33,7 +33,7 @@ public data of all users.
 Retrieving posts
 ----------------
 
-``ZendService\Delicious`` provides three methods for retrieving posts: ``getPosts()``, ``getRecentPosts()`` and
+``ZendService\Delicious\Delicious`` provides three methods for retrieving posts: ``getPosts()``, ``getRecentPosts()`` and
 ``getAllPosts()``. All of these methods return an instance of ``ZendService\Delicious\PostList``, which holds all
 retrieved posts.
 
@@ -86,7 +86,7 @@ For easier data access this class implements the *Countable*, *Iterator*, and *A
 .. code-block:: php
    :linenos:
 
-   $delicious = new ZendService\Delicious('username', 'password');
+   $delicious = new ZendService\Delicious\Delicious('username', 'password');
    $posts = $delicious->getAllPosts();
 
    // count posts
@@ -120,7 +120,7 @@ when only a single tag needs to be specified.
 .. code-block:: php
    :linenos:
 
-   $delicious = new ZendService\Delicious('username', 'password');
+   $delicious = new ZendService\Delicious\Delicious('username', 'password');
    $posts = $delicious->getAllPosts();
 
    // Print posts having "php" and "zend" tags
@@ -138,7 +138,7 @@ Posts may be filtered by *URL* matching a specified regular expression using the
 .. code-block:: php
    :linenos:
 
-   $delicious = new ZendService\Delicious('username', 'password');
+   $delicious = new ZendService\Delicious\Delicious('username', 'password');
    $posts = $delicious->getAllPosts();
 
    // Print posts having "help" in the URL
@@ -159,7 +159,7 @@ Editing posts
 .. code-block:: php
    :linenos:
 
-   $delicious = new ZendService\Delicious('username', 'password');
+   $delicious = new ZendService\Delicious\Delicious('username', 'password');
    $posts = $delicious->getPosts();
 
    // set title
@@ -176,7 +176,7 @@ Every setter method returns the post object so that you can chain method calls u
 .. code-block:: php
    :linenos:
 
-   $delicious = new ZendService\Delicious('username', 'password');
+   $delicious = new ZendService\Delicious\Delicious('username', 'password');
    $posts = $delicious->getPosts();
 
    $posts[0]->setTitle('New title')
@@ -198,7 +198,7 @@ object.
 .. code-block:: php
    :linenos:
 
-   $delicious = new ZendService\Delicious('username', 'password');
+   $delicious = new ZendService\Delicious\Delicious('username', 'password');
 
    // by specifying URL
    $delicious->deletePost('http://framework.zend.com');
@@ -226,7 +226,7 @@ calling the ``save()`` method.
 .. code-block:: php
    :linenos:
 
-   $delicious = new ZendService\Delicious('username', 'password');
+   $delicious = new ZendService\Delicious\Delicious('username', 'password');
 
    // create a new post and save it (with method call chaining)
    $delicious->createNewPost('Zend Framework', 'http://framework.zend.com')
@@ -251,7 +251,7 @@ Tags
 .. code-block:: php
    :linenos:
 
-   $delicious = new ZendService\Delicious('username', 'password');
+   $delicious = new ZendService\Delicious\Delicious('username', 'password');
 
    // get all tags
    print_r($delicious->getTags());
@@ -271,7 +271,7 @@ Bundles
 .. code-block:: php
    :linenos:
 
-   $delicious = new ZendService\Delicious('username', 'password');
+   $delicious = new ZendService\Delicious\Delicious('username', 'password');
 
    // get all bundles
    print_r($delicious->getBundles());
@@ -318,7 +318,7 @@ The del.icio.us web *API* allows access to the public data of all users.
    :linenos:
 
    // username and password are not required
-   $delicious = new ZendService\Delicious();
+   $delicious = new ZendService\Delicious\Delicious();
 
    // get fans of user someUser
    print_r($delicious->getUserFans('someUser'));
