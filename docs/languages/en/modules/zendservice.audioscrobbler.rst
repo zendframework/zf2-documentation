@@ -3,7 +3,7 @@
 ZendService\Audioscrobbler
 ===========================
 
-.. _zendservice.introduction:
+.. _zendservice.audioscrobbler.introduction:
 
 Introduction
 ------------
