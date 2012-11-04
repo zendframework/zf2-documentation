@@ -199,6 +199,19 @@
    modules/zend.xmlrpc.server
    modules/zendservice.akismet
    modules/zendservice.amazon
+   modules/zendservice.amazon.ec2
+   modules/zendservice.amazon.ec2.instance
+   modules/zendservice.amazon.ec2.windows-instance
+   modules/zendservice.amazon.ec2.reserved-instance
+   modules/zendservice.amazon.ec2.cloud-watch
+   modules/zendservice.amazon.ec2.image
+   modules/zendservice.amazon.ec2.ebs
+   modules/zendservice.amazon.ec2.elasticip
+   modules/zendservice.amazon.ec2.keypair
+   modules/zendservice.amazon.ec2.regions-and-avalibility-zones
+   modules/zendservice.amazon.ec2.securitygroups
+   modules/zendservice.amazon.s3
+   modules/zendservice.amazon.sqs
    modules/zendservice.audioscrobbler
    modules/zendservice.delicious
    modules/zendservice.developer-garden
@@ -206,12 +219,21 @@
    modules/zendservice.livedocx
    modules/zendservice.nirvanix
    modules/zendservice.rackspace
+   modules/zendservice.rackspace.files
+   modules/zendservice.rackspace.servers
    modules/zendservice.re-captcha
    modules/zendservice.slide-share
    modules/zendservice.strike-iron.overview
+   modules/zendservice.strike-iron.bundled-services
+   modules/zendservice.strike-iron.advanced-uses
    modules/zendservice.technorati
    modules/zendservice.twitter
+   modules/zendservice.twitter.search
    modules/zendservice.windows-azure
+   modules/zendservice.windows-azure.blob
+   modules/zendservice.windows-azure.queue
+   modules/zendservice.windows-azure
+   modules/zendservice.windows-azure.table
    ref/copyrights
 
 |IntroductiontoZendFramework|
@@ -667,6 +689,19 @@ ZendService\\Amazon
 ^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.amazon`
+        * :doc:`modules/zendservice.amazon.ec2`
+        * :doc:`modules/zendservice.amazon.ec2.instance`
+        * :doc:`modules/zendservice.amazon.ec2.windows-instance`
+        * :doc:`modules/zendservice.amazon.ec2.reserved-instance`
+        * :doc:`modules/zendservice.amazon.ec2.cloud-watch`
+        * :doc:`modules/zendservice.amazon.ec2.image`
+        * :doc:`modules/zendservice.amazon.ec2.ebs`
+        * :doc:`modules/zendservice.amazon.ec2.elasticip`
+        * :doc:`modules/zendservice.amazon.ec2.keypair`
+        * :doc:`modules/zendservice.amazon.ec2.regions-and-avalibility-zones`
+        * :doc:`modules/zendservice.amazon.ec2.securitygroups`
+        * :doc:`modules/zendservice.amazon.s3`
+        * :doc:`modules/zendservice.amazon.sqs`
 
 ZendService\\Audioscrobbler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -716,7 +751,9 @@ ZendService\\SlideShare
 ZendService\\StrikeIron
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc:`modules/zendservice.strike-iron`
+        * :doc:`modules/zendservice.strike-iron.overview`
+        * :doc:`modules/zendservice.strike-iron.bundled-services`
+        * :doc:`modules/zendservice.strike-iron.advanced-uses`
 
 ZendService\\Technorati
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -727,11 +764,15 @@ ZendService\\Twitter
 ^^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.twitter`
+        * :doc:`modules/zendservice.twitter.search`
 
 ZendService\\Windows Azure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.windows-azure`
+        * :doc:`modules/zendservice.windows-azure.blob`
+        * :doc:`modules/zendservice.windows-azure.queue`
+        * :doc:`modules/zendservice.windows-azure.table`
 
 .. _zend.copyright:
 
