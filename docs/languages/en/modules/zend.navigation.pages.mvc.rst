@@ -1,7 +1,7 @@
 .. _zend.navigation.pages.mvc:
 
-Zend\Navigation\Page\Mvc
-========================
+Zend\\Navigation\\Page\\Mvc
+===========================
 
 *MVC* pages are defined using *MVC* parameters known from the ``Zend\Mvc`` component. An *MVC* page will use
 ``Zend\Mvc\Router\RouteStackInterface`` internally in the ``getHref()`` method to generate hrefs, and the
@@ -168,5 +168,3 @@ the *URL* for the page.
 
    // returns: /a/42
    $page->getHref();
-
-
