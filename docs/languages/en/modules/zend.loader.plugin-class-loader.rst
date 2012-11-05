@@ -54,7 +54,7 @@ name associations, and then using it to retrieve the class name associated with 
    **Case Sensitivity**
 
    The ``PluginClassLoader`` is designed to do case-insensitive plugin name lookups. While the above example
-   defines a "xForwarededFor" plugin name, internally, this will be stored as simply "xforwardedfor". If another
+   defines a "xForwardedFor" plugin name, internally, this will be stored as simply "xforwardedfor". If another
    plugin is registered with simply a different word case, it will overwrite this entry.
 
 .. _zend.loader.plugin-class-loader.options:
