@@ -4,7 +4,7 @@
 PregReplace
 ===========
 
-``Zend_Filter_PregReplace`` performs a search using regular expressions and replaces all found elements.
+``Zend\Filter\PregReplace`` performs a search using regular expressions and replaces all found elements.
 
 The option ``match`` has to be given to set the pattern which will be searched for. It can be a string for a single
 pattern, or an array of strings for multiple pattern.
@@ -15,7 +15,7 @@ a single pattern, or an array of strings for multiple pattern.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_PregReplace(array('match' => '/bob/',
+   $filter = new Zend\Filter\PregReplace(array('match' => '/bob/',
                                                'replace' => 'john'));
    $input  = 'Hy bob!';
 
@@ -28,7 +28,7 @@ replacement pattern you can use ``getReplacement()`` and ``setReplacement()``.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_PregReplace();
+   $filter = new Zend\Filter\PregReplace();
    $filter->setMatchPattern(array('bob', 'Hy'))
           ->setReplacement(array('john', 'Bye'));
    $input  = 'Hy bob!";

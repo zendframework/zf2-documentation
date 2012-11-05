@@ -27,7 +27,7 @@ danych o postępie działań. W przypadku operacji na pliku, użycie może wygl�
 .. code-block:: php
    :linenos:
 
-   $progressBar = new Zend_ProgressBar($adapter, 0, $fileSize);
+   $progressBar = new Zend\ProgressBar\ProgressBar($adapter, 0, $fileSize);
 
    while (!feof($fp)) {
        // Wykonanie operacji

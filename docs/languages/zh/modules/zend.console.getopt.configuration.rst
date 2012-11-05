@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.console.getopt.configuration:
 
-配置 Zend_Console_Getopt
+配置 Zend\Console\Getopt
 ======================
 
 .. _zend.console.getopt.configuration.addrules:
@@ -9,7 +9,7 @@
 添加选项规则
 ------
 
-使用 *addRules()*\ 方法，可以添加更多除了在 *Zend_Console_Getopt*\
+使用 *addRules()*\ 方法，可以添加更多除了在 *Zend\Console\Getopt*\
 构造器中指定的选项规则。 *addRules()*
 的参数和给这个类的构造器的第一个参数相同。它可以是符合短语法选项规范的字符串，也可以是符合长选项语法的联合数组。关于选项规范语法的细节参见
 :ref:`声明 Getopt 规则 <zend.console.getopt.rules>`\ 。
@@ -21,7 +21,7 @@
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->addRules(
      array(
        'verbose|v' => 'Print verbose output'
@@ -30,7 +30,7 @@
 
 
 上述例子示例添加带有 "*-v*" 别名的 "*--verbose*"
-选项给在定义在调用构造器的一组选项。注意你可以在 *Zend_Console_Getopt*\
+选项给在定义在调用构造器的一组选项。注意你可以在 *Zend\Console\Getopt*\
 的同一实例中混合使用短格式选项和长格式选项。
 
 .. _zend.console.getopt.configuration.addhelp:
@@ -49,7 +49,7 @@
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setHelp(
        array(
            'a' => 'apple option, with no parameter',
@@ -73,7 +73,7 @@
 flag
 的新的别名。这些别名和已存在的别名合并。换句话说，早先声明的别名仍然有效。
 
-一个别名只能声明一次。如果企图重新定义一个别名， *Zend_Console_Getopt_Exception*
+一个别名只能声明一次。如果企图重新定义一个别名， *Zend\Console_Getopt\Exception*
 将被抛出。
 
 .. _zend.console.getopt.configuration.addaliases.example:
@@ -83,7 +83,7 @@ flag
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setAliases(
        array(
            'a' => 'apple',
@@ -103,7 +103,7 @@ flag
 添加参数列表
 ------
 
-缺省地， *Zend_Console_Getopt* 使用 *$_SERVER['argv']*
+缺省地， *Zend\Console\Getopt* 使用 *$_SERVER['argv']*
 作为用来解析的命令行参数数组。你可以另外指定参数数组作为第二个构造器参数。最后，你可以用
 *addArguments()* 方法追加更多的参数给这些已经使用的参数，或者你可以使用 *setArguments()*
 方法替换当前的参数数组。对于这两种情况，这些方法的参数是简单的字符串数组。前者追加数组到当前参数，后者替换当前参数的数组。
@@ -116,7 +116,7 @@ flag
    :linenos:
 
    // 缺省地，构造器使用 $_SERVER['argv']
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
 
    // 追加数组给当前参数
    $opts->addArguments(array('-a', '-p', 'p_parameter', 'non_option_arg'));
@@ -130,7 +130,7 @@ flag
 添加配置
 ----
 
-*Zend_Console_Getopt*
+*Zend\Console\Getopt*
 构造器的第三个参数是个影响返回的对象实例行为的配置选项数组。也可以使用
 *setOptions()* 方法指定配置选项， 或者用 *setOption()* 方法设置一个独立的选项。
 
@@ -138,22 +138,22 @@ flag
 
    **阐明术语 "option"**
 
-   *Zend_Console_Getopt*\ 类的配置使用术语 "option" 来匹配在Zend Framework
-   其它地方使用的术语。这些和 *Zend_Console_Getopt* 类解析的命令行选项不是一回事。
+   *Zend\Console\Getopt*\ 类的配置使用术语 "option" 来匹配在Zend Framework
+   其它地方使用的术语。这些和 *Zend\Console\Getopt* 类解析的命令行选项不是一回事。
 
 当前支持的选项在类中有常量定义。它们的常量标识符（在括号中的文字）列表如下：
 
-- *Zend_Console_Getopt::CONFIG_DASHDASH* ("dashDash")，如果为 true，允许特殊 flag "*--*" 表示 flag
+- *Zend\Console\Getopt::CONFIG_DASHDASH* ("dashDash")，如果为 true，允许特殊 flag "*--*" 表示 flag
   的结尾。带有双短横线的符号不被翻译为选项，即使参数以一个短横线开头。这个配置选项缺省为
   true。
 
-- *Zend_Console_Getopt::CONFIG_IGNORECASE* ("ignoreCase")，如果为 true，如果它们不同，使 flags
+- *Zend\Console\Getopt::CONFIG_IGNORECASE* ("ignoreCase")，如果为 true，如果它们不同，使 flags
   互为别名。这样，"*-a*" 和 "*-A*" 将被认为是同义 flags。这个配置选项缺省为 false。
 
-- *Zend_Console_Getopt::CONFIG_RULEMODE*\ ("ruleMode") 可以有 *Zend_Console_Getopt::MODE_ZEND* ("zend") 和
-  *Zend_Console_Getopt::MODE_GNU* ("gnu")
+- *Zend\Console\Getopt::CONFIG_RULEMODE*\ ("ruleMode") 可以有 *Zend\Console\Getopt::MODE_ZEND* ("zend") 和
+  *Zend\Console\Getopt::MODE_GNU* ("gnu")
   的值。使用这个选项不是必须的除非你用另外的语法形式扩展这个类。这两个方法在
-  *Zend_Console_Getopt* 类中明确地支持。如果指定器是字符串， 这个类就假定为 *MODE_GNU*
+  *Zend\Console\Getopt* 类中明确地支持。如果指定器是字符串， 这个类就假定为 *MODE_GNU*
   ，否则它就假定为 *MODE_ZEND* 。但如果你扩展这个类并添加更多语法形式，
   你需要用这个选项来指定模式。
 
@@ -168,7 +168,7 @@ flag
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setOption('ignoreCase', true);
 
 
@@ -182,7 +182,7 @@ flag
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setOptions(
        array(
            'ignoreCase' => true,

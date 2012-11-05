@@ -26,7 +26,7 @@ Zend_TimeSync の動作
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_TimeSync('0.pool.ntp.org');
+   $server = new Zend\TimeSync\TimeSync('0.pool.ntp.org');
 
    print $server->getDate()->getIso();
 
@@ -60,7 +60,7 @@ Zend_TimeSync の動作
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_TimeSync(array('0.pool.ntp.org',
+   $server = new Zend\TimeSync\TimeSync(array('0.pool.ntp.org',
                                      '1.pool.ntp.org',
                                      '2.pool.ntp.org'));
    $server->addServer('3.pool.ntp.org');
@@ -79,7 +79,7 @@ Zend_TimeSync の動作
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_TimeSync(array('generic'  => '0.pool.ntp.org',
+   $server = new Zend\TimeSync\TimeSync(array('generic'  => '0.pool.ntp.org',
                                      'fallback' => '1.pool.ntp.org',
                                      'reserve'  => '2.pool.ntp.org'));
    $server->addServer('3.pool.ntp.org', 'additional');
@@ -107,7 +107,7 @@ NTP
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+   $server = new Zend\TimeSync\TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
                                      'fallback' => 'ntp:\\1.pool.ntp.org',
                                      'reserve'  => 'ntp:\\2.pool.ntp.org'));
    $server->addServer('sntp:\\internal.myserver.com', 'additional');
@@ -134,7 +134,7 @@ NTP
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org:200',
+   $server = new Zend\TimeSync\TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org:200',
                                      'fallback' => 'ntp:\\1.pool.ntp.org'));
    $server->addServer('sntp:\\internal.myserver.com:399', 'additional');
 
@@ -166,14 +166,14 @@ NTP
 .. code-block:: php
    :linenos:
 
-   Zend_TimeSync::setOptions(array('timeout' => 3, 'myoption' => 'timesync'));
-   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+   Zend\TimeSync\TimeSync::setOptions(array('timeout' => 3, 'myoption' => 'timesync'));
+   $server = new Zend\TimeSync\TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
                                      'fallback' => 'ntp:\\1.pool.ntp.org'));
    $server->addServer('sntp:\\internal.myserver.com', 'additional');
 
    print $server->getDate()->getIso();
-   print_r(Zend_TimeSync::getOptions();
-   print "Timeout = " . Zend_TimeSync::getOptions('timeout');
+   print_r(Zend\TimeSync\TimeSync::getOptions();
+   print "Timeout = " . Zend\TimeSync\TimeSync::getOptions('timeout');
 
 ご覧のとおり、 ``Zend_TimeSync`` のオプションは静的なものです。 つまり、すべての
 ``Zend_TimeSync`` のインスタンスで同じ設定が共用されます。
@@ -196,7 +196,7 @@ NTP
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+   $server = new Zend\TimeSync\TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
                                      'fallback' => 'ntp:\\1.pool.ntp.org'));
    $server->addServer('sntp:\\internal.myserver.com', 'additional');
 
@@ -214,7 +214,7 @@ NTP
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+   $server = new Zend\TimeSync\TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
                                      'fallback' => 'ntp:\\1.pool.ntp.org'));
 
    print_r ($server->getInfo());
@@ -239,12 +239,12 @@ NTP
            'invalid_b'  => 'sntp://b.foo.bar.org',
    );
 
-   $server = new Zend_TimeSync($serverlist);
+   $server = new Zend\TimeSync\TimeSync($serverlist);
 
    try {
        $result = $server->getDate();
        echo $result->getIso();
-   } catch (Zend_TimeSync_Exception $e) {
+   } catch (Zend\TimeSync\Exception $e) {
 
        $exceptions = $e->get();
 

@@ -4,14 +4,14 @@
 オプションおよび引数の取得
 =============
 
-``Zend_Console_Getopt`` オブジェクトでオプションを宣言し、
+``Zend\Console\Getopt`` オブジェクトでオプションを宣言し、
 コマンドラインあるいは配列から引数を受け取ったら、
 このオブジェクトを使用して、ユーザがプログラムを起動した際に
 指定したオプションを取得できます。
 このクラスはマジックメソッドを実装しているので、
 オプションの名前を指定して問い合わせることができます。
 
-実際にデータをパースするのは、 ``Zend_Console_Getopt``
+実際にデータをパースするのは、 ``Zend\Console\Getopt``
 に対する最初の問い合わせを行ったときです。
 つまり、パースを行う前にいくつかのメソッドで
 オプションや引数、ヘルプ文字列や設定項目を変更することができるということです。
@@ -22,7 +22,7 @@ Getopt の例外処理
 ------------
 
 ユーザがコマンドラインで無効な引数を指定すると、 パース関数は
-``Zend_Console_Getopt_Exception``
+``Zend\Console_Getopt\Exception``
 をスローします。この例外を、アプリケーションのコードで処理する必要があります。
 ``parse()`` メソッドを使用して、オブジェクトに引数をパースさせます。 **try**
 ブロック内で ``parse()`` を実行できるので、便利です。
@@ -39,9 +39,9 @@ Getopt の例外処理
    :linenos:
 
    try {
-       $opts = new Zend_Console_Getopt('abp:');
+       $opts = new Zend\Console\Getopt('abp:');
        $opts->parse();
-   } catch (Zend_Console_Getopt_Exception $e) {
+   } catch (Zend\Console_Getopt\Exception $e) {
        echo $e->getUsageMessage();
        exit;
    }
@@ -75,7 +75,7 @@ Getopt の例外処理
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $b = $opts->getOption('b');
    $p_parameter = $opts->getOption('p');
 
@@ -90,7 +90,7 @@ Getopt の例外処理
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    if (isset($opts->b)) {
        echo "オプション b を取得しました。\n";
    }
@@ -143,11 +143,11 @@ Getopt の例外処理
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setArguments(array('-p', 'p_parameter', 'filename'));
    $args = $opts->getRemainingArgs(); // array('filename') を返します
 
-``Zend_Console_Getopt`` は、 *GNU* の慣習である「ダッシュふたつだけの引数があったら、
+``Zend\Console\Getopt`` は、 *GNU* の慣習である「ダッシュふたつだけの引数があったら、
 オプションはそこで終わりとみなす」をサポートしています。
 その後に続く引数は、非オプション引数として扱わなければなりません。
 これは、オプションではない引数がダッシュで始まる場合などに有用です。 たとえば

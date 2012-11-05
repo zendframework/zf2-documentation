@@ -28,7 +28,7 @@
    :linenos:
 
     // setting the controller and action name as title segments:
-   $request = Zend_Controller_Front::getInstance()->getRequest();
+   $request = Zend\Controller\Front::getInstance()->getRequest();
    $this->headTitle($request->getActionName())
         ->headTitle($request->getControllerName());
 

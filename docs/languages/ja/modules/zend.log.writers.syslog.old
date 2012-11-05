@@ -4,11 +4,11 @@
 システムログへの書き込み
 ============
 
-``Zend_Log_Writer_Syslog``\ は、 システムログ (syslog) にログ項目を書きます。
+``Zend\Log_Writer\Syslog``\ は、 システムログ (syslog) にログ項目を書きます。
 内部的には、それは *PHP*\ の ``openlog()``\ や ``closelog()``\ 、 そして ``syslog()``\
 関数の代わりです。
 
-``Zend_Log_Writer_Syslog``\ が役立つ例の１つは、
+``Zend\Log_Writer\Syslog``\ が役立つ例の１つは、
 クラスター形成されたマシンからシステムログ機能を通して集計されるログです。
 多くのシステムでは、システム・イベントをリモートでログ収集できます。
 それにより、システム管理者が単一のログファイルでマシンのクラスタをモニターできるようになります。
@@ -22,7 +22,7 @@
    :linenos:
 
    //インスタンス生成時に任意で "application" キーを渡します。
-   $writer = new Zend_Log_Writer_Syslog(array('application' => 'FooBar'));
+   $writer = new Zend\Log_Writer\Syslog(array('application' => 'FooBar'));
 
    //そのほかいつでも
    $writer->setApplicationName('BarBaz');
@@ -40,7 +40,7 @@
    :linenos:
 
    //インスタンス生成時に任意で "facility" キーを渡します。
-   $writer = new Zend_Log_Writer_Syslog(array('facility' => LOG_AUTH));
+   $writer = new Zend\Log_Writer\Syslog(array('facility' => LOG_AUTH));
 
    //そのほかいつでも
    $writer->setFacility(LOG_USER);

@@ -1,9 +1,9 @@
 .. _zend.progressbar.adapter.console:
 
-Zend_ProgressBar_Adapter_Console
+Zend\ProgressBar\Adapter\Console
 ================================
 
-``Zend_ProgressBar_Adapter_Console`` is a text-based adapter for terminals. It can automatically detect terminal
+``Zend\ProgressBar\Adapter\Console`` is a text-based adapter for terminals. It can automatically detect terminal
 widths but supports custom widths as well. You can define which elements are displayed with the progressbar and as
 well customize the order of them. You can also define the style of the progressbar itself.
 
@@ -14,16 +14,16 @@ well customize the order of them. You can also define the style of the progressb
    *shell_exec* is required for this feature to work on \*nix based systems. On windows, there is always a fixed
    terminal width of 80 character, so no recognition is required there.
 
-You can set the adapter options either via the *set** methods or give an array or a ``Zend_Config`` instance with
+You can set the adapter options either via the *set** methods or give an array or a ``Zend\Config\Config`` instance with
 options as first parameter to the constructor. The available options are:
 
 - *outputStream*: A different output-stream, if you don't want to stream to STDOUT. Can be any other stream like
   *php://stderr* or a path to a file.
 
-- *width*: Either an integer or the ``AUTO`` constant of ``Zend_Console_ProgressBar``.
+- *width*: Either an integer or the ``AUTO`` constant of ``Zend\Console\ProgressBar``.
 
 - *elements*: Either ``NULL`` for default or an array with at least one of the following constants of
-  ``Zend_Console_ProgressBar`` as value:
+  ``Zend\Console\ProgressBar`` as value:
 
   - ``ELEMENT_PERCENT``: The current value in percent.
 

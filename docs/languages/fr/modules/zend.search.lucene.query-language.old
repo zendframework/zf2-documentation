@@ -4,7 +4,7 @@
 Langage de requêtes
 ===================
 
-Java Lucene et ``Zend_Search_Lucene`` fournissent des langages de requêtes plutôt puissants.
+Java Lucene et ``Zend\Search\Lucene`` fournissent des langages de requêtes plutôt puissants.
 
 Ces langages sont pratiquement pareils, exceptées les quelques différences ci-dessous.
 
@@ -39,15 +39,15 @@ défini par les paramètres courants.
 La première différence et la plus significative avec Java Lucene est que par défaut les termes sont cherchés
 dans **tous les champs**.
 
-Il y a deux méthodes statiques dans la classe ``Zend_Search_Lucene`` qui permettent au développeur de configurer
+Il y a deux méthodes statiques dans la classe ``Zend\Search\Lucene`` qui permettent au développeur de configurer
 ces paramètres :
 
 .. code-block:: php
    :linenos:
 
-   $defaultSearchField = Zend_Search_Lucene::getDefaultSearchField();
+   $defaultSearchField = Zend\Search\Lucene::getDefaultSearchField();
    ...
-   Zend_Search_Lucene::setDefaultSearchField('contents');
+   Zend\Search\Lucene::setDefaultSearchField('contents');
 
 La valeur ``NULL`` indique que la recherche est effectuée dans tous les champs. C'est le paramétrage par défaut
 
@@ -130,8 +130,8 @@ Depuis la version 1.7.7 du ZF, les termes avec joker requierent un préfixe. La 
 est de 3 (comme dans Java Lucene). Ainsi les termes "\*", "te?t" ou "wr?t" causeront une exception [#]_.
 
 Ce paramètre peut être modifié à l'aide des méthodes
-*Zend_Search_Lucene_Search_Query_Wildcard::getMinPrefixLength()* et
-*Zend_Search_Lucene_Search_Query_Wildcard::setMinPrefixLength()*.
+*Zend\Search\Lucene\Search\Query\Wildcard::getMinPrefixLength()* et
+*Zend\Search\Lucene\Search\Query\Wildcard::setMinPrefixLength()*.
 
 .. _zend.search.lucene.query-language.modifiers:
 
@@ -172,7 +172,7 @@ Carmen.
 
 Les requêtes d'intervalles inclusives utilisent des crochets. Les exclusives utilisent des accolades.
 
-Si aucun champ n'est spécifié, par défaut ``Zend_Search_Lucene`` cherchera l'intervalle spécifié dans tous les
+Si aucun champ n'est spécifié, par défaut ``Zend\Search\Lucene`` cherchera l'intervalle spécifié dans tous les
 champs.
 
    .. code-block:: text
@@ -187,7 +187,7 @@ champs.
 Recherches floues
 -----------------
 
-``Zend_Search_Lucene`` tout comme Java Lucene supporte les recherches floues basées sur les algorithmes
+``Zend\Search\Lucene`` tout comme Java Lucene supporte les recherches floues basées sur les algorithmes
 "Levenshtein Distance" ou "Edit Distance". Pour effectuer une recherche floue, utilisez le symbole tilde "~" à la
 fin du mot pour un terme simple. Par exemple pour chercher un terme similaire à "roam", utilisez la recherche
 floue suivante :
@@ -216,9 +216,9 @@ Limitation des termes correspondants
 Les recherches floues, par intervalle ou par joker peuvent correspondre à trop de termes. Cela peut causer
 d'énormes baisses de performances.
 
-Du coup, Zend_Search_Lucene définit une limite dans le nombre de correspondances par requêtes (ou
+Du coup, Zend\Search\Lucene définit une limite dans le nombre de correspondances par requêtes (ou
 sous-requêtes). Cette limite peut être récupérée et définie à l'aide des méthodes
-*Zend_Search_Lucene::getTermsPerQueryLimit()*/*Zend_Search_Lucene::setTermsPerQueryLimit($limit)*.
+*Zend\Search\Lucene::getTermsPerQueryLimit()*/*Zend\Search\Lucene::setTermsPerQueryLimit($limit)*.
 
 La limite du nombre de correspondances par requête est de 1024.
 
@@ -243,7 +243,7 @@ exemple pour retrouver "Zend" et "Framework" avec 10 mots entre eux dans un docu
 Booster un terme
 ----------------
 
-Java Lucene et ``Zend_Search_Lucene`` fournissent le niveau de pertinence des documents basé sur les termes
+Java Lucene et ``Zend\Search\Lucene`` fournissent le niveau de pertinence des documents basé sur les termes
 trouvés. Pour booster la pertinence d'un terme, utilisez le symbole circonflexe "^" avec un facteur de boost (un
 nombre) à la fin du terme que vous cherchez. Plus le facteur de boost est élevé, plus la pertinence du terme le
 sera.
@@ -282,10 +282,10 @@ Opérateurs booléens
 
 Les opérateurs booléens permettent de combiner des termes avec des opérateurs logiques. Lucene supporte AND,
 "+", OR, NOT et "-" en tant qu'opérateurs booléens. Dans Java Lucene, les opérateurs booléens doivent être en
-MAJUSCULE. Ce n'est pas nécessaire dans ``Zend_Search_Lucene``.
+MAJUSCULE. Ce n'est pas nécessaire dans ``Zend\Search\Lucene``.
 
 Les opérateurs AND, OR et NOT et "+", "-" définissent deux styles différents pour construire des requêtes
-booléennes. Contrairement à Java Lucene, ``Zend_Search_Lucene`` ne permet pas de mixer ces deux styles.
+booléennes. Contrairement à Java Lucene, ``Zend\Search\Lucene`` ne permet pas de mixer ces deux styles.
 
 Si le style AND/OR/NOT est utilisé, un opérateur AND ou OR devra être présent entre chaque terme de requête.
 Chaque terme peut également être précédé de l'opérateur NOT. L'opérateur AND à la priorité sur
@@ -405,18 +405,18 @@ requête :
 
 
 L'opérateur booléen par défaut peut être défini ou récupéré avec les méthodes
-``Zend_Search_Lucene_Search_QueryParser::setDefaultOperator($operator)`` et
-``Zend_Search_Lucene_Search_QueryParser::getDefaultOperator()``, respectivement.
+``Zend\Search\Lucene\Search\QueryParser::setDefaultOperator($operator)`` et
+``Zend\Search\Lucene\Search\QueryParser::getDefaultOperator()``, respectivement.
 
-Ces méthodes travaillent avec les constantes ``Zend_Search_Lucene_Search_QueryParser::B_AND`` et
-``Zend_Search_Lucene_Search_QueryParser::B_OR``.
+Ces méthodes travaillent avec les constantes ``Zend\Search\Lucene\Search\QueryParser::B_AND`` et
+``Zend\Search\Lucene\Search\QueryParser::B_OR``.
 
 .. _zend.search.lucene.query-language.grouping:
 
 Groupement
 ----------
 
-Java Lucene et ``Zend_Search_Lucene`` supportent l'usage de parenthèses pour grouper des clauses et former des
+Java Lucene et ``Zend\Search\Lucene`` supportent l'usage de parenthèses pour grouper des clauses et former des
 sous-requêtes. Cela peut s'avérer utile si vous voulez contrôler la priorité des opérateurs logiques pour une
 requête ou bien mixer différents styles de requête :
 
@@ -425,7 +425,7 @@ requête ou bien mixer différents styles de requête :
 
       +(framework OR library) +php
 
-``Zend_Search_Lucene`` supporte l'imbrication de requêtes à n'importe quel niveau.
+``Zend\Search\Lucene`` supporte l'imbrication de requêtes à n'importe quel niveau.
 
 .. _zend.search.lucene.query-language.field-grouping:
 
@@ -470,6 +470,6 @@ l'échapper. Par exemple, pour chercher (1+1):2, utilisez la requête :
 
 .. _`ici`: http://lucene.apache.org/java/2_3_0/queryparsersyntax.html
 
-.. [#] Veuillez noter qu'il ne s'agit pas d'une *Zend_Search_Lucene_Search_QueryParserException*, mais d'une
-       *Zend_Search_Lucene_Exception*. Elle est levée pendant l'opération de réécriture de la requête
+.. [#] Veuillez noter qu'il ne s'agit pas d'une *Zend\Search\Lucene\Search\QueryParserException*, mais d'une
+       *Zend\Search_Lucene\Exception*. Elle est levée pendant l'opération de réécriture de la requête
        (exécution).

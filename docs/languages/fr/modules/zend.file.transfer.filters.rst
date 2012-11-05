@@ -1,15 +1,15 @@
 .. EN-Revision: none
 .. _zend.file.transfer.filters:
 
-Filtres pour Zend_File_Transfer
+Filtres pour Zend\File\Transfer
 ===============================
 
-``Zend_File_Transfer`` est fourni avec de multiples filtres qui peuvent être utilisés pour réaliser différentes
+``Zend\File\Transfer`` est fourni avec de multiples filtres qui peuvent être utilisés pour réaliser différentes
 tâches qui doivent être réalisées souvent sur les fichier. Notez que tout filtre est appliqué après la
 validation. De plus les filtres de fichiers se comportent légèrement différemment des autres filtres. Ils
 retourneront toujours le nom de fichier et non le contenu modifié (ce qui serait une mauvaise idée en travaillant
-avec un fichier d'1Go par exemple). Tous les filtres fournis avec ``Zend_File_Transfer`` peuvent être trouvés
-dans le composant ``Zend_Filter`` et sont nommés ``Zend_Filter_File_*``. Les filtres suivants sont actuellement
+avec un fichier d'1Go par exemple). Tous les filtres fournis avec ``Zend\File\Transfer`` peuvent être trouvés
+dans le composant ``Zend_Filter`` et sont nommés ``Zend\Filter_File\*``. Les filtres suivants sont actuellement
 disponibles :
 
 - *Decrypt*\  : ce filtre peut décrypter un fichier.
@@ -25,7 +25,7 @@ disponibles :
 
 .. _zend.file.transfer.filters.usage:
 
-Utiliser les filtres avec Zend_File_Transfer
+Utiliser les filtres avec Zend\File\Transfer
 --------------------------------------------
 
 L'utilisation des filtres est assez simple. Il existe de multiples méthodes pour ajouter et manipuler les filtres.
@@ -59,7 +59,7 @@ L'utilisation des filtres est assez simple. Il existe de multiples méthodes pou
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Paramètre un dossier de destination
    $upload->addFilter('Rename', 'C:\image\uploads');
@@ -79,7 +79,7 @@ filtre donné.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Paramètre un nouveau dossier de destination et
    // le limite seulement à "file2"
@@ -99,7 +99,7 @@ fluide, vous pouvez enchaîner les appels comme montré ci-dessous :
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Renommer différemment chacun des fichiers
    $upload->addFilter('Rename', 'file1', 'C:\picture\newjpg')
@@ -117,7 +117,7 @@ Filtre Decrypt
 
 Le filtre *Decrypt* permet de décrypter un fichier crypté.
 
-Ce filtre se sert de ``Zend_Filter_Decrypt``. Il supporte les extensions *PHP* *Mcrypt* et *OpenSSL*. Reportez vous
+Ce filtre se sert de ``Zend\Filter\Decrypt``. Il supporte les extensions *PHP* *Mcrypt* et *OpenSSL*. Reportez vous
 à la section associée pour voir les détails des possibilités d'options pour le décryptage et connaître les
 options supportées.
 
@@ -133,7 +133,7 @@ original.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
 
    // Adds a filter to decrypt the uploaded encrypted file
    // with mcrypt and the key mykey
@@ -147,7 +147,7 @@ original.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
 
    // Adds a filter to decrypt the uploaded encrypted file
    // with openssl and the provided keys
@@ -163,7 +163,7 @@ Filtre Encrypt
 
 Le filtre *Encrypt* permet de crypter un fichier.
 
-Ce filtre se sert de ``Zend_Filter_Encrypt``. Il supporte les extensions *PHP* *Mcrypt* et *OpenSSL*. Reportez vous
+Ce filtre se sert de ``Zend\Filter\Encrypt``. Il supporte les extensions *PHP* *Mcrypt* et *OpenSSL*. Reportez vous
 à la section associée pour voir les détails des possibilités d'options pour le chiffrement et connaître les
 options supportées.
 
@@ -178,7 +178,7 @@ sera stocké. Si vous supprimez cette option le fichier chiffré écrasera le fi
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
 
    // Adds a filter to encrypt the uploaded file
    // with mcrypt and the key mykey
@@ -192,7 +192,7 @@ sera stocké. Si vous supprimez cette option le fichier chiffré écrasera le fi
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
 
    // Adds a filter to encrypt the uploaded file
    // with openssl and the provided keys
@@ -218,7 +218,7 @@ méthode ``setEncoding()`` pour le paramétrer plus tard.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('MimeType', 'text');
 
    // Ajoute un filtre pour mettre en minuscule les fichiers texte uploadés
@@ -262,7 +262,7 @@ accepte de multiples notations et ces méthodes et constructeur comprennent les 
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
 
    // Paramètre un nouveau dossier pour tous les fichiers
    $upload->addFilter('Rename', 'C:\mypics\new');
@@ -310,7 +310,7 @@ méthode ``setEncoding()`` pour le paramétrer plus tard.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('MimeType', 'text');
 
    // Ajoute un filtre pour mettre en majuscule les fichiers textes uploadés

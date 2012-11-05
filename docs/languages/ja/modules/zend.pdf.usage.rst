@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.pdf.usage:
 
-Zend_Pdf モジュールの使用例
+ZendPdf モジュールの使用例
 ==================
 
 この節では、モジュールの使用例を示します。
@@ -12,13 +12,13 @@ Zend_Pdf モジュールの使用例
 
 .. _zend.pdf.usage.example-1:
 
-.. rubric:: Zend_Pdf モジュールの使用例
+.. rubric:: ZendPdf モジュールの使用例
 
 .. code-block:: php
    :linenos:
 
    /**
-    * @package Zend_Pdf
+    * @package ZendPdf
     * @subpackage demo
     */
 
@@ -28,12 +28,12 @@ Zend_Pdf モジュールの使用例
    }
 
    try {
-       $pdf = Zend_Pdf::load($argv[1]);
-   } catch (Zend_Pdf_Exception $e) {
+       $pdf = ZendPdf\Pdf::load($argv[1]);
+   } catch (ZendPdf\Exception $e) {
        if ($e->getMessage() == 'Can not open \'' . $argv[1] .
                                '\' file for reading.') {
            // ファイルが存在しない場合は新しい PDF を作成します
-           $pdf = new Zend_Pdf();
+           $pdf = new ZendPdf\Pdf();
 
            if (!isset($argv[2])) {
                // ファイルを完全新規に作成しなおします (更新ではありません)
@@ -50,19 +50,19 @@ Zend_Pdf モジュールの使用例
    $pdf->pages = array_reverse($pdf->pages);
 
    // 新しいスタイルを作成します
-   $style = new Zend_Pdf_Style();
-   $style->setFillColor(new Zend_Pdf_Color_Rgb(0, 0, 0.9));
-   $style->setLineColor(new Zend_Pdf_Color_GrayScale(0.2));
+   $style = new ZendPdf\Style();
+   $style->setFillColor(new ZendPdf_Color\Rgb(0, 0, 0.9));
+   $style->setLineColor(new ZendPdf_Color\GrayScale(0.2));
    $style->setLineWidth(3);
    $style->setLineDashingPattern(array(3, 2, 3, 4), 1.6);
-   $fontH = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA_BOLD);
+   $fontH = ZendPdf\Font::fontWithName(ZendPdf\Font::FONT_HELVETICA_BOLD);
    $style->setFont($fontH, 32);
 
    try {
        // 新しい画像オブジェクトを作成します。
        $imageFile = dirname(__FILE__) . '/stamp.jpg';
-       $stampImage = Zend_Pdf_Image::imageWithPath($imageFile);
-   } catch (Zend_Pdf_Exception $e) {
+       $stampImage = ZendPdf\Image::imageWithPath($imageFile);
+   } catch (ZendPdf\Exception $e) {
        // 画像読み込み時の例外処理の例
        if ($e->getMessage() != 'Image extension is not installed.' &&
            $e->getMessage() != 'JPG support is not configured properly.') {
@@ -89,21 +89,21 @@ Zend_Pdf モジュールの使用例
             ->restoreGS();
    }
 
-   // Zend_Pdf オブジェクトが作成した新しいページを追加します
+   // ZendPdf オブジェクトが作成した新しいページを追加します
    // (ページは、指定したドキュメントにアタッチされます)
    $pdf->pages[] = ($page1 = $pdf->newPage('A4'));
 
-   // Zend_Pdf_Page オブジェクトが作成した新しいページを追加します
+   // ZendPdf\Page オブジェクトが作成した新しいページを追加します
    // (ページは、ドキュメントにアタッチされません)
-   $page2 = new Zend_Pdf_Page(Zend_Pdf_Page::SIZE_LETTER_LANDSCAPE);
+   $page2 = new ZendPdf\Page(ZendPdf\Page::SIZE_LETTER_LANDSCAPE);
    $pdf->pages[] = $page2;
 
    // 新しいフォントを作成します
-   $font = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA);
+   $font = ZendPdf\Font::fontWithName(ZendPdf\Font::FONT_HELVETICA);
 
    // フォントを適用してテキストを描画します
    $page1->setFont($font, 36)
-         ->setFillColor(Zend_Pdf_Color_Html::color('#9999cc'))
+         ->setFillColor(ZendPdf_Color\Html::color('#9999cc'))
          ->drawText('Helvetica 36 text string', 60, 500);
 
    // 別のページでフォントオブジェクトを使用します
@@ -111,38 +111,38 @@ Zend_Pdf モジュールの使用例
          ->drawText('Helvetica 24 text string', 60, 500);
 
    // 別のフォントを使用します
-   $fontT = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_TIMES);
+   $fontT = ZendPdf\Font::fontWithName(ZendPdf\Font::FONT_TIMES);
    $page2->setFont($fontT, 32)
          ->drawText('Times-Roman 32 text string', 60, 450);
 
    // 矩形を描画します
-   $page2->setFillColor(new Zend_Pdf_Color_GrayScale(0.8))
-         ->setLineColor(new Zend_Pdf_Color_GrayScale(0.2))
+   $page2->setFillColor(new ZendPdf_Color\GrayScale(0.8))
+         ->setLineColor(new ZendPdf_Color\GrayScale(0.2))
          ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
          ->drawRectangle(60, 400, 400, 350);
 
    // 円を描画します
-   $page2->setLineDashingPattern(Zend_Pdf_Page::LINE_DASHING_SOLID)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
+   $page2->setLineDashingPattern(ZendPdf\Page::LINE_DASHING_SOLID)
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawCircle(85, 375, 25);
 
    // 扇形を描画します
    $page2->drawCircle(200, 375, 25, 2*M_PI/3, -M_PI/6)
-         ->setFillColor(new Zend_Pdf_Color_Cmyk(1, 0, 0, 0))
+         ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
          ->drawCircle(200, 375, 25, M_PI/6, 2*M_PI/3)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 0))
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawCircle(200, 375, 25, -M_PI/6, M_PI/6);
 
    // 楕円を描画します
-   $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
+   $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawEllipse(250, 400, 400, 350)
-         ->setFillColor(new Zend_Pdf_Color_Cmyk(1, 0, 0, 0))
+         ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
          ->drawEllipse(250, 400, 400, 350, M_PI/6, 2*M_PI/3)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 0))
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawEllipse(250, 400, 400, 350, -M_PI/6, M_PI/6);
 
    // 多角形を描画して塗りつぶします
-   $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 1));
+   $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 1));
    $x = array();
    $y = array();
    for ($count = 0; $count < 8; $count++) {
@@ -150,8 +150,8 @@ Zend_Pdf モジュールの使用例
        $y[] = 375 + 25*sin(3*M_PI_4*$count);
    }
    $page2->drawPolygon($x, $y,
-                       Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE,
-                       Zend_Pdf_Page::FILL_METHOD_EVEN_ODD);
+                       ZendPdf\Page::SHAPE_DRAW_FILL_AND_STROKE,
+                       ZendPdf\Page::FILL_METHOD_EVEN_ODD);
 
    // ----------- 座標系を変更して図形を描画します --------------
 
@@ -160,33 +160,33 @@ Zend_Pdf モジュールの使用例
    $page2->translate(60, 250); // 座標系の移動
 
    // 矩形を描画します
-   $page2->setFillColor(new Zend_Pdf_Color_GrayScale(0.8))
-         ->setLineColor(new Zend_Pdf_Color_GrayScale(0.2))
+   $page2->setFillColor(new ZendPdf_Color\GrayScale(0.8))
+         ->setLineColor(new ZendPdf_Color\GrayScale(0.2))
          ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
          ->drawRectangle(0, 50, 340, 0);
 
    // 円を描画します
-   $page2->setLineDashingPattern(Zend_Pdf_Page::LINE_DASHING_SOLID)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
+   $page2->setLineDashingPattern(ZendPdf\Page::LINE_DASHING_SOLID)
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawCircle(25, 25, 25);
 
    // 扇形を描画します
    $page2->drawCircle(140, 25, 25, 2*M_PI/3, -M_PI/6)
-         ->setFillColor(new Zend_Pdf_Color_Cmyk(1, 0, 0, 0))
+         ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
          ->drawCircle(140, 25, 25, M_PI/6, 2*M_PI/3)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 0))
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawCircle(140, 25, 25, -M_PI/6, M_PI/6);
 
    // 楕円を描画します
-   $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
+   $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawEllipse(190, 50, 340, 0)
-         ->setFillColor(new Zend_Pdf_Color_Cmyk(1, 0, 0, 0))
+         ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
          ->drawEllipse(190, 50, 340, 0, M_PI/6, 2*M_PI/3)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 0))
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawEllipse(190, 50, 340, 0, -M_PI/6, M_PI/6);
 
    // 多角形を描画して塗りつぶします
-   $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 1));
+   $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 1));
    $x = array();
    $y = array();
    for ($count = 0; $count < 8; $count++) {
@@ -194,8 +194,8 @@ Zend_Pdf モジュールの使用例
        $y[] = 25 + 25*sin(3*M_PI_4*$count);
    }
    $page2->drawPolygon($x, $y,
-                       Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE,
-                       Zend_Pdf_Page::FILL_METHOD_EVEN_ODD);
+                       ZendPdf\Page::SHAPE_DRAW_FILL_AND_STROKE,
+                       ZendPdf\Page::FILL_METHOD_EVEN_ODD);
 
    // 直線を描画します
    $page2->setLineWidth(0.5)
@@ -210,33 +210,33 @@ Zend_Pdf モジュールの使用例
          ->scale(0.9, 0.9);       // 座標系の倍率を変えます
 
    // 矩形を描画します
-   $page2->setFillColor(new Zend_Pdf_Color_GrayScale(0.8))
-         ->setLineColor(new Zend_Pdf_Color_GrayScale(0.2))
+   $page2->setFillColor(new ZendPdf_Color\GrayScale(0.8))
+         ->setLineColor(new ZendPdf_Color\GrayScale(0.2))
          ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
          ->drawRectangle(0, 50, 340, 0);
 
    // 円を描画します
-   $page2->setLineDashingPattern(Zend_Pdf_Page::LINE_DASHING_SOLID)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
+   $page2->setLineDashingPattern(ZendPdf\Page::LINE_DASHING_SOLID)
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawCircle(25, 25, 25);
 
    // 扇形を描画します
    $page2->drawCircle(140, 25, 25, 2*M_PI/3, -M_PI/6)
-         ->setFillColor(new Zend_Pdf_Color_Cmyk(1, 0, 0, 0))
+         ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
          ->drawCircle(140, 25, 25, M_PI/6, 2*M_PI/3)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 0))
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawCircle(140, 25, 25, -M_PI/6, M_PI/6);
 
    // 楕円を描画します
-   $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
+   $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawEllipse(190, 50, 340, 0)
-         ->setFillColor(new Zend_Pdf_Color_Cmyk(1, 0, 0, 0))
+         ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
          ->drawEllipse(190, 50, 340, 0, M_PI/6, 2*M_PI/3)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 0))
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawEllipse(190, 50, 340, 0, -M_PI/6, M_PI/6);
 
    // 多角形を描画して塗りつぶします
-   $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 1));
+   $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 1));
    $x = array();
    $y = array();
    for ($count = 0; $count < 8; $count++) {
@@ -244,8 +244,8 @@ Zend_Pdf モジュールの使用例
        $y[] = 25 + 25*sin(3*M_PI_4*$count);
    }
    $page2->drawPolygon($x, $y,
-                       Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE,
-                       Zend_Pdf_Page::FILL_METHOD_EVEN_ODD);
+                       ZendPdf\Page::SHAPE_DRAW_FILL_AND_STROKE,
+                       ZendPdf\Page::FILL_METHOD_EVEN_ODD);
 
    // 直線を描画します
    $page2->setLineWidth(0.5)

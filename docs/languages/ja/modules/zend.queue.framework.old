@@ -5,7 +5,7 @@
 =======
 
 ``Zend_Queue``\ は、 待ち行列サービスの詳細を隠す代理です。 待ち行列サービスは、
-``Zend_Queue_Adapter_<service>``\ によって表現されます。 たとえば、 ``Zend_Queue_Adapter_Db``\
+``Zend\Queue_Adapter\<service>``\ によって表現されます。 たとえば、 ``Zend\Queue_Adapter\Db``\
 は、
 メッセージを格納・読み出しするためにデータベーステーブルを使う待ち行列です。
 
@@ -27,18 +27,18 @@
    );
 
    // データベース待ち行列を作成します。
-   // Zend_Queue はクラス名として Zend_Queue_Adapter_ の後に 'Db' を付加します。
-   $queue = new Zend_Queue('Db', $options);
+   // Zend_Queue はクラス名として Zend\Queue_Adapter\ の後に 'Db' を付加します。
+   $queue = new Zend\Queue\Queue('Db', $options);
 
-``Zend_Queue``\ コンストラクタは ``Zend_Queue_Adapter_Db``\ を作成して、
+``Zend_Queue``\ コンストラクタは ``Zend\Queue_Adapter\Db``\ を作成して、
 構成設定値でアダプタを初期化します。
 
 各々のアダプタに認められた構成設定値は、 :ref:`アダプタの注意 <zend.queue.adapters>`\
 で示されます
 
-``Zend_Queue``\ は クラス ``Zend_Queue_Message_Iterator``\ を用いてメッセージを返します。
-そして、それは *SPL* ``Iterator``\ 及び ``Countable``\ の実装です。 ``Zend_Queue_Message_Iterator``\
-は、 ``Zend_Queue_Message``\ オブジェクトの配列を含みます。
+``Zend_Queue``\ は クラス ``Zend\Queue_Message\Iterator``\ を用いてメッセージを返します。
+そして、それは *SPL* ``Iterator``\ 及び ``Countable``\ の実装です。 ``Zend\Queue_Message\Iterator``\
+は、 ``Zend\Queue\Message``\ オブジェクトの配列を含みます。
 
 .. code-block:: php
    :linenos:
@@ -48,7 +48,7 @@
        echo "$i) Message => ", $message->body, "\n";
    }
 
-投げられるどんな例外も、クラス ``Zend_Queue_Exception``\ です。
+投げられるどんな例外も、クラス ``Zend\Queue\Exception``\ です。
 
 .. _zend.queue.framework.basics:
 
@@ -68,12 +68,12 @@
 ----------
 
 ``Zend_Queue``\ によってサポートされる待ち行列サービスは、
-同じ関数をサポートするとは限りません。 例えば、 ``Zend_Queue_Adapter_Array``\ 及び
-``Zend_Queue_Adapter_Db``\ は全ての関数をサポートしますが、 一方、
-``Zend_Queue_Adapter_Activemq``\ は
+同じ関数をサポートするとは限りません。 例えば、 ``Zend\Queue_Adapter\Array``\ 及び
+``Zend\Queue_Adapter\Db``\ は全ての関数をサポートしますが、 一方、
+``Zend\Queue_Adapter\Activemq``\ は
 待ち行列の一覧や削除、そしてメッセージのカウントをサポートしません。
 
-``Zend_Queue::isSupported()``\ または ``Zend_Queue::getCapabilities()``\ を使って
+``Zend\Queue\Queue::isSupported()``\ または ``Zend\Queue\Queue::getCapabilities()``\ を使って
 どんな関数がサポートされるか判定できます。
 
 - **createQueue()**- 待ち行列を作成
@@ -82,12 +82,12 @@
 
 - **send()**- メッセージを送信
 
-  ``send()``\ はアダプタ全てで利用可能なわけではありません; ``Zend_Queue_Adapter_Null``\ は
+  ``send()``\ はアダプタ全てで利用可能なわけではありません; ``Zend\Queue_Adapter\Null``\ は
   ``send()``\ をサポートしません。
 
 - **receive()**- メッセージを受信
 
-  ``receive()``\ はアダプタ全てで利用可能なわけではありません; ``Zend_Queue_Adapter_Null``\
+  ``receive()``\ はアダプタ全てで利用可能なわけではありません; ``Zend\Queue_Adapter\Null``\
   は ``receive()``\ をサポートしません。
 
 - **deleteMessage()**- メッセージを削除

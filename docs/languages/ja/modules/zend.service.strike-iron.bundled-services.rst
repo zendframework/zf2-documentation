@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.service.strikeiron.bundled-services:
 
-Zend_Service_StrikeIron: バンドルされているサービス
+Zend\Service\StrikeIron: バンドルされているサービス
 ======================================
 
-``Zend_Service_StrikeIron`` には、StrikeIron のサービスのうち人気のある 3
+``Zend\Service\StrikeIron`` には、StrikeIron のサービスのうち人気のある 3
 つについてのラッパークラスが含まれています。
 
 .. _zend.service.strikeiron.bundled-services.zip-code-information:
@@ -12,7 +12,7 @@ Zend_Service_StrikeIron: バンドルされているサービス
 ZIP Code Information
 --------------------
 
-``Zend_Service_StrikeIron_ZipCodeInfo`` は、StrikeIron の Zip Code Information Service
+``Zend\Service_StrikeIron\ZipCodeInfo`` は、StrikeIron の Zip Code Information Service
 用のクライアントです。 このサービスについての詳細は、以下の StrikeIron
 のリソースを参照ください。
 
@@ -28,7 +28,7 @@ ZIP Code Information
    .. code-block:: php
       :linenos:
 
-      $strikeIron = new Zend_Service_StrikeIron(array('username' => 'あなたのユーザ名',
+      $strikeIron = new Zend\Service\StrikeIron(array('username' => 'あなたのユーザ名',
                                                       'password' => 'あなたのパスワード'));
 
       // Zip Code Information サービス用のクライアントを取得します
@@ -71,7 +71,7 @@ ZIP Code Information
 U.S. Address Verification
 -------------------------
 
-``Zend_Service_StrikeIron_USAddressVerification`` は StrikeIron の U.S. Address Verification Service
+``Zend\Service_StrikeIron\USAddressVerification`` は StrikeIron の U.S. Address Verification Service
 用のクライアントです。 このサービスについての詳細は、以下の StrikeIron
 のリソースを参照ください。
 
@@ -88,7 +88,7 @@ U.S. Address Verification
    .. code-block:: php
       :linenos:
 
-      $strikeIron = new Zend_Service_StrikeIron(array('username' => 'あなたのユーザ名',
+      $strikeIron = new Zend\Service\StrikeIron(array('username' => 'あなたのユーザ名',
                                                       'password' => 'あなたのパスワード'));
 
       // Zip Code Information サービス用のクライアントを取得します
@@ -126,7 +126,7 @@ U.S. Address Verification
 Sales & Use Tax Basic
 ---------------------
 
-``Zend_Service_StrikeIron_SalesUseTaxBasic`` は、 StrikeIron の Sales & Use Tax Basic
+``Zend\Service_StrikeIron\SalesUseTaxBasic`` は、 StrikeIron の Sales & Use Tax Basic
 サービス用のクライアントです。 このサービスについての詳細は、以下の StrikeIron
 のリソースを参照ください。
 
@@ -145,7 +145,7 @@ Sales & Use Tax Basic
    .. code-block:: php
       :linenos:
 
-      $strikeIron = new Zend_Service_StrikeIron(array('username' => 'あなたのユーザ名',
+      $strikeIron = new Zend\Service\StrikeIron(array('username' => 'あなたのユーザ名',
                                                       'password' => 'あなたのパスワード'));
 
       // Sales & Use Tax Basic サービス用のクライアントを取得します

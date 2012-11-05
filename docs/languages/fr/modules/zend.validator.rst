@@ -27,7 +27,7 @@ il sera utile de savoir laquelle ou lesquelles en particulier.
 Utilisation basique des validateurs
 -----------------------------------
 
-Avoir défini la validation de cette manière fournit la fondation de ``Zend_Validate_Interface``, qui définit
+Avoir défini la validation de cette manière fournit la fondation de ``Zend\Validate\Interface``, qui définit
 deux méthodes, ``isValid()`` et ``getMessages()``. La méthode ``isValid()`` réalise la validation sur la valeur
 fournie, en retournant ``TRUE`` si et seulement si la valeur respecte les critères de validation.
 
@@ -57,7 +57,7 @@ L'exemple suivant illustre la validation d'une adresse émail :
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_EmailAddress();
+      $validator = new Zend\Validate\EmailAddress();
 
       if ($validator->isValid($email)) {
           // l'email est valide
@@ -81,7 +81,7 @@ méthode est une chaîne contenant le message d'erreur. Vous pouvez inclure des 
 seront substituées avec les données appropriées du validateur. La balise *%value%* est supportée par tous les
 validateurs ; elle est substituée par la valeur fournie à ``isValid()``. D'autres balises peuvent être
 supportées aux cas par cas par chaque classe de validation. Par exemple, *%max%* est une balise supportée par
-``Zend_Validate_LessThan``. La méthode ``getMessageVariables()`` retourne un tableau des balises de variables
+``Zend\Validate\LessThan``. La méthode ``getMessageVariables()`` retourne un tableau des balises de variables
 supportées par le validateur.
 
 Le second paramètre optionnel est une chaîne qui identifie le modèle de message d'échec de validation qui doit
@@ -95,12 +95,12 @@ d'erreur, il n'est pas nécessaire de spécifier distinctement dans ce cas quel 
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_StringLength(8);
+      $validator = new Zend\Validate\StringLength(8);
 
       $validator->setMessage(
           'La chaîne \'%value%\' est trop courte ; '
         . 'elle doit être au moins de %min% caractères',
-          Zend_Validate_StringLength::TOO_SHORT);
+          Zend\Validate\StringLength::TOO_SHORT);
 
       if (!$validator->isValid('word')) {
           $messages = $validator->getMessages();
@@ -118,12 +118,12 @@ un tableau de paires clé/message.
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_StringLength(array('min' => 8, 'max' => 12));
+      $validator = new Zend\Validate\StringLength(array('min' => 8, 'max' => 12));
 
       $validator->setMessages( array(
-          Zend_Validate_StringLength::TOO_SHORT =>
+          Zend\Validate\StringLength::TOO_SHORT =>
                   'La chaîne \'%value%\' est trop courte',
-          Zend_Validate_StringLength::TOO_LONG  =>
+          Zend\Validate\StringLength::TOO_LONG  =>
                   'La chaîne \'%value%\' est trop longue'
       ));
 
@@ -138,7 +138,7 @@ chaque classe de validation.
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_StringLength(array('min' => 8, 'max' => 12));
+      $validator = new Zend\Validate\StringLength(array('min' => 8, 'max' => 12));
 
       if (!validator->isValid('word')) {
           echo 'Echec du mot : '
@@ -158,7 +158,7 @@ Utilisation de la méthode statique is()
 ---------------------------------------
 
 S'il est peu pratique de charger une classe de validation donnée et créer une instance de validateur, vous pouvez
-utiliser la méthode statique ``Zend_Validate::is()`` comme appel alternatif. Le premier argument de cette méthode
+utiliser la méthode statique ``Zend\Validate\Validate::is()`` comme appel alternatif. Le premier argument de cette méthode
 est la donnée d'entrée, que vous passeriez à la méthode ``isValid()``. Le deuxième argument est une chaîne,
 qui correspond au nom de base de la classe de validation, relativement dans l'espace de noms ``Zend_Validate``. La
 méthode ``is()`` charge automatiquement la classe, crée une instance et applique la méthode ``isValid()`` à la
@@ -167,7 +167,7 @@ donnée d'entrée.
    .. code-block:: php
       :linenos:
 
-      if (Zend_Validate::is($email, 'EmailAddress')) {
+      if (Zend\Validate\Validate::is($email, 'EmailAddress')) {
           // l'email est valide
       }
 
@@ -179,7 +179,7 @@ pour votre classe de validation.
    .. code-block:: php
       :linenos:
 
-      if (Zend_Validate::is($value,
+      if (Zend\Validate\Validate::is($value,
                             'Between',
                             array(array('min' => 1, 'max' => 12)))) {
           // $value est compris entre 1 et 12
@@ -194,7 +194,7 @@ L'utilisation statique peut être pratique pour invoquer un validateur ad hoc, m
 un validateur pour des données multiples, il est plus efficace de suivre le premier exemple ci-dessus, créant une
 instance de l'objet de validation et appelant sa méthode ``isValid()``.
 
-De plus, la classe ``Zend_Filter_Input`` vous permet d'instancier et d'exécuter des filtres multiples et des
+De plus, la classe ``Zend\Filter\Input`` vous permet d'instancier et d'exécuter des filtres multiples et des
 classes de validateurs sur demande pour traiter l'ensemble de données saisies. Voir :ref:` <zend.filter.input>`.
 
 .. _zend.validator.introduction.static.namespaces:
@@ -202,13 +202,13 @@ classes de validateurs sur demande pour traiter l'ensemble de données saisies. 
 Espaces de noms
 ^^^^^^^^^^^^^^^
 
-When working with self defined validators you can give a forth parameter to ``Zend_Validate::is()`` which is the
+When working with self defined validators you can give a forth parameter to ``Zend\Validate\Validate::is()`` which is the
 namespace where your validator can be found.
 
 .. code-block:: php
    :linenos:
 
-   if (Zend_Validate::is($value,
+   if (Zend\Validate\Validate::is($value,
                          'MyValidator',
                          array(array('min' => 1, 'max' => 12)),
                          array('FirstNamespace', 'SecondNamespace')) {
@@ -216,20 +216,20 @@ namespace where your validator can be found.
    }
 
 ``Zend_Validate`` allows also to set namespaces as default. This means that you can set them once in your bootstrap
-and have not to give them again for each call of ``Zend_Validate::is()``. The following code snippet is identical
+and have not to give them again for each call of ``Zend\Validate\Validate::is()``. The following code snippet is identical
 to the above one.
 
 .. code-block:: php
    :linenos:
 
-   Zend_Validate::setDefaultNamespaces(array('FirstNamespace', 'SecondNamespace'));
-   if (Zend_Validate::is($value,
+   Zend\Validate\Validate::setDefaultNamespaces(array('FirstNamespace', 'SecondNamespace'));
+   if (Zend\Validate\Validate::is($value,
                          'MyValidator',
                          array(array('min' => 1, 'max' => 12))) {
        // Yes, $value is ok
    }
 
-   if (Zend_Validate::is($value,
+   if (Zend\Validate\Validate::is($value,
                          'OtherValidator',
                          array('min' => 1, 'max' => 12)) {
        // Yes, $value is ok
@@ -237,15 +237,15 @@ to the above one.
 
 For your convinience there are following methods which allow the handling of namespaces:
 
-- **Zend_Validator::getDefaultNamespaces()**: Returns all set default namespaces as array.
+- **Zend\Validator\Validator::getDefaultNamespaces()**: Returns all set default namespaces as array.
 
-- **Zend_Validator::setDefaultNamespaces()**: Sets new default namespaces and overrides any previous set. It
+- **Zend\Validator\Validator::setDefaultNamespaces()**: Sets new default namespaces and overrides any previous set. It
   accepts eighter a string for a single namespace of an array for multiple namespaces.
 
-- **Zend_Validator::addDefaultNamespaces()**: Adds additional namespaces to already set ones. It accepts eighter a
+- **Zend\Validator\Validator::addDefaultNamespaces()**: Adds additional namespaces to already set ones. It accepts eighter a
   string for a single namespace of an array for multiple namespaces.
 
-- **Zend_Validator::hasDefaultNamespaces()**: Returns true when one or more default namespaces are set, and false
+- **Zend\Validator\Validator::hasDefaultNamespaces()**: Returns true when one or more default namespaces are set, and false
   when no default namespaces are set.
 
 .. _zend.validator.introduction.translation:
@@ -260,12 +260,12 @@ translator instance.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(array('min' => 8, 'max' => 12));
-   $translate = new Zend_Translator(
+   $validator = new Zend\Validate\StringLength(array('min' => 8, 'max' => 12));
+   $translate = new Zend\Translator\Translator(
        array(
            'adapter' => 'array',
            'content' => array(
-               Zend_Validate_StringLength::TOO_SHORT => 'Translated \'%value%\''
+               Zend\Validate\StringLength::TOO_SHORT => 'Translated \'%value%\''
            ),
            'locale' => 'en'
        )
@@ -280,16 +280,16 @@ translator manually for all validator classes, and simplifies your code.
 .. code-block:: php
    :linenos:
 
-   $translate = new Zend_Translator(
+   $translate = new Zend\Translator\Translator(
        array(
            'adapter' => 'array',
            'content' => array(
-               Zend_Validate_StringLength::TOO_SHORT => 'Translated \'%value%\''
+               Zend\Validate\StringLength::TOO_SHORT => 'Translated \'%value%\''
            ),
            'locale' => 'en'
        )
    );
-   Zend_Validate::setDefaultTranslator($translate);
+   Zend\Validate\Validate::setDefaultTranslator($translate);
 
 .. note::
 
@@ -303,7 +303,7 @@ value.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(array('min' => 8, 'max' => 12));
+   $validator = new Zend\Validate\StringLength(array('min' => 8, 'max' => 12));
    if (!$validator->isTranslatorDisabled()) {
        $validator->setDisableTranslator();
    }

@@ -66,7 +66,7 @@ However, the better approach is to assign the type in your bootstrap, and then r
     :linenos:
 
 
-    class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+    class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
     {
         protected function _initDocType()
         {
@@ -105,7 +105,7 @@ Typically, you should specify any segments common to all pages in your bootstrap
     :linenos:
 
 
-    class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+    class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
     {
         // ...
     
@@ -174,7 +174,7 @@ In our example, we'll assume that all pages need to load the stylesheet located 
     :linenos:
 
 
-    class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+    class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
     {
         // ...
     
@@ -245,7 +245,7 @@ In this example, we'll specify that a script, " ``/js/site.js`` " needs to be lo
     :linenos:
 
 
-    class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+    class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
     {
         // ...
     

@@ -14,12 +14,12 @@ Zend Framework では、クライアント機能とサーバ機能の両方を�
 両方組み合わせて使用すると、ローカル環境上で仮想的なオブジェクト間のやり取りを体験できます。
 サーバコンポーネントは、関数やクラスを意味のある単純な *XML*
 形式で自動的に公開します。このサービスに対してクライアントからアクセスすると、
-リモートコールの返すデータを簡単に取得できます。 クライアント側で Zend_Rest_Server
+リモートコールの返すデータを簡単に取得できます。 クライアント側で Zend\Rest\Server
 ベースのサービス以外と組み合わせて使用する際にも、
 簡単にデータにアクセスできます。
 
-``Zend_Rest_Server`` 及び ``Zend_Rest_Client`` コンポーネントに加えて、コントローラに REST
-リクエストをルーティングすることを助けるために :ref:`Zend_Rest_Route 及び
-Zend_Rest_Controller <zend.controller.router.routes.rest>` クラスが、提供されます。
+``Zend\Rest\Server`` 及び ``Zend\Rest\Client`` コンポーネントに加えて、コントローラに REST
+リクエストをルーティングすることを助けるために :ref:`Zend\Rest\Route 及び
+Zend\Rest\Controller <zend.controller.router.routes.rest>` クラスが、提供されます。
 
 

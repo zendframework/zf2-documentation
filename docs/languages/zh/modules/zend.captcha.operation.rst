@@ -4,12 +4,12 @@
 Captcha 操作
 ==========
 
-所有具体的 CAPTCHA 对象实现 *Zend_Captcha_Adapter*\ ，如下所示：
+所有具体的 CAPTCHA 对象实现 *Zend\Captcha\Adapter*\ ，如下所示：
 
 .. code-block:: php
    :linenos:
 
-   interface Zend_Captcha_Adapter extends Zend_Validate_Interface
+   interface Zend\Captcha\Adapter extends Zend\Validate\Interface
    {
        public function generate();
 
@@ -21,7 +21,7 @@ Captcha 操作
 
        public function getDecorator();
 
-       // Additionally, to satisfy Zend_Validate_Interface:
+       // Additionally, to satisfy Zend\Validate\Interface:
        public function isValid($value);
 
        public function getMessages();
@@ -42,7 +42,7 @@ Captcha 操作
    :linenos:
 
    // Originating request:
-   $captcha = new Zend_Captcha_Figlet(array(
+   $captcha = new Zend\Captcha\Figlet(array(
        'name' => 'foo',
        'wordLen' => 6,
        'timeout' => 300,

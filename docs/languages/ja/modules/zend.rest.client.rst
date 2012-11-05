@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.rest.client:
 
-Zend_Rest_Client
+Zend\Rest\Client
 ================
 
 .. _zend.rest.client.introduction:
@@ -9,10 +9,10 @@ Zend_Rest_Client
 導入
 --
 
-``Zend_Rest_Client`` の使用法は、 *SoapClient* オブジェクト (`SOAP
+``Zend\Rest\Client`` の使用法は、 *SoapClient* オブジェクト (`SOAP
 ウェブサービス拡張モジュール`_) の使用法と非常によく似ています。REST
-サービスのプロシージャは、簡単に ``Zend_Rest_Client``
-のメソッドとしてコールできます。 まず、そのサービスのアドレスを ``Zend_Rest_Client``
+サービスのプロシージャは、簡単に ``Zend\Rest\Client``
+のメソッドとしてコールできます。 まず、そのサービスのアドレスを ``Zend\Rest\Client``
 のコンストラクタに指定します。
 
 .. _zend.rest.client.introduction.example-1:
@@ -25,7 +25,7 @@ Zend_Rest_Client
    /**
     * framework.zend.com サーバに接続し、挨拶を受け取ります
     */
-   $client = new Zend_Rest_Client('http://framework.zend.com/rest');
+   $client = new Zend\Rest\Client('http://framework.zend.com/rest');
 
    echo $client->sayHello('Davey', 'Day')->get(); // "Hello Davey, Good Day"
 
@@ -33,7 +33,7 @@ Zend_Rest_Client
 
    **コール方法の違い**
 
-   ``Zend_Rest_Client`` は、
+   ``Zend\Rest\Client`` は、
    リモートメソッドのコールをできるだけネイティブなメソッドと同様に行おうとします。
    唯一の違いは、続けて ``get()`` か ``post()``\ 、 ``put()`` あるいは ``delete()``
    のいずれかのメソッドをコールしなければならないということです。
@@ -51,11 +51,11 @@ Zend_Rest_Client
 レスポンス
 -----
 
-``Zend_Rest_Client`` を使用して行ったリクエストは、すべて ``Zend_Rest_Client_Response``
+``Zend\Rest\Client`` を使用して行ったリクエストは、すべて ``Zend\Rest_Client\Response``
 オブジェクトを返します。
 このオブジェクトには多くのプロパティがあり、結果に簡単にアクセスできます。
 
-``Zend_Rest_Server`` に基づくサービスにアクセスした場合には、 ``Zend_Rest_Client``
+``Zend\Rest\Server`` に基づくサービスにアクセスした場合には、 ``Zend\Rest\Client``
 は結果についていくつかの前提条件を想定しています。
 たとえばレスポンスステータス (成功あるいは失敗) や返り値の型などです。
 
@@ -75,13 +75,13 @@ Zend_Rest_Client
 上の例で、リクエストの結果をオブジェクトとして扱い、 ``isSuccess()``
 をコールしていることがごらんいただけるでしょう。 また、 ``__toString()``
 をサポートしているため、 単に *echo*
-とするだけでオブジェクトの結果を取得できます。 ``Zend_Rest_Client_Response``
+とするだけでオブジェクトの結果を取得できます。 ``Zend\Rest_Client\Response``
 は、任意のスカラー値を echo することが可能です。複雑な形式の場合は、
 配列記法あるいはオブジェクト記法が使用できます。
 
-しかし、 ``Zend_Rest_Server``
+しかし、 ``Zend\Rest\Server``
 を使用していないサービスに問い合わせたいこともあるでしょう。このような場合、
-``Zend_Rest_Client_Response`` オブジェクトは *SimpleXMLElement* と同様の振る舞いをします。
+``Zend\Rest_Client\Response`` オブジェクトは *SimpleXMLElement* と同様の振る舞いをします。
 しかし、より簡単に処理するため、プロパティがルート要素の直下にない場合には
 自動的に XPath で *XML* を探すようにしています。さらに、
 プロパティに対してメソッドとしてアクセスすると、 *PHP*
@@ -94,7 +94,7 @@ Zend_Rest_Client
 .. code-block:: php
    :linenos:
 
-   $technorati = new Zend_Rest_Client('http://api.technorati.com/bloginfo');
+   $technorati = new Zend\Rest\Client('http://api.technorati.com/bloginfo');
    $technorati->key($key);
    $technorati->url('http://pixelated-dreams.com');
    $result = $technorati->get();
@@ -156,13 +156,13 @@ Zend_Rest_Client
 リクエストの引数
 --------
 
-``Zend_Rest_Server`` ベースのサービスにリクエストを送るのではない場合は、
+``Zend\Rest\Server`` ベースのサービスにリクエストを送るのではない場合は、
 リクエストの際に複数の引数を指定する必要があります。
 これを行うには、引数名と同じ名前のメソッドをコールし、 その最初の
 (そして唯一の) 引数として値を指定します。
 これらのメソッドコールはそのオブジェクト自身を返すので、 メソッドを連結する
 "流れるような" 形式で使用できます。 最初のコール
-(あるいは複数の引数を指定した場合の最初の引数) は常に、 ``Zend_Rest_Server``
+(あるいは複数の引数を指定した場合の最初の引数) は常に、 ``Zend\Rest\Server``
 サービスをコールする際のメソッドとみなされます。
 
 .. _zend.rest.client.args.example-1:
@@ -172,7 +172,7 @@ Zend_Rest_Client
 .. code-block:: php
    :linenos:
 
-   $client = new Zend_Rest_Client('http://example.org/rest');
+   $client = new Zend\Rest\Client('http://example.org/rest');
 
    $client->arg('value1');
    $client->arg2('value2');
@@ -186,15 +186,15 @@ Zend_Rest_Client
 *?method=arg&arg1=value1&arg=value1&arg2=value2*
 
 最初の *$client->arg('value1');* のコールが *method=arg&arg1=value1* および *arg=value1*
-の二通りの結果となることにお気づきでしょう。これによって、 ``Zend_Rest_Server``
+の二通りの結果となることにお気づきでしょう。これによって、 ``Zend\Rest\Server``
 がリクエストを適切に理解できるようになるのです。
 そのサービスを使用するにあたっての前提知識を必要としなくなります。
 
 .. warning::
 
-   **Zend_Rest_Client の厳格性**
+   **Zend\Rest\Client の厳格性**
 
-   受け取る引数について厳格な REST サービスでは、 ``Zend_Rest_Client``
+   受け取る引数について厳格な REST サービスでは、 ``Zend\Rest\Client``
    の使用に失敗することがあります。 これは上で説明した挙動のせいです。
    これはそう頻繁に起こることではないので、特に問題とはならないでしょう。
 

@@ -89,7 +89,7 @@ bootstrap class:
 
    // application/Bootstrap.php
 
-   class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
    {
        protected function _initDoctype()
        {
@@ -122,7 +122,7 @@ resource has run, fetch the view object, and then configure it:
 
    // application/Bootstrap.php
 
-   class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
    {
        protected function _initDoctype()
        {

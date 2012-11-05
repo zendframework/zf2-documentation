@@ -12,7 +12,7 @@ Eigene Adapter für Quelldaten
 An irgendeinem Punkt kann es passieren das man auf einen Datentyp stößt der nicht von den mitgelieferten Adaptern
 abgedeckt wird. In diesem Fall muß man seinen eigenen schreiben.
 
-Um das zu tun, muß man ``Zend_Paginator_Adapter_Interface`` implementieren. Es gibt zwei Methoden die hierfür
+Um das zu tun, muß man ``Zend\Paginator_Adapter\Interface`` implementieren. Es gibt zwei Methoden die hierfür
 benötigt werden:
 
 - count()
@@ -37,7 +37,7 @@ zurückgeben. Für ein Array wurde das wie folgt funktionieren:
 
    return array_slice($this->_array, $offset, $itemCountPerPage);
 
-Man sollte einen Blick auf die mitgelieferten Adapter werfen (alle welche ``Zend_Paginator_Adapter_Interface``
+Man sollte einen Blick auf die mitgelieferten Adapter werfen (alle welche ``Zend\Paginator_Adapter\Interface``
 implementieren) um eine Idee zu bekommen wie man das selbst implementieren könnte.
 
 .. _zend.paginator.advanced.scrolling-styles:
@@ -45,7 +45,7 @@ implementieren) um eine Idee zu bekommen wie man das selbst implementieren könn
 Eigene Scrolling Stile
 ----------------------
 
-Das Erstellen von eigenen Scrolling Stilen erfordert das man ``Zend_Paginator_ScrollingStyle_Interface``
+Das Erstellen von eigenen Scrolling Stilen erfordert das man ``Zend\Paginator_ScrollingStyle\Interface``
 implementiert, welche eine einzelne Methode, ``getPages()``, definiert. Speziell,
 
 .. code-block:: php
@@ -56,7 +56,7 @@ implementiert, welche eine einzelne Methode, ``getPages()``, definiert. Speziell
 Diese Methode sollten eine untere und obere Grenze für die Seitenzahl innerhalb der sogenannten "lokalen" Seiten
 berechnen (das sind Seiten nahe der aktuellen Seite).
 
-Solange es keinen anderen Scrolling Stil erweitert (siehe zum Beispiel ``Zend_Paginator_ScrollingStyle_Elastic``,
+Solange es keinen anderen Scrolling Stil erweitert (siehe zum Beispiel ``Zend\Paginator_ScrollingStyle\Elastic``,
 wird der eigene Scrolling Stil üblicherweise mit etwas ähnlichem sie der folgenden Codezeile enden:
 
 .. code-block:: php
@@ -75,7 +75,7 @@ Verzeichnis er nachschauen muß. Um das zu tun muß das folgende ausgeführt wer
 
    $prefix = 'My_Paginator_ScrollingStyle';
    $path   = 'My/Paginator/ScrollingStyle/';
-   Zend_Paginator::addScrollingStylePrefixPath($prefix, $path);
+   Zend\Paginator\Paginator::addScrollingStylePrefixPath($prefix, $path);
 
 .. _zend.paginator.advanced.caching:
 
@@ -84,28 +84,28 @@ Caching features
 
 ``Zend_Paginator`` kann gesagt werden das es die Daten die Ihm bereits übergeben wurden, cachen soll, um zu
 verhindern das der Adapter sie jedes mal wenn Sie verwendet werden holen muß. Um dem Paginator zu sagen das die
-Daten des Adapters automatisch gecacht werden, muß der-``setCache()`` Methode nur eine ``Zend_Cache_Core`` Instanz
+Daten des Adapters automatisch gecacht werden, muß der-``setCache()`` Methode nur eine ``Zend\Cache\Core`` Instanz
 übergeben werden.
 
 .. code-block:: php
    :linenos:
 
-   $paginator = Zend_Paginator::factory($someData);
+   $paginator = Zend\Paginator\Paginator::factory($someData);
    $fO = array('lifetime' => 3600, 'automatic_serialization' => true);
    $bO = array('cache_dir'=>'/tmp');
-   $cache = Zend_cache::factory('Core', 'File', $fO, $bO);
-   Zend_Paginator::setCache($cache);
+   $cache = Zend\cache\cache::factory('Core', 'File', $fO, $bO);
+   Zend\Paginator\Paginator::setCache($cache);
 
-Sobald ``Zend_Paginator`` eine ``Zend_Cache_Core`` Instanz erhalten hat, werden Daten gecacht. Manchmal will man
+Sobald ``Zend_Paginator`` eine ``Zend\Cache\Core`` Instanz erhalten hat, werden Daten gecacht. Manchmal will man
 Daten nicht cachen selbst wenn man bereits eine Cacheinstanz übergeben hat. Man sollte dann hierfür
 ``setCacheEnable()`` verwenden.
 
 .. code-block:: php
    :linenos:
 
-   $paginator = Zend_Paginator::factory($someData);
-   // $cache ist eine Zend_Cache_Core Instanz
-   Zend_Paginator::setCache($cache);
+   $paginator = Zend\Paginator\Paginator::factory($someData);
+   // $cache ist eine Zend\Cache\Core Instanz
+   Zend\Paginator\Paginator::setCache($cache);
    // ... später im Skript
    $paginator->setCacheEnable(false);
    // Der Cache ist nun ausgeschaltet
@@ -118,8 +118,8 @@ werden. Wenn kein Parameter übergeben wird, wird der komplette Cache entleert. 
 .. code-block:: php
    :linenos:
 
-   $paginator = Zend_Paginator::factory($someData);
-   Zend_Paginator::setCache($cache);
+   $paginator = Zend\Paginator\Paginator::factory($someData);
+   Zend\Paginator\Paginator::setCache($cache);
    $items = $paginator->getCurrentItems();
    // Seite 1 ist nun in Cache
    $page3Items = $paginator->getItemsByPage(3);
@@ -136,8 +136,8 @@ Das Ändern das Anzahl der Teile pro Seite wird den kompletten Cache leeren, das
 .. code-block:: php
    :linenos:
 
-   $paginator = Zend_Paginator::factory($someData);
-   Zend_Paginator::setCache($cache);
+   $paginator = Zend\Paginator\Paginator::factory($someData);
+   Zend\Paginator\Paginator::setCache($cache);
    // Einige Teile holen
    $items = $paginator->getCurrentItems();
 
@@ -150,9 +150,9 @@ Es ist auch möglich zu sehen welche Daten im Cache sind und direkt nach Ihnen z
 .. code-block:: php
    :linenos:
 
-   $paginator = Zend_Paginator::factory($someData);
+   $paginator = Zend\Paginator\Paginator::factory($someData);
    $paginator->setItemCountPerPage(3);
-   Zend_Paginator::setCache($cache);
+   Zend\Paginator\Paginator::setCache($cache);
 
    // Einige Teile holen
    $items = $paginator->getCurrentItems();
@@ -163,32 +163,32 @@ Es ist auch möglich zu sehen welche Daten im Cache sind und direkt nach Ihnen z
 
 .. _zend.paginator.advanced.aggregator:
 
-Zend_Paginator_AdapterAggregate Interface
+Zend\Paginator\AdapterAggregate Interface
 -----------------------------------------
 
 Abhängig von der Anwendung kann es gewünscht sein Objekte zu Seiten zu verarbeiten, dessen interne Datenstruktur
 identisch zu existierenden Adaptern ist, aber bei denen man nicht will das die eigene Kapselung gebrochen wird um
 Zugriff auf diese Daten zu erlauben. In anderen Fällen könnte ein Objekt in einer "hat einen Adapter" Relation
-stehen, statt in einer "ist ein Adapter" Relation die ``Zend_Paginator_Adapter_Abstract`` promotet. Für diese
-Fälle kann man das ``Zend_Paginator_AdapterAggregate`` Interface verwenden das sich so verhält wie das
+stehen, statt in einer "ist ein Adapter" Relation die ``Zend\Paginator_Adapter\Abstract`` promotet. Für diese
+Fälle kann man das ``Zend\Paginator\AdapterAggregate`` Interface verwenden das sich so verhält wie das
 ``IteratorAggregate`` Interface der SPL Erweiterung von *PHP*.
 
 .. code-block:: php
    :linenos:
 
-   interface Zend_Paginator_AdapterAggregate
+   interface Zend\Paginator\AdapterAggregate
    {
        /**
         * Return a fully configured Paginator Adapter from this method.
         *
-        * @return Zend_Paginator_Adapter_Abstract
+        * @return Zend\Paginator_Adapter\Abstract
         */
        public function getPaginatorAdapter();
    }
 
-Das Interface ist sehr klein und erwartet nur das eine Instanz von ``Zend_Paginator_Adapter_Abstract``
+Das Interface ist sehr klein und erwartet nur das eine Instanz von ``Zend\Paginator_Adapter\Abstract``
 zurückgegeben wird. Eine Aggregate Instanz des Adapters wird dann von beiden erkannt, sowohl
-``Zend_Paginator::factory()`` als auch dem Constructor von ``Zend_Paginator`` und entsprechend behandelt.
+``Zend\Paginator\Paginator::factory()`` als auch dem Constructor von ``Zend_Paginator`` und entsprechend behandelt.
 
 
 

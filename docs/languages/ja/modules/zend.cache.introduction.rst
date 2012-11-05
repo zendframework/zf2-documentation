@@ -14,17 +14,17 @@ Zend Framework
 (「指定したタグがつけられているキャッシュレコードをすべて削除する」 など)
 といったことも簡単にできるようになります。
 
-このモジュールの中心となる部分 (``Zend_Cache_Core``)
+このモジュールの中心となる部分 (``Zend\Cache\Core``)
 は、標準的で柔軟なものとなっています。 設定変更も可能です。とは言え、
 特定の目的のためには、より適切な実行結果を得るためのフロントエンド
-``Zend_Cache_Core`` を拡張する (たとえば **Output**\ 、 **File**\ 、 **Function**\ 、 **Class** など)
+``Zend\Cache\Core`` を拡張する (たとえば **Output**\ 、 **File**\ 、 **Function**\ 、 **Class** など)
 こともできます。
 
 .. _zend.cache.introduction.example-1:
 
-.. rubric:: Zend_Cache::factory() によるフロントエンドの取得
+.. rubric:: Zend\Cache\Cache::factory() によるフロントエンドの取得
 
-``Zend_Cache::factory()``
+``Zend\Cache\Cache::factory()``
 は、適切なオブジェクトを作成してそれらを互いに結び付けます。
 この最初の例では、フロントエンドに **Core**\ 、バックエンドに **File**
 を使用します。
@@ -41,8 +41,8 @@ Zend Framework
        'cache_dir' => './tmp/' // キャッシュファイルを書き込むディレクトリ
    );
 
-   // Zend_Cache_Core オブジェクトを取得します
-   $cache = Zend_Cache::factory('Core',
+   // Zend\Cache\Core オブジェクトを取得します
+   $cache = Zend\Cache\Cache::factory('Core',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);
@@ -77,7 +77,7 @@ Zend Framework
 
        // キャッシュが見つかりませんでした。データベースに接続します
 
-       $db = Zend_Db::factory( [...] );
+       $db = Zend\Db\Db::factory( [...] );
 
        $result = $db->fetchAll('SELECT * FROM huge_table');
 
@@ -115,7 +115,7 @@ Zend Framework
 
    $backendOptions = array('cache_dir' => './tmp/');
 
-   $cache = Zend_Cache::factory('Output',
+   $cache = Zend\Cache\Cache::factory('Output',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);

@@ -8,17 +8,17 @@ Diese Prüfung erlaubt es zu prüfen ob ein angegebener String eine definierte L
 
 .. note::
 
-   **Zend_Validate_StringLength unterstützt nur die Prüfung von Strings**
+   **Zend\Validate\StringLength unterstützt nur die Prüfung von Strings**
 
-   Es ist zu beachten das ``Zend_Validate_StringLength`` nur die Prüfung von Strings unterstützt. Integer,
+   Es ist zu beachten das ``Zend\Validate\StringLength`` nur die Prüfung von Strings unterstützt. Integer,
    Floats, Datumswerte oder Objekte können mit dieser Prüfung nicht überprüft werden.
 
 .. _zend.validator.set.stringlength.options:
 
-Unterstützte Optionen für Zend_Validate_StringLength
+Unterstützte Optionen für Zend\Validate\StringLength
 ----------------------------------------------------
 
-Die folgenden Optionen werden von ``Zend_Validate_StringLength`` unterstützt:
+Die folgenden Optionen werden von ``Zend\Validate\StringLength`` unterstützt:
 
 - **encoding**: Setzt die Kodierung von ``ICONV`` welche für den String verwendet wird.
 
@@ -28,7 +28,7 @@ Die folgenden Optionen werden von ``Zend_Validate_StringLength`` unterstützt:
 
 .. _zend.validator.set.stringlength.basic:
 
-Standardverhalten für Zend_Validate_StringLength
+Standardverhalten für Zend\Validate\StringLength
 ------------------------------------------------
 
 Standardmäßig prüft diese Prüfung ob ein Wert zwischen ``min`` und ``max`` ist. Aber für ``min`` ist der
@@ -48,7 +48,7 @@ einen Integerwert als Eingabe.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(array('max' => 6));
+   $validator = new Zend\Validate\StringLength(array('max' => 6));
 
    $validator->isValid("Test"); // Gibt true zurück
    $validator->isValid("Testing"); // Gibt false zurück
@@ -59,7 +59,7 @@ Man kann die maximal erlaubte Länge auch im Nachhinein setzen indem die ``setMa
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength();
+   $validator = new Zend\Validate\StringLength();
    $validator->setMax(6);
 
    $validator->isValid("Test"); // Gibt true zurück
@@ -76,7 +76,7 @@ akzeptiert einen Integerwert als Eingabe.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(array('min' => 5));
+   $validator = new Zend\Validate\StringLength(array('min' => 5));
 
    $validator->isValid("Test"); // Gibt false zurück
    $validator->isValid("Testing"); // Gibt true zurück
@@ -87,7 +87,7 @@ Und ``getMin()`` um die aktuelle Mindestgrenze zu erhalten.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength();
+   $validator = new Zend\Validate\StringLength();
    $validator->setMin(5);
 
    $validator->isValid("Test"); // Gibt false zurück
@@ -106,7 +106,7 @@ setzt man die zumindest benötigte Länge auf 3 Zeichen. Siehe das folgende Beis
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(array('min' => 3, 'max' => 30));
+   $validator = new Zend\Validate\StringLength(array('min' => 3, 'max' => 30));
 
    $validator->isValid("."); // Gibt false zurück
    $validator->isValid("Test"); // Gibt true zurück
@@ -135,7 +135,7 @@ Anwendung auf *ISO* gesetzt ist. In diesem Fall sieht man das folgende Verhalten
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(
+   $validator = new Zend\Validate\StringLength(
        array('min' => 6)
    );
    $validator->isValid("Ärger"); // Gibt false zurück
@@ -143,7 +143,7 @@ Anwendung auf *ISO* gesetzt ist. In diesem Fall sieht man das folgende Verhalten
    $validator->setEncoding("UTF-8");
    $validator->isValid("Ärger"); // Gibt true zurück
 
-   $validator2 = new Zend_Validate_StringLength(
+   $validator2 = new Zend\Validate\StringLength(
        array('min' => 6, 'encoding' => 'UTF-8')
    );
    $validator2->isValid("Ärger"); // Gibt true zurück

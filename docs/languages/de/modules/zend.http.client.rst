@@ -4,37 +4,37 @@
 Einführung
 ==========
 
-``Zend_Http_Client`` stellt eine einfache Schnittstelle für das Durchführen von Hyper-Text Transfer Protocol
-(HTTP) Anfragen. ``Zend_Http_Client`` unterstützt die meisten einfachen Funktionen, die man von einem *HTTP*
+``Zend\Http\Client`` stellt eine einfache Schnittstelle für das Durchführen von Hyper-Text Transfer Protocol
+(HTTP) Anfragen. ``Zend\Http\Client`` unterstützt die meisten einfachen Funktionen, die man von einem *HTTP*
 Client erwartet, sowie einige komplexere Funktionen, wie z.B. *HTTP* Authentifizierung und Dateiuploads.
-Erfolgreiche Anfragen (und die meisten nicht erfolgreichen ebenfalls) liefern ein ``Zend_Http_Response`` Objekt
+Erfolgreiche Anfragen (und die meisten nicht erfolgreichen ebenfalls) liefern ein ``Zend\Http\Response`` Objekt
 zurück, welches den Zugriff auf die Header und den Hauptteil der Antwort ermöglichen (siehe :ref:`diesen
 Abschnitt <zend.http.response>`).
 
 .. _zend.http.client.usage:
 
-Zend_Http_Client verwenden
+Zend\Http\Client verwenden
 --------------------------
 
 Der Klassenkonstruktor akzeptiert optional eine URL als seinen ersten Parameter (kann entweder ein String oder ein
-``Zend_Uri_Http`` Objekt sein) und ein Array oder ``Zend_Config`` Objekt welches Konfigurationsparameter enthält.
+``Zend\Uri\Http`` Objekt sein) und ein Array oder ``Zend_Config`` Objekt welches Konfigurationsparameter enthält.
 Beides kann ausgelassen und später durch Verwendung der setUri() and setConfig() Methoden gesetzt werden.
 
 
 
       .. _zend.http.client.introduction.example-1:
 
-      .. rubric:: Ein Zend_Http_Client Objekt instanzieren
+      .. rubric:: Ein Zend\Http\Client Objekt instanzieren
 
       .. code-block:: php
          :linenos:
 
-         $client = new Zend_Http_Client('http://example.org', array(
+         $client = new Zend\Http\Client('http://example.org', array(
              'maxredirects' => 0,
              'timeout'      => 30));
 
          // Dies macht genau das selbe:
-         $client = new Zend_Http_Client();
+         $client = new Zend\Http\Client();
          $client->setUri('http://example.org');
          $client->setConfig(array(
              'maxredirects' => 0,
@@ -42,14 +42,14 @@ Beides kann ausgelassen und später durch Verwendung der setUri() and setConfig(
 
          // Man kann auch ein Zend_Config Objekt verwenden um die Konfiguration
          // des Clients zu setzen
-         $config = new Zend_Config_Ini('httpclient.ini', 'secure');
+         $config = new Zend\Config\Ini('httpclient.ini', 'secure');
          $client->setConfig($config);
 
 
 
    .. note::
 
-      ``Zend_Http_Client`` verwendet ``Zend_Uri_Http`` um URLs zu prüfen. Das bedeutet das einige spezielle
+      ``Zend\Http\Client`` verwendet ``Zend\Uri\Http`` um URLs zu prüfen. Das bedeutet das einige spezielle
       Zeichen wie das Pipe-Symbol ('\|') oder das Karet Symbol ('^') in der URL standardmäßig nicht akzeptiert
       werden. Das kann geändert werden indem die 'allow_unwise' Option von ``Zend_Uri`` auf '``TRUE``' gesetzt
       wird. Siehe :ref:`diesen Abschnitt <zend.uri.validation.allowunwise>` für mehr Informationen.
@@ -68,7 +68,7 @@ ein ``Zend_Config`` Objekt. Das Setzen dieser Parameter ist optional, da alle ei
 
       .. _zend.http.client.configuration.table:
 
-      .. table:: Zend_Http_Client Konfigurationsparameter
+      .. table:: Zend\Http\Client Konfigurationsparameter
 
          +---------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+---------------------------------+
          |Parameter      |Beschreibung                                                                                                                                                                                                                                  |Erwartete Werte|Standardwert                     |
@@ -79,13 +79,13 @@ ein ``Zend_Config`` Objekt. Das Setzen dieser Parameter ist optional, da alle ei
          +---------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+---------------------------------+
          |strictredirects|Ob beim Umleiten genau dem RFC zu folgen ist (siehe diesen Abschnitt)                                                                                                                                                                         |boolean        |FALSE                            |
          +---------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+---------------------------------+
-         |useragent      |String zur Identifizierung des User Agents (gesendet in den Anfrageheadern)                                                                                                                                                                   |string         |'Zend_Http_Client'               |
+         |useragent      |String zur Identifizierung des User Agents (gesendet in den Anfrageheadern)                                                                                                                                                                   |string         |'Zend\Http\Client'               |
          +---------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+---------------------------------+
          |timeout        |Zeitüberschreitung für Verbindungen (Sekunden)                                                                                                                                                                                                |integer        |10                               |
          +---------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+---------------------------------+
          |httpversion    |Version des HTTP Protokolls (normalerweise '1.1' oder '1.0')                                                                                                                                                                                  |string         |'1.1'                            |
          +---------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+---------------------------------+
-         |adapter        |Zu verwendene Adapterklasse für die Verbindung (siehe diesen Abschnitt)                                                                                                                                                                       |mixed          |'Zend_Http_Client_Adapter_Socket'|
+         |adapter        |Zu verwendene Adapterklasse für die Verbindung (siehe diesen Abschnitt)                                                                                                                                                                       |mixed          |'Zend\Http\Client\Adapter\Socket'|
          +---------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+---------------------------------+
          |keepalive      |Ob keep-alive Verbindungen mit dem Server aktiviert werden sollen. Nützlich und kann die Performance verbessern, wenn mehrere aufeinanderfolgend Anfragen an den selben Server ausgeführt werden.                                             |boolean        |FALSE                            |
          +---------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+---------------------------------+
@@ -113,12 +113,12 @@ werden und benötigt selten mehr als drei Codezeilen:
       .. code-block:: php
          :linenos:
 
-         $client = new Zend_Http_Client('http://example.org');
+         $client = new Zend\Http\Client('http://example.org');
          $response = $client->request();
 
 Die request() Methode akzeptiert einen optionalen Parameter - die Anfragemethode. Diese kann ``GET``, ``POST``,
 ``PUT``, ``HEAD``, ``DELETE``, ``TRACE``, ``OPTIONS`` oder ``CONNECT`` sein, wie im *HTTP* Protokoll definiert.
-[#]_. Zur Erleichterung sind alle als Klassenkonstanten definiert: Zend_Http_Client::GET, Zend_Http_Client::POST
+[#]_. Zur Erleichterung sind alle als Klassenkonstanten definiert: Zend\Http\Client::GET, Zend\Http\Client::POST
 und so weiter.
 
 Wenn keine Methode angegeben worden ist, wird die durch den letzten Aufruf von ``setMethod()`` gesetzte Methode
@@ -138,7 +138,7 @@ verwendet. Wenn ``setMethod()`` vorher nicht aufgerufen worden ist, wird als Sta
          $response = $client->request('POST');
 
          // Ein weiterer Weg, eine POST Anfrage durchzuführen
-         $client->setMethod(Zend_Http_Client::POST);
+         $client->setMethod(Zend\Http\Client::POST);
          $response = $client->request();
 
 
@@ -211,10 +211,10 @@ Solange eine Anfrage keine POST Anfrage ist, werden POST Parameter einfach ignor
 Zugriff auf die Letzte Anfrage und Antwort
 ------------------------------------------
 
-``Zend_Http_Client`` bietet Methoden um Zugriff auf die letzte gesendete Anfrage und die letzte empfangene Antwort
-des Client Objekts zu bekommen. ``Zend_Http_Client->getLastRequest()`` hat keine Parameter und gibt die letzte
+``Zend\Http\Client`` bietet Methoden um Zugriff auf die letzte gesendete Anfrage und die letzte empfangene Antwort
+des Client Objekts zu bekommen. ``Zend\Http\Client->getLastRequest()`` hat keine Parameter und gibt die letzte
 *HTTP* Anfrage als String zurück die der Client gesendet hat. Auf die gleiche Art und Weise gibt
-``Zend_Http_Client->getLastResponse()`` die letzte *HTTP* Antwort als :ref:`Zend_Http_Response
+``Zend\Http\Client->getLastResponse()`` die letzte *HTTP* Antwort als :ref:`Zend\Http\Response
 <zend.http.response>` Objekt zurück die der Client empfangen hat.
 
 

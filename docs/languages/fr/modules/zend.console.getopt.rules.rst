@@ -4,7 +4,7 @@
 Déclarer les règles Getopt
 ==========================
 
-Le constructeur de la classe ``Zend_Console_Getopt`` prend un à trois arguments. Le premier argument déclare
+Le constructeur de la classe ``Zend\Console\Getopt`` prend un à trois arguments. Le premier argument déclare
 quelles options sont supportées par votre application. Cette classe supporte des formes de syntaxe alternatives
 pour déclarer les options. Voir les sections ci-dessous pour le format et l'utilisation de ces formes de syntaxe.
 
@@ -12,7 +12,7 @@ Le constructeur prend deux arguments supplémentaires, qui sont facultatifs. Le 
 les arguments de la ligne de commande. La valeur par défaut est ``$_SERVER['argv']``.
 
 Le troisième argument du constructeur peut contenir des options de configuration pour adapter le comportement de
-``Zend_Console_Getopt``. Voir la section :ref:`Ajouter une configuration
+``Zend\Console\Getopt``. Voir la section :ref:`Ajouter une configuration
 <zend.console.getopt.configuration.config>` pour la référence des options disponibles.
 
 .. _zend.console.getopt.rules.short:
@@ -20,7 +20,7 @@ Le troisième argument du constructeur peut contenir des options de configuratio
 Déclarer des options avec la syntaxe courte
 -------------------------------------------
 
-``Zend_Console_Getopt`` supporte une syntaxe compacte semblable à cela employée par *GNU* Getopt (voir
+``Zend\Console\Getopt`` supporte une syntaxe compacte semblable à cela employée par *GNU* Getopt (voir
 `http://www.gnu.org/software/libc/manual/html_node/Getopt.html`_). Cette syntaxe supporte seulement des drapeaux
 courts (1 seul caractère). Dans une chaîne de caractère unique, vous entrez chacune des lettres qui
 correspondent aux drapeaux supportés par votre application. Une lettre suivie d'un caractère deux points
@@ -33,9 +33,9 @@ correspondent aux drapeaux supportés par votre application. Une lettre suivie d
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
 
-L'exemple ci-dessus montre l'utilisation de ``Zend_Console_Getopt`` pour déclarer que des options peuvent être
+L'exemple ci-dessus montre l'utilisation de ``Zend\Console\Getopt`` pour déclarer que des options peuvent être
 données en tant que "``-a``", "``-b``" ou "``-p``". Le dernier drapeau exige un paramètre.
 
 La syntaxe courte est limitée aux drapeaux courts (1 seul caractère). Les alias, les types des paramètres, et
@@ -73,7 +73,7 @@ comment employer votre programme.
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt(
+   $opts = new Zend\Console\Getopt(
      array(
        'abricot|a'  => 'option abricot, sans parametres',
        'banane|b=i' => 'option banane, avec un parametre entier obligatoire',

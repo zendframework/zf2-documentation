@@ -9,7 +9,7 @@ zakódované pomocou "base64" kódovania. Pri volaní metódy *addAttachment()* 
 kódovanie. Kódovanie je možné nastaviť aj v objekte pre MIME-časť. 7Bit a 8Bit kódovanie v súčastnosti
 nie je implementované a dáta sú ďalej predané bez zmeny.
 
-*Zend_Mail_Transport_Smtp* zakóduje riadky, ktoré začínajú jednou, alebo dvomi bodkami a teda takýto e-mail
+*Zend\Mail_Transport\Smtp* zakóduje riadky, ktoré začínajú jednou, alebo dvomi bodkami a teda takýto e-mail
 nebude narušovať SMTP protokol.
 
 

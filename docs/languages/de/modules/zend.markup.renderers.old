@@ -18,9 +18,9 @@ zu komplizierten Markup Strukturen. Ein einfaches Beispiel für ein 'foo' Markup
 .. code-block:: php
    :linenos:
 
-   // Erstellt eine Instanz von Zend_Markup_Renderer_Html,
-   // mit Zend_Markup_Parser_BbCode als seinen Parser
-   $bbcode = Zend_Markup::factory('Bbcode');
+   // Erstellt eine Instanz von Zend\Markup_Renderer\Html,
+   // mit Zend\Markup_Parser\BbCode als seinen Parser
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    // Dies erstellt ein einfaches 'foo' Markup
    // Der erste Parameter definiert den Namen des Markups
@@ -29,7 +29,7 @@ zu komplizierten Markup Strukturen. Ein einfaches Beispiel für ein 'foo' Markup
    // wie die Gruppe des Markups, und (in diesem Fall) ein Start und Ende Markup
    $bbcode->addMarkup(
        'foo',
-       Zend_Markup_Renderer_RendererAbstract::TYPE_REPLACE,
+       Zend\Markup_Renderer\RendererAbstract::TYPE_REPLACE,
        array(
            'start' => '-bar-',
            'end'   => '-baz-',
@@ -56,17 +56,17 @@ Ein Callback Markup hinzufügen
 Durch das Hinzufügen eines Callback Markups kann man viel mehr tun als nur das einfache Ersetzen von Markups. Zum
 Beispiel kann man den Inhalt ändern, die Parameter verwenden um die Ausgabe zu beeinflussen, usw.
 
-Ein Callback ist eine Klasse welche das ``Zend_Markup_Renderer_TokenInterface`` Interface implementiert. Ein
+Ein Callback ist eine Klasse welche das ``Zend\Markup_Renderer\TokenInterface`` Interface implementiert. Ein
 Beispiel einer einfachen Callback Klasse:
 
 .. code-block:: php
    :linenos:
 
    class My_Markup_Renderer_Html_Upper
-       implements Zend_Markup_Renderer_TokenConverterInterface
+       implements Zend\Markup_Renderer\TokenConverterInterface
    {
 
-       public function convert(Zend_Markup_Token $token, $text)
+       public function convert(Zend\Markup\Token $token, $text)
        {
            return '!up!' . strtoupper($text) . '!up!';
        }
@@ -79,9 +79,9 @@ hinzufügen. Ein einfaches Beispiel:
 .. code-block:: php
    :linenos:
 
-   // Erstellt eine Instanz von Zend_Markup_Renderer_Html,
-   // mit Zend_Markup_Parser_BbCode als seinen Parser
-   $bbcode = Zend_Markup::factory('Bbcode');
+   // Erstellt eine Instanz von Zend\Markup_Renderer\Html,
+   // mit Zend\Markup_Parser\BbCode als seinen Parser
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    // Das erstellt ein einfaches 'foo' Markup
    // Der erste Parameter definiert den Namen des Markups
@@ -91,7 +91,7 @@ hinzufügen. Ein einfaches Beispiel:
    // Markup
    $bbcode->addMarkup(
        'upper',
-       Zend_Markup_Renderer_RendererAbstract::TYPE_CALLBACK,
+       Zend\Markup_Renderer\RendererAbstract::TYPE_CALLBACK,
        array(
            'callback' => new My_Markup_Renderer_Html_Upper(),
            'group'    => 'inline'

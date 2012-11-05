@@ -16,26 +16,26 @@ worden door meer parameters aan *addAttachment()* door te geven:
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    // bericht maken...
    $mail->addAttachment($someBinaryString);
-   $mail->addAttachment($myImage, 'image/gif', Zend_Mime::DISPOSITION_INLINE, Zend_Mime::ENCODING_8BIT);
+   $mail->addAttachment($myImage, 'image/gif', Zend\Mime\Mime::DISPOSITION_INLINE, Zend\Mime\Mime::ENCODING_8BIT);
    ?>
 Als je meer controle wil over het MIME deel dat voor deze bijlage word gemaakt kan je de waarde die door
 *addAttachment()* wordt teruggegeven gebruiken om zijn attributen te veranderen. De *addAttachment* geeft een
-*Zend_Mime_Part* object terug:
+*Zend\Mime\Part* object terug:
 
 .. code-block:: php
    :linenos:
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
 
    $at = $mail->addAttachment($myImage);
    $at->type        = 'image/gif';
-   $at->disposition = Zend_Mime::DISPOSITION_INLINE;
-   $at->encoding    = Zend_Mime::ENCODING_8BIT;
+   $at->disposition = Zend\Mime\Mime::DISPOSITION_INLINE;
+   $at->encoding    = Zend\Mime\Mime::ENCODING_8BIT;
    $at->filename    = 'test.gif';
 
    $mail->send();

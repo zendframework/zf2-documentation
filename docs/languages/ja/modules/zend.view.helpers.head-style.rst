@@ -73,7 +73,7 @@ HeadStyle ヘルパー
 
    By default, Zend Framework uses *UTF-8* as its default encoding, and, specific to this case, ``Zend_View`` does
    as well. Character encoding can be set differently on the view object itself using the ``setEncoding()`` method
-   (or the the ``encoding`` instantiation parameter). However, since ``Zend_View_Interface`` does not define
+   (or the the ``encoding`` instantiation parameter). However, since ``Zend\View\Interface`` does not define
    accessors for encoding, it's possible that if you are using a custom view implementation with this view helper,
    you will not have a ``getEncoding()`` method, which is what the view helper uses internally for determining the
    character set in which to encode.

@@ -6,11 +6,11 @@ Písanie filtrov
 
 Zend_Filter poskytuje často používané filtre, ale vývojári často potrebujú napísať filtre pre
 špecifické prípady. Úloha napísania filtra je zjednodušená implementáciou rozhrania
-*Zend_Filter_Interface*.
+*Zend\Filter\Interface*.
 
-Rozhranie *Zend_Filter_Interface* definuje len jednu metodu *filter()* ktorá je implementovaná odvodenou triedou.
+Rozhranie *Zend\Filter\Interface* definuje len jednu metodu *filter()* ktorá je implementovaná odvodenou triedou.
 Objekt, ktorý implementuje rozhranie môže byť zaradený do postupnosti filtrov pomocou
-*Zend_Filter::addFilter()*.
+*Zend\Filter\Filter::addFilter()*.
 
 Nasledujúci príklad ukazuje ako vytvoriť vlastný filter:
 
@@ -20,7 +20,7 @@ Nasledujúci príklad ukazuje ako vytvoriť vlastný filter:
       <?php
       require_once 'Zend/Filter/Interface.php';
 
-      class MyFilter implements Zend_Filter_Interface
+      class MyFilter implements Zend\Filter\Interface
       {
           public function filter($value)
           {
@@ -37,7 +37,7 @@ Pridanie inštancie uvedeného filtra do postupnosti filtrov:
       :linenos:
 
       <?php
-      $filterChain = new Zend_Filter();
+      $filterChain = new Zend\Filter\Filter();
       $filterChain->addFilter(new MyFilter());
 
 

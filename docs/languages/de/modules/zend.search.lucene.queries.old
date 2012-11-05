@@ -12,7 +12,7 @@ Abfrageparser verwenden um eine Abfrage von einem String zu erstellen:
 .. code-block:: php
    :linenos:
 
-   $query = Zend_Search_Lucene_Search_QueryParser::parse($queryString);
+   $query = Zend\Search\Lucene\Search\QueryParser::parse($queryString);
 
 .. _zend.search.lucene.queries.exceptions:
 
@@ -23,30 +23,30 @@ Der Abfrageparser kann zwei Typen von Ausnahmen erstellen.
 
 
 
-   - ``Zend_Search_Lucene_Exception`` wird geworfen wenn irgendwas im Abfrageparser selbst falsch läuft.
+   - ``Zend\Search_Lucene\Exception`` wird geworfen wenn irgendwas im Abfrageparser selbst falsch läuft.
 
-   - ``Zend_Search_Lucene_Search_QueryParserException`` wird geworfen wenn ein Fehler im Syntax der Abfrage ist.
+   - ``Zend\Search\Lucene\Search\QueryParserException`` wird geworfen wenn ein Fehler im Syntax der Abfrage ist.
 
-Es ist eine gute Idee die ``Zend_Search_Lucene_Search_QueryParserException``\ s abzufangen und richtig
+Es ist eine gute Idee die ``Zend\Search\Lucene\Search\QueryParserException``\ s abzufangen und richtig
 abzuarbeiten:
 
 .. code-block:: php
    :linenos:
 
    try {
-       $query = Zend_Search_Lucene_Search_QueryParser::parse($queryString);
-   } catch (Zend_Search_Lucene_Search_QueryParserException $e) {
+       $query = Zend\Search\Lucene\Search\QueryParser::parse($queryString);
+   } catch (Zend\Search\Lucene\Search\QueryParserException $e) {
        echo "Abfrage Syntax Fehler: " . $e->getMessage() . "\n";
    }
 
-Die selbe Technik sollte für die find() Methode des ``Zend_Search_Lucene`` Objektes verwendet werden.
+Die selbe Technik sollte für die find() Methode des ``Zend\Search\Lucene`` Objektes verwendet werden.
 
 Beginnend mit 1.5 werden Abfrageparser Exceptions standardmäßig unterdrückt. Wenn eine Abfrage nicht konform mit
 der Abfragesprache ist, dann wird Sie mithilfe des aktuellen Standardanalysators gestückelt und alle
 Begriffsstücke werden für die Suche verwendet. Die
-``Zend_Search_Lucene_Search_QueryParser::dontSuppressQueryParsingExceptions()`` Methode kann verwendet werden um
-Exceptions einzuschalten. Die ``Zend_Search_Lucene_Search_QueryParser::suppressQueryParsingExceptions()`` und
-``Zend_Search_Lucene_Search_QueryParser::queryParsingExceptionsSuppressed()`` Methoden sind auch dazu gedacht das
+``Zend\Search\Lucene\Search\QueryParser::dontSuppressQueryParsingExceptions()`` Methode kann verwendet werden um
+Exceptions einzuschalten. Die ``Zend\Search\Lucene\Search\QueryParser::suppressQueryParsingExceptions()`` und
+``Zend\Search\Lucene\Search\QueryParser::queryParsingExceptionsSuppressed()`` Methoden sind auch dazu gedacht das
 Verhalten der Exceptionsbehandlung zu verwalten.
 
 .. _zend.search.lucene.queries.term-query:
@@ -70,19 +70,19 @@ Aufbau der Abfrage mit der *API*:
 .. code-block:: php
    :linenos:
 
-   $term  = new Zend_Search_Lucene_Index_Term('word1', 'field1');
-   $query = new Zend_Search_Lucene_Search_Query_Term($term);
+   $term  = new Zend\Search\Lucene\Index\Term('word1', 'field1');
+   $query = new Zend\Search\Lucene\Search\Query\Term($term);
    $hits  = $index->find($query);
 
-Das Term Feld ist optional. ``Zend_Search_Lucene`` durchsucht alle indizierten Felder in jedem Dokument wenn das
+Das Term Feld ist optional. ``Zend\Search\Lucene`` durchsucht alle indizierten Felder in jedem Dokument wenn das
 Feld nicht spezifiziert wurde:
 
 .. code-block:: php
    :linenos:
 
    // Sucht nach 'word1' in allen indizierten Feldern
-   $term  = new Zend_Search_Lucene_Index_Term('wort1');
-   $query = new Zend_Search_Lucene_Search_Query_Term($term);
+   $term  = new Zend\Search\Lucene\Index\Term('wort1');
+   $query = new Zend\Search\Lucene\Search\Query\Term($term);
    $hits  = $index->find($query);
 
 .. _zend.search.lucene.queries.multiterm-query:
@@ -134,12 +134,12 @@ Aufbau der Abfrage mit der *API*:
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_MultiTerm();
+   $query = new Zend\Search\Lucene\Search\Query\MultiTerm();
 
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('word1'), true);
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('word2', 'author'),
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('word1'), true);
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('word2', 'author'),
                    null);
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('word3'), false);
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('word3'), false);
 
    $hits  = $index->find($query);
 
@@ -148,12 +148,12 @@ Es ist auch möglich Begriffslisten in einem MultiTerm Anfrage Konstruktor zu sp
 .. code-block:: php
    :linenos:
 
-   $terms = array(new Zend_Search_Lucene_Index_Term('word1'),
-                  new Zend_Search_Lucene_Index_Term('word2', 'author'),
-                  new Zend_Search_Lucene_Index_Term('word3'));
+   $terms = array(new Zend\Search\Lucene\Index\Term('word1'),
+                  new Zend\Search\Lucene\Index\Term('word2', 'author'),
+                  new Zend\Search\Lucene\Index\Term('word3'));
    $signs = array(true, null, false);
 
-   $query = new Zend_Search_Lucene_Search_Query_MultiTerm($terms, $signs);
+   $query = new Zend\Search\Lucene\Search\Query\MultiTerm($terms, $signs);
 
    $hits  = $index->find($query);
 
@@ -219,19 +219,19 @@ Aufbau der Abfrage durch die *API*:
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Boolean();
+   $query = new Zend\Search\Lucene\Search\Query\Boolean();
 
-   $subquery1 = new Zend_Search_Lucene_Search_Query_MultiTerm();
-   $subquery1->addTerm(new Zend_Search_Lucene_Index_Term('word1'));
-   $subquery1->addTerm(new Zend_Search_Lucene_Index_Term('word2'));
-   $subquery1->addTerm(new Zend_Search_Lucene_Index_Term('word3'));
+   $subquery1 = new Zend\Search\Lucene\Search\Query\MultiTerm();
+   $subquery1->addTerm(new Zend\Search\Lucene\Index\Term('word1'));
+   $subquery1->addTerm(new Zend\Search\Lucene\Index\Term('word2'));
+   $subquery1->addTerm(new Zend\Search\Lucene\Index\Term('word3'));
 
-   $subquery2 = new Zend_Search_Lucene_Search_Query_MultiTerm();
-   $subquery2->addTerm(new Zend_Search_Lucene_Index_Term('word4', 'author'));
-   $subquery2->addTerm(new Zend_Search_Lucene_Index_Term('word5', 'author'));
+   $subquery2 = new Zend\Search\Lucene\Search\Query\MultiTerm();
+   $subquery2->addTerm(new Zend\Search\Lucene\Index\Term('word4', 'author'));
+   $subquery2->addTerm(new Zend\Search\Lucene\Index\Term('word5', 'author'));
 
-   $term6 = new Zend_Search_Lucene_Index_Term('word6');
-   $subquery3 = new Zend_Search_Lucene_Search_Query_Term($term6);
+   $term6 = new Zend\Search\Lucene\Index\Term('word6');
+   $subquery3 = new Zend\Search\Lucene\Search\Query\Term($term6);
 
    $query->addSubquery($subquery1, true  /* benötigt (required) */);
    $query->addSubquery($subquery2, null  /* optional */);
@@ -248,7 +248,7 @@ Es ist auch möglich Listen von Unterabfragen im Konstruktor der Boolschen Abfra
    $subqueries = array($subquery1, $subquery2, $subquery3);
    $signs = array(true, null, false);
 
-   $query = new Zend_Search_Lucene_Search_Query_Boolean($subqueries, $signs);
+   $query = new Zend\Search\Lucene\Search\Query\Boolean($subqueries, $signs);
 
    $hits  = $index->find($query);
 
@@ -305,18 +305,18 @@ Abfrageerstellung durch die *API*:
 .. code-block:: php
    :linenos:
 
-   $pattern = new Zend_Search_Lucene_Index_Term('test*', 'field1');
-   $query = new Zend_Search_Lucene_Search_Query_Wildcard($pattern);
+   $pattern = new Zend\Search\Lucene\Index\Term('test*', 'field1');
+   $query = new Zend\Search\Lucene\Search\Query\Wildcard($pattern);
    $hits  = $index->find($query);
 
-Die Ausdrucksfelder sind optional. ``Zend_Search_Lucene`` durchsucht alle Felder in jedem Dokument wenn kein Feld
+Die Ausdrucksfelder sind optional. ``Zend\Search\Lucene`` durchsucht alle Felder in jedem Dokument wenn kein Feld
 spezifiziert wurde:
 
 .. code-block:: php
    :linenos:
 
-   $pattern = new Zend_Search_Lucene_Index_Term('test*');
-   $query = new Zend_Search_Lucene_Search_Query_Wildcard($pattern);
+   $pattern = new Zend\Search\Lucene\Index\Term('test*');
+   $query = new Zend\Search\Lucene\Search\Query\Wildcard($pattern);
    $hits  = $index->find($query);
 
 .. _zend.search.lucene.queries.fuzzy:
@@ -343,8 +343,8 @@ Abfrageerstellung durch die *API*:
 .. code-block:: php
    :linenos:
 
-   $term = new Zend_Search_Lucene_Index_Term('test', 'field1');
-   $query = new Zend_Search_Lucene_Search_Query_Fuzzy($term);
+   $term = new Zend\Search\Lucene\Index\Term('test', 'field1');
+   $query = new Zend\Search\Lucene\Search\Query\Fuzzy($term);
    $hits  = $index->find($query);
 
 Optional kann die Ähnlichkeit nach dem "~" Zeichen spezifiziert werden.
@@ -363,18 +363,18 @@ Abfrageerstellung durch die *API*:
 .. code-block:: php
    :linenos:
 
-   $term = new Zend_Search_Lucene_Index_Term('test', 'field1');
-   $query = new Zend_Search_Lucene_Search_Query_Fuzzy($term, 0.4);
+   $term = new Zend\Search\Lucene\Index\Term('test', 'field1');
+   $query = new Zend\Search\Lucene\Search\Query\Fuzzy($term, 0.4);
    $hits  = $index->find($query);
 
-Das Term Feld ist optional. ``Zend_Search_Lucene`` durchsucht alle Felder in jedem Dokument ob ein Feld nicht
+Das Term Feld ist optional. ``Zend\Search\Lucene`` durchsucht alle Felder in jedem Dokument ob ein Feld nicht
 spezifiziert ist:
 
 .. code-block:: php
    :linenos:
 
-   $term = new Zend_Search_Lucene_Index_Term('test');
-   $query = new Zend_Search_Lucene_Search_Query_Fuzzy($term);
+   $term = new Zend\Search\Lucene\Index\Term('test');
+   $query = new Zend\Search\Lucene\Search\Query\Fuzzy($term);
    $hits  = $index->find($query);
 
 .. _zend.search.lucene.queries.phrase-query:
@@ -394,42 +394,42 @@ Begriffs zu erhöhen oder verschiedene Synonyme können an einer Stelle platzier
 .. code-block:: php
    :linenos:
 
-   $query1 = new Zend_Search_Lucene_Search_Query_Phrase();
+   $query1 = new Zend\Search\Lucene\Search\Query\Phrase();
 
    // Füge 'word1' an der relativen Position 0 hinzu.
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word1'));
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word1'));
 
    // Füge 'word2' an der relativen Position 1 hinzu.
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word2'));
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word2'));
 
    // Füge 'word3' an der relativen Position 3 hinzu.
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word3'), 3);
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word3'), 3);
 
    ...
 
-   $query2 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query2 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2', 'word3'), array(0,1,3));
 
    ...
 
    // Abfrage ohne eine Lücke.
-   $query3 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query3 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2', 'word3'));
 
    ...
 
-   $query4 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query4 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2'), array(0,1), 'annotation');
 
 Eine Phrasenabfrage kann in einem Schritt mit einem Klassenkonstruktor erstellt werden oder Schritt für Schritt
-mit der ``Zend_Search_Lucene_Search_Query_Phrase::addTerm()`` Methode.
+mit der ``Zend\Search\Lucene\Search\Query\Phrase::addTerm()`` Methode.
 
-Der ``Zend_Search_Lucene_Search_Query_Phrase`` Klassenkonstruktor nimmt drei optionale Argumente entgegen:
+Der ``Zend\Search\Lucene\Search\Query\Phrase`` Klassenkonstruktor nimmt drei optionale Argumente entgegen:
 
 .. code-block:: php
    :linenos:
 
-   Zend_Search_Lucene_Search_Query_Phrase(
+   Zend\Search\Lucene\Search\Query\Phrase(
        [array $terms[, array $offsets[, string $field]]]
    );
 
@@ -447,14 +447,14 @@ oder ``TRUE`` entspricht, wird das Standardfeld durchsucht.
    :linenos:
 
    $query =
-       new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'framework'));
+       new Zend\Search\Lucene\Search\Query\Phrase(array('zend', 'framework'));
 
 Wird nach der Phrase 'zend framework' in allen Feldern suchen.
 
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query = new Zend\Search\Lucene\Search\Query\Phrase(
                     array('zend', 'download'), array(0, 2)
                 );
 
@@ -464,20 +464,20 @@ download', 'zend core download', 'zend framework download' und so weiter werden 
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query = new Zend\Search\Lucene\Search\Query\Phrase(
                     array('zend', 'framework'), null, 'title'
                 );
 
 Wird nach der Phrase 'zend framework' im 'title' Feld suchen.
 
-Die ``Zend_Search_Lucene_Search_Query_Phrase::addTerm()`` Methode nimmt zwei Argumente entgeben. Ein
-``Zend_Search_Lucene_Index_Term`` Objekt ist erforderlich und die Position optional:
+Die ``Zend\Search\Lucene\Search\Query\Phrase::addTerm()`` Methode nimmt zwei Argumente entgeben. Ein
+``Zend\Search\Lucene\Index\Term`` Objekt ist erforderlich und die Position optional:
 
 .. code-block:: php
    :linenos:
 
-   Zend_Search_Lucene_Search_Query_Phrase::addTerm(
-       Zend_Search_Lucene_Index_Term $term[, integer $position]
+   Zend\Search\Lucene\Search\Query\Phrase::addTerm(
+       Zend\Search\Lucene\Index\Term $term[, integer $position]
    );
 
 ``$term`` enthält den nächsten Begriff in der Phrase. Er muss das selbe Feld ansprechen wie der vorherige
@@ -488,18 +488,18 @@ Begriff. Andernfalls wird eine Ausnahme geworfen.
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase();
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'));
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'));
+   $query = new Zend\Search\Lucene\Search\Query\Phrase();
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('zend'));
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('framework'));
 
 Demnach wird hier nach der Phrase 'zend framework' gesucht.
 
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase();
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'), 0);
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'), 2);
+   $query = new Zend\Search\Lucene\Search\Query\Phrase();
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('zend'), 0);
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('framework'), 2);
 
 Es wird nach der Phrase 'zend ????? download' gesucht und die Phrasen 'zend platform download', 'zend studio
 download', 'zend core download', 'zend framework download' und so weiter werden gefunden.
@@ -507,9 +507,9 @@ download', 'zend core download', 'zend framework download' und so weiter werden 
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase();
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('zend', 'title'));
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('framework', 'title'));
+   $query = new Zend\Search\Lucene\Search\Query\Phrase();
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('zend', 'title'));
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('framework', 'title'));
 
 Es wird nach der Phrase 'zend framework' im 'title' Feld gesucht.
 
@@ -532,7 +532,7 @@ Der Ungenauigkeitsfaktor kannnach der Erstellung der Abfrage zugeordnet werden:
 
    // Query without a gap.
    $query =
-       new Zend_Search_Lucene_Search_Query_Phrase(array('word1', 'word2'));
+       new Zend\Search\Lucene\Search\Query\Phrase(array('word1', 'word2'));
 
    // Search for 'word1 word2', 'word1 ... word2'
    $query->setSlop(1);
@@ -566,34 +566,34 @@ Abfrageerstellung durch die *API*:
 .. code-block:: php
    :linenos:
 
-   $from = new Zend_Search_Lucene_Index_Term('20020101', 'mod_date');
-   $to   = new Zend_Search_Lucene_Index_Term('20030101', 'mod_date');
-   $query = new Zend_Search_Lucene_Search_Query_Range(
+   $from = new Zend\Search\Lucene\Index\Term('20020101', 'mod_date');
+   $to   = new Zend\Search\Lucene\Index\Term('20030101', 'mod_date');
+   $query = new Zend\Search\Lucene\Search\Query\Range(
                     $from, $to, true // inclusive
                 );
    $hits  = $index->find($query);
 
-Begriffsfelder sind optional. ``Zend_Search_Lucene`` durchsucht alle Felder wenn das Feld nicht spezifiziert wurde:
+Begriffsfelder sind optional. ``Zend\Search\Lucene`` durchsucht alle Felder wenn das Feld nicht spezifiziert wurde:
 
 .. code-block:: php
    :linenos:
 
-   $from = new Zend_Search_Lucene_Index_Term('Aida');
-   $to   = new Zend_Search_Lucene_Index_Term('Carmen');
-   $query = new Zend_Search_Lucene_Search_Query_Range(
+   $from = new Zend\Search\Lucene\Index\Term('Aida');
+   $to   = new Zend\Search\Lucene\Index\Term('Carmen');
+   $query = new Zend\Search\Lucene\Search\Query\Range(
                     $from, $to, false // non-inclusive
                 );
    $hits  = $index->find($query);
 
-Jede (aber nicht beide) der Begrenzungsausdrücke kann auf ``TRUE`` gesetzt werden. ``Zend_Search_Lucene`` sucht
+Jede (aber nicht beide) der Begrenzungsausdrücke kann auf ``TRUE`` gesetzt werden. ``Zend\Search\Lucene`` sucht
 vom Anfang oder bis zum Ende des Verzeichnisses für die spezifizierten Feld(er) für diesen Fall:
 
 .. code-block:: php
    :linenos:
 
    // Sucht nach ['20020101' TO ...]
-   $from = new Zend_Search_Lucene_Index_Term('20020101', 'mod_date');
-   $query = new Zend_Search_Lucene_Search_Query_Range(
+   $from = new Zend\Search\Lucene\Index\Term('20020101', 'mod_date');
+   $query = new Zend\Search\Lucene\Search\Query\Range(
                     $from, null, true // inclusive
                 );
    $hits  = $index->find($query);

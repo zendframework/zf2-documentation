@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.images:
 
-Zend_Service_Amazon_Ec2: Amazon Maschinen Images (AMI)
+Zend\Service_Amazon\Ec2: Amazon Maschinen Images (AMI)
 ======================================================
 
 Amazon Maschinen Images (AMIs) sind mit einer bereits wachsenden Listen von Betriebssystemen vorkonfiguriert.
@@ -24,7 +24,7 @@ des Images von Amazon S3 und überprüft ob das Image dem Benutzer gehört der d
 .. code-block:: php
    :linenos:
 
-   $ec2_img = new Zend_Service_Amazon_Ec2_Image('aws_key','aws_secret_key');
+   $ec2_img = new Zend\Service\Amazon\Ec2\Image('aws_key','aws_secret_key');
    $ip = $ec2_img->register('imageLocation');
 
 .. _zend.service.amazon.ec2.images.deregister:
@@ -39,7 +39,7 @@ werden.
 .. code-block:: php
    :linenos:
 
-   $ec2_img = new Zend_Service_Amazon_Ec2_Image('aws_key','aws_secret_key');
+   $ec2_img = new Zend\Service\Amazon\Ec2\Image('aws_key','aws_secret_key');
    $ip = $ec2_img->deregister('imageId');
 
 .. _zend.service.amazon.ec2.images.describe:
@@ -98,7 +98,7 @@ platform.
 .. code-block:: php
    :linenos:
 
-   $ec2_img = new Zend_Service_Amazon_Ec2_Image('aws_key','aws_secret_key');
+   $ec2_img = new Zend\Service\Amazon\Ec2\Image('aws_key','aws_secret_key');
    $ip = $ec2_img->describe();
 
 .. _zend.service.amazon.ec2.images.attribute:
@@ -135,7 +135,7 @@ Ein Attribut eines *AMI* verändern
 .. code-block:: php
    :linenos:
 
-   $ec2_img = new Zend_Service_Amazon_Ec2_Image('aws_key','aws_secret_key');
+   $ec2_img = new Zend\Service\Amazon\Ec2\Image('aws_key','aws_secret_key');
    // Ändert die Startberechtigung (launchPermission) eines AMI
    $return = $ec2_img->modifyAttribute('imageId',
                                        'launchPermission',
@@ -161,7 +161,7 @@ nicht zurückgesetzt werden.**
 .. code-block:: php
    :linenos:
 
-   $ec2_img = new Zend_Service_Amazon_Ec2_Image('aws_key','aws_secret_key');
+   $ec2_img = new Zend\Service\Amazon\Ec2\Image('aws_key','aws_secret_key');
    $return = $ec2_img->resetAttribute('imageId', 'launchPermission');
 
 .. _zend.service.amazon.ec2.images.attribute.describe:
@@ -176,7 +176,7 @@ spezifiziert werden. Aktuell werden nur launchPermission und productCodes unters
 .. code-block:: php
    :linenos:
 
-   $ec2_img = new Zend_Service_Amazon_Ec2_Image('aws_key','aws_secret_key');
+   $ec2_img = new Zend\Service\Amazon\Ec2\Image('aws_key','aws_secret_key');
    $return = $ec2_img->describeAttribute('imageId', 'launchPermission');
 
 

@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.openid.provider:
 
-Zend_OpenId_Provider
+ZendOpenId\Provider
 ====================
 
-``Zend_OpenId_Provider`` kann verwendet werden um OpenID Server zu implementieren. Dieses Kapitel bietet Beispiele
+``ZendOpenId\Provider`` kann verwendet werden um OpenID Server zu implementieren. Dieses Kapitel bietet Beispiele
 die Demonstrieren wie ein sehr einfacher Server erstellt werden kann. Für die Implementierung eines produktiven
 OpenId Servers (wie zum Beispiel `www.myopenid.com`_) kann es aber notwendig sein mit komplexeren Problemen
 umzugehen.
@@ -15,7 +15,7 @@ Schellstart
 -----------
 
 Das folgende Beispiel beinhaltet Code für das Erstellen eines Benutzerzugang indem
-``Zend_OpenId_Provider::register`` verwendet wird. Das Link-Element mit ``rel="openid.server"`` zeigt auf das
+``ZendOpenId\Provider::register`` verwendet wird. Das Link-Element mit ``rel="openid.server"`` zeigt auf das
 eigene Serverscript. Wenn diese Identität zu einer OpenID-aktivierten Seite übertragen wird, wird eine
 Authentifizierung zu diesem Server durchgeführt.
 
@@ -31,10 +31,10 @@ einen Code nicht wenn echte Identitäten verwendet werden.
 
    <?php
    // eine Testidentität erstellen
-   define("TEST_SERVER", Zend_OpenId::absoluteURL("example-8.php"));
-   define("TEST_ID", Zend_OpenId::selfURL());
+   define("TEST_SERVER", ZendOpenId\OpenId::absoluteURL("example-8.php"));
+   define("TEST_ID", ZendOpenId\OpenId::selfURL());
    define("TEST_PASSWORD", "123");
-   $server = new Zend_OpenId_Provider();
+   $server = new ZendOpenId\Provider();
    if (!$server->hasUser(TEST_ID)) {
        $server->register(TEST_ID, TEST_PASSWORD);
    }
@@ -47,12 +47,12 @@ einen Code nicht wenn echte Identitäten verwendet werden.
 
 Das folgende Identitäts-Serverscript behandelt zwei Arten von Anfragen von OpenID-aktivierten Sites (for
 Assoziation und Authentifizierung). Beide von Ihnen werden von der gleichen Methode behandelt:
-``Zend_OpenId_Provider::handle``. Die zwei Argumente für ``Zend_OpenId_Provider`` Konstruktor sind die *URL*\ s
+``ZendOpenId\Provider::handle``. Die zwei Argumente für ``ZendOpenId\Provider`` Konstruktor sind die *URL*\ s
 des Logins und der Vertrauten Seite, welche die Eingabe des End-Benutzers abfragen.
 
-Bei Erfolg gibt die Methode ``Zend_OpenId_Provider::handle`` einen String zurück der zur OpenID-aktivierten Seite
+Bei Erfolg gibt die Methode ``ZendOpenId\Provider::handle`` einen String zurück der zur OpenID-aktivierten Seite
 zurück übergeben werden sollte. Bei einem Fehler wird ``FALSE`` zurückgegeben. Dieses Beispiel gibt eine *HTTP*
-403 Antwort zurück wenn ``Zend_OpenId_Provider::handle`` fehlschlägt. Man erhält diese Antwort wenn man dieses
+403 Antwort zurück wenn ``ZendOpenId\Provider::handle`` fehlschlägt. Man erhält diese Antwort wenn man dieses
 Skript mit einem Web-Browser öffnet, weil es eine nicht-OpenID konforme Anfrage sendet.
 
 .. _zend.openid.provider.example-2:
@@ -62,7 +62,7 @@ Skript mit einem Web-Browser öffnet, weil es eine nicht-OpenID konforme Anfrage
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_OpenId_Provider("example-8-login.php",
+   $server = new ZendOpenId\Provider("example-8-login.php",
                                       "example-8-trust.php");
    $ret = $server->handle();
    if (is_string($ret)) {
@@ -77,15 +77,15 @@ Skript mit einem Web-Browser öffnet, weil es eine nicht-OpenID konforme Anfrage
    Es ist eine gute Idee eine sichere Verbindung (HTTPS) für diese Skripte zu verwenden - und speziell für die
    folgenden interaktiven Scripte - um den Diebstahl von Passwörtern zu verhindern.
 
-Das folgende Skript implementiert einen Login Schirm für einen Identitäts Server indem ``Zend_OpenId_Provider``
+Das folgende Skript implementiert einen Login Schirm für einen Identitäts Server indem ``ZendOpenId\Provider``
 verwendet wird und leitet zu dieser Seite weiter wenn ein benötigter Benutzer sich noch nicht eingeloggt hat. Auf
 dieser Seite gibt der Benutzer sein Passwort an um sich anzumelden.
 
 Es sollte das Passwort "123" verwendet werden das im obigen Identitäts Skript verwendet wurde.
 
-Bei Abschicken, ruft das Skript ``Zend_OpenId_Provider::login`` mit der akzeptierten Benutzer Identität und dem
+Bei Abschicken, ruft das Skript ``ZendOpenId\Provider::login`` mit der akzeptierten Benutzer Identität und dem
 Passwort auf, und leitet anschließend zum Hauptskript des Identitäts Providers zurück. Bei Erfolg baut
-``Zend_OpenId_Provider::login`` eine Session zwischen dem Benutzer und dem Identitäts-Provider auf und speichert
+``ZendOpenId\Provider::login`` eine Session zwischen dem Benutzer und dem Identitäts-Provider auf und speichert
 die Informationen über den Benutzer der nun angemeldet ist. Alle folgenden Anfragen vom gleichen Benutzer
 benötigen keine Login-Prozedur mehr - selbst wenn diese von einer anderen OpenID aktivierten Web-Seite kommen.
 
@@ -102,7 +102,7 @@ benötigen keine Login-Prozedur mehr - selbst wenn diese von einer anderen OpenI
    :linenos:
 
    <?php
-   $server = new Zend_OpenId_Provider();
+   $server = new ZendOpenId\Provider();
 
    if ($_SERVER['REQUEST_METHOD'] == 'POST' &&
        isset($_POST['openid_action']) &&
@@ -111,7 +111,7 @@ benötigen keine Login-Prozedur mehr - selbst wenn diese von einer anderen OpenI
        isset($_POST['openid_password'])) {
        $server->login($_POST['openid_identifier'],
                       $_POST['openid_password']);
-       Zend_OpenId::redirect("example-8.php", $_GET);
+       ZendOpenId\OpenId::redirect("example-8.php", $_GET);
    }
    ?>
    <html>
@@ -165,7 +165,7 @@ Authentifizierungs Anfragen von dieser Seite werden automatisch gehandhabt ohne 
    :linenos:
 
    <?php
-   $server = new Zend_OpenId_Provider();
+   $server = new ZendOpenId\Provider();
 
    if ($_SERVER['REQUEST_METHOD'] == 'POST' &&
        isset($_POST['openid_action']) &&
@@ -180,7 +180,7 @@ Authentifizierungs Anfragen von dieser Seite werden automatisch gehandhabt ohne 
            if (isset($_POST['forever'])) {
                $server->denySite($server->getSiteRoot($_GET));
            }
-           Zend_OpenId::redirect($_GET['openid_return_to'],
+           ZendOpenId\OpenId::redirect($_GET['openid_return_to'],
                                  array('openid.mode'=>'cancel'));
        }
    }
@@ -218,7 +218,7 @@ Kombinierte Skripte
 -------------------
 
 Es ist möglich alle Provider Funktionalitäten in einem Skript zusammen zu kombinieren. In diesem Fall werden
-Login und Vertraute *URL*\ s unterdrückt, und ``Zend_OpenId_Provider`` nimmt an das diese auf die gleiche Seite
+Login und Vertraute *URL*\ s unterdrückt, und ``ZendOpenId\Provider`` nimmt an das diese auf die gleiche Seite
 zeigen mit einem zusätzlichen "openid.action"``GET`` Argument.
 
 .. note::
@@ -234,9 +234,9 @@ zeigen mit einem zusätzlichen "openid.action"``GET`` Argument.
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_OpenId_Provider();
+   $server = new ZendOpenId\Provider();
 
-   define("TEST_ID", Zend_OpenId::absoluteURL("example-9-id.php"));
+   define("TEST_ID", ZendOpenId\OpenId::absoluteURL("example-9-id.php"));
    define("TEST_PASSWORD", "123");
 
    if ($_SERVER['REQUEST_METHOD'] == 'GET' &&
@@ -244,7 +244,7 @@ zeigen mit einem zusätzlichen "openid.action"``GET`` Argument.
        $_GET['openid_action'] === 'login') {
        $server->login(TEST_ID, TEST_PASSWORD);
        unset($_GET['openid_action']);
-       Zend_OpenId::redirect(Zend_OpenId::selfUrl(), $_GET);
+       ZendOpenId\OpenId::redirect(ZendOpenId\OpenId::selfUrl(), $_GET);
    } else if ($_SERVER['REQUEST_METHOD'] == 'GET' &&
        isset($_GET['openid_action']) &&
        $_GET['openid_action'] === 'trust') {
@@ -282,19 +282,19 @@ eintragen. Die Implementierung dieses GUI würde den Rahmen dieses Handbuches sp
    :linenos:
 
    <?php
-   define("TEST_SERVER", Zend_OpenId::absoluteURL("example-10.php"));
-   define("TEST_ID", Zend_OpenId::selfURL());
+   define("TEST_SERVER", ZendOpenId\OpenId::absoluteURL("example-10.php"));
+   define("TEST_ID", ZendOpenId\OpenId::selfURL());
    define("TEST_PASSWORD", "123");
-   $server = new Zend_OpenId_Provider();
+   $server = new ZendOpenId\Provider();
    if (!$server->hasUser(TEST_ID)) {
        $server->register(TEST_ID, TEST_PASSWORD);
        $server->login(TEST_ID, TEST_PASSWORD);
-       $sreg = new Zend_OpenId_Extension_Sreg(array(
+       $sreg = new ZendOpenId_Extension\Sreg(array(
            'nickname' =>'test',
            'email' => 'test@test.com'
        ));
-       $root = Zend_OpenId::absoluteURL(".");
-       Zend_OpenId::normalizeUrl($root);
+       $root = ZendOpenId\OpenId::absoluteURL(".");
+       ZendOpenId\OpenId::normalizeUrl($root);
        $server->allowSite($root, $sreg);
        $server->logout();
    }
@@ -313,12 +313,12 @@ Erweiterung Beispiel aus dem vorherigen Kapitel) und sie sollte das folgende Ope
 
 Dieses Skript ist eine Variation des Skripts im "Alles zusammen" Beispiel. Es verwendet den gleichen automatischen
 Login Mechanismus, aber es enthält keinen Code für die Vertrauens-Seite. Der Benutzer hat dem Beispielskript
-bereits für immer vertraut. Dieses Vertrauen wurde durch den Aufruf der ``Zend_OpenId_Provider::allowSite()``
+bereits für immer vertraut. Dieses Vertrauen wurde durch den Aufruf der ``ZendOpenId\Provider::allowSite()``
 Methode im Identitäts Skript hergestellt. Die gleiche Methode assoziiert das Profil mit der vertrauten *URL*.
 Dieses Profil wird automatisch für eine Anfrage von der vertrauten *URL* zurückgegeben.
 
 Um die einfache Registrierungs Erweiterung funktionsfähig zu machen ist einfach die Übergabe einer Instanz von
-``Zend_OpenId_Extension_Sreg`` als zweites Argument der ``Zend_OpenId_Provider::handle()`` Methode.
+``ZendOpenId_Extension\Sreg`` als zweites Argument der ``ZendOpenId\Provider::handle()`` Methode.
 
 .. _zend.openid.provider.example-7:
 
@@ -327,10 +327,10 @@ Um die einfache Registrierungs Erweiterung funktionsfähig zu machen ist einfach
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_OpenId_Provider();
-   $sreg = new Zend_OpenId_Extension_Sreg();
+   $server = new ZendOpenId\Provider();
+   $sreg = new ZendOpenId_Extension\Sreg();
 
-   define("TEST_ID", Zend_OpenId::absoluteURL("example-10-id.php"));
+   define("TEST_ID", ZendOpenId\OpenId::absoluteURL("example-10-id.php"));
    define("TEST_PASSWORD", "123");
 
    if ($_SERVER['REQUEST_METHOD'] == 'GET' &&
@@ -338,7 +338,7 @@ Um die einfache Registrierungs Erweiterung funktionsfähig zu machen ist einfach
        $_GET['openid_action'] === 'login') {
        $server->login(TEST_ID, TEST_PASSWORD);
        unset($_GET['openid_action']);
-       Zend_OpenId::redirect(Zend_OpenId::selfUrl(), $_GET);
+       ZendOpenId\OpenId::redirect(ZendOpenId\OpenId::selfUrl(), $_GET);
    } else if ($_SERVER['REQUEST_METHOD'] == 'GET' &&
        isset($_GET['openid_action']) &&
        $_GET['openid_action'] === 'trust') {
@@ -359,25 +359,25 @@ Sonst noch was?
 ---------------
 
 Das Erstellen von OpenID Providern ist eine viel seltenere Aufgabe als die Erstellung von OpenID-aktivierten Sites,
-weswegen dieses Handbuch nicht alle ``Zend_OpenId_Provider`` Features so ausführlich abdeckt wie es für
-``Zend_OpenId_Consumer`` getan wurde.
+weswegen dieses Handbuch nicht alle ``ZendOpenId\Provider`` Features so ausführlich abdeckt wie es für
+``ZendOpenId\Consumer`` getan wurde.
 
-Zusammenfassend enthält ``Zend_OpenId_Provider``:
+Zusammenfassend enthält ``ZendOpenId\Provider``:
 
 - Ein Set von Methoden um ein End-Benutzer GUI zu Erstellen das es Benutzern erlauben sich zu registrieren und Ihre
   vertrauten Seiten und Profile zu managen.
 
 - Einen abstrakten Speicherlayer um Informationen über Benutzer, Ihre Seiten und Ihre Profile zu speichern. Es
   speichert auch Assoziationen zwischen Providern und OpenID-aktivierten Seiten. Dieser Layer ist ähnlich dem der
-  ``Zend_OpenId_Consumer`` Klasse. Er verwendet standardmäßg auch den Dateispeicher, kann aber mit anderen
+  ``ZendOpenId\Consumer`` Klasse. Er verwendet standardmäßg auch den Dateispeicher, kann aber mit anderen
   Backends abgeleitet werden.
 
 - Einen Abtraktions Benutzer-Assoziierungs Layer der Web-Browser von Benutzern mit eingeloggten Identitäten
   verknüpfen kann.
 
-Die ``Zend_OpenId_Provider`` Klasse versucht nicht alle möglichen Features abzudecken die von OpenID Servern
+Die ``ZendOpenId\Provider`` Klasse versucht nicht alle möglichen Features abzudecken die von OpenID Servern
 implementiert werden können, z.B. wie digitale Zertifikate, kann aber einfach erweitert werden durch
-``Zend_OpenId_Extension``\ s oder durch standardmäßige Objektorientierte Erweiterungen.
+``ZendOpenId\Extension``\ s oder durch standardmäßige Objektorientierte Erweiterungen.
 
 
 

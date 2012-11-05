@@ -24,19 +24,19 @@ Os renderizadores tem algumas opções em comum. Essas opções podem ser defini
    $options = array('topOffset' => 10);
 
    // Caso 1
-   $renderer = new Zend_Barcode_Renderer_Pdf($options);
+   $renderer = new Zend\Barcode_Renderer\Pdf($options);
 
    // Caso 2
-   $renderer = new Zend_Barcode_Renderer_Pdf();
+   $renderer = new Zend\Barcode_Renderer\Pdf();
    $renderer->setOptions($options);
 
    // Caso 3
-   $config   = new Zend_Config($options);
-   $renderer = new Zend_Barcode_Renderer_Pdf();
+   $config   = new Zend\Config\Config($options);
+   $renderer = new Zend\Barcode_Renderer\Pdf();
    $renderer->setConfig($config);
 
    // Caso 4
-   $renderer = new Zend_Barcode_Renderer_Pdf();
+   $renderer = new Zend\Barcode_Renderer\Pdf();
    $renderer->setTopOffset(10);
 
 .. _zend.barcode.renderers.common.options:
@@ -57,7 +57,7 @@ opções disponíveis são:
    +--------------------+-------------------+---------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Opção               |Tipo de Dado       |Valor Padrão         |Descrição                                                                                                                                                                                                                |
    +====================+===================+=====================+=========================================================================================================================================================================================================================+
-   |rendererNamespace   |String             |Zend_Barcode_Renderer|Namespace do renderizador; por exemplo, caso precise estender os renderizadores.                                                                                                                                         |
+   |rendererNamespace   |String             |Zend\Barcode\Renderer|Namespace do renderizador; por exemplo, caso precise estender os renderizadores.                                                                                                                                         |
    +--------------------+-------------------+---------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |horizontalPosition  |String             |"left"               |Pode ser "left", "center" ou "right". Pode ser útil com o formato PDF ou se o método setWidth() for usado com um renderizador de imagem.                                                                                 |
    +--------------------+-------------------+---------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -71,15 +71,15 @@ opções disponíveis são:
    +--------------------+-------------------+---------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |moduleSize          |Float              |1                    |Tamanho de um módulo de renderização no suporte.                                                                                                                                                                         |
    +--------------------+-------------------+---------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |barcode             |Zend_Barcode_Object|NULL                 |O objeto código de barras a ser renderizado.                                                                                                                                                                             |
+   |barcode             |Zend\Barcode\Object|NULL                 |O objeto código de barras a ser renderizado.                                                                                                                                                                             |
    +--------------------+-------------------+---------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Existe um getter adicional: ``getType()``. Ele retorna o nome da classe de renderização sem o namespace (por
-exemplo, ``Zend_Barcode_Renderer_Image`` retorna "image").
+exemplo, ``Zend\Barcode_Renderer\Image`` retorna "image").
 
 .. _zend.barcode.renderers.image:
 
-Zend_Barcode_Renderer_Image
+Zend\Barcode_Renderer\Image
 ---------------------------
 
 O renderizador Image irá desenhar a lista de instruções do objeto código de barras em um recurso de imagem. O
@@ -89,7 +89,7 @@ As opções disponíveis são:
 
 .. _zend.barcode.renderers.image.table:
 
-.. table:: Opções do Zend_Barcode_Renderer_Image
+.. table:: Opções do Zend\Barcode_Renderer\Image
 
    +---------+------------+------------+--------------------------------------------------------------------------------------------------------------------------+
    |Opção    |Tipo de Dado|Valor Padrão|Descrição                                                                                                                 |
@@ -103,7 +103,7 @@ As opções disponíveis são:
 
 .. _zend.barcode.renderers.pdf:
 
-Zend_Barcode_Renderer_Pdf
+Zend\Barcode_Renderer\Pdf
 -------------------------
 
 O renderizador de *PDF* irá desenhar a lista de instruções do objeto código de barras em um documento *PDF*. A

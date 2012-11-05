@@ -51,7 +51,7 @@ Gapps サービスクラスとクエリクラスの両方で保持するよう�
    :linenos:
 
    $domain = "example.com";
-   $gdata = new Zend_Gdata_Gapps($client, $domain);
+   $gdata = new ZendGData\Gapps($client, $domain);
 
 .. _zend.gdata.gapps.domain.query:
 
@@ -66,7 +66,7 @@ Gapps サービスクラスとクエリクラスの両方で保持するよう�
    :linenos:
 
    $domain = "example.com";
-   $query = new Zend_Gdata_Gapps_UserQuery($domain, $arg);
+   $query = new ZendGData_Gapps\UserQuery($domain, $arg);
 
 サービスクラスのファクトリメソッドでクエリを作成する際は、
 サービスクラスが自動的にクエリクラスのドメインを設定します。
@@ -77,7 +77,7 @@ Gapps サービスクラスとクエリクラスの両方で保持するよう�
    :linenos:
 
    $domain = "example.com";
-   $gdata = new Zend_Gdata_Gapps($client, $domain);
+   $gdata = new ZendGData\Gapps($client, $domain);
    $query = $gdata->newUserQuery($arg);
 
 .. _zend.gdata.gapps.users:
@@ -85,7 +85,7 @@ Gapps サービスクラスとクエリクラスの両方で保持するよう�
 ユーザの操作
 ------
 
-Google Apps がホストするドメイン上のユーザアカウントは、 ``Zend_Gdata_Gapps_UserEntry``
+Google Apps がホストするドメイン上のユーザアカウントは、 ``ZendGData_Gapps\UserEntry``
 のインスタンスで表されます。 このクラスを使用すると、
 アカウント名やユーザ名、パスワード、アクセス権限、
 そして容量制限などすべての情報にアクセスできるようになります。
@@ -146,7 +146,7 @@ Google Apps がホストするドメイン上のユーザアカウントは、 `
    echo '規約に同意した？: ' .
         ($user->login->agreedToTerms ? 'Yes' : 'No') . "\n";
 
-もうひとつの方法は、まず ``Zend_Gdata_Gapps_UserQuery`` のインスタンスを作成して username
+もうひとつの方法は、まず ``ZendGData_Gapps\UserQuery`` のインスタンスを作成して username
 プロパティを (取得したいユーザのユーザ名に) 設定し、サービスオブジェクトの
 ``getUserEntry()`` をコールするものです。
 
@@ -167,7 +167,7 @@ Google Apps がホストするドメイン上のユーザアカウントは、 `
         ($user->login->agreedToTerms ? 'Yes' : 'No') . "\n";
 
 指定したユーザが発見できない場合は ServiceException がスローされ、エラーコード
-``Zend_Gdata_Gapps_Error::ENTITY_DOES_NOT_EXIST`` を返します。ServiceExceptions については :ref:`
+``ZendGData_Gapps\Error::ENTITY_DOES_NOT_EXIST`` を返します。ServiceExceptions については :ref:`
 <zend.gdata.gapps.exceptions>` を参照ください。
 
 .. _zend.gdata.gapps.users.retrievingAll:
@@ -188,7 +188,7 @@ Google Apps がホストするドメイン上のユーザアカウントは、 `
            ' ' . $user->name->familyName . ")\n";
    }
 
-これは ``Zend_Gdata_Gapps_UserFeed`` オブジェクトを作成します。
+これは ``ZendGData_Gapps\UserFeed`` オブジェクトを作成します。
 このオブジェクトは、ドメイン上の各ユーザの情報を保持しています。
 
 あるいは、何もオプションを指定せずに ``getUserFeed()`` をコールする方法もあります。
@@ -339,7 +339,7 @@ Google Apps がホストするドメイン上のユーザアカウントは、 `
 あるニックネームあてに送信されたメールは、
 そのニックネームの持ち主であるユーザに転送されます。
 
-ニックネームは ``Zend_Gdata_Gapps_NicknameEntry`` のインスタンスで表されます。
+ニックネームは ``ZendGData_Gapps\NicknameEntry`` のインスタンスで表されます。
 
 .. _zend.gdata.gapps.nicknames.creating:
 
@@ -381,7 +381,7 @@ Google Apps がホストするドメイン上のユーザアカウントは、 `
    echo 'ニックネーム: ' . $nickname->nickname->name . "\n";
    echo '所有者: ' . $nickname->login->username . "\n";
 
-もうひとつの方法は、まず ``Zend_Gdata_Gapps_NicknameQuery`` のインスタンスを作成して
+もうひとつの方法は、まず ``ZendGData_Gapps\NicknameQuery`` のインスタンスを作成して
 nickname プロパティを (取得したいニックネームに) 設定し、サービスオブジェクトの
 ``getNicknameEntry()`` をコールするものです。
 
@@ -395,7 +395,7 @@ nickname プロパティを (取得したいニックネームに) 設定し、�
    echo '所有者: ' . $nickname->login->username . "\n";
 
 ユーザの場合と同様、指定したニックネームが発見できない場合は ServiceException
-がスローされ、エラーコード ``Zend_Gdata_Gapps_Error::ENTITY_DOES_NOT_EXIST``
+がスローされ、エラーコード ``ZendGData_Gapps\Error::ENTITY_DOES_NOT_EXIST``
 を返します。ServiceExceptions については :ref:` <zend.gdata.gapps.exceptions>` を参照ください。
 
 .. _zend.gdata.gapps.nicknames.retrievingUser:
@@ -415,10 +415,10 @@ nickname プロパティを (取得したいニックネームに) 設定し、�
        echo '  * ' . $nickname->nickname->name . "\n";
    }
 
-これは ``Zend_Gdata_Gapps_NicknameFeed`` オブジェクトを作成します。
+これは ``ZendGData_Gapps\NicknameFeed`` オブジェクトを作成します。
 このオブジェクトは、指定したユーザのニックネームに関する情報を保持します。
 
-あるいは、新しい ``Zend_Gdata_Gapps_NicknameQuery`` を作成して username
+あるいは、新しい ``ZendGData_Gapps\NicknameQuery`` を作成して username
 プロパティをそのユーザに設定し、 サービスオブジェクトの ``getNicknameFeed()``
 をコールすることもできます。
 
@@ -451,7 +451,7 @@ nickname プロパティを (取得したいニックネームに) 設定し、�
            $nickname->login->username . "\n";
    }
 
-これは ``Zend_Gdata_Gapps_NicknameFeed`` オブジェクトを作成します。
+これは ``ZendGData_Gapps\NicknameFeed`` オブジェクトを作成します。
 このオブジェクトは、ドメイン上の各ニックネームの情報を保持しています。
 
 あるいは、サービスオブジェクトの ``getNicknameFeed()``
@@ -499,7 +499,7 @@ Groups provides some neat features like nested groups and group owners. If you w
 advisable to use Google Groups instead. Google's Email List is not compatible with Google Groups. So if you create
 an email list, it will not show up as a group. The opposite is true as well.
 
-Each group on a domain is represented as an instance of ``Zend_Gdata_Gapps_GroupEntry``.
+Each group on a domain is represented as an instance of ``ZendGData_Gapps\GroupEntry``.
 
 .. _zend.gdata.gapps.groups.creating:
 
@@ -549,9 +549,9 @@ To retrieve an individual group, call the ``retrieveGroup()`` convenience method
        echo "\nProperty Value: " . $p->value . "\n\n";
    }
 
-This will create a ``Zend_Gdata_Gapps_GroupEntry`` object which holds the properties about the group.
+This will create a ``ZendGData_Gapps\GroupEntry`` object which holds the properties about the group.
 
-Alternatively, create a new ``Zend_Gdata_Gapps_GroupQuery``, set its groupId property to the desired group id, and
+Alternatively, create a new ``ZendGData_Gapps\GroupQuery``, set its groupId property to the desired group id, and
 submit the query by calling ``getGroupEntry()`` on a service object.
 
 .. code-block:: php
@@ -586,7 +586,7 @@ To retrieve all groups in a domain, call the convenience method ``retrieveAllGro
        echo "\n\n";
    }
 
-This will create a ``Zend_Gdata_Gapps_GroupFeed`` object which holds each group on the domain.
+This will create a ``ZendGData_Gapps\GroupFeed`` object which holds each group on the domain.
 
 Alternatively, call ``getGroupFeed()`` on a service object with no arguments.
 
@@ -651,10 +651,10 @@ To retrieve all groups to which a particular person is a member, call the ``retr
        echo "\n\n";
    }
 
-This will create a ``Zend_Gdata_Gapps_GroupFeed`` object which holds each group associated with the specified
+This will create a ``ZendGData_Gapps\GroupFeed`` object which holds each group associated with the specified
 member.
 
-Alternatively, create a new ``Zend_Gdata_Gapps_GroupQuery``, set its member property to the desired email address,
+Alternatively, create a new ``ZendGData_Gapps\GroupQuery``, set its member property to the desired email address,
 and submit the query by calling ``getGroupFeed()`` on a service object.
 
 .. code-block:: php
@@ -677,7 +677,7 @@ and submit the query by calling ``getGroupFeed()`` on a service object.
 Interacting with group members
 ------------------------------
 
-Each member subscribed to a group is represented by an instance of ``Zend_Gdata_Gapps_MemberEntry``. Through this
+Each member subscribed to a group is represented by an instance of ``ZendGData_Gapps\MemberEntry``. Through this
 class, individual recipients can be added and removed from groups.
 
 .. _zend.gdata.gapps.groupMembers.adding:
@@ -756,14 +756,14 @@ Alternatively, construct a new MemberQuery, set its groupId property to match th
        }
    }
 
-This will create a ``Zend_Gdata_Gapps_MemberFeed`` object which holds each member for the selected group.
+This will create a ``ZendGData_Gapps\MemberFeed`` object which holds each member for the selected group.
 
 .. _zend.gdata.gapps.groupOwners:
 
 Interacting with group owners
 -----------------------------
 
-Each owner associated with a group is represented by an instance of ``Zend_Gdata_Gapps_OwnerEntry``. Through this
+Each owner associated with a group is represented by an instance of ``ZendGData_Gapps\OwnerEntry``. Through this
 class, individual owners can be added and removed from groups.
 
 .. _zend.gdata.gapps.groupOwners.adding:
@@ -814,7 +814,7 @@ Alternatively, construct a new OwnerQuery, set its groupId property to match the
        }
    }
 
-This will create a ``Zend_Gdata_Gapps_OwnerFeed`` object which holds each member for the selected group.
+This will create a ``ZendGData_Gapps\OwnerFeed`` object which holds each member for the selected group.
 
 .. _zend.gdata.gapps.groupOwners.check:
 
@@ -853,7 +853,7 @@ To remove an owner from a group, call the ``removeOwnerFromGroup()`` convenience
 ひとつのメールアドレスに対応させるものです。
 このドメインのメンバー以外であっても、 メーリングリストに参加できます。
 
-ドメイン上のメーリングリストの情報は、 ``Zend_Gdata_Gapps_EmailListEntry``
+ドメイン上のメーリングリストの情報は、 ``ZendGData_Gapps\EmailListEntry``
 のインスタンスとして表されます。
 
 .. _zend.gdata.gapps.emailLists.creating:
@@ -897,10 +897,10 @@ To remove an owner from a group, call the ``removeOwnerFromGroup()`` convenience
        echo '  * ' . $list->emailList->name . "\n";
    }
 
-これは ``Zend_Gdata_Gapps_EmailListFeed`` オブジェクトを作成します。
+これは ``ZendGData_Gapps\EmailListFeed`` オブジェクトを作成します。
 このオブジェクトは、指定した参加者に関連するメーリングリストの情報を保持します。
 
-あるいは、新しい ``Zend_Gdata_Gapps_EmailListQuery`` を作成して recipient
+あるいは、新しい ``ZendGData_Gapps\EmailListQuery`` を作成して recipient
 プロパティをそのメールアドレスに設定し、 サービスオブジェクトの
 ``getEmailListFeed()`` をコールすることもできます。
 
@@ -932,7 +932,7 @@ To remove an owner from a group, call the ``removeOwnerFromGroup()`` convenience
        echo '  * ' . $list->emailList->name . "\n";
    }
 
-これは ``Zend_Gdata_Gapps_EmailListFeed`` オブジェクトを作成します。
+これは ``ZendGData_Gapps\EmailListFeed`` オブジェクトを作成します。
 このオブジェクトは、ドメイン上の各メーリングリストに関する情報を保持します。
 
 あるいは、サービスオブジェクトの ``getEmailListFeed()``
@@ -964,7 +964,7 @@ To remove an owner from a group, call the ``removeOwnerFromGroup()`` convenience
 メーリングリストの参加者の操作
 ---------------
 
-メーリングリストの各参加者は、 ``Zend_Gdata_Gapps_EmailListRecipient``
+メーリングリストの各参加者は、 ``ZendGData_Gapps\EmailListRecipient``
 のインスタンスとして表されます。
 このクラスを使用すると、メーリングリストにメンバーを追加したり、
 そこからメンバーを削除したりできます。
@@ -1014,7 +1014,7 @@ To remove an owner from a group, call the ``removeOwnerFromGroup()`` convenience
        echo '  * ' . $recipient->who->email . "\n";
    }
 
-これは ``Zend_Gdata_Gapps_EmailListRecipientFeed`` オブジェクトを作成します。
+これは ``ZendGData_Gapps\EmailListRecipientFeed`` オブジェクトを作成します。
 このオブジェクトは、指定したメーリングリストの各参加者に関する情報を保持します。
 
 .. _zend.gdata.gapps.emailListRecipients.removing:
@@ -1035,15 +1035,15 @@ To remove an owner from a group, call the ``removeOwnerFromGroup()`` convenience
 エラー処理
 -----
 
-``Zend_Gdata`` が標準でスローする例外に加えて、 Provisioning *API* によるリクエストでは
-``Zend_Gdata_Gapps_ServiceException`` がスローされる可能性があります。これらの例外は、
+``ZendGData`` が標準でスローする例外に加えて、 Provisioning *API* によるリクエストでは
+``ZendGData_Gapps\ServiceException`` がスローされる可能性があります。これらの例外は、
 *API* 固有のエラーが原因でリクエストが失敗したことを表します。
 
 ServiceException のインスタンスには、 ひとつあるいは複数の Error
 オブジェクトが含まれます。
 これらのオブジェクトにはエラーコードとエラーの原因、そして (オプションで)
 その例外を引き起こした入力が含まれます。 エラーコードの完全な一覧は、Zend
-Framework *API* ドキュメントで ``Zend_Gdata_Gapps_Error`` の部分を参照ください。
+Framework *API* ドキュメントで ``ZendGData_Gapps\Error`` の部分を参照ください。
 さらに、正式なエラーの一覧は `Google Apps Provisioning API V2.0 Reference: Appendix D`_
 で見ることができます。
 
@@ -1062,9 +1062,9 @@ ServiceException に含まれるすべてのエラーの一覧は ``getErrors()`
        $query = $gdata->newUserQuery($username);
        try {
            $user = $gdata->getUserEntry($query);
-       } catch (Zend_Gdata_Gapps_ServiceException $e) {
+       } catch (ZendGData_Gapps\ServiceException $e) {
            // ユーザが見つからなかった場合は null を設定します
-           if ($e->hasError(Zend_Gdata_Gapps_Error::ENTITY_DOES_NOT_EXIST)) {
+           if ($e->hasError(ZendGData_Gapps\Error::ENTITY_DOES_NOT_EXIST)) {
                $user = null;
            } else {
                throw $e;

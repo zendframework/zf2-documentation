@@ -4,7 +4,7 @@
 Базовое использование
 =====================
 
-*Zend_Session_Namespace* создает экземпляры контейнеров, предоставляющих
+*Zend\Session\Namespace* создает экземпляры контейнеров, предоставляющих
 основной API для работы с данными сессии в Zend Framework. Пространства
 имен используются для разделения всех данных сессии, несмотря
 на то, что есть пространство имен по умолчанию для тех, кому
@@ -15,7 +15,7 @@
 глобальном пространстве имен, разработчики должны избегать
 прямого обращения к нему с тем, чтобы можно было наиболее
 безопасно и эффективно использовать возможности *Zend_Session* и
-*Zend_Session_Namespace* для работы с сессиями.
+*Zend\Session\Namespace* для работы с сессиями.
 
 .. _zend.session.basicexamples:
 
@@ -26,7 +26,7 @@
 имен, то все данные будут неявным образом сохранены в
 пространстве имен "*Default*". *Zend_Session* не предназначен для работы с
 содержимым контейнера пространства имен сессии напрямую.
-Вместо этого мы используем *Zend_Session_Namespace*. Пример ниже
+Вместо этого мы используем *Zend\Session\Namespace*. Пример ниже
 демонстрирует использование пространства имен по умолчанию и
 показывает, как подсчитывать количество просмотров страниц
 пользователем на сайте. Для тестирования этого примера
@@ -40,9 +40,9 @@
    <?php
        require_once 'Zend/Session.php';
 
-       $defaultNamespace = new Zend_Session_Namespace('Default');
+       $defaultNamespace = new Zend\Session\Namespace('Default');
 
-       // используется "магический" метод __isset() в Zend_Session_Namespace:
+       // используется "магический" метод __isset() в Zend\Session\Namespace:
        if (isset($defaultNamespace->numberOfPageRequests)) {
            // будет увеличиваться на единицу при каждой загрузке страницы.
            $defaultNamespace->numberOfPageRequests++;
@@ -52,7 +52,7 @@
 
        echo "Запросов к странице за эту сессию: ", $defaultNamespace->numberOfPageRequests;
    ?>
-Одним из многих преимуществ Zend_Session_Namespace является то, что при
+Одним из многих преимуществ Zend\Session\Namespace является то, что при
 его использовании различными модулями приложения достигается
 инкапсуляциия принадлежащих им данных сессий. Конструктору
 Zend_Session можно передавать необязательный аргумент $namespace,
@@ -75,11 +75,11 @@ Framework, должны использовать имена пространст
    <?php
        // in the Zend_Auth component
        require_once 'Zend/Session.php';
-       $authNamespace = new Zend_Session_Namespace('Zend_Auth');
+       $authNamespace = new Zend\Session\Namespace('Zend_Auth');
        $authNamespace->user = "myusername";
 
        // in a web services component
-       $webServiceNamespace = new Zend_Session_Namespace('Some_Web_Service');
+       $webServiceNamespace = new Zend\Session\Namespace('Some_Web_Service');
        $webServiceNamespace->user = "mywebusername";
    ?>
 Пример выше приводит к тому же результату, что и код ниже, за
@@ -100,7 +100,7 @@ Framework, должны использовать имена пространст
 Итерация по пространствам имен
 ------------------------------
 
-*Zend_Session_Namespace* предоставляет полный интерфейс `IteratorAggregate`_,
+*Zend\Session\Namespace* предоставляет полный интерфейс `IteratorAggregate`_,
 включая поддержку выражения *foreach*:
 
 .. rubric:: Итерация по сессии
@@ -111,7 +111,7 @@ Framework, должны использовать имена пространст
    <?php
        // Zend_Session is iteratable
        require_once 'Zend/Session.php';
-       $aNamespace = new Zend_Session_Namespace('some_namespace_with_data_present');
+       $aNamespace = new Zend\Session\Namespace('some_namespace_with_data_present');
        foreach ($aNamespace as $index => $value) {
            echo "aNamespace->$index = '$value';\n";
        }

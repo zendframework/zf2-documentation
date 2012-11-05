@@ -7,15 +7,15 @@
 *Zend_Config* je navrhnutý pre zjednodušenie prístupu a použitia konfiguračných údajov v rámci aplikácie.
 Poskytuje vnorené vlastnosti pre prístup ku konfigurácii v rámci aplikácie. Konfiguračné údaje môžu byt z
 rozličných zdrojov a je podporované aj hierarchické uloženie. Momentálne *Zend_Config* poskytuje adaptéry
-pre prístup k konfiguračným dátam uloženým v textových súboroch pomocou :ref:`Zend_Config_Ini
-<zend.config.adapters.ini>` a :ref:`Zend_Config_Xml <zend.config.adapters.xml>`.
+pre prístup k konfiguračným dátam uloženým v textových súboroch pomocou :ref:`Zend\Config\Ini
+<zend.config.adapters.ini>` a :ref:`Zend\Config\Xml <zend.config.adapters.xml>`.
 
 .. _zend.config.introduction.example.using:
 
 .. rubric:: Použitie Zend_Config
 
-Očakáva sa, že sa použije jeden z adaptérov ako napríklad :ref:`Zend_Config_Ini <zend.config.adapters.ini>`,
-alebo :ref:`Zend_Config_Xml <zend.config.adapters.xml>`, ale ak sú konfiguračné dáta prístupné ako PHP pole,
+Očakáva sa, že sa použije jeden z adaptérov ako napríklad :ref:`Zend\Config\Ini <zend.config.adapters.ini>`,
+alebo :ref:`Zend\Config\Xml <zend.config.adapters.xml>`, ale ak sú konfiguračné dáta prístupné ako PHP pole,
 je možné predať toto pole *Zend_Config* konštruktoru a zužitkovať jednoduchý objektovo-orientovaný
 prístup:
 
@@ -37,7 +37,7 @@ prístup:
 
    // Vytvorenie Zend_Config
    require_once 'Zend/Config.php';
-   $config = new Zend_Config($configArray);
+   $config = new Zend\Config\Config($configArray);
 
    // vypísanie položky z konfigurácie (výsledok: 'www.example.com')
    echo $config->webhost;

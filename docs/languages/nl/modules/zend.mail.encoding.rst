@@ -9,7 +9,7 @@ worden via base64 geëncodeerd indien geen andere encoding wordt opgegeven in de
 aan het MIME deel object wordt toegewezen. 7Bit and 8Bit encoding geven op dit moment alleen de binaire inhoud
 door.
 
-*Zend_Mail_Transport_Smtp* encodeert regels die met één of twee punten starten zodat het bericht het SMTP
+*Zend\Mail_Transport\Smtp* encodeert regels die met één of twee punten starten zodat het bericht het SMTP
 protocol volgt.
 
 

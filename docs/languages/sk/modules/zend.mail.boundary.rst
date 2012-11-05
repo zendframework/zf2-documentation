@@ -14,7 +14,7 @@ Ak má e-mail viac častí oddeľujú sa pomocou hranice ktorá sa generuje náh
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setMimeBoundary('=_' . md5(microtime(1) . $someId++);
    // build message...
    ?>

@@ -10,7 +10,7 @@ Null
 
 .. _zend.filter.set.null.default:
 
-Zend_Filter_Null の既定の振る舞い
+Zend\Filter\Null の既定の振る舞い
 -------------------------
 
 デフォルトではこのフィルタは *PHP*\ の ``empty()``\ メソッドのように動作します。
@@ -20,23 +20,23 @@ Zend_Filter_Null の既定の振る舞い
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Null();
+   $filter = new Zend\Filter\Null();
    $value  = '';
    $result = $filter->filter($value);
    // 空文字列の代わりに null を返します
 
-これは、何の設定もなしに、 ``Zend_Filter_Null``\ は全ての入力を受け付けて、 ``empty()``\
+これは、何の設定もなしに、 ``Zend\Filter\Null``\ は全ての入力を受け付けて、 ``empty()``\
 と同じ場合に ``NULL``\ を返すことを意味します。
 
 他の値ではいずれも変更無しにそのまま返されます。
 
 .. _zend.filter.set.null.types:
 
-Zend_Filter_Null の振る舞いの変更
+Zend\Filter\Null の振る舞いの変更
 -------------------------
 
 しばしば、 ``empty()``\ に基づくフィルタでは十分ではありません。 そのため、
-``Zend_Filter_Null``\ では、 いずれのタイプが変換されるか否か設定できます。
+``Zend\Filter\Null``\ では、 いずれのタイプが変換されるか否か設定できます。
 
 下記のタイプが操作できます。
 
@@ -61,21 +61,21 @@ Zend_Filter_Null の振る舞いの変更
    :linenos:
 
    // false を null に変換
-   $filter = new Zend_Filter_Null(Zend_Filter_Null::BOOLEAN);
+   $filter = new Zend\Filter\Null(Zend\Filter\Null::BOOLEAN);
 
    // false 及び 0 を null に変換
-   $filter = new Zend_Filter_Null(
-       Zend_Filter_Null::BOOLEAN + Zend_Filter_Null::INTEGER
+   $filter = new Zend\Filter\Null(
+       Zend\Filter\Null::BOOLEAN + Zend\Filter\Null::INTEGER
    );
 
    // false 及び 0 を null に変換
-   $filter = new Zend_Filter_Null( array(
-       Zend_Filter_Null::BOOLEAN,
-       Zend_Filter_Null::INTEGER
+   $filter = new Zend\Filter\Null( array(
+       Zend\Filter\Null::BOOLEAN,
+       Zend\Filter\Null::INTEGER
    ));
 
    // false 及び 0 を null に変換
-   $filter = new Zend_Filter_Null(array(
+   $filter = new Zend\Filter\Null(array(
        'boolean',
        'integer',
    ));

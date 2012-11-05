@@ -105,10 +105,10 @@ Zend Framework 的类命名总是对应于其所属文件的目录结构的，ZF
 的类在其下按等级存放。
 
 类名只允许有字母数字字符，在大部分情况下不鼓励使用数字。下划线只允许做路径分隔符；例如
-Zend/Db/Table.php 文件里对应的类名称是 Zend_Db_Table。
+Zend/Db/Table.php 文件里对应的类名称是 Zend\Db\Table。
 
 如果类名包含多个单词，每个单词的第一个字母必须大写，连续的大写是不允许的，例如
-“Zend_PDF” 是不允许的，而 "Zend_Pdf" 是可接受的。
+“ZendPDF” 是不允许的，而 "ZendPdf" 是可接受的。
 
 这些约定为 Zend Framework
 定义了一个伪命名空间机制。如果对开发者在他们的程序中切实可行，Zend Framework

@@ -33,7 +33,7 @@ Bibliotheks Code macht.
 Autoloader Konventionen und Design
 ----------------------------------
 
-Zend Framework's unterstützung für das Autoloaden, welche primär über ``Zend_Loader_Autoloader`` angeboten
+Zend Framework's unterstützung für das Autoloaden, welche primär über ``Zend\Loader\Autoloader`` angeboten
 wird, hat die folgenden Ziele und Design Elemente:
 
 - **Namespace Abgleich anbieten**: Wenn der Namespace Präfix der Klasse nicht in der Liste der registrierten
@@ -50,9 +50,9 @@ wird, hat die folgenden Ziele und Design Elemente:
   Anwendung. Deswegen sollte sie standardmäßig ausgeschaltet sein. Trotzdem, wenn ein Entwickler darauf
   **besteht** das Sie eingeschaltet wenn soll, erlauben wir es Sie einzuschalten.
 
-- **Erlaubt spezielle eigene Callbacks für Autoloading**: Einige Entwickler wollen ``Zend_Loader::loadClass()``
+- **Erlaubt spezielle eigene Callbacks für Autoloading**: Einige Entwickler wollen ``Zend\Loader\Loader::loadClass()``
   für das Autoloaden nicht, aber trotzdem Zend Framework's Mechanismus hierfür verwenden.
-  ``Zend_Loader_Autoloader`` erlaubt es einen alternativen Callback für das Autoloaden zu spezifizieren.
+  ``Zend\Loader\Autoloader`` erlaubt es einen alternativen Callback für das Autoloaden zu spezifizieren.
 
 - **Erlaubt die Manipulation der Autload Callback Kette von SPL**: Der Zweck hiervon ist es die Spezifikation von
   zusätzlichen Autoloadern zu verwenden -- zum Beispiel müssen Ressource Lader für Klassen keine 1:1

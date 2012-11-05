@@ -4,7 +4,7 @@
 Google Calendar の使用法
 ====================
 
-``Zend_Gdata_Calendar`` クラスを使うと、Google Calendar サービスで
+``ZendGData\Calendar`` クラスを使うと、Google Calendar サービスで
 イベントの閲覧や作成、更新、削除ができるようになります。
 
 Google Calendar *API* についての詳細な情報は `http://code.google.com/apis/calendar/overview.html`_
@@ -22,7 +22,7 @@ Google Calendar *API* は、その他の GData *API* と同様に Atom Publishin
 で行われ、認証済みの接続と未認証の接続の両方が利用できます。
 
 何らかのトランザクションが発生する際には、 必ず接続を確立する必要があります。
-カレンダーサーバとの接続は、まず *HTTP* クライアントを作成して ``Zend_Gdata_Calendar``
+カレンダーサーバとの接続は、まず *HTTP* クライアントを作成して ``ZendGData\Calendar``
 サービスのインスタンスをそこにバインドするという手順で行います。
 
 .. _zend.gdata.calendar.connecting.authentication:
@@ -54,7 +54,7 @@ Google Calendar *API* を使用すると、公開カレンダーだけでなく
   を事前に取得しないと認証できません またカレンダーリストにはアクセスできず、
   アクセスは読み込み専用に制限されます。
 
-``Zend_Gdata`` ライブラリは、 これらのすべての方式に対応しています。
+``ZendGData`` ライブラリは、 これらのすべての方式に対応しています。
 これ以降の説明は、認証方式については理解しており
 適切な認証方式で接続できるようになっていることを前提として進めていきます。
 詳細な情報は、このマニュアルの :ref:`認証に関するセクション
@@ -66,17 +66,17 @@ Overview`_ を参照ください。
 サービスのインスタンスの作成
 ^^^^^^^^^^^^^^
 
-Google Calendar を使用するためのクラスとして、このライブラリでは ``Zend_Gdata_Calendar``
+Google Calendar を使用するためのクラスとして、このライブラリでは ``ZendGData\Calendar``
 を用意しています。 このクラスは Google Data や Atom Publishing Protocol
 モデルへの共通インターフェイスを提供し、
 カレンダーサーバとのリクエストのやりとりを支援します。
 
-使用する認証方式を決めたら、次に ``Zend_Gdata_Calendar`` のインスタンスを作成します。
-このクラスのコンストラクタには、引数として ``Zend_Http_Client``
+使用する認証方式を決めたら、次に ``ZendGData\Calendar`` のインスタンスを作成します。
+このクラスのコンストラクタには、引数として ``Zend\Http\Client``
 のインスタンスを渡します。 これは、AuthSub 認証および ClientAuth
 認証へのインターフェイスを提供します。
 これらの認証を使用する場合には、認証済みの *HTTP* クライアントが必要です。
-引数を省略した場合は、未認証の ``Zend_Http_Client``
+引数を省略した場合は、未認証の ``Zend\Http\Client``
 のインスタンスを自動的に作成して使用します。
 
 以下の例は、ClientAuth 認証を使用して Calendar サービスを作成するものです。
@@ -85,15 +85,15 @@ Google Calendar を使用するためのクラスとして、このライブラ�
    :linenos:
 
    // ClientAuth 認証用のパラメータ
-   $service = Zend_Gdata_Calendar::AUTH_SERVICE_NAME;
+   $service = ZendGData\Calendar::AUTH_SERVICE_NAME;
    $user = "sample.user@gmail.com";
    $pass = "pa$$w0rd";
 
    // 認証済みの HTTP クライアントを作成します
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
 
    // Calendar サービスのインスタンスを作成します
-   $service = new Zend_Gdata_Calendar($client);
+   $service = new ZendGData\Calendar($client);
 
 AuthSub を使用する Calendar サービスを作成するのもほぼ同様ですが、
 少々長めになります。
@@ -152,7 +152,7 @@ AuthSub を使用する Calendar サービスを作成するのもほぼ同様�
 
            // ユーザを AuthSub サーバにリダイレクトします
 
-           $authSubUrl = Zend_Gdata_AuthSub::getAuthSubTokenUri($next,
+           $authSubUrl = ZendGData\AuthSub::getAuthSubTokenUri($next,
                                                                 $scope,
                                                                 $secure,
                                                                 $session);
@@ -166,14 +166,14 @@ AuthSub を使用する Calendar サービスを作成するのもほぼ同様�
        // AuthSub のワンタイムトークンを、必要に応じてセッショントークンに変換します
        if (!isset($_SESSION['sessionToken']) && isset($_GET['token'])) {
            $_SESSION['sessionToken'] =
-               Zend_Gdata_AuthSub::getAuthSubSessionToken($_GET['token']);
+               ZendGData\AuthSub::getAuthSubSessionToken($_GET['token']);
        }
 
        // この時点で AuthSub による認証がすんでいるので、
        // 認証済みの HTTP クライアントのインスタンスを作成できます
 
        // 認証済みの HTTP クライアントを作成します
-       $client = Zend_Gdata_AuthSub::getHttpClient($_SESSION['sessionToken']);
+       $client = ZendGData\AuthSub::getHttpClient($_SESSION['sessionToken']);
        return $client;
    }
 
@@ -185,7 +185,7 @@ AuthSub を使用する Calendar サービスを作成するのもほぼ同様�
 
    // Calendar サービスのインスタンスを作成し、
    // 必要に応じてユーザを AuthSub サーバにリダイレクトします
-   $service = new Zend_Gdata_Calendar(getAuthSubHttpClient());
+   $service = new ZendGData\Calendar(getAuthSubHttpClient());
 
 未認証のサーバを作成して、公開フィードへのアクセスや MagicCookie
 認証で使用できます。
@@ -196,7 +196,7 @@ AuthSub を使用する Calendar サービスを作成するのもほぼ同様�
    // Calendar サービスのインスタンスを、
    // 未認証の HTTP クライアントで作成します
 
-   $service = new Zend_Gdata_Calendar();
+   $service = new ZendGData\Calendar();
 
 MagicCookie 認証は *HTTP* 接続で提供するものではなく、
 クエリを送信する際の可視性を指定するものです。
@@ -221,19 +221,19 @@ Calendar の画面に表示される一覧と同じですが、 "*hidden*"
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Calendar::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Calendar($client);
+   $service = ZendGData\Calendar::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Calendar($client);
 
    try {
        $listFeed= $service->getCalendarListFeed();
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 
-``getCalendarListFeed()`` をコールすると ``Zend_Gdata_Calendar_ListFeed``
+``getCalendarListFeed()`` をコールすると ``ZendGData_Calendar\ListFeed``
 の新しいインスタンスを作成します。この中には、使用できるカレンダーの一覧が
-``Zend_Gdata_Calendar_ListEntry`` のインスタンスとして格納されています。
+``ZendGData_Calendar\ListEntry`` のインスタンスとして格納されています。
 フィードを取得したら、それを使用して中身を取得できます。
 
 .. code-block:: php
@@ -252,9 +252,9 @@ Calendar の画面に表示される一覧と同じですが、 "*hidden*"
 イベントの取得
 -------
 
-カレンダーリストと同様、イベントも ``Zend_Gdata_Calendar`` クラスで取得できます。
-返されるイベントリストの型は ``Zend_Gdata_Calendar_EventFeed`` で、各イベントは
-``Zend_Gdata_Calendar_EventEntry`` のインスタンスとして格納されています。
+カレンダーリストと同様、イベントも ``ZendGData\Calendar`` クラスで取得できます。
+返されるイベントリストの型は ``ZendGData_Calendar\EventFeed`` で、各イベントは
+``ZendGData_Calendar\EventEntry`` のインスタンスとして格納されています。
 先ほどの例と同様の方法で、個々のイベントの情報を取得できます。
 
 .. _zend.gdata.event_retrieval.queries:
@@ -263,7 +263,7 @@ Calendar の画面に表示される一覧と同じですが、 "*hidden*"
 ^^^
 
 Calendar *API* でイベントを取得する際には、 クエリ *URL*
-を用いてほしいイベントを指定します。 ``Zend_Gdata_Calendar_EventQuery`` クラスは、
+を用いてほしいイベントを指定します。 ``ZendGData_Calendar\EventQuery`` クラスは、
 指定したパラメータに基づいたクエリ *URL*
 を自動的に作成することでこの作業の手間を軽減します。
 使用できるパラメータの一覧は `Google Data APIs Protocol Reference の Queries セクション`_
@@ -289,7 +289,7 @@ Calendar *API* でイベントを取得する際には、 クエリ *URL*
 開始時刻順によるイベントの取得
 ^^^^^^^^^^^^^^^
 
-以下の例は、 ``Zend_Gdata_Query`` を使用して非公開フィードを指定しています。
+以下の例は、 ``ZendGData\Query`` を使用して非公開フィードを指定しています。
 つまり、認証済みの接続が必要となります。 認証に MagicCookie
 を使用している場合は、可視性は "*private-magicCookieValue*"
 としなければなりません。magicCookieValue のところは、Google Calendar で非公開 *XML*
@@ -311,7 +311,7 @@ Calendar *API* でイベントを取得する際には、 クエリ *URL*
    // カレンダーサーバからイベントの一覧を取得します
    try {
        $eventFeed = $service->getCalendarEventFeed($query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 
@@ -323,7 +323,7 @@ Calendar *API* でイベントを取得する際には、 クエリ *URL*
    echo "</ul>";
 
 ID や author、when、event status、visibility、web content、 そして content
-などのさまざまなプロパティが ``Zend_Gdata_Calendar_EventEntry``
+などのさまざまなプロパティが ``ZendGData_Calendar\EventEntry``
 で使用できます。プロパティの一覧は `Zend Framework API ドキュメント`_ や `Calendar Protocol
 Reference`_ を参照ください。
 
@@ -379,7 +379,7 @@ Reference`_ を参照ください。
 
    try {
        $event = $service->getCalendarEventEntry($query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 
@@ -396,7 +396,7 @@ Reference`_ を参照ください。
 
    try {
        $event = $service->getCalendarEventEntry($eventURL);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 
@@ -410,10 +410,10 @@ Reference`_ を参照ください。
 一度だけのイベントの作成
 ^^^^^^^^^^^^
 
-イベントをカレンダーに追加するには、 ``Zend_Gdata_EventEntry``
+イベントをカレンダーに追加するには、 ``ZendGData\EventEntry``
 のインスタンスを作成して
 そこに適切なデータを代入します。カレンダーサービスのインスタンス
-(``Zend_Gdata_Calendar``) はそのデータを *XML* に変換し、カレンダーサーバに POST します。
+(``ZendGData\Calendar``) はそのデータを *XML* に変換し、カレンダーサーバに POST します。
 イベントを作成するには、AuthSub 認証あるいは ClientAuth
 認証でカレンダーサーバと接続する必要があります。
 
@@ -637,7 +637,7 @@ QuickAdd とは、自由形式のテキストでイベントを作成する機�
    // 変更をサーバにアップロードします
    try {
        $event->save();
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 
@@ -696,7 +696,7 @@ full イベントビューでは、コメントはイベントのエントリに
    // そのイベントのコメント一覧を取得します
    try {
    $commentFeed = $service->getFeed($commentUrl);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "エラー: " . $e->getMessage();
    }
 

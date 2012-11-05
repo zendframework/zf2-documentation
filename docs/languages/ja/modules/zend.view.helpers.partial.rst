@@ -89,7 +89,7 @@ partial の基本的な使用法は、
       // 変数 'model' として渡すよう通知します
       $view->partialLoop()->setObjectKey('model');
 
-   このテクニックが特に役立つのは、 ``Zend_Db_Table_Rowset`` を ``partialLoop()``
+   このテクニックが特に役立つのは、 ``Zend\Db_Table\Rowset`` を ``partialLoop()``
    に渡すような場合です。 ビュースクリプト内で row
    オブジェクトに自由にアクセスでき、 そのメソッド
    (親の値を取得したり従属行を取得したりなど) を自在に使えるようになります。

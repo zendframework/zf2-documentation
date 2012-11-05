@@ -17,9 +17,9 @@ geworfen wird:
    :linenos:
 
    try {
-       // Der Aufruf von Zend_Loader::loadClass() mit einer nicht-existierenden
+       // Der Aufruf von Zend\Loader\Loader::loadClass() mit einer nicht-existierenden
        // Klasse wird eine Exception in Zend_Loader werfen:
-       Zend_Loader::loadClass('nonexistantclass');
+       Zend\Loader\Loader::loadClass('nonexistantclass');
    } catch (Zend_Exception $e) {
        echo "Gefangene Exception: " . get_class($e) . "\n";
        echo "Nachricht: " . $e->getMessage() . "\n";

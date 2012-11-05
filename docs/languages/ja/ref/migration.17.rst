@@ -17,7 +17,7 @@ Zend_Controller
 ディスパッチャインターフェイスの変更
 ^^^^^^^^^^^^^^^^^^
 
-ユーザからの指摘により、 ``Zend_Controller_Action_Helper_ViewRenderer``
+ユーザからの指摘により、 ``Zend\Controller\Action\Helper\ViewRenderer``
 が使っているディスパッチャ抽象クラスのメソッドの中で
 ディスパッチャインターフェイスに存在しないものがあることに気づきました。
 次のメソッドを追加し、
@@ -25,12 +25,12 @@ Zend_Controller
 
 - ``formatModuleName()``:
   リクエストオブジェクト内に格納されたりしている生のコントローラ名を受け取り、
-  それを再フォーマットして ``Zend_Controller_Action``
+  それを再フォーマットして ``Zend\Controller\Action``
   を継承した適切なクラス名にします。
 
 .. _migration.17.zend.file.transfer:
 
-Zend_File_Transfer
+Zend\File\Transfer
 ------------------
 
 .. _migration.17.zend.file.transfer.validators:
@@ -38,11 +38,11 @@ Zend_File_Transfer
 フィルタやバリデータを使用する際の変更点
 ^^^^^^^^^^^^^^^^^^^^
 
-``Zend_File_Transfer`` のバリデータが ``Zend_Config``
+``Zend\File\Transfer`` のバリデータが ``Zend_Config``
 と組み合わせて使えないという指摘がありました。
 名前つき配列を使っていなかったからです。
 
-そこで、 ``Zend_File_Transfer`` 用のすべてのフィルタとバリデータを作り直しました。
+そこで、 ``Zend\File\Transfer`` 用のすべてのフィルタとバリデータを作り直しました。
 古い構文でも動作しますがこれは非推奨となり、 設定せずに実行すると *PHP* の notice
 が発生するようになります。
 
@@ -53,9 +53,9 @@ Zend_File_Transfer
 Rename フィルタ
 ^^^^^^^^^^^
 
-- 古い形式の *API*: ``Zend_Filter_File_Rename($oldfile, $newfile, $overwrite)``
+- 古い形式の *API*: ``Zend\Filter_File\Rename($oldfile, $newfile, $overwrite)``
 
-- 新しい形式の *API*: ``Zend_Filter_File_Rename($options)`` ``$options``
+- 新しい形式の *API*: ``Zend\Filter_File\Rename($options)`` ``$options``
   には次の配列キーを使えます。 **source** (``$oldfile`` と同等)、 **target** (``$newfile``
   と同等)、 **overwrite** (``$overwrite`` と同等)
 
@@ -67,12 +67,12 @@ Rename フィルタ
    :linenos:
 
    // 1.6 の例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addFilter('Rename',
                       array('/path/to/oldfile', '/path/to/newfile', true));
 
    // 1.7 の例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addFilter('Rename',
                       array('source' => '/path/to/oldfile',
                             'target' => '/path/to/newfile',
@@ -83,9 +83,9 @@ Rename フィルタ
 Count バリデータ
 ^^^^^^^^^^^
 
-- 古い形式の *API*: ``Zend_Validate_File_Count($min, $max)``
+- 古い形式の *API*: ``Zend\Validate_File\Count($min, $max)``
 
-- 新しい形式の *API*: ``Zend_Validate_File_Count($options)`` ``$options``
+- 新しい形式の *API*: ``Zend\Validate_File\Count($options)`` ``$options``
   には次の配列キーを使えます。 **min** (``$min`` と同等)、 **max** (``$max`` と同等)
 
 .. _migration.17.zend.file.transfer.validators.count.example:
@@ -96,12 +96,12 @@ Count バリデータ
    :linenos:
 
    // 1.6 の例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Count',
                          array(2, 3));
 
    // 1.7 の例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Count',
                          false,
                          array('min' => 2,
@@ -112,9 +112,9 @@ Count バリデータ
 Extension バリデータ
 ^^^^^^^^^^^^^^^
 
-- 古い形式の *API*: ``Zend_Validate_File_Extension($extension, $case)``
+- 古い形式の *API*: ``Zend\Validate_File\Extension($extension, $case)``
 
-- 新しい形式の *API*: ``Zend_Validate_File_Extension($options)`` ``$options``
+- 新しい形式の *API*: ``Zend\Validate_File\Extension($options)`` ``$options``
   には次の配列キーを使えます。 ***** (``$extension``
   と同等、任意の他のキーを使用可能)、 **case** (``$case`` と同等)
 
@@ -126,12 +126,12 @@ Extension バリデータ
    :linenos:
 
    // 1.6 の例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Extension',
                          array('jpg,gif,bmp', true));
 
    // 1.7 の例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Extension',
                          false,
                          array('extension1' => 'jpg,gif,bmp',
@@ -142,9 +142,9 @@ Extension バリデータ
 FilesSize バリデータ
 ^^^^^^^^^^^^^^^
 
-- 古い形式の *API*: ``Zend_Validate_File_FilesSize($min, $max, $bytestring)``
+- 古い形式の *API*: ``Zend\Validate_File\FilesSize($min, $max, $bytestring)``
 
-- 新しい形式の *API*: ``Zend_Validate_File_FilesSize($options)`` ``$options``
+- 新しい形式の *API*: ``Zend\Validate_File\FilesSize($options)`` ``$options``
   には次の配列キーを使えます。 **min** (``$min`` と同等)、 **max** (``$max`` と同等)、
   **bytestring** (``$bytestring`` と同等)
 
@@ -161,12 +161,12 @@ FilesSize バリデータ
    :linenos:
 
    // 1.6 の例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('FilesSize',
                       array(100, 10000, true));
 
    // 1.7 の例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('FilesSize',
                          false,
                          array('min' => 100,
@@ -184,9 +184,9 @@ FilesSize バリデータ
 Hash バリデータ
 ^^^^^^^^^^
 
-- 古い形式の *API*: ``Zend_Validate_File_Hash($hash, $algorithm)``
+- 古い形式の *API*: ``Zend\Validate_File\Hash($hash, $algorithm)``
 
-- 新しい形式の *API*: ``Zend_Validate_File_Hash($options)`` ``$options``
+- 新しい形式の *API*: ``Zend\Validate_File\Hash($options)`` ``$options``
   には次の配列キーを使えます。 ***** (``$hash`` と同等、任意の他のキーを使用可能)、
   **algorithm** (``$algorithm`` と同等)、
 
@@ -198,12 +198,12 @@ Hash バリデータ
    :linenos:
 
    // 1.6 の例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Hash',
                       array('12345', 'md5'));
 
    // 1.7 の例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Hash',
                          false,
                          array('hash1' => '12345',
@@ -214,9 +214,9 @@ Hash バリデータ
 ImageSize バリデータ
 ^^^^^^^^^^^^^^^
 
-- 古い形式の *API*: ``Zend_Validate_File_ImageSize($minwidth, $minheight, $maxwidth, $maxheight)``
+- 古い形式の *API*: ``Zend\Validate_File\ImageSize($minwidth, $minheight, $maxwidth, $maxheight)``
 
-- 新しい形式の *API*: ``Zend_Validate_File_FilesSize($options)`` ``$options``
+- 新しい形式の *API*: ``Zend\Validate_File\FilesSize($options)`` ``$options``
   には次の配列キーを使えます。 **minwidth** (``$minwidth`` と同等)、 **maxwidth** (``$maxwidth``
   と同等)、 **minheight** (``$minheight`` と同等)、 **maxheight** (``$maxheight`` と同等)
 
@@ -228,12 +228,12 @@ ImageSize バリデータ
    :linenos:
 
    // 1.6 の例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('ImageSize',
                          array(10, 10, 100, 100));
 
    // 1.7 の例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('ImageSize',
                          false,
                          array('minwidth' => 10,
@@ -246,9 +246,9 @@ ImageSize バリデータ
 Size バリデータ
 ^^^^^^^^^^
 
-- 古い形式の *API*: ``Zend_Validate_File_Size($min, $max, $bytestring)``
+- 古い形式の *API*: ``Zend\Validate_File\Size($min, $max, $bytestring)``
 
-- 新しい形式の *API*: ``Zend_Validate_File_Size($options)`` ``$options``
+- 新しい形式の *API*: ``Zend\Validate_File\Size($options)`` ``$options``
   には次の配列キーを使えます。 **min** (``$min`` と同等)、 **max** (``$max`` と同等)、
   **bytestring** (``$bytestring`` と同等)
 
@@ -260,12 +260,12 @@ Size バリデータ
    :linenos:
 
    // 1.6 の例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Size',
                          array(100, 10000, true));
 
    // 1.7 の例
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Size',
                          false,
                          array('min' => 100,
@@ -301,7 +301,7 @@ isLocale() を使う際の変更点
    :linenos:
 
    // 1.6 の例
-   if ($locale = Zend_Locale::isLocale($locale)) {
+   if ($locale = Zend\Locale\Locale::isLocale($locale)) {
        // ここで何かします
    }
 
@@ -309,9 +309,9 @@ isLocale() を使う際の変更点
 
    // 互換性モードを変更して警告の発生を防ぐ必要があります
    // これは起動ファイルで行うことができます
-   Zend_Locale::$compatibilityMode = false;
+   Zend\Locale\Locale::$compatibilityMode = false;
 
-   if (Zend_Locale::isLocale($locale)) {
+   if (Zend\Locale\Locale::isLocale($locale)) {
    }
 
 2 番目のパラメータを使えば、
@@ -321,7 +321,7 @@ isLocale() を使う際の変更点
    :linenos:
 
    // 1.6 の例
-   if ($locale = Zend_Locale::isLocale($locale, false)) {
+   if ($locale = Zend\Locale\Locale::isLocale($locale, false)) {
        // ここで何かします
    }
 
@@ -329,10 +329,10 @@ isLocale() を使う際の変更点
 
    // 互換性モードを変更して警告の発生を防ぐ必要があります
    // これは起動ファイルで行うことができます
-   Zend_Locale::$compatibilityMode = false;
+   Zend\Locale\Locale::$compatibilityMode = false;
 
-   if (Zend_Locale::isLocale($locale, false)) {
-       if (Zend_Locale::isLocale($locale, true)) {
+   if (Zend\Locale\Locale::isLocale($locale, false)) {
+       if (Zend\Locale\Locale::isLocale($locale, true)) {
            // ロケールはありません
        }
 
@@ -361,15 +361,15 @@ getDefault() を使用する際の変更
    :linenos:
 
    // 1.6 の例
-   $locales = $locale->getDefault(Zend_Locale::BROWSER);
+   $locales = $locale->getDefault(Zend\Locale\Locale::BROWSER);
 
    // 1.7 の例
 
    // 互換性モードを変更して警告の発生を防ぐ必要があります
    // これは起動ファイルで行うことができます
-   Zend_Locale::$compatibilityMode = false;
+   Zend\Locale\Locale::$compatibilityMode = false;
 
-   $locale = Zend_Locale::getOrder(Zend_Locale::BROWSER);
+   $locale = Zend\Locale\Locale::getOrder(Zend\Locale\Locale::BROWSER);
 
 古い実装における ``getDefault()`` の 2
 番目のパラメータはもはや使えないことに注意しましょう。
@@ -419,7 +419,7 @@ Zend_Translator
 .. code-block:: php
    :linenos:
 
-   $language = new Zend_Translator('gettext',
+   $language = new Zend\Translator\Translator('gettext',
                                   '/path/to/translations',
                                   'auto');
 
@@ -429,7 +429,7 @@ Zend_Translator
 .. code-block:: php
    :linenos:
 
-   $language = new Zend_Translator('gettext',
+   $language = new Zend\Translator\Translator('gettext',
                                   '/path/to/translations',
                                   'auto',
                                   array('disableNotices' => true));
@@ -444,7 +444,7 @@ Zend_View
    ``Zend_View`` 内の *API* 変更は、 リリース 1.7.5
    またはそれ以降にアップグレードする際にだけ注意すべきです。
 
-Zend Framework 開発陣は、1.7.5 より前のバージョンにおいて ``Zend_View::render()``
+Zend Framework 開発陣は、1.7.5 より前のバージョンにおいて ``Zend\View\View::render()``
 メソッドにローカルファイル読み込み (Local File Inclusion: *LFI*)
 脆弱性の問題があることに気づきました。 1.7.5
 より前のバージョンでは、このメソッドはデフォルトで 親ディレクトリを指す記法
@@ -476,10 +476,10 @@ render() メソッドにおける LFI 保護機能の無効化
    :linenos:
 
    // コンストラクタでの無効化
-   $view = new Zend_View(array('lfiProtectionOn' => false));
+   $view = new Zend\View\View(array('lfiProtectionOn' => false));
 
    // メソッドコールによる無効化
-   $view = new Zend_View();
+   $view = new Zend\View\View();
    $view->setLfiProtection(false);
 
 

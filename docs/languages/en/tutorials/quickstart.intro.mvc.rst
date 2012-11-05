@@ -14,7 +14,7 @@ independently. But Zend Framework also provides an advanced Model-View-Controlle
 be used to establish a basic structure for your Zend Framework applications. A full list of Zend Framework
 components along with short descriptions may be found in the `components overview`_. This QuickStart will introduce
 you to some of Zend Framework's most commonly used components, including ``Zend_Controller``, ``Zend_Layout``,
-``Zend_Config``, ``Zend_Db``, ``Zend_Db_Table``, ``Zend_Registry``, along with a few view helpers.
+``Zend_Config``, ``Zend_Db``, ``Zend\Db\Table``, ``Zend_Registry``, along with a few view helpers.
 
 Using these components, we will build a simple database-driven guest book application within minutes. The complete
 source code for this application is available in the following archives:

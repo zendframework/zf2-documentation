@@ -8,19 +8,19 @@ Schreiben von Prüfern
 wünschen, eigene Prüfer für die eigenen Bedürfnisse zu schreiben. Die Aufgabe des Schreibens eigener Prüfer
 wird in diesem Kapitel beschrieben.
 
-``Zend_Validate_Interface`` definiert zwei Methoden, ``isValid()`` und ``getMessages()``, welche von
+``Zend\Validate\Interface`` definiert zwei Methoden, ``isValid()`` und ``getMessages()``, welche von
 Benutzerklassen implementiert werden können um eigene Prüfobjekte zu erstellen. Ein Objekt welches das
-``Zend_Validate_Interface`` Interface implementiert kann einer Prüfkette mit ``Zend_Validate::addValidator()``
-hinzugefügt werden. Solche Objekte können auch mit :ref:`Zend_Filter_Input <zend.filter.input>` verwendet werden.
+``Zend\Validate\Interface`` Interface implementiert kann einer Prüfkette mit ``Zend\Validate\Validate::addValidator()``
+hinzugefügt werden. Solche Objekte können auch mit :ref:`Zend\Filter\Input <zend.filter.input>` verwendet werden.
 
-Wie man bereits aus der obigen Beschreibung von ``Zend_Validate_Interface`` folgern kann, geben die vom Zend
+Wie man bereits aus der obigen Beschreibung von ``Zend\Validate\Interface`` folgern kann, geben die vom Zend
 Framework bereitgestellten Prüfklassen einen boolschen Wert zurück, ob die Prüfung des Wertes erfolgreich war
 oder nicht. Sie geben auch darüber Informationen **warum** ein Wert die Prüfung nicht bestanden hat. Die
 Verfügbarkeit der Gründe für fehlgeschlagene Prüfungen kann für eine Anwendung aus vielen Gründen nützlich
 sein, wie zum Beispiel das zur Verfügung stellen von Statistiken für Useability Analysen.
 
-Grundlegende Funktionalitäten für fehlgeschlagene Prüfmeldungen ist in ``Zend_Validate_Abstract`` implementiert.
-Um diese Funktionalität einzubinden wenn eine Prüfklasse erstellt wird, muß einfach ``Zend_Validate_Abstract``
+Grundlegende Funktionalitäten für fehlgeschlagene Prüfmeldungen ist in ``Zend\Validate\Abstract`` implementiert.
+Um diese Funktionalität einzubinden wenn eine Prüfklasse erstellt wird, muß einfach ``Zend\Validate\Abstract``
 erweitert werden. In der existierenden Klasse wird die Logik der ``isValid()`` Methode implementiert und die
 Variablen für die Nachrichten und Nachrichten-Templates definiert werden die zu den Typen von Prüffehlern passen
 die auftreten können. Wenn ein Wert die Prüfung nicht besteht, sollte ``isValid()`` ``FALSE`` zurückgeben. Wenn
@@ -42,7 +42,7 @@ Fall sind die Prüfregeln sehr einfach und der Eingabewert muß ein Gleitkommawe
 .. code-block:: php
    :linenos:
 
-   class MyValid_Float extends Zend_Validate_Abstract
+   class MyValid_Float extends Zend\Validate\Abstract
    {
        const FLOAT = 'float';
 
@@ -88,7 +88,7 @@ Diese Gründe für fehlgeschlagene Prüfungen werden in Definitionen der Klasse 
 .. code-block:: php
    :linenos:
 
-   class MyValid_NumericBetween extends Zend_Validate_Abstract
+   class MyValid_NumericBetween extends Zend\Validate\Abstract
    {
        const MSG_NUMERIC = 'msgNumeric';
        const MSG_MINIMUM = 'msgMinimum';
@@ -164,7 +164,7 @@ Die folgende Klasse impementiert diese Prüfkriterien:
 .. code-block:: php
    :linenos:
 
-   class MyValid_PasswordStrength extends Zend_Validate_Abstract
+   class MyValid_PasswordStrength extends Zend\Validate\Abstract
    {
        const LENGTH = 'length';
        const UPPER  = 'upper';

@@ -9,8 +9,8 @@
 创建一个内存管理器
 ---------
 
-你可以使用 *Zend_Memory::factory($backendName [, $backendOprions])*
-方法创建一个新的内存管理器(*Zend_Memory_Manager* 对象).
+你可以使用 *Zend\Memory\Memory::factory($backendName [, $backendOprions])*
+方法创建一个新的内存管理器(*Zend\Memory\Manager* 对象).
 
 第一个参数 *$backendName*\ 是一个字符串,他的名字是ZendCache提供的后端实现之一.
 
@@ -23,7 +23,7 @@
        'cache_dir' => './tmp/' // Directory where to put the swapped memory blocks
    );
 
-   $memoryManager = Zend_Memory::factory('File', $backendOptions);
+   $memoryManager = Zend\Memory\Memory::factory('File', $backendOptions);
 
 
 Zend_Memory使用 :ref:`Zend_Cache backends <zend.cache.backends>`\ 作为存储提供者.
@@ -33,7 +33,7 @@ Zend_Memory使用 :ref:`Zend_Cache backends <zend.cache.backends>`\ 作为存储
    .. code-block:: php
       :linenos:
 
-      $memoryManager = Zend_Memory::factory('None');
+      $memoryManager = Zend\Memory\Memory::factory('None');
 
 
 
@@ -55,7 +55,7 @@ Zend_Memory使用 :ref:`Zend_Cache backends <zend.cache.backends>`\ 作为存储
 创建可移动的对象
 ^^^^^^^^
 
-使用 *Zend_Memory_Manager::create([$data])* 方法创建可移动的对象 (对象可以被交换):
+使用 *Zend\Memory\Manager::create([$data])* 方法创建可移动的对象 (对象可以被交换):
 
    .. code-block:: php
       :linenos:
@@ -72,7 +72,7 @@ Zend_Memory使用 :ref:`Zend_Cache backends <zend.cache.backends>`\ 作为存储
 创建锁定的对象
 ^^^^^^^
 
-使用 *Zend_Memory_Manager::createLocked([$data])*\ 方法创建锁定的(对象不能被交换)对象:
+使用 *Zend\Memory\Manager::createLocked([$data])*\ 方法创建锁定的(对象不能被交换)对象:
 
    .. code-block:: php
       :linenos:

@@ -74,7 +74,7 @@ partials 的基本用法是在它自己的视图范围内解析一个模板的�
       // partial view script:
       $view->partialLoop()->setObjectKey('model');
 
-   当传递 *Zend_Db_Table_Rowset*\ s 给 *partialLoop()*\ 时这个技术相当有用，
+   当传递 *Zend\Db_Table\Rowset*\ s 给 *partialLoop()*\ 时这个技术相当有用，
    因为你在视图脚本里有全部访问 row
    对象的权限，允许你调用它们的方法（如从父或依赖的 rows 获取数据）。
 

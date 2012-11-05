@@ -26,7 +26,7 @@ AuthSub の場合の認証情報は、ウェブアプリケーションのユー
 
    **登録されたアプリケーション**
 
-   ``Zend_Gdata`` は、現在はセキュアなトークンの使用をサポートしていません。
+   ``ZendGData`` は、現在はセキュアなトークンの使用をサポートしていません。
    なぜなら、デジタル証明書によるセキュアなトークンの取得を AuthSub
    認証がサポートしていないからです。
 
@@ -37,7 +37,7 @@ AuthSub 認証済みの Http クライアントの作成
 
 あなたの作成した *PHP* アプリケーションで、認証を行う Google *URL*
 へのハイパーリンクを提供しなければなりません。そのためには 静的関数
-``Zend_Gdata_AuthSub::getAuthSubTokenUri()``
+``ZendGData\AuthSub::getAuthSubTokenUri()``
 を使用します。この関数の引数には、あなたの作成した *PHP* アプリケーションの *URL*
 を指定します。それにより、ユーザ認証の後に Google
 からもとの場所にリダイレクトされるようになります。
@@ -47,14 +47,14 @@ Google の認証サーバからアプリケーションに戻ってくる際に�
 single-use トークンとなります。 このトークンを multi-use
 トークンに変換し、セッションに保存します。
 
-そしてそのトークンの値は使用して ``Zend_Gdata_AuthSub::getHttpClient()``
-をコールします。この関数は ``Zend_Http_Client``
+そしてそのトークンの値は使用して ``ZendGData\AuthSub::getHttpClient()``
+をコールします。この関数は ``Zend\Http\Client``
 のインスタンスを返します。このインスタンスには適切なヘッダが設定されており、
 後でこの *HTTP*
 クライアントを使用して送信したリクエストは認証済みのものとなります。
 
 以下の例は、 *PHP* のウェブアプリケーションのコードです。 Google Calendar
-サービスに対する認証を行い、 認証済みの *HTTP* クライアントを使用して ``Zend_Gdata``
+サービスに対する認証を行い、 認証済みの *HTTP* クライアントを使用して ``ZendGData``
 クライアントオブジェクトを作成します。
 
 .. code-block:: php
@@ -66,12 +66,12 @@ single-use トークンとなります。 このトークンを multi-use
        if (isset($_GET['token'])) {
            // single-use トークンをセッショントークンに変換します
            $session_token =
-               Zend_Gdata_AuthSub::getAuthSubSessionToken($_GET['token']);
+               ZendGData\AuthSub::getAuthSubSessionToken($_GET['token']);
            // セッショントークンをセッションに保存します
            $_SESSION['cal_token'] = $session_token;
        } else {
            // single-use トークンを生成するためのリンクを表示します
-           $googleUri = Zend_Gdata_AuthSub::getAuthSubTokenUri(
+           $googleUri = ZendGData\AuthSub::getAuthSubTokenUri(
                'http://'. $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'],
                $my_calendar, 0, 1);
            echo "<a href='$googleUri'>ここ</a> " .
@@ -81,10 +81,10 @@ single-use トークンとなります。 このトークンを multi-use
    }
 
    // Google とやり取りするための、認証済み HTTP クライアントを作成します
-   $client = Zend_Gdata_AuthSub::getHttpClient($_SESSION['cal_token']);
+   $client = ZendGData\AuthSub::getHttpClient($_SESSION['cal_token']);
 
    // 認証済み Http クライアントを使用して Gdata オブジェクトを作成します
-   $cal = new Zend_Gdata_Calendar($client);
+   $cal = new ZendGData\Calendar($client);
 
 .. _zend.gdata.authsub.logout:
 
@@ -92,7 +92,7 @@ AuthSub 認証の解除
 -------------
 
 指定したトークンによる認証状態を終わらせるには、静的関数
-``Zend_Gdata_AuthSub::AuthSubRevokeToken()``
+``ZendGData\AuthSub::AuthSubRevokeToken()``
 を使用します。そうしないと、このトークンはいつまでも有効なままになります。
 
 .. code-block:: php
@@ -105,7 +105,7 @@ AuthSub 認証の解除
                             ENT_QUOTES);
 
    if (isset($_GET['logout'])) {
-       Zend_Gdata_AuthSub::AuthSubRevokeToken($_SESSION['cal_token']);
+       ZendGData\AuthSub::AuthSubRevokeToken($_SESSION['cal_token']);
        unset($_SESSION['cal_token']);
        header('Location: ' . $php_self);
        exit();
@@ -116,7 +116,7 @@ AuthSub 認証の解除
    **セキュリティについて**
 
    上の例における ``$php_self`` の扱い方は、
-   一般的なセキュリティ問題の対応法に従ったものです。 ``Zend_Gdata``
+   一般的なセキュリティ問題の対応法に従ったものです。 ``ZendGData``
    に固有のものではありません。 *HTTP*
    ヘッダに出力する内容は、つねにフィルタリングするようにしましょう。
 

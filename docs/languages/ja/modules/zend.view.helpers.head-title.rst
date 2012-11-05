@@ -33,7 +33,7 @@ title タグは、いつでも好きなときに指定できます。
    :linenos:
 
    // コントローラとアクションの名前を title 部に設定します
-   $request = Zend_Controller_Front::getInstance()->getRequest();
+   $request = Zend\Controller\Front::getInstance()->getRequest();
    $this->headTitle($request->getActionName())
         ->headTitle($request->getControllerName());
 

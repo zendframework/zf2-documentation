@@ -7,16 +7,16 @@ Einleitung
 ``Zend_Config`` wurde entworfen um den Zugriff auf und die Verwendung von Konfigurations-Daten zu vereinfachen. Es
 stellt diese Konfigurations-Daten innerhalb der Applikation über eine verschachtelte Objekt-Struktur zur
 Verfügung. Die Konfigurations-Daten können aus verschiedenen Datenquellen gelesen werden, die hierarchische
-Datenspeicherung unterstützen. Derzeit stellt ``Zend_Config`` mit :ref:`Zend_Config_Ini
-<zend.config.adapters.ini>` und :ref:`Zend_Config_Xml <zend.config.adapters.xml>` Adapter für das Einlesen von
+Datenspeicherung unterstützen. Derzeit stellt ``Zend_Config`` mit :ref:`Zend\Config\Ini
+<zend.config.adapters.ini>` und :ref:`Zend\Config\Xml <zend.config.adapters.xml>` Adapter für das Einlesen von
 Daten aus Textfiles zur Verfügung.
 
 .. _zend.config.introduction.example.using:
 
 .. rubric:: Zend-Config verwenden
 
-In der Regel geht man davon aus, dass Anwender eine der Adapter-Klassen wie :ref:`Zend_Config_Ini
-<zend.config.adapters.ini>` oder :ref:`Zend_Config_Xml <zend.config.adapters.xml>` verwenden. Wenn die
+In der Regel geht man davon aus, dass Anwender eine der Adapter-Klassen wie :ref:`Zend\Config\Ini
+<zend.config.adapters.ini>` oder :ref:`Zend\Config\Xml <zend.config.adapters.xml>` verwenden. Wenn die
 Konfigurations-Daten aber als *PHP* Array vorliegen, können diese auch einfach an den ``Zend_Config`` Constructor
 übergeben werden, um dann über die objektorientierte Schnittstelle auf sie zugreifen zu können:
 
@@ -38,18 +38,18 @@ Konfigurations-Daten aber als *PHP* Array vorliegen, können diese auch einfach 
    );
 
    // Erstelle das objektorientierte Interface zum Datenzugriff
-   $config = new Zend_Config($configArray);
+   $config = new Zend\Config\Config($configArray);
 
    // Gebe einen Eintrag aus (Ausgabe ist 'www.example.com')
    echo $config->webhost;
 
    // Konfigurations-Daten benutzen, um eine Datenbank-Verbindung her zu stellen
-   $db = Zend_Db::factory($config->database->adapter,
+   $db = Zend\Db\Db::factory($config->database->adapter,
                           $config->database->params->toArray());
 
    // Alternative Verwendung: einfach das Zend_Config Objekt übergeben.
    // Zend_Db factory weiß wie es zu interpretieren ist.
-   $db = Zend_Db::factory($config->database);
+   $db = Zend\Db\Db::factory($config->database);
 
 Wie das Beispiel oben zeigt, kann man über ``Zend_Config`` auf die Konfigurations-Daten aus dem übergebenen Array
 so zugreifen, wie auf die Eigenschaften einer verschachtelten Objekt-Struktur.
@@ -90,7 +90,7 @@ ganz einfach erreicht werden kann:
    :linenos:
 
    // Konfiguration konsumieren
-   $config = new Zend_Config(require 'config.php');
+   $config = new Zend\Config\Config(require 'config.php');
 
    // Einen Konfigurationswert ausgeben (führt zu 'www.example.com')
    echo $config->webhost;

@@ -84,7 +84,7 @@ Was dann das folgende ausgibt:
       // Variable im letzten Partiellen View Skript übergeben wird
       $view->partialLoop()->setObjectKey('model');
 
-   Diese Technik ist speziell dann sinnvoll wenn ``Zend_Db_Table_Rowset``\ s an ``partialLoop()`` übergeben
+   Diese Technik ist speziell dann sinnvoll wenn ``Zend\Db_Table\Rowset``\ s an ``partialLoop()`` übergeben
    werden, da man dann kompletten Zugriff auf die Zeilenobjekte im View Skript hat, was es einem erlaubt Ihre
    Methoden auszurufen (wie das empfangen von Werten bei Eltern- oder abhängigen Zeilen).
 

@@ -4,10 +4,10 @@
 读取（Fetching）选项和参数
 =================
 
-在声明 *Zend_Console_Getopt*
+在声明 *Zend\Console\Getopt*
 对象认可的选项和从命令行或数组提供参数后，可以查询这个对象来找出哪个选项被用户在程序中给定的命令行调用中被指定。这个类实现魔术方法，所以可以用名字来查询选项。
 
-数据的解析被延迟到第一个依靠 *Zend_Console_Getopt*
+数据的解析被延迟到第一个依靠 *Zend\Console\Getopt*
 对象查询是否发现一个选项被给出，然后这个对象来执行解析。它允许在解析发生之前使用若干个方法调用来配置选项、参数、帮助内容和配置选项。
 
 .. _zend.console.getopt.fetching.exceptions:
@@ -15,7 +15,7 @@
 操作 Getopt 异常
 ------------
 
-如果用户在命令行中给出任何无效选项，解析函数抛出一个 *Zend_Console_Getopt_Exception*\
+如果用户在命令行中给出任何无效选项，解析函数抛出一个 *Zend\Console_Getopt\Exception*\
 。你应当在程序代码理捕捉这个异常。可以使用 *parse()*\
 方法强制对象来解析参数。这很有用，因为可以在 *try* 块中调用 *parse()*\
 。如果通过，解析不再抛出异常。异常的抛出有一个定制的方法 *getUsageMessage()*\
@@ -29,9 +29,9 @@
    :linenos:
 
    try {
-       $opts = new Zend_Console_Getopt('abp:');
+       $opts = new Zend\Console\Getopt('abp:');
        $opts->parse();
-   } catch (Zend_Console_Getopt_Exception $e) {
+   } catch (Zend\Console_Getopt\Exception $e) {
        echo $e->getUsageMessage();
        exit;
    }
@@ -61,7 +61,7 @@
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $b = $opts->getOption('b');
    $p_parameter = $opts->getOption('p');
 
@@ -76,7 +76,7 @@
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    if (isset($opts->b)) {
        echo "I got the b option.\n";
    }
@@ -122,12 +122,12 @@
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setArguments(array('-p', 'p_parameter', 'filename'));
    $args = $opts->getRemainingArgs(); // returns array('filename')
 
 
-*Zend_Console_Getopt*\ 支持 GNU
+*Zend\Console\Getopt*\ 支持 GNU
 惯例，在参数中包含双短横线表示选项的结尾。在这个符号后面的任何参数必须当作非选项参数。如果有以一个短横线开头的非选项参数，这很有用。例如："``rm
 -- -filename-with-dash``"。
 

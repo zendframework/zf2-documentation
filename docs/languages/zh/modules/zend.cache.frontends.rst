@@ -6,7 +6,7 @@ Zend_Cache前端
 
 .. _zend.cache.frontends.core:
 
-Zend_Cache_Core
+Zend\Cache\Core
 ---------------
 
 .. _zend.cache.frontends.core.introduction:
@@ -14,12 +14,12 @@ Zend_Cache_Core
 简介
 ^^
 
-*Zend_Cache_Core*\ 是一个特别的前端,因为他是模块的核心.
+*Zend\Cache\Core*\ 是一个特别的前端,因为他是模块的核心.
 它是一个一般化(generic)的缓存前端,并且由其他类扩展.
 
 .. note::
 
-   所有的前端继承自 *Zend_Cache_Core*\
+   所有的前端继承自 *Zend\Cache\Core*\
    因此它的方法和选项(描述如下)应该在其他的前端中可用,所以这里没有进行文档化.
 
 .. _zend.cache.frontends.core.options:
@@ -169,7 +169,7 @@ An example is given in the manual at the very beginning.
 
 .. _zend.cache.frontends.output:
 
-Zend_Cache_Frontend_Output
+Zend\Cache_Frontend\Output
 --------------------------
 
 .. _zend.cache.frontends.output.introduction:
@@ -177,7 +177,7 @@ Zend_Cache_Frontend_Output
 简介
 ^^
 
-*Zend_Cache_Frontend_Output* 是一个输出捕捉前端.它在PHP中使用输出缓冲捕获 *start()* 和 *end()*
+*Zend\Cache_Frontend\Output* 是一个输出捕捉前端.它在PHP中使用输出缓冲捕获 *start()* 和 *end()*
 方法间的一切输出.
 
 .. _zend.cache.frontends.output.options:
@@ -185,7 +185,7 @@ Zend_Cache_Frontend_Output
 可用的选项
 ^^^^^
 
-该前端除了 *Zend_Cache_Core*\ 那些选项外没有任何特定的选项.
+该前端除了 *Zend\Cache\Core*\ 那些选项外没有任何特定的选项.
 
 .. _zend.cache.frontends.output.examples:
 
@@ -216,7 +216,7 @@ refactoring.
 
 .. _zend.cache.frontends.function:
 
-Zend_Cache_Frontend_Function
+Zend\Cache_Frontend\Function
 ----------------------------
 
 .. _zend.cache.frontends.function.introduction:
@@ -224,7 +224,7 @@ Zend_Cache_Frontend_Function
 Introduction
 ^^^^^^^^^^^^
 
-*Zend_Cache_Frontend_Function* caches the results of function calls. It has a single main method named *call()*
+*Zend\Cache_Frontend\Function* caches the results of function calls. It has a single main method named *call()*
 which takes a function name and parameters for the call in an array.
 
 .. _zend.cache.frontends.function.options:
@@ -264,7 +264,7 @@ A可用的选项
    // $cache->call('veryExpensiveFunc', array(1, 'foo', 'bar'))
 
 
-*Zend_Cache_Frontend_Function* is smart enough to cache both the return value of the function and its internal
+*Zend\Cache_Frontend\Function* is smart enough to cache both the return value of the function and its internal
 output.
 
 .. note::
@@ -274,7 +274,7 @@ output.
 
 .. _zend.cache.frontends.class:
 
-Zend_Cache_Frontend_Class
+Zend\Cache_Frontend\Class
 -------------------------
 
 .. _zend.cache.frontends.class.introduction:
@@ -282,7 +282,7 @@ Zend_Cache_Frontend_Class
 Introduction
 ^^^^^^^^^^^^
 
-*Zend_Cache_Frontend_Class* is different from *Zend_Cache_Frontend_Function* because it allows caching of object
+*Zend\Cache_Frontend\Class* is different from *Zend\Cache_Frontend\Function* because it allows caching of object
 and static method calls.
 
 .. _zend.cache.frontends.class.options:
@@ -365,7 +365,7 @@ To cache classic method calls :
 
 .. _zend.cache.frontends.file:
 
-Zend_Cache_Frontend_File
+Zend\Cache_Frontend\File
 ------------------------
 
 .. _zend.cache.frontends.file.introduction:
@@ -373,11 +373,11 @@ Zend_Cache_Frontend_File
 Introduction
 ^^^^^^^^^^^^
 
-*Zend_Cache_Frontend_File* is a frontend driven by the modification time of a "master file". It's really
+*Zend\Cache_Frontend\File* is a frontend driven by the modification time of a "master file". It's really
 interesting for examples in configuration or templates issues.
 
 For instance, you have an XML configuration file which is parsed by a function which returns a "config object"
-(like with *Zend_Config*). With *Zend_Cache_Frontend_File*, you can store the "config object" into cache (to avoid
+(like with *Zend_Config*). With *Zend\Cache_Frontend\File*, you can store the "config object" into cache (to avoid
 the parsing of the XML config file at each time) but with a sort of strong dependency on the "master file". So, if
 the XML config file is modified, the cache is immediately invalidated.
 
@@ -401,12 +401,12 @@ Available options
 Examples
 ^^^^^^^^
 
-Use of this frontend is the same than of *Zend_Cache_Core*. There is no need of a specific example - the only thing
+Use of this frontend is the same than of *Zend\Cache\Core*. There is no need of a specific example - the only thing
 to do is to define the *master_file* when using the factory.
 
 .. _zend.cache.frontends.page:
 
-Zend_Cache_Frontend_Page
+Zend\Cache_Frontend\Page
 ------------------------
 
 .. _zend.cache.frontends.page.introduction:
@@ -414,8 +414,8 @@ Zend_Cache_Frontend_Page
 Introduction
 ^^^^^^^^^^^^
 
-*Zend_Cache_Frontend_Page* is like *Zend_Cache_Frontend_Output* but designed for a complete page. It's impossible
-to use *Zend_Cache_Frontend_Page* for caching only a single block.
+*Zend\Cache_Frontend\Page* is like *Zend\Cache_Frontend\Output* but designed for a complete page. It's impossible
+to use *Zend\Cache_Frontend\Page* for caching only a single block.
 
 On the other hand, the "cache id" is calculated automatically with *$_SERVER['REQUEST_URI']* and (depending on
 options) *$_GET*, *$_POST*, *$_SESSION*, *$_COOKIE*, *$_FILES*. More over, you have only one method to call
@@ -452,7 +452,7 @@ Available options (for this frontend in Zend_Cache factory)
 Examples
 ^^^^^^^^
 
-Use of Zend_Cache_Frontend_Page is really trivial :
+Use of Zend\Cache_Frontend\Page is really trivial :
 
 .. code-block:: php
    :linenos:
@@ -474,7 +474,7 @@ Zend_Controller for example)
    /*
     * you should avoid putting too many lines before the cache section.
     * For example, for optimal performances, "require_once" or
-    * "Zend_Loader::loadClass" should be after the cache section.
+    * "Zend\Loader\Loader::loadClass" should be after the cache section.
     */
 
    $frontendOptions = array(
@@ -507,8 +507,8 @@ Zend_Controller for example)
        'cache_dir' => '/tmp/'
    );
 
-   // getting a Zend_Cache_Frontend_Page object
-   $cache = Zend_Cache::factory('Page',
+   // getting a Zend\Cache_Frontend\Page object
+   $cache = Zend\Cache\Cache::factory('Page',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);

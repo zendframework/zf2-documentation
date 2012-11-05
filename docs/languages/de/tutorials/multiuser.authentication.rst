@@ -36,7 +36,7 @@ Der Job der ``Zend_Auth`` Klasse ist zweigeteilt. Erstens sollte Sie in der Lage
 Adapter zu akzeptieren um einen Benutzer zu authentifizieren. Zweitens sollte Sie, nach einer erfolgreichen
 Authentifizierung eines Benutzers, durch jede und alle Abfragen persistent sein welche wissen müssen ob der
 aktuelle Benutzer authentifiziert wurde. Um diese Daten zu persistieren verwendet ``Zend_Auth``
-``Zend_Session_Namespace``, man muss aber generell nie mit diesem Session Objekt interagieren.
+``Zend\Session\Namespace``, man muss aber generell nie mit diesem Session Objekt interagieren.
 
 Angenommen wir haben die folgende Datenbanktabelle konfiguriert:
 
@@ -101,7 +101,7 @@ Der folgende Code demonstriert wie die richtigen Adapter erstellt und in das For
 .. code-block:: php
    :linenos:
 
-   class AuthController extends Zend_Controller_Action
+   class AuthController extends Zend\Controller\Action
    {
 
        public function loginAction()
@@ -112,7 +112,7 @@ Der folgende Code demonstriert wie die richtigen Adapter erstellt und in das For
 
            if ($loginForm->isValid()) {
 
-               $adapter = new Zend_Auth_Adapter_DbTable(
+               $adapter = new Zend\Auth_Adapter\DbTable(
                    $db,
                    'users',
                    'username',

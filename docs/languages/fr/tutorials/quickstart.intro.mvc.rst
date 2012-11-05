@@ -15,7 +15,7 @@ vous pouvez les utiliser de manière plus ou moins indépendante. Mais Zend Fram
 avancée Model-View-Controller (*MVC*) qui peut être utilisée pour monter des structures de base pour vos
 applications. Une liste complète des composants de Zend Framework avec une brève description peut être trouvée
 dans `l'aperçu des composants`_. Ce guide de démarrage montre les composants les plus utilisés dans Zend
-Framework, comme ``Zend_Controller``, ``Zend_Layout``, ``Zend_Config``, ``Zend_Db``, ``Zend_Db_Table``,
+Framework, comme ``Zend_Controller``, ``Zend_Layout``, ``Zend_Config``, ``Zend_Db``, ``Zend\Db\Table``,
 ``Zend_Registry``, ainsi que quelques aides de vue.
 
 En utilisant ces composants nous allons construire un livre d'or reposant sur une base de données, simple, en

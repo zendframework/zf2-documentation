@@ -11,43 +11,43 @@ Zend_Uri
 
 ``Zend_Uri`` является компонентой, которая призвана облегчить
 работу с URI (`Uniform Resource Identifiers`_) и их валидацию. ``Zend_Uri`` был создан
-для обслуживания других компонент, таких, как ``Zend_Http_Client``, но
+для обслуживания других компонент, таких, как ``Zend\Http\Client``, но
 полезен и как отдельная утилита.
 
 URI всегда начинаются со схемы, после которой следует двоеточие.
 Структура для разных схем может сильно отличаться. Класс
 ``Zend_Uri`` предоставляет фабрику (паттерн factory), которая
 возвращает его подклассы, специализирующиеся в различных
-схемах. Подклассы называются ``Zend_Uri_<scheme>``, где *<scheme>*- схема в
+схемах. Подклассы называются ``Zend\Uri\<scheme>``, где *<scheme>*- схема в
 нижнем регистре, с прописной первой буквой. Исключением из
 этого правила является HTTPS, который обрабатывается подклассом
-``Zend_Uri_Http``.
+``Zend\Uri\Http``.
 
 .. _zend.uri.creation:
 
 Создание нового URI
 -------------------
 
-``Zend_Uri`` будет строить с нуля новый URI, если *Zend_Uri::factory()* была
+``Zend_Uri`` будет строить с нуля новый URI, если *Zend\Uri\Uri::factory()* была
 передана только схема.
 
 .. _zend.uri.creation.example-1:
 
-.. rubric:: Создание нового URI с Zend_Uri::factory()
+.. rubric:: Создание нового URI с Zend\Uri\Uri::factory()
 
 .. code-block:: php
    :linenos:
 
    // Для того, чтобы создать с нуля новый URI, передайте только схему.
-   $uri = Zend_Uri::factory('http');
+   $uri = Zend\Uri\Uri::factory('http');
 
-   // $uri является экземпляром Zend_Uri_Http
+   // $uri является экземпляром Zend\Uri\Http
 
-Для того, чтобы создать с нуля новый URI, передайте *Zend_Uri::factory()*
+Для того, чтобы создать с нуля новый URI, передайте *Zend\Uri\Uri::factory()*
 только схему. [#]_. При передаче не поддерживаемой схемы
-генерируется исключение ``Zend_Uri_Exception``.
+генерируется исключение ``Zend\Uri\Exception``.
 
-Если переданные схема или URI поддерживаются, то *Zend_Uri::factory()*
+Если переданные схема или URI поддерживаются, то *Zend\Uri\Uri::factory()*
 вернет свой подкласс, который специализируется на данной
 схеме.
 
@@ -57,23 +57,23 @@ URI всегда начинаются со схемы, после которой
 -------------------------
 
 Для того, чтобы работать с существующим URI, передайте его весь
-целиком *Zend_Uri::factory()*.
+целиком *Zend\Uri\Uri::factory()*.
 
 .. _zend.uri.manipulation.example-1:
 
-.. rubric:: Работа с существующим URI через Zend_Uri::factory()
+.. rubric:: Работа с существующим URI через Zend\Uri\Uri::factory()
 
 .. code-block:: php
    :linenos:
 
    // Чтобы работать с существующим URI, передайте его как параметр
-   $uri = Zend_Uri::factory('http://www.zend.com');
+   $uri = Zend\Uri\Uri::factory('http://www.zend.com');
 
-   // $uri является экземпляром Zend_Uri_Http
+   // $uri является экземпляром Zend\Uri\Http
 
 URI будет распарсен и проверен на валидность. Если он оказался
 невалидным, то сразу же будет сгенерировано исключение
-``Zend_Uri_Exception``. Иначе *Zend_Uri::factory()* вернет свой подкласс, который
+``Zend\Uri\Exception``. Иначе *Zend\Uri\Uri::factory()* вернет свой подкласс, который
 специализируется на данной схеме.
 
 .. _zend.uri.validation:
@@ -81,23 +81,23 @@ URI будет распарсен и проверен на валидность.
 Проверка URI
 ------------
 
-Функция *Zend_Uri::check()* может использоваться в том случае, когда
+Функция *Zend\Uri\Uri::check()* может использоваться в том случае, когда
 нужна только проверка существующего URI.
 
 .. _zend.uri.validation.example-1:
 
-.. rubric:: Проверка URI с помощью Zend_Uri::check()
+.. rubric:: Проверка URI с помощью Zend\Uri\Uri::check()
 
 .. code-block:: php
    :linenos:
 
    // Проверка, является ли данный URI синтаксически корректным
-   $valid = Zend_Uri::check('http://uri.in.question');
+   $valid = Zend\Uri\Uri::check('http://uri.in.question');
 
    // $valid равен TRUE при валидном URI, иначе FALSE
 
-*Zend_Uri::check()* возвращает булево значение, использование этой
-функции более удобно, чем вызов *Zend_Uri::factory()* и отлов исключения.
+*Zend\Uri\Uri::check()* возвращает булево значение, использование этой
+функции более удобно, чем вызов *Zend\Uri\Uri::factory()* и отлов исключения.
 
 .. _zend.uri.validation.allowunwise:
 
@@ -110,7 +110,7 @@ URI будет распарсен и проверен на валидность.
 принимают эти символы как валидные.
 
 Можно заставить ``Zend_Uri`` принимать эти символы путем установки
-'allow_unwise' в TRUE, используя метод *Zend_Uri::setConfig()*:
+'allow_unwise' в TRUE, используя метод *Zend\Uri\Uri::setConfig()*:
 
 .. _zend.uri.validation.allowunwise.example-1:
 
@@ -121,19 +121,19 @@ URI будет распарсен и проверен на валидность.
 
    // Содержит символ '|'
    // Обычно такой вызов будет возвращать 'false':
-   $valid = Zend_Uri::check('http://example.com/?q=this|that');
+   $valid = Zend\Uri\Uri::check('http://example.com/?q=this|that');
 
    // Тем не менее, вы можете разрешить "неумные" символы
-   Zend_Uri::setConfig(array('allow_unwise' => true));
+   Zend\Uri\Uri::setConfig(array('allow_unwise' => true));
    // будет возвращать 'true'
-   $valid = Zend_Uri::check('http://example.com/?q=this|that');
+   $valid = Zend\Uri\Uri::check('http://example.com/?q=this|that');
 
    // Установка 'allow_unwise' обратно в FALSE
-   Zend_Uri::setConfig(array('allow_unwise' => false));
+   Zend\Uri\Uri::setConfig(array('allow_unwise' => false));
 
 .. note::
 
-   *Zend_Uri::setConfig()* глобально устанавливает опции конфигурации.
+   *Zend\Uri\Uri::setConfig()* глобально устанавливает опции конфигурации.
    Рекомендуется сбрасывать опцию 'allow_unwise' в 'false', как показано в
    примере выше, если только вы не хотите разрешить
    использование "неумных" символов на все время во всем
@@ -144,7 +144,7 @@ URI будет распарсен и проверен на валидность.
 Общие методы экземпляров
 ------------------------
 
-Каждый экземпляр подкласса ``Zend_Uri`` (например, ``Zend_Uri_Http``) имеет
+Каждый экземпляр подкласса ``Zend_Uri`` (например, ``Zend\Uri\Http``) имеет
 несколько методов, полезных для работы с любыми видами URI.
 
 .. _zend.uri.instance-methods.getscheme:
@@ -157,12 +157,12 @@ URI будет распарсен и проверен на валидность.
 
 .. _zend.uri.instance-methods.getscheme.example-1:
 
-.. rubric:: Получение схемы из объекта Zend_Uri_*
+.. rubric:: Получение схемы из объекта Zend\Uri\*
 
 .. code-block:: php
    :linenos:
 
-   $uri = Zend_Uri::factory('http://www.zend.com');
+   $uri = Zend\Uri\Uri::factory('http://www.zend.com');
 
    $scheme = $uri->getScheme();  // "http"
 
@@ -175,12 +175,12 @@ URI будет распарсен и проверен на валидность.
 
 .. _zend.uri.instance-methods.geturi.example-1:
 
-.. rubric:: Получение всего URI из объекта Zend_Uri_*
+.. rubric:: Получение всего URI из объекта Zend\Uri\*
 
 .. code-block:: php
    :linenos:
 
-   $uri = Zend_Uri::factory('http://www.zend.com');
+   $uri = Zend\Uri\Uri::factory('http://www.zend.com');
 
    echo $uri->getUri();  // "http://www.zend.com"
 
@@ -191,7 +191,7 @@ URI будет распарсен и проверен на валидность.
 Проверка URI на валидность
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-*Zend_Uri::factory()* всегда производит синтаксическую проверку
+*Zend\Uri\Uri::factory()* всегда производит синтаксическую проверку
 переданных ему URI и не будет создавать новый экземпляр
 подкласса ``Zend_Uri``, если данный URI не прошел проверку. Тем не
 менее, после того, как был инстанцирован подкласс ``Zend_Uri`` для
@@ -200,12 +200,12 @@ URI будет распарсен и проверен на валидность.
 
 .. _zend.uri.instance-methods.valid.example-1:
 
-.. rubric:: Проверка объекта Zend_Uri_*
+.. rubric:: Проверка объекта Zend\Uri\*
 
 .. code-block:: php
    :linenos:
 
-   $uri = Zend_Uri::factory('http://www.zend.com');
+   $uri = Zend\Uri\Uri::factory('http://www.zend.com');
 
    $isValid = $uri->valid();  // TRUE
 

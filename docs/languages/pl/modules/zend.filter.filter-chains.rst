@@ -13,9 +13,9 @@ dla wysłanej nazwy użytkownika:
       :linenos:
 
       // Tworzymy łańcuch filtrów i dodajemy filtry do łańcucha
-      $filterChain = new Zend_Filter();
-      $filterChain->addFilter(new Zend_Filter_Alpha())
-                  ->addFilter(new Zend_Filter_StringToLower());
+      $filterChain = new Zend\Filter\Filter();
+      $filterChain->addFilter(new Zend\Filter\Alpha())
+                  ->addFilter(new Zend\Filter\StringToLower());
 
       // Filtrujemy nazwę użytkownika
       $username = $filterChain->filter($_POST['username']);
@@ -25,6 +25,6 @@ Filtry są uruchamiane w takiej kolejności, w jakiej zostają dodane do *Zend_F
 nazwy użytkownika wpierw są usuwane wszystkie niealfabetyczne znaki, a następnie wszystkie wielkie litery są
 zamieniane na małe.
 
-W łańcuchu filtrów może być użyty dowolny obiekt, który implementuje interfejs *Zend_Filter_Interface*.
+W łańcuchu filtrów może być użyty dowolny obiekt, który implementuje interfejs *Zend\Filter\Interface*.
 
 

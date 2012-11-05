@@ -22,7 +22,7 @@ Zend_Validate
 校验器的基本用法
 --------
 
-用这种方法定义校验为 *Zend_Validate_Interface*\ 提供了基础，它定义了两个方法， *isValid()*
+用这种方法定义校验为 *Zend\Validate\Interface*\ 提供了基础，它定义了两个方法， *isValid()*
 和 *getMessages()*\ 。 *isValid()*\
 方法根据提供的值来校验，当且仅当这个值通过校验条件，它返回 *true*\ 。
 
@@ -44,7 +44,7 @@ Zend_Validate
       <?php
       require_once 'Zend/Validate/EmailAddress.php';
 
-      $validator = new Zend_Validate_EmailAddress();
+      $validator = new Zend\Validate\EmailAddress();
 
       if ($validator->isValid($email)) {
           // email 有效
@@ -67,7 +67,7 @@ Zend_Validate
 返回的消息的格式。这个方法的第一个参数是一个包含错误信息的的字符串。你可以在字符串中包含令牌，它将被和校验器相关的数据替换。所有的校验器都支持令牌
 *%value%*\ ；这被你传递给 *isValid()*\
 的值替换。其它的令牌按情况在每个校验类中被支持。例如， *%max%*\ 是一个被
-*Zend_Validate_LessThan*\ 支持的令牌。The *getMessageVariables()*\
+*Zend\Validate\LessThan*\ 支持的令牌。The *getMessageVariables()*\
 方法返回一个被校验器支持的令牌变量的数组。
 
 第二个可选的参数是一个字符串，它识别是否校验失败消息模板被设置，当校验类定义了多于一个失败的原因的时候，这很有用。如果你忽略第二个参数，
@@ -82,11 +82,11 @@ Zend_Validate
       <?php
       require_once 'Zend/Validate/StringLength.php';
 
-      $validator = new Zend_Validate_StringLength(8);
+      $validator = new Zend\Validate\StringLength(8);
 
       $validator->setMessage(
           'The string \'%value%\' is too short; it must be at least %min% characters',
-          Zend_Validate_StringLength::TOO_SHORT);
+          Zend\Validate\StringLength::TOO_SHORT);
 
       if (!$validator->isValid('word')) {
           $messages = $validator->getMessages();
@@ -106,11 +106,11 @@ Zend_Validate
       <?php
       require_once 'Zend/Validate/StringLength.php';
 
-      $validator = new Zend_Validate_StringLength(8, 12);
+      $validator = new Zend\Validate\StringLength(8, 12);
 
       $validator->setMessages( array(
-          Zend_Validate_StringLength::TOO_SHORT => 'The string \'%value%\' is too short',
-          Zend_Validate_StringLength::TOO_LONG  => 'The string \'%value%\' is too long'
+          Zend\Validate\StringLength::TOO_SHORT => 'The string \'%value%\' is too short',
+          Zend\Validate\StringLength::TOO_LONG  => 'The string \'%value%\' is too long'
       ));
 
 
@@ -126,7 +126,7 @@ Zend_Validate
       <?php
       require_once 'Zend/Validate/StringLength.php';
 
-      $validator = new Zend_Validate_StringLength(8, 12);
+      $validator = new Zend\Validate\StringLength(8, 12);
 
       if (!validator->isValid('word')) {
           echo 'Word failed: '
@@ -147,7 +147,7 @@ Zend_Validate
 ------------
 
 如果加载一个校验类并创建这个校验器的实例不方便，你可以使用静态方法
-*Zend_Validate::is()*\
+*Zend\Validate\Validate::is()*\
 作为可选的调用风格。第一个参数是一个数据输入值，你将把它传递给 *isValid()*\
 方法。第二个参数是一个字符串，它和校验类的基本名字对应，和 *Zend_Validate*\
 名字空间相关。 *is()*\ 方法自动加载这个类，创建一个实例，并应用 *isValid()*\
@@ -159,7 +159,7 @@ Zend_Validate
       <?php
       require_once 'Zend/Validate.php';
 
-      if (Zend_Validate::is($email, 'EmailAddress')) {
+      if (Zend\Validate\Validate::is($email, 'EmailAddress')) {
           // 是, email 有效
       }
 
@@ -174,7 +174,7 @@ Zend_Validate
       <?php
       require_once 'Zend/Validate.php';
 
-      if (Zend_Validate::is($value, 'Between', array(1, 12))) {
+      if (Zend\Validate\Validate::is($value, 'Between', array(1, 12))) {
           // Yes, $value is between 1 and 12
       }
 
@@ -187,7 +187,7 @@ Zend_Validate
 静态用法对于调用专用校验器可能方便，但如果为多重输入运行一个校验器，使用非静态用法更有效，创建一个校验器对象的实例并调用
 *isValid()*\ 方法。
 
-并且， *Zend_Filter_Input*
+并且， *Zend\Filter\Input*
 类允许你按需求实例化和运行多个过滤器和校验器类来处理输入数据集合，参见 :ref:`
 <zend.filter.input>`\ 。
 

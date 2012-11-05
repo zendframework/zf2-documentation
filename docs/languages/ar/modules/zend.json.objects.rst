@@ -24,7 +24,7 @@ PHP , فتم أقتراح أن يتم تمرير معرف أسم class , ثم ي
 
    <?php
    // Decode objects as objects
-   $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);
+   $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
    ?>
 أى كائنات سيتم فك ترميزها , سيتم إرجاعها على أنها كائنات من
 *StdClass* مع properties تتطابق مع قيم أزواج الـ key/value المستخلصة من صيغة

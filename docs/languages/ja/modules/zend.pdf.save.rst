@@ -5,14 +5,14 @@ PDF ドキュメントへの変更内容の保存
 ===================
 
 *PDF* ドキュメントの変更内容を保存するには 2 種類の方法があります。
-``Zend_Pdf::save()`` および ``Zend_Pdf::render()`` メソッドです。
+``ZendPdf\Pdf::save()`` および ``ZendPdf\Pdf::render()`` メソッドです。
 
-``Zend_Pdf::save($filename, $updateOnly = false)`` は、
+``ZendPdf\Pdf::save($filename, $updateOnly = false)`` は、
 ドキュメントをファイルに保存します。$updateOnly が ``TRUE`` の場合は、 新しい *PDF*
 ファイルセグメントがファイルに追記されます。
 それ以外の場合はファイルが上書きされます。
 
-``Zend_Pdf::render($newSegmentOnly = false)`` は、 *PDF*
+``ZendPdf\Pdf::render($newSegmentOnly = false)`` は、 *PDF*
 ドキュメントを文字列として返します。$newSegmentOnly が ``TRUE`` の場合は、 新しい *PDF*
 ファイルセグメントのみが返されます。
 
@@ -25,7 +25,7 @@ PDF ドキュメントへの変更内容の保存
 
    ...
    // PDF ドキュメントを読み込みます。
-   $pdf = Zend_Pdf::load($fileName);
+   $pdf = ZendPdf\Pdf::load($fileName);
    ...
    // ドキュメントを更新します。
    $pdf->save($fileName, true);

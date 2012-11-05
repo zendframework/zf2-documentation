@@ -6,19 +6,19 @@ WSDL Zugriffsmethoden
 
 .. note::
 
-   Die ``Zend_Soap_Wsdl`` Klasse wird von der ``Zend_Soap_Server`` Komponente intern verwendet um mit WSDL
+   Die ``Zend\Soap\Wsdl`` Klasse wird von der ``Zend\Soap\Server`` Komponente intern verwendet um mit WSDL
    Dokumenten zu arbeiten. Trotzdem könnte man die Funktionalität die von dieser Klasse angeboten wird auch für
-   eigene Zwecke verwendet werden. Das ``Zend_Soap_Wsdl`` Paket enthält sowohl einen Parser als auch einen
+   eigene Zwecke verwendet werden. Das ``Zend\Soap\Wsdl`` Paket enthält sowohl einen Parser als auch einen
    Ersteller für WSDL Dokumente.
 
    Wenn man nicht plant das zu tun, kann dieses Kapitel der Dokumentation übersprungen werden.
 
 .. _zend.soap.wsdl.constructor:
 
-Zend_Soap_Wsdl Konstruktor
+Zend\Soap\Wsdl Konstruktor
 --------------------------
 
-Der ``Zend_Soap_Wsdl`` Konstruktor nimmt drei Parameter:
+Der ``Zend\Soap\Wsdl`` Konstruktor nimmt drei Parameter:
 
 
 
@@ -43,7 +43,7 @@ Die addMessage() Methode
 Die ``addMessage($name, $parts)`` Methode fügt eine neue Nachrichten Beschreibung zu einem WSDL Dokumetn hinzu
 (/definitions/message Element).
 
-Jede Nachricht korrespondiert zu einer Methode im Sinne von ``Zend_Soap_Server`` und ``Zend_Soap_Client``
+Jede Nachricht korrespondiert zu einer Methode im Sinne von ``Zend\Soap\Server`` und ``Zend\Soap\Client``
 Funktionalität.
 
 Der ``$name`` Parameter repräsentiert den Namen der Nachricht.
@@ -66,7 +66,7 @@ Methoden ausgeführt werden (siehe anbei).
    `http://schemas.xmlsoap.org/soap/encoding/`_).
 
    Alle nicht-standardmäßigen Typen, welche hinzugefügt werden können durch verwenden der
-   ``Zend_Soap_Wsdl::addComplexType()`` Methode, sind beschrieben durch Verwendung des 'complexType' Nodes des
+   ``Zend\Soap\Wsdl::addComplexType()`` Methode, sind beschrieben durch Verwendung des 'complexType' Nodes des
    '/definitions/types/schema/' Abschnitts des WSDL Dokuments.
 
    ``addMessage()`` Methoden verwenden also immer das 'type' Attribut um Typen zu beschreiben.
@@ -79,7 +79,7 @@ Die addPortType() Methode
 Die ``addPortType($name)`` Methode fügt neue Port Typen zu einem WSDL Dokument (/definitions/portType) mit dem
 spezifizierten Port Typ Namen hinzu.
 
-Es verbindet ein Set von Web Service Methoden die im Sinne der ``Zend_Soap_Server`` Implementation definiert sind.
+Es verbindet ein Set von Web Service Methoden die im Sinne der ``Zend\Soap\Server`` Implementation definiert sind.
 
 Siehe `http://www.w3.org/TR/wsdl#_porttypes`_ für Details.
 
@@ -92,7 +92,7 @@ Die *addPortOperation($portType, $name, $input = false, $output = false, $fault 
 Port Operation zum spezifizierten Port Typ des WSDL Dokuments hinzu (/definitions/portType/operation).
 
 Jede Port Operation korrespondiert zu einer Methode der Klasse (wenn der Web Service auf einer Klasse basiert) oder
-Funktion (wenn der Web Service auf einem Set von Methoden basiert) im Sinne der ``Zend_Soap_Server``
+Funktion (wenn der Web Service auf einem Set von Methoden basiert) im Sinne der ``Zend\Soap\Server``
 Implementation.
 
 Sie fügt auch eine korrespondierende Port Operations Nachricht hinzu anhängig von den spezifizierten ``$input``,
@@ -100,8 +100,8 @@ Sie fügt auch eine korrespondierende Port Operations Nachricht hinzu anhängig 
 
    .. note::
 
-      Die ``Zend_Soap_Server`` Komponente erzeugt zwei Nachrichten für jede Port Operation wärend das Service das
-      auf der ``Zend_Soap_Server`` Klasse basiert beschrieben wird:
+      Die ``Zend\Soap\Server`` Komponente erzeugt zwei Nachrichten für jede Port Operation wärend das Service das
+      auf der ``Zend\Soap\Server`` Klasse basiert beschrieben wird:
 
 
 
@@ -128,7 +128,7 @@ Nachrichten die von einem speziellen portType definiert sind (siehe `http://www.
 Die Methode erzeugt einen Bindungsknoten und gibt diesen zurück. Dieser kann dann verwendet werden um mit
 aktuellen Daten gefüllt zu werden.
 
-Die ``Zend_Soap_Server`` Implementation verwendet den *$serviceName . 'Binding'* Namen für das 'binding' Element
+Die ``Zend\Soap\Server`` Implementation verwendet den *$serviceName . 'Binding'* Namen für das 'binding' Element
 eines WSDL Dokuments.
 
 .. _zend.soap.wsdl.add_binding_operation:
@@ -143,7 +143,7 @@ Sie nimmt das *XML_Tree_Node* Objekt das von ``addBinding()`` zurückgegeben wir
 Parameter) um ein 'operation' Element mit Eingabe/Ausgabe/Falsch Einträgen hinzuzufügen abhängig von den
 spezifizierten Parametern.
 
-Die ``Zend_Soap_Server`` Implementation fügt korrespondierende gebundene Einträge für jede Web Service Methode
+Die ``Zend\Soap\Server`` Implementation fügt korrespondierende gebundene Einträge für jede Web Service Methode
 mit Eingabe und Ausgabe Einträgen hinzu die ein 'soap:body' Element als '<soap:body use="encoded"
 encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/> definieren.
 
@@ -156,7 +156,7 @@ Die addSoapBinding() Methode
 
 Die *addSoapBinding($binding, $style = 'document', $transport = 'http://schemas.xmlsoap.org/soap/http')* Methode
 fügt einen *SOAP* Bindung Eintrag ('soap:binding') zum Bindung Element (welches bereits zu einigen Port Typen
-verbunden ist) mit dem spezifizierten Stil und Transport hinzu (Die Zend_Soap_Server Implementation verwendet RPC
+verbunden ist) mit dem spezifizierten Stil und Transport hinzu (Die Zend\Soap\Server Implementation verwendet RPC
 Stil über *HTTP*).
 
 Das '/definitions/binding/soap:binding' Element wird verwendet um zu signieren dass das Bindung zum *SOAP*
@@ -178,7 +178,7 @@ Das 'soapAction' Attribut des '/definitions/binding/soap:operation' Elements spe
 Action Headers für diese Operation. Dieses Attribut wird für *SOAP* über *HTTP* benötigt und **darf in keinem
 Fall** für andere Transporte spezifiziert werden.
 
-Die ``Zend_Soap_Server`` Implementation verwendet *$serviceUri . '#' . $methodName* für den *SOAP* Operations
+Die ``Zend\Soap\Server`` Implementation verwendet *$serviceUri . '#' . $methodName* für den *SOAP* Operations
 Action Namen.
 
 Siehe `http://www.w3.org/TR/wsdl#_soap:operation`_ für Details.
@@ -192,9 +192,9 @@ Die ``addService($name, $port_name, $binding, $location)`` Methode fügt dem WSD
 '/definitions/service' Element mit dem spezifizierten Web Service Namen, Port Namen, Bindung und Ort hinzu.
 
 WSDL 1.1 erlaubt es verschiedene Port Typen pro Service zu haben (Sets von Operationen). Diese Fähigkeit wird von
-der ``Zend_Soap_Server`` Implementation nicht verwendet und von der ``Zend_Soap_Wsdl`` Klasse nicht unterstützt.
+der ``Zend\Soap\Server`` Implementation nicht verwendet und von der ``Zend\Soap\Wsdl`` Klasse nicht unterstützt.
 
-Die ``Zend_Soap_Server`` Implementation verwendet:
+Die ``Zend\Soap\Server`` Implementation verwendet:
 
 
 
@@ -255,7 +255,7 @@ erhalten:
    :linenos:
 
    ...
-   $wsdl = new Zend_Soap_Wsdl('My_Web_Service', $myWebServiceUri);
+   $wsdl = new Zend\Soap\Wsdl('My_Web_Service', $myWebServiceUri);
 
    ...
    $soapIntType = $wsdl->getType('int');
@@ -280,32 +280,32 @@ Methodenparametern oder Rückgabetypen hinzu.
 
 Der Algorithmus für das Erkennen und Aufbauen basiert auf der aktuellen Strategie für die aktive Erkennung von
 komplexen Typen. Man kann die Strategie für die Erkennung setzen indem entweder der Klassenname as String
-spezifiziert wird, oder indem eine Instanz einer ``Zend_Soap_Wsdl_Strategy_Interface`` Implementation als dritter
+spezifiziert wird, oder indem eine Instanz einer ``Zend\Soap\Wsdl\Strategy\Interface`` Implementation als dritter
 Parameter des Konstruktors verwendet wird, oder indem die ``setComplexTypeStrategy($strategy)`` Funktion von
-``Zend_Soap_Wsdl`` verwendet wird. Die folgenden Strategien für die Erkennung existieren aktuell:
+``Zend\Soap\Wsdl`` verwendet wird. Die folgenden Strategien für die Erkennung existieren aktuell:
 
-- Klasse ``Zend_Soap_Wsdl_Strategy_DefaultComplexType``: Standardmäßig aktiviert (wenn dem Konstruktor kein
+- Klasse ``Zend\Soap\Wsdl\Strategy\DefaultComplexType``: Standardmäßig aktiviert (wenn dem Konstruktor kein
   dritter Parameter gesetzt wird). Er iteriert über die öffentlichen Attribute eines Klassentyps und registriert
   Sie als Untertypen des komplexen Objekttyps.
 
-- Klasse ``Zend_Soap_Wsdl_Strategy_AnyType``: Castet alle komplexen Typen in einen einfachen XSD Typ xsd:anyType.
+- Klasse ``Zend\Soap\Wsdl\Strategy\AnyType``: Castet alle komplexen Typen in einen einfachen XSD Typ xsd:anyType.
   Vorsicht ist angeraten da diese Abkürzung für die Erkennung von komplexen Typen kann warscheinlich nur von lose
   typisierten Sprachen wie *PHP* erfolgreich behandelt werden.
 
-- Klasse ``Zend_Soap_Wsdl_Strategy_ArrayOfTypeSequence``: Diese Strategie erlaubt es die Rückgabeparameter mit
+- Klasse ``Zend\Soap\Wsdl\Strategy\ArrayOfTypeSequence``: Diese Strategie erlaubt es die Rückgabeparameter mit
   diesen Typen zu spezifizieren: *int[]* oder *string[]*. Ab dem Zend Framework Version 1.9 können beide, sowohl
   einfache *PHP* Typen wie Int, String, Boolean, Float sowie Objekte und Arrays von Objekten behandelt werden.
 
-- Klasse ``Zend_Soap_Wsdl_Strategy_ArrayOfTypeComplex``: Diese Strategie erlaubt die Erkennung von sehr komplexen
-  Arrays von Objekten. Objekttypen werden basierend auf ``Zend_Soap_Wsdl_Strategy_DefaultComplexType`` erkannt und
+- Klasse ``Zend\Soap\Wsdl\Strategy\ArrayOfTypeComplex``: Diese Strategie erlaubt die Erkennung von sehr komplexen
+  Arrays von Objekten. Objekttypen werden basierend auf ``Zend\Soap\Wsdl\Strategy\DefaultComplexType`` erkannt und
   ein Array wird um diese Definition gewrappt.
 
-- Klasse ``Zend_Soap_Wsdl_Strategy_Composite``: Diese Strategie kann alle Strategien kombinieren indem *PHP*
+- Klasse ``Zend\Soap\Wsdl\Strategy\Composite``: Diese Strategie kann alle Strategien kombinieren indem *PHP*
   komplexe Typen (Klassennamen) zu der gewünschten Strategie über die ``connectTypeToStrategy($type, $strategy)``
   Methode verbunden werden. Eine komplette Typemap kann dem Contructor als Array, mit ``$type``-> ``$strategy``
   Paaren angegeben werden. Der zweite Parameter spezifiziert die Standardstrategie die verwendet wird wenn ein
   unbekannter Typ hinzugefügt werden soll. Diese Parameter ist standardmäßig die
-  ``Zend_Soap_Wsdl_Strategy_DefaultComplexType`` Strategie.
+  ``Zend\Soap\Wsdl\Strategy\DefaultComplexType`` Strategie.
 
 Die ``addComplexType()`` Methode erstellt ein '/definitions/types/xsd:schema/xsd:complexType' Element für jeden
 beschriebenen komplexen Typen mit dem Namen der spezifizierten *PHP* Klasse.
@@ -356,10 +356,10 @@ Dokument als *XML*, DOM Struktur oder Datei zu erhalten.
 .. [#] *'tns:' namespace* wird als Skript *URI* definiert (*'http://' .$_SERVER['HTTP_HOST'] .
        $_SERVER['SCRIPT_NAME']*).
 .. [#] *'http://' .$_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']*
-.. [#] Standardmäßig wird ``Zend_Soap_Wsdl`` mit der Klasse ``Zend_Soap_Wsdl_Strategy_DefaultComplexType``
+.. [#] Standardmäßig wird ``Zend\Soap\Wsdl`` mit der Klasse ``Zend\Soap\Wsdl\Strategy\DefaultComplexType``
        als Erkennungsalgorithmus für komplexe Typen erstellt. Der erste Parameter des AutoDiscover
-       Constructors nimmt jede Strategie für komplexe Typen die ``Zend_Soap_Wsdl_Strategy_Interface``
+       Constructors nimmt jede Strategie für komplexe Typen die ``Zend\Soap\Wsdl\Strategy\Interface``
        implementiert oder einen String mit dem Namen dieser Klasse. Für Rückwärtskompatibilität mit den
        dem Boolean ``$extractComplexType`` werden Variablen auf dem folgenden Weg geparst: Bei ``TRUE``, wird
-       ``Zend_Soap_Wsdl_Strategy_DefaultComplexType`` verwendet, und bei ``FALSE``
-       ``Zend_Soap_Wsdl_Strategy_AnyType``.
+       ``Zend\Soap\Wsdl\Strategy\DefaultComplexType`` verwendet, und bei ``FALSE``
+       ``Zend\Soap\Wsdl\Strategy\AnyType``.

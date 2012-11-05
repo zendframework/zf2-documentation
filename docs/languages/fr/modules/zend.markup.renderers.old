@@ -18,9 +18,9 @@ des markups simples jusqu'à des structures de données complexes. Voici un exem
 .. code-block:: php
    :linenos:
 
-   // Créer une instance de Zend_Markup_Renderer_Html,
-   // avec Zend_Markup_Parser_BbCode comme analyseur
-   $bbcode = Zend_Markup::factory('Bbcode');
+   // Créer une instance de Zend\Markup_Renderer\Html,
+   // avec Zend\Markup_Parser\BbCode comme analyseur
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    // Ceci va créer un markup simple 'foo'
    // Le premier paramètre définit le nom du markup
@@ -29,7 +29,7 @@ des markups simples jusqu'à des structures de données complexes. Voici un exem
    // du markup comme son groupe et (dans ce cas) les markups de début et de fin
    $bbcode->addMarkup(
        'foo',
-       Zend_Markup_Renderer_RendererAbstract::TYPE_REPLACE,
+       Zend\Markup_Renderer\RendererAbstract::TYPE_REPLACE,
        array(
            'start' => '-bar-',
            'end'   => '-baz-',
@@ -55,17 +55,17 @@ Ajout d'un markup de rappel(callback)
 Ajouter des markups de rappel permet de faire bien plus que de simples remplacements. Par exemple, vous pouvez
 changer le contenu, utiliser des paramètres pour changer la sortie, etc.
 
-Un rappel est une classe qui implémente ``Zend_Markup_Renderer_TokenInterface`` Voici un exemple de classe de
+Un rappel est une classe qui implémente ``Zend\Markup_Renderer\TokenInterface`` Voici un exemple de classe de
 markup de rappel :
 
 .. code-block:: php
    :linenos:
 
    class My_Markup_Renderer_Html_Upper
-       implements Zend_Markup_Renderer_TokenConverterInterface
+       implements Zend\Markup_Renderer\TokenConverterInterface
    {
 
-       public function convert(Zend_Markup_Token $token, $text)
+       public function convert(Zend\Markup\Token $token, $text)
        {
            return '!up!' . strtoupper($text) . '!up!';
        }
@@ -78,9 +78,9 @@ Il est possible maintenant d'ajouter le markup "upper", avec comme fonction de r
 .. code-block:: php
    :linenos:
 
-   // Créer une instance de Zend_Markup_Renderer_Html,
-   // avec Zend_Markup_Parser_BbCode comme analyseur
-   $bbcode = Zend_Markup::factory('Bbcode');
+   // Créer une instance de Zend\Markup_Renderer\Html,
+   // avec Zend\Markup_Parser\BbCode comme analyseur
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    // Ceci va créer un markup simple 'foo'
    // Le premier paramètre définit le nom du markup
@@ -89,7 +89,7 @@ Il est possible maintenant d'ajouter le markup "upper", avec comme fonction de r
    // du markup comme son groupe et (dans ce cas) les markups de début et de fin
    $bbcode->addMarkup(
        'upper',
-       Zend_Markup_Renderer_RendererAbstract::TYPE_CALLBACK,
+       Zend\Markup_Renderer\RendererAbstract::TYPE_CALLBACK,
        array(
            'callback' => new My_Markup_Renderer_Html_Upper(),
            'group'    => 'inline'

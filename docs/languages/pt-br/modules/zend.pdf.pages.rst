@@ -9,33 +9,33 @@ Trabalhando com Páginas
 Criação de Página
 -----------------
 
-As páginas em um documento *PDF* são representadas como instâncias de ``Zend_Pdf_Page`` em ``Zend_Pdf``.
+As páginas em um documento *PDF* são representadas como instâncias de ``ZendPdf\Page`` em ``ZendPdf``.
 
-Páginas *PDF* podem ser carregadas de um *PDF* existente ou criadas usando a *API* de ``Zend_Pdf``.
+Páginas *PDF* podem ser carregadas de um *PDF* existente ou criadas usando a *API* de ``ZendPdf``.
 
-Novas páginas podem ser criadas instanciando novos objetos ``Zend_Pdf_Page`` diretamente ou chamando o método
-``Zend_Pdf::newPage()``, que retorna um objeto ``Zend_Pdf_Page``. ``Zend_Pdf::newPage()`` cria uma página já
+Novas páginas podem ser criadas instanciando novos objetos ``ZendPdf\Page`` diretamente ou chamando o método
+``ZendPdf\Pdf::newPage()``, que retorna um objeto ``ZendPdf\Page``. ``ZendPdf\Pdf::newPage()`` cria uma página já
 anexada à um documento. Páginas desanexadas não podem ser usadas com múltiplos documentos *PDF*, mas elas
 possuem uma performance relativamente maior. [#]_
 
-O método ``Zend_Pdf::newPage()`` e o construtor ``Zend_Pdf_Page`` recebem os mesmos parâmetros de definição do
+O método ``ZendPdf\Pdf::newPage()`` e o construtor ``ZendPdf\Page`` recebem os mesmos parâmetros de definição do
 tamanho da página. Eles podem receber tanto o tamanho da página ($x, $y) em pontos (1/72 polegadas) quanto uma
 constante pré-definida representando um tipo de página:
 
 
 
-   - Zend_Pdf_Page::SIZE_A4
+   - ZendPdf\Page::SIZE_A4
 
-   - Zend_Pdf_Page::SIZE_A4_LANDSCAPE
+   - ZendPdf\Page::SIZE_A4_LANDSCAPE
 
-   - Zend_Pdf_Page::SIZE_LETTER
+   - ZendPdf\Page::SIZE_LETTER
 
-   - Zend_Pdf_Page::SIZE_LETTER_LANDSCAPE
+   - ZendPdf\Page::SIZE_LETTER_LANDSCAPE
 
 
 
-As páginas de um documento são armazenadas no atributo público ``$pages`` da classe ``Zend_Pdf``. O atributo
-contém uma matriz de objetos ``Zend_Pdf_Page`` e define completamente as instâncias e ordem das páginas. Esta
+As páginas de um documento são armazenadas no atributo público ``$pages`` da classe ``ZendPdf``. O atributo
+contém uma matriz de objetos ``ZendPdf\Page`` e define completamente as instâncias e ordem das páginas. Esta
 matriz pode ser manipulada como qualquer outra matriz do *PHP*:
 
 .. _zend.pdf.pages.example-1:
@@ -50,9 +50,9 @@ matriz pode ser manipulada como qualquer outra matriz do *PHP*:
    $pdf->pages = array_reverse($pdf->pages);
    ...
    // Adiciona nova página
-   $pdf->pages[] = new Zend_Pdf_Page(Zend_Pdf_Page::SIZE_A4);
+   $pdf->pages[] = new ZendPdf\Page(ZendPdf\Page::SIZE_A4);
    // Adiciona nova página
-   $pdf->pages[] = $pdf->newPage(Zend_Pdf_Page::SIZE_A4);
+   $pdf->pages[] = $pdf->newPage(ZendPdf\Page::SIZE_A4);
 
    // Remove uma página específica
    unset($pdf->pages[$id]);
@@ -64,7 +64,7 @@ matriz pode ser manipulada como qualquer outra matriz do *PHP*:
 Clonagem de Página
 ------------------
 
-Páginas *PDF* podem ser clonadas através da criação de um novo objeto ``Zend_Pdf_Page`` com uma página já
+Páginas *PDF* podem ser clonadas através da criação de um novo objeto ``ZendPdf\Page`` com uma página já
 existente como parâmetro:
 
 .. _zend.pdf.pages.example-2:
@@ -79,12 +79,12 @@ existente como parâmetro:
    $template = $pdf->pages[$templatePageIndex];
    ...
    // Adiciona nova página
-   $page1 = new Zend_Pdf_Page($template);
+   $page1 = new ZendPdf\Page($template);
    $pdf->pages[] = $page1;
    ...
 
    // Adiciona outra página
-   $page2 = new Zend_Pdf_Page($template);
+   $page2 = new ZendPdf\Page($template);
    $pdf->pages[] = $page2;
    ...
 

@@ -32,7 +32,7 @@ Create locked memory objects using the ``createLocked([$data])`` method of the m
 
 "Locked" means that such objects are never swapped and unloaded from memory.
 
-Locked objects provides the same interface as movable objects (``Zend_Memory_Container_Interface``). So locked
+Locked objects provides the same interface as movable objects (``Zend\Memory\Container\Interface``). So locked
 object can be used in any place instead of movable objects.
 
 It's useful if an application or developer can decide, that some objects should never be swapped, based on
@@ -40,7 +40,7 @@ performance considerations.
 
 Access to locked objects is faster, because the memory manager doesn't need to track changes for these objects.
 
-The locked objects class (``Zend_Memory_Container_Locked``) guarantees virtually the same performance as working
+The locked objects class (``Zend\Memory\Container\Locked``) guarantees virtually the same performance as working
 with a string variable. The overhead is a single dereference to get the class property.
 
 .. _zend.memory.memory-objects.value:

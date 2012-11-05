@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.json.server:
 
-Zend_Json_Server - servidor JSON-RPC
+Zend\Json\Server - servidor JSON-RPC
 ====================================
 
-``Zend_Json_Server`` es una implementación del servidor `JSON-RPC`_ Soporta tanto la versión 1 de la
+``Zend\Json\Server`` es una implementación del servidor `JSON-RPC`_ Soporta tanto la versión 1 de la
 especificación `JSON-RPC`_ así como la especificación de la `versión 2`_; además, provee una implementación
 de *PHP* de la especificación del `Service Mapping Description (SMD)`_ para prestar un servicio de metadatos a
 consumidores del servicio.
@@ -19,7 +19,7 @@ simplemente:
 
 - handle() -- maneja -- el requerimiento
 
-``Zend_Json_Server`` utiliza :ref:` <zend.server.reflection>` para realizar reflexión sobre cualquiera de las
+``Zend\Json\Server`` utiliza :ref:` <zend.server.reflection>` para realizar reflexión sobre cualquiera de las
 clases o funciones agregadas, y utiliza esa información para construir tanto la SMD y hacer cumplir el método de
 llamado de firmas. Como tal, es imperativo que cualquier de las funciones agregadas y/o los métodos de clase
 tengan mínimamente una plena documentación de *PHP* docblocks:
@@ -28,14 +28,14 @@ tengan mínimamente una plena documentación de *PHP* docblocks:
 
 - El tipo de variable del valor de retorno
 
-``Zend_Json_Server`` escucha por solicitudes POST únicamente en este momento; afortunadamente, la mayoría de las
+``Zend\Json\Server`` escucha por solicitudes POST únicamente en este momento; afortunadamente, la mayoría de las
 implementaciones del cliente JSON-RPC en los medios en el momento de escribir esto, sólo requieren a POST como es.
 Esto hace que sea fácil de utilizar el mismo punto final del servidor para manejar a ambas peticiones así como
 para entregar el servicio SMD, como se muestra en el siguiente ejemplo.
 
 .. _zend.json.server.usage:
 
-.. rubric:: Uso de Zend_Json_Server
+.. rubric:: Uso de Zend\Json\Server
 
 Primero, definir una clase que queramos exponer vía servidor JSON-RPC. Vamos a la clase 'Calculator', y definir
 los métodos para 'add', 'subtract', 'multiply', y 'divide':
@@ -98,7 +98,7 @@ los métodos para 'add', 'subtract', 'multiply', y 'divide':
    }
 
 Nótese que cada método tiene un docblock con entradas indicando cada parámetro y su tipo, así como una entrada
-para el valor de retorno. Esto es **absolutamente crítico** cuando se usa ``Zend_Json_Server``-- o cualquier otro
+para el valor de retorno. Esto es **absolutamente crítico** cuando se usa ``Zend\Json\Server``-- o cualquier otro
 componente del servidor en Zend Framework, por esa cuestión.
 
 Ahora, crearemos un script para manejar las peticiones:
@@ -106,7 +106,7 @@ Ahora, crearemos un script para manejar las peticiones:
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_Json_Server();
+   $server = new Zend\Json\Server();
 
    // Indicar que funcionalidad está disponible:
    $server->setClass('Calculator');
@@ -121,13 +121,13 @@ especificando algún servidor de metadatos:
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_Json_Server();
+   $server = new Zend\Json\Server();
    $server->setClass('Calculator');
 
    if ('GET' == $_SERVER['REQUEST_METHOD']) {
        // Indica el punto final de la URL, y la versión en uso de JSON-RPC:
        $server->setTarget('/json-rpc.php')
-              ->setEnvelope(Zend_Json_Server_Smd::ENV_JSONRPC_2);
+              ->setEnvelope(Zend\Json_Server\Smd::ENV_JSONRPC_2);
 
        // Capturar el SMD
        $smd = $server->getServiceMap();
@@ -146,12 +146,12 @@ especial para garantizar que los dos interoperen correctamente:
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_Json_Server();
+   $server = new Zend\Json\Server();
    $server->setClass('Calculator');
 
    if ('GET' == $_SERVER['REQUEST_METHOD']) {
        $server->setTarget('/json-rpc.php')
-              ->setEnvelope(Zend_Json_Server_Smd::ENV_JSONRPC_2);
+              ->setEnvelope(Zend\Json_Server\Smd::ENV_JSONRPC_2);
        $smd = $server->getServiceMap();
 
        // Establecer la compatibilidad con Dojo:
@@ -169,15 +169,15 @@ especial para garantizar que los dos interoperen correctamente:
 Detalles Avanzados
 ------------------
 
-Aunque la mayor funcionalidad de ``Zend_Json_Server`` se puntualiza en :ref:` <zend.json.server.usage>`, hay más
+Aunque la mayor funcionalidad de ``Zend\Json\Server`` se puntualiza en :ref:` <zend.json.server.usage>`, hay más
 funcionalidad avanzada disponible.
 
 .. _zend.json.server.details.zendjsonserver:
 
-Zend_Json_Server
+Zend\Json\Server
 ^^^^^^^^^^^^^^^^
 
-``Zend_Json_Server`` es la clase núcleo en la propuesta JSON-RPC; que maneja todas las peticiones y como respuesta
+``Zend\Json\Server`` es la clase núcleo en la propuesta JSON-RPC; que maneja todas las peticiones y como respuesta
 devuelve un conjunto de datos. Tiene los siguientes métodos:
 
 - ``addFunction($function)``: Especifica la función de espacio del usuario para agregar al servidor.
@@ -185,18 +185,18 @@ devuelve un conjunto de datos. Tiene los siguientes métodos:
 - ``setClass($class)``: Especifica una clase u objeto para agregar al servidor; todos los métodos públicos de ese
   item serán expuestos como métodos JSON-RPC.
 
-- ``fault($fault = null, $code = 404, $data = null)``: Crea y devuelve un objeto ``Zend_Json_Server_Error``.
+- ``fault($fault = null, $code = 404, $data = null)``: Crea y devuelve un objeto ``Zend\Json_Server\Error``.
 
 - ``handle($request = false)``: Maneja una solicitud JSON-RPC; opcionalmente, pasa un objeto
-  ``Zend_Json_Server_Request`` a utlizar (crea uno por defecto).
+  ``Zend\Json_Server\Request`` a utlizar (crea uno por defecto).
 
 - ``getFunctions()``: Devuelve una lista de todos los métodos agregados.
 
-- ``setRequest(Zend_Json_Server_Request $request)``: Especifica un objeto solicitud para el servidor a utilizar.
+- ``setRequest(Zend\Json_Server\Request $request)``: Especifica un objeto solicitud para el servidor a utilizar.
 
 - ``getRequest()``: Recupera el objeto solicitud usado por el servidor.
 
-- ``setResponse(Zend_Json_Server_Response $response)``: Establece el objeto respuesta para el servidor a utilizar.
+- ``setResponse(Zend\Json_Server\Response $response)``: Establece el objeto respuesta para el servidor a utilizar.
 
 - ``getResponse()``: Recupera el objeto respuesta usado por el servidor.
 
@@ -206,14 +206,14 @@ devuelve un conjunto de datos. Tiene los siguientes métodos:
 - ``autoEmitResponse()``: Determina si la auto-emisión de la respuesta está habilitada.
 
 - ``getServiceMap()``: Recupera la descripción del mapa de servicio en el form de un objeto
-  ``Zend_Json_Server_Smd``.
+  ``Zend\Json_Server\Smd``.
 
 .. _zend.json.server.details.zendjsonserverrequest:
 
-Zend_Json_Server_Request
+Zend\Json_Server\Request
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-El medio ambiente de una solicitud JSON-RPC está encapsulado en el objeto ``Zend_Json_Server_Request``. Este
+El medio ambiente de una solicitud JSON-RPC está encapsulado en el objeto ``Zend\Json_Server\Request``. Este
 objeto le permite establecer porciones necesarias de la solicitud JSON-RPC, incluida el ID de la solicitud,
 parámetros y especificaciones de la versión JSON-RPC. Tiene la capacidad de cargarse a sí mismo via JSON o un
 conjunto de opciones, y puede mostrase a si mismo como JSON vía el método ``toJson()``.
@@ -255,16 +255,16 @@ El objeto solicitud tiene los siguientes métodos disponibles:
 
 - ``toJson()``: Mostrar la solicitud como un string JSON.
 
-Una versión específica de *HTTP* está disponible a través de ``Zend_Json_Server_Request_Http``. Esta clase
+Una versión específica de *HTTP* está disponible a través de ``Zend\Json\Server\Request\Http``. Esta clase
 podrá recuperar la solicitud via ``php://input``, y permite el acceso JSON sin procesar vía el método
 ``getRawJson()``.
 
 .. _zend.json.server.details.zendjsonserverresponse:
 
-Zend_Json_Server_Response
+Zend\Json_Server\Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La respuesta del conjunto de datos JSON-RPC es encapsulada en el objeto ``Zend_Json_Server_Response``. Este objeto
+La respuesta del conjunto de datos JSON-RPC es encapsulada en el objeto ``Zend\Json_Server\Response``. Este objeto
 le permite ajustar el valor de retorno de la solicitud, siendo la respuesta un error o no, el identificador de
 solicitud, con que versión de especificación esta conformada la respuesta de JSON-RPC, y, opcionalmente el mapa
 de servicio.
@@ -275,7 +275,7 @@ El objeto respuesta tiene los siguientes métodos disponibles:
 
 - ``getResult()``: Recuperar el resultado de la respuesta.
 
-- ``setError(Zend_Json_Server_Error $error)``: Establecer un objeto error. Si ya está, este será utilizado como
+- ``setError(Zend\Json_Server\Error $error)``: Establecer un objeto error. Si ya está, este será utilizado como
   la respuesta cuando se serialize a JSON.
 
 - ``getError()``: Recuperar el objeto error, si lo hubiera.
@@ -298,23 +298,23 @@ El objeto respuesta tiene los siguientes métodos disponibles:
 
 - ``getServiceMap()``: Recuperar el objeto mapa de servicio, si hubiera alguno.
 
-Una versión específica de *HTTP* está disponible a través de ``Zend_Json_Server_Response_Http``. Esta clase
+Una versión específica de *HTTP* está disponible a través de ``Zend\Json\Server\Response\Http``. Esta clase
 enviará las cabeceras *HTTP* apropiadas así como serializará la respuesta como *JSON*.
 
 .. _zend.json.server.details.zendjsonservererror:
 
-Zend_Json_Server_Error
+Zend\Json_Server\Error
 ^^^^^^^^^^^^^^^^^^^^^^
 
 JSON-RPC tiene un formato especial para informar condiciones de error. Todos los errores necesitan proporcionar,
 mínimamente, un mensaje de error y un código de error; opcionalmente, pueden proporcionar datos adicionales,
 tales como un backtrace.
 
-Los códigos de error derivan de los recomendados por `el proyecto XML-RPC EPI`_. ``Zend_Json_Server``
+Los códigos de error derivan de los recomendados por `el proyecto XML-RPC EPI`_. ``Zend\Json\Server``
 apropiadamente asigna el código sobre la base de la condición de error. Para las excepciones de la aplicación,
 se utiliza el código '-32000'.
 
-``Zend_Json_Server_Error`` expone los siguientes métodos:
+``Zend\Json_Server\Error`` expone los siguientes métodos:
 
 - ``setCode($code)``: Establece el código de error; si el código de error no está en el rango de aceptación de
   XML-RPC, -32000 será asignado.
@@ -336,7 +336,7 @@ se utiliza el código '-32000'.
 
 .. _zend.json.server.details.zendjsonserversmd:
 
-Zend_Json_Server_Smd
+Zend\Json_Server\Smd
 ^^^^^^^^^^^^^^^^^^^^
 
 SMD quiere decir Service Mapping Description, un esquema JSON que define cómo un cliente puede interactuar con un
@@ -349,21 +349,21 @@ y un mapa de los servicios disponibles. En el caso de JSON-RPC, el servicio de m
 disponibles, en el que cada método documenta los parámetros disponibles y sus tipos, así como los tipos de
 valores esperados a devolver.
 
-``Zend_Json_Server_Smd`` Proporciona un objeto orientado para construir servicios de mapas. Básicamente, pasa los
+``Zend\Json_Server\Smd`` Proporciona un objeto orientado para construir servicios de mapas. Básicamente, pasa los
 metadatos describiendo el servicio usando mutators, y especifica los servicios (métodos y funciones).
 
-Las descripciones de los servicios son típicamente instancias de ``Zend_Json_Server_Smd_Service``; también puede
-pasar toda la información como un array a los diversos mutators de servicios en ``Zend_Json_Server_Smd``, y que
+Las descripciones de los servicios son típicamente instancias de ``Zend\Json\Server\Smd\Service``; también puede
+pasar toda la información como un array a los diversos mutators de servicios en ``Zend\Json_Server\Smd``, y que
 instanciará on objeto de servicio por usted. Los objetos de servicio contienen información como el nombre del
 servicio (típicamente, la función o el nombre del método), los parámetros (nombres, tipos y posición), y el
 tipo del valor de retorno. Opcionalmente, cada servicio puede tener su propio objetivo y envoltura, aunque esta
 funcionalidad rara vez es utilizada.
 
-``Zend_Json_Server`` Realmente todo esto sucede entre bambalinas para usted, utilizando reflexión sobre las clases
+``Zend\Json\Server`` Realmente todo esto sucede entre bambalinas para usted, utilizando reflexión sobre las clases
 y funciones agregadas; debe crear su propio servicio de mapas sólo si necesita brindar funcionalidad personalizada
 que la introspección de clase y función no puede ofrecer.
 
-Los métodos disponibles en ``Zend_Json_Server_Smd`` incluyen:
+Los métodos disponibles en ``Zend\Json_Server\Smd`` incluyen:
 
 - ``setOptions(array $options)``: Establecer un objeto SMD desde un array de opciones. Todos los mutators (métodos
   comenzando con 'set') se pueden usar como claves.
@@ -374,8 +374,8 @@ Los métodos disponibles en ``Zend_Json_Server_Smd`` incluyen:
 - ``getTransport()``: Obtener el servicio de transporte actual.
 
 - ``setEnvelope($envelopeType)``: Establecer la envoltura de la solicitud que debería ser utilizada para acceder
-  al servicio. Actualmente las constantes soportadas son ``Zend_Json_Server_Smd::ENV_JSONRPC_1`` y
-  ``Zend_Json_Server_Smd::ENV_JSONRPC_1``.
+  al servicio. Actualmente las constantes soportadas son ``Zend\Json_Server\Smd::ENV_JSONRPC_1`` y
+  ``Zend\Json_Server\Smd::ENV_JSONRPC_1``.
 
 - ``getEnvelope()``: Obtener la envoltura de la petición actual.
 
@@ -404,7 +404,7 @@ Los métodos disponibles en ``Zend_Json_Server_Smd`` incluyen:
 - ``isDojoCompatible()``: Devuelve el valor del flag de compatibilidad de Dojo (``FALSE``, por defecto).
 
 - ``addService($service)``: Añade un servicio al mapa. Puede ser un array de información a pasar al constructor
-  de ``Zend_Json_Server_Smd_Service``, o una instancia de esa clase.
+  de ``Zend\Json\Server\Smd\Service``, o una instancia de esa clase.
 
 - ``addServices(array $services)``: Agrega múltiples servicios a la vez.
 
@@ -423,7 +423,7 @@ Los métodos disponibles en ``Zend_Json_Server_Smd`` incluyen:
 
 - ``toJson()``: Mandar el mapa de servicio a una representación JSON.
 
-``Zend_Json_Server_Smd_Service`` tiene los siguientes métodos:
+``Zend\Json\Server\Smd\Service`` tiene los siguientes métodos:
 
 - ``setOptions(array $options)``: Establecer el estado del objeto dede un array. Cualquier mutator (métodos
   comenzando con 'set') puede ser utilizado como una clave y establecerlo mediante este método.
@@ -433,7 +433,7 @@ Los métodos disponibles en ``Zend_Json_Server_Smd`` incluyen:
 - ``getName()``: Recuperar el nombre del servicio.
 
 - ``setTransport($transport)``: Establecer el servicio de transporte (actualmente, sólo transportes apoyados por
-  ``Zend_Json_Server_Smd`` son permitidos).
+  ``Zend\Json_Server\Smd`` son permitidos).
 
 - ``getTransport()``: Recuperar el transporte actual.
 
@@ -443,7 +443,7 @@ Los métodos disponibles en ``Zend_Json_Server_Smd`` incluyen:
 - ``getTarget()``: Obtener el punto final de la *URL* del servicio.
 
 - ``setEnvelope($envelopeType)``: Establecer la envoltura del servicio (actualmente, sólo se permiten las
-  envolturas soportadas por ``Zend_Json_Server_Smd``.
+  envolturas soportadas por ``Zend\Json_Server\Smd``.
 
 - ``getEnvelope()``: Recuperar el tipo de envoltura del servicio.
 

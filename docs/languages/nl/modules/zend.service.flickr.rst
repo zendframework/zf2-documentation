@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.flickr:
 
-Zend_Service_Flickr
+Zend\Service\Flickr
 ===================
 
 .. _zend.service.flickr.introduction:
@@ -9,7 +9,7 @@ Zend_Service_Flickr
 Inleiding voor het zoeken in Flickr
 -----------------------------------
 
-*Zend_Service_Flickr* is een eenvoudige API om de Flickr REST web service te gebruiken. Om de Flickr web services
+*Zend\Service\Flickr* is een eenvoudige API om de Flickr REST web service te gebruiken. Om de Flickr web services
 te gebruiken moet je een API key hebben. Om deze te verkrijgen en voor meer informatie over de Flickr REST Web
 Service, kan je terecht bij de `Flickr API documentatie`_.
 
@@ -23,7 +23,7 @@ In het volgende voorbeeld gebruiken we de *tagSearch()* methode om foto's te zoe
    <?php
    require_once 'Zend/Service/Flickr.php';
 
-   $flickr = new Zend_Service_Flickr('MY_API_KEY');
+   $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $results = $flickr->tagSearch("php");
 
@@ -40,10 +40,10 @@ In het volgende voorbeeld gebruiken we de *tagSearch()* methode om foto's te zoe
 Flickr gebruikers vinden
 ------------------------
 
-*Zend_Service_Flickr* biedt drie verschillende mogelijkheden om Flickr gebruikersinformatie te verkrijgen:
+*Zend\Service\Flickr* biedt drie verschillende mogelijkheden om Flickr gebruikersinformatie te verkrijgen:
 
 - *userSearch()*: Aanvaardt een string query van spatiegescheiden vermeldingen en een optionele tweede parameter
-  als een array van zoekopties, en geeft een *Zend_Service_Flickr_ResultSet* object terug.
+  als een array van zoekopties, en geeft een *Zend\Service_Flickr\ResultSet* object terug.
 
 - *getIdByUsername()*: Geeft een string user ID terug, verbonden met de opgegeven gebruikersnaam string.
 
@@ -60,7 +60,7 @@ de *userSearch()* methode te gebruiken:
    <?php
    require_once 'Zend/Service/Flickr.php';
 
-   $flickr = new Zend_Service_Flickr('MY_API_KEY');
+   $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $results = $flickr->userSearch($userEmail);
 
@@ -73,7 +73,7 @@ de *userSearch()* methode te gebruiken:
 Flickr beelddetails opvragen
 ----------------------------
 
-*Zend_Service_Flickr* maakt het snel en eenvoudig om details van een beeld te verkrijgen via zijn ID. Gebruik
+*Zend\Service\Flickr* maakt het snel en eenvoudig om details van een beeld te verkrijgen via zijn ID. Gebruik
 gewoon de *getImageDetails()* methode zoals in het volgende voorbeeld:
 
 .. rubric:: Flickr beelddetails verkrijgen
@@ -86,7 +86,7 @@ Wanneer je een Flickr beeld ID hebt is het eenvoudig informatie over dat beeld t
    <?php
    require_once 'Zend/Service/Flickr.php';
 
-   $flickr = new Zend_Service_Flickr('MY_API_KEY');
+   $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $image = $flickr->getImageDetails($imageId);
 
@@ -95,22 +95,22 @@ Wanneer je een Flickr beeld ID hebt is het eenvoudig informatie over dat beeld t
    ?>
 .. _zend.service.flickr.classes:
 
-Zend_Service_Flickr Klassen
+Zend\Service\Flickr Klassen
 ---------------------------
 
 De volgende klassen worden alleen teruggegeven door *tagSearch()* en *userSearch()*:
 
-   - :ref:`Zend_Service_Flickr_ResultSet <zend.service.flickr.classes.resultset>`
+   - :ref:`Zend\Service_Flickr\ResultSet <zend.service.flickr.classes.resultset>`
 
-   - :ref:`Zend_Service_Flickr_Result <zend.service.flickr.classes.result>`
+   - :ref:`Zend\Service_Flickr\Result <zend.service.flickr.classes.result>`
 
-   - :ref:`Zend_Service_Flickr_Image <zend.service.flickr.classes.image>`
+   - :ref:`Zend\Service_Flickr\Image <zend.service.flickr.classes.image>`
 
 
 
 .. _zend.service.flickr.classes.resultset:
 
-Zend_Service_Flickr_ResultSet
+Zend\Service_Flickr\ResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Vertegenwoordigt een set resultaten van een Flickr zoekopdracht.
@@ -125,7 +125,7 @@ Vertegenwoordigt een set resultaten van een Flickr zoekopdracht.
 Eigenschappen
 ^^^^^^^^^^^^^
 
-.. table:: Zend_Service_Flickr_ResultSet Eigenschappen
+.. table:: Zend\Service_Flickr\ResultSet Eigenschappen
 
    +---------------------+----+-------------------------------------------------------------+
    |Naam                 |Type|Beschrijving                                                 |
@@ -139,7 +139,7 @@ Eigenschappen
 
 .. _zend.service.flickr.classes.resultset.totalResults:
 
-Zend_Service_Flickr_ResultSet::totalResults()
+Zend\Service_Flickr\ResultSet::totalResults()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 int:``totalResults()``
@@ -151,7 +151,7 @@ Geeft het totaal aantal resultaten in deze set resultaten terug.
 
 .. _zend.service.flickr.classes.result:
 
-Zend_Service_Flickr_Result
+Zend\Service_Flickr\Result
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Een enkel beeldresultaat van een Flickr zoekopdracht
@@ -161,7 +161,7 @@ Een enkel beeldresultaat van een Flickr zoekopdracht
 Eigenschappen
 ^^^^^^^^^^^^^
 
-.. table:: Zend_Service_Flickr_Result Eigenschappen
+.. table:: Zend\Service_Flickr\Result Eigenschappen
 
    +-----------+-------------------------+-------------------------------------------------------------+
    |Naam       |Type                     |Beschrijving                                                 |
@@ -192,24 +192,24 @@ Eigenschappen
    +-----------+-------------------------+-------------------------------------------------------------+
    |icon_server|string                   |De server die gebruikt werd om icon URLs te assembleren.     |
    +-----------+-------------------------+-------------------------------------------------------------+
-   |Square     |Zend_Service_Flickr_Image|Een 75x75 thumbnailbeeld.                                    |
+   |Square     |Zend\Service_Flickr\Image|Een 75x75 thumbnailbeeld.                                    |
    +-----------+-------------------------+-------------------------------------------------------------+
-   |Thumbnail  |Zend_Service_Flickr_Image|Een 100 pixel thumbnailbeeld.                                |
+   |Thumbnail  |Zend\Service_Flickr\Image|Een 100 pixel thumbnailbeeld.                                |
    +-----------+-------------------------+-------------------------------------------------------------+
-   |Small      |Zend_Service_Flickr_Image|Een 240 pixel thumbnailbeeld.                                |
+   |Small      |Zend\Service_Flickr\Image|Een 240 pixel thumbnailbeeld.                                |
    +-----------+-------------------------+-------------------------------------------------------------+
-   |Medium     |Zend_Service_Flickr_Image|Een 500 pixel thumbnailbeeld.                                |
+   |Medium     |Zend\Service_Flickr\Image|Een 500 pixel thumbnailbeeld.                                |
    +-----------+-------------------------+-------------------------------------------------------------+
-   |Large      |Zend_Service_Flickr_Image|Een 640 pixel thumbnailbeeld.                                |
+   |Large      |Zend\Service_Flickr\Image|Een 640 pixel thumbnailbeeld.                                |
    +-----------+-------------------------+-------------------------------------------------------------+
-   |Original   |Zend_Service_Flickr_Image|Het oorspronkelijk beeld.                                    |
+   |Original   |Zend\Service_Flickr\Image|Het oorspronkelijk beeld.                                    |
    +-----------+-------------------------+-------------------------------------------------------------+
 
 :ref:`Terug naar de klasselijst <zend.service.flickr.classes>`
 
 .. _zend.service.flickr.classes.image:
 
-Zend_Service_Flickr_Image
+Zend\Service_Flickr\Image
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Representeert een beeld teruggegeven door een Flickr zoekopdracht.
@@ -219,7 +219,7 @@ Representeert een beeld teruggegeven door een Flickr zoekopdracht.
 Eigenschappen
 ^^^^^^^^^^^^^
 
-.. table:: Zend_Service_Flickr_Image Eigenschappen
+.. table:: Zend\Service_Flickr\Image Eigenschappen
 
    +--------+------+------------------------------------------------------+
    |Naam    |Type  |Beschrijving                                          |

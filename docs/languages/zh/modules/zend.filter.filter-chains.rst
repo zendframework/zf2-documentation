@@ -13,9 +13,9 @@
       :linenos:
 
       // Create a filter chain and add filters to the chain
-      $filterChain = new Zend_Filter();
-      $filterChain->addFilter(new Zend_Filter_Alpha())
-                  ->addFilter(new Zend_Filter_StringToLower());
+      $filterChain = new Zend\Filter\Filter();
+      $filterChain->addFilter(new Zend\Filter\Alpha())
+                  ->addFilter(new Zend\Filter\StringToLower());
 
       // Filter the username
       $username = $filterChain->filter($_POST['username']);
@@ -24,6 +24,6 @@
 过滤器按照他们被添加到 *Zend_Filter*\
 中去的顺序依次执行。上面的例子中，用户名首先被移除任何非英文字母的字符，然后将所有大写字符转化为小写字符。
 
-任何实现了 *Zend_Filter_Interface*\ 接口的，都可被添加到过滤器链中。
+任何实现了 *Zend\Filter\Interface*\ 接口的，都可被添加到过滤器链中。
 
 

@@ -9,12 +9,12 @@ LDAP Authentifizierung
 Einführung
 ----------
 
-``Zend_Auth_Adapter_Ldap`` unterstützt Webanwendungen bei der Authentifizierung mit *LDAP* Services. Die Features
+``Zend\Auth_Adapter\Ldap`` unterstützt Webanwendungen bei der Authentifizierung mit *LDAP* Services. Die Features
 beinhalten Kanonisierung von Benutzernamen und Domainnamen, Mehrfach-Domain Authentifizierung, und
 Fehlerbehandlungs Features. Es wurde getestet mit `Microsoft Active Directory`_ und `OpenLDAP`_, sollte auch mit
 anderen *LDAP* Service Provider zusammenarbeiten.
 
-Diese Dokumentation enthält eine Anleitung der Verwendung von ``Zend_Auth_Adapter_Ldap``, eine Beschreibung der
+Diese Dokumentation enthält eine Anleitung der Verwendung von ``Zend\Auth_Adapter\Ldap``, eine Beschreibung der
 *API*, eine Ausgabe der verschiedenen Optionen, Diagnostische Informationen für die Fehlerbehandlung bei
 Authentifizierungs Problemen, und Beispiel Optionen für beide, Active Directory und OpenLDAP Server.
 
@@ -23,7 +23,7 @@ Authentifizierungs Problemen, und Beispiel Optionen für beide, Active Directory
 Verwendung
 ----------
 
-Um ``Zend_Auth_Adapter_Ldap`` Authentifizierung in eigene Anwendungen schnell einzubauen, selbst wenn
+Um ``Zend\Auth_Adapter\Ldap`` Authentifizierung in eigene Anwendungen schnell einzubauen, selbst wenn
 ``Zend_Controller`` nicht verwendet wird, sollte das Fleisch des eigenen Codes in etwa wie folgt aussehen:
 
 .. code-block:: php
@@ -32,15 +32,15 @@ Um ``Zend_Auth_Adapter_Ldap`` Authentifizierung in eigene Anwendungen schnell ei
    $username = $this->_request->getParam('username');
    $password = $this->_request->getParam('password');
 
-   $auth = Zend_Auth::getInstance();
+   $auth = Zend\Auth\Auth::getInstance();
 
-   $config = new Zend_Config_Ini('../application/config/config.ini',
+   $config = new Zend\Config\Ini('../application/config/config.ini',
                                  'production');
    $log_path = $config->ldap->log_path;
    $options = $config->ldap->toArray();
    unset($options['log_path']);
 
-   $adapter = new Zend_Auth_Adapter_Ldap($options, $username,
+   $adapter = new Zend\Auth_Adapter\Ldap($options, $username,
                                          $password);
 
    $result = $auth->authenticate($adapter);
@@ -48,30 +48,30 @@ Um ``Zend_Auth_Adapter_Ldap`` Authentifizierung in eigene Anwendungen schnell ei
    if ($log_path) {
        $messages = $result->getMessages();
 
-       $logger = new Zend_Log();
-       $logger->addWriter(new Zend_Log_Writer_Stream($log_path));
-       $filter = new Zend_Log_Filter_Priority(Zend_Log::DEBUG);
+       $logger = new Zend\Log\Log();
+       $logger->addWriter(new Zend\Log_Writer\Stream($log_path));
+       $filter = new Zend\Log_Filter\Priority(Zend\Log\Log::DEBUG);
        $logger->addFilter($filter);
 
        foreach ($messages as $i => $message) {
            if ($i-- > 1) { // $messages[2] und höher sind Log Nachrichten
                $message = str_replace("\n", "\n  ", $message);
-               $logger->log("Ldap: $i: $message", Zend_Log::DEBUG);
+               $logger->log("Ldap: $i: $message", Zend\Log\Log::DEBUG);
            }
        }
    }
 
 Natürlich ist der Logging Code optional, aber es wird dringend empfohlen einen Logger zu verwenden.
-``Zend_Auth_Adapter_Ldap`` zeichnet fast jedes Bisschen an Information in ``$messages`` auf das irgendwer
+``Zend\Auth_Adapter\Ldap`` zeichnet fast jedes Bisschen an Information in ``$messages`` auf das irgendwer
 benötigen können (mehr anbei), was allerdings selbst ein nettes Feature für jemanden als History ist, kann
 überaus schwierig zu debuggen sein.
 
-Der ``Zend_Config_Ini`` wird oben verwendet um die Optionen des Adapters zu laden. Er ist also auch optional. Ein
+Der ``Zend\Config\Ini`` wird oben verwendet um die Optionen des Adapters zu laden. Er ist also auch optional. Ein
 reguläres Array würde genauso gut arbeiten. Das folgende ist eine Beispiel ``application/config/config.ini``
 Datei die Optionen für zwei separate Server hat. Mit mehreren Sets von Server Optionen versucht der Adapter jede
 in Reihenfolge bis die Zugangsdaten erfolgreich authentifiziert wurden. Die Namen der Server (z.B., 'server1' und
 'server2') sind sehr verallgemeinert. Für Details betreffend dem Array für Optionen, siehe das Kapitel über
-**Server Optionen** weiter unten. Es ist zu beachten das ``Zend_Config_Ini`` jeden Wert der mit Gleichheitszeichen
+**Server Optionen** weiter unten. Es ist zu beachten das ``Zend\Config\Ini`` jeden Wert der mit Gleichheitszeichen
 (**=**) geschrieben wird auch unter Anführungszeichen gesetzt wird (wie unten bei DNs gezeigt).
 
 .. code-block:: ini
@@ -99,7 +99,7 @@ in Reihenfolge bis die Zugangsdaten erfolgreich authentifiziert wurden. Die Name
    ldap.server2.accountCanonicalForm = 3
    ldap.server2.baseDn = "CN=Users,DC=w,DC=net"
 
-Die obige Konfiguration instruiert ``Zend_Auth_Adapter_Ldap`` das es versuchen soll Benutzer zuerst mit dem
+Die obige Konfiguration instruiert ``Zend\Auth_Adapter\Ldap`` das es versuchen soll Benutzer zuerst mit dem
 OpenLDAP Server ``s0.foo.net`` authentifizieren soll. Wenn die Authentifizierung auf irgendeinem Grund
 fehlschlägt, wird der AD Server ``dc1.w.net`` versucht.
 
@@ -115,7 +115,7 @@ hat die von Windows verwendet werden bieten wir Sie hier an wegen der Kanonifizi
 Die API
 -------
 
-Der ``Zend_Auth_Adapter_Ldap`` Konstruktor akzeptiert drei Parameter.
+Der ``Zend\Auth_Adapter\Ldap`` Konstruktor akzeptiert drei Parameter.
 
 Der ``$options`` Parameter wird benötigt und muß ein Array sein das ein oder mehrere Sets von Optionen enthält.
 Es ist zu beachten das es sich um **Array von Arrays** von :ref:`Zend_Ldap <zend.ldap>` Optionen handelt. Selbst
@@ -183,21 +183,21 @@ Failover damit, wenn ein Server nicht erreichbar ist, ein anderer abgefragt wird
    **Die glorreichen Details: Was passiert bei der Authentifizierungs Methode?**
 
    Wenn die ``authenticate()`` Methode aufgerufen wird, iteriert der Adapter über jedes Set von Serveroptione,
-   setzt diese auf der internen ``Zend_Ldap`` Instanz und ruft die ``Zend_Ldap::bind()`` Methode, mit dem
+   setzt diese auf der internen ``Zend_Ldap`` Instanz und ruft die ``Zend\Ldap\Ldap::bind()`` Methode, mit dem
    Benutzernamen und Passwort das authentifiziert werden soll, auf. Die ``Zend_Ldap`` Klasse prüft um zu sehen ob
    der Benutzer mit einer Domain qualifiziert ist (hat z.B. eine Domainkomponente wie ``alice@foo.net`` oder
    ``FOO\alice``). Wenn eine Domain vorhanden ist, aber mit keiner der Domainnamen der Server (``foo.net`` oder
-   *FOO*) übereinstimmt, wird eine spezielle Ausnahme geworfen und durch ``Zend_Auth_Adapter_Ldap`` gefangen, was
+   *FOO*) übereinstimmt, wird eine spezielle Ausnahme geworfen und durch ``Zend\Auth_Adapter\Ldap`` gefangen, was
    bewirkt das der Server ignoriert wird und der nächste, in den Serveroptionen gesetzte Server, ausgewählt wird.
    Wenn eine Domain **doch** passt, oder der Benutzer keinen qualifizierten Benutzernamen angegeben hat, fährt
    ``Zend_Ldap`` weiter fort und versucht mit den angegebenen Zugangsdaten zu binden. Wenn das Binden nicht
-   erfolgreich war wirft ``Zend_Ldap`` eine ``Zend_Ldap_Exception`` welche durch ``Zend_Auth_Adapter_Ldap``
+   erfolgreich war wirft ``Zend_Ldap`` eine ``Zend\Ldap\Exception`` welche durch ``Zend\Auth_Adapter\Ldap``
    gefangen wird, und das nächste Set von Serveroptionen wird versucht. Wenn das Binden erfolgreich war, wird die
    Iteration gestoppt, und die ``authenticate()`` Methode des Adapters gibt ein erfolgreiches Ergebnis zurück.
    Wenn alle Serveroptionen ohne Erfolg durchprobiert wurden, schlägt die Authentifizierung fehl, und
    ``authenticate()`` gibt ein Fehlerergebnis zurück mit der Fehlermeldung der letzten Iteration.
 
-Die username und password Parameter des ``Zend_Auth_Adapter_Ldap`` Konstruktors repräsentieren die Zugangsdaten
+Die username und password Parameter des ``Zend\Auth_Adapter\Ldap`` Konstruktors repräsentieren die Zugangsdaten
 die authentifiziert werden sollen (z.B. die Zugangsdaten die durch den Benutzer über eine *HTML* Login Form
 angegeben werden). Alternativ können Sie auch mit den ``setUsername()`` und ``setPassword()`` Methoden gesetzt
 werden.
@@ -207,8 +207,8 @@ werden.
 Server Optionen
 ---------------
 
-Jedes Set von Serveroptionen **im Kontext von Zend_Auth_Adapter_Ldap** besteht aus den folgenden Optionen welche,
-großteils ungeändert, an ``Zend_Ldap::setOptions()`` übergeben werden:
+Jedes Set von Serveroptionen **im Kontext von Zend\Auth_Adapter\Ldap** besteht aus den folgenden Optionen welche,
+großteils ungeändert, an ``Zend\Ldap\Ldap::setOptions()`` übergeben werden:
 
 .. _zend.authentication.adapter.ldap.server-options.table:
 
@@ -233,7 +233,7 @@ großteils ungeändert, an ``Zend_Ldap::setOptions()`` übergeben werden:
    +----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |baseDn                |Der Ort vom DN unter dem alle Accounts die authentifiziert werden. Diese Option wird benötigt. Wenn man sich unsicher über den richtigen baseDn ist, sollte es genug sein Ihn von der DNS Domain des Benutzers der die DC= Komponenten verwedet abzuleiten. Wenn der Hauptname eines Benutzers alice@foo.net ist, sollte ein baseDn von DC=foo,DC=net funktionieren. Eine präzisere Ortsangabe (z.B. OU=Sales,DC=foo,DC=net) ist trotzdem effizienter.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
    +----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |accountCanonicalForm  |Ein Wert von 2, 3 oder 4 zeigt die Form zu der Account Namen authorisiert werden sollten nachdem die Authentifizierung erfolgreich war. Die Werte sind wie folgt: 2 für traditionelle Benutzernamen-Stil Namen (z.B., alice), 3 für Schrägstrich-Stil Namen (z.B., FOO\\alice) oder 4 für Authentifiziert-Sil Namen (z.B., alice@foo.net). Der Standardwert ist 4 (z.B., alice@foo.net). Mit einem Wert von 3, z.B., wird die Identität die von Zend_Auth_Result::getIdentity() zurückgegeben wird (und Zend_Auth::getIdentity(), wenn Zend_Auth verwendet wird), immer FOO\\alice sein, unabhängig von der Form in der Alice angegeben wurde, egal ob es alice, alice@foo.net, FOO\\alice, FoO\\aLicE, foo.net\\alice, etc. Siehe das Kapitel Kanonisierung von Account Namen in der Zend_Ldap Dokumentation für Details. Bei der Verwendung von mehreren Sets von Serveroptionen ist es empfehlenswert, aber nicht notwendig, das die selbe accountCanonicalForm in allen Serveroptionen verwendet wird, sodas die sich ergebenden Benutzernamen immer auf die selbe Art und Weise kanonisiert werden (z.b. wenn man auf EXAMPLE\\username mit einem AD Server kanonisiert, aber zu username@example.com mit einem OpenLDAP Server, kann das quirks für die High-Level Logik einer Anwendung sein).|
+   |accountCanonicalForm  |Ein Wert von 2, 3 oder 4 zeigt die Form zu der Account Namen authorisiert werden sollten nachdem die Authentifizierung erfolgreich war. Die Werte sind wie folgt: 2 für traditionelle Benutzernamen-Stil Namen (z.B., alice), 3 für Schrägstrich-Stil Namen (z.B., FOO\\alice) oder 4 für Authentifiziert-Sil Namen (z.B., alice@foo.net). Der Standardwert ist 4 (z.B., alice@foo.net). Mit einem Wert von 3, z.B., wird die Identität die von Zend\Auth\Result::getIdentity() zurückgegeben wird (und Zend\Auth\Auth::getIdentity(), wenn Zend_Auth verwendet wird), immer FOO\\alice sein, unabhängig von der Form in der Alice angegeben wurde, egal ob es alice, alice@foo.net, FOO\\alice, FoO\\aLicE, foo.net\\alice, etc. Siehe das Kapitel Kanonisierung von Account Namen in der Zend_Ldap Dokumentation für Details. Bei der Verwendung von mehreren Sets von Serveroptionen ist es empfehlenswert, aber nicht notwendig, das die selbe accountCanonicalForm in allen Serveroptionen verwendet wird, sodas die sich ergebenden Benutzernamen immer auf die selbe Art und Weise kanonisiert werden (z.b. wenn man auf EXAMPLE\\username mit einem AD Server kanonisiert, aber zu username@example.com mit einem OpenLDAP Server, kann das quirks für die High-Level Logik einer Anwendung sein).|
    +----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |accountDomainName     |Der FQDN Domainname für welchen der Ziel LDAP Server eine Authorität ist (z.B., example.com). Diese Option wird verwendet um Namen zu kanonisieren sodas der Benutzername der vom Benutzer angeboten wird, wie es für das Binden notwendig ist, konvertiert werden kann. Er wird auch verwendet um festzustellen ob der Server eine Authorität für den angegebenen Benutzernamen ist (z.B., wenn accountDomainNamefoo.net ist und der angegebene Benutzer bob@bar.net, wird der Server nicht abgefragt, und das Ergebnis wird ein Fehler sein). Diese Option wird nicht benötigt, aber wenn Sie nicht angegeben wird, dann werden Benutzernamen in prinzipieller Namensform (z.B., alice@foo.net) nicht unterstützt. Es wird stark empfohlen das diese Option angegeben wird, da es viele Anwendungsfälle gibt welche die Erstellung von prinzipieller Namensform benötigen.                                                                                                                                                                                                                                                                                                                                                                                                                         |
    +----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -259,8 +259,8 @@ großteils ungeändert, an ``Zend_Ldap::setOptions()`` übergeben werden:
 Debug Nachrichten sammeln
 -------------------------
 
-``Zend_Auth_Adapter_Ldap`` sammelt Debug Informationen in seiner ``authenticate()`` Methode. Diese Information wird
-im ``Zend_Auth_Result`` Objekt als Nachrichten gespeichert. Das von ``Zend_Auth_Result::getMessages()``
+``Zend\Auth_Adapter\Ldap`` sammelt Debug Informationen in seiner ``authenticate()`` Methode. Diese Information wird
+im ``Zend\Auth\Result`` Objekt als Nachrichten gespeichert. Das von ``Zend\Auth\Result::getMessages()``
 zurückgegebene Array kann wie folgt beschrieben werden:
 
 .. _zend.authentication.adapter.ldap.debugging.table:
@@ -318,7 +318,7 @@ Für *ADS* sind die folgenden Optionen beachtenswert:
 .. note::
 
    Technisch sollte es keine Probleme mit irrtümlichen Domain-übergreifenden Authentifizierungen mit der
-   aktuellen ``Zend_Auth_Adapter_Ldap`` Implementation geben, da Serverdomains explizit geprüft werden, aber das
+   aktuellen ``Zend\Auth_Adapter\Ldap`` Implementation geben, da Serverdomains explizit geprüft werden, aber das
    muss für zukünftige Implementationen, welche die Domain wärend der Laufzeit ermitteln, nicht wahr sein, oder
    auch wenn ein alternativer Adapter verwendet wird (z.B., Kerberos). Generell ist bekannt das die Mehrdeutigkeit
    von Accountnamen ein Sicherheitsproblem ist. Man sollte deswegen immer versuchen qualifizierte Accountnamen zu

@@ -34,7 +34,7 @@ basierenden Format für gemanagte web-basierende Ressourcen. Der Verkehr zwische
 
 Bevor irgendeine Transaktion stattfinden kann muß diese Verbindung hergestellt werden. Die Erstellung einer
 Verbindung zum Picasa Servern beinhaltet zwei Schritte: Erstellung eines *HTTP* Clients und Binden einer
-``Zend_Gdata_Photos`` Instanz an diesen Client.
+``ZendGData\Photos`` Instanz an diesen Client.
 
 .. _zend.gdata.photos.connecting.authentication:
 
@@ -54,7 +54,7 @@ Verbindung zum Picasa Server. Es gibt drei Authentifizierungs Schemata die von G
   gleichen Level von Bequemlichkeit wie ClientAuth aber ohne die Sicherheits Risiken, was es zu einer idealen Wahl
   für Web basierende Anwendungen macht.
 
-Die ``Zend_Gdata`` Bibliothek bietet Unterstützung für beide Authentifizierungs Schemas. Der Rest dieses Kapitels
+Die ``ZendGData`` Bibliothek bietet Unterstützung für beide Authentifizierungs Schemas. Der Rest dieses Kapitels
 nimmt an das die vorhandenen Authentifizierungs Schemas geläufig sind und wie eine korrekte Authentifizierte
 Verbindung erstellt wird. Für weitere Details kann in die :ref:`Authentifizierungs Sektion
 <zend.gdata.introduction.authentication>` dieses Handbuches, oder in die `Authentifizierungs Übersicht im Google
@@ -65,15 +65,15 @@ Data API Entwickler Guide`_ gesehen werden.
 Erstellen einer Service Instanz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Um mit den Servern zu interagieren, bietet diese Bibliothek die ``Zend_Gdata_Photos`` Service Klasse. Diese Klasse
+Um mit den Servern zu interagieren, bietet diese Bibliothek die ``ZendGData\Photos`` Service Klasse. Diese Klasse
 bietet ein übliches Interface zu den Google Data und Atom Publishing Protocol Modellen und assistiert in der
 Behandlung der Anfragen zum und von den Kalender Servern.
 
 Sobald ein Authentifizierung Schema ausgewählt wurde, besteht der nächste Schritt darin eine Instanz von
-``Zend_Gdata_Photos`` zu erstellen. Der Klassen Konstruktor nimmt eine Instanz von ``Zend_Http_Client`` als
+``ZendGData\Photos`` zu erstellen. Der Klassen Konstruktor nimmt eine Instanz von ``Zend\Http\Client`` als
 einzelnes Argument. Das bietet ein Interface für AuthSub und ClientAuth Authentifizierungen, da beide von Ihnen
 die Erstellung eines speziellen authentifizierten *HTTP* Clients benötigen. Wenn keine Argumente angegeben werden,
-wird automatisch eine unauthentifizierte Instanz von ``Zend_Http_Client`` erstellt.
+wird automatisch eine unauthentifizierte Instanz von ``Zend\Http\Client`` erstellt.
 
 Das folgende Beispiel zeigt wie man eine Service Klasse erstellt und dabei die ClientAuth Authentifizierung
 verwendet:
@@ -82,15 +82,15 @@ verwendet:
    :linenos:
 
    // Parameter für die ClientAuth Authentifizierung
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
    $user = "sample.user@gmail.com";
    $pass = "pa$$w0rd";
 
    // Erstellt einen authentifizierten HTTP Client
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
 
    // Erstellt eine Instanz des Kalender Services
-   $service = new Zend_Gdata_Photos($client);
+   $service = new ZendGData\Photos($client);
 
 Eine Service Instanz die AuthSub verwendet, kann ähnlich erstellt werden, aber durch eine etwas längere
 Schreibweise:
@@ -153,7 +153,7 @@ Schreibweise:
        $scope = 'http://picasaweb.google.com/data';
        $secure = false;
        $session = true;
-       return Zend_Gdata_AuthSub::getAuthSubTokenUri($next, $scope, $secure,
+       return ZendGData\AuthSub::getAuthSubTokenUri($next, $scope, $secure,
            $session);
    }
 
@@ -169,16 +169,16 @@ Schreibweise:
     * Google erfolgreich authentifiziert wurde, wird von der $_GET['token']
     * Variable empfangen.
     *
-    * @return Zend_Http_Client
+    * @return Zend\Http\Client
     */
    function getAuthSubHttpClient()
    {
        global $_SESSION, $_GET;
        if (!isset($_SESSION['sessionToken']) && isset($_GET['token'])) {
            $_SESSION['sessionToken'] =
-               Zend_Gdata_AuthSub::getAuthSubSessionToken($_GET['token']);
+               ZendGData\AuthSub::getAuthSubSessionToken($_GET['token']);
        }
-       $client = Zend_Gdata_AuthSub::getHttpClient($_SESSION['sessionToken']);
+       $client = ZendGData\AuthSub::getHttpClient($_SESSION['sessionToken']);
        return $client;
    }
 
@@ -186,7 +186,7 @@ Schreibweise:
     * Erstellt eine neue Instant des Services und leitet den Benutzer zum AuthSub
     * Server um wenn das notwendig ist.
     */
-   $service = new Zend_Gdata_Photos(getAuthSubHttpClient());
+   $service = new ZendGData\Photos(getAuthSubHttpClient());
 
 Zuletzt kann ein nicht authentifizierter Server für die Verwendung mit öffentlichen Feeds erstellt werden:
 
@@ -194,7 +194,7 @@ Zuletzt kann ein nicht authentifizierter Server für die Verwendung mit öffentl
    :linenos:
 
    // Erstellt eine Instanz des Services und verwendet einen nicht authentifizierten HTTP Client
-   $service = new Zend_Gdata_Photos();
+   $service = new ZendGData\Photos();
 
 .. _zend.gdata.photos.queries:
 
@@ -218,11 +218,11 @@ Eine neue ``UserQuery`` kann wie folgt erstellt werden:
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_UserQuery();
+   $query = new ZendGData_Photos\UserQuery();
    $query->setUser("sample.user");
 
 Für jede Abfrage kann eine Anzahl an Parameter, welche die Suche limitieren, abgefragt, oder mit get(Parameter)
@@ -286,13 +286,13 @@ werden:
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
    try {
        $userFeed = $service->getUserFeed("sample.user");
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -301,16 +301,16 @@ Oder, der auf den Feed kann zugegriffen werden indem zuerst eine Abfrage erstell
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_UserQuery();
+   $query = new ZendGData_Photos\UserQuery();
    $query->setUser("sample.user");
 
    try {
        $userFeed = $service->getUserFeed(null, $query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -319,17 +319,17 @@ Die Erstellung einer Abfrage bietet auch die Möglichkeit ein Benutzer Eintrags 
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_UserQuery();
+   $query = new ZendGData_Photos\UserQuery();
    $query->setUser("sample.user");
    $query->setType("entry");
 
    try {
        $userEntry = $service->getUserEntry($query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -346,17 +346,17 @@ Auf einen Album Feed wird durch die Erstellung eines Abfrage Objekts zugegriffen
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_AlbumQuery();
+   $query = new ZendGData_Photos\AlbumQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
 
    try {
        $albumFeed = $service->getAlbumFeed($query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -368,18 +368,18 @@ Die Erstellung einer Abfragen bietet auch die Möglichkeit ein Album Eintrags Ob
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_AlbumQuery();
+   $query = new ZendGData_Photos\AlbumQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setType("entry");
 
    try {
        $albumEntry = $service->getAlbumEntry($query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -396,18 +396,18 @@ Auf einen Photo Feed wird durch die Erstellung eines Abfrage Objekts zugegriffen
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_PhotoQuery();
+   $query = new ZendGData_Photos\PhotoQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setPhotoId("100");
 
    try {
        $photoFeed = $service->getPhotoFeed($query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -416,11 +416,11 @@ Die Erstellung einer Abfragen bietet auch die Möglichkeit ein Photo Eintrags Ob
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_PhotoQuery();
+   $query = new ZendGData_Photos\PhotoQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setPhotoId("100");
@@ -428,7 +428,7 @@ Die Erstellung einer Abfragen bietet auch die Möglichkeit ein Photo Eintrags Ob
 
    try {
        $photoEntry = $service->getPhotoEntry($query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -446,11 +446,11 @@ Die Durchführung von Aktionen auf jedem der Kommentare eines gegebenen Photos k
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_PhotoQuery();
+   $query = new ZendGData_Photos\PhotoQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setPhotoId("100");
@@ -460,11 +460,11 @@ Die Durchführung von Aktionen auf jedem der Kommentare eines gegebenen Photos k
        $photoFeed = $service->getPhotoFeed($query);
 
        foreach ($photoFeed as $entry) {
-           if ($entry instanceof Zend_Gdata_Photos_CommentEntry) {
+           if ($entry instanceof ZendGData_Photos\CommentEntry) {
                // Mach irgendwas mit dem Kommentar
            }
        }
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -482,11 +482,11 @@ Das Ausführen einer Aktrion auf jedem Tag an gegebenen Photos kann wie folgt du
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $query = new Zend_Gdata_Photos_PhotoQuery();
+   $query = new ZendGData_Photos\PhotoQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setPhotoId("100");
@@ -496,11 +496,11 @@ Das Ausführen einer Aktrion auf jedem Tag an gegebenen Photos kann wie folgt du
        $photoFeed = $service->getPhotoFeed($query);
 
        foreach ($photoFeed as $entry) {
-           if ($entry instanceof Zend_Gdata_Photos_TagEntry) {
+           if ($entry instanceof ZendGData_Photos\TagEntry) {
                // Mach irgendwas mit dem Tag
            }
        }
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -521,11 +521,11 @@ Der Service unterstützt die Erstellung eines neues Albums für authentifizierte
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $entry = new Zend_Gdata_Photos_AlbumEntry();
+   $entry = new ZendGData_Photos\AlbumEntry();
    $entry->setTitle($service->newTitle("test album"));
 
    $service->insertAlbumEntry($entry);
@@ -540,20 +540,20 @@ Der Service unterstützt die Erstellung eines neuen Photos für authentifizierte
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
    // $photo ist der Name der Datei die durch ein HTML Formular hochgeladen wurde
 
    $fd = $service->newMediaFileSource($photo["tmp_name"]);
    $fd->setContentType($photo["type"]);
 
-   $entry = new Zend_Gdata_Photos_PhotoEntry();
+   $entry = new ZendGData_Photos\PhotoEntry();
    $entry->setMediaSource($fd);
    $entry->setTitle($service->newTitle($photo["name"]));
 
-   $albumQuery = new Zend_Gdata_Photos_AlbumQuery;
+   $albumQuery = new ZendGData_Photos\AlbumQuery;
    $albumQuery->setUser("sample.user");
    $albumQuery->setAlbumId("1");
 
@@ -571,15 +571,15 @@ Das Service unterstützt die Erstellung von neuen Kommentaren für ein Photo:
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $entry = new Zend_Gdata_Photos_CommentEntry();
+   $entry = new ZendGData_Photos\CommentEntry();
    $entry->setTitle($service->newTitle("comment"));
    $entry->setContent($service->newContent("comment"));
 
-   $photoQuery = new Zend_Gdata_Photos_PhotoQuery;
+   $photoQuery = new ZendGData_Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -599,14 +599,14 @@ Das Service unterstützt die Erstellung von neuen Tags für ein Photo:
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $entry = new Zend_Gdata_Photos_TagEntry();
+   $entry = new ZendGData_Photos\TagEntry();
    $entry->setTitle($service->newTitle("tag"));
 
-   $photoQuery = new Zend_Gdata_Photos_PhotoQuery;
+   $photoQuery = new ZendGData_Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -633,11 +633,11 @@ Der Service unterstützt das Löschen von Alben für authentifizierte Benutzer:
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $albumQuery = new Zend_Gdata_Photos_AlbumQuery;
+   $albumQuery = new ZendGData_Photos\AlbumQuery;
    $albumQuery->setUser("sample.user");
    $albumQuery->setAlbumId("1");
    $albumQuery->setType('entry');
@@ -656,11 +656,11 @@ Der Service unterstützt das Löschen von Photos für authentifizierte Benutzer:
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $photoQuery = new Zend_Gdata_Photos_PhotoQuery;
+   $photoQuery = new ZendGData_Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -680,11 +680,11 @@ Der Service unterstützt das Löschen von Kommentaren für authentifizierte Benu
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $photoQuery = new Zend_Gdata_Photos_PhotoQuery;
+   $photoQuery = new ZendGData_Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -706,11 +706,11 @@ Das Service unterstützt das Löschen eines Tags für authentifizierte Benutzer:
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Photos($client);
+   $service = ZendGData\Photos::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Photos($client);
 
-   $photoQuery = new Zend_Gdata_Photos_PhotoQuery;
+   $photoQuery = new ZendGData_Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -720,7 +720,7 @@ Das Service unterstützt das Löschen eines Tags für authentifizierte Benutzer:
    $photoFeed = $service->getPhotoFeed($query);
 
    foreach ($photoFeed as $entry) {
-       if ($entry instanceof Zend_Gdata_Photos_TagEntry) {
+       if ($entry instanceof ZendGData_Photos\TagEntry) {
            if ($entry->getContent() == $tagContent) {
                $tagEntry = $entry;
            }
@@ -749,10 +749,10 @@ gezeigt:
    // $album ist ein albumEntry der gelöscht werden soll
    try {
        $this->delete($album);
-   } catch (Zend_Gdata_App_HttpException $e) {
+   } catch (ZendGData_App\HttpException $e) {
        if ($e->getMessage->getStatus() === 409) {
            $entry =
-               new Zend_Gdata_Photos_AlbumEntry($e->getMessage()->getBody());
+               new ZendGData_Photos\AlbumEntry($e->getMessage()->getBody());
            $this->delete($entry->getLink('edit')->href);
        } else {
            throw $e;

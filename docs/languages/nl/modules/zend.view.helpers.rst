@@ -9,9 +9,9 @@ formateren, formulierelementen genereren of aktielinks afbeelden. Je kan helper 
 gedragingen voor jou uit te voeren.
 
 Om een helper in jouw script te gebruiken moet je het oproepen door $this->helperName() te gebruiken. Achter de
-scène zal Zend_View de Zend_View_Helper klasse laden, een instantie van het objekt maken en zijn helperName()
+scène zal Zend_View de Zend\View\Helper klasse laden, een instantie van het objekt maken en zijn helperName()
 methode oproepen. De instantie van het objekt is Behind the scenes, Zend_View will load the
-Zend_View_Helper_HelperName class, create an object instance of it, and call its helperName() method. The object
+Zend\View_Helper\HelperName class, create an object instance of it, and call its helperName() method. The object
 instance is blijvend in de Zend_View instantie, en is hergebruikt voor alle verdere oproepen aan
 $this->helperName().
 
@@ -112,7 +112,7 @@ andere plaatsen te kijken door de setHelperPath() en addHelperPath() methodes te
    :linenos:
 
    <?php
-   $view = new Zend_View();
+   $view = new Zend\View\View();
    $view->setHelperPath('/pad/naar/meer/helpers');
    ?>
 
@@ -125,7 +125,7 @@ helpers.
    :linenos:
 
    <?php
-   $view = new Zend_View();
+   $view = new Zend\View\View();
    $view->addHelperPath('/pad/naar/enige/helpers');
    $view->addHelperPath('/ander/pad/naar/helpers');
 
@@ -142,8 +142,8 @@ Je eigen Helpers schrijven
 
 Je eigen helpers schrijven is gemakkelijk. Volg gewoon deze regels:
 
-- De klassenaam moet Zend_View_Helper_* zijn, waar * de naam van de helper zelf is. Bijvoorbeeld, als je een helper
-  genaamd "speciaalDoel" schrijft zou de klassenaam "Zend_View_Helper_SpeciaalDoel" zijn (let op de hoofdletters).
+- De klassenaam moet Zend\View_Helper\* zijn, waar * de naam van de helper zelf is. Bijvoorbeeld, als je een helper
+  genaamd "speciaalDoel" schrijft zou de klassenaam "Zend\View_Helper\SpeciaalDoel" zijn (let op de hoofdletters).
 
 - De klasse moet een publieke methode hebben die overeenkomt met de helpernaam; dit is de methode die zal worden
   opgeroepen wanneer je template "$this->speciaalDoel()" oproept. In ons "speciaalDoel" helpervoorbeeld zou de
@@ -165,7 +165,7 @@ Hier is een voorbeeld van onze SpeciaalDoel helpercode:
    :linenos:
 
    <?php
-   class Zend_View_Helper_SpeciaalDoel {
+   class Zend\View_Helper\SpeciaalDoel {
        protected $_count = 0;
        public function speciaalDoel()
        {

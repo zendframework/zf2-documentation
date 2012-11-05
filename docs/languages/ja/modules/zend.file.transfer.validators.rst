@@ -1,13 +1,13 @@
 .. EN-Revision: none
 .. _zend.file.transfer.validators:
 
-Zend_File_Transfer 用のバリデータ
+Zend\File\Transfer 用のバリデータ
 ==========================
 
-``Zend_File_Transfer`` にはファイル関連のバリデータがいくつか同梱されています。
+``Zend\File\Transfer`` にはファイル関連のバリデータがいくつか同梱されています。
 これらを使用してセキュリティを向上させ、攻撃から身を守るようにしましょう。
-バリデータは、それを使ってこそ役に立つものなのですから。 ``Zend_File_Transfer``
-が提供するバリデータは ``Zend_Validator`` コンポーネントに含まれ、 ``Zend_Validate_File_*``
+バリデータは、それを使ってこそ役に立つものなのですから。 ``Zend\File\Transfer``
+が提供するバリデータは ``Zend_Validator`` コンポーネントに含まれ、 ``Zend\Validate_File\*``
 という名前がついています。 現在使用できるバリデータは次のとおりです。
 
 - *Count*: このバリデータはファイルの数をチェックします。
@@ -73,7 +73,7 @@ Zend_File_Transfer 用のバリデータ
 
 - *Upload*: このバリデータは内部的に使用するもので、
   アップロード時に何らかの問題が発生していないかどうかをチェックします。
-  自分でこれを設定してはいけません。これは、 ``Zend_File_Transfer``
+  自分でこれを設定してはいけません。これは、 ``Zend\File\Transfer``
   自身が自動的に設定します。
   ですので、このバリデータのことは忘れてしまってもかまいません。
   ただ、そういうバリデータが存在することだけを覚えておきましょう。
@@ -83,7 +83,7 @@ Zend_File_Transfer 用のバリデータ
 
 .. _zend.file.transfer.validators.usage:
 
-Zend_File_Transfer でのバリデータの使用法
+Zend\File\Transfer でのバリデータの使用法
 ------------------------------
 
 バリデータの使い方はきわめて簡単です。
@@ -128,7 +128,7 @@ Zend_File_Transfer でのバリデータの使用法
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // ファイルサイズを 20000 バイトに設定します
    $upload->addValidator('Size', false, 20000);
@@ -155,7 +155,7 @@ Zend_File_Transfer でのバリデータの使用法
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // ファイルサイズを 20000 バイトとし、それを 'file2' にのみ適用します
    $upload->addValidator('Size', false, 20000, 'file2');
@@ -176,7 +176,7 @@ Zend_File_Transfer でのバリデータの使用法
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // ファイルサイズを 20000 バイトに設定します
    $upload->addValidator('Size', false, 20000)
@@ -202,7 +202,7 @@ Zend_File_Transfer でのバリデータの使用法
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // ファイルサイズを 20000 バイトに設定します
    $upload->addValidator('Size', false, 20000)
@@ -258,7 +258,7 @@ Count バリデータ
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // ファイルの数を最大 2 に制限します
    $upload->addValidator('Count', false, 2);
@@ -294,7 +294,7 @@ Crc32 バリデータ
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // アップロードされたファイルのハッシュが指定したものと一致するかどうかをチェックします
    $upload->addValidator('Crc32', false, '3b3652f');
@@ -333,7 +333,7 @@ ExcludeExtension バリデータ
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // 拡張子 php あるいは exe のファイルは許可しません
    $upload->addValidator('ExcludeExtension', false, 'php,exe');
@@ -383,7 +383,7 @@ ExcludeMimeType バリデータ
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // すべてのファイルで gif 画像の MIME 型を許可しません
    $upload->addValidator('ExcludeMimeType', false, 'image/gif');
@@ -430,7 +430,7 @@ Exists バリデータ
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // temp ディレクトリをチェック対象に追加します
    $upload->addValidator('Exists', false, '\temp');
@@ -476,7 +476,7 @@ Extension バリデータ
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // 拡張子を jpg と png のみに制限します
    $upload->addValidator('Extension', false, 'jpg,png');
@@ -536,7 +536,7 @@ bytes** と書くかわりに、 **20kB** とすることができるのです�
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // アップロードされるファイルサイズの合計を 40000 バイトまでに制限します
    $upload->addValidator('FilesSize', false, 40000);
@@ -590,7 +590,7 @@ ImageSize バリデータ
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // 画像の高さを 100-200 ピクセル、幅を 40-80 ピクセルに制限します
    $upload->addValidator('ImageSize', false,
@@ -621,7 +621,7 @@ IsCompressed バリデータ
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // アップロードされたファイルが圧縮アーカイブであるかどうかチェックします
    $upload->addValidator('IsCompressed', false);
@@ -658,7 +658,7 @@ IsImage バリデータ
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // アップロードされたファイルが画像ファイルであるかどうかチェックします
    $upload->addValidator('IsImage', false);
@@ -703,7 +703,7 @@ Hash バリデータ
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // アップロードされたファイルのハッシュが指定したものと一致するかどうかをチェックします
    $upload->addValidator('Hash', false, '3b3652f');
@@ -745,7 +745,7 @@ Md5 バリデータ
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // アップロードされたファイルのハッシュが指定したものと一致するかどうかをチェックします
    $upload->addValidator('Md5', false, '3b3652f336522365223');
@@ -796,7 +796,7 @@ fileinfo が使用する magicfile を設定するには、オプション 'magi
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // MIME 型を制限し、gif 画像のみを許可するようにします
    $upload->addValidator('MimeType', false, 'image/gif');
@@ -861,7 +861,7 @@ NotExists バリデータ
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // temp ディレクトリをチェック対象に追加します
    $upload->addValidator('NotExists', false, '\temp');
@@ -898,7 +898,7 @@ Sha1 バリデータ
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // アップロードされたファイルのハッシュが指定したものと一致するかどうかをチェックします
    $upload->addValidator('sha1', false, '3b3652f336522365223');
@@ -950,7 +950,7 @@ bytes** と書くかわりに、 **20kB** とすることができるのです�
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // ファイルサイズを 40000 バイトまでに制限します
    $upload->addValidator('Size', false, 40000);
@@ -988,7 +988,7 @@ WordCount バリデータ
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // ファイル内の単語数を 2000 語までに制限します
    $upload->addValidator('WordCount', false, 2000);

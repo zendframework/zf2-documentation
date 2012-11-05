@@ -72,7 +72,7 @@ appropriate helper class and proxy to it, or stuff the full helper implementatio
            $reset = false, $encode = true
        ) {
            if (!array_key_exists('url', $this->_localHelperObjects)) {
-               $this->_localHelperObjects['url'] = new Zend_View_Helper_Url();
+               $this->_localHelperObjects['url'] = new Zend\View_Helper\Url();
                $this->_localHelperObjects['url']->setView($this);
            }
            $helper = $this->_localHelperObjects['url'];
@@ -156,15 +156,15 @@ add a login form box to each page:
 .. code-block:: php
    :linenos:
 
-   class LoginPlugin extends Zend_Controller_Plugin_Abstract
+   class LoginPlugin extends Zend\Controller_Plugin\Abstract
    {
        protected $_stack;
 
        public function dispatchLoopStartup(
-           Zend_Controller_Request_Abstract $request
+           Zend\Controller_Request\Abstract $request
        ) {
            $stack = $this->getStack();
-           $loginRequest = new Zend_Controller_Request_Simple();
+           $loginRequest = new Zend\Controller_Request\Simple();
            $loginRequest->setControllerName('user')
                         ->setActionName('index')
                         ->setParam('responseSegment', 'login');
@@ -174,9 +174,9 @@ add a login form box to each page:
        public function getStack()
        {
            if (null === $this->_stack) {
-               $front = Zend_Controller_Front::getInstance();
-               if (!$front->hasPlugin('Zend_Controller_Plugin_ActionStack')) {
-                   $stack = new Zend_Controller_Plugin_ActionStack();
+               $front = Zend\Controller\Front::getInstance();
+               if (!$front->hasPlugin('Zend\Controller_Plugin\ActionStack')) {
+                   $stack = new Zend\Controller_Plugin\ActionStack();
                    $front->registerPlugin($stack);
                } else {
                    $stack = $front->getPlugin('ActionStack')
@@ -214,7 +214,7 @@ As an example, consider the following controller action and view script:
 .. code-block:: php
    :linenos:
 
-   class BugController extends Zend_Controller_Action
+   class BugController extends Zend\Controller\Action
    {
        public function listAction()
        {
@@ -245,7 +245,7 @@ This could be refactored to a view helper that looks like the following:
 .. code-block:: php
    :linenos:
 
-   class My_View_Helper_BugList extends Zend_View_Helper_Abstract
+   class My_View_Helper_BugList extends Zend\View_Helper\Abstract
    {
        public function bugList()
        {

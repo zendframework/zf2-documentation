@@ -15,7 +15,7 @@ meerdere waarden zou moeten hebben:
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->addHeader('X-MailGenerator', 'MijnSuperToepassing');
    $mail->addHeader('X-greetingsTo', 'Mamma', true); // Meerdere waarden
    $mail->addHeader('X-greetingsTo', 'Pappa', true);

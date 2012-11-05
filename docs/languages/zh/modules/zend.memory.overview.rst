@@ -22,7 +22,7 @@ Zend_Memory组件用于在一个受限制的内存环境下管理数据.
 
 .. rubric:: 使用 Zend_Memory 组件
 
-*Zend_Memory::factory()* 用指定的后端选项实例化内存管理器对象.
+*Zend\Memory\Memory::factory()* 用指定的后端选项实例化内存管理器对象.
 
 .. code-block:: php
    :linenos:
@@ -33,7 +33,7 @@ Zend_Memory组件用于在一个受限制的内存环境下管理数据.
        'cache_dir' => './tmp/' // Directory where to put the swapped memory blocks
    );
 
-   $memoryManager = Zend_Memory::factory('File', $backendOptions);
+   $memoryManager = Zend\Memory\Memory::factory('File', $backendOptions);
 
    $loadedFiles = array();
 

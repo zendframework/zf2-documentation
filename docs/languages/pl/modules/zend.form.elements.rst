@@ -1,11 +1,11 @@
 .. EN-Revision: none
 .. _zend.form.elements:
 
-Tworzenie elementów formularza za pomocą klasy Zend_Form_Element
+Tworzenie elementów formularza za pomocą klasy Zend\Form\Element
 ================================================================
 
 Formularz składa się z elementów, które zazwyczaj odpowiadają elementom formularzy HTML. Klasa
-Zend_Form_Element obsługuje pojedyncze elementy formularza w takich zakresach:
+Zend\Form\Element obsługuje pojedyncze elementy formularza w takich zakresach:
 
 - weryfikacja (czy wysłane dane są poprawne?)
 
@@ -17,7 +17,7 @@ Zend_Form_Element obsługuje pojedyncze elementy formularza w takich zakresach:
 
 - dane meta i atrybuty (jakie dodatkowe informacje opisują element?)
 
-Klasa bazowa *Zend_Form_Element* jest domyślnie skonfigurowana dla wielu przypadków użycia, jednak najlepiej
+Klasa bazowa *Zend\Form\Element* jest domyślnie skonfigurowana dla wielu przypadków użycia, jednak najlepiej
 jest rozszerzyć tę klasę aby utworzyć najczęściej używane elementy. Dodatkowo Zend Framework zawiera pewną
 ilość standardowych elementów XHTML; możesz o nich przeczytać :ref:`w rozdziale Standardowe Elementy
 <zend.form.standardElements>`.
@@ -27,7 +27,7 @@ ilość standardowych elementów XHTML; możesz o nich przeczytać :ref:`w rozdz
 Ładowanie wtyczek
 -----------------
 
-Klasa *Zend_Form_Element* używa klasy :ref:`Zend_Loader_PluginLoader <zend.loader.pluginloader>` aby umożliwić
+Klasa *Zend\Form\Element* używa klasy :ref:`Zend\Loader\PluginLoader <zend.loader.pluginloader>` aby umożliwić
 programistom określenie ścieżek, w których znajdują się alternatywne weryfikatory, filtry i dekoratory.
 Każda z tych wtyczek ma przypisaną własną klasę ładującą je, a do ich modyfikacji używany jest zestaw
 metod dostępowych.
@@ -68,7 +68,7 @@ będzie znajdować się w pliku "My/Decorator/Label.php".
 .. code-block::
    :linenos:
 
-   class My_Decorator_Label extends Zend_Form_Decorator_Abstract
+   class My_Decorator_Label extends Zend\Form_Decorator\Abstract
    {
        protected $_placement = 'PREPEND';
 
@@ -135,7 +135,7 @@ Filtry
 It's often useful and/or necessary to perform some normalization on input prior to validation – for instance, you
 may want to strip out all HTML, but run your validations on what remains to ensure the submission is valid. Or you
 may want to trim empty space surrounding input so that a StringLength validator will not return a false positive.
-These operations may be performed using *Zend_Filter*, and *Zend_Form_Element* has support for filter chains,
+These operations may be performed using *Zend_Filter*, and *Zend\Form\Element* has support for filter chains,
 allowing you to specify multiple, sequential filters to utilize. Filtering happens both during validation and when
 you retrieve the element value via *getValue()*:
 
@@ -157,10 +157,10 @@ Zobaczmy kilka przykładów:
    :linenos:
 
    // Konkretny egzemplarz obiektu filtra:
-   $element->addFilter(new Zend_Filter_Alnum());
+   $element->addFilter(new Zend\Filter\Alnum());
 
    // Pełna nazwa filtra:
-   $element->addFilter('Zend_Filter_Alnum');
+   $element->addFilter('Zend\Filter\Alnum');
 
    // Krótka nazwa filtra:
    $element->addFilter('Alnum');
@@ -174,9 +174,9 @@ oznaczało że pomijamy przedrostek 'Zend_Filter\_'. Nie jest też konieczne aby
 
    **Użycie własnych klas filtrów**
 
-   Jeśli posiadasz własny zestaw klas filtrów, możesz przekazać klasie *Zend_Form_Element* informacje o tym za
+   Jeśli posiadasz własny zestaw klas filtrów, możesz przekazać klasie *Zend\Form\Element* informacje o tym za
    pomocą metody *addPrefixPath()*. Na przykład jeśli posiadasz filtry z przedostkiem 'My_Filter' możesz
-   przekazać do klasy *Zend_Form_Element* informację w taki sposób:
+   przekazać do klasy *Zend\Form\Element* informację w taki sposób:
 
    .. code-block::
       :linenos:
@@ -219,7 +219,7 @@ Weryfikatory
 ------------
 
 If you subscribe to the security mantra of "filter input, escape output," you'll want to validate ("filter input")
-your form input. In *Zend_Form*, each element includes its own validator chain, consisting of *Zend_Validate_**
+your form input. In *Zend_Form*, each element includes its own validator chain, consisting of *Zend\Validate\**
 validators.
 
 Weryfikatory mogą być dodane na dwa sposoby:
@@ -234,10 +234,10 @@ Zobaczmy kilka przykładów:
    :linenos:
 
    // Konkretny egzemplarz obiektu weryfikatora:
-   $element->addValidator(new Zend_Validate_Alnum());
+   $element->addValidator(new Zend\Validate\Alnum());
 
    // Pełna nazwa klasy:
-   $element->addValidator('Zend_Validate_Alnum');
+   $element->addValidator('Zend\Validate\Alnum');
 
    // Krótka nazwa weryfikatora:
    $element->addValidator('Alnum');
@@ -251,9 +251,9 @@ oznaczało że pomijamy przedrostek 'Zend_Validate\_'. Nie jest też konieczne a
 
    **Użycie własnych klas weryfikatorów**
 
-   Jeśli posiadasz własny zestaw klas weryfikatorów, możesz przekazać klasie *Zend_Form_Element* informacje o
+   Jeśli posiadasz własny zestaw klas weryfikatorów, możesz przekazać klasie *Zend\Form\Element* informacje o
    tym za pomocą metody *addPrefixPath()*. Na przykład jeśli posiadasz weryfikatory z przedostkiem
-   'My_Validator' możesz przekazać do klasy *Zend_Form_Element* informację w taki sposób:
+   'My_Validator' możesz przekazać do klasy *Zend\Form\Element* informację w taki sposób:
 
    .. code-block::
       :linenos:
@@ -282,24 +282,24 @@ you may pass these to the third parameter of *addValidator()* as an array:
 
 
 Arguments passed in this way should be in the order in which they are defined in the constructor. The above example
-will instantiate the *Zend_Validate_StringLenth* class with its *$min* and *$max* parameters:
+will instantiate the *Zend\Validate\StringLenth* class with its *$min* and *$max* parameters:
 
 .. code-block::
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(6, 20);
+   $validator = new Zend\Validate\StringLength(6, 20);
 
 
 .. note::
 
    **Określanie własnych komunikatów o błędach**
 
-   Some developers may wish to provide custom error messages for a validator. *Zend_Form_Element::addValidator()*'s
+   Some developers may wish to provide custom error messages for a validator. *Zend\Form\Element::addValidator()*'s
    *$options* argument allows you to do so by providing the key 'messages' and setting it to an array of key/value
    pairs for setting the message templates. You will need to know the error codes of the various validation error
    types for the particular validator.
 
-   A better option is to use a *Zend_Translator_Adapter* with your form. Error codes are automatically passed to
+   A better option is to use a *Zend\Translator\Adapter* with your form. Error codes are automatically passed to
    the adapter by the default Errors decorator; you can then specify your own error message strings by setting up
    translations for the various error codes of your validators.
 
@@ -367,15 +367,15 @@ Aby sprawdzić poprawność elementu przekaż wartość do metody: *isValid()*:
 
    **Weryfikowane są przefiltrowane wartości**
 
-   *Zend_Form_Element::isValid()* filtruje wartości za pomocą ustawionych filtrów zanim zostanie przeprowadzona
+   *Zend\Form\Element::isValid()* filtruje wartości za pomocą ustawionych filtrów zanim zostanie przeprowadzona
    weryfikacja. Zobacz :ref:`rozdział Filtry <zend.form.elements.filters>` aby uzyskać więcej informacji.
 
 .. note::
 
    **Weryfikacja w kontekście**
 
-   *Zend_Form_Element::isValid()* supports an additional argument, *$context*. *Zend_Form::isValid()* passes the
-   entire array of data being processed to *$context* when validating a form, and *Zend_Form_Element::isValid()*,
+   *Zend\Form\Element::isValid()* supports an additional argument, *$context*. *Zend\Form\Form::isValid()* passes the
+   entire array of data being processed to *$context* when validating a form, and *Zend\Form\Element::isValid()*,
    in turn, passes it to each validator. This means you can write validators that are aware of data passed to other
    form elements. As an example, consider a standard registration form that has fields for both password and a
    password confirmation; one validation would be that the two fields match. Such a validator might look like the
@@ -384,7 +384,7 @@ Aby sprawdzić poprawność elementu przekaż wartość do metody: *isValid()*:
    .. code-block::
       :linenos:
 
-      class My_Validate_PasswordConfirmation extends Zend_Validate_Abstract
+      class My_Validate_PasswordConfirmation extends Zend\Validate\Abstract
       {
           const NOT_MATCH = 'notMatch';
 
@@ -450,9 +450,9 @@ Aby uzyskać więcej informacji o weryfikatorach, zobacz :ref:`dokumentację kla
 
 .. note::
 
-   **Użycie klasy Zend_Form_Elements jako weryfikatora**
+   **Użycie klasy Zend\Form\Elements jako weryfikatora**
 
-   Klasa *Zend_Form_Element* implementuje interfejs *Zend_Validate_Interface*, co oznacza, że element może być
+   Klasa *Zend\Form\Element* implementuje interfejs *Zend\Validate\Interface*, co oznacza, że element może być
    także użyty jako weryfikator, w zastosowaniu nie związanym z formularzami.
 
 Metody powiązane z weryfikatorami to:
@@ -527,23 +527,23 @@ the developer needs to create markup for the element itself, typically a label, 
 users, markup for displaying validation error messages. The more elements on the page, the less trivial this task
 becomes.
 
-*Zend_Form_Element* tries to solve this issue through the use of "decorators". Decorators are simply classes that
+*Zend\Form\Element* tries to solve this issue through the use of "decorators". Decorators are simply classes that
 have access to the element and a method for rendering content. For more information on how decorators work, please
-see the section on :ref:`Zend_Form_Decorator <zend.form.decorators>`.
+see the section on :ref:`Zend\Form\Decorator <zend.form.decorators>`.
 
-Domyśle dekoratory używane przez klasę *Zend_Form_Element* to:
+Domyśle dekoratory używane przez klasę *Zend\Form\Element* to:
 
 - **ViewHelper**: określą klasę pomocniczą widoku, która ma być użyta do renderowania określonego elementu.
   Atrybut 'helper' może być użyty aby określić która klasa pomocnicza ma być użyta. Domyślnie klasa
-  *Zend_Form_Element* określa domyślną klasę pomocniczą jako 'formText', jednak klasy rozszerzające
+  *Zend\Form\Element* określa domyślną klasę pomocniczą jako 'formText', jednak klasy rozszerzające
   określają inne klasy pomocnicze.
 
-- **Errors**: dołączą komunikaty błędów do elementu używając klasy *Zend_View_Helper_FormErrors*. Jeśli
+- **Errors**: dołączą komunikaty błędów do elementu używając klasy *Zend\View_Helper\FormErrors*. Jeśli
   błędów nie ma nic nie zostaje dołączone.
 
 - **HtmlTag**: otacza element i błędy znacznikiem HTML <dd>.
 
-- **Label**: prepends a label to the element using *Zend_View_Helper_FormLabel*, and wraps it in a <dt> tag. If no
+- **Label**: prepends a label to the element using *Zend\View_Helper\FormLabel*, and wraps it in a <dt> tag. If no
   label is provided, just the definition term tag is rendered.
 
 .. note::
@@ -556,7 +556,7 @@ Domyśle dekoratory używane przez klasę *Zend_Form_Element* to:
    .. code-block::
       :linenos:
 
-      $element = new Zend_Form_Element('foo',
+      $element = new Zend\Form\Element('foo',
                                        array('disableLoadDefaultDecorators' =>
                                             true)
                                        );
@@ -600,14 +600,14 @@ looks basically like this:
    </dd>
 
 
-Aby uzyskać więcej informacji o dekoratorach, zobacz :ref:`dokumentację klasy Zend_Form_Decorator
+Aby uzyskać więcej informacji o dekoratorach, zobacz :ref:`dokumentację klasy Zend\Form\Decorator
 <zend.form.decorators>`.
 
 .. note::
 
    **Użycie wielu dekoratorów tego samego typu**
 
-   Internally, *Zend_Form_Element* uses a decorator's class as the lookup mechanism when retrieving decorators. As
+   Internally, *Zend\Form\Element* uses a decorator's class as the lookup mechanism when retrieving decorators. As
    a result, you cannot register multiple decorators of the same type; subsequent decorators will simply overwrite
    those that existed before.
 
@@ -667,7 +667,7 @@ Metody powiązane z dekoratorami to:
 Dane meta i atrybuty
 --------------------
 
-*Zend_Form_Element* obsługuje wiele atrybutów i danych meta dla elementów. Te atrybuty to:
+*Zend\Form\Element* obsługuje wiele atrybutów i danych meta dla elementów. Te atrybuty to:
 
 - **name**: nazwa elementu. Używa metod dostępowych *setName()* oraz *getName()*.
 
@@ -704,7 +704,7 @@ chcieć określić takie atrybuty jak 'class' czy 'id'. Do obsługi tego istniej
 
 - **getAttribs()**: pobiera wszystkie atrybuty w postaci par klucz/wartość
 
-Most of the time, however, you can simply access them as object properties, as *Zend_Form_Element* utilizes
+Most of the time, however, you can simply access them as object properties, as *Zend\Form\Element* utilizes
 overloading to facilitate access to them:
 
 .. code-block::
@@ -727,10 +727,10 @@ Elementy <zend.form.standardElements>` aby poznać więcej szczegółów.
 
 .. _zend.form.elements.methods:
 
-Metody klasy Zend_Form_Element
+Metody klasy Zend\Form\Element
 ------------------------------
 
-Klasa *Zend_Form_Element* posiada bardzo dużo metod. Poniżej zamieszczono podsumowanie ich sygnatur,
+Klasa *Zend\Form\Element* posiada bardzo dużo metod. Poniżej zamieszczono podsumowanie ich sygnatur,
 pogrupowanych na podstawie typu:
 
 - Konfiguracja:
@@ -741,7 +741,7 @@ pogrupowanych na podstawie typu:
 
 - I18N:
 
-  - *setTranslator(Zend_Translator_Adapter $translator = null)*
+  - *setTranslator(Zend\Translator\Adapter $translator = null)*
 
   - *getTranslator()*
 
@@ -801,7 +801,7 @@ pogrupowanych na podstawie typu:
 
 - Ładowanie wtyczek i ścieżki:
 
-  - *setPluginLoader(Zend_Loader_PluginLoader_Interface $loader, $type)*
+  - *setPluginLoader(Zend\Loader_PluginLoader\Interface $loader, $type)*
 
   - *getPluginLoader($type)*
 
@@ -849,7 +849,7 @@ pogrupowanych na podstawie typu:
 
 - Renderowanie:
 
-  - *setView(Zend_View_Interface $view = null)*
+  - *setView(Zend\View\Interface $view = null)*
 
   - *getView()*
 
@@ -867,18 +867,18 @@ pogrupowanych na podstawie typu:
 
   - *clearDecorators()*
 
-  - *render(Zend_View_Interface $view = null)*
+  - *render(Zend\View\Interface $view = null)*
 
 .. _zend.form.elements.config:
 
 Konfiguracja
 ------------
 
-Konstruktor klasy *Zend_Form_Element*\ przyjmuje w parametrze tablicę opcji lub obiekt *Zend_Config* zawierający
+Konstruktor klasy *Zend\Form\Element*\ przyjmuje w parametrze tablicę opcji lub obiekt *Zend_Config* zawierający
 pcje. Klasa może być także skonfigurowana za pomocą metod *setOptions()* oraz *setConfig()*. Generalnie klucze
 nazwane są w taki sposób:
 
-- If 'set' + key refers to a *Zend_Form_Element* method, then the value provided will be passed to that method.
+- If 'set' + key refers to a *Zend\Form\Element* method, then the value provided will be passed to that method.
 
 - Otherwise, the value will be used to set an attribute.
 
@@ -938,7 +938,7 @@ As an example, here is a config file that passes configuration for every type of
 Własne elementy
 ---------------
 
-Możesz tworzyć własne elementy po prostu rozszerzając klasę *Zend_Form_Element*. Powodami aby to zrobić mogą
+Możesz tworzyć własne elementy po prostu rozszerzając klasę *Zend\Form\Element*. Powodami aby to zrobić mogą
 być:
 
 - Elements that share common validators and/or filters
@@ -957,7 +957,7 @@ displaying them, 'My_Decorator_TextItem'; additionally, you have a number of sta
 .. code-block::
    :linenos:
 
-   class My_Element_Text extends Zend_Form_Element
+   class My_Element_Text extends Zend\Form\Element
    {
        public function init()
        {
@@ -983,14 +983,14 @@ You could then inform your form object about the prefix path for such elements, 
 
 The 'foo' element will now be of type *My_Element_Text*, and exhibit the behaviour you've outlined.
 
-Another method you may want to override when extending *Zend_Form_Element* is the *loadDefaultDecorators()* method.
+Another method you may want to override when extending *Zend\Form\Element* is the *loadDefaultDecorators()* method.
 This method conditionally loads a set of default decorators for your element; you may wish to substitute your own
 decorators in your extending class:
 
 .. code-block::
    :linenos:
 
-   class My_Element_Text extends Zend_Form_Element
+   class My_Element_Text extends Zend\Form\Element
    {
        public function loadDefaultDecorators()
        {
@@ -1003,7 +1003,7 @@ decorators in your extending class:
    }
 
 
-There are many ways to customize elements; be sure to read the API documentation of *Zend_Form_Element* to know all
+There are many ways to customize elements; be sure to read the API documentation of *Zend\Form\Element* to know all
 the methods available.
 
 

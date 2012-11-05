@@ -15,10 +15,10 @@ L'objet passé va être prioritaire sur le transport par défaut pour la requêt
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    // construction du message
-   $tr1 = new Zend_Mail_Transport_Smtp('serveur@exemple.com');
-   $tr2 = new Zend_Mail_Transport_Smtp('autre_serveur@exemple.com');
+   $tr1 = new Zend\Mail_Transport\Smtp('serveur@exemple.com');
+   $tr2 = new Zend\Mail_Transport\Smtp('autre_serveur@exemple.com');
    $mail->send($tr1);
    $mail->send($tr2);
    $mail->send();  // utilisation du transport par défaut
@@ -27,6 +27,6 @@ L'objet passé va être prioritaire sur le transport par défaut pour la requêt
 
    **Transports additionnels**
 
-   Des transports additionnels peuvent-être écrit en implémentant ``Zend_Mail_Transport_Interface``.
+   Des transports additionnels peuvent-être écrit en implémentant ``Zend\Mail_Transport\Interface``.
 
 

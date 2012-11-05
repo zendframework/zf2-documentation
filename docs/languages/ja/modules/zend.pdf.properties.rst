@@ -8,13 +8,13 @@
 (たとえばタイトルや作者、作成日、更新日など) を含められます。
 
 歴史的に、この情報は特別な Info 構造体に格納されるようになっています。
-この構造体を読み書きするには、 ``Zend_Pdf`` オブジェクトの public プロパティ
+この構造体を読み書きするには、 ``ZendPdf`` オブジェクトの public プロパティ
 *properties* の連想配列を使用します。
 
    .. code-block:: php
       :linenos:
 
-      $pdf = Zend_Pdf::load($pdfPath);
+      $pdf = ZendPdf\Pdf::load($pdfPath);
 
       echo $pdf->properties['Title'] . "\n";
       echo $pdf->properties['Author'] . "\n";
@@ -105,13 +105,13 @@
 で表して *PDF* に添付できます。
 
 この *XML* ドキュメントを *PDF* から取得したり *PDF* に添付したりするには、それぞれ
-``Zend_Pdf::getMetadata()`` メソッドおよび ``Zend_Pdf::setMetadata($metadata)``
+``ZendPdf\Pdf::getMetadata()`` メソッドおよび ``ZendPdf\Pdf::setMetadata($metadata)``
 メソッドを使用します。
 
    .. code-block:: php
       :linenos:
 
-      $pdf = Zend_Pdf::load($pdfPath);
+      $pdf = ZendPdf\Pdf::load($pdfPath);
       $metadata = $pdf->getMetadata();
       $metadataDOM = new DOMDocument();
       $metadataDOM->loadXML($metadata);

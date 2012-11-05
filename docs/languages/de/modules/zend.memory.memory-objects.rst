@@ -35,7 +35,7 @@ Managers:
 
 "Gesperrt" bedeutet das solche Objekte niemals getauscht und vom Speicher entfernt werden.
 
-Gesperrte Objekte haben das selbe Interface wie verschiebbare Objekte (``Zend_Memory_Container_Interface``).
+Gesperrte Objekte haben das selbe Interface wie verschiebbare Objekte (``Zend\Memory_Container\Interface``).
 Deswegen können gesperrte Objekte an jedem Platz statt verschiebbaren Objekten verwendet werden.
 
 Es ist nützlich wenn eine Anwendung oder Entwickler entscheiden kann, das einige Objekte niemals getauscht werden
@@ -44,7 +44,7 @@ sollen, basierend auf Entscheidungen der Geschwindigkeit.
 Der Zugriff auf gesperrte Objekte ist schneller, weil der Memory Manager die Änderungen für diese Objekte nicht
 verfolgen muß.
 
-Die Klasse der gelockten Objekte (``Zend_Memory_Container_Locked``) garantiert virtuell die selbe Performance wie
+Die Klasse der gelockten Objekte (``Zend\Memory_Container\Locked``) garantiert virtuell die selbe Performance wie
 das Arbeiten mit einer Zeichenketten Variablen. Der Overhead ist ein einzelnes De-Referenzieren um die Eigenschaft
 der Klasse zu erhalten.
 

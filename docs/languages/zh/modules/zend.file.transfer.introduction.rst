@@ -1,29 +1,29 @@
 .. EN-Revision: none
 .. _zend.file.transfer.introduction:
 
-Zend_File_Transfer
+Zend\File\Transfer
 ==================
 
-*Zend_File_Transfer* 让开发者控制文件上载和下载。它有用于文件的内置的校验器
-并且甚至可以用过滤器来修改文件。 *Zend_File_Transfer* 使用适配器，这样对于
+*Zend\File\Transfer* 让开发者控制文件上载和下载。它有用于文件的内置的校验器
+并且甚至可以用过滤器来修改文件。 *Zend\File\Transfer* 使用适配器，这样对于
 不同的传输协议如 HTTP、 FTP、 WEBDAV 等等就可以使用相同的 API。
 
 .. note::
 
    **局限**
 
-   当前的 *Zend_File_Transfer* 实现包含在 1.6.0 版中，仅限于 HTTP Post 上载。文件下载和
+   当前的 *Zend\File\Transfer* 实现包含在 1.6.0 版中，仅限于 HTTP Post 上载。文件下载和
    其它适配器在下次发行时会增加。没实现的功能会抛出异常。所以应该直接使用
-   *Zend_File_Transfer_Adapter_Http* 的实例。 当多重适配器可用时，这个就会改变。
+   *Zend\File\Transfer\Adapter\Http* 的实例。 当多重适配器可用时，这个就会改变。
 
-*Zend_File_Transfer* 的用法非常简单。它包括两个部分：用于上载的 HTTP 表单和用
-*Zend_File_Transfer* 来处理上载文件。参见下面的例子：
+*Zend\File\Transfer* 的用法非常简单。它包括两个部分：用于上载的 HTTP 表单和用
+*Zend\File\Transfer* 来处理上载文件。参见下面的例子：
 
 .. _zend.file.transfer.introduction.example:
 
 .. rubric:: 简单的文件上载表单
 
-本例示范了一个基本的文件上传，它使用 *Zend_File_Transfer* 来完成。
+本例示范了一个基本的文件上传，它使用 *Zend\File\Transfer* 来完成。
 第一部分是文件表单。在例子中，有一个文件要上载。
 
 .. code-block:: php
@@ -37,7 +37,7 @@ Zend_File_Transfer
    </form>
 
 
-注意利用 :ref:`Zend_Form_Element_File <zend.form.standardElements.file>` 而不需要手工编写 HTML。
+注意利用 :ref:`Zend\Form_Element\File <zend.form.standardElements.file>` 而不需要手工编写 HTML。
 
 下一步是生成上载的接收者。在本例中接收者是 */file/upload* 。所以我们就编写
 带有动作 *upload* 的控制器 *file* 。
@@ -45,7 +45,7 @@ Zend_File_Transfer
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_File_Transfer_Adapter_Http();
+   $adapter = new Zend\File\Transfer\Adapter\Http();
 
    $adapter->setDestination('C:\temp');
 

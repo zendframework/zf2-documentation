@@ -6,11 +6,11 @@
 
 ``Zend_Filter`` には、よく使うフィルタ群が付属しています。
 しかし、特定の目的のために使用する独自のフィルタを書かなければならないこともよくあるでしょう。
-独自のフィルタを作成するには、 ``Zend_Filter_Interface`` を実装します。
+独自のフィルタを作成するには、 ``Zend\Filter\Interface`` を実装します。
 
-``Zend_Filter_Interface`` で定義しているメソッドは ``filter()``
+``Zend\Filter\Interface`` で定義しているメソッドは ``filter()``
 ひとつだけです。これを皆さんのクラスで実装します。
-このインターフェイスを実装したクラスは、 ``Zend_Filter::addFilter()``
+このインターフェイスを実装したクラスは、 ``Zend\Filter\Filter::addFilter()``
 でフィルタチェインに追加できます。
 
 以下の例で、独自のフィルタを作成する方法を説明します。
@@ -18,7 +18,7 @@
 .. code-block:: php
    :linenos:
 
-   class MyFilter implements Zend_Filter_Interface
+   class MyFilter implements Zend\Filter\Interface
    {
        public function filter($value)
        {
@@ -33,7 +33,7 @@
 .. code-block:: php
    :linenos:
 
-   $filterChain = new Zend_Filter();
+   $filterChain = new Zend\Filter\Filter();
    $filterChain->addFilter(new MyFilter());
 
 

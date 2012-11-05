@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.flickr:
 
-Zend_Service_Flickr
+Zend\Service\Flickr
 ===================
 
 .. _zend.service.flickr.introduction:
@@ -9,7 +9,7 @@ Zend_Service_Flickr
 導入
 --
 
-``Zend_Service_Flickr`` は、Flickr の REST Web Service を使用するためのシンプルな *API* です。
+``Zend\Service\Flickr`` は、Flickr の REST Web Service を使用するためのシンプルな *API* です。
 Flickr ウェブサービスを使用するには *API* キーが必要です。 キーを取得したり Flickr
 REST Web Service の詳細情報を取得したりするには `Flickr API Documentation`_ を参照ください。
 
@@ -23,7 +23,7 @@ REST Web Service の詳細情報を取得したりするには `Flickr API Docum
 .. code-block:: php
    :linenos:
 
-   $flickr = new Zend_Service_Flickr('MY_API_KEY');
+   $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $results = $flickr->tagSearch("php");
 
@@ -42,12 +42,12 @@ REST Web Service の詳細情報を取得したりするには `Flickr API Docum
 Flickr ユーザの写真や情報の検索
 -------------------
 
-``Zend_Service_Flickr`` では、いくつかの方法で Flickr
+``Zend\Service\Flickr`` では、いくつかの方法で Flickr
 ユーザについての情報を取得できます。
 
 - ``userSearch()``: タグをスペースで区切ったクエリ文字列、
   そしてオプションの二番目のパラメータで検索オプションの配列を指定して検索し、
-  結果の写真を ``Zend_Service_Flickr_ResultSet`` オブジェクトで返します。
+  結果の写真を ``Zend\Service_Flickr\ResultSet`` オブジェクトで返します。
 
 - ``getIdByUsername()``: 指定したユーザ名に対応するユーザ ID を文字列で返します。
 
@@ -63,7 +63,7 @@ Flickr ユーザの写真や情報の検索
 .. code-block:: php
    :linenos:
 
-   $flickr = new Zend_Service_Flickr('MY_API_KEY');
+   $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $results = $flickr->userSearch($userEmail);
 
@@ -76,7 +76,7 @@ Flickr ユーザの写真や情報の検索
 グループプールからの写真の検索
 ---------------
 
-``Zend_Service_Flickr`` は、 グループにプールされている写真をグループ ID
+``Zend\Service\Flickr`` は、 グループにプールされている写真をグループ ID
 を指定して取得できます。 ``groupPoolGetPhotos()`` メソッドを使用します。
 
 .. _zend.service.flickr.grouppoolgetphotos.example-1:
@@ -86,7 +86,7 @@ Flickr ユーザの写真や情報の検索
 .. code-block:: php
    :linenos:
 
-   $flickr = new Zend_Service_Flickr('MY_API_KEY');
+   $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
        $results = $flickr->groupPoolGetPhotos($groupId);
 
@@ -105,7 +105,7 @@ Flickr ユーザの写真や情報の検索
 Flickr 画像の詳細の取得
 ---------------
 
-``Zend_Service_Flickr`` を使用すると、指定した画像 ID
+``Zend\Service\Flickr`` を使用すると、指定した画像 ID
 の画像についての詳細情報をすばやく簡単に取得できます。
 そのためには、以下の例のように単純に ``getImageDetails()`` メソッドを使用します。
 
@@ -118,7 +118,7 @@ Flickr 画像 ID を使用すると、簡単に画像の情報が取得できま
 .. code-block:: php
    :linenos:
 
-   $flickr = new Zend_Service_Flickr('MY_API_KEY');
+   $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $image = $flickr->getImageDetails($imageId);
 
@@ -127,23 +127,23 @@ Flickr 画像 ID を使用すると、簡単に画像の情報が取得できま
 
 .. _zend.service.flickr.classes:
 
-Zend_Service_Flickr 結果クラス群
+Zend\Service\Flickr 結果クラス群
 --------------------------
 
 ``tagSearch()`` あるいは ``userSearch()`` から返されるのは、以下のクラスのいずれかです。
 
 
-   - :ref:`Zend_Service_Flickr_ResultSet <zend.service.flickr.classes.resultset>`
+   - :ref:`Zend\Service_Flickr\ResultSet <zend.service.flickr.classes.resultset>`
 
-   - :ref:`Zend_Service_Flickr_Result <zend.service.flickr.classes.result>`
+   - :ref:`Zend\Service_Flickr\Result <zend.service.flickr.classes.result>`
 
-   - :ref:`Zend_Service_Flickr_Image <zend.service.flickr.classes.image>`
+   - :ref:`Zend\Service_Flickr\Image <zend.service.flickr.classes.image>`
 
 
 
 .. _zend.service.flickr.classes.resultset:
 
-Zend_Service_Flickr_ResultSet
+Zend\Service_Flickr\ResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Flickr 検索からの結果セットを表します。
@@ -161,7 +161,7 @@ Flickr 検索からの結果セットを表します。
 
 .. _zend.service.flickr.classes.resultset.properties.table-1:
 
-.. table:: Zend_Service_Flickr_ResultSet のプロパティ
+.. table:: Zend\Service_Flickr\ResultSet のプロパティ
 
    +---------------------+---+---------------------------------------------------------------------+
    |名前                   |型  |説明                                                                   |
@@ -175,7 +175,7 @@ Flickr 検索からの結果セットを表します。
 
 .. _zend.service.flickr.classes.resultset.totalResults:
 
-Zend_Service_Flickr_ResultSet::totalResults()
+Zend\Service_Flickr\ResultSet::totalResults()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 int:``totalResults()``
@@ -187,7 +187,7 @@ int:``totalResults()``
 
 .. _zend.service.flickr.classes.result:
 
-Zend_Service_Flickr_Result
+Zend\Service_Flickr\Result
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Flickr クエリから返される結果の画像情報を表します。
@@ -199,7 +199,7 @@ Flickr クエリから返される結果の画像情報を表します。
 
 .. _zend.service.flickr.classes.result.properties.table-1:
 
-.. table:: Zend_Service_Flickr_Result のプロパティ
+.. table:: Zend\Service_Flickr\Result のプロパティ
 
    +----------+-------------------------+--------------------------------------------------------------------+
    |名前        |型                        |説明                                                                  |
@@ -230,24 +230,24 @@ Flickr クエリから返される結果の画像情報を表します。
    +----------+-------------------------+--------------------------------------------------------------------+
    |iconserver|string                   |アイコンの URL を組み立てるために使用するサーバ                                          |
    +----------+-------------------------+--------------------------------------------------------------------+
-   |Square    |Zend_Service_Flickr_Image|75x75 の、画像のサムネイル                                                    |
+   |Square    |Zend\Service_Flickr\Image|75x75 の、画像のサムネイル                                                    |
    +----------+-------------------------+--------------------------------------------------------------------+
-   |Thumbnail |Zend_Service_Flickr_Image|100 ピクセルの、画像のサムネイル                                                  |
+   |Thumbnail |Zend\Service_Flickr\Image|100 ピクセルの、画像のサムネイル                                                  |
    +----------+-------------------------+--------------------------------------------------------------------+
-   |Small     |Zend_Service_Flickr_Image|240 ピクセル版の画像                                                        |
+   |Small     |Zend\Service_Flickr\Image|240 ピクセル版の画像                                                        |
    +----------+-------------------------+--------------------------------------------------------------------+
-   |Medium    |Zend_Service_Flickr_Image|500 ピクセル版の画像                                                        |
+   |Medium    |Zend\Service_Flickr\Image|500 ピクセル版の画像                                                        |
    +----------+-------------------------+--------------------------------------------------------------------+
-   |Large     |Zend_Service_Flickr_Image|640 ピクセル版の画像                                                        |
+   |Large     |Zend\Service_Flickr\Image|640 ピクセル版の画像                                                        |
    +----------+-------------------------+--------------------------------------------------------------------+
-   |Original  |Zend_Service_Flickr_Image|元の画像                                                                |
+   |Original  |Zend\Service_Flickr\Image|元の画像                                                                |
    +----------+-------------------------+--------------------------------------------------------------------+
 
 :ref:`クラス一覧に戻る <zend.service.flickr.classes>`
 
 .. _zend.service.flickr.classes.image:
 
-Zend_Service_Flickr_Image
+Zend\Service_Flickr\Image
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Flickr 検索が返す画像を表します。
@@ -259,7 +259,7 @@ Flickr 検索が返す画像を表します。
 
 .. _zend.service.flickr.classes.image.properties.table-1:
 
-.. table:: Zend_Service_Flickr_Image のプロパティ
+.. table:: Zend\Service_Flickr\Image のプロパティ
 
    +--------+------+--------------------------------------------------------------+
    |名前      |型     |説明                                                            |

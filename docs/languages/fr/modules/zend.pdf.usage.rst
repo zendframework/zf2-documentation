@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.pdf.usage:
 
-Exemple d'utilisation du module Zend_Pdf
+Exemple d'utilisation du module ZendPdf
 ========================================
 
-Cette section propose un exemple d'utilisation du module ``Zend_Pdf``.
+Cette section propose un exemple d'utilisation du module ``ZendPdf``.
 
 Le code source de l'exemple est disponible dans le fichier ``demos/Zend/Pdf/demo.php``.
 
@@ -12,13 +12,13 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
 
 .. _zend.pdf.usage.example-1:
 
-.. rubric:: Exemple d'utilisation du module Zend_Pdf
+.. rubric:: Exemple d'utilisation du module ZendPdf
 
 .. code-block:: php
    :linenos:
 
    /**
-    * @package Zend_Pdf
+    * @package ZendPdf
     * @subpackage demo
     */
 
@@ -28,13 +28,13 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
    }
 
    try {
-       $pdf = Zend_Pdf::load($argv[1]);
-   } catch (Zend_Pdf_Exception $e) {
+       $pdf = ZendPdf\Pdf::load($argv[1]);
+   } catch (ZendPdf\Exception $e) {
        if ($e->getMessage() == 'Ouverture du fichier \''
                              . $argv[1]
                              . '\' impossible en lecture.') {
            // Create new PDF if file doesn't exist
-           $pdf = new Zend_Pdf();
+           $pdf = new ZendPdf\Pdf();
            if (!isset($argv[2])) {
                // Force la ré-écriture complète du fichier
                // (plutôt qu'une mise à jour)
@@ -52,20 +52,20 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
    $pdf->pages = array_reverse($pdf->pages);
 
    // Crée un nouveau style
-   $style = new Zend_Pdf_Style();
-   $style->setFillColor(new Zend_Pdf_Color_RGB(0, 0, 0.9));
-   $style->setLineColor(new Zend_Pdf_Color_GrayScale(0.2));
+   $style = new ZendPdf\Style();
+   $style->setFillColor(new ZendPdf_Color\RGB(0, 0, 0.9));
+   $style->setLineColor(new ZendPdf_Color\GrayScale(0.2));
    $style->setLineWidth(3);
    $style->setLineDashingPattern(array(3, 2, 3, 4), 1.6);
-   $style->setFont(Zend_Pdf_Font::fontWithName(
-                       Zend_Pdf_Font::FONT_HELVETICA_BOLD), 32
+   $style->setFont(ZendPdf\Font::fontWithName(
+                       ZendPdf\Font::FONT_HELVETICA_BOLD), 32
                    );
 
    try {
        // Crée un nouvel objet image
-       $stampImage = Zend_Pdf_Image::imageWithPath(dirname(__FILE__) .
+       $stampImage = ZendPdf\Image::imageWithPath(dirname(__FILE__) .
                                                    '/stamp.jpg');
-   } catch (Zend_Pdf_Exception $e) {
+   } catch (ZendPdf\Exception $e) {
        // Exemple de gestion des exceptions lors du chargement d'image
        if ($e->getMessage() != 'Image extension is not installed.' &&
            $e->getMessage() != 'JPG support is not configured properly.') {
@@ -93,21 +93,21 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
        $page->restoreGS();
    }
 
-   // Ajoute une nouvelle page générée par l'objet Zend_Pdf
+   // Ajoute une nouvelle page générée par l'objet ZendPdf
    // (la page est attachée au document)
    $pdf->pages[] = ($page1 = $pdf->newPage('A4'));
 
-   // Ajoute une nouvelle page générée par l'objet Zend_Pdf
+   // Ajoute une nouvelle page générée par l'objet ZendPdf
    // (la page n'est pas attachée au document)
    $pdf->pages[] =
-       ($page2 = new Zend_Pdf_Page(Zend_Pdf_Page::SIZE_LETTER_LANDSCAPE));
+       ($page2 = new ZendPdf\Page(ZendPdf\Page::SIZE_LETTER_LANDSCAPE));
 
    // Crée une nouvelle police
-   $font = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA);
+   $font = ZendPdf\Font::fontWithName(ZendPdf\Font::FONT_HELVETICA);
 
    // Applique la police et dessine du texte
    $page1->setFont($font, 36)
-         ->setFillColor(Zend_Pdf_Color_Html::color('#9999cc')
+         ->setFillColor(ZendPdf_Color\Html::color('#9999cc')
          ->drawText('Helvetica 36 text string', 60, 500);
 
    // Utilise la police dans une autre page
@@ -115,38 +115,38 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
          ->drawText('Helvetica 24 text string', 60, 500);
 
    // Utilise une autre police
-   $page2->setFont(Zend_Pdf_Font::fontWithName(
-                           Zend_Pdf_Font::FONT_TIMES_ROMAN), 32)
+   $page2->setFont(ZendPdf\Font::fontWithName(
+                           ZendPdf\Font::FONT_TIMES_ROMAN), 32)
          ->drawText('Times-Roman 32 text string', 60, 450);
 
    // Dessine un rectangle
-   $page2->setFillColor(new Zend_Pdf_Color_GrayScale(0.8))
-         ->setLineColor(new Zend_Pdf_Color_GrayScale(0.2))
+   $page2->setFillColor(new ZendPdf_Color\GrayScale(0.8))
+         ->setLineColor(new ZendPdf_Color\GrayScale(0.2))
          ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
          ->drawRectangle(60, 400, 400, 350);
 
    // Dessine un cercle
-   $page2->setLineDashingPattern(Zend_Pdf_Page::LINE_DASHING_SOLID)
-         ->setFillColor(new Zend_Pdf_Color_RGB(1, 0, 0))
+   $page2->setLineDashingPattern(ZendPdf\Page::LINE_DASHING_SOLID)
+         ->setFillColor(new ZendPdf_Color\RGB(1, 0, 0))
          ->drawCircle(85, 375, 25);
 
    // Dessine des secteurs
    $page2->drawCircle(200, 375, 25, 2*M_PI/3, -M_PI/6)
-         ->setFillColor(new Zend_Pdf_Color_CMYK(1, 0, 0, 0))
+         ->setFillColor(new ZendPdf_Color\CMYK(1, 0, 0, 0))
          ->drawCircle(200, 375, 25, M_PI/6, 2*M_PI/3)
-         ->setFillColor(new Zend_Pdf_Color_RGB(1, 1, 0))
+         ->setFillColor(new ZendPdf_Color\RGB(1, 1, 0))
          ->drawCircle(200, 375, 25, -M_PI/6, M_PI/6);
 
    // Dessine des ellipses
-   $page2->setFillColor(new Zend_Pdf_Color_RGB(1, 0, 0))
+   $page2->setFillColor(new ZendPdf_Color\RGB(1, 0, 0))
          ->drawEllipse(250, 400, 400, 350)
-         ->setFillColor(new Zend_Pdf_Color_CMYK(1, 0, 0, 0))
+         ->setFillColor(new ZendPdf_Color\CMYK(1, 0, 0, 0))
          ->drawEllipse(250, 400, 400, 350, M_PI/6, 2*M_PI/3)
-         ->setFillColor(new Zend_Pdf_Color_RGB(1, 1, 0))
+         ->setFillColor(new ZendPdf_Color\RGB(1, 1, 0))
          ->drawEllipse(250, 400, 400, 350, -M_PI/6, M_PI/6);
 
    // Dessine et remplit un polygone
-   $page2->setFillColor(new Zend_Pdf_Color_RGB(1, 0, 1));
+   $page2->setFillColor(new ZendPdf_Color\RGB(1, 0, 1));
    $x = array();
    $y = array();
    for ($count = 0; $count < 8; $count++) {
@@ -154,8 +154,8 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
        $y[] = 375 + 25*sin(3*M_PI_4*$count);
    }
    $page2->drawPolygon($x, $y,
-                       Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE,
-                       Zend_Pdf_Page::FILL_METHOD_EVEN_ODD);
+                       ZendPdf\Page::SHAPE_DRAW_FILL_AND_STROKE,
+                       ZendPdf\Page::FILL_METHOD_EVEN_ODD);
 
    // ----- Dessiner des figures dans un système de coordonnées modifiées -----
 
@@ -164,33 +164,33 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
    $page2->translate(60, 250); // Décalage du système de coordonnées
 
    // Dessine un rectangle
-   $page2->setFillColor(new Zend_Pdf_Color_GrayScale(0.8))
-         ->setLineColor(new Zend_Pdf_Color_GrayScale(0.2))
+   $page2->setFillColor(new ZendPdf_Color\GrayScale(0.8))
+         ->setLineColor(new ZendPdf_Color\GrayScale(0.2))
          ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
          ->drawRectangle(0, 50, 340, 0);
 
    // Dessine un cercle
-   $page2->setLineDashingPattern(Zend_Pdf_Page::LINE_DASHING_SOLID)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
+   $page2->setLineDashingPattern(ZendPdf\Page::LINE_DASHING_SOLID)
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawCircle(25, 25, 25);
 
    // Dessine des secteurs
    $page2->drawCircle(140, 25, 25, 2*M_PI/3, -M_PI/6)
-         ->setFillColor(new Zend_Pdf_Color_Cmyk(1, 0, 0, 0))
+         ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
          ->drawCircle(140, 25, 25, M_PI/6, 2*M_PI/3)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 0))
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawCircle(140, 25, 25, -M_PI/6, M_PI/6);
 
    // Dessine des ellipses
-   $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
+   $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawEllipse(190, 50, 340, 0)
-         ->setFillColor(new Zend_Pdf_Color_Cmyk(1, 0, 0, 0))
+         ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
          ->drawEllipse(190, 50, 340, 0, M_PI/6, 2*M_PI/3)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 0))
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawEllipse(190, 50, 340, 0, -M_PI/6, M_PI/6);
 
    // Dessine et remplit un polygone
-   $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 1));
+   $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 1));
    $x = array();
    $y = array();
    for ($count = 0; $count < 8; $count++) {
@@ -198,8 +198,8 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
        $y[] = 25 + 25*sin(3*M_PI_4*$count);
    }
    $page2->drawPolygon($x, $y,
-                       Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE,
-                       Zend_Pdf_Page::FILL_METHOD_EVEN_ODD);
+                       ZendPdf\Page::SHAPE_DRAW_FILL_AND_STROKE,
+                       ZendPdf\Page::FILL_METHOD_EVEN_ODD);
 
    // Dessine une ligne
    $page2->setLineWidth(0.5)
@@ -214,33 +214,33 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
          ->scale(0.9, 0.9);       // Mise à l'échelle du système de coordonnées
 
    // Dessine un rectangle
-   $page2->setFillColor(new Zend_Pdf_Color_GrayScale(0.8))
-         ->setLineColor(new Zend_Pdf_Color_GrayScale(0.2))
+   $page2->setFillColor(new ZendPdf_Color\GrayScale(0.8))
+         ->setLineColor(new ZendPdf_Color\GrayScale(0.2))
          ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
          ->drawRectangle(0, 50, 340, 0);
 
    // Dessine un cercle
-   $page2->setLineDashingPattern(Zend_Pdf_Page::LINE_DASHING_SOLID)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
+   $page2->setLineDashingPattern(ZendPdf\Page::LINE_DASHING_SOLID)
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawCircle(25, 25, 25);
 
    // Dessine des secteurs
    $page2->drawCircle(140, 25, 25, 2*M_PI/3, -M_PI/6)
-         ->setFillColor(new Zend_Pdf_Color_Cmyk(1, 0, 0, 0))
+         ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
          ->drawCircle(140, 25, 25, M_PI/6, 2*M_PI/3)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 0))
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawCircle(140, 25, 25, -M_PI/6, M_PI/6);
 
    // Dessine des ellipses
-   $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
+   $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawEllipse(190, 50, 340, 0)
-         ->setFillColor(new Zend_Pdf_Color_Cmyk(1, 0, 0, 0))
+         ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
          ->drawEllipse(190, 50, 340, 0, M_PI/6, 2*M_PI/3)
-         ->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 0))
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawEllipse(190, 50, 340, 0, -M_PI/6, M_PI/6);
 
    // Dessine et remplit un polygone
-   $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 1));
+   $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 1));
    $x = array();
    $y = array();
    for ($count = 0; $count < 8; $count++) {
@@ -248,8 +248,8 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
        $y[] = 25 + 25*sin(3*M_PI_4*$count);
    }
    $page2->drawPolygon($x, $y,
-                       Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE,
-                       Zend_Pdf_Page::FILL_METHOD_EVEN_ODD);
+                       ZendPdf\Page::SHAPE_DRAW_FILL_AND_STROKE,
+                       ZendPdf\Page::FILL_METHOD_EVEN_ODD);
 
    // Dessine une ligne
    $page2->setLineWidth(0.5)

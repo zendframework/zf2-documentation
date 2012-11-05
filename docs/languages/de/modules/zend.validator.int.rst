@@ -4,15 +4,15 @@
 Int
 ===
 
-``Zend_Validate_Int`` prüft ob ein angegebener Wert ein Integer (Ganzzahl) ist. Auch lokalisierte Integerwerte
+``Zend\Validate\Int`` prüft ob ein angegebener Wert ein Integer (Ganzzahl) ist. Auch lokalisierte Integerwerte
 werden erkannt und können geprüft werden.
 
 .. _zend.validator.set.int.options:
 
-Unterstützte Optionen für Zend_Validate_Int
+Unterstützte Optionen für Zend\Validate\Int
 -------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Validate_Int`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Validate\Int`` unterstützt:
 
 - **locale**: Setzt das Gebietsschema welches verwendet wird um lokalisierte Integerwerte zu prüfen.
 
@@ -27,7 +27,7 @@ angegeben werden, dann wird das Gebietsschema der Umgebung für die Prüfung ver
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Int();
+   $validator = new Zend\Validate\Int();
 
    $validator->isValid(1234);   // Gibt true zurück
    $validator->isValid(1234.5); // Gibt false zurück
@@ -46,13 +46,13 @@ Ländern oft unterschiedlich geschrieben. Zum Beispiel kann man im Englischen "1
 sind Integerwerte, aber die Gruppierung ist optional. Im Deutschen kann man zum Beispiel "1.234" schreiben und im
 Französischen "1 234".
 
-``Zend_Validate_Int`` ist in der Lage solche Schreibweisen zu prüfen. Das bedeutet, das es nicht einfach das
+``Zend\Validate\Int`` ist in der Lage solche Schreibweisen zu prüfen. Das bedeutet, das es nicht einfach das
 Trennzeichen entfernt, sondern auch prüft ob das richtige Trennzeichen verwendet wird. Siehe den folgenden Code:
 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Int(array('locale' => 'de'));
+   $validator = new Zend\Validate\Int(array('locale' => 'de'));
 
    $validator->isValid(1234); // Gibt true zurück
    $validator->isValid("1,234"); // Gibt false zurück

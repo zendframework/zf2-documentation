@@ -19,23 +19,23 @@ sollte Controller nicht in dieser Art und Weise verwenden.
 .. code-block:: php
    :linenos:
 
-   class IndexController extends Zend_Controller_Action
+   class IndexController extends Zend\Controller\Action
    {
        public function indexAction()
        {
            // Das Seitenkontroll View Skript einrichten. Siehe das Handbuch zu
            // Seitenkontrollen für weitere Informationen über dieses View Skript
-           Zend_View_Helper_PaginationControl::setDefaultViewPartial('controls.phtml');
+           Zend\View_Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
 
            // Holt eine bereits instanzierte Datenbank Verbindung von der Registry
-           $db = Zend_Registry::get('db');
+           $db = Zend\Registry\Registry::get('db');
 
            // Erstellt ein Select Objekt welches Blog Posts holt, und absteigend
            // anhand des Erstellungsdatums sortiert
            $select = $db->select()->from('posts')->order('date_created DESC');
 
            // Erstellt einen Paginator für die Abfrage der Blog Posts
-           $paginator = Zend_Paginator::factory($select);
+           $paginator = Zend\Paginator\Paginator::factory($select);
 
            // Die aktuelle Seitenzahl von der Anfrage lesen. Der Standardwert ist
            // 1 wenn keine explizite Seitenzahl angegeben wurde

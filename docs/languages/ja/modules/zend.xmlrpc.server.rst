@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.xmlrpc.server:
 
-Zend_XmlRpc_Server
+Zend\XmlRpc\Server
 ==================
 
 .. _zend.xmlrpc.server.introduction:
@@ -9,7 +9,7 @@ Zend_XmlRpc_Server
 導入
 --
 
-``Zend_XmlRpc_Server`` は、完全な機能を有した *XML-RPC* サーバです。 `www.xmlrpc.com
+``Zend\XmlRpc\Server`` は、完全な機能を有した *XML-RPC* サーバです。 `www.xmlrpc.com
 で提示されている仕様`_ に準拠しています。 さらに ``system.multicall()``
 メソッドを実装しており、 リクエストをまとめる (boxcarring of requests)
 ことができます。
@@ -24,7 +24,7 @@ Zend_XmlRpc_Server
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->setClass('My_Service_Class');
    echo $server->handle();
 
@@ -33,21 +33,21 @@ Zend_XmlRpc_Server
 サーバの構造
 ------
 
-``Zend_XmlRpc_Server`` はさまざまなコンポーネントで構成されています。
+``Zend\XmlRpc\Server`` はさまざまなコンポーネントで構成されています。
 サーバ自身からリクエスト、レスポンス、fault
 オブジェクトなど広範囲に広がっています。
 
-``Zend_XmlRpc_Server`` を起動するには、
+``Zend\XmlRpc\Server`` を起動するには、
 まずサーバにひとつ以上のクラスか関数をアタッチする必要があります。
 アタッチするには ``setClass()`` メソッドおよび ``addFunction()`` メソッドを使用します。
 
-起動させたら、次に ``Zend_XmlRpc_Request`` オブジェクトを ``Zend_XmlRpc_Server::handle()``
-に渡します。 もし渡さなかった場合は、 ``Zend_XmlRpc_Request_Http``
+起動させたら、次に ``Zend\XmlRpc\Request`` オブジェクトを ``Zend\XmlRpc\Server::handle()``
+に渡します。 もし渡さなかった場合は、 ``Zend\XmlRpc_Request\Http``
 のインスタンスを作成して ``php://input`` からの入力を受け取ります。
 
-``Zend_XmlRpc_Server::handle()`` は、
+``Zend\XmlRpc\Server::handle()`` は、
 リクエストメソッドに応じて適切なハンドラに処理を振り分けます。 そして、
-``Zend_XmlRpc_Response`` を継承したオブジェクトか ``Zend_XmlRpc_Server_Fault``
+``Zend\XmlRpc\Response`` を継承したオブジェクトか ``Zend\XmlRpc_Server\Fault``
 オブジェクトを返します。 これらのオブジェクトはどちらも ``__toString()``
 メソッドを実装しており、妥当な *XML-RPC* *XML* レスポンスを直接出力できます。
 
@@ -62,7 +62,7 @@ General considerations
 ^^^^^^^^^^^^^^^^^^^^^^
 
 For maximum performance it is recommended to use a simple bootstrap file for the server component. Using
-``Zend_XmlRpc_Server`` inside a :ref:`Zend_Controller <zend.controller>` is strongly discouraged to avoid the
+``Zend\XmlRpc\Server`` inside a :ref:`Zend_Controller <zend.controller>` is strongly discouraged to avoid the
 overhead.
 
 Services change over time and while webservices are generally less change intense as code-native *APIs*, it is
@@ -89,9 +89,9 @@ smaller ones.
 規約
 --
 
-``Zend_XmlRpc_Server`` では、開発者が関数やクラスメソッドを *XML-RPC*
+``Zend\XmlRpc\Server`` では、開発者が関数やクラスメソッドを *XML-RPC*
 メソッドとしてアタッチできるようになっています。
-アタッチされるメソッドの情報は ``Zend_Server_Reflection``
+アタッチされるメソッドの情報は ``Zend\Server\Reflection``
 を使用して取得し、関数やメソッドのコメントブロックから
 メソッドのヘルプ文とシグネチャを取得します。
 
@@ -172,7 +172,7 @@ PhpDocumentor はパラメータや返り値の型を検証しません。 そ�
 
 - system.methodSignature
 
-内部的には、これらは ``Zend_XmlRpc_Server`` の同名のメソッドに対応しています。
+内部的には、これらは ``Zend\XmlRpc\Server`` の同名のメソッドに対応しています。
 
 自分が提供するメソッドに名前空間を追加したい場合は、
 関数やクラスをアタッチする際のメソッドで名前空間を指定します。
@@ -192,11 +192,11 @@ PhpDocumentor はパラメータや返り値の型を検証しません。 そ�
 独自のリクエストオブジェクト
 --------------
 
-ほとんどの場合は、 ``Zend_XmlRpc_Server`` や ``Zend_XmlRpc_Request_Http``
+ほとんどの場合は、 ``Zend\XmlRpc\Server`` や ``Zend\XmlRpc_Request\Http``
 に含まれるデフォルトのリクエスト型を使用するでしょう。 しかし、 *XML-RPC* を *CLI*
 や *GUI* 環境などで動かしたい場合もあるでしょうし、
 リクエストの内容をログに記録したい場合もあるでしょう。 そのような場合には、
-``Zend_XmlRpc_Request`` を継承した独自のリクエストオブジェクトを作成します。
+``Zend\XmlRpc\Request`` を継承した独自のリクエストオブジェクトを作成します。
 注意すべき点は、 ``getMethod()`` メソッドと ``getParams()``
 メソッドを必ず実装しなければならないということです。 これらは、 *XML-RPC*
 サーバがリクエストを処理する際に必要となります。
@@ -206,23 +206,23 @@ PhpDocumentor はパラメータや返り値の型を検証しません。 そ�
 独自のレスポンス
 --------
 
-リクエストオブジェクトと同様、 ``Zend_XmlRpc_Server``
+リクエストオブジェクトと同様、 ``Zend\XmlRpc\Server``
 は独自のレスポンスオブジェクトを返すこともできます。 デフォルトでは
-``Zend_XmlRpc_Response_Http`` オブジェクトが返されます。 これは、 *XML-RPC*
+``Zend\XmlRpc_Response\Http`` オブジェクトが返されます。 これは、 *XML-RPC*
 で使用される適切な Content-Type *HTTP*
 ヘッダを送信します。独自のオブジェクトを使用する場面としては、
 レスポンスをログに記録したり、
 あるいはレスポンスを標準出力に返したりといったことが考えられます。
 
 独自のレスポンスクラスを使用するには、 ``handle()`` をコールする前に
-``Zend_XmlRpc_Server::setResponseClass()`` を使用します。
+``Zend\XmlRpc\Server::setResponseClass()`` を使用します。
 
 .. _zend.xmlrpc.server.fault:
 
 Fault による例外の処理
 --------------
 
-``Zend_XmlRpc_Server`` は、配送先のメソッドで発生した例外を捕捉します。
+``Zend\XmlRpc\Server`` は、配送先のメソッドで発生した例外を捕捉します。
 例外を捕捉した場合は、 *XML-RPC* の fault レスポンスを生成します。
 しかし、デフォルトでは、例外メッセージとコードは fault
 レスポンスで用いられません。これは、
@@ -232,17 +232,17 @@ Fault による例外の処理
 
 しかし、例外クラスをホワイトリストに登録することで、 fault
 レスポンス内で例外を使用することもできます。 そうするには、
-``Zend_XmlRpc_Server_Fault::attachFaultException()``
+``Zend\XmlRpc_Server\Fault::attachFaultException()``
 を使用して例外クラスをホワイトリストに渡します。
 
 .. code-block:: php
    :linenos:
 
-   Zend_XmlRpc_Server_Fault::attachFaultException('My_Project_Exception');
+   Zend\XmlRpc_Server\Fault::attachFaultException('My_Project_Exception');
 
 他のプロジェクトの例外を継承した例外クラスを利用するのなら、
 一連のクラス群を一度にホワイトリストに登録することもできます。
-``Zend_XmlRpc_Server_Exceptions`` は常にホワイトリストに登録されており、
+``Zend\XmlRpc_Server\Exceptions`` は常にホワイトリストに登録されており、
 固有の内部エラー (メソッドが未定義であるなど) を報告できます。
 
 ホワイトリストに登録されていない例外が発生した場合は、 コード '404'、メッセージ
@@ -255,10 +255,10 @@ Fault による例外の処理
 
 たくさんのクラスを *XML-RPC* サーバインスタンスにアタッチすると、
 リソースを大量に消費してしまいます。各クラスを調べるために リフレクション *API*
-を (``Zend_Server_Reflection`` 経由で) 使用する必要があり、
+を (``Zend\Server\Reflection`` 経由で) 使用する必要があり、
 使用できるすべてのメソッドのシグネチャをサーバクラスに提供します。
 
-使用するリソースの量を軽減するために、 ``Zend_XmlRpc_Server_Cache``
+使用するリソースの量を軽減するために、 ``Zend\XmlRpc_Server\Cache``
 を用いてリクエスト間でサーバ定義をキャッシュできます。 ``__autoload()``
 と組み合わせることで、これはパフォーマンスを劇的に向上させます。
 
@@ -269,13 +269,13 @@ Fault による例外の処理
 
    function __autoload($class)
    {
-       Zend_Loader::loadClass($class);
+       Zend\Loader\Loader::loadClass($class);
    }
 
    $cacheFile = dirname(__FILE__) . '/xmlrpc.cache';
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
 
-   if (!Zend_XmlRpc_Server_Cache::get($cacheFile, $server)) {
+   if (!Zend\XmlRpc_Server\Cache::get($cacheFile, $server)) {
        require_once 'My/Services/Glue.php';
        require_once 'My/Services/Paste.php';
        require_once 'My/Services/Tape.php';
@@ -284,7 +284,7 @@ Fault による例外の処理
        $server->setClass('My_Services_Paste', 'paste'); // paste. 名前空間
        $server->setClass('My_Services_Tape', 'tape');   // tape. 名前空間
 
-       Zend_XmlRpc_Server_Cache::save($cacheFile, $server);
+       Zend\XmlRpc_Server\Cache::save($cacheFile, $server);
    }
 
    echo $server->handle();
@@ -323,7 +323,7 @@ Fault による例外の処理
        return md5($value);
    }
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->addFunction('md5Value');
    echo $server->handle();
 
@@ -338,7 +338,7 @@ Fault による例外の処理
 
    require_once 'Services/Comb.php';
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->setClass('Services_Comb');
    echo $server->handle();
 
@@ -369,7 +369,7 @@ can be used to specify certain defaults when registering service classes.
        }
    }
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->setClass('Services_PricingService',
                      'pricing',
                      new ProductRepository(),
@@ -383,7 +383,7 @@ from the client.
 
 .. rubric:: Passing arguments only to constructor
 
-``Zend_XmlRpc_Server`` allows to restrict argument passing to constructors only. This can be used for constructor
+``Zend\XmlRpc\Server`` allows to restrict argument passing to constructors only. This can be used for constructor
 dependency injection. To limit injection to constructors, call ``sendArgumentsToAllMethods`` and pass ``FALSE`` as
 an argument. This disables the default behavior of all arguments being injected into the remote method. In the
 example below the instance of ``ProductRepository`` and ``PurchaseRepository`` is only injected into the
@@ -416,7 +416,7 @@ constructor of ``Services_PricingService2``.
        }
    }
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->sendArgumentsToAllMethods(false);
    $server->setClass('Services_PricingService2',
                      'pricing',
@@ -443,7 +443,7 @@ the class name. Obviously passing arguments to the constructor is not possible w
    require_once 'Services/Brush.php';
    require_once 'Services/Pick.php';
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->setClass('Services_Comb', 'comb');   // メソッドをコールするには comb.* とします
    $server->setClass('Services_Brush', 'brush'); // メソッドをコールするには brush.* とします
    $server->setClass('Services_Pick', 'pick');   // メソッドをコールするには pick.* とします
@@ -465,9 +465,9 @@ the class name. Obviously passing arguments to the constructor is not possible w
    require_once 'Services/Pick.php';
 
    // Services_Exceptions を fault レスポンスで報告させるようにします
-   Zend_XmlRpc_Server_Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->setClass('Services_Comb', 'comb');   // メソッドをコールするには comb.* とします
    $server->setClass('Services_Brush', 'brush'); // メソッドをコールするには brush.* とします
    $server->setClass('Services_Pick', 'pick');   // メソッドをコールするには pick.* とします
@@ -495,9 +495,9 @@ protocol, one need to change the implementation to read request data.
    require_once 'Services/Pick.php';
 
    // Services_Exceptions を fault レスポンスで報告させるようにします
-   Zend_XmlRpc_Server_Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->setClass('Services_Comb', 'comb');   // メソッドをコールするには comb.* とします
    $server->setClass('Services_Brush', 'brush'); // メソッドをコールするには brush.* とします
    $server->setClass('Services_Pick', 'pick');   // メソッドをコールするには pick.* とします
@@ -524,9 +524,9 @@ protocol, one need to change the implementation to read request data.
    require_once 'Services/Pick.php';
 
    // Services_Exceptions を fault レスポンスで報告させるようにします
-   Zend_XmlRpc_Server_Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->setClass('Services_Comb', 'comb');   // メソッドをコールするには comb.* とします
    $server->setClass('Services_Brush', 'brush'); // メソッドをコールするには brush.* とします
    $server->setClass('Services_Pick', 'pick');   // メソッドをコールするには pick.* とします
@@ -557,18 +557,18 @@ protocol, one need to change the implementation to read request data.
    $cacheFile = dirname(__FILE__) . '/xmlrpc.cache';
 
    // Services_Exceptions を fault レスポンスで報告させるようにします
-   Zend_XmlRpc_Server_Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
 
    // サーバ定義をキャッシュから取得しようとします
-   if (!Zend_XmlRpc_Server_Cache::get($cacheFile, $server)) {
+   if (!Zend\XmlRpc_Server\Cache::get($cacheFile, $server)) {
        $server->setClass('Services_Comb', 'comb');   // メソッドをコールするには comb.* とします
        $server->setClass('Services_Brush', 'brush'); // メソッドをコールするには brush.* とします
        $server->setClass('Services_Pick', 'pick');   // メソッドをコールするには pick.* とします
 
        // キャッシュに保存します
-       Zend_XmlRpc_Server_Cache::save($cacheFile, $server);
+       Zend\XmlRpc_Server\Cache::save($cacheFile, $server);
    }
 
    // リクエストオブジェクトを作成します
@@ -587,7 +587,7 @@ protocol, one need to change the implementation to read request data.
 
 .. rubric:: Optimizing XML generation
 
-``Zend_XmlRpc_Server`` uses ``DOMDocument`` of *PHP* extension *ext/dom* to generate it's *XML* output. While
+``Zend\XmlRpc\Server`` uses ``DOMDocument`` of *PHP* extension *ext/dom* to generate it's *XML* output. While
 *ext/dom* is available on a lot of hosts it is not exactly the fastest. Benchmarks have shown, that ``XmlWriter``
 from *ext/xmlwriter* performs better.
 
@@ -600,9 +600,9 @@ performance differences.
    require_once 'Zend/XmlRpc/Server.php';
    require_once 'Zend/XmlRpc/Generator/XmlWriter.php';
 
-   Zend_XmlRpc_Value::setGenerator(new Zend_XmlRpc_Generator_XmlWriter());
+   Zend\XmlRpc\Value::setGenerator(new Zend\XmlRpc_Generator\XmlWriter());
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    ...
 
 .. note::
@@ -619,7 +619,7 @@ performance differences.
    **Benchmark your client**
 
    This optimization makes sense for the client side too. Just select the alternate *XML* generator before doing
-   any work with ``Zend_XmlRpc_Client``.
+   any work with ``Zend\XmlRpc\Client``.
 
 
 

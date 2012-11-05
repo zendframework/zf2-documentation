@@ -1,11 +1,11 @@
 .. EN-Revision: none
 .. _zend.db.adapter:
 
-Zend_Db_Adapter
+Zend\Db\Adapter
 ===============
 
 ``Zend_Db`` とその関連クラス群は、Zend Framework において *SQL*
-データベースとのインターフェイスを担当します。 ``Zend_Db_Adapter`` は、 *PHP*
+データベースとのインターフェイスを担当します。 ``Zend\Db\Adapter`` は、 *PHP*
 アプリケーションから *RDBMS* に接続する際に使用する基本クラスです。 *RDBMS*
 の種類に応じて、それぞれ個別のアダプタクラスがあります。
 
@@ -74,7 +74,7 @@ Zend_Db アダプタのコンストラクタの使用
 .. code-block:: php
    :linenos:
 
-   $db = new Zend_Db_Adapter_Pdo_Mysql(array(
+   $db = new Zend\Db\Adapter\Pdo\Mysql(array(
        'host'     => '127.0.0.1',
        'username' => 'webuser',
        'password' => 'xxxxxxxx',
@@ -86,12 +86,12 @@ Zend_Db アダプタのコンストラクタの使用
 Zend_Db のファクトリの使用
 ^^^^^^^^^^^^^^^^^
 
-コンストラクタを直接使用する以外の方法として、静的メソッド ``Zend_Db::factory()``
-を使用することもできます。 このメソッドは、必要に応じて :ref:`Zend_Loader::loadClass()
+コンストラクタを直接使用する以外の方法として、静的メソッド ``Zend\Db\Db::factory()``
+を使用することもできます。 このメソッドは、必要に応じて :ref:`Zend\Loader\Loader::loadClass()
 <zend.loader.load.class>` を使用して動的にアダプタクラスを読み込みます。
 
 最初の引数には、アダプタクラスのベース名を文字列で指定します。
-たとえば、文字列 '``Pdo_Mysql``' は ``Zend_Db_Adapter_Pdo_Mysql``
+たとえば、文字列 '``Pdo_Mysql``' は ``Zend\Db\Adapter\Pdo\Mysql``
 クラスに対応します。その次の引数は、
 アダプタのコンストラクタに指定するのと同じ形式の配列となります。
 
@@ -102,22 +102,22 @@ Zend_Db のファクトリの使用
 .. code-block:: php
    :linenos:
 
-   // 次の文は不要です。Zend_Db_Adapter_Pdo_Mysql ファイルは
+   // 次の文は不要です。Zend\Db\Adapter\Pdo\Mysql ファイルは
    // Zend_Db の factory メソッドが読み込みます。
 
    // require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
 
-   // 自動的に Zend_Db_Adapter_Pdo_Mysql クラスを読み込み、
+   // 自動的に Zend\Db\Adapter\Pdo\Mysql クラスを読み込み、
    // そのインスタンスを作成します
-   $db = Zend_Db::factory('Pdo_Mysql', array(
+   $db = Zend\Db\Db::factory('Pdo_Mysql', array(
        'host'     => '127.0.0.1',
        'username' => 'webuser',
        'password' => 'xxxxxxxx',
        'dbname'   => 'test'
    ));
 
-独自に ``Zend_Db_Adapter_Abstract``
-の派生クラスを作成し、そのクラス名のプレフィックスが "``Zend_Db_Adapter``"
+独自に ``Zend\Db_Adapter\Abstract``
+の派生クラスを作成し、そのクラス名のプレフィックスが "``Zend\Db\Adapter``"
 でない場合に ``factory()`` でそのアダプタを読み込むには、
 作成したクラス名の先頭の部分をパラメータ配列のキー 'adapterNamespace'
 で指定します。
@@ -134,7 +134,7 @@ Zend_Db のファクトリの使用
 
    // 自動的に MyProject_Db_Adapter_Pdo_Mysql クラスを読み込み、
    // インスタンスを作成します
-   $db = Zend_Db::factory('Pdo_Mysql', array(
+   $db = Zend\Db\Db::factory('Pdo_Mysql', array(
        'host'             => '127.0.0.1',
        'username'         => 'webuser',
        'password'         => 'xxxxxxxx',
@@ -162,13 +162,13 @@ Zend_Db ファクトリでの Zend_Config の使用
 .. rubric:: アダプタのファクトリメソッドでの Zend_Config オブジェクトの使用
 
 次の例では、配列から ``Zend_Config`` オブジェクトを作成します。 それ以外にも、
-:ref:`Zend_Config_Ini <zend.config.adapters.ini>` や :ref:`Zend_Config_Xml <zend.config.adapters.xml>`
+:ref:`Zend\Config\Ini <zend.config.adapters.ini>` や :ref:`Zend\Config\Xml <zend.config.adapters.xml>`
 などを用いて外部ファイルからデータを読み込むこともできます。
 
 .. code-block:: php
    :linenos:
 
-   $config = new Zend_Config(
+   $config = new Zend\Config\Config(
        array(
            'database' => array(
                'adapter' => 'Mysqli',
@@ -182,7 +182,7 @@ Zend_Db ファクトリでの Zend_Config の使用
        )
    );
 
-   $db = Zend_Db::factory($config->database);
+   $db = Zend\Db\Db::factory($config->database);
 
 ``factory()`` メソッドの 2 番目の引数には、
 アダプタのパラメータに対応するエントリをもつ連想配列となります。
@@ -215,14 +215,14 @@ Zend_Db ファクトリでの Zend_Config の使用
 
 - **charset**: 接続に使用する文字セットを指定します。
 
-- **options**: このパラメータは、すべての ``Zend_Db_Adapter``
+- **options**: このパラメータは、すべての ``Zend\Db\Adapter``
   クラスで共通のオプションを連想配列で指定します。
 
 - **driver_options**: このパラメータは、各データベース拡張モジュールに固有の
   追加オプションを連想配列で指定します。 典型的な使用例としては、 *PDO*
   ドライバの属性などがあります。
 
-- **adapterNamespace**: アダプタクラスの名前の先頭が '``Zend_Db_Adapter``'
+- **adapterNamespace**: アダプタクラスの名前の先頭が '``Zend\Db\Adapter``'
   以外である場合に、それを指定します。これは、 Zend
   以外が作成したアダプタクラスを ``factory()``
   メソッドで使いたい場合に指定します。
@@ -231,17 +231,17 @@ Zend_Db ファクトリでの Zend_Config の使用
 
 .. rubric:: ファクトリでの大文字小文字変換オプションの指定
 
-このオプションは、定数 ``Zend_Db::CASE_FOLDING`` で指定します。 これは、 *PDO* や IBM DB2
+このオプションは、定数 ``Zend\Db\Db::CASE_FOLDING`` で指定します。 これは、 *PDO* や IBM DB2
 データベースドライバにおける ``ATTR_CASE`` 属性に対応するもので、
 結果セットの文字列キーの大文字小文字変換を指定します。 設定できる値は
-``Zend_Db::CASE_NATURAL`` (デフォルト)、 ``Zend_Db::CASE_UPPER`` および ``Zend_Db::CASE_LOWER``
+``Zend\Db\Db::CASE_NATURAL`` (デフォルト)、 ``Zend\Db\Db::CASE_UPPER`` および ``Zend\Db\Db::CASE_LOWER``
 のいずれかです。
 
 .. code-block:: php
    :linenos:
 
    $options = array(
-       Zend_Db::CASE_FOLDING => Zend_Db::CASE_UPPER
+       Zend\Db\Db::CASE_FOLDING => Zend\Db\Db::CASE_UPPER
    );
 
    $params = array(
@@ -252,13 +252,13 @@ Zend_Db ファクトリでの Zend_Config の使用
        'options'        => $options
    );
 
-   $db = Zend_Db::factory('Db2', $params);
+   $db = Zend\Db\Db::factory('Db2', $params);
 
 .. _zend.db.adapter.connecting.parameters.example2:
 
 .. rubric:: ファクトリでの自動クォートオプションの指定
 
-このオプションは、定数 ``Zend_Db::AUTO_QUOTE_IDENTIFIERS`` で指定します。 この値が ``TRUE``
+このオプションは、定数 ``Zend\Db\Db::AUTO_QUOTE_IDENTIFIERS`` で指定します。 この値が ``TRUE``
 (デフォルト) の場合は、 アダプタが生成する *SQL* 文中のテーブル名やカラム名、
 エイリアスといった識別子をすべてクォートします。これにより、 *SQL*
 のキーワードや特殊文字を含む識別子を使用できるようになります。 この値が
@@ -270,7 +270,7 @@ Zend_Db ファクトリでの Zend_Config の使用
    :linenos:
 
    $options = array(
-       Zend_Db::AUTO_QUOTE_IDENTIFIERS => false
+       Zend\Db\Db::AUTO_QUOTE_IDENTIFIERS => false
    );
 
    $params = array(
@@ -281,7 +281,7 @@ Zend_Db ファクトリでの Zend_Config の使用
        'options'        => $options
    );
 
-   $db = Zend_Db::factory('Pdo_Mysql', $params);
+   $db = Zend\Db\Db::factory('Pdo_Mysql', $params);
 
 .. _zend.db.adapter.connecting.parameters.example3:
 
@@ -302,7 +302,7 @@ Zend_Db ファクトリでの Zend_Config の使用
        'driver_options' => $pdoParams
    );
 
-   $db = Zend_Db::factory('Pdo_Mysql', $params);
+   $db = Zend\Db\Db::factory('Pdo_Mysql', $params);
 
    echo $db->getConnection()
            ->getAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY);
@@ -315,7 +315,7 @@ Zend_Db ファクトリでの Zend_Config の使用
    :linenos:
 
    $options = array(
-       Zend_Db::ALLOW_SERIALIZATION => false
+       Zend\Db\Db::ALLOW_SERIALIZATION => false
    );
 
    $params = array(
@@ -326,7 +326,7 @@ Zend_Db ファクトリでの Zend_Config の使用
        'options'        => $options
    );
 
-   $db = Zend_Db::factory('Pdo_Mysql', $params);
+   $db = Zend\Db\Db::factory('Pdo_Mysql', $params);
 
 .. _zend.db.adapter.connecting.getconnection:
 
@@ -354,15 +354,15 @@ Zend_Db ファクトリでの Zend_Config の使用
 アプリケーションがシンプルになって便利でしょう。
 
 さらに、アダプタをシリアライズしてたとえばセッション変数などに格納することもできます。
-これは、アダプタだけでなくアダプタを利用する側 (``Zend_Db_Select`` オブジェクトなど)
+これは、アダプタだけでなくアダプタを利用する側 (``Zend\Db\Select`` オブジェクトなど)
 にとっても有用です。 デフォルトではアダプタのシリアライズが許可されています。
-シリアライズをしたくない場合は、上の例のように ``Zend_Db::ALLOW_SERIALIZATION``
+シリアライズをしたくない場合は、上の例のように ``Zend\Db\Db::ALLOW_SERIALIZATION``
 オプションに ``FALSE`` を渡します。
 遅延接続の理念を尊重し、アンシリアライズされたアダプタの
 自動再接続は行いません。つまり、自分で ``getConnection()``
 をコールしなければなりません。
 自動再接続を有効にするには、アダプタのオプションとして
-``Zend_Db::AUTO_RECONNECT_ON_UNSERIALIZE`` に ``TRUE`` を渡します。
+``Zend\Db\Db::AUTO_RECONNECT_ON_UNSERIALIZE`` に ``TRUE`` を渡します。
 
 .. _zend.db.adapter.connecting.getconnection.example:
 
@@ -372,9 +372,9 @@ Zend_Db ファクトリでの Zend_Config の使用
    :linenos:
 
    try {
-       $db = Zend_Db::factory('Pdo_Mysql', $parameters);
+       $db = Zend\Db\Db::factory('Pdo_Mysql', $parameters);
        $db->getConnection();
-   } catch (Zend_Db_Adapter_Exception $e) {
+   } catch (Zend\Db_Adapter\Exception $e) {
        // ID かパスワードが間違っている、あるいは RDBMS が起動していないなど……
    } catch (Zend_Exception $e) {
        // factory() が指定したアダプタクラスを読み込めなかったなど……
@@ -463,7 +463,7 @@ Zend_Db ファクトリでの Zend_Config の使用
 メソッドを使用します。
 
 このメソッドの最初の引数には、 *SELECT* 文を文字列で指定します。
-あるいは、文字列ではなく :ref:`Zend_Db_Select <zend.db.select>`
+あるいは、文字列ではなく :ref:`Zend\Db\Select <zend.db.select>`
 クラスのオブジェクトを指定することもできます。
 オブジェクトを渡した場合は、アダプタの内部でそれを自動的に *SELECT*
 文の文字列に変換します。
@@ -494,9 +494,9 @@ Zend_Db ファクトリでの Zend_Config の使用
 返り値の形式を別のものにするには ``setFetchMode()`` メソッドを使用します。
 対応しているモードは、以下の定数で表されるものです。
 
-- **Zend_Db::FETCH_ASSOC**: データを、連想配列の配列として返します。
+- **Zend\Db\Db::FETCH_ASSOC**: データを、連想配列の配列として返します。
   配列のキーは、カラム名を文字列で表したものとなります。 これは、
-  ``Zend_Db_Adapter`` クラスのデフォルトのフェッチモードです。
+  ``Zend\Db\Adapter`` クラスのデフォルトのフェッチモードです。
 
   select で取得する一覧の中に同名のカラムが含まれている場合
   (たとえば複数テーブルを *JOIN* した場合など)
@@ -506,24 +506,24 @@ Zend_Db ファクトリでの Zend_Config の使用
 
   デフォルトでは、これらの文字列はデータベースドライバから返されるものをそのまま使用します。
   通常は、これは *RDBMS* サーバでのカラム名となるでしょう。
-  大文字小文字を指定するには、 ``Zend_Db::CASE_FOLDING``
+  大文字小文字を指定するには、 ``Zend\Db\Db::CASE_FOLDING``
   オプションを使用します。これは、
   アダプタのインスタンスを作成する際に使用します。 :ref:`
   <zend.db.adapter.connecting.parameters.example1>` を参照ください。
 
-- **Zend_Db::FETCH_NUM**: データを、配列の配列で返します。
+- **Zend\Db\Db::FETCH_NUM**: データを、配列の配列で返します。
   配列は数値添字形式となり、クエリで指定した順番での位置がキーとなります。
 
-- **Zend_Db::FETCH_BOTH**: データを、配列の配列で返します。 配列のキーは、FETCH_ASSOC
+- **Zend\Db\Db::FETCH_BOTH**: データを、配列の配列で返します。 配列のキーは、FETCH_ASSOC
   モードで用いる文字列と FETCH_NUM
   モードで用いる数値の両方を含んだものとなります。 配列の要素数が、FETCH_ASSOC や
   FETCH_NUM の場合の倍になることに注意しましょう。
 
-- **Zend_Db::FETCH_COLUMN**: データを、値の配列で返します。
+- **Zend\Db\Db::FETCH_COLUMN**: データを、値の配列で返します。
   配列の各要素の値は、結果セットのあるひとつのカラムの値となります。
   デフォルトでは、これは最初の (0 番目の) カラムとなります。
 
-- **Zend_Db::FETCH_OBJ**: データを、オブジェクトの配列で返します。
+- **Zend\Db\Db::FETCH_OBJ**: データを、オブジェクトの配列で返します。
   デフォルトのクラスは、 *PHP* の組み込みクラス stdClass
   となります。結果セットのカラムは、このクラスのプロパティとしてアクセスできます。
 
@@ -534,7 +534,7 @@ Zend_Db ファクトリでの Zend_Config の使用
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchAll('SELECT * FROM bugs WHERE bug_id = ?', 2);
 
@@ -557,7 +557,7 @@ Zend_Db ファクトリでの Zend_Config の使用
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchAssoc('SELECT bug_id, bug_description, bug_status FROM bugs');
 
@@ -583,7 +583,7 @@ Zend_Db ファクトリでの Zend_Config の使用
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchCol(
        'SELECT bug_description, bug_id FROM bugs WHERE bug_id = ?', 2);
@@ -612,7 +612,7 @@ Zend_Db ファクトリでの Zend_Config の使用
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchPairs('SELECT bug_id, bug_status FROM bugs');
 
@@ -633,7 +633,7 @@ Zend_Db ファクトリでの Zend_Config の使用
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchRow('SELECT * FROM bugs WHERE bug_id = 2');
 
@@ -709,7 +709,7 @@ Zend_Db ファクトリでの Zend_Config の使用
 デフォルトでは、文字列として渡した値はすべて文字列リテラルとして扱われます。
 その値が *SQL*
 の式であること、つまりクォートしてはいけないということを指定するには、
-文字列ではなく ``Zend_Db_Expr`` 型のオブジェクトをデータ配列に渡します。
+文字列ではなく ``Zend\Db\Expr`` 型のオブジェクトをデータ配列に渡します。
 
 .. _zend.db.adapter.write.insert.example2:
 
@@ -719,7 +719,7 @@ Zend_Db ファクトリでの Zend_Config の使用
    :linenos:
 
    $data = array(
-       'created_on'      => new Zend_Db_Expr('CURDATE()'),
+       'created_on'      => new Zend\Db\Expr('CURDATE()'),
        'bug_description' => 'Something wrong',
        'bug_status'      => 'NEW'
    );
@@ -1056,12 +1056,12 @@ quote() の使用法
    $sql = 'SELECT * FROM atable WHERE intColumn = '
         . $db->quote($value, 'INTEGER');
 
-各 ``Zend_Db_Adapter`` クラスでは、その *RDBMS* 用の *SQL*
-数値データ型の名前がコード化されています。 それら以外にも ``Zend_Db::INT_TYPE`` や
-``Zend_Db::BIGINT_TYPE``\ 、そして ``Zend_Db::FLOAT_TYPE`` といった定数が用意されており、
+各 ``Zend\Db\Adapter`` クラスでは、その *RDBMS* 用の *SQL*
+数値データ型の名前がコード化されています。 それら以外にも ``Zend\Db\Db::INT_TYPE`` や
+``Zend\Db\Db::BIGINT_TYPE``\ 、そして ``Zend\Db\Db::FLOAT_TYPE`` といった定数が用意されており、
 これらを使用すると *RDBMS* に依存しないコードを書くことができます。
 
-``Zend_Db_Table`` は、テーブルのキーとなるカラムを使用する際には 自動的に *SQL*
+``Zend\Db\Table`` は、テーブルのキーとなるカラムを使用する際には 自動的に *SQL*
 データ型を ``quote()`` に指定します。
 
 .. _zend.db.adapter.quoting.quote-into:
@@ -1166,7 +1166,7 @@ quoteIdentifier() の使用法
 たいていの場合は ``Zend_Db`` クラスで自動的に *SQL*
 を生成することになるでしょう。デフォルトでは、
 すべての識別子が自動的にクォートされます。 この挙動を変更するには、オプション
-``Zend_Db::AUTO_QUOTE_IDENTIFIERS``
+``Zend\Db\Db::AUTO_QUOTE_IDENTIFIERS``
 を変更します。これは、アダプタのインスタンスを作成する際に指定します。 :ref:`
 <zend.db.adapter.connecting.parameters.example2>` を参照ください。
 
@@ -1204,7 +1204,7 @@ quoteIdentifier() の使用法
 しかし、あるトランザクションをロールバックしたとしても、
 その間に他のトランザクションで行った変更には何の影響も与えません。
 
-トランザクションを終了すると、 ``Zend_Db_Adapter``
+トランザクションを終了すると、 ``Zend\Db\Adapter``
 は再び自動コミットモードに戻ります。
 手動でのトランザクション管理を使用したい場合は、 ``beginTransaction()``
 をもう一度コールします。
@@ -1356,7 +1356,7 @@ quoteIdentifier() の使用法
    .. code-block:: php
       :linenos:
 
-      $db = Zend_Db::factory('Oracle', array(
+      $db = Zend\Db\Db::factory('Oracle', array(
           'host'       => '127.0.0.1',
           'username'   => 'webuser',
           'password'   => 'xxxxxxxx',
@@ -1387,7 +1387,7 @@ quoteIdentifier() の使用法
 --------------
 
 *PHP* のデータベース関連拡張モジュールが提供する接続オブジェクトを、
-直接操作したくなることがあるかもしれません。 ``Zend_Db_Adapter_Abstract``
+直接操作したくなることがあるかもしれません。 ``Zend\Db_Adapter\Abstract``
 が対応していないような そのデータベース固有の機能を使用したい場合などです。
 
 ``Zend_Db`` で *SQL* 文を実行する場合は、
@@ -1502,7 +1502,7 @@ Oracle
 - Oracle 拡張モジュールは位置指定によるパラメータをサポートしていません。
   名前つきパラメータを使用する必要があります。
 
-- 現在、Oracle アダプタでは ``Zend_Db::CASE_FOLDING``
+- 現在、Oracle アダプタでは ``Zend\Db\Db::CASE_FOLDING``
   オプションをサポートしていません。Oracle でこの機能を使用したい場合は、 *PDO* OCI
   アダプタを使用する必要があります。
 
@@ -1527,7 +1527,7 @@ Microsoft SQL Server
   そうでない場合は最後に実行した挿入クエリが返した ID を返します。
   ``lastSequenceId()`` メソッドの返り値は ``NULL`` となります。
 
-- ``Zend_Db_Adapter_Sqlsrv`` は、 *SQL* Server データベースに接続した直後に ``QUOTED_IDENTIFIER
+- ``Zend\Db_Adapter\Sqlsrv`` は、 *SQL* Server データベースに接続した直後に ``QUOTED_IDENTIFIER
   ON`` を設定します。 これは、ドライバで使用する識別子区切り文字を、標準 *SQL*
   形式 (**"**) に設定するものです。 *SQL* Server
   は独自形式の角括弧構文を使用していますが、 それは使わないようになります。
@@ -1574,7 +1574,7 @@ PDO Microsoft SQL Server
   あるいはバイナリカラムへのデータ格納が必要となります。 詳細な情報は `Microsoft's
   Knowledge Base`_ を参照ください。
 
-- ``Zend_Db_Adapter_Pdo_Mssql`` は、SQL Server に接続した直後に ``QUOTED_IDENTIFIER ON``
+- ``Zend\Db\Adapter\Pdo\Mssql`` は、SQL Server に接続した直後に ``QUOTED_IDENTIFIER ON``
   を設定します。これにより、 *SQL* の識別子をクォートする際に 標準の区切り文字
   (") を使用するようになります。 SQL Server
   の独自仕様である角括弧によるクォートは使用しません。
@@ -1669,7 +1669,7 @@ Firebird/Interbase
   シーケンスの名前を ``lastInsertId()`` あるいは ``lastSequenceId()``
   に指定する必要があります。
 
-- 現在、Firebird/interbase アダプタでは ``Zend_Db::CASE_FOLDING``
+- 現在、Firebird/interbase アダプタでは ``Zend\Db\Db::CASE_FOLDING``
   オプションをサポートしていません。
   クォートしていない識別子は、自動的に大文字で返されます。
 

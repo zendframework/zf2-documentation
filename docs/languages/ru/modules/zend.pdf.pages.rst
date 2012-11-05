@@ -5,37 +5,37 @@
 ==================
 
 Абстракция страницы документа PDF представлена классом
-*Zend_Pdf_Page*.
+*ZendPdf\Page*.
 
 Страницы PDF либо загружаются из существующего документа PDF,
 либо создаются.
 
 Новая страница может быть получена посредством создания
-нового объекта *Zend_Pdf_Page* или вызова метода *Zend_Pdf::newPage()*, который
-возвращает объект *Zend_Pdf_Page*. Их различие в том, что метод
-*Zend_Pdf::newPage()* создает страницу, уже прикрепленную к документу. В
+нового объекта *ZendPdf\Page* или вызова метода *ZendPdf\Pdf::newPage()*, который
+возвращает объект *ZendPdf\Page*. Их различие в том, что метод
+*ZendPdf\Pdf::newPage()* создает страницу, уже прикрепленную к документу. В
 отличие от неприкрепленой, она не может использоваться с
 несколькими документами PDF, но имеет несколько лучшую
 производительность. [#]_. Какой подход использовать — решать
 вам.
 
-Метод *Zend_Pdf::newPage()* и конструктор *Zend_Pdf_Page* принимают одинаковый
+Метод *ZendPdf\Pdf::newPage()* и конструктор *ZendPdf\Page* принимают одинаковый
 набор параметров. Это либо размер страницы ($x, $y) в пойнтах (1pt =
 1/72 inch), либо предопределенная константа, которая трактуется
 как тип страницы:
 
-   - Zend_Pdf_Const::PAGESIZE_A4
+   - ZendPdf\Const::PAGESIZE_A4
 
-   - Zend_Pdf_Const::PAGESIZE_A4_LANDSCAPE
+   - ZendPdf\Const::PAGESIZE_A4_LANDSCAPE
 
-   - Zend_Pdf_Const::PAGESIZE_LETTER
+   - ZendPdf\Const::PAGESIZE_LETTER
 
-   - Zend_Pdf_Const::PAGESIZE_LETTER_LANDSCAPE
+   - ZendPdf\Const::PAGESIZE_LETTER_LANDSCAPE
 
 
 
 Страницы документа хранятся в открытом члене ``$pages`` класса
-*Zend_Pdf*. Это массив объектов *Zend_Pdf_Page*. Он полностью описывает
+*ZendPdf*. Это массив объектов *ZendPdf\Page*. Он полностью описывает
 набор и порядок страниц документа и с ним можно работать, как с
 обычным массивом:
 
@@ -50,9 +50,9 @@
    $pdf->pages = array_reverse($pdf->pages);
    ...
    // Добавление новой страницы
-   $pdf->pages[] = new Zend_Pad_Page(Zend_Pdf_Const::PAGESIZE_A4);
+   $pdf->pages[] = new Zend\Pad\Page(ZendPdf\Const::PAGESIZE_A4);
    // Добавление новой страницы
-   $pdf->pages[] = $pdf->newPage(Zend_Pdf_Const::PAGESIZE_A4);
+   $pdf->pages[] = $pdf->newPage(ZendPdf\Const::PAGESIZE_A4);
 
    // Удаление определенной страницы
    unset($pdf->pages[$id]);
@@ -61,7 +61,7 @@
    ?>
 
 
-.. [#] Имеется ограничение версии V1.0 модуля Zend_Pdf. Она будет
+.. [#] Имеется ограничение версии V1.0 модуля ZendPdf. Она будет
        устранена в будущих версиях. Но неприкрепленные страницы
        всегда дают лучший (более оптимальный) результат при
        совместном использовании в нескольких документах.

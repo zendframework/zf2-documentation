@@ -4,14 +4,14 @@
 Int
 ===
 
-``Zend_Validate_Int`` valide une valeur envers un entier. Les entiers localisés sont aussi gérés.
+``Zend\Validate\Int`` valide une valeur envers un entier. Les entiers localisés sont aussi gérés.
 
 .. _zend.validator.set.int.options:
 
-Options supportées par Zend_Validate_Int
+Options supportées par Zend\Validate\Int
 ----------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_Int``:
+Les options suivantes sont supportées par ``Zend\Validate\Int``:
 
 - **locale**: Affecte la locale à utiliser lors de la validation.
 
@@ -26,7 +26,7 @@ n'est passée, la locale de l'environnement sera utilisée:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Int();
+   $validator = new Zend\Validate\Int();
 
    $validator->isValid(1234);   // retourne true
    $validator->isValid(1234.5); // retourne false
@@ -45,13 +45,13 @@ différente en fonction des pays/régions. Par exemple en anglais vous pouvez é
 tous les deux des entiers mais le regroupement des chiffres est optionnel. En allemand, vous écririez "1.234" et
 en français "1 234".
 
-``Zend_Validate_Int`` peut valider de telles notations. Il est limité à la locale utilisée et valide le
+``Zend\Validate\Int`` peut valider de telles notations. Il est limité à la locale utilisée et valide le
 séparateur utilisé en fonction de la locale. Voyez le code ci-après:
 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Int(array('locale' => 'de'));
+   $validator = new Zend\Validate\Int(array('locale' => 'de'));
 
    $validator->isValid(1234); // retourne true
    $validator->isValid("1,234"); // retourne false

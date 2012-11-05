@@ -8,21 +8,21 @@
 特定の目的のために使用する独自のバリデータを書くことは避けられないでしょう。
 ここでは、独自のバリデータを書く方法について説明します。
 
-``Zend_Validate_Interface`` では、２つのメソッド ``isValid()``\ 、 および ``getMessages()``
+``Zend\Validate\Interface`` では、２つのメソッド ``isValid()``\ 、 および ``getMessages()``
 を定義しています。これらを自分のクラスで実装して
-独自のバリデーションオブジェクトを作成します。 ``Zend_Validate_Interface``
-を実装したクラスは、 ``Zend_Validate::addValidator()``
-でバリデータチェインに追加できます。 このオブジェクトは :ref:`Zend_Filter_Input
+独自のバリデーションオブジェクトを作成します。 ``Zend\Validate\Interface``
+を実装したクラスは、 ``Zend\Validate\Validate::addValidator()``
+でバリデータチェインに追加できます。 このオブジェクトは :ref:`Zend\Filter\Input
 <zend.filter.input>` でも使用します。
 
-上の ``Zend_Validate_Interface`` についての説明からも推測できるように、 Zend Framework
+上の ``Zend\Validate\Interface`` についての説明からも推測できるように、 Zend Framework
 が提供しているバリデーションクラスの返り値は、
 検証に成功したか失敗したかを表す boolean 値となります。また、 **なぜ**
 検証が失敗したのかについての情報も提供します。この理由がわかると、
 アプリケーション側で何かと便利です。たとえば、ユーザビリティ改善のための統計情報として利用することなどができます。　
 
-基本的な検証失敗メッセージ機能を実装しているのが ``Zend_Validate_Abstract`` です。
-バリデーションクラスを作成する際にこの機能を組み込むには、 ``Zend_Validate_Abstract``
+基本的な検証失敗メッセージ機能を実装しているのが ``Zend\Validate\Abstract`` です。
+バリデーションクラスを作成する際にこの機能を組み込むには、 ``Zend\Validate\Abstract``
 を継承します。 継承したクラス内で ``isValid()`` メソッドのロジックを実装し、
 発生しうる失敗の形式に対応したメッセージ変数とメッセージテンプレートを定義します。
 検証に失敗した場合には ``isValid()`` は ``FALSE``
@@ -45,7 +45,7 @@
 .. code-block:: php
    :linenos:
 
-   class MyValid_Float extends Zend_Validate_Abstract
+   class MyValid_Float extends Zend\Validate\Abstract
    {
        const FLOAT = 'float';
 
@@ -93,7 +93,7 @@
 .. code-block:: php
    :linenos:
 
-   class MyValid_NumericBetween extends Zend_Validate_Abstract
+   class MyValid_NumericBetween extends Zend\Validate\Abstract
    {
        const MSG_NUMERIC = 'msgNumeric';
        const MSG_MINIMUM = 'msgMinimum';
@@ -172,7 +172,7 @@
 .. code-block:: php
    :linenos:
 
-   class MyValid_PasswordStrength extends Zend_Validate_Abstract
+   class MyValid_PasswordStrength extends Zend\Validate\Abstract
    {
        const LENGTH = 'length';
        const UPPER  = 'upper';

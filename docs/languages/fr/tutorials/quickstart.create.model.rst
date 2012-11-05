@@ -9,13 +9,13 @@ défaut que nous avons conçu instancie un autoloader. Nous pouvons lui attacher
 puisse trouver des classes différentes. Typiquement nous voulons que nos classes MVC soient groupées sous une
 même arborescence -- dans ce cas, ``application/``-- et nous utiliserons un préfixe commun.
 
-``Zend_Controller_Front`` a une notion de "modules", qui sont des mini-applications individuelles. Les modules
+``Zend\Controller\Front`` a une notion de "modules", qui sont des mini-applications individuelles. Les modules
 reflètent la structure de répertoires que la commande ``zf`` crée sous ``application/``, et toutes les classes
 à l'intérieur sont supposées commencer par un préfixe étant le nom du module. ``application/`` est lui-même
 un module -- le module "default" ou "application". Ainsi, nous allons vouloir configurer un autoload pour les
 ressources sous ce dossier.
 
-``Zend_Application_Module_Autoloader`` propose la fonctionnalité nécessaire à la correspondance entre les
+``Zend\Application_Module\Autoloader`` propose la fonctionnalité nécessaire à la correspondance entre les
 ressources d'un module et ses dossiers, il propose pour cela un mécanisme de nommage standard. Une instance de la
 classe est créee par défaut pendant l'initialisation de l'objet de bootstrap et utilisera le préfixe de module
 "Application". De ce fait, nos classes de modèles, formulaires, et tables commenceront toutes par le préfixe de
@@ -219,17 +219,17 @@ pas nécessaire en production. Créez le script ``scripts/load.sqlite.php`` avec
        get_include_path(),
    )));
    require_once 'Zend/Loader/Autoloader.php';
-   Zend_Loader_Autoloader::getInstance();
+   Zend\Loader\Autoloader::getInstance();
 
    // Definit des options CLI
-   $getopt = new Zend_Console_Getopt(array(
+   $getopt = new Zend\Console\Getopt(array(
        'withdata|w' => 'Load database with sample data',
        'env|e-s'    => 'Application environment for which to create database (defaults to development)',
        'help|h'     => 'Help -- usage message',
    ));
    try {
        $getopt->parse();
-   } catch (Zend_Console_Getopt_Exception $e) {
+   } catch (Zend\Console_Getopt\Exception $e) {
        // Mauvaises options passées: afficher l'aide
        echo $e->getUsageMessage();
        return false;
@@ -248,7 +248,7 @@ pas nécessaire en production. Créez le script ``scripts/load.sqlite.php`` avec
        || define('APPLICATION_ENV', (null === $env) ? 'development' : $env);
 
    // Initialise Zend_Application
-   $application = new Zend_Application(
+   $application = new Zend\Application\Application(
        APPLICATION_ENV,
        APPLICATION_PATH . '/configs/application.ini'
    );
@@ -326,11 +326,11 @@ Vous devriez voir ceci:
 
 Nous avons maintenant une base de données et une table pour notre application de livre d'or. Les prochaines
 étapes seront de créer le code applicatif. Ceci incluera une source de données (dans notre cas nous utiliserons
-``Zend_Db_Table``), un datamapper pour connecter cette source à notre modèle et enfin un contrôleur pour
+``Zend\Db\Table``), un datamapper pour connecter cette source à notre modèle et enfin un contrôleur pour
 intéragir avec le modèle et afficher du contenu divers.
 
-Nous allons utiliser un `Table Data Gateway`_ pour se connecter à notre source de données; ``Zend_Db_Table``
-propose cette fonctionnalité. Créons les classes basées sur ``Zend_Db_Table``. Comme nous avons opéré pour les
+Nous allons utiliser un `Table Data Gateway`_ pour se connecter à notre source de données; ``Zend\Db\Table``
+propose cette fonctionnalité. Créons les classes basées sur ``Zend\Db\Table``. Comme nous avons opéré pour les
 layouts ou la base, nous pouvons utiliser la commande ``zf`` pour nous aider, avec la commande complète ``create
 db-table``. Celle-ci prend deux arguments au minimum, le nom de la classe à créer et la table qui y fera
 référence.
@@ -353,7 +353,7 @@ le fichier ``Guestbook.php``. Si vous ouvrez ce fichier, vous y verrez le conten
    /**
     * This is the DbTable class for the guestbook table.
     */
-   class Application_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
+   class Application_Model_DbTable_Guestbook extends Zend\Db_Table\Abstract
    {
        /** Table name */
        protected $_name    = 'guestbook';
@@ -362,7 +362,7 @@ le fichier ``Guestbook.php``. Si vous ouvrez ce fichier, vous y verrez le conten
 Notez le préfixe de classe: ``Application_Model_DbTable``. Le premier segment est "Application", le nom du module,
 puis vient le nom du composant "Model_DbTable" qui est lié au dossier ``models/DbTable/`` du module.
 
-Pour étendre ``Zend_Db_Table``, seuls un nom de table et éventuellement un nom de clé primaire (si ce n'est pas
+Pour étendre ``Zend\Db\Table``, seuls un nom de table et éventuellement un nom de clé primaire (si ce n'est pas
 "id") sont nécessaires.
 
 Créons maintenant un `Data Mapper`_. Un **Data Mapper** fait correspondre un objet métier à la base de données.
@@ -408,7 +408,7 @@ pour y voir ceci:
            if (is_string($dbTable)) {
                $dbTable = new $dbTable();
            }
-           if (!$dbTable instanceof Zend_Db_Table_Abstract) {
+           if (!$dbTable instanceof Zend\Db_Table\Abstract) {
                throw new Exception('Invalid table data gateway provided');
            }
            $this->_dbTable = $dbTable;
@@ -607,7 +607,7 @@ suit:
 
    // application/controllers/GuestbookController.php
 
-   class GuestbookController extends Zend_Controller_Action
+   class GuestbookController extends Zend\Controller\Action
    {
        public function indexAction()
        {
@@ -656,7 +656,7 @@ inclure ceci:
 
    Le script de chargement des données montré dans la section en question (``scripts/load.sqlite.php``) peut
    être utilisé pour créer une base de données pour chaque environnement défini et la remplir de données
-   d'exemple. En interne, il utilise ``Zend_Console_Getopt``, qui permet de préciser des options à la commande.
+   d'exemple. En interne, il utilise ``Zend\Console\Getopt``, qui permet de préciser des options à la commande.
    Si vous passez "-h" ou "--help", toutes les options disponibles seront affichées:
 
    .. code-block:: php

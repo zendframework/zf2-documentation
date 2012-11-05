@@ -4,17 +4,17 @@
 CreditCard
 ==========
 
-``Zend_Validate_CreditCard`` erlaubt es zu prüfen ob ein angegebener Wert eine Kreditkarten Nummer sein könnte.
+``Zend\Validate\CreditCard`` erlaubt es zu prüfen ob ein angegebener Wert eine Kreditkarten Nummer sein könnte.
 
 Eine Kreditkarte enthält verschiedene Elemente an Metadaten, inklusive ein Hologramm, die Accountnummer, Logo,
 Ablaufdatum, Sicherheitscode und den Namen des Kreditkartenbesitzers. Die Algorithmen für die Prüfung der
 Kombination an Metadaten sind nur der ausgebenden Firma bekannt, und sollten mit Ihnen zum Zwecke der Zahlung
 geprüft werden. Trotzdem ist es oft nützlich zu wissen ob eine akutell angegebene Nummer in den Bereich der
 möglichen Nummern fällt **bevor** so eine Überprüfung durchgeführt wird, und daher prüft
-``Zend_Validate_CreditCard`` einfach ob die angegebene Kreditkartennummer entspricht.
+``Zend\Validate\CreditCard`` einfach ob die angegebene Kreditkartennummer entspricht.
 
 Für die Fälle in denen man ein Service hat, das tiefere Prüfungen durchführt, bietet
-``Zend_Validate_CreditCard`` auch die Möglichkeit einen Service Callback anzuhängen der ausgeführt wird sobald
+``Zend\Validate\CreditCard`` auch die Möglichkeit einen Service Callback anzuhängen der ausgeführt wird sobald
 die Kreditkartennummer vorbehaltlich als gültig geprüft wurde; dieser Callback wird dann ausgeführt, und sein
 Rückgabewert wird die komplette Gültigkeit erkennen.
 
@@ -57,10 +57,10 @@ Die folgenden Kreditkarteninstitute werden akzeptiert:
 
 .. _zend.validate.set.creditcard.options:
 
-Unterstützte Optionen für Zend_Validate_CreditCard
+Unterstützte Optionen für Zend\Validate\CreditCard
 --------------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Validate_CreditCard`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Validate\CreditCard`` unterstützt:
 
 - **service**: Ein Callback zu einem Online Service welcher zusätzlich für die Prüfung verwendet wird.
 
@@ -71,13 +71,13 @@ Die folgenden Optionen werden für ``Zend_Validate_CreditCard`` unterstützt:
 Grundsätzliche Verwendung
 -------------------------
 
-Es gibt verschiedene Kreditkarten Institute wie mit ``Zend_Validate_CreditCard`` geprüft werden können.
+Es gibt verschiedene Kreditkarten Institute wie mit ``Zend\Validate\CreditCard`` geprüft werden können.
 Standardmäßig werden alle bekannte Institute akzeptiert. Siehe das folgende Beispiel:
 
 .. code-block:: .validator.
    :linenos:
 
-   $valid = new Zend_Validate_CreditCard();
+   $valid = new Zend\Validate\CreditCard();
    if ($valid->isValid($input)) {
        // Die Eingabe scheint gültig zu sein
    } else {
@@ -92,7 +92,7 @@ Definierte Kreditkarte akzeptieren
 ----------------------------------
 
 Manchmal ist es notwendig nur definierte Kreditkarten Institute zu akzeptieren statt alle; z.B wenn man einen
-Webshop hat der nur Visa und American Express Karten akzeptiert. ``Zend_Validate_CreditCard`` erlaubt einem exakt
+Webshop hat der nur Visa und American Express Karten akzeptiert. ``Zend\Validate\CreditCard`` erlaubt einem exakt
 das zu tun, indem auf genau diese Institute limitiert wird.
 
 Um ein Limit zu verwenden kann man entweder spezifische Institute bei der Initiierung angeben, oder im nachhinein
@@ -103,8 +103,8 @@ Man kann ein einzelnes Institut angeben:
 .. code-block:: .validator.
    :linenos:
 
-   $valid = new Zend_Validate_CreditCard(
-       Zend_Validate_CreditCard::AMERICAN_EXPRESS
+   $valid = new Zend\Validate\CreditCard(
+       Zend\Validate\CreditCard::AMERICAN_EXPRESS
    );
 
 Wenn man mehrere Institute erlauben will, dann kann man diese als Array angeben:
@@ -112,9 +112,9 @@ Wenn man mehrere Institute erlauben will, dann kann man diese als Array angeben:
 .. code-block:: .validator.
    :linenos:
 
-   $valid = new Zend_Validate_CreditCard(array(
-       Zend_Validate_CreditCard::AMERICAN_EXPRESS,
-       Zend_Validate_CreditCard::VISA
+   $valid = new Zend\Validate\CreditCard(array(
+       Zend\Validate\CreditCard::AMERICAN_EXPRESS,
+       Zend\Validate\CreditCard::VISA
    ));
 
 Wie bei allen Prüfern kann man auch ein assoziatives Array an Optionen oder eine Instanz von ``Zend_Config``
@@ -123,8 +123,8 @@ angeben. In diesem Fall muß man die Institute mit dem Arrayschlüssel ``type`` 
 .. code-block:: .validator.
    :linenos:
 
-   $valid = new Zend_Validate_CreditCard(array(
-       'type' => array(Zend_Validate_CreditCard::AMERICAN_EXPRESS)
+   $valid = new Zend\Validate\CreditCard(array(
+       'type' => array(Zend\Validate\CreditCard::AMERICAN_EXPRESS)
    ));
 
 .. _zend.validate.set.creditcard.institute.table:
@@ -167,10 +167,10 @@ Man kann Institute auch im Nachhinein setzen oder hinzufügen indem die Methoden
 .. code-block:: .validator.
    :linenos:
 
-   $valid = new Zend_Validate_CreditCard();
+   $valid = new Zend\Validate\CreditCard();
    $valid->setType(array(
-       Zend_Validate_CreditCard::AMERICAN_EXPRESS,
-       Zend_Validate_CreditCard::VISA
+       Zend\Validate\CreditCard::AMERICAN_EXPRESS,
+       Zend\Validate\CreditCard::VISA
    ));
 
 .. note::
@@ -187,12 +187,12 @@ Man kann Institute auch im Nachhinein setzen oder hinzufügen indem die Methoden
 Prüfung durch Verwendung einer fremden API
 ------------------------------------------
 
-Wie vorher erwähnt prüft ``Zend_Validate_CreditCard`` nur die Kreditkarten Nummer. Glücklicherweise bieten
+Wie vorher erwähnt prüft ``Zend\Validate\CreditCard`` nur die Kreditkarten Nummer. Glücklicherweise bieten
 einige Institute online *API*\ s welche eine Kreditkarten Nummer durch Verwendung von Algorithmen prüfen kann,
 welche nicht öffentlich bekannt sind. Die meisten dieser Services sind zu bezahlen. Deshalb ist diese Art der
 Prüfung standardmäßig deaktiviert.
 
-Wenn man auf so eine *API* zugreift, kann man diese als Addon für ``Zend_Validate_CreditCard`` verwenden um die
+Wenn man auf so eine *API* zugreift, kann man diese als Addon für ``Zend\Validate\CreditCard`` verwenden um die
 Sicherheit der Prüfung zu erhöhen.
 
 Um das zu tun muss man einfach einen Callback angeben der aufgerufen wird wenn die generische Prüfung erfolgreich
@@ -217,7 +217,7 @@ mögliche Optionen kann man unter :ref:`Callback <zend.validate.set.callback>` n
 
    // Die Prüfung
    $service = new CcService();
-   $valid   = new Zend_Validate_CreditCard(Zend_Validate_CreditCard::VISA);
+   $valid   = new Zend\Validate\CreditCard(Zend\Validate\CreditCard::VISA);
    $valid->setService(array($service, 'checkOnline'));
 
 Wie man sieht wird die Callback Methode mit der Kreditkarten Nummer als erster Parameter aufgerufen, und die

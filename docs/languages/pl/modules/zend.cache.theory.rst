@@ -8,11 +8,11 @@ Są trzy kluczowe składniki w ``Zend_Cache``. Pierwszym jest unikalny identyfik
 używany do identyfikowania rekordów bufora. Drugim jest dyrektywa **'lifetime'** jaką pokazano w przykładach;
 definiuje ona jak długo buforowany zasób jest uznawany za 'świeży'. Trzecim kluczowym składnikiem jest
 warunkowe wykonanie więc część twojego kodu może być ominięta, co powoduje wzrost wydajności. Główna
-funkcja frontendu (np. ``Zend_Cache_Core::get()``) jest zawsze zaprojektowana tak, aby zwracała wartość false
+funkcja frontendu (np. ``Zend\Cache\Core::get()``) jest zawsze zaprojektowana tak, aby zwracała wartość false
 gdy bufor jest nieaktualny, jeśli jest to sensowne dla danego frontendu. To pozwala użytkownikom na ominięcie
 bloków kodu, które chcą buforować, zawierając je w wyrażenie **if(){ ... }** gdzie warunkiem jest metoda
 ``Zend_Cache``. Na końcu takich bloków musisz zapisać to co wygenerowałeś (np. za pomocą metody
-``Zend_Cache_Core::save()``).
+``Zend\Cache\Core::save()``).
 
 .. note::
 
@@ -51,7 +51,7 @@ przykładzie:
 
    // Tworzymy instancję klasy Zend_Cache
    // (oczywiście dwa ostatnie argumenty są opcjonalne)
-   $cache = Zend_Cache::factory($frontendName,
+   $cache = Zend\Cache\Cache::factory($frontendName,
                                 $backendName,
                                 $frontendOptions,
                                 $backendOptions);
@@ -61,7 +61,7 @@ rozumiesz jak przekazać parametry do wybranego backendu.
 
 .. note::
 
-   Zawsze używaj metody ``Zend_Cache::factory()`` aby pobrać instancje frontendu. Tworzenie instancji frontendu
+   Zawsze używaj metody ``Zend\Cache\Cache::factory()`` aby pobrać instancje frontendu. Tworzenie instancji frontendu
    czy backendu nie będzie przynosiło oczekiwanych rezultatów.
 
 .. _zend.cache.tags:
@@ -102,10 +102,10 @@ aby usunąć wszystkie rekordy bufora:
    :linenos:
 
    // czyszczenie wszystkich rekordów
-   $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_ALL);
 
    // czyszczenie jedynie nieaktualnych rekordów
-   $cache->clean(Zend_Cache::CLEANING_MODE_OLD);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_OLD);
 
 Jeśli chcesz usunąć rekordy bufora oznaczone etykietami 'tagA' oraz 'tagC':
 
@@ -113,7 +113,7 @@ Jeśli chcesz usunąć rekordy bufora oznaczone etykietami 'tagA' oraz 'tagC':
    :linenos:
 
    $cache->clean(
-       Zend_Cache::CLEANING_MODE_MATCHING_TAG,
+       Zend\Cache\Cache::CLEANING_MODE_MATCHING_TAG,
        array('tagA', 'tagC')
    );
 
@@ -123,7 +123,7 @@ Jeśli chcesz usunąć rekordy bufora nieoznaczone etykietami 'tagA' oraz 'tagC'
    :linenos:
 
    $cache->clean(
-       Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG,
+       Zend\Cache\Cache::CLEANING_MODE_NOT_MATCHING_TAG,
        array('tagA', 'tagC')
    );
 
@@ -133,7 +133,7 @@ Jeśli chcesz usunąć rekordy bufora oznaczone etykietami 'tagA' lub 'tagC':
    :linenos:
 
    $cache->clean(
-       Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG,
+       Zend\Cache\Cache::CLEANING_MODE_MATCHING_ANY_TAG,
        array('tagA', 'tagC')
    );
 

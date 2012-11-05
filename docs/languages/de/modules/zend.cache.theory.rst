@@ -8,11 +8,11 @@ Es gibt 3 Schlüsselkonzepte in ``Zend_Cache``. Eines ist die eindeutige Identif
 wird, um Cache Datensätze zu identifizieren. Das zweite ist die **'lifetime'** Direktive, wie im Beispiel gezeigt;
 sie definiert, wie lange eine gecachte Ressource als 'frisch' betrachtet wird. Das dritte Konzept ist die bedingte
 Ausführung, so das Teile des Codes komplett übersprungen werden können, was die Leistung steigert. Die
-Haupt-Frontend Funktion (eg. ``Zend_Cache_Core::get()``) ist immer so gestaltet, das ``FALSE`` zurückgegeben wird,
+Haupt-Frontend Funktion (eg. ``Zend\Cache\Core::get()``) ist immer so gestaltet, das ``FALSE`` zurückgegeben wird,
 wenn ein Cache fehlt. Aber nur, wenn das für die Natur des Frontends Sinn macht. Das erlaubt es Endbenutzern, die
 Teile des Codes, die gecached (oder übersprungen) werden sollen, in **if(){ ... }** Anweisungen zu umhüllen,
 wobei die Bedingung die ``Zend_Cache`` Methode selbst ist. Am Ende der Blöcke muss das erstellte auf alle Fälle
-gespeichert werden (z.B. ``Zend_Cache_Core::save()``).
+gespeichert werden (z.B. ``Zend\Cache\Core::save()``).
 
 .. note::
 
@@ -52,7 +52,7 @@ gegeben:
 
    // Wir erstellen eine gute Instanz
    // (natürlich sind die letzten 2 Argumente optional)
-   $cache = Zend_Cache::factory($frontendName,
+   $cache = Zend\Cache\Cache::factory($frontendName,
                                 $backendName,
                                 $frontendOptions,
                                 $backendOptions);
@@ -62,7 +62,7 @@ gezeigt enthält und dass verstanden wird, wie Parameter an das ausgewählte Bac
 
 .. note::
 
-   Immer ``Zend_Cache::factory()`` benutzen, um eine Frontend Instanz zu bekommen. Das selbstständige
+   Immer ``Zend\Cache\Cache::factory()`` benutzen, um eine Frontend Instanz zu bekommen. Das selbstständige
    Instantiieren von Frontends und Backends funktioniert nicht so wie erwartet.
 
 .. _zend.cache.tags:
@@ -103,10 +103,10 @@ Zum Beispiel um alle Cache Datensätze zu entfernen :
    :linenos:
 
    // Löschen aller Datensätze
-   $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_ALL);
 
    // Nur abgelaufene löschen
-   $cache->clean(Zend_Cache::CLEANING_MODE_OLD);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_OLD);
 
 Um Cache Einträge zu löschen, die zu den Tags 'tagA' und 'tagC' entsprechen :
 
@@ -114,7 +114,7 @@ Um Cache Einträge zu löschen, die zu den Tags 'tagA' und 'tagC' entsprechen :
    :linenos:
 
    $cache->clean(
-       Zend_Cache::CLEANING_MODE_MATCHING_TAG,
+       Zend\Cache\Cache::CLEANING_MODE_MATCHING_TAG,
        array('tagA', 'tagC')
    );
 
@@ -124,7 +124,7 @@ Um Cache Einträge zu löschen die den Tags 'tagA' oder 'tagC' nicht entsprechen
    :linenos:
 
    $cache->clean(
-       Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG,
+       Zend\Cache\Cache::CLEANING_MODE_NOT_MATCHING_TAG,
        array('tagA', 'tagC')
    );
 
@@ -134,7 +134,7 @@ Um Cache Einträge zu löschen, die zu den Tags 'tagA' oder 'tagC' entsprechen :
    :linenos:
 
    $cache->clean(
-       Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG,
+       Zend\Cache\Cache::CLEANING_MODE_MATCHING_ANY_TAG,
        array('tagA', 'tagC')
    );
 

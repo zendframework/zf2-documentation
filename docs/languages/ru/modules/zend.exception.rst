@@ -15,7 +15,7 @@
    :linenos:
 
    try {
-       Zend_Loader::loadClass('nonexistantclass');
+       Zend\Loader\Loader::loadClass('nonexistantclass');
    } catch (Zend_Exception $e) {
        echo "Caught exception: " . get_class($e) . "\n";
        echo "Message: " . $e->getMessage() . "\n";

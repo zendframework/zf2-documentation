@@ -12,7 +12,7 @@ Callback
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Callback('strrev');
+   $filter = new Zend\Filter\Callback('strrev');
 
    print $filter->filter('Hello!');
    // "!olleH"を返します
@@ -30,7 +30,7 @@ Callback
    }
 
    // フィルター定義
-   $filter = new Zend_Filter_Callback(array('MyClass', 'Reverse'));
+   $filter = new Zend\Filter\Callback(array('MyClass', 'Reverse'));
    print $filter->filter('Hello!');
 
 実際に設定されているコールバックを取得するには ``getCallback()`` を使い、
@@ -43,7 +43,7 @@ Callback
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Callback(
+   $filter = new Zend\Filter\Callback(
        array(
            'callback' => 'MyMethod',
            'options'  => array('key' => 'param1', 'key2' => 'param2')

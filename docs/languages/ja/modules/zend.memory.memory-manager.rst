@@ -9,8 +9,8 @@
 メモリマネージャの作成
 -----------
 
-新しいメモリマネージャ (``Zend_Memory_Manager`` オブジェクト) を作成するには、
-``Zend_Memory::factory($backendName [, $backendOprions])`` メソッドを使用します。
+新しいメモリマネージャ (``Zend\Memory\Manager`` オブジェクト) を作成するには、
+``Zend\Memory\Memory::factory($backendName [, $backendOprions])`` メソッドを使用します。
 
 最初の引数 *$backendName* は文字列で、 ``Zend_Cache``
 がサポートするバックエンド実装のいずれかの名前を指定します。
@@ -25,7 +25,7 @@
        'cache_dir' => './tmp/' // スワップしたメモリブロックを配置するディレクトリ
    );
 
-   $memoryManager = Zend_Memory::factory('File', $backendOptions);
+   $memoryManager = Zend\Memory\Memory::factory('File', $backendOptions);
 
 ``Zend_Memory`` は :ref:`Zend_Cache のバックエンド <zend.cache.backends>`
 を使用してデータを保存します。
@@ -36,7 +36,7 @@
    .. code-block:: php
       :linenos:
 
-      $memoryManager = Zend_Memory::factory('None');
+      $memoryManager = Zend\Memory\Memory::factory('None');
 
 
 
@@ -61,7 +61,7 @@
 ^^^^^^^^^^^^^^
 
 移動可能なオブジェクト (スワップされる可能性のあるオブジェクト)
-を作成するには、 ``Zend_Memory_Manager::create([$data])`` メソッドを使用します。
+を作成するには、 ``Zend\Memory\Manager::create([$data])`` メソッドを使用します。
 
    .. code-block:: php
       :linenos:
@@ -79,7 +79,7 @@
 ^^^^^^^^^^^^^^^
 
 ロックされたオブジェクト (スワップされないオブジェクト) を作成するには、
-``Zend_Memory_Manager::createLocked([$data])`` メソッドを使用します。
+``Zend\Memory\Manager::createLocked([$data])`` メソッドを使用します。
 
    .. code-block:: php
       :linenos:

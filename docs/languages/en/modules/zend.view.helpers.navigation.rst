@@ -327,12 +327,12 @@ In addition to the container above, the following setup is assumed:
    :linenos:
 
    // Setup router (default routes and 'archive' route):
-   $front = Zend_Controller_Front::getInstance();
+   $front = Zend\Controller\Front::getInstance();
    $router = $front->getRouter();
    $router->addDefaultRoutes();
    $router->addRoute(
        'archive',
-       new Zend_Controller_Router_Route(
+       new Zend\Controller\Router\Route(
            '/archive/:year',
            array(
                'module'     => 'company',

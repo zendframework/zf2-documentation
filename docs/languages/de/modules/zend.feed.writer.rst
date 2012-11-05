@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.feed.writer:
 
-Zend_Feed_Writer
+Zend\Feed\Writer
 ================
 
 .. _zend.feed.writer.introduction:
@@ -9,25 +9,25 @@ Zend_Feed_Writer
 Einführung
 ----------
 
-``Zend_Feed_Writer`` ist die Bruderkomponente zu ``Zend_Feed_Reader`` und verantwortlich für die Erzeugung von
+``Zend\Feed\Writer`` ist die Bruderkomponente zu ``Zend\Feed\Reader`` und verantwortlich für die Erzeugung von
 Feeds für die Ausgabe. Sie unterstützt die Atom 1.0 Spezifikation (*RFC* 4287) und *RSS* 2.0 wie vom *RSS*
 Advisory Board (*RSS* 2.0.11) spezifiziert. Es weicht nicht von diesen Standards ab. Trotzdem bietet es ein
 einfaches System der Erweiterung, welches es erlaubt jede Erweiterung und jedes Modul für jede der zwei
 Spezifikationen zu implementieren, wenn diese nicht von Haus aus angeboten werden.
 
-In vieler Hinsicht ist ``Zend_Feed_Writer`` das Gegenteil von ``Zend_Feed_Reader``. Während ``Zend_Feed_Reader``
+In vieler Hinsicht ist ``Zend\Feed\Writer`` das Gegenteil von ``Zend\Feed\Reader``. Während ``Zend\Feed\Reader``
 darauf abzielt, eine einfach zu verwendende Architektur zur Verfügung zu stellen, die sich durch Getter-Methoden
-auszeichnet, stellt ``Zend_Feed_Writer`` ähnlich benannte Setter oder Mutatoren bereit. Das stellt sicher, dass
-die *API* keine weitere Lernkurve aufwirft, wenn sich jemand bereits mit ``Zend_Feed_Reader`` auskennt.
+auszeichnet, stellt ``Zend\Feed\Writer`` ähnlich benannte Setter oder Mutatoren bereit. Das stellt sicher, dass
+die *API* keine weitere Lernkurve aufwirft, wenn sich jemand bereits mit ``Zend\Feed\Reader`` auskennt.
 
 Als Ergebnis dieses Designs ist der Rest nämlich einleuchtend. Hinter den Kulissen wird jedes Datenset eines
-``Zend_Feed_Writer``-Daten-Containers während der Darstellungszeit in ein DOMDocument-Objekt übersetzt, indem die
+``Zend\Feed\Writer``-Daten-Containers während der Darstellungszeit in ein DOMDocument-Objekt übersetzt, indem die
 notwendigen Feed-Elemente verwendet werden. Für jeden unterstützten Feed-Typen gibt es beide, sowohl einen Atom
 1.0 als auch einen *RSS* 2.0 Renderer. Die Verwendung der DOMDocument-Klasse statt einer Templatelösung hat viele
 Vorteile. Der offensichtlichste ist die Möglichkeit das DOMDocument zu exportieren, um es weiter zu bearbeiten und
 sich auf *PHP* *DOM* für die korrekte und richtige Darstellung zu verlassen.
 
-Wie bei ``Zend_Feed_Reader`` ist ``Zend_Feed_Writer`` ein alleinstehender Ersatz für ``Zend_Feed``\ s
+Wie bei ``Zend\Feed\Reader`` ist ``Zend\Feed\Writer`` ein alleinstehender Ersatz für ``Zend_Feed``\ s
 Builder-Architektur und nicht kompatibel mit diesen Klassen.
 
 .. _zend.feed.writer.architecture:
@@ -35,10 +35,10 @@ Builder-Architektur und nicht kompatibel mit diesen Klassen.
 Architektur
 -----------
 
-Die Architektur von ``Zend_Feed_Writer`` ist sehr einfach. Es hat zwei Kernsets von Klassen: Daten-Container und
+Die Architektur von ``Zend\Feed\Writer`` ist sehr einfach. Es hat zwei Kernsets von Klassen: Daten-Container und
 Renderer.
 
-Der Container enthält die Klassen ``Zend_Feed_Writer_Feed`` und ``Zend_Feed_Writer_Entry``. Die Einstiegsklassen
+Der Container enthält die Klassen ``Zend\Feed_Writer\Feed`` und ``Zend\Feed_Writer\Entry``. Die Einstiegsklassen
 können bei jeder Feed-Klasse angehängt werden. Der einzige Zweck dieses Containers ist es, Daten über den zu
 erstellenden Feed zu sammeln, indem ein einfaches Interface von Setter-Methoden verwendet wird. Diese Methoden
 führen einige Test zur Datenprüfung durch. Zum Beispiel prüft er übergebene *URI*\ s, Datum, usw. Diese
@@ -47,7 +47,7 @@ welche die schnelle Darstellung und den Export des endgültigen Feeds erlauben u
 wiederverwendet werden.
 
 Zusätzlich zu den hauptsächlichen Datencontainerklassen gibt es zwei Atom 2.0 spezifische Klassen.
-``Zend_Feed_Writer_Source`` und ``Zend_Feed_Writer_Deleted``. Die erstere implementiert Atom 2.0 Quell-Elemente,
+``Zend\Feed_Writer\Source`` und ``Zend\Feed_Writer\Deleted``. Die erstere implementiert Atom 2.0 Quell-Elemente,
 welche Feed-Metadaten der Quelle für spezielle Einträge im verwendeten Feed enthalten (z.B. wenn der aktuelle
 Feed nicht die originale Quelle des Eintrags enthält). Die letztere implementiert Atom Tombstones *RFC* und
 erlaubt es Feeds, Referenzen zu Einträgen zu haben, welche bereits gelöscht wurden.
@@ -79,7 +79,7 @@ Erweiterungen.
 Beginnen
 --------
 
-Die Verwendung von ``Zend_Feed_Reader`` ist so einfach wie das Setzen von Daten und dem Ausführen des Renderers.
+Die Verwendung von ``Zend\Feed\Reader`` ist so einfach wie das Setzen von Daten und dem Ausführen des Renderers.
 Hier ist ein Beispiel um einen minimalen Atom 1.0 Feed zu erstellen. Dies demonstriert dass jeder Feed oder Eintrag
 einen eigenen Container verwendet.
 
@@ -89,7 +89,7 @@ einen eigenen Container verwendet.
    /**
     * Den Eltern Feed erstellen
     */
-   $feed = new Zend_Feed_Writer_Feed;
+   $feed = new Zend\Feed_Writer\Feed;
    $feed->setTitle('Paddy\'s Blog');
    $feed->setLink('http://www.example.com');
    $feed->setFeedLink('http://www.example.com/atom', 'atom');
@@ -139,7 +139,7 @@ Die dargestellt Ausgabe sollte folgende sein:
        <subtitle type="text">Writing about PC Games since 176 BC.</subtitle>
        <updated>2009-12-14T20:28:18+00:00</updated>
        <generator uri="http://framework.zend.com" version="1.10.0alpha">
-           Zend_Feed_Writer
+           Zend\Feed\Writer
        </generator>
        <link rel="alternate" type="text/html" href="http://www.example.com"/>
        <link rel="self" type="application/atom+xml"
@@ -179,7 +179,7 @@ Das ist ein vollkommen gültiges Beispiel für Atom 1.0. Es sollte erwähnt werd
 obligatorischen Teilen der Daten, wie dem Titel, zu einer ``Exception`` führt, wenn diese als Atom 1.0 dargestellt
 werden. Anders ist das bei *RSS* 2.0, wo ein Titel weggelassen werden kann, solange eine Beschreibung vorhanden
 ist. Dadurch werden Exceptions geworfen, die sich zwischen beiden Standards abhängig vom Renderer unterscheiden,
-der verwendet wird. Vom Design her wird ``Zend_Feed_Writer`` keinen ungültigen Feed für einen Standard
+der verwendet wird. Vom Design her wird ``Zend\Feed\Writer`` keinen ungültigen Feed für einen Standard
 übersetzen, außer der End-Benutzer entscheidet sich bewusst, alle Exceptions zu ignorieren. Diese eingebaute
 Sicherheit wurde hinzugefügt, um sicherzustellen, dass sich Benutzer ohne tiefe Kenntnisse der betreffenden
 Spezifikationen keine Sorgen machen müssen.
@@ -191,7 +191,7 @@ Die Datenpunkte eines Feeds setzen
 
 Bevor ein Feed dargestellt werden kann, müssen zuerst die dafür notwendigen Daten gesetzt werden. Hierbei wird
 eine einfache Setter-artige *API* verwendet, welche auch als initiale Methode für die Prüfung von Daten herhält,
-wenn diese gesetzt werden. Vom Design her entspricht die *API* stark der von ``Zend_Feed_Reader``, um Unklarheiten
+wenn diese gesetzt werden. Vom Design her entspricht die *API* stark der von ``Zend\Feed\Reader``, um Unklarheiten
 und Unsicherheiten zu vermeiden.
 
 .. note::
@@ -199,8 +199,8 @@ und Unsicherheiten zu vermeiden.
    Benutzer haben angemerkt, dass das Nichtvorhandensein einer einfachen Array-Schreibweise für Eingabedaten zu
    langen Codeabschnitten führt. Das wird in zukünftigen Versionen behoben.
 
-``Zend_Feed_Writer`` bietet diese *API* über seine Datencontainerklassen ``Zend_Feed_Writer_Feed`` und
-``Zend_Feed_Writer_Entry`` an (nicht zu erwähnen die Atom 2.0 spezifischen Erweiterungsklassen). Diese Klassen
+``Zend\Feed\Writer`` bietet diese *API* über seine Datencontainerklassen ``Zend\Feed_Writer\Feed`` und
+``Zend\Feed_Writer\Entry`` an (nicht zu erwähnen die Atom 2.0 spezifischen Erweiterungsklassen). Diese Klassen
 speichern nahezu alle Feed-Daten in einer vom Typ unabhängigen Art, was bedeutet, dass man jeden Datencontainer
 mit jedem Renderer wiederverwenden kann, ohne dass zusätzliche Arbeit notwendig ist. Beide Klassen sind auch offen
 für Erweiterungen, was bedeutet, dass eine Erweiterung ihre eigenen Containerklassen definieren kann, welche bei
@@ -208,11 +208,11 @@ den Basis-Containerklassen als Erweiterung registriert sind und geprüft werden,
 die ``__call()`` Methode des Basiscontainers auslöst.
 
 Hier ist eine Zusammenfassung der Kern-*API* für Feeds. Man sollte beachten, dass sie nicht nur die Standards für
-*RSS* und Atom umfasst, sondern auch eine Anzahl von Erweiterungen, welche in ``Zend_Feed_Writer`` enthalten sind.
+*RSS* und Atom umfasst, sondern auch eine Anzahl von Erweiterungen, welche in ``Zend\Feed\Writer`` enthalten sind.
 Die Benennung dieser Erweiterungsmethoden ist recht generisch - alle Erweiterungsmethoden arbeiten auf dem gleichen
 Level wie die Kern-*API*, da wir es erlauben, jedes Erweiterungsobjekt separat zu empfangen wenn das notwendig ist.
 
-Die *API* für Daten auf Level des Feeds ist in ``Zend_Feed_Writer_Feed`` enthalten. Zusätzlich zu der anbei
+Die *API* für Daten auf Level des Feeds ist in ``Zend\Feed_Writer\Feed`` enthalten. Zusätzlich zu der anbei
 beschriebenen *API*, implementiert die Klasse auch die Interfaces ``Countable`` und ``Iterator``.
 
 .. table:: API Methoden auf Feed Level
@@ -240,23 +240,23 @@ beschriebenen *API*, implementiert die Klasse auch die Interfaces ``Countable`` 
    +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |setLanguage()     |Setzt die Sprache des Feeds. Diese wird unterdrückt, solange sie nicht gesetzt ist.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
    +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |setGenerator()    |Erlaubt es einen Generator zu setzen. Der Parameter sollte ein Array sein, welches die Schlüssel "name", "version" und "uri" enthält. Wenn er unterdrückt wird, wird ein standardmäßiger Generator hinzugefügt, welcher auf Zend_Feed_Writer, die aktuelle Version des Zend Framework und die URI des Frameworks verweist.                                                                                                                                                                                                                                                                                                 |
+   |setGenerator()    |Erlaubt es einen Generator zu setzen. Der Parameter sollte ein Array sein, welches die Schlüssel "name", "version" und "uri" enthält. Wenn er unterdrückt wird, wird ein standardmäßiger Generator hinzugefügt, welcher auf Zend\Feed\Writer, die aktuelle Version des Zend Framework und die URI des Frameworks verweist.                                                                                                                                                                                                                                                                                                 |
    +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |setCopyright()    |Setzt eine Copyright-Notiz, die mit dem Feed assoziiert ist.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
    +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |addHubs()         |Akzeptiert ein Array von Pubsubhubbub Hub Endpunkten, die im Feed als Atom-Links dargestellt werden, damit PuSH-Abonnenten den eigenen Feed abbonieren können. Es ist zu beachten, dass man einen Pubsubhubbub Herausgeber implementieren muss, damit Real-Time-Updates ermöglicht werden. Ein Herausgeber kann implementiert werden, indem Zend_Feed_Pubsubhubbub_Publisher verwendet wird. Die Methode addHub() erlaubt es gleichzeitig nur einen Hub hinzuzufügen.                                                                                                                                                      |
+   |addHubs()         |Akzeptiert ein Array von Pubsubhubbub Hub Endpunkten, die im Feed als Atom-Links dargestellt werden, damit PuSH-Abonnenten den eigenen Feed abbonieren können. Es ist zu beachten, dass man einen Pubsubhubbub Herausgeber implementieren muss, damit Real-Time-Updates ermöglicht werden. Ein Herausgeber kann implementiert werden, indem Zend\Feed_Pubsubhubbub\Publisher verwendet wird. Die Methode addHub() erlaubt es gleichzeitig nur einen Hub hinzuzufügen.                                                                                                                                                      |
    +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |addCategories()   |Akzeptiert ein Array an Kategorien für die Darstellung, wobei jedes Element selbst ein Array ist, dessen mögliche Schlüssel "term", "label" und "scheme" enthalten. "term" ist typischerweise der Name einer Kategorie, welche für die Aufnahme in einer URI passen. "label" kann ein menschenlesbarer Name einer Kategorie sein, der spezielle Zeichen unterstützt (er wird während der Darstellung kodiert) und ist ein benötigter Schlüssel. "scheme" (im RSS auch die Domain genannt) ist optional, muss aber eine gültige URI sein. Die Methode addCategory() erlaubt es gleichzeitig nur eine Kategorie hinzuzufügen.|
    +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |setImage()        |Akzeptiert ein Array an Metadaten für Bilder für ein RSS Bild oder ein Atom Logo. Atom 1.0 benötigt nur eine URI. RSS 2.0 benötigt eine URI, einen HTML Link, und einen Bildtitel. RSS 2.0 kann optional eine Breite, eine Höhe und eine Beschreibung des Bildes senden. Die Array Parameter können Sie enthalten indem die folgenden Schlüssel verwendet werden: uri, link, title, description, height und width. Der RSS 2.0 HTML Link sollte auf die HTML Quellseite des Feeds zeigen.                                                                                                                                  |
    +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |createEntry()     |Gibt eine neue Instanz von Zend_Feed_Writer_Entry zurück. Das ist der Daten Container auf der Ebene des Eintrags. Neue Einträge müssen addEntry() explizit aufrufen, um Einträge für die Darstellung hinzuzufügen.                                                                                                                                                                                                                                                                                                                                                                                                         |
+   |createEntry()     |Gibt eine neue Instanz von Zend\Feed_Writer\Entry zurück. Das ist der Daten Container auf der Ebene des Eintrags. Neue Einträge müssen addEntry() explizit aufrufen, um Einträge für die Darstellung hinzuzufügen.                                                                                                                                                                                                                                                                                                                                                                                                         |
    +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |addEntry()        |Fügt eine Instanz von Zend_Feed_Writer_Entry zum aktuellen Feed Container für die Darstellung hinzu.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+   |addEntry()        |Fügt eine Instanz von Zend\Feed_Writer\Entry zum aktuellen Feed Container für die Darstellung hinzu.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
    +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |createTombstone() |Gibt eine neue Instanz von Zend_Feed_Writer_Deleted zurück. Das ist der Daten Container auf Level des Atom 2.0 Tombstone. Neue Einträge werden dem aktuellen Feed nicht automatisch zugeordnet. Man muss also addTombstone() explizit aufrufen um den gelöschten Eintrag für die Darstellung hinzuzufügen.                                                                                                                                                                                                                                                                                                                 |
+   |createTombstone() |Gibt eine neue Instanz von Zend\Feed_Writer\Deleted zurück. Das ist der Daten Container auf Level des Atom 2.0 Tombstone. Neue Einträge werden dem aktuellen Feed nicht automatisch zugeordnet. Man muss also addTombstone() explizit aufrufen um den gelöschten Eintrag für die Darstellung hinzuzufügen.                                                                                                                                                                                                                                                                                                                 |
    +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |addTombstone()    |Fügt dem aktuellen Feed Container eine Instanz von Zend_Feed_Writer_Deleted für die Darstellung hinzu.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+   |addTombstone()    |Fügt dem aktuellen Feed Container eine Instanz von Zend\Feed_Writer\Deleted für die Darstellung hinzu.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
    +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |removeEntry()     |Akzeptiert einen Parameter, der den Array-Index eines Eintrags bestimmt, welcher vom Feed zu entfernen ist.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
    +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -275,11 +275,11 @@ Setzen der Datenpunkte für Einträge
 
 Hier ist eine Zusammenfassung der Kern-*API* für Einträge und Elemente. Man sollte beachten, dass dies nicht nur
 die Standards für *RSS* und Atom umfasst, sondern auch eine Anzahl von Erweiterungen, welche in
-``Zend_Feed_Writer`` enthalten sind. Die Benennung dieser Erweiterungsmethoden ist recht generisch - alle
+``Zend\Feed\Writer`` enthalten sind. Die Benennung dieser Erweiterungsmethoden ist recht generisch - alle
 Erweiterungsmethoden arbeiten auf der gleichen Ebene wie die Kern-*API*, da wir es zulassen, jedes
 Erweiterungsobjekt separat zu empfangen, wenn das notwendig ist.
 
-Die *API* auf Level des Eintrags ist in ``Zend_Feed_Writer_Entry`` enthalten.
+Die *API* auf Level des Eintrags ist in ``Zend\Feed_Writer\Entry`` enthalten.
 
 .. table:: API-Methoden auf Eintragsebene
 

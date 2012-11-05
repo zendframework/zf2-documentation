@@ -101,11 +101,11 @@ PHP 코드의 최대 허용 글자수는 120 캐릭터입니다.
 
 클라스 이름은 오직 알파벳만 포함할수 있습니다. 클라스 이름에 숫자가 허용은
 되지만 권장되지는 않습니다. 밑줄(\_)은 경로 구분자를 대체하는 역활로만 쓰입니다.
--- 파일이름 "Zend/Db/Table.php"는 클라스 이름 "Zend_Db_Table"와 매칭이 되어야 합니다.
+-- 파일이름 "Zend/Db/Table.php"는 클라스 이름 "Zend\Db\Table"와 매칭이 되어야 합니다.
 
 만약 클라스 이름이 하나 이상의 단어로 이루어진경우, 각 단어의 첫번째 단어는
 대문가 되어야 합니다. 하지만 클라스이름에서 연이은 대문자의 조합은 허용되지
-않습니다. 예를 들면 "Zend_PDF"는 허용되지 않는 형태이고 "Zend_Pdf"는 허용되는
+않습니다. 예를 들면 "ZendPDF"는 허용되지 않는 형태이고 "ZendPdf"는 허용되는
 형태입니다.
 
 프레임워크와 함꼐 배포되어지는 젠드사 혹은 젠드사의 파트너 회사들의 클라스들은
@@ -121,7 +121,7 @@ PHP 코드의 최대 허용 글자수는 120 캐릭터입니다.
 
       Zend_View
 
-      Zend_View_Helper
+      Zend\View\Helper
 
 **주의:**\ 프레임워크와 연동은 되지만 프레임워크의 일부가 아닌 코드들은 (젠드나
 젠트 파트너사 가 아닌 일반 사용자에 의해 제작된 코드) "Zend\_"라는 이름으로
@@ -138,8 +138,8 @@ PHP 코드의 최대 허용 글자수는 120 캐릭터입니다.
    .. code-block::
       :linenos:
 
-      Zend_Log_Adapter_Interface
-      Zend_Controller_Dispatcher_Interface
+      Zend\Log_Adapter\Interface
+      Zend\Controller_Dispatcher\Interface
 
 
 

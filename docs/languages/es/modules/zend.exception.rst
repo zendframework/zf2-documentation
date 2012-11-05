@@ -16,9 +16,9 @@ El siguiente listado de c�digo muestra c�mo capturar una excepci�n lanzado
    :linenos:
 
    try {
-       // Calling Zend_Loader::loadClass() with a non-existant class will cause
+       // Calling Zend\Loader\Loader::loadClass() with a non-existant class will cause
        // an exception to be thrown in Zend_Loader;
-       Zend_Loader::loadClass('nonexistantclass');
+       Zend\Loader\Loader::loadClass('nonexistantclass');
    } catch (Zend_Exception $e) {
        echo "Caught exception: " . get_class($e) . "\n";
        echo "Message: " . $e->getMessage() . "\n";

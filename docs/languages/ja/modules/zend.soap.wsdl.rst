@@ -6,19 +6,19 @@ WSDLアクセッサ
 
 .. note::
 
-   WSDL文書による操作を行なうために、 内部的に ``Zend_Soap_Server``\
-   コンポーネントによって ``Zend_Soap_Wsdl``\ が使われます。
+   WSDL文書による操作を行なうために、 内部的に ``Zend\Soap\Server``\
+   コンポーネントによって ``Zend\Soap\Wsdl``\ が使われます。
    それでも、このクラスにより提供される機能を独自の必要性によって使うこともできます。
-   ``Zend_Soap_Wsdl``\ パッケージは、パーサーとWSDL文書のビルダーを含みます。
+   ``Zend\Soap\Wsdl``\ パッケージは、パーサーとWSDL文書のビルダーを含みます。
 
    あなたに使う予定がなければ、この節を読み飛ばすことができます。
 
 .. _zend.soap.wsdl.constructor:
 
-Zend_Soap_Wsdlコンストラクタ
+Zend\Soap\Wsdlコンストラクタ
 ---------------------
 
-``Zend_Soap_Wsdl``\ コンストラクタは３つのパラメータをとります:
+``Zend\Soap\Wsdl``\ コンストラクタは３つのパラメータをとります:
 
    . *$name*- 記述されたウェブサービスの名前。
 
@@ -43,7 +43,7 @@ addMessage()メソッド
 ``addMessage($name, $parts)``\ メソッドは、新しいメッセージの説明をWSDL文書に加えます。
 (/definitions/message 要素)
 
-``Zend_Soap_Server``\ および ``Zend_Soap_Client``\ の機能に関して、
+``Zend\Soap\Server``\ および ``Zend\Soap\Client``\ の機能に関して、
 各々のメッセージはメソッドと対応します。
 
 *$name*\ パラメータはメッセージの名前を示します。
@@ -65,7 +65,7 @@ addMessage()メソッド
    標準XSD型のすべてで 'element' および 'complexType' 定義の両方があります。
    (`http://schemas.xmlsoap.org/soap/encoding/`_\ 参照)
 
-   ``Zend_Soap_Wsdl::addComplexType()``\ メソッドを用いて追加されるであろう、
+   ``Zend\Soap\Wsdl::addComplexType()``\ メソッドを用いて追加されるであろう、
    標準ではない型のすべてがWSDL文書の '/definitions/types/schema/' セクションの 'complexType'
    ノードで記述されます。
 
@@ -79,7 +79,7 @@ addPortType()メソッド
 ``addPortType($name)``\ メソッドは指定されたポートタイプ名で WSDL文書 (/definitions/portType)
 に新規のポートタイプを追加します。
 
-``Zend_Soap_Server``\
+``Zend\Soap\Server``\
 の実装に関して定義されるウェブサービスメソッドのセットと結びつきます。
 
 詳しくは `http://www.w3.org/TR/wsdl#_porttypes`_\ をご覧ください。
@@ -93,7 +93,7 @@ addPortOperation()メソッド
 メソッドは、新しいポート・オペレーションをWSDL文書 (/definitions/portType/operation) の
 指定されたポート・タイプに加えます。
 
-各々のポート・オペレーションは ``Zend_Soap_Server``\ 実装では、
+各々のポート・オペレーションは ``Zend\Soap\Server``\ 実装では、
 クラス・メソッド（ウェブサービスがクラスに基づくならば）
 または関数（ウェブサービスがメソッドセットに基づくならば）に対応します。
 
@@ -102,7 +102,7 @@ addPortOperation()メソッド
 
    .. note::
 
-      ``Zend_Soap_Server``\ クラスに基づいてサービスを記述するために、 ``Zend_Soap_Server``\
+      ``Zend\Soap\Server``\ クラスに基づいてサービスを記述するために、 ``Zend\Soap\Server``\
       コンポーネントは各々のポート・オペレーションのために2つのメッセージを生成します:
 
 
@@ -131,7 +131,7 @@ addBinding()メソッド
 メソッドはバインディング・ノードをつくって、それを返します。
 それから、実際のデータで満たすために使われるかもしれません。
 
-``Zend_Soap_Server``\ の実装ではWSDL文書の 'binding' 要素のために *$serviceName . 'Binding'*
+``Zend\Soap\Server``\ の実装ではWSDL文書の 'binding' 要素のために *$serviceName . 'Binding'*
 の名前が使われます。
 
 .. _zend.soap.wsdl.add_binding_operation:
@@ -147,7 +147,7 @@ addBindingOperation()メソッド
 要素を加えるために、 入力（ *$binding*\ パラメータ）として ``addBinding()``\
 によって返される *XML_Tree_Node*\ オブジェクトをそのメソッドは取得します。
 
-``Zend_Soap_Server``\ の実装で、 'soap:body' 要素を '<soap:body use="encoded"
+``Zend\Soap\Server``\ の実装で、 'soap:body' 要素を '<soap:body use="encoded"
 encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/> として定義している入出力エントリで、
 ウェブサービス・メソッドごとに対応するバインディング・エントリを加えます。
 
@@ -159,7 +159,7 @@ addSoapBinding()メソッド
 --------------------
 
 ``addSoapBinding($binding, $style = 'document', $transport = 'http://schemas.xmlsoap.org/soap/http')``
-メソッドは、指定されたスタイルとトランスポート（ ``Zend_Soap_Server``\ の実装では、
+メソッドは、指定されたスタイルとトランスポート（ ``Zend\Soap\Server``\ の実装では、
 *HTTP*\ についてRPCスタイルを使用します）で *SOAP*\ バインディング項目 ('soap:binding')
 をバインディング要素（それは、あるポートタイプにすでにリンクされます）に追加します。
 
@@ -182,7 +182,7 @@ addSoapOperation()メソッド
 この操作のためにSOAPActionヘッダの値を指定します。 この属性は *HTTP*\ を通じた *SOAP*\
 で必須です。 他のトランスポートのために指定しては **いけません**\ 。
 
-``Zend_Soap_Server``\ の実装では、 *SOAP*\ 操作アクション名のために *$serviceUri . '#' .
+``Zend\Soap\Server``\ の実装では、 *SOAP*\ 操作アクション名のために *$serviceUri . '#' .
 $methodName*\ を使います。
 
 詳しくは `http://www.w3.org/TR/wsdl#_soap:operation`_\ をご覧ください。
@@ -198,10 +198,10 @@ WSDL文書に '/definitions/service' 要素を追加します。
 
 WSDL
 1.1では、サービスごとにいくつかのポートタイプ(操作のセット)を持つことができます。
-この能力は ``Zend_Soap_Server``\ の実装では使われず、 ``Zend_Soap_Wsdl``\
+この能力は ``Zend\Soap\Server``\ の実装では使われず、 ``Zend\Soap\Wsdl``\
 クラスでサポートされません。
 
-``Zend_Soap_Server``\ の実装に使用します:
+``Zend\Soap\Server``\ の実装に使用します:
 
    - ウェブサービス名として *$name . 'Service'*
 
@@ -261,7 +261,7 @@ namespace" です。
    :linenos:
 
    ...
-   $wsdl = new Zend_Soap_Wsdl('My_Web_Service', $myWebServiceUri);
+   $wsdl = new Zend\Soap\Wsdl('My_Web_Service', $myWebServiceUri);
 
    ...
    $soapIntType = $wsdl->getType('int');
@@ -286,37 +286,37 @@ namespace" です。
 
 その検出とビルドのアルゴリズムは、複雑な型に対して現在実装中の検出ストラテジーに基づきます。
 文字列でのクラス名指定、 または、コンストラクタの第３パラメータとして
-``Zend_Soap_Wsdl_Strategy_Interface``\ を実装したインスタンス、 または、 ``Zend_Soap_Wsdl``\ の
+``Zend\Soap\Wsdl\Strategy\Interface``\ を実装したインスタンス、 または、 ``Zend\Soap\Wsdl``\ の
 *setComplexTypeStrategy($strategy)*\ 関数の利用のいずれかにより、
 検出ストラテジーを設定できます。 以下の検出ストラテジーが、現在存在します:
 
-- クラス ``Zend_Soap_Wsdl_Strategy_DefaultComplexType``:
+- クラス ``Zend\Soap\Wsdl\Strategy\DefaultComplexType``:
   デフォルトで許可されます（第3のコンストラクタ・パラメータが設定されないとき）。
   クラス型の public 属性項目を反復して、
   複雑なオブジェクト型のサブタイプとして登録します。
 
-- クラス ``Zend_Soap_Wsdl_Strategy_AnyType``: 単純なXSD型 xsd:anyType
+- クラス ``Zend\Soap\Wsdl\Strategy\AnyType``: 単純なXSD型 xsd:anyType
   に、すべての複雑な型を投げます。 複雑な型検出のこのショートカットが *PHP*\
   のような型検査の弱い言語により、うまく取り扱われるかどうか注意してください。
 
-- クラス ``Zend_Soap_Wsdl_Strategy_ArrayOfTypeSequence``:
+- クラス ``Zend\Soap\Wsdl\Strategy\ArrayOfTypeSequence``:
   このストラテジーにより、以下のようにタイプの戻りパラメータを指定できます:
   *int[]*\ または *string[]*. Zend Framework バージョン 1.9 以降、 それは単純な *PHP*\
   型（例えばint）、文字列、ブール値、floatなどを取り扱えるばかりではなく、
   オブジェクトおよびオブジェクトの配列も指定できます。
 
-- クラス ``Zend_Soap_Wsdl_Strategy_ArrayOfTypeComplex``:
+- クラス ``Zend\Soap\Wsdl\Strategy\ArrayOfTypeComplex``:
   このストラテジーにより、非常に複雑な多数のオブジェクトを見つけることができます。
-  オブジェクト型は ``Zend_Soap_Wsdl_Strategy_DefaultComplexType``\ に基づいて
+  オブジェクト型は ``Zend\Soap\Wsdl\Strategy\DefaultComplexType``\ に基づいて
   検出されます。配列はその定義の周囲を包まれます。
 
-- クラス ``Zend_Soap_Wsdl_Strategy_Composite``: このストラテジーは、 ``connectTypeToStrategy($type,
+- クラス ``Zend\Soap\Wsdl\Strategy\Composite``: このストラテジーは、 ``connectTypeToStrategy($type,
   $strategy)``\ メソッドを通じて 希望するストラテジーに *PHP*\
   の複雑な型（クラス名）を接続することによって、
   すべてのストラテジーを結合できます。 完全なタイプマップを、 *$type*-> *$strategy*
   のペアを持つ配列として コンストラクタに与えられます。
   もし未知の型の追加が必要であれば、第２パラメータで使われるデフォルト・ストラテジーを指定します。
-  このパラメータのデフォルトは、 ``Zend_Soap_Wsdl_Strategy_DefaultComplexType``\ です。
+  このパラメータのデフォルトは、 ``Zend\Soap\Wsdl\Strategy\DefaultComplexType``\ です。
 
 ``addComplexType()``\ メソッドは、指定された *PHP*\ クラスの名前で、
 記述された複雑な型ごとに '/definitions/types/xsd:schema/xsd:complexType' 要素を生成します。
@@ -367,12 +367,12 @@ addDocumentation()メソッド
 .. [#] *'tns:' namespace*\ はスクリプトの *URI* (*'http://' .$_SERVER['HTTP_HOST'] .
        $_SERVER['SCRIPT_NAME']*) として定義されます。
 .. [#] *'http://' .$_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']*
-.. [#] デフォルトで、 ``Zend_Soap_Wsdl``\ は複雑な型のための検出アルゴリズムとして
-       ``Zend_Soap_Wsdl_Strategy_DefaultComplexType``\ クラスで生成されます。
+.. [#] デフォルトで、 ``Zend\Soap\Wsdl``\ は複雑な型のための検出アルゴリズムとして
+       ``Zend\Soap\Wsdl\Strategy\DefaultComplexType``\ クラスで生成されます。
        AutoDiscoverコンストラクタの最初のパラメータは、
-       ``Zend_Soap_Wsdl_Strategy_Interface``\ を実装した、
+       ``Zend\Soap\Wsdl\Strategy\Interface``\ を実装した、
        どんな複雑な型ストラテジーでも、クラスの名前を持つ文字列でもとります。
        *$extractComplexType*\ との後方互換性のために、
        ブール変数は、以下の方法で解析されます: もし ``TRUE`` なら、
-       ``Zend_Soap_Wsdl_Strategy_DefaultComplexType``\ 、 もし ``FALSE`` なら、
-       ``Zend_Soap_Wsdl_Strategy_AnyType``\ 。
+       ``Zend\Soap\Wsdl\Strategy\DefaultComplexType``\ 、 もし ``FALSE`` なら、
+       ``Zend\Soap\Wsdl\Strategy\AnyType``\ 。

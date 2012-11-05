@@ -19,20 +19,20 @@ machen:
    :linenos:
 
    require_once 'Zend/Controller/Front.php';
-   Zend_Controller_Front::run('/path/to/controllers');
+   Zend\Controller\Front::run('/path/to/controllers');
 
 .. code-block:: php
    :linenos:
 
    /* -- Erstelle einen Router -- */
-   $router = new Zend_Controller_RewriteRouter();
+   $router = new Zend\Controller\RewriteRouter();
    $router->addRoute('user',
                      'user/:username',
                      array('controller' => 'user', 'action' => 'info')
    );
 
    /* -- Setze ihn im Controller -- */
-   $ctrl = Zend_Controller_Front::getInstance();
+   $ctrl = Zend\Controller\Front::getInstance();
    $ctrl->setRouter($router);
 
    /* -- Setze da Controller Verzeichnis und starte die Verarbeitung -- */
@@ -52,7 +52,7 @@ Dokumentation aufgeführt.
 Die meisten Änderungen, die man beachten muss, betreffen das Erweitern der diversen Komponenten. Die wichtigsten
 davon sind:
 
-- ``Zend_Controller_Front::dispatch()`` fängt standardmäßig die Ausnahmen im Response Objekt ab und gibt sie
+- ``Zend\Controller\Front::dispatch()`` fängt standardmäßig die Ausnahmen im Response Objekt ab und gibt sie
   nicht aus, um sicherzugehen, dass keine sensitiven Systeminformationen ausgegeben werden. Man kann dies auf
   mehrere Arten überschreiben:
 
@@ -78,25 +78,25 @@ davon sind:
        $response->renderExceptions(true);
        echo $response;
 
-- ``Zend_Controller_Dispatcher_Interface::dispatch()`` akzeptiert und gibt nun ein :ref:`Anfrage Objekt
+- ``Zend\Controller_Dispatcher\Interface::dispatch()`` akzeptiert und gibt nun ein :ref:`Anfrage Objekt
   <zend.controller.request>` anstelle eines Dispatcher Token zurück.
 
-- ``Zend_Controller_Router_Interface::route()`` akzeptiert und gibt nun ein :ref:`Anfrage Objekt
+- ``Zend\Controller_Router\Interface::route()`` akzeptiert und gibt nun ein :ref:`Anfrage Objekt
   <zend.controller.request>` anstelle eines Dispatcher Token zurück.
 
-- ``Zend_Controller_Action`` Änderungen beinhalten:
+- ``Zend\Controller\Action`` Änderungen beinhalten:
 
-  - Der Konstruktur akzeptiert nun genau drei Argumente, ``Zend_Controller_Request_Abstract`` ``$request``,
-    ``Zend_Controller_Response_Abstract`` ``$response``, und ``Array`` ``$params`` (Optional).
-    ``Zend_Controller_Action::__construct()`` verwendet diese, um die Request, Response und invokeArgs
+  - Der Konstruktur akzeptiert nun genau drei Argumente, ``Zend\Controller_Request\Abstract`` ``$request``,
+    ``Zend\Controller_Response\Abstract`` ``$response``, und ``Array`` ``$params`` (Optional).
+    ``Zend\Controller\Action::__construct()`` verwendet diese, um die Request, Response und invokeArgs
     Eigenschaften für das Objekt zu setzen, und beim Überschreiben des Konstrukturs sollte man dies ebenfalls
     tun. Besser ist es, die ``init()`` Methode zu verwenden, um jedwede Instanzkonfiguration durchzuführen, weil
     diese Methode als letzte Methode des Konstrukturs aufgerufen wird.
 
   - ``run()`` ist nicht länger als final definiert, wird aber auch nicht länger vom Front Controller verwendet;
     sein einziger Zweck ist, dass die Klasse auch als Page Controller verwendet werden kann. Sie nimmt nun zwei
-    optionale Argument an, ein ``Zend_Controller_Request_Abstract`` ``$request`` und ein
-    ``Zend_Controller_Response_Abstract`` ``$response``.
+    optionale Argument an, ein ``Zend\Controller_Request\Abstract`` ``$request`` und ein
+    ``Zend\Controller_Response\Abstract`` ``$response``.
 
   - ``indexAction()`` muss nicht mehr länger definiert werden, aber wird als Standardaktion empfohlen. Dies
     erlaubt dem RewriteRouter und den Action Controllern andere Standardaktionsmethoden zu definieren.
@@ -108,7 +108,7 @@ davon sind:
     Request Objekt registrierte Basis URL der übergebenen *URL* voran gestellt werden soll.
 
   - Die ``$_action`` Eigenschaft wird nicht mehr gesetzt. Diese Eigenschaft war ein
-    ``Zend_Controller_Dispatcher_Token``, der in der aktuellen Inkarnation nicht mehr länger existiert. Der
+    ``Zend\Controller_Dispatcher\Token``, der in der aktuellen Inkarnation nicht mehr länger existiert. Der
     einzige Zweck des Tokens war, Informationen über angeforderte Controller, Aktion und *URL* Parameter bereit zu
     stellen. Diese Infrmationen ist nun im Request Objekt verfügbar und kann wie folgt abgerufen werden:
 
@@ -149,14 +149,14 @@ davon sind:
                return $this->defaultAction();
            }
 
-           throw new Zend_Controller_Exception('Invalid method called');
+           throw new Zend\Controller\Exception('Invalid method called');
        }
 
-- ``Zend_Controller_RewriteRouter::setRewriteBase()`` wurde entfernt. Stattdessen soll
-  ``Zend_Controller_Front::setBaseUrl()`` verwendet werden (oder ``Zend_Controller_Request_Http::setBaseUrl()``,
+- ``Zend\Controller\RewriteRouter::setRewriteBase()`` wurde entfernt. Stattdessen soll
+  ``Zend\Controller\Front::setBaseUrl()`` verwendet werden (oder ``Zend\Controller_Request\Http::setBaseUrl()``,
   wenn die Request Klasse verwendet wird).
 
-- ``Zend_Controller_Plugin_Interface`` wurde durch ``Zend_Controller_Plugin_Abstract`` ersetzt. Alle Methoden
+- ``Zend\Controller_Plugin\Interface`` wurde durch ``Zend\Controller_Plugin\Abstract`` ersetzt. Alle Methoden
   nehmen nun ein :ref:`Request Objekt <zend.controller.request>` statt eines Dispatcher Tokens entgegen bzw. geben
   es zurück.
 

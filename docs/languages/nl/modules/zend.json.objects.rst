@@ -20,7 +20,7 @@ kan je dit zo opvragen:
 
    <?php
    // Decodeer objecten als objecten
-   $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);
+   $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
    ?>
 Alle zo gedecodeerde objecten worden teruggestuurd als *StdClass* objecten met eigenschappen die overeenkomen met
 de key/waarde-paren in de JSON notatie.

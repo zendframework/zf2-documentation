@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.http.client.advanced:
 
-Zend_Http_Client - Fortgeschrittende Nutzung
+Zend\Http\Client - Fortgeschrittende Nutzung
 ============================================
 
 .. _zend.http.client.redirections:
@@ -9,13 +9,13 @@ Zend_Http_Client - Fortgeschrittende Nutzung
 HTTP Umleitungen
 ----------------
 
-Standardmäßig verarbeitet ``Zend_Http_Client`` *HTTP* Umleitungen automatisch und folgt bis zu 5 Umleitungen.
+Standardmäßig verarbeitet ``Zend\Http\Client`` *HTTP* Umleitungen automatisch und folgt bis zu 5 Umleitungen.
 Dies kann durch Setzen des 'maxredirects' Konfigurationsparameters gändert werden.
 
 Gemäß dem *HTTP*/1.1 RFC sollten *HTTP* 301 und 302 Antworten vom Client behandelt werden, indem die selbe
 Anfrage erneut an die angebene Stelle versendet wird - unter Verwendung der selben Anfragemethode. Allerdings haben
 dies die meisten Clients nicht implementiert und verwenden beim Umleiten eine ``GET`` Anfrage. Standardmäßig
-macht ``Zend_Http_Client`` genau dasselbe - beim Umleiten einer 301 oder 302 Antwort, werden alle ``GET`` und POST
+macht ``Zend\Http\Client`` genau dasselbe - beim Umleiten einer 301 oder 302 Antwort, werden alle ``GET`` und POST
 Parameter zurückgesetzt und eine ``GET`` Anfrage wird an die neue Stelle versandt. Dieses Verhalten kann durch
 Setzen des 'strictredirects' Konfigurationsparameters auf das boolesche ``TRUE`` geändert werden.
 
@@ -44,7 +44,7 @@ getRedirectionsCount() Methoden erhalten.
 Hinzufügen von Cookies und Verwendung von persistenten Cookies
 --------------------------------------------------------------
 
-``Zend_Http_Client`` stellt eine einfache Schnittstelle zum Hinzufügen von Cookies zu einer Anfrage bereit, so
+``Zend\Http\Client`` stellt eine einfache Schnittstelle zum Hinzufügen von Cookies zu einer Anfrage bereit, so
 dass keine direkten Header Änderungen notwendig sind. Dies wird durch Verwendung der setCookie() Methode erledigt.
 Diese Methode kann auf mehrere Arten verwendet werden:
 
@@ -64,13 +64,13 @@ Diese Methode kann auf mehrere Arten verwendet werden:
          // Beachte, dass der Wert bereits URL kodiert sein muss
          $client->setCookie('flavor=chocolate%20chips');
 
-         // Durch Übergabe eins Zend_Http_Cookie Objekts
-         $cookie = Zend_Http_Cookie::fromString('flavor=chocolate%20chips');
+         // Durch Übergabe eins Zend\Http\Cookie Objekts
+         $cookie = Zend\Http\Cookie::fromString('flavor=chocolate%20chips');
          $client->setCookie($cookie);
 
-Für weitere Informationen über ``Zend_Http_Cookie`` Objekte, siehe :ref:`diesen Abschnitt <zend.http.cookies>`.
+Für weitere Informationen über ``Zend\Http\Cookie`` Objekte, siehe :ref:`diesen Abschnitt <zend.http.cookies>`.
 
-``Zend_Http_Client`` stellt außerdem die Möglichkeiten für "Cookie Stickiness" bereit - das bedeutet, dass der
+``Zend\Http\Client`` stellt außerdem die Möglichkeiten für "Cookie Stickiness" bereit - das bedeutet, dass der
 Client intern alle gesendeten und erhaltenen Cookies speichert und bei nachfolgenden Anfragen automatisch wieder
 mit sendet. Dies ist z.B. nützlich, wenn man sich bei einer entfernten Site zuerst einloggen muss und einen
 Authentifizierungs- oder Session-Cookie erhält, bevor man weitere Anfragen versenden kann.
@@ -101,7 +101,7 @@ Authentifizierungs- oder Session-Cookie erhält, bevor man weitere Anfragen vers
          $client->setUri('http://example.com/read_member_news.php');
          $client->request('GET');
 
-Für weitere Informationen über die ``Zend_Http_CookieJar`` Klasse, siehe :ref:`diesen Abschnitt
+Für weitere Informationen über die ``Zend\Http\CookieJar`` Klasse, siehe :ref:`diesen Abschnitt
 <zend.http.cookies.cookiejar>`.
 
 .. _zend.http.client.custom_headers:
@@ -170,12 +170,12 @@ Dateiuploads
 Man kann Dateien über *HTTP* hochladen, indem man die setFileUpload Methode verwendet. Diese Methode nimmt einen
 Dateinamen als ersten Parameter, einen Formularnamen als zweiten Parameter und Daten als einen dritten, optionalen
 Parameter entgegen. Wenn der dritte Parameter ``NULL`` ist, wird angenommen, dass der erste Dateinamen Parameter
-auf eine echte Datei auf der Platte verweist, und ``Zend_Http_Client`` wird versuchen die Datei zu lesen und
+auf eine echte Datei auf der Platte verweist, und ``Zend\Http\Client`` wird versuchen die Datei zu lesen und
 hochzuladen. Wenn der Daten Parameter nicht ``NULL`` ist, wird der erste Dateinamen Parameter als der Dateiname
 versendet, aber die Datei muss nicht wirklich auf der Platte existieren. Der zweite Formularnamen Parameter wird
 immer benötigt und ist gleichbedeutend mit dem "name" Attribut eines >input< Tags, wenn die Datei durch ein *HTML*
 Formular hochgeladen worden ist. Ein vierter optionaler Parameter gibt den Content-type der Datei an. Wenn er nicht
-angegeben wird, liest ``Zend_Http_Client`` die Datei von der Platte und verwendet die mime_content_type Funktion,
+angegeben wird, liest ``Zend\Http\Client`` die Datei von der Platte und verwendet die mime_content_type Funktion,
 um den Content-type der Datei zu erraten, wenn er verfügbar ist. Auf jeden Fall ist der Standard MIME Typ
 'application/octet-stream'.
 
@@ -216,7 +216,7 @@ der Content-type auf 'application/octet-stream' gesetzt.
 Unverarbeitete POST Daten versenden
 -----------------------------------
 
-Man kann ``Zend_Http_Client`` verwenden, um mit der setRawData() Methode unverarbeitete POST Daten zu versenden.
+Man kann ``Zend\Http\Client`` verwenden, um mit der setRawData() Methode unverarbeitete POST Daten zu versenden.
 Diese Methode nimmt zwei Parameter entgegen: der erste ist die im Anfrage Hauptteil zu versendenen Daten. Der
 zweite optionale Parameter ist der Content-type der Daten. Obwohl dieser Parameter optional ist, sollte man ihn
 normalerweise vor dem Absenden der Anfrage setzen - entweder durch Verwendung von setRawData() oder durch eine
@@ -258,7 +258,7 @@ stream verfügbar sein.
 HTTP Authentifizierung
 ----------------------
 
-Derzeit unterstützt ``Zend_Http_Client`` nur die Basis *HTTP* Authentifizierung. Diese Funktion kann durch
+Derzeit unterstützt ``Zend\Http\Client`` nur die Basis *HTTP* Authentifizierung. Diese Funktion kann durch
 Verwendung der ``setAuth()`` Methode oder durch Spezifikation von Benutzername und Passwort in der URI genutzt
 werden. Die ``setAuth()`` Methode nimmt 3 Parameter entgegen: den Benutzernamen, das Passwort und einen optionalen
 Authentifizierungstyp Parameter. Wie gesagt, wird derzeit nur die Basis Authentifizierung unterstützt
@@ -274,7 +274,7 @@ Authentifizierungstyp Parameter. Wie gesagt, wird derzeit nur die Basis Authenti
          :linenos:
 
          // Verwende die Basis Authentifizierung
-         $client->setAuth('shahar', 'myPassword!', Zend_Http_Client::AUTH_BASIC);
+         $client->setAuth('shahar', 'myPassword!', Zend\Http\Client::AUTH_BASIC);
 
          // Da Basis Authentifizierung Standard ist, kann man auch dies verwenden:
          $client->setAuth('shahar', 'myPassword!');
@@ -289,7 +289,7 @@ Authentifizierungstyp Parameter. Wie gesagt, wird derzeit nur die Basis Authenti
 Versenden mehrerer Anfragen mit dem selben Client
 -------------------------------------------------
 
-``Zend_Http_Client`` wurde zusätzlich besonders dafür entwickelt, um mehrere, aufeinander folgende Abfragen durch
+``Zend\Http\Client`` wurde zusätzlich besonders dafür entwickelt, um mehrere, aufeinander folgende Abfragen durch
 das selbe Objekt verarbeiten zu können. Dies ist nützlich, wenn z.B. ein Skript es erfordert, Daten von
 verschiedenen Stellen abzurufen, oder wenn eine spezielle *HTTP* Ressource das Einloggen und Erhalten eines Session
 Cookies erfordert.
@@ -333,13 +333,13 @@ authentifiziert werden.
    :linenos:
 
    // Zuerst den Client instanzieren
-   $client = new Zend_Http_Client('http://www.example.com/fetchdata.php', array(
+   $client = new Zend\Http\Client('http://www.example.com/fetchdata.php', array(
        'keepalive' => true
    ));
 
    // Haben wir die Cookies in unserer Session gespeichert?
    if (isset($_SESSION['cookiejar']) &&
-       $_SESSION['cookiejar'] instanceof Zend_Http_CookieJar) {
+       $_SESSION['cookiejar'] instanceof Zend\Http\CookieJar) {
 
        $client->setCookieJar($_SESSION['cookiejar']);
    } else {
@@ -350,7 +350,7 @@ authentifiziert werden.
            'user' => 'shahar',
            'pass' => 'somesecret'
        ));
-       $client->request(Zend_Http_Client::POST);
+       $client->request(Zend\Http\Client::POST);
 
        // Nun entferne die Parameter und setze die URI auf das Original
        // (Bitte beachten, dass der Cookie, der vom Server gesetzt worden ist,
@@ -359,7 +359,7 @@ authentifiziert werden.
        $client->setUri('http://www.example.com/fetchdata.php');
    }
 
-   $response = $client->request(Zend_Http_Client::GET);
+   $response = $client->request(Zend\Http\Client::GET);
 
    // Speichere die Cookies in der Session für die nächste Seite
    $_SESSION['cookiejar'] = $client->getCookieJar();
@@ -369,12 +369,12 @@ authentifiziert werden.
 Daten Streaming
 ---------------
 
-Standardmäßig akzeptiert ``Zend_Http_Client`` Daten als *PHP* Strings und gibt diese auch zurück. Trotzdem sind
+Standardmäßig akzeptiert ``Zend\Http\Client`` Daten als *PHP* Strings und gibt diese auch zurück. Trotzdem sind
 in vielen Fällen große Dateien zu Senden oder zu Empfangen. Diese im Speicher zu halten könnte unnötig oder zu
-teuer sein. Für diese Fälle unterstützt ``Zend_Http_Client`` das Lesen von Daten aus Dateien (und generell auch
+teuer sein. Für diese Fälle unterstützt ``Zend\Http\Client`` das Lesen von Daten aus Dateien (und generell auch
 *PHP* Streams) und das Schreiben von Daten in Dateien (Streams).
 
-Um Streams für die Übergabe von Daten zu ``Zend_Http_Client`` zu verwenden, muss die Methode ``setRawData()``
+Um Streams für die Übergabe von Daten zu ``Zend\Http\Client`` zu verwenden, muss die Methode ``setRawData()``
 verwendet werden, wobei das Daten Argument eine Stream Ressource ist (z.B. das Ergebnis von ``fopen()``).
 
 
@@ -399,7 +399,7 @@ spezifiziert den Dateinamen unter dem die Daten gespeichert werden. Wenn das Arg
 Argument auf ``FALSE`` gesetzt wird, ist die Streaming-Funktionalität ausgeschaltet.
 
 Wenn Streaming verwendet wird, gibt die Methode ``request()`` ein Objekt der Klasse
-``Zend_Http_Client_Response_Stream`` zurück, welches zwei nützliche Methoden hat: ``getStreamName()`` gibt den
+``Zend\Http\Client\Response\Stream`` zurück, welches zwei nützliche Methoden hat: ``getStreamName()`` gibt den
 Namen der Datei zurück in welcher die Antwort gespeichert wird, und ``getStream()`` gibt den Stream zurück von
 dem die Antwort gelesen werden könnte.
 

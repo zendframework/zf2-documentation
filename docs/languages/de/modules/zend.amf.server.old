@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.amf.server:
 
-Zend_Amf_Server
+ZendAmf\Server
 ===============
 
-``Zend_Amf_Server`` bietet einen *RPC*-artigen Server für die Behandlung der Anfragen die vom Adobe Flash Player
+``ZendAmf\Server`` bietet einen *RPC*-artigen Server für die Behandlung der Anfragen die vom Adobe Flash Player
 durchgeführt werden indem das *AMF* Protokoll verwendet wird. Wie alle Zend Framework Serverklassen, folgt es der
 SoapServer *API*, und bietet ein einfach zu merkendes Interface für die Erstellung von Servern.
 
@@ -18,7 +18,7 @@ Server erstellen indem der folgende Code verwendet wird:
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_Amf_Server();
+   $server = new ZendAmf\Server();
    $server->setClass('Foo');
    $response = $server->handle();
    echo $response;
@@ -28,7 +28,7 @@ Alternativ kann stattdessen man eine einfache Funktion als Callback anhängen:
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_Amf_Server();
+   $server = new ZendAmf\Server();
    $server->addFunction('myUberCoolFunction');
    $response = $server->handle();
    echo $response;
@@ -41,14 +41,14 @@ durchgeführt werden indem man einfach ein zweites Stringargument entweder an ``
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_Amf_Server();
+   $server = new ZendAmf\Server();
    $server->addFunction('myUberCoolFunction', 'my')
           ->setClass('Foo', 'foo')
           ->setClass('Bar', 'bar');
    $response = $server->handle();
    echo $response;
 
-``Zend_Amf_Server`` erlaubt es auch Services das Sie dynamisch geladen werden, basierend auf dem angegebenen
+``ZendAmf\Server`` erlaubt es auch Services das Sie dynamisch geladen werden, basierend auf dem angegebenen
 Verzeichnispfad. Man kann dem Server so viele Verzeichnisse wie man will hinzufügen. Die Reihenfolge in der man
 die Verzeichnisse zum Server hinzufügt ist die Reihenfolge in der die *LIFO* Suche auf den Verzeichnissen
 durchgeführt wird um die Klasse zu finden. Das Hinzufügen von Verzeichnissen wird mit der ``addDirectory()``
@@ -118,8 +118,8 @@ Antwort wird zurückgegeben.
 Zum Server von Flex aus verbinden
 ---------------------------------
 
-Zum eigenen ``Zend_Amf_Server`` von einem Flex Projekt aus zu verbinden ist recht einfach; man muß zur Endpunkt
-*URI* des ``Zend_Amf_Server`` Sripts zeigen.
+Zum eigenen ``ZendAmf\Server`` von einem Flex Projekt aus zu verbinden ist recht einfach; man muß zur Endpunkt
+*URI* des ``ZendAmf\Server`` Sripts zeigen.
 
 Nehmen wir zum Beispiel an das man einen Server erstellt hat und Ihn in der ``server.php`` Datei im Anwendungsroot
 platziert, und die *URI* deswegen ``http://example.com/server.php`` ist. In diesem Fall würde man die
@@ -177,7 +177,7 @@ des eigenen Testservers passt. Anschließend sicherstellen das die Datei gespeic
    </services-config>
 
 Es gibt zwei Schlüsselpunkt im Beispiel. Erstens, aber letztes im Code, erstellen wir einen *AMF* Kanal, und
-spezifizieren den Endpunt als die *URL* zu unserem ``Zend_Amf_Server``:
+spezifizieren den Endpunt als die *URL* zu unserem ``ZendAmf\Server``:
 
 .. code-block:: xml
    :linenos:
@@ -280,7 +280,7 @@ zurückgegeben wird.
    :linenos:
 
    $response = $server->handle();
-   $response->addAmfHeader(new Zend_Amf_Value_MessageHeader('foo', true, 'bar'))
+   $response->addAmfHeader(new ZendAmf_Value\MessageHeader('foo', true, 'bar'))
    echo $response;
 
 .. _zend.amf.server.typedobjects:
@@ -291,7 +291,7 @@ Typ Objekte
 Ähnlich wie *SOAP*, erlaubt es *AMF* Objekte zwischen dem Client und dem Server zu übergeben. Das erlaubt eine
 große Flexibilität und Bindung zwischen den zwei Umgebungen.
 
-``Zend_Amf`` bietet drei Methoden für das Mappen von ActionScript und *PHP* Objekten.
+``ZendAmf`` bietet drei Methoden für das Mappen von ActionScript und *PHP* Objekten.
 
 - Erstens kann man explizite Bindungen auf Serverlevel erstellen indem die ``setClassMap()`` Methode verwendet
   wird. Das erste Argument ist der ActionScript Klassenname, das zweite ist der Name der *PHP* Klasse auf die
@@ -379,7 +379,7 @@ gebunden ist, wird mit den von ContactVO zurückgegebenen Daten aktualisiert.
 Ressourcen
 ----------
 
-``Zend_Amf`` bietet Tools für das Mappen von Ressource Typen die von Service Klassen in von ActionScript
+``ZendAmf`` bietet Tools für das Mappen von Ressource Typen die von Service Klassen in von ActionScript
 verwendbaren Daten zurückgegeben werden.
 
 Um spezielle Ressource Typen zu behandeln, muss der Benutzer eine Plugin Klasse erstellen die nach dem Ressource
@@ -389,13 +389,13 @@ zu MysqlResult), mit einem Präfix, z.B. ``My_MysqlResult``. Diese Klasse sollte
 werden sollte. Die Klasse sollte in der Datei vorhanden sein nachdem die letzte Komponente des Namens benannt ist,
 z.B. ``MysqlResult.php``.
 
-Das Verzeichnis das die Plugins für das Ressource Handling enthält sollte beim Typloader von ``Zend_Amf``
+Das Verzeichnis das die Plugins für das Ressource Handling enthält sollte beim Typloader von ``ZendAmf``
 registriert sein:
 
 .. code-block:: php
    :linenos:
 
-   Zend_Amf_Parse_TypeLoader::addResourceDirectory(
+   ZendAmf_Parse\TypeLoader::addResourceDirectory(
        "My",
        "application/library/resources/My"
    );
@@ -403,7 +403,7 @@ registriert sein:
 Für eine detailierte Diskussion für das Laden von Plugins, sehen Sie bitte in das Kapitel :ref:`Plugin Loader
 <zend.loader.pluginloader>`.
 
-Das Standardverzeichnis für Ressourcen von ``Zend_Amf`` wird automatisch registriert und enthält aktuell Handler
+Das Standardverzeichnis für Ressourcen von ``ZendAmf`` wird automatisch registriert und enthält aktuell Handler
 für "mysql result" und "stream" Ressourcen.
 
 .. code-block:: php
@@ -411,7 +411,7 @@ für "mysql result" und "stream" Ressourcen.
 
    // Beispiel für die Implementierung von Ressourcen und die Behandlung
    // von Mysql Ergebnis Typen
-   class Zend_Amf_Parse_Resource_MysqlResult
+   class ZendAmf\Parse\Resource\MysqlResult
    {
        /**
         * Parse resource into array
@@ -436,9 +436,9 @@ führt zu einer Exception.
 Von Flash aus auf den Server verbinden
 --------------------------------------
 
-Auf den ``Zend_Amf_Server`` vom Flash Projekt aus zu verbinden ist etwas anders als von Flex aus. Trotzdem sind die
-Funktionen mit ``Zend_Amf_Server`` die gleichen wie mit Flex sobald die Verbindung erstellt wurde. Das folgende
-Beispiel kann auch von einer Flex *AS3* Datei aus verwendet werden. Wir werden die selbe ``Zend_Amf_Server``
+Auf den ``ZendAmf\Server`` vom Flash Projekt aus zu verbinden ist etwas anders als von Flex aus. Trotzdem sind die
+Funktionen mit ``ZendAmf\Server`` die gleichen wie mit Flex sobald die Verbindung erstellt wurde. Das folgende
+Beispiel kann auch von einer Flex *AS3* Datei aus verwendet werden. Wir werden die selbe ``ZendAmf\Server``
 Konfiguration mit der World Klasse unserer Verbindung wiederverwenden.
 
 Öffne Flash CS und erstelle eine neue Flash Datei (ActionScript 3). Benenne das Dokument ``ZendExample.fla`` und
@@ -502,7 +502,7 @@ Aufrufs.
    import flash.net.Responder;
 
 In der Klasse benötigen wir drei Variable um NetConnection, Responder, und die Gateway *URL* zu unserer
-``Zend_Amf_Server`` Installation zu repräsentieren.
+``ZendAmf\Server`` Installation zu repräsentieren.
 
 .. code-block:: as
    :linenos:
@@ -511,7 +511,7 @@ In der Klasse benötigen wir drei Variable um NetConnection, Responder, und die 
    private var connection:NetConnection;
    private var responder:Responder;
 
-Im Main Contructor erstellen wir einen Responder und eine neue Verbindung zum ``Zend_Amf_Server`` Endpunkt. Der
+Im Main Contructor erstellen wir einen Responder und eine neue Verbindung zum ``ZendAmf\Server`` Endpunkt. Der
 Responder definiert zwei unterschiedliche Methoden für die Behandlung des Servers. Der Einfachheit halber haben
 wir Sie onResult und onFault benannt.
 
@@ -523,7 +523,7 @@ wir Sie onResult und onFault benannt.
    connection.connect(gateway);
 
 In der onComplete Funktion, welche ausgeführt wird sobald das Konstrukt fertiggestellt wurde, senden wir die Daten
-zum Server. Wird benötigen eine weitere zusätzliche Zeile die den Aufruf der ``Zend_Amf_Server`` World->hello
+zum Server. Wird benötigen eine weitere zusätzliche Zeile die den Aufruf der ``ZendAmf\Server`` World->hello
 Funktion durchführt.
 
 .. code-block:: as
@@ -556,7 +556,7 @@ Methode nicht existiert, und bei jedem anderen Verbindungsrelevanten Problem.
    }
 
 Das ActionScripts für die Erstellung der entfernten Verbindung ist jetzt fertiggestellt. Der Aufruf der
-ZendExample Datei führt jetzt die Verbindung zu ``Zend_Amf`` aus. Rückblickend haben wir die benötigten
+ZendExample Datei führt jetzt die Verbindung zu ``ZendAmf`` aus. Rückblickend haben wir die benötigten
 Variablen hinzugefügt um eine Verbindung zum entfernten Server zu öffnen, definiert welche Methoden in der
 Anwendung verwendet werden sollen wenn die Anwendung eine Antwort vom Server empfängt, und schlußendlich die
 Anzeige der zurückgegebenen Daten über ``trace()``.
@@ -566,16 +566,16 @@ Anzeige der zurückgegebenen Daten über ``trace()``.
 Authentication
 --------------
 
-``Zend_Amf_Server`` erlaubt es Authentifizierung und Authorisierungs- Hooks zu spezifizieren um den Zugriff auf
+``ZendAmf\Server`` erlaubt es Authentifizierung und Authorisierungs- Hooks zu spezifizieren um den Zugriff auf
 Services zu kontrollieren. Es wird die Infrastruktur verwendet die von den :ref:`Zend_Auth <zend.auth>` und
 :ref:`Zend\Permissions\Acl <zend.permissions.acl>` Komponenten angeboten wird.
 
 Um Authentifizierung zu definieren, muß der Benutzer einen Authentifizierungs-Adapter anbieten der die abstrakte
-Klasse ``Zend_Amf_Auth_Abstract`` erweitert. Der Adapter sollte die ``authenticate()`` Methode implementieren so
+Klasse ``ZendAmf_Auth\Abstract`` erweitert. Der Adapter sollte die ``authenticate()`` Methode implementieren so
 wie jeder normale :ref:`Authentifizierungs-Adapter <zend.auth.introduction.adapters>`.
 
 Der Adapter sollte die Eigenschaften **_username** und **_password** von der Vorgängerklasse
-``Zend_Amf_Auth_Abstract`` verwenden um authentifizieren zu können. Diese Werte werden vom Server gesetzt, indem
+``ZendAmf_Auth\Abstract`` verwenden um authentifizieren zu können. Diese Werte werden vom Server gesetzt, indem
 die ``setCredentials()`` Methode verwendet wird, bevor ``authenticate()`` aufgerufen wird wenn die Zugangsdaten in
 den *AMF* Anfrage-Headern empfangen wurden.
 
@@ -618,7 +618,7 @@ definiert wurde, andernfalls wird der Zugriff verweigert.
        return true;
    } else {
        require_once 'Zend/Amf/Server/Exception.php';
-       throw new Zend_Amf_Server_Exception("Access not allowed");
+       throw new ZendAmf_Server\Exception("Access not allowed");
    }
 
 

@@ -11,15 +11,15 @@ almacenados a través de adapatadores del backend (**Archivo**, **Sqlite**, **Me
 flexible de documentos de identidad y etiquetas. Utilizando éstas, es fácil en el futuro eliminar determinados
 tipos de registro.(Ejemplo: "eliminar todos los registros caché de determinada etiqueta").
 
-El módulo principal (``Zend_Cache_Core``) es genérico, flexible y configurable. Aun para sus necesidades
-específicas existen frontends de caché que extienden ``Zend_Cache_Core`` a conveniencia: **Output**, **File**,
+El módulo principal (``Zend\Cache\Core``) es genérico, flexible y configurable. Aun para sus necesidades
+específicas existen frontends de caché que extienden ``Zend\Cache\Core`` a conveniencia: **Output**, **File**,
 **Function** y **Class**.
 
 .. _zend.cache.introduction.example-1:
 
-.. rubric:: Obtener un frontend con Zend_Cache::factory()
+.. rubric:: Obtener un frontend con Zend\Cache\Cache::factory()
 
-``Zend_Cache::factory()`` ejemplifica objetos correctos y los une. En este primer ejemplo, usaremos el frontend
+``Zend\Cache\Cache::factory()`` ejemplifica objetos correctos y los une. En este primer ejemplo, usaremos el frontend
 **Core** junto con el backend **File**.
 
 .. code-block:: php
@@ -34,8 +34,8 @@ específicas existen frontends de caché que extienden ``Zend_Cache_Core`` a con
        'cache_dir' => './tmp/' // Carpeta donde alojar los archivos de caché
    );
 
-   // getting a Zend_Cache_Core object
-   $cache = Zend_Cache::factory('Core',
+   // getting a Zend\Cache\Core object
+   $cache = Zend\Cache\Cache::factory('Core',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);
@@ -67,7 +67,7 @@ obtienen del caché de forma no serializada.
 
        // no existe cache; conectar a la base de datos
 
-       $db = Zend_Db::factory( [...] );
+       $db = Zend\Db\Db::factory( [...] );
 
        $result = $db->fetchAll('SELECT * FROM huge_table');
 
@@ -104,7 +104,7 @@ de datos del caché (tanto tiempo como el registro del caché sea válido).
 
    $backendOptions = array('cache_dir' => './tmp/');
 
-   $cache = Zend_Cache::factory('Output',
+   $cache = Zend\Cache\Cache::factory('Output',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);

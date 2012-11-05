@@ -152,7 +152,7 @@ Adding Cache Support to Zend\Feed\Reader\Reader
 ``Zend\Feed\Reader\Reader`` supports using an instance of ``Zend\Cache`` to cache feeds (as *XML*) to avoid
 unnecessary network requests. Adding a cache is as simple here as it is for other Zend Framework components,
 create and configure your cache and then tell ``Zend\Feed\Reader\Reader`` to use it! The cache key used is 
-"``Zend_Feed_Reader_``" followed by the *MD5* hash of the feed's *URI*.
+"``Zend\Feed\Reader\``" followed by the *MD5* hash of the feed's *URI*.
 
 .. code-block:: php
    :linenos:

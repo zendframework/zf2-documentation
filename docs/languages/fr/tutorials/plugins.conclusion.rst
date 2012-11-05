@@ -9,9 +9,9 @@ composants. Les plugins sont utilisés à de nombreux endroits:
 
 - ``Zend_Application``: ressources.
 
-- ``Zend_Controller_Action``: aides d'action.
+- ``Zend\Controller\Action``: aides d'action.
 
-- ``Zend_Feed_Reader``: plugins.
+- ``Zend\Feed\Reader``: plugins.
 
 - ``Zend_Form``: éléments, filtres, validateurs et décorateurs.
 
@@ -24,7 +24,7 @@ le Zend Framework.
 
    **Remarque**
 
-   Notons que ``Zend_Controller_Front`` propose un système de plugin mais il ne s'utilise pas de la même manière
+   Notons que ``Zend\Controller\Front`` propose un système de plugin mais il ne s'utilise pas de la même manière
    que décrit dans ce tutoriel. Les plugins enregistrés auprès du contrôleur frontal doivent être instanciés
    directement et enregistrés de manière individuelle. Ceci est dû au fait que le système de plugins du
    contrôleur frontal date d'avant toute les possibilités d'extensions vues jusque ici et des changements dans

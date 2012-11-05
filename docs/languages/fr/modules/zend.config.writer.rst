@@ -1,29 +1,29 @@
 .. EN-Revision: none
 .. _zend.config.writer.introduction:
 
-Zend_Config_Writer
+Zend\Config\Writer
 ==================
 
-``Zend_Config_Writer`` vous donne la possibilité d'écrire des fichiers de configuration à partir d'objets
+``Zend\Config\Writer`` vous donne la possibilité d'écrire des fichiers de configuration à partir d'objets
 ``Zend_Config``. Il fonctionne avec des adaptateurs détachés du système et est donc très simple à utiliser.
-Par défaut ``Zend_Config_Writer`` embarque trois adaptateurs, qui fonctionnent tous sur la base de fichiers. Vous
+Par défaut ``Zend\Config\Writer`` embarque trois adaptateurs, qui fonctionnent tous sur la base de fichiers. Vous
 instanciez un rédacteur ("writer") avec des options spécifiques, qui peuvent être **filename** et **config**.
 Ensuite vous pouvez appeler la méthode ``write()`` du rédacteur et le fichier de configuration est créé. Vous
 pouvez aussi fournir ``$filename`` et ``$config`` directement à la méthode ``write()``. Actuellement les
-rédacteurs suivants sont embarqués avec ``Zend_Config_Writer``\  :
+rédacteurs suivants sont embarqués avec ``Zend\Config\Writer``\  :
 
-- ``Zend_Config_Writer_Array``
+- ``Zend\Config_Writer\Array``
 
-- ``Zend_Config_Writer_Ini``
+- ``Zend\Config_Writer\Ini``
 
-- ``Zend_Config_Writer_Xml``
+- ``Zend\Config_Writer\Xml``
 
 Le rédacteur *INI* possède deux modes de rendu en fonction des sections. Par défaut la configuration de premier
 niveau est toujours écrite dans des noms de section. En appelant ``$writer->setRenderWithoutSections();``, toutes
 les options sont écrites dans l'espace de noms global du fichier *INI* et aucune section n'est appliquée.
 
-De plus, ``Zend_Config_Writer_Ini`` a un paramètre optionnel additionnel **nestSeparator**, définissant le
-caractère séparant les profondeurs d'imbrication. Par défaut il s'agit du point, comme ``Zend_Config_Ini``
+De plus, ``Zend\Config_Writer\Ini`` a un paramètre optionnel additionnel **nestSeparator**, définissant le
+caractère séparant les profondeurs d'imbrication. Par défaut il s'agit du point, comme ``Zend\Config\Ini``
 l'accepte par défaut.
 
 Lors de la modification ou la création d'objet ``Zend_Config``, il y a quelques informations à garder en
@@ -34,16 +34,16 @@ section en étend une autre, vous devez appeler la méthode ``setExtend()`` sur 
 
 .. _zend.config.writer.example.using:
 
-.. rubric:: Utilisation de Zend_Config_Writer
+.. rubric:: Utilisation de Zend\Config\Writer
 
-Cet exemple illustre une utilisation basique ``Zend_Config_Writer_Xml`` pour créer un nouveau fichier de
+Cet exemple illustre une utilisation basique ``Zend\Config_Writer\Xml`` pour créer un nouveau fichier de
 configuration :
 
 .. code-block:: php
    :linenos:
 
    // Créer l'objet de configuration
-   $config = new Zend_Config(array(), true);
+   $config = new Zend\Config\Config(array(), true);
    $config->production = array();
    $config->staging    = array();
 
@@ -58,18 +58,18 @@ configuration :
 
    // Ecrire le fichier de l'une des manières suivantes :
    // a)
-   $writer = new Zend_Config_Writer_Xml(array('config'   => $config,
+   $writer = new Zend\Config_Writer\Xml(array('config'   => $config,
                                               'filename' => 'config.xml'));
    $writer->write();
 
    // b)
-   $writer = new Zend_Config_Writer_Xml();
+   $writer = new Zend\Config_Writer\Xml();
    $writer->setConfig($config)
           ->setFilename('config.xml')
           ->write();
 
    // c)
-   $writer = new Zend_Config_Writer_Xml();
+   $writer = new Zend\Config_Writer\Xml();
    $writer->write('config.xml', $config);
 
 Ceci créera un fichier de configuration *XML* avec les sections "production" et "staging", où "staging" étend
@@ -86,7 +86,7 @@ Cet exemple montre comment modifier un fichier de configuration existant :
 
    // Charger toutes les sections d'un fichier de configuration existant,
    // tout en évitant les sections étendues.
-   $config = new Zend_Config_Ini('config.ini',
+   $config = new Zend\Config\Ini('config.ini',
                                  null,
                                  array('skipExtends'        => true,
                                        'allowModifications' => true));
@@ -95,7 +95,7 @@ Cet exemple montre comment modifier un fichier de configuration existant :
    $config->production->hostname = 'foobar';
 
    // Ecrire le fichier
-   $writer = new Zend_Config_Writer_Ini(array('config'   => $config,
+   $writer = new Zend\Config_Writer\Ini(array('config'   => $config,
                                               'filename' => 'config.ini'));
    $writer->write();
 

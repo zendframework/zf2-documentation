@@ -13,7 +13,7 @@
 обеспечить добавление поддержки Atom Publishing Protocol.
 
 Программно *Zend_Feed* состоит из базового класса *Zend_Feed*,
-абстрактных базовых классов *Zend_Feed_Abstract* и *Zend_Feed_Entry_Abstract* для
+абстрактных базовых классов *Zend\Feed\Abstract* и *Zend\Feed_Entry\Abstract* для
 представления лент и их сообщений, реализаций лент и сообщений
 применительно для RSS и Atom, а также "помощников" для обеспечения
 работы естетственного синтаксиса.
@@ -41,8 +41,8 @@
    // Извлечение последних новостей Slashdot
    try {
        $slashdotRss =
-           Zend_Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
-   } catch (Zend_Feed_Exception $e) {
+           Zend\Feed\Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
+   } catch (Zend\Feed\Exception $e) {
        // неудача при импортировании ленты
        echo "Exception caught importing feed: {$e->getMessage()}\n";
        exit;

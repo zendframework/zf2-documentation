@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.server.reflection:
 
-Zend_Server_Reflection
+Zend\Server\Reflection
 ======================
 
 .. _zend.server.reflection.introduction:
@@ -9,7 +9,7 @@ Zend_Server_Reflection
 Úvod
 ----
 
-Zend_Server_Reflection poskytuje štandardný mechanizmus pre zisťovanie informácií o funkciách a triedach pre
+Zend\Server\Reflection poskytuje štandardný mechanizmus pre zisťovanie informácií o funkciách a triedach pre
 použitie spolu so serverom. Je postavený na PHP 5 Reflection API a rozširuje ho pre poskytnutie metód na
 získanie parametrov, návratových hodnôt, plného zoznamu prototypov funkcií a metód (t.j. všetky možné a
 validné spôsoby volania) a popis funkcií a metód.
@@ -28,8 +28,8 @@ Základné použitie je jednoduché:
 
    <?php
    require_once 'Zend/Server/Reflection.php';
-   $class    = Zend_Server_Reflection::reflectClass('My_Class');
-   $function = Zend_Server_Reflection::reflectFunction('my_function');
+   $class    = Zend\Server\Reflection::reflectClass('My_Class');
+   $function = Zend\Server\Reflection::reflectFunction('my_function');
 
    // Získanie prototypov
    $prototypes = $reflection->getPrototypes();
@@ -55,7 +55,7 @@ Základné použitie je jednoduché:
    // pomocou setNamespace()
    $reflection->getNamespace();
 
-*reflectFunction()* vráti objekt *Zend_Server_Reflection_Function*; *reflectClass* vráti objekt
-*Zend_Server_Reflection_Class*. Pre viac informácií o dostupných metódach si pozrite API dokumentáciu.
+*reflectFunction()* vráti objekt *Zend\Server_Reflection\Function*; *reflectClass* vráti objekt
+*Zend\Server_Reflection\Class*. Pre viac informácií o dostupných metódach si pozrite API dokumentáciu.
 
 

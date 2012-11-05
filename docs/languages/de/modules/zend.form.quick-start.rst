@@ -83,7 +83,7 @@ Einige Beispiele:
    :linenos:
 
    // Ein Element instanzieren und an das Form Objekt übergeben:
-   $form->addElement(new Zend_Form_Element_Text('username'));
+   $form->addElement(new Zend\Form_Element\Text('username'));
 
    // Den Fyp des Form Elements dem Form Objekt übergeben:
    $form->addElement('text', 'username');
@@ -95,15 +95,15 @@ Elements an das Formular machen, (b) über Konfigurationsoptionen die bei der Er
 im nachhinein.
 
 Betrachten wir zuerst die Erstellung eines Prüfers für eine konkrete Instanz eines Elements. Es können entweder
-``Zend_Validate_*`` Instanzen übergeben werden, oder der Name des Prüfers, der verwendet werden soll:
+``Zend\Validate\*`` Instanzen übergeben werden, oder der Name des Prüfers, der verwendet werden soll:
 
 .. code-block:: php
    :linenos:
 
-   $username = new Zend_Form_Element_Text('username');
+   $username = new Zend\Form_Element\Text('username');
 
-   // Ein Zend_Validate_* Objekt übergeben:
-   $username->addValidator(new Zend_Validate_Alnum());
+   // Ein Zend\Validate\* Objekt übergeben:
+   $username->addValidator(new Zend\Validate\Alnum());
 
    // Den Namen des Prüfers übergeben:
    $username->addValidator('alnum');
@@ -158,7 +158,7 @@ Das endgültige Setup, des Elements, könnte wie folgt aussehen:
        ->addFilters(array('StringToLower'));
 
 So einfach das ist, ist das für jedes einzelne Elemet in einer Form sehr aufwendig. Versuchen wir es also mit
-Option (b) von oben. Wenn wir ein neues Element erstellen wird ``Zend_Form::addElement()`` als Factory verwendet,
+Option (b) von oben. Wenn wir ein neues Element erstellen wird ``Zend\Form\Form::addElement()`` als Factory verwendet,
 und wir können optional Konfigurationsoptionen übergeben. Diese können Prüfer und Filter enthalten die
 angepasst werden können. Um alles von oben implizit durchzuführen, versuchen wir folgendes:
 
@@ -177,7 +177,7 @@ angepasst werden können. Um alles von oben implizit durchzuführen, versuchen w
 .. note::
 
    Wenn man sieht, dass man Elemente welche die gleichen Optionen in vielen Plätzen verwenden, konfiguriert, kann
-   es gewünscht sein, eine eigene ``Zend_Form_Element`` Unterklasse zu erstellen und diese stattdessen anzupassen;
+   es gewünscht sein, eine eigene ``Zend\Form\Element`` Unterklasse zu erstellen und diese stattdessen anzupassen;
    das spart viel Tipparbeit im weiteren Verlauf.
 
 .. _zend.form.quickstart.render:
@@ -198,7 +198,7 @@ unterschiedliche Varianten: Die *render()* Methode des Formulare verwenden, oder
    // Angenommen ein View Objekt wurde vorher über setView() gesetzt:
    echo $form;
 
-Standardmäßig versuchen ``Zend_Form`` und ``Zend_Form_Element`` ein im ``ViewRenderer`` initialisiertes View
+Standardmäßig versuchen ``Zend_Form`` und ``Zend\Form\Element`` ein im ``ViewRenderer`` initialisiertes View
 Objekt zu verwenden, was bedeutet, dass die View nicht manuell gesetzt werden muss, wenn das *MVC* des Zend
 Frameworks verwendet wird. Die Darstellung eines Formulars in einem View Skript ist sehr einfach:
 
@@ -210,7 +210,7 @@ Frameworks verwendet wird. Die Darstellung eines Formulars in einem View Skript 
 Unter der Hand verwendet ``Zend_Form``"Dekoratoren" um die Darstellung durchzuführen. Diese Dekoratoren können
 Inhalte ersetzen, anfügen oder voranstellen, und haben eine volle Introspektive des Elements das Ihnen übergeben
 wurde. Als Ergebnis können mehrere Dekoratoren kombiniert werden, um eigene Effekte zu ermöglichen.
-Standardmüßig kombiniert ``Zend_Form_Element`` View Dekoratoren um seine Ausgaben zu erstellen; das Setup sieht
+Standardmüßig kombiniert ``Zend\Form\Element`` View Dekoratoren um seine Ausgaben zu erstellen; das Setup sieht
 ähnlich diesem aus:
 
 .. code-block:: php
@@ -372,7 +372,7 @@ Wir verwenden die Stärke von ``Zend_Form``'s Konfigurationsoptionen um die Form
 .. code-block:: php
    :linenos:
 
-   $form = new Zend_Form();
+   $form = new Zend\Form\Form();
    $form->setAction('/user/login')
         ->setMethod('post');
 
@@ -400,7 +400,7 @@ Als nächstes wird ein Controller erstellt der das Formular behandelt:
 .. code-block:: php
    :linenos:
 
-   class UserController extends Zend_Controller_Action
+   class UserController extends Zend\Controller\Action
    {
        public function getForm()
        {
@@ -488,8 +488,8 @@ Das kann dann an den Contruktor des Formulars übergeben werden:
 .. code-block:: php
    :linenos:
 
-   $config = new Zend_Config_Ini($configFile, 'development');
-   $form   = new Zend_Form($config->user->login);
+   $config = new Zend\Config\Ini($configFile, 'development');
+   $form   = new Zend\Form\Form($config->user->login);
 
 und das komplette Formular wird definiert werden.
 

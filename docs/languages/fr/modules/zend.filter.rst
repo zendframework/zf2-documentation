@@ -35,7 +35,7 @@ telles choses est important pour les développeurs Web et "filtrer" dans le cont
 Utilisation basique des filtres
 -------------------------------
 
-Avoir cette définition d'un filtre établie fournit la base pour ``Zend_Filter_Interface``, qui nécessitent une
+Avoir cette définition d'un filtre établie fournit la base pour ``Zend\Filter\Interface``, qui nécessitent une
 méthode unique nommée ``filter()`` pour être implémentée par une classe de filtre.
 
 L'exemple simple ci-dessous démontre l'utilisation d'un filtre sur les caractères esperluette (*&*, "ampersand"
@@ -44,7 +44,7 @@ en anglais) et guillemet double (*"*) :
    .. code-block:: php
       :linenos:
 
-      $htmlEntities = new Zend_Filter_HtmlEntities();
+      $htmlEntities = new Zend\Filter\HtmlEntities();
 
       echo $htmlEntities->filter('&'); // &
       echo $htmlEntities->filter('"'); // "
@@ -57,7 +57,7 @@ Utilisation de la méthode statique staticFilter()
 -------------------------------------------------
 
 S'il est peu pratique de charger une classe de filtre donnée et créer une instance du filtre, vous pouvez
-utiliser la méthode statique ``Zend_Filter::get()`` comme appel alternatif. Le premier argument de cette méthode
+utiliser la méthode statique ``Zend\Filter\Filter::get()`` comme appel alternatif. Le premier argument de cette méthode
 est une valeur de saisie de données, que vous passeriez à la méthode ``filter()``. Le deuxième argument est une
 chaîne, qui correspond au nom de base de la classe de filtre, relativement dans l'espace de nommage
 ``Zend_Filter``. La méthode ``staticFilter()`` charge automatiquement la classe, crée une instance et applique la
@@ -66,7 +66,7 @@ méthode ``filter()`` à la donnée saisie.
    .. code-block:: php
       :linenos:
 
-      echo Zend_Filter::get('&', 'HtmlEntities');
+      echo Zend\Filter\Filter::get('&', 'HtmlEntities');
 
 
 
@@ -76,7 +76,7 @@ pour votre classe de filtre.
    .. code-block:: php
       :linenos:
 
-      echo Zend_Filter::filterStatic('"',
+      echo Zend\Filter\Filter::filterStatic('"',
                                      'HtmlEntities',
                                      array('quotestyle' => ENT_QUOTES));
 
@@ -86,7 +86,7 @@ L'utilisation statique peut être pratique pour invoquer un filtre ad hoc, mais 
 filtre pour des saisies multiples, il est plus efficace de suivre le premier exemple ci-dessus, créant une
 instance de l'objet de filtre et appelant sa méthode ``filter()``.
 
-De plus, la classe ``Zend_Filter_Input`` vous permet d'instancier et d'exécuter des filtres multiples et des
+De plus, la classe ``Zend\Filter\Input`` vous permet d'instancier et d'exécuter des filtres multiples et des
 classes de validateurs sur demande pour traiter l'ensemble de données saisies. Voir :ref:` <zend.filter.input>`.
 
 

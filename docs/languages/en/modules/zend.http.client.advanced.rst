@@ -295,7 +295,7 @@ basic authentication is supported (digest authentication support is planned).
     :linenos:
 
     // Using basic authentication
-    $client->setAuth('shahar', 'myPassword!', Zend_Http_Client::AUTH_BASIC);
+    $client->setAuth('shahar', 'myPassword!', Zend\Http\Client::AUTH_BASIC);
 
     // Since basic auth is default, you can just do this:
     $client->setAuth('shahar', 'myPassword!');

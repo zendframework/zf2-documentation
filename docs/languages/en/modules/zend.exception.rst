@@ -15,9 +15,9 @@ The following code listing demonstrates how to catch an exception thrown in a Ze
    :linenos:
 
    try {
-       // Calling Zend_Loader::loadClass() with a non-existant class will cause
-       // an exception to be thrown in Zend_Loader:
-       Zend_Loader::loadClass('nonexistantclass');
+       // Calling Zend\Loader\Loader::loadClass() with a non-existant class will cause
+       // an exception to be thrown in Zend\Loader\Loader:
+       Zend\Loader\Loader::loadClass('nonexistantclass');
    } catch (Zend_Exception $e) {
        echo "Caught exception: " . get_class($e) . "\n";
        echo "Message: " . $e->getMessage() . "\n";

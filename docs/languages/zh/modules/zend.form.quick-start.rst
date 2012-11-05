@@ -83,7 +83,7 @@ POST，这将在解析的最后期间表现出来。
 
    <?php
    // Instantiating an element and passing to the form object:
-   $form->addElement(new Zend_Form_Element_Text('username'));
+   $form->addElement(new Zend\Form_Element\Text('username'));
 
    // Passing a form element type to the form object:
    $form->addElement('text', 'username');
@@ -92,17 +92,17 @@ POST，这将在解析的最后期间表现出来。
 在传递元素给表单之前，(b) 通过用 *Zend_Form* 创建元素时传递的配置选项，(c)
 从表单把元素拉出来并在以后配置。
 
-让我们首先看看为一个具体的元素实例创建校验器。可以传递 *Zend_Validate_**
+让我们首先看看为一个具体的元素实例创建校验器。可以传递 *Zend\Validate\**
 对象，或校验器的名称：
 
 .. code-block:: php
    :linenos:
 
    <?php
-   $username = new Zend_Form_Element_Text('username');
+   $username = new Zend\Form_Element\Text('username');
 
-   // Passing a Zend_Validate_* object:
-   $username->addValidator(new Zend_Validate_Alnum());
+   // Passing a Zend\Validate\* object:
+   $username->addValidator(new Zend\Validate\Alnum());
 
    // Passing a validator name:
    $username->addValidator('alnum');
@@ -157,7 +157,7 @@ POST，这将在解析的最后期间表现出来。
        ->addFilters(array('StringToLower'));
    ?>
 就算这样简单，在表单中为每个元素都做这样的工作也是单调乏味的。让我们试一试上述的方法(b)，当使用工厂模式
-*Zend_Form::addElement()*
+*Zend\Form\Form::addElement()*
 创建一个新元素，我们可以可选地传递配置选项，包括校验器和过滤器。这样，可以简单地完成上述任务：
 
 .. code-block:: php
@@ -176,7 +176,7 @@ POST，这将在解析的最后期间表现出来。
 .. note::
 
    如果你发现在许多地方用同样的选项来设置元素，可以考虑创建自己的
-   *Zend_Form_Element* 的子类并使用它，这样长远来说会减少很多打字的任务。
+   *Zend\Form\Element* 的子类并使用它，这样长远来说会减少很多打字的任务。
 
 .. _zend.form.quickstart.render:
 
@@ -197,7 +197,7 @@ render() 方法或简单地 echo 它。
    // Assuming a view object has been previously set via setView():
    echo $form;
    ?>
-缺省地， *Zend_Form* 和 *Zend_Form_Element* 将企图使用在 *ViewRenderer*
+缺省地， *Zend_Form* 和 *Zend\Form\Element* 将企图使用在 *ViewRenderer*
 中初始化过的视图对象，你不需要在Zend Framework MVC
 中手工设置视图。在视图脚本中解析表单是如此的简单：
 
@@ -209,7 +209,7 @@ render() 方法或简单地 echo 它。
 在内部， *Zend_Form* 使用 "decorators" （装饰器）
 来执行解析，这些装饰器可以替换内容、追加内容或预先准备内容，并拥有传递给它们的元素的
 full introspection 。结果，你可以组合多个装饰器来完成定制效果。缺省地，
-*Zend_Form_Element* 实际上组合了四个装饰器来完成输出，参见下例的设置：
+*Zend\Form\Element* 实际上组合了四个装饰器来完成输出，参见下例的设置：
 
 .. code-block:: php
    :linenos:
@@ -364,7 +364,7 @@ null 值来校验。
    <?php
 
 
-   $form = new Zend_Form();
+   $form = new Zend\Form\Form();
    $form->setAction('/user/login')
         ->setMethod('post');
 
@@ -393,7 +393,7 @@ null 值来校验。
    :linenos:
 
    <?php
-   class UserController extends Zend_Controller_Action
+   class UserController extends Zend\Controller\Action
    {
        public function getForm()
        {
@@ -480,8 +480,8 @@ null 值来校验。
    :linenos:
 
    <?php
-   $config = new Zend_Config_Ini($configFile, 'development');
-   $form   = new Zend_Form($config->user->login);
+   $config = new Zend\Config\Ini($configFile, 'development');
+   $form   = new Zend\Form\Form($config->user->login);
    ?>
 整个表单就定义好了。
 

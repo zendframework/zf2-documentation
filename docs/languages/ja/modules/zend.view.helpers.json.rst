@@ -29,11 +29,11 @@ JSON ヘルパー
 
 .. note::
 
-   **レイアウトの維持、およびZend_Json_Expr によるエンコードの有効化**
+   **レイアウトの維持、およびZend\Json\Expr によるエンコードの有効化**
 
    *JSON* ヘルパーの各メソッドには、オプションで 2 番目の引数を指定できます。
    この 2 番目の引数は、レイアウト機能の有効/無効を指定する boolean フラグか
-   あるいは ``Zend_Json::encode()``
+   あるいは ``Zend\Json\Json::encode()``
    に渡して内部的なデータのエンコードに使用するオプションの配列となります。
 
    レイアウトを維持するには、2 番目のパラメータを ``TRUE``
@@ -50,7 +50,7 @@ JSON ヘルパー
       // あるいは、キー "keepLayouts" に true を指定します
       echo $this->json($this->data, array('keepLayouts' => true));
 
-   ``Zend_Json::encode()`` は、ネイティブ *JSON* 式を ``Zend_Json_Expr``
+   ``Zend\Json\Json::encode()`` は、ネイティブ *JSON* 式を ``Zend\Json\Expr``
    オブジェクトを使用してエンコードできます。
    このオプションはデフォルトでは無効になっています。 有効にするには、
    ``enableJsonExprFinder`` オプションに ``TRUE`` を設定します。

@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.progressbar.adapter.console:
 
-Zend_ProgressBar_Adapter_Console
+Zend\ProgressBar_Adapter\Console
 ================================
 
-``Zend_ProgressBar_Adapter_Console`` は、
+``Zend\ProgressBar_Adapter\Console`` は、
 ターミナル用に使用するテキストベースのアダプタです。
 ターミナルの横幅を自動的に検出できますが、 独自に幅を指定することもできます。
 プログレスバーとともに表示する要素や、その順序も変更できます。
@@ -25,9 +25,9 @@ Zend_ProgressBar_Adapter_Console
   意外に出力したい場合に使用します。 *php://stderr* のようなストリーム、
   あるいはファイルへのパスを指定できます。
 
-- *width*: 整数値、あるいは ``Zend_Console_ProgressBar`` の定数 ``AUTO``\ 。
+- *width*: 整数値、あるいは ``Zend\Console\ProgressBar`` の定数 ``AUTO``\ 。
 
-- *elements*: デフォルトは ``NULL``\ 。 あるいは以下の ``Zend_Console_ProgressBar``
+- *elements*: デフォルトは ``NULL``\ 。 あるいは以下の ``Zend\Console\ProgressBar``
   の定数のうちの少なくともひとつを値として持つ配列。
 
   - ``ELEMENT_PERCENT``: パーセントであらわした現在値。

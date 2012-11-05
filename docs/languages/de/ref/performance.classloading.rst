@@ -175,7 +175,7 @@ Prompt ist):
 Dieser Ein-Zeiler (wegen der Lesbarkeit in zwei Zeilen gebrochen) geht durch jede *PHP* Datei und sagt Ihr das jede
 Instanz von 'require_once' mit '// require_once' ersetzt werden soll, was jede dieser Anweisungen effektiv
 auskommentiert. (Es stellt sicher das ``require_once()`` Aufrufe innerhalb von ``Zend_Application`` und
-``Zend_Loader_Autoloader`` bleiben, da diese Klassen ohne Sie nicht funktionieren.)
+``Zend\Loader\Autoloader`` bleiben, da diese Klassen ohne Sie nicht funktionieren.)
 
 Dieses Kommando sollte in einem automatischen Build oder Release Prozess ganz trivial hinzugefügt werden. Es
 sollte trotzdem klar sein das man, wenn man diese Technik verwendet, Autoloading verwendetn **muss**; man kann das
@@ -185,7 +185,7 @@ von der eigenen "``public/index.php``" Datei mit dem folgenden Code tun:
    :linenos:
 
    require_once 'Zend/Loader/Autoloader.php';
-   Zend_Loader_Autoloader::getInstance();
+   Zend\Loader\Autoloader::getInstance();
 
 .. _performance.classloading.pluginloader:
 
@@ -206,13 +206,13 @@ Multipliziert mit der anzahl der Komponenten die den PluginLoader verwenden, und
 Reichweite des Problems. Zu der Zeit zu der das geschrieben wird, verwenden die folgenden Komponenten den
 PluginLoader:
 
-- ``Zend_Controller_Action_HelperBroker``: Helfer
+- ``Zend\Controller_Action\HelperBroker``: Helfer
 
-- ``Zend_File_Transfer``: Adapter
+- ``Zend\File\Transfer``: Adapter
 
-- ``Zend_Filter_Inflector``: Filter (verwendet vom ViewRenderer Action Helfer und ``Zend_Layout``)
+- ``Zend\Filter\Inflector``: Filter (verwendet vom ViewRenderer Action Helfer und ``Zend_Layout``)
 
-- ``Zend_Filter_Input``: Filter und Prüfungen
+- ``Zend\Filter\Input``: Filter und Prüfungen
 
 - ``Zend_Form``: Elemente, Prüfungen, Filter, Dekoratore, Captcha und File Transfer Adapter
 

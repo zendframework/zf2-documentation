@@ -13,11 +13,11 @@ alphanumériques.
       :linenos:
 
       // Creation d'une chaine de validateurs et ajout de validateurs
-      $validateurChaine = new Zend_Validate();
+      $validateurChaine = new Zend\Validate\Validate();
       $validateurChaine->addValidator(
-                          new Zend_Validate_StringLength(array('min' => 6,
+                          new Zend\Validate\StringLength(array('min' => 6,
                                                                'max' => 12)))
-                       ->addValidator(new Zend_Validate_Alnum());
+                       ->addValidator(new Zend\Validate\Alnum());
 
       // Validation de l'identifiant
       if ($validateurChaine->isValid($identifiant)) {
@@ -46,13 +46,13 @@ longueur de la valeur échouait :
       :linenos:
 
       $validateurChaine->addValidator(
-                          new Zend_Validate_StringLength(array('min' => 6,
+                          new Zend\Validate\StringLength(array('min' => 6,
                                                                'max' => 12)),
                           true)
-                       ->addValidator(new Zend_Validate_Alnum());
+                       ->addValidator(new Zend\Validate\Alnum());
 
 
 
-Tout objet qui implémente ``Zend_Validate_Interface`` peut être utilisé dans une chaîne de validation.
+Tout objet qui implémente ``Zend\Validate\Interface`` peut être utilisé dans une chaîne de validation.
 
 

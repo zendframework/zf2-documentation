@@ -7,7 +7,7 @@ JSON 对象
 当编码PHP对象为JSON时, 它的所有的公有属性将被编码为JSON格式（到JSON对象中）.
 
 JSON 不允许 object references，所以注意不要带递归 references 解码对象（ objects）。
-如果递归有问题， *Zend_Json::encode()* 和 *Zend_Json_Encoder::encode()*
+如果递归有问题， *Zend\Json\Json::encode()* 和 *Zend\Json\Encoder::encode()*
 允许一个可选的第二个参数来检查递归；如果对象被系列化两次就抛出异常。
 
 解码JSON对象貌似有一点轻微的难度， 因为Javascript对象与PHP的联合数组的结构更相近。
@@ -22,7 +22,7 @@ JSON 不允许 object references，所以注意不要带递归 references 解码
    :linenos:
 
    // 解码 JSON 对象作为 PHP 对象
-   $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);
+   $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
 
 
 这样任何解码后的对象将被作为一个 *StdClass*\

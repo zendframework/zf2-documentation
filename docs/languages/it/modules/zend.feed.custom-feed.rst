@@ -23,7 +23,7 @@ debba preoccuparsi affatto dell'uso dei namespace.
     * La classe elemento personalizzata conosce l'URI del feed (opzionale) e
     * può aggiungere ulteriori namespace in automatico
     */
-   class MyEntry extends Zend_Feed_Entry_Atom
+   class MyEntry extends Zend\Feed_Entry\Atom
    {
 
        public function __construct($uri = 'http://www.example.com/myfeed/',
@@ -31,7 +31,7 @@ debba preoccuparsi affatto dell'uso dei namespace.
        {
            parent::__construct($uri, $xml);
 
-           Zend_Feed::registerNamespace('mions', 'http://www.example.com/mions/1.0');
+           Zend\Feed\Feed::registerNamespace('mions', 'http://www.example.com/mions/1.0');
        }
 
        public function __get($var)

@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.mime.part:
 
-Zend_Mime_Part
+Zend\Mime\Part
 ==============
 
 .. _zend.mime.part.introduction:
@@ -9,12 +9,12 @@ Zend_Mime_Part
 Введение
 --------
 
-Класс ``Zend_Mime_Part`` представляет отдельную часть сообщения *MIME*. В
+Класс ``Zend\Mime\Part`` представляет отдельную часть сообщения *MIME*. В
 объекте такого класса хранится действительное содержимое
 части сообщения, а также информация об его кодировке, типе
 содержимого и имени файла оригинала. Также этот класс
 предоставляет методы для генерации строки из сохраненных
-данных. Объекты ``Zend_Mime_Part`` могут быть добавлены в :ref:`Zend_Mime_Message
+данных. Объекты ``Zend\Mime\Part`` могут быть добавлены в :ref:`Zend\Mime\Message
 <zend.mime.message>` для получения сообщения multipart.
 
 .. _zend.mime.part.instantiation:
@@ -22,17 +22,17 @@ Zend_Mime_Part
 Инстанцирование
 ---------------
 
-Экземпляр класса ``Zend_Mime_Part`` создается с передачей строки,
+Экземпляр класса ``Zend\Mime\Part`` создается с передачей строки,
 которая представляет собой содержимое новой части сообщения.
 По умолчанию используются тип OCTET-STREAM и кодировка 8Bit. После
-инстанцирования ``Zend_Mime_Part`` метаданные могут быть установлены
+инстанцирования ``Zend\Mime\Part`` метаданные могут быть установлены
 путем прямого доступа к атрибутам:
 
 .. code-block:: php
    :linenos:
 
-   public $type = Zend_Mime::TYPE_OCTETSTREAM;
-   public $encoding = Zend_Mime::ENCODING_8BIT;
+   public $type = Zend\Mime\Mime::TYPE_OCTETSTREAM;
+   public $encoding = Zend\Mime\Mime::ENCODING_8BIT;
    public $id;
    public $disposition;
    public $filename;

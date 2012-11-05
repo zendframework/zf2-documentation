@@ -14,10 +14,10 @@ de beaucoup plus d'expérience d'interface "locale" par l'intermédiaire de l'ac
 virtuel. Le composant serveur comporte l'exposition automatique des fonctions et des classes employant un format
 compréhensible et simple de *XML*. En accédant à ces services via le client, il est possible de rechercher
 facilement les données retournées lors de l'appel à distance. Si vous souhaitez employer le client avec un
-service non basé sur le service Zend_Rest_Server, il fournira un accès plus facile aux données.
+service non basé sur le service Zend\Rest\Server, il fournira un accès plus facile aux données.
 
-En plus des composants ``Zend_Rest_Server`` et ``Zend_Rest_Client``, les classes :ref:`Zend_Rest_Route et
-Zend_Rest_Controller <zend.controller.router.routes.rest>` sont fournies pour aider lors du routage des requêtes
+En plus des composants ``Zend\Rest\Server`` et ``Zend\Rest\Client``, les classes :ref:`Zend\Rest\Route et
+Zend\Rest\Controller <zend.controller.router.routes.rest>` sont fournies pour aider lors du routage des requêtes
 vers les contrôleurs.
 
 

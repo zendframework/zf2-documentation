@@ -16,7 +16,7 @@
 .. code-block:: php
    :linenos:
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/1');
    $entry = $feed->current();
 
    $entry->title = 'This is a new title';
@@ -34,7 +34,7 @@
 
 אם הנכם צריכים להשתמש בסוג אחר של סנדקציה מלבד *atom:*, *rss:*, *osrss:*
 יהיה עליכם לרשום אותו קודם למחלקה *Zend_Feed* על ידי שימוש ב
-*Zend_Feed::registerNamespace()*. אם הנך עורך אלמנט קיים הוא תמיד ישמור את הסוג
+*Zend\Feed\Feed::registerNamespace()*. אם הנך עורך אלמנט קיים הוא תמיד ישמור את הסוג
 שלו. כשהנך מוסיף אלמנט, הוא יוסיף אותו לסוג ברירת המחדל של
 הסנדקציה אלה אם כן תגדיר את זה אחרת.
 
@@ -45,14 +45,14 @@
 .. code-block:: php
    :linenos:
 
-   $entry = new Zend_Feed_Entry_Atom();
+   $entry = new Zend\Feed_Entry\Atom();
    // id is always assigned by the server in Atom
    $entry->title = 'my custom entry';
    $entry->author->name = 'Example Author';
    $entry->author->email = 'me@example.com';
 
    // Now do the custom part.
-   Zend_Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
+   Zend\Feed\Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
 
    $entry->{'myns:myelement_one'} = 'my first custom value';
    $entry->{'myns:container_elt'}->part1 = 'first nested custom part';

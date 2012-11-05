@@ -16,7 +16,7 @@ welches wir in eine Anzahl von Seiten aufteilen wollen. Man kann die statische `
    $data = range(1, 100);
 
    // Holt ein Paginator Objekt und verwendet Zend_Paginator's eingebaute Factory
-   $paginator = Zend_Paginator::factory($data);
+   $paginator = Zend\Paginator\Paginator::factory($data);
 
 Wir sind fast fertig! Die Variable $paginator enthält jetzt eine Referenz auf das Paginator Objekt.
 Standardmäßig ist es eingestellt 10 Elemente pro Seite anzuzeigen. Um die Elemente für die aktuell aktive Seite
@@ -32,7 +32,7 @@ Liste welche die Zahlen 1 bis 10 enthält ,welche die Zahlen der ersten Seite si
    $data = range(1, 100);
 
    // Holt ein Paginator Objekt und verwendet Zend_Paginator's eingebaute Factory
-   $paginator = Zend_Paginator::factory($data);
+   $paginator = Zend\Paginator\Paginator::factory($data);
 
    ?><ul><?php
 
@@ -53,7 +53,7 @@ verwendet werden um auszuwählen welche Seite man sehen will.
    $data = range(1, 100);
 
    // Holt ein Paginator Objekt und verwendet Zend_Paginator's eingebaute Factory
-   $paginator = Zend_Paginator::factory($data);
+   $paginator = Zend\Paginator\Paginator::factory($data);
 
    // Wählt die zweite Seite
    $paginator->setCurrentPageNumber(2);
@@ -72,7 +72,7 @@ Wie erwartet stellt dieser kleine Abschnitt eine unsortierte Liste mit den Zahle
 Dieses einfache Beispiel demonstriert einen kleinen Teil davon was mit ``Zend_Paginator`` getan werden kann. Aber
 eine echte Anwendung liest selten in seinen Daten von einem reinen Array, deshalb ist der nächste Abschnitt dazu
 gedacht zu zeigen wir man Paginator verwenden kann um Ergebnisse einer Datenbank Abfrage seitenweise darzustellen.
-Bevor weitergelesen wird, sollte man sicherstellen das man sich damit auskennt wie ``Zend_Db_Select`` arbeitet!
+Bevor weitergelesen wird, sollte man sicherstellen das man sich damit auskennt wie ``Zend\Db\Select`` arbeitet!
 
 Im Datenbank Beispiel sehen wir nach einer Tabelle mit Blog Posts welche 'posts' genannt wird. Gehen wir direkt
 hinein und schauen uns ein einfaches Beispiel an.
@@ -80,12 +80,12 @@ hinein und schauen uns ein einfaches Beispiel an.
 .. code-block:: php
    :linenos:
 
-   // Eine Select Abfrage erstellen. $db ist ein Zend_Db_Adapter Objekt, von dem
+   // Eine Select Abfrage erstellen. $db ist ein Zend\Db\Adapter Objekt, von dem
    // wir annehmen das es bereits im Skript existiert
    $select = $db->select()->from('posts')->order('date_created DESC');
 
    // Holt ein Paginator Objekt und verwendet Zend_Paginator's eingebaute Factory
-   $paginator = Zend_Paginator::factory($select);
+   $paginator = Zend\Paginator\Paginator::factory($select);
 
    // Wählt die zweite Seite
    $paginator->setCurrentPageNumber(2);
@@ -100,7 +100,7 @@ hinein und schauen uns ein einfaches Beispiel an.
    ?></ul>
 
 Wie man sehen kann ist dieses Beispiel nicht sehr unterschiedlich vom vorhergehenden. Der einzige Unterschied
-besteht darin dass man ein ``Zend_Db_Select`` Objekt statt einem Array an die ``factory()`` Methode des Paginator's
+besteht darin dass man ein ``Zend\Db\Select`` Objekt statt einem Array an die ``factory()`` Methode des Paginator's
 übergibt. Für weitere Details darüber wie der Datenbank Adapter sicherstellt das eigene Anfragen effizient
 ausgeführt werden, sollte in das ``Zend_Paginator`` Kapitel im Referenz Handbuch bei den Adaptern DbSelect und
 DbTableSelect nachgesehen werden.

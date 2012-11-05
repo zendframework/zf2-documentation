@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.progressbar.adapter.jspush:
 
-Zend_ProgressBar_Adapter_JsPush
+Zend\ProgressBar_Adapter\JsPush
 ===============================
 
-``Zend_ProgressBar_Adapter_JsPush`` est un adaptateur qui vous permet de mettre à jour une barre de progression
+``Zend\ProgressBar_Adapter\JsPush`` est un adaptateur qui vous permet de mettre à jour une barre de progression
 dans un navigateur au travers de Javascript. Ceci veut dire qu'une seconde connexion n'est pas nécessaire pour
 recueillir le statut du processus courant, mais que le processus lui-même envoie son statut directement au
 navigateur.
@@ -14,7 +14,7 @@ Vous pouvez paramétrer les options de l'adaptateur soit avec les méthodes *set
 Les options disponibles sont :
 
 - *updateMethodName*: la méthode Javascript qui sera appelée à chaque mise à jour. La valeur par défaut est
-  ``Zend_ProgressBar_Update``.
+  ``Zend\ProgressBar\Update``.
 
 - *finishMethodName*: la méthode Javascript qui sera appelée lorsque le statut terminé sera atteint. La valeur
   par défaut est ``NULL``, qui veut dire que rien n'est fait.
@@ -83,7 +83,7 @@ Cet exemple illustre un paramétrage basique du HTML, *CSS* et JavaScript pour l
 .. code-block:: javascript
    :linenos:
 
-   function Zend_ProgressBar_Update(data)
+   function Zend\ProgressBar\Update(data)
    {
        document.getElementById('zend-progressbar-done').style.width =
            data.percent + '%';

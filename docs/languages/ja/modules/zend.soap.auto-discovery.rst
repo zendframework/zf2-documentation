@@ -54,7 +54,7 @@ WSDL言語は、十分に複雑です。 (詳しくは `http://www.w3.org/TR/wsd
 
 両方のメソッドは、Zend Framework 自動検出機能によってサポートされます。
 
-``Zend_Soap_AutoDiscover``\ クラスも、 *PHP*\ から `XSD型`_\
+``Zend\Soap\AutoDiscover``\ クラスも、 *PHP*\ から `XSD型`_\
 までデータ型マッピングをサポートします。
 
 これは自動検出機能の一般的な用法の例です。 ``handle()``\
@@ -67,7 +67,7 @@ WSDL言語は、十分に複雑です。 (詳しくは `http://www.w3.org/TR/wsd
       ...
       }
 
-      $autodiscover = new Zend_Soap_AutoDiscover();
+      $autodiscover = new Zend\Soap\AutoDiscover();
       $autodiscover->setClass('My_SoapServer_Class');
       $autodiscover->handle();
 
@@ -79,16 +79,16 @@ AutoDiscoverクラスが提供する ``dump($filename)``\ または ``toXml()``\
 
 .. note::
 
-   **Zend_Soap_AutodiscoverはSOAPサーバーではありません**
+   **Zend\Soap\AutodiscoverはSOAPサーバーではありません**
 
-   クラス ``Zend_Soap_AutoDiscover``\ が 単独で *SOAP*\
+   クラス ``Zend\Soap\AutoDiscover``\ が 単独で *SOAP*\
    サーバーの働きをしない点に注意することは、非常に重要です。
    それはWSDLを生成して、それがリスンしているurlにアクセスした誰にでも届けるだけです。
 
    *SOAP*\ エンドポイントUriがデフォルト値、 *'http://' .$_SERVER['HTTP_HOST'] .
    $_SERVER['SCRIPT_NAME']* を使いますが、 しかしこれは ``setUri()``\ 関数や
-   ``Zend_Soap_AutoDiscover``\ クラスのコンストラクタのパラメータで変更できます。
-   このエンドポイントではリクエストをリスンする ``Zend_Soap_Server``\
+   ``Zend\Soap\AutoDiscover``\ クラスのコンストラクタのパラメータで変更できます。
+   このエンドポイントではリクエストをリスンする ``Zend\Soap\Server``\
    クラスを準備しなくてはいけません。
 
 
@@ -97,12 +97,12 @@ AutoDiscoverクラスが提供する ``dump($filename)``\ または ``toXml()``\
          :linenos:
 
          if(isset($_GET['wsdl'])) {
-             $autodiscover = new Zend_Soap_AutoDiscover();
+             $autodiscover = new Zend\Soap\AutoDiscover();
              $autodiscover->setClass('HelloWorldService');
              $autodiscover->handle();
          } else {
              //ここで現行ファイルを指示します。
-             $soap = new Zend_Soap_Server("http://example.com/soap.php?wsdl");
+             $soap = new Zend\Soap\Server("http://example.com/soap.php?wsdl");
              $soap->setClass('HelloWorldService');
              $soap->handle();
          }
@@ -115,12 +115,12 @@ AutoDiscoverクラスが提供する ``dump($filename)``\ または ``toXml()``\
 --------
 
 クラスが *SOAP*\ サーバー機能を提供することに使われるならば、
-同じクラスはWSDL生成のために ``Zend_Soap_AutoDiscover``\ に提供されなければなりません:
+同じクラスはWSDL生成のために ``Zend\Soap\AutoDiscover``\ に提供されなければなりません:
 
    .. code-block:: php
       :linenos:
 
-      $autodiscover = new Zend_Soap_AutoDiscover();
+      $autodiscover = new Zend\Soap\AutoDiscover();
       $autodiscover->setClass('My_SoapServer_Class');
       $autodiscover->handle();
 
@@ -170,12 +170,12 @@ WSDL生成の間、以下の規則が使われます:
 -------
 
 関数のセットが *SOAP*\ サーバー機能を提供することに使われるならば、
-同じセットはWSDL生成のために ``Zend_Soap_AutoDiscovery``\ に提供されなければなりません:
+同じセットはWSDL生成のために ``Zend\Soap\AutoDiscovery``\ に提供されなければなりません:
 
    .. code-block:: php
       :linenos:
 
-      $autodiscover = new Zend_Soap_AutoDiscover();
+      $autodiscover = new Zend\Soap\AutoDiscover();
       $autodiscover->addFunction('function1');
       $autodiscover->addFunction('function2');
       $autodiscover->addFunction('function3');
@@ -274,7 +274,7 @@ WSDLは、異なるトランスポートのメカニズムとスタイルを提�
    .. code-block:: php
       :linenos:
 
-      $autodiscover = new Zend_Soap_AutoDiscover();
+      $autodiscover = new Zend\Soap\AutoDiscover();
       // デフォルトは 'use' => 'encoded' 及び
       // 'encodingStyle' => 'http://schemas.xmlsoap.org/soap/encoding/' です。
       $autodiscover->setOperationBodyStyle(
@@ -301,11 +301,11 @@ WSDLは、異なるトランスポートのメカニズムとスタイルを提�
 .. _`XSD型`: http://www.w3.org/TR/xmlschema-2/
 .. _`ポートタイプ`: http://www.w3.org/TR/wsdl#_porttypes
 
-.. [#] ``Zend_Soap_AutoDiscover``\ は複雑な型のための検出アルゴリズムとして
-       ``Zend_Soap_Wsdl_Strategy_DefaultComplexType``\ クラスで生成されます。
+.. [#] ``Zend\Soap\AutoDiscover``\ は複雑な型のための検出アルゴリズムとして
+       ``Zend\Soap\Wsdl\Strategy\DefaultComplexType``\ クラスで生成されます。
        AutoDiscoverコンストラクタの最初のパラメータは、
-       ``Zend_Soap_Wsdl_Strategy_Interface``\ を実装した、
+       ``Zend\Soap\Wsdl\Strategy\Interface``\ を実装した、
        どんな複雑な型ストラテジーでも、クラスの名前を持つ文字列でもとります。
-       *$extractComplexType*\ との後方互換性のために、 ブール変数は ``Zend_Soap_Wsdl``\
+       *$extractComplexType*\ との後方互換性のために、 ブール変数は ``Zend\Soap\Wsdl``\
        のように解析されます。 詳しくは :ref:`複雑な型を追加することについて
-       Zend_Soap_Wsdlマニュアル <zend.soap.wsdl.types.add_complex>`\ をご覧下さい。
+       Zend\Soap\Wsdlマニュアル <zend.soap.wsdl.types.add_complex>`\ をご覧下さい。

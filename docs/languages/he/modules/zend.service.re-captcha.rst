@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.recaptcha:
 
-Zend_Service_ReCaptcha
+Zend\Service\ReCaptcha
 ======================
 
 .. _zend.service.recaptcha.introduction:
@@ -9,7 +9,7 @@ Zend_Service_ReCaptcha
 הקדמה
 -----
 
-*Zend_Service_ReCaptcha* מספק תמיכה בשירות ה `reCAPTCHA`_. כפי שמוסבר באתר reCAPTCHA,
+*Zend\Service\ReCaptcha* מספק תמיכה בשירות ה `reCAPTCHA`_. כפי שמוסבר באתר reCAPTCHA,
 "reCAPTCHA הינו שירות ווב חינמי אשר מציג מילים מתוך ספרות למניעת
 ספאם ושימוש של האתר והתוכן בצורה לא חוקית ולמטרת ספאם.". כל reCAPTCHA
 דורש מהמשתמש להזין שתי מילים, המילה הראשונה היא בעצם ה captcha
@@ -25,13 +25,13 @@ Zend_Service_ReCaptcha
 שימוש בסיסי
 -----------
 
-יצירת אובייקט *Zend_Service_ReCaptcha* חדש עם העברת המפתחות שלכם בתור
+יצירת אובייקט *Zend\Service\ReCaptcha* חדש עם העברת המפתחות שלכם בתור
 פרמטרים:
 
 .. code-block:: php
    :linenos:
 
-   $recaptcha = new Zend_Service_ReCaptcha($pubKey, $privKey);
+   $recaptcha = new Zend\Service\ReCaptcha($pubKey, $privKey);
 
 
 כדי להציג את הטקסט יש להשתמש במתודה *getHTML()*:
@@ -55,7 +55,7 @@ Zend_Service_ReCaptcha
 
 
 ברגע שיש לכם את התוצאה מהמתודה, בדקו זאת אם היא תקינה. התוצאה
-הינה אובייקט של *Zend_Service_ReCaptcha_Response*, אשר מספק מתודה *isValid()*.
+הינה אובייקט של *Zend\Service_ReCaptcha\Response*, אשר מספק מתודה *isValid()*.
 
 .. code-block:: php
    :linenos:

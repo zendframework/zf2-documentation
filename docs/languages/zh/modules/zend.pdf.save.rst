@@ -4,12 +4,12 @@
 保存修改到 PDF 文档
 ============
 
-有两个方法来保存修改到 PDF 文档： *Zend_Pdf::save()* 和 *Zend_Pdf::render()*\ 。
+有两个方法来保存修改到 PDF 文档： *ZendPdf\Pdf::save()* 和 *ZendPdf\Pdf::render()*\ 。
 
-*Zend_Pdf::save($filename, $updateOnly = false)* 保存 PDF 文档到一个文件。如果 $updateOnly 是
+*ZendPdf\Pdf::save($filename, $updateOnly = false)* 保存 PDF 文档到一个文件。如果 $updateOnly 是
 true，那么只有新的 PDF 文件段被追加到文件，否则，重写文件。
 
-*Zend_Pdf::render($newSegmentOnly = false)* 把 PDF 文档当作字符串返回。如果 $newSegmentOnly 是
+*ZendPdf\Pdf::render($newSegmentOnly = false)* 把 PDF 文档当作字符串返回。如果 $newSegmentOnly 是
 true，那么只有新的 PDF 文件段返回。
 
 .. _zend.pdf.save.example-1:
@@ -21,7 +21,7 @@ true，那么只有新的 PDF 文件段返回。
 
    ...
    // Load PDF document.
-   $pdf = Zend_Pdf::load($fileName);
+   $pdf = ZendPdf\Pdf::load($fileName);
    ...
    // Update document
    $pdf->save($fileName, true);

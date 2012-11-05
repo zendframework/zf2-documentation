@@ -9,14 +9,14 @@ de ce qui suit.
 
 .. _migration.110.zend.controller.front:
 
-Zend_Controller_Front
+Zend\Controller\Front
 ---------------------
 
 A wrong behaviour was fixed, when there was no module route and no route matched the given request. Previously, the
 router returned an unmodified request object, so the front controller just displayed the default controller and
 action. Since Zend Framework 1.10, the router will correctly as noted in the router interface, throw an exception
 if no route matches. The error plugin will then catch that exception and forward to the error controller. You can
-then test for that specific error with the constant ``Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE``:
+then test for that specific error with the constant ``Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ROUTE``:
 
 .. code-block:: php
    :linenos:
@@ -29,8 +29,8 @@ then test for that specific error with the constant ``Zend_Controller_Plugin_Err
            $errors = $this->_getParam('error_handler');
 
            switch ($errors->type) {
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_CONTROLLER:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ACTION:
        // ...
 
    /**
@@ -41,17 +41,17 @@ then test for that specific error with the constant ``Zend_Controller_Plugin_Err
            $errors = $this->_getParam('error_handler');
 
            switch ($errors->type) {
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
-               case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ROUTE:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_CONTROLLER:
+               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ACTION:
        // ...
 
 .. _migration.110.zend.feed.reader:
 
-Zend_Feed_Reader
+Zend\Feed\Reader
 ----------------
 
-With the introduction of Zend Framework 1.10, ``Zend_Feed_Reader``'s handling of retrieving Authors and
+With the introduction of Zend Framework 1.10, ``Zend\Feed\Reader``'s handling of retrieving Authors and
 Contributors was changed, introducing a break in backwards compatibility. This change was an effort to harmonise
 the treatment of such data across the RSS and Atom classes of the component and enable the return of Author and
 Contributor data in more accessible, usable and detailed form. It also rectifies an error in that it was assumed
@@ -61,7 +61,7 @@ significantly reducing the usefulness of the parser with that format.
 
 The change means that methods like ``getAuthors()`` and ``getContributors`` no longer return a simple array of
 strings parsed from the relevant RSS and Atom elements. Instead, the return value is an ``ArrayObject`` subclass
-called ``Zend_Feed_Reader_Collection_Author`` which simulates an iterable multidimensional array of Authors. Each
+called ``Zend\Feed\Reader\Collection\Author`` which simulates an iterable multidimensional array of Authors. Each
 member of this object will be a simple array with three potential keys (as the source data permits). These include:
 name, email and uri.
 
@@ -70,7 +70,7 @@ present a single name, but in reality this was unreliable since there is no rule
 strings.
 
 The simplest method of simulating the original behaviour of these methods is to use the
-``Zend_Feed_Reader_Collection_Author``'s ``getValues()`` which also returns a simple array of strings representing
+``Zend\Feed\Reader\Collection\Author``'s ``getValues()`` which also returns a simple array of strings representing
 the "most relevant data", for authors presumed to be their name. Each value in the resulting array is derived from
 the "name" value attached to each Author (if present). In most cases this simple change is easy to apply as
 demonstrated below.
@@ -82,18 +82,18 @@ demonstrated below.
     * Before 1.10
     */
 
-   $feed = Zend_Feed_Reader::import('http://example.com/feed');
+   $feed = Zend\Feed\Reader::import('http://example.com/feed');
    $authors = $feed->getAuthors();
 
    /**
     * With 1.10
     */
-   $feed = Zend_Feed_Reader::import('http://example.com/feed');
+   $feed = Zend\Feed\Reader::import('http://example.com/feed');
    $authors = $feed->getAuthors()->getValues();
 
 .. _migration.110.zend.file.transfer:
 
-Zend_File_Transfer
+Zend\File\Transfer
 ------------------
 
 .. _migration.110.zend.file.transfer.files:
@@ -101,13 +101,13 @@ Zend_File_Transfer
 Security change
 ^^^^^^^^^^^^^^^
 
-For security reasons ``Zend_File_Transfer`` does no longer store the original mimetype and filesize which is given
+For security reasons ``Zend\File\Transfer`` does no longer store the original mimetype and filesize which is given
 from the requesting client into its internal storage. Instead the real values will be detected at initiation.
 
 Additionally the original values within ``$_FILES`` will be overridden within the real values at initiation. This
 makes also ``$_FILES`` secure.
 
-When you are in need of the original values you can either store them before initiating ``Zend_File_Transfer`` or
+When you are in need of the original values you can either store them before initiating ``Zend\File\Transfer`` or
 use the ``disableInfos`` option at initiation. Note that this option is useless when its given after initiation.
 
 .. _migration.110.zend.file.transfer.count:
@@ -135,10 +135,10 @@ translate the original string anymore to get a correct spelling.
 
 .. _migration.110.zend.filter.html-entities:
 
-Zend_Filter_HtmlEntities
+Zend\Filter\HtmlEntities
 ------------------------
 
-In order to default to a more secure character encoding, ``Zend_Filter_HtmlEntities`` now defaults to *UTF-8*
+In order to default to a more secure character encoding, ``Zend\Filter\HtmlEntities`` now defaults to *UTF-8*
 instead of *ISO-8859-1*.
 
 Additionally, because the actual mechanism is dealing with character encodings and not character sets, two new
@@ -150,10 +150,10 @@ work.
 
 .. _migration.110.zend.filter.strip-tags:
 
-Zend_Filter_StripTags
+Zend\Filter\StripTags
 ---------------------
 
-``Zend_Filter_StripTags`` contains a flag, ``commentsAllowed``, that, in previous versions, allowed you to
+``Zend\Filter\StripTags`` contains a flag, ``commentsAllowed``, that, in previous versions, allowed you to
 optionally whitelist *HTML* comments in *HTML* text filtered by the class. However, this opens code enabling the
 flag to *XSS* attacks, particularly in Internet Explorer (which allows specifying conditional functionality via
 *HTML* comments). Starting in version 1.9.7 (and backported to versions 1.8.5 and 1.7.9), the ``commentsAllowed``
@@ -179,7 +179,7 @@ But you can still get the incorrect and old behaviour by setting the ``useId`` o
 .. code-block:: php
    :linenos:
 
-   $trans = new Zend_Translator(
+   $trans = new Zend\Translator\Translator(
        'xliff', '/path/to/source', $locale, array('useId' => false)
    );
 
@@ -204,7 +204,7 @@ du mauvais message d'erreur.
 .. code-block:: php
    :linenos:
 
-   My_Validator extends Zend_Validate_Abstract
+   My_Validator extends Zend\Validate\Abstract
    {
        public isValid($value)
        {
@@ -219,7 +219,7 @@ Pour éviter ces problèmes ``_error()`` doit desormais prendre obligatoirement 
 .. code-block:: php
    :linenos:
 
-   My_Validator extends Zend_Validate_Abstract
+   My_Validator extends Zend\Validate\Abstract
    {
        public isValid($value)
        {

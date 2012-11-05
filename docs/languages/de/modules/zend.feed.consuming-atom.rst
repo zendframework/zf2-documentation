@@ -4,7 +4,7 @@
 Einen Atom Feed konsumieren
 ===========================
 
-``Zend_Feed_Atom`` wird auf die ziemlich genau selbe Weise verwendet wie ``Zend_Feed_Rss``. Es stellt die gleichen
+``Zend\Feed\Atom`` wird auf die ziemlich genau selbe Weise verwendet wie ``Zend\Feed\Rss``. Es stellt die gleichen
 Zugriffsmöglichkeiten auf Eigenschaften auf Feed Ebene und bei der Iteration über Einträge des Feeds bereit. Der
 Hauptunterschied ist die Struktur des Atom Protokolls selber. Atom ist ein Nachfolger von *RSS*; es ist ein mehr
 verallgemeinertes Protokoll und es wurde gestaltet, um einfacher mit Feeds umzugehen, die ihren kompletten Inhalt
@@ -20,7 +20,7 @@ Lese einen Atom Feed und gebe ``title`` und ``summary`` jedes Eintrages aus:
 .. code-block:: php
    :linenos:
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/');
    echo 'Der Feed enthält ' . $feed->count() . ' Einträge.' . "\n\n";
    foreach ($feed as $entry) {
        echo 'Überschrift: ' . $entry->title() . "\n";

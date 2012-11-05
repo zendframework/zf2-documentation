@@ -8,14 +8,14 @@ Dieser Filter löst gegebene Links und Pfadnamen auf und gibt kanonische absolut
 '``/./``', '``/../``' und extra '``/``' Zeichen im Eingabepfad werden entfernt. Der Ergebnispfad hat keine
 symbolischen Links, '``/./``' oder '``/../``' Zeichen mehr.
 
-``Zend_Filter_RealPath`` gibt bei einem Fehler ``FALSE`` zurück, z.B. wenn die Datei nicht existiert. Auf *BSD*
-Systemen schlägt ``Zend_Filter_RealPath`` nicht fehl wenn nur die letzte Komponente des Pfades nicht existiert,
+``Zend\Filter\RealPath`` gibt bei einem Fehler ``FALSE`` zurück, z.B. wenn die Datei nicht existiert. Auf *BSD*
+Systemen schlägt ``Zend\Filter\RealPath`` nicht fehl wenn nur die letzte Komponente des Pfades nicht existiert,
 wärend andere Systeme ``FALSE`` zurückgeben.
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_RealPath();
+   $filter = new Zend\Filter\RealPath();
    $path   = '/www/var/path/../../mypath';
    $filtered = $filter->filter($path);
 
@@ -28,7 +28,7 @@ oder ``setExists()`` verwenden um es zu setzen.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_RealPath(false);
+   $filter = new Zend\Filter\RealPath(false);
    $path   = '/www/var/path/../../non/existing/path';
    $filtered = $filter->filter($path);
 

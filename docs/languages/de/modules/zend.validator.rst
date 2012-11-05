@@ -29,7 +29,7 @@ entsprochen hat.
 Standardnutzung von Prüfungen
 -----------------------------
 
-Prüfungen auf diesem Weg definiert zu haben, bietet die Grundlage für ``Zend_Validate_Interface``, welche zwei
+Prüfungen auf diesem Weg definiert zu haben, bietet die Grundlage für ``Zend\Validate\Interface``, welche zwei
 Methoden definiert, ``isValid()`` und ``getMessages()``. Die Methode ``isValid()`` führt eine Prüfung über die
 angegebenen Werte aus und gibt nur dann ``TRUE`` zurück, wenn der Wert gegenüber den Kriterien der Prüfung
 entsprochen hat.
@@ -53,7 +53,7 @@ Das folgende Beispiel zeigt die Prüfung einer E-Mail Adresse:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_EmailAddress();
+   $validator = new Zend\Validate\EmailAddress();
 
    if ($validator->isValid($email)) {
        //
@@ -79,7 +79,7 @@ ein String, der die Fehlernachricht enthält. Es können Kürzel in den String e
 für die Prüfung relevanten Daten aufgefüllt werden. Das Kürzel **%value%** wird von allen Prüfungen
 unterstützt; es ist verbunden mit dem Wert der an ``isValid()`` übergeben wird. Andere Kürzel können in jeder
 Prüfklasse von Fall zu Fall unterstützt werden. Zum Beispiel ist **%max%** das Kürzel, welches von
-``Zend_Validate_LessThan`` unterstützt wird. Die ``getMessageVariables()`` Methode gibt ein Array von variablen
+``Zend\Validate\LessThan`` unterstützt wird. Die ``getMessageVariables()`` Methode gibt ein Array von variablen
 Kürzeln zurück, welche vom Prüfer unterstützt werden.
 
 Das zweite optionale Argument ist ein String, der das Template der fehlerhaften Prüfnachricht identifiziert, die
@@ -92,12 +92,12 @@ Fehlernachrichten geändert werden soll.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(8);
+   $validator = new Zend\Validate\StringLength(8);
 
    $validator->setMessage(
        'Der String \'%value%\' ist zu kurz; er muss mindestens %min% ' .
        'Zeichen sein',
-       Zend_Validate_StringLength::TOO_SHORT);
+       Zend\Validate\StringLength::TOO_SHORT);
 
    if (!$validator->isValid('word')) {
        $messages = $validator->getMessages();
@@ -112,12 +112,12 @@ ein Array, welches Schlüssel/Nachrichten Paare enthält.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(array('min' => 8, 'max' => 12));
+   $validator = new Zend\Validate\StringLength(array('min' => 8, 'max' => 12));
 
    $validator->setMessages( array(
-       Zend_Validate_StringLength::TOO_SHORT =>
+       Zend\Validate\StringLength::TOO_SHORT =>
            'Der String \'%value%\' ist zu kurz',
-       Zend_Validate_StringLength::TOO_LONG  =>
+       Zend\Validate\StringLength::TOO_LONG  =>
            'Der String \'%value%\' ist zu lang'
    ));
 
@@ -130,7 +130,7 @@ unterstützt werden.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(array('min' => 8, 'max' => 12));
+   $validator = new Zend\Validate\StringLength(array('min' => 8, 'max' => 12));
 
    if (!validator->isValid('word')) {
        echo 'Wort fehlgeschlaten: '
@@ -148,7 +148,7 @@ Verwenden der statischen is() Methode
 -------------------------------------
 
 Wenn es unpassend ist, eine gegebenen Prüfklasse zu laden und eine Instanz des Prüfers zu erstellen, kann die
-statische Methode ``Zend_Validate::is()`` als alternativer Stil des Aufrufs verwendet werden. Das erste Argument
+statische Methode ``Zend\Validate\Validate::is()`` als alternativer Stil des Aufrufs verwendet werden. Das erste Argument
 dieser Methode ist ein Datenwert, der an die Methode ``isValid()`` übergeben werden würde. Das zweite Argument
 ist ein String, welcher mit dem Basisnamen der Prüfklasse übereinstimmt, relativ zum Namensraum von
 ``Zend_Validate``. Die Methode ``is()`` lädt die Klasse automatisch, erstellt eine Instanz und wendet die Methode
@@ -157,7 +157,7 @@ ist ein String, welcher mit dem Basisnamen der Prüfklasse übereinstimmt, relat
 .. code-block:: php
    :linenos:
 
-   if (Zend_Validate::is($email, 'EmailAddress')) {
+   if (Zend\Validate\Validate::is($email, 'EmailAddress')) {
        // Ja, die Email Adresse scheint gültig zu sein
    }
 
@@ -166,7 +166,7 @@ Es kann auch ein Array von Konstruktor-Argumenten übergeben werden, wenn diese 
 .. code-block:: php
    :linenos:
 
-   if (Zend_Validate::is($value, 'Between', array('min' => 1, 'max' => 12))) {
+   if (Zend\Validate\Validate::is($value, 'Between', array('min' => 1, 'max' => 12))) {
        // Ja, $value ist zwischen 1 und 12
    }
 
@@ -177,38 +177,38 @@ Die statische Verwendung kann für das ad hoc Verwenden eines Prüfers bequem se
 mehrere Eingaben verwendet werden soll, ist es effizienter die nicht statische Verwendung zu benutzen, indem eine
 Instanz des Prüfobjekts erstellt wird und dessen Methode ``isValid()`` aufgerufen wird.
 
-Die Klasse ``Zend_Filter_Input`` erlaubt es, auch mehrfache Filter und Prüfklassen zu instanzieren und bei Bedarf
-aufzurufen, um Sets von Eingabedaten zu bearbeiten. Siehe :ref:`Zend_Filter_Input <zend.filter.input>`.
+Die Klasse ``Zend\Filter\Input`` erlaubt es, auch mehrfache Filter und Prüfklassen zu instanzieren und bei Bedarf
+aufzurufen, um Sets von Eingabedaten zu bearbeiten. Siehe :ref:`Zend\Filter\Input <zend.filter.input>`.
 
 .. _zend.validator.introduction.static.namespaces:
 
 Namespaces
 ^^^^^^^^^^
 
-Wenn man mit selbst definierten Prüfungen arbeitet, dann kann man an ``Zend_Validate::is()`` einen vierten
+Wenn man mit selbst definierten Prüfungen arbeitet, dann kann man an ``Zend\Validate\Validate::is()`` einen vierten
 Parameter übergeben welcher der Namespace ist, an dem die eigene Prüfung gefunden werden kann.
 
 .. code-block:: php
    :linenos:
 
-   if (Zend_Validate::is($value, 'MyValidator', array('min' => 1, 'max' => 12),
+   if (Zend\Validate\Validate::is($value, 'MyValidator', array('min' => 1, 'max' => 12),
                          array('FirstNamespace', 'SecondNamespace')) {
        // Ja, $value ist in Ordnung
    }
 
 ``Zend_Validate`` erlaubt es auch, standardmäßige Namespaces zu setzen. Das bedeutet, dass man sie einmal in der
-Bootstrap setzt und sie nicht mehr bei jedem Aufruf von ``Zend_Validate::is()`` angeben muss. Der folgende
+Bootstrap setzt und sie nicht mehr bei jedem Aufruf von ``Zend\Validate\Validate::is()`` angeben muss. Der folgende
 Codeschnipsel ist identisch mit dem vorherigen.
 
 .. code-block:: php
    :linenos:
 
-   Zend_Validate::setDefaultNamespaces(array('FirstNamespace', 'SecondNamespace'));
-   if (Zend_Validate::is($value, 'MyValidator', array('min' => 1, 'max' => 12)) {
+   Zend\Validate\Validate::setDefaultNamespaces(array('FirstNamespace', 'SecondNamespace'));
+   if (Zend\Validate\Validate::is($value, 'MyValidator', array('min' => 1, 'max' => 12)) {
        // Yes, $value is ok
    }
 
-   if (Zend_Validate::is($value,
+   if (Zend\Validate\Validate::is($value,
                          'OtherValidator',
                          array('min' => 1, 'max' => 12)) {
        // Yes, $value is ok
@@ -216,16 +216,16 @@ Codeschnipsel ist identisch mit dem vorherigen.
 
 Der Bequemlichkeit halber gibt es die folgenden Methoden, welche die Behandlung von Namespaces erlauben:
 
-- **Zend_Validate::getDefaultNamespaces()**: Gibt alle standardmäßigen Namespaces als Array zurück.
+- **Zend\Validate\Validate::getDefaultNamespaces()**: Gibt alle standardmäßigen Namespaces als Array zurück.
 
-- **Zend_Validate::setDefaultNamespaces()**: Setzt neue standardmäßige Namespaces und überschreibt alle vorher
+- **Zend\Validate\Validate::setDefaultNamespaces()**: Setzt neue standardmäßige Namespaces und überschreibt alle vorher
   gesetzten. Es wird entweder ein String für einen einzelnen Namespace akzeptiert oder ein Array für mehrere
   Namespaces.
 
-- **Zend_Validate::addDefaultNamespaces()**: Fügt zusätzliche Namespaces zu den bereits gesetzten hinzu. Es wird
+- **Zend\Validate\Validate::addDefaultNamespaces()**: Fügt zusätzliche Namespaces zu den bereits gesetzten hinzu. Es wird
   entweder ein String für einen einzelnen Namespace akzeptiert oder ein Array für mehrere Namespaces.
 
-- **Zend_Validate::hasDefaultNamespaces()**: Gibt ``TRUE`` zurück, wenn ein oder mehrere standardmäßige
+- **Zend\Validate\Validate::hasDefaultNamespaces()**: Gibt ``TRUE`` zurück, wenn ein oder mehrere standardmäßige
   Namespaces gesetzt sind und ``FALSE``, wenn keine standardmäßigen Namespaces gesetzt sind.
 
 .. _zend.validator.introduction.translation:
@@ -240,12 +240,12 @@ die gesetzte Übersetzungsinstanz zurück.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(array('min' => 8, 'max' => 12));
-   $translate = new Zend_Translator(
+   $validator = new Zend\Validate\StringLength(array('min' => 8, 'max' => 12));
+   $translate = new Zend\Translator\Translator(
        array(
            'adapter' => 'array',
            'content' => array(
-               Zend_Validate_StringLength::TOO_SHORT => 'Übersetzt \'%value%\''
+               Zend\Validate\StringLength::TOO_SHORT => 'Übersetzt \'%value%\''
            ),
            'locale'  => 'en'
        )
@@ -260,16 +260,16 @@ Prüfungsklassen setzen muss und vereinfacht den Code.
 .. code-block:: php
    :linenos:
 
-   $translate = new Zend_Translator(
+   $translate = new Zend\Translator\Translator(
        array(
            'adapter' => 'array',
            'content' => array(
-               Zend_Validate_StringLength::TOO_SHORT => 'Übersetzt \'%value%\''
+               Zend\Validate\StringLength::TOO_SHORT => 'Übersetzt \'%value%\''
            ),
            'locale'  => 'en'
        )
    );
-   Zend_Validate::setDefaultTranslator($translate);
+   Zend\Validate\Validate::setDefaultTranslator($translate);
 
 .. note::
 
@@ -283,7 +283,7 @@ Manchmal ist es notwendig, den Übersetzer in einer Prüfklasse auszuschalten. U
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(array('min' => 8, 'max' => 12));
+   $validator = new Zend\Validate\StringLength(array('min' => 8, 'max' => 12));
    if (!$validator->isTranslatorDisabled()) {
        $validator->setDisableTranslator();
    }

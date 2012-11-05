@@ -21,9 +21,9 @@ používateľa musí mať 6 až 12 alfanumerických znakov:
       require_once 'Zend/Validate/Alnum.php';
 
       // Vytvorenie zreťazenia
-      $validatorChain = new Zend_Validate();
-      $validatorChain->addValidator(new Zend_Validate_StringLength(6, 12))
-                     ->addValidator(new Zend_Validate_Alnum());
+      $validatorChain = new Zend\Validate\Validate();
+      $validatorChain->addValidator(new Zend\Validate\StringLength(6, 12))
+                     ->addValidator(new Zend\Validate\Alnum());
 
       // Validácia username
       if ($validatorChain->isValid($username)) {
@@ -52,12 +52,12 @@ nasledovne, potom alfanumerická validácia neprebehne ak bude neúspešná vali
 
       <?php
 
-      $validatorChain->addValidator(new Zend_Validate_StringLength(6, 12), true)
-              ->addValidator(new Zend_Validate_Alnum());
+      $validatorChain->addValidator(new Zend\Validate\StringLength(6, 12), true)
+              ->addValidator(new Zend\Validate\Alnum());
 
       ?>
 
 
-Každý objekt ktorý implementuje *Zend_Validate_Interface* môže byť použitý v zreťazení validátorov.
+Každý objekt ktorý implementuje *Zend\Validate\Interface* môže byť použitý v zreťazení validátorov.
 
 

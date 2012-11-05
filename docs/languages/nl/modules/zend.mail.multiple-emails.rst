@@ -15,10 +15,10 @@ is voor *send()* word opgeroepen zal dat transport worden gebruikt en de verbind
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    // bericht maken...
    require_once 'Zend/Mail/Transport/Smtp.php';
-   $tr = new Zend_Mail_Transport_Smtp('mail.example.com');
+   $tr = new Zend\Mail_Transport\Smtp('mail.example.com');
    $tr->connect();
    for ($i = 0; $i < 5; $i++) {
        $mail->send();

@@ -8,9 +8,9 @@ Wprowadzenie
 albo REST.
 
 Jeśli potrzebujesz obsługi dla zwykłych, opartych na XML serwisów REST, możesz sprawdzić
-:ref:`Zend_Rest_Client <zend.rest.client>`.
+:ref:`Zend\Rest\Client <zend.rest.client>`.
 
-Oprócz tego, że możesz rozszerzyć klasę *Zend_Service* oraz użyć klasy *Zend_Rest_Client* dla serwisów
+Oprócz tego, że możesz rozszerzyć klasę *Zend_Service* oraz użyć klasy *Zend\Rest\Client* dla serwisów
 opartych o REST, Zend zapewnia także obsługę popularnych serwisów. Przejrzyj poniższe rozdziały aby uzyskać
 szczegółowe informacje o każdym obsługiwanym serwisie.
 

@@ -34,7 +34,7 @@
 使用
 --
 
-ダイジェスト認証アダプタ ``Zend_Auth_Adapter_Digest``
+ダイジェスト認証アダプタ ``Zend\Auth_Adapter\Digest``
 には、以下の入力パラメータが必要です。
 
 - filename - 認証の問い合わせ先となるファイル名。
@@ -53,7 +53,7 @@
 ID
 --
 
-ダイジェスト認証アダプタは ``Zend_Auth_Result``
+ダイジェスト認証アダプタは ``Zend\Auth\Result``
 オブジェクトを返します。ここに、認証された ID の情報が
 配列として含まれます。配列のキーは **realm** および **username** です。
 これらのキーに対応する配列の値は、 ``authenticate()``
@@ -62,7 +62,7 @@ ID
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Auth_Adapter_Digest($filename,
+   $adapter = new Zend\Auth_Adapter\Digest($filename,
                                            $realm,
                                            $username,
                                            $password);

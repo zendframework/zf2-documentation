@@ -11,17 +11,17 @@ Prinzipien können auf andere Parser und Renderer angewendet werden.
 
 .. rubric:: Grundsätzliche Verwendung von Zend_Markup
 
-Zuerst instanzieren wir ein ``Zend_Markup_Renderer_Html`` Objekt durch Verwendung der ``Zend_Markup::factory()``
-Methode. Das erstellt auch ein ``Zend_Markup_Parser_Bbcode`` Objekt welches dem Renderer Objekt hinzugefügt wird.
+Zuerst instanzieren wir ein ``Zend\Markup_Renderer\Html`` Objekt durch Verwendung der ``Zend\Markup\Markup::factory()``
+Methode. Das erstellt auch ein ``Zend\Markup_Parser\Bbcode`` Objekt welches dem Renderer Objekt hinzugefügt wird.
 
 Danach verwenden wir die ``render()`` Methode um ein Teil von BBCode auf *HTML* zu konvertieren.
 
 .. code-block:: php
    :linenos:
 
-   // Erstellt eine Instanz von Zend_Markup_Renderer_Html
-   // mit Zend_Markup_Parser_BbCode als seinen Parser
-   $bbcode = Zend_Markup::factory('Bbcode');
+   // Erstellt eine Instanz von Zend\Markup_Renderer\Html
+   // mit Zend\Markup_Parser\BbCode als seinen Parser
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    echo $bbcode->render('[b]bold text[/b] and [i]cursive text[/i]');
    // Ausgabe: '<strong>bold text</strong> and <em>cursive text</em>'
@@ -35,7 +35,7 @@ Jetzt wollen wir das gleiche wie zuerst machen, aber mit einem komplizierteren B
 .. code-block:: php
    :linenos:
 
-   $bbcode = Zend_Markup::factory('Bbcode');
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    $input = <<<EOT
    [list]
@@ -65,7 +65,7 @@ die nicht geschlossen sind:
 .. code-block:: php
    :linenos:
 
-   $bbcode = Zend_Markup::factory('Bbcode');
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    echo $bbcode->render('some [i]wrong [b]sample [/i] text');
    // Es ist zu beachten dass das '[b]' Tag nicht geschlossen ist, und auch

@@ -12,7 +12,7 @@ Adaptateurs de source de données personnalisée
 À partir d'un moment, vous pourriez avoir besoin de parcourir un type de données qui n'est pas couvert par les
 adaptateurs fournis par défaut. Dans ce cas, vous devrez écrire vos propres adaptateurs.
 
-Pour faire ceci, vous devez implémenter ``Zend_Paginator_Adapter_Interface``. Il existe deux méthodes requises :
+Pour faire ceci, vous devez implémenter ``Zend\Paginator_Adapter\Interface``. Il existe deux méthodes requises :
 
 - ``count()``
 
@@ -40,7 +40,7 @@ Pour un tableau, il s'agirait :
 
 
 
-Regardez les adaptateurs fournis par défaut (ils implémentent tous ``Zend_Paginator_Adapter_Interface``) pour
+Regardez les adaptateurs fournis par défaut (ils implémentent tous ``Zend\Paginator_Adapter\Interface``) pour
 avoir une idée de la manière d'implémenter votre propre adaptateur.
 
 .. _zend.paginator.advanced.scrolling-styles:
@@ -49,7 +49,7 @@ Styles de défilement personnalisés
 ----------------------------------
 
 Créer votre propre style de défilement requiert que vous implémentiez
-``Zend_Paginator_ScrollingStyle_Interface``, qui définit une seule méthode, ``getPages()``. Et plus
+``Zend\Paginator_ScrollingStyle\Interface``, qui définit une seule méthode, ``getPages()``. Et plus
 spécifiquement :
 
 
@@ -64,7 +64,7 @@ spécifiquement :
 Cette méthode doit calculer des bornes inférieures et supérieures des numéros de page dans la plage des pages
 dites "local" (c'est-à-dire qui sont proches de la page courante).
 
-A moins que votre style étende un autre style de défilement (voir ``Zend_Paginator_ScrollingStyle_Elastic`` par
+A moins que votre style étende un autre style de défilement (voir ``Zend\Paginator_ScrollingStyle\Elastic`` par
 exemple), votre style personnalisé devra inévitablement se terminer par quelque chose de similaire à ceci :
 
 
@@ -89,7 +89,7 @@ dossier le chercher, en réalisant ceci :
 
       $prefix = 'Mon_Paginator_StyleDefilement';
       $path   = 'Mon/Paginator/StyleDefilement/';
-      Zend_Paginator::addScrollingStylePrefixPath($prefix, $path);
+      Zend\Paginator\Paginator::addScrollingStylePrefixPath($prefix, $path);
 
 
 
@@ -100,7 +100,7 @@ Fonctionnalité de mise en cache
 
 ``Zend_Paginator`` peut mettre en cache les données qu'il a déjà fourni, empêchant ainsi l'adaptateur de les
 rechercher chaque fois qu'ils sont demandés. Pour informer le paginateur de mettre en cache automatiquement les
-données issues de l'adaptateur, fournissez simplement une instance de ``Zend_Cache_Core`` à sa méthode
+données issues de l'adaptateur, fournissez simplement une instance de ``Zend\Cache\Core`` à sa méthode
 ``setCache()``:
 
 
@@ -108,15 +108,15 @@ données issues de l'adaptateur, fournissez simplement une instance de ``Zend_Ca
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
       $fO = array('lifetime' => 3600, 'automatic_serialization' => true);
       $bO = array('cache_dir'=>'/tmp');
-      $cache = Zend_cache::factory('Core', 'File', $fO, $bO);
-      Zend_Paginator::setCache($cache);
+      $cache = Zend\cache\cache::factory('Core', 'File', $fO, $bO);
+      Zend\Paginator\Paginator::setCache($cache);
 
 
 
-Tant que Zend_Paginator possède une instance de Zend_Cache_Core, les données seront mises en cache. Parfois vous
+Tant que Zend_Paginator possède une instance de Zend\Cache\Core, les données seront mises en cache. Parfois vous
 ne voudrez pas mettre en cache les données même si vous avez déjà fourni un instance de cache. Vous pourrez
 alors utiliser la méthode ``setCacheEnable()``:
 
@@ -125,9 +125,9 @@ alors utiliser la méthode ``setCacheEnable()``:
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
-      // $cache est une instance de Zend_Cache_Core
-      Zend_Paginator::setCache($cache);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
+      // $cache est une instance de Zend\Cache\Core
+      Zend\Paginator\Paginator::setCache($cache);
       // ... plus loin dans le script
       $paginator->setCacheEnable(false);
       // le cache est maintenant désactivé
@@ -144,8 +144,8 @@ représentant le numéro de page à enlever du cache :
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
-      Zend_Paginator::setCache($cache);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
+      Zend\Paginator\Paginator::setCache($cache);
       $items = $paginator->getCurrentItems();
       // la page 1 est maintenant en cache
       $page3Items = $paginator->getItemsByPage(3);
@@ -166,8 +166,8 @@ Changer le nombre d'éléments par page videra tout le cache comme s'il était d
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
-      Zend_Paginator::setCache($cache);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
+      Zend\Paginator\Paginator::setCache($cache);
       // récupérer des éléments
       $items = $paginator->getCurrentItems();
 
@@ -184,9 +184,9 @@ Il est aussi possible de voir les données en cache et de les appeler directemen
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($someData);
+      $paginator = Zend\Paginator\Paginator::factory($someData);
       $paginator->setItemCountPerPage(3);
-      Zend_Paginator::setCache($cache);
+      Zend\Paginator\Paginator::setCache($cache);
 
       // récupérer des éléments
       $items = $paginator->getCurrentItems();
@@ -199,13 +199,13 @@ Il est aussi possible de voir les données en cache et de les appeler directemen
 
 .. _zend.paginator.advanced.aggregator:
 
-Zend_Paginator_AdapterAggregate Interface
+Zend\Paginator\AdapterAggregate Interface
 -----------------------------------------
 
 Depending on your application you might want to paginate objects, whose internal data-structure is equal to
 existing adapters, but you don't want to break up your encapsulation to allow access to this data. In other cases
 an object might be in a "has-an adapter" relationship, rather than the "is-an adapter" relationsship that
-``Zend_Paginator_Adapter_Abstract`` promotes. For this cases you can use the ``Zend_Paginator_AdapterAggregate``
+``Zend\Paginator_Adapter\Abstract`` promotes. For this cases you can use the ``Zend\Paginator\AdapterAggregate``
 interface that behaves much like the ``IteratorAggregate`` interface of the PHP SPL extension.
 
 
@@ -213,20 +213,20 @@ interface that behaves much like the ``IteratorAggregate`` interface of the PHP 
    .. code-block:: php
       :linenos:
 
-      interface Zend_Paginator_AdapterAggregate
+      interface Zend\Paginator\AdapterAggregate
       {
           /**
            * Return a fully configured Paginator Adapter from this method.
            *
-           * @return Zend_Paginator_Adapter_Abstract
+           * @return Zend\Paginator_Adapter\Abstract
            */
           public function getPaginatorAdapter();
       }
 
 
 
-The interface is fairly small and only expects you to return an instance of ``Zend_Paginator_Adapter_Abstract``. An
-Adapter Aggregate instance is then recognized by both *Zend_Paginator::factory* and the constructor of
+The interface is fairly small and only expects you to return an instance of ``Zend\Paginator_Adapter\Abstract``. An
+Adapter Aggregate instance is then recognized by both *Zend\Paginator\Paginator::factory* and the constructor of
 Zend_Paginator and handled accordingly.
 
 

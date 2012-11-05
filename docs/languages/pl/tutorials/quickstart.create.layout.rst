@@ -93,7 +93,7 @@ Najprostszym sposobem na dodanie zasobu bootstrap jest utworzenie chronionej met
 
    // application/Bootstrap.php
 
-   class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
    {
        protected function _initDoctype()
        {
@@ -127,7 +127,7 @@ go skonfigurować:
 
    // application/Bootstrap.php
 
-   class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
    {
        protected function _initDoctype()
        {

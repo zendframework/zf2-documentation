@@ -6,7 +6,7 @@ Zend_Cache frontends
 
 .. _zend.cache.core:
 
-Zend_Cache_Core
+Zend\Cache\Core
 ---------------
 
 .. _zend.cache.core.introduction:
@@ -14,12 +14,12 @@ Zend_Cache_Core
 Introductie
 ^^^^^^^^^^^
 
-*Zend_Cache_Core* is een speciale frontend omdat het de kern van de module is. Het is een generieke cache frontend
+*Zend\Cache\Core* is een speciale frontend omdat het de kern van de module is. Het is een generieke cache frontend
 en wordt uitgebreid door andere classes.
 
 .. note::
 
-   Alle frontends erven van *Zend_Cache_Core* zodat zijn methodes en opties (zoals hieronder beschreven) ook
+   Alle frontends erven van *Zend\Cache\Core* zodat zijn methodes en opties (zoals hieronder beschreven) ook
    beschikbaar zijn in andere frontends, dus ze zullen hier niet worden gedocumenteerd.
 
 .. _zend.cache.core.options:
@@ -126,7 +126,7 @@ Als je meerdere blokken of data instanties wilt cachen, is het idee hetzelfde:
    ?>
 .. _zend.cache.frontend.output:
 
-Zend_Cache_Frontend_Output
+Zend\Cache_Frontend\Output
 --------------------------
 
 .. _zend.cache.frontend.output.introduction:
@@ -134,7 +134,7 @@ Zend_Cache_Frontend_Output
 Inleiding
 ^^^^^^^^^
 
-*Zend_Cache_Frontend_Output* is een output-vangend frontend. Het gebruikt output buffering in PHP om alles tussen
+*Zend\Cache_Frontend\Output* is een output-vangend frontend. Het gebruikt output buffering in PHP om alles tussen
 zijn *start()* en *end()* methodes te vangen.
 
 .. _zend.cache.frontend.output.options:
@@ -142,7 +142,7 @@ zijn *start()* en *end()* methodes te vangen.
 Beschikbare opties
 ^^^^^^^^^^^^^^^^^^
 
-Dit frontend heeft geen specifieke opties andere dan deze van *Zend_Cache_Core*.
+Dit frontend heeft geen specifieke opties andere dan deze van *Zend\Cache\Core*.
 
 .. _zend.cache.frontend.output.examples:
 
@@ -174,7 +174,7 @@ weinig herschrijven van de code.
 
 .. _zend.cache.frontend.function:
 
-Zend_Cache_Frontend_Function
+Zend\Cache_Frontend\Function
 ----------------------------
 
 .. _zend.cache.frontend.function.introduction:
@@ -182,7 +182,7 @@ Zend_Cache_Frontend_Function
 Inleiding
 ^^^^^^^^^
 
-*Zend_Cache_Frontend_Function* cached het resultaat van functie oproepen. Het heeft één enkele hoofdmethode
+*Zend\Cache_Frontend\Function* cached het resultaat van functie oproepen. Het heeft één enkele hoofdmethode
 genaam *call()* die de functienaam en parameters voor de oproep in een array aanvaard.
 
 .. _zend.cache.frontend.function.options:
@@ -221,7 +221,7 @@ De *call()* functie gebruiken is hetzelfde als *call_user_func_array()* in PHP:
    # $cache->call('heelZwareFunctie', array(1, 'foo', 'bar')) gebruiken
 
    ?>
-*Zend_Cache_Frontend_Function* is slim genoeg om zowel de return waarde van de functie als zijn interne output te
+*Zend\Cache_Frontend\Function* is slim genoeg om zowel de return waarde van de functie als zijn interne output te
 cachen.
 
 .. note::
@@ -231,7 +231,7 @@ cachen.
 
 .. _zend.cache.frontend.class:
 
-Zend_Cache_Frontend_Class
+Zend\Cache_Frontend\Class
 -------------------------
 
 .. _zend.cache.frontend.class.introduction:
@@ -239,7 +239,7 @@ Zend_Cache_Frontend_Class
 Inleiding
 ^^^^^^^^^
 
-*Zend_Cache_Frontend_Class* verschilt van *Zend_Cache_Frontend_Function* omdat het toelaat een object en statische
+*Zend\Cache_Frontend\Class* verschilt van *Zend\Cache_Frontend\Function* omdat het toelaat een object en statische
 methode oproepen te cachen.
 
 .. _zend.cache.frontend.class.options:
@@ -324,7 +324,7 @@ Om klassieke methode oproepen te cachen :
    ?>
 .. _zend.cache.frontends.file:
 
-Zend_Cache_Frontend_File
+Zend\Cache_Frontend\File
 ------------------------
 
 .. _zend.cache.frontends.file.introduction:
@@ -332,11 +332,11 @@ Zend_Cache_Frontend_File
 Inleiding
 ^^^^^^^^^
 
-*Zend_Cache_Frontend_File* is een frontend dat bestuurd word door de wijzigingstijd van een "meesterbestand". Het
+*Zend\Cache_Frontend\File* is een frontend dat bestuurd word door de wijzigingstijd van een "meesterbestand". Het
 is zeer interessant voor voorbeelden in configuratie of template problemen.
 
 Bijvoorbeeld, je hebt een XML configuratiebestand dat door een functie wordt ingelezen die een "config object"
-teruggeeft (zoals met *Zend_Config*). Met *Zend_Cache_Frontend_File* kan je "config object" in de cache opslaan (om
+teruggeeft (zoals met *Zend_Config*). Met *Zend\Cache_Frontend\File* kan je "config object" in de cache opslaan (om
 te vermijden dat je het XML bestand elke keer inleest) maar met een soort van sterke afhankelijkheid met het
 "meesterbestand". Dus, indien het XML configuratiebestand wordt gewijzigd wordt de cache onmiddellijk invalide.
 
@@ -358,12 +358,12 @@ Beschikbare opties
 Voorbeelden
 ^^^^^^^^^^^
 
-Het gebruik van dit frontend is hetzelfde als dat van *Zend_Cache_Core*. Er is geen nood aan een specifiek
+Het gebruik van dit frontend is hetzelfde als dat van *Zend\Cache\Core*. Er is geen nood aan een specifiek
 voorbeeld - het enige dat er te doen is, is het definiëren van *masterFile* bij het gebruik van de factory.
 
 .. _zend.cache.frontends.page:
 
-Zend_Cache_Frontend_Page
+Zend\Cache_Frontend\Page
 ------------------------
 
 .. _zend.cache.frontends.page.introduction:
@@ -371,8 +371,8 @@ Zend_Cache_Frontend_Page
 inleiding
 ^^^^^^^^^
 
-*Zend_Cache_Frontend_Page* is net als *Zend_Cache_Frontend_Output* maar werd ontworpen voor een volledige pagina.
-Het is onmogelijk om *Zend_Cache_Frontend_Page* te gebruiken om een enkel blok te cachen.
+*Zend\Cache_Frontend\Page* is net als *Zend\Cache_Frontend\Output* maar werd ontworpen voor een volledige pagina.
+Het is onmogelijk om *Zend\Cache_Frontend\Page* te gebruiken om een enkel blok te cachen.
 
 Anderzijds word "cache id" automatisch berekend met *$_SERVER['REQUEST_URI']* en (afhankelijk van de opties)
 *$_GET*, *$_POST*, *$_SESSION*, *$_COOKIE*, *$_FILES*. Bovendien hoef je slechts één methode op te roepen
@@ -384,7 +384,7 @@ word aangesproken en indien de browser reeds de goede versie heeft).
 
 .. note::
 
-   ) Zend_Cache_Frontend_Page is echt "alpha stuff" en moet later verder worden verbeterd.
+   ) Zend\Cache_Frontend\Page is echt "alpha stuff" en moet later verder worden verbeterd.
 
 .. _zend.cache.frontends.page.options:
 
@@ -408,7 +408,7 @@ Beschikbare opties (voor deze frontend van de Zend_Cache factory)
 Voorbeelden
 ^^^^^^^^^^^
 
-Het gebruik van Zend_Cache_Frontend_Page is echt eenvoudig :
+Het gebruik van Zend\Cache_Frontend\Page is echt eenvoudig :
 
 .. code-block:: php
    :linenos:

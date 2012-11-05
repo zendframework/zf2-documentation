@@ -1,17 +1,17 @@
 .. EN-Revision: none
 .. _zend.filter.inflector:
 
-Zend_Filter_Inflector
+Zend\Filter\Inflector
 =====================
 
-``Zend_Filter_Inflector`` ist ein generell verwendbares Tool für regel-basierende Beugung von Strings zu einem
+``Zend\Filter\Inflector`` ist ein generell verwendbares Tool für regel-basierende Beugung von Strings zu einem
 gegebenen Ziel.
 
 Als Beispiel, kann es gewünscht sein MixedCase oder camelCaseWörter in einen Pfad zu transformieren; für die
 Lesbarkeit, OS Policies, oder andere Gründe, sollen diese auch kleingeschrieben werden, und die Wörter sollen mit
 einem Bindestrich ('-') getrennt werden. Eine Beugung (Inflector) kann das erledigen.
 
-``Zend_Filter_Inflector`` implementiert ``Zend_Filter_Interface``; eine Beugung kann durch den Aufruf von
+``Zend\Filter\Inflector`` implementiert ``Zend\Filter\Interface``; eine Beugung kann durch den Aufruf von
 ``filter()`` auf der Objekt Instanz durchgeführt werden.
 
 .. _zend.filter.inflector.camel_case_example:
@@ -21,7 +21,7 @@ einem Bindestrich ('-') getrennt werden. Eine Beugung (Inflector) kann das erled
 .. code-block:: php
    :linenos:
 
-   $inflector = new Zend_Filter_Inflector('pages/:page.:suffix');
+   $inflector = new Zend\Filter\Inflector('pages/:page.:suffix');
    $inflector->setRules(array(
        ':page'  => array('Word_CamelCaseToDash', 'StringToLower'),
        'suffix' => 'html'
@@ -54,7 +54,7 @@ beugen. Klasse werden typischerweise spezifiziert indem ein Kurzname verwendet w
 wobei jeglicher üblicher Präfix entfernt wurde.
 
 Als Beispiel kann jede konkrete ``Zend_Filter`` Implementierung verwendet werden; trotzdem, statt auf diese als
-'``Zend_Filter_Alpha``' oder '``Zend_Filter_StringToLower``' zu verweisen kann einfach '``Alpha``' oder
+'``Zend\Filter\Alpha``' oder '``Zend\Filter\StringToLower``' zu verweisen kann einfach '``Alpha``' oder
 '``StringToLower``' spezifiziert werden.
 
 .. _zend.filter.inflector.paths:
@@ -62,7 +62,7 @@ Als Beispiel kann jede konkrete ``Zend_Filter`` Implementierung verwendet werden
 Pfade zu alternativen Filtern setzen
 ------------------------------------
 
-``Zend_Filter_Inflector`` verwendet ``Zend_Loader_PluginLoader`` um das Laden von Filtern zu managen die von der
+``Zend\Filter\Inflector`` verwendet ``Zend\Loader\PluginLoader`` um das Laden von Filtern zu managen die von der
 Beugung verwendet werden sollen. Standardmäßig, wird jeder Filter mit dem Präfix ``Zend_Filter`` vorhanden sein.
 Um auf Filter mit diesem Präfix zuzugreifen, die aber tiefer in der Hirarchie vorhanden sind, kann einfach der
 ``Zend_Filter Präfix`` entfernt werden:
@@ -70,10 +70,10 @@ Um auf Filter mit diesem Präfix zuzugreifen, die aber tiefer in der Hirarchie v
 .. code-block:: php
    :linenos:
 
-   // Verwendet Zend_Filter_Word_CamelCaseToDash als Regel
+   // Verwendet Zend\Filter_Word\CamelCaseToDash als Regel
    $inflector->addRules(array('script' => 'Word_CamelCaseToDash'));
 
-Um einen alternativen Pfad zu setzen hat ``Zend_Filter_Inflector`` eine Utility Methode die den Plugin Lader
+Um einen alternativen Pfad zu setzen hat ``Zend\Filter\Inflector`` eine Utility Methode die den Plugin Lader
 verwendet, ``addFilterPrefixPath()``:
 
 .. code-block:: php
@@ -108,7 +108,7 @@ oder indem er als drittes Argument dem Konstruktor übergeben wird:
    :linenos:
 
    // Über Konstruktor:
-   $inflector = new Zend_Filter_Inflector('#foo/#bar.#sfx', null, '#');
+   $inflector = new Zend\Filter\Inflector('#foo/#bar.#sfx', null, '#');
 
    // Über Zugriffsmethode:
    $inflector->setTargetReplacementIdentifier('#');
@@ -143,7 +143,7 @@ erspart). ``setTargetReference()`` erlaubt es das zu tun:
         */
        public function __construct()
        {
-           $this->_inflector = new Zend_Filter_Inflector();
+           $this->_inflector = new Zend\Filter\Inflector();
            $this->_inflector->setTargetReference($this->_target);
        }
 
@@ -188,7 +188,7 @@ einem Ziel existiert das typischerweise statisch ist, aber welches der Entwickle
 .. code-block:: php
    :linenos:
 
-   $inflector = new Zend_Filter_Inflector(':script.:suffix');
+   $inflector = new Zend\Filter\Inflector(':script.:suffix');
    $inflector->setStaticRule('suffix', 'phtml');
 
    // Später ändern:
@@ -215,7 +215,7 @@ aktualisiert werden kann. Die ``setStaticRuleReference()`` kann verwendet werden
         */
        public function __construct()
        {
-           $this->_inflector = new Zend_Filter_Inflector(':script.:suffix');
+           $this->_inflector = new Zend\Filter\Inflector(':script.:suffix');
            $this->_inflector->setStaticRuleReference('suffix', $this->_suffix);
        }
 
@@ -250,7 +250,7 @@ Variable hinzufügt). Filter werden in einem der folgenden Wege spezifiziert:
 - **String**. Der String kann ein Klassenname eines Filters, oder ein Segment des Klassennamens ohne jeglichem
   Präfix sein der im Beugungs Plugin Lader gesetzt ist (standardmäßig, ohne den '``Zend_Filter``' Präfix).
 
-- **Filter Objekt**. Jede Objekt Instanz die ``Zend_Filter_Interface`` implementiert kann als ein Filter übergeben
+- **Filter Objekt**. Jede Objekt Instanz die ``Zend\Filter\Interface`` implementiert kann als ein Filter übergeben
   werden.
 
 - **Array**. Ein Array von einem oder mehreren Strings oder Filterobjekten wie vorher definiert.
@@ -258,18 +258,18 @@ Variable hinzufügt). Filter werden in einem der folgenden Wege spezifiziert:
 .. code-block:: php
    :linenos:
 
-   $inflector = new Zend_Filter_Inflector(':script.:suffix');
+   $inflector = new Zend\Filter\Inflector(':script.:suffix');
 
-   // Setzt eine Regel um den Zend_Filter_Word_CamelCaseToDash Filter zu verwenden
+   // Setzt eine Regel um den Zend\Filter_Word\CamelCaseToDash Filter zu verwenden
    $inflector->setFilterRule('script', 'Word_CamelCaseToDash');
 
    // Eine Regel hinzufügen um Strings kleinzuschreiben
-   $inflector->addFilterRule('script', new Zend_Filter_StringToLower());
+   $inflector->addFilterRule('script', new Zend\Filter\StringToLower());
 
    // Regeln en-masse setzen
    $inflector->setFilterRule('script', array(
        'Word_CamelCaseToDash',
-       new Zend_Filter_StringToLower()
+       new Zend\Filter\StringToLower()
    ));
 
 .. _zend.filter.inflector.rules.multiple:
@@ -278,7 +278,7 @@ Viele Regeln auf einmal setzen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Typischerweise ist es einfacher viele Regeln auf einmal zu setzen als eine einzelne Variable und die Beugungsregeln
-auf einmal zu konfigurieren. ``Zend_Filter_Inflector``'s ``addRules()`` und ``setRules()`` Methode erlaubt dies.
+auf einmal zu konfigurieren. ``Zend\Filter\Inflector``'s ``addRules()`` und ``setRules()`` Methode erlaubt dies.
 
 Jede Methode nimmt ein Array von Variable und Regel Paaren, wobei die Regel alles sein kann was der Typ der Regel
 akzeptiert (String, Filterobjekt, oder Array). Variablennamen akzeptieren eine spezielle Schreibweise um das Setzen
@@ -310,11 +310,11 @@ von statischen Regeln und Filterregeln zu erlauben, entsprechend der folgenden S
 Hilfsmethoden
 -------------
 
-``Zend_Filter_Inflector`` hat eine Anzahl von Hilfsmethoden für das Empfangen und Setzen der Plugin Laders, die
+``Zend\Filter\Inflector`` hat eine Anzahl von Hilfsmethoden für das Empfangen und Setzen der Plugin Laders, die
 Manipulation und das Empfangen von Regeln, und die Kontrolle ob und wann Ausnahmen geworfen werden.
 
 - ``setPluginLoader()`` kann verwendet werden wenn ein eigener Plugin Loader konfiguriert werden soll der mit
-  ``Zend_Filter_Inflector`` verwendet werden soll; ``getPluginLoader()`` empfängt den aktuell gesetzten.
+  ``Zend\Filter\Inflector`` verwendet werden soll; ``getPluginLoader()`` empfängt den aktuell gesetzten.
 
 - ``setThrowTargetExceptionsOn()`` kann verwendet werden um zu kontrollieren ob ``filter()`` eine Ausnahme wirft,
   oder nicht, wenn ein übergegebener Identifizierer der ersetzt werden soll nicht im Ziel gefunden wird.
@@ -331,7 +331,7 @@ Manipulation und das Empfangen von Regeln, und die Kontrolle ob und wann Ausnahm
 
 .. _zend.filter.inflector.config:
 
-Zend_Config mit Zend_Filter_Inflector verwenden
+Zend_Config mit Zend\Filter\Inflector verwenden
 -----------------------------------------------
 
 ``Zend_Config`` kann verwendet werden um Regeln, Filter Präfix Pfade, oder andere Objektstati im
@@ -354,17 +354,17 @@ durch ``setOptions()``. Die folgenden Einstellungen können spezifiziert werden:
 
 .. _zend.filter.inflector.config.example:
 
-.. rubric:: Zend_Config mit Zend_Filter_Inflector verwenden
+.. rubric:: Zend_Config mit Zend\Filter\Inflector verwenden
 
 .. code-block:: php
    :linenos:
 
    // Mit dem Konstruktor:
-   $config    = new Zend_Config($options);
-   $inflector = new Zend_Filter_Inflector($config);
+   $config    = new Zend\Config\Config($options);
+   $inflector = new Zend\Filter\Inflector($config);
 
    // Oder mit setOptions():
-   $inflector = new Zend_Filter_Inflector();
+   $inflector = new Zend\Filter\Inflector();
    $inflector->setOptions($config);
 
 

@@ -4,16 +4,16 @@
 Db_RecordExists et Db_NoRecordExists
 ====================================
 
-``Zend_Validate_Db_RecordExists`` et ``Zend_Validate_Db_NoRecordExists`` permettent de vérifier si un
+``Zend\Validate_Db\RecordExists`` et ``Zend\Validate_Db\NoRecordExists`` permettent de vérifier si un
 enregistrement existe (ou pas) dans une table de base de données.
 
 .. _zend.validator.set.db.options:
 
-Options supportées par Zend_Validate_Db_*
+Options supportées par Zend\Validate_Db\*
 -----------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_Db_NoRecordExists`` et
-``Zend_Validate_Db_RecordExists``\  :
+Les options suivantes sont supportées par ``Zend\Validate_Db\NoRecordExists`` et
+``Zend\Validate_Db\RecordExists``\  :
 
 - **adapter**\  : l'adaptateur de base de données qui sera utilisé pour la recherche.
 
@@ -36,7 +36,7 @@ Voici un exemple basique:
    :linenos:
 
    //Vérifie que l'email existe bien dans la base de données
-   $validator = new Zend_Validate_Db_RecordExists('users', 'emailaddress');
+   $validator = new Zend\Validate_Db\RecordExists('users', 'emailaddress');
    if ($validator->isValid($emailaddress)) {
        // l'adresse email existe
    } else {
@@ -53,7 +53,7 @@ base de données.
    :linenos:
 
    //Vérifie que le nom d'utilisateur n'est pas présent dans la table
-   $validator = new Zend_Validate_Db_NoRecordExists('users', 'username');
+   $validator = new Zend\Validate_Db\NoRecordExists('users', 'username');
    if ($validator->isValid($username)) {
        // Le nom d'utilisateur semble absent de la table
    } else {
@@ -72,7 +72,7 @@ de données.
 Exclure des enregistrement
 --------------------------
 
-``Zend_Validate_Db_RecordExists`` et ``Zend_Validate_Db_NoRecordExists`` proposent aussi un moyen de tester la base
+``Zend\Validate_Db\RecordExists`` et ``Zend\Validate_Db\NoRecordExists`` proposent aussi un moyen de tester la base
 de données en excluant certaines parties de table, en passant une clause where ou un tableau de paires "champs"
 "valeur".
 
@@ -83,7 +83,7 @@ Lorsqu'un tableau est passé, l'opérateur *!=* est utilisé et vous pouvez ains
 
    //Vérifie qu'aucun autre utilisateur que celui dont l'id est spécifié, ne possède ce nom
    $user_id   = $user->getId();
-   $validator = new Zend_Validate_Db_NoRecordExists(
+   $validator = new Zend\Validate_Db\NoRecordExists(
        'users',
        'username',
        array(
@@ -113,7 +113,7 @@ La clause d'exclusion peut aussi être renseignée avec une chaine afin de pouvo
 
    $post_id   = $post->getId();
    $clause    = $db->quoteInto('post_id = ?', $category_id);
-   $validator = new Zend_Validate_Db_RecordExists(
+   $validator = new Zend\Validate_Db\RecordExists(
        'posts_categories',
        'post_id',
        $clause
@@ -143,7 +143,7 @@ déclaré comme étant celui par défaut:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Db_RecordExists('users', 'id', null, $dbAdapter);
+   $validator = new Zend\Validate_Db\RecordExists('users', 'id', null, $dbAdapter);
 
 .. _zend.validator.db.database-schemas:
 
@@ -156,7 +156,7 @@ Vous pouvez spécifier un nom de base de données (schéma) pour l'adaptateur Po
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Db_RecordExists(array('table' => 'users',
+   $validator = new Zend\Validate_Db\RecordExists(array('table' => 'users',
                                                         'schema' => 'my'), 'id');
 
 

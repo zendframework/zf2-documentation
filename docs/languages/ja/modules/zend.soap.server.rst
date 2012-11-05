@@ -1,23 +1,23 @@
 .. EN-Revision: none
 .. _zend.soap.server:
 
-Zend_Soap_Server
+Zend\Soap\Server
 ================
 
-``Zend_Soap_Server``\ クラスは、 ウェブ・サービス部分の開発を *PHP*\
+``Zend\Soap\Server``\ クラスは、 ウェブ・サービス部分の開発を *PHP*\
 プログラマーにとって簡単にすることを目的としています。
 
 それは、ウェブサービス *API*\ を定義するクラスまたは機能を使って、
 WSDLモードまたは非WSDLモードで使われるかもしれません。
 
-``Zend_Soap_Server``\ コンポーネントがWSDLモードで動くとき、
+``Zend\Soap\Server``\ コンポーネントがWSDLモードで動くとき、
 サーバオブジェクトの挙動とトランスポート層オプションを定義する
 すでに用意されたWSDLドキュメントを使います。
 
-WSDLドキュメントは :ref:`Zend_Soap_AutoDiscoveryコンポーネント
+WSDLドキュメントは :ref:`Zend\Soap\AutoDiscoveryコンポーネント
 <zend.soap.autodiscovery.introduction>`
 によって提供される機能によって自動的に生成されるか、 または、
-:ref:`Zend_Soap_Wsdlクラス <zend.soap.wsdl>`\ や、 その他の *XML*\ 生成ツールを使って、
+:ref:`Zend\Soap\Wsdlクラス <zend.soap.wsdl>`\ や、 その他の *XML*\ 生成ツールを使って、
 手動で構成されます。
 
 非WSDLモードが使われるならば、
@@ -25,18 +25,18 @@ WSDLドキュメントは :ref:`Zend_Soap_AutoDiscoveryコンポーネント
 
 .. _zend.soap.server.constructor:
 
-Zend_Soap_Serverコンストラクタ
+Zend\Soap\Serverコンストラクタ
 -----------------------
 
-``Zend_Soap_Server``\ コンストラクタは、
+``Zend\Soap\Server``\ コンストラクタは、
 WSDLモードと非WSDLモードとでは少し使い方が違います。
 
 .. _zend.soap.server.constructor.wsdl_mode:
 
-WSDLモードのためのZend_Soap_Serverコンストラクタ
+WSDLモードのためのZend\Soap\Serverコンストラクタ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-WSDLモードで動作する場合、 ``Zend_Soap_Server``\
+WSDLモードで動作する場合、 ``Zend\Soap\Server``\
 コンストラクタは２つの引数を受け取ります:
 
    . *$wsdl* WSDLファイルの *URI* [#]_
@@ -66,10 +66,10 @@ WSDLモードで動作する場合、 ``Zend_Soap_Server``\
 
 .. _zend.soap.server.wsdl_mode:
 
-非WSDLモードのためのZend_Soap_Serverコンストラクタ
+非WSDLモードのためのZend\Soap\Serverコンストラクタ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-非WSDLモードで ``Zend_Soap_Server``\ 機能を使うつもりなら、
+非WSDLモードで ``Zend\Soap\Server``\ 機能を使うつもりなら、
 最初のコンストラクタ・パラメータは ``NULL``\ に設定し **なければなりません**\ 。
 
 この場合、'uri' オプションを設定しなければなりません。（下記参照）
@@ -104,7 +104,7 @@ WSDLモードで動作する場合、 ``Zend_Soap_Server``\
 ウェブサービス *API*\ を定義する2つの方法があります。
 
 最初の一つは、ウェブサービス *API*\ を完全に記述しなければならない
-``Zend_Soap_Server``\ オブジェクトに対して、 いくつかのクラスを付与することです:
+``Zend\Soap\Server``\ オブジェクトに対して、 いくつかのクラスを付与することです:
 
    .. code-block:: php
       :linenos:
@@ -135,7 +135,7 @@ WSDLモードで動作する場合、 ``Zend_Soap_Server``\
           ...
       }
       ...
-      $server = new Zend_Soap_Server(null, $options);
+      $server = new Zend\Soap\Server(null, $options);
       // クラスをSOAPサーバにバインド
       $server->setClass('MyClass');
       // 初期化済みのオブジェクトをSOAPサーバにバインド
@@ -182,7 +182,7 @@ WSDLモードで動作する場合、 ``Zend_Soap_Server``\
           ...
       }
       ...
-      $server = new Zend_Soap_Server(null, $options);
+      $server = new Zend\Soap\Server(null, $options);
       $server->addFunction('function1');
       $server->addFunction('function2');
       ...
@@ -202,7 +202,7 @@ WSDLモードで動作する場合、 ``Zend_Soap_Server``\
    このセクションではリクエスト/レスポンス処理の高度なオプションを説明します。
    スキップされるかもしれません。
 
-``Zend_Soap_Server``\
+``Zend\Soap\Server``\
 コンポーネントは自動的にリクエスト/レスポンス処理を実行します。
 しかし、その処理を捕まえて何らかの事前もしくは事後の処理をさせることもできます。
 
@@ -211,7 +211,7 @@ WSDLモードで動作する場合、 ``Zend_Soap_Server``\
 リクエスト処理
 ^^^^^^^
 
-``Zend_Soap_Server::handle()``\ メソッドは、 標準的な入力ストリーム ('php://input')
+``Zend\Soap\Server::handle()``\ メソッドは、 標準的な入力ストリーム ('php://input')
 からリクエストを取得します。 それは、 ``handle()``\
 メソッドにオプションのパラメータを供給することによって、 または、 ``setRequest()``\
 メソッドを用いてリクエストを設定することによって 上書きされるかもしれません:
@@ -220,7 +220,7 @@ WSDLモードで動作する場合、 ``Zend_Soap_Server``\
       :linenos:
 
       ...
-      $server = new Zend_Soap_Server(...);
+      $server = new Zend\Soap\Server(...);
       ...
       // オプションの $request パラメータを使ってリクエストを設定
       $server->handle($request);
@@ -252,7 +252,7 @@ WSDLモードで動作する場合、 ``Zend_Soap_Server``\
       :linenos:
 
       ...
-      $server = new Zend_Soap_Server(...);
+      $server = new Zend\Soap\Server(...);
       ...
       $server->handle();
       $request = $server->getLastRequest();
@@ -264,7 +264,7 @@ WSDLモードで動作する場合、 ``Zend_Soap_Server``\
 レスポンスの事前処理
 ^^^^^^^^^^
 
-``Zend_Soap_Server::handle()``\
+``Zend\Soap\Server::handle()``\
 メソッドは、出力ストリームに生成されたレスポンスを自動的に送ります。 それは
 ``setReturnResponse()``\ にパラメータとして ``TRUE``\ または ``FALSE``\
 を与えてブロックできます。 [#]_ 生成されたレスポンスはこの場合、 ``handle()``\
@@ -274,7 +274,7 @@ WSDLモードで動作する場合、 ``Zend_Soap_Server``\
       :linenos:
 
       ...
-      $server = new Zend_Soap_Server(...);
+      $server = new Zend\Soap\Server(...);
       ...
       // 標準出力に送る代わりに、
       //handle() メソッドの返り値としてレスポンスを取得
@@ -292,7 +292,7 @@ WSDLモードで動作する場合、 ``Zend_Soap_Server``\
       :linenos:
 
       ...
-      $server = new Zend_Soap_Server(...);
+      $server = new Zend\Soap\Server(...);
       ...
       $server->handle();
       $response = $server->getLastResponse();

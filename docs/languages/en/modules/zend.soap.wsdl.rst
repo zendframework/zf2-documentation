@@ -194,7 +194,7 @@ See `http://www.w3.org/TR/wsdl#_services`_ for the details.
 Type mapping
 ------------
 
-``Zend_Soap`` WSDL accessor implementation uses the following type mapping between *PHP* and *SOAP* types:
+``ZendSoap`` WSDL accessor implementation uses the following type mapping between *PHP* and *SOAP* types:
 
 - PHP strings <-> *xsd:string*.
 

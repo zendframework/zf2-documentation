@@ -24,7 +24,7 @@ anfragen will, an.
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_TimeSync('0.pool.ntp.org');
+   $server = new Zend\TimeSync\TimeSync('0.pool.ntp.org');
 
    print $server->getDate()->getIso();
 
@@ -53,7 +53,7 @@ hinzufügen.
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_TimeSync(array('0.pool.ntp.org',
+   $server = new Zend\TimeSync\TimeSync(array('0.pool.ntp.org',
                                      '1.pool.ntp.org',
                                      '2.pool.ntp.org'));
    $server->addServer('3.pool.ntp.org');
@@ -70,7 +70,7 @@ oder mit dem zweiten Parameter beim Hinzufügen von anderen Zeitservern, benenne
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_TimeSync(array('generic'  => '0.pool.ntp.org',
+   $server = new Zend\TimeSync\TimeSync(array('generic'  => '0.pool.ntp.org',
                                      'fallback' => '1.pool.ntp.org',
                                      'reserve'  => '2.pool.ntp.org'));
    $server->addServer('3.pool.ntp.org', 'additional');
@@ -95,7 +95,7 @@ Man kann das richtige Prokoll mit der Adresse des Zeitservers setzen. Aktuell gi
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+   $server = new Zend\TimeSync\TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
                                      'fallback' => 'ntp:\\1.pool.ntp.org',
                                      'reserve'  => 'ntp:\\2.pool.ntp.org'));
    $server->addServer('sntp:\\internal.myserver.com', 'additional');
@@ -120,7 +120,7 @@ Wenn kein Port definiert wurde, dann verwendet ``Zend_TimeSync`` den Standardpor
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org:200',
+   $server = new Zend\TimeSync\TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org:200',
                                      'fallback' => 'ntp:\\1.pool.ntp.org'));
    $server->addServer('sntp:\\internal.myserver.com:399', 'additional');
 
@@ -147,14 +147,14 @@ diese gesetzt ist, oder, wenn kein Schlüssel angegeben wird, gibt sie alle gese
 .. code-block:: php
    :linenos:
 
-   Zend_TimeSync::setOptions(array('timeout' => 3, 'myoption' => 'timesync'));
-   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+   Zend\TimeSync\TimeSync::setOptions(array('timeout' => 3, 'myoption' => 'timesync'));
+   $server = new Zend\TimeSync\TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
                                      'fallback' => 'ntp:\\1.pool.ntp.org'));
    $server->addServer('sntp:\\internal.myserver.com', 'additional');
 
    print $server->getDate()->getIso();
-   print_r(Zend_TimeSync::getOptions();
-   print "Timeout = " . Zend_TimeSync::getOptions('timeout');
+   print_r(Zend\TimeSync\TimeSync::getOptions();
+   print "Timeout = " . Zend\TimeSync\TimeSync::getOptions('timeout');
 
 Wie man sieht, sind die Optionen für ``Zend_TimeSync`` statisch. Jede Instanz von ``Zend_TimeSync`` verwendet die
 gleichen Optionen.
@@ -174,7 +174,7 @@ zurückgegeben.
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+   $server = new Zend\TimeSync\TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
                                      'fallback' => 'ntp:\\1.pool.ntp.org'));
    $server->addServer('sntp:\\internal.myserver.com', 'additional');
 
@@ -192,7 +192,7 @@ mit der ``getInfo()`` Methode erhalten.
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
+   $server = new Zend\TimeSync\TimeSync(array('generic'  => 'ntp:\\0.pool.ntp.org',
                                      'fallback' => 'ntp:\\1.pool.ntp.org'));
 
    print_r ($server->getInfo());
@@ -216,12 +216,12 @@ geworfenen Ausnahmen zu laufen, wie im folgenden Beispiel gezeigt: gezeigt:
            'invalid_b'  => 'sntp://b.foo.bar.org',
    );
 
-   $server = new Zend_TimeSync($serverlist);
+   $server = new Zend\TimeSync\TimeSync($serverlist);
 
    try {
        $result = $server->getDate();
        echo $result->getIso();
-   } catch (Zend_TimeSync_Exception $e) {
+   } catch (Zend\TimeSync\Exception $e) {
 
        $exceptions = $e->get();
 

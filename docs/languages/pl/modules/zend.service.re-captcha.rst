@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.recaptcha:
 
-Zend_Service_ReCaptcha
+Zend\Service\ReCaptcha
 ======================
 
 .. _zend.service.recaptcha.introduction:
@@ -9,7 +9,7 @@ Zend_Service_ReCaptcha
 Wprowadzenie
 ------------
 
-Komponent *Zend_Service_ReCaptcha* zapewnia klienta dla usługi `reCAPTCHA Web Service`_. Cytując serwis
+Komponent *Zend\Service\ReCaptcha* zapewnia klienta dla usługi `reCAPTCHA Web Service`_. Cytując serwis
 internetowy reCAPTCHA, "reCAPTCHA jest darmowym serwisem CAPTCHA który pomaga skanować książki." Każdy element
 reCAPTCHA wymaga, aby użytkownik wpisał dwa słowa: pierwsze które jest tradycyjnym captcha, oraz drugie które
 jest słowem zeskanowanym z jakiegoś tekstu, którego oprogramowanie do optycznego rozpoznawania tekstu (OCR) nie
@@ -25,12 +25,12 @@ więcej domen w celu wygenerowania publicznego oraz prywatnego klucza.
 Najprostsze użycie
 ------------------
 
-Utwórz obiekt klasy *Zend_Service_ReCaptcha*, przekazując mu twoje klucze: publiczny oraz prywatny:
+Utwórz obiekt klasy *Zend\Service\ReCaptcha*, przekazując mu twoje klucze: publiczny oraz prywatny:
 
 .. code-block:: php
    :linenos:
 
-   $recaptcha = new Zend_Service_ReCaptcha($pubKey, $privKey);
+   $recaptcha = new Zend\Service\ReCaptcha($pubKey, $privKey);
 
 
 Aby wyświetlić element reCAPTCHA, po prostu wywołaj metodę *getHTML()*:
@@ -54,7 +54,7 @@ Gdy formularz zostanie wysłany, powinieneś otrzymać dwa pola, 'recaptcha_chal
 
 
 Gdy posiadasz wynik, sprawdź czy jest pozytywny. Wynik działania metody jest obiektem klasy
-*Zend_Service_ReCaptcha_Response* i zapewnia on metodę *isValid()*.
+*Zend\Service_ReCaptcha\Response* i zapewnia on metodę *isValid()*.
 
 .. code-block:: php
    :linenos:

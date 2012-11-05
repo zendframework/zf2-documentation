@@ -8,9 +8,9 @@
 ような軽量マークアップ言語のテキストパースならびにレンダリングのための
 拡張方法を提供します。 Zend Framework 1.10 から利用できます。
 
-``Zend_Markup`` は ``Zend_Markup_Renderer_Abstract``
+``Zend_Markup`` は ``Zend\Markup_Renderer\Abstract``
 を拡張したレンダラーのインスタンスを生成するファクトリーメソッドを使用します。
-``Zend_Markup_Renderer_Abstract`` のファクトリーメソッドは
+``Zend\Markup_Renderer\Abstract`` のファクトリーメソッドは
 ３つの引数を取ります。第一引数はテキストをトークンにするパーサーを指定します
 (例: BbCode )。第２引数(オプション)は使用するレンダラーで、 デフォルトは *HTML*
 です。3つ目の引数はレンダラーで使用可能なオプションの配列です。

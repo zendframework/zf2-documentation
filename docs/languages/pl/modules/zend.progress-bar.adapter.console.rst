@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.progressbar.adapter.console:
 
-Zend_ProgressBar_Adapter_Console
+Zend\ProgressBar_Adapter\Console
 ================================
 
-``Zend_ProgressBar_Adapter_Console`` to adapter tekstowy przeznaczony do użytku z terminalem (konsolą, wierszem
+``Zend\ProgressBar_Adapter\Console`` to adapter tekstowy przeznaczony do użytku z terminalem (konsolą, wierszem
 polecenia). Adapter potrafi automatycznie wykryć dostępną szerokość ale można również podać ją ręcznie.
 Oprócz tego można definiować elementy, jakie mają zostać pokazane oraz ich kolejność jak również sam styl
 wyświetlanego paska postępu.
@@ -23,7 +23,7 @@ Opcje adaptera można ustawiać za pomocą metod *set** albo przez podanie tabli
 - *outputStream*: Strumień do którego będzie kierowany wynik. Domyślnie to STDOUT. Może być dowolnym
   strumieniem, np.: *php://stderr* lub ścieżką do pliku.
 
-- *width*: Liczba całkowita lub stała ``AUTO`` klasy ``Zend_Console_ProgressBar``.
+- *width*: Liczba całkowita lub stała ``AUTO`` klasy ``Zend\Console\ProgressBar``.
 
 - *elements*: Przyjmuje ``NULL`` dla domyślnej konfiguracji lub tablicę zawierającą co najmniej jedną z
   następujących wartości:

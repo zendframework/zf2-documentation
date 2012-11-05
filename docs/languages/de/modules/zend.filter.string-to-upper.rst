@@ -9,7 +9,7 @@ Dieser Filter konvertiert alle Eingaben so das Sie großgeschrieben sind.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringToUpper();
+   $filter = new Zend\Filter\StringToUpper();
 
    print $filter->filter('Sample');
    // gibt "SAMPLE" zurück
@@ -21,7 +21,7 @@ bei ``StringToLower``.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringToUpper(array('encoding' => 'UTF-8'));
+   $filter = new Zend\Filter\StringToUpper(array('encoding' => 'UTF-8'));
 
    // oder im Nachhinein
    $filter->setEncoding('ISO-8859-1');

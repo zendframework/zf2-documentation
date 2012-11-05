@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.flickr:
 
-Zend_Service_Flickr
+Zend\Service\Flickr
 ===================
 
 .. _zend.service.flickr.introduction:
@@ -9,7 +9,7 @@ Zend_Service_Flickr
 Wprowadzenie do przeszukiwania Flickr
 -------------------------------------
 
-*Zend_Service_Flickr* jest prostym API do użycia z serwisem Flickr REST Web Service. W celu użycia web serwisów
+*Zend\Service\Flickr* jest prostym API do użycia z serwisem Flickr REST Web Service. W celu użycia web serwisów
 Flickr, musisz posiadać klucz API. Aby zdoby klucz i uzyskać więcej informacji o Flickr REST Web Service,
 odwiedź `dokumentację Flickr API`_.
 
@@ -22,7 +22,7 @@ W poniższym przykladzie, używamy metody *tagSearch()* do wyszukiwania zdjęć 
 .. code-block:: php
    :linenos:
 
-   $flickr = new Zend_Service_Flickr('MY_API_KEY');
+   $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $results = $flickr->tagSearch("php");
 
@@ -42,11 +42,11 @@ W poniższym przykladzie, używamy metody *tagSearch()* do wyszukiwania zdjęć 
 Wyszukiwanie zdjęć użytkowników Flickr i informacji o nich
 ----------------------------------------------------------
 
-Klasa *Zend_Service_Flickr* zapewnia kilka możliwości pobierania informacji o użytkownikach serwisu Flickr:
+Klasa *Zend\Service\Flickr* zapewnia kilka możliwości pobierania informacji o użytkownikach serwisu Flickr:
 
 - *userSearch()*: akceptuje w parametrze treść zapytania w postaci etykiet oddzielonych spacją oraz tablicę
   opcji wyszukiwania jako opcjonalny drugi parametr, a zwraca zestaw zdjęć jako obiekt
-  *Zend_Service_Flickr_ResultSet*.
+  *Zend\Service_Flickr\ResultSet*.
 
 - *getIdByUsername()*: Zwraca ID użytkownika powiązane z podaną nazwą użytkownika.
 
@@ -62,7 +62,7 @@ używając metody *userSearch()*:
 .. code-block:: php
    :linenos:
 
-   $flickr = new Zend_Service_Flickr('MY_API_KEY');
+   $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $results = $flickr->userSearch($userEmail);
 
@@ -76,7 +76,7 @@ używając metody *userSearch()*:
 Wyszukiwanie zdjęć w Group Pool
 -------------------------------
 
-Klasa *Zend_Service_Flickr* pozwala na pobieranie zdjęć grupy w oparciu o jej ID. Użyj metody
+Klasa *Zend\Service\Flickr* pozwala na pobieranie zdjęć grupy w oparciu o jej ID. Użyj metody
 *groupPoolGetPhotos()*:
 
 .. _zend.service.flickr.grouppoolgetphotos.example-1:
@@ -86,7 +86,7 @@ Klasa *Zend_Service_Flickr* pozwala na pobieranie zdjęć grupy w oparciu o jej 
 .. code-block:: php
    :linenos:
 
-   $flickr = new Zend_Service_Flickr('MY_API_KEY');
+   $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $results = $flickr->groupPoolGetPhotos($groupId);
 
@@ -106,7 +106,7 @@ Klasa *Zend_Service_Flickr* pozwala na pobieranie zdjęć grupy w oparciu o jej 
 Pobieranie szczegółów zdjęcia Flickr
 ------------------------------------
 
-*Zend_Service_Flickr* ułatwia pobieranie informacji o zdjęciu na podstawie podanego ID zdjęcia. Po prostu użyj
+*Zend\Service\Flickr* ułatwia pobieranie informacji o zdjęciu na podstawie podanego ID zdjęcia. Po prostu użyj
 metody *getImageDetails()*, tak jak w poniższym przykładzie:
 
 .. _zend.service.flickr.getimagedetails.example-1:
@@ -118,7 +118,7 @@ Jeśli posiadasz ID zdjęcia Flickr, pobranie informacji o zdjęciu jest bardzo 
 .. code-block:: php
    :linenos:
 
-   $flickr = new Zend_Service_Flickr('MY_API_KEY');
+   $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $image = $flickr->getImageDetails($imageId);
 
@@ -128,22 +128,22 @@ Jeśli posiadasz ID zdjęcia Flickr, pobranie informacji o zdjęciu jest bardzo 
 
 .. _zend.service.flickr.classes:
 
-Klasy wyników Zend_Service_Flickr
+Klasy wyników Zend\Service\Flickr
 ---------------------------------
 
 Poniższe klasy są zwracane przez metody *tagSearch()* oraz *userSearch()*:
 
-   - :ref:`Zend_Service_Flickr_ResultSet <zend.service.flickr.classes.resultset>`
+   - :ref:`Zend\Service_Flickr\ResultSet <zend.service.flickr.classes.resultset>`
 
-   - :ref:`Zend_Service_Flickr_Result <zend.service.flickr.classes.result>`
+   - :ref:`Zend\Service_Flickr\Result <zend.service.flickr.classes.result>`
 
-   - :ref:`Zend_Service_Flickr_Image <zend.service.flickr.classes.image>`
+   - :ref:`Zend\Service_Flickr\Image <zend.service.flickr.classes.image>`
 
 
 
 .. _zend.service.flickr.classes.resultset:
 
-Zend_Service_Flickr_ResultSet
+Zend\Service_Flickr\ResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Reprezentuje zestaw wyników wysuzkiwania Flickr.
@@ -160,7 +160,7 @@ Właściwości
 
 .. _zend.service.flickr.classes.resultset.properties.table-1:
 
-.. table:: Właściwości Zend_Service_Flickr_ResultSet
+.. table:: Właściwości Zend\Service_Flickr\ResultSet
 
    +---------------------+---+-------------------------------------------------------+
    |Nazwa                |Typ|Opis                                                   |
@@ -174,7 +174,7 @@ Właściwości
 
 .. _zend.service.flickr.classes.resultset.totalResults:
 
-Zend_Service_Flickr_ResultSet::totalResults()
+Zend\Service_Flickr\ResultSet::totalResults()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 int:``totalResults()``
@@ -186,7 +186,7 @@ Zwraca całkowitą ilość wyników w tym zestawie wyników wyszukiwania.
 
 .. _zend.service.flickr.classes.result:
 
-Zend_Service_Flickr_Result
+Zend\Service_Flickr\Result
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Pojedynczy wynik wyszukiwania zdjęcia w serwisie Flickr
@@ -198,7 +198,7 @@ Właściwości
 
 .. _zend.service.flickr.classes.result.properties.table-1:
 
-.. table:: Właściwości Zend_Service_Flickr_Result
+.. table:: Właściwości Zend\Service_Flickr\Result
 
    +----------+-------------------------+------------------------------------------------------------------------------+
    |Nazwa     |Typ                      |Opis                                                                          |
@@ -229,24 +229,24 @@ Właściwości
    +----------+-------------------------+------------------------------------------------------------------------------+
    |iconserver|string                   |Serwer używany przy dołączaniu adresów URL ikon.                              |
    +----------+-------------------------+------------------------------------------------------------------------------+
-   |Square    |Zend_Service_Flickr_Image|Miniaturka zdjęcia o wielkości 75x75.                                         |
+   |Square    |Zend\Service_Flickr\Image|Miniaturka zdjęcia o wielkości 75x75.                                         |
    +----------+-------------------------+------------------------------------------------------------------------------+
-   |Thumbnail |Zend_Service_Flickr_Image|Miniaturka zdjęcia o wielkości 100 pikseli.                                   |
+   |Thumbnail |Zend\Service_Flickr\Image|Miniaturka zdjęcia o wielkości 100 pikseli.                                   |
    +----------+-------------------------+------------------------------------------------------------------------------+
-   |Small     |Zend_Service_Flickr_Image|Wersja zdjęcia o wielkości 240 pikseli.                                       |
+   |Small     |Zend\Service_Flickr\Image|Wersja zdjęcia o wielkości 240 pikseli.                                       |
    +----------+-------------------------+------------------------------------------------------------------------------+
-   |Medium    |Zend_Service_Flickr_Image|Wersja zdjęcia o wielkości 500 pikseli.                                       |
+   |Medium    |Zend\Service_Flickr\Image|Wersja zdjęcia o wielkości 500 pikseli.                                       |
    +----------+-------------------------+------------------------------------------------------------------------------+
-   |Large     |Zend_Service_Flickr_Image|Wersja zdjęcia o wielkości 640 pikseli.                                       |
+   |Large     |Zend\Service_Flickr\Image|Wersja zdjęcia o wielkości 640 pikseli.                                       |
    +----------+-------------------------+------------------------------------------------------------------------------+
-   |Original  |Zend_Service_Flickr_Image|Oryginalne zdjęcie.                                                           |
+   |Original  |Zend\Service_Flickr\Image|Oryginalne zdjęcie.                                                           |
    +----------+-------------------------+------------------------------------------------------------------------------+
 
 :ref:`Powrót do listy klas <zend.service.flickr.classes>`
 
 .. _zend.service.flickr.classes.image:
 
-Zend_Service_Flickr_Image
+Zend\Service_Flickr\Image
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Reprezentuje zdjęcie zwrócone przez wyszukiwanie Flickr.
@@ -258,7 +258,7 @@ Właściwości
 
 .. _zend.service.flickr.classes.image.properties.table-1:
 
-.. table:: Właściwości Zend_Service_Flickr_Image
+.. table:: Właściwości Zend\Service_Flickr\Image
 
    +--------+------+--------------------------------------------------+
    |Nazwa   |Typ   |Opis                                              |

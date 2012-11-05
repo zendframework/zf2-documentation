@@ -18,6 +18,6 @@ zadań:
 - Konfiguracja elementów i formularzy
 
 Komponent jest w dużym stopniu oparty o inne komponenty Zend Framework takie jak *Zend_Config*, *Zend_Validate*,
-*Zend_Filter*, *Zend_Loader_PluginLoader* oraz opcjonalnie *Zend_View*.
+*Zend_Filter*, *Zend\Loader\PluginLoader* oraz opcjonalnie *Zend_View*.
 
 

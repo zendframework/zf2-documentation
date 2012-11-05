@@ -10,7 +10,7 @@ UTF-8 和单字节字符集支持
 ---------------
 
 被设计于工作在 UTF-8 字符集下。索引文件在 Java 的"modified UTF-8
-encoding"编码下保存文件。Zend_Search_Lucene 内核完全支持它，只有一处例外。 [#]_
+encoding"编码下保存文件。Zend\Search\Lucene 内核完全支持它，只有一处例外。 [#]_
 
 然而，各类文本和查询分析程序使用 ctype_alpha() 来进行文本和查询的记号化处理。而
 ctype_alpha() 不支持 UTF-8，在不久的将来需要被替换为别的什么机制。
@@ -22,10 +22,10 @@ ctype_alpha() 不支持 UTF-8，在不久的将来需要被替换为别的什么
    :linenos:
 
    <?php
-   $doc = new Zend_Search_Lucene_Document();
+   $doc = new Zend\Search_Lucene\Document();
    ...
    $docText = iconv('ISO-8859-1', 'ASCII//TRANSLIT', $docText);
-   $doc->addField(Zend_Search_Lucene_Field::UnStored('contents', $docText));
+   $doc->addField(Zend\Search_Lucene\Field::UnStored('contents', $docText));
 
    ...
 
@@ -34,7 +34,7 @@ ctype_alpha() 不支持 UTF-8，在不久的将来需要被替换为别的什么
    ?>
 
 
-.. [#] Zend_Search_Lucene 只支持基本多语言平面(Basic Multilingual Plane, BMP)字符集(从 0x0000 到
+.. [#] Zend\Search\Lucene 只支持基本多语言平面(Basic Multilingual Plane, BMP)字符集(从 0x0000 到
        0xFFFF)，不支持辅助字符集(supplementary characters)(那些代码指针大于 0xFFFF 的字符)
 
        Java 2 通过一对两个 16

@@ -27,8 +27,8 @@ Query opbouw door API:
 
    <?php
 
-       $term  = new Zend_Search_Lucene_Index_Term('word1');
-       $query = new Zend_Search_Lucene_Search_Query_Term($term);
+       $term  = new Zend\Search\Lucene\Index\Term('word1');
+       $query = new Zend\Search\Lucene\Search\Query\Term($term);
        $hits  = $index->find($query);
 
    ?>
@@ -88,11 +88,11 @@ Query opbouw door API:
 
    <?php
 
-       $query = new Zend_Search_Lucene_Search_Query_MultiTerm();
+       $query = new Zend\Search\Lucene\Search\Query\MultiTerm();
 
-       $query->addTerm(new Zend_Search_Lucene_Index_Term('word1'), true);
-       $query->addTerm(new Zend_Search_Lucene_Index_Term('word2'), null);
-       $query->addTerm(new Zend_Search_Lucene_Index_Term('word3'), false);
+       $query->addTerm(new Zend\Search\Lucene\Index\Term('word1'), true);
+       $query->addTerm(new Zend\Search\Lucene\Index\Term('word2'), null);
+       $query->addTerm(new Zend\Search\Lucene\Index\Term('word3'), false);
 
        $hits  = $index->find($query);
 
@@ -124,43 +124,43 @@ worden aangemaakt:
    :linenos:
 
    <?php
-   $query1 = new Zend_Search_Lucene_Search_Query_Phrase();
+   $query1 = new Zend\Search\Lucene\Search\Query\Phrase();
 
    // Voeg 'word1' op relatieve positie 0 toe.
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word1'));
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word1'));
 
    // Voeg 'word2' op relatieve positie 1 toe.
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word2'));
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word2'));
 
    // Voeg 'word3' op relatieve positie 3 toe.
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word3'), 3);
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word3'), 3);
 
    ...
 
-   $query2 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query2 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2', 'word3'), array(0,1,3));
 
    ...
 
    // Query zonder gat.
-   $query3 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query3 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2', 'word3'));
 
    ...
 
-   $query4 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query4 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2'), array(0,1), 'annotation');
 
    ?>
 Phrase query kunnen worden aangemaakt met een enkele stap in de klasse constructor of stap voor stap met de
-*Zend_Search_Lucene_Search_Query_Phrase::addTerm()* methode.
+*Zend\Search\Lucene\Search\Query\Phrase::addTerm()* methode.
 
-Zend_Search_Lucene_Search_Query_Phrase klasse constructor accepteert drie optionele argumenten:
+Zend\Search\Lucene\Search\Query\Phrase klasse constructor accepteert drie optionele argumenten:
 
 .. code-block:: php
    :linenos:
 
-   Zend_Search_Lucene_Search_Query_Phrase([array $terms[, array $offsets[, string $field]]]);
+   Zend\Search\Lucene\Search\Query\Phrase([array $terms[, array $offsets[, string $field]]]);
 *$terms* is een array van strings, welke een set van zin termen bevat. Wanneer het niet wordt meegegeven of null
 is, wordt een lege query aangemaakt.
 
@@ -168,7 +168,7 @@ is, wordt een lege query aangemaakt.
 meegegeven of null is, wordt uitgegaan van posities zoals *array(0, 1, 2, 3, ...)*.
 
 *$field* is een string, welke aangeeft welk document veld doorzocht moet worden. Wanneer het niet wordt meegegeven
-of null is, dan wordt het standaard veld doorzicht. Deze versie van Zend_Search_Lucene behandelt het 'contents'
+of null is, dan wordt het standaard veld doorzicht. Deze versie van Zend\Search\Lucene behandelt het 'contents'
 veld als standaard, maar het plan is dit aan te passen tot "ieder veld" in volgende versies.
 
 Dus:
@@ -176,29 +176,29 @@ Dus:
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'framework'));
+   $query = new Zend\Search\Lucene\Search\Query\Phrase(array('zend', 'framework'));
 zoekt naar de 'zend framework' uitdrukking.
 
 .. code-block:: php
    :linenos:
 
-   <$query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'download'), array(0, 2));
+   <$query = new Zend\Search\Lucene\Search\Query\Phrase(array('zend', 'download'), array(0, 2));
 zoekt naar 'zend ????? download' en dus voldoet 'zend platform download', 'zend studio download', 'zend core
 download', 'zend framework download' hieraan.
 
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'framework'), null, 'title');
+   $query = new Zend\Search\Lucene\Search\Query\Phrase(array('zend', 'framework'), null, 'title');
 zoekt naar 'zend framework' in het 'title' veld.
 
-*Zend_Search_Lucene_Search_Query_Phrase::addTerm()* methode accepteert twee argumenten. Noodzakelijk
-*Zend_Search_Lucene_Index_Term* object en optioneel positie:
+*Zend\Search\Lucene\Search\Query\Phrase::addTerm()* methode accepteert twee argumenten. Noodzakelijk
+*Zend\Search\Lucene\Index\Term* object en optioneel positie:
 
 .. code-block:: php
    :linenos:
 
-   Zend_Search_Lucene_Search_Query_Phrase::addTerm(Zend_Search_Lucene_Index_Term $term[, integer $position]);
+   Zend\Search\Lucene\Search\Query\Phrase::addTerm(Zend\Search\Lucene\Index\Term $term[, integer $position]);
 *$term* omschrijft de volgende term binnen de uitdrukking. Het moet hetzelfde veld als eerdere termen omschrijven.
 Anders wordt er een exceptie opgeworpen.
 
@@ -209,26 +209,26 @@ Dus:
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase();
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'));
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'));
+   $query = new Zend\Search\Lucene\Search\Query\Phrase();
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('zend'));
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('framework'));
 zoekt naar de 'zend framework' uitdrukking.
 
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase();
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'), 0);
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'), 2);
+   $query = new Zend\Search\Lucene\Search\Query\Phrase();
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('zend'), 0);
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('framework'), 2);
 zoekt naar de 'zend ????? download' uitdrukking en dus zal 'zend platform download', 'zend studio download', 'zend
 core download', 'zend framework download' hieraan voldoen.
 
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase();
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('zend', 'title'));
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('framework', 'title'));
+   $query = new Zend\Search\Lucene\Search\Query\Phrase();
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('zend', 'title'));
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('framework', 'title'));
 zoekt naar 'zend framework' in het 'title' veld.
 
 Slop factor zet het aantal woorden dat is toegestaan binnen een query uitdrukking. Wanneer deze nul is, wordt er op
@@ -250,7 +250,7 @@ Slop factor kan na het aanmaken van een query worden aangegeven:
    <?php
 
    // Query zonder een gat.
-   $query = new Zend_Search_Lucene_Search_Query_Phrase(array('word1', 'word2'));
+   $query = new Zend\Search\Lucene\Search\Query\Phrase(array('word1', 'word2'));
 
    // Zoek naar 'word1 word2', 'word1 ... word2'
    $query->setSlop(1);

@@ -4,19 +4,19 @@
 Isbn
 ====
 
-``Zend_Validate_Isbn`` erlaubt es einen *ISBN-10* oder *ISBN-13* Wert zu prüfen.
+``Zend\Validate\Isbn`` erlaubt es einen *ISBN-10* oder *ISBN-13* Wert zu prüfen.
 
 .. _zend.validator.set.isbn.options:
 
-Unterstützte Optionen für Zend_Validate_Isbn
+Unterstützte Optionen für Zend\Validate\Isbn
 --------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Validate_Isbn`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Validate\Isbn`` unterstützt:
 
 - **separator**: Definiert das erlaubte Trennzeichen für die *ISBN* Nummer. Diese ist standardmäßig ein leerer
   String.
 
-- **type**: Definiert den erlaubten Typ an *ISBN* Nummern. Dieser ist standardmäßig ``Zend_Validate_Isbn::AUTO``.
+- **type**: Definiert den erlaubten Typ an *ISBN* Nummern. Dieser ist standardmäßig ``Zend\Validate\Isbn::AUTO``.
   Für Details sollte in :ref:`diesem Abschnitt <zend.validator.set.isbn.type-explicit>` nachgesehen werden.
 
 .. _zend.validator.set.isbn.basic:
@@ -29,7 +29,7 @@ Ein einfaches Verwendungsbeispiel ist anbei zu finden:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Isbn();
+   $validator = new Zend\Validate\Isbn();
    if ($validator->isValid($isbn)) {
        // ISBN gültig
    } else {
@@ -48,11 +48,11 @@ Ein Beispiel für die Begrenzung auf einen *ISBN* Typ ist anbei zu finden:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Isbn();
-   $validator->setType(Zend_Validate_Isbn::ISBN13);
+   $validator = new Zend\Validate\Isbn();
+   $validator->setType(Zend\Validate\Isbn::ISBN13);
    // ODER
-   $validator = new Zend_Validate_Isbn(array(
-       'type' => Zend_Validate_Isbn::ISBN13,
+   $validator = new Zend\Validate\Isbn(array(
+       'type' => Zend\Validate\Isbn::ISBN13,
    ));
 
    if ($validator->isValid($isbn)) {
@@ -65,11 +65,11 @@ Das vorherige prüft nur auf *ISBN-13* Werte.
 
 Folgende gültige Typen sind vorhanden:
 
-- ``Zend_Validate_Isbn::AUTO`` (default)
+- ``Zend\Validate\Isbn::AUTO`` (default)
 
-- ``Zend_Validate_Isbn::ISBN10``
+- ``Zend\Validate\Isbn::ISBN10``
 
-- ``Zend_Validate_Isbn::ISBN13``
+- ``Zend\Validate\Isbn::ISBN13``
 
 .. _zend.validator.set.isbn.separator:
 
@@ -81,10 +81,10 @@ Ein Beispiel für die Begrenzung auf ein Trennzeichen ist anbei zu finden:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Isbn();
+   $validator = new Zend\Validate\Isbn();
    $validator->setSeparator('-');
    // ODER
-   $validator = new Zend_Validate_Isbn(array(
+   $validator = new Zend\Validate\Isbn(array(
        'separator' => '-',
    ));
 

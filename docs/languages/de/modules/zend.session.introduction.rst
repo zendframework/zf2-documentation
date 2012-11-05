@@ -13,18 +13,18 @@ Daten über mehrere Seitenaufrufe hinweg durch den gleichen Client. Anders als C
 nicht beim Client gespeichert und stehen diesem nur dann zur Verfügung wenn der Server-seitige Sourcecode diese
 Daten freiwillig zur Verfügung stellt und diese vom Client angefragt werden. Innerhalb dieser Komponente und der
 Dokumentation bezeichnt der Term "Session Daten" die Server-seitigen Daten welche in `$_SESSION`_ gespeichert,
-durch ``Zend_Session`` verwaltet und durch ``Zend_Session_Namespace`` Zugriffsobjekte individuell verändert
+durch ``Zend_Session`` verwaltet und durch ``Zend\Session\Namespace`` Zugriffsobjekte individuell verändert
 werden. **Session Namensräume** gestatten den Zugriff auf Session Daten durch Verwendung klassischer
 `Namensräume`_ welche durch logische, namentlich gruppierte, assoziative Arrays, dessen Schlüssel mit
 Zeichenketten benannt sind (ähnlich wie bei normalen *PHP* Arrays), implementiert sind.
 
-``Zend_Session_Namespace`` Instanzen sind Zugriffsobjekte für benannte Abschnitte von ``$_SESSION``. Die
+``Zend\Session\Namespace`` Instanzen sind Zugriffsobjekte für benannte Abschnitte von ``$_SESSION``. Die
 ``Zend_Session`` Komponente wrappt die bestehende *PHP* Erweiterung ext/session mit einem Administrations und
-Management Interface sowie einer *API* für ``Zend_Session_Namespace`` um Session Namensräume zu erlauben.
-``Zend_Session_Namespace`` bietet ein standardisiertes, objektorientiertes Interface für das Arbeiten mit
+Management Interface sowie einer *API* für ``Zend\Session\Namespace`` um Session Namensräume zu erlauben.
+``Zend\Session\Namespace`` bietet ein standardisiertes, objektorientiertes Interface für das Arbeiten mit
 Namensräumen welche innerhalb von *PHP*'s Standard Session Mechanismum bereitgehalten werden. Es werden sowohl
 anonyme als auch authentifizierte (z.B., "login") Session Namensräume unterstützt. ``Zend_Auth``, die
-Authentifizierungs-Komponente des Zend Framework verwendet ``Zend_Session_Namespace`` um einige Informationen,
+Authentifizierungs-Komponente des Zend Framework verwendet ``Zend\Session\Namespace`` um einige Informationen,
 welche mit den authentifizierten Benutzern verbunden sind, innerhalb des "Zend_Auth" Namensraums zu speichern. Da
 ``Zend_Session`` intern die normalen *PHP* ext/session Funktionen verwendet, sind alle bekannten
 Konfigurationsoptionen und Einstellungen vorhanden (siehe `http://www.php.net/session`_), mit dem Bonus und Komfort

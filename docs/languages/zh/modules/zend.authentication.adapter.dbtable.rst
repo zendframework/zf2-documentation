@@ -9,8 +9,8 @@
 简介
 --
 
-*Zend_Auth_Adapter_DbTable*\ 提供依靠存储在数据库表中的证书来认证的能力。因为
-*Zend_Auth_Adapter_DbTable*\ 需要 *Zend_Db_Adapter_Abstract*\
+*Zend\Auth_Adapter\DbTable*\ 提供依靠存储在数据库表中的证书来认证的能力。因为
+*Zend\Auth_Adapter\DbTable*\ 需要 *Zend\Db_Adapter\Abstract*\
 的实例来传递给它的构造器，所以每个实例要和特定的数据库连接绑定。其它配置选项可以通过构造器和实例方法设置，每个选项有一个配置。
 
 可用的配置选项包括：
@@ -37,7 +37,7 @@
 
 .. rubric:: 基本用法
 
-正如在简介中所解释的， *Zend_Auth_Adapter_DbTable*\ 构造器需要一个 *Zend_Db_Adapter_Abstract*\
+正如在简介中所解释的， *Zend\Auth_Adapter\DbTable*\ 构造器需要一个 *Zend\Db_Adapter\Abstract*\
 的实例，这个实例用做数据库连结，并且认证适配器实例绑定到这个数据库连接。首先，应该创建数据库连接。
 
 下面的代码为in-memory数据库创建一个适配器，创建一个简单的表schema，并插入我们将来可以执行认证查询的一行（数据）。这个例子需要PDO
@@ -47,7 +47,7 @@ SQLite extension可用：
    :linenos:
 
    // 创建一个 in-memory SQLite 数据库连接
-   $dbAdapter = new Zend_Db_Adapter_Pdo_Sqlite(array('dbname' =>
+   $dbAdapter = new Zend\Db\Adapter\Pdo\Sqlite(array('dbname' =>
                                                      ':memory:'));
 
    // 构造一个简单表的创建语句
@@ -68,14 +68,14 @@ SQLite extension可用：
    $dbAdapter->query($sqlInsert);
 
 
-随着数据库连接和表数据已经可用， *Zend_Auth_Adapter_DbTable*\
+随着数据库连接和表数据已经可用， *Zend\Auth_Adapter\DbTable*\
 可以被创建。配置选项的值可以传递给构造器或者延后在实例化以后用做setter方法的参数:
 
 .. code-block:: php
    :linenos:
 
    // 用构造器参数来配置实例...
-   $authAdapter = new Zend_Auth_Adapter_DbTable(
+   $authAdapter = new Zend\Auth_Adapter\DbTable(
        $dbAdapter,
        'users',
        'username',
@@ -83,7 +83,7 @@ SQLite extension可用：
    );
 
    // 用构造器参数来配置实例...
-   $authAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
+   $authAdapter = new Zend\Auth_Adapter\DbTable($dbAdapter);
 
    $authAdapter
        ->setTableName('users')
@@ -108,7 +108,7 @@ SQLite extension可用：
    $result = $authAdapter->authenticate();
 
 
-除了基于认证结果对象的 *getIdentity()* 方法的可用性之外， *Zend_Auth_Adapter_DbTable*\
+除了基于认证结果对象的 *getIdentity()* 方法的可用性之外， *Zend\Auth_Adapter\DbTable*\
 也支持从认证成功的表中读取一行数据：
 
 .. code-block:: php
@@ -140,7 +140,7 @@ SQLite extension可用：
 高级使用：持久一个 DbTable 结果对象
 ----------------------
 
-缺省地，基于成功的认证 *Zend_Auth_Adapter_DbTable*
+缺省地，基于成功的认证 *Zend\Auth_Adapter\DbTable*
 返回提供给auth对象的身份。对于其他用例情景，如开发者想给 *Zend_Auth*
 的持久存储机制存储一个包括其他有用信息的身份对象，已经通过使用
 *getResultRowObject()* 方法返回一个 *stdClass*\
@@ -149,7 +149,7 @@ SQLite extension可用：
 .. code-block:: php
    :linenos:
 
-   // authenticate with Zend_Auth_Adapter_DbTable
+   // authenticate with Zend\Auth_Adapter\DbTable
    $result = $this->_auth->authenticate($adapter);
 
    if ($result->isValid()) {
@@ -182,17 +182,17 @@ SQLite extension可用：
 高级用法范例
 ------
 
-虽然 Zend_Auth （和它的继承者 Zend_Auth_Adapter_DbTable ）主要用来 **认证** 而不是 **授权**
+虽然 Zend_Auth （和它的继承者 Zend\Auth_Adapter\DbTable ）主要用来 **认证** 而不是 **授权**
 ，但是基于它们用在哪个域名下，还是有一些实例和问题。根据如何解释你的问题，有时候通过在认证适配器里检查授权问题也许能解决问题。
 
-用一点不恰当的免责声明，Zend_Auth_Adapter_DbTable
+用一点不恰当的免责声明，Zend\Auth_Adapter\DbTable
 有内建的机制可以用来利用添加另外的认证时的检查来解决一些普通的用户问题。
 
 .. code-block:: php
    :linenos:
 
    // The status field value of an account is not equal to "compromised"
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
@@ -201,7 +201,7 @@ SQLite extension可用：
    );
 
    // The active field value of an account is equal to "TRUE"
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
@@ -241,13 +241,13 @@ SQLite extension可用：
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
        'password',
        "MD5(CONCAT('"
-       . Zend_Registry::get('staticSalt')
+       . Zend\Registry\Registry::get('staticSalt')
        . "', ?, password_salt))"
    );
 

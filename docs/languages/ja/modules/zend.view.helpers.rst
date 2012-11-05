@@ -10,11 +10,11 @@
 
 ヘルパーの正体は、単なるクラスです。たとえば 'fooBar'
 という名前のヘルパーを使用するとしましょう。
-デフォルトでは、クラス名の先頭には 'Zend_View_Helper\_' がつきます
+デフォルトでは、クラス名の先頭には 'Zend\View\Helper\_' がつきます
 (ヘルパーのパスを設定する際に、これは独自のものに変更できます)。
 そしてクラス名の最後の部分がヘルパーの名前となります。
 このとき、単語の先頭は大文字にしなければなりません。つまり、
-ヘルパーのクラス名は ``Zend_View_Helper_FooBar``
+ヘルパーのクラス名は ``Zend\View_Helper\FooBar``
 となります。このクラスには、最低限ヘルパー名と同じ名前 (camelCase 形式にしたもの)
 のメソッド ``fooBar()`` が含まれていなければなりません。
 
@@ -37,7 +37,7 @@
 
 ビュースクリプト内でヘルパーを使用するには、 ``$this->helperName()``
 をコールします。これをコールすると、裏側では ``Zend_View`` が
-``Zend_View_Helper_HelperName`` クラスを読み込み、 そのクラスのインスタンスを作成して
+``Zend\View_Helper\HelperName`` クラスを読み込み、 そのクラスのインスタンスを作成して
 ``helperName()`` メソッドをコールします。 オブジェクトのインスタンスは ``Zend_View``
 インスタンスの中に残り続け、 後で ``$this->helperName()``
 がコールされたときには再利用されます。
@@ -272,13 +272,13 @@
 ``Zend_View`` に別の場所を探すように指定するには ``setHelperPath()`` および ``addHelperPath()``
 メソッドを使用します。 さらに、クラスプレフィックスを指定することもできます。
 これにより、ヘルパークラスに名前空間を設定できるようになります。
-デフォルトでクラスプレフィックスを指定しなかった場合は、 'Zend_View_Helper\_'
+デフォルトでクラスプレフィックスを指定しなかった場合は、 'Zend\View\Helper\_'
 であると見なされます。
 
 .. code-block:: php
    :linenos:
 
-   $view = new Zend_View();
+   $view = new Zend\View\View();
 
    // パスを /path/to/more/helpers 、プレフィックスを 'My_View_Helper' と設定します
    $view->setHelperPath('/path/to/more/helpers', 'My_View_Helper');
@@ -292,7 +292,7 @@
 .. code-block:: php
    :linenos:
 
-   $view = new Zend_View();
+   $view = new Zend\View\View();
    // /path/to/some/helpers をクラスプレフィックス 'My_View_Helper' で追加します
    $view->addHelperPath('/path/to/some/helpers', 'My_View_Helper');
    // /other/path/to/helpers をクラスプレフィックス 'Your_View_Helper' で追加します
@@ -304,7 +304,7 @@
    // 次に "/other/path/to/helpers/HelperName.php" で
    // "My_View_Helper_HelperName" という名前のクラスを探し、
    // そして最後に "Zend/View/Helpers/HelperName.php" で
-   // "Zend_View_Helper_HelperName" という名前のクラスを探します。
+   // "Zend\View_Helper\HelperName" という名前のクラスを探します。
 
 .. _zend.view.helpers.custom:
 
@@ -314,7 +314,7 @@
 独自のヘルパーを書くのは簡単です。以下の規則に従ってください。
 
 - 絶対条件というわけではありませんが、ヘルパーを作成する際には
-  ``Zend_View_Helper_Interface`` を実装するか ``Zend_View_Helper_Abstract``
+  ``Zend\View_Helper\Interface`` を実装するか ``Zend\View_Helper\Abstract``
   を継承することを推奨します。 1.6.0 以降、これらには ``setView()``
   メソッドが定義されています。 しかし、将来のリリースでは Strategy
   パターンを実装することを検討しており、
@@ -353,7 +353,7 @@
 .. code-block:: php
    :linenos:
 
-   class My_View_Helper_SpecialPurpose extends Zend_View_Helper_Abstract
+   class My_View_Helper_SpecialPurpose extends Zend\View_Helper\Abstract
    {
        protected $_count = 0;
        public function specialPurpose()
@@ -398,7 +398,7 @@
    {
        public $view;
 
-       public function setView(Zend_View_Interface $view)
+       public function setView(Zend\View\Interface $view)
        {
            $this->view = $view;
        }
@@ -415,7 +415,7 @@
 渡されたオブジェクトをクラス内でどのように管理するかは特に決まっていません。
 お好みの方法で管理してください。
 
-``Zend_View_Helper_Abstract`` を継承する場合は、
+``Zend\View_Helper\Abstract`` を継承する場合は、
 このメソッドはすでに定義済みであるため定義する必要はありません。
 
 .. _zend.view.helpers.registering-concrete:

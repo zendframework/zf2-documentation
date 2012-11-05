@@ -37,7 +37,7 @@ Sitemap_Lastmod
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Sitemap_Lastmod();
+   $validator = new Zend\Validate_Sitemap\Lastmod();
 
    $validator->isValid('1999-11-11T22:23:52-02:00'); // true
    $validator->isValid('2008-05-12T00:42:52+02:00'); // true
@@ -56,7 +56,7 @@ Sitemap_Loc
 -----------
 
 文字列がサイトマップ *XML* 文書で 'loc' 要素として 使用できるかどうか検証します。
-これは内部的に ``Zend_Form::check()``\ を使います。 詳しくは :ref:`URI の検証
+これは内部的に ``Zend\Form\Form::check()``\ を使います。 詳しくは :ref:`URI の検証
 <zend.uri.validation>`\ を読んでください。
 
 .. _zend.validator.sitemap.priority:
@@ -75,7 +75,7 @@ Sitemap_Priority
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Sitemap_Priority();
+   $validator = new Zend\Validate_Sitemap\Priority();
 
    $validator->isValid('0.1'); // true
    $validator->isValid('0.789'); // true
@@ -90,7 +90,7 @@ Sitemap_Priority
 
 .. _zend.validator.set.sitemap.options:
 
-Zend_Validate_Sitemap_* でサポートされるオプション
+Zend\Validate_Sitemap\* でサポートされるオプション
 -------------------------------------
 
 サイトマップ・バリデータのいずれもサポートするオプションはありません。
