@@ -4,22 +4,22 @@
 GreaterThan
 ===========
 
-``Zend_Validate_GreaterThan`` erlaubt es zu prüfen ob ein angegebener Wert größer ist als ein minimaler
+``Zend\Validate\GreaterThan`` erlaubt es zu prüfen ob ein angegebener Wert größer ist als ein minimaler
 Grenzwert.
 
 .. note::
 
-   **Zend_Validate_GreaterThan unterstützt nur die Überprüfung von Nummern**
+   **Zend\Validate\GreaterThan unterstützt nur die Überprüfung von Nummern**
 
-   Es sollte beachtet werden das ``Zend_Validate_GreaterThan`` nur die Prüfung von Nummern unterstützt. Strings
+   Es sollte beachtet werden das ``Zend\Validate\GreaterThan`` nur die Prüfung von Nummern unterstützt. Strings
    oder ein Datum können mit dieser Prüfung nicht geprüft werden.
 
 .. _zend.validator.set.greaterthan.options:
 
-Unterstützte Optionen für Zend_Validate_GreaterThan
+Unterstützte Optionen für Zend\Validate\GreaterThan
 ---------------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Validate_GreaterThan`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Validate\GreaterThan`` unterstützt:
 
 - **min**: Setzt den mindesten erlaubten Wert.
 
@@ -34,7 +34,7 @@ verwendet werden.
 .. code-block:: php
    :linenos:
 
-   $valid  = new Zend_Validate_GreaterThan(array('min' => 10));
+   $valid  = new Zend\Validate\GreaterThan(array('min' => 10));
    $value  = 10;
    $return = $valid->isValid($value);
    // Gibt true zurück

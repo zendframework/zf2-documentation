@@ -16,11 +16,11 @@ Zend_Controller
 folgenden Methoden entfernt da Sie nun im :ref:`Weiterleitungs Aktionhelfer
 <zend.controller.actionhelpers.redirector>` inkludiert sind:
 
-- ``setRedirectCode()``; wurde umbenannt in ``Zend_Controller_Action_Helper_Redirector::setCode()``.
+- ``setRedirectCode()``; wurde umbenannt in ``Zend\Controller\Action\Helper\Redirector::setCode()``.
 
-- ``setRedirectPrependBase()``; wurde umbenannt in ``Zend_Controller_Action_Helper_Redirector::setPrependBase()``.
+- ``setRedirectPrependBase()``; wurde umbenannt in ``Zend\Controller\Action\Helper\Redirector::setPrependBase()``.
 
-- ``setRedirectExit()``; wurde umbenannt in ``Zend_Controller_Action_Helper_Redirector::setExit()``.
+- ``setRedirectExit()``; wurde umbenannt in ``Zend\Controller\Action\Helper\Redirector::setExit()``.
 
 Lese die :ref:`Aktionhelfer Dokumentation <zend.controller.actionhelpers>` für nähere Informationen über das
 empfangen und manipulieren von Helfer Objekten und die :ref:`Weiterleitungshelfer Dokumentation

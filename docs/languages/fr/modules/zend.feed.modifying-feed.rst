@@ -15,7 +15,7 @@ formé et enregistrer ensuite ce code dans un fichier ou le renvoyer au serveur.
 .. code-block:: php
    :linenos:
 
-   $flux = new Zend_Feed_Atom('http://atom.exemple.com/flux/1');
+   $flux = new Zend\Feed\Atom('http://atom.exemple.com/flux/1');
    $entree = $flux->current();
 
    $entree->title = 'Ceci est un nouveau titre';
@@ -32,7 +32,7 @@ d'affectation ; si nécessaire, les niveaux intermédiaires seront créés pour
 
 Si vous souhaitez utiliser dans votre entrée un espace de noms autre que *atom:*, *rss:* ou *osrss:*, vous devez
 enregistrer cet espace de noms auprès de ``Zend_Feed`` à l'aide de la méthode
-``Zend_Feed::registerNamespace()``. Lorsque vous modifiez un élément existant, il gardera toujours son espace de
+``Zend\Feed\Feed::registerNamespace()``. Lorsque vous modifiez un élément existant, il gardera toujours son espace de
 noms d'origine. Lorsque vous ajoutez un élément, il utilisera l'espace de noms par défaut si vous ne spécifiez
 pas explicitement un autre espace de noms.
 
@@ -43,14 +43,14 @@ pas explicitement un autre espace de noms.
 .. code-block:: php
    :linenos:
 
-   $entree = new Zend_Feed_Entry_Atom();
+   $entree = new Zend\Feed_Entry\Atom();
    // en Atom, id est toujours affecté par le serveur
    $entree->title = 'mon entrée perso';
    $entree->author->name = 'Auteur';
    $entree->author->email = 'moi@exemple.com';
 
    // maintenant on s'occupe de la partie personnalisée
-   Zend_Feed::registerNamespace('monen',
+   Zend\Feed\Feed::registerNamespace('monen',
                                 'http://www.exemple.com/monen/1.0');
 
    $entree->{'monen:monelement_un'} = 'ma première valeur personnalisée';

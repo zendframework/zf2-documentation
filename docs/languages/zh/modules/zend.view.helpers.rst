@@ -7,9 +7,9 @@
 在你的视图脚本中，经常需要执行某些特定的复杂的功能：例如，格式化日期，生成表单对象，或者显示action的链接等等。你可以使用助手类来完成这些工作。
 
 助手就是简单的类。假设你想要一个名为'fooBar'的助手，缺省地，类的前缀是
-*'Zend_View_Helper_'*
+*'Zend\View_Helper\'*
 （当设定助手路径时，你可以指定定制的前缀），类名的最后一部分就是助手名称；这一部分应该是TitleCapped（即像英文文章的标题一样，例如fooBar就要写成FooBar，by
-Jason Qi）;所以，类的全名就是 *Zend_View_Helper_FooBar*
+Jason Qi）;所以，类的全名就是 *Zend\View_Helper\FooBar*
 。这个类应当至少有一个在助手之后命名的方法，并且是驼峰格式（即首字母小写，之后的每个单词首字母大写，例如thisIsAnExample。详见http://c2.com/cgi/wiki?CamelCase　--
 Haohappy注）： *fooBar()* 。
 
@@ -27,7 +27,7 @@ Haohappy注）： *fooBar()* 。
    视图助手， 例如：'Zend/View/Helper/'，设置这个路径来确保缺省的助手工作。
 
 在视图脚本中，你可以用 *$this->helperName()*\ 来调用helper。这时 *Zend_View*\ 会加载
-*Zend_View_Helper_HelperName*\ 类，建立一个对象实例，并调用它的 *helperName()*\
+*Zend\View_Helper\HelperName*\ 类，建立一个对象实例，并调用它的 *helperName()*\
 方法。对象的实例会在 *Zend_View*\ 的实例内一直存在，并可以被 *$this->helperName()*\
 重复调用。
 
@@ -215,13 +215,13 @@ Haohappy注）： *fooBar()* 。
 就像可以指定视图脚本的路径，控制器也可以为 *Zend_View*\
 设定助手类的路径。默认地， *Zend_View*\ 会到 “Zend/View/Helper/”下查找助手类。可以用
 *setHelperPath()* 和 *addHelperPath()* 方法来告诉 *Zend_View*
-从其它地方来找路径。另外，你也可以指定类名的前缀，用于指定助手类所在的路径，允许给助手类命名空间。默认情况下，如果没有给出前缀，会假设使用“Zend_View_Helper_”。
+从其它地方来找路径。另外，你也可以指定类名的前缀，用于指定助手类所在的路径，允许给助手类命名空间。默认情况下，如果没有给出前缀，会假设使用“Zend\View_Helper\”。
 
 .. code-block:: php
    :linenos:
 
    <?php
-   $view = new Zend_View();
+   $view = new Zend\View\View();
 
    // 设置路径为：/path/to/more/helpers, 通过使用前缀 'My_View_Helper'
    $view->setHelperPath('/path/to/more/helpers', 'My_View_Helper');
@@ -233,7 +233,7 @@ Haohappy注）： *fooBar()* 。
    :linenos:
 
    <?php
-   $view = new Zend_View();
+   $view = new Zend\View\View();
    // Add /path/to/some/helpers with class prefix 'My_View_Helper'
    $view->addHelperPath('/path/to/some/helpers', 'My_View_Helper');
    // Add /other/path/to/helpers with class prefix 'Your_View_Helper'
@@ -242,7 +242,7 @@ Haohappy注）： *fooBar()* 。
    // now when you call $this->helperName(), Zend_View will look first for
    // "/path/to/some/helpers/HelperName" using class name "Your_View_Helper_HelperName",
    // then for "/other/path/to/helpers/HelperName.php" using class name "My_View_Helper_HelperName",
-   // and finally for "Zend/View/Helper/HelperName.php" using class name "Zend_View_Helper_HelperName".
+   // and finally for "Zend/View/Helper/HelperName.php" using class name "Zend\View_Helper\HelperName".
 
 .. _zend.view.helpers.custom:
 
@@ -314,7 +314,7 @@ Haohappy注）： *fooBar()* 。
    {
        public $view;
 
-       public function setView(Zend_View_Interface $view)
+       public function setView(Zend\View\Interface $view)
        {
            $this->view = $view;
        }

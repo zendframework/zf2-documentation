@@ -12,11 +12,11 @@ Benutzername zwischen 6 und 12 Alphanumerischen Zeichen lang sein muss:
    :linenos:
 
    // Eine Prüfkette erstellen und die Prüfungen hinzufügen
-   $validatorChain = new Zend_Validate();
+   $validatorChain = new Zend\Validate\Validate();
    $validatorChain->addValidator(
-                       new Zend_Validate_StringLength(array('min' => 6,
+                       new Zend\Validate\StringLength(array('min' => 6,
                                                             'max' => 12)))
-                  ->addValidator(new Zend_Validate_Alnum());
+                  ->addValidator(new Zend\Validate\Alnum());
 
    // Den Benutzernamen prüfen
    if ($validatorChain->isValid($username)) {
@@ -46,11 +46,11 @@ alphanumerische Prüfung nicht stattfinden wenn die Prüfung der Stringlänge fe
    :linenos:
 
    $validatorChain->addValidator(
-                       new Zend_Validate_StringLength(array('min' => 6,
+                       new Zend\Validate\StringLength(array('min' => 6,
                                                             'max' => 12)),
                        true)
-                  ->addValidator(new Zend_Validate_Alnum());
+                  ->addValidator(new Zend\Validate\Alnum());
 
-Jegliches Objekt welches das ``Zend_Validate_Interface`` enthält kann in einer Prüfkette verwendet werden.
+Jegliches Objekt welches das ``Zend\Validate\Interface`` enthält kann in einer Prüfkette verwendet werden.
 
 

@@ -6,17 +6,17 @@
 
 尽管提供了一组通用的校验器，但不可避免地，开发者还将为他们特定的需求来编写定制的校验器。编写定制的校验器的任务将在本节描述。
 
-*Zend_Validate_Interface* 定义了三个方法， *isValid()*\ ， *getMessages()* 和 *getErrors()*,
-为了创建校验对象，它们可以在用户的类里被实现。实现 *Zend_Validate_Interface*\
-接口的对象可以用 *Zend_Validate::addValidator()* 添加到校验链里。这样的对象也可以和
-:ref:`Zend_Filter_Input <zend.filter.input>`\ 一起使用。
+*Zend\Validate\Interface* 定义了三个方法， *isValid()*\ ， *getMessages()* 和 *getErrors()*,
+为了创建校验对象，它们可以在用户的类里被实现。实现 *Zend\Validate\Interface*\
+接口的对象可以用 *Zend\Validate\Validate::addValidator()* 添加到校验链里。这样的对象也可以和
+:ref:`Zend\Filter\Input <zend.filter.input>`\ 一起使用。
 
 也许你已经从上面关于 的描述中推断出，不论一个值是否被校验成功，校验类为Zend
 Framework返回一个布尔值。它们也提供关于 **why**\
 一个值校验失败的信息。校验失败原因的有效性对于不同用途的应用程序可能很有价值，象为可用性分析提供的统计量。
 
-基本校验失败消息的功能在 *Zend_Validate_Abstract*\
-中实现。当创建一个校验类，简单地扩展 *Zend_Validate_Abstract*\
+基本校验失败消息的功能在 *Zend\Validate\Abstract*\
+中实现。当创建一个校验类，简单地扩展 *Zend\Validate\Abstract*\
 来包括这个功能。在扩展类里你将实现 *isValid()*
 方法逻辑和定义消息变量和消息模板，它和可能发生的校验失败类型相对应。如果校验测试一个值失败，
 *isValid()* 应该返回 *false*\ 。如果这个值通过校验测试， *isValid()* 应该返回 *true*\ 。
@@ -34,7 +34,7 @@ Framework返回一个布尔值。它们也提供关于 **why**\
    .. code-block:: php
       :linenos:
 
-      class MyValid_Float extends Zend_Validate_Abstract
+      class MyValid_Float extends Zend\Validate\Abstract
       {
           const FLOAT = 'float';
 
@@ -84,7 +84,7 @@ Framework返回一个布尔值。它们也提供关于 **why**\
    .. code-block:: php
       :linenos:
 
-      class MyValid_NumericBetween extends Zend_Validate_Abstract
+      class MyValid_NumericBetween extends Zend\Validate\Abstract
       {
           const MSG_NUMERIC = 'msgNumeric';
           const MSG_MINIMUM = 'msgMinimum';
@@ -160,7 +160,7 @@ Public 属性 *$minimum* 和 *$maximum*
    .. code-block:: php
       :linenos:
 
-      class MyValid_PasswordStrength extends Zend_Validate_Abstract
+      class MyValid_PasswordStrength extends Zend\Validate\Abstract
       {
           const LENGTH = 'length';
           const UPPER  = 'upper';

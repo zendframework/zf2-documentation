@@ -1,17 +1,17 @@
 .. EN-Revision: none
 .. _zend.service.strikeiron.bundled-services:
 
-Zend_Service_StrikeIron: Mitgelieferte Services
+Zend\Service\StrikeIron: Mitgelieferte Services
 ===============================================
 
-``Zend_Service_StrikeIron`` kommt mit Wrapper Klassen für drei populäre StrikeIron Services.
+``Zend\Service\StrikeIron`` kommt mit Wrapper Klassen für drei populäre StrikeIron Services.
 
 .. _zend.service.strikeiron.bundled-services.zip-code-information:
 
 ZIP Code Informationen
 ----------------------
 
-``Zend_Service_StrikeIron_ZipCodeInfo`` bietet einen Client für StrikeIron's Zip Code Informations Service. Für
+``Zend\Service_StrikeIron\ZipCodeInfo`` bietet einen Client für StrikeIron's Zip Code Informations Service. Für
 mehr Informationen über dieses Service kann bei diesen StrikeIron Ressourcen nachgesehen werden:
 
 
@@ -26,7 +26,7 @@ Kanadischen Post Codes enthält:
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new Zend_Service_StrikeIron(array('username' => 'your-username',
+   $strikeIron = new Zend\Service\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    // Einen Client für das ZIP Code Informations Service erstellen
@@ -67,7 +67,7 @@ Kanadischen Post Codes enthält:
 U.S. Address-Prüfung
 --------------------
 
-``Zend_Service_StrikeIron_USAddressVerification`` bietet einen Client für StrikeIron's U.S. Address-Prüfungs
+``Zend\Service_StrikeIron\USAddressVerification`` bietet einen Client für StrikeIron's U.S. Address-Prüfungs
 Service. Für mehr Informationen über dieses Service kann bei diesen StrikeIron Ressourcen nachgesehen werden:
 
 
@@ -83,7 +83,7 @@ Das Service enthält eine ``verifyAddressUSA()`` Methode die eine Adresse in den
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new Zend_Service_StrikeIron(array('username' => 'your-username',
+   $strikeIron = new Zend\Service\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    // Einen Client für das ZIP Code Informations Service erstellen
@@ -119,7 +119,7 @@ Das Service enthält eine ``verifyAddressUSA()`` Methode die eine Adresse in den
 Verkaufs & Steuer Grundlagen
 ----------------------------
 
-``Zend_Service_StrikeIron_SalesUseTaxBasic`` bietet einen Client für StrikeIron's Verkaufs & Steuer Grundlagen
+``Zend\Service_StrikeIron\SalesUseTaxBasic`` bietet einen Client für StrikeIron's Verkaufs & Steuer Grundlagen
 Service. Für mehr Informationen über dieses Service kann bei diesen StrikeIron Ressourcen nachgesehen werden:
 
 
@@ -136,7 +136,7 @@ für die Vereinigten Staaten und Kanada enthalten.
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new Zend_Service_StrikeIron(array('username' => 'your-username',
+   $strikeIron = new Zend\Service\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    // Einen Client für das Verkaufs & Steuer Grundlagen Service erstellen

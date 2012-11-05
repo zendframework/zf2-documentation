@@ -4,15 +4,15 @@
 Identical
 =========
 
-``Zend_Validate_Identical`` vous permet de valider si une valeur donnée est identique à une valeur préalablement
+``Zend\Validate\Identical`` vous permet de valider si une valeur donnée est identique à une valeur préalablement
 fournie.
 
 .. _zend.validator.set.identical.options:
 
-Options supportées par Zend_Validate_Identical
+Options supportées par Zend\Validate\Identical
 ----------------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_Identical``\  :
+Les options suivantes sont supportées par ``Zend\Validate\Identical``\  :
 
 - **token**\  : spécifie la valeur qui servira à la validation de l'entrée.
 
@@ -27,7 +27,7 @@ validation de deux chaînes :
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Identical('origin');
+   $valid = new Zend\Validate\Identical('origin');
    if ($valid->isValid($value) {
        return true;
    }
@@ -43,14 +43,14 @@ pour récupérer la valeur actuellement paramétrée.
 Objets identiques
 -----------------
 
-Bien sûr ``Zend_Validate_Identical`` ne se limite pas à la validation de chaînes, mais aussi tout type de
+Bien sûr ``Zend\Validate\Identical`` ne se limite pas à la validation de chaînes, mais aussi tout type de
 variable comme un booléen, un entier, un flottant, un tableau et même les objets. Comme énoncé ci-dessus, les
 valeurs fournies et à valider doivent être identiques.
 
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Identical(123);
+   $valid = new Zend\Validate\Identical(123);
    if ($valid->isValid($input)) {
        // l'entrée est valide
    } else {
@@ -74,7 +74,7 @@ valeurs fournies et à valider doivent être identiques.
 Configuration
 -------------
 
-omme tous les autres validateurs ``Zend_Validate_Identical`` supporte aussi des paramètres de configuration en
+omme tous les autres validateurs ``Zend\Validate\Identical`` supporte aussi des paramètres de configuration en
 tant que paramètre d'entrée. Ceci veut dire que vous pouvez configurer ce validateur avec une objet
 ``Zend_Config``.
 
@@ -85,7 +85,7 @@ valeur unique.
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Identical(array('token' => 123));
+   $valid = new Zend\Validate\Identical(array('token' => 123));
    if ($valid->isValid($input)) {
        // l'entrée est valide
    } else {
@@ -100,7 +100,7 @@ alors vous devez l'envelopper comme dans l'example ci-dessous :
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Identical(array('token' => array('token' => 123)));
+   $valid = new Zend\Validate\Identical(array('token' => array('token' => 123)));
    if ($valid->isValid($input)) {
        // l'entrée est valide
    } else {

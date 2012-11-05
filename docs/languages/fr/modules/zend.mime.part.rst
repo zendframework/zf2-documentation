@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.mime.part:
 
-Zend_Mime_Part
+Zend\Mime\Part
 ==============
 
 .. _zend.mime.part.introduction:
@@ -12,7 +12,7 @@ Introduction
 Cette classe représente une seule partie d'un message *MIME*. Elle contient le contenu actuel de la partie du
 message ainsi que des informations sur son encodage, le type de contenu ("content-type") et le nom de fichier
 original. Elle fournie une méthode pour générer une chaîne de caractères à partir des données stockées. Les
-objets ``Zend_Mime_Part`` peuvent-être ajoutés à :ref:`Zend_Mime_Message <zend.mime.message>` pour assembler un
+objets ``Zend\Mime\Part`` peuvent-être ajoutés à :ref:`Zend\Mime\Message <zend.mime.message>` pour assembler un
 message multipart complet.
 
 .. _zend.mime.part.instantiation:
@@ -20,15 +20,15 @@ message multipart complet.
 Instanciation
 -------------
 
-``Zend_Mime_Part`` est instanciée avec une chaîne de caractères qui représente le contenu de cette nouvelle
-partie. Le type doit être *OCTET-STREAM*, et l'encodage 8 bits. Après instanciation de ``Zend_Mime_Part``, les
+``Zend\Mime\Part`` est instanciée avec une chaîne de caractères qui représente le contenu de cette nouvelle
+partie. Le type doit être *OCTET-STREAM*, et l'encodage 8 bits. Après instanciation de ``Zend\Mime\Part``, les
 métas-informations peuvent être définies en accédant directement aux attributs :
 
 .. code-block:: php
    :linenos:
 
-   public $type = Zend_Mime::TYPE_OCTETSTREAM;
-   public $encoding = Zend_Mime::ENCODING_8BIT;
+   public $type = Zend\Mime\Mime::TYPE_OCTETSTREAM;
+   public $encoding = Zend\Mime\Mime::ENCODING_8BIT;
    public $id;
    public $disposition;
    public $filename;
@@ -44,7 +44,7 @@ Méthodes pour retourner la partie du message en une chaîne de caractères
 ------------------------------------------------------------------------
 
 ``getContent()`` retourne le contenu encodé de MimePart en une chaîne de caractères en utilisant l'encodage
-spécifié dans l'attribut ``$encoding``. Les valeurs valides sont ``Zend_Mime::ENCODING_*``, les conversions de
+spécifié dans l'attribut ``$encoding``. Les valeurs valides sont ``Zend\Mime\Mime::ENCODING_*``, les conversions de
 jeux de caractères ne sont pas effectuées.
 
 ``getHeaders()`` retourne les Mime-Headers d'un MimePart générés à partir des attributs accessibles

@@ -46,7 +46,7 @@ doctype は、いつでも指定できます。 しかし、doctype
 .. code-block:: php
    :linenos:
 
-   $doctypeHelper = new Zend_View_Helper_Doctype();
+   $doctypeHelper = new Zend\View_Helper\Doctype();
    $doctypeHelper->doctype('XHTML1_STRICT');
 
 そして、それをレイアウトスクリプトの先頭で表示します。

@@ -64,7 +64,7 @@ the following line in your application's bootstrap file.
 .. code-block:: php
    :linenos:
 
-   Zend_View_Helper_PaginationControl::setDefaultViewPartial('controls.phtml');
+   Zend\View_Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
 
 The last step is probably the easiest. Make sure you have assigned your Paginator object to the a script (NOT the
 'controls.phtml' script!). The only thing left to do is echo the Paginator in the view script. This will

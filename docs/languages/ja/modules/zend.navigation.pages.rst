@@ -8,9 +8,9 @@
 
 
 
-   - :ref:`MVC画面 <zend.navigation.pages.mvc>` – ``Zend_Navigation_Page_Mvc``\ クラスを使用
+   - :ref:`MVC画面 <zend.navigation.pages.mvc>` – ``Zend\Navigation_Page\Mvc``\ クラスを使用
 
-   - :ref:`URI画面 <zend.navigation.pages.uri>` – ``Zend_Navigation_Page_Uri``\ クラスを使用
+   - :ref:`URI画面 <zend.navigation.pages.uri>` – ``Zend\Navigation_Page\Uri``\ クラスを使用
 
 MVC画面はオンサイトなweb画面にリンクしていて、 MVCパラメータ(*action*, *controller*,
 *module*, *route*, *params*)を使って定義されます。 URI画面は単一な属性の *uri*\

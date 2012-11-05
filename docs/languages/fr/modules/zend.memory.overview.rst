@@ -26,7 +26,7 @@ Le manager de mémoire utilise les :ref:`backends Zend_Cache <zend.cache.backend
 
 .. rubric:: Utiliser le composant Zend_Memory
 
-``Zend_Memory::factory()`` instancie l'objet de management de la mémoire avec les options spécifiques du backend.
+``Zend\Memory\Memory::factory()`` instancie l'objet de management de la mémoire avec les options spécifiques du backend.
 
 .. code-block:: php
    :linenos:
@@ -36,7 +36,7 @@ Le manager de mémoire utilise les :ref:`backends Zend_Cache <zend.cache.backend
        // Dossier où les blocks de mémoire peuvent être stockés
    );
 
-   $memoryManager = Zend_Memory::factory('File', $backendOptions);
+   $memoryManager = Zend\Memory\Memory::factory('File', $backendOptions);
 
    $loadedFiles = array();
 

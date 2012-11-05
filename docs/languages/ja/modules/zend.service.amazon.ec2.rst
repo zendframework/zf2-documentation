@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2:
 
-Zend_Service_Amazon_Ec2
+Zend\Service_Amazon\Ec2
 =======================
 
 .. _zend.service.amazon.ec2.introduction:
@@ -9,7 +9,7 @@ Zend_Service_Amazon_Ec2
 導入
 --
 
-``Zend_Service_Amazon_Ec2``\
+``Zend\Service_Amazon\Ec2``\
 は融通性のあるクランドコンピューティング(EC2)へのインターフェイスを提供します。
 
 .. _zend.service.amazon.ec2.whatis:
@@ -40,7 +40,7 @@ Ec2 クラスの使い勝手をよくするために、ふたつの静的メソ�
 .. code-block:: php
    :linenos:
 
-   Zend_Service_Amazon_Ec2_Ebs::setKeys('aws_key','aws_secret_key');
+   Zend\Service\Amazon\Ec2\Ebs::setKeys('aws_key','aws_secret_key');
 
 作業するリージョンを設定するには、 *setRegion* をコールして Amazon Ec2
 リージョンを設定します。 現在使用できるリージョンは us-east-1 と eu-west-1
@@ -53,7 +53,7 @@ Ec2 クラスの使い勝手をよくするために、ふたつの静的メソ�
 .. code-block:: php
    :linenos:
 
-   Zend_Service_Amazon_Ec2_Ebs::setRegion('us-east-1');
+   Zend\Service\Amazon\Ec2\Ebs::setRegion('us-east-1');
 
 .. note::
 

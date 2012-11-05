@@ -9,7 +9,7 @@ Adaptador de Autenticación HTTP
 Introducción
 ------------
 
-``Zend_Auth_Adapter_Http`` proporciona una implementación compatible con `RFC-2617`_, `Basic`_ y `Digest`_
+``Zend\Auth_Adapter\Http`` proporciona una implementación compatible con `RFC-2617`_, `Basic`_ y `Digest`_
 Autenticación *HTTP*. La autenticación "Digest" es un método de autenticación *HTTP* que mejora la
 autenticación básica proporcionando una manera de autenticar sin tener que transmitir la contraseña de manera
 clara en un texto a través de la red.
@@ -50,7 +50,7 @@ valores presentados por el cliente para determinar si la autenticación es satis
 Opciones de Configuración
 -------------------------
 
-La clase ``Zend_Auth_Adapter_Http`` requiere un array configurado que pasará a su constructor. Hay varias opciones
+La clase ``Zend\Auth_Adapter\Http`` requiere un array configurado que pasará a su constructor. Hay varias opciones
 de configuración disponibles, y algunas son obligatorias:
 
 .. _zend.authentication.adapter.configuration_options.table:
@@ -88,7 +88,7 @@ autenticación básica espera recibir la versión codificada en Base64 de la con
 autenticación "Digest" espera recibir un hash del username del usuario, un realm, y su contraseña (separados por
 coma). Actualmente, sólo se admite el algoritmo de hash *MD5*.
 
-``Zend_Auth_Adapter_Http`` se basa en la implementación de objetos ``Zend_Auth_Adapter_Http_Resolver_Interface``.
+``Zend\Auth_Adapter\Http`` se basa en la implementación de objetos ``Zend\Auth\Adapter\Http\Resolver\Interface``.
 Un archivo de texto de la clase "Resolve" se incluye con este adaptador, pero cualquier otro tipo de "resolver"
 puede ser creado simplemente implementando la interfaz del "resolver".
 
@@ -119,7 +119,7 @@ Hay dos formas igualmente fácil de crear un archivo de "resolver":
    :linenos:
 
    $path     = 'files/passwd.txt';
-   $resolver = new Zend_Auth_Adapter_Http_Resolver_File($path);
+   $resolver = new Zend\Auth\Adapter\Http\Resolver\File($path);
 
 o
 
@@ -127,7 +127,7 @@ o
    :linenos:
 
    $path     = 'files/passwd.txt';
-   $resolver = new Zend_Auth_Adapter_Http_Resolver_File();
+   $resolver = new Zend\Auth\Adapter\Http\Resolver\File();
    $resolver->setFile($path);
 
 Si la ruta está vacía o no se puede leer, se lanza una excepción.
@@ -154,12 +154,12 @@ todas las áreas del sitio en ``/members_only`` y ``/my_account``. El valor real
 navegador en el cuadro de dialogo contraseña. El ``nonce_timeout``, por supuesto, se comporta como se ha descrito
 anteriormente.
 
-A continuación, creamos el objeto Zend_Auth_Adapter_Http:
+A continuación, creamos el objeto Zend\Auth_Adapter\Http:
 
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Auth_Adapter_Http($config);
+   $adapter = new Zend\Auth_Adapter\Http($config);
 
 Ya que estamos soportando tanto la autenticación básica como la "Digest", necesitamos dos objetos diferentes
 resolver. Tenga en cuenta que esto podría ser facilmente dos clases diferentes:
@@ -167,10 +167,10 @@ resolver. Tenga en cuenta que esto podría ser facilmente dos clases diferentes:
 .. code-block:: php
    :linenos:
 
-   $basicResolver = new Zend_Auth_Adapter_Http_Resolver_File();
+   $basicResolver = new Zend\Auth\Adapter\Http\Resolver\File();
    $basicResolver->setFile('files/basicPasswd.txt');
 
-   $digestResolver = new Zend_Auth_Adapter_Http_Resolver_File();
+   $digestResolver = new Zend\Auth\Adapter\Http\Resolver\File();
    $digestResolver->setFile('files/digestPasswd.txt');
 
    $adapter->setBasicResolver($basicResolver);
@@ -182,8 +182,8 @@ respuesta para hacer su trabajo:
 .. code-block:: php
    :linenos:
 
-   assert($request instanceof Zend_Controller_Request_Http);
-   assert($response instanceof Zend_Controller_Response_Http);
+   assert($request instanceof Zend\Controller_Request\Http);
+   assert($response instanceof Zend\Controller_Response\Http);
 
    $adapter->setRequest($request);
    $adapter->setResponse($response);

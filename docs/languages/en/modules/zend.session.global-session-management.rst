@@ -3,10 +3,10 @@
 Global Session Management
 =========================
 
-The default behavior of sessions can be modified using the static methods of ``Zend_Session``. All management and
-manipulation of global session management occurs using ``Zend_Session``, including configuration of the `usual
-options provided by ext/session`_, using ``Zend_Session::setOptions()``. For example, failure to insure the use of
-a safe *save_path* or a unique cookie name by ext/session using ``Zend_Session::setOptions()`` may result in
+The default behavior of sessions can be modified using the static methods of ``Zend\Session``. All management and
+manipulation of global session management occurs using ``Zend\Session``, including configuration of the `usual
+options provided by ext/session`_, using ``Zend\Session\Session::setOptions()``. For example, failure to insure the use of
+a safe *save_path* or a unique cookie name by ext/session using ``Zend\Session\Session::setOptions()`` may result in
 security issues.
 
 .. _zend.session.global_session_management.configuration_options:
@@ -14,21 +14,21 @@ security issues.
 Configuration Options
 ---------------------
 
-When the first session namespace is requested, ``Zend_Session`` will automatically start the *PHP* session, unless
-already started with :ref:`Zend_Session::start() <zend.session.advanced_usage.starting_a_session>`. The underlying
-*PHP* session will use defaults from ``Zend_Session``, unless modified first by ``Zend_Session::setOptions()``.
+When the first session namespace is requested, ``Zend\Session`` will automatically start the *PHP* session, unless
+already started with :ref:`Zend\Session\Session::start() <zend.session.advanced_usage.starting_a_session>`. The underlying
+*PHP* session will use defaults from ``Zend\Session``, unless modified first by ``Zend\Session\Session::setOptions()``.
 
 To set a session configuration option, include the basename (the part of the name after "*session.*") as a key of
-an array passed to ``Zend_Session::setOptions()``. The corresponding value in the array is used to set the session
-option value. If no options are set by the developer, ``Zend_Session`` will utilize recommended default options
+an array passed to ``Zend\Session\Session::setOptions()``. The corresponding value in the array is used to set the session
+option value. If no options are set by the developer, ``Zend\Session`` will utilize recommended default options
 first, then the default php.ini settings. Community feedback about best practices for these options should be sent
 to `fw-auth@lists.zend.com`_.
 
 .. _zend.session.global_session_management.setoptions.example:
 
-.. rubric:: Using Zend_Config to Configure Zend_Session
+.. rubric:: Using Zend\Config to Configure Zend\Session
 
-To configure this component using :ref:`Zend_Config_Ini <zend.config.adapters.ini>`, first add the configuration
+To configure this component using :ref:`Zend\Config\Ini <zend.config.adapters.ini>`, first add the configuration
 options to the *INI* file:
 
 .. code-block:: ini
@@ -75,28 +75,28 @@ options to the *INI* file:
    ; When persisting session id cookies, request a TTL of 10 days
    remember_me_seconds = 864000
 
-Next, load the configuration file and pass its array representation to ``Zend_Session::setOptions()``:
+Next, load the configuration file and pass its array representation to ``Zend\Session\Session::setOptions()``:
 
 .. code-block:: php
    :linenos:
 
-   $config = new Zend_Config_Ini('myapp.ini', 'development');
+   $config = new Zend\Config\Ini('myapp.ini', 'development');
 
-   Zend_Session::setOptions($config->toArray());
+   Zend\Session\Session::setOptions($config->toArray());
 
 Most options shown above need no explanation beyond that found in the standard *PHP* documentation, but those of
 particular interest are noted below.
 
 
 
-   - boolean *strict*- disables automatic starting of ``Zend_Session`` when using *new Zend_Session_Namespace()*.
+   - boolean *strict*- disables automatic starting of ``Zend\Session`` when using *new Zend\Session\Namespace()*.
 
    - integer *remember_me_seconds*- how long should session id cookie persist, after user agent has ended (e.g.,
      browser application terminated).
 
    - string *save_path*- The correct value is system dependent, and should be provided by the developer using an
      **absolute path** to a directory readable and writable by the *PHP* process. If a writable path is not
-     supplied, then ``Zend_Session`` will throw an exception when started (i.e., when ``start()`` is called).
+     supplied, then ``Zend\Session`` will throw an exception when started (i.e., when ``start()`` is called).
 
      .. note::
 
@@ -164,7 +164,7 @@ buffering.
   to resolve the "headers already sent" problem is not sufficient. The application must not exceed the buffer size,
   or the problem will occur whenever the output sent (prior to the *HTTP* headers) exceeds the buffer size.
 
-- If a ``Zend_Session`` method is involved in causing the error message, examine the method carefully, and make
+- If a ``Zend\Session`` method is involved in causing the error message, examine the method carefully, and make
   sure its use really is needed in the application. For example, the default usage of ``destroy()`` also sends an
   *HTTP* header to expire the client-side session cookie. If this is not needed, then use ``destroy(false)``, since
   the instructions to set cookies are sent with *HTTP* headers.
@@ -185,7 +185,7 @@ Introduction: Best practice in relation to using sessions with Zend Framework ca
 a means to track individual users. By default this component uses only cookies to maintain session identifiers. The
 cookie's value is the unique identifier of your browser's session. *PHP*'s ext/session uses this identifier to
 maintain a unique one-to-one relationship between website visitors, and persistent session data storage unique to
-each visitor. ``Zend_Session``\ * wraps this storage mechanism (``$_SESSION``) with an object-oriented interface.
+each visitor. ``Zend\Session``\ * wraps this storage mechanism (``$_SESSION``) with an object-oriented interface.
 Unfortunately, if an attacker gains access to the value of the cookie (the session id), an attacker might be able
 to hijack a visitor's session. This problem is not unique to *PHP*, or Zend Framework. The ``regenerateId()``
 method allows an application to change the session id (stored in the visitor's cookie) to a new, random,
@@ -199,7 +199,7 @@ an attacker does not know the new value, the attacker can not use the new sessio
 the visitor's session. Even if an attacker gains access to an old session id, ``regenerateId()`` also moves the
 session data from the old session id "handle" to the new one, so no data remains accessible via the old session id.
 
-When to use regenerateId(): Adding ``Zend_Session::regenerateId()`` to your Zend Framework bootstrap yields one of
+When to use regenerateId(): Adding ``Zend\Session\Session::regenerateId()`` to your Zend Framework bootstrap yields one of
 the safest and most secure ways to regenerate session id's in user agent cookies. If there is no conditional logic
 to determine when to regenerate the session id, then there are no flaws in that logic. Although regenerating on
 every request prevents several possible avenues of attack, not everyone wants the associated small performance and
@@ -229,7 +229,7 @@ attacker knows the victim's browser characteristics and becomes aware of a compr
 website. However, the attacker can not arbitrarily alter the server-side state of *PHP* sessions, provided the
 developer has correctly set the value for the *save_path* option.
 
-By itself, calling ``Zend_Session::regenerateId()`` when the user's session is first used, does not prevent session
+By itself, calling ``Zend\Session\Session::regenerateId()`` when the user's session is first used, does not prevent session
 fixation attacks, unless you can distinguish between a session originated by an attacker emulating the victim. At
 first, this might sound contradictory to the previous statement above, until we consider an attacker who first
 initiates a real session on your website. The session is "first used" by the attacker, who then knows the result of
@@ -263,10 +263,10 @@ attacker has already performed the first two steps above.
 .. code-block:: php
    :linenos:
 
-   $defaultNamespace = new Zend_Session_Namespace();
+   $defaultNamespace = new Zend\Session\Namespace();
 
    if (!isset($defaultNamespace->initialized)) {
-       Zend_Session::regenerateId();
+       Zend\Session\Session::regenerateId();
        $defaultNamespace->initialized = true;
    }
 
@@ -277,9 +277,9 @@ rememberMe(integer $seconds)
 
 Ordinarily, sessions end when the user agent terminates, such as when an end user exits a web browser program.
 However, your application may provide the ability to extend user sessions beyond the lifetime of the client program
-through the use of persistent cookies. Use ``Zend_Session::rememberMe()`` before a session is started to control
+through the use of persistent cookies. Use ``Zend\Session\Session::rememberMe()`` before a session is started to control
 the length of time before a persisted session cookie expires. If you do not specify a number of seconds, then the
-session cookie lifetime defaults to *remember_me_seconds*, which may be set using ``Zend_Session::setOptions()``.
+session cookie lifetime defaults to *remember_me_seconds*, which may be set using ``Zend\Session\Session::setOptions()``.
 To help thwart session fixation/hijacking, use this function when a user successfully authenticates with your
 application (e.g., from a "login" form).
 
@@ -297,22 +297,22 @@ sessionExists()
 ---------------
 
 Use this method to determine if a session already exists for the current user agent/request. It may be used before
-starting a session, and independently of all other ``Zend_Session`` and ``Zend_Session_Namespace`` methods.
+starting a session, and independently of all other ``Zend\Session`` and ``Zend\Session\Namespace`` methods.
 
 .. _zend.session.global_session_management.destroy:
 
 destroy(bool $remove_cookie = true, bool $readonly = true)
 ----------------------------------------------------------
 
-``Zend_Session::destroy()`` destroys all of the persistent data associated with the current session. However, no
-variables in *PHP* are affected, so your namespaced sessions (instances of ``Zend_Session_Namespace``) remain
+``Zend\Session\Session::destroy()`` destroys all of the persistent data associated with the current session. However, no
+variables in *PHP* are affected, so your namespaced sessions (instances of ``Zend\Session\Namespace``) remain
 readable. To complete a "logout", set the optional parameter to ``TRUE`` (the default) to also delete the user
 agent's session id cookie. The optional ``$readonly`` parameter removes the ability to create new
-``Zend_Session_Namespace`` instances and for ``Zend_Session`` methods to write to the session data store.
+``Zend\Session\Namespace`` instances and for ``Zend\Session`` methods to write to the session data store.
 
 If you see the error message, "Cannot modify header information - headers already sent", then either avoid using
 ``TRUE`` as the value for the first argument (requesting removal of the session cookie), or see :ref:`this section
-<zend.session.global_session_management.headers_sent>`. Thus, ``Zend_Session::destroy(true)`` must either be called
+<zend.session.global_session_management.headers_sent>`. Thus, ``Zend\Session\Session::destroy(true)`` must either be called
 before *PHP* has sent *HTTP* headers, or output buffering must be enabled. Also, the total output sent must not
 exceed the set buffer size, in order to prevent triggering sending the output before the call to ``destroy()``.
 
@@ -328,9 +328,9 @@ exceed the set buffer size, in order to prevent triggering sending the output be
 stop()
 ------
 
-This method does absolutely nothing more than toggle a flag in ``Zend_Session`` to prevent further writing to the
+This method does absolutely nothing more than toggle a flag in ``Zend\Session`` to prevent further writing to the
 session data store. We are specifically requesting feedback on this feature. Potential uses/abuses might include
-temporarily disabling the use of ``Zend_Session_Namespace`` instances or ``Zend_Session`` methods to write to the
+temporarily disabling the use of ``Zend\Session\Namespace`` instances or ``Zend\Session`` methods to write to the
 session data store, while execution is transferred to view- related code. Attempts to perform actions involving
 writes via these instances or methods will throw an exception.
 
@@ -341,8 +341,8 @@ writeClose($readonly = true)
 
 Shutdown the session, close writing and detach ``$_SESSION`` from the back-end storage mechanism. This will
 complete the internal data transformation on this request. The optional ``$readonly`` boolean parameter can remove
-write access by throwing an exception upon any attempt to write to the session via ``Zend_Session`` or
-``Zend_Session_Namespace``.
+write access by throwing an exception upon any attempt to write to the session via ``Zend\Session`` or
+``Zend\Session\Namespace``.
 
 .. note::
 
@@ -363,7 +363,7 @@ technique is used to perform a client-side logout.
 
 .. _zend.session.global_session_management.savehandler:
 
-setSaveHandler(Zend_Session_SaveHandler_Interface $interface)
+setSaveHandler(Zend\Session\SaveHandler\Interface $interface)
 -------------------------------------------------------------
 
 Most developers will find the default save handler sufficient. This method provides an object-oriented wrapper for
@@ -381,7 +381,7 @@ namespace.
 
    **Throws**
 
-   An exception will be thrown if ``Zend_Session`` is not marked as readable (e.g., before ``Zend_Session`` has
+   An exception will be thrown if ``Zend\Session`` is not marked as readable (e.g., before ``Zend\Session`` has
    been started).
 
 .. _zend.session.global_session_management.namespaceunset:
@@ -389,7 +389,7 @@ namespace.
 namespaceUnset($namespace)
 --------------------------
 
-Use ``Zend_Session::namespaceUnset($namespace)`` to efficiently remove an entire namespace and its contents. As
+Use ``Zend\Session\Session::namespaceUnset($namespace)`` to efficiently remove an entire namespace and its contents. As
 with all arrays in *PHP*, if a variable containing an array is unset, and the array contains other objects, those
 objects will remain available, if they were also stored by reference in other array/objects that remain accessible
 via other variables. So ``namespaceUnset()`` does not perform a "deep" unsetting/deleting of the contents of the
@@ -406,7 +406,7 @@ entries in the namespace. For a more detailed explanation, please see `Reference
 namespaceGet($namespace)
 ------------------------
 
-DEPRECATED: Use ``getIterator()`` in ``Zend_Session_Namespace``. This method returns an array of the contents of
+DEPRECATED: Use ``getIterator()`` in ``Zend\Session\Namespace``. This method returns an array of the contents of
 ``$namespace``. If you have logical reasons to keep this method publicly accessible, please provide feedback to the
 `fw-auth@lists.zend.com`_ mail list. Actually, all participation on any relevant topic is welcome :)
 
@@ -414,7 +414,7 @@ DEPRECATED: Use ``getIterator()`` in ``Zend_Session_Namespace``. This method ret
 
    **Throws**
 
-   An exception will be thrown if ``Zend_Session`` is not marked as readable (e.g., before ``Zend_Session`` has
+   An exception will be thrown if ``Zend\Session`` is not marked as readable (e.g., before ``Zend\Session`` has
    been started).
 
 .. _zend.session.global_session_management.getiterator:
@@ -428,7 +428,7 @@ Use ``getIterator()`` to obtain an array containing the names of all namespaces.
 
    **Throws**
 
-   An exception will be thrown if ``Zend_Session`` is not marked as readable (e.g., before ``Zend_Session`` has
+   An exception will be thrown if ``Zend\Session`` is not marked as readable (e.g., before ``Zend\Session`` has
    been started).
 
 

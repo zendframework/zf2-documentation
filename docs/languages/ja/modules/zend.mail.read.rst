@@ -41,7 +41,7 @@ Pop3 によるシンプルな読み込み例
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail_Storage_Pop3(array('host'     => 'localhost',
+   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'localhost',
                                             'user'     => 'test',
                                             'password' => 'test'));
 
@@ -58,13 +58,13 @@ Pop3 によるシンプルな読み込み例
 ローカルのメール保存形式としては、Mbox および Maildir
 をサポートしています。これらはともに、もっともシンプルな形式です。
 
-Mbox ファイルからメールを読み込むには、そのファイル名を ``Zend_Mail_Storage_Mbox``
+Mbox ファイルからメールを読み込むには、そのファイル名を ``Zend\Mail_Storage\Mbox``
 のコンストラクタに渡すだけです。
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail_Storage_Mbox(array('filename' =>
+   $mail = new Zend\Mail_Storage\Mbox(array('filename' =>
                                                 '/home/test/mail/inbox'));
 
 Maildir もほぼ同様ですが、こちらはディレクトリ名を指定します。
@@ -72,10 +72,10 @@ Maildir もほぼ同様ですが、こちらはディレクトリ名を指定し
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail_Storage_Maildir(array('dirname' =>
+   $mail = new Zend\Mail_Storage\Maildir(array('dirname' =>
                                                    '/home/test/mail/'));
 
-どちらのコンストラクタも、もし読み込めなかった場合は ``Zend_Mail_Exception``
+どちらのコンストラクタも、もし読み込めなかった場合は ``Zend\Mail\Exception``
 をスローします。
 
 .. _zend.mail.read-open-remote:
@@ -93,17 +93,17 @@ Maildir もほぼ同様ですが、こちらはディレクトリ名を指定し
    :linenos:
 
    // Pop3 での接続
-   $mail = new Zend_Mail_Storage_Pop3(array('host'     => 'example.com',
+   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'example.com',
                                             'user'     => 'test',
                                             'password' => 'test'));
 
    // Imap での接続
-   $mail = new Zend_Mail_Storage_Imap(array('host'     => 'example.com',
+   $mail = new Zend\Mail_Storage\Imap(array('host'     => 'example.com',
                                             'user'     => 'test',
                                             'password' => 'test'));
 
    // 非標準のポートの例
-   $mail = new Zend_Mail_Storage_Pop3(array('host'     => 'example.com',
+   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'example.com',
                                             'port'     => 1120
                                             'user'     => 'test',
                                             'password' => 'test'));
@@ -114,22 +114,22 @@ Maildir もほぼ同様ですが、こちらはディレクトリ名を指定し
 .. code-block:: php
    :linenos:
 
-   // Zend_Mail_Storage_Pop3 の例ですが、Zend_Mail_Storage_Imap でも同様です
+   // Zend\Mail_Storage\Pop3 の例ですが、Zend\Mail_Storage\Imap でも同様です
 
    // SSL を使用する場合はポートが異なります (デフォルトは Pop3 なら 995、Imap なら 993)
-   $mail = new Zend_Mail_Storage_Pop3(array('host'     => 'example.com',
+   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'example.com',
                                             'user'     => 'test',
                                             'password' => 'test',
                                             'ssl'      => 'SSL'));
 
    // TLS を使用します
-   $mail = new Zend_Mail_Storage_Pop3(array('host'     => 'example.com',
+   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'example.com',
                                             'user'     => 'test',
                                             'password' => 'test',
                                             'ssl'      => 'TLS'));
 
-どちらのコンストラクタも、エラーの形式によって ``Zend_Mail_Exception`` あるいは
-``Zend_Mail_Protocol_Exception`` (``Zend_Mail_Exception`` を継承したもの) をスローします。
+どちらのコンストラクタも、エラーの形式によって ``Zend\Mail\Exception`` あるいは
+``Zend\Mail_Protocol\Exception`` (``Zend\Mail\Exception`` を継承したもの) をスローします。
 
 .. _zend.mail.read-fetching:
 
@@ -281,8 +281,8 @@ Maildir もほぼ同様ですが、こちらはディレクトリ名を指定し
 
 マルチパートメッセージであるかどうかを調べるには ``isMultipart()``
 メソッドを使用します。マルチパートメッセージがある場合は、 ``getPart()``
-メソッドで ``Zend_Mail_Part`` のインスタンスを取得します。 ``Zend_Mail_Part`` は
-``Zend_Mail_Message`` の基底クラスなので、 ``getHeader()`` や ``getHeaders()``\ 、 ``getContent()``\
+メソッドで ``Zend\Mail\Part`` のインスタンスを取得します。 ``Zend\Mail\Part`` は
+``Zend\Mail\Message`` の基底クラスなので、 ``getHeader()`` や ``getHeaders()``\ 、 ``getContent()``\
 、 ``getPart()``\ 、 ``isMultipart`` といったメソッドを同様に使えます。
 また、ヘッダもプロパティとして使用できます。
 
@@ -298,7 +298,7 @@ Maildir もほぼ同様ですが、こちらはディレクトリ名を指定し
    echo "Content:\n";
    echo $part->getContent();
 
-``Zend_Mail_Part`` は *RecursiveIterator* も実装しています。
+``Zend\Mail\Part`` は *RecursiveIterator* も実装しています。
 つまり、すべてのパートを順にスキャンすることも簡単にできます。また、
 結果を簡単に出力できるよう、マジックメソッド ``__toString()``
 を実装しています。このメソッドは、パートの中身を返します。
@@ -314,7 +314,7 @@ Maildir もほぼ同様ですが、こちらはディレクトリ名を指定し
                $foundPart = $part;
                break;
            }
-       } catch (Zend_Mail_Exception $e) {
+       } catch (Zend\Mail\Exception $e) {
            // 無視します
        }
    }
@@ -329,11 +329,11 @@ Maildir もほぼ同様ですが、こちらはディレクトリ名を指定し
 フラグのチェック
 --------
 
-Maildir および IMAP はフラグの保存をサポートしています。 ``Zend_Mail_Storage``
+Maildir および IMAP はフラグの保存をサポートしています。 ``Zend\Mail\Storage``
 クラスには、maildir や IMAP
 で使用するすべてのフラグに対応する定数が定義されています。これは
-``Zend_Mail_Storage::FLAG_<flagname>`` という名前です。 フラグをチェックするには、
-``Zend_Mail_Message`` の ``hasFlag()`` メソッドを使用します。 ``getFlags()``
+``Zend\Mail\Storage::FLAG_<flagname>`` という名前です。 フラグをチェックするには、
+``Zend\Mail\Message`` の ``hasFlag()`` メソッドを使用します。 ``getFlags()``
 で、設定されているすべてのフラグを取得できます。
 
 .. code-block:: php
@@ -342,11 +342,11 @@ Maildir および IMAP はフラグの保存をサポートしています。 ``
    // 未読メッセージを探します
    echo "未読メール\n";
    foreach ($mail as $message) {
-       if ($message->hasFlag(Zend_Mail_Storage::FLAG_SEEN)) {
+       if ($message->hasFlag(Zend\Mail\Storage::FLAG_SEEN)) {
            continue;
        }
        // 新着メールのマークをつけます
-       if ($message->hasFlag(Zend_Mail_Storage::FLAG_RECENT)) {
+       if ($message->hasFlag(Zend\Mail\Storage::FLAG_RECENT)) {
            echo '! ';
        } else {
            echo '  ';
@@ -359,10 +359,10 @@ Maildir および IMAP はフラグの保存をサポートしています。 ``
    echo "Message is flagged as: ";
    foreach ($flags as $flag) {
        switch ($flag) {
-           case Zend_Mail_Storage::FLAG_ANSWERED:
+           case Zend\Mail\Storage::FLAG_ANSWERED:
                echo '返信済み ';
                break;
-           case Zend_Mail_Storage::FLAG_FLAGGED:
+           case Zend\Mail\Storage::FLAG_FLAGGED:
                echo 'フラグ設定済み ';
                break;
 
@@ -375,7 +375,7 @@ Maildir および IMAP はフラグの保存をサポートしています。 ``
        }
    }
 
-IMAP ではユーザやクライアントが独自にフラグを設定できます。 ``Zend_Mail_Storage``
+IMAP ではユーザやクライアントが独自にフラグを設定できます。 ``Zend\Mail\Storage``
 で定数が定義されていない、
 このようなフラグを取得することも可能です。これらは文字列として返され、
 ``hasFlag()`` で同じようにチェックできます。
@@ -400,12 +400,12 @@ IMAP ではユーザやクライアントが独自にフラグを設定できま
 Pop3 以外のすべての保存形式は、フォルダをサポートしています。
 これはメールボックスとも言います。各保存形式で、
 フォルダをサポートするために実装しているインターフェイスが
-``Zend_Mail_Storage_Folder_Interface`` です。
+``Zend\Mail\Storage\Folder\Interface`` です。
 これらすべてのクラスでは、コンストラクタで追加のオプションパラメータ *folder*
 を指定できます。これは、ログイン後に使用するフォルダを指定するものです。
 
-ローカルの保存形式では、 ``Zend_Mail_Storage_Folder_Mbox`` あるいは
-``Zend_Mail_Storage_Folder_Maildir`` のいずれかのクラスを使用します。どちらもパラメータ
+ローカルの保存形式では、 ``Zend\Mail\Storage\Folder\Mbox`` あるいは
+``Zend\Mail\Storage\Folder\Maildir`` のいずれかのクラスを使用します。どちらもパラメータ
 *dirname* が必須で、これは基底ディレクトリの名前となります。 maildir
 のフォーマットは maildir++ で定義されているもの
 (デフォルトの区切り文字はドットです)、一方 Mbox は Mbox
@@ -413,41 +413,41 @@ Pop3 以外のすべての保存形式は、フォルダをサポートしてい
 という名前の Mbox ファイルがない場合は、
 コンストラクタで別のフォルダを設定する必要があります。
 
-``Zend_Mail_Storage_Imap`` は、デフォルトでフォルダをサポートしています。
+``Zend\Mail_Storage\Imap`` は、デフォルトでフォルダをサポートしています。
 これらの保存形式をオープンする例を以下に示します。
 
 .. code-block:: php
    :linenos:
 
    // mbox でフォルダを使用します
-   $mail = new Zend_Mail_Storage_Folder_Mbox(array('dirname' =>
+   $mail = new Zend\Mail\Storage\Folder\Mbox(array('dirname' =>
                                                        '/home/test/mail/'));
 
    // mbox で INBOX 以外のデフォルトフォルダを使用します。
-   // Zend_Mail_Storage_Folder_Maildir および Zend_Mail_Storage_Imap でも動作します
-   $mail = new Zend_Mail_Storage_Folder_Mbox(array('dirname' =>
+   // Zend\Mail\Storage\Folder\Maildir および Zend\Mail_Storage\Imap でも動作します
+   $mail = new Zend\Mail\Storage\Folder\Mbox(array('dirname' =>
                                                        '/home/test/mail/',
                                                    'folder'  =>
                                                        'Archive'));
 
    // maildir でフォルダを使用します
-   $mail = new Zend_Mail_Storage_Folder_Maildir(array('dirname' =>
+   $mail = new Zend\Mail\Storage\Folder\Maildir(array('dirname' =>
                                                           '/home/test/mail/'));
 
    // maildir で区切り文字にコロンを使用します。Maildir++ の推奨する形式です
-   $mail = new Zend_Mail_Storage_Folder_Maildir(array('dirname' =>
+   $mail = new Zend\Mail\Storage\Folder\Maildir(array('dirname' =>
                                                           '/home/test/mail/',
                                                       'delim'   => ':'));
 
    // imap の場合は、フォルダを使用するしないにかかわらず同じ形式です
-   $mail = new Zend_Mail_Storage_Imap(array('host'     => 'example.com',
+   $mail = new Zend\Mail_Storage\Imap(array('host'     => 'example.com',
                                             'user'     => 'test',
                                             'password' => 'test'));
 
 getFolders($root = null) メソッドを使用すると、
 ルートフォルダあるいは指定したフォルダから始まるフォルダ階層を取得できます。
-返り値は ``Zend_Mail_Storage_Folder`` のインスタンスとなります。これは *RecursiveIterator*
-を実装しており、子要素もすべて ``Zend_Mail_Storage_Folder`` のインスタンスとなります。
+返り値は ``Zend\Mail_Storage\Folder`` のインスタンスとなります。これは *RecursiveIterator*
+を実装しており、子要素もすべて ``Zend\Mail_Storage\Folder`` のインスタンスとなります。
 これらの各インスタンスはローカル名およびグローバル名を持っており、 それぞれ
 ``getLocalName()`` メソッドおよび ``getGlobalName()`` メソッドで取得できます。
 グローバル名とはルートフォルダからの絶対名称 (区切り文字を含む) で、
@@ -496,7 +496,7 @@ getFolders($root = null) メソッドを使用すると、
 現在選択されているフォルダを返すメソッドは ``getSelectedFolder()``
 です。フォルダを変更するには ``selectFolder()`` メソッドを使用します。
 このメソッドのパラメータには、グローバル名を指定しなければなりません。
-区切り文字を書き込んでしまうことを防ぎたければ、 ``Zend_Mail_Storage_Folder``
+区切り文字を書き込んでしまうことを防ぎたければ、 ``Zend\Mail_Storage\Folder``
 インスタンスのプロパティを使用します。
 
 .. code-block:: php
@@ -546,8 +546,8 @@ noop を使用します。
 インスタンスのキャッシュ
 ^^^^^^^^^^^^
 
-``Zend_Mail_Storage_Mbox``\ 、 ``Zend_Mail_Storage_Folder_Mbox``\ 、 ``Zend_Mail_Storage_Maildir`` および
-``Zend_Mail_Storage_Folder_Maildir`` は、マジックメソッド ``__sleep()`` と ``__wakeup()``
+``Zend\Mail_Storage\Mbox``\ 、 ``Zend\Mail\Storage\Folder\Mbox``\ 、 ``Zend\Mail_Storage\Maildir`` および
+``Zend\Mail\Storage\Folder\Maildir`` は、マジックメソッド ``__sleep()`` と ``__wakeup()``
 を実装しています。 つまり、シリアライズが可能であるということです。
 これで、ファイルやディレクトリツリーを何度もパースする必要がなくなります。
 難点があるとすれば、Mbox や Maildir を変更することができなくなるということです。
@@ -570,7 +570,7 @@ noop を使用します。
    $cache = new Your_Cache_Class();
    if (!$cache->isCached($cache_id) ||
        filemtime($signal_file) > $cache->getMTime($cache_id)) {
-       $mail = new Zend_Mail_Storage_Folder_Pop3(array('dirname' =>
+       $mail = new Zend\Mail\Storage\Folder\Pop3(array('dirname' =>
                                                            $mbox_basedir));
    } else {
        $mail = $cache->get($cache_id);
@@ -585,8 +585,8 @@ noop を使用します。
 プロトコルクラスの拡張
 ^^^^^^^^^^^
 
-リモートの保存形式では、ふたつのクラス ``Zend_Mail_Storage_<Name>`` および
-``Zend_Mail_Protocol_<Name>`` を使用しています。
+リモートの保存形式では、ふたつのクラス ``Zend\Mail_Storage\<Name>`` および
+``Zend\Mail_Protocol\<Name>`` を使用しています。
 プロトコルクラスは、プロトコルのコマンドを処理して、レスポンスを *PHP*
 に受け渡しします。コマンドに対応したメソッド、
 さまざまなデータ構造に対応した変数を保持します。
@@ -599,15 +599,15 @@ noop を使用します。
 .. code-block:: php
    :linenos:
 
-   class Example_Mail_Exception extends Zend_Mail_Exception
+   class Example_Mail_Exception extends Zend\Mail\Exception
    {
    }
 
-   class Example_Mail_Protocol_Exception extends Zend_Mail_Protocol_Exception
+   class Example_Mail_Protocol_Exception extends Zend\Mail_Protocol\Exception
    {
    }
 
-   class Example_Mail_Protocol_Pop3_Knock extends Zend_Mail_Protocol_Pop3
+   class Example_Mail_Protocol_Pop3_Knock extends Zend\Mail_Protocol\Pop3
    {
        private $host, $port;
 
@@ -638,7 +638,7 @@ noop を使用します。
        }
    }
 
-   class Example_Mail_Pop3_Knock extends Zend_Mail_Storage_Pop3
+   class Example_Mail_Pop3_Knock extends Zend\Mail_Storage\Pop3
    {
        public function __construct(array $params)
        {
@@ -677,7 +677,7 @@ noop を使用します。
 容量制限の使用 (1.5 以降)
 ^^^^^^^^^^^^^^^^
 
-``Zend_Mail_Storage_Writable_Maildir`` は Maildir++
+``Zend\Mail\Storage\Writable\Maildir`` は Maildir++
 の容量制限をサポートしています。デフォルトではこの機能は無効になっていますが、
 手動で使用することもできます。これは、自動チェックをしたくないとき (つまり
 ``appendMessage()``\ 、 ``removeMessage()`` および ``copyMessage()`` でチェックを行わず maildirsize
@@ -691,7 +691,7 @@ noop を使用します。
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail_Storage_Writable_Maildir(array('dirname' =>
+   $mail = new Zend\Mail\Storage\Writable\Maildir(array('dirname' =>
                                                       '/home/test/mail/'));
    $mail->setQuota(true); // true で有効に、そして false で無効にします
    echo 'Quota check is now ', $mail->getQuota() ? 'enabled' : 'disabled', "\n";
@@ -722,19 +722,19 @@ maildirsize ファイルで指定したものではなく独自の容量制限�
    $quota = $mail->setQuota(array('size' => 10000, 'count' => 100));
 
 独自の容量チェックを追加するには、単一の文字をキーとして使用します。
-キーが保存されます (が、チェックはされません)。 ``Zend_Mail_Storage_Writable_Maildir``
+キーが保存されます (が、チェックはされません)。 ``Zend\Mail\Storage\Writable\Maildir``
 を継承して独自の容量制限 を定義することもできます。 maildirsize
 ファイルが存在しないときにのみ使用します (Maildir++ ではこれが起こりえます)。
 
 .. code-block:: php
    :linenos:
 
-   class Example_Mail_Storage_Maildir extends Zend_Mail_Storage_Writable_Maildir {
+   class Example_Mail_Storage_Maildir extends Zend\Mail\Storage\Writable\Maildir {
        // getQuota は、容量チェックの際に $fromStorage = true でコールされます
        public function getQuota($fromStorage = false) {
            try {
                return parent::getQuota($fromStorage);
-           } catch (Zend_Mail_Storage_Exception $e) {
+           } catch (Zend\Mail_Storage\Exception $e) {
                if (!$fromStorage) {
                    // 未知のエラー
                    throw $e;

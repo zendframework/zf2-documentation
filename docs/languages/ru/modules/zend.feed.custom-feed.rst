@@ -26,7 +26,7 @@
     * Специальный класс сообщения знает URI ленты и может автоматически
     * добавлять дополнительные пространства имен
     */
-   class MyEntry extends Zend_Feed_Entry_Atom
+   class MyEntry extends Zend\Feed_Entry\Atom
    {
 
        public function __construct($uri = 'http://www.example.com/myfeed/',
@@ -34,7 +34,7 @@
        {
            parent::__construct($uri, $xml);
 
-           Zend_Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
+           Zend\Feed\Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
        }
 
        public function __get($var)

@@ -10,7 +10,7 @@ Einführung
 ----------
 
 ``Zend_Mime`` ist eine Hilfsklasse für die Verarbeitung von mehrteiligen *MIME* Nachrichten. Es wird von
-:ref:`Zend_Mail <zend.mail>` und :ref:`Zend_Mime_Message <zend.mime.message>` verwendet und kann von anderen
+:ref:`Zend_Mail <zend.mail>` und :ref:`Zend\Mime\Message <zend.mime.message>` verwendet und kann von anderen
 Anwendungen verwendet werden, die *MIME* Unterstützung benötigen.
 
 .. _zend.mime.mime.static:
@@ -22,18 +22,18 @@ Statische Methoden und Konstanten
 
 
 
-   - ``Zend_Mime::isPrintable()``: Gibt ``TRUE`` zurück, wenn der String keine nicht druckbaren Zeichen enthält,
+   - ``Zend\Mime\Mime::isPrintable()``: Gibt ``TRUE`` zurück, wenn der String keine nicht druckbaren Zeichen enthält,
      ansonsten wird ``FALSE`` zurückgegeben.
 
-   - ``Zend_Mime::encode()``: Codiert einen String mit der spezifizierten Kodierung.
+   - ``Zend\Mime\Mime::encode()``: Codiert einen String mit der spezifizierten Kodierung.
 
-   - ``Zend_Mime::encodeBase64()``: Codiert einen String in die base64 Codierung.
+   - ``Zend\Mime\Mime::encodeBase64()``: Codiert einen String in die base64 Codierung.
 
-   - ``Zend_Mime::encodeQuotedPrintable()``: Codiert einen String mit dem "quoted-printable" Mechanismus.
+   - ``Zend\Mime\Mime::encodeQuotedPrintable()``: Codiert einen String mit dem "quoted-printable" Mechanismus.
 
-   - ``Zend_Mime::encodeBase64Header()``: Codiert einen String zu einer base64 Kodierung für Mail Header.
+   - ``Zend\Mime\Mime::encodeBase64Header()``: Codiert einen String zu einer base64 Kodierung für Mail Header.
 
-   - ``Zend_Mime::encodeQuotedPrintableHeader()``: Codiert einen String mit dem Quoted-Printable Mechanismus für
+   - ``Zend\Mime\Mime::encodeQuotedPrintableHeader()``: Codiert einen String mit dem Quoted-Printable Mechanismus für
      Mail Header.
 
 
@@ -42,29 +42,29 @@ Statische Methoden und Konstanten
 
 
 
-   - ``Zend_Mime::TYPE_OCTETSTREAM``: 'application/octet-stream'
+   - ``Zend\Mime\Mime::TYPE_OCTETSTREAM``: 'application/octet-stream'
 
-   - ``Zend_Mime::TYPE_TEXT``: 'text/plain'
+   - ``Zend\Mime\Mime::TYPE_TEXT``: 'text/plain'
 
-   - ``Zend_Mime::TYPE_HTML``: 'text/html'
+   - ``Zend\Mime\Mime::TYPE_HTML``: 'text/html'
 
-   - ``Zend_Mime::ENCODING_7BIT``: '7bit'
+   - ``Zend\Mime\Mime::ENCODING_7BIT``: '7bit'
 
-   - ``Zend_Mime::ENCODING_8BIT``: '8bit';
+   - ``Zend\Mime\Mime::ENCODING_8BIT``: '8bit';
 
-   - ``Zend_Mime::ENCODING_QUOTEDPRINTABLE``: 'quoted-printable'
+   - ``Zend\Mime\Mime::ENCODING_QUOTEDPRINTABLE``: 'quoted-printable'
 
-   - ``Zend_Mime::ENCODING_BASE64``: 'base64'
+   - ``Zend\Mime\Mime::ENCODING_BASE64``: 'base64'
 
-   - ``Zend_Mime::DISPOSITION_ATTACHMENT``: 'attachment'
+   - ``Zend\Mime\Mime::DISPOSITION_ATTACHMENT``: 'attachment'
 
-   - ``Zend_Mime::DISPOSITION_INLINE``: 'inline'
+   - ``Zend\Mime\Mime::DISPOSITION_INLINE``: 'inline'
 
-   - ``Zend_Mime::MULTIPART_ALTERNATIVE``: 'multipart/alternative'
+   - ``Zend\Mime\Mime::MULTIPART_ALTERNATIVE``: 'multipart/alternative'
 
-   - ``Zend_Mime::MULTIPART_MIXED``: 'multipart/mixed'
+   - ``Zend\Mime\Mime::MULTIPART_MIXED``: 'multipart/mixed'
 
-   - ``Zend_Mime::MULTIPART_RELATED``: 'multipart/related'
+   - ``Zend\Mime\Mime::MULTIPART_RELATED``: 'multipart/related'
 
 
 

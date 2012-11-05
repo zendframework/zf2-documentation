@@ -8,7 +8,7 @@ Při převádění PHP objektů do JSON, budou veškere vlastnosti označené ja
 objektu.
 
 JSON nedovoluje reference na objekt, takže je třeba dávat pozor a nepřevádět objekty s rekurzivními
-referencemi. Pokud máte problémy s rekurzemi, *Zend_Json::encode()* a *Zend_Json_Encoder::encode()* umožňují
+referencemi. Pokud máte problémy s rekurzemi, *Zend\Json\Json::encode()* a *Zend\Json\Encoder::encode()* umožňují
 volitelný druhý parametr, zda se mají kontrolovat rekurze; pokud je objekt serializován dvakrát, bude vyhozena
 výjimka.
 
@@ -25,7 +25,7 @@ objektu, můžete to určit takto:
 
    <?php
    // Dekódovat JSON objekty jako PHP objekty
-   $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);
+   $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
 
 Jakýkoliv objekt takto převedený je typu *StdClass* s vlastnostmi odpovídajícími dvojicím klíč/hodnota z
 JSON zápisu.

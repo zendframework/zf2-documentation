@@ -9,8 +9,8 @@ Tabla de base de datos de autenticación
 Introducción
 ------------
 
-``Zend_Auth_Adapter_DbTable`` proporciona la capacidad de autenticar contra credenciales almacenadas en una tabla
-de la base de datos. Como ``Zend_Auth_Adapter_DbTable`` requiere una instancia de ``Zend_Db_Adapter_Abstract`` que
+``Zend\Auth_Adapter\DbTable`` proporciona la capacidad de autenticar contra credenciales almacenadas en una tabla
+de la base de datos. Como ``Zend\Auth_Adapter\DbTable`` requiere una instancia de ``Zend\Db_Adapter\Abstract`` que
 será pasada a su constructor, cada instancia está vinculada a una conexión concreta de la base de datos. Se
 pueden establecer otras opciones de configuración a través del constructor y de métodos de instancia:
 
@@ -37,8 +37,8 @@ Las opciones de configuración disponibles incluyen:
 
 .. rubric:: Uso Básico
 
-Como se explicó en la introducción, el constructor ``Zend_Auth_Adapter_DbTable`` requiere una instancia de
-``Zend_Db_Adapter_Abstract`` que sirve como conexión a la base de datos a la cual la instancia de autenticación
+Como se explicó en la introducción, el constructor ``Zend\Auth_Adapter\DbTable`` requiere una instancia de
+``Zend\Db_Adapter\Abstract`` que sirve como conexión a la base de datos a la cual la instancia de autenticación
 está obligada a adaptarse. En primer lugar, la conexión de la base de datos debe ser creada.
 
 El siguiente código crea un adaptador para una base de datos en memoria , un esquema simple de la tabla, e inserta
@@ -49,7 +49,7 @@ extensión *PDO* SQLite esté disponible.
    :linenos:
 
    // Crear una conexión en memoria de la bade de datos SQLite
-   $dbAdapter = new Zend_Db_Adapter_Pdo_Sqlite(array('dbname' =>
+   $dbAdapter = new Zend\Db\Adapter\Pdo\Sqlite(array('dbname' =>
                                                      ':memory:'));
 
    // Construir mediante una consulta una simple tabla
@@ -70,14 +70,14 @@ extensión *PDO* SQLite esté disponible.
    $dbAdapter->query($sqlInsert);
 
 Con la conexión de la base de datos y los datos de la tabla disponibles, podemos crear un instancia de
-``Zend_Auth_Adapter_DbTable``. Los valores de las opciones de configuración pueden ser pasados al constructor o
+``Zend\Auth_Adapter\DbTable``. Los valores de las opciones de configuración pueden ser pasados al constructor o
 pasados como parámetros a los métodos setter después de ser instanciados.
 
 .. code-block:: php
    :linenos:
 
    // Configurar la instancia con los parámetros del constructor...
-   $authAdapter = new Zend_Auth_Adapter_DbTable(
+   $authAdapter = new Zend\Auth_Adapter\DbTable(
        $dbAdapter,
        'users',
        'username',
@@ -85,7 +85,7 @@ pasados como parámetros a los métodos setter después de ser instanciados.
    );
 
    // ...o configurar la instancia con los métodos setter.
-   $authAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
+   $authAdapter = new Zend\Auth_Adapter\DbTable($dbAdapter);
 
    $authAdapter
        ->setTableName('users')
@@ -109,7 +109,7 @@ adaptador ates de llamar al método ``authenticate()``:
    // Ejecutamos la consulta de autenticación, salvando los resultados
 
 Además de la disponibilidad del método ``getIdentity()`` sobre el objeto resultante de la autenticación,
-``Zend_Auth_Adapter_DbTable`` también ayuda a recuperar la fila de al tabla sobre la autenticación realizada.
+``Zend\Auth_Adapter\DbTable`` también ayuda a recuperar la fila de al tabla sobre la autenticación realizada.
 
 .. code-block:: php
    :linenos:
@@ -139,7 +139,7 @@ deseados.
 Advanced Usage: Manteniendo el resultado del Objeto DbTable
 -----------------------------------------------------------
 
-Por defecto, ``Zend_Auth_Adapter_DbTable`` devuelve la identidad proporcionada al objeto Auth en la autenticación
+Por defecto, ``Zend\Auth_Adapter\DbTable`` devuelve la identidad proporcionada al objeto Auth en la autenticación
 realizada. Otro de los casos de uso, donde los desarrolladores desean guardar para mantener el mecanismo de
 almacenamiento de un objeto identidad ``Zend_Auth`` que contiene información útil, se resuelve usando el método
 ``getResultRowObject()`` para devolver un objeto **stdClass**. El siguiente fragmento de código muestra su uso:
@@ -147,7 +147,7 @@ almacenamiento de un objeto identidad ``Zend_Auth`` que contiene información ú
 .. code-block:: php
    :linenos:
 
-   // Autenticar con Zend_Auth_Adapter_DbTable
+   // Autenticar con Zend\Auth_Adapter\DbTable
    $result = $this->_auth->authenticate($adapter);
 
    if ($result->isValid()) {
@@ -179,13 +179,13 @@ almacenamiento de un objeto identidad ``Zend_Auth`` que contiene información ú
 Ejemplo de Uso Avanzado
 -----------------------
 
-Si bien el objetivo primordial de ``Zend_Auth`` (y, por consiguiente, ``Zend_Auth_Adapter_DbTable``) es
+Si bien el objetivo primordial de ``Zend_Auth`` (y, por consiguiente, ``Zend\Auth_Adapter\DbTable``) es
 principalmente la **autenticación** y no la **autorización**, hay unos pocos casos y problemas que se encuentran
 al límite entre cuales encajan dentro del dominio. Dependiendo de cómo haya decidido explicar su problema, a
 veces tiene sentido resolver lo que podría parecer un problema de autorización dentro de un adaptador de
 autenticación.
 
-Con esa excepción fuera de lo común, ``Zend_Auth_Adapter_DbTable`` ha construido mecanismos que pueden ser
+Con esa excepción fuera de lo común, ``Zend\Auth_Adapter\DbTable`` ha construido mecanismos que pueden ser
 aprovechados para realizar controles adicionales en la autenticación a la vez que se resuelven algunos problemas
 comunes de los usuarios.
 
@@ -193,7 +193,7 @@ comunes de los usuarios.
    :linenos:
 
    // El valor del campo status de una cuenta no es igual a "compromised"
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
@@ -202,7 +202,7 @@ comunes de los usuarios.
    );
 
    // El valor del campo active de una cuenta es igual a "TRUE"
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
@@ -236,13 +236,13 @@ Y ahora vamos a construir el adaptador:
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
        'password',
        "MD5(CONCAT('"
-       . Zend_Registry::get('staticSalt')
+       . Zend\Registry\Registry::get('staticSalt')
        . "', ?, password_salt))"
    );
 
@@ -252,8 +252,8 @@ Y ahora vamos a construir el adaptador:
    aplicación. En el caso de que su base de datos se vea comprometida (por ejemplo, por un ataque de inyección
    *SQL*), su servidor web está intacto y sus datos son inutilizable para el atacante.
 
-Otra alternativa es utilizar el método ``getDbSelect()`` de ``Zend_Auth_Adapter_DbTable`` después de que el
-adaptador se ha construido. Este método devolverá la instancia del objeto ``Zend_Db_Select`` que se va a utilizar
+Otra alternativa es utilizar el método ``getDbSelect()`` de ``Zend\Auth_Adapter\DbTable`` después de que el
+adaptador se ha construido. Este método devolverá la instancia del objeto ``Zend\Db\Select`` que se va a utilizar
 para completar la rutina de authenticate(). Es importante señalar que este método siempre devuelve el mismo
 objeto, independientemente de si ``authenticate()`` ha sido llamado o no. Este objeto **no tendrá** ninguna de las
 credenciales de identidad o información de como estos valores son colocados dentro del objeto seleccionado en
@@ -266,7 +266,7 @@ estado de un usuario, en otras palabras, ver si la cuenta del usuario está habi
    :linenos:
 
    // Continuando con el ejemplo de arriba
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',

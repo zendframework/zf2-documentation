@@ -9,8 +9,8 @@
 用于修改feed和条目的结构，并将结果转化成XML格式。不久的将来这些扩展可能会被 Atom
 Publishig Protocol(AtomPP)所支持。
 
-*Zend_Feed*\ 由一个 *Zend_Feed*\ 基类、一个 *Zend_Feed_Abstract*\
-抽象类以及一个用于表示Feed和条目的 *Zend_Feed_Entry_Abstract*\ 基类组成。这些类封装了 RSS
+*Zend_Feed*\ 由一个 *Zend_Feed*\ 基类、一个 *Zend\Feed\Abstract*\
+抽象类以及一个用于表示Feed和条目的 *Zend\Feed_Entry\Abstract*\ 基类组成。这些类封装了 RSS
 和 Atom 的feed和条目特性的，提供了一套自然的方法使他们用起来变得异常简单。
 
 在下面的例子中，我们示范了一个获得一个RSS
@@ -32,8 +32,8 @@ feed并将其中的一般部分相关数据保存到一个PHP数组中的简单�
 
    // 取得最新的 Slashdot 头条新闻
    try {
-       $slashdotRss = Zend_Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
-   } catch (Zend_Feed_Exception $e) {
+       $slashdotRss = Zend\Feed\Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
+   } catch (Zend\Feed\Exception $e) {
        // feed 导入失败
        echo "Exception caught importing feed: {$e->getMessage()}\n";
        exit;

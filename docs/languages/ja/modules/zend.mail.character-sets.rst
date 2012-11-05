@@ -33,15 +33,15 @@
        return mb_convert_encoding($string, 'ISO-2022-JP', 'UTF-8');
    }
 
-   $mail = new Zend_Mail('ISO-2022-JP');
+   $mail = new Zend\Mail\Mail('ISO-2022-JP');
    //この場合、 ISO-2022-JP は MSB を使わないので、
    // ENCODING_7BIT を使えます。
    $mail->setBodyText(
        myConvert('This is the text of the mail.'),
        null,
-       Zend_Mime::ENCODING_7BIT
+       Zend\Mime\Mime::ENCODING_7BIT
    );
-   $mail->setHeaderEncoding(Zend_Mime::ENCODING_BASE64);
+   $mail->setHeaderEncoding(Zend\Mime\Mime::ENCODING_BASE64);
    $mail->setFrom('somebody@example.com', myConvert('Some Sender'));
    $mail->addTo('somebody_else@example.com', myConvert('Some Recipient'));
    $mail->setSubject(myConvert('TestSubject'));

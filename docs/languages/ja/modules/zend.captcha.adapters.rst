@@ -8,21 +8,21 @@ CAPTCHA アダプタ
 
 .. _zend.captcha.adapters.word:
 
-Zend_Captcha_Word
+Zend\Captcha\Word
 -----------------
 
-``Zend_Captcha_Word`` は抽象アダプタで、 その他の大半の *CAPTCHA*
+``Zend\Captcha\Word`` は抽象アダプタで、 その他の大半の *CAPTCHA*
 アダプタの基底クラスとなります。
 指定できる機能は、単語の長さやセッションの有効期限、
-使用するセッション名前空間オブジェクト、 ``Zend_Session_Namespace``
-を使いたくない場合に使用するセッション名前空間クラスです。 ``Zend_Captcha_Word``
+使用するセッション名前空間オブジェクト、 ``Zend\Session\Namespace``
+を使いたくない場合に使用するセッション名前空間クラスです。 ``Zend\Captcha\Word``
 は、すべての検証ロジックをカプセル化します。
 
 デフォルトでは、単語の長さは 8 文字です。またセッションのタイムアウトは 5
-分、情報の永続化には ``Zend_Session_Namespace`` を使用します (使用する名前空間は
-"``Zend_Form_Captcha_<captcha ID>``" です)。
+分、情報の永続化には ``Zend\Session\Namespace`` を使用します (使用する名前空間は
+"``Zend\Form_Captcha\<captcha ID>``" です)。
 
-``Zend_Captcha_Adapter`` インターフェイスのメソッドのほかに、 ``Zend_Captcha_Word``
+``Zend\Captcha\Adapter`` インターフェイスのメソッドのほかに、 ``Zend\Captcha\Word``
 は次のメソッドを公開しています。
 
 - ``setWordLen($length)`` と ``getWordLen()`` で、生成される "単語"
@@ -36,14 +36,14 @@ Zend_Captcha_Word
   possible characters for the random work or only letters would be used.
 
 - ``setSessionClass($class)`` と ``getSessionClass()`` で、 *CAPTCHA* トークンの永続化に使用する
-  ``Zend_Session_Namespace`` の実装を設定したり 現在の値を取得したりします。
+  ``Zend\Session\Namespace`` の実装を設定したり 現在の値を取得したりします。
 
 - ``getId()`` で、現在のトークン識別子を取得します。
 
 - ``getWord()`` で、 *CAPTCHA* に使用するために生成した単語を取得します。
   まだ生成されていない場合は、まず生成してからそれを返します。
 
-- ``setSession(Zend_Session_Namespace $session)`` で、 *CAPTCHA*
+- ``setSession(Zend\Session\Namespace $session)`` で、 *CAPTCHA*
   トークンの永続化に使用するセッションオブジェクトを設定します。 ``getSession()``
   で、現在のセッションオブジェクトを取得します。
 
@@ -56,47 +56,47 @@ Zend_Captcha_Word
 
 .. note::
 
-   ``Zend_Captcha_Word`` は抽象クラスであり、
+   ``Zend\Captcha\Word`` は抽象クラスであり、
    直接そのインスタンスを作成することはできません。
 
 .. _zend.captcha.adapters.dumb:
 
-Zend_Captcha_Dumb
+Zend\Captcha\Dumb
 -----------------
 
-``Zend_Captch_Dumb`` アダプタは、その名が示すとおりのものです。
+``Zend\Captch\Dumb`` アダプタは、その名が示すとおりのものです。
 ランダムな文字列を用意し、それを逆からタイプさせることで検証を行います。
 これは *CAPTCHA* の手法としてはあまりよいものではないので、
 テスト用に使うのみにしておきましょう。
 あるいは、ほかに手がない場合の最後の手段としてのみ使うようにしましょう。
-このアダプタは ``Zend_Captcha_Word`` を継承しています。
+このアダプタは ``Zend\Captcha\Word`` を継承しています。
 
 .. _zend.captcha.adapters.figlet:
 
-Zend_Captcha_Figlet
+Zend\Captcha\Figlet
 -------------------
 
-``Zend_Captcha_Figlet`` アダプタは、 :ref:`Zend_Text_Figlet <zend.text.figlet>` を使用して Figlet
+``Zend\Captcha\Figlet`` アダプタは、 :ref:`Zend\Text\Figlet <zend.text.figlet>` を使用して Figlet
 をユーザに表示します。
 
-コンストラクタに渡されたオプションは、アダプタが使用する :ref:`Zend_Text_Figlet
+コンストラクタに渡されたオプションは、アダプタが使用する :ref:`Zend\Text\Figlet
 <zend.text.figlet>` オブジェクトにも渡されます。
-使用できる設定オプションについては、 :ref:`Zend_Text_Figlet <zend.text.figlet>`
+使用できる設定オプションについては、 :ref:`Zend\Text\Figlet <zend.text.figlet>`
 のドキュメントを参照ください。
 
 .. _zend.captcha.adapters.image:
 
-Zend_Captcha_Image
+Zend\Captcha\Image
 ------------------
 
-``Zend_Captcha_Image`` アダプタは、
+``Zend\Captcha\Image`` アダプタは、
 生成された単語を受け取ってそれを画像としてレンダリングし、
 それをいろいろな方法で歪めて自動判読を困難にします。 これを使用するには、 `GD
 拡張モジュール`_ を TrueType あるいは Freetype
-のサポートつきでコンパイルする必要があります。 現在、 ``Zend_Captcha_Image``
+のサポートつきでコンパイルする必要があります。 現在、 ``Zend\Captcha\Image``
 アダプタが生成できるのは *PNG* 画像のみです。
 
-``Zend_Captcha_Image`` は ``Zend_Captcha_Word`` を継承しており、
+``Zend\Captcha\Image`` は ``Zend\Captcha\Word`` を継承しており、
 さらに次のメソッドを公開しています。
 
 - ``setExpiration($expiration)`` と ``getExpiration()`` で、 *CAPTCHA*
@@ -147,10 +147,10 @@ Zend_Captcha_Image
 
 .. _zend.captcha.adapters.recaptcha:
 
-Zend_Captcha_ReCaptcha
+Zend\Captcha\ReCaptcha
 ----------------------
 
-``Zend_Captcha_ReCaptcha`` アダプタは、 :ref:`Zend_Service_ReCaptcha <zend.service.recaptcha>`
+``Zend\Captcha\ReCaptcha`` アダプタは、 :ref:`Zend\Service\ReCaptcha <zend.service.recaptcha>`
 を使用して *CAPTCHA* の生成と検証を行います。 次のメソッドを公開しています。
 
 - ``setPrivKey($key)`` と ``getPrivKey()`` で、ReCaptcha
@@ -162,7 +162,7 @@ Zend_Captcha_ReCaptcha
   これはオブジェクトの作成時に指定する必要がありますが、
   その後いつでも上書きできます。
 
-- ``setService(Zend_Service_ReCaptcha $service)`` と ``getService()`` で、 ReCaptcha
+- ``setService(Zend\Service\ReCaptcha $service)`` と ``getService()`` で、 ReCaptcha
   サービスオブジェクトを取得したり取得したりします。
 
 

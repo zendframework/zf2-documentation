@@ -12,7 +12,7 @@
 .. code-block:: php
    :linenos:
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/1');
    $entry = $feed->current();
 
    $entry->title = 'This is a new title';
@@ -28,7 +28,7 @@
 *->*\ 访问你想要访问的内容了，如果必要程序将自动为你创建所有中间节点。
 
 如果你想在你的条目中用一个与 *atom:*, *rss:*, 或 *osrss:*\ 不同的命名空间，你必须用
-*Zend_Feed*\ 类的 *Zend_Feed::registerNamespace()*\
+*Zend_Feed*\ 类的 *Zend\Feed\Feed::registerNamespace()*\
 方法注册你的命名空间。当你修改一个已存在的元素时，它将维持最初的命名空间。当添加一个新元素时，如果你不特别地指定别的命名空间则程序将使用默认的命名空间。
 
 .. rubric:: 用自定义的命名空间创建一个Atom条目元素
@@ -36,14 +36,14 @@
 .. code-block:: php
    :linenos:
 
-   $entry = new Zend_Feed_Entry_Atom();
+   $entry = new Zend\Feed_Entry\Atom();
    // Atom的id总是由服务器分配
    $entry->title = 'my custom entry';
    $entry->author->name = 'Example Author';
    $entry->author->email = 'me@example.com';
 
    // 完成自定义部分
-   Zend_Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
+   Zend\Feed\Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
 
    $entry->{'myns:myelement_one'} = 'my first custom value';
    $entry->{'myns:container_elt'}->part1 = 'first nested custom part';

@@ -33,7 +33,7 @@ le code de vos propres librairies.
 Conventions et architecture d'Autoload
 --------------------------------------
 
-Le support de l'autochargement (autoload) de Zend Framework, implémenté grâce à ``Zend_Loader_Autoloader``,
+Le support de l'autochargement (autoload) de Zend Framework, implémenté grâce à ``Zend\Loader\Autoloader``,
 possède l'architecture et les buts suivants:
 
 - **Correspondance d'espace de noms**. Si l'espace de noms de la classe (son préfixe) n'est pas dans une liste
@@ -51,8 +51,8 @@ possède l'architecture et les buts suivants:
   Cependant, si un développeur **insiste** pour l'activer, nous le permettons.
 
 - **Autoriser l'utilisation de fonctions d'autoload personnalisées**. Certaines personnes ne veulent pas utiliser
-  ``Zend_Loader::loadClass()`` pour l'autoload, mais veulent tout de même bénéficier des mécanismes du Zend
-  Framework. ``Zend_Loader_Autoloader`` permet de préciser ses propres fonctions d'auto-chargement.
+  ``Zend\Loader\Loader::loadClass()`` pour l'autoload, mais veulent tout de même bénéficier des mécanismes du Zend
+  Framework. ``Zend\Loader\Autoloader`` permet de préciser ses propres fonctions d'auto-chargement.
 
 - **Permettre la manipulation de la chaine des autoloads de la SPL**. Ceci autorise la spécification d'autoloaders
   additionnels -- par exemple les chargeurs de ressources pour les classes n'ayant pas une correspondance 1:1 avec

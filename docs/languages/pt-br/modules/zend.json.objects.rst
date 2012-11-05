@@ -13,8 +13,8 @@ Quando codificamos objetos *PHP* como *JSON*, todas as propriedades públicas de
 um objeto *JSON*.
 
 *JSON* não permite referências de objeto, por isso deve-se tomar cuidado para não codificar objetos com
-referências recursivas. Se você tiver problemas com a recursividade, ``Zend_Json::encode()`` e
-``Zend_Json_Encoder::encode()`` permitem um segundo parâmetro opcional para verificar a recursividade; se um
+referências recursivas. Se você tiver problemas com a recursividade, ``Zend\Json\Json::encode()`` e
+``Zend\Json\Encoder::encode()`` permitem um segundo parâmetro opcional para verificar a recursividade; se um
 objeto for serializado duplamente, uma exceção será lançada.
 
 Descodificar objetos *JSON* traz uma ligeira dificuldade, entretanto, desde que os objetos do JavaScript
@@ -29,7 +29,7 @@ que o retorne um objeto, você pode especificar isto:
    :linenos:
 
    // Descodifique objetos JSON como objetos PHP
-   $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);
+   $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
 
 Todos os objetos descodificados assim são retornados como objetos de *StdClass* com as propriedades que
 correspondem aos pares chave/valor na notação de *JSON*.
@@ -64,7 +64,7 @@ pode conseguir isso chamando:
 .. code-block:: php
    :linenos:
 
-   Zend_Json::$useBuiltinEncoderDecoder = true:
+   Zend\Json\Json::$useBuiltinEncoderDecoder = true:
 
 .. _zend.json.advanced.expr:
 
@@ -76,9 +76,9 @@ objeto *JSON*. Mesmo assim elas só funcionam se não forem devolvidas dentro as
 naturalmente faz. Com o suporte à Expressão no ``Zend_Json``, você pode codificar objetos *JSON* com callbacks
 de javascript válidos. Isso funciona tanto para ``json_encode()`` quanto para o codificador interno.
 
-Um callback javascript é representado usando o objeto ``Zend_Json_Expr``. Ela implementa o padrão value object e
+Um callback javascript é representado usando o objeto ``Zend\Json\Expr``. Ela implementa o padrão value object e
 é imutável. Você pode definir a expressão javascript como o primeiro argumento do construtor. Por padrão
-``Zend_Json::encode`` não codifica callbacks de javascript, você deverá passar a opção *'enableJsonExprFinder'
+``Zend\Json\Json::encode`` não codifica callbacks de javascript, você deverá passar a opção *'enableJsonExprFinder'
 = true* para a função *encode*. Se ativado, o suporte à expressão funcionará para todas as expressões
 aninhadas em estruturas de grande porte. Um exemplo de uso seria parecido com:
 
@@ -86,12 +86,12 @@ aninhadas em estruturas de grande porte. Um exemplo de uso seria parecido com:
    :linenos:
 
    $data = array(
-       'onClick' => new Zend_Json_Expr('function() {'
+       'onClick' => new Zend\Json\Expr('function() {'
                  . 'alert("I am a valid javascript callback '
                  . 'created by Zend_Json"); }'),
        'other' => 'no expression',
    );
-   $jsonObjectWithExpression = Zend_Json::encode(
+   $jsonObjectWithExpression = Zend\Json\Json::encode(
        $data,
        false,
        array('enableJsonExprFinder' => true)

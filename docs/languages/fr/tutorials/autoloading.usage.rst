@@ -5,9 +5,9 @@ Utilisation de base de l'autoloader
 ===================================
 
 Maintenant que vous savez les buts et le fonctionnement des autoloaders de Zend Framework, voyons comment utiliser
-``Zend_Loader_Autoloader``.
+``Zend\Loader\Autoloader``.
 
-Dans le cas le plus simple, vous incluez cette classe et l'instanciez. Comme ``Zend_Loader_Autoloader`` est un
+Dans le cas le plus simple, vous incluez cette classe et l'instanciez. Comme ``Zend\Loader\Autoloader`` est un
 singleton (car l'autoloader de la *SPL* est unique), nous utilisons ``getInstance()`` pour en récupérer
 l'instance.
 
@@ -15,7 +15,7 @@ l'instance.
    :linenos:
 
    require_once 'Zend/Loader/Autoloader.php';
-   Zend_Loader_Autoloader::getInstance();
+   Zend\Loader\Autoloader::getInstance();
 
 Par défaut, ceci va permettre de charger des classes dont le préfixe est "Zend\_" ou "ZendX\_", si leurs fichiers
 sont dans votre ``include_path``.
@@ -28,11 +28,11 @@ préfixes:
    :linenos:
 
    require_once 'Zend/Loader/Autoloader.php';
-   $loader = Zend_Loader_Autoloader::getInstance();
+   $loader = Zend\Loader\Autoloader::getInstance();
    $loader->registerNamespace('Foo_');
    $loader->registerNamespace(array('Foo_', 'Bar_'));
 
-Aussi, vous pouvez indiquer à ``Zend_Loader_Autoloader`` d'agire comme autoloader par défaut ("de secours"). Ceci
+Aussi, vous pouvez indiquer à ``Zend\Loader\Autoloader`` d'agire comme autoloader par défaut ("de secours"). Ceci
 signifie qu'il essayera de charger toute classe peu importe son préfixe.
 
 .. code-block:: php
@@ -44,10 +44,10 @@ signifie qu'il essayera de charger toute classe peu importe son préfixe.
 
    **N'utilisez pas l'autoloader de secours**
 
-   Ce peut être tentant de se reposer abondamment sur ``Zend_Loader_Autoloader`` comme chargeur de secours, nous
+   Ce peut être tentant de se reposer abondamment sur ``Zend\Loader\Autoloader`` comme chargeur de secours, nous
    ne recommandons pas une telle pratique.
 
-   En interne, ``Zend_Loader_Autoloader`` utilise ``Zend_Loader::loadClass()`` pour charger les classes. Cette
+   En interne, ``Zend\Loader\Autoloader`` utilise ``Zend\Loader\Loader::loadClass()`` pour charger les classes. Cette
    méthode utilise ``include()`` pour tenter de charger le fichier de la classe. ``include()`` retourne ``FALSE``
    s'il ne réussi pas -- mais renvoie aussi un warning *PHP*. Ce dernier point peut mener à des problèmes:
 
@@ -56,7 +56,7 @@ signifie qu'il essayera de charger toute classe peu importe son préfixe.
    - Selon le niveau de ``error_reporting``, le warning pourra aussi déclencher l'écriture dans les journaux
      d'évènements.
 
-   Vous pouvez supprimer les messages d'erreur (la documentation de ``Zend_Loader_Autoloader`` détaille cela),
+   Vous pouvez supprimer les messages d'erreur (la documentation de ``Zend\Loader\Autoloader`` détaille cela),
    mais notez bien que la suppression n'est utilisée que lorsque ``display_errors`` est activé; le journal des
    évènements enregistrera toujours l'erreur. Pour ces raisons, nous vous recommandons de bien configurer vos
    espaces de noms avec l'autoloader.
@@ -78,7 +78,7 @@ signifie qu'il essayera de charger toute classe peu importe son préfixe.
 
 Si vous possédez votre propre autoloader et que vous voulez l'utiliser avec Zend Framework -- peut être un
 autoloader provenant d'une autre librairie que vous utilisez -- vous pouvez l'enregistrer grâce aux méthodes de
-``Zend_Loader_Autoloader`` ``pushAutoloader()`` et ``unshiftAutoloader()``. Ces méthodes ajoutent des autoloaders
+``Zend\Loader\Autoloader`` ``pushAutoloader()`` et ``unshiftAutoloader()``. Ces méthodes ajoutent des autoloaders
 à la fin ou au début de la chaine utilisée avant l'exécution des mecanismes internes d'auto-chargement de Zend
 Framewor. Cette approche a les avantages suivants:
 
@@ -88,7 +88,7 @@ Framewor. Cette approche a les avantages suivants:
 
 - Si vous devez manipuler le registre de ``spl_autoload()``, prenez garde si vous préciser des fonctions de
   rappels sous forme de méthodes de classes car ``spl_autoload_functions()`` ne retourne pas exactement leurs
-  définitions. ``Zend_Loader_Autoloader`` ne souffre pas de ce problème.
+  définitions. ``Zend\Loader\Autoloader`` ne souffre pas de ce problème.
 
 Voici une liste de définitions de fonctions de rappel pour auto-chargement valides en *PHP*.
 

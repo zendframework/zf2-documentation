@@ -24,15 +24,15 @@ From/Reply-to のアドレスや 名前を指定しない場合に使われま�
 
    // トランスポートを作成します
    $config = array('name' => 'sender.example.com');
-   $transport = new Zend_Mail_Transport_Smtp('mail.example.com', $config);
+   $transport = new Zend\Mail_Transport\Smtp('mail.example.com', $config);
 
    // 送信するメール全てで使う From 及び Reply-To のアドレス及び名前を設定します
-   Zend_Mail::setDefaultFrom('sender@example.com', 'John Doe');
-   Zend_Mail::setDefaultReplyTo('replyto@example.com','Jane Doe');
+   Zend\Mail\Mail::setDefaultFrom('sender@example.com', 'John Doe');
+   Zend\Mail\Mail::setDefaultReplyTo('replyto@example.com','Jane Doe');
 
    // メッセージをループ処理します
    for ($i = 0; $i < 5; $i++) {
-       $mail = new Zend_Mail();
+       $mail = new Zend\Mail\Mail();
        $mail->addTo('studio@example.com', 'Test');
        $mail->setSubject(
            'Demonstration - Sending Multiple Mails per SMTP Connection'
@@ -42,8 +42,8 @@ From/Reply-to のアドレスや 名前を指定しない場合に使われま�
    }
 
    // 既定値をリセットします
-   Zend_Mail::clearDefaultFrom();
-   Zend_Mail::clearDefaultReplyTo();
+   Zend\Mail\Mail::clearDefaultFrom();
+   Zend\Mail\Mail::clearDefaultReplyTo();
 
 各配送ごとに別々の接続を使用したい場合は、 ``send()`` メソッドのコールの前後に
 トランスポートの作成と廃棄をする必要があります。
@@ -58,9 +58,9 @@ From/Reply-to のアドレスや 名前を指定しない場合に使われま�
    :linenos:
 
    // トランスポートを作成します
-   $transport = new Zend_Mail_Transport_Smtp();
+   $transport = new Zend\Mail_Transport\Smtp();
 
-   $protocol = new Zend_Mail_Protocol_Smtp('mail.example.com');
+   $protocol = new Zend\Mail_Protocol\Smtp('mail.example.com');
    $protocol->connect();
    $protocol->helo('sender.example.com');
 
@@ -68,7 +68,7 @@ From/Reply-to のアドレスや 名前を指定しない場合に使われま�
 
    // メッセージをループ処理します
    for ($i = 0; $i < 5; $i++) {
-       $mail = new Zend_Mail();
+       $mail = new Zend\Mail\Mail();
        $mail->addTo('studio@example.com', 'Test');
        $mail->setFrom('studio@example.com', 'Test');
        $mail->setSubject(

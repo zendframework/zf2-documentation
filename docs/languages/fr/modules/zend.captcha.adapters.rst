@@ -8,20 +8,20 @@ Les adaptateurs suivants sont fournis dans Zend Framework par défaut.
 
 .. _zend.captcha.adapters.word:
 
-Zend_Captcha_Word
+Zend\Captcha\Word
 -----------------
 
-``Zend_Captcha_Word`` est un adaptateur abstrait qui sert de classe de base pour la plupart des autres adaptateurs
+``Zend\Captcha\Word`` est un adaptateur abstrait qui sert de classe de base pour la plupart des autres adaptateurs
 *CAPTCHA*. Il fournit des mutateurs permettant de spécifier la taille du mot le *TTL* de session, l'objet d'espace
 de noms de session à utiliser, et la classe d'espace de noms de session à utiliser pour la persistance si vous ne
-souhaitez pas utiliser ``Zend_Session_Namespace`` pour la persistance. ``Zend_Captcha_Word`` encapsule toute la
+souhaitez pas utiliser ``Zend\Session\Namespace`` pour la persistance. ``Zend\Captcha\Word`` encapsule toute la
 logique de validation.
 
 Par défaut la taille du mot est de 8 caractères, le timeout de session est de 5 minutes et l'objet d'espace de
-nom de session utilisé est ``Zend_Session_Namespace`` (avec l'espace de nom ("``Zend_Form_Captcha_<captcha
+nom de session utilisé est ``Zend\Session\Namespace`` (avec l'espace de nom ("``Zend\Form_Captcha\<captcha
 ID>``").
 
-En plus des méthodes standards fournies par ``Zend_Captcha_Adapter``, ``Zend_Captcha_Word`` propose les méthodes
+En plus des méthodes standards fournies par ``Zend\Captcha\Adapter``, ``Zend\Captcha\Word`` propose les méthodes
 suivantes :
 
 - ``setWordLen($length)`` et ``getWordLen()`` vous permettent de piloter la taille du "mot" généré, en
@@ -34,7 +34,7 @@ suivantes :
   comme des caractères possibles pour la partie aléatoire ou si seules les lettres seront utilisées.
 
 - ``setSessionClass($class)`` et ``getSessionClass()`` vous permettent de piloter la classe de session, si vous
-  désirez utiliser une alternative à ``Zend_Session_Namespace``, ceci dans le but de faire persister le jeton
+  désirez utiliser une alternative à ``Zend\Session\Namespace``, ceci dans le but de faire persister le jeton
   *CAPTCHA* en session.
 
 - ``getId()`` retourne l'identifiant du jeton actuel.
@@ -42,7 +42,7 @@ suivantes :
 - ``getWord()`` retourne le mot généré utilisé avec le *CAPTCHA*. Il sera généré pour vous si aucun n'existe
   déjà.
 
-- ``setSession(Zend_Session_Namespace $session)`` permet d'injecter un objet de session qui sera utilisé pour
+- ``setSession(Zend\Session\Namespace $session)`` permet d'injecter un objet de session qui sera utilisé pour
   faire persister le jeton de *CAPTCHA*. ``getSession()`` retourne l'objet de session actuellement utilisé.
 
 Tous les *CAPTCHA* Word vous autorisent à passer un tableau d'options au constructeur, ou à ``setOptions()`` (un
@@ -51,39 +51,39 @@ objet ``Zend_Config`` peut être utilisé avec ``setConfig()``). Par défaut, le
 
 .. note::
 
-   ``Zend_Captcha_Word`` est une classe abstraite et ne peut être utilisée directement.
+   ``Zend\Captcha\Word`` est une classe abstraite et ne peut être utilisée directement.
 
 .. _zend.captcha.adapters.dumb:
 
-Zend_Captcha_Dumb
+Zend\Captcha\Dumb
 -----------------
 
-L'adaptateur ``Zend_Captch_Dumb`` propose une chaine aléatoire qui doit être ressaisie, mais inversée. Ce n'est
+L'adaptateur ``Zend\Captch\Dumb`` propose une chaine aléatoire qui doit être ressaisie, mais inversée. Ce n'est
 pas une solution *CAPTCHA* idéale (un robot peut la détourner), il devrait être utilisé comme solution de
-remplacement extrême, ou pour les tests. Il étend ``Zend_Captcha_Word``.
+remplacement extrême, ou pour les tests. Il étend ``Zend\Captcha\Word``.
 
 .. _zend.captcha.adapters.figlet:
 
-Zend_Captcha_Figlet
+Zend\Captcha\Figlet
 -------------------
 
-L'adaptateur ``Zend_Captcha_Figlet`` utilise :ref:`Zend_Text_Figlet <zend.text.figlet>` pour présenter un captcha.
+L'adaptateur ``Zend\Captcha\Figlet`` utilise :ref:`Zend\Text\Figlet <zend.text.figlet>` pour présenter un captcha.
 Seuls les caractères alphabétiques sont utilisables.
 
-Les options passées au constructeur le seront pour l'objet :ref:`Zend_Text_Figlet <zend.text.figlet>` que
-l'adaptateur va utiliser. Voyez la documentation de :ref:`Zend_Text_Figlet <zend.text.figlet>`\ pour plus
+Les options passées au constructeur le seront pour l'objet :ref:`Zend\Text\Figlet <zend.text.figlet>` que
+l'adaptateur va utiliser. Voyez la documentation de :ref:`Zend\Text\Figlet <zend.text.figlet>`\ pour plus
 d'informations.
 
 .. _zend.captcha.adapters.image:
 
-Zend_Captcha_Image
+Zend\Captcha\Image
 ------------------
 
-L'adaptateur ``Zend_Captcha_Image`` prend le mot généré et le transforme en image difficile à analyser pour un
+L'adaptateur ``Zend\Captcha\Image`` prend le mot généré et le transforme en image difficile à analyser pour un
 programme informatique (robot). Pour cela, il nécessite l'`extension GD`_, compilée avec le support TrueType et
-Freetype. Actuellement, l'adaptateur ``Zend_Captcha_Image`` ne génère que des images *PNG*.
+Freetype. Actuellement, l'adaptateur ``Zend\Captcha\Image`` ne génère que des images *PNG*.
 
-``Zend_Captcha_Image`` étend ``Zend_Captcha_Word``, et propose les méthodes additionnelles suivantes :
+``Zend\Captcha\Image`` étend ``Zend\Captcha\Word``, et propose les méthodes additionnelles suivantes :
 
 - ``setExpiration($expiration)`` et ``getExpiration()`` vous autorisent à manipuler le temps maximum que l'image
   *CAPTCHA* doit rester sur le disque. En général, il s'agit d'un temps supérieur à celui de la session. Un
@@ -130,10 +130,10 @@ constructeur utilise. ("suffix", "height", "imgUrl", etc...).
 
 .. _zend.captcha.adapters.recaptcha:
 
-Zend_Captcha_ReCaptcha
+Zend\Captcha\ReCaptcha
 ----------------------
 
-L'adaptateur ``Zend_Captcha_ReCaptcha`` utilise :ref:`Zend_Service_ReCaptcha <zend.service.recaptcha>` pour
+L'adaptateur ``Zend\Captcha\ReCaptcha`` utilise :ref:`Zend\Service\ReCaptcha <zend.service.recaptcha>` pour
 générer des *CAPTCHA*. Les méthodes suivantes lui sont propres :
 
 - ``setPrivKey($key)`` et ``getPrivKey()`` vous permettent de gérer la clé privée utilisée avec le service
@@ -142,7 +142,7 @@ générer des *CAPTCHA*. Les méthodes suivantes lui sont propres :
 - ``setPubKey($key)`` et ``getPubKey()`` vous permettent de gérer la clé publique utilisée avec le service
   ReCaptcha. Cette clé doit être spécifiée en constructeur, mais peut être ensuite modifiée.
 
-- ``setService(Zend_Service_ReCaptcha $service)`` et ``getService()`` vous permettent d'interagir directement avec
+- ``setService(Zend\Service\ReCaptcha $service)`` et ``getService()`` vous permettent d'interagir directement avec
   l'objet service ReCaptcha utilisé par l'adaptateur.
 
 

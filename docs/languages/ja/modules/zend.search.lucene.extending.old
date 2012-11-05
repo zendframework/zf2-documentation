@@ -9,20 +9,20 @@
 テキスト解析
 ------
 
-``Zend_Search_Lucene_Analysis_Analyzer`` クラスは、
+``Zend\Search\Lucene\Analysis\Analyzer`` クラスは、
 ドキュメントのテキストフィールドをトークン化 (単語に分解)
 する際にインデクサが使用します。
 
-``Zend_Search_Lucene_Analysis_Analyzer::getDefault()`` および
-``Zend_Search_Lucene_Analysis_Analyzer::setDefault()``
+``Zend\Search\Lucene\Analysis\Analyzer::getDefault()`` および
+``Zend\Search\Lucene\Analysis\Analyzer::setDefault()``
 メソッドで、デフォルトの解析器を取得あるいは設定します。
 
 したがって、独自のテキスト解析器を指定したり、 定義済みの解析器である
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Text`` および
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive`` (デフォルト)
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Text`` および
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Text\CaseInsensitive`` (デフォルト)
 の中から選んだものを指定したりできることになります。
 これらの解析器はどちらもトークンを文字列として解釈しますが、
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive``
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Text\CaseInsensitive``
 はトークンを小文字に変換します。
 
 解析器を変更するには、以下のようにします。
@@ -30,13 +30,13 @@
 .. code-block:: php
    :linenos:
 
-   Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-       new Zend_Search_Lucene_Analysis_Analyzer_Common_Text());
+   Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+       new Zend\Search\Lucene\Analysis\Analyzer\Common\Text());
    ...
    $index->addDocument($doc);
 
 ユーザ定義の解析器のための共通の親クラスとして設計されているのが
-``Zend_Search_Lucene_Analysis_Analyzer_Common`` です。 ユーザが定義しなければならないのは
+``Zend\Search\Lucene\Analysis\Analyzer\Common`` です。 ユーザが定義しなければならないのは
 ``reset()`` および ``nextToken()`` メソッドのみで、 これは文字列を $_input
 から受け取って順に返します (``NULL`` が最後のデータを表します)。
 
@@ -61,7 +61,7 @@
           * 扱います
           */
 
-         class My_Analyzer extends Zend_Search_Lucene_Analysis_Analyzer_Common
+         class My_Analyzer extends Zend\Search\Lucene\Analysis\Analyzer\Common
          {
              private $_position;
 
@@ -78,7 +78,7 @@
               * 次のトークンを取得します。
               * ストリームの最後に達すると null を返します。
               *
-              * @return Zend_Search_Lucene_Analysis_Token|null
+              * @return Zend\Search\Lucene\Analysis\Token|null
               */
              public function nextToken()
              {
@@ -106,7 +106,7 @@
                          return null;
                      }
 
-                     $token = new Zend_Search_Lucene_Analysis_Token(
+                     $token = new Zend\Search\Lucene\Analysis\Token(
                                                substr($this->_input,
                                                       $termStartPosition,
                                                       $this->_position -
@@ -124,7 +124,7 @@
              }
          }
 
-         Zend_Search_Lucene_Analysis_Analyzer::setDefault(
+         Zend\Search\Lucene\Analysis\Analyzer::setDefault(
              new My_Analyzer());
 
 
@@ -134,10 +134,10 @@
 トークンのフィルタリング
 ------------
 
-``Zend_Search_Lucene_Analysis_Analyzer_Common``
+``Zend\Search\Lucene\Analysis\Analyzer\Common``
 解析器には、トークンをフィルタリングする仕組みもあります。 mechanism.
 
-``Zend_Search_Lucene_Analysis_TokenFilter``
+``Zend\Search\Lucene\Analysis\TokenFilter``
 クラスは、このフィルタリングの仕組みを抽象化したものです。
 自分でフィルタを作成する際には、これを継承します。
 
@@ -147,15 +147,15 @@
 
 Analysis のサブパッケージとして、これらの三つのフィルタが定義されています。
 
-   - ``Zend_Search_Lucene_Analysis_TokenFilter_LowerCase``
+   - ``Zend\Search\Lucene\Analysis\TokenFilter\LowerCase``
 
-   - ``Zend_Search_Lucene_Analysis_TokenFilter_ShortWords``
+   - ``Zend\Search\Lucene\Analysis\TokenFilter\ShortWords``
 
-   - ``Zend_Search_Lucene_Analysis_TokenFilter_StopWords``
+   - ``Zend\Search\Lucene\Analysis\TokenFilter\StopWords``
 
 
 
-*LowerCase* フィルタは、既に ``Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive``
+*LowerCase* フィルタは、既に ``Zend\Search\Lucene\Analysis\Analyzer\Common\Text\CaseInsensitive``
 解析器で使用されています。これはデフォルトの解析器です。
 
 *ShortWords* および *StopWords*
@@ -166,49 +166,49 @@ Analysis のサブパッケージとして、これらの三つのフィルタ�
 
       $stopWords = array('a', 'an', 'at', 'the', 'and', 'or', 'is', 'am');
       $stopWordsFilter =
-          new Zend_Search_Lucene_Analysis_TokenFilter_StopWords($stopWords);
+          new Zend\Search\Lucene\Analysis\TokenFilter\StopWords($stopWords);
 
       $analyzer =
-          new Zend_Search_Lucene_Analysis_Analyzer_Common_TextNum_CaseInsensitive();
+          new Zend\Search\Lucene\Analysis\Analyzer\Common\TextNum\CaseInsensitive();
       $analyzer->addFilter($stopWordsFilter);
 
-      Zend_Search_Lucene_Analysis_Analyzer::setDefault($analyzer);
+      Zend\Search\Lucene\Analysis\Analyzer::setDefault($analyzer);
 
 
 
    .. code-block:: php
       :linenos:
 
-      $shortWordsFilter = new Zend_Search_Lucene_Analysis_TokenFilter_ShortWords();
+      $shortWordsFilter = new Zend\Search\Lucene\Analysis\TokenFilter\ShortWords();
 
       $analyzer =
-          new Zend_Search_Lucene_Analysis_Analyzer_Common_TextNum_CaseInsensitive();
+          new Zend\Search\Lucene\Analysis\Analyzer\Common\TextNum\CaseInsensitive();
       $analyzer->addFilter($shortWordsFilter);
 
-      Zend_Search_Lucene_Analysis_Analyzer::setDefault($analyzer);
+      Zend\Search\Lucene\Analysis\Analyzer::setDefault($analyzer);
 
 
 
-``Zend_Search_Lucene_Analysis_TokenFilter_StopWords``
+``Zend\Search\Lucene\Analysis\TokenFilter\StopWords``
 のコンストラクタには、禁止単語の配列を入力として渡します。
 この禁止単語はファイルから読み込ませることもできます。
 
    .. code-block:: php
       :linenos:
 
-      $stopWordsFilter = new Zend_Search_Lucene_Analysis_TokenFilter_StopWords();
+      $stopWordsFilter = new Zend\Search\Lucene\Analysis\TokenFilter\StopWords();
       $stopWordsFilter->loadFromFile($my_stopwords_file);
 
       $analyzer =
-         new Zend_Search_Lucene_Analysis_Analyzer_Common_TextNum_CaseInsensitive();
+         new Zend\Search\Lucene\Analysis\Analyzer\Common\TextNum\CaseInsensitive();
       $analyzer->addFilter($stopWordsFilter);
 
-      Zend_Search_Lucene_Analysis_Analyzer::setDefault($analyzer);
+      Zend\Search\Lucene\Analysis\Analyzer::setDefault($analyzer);
 
 ファイル形式は一般的なテキストファイルで、各文字列にひとつの単語が含まれるものとなります。
 '#' を指定すると、その文字列はコメントであるとみなします。
 
-``Zend_Search_Lucene_Analysis_TokenFilter_ShortWords``
+``Zend\Search\Lucene\Analysis\TokenFilter\ShortWords``
 のコンストラクタには、オプションの引数をひとつ指定できます。
 これは単語長の制限を表し、デフォルト値は 2 です。
 
@@ -222,10 +222,10 @@ Analysis のサブパッケージとして、これらの三つのフィルタ�
 *score(q,d) = sum( tf(t in d) * idf(t) * getBoost(t.field in d) * lengthNorm(t.field in d) ) * coord(q,d) *
 queryNorm(q)*
 
-tf(t in d) -``Zend_Search_Lucene_Search_Similarity::tf($freq)``-
+tf(t in d) -``Zend\Search\Lucene\Search\Similarity::tf($freq)``-
 ドキュメント内での単語あるいは熟語の出現頻度に基づく重み要素。
 
-idf(t) -``Zend_Search_Lucene_Search_Similarity::idf($input, $reader)``-
+idf(t) -``Zend\Search\Lucene\Search\Similarity::idf($input, $reader)``-
 指定したインデックスに対する単純な単語の重み要素。
 
 getBoost(t.field in d) - 単語のフィールドの重み。
@@ -239,7 +239,7 @@ lengthNorm($term) - フィールド内に含まれる単語の総数を正規化
 そのため、このメソッドの実装は通常、 numTokens が大きいときにはより小さな値、
 numTokens が小さいときにはより大きな値を返すようになっています。
 
-coord(q,d) -``Zend_Search_Lucene_Search_Similarity::coord($overlap, $maxOverlap)``-
+coord(q,d) -``Zend\Search\Lucene\Search\Similarity::coord($overlap, $maxOverlap)``-
 ドキュメントに含まれる、検索対象の全単語の部分一致に基づく重み要素。
 
 検索対象の単語のより多くの部分が存在しているほど、
@@ -253,14 +253,14 @@ queryNorm(q) - 検索対象の各単語の重みの二乗の和で与えられ�
 これは重み付けには影響しません。単に別のクエリの結果との差をなくすために使用されます。
 
 重み付けのアルゴリズムを変更するには、独自の Similatity
-クラスを定義します。そのためには以下のように ``Zend_Search_Lucene_Search_Similarity``
-クラスを継承し、 ``Zend_Search_Lucene_Search_Similarity::setDefault($similarity);``
+クラスを定義します。そのためには以下のように ``Zend\Search\Lucene\Search\Similarity``
+クラスを継承し、 ``Zend\Search\Lucene\Search\Similarity::setDefault($similarity);``
 メソッドでそれをデフォルトとして設定します。
 
 .. code-block:: php
    :linenos:
 
-   class MySimilarity extends Zend_Search_Lucene_Search_Similarity {
+   class MySimilarity extends Zend\Search\Lucene\Search\Similarity {
        public function lengthNorm($fieldName, $numTerms) {
            return 1.0/sqrt($numTerms);
        }
@@ -290,34 +290,34 @@ queryNorm(q) - 検索対象の各単語の重みの二乗の和で与えられ�
    }
 
    $mySimilarity = new MySimilarity();
-   Zend_Search_Lucene_Search_Similarity::setDefault($mySimilarity);
+   Zend\Search\Lucene\Search\Similarity::setDefault($mySimilarity);
 
 .. _zend.search.lucene.extending.storage:
 
 保存先
 ---
 
-抽象クラス Zend_Search_Lucene_Storage_Directory では、ディレクトリ機能を提供しています。
+抽象クラス Zend\Search\Lucene\Storage\Directory では、ディレクトリ機能を提供しています。
 
-Zend_Search_Lucene のコンストラクタでは、文字列あるいは Zend_Search_Lucene_Storage_Directory
+Zend\Search\Lucene のコンストラクタでは、文字列あるいは Zend\Search\Lucene\Storage\Directory
 オブジェクトを入力として使用します。
 
-Zend_Search_Lucene_Storage_Directory_Filesystem クラスは、
+Zend\Search\Lucene\Storage\Directory\Filesystem クラスは、
 ファイルシステム用のディレクトリ機能を実装しています。
 
-Zend_Search_Lucene コンストラクタの入力に文字列を使用すると、 インデックスリーダ
-(Zend_Search_Lucene オブジェクト) はそれをファイルシステムのパスと解釈し、
-Zend_Search_Lucene_Storage_Directory_Filesystem オブジェクトのインスタンスを作成します。
+Zend\Search\Lucene コンストラクタの入力に文字列を使用すると、 インデックスリーダ
+(Zend\Search\Lucene オブジェクト) はそれをファイルシステムのパスと解釈し、
+Zend\Search\Lucene\Storage\Directory\Filesystem オブジェクトのインスタンスを作成します。
 
-独自のディレクトリ機能を実装するには、 Zend_Search_Lucene_Storage_Directory
+独自のディレクトリ機能を実装するには、 Zend\Search\Lucene\Storage\Directory
 クラスを継承します。
 
-Zend_Search_Lucene_Storage_Directory のメソッドは以下のとおりです。
+Zend\Search\Lucene\Storage\Directory のメソッドは以下のとおりです。
 
 .. code-block:: php
    :linenos:
 
-   abstract class Zend_Search_Lucene_Storage_Directory {
+   abstract class Zend\Search\Lucene\Storage\Directory {
    /**
     * 保存先を閉じます
     *
@@ -384,31 +384,31 @@ Zend_Search_Lucene_Storage_Directory のメソッドは以下のとおりです�
 
    /**
     * ディレクトリ内の $filename についての
-    * Zend_Search_Lucene_Storage_File オブジェクトを返します
+    * Zend\Search\Lucene\Storage\File オブジェクトを返します
     *
     * @param string $filename
-    * @return Zend_Search_Lucene_Storage_File
+    * @return Zend\Search\Lucene\Storage\File
     */
    abstract function getFileObject($filename);
 
    }
 
-Zend_Search_Lucene_Storage_Directory クラスの ``getFileObject($filename)`` メソッドは、
-Zend_Search_Lucene_Storage_File オブジェクトを返します。
+Zend\Search\Lucene\Storage\Directory クラスの ``getFileObject($filename)`` メソッドは、
+Zend\Search\Lucene\Storage\File オブジェクトを返します。
 
-抽象クラス Zend_Search_Lucene_Storage_File では、
+抽象クラス Zend\Search\Lucene\Storage\File では、
 ファイルの抽象化およびインデックスファイルの基本的な読み込み機能を実装しています。
 
-ディレクトリ機能を実装するには Zend_Search_Lucene_Storage_File
+ディレクトリ機能を実装するには Zend\Search\Lucene\Storage\File
 クラスを継承しなければなりません。
 
-Zend_Search_Lucene_Storage_File クラスを実装する際に
+Zend\Search\Lucene\Storage\File クラスを実装する際に
 オーバーロードしなければならないメソッドは 2 つだけです。
 
 .. code-block:: php
    :linenos:
 
-   class MyFile extends Zend_Search_Lucene_Storage_File {
+   class MyFile extends Zend\Search\Lucene\Storage\File {
        /**
         * ファイル上の位置を指定し、そこにファイルポインタを進めます。
         * 新しい位置は、whence で指定した場所からオフセットのバイト数だけ

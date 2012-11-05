@@ -15,11 +15,11 @@ spojenie pred zavolaním metódy *send()*, toto spojenie bude použité a nebude
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    // build message...
    require_once 'Zend/Mail/Transport/Smtp.php';
-   $tr = new Zend_Mail_Transport_Smtp('mail.example.com');
-   Zend_Mail::setDefaultTransport($tr);
+   $tr = new Zend\Mail_Transport\Smtp('mail.example.com');
+   Zend\Mail\Mail::setDefaultTransport($tr);
    $tr->connect();
    for ($i = 0; $i < 5; $i++) {
    $mail->send();

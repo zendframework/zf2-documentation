@@ -4,7 +4,7 @@
 Definieren von Getopt Regeln
 ============================
 
-Der Constructor für die ``Zend_Console_Getopt`` Klasse nimmt ein bis drei Argumente. Das erste Argument definiert
+Der Constructor für die ``Zend\Console\Getopt`` Klasse nimmt ein bis drei Argumente. Das erste Argument definiert
 welche Optionen durch die Anwendung unterstützt werden. Diese Klasse unterstützt alternative Syntaxformen für
 das definieren der Optionen. Die nächsten Sektionen geben Auskunft über das Format und die Verwendung dieser
 Syntaxformen.
@@ -13,7 +13,7 @@ Der Constructor nimmt zwei weitere Argumente, welche optional sind. Das zweite A
 Argumente enthalten. Sein Standardwert ist ``$_SERVER['argv']``.
 
 Das dritte Argument des Constructors kann Konfigurationsoptionen enthalten um das Verhalten von
-``Zend_Console_Getopt`` anzupassen. Siehe :ref:`Konfiguration hinzufügen
+``Zend\Console\Getopt`` anzupassen. Siehe :ref:`Konfiguration hinzufügen
 <zend.console.getopt.configuration.config>` für eine Referenz der möglichen Optionen.
 
 .. _zend.console.getopt.rules.short:
@@ -21,7 +21,7 @@ Das dritte Argument des Constructors kann Konfigurationsoptionen enthalten um da
 Optionen mit der kurzen Syntax definieren
 -----------------------------------------
 
-``Zend_Console_Getopt`` unterstützt eine kompakte Syntax wie Sie durch *GNU* Getopt verwendet wird (siehe
+``Zend\Console\Getopt`` unterstützt eine kompakte Syntax wie Sie durch *GNU* Getopt verwendet wird (siehe
 `http://www.gnu.org/software/libc/manual/html_node/Getopt.html`_). Diese Syntax unterstützt nur Einzel-Zeichen
 Flags. In einer einzelnen Zeichenkette, wird jeder Buchstabe angegeben der einem Flag entspricht das durch die
 Anwendung unterstützt wird. Der Buchstabe, gefolgt von einem Doppelpunkt Zeichen (**:**) zeigt ein Flag das einen
@@ -34,9 +34,9 @@ Parameter benötigt.
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
 
-Das obige Beispiel zeigt die Verwendung von ``Zend_Console_Getopt`` um die Optionen zu definieren die als ``-a``,
+Das obige Beispiel zeigt die Verwendung von ``Zend\Console\Getopt`` um die Optionen zu definieren die als ``-a``,
 ``-b``, oder ``-p`` angegeben werden können. Das letzte Flag benötigt einen Parameter.
 
 Die kurze Syntax ist limitiert auf Flags mit einzelnen Zeichen. Aliase, Parametertypen und Hilfszeichenketten
@@ -75,7 +75,7 @@ das Programm verwendet werden kann.
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt(
+   $opts = new Zend\Console\Getopt(
        array(
            'apfel|a'    => 'Apfel Option, ohne Parameter',
            'banane|b=i' => 'Bananen Option, mit benötigtem Integer Parameter',

@@ -22,7 +22,7 @@ martwić się o przestrzenie nazw.
     * Własna klasa wpisu może automatycznie nadawać adres URI (opcjonalnie)
     * oraz automatycznie dodawać dodatkowe przestrzenie nazw.
     */
-   class MyEntry extends Zend_Feed_Entry_Atom
+   class MyEntry extends Zend\Feed_Entry\Atom
    {
 
        public function __construct($uri = 'http://www.example.com/myfeed/',
@@ -30,7 +30,7 @@ martwić się o przestrzenie nazw.
        {
            parent::__construct($uri, $xml);
 
-           Zend_Feed::registerNamespace('myns',
+           Zend\Feed\Feed::registerNamespace('myns',
                                         'http://www.example.com/myns/1.0');
        }
 

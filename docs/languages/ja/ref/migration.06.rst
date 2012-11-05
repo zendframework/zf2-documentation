@@ -18,20 +18,20 @@ Zend_Controller
 .. code-block:: php
    :linenos:
 
-   Zend_Controller_Front::run('/path/to/controllers');
+   Zend\Controller\Front::run('/path/to/controllers');
 
 .. code-block:: php
    :linenos:
 
    /* -- ルータを作成します -- */
-   $router = new Zend_Controller_RewriteRouter();
+   $router = new Zend\Controller\RewriteRouter();
    $router->addRoute('user',
                      'user/:username',
                      array('controller' => 'user', 'action' => 'info')
    );
 
    /* -- ルータをコントローラに設定します -- */
-   $ctrl = Zend_Controller_Front::getInstance();
+   $ctrl = Zend\Controller\Front::getInstance();
    $ctrl->setRouter($router);
 
    /* -- コントローラのディレクトリを設定し、ディスパッチします -- */
@@ -54,7 +54,7 @@ Zend_Controller
 最大の変更点は、多くのコンポーネントで
 サブクラス化による拡張が可能になったことです。以下にポイントを整理します。
 
-- ``Zend_Controller_Front::dispatch()``
+- ``Zend\Controller\Front::dispatch()``
   は、デフォルトでレスポンスオブジェクトの例外をトラップします。
   例外の内容はレンダリングしません。これにより、
   システムについての機密情報がレンダリングされてしまうことを防ぎます。
@@ -82,17 +82,17 @@ Zend_Controller
        $response->renderExceptions(true);
        echo $response;
 
-- ``Zend_Controller_Dispatcher_Interface::dispatch()`` は、ディスパッチャトークンではなく
+- ``Zend\Controller_Dispatcher\Interface::dispatch()`` は、ディスパッチャトークンではなく
   :ref:`リクエストオブジェクト <zend.controller.request>` を使用するようになりました。
 
-- ``Zend_Controller_Router_Interface::route()`` は、ディスパッチャトークンではなく
+- ``Zend\Controller_Router\Interface::route()`` は、ディスパッチャトークンではなく
   :ref:`リクエストオブジェクト <zend.controller.request>` を使用するようになりました。
 
-- ``Zend_Controller_Action`` の変更点は以下のようになります。
+- ``Zend\Controller\Action`` の変更点は以下のようになります。
 
-  - コンストラクタが受け付ける引数は ``Zend_Controller_Request_Abstract`` ``$request``\ 、
-    ``Zend_Controller_Response_Abstract`` ``$response`` および ``array`` ``$params`` (オプション)
-    の三つになりました。 ``Zend_Controller_Action::__construct()``
+  - コンストラクタが受け付ける引数は ``Zend\Controller_Request\Abstract`` ``$request``\ 、
+    ``Zend\Controller_Response\Abstract`` ``$response`` および ``array`` ``$params`` (オプション)
+    の三つになりました。 ``Zend\Controller\Action::__construct()``
     は、これらを使用してリクエストやレスポンス、 そしてオブジェクトの invokeArgs
     プロパティを指定します。 コンストラクタをオーバーライドすることで、
     この挙動をお望みのように変更できます。 さらによいことに、 ``init()``
@@ -102,8 +102,8 @@ Zend_Controller
   - ``run()`` は final メソッドではなくなりました。
     しかし、このメソッドはもはやフロントコントローラでは使用されません。
     これは、クラスをページコントローラとして使用する場合にのみ使用します。
-    オプションの引数 ``Zend_Controller_Request_Abstract`` ``$request`` および
-    ``Zend_Controller_Response_Abstract`` ``$response`` を受け取ります。
+    オプションの引数 ``Zend\Controller_Request\Abstract`` ``$request`` および
+    ``Zend\Controller_Response\Abstract`` ``$response`` を受け取ります。
 
   - ``indexAction()`` を定義する必要はなくなりました。
     しかし、デフォルトのアクションとして定義しておくことを推奨します。
@@ -119,7 +119,7 @@ Zend_Controller
     の前に連結することを指示できます。
 
   - プロパティ ``$_action`` は設定されなくなりました。 このプロパティの内容は
-    ``Zend_Controller_Dispatcher_Token``
+    ``Zend\Controller_Dispatcher\Token``
     でしたが、これは現在のバージョンにはもう存在しません。
     トークンの唯一の目的は、要求されたコントローラやアクション、 URL
     パラメータについての情報を提供することでした。
@@ -160,15 +160,15 @@ Zend_Controller
                return $this->defaultAction();
            }
 
-           throw new Zend_Controller_Exception('無効なメソッド呼び出しです');
+           throw new Zend\Controller\Exception('無効なメソッド呼び出しです');
        }
 
-- ``Zend_Controller_RewriteRouter::setRewriteBase()`` は削除されました。かわりに
-  ``Zend_Controller_Front::setBaseUrl()`` を使用してください
+- ``Zend\Controller\RewriteRouter::setRewriteBase()`` は削除されました。かわりに
+  ``Zend\Controller\Front::setBaseUrl()`` を使用してください
   (あるいは、リクエストクラスを使用している場合は
-  ``Zend_Controller_Request_Http::setBaseUrl()`` を使用します)。
+  ``Zend\Controller_Request\Http::setBaseUrl()`` を使用します)。
 
-- ``Zend_Controller_Plugin_Interface`` は ``Zend_Controller_Plugin_Abstract`` に置き換えられました。
+- ``Zend\Controller_Plugin\Interface`` は ``Zend\Controller_Plugin\Abstract`` に置き換えられました。
   すべてのメソッドは、ディスパッチャトークンではなく
   :ref:`リクエストオブジェクト <zend.controller.request>`
   をやり取りするようになりました。

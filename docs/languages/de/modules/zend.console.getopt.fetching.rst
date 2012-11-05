@@ -4,12 +4,12 @@
 Holen von Optionen und Argumenten
 =================================
 
-Nach dem Erstellen der Optionen welche das ``Zend_Console_Getopt`` Objekt erkennen sollte, und der Übergabe von
+Nach dem Erstellen der Optionen welche das ``Zend\Console\Getopt`` Objekt erkennen sollte, und der Übergabe von
 Argumenten von der Kommandozeile oder einem Array, kann das Objekt abgefragt werden um herauszufinden welche
 Optionen durch den Benutzer mit einem gegebenen Kommandozeilena Aufruf des Programms angegeben wurden. Die Klasse
 implementiert magische Methoden damit Optionen anhand Ihres Namens abgefragt werden können.
 
-Das Analysieren der Daten wird verzögert, bis zur ersten Abfrage die am ``Zend_Console_Getopt`` Objekt
+Das Analysieren der Daten wird verzögert, bis zur ersten Abfrage die am ``Zend\Console\Getopt`` Objekt
 durchgeführt wird um herauszufinden ob eine Option angegeben wurde. Das erlaubt die Anwendung einiger
 Methodenaufrufe zur Konfiguration der Optionen, Argumente, Hilfstexte und Konfigurationsoptionen bevor das
 Analysieren durchgeführt wird.
@@ -20,7 +20,7 @@ Handhaben von Getopt Ausnahmen
 ------------------------------
 
 Wenn ein Benutzer irgendeine ungültige Option auf der Kommandozeile angibt, wirft die analysierende Funktion eine
-``Zend_Console_Getopt_Exception``. Diese Ausnahme kann im Code der Anwendung abgefangen werden. Die ``parse()``
+``Zend\Console_Getopt\Exception``. Diese Ausnahme kann im Code der Anwendung abgefangen werden. Die ``parse()``
 Methode kann verwendet werden um das Objekt dazu zu zwingen die Argumente zu analysieren. Das ist deswegen
 nützlich weil ``parse()`` in einen **try** Block eingebettet werden kann. Wenn es erfolgreich ist, kann man sicher
 sein das die Analyse keine weiteren Ausnahmen werfen wird. Die geworfene Ausnahme hat eine eigene Methode
@@ -34,9 +34,9 @@ sein das die Analyse keine weiteren Ausnahmen werfen wird. Die geworfene Ausnahm
    :linenos:
 
    try {
-       $opts = new Zend_Console_Getopt('abp:');
+       $opts = new Zend\Console\Getopt('abp:');
        $opts->parse();
-   } catch (Zend_Console_Getopt_Exception $e) {
+   } catch (Zend\Console_Getopt\Exception $e) {
        echo $e->getUsageMessage();
        exit;
    }
@@ -67,7 +67,7 @@ gibt die Methode ``NULL`` zurück.
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $b = $opts->getOption('b');
    $p_parameter = $opts->getOption('p');
 
@@ -81,7 +81,7 @@ dieser eine Variable der Klasse wäre. Die magische ``__isset()`` Methode ist au
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    if (isset($opts->b)) {
        echo "Die Option b ist da.\n";
    }
@@ -130,11 +130,11 @@ Methode. Diese Methode gibt ein Array von Zeichenketten zurück welche nicht Tei
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setArguments(array('-p', 'p_parameter', 'filename'));
    $args = $opts->getRemainingArgs(); // Rückgabe array('filename')
 
-``Zend_Console_Getopt`` unterstützt die *GNU* Konvention das ein Argument welches auf einem Doppelten Bindestrich
+``Zend\Console\Getopt`` unterstützt die *GNU* Konvention das ein Argument welches auf einem Doppelten Bindestrich
 besteht das Ende der Optionen bezeichnet. Jedes Argument welches diesem Bezeichner folgt, muß als
 Nicht-Options-Argument behandelt werden. Das ist nützlich wenn ein Nicht-Options-Argument vorhanden ist welches
 mit einem Bindestrich anfängt. Zum Beispiel: "``rm -- -filename-with-dash``".

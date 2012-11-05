@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.amf.server:
 
-Zend_Amf_Server
+ZendAmf\Server
 ===============
 
-``Zend_Amf_Server`` は *RPC* スタイルのサーバで、 Adobe Flash Player からの *AMF*
+``ZendAmf\Server`` は *RPC* スタイルのサーバで、 Adobe Flash Player からの *AMF*
 プロトコルによるリクエストを処理します。 他の Zend Framework
 のサーバクラス群と同様に SoapServer *API* にしたがっており、
 サーバを作成するための習得しやすいインターフェイスを提供します。
@@ -19,7 +19,7 @@ Zend_Amf_Server
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_Amf_Server();
+   $server = new ZendAmf\Server();
    $server->setClass('Foo');
    $response = $server->handle();
    echo $response;
@@ -29,7 +29,7 @@ Zend_Amf_Server
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_Amf_Server();
+   $server = new ZendAmf\Server();
    $server->addFunction('myUberCoolFunction');
    $response = $server->handle();
    echo $response;
@@ -42,7 +42,7 @@ Zend_Amf_Server
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_Amf_Server();
+   $server = new ZendAmf\Server();
    $server->addFunction('myUberCoolFunction', 'my')
           ->setClass('Foo', 'foo')
           ->setClass('Bar', 'bar');
@@ -122,8 +122,8 @@ com_Foo_Bar をコールした場合は、 インクルードされたパスの�
 サーバへの Flex からの接続
 ----------------
 
-``Zend_Amf_Server`` に Flex プロジェクトから接続するのはきわめて簡単です。
-エンドポイントの *URI* を ``Zend_Amf_Server`` スクリプトに指定するだけでよいのです。
+``ZendAmf\Server`` に Flex プロジェクトから接続するのはきわめて簡単です。
+エンドポイントの *URI* を ``ZendAmf\Server`` スクリプトに指定するだけでよいのです。
 
 たとえば、作成したサーバをアプリケーションルートに ``server.php``
 という名前で配置したとしましょう。 *URI* は ``http://example.com/server.php`` となります。
@@ -189,7 +189,7 @@ Flex は新しい ``services-config.xml`` ファイルを作成し、それを�
    </services-config>
 
 この例にはポイントがふたつあります。まず *AMF*
-チャネルを作成し、そしてエンドポイントの *URL* を ``Zend_Amf_Server`` に指定します。
+チャネルを作成し、そしてエンドポイントの *URL* を ``ZendAmf\Server`` に指定します。
 
 .. code-block:: xml
    :linenos:
@@ -298,7 +298,7 @@ AMF レスポンス
    :linenos:
 
    $response = $server->handle();
-   $response->addAmfHeader(new Zend_Amf_Value_MessageHeader('foo', true, 'bar'))
+   $response->addAmfHeader(new ZendAmf_Value\MessageHeader('foo', true, 'bar'))
    echo $response;
 
 .. _zend.amf.server.typedobjects:
@@ -310,7 +310,7 @@ AMF レスポンス
 でもクライアントとサーバの間でオブジェクトをやりとりできます。
 これにより、クライアントとサーバの間での柔軟性と一貫性を確保できます。
 
-``Zend_Amf`` には、 ActionScript と *PHP* オブジェクトを関連付けるための 3
+``ZendAmf`` には、 ActionScript と *PHP* オブジェクトを関連付けるための 3
 つのメソッドが用意されています。
 
 - まず、サーバ側で明示的なバインドを行うには ``setClassMap()``
@@ -403,7 +403,7 @@ myContact にバインドされているすべての内容は、返された Con
 リソース
 ----
 
-``Zend_Amf`` には、サービスクラスが返すリソース型を ActionScript
+``ZendAmf`` には、サービスクラスが返すリソース型を ActionScript
 で使用可能な形式のデータにマッピングするツールが用意されています。
 
 リソース型を扱うには、そのリソース名に対応する名前のプラグインクラスを作成する必要があります。
@@ -415,13 +415,13 @@ myContact にバインドされているすべての内容は、返された Con
 このクラスを記述するファイル名は、クラス名の最後の部分と同じ名前にしなければなりません。
 たとえば先ほどの例の場合は ``MysqlResult.php`` となります。
 
-リソース用のプラグインを含むディレクトリは、 ``Zend_Amf``
+リソース用のプラグインを含むディレクトリは、 ``ZendAmf``
 型ローダーで登録しなければなりません。
 
 .. code-block:: php
    :linenos:
 
-   Zend_Amf_Parse_TypeLoader::addResourceDirectory(
+   ZendAmf_Parse\TypeLoader::addResourceDirectory(
        "My",
        "application/library/resources/My"
    );
@@ -429,7 +429,7 @@ myContact にバインドされているすべての内容は、返された Con
 プラグインのロードに関する詳細は、 :ref:`プラグインローダー <zend.loader.pluginloader>`
 を参照ください。
 
-``Zend_Amf`` リソース用のデフォルトディレクトリは自動的に登録されており、
+``ZendAmf`` リソース用のデフォルトディレクトリは自動的に登録されており、
 現在ここには "mysql result" リソースおよび "stream"
 リソースのプラグインが格納されています。
 
@@ -437,7 +437,7 @@ myContact にバインドされているすべての内容は、返された Con
    :linenos:
 
    // Example class implementing handling resources of type mysql result
-   class Zend_Amf_Parse_Resource_MysqlResult
+   class ZendAmf\Parse\Resource\MysqlResult
    {
        /**
         * Parse resource into array
@@ -462,10 +462,10 @@ myContact にバインドされているすべての内容は、返された Con
 サーバへの Flash からの接続
 -----------------
 
-``Zend_Amf_Server`` に Flash プロジェクトから接続する方法は、 Flex
-からの場合とは多少異なります。しかし、いったん接続してしまえば ``Zend_Amf_Server``
+``ZendAmf\Server`` に Flash プロジェクトから接続する方法は、 Flex
+からの場合とは多少異なります。しかし、いったん接続してしまえば ``ZendAmf\Server``
 は flex の場合と同じように動作します。 次の例は Flex *AS3*
-ファイルからでも使用できます。 同じ ``Zend_Amf_Server`` 設定ファイルを用い、 World
+ファイルからでも使用できます。 同じ ``ZendAmf\Server`` 設定ファイルを用い、 World
 クラスを用いて接続します。
 
 Flash CS を開き、新規 Flash ファイル (ActionScript 3) を作成します。 そのドキュメントに
@@ -533,7 +533,7 @@ Responder オブジェクトで、
    import flash.net.Responder;
 
 クラスの中で 3 つの変数を用意します。これらがそれぞれ NetConnection、Responder そして
-``Zend_Amf_Server`` へのゲートウェイ *URL* をあらわします。
+``ZendAmf\Server`` へのゲートウェイ *URL* をあらわします。
 
 .. code-block:: as
    :linenos:
@@ -542,7 +542,7 @@ Responder オブジェクトで、
    private var connection:NetConnection;
    private var responder:Responder;
 
-Main のコンストラクタでレスポンダを作成し、また ``Zend_Amf_Server``
+Main のコンストラクタでレスポンダを作成し、また ``ZendAmf\Server``
 エンドポイントへの新規接続も作成します。
 レスポンダでは、サーバからのレスポンスを処理するメソッドが 2
 つ定義されています。 わかりやすくするため、それぞれ onResult および onFault
@@ -556,7 +556,7 @@ Main のコンストラクタでレスポンダを作成し、また ``Zend_Amf_
    connection.connect(gateway);
 
 onComplete 関数は、コンストラクタの処理が終わった直後に実行されます。
-ここで、データをサーバに送信します。 ``Zend_Amf_Server`` World->hello
+ここで、データをサーバに送信します。 ``ZendAmf\Server`` World->hello
 関数をコールするコードを 1 行追加しています。
 
 .. code-block:: as
@@ -590,7 +590,7 @@ onFault 関数は、サーバから無効な結果が返ってきたときにコ
    }
 
 これで、ActionScript 内でのリモート接続処理は完成しました。 ZendExample
-を実行すると、 ``Zend_Amf`` へ接続されるようになります。
+を実行すると、 ``ZendAmf`` へ接続されるようになります。
 ここまでを振り返ってみましょう。まず最初にリモートサーバへの接続に必要な変数を追加し、
 サーバからのレスポンスを受け取ったときに使用するメソッドを定義し、
 そして最後に返された結果を ``trace()`` で出力しました。
@@ -600,16 +600,16 @@ onFault 関数は、サーバから無効な結果が返ってきたときにコ
 認証
 --
 
-``Zend_Amf_Server`` では、認証と認可のフックを指定して
+``ZendAmf\Server`` では、認証と認可のフックを指定して
 サービスへのアクセスを制御できます。この仕組みは、 :ref:`Zend_Auth <zend.auth>` および
 :ref:`Zend\Permissions\Acl <zend.permissions.acl>` コンポーネントが提供するものを使用しています。
 
-認証を定義するには、抽象クラス ``Zend_Amf_Auth_Abstract``
+認証を定義するには、抽象クラス ``ZendAmf_Auth\Abstract``
 を継承した認証アダプタを作成します。 このアダプタは、通常の :ref:`認証アダプタ
 <zend.auth.introduction.adapters>` と同様に ``authenticate()``
 メソッドを実装しなければなりません。
 
-アダプタでの認証の際には、親クラス ``Zend_Amf_Auth_Abstract`` のプロパティ **_username**
+アダプタでの認証の際には、親クラス ``ZendAmf_Auth\Abstract`` のプロパティ **_username**
 および **_password** を使用しなければなりません。 *AMF*
 リクエストヘッダに認証情報が含まれていれば、 ``authenticate()``
 がコールされる前にサーバが ``setCredentials()``
@@ -659,7 +659,7 @@ onFault 関数は、サーバから無効な結果が返ってきたときにコ
        return true;
    } else {
        require_once 'Zend/Amf/Server/Exception.php';
-       throw new Zend_Amf_Server_Exception("Access not allowed");
+       throw new ZendAmf_Server\Exception("Access not allowed");
    }
 
 

@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.akismet:
 
-Zend_Service_Akismet
+Zend\Service\Akismet
 ====================
 
 .. _zend.service.akismet.introduction:
@@ -9,7 +9,7 @@ Zend_Service_Akismet
 導入
 --
 
-``Zend_Service_Akismet`` は、 `Akismet API`_ のクライアント機能を提供します。Akismet
+``Zend\Service\Akismet`` は、 `Akismet API`_ のクライアント機能を提供します。Akismet
 サービスは、 入力データがスパムかどうかを判定するために用いられます。
 また、あるデータを「スパムである」とか「無実である (ハム)」
 などと登録するためのメソッドも公開しています。 もともとは Wordpress
@@ -32,7 +32,7 @@ Akismet を使用するには API キーが必要です。 キーを取得する
 API キーの検証
 ---------
 
-``Zend_Service_Akismet::verifyKey($key)`` を使用して、Akismet API
+``Zend\Service\Akismet::verifyKey($key)`` を使用して、Akismet API
 キーが有効かどうかを検証します。
 たいていの場合は特に検証する必要もないでしょうが、
 改ざんされていないかどうか調べたり、
@@ -44,7 +44,7 @@ API キーの検証
 
    // API キー、そしてアプリケーションやリソースへの URL
    // を指定してインスタンスを作成します
-   $akismet = new Zend_Service_Akismet($apiKey,
+   $akismet = new Zend\Service\Akismet($apiKey,
                                        'http://framework.zend.com/wiki/');
    if ($akismet->verifyKey($apiKey) {
        echo "このキーは有効です。\n";
@@ -62,7 +62,7 @@ API キーの検証
 スパムのチェック
 --------
 
-``Zend_Service_Akismet::isSpam($data)`` を使用して、Akismet
+``Zend\Service\Akismet::isSpam($data)`` を使用して、Akismet
 がそのデータをスパムとみなすかどうかを調べます。
 引数はひとつで、ここに連想配列を指定することができます。
 この配列には、次のキーを設定しなければなりません。
@@ -137,7 +137,7 @@ API キーの検証
 というものが見つかったら、それを Akismet
 に送信しましょう。それにより、フィルタの性能が向上します。
 
-``Zend_Service_Akismet::submitSpam()`` に指定する配列は、 ``isSpam()``
+``Zend\Service\Akismet::submitSpam()`` に指定する配列は、 ``isSpam()``
 に渡すものと同じ形式です。 しかし、このメソッドは値を返しません。 API
 キーが無効な場合は例外が発生します。
 
@@ -171,7 +171,7 @@ API キーの検証
 このような現象を発見したら、そのデータを Akismet に「ハム」
 あるいは無実のデータとして送信しましょう (ハムは善玉、スパムは悪玉です)。
 
-``Zend_Service_Akismet::submitHam()`` に指定する配列は、 ``isSpam()`` や ``submitSpam()``
+``Zend\Service\Akismet::submitHam()`` に指定する配列は、 ``isSpam()`` や ``submitSpam()``
 に渡すものと同じ形式です。また、 ``submitSpam()`` と同様、値を返しません。 API
 キーが無効な場合は例外が発生します。
 
@@ -200,7 +200,7 @@ API キーの検証
 Zend 固有のアクセス用メソッド
 -----------------
 
-Akismet API では四つのメソッドしか定義されていませんが、 ``Zend_Service_Akismet`` では
+Akismet API では四つのメソッドしか定義されていませんが、 ``Zend\Service\Akismet`` では
 それ以外のアクセス用メソッドも用意しています。
 これらを使用して、内部のプロパティを変更します。
 
@@ -225,7 +225,7 @@ Akismet API では四つのメソッドしか定義されていませんが、 `
   ユーザエージェントに設定する値は *some user agent/version | Akismet/version*
   形式でなければなりません。デフォルトは *Zend Framework/ZF-VERSION | Akismet/1.11* です。
   *ZF-VERSION* の部分には現在の Zend Framework のバージョン、つまり定数
-  ``Zend_Framework::VERSION`` の値があてはまります。
+  ``Zend\Framework\Framework::VERSION`` の値があてはまります。
 
 
 

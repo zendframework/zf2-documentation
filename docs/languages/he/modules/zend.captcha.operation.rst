@@ -4,13 +4,13 @@
 פעולת אנטי-ספאם
 ===============
 
-כל האובייקטים המוחשיים של CAPTCHA מיישמים את *Zend_Captcha_Adapter*, שנראה
+כל האובייקטים המוחשיים של CAPTCHA מיישמים את *Zend\Captcha\Adapter*, שנראה
 ככה:
 
 .. code-block:: php
    :linenos:
 
-   interface Zend_Captcha_Adapter extends Zend_Validate_Interface
+   interface Zend\Captcha\Adapter extends Zend\Validate\Interface
    {
        public function generate();
 
@@ -22,7 +22,7 @@
 
        public function getDecorator();
 
-       // Additionally, to satisfy Zend_Validate_Interface:
+       // Additionally, to satisfy Zend\Validate\Interface:
        public function isValid($value);
 
        public function getMessages();
@@ -47,10 +47,10 @@
    :linenos:
 
    // Creating a Zend_View instance
-   $view = new Zend_View();
+   $view = new Zend\View\View();
 
    // Originating request:
-   $captcha = new Zend_Captcha_Figlet(array(
+   $captcha = new Zend\Captcha\Figlet(array(
        'name' => 'foo',
        'wordLen' => 6,
        'timeout' => 300,

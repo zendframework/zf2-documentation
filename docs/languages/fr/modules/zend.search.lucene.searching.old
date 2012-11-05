@@ -11,7 +11,7 @@ Construire des requêtes
 
 Il y a deux manières de chercher dans un index. La première utilise le parseur de requête pour construire une
 requête à partir d'une chaîne de caractères. La seconde consiste à créer vos propres requêtes par programme
-à l'aide de l'*API* ``Zend_Search_Lucene``.
+à l'aide de l'*API* ``Zend\Search\Lucene``.
 
 Avant de choisir d'utiliser le parseur de requête fourni, veuillez considérer ce qui suit :
 
@@ -44,10 +44,10 @@ Les deux manières utilisent la même méthode d'*API* pour chercher dans l'inde
 .. code-block:: php
    :linenos:
 
-   $index = Zend_Search_Lucene::open('/data/my_index');
+   $index = Zend\Search\Lucene::open('/data/my_index');
    $index->find($query);
 
-La méthode ``Zend_Search_Lucene::find()`` détermine automatiquement le type de données entrantes et utilise le
+La méthode ``Zend\Search\Lucene::find()`` détermine automatiquement le type de données entrantes et utilise le
 parseur de requêtes ou construit un objet approprié à partir d''une donnée entrante de type chaîne de
 caractères.
 
@@ -66,7 +66,7 @@ pour les champs générés par le programme ou ceux qui ne sont pas "tokenizés"
 Parsage de requêtes
 ^^^^^^^^^^^^^^^^^^^
 
-La méthode ``Zend_Search_Lucene_Search_QueryParser::parse()`` peut être utilisée pour parser des chaînes de
+La méthode ``Zend\Search\Lucene\Search\QueryParser::parse()`` peut être utilisée pour parser des chaînes de
 requête en objets de requête.
 
 Cet objet de requête peut être utilisé dans une méthode de construction de requête de l'*API* pour combiner
@@ -78,25 +78,25 @@ Actually, in some cases it's the only way to search for values within untokenize
    .. code-block:: php
       :linenos:
 
-      $userQuery = Zend_Search_Lucene_Search_QueryParser::parse($queryStr);
-      $pathTerm  = new Zend_Search_Lucene_Index_Term(
+      $userQuery = Zend\Search\Lucene\Search\QueryParser::parse($queryStr);
+      $pathTerm  = new Zend\Search\Lucene\Index\Term(
                            '/data/doc_dir/' . $filename, 'path'
                        );
-      $pathQuery = new Zend_Search_Lucene_Search_Query_Term($pathTerm);
-      $query = new Zend_Search_Lucene_Search_Query_Boolean();
+      $pathQuery = new Zend\Search\Lucene\Search\Query\Term($pathTerm);
+      $query = new Zend\Search\Lucene\Search\Query\Boolean();
       $query->addSubquery($userQuery, true /* required */);
       $query->addSubquery($pathQuery, true /* required */);
       $hits = $index->find($query);
 
 
 
-La méthode ``Zend_Search_Lucene_Search_QueryParser::parse()`` prend également un paramètre optionnel d'encodage,
+La méthode ``Zend\Search\Lucene\Search\QueryParser::parse()`` prend également un paramètre optionnel d'encodage,
 qui permet de spécifier l'encodage de la chaîne de requête :
 
    .. code-block:: php
       :linenos:
 
-      $userQuery = Zend_Search_Lucene_Search_QueryParser::parse($queryStr,
+      $userQuery = Zend\Search\Lucene\Search\QueryParser::parse($queryStr,
                                                                 'iso-8859-5');
 
 
@@ -104,18 +104,18 @@ qui permet de spécifier l'encodage de la chaîne de requête :
 Si le paramètre d'encodage est omis, la locale courante est utilisée.
 
 Il est également possible de spécifier l'encodage par défaut de la chaîne de requête avec la méthode
-``Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding()``:
+``Zend\Search\Lucene\Search\QueryParser::setDefaultEncoding()``:
 
    .. code-block:: php
       :linenos:
 
-      Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('iso-8859-5');
+      Zend\Search\Lucene\Search\QueryParser::setDefaultEncoding('iso-8859-5');
       ...
-      $userQuery = Zend_Search_Lucene_Search_QueryParser::parse($queryStr);
+      $userQuery = Zend\Search\Lucene\Search\QueryParser::parse($queryStr);
 
 
 
-``Zend_Search_Lucene_Search_QueryParser::getDefaultEncoding()`` retourne la valeur actuelle de l'encodage par
+``Zend\Search\Lucene\Search\QueryParser::getDefaultEncoding()`` retourne la valeur actuelle de l'encodage par
 défaut d'une chaîne de requête (une chaîne vide signifiant "locale courante").
 
 .. _zend.search.lucene.searching.results:
@@ -123,18 +123,18 @@ défaut d'une chaîne de requête (une chaîne vide signifiant "locale courante"
 Résultats de recherche
 ----------------------
 
-Le résultat de recherche est un tableau d'objets ``Zend_Search_Lucene_Search_QueryHit``. Chacun d'eux a deux
+Le résultat de recherche est un tableau d'objets ``Zend\Search\Lucene\Search\QueryHit``. Chacun d'eux a deux
 propriétés : *$hit->id* est un identifiant numérique de document dans l'index et *$hit->score* est le score du
 hit dans le résultat de recherche. Les résultats sont triés par score (descendant depuis le meilleur score).
 
-L'objet ``Zend_Search_Lucene_Search_QueryHit`` expose également chaque champ du ``Zend_Search_Lucene_Document``
+L'objet ``Zend\Search\Lucene\Search\QueryHit`` expose également chaque champ du ``Zend\Search_Lucene\Document``
 trouvé dans la recherche en tant que propriété du hit. Dans l'exemple suivant, un hit est retourné avec deux
 champs du document correspondant : title et author.
 
 .. code-block:: php
    :linenos:
 
-   $index = Zend_Search_Lucene::open('/data/my_index');
+   $index = Zend\Search\Lucene::open('/data/my_index');
    $hits = $index->find($query);
    foreach ($hits as $hit) {
        echo $hit->score;
@@ -144,28 +144,28 @@ champs du document correspondant : title et author.
 
 Les champs stockés sont toujours retournés encodés en UTF-8.
 
-Optionnellement, l'objet original ``Zend_Search_Lucene_Document`` peut être retourné depuis le
-``Zend_Search_Lucene_Search_QueryHit``. Vous pouvez récupérer les parties stockées du document en utilisant la
+Optionnellement, l'objet original ``Zend\Search_Lucene\Document`` peut être retourné depuis le
+``Zend\Search\Lucene\Search\QueryHit``. Vous pouvez récupérer les parties stockées du document en utilisant la
 méthode ``getDocument()`` de l'objet index, puis les obtenir avec la méthode ``getFieldValue()``:
 
 .. code-block:: php
    :linenos:
 
-   $index = Zend_Search_Lucene::open('/data/my_index');
+   $index = Zend\Search\Lucene::open('/data/my_index');
    $hits = $index->find($query);
    foreach ($hits as $hit) {
-       // return Zend_Search_Lucene_Document object for this hit
+       // return Zend\Search_Lucene\Document object for this hit
        echo $document = $hit->getDocument();
-       // return a Zend_Search_Lucene_Field object
-       // from the Zend_Search_Lucene_Document
+       // return a Zend\Search_Lucene\Field object
+       // from the Zend\Search_Lucene\Document
        echo $document->getField('title');
-       // return the string value of the Zend_Search_Lucene_Field object
+       // return the string value of the Zend\Search_Lucene\Field object
        echo $document->getFieldValue('title');
        // same as getFieldValue()
        echo $document->title;
    }
 
-Les champs disponibles dans l'objet ``Zend_Search_Lucene_Document`` sont déterminés lors de l'indexation. Les
+Les champs disponibles dans l'objet ``Zend\Search_Lucene\Document`` sont déterminés lors de l'indexation. Les
 champs sont soit indexés, soit indexés et stockés dans le document par l'application d'indexage (p. ex.
 LuceneIndexCreation.jar).
 
@@ -180,14 +180,14 @@ Limiter le nombre de résultats
 L'opération la plus lourde au niveau du calcul dans une recherche est la calculation des scores. Cela peut prendre
 plusieurs secondes pour un grand ensemble de résultats (dizaine de milliers de hits).
 
-``Zend_Search_Lucene`` donne la possibilité de limiter la taille de l'ensemble de résultats avec les méthodes
+``Zend\Search\Lucene`` donne la possibilité de limiter la taille de l'ensemble de résultats avec les méthodes
 ``getResultSetLimit()`` et ``setResultSetLimit()``:
 
    .. code-block:: php
       :linenos:
 
-      $currentResultSetLimit = Zend_Search_Lucene::getResultSetLimit();
-      Zend_Search_Lucene::setResultSetLimit($newLimit);
+      $currentResultSetLimit = Zend\Search\Lucene::getResultSetLimit();
+      Zend\Search\Lucene::setResultSetLimit($newLimit);
 
 La valeur par défaut de 0 signifie 'pas de limite'.
 
@@ -198,7 +198,7 @@ Cela ne retournera pas les 'N meilleurs' résultats, mais seulement les 'N premi
 Etablissement des scores des résultats de recherche
 ---------------------------------------------------
 
-``Zend_Search_Lucene`` utilise le même algorithme de scoring que Java Lucene. Par défaut, tous les hits dans
+``Zend\Search\Lucene`` utilise le même algorithme de scoring que Java Lucene. Par défaut, tous les hits dans
 l'ensemble de résultats sont triés par score. Les hits avec le plus grand score viennent en premier, et les
 documents avec des hauts scores devraient mieux correspondre à la requête que ceux avec des scores moins
 élevés.
@@ -216,7 +216,7 @@ Le score d'un hit peut être récupéré en accédant à la propriété *score* 
        echo $hit->score;
    }
 
-La classe ``Zend_Search_Lucene_Search_Similarity`` est utilisée pour calculer le score pour chaque hit. Consultez
+La classe ``Zend\Search\Lucene\Search\Similarity`` est utilisée pour calculer le score pour chaque hit. Consultez
 la section :ref:`Extensibility. Scoring Algorithms <zend.search.lucene.extending.scoring>` pour des détails.
 
 .. _zend.search.lucene.searching.sorting:
@@ -279,9 +279,9 @@ correspondant de l'index, ce qui peut réduire considérablement les performance
 Mise en évidence des résultats de recherche
 -------------------------------------------
 
-``Zend_Search_Lucene`` propose deux options pour mettre en évidence les résultats de recherche.
+``Zend\Search\Lucene`` propose deux options pour mettre en évidence les résultats de recherche.
 
-La première consiste à utiliser la classe ``Zend_Search_Lucene_Document_Html`` (voyez :ref:`la section Documents
+La première consiste à utiliser la classe ``Zend\Search\Lucene\Document\Html`` (voyez :ref:`la section Documents
 HTML <zend.search.lucene.index-creation.html-documents>` pour des détails) en utilisant les méthodes suivantes :
 
    .. code-block:: php
@@ -313,7 +313,7 @@ HTML <zend.search.lucene.index-creation.html-documents>` pour des détails) en u
                                      callback (le premier paramètre non optionnel est un fragment
                                      de code HTML pour la mise en évidence).
        * @return string
-       * @throws Zend_Search_Lucene_Exception
+       * @throws Zend\Search_Lucene\Exception
        */
       public function highlightExtended($words, $callback, $params = array())
 
@@ -321,7 +321,7 @@ HTML <zend.search.lucene.index-creation.html-documents>` pour des détails) en u
 
 Pour personnaliser le comportement de mise en évidence, utilisez la méthode ``highlightExtended()`` avec le
 callback spécifié qui prendra un ou plusieurs paramètres. [#]_, ou étendez la classe
-``Zend_Search_Lucene_Document_Html`` et redéfinissez la méthode ``applyColour($stringToHighlight, $colour)`` qui
+``Zend\Search\Lucene\Document\Html`` et redéfinissez la méthode ``applyColour($stringToHighlight, $colour)`` qui
 est utilisée comme le callback de mise en évidence par défaut. [#]_
 
 Les :ref:`View helpers <zend.view.helpers>` peuvent également être utilisés comme des callbacks dans un contexte
@@ -335,7 +335,7 @@ d'affichage du script :
 
 
 Le résultat de l'opération de mise en évidence est récupéré avec la méthode
-*Zend_Search_Lucene_Document_Html->getHTML()*.
+*Zend\Search\Lucene\Document\Html->getHTML()*.
 
 .. note::
 
@@ -352,13 +352,13 @@ Le résultat de l'opération de mise en évidence est récupéré avec la métho
    A l'inverse, si un mot est ignoré par l'analyseur courant (ex. si un filtre pour ignorer les mots trop courts
    est appliqué à l'analyseur), alors rien ne sera mis en évidence.
 
-La seconde option est d'utiliser la méthode *Zend_Search_Lucene_Search_Query->highlightMatches(string $inputHTML[,
-$defaultEncoding = 'UTF-8'[, Zend_Search_Lucene_Search_Highlighter_Interface $highlighter]])*:
+La seconde option est d'utiliser la méthode *Zend\Search\Lucene\Search\Query->highlightMatches(string $inputHTML[,
+$defaultEncoding = 'UTF-8'[, Zend\Search\Lucene\Search\Highlighter\Interface $highlighter]])*:
 
    .. code-block:: php
       :linenos:
 
-      $query = Zend_Search_Lucene_Search_QueryParser::parse($queryStr);
+      $query = Zend\Search\Lucene\Search\QueryParser::parse($queryStr);
       $highlightedHTML = $query->highlightMatches($sourceHTML);
 
 
@@ -367,23 +367,23 @@ Le second paramètre optionnel est l'encodage par défaut du document HTML. Il e
 spécifié dans le metatag HTTP-EQUIV Content-Type.
 
 Le troisième paramètre optionnel est un objet de mise en évidence qui doit implémenter l'interface
-``Zend_Search_Lucene_Search_Highlighter_Interface``:
+``Zend\Search\Lucene\Search\Highlighter\Interface``:
 
    .. code-block:: php
       :linenos:
 
-      interface Zend_Search_Lucene_Search_Highlighter_Interface
+      interface Zend\Search\Lucene\Search\Highlighter\Interface
       {
           /**
            * Définit le document pour la mise en évidence
            *
-           * @param Zend_Search_Lucene_Document_Html $document
+           * @param Zend\Search\Lucene\Document\Html $document
            */
-          public function setDocument(Zend_Search_Lucene_Document_Html $document);
+          public function setDocument(Zend\Search\Lucene\Document\Html $document);
           /**
            * Récupère le document pour la mise en évidence
            *
-           * @return Zend_Search_Lucene_Document_Html $document
+           * @return Zend\Search\Lucene\Document\Html $document
            */
           public function getDocument();
           /**
@@ -395,10 +395,10 @@ Le troisième paramètre optionnel est un objet de mise en évidence qui doit im
           public function highlight($words);
       }
 
-Où l'objet ``Zend_Search_Lucene_Document_Html`` est un objet construit à partir de la source HTML fournie par la
-méthode ``Zend_Search_Lucene_Search_Query->highlightMatches()``
+Où l'objet ``Zend\Search\Lucene\Document\Html`` est un objet construit à partir de la source HTML fournie par la
+méthode ``Zend\Search\Lucene\Search\Query->highlightMatches()``
 
-Si le paramètre ``$highlighter`` est omis, un objet ``Zend_Search_Lucene_Search_Highlighter_Default`` est
+Si le paramètre ``$highlighter`` est omis, un objet ``Zend\Search\Lucene\Search\Highlighter\Default`` est
 instancié et utilisé.
 
 La méthode de mise en évidence ``highlight()`` est invoquée une fois par sous-requête, ainsi elle a la
@@ -408,7 +408,7 @@ La mise en évidence par défaut le fait en parcourant une table prédéfinie de
 votre propre classe de mise en évidence ou juste étendre la classe par défaut et redéfinir la table de
 couleurs.
 
-*Zend_Search_Lucene_Search_Query->htmlFragmentHighlightMatches()* a un comportement similaire. La seule différence
+*Zend\Search\Lucene\Search\Query->htmlFragmentHighlightMatches()* a un comportement similaire. La seule différence
 est qu'il prend en entrée et retourne un fragment HTML sans les balises <>HTML>, <HEAD>, <BODY>. Néanmoins, le
 fragment est automatiquement transformé en *XHTML* valide.
 

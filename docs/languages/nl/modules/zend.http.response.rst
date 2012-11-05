@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.http.response:
 
-Zend_Http_Response
+Zend\Http\Response
 ==================
 
 .. _zend.http.response.introduction:
@@ -9,7 +9,7 @@ Zend_Http_Response
 Inleiding
 ---------
 
-*Zend_Http_Response* verstrekt eenvoudige toegang tot de antwoorden die door :ref:` <zend.http.client>` worden
+*Zend\Http\Response* verstrekt eenvoudige toegang tot de antwoorden die door :ref:` <zend.http.client>` worden
 teruggestuurd. Het verstrekt een intuïtieve set van methodes om met de HTTP antwoorddata die van een verzoek wordt
 ontvangen te werken:
 
@@ -35,7 +35,7 @@ ontvangen te werken:
    <?php
    require_once 'Zend/Http/Client.php';
    try {
-       $http = new Zend_Http_Client('http://example.org');
+       $http = new Zend\Http\Client('http://example.org');
        $response = $http->get();
        if ($response->isSuccessful()) {
            echo $response->getBody();
@@ -48,7 +48,7 @@ ontvangen te werken:
                echo "$responseHeaderName: $responseHeaderValue\n";
            }
        }
-   } catch (Zend_Http_Exception $e) {
+   } catch (Zend\Http\Exception $e) {
        echo '<p>Er trad een fout op (' .$e->getMessage(). ')</p>';
    }
    ?>

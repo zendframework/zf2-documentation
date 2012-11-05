@@ -8,7 +8,7 @@ I singoli elementi (*<entry>*) di un feed Atom sono validi anche da soli. Di nor
 è l'URL del feed stesso seguito da */<entryId>*, ad esempio *http://atom.example.com/feed/1*, per utilizzare l'URL
 citato in precedenza.
 
-Anche se si legge un singolo elemento, si dispone ancora di un valido oggetto *Zend_Feed_Atom*, ma verrà creato un
+Anche se si legge un singolo elemento, si dispone ancora di un valido oggetto *Zend\Feed\Atom*, ma verrà creato un
 "anonimo" feed contenente un solo elemento.
 
 .. _zend.feed.consuming-atom-single-entry.example.atom:
@@ -20,7 +20,7 @@ Anche se si legge un singolo elemento, si dispone ancora di un valido oggetto *Z
 
    <?php
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/1');
    echo 'Il feed contiene: ' . $feed->count() . ' elemento.';
 
    $entry = $feed->current();
@@ -36,6 +36,6 @@ nodo *<entry>*:
 
    <?php
 
-   $entry = new Zend_Feed_Entry_Atom('http://atom.example.com/feed/1');
+   $entry = new Zend\Feed_Entry\Atom('http://atom.example.com/feed/1');
    echo $entry->title();
 

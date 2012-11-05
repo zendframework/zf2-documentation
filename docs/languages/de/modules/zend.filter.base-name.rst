@@ -4,15 +4,15 @@
 BaseName
 ========
 
-``Zend_Filter_BaseName`` erlaubt es einen String zu filtern welcher den Pfad zu einer Daten enthält und gibt den
+``Zend\Filter\BaseName`` erlaubt es einen String zu filtern welcher den Pfad zu einer Daten enthält und gibt den
 Basisnamen dieser Datei zurück.
 
 .. _zend.filter.set.basename.options:
 
-Unterstützte Optionen für Zend_Filter_BaseName
+Unterstützte Optionen für Zend\Filter\BaseName
 ----------------------------------------------
 
-Es gibt keine zusätzlichen Optionen für ``Zend_Filter_BaseName``.
+Es gibt keine zusätzlichen Optionen für ``Zend\Filter\BaseName``.
 
 .. _zend.filter.set.basename.basic:
 
@@ -24,7 +24,7 @@ Ein einfaches Beispiel der Verwendung ist nachfolgend zu finden:
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_BaseName();
+   $filter = new Zend\Filter\BaseName();
 
    print $filter->filter('/vol/tmp/filename');
 
@@ -33,7 +33,7 @@ Das gibt 'filename' zurück.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_BaseName();
+   $filter = new Zend\Filter\BaseName();
 
    print $filter->filter('/vol/tmp/filename.txt');
 

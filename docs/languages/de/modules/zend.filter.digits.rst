@@ -8,10 +8,10 @@ Gibt den String ``$value`` zurück und entfernt alle ausser Ziffern.
 
 .. _zend.filter.set.digits.options:
 
-Unterstützte Optionen für Zend_Filter_Digits
+Unterstützte Optionen für Zend\Filter\Digits
 --------------------------------------------
 
-Es gibt keine zusätzlichen Optionen für ``Zend_Filter_Digits``.
+Es gibt keine zusätzlichen Optionen für ``Zend\Filter\Digits``.
 
 .. _zend.filter.set.digits.basic:
 
@@ -23,7 +23,7 @@ Ein einfaches Beispiel der Verwendung ist nachfolgend zu finden:
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Digits();
+   $filter = new Zend\Filter\Digits();
 
    print $filter->filter('October 2009');
 
@@ -32,7 +32,7 @@ Dies gibt "2009" zurück.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Digits();
+   $filter = new Zend\Filter\Digits();
 
    print $filter->filter('HTML 5 für Dummies');
 

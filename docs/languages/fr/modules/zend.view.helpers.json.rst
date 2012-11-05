@@ -27,10 +27,10 @@ L'utilisation de l'aide de vue *JSON* est très simple :
 
 .. note::
 
-   **Keeping layouts and enabling encoding using Zend_Json_Expr**
+   **Keeping layouts and enabling encoding using Zend\Json\Expr**
 
    Each method in the *JSON* helper accepts a second, optional argument. This second argument can be a boolean flag
-   to enable or disable layouts, or an array of options that will be passed to ``Zend_Json::encode()`` and used
+   to enable or disable layouts, or an array of options that will be passed to ``Zend\Json\Json::encode()`` and used
    internally to encode data.
 
    To keep layouts, the second parameter needs to be boolean ``TRUE``. When the second parameter is an array,
@@ -45,7 +45,7 @@ L'utilisation de l'aide de vue *JSON* est très simple :
       // Or boolean true as "keepLayouts" key:
       echo $this->json($this->data, array('keepLayouts' => true));
 
-   ``Zend_Json::encode`` allows the encoding of native *JSON* expressions using ``Zend_Json_Expr`` objects. This
+   ``Zend\Json\Json::encode`` allows the encoding of native *JSON* expressions using ``Zend\Json\Expr`` objects. This
    option is disabled by default. To enable this option, pass a boolean ``TRUE`` to the *enableJsonExprFinder* key
    of the options array:
 

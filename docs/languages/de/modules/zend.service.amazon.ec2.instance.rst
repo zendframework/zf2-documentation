@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.instance:
 
-Zend_Service_Amazon_Ec2: Instanzen
+Zend\Service_Amazon\Ec2: Instanzen
 ==================================
 
 .. _zend.service.amazon.ec2.instance.types:
@@ -35,15 +35,15 @@ starten und die Anweundung zu benchmarken.
    +-------------------+------------------------------------------------------------------------------+-------------+--------------------------------------------------------------------+---------+----------------+---------+---------------------------------------------+
    |Typ                |CPU                                                                           |Hauptspeicher|Plattenspeicher                                                     |Plattform|I/O             |Name     |Name der Konstante                           |
    +===================+==============================================================================+=============+====================================================================+=========+================+=========+=============================================+
-   |Klein              |1 EC2 Recheneinheit (1 virtueller Kern mit 1 EC2 Recheneinheit)               |1.7 GB       |160 GB Speicher der Instanz (150 GB plus 10 GB Root Partition)      |32=bit   |Moderat         |m1.small |Zend_Service_Amazon_Ec2_Instance::SMALL      |
+   |Klein              |1 EC2 Recheneinheit (1 virtueller Kern mit 1 EC2 Recheneinheit)               |1.7 GB       |160 GB Speicher der Instanz (150 GB plus 10 GB Root Partition)      |32=bit   |Moderat         |m1.small |Zend\Service\Amazon\Ec2\Instance::SMALL      |
    +-------------------+------------------------------------------------------------------------------+-------------+--------------------------------------------------------------------+---------+----------------+---------+---------------------------------------------+
-   |Groß               |4 EC2 Recheneinheiten (2 virtuelle Kerne mit jeweils 2 EC2 Recheneinheiten)   |7.5 GB       |850 GB Speicher der Instanz (2 x 420 GB plus 10 GB Root Partition)  |64-bit   |Hoch            |m1.large |Zend_Service_Amazon_Ec2_Instance::LARGE      |
+   |Groß               |4 EC2 Recheneinheiten (2 virtuelle Kerne mit jeweils 2 EC2 Recheneinheiten)   |7.5 GB       |850 GB Speicher der Instanz (2 x 420 GB plus 10 GB Root Partition)  |64-bit   |Hoch            |m1.large |Zend\Service\Amazon\Ec2\Instance::LARGE      |
    +-------------------+------------------------------------------------------------------------------+-------------+--------------------------------------------------------------------+---------+----------------+---------+---------------------------------------------+
-   |Extra Groß         |8 EC2 Recheneinheiten (4 virtuelle Kerne mit jeweils 2 EC2 Recheneinheiten)   |15 GB        |1,690 GB Speicher der Instanz (4 x 420 GB plus 10 GB Root Partition)|64-bit   |Hoch            |m1.xlarge|Zend_Service_Amazon_Ec2_Instance::XLARGE     |
+   |Extra Groß         |8 EC2 Recheneinheiten (4 virtuelle Kerne mit jeweils 2 EC2 Recheneinheiten)   |15 GB        |1,690 GB Speicher der Instanz (4 x 420 GB plus 10 GB Root Partition)|64-bit   |Hoch            |m1.xlarge|Zend\Service\Amazon\Ec2\Instance::XLARGE     |
    +-------------------+------------------------------------------------------------------------------+-------------+--------------------------------------------------------------------+---------+----------------+---------+---------------------------------------------+
-   |High-CPU Medium    |5 EC2 Recheneinheiten (2 virtuelle Kerne mit jeweils 2.5 EC2 Recheneinheiten) |1.7 GB       |350 GB Speicher der Instanz (340 GB plus 10 GB Root Partition)      |32-bit   |Durchschnittlich|c1.medium|Zend_Service_Amazon_Ec2_Instance::HCPU_MEDIUM|
+   |High-CPU Medium    |5 EC2 Recheneinheiten (2 virtuelle Kerne mit jeweils 2.5 EC2 Recheneinheiten) |1.7 GB       |350 GB Speicher der Instanz (340 GB plus 10 GB Root Partition)      |32-bit   |Durchschnittlich|c1.medium|Zend\Service\Amazon\Ec2\Instance::HCPU_MEDIUM|
    +-------------------+------------------------------------------------------------------------------+-------------+--------------------------------------------------------------------+---------+----------------+---------+---------------------------------------------+
-   |High-CPU Extra Groß|20 EC2 Recheneinheiten (8 virtuelle Kerne mit jeweils 2.5 EC2 Recheneinheiten)|7 GB         |1,690 GB Speicher der Instanz (4 x 420 GB plus 10 GB Root Partition)|64-bit   |Hoch            |c1.xlarge|Zend_Service_Amazon_Ec2_Instance::HCPU_XLARGE|
+   |High-CPU Extra Groß|20 EC2 Recheneinheiten (8 virtuelle Kerne mit jeweils 2.5 EC2 Recheneinheiten)|7 GB         |1,690 GB Speicher der Instanz (4 x 420 GB plus 10 GB Root Partition)|64-bit   |Hoch            |c1.xlarge|Zend\Service\Amazon\Ec2\Instance::HCPU_XLARGE|
    +-------------------+------------------------------------------------------------------------------+-------------+--------------------------------------------------------------------+---------+----------------+---------+---------------------------------------------+
 
 .. _zend.service.amazon.ec2.instance.operations:
@@ -105,7 +105,7 @@ Anbei ist eine Tabelle welche die gültigen Werte enthält.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->run(array('imageId' => 'ami-509320',
                                       'keyName' => 'myKey',
@@ -127,7 +127,7 @@ rebooten werden ignoriert.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->reboot('instanceId');
 
@@ -143,7 +143,7 @@ einmal terminiert wird, wird jeder Aufruf erfolgreich sein.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->terminate('instanceId');
 
@@ -177,7 +177,7 @@ wird die man nicht besitzt, wird diese in den zurückgegebenen Ergebnissen nicht
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->describe('instanceId');
 
@@ -203,7 +203,7 @@ imageId gestartet wurden.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->describeByImageId('imageId');
 
@@ -232,7 +232,7 @@ von der Konsole.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->consoleOutput('instanceId');
 
@@ -250,7 +250,7 @@ ist.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->confirmProduct('productCode', 'instanceId');
 
@@ -264,7 +264,7 @@ Instant das Monitoring aktuell nicht aktiviert hat, dann wird es eingeschaltet.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->monitor('instanceId');
 
@@ -278,7 +278,7 @@ Instant das Monitoring aktuell aktiviert hat, dann wird es ausgeschaltet.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->unmonitor('instanceId');
 

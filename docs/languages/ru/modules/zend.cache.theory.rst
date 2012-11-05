@@ -12,13 +12,13 @@
 условное исполнение, используемое для того, чтобы части вашего
 кода могли быть пропущены целиком, этим повышается
 производительность. Основной метод фронтэнда (например,
-``Zend_Cache_Core::get()``) всегда спроектирован так, чтобы возвращать
+``Zend\Cache\Core::get()``) всегда спроектирован так, чтобы возвращать
 ``FALSE`` при промахе кэша, если это имеет смысл для данного
 фронэнда. Это дает конечным пользователям возможность
 включать части кода, которые нужно кэшировать (и затем
 пропускать) в операторы **if(){ ... }**, где условием является сам
 метод ``Zend_Cache``. Но в конце этих блоков вы должны сохранять то,
-что было сгенерировано (например, методом ``Zend_Cache_Core::save()``).
+что было сгенерировано (например, методом ``Zend\Cache\Core::save()``).
 
 .. note::
 
@@ -61,7 +61,7 @@
 
    // Создаем экземпляр
    // (два последних аргумента являются необязательными)
-   $cache = Zend_Cache::factory($frontendName,
+   $cache = Zend\Cache\Cache::factory($frontendName,
                                 $backendName,
                                 $frontendOptions,
                                 $backendOptions);
@@ -73,7 +73,7 @@
 
 .. note::
 
-   Всегда используйте ``Zend_Cache::factory()`` для получения экземпляров
+   Всегда используйте ``Zend\Cache\Cache::factory()`` для получения экземпляров
    фронтэнда. Непосредственно созданные экземпляры фронтэндов
    и бэкэндов будут работать не так, как ожидается.
 
@@ -121,10 +121,10 @@
    :linenos:
 
    // удаление всех записей
-   $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_ALL);
 
    // удаление только устаревших записей
-   $cache->clean(Zend_Cache::CLEANING_MODE_OLD);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_OLD);
 
 Если вы хотите удалить записи кэша, помеченные тегами 'tagA' и
 'tagC':
@@ -133,7 +133,7 @@
    :linenos:
 
    $cache->clean(
-       Zend_Cache::CLEANING_MODE_MATCHING_TAG,
+       Zend\Cache\Cache::CLEANING_MODE_MATCHING_TAG,
        array('tagA', 'tagC')
    );
 
@@ -144,7 +144,7 @@
    :linenos:
 
    $cache->clean(
-       Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG,
+       Zend\Cache\Cache::CLEANING_MODE_NOT_MATCHING_TAG,
        array('tagA', 'tagC')
    );
 
@@ -155,7 +155,7 @@
    :linenos:
 
    $cache->clean(
-       Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG,
+       Zend\Cache\Cache::CLEANING_MODE_MATCHING_ANY_TAG,
        array('tagA', 'tagC')
    );
 

@@ -22,7 +22,7 @@
 ページ
 ^^^
 
-``Zend_Navigation``\ におけるページ (``Zend_Navigation_Page``) は、 - その最も基本的な形式で -
+``Zend_Navigation``\ におけるページ (``Zend\Navigation\Page``) は、 - その最も基本的な形式で -
 ポインターをウェブ・ページに保持するオブジェクトです。
 ポインターそのものに加えて、ページオブジェクトはナビゲーションのために
 一般的に関連するいくつかのその他の性能、 例えば *label*\ や *title*\ 他を含みます。
@@ -34,7 +34,7 @@
 コンテナ
 ^^^^
 
-ナビゲーション・コンテナ (``Zend_Navigation_Container``) は、
+ナビゲーション・コンテナ (``Zend\Navigation\Container``) は、
 ページのためのコンテナ・クラスです。
 ページを追加したり、取得したり、削除したり、反復したりするためのメソッドがあります。
 それは `SPL`_ インターフェース ``RecursiveIterator`` 及び ``Countable`` を実装して、
@@ -45,7 +45,7 @@
 
 .. note::
 
-   ``Zend_Navigation_Page``\ は ``Zend_Navigation_Container``
+   ``Zend\Navigation\Page``\ は ``Zend\Navigation\Container``
    を拡張します。それはページがサブページを持てることを意味します。
 
 .. _zend.navigation.introduction.separation:

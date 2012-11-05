@@ -23,7 +23,7 @@
    (クラスのインスタンスは常にひとつだけ) を実装しており、静的メソッド
    ``getInstance()`` でそれを使用します。 つまり、 **new** 演算子や **clone** キーワードは
    ``Zend_Auth`` クラスでは動作しないということです。そのかわりに
-   ``Zend_Auth::getInstance()`` を使用します。
+   ``Zend\Auth\Auth::getInstance()`` を使用します。
 
 .. _zend.auth.introduction.adapters:
 
@@ -37,7 +37,7 @@
 (いわゆる ID) を受け取り、 認証サービスに対する問い合わせを行い、
 結果を返すという処理は、すべての ``Zend_Auth`` アダプタで共通です。
 
-各 ``Zend_Auth`` アダプタクラスは、 ``Zend_Auth_Adapter_Interface``
+各 ``Zend_Auth`` アダプタクラスは、 ``Zend\Auth_Adapter\Interface``
 を実装しています。このインターフェイスで定義されているメソッドが ``authenticate()``
 で、アダプタクラスは 認証クエリを実行するためにこれを実装する必要があります。
 各アダプタクラスは、 ``authenticate()``
@@ -55,7 +55,7 @@
 .. code-block:: php
    :linenos:
 
-   class MyAuthAdapter implements Zend_Auth_Adapter_Interface
+   class MyAuthAdapter implements Zend\Auth_Adapter\Interface
    {
        /**
         * 認証用のユーザ名とパスワードを設定します
@@ -70,8 +70,8 @@
        /**
         * 認証を試みます
         *
-        * @throws Zend_Auth_Adapter_Exception が、認証処理をできなかった場合に発生します
-        * @return Zend_Auth_Result
+        * @throws Zend\Auth_Adapter\Exception が、認証処理をできなかった場合に発生します
+        * @return Zend\Auth\Result
         */
        public function authenticate()
        {
@@ -79,10 +79,10 @@
        }
    }
 
-docblock コメントで説明しているとおり、 ``authenticate()`` は ``Zend_Auth_Result`` (あるいは
-``Zend_Auth_Result`` の派生クラス)
+docblock コメントで説明しているとおり、 ``authenticate()`` は ``Zend\Auth\Result`` (あるいは
+``Zend\Auth\Result`` の派生クラス)
 のインスタンスを返す必要があります。何らかの理由で認証の問い合わせができなかった場合は、
-``authenticate()`` は ``Zend_Auth_Adapter_Exception``
+``authenticate()`` は ``Zend\Auth_Adapter\Exception``
 から派生した例外をスローしなければなりません。
 
 .. _zend.auth.introduction.results:
@@ -90,15 +90,15 @@ docblock コメントで説明しているとおり、 ``authenticate()`` は ``
 結果
 --
 
-``Zend_Auth`` アダプタは、 ``authenticate()`` の結果として ``Zend_Auth_Result``
+``Zend_Auth`` アダプタは、 ``authenticate()`` の結果として ``Zend\Auth\Result``
 のインスタンスを返します。
 これにより、認証を試みた結果を表します。アダプタのインスタンスを作成した際に
-``Zend_Auth_Result`` オブジェクトが作成され、 以下の 4 つのメソッドで ``Zend_Auth``
+``Zend\Auth\Result`` オブジェクトが作成され、 以下の 4 つのメソッドで ``Zend_Auth``
 アダプタの結果に対する共通の操作ができます。
 
 - ``isValid()``- その結果が 認証の成功を表している場合にのみ ``TRUE`` を返します。
 
-- ``getCode()``-``Zend_Auth_Result`` の定数を返します。
+- ``getCode()``-``Zend\Auth\Result`` の定数を返します。
   これは、認証に失敗したのか成功したのかを表すものです。
   これを使用する場面としては、認証の結果をいくつかの結果から区別したい場合などがあります。
   これにより、たとえば認証結果について、より詳細な情報を管理することができるようになります。
@@ -120,12 +120,12 @@ docblock コメントで説明しているとおり、 ``authenticate()`` は ``
 .. code-block:: php
    :linenos:
 
-   Zend_Auth_Result::SUCCESS
-   Zend_Auth_Result::FAILURE
-   Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND
-   Zend_Auth_Result::FAILURE_IDENTITY_AMBIGUOUS
-   Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID
-   Zend_Auth_Result::FAILURE_UNCATEGORIZED
+   Zend\Auth\Result::SUCCESS
+   Zend\Auth\Result::FAILURE
+   Zend\Auth\Result::FAILURE_IDENTITY_NOT_FOUND
+   Zend\Auth\Result::FAILURE_IDENTITY_AMBIGUOUS
+   Zend\Auth\Result::FAILURE_CREDENTIAL_INVALID
+   Zend\Auth\Result::FAILURE_UNCATEGORIZED
 
 次の例は、結果コードを処理する方法を示すものです。
 
@@ -137,15 +137,15 @@ docblock コメントで説明しているとおり、 ``authenticate()`` は ``
 
    switch ($result->getCode()) {
 
-       case Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND:
+       case Zend\Auth\Result::FAILURE_IDENTITY_NOT_FOUND:
            /** ID が存在しない場合の処理 **/
            break;
 
-       case Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID:
+       case Zend\Auth\Result::FAILURE_CREDENTIAL_INVALID:
            /** 認証に失敗した場合の処理 **/
            break;
 
-       case Zend_Auth_Result::SUCCESS:
+       case Zend\Auth\Result::SUCCESS:
            /** 認証に成功した場合の処理 **/
            break;
 
@@ -174,11 +174,11 @@ PHP セッションにおけるデフォルトの持続性
 ^^^^^^^^^^^^^^^^^^^^^^
 
 デフォルトでは、 ``Zend_Auth`` は、 認証に成功した際の ID 情報を *PHP*
-のセッションを使用して保存します。 認証に成功すると、 ``Zend_Auth::authenticate()``
+のセッションを使用して保存します。 認証に成功すると、 ``Zend\Auth\Auth::authenticate()``
 は認証結果を持続ストレージに保存します。何も指定しなければ、 ``Zend_Auth``
-が使用するストレージクラスは ``Zend_Auth_Storage_Session`` となります。これは
+が使用するストレージクラスは ``Zend\Auth_Storage\Session`` となります。これは
 :ref:`Zend_Session <zend.session>` を使用しています。 独自のクラスを使用するには、
-``Zend_Auth_Storage_Interface`` を実装したクラスのオブジェクトを ``Zend_Auth::setStorage()``
+``Zend\Auth_Storage\Interface`` を実装したクラスのオブジェクトを ``Zend\Auth\Auth::setStorage()``
 で設定します。
 
 .. note::
@@ -191,20 +191,20 @@ PHP セッションにおけるデフォルトの持続性
 
 .. rubric:: セッション名前空間の変更
 
-``Zend_Auth_Storage_Session`` は、セッション名前空間として '``Zend_Auth``'
-を使用します。これを変更するには、別の値を ``Zend_Auth_Storage_Session``
-のコンストラクタで指定します。 この値が、内部で ``Zend_Session_Namespace``
+``Zend\Auth_Storage\Session`` は、セッション名前空間として '``Zend_Auth``'
+を使用します。これを変更するには、別の値を ``Zend\Auth_Storage\Session``
+のコンストラクタで指定します。 この値が、内部で ``Zend\Session\Namespace``
 のコンストラクタに渡されます。これは認証を試みる前に行う必要があります。
-なぜなら、 ``Zend_Auth::authenticate()`` は ID を自動的に保存するからです。
+なぜなら、 ``Zend\Auth\Auth::authenticate()`` は ID を自動的に保存するからです。
 
 .. code-block:: php
    :linenos:
 
    // Zend_Auth のシングルトンインスタンスへの参照を保存します
-   $auth = Zend_Auth::getInstance();
+   $auth = Zend\Auth\Auth::getInstance();
 
    // 'Zend_Auth' のかわりに 'someNamespace' を使用します
-   $auth->setStorage(new Zend_Auth_Storage_Session('someNamespace'));
+   $auth->setStorage(new Zend\Auth_Storage\Session('someNamespace'));
 
    /**
     * @todo 認証アダプタ $authAdapter を設定します
@@ -218,27 +218,27 @@ PHP セッションにおけるデフォルトの持続性
 独自のストレージの実装
 ^^^^^^^^^^^
 
-``Zend_Auth_Storage_Session`` とは異なる形式で、 ID
+``Zend\Auth_Storage\Session`` とは異なる形式で、 ID
 を持続させたくなることもあるでしょう。そのような場合は、
-``Zend_Auth_Storage_Interface`` を実装したクラスのインスタンスを ``Zend_Auth::setStorage()``
+``Zend\Auth_Storage\Interface`` を実装したクラスのインスタンスを ``Zend\Auth\Auth::setStorage()``
 で設定します。
 
 .. _zend.auth.introduction.persistence.custom.example:
 
 .. rubric:: 独自のストレージクラスの使用法
 
-ID を持続させるストレージクラスを ``Zend_Auth_Storage_Session`` の代わりに使用するには、
-``Zend_Auth_Storage_Interface`` を実装します。
+ID を持続させるストレージクラスを ``Zend\Auth_Storage\Session`` の代わりに使用するには、
+``Zend\Auth_Storage\Interface`` を実装します。
 
 .. code-block:: php
    :linenos:
 
-   class MyStorage implements Zend_Auth_Storage_Interface
+   class MyStorage implements Zend\Auth_Storage\Interface
    {
        /**
         * ストレージが空の場合にのみ true を返す
         *
-        * @throws Zend_Auth_Storage_Exception 空かどうか判断できないとき
+        * @throws Zend\Auth_Storage\Exception 空かどうか判断できないとき
         * @return boolean
         */
        public function isEmpty()
@@ -253,7 +253,7 @@ ID を持続させるストレージクラスを ``Zend_Auth_Storage_Session`` �
         *
         * ストレージが空の場合に挙動は未定義
         *
-        * @throws Zend_Auth_Storage_Exception ストレージの中身を読み込めない場合
+        * @throws Zend\Auth_Storage\Exception ストレージの中身を読み込めない場合
         * @return mixed
         */
        public function read()
@@ -267,7 +267,7 @@ ID を持続させるストレージクラスを ``Zend_Auth_Storage_Session`` �
         * $contents をストレージに書き込む
         *
         * @param  mixed $contents
-        * @throws Zend_Auth_Storage_Exception $contents をストレージに書き込めない場合
+        * @throws Zend\Auth_Storage\Exception $contents をストレージに書き込めない場合
         * @return void
         */
        public function write($contents)
@@ -280,7 +280,7 @@ ID を持続させるストレージクラスを ``Zend_Auth_Storage_Session`` �
        /**
         * ストレージの中身を消去する
         *
-        * @throws Zend_Auth_Storage_Exception ストレージの中身を消去できない場合
+        * @throws Zend\Auth_Storage\Exception ストレージの中身を消去できない場合
         * @return void
         */
        public function clear()
@@ -291,21 +291,21 @@ ID を持続させるストレージクラスを ``Zend_Auth_Storage_Session`` �
        }
    }
 
-このストレージクラスを使用するには、認証クエリの前に ``Zend_Auth::setStorage()``
+このストレージクラスを使用するには、認証クエリの前に ``Zend\Auth\Auth::setStorage()``
 を実行します。
 
 .. code-block:: php
    :linenos:
 
    // Zend_Auth に、独自のストレージクラスを使うよう指示します
-   Zend_Auth::getInstance()->setStorage(new MyStorage());
+   Zend\Auth\Auth::getInstance()->setStorage(new MyStorage());
 
    /**
     * @todo 認証アダプタ $authAdapter を設定します
     */
 
    // 認証と結果の保存、そして成功時に ID を持続させます
-   $result = Zend_Auth::getInstance()->authenticate($authAdapter);
+   $result = Zend\Auth\Auth::getInstance()->authenticate($authAdapter);
 
 .. _zend.auth.introduction.using:
 
@@ -314,7 +314,7 @@ ID を持続させるストレージクラスを ``Zend_Auth_Storage_Session`` �
 
 ``Zend_Auth`` の使用法には、次の二通りがあります。
 
-. 間接的に ``Zend_Auth::authenticate()`` 経由で使用する
+. 間接的に ``Zend\Auth\Auth::authenticate()`` 経由で使用する
 
 . 直接、アダプタの ``authenticate()`` メソッドを使用する
 
@@ -324,7 +324,7 @@ ID を持続させるストレージクラスを ``Zend_Auth_Storage_Session`` �
    :linenos:
 
    // Zend_Auth のシングルトンインスタンスへの参照を取得します
-   $auth = Zend_Auth::getInstance();
+   $auth = Zend\Auth\Auth::getInstance();
 
    // 認証アダプタを設定します
    $authAdapter = new MyAuthAdapter($username, $password);
@@ -349,7 +349,7 @@ ID を持続させるストレージクラスを ``Zend_Auth_Storage_Session`` �
 .. code-block:: php
    :linenos:
 
-   $auth = Zend_Auth::getInstance();
+   $auth = Zend\Auth\Auth::getInstance();
    if ($auth->hasIdentity()) {
        // ID があるのでそれを取得します
        $identity = $auth->getIdentity();
@@ -362,7 +362,7 @@ ID を持続させるストレージクラスを ``Zend_Auth_Storage_Session`` �
 .. code-block:: php
    :linenos:
 
-   Zend_Auth::getInstance()->clearIdentity();
+   Zend\Auth\Auth::getInstance()->clearIdentity();
 
 自動的に永続ストレージが用いられるのがまずい場合もあるでしょう。
 そんな場合は、 ``Zend_Auth`` クラスをバイパスして アダプタクラスを直接使用します。

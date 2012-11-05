@@ -22,7 +22,7 @@ Previous exceptions は例外のコンストラクタへの第 3 引数として
 
    try {
        $db->query($sql);
-   } catch (Zend_Db_Statement_Exception $e) {
+   } catch (Zend\Db_Statement\Exception $e) {
        if ($e->getPrevious()) {
            echo '[' . get_class($e)
                . '] has the previous exception of ['

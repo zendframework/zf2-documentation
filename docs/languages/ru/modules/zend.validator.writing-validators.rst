@@ -9,15 +9,15 @@
 ситуациями, когда требуется написание своих валидаторов. В
 этом разделе описан процесс написания своих валидаторов.
 
-``Zend_Validate_Interface`` определяет три метода: *isValid()*, *getMessages()* и
+``Zend\Validate\Interface`` определяет три метода: *isValid()*, *getMessages()* и
 *getErrors()*, они должны реализовываться в ваших классах валидации.
 Объект, реализующий данный интерфейс, может быть добавлен в
-цепочку валидаторов через метод *Zend_Validate::addValidator()*, также такие
-объекты могут использоваться с классом :ref:`Zend_Filter_Input
+цепочку валидаторов через метод *Zend\Validate\Validate::addValidator()*, также такие
+объекты могут использоваться с классом :ref:`Zend\Filter\Input
 <zend.filter.input>`.
 
 Как вы наверное уже поняли из приведенного выше описания
-интерфейса ``Zend_Validate_Interface``, классы валидации, предоставляемые
+интерфейса ``Zend\Validate\Interface``, классы валидации, предоставляемые
 Zend Framework, возвращают булево значение, означающее успех/неуспех
 валидации. Они также предоставляют информацию о том **почему**
 переданное значение не прошло валидацию. Возможность узнать
@@ -26,9 +26,9 @@ Zend Framework, возвращают булево значение, означа
 статистики для анализа удобства использования приложения.
 
 Базовый функционал для сообщений об ошибке валидации
-реализован в классе ``Zend_Validate_Abstract``. Для того, чтобы
+реализован в классе ``Zend\Validate\Abstract``. Для того, чтобы
 использовать этот функционал при создании класса валидации,
-просто наследуйте свой класс от ``Zend_Validate_Abstract``. В
+просто наследуйте свой класс от ``Zend\Validate\Abstract``. В
 классе-наследнике вы можете реализовать логику метода *isValid()*,
 а также определить шаблоны и переменные сообщений, которые
 соответствуют различным типам ошибок валидации. Если значение
@@ -53,7 +53,7 @@ Zend Framework, возвращают булево значение, означа
    .. code-block:: php
       :linenos:
 
-      class MyValid_Float extends Zend_Validate_Abstract
+      class MyValid_Float extends Zend\Validate\Abstract
       {
           const FLOAT = 'float';
 
@@ -108,7 +108,7 @@ Zend Framework, возвращают булево значение, означа
    .. code-block:: php
       :linenos:
 
-      class MyValid_NumericBetween extends Zend_Validate_Abstract
+      class MyValid_NumericBetween extends Zend\Validate\Abstract
       {
           const MSG_NUMERIC = 'msgNumeric';
           const MSG_MINIMUM = 'msgMinimum';
@@ -196,7 +196,7 @@ Zend Framework, возвращают булево значение, означа
    .. code-block:: php
       :linenos:
 
-      class MyValid_PasswordStrength extends Zend_Validate_Abstract
+      class MyValid_PasswordStrength extends Zend\Validate\Abstract
       {
           const LENGTH = 'length';
           const UPPER  = 'upper';

@@ -8,9 +8,9 @@ Pages
 
 
 
-   - :ref:`Pages MVC <zend.navigation.pages.mvc>` – utilisant la classe ``Zend_Navigation_Page_Mvc``
+   - :ref:`Pages MVC <zend.navigation.pages.mvc>` – utilisant la classe ``Zend\Navigation_Page\Mvc``
 
-   - :ref:`Pages URI <zend.navigation.pages.uri>` – utilisant la classe ``Zend_Navigation_Page_Uri``
+   - :ref:`Pages URI <zend.navigation.pages.uri>` – utilisant la classe ``Zend\Navigation_Page\Uri``
 
 Les pages MVC proposeront des liens pour l'application courante et utilisent les paramètres MVC (*action*,
 *controller*, *module*, *route*, *params*). Les pages URI utilisent elles une seule option, *uri*, ce qui vous

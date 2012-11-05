@@ -53,7 +53,7 @@ Or retrieving the document from the index:
 
 The ``score`` field is a hit score. Search results are ordered by score by default (best results returned first).
 
-It's also possible to order result sets by specific field values. See the :ref:`Zend_Search_Lucene documentation
+It's also possible to order result sets by specific field values. See the :ref:`Zend\Search\Lucene documentation
 <zend.search.lucene.searching.sorting>` for more details about this possibility.
 
 The example also demonstrates an ability to access stored fields (e.g., ``$hit->title``). At the first access to

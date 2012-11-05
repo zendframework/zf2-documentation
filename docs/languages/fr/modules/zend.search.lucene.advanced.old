@@ -9,30 +9,30 @@ Avancé
 Depuis Zend Framework 1.6, gestion des transformations de format d'index
 ------------------------------------------------------------------------
 
-``Zend_Search_Lucene`` fonctionne avec les index Lucene Java 1.4-1.9, 2.1 et 2.3.
+``Zend\Search\Lucene`` fonctionne avec les index Lucene Java 1.4-1.9, 2.1 et 2.3.
 
 Le format actuel de l'index peut être obtenu par *$index->getFormatVersion()*. Ceci retourne une de ces valeurs :
 
-   - ``Zend_Search_Lucene::FORMAT_PRE_2_1`` pour le format 1.4-1.9.
+   - ``Zend\Search\Lucene::FORMAT_PRE_2_1`` pour le format 1.4-1.9.
 
-   - ``Zend_Search_Lucene::FORMAT_2_1`` pour le format 2.1 (utilisé aussi pour 2.2).
+   - ``Zend\Search\Lucene::FORMAT_2_1`` pour le format 2.1 (utilisé aussi pour 2.2).
 
-   - ``Zend_Search_Lucene::FORMAT_2_3`` pour le format 2.3.
+   - ``Zend\Search\Lucene::FORMAT_2_3`` pour le format 2.3.
 
 
 
 Les modifications de l'index n'arrivent **que** si une mise à jour de l'index est faite. Ceci arrive lorsqu'un
 nouveau document est ajouté à l'index, ou lors de l'optimisation manuelle de l'index par *$index->optimize()*.
 
-Dans un tel cas, Zend_Search_Lucene peut convertir l'index vers une version plus haute. Ceci arrive **toujours**
-pour le format ``Zend_Search_Lucene::FORMAT_PRE_2_1``, alors transformé en format 2.1.
+Dans un tel cas, Zend\Search\Lucene peut convertir l'index vers une version plus haute. Ceci arrive **toujours**
+pour le format ``Zend\Search\Lucene::FORMAT_PRE_2_1``, alors transformé en format 2.1.
 
 Vous pouvez gérer ces conversions et notamment le format d'arrivée avec *$index->setFormatVersion()*, qui prend
-comme paramètre ``Zend_Search_Lucene::FORMAT_2_1`` ou ``Zend_Search_Lucene::FORMAT_2_3``:
+comme paramètre ``Zend\Search\Lucene::FORMAT_2_1`` ou ``Zend\Search\Lucene::FORMAT_2_3``:
 
-   - ``Zend_Search_Lucene::FORMAT_2_1`` ne fait rien puisque les format pre-2.1 sont convertis vers ce format (2.1)
+   - ``Zend\Search\Lucene::FORMAT_2_1`` ne fait rien puisque les format pre-2.1 sont convertis vers ce format (2.1)
 
-   - ``Zend_Search_Lucene::FORMAT_2_3`` force la conversion vers le format 2.3.
+   - ``Zend\Search\Lucene::FORMAT_2_3`` force la conversion vers le format 2.3.
 
 
 
@@ -50,7 +50,7 @@ Les conversions vers des versions antérieure de formats ne sont pas supportées
 Utiliser les propriétés statiques de l'index
 --------------------------------------------
 
-L'objet ``Zend_Search_Lucene`` utilise la méthode de destructeur pour valider ses changements et faire ses
+L'objet ``Zend\Search\Lucene`` utilise la méthode de destructeur pour valider ses changements et faire ses
 optimisations et nettoyages.
 
 Il stocke les documents ajoutés en mémoire et les vide dans un segment sur le disque en fonction du paramètre
@@ -69,7 +69,7 @@ Les propriétés statiques d'un objet sont détruites **après** la dernière li
           private static $_index;
 
           public static function initIndex() {
-              self::$_index = Zend_Search_Lucene::open('path/to/index');
+              self::$_index = Zend\Search\Lucene::open('path/to/index');
           }
       }
 
@@ -85,12 +85,12 @@ pas de contexte, car le destructeur est appelé après la fin d'exécution du sc
 Vous pouvez alors voir une "Fatal error: Exception thrown without a stack frame in Unknown on line 0" au lieu de
 l'exception décrivant réellement le contexte.
 
-``Zend_Search_Lucene`` propose alors un détournement de ce problème avec la méthode ``commit()``. Elle
+``Zend\Search\Lucene`` propose alors un détournement de ce problème avec la méthode ``commit()``. Elle
 sauvegarde les changements et libère la mémoire utilisée pour stocker les segments. Vous pouvez utiliser la
 méthode commit n'importe quand, même plusieurs fois, pendant l'exécution de votre script. Vous pouvez aussi
-continuer à utiliser l'objet ``Zend_Search_Lucene`` pour rechercher, ajouter ou supprimer des document, même
+continuer à utiliser l'objet ``Zend\Search\Lucene`` pour rechercher, ajouter ou supprimer des document, même
 après une opération de commit (validation). L'appel à ``commit()`` est simplement une sécurité pour éviter
-les problème d'exception dans le destructeur de ``Zend_Search_Lucene``:
+les problème d'exception dans le destructeur de ``Zend\Search\Lucene``:
 
    .. code-block:: php
       :linenos:
@@ -99,7 +99,7 @@ les problème d'exception dans le destructeur de ``Zend_Search_Lucene``:
           private static $_index;
 
           public static function initIndex() {
-              self::$_index = Zend_Search_Lucene::open('path/to/index');
+              self::$_index = Zend\Search\Lucene::open('path/to/index');
           }
 
           ...

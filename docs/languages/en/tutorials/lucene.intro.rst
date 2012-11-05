@@ -1,16 +1,16 @@
 .. _learning.lucene.intro:
 
-Zend_Search_Lucene Introduction
+Zend\Search\Lucene Introduction
 ===============================
 
-The ``Zend_Search_Lucene`` component is intended to provide a ready-for-use full-text search solution. It doesn't
+The ``Zend\Search\Lucene`` component is intended to provide a ready-for-use full-text search solution. It doesn't
 require any *PHP* extensions [#]_ or additional software to be installed, and can be used immediately after Zend
 Framework installation.
 
-``Zend_Search_Lucene`` is a pure *PHP* port of the popular open source full-text search engine known as Apache
+``Zend\Search\Lucene`` is a pure *PHP* port of the popular open source full-text search engine known as Apache
 Lucene. See `http://lucene.apache.org/`_ for the details.
 
-Information must be indexed to be available for searching. ``Zend_Search_Lucene`` and Java Lucene use a document
+Information must be indexed to be available for searching. ``Zend\Search\Lucene`` and Java Lucene use a document
 concept known as an "atomic indexing item."
 
 Each document is a set of fields: <name, value> pairs where name and value are *UTF-8* strings [#]_. Any subset of
@@ -19,7 +19,7 @@ the document fields may be marked as "indexed" to include field data in the text
 Field values may or may not be tokenized while indexing. If a field is not tokenized, then the field value is
 stored as one term; otherwise, the current analyzer is used for tokenization.
 
-Several analyzers are provided within the ``Zend_Search_Lucene`` package. The default analyzer works with *ASCII*
+Several analyzers are provided within the ``Zend\Search\Lucene`` package. The default analyzer works with *ASCII*
 text (since the *UTF-8* analyzer needs the **mbstring** extension to be turned on). It is case insensitive, and it
 skips numbers. Use other analyzers or create your own analyzer if you need to change this behavior.
 

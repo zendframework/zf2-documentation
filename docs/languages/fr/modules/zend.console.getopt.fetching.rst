@@ -4,13 +4,13 @@
 Extraire les options et les arguments
 =====================================
 
-Après avoir déclaré les options que l'objet ``Zend_Console_Getopt`` doit identifier, et fourni les arguments de
+Après avoir déclaré les options que l'objet ``Zend\Console\Getopt`` doit identifier, et fourni les arguments de
 la ligne de commande ou un tableau, vous pouvez interroger l'objet pour connaître les options indiquées par un
 utilisateur lors d'un appel à votre programme en ligne de commande. La classe implémente les méthodes magiques
 ainsi vous pouvez interroger directement par les noms d'options.
 
 L'analyse des données est reportée jusqu'à ce que vous invoquiez pour la première fois l'objet
-``Zend_Console_Getopt`` pour découvrir si une option était renseignée, l'objet exécute alors son analyse. Ceci
+``Zend\Console\Getopt`` pour découvrir si une option était renseignée, l'objet exécute alors son analyse. Ceci
 permet plusieurs appels de méthode pour configurer les options, arguments, messages d'aide, et les options de
 configuration, avant que l'analyse ne soit lancée.
 
@@ -20,7 +20,7 @@ Manipuler les exceptions Getopt
 -------------------------------
 
 Si l'utilisateur a donné des options invalides sur la ligne de commande, la fonction d'analyse syntaxique lève
-une ``Zend_Console_Getopt_Exception``. Vous devrez récupérer cette exception dans votre code d'application. Vous
+une ``Zend\Console_Getopt\Exception``. Vous devrez récupérer cette exception dans votre code d'application. Vous
 pouvez utiliser la méthode ``parse()`` pour forcer l'objet à analyser les arguments. C'est utile parce que vous
 pouvez invoquer ``parse()`` dans un bloc **try**. S'il passe, vous pouvez être sûrs que l'analyse syntaxique ne
 lèvera pas d'exception de nouveau. L'exception est lancée via une méthode personnalisée ``getUsageMessage()``,
@@ -35,9 +35,9 @@ déclarées.
    :linenos:
 
    try {
-       $opts = new Zend_Console_Getopt('abp:');
+       $opts = new Zend\Console\Getopt('abp:');
        $opts->parse();
-   } catch (Zend_Console_Getopt_Exception $e) {
+   } catch (Zend\Console_Getopt\Exception $e) {
        echo $e->getUsageMessage();
        exit;
    }
@@ -68,7 +68,7 @@ retournerait ``NULL``.
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $b = $opts->getOption('b');
    $p_parameter = $opts->getOption('p');
 
@@ -83,7 +83,7 @@ implémentée.
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    if (isset($opts->b)) {
        echo "J'ai recu l'option b.\n";
    }
@@ -133,11 +133,11 @@ exister des arguments additionnels restants. Vous pouvez interroger ces argument
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setArguments(array('-p', 'p_parameter', 'nomdefichier'));
    $args = $opts->getRemainingArgs(); // retourne array('nomdefichier')
 
-``Zend_Console_Getopt`` supporte la convention *GNU* selon laquelle un argument se composant d'un double-tiret
+``Zend\Console\Getopt`` supporte la convention *GNU* selon laquelle un argument se composant d'un double-tiret
 signifie la fin des options. Tous les arguments suivant celui-ci doivent être traités en tant qu'arguments sans
 options. C'est utile si vous avez un argument sans options qui commence par un tiret. Par exemple : "``rm --
 -nomdefichier-avec-tiret``".

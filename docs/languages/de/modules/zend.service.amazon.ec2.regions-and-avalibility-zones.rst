@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.zones:
 
-Zend_Service_Amazon_Ec2: Regionen und Availability Zones
+Zend\Service_Amazon\Ec2: Regionen und Availability Zones
 ========================================================
 
 Amazon EC2 bietet die Möglichkeit Instanzen in verschiedene Regionen und Avaiability Zonen zu patzieren. Regionen
@@ -36,7 +36,7 @@ enthält regionName und regionUrl.
 .. code-block:: php
    :linenos:
 
-   $ec2_region = new Zend_Service_Amazon_Ec2_Region('aws_key','aws_secret_key');
+   $ec2_region = new Zend\Service\Amazon\Ec2\Region('aws_key','aws_secret_key');
    $regions = $ec2_region->describe();
 
    foreach($regions as $region) {
@@ -68,7 +68,7 @@ enthält zoneName und zoneState.
 .. code-block:: php
    :linenos:
 
-   $ec2_zones = new Zend_Service_Amazon_Ec2_Availabilityzones('aws_key',
+   $ec2_zones = new Zend\Service\Amazon\Ec2\Availabilityzones('aws_key',
                                                               'aws_secret_key');
    $zones = $ec2_zones->describe();
 

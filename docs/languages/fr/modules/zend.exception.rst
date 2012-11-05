@@ -17,9 +17,9 @@ Le code suivant montre comment attraper une exception levée par une classe de Z
    :linenos:
 
    try {
-       Zend_Loader::loadClass('classnonexistante');
+       Zend\Loader\Loader::loadClass('classnonexistante');
    } catch (Zend_Exception $e) {
-       // Appeler Zend_Loader::loadClass() sur une classe non-existante
+       // Appeler Zend\Loader\Loader::loadClass() sur une classe non-existante
        //entrainera la levée d'une exception dans Zend_Loader
        echo "Récupère exception: " . get_class($e) . "\n";
        echo "Message: " . $e->getMessage() . "\n";

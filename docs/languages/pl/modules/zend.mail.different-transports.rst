@@ -15,10 +15,10 @@ obiekt nadpisze domyślny transport dla aktualnego wywołania *send()*:
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    // tworzymy wiadomość...
-   $tr1 = new Zend_Mail_Transport_Smtp('server@example.com');
-   $tr2 = new Zend_Mail_Transport_Smtp('other_server@example.com');
+   $tr1 = new Zend\Mail_Transport\Smtp('server@example.com');
+   $tr2 = new Zend\Mail_Transport\Smtp('other_server@example.com');
    $mail->send($tr1);
    $mail->send($tr2);
    $mail->send();  // znów używamy domyślnego transportu
@@ -28,6 +28,6 @@ obiekt nadpisze domyślny transport dla aktualnego wywołania *send()*:
 
    **Dodatkowe transporty**
 
-   Dodatkowe transporty mogą być napisane poprzez zaimplementowanie interfejsu *Zend_Mail_Transport_Interface*.
+   Dodatkowe transporty mogą być napisane poprzez zaimplementowanie interfejsu *Zend\Mail_Transport\Interface*.
 
 

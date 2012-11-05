@@ -44,7 +44,7 @@
 Основы использования фильтров
 -----------------------------
 
-Такое определение фильтра дает основу для ``Zend_Filter_Interface``,
+Такое определение фильтра дает основу для ``Zend\Filter\Interface``,
 который требует от классов фильтров реализации одного метода
 с именем *filter()*.
 
@@ -54,7 +54,7 @@
    .. code-block:: php
       :linenos:
 
-      $htmlEntities = new Zend_Filter_HtmlEntities();
+      $htmlEntities = new Zend\Filter\HtmlEntities();
 
       echo $htmlEntities->filter('&'); // &
       echo $htmlEntities->filter('"'); // "
@@ -68,7 +68,7 @@
 
 Каждый раз загружать нужный класс фильтра и создавать его
 экземпляр довольно неудобно, поэтому был создан статический
-метод *Zend_Filter::get()*, который можно использовать как
+метод *Zend\Filter\Filter::get()*, который можно использовать как
 альтернативный способ вызова. Первым агрументом этого метода
 является значение входных данных, которое требуется передать
 методу *filter()*. Вторым аргументом является строка, которая
@@ -80,7 +80,7 @@
    .. code-block:: php
       :linenos:
 
-      echo Zend_Filter::get('&', 'HtmlEntities');
+      echo Zend\Filter\Filter::get('&', 'HtmlEntities');
 
 
 
@@ -90,7 +90,7 @@
    .. code-block:: php
       :linenos:
 
-      echo Zend_Filter::get('"', 'HtmlEntities', array(ENT_QUOTES));
+      echo Zend\Filter\Filter::get('"', 'HtmlEntities', array(ENT_QUOTES));
 
 
 
@@ -100,7 +100,7 @@
 создавать экземпляр фильтра и вызывать его метод *filter()*, как
 это было показано в первом примере.
 
-``Zend_Filter_Input`` также позволяет инстанцировать и запускать
+``Zend\Filter\Input`` также позволяет инстанцировать и запускать
 несколько фильтров и валидаторов для обработки наборов
 данных. Более подробную информацию читайте в :ref:` <zend.filter.input>`.
 

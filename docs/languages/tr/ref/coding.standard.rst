@@ -100,10 +100,10 @@ dizinidir.
 
 Sınıf isimleri sadece alfanümerik karakterlerden oluşabilir. Numaralar sınıf isimlerinde kullanılabilirler
 ancak bu kullanım uygun bulunmamaktadır. Altçizgilerin sadece konum ayıracının yerine kullanılmasına izin
-verilir -- "Zend/Db/Table.php" dosya adı mutlaka "Zend_Db_Table" sınıfına eşleme yapmalıdır.
+verilir -- "Zend/Db/Table.php" dosya adı mutlaka "Zend\Db\Table" sınıfına eşleme yapmalıdır.
 
 Eğer sınıf adı birden çok kelimeden oluşuyorsa , her yeni kelimenin ilk harfi büyük harfe çevrilmelidir.
-Ardışık büyütülmüş harflere izin verilmez, ör. "Zend_Pdf" sınıf ismi kabul edilirken "Zend_PDF" sınıf
+Ardışık büyütülmüş harflere izin verilmez, ör. "ZendPdf" sınıf ismi kabul edilirken "ZendPDF" sınıf
 adı kabul edilmez.
 
 Zend tarafından veya katılımcı ortak firmalardan biri tarafından yazılan ve Zend Framework ile dağıtılan
@@ -119,7 +119,7 @@ Bunlar sınıflar için kabul edilebilir isimler :
 
       Zend_View
 
-      Zend_View_Helper
+      Zend\View\Helper
 
 **ÖNEMLİ:** Framework ile çalışan fakat framework'ün bir parçası olmayan kod ör. framework'ün son
 kullanıcısı tarafından yazılan ve Zend veya framework'e ortak şirketlerin olmayan kod asla "Zend\_" ile
@@ -136,8 +136,8 @@ Arayüz sınıfları diğer sınıflarla aynı kurallara uymalıdır (yukarıya 
    .. code-block:: php
       :linenos:
 
-      Zend_Log_Adapter_Interface
-      Zend_Controller_Dispatcher_Interface
+      Zend\Log_Adapter\Interface
+      Zend\Controller_Dispatcher\Interface
 
 
 

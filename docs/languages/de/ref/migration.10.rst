@@ -37,7 +37,7 @@ global den ``ViewRenderer`` im eigenen Frontcontroller Bootstrap vor dem Abarbei
 .. code-block:: php
    :linenos:
 
-   // Annahme das $front eine Instanz von Zend_Controller_Front ist
+   // Annahme das $front eine Instanz von Zend\Controller\Front ist
    $front->setParam('noViewRenderer', true);
 
 Trotzdem ist es keine gute Langzeitstrategie, da es auch bedeutet das man mehr Code schreiben muß.
@@ -101,8 +101,8 @@ ganz einfach jederzeit durchgeführt werden.
      :linenos:
 
      // Annahme das $view bereits definiert wurde
-     $viewRenderer = new Zend_Controller_Action_Helper_ViewRenderer($view);
-     Zend_Controller_Action_HelperBroker::addHelper($viewRenderer);
+     $viewRenderer = new Zend\Controller\Action\Helper\ViewRenderer($view);
+     Zend\Controller_Action\HelperBroker::addHelper($viewRenderer);
 
 - Jederzeit wärend des Bootstrap Prozesses:
 
@@ -110,7 +110,7 @@ ganz einfach jederzeit durchgeführt werden.
      :linenos:
 
      $viewRenderer =
-         Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
+         Zend\Controller_Action\HelperBroker::getStaticHelper('viewRenderer');
      $viewRenderer->setView($view);
 
 Es gibt viele Wege den ``ViewRenderer`` zu modifizieren inklusive dem Setzen eines anderen View Skripts zum
@@ -134,7 +134,7 @@ Methode gesetzt werden kann.
 .. code-block:: php
    :linenos:
 
-   $currency = new Zend_Currency($currency, $locale);
+   $currency = new Zend\Currency\Currency($currency, $locale);
 
 Die ``setFormat()`` Methode nimmt jetzt ein Array von Optionen. Diese Optionen werden permanent gesetzt und
 überschreiben alle vorher gesetzten Werte. Auch eine neue Option 'precision' wurde integriert. Die folgenden

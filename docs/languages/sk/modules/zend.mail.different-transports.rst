@@ -15,11 +15,11 @@ prednastaveného pre aktuálne volanie *send()*:
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    // vytvorenie správy...
    require_once 'Zend/Mail/Transport/Smtp.php';
-   $tr1 = new Zend_Mail_Transport_Smtp('server@example.com');
-   $tr2 = new Zend_Mail_Transport_Smtp('other_server@example.com');
+   $tr1 = new Zend\Mail_Transport\Smtp('server@example.com');
+   $tr2 = new Zend\Mail_Transport\Smtp('other_server@example.com');
    $mail->send($tr1);
    $mail->send($tr2);
    $mail->send();  // použije sa prednastavený
@@ -28,6 +28,6 @@ prednastaveného pre aktuálne volanie *send()*:
 
    **Iné spôsoby prenosu**
 
-   Ostatné spôsoby prenosu môžu byt vytvorené implementáciou *Zend_Mail_Transport_Interface*.
+   Ostatné spôsoby prenosu môžu byt vytvorené implementáciou *Zend\Mail_Transport\Interface*.
 
 

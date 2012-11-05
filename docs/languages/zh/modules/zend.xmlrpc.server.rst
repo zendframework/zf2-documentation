@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.xmlrpc.server:
 
-Zend_XmlRpc_Server
+Zend\XmlRpc\Server
 ==================
 
 .. _zend.xmlrpc.server.introduction:
@@ -9,7 +9,7 @@ Zend_XmlRpc_Server
 介绍
 --
 
-Zend_XmlRpc_Server 依照 `www.xmlrpc.com 上的规格描述`_ 实现了一个全功能 XML-RPC
+Zend\XmlRpc\Server 依照 `www.xmlrpc.com 上的规格描述`_ 实现了一个全功能 XML-RPC
 服务器。同时，它还实现了允许批量传输（boxcarring）的 system.multicall() 方法。
 
 .. _zend.xmlrpc.server.usage:
@@ -25,7 +25,7 @@ Zend_XmlRpc_Server 依照 `www.xmlrpc.com 上的规格描述`_ 实现了一个�
    require_once 'Zend/XmlRpc/Server.php';
    require_once 'My/Service/Class.php';
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->setClass('My_Service_Class');
    echo $server->handle();
 
@@ -34,19 +34,19 @@ Zend_XmlRpc_Server 依照 `www.xmlrpc.com 上的规格描述`_ 实现了一个�
 服务器结构
 -----
 
-Zend_XmlRpc_Server
+Zend\XmlRpc\Server
 是由各种不同组件组成，包括服务器自身用于接收请求或进行相应的组件，
 以及错误对象。
 
-为了启动 Zend_XmlRpc_Server，开发人员必须通过 *setClass()* 和 *addFunction()*
+为了启动 Zend\XmlRpc\Server，开发人员必须通过 *setClass()* 和 *addFunction()*
 方法附加一个或者多个类或函数到服务器。
 
-完成附加操作后，则可以向 *Zend_XmlRpc_Server::handle()* 传递 *Zend_XmlRpc_Request*
-对象，如果没有提供它将实例化一个 *Zend_XmlRpc_Request_Http* 对象用于从 *php://input*
+完成附加操作后，则可以向 *Zend\XmlRpc\Server::handle()* 传递 *Zend\XmlRpc\Request*
+对象，如果没有提供它将实例化一个 *Zend\XmlRpc_Request\Http* 对象用于从 *php://input*
 获取请求。
 
-这时 *Zend_XmlRpc_Server::handle()* 将基于请求尝试调度合适的处理程序。 它将返回基于
-*Zend_XmlRpc_Response* 的对象或者 *Zend_XmlRpc_Server_Fault* 对象。这些对象都有 *__toString()*
+这时 *Zend\XmlRpc\Server::handle()* 将基于请求尝试调度合适的处理程序。 它将返回基于
+*Zend\XmlRpc\Response* 的对象或者 *Zend\XmlRpc_Server\Fault* 对象。这些对象都有 *__toString()*
 用来创建合法的，允许直接返回的 XML-RPC 的 XML 响应文本。
 
 .. _zend.xmlrpc.server.conventions:
@@ -54,8 +54,8 @@ Zend_XmlRpc_Server
 转换
 --
 
-Zend_XmlRpc_Server 允许开发人员附加函数和类方法作为 XML-RPC 方法来调度。通过
-Zend_Server_Reflection 自省所有附加的方法，使用函数和方法的文档部分(docblocks)
+Zend\XmlRpc\Server 允许开发人员附加函数和类方法作为 XML-RPC 方法来调度。通过
+Zend\Server\Reflection 自省所有附加的方法，使用函数和方法的文档部分(docblocks)
 决定方法的帮助文档和方法标识。
 
 XML-RPC 类型不可能与 PHP 类型一一对应。然而程序仍然利用 @param 和 @return
@@ -125,7 +125,7 @@ XML-RPC 有名字空间的概念；通常，它允许使用“.”分割 XML-RPC
 
 - system.methodSignature
 
-从内部来讲，这些方法映射到 Zend_XmlRpc_Server 的同名方法上。
+从内部来讲，这些方法映射到 Zend\XmlRpc\Server 的同名方法上。
 
 如果想要为服务方法增加命名空间，只要在附加一个函数或类时，添加命名空间到适当的方法上：
 
@@ -143,9 +143,9 @@ XML-RPC 有名字空间的概念；通常，它允许使用“.”分割 XML-RPC
 自定义请求对象
 -------
 
-多数情况下，只需要使用 Zend_XmlRpc_Server 默认提供的请求类型
-Zend_XmlRpc_Request_Http。然而，仍然有可能在 CLI、GUI 或者其他环境使用
-XML-RPC，亦或需要记录每个请求。需要从 Zend_XmlRpc_Request
+多数情况下，只需要使用 Zend\XmlRpc\Server 默认提供的请求类型
+Zend\XmlRpc_Request\Http。然而，仍然有可能在 CLI、GUI 或者其他环境使用
+XML-RPC，亦或需要记录每个请求。需要从 Zend\XmlRpc\Request
 继承，创建自定义的对象来完成这个工作。最重要的是记得确保实现 getMethod() 和
 getParams() 方法，这样 XML-RPC 服务器就可以获取必要的信息进行调度。
 
@@ -154,31 +154,31 @@ getParams() 方法，这样 XML-RPC 服务器就可以获取必要的信息进�
 自定义响应对象
 -------
 
-和请求对象一样，Zend_XmlRpc_Server 可以返回自定义响应对象；默认情况下，
-Zend_XmlRpc_Response_Http 对象被返回，这个对象包含一个合适的用于 XML-RPC 的 HTTP Content-Type
+和请求对象一样，Zend\XmlRpc\Server 可以返回自定义响应对象；默认情况下，
+Zend\XmlRpc_Response\Http 对象被返回，这个对象包含一个合适的用于 XML-RPC 的 HTTP Content-Type
 头。使用自定义对象的情况可能是需要记录响应，或需要发送响应到 STDOUT。
 
-在调用 handle() 之前使用 Zend_XmlRpc_Server::setResponseClass() 指定自定义的响应类。
+在调用 handle() 之前使用 Zend\XmlRpc\Server::setResponseClass() 指定自定义的响应类。
 
 .. _zend.xmlrpc.server.fault:
 
 处理错误产生的异常
 ---------
 
-Zend_XmlRpc_Server 会捕获调度方法产生的一场，同时生成 XML-RPC 失败响应。
+Zend\XmlRpc\Server 会捕获调度方法产生的一场，同时生成 XML-RPC 失败响应。
 然而，默认情况下，异常消息和代码不出现在失败响应中。有意设计成如此形式主要是为了保护代码；
 许多异常会暴露超出预期的大量关于代码和开发环境的信息（常见的例子如数据库抽象层或访问层一场）。
 
 异常类也可以加入白名单中作为失败响应。要做到这点，只需使用
-Zend_XmlRpc_Server_Fault::attachFaultException() 添加一个异常类到白名单即可：
+Zend\XmlRpc_Server\Fault::attachFaultException() 添加一个异常类到白名单即可：
 
 .. code-block::
    :linenos:
    <?php
-   Zend_XmlRpc_Server_Fault::attachFaultException('My_Project_Exception');
+   Zend\XmlRpc_Server\Fault::attachFaultException('My_Project_Exception');
 
 如果你使用的是一个继承于其他项目的异常，可以一次将整个类树加入白名单。
-Zend_XmlRpc_Server_Exceptions
+Zend\XmlRpc_Server\Exceptions
 总是在白名单中，用于报告指定的内部错误（如未定义的方法等）。
 
 一个未在白名单中指定的异常将会返回错误代码“404”，错误消息“Unknown
@@ -191,9 +191,9 @@ error”（未知错误）。
 
 附加多个类到 XML-RPC 服务器实例可能消耗大量的资源；每一个类必须使用反射 API
 进行自省（通过
-Zend_Server_Reflection），生成一个包含有所有可用方法的列表用于服务器调用。
+Zend\Server\Reflection），生成一个包含有所有可用方法的列表用于服务器调用。
 
-为了减少这种性能污点，可以使用 Zend_XmlRpc_Server_Cache 来缓存请求之间的服务器定义。
+为了减少这种性能污点，可以使用 Zend\XmlRpc_Server\Cache 来缓存请求之间的服务器定义。
 联合 \__autoload() 使用，可以极大的提高性能。
 
 实例如下：
@@ -207,13 +207,13 @@ Zend_Server_Reflection），生成一个包含有所有可用方法的列表用�
 
    function __autoload($class)
    {
-       Zend_Loader::loadClass($class);
+       Zend\Loader\Loader::loadClass($class);
    }
 
    $cacheFile = dirname(__FILE__) . '/xmlrpc.cache';
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
 
-   if (!Zend_XmlRpc_Server_Cache::get($cacheFile, $server)) {
+   if (!Zend\XmlRpc_Server\Cache::get($cacheFile, $server)) {
        require_once 'My/Services/Glue.php';
        require_once 'My/Services/Paste.php';
        require_once 'My/Services/Tape.php';
@@ -222,7 +222,7 @@ Zend_Server_Reflection），生成一个包含有所有可用方法的列表用�
        $server->setClass('My_Services_Paste', 'paste'); // paste. namespace
        $server->setClass('My_Services_Tape', 'tape');   // tape. namespace
 
-       Zend_XmlRpc_Server_Cache::save($cacheFile, $server);
+       Zend\XmlRpc_Server\Cache::save($cacheFile, $server);
    }
 
    echo $server->handle();
@@ -261,7 +261,7 @@ Zend_Server_Reflection），生成一个包含有所有可用方法的列表用�
        return md5($value);
    }
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->addFunction('md5Value');
    echo $server->handle();
 
@@ -278,7 +278,7 @@ Zend_Server_Reflection），生成一个包含有所有可用方法的列表用�
    require_once 'Zend/XmlRpc/Server.php';
    require_once 'Services/Comb.php';
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->setClass('Services_Comb');
    echo $server->handle();
 
@@ -297,7 +297,7 @@ Zend_Server_Reflection），生成一个包含有所有可用方法的列表用�
    require_once 'Services/Brush.php';
    require_once 'Services/Pick.php';
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->setClass('Services_Comb', 'comb');   // methods called as comb.*
    $server->setClass('Services_Brush', 'brush'); // methods called as brush.*
    $server->setClass('Services_Pick', 'pick');   // methods called as pick.*
@@ -321,9 +321,9 @@ Zend_Server_Reflection），生成一个包含有所有可用方法的列表用�
    require_once 'Services/Pick.php';
 
    // 允许 Services_Exceptions 作为响应失败输出
-   Zend_XmlRpc_Server_Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->setClass('Services_Comb', 'comb');   // methods called as comb.*
    $server->setClass('Services_Brush', 'brush'); // methods called as brush.*
    $server->setClass('Services_Pick', 'pick');   // methods called as pick.*
@@ -348,9 +348,9 @@ Zend_Server_Reflection），生成一个包含有所有可用方法的列表用�
    require_once 'Services/Pick.php';
 
    // 允许 Services_Exceptions 作为响应失败输出
-   Zend_XmlRpc_Server_Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->setClass('Services_Comb', 'comb');   // methods called as comb.*
    $server->setClass('Services_Brush', 'brush'); // methods called as brush.*
    $server->setClass('Services_Pick', 'pick');   // methods called as pick.*
@@ -380,9 +380,9 @@ Zend_Server_Reflection），生成一个包含有所有可用方法的列表用�
    require_once 'Services/Pick.php';
 
    // 允许 Services_Exceptions 作为响应失败输出
-   Zend_XmlRpc_Server_Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
    $server->setClass('Services_Comb', 'comb');   // methods called as comb.*
    $server->setClass('Services_Brush', 'brush'); // methods called as brush.*
    $server->setClass('Services_Pick', 'pick');   // methods called as pick.*
@@ -419,18 +419,18 @@ Zend_Server_Reflection），生成一个包含有所有可用方法的列表用�
    $cacheFile = dirname(__FILE__) . '/xmlrpc.cache';
 
    // 允许 Services_Exceptions 作为响应失败输出
-   Zend_XmlRpc_Server_Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
 
-   $server = new Zend_XmlRpc_Server();
+   $server = new Zend\XmlRpc\Server();
 
    // 尝试从缓存中获取服务器定义
-   if (!Zend_XmlRpc_Server_Cache::get($cacheFile, $server)) {
+   if (!Zend\XmlRpc_Server\Cache::get($cacheFile, $server)) {
        $server->setClass('Services_Comb', 'comb');   // methods called as comb.*
        $server->setClass('Services_Brush', 'brush'); // methods called as brush.*
        $server->setClass('Services_Pick', 'pick');   // methods called as pick.*
 
        // 保存缓存
-       Zend_XmlRpc_Server_Cache::save($cacheFile, $server));
+       Zend\XmlRpc_Server\Cache::save($cacheFile, $server));
    }
 
    // 创建请求对象

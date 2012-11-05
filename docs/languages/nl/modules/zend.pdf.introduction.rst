@@ -4,10 +4,10 @@
 Inleiding
 =========
 
-De *Zend_Pdf* module is een volledig in PHP 5 geschreven motor voor het manipuleren van PDF (Portable Document
+De *ZendPdf* module is een volledig in PHP 5 geschreven motor voor het manipuleren van PDF (Portable Document
 Format). Het kan bestaande documenten laden, nieuwe documenten maken, documenten wijzigen en weer opslaan. Het laat
 dus eender welke PHP toepassing dynamisch PDF documenten aanmaken door bestaande templates aan te passen of
-documenten van de grond opnieuw op te bouwen. Zend_Pdf ondersteunt de volgende mogelijkheden:
+documenten van de grond opnieuw op te bouwen. ZendPdf ondersteunt de volgende mogelijkheden:
 
 
 

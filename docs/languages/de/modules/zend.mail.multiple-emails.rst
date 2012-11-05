@@ -23,16 +23,16 @@ Standardwerte zurückgesetzt werden (gelöscht). Das Zurücksetzen der Standardw
 
    // Transport erstellen
    $config = array('name' => 'sender.example.com');
-   $transport = new Zend_Mail_Transport_Smtp('mail.example.com', $config);
+   $transport = new Zend\Mail_Transport\Smtp('mail.example.com', $config);
 
    // Setzt From & Reply-To Adressen
    // und Namen für alle Emails die zu versenden sind
-   Zend_Mail::setDefaultFrom('sender@example.com', 'John Doe');
-   Zend_Mail::setDefaultReplyTo('replyto@example.com','Jane Doe');
+   Zend\Mail\Mail::setDefaultFrom('sender@example.com', 'John Doe');
+   Zend\Mail\Mail::setDefaultReplyTo('replyto@example.com','Jane Doe');
 
    // Durch die Nachrichten gehen
    for ($i = 0; $i < 5; $i++) {
-       $mail = new Zend_Mail();
+       $mail = new Zend\Mail\Mail();
        $mail->addTo('studio@example.com', 'Test');
        $mail->setFrom('studio@example.com', 'Test');
        $mail->setSubject(
@@ -43,8 +43,8 @@ Standardwerte zurückgesetzt werden (gelöscht). Das Zurücksetzen der Standardw
    }
 
    // Setzt die Standardwerte zurück
-   Zend_Mail::clearDefaultFrom();
-   Zend_Mail::clearDefaultReplyTo();
+   Zend\Mail\Mail::clearDefaultFrom();
+   Zend\Mail\Mail::clearDefaultReplyTo();
 
 Wenn man eine separate Verbindung für jeden Mailtransport haben will, muß der Transport vor und nach jedem Aufruf
 der ``send()`` Methode erstellt und gelöscht werden. Oder alternativ kann die Verbindung zwischen jedem Transport,
@@ -58,9 +58,9 @@ durch Zugriff auf das Protokoll Objekt des Transportes, manipuliert werden.
    :linenos:
 
    // Transport erstellen
-   $transport = new Zend_Mail_Transport_Smtp();
+   $transport = new Zend\Mail_Transport\Smtp();
 
-   $protocol = new Zend_Mail_Protocol_Smtp('mail.example.com');
+   $protocol = new Zend\Mail_Protocol\Smtp('mail.example.com');
    $protocol->connect();
    $protocol->helo('mail.example.com');
 
@@ -68,7 +68,7 @@ durch Zugriff auf das Protokoll Objekt des Transportes, manipuliert werden.
 
    // Durch die Nachrichten gehen
    for ($i = 0; $i < 5; $i++) {
-       $mail = new Zend_Mail();
+       $mail = new Zend\Mail\Mail();
        $mail->addTo('studio@example.com', 'Test');
        $mail->setFrom('studio@example.com', 'Test');
        $mail->setSubject(

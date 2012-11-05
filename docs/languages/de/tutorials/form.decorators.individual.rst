@@ -16,7 +16,7 @@ uns das vorhergehende Beispiel nochmals an:
 .. code-block:: php
    :linenos:
 
-   $element = new Zend_Form_Element('foo', array(
+   $element = new Zend\Form\Element('foo', array(
        'label'      => 'Foo',
        'belongsTo'  => 'bar',
        'value'      => 'test',

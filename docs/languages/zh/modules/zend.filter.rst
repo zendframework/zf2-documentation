@@ -28,7 +28,7 @@ filter”的意思是对输入数据执行一些转化。
 过滤器的基本用法
 --------
 
-确立了这样的过滤器定义，为 *Zend_Filter_Interface*
+确立了这样的过滤器定义，为 *Zend\Filter\Interface*
 接口奠定了理论基础，需要过滤器类实现一个名为 *filter()* 的方法。
 
 下面一个简单的例子，示范了在2个输入数据上使用过滤器，"*&*" 符号和双引号 (*"*)
@@ -37,7 +37,7 @@ filter”的意思是对输入数据执行一些转化。
    .. code-block:: php
       :linenos:
 
-      $htmlEntities = new Zend_Filter_HtmlEntities();
+      $htmlEntities = new Zend\Filter\HtmlEntities();
 
       echo $htmlEntities->filter('&'); // &
       echo $htmlEntities->filter('"'); // "
@@ -51,7 +51,7 @@ filter”的意思是对输入数据执行一些转化。
 -------------
 
 如果不方便加载给定的过滤器类和创建过滤器的实例，可以使用静态方法
-*Zend_Filter::get()* 作为备用的调用风格。这个方法的第一个参数是数据输入值，将传递给
+*Zend\Filter\Filter::get()* 作为备用的调用风格。这个方法的第一个参数是数据输入值，将传递给
 *filter()* 方法，第二个参数是个字符串，对应于过滤器类的基本名，和 Zend_Filter
 名称空间有关。 *get()* 方法自动加载这个类，创建一个实例，并应用 *filter()*
 方法给数据输入。
@@ -59,7 +59,7 @@ filter”的意思是对输入数据执行一些转化。
    .. code-block:: php
       :linenos:
 
-      echo Zend_Filter::get('&', 'HtmlEntities');
+      echo Zend\Filter\Filter::get('&', 'HtmlEntities');
 
 
 
@@ -69,7 +69,7 @@ filter”的意思是对输入数据执行一些转化。
    .. code-block:: php
       :linenos:
 
-      echo Zend_Filter::get('"', 'HtmlEntities', array(ENT_QUOTES));
+      echo Zend\Filter\Filter::get('"', 'HtmlEntities', array(ENT_QUOTES));
 
 
 
@@ -77,7 +77,7 @@ filter”的意思是对输入数据执行一些转化。
 静态用法对调用过滤器特别方便，但如果对多个输入运行过滤器，按上面第一个例子做更有效，创建一个过滤器对象的实例并调用它的
 *filter()* 方法。
 
-并且，Zend_Filter_Input
+并且，Zend\Filter\Input
 类允许初始化和运行多重过滤器，按需的校验器类来处理输入数据，参见 :ref:`
 <zend.filter.input>`\ 。
 

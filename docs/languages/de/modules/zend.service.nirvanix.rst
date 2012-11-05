@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.nirvanix:
 
-Zend_Service_Nirvanix
+Zend\Service\Nirvanix
 =====================
 
 .. _zend.service.nirvanix.introduction:
@@ -23,11 +23,11 @@ physikalischen Speicherbänken verbunden sind.
 Registrierung bei Nirvanix
 --------------------------
 
-Bevor man mit ``Zend_Service_Nirvanix`` beginnt, muß man sich zuerst für einen Account anmelden. Bitte sehen Sie
+Bevor man mit ``Zend\Service\Nirvanix`` beginnt, muß man sich zuerst für einen Account anmelden. Bitte sehen Sie
 auf die `Wie man anfängt`_ Seite auf der Nirvanix Webseite für weitere Informationen.
 
 Nach der Registrierung erhält man einen Benutzernamen, ein Passwort und einen Anwendungsschlüssel. Alle drei
-werden benötigt um ``Zend_Service_Nirvanix`` zu verwenden.
+werden benötigt um ``Zend\Service\Nirvanix`` zu verwenden.
 
 .. _zend.service.nirvanix.apiDocumentation:
 
@@ -35,14 +35,14 @@ API Dokumentation
 -----------------
 
 Der Zugriff auf Nirvanix IMFS ist durch beide, sowohl ein *SOAP* als auch ein schnelleres REST Service möglich.
-``Zend_Service_Nirvanix`` bietet einen relativ dünnen *PHP* 5 Wrapper um das REST Service.
+``Zend\Service\Nirvanix`` bietet einen relativ dünnen *PHP* 5 Wrapper um das REST Service.
 
-``Zend_Service_Nirvanix`` zielt darauf ab das Nirvanix REST Service einfacher zu verwenden aber zu verstehen dass
+``Zend\Service\Nirvanix`` zielt darauf ab das Nirvanix REST Service einfacher zu verwenden aber zu verstehen dass
 das Service selbst trotzdem noch essentiell ist um mit Nirvanix erfolgreich zu sein.
 
 Die `Nirvanix API Dokumentation`_ bietet eine Übersicht sowie detailierte Informationen über die Verwendung des
 Services. Bitte machen Sie sich mit diesem Dokument vertraut und referieren Sie darauf wenn Sie
-``Zend_Service_Nirvanix`` verwenden.
+``Zend\Service\Nirvanix`` verwenden.
 
 .. _zend.service.nirvanix.features:
 
@@ -50,11 +50,11 @@ Features
 --------
 
 Nirvanix's REST Service kann mit *PHP* effektiv verwendet werden alleine mit Hilfe der `SimpleXML`_ Erweiterung und
-``Zend_Http_Client``. Trotzdem ist deren Verwendung auf diesem Weg irgendwie unbequem wegen der wiederholenden
+``Zend\Http\Client``. Trotzdem ist deren Verwendung auf diesem Weg irgendwie unbequem wegen der wiederholenden
 Operationen, wie die Übergabe des Session Tokens bei jeder Anfrage und der wiederholten Prüfung des Antwort Bodys
 nach Fehlercodes.
 
-``Zend_Service_Nirvanix`` bietet die folgenden Funktionalitäten:
+``Zend\Service\Nirvanix`` bietet die folgenden Funktionalitäten:
 
 
 
@@ -78,7 +78,7 @@ Der Anfang
 
 Sobald man in Nirvanix registriert ist, ist man bereit die ersten Datein am IMFS zu speichern. Die üblichste
 Operation die man am IMFS benötigt ist der Erstellung einer neuen Datei, das Herunterladen bestehender Dateien,
-und das Löschen einer Datei. ``Zend_Service_Nirvanix`` bietet bequeme Methoden für diese drei Operationen.
+und das Löschen einer Datei. ``Zend\Service\Nirvanix`` bietet bequeme Methoden für diese drei Operationen.
 
 .. code-block:: php
    :linenos:
@@ -87,7 +87,7 @@ und das Löschen einer Datei. ``Zend_Service_Nirvanix`` bietet bequeme Methoden 
                  'password' => 'Dein-Passwort',
                  'appKey'   => 'Dein-App-Schlüssel');
 
-   $nirvanix = new Zend_Service_Nirvanix($auth);
+   $nirvanix = new Zend\Service\Nirvanix($auth);
    $imfs = $nirvanix->getService('IMFS');
 
    $imfs->putContents('/foo.txt', 'zu speichernder Inhalt');
@@ -96,12 +96,12 @@ und das Löschen einer Datei. ``Zend_Service_Nirvanix`` bietet bequeme Methoden 
 
    $imfs->unlink('/foo.txt');
 
-Der erste Schritt um ``Zend_Service_Nirvanix`` zu verwenden ist immer sich gegenüber dem Service zu
-authentifizieren. Das wird durch die Übergabe der Anmeldedaten an den Kontruktor von ``Zend_Service_Nirvanix``,
+Der erste Schritt um ``Zend\Service\Nirvanix`` zu verwenden ist immer sich gegenüber dem Service zu
+authentifizieren. Das wird durch die Übergabe der Anmeldedaten an den Kontruktor von ``Zend\Service\Nirvanix``,
 wie oben, gemacht. Das assoziative Array wurd direkt an Nirvanix als POST Parameter übergeben.
 
 Nirvanix teilt seine WebService in `Namespaces`_ auf. Jeder Namespace kapselt eine Gruppe von zusammengehörenden
-Operationen. Nachdem man eine Instanz von ``Zend_Service_Nirvanix`` erhalten hat, muß die ``getService()`` Methode
+Operationen. Nachdem man eine Instanz von ``Zend\Service\Nirvanix`` erhalten hat, muß die ``getService()`` Methode
 aufgerufen werden um einen Proxy für den Namespace zu erhalten den man verwenden will. Oben wird ein Proxy für
 den ``IMFS`` Namespace erstellt.
 
@@ -121,17 +121,17 @@ zurückzugeben. Das Proxy Objekt erlaubt es das Nirvanix REST Service in einer A
 ist wie normalerweise ein *PHP* Methodenaufruf durchgeführt wird, gegenüber der Erstellung von eigenen *HTTP*
 Anfrage Objekten.
 
-Ein Proxy Objekt kann bequeme Methoden enthalten. Das sind Methoden die ``Zend_Service_Nirvanix`` bietet um die
+Ein Proxy Objekt kann bequeme Methoden enthalten. Das sind Methoden die ``Zend\Service\Nirvanix`` bietet um die
 Verwendung der Nirvanix Web Services zu vereinfachen. Im vorigen Beispiel haben die Methoden ``putContents()``,
 ``getContents()``, und ``unlink()`` keine direkte Entsprechungen in der REST *API*. Das sind bequeme Methoden die
-von ``Zend_Service_Nirvanix`` angeboten werden um viel komplexere Operationen der REST *API* zu abstrahieren.
+von ``Zend\Service\Nirvanix`` angeboten werden um viel komplexere Operationen der REST *API* zu abstrahieren.
 
 Für alle anderen Methodenaufrufe zum Proxy Objekt konvertiert der Proxy dynamisch den Methodenaufruf in die
 entsprechende *HTTP* POST Anfrage zur REST *API*. Hierbei wird der Name der Methode als *API* Kommando verwendet,
 und ein assoziatives Array im ersten Argument als POST Parameter.
 
 Nehmen wir an das wir die REST *API* Methode `RenameFile`_ aufrufen wollen welche keine bequeme Methode in
-``Zend_Service_Nirvanix`` besitzen:
+``Zend\Service\Nirvanix`` besitzen:
 
 .. code-block:: php
    :linenos:
@@ -140,7 +140,7 @@ Nehmen wir an das wir die REST *API* Methode `RenameFile`_ aufrufen wollen welch
                  'password' => 'Dein-Passwort',
                  'appKey'   => 'Dein-App-Schlüssel');
 
-   $nirvanix = new Zend_Service_Nirvanix($auth);
+   $nirvanix = new Zend\Service\Nirvanix($auth);
    $imfs = $nirvanix->getService('IMFS');
 
    $result = $imfs->renameFile(array('filePath' => '/path/to/foo.txt',
@@ -154,17 +154,17 @@ Es ist in der Nirvanix *API* Dokumentation zu beachten das *sessionToken* für d
 dieses aber nicht an das Proxy Objekt übbergeben haben. Es wird, der Bequemlichkeit halber, automatisch
 hinzugefügt.
 
-Das Ergebnis dieser Operation ist entweder ein ``Zend_Service_Nirvanix_Response`` Objekt welches das von Nirvanix
-zurückgegebene *XML* wrappt, oder ``Zend_Service_Nirvanix_Exception`` wenn ein Fehler aufgetreten ist.
+Das Ergebnis dieser Operation ist entweder ein ``Zend\Service_Nirvanix\Response`` Objekt welches das von Nirvanix
+zurückgegebene *XML* wrappt, oder ``Zend\Service_Nirvanix\Exception`` wenn ein Fehler aufgetreten ist.
 
 .. _zend.service.nirvanix.examining-results:
 
 Ergebnisse erkunden
 -------------------
 
-Die Nirvanix REST *API* gibt Ihre Ergebnisse immer in einem *XML* zurück. ``Zend_Service_Nirvanix`` parst dieses
+Die Nirvanix REST *API* gibt Ihre Ergebnisse immer in einem *XML* zurück. ``Zend\Service\Nirvanix`` parst dieses
 *XML* mit der *SimpleXML* Erweiterung und dekoriert dann das sich ergebende *SimpleXMLElement* mit einem
-``Zend_Service_Nirvanix_Response`` Objekt.
+``Zend\Service_Nirvanix\Response`` Objekt.
 
 Der einfachste Weg ein Ergebnis vom service zu betrachten ist die Verwendung der in *PHP* eingebauten Funktionen
 wie ``print_r()``:
@@ -177,14 +177,14 @@ wie ``print_r()``:
                  'password' => 'Dein-Passwort',
                  'appKey'   => 'Dein-App-Schlüssel');
 
-   $nirvanix = new Zend_Service_Nirvanix($auth);
+   $nirvanix = new Zend\Service\Nirvanix($auth);
    $imfs = $nirvanix->getService('IMFS');
 
    $result = $imfs->putContents('/foo.txt', 'Vierzehn Bytes');
    print_r($result);
    ?>
 
-   Zend_Service_Nirvanix_Response Object
+   Zend\Service_Nirvanix\Response Object
    (
        [_sxml:protected] => SimpleXMLElement Object
            (
@@ -198,7 +198,7 @@ Beispiel, könnte *$result->BytesUploaded* verwendet werden um die anzahl von em
 man auf das *SimpleXMLElement* direkt zugreifen wollen, kann einfach *$result->getSxml()* verwendet werden.
 
 Die üblichste Antwort von Nirvanix ist Erfolg (*ResponseCode* von Null). Es ist normalerweise nicht notwendig
-*ResponseCode* zu prüfen weil jedes nicht-null Ergebnis eine ``Zend_Service_Nirvanix_Exception`` wirft. Siehe das
+*ResponseCode* zu prüfen weil jedes nicht-null Ergebnis eine ``Zend\Service_Nirvanix\Exception`` wirft. Siehe das
 nächste Kapitel über die Behandlung von Fehlern.
 
 .. _zend.service.nirvanix.handling-errors:
@@ -222,9 +222,9 @@ wie im folgenden Beispiel, enthält:
 Wenn *ResponseCode* Null ist, wie im obigen Beispiel, war die Operation erfolgreich. Wenn die Operation nicht
 erfolgreich war, ist *ResponseCode* nicht-Null und ein *ErrorMessage* Element sollte vorhanden sein.
 
-Um die Notwendigkeit zu verringern immer zu Prüfen ob *ResponseCode* Null ist, prüft ``Zend_Service_Nirvanix``
+Um die Notwendigkeit zu verringern immer zu Prüfen ob *ResponseCode* Null ist, prüft ``Zend\Service\Nirvanix``
 automatisch jede von Nirvanix zurückgegebene Antwort. Wenn *ResponseCode* einen Fehler zeigt, wird eine
-``Zend_Service_Nirvanix_Exception`` geworfen.
+``Zend\Service_Nirvanix\Exception`` geworfen.
 
 .. code-block:: xml
    :linenos:
@@ -232,21 +232,21 @@ automatisch jede von Nirvanix zurückgegebene Antwort. Wenn *ResponseCode* einen
    $auth = array('username' => 'your-username',
                  'password' => 'your-password',
                  'appKey'   => 'your-app-key');
-   $nirvanix = new Zend_Service_Nirvanix($auth);
+   $nirvanix = new Zend\Service\Nirvanix($auth);
 
    try {
 
      $imfs = $nirvanix->getService('IMFS');
      $imfs->unlink('/a-nonexistant-path');
 
-   } catch (Zend_Service_Nirvanix_Exception $e) {
+   } catch (Zend\Service_Nirvanix\Exception $e) {
      echo $e->getMessage() . "\n";
      echo $e->getCode();
    }
 
 im obigen Beispiel ist ``unlink()`` eine bequeme Methode die das *DeleteFiles* der REST *API* wrappt. Der
 *filePath* Parameter wird vom `DeleteFiles`_ Kommando benötigt und enthält einen Pfad der nicht existiert. Das
-wird in einer ``Zend_Service_Nirvanix`` Ausnahme resultieren die, mit der Nachricht "Invalid Path" und Code 70005,
+wird in einer ``Zend\Service\Nirvanix`` Ausnahme resultieren die, mit der Nachricht "Invalid Path" und Code 70005,
 geworfen wird.
 
 Die `Nirvanix API Dokumentation`_ beschreibt die mit jedem Kommando assoziierten Fehler. Abhängig von den eigenen

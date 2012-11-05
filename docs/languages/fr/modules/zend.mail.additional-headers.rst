@@ -36,7 +36,7 @@ l'en-tête doit avoir une ou plusieurs valeurs :
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->addHeader('X-MailGenerator', 'MaSuperApplication');
    $mail->addHeader('X-greetingsTo', 'Maman', true); // plusieurs valeurs
    $mail->addHeader('X-greetingsTo', 'Papa', true);

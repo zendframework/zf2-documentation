@@ -15,7 +15,7 @@ zwei Methoden verwendet wird.
 .. code-block:: php
    :linenos:
 
-   $index = Zend_Search_Lucene::create($indexPath);
+   $index = Zend\Search\Lucene::create($indexPath);
 
 .. _learning.lucene.index-opening.opening:
 
@@ -24,6 +24,6 @@ zwei Methoden verwendet wird.
 .. code-block:: php
    :linenos:
 
-   $index = Zend_Search_Lucene::open($indexPath);
+   $index = Zend\Search\Lucene::open($indexPath);
 
 

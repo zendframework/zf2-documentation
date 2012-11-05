@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.console.getopt.configuration:
 
-Zend_Console_Getopt の設定
+Zend\Console\Getopt の設定
 =======================
 
 .. _zend.console.getopt.configuration.addrules:
@@ -9,7 +9,7 @@ Zend_Console_Getopt の設定
 オプションの規則の追加
 -----------
 
-``Zend_Console_Getopt`` のコンストラクタで指定するもの以外にも、
+``Zend\Console\Getopt`` のコンストラクタで指定するもの以外にも、
 追加でオプションの規則を指定できます。その際には ``addRules()``
 メソッドを使用します。 ``addRules()``
 に渡す引数は、コンストラクタの最初の引数と同じです。
@@ -25,7 +25,7 @@ Zend_Console_Getopt の設定
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->addRules(
      array(
        'verbose|v' => '詳細な出力を表示する'
@@ -33,7 +33,7 @@ Zend_Console_Getopt の設定
    );
 
 上の例は、 ``--verbose`` というオプションと そのエイリアス ``-v`` を
-コンストラクタで定義したオプションに追加しています。 ``Zend_Console_Getopt``
+コンストラクタで定義したオプションに追加しています。 ``Zend\Console\Getopt``
 のインスタンスには、
 短い形式のオプションと長い形式のオプションが共存可能であることに注意しましょう。
 
@@ -54,7 +54,7 @@ Zend_Console_Getopt の設定
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setHelp(
        array(
            'a' => 'リンゴです。パラメータは不要です。',
@@ -81,7 +81,7 @@ Zend_Console_Getopt の設定
 言い換えると、もともと定義されていたエイリアスもそのまま有効であるということです。
 
 エイリアスは一度しか宣言できません。既存のエイリアスを再定義しようとすると
-``Zend_Console_Getopt_Exception`` がスローされます。
+``Zend\Console_Getopt\Exception`` がスローされます。
 
 .. _zend.console.getopt.configuration.addaliases.example:
 
@@ -90,7 +90,7 @@ Zend_Console_Getopt の設定
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setAliases(
        array(
            'a' => 'apple',
@@ -110,7 +110,7 @@ Zend_Console_Getopt の設定
 引数リストの追加
 --------
 
-デフォルトでは、 ``Zend_Console_Getopt`` は ``$_SERVER['argv']`` の配列を使用して
+デフォルトでは、 ``Zend\Console\Getopt`` は ``$_SERVER['argv']`` の配列を使用して
 コマンドライン引数をパースします。
 コンストラクタの二番目の引数として、引数を含む別の配列を指定することもできます。
 さらに、もっと別の引数を追加するには ``addArguments()`` メソッドを使用し、
@@ -128,7 +128,7 @@ Zend_Console_Getopt の設定
    :linenos:
 
    // デフォルトでは、コンストラクタは $_SERVER['argv'] を使用します
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
 
    // 既存の引数に配列を追加します
    $opts->addArguments(array('-a', '-p', 'p_parameter', 'non_option_arg'));
@@ -141,7 +141,7 @@ Zend_Console_Getopt の設定
 設定の追加
 -----
 
-``Zend_Console_Getopt`` コンストラクタの 三番目の引数は、設定オプションの配列です。
+``Zend\Console\Getopt`` コンストラクタの 三番目の引数は、設定オプションの配列です。
 これは、返り値となるオブジェクトのインスタンスの挙動を設定するものです。
 設定オプションを指定するために ``setOptions()``
 メソッドを指定することもできます。あるいは、 オプションを個別に設定するには
@@ -151,30 +151,30 @@ Zend_Console_Getopt の設定
 
    **"オプション" という用語について**
 
-   ここでいう "オプション" は、 ``Zend_Console_Getopt``
+   ここでいう "オプション" は、 ``Zend\Console\Getopt``
    クラスの設定に使用するもののことを指しています。
    オプションという言葉の意味自体は、Zend Framework
-   のその他の部分で使用している意味と同じです。 ``Zend_Console_Getopt`` がパースする
+   のその他の部分で使用している意味と同じです。 ``Zend\Console\Getopt`` がパースする
    コマンドラインオプションのことではありません。
 
 現在サポートしているオプションには、 クラス定数が定義されています。
 オプションとそれに対応する定数 (およびリテラル値) の一覧を以下にまとめます。
 
-- ``Zend_Console_Getopt::CONFIG_DASHDASH`` ("dashDash") を ``TRUE``
+- ``Zend\Console\Getopt::CONFIG_DASHDASH`` ("dashDash") を ``TRUE``
   にすると、フラグの終了を表す特殊フラグ ``--``
   を有効にします。ダブルダッシュの後に続くコマンドライン引数は、
   たとえダッシュで始まっていてもオプションとはみなされません。
   この設定オプションは、デフォルトで ``TRUE`` となっています。
 
-- ``Zend_Console_Getopt::CONFIG_IGNORECASE`` ("ignoreCase") を ``TRUE`` にすると、
+- ``Zend\Console\Getopt::CONFIG_IGNORECASE`` ("ignoreCase") を ``TRUE`` にすると、
   大文字小文字が違うだけのフラグをお互いエイリアスとして扱います。 つまり、
   ``-a`` と ``-A`` は同じフラグとみなされます。
   この設定オプションは、デフォルトでは ``FALSE`` となっています。
 
-- ``Zend_Console_Getopt::CONFIG_RULEMODE`` ("ruleMode") には ``Zend_Console_Getopt::MODE_ZEND`` ("zend")
-  あるいは ``Zend_Console_Getopt::MODE_GNU`` ("gnu") のいずれかを指定します。
+- ``Zend\Console\Getopt::CONFIG_RULEMODE`` ("ruleMode") には ``Zend\Console\Getopt::MODE_ZEND`` ("zend")
+  あるいは ``Zend\Console\Getopt::MODE_GNU`` ("gnu") のいずれかを指定します。
   独自の構文を使用するためにクラスを拡張する場合を除き、
-  このオプションを使用する必要はありません。 ``Zend_Console_Getopt``
+  このオプションを使用する必要はありません。 ``Zend\Console\Getopt``
   でサポートされている二つのモードは明確です。 文字列を指定した場合は
   ``MODE_GNU``\ 、 それ以外の場合は ``MODE_ZEND`` とみなします。
   もしクラスを拡張して別の構文形式を追加した場合は、
@@ -191,7 +191,7 @@ Zend_Console_Getopt の設定
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setOption('ignoreCase', true);
 
 ``setOptions()`` メソッドに渡す引数は連想配列です。
@@ -207,7 +207,7 @@ Zend_Console_Getopt の設定
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setOptions(
        array(
            'ignoreCase' => true,

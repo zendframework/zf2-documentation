@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.akismet:
 
-Zend_Service_Akismet
+Zend\Service\Akismet
 ====================
 
 .. _zend.service.akismet.introduction:
@@ -9,7 +9,7 @@ Zend_Service_Akismet
 Wprowadzenie
 ------------
 
-Komponent *Zend_Service_Akismet* jest klientem dla `API serwisu Akismet`_. Serwis Akismet jest używany do
+Komponent *Zend\Service\Akismet* jest klientem dla `API serwisu Akismet`_. Serwis Akismet jest używany do
 określenia czy nadesłane dane są potencjalnym spamem; udostępnia on także metody do nadsyłania danych, które
 uznamy za spam, oraz danych, które niesłusznie zostały uznane za spam (czyli ham). Pierwotnie serwis Akismet
 służył do kategoryzowania i identyfikowania spamu dla aplikacji Wordpress, ale obecnie może być użyty do
@@ -29,7 +29,7 @@ metod.
 Weryfikowanie klucza API
 ------------------------
 
-Metoda *Zend_Service_Akismet::verifyKey($key)* jest używana do weryfikowania poprawności klucza API Akismet. W
+Metoda *Zend\Service\Akismet::verifyKey($key)* jest używana do weryfikowania poprawności klucza API Akismet. W
 większości przypadków nie musisz tego sprawdzać, ale jeśli chcesz przeprowadzić test dla pewności lub
 sprawdzić czy otrzymany klucz jest aktywny, możesz to zrobić za pomocą tej metody.
 
@@ -38,7 +38,7 @@ sprawdzić czy otrzymany klucz jest aktywny, możesz to zrobić za pomocą tej m
 
    // Tworzymy instancję podając klucz API
    // i adres URL używanej aplikacji
-   $akismet = new Zend_Service_Akismet($apiKey,
+   $akismet = new Zend\Service\Akismet($apiKey,
                                        'http://framework.zend.com/wiki/');
    if ($akismet->verifyKey($apiKey) {
        echo "Key is valid.\n";
@@ -57,7 +57,7 @@ Metoda *verifyKey()* implementuje metodę REST *verify-key* serwisu Akismet.
 Sprawdzanie czy dane są spamem
 ------------------------------
 
-Metoda *Zend_Service_Akismet::isSpam($data)* jest używana do sprawdzenia, czy przekazane dane są uznane przez
+Metoda *Zend\Service\Akismet::isSpam($data)* jest używana do sprawdzenia, czy przekazane dane są uznane przez
 Akismet jako spam. Metoda przyjmuje tablicę asocjacyjną jako jedyny argument. Tablica ta wymaga zdefiniowania
 poniższych kluczy:
 
@@ -127,7 +127,7 @@ Czasem dane, które są spamem mogą przejść przez filtr. Jeśli będziesz prz
 znajdziesz dane, które według ciebie powinny być uznane za spam, możesz wysłać je do Akismet aby pomóc
 ulepszyć filtr.
 
-Metoda *Zend_Service_Akismet::submitSpam()* przyjmuje taką samą tablicę danych jak metoda *isSpam()*, ale nie
+Metoda *Zend\Service\Akismet::submitSpam()* przyjmuje taką samą tablicę danych jak metoda *isSpam()*, ale nie
 zwraca wartości. Jeśli klucz API jest nieprawidłowy, zostanie wyrzucony wyjątek.
 
 .. _zend.service.akismet.submitspam.example-1:
@@ -161,7 +161,7 @@ Czasem dane zostaną przez Akismet błędnie uznane za spam. Z tego względu, po
 przez Akismet za spam i regularnie je przeglądać. Jeśli znajdziesz takie przypadki, możesz wysłać takie dane
 do Akismet jako "ham" czyli poprawne dane błędnie uznane za spam (ham jest dobry, spam nie jest).
 
-Metoda *Zend_Service_Akismet::submitHam()* przyjmuje taką samą tablicę danych jak metody *isSpam()* oraz
+Metoda *Zend\Service\Akismet::submitHam()* przyjmuje taką samą tablicę danych jak metody *isSpam()* oraz
 *submitSpam()* i tak samo jak metoda *submitSpam()* nie zwraca wartości. Jeśli klucz API jest nieprawidłowy,
 zostanie wyrzucony wyjątek.
 
@@ -192,7 +192,7 @@ Metoda *submitHam()* implementuje metodę *submit-ham* API serwisu Akismet.
 Specyficzne metody dostępowe
 ----------------------------
 
-O ile API serwisu Akismet określa jedynie cztery metody, komponent *Zend_Service_Akismet* posiada kilka
+O ile API serwisu Akismet określa jedynie cztery metody, komponent *Zend\Service\Akismet* posiada kilka
 dodatkowych metod dostępowych, które mogą być użyte do modyfikowania wewnętrznych właściwości.
 
 - Metody *getBlogUrl()* oraz *setBlogUrl()* pozwalają ci na odebranie oraz modyfikację adresu URL bloga
@@ -214,7 +214,7 @@ dodatkowych metod dostępowych, które mogą być użyte do modyfikowania wewnę
 
   Wartość użyta do ustawienia nazwy klienta HTTP powinna być w formacie *nazwa klienta/wersja |
   Akismet/wersja*. Domyślna wartość to *Zend Framework/ZF-VERSION | Akismet/1.11*, gdzie *ZF-VERSION* jest
-  numerem obecnej wersji ZF przechowywanym w stałej *Zend_Framework::VERSION*.
+  numerem obecnej wersji ZF przechowywanym w stałej *Zend\Framework\Framework::VERSION*.
 
 
 

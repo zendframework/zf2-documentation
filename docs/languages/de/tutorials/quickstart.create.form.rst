@@ -105,7 +105,7 @@ gültig ist, wird ein neuer Eintrag erstellt und gespeichert. Die Logik könnte 
 
    // application/controllers/GuestbookController.php
 
-   class GuestbookController extends Zend_Controller_Action
+   class GuestbookController extends Zend\Controller\Action
    {
        // wir übergehen indexAction()...
 

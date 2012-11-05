@@ -15,18 +15,18 @@ Theorie der Verwendung
 Diese Komponente besteht aus der Hauptklasse ``Zend_Ldap`` welche konzeptionell eine Bindung an einen einzelnen
 *LDAP* Server repräsentiert und die Ausführung von Operationen an diesem *LDAP* Server erlaubt, wie zum Beispiel
 OpenLDAP oder ActiveDirectory (AD) Server. Die Parameter für das Binden können explizit oder in der Form eines
-Options Arrays angegeben werden. ``Zend_Ldap_Node`` bietet ein Objektorientiertes Interface für einen einzelnen
+Options Arrays angegeben werden. ``Zend\Ldap\Node`` bietet ein Objektorientiertes Interface für einen einzelnen
 *LDAP* Node und kann verwendet werden um eine Basis für ein Active-Record artiges Interface für ein *LDAP*
 basiertes Domain-Modell zu bieten.
 
-Die Komponente bietet verschiedene Helfer Klassen um Operationen auf *LDAP* Einträgen (``Zend_Ldap_Attribute``)
+Die Komponente bietet verschiedene Helfer Klassen um Operationen auf *LDAP* Einträgen (``Zend\Ldap\Attribute``)
 durchzuführen, wie das Setzen und Empfangen von Attributen (Datumswerte, Passwörter, Boolsche Werte, ...), um
-*LDAP* Filter Strings (``Zend_Ldap_Filter``) zu Erstellen und zu Ändern, und um *LDAP* Distinguished Names (DN)
-(``Zend_Ldap_Dn``) zu manipulieren.
+*LDAP* Filter Strings (``Zend\Ldap\Filter``) zu Erstellen und zu Ändern, und um *LDAP* Distinguished Names (DN)
+(``Zend\Ldap\Dn``) zu manipulieren.
 
 Zusätzlich abstrahiert die Komponente das Suchen im *LDAP* Schema für OpenLDAP und ActiveDirectory Server
-``Zend_Ldap_Node_Schema`` und das empfangen von Server Informationen für OpenLDAP-, ActiveDirectory- und Novell
-eDirectory Server (``Zend_Ldap_Node_RootDse``).
+``Zend\Ldap_Node\Schema`` und das empfangen von Server Informationen für OpenLDAP-, ActiveDirectory- und Novell
+eDirectory Server (``Zend\Ldap_Node\RootDse``).
 
 Die Verwendung der ``Zend_Ldap`` Klasse hängt vom Typ des *LDAP* Servers ab und wird am besten mit einigen
 einfachen Beispielen gezeigt.
@@ -45,9 +45,9 @@ Wenn man OpenLDAP Verwendet sieht ein einfaches Beispiel wie folgt aus (es ist z
        'accountDomainName' => 'foo.net',
        'baseDn'            => 'OU=Sales,DC=foo,DC=net',
    );
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $acctname = $ldap->getCanonicalAccountName('abaker',
-                                              Zend_Ldap::ACCTNAME_FORM_DN);
+                                              Zend\Ldap\Ldap::ACCTNAME_FORM_DN);
    echo "$acctname\n";
 
 Wenn man Microsoft AD verwendet ist ein einfaches Beispiel:
@@ -64,9 +64,9 @@ Wenn man Microsoft AD verwendet ist ein einfaches Beispiel:
        'accountDomainNameShort' => 'W',
        'baseDn'                 => 'CN=Users,DC=w,DC=net',
    );
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $acctname = $ldap->getCanonicalAccountName('bcarter',
-                                              Zend_Ldap::ACCTNAME_FORM_DN);
+                                              Zend\Ldap\Ldap::ACCTNAME_FORM_DN);
    echo "$acctname\n";
 
 Es ist zu beachten das die ``getCanonicalAccountName()`` Methode verwendet wird um den DN Account zu empfangen da
@@ -83,7 +83,7 @@ Benutzername in DN-Form im Optionen-Array übergeben wurde, wird ``Zend_Ldap`` s
 an den Server binden, den Account DN für den Benutzernamen empfangen der bei *bind()* angegeben wurde und dann mit
 diesem zum DN verbinden.
 
-Dieses Verhalten ist kritisch für :ref:`Zend_Auth_Adapter_Ldap <zend.auth.adapter.ldap>`, welches den vom Benutzer
+Dieses Verhalten ist kritisch für :ref:`Zend\Auth_Adapter\Ldap <zend.auth.adapter.ldap>`, welches den vom Benutzer
 angegebenen Benutzernamen direkt an ``bind()`` übergibt.
 
 Das folgende Beispiel zeigt wie der nicht-DN Benutzername '**abaker**' mit ``bind()`` verwendet werden kann:
@@ -99,10 +99,10 @@ Das folgende Beispiel zeigt wie der nicht-DN Benutzername '**abaker**' mit ``bin
            'accountDomainName' => 'foo.net',
            'baseDn'            => 'OU=Sales,DC=foo,DC=net',
    );
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind('abaker', 'moonbike55');
    $acctname = $ldap->getCanonicalAccountName('abaker',
-                                              Zend_Ldap::ACCTNAME_FORM_DN);
+                                              Zend\Ldap\Ldap::ACCTNAME_FORM_DN);
    echo "$acctname\n";
 
 Der Aufruf von ``bind()`` in diesem Beispiel sieht das der Benutzer '**abaker**' nicht in DN Form ist, findet das
@@ -189,7 +189,7 @@ Failover zu implementieren:
        ),
    );
 
-   $ldap = new Zend_Ldap();
+   $ldap = new Zend\Ldap\Ldap();
 
    foreach ($multiOptions as $name => $options) {
 
@@ -201,9 +201,9 @@ Failover zu implementieren:
            $acctname = $ldap->getCanonicalAccountName($acctname);
            echo "Erfolgreich: $acctname authentifiziert\n";
            return;
-       } catch (Zend_Ldap_Exception $zle) {
+       } catch (Zend\Ldap\Exception $zle) {
            echo '  ' . $zle->getMessage() . "\n";
-           if ($zle->getCode() === Zend_Ldap_Exception::LDAP_X_DOMAIN_MISMATCH) {
+           if ($zle->getCode() === Zend\Ldap\Exception::LDAP_X_DOMAIN_MISMATCH) {
                continue;
            }
        }
@@ -225,7 +225,7 @@ keinen Effekt hat, aber in der Praxis für Fehlerbehandlung und Debugging Zwecke
 warscheinlich auf ``LDAP_X_DOMAIN_MISMATCH`` sowie ``LDAP_NO_SUCH_OBJECT`` und ``LDAP_INVALID_CREDENTIALS`` prüfen
 will.
 
-Der obige Code ist dem Code der in :ref:`Zend_Auth_Adapter_Ldap <zend.auth.adapter.ldap>` verwendet wurde sehr
+Der obige Code ist dem Code der in :ref:`Zend\Auth_Adapter\Ldap <zend.auth.adapter.ldap>` verwendet wurde sehr
 ähnlich. Fakt ist, das wir einfach empfehlen den Authentifizierungs Adapter für Multi-Domain und Failover
 basierte *LDAP* Authentifizierung zu verwenden (oder den Code zu kopieren).
 

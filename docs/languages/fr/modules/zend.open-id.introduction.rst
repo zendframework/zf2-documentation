@@ -4,7 +4,7 @@
 Introduction
 ============
 
-``Zend_OpenId`` est le composant de Zend Framework qui propose une *API* simple pour l'utilisation de la
+``ZendOpenId`` est le composant de Zend Framework qui propose une *API* simple pour l'utilisation de la
 technologie OpenID dans son applicatif internet.
 
 .. _zend.openid.introduction.what:
@@ -28,7 +28,7 @@ Rehman`_ ou `OpenIDFrance`_.
 Comment cela fonctionne-t-il ?
 ------------------------------
 
-Le but de ``Zend_OpenId`` est d'implémenter le protocole d'identification OpenID, comme décrit dans le diagramme
+Le but de ``ZendOpenId`` est d'implémenter le protocole d'identification OpenID, comme décrit dans le diagramme
 suivant :
 
 .. image:: ../images/zend.openid.protocol.jpg
@@ -66,28 +66,28 @@ suivant :
 
 .. _zend.openid.introduction.structure:
 
-Zend_OpenId Structure
+ZendOpenId Structure
 ---------------------
 
-``Zend_OpenId`` contient deux sous-classes. ``Zend_OpenId_Consumer`` est un client, il sera utilisé sur les sites
-nécessitant l'identification OpenID. ``Zend_OpenId_Provider``, elle, permet de créer son propre serveur OpenID.
+``ZendOpenId`` contient deux sous-classes. ``ZendOpenId\Consumer`` est un client, il sera utilisé sur les sites
+nécessitant l'identification OpenID. ``ZendOpenId\Provider``, elle, permet de créer son propre serveur OpenID.
 Ces deux classes sont totalement indépendantes l'une de l'autre.
 
 Les seuls points communs entre ces deux classes sont l'extension Simple Registration Extension, implémentée par
-la classe ``Zend_OpenId_Extension_Sreg``, ainsi que les fonctions utilitaires présentes dans la classe
-``Zend_OpenId``.
+la classe ``ZendOpenId_Extension\Sreg``, ainsi que les fonctions utilitaires présentes dans la classe
+``ZendOpenId``.
 
 .. note::
 
-   ``Zend_OpenId`` utilise `l'extension GMP`_, lorsqu'elle est disponible. Activez cette extension si possible,
-   ceci améliorera les performances avec ``Zend_OpenId``.
+   ``ZendOpenId`` utilise `l'extension GMP`_, lorsqu'elle est disponible. Activez cette extension si possible,
+   ceci améliorera les performances avec ``ZendOpenId``.
 
 .. _zend.openid.introduction.standards:
 
 Standards OpenID supportés
 --------------------------
 
-Le composant ``Zend_OpenId`` est conforme aux standards suivants :
+Le composant ``ZendOpenId`` est conforme aux standards suivants :
 
 - OpenID Authentication protocol version 1.1
 

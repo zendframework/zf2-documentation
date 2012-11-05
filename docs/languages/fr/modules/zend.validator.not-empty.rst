@@ -10,17 +10,17 @@ formulaires ou des entrées utilisateur, là où vous pouvez l'utiliser pour sav
 
 .. _zend.validator.set.notempty.options:
 
-Options supportées par Zend_Validate_NotEmpty
+Options supportées par Zend\Validate\NotEmpty
 ---------------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_NotEmpty``\  :
+Les options suivantes sont supportées par ``Zend\Validate\NotEmpty``\  :
 
 - **type**\  : paramètre le type de validation qui sera réalisée. Pour plus de détails, reportez vous à
   :ref:`cette section <zend.validator.set.notempty.types>`.
 
 .. _zend.validator.set.notempty.default:
 
-Comportement par défaut de Zend_Validate_NotEmpty
+Comportement par défaut de Zend\Validate\NotEmpty
 -------------------------------------------------
 
 Par défaut, ce validateur fonctionne différement de la fonction *PHP* ``empty()``. En particulier, ce validateur
@@ -29,7 +29,7 @@ va évaluer l'entier **0** et la chaine '**0**' comme vides.
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_NotEmpty();
+   $valid = new Zend\Validate\NotEmpty();
    $value  = '';
    $result = $valid->isValid($value);
    // retourne false
@@ -38,17 +38,17 @@ va évaluer l'entier **0** et la chaine '**0**' comme vides.
 
    **Le comportement par défaut diffère de PHP**
 
-   Sans configuration ajoutée, ``Zend_Validate_NotEmpty`` diffère de *PHP*.
+   Sans configuration ajoutée, ``Zend\Validate\NotEmpty`` diffère de *PHP*.
 
 .. _zend.validator.set.notempty.types:
 
-Changer le comportement de Zend_Validate_NotEmpty
+Changer le comportement de Zend\Validate\NotEmpty
 -------------------------------------------------
 
 Certains projets ont des opinions différentes sur ce qui peut être considéré comme 'vide'. Une chaine seulement
 composée d'espaces blancs pourrait être considérée comme vide, ou **0** pourrait être considéré comme
 non-vide (surtout dans les séquences logiques booléennes). Pour correspondre aux différents besoins,
-``Zend_Validate_NotEmpty`` vous permet de configurer les types que vous considérez comme vides.
+``Zend\Validate\NotEmpty`` vous permet de configurer les types que vous considérez comme vides.
 
 Les types suivants sont gérés :
 
@@ -83,21 +83,21 @@ sous forme de tableau ou de constantes ou encore de chaines. Voyez les exemples 
    :linenos:
 
    // Retourne false pour 0
-   $validator = new Zend_Validate_NotEmpty(Zend_Validate_NotEmpty::INTEGER);
+   $validator = new Zend\Validate\NotEmpty(Zend\Validate\NotEmpty::INTEGER);
 
    // Retourne false pour 0 ou '0'
-   $validator = new Zend_Validate_NotEmpty(
-       Zend_Validate_NotEmpty::INTEGER + Zend_NotEmpty::ZERO
+   $validator = new Zend\Validate\NotEmpty(
+       Zend\Validate\NotEmpty::INTEGER + Zend\NotEmpty\NotEmpty::ZERO
    );
 
    // Retourne false pour 0 ou '0'
-   $validator = new Zend_Validate_NotEmpty(array(
-       Zend_Validate_NotEmpty::INTEGER,
-       Zend_Validate_NotEmpty::ZERO
+   $validator = new Zend\Validate\NotEmpty(array(
+       Zend\Validate\NotEmpty::INTEGER,
+       Zend\Validate\NotEmpty::ZERO
    ));
 
    // Retourne false pour 0 ou '0'
-   $validator = new Zend_Validate_NotEmpty(array(
+   $validator = new Zend\Validate\NotEmpty(array(
        'integer',
        'zero',
    ));

@@ -27,7 +27,7 @@ gegensatz zu vielen unterschiedlichen abhängig vom verwendeten Webservice. Dies
 unabhängig von den Major Players stattgefunden, und aktuell unterstützen viele bereits OAuth als Alternative und
 wollen in Zukunft Ihre eigenen Lösungen damit ersetzen.
 
-Zend Framework's ``Zend_Oauth`` implementiert aktuell über die Klasse ``Zend_Oauth_Consumer`` einen vollständigen
+Zend Framework's ``ZendOauth`` implementiert aktuell über die Klasse ``ZendOauth\Consumer`` einen vollständigen
 OAuth Konsumenten welcher der OAuth Core 1.0 Revision A Spezifikation (24 Juni 2009) entspricht.
 
 .. include:: zend.oauth.protocol-workflow.rst

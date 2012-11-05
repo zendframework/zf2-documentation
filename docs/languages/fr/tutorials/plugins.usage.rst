@@ -4,7 +4,7 @@
 Utiliser des Plugins
 ====================
 
-Les composants utilisant des plugins se servent de ``Zend_Loader_PluginLoader`` pour fonctionner. Cette classe vous
+Les composants utilisant des plugins se servent de ``Zend\Loader\PluginLoader`` pour fonctionner. Cette classe vous
 propose d'enregistrer des "chemins de préfixes". Le composant va alors utiliser la méthode ``load()`` du
 PluginLoader en lui passant le nom court du plugin à charger. Le PluginLoader va ensuite tester chaque chemin de
 préfixe pour trouver une classe qui corresponde au nom court passé. Les chemins de préfixes sont testés en
@@ -32,8 +32,8 @@ L'arbre ressemble à ceci:
    |   |   |-- Even.php
    |   |   |-- Dozens.php
 
-Maintenant, nous allons informer un ``Zend_Form_Element`` de ce chemin de préfixes. La méthode
-``addPrefixPath()`` de ``Zend_Form_Element`` prend comme troisième paramètre le type de plugin pour lequel on
+Maintenant, nous allons informer un ``Zend\Form\Element`` de ce chemin de préfixes. La méthode
+``addPrefixPath()`` de ``Zend\Form\Element`` prend comme troisième paramètre le type de plugin pour lequel on
 spécifie un chemin, dans notre cas il s'agit d'un plugin de validation , "validate".
 
 .. code-block:: php
@@ -53,7 +53,7 @@ mixons des validateurs standards ("NotEmpty", "Int") et personnalisés ("Even", 
            ->addValidator('Dozens');
 
 Lorsque l'élément devra utiliser la validation, il appellera le plugin via le PluginLoader. Les deux premiers
-validateurs vont correspondre à ``Zend_Validate_NotEmpty`` et ``Zend_Validate_Int``, puis les deux suivants à
+validateurs vont correspondre à ``Zend\Validate\NotEmpty`` et ``Zend\Validate\Int``, puis les deux suivants à
 ``Foo_Validate_Even`` et ``Foo_Validate_Dozens``, respectivement.
 
 .. note::
@@ -68,7 +68,7 @@ validateurs vont correspondre à ``Zend_Validate_NotEmpty`` et ``Zend_Validate_I
    plugin. Si le fichier n'est pas trouvé, il passe au prochain chemin.
 
    Une fois que la pile de chemins est épuisée, si aucun fichier n'a été trouvé, il enverra une
-   ``Zend_Loader_PluginLoader_Exception``.
+   ``Zend\Loader_PluginLoader\Exception``.
 
 .. _learning.plugins.usage.override:
 
@@ -77,7 +77,7 @@ validateurs vont correspondre à ``Zend_Validate_NotEmpty`` et ``Zend_Validate_I
 Une des forces du PluginLoader est qu'il utilise une pile LIFO, ceci vous permet de surcharger des plugins
 existants par les votres stockés dans des chemins différents en enregistrant ce chemin dans la pile.
 
-Par exemple, considérons ``Zend_View_Helper_FormButton`` (les aides de vue sont une forme de plugin). Cette aide
+Par exemple, considérons ``Zend\View_Helper\FormButton`` (les aides de vue sont une forme de plugin). Cette aide
 de vue accepte trois paramètres, un nom DOM, une valeur (utilisée comme libéllé de bouton), et un tableau
 optionnel d'options. L'aide génère du HTML concernant un élément de formulaire.
 
@@ -97,9 +97,9 @@ Le mieux reste encore de nommer notre aide de vue "Button", en lui donnant comme
 .. code-block:: php
    :linenos:
 
-   // Zend_View::addHelperPath() utilise PluginLoader; attention par contre
+   // Zend\View\View::addHelperPath() utilise PluginLoader; attention par contre
    // sa signature inverse les arguments par rapport à PluginLoader, ceci car il
-   // propose une valeur par défaut au préfixe : "Zend_View_Helper"
+   // propose une valeur par défaut au préfixe : "Zend\View\Helper"
    //
    // La ligne ci-dessous suppose que la classe soit logée dans 'foo/view/helpers/'.
    $view->addHelperPath('foo/view/helpers', 'Foo_View_Helper');

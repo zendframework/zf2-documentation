@@ -16,7 +16,7 @@ utilisez les formats textes et HTML, un message *MIME* de type multipart/alterna
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setBodyText('Mon texte de test');
    $mail->setBodyHtml('Mon texte de test');
    $mail->setFrom('somebody@exemple.com', 'Un expéditeur');

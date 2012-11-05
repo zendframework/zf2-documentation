@@ -16,20 +16,20 @@
 *LDAP*\ サーバへのバインディングを概念的に表現して、 *LDAP*\
 サーバに対する活動を実行できる 主要な ``Zend_Ldap``\ クラスから成ります。
 バインディングのパラメータは、明示的に、または、オプション配列の形で提供されるかもしれません。
-``Zend_Ldap_Node``\ は、 単一の *LDAP*\
+``Zend\Ldap\Node``\ は、 単一の *LDAP*\
 ノードのためにオブジェクト指向インタフェースを提供します。 そして、 *LDAP*\
 ベースのドメイン・モデルのために、
 アクティブ・レコードのようなインターフェースの基盤を作ることに使うことができます。
 
 属性の設定や取得 (日付値、パスワード、ブール値など)のような *LDAP*\
-項目上での活動の実行や (``Zend_Ldap_Attribute``)、 *LDAP*\ フィルタ文字列の作成や修正
-(``Zend_Ldap_Filter``)、 *LDAP*\ 識別名 (DN)の操作 (``Zend_Ldap_Dn``)
+項目上での活動の実行や (``Zend\Ldap\Attribute``)、 *LDAP*\ フィルタ文字列の作成や修正
+(``Zend\Ldap\Filter``)、 *LDAP*\ 識別名 (DN)の操作 (``Zend\Ldap\Dn``)
 をおこなうためのいくつかのヘルパー・クラスをコンポーネントで提供します。
 
-その上、 OpenLDAPとActiveDirectoyサーバの ``Zend_Ldap_Node_Schema``\ のために ブラウズする
+その上、 OpenLDAPとActiveDirectoyサーバの ``Zend\Ldap_Node\Schema``\ のために ブラウズする
 *LDAP*\ スキーマ、 そして OpenLDAPサーバやActiveDirectoryサーバ、 Novell
 eDirectoryサーバのためのサーバ情報取得
-(``Zend_Ldap_Node_RootDse``)をコンポーネントで抽象します。
+(``Zend\Ldap_Node\RootDse``)をコンポーネントで抽象します。
 
 ``Zend_Ldap`` クラスの使用法は *LDAP* サーバの形式によって異なり、
 以下のいずれかのパターンとなります。
@@ -48,9 +48,9 @@ OpenLDAP を使用している場合は、以下の例のようになります (
        'accountDomainName' => 'foo.net',
        'baseDn'            => 'OU=Sales,DC=foo,DC=net',
    );
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $acctname = $ldap->getCanonicalAccountName('abaker',
-                                              Zend_Ldap::ACCTNAME_FORM_DN);
+                                              Zend\Ldap\Ldap::ACCTNAME_FORM_DN);
    echo "$acctname\n";
 
 Microsoft AD を使う場合の簡単な例です:
@@ -67,9 +67,9 @@ Microsoft AD を使う場合の簡単な例です:
        'accountDomainNameShort' => 'W',
        'baseDn'                 => 'CN=Users,DC=w,DC=net',
    );
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $acctname = $ldap->getCanonicalAccountName('bcarter',
-                                              Zend_Ldap::ACCTNAME_FORM_DN);
+                                              Zend\Ldap\Ldap::ACCTNAME_FORM_DN);
    echo "$acctname\n";
 
 ここでは、 ``getCanonicalAccountName()`` メソッドで、 アカウントの DN
@@ -89,7 +89,7 @@ Microsoft AD を使う場合の簡単な例です:
 で指定したユーザ名に対応するアカウントの DN を取得した上で 改めてその DN
 でバインドしなおします。
 
-この振る舞いは :ref:`Zend_Auth_Adapter_Ldap <zend.auth.adapter.ldap>` にとっては重要です。
+この振る舞いは :ref:`Zend\Auth_Adapter\Ldap <zend.auth.adapter.ldap>` にとっては重要です。
 これは、ユーザが指定したユーザ名を直接 ``bind()`` に渡します。
 
 次の例では、DN でないユーザ名 '**abaker**' を ``bind()`` で使用する方法を示します:
@@ -105,10 +105,10 @@ Microsoft AD を使う場合の簡単な例です:
            'accountDomainName' => 'foo.net',
            'baseDn'            => 'OU=Sales,DC=foo,DC=net',
    );
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind('abaker', 'moonbike55');
    $acctname = $ldap->getCanonicalAccountName('abaker',
-                                              Zend_Ldap::ACCTNAME_FORM_DN);
+                                              Zend\Ldap\Ldap::ACCTNAME_FORM_DN);
    echo "$acctname\n";
 
 この例において ``bind()`` をコールすると、 ユーザ名 '**abaker**' が DN 形式でないことと
@@ -203,7 +203,7 @@ Microsoft AD を使う場合の簡単な例です:
        ),
    );
 
-   $ldap = new Zend_Ldap();
+   $ldap = new Zend\Ldap\Ldap();
 
    foreach ($multiOptions as $name => $options) {
 
@@ -215,9 +215,9 @@ Microsoft AD を使う場合の簡単な例です:
            $acctname = $ldap->getCanonicalAccountName($acctname);
            echo "SUCCESS: authenticated $acctname\n";
            return;
-       } catch (Zend_Ldap_Exception $zle) {
+       } catch (Zend\Ldap\Exception $zle) {
            echo '  ' . $zle->getMessage() . "\n";
-           if ($zle->getCode() === Zend_Ldap_Exception::LDAP_X_DOMAIN_MISMATCH) {
+           if ($zle->getCode() === Zend\Ldap\Exception::LDAP_X_DOMAIN_MISMATCH) {
                continue;
            }
        }
@@ -241,7 +241,7 @@ Microsoft AD を使う場合の簡単な例です:
 ``LDAP_INVALID_CREDENTIALS`` だけではなく ``LDAP_X_DOMAIN_MISMATCH``
 もチェックすることになるでしょう。
 
-上のコードは、 :ref:`Zend_Auth_Adapter_Ldap <zend.auth.adapter.ldap>`
+上のコードは、 :ref:`Zend\Auth_Adapter\Ldap <zend.auth.adapter.ldap>`
 の中で使用するコードと非常によく似ています。実際のところ、
 複数ドメインとフェイルオーバー機能をもつ *LDAP* 基本認証を行うのなら、
 この認証アダプタを使用する (あるいはコードをコピーする) ことをおすすめします。

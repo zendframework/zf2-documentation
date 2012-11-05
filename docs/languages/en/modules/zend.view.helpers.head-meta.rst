@@ -129,7 +129,7 @@ For instance, you may specify an open graph page title and type as follows:
 .. code-block:: php
    :linenos:
 
-   $this->doctype(Zend_View_Helper_Doctype::XHTML_RDFA);
+   $this->doctype(Zend\View\Helper\Doctype::XHTML_RDFA);
    $this->headMeta()->setProperty('og:title', 'my article title');
    $this->headMeta()->setProperty('og:type', 'article');
    echo $this->headMeta();

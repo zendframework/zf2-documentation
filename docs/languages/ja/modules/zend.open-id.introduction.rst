@@ -4,7 +4,7 @@
 導入
 ==
 
-``Zend_OpenId`` は、OpenID 対応のサイトや ID プロバイダを作成するためのシンプルな *API*
+``ZendOpenId`` は、OpenID 対応のサイトや ID プロバイダを作成するためのシンプルな *API*
 を提供する Zend Framework のコンポーネントです。
 
 .. _zend.openid.introduction.what:
@@ -34,7 +34,7 @@ OpenID についての詳細な情報は `OpenID の公式サイト`_ を参照�
 動作原理は?
 ------
 
-``Zend_OpenId`` コンポーネントの主要な目的は、 次の図のような OpenID
+``ZendOpenId`` コンポーネントの主要な目的は、 次の図のような OpenID
 認証プロトコルを実装することです。
 
 .. image:: ../images/zend.openid.protocol.jpg
@@ -76,24 +76,24 @@ OpenID についての詳細な情報は `OpenID の公式サイト`_ を参照�
 
 .. _zend.openid.introduction.structure:
 
-Zend_OpenId の構造
+ZendOpenId の構造
 ---------------
 
-``Zend_OpenId`` は 2 つのサブパッケージで構成されています。 まず最初が
-``Zend_OpenId_Consumer`` で、これは OpenID
-対応のサイトを開発するためのものです。もうひとつは ``Zend_OpenId_Provider``
+``ZendOpenId`` は 2 つのサブパッケージで構成されています。 まず最初が
+``ZendOpenId\Consumer`` で、これは OpenID
+対応のサイトを開発するためのものです。もうひとつは ``ZendOpenId\Provider``
 で、これは OpenID
 サーバを開発するためのものです。これらはお互いに完全に独立しており、
 それぞれ個別に使用できます。
 
-これらのサブパッケージの唯一の共通部分は、 ``Zend_OpenId_Extension_Sreg``
-が実装している OpenID Simple Registration Extension と ``Zend_OpenId``
+これらのサブパッケージの唯一の共通部分は、 ``ZendOpenId_Extension\Sreg``
+が実装している OpenID Simple Registration Extension と ``ZendOpenId``
 クラスのユーティリティ関数群です。
 
 .. note::
 
-   ``Zend_OpenId`` は、 `GMP 拡張モジュール`_ が使用可能な場合はそれを使用します。
-   ``Zend_OpenId`` を使う場合は、 GMP
+   ``ZendOpenId`` は、 `GMP 拡張モジュール`_ が使用可能な場合はそれを使用します。
+   ``ZendOpenId`` を使う場合は、 GMP
    拡張モジュールを有効にしておくとよりよいパフォーマンスが得られるでしょう。
 
 .. _zend.openid.introduction.standards:
@@ -101,7 +101,7 @@ Zend_OpenId の構造
 サポートする OpenID 標準規格
 ------------------
 
-``Zend_OpenId`` コンポーネントは、 次の標準規格に対応しています。
+``ZendOpenId`` コンポーネントは、 次の標準規格に対応しています。
 
 - OpenID Authentication protocol version 1.1
 

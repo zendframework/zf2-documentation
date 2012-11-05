@@ -1,36 +1,36 @@
 .. EN-Revision: none
 .. _zend.soap.server:
 
-Zend_Soap_Server
+Zend\Soap\Server
 ================
 
-La classe ``Zend_Soap_Server`` a été créée pour simplifier la création d'un service Web *SOAP* en *PHP*.
+La classe ``Zend\Soap\Server`` a été créée pour simplifier la création d'un service Web *SOAP* en *PHP*.
 
 Elle peut être utilisée en mode WSDL ou non-WSDL, et elle utilise des fonctions ou des classes pour définir le
 service Web rendu.
 
-Lorsque le composant ``Zend_Soap_Server`` fonctionne en mode WSDL, il utilise le document WSDL pour décrire le
+Lorsque le composant ``Zend\Soap\Server`` fonctionne en mode WSDL, il utilise le document WSDL pour décrire le
 comportement des objets du serveur ainsi que les options de transport vers les clients.
 
-Un document WSDL peut être auto-généré en utilisant :ref:`le composant Zend_Soap_AutoDiscovery
-<zend.soap.autodiscovery.introduction>`, ou alors construit manuellement avec :ref:`la classe Zend_Soap_Wsdl
+Un document WSDL peut être auto-généré en utilisant :ref:`le composant Zend\Soap\AutoDiscovery
+<zend.soap.autodiscovery.introduction>`, ou alors construit manuellement avec :ref:`la classe Zend\Soap\Wsdl
 <zend.soap.wsdl>` ou tout autre outil de génération de *XML*
 
 Si le mode non-WSDL est utilisé, alors toutes les options du protocole doivent être configurées.
 
 .. _zend.soap.server.constructor:
 
-Constructeur de Zend_Soap_Server
+Constructeur de Zend\Soap\Server
 --------------------------------
 
-Le constructeur de ``Zend_Soap_Server`` s'utilise différemment selon que l'on fonctionne en mode WSDL ou non.
+Le constructeur de ``Zend\Soap\Server`` s'utilise différemment selon que l'on fonctionne en mode WSDL ou non.
 
 .. _zend.soap.server.constructor.wsdl_mode:
 
-Constructeur de Zend_Soap_Server en mode WSDL
+Constructeur de Zend\Soap\Server en mode WSDL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le constructeur de ``Zend_Soap_Server`` prend 2 paramètres optionnel en mode WSDL:
+Le constructeur de ``Zend\Soap\Server`` prend 2 paramètres optionnel en mode WSDL:
 
    . ``$wsdl``, l'URI permettant l'accès au fichier WSDL [#]_.
 
@@ -57,11 +57,11 @@ Le constructeur de ``Zend_Soap_Server`` prend 2 paramètres optionnel en mode WS
 
 .. _zend.soap.server.wsdl_mode:
 
-Constructeur de Zend_Soap_Server en mode non-WSDL
+Constructeur de Zend\Soap\Server en mode non-WSDL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le premier paramètre du constructeur **doit** être mis à la valeur ``NULL`` si vous voulez utiliser
-``Zend_Soap_Server`` en mode non-WSDL.
+``Zend\Soap\Server`` en mode non-WSDL.
 
 Vous devez aussi spécifier "uri" dans ce cas (voir juste après).
 
@@ -92,7 +92,7 @@ Méthodes de définitions de l'API du service
 
 Il existe 2 manières de déclarer l'API de votre serveur *SOAP*.
 
-La première consiste à attacher des classes à l'objet ``Zend_Soap_Server``, celles-ci devront alors décrire
+La première consiste à attacher des classes à l'objet ``Zend\Soap\Server``, celles-ci devront alors décrire
 l'API du service en totalité :
 
    .. code-block:: php
@@ -124,7 +124,7 @@ l'API du service en totalité :
           ...
       }
       ...
-      $server = new Zend_Soap_Server(null, $options);
+      $server = new Zend\Soap\Server(null, $options);
       // Connecte la classe au serveur Soap
       $server->setClass('MyClass');
       // Connecte un objet déjà initialisé au serveur Soap
@@ -171,7 +171,7 @@ méthodes ``addFunction()`` ou ``loadFunctions()``:
           ...
       }
       ...
-      $server = new Zend_Soap_Server(null, $options);
+      $server = new Zend\Soap\Server(null, $options);
       $server->addFunction('function1');
       $server->addFunction('function2');
       ...
@@ -190,7 +190,7 @@ Gestion des objets de requête et de réponse
 
    Cette section décrit la gestion avancée des requêtes et réponses *SOAP* et pourra être évitée.
 
-Le composant Zend_Soap_Server effectue des requêtes et récupère des réponses, ceci automatiquement. Il est
+Le composant Zend\Soap\Server effectue des requêtes et récupère des réponses, ceci automatiquement. Il est
 possible d'intercepter la requête/réponse pour ajouter du pré ou post processus.
 
 .. _zend.soap.server.request_response.request:
@@ -198,7 +198,7 @@ possible d'intercepter la requête/réponse pour ajouter du pré ou post process
 Requête
 ^^^^^^^
 
-La méthode ``Zend_Soap_Server::handle()`` utilise la requête depuis le flux d'entrée standard ('php://input').
+La méthode ``Zend\Soap\Server::handle()`` utilise la requête depuis le flux d'entrée standard ('php://input').
 Le comportement peut être changé en passant des paramètres à la méthode ``handle()`` ou en spécifiant sa
 propre requête grâce à la méthode ``setRequest()``:
 
@@ -206,7 +206,7 @@ propre requête grâce à la méthode ``setRequest()``:
       :linenos:
 
       ...
-      $server = new Zend_Soap_Server(...);
+      $server = new Zend\Soap\Server(...);
       ...
       // Affecte une requête personnalisée
       $server->handle($request);
@@ -237,7 +237,7 @@ La dernière requête utilisée et traitée peut être récupérée en utilisant
       :linenos:
 
       ...
-      $server = new Zend_Soap_Server(...);
+      $server = new Zend\Soap\Server(...);
       ...
       $server->handle();
       $request = $server->getLastRequest();
@@ -249,7 +249,7 @@ La dernière requête utilisée et traitée peut être récupérée en utilisant
 Réponse
 ^^^^^^^
 
-``Zend_Soap_Server::handle()`` émet automatiquement la réponse vers le flux standard de sortie. Ce comportement
+``Zend\Soap\Server::handle()`` émet automatiquement la réponse vers le flux standard de sortie. Ce comportement
 peut être changé en utilisant ``setReturnResponse()`` avec une valeur ``TRUE`` ou ``FALSE`` en paramètre. [#]_.
 La réponse générée par ``handle()`` est alors retournée et non plus émise.
 
@@ -257,7 +257,7 @@ La réponse générée par ``handle()`` est alors retournée et non plus émise.
       :linenos:
 
       ...
-      $server = new Zend_Soap_Server(...);
+      $server = new Zend\Soap\Server(...);
       ...
       // Récupère la réponse plutôt que de l'émettre
       $server->setReturnResponse(true);
@@ -273,7 +273,7 @@ Autrement, la dernière réponse peut être récupérer avec la méthode ``getLa
       :linenos:
 
       ...
-      $server = new Zend_Soap_Server(...);
+      $server = new Zend\Soap\Server(...);
       ...
       $server->handle();
       $response = $server->getLastResponse();

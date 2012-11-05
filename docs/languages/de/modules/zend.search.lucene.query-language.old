@@ -4,7 +4,7 @@
 Abfragesprache
 ==============
 
-Java Lucene und ``Zend_Search_Lucene`` bieten sehr mächtige Abfragesprachen.
+Java Lucene und ``Zend\Search\Lucene`` bieten sehr mächtige Abfragesprachen.
 
 Diese Sprachen sind großteils die selben mit ein paar kleineren Unterschieden welche anbei erklärt werden.
 
@@ -39,15 +39,15 @@ durch aktuelle Einstellungen definiert.
 Der erste und größte Unterschied zu Java Lucene ist der das Ausdrücke standardmäßig über **alle Felder**
 gesucht werden.
 
-Es gibt zwei statische Methoden in der ``Zend_Search_Lucene`` Klasse welche dem Entwickler das Konfigurieren dieser
+Es gibt zwei statische Methoden in der ``Zend\Search\Lucene`` Klasse welche dem Entwickler das Konfigurieren dieser
 Einstellungen erlauben:
 
 .. code-block:: php
    :linenos:
 
-   $defaultSearchField = Zend_Search_Lucene::getDefaultSearchField();
+   $defaultSearchField = Zend\Search\Lucene::getDefaultSearchField();
    ...
-   Zend_Search_Lucene::setDefaultSearchField('contents');
+   Zend\Search\Lucene::setDefaultSearchField('contents');
 
 Der ``NULL`` Wert bedeutet, das die Suche über alle Felder durchgeführt wird. Das ist die Standardeinstellung.
 
@@ -125,8 +125,8 @@ Beginnend mit ZF 1.7.7 benötigen Wildcard Präfixe einen nicht-Wildcard Präfix
 Präfixes ist 3 (wie in Java Lucene). Die Ausdrücke "\*", "te?t", "\*wr?t*" werden also eine Exception werfen
 [#]_.
 
-Das kann durch Verwendung der Methoden ``Zend_Search_Lucene_Search_Query_Wildcard::getMinPrefixLength()`` und
-``Zend_Search_Lucene_Search_Query_Wildcard::setMinPrefixLength()`` geändert werden.
+Das kann durch Verwendung der Methoden ``Zend\Search\Lucene\Search\Query\Wildcard::getMinPrefixLength()`` und
+``Zend\Search\Lucene\Search\Query\Wildcard::setMinPrefixLength()`` geändert werden.
 
 .. _zend.search.lucene.query-language.modifiers:
 
@@ -166,7 +166,7 @@ Das wird alle Dokumente finden dessen Titel zwischen Aida und Carmen sortiert si
 Bereichsabfragen inklusive, werden durch eine eckige Klammer abgegrenzt. Bereichsabfragen exklusive werden durch
 geschlungene Klammern abgegrenzt.
 
-Wenn kein Feld spezifiziert wurde sucht ``Zend_Search_Lucene`` standardmäßig nach spezifizierten Intervallen in
+Wenn kein Feld spezifiziert wurde sucht ``Zend\Search\Lucene`` standardmäßig nach spezifizierten Intervallen in
 allen Feldern.
 
 .. code-block:: text
@@ -179,7 +179,7 @@ allen Feldern.
 Fuzzy Suchen
 ------------
 
-``Zend_Search_Lucene`` unterstützt, genauso wie Java Lucene, die Fuzzy Suche basierend auf der Levenshtein Distanz
+``Zend\Search\Lucene`` unterstützt, genauso wie Java Lucene, die Fuzzy Suche basierend auf der Levenshtein Distanz
 oder dem Edit Algorithmus. Um eine Fuzzy Suche durchzuführen muß das Tilde Symbol "~", am Ende eines einzelnen
 Wortbegriffs verwendet werden. Um zum Beispiel nach einem Begriff zu suchen der in der Aussprache ähnlich zu
 "Raum" ist kann die folgende Fuzzy Suche verwendet werden:
@@ -208,9 +208,9 @@ Einschränkung passender Ausdrücke
 Wildcard, Bereichs- und Fuzzy Suchabfragen können bei zu vielen Ausdrücken passen. Das kann die Geschwindigkeit
 der Suche sehr stark verlangsamen.
 
-Deshalb setzt ``Zend_Search_Lucene`` ein Limit der passenden Ausdrücke pro Abfrage (Unterabfrage). Dieses Limit
-kann durch Verwendung der Methoden ``Zend_Search_Lucene::getTermsPerQueryLimit()`` und
-``Zend_Search_Lucene::setTermsPerQueryLimit($limit)`` empfangen und gesetzt werden.
+Deshalb setzt ``Zend\Search\Lucene`` ein Limit der passenden Ausdrücke pro Abfrage (Unterabfrage). Dieses Limit
+kann durch Verwendung der Methoden ``Zend\Search\Lucene::getTermsPerQueryLimit()`` und
+``Zend\Search\Lucene::setTermsPerQueryLimit($limit)`` empfangen und gesetzt werden.
 
 Das standardmäßige Limit für passende Ausdrücke ist 1024.
 
@@ -234,7 +234,7 @@ suchen kann die folgende Suche verwendet werden:
 Einen Ausdruck schneller machen
 -------------------------------
 
-Java Lucene und ``Zend_Search_Lucene`` bieten einen Level der Relevanz von passenden Dokumenten basierend auf den
+Java Lucene und ``Zend\Search\Lucene`` bieten einen Level der Relevanz von passenden Dokumenten basierend auf den
 gefundenen Ausdrücken. Um die Relevanz eines Ausdrucks zu erhöhen kann das Karet, "^", Symbol mit einem Boost
 Faktor (einer Zahl) am Ende des Ausdrucks nach dem gesucht wird, verwendet werden. Je höher Boost Faktor ist,
 desdo relevanter wird der Ausdruck werden.
@@ -273,10 +273,10 @@ Boolsche Operatoren
 
 Boolsche Operatoren erlauben es Ausdrücke durch logische Operatoren zu kombinieren. Lucene unterstützt AND, "+",
 OR, NOT und "-" als boolsche Operatoren. In Java Lucene müssen alle boolschen Operatoren GROßGESCHRIEBEN werden.
-In ``Zend_Search_Lucene`` nicht.
+In ``Zend\Search\Lucene`` nicht.
 
 AND, OR, und NOT Operatoren und "+", "-" definieren zwei unterschiedliche Stile um boolsche Abfragen zu erstellen.
-Im Gegensatz zu Java Lucene erlaubt es ``Zend_Search_Lucene`` nicht diese zwei Stile zu mischen.
+Im Gegensatz zu Java Lucene erlaubt es ``Zend\Search\Lucene`` nicht diese zwei Stile zu mischen.
 
 Wenn der AND/OR/NOT Stil verwendet wird dann muß der AND oder OR Operator zwischen allen Abfrageausdrücken
 vorhanden sein. Jedem Ausdruck kann auch ein NOT Operator vorangestellt werden. Der AND Operator hat eine höhere
@@ -390,18 +390,18 @@ folgende Abfrage verwendet werden:
    +"PHP Framework" "Zend Framework"
 
 Der standardmäßige boolsche Operator kann mit den
-``Zend_Search_Lucene_Search_QueryParser::setDefaultOperator($operator)`` und
-``Zend_Search_Lucene_Search_QueryParser::getDefaultOperator()`` Methoden gesetzt oder geholt werden.
+``Zend\Search\Lucene\Search\QueryParser::setDefaultOperator($operator)`` und
+``Zend\Search\Lucene\Search\QueryParser::getDefaultOperator()`` Methoden gesetzt oder geholt werden.
 
-Diese Methoden arbeiten mit den ``Zend_Search_Lucene_Search_QueryParser::B_AND`` und
-``Zend_Search_Lucene_Search_QueryParser::B_OR`` Konstanten.
+Diese Methoden arbeiten mit den ``Zend\Search\Lucene\Search\QueryParser::B_AND`` und
+``Zend\Search\Lucene\Search\QueryParser::B_OR`` Konstanten.
 
 .. _zend.search.lucene.query-language.grouping:
 
 Gruppieren
 ----------
 
-Java Lucene und ``Zend_Search_Lucene`` unterstützen die Verwendung von Klammern um Fälle zu gruppieren und
+Java Lucene und ``Zend\Search\Lucene`` unterstützen die Verwendung von Klammern um Fälle zu gruppieren und
 Unterabfragen zu erstellen. Das kann nützlich sein wenn man die boolsche Operatoren für eine Abfrage
 kontrollieren will, oder unterschiedliche Abfragestile mischen will:
 
@@ -410,7 +410,7 @@ kontrollieren will, oder unterschiedliche Abfragestile mischen will:
 
    +(Framework OR Bibliothek) +php
 
-``Zend_Search_Lucene`` unterstützt Unterabfragen von beliebigen Ebenen.
+``Zend\Search\Lucene`` unterstützt Unterabfragen von beliebigen Ebenen.
 
 .. _zend.search.lucene.query-language.field-grouping:
 
@@ -451,5 +451,5 @@ werden soll. Um zum Beispiel nach (1+1):2 zu suchen kann die folgende Abfrage ve
 
 .. _`hier`: http://lucene.apache.org/java/2_3_0/queryparsersyntax.html
 
-.. [#] Es ist zu beachten das es nicht zu einer ``Zend_Search_Lucene_Search_QueryParserException`` kommt, sondern
-       zu einer ``Zend_Search_Lucene_Exception``. Sie wird wärend dem Umschreiben der Abfrage geworfen.
+.. [#] Es ist zu beachten das es nicht zu einer ``Zend\Search\Lucene\Search\QueryParserException`` kommt, sondern
+       zu einer ``Zend\Search_Lucene\Exception``. Sie wird wärend dem Umschreiben der Abfrage geworfen.

@@ -3,7 +3,7 @@
 Using Plugins
 =============
 
-Components that make use of plugins typically use ``Zend_Loader_PluginLoader`` to do their work. This class has you
+Components that make use of plugins typically use ``Zend\Loader\PluginLoader`` to do their work. This class has you
 register plugins by specifying one or more "prefix paths". The component will then call the PluginLoader's
 ``load()`` method, passing the plugin's short name to it. The PluginLoader will then query each prefix path to see
 if a class matching that short name exists. Prefix paths are searched in LIFO (last in, first out) order, so it
@@ -30,7 +30,7 @@ might look like this:
    |   |   |-- Even.php
    |   |   |-- Dozens.php
 
-Now, we'll inform a ``Zend_Form_Element`` instance of this prefix path. ``Zend_Form_Element``'s ``addPrefixPath()``
+Now, we'll inform a ``Zend\Form\Element`` instance of this prefix path. ``Zend\Form\Element``'s ``addPrefixPath()``
 method expects a third argument that indicates the type of plugin for which the path is being registered; in this
 case, it's a "validate" plugin.
 
@@ -51,7 +51,7 @@ using a mix of standard validators ("NotEmpty", "Int") and custom validators ("E
            ->addValidator('Dozens');
 
 When the element needs to validate, it will then request the plugin class from the PluginLoader. The first two
-validators will resolve to ``Zend_Validate_NotEmpty`` and ``Zend_Validate_Int``, respectively; the next two will
+validators will resolve to ``Zend\Validate\NotEmpty`` and ``Zend\Validate\Int``, respectively; the next two will
 resolve to ``Foo_Validate_Even`` and ``Foo_Validate_Dozens``, respectively.
 
 .. note::
@@ -65,7 +65,7 @@ resolve to ``Foo_Validate_Even`` and ``Foo_Validate_Dozens``, respectively.
    found on that path. If the file is not found, it then moves on to the next prefix path.
 
    Once the stack of prefix paths has been exhausted, if no matching file has been found, it will throw a
-   ``Zend_Loader_PluginLoader_Exception``.
+   ``Zend\Loader_PluginLoader\Exception``.
 
 .. _learning.plugins.usage.override:
 
@@ -75,7 +75,7 @@ One strength of the PluginLoader is that its use of a LIFO stack allows you to o
 creating your own versions locally with a different prefix path, and registering that prefix path later in the
 stack.
 
-For example, let's consider ``Zend_View_Helper_FormButton`` (view helpers are one form of plugin). This view helper
+For example, let's consider ``Zend\View_Helper\FormButton`` (view helpers are one form of plugin). This view helper
 accepts three arguments, an element name (also used as the element's DOM identifier), a value (used as the button
 label), and an optional array of attributes. The helper then generates *HTML* markup for a form input element.
 
@@ -95,8 +95,8 @@ then register the prefix path with the view:
 .. code-block:: php
    :linenos:
 
-   // Zend_View::addHelperPath() utilizes the PluginLoader; however, it inverts
-   // the arguments, as it provides a default value of "Zend_View_Helper" for the
+   // Zend\View\View::addHelperPath() utilizes the PluginLoader; however, it inverts
+   // the arguments, as it provides a default value of "Zend\View\Helper" for the
    // plugin prefix.
    //
    // The below assumes your class is in the directory 'foo/view/helpers/'.

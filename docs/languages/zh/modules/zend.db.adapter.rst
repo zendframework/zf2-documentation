@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.db.adapter:
 
-Zend_Db_Adapter
+Zend\Db\Adapter
 ===============
 
 .. _zend.db.adapter.introduction:
@@ -9,11 +9,11 @@ Zend_Db_Adapter
 简介
 --
 
-*Zend_Db_Adapter*\ 是zendfrmaeword的数据库抽象层api. 基于pdo, 你可以使用 *Zend_Db_Adapter*
+*Zend\Db\Adapter*\ 是zendfrmaeword的数据库抽象层api. 基于pdo, 你可以使用 *Zend\Db\Adapter*
 连接和处理多种 数据库,包括:microsoft SQL Server,MySql,SQLite等等.
 
-要针对不同的数据库实例化一个 *Zend_Db_Adapter* 对象, 需要
-将adapter的名字和描述数据库连接的参数数组作为参数，静态调用 *Zend_Db::factory()*\
+要针对不同的数据库实例化一个 *Zend\Db\Adapter* 对象, 需要
+将adapter的名字和描述数据库连接的参数数组作为参数，静态调用 *Zend\Db\Db::factory()*\
 方法。例如，连接到一个数据库名称为
 “camelot”，用户名为“malory”的本地mysql数据库，可以进行如下操作:
 
@@ -28,7 +28,7 @@ Zend_Db_Adapter
                     'password' => '******',
                     'dbname'   => 'camelot');
 
-   $db = Zend_Db::factory('PDO_MYSQL', $params);
+   $db = Zend\Db\Db::factory('PDO_MYSQL', $params);
 
    ?>
 同样，连接到一个库名为“camelot”的SQLite数据库:
@@ -41,7 +41,7 @@ Zend_Db_Adapter
 
    $params = array ('dbname' => 'camelot');
 
-   $db = Zend_Db::factory('PDO_SQLITE', $params);
+   $db = Zend\Db\Db::factory('PDO_SQLITE', $params);
 
    ?>
 任一种方法都可以让你使用同样的api查询数据库。
@@ -52,7 +52,7 @@ Zend_Db_Adapter
 -----------
 
 你应该处理将在sql语句中使用的条件值；这对于防止sql语句攻击是很有好处的。
-*Zend_Db_Adapter* (通过pdo)提供了两种方法帮助你手动的为条件值加上引号。
+*Zend\Db\Adapter* (通过pdo)提供了两种方法帮助你手动的为条件值加上引号。
 
 第一种是 *quote()* 方法. 该方法会根据数据库adapter为标量加上
 合适的引号;假如你试图对一个数组做quote操作, 它将为数组中
@@ -98,7 +98,7 @@ quoteInto处理过的标量和数组返回结果与 *quote()* 方法相同.
 直接查询
 ----
 
-一旦你得到了一个 *Zend_Db_Adapter* 实例, 你可以直接 执行sql语句进行查询. *Zend_Db_Adapter*
+一旦你得到了一个 *Zend\Db\Adapter* 实例, 你可以直接 执行sql语句进行查询. *Zend\Db\Adapter*
 传送这些sql语 句到底层的PDO对象，由PDO对象组合并执行他们，在有查询结果的情况
 下，返回一个PDOStatement对象以便对结果进行处理。
 
@@ -159,9 +159,9 @@ quoteInto处理过的标量和数组返回结果与 *quote()* 方法相同.
 事务处理
 ----
 
-默认情况下，PDO(因此 *Zend_Db_Adapter* 也是)是采用自动commit模式。
+默认情况下，PDO(因此 *Zend\Db\Adapter* 也是)是采用自动commit模式。
 也就是说，所有的数据库操作执行时就做了commit操作。假如你试图执行事务处理，最
-简单的是调用 *beginTransaction()*\ 方法，然后选择commit或者rollback。 之后, *Zend_Db_Adapter*\
+简单的是调用 *beginTransaction()*\ 方法，然后选择commit或者rollback。 之后, *Zend\Db\Adapter*\
 会回到自动commit模式下，直到你再次调用 *beginTransaction()*\ 方法
 
 .. code-block::

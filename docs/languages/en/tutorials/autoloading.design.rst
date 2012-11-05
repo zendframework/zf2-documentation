@@ -32,7 +32,7 @@ all library code.
 Autoloader Conventions and Design
 ---------------------------------
 
-Zend Framework's autoloading support, provided primarily via ``Zend_Loader_Autoloader``, has the following goals
+Zend Framework's autoloading support, provided primarily via ``Zend\Loader\Autoloader``, has the following goals
 and design elements:
 
 - **Provide namespace matching**. If the class namespace prefix is not in a list of registered namespaces, return
@@ -48,8 +48,8 @@ and design elements:
   be off. However, if a developer **insists** that it be on, we allow toggling it on.
 
 - **Allow specifying custom callbacks for autoloading**. Some developers don't want to use
-  ``Zend_Loader::loadClass()`` for autoloading, but still want to make use of Zend Framework's mechanisms.
-  ``Zend_Loader_Autoloader`` allows specyfing an alternate callback for autoloading.
+  ``Zend\Loader\Loader::loadClass()`` for autoloading, but still want to make use of Zend Framework's mechanisms.
+  ``Zend\Loader\Autoloader`` allows specyfing an alternate callback for autoloading.
 
 - **Allow manipulation of the SPL autoload callback chain**. The purpose of this is to allow specifying additional
   autoloaders -- for instance, resource loaders for classes that don't have a 1:1 mapping to the filesystem -- to

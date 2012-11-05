@@ -10,7 +10,7 @@
 приведенный ранее в качестве примера).
 
 При чтении отдельного сообщения также создается объект
-*Zend_Feed_Atom*, но при этом автоматически создается "анонимная"
+*Zend\Feed\Atom*, но при этом автоматически создается "анонимная"
 лента, содержащая данное сообщение.
 
 .. _zend.feed.consuming-atom-single-entry.example.atom:
@@ -20,7 +20,7 @@
 .. code-block:: php
    :linenos:
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/1');
    echo 'The feed has: ' . $feed->count() . ' entry.';
 
    $entry = $feed->current();
@@ -37,7 +37,7 @@
 .. code-block:: php
    :linenos:
 
-   $entry = new Zend_Feed_Entry_Atom('http://atom.example.com/feed/1');
+   $entry = new Zend\Feed_Entry\Atom('http://atom.example.com/feed/1');
    echo $entry->title();
 
 

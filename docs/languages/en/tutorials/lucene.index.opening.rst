@@ -13,7 +13,7 @@ through the index) need an index object. One can be obtained using one of the fo
 .. code-block:: php
    :linenos:
 
-   $index = Zend_Search_Lucene::create($indexPath);
+   $index = Zend\Search\Lucene::create($indexPath);
 
 .. _learning.lucene.index-opening.opening:
 
@@ -22,6 +22,6 @@ through the index) need an index object. One can be obtained using one of the fo
 .. code-block:: php
    :linenos:
 
-   $index = Zend_Search_Lucene::open($indexPath);
+   $index = Zend\Search\Lucene::open($indexPath);
 
 

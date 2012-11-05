@@ -14,7 +14,7 @@ using the ``setMimeBoundary()`` method, as in the following example:
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Message();
    $mail->setMimeBoundary('=_' . md5(microtime(1) . $someId++));
    // build message...
 

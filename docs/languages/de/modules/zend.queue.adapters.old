@@ -4,7 +4,7 @@
 Adapter
 =======
 
-``Zend_Queue`` unterstützt alle Queues die das Interface ``Zend_Queue_Adapter_AdapterInterface`` implementieren.
+``Zend_Queue`` unterstützt alle Queues die das Interface ``Zend\Queue_Adapter\AdapterInterface`` implementieren.
 Die folgenden Nachrichten Queue Services werden unterstützt:
 
 - `Apache ActiveMQ`_.
@@ -33,7 +33,7 @@ spezifiziert ist dann wird der Parameter benötigt.
 
 .. _zend.queue.adapters.configuration.apachemq:
 
-Apache ActiveMQ - Zend_Queue_Adapter_Activemq
+Apache ActiveMQ - Zend\Queue_Adapter\Activemq
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Hier aufgeführte Optionen sind bekannte Notwendigkeiten. Nicht alle Nachrichten Server benötigen username oder
@@ -67,16 +67,16 @@ password.
 
   **$options['driverOptions']['timeout_usec'] = 0;**
 
-  Das ist die Menge an Zeit die ``Zend_Queue_Adapter_Activemq`` für einen Lesezugriff auf einem Socket wartet
+  Das ist die Menge an Zeit die ``Zend\Queue_Adapter\Activemq`` für einen Lesezugriff auf einem Socket wartet
   bevor keine Nachricht zurückgegeben wird.
 
 .. _zend.queue.adapters.configuration.Db:
 
-Db - Zend_Queue_Adapter_Db
+Db - Zend\Queue_Adapter\Db
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Optionen des Treibers werden für wenige benötigte Optionen geprüft so wie **type**, **host**, **username**,
-**password** und **dbname**. Man kann zusätzliche Parameter für ``Zend_DB::factory()`` als Paramerter in
+**password** und **dbname**. Man kann zusätzliche Parameter für ``Zend\DB\DB::factory()`` als Paramerter in
 ``$options['driverOptions']`` übergeben. Ein Beispiel für eine zusätzliche Option die hier nicht aufgeführt
 ist, aber übergeben werden könnte ist **port**.
 
@@ -93,14 +93,14 @@ ist, aber übergeben werden könnte ist **port**.
            'port'      => 3306, // Optionaler Parameter
        ),
        'options' => array(
-           // Verwenden von Zend_Db_Select für das Update, nicht alle Datenbanken
+           // Verwenden von Zend\Db\Select für das Update, nicht alle Datenbanken
            // unterstützen dieses Feature.
-           Zend_Db_Select::FOR_UPDATE => true
+           Zend\Db\Select::FOR_UPDATE => true
        )
    );
 
    // Eine Datenbank Queue erstellen.
-   $queue = new Zend_Queue('Db', $options);
+   $queue = new Zend\Queue\Queue('Db', $options);
 
 
 
@@ -110,8 +110,8 @@ ist, aber übergeben werden könnte ist **port**.
 
 - **$options['driverOptions']['type'] = 'Pdo';**
 
-  **type** ist der Adapter von dem man will das Ihn ``Zend_Db::factory()`` verwendet. Das ist der erste Parameter
-  für den Aufruf der Klassenmethode ``Zend_Db::factory()``
+  **type** ist der Adapter von dem man will das Ihn ``Zend\Db\Db::factory()`` verwendet. Das ist der erste Parameter
+  für den Aufruf der Klassenmethode ``Zend\Db\Db::factory()``
 
 - **$options['driverOptions']['host'] = 'host.domain.tld';**
 
@@ -132,7 +132,7 @@ ist, aber übergeben werden könnte ist **port**.
 
 .. _zend.queue.adapters.configuration.memcacheq:
 
-MemcacheQ - Zend_Queue_Adapter_Memcacheq
+MemcacheQ - Zend\Queue_Adapter\Memcacheq
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **$options['name'] = 'queue1';**
@@ -153,7 +153,7 @@ MemcacheQ - Zend_Queue_Adapter_Memcacheq
 
 .. _zend.queue.adapters.configuration.platformjq:
 
-Zend Platform Job Queue - Zend_Queue_Adapter_PlatformJobQueue
+Zend Platform Job Queue - Zend\Queue_Adapter\PlatformJobQueue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **$options['daemonOptions']['host'] = '127.0.0.1:10003';**
@@ -167,7 +167,7 @@ Zend Platform Job Queue - Zend_Queue_Adapter_PlatformJobQueue
 
 .. _zend.queue.adapters.configuration.array:
 
-Array - Zend_Queue_Adapter_Array
+Array - Zend\Queue_Adapter\Array
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **$options['name'] = 'queue1';**
@@ -186,7 +186,7 @@ Die folgenden Adapter haben Hinweise:
 Apache ActiveMQ
 ^^^^^^^^^^^^^^^
 
-Die Dauer der Sichtbarkeit (visibility duration) ist für ``Zend_Queue_Adapter_Activemq`` nicht vorhanden.
+Die Dauer der Sichtbarkeit (visibility duration) ist für ``Zend\Queue_Adapter\Activemq`` nicht vorhanden.
 
 Wärend Apache's ActiveMQ mehrere Einschreibungen unterstützt, wird das von ``Zend_Queue`` nicht unterstützt. Man
 muss ein neues ``Zend_Queue`` Objekt für jede individuelle Einschreibung erstellen.
@@ -306,21 +306,21 @@ unterscheidet:
   - ``ZendApi_Job``- Letztendlich kann einfach eine Instanz von ``ZendApi_Job`` übergeben werden und Sie wird zur
     Job Queue der Plattform übergeben.
 
-  In allen Instanzen gibt ``send()`` ein ``Zend_Queue_Message_PlatformJob`` Objekt zurück, welches Zugriff zum
+  In allen Instanzen gibt ``send()`` ein ``Zend\Queue_Message\PlatformJob`` Objekt zurück, welches Zugriff zum
   ``ZendApi_Job`` Objekt gibt und verwendet wird um mit der Job Queue zu kommunizieren.
 
 - ``receive()``- Empfängt eine Liste von aktiven Jobs von der Job Queue. Jeder Job im zurückgegebenen Set ist
-  eine Instanz von ``Zend_Queue_Message_PlatformJob``.
+  eine Instanz von ``Zend\Queue_Message\PlatformJob``.
 
 - ``deleteMessage()``- Da dieser Adapter nur mit der Job Queue arbeitet, erwartet diese Methode das die übergebene
-  ``$message`` eine Instanz von ``Zend_Queue_Message_PlatformJob`` ist, und wirft andernfalls eine Exception.
+  ``$message`` eine Instanz von ``Zend\Queue_Message\PlatformJob`` ist, und wirft andernfalls eine Exception.
 
 .. _zend.queue.adapters.notes.array:
 
 Array (Lokal)
 ^^^^^^^^^^^^^
 
-Die Array Queue ist ein *PHP* ``array()`` im lokalen Speicher. ``Zend_Queue_Adapter_Array`` ist gut für das Unit
+Die Array Queue ist ein *PHP* ``array()`` im lokalen Speicher. ``Zend\Queue_Adapter\Array`` ist gut für das Unit
 Testen.
 
 

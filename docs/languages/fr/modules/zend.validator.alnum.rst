@@ -4,15 +4,15 @@
 Alnum
 =====
 
-``Zend_Validate_Alnum`` permet de valider des données contenant des caractères alphabétiques et des chiffres. Il
+``Zend\Validate\Alnum`` permet de valider des données contenant des caractères alphabétiques et des chiffres. Il
 n'y a pas de limite de taille.
 
 .. _zend.validator.set.alnum.options:
 
-Options supportées par Zend_Validate_Alnum
+Options supportées par Zend\Validate\Alnum
 ------------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_Alnum``\  :
+Les options suivantes sont supportées par ``Zend\Validate\Alnum``\  :
 
 - **allowWhiteSpace**\  : Si le caractère d'espace doit être accepté ou non. Par défaut ``FALSE``.
 
@@ -26,7 +26,7 @@ Voici un exemple :
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Alnum();
+   $validator = new Zend\Validate\Alnum();
    if ($validator->isValid('Abcd12')) {
        // value ne contient que des caractères autorisés
    } else {
@@ -47,7 +47,7 @@ création de l'objet ou ensuite au moyen des méthodes ``setAllowWhiteSpace()`` 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Alnum(array('allowWhiteSpace' => true));
+   $validator = new Zend\Validate\Alnum(array('allowWhiteSpace' => true));
    if ($validator->isValid('Abcd and 12')) {
        // value ne contient que des caractères autorisés
    } else {
@@ -59,7 +59,7 @@ création de l'objet ou ensuite au moyen des méthodes ``setAllowWhiteSpace()`` 
 Utiliser des langues différentes
 --------------------------------
 
-En utilisant ``Zend_Validate_Alnum``, la langue que l'utilisateur précise dans son navigateur sera utilisée pour
+En utilisant ``Zend\Validate\Alnum``, la langue que l'utilisateur précise dans son navigateur sera utilisée pour
 autoriser ou non certains caractères. Ainsi si l'utilisateur règle son navigateur sur **de** pour de l'allemand,
 alors les caractères comme **ä**, **ö** et **ü** seront eux aussi autorisés.
 

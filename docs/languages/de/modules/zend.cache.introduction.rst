@@ -11,15 +11,15 @@ Cachen im Zend Framework wird mit Frontends durchgeführt, wobei Cache Datensät
 Verwendung ist es einfach, spezielle Typen von Datensätzen im Nachhinein zu Löschen (zum Beispiel: "Löschen
 aller Cache Datensätze welche mit einem bestimmten Tag markiert sind").
 
-Der Kern des Moduls (``Zend_Cache_Core``) ist generell, flexibel und konfigurierbar. Nun gibt es - für spezielle
-Bedürfnisse - Cache Frontends, welche ``Zend_Cache_Core`` erweitern: **Output**, **File**, **Function** und
+Der Kern des Moduls (``Zend\Cache\Core``) ist generell, flexibel und konfigurierbar. Nun gibt es - für spezielle
+Bedürfnisse - Cache Frontends, welche ``Zend\Cache\Core`` erweitern: **Output**, **File**, **Function** und
 **Class**.
 
 .. _zend.cache.introduction.example-1:
 
-.. rubric:: Ein Frontend mit Zend_Cache::factory() erzeugen
+.. rubric:: Ein Frontend mit Zend\Cache\Cache::factory() erzeugen
 
-``Zend_Cache::factory()`` instanziiert korrekte Objekte und fügt sie zusammen. In diesem ersten Beispiel wird das
+``Zend\Cache\Cache::factory()`` instanziiert korrekte Objekte und fügt sie zusammen. In diesem ersten Beispiel wird das
 **Core** Frontend zusammen mit dem **File** Backend verwendet.
 
 .. code-block:: php
@@ -34,8 +34,8 @@ Bedürfnisse - Cache Frontends, welche ``Zend_Cache_Core`` erweitern: **Output**
        'cache_dir' => './tmp/' // Verzeichnis, in welches die Cache Dateien kommen
    );
 
-   // Ein Zend_Cache_Core Objekt erzeugen
-   $cache = Zend_Cache::factory('Core',
+   // Ein Zend\Cache\Core Objekt erzeugen
+   $cache = Zend\Cache\Cache::factory('Core',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);
@@ -67,7 +67,7 @@ deserialisiert.
 
        // Cache miss; mit Datenbank verbinden
 
-       $db = Zend_Db::factory( [...] );
+       $db = Zend\Db\Db::factory( [...] );
 
        $result = $db->fetchAll('SELECT * FROM huge_table');
 
@@ -104,7 +104,7 @@ die Daten vom Cache geholt (solange der Cache Datensatz gültig ist).
 
    $backendOptions = array('cache_dir' => './tmp/');
 
-   $cache = Zend_Cache::factory('Output',
+   $cache = Zend\Cache\Cache::factory('Output',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);

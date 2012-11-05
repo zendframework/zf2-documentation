@@ -4,9 +4,9 @@
 Barcode
 =======
 
-``Zend_Validate_Barcode`` erlaubt es zu prüfen ob ein gegebener Wert als Barcode repräsentiert werden kann.
+``Zend\Validate\Barcode`` erlaubt es zu prüfen ob ein gegebener Wert als Barcode repräsentiert werden kann.
 
-``Zend_Validate_Barcode`` unterstützt viele Barcode Standards und kann sehr einfach mit prorietären Barcode
+``Zend\Validate\Barcode`` unterstützt viele Barcode Standards und kann sehr einfach mit prorietären Barcode
 Implementationen erweitert werden. Die folgenden Barcode Standards werden unterstützt:
 
 - **CODE25**: Oft auch "Two of Five" oder "Code 25 Industrial" genannt.
@@ -167,10 +167,10 @@ Implementationen erweitert werden. Die folgenden Barcode Standards werden unters
 
 .. _zend.validate.set.barcode.options:
 
-Unterstützte Optionen für Zend_Validate_Barcode
+Unterstützte Optionen für Zend\Validate\Barcode
 -----------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Validate_Barcode`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Validate\Barcode`` unterstützt:
 
 - **adapter**: Setzt den Barcode Adapter welcher verwendet wird. Unterstützt werden alle vorher genannten Adapter.
   Wenn ein selbst definierter Adapter verwendet werden soll, muss man den kompletten Klassennamen setzen.
@@ -191,7 +191,7 @@ für einen EAN13 Barcode:
 .. code-block:: .validator.
    :linenos:
 
-   $valid = new Zend_Validate_Barcode('EAN13');
+   $valid = new Zend\Validate\Barcode('EAN13');
    if ($valid->isValid($input)) {
        // Die Eingabe scheint gültig zu sein
    } else {
@@ -211,7 +211,7 @@ Standardmäßig führen diese Barcode Typen keine Prüfung der Checksumme durch.
 .. code-block:: .validator.
    :linenos:
 
-   $valid = new Zend_Validate_Barcode(array(
+   $valid = new Zend\Validate\Barcode(array(
        'adapter'  => 'EAN13',
        'checksum' => false,
    ));
@@ -235,7 +235,7 @@ Standardmäßig führen diese Barcode Typen keine Prüfung der Checksumme durch.
 Schreiben eigener Adapter
 -------------------------
 
-Man kann eigene Barcode Prüfungen für die Verwendung mit ``Zend_Validate_Barcode`` schreiben; das ist oft
+Man kann eigene Barcode Prüfungen für die Verwendung mit ``Zend\Validate\Barcode`` schreiben; das ist oft
 notwendig wenn man mit proprietären Barcodes arbeiten muss. Um eine eigene Barcode Prüfung zu schreiben benötigt
 man die folgenden Informationen.
 
@@ -257,8 +257,8 @@ man die folgenden Informationen.
 - **Checksum**: Ein Strung der als Callback für eine Methode verwendet wird, welche die Prüfung der Checksumme
   durchführt.
 
-Die eigene Barcode Prüfung muss ``Zend_Validate_Barcode_AdapterAbstract`` erweitern oder
-Zend_Validate_Barcode_AdapterInterface implementieren.
+Die eigene Barcode Prüfung muss ``Zend\Validate_Barcode\AdapterAbstract`` erweitern oder
+Zend\Validate_Barcode\AdapterInterface implementieren.
 
 Als Beispiel, erstellen wir eine Prüfung welche eine gerade Anzahl an Zeichen erwartet welche alle Ziffern und die
 Zeichen 'ABCDE' enthalten kann, und die eine Checksumme benötigt.
@@ -266,7 +266,7 @@ Zeichen 'ABCDE' enthalten kann, und die eine Checksumme benötigt.
 .. code-block:: .validator.
    :linenos:
 
-   class My_Barcode_MyBar extends Zend_Validate_Barcode_AdapterAbstract
+   class My_Barcode_MyBar extends Zend\Validate_Barcode\AdapterAbstract
    {
        protected $_length     = 'even';
        protected $_characters = '0123456789ABCDE';
@@ -278,7 +278,7 @@ Zeichen 'ABCDE' enthalten kann, und die eine Checksumme benötigt.
        }
    }
 
-   $valid = new Zend_Validate_Barcode('My_Barcode_MyBar');
+   $valid = new Zend\Validate\Barcode('My_Barcode_MyBar');
    if ($valid->isValid($input)) {
        // Die Eingabe scheint gültig zu sein
    } else {

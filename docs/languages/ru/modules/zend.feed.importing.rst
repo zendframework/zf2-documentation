@@ -5,12 +5,12 @@
 =======================================
 
 *Zend_Feed* позволяет легко получать ленты. Если вам известен URI
-ленты, то просто используйте метод *Zend_Feed::import()*:
+ленты, то просто используйте метод *Zend\Feed\Feed::import()*:
 
 .. code-block:: php
    :linenos:
 
-   $feed = Zend_Feed::import('http://feeds.example.com/feedName');
+   $feed = Zend\Feed\Feed::import('http://feeds.example.com/feedName');
 
 
 Еще вы можете использовать *Zend_Feed* для извлечения содержимого
@@ -20,19 +20,19 @@
    :linenos:
 
    // импортирование ленты из текстового файла
-   $feedFromFile = Zend_Feed::importFile('feed.xml');
+   $feedFromFile = Zend\Feed\Feed::importFile('feed.xml');
 
    // импортирование ленты из строки
-   $feedFromPHP = Zend_Feed::importString($feedString);
+   $feedFromPHP = Zend\Feed\Feed::importString($feedString);
 
 
 В примерах выше в случае успеха возвращается объект одного из
-классов, расширяющих *Zend_Feed_Abstract*, в зависимости от типа ленты.
+классов, расширяющих *Zend\Feed\Abstract*, в зависимости от типа ленты.
 Если посредством одного из вышеприведенных методов для
 импортирования была извлечена лента RSS, то будет возвращен
-объект *Zend_Feed_Rss*. Если же импортируется лента Atom, то будет
-возвращен объект *Zend_Feed_Atom*. Эти методы для импортирования
-будут бросать исключение *Zend_Feed_Exception* в случае ошибки, такой,
+объект *Zend\Feed\Rss*. Если же импортируется лента Atom, то будет
+возвращен объект *Zend\Feed\Atom*. Эти методы для импортирования
+будут бросать исключение *Zend\Feed\Exception* в случае ошибки, такой,
 как недоступная для чтения или плохо сформированная лента.
 
 .. _zend.feed.importing.custom:
@@ -43,9 +43,9 @@
 *Zend_Feed* позволяет разработчикам легко создавать собственные
 ленты. Вам нужно просто создать массив и импортировать его в
 Zend_Feed. Импорт из массива может быть выполнен с помощью методов
-*Zend_Feed::importArray()* или *Zend_Feed::importBuilder()*. В последнем методе массив
+*Zend\Feed\Feed::importArray()* или *Zend\Feed\Feed::importBuilder()*. В последнем методе массив
 будет сформирован на лету с помощью специального источника
-данных, реализующего интерфейс *Zend_Feed_Builder_Interface*.
+данных, реализующего интерфейс *Zend\Feed_Builder\Interface*.
 
 .. _zend.feed.importing.custom.importarray:
 
@@ -56,14 +56,14 @@ Zend_Feed. Импорт из массива может быть выполнен
    :linenos:
 
    // Импортирование ленты из массива
-   $atomFeedFromArray = Zend_Feed::importArray($array);
+   $atomFeedFromArray = Zend\Feed\Feed::importArray($array);
 
    // Следующая строка эквивалентна предыдущей
-   // По умолчанию возвращается экземпляр Zend_Feed_Atom
-   $atomFeedFromArray = Zend_Feed::importArray($array, 'atom');
+   // По умолчанию возвращается экземпляр Zend\Feed\Atom
+   $atomFeedFromArray = Zend\Feed\Feed::importArray($array, 'atom');
 
    // Импортирование ленты RSS из массива
-   $rssFeedFromArray = Zend_Feed::importArray($array, 'rss');
+   $rssFeedFromArray = Zend\Feed\Feed::importArray($array, 'rss');
 
 
 Формат массива должен соответствовать следующей структуре:
@@ -198,38 +198,38 @@ Zend_Feed. Импорт из массива может быть выполнен
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Вы можете создать экземпляр Zeed_Feed из любого источника данных,
-реализующего интерфейс *Zend_Feed_Builder_Interface*. Вам нужно только
+реализующего интерфейс *Zend\Feed_Builder\Interface*. Вам нужно только
 реализовать методы *getHeader()* и *getEntries()* для того, чтобы можно было
-использовать свой объект с *Zend_Feed::importBuilder()*. Простой пример - вы
-можете использовать компоновщик *Zend_Feed_Builder*, который принимает
+использовать свой объект с *Zend\Feed\Feed::importBuilder()*. Простой пример - вы
+можете использовать компоновщик *Zend\Feed\Builder*, который принимает
 массив в своем конструкторе, выполняет некоторую проверку и
 затем может использоваться в методе *importBuilder()*. *getEntries()* должен
-возвращать массив экземпляров *Zend_Feed_Builder_Entry*.
+возвращать массив экземпляров *Zend\Feed_Builder\Entry*.
 
 .. note::
 
-   *Zend_Feed_Builder* служит только в качестве конкретной реализации
+   *Zend\Feed\Builder* служит только в качестве конкретной реализации
    для демонстрации использования. Пользователи должны
    создавать свои классы, реализующие интерфейс
-   *Zend_Feed_Builder_Interface*.
+   *Zend\Feed_Builder\Interface*.
 
-Ниже приведен пример использования *Zend_Feed::importBuilder()*:
+Ниже приведен пример использования *Zend\Feed\Feed::importBuilder()*:
 
 .. code-block:: php
    :linenos:
 
    // Импортирование ленты из специального созданного ресурса-компоновщика
    $atomFeedFromArray =
-       Zend_Feed::importBuilder(new Zend_Feed_Builder($array));
+       Zend\Feed\Feed::importBuilder(new Zend\Feed\Builder($array));
 
    // Следующая строка эквивалентна предыдущей.
-   // По умолчанию возвращается экземпляр Zend_Feed_Atom
+   // По умолчанию возвращается экземпляр Zend\Feed\Atom
    $atomFeedFromArray =
-       Zend_Feed::importArray(new Zend_Feed_Builder($array), 'atom');
+       Zend\Feed\Feed::importArray(new Zend\Feed\Builder($array), 'atom');
 
    // Импортирование RSS-ленты из специально созданного ресурса-компоновщика
    $rssFeedFromArray =
-       Zend_Feed::importArray(new Zend_Feed_Builder($array), 'rss');
+       Zend\Feed\Feed::importArray(new Zend\Feed\Builder($array), 'rss');
 
 
 .. _zend.feed.importing.custom.dump:
@@ -237,14 +237,14 @@ Zend_Feed. Импорт из массива может быть выполнен
 Дапм содержимого ленты
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Для того, чтобы произвести дамп экземпляра *Zend_Feed_Abstract*, вы
+Для того, чтобы произвести дамп экземпляра *Zend\Feed\Abstract*, вы
 можете использовать методы *send()* или *saveXml()*.
 
 .. code-block:: php
    :linenos:
 
 
-   assert($feed instanceof Zend_Feed_Abstract);
+   assert($feed instanceof Zend\Feed\Abstract);
 
    // вывод дампа ленты
    print $feed->saveXML();

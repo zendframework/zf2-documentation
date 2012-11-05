@@ -18,6 +18,6 @@ objetivos:
 - Configuración de componentes a nivel de formulario
 
 Se aprovecha en gran medida de otros componentes de Zend Framework para lograr sus objetivos, incluyendo
-``Zend_Config``, ``Zend_Validate``, ``Zend_Filter``, ``Zend_Loader_PluginLoader`` y, opcionalmente, ``Zend_View``.
+``Zend_Config``, ``Zend_Validate``, ``Zend_Filter``, ``Zend\Loader\PluginLoader`` y, opcionalmente, ``Zend_View``.
 
 

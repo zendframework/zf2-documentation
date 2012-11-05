@@ -11,12 +11,12 @@ opgeslagen (*File*, *Sqlite*, *Memcache*...) via een flexibel systeem van IDs en
 laat toe eenvoudig bepaalde record types te verwijderen (bijvoorbeeld: "verwijder alle cache records gemarkeerd met
 een bepaalde tag").
 
-De kern van de *Zend_Cache_Core* module is standaard, flexibel en configurabel. Er bestaan echter cache frontends
-voor specifieke doeleinden die *Zend_Cache_Core* uitbreiden: *Output*, *File*, *Function* en *Class*.
+De kern van de *Zend\Cache\Core* module is standaard, flexibel en configurabel. Er bestaan echter cache frontends
+voor specifieke doeleinden die *Zend\Cache\Core* uitbreiden: *Output*, *File*, *Function* en *Class*.
 
-.. rubric:: Een frontend verkrijgen met *Zend_Cache::factory()*
+.. rubric:: Een frontend verkrijgen met *Zend\Cache\Cache::factory()*
 
-*Zend_Cache::factory()* instantieert juiste objecten en bindt ze samen. In dit eerste voorbeeld zullen we *Core*
+*Zend\Cache\Cache::factory()* instantieert juiste objecten en bindt ze samen. In dit eerste voorbeeld zullen we *Core*
 frontend gebruiken, samen met *File* backend.
 
 .. code-block:: php
@@ -34,8 +34,8 @@ frontend gebruiken, samen met *File* backend.
        'cacheDir' => './tmp/' // Directory waar we de cache bestanden wegschrijven
    );
 
-   // verkrijgen van een Zend_Cache_Core object
-   $cache = Zend_Cache::factory('Core', 'File', $frontendOptions, $backendOptions);
+   // verkrijgen van een Zend\Cache\Core object
+   $cache = Zend\Cache\Cache::factory('Core', 'File', $frontendOptions, $backendOptions);
 
    ?>
 Nu we een frontend hebben kunnen we eender welk type data cachen (we activeerden serialisatie). We kunnen
@@ -55,7 +55,7 @@ gedeserialiseerd.
 
        // geen cache; verbind met de database
 
-       $db = Zend_Db::factory( [...] );
+       $db = Zend\Db\Db::factory( [...] );
 
        $result = $db->fetchAll('SELECT * FROM enorme_tabel');
 
@@ -93,7 +93,7 @@ verkrijgen van de data uit de cache (zolang de cache record geldig is).
 
    $backendOptions = array('cacheDir' => './tmp/');
 
-   $cache = Zend_Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
+   $cache = Zend\Cache\Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
 
    // we geven een unieke id door aan de start() methode
    if(!$cache->start('mijnpagina')) {

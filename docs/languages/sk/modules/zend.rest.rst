@@ -13,7 +13,7 @@ Zend Framework poskytuje možnosti pre vytvorenia klienta, alebo služby, ktoré
 umožnia vytvoriť skoro "lokálne" prepojenie pomocou prístupu k virtuálnym vlastnostiam. Komponent pre
 vytvorenie služby (serveru) umožňuje automatické sprístupnenie tried a funkcií pomocou výrečného a
 jednoduchého XML formátu. Pri prístupe týmto službám je možné jednoducho získať návratovú hodnotu z
-volania vzdialenej funkcie. Ak si želáte použiť klienta pre prístup k inej ako na Zend_Rest_Server založenej
+volania vzdialenej funkcie. Ak si želáte použiť klienta pre prístup k inej ako na Zend\Rest\Server založenej
 službe, stále budete mať jednoduchý prístup u údajom.
 
 

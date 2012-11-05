@@ -8,7 +8,7 @@ Chaque validateur basé sur ``Zend_Validate`` propose un ou plusieurs messages d
 utiliser ces informations pour créer vos propres messages ou pour traduire les messages présents.
 
 Ces messages sont représentés par des constantes se trouvant en haut de chaque classe de validateur. Voyons
-``Zend_Validate_GreaterThan`` pour un exemple complet:
+``Zend\Validate\GreaterThan`` pour un exemple complet:
 
 .. code-block:: php
    :linenos:
@@ -27,7 +27,7 @@ validateur pourrait retourner en cas d'échec de validation.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_GreaterThan();
+   $validator = new Zend\Validate\GreaterThan();
    $messages  = $validator->getMessageTemplates();
 
 La méthode ``setMessage()`` permet de modifier un message unique correspondant à un cas particulier d'échec de
@@ -36,8 +36,8 @@ validation.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_GreaterThan();
-   $validator->setMessage('Entrez une valeur plus petite', Zend_Validate_GreaterThan::NOT_GREATER);
+   $validator = new Zend\Validate\GreaterThan();
+   $validator->setMessage('Entrez une valeur plus petite', Zend\Validate\GreaterThan::NOT_GREATER);
 
 Le deuxième paramètre indique le cas d'échec à surcharger. Lorsque vous omettez ce paramètre, alors le message
 précisé sera affecté comme message pour tous les cas d'échec possibles du validateur.
@@ -64,15 +64,15 @@ un objet de traduction à ``Zend_Validate`` en utilisant les fichiers de ressour
 .. code-block:: php
    :linenos:
 
-   $translator = new Zend_Translator(
+   $translator = new Zend\Translator\Translator(
        array(
            'adapter' => 'array',
            'content' => '/resources/languages',
            'locale'  => $language,
-           'scan' => Zend_Translator::LOCALE_DIRECTORY
+           'scan' => Zend\Translator\Translator::LOCALE_DIRECTORY
        )
    );
-   Zend_Validate_Abstract::setDefaultTranslator($translator);
+   Zend\Validate\Abstract::setDefaultTranslator($translator);
 
 .. note::
 
@@ -97,22 +97,22 @@ Limiter la taille d'un message de validation
 Il peut être nécessaire parfois de limiter la taille en caractères des messages d'erreur retournés. par exemple
 si une vue n'autorise que 100 caractères par ligne. ``Zend_Validate`` propose une telle option.
 
-La taille actuelle est ``Zend_Validate::getMessageLength()``. -1 signifie que le message ne sera pas tronqué et
+La taille actuelle est ``Zend\Validate\Validate::getMessageLength()``. -1 signifie que le message ne sera pas tronqué et
 entièrement retourné, c'est le comportement par défaut.
 
-Pour limiter la taille, utilisez ``Zend_Validate::setMessageLength()``. Lorsque la taille excède cette valeur, le
+Pour limiter la taille, utilisez ``Zend\Validate\Validate::setMessageLength()``. Lorsque la taille excède cette valeur, le
 message sera alors tronqué et suivi de '**...**'.
 
 .. code-block:: php
    :linenos:
 
-   Zend_Validate::setMessageLength(100);
+   Zend\Validate\Validate::setMessageLength(100);
 
 .. note::
 
    **Où ce paramètre est-il utilisé ?**
 
    La taille des messages affecte aussi les messages personnalisés enregistrés, dès que le validateur
-   considéré étend ``Zend_Validate_Abstract``.
+   considéré étend ``Zend\Validate\Abstract``.
 
 

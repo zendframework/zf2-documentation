@@ -9,7 +9,7 @@ Meldungen an. Diese Information kann verwendet werden um eigene Meldungen zu set
 welche eine Prüfung zurückgeben könnte, auf etwas anderes zu übersetzen.
 
 Diese Prüfmeldungen sind Konstanten welche am Beginn jeder Prüfklasse gefunden werden können. Sehen wir uns für
-ein beschreibendes Beispiel ``Zend_Validate_GreaterThan`` an:
+ein beschreibendes Beispiel ``Zend\Validate\GreaterThan`` an:
 
 .. code-block:: php
    :linenos:
@@ -28,7 +28,7 @@ einer fehlgeschlagenen Prüfung zurückgeben kann.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_GreaterThan();
+   $validator = new Zend\Validate\GreaterThan();
    $messages  = $validator->getMessageTemplates();
 
 Indem die Methode ``setMessage()`` verwendet wird kann man eine andere Meldung definieren die im Fall des
@@ -37,10 +37,10 @@ spezifizierten Fehlers zurückgegeben werden.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_GreaterThan();
+   $validator = new Zend\Validate\GreaterThan();
    $validator->setMessage(
        'Bitte einen kleineren Wert angeben',
-       Zend_Validate_GreaterThan::NOT_GREATER
+       Zend\Validate\GreaterThan::NOT_GREATER
    );
 
 Der zweite Parameter definiert den Fehler der überschrieben wird. Wenn man diesen Parameter nicht angibt, wird die
@@ -69,15 +69,15 @@ Um also alle Prüfmeldungen zum Beispiel auf Deutsch zu übersetzen muss man nur
 .. code-block:: php
    :linenos:
 
-   $translator = new Zend_Translator(
+   $translator = new Zend\Translator\Translator(
        array(
            'adapter' => 'array',
            'content' => '/resources/languages',
            'locale'  => $language,
-           'scan'    => Zend_Translator::LOCALE_DIRECTORY
+           'scan'    => Zend\Translator\Translator::LOCALE_DIRECTORY
        )
    );
-   Zend_Validate_Abstract::setDefaultTranslator($translator);
+   Zend\Validate\Abstract::setDefaultTranslator($translator);
 
 .. note::
 
@@ -107,10 +107,10 @@ die View nur eine maximale Größe von 100 Zeichen für die Darstellung auf eine
 zu vereinfachen, ist ``Zend_Validate`` dazu in der Lage die maximal zurückgegebene Größe einer Prüfnachricht zu
 begrenzen.
 
-Um die aktuell gesetzte Größe zu erhalten ist ``Zend_Validate::getMessageLength()`` zu verwenden. Wenn diese -1
+Um die aktuell gesetzte Größe zu erhalten ist ``Zend\Validate\Validate::getMessageLength()`` zu verwenden. Wenn diese -1
 ist, dann wird die zurückgegebene Nachricht nicht begrenzt. Das ist das Standardverhalten.
 
-Um die Größe der zurückgegebenen Nachrichten zu begrenzen ist ``Zend_Validate::setMessageLength()`` zu
+Um die Größe der zurückgegebenen Nachrichten zu begrenzen ist ``Zend\Validate\Validate::setMessageLength()`` zu
 verwenden. Man kann diese auf jede benötigte Integer Größe setzen. Wenn die zurückzugebende Nachricht die
 gesetzte Größe überschreitet, dann wird die Nachricht abgeschnitten und der String '**...**' wird statt dem Rest
 der Nachricht hinzugefügt.
@@ -118,13 +118,13 @@ der Nachricht hinzugefügt.
 .. code-block:: php
    :linenos:
 
-   Zend_Validate::setMessageLength(100);
+   Zend\Validate\Validate::setMessageLength(100);
 
 .. note::
 
    **Wo wird dieser Parameter verwendet?**
 
    Die gesetzte Länge der Nachrichten wird für alle Prüfungen verwendet, sogar für selbstdefinierte, solange
-   Sie ``Zend_Validate_Abstract`` erweitern.
+   Sie ``Zend\Validate\Abstract`` erweitern.
 
 

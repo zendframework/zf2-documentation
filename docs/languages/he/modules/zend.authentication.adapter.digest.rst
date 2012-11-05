@@ -35,7 +35,7 @@
 מאפיינים
 --------
 
-רכיב *Zend_Auth_Adapter_Digest*, אשר משמש בתור מתאם אימות מתקדם, דורש כמה
+רכיב *Zend\Auth_Adapter\Digest*, אשר משמש בתור מתאם אימות מתקדם, דורש כמה
 פרמטרים:
 
    - שם הקובץ - שם הקובץ שמולו כל שאילתות האימות יבוצעו.
@@ -53,14 +53,14 @@
 זהות
 ----
 
-המתאם המתקדם מחזיר אובייקט של *Zend_Auth_Result*, אשר נוצרה עם הזהות
+המתאם המתקדם מחזיר אובייקט של *Zend\Auth\Result*, אשר נוצרה עם הזהות
 בתור מערך אשר מכיל מפתחות של *realm* ו *username*. הערכים במערך מקושרים
 למפתחות אשר הוגדרו לפני קריאה ל *authenticate()*.
 
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Auth_Adapter_Digest($filename,
+   $adapter = new Zend\Auth_Adapter\Digest($filename,
                                            $realm,
                                            $username,
                                            $password);

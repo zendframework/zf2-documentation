@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.windows.instance:
 
-Zend_Service_Amazon_Ec2: Windows Instanzen
+Zend\Service_Amazon\Ec2: Windows Instanzen
 ==========================================
 
 Die Verwendung von Amazon EC2 Instanzen auf denen Windows läuft ist ähnlich wie die Verwendung von Instanzen die
@@ -79,7 +79,7 @@ state, startTime, updateTime, progress, s3Bucket und s3Prefix.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance_Windows('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance\Windows('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->bundle('instanceId', 's3Bucket', 's3Prefix');
 
@@ -95,7 +95,7 @@ bundleId, state, startTime, updateTime, progress, s3Bucket und s3Prefix.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance_Windows('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance\Windows('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->describeBundle('bundleId');
 
@@ -111,7 +111,7 @@ bundleId, state, startTime, updateTime, progress, s3Bucket und s3Prefix.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance_Windows('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance\Windows('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->cancelBundle('bundleId');
 

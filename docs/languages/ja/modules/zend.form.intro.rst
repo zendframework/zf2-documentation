@@ -20,6 +20,6 @@ Zend_Form
 
 ``Zend_Form`` は、これらの機能を実現するために Zend Framework
 の他のコンポーネントを活用しています。 たとえば ``Zend_Config``, ``Zend_Validate``,
-``Zend_Filter``, ``Zend_Loader_PluginLoader``, そしてオプションで ``Zend_View`` を使用します。
+``Zend_Filter``, ``Zend\Loader\PluginLoader``, そしてオプションで ``Zend_View`` を使用します。
 
 

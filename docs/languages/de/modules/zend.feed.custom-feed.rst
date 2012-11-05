@@ -23,7 +23,7 @@ der Endbenutzer nicht um Namensräume kümmern muss.
     * Die eigene Klasse für Einträge kennt automatisch die Feed URI (optional)
     * und kann automatisch weitere Namensräume hinzufügen
     */
-   class MyEntry extends Zend_Feed_Entry_Atom
+   class MyEntry extends Zend\Feed_Entry\Atom
    {
 
        public function __construct($uri = 'http://www.example.com/myfeed/',
@@ -31,7 +31,7 @@ der Endbenutzer nicht um Namensräume kümmern muss.
        {
            parent::__construct($uri, $xml);
 
-           Zend_Feed::registerNamespace('myns',
+           Zend\Feed\Feed::registerNamespace('myns',
                                         'http://www.example.com/myns/1.0');
        }
 

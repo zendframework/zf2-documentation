@@ -20,20 +20,20 @@ Google Documents List *API* についての詳細は `http://code.google.com/api
 
 特定のユーザの Google Documents の一覧を取得するには、docs サービスの
 ``getDocumentListFeed`` メソッドを使用します。 このサービスは
-``Zend_Gdata_Docs_DocumentListFeed`` オブジェクトを返します。
+``ZendGData_Docs\DocumentListFeed`` オブジェクトを返します。
 その中には、認証済みユーザに関連付けられたドキュメントの一覧が含まれます。
 
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Docs::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $docs = new Zend_Gdata_Docs($client);
+   $service = ZendGData\Docs::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $docs = new ZendGData\Docs($client);
    $feed = $docs->getDocumentListFeed();
 
-結果として得られる ``Zend_Gdata_Docs_DocumentListFeed``
+結果として得られる ``ZendGData_Docs\DocumentListFeed``
 オブジェクトが、サーバからの応答を表します。 このフィードには
-``Zend_Gdata_Docs_DocumentListEntry`` オブジェクトの一覧 (``$feed->entries``) が含まれ、
+``ZendGData_Docs\DocumentListEntry`` オブジェクトの一覧 (``$feed->entries``) が含まれ、
 それぞれがひとつの Google Document を表します。
 
 .. _zend.gdata.docs.creating:
@@ -54,7 +54,7 @@ Google Documents List *API* についての詳細は `http://code.google.com/api
    /**
     * Upload the specified document
     *
-    * @param Zend_Gdata_Docs $docs The service object to use for communicating
+    * @param ZendGData\Docs $docs The service object to use for communicating
     *     with the Google Documents server.
     * @param boolean $html True if output should be formatted for display in a
     *     web browser.
@@ -79,7 +79,7 @@ Google Documents List *API* についての詳細は `http://code.google.com/api
      // file name is used as the title of the document and the MIME type
      // is determined based on the extension on the original file name.
      $newDocumentEntry = $docs->uploadFile($fileToUpload, $originalFileName,
-         null, Zend_Gdata_Docs::DOCUMENTS_LIST_FEED_URI);
+         null, ZendGData\Docs::DOCUMENTS_LIST_FEED_URI);
 
      echo "New Document Title: ";
 
@@ -141,7 +141,7 @@ Google Spreadsheets の一覧を取得するには、 次のようなカテゴ�
 テキストクエリの実行
 ^^^^^^^^^^
 
-ドキュメントの中身を検索するには、リクエスト内で ``Zend_Gdata_Docs_Query``
+ドキュメントの中身を検索するには、リクエスト内で ``ZendGData_Docs\Query``
 を使用します。 クエリオブジェクトを使用してクエリ *URI* を組み立て、
 検索する単語をパラメータとして渡します。
 これは、ある文字列を含むドキュメントを一覧から探すクエリの例です。
@@ -149,7 +149,7 @@ Google Spreadsheets の一覧を取得するには、 次のようなカテゴ�
 .. code-block:: php
    :linenos:
 
-   $docsQuery = new Zend_Gdata_Docs_Query();
+   $docsQuery = new ZendGData_Docs\Query();
    $docsQuery->setQuery($query);
    $feed = $client->getDocumentListFeed($docsQuery);
 

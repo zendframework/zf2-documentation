@@ -8,9 +8,9 @@ Introdução
 REST.
 
 Se você precisar de suporte básico para serviços REST baseados em *XML*, você pode olhar em
-:ref:`Zend_Rest_Client <zend.rest.client>`.
+:ref:`Zend\Rest\Client <zend.rest.client>`.
 
-Além de ser capaz de estender o ``Zend_Service`` e usar o ``Zend_Rest_Client`` para web services baseados em REST,
+Além de ser capaz de estender o ``Zend_Service`` e usar o ``Zend\Rest\Client`` para web services baseados em REST,
 Zend também fornece suporte para web services populares. Consulte as seções seguintes para obter informações
 específicas sobre cada web service suportado.
 

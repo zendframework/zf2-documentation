@@ -17,18 +17,18 @@ Zend_Controller
 Changement dans l'interface Dispatcher
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Les utilisateurs ont portés l'attention sur le fait que ``Zend_Controller_Action_Helper_ViewRenderer`` utilisait
+Les utilisateurs ont portés l'attention sur le fait que ``Zend\Controller\Action\Helper\ViewRenderer`` utilisait
 une méthode de la classe abstraite du distributeur standard qui n'était pas présente dans l'interface
 Dispatcher.La méthode suivante a donc été ajoutée pour s'assurer que les distributeurs personnalisés
 continueront à fonctionner avec les implémentations embarquées :
 
 - ``formatModuleName()``\  : devrait être utilisé pour prendre un nom de contrôleur brut, comme un qui aurait
   été embarqué dans un objet requête, et pour le formater en un nom de classe approprié qu'une classe
-  étendant ``Zend_Controller_Action`` pourra utiliser.
+  étendant ``Zend\Controller\Action`` pourra utiliser.
 
 .. _migration.17.zend.file.transfer:
 
-Zend_File_Transfer
+Zend\File\Transfer
 ------------------
 
 .. _migration.17.zend.file.transfer.validators:
@@ -36,10 +36,10 @@ Zend_File_Transfer
 Changements quand vous utilisez des filtres ou des validateurs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Certaines remarques des utilisateurs indiquaient que les validateurs de ``Zend_File_Transfer`` ne fonctionnaient
+Certaines remarques des utilisateurs indiquaient que les validateurs de ``Zend\File\Transfer`` ne fonctionnaient
 pas correctement avec ``Zend_Config`` dû au fait qu'ils n'utilisait pas de tableaux nommés.
 
-De plus, tous les filtres et validateurs de ``Zend_File_Transfer`` ont été réécrits. Même si les anciennes
+De plus, tous les filtres et validateurs de ``Zend\File\Transfer`` ont été réécrits. Même si les anciennes
 signatures continuent à fonctionner, elles ont été marqués comme dépréciées et émettent une notice *PHP*
 vous informant de faire le changement.
 
@@ -50,9 +50,9 @@ La liste suivante vous montre les changements à réaliser pour une utilisation 
 Filtre Rename
 ^^^^^^^^^^^^^
 
-- Ancienne *API*\  : ``Zend_Filter_File_Rename($oldfile, $newfile, $overwrite)``
+- Ancienne *API*\  : ``Zend\Filter_File\Rename($oldfile, $newfile, $overwrite)``
 
-- Nouvelle *API*\  : ``Zend_Filter_File_Rename($options)`` où ``$options`` accepte un tableau avec les clés
+- Nouvelle *API*\  : ``Zend\Filter_File\Rename($options)`` où ``$options`` accepte un tableau avec les clés
   suivantes : **source** est équivalent à ``$oldfile``, **target** est équivalent à ``$newfile``, **overwrite**
   est équivalent à *$overwrite.*
 
@@ -64,12 +64,12 @@ Filtre Rename
    :linenos:
 
    // Exemple pour 1.6
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addFilter('Rename',
                       array('/path/to/oldfile', '/path/to/newfile', true));
 
    // Même exemple pour 1.7
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addFilter('Rename',
                       array('source' => '/path/to/oldfile',
                             'target' => '/path/to/newfile',
@@ -80,9 +80,9 @@ Filtre Rename
 Validateur Count
 ^^^^^^^^^^^^^^^^
 
-- Ancienne *API*\  : ``Zend_Validate_File_Count($min, $max)``
+- Ancienne *API*\  : ``Zend\Validate_File\Count($min, $max)``
 
-- Nouvelle *API*\  : ``Zend_Validate_File_Count($options)`` où ``$options`` accepte un tableau avec les clés
+- Nouvelle *API*\  : ``Zend\Validate_File\Count($options)`` où ``$options`` accepte un tableau avec les clés
   suivantes : **min** est équivalent à ``$min``, **max** est équivalent à ``$max``.
 
 .. _migration.17.zend.file.transfer.validators.count.example:
@@ -93,12 +93,12 @@ Validateur Count
    :linenos:
 
    // Exemple pour 1.6
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Count',
                          array(2, 3));
 
    // Même exemple pour 1.7
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Count',
                          false,
                          array('min' => 2,
@@ -109,9 +109,9 @@ Validateur Count
 Validateur Extension
 ^^^^^^^^^^^^^^^^^^^^
 
-- Ancienne *API*\  : ``Zend_Validate_File_Extension($extension, $case)``
+- Ancienne *API*\  : ``Zend\Validate_File\Extension($extension, $case)``
 
-- Nouvelle *API*\  : ``Zend_Validate_File_Extension($options)`` où ``$options`` accepte un tableau avec les clés
+- Nouvelle *API*\  : ``Zend\Validate_File\Extension($options)`` où ``$options`` accepte un tableau avec les clés
   suivantes : ***** est équivalent à ``$extension`` et peut avoir tout autre clé, **case** est équivalent à
   ``$case``.
 
@@ -123,12 +123,12 @@ Validateur Extension
    :linenos:
 
    // Exemple pour 1.6
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Extension',
                       array('jpg,gif,bmp', true));
 
    // Même exemple pour 1.7
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Extension',
                          false,
                          array('extension1' => 'jpg,gif,bmp',
@@ -139,9 +139,9 @@ Validateur Extension
 Validateur FilesSize
 ^^^^^^^^^^^^^^^^^^^^
 
-- Ancienne *API*\  : ``Zend_Validate_File_FilesSize($min, $max, $bytestring)``
+- Ancienne *API*\  : ``Zend\Validate_File\FilesSize($min, $max, $bytestring)``
 
-- Nouvelle *API*\  : ``Zend_Validate_File_FilesSize($options)`` où ``$options`` accepte un tableau avec les clés
+- Nouvelle *API*\  : ``Zend\Validate_File\FilesSize($options)`` où ``$options`` accepte un tableau avec les clés
   suivantes : **min** est équivalent à ``$min``, **max** est équivalent à ``$max``, **bytestring** est
   équivalent à ``$bytestring``.
 
@@ -157,12 +157,12 @@ paramétrer la valeur de cette option, utilisez la méthode ``setUseByteString()
    :linenos:
 
    // Exemple pour 1.6
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('FilesSize',
                          array(100, 10000, true));
 
    // Même exemple pour 1.7
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('FilesSize',
                          false,
                          array('min' => 100,
@@ -180,9 +180,9 @@ paramétrer la valeur de cette option, utilisez la méthode ``setUseByteString()
 Validateur Hash
 ^^^^^^^^^^^^^^^
 
-- Ancienne *API*\  : ``Zend_Validate_File_Hash($hash, $algorithm)``
+- Ancienne *API*\  : ``Zend\Validate_File\Hash($hash, $algorithm)``
 
-- Nouvelle *API*\  : ``Zend_Validate_File_Hash($options)`` où ``$options`` accepte un tableau avec les clés
+- Nouvelle *API*\  : ``Zend\Validate_File\Hash($options)`` où ``$options`` accepte un tableau avec les clés
   suivantes : ***** est équivalent à ``$hash`` et peut avoir tout autre clé, **algorithm** est équivalent à
   ``$algorithm``.
 
@@ -194,12 +194,12 @@ Validateur Hash
    :linenos:
 
    // Exemple pour 1.6
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Hash',
                          array('12345', 'md5'));
 
    // Même exemple pour 1.7
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Hash',
                          false,
                          array('hash1' => '12345',
@@ -210,9 +210,9 @@ Validateur Hash
 Validateur ImageSize
 ^^^^^^^^^^^^^^^^^^^^
 
-- Ancienne *API*\  : ``Zend_Validate_File_ImageSize($minwidth, $minheight, $maxwidth, $maxheight)``
+- Ancienne *API*\  : ``Zend\Validate_File\ImageSize($minwidth, $minheight, $maxwidth, $maxheight)``
 
-- Nouvelle *API*\  : ``Zend_Validate_File_FilesSize($options)`` où ``$options`` accepte un tableau avec les clés
+- Nouvelle *API*\  : ``Zend\Validate_File\FilesSize($options)`` où ``$options`` accepte un tableau avec les clés
   suivantes : **minwidth** est équivalent à ``$minwidth``, **maxwidth** est équivalent à ``$maxwidth``,
   **minheight** est équivalent à ``$minheight``, **maxheight** est équivalent à ``$maxheight``.
 
@@ -224,12 +224,12 @@ Validateur ImageSize
    :linenos:
 
    // Exemple pour 1.6
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('ImageSize',
                          array(10, 10, 100, 100));
 
    // Même exemple pour 1.7
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('ImageSize',
                          false,
                          array('minwidth' => 10,
@@ -242,9 +242,9 @@ Validateur ImageSize
 Validateur Size
 ^^^^^^^^^^^^^^^
 
-- Ancienne *API*\  : ``Zend_Validate_File_Size($min, $max, $bytestring)``
+- Ancienne *API*\  : ``Zend\Validate_File\Size($min, $max, $bytestring)``
 
-- Nouvelle *API*\  : ``Zend_Validate_File_Size($options)`` où ``$options`` accepte un tableau avec les clés
+- Nouvelle *API*\  : ``Zend\Validate_File\Size($options)`` où ``$options`` accepte un tableau avec les clés
   suivantes : **min** est équivalent à ``$min``, **max** est équivalent à ``$max``, **bytestring** est
   équivalent à ``$bytestring``
 
@@ -256,12 +256,12 @@ Validateur Size
    :linenos:
 
    // Exemple pour 1.6
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Size',
                          array(100, 10000, true));
 
    // Même exemple pour 1.7
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('Size',
                          false,
                          array('min' => 100,
@@ -295,7 +295,7 @@ Pour migrer vos scripts vers la nouvelle *API*, utilisez simplement la méthode 
    :linenos:
 
    // Exemple pour ZF 1.6
-   if ($locale = Zend_Locale::isLocale($locale)) {
+   if ($locale = Zend\Locale\Locale::isLocale($locale)) {
        // faire qqch
    }
 
@@ -303,9 +303,9 @@ Pour migrer vos scripts vers la nouvelle *API*, utilisez simplement la méthode 
 
    // Vous devez changer le mode de compatibilité pour empêcher l'émission de warning
    // Mais ceci peut être fait dans votre bootstrap
-   Zend_Locale::$compatibilityMode = false;
+   Zend\Locale\Locale::$compatibilityMode = false;
 
-   if (Zend_Locale::isLocale($locale)) {
+   if (Zend\Locale\Locale::isLocale($locale)) {
    }
 
 Notez que vous pouvez utiliser le second paramètre pour voir si la locale est correcte sans nécessiter de
@@ -315,7 +315,7 @@ reroutage.
    :linenos:
 
    // Exemple pour ZF 1.6
-   if ($locale = Zend_Locale::isLocale($locale, false)) {
+   if ($locale = Zend\Locale\Locale::isLocale($locale, false)) {
        // do something
    }
 
@@ -323,10 +323,10 @@ reroutage.
 
    // Vous devez changer le mode de compatibilité pour empêcher l'émission de warning
    // Mais ceci peut être fait dans votre bootstrap
-   Zend_Locale::$compatibilityMode = false;
+   Zend\Locale\Locale::$compatibilityMode = false;
 
-   if (Zend_Locale::isLocale($locale, false)) {
-       if (Zend_Locale::isLocale($locale, true)) {
+   if (Zend\Locale\Locale::isLocale($locale, false)) {
+       if (Zend\Locale\Locale::isLocale($locale, true)) {
            // pas de locale du tout
        }
 
@@ -352,15 +352,15 @@ Pour migrer vos scripts vers la nouvelle *API*, utilisez simplement la méthode 
    :linenos:
 
    // Exemple pour ZF 1.6
-   $locales = $locale->getDefault(Zend_Locale::BROWSER);
+   $locales = $locale->getDefault(Zend\Locale\Locale::BROWSER);
 
    // Même exemple pour ZF 1.7
 
    // Vous devez changer le mode de compatibilité pour empêcher l'émission de warning
    // Mais ceci peut être fait dans votre bootstrap
-   Zend_Locale::$compatibilityMode = false;
+   Zend\Locale\Locale::$compatibilityMode = false;
 
-   $locale = Zend_Locale::getOrder(Zend_Locale::BROWSER);
+   $locale = Zend\Locale\Locale::getOrder(Zend\Locale\Locale::BROWSER);
 
 Notez que le second paramètre de l'ancienne implémentation de ``getDefault()`` n'est plus disponible non plus,
 mais les valeurs retournées sont les mêmes.
@@ -408,7 +408,7 @@ portefeuille de traductions.
 .. code-block:: php
    :linenos:
 
-   $language = new Zend_Translator('gettext',
+   $language = new Zend\Translator\Translator('gettext',
                                   '/chemin/vers/les/traductions',
                                   'auto');
 
@@ -418,7 +418,7 @@ et les notices seront désactivées.
 .. code-block:: php
    :linenos:
 
-   $language = new Zend_Translator('gettext',
+   $language = new Zend\Translator\Translator('gettext',
                                   '/chemin/vers/les/traductions',
                                   'auto',
                                   array('disableNotices' => true));
@@ -434,7 +434,7 @@ Zend_View
    version 1.7.5 ou plus récent.
 
 Avant la version 1.7.5, l'équipe de Zend Framework a été avertie d'une faille potentielle d'inclusion de fichier
-local ("Local File Inclusion" (LFI)) dans la méthode ``Zend_View::render()``. Avant 1.7.5, la méthode acceptait
+local ("Local File Inclusion" (LFI)) dans la méthode ``Zend\View\View::render()``. Avant 1.7.5, la méthode acceptait
 par défaut la possibilité de spécifier des scripts de vue comportant des indications de dossier parent (comme,
 "../" ou "..\\"). Ceci ouvre la possibilité à une attaque LFI si des données utilisateurs non filtrées sont
 passées directement à la méthode ``render()``:
@@ -461,10 +461,10 @@ il existe 2 moyens : le paramètre 'lfiProtectionOn' du constructeur de votre v
    :linenos:
 
    // Désactivation de la protection par le constructeur
-   $view = new Zend_View(array('lfiProtectionOn' => false));
+   $view = new Zend\View\View(array('lfiProtectionOn' => false));
 
    // Désactivation de la protection par la méthode dédiée
-   $view = new Zend_View();
+   $view = new Zend\View\View();
    $view->setLfiProtection(false);
 
 

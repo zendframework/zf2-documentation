@@ -9,7 +9,7 @@ folgenden Migrations Hinweise beachten.
 
 .. _migration.19.zend.file.transfer:
 
-Zend_File_Transfer
+Zend\File\Transfer
 ------------------
 
 .. _migration.19.zend.file.transfer.mimetype:
@@ -40,7 +40,7 @@ dann kann man dieses Feature einschalten indem die ``enableHeaderCheck()`` Metho
    :linenos:
 
    // Bei der Initiierung
-   $valid = new Zend_File_Transfer_Adapter_Http(array('headerCheck' => true);
+   $valid = new Zend\File\Transfer\Adapter\Http(array('headerCheck' => true);
 
    // oder im Nachhinein
    $valid->enableHeaderCheck();
@@ -56,7 +56,7 @@ Methode wurde als deprecated markiert.
 
 .. _migration.19.zend.http.client:
 
-Zend_Http_Client
+Zend\Http\Client
 ----------------
 
 .. _migration.19.zend.http.client.fileuploadsarray:
@@ -64,8 +64,8 @@ Zend_Http_Client
 Änderungen in der internen Speicherung der Information von hochgeladenen Dateien
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In Version 1.9 vom Zend Framework gibt es eine Ändernug wie ``Zend_Http_Client`` Informationen über hochgeladenen
-Dateien intern speichert, bei denen die ``Zend_Http_Client::setFileUpload()`` Methode verwendet wird.
+In Version 1.9 vom Zend Framework gibt es eine Ändernug wie ``Zend\Http\Client`` Informationen über hochgeladenen
+Dateien intern speichert, bei denen die ``Zend\Http\Client::setFileUpload()`` Methode verwendet wird.
 
 Diese Änderung wurde durchgeführt um es zu erlauben mehrere Dateien mit dem gleichen Formularnamen, als Array von
 Dateien, hochzuladen. Weitere Informationen über dieses Problem können in `diesem Fehlerreport`_ gefunden werden.
@@ -78,7 +78,7 @@ Dateien, hochzuladen. Weitere Informationen über dieses Problem können in `die
    :linenos:
 
    // Zwei Dateien mit dem gleichen Namen des Formularelements als Array hochladen
-   $client = new Zend_Http_Client();
+   $client = new Zend\Http\Client();
    $client->setFileUpload('file1.txt',
                           'userfile[]',
                           'some raw data',
@@ -118,18 +118,18 @@ werden.
 
 .. _migration.19.zend.http.client.getparamsrecursize:
 
-Zend_Http_Client::\_getParametersRecursive() sollte nicht mehr eingesetzt werden
+Zend\Http\Client::\_getParametersRecursive() sollte nicht mehr eingesetzt werden
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Beginnend mit Version 1.9, wird die geschützte Methode ``_getParametersRecursive()`` nicht mehr von
-``Zend_Http_Client`` verwendet und ist abgelehnt (deprecated). Ihre Verwendung führt zu einer ``E_NOTICE``
+``Zend\Http\Client`` verwendet und ist abgelehnt (deprecated). Ihre Verwendung führt zu einer ``E_NOTICE``
 Nachricht die von *PHP* kommt.
 
-Wenn man ``Zend_Http_Client`` erweitert und diese Methode aufrufr, sollte man sehen das man stattdessen die
-statische Methode ``Zend_Http_Client::_flattenParametersArray()`` verwendet.
+Wenn man ``Zend\Http\Client`` erweitert und diese Methode aufrufr, sollte man sehen das man stattdessen die
+statische Methode ``Zend\Http\Client::_flattenParametersArray()`` verwendet.
 
 Nochmals, da ``_getParametersRecursive()`` eine geschützte Methode ist, sind nur Benutzer betroffen die
-``Zend_Http_Client`` erweitert haben.
+``Zend\Http\Client`` erweitert haben.
 
 .. _migration.19.zend.locale:
 
@@ -172,10 +172,10 @@ neuen Methodenaufrufe.
 
 .. _migration.19.zend.view.helper.navigation:
 
-Zend_View_Helper_Navigation
+Zend\View_Helper\Navigation
 ---------------------------
 
-Vor dem Release 1.9 hat der Menü Helfer (``Zend_View_Helper_Navigation_Menu``) Untermenüs nicht richtig
+Vor dem Release 1.9 hat der Menü Helfer (``Zend\View\Helper\Navigation\Menu``) Untermenüs nicht richtig
 dargestellt. Wenn ``onlyActiveBranch`` ``TRUE`` war und die Option ``renderParents`` ``FALSE`` wurde nichts
 dargestellt wenn die tiefste aktive Seite auf einer geringeren Tiele als die ``minDepth`` Option war.
 
@@ -188,7 +188,7 @@ Das folgende Container Setup wird angenommen:
    :linenos:
 
    <?php
-   $container = new Zend_Navigation(array(
+   $container = new Zend\Navigation\Navigation(array(
        array(
            'label' => 'Home',
            'uri'   => '#'
@@ -227,7 +227,7 @@ Der folgende Code wird in einem View Script verwendet:
 
 Vor dem Release 1.9 würde der obige Codeabschnitt nichts ausgeben.
 
-Seit dem Release 1.9 akzeptiert die ``_renderDeepestMenu()`` Methode in ``Zend_View_Helper_Navigation_Menu`` aktive
+Seit dem Release 1.9 akzeptiert die ``_renderDeepestMenu()`` Methode in ``Zend\View\Helper\Navigation\Menu`` aktive
 Seiten die ein Level unter ``minDepth`` sind, solange diese Seite Kinder hat.
 
 Der gleiche Codeabschnitt zeigt jetzt die folgende Ausgabe:
@@ -254,11 +254,11 @@ sind alles Sicherheitsbehebungen welche auch potentiell Probleme mit Rückwärts
 
 .. _migration.19.security.zend.filter.html-entities:
 
-Zend_Filter_HtmlEntities
+Zend\Filter\HtmlEntities
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Um zu einem höheren Sicherheitsstandard für die Zeichenkodierung zu kommen, ist der Standardwert von
-``Zend_Filter_HtmlEntities`` jetzt *UTF-8* statt *ISO-8859-1*.
+``Zend\Filter\HtmlEntities`` jetzt *UTF-8* statt *ISO-8859-1*.
 
 Zusätzlich, weil der aktuelle Mechanismus mit Zeichenkodierung handelt und nicht mit Zeichensets, wurden zwei
 Methoden hinzugefügt. ``setEncoding()`` und ``getEncoding()``. Die vorhergehenden Methoden ``setCharSet()`` und
@@ -269,10 +269,10 @@ prüfen um sicherzustellen das weiterhin alles funktioniert.
 
 .. _migration.19.security.zend.filter.strip-tags:
 
-Zend_Filter_StripTags
+Zend\Filter\StripTags
 ^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_Filter_StripTags`` enthielt in voehergehenden Versionen ein ``commentsAllowed`` Flag, welches es erlaubt hat
+``Zend\Filter\StripTags`` enthielt in voehergehenden Versionen ein ``commentsAllowed`` Flag, welches es erlaubt hat
 *HTML* Kommentare in von dieser Klasse gefiltertem *HTML* Text als erlaubt zu markieren. Aber das öffnet den Weg
 für *XSS* Attacken, speziell im Internet Explorer (der es erlaubt konditionelle Funktionalität über *HTML*
 Kommentare zu spezifizieren). Beginnend mit Version 1.9.7 (und retour mit den Versionen 1.8.5 und 1.7.9), hat das

@@ -20,7 +20,7 @@ L'exception précedente s'utilise comme troisième paramètre du constructeur de
 
    try {
        $db->query($sql);
-   } catch (Zend_Db_Statement_Exception $e) {
+   } catch (Zend\Db_Statement\Exception $e) {
        if ($e->getPrevious()) {
            echo '[' . get_class($e)
                . '] a comme exception précédente ['

@@ -16,7 +16,7 @@ objet ``Zend_Paginator`` avec notre tableau à l'intérieur.
    $data = range(1, 100);
 
    // Récupérons un objet Paginator grâce à la fabrique.
-   $paginator = Zend_Paginator::factory($data);
+   $paginator = Zend\Paginator\Paginator::factory($data);
 
 C'est presque terminé! La variable $paginator contient une référence vers l'objet Paginator. Par défaut il
 servira 10 entités par page. Pour afficher les données sur la page, il suffit d'itérer sur l'objet Paginator
@@ -31,7 +31,7 @@ première page.
    $data = range(1, 100);
 
    // Récupérons un objet Paginator grâce à la fabrique.
-   $paginator = Zend_Paginator::factory($data);
+   $paginator = Zend\Paginator\Paginator::factory($data);
 
    ?><ul><?php
 
@@ -52,7 +52,7 @@ Essayons maintenant de récupérer les données de la deuxième page. Vous pouve
    $data = range(1, 100);
 
    // Récupérons un objet Paginator grâce à la fabrique.
-   $paginator = Zend_Paginator::factory($data);
+   $paginator = Zend\Paginator\Paginator::factory($data);
 
    // Selection de la page 2
    $paginator->setCurrentPageNumber(2);
@@ -70,7 +70,7 @@ Bien sûr ici, ce sont les chiffres 1 à 20 qui s'affichent.
 
 Ces quelques exemples simplifiés sont loin de tout montrer sur ``Zend_Paginator``. Une application réelle ne lit
 pas ses données depuis un tableau c'est pourquoi la section suivante montre comment utiliser le Paginator avec des
-résultats d'une requête sql. Au besoin, familiarisez vous avec ``Zend_Db_Select``.
+résultats d'une requête sql. Au besoin, familiarisez vous avec ``Zend\Db\Select``.
 
 Dans l'exemple utilisant une base de données, nous chercherons des billets de blog appelés 'posts'. La table des
 'posts' a quatre colonnes: id, title, body, date_created. Voyons un exemple simple.
@@ -82,7 +82,7 @@ Dans l'exemple utilisant une base de données, nous chercherons des billets de b
    $select = $db->select()->from('posts')->sort('date_created DESC');
 
    // Créons un paginateur pour cette requête
-   $paginator = Zend_Paginator::factory($select);
+   $paginator = Zend\Paginator\Paginator::factory($select);
 
    // Selection de la page 2
    $paginator->setCurrentPageNumber(2);
@@ -97,7 +97,7 @@ Dans l'exemple utilisant une base de données, nous chercherons des billets de b
    ?></ul>
 
 Comme vous le voyez, cet exemple n'est pas très différent du précédent. La seule différence est
-``Zend_Db_Select`` qui est passé à la méthode ``factory()`` à la place d'un tableau. Pour plus de détails
+``Zend\Db\Select`` qui est passé à la méthode ``factory()`` à la place d'un tableau. Pour plus de détails
 notamment sur l'optimisation de la requête de l'objet select, lisez le chapitre sur les adaptateurs DbSelect et
 DbTableSelect de la documentation de ``Zend_Paginator``.
 

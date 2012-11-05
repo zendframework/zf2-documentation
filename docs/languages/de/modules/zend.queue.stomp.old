@@ -4,7 +4,7 @@
 Stomp
 =====
 
-``Zend_Queue_Stomp`` bietet einen Basis Client um mit `Stomp`_ kompatiblen Servern zu kommunizieren. Einige Server,
+``Zend\Queue\Stomp`` bietet einen Basis Client um mit `Stomp`_ kompatiblen Servern zu kommunizieren. Einige Server,
 so wie Apache ActiveMQ oder RabbitMQ erlauben es mithilfe von anderen Methoden zu kommunizieren, wie *HTTP* und
 *XMPP*.
 
@@ -16,10 +16,10 @@ Stomp wird von `Apache ActiveMQ`_, `RabbitMQ`_, `stompserver`_, und `Gozirra`_ u
 Stomp - Unterstützende Klassen
 ------------------------------
 
-- ``Zend_Queue_Stomp_Frame``. Diese Klasse bietet die grundsätzlichen Funktionalitäten für die Manipulation
+- ``Zend\Queue_Stomp\Frame``. Diese Klasse bietet die grundsätzlichen Funktionalitäten für die Manipulation
   eines Stomp Frames.
 
-- ``Zend_Queue_Stomp_Client``. Diese Klasse bietet die grundsätzlichen Funktionen um ``Zend_Queue_Stomp_Frame``\ s
+- ``Zend\Queue_Stomp\Client``. Diese Klasse bietet die grundsätzlichen Funktionen um ``Zend\Queue_Stomp\Frame``\ s
   von und zu einem Stomp kompatiblen Server zu senden (``send()``) und zu empfangen (``receive()``).
 
 

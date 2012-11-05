@@ -8,16 +8,16 @@ Ce validateur vérifie la longueur d'une chaine de caractères.
 
 .. note::
 
-   **Zend_Validate_StringLength ne supporte que les chaines**
+   **Zend\Validate\StringLength ne supporte que les chaines**
 
-   Zend_Validate_StringLength ne fonctionnera pas avec les entiers, flottants, les dates ou encore les objets.
+   Zend\Validate\StringLength ne fonctionnera pas avec les entiers, flottants, les dates ou encore les objets.
 
 .. _zend.validator.set.stringlength.options:
 
-Options gérées par Zend_Validate_StringLength
+Options gérées par Zend\Validate\StringLength
 ---------------------------------------------
 
-Les options suivantes sont reconnues par ``Zend_Validate_StringLength``:
+Les options suivantes sont reconnues par ``Zend\Validate\StringLength``:
 
 - **encoding**: Définit l'encodage ``ICONV`` à utiliser avec la chaine.
 
@@ -27,7 +27,7 @@ Les options suivantes sont reconnues par ``Zend_Validate_StringLength``:
 
 .. _zend.validator.set.stringlength.basic:
 
-Comportement par défaut de Zend_Validate_StringLength
+Comportement par défaut de Zend\Validate\StringLength
 -----------------------------------------------------
 
 Par défaut, ce validateur vérifie qu'une valeur de chaine est bien entre ``min`` et ``max`` caractères. Pour
@@ -45,7 +45,7 @@ La borne supérieure se règle au moyen de l'option ``max``. Ce doit être un en
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(array('max' => 6));
+   $validator = new Zend\Validate\StringLength(array('max' => 6));
 
    $validator->isValid("Test"); // retourne true
    $validator->isValid("Testing"); // retourne false
@@ -56,7 +56,7 @@ aussi.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength();
+   $validator = new Zend\Validate\StringLength();
    $validator->setMax(6);
 
    $validator->isValid("Test"); // retourne true
@@ -72,7 +72,7 @@ La borne inférieure se règle au moyen de l'option ``min``. Ce doit être un en
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(array('min' => 5));
+   $validator = new Zend\Validate\StringLength(array('min' => 5));
 
    $validator->isValid("Test"); // retourne false
    $validator->isValid("Testing"); // retourne true
@@ -83,7 +83,7 @@ aussi.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength();
+   $validator = new Zend\Validate\StringLength();
    $validator->setMin(5);
 
    $validator->isValid("Test"); // retourne false
@@ -101,7 +101,7 @@ ne puisse saisir plus de 30 caractères mais au moins 3. Voyez l'exemple qui sui
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(array('min' => 3, 'max' => 30));
+   $validator = new Zend\Validate\StringLength(array('min' => 3, 'max' => 30));
 
    $validator->isValid("."); // retourne false
    $validator->isValid("Test"); // retourne true
@@ -129,7 +129,7 @@ ce cas, vous verrez le comportement suivant:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(
+   $validator = new Zend\Validate\StringLength(
        array('min' => 6)
    );
    $validator->isValid("Ärger"); // retourne false
@@ -137,7 +137,7 @@ ce cas, vous verrez le comportement suivant:
    $validator->setEncoding("UTF-8");
    $validator->isValid("Ärger"); // retourne true
 
-   $validator2 = new Zend_Validate_StringLength(
+   $validator2 = new Zend\Validate\StringLength(
        array('min' => 6, 'encoding' => 'UTF-8')
    );
    $validator2->isValid("Ärger"); // retourne true

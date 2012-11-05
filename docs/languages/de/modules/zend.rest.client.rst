@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.rest.client:
 
-Zend_Rest_Client
+Zend\Rest\Client
 ================
 
 .. _zend.rest.client.introduction:
@@ -9,9 +9,9 @@ Zend_Rest_Client
 Einführung
 ----------
 
-Die Verwendung von ``Zend_Rest_Client`` ist sehr ähnlich der Verwendung von *SoapClient* Objekten (`SOAP Web
-Service Erweiterung`_). Man kann einfach die REST Service Prozeduren als ``Zend_Rest_Client`` Methoden aufrufen.
-Spezifiziere die komplette Adresse des Services im Constructor von ``Zend_Rest_Client``.
+Die Verwendung von ``Zend\Rest\Client`` ist sehr ähnlich der Verwendung von *SoapClient* Objekten (`SOAP Web
+Service Erweiterung`_). Man kann einfach die REST Service Prozeduren als ``Zend\Rest\Client`` Methoden aufrufen.
+Spezifiziere die komplette Adresse des Services im Constructor von ``Zend\Rest\Client``.
 
 .. _zend.rest.client.introduction.example-1:
 
@@ -23,7 +23,7 @@ Spezifiziere die komplette Adresse des Services im Constructor von ``Zend_Rest_C
    /**
     * Verbinden zum framework.zend.com Server und eine Begrüßung empfangen
     */
-   $client = new Zend_Rest_Client('http://framework.zend.com/rest');
+   $client = new Zend\Rest\Client('http://framework.zend.com/rest');
 
    echo $client->sayHello('Davey', 'Day')->get(); // "Servus Davey, guten Tag"
 
@@ -31,7 +31,7 @@ Spezifiziere die komplette Adresse des Services im Constructor von ``Zend_Rest_C
 
    **Unterschiede im Aufruf**
 
-   ``Zend_Rest_Client`` versucht, dass die entfernten Methoden, so weit wie möglich, wie die nativen Methoden
+   ``Zend\Rest\Client`` versucht, dass die entfernten Methoden, so weit wie möglich, wie die nativen Methoden
    aussehen, wobei der einzige Unterschied darin besteht, dass der Methodenaufruf mit ``get()``, ``post()``,
    ``put()`` oder ``delete()`` erfolgen muß. Dieser Aufruf kann entweder über Methoden Verkettung oder in eigenen
    Methodenaufrufen erfolgen:
@@ -47,10 +47,10 @@ Spezifiziere die komplette Adresse des Services im Constructor von ``Zend_Rest_C
 Antworten
 ---------
 
-Alle Anfragen die über ``Zend_Rest_Client`` gemacht wurden, liefern ein ``Zend_Rest_Client_Response`` Objekt
+Alle Anfragen die über ``Zend\Rest\Client`` gemacht wurden, liefern ein ``Zend\Rest_Client\Response`` Objekt
 zurück. Dieses Objekt hat viele Eigenschaften, was es einfacher macht, auf die Ergebnisse zuzugreifen.
 
-Wenn ein Service auf ``Zend_Rest_Server`` basiert, kann ``Zend_Rest_Client`` einige Annahmen über die Antwort
+Wenn ein Service auf ``Zend\Rest\Server`` basiert, kann ``Zend\Rest\Client`` einige Annahmen über die Antwort
 treffen, inklusive dem Antwort Status (erfolgreich oder fehlerhaft) und den Rückgabetyp.
 
 .. _zend.rest.client.return.example-1:
@@ -68,11 +68,11 @@ treffen, inklusive dem Antwort Status (erfolgreich oder fehlerhaft) und den Rüc
 
 Im obigen Beispiel kann man sehen, dass das Ergebnis der Anfrage als Objekt verwendet wird, um ``isSuccess()``
 aufzurufen. Mithilfe der magischen ``__toString()``-Methode kann man das Objekt bzw. das Ergebnis ausgeben
-(*echo*). ``Zend_Rest_Client_Response`` erlaubt die Ausgabe jedes skalaren Wertes. Für komplexe Typen, kann
+(*echo*). ``Zend\Rest_Client\Response`` erlaubt die Ausgabe jedes skalaren Wertes. Für komplexe Typen, kann
 entweder die Array- oder die Objektschreibweise verwendet werden.
 
-Wenn trotzdem ein Service abgefragt wird, der nicht ``Zend_Rest_Server`` verwendet, wird sich das
-``Zend_Rest_Client_Response`` Objekt mehr wie ein *SimpleXMLElement* verhalten. Um die Dinge trotzdem einfacher zu
+Wenn trotzdem ein Service abgefragt wird, der nicht ``Zend\Rest\Server`` verwendet, wird sich das
+``Zend\Rest_Client\Response`` Objekt mehr wie ein *SimpleXMLElement* verhalten. Um die Dinge trotzdem einfacher zu
 gestalten, wird das *XML* automatisch abgefragt, indem XPath verwendet wird, wenn die Eigenschaft nicht von
 direkter Abstammung des Dokument Root-Elements ist. Zusätzlich, wenn auf eine Eigenschaft als Methode zugegriffen
 wird, empfängt man den *PHP* Wert für das Objekt, oder ein Array mit den *PHP* Wert Ergebnissen.
@@ -84,7 +84,7 @@ wird, empfängt man den *PHP* Wert für das Objekt, oder ein Array mit den *PHP*
 .. code-block:: php
    :linenos:
 
-   $technorati = new Zend_Rest_Client('http://api.technorati.com/bloginfo');
+   $technorati = new Zend\Rest\Client('http://api.technorati.com/bloginfo');
    $technorati->key($key);
    $technorati->url('http://pixelated-dreams.com');
    $result = $technorati->get();
@@ -146,12 +146,12 @@ sind, werden Sie automatisch zurückgegeben, wenn auf sie durch ihren Namen zuge
 Anfrage Argumente
 -----------------
 
-Wenn man eine Anfrage an einen Server sendet, welcher nicht auf ``Zend_Rest_Server`` basiert, sind die Chancen
+Wenn man eine Anfrage an einen Server sendet, welcher nicht auf ``Zend\Rest\Server`` basiert, sind die Chancen
 groß, dass man mehrere Argumente mit der Anfrage senden muß. Das wird durchgeführt, indem man eine Methode mit
 dem Namen des Arguments aufruft und den Wert, als das erste (und einzige) Argument übergibt. Jeder dieser
 Methodenaufrufe, gibt das Objekt selbst zurück, was Verkettung oder "flüssige" Verwendung erlaubt. Der erste
 Aufruf, oder das erste Argument, das übergeben wird, wenn man mehr als ein Argument übergeben will, wird immer
-als die Methode angenommen wenn ein ``Zend_Rest_Server`` Service aufgerufen wird.
+als die Methode angenommen wenn ein ``Zend\Rest\Server`` Service aufgerufen wird.
 
 .. _zend.rest.client.args.example-1:
 
@@ -160,7 +160,7 @@ als die Methode angenommen wenn ein ``Zend_Rest_Server`` Service aufgerufen wird
 .. code-block:: php
    :linenos:
 
-   $client = new Zend_Rest_Client('http://example.org/rest');
+   $client = new Zend\Rest\Client('http://example.org/rest');
 
    $client->arg('value1');
    $client->arg2('value2');
@@ -174,15 +174,15 @@ Beide Varianten im obigen Beispiel, ergeben die folgenden get-Argumente:
 *?method=arg&arg1=value1&arg=value1&arg2=value2*
 
 Es gilt zu bemerken, dass der erste Aufruf von *$client->arg('value1');* in beidem resultiert:
-*method=arg&arg1=value1* und *arg=value1*. Es ist so, dass ``Zend_Rest_Server`` die Anfrage korrekt versteht, ohne
+*method=arg&arg1=value1* und *arg=value1*. Es ist so, dass ``Zend\Rest\Server`` die Anfrage korrekt versteht, ohne
 dass vordefiniertes Wissen über das Service benötigt wird.
 
 .. warning::
 
-   **Striktheit von Zend_Rest_Client**
+   **Striktheit von Zend\Rest\Client**
 
    Jeder REST Service der strikt in seinen Argumenten ist, die er empfängt, wird wegen dem oben beschriebenen
-   Verhalten bei der Verwendung von ``Zend_Rest_Client`` fehlschlagen. Das ist keine gewöhnliche Praxis und sollte
+   Verhalten bei der Verwendung von ``Zend\Rest\Client`` fehlschlagen. Das ist keine gewöhnliche Praxis und sollte
    keine Probleme verursachen.
 
 

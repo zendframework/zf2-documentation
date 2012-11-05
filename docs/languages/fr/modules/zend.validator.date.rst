@@ -4,14 +4,14 @@
 Date
 ====
 
-``Zend_Validate_Date`` permet de valider qu'une donnée est bien une date. Le validateur gère la localisation.
+``Zend\Validate\Date`` permet de valider qu'une donnée est bien une date. Le validateur gère la localisation.
 
 .. _zend.validator.set.date.options:
 
-Options supportées par Zend_Validate_Date
+Options supportées par Zend\Validate\Date
 -----------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_Date``:
+Les options suivantes sont supportées par ``Zend\Validate\Date``:
 
 - **format**: affecte le format utilisé pour écrire la date.
 
@@ -28,25 +28,25 @@ utilisé lorsqu'aucune locale et aucun format particulier n'est précisé. Voyez
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Date();
+   $validator = new Zend\Validate\Date();
 
    $validator->isValid('2000-10-10');   // retourne true
    $validator->isValid('10.10.2000'); // retourne false
 
-Le format par défaut de ``Zend_Validate_Date`` est 'yyyy-MM-dd'.
+Le format par défaut de ``Zend\Validate\Date`` est 'yyyy-MM-dd'.
 
 .. _zend.validator.set.date.localized:
 
 Validation de dates localisées
 ------------------------------
 
-``Zend_Validate_Date`` peut aussi valider les dates dans un format localisé donné. En utilisant l'option
+``Zend\Validate\Date`` peut aussi valider les dates dans un format localisé donné. En utilisant l'option
 ``locale`` vous pouvez définir la locale utilisée pour valider le format de la date.
 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Date(array('locale' => 'de'));
+   $validator = new Zend\Validate\Date(array('locale' => 'de'));
 
    $validator->isValid('10.Feb.2010'); // retourne true
    $validator->isValid('10.May.2010'); // retourne false
@@ -59,12 +59,12 @@ qui est le format pour une locale 'de'.
 Formats de dates personnalisés
 ------------------------------
 
-``Zend_Validate_Date`` supporte des formats de date personnalisés. Utilisez l'option ``format`` pour cela.
+``Zend\Validate\Date`` supporte des formats de date personnalisés. Utilisez l'option ``format`` pour cela.
 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Date(array('format' => 'yyyy'));
+   $validator = new Zend\Validate\Date(array('format' => 'yyyy'));
 
    $validator->isValid('2010'); // retourne true
    $validator->isValid('May');  // retourne false
@@ -75,7 +75,7 @@ localisés.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Date(array('format' => 'yyyy MMMM', 'locale' => 'de'));
+   $validator = new Zend\Validate\Date(array('format' => 'yyyy MMMM', 'locale' => 'de'));
 
    $validator->isValid('2010 Dezember'); // retourne true
    $validator->isValid('2010 June');     // retourne false

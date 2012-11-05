@@ -24,14 +24,14 @@ se soucier des espaces de noms.
     * (qui est optionnelle) et elle peut ajouter automatiquement
     * des espaces de noms supplémentaires.
     */
-   class MonEntree extends Zend_Feed_Entry_Atom
+   class MonEntree extends Zend\Feed_Entry\Atom
    {
 
        public function __construct($uri = 'http://www.exemple.com/monflux/',
                                    $xml = null)
        {
            parent::__construct($uri, $xml);
-           Zend_Feed::registerNamespace('monen',
+           Zend\Feed\Feed::registerNamespace('monen',
                                         'http://www.exemple.com/monen/1.0');
        }
 

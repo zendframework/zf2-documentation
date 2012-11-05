@@ -12,12 +12,12 @@ unui sistem flexibil de ID-uri şi etichete. Folosind aceste adaptoare, vă va f
 tipuri specifice de înregistrări (de exemplu: „şterge toate înregistrările memorate marcate cu o etichetă
 dată”).
 
-Nucleul modulului (*Zend_Cache_Core*) este generic, flexibil şi configurabil. Totuşi, pentru nevoi specifice,
-există interfeţe care extind *Zend_Cache_Core* pentru convenienţă: *Output*, *File*, *Function* şi *Class*.
+Nucleul modulului (*Zend\Cache\Core*) este generic, flexibil şi configurabil. Totuşi, pentru nevoi specifice,
+există interfeţe care extind *Zend\Cache\Core* pentru convenienţă: *Output*, *File*, *Function* şi *Class*.
 
-.. rubric:: Obţinerea unei interfeţe (frontend) cu *Zend_Cache::factory()*
+.. rubric:: Obţinerea unei interfeţe (frontend) cu *Zend\Cache\Cache::factory()*
 
-*Zend_Cache::factory()* creează instanţe ale obiectelor şi face legătura între ele. În acest prim exemplu,
+*Zend\Cache\Cache::factory()* creează instanţe ale obiectelor şi face legătura între ele. În acest prim exemplu,
 vom folosi interfaţa *Core* împreună cu adaptorul *File*.
 
 .. code-block:: php
@@ -35,8 +35,8 @@ vom folosi interfaţa *Core* împreună cu adaptorul *File*.
        'cache_dir' => './tmp/' // Directorul unde se pun fişierele cache
    );
 
-   // getting a Zend_Cache_Core object
-   $cache = Zend_Cache::factory('Core', 'File', $frontendOptions, $backendOptions);?>
+   // getting a Zend\Cache\Core object
+   $cache = Zend\Cache\Cache::factory('Core', 'File', $frontendOptions, $backendOptions);?>
 
 .. note::
 
@@ -65,7 +65,7 @@ să ne conectăm la baza de date; înregistrările sunt preluate din
 
        // nu e în cache, se face o conexiune la baza de date
 
-       $db = Zend_Db::factory( [...] );
+       $db = Zend\Db\Db::factory( [...] );
 
        $result = $db->fetchAll('SELECT * FROM huge_table');
 
@@ -103,7 +103,7 @@ condiţia ca înregistrarea din cache să fie validă).
 
    $backendOptions = array('cacheDir' => './tmp/');
 
-   $cache = Zend_Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
+   $cache = Zend\Cache\Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
 
    // pasăm un identificator unic metodei start()
    if(!$cache->start('mypage')) {

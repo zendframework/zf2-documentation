@@ -11,15 +11,15 @@ backendów (**File**, **Sqlite**, **Memcache**...) przy użyciu uniwersalnego sy
 etykiet. Używając ich, łatwe jest kasowanie specyficznych typów rekordów (na przykład: "usuń wszystkie
 rekordy bufora oznaczone podaną etykietą").
 
-Jądro modułu (``Zend_Cache_Core``) jest proste, uniwersalne i konfigurowalne. Obecnie, dla twoich specyficznych
-potrzeb dostępne są frontendy rozszerzające ``Zend_Cache_Core`` na przykład: **Output**, **File**, **Function**
+Jądro modułu (``Zend\Cache\Core``) jest proste, uniwersalne i konfigurowalne. Obecnie, dla twoich specyficznych
+potrzeb dostępne są frontendy rozszerzające ``Zend\Cache\Core`` na przykład: **Output**, **File**, **Function**
 oraz **Class**.
 
 .. _zend.cache.introduction.example-1:
 
-.. rubric:: Pobieranie frontendu za pomocą Zend_Cache::factory()
+.. rubric:: Pobieranie frontendu za pomocą Zend\Cache\Cache::factory()
 
-``Zend_Cache::factory()`` tworzy instancję odpowiedniego obiektu łączy je razem. W tym pierwszym przykładzie
+``Zend\Cache\Cache::factory()`` tworzy instancję odpowiedniego obiektu łączy je razem. W tym pierwszym przykładzie
 użyjemy frontendu **Core** wraz z backendem **File**.
 
 .. code-block:: php
@@ -34,8 +34,8 @@ użyjemy frontendu **Core** wraz z backendem **File**.
        'cache_dir' => './tmp/' // Katalog w którym mają być składowane pliku bufora
    );
 
-   // pobieranie obiektu Zend_Cache_Core
-   $cache = Zend_Cache::factory('Core',
+   // pobieranie obiektu Zend\Cache\Core
+   $cache = Zend\Cache\Cache::factory('Core',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);
@@ -66,7 +66,7 @@ potrzeby aby łączyć się z bazą; rekordy są pobierane z bufora, a następni
 
        // bufor nie istnieje; łączymy się z bazą
 
-       $db = Zend_Db::factory( [...] );
+       $db = Zend\Db\Db::factory( [...] );
 
        $result = $db->fetchAll('SELECT * FROM huge_table');
 
@@ -103,7 +103,7 @@ długo jak rekord bufora jest prawidłowy).
 
    $backendOptions = array('cache_dir' => './tmp/');
 
-   $cache = Zend_Cache::factory('Output',
+   $cache = Zend\Cache\Cache::factory('Output',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);

@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.service.strikeiron.advanced-uses:
 
-Zend_Service_StrikeIron: 応用編
+Zend\Service\StrikeIron: 応用編
 ============================
 
-このセクションでは、 ``Zend_Service_StrikeIron`` のより進んだ使用法を説明します。
+このセクションでは、 ``Zend\Service\StrikeIron`` のより進んだ使用法を説明します。
 
 .. _zend.service.strikeiron.advanced-uses.services-by-wsdl:
 
@@ -23,7 +23,7 @@ StrikeIron のサービスの中には *PHP* のラッパークラスが存在�
    .. code-block:: php
       :linenos:
 
-      $strikeIron = new Zend_Service_StrikeIron(array('username' => 'あなたのユーザ名',
+      $strikeIron = new Zend\Service\StrikeIron(array('username' => 'あなたのユーザ名',
                                                       'password' => 'あなたのパスワード'));
 
       // Reverse Phone Lookup サービス用の汎用クライアントを取得します
@@ -56,13 +56,13 @@ SOAP トランザクションの表示
 StrikeIron との通信は、すべて *SOAP* 拡張モジュールを用いて行います。 StrikeIron
 との間でやり取りする *XML* の内容を確認できると、 デバッグ時に便利です。
 
-すべての StrikeIron クライアント (``Zend_Service_StrikeIron_Base`` のサブクラス) には
+すべての StrikeIron クライアント (``Zend\Service_StrikeIron\Base`` のサブクラス) には
 ``getSoapClient()`` メソッドが存在します。 これは、StrikeIron との通信に使用している
 *SOAPClient* のインスタンスを返します。
 
 *PHP* の `SOAPClient`_ には *trace*
 オプションがあり、これを使用すると直前のトランザクションで交換された *XML*
-を取得できます。 ``Zend_Service_StrikeIron`` は、デフォルトでは *trace*
+を取得できます。 ``Zend\Service\StrikeIron`` は、デフォルトでは *trace*
 を有効にしません。しかし、 *SOAPClient*
 に渡すオプションを指定することで、この挙動は簡単に変更できます。
 
@@ -74,7 +74,7 @@ StrikeIron との通信は、すべて *SOAP* 拡張モジュールを用いて�
       :linenos:
 
       $strikeIron =
-          new Zend_Service_StrikeIron(array('username' => 'あなたのユーザ名',
+          new Zend\Service\StrikeIron(array('username' => 'あなたのユーザ名',
                                             'password' => 'あなたのパスワード',
                                             'options'  => array('trace' => true)));
 

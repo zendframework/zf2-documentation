@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.securitygroups:
 
-Zend_Service_Amazon_Ec2: Sicherheitsgruppen
+Zend\Service_Amazon\Ec2: Sicherheitsgruppen
 ===========================================
 
 Eine Sicherheitsgruppe ist eine benante Sammlung von Zugriffsregeln. Diese Zugriffsregeln spezifizieren welcher
@@ -37,7 +37,7 @@ unterschiedlichen Sicherheitsgruppen.
 .. code-block:: php
    :linenos:
 
-   $ec2_sg = new Zend_Service_Amazon_Ec2_Securitygroups('aws_key',
+   $ec2_sg = new Zend\Service\Amazon\Ec2\Securitygroups('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_sg->create('mygroup', 'my group description');
 
@@ -57,7 +57,7 @@ groupDescription und ein Array enthält das alle Regeln dieser Sicherheitsgruppe
 .. code-block:: php
    :linenos:
 
-   $ec2_sg = new Zend_Service_Amazon_Ec2_Securitygroups('aws_key',
+   $ec2_sg = new Zend\Service\Amazon\Ec2\Securitygroups('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_sg->describe('mygroup');
 
@@ -76,7 +76,7 @@ bis die betreffende Regel entfernt wurde.
 .. code-block:: php
    :linenos:
 
-   $ec2_sg = new Zend_Service_Amazon_Ec2_Securitygroups('aws_key',
+   $ec2_sg = new Zend\Service\Amazon\Ec2\Securitygroups('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_sg->delete('mygroup');
 
@@ -105,7 +105,7 @@ Abhängig von der Anzahl der Instanzen, kann es trotzdem zu einer kleinen Verzö
 .. code-block:: php
    :linenos:
 
-   $ec2_sg = new Zend_Service_Amazon_Ec2_Securitygroups('aws_key',
+   $ec2_sg = new Zend\Service\Amazon\Ec2\Securitygroups('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_sg->authorizeIp('mygroup',
                                   'protocol',
@@ -127,7 +127,7 @@ Abhängig von der Anzahl der Instanzen, kann es trotzdem zu einer kleinen Verzö
 .. code-block:: php
    :linenos:
 
-   $ec2_sg = new Zend_Service_Amazon_Ec2_Securitygroups('aws_key',
+   $ec2_sg = new Zend\Service\Amazon\Ec2\Securitygroups('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_sg->authorizeGroup('mygroup', 'securityGroupName', 'ownerId');
 
@@ -157,7 +157,7 @@ Abhängig von der Anzahl der Instanzen, kann es trotzdem zu einer kleinen Verzö
 .. code-block:: php
    :linenos:
 
-   $ec2_sg = new Zend_Service_Amazon_Ec2_Securitygroups('aws_key',
+   $ec2_sg = new Zend\Service\Amazon\Ec2\Securitygroups('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_sg->revokeIp('mygroup',
                                'protocol',
@@ -180,7 +180,7 @@ Abhängig von der Anzahl der Instanzen, kann es trotzdem zu einer kleinen Verzö
 .. code-block:: php
    :linenos:
 
-   $ec2_sg = new Zend_Service_Amazon_Ec2_Securitygroups('aws_key',
+   $ec2_sg = new Zend\Service\Amazon\Ec2\Securitygroups('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_sg->revokeGroup('mygroup', 'securityGroupName', 'ownerId');
 

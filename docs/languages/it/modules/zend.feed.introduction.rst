@@ -10,8 +10,8 @@ per la modifica della struttura dei feed e degli elementi che lo compongono con 
 trasformare il risultato nuovamente in un XML. In futuro, il supporto alla modifica potrà anche includere il
 supporto all'Atom Publishing Protocol.
 
-*Zend_Feed* consiste in una classe base *Zend_Feed*, in due classi base astratte *Zend_Feed_Abstract* e
-*Zend_Feed_Entry_Abstract* per la rappresentazione del feed e dei suoi elementi, specifiche implementazioni per
+*Zend_Feed* consiste in una classe base *Zend_Feed*, in due classi base astratte *Zend\Feed\Abstract* e
+*Zend\Feed_Entry\Abstract* per la rappresentazione del feed e dei suoi elementi, specifiche implementazioni per
 feed RSS e Atom ed alcune funzioni a supporto che lavorano dietro le scene per assicurare il buon funzionamento ed
 una sintassi intuitiva.
 
@@ -38,8 +38,8 @@ semplice array PHP, che può essere utilizzato per stampare i dati, salvarli in 
 
    // Recupera le ultime novità da Slashdot
    try {
-       $slashdotRss = Zend_Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
-   } catch (Zend_Feed_Exception $e) {
+       $slashdotRss = Zend\Feed\Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
+   } catch (Zend\Feed\Exception $e) {
        // importazione del feed fallita
        echo "Si è verificata un'eccezione nell'importazione del feed: {$e->getMessage()}\n";
        exit;

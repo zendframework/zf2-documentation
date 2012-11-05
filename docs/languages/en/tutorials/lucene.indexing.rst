@@ -19,11 +19,11 @@ There are two ways to create document object. The first is to do it manually.
 .. code-block:: php
    :linenos:
 
-   $doc = new Zend_Search_Lucene_Document();
-   $doc->addField(Zend_Search_Lucene_Field::Text('url', $docUrl));
-   $doc->addField(Zend_Search_Lucene_Field::Text('title', $docTitle));
-   $doc->addField(Zend_Search_Lucene_Field::unStored('contents', $docBody));
-   $doc->addField(Zend_Search_Lucene_Field::binary('avatar', $avatarData));
+   $doc = new Zend\Search_Lucene\Document();
+   $doc->addField(Zend\Search_Lucene\Field::Text('url', $docUrl));
+   $doc->addField(Zend\Search_Lucene\Field::Text('title', $docTitle));
+   $doc->addField(Zend\Search_Lucene\Field::unStored('contents', $docBody));
+   $doc->addField(Zend\Search_Lucene\Field::binary('avatar', $avatarData));
 
 The second method is to load it from *HTML* or Microsoft Office 2007 files:
 
@@ -34,10 +34,10 @@ The second method is to load it from *HTML* or Microsoft Office 2007 files:
 .. code-block:: php
    :linenos:
 
-   $doc = Zend_Search_Lucene_Document_Html::loadHTML($htmlString);
-   $doc = Zend_Search_Lucene_Document_Docx::loadDocxFile($path);
-   $doc = Zend_Search_Lucene_Document_Pptx::loadPptFile($path);
-   $doc = Zend_Search_Lucene_Document_Xlsx::loadXlsxFile($path);
+   $doc = Zend\Search\Lucene\Document\Html::loadHTML($htmlString);
+   $doc = Zend\Search\Lucene\Document\Docx::loadDocxFile($path);
+   $doc = Zend\Search\Lucene\Document\Pptx::loadPptFile($path);
+   $doc = Zend\Search\Lucene\Document\Xlsx::loadXlsxFile($path);
 
 If a document is loaded from one of the supported formats, it still can be extended manually with new user defined
 fields.

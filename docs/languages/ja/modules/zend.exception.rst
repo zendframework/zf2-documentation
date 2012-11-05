@@ -18,9 +18,9 @@
    :linenos:
 
    try {
-       // Zend_Loader::loadClass() で、存在しないクラスを指定してコールすると
+       // Zend\Loader\Loader::loadClass() で、存在しないクラスを指定してコールすると
        // Zend_Loader で例外がスローされます
-       Zend_Loader::loadClass('nonexistantclass');
+       Zend\Loader\Loader::loadClass('nonexistantclass');
    } catch (Zend_Exception $e) {
        echo "キャッチした例外: " . get_class($e) . "\n";
        echo "メッセージ: " . $e->getMessage() . "\n";

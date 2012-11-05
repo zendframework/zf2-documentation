@@ -4,22 +4,22 @@
 LessThan
 ========
 
-``Zend_Validate_LessThan`` erlaubt es zu prüfen ob ein angegebener Wert kleiner als ein maximaler Grenzwert ist.
-Das ist der Cousine von ``Zend_Validate_GreaterThan``.
+``Zend\Validate\LessThan`` erlaubt es zu prüfen ob ein angegebener Wert kleiner als ein maximaler Grenzwert ist.
+Das ist der Cousine von ``Zend\Validate\GreaterThan``.
 
 .. note::
 
-   **Zend_Validate_LessThan unterstützt nur die Prüfung von Nummern**
+   **Zend\Validate\LessThan unterstützt nur die Prüfung von Nummern**
 
-   Es sollte beachtet werden das ``Zend_Validate_LessThan`` nur die Prüfung von Nummern unterstützt. Strings oder
+   Es sollte beachtet werden das ``Zend\Validate\LessThan`` nur die Prüfung von Nummern unterstützt. Strings oder
    ein Datum können mit dieser Prüfung nicht geprüft werden.
 
 .. _zend.validator.set.lessthan.options:
 
-Unterstützte Optionen für Zend_Validate_LessThan
+Unterstützte Optionen für Zend\Validate\LessThan
 ------------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Validate_LessThan`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Validate\LessThan`` unterstützt:
 
 - **max**: Setzt den maximal erlaubten Wert.
 
@@ -34,7 +34,7 @@ verwendet werden.
 .. code-block:: php
    :linenos:
 
-   $valid  = new Zend_Validate_LessThan(array('max' => 10));
+   $valid  = new Zend\Validate\LessThan(array('max' => 10));
    $value  = 10;
    $return = $valid->isValid($value);
    // Gibt true zurück

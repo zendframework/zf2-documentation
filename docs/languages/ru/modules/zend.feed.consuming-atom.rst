@@ -4,7 +4,7 @@
 Работа с лентой Atom
 ====================
 
-*Zend_Feed_Atom* используется в основном так же, как и *Zend_Feed_Rss*. Он
+*Zend\Feed\Atom* используется в основном так же, как и *Zend\Feed\Rss*. Он
 предоставляет те же доступ к свойствам ленты и обход сообщений
 в ленте. Основное отличие заключается в самой структуре ленты
 по протоколу Atom. Atom является преемником RSS, это более
@@ -22,7 +22,7 @@
 .. code-block:: php
    :linenos:
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/');
    echo 'The feed contains ' . $feed->count() . ' entries.' . "\n\n";
    foreach ($feed as $entry) {
        echo 'Title: ' . $entry->title() . "\n";

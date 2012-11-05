@@ -4,16 +4,16 @@
 Db_RecordExists および Db_NoRecordExists
 =====================================
 
-``Zend_Validate_Db_RecordExists`` および ``Zend_Validate_Db_NoRecordExists`` は、
+``Zend\Validate_Db\RecordExists`` および ``Zend\Validate_Db\NoRecordExists`` は、
 データベースのテーブル上に
 指定した値のレコードが存在するかどうかを調べる手段を提供します。
 
 .. _zend.validator.set.db.options:
 
-Supported options for Zend_Validate_Db_*
+Supported options for Zend\Validate_Db\*
 ----------------------------------------
 
-The following options are supported for ``Zend_Validate_Db_NoRecordExists`` and ``Zend_Validate_Db_RecordExists``:
+The following options are supported for ``Zend\Validate_Db\NoRecordExists`` and ``Zend\Validate_Db\RecordExists``:
 
 - **adapter**: The database adapter which will be used for the search.
 
@@ -36,7 +36,7 @@ The following options are supported for ``Zend_Validate_Db_NoRecordExists`` and 
    :linenos:
 
    // メールアドレスがデータベース内に存在するかどうかを調べます
-   $validator = new Zend_Validate_Db_RecordExists(
+   $validator = new Zend\Validate_Db\RecordExists(
        array(
            'table' => 'users',
            'field' => 'emailaddress'
@@ -59,7 +59,7 @@ The following options are supported for ``Zend_Validate_Db_NoRecordExists`` and 
    :linenos:
 
    // ユーザ名がデータベースに存在しないことを調べます
-   $validator = new Zend_Validate_Db_NoRecordExists(
+   $validator = new Zend\Validate_Db\NoRecordExists(
        array(
            'table' => 'users',
            'field' => 'username'
@@ -84,7 +84,7 @@ The following options are supported for ``Zend_Validate_Db_NoRecordExists`` and 
 レコードの除外
 -------
 
-``Zend_Validate_Db_RecordExists`` および ``Zend_Validate_Db_NoRecordExists`` には、
+``Zend\Validate_Db\RecordExists`` および ``Zend\Validate_Db\NoRecordExists`` には、
 テーブルの一部を除外してその内容を調べる方法があります。 where
 句を文字列で指定するか、あるいはキー "field" および "value"
 を含む配列を指定します。
@@ -98,7 +98,7 @@ The following options are supported for ``Zend_Validate_Db_NoRecordExists`` and 
 
    // そのユーザ名のユーザがほかにいないことを調べます
    $user_id   = $user->getId();
-   $validator = new Zend_Validate_Db_NoRecordExists(
+   $validator = new Zend\Validate_Db\NoRecordExists(
        array(
            'table' => 'users',
            'field' => 'username',
@@ -131,7 +131,7 @@ The following options are supported for ``Zend_Validate_Db_NoRecordExists`` and 
 
    $post_id   = $post->getId();
    $clause    = $db->quoteInto('post_id = ?', $category_id);
-   $validator = new Zend_Validate_Db_RecordExists(
+   $validator = new Zend\Validate_Db\RecordExists(
        array(
            'table'   => 'posts_categories',
            'field'   => 'post_id',
@@ -165,7 +165,7 @@ The following options are supported for ``Zend_Validate_Db_NoRecordExists`` and 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Db_RecordExists(
+   $validator = new Zend\Validate_Db\RecordExists(
        array(
            'table' => 'users',
            'field' => 'id',
@@ -184,7 +184,7 @@ The following options are supported for ``Zend_Validate_Db_NoRecordExists`` and 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Db_RecordExists(
+   $validator = new Zend\Validate_Db\RecordExists(
        array(
            'table'  => 'users',
            'schema' => 'my',

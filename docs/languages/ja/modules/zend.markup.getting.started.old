@@ -11,8 +11,8 @@
 
 .. rubric:: 基本的な Zend_Markup 使用法
 
-まず初めに ``Zend_Markup::factory()`` メソッドを用いて、 ``Zend_Markup_Renderer_Html``
-オブジェクトを具象化します。 ``Zend_Markup_Parser_Bbcode`` オブジェクトがレンダラーに
+まず初めに ``Zend\Markup\Markup::factory()`` メソッドを用いて、 ``Zend\Markup_Renderer\Html``
+オブジェクトを具象化します。 ``Zend\Markup_Parser\Bbcode`` オブジェクトがレンダラーに
 追加され作成されるでしょう。
 
 その後、 ``render()`` メソッドを BBCode から *HTML* の断片に変換するために使用します。
@@ -20,9 +20,9 @@
 .. code-block:: php
    :linenos:
 
-   // Zend_Markup_Parser_BbCode を自身のパーサーとして、
-   // Zend_Markup_Renderer_Html のインスタンスを生成します。
-   $bbcode = Zend_Markup::factory('Bbcode');
+   // Zend\Markup_Parser\BbCode を自身のパーサーとして、
+   // Zend\Markup_Renderer\Html のインスタンスを生成します。
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    echo $bbcode->render('[b]bold text[/b] and [i]cursive text[/i]');
    // 出力: '<strong>bold text</strong> and <em>cursive text</em>'
@@ -36,7 +36,7 @@
 .. code-block:: php
    :linenos:
 
-   $bbcode = Zend_Markup::factory('Bbcode');
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    $input = <<<EOT
    [list]
@@ -66,7 +66,7 @@ BBCode のようなマークアップの簡潔な解析とレンダリングの�
 .. code-block:: php
    :linenos:
 
-   $bbcode = Zend_Markup::factory('Bbcode');
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    echo $bbcode->render('some [i]wrong [b]sample [/i] text');
    // '[b]' は決して閉じられておらず、また不正確にネストされていることに注意しましょう。

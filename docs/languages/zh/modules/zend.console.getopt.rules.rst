@@ -4,13 +4,13 @@
 声明 Getopt 规则
 ============
 
-*Zend_Console_Getopt*
+*Zend\Console\Getopt*
 类的构造器带有一到三个参数。第一个参数声明哪个选项被应用程序支持。这个类支持交替（alternative）语法形式来声明选项。参见下面的章节关于这些语法形式的格式和用法。
 
 构造器带有的另外两个参数都是可选的。第二个参数可以包含命令行参数，缺省为
 *$_SERVER['argv']* 。
 
-第三个参数包含一个配置选项来定制 *Zend_Console_Getopt*
+第三个参数包含一个配置选项来定制 *Zend\Console\Getopt*
 的行为（behavior）。关于可用选项的引用（reference），参见 :ref:`添加配置
 <zend.console.getopt.configuration.config>`
 
@@ -19,7 +19,7 @@
 用短语法声明选项
 --------
 
-*Zend_Console_Getopt* 支持紧凑的语法 （类似用于 GNU Getopt的语法，参见
+*Zend\Console\Getopt* 支持紧凑的语法 （类似用于 GNU Getopt的语法，参见
 `http://www.gnu.org/software/libc/manual/html_node/Getopt.html`_ ）。这个语法只支持单字符 flag
 。在一个单个的字符串中，每个字母对应于被程序支持的 flag。字母后跟着冒号 ("*:*")
 表示这个 flag 需要参数。
@@ -31,10 +31,10 @@
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
 
 
-上面的例子示例使用 *Zend_Console_Getopt* 来声明选项，这个选项也可以以 "*-a*"、"*-b*" 或
+上面的例子示例使用 *Zend\Console\Getopt* 来声明选项，这个选项也可以以 "*-a*"、"*-b*" 或
 "*-p*"的形式给出。后面的 flag 需要一个参数。
 
 短语法限于单个字符的flag。别名，参数类型和帮助字符串不被短语法支持。
@@ -67,7 +67,7 @@
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt(
+   $opts = new Zend\Console\Getopt(
      array(
        'apple|a'    => 'apple option, with no parameter',
        'banana|b=i' => 'banana option, with required integer parameter',

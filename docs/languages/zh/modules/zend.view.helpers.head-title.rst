@@ -25,7 +25,7 @@ $setType = 'APPEND')*\ ，缺省地是追加到堆栈（聚合标题元素）的
    <?php
    // setting the controller and action name as title segments:
    //把控制器和动作的名称设置为标题的一部分
-   $request = Zend_Controller_Front::getInstance()->getRequest();
+   $request = Zend\Controller\Front::getInstance()->getRequest();
    $this->headTitle($request->getActionName())
         ->headTitle($request->getControllerName());
 

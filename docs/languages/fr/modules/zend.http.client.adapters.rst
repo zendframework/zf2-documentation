@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.http.client.adapters:
 
-Zend_Http_Client - Adaptateurs de connexion
+Zend\Http\Client - Adaptateurs de connexion
 ===========================================
 
 .. _zend.http.client.adapters.overview:
@@ -9,45 +9,45 @@ Zend_Http_Client - Adaptateurs de connexion
 Présentation globale
 --------------------
 
-``Zend_Http_Client`` accepte des objets adaptateurs. Ces objets ont la responsabilité de soutenir la connexion
+``Zend\Http\Client`` accepte des objets adaptateurs. Ces objets ont la responsabilité de soutenir la connexion
 vers un serveur, à savoir écrire des requêtes et lire des réponses L'adaptateur peut donc être changé, et
 même écrit ou réécrit pour correspondre à vos besoins, sans avoir l'obligation de toucher à toute la classe
 dite "client". Vous vous connectez et manipulez votre connexion toujours de la même manière quelque soit
 l'adaptateur situé dessous.
 
-Actuellement, la classe cliente ``Zend_Http_Client`` est fournie avec quatre adaptateurs :
+Actuellement, la classe cliente ``Zend\Http\Client`` est fournie avec quatre adaptateurs :
 
-   - ``Zend_Http_Client_Adapter_Socket`` (défaut)
+   - ``Zend\Http\Client\Adapter\Socket`` (défaut)
 
-   - ``Zend_Http_Client_Adapter_Proxy``
+   - ``Zend\Http\Client\Adapter\Proxy``
 
-   - ``Zend_Http_Client_Adapter_Curl``
+   - ``Zend\Http\Client\Adapter\Curl``
 
-   - ``Zend_Http_Client_Adapter_Test``
+   - ``Zend\Http\Client\Adapter\Test``
 
 
 
-L'objet Zend_Http_Client se voit spécifié un adaptateur via son constructeur avec le tableau d'options, à
+L'objet Zend\Http\Client se voit spécifié un adaptateur via son constructeur avec le tableau d'options, à
 l'index 'adapter'. Fournissez alors une chaîne représentant la classe d'adaptateur à utiliser (par exemple
-'Zend_Http_Client_Adapter_Socket'), ou un objet directement (par exemple *new Zend_Http_Client_Adapter_Test*). Vous
-pouvez de même passer un adaptateur plus tard, avec la méthode ``Zend_Http_Client->setConfig()``.
+'Zend\Http\Client\Adapter\Socket'), ou un objet directement (par exemple *new Zend\Http\Client\Adapter\Test*). Vous
+pouvez de même passer un adaptateur plus tard, avec la méthode ``Zend\Http\Client->setConfig()``.
 
 .. _zend.http.client.adapters.socket:
 
 Adaptateur Socket
 -----------------
 
-L'adaptateur par défaut est Zend_Http_Client_Adapter_Socket. Il est basé sur les fonctions *PHP* ``fsockopen()``
+L'adaptateur par défaut est Zend\Http\Client\Adapter\Socket. Il est basé sur les fonctions *PHP* ``fsockopen()``
 et soeurs. Il ne nécessite donc aucune extension particulière ni option de compilation de *PHP*.
 
-L'adaptateur Socket peut être configuré avec des options, passées par ``Zend_Http_Client->setConfig()`` ou au
+L'adaptateur Socket peut être configuré avec des options, passées par ``Zend\Http\Client->setConfig()`` ou au
 constructeur du client.
 
 
 
       .. _zend.http.client.adapter.socket.configuration.table:
 
-      .. table:: Zend_Http_Client_Adapter_Socket configuration
+      .. table:: Zend\Http\Client\Adapter\Socket configuration
 
          +-------------+----------------------------------------------------------------------------------------------------------------------+--------------+-----------------+
          |Paramètre    |Description                                                                                                           |Types attendus|Valeur par défaut|
@@ -107,12 +107,12 @@ constructeur du client.
 
    // Définit des paramètres de configuration
    $config = array(
-       'adapter'      => 'Zend_Http_Client_Adapter_Socket',
+       'adapter'      => 'Zend\Http\Client\Adapter\Socket',
        'ssltransport' => 'tls'
    );
 
    // Instantie un objet client
-   $client = new Zend_Http_Client('https://www.example.com', $config);
+   $client = new Zend\Http\Client('https://www.example.com', $config);
 
    // Cette requête sera envoyée vers une connexion sécurisée TLS
    $response = $client->request();
@@ -126,11 +126,11 @@ Le résultat ci-dessus sera similaire à l'ouverture d'une connexion *TCP* avec 
 Customizing and accessing the Socket adapter stream context
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Starting from Zend Framework 1.9, ``Zend_Http_Client_Adapter_Socket`` provides direct access to the underlying
+Starting from Zend Framework 1.9, ``Zend\Http\Client\Adapter\Socket`` provides direct access to the underlying
 `stream context`_ used to connect to the remote server. This allows the user to pass specific options and
 parameters to the *TCP* stream, and to the *SSL* wrapper in case of *HTTPS* connections.
 
-You can access the stream context using the following methods of ``Zend_Http_Client_Adapter_Socket``:
+You can access the stream context using the following methods of ``Zend\Http\Client\Adapter\Socket``:
 
    - **setStreamContext($context)** Sets the stream context to be used by the adapter. Can accept either a stream
      context resource created using the `stream_context_create()`_ *PHP* function, or an array of stream context
@@ -168,8 +168,8 @@ You can access the stream context using the following methods of ``Zend_Http_Cli
    );
 
    // Create an adapter object and attach it to the HTTP client
-   $adapter = new Zend_Http_Client_Adapter_Socket();
-   $client = new Zend_Http_Client();
+   $adapter = new Zend\Http\Client\Adapter\Socket();
+   $client = new Zend\Http\Client();
    $client->setAdapter($adapter);
 
    // Method 1: pass the options array to setStreamContext()
@@ -202,7 +202,7 @@ You can access the stream context using the following methods of ``Zend_Http_Cli
 Adaptateur Proxy
 ----------------
 
-L'adaptateur Zend_Http_Client_Adapter_Proxy est identique à celui par défaut, Socket, sauf que Proxy se
+L'adaptateur Zend\Http\Client\Adapter\Proxy est identique à celui par défaut, Socket, sauf que Proxy se
 connectera au serveur via un serveur Proxy (mandataire). Cette utilisation peut être rencontrée pour des raisons
 de performances ou de sécurité.
 
@@ -213,7 +213,7 @@ En utilisant l'adaptateur Proxy, quelques paramètres de configuration seront n�
 
       .. _zend.http.client.adapters.proxy.table:
 
-      .. table:: Zend_Http_Client paramètres de configuration
+      .. table:: Zend\Http\Client paramètres de configuration
 
          +----------+------------------------------------------+-----------------+-------------------------------------+
          |Paramètre |Description                               |Valeurs attendues|Valeur par défaut                    |
@@ -226,7 +226,7 @@ En utilisant l'adaptateur Proxy, quelques paramètres de configuration seront n�
          +----------+------------------------------------------+-----------------+-------------------------------------+
          |proxy_pass|Mot de passe du Proxy, si requis          |chaîne           |'secret' ou '' pour aucun (défaut)   |
          +----------+------------------------------------------+-----------------+-------------------------------------+
-         |proxy_auth|Type d'authentification HTTP du Proxy     |chaîne           |Zend_Http_Client::AUTH_BASIC (défaut)|
+         |proxy_auth|Type d'authentification HTTP du Proxy     |chaîne           |Zend\Http\Client::AUTH_BASIC (défaut)|
          +----------+------------------------------------------+-----------------+-------------------------------------+
 
 
@@ -239,18 +239,18 @@ remplissez ces options, alors un champ d'en-tête *HTTP*"Proxy-Authentication" s
 votre client.
 
 *proxy_auth* définit le type d'authentification à utiliser, si le serveur Proxy demande une authentification.
-Actuellement, seule la méthode "basic" (``Zend_Http_Client::AUTH_BASIC``) est supportée.
+Actuellement, seule la méthode "basic" (``Zend\Http\Client::AUTH_BASIC``) est supportée.
 
 .. _zend.http.client.adapters.proxy.example-1:
 
-.. rubric:: Utiliser Zend_Http_Client derrière un serveur Proxy
+.. rubric:: Utiliser Zend\Http\Client derrière un serveur Proxy
 
 .. code-block:: php
    :linenos:
 
    // Paramètres de configuration
    $config = array(
-       'adapter'    => 'Zend_Http_Client_Adapter_Proxy',
+       'adapter'    => 'Zend\Http\Client\Adapter\Proxy',
        'proxy_host' => 'proxy.int.zend.com',
        'proxy_port' => 8000,
        'proxy_user' => 'shahar.e',
@@ -258,7 +258,7 @@ Actuellement, seule la méthode "basic" (``Zend_Http_Client::AUTH_BASIC``) est s
    );
 
    // Crée l'objet client
-   $client = new Zend_Http_Client('http://www.example.com', $config);
+   $client = new Zend\Http\Client('http://www.example.com', $config);
 
    // utilisez l'objet client ici ...
 
@@ -267,7 +267,7 @@ l'adaptateur Socket par défaut. Ceci est utile si le proxy est utilisé optionn
 
 .. note::
 
-   Since the proxy adapter inherits from ``Zend_Http_Client_Adapter_Socket``, you can use the stream context access
+   Since the proxy adapter inherits from ``Zend\Http\Client\Adapter\Socket``, you can use the stream context access
    method (see :ref:` <zend.http.client.adapters.socket.streamcontext>`) to set stream context options on Proxy
    connections as demonstrated above.
 
@@ -289,10 +289,10 @@ mechanisms and shines in applications that move large files around between serve
    :linenos:
 
    $config = array(
-       'adapter'   => 'Zend_Http_Client_Adapter_Curl',
+       'adapter'   => 'Zend\Http\Client\Adapter\Curl',
        'curloptions' => array(CURLOPT_FOLLOWLOCATION => true),
    );
-   $client = new Zend_Http_Client($uri, $config);
+   $client = new Zend\Http\Client($uri, $config);
 
 By default the cURL adapter is configured to behave exactly like the Socket Adapter and it also accepts the same
 configuration parameters as the Socket and Proxy adapters. You can also change the cURL options by either
@@ -312,8 +312,8 @@ You can use cURL to transfer very large files over *HTTP* by filehandle.
    $putFileSize   = filesize("filepath");
    $putFileHandle = fopen("filepath", "r");
 
-   $adapter = new Zend_Http_Client_Adapter_Curl();
-   $client = new Zend_Http_Client();
+   $adapter = new Zend\Http\Client\Adapter\Curl();
+   $client = new Zend\Http\Client();
    $client->setAdapter($adapter);
    $adapter->setConfig(array(
        'curloptions' => array(
@@ -332,12 +332,12 @@ Il est quelque fois difficile de tester une application qui a besoin d'une conne
 application qui est en charge de lire un flux *RSS* aura besoin d'une connexion, qui n'est pas tout le temps
 disponible.
 
-C'est pour cette raison que l'adaptateur ``Zend_Http_Client_Adapter_Test`` est présent. Vous pouvez de cette
+C'est pour cette raison que l'adaptateur ``Zend\Http\Client\Adapter\Test`` est présent. Vous pouvez de cette
 manière écrire vos applications, et lors de la phase de tests, passer votre connexion sur l'adaptateur Test
 (objet mock).
 
-La classe ``Zend_Http_Client_Adapter_Test`` possède une méthode supplémentaire, ``setResponse()``. Elle prend en
-paramètre un objet ``Zend_Http_Response`` ou une chaîne. Une fois cet objet de réponse déterminé, l'adaptateur
+La classe ``Zend\Http\Client\Adapter\Test`` possède une méthode supplémentaire, ``setResponse()``. Elle prend en
+paramètre un objet ``Zend\Http\Response`` ou une chaîne. Une fois cet objet de réponse déterminé, l'adaptateur
 de Test retournera toujours cette réponse, sans effectuer de réelle requête *HTTP*.
 
 .. _zend.http.client.adapters.test.example-1:
@@ -348,8 +348,8 @@ de Test retournera toujours cette réponse, sans effectuer de réelle requête *
    :linenos:
 
    // Création de l'adatateur et de l'objet client :
-   $adapter = new Zend_Http_Client_Adapter_Test();
-   $client = new Zend_Http_Client('http://www.example.com', array(
+   $adapter = new Zend\Http\Client\Adapter\Test();
+   $client = new Zend\Http\Client('http://www.example.com', array(
        'adapter' => $adapter
    ));
 
@@ -386,8 +386,8 @@ pas possible de spécifier les réponses suivantes, nécessaires alors à l'appl
    :linenos:
 
    // Création des objets adaptateur, et client
-   $adapter = new Zend_Http_Client_Adapter_Test();
-   $client = new Zend_Http_Client('http://www.example.com', array(
+   $adapter = new Zend\Http\Client\Adapter\Test();
+   $client = new Zend\Http\Client('http://www.example.com', array(
        'adapter' => $adapter
    ));
 
@@ -415,7 +415,7 @@ pas possible de spécifier les réponses suivantes, nécessaires alors à l'appl
    // l'objet $client est prêt à être testé
    // son comportement est déja configuré
 
-La méthode ``setResponse()`` détruit toutes les réponses dans le buffer de ``Zend_Http_Client_Adapter_Test`` et
+La méthode ``setResponse()`` détruit toutes les réponses dans le buffer de ``Zend\Http\Client\Adapter\Test`` et
 définit la première réponse qui sera retournée. La méthode ``addResponse()`` définit les réponses suivantes.
 
 Les réponses seront rejouées dans leur ordre d'ajout.
@@ -428,7 +428,7 @@ redirection originelle (302) est définie avec la méthode ``setResponse()``, qu
 vous pouvez l'injecter dans votre application à tester, et voir le résultat et les comportements.
 
 If you need the adapter to fail on demand you can use ``setNextRequestWillFail($flag)``. The method will cause the
-next call to ``connect()`` to throw an ``Zend_Http_Client_Adapter_Exception`` exception. This can be useful when
+next call to ``connect()`` to throw an ``Zend\Http\Client\Adapter\Exception`` exception. This can be useful when
 your application caches content from an external site (in case the site goes down) and you want to test this
 feature.
 
@@ -440,8 +440,8 @@ feature.
    :linenos:
 
    // Instantiate a new adapter and client
-   $adapter = new Zend_Http_Client_Adapter_Test();
-   $client = new Zend_Http_Client('http://www.example.com', array(
+   $adapter = new Zend\Http\Client\Adapter\Test();
+   $client = new Zend\Http\Client('http://www.example.com', array(
        'adapter' => $adapter
    ));
 
@@ -449,9 +449,9 @@ feature.
    $adapter->setNextRequestWillFail(true);
 
    try {
-       // This call will result in a Zend_Http_Client_Adapter_Exception
+       // This call will result in a Zend\Http\Client\Adapter\Exception
        $client->request();
-   } catch (Zend_Http_Client_Adapter_Exception $e) {
+   } catch (Zend\Http\Client\Adapter\Exception $e) {
        // ...
    }
 
@@ -466,7 +466,7 @@ Créer vos propres adaptateurs de connexion
 Vous pouvez créer vos propres adaptateurs, si vous avez un besoin spécial à utiliser. Par exemple, des
 possibilités de cache, ou des sockets persistantes.
 
-Pour ceci, votre classe d'adaptateur doit implémenter l'interface ``Zend_Http_Client_Adapter_Interface``.
+Pour ceci, votre classe d'adaptateur doit implémenter l'interface ``Zend\Http\Client\Adapter\Interface``.
 L'exemple suivant montre un squelette de classe. Toutes les méthodes publiques, ici, sont indispensables à la
 classe, elles sont issues de l'interface :
 
@@ -478,7 +478,7 @@ classe, elles sont issues de l'interface :
    :linenos:
 
    class MyApp_Http_Client_Adapter_BananaProtocol
-       implements Zend_Http_Client_Adapter_Interface
+       implements Zend\Http\Client\Adapter\Interface
    {
        /**
         * Définit le tableau de configuration pour cet adaptateur
@@ -488,7 +488,7 @@ classe, elles sont issues de l'interface :
        public function setConfig($config = array())
        {
            // Ceci change rarement, vous devriez copier l'implémentation
-           // présente dans Zend_Http_Client_Adapter_Socket.
+           // présente dans Zend\Http\Client\Adapter\Socket.
        }
 
        /**
@@ -507,7 +507,7 @@ classe, elles sont issues de l'interface :
         * Envoie une requête au serveur
         *
         * @param string        $method
-        * @param Zend_Uri_Http $url
+        * @param Zend\Uri\Http $url
         * @param string        $http_ver
         * @param array         $headers
         * @param string        $body
@@ -545,7 +545,7 @@ classe, elles sont issues de l'interface :
    }
 
    // Maintenant, vous pouvez utiliser cet adaptateur :
-   $client = new Zend_Http_Client(array(
+   $client = new Zend\Http\Client(array(
        'adapter' => 'MyApp_Http_Client_Adapter_BananaProtocol'
    ));
 

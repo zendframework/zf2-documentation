@@ -1,31 +1,31 @@
 .. EN-Revision: none
 .. _zend.config.writer.introduction:
 
-Zend_Config_Writer
+Zend\Config\Writer
 ==================
 
-``Zend_Config_Writer`` позволяет создавать конфигурационные файлы из
+``Zend\Config\Writer`` позволяет создавать конфигурационные файлы из
 объектов ``Zend_Config``. Он работает и без использования адаптеров и,
 таким образом, очень прост в использовании. По умолчанию
-``Zend_Config_Writer`` поставляется с тремя адаптерами, которые
+``Zend\Config\Writer`` поставляется с тремя адаптерами, которые
 используются одинаково. Вы инстанцируете класс для записи с
 опциями, которыми могут быть **filename** (имя файла) и **config**
 (конфигурационные данные). Затем вы вызываете метод ``write()``
 объекта, и он создает конфигурационный файл. Вы можете также
 передавать ``$filename`` и ``$config`` непосредственно методу ``write()``. В
-настоящее время вместе с ``Zend_Config_Writer`` поставляются следующие
+настоящее время вместе с ``Zend\Config\Writer`` поставляются следующие
 адаптеры:
 
-- ``Zend_Config_Writer_Array``
+- ``Zend\Config_Writer\Array``
 
-- ``Zend_Config_Writer_Ini``
+- ``Zend\Config_Writer\Ini``
 
-- ``Zend_Config_Writer_Xml``
+- ``Zend\Config_Writer\Xml``
 
-В качестве исключения ``Zend_Config_Writer_Ini`` имеет еще один
+В качестве исключения ``Zend\Config_Writer\Ini`` имеет еще один
 опциональный параметр **nestSeparator**, через который указывается
 символ-разделитель для узлов. По умолчанию это точка, как и в
-``Zend_Config_Ini``.
+``Zend\Config\Ini``.
 
 При изменении или создании объекта ``Zend_Config`` следует знать
 следующее. Для того, чтобы создать или изменить значение,
@@ -37,16 +37,16 @@ Zend_Config_Writer
 
 .. _zend.config.writer.example.using:
 
-.. rubric:: Использование Zend_Config_Writer
+.. rubric:: Использование Zend\Config\Writer
 
-Этот пример демонстрирует использование ``Zend_Config_Writer_Xml`` для
+Этот пример демонстрирует использование ``Zend\Config_Writer\Xml`` для
 создания нового конфигурационного файла:
 
 .. code-block:: php
    :linenos:
 
    // Создание объекта конфигурации
-   $config = new Zend_Config(array(), true);
+   $config = new Zend\Config\Config(array(), true);
    $config->production = array();
    $config->staging    = array();
 
@@ -61,18 +61,18 @@ Zend_Config_Writer
 
    // Вы можете записать конфигурационный файл одним из следующих способов:
    // а)
-   $writer = new Zend_Config_Writer_Xml(array('config'   => $config,
+   $writer = new Zend\Config_Writer\Xml(array('config'   => $config,
                                               'filename' => 'config.xml'));
    $writer->write();
 
    // б)
-   $writer = new Zend_Config_Writer_Xml();
+   $writer = new Zend\Config_Writer\Xml();
    $writer->setConfig($config)
           ->setFilename('config.xml')
           ->write();
 
    // в)
-   $writer = new Zend_Config_Writer_Xml();
+   $writer = new Zend\Config_Writer\Xml();
    $writer->write('config.xml', $config);
 
 В этом примере создается конфигурационный *XML*-файл с
@@ -91,7 +91,7 @@ Zend_Config_Writer
 
    // Загрузка всех разделов из существующего конфигурационного файла с
    // пропуском "расширений"
-   $config = new Zend_Config_Ini('config.ini',
+   $config = new Zend\Config\Ini('config.ini',
                                  null,
                                  array('skipExtends'        => true,
                                        'allowModifications' => true));
@@ -100,7 +100,7 @@ Zend_Config_Writer
    $config->production->hostname = 'foobar';
 
    // Сохранение
-   $writer = new Zend_Config_Writer_Ini(array('config'   => $config,
+   $writer = new Zend\Config_Writer\Ini(array('config'   => $config,
                                               'filename' => 'config.ini'));
    $writer->write();
 

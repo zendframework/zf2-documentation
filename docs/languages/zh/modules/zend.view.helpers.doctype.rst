@@ -40,7 +40,7 @@
 .. code-block:: php
    :linenos:
 
-   $doctypeHelper = new Zend_View_Helper_Doctype();
+   $doctypeHelper = new Zend\View_Helper\Doctype();
    $doctypeHelper->doctype('XHTML1_STRICT');
 
 然后在布局脚本中输出：

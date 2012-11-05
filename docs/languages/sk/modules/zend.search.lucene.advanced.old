@@ -9,7 +9,7 @@ Pokročilé
 Použitie indexu ako statickej vlastnosti
 ----------------------------------------
 
-*Zend_Search_Lucene* objekt využíva deštruktor na zapísanie zmien a uvoľnenie zdrojov.
+*Zend\Search\Lucene* objekt využíva deštruktor na zapísanie zmien a uvoľnenie zdrojov.
 
 Pridaná dokumenty sa ukladajú v pamäti a zapísanie novej časti indexu na disk zavisí od parametra
 *MaxBufferedDocs*.
@@ -28,7 +28,7 @@ Statické vlastnosti objektu sú zničené **po**"poslednom riadku bežiaceho sk
           private static $_index;
 
           public static function initIndex() {
-              self::$_index = Zend_Search_Lucene::open('path/to/index');
+              self::$_index = Zend\Search\Lucene::open('path/to/index');
           }
       }
 
@@ -45,12 +45,12 @@ lebo sú vykonané "za koncom skriptu"
 V týchto prípadoch dostanente chybu "Fatal error: Exception thrown without a stack frame in Unknown on line 0"
 namiesto výnimky.
 
-Zend_Search_Lucene poskytuje možnosť na ošetriť tento problému pomocou metódy *commit()*. Pri jej zavolaní
+Zend\Search\Lucene poskytuje možnosť na ošetriť tento problému pomocou metódy *commit()*. Pri jej zavolaní
 sa uložia všetky zmeny a uvoľní pamäť ktorá bola použitá na uloženie nových segmentov. Túto operáciu
 je možné urobiť v ľubovoľnom čase alebo aj viackrát počas behu skriptu. Po tejto operácii je stále
-možné používať *Zend_Search_Lucene* na vyhľadávanie, pridávanie, alebo zmazanie dokumentov. Metóda
+možné používať *Zend\Search\Lucene* na vyhľadávanie, pridávanie, alebo zmazanie dokumentov. Metóda
 *commit()* zaistí, že už neexistujú žiadne dokumenty na pridanie, alebo zmazanie a teda deštruktor
-*Zend_Search_Lucene* neurobí nič a preto ani nevznikne žiadna výnimka:
+*Zend\Search\Lucene* neurobí nič a preto ani nevznikne žiadna výnimka:
 
    .. code-block:: php
       :linenos:
@@ -60,7 +60,7 @@ možné používať *Zend_Search_Lucene* na vyhľadávanie, pridávanie, alebo z
           private static $_index;
 
           public static function initIndex() {
-              self::$_index = Zend_Search_Lucene::open('path/to/index');
+              self::$_index = Zend\Search\Lucene::open('path/to/index');
           }
 
        ...

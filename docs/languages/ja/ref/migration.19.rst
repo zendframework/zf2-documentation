@@ -9,7 +9,7 @@ Zend Framework 1.9
 
 .. _migration.19.zend.file.transfer:
 
-Zend_File_Transfer
+Zend\File\Transfer
 ------------------
 
 .. _migration.19.zend.file.transfer.mimetype:
@@ -42,7 +42,7 @@ MimeType の検証
    :linenos:
 
    // 初期化時に
-   $valid = new Zend_File_Transfer_Adapter_Http(array('headerCheck' => true);
+   $valid = new Zend\File\Transfer\Adapter\Http(array('headerCheck' => true);
 
    // あるいは後から
    $valid->enableHeaderCheck();
@@ -59,7 +59,7 @@ Zend_Filter
 
 .. _migration.19.zend.http.client:
 
-Zend_Http_Client
+Zend\Http\Client
 ----------------
 
 .. _migration.19.zend.http.client.fileuploadsarray:
@@ -68,7 +68,7 @@ Zend_Http_Client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zend Framework のバージョン 1.9 では、 アップロードされるファイルに関する情報を
-``Zend_Http_Client``\ が内部的に格納し、 ``Zend_Http_Client::setFileUpload()``\
+``Zend\Http\Client``\ が内部的に格納し、 ``Zend\Http\Client::setFileUpload()``\
 メソッドを用いてセットする 方法で変化がありました。
 
 複数のファイルを同じフォーム名で ファイルの配列としてアップロードできるように
@@ -83,7 +83,7 @@ Zend Framework のバージョン 1.9 では、 アップロードされるフ�
    :linenos:
 
    // ファイル２つを同じフォーム要素名でファイルの配列としてアップロード
-   $client = new Zend_Http_Client();
+   $client = new Zend\Http\Client();
    $client->setFileUpload('file1.txt',
                           'userfile[]',
                           'some raw data',
@@ -122,19 +122,19 @@ Zend Framework のバージョン 1.9 では、 アップロードされるフ�
 
 .. _migration.19.zend.http.client.getparamsrecursize:
 
-Zend_Http_Client::\_getParametersRecursive() の廃止
+Zend\Http\Client::\_getParametersRecursive() の廃止
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 バージョン1.9から始まりますが、 protected メソッド ``_getParametersRecursive()`` はもはや
-``Zend_Http_Client`` に使われず、廃止されます。 それを使うと、 ``E_NOTICE`` メッセージが
+``Zend\Http\Client`` に使われず、廃止されます。 それを使うと、 ``E_NOTICE`` メッセージが
 *PHP*\ によって発生する原因になります。
 
-``Zend_Http_Client``\ をサブクラスとして、このメソッドを呼ぶなら、 その代わりに
-``Zend_Http_Client::_flattenParametersArray()`` static
+``Zend\Http\Client``\ をサブクラスとして、このメソッドを呼ぶなら、 その代わりに
+``Zend\Http\Client::_flattenParametersArray()`` static
 メソッドを使用することに目を向けるべきです。
 
 また、この ``_getParametersRecursive``\ は protected メソッドなので、 この変化は
-``Zend_Http_Client``\ をサブクラスとするユーザーに 影響を及ぼすだけです。
+``Zend\Http\Client``\ をサブクラスとするユーザーに 影響を及ぼすだけです。
 
 .. _migration.19.zend.locale:
 
@@ -178,10 +178,10 @@ Zend_Locale
 
 .. _migration.19.zend.view.helper.navigation:
 
-Zend_View_Helper_Navigation
+Zend\View_Helper\Navigation
 ---------------------------
 
-1.9のリリースより前は、 メニュー・ヘルパー (``Zend_View_Helper_Navigation_Menu``) は、
+1.9のリリースより前は、 メニュー・ヘルパー (``Zend\View\Helper\Navigation\Menu``) は、
 サブメニューを正しく生成しませんでした。 ``onlyActiveBranch`` が ``TRUE`` で、
 オプションの ``renderParents`` が ``FALSE`` のとき、 もし、最も深いアクティブなページが
 ``minDepth`` オプションより低い階層にあると、 何もレンダリングされないでしょう。
@@ -196,7 +196,7 @@ Zend_View_Helper_Navigation
    :linenos:
 
    <?php
-   $container = new Zend_Navigation(array(
+   $container = new Zend\Navigation\Navigation(array(
        array(
            'label' => 'Home',
            'uri'   => '#'
@@ -235,7 +235,7 @@ Zend_View_Helper_Navigation
 
 リリース1.9より前は、上記のコードスニペットは、何も出力しません。
 
-リリース1.9以降では、ページの子供がある限り、 ``Zend_View_Helper_Navigation_Menu`` の
+リリース1.9以降では、ページの子供がある限り、 ``Zend\View\Helper\Navigation\Menu`` の
 ``_renderDeepestMenu()`` メソッドは ``minDepth``
 の１階層下のアクティブページを受け取ります。
 
@@ -263,10 +263,10 @@ security fixes that also have potential backwards compatibility implications.
 
 .. _migration.19.security.zend.filter.html-entities:
 
-Zend_Filter_HtmlEntities
+Zend\Filter\HtmlEntities
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to default to a more secure character encoding, ``Zend_Filter_HtmlEntities`` now defaults to *UTF-8*
+In order to default to a more secure character encoding, ``Zend\Filter\HtmlEntities`` now defaults to *UTF-8*
 instead of *ISO-8859-1*.
 
 Additionally, because the actual mechanism is dealing with character encodings and not character sets, two new
@@ -278,10 +278,10 @@ work.
 
 .. _migration.19.security.zend.filter.strip-tags:
 
-Zend_Filter_StripTags
+Zend\Filter\StripTags
 ^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_Filter_StripTags`` contains a flag, ``commentsAllowed``, that, in previous versions, allowed you to
+``Zend\Filter\StripTags`` contains a flag, ``commentsAllowed``, that, in previous versions, allowed you to
 optionally whitelist *HTML* comments in *HTML* text filtered by the class. However, this opens code enabling the
 flag to *XSS* attacks, particularly in Internet Explorer (which allows specifying conditional functionality via
 *HTML* comments). Starting in version 1.9.7 (and backported to versions 1.8.5 and 1.7.9), the ``commentsAllowed``

@@ -18,7 +18,7 @@ Zend_Form
 - הגדרות אלמנט מסויים וטופס
 
 *Zend_Form* משתמש בכמה רכיבים במערכת ה Zend Framework כדי לבצע את פעולותיו
-הכוללים את הרכיבים: *Zend_Config*, *Zend_Validate*, *Zend_Filter*, *Zend_Loader_PluginLoader*,
+הכוללים את הרכיבים: *Zend_Config*, *Zend_Validate*, *Zend_Filter*, *Zend\Loader\PluginLoader*,
 ובנוסף *Zend_View*.
 
 

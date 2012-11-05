@@ -9,7 +9,7 @@ Zend_Cache のバックエンド
 
 .. _zend.cache.backends.file:
 
-Zend_Cache_Backend_File
+Zend\Cache_Backend\File
 -----------------------
 
 この (拡張) バックエンドは、キャッシュレコードを (指定したディレクトリの)
@@ -45,7 +45,7 @@ Zend_Cache_Backend_File
 
 .. _zend.cache.backends.sqlite:
 
-Zend_Cache_Backend_Sqlite
+Zend\Cache_Backend\Sqlite
 -------------------------
 
 この (拡張) バックエンドは、キャッシュレコードを SQLite
@@ -67,7 +67,7 @@ Zend_Cache_Backend_Sqlite
 
 .. _zend.cache.backends.memcached:
 
-Zend_Cache_Backend_Memcached
+Zend\Cache_Backend\Memcached
 ----------------------------
 
 この (拡張) バックエンドは、キャッシュレコードを memcached サーバに保存します。
@@ -96,7 +96,7 @@ memcached デーモンおよび `memcache PECL 拡張モジュール`_ が必要
 
 .. _zend.cache.backends.apc:
 
-Zend_Cache_Backend_Apc
+Zend\Cache_Backend\Apc
 ----------------------
 
 この (拡張) バックエンドは、キャッシュレコードを共有メモリに保存する際に `APC`_
@@ -110,7 +110,7 @@ Zend_Cache_Backend_Apc
 
 .. _zend.cache.backends.xcache:
 
-Zend_Cache_Backend_Xcache
+Zend\Cache_Backend\Xcache
 -------------------------
 
 このバックエンドは、キャッシュレコードを共有メモリに保存する際に `XCache`_
@@ -136,7 +136,7 @@ Zend_Cache_Backend_Xcache
 
 .. _zend.cache.backends.platform:
 
-Zend_Cache_Backend_ZendPlatform
+Zend\Cache_Backend\ZendPlatform
 -------------------------------
 
 このバックエンドは、 `Zend Platform`_ 製品のコンテンツキャッシング *API*
@@ -146,20 +146,20 @@ Zend_Cache_Backend_ZendPlatform
 このバックエンドはタグをサポートしています。しかし、 クリーニングモード
 ``CLEANING_MODE_NOT_MATCHING_TAG`` はサポートしていません。
 
-``Zend_Cache::factory()`` メソッドでこのバックエンドを指定する場合は、 'Zend' と 'Platform'
+``Zend\Cache\Cache::factory()`` メソッドでこのバックエンドを指定する場合は、 'Zend' と 'Platform'
 の間に区切り文字を入れます。区切り文字としては '-'、'.'、' ' あるいは '\_'
 が使用できます。
 
 .. code-block:: php
    :linenos:
 
-   $cache = Zend_Cache::factory('Core', 'Zend Platform');
+   $cache = Zend\Cache\Cache::factory('Core', 'Zend Platform');
 
 このバックエンドではオプションを使用しません。
 
 .. _zend.cache.backends.twolevels:
 
-Zend_Cache_Backend_TwoLevels
+Zend\Cache_Backend\TwoLevels
 ----------------------------
 
 この (拡張) バックエンドは複合型です。 キャッシュレコードを、 高速
@@ -170,14 +170,14 @@ Zend_Cache_Backend_TwoLevels
 (フロントエンドレベルで、記録開始時に指定)
 し、高速バックエンドの残りのスペースを用いてふたつのバックエンドの使用を最適化します。
 
-``Zend_Cache::factory()`` メソッドでこのバックエンドを指定する場合は、 'Two' と 'Levels'
+``Zend\Cache\Cache::factory()`` メソッドでこのバックエンドを指定する場合は、 'Two' と 'Levels'
 の間に区切り文字を入れます。区切り文字としては '-'、'.'、' ' あるいは '\_'
 が使用できます。
 
 .. code-block:: php
    :linenos:
 
-   $cache = Zend_Cache::factory('Core', 'Two Levels');
+   $cache = Zend\Cache\Cache::factory('Core', 'Two Levels');
 
 使用可能なオプションは次のとおりです。
 
@@ -196,9 +196,9 @@ Zend_Cache_Backend_TwoLevels
    +--------------------------+------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |fast_backend_options      |Array       |array()           |"高速" バックエンドのオプション。                                                                                                                                                                                                                                                                 |
    +--------------------------+------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |slow_backend_custom_naming|Boolean     |FALSE             |TRUE の場合は、引数 slow_backend を完全なクラス名として使用します。 FALSE の場合は、引数をクラス名 "Zend_Cache_Backend_[...]" の最後の部分として使用します。                                                                                                                                                                          |
+   |slow_backend_custom_naming|Boolean     |FALSE             |TRUE の場合は、引数 slow_backend を完全なクラス名として使用します。 FALSE の場合は、引数をクラス名 "Zend\Cache_Backend\[...]" の最後の部分として使用します。                                                                                                                                                                          |
    +--------------------------+------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |fast_backend_custom_naming|Boolean     |FALSE             |TRUE の場合は、引数 fast_backend を完全なクラス名として使用します。 FALSE の場合は、引数をクラス名 "Zend_Cache_Backend_[...]" の最後の部分として使用します。                                                                                                                                                                          |
+   |fast_backend_custom_naming|Boolean     |FALSE             |TRUE の場合は、引数 fast_backend を完全なクラス名として使用します。 FALSE の場合は、引数をクラス名 "Zend\Cache_Backend\[...]" の最後の部分として使用します。                                                                                                                                                                          |
    +--------------------------+------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |slow_backend_autoload     |Boolean     |FALSE             |TRUE の場合は、低速バックエンドに対して require_once を行いません (独自のバックエンドを使用する場合にのみ有用です)。                                                                                                                                                                                                              |
    +--------------------------+------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -211,7 +211,7 @@ Zend_Cache_Backend_TwoLevels
 
 .. _zend.cache.backends.zendserver:
 
-Zend_Cache_Backend_ZendServer_Disk および Zend_Cache_Backend_ZendServer_ShMem
+Zend\Cache\Backend\ZendServer\Disk および Zend\Cache\Backend\ZendServer\ShMem
 --------------------------------------------------------------------------
 
 これらのバックエンドは、キャッシュレコードの保存に `Zend Server`_
@@ -224,32 +224,32 @@ Zend_Cache_Backend_ZendServer_Disk および Zend_Cache_Backend_ZendServer_ShMem
 越しにページをリクエストした場合のみです。
 コマンドラインでスクリプトを実行した場合は動作しません。
 
-``Zend_Cache::factory()`` メソッドでこのバックエンドを指定する場合は、 パラメータ
+``Zend\Cache\Cache::factory()`` メソッドでこのバックエンドを指定する場合は、 パラメータ
 **customBackendNaming** を ``TRUE`` とします。
 
 .. code-block:: php
    :linenos:
 
-   $cache = Zend_Cache::factory('Core', 'Zend_Cache_Backend_ZendServer_Disk',
+   $cache = Zend\Cache\Cache::factory('Core', 'Zend\Cache\Backend\ZendServer\Disk',
                                 $frontendOptions, $backendOptions, false, true);
 
 このバックエンドにはオプションはありません。
 
 .. _zend.cache.backends.static:
 
-Zend_Cache_Backend_Static
+Zend\Cache_Backend\Static
 -------------------------
 
-This backend works in concert with ``Zend_Cache_Frontend_Capture`` (the two must be used together) to save the
+This backend works in concert with ``Zend\Cache_Frontend\Capture`` (the two must be used together) to save the
 output from requests as static files. This means the static files are served directly on subsequent requests
 without any involvement of PHP or the Zend Framework at all.
 
 .. note::
 
-   ``Zend_Cache_Frontend_Capture`` operates by registering a callback function to be called when the output
+   ``Zend\Cache_Frontend\Capture`` operates by registering a callback function to be called when the output
    buffering it uses is cleaned. In order for this to operate correctly, it must be the final output buffer in the
    request. To guarantee this, the output buffering used by the Dispatcher **must** be disabled by calling
-   ``Zend_Controller_Front``'s ``setParam()`` method, for example, ``$front->setParam('disableOutputBuffering',
+   ``Zend\Controller\Front``'s ``setParam()`` method, for example, ``$front->setParam('disableOutputBuffering',
    true);`` or adding "resources.frontcontroller.params.disableOutputBuffering = true" to your bootstrap
    configuration file (assumed *INI*) if using ``Zend_Application``.
 
@@ -297,14 +297,14 @@ location, "public_dir", below.
 Due to the nature of static file caching, the backend class offers two additional methods: ``remove()`` and
 ``removeRecursively()``. Both accept a request URI, which when mapped to the "public_dir" where static files are
 cached, and has a pre-stored extension appended, provides the name of either a static file to delete, or a
-directory path to delete recursively. Due to the restraints of ``Zend_Cache_Backend_Interface``, all other methods
+directory path to delete recursively. Due to the restraints of ``Zend\Cache_Backend\Interface``, all other methods
 such as ``save()`` accept an ID which is calculated by applying bin2hex() to a request URI.
 
 Given the level at which static caching operates, static file caching is addressed for simpler use with the
-``Zend_Controller_Action_Helper_Cache`` action helper. This helper assists in setting which actions of a controller
+``Zend\Controller\Action\Helper\Cache`` action helper. This helper assists in setting which actions of a controller
 to cache, with what tags, and with which extension. It also offers methods for purging the cache by request URI or
-tag. Static file caching is also assisted by ``Zend_Cache_Manager`` which includes pre-configured configuration
-templates for a static cache (as Zend_Cache_Manager::PAGECACHE or "page"). The defaults therein can be configured
+tag. Static file caching is also assisted by ``Zend\Cache\Manager`` which includes pre-configured configuration
+templates for a static cache (as Zend\Cache\Manager::PAGECACHE or "page"). The defaults therein can be configured
 as needed to set up a "public_dir" location for caching, etc.
 
 .. note::
@@ -334,7 +334,7 @@ as needed to set up a "public_dir" location for caching, etc.
    +---------------------+---------+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |cache_directory_umask|Integer  |0700         |Umask for directories created within public_dir.                                                                                                                                                                                                                                                     |
    +---------------------+---------+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |file_extension       |String   |'.html'      |Default file extension for static files created. This can be configured on the fly, see Zend_Cache_Backend_Static::save() though generally it's recommended to rely on Zend_Controller_Action_Helper_Cache when doing so since it's simpler that way than messing with arrays/serialization manually.|
+   |file_extension       |String   |'.html'      |Default file extension for static files created. This can be configured on the fly, see Zend\Cache_Backend\Static::save() though generally it's recommended to rely on Zend\Controller\Action\Helper\Cache when doing so since it's simpler that way than messing with arrays/serialization manually.|
    +---------------------+---------+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |index_filename       |String   |'index'      |If a request URI does not contain sufficient information to construct a static file (usually this means an index call, e.g. URI of '/'), the index_filename is used instead. So '' or '/' would map to 'index.html' (assuming the default file_extension is '.html').                                |
    +---------------------+---------+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

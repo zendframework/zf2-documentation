@@ -14,17 +14,17 @@ przeciwieństwie do danych z ciasteczka, dane sesji nie są przechowywane po str
 dla klienta tylko wtedy, gdy kod po stronie serwera dobrowolnie udostępni dane w odpowiedzi na żądanie klienta.
 Dla celów tego komponentu oraz dokumentacji, określenie "dane sesji" odnoszą się do danych przechowywanych po
 stronie serwera w tablicy `$_SESSION`_, zarządzanych przez *Zend_Session*, oraz indywidualnie manipulowanych przez
-obiekty dostępowe *Zend_Session_Namespace*. **Przestrzenie nazw sesji** zapewniają dostęp do danych sesji
+obiekty dostępowe *Zend\Session\Namespace*. **Przestrzenie nazw sesji** zapewniają dostęp do danych sesji
 używając klasycznych `przestrzeni nazw`_ implementowanych logicznie jako nazwane grupy asocjacyjnych tablic, o
 kluczach będących łańcuchami znaków. (analogicznie jak tablice PHP).
 
-Instancje *Zend_Session_Namespace* są obiektami dostępowymi dla przestrzeni nazw będących wycinkami tablicy
+Instancje *Zend\Session\Namespace* są obiektami dostępowymi dla przestrzeni nazw będących wycinkami tablicy
 *$_SESSION*. Komponent *Zend_Session* rozszerza istniejącą funkcjonalność PHP ext/session dodając interfejs
 umożliwiający administrację i zarządzanie, a także zapewniając API dla przestrzeni nazw
-*Zend_Session_Namespace*. *Zend_Session_Namespace* zapewnia ustandaryzowany zorientowany obiektowo interfejs do
+*Zend\Session\Namespace*. *Zend\Session\Namespace* zapewnia ustandaryzowany zorientowany obiektowo interfejs do
 pracy z przestrzeniami nazw istniejącymi wewnątrz standardowego mechanizmu sesji PHP. Wspierane są zarówno
 przestrzenie nazw dla anonimowych użytkowników, jak i dla uwierzytelnionych (np. zalogowanych). *Zend_Auth*,
-komponent autentykacji w Zend Framework używa *Zend_Session_Namespace* do przechowywania informacji związanych z
+komponent autentykacji w Zend Framework używa *Zend\Session\Namespace* do przechowywania informacji związanych z
 autentykowanymi użytkownikami w przestrzeni nazw "Zend_Auth". Z tego względu, że *Zend_Session* używa
 normalnych wewnętrznych funkcji modułu sesji, oraz umożliwia użycie wszystkich znanych opcji konfiguracyjnych i
 ustawień (zobacz `http://www.php.net/session`_), a dodatkowo umożliwia dostęp za pomocą zorientowanego

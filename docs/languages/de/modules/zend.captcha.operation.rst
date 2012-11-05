@@ -4,12 +4,12 @@
 Captcha Anwendung
 =================
 
-Alle *CAPTCHA* Adapter implementieren ``Zend_Captcha_Adapter``, welches wie folgt aussieht:
+Alle *CAPTCHA* Adapter implementieren ``Zend\Captcha\Adapter``, welches wie folgt aussieht:
 
 .. code-block:: php
    :linenos:
 
-   interface Zend_Captcha_Adapter extends Zend_Validate_Interface
+   interface Zend\Captcha\Adapter extends Zend\Validate\Interface
    {
        public function generate();
 
@@ -21,7 +21,7 @@ Alle *CAPTCHA* Adapter implementieren ``Zend_Captcha_Adapter``, welches wie folg
 
        public function getDecorator();
 
-       // Zusätzlich um das Zend_Validate_Interface zu befriedigen:
+       // Zusätzlich um das Zend\Validate\Interface zu befriedigen:
        public function isValid($value);
 
        public function getMessages();
@@ -43,10 +43,10 @@ Ein typischer Verwendungsfall könnte wie folgt aussehen:
    :linenos:
 
    // Eine Instanz von Zend_View erstellen
-   $view = new Zend_View();
+   $view = new Zend\View\View();
 
    // Originale Anfrage:
-   $captcha = new Zend_Captcha_Figlet(array(
+   $captcha = new Zend\Captcha\Figlet(array(
        'name' => 'foo',
        'wordLen' => 6,
        'timeout' => 300,

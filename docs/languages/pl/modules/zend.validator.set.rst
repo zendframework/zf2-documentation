@@ -58,7 +58,7 @@ Date
 Zwraca wartość *true* jeśli wartość *$value* jest poprawną datą w formacie *YYYY-MM-DD*. Jeśli podano
 opcjonalny parametr *locale* wtedy data będzie sprawdzana zgodnie z podaną lokalizacją. Dodatkowo jeśli podano
 opcjonalny parametr *format* będzie on podstawą do sprawdzenia poprawności daty. Sprawdź
-:ref:`Zend_Date::isDate() <zend.date.others.comparison.table>` aby uzyskać szczegóły opcjonalnych parametrów.
+:ref:`Zend\Date\Date::isDate() <zend.date.others.comparison.table>` aby uzyskać szczegóły opcjonalnych parametrów.
 
 .. _zend.validator.set.digits:
 

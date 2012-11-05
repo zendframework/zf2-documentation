@@ -28,15 +28,15 @@ Spreadsheets データ *API* は、現在はプログラム上でのスプレッ
 
 特定のユーザのスプレッドシートの一覧を取得するには Spredsheets サービスの
 *getSpreadsheetFeed* メソッドを使用します。 このサービスが返す
-``Zend_Gdata_Spreadsheets_SpreadsheetFeed``
+``ZendGData_Spreadsheets\SpreadsheetFeed``
 オブジェクトに、認証済みユーザのスプレッドシート一覧が格納されます。
 
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Spreadsheets::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $spreadsheetService = new Zend_Gdata_Spreadsheets($client);
+   $service = ZendGData\Spreadsheets::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $spreadsheetService = new ZendGData\Spreadsheets($client);
    $feed = $spreadsheetService->getSpreadsheetFeed();
 
 .. _zend.gdata.spreadsheets.listworksheets:
@@ -47,20 +47,20 @@ Spreadsheets データ *API* は、現在はプログラム上でのスプレッ
 ひとつのスプレッドシートの中には複数のワークシートがあります。
 各スプレッドシートは、その内部のすべてのワークシートをあらわすメタフィード含んでいます。
 
-スプレッドシートのキー (すでに取得済みの ``Zend_Gdata_Spreadsheets_SpreadsheetEntry``
+スプレッドシートのキー (すでに取得済みの ``ZendGData_Spreadsheets\SpreadsheetEntry``
 オブジェクトの <id>)
 を指定すると、そのスプレッドシートのワークシート一覧を含むフィードを取得できます。
 
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Gdata_Spreadsheets_DocumentQuery();
+   $query = new ZendGData_Spreadsheets\DocumentQuery();
    $query->setSpreadsheetKey($spreadsheetKey);
    $feed = $spreadsheetService->getWorksheetFeed($query);
 
-この結果である ``Zend_Gdata_Spreadsheets_WorksheetFeed``
+この結果である ``ZendGData_Spreadsheets\WorksheetFeed``
 オブジェクトは、サーバからのレスポンスを表します。
-その他の場合と同じように、このフィードには ``Zend_Gdata_Spreadsheets_WorksheetEntry``
+その他の場合と同じように、このフィードには ``ZendGData_Spreadsheets\WorksheetEntry``
 オブジェクト (*$feed->entries*) の一覧が含まれます。
 個々のオブジェクトがひとつのワークシートを表します。
 
@@ -105,17 +105,17 @@ Spreadsheets データ *API* は、現在はプログラム上でのスプレッ
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Gdata_Spreadsheets_ListQuery();
+   $query = new ZendGData_Spreadsheets\ListQuery();
    $query->setSpreadsheetKey($spreadsheetKey);
    $query->setWorksheetId($worksheetId);
    $listFeed = $spreadsheetService->getListFeed($query);
 
-その結果得られた ``Zend_Gdata_Spreadsheets_ListFeed`` オブジェクトである ``$listfeed``
+その結果得られた ``ZendGData_Spreadsheets\ListFeed`` オブジェクトである ``$listfeed``
 が、サーバからのレスポンスを表します。 またこのフィードは
-``Zend_Gdata_Spreadsheets_ListEntry`` オブジェクトの配列 (*$listFeed->entries*)
+``ZendGData_Spreadsheets\ListEntry`` オブジェクトの配列 (*$listFeed->entries*)
 を含んでおり、この配列の各要素がワークシートのひとつの行を表します。
 
-各 ``Zend_Gdata_Spreadsheets_ListEntry`` には配列 *custom*
+各 ``ZendGData_Spreadsheets\ListEntry`` には配列 *custom*
 が含まれ、これがその行のデータを保持します。
 この配列の内容を取り出して表示するには次のようにします。
 
@@ -144,20 +144,20 @@ Spreadsheets データ *API* は、現在はプログラム上でのスプレッ
 
 デフォルトでは、フィード内の行の並び順は GUI
 で見たときの行の並び順と同じです。つまり行番号順ということです。
-行を逆順で取得するには、 ``Zend_Gdata_Spreadsheets_ListQuery`` オブジェクトの reverse
+行を逆順で取得するには、 ``ZendGData_Spreadsheets\ListQuery`` オブジェクトの reverse
 プロパティを ``TRUE`` に設定します。
 
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Gdata_Spreadsheets_ListQuery();
+   $query = new ZendGData_Spreadsheets\ListQuery();
    $query->setSpreadsheetKey($spreadsheetKey);
    $query->setWorksheetId($worksheetId);
    $query->setReverse('true');
    $listFeed = $spreadsheetService->getListFeed($query);
 
 もしワークシート内での位置ではなく特定のカラムの値で (あるいはその逆順で)
-並べ替えたい場合は、 ``Zend_Gdata_Spreadsheets_ListQuery`` オブジェクトの *orderby* の値を
+並べ替えたい場合は、 ``ZendGData_Spreadsheets\ListQuery`` オブジェクトの *orderby* の値を
 *column:<そのカラムのヘッダ>* とします。
 
 .. _zend.gdata.spreadsheets.listfeeds.sq:
@@ -165,7 +165,7 @@ Spreadsheets データ *API* は、現在はプログラム上でのスプレッ
 構造化問い合わせ
 ^^^^^^^^
 
-``Zend_Gdata_Spreadsheets_ListQuery`` の *sq* を設定することで、
+``ZendGData_Spreadsheets\ListQuery`` の *sq* を設定することで、
 指定した条件を満たすエントリだけのフィードを得ることができます。
 たとえば、個人データを記録したワークシートがあるとしましょう。
 ひとつの行に一人のデータが記録されています。 この中から名前が "John" で年齢が 25
@@ -174,7 +174,7 @@ Spreadsheets データ *API* は、現在はプログラム上でのスプレッ
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Gdata_Spreadsheets_ListQuery();
+   $query = new ZendGData_Spreadsheets\ListQuery();
    $query->setSpreadsheetKey($spreadsheetKey);
    $query->setWorksheetId($worksheetId);
    $query->setSpreadsheetQuery('name=John and age>25');
@@ -196,7 +196,7 @@ Spreadsheets データ *API* は、現在はプログラム上でのスプレッ
                                                        $worksheetId);
 
 ``$rowData`` パラメータには、 カラムのキーとその値を関連付けた配列を指定します。
-このメソッドは、追加した行に対応する ``Zend_Gdata_Spreadsheets_SpreadsheetsEntry``
+このメソッドは、追加した行に対応する ``ZendGData_Spreadsheets\SpreadsheetsEntry``
 オブジェクトを返します。
 
 Spreadsheets
@@ -208,7 +208,7 @@ Spreadsheets
 行の編集
 ^^^^
 
-``Zend_Gdata_Spreadsheets_ListEntry`` オブジェクトを取得したら、Spreadsheet サービスの
+``ZendGData_Spreadsheets\ListEntry`` オブジェクトを取得したら、Spreadsheet サービスの
 *updateRow* メソッドを使用してその中身を更新できます。
 
 .. code-block:: php
@@ -220,14 +220,14 @@ Spreadsheets
 ``$oldListEntry`` パラメータには、更新するエントリを指定します。 ``$newRowData``
 はカラムのキーと値を関連付けた配列です。
 これを新しいデータとして使用します。このメソッドは、更新した行に対応する
-``Zend_Gdata_Spreadsheets_SpreadsheetsEntry`` オブジェクトを返します。
+``ZendGData_Spreadsheets\SpreadsheetsEntry`` オブジェクトを返します。
 
 .. _zend.gdata.spreadsheets.listfeeds.deleterow:
 
 行の削除
 ^^^^
 
-行を削除するには、単に ``Zend_Gdata_Spreadsheets`` オブジェクトの *deleteRow*
+行を削除するには、単に ``ZendGData\Spreadsheets`` オブジェクトの *deleteRow*
 メソッドをコールするだけです。 削除したい既存のエントリを指定します。
 
 .. code-block:: php
@@ -263,14 +263,14 @@ Spreadsheets
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Gdata_Spreadsheets_CellQuery();
+   $query = new ZendGData_Spreadsheets\CellQuery();
    $query->setSpreadsheetKey($spreadsheetKey);
    $query->setWorksheetId($worksheetId);
    $cellFeed = $spreadsheetService->getCellFeed($query);
 
-その結果得られた ``Zend_Gdata_Spreadsheets_CellFeed`` オブジェクトである ``$cellFeed``
+その結果得られた ``ZendGData_Spreadsheets\CellFeed`` オブジェクトである ``$cellFeed``
 が、サーバからのレスポンスを表します。 またこのフィードは
-``Zend_Gdata_Spreadsheets_CellEntry`` オブジェクトの配列 (*$cellFeed>entries*)
+``ZendGData_Spreadsheets\CellEntry`` オブジェクトの配列 (*$cellFeed>entries*)
 を含んでおり、この配列の各要素がワークシートのひとつのセルを表します。
 この情報を表示するには次のようにします。
 
@@ -295,7 +295,7 @@ Spreadsheets
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Gdata_Spreadsheets_CellQuery();
+   $query = new ZendGData_Spreadsheets\CellQuery();
    $query->setMinCol(1);
    $query->setMaxCol(1);
    $query->setMinRow(2);

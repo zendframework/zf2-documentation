@@ -16,7 +16,7 @@ erstellt:
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setBodyText('Mein netter Test Text');
    $mail->setBodyHtml('Mein netter <b>Test</b> Text');
    $mail->setFrom('somebody@example.com', 'Ein Versender');

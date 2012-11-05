@@ -17,8 +17,8 @@ Zend_Controller
 Änderungen im Dispatcher Interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Benutzer haben uns darauf aufmerksam gemacht das sowohl ``Zend_Controller_Front`` als auch
-``Zend_Controller_Router_Route_Module`` Methoden des Dispatchers verwenden die nicht im Dispatcher Interface waren.
+Benutzer haben uns darauf aufmerksam gemacht das sowohl ``Zend\Controller\Front`` als auch
+``Zend\Controller\Router\Route\Module`` Methoden des Dispatchers verwenden die nicht im Dispatcher Interface waren.
 Wir haben jetzt die folgenden drei Methoden hinzugefügt um sicherzustellen das eigene Dispatcher weiterhin mit der
 ausgelieferten Implementation arbeiten:
 
@@ -30,7 +30,7 @@ ausgelieferten Implementation arbeiten:
 
 .. _migration.16.zend.file.transfer:
 
-Zend_File_Transfer
+Zend\File\Transfer
 ------------------
 
 .. _migration.16.zend.file.transfer.validators:
@@ -38,12 +38,12 @@ Zend_File_Transfer
 Änderungen bei der Verwendung von Prüfungen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Wie von Benutzern festgestellt wurde, haben die Prüfungen von ``Zend_File_Transfer`` nicht auf die gleiche Art und
+Wie von Benutzern festgestellt wurde, haben die Prüfungen von ``Zend\File\Transfer`` nicht auf die gleiche Art und
 Weise funktioniert wie standardmäßigen von ``Zend_Form``. ``Zend_Form`` erlaubt die Verwendung eines
 ``$breakChainOnFailure`` Parameters der die Prüfung für alle weitere Prüfer unterbricht wenn ein Prüffehler
 aufgetreten ist.
 
-Deshalb wurde dieser Parameter bei allen bestehenden Prüfungen von ``Zend_File_Transfer`` hinzugefügt.
+Deshalb wurde dieser Parameter bei allen bestehenden Prüfungen von ``Zend\File\Transfer`` hinzugefügt.
 
 - Alte *API* der Methode: ``addValidator($validator, $options, $files)``.
 
@@ -60,12 +60,12 @@ gewünschten Prüfung hinzugefügt werden.
    :linenos:
 
    // Beispiel für 1.6.1
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('FilesSize', array('1B', '100kB'));
 
    // Selbes Beispiel für 1.6.2 und neuer
    // Beachte das hinzugefügte boolsche false
-   $upload = new Zend_File_Transfer_Adapter_Http();
+   $upload = new Zend\File\Transfer\Adapter\Http();
    $upload->addValidator('FilesSize', false, array('1B', '100kB'));
 
 

@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.server.reflection:
 
-Zend_Server_Reflection
+Zend\Server\Reflection
 ======================
 
 .. _zend.server.reflection.introduction:
@@ -9,7 +9,7 @@ Zend_Server_Reflection
 הקדמה
 -----
 
-*Zend_Server_Reflection* מספק מנגנון שליטה ובקרה סטנדרטי לבחינה עצמית של
+*Zend\Server\Reflection* מספק מנגנון שליטה ובקרה סטנדרטי לבחינה עצמית של
 מחלקות ופונצקיות לשימוש במחלקות שרת. רכיב זה מבוסס על ה Reflection API
 של PHP 5, המרחיב אותו בעזרת מתודות להחזרת פרמטרים ותיאורים אודות
 מחלקות ופונצקיות שונות, ורשימה מלאה של כל הפונצקיות.
@@ -27,8 +27,8 @@ Zend_Server_Reflection
 .. code-block:: php
    :linenos:
 
-   $class    = Zend_Server_Reflection::reflectClass('My_Class');
-   $function = Zend_Server_Reflection::reflectFunction('my_function');
+   $class    = Zend\Server\Reflection::reflectClass('My_Class');
+   $function = Zend\Server\Reflection::reflectFunction('my_function');
 
    // Get prototypes
    $prototypes = $reflection->getPrototypes();
@@ -55,8 +55,8 @@ Zend_Server_Reflection
    $reflection->getNamespace();
 
 
-*reflectFunction()* מחזיר אובייקט מסוג *Zend_Server_Reflection_Function*; *reflectClass* מחזיר
-אובייקט מסוג *Zend_Server_Reflection_Class*. יש לקרוא את הדוקומנטציה כדי לדעת
+*reflectFunction()* מחזיר אובייקט מסוג *Zend\Server_Reflection\Function*; *reflectClass* מחזיר
+אובייקט מסוג *Zend\Server_Reflection\Class*. יש לקרוא את הדוקומנטציה כדי לדעת
 אילו מתודות יש לכל אחד.
 
 

@@ -1,30 +1,30 @@
 .. EN-Revision: none
 .. _zend.config.writer.introduction:
 
-Zend_Config_Writer
+Zend\Config\Writer
 ==================
 
-``Zend_Config_Writer`` gibt einem die Möglichkeit Configdateien aus ``Zend_Config`` Objekten heraus zu schreiben.
+``Zend\Config\Writer`` gibt einem die Möglichkeit Configdateien aus ``Zend_Config`` Objekten heraus zu schreiben.
 Es arbeitet mit einem Adapter-artigen System und ist deswegen sehr einfach zu verwenden. Standardmäßig wird
-``Zend_Config_Writer`` mit drei Adaptern ausgeliefert, die alle Datei basierend sind. Der Writer wird mit
+``Zend\Config\Writer`` mit drei Adaptern ausgeliefert, die alle Datei basierend sind. Der Writer wird mit
 speziellen Optionen instanziert, welche **filename** und **config** sein können. Dann wird die ``write()`` Methode
 des Writers aufgerufen und die Configdatei wird erstellt. Man kann ``$filename`` und ``$config`` auch direkt an die
-``write()`` Methode übergeben. Aktuell werden die folgenden Writer mit ``Zend_Config_Writer`` ausgeliefert:
+``write()`` Methode übergeben. Aktuell werden die folgenden Writer mit ``Zend\Config\Writer`` ausgeliefert:
 
-- ``Zend_Config_Writer_Array``
+- ``Zend\Config_Writer\Array``
 
-- ``Zend_Config_Writer_Ini``
+- ``Zend\Config_Writer\Ini``
 
-- ``Zend_Config_Writer_Xml``
+- ``Zend\Config_Writer\Xml``
 
 Der *INI* Writer hat zwei Modi für die Darstellung bezüglich Sektionen. Standardmäßig wird die Top-Level
 Konfiguration immer in Sektionsnamen geschrieben. Durch den Aufruf von ``$writer->setRenderWithoutSections();``
 werden alle Optionen in den globalen Namespace der *INI* Datei geschrieben und es werden keine Sektionen
 angehängt.
 
-Zusätzlich hat ``Zend_Config_Writer_Ini`` einen zusätzlichen optionalen Parameter **nestSeparator**, welche
+Zusätzlich hat ``Zend\Config_Writer\Ini`` einen zusätzlichen optionalen Parameter **nestSeparator**, welche
 definiert mit welchem Zeichen die einzelnen Nodes getrennt werden. Der Standard ist ein einzelner Punkt, wie er
-standardmäßig von ``Zend_Config_Ini`` akzeptiert wird.
+standardmäßig von ``Zend\Config\Ini`` akzeptiert wird.
 
 Wenn ein ``Zend_Config`` Objekt geändert oder erstellt wird, muß man einige Dinge wissen. Um einen Wert zu
 erstellen oder zu ändern muß einfach der Parameter des ``Zend_Config`` Objektes über den Zugriffsaccessor
@@ -34,16 +34,16 @@ werden ("``$config->branch = array();``"). Um zu definieren welche Sektion eine 
 
 .. _zend.config.writer.example.using:
 
-.. rubric:: Verwenden von Zend_Config_Writer
+.. rubric:: Verwenden von Zend\Config\Writer
 
-Dieses Beispiel zeigt die grundsätzliche Verwendung von ``Zend_Config_Writer_Xml`` um eine neue
+Dieses Beispiel zeigt die grundsätzliche Verwendung von ``Zend\Config_Writer\Xml`` um eine neue
 Konfigurationsdatei zu erstellen:
 
 .. code-block:: php
    :linenos:
 
    // Ein neues Config Objekt erstellen
-   $config = new Zend_Config(array(), true);
+   $config = new Zend\Config\Config(array(), true);
    $config->production = array();
    $config->staging    = array();
 
@@ -58,18 +58,18 @@ Konfigurationsdatei zu erstellen:
 
    // Die Config Datei auf einem der folgenden Wege schreiben:
    // a)
-   $writer = new Zend_Config_Writer_Xml(array('config'   => $config,
+   $writer = new Zend\Config_Writer\Xml(array('config'   => $config,
                                               'filename' => 'config.xml'));
    $writer->write();
 
    // b)
-   $writer = new Zend_Config_Writer_Xml();
+   $writer = new Zend\Config_Writer\Xml();
    $writer->setConfig($config)
           ->setFilename('config.xml')
           ->write();
 
    // c)
-   $writer = new Zend_Config_Writer_Xml();
+   $writer = new Zend\Config_Writer\Xml();
    $writer->write('config.xml', $config);
 
 Das erstellt eine *XML* Config Datei mit den Sektionen production und staging, wobei staging production erweitert.
@@ -85,7 +85,7 @@ Dieses Beispiel zeigt wie eine bestehende Config Datei bearbeitet werden kann.
 
    // Lädt alle Sektionen einer bestehenden Config Datei, und überspringt
    // alle Erweiterungen
-   $config = new Zend_Config_Ini('config.ini',
+   $config = new Zend\Config\Ini('config.ini',
                                  null,
                                  array('skipExtends'        => true,
                                        'allowModifications' => true));
@@ -94,7 +94,7 @@ Dieses Beispiel zeigt wie eine bestehende Config Datei bearbeitet werden kann.
    $config->production->hostname = 'foobar';
 
    // Schreibe die Config Datei
-   $writer = new Zend_Config_Writer_Ini(array('config'   => $config,
+   $writer = new Zend\Config_Writer\Ini(array('config'   => $config,
                                               'filename' => 'config.ini'));
    $writer->write();
 

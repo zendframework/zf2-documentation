@@ -10,7 +10,7 @@
 והערכים עם אותו התחביר הטבעי, והמרת התוצאה בחזרה ל XML.
 
 טכנית, *Zend_Feed* מכיל מחלקת בסיס *Zend_Feed*, מחלקות לא מוחשיות
-*Zend_Feed_Abstract* ו *Zend_Feed_Entry_Abstract* אשר מייצגים סנדצקיות ורשומות,
+*Zend\Feed\Abstract* ו *Zend\Feed_Entry\Abstract* אשר מייצגים סנדצקיות ורשומות,
 הטמעות ספצפיות לסנדצקיות של RSS ו Atom, ותוספי עזרה אשר עושים את
 העבודה מאחורי הקלעים.
 
@@ -36,8 +36,8 @@
    // Fetch the latest Slashdot headlines
    try {
        $slashdotRss =
-           Zend_Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
-   } catch (Zend_Feed_Exception $e) {
+           Zend\Feed\Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
+   } catch (Zend\Feed\Exception $e) {
        // feed import failed
        echo "Exception caught importing feed: {$e->getMessage()}\n";
        exit;

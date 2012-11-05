@@ -191,6 +191,7 @@
    modules/zend.validator.validator-chains
    modules/zend.validator.writing-validators
    modules/zend.validator.messages
+   modules/zend.version
    modules/zend.view.quick-start
    modules/zend.view.renderer.php-renderer
    modules/zend.view.php-renderer.scripts
@@ -641,6 +642,13 @@ Zend\\Validator
         * :doc:`modules/zend.validator.validator-chains`
         * :doc:`modules/zend.validator.writing-validators`
         * :doc:`modules/zend.validator.messages`
+
+.. _zend.version:
+
+Zend\\Version
+^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.version`
 
 .. _zend.view:
 

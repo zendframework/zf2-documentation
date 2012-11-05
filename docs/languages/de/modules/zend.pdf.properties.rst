@@ -8,13 +8,13 @@ Ein *PDF* Dokument kann generelle Informationen wie den Titel, Author, und Erste
 enthalten.
 
 Historisch wird diese Information durch das Verwenden einer speziellen Info Struktur gespeichert. Diese struktur
-kann als assoziatives Array mithilfe der öffentlichen ``properties`` Eigenschaft des ``Zend_Pdf`` Objektes gelesen
+kann als assoziatives Array mithilfe der öffentlichen ``properties`` Eigenschaft des ``ZendPdf`` Objektes gelesen
 und geschrieben werden:
 
 .. code-block:: php
    :linenos:
 
-   $pdf = Zend_Pdf::load($pdfPath);
+   $pdf = ZendPdf\Pdf::load($pdfPath);
 
    echo $pdf->properties['Title'] . "\n";
    echo $pdf->properties['Author'] . "\n";
@@ -100,13 +100,13 @@ Die folgenden Schlüssel sind im *PDF* v1.4 (Acrobat 5) Standard definiert:
 Seit *PDF* v 1.6 können Metadaten in einem speziellen *XML* Dokument gespeichert werden das dem *PDF* angehängt
 wird (XMP -`Extensible Metadata Platform`_).
 
-Dieses *XML* Dokument kann empfangen und dem PDF mit der ``Zend_Pdf::getMetadata()`` und der
-``Zend_Pdf::setMetadata($metadata)`` Methode wieder hinzugefügt werden:
+Dieses *XML* Dokument kann empfangen und dem PDF mit der ``ZendPdf\Pdf::getMetadata()`` und der
+``ZendPdf\Pdf::setMetadata($metadata)`` Methode wieder hinzugefügt werden:
 
 .. code-block:: php
    :linenos:
 
-   $pdf = Zend_Pdf::load($pdfPath);
+   $pdf = ZendPdf\Pdf::load($pdfPath);
    $metadata = $pdf->getMetadata();
    $metadataDOM = new DOMDocument();
    $metadataDOM->loadXML($metadata);

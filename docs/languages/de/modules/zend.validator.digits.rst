@@ -4,14 +4,14 @@
 Digits
 ======
 
-``Zend_Validate_Digit`` prüft ob ein angegebener Wert nur Ziffern enthält.
+``Zend\Validate\Digit`` prüft ob ein angegebener Wert nur Ziffern enthält.
 
 .. _zend.validator.set.digits.options:
 
-Unterstützte Optionen für Zend_Validate_Digits
+Unterstützte Optionen für Zend\Validate\Digits
 ----------------------------------------------
 
-Es gibt keine zusätzlichen Optionen für ``Zend_Validate_Digits``:
+Es gibt keine zusätzlichen Optionen für ``Zend\Validate\Digits``:
 
 .. _zend.validator.set.digits.basic:
 
@@ -24,7 +24,7 @@ in diesem Beispiel gezeigt aufgerufen werden:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Digits();
+   $validator = new Zend\Validate\Digits();
 
    $validator->isValid("1234567890"); // Gibt true zurück
    $validator->isValid(1234);         // Gibt true zurück
@@ -36,6 +36,6 @@ in diesem Beispiel gezeigt aufgerufen werden:
 
    Wenn man Nummern oder nummerische Werte prüfen will, muss man darauf achten dass diese Prüfung nur auf Ziffern
    prüft. Das bedeutet dass jedes andere Zeichen wie ein Trennzeichen für Tausender oder ein Komma diese Prüfung
-   nicht bestehen. In diesem Fall sollte man ``Zend_Validate_Int`` oder ``Zend_Validate_Float`` verwenden.
+   nicht bestehen. In diesem Fall sollte man ``Zend\Validate\Int`` oder ``Zend\Validate\Float`` verwenden.
 
 

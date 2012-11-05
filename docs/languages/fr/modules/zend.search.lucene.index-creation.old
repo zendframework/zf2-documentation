@@ -9,26 +9,26 @@ Créer des index
 Créer un nouvel index
 ---------------------
 
-La création et la mise à jour des index sont implémentées dans le composant ``Zend_Search_Lucene``, ainsi que
+La création et la mise à jour des index sont implémentées dans le composant ``Zend\Search\Lucene``, ainsi que
 dans le projet Java Lucene. Vous pouvez utiliser l'une ou l'autre de ces options pour créer des index dans
-lesquels ``Zend_Search_Lucene`` pourra chercher.
+lesquels ``Zend\Search\Lucene`` pourra chercher.
 
 Le listing ci-dessous donne un exemple d'indexation d'un fichier en utilisant l'API d'indexation de
-``Zend_Search_Lucene``:
+``Zend\Search\Lucene``:
 
 .. code-block:: php
    :linenos:
 
    // Création de l'index
-   $index = Zend_Search_Lucene::create('/data/my-index');
+   $index = Zend\Search\Lucene::create('/data/my-index');
 
-   $doc = new Zend_Search_Lucene_Document();
+   $doc = new Zend\Search_Lucene\Document();
 
    // Stockage de l'URL du document afin de pouvoir l'identifier dans les résultats de recherche
-   $doc->addField(Zend_Search_Lucene_Field::Text('url', $docUrl));
+   $doc->addField(Zend\Search_Lucene\Field::Text('url', $docUrl));
 
    // Indexation des contenus du document
-   $doc->addField(Zend_Search_Lucene_Field::UnStored('contents', $docContent));
+   $doc->addField(Zend\Search_Lucene\Field::UnStored('contents', $docContent));
 
    // Ajout du document à l'index
    $index->addDocument($doc);
@@ -47,13 +47,13 @@ méthode open() à la place de ``create()``.
    :linenos:
 
    // Ouverture d'un index existant
-   $index = Zend_Search_Lucene::open('/data/my-index');
+   $index = Zend\Search\Lucene::open('/data/my-index');
 
-   $doc = new Zend_Search_Lucene_Document();
+   $doc = new Zend\Search_Lucene\Document();
    // Stockage de l'URL du document afin de pouvoir l'identifier dans les résultats de recherche
-   $doc->addField(Zend_Search_Lucene_Field::Text('url', $docUrl));
+   $doc->addField(Zend\Search_Lucene\Field::Text('url', $docUrl));
    // Indexation des contenus du document
-   $doc->addField(Zend_Search_Lucene_Field::UnStored('contents',
+   $doc->addField(Zend\Search_Lucene\Field::UnStored('contents',
                                                      $docContent));
 
    // Ajout du document à l'index
@@ -67,7 +67,7 @@ Mise à jour de Documents
 Le format de fichier d'un index Lucene ne permet pas la mise à jour d'un document. Les documents doivent être
 supprimés puis réinsérés dans l'index afin d'être mis à jour efficacement.
 
-La méthode ``Zend_Search_Lucene::delete()`` utilise un identifiant interne de document. Cet identifiant peut être
+La méthode ``Zend\Search\Lucene::delete()`` utilise un identifiant interne de document. Cet identifiant peut être
 récupéré dans une requête en demandant la propriété 'id' :
 
 .. code-block:: php
@@ -84,13 +84,13 @@ récupéré dans une requête en demandant la propriété 'id' :
 Récupération de la taille de l'index
 ------------------------------------
 
-Il existe deux méthodes pour récupérer la taille d'un index dans ``Zend_Search_Lucene``.
+Il existe deux méthodes pour récupérer la taille d'un index dans ``Zend\Search\Lucene``.
 
-La méthode ``Zend_Search_Lucene::maxDoc()`` retourne un de plus que le plus grand nombre possible de documents. Il
+La méthode ``Zend\Search\Lucene::maxDoc()`` retourne un de plus que le plus grand nombre possible de documents. Il
 s'agit en fait du nombre total de documents dans l'index, y compris les documents supprimés. Cette méthode a une
-méthode synonyme : ``Zend_Search_Lucene::count()``.
+méthode synonyme : ``Zend\Search\Lucene::count()``.
 
-La méthode ``Zend_Search_Lucene::numDocs()`` retourne le nombre total de documents non supprimés.
+La méthode ``Zend\Search\Lucene::numDocs()`` retourne le nombre total de documents non supprimés.
 
 .. code-block:: php
    :linenos:
@@ -98,7 +98,7 @@ La méthode ``Zend_Search_Lucene::numDocs()`` retourne le nombre total de docume
    $indexSize = $index->count();
    $documents = $index->numDocs();
 
-La méthode ``Zend_Search_Lucene::isDeleted($id)`` peut être utilisée pour vérifier si un document a été
+La méthode ``Zend\Search\Lucene::isDeleted($id)`` peut être utilisée pour vérifier si un document a été
 supprimé.
 
 .. code-block:: php
@@ -132,13 +132,13 @@ met pas à jour les segments. Il génère un nouveau segment plus gros et met à
 ('segments' file).
 
 L'optimisation complète de l'index peut être déclenchée en appelant la méthode
-``Zend_Search_Lucene::optimize()``. Elle va fusionner tous les segments de l'index en un seul nouveau segment :
+``Zend\Search\Lucene::optimize()``. Elle va fusionner tous les segments de l'index en un seul nouveau segment :
 
 .. code-block:: php
    :linenos:
 
    // Ouverture d'un index existant.
-   $index = Zend_Search_Lucene::open('/data/my-index');
+   $index = Zend\Search\Lucene::open('/data/my-index');
 
    // Optimisation de l'index.
    $index->optimize();
@@ -201,8 +201,8 @@ Sa valeur par défaut est 10.
 
 Lucene Java et Luke (Lucene Index Toolbox -`http://www.getopt.org/luke/`_) peuvent aussi être utilisés pour
 optimiser un index. La dernière version de Luke (v0.8) est basée sur Lucene v2.3 et est compatible avec
-l'implémentation courante du composant ``Zend_Search_Lucene`` (ZF 1.6). Les versions précédentes de
-``Zend_Search_Lucene`` nécessitent d'autres versions des outils de Java Lucene :
+l'implémentation courante du composant ``Zend\Search\Lucene`` (ZF 1.6). Les versions précédentes de
+``Zend\Search\Lucene`` nécessitent d'autres versions des outils de Java Lucene :
 
    - ZF 1.5 - Java Lucene 2.1 (Luke tool v0.7.1 -`http://www.getopt.org/luke/luke-0.7.1/`_)
 
@@ -218,17 +218,17 @@ Permissions
 Par défaut, les fichiers d'index sont disponibles en lecture et écriture par tout le monde.
 
 Il est possible de surcharger ce comportement grâce à la méthode
-``Zend_Search_Lucene_Storage_Directory_Filesystem::setDefaultFilePermissions()``:
+``Zend\Search\Lucene\Storage\Directory\Filesystem::setDefaultFilePermissions()``:
 
 .. code-block:: php
    :linenos:
 
    // Récupération des permissions par défaut
    $currentPermissions =
-       Zend_Search_Lucene_Storage_Directory_Filesystem::getDefaultFilePermissions();
+       Zend\Search\Lucene\Storage\Directory\Filesystem::getDefaultFilePermissions();
 
    // Donne la permission lecture-écriture uniquement à l'utilisateur et au groupe courant.
-   Zend_Search_Lucene_Storage_Directory_Filesystem::setDefaultFilePermissions(0660);
+   Zend\Search\Lucene\Storage\Directory\Filesystem::setDefaultFilePermissions(0660);
 
 .. _zend.search.lucene.index-creation.limitations:
 
@@ -249,13 +249,13 @@ Utilisez des plate-formes 64 bits pour des index plus gros.
 Systèmes de fichiers supportés
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_Search_Lucene`` utilise ``flock()`` pour fournir des recherches concurrentes, la mise à jour des index et
+``Zend\Search\Lucene`` utilise ``flock()`` pour fournir des recherches concurrentes, la mise à jour des index et
 l'optimisation.
 
 Selon la `documentation`_ *PHP*, "``flock()`` ne fonctionnera pas sur NFS et plusieurs autres systèmes de fichiers
 en réseaux".
 
-N'utilisez pas de systèmes de fichiers en réseaux avec ``Zend_Search_Lucene``.
+N'utilisez pas de systèmes de fichiers en réseaux avec ``Zend\Search\Lucene``.
 
 
 

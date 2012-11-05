@@ -11,8 +11,8 @@ Ce guide pour vous aider à démarrer avec ``Zend_Markup`` utilisera le parseur 
 
 .. rubric:: Utilisation classique de Zend_Markup
 
-Nous allons d'abord instancier un objet ``Zend_Markup_Renderer_Html`` en utilisant la méthode
-``Zend_Markup::factory()``. Ceci créera aussi un objet a ``Zend_Markup_Parser_Bbcode`` qui sera ajouté à l'objet
+Nous allons d'abord instancier un objet ``Zend\Markup_Renderer\Html`` en utilisant la méthode
+``Zend\Markup\Markup::factory()``. Ceci créera aussi un objet a ``Zend\Markup_Parser\Bbcode`` qui sera ajouté à l'objet
 de rendu.
 
 Ensuite, nous utiliserons la méthode ``render()`` afin de convertir un bout de BBCode vers du *HTML*.
@@ -20,9 +20,9 @@ Ensuite, nous utiliserons la méthode ``render()`` afin de convertir un bout de 
 .. code-block:: php
    :linenos:
 
-   // Créer une instance de Zend_Markup_Renderer_Html,
-   // avec Zend_Markup_Parser_BbCode comme parseur
-   $bbcode = Zend_Markup::factory('Bbcode');
+   // Créer une instance de Zend\Markup_Renderer\Html,
+   // avec Zend\Markup_Parser\BbCode comme parseur
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    echo $bbcode->render('[b]bold text[/b] and [i]cursive text[/i]');
    // Affiche: '<strong>bold text</strong> and <em>cursive text</em>'
@@ -36,7 +36,7 @@ Même chose ici, mais avec un bout de BBCode plus complexe.
 .. code-block:: php
    :linenos:
 
-   $bbcode = Zend_Markup::factory('Bbcode');
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    $input = <<<EOT
    [list]
@@ -65,7 +65,7 @@ La plupart des processeurs de BBCode ne sont pas capables de rendre toute l'entr
 .. code-block:: php
    :linenos:
 
-   $bbcode = Zend_Markup::factory('Bbcode');
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    echo $bbcode->render('some [i]wrong [b]sample [/i] text');
    // Remarquez que le tag '[b]' n'est pas fermé et est aussi mal niché

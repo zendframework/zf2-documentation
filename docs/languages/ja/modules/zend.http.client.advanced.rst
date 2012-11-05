@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.http.client.advanced:
 
-Zend_Http_Client - 高度な使用法
+Zend\Http\Client - 高度な使用法
 =========================
 
 .. _zend.http.client.redirections:
@@ -9,7 +9,7 @@ Zend_Http_Client - 高度な使用法
 HTTP リダイレクト
 -----------
 
-デフォルトでは、 ``Zend_Http_Client`` は自動的に五段階までの *HTTP*
+デフォルトでは、 ``Zend\Http\Client`` は自動的に五段階までの *HTTP*
 リダイレクトを処理します。これを変更するには、設定パラメータ 'maxredirects'
 を変更します。
 
@@ -19,7 +19,7 @@ HTTP リダイレクト
 この際には同じリクエストメソッドを使用しなければなりません。
 しかし、ほとんどのクライアントはこの機能を実装しておらず、
 リダイレクトの際には常に GET メソッドを使用するようになっています。
-デフォルトでは、Zend_Http_Client も同じように動作します。 つまり、301 や 302
+デフォルトでは、Zend\Http\Client も同じように動作します。 つまり、301 や 302
 によるリダイレクト指示を受けると、 GET パラメータや POST
 パラメータをすべてリセットした上で新しい場所に GET
 リクエストを送信します。この振る舞いを変更するには、設定パラメータ
@@ -50,7 +50,7 @@ getRedirectionsCount() メソッドを使用します。
 クッキーの追加および持続的なクッキーの使用
 ---------------------
 
-Zend_Http_Client を使用すると、リクエストに簡単にクッキーを追加できます。
+Zend\Http\Client を使用すると、リクエストに簡単にクッキーを追加できます。
 ヘッダを変更したりする必要はありません。クッキーを追加するには setCookie()
 メソッドを使用します。このメソッドにはいくつかの用法があります。
 
@@ -70,13 +70,13 @@ Zend_Http_Client を使用すると、リクエストに簡単にクッキーを
          // 値を URL エンコードしておく必要があることに注意しましょう。
          $client->setCookie('flavor=chocolate%20chips');
 
-         // Zend_Http_Cookie オブジェクトを指定します。
-         $cookie = Zend_Http_Cookie::fromString('flavor=chocolate%20chips');
+         // Zend\Http\Cookie オブジェクトを指定します。
+         $cookie = Zend\Http\Cookie::fromString('flavor=chocolate%20chips');
          $client->setCookie($cookie);
 
-Zend_Http_Cookie オブジェクトについての詳細は :ref:` <zend.http.cookies>` を参照ください。
+Zend\Http\Cookie オブジェクトについての詳細は :ref:` <zend.http.cookies>` を参照ください。
 
-Zend_Http_Client は、クッキーの持続性 (stickiness) も提供しています。
+Zend\Http\Client は、クッキーの持続性 (stickiness) も提供しています。
 送受信したクッキーをクライアントの内部で保持し、
 それ以降のリクエストで自動的に再送信します。
 これは、たとえばリモートサイトにログインして 認証情報やセッション ID
@@ -108,7 +108,7 @@ Zend_Http_Client は、クッキーの持続性 (stickiness) も提供してい�
          $client->setUri('http://example.com/read_member_news.php');
          $client->request('GET');
 
-Zend_Http_CookieJar クラスについての詳細は :ref:` <zend.http.cookies.cookiejar>`
+Zend\Http\CookieJar クラスについての詳細は :ref:` <zend.http.cookies.cookiejar>`
 を参照ください。
 
 .. _zend.http.client.custom_headers:
@@ -179,13 +179,13 @@ setHeader() は、複数のヘッダを一度に設定することも簡単に�
 そしてオプションの三番目の引数がデータとなります。 三番目のパラメータが ``NULL``
 の場合は、
 最初のパラメータに指定したファイル名のファイルがあるものとみなされ、
-Zend_Http_Client がそれを読み込んでアップロードしようとします。
+Zend\Http\Client がそれを読み込んでアップロードしようとします。
 三番目のパラメータが ``NULL`` 以外の場合は、
 ファイル名は最初のパラメータを使用しますが実際の内容はディスク上に存在する必要がなくなります。
 二番目のパラメータのフォーム名は常に必須です。HTML
 フォームでアップロードする場合、これは >input< タグの "name"
 属性と等しくなります。 四番目のオプションのパラメータは、ファイルの content-type
-です。 指定しなかった場合、Zend_Http_Client は、
+です。 指定しなかった場合、Zend\Http\Client は、
 ディスクから読み込んだファイルに対して mime_content_type 関数を使用して content-type
 を判定します。 いずれの場合でも、デフォルトの MIME 型は application/octet-stream
 となります。
@@ -230,7 +230,7 @@ Zend_Http_Client がそれを読み込んでアップロードしようとしま
 生の POST データの送信
 --------------
 
-Zend_Http_Client で生の POST データを送信するには setRawData()
+Zend\Http\Client で生の POST データを送信するには setRawData()
 メソッドを使用します。このメソッドはふたつのパラメータを受け取ります。
 まず最初が、リクエスト本文で送信するデータです。
 二番目のパラメータはオプションで、データの content-type を指定します。
@@ -274,7 +274,7 @@ setRawData() 以外にも、別のメソッド setEncType() を使用するこ�
 HTTP 認証
 -------
 
-現在 Zend_Http_Client がサポートしているのは、ベーシック *HTTP* 認証のみです。
+現在 Zend\Http\Client がサポートしているのは、ベーシック *HTTP* 認証のみです。
 この機能を利用するには ``setAuth()`` メソッドを使用するか、
 あるいはユーザ名とパスワードを URI で指定します。 ``setAuth()``
 メソッドが受け取るパラメータは三つで、
@@ -292,7 +292,7 @@ HTTP 認証
          :linenos:
 
          // ベーシック認証を使用します。
-         $client->setAuth('shahar', 'myPassword!', Zend_Http_Client::AUTH_BASIC);
+         $client->setAuth('shahar', 'myPassword!', Zend\Http\Client::AUTH_BASIC);
 
          // ベーシック認証はデフォルトなので、このように省略することもできます。
          $client->setAuth('shahar', 'myPassword!');
@@ -307,7 +307,7 @@ HTTP 認証
 同一クライアントでの複数リクエストの送信
 --------------------
 
-``Zend_Http_Client``
+``Zend\Http\Client``
 は、複数の連続したリクエストを同一オブジェクトで処理できるようになっています。
 これは、スクリプト内で複数の場所からデータを取得する場合や、 特定の *HTTP*
 リソースにアクセスする際にログインしてセッションクッキーを取得する必要がある場合などに便利です。
@@ -355,13 +355,13 @@ HTTP 認証
    :linenos:
 
    // まず、クライアントのインスタンスを作成します。
-   $client = new Zend_Http_Client('http://www.example.com/fetchdata.php', array(
+   $client = new Zend\Http\Client('http://www.example.com/fetchdata.php', array(
        'keepalive' => true
    ));
 
    // セッションにクッキーが保存されていますか?
    if (isset($_SESSION['cookiejar']) &&
-       $_SESSION['cookiejar'] instanceof Zend_Http_CookieJar)) {
+       $_SESSION['cookiejar'] instanceof Zend\Http\CookieJar)) {
 
        $client->setCookieJar($_SESSION['cookiejar']);
    } else {
@@ -372,7 +372,7 @@ HTTP 認証
            'user' => 'shahar',
            'pass' => 'somesecret'
        ));
-       $client->request(Zend_Http_Client::POST);
+       $client->request(Zend\Http\Client::POST);
 
        // さあ、パラメータを消去して URI を元のものに戻しましょう
        // (サーバによって設定されたクッキーは、ジャーに保存されている
@@ -381,7 +381,7 @@ HTTP 認証
        $client->setUri('http://www.example.com/fetchdata.php');
    }
 
-   $response = $client->request(Zend_Http_Client::GET);
+   $response = $client->request(Zend\Http\Client::GET);
 
    // クッキーをセッションに保存し、次のページで使用します。
    $_SESSION['cookiejar'] = $client->getCookieJar();
@@ -391,13 +391,13 @@ HTTP 認証
 データ・ストリーミング
 -----------
 
-``Zend_Http_Client`` はデフォルトでデータを *PHP* 文字列として受け取り、
+``Zend\Http\Client`` はデフォルトでデータを *PHP* 文字列として受け取り、
 そして返します。しかしながら、巨大なファイルを送信または受信する多くのケースではこのような場合
 メモリーは不必要に確保されたり、もしくはコストがかかります。
-このようなケースのために、 ``Zend_Http_Client`` はファイル(一般的には *PHP*
+このようなケースのために、 ``Zend\Http\Client`` はファイル(一般的には *PHP*
 ストリーム)からの読み込みと ファイル(ストリーム)への書き込みをサポートします。
 
-ストリームを用いて ``Zend_Http_Client`` とデータの受け渡しを行うために、 ``setRawData()``
+ストリームを用いて ``Zend\Http\Client`` とデータの受け渡しを行うために、 ``setRawData()``
 メソッドを ストリームリソースであるデータ引数とともに使用します。 (例、
 ``fopen()`` の戻り値).
 
@@ -423,7 +423,7 @@ PUT リクエストだけが現在 HTTP サーバーへのストリームの送�
 だった場合、テンポラリファイルが使用されレスポンスオブジェクと破棄された場合に消去されます。
 ``FALSE`` を引数に設定するとストリーミング機能は無効になります。
 
-ストリーミングを使用した際、 ``request()`` メソッドは ``Zend_Http_Client_Response_Stream``
+ストリーミングを使用した際、 ``request()`` メソッドは ``Zend\Http\Client\Response\Stream``
 クラスのオブジェクトを返却するでしょう。これは二つの便利なメソッドを持っています：
 ``getStreamName()`` はレスポンスがストアされたファイルの場所名を返却します。 また
 ``getStream()`` はレスポンスを読み込めるストリームを返却します。

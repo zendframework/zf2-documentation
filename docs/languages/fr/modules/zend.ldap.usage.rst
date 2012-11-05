@@ -41,7 +41,7 @@ Récupérer des données depuis LDAP
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind();
    $hm = $ldap->getEntry('cn=Hugo Müller,ou=People,dc=my,dc=local');
    /*
@@ -63,7 +63,7 @@ Récupérer des données depuis LDAP
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind();
    $isThere = $ldap->exists('cn=Hugo Müller,ou=People,dc=my,dc=local');
 
@@ -75,7 +75,7 @@ Récupérer des données depuis LDAP
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind();
    $childrenCount = $ldap->countChildren(
                                'cn=Hugo Müller,ou=People,dc=my,dc=local');
@@ -88,11 +88,11 @@ Récupérer des données depuis LDAP
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind();
    $result = $ldap->search('(objectclass=*)',
                            'ou=People,dc=my,dc=local',
-                           Zend_Ldap_Ext::SEARCH_SCOPE_ONE);
+                           Zend\Ldap\Ext::SEARCH_SCOPE_ONE);
    foreach ($result as $item) {
        echo $item["dn"] . ': ' . $item['cn'][0] . PHP_EOL;
    }
@@ -108,12 +108,12 @@ Ajouter des données à LDAP
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind();
    $entry = array();
-   Zend_Ldap_Attribute::setAttribute($entry, 'cn', 'Hans Meier');
-   Zend_Ldap_Attribute::setAttribute($entry, 'sn', 'Meier');
-   Zend_Ldap_Attribute::setAttribute($entry, 'objectClass', 'inetOrgPerson');
+   Zend\Ldap\Attribute::setAttribute($entry, 'cn', 'Hans Meier');
+   Zend\Ldap\Attribute::setAttribute($entry, 'sn', 'Meier');
+   Zend\Ldap\Attribute::setAttribute($entry, 'objectClass', 'inetOrgPerson');
    $ldap->add('cn=Hans Meier,ou=People,dc=my,dc=local', $entry);
 
 .. _zend.ldap.usage.basic.delete:
@@ -127,7 +127,7 @@ Supprimer de LDAP
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind();
    $ldap->delete('cn=Hans Meier,ou=People,dc=my,dc=local');
 
@@ -142,13 +142,13 @@ Mettre à jour LDAP
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind();
    $hm = $ldap->getEntry('cn=Hugo Müller,ou=People,dc=my,dc=local');
-   Zend_Ldap_Attribute::setAttribute($hm, 'mail', 'mueller@my.local');
-   Zend_Ldap_Attribute::setPassword($hm,
+   Zend\Ldap\Attribute::setAttribute($hm, 'mail', 'mueller@my.local');
+   Zend\Ldap\Attribute::setPassword($hm,
                                     'newPa$$w0rd',
-                                    Zend_Ldap_Attribute::PASSWORD_HASH_SHA1);
+                                    Zend\Ldap\Attribute::PASSWORD_HASH_SHA1);
    $ldap->update('cn=Hugo Müller,ou=People,dc=my,dc=local', $hm);
 
 .. _zend.ldap.usage.extended:
@@ -169,7 +169,7 @@ Copier et déplacer des entrées LDAP
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind();
    $ldap->copy('cn=Hugo Müller,ou=People,dc=my,dc=local',
                'cn=Hans Meier,ou=People,dc=my,dc=local',
@@ -183,7 +183,7 @@ Copier et déplacer des entrées LDAP
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind();
    $ldap->moveToSubtree('cn=Hugo Müller,ou=People,dc=my,dc=local',
                         'ou=Dismissed,dc=my,dc=local',

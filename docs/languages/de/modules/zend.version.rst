@@ -4,11 +4,11 @@
 Die Version des Zend Frameworks erhalten
 ========================================
 
-``Zend_Version`` bietet eine Klassenkonstante ``Zend_Version::VERSION`` die einen String enthält, welcher die
-Versionsnummer der eigenen Installation des Zend Frameworks enthält. ``Zend_Version::VERSION`` kann zum Beispiel
+``Zend_Version`` bietet eine Klassenkonstante ``Zend\Version\Version::VERSION`` die einen String enthält, welcher die
+Versionsnummer der eigenen Installation des Zend Frameworks enthält. ``Zend\Version\Version::VERSION`` kann zum Beispiel
 "1.7.4" enthalten.
 
-Die statische Methode ``Zend_Version::compareVersion($version)`` basiert auf der *PHP* Funktion
+Die statische Methode ``Zend\Version\Version::compareVersion($version)`` basiert auf der *PHP* Funktion
 `version_compare()`_. Die Methode gibt -1 zurück wenn die angegebene Version älter als die installierte Version
 des Zend Frameworks ist, 0 wenn Sie identisch sind und +1 wenn die angegebene Version neuer als die Version des
 Zend Frameworks ist.
@@ -21,7 +21,7 @@ Zend Frameworks ist.
    :linenos:
 
    // gibt -1, 0 oder 1 zurück
-   $cmp = Zend_Version::compareVersion('2.0.0');
+   $cmp = Zend\Version\Version::compareVersion('2.0.0');
 
 
 

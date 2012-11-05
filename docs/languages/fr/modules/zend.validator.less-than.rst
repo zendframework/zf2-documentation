@@ -4,21 +4,21 @@
 LessThan
 ========
 
-``Zend_Validate_LessThan`` permet de valider qu'une donnée est bien inférieure à une borne. C'est l'opposé de
-``Zend_Validate_GreaterThan``.
+``Zend\Validate\LessThan`` permet de valider qu'une donnée est bien inférieure à une borne. C'est l'opposé de
+``Zend\Validate\GreaterThan``.
 
 .. note::
 
-   **Zend_Validate_LessThan ne supporte que les chiffres**
+   **Zend\Validate\LessThan ne supporte que les chiffres**
 
-   ``Zend_Validate_LessThan`` ne fonctionnera pas avec les chaines et les dates.
+   ``Zend\Validate\LessThan`` ne fonctionnera pas avec les chaines et les dates.
 
 .. _zend.validator.set.lessthan.options:
 
-Options gérées par Zend_Validate_LessThan
+Options gérées par Zend\Validate\LessThan
 -----------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_LessThan``:
+Les options suivantes sont supportées par ``Zend\Validate\LessThan``:
 
 - **max**: Affecte la borne supérieure.
 
@@ -32,7 +32,7 @@ Voyez l'exemple ci-après.
 .. code-block:: php
    :linenos:
 
-   $valid  = new Zend_Validate_LessThan(array('max' => 10));
+   $valid  = new Zend\Validate\LessThan(array('max' => 10));
    $value  = 10;
    $return = $valid->isValid($value);
    // retourne true

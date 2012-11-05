@@ -16,7 +16,7 @@ una sofisticada implementación del patrón Modelo-Vista-Controlador (*MVC*) el 
 la estructura básica de las aplicaciones desarrolladas con el framework. Encontrarás la lista completa de los
 componentes de Zend Framework junto a breves descripciones de los mismos en la `lista de componentes`_. En este
 tutorial te ayudaremos a familiarizarte con aquellos componentes del framework utilizados de manera más frecuente
-incluyendo ``Zend_Controller``, ``Zend_Layout``, ``Zend_Config``, ``Zend_Db``, ``Zend_Db_Table`` y
+incluyendo ``Zend_Controller``, ``Zend_Layout``, ``Zend_Config``, ``Zend_Db``, ``Zend\Db\Table`` y
 ``Zend_Registry``.
 
 Utilizando dichos componentes construiremos en pocos minutos una sencilla aplicación de ejemplo en la cual nos

@@ -38,16 +38,16 @@
 
 "锁定的"意思是这样的对象绝不会被交换和从内存中卸载.
 
-锁定的对象和可移动的对象提供相同的接口(*Zend_Memory_Container_Interface*).
+锁定的对象和可移动的对象提供相同的接口(*Zend\Memory_Container\Interface*).
 因此锁定的对象可以用于任何地方代替可移动对象.
 
 基于性能的考虑,应用程序或则开发者能决定一些对象应该决不会被交换是非常有用的.
 
 访问锁定的对象更快,应为内存管理器不需要追踪这些对象的变化.
 
-The locked objects class (*Zend_Memory_Container_Locked*) guarantees virtually the same performance as working with
+The locked objects class (*Zend\Memory_Container\Locked*) guarantees virtually the same performance as working with
 a string variable. The overhead is a single dereference to get the class property.
-锁定的对象类(*Zend_Memory_Container_Locked*)保证了和处理字符串变量差不多的性能.
+锁定的对象类(*Zend\Memory_Container\Locked*)保证了和处理字符串变量差不多的性能.
 
 .. _zend.memory.memory-objects.value:
 

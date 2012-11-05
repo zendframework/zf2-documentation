@@ -4,16 +4,16 @@
 Základní použití
 ================
 
-Použití *Zend_Json* zahrnuje dvě public static metody: *Zend_Json::encode()* a *Zend_Json::decode()*.
+Použití *Zend_Json* zahrnuje dvě public static metody: *Zend\Json\Json::encode()* a *Zend\Json\Json::decode()*.
 
 .. code-block:: php
    :linenos:
 
    <?php
    // Získání hodnoty:
-   $phpNative = Zend_Json::decode($encodedValue);
+   $phpNative = Zend\Json\Json::decode($encodedValue);
 
    // Zakódování hodnoty pro vrácení klientovi:
-   $json = Zend_Json::encode($phpNative);
+   $json = Zend\Json\Json::encode($phpNative);
 
 

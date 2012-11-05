@@ -3,12 +3,12 @@
 Fetching Options and Arguments
 ==============================
 
-After you have declared the options that the ``Zend_Console_Getopt`` object should recognize, and supply arguments
+After you have declared the options that the ``Zend\Console\Getopt`` object should recognize, and supply arguments
 from the command-line or an array, you can query the object to find out which options were specified by a user in a
 given command-line invocation of your program. The class implements magic methods so you can query for options by
 name.
 
-The parsing of the data is deferred until the first query you make against the ``Zend_Console_Getopt`` object to
+The parsing of the data is deferred until the first query you make against the ``Zend\Console\Getopt`` object to
 find out if an option was given, the object performs its parsing. This allows you to use several method calls to
 configure the options, arguments, help strings, and configuration options before parsing takes place.
 
@@ -18,7 +18,7 @@ Handling Getopt Exceptions
 --------------------------
 
 If the user gave any invalid options on the command-line, the parsing function throws a
-``Zend_Console_Getopt_Exception``. You should catch this exception in your application code. You can use the
+``Zend\Console\Getopt\Exception``. You should catch this exception in your application code. You can use the
 ``parse()`` method to force the object to parse the arguments. This is useful because you can invoke ``parse()`` in
 a **try** block. If it passes, you can be sure that the parsing won't throw an exception again. The exception
 thrown has a custom method ``getUsageMessage()``, which returns as a string the formatted set of usage messages for
@@ -32,9 +32,9 @@ all declared options.
    :linenos:
 
    try {
-       $opts = new Zend_Console_Getopt('abp:');
+       $opts = new Zend\Console\Getopt('abp:');
        $opts->parse();
-   } catch (Zend_Console_Getopt_Exception $e) {
+   } catch (Zend\Console\Getopt\Exception $e) {
        echo $e->getUsageMessage();
        exit;
    }
@@ -63,7 +63,7 @@ the method returns ``TRUE``. Otherwise the method returns ``NULL``.
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $b = $opts->getOption('b');
    $p_parameter = $opts->getOption('p');
 
@@ -77,7 +77,7 @@ member variable. The ``__isset()`` magic method is also implemented.
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    if (isset($opts->b)) {
        echo "I got the b option.\n";
    }
@@ -122,11 +122,11 @@ array of the strings that were not part of any options.
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
    $opts->setArguments(array('-p', 'p_parameter', 'filename'));
    $args = $opts->getRemainingArgs(); // returns array('filename')
 
-``Zend_Console_Getopt`` supports the *GNU* convention that an argument consisting of a double-dash signifies the
+``Zend\Console\Getopt`` supports the *GNU* convention that an argument consisting of a double-dash signifies the
 end of options. Any arguments following this signifier must be treated as non-option arguments. This is useful if
 you might have a non-option argument that begins with a dash. For example: "``rm -- -filename-with-dash``".
 

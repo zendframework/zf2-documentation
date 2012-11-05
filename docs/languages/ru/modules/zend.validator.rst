@@ -35,7 +35,7 @@
 Базовое использование валидаторов
 ---------------------------------
 
-Такое определение валидации дает основу для ``Zend_Validate_Interface``,
+Такое определение валидации дает основу для ``Zend\Validate\Interface``,
 который определяет два метода -*isValid()* и *getMessages()*. Метод *isValid()*
 выполняет валидацию переданного значения, возвращая ``TRUE``
 тогда и только тогда, когда значение прошло проверку по
@@ -66,7 +66,7 @@
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_EmailAddress();
+      $validator = new Zend\Validate\EmailAddress();
 
       if ($validator->isValid($email)) {
           // email прошел валидацию
@@ -94,7 +94,7 @@
 заменяется значением, который вы передали методу *isValid()*.
 Другие маркеры могут поддерживаться не во всех валидаторах.
 Например, *%max%* является маркером, поддерживаемым валидатором
-``Zend_Validate_LessThan``. Метод *getMessageVariables()* возвращает массив маркеров,
+``Zend\Validate\LessThan``. Метод *getMessageVariables()* возвращает массив маркеров,
 поддерживаемых валидатором.
 
 Второй необязательный аргумент является строкой, которую
@@ -114,12 +114,12 @@
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_StringLength(8);
+      $validator = new Zend\Validate\StringLength(8);
 
       $validator->setMessage(
           'Строка \'%value%\' слишком короткая. Она должна быть длиной как минимум ' .
           '%min% символов',
-          Zend_Validate_StringLength::TOO_SHORT);
+          Zend\Validate\StringLength::TOO_SHORT);
 
       if (!$validator->isValid('слово')) {
           $messages = $validator->getMessages();
@@ -138,12 +138,12 @@
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_StringLength(8, 12);
+      $validator = new Zend\Validate\StringLength(8, 12);
 
       $validator->setMessages( array(
-          Zend_Validate_StringLength::TOO_SHORT =>
+          Zend\Validate\StringLength::TOO_SHORT =>
               'Строка \'%value%\' слишком короткая',
-          Zend_Validate_StringLength::TOO_LONG  =>
+          Zend\Validate\StringLength::TOO_LONG  =>
               'Строка \'%value%\' слишком длинная'
       ));
 
@@ -159,7 +159,7 @@
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_StringLength(8, 12);
+      $validator = new Zend\Validate\StringLength(8, 12);
 
       if (!validator->isValid('слово')) {
           echo 'Слово не прошедшее проверку: '
@@ -180,7 +180,7 @@
 
 Если неудобно каждый раз загружать требуемый класс валидации
 и создавать его экземпляр, то можно использовать статический
-метод *Zend_Validate::is()* в качестве альтернативного способа вызова.
+метод *Zend\Validate\Validate::is()* в качестве альтернативного способа вызова.
 Первый аргумент этого метода является входным значением,
 которое вы передавали бы методу *isValid()*. Второй аргумент
 является строкой, которая соответствует базовому имени класса
@@ -191,7 +191,7 @@
    .. code-block:: php
       :linenos:
 
-      if (Zend_Validate::is($email, 'EmailAddress')) {
+      if (Zend\Validate\Validate::is($email, 'EmailAddress')) {
           // Да, похоже, email валиден
       }
 
@@ -203,7 +203,7 @@
    .. code-block:: php
       :linenos:
 
-      if (Zend_Validate::is($value, 'Between', array(1, 12))) {
+      if (Zend\Validate\Validate::is($value, 'Between', array(1, 12))) {
           // Да, $value имеет значение в диапазоне между 1 и 12
       }
 
@@ -218,7 +218,7 @@
 валидацию к нескольким входным значениям, то более
 эффективным будет использование варианта с инстанцированием.
 
-Кроме того, класс ``Zend_Filter_Input`` позволяет инстанцировать и
+Кроме того, класс ``Zend\Filter\Input`` позволяет инстанцировать и
 запускать более одного класса фильтра и валидации для
 обработки набора входных данных. Читайте :ref:` <zend.filter.input>`.
 
@@ -236,10 +236,10 @@
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(8, 12);
-   $translate = new Zend_Translator(
+   $validator = new Zend\Validate\StringLength(8, 12);
+   $translate = new Zend\Translator\Translator(
        'array',
-       array(Zend_Validate_StringLength::TOO_SHORT => 'Translated \'%value%\''),
+       array(Zend\Validate\StringLength::TOO_SHORT => 'Translated \'%value%\''),
        'en'
    );
 
@@ -254,12 +254,12 @@
 .. code-block:: php
    :linenos:
 
-   $translate = new Zend_Translator(
+   $translate = new Zend\Translator\Translator(
        'array',
-       array(Zend_Validate_StringLength::TOO_SHORT => 'Translated \'%value%\''),
+       array(Zend\Validate\StringLength::TOO_SHORT => 'Translated \'%value%\''),
        'en'
    );
-   Zend_Validate::setDefaultTranslator($translate);
+   Zend\Validate\Validate::setDefaultTranslator($translate);
 
 .. note::
 
@@ -275,7 +275,7 @@
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(8, 12);
+   $validator = new Zend\Validate\StringLength(8, 12);
    if (!$validator->isTranslatorDisabled()) {
        $validator->setDisableTranslator();
    }

@@ -21,7 +21,7 @@ element":
            'size' => 4, 'maxlength' => 4)) ?>
    </div>
 
-How might you represent this element as a ``Zend_Form_Element``? How might you write a decorator to render it?
+How might you represent this element as a ``Zend\Form\Element``? How might you write a decorator to render it?
 
 .. _learning.form.decorators.composite.element:
 
@@ -59,7 +59,7 @@ Here's what the class would look like:
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend_Form_Element_Xhtml
+   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
    {
        protected $_dateFormat = '%year%-%month%-%day%';
        protected $_day;
@@ -157,7 +157,7 @@ discrete view helper to render individual form inputs; these will then be aggreg
 .. code-block:: php
    :linenos:
 
-   class My_Form_Decorator_Date extends Zend_Form_Decorator_Abstract
+   class My_Form_Decorator_Date extends Zend\Form_Decorator\Abstract
    {
        public function render($content)
        {
@@ -168,7 +168,7 @@ discrete view helper to render individual form inputs; these will then be aggreg
            }
 
            $view = $element->getView();
-           if (!$view instanceof Zend_View_Interface) {
+           if (!$view instanceof Zend\View\Interface) {
                // using view helpers, so do nothing if no view present
                return $content;
            }
@@ -208,7 +208,7 @@ constructor:
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend_Form_Element_Xhtml
+   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
    {
        // ...
 
@@ -235,7 +235,7 @@ Next, we need to override the ``loadDefaultDecorators()`` method to use our new 
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend_Form_Element_Xhtml
+   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
    {
        // ...
 
@@ -271,7 +271,7 @@ What does the final output look like? Let's consider the following element:
 
    $d = new My_Form_Element_Date('dateOfBirth');
    $d->setLabel('Date of Birth: ')
-     ->setView(new Zend_View());
+     ->setView(new Zend\View\View());
 
    // These are equivalent:
    $d->setValue('20 April 2009');

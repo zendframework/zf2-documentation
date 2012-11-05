@@ -9,10 +9,10 @@ existieren.
 
 .. _zend.filter.set.htmlentities.options:
 
-Unterstützte Optionen für Zend_Filter_HtmlEntities
+Unterstützte Optionen für Zend\Filter\HtmlEntities
 --------------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Filter_HtmlEntities`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Filter\HtmlEntities`` unterstützt:
 
 - **quotestyle**: Äquivalent zum Parameter **quote_style** der nativen *PHP* Funktion htmlentities. Er erlaubt es
   zu definieren wass mit 'einfachen' und "doppelten" Hochkomma passieren soll. Die folgenden Konstanten werden
@@ -45,7 +45,7 @@ Siehe das folgende Beispiel für das Standardverhalten dieses Filters.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_HtmlEntities();
+   $filter = new Zend\Filter\HtmlEntities();
 
    print $filter->filter('<');
 
@@ -54,13 +54,13 @@ Siehe das folgende Beispiel für das Standardverhalten dieses Filters.
 Hochkomma Stil
 --------------
 
-``Zend_Filter_HtmlEntities`` erlaubt es den verwendete Hochkomma Stil zu verändern. Dies kan nützlich sein wenn
+``Zend\Filter\HtmlEntities`` erlaubt es den verwendete Hochkomma Stil zu verändern. Dies kan nützlich sein wenn
 man doppelte, einfache oder beide Typen von Hochkommas un-gefiltert lassen will. Siehe das folgende Beispiel:
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_HtmlEntities(array('quotestyle' => ENT_QUOTES));
+   $filter = new Zend\Filter\HtmlEntities(array('quotestyle' => ENT_QUOTES));
 
    $input  = "Ein 'einfaches' und " . '"doppeltes"';
    print $filter->filter($input);
@@ -71,7 +71,7 @@ auch "doppelte" Hochkommas gefiltert werden.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_HtmlEntities(array('quotestyle' => ENT_COMPAT));
+   $filter = new Zend\Filter\HtmlEntities(array('quotestyle' => ENT_COMPAT));
 
    $input  = "Ein 'einfaches' und " . '"doppeltes"';
    print $filter->filter($input);
@@ -82,7 +82,7 @@ gefiltert werden wärend 'einfache' Hochkommas nich verändert werden.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_HtmlEntities(array('quotestyle' => ENT_NOQUOTES));
+   $filter = new Zend\Filter\HtmlEntities(array('quotestyle' => ENT_NOQUOTES));
 
    $input  = "Ein 'einfaches' und" . '"doppeltes"';
    print $filter->filter($input);
@@ -102,7 +102,7 @@ Parameter. Die folgenden Konstanten werden akzeptiert: ``ENT_COMPAT``, ``ENT_QUO
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_HtmlEntities();
+   $filter = new Zend\Filter\HtmlEntities();
 
    $filter->setQuoteStyle(ENT_QUOTES);
    print $filter->getQuoteStyle(ENT_QUOTES);
@@ -114,7 +114,7 @@ Siehe "http://php.net/htmlentities" für eine Liste der unterstützten Zeichense
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_HtmlEntities();
+   $filter = new Zend\Filter\HtmlEntities();
 
    $filter->setQuoteStyle(ENT_QUOTES);
    print $filter->getQuoteStyle(ENT_QUOTES);
@@ -126,7 +126,7 @@ Parameter ``$doubleQuote``.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_HtmlEntities();
+   $filter = new Zend\Filter\HtmlEntities();
 
    $filter->setQuoteStyle(ENT_QUOTES);
    print $filter->getQuoteStyle(ENT_QUOTES);

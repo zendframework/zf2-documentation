@@ -48,7 +48,7 @@ Placeholder <zend.view.helpers.initial.placeholder>`.
 .. code-block:: php
    :linenos:
 
-   $doctypeHelper = new Zend_View_Helper_Doctype();
+   $doctypeHelper = new Zend\View_Helper\Doctype();
    $doctypeHelper->doctype('XHTML1_STRICT');
 
 И затем выводить ее в самом начале вашего скрипта вида:

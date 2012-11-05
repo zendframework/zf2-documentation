@@ -4,15 +4,15 @@
 Identical
 =========
 
-``Zend_Validate_Identical`` erlaubt es zu prüfen ob ein angegebener Wert mit einem angegebenen Vergleichswert
+``Zend\Validate\Identical`` erlaubt es zu prüfen ob ein angegebener Wert mit einem angegebenen Vergleichswert
 identisch ist.
 
 .. _zend.validator.set.identical.options:
 
-Unterstützte Optionen für Zend_Validate_Identical
+Unterstützte Optionen für Zend\Validate\Identical
 -------------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Validate_Identical`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Validate\Identical`` unterstützt:
 
 - **strict**: Definiert ob die Prüfung strikt durchgeführt werden soll. Der Standardwert ist ``TRUE``.
 
@@ -29,7 +29,7 @@ folgende Beispiel welches zwei Strings vergleicht.
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Identical('original');
+   $valid = new Zend\Validate\Identical('original');
    if ($valid->isValid($value) {
        return true;
    }
@@ -45,13 +45,13 @@ Man kann den gewünschten Token auch im Nachhinein durch Verwendung der Methode 
 Identische Objekte
 ------------------
 
-Natürlich kann ``Zend_Validate_Identical`` nicht nur Strings prüfen, sondern jeden Variablentyp wie Boolean,
+Natürlich kann ``Zend\Validate\Identical`` nicht nur Strings prüfen, sondern jeden Variablentyp wie Boolean,
 Integer, Float, Array oder sogar Objekte. Wie bereits notiert müssen Vergleichswert und Wert identisch sein.
 
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Identical(123);
+   $valid = new Zend\Validate\Identical(123);
    if ($valid->isValid($input)) {
        // Der Wert scheint gültig zu sein
    } else {
@@ -71,7 +71,7 @@ Integer, Float, Array oder sogar Objekte. Wie bereits notiert müssen Vergleichs
 Formular Elemente
 -----------------
 
-``Zend_Validate_Identical`` unterstützt auch den Vergleich von Formularelementen. Das kann getan werden indem der
+``Zend\Validate\Identical`` unterstützt auch den Vergleich von Formularelementen. Das kann getan werden indem der
 Name des Elements als ``token`` verwendet wird. Siehe das folgende Beispiel:
 
 .. code-block:: php
@@ -93,13 +93,13 @@ eingegeben hat, erhält man einen Prüffehler.
 Strikte Prüfung
 ---------------
 
-Wie vorher erwähnt prüft ``Zend_Validate_Identical`` die Token strikt. Man kann dieses Verhalten ändern indem
+Wie vorher erwähnt prüft ``Zend\Validate\Identical`` die Token strikt. Man kann dieses Verhalten ändern indem
 die ``strict`` Option verwendet wird. Der Standardwert für diese Eigenschaft ist ``TRUE``.
 
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Identical(array('token' => 123, 'strict' => FALSE));
+   $valid = new Zend\Validate\Identical(array('token' => 123, 'strict' => FALSE));
    $input = '123';
    if ($valid->isValid($input)) {
        // Die Eingabe scheint gültig zu sein
@@ -118,7 +118,7 @@ Der Bequemlichkeit halber kann man auch ``setStrict()`` und ``getStrict()`` verw
 Konfiguration
 -------------
 
-Wie alle anderen Prüfungen unterstützt ``Zend_Validate_Identical`` auch die Verwendung von
+Wie alle anderen Prüfungen unterstützt ``Zend\Validate\Identical`` auch die Verwendung von
 Konfigurationseinstellungen als Eingabe Parameter. Das bedeutet das man den Prüfer mit einem ``Zend_Config``
 Objekt konfigurieren kann.
 
@@ -128,7 +128,7 @@ verwendet, dann sollte man dieses in einen '``token``' Schlüssel einhüllen wen
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Identical(array('token' => 123));
+   $valid = new Zend\Validate\Identical(array('token' => 123));
    if ($valid->isValid($input)) {
        // Der Wert scheint gültig zu sein
    } else {
@@ -144,7 +144,7 @@ dieses, wie im oben stehenden Beispiel gezeigt, einhüllen.
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Identical(array('token' => array('token' => 123)));
+   $valid = new Zend\Validate\Identical(array('token' => array('token' => 123)));
    if ($valid->isValid($input)) {
        // Der Wert scheint gültig zu sein
    } else {

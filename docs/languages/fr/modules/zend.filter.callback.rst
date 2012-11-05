@@ -12,7 +12,7 @@ Par exemple un filtre qui inverse une chaine.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Callback('strrev');
+   $filter = new Zend\Filter\Callback('strrev');
 
    print $filter->filter('Hello!');
    // retourne "!olleH"
@@ -30,7 +30,7 @@ tableau comme callback.
    }
 
    // La définition du filtre
-   $filter = new Zend_Filter_Callback(array('MyClass', 'Reverse'));
+   $filter = new Zend\Filter\Callback(array('MyClass', 'Reverse'));
    print $filter->filter('Hello!');
 
 Pour récupérer la fonction de filtrage actuelle, utilisez ``getCallback()`` et pour en affecter une nouvelle,
@@ -42,7 +42,7 @@ lorsque le filtre est exécuté.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Callback(
+   $filter = new Zend\Filter\Callback(
        array(
            'callback' => 'MyMethod',
            'options'  => array('key' => 'param1', 'key2' => 'param2')

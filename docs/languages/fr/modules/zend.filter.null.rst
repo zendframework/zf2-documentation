@@ -10,7 +10,7 @@ tout autre type.
 
 .. _zend.filter.set.null.default:
 
-Comportement par défaut de Zend_Filter_Null
+Comportement par défaut de Zend\Filter\Null
 -------------------------------------------
 
 Par défaut, ce filtre fonctionne comme la fonction *PHP* ``empty()``. Donc si ``empty()`` retourne true sur la
@@ -19,22 +19,22 @@ valeur, alors ``NULL`` sera retourné par ce filtre
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Null();
+   $filter = new Zend\Filter\Null();
    $value  = '';
    $result = $filter->filter($value);
    // retourne null plutôt que la chaine vide
 
-Ceci signifie qu'en l'absence d'une configuration spéciale, ``Zend_Filter_Null`` accepte tout type en entrée et
+Ceci signifie qu'en l'absence d'une configuration spéciale, ``Zend\Filter\Null`` accepte tout type en entrée et
 retourne ``NULL`` dans les mêmes cas que ``empty()``.
 
 Toute autre valeur sera retournée telle quelle, sans aucune modification.
 
 .. _zend.filter.set.null.types:
 
-Changer le comportement de Zend_Filter_Null
+Changer le comportement de Zend\Filter\Null
 -------------------------------------------
 
-Quelques fois ça ne suffit pas de filtrer en se basant sur ``empty()``. Ainsi, ``Zend_Filter_Null`` permet de
+Quelques fois ça ne suffit pas de filtrer en se basant sur ``empty()``. Ainsi, ``Zend\Filter\Null`` permet de
 déclarer quels types seront convertis.
 
 Les types suivants sont gérés:
@@ -58,21 +58,21 @@ des chaines de caractères, un tableau... Voyez les exemples suivants:
    :linenos:
 
    // convertit false en null
-   $filter = new Zend_Filter_Null(Zend_Filter_Null::BOOLEAN);
+   $filter = new Zend\Filter\Null(Zend\Filter\Null::BOOLEAN);
 
    // convertit false et 0 en null
-   $filter = new Zend_Filter_Null(
-       Zend_Filter_Null::BOOLEAN + Zend_Filter_Null::INTEGER
+   $filter = new Zend\Filter\Null(
+       Zend\Filter\Null::BOOLEAN + Zend\Filter\Null::INTEGER
    );
 
    // convertit false et 0 en null
-   $filter = new Zend_Filter_Null( array(
-       Zend_Filter_Null::BOOLEAN,
-       Zend_Filter_Null::INTEGER
+   $filter = new Zend\Filter\Null( array(
+       Zend\Filter\Null::BOOLEAN,
+       Zend\Filter\Null::INTEGER
    ));
 
    // convertit false et 0 en null
-   $filter = new Zend_Filter_Null(array(
+   $filter = new Zend\Filter\Null(array(
        'boolean',
        'integer',
    ));
