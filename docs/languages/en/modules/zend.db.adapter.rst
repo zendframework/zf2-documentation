@@ -150,7 +150,7 @@ extensions and vendor platforms), are un-preparable. An example of executing:
 .. code-block:: php
    :linenos:
 
-   $adapter->query('ALTER TABLE ADD INDEX(`foo_index`) ON (`foo_column`))', Adapter::QUERY_MODE_EXECUTE);
+   $adapter->query('ALTER TABLE ADD INDEX(`foo_index`) ON (`foo_column`)', Adapter::QUERY_MODE_EXECUTE);
 
 The primary difference to notice is that you must provide the Adapter::QUERY_MODE_EXECUTE (execute) as the second
 parameter.
