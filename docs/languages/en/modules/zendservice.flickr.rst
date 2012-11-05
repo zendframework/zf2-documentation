@@ -21,7 +21,7 @@ In the following example, we use the ``tagSearch()`` method to search for photos
 .. code-block:: php
    :linenos:
 
-   $flickr = new ZendService\Flickr('MY_API_KEY');
+   $flickr = new ZendService\Flickr\Flickr('MY_API_KEY');
 
    $results = $flickr->tagSearch("php");
 
@@ -40,7 +40,7 @@ In the following example, we use the ``tagSearch()`` method to search for photos
 Finding Flickr Users' Photos and Information
 --------------------------------------------
 
-``ZendService\Flickr`` provides several ways to get information about Flickr users:
+``ZendService\Flickr\Flickr`` provides several ways to get information about Flickr users:
 
 - ``userSearch()``: Accepts a string query of space-delimited tags and an optional second parameter as an array of
   search options, and returns a set of photos as a ``ZendService\Flickr\ResultSet`` object.
@@ -72,7 +72,7 @@ In this example, we have a Flickr user's e-mail address, and we search for the u
 Finding photos From a Group Pool
 --------------------------------
 
-``ZendService\Flickr`` allows to retrieve a group's pool photos based on the group ID. Use the
+``ZendService\Flickr\Flickr`` allows to retrieve a group's pool photos based on the group ID. Use the
 ``groupPoolGetPhotos()`` method:
 
 .. _zendservice.flickr.grouppoolgetphotos.example-1:
@@ -82,7 +82,7 @@ Finding photos From a Group Pool
 .. code-block:: php
    :linenos:
 
-   $flickr = new ZendService\Flickr('MY_API_KEY');
+   $flickr = new ZendService\Flickr\Flickr('MY_API_KEY');
 
        $results = $flickr->groupPoolGetPhotos($groupId);
 
@@ -101,7 +101,7 @@ Finding photos From a Group Pool
 Retrieving Flickr Image Details
 -------------------------------
 
-``ZendService\Flickr`` makes it quick and easy to get an image's details based on a given image ID. Just use the
+``ZendService\Flickr\Flickr`` makes it quick and easy to get an image's details based on a given image ID. Just use the
 ``getImageDetails()`` method, as in the following example:
 
 .. _zendservice.flickr.getimagedetails.example-1:
@@ -113,7 +113,7 @@ Once you have a Flickr image ID, it is a simple matter to fetch information abou
 .. code-block:: php
    :linenos:
 
-   $flickr = new ZendService\Flickr('MY_API_KEY');
+   $flickr = new ZendService\Flickr\Flickr('MY_API_KEY');
 
    $image = $flickr->getImageDetails($imageId);
 
