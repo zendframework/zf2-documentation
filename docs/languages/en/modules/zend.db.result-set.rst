@@ -5,7 +5,7 @@ Zend\\Db\\ResultSet
 
 ``Zend\Db\ResultSet`` is a sub-component of Zend\\Db for abstracting the iteration of rowset producing queries.
 While data sources for this can be anything that is iterable, generally a
-``Zend\Db\Adpater\Driver\ResultInterface`` based object is the primary source for retrieving data.
+``Zend\Db\Adapter\Driver\ResultInterface`` based object is the primary source for retrieving data.
 
 ``Zend\Db\ResultSet``'s must implement the ``Zend\Db\ResultSet\ResultSetInterface`` and all sub-components of
 Zend\\Db that return a ResultSet as part of their API will assume an instance of a ``ResultSetInterface`` should be
