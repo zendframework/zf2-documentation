@@ -19,7 +19,7 @@ default:
    +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Adapter      |Description                                                                                                                                                                          |
    +=============+=====================================================================================================================================================================================+
-   |Array        |Accepts a PHP array                                                                                                                                                                  |
+   |ArrayAdapter |Accepts a PHP array                                                                                                                                                                  |
    +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |DbSelect     |Accepts a Zend\\Db\\Sql\\Select plus either a Zend\\Db\\Adapter\\Adapter or Zend\\Db\\Sql\\Sql to paginate rows from a database                                                      |
    +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -38,7 +38,7 @@ To create an instance of ``Zend\Paginator``, you must supply an adapter to the c
 .. code-block:: php
    :linenos:
 
-   $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\Array($array));
+   $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($array));
 
    In the case of the ``Null`` adapter, in lieu of a data collection you must supply an item count to its
    constructor.
