@@ -13,8 +13,8 @@ Zend_CodeGeneratorサンプル
 .. code-block:: php
    :linenos:
 
-   $foo      = new Zend_CodeGenerator_Php_Class();
-   $docblock = new Zend_CodeGenerator_Php_Docblock(array(
+   $foo      = new Zend\CodeGenerator_Php\Class();
+   $docblock = new Zend\CodeGenerator_Php\Docblock(array(
        'shortDescription' => '生成されたクラスサンプル',
        'longDescription'  => 'これはZend_CodeGeneratorで生成されたクラスです。',
        'tags'             => array(
@@ -60,8 +60,8 @@ Zend_CodeGeneratorサンプル
 .. code-block:: php
    :linenos:
 
-   $foo      = new Zend_CodeGenerator_Php_Class();
-   $docblock = new Zend_CodeGenerator_Php_Docblock(array(
+   $foo      = new Zend\CodeGenerator_Php\Class();
+   $docblock = new Zend\CodeGenerator_Php\Docblock(array(
        'shortDescription' => '生成されたクラスサンプル',
        'longDescription'  => 'これはZend_CodeGeneratorで生成されたクラスです。',
        'tags'             => array(
@@ -125,16 +125,16 @@ Zend_CodeGeneratorサンプル
 
 .. rubric:: クラスのメソッド付でPHPクラスを生成
 
-``Zend_CodeGenerator_Php_Class``\ のおかげで、
+``Zend\CodeGenerator_Php\Class``\ のおかげで、
 クラスにオプションのコンテンツと一緒にメソッドを付与できます。
-メソッドは、配列かまたは具体的な ``Zend_CodeGenerator_Php_Method``\
+メソッドは、配列かまたは具体的な ``Zend\CodeGenerator_Php\Method``\
 インスタンスとして付与されるかもしれません。
 
 .. code-block:: php
    :linenos:
 
-   $foo      = new Zend_CodeGenerator_Php_Class();
-   $docblock = new Zend_CodeGenerator_Php_Docblock(array(
+   $foo      = new Zend\CodeGenerator_Php\Class();
+   $docblock = new Zend\CodeGenerator_Php\Docblock(array(
        'shortDescription' => '生成されたクラスサンプル',
        'longDescription'  => 'これはZend_CodeGeneratorで生成されたクラスです。',
        'tags'             => array(
@@ -175,27 +175,27 @@ Zend_CodeGeneratorサンプル
                    array('name' => 'bar'),
                ),
                'body'       => '$this->_bar = $bar;' . "\n" . 'return $this;',
-               'docblock'   => new Zend_CodeGenerator_Php_Docblock(array(
+               'docblock'   => new Zend\CodeGenerator_Php\Docblock(array(
                    'shortDescription' => 'barプロパティーを設定',
                    'tags'             => array(
-                       new Zend_CodeGenerator_Php_Docblock_Tag_Param(array(
+                       new Zend\CodeGenerator\Php\Docblock\Tag\Param(array(
                            'paramName' => 'bar',
                            'datatype'  => 'string'
                        )),
-                       new Zend_CodeGenerator_Php_Docblock_Tag_Return(array(
+                       new Zend\CodeGenerator\Php\Docblock\Tag\Return(array(
                            'datatype'  => 'string',
                        )),
                    ),
                )),
            ),
            // メソッドは具体的なインスタンスとして渡されます
-           new Zend_CodeGenerator_Php_Method(array(
+           new Zend\CodeGenerator_Php\Method(array(
                'name' => 'getBar',
                'body'       => 'return $this->_bar;',
-               'docblock'   => new Zend_CodeGenerator_Php_Docblock(array(
+               'docblock'   => new Zend\CodeGenerator_Php\Docblock(array(
                    'shortDescription' => 'barプロパティーを取得',
                    'tags'             => array(
-                       new Zend_CodeGenerator_Php_Docblock_Tag_Return(array(
+                       new Zend\CodeGenerator\Php\Docblock\Tag\Return(array(
                            'datatype'  => 'string|null',
                        )),
                    ),
@@ -255,9 +255,9 @@ Zend_CodeGeneratorサンプル
 
 .. rubric:: PHPファイルの生成
 
-``Zend_CodeGenerator_Php_File``\ は *PHP*\ ファイルのコンテンツ生成でも使えます。
+``Zend\CodeGenerator_Php\File``\ は *PHP*\ ファイルのコンテンツ生成でも使えます。
 あなたは、任意のコンテンツ本体だけでなくクラスを含めることができます。
-クラスを付与するとき、具体的な ``Zend_CodeGenerator_Php_Class``\ インスタンスか、
+クラスを付与するとき、具体的な ``Zend\CodeGenerator_Php\Class``\ インスタンスか、
 またはクラスを定めている配列を添付しなければなりません。
 
 下記の例では、前述の例のクラス定義の１つにつき ``$foo``\
@@ -266,9 +266,9 @@ Zend_CodeGeneratorサンプル
 .. code-block:: php
    :linenos:
 
-   $file = new Zend_CodeGenerator_Php_File(array(
+   $file = new Zend\CodeGenerator_Php\File(array(
        'classes'  => array($foo);
-       'docblock' => new Zend_CodeGenerator_Php_Docblock(array(
+       'docblock' => new Zend\CodeGenerator_Php\Docblock(array(
            'shortDescription' => 'Fooクラスファイル',
            'tags'             => array(
                array(
@@ -357,7 +357,7 @@ Zend_CodeGeneratorサンプル
 .. code-block:: php
    :linenos:
 
-   $generator = Zend_CodeGenerator_Php_File::fromReflectedFileName($path);
+   $generator = Zend\CodeGenerator_Php\File::fromReflectedFileName($path);
    $body = $generator->getBody();
    $body .= "\n\$foo->bar();";
    file_put_contents($path, $generator->generate());
@@ -374,8 +374,8 @@ Zend_CodeGeneratorサンプル
 .. code-block:: php
    :linenos:
 
-   $generator = Zend_CodeGenerator_Php_Class::fromReflection(
-       new Zend_Reflection_Class($class)
+   $generator = Zend\CodeGenerator_Php\Class::fromReflection(
+       new Zend\Reflection\Class($class)
    );
    $generator->setMethod(array(
        'name'       => 'setBaz',
@@ -383,14 +383,14 @@ Zend_CodeGeneratorサンプル
            array('name' => 'baz'),
        ),
        'body'       => '$this->_baz = $baz;' . "\n" . 'return $this;',
-       'docblock'   => new Zend_CodeGenerator_Php_Docblock(array(
+       'docblock'   => new Zend\CodeGenerator_Php\Docblock(array(
            'shortDescription' => 'bazプロパティーを設定',
            'tags'             => array(
-               new Zend_CodeGenerator_Php_Docblock_Tag_Param(array(
+               new Zend\CodeGenerator\Php\Docblock\Tag\Param(array(
                    'paramName' => 'baz',
                    'datatype'  => 'string'
                )),
-               new Zend_CodeGenerator_Php_Docblock_Tag_Return(array(
+               new Zend\CodeGenerator\Php\Docblock\Tag\Return(array(
                    'datatype'  => 'string',
                )),
            ),

@@ -31,7 +31,7 @@ jedem Level an Tiefe in der Anwendung: Site, Controller, Aktion und potentiell R
    :linenos:
 
    // Setzen des Controller und Aktion Namens als Titel Segment:
-   $request = Zend_Controller_Front::getInstance()->getRequest();
+   $request = Zend\Controller\Front::getInstance()->getRequest();
    $this->headTitle($request->getActionName())
         ->headTitle($request->getControllerName());
 

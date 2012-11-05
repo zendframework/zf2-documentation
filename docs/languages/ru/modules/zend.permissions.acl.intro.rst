@@ -30,11 +30,11 @@
 -------
 
 Создать ресурс в ``Zend_Acl`` очень просто. ``Zend_Acl`` предоставляет
-интерфейс ресурса ``Zend_Acl_Resource_Interface`` для облегчения процесса
+интерфейс ресурса ``Zend\Acl_Resource\Interface`` для облегчения процесса
 создания ресурса. Этот интерфейс содержит только один метод,
 *getResourceId()*. Классу достаточно реализовывать этот интерфейс для
 того, чтобы ``Zend_Acl`` рассматривал объект этого класса как
-ресурс. Кроме того, ``Zend_Acl`` предоставляет *Zend_Acl_Resource* в качестве
+ресурс. Кроме того, ``Zend_Acl`` предоставляет *Zend\Acl\Resource* в качестве
 базового класса, который разработчики могут расширять по
 желанию.
 
@@ -65,9 +65,9 @@
 ----
 
 Как и в случае с ресурсами, создавать роль тоже очень просто.
-Все роли должны реализовывать интерфейс ``Zend_Acl_Role_Interface``. Этот
+Все роли должны реализовывать интерфейс ``Zend\Acl_Role\Interface``. Этот
 интерфейс содержит единственный метод *getRoleId()*. Кроме того,
-``Zend_Acl`` предоставляет ``Zend_Acl_Role`` в качестве базового класса,
+``Zend_Acl`` предоставляет ``Zend\Acl\Role`` в качестве базового класса,
 который разработчики могут расширять по желанию.
 
 В ``Zend_Acl`` роль может наследовать от одной или от нескольких
@@ -100,16 +100,16 @@
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
-   $acl->addRole(new Zend_Acl_Role('guest'))
-       ->addRole(new Zend_Acl_Role('member'))
-       ->addRole(new Zend_Acl_Role('admin'));
+   $acl->addRole(new Zend\Acl\Role('guest'))
+       ->addRole(new Zend\Acl\Role('member'))
+       ->addRole(new Zend\Acl\Role('admin'));
 
    $parents = array('guest', 'member', 'admin');
-   $acl->addRole(new Zend_Acl_Role('someUser'), $parents);
+   $acl->addRole(new Zend\Acl\Role('someUser'), $parents);
 
-   $acl->add(new Zend_Acl_Resource('someResource'));
+   $acl->add(new Zend\Acl\Resource('someResource'));
 
    $acl->deny('guest', 'someResource');
    $acl->allow('member', 'someResource');
@@ -157,7 +157,7 @@
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
 .. note::
 
@@ -203,34 +203,34 @@
    |Администратор (administrator)|(Обладает всеми правами)                                                       |Не определено           |
    +-----------------------------+-------------------------------------------------------------------------------+------------------------+
 
-Для этого примера мы используем ``Zend_Acl_Role``, но можно было бы
+Для этого примера мы используем ``Zend\Acl\Role``, но можно было бы
 использовать любой другой класс, реализующий интерфейс
-``Zend_Acl_Role_Interface``. Эти группы могут быть добавлены в реестр ролей
+``Zend\Acl_Role\Interface``. Эти группы могут быть добавлены в реестр ролей
 следующим образом:
 
 .. code-block:: php
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
-   // Добавление групп в реестр ролей с использованием Zend_Acl_Role
+   // Добавление групп в реестр ролей с использованием Zend\Acl\Role
    // Гость не наследует управление доступом
-   $roleGuest = new Zend_Acl_Role('guest');
+   $roleGuest = new Zend\Acl\Role('guest');
    $acl->addRole($roleGuest);
 
    // Сотрудник наследует от гостя
-   $acl->addRole(new Zend_Acl_Role('staff'), $roleGuest);
+   $acl->addRole(new Zend\Acl\Role('staff'), $roleGuest);
 
    /*
    Делает то же самое, что и
-   $acl->addRole(new Zend_Acl_Role('staff'), 'guest');
+   $acl->addRole(new Zend\Acl\Role('staff'), 'guest');
    */
 
    // Редактор наследует от сотрудника
-   $acl->addRole(new Zend_Acl_Role('editor'), 'staff');
+   $acl->addRole(new Zend\Acl\Role('editor'), 'staff');
 
    // Администатор не наследует управление доступом
-   $acl->addRole(new Zend_Acl_Role('administrator'));
+   $acl->addRole(new Zend\Acl\Role('administrator'));
 
 .. _zend.acl.introduction.defining:
 
@@ -256,15 +256,15 @@
    <?php
    require_once 'Zend/Acl.php';
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
    require_once 'Zend/Acl/Role.php';
 
-   $roleGuest = new Zend_Acl_Role('guest');
+   $roleGuest = new Zend\Acl\Role('guest');
    $acl->addRole($roleGuest);
-   $acl->addRole(new Zend_Acl_Role('staff'), $roleGuest);
-   $acl->addRole(new Zend_Acl_Role('editor'), 'staff');
-   $acl->addRole(new Zend_Acl_Role('administrator'));
+   $acl->addRole(new Zend\Acl\Role('staff'), $roleGuest);
+   $acl->addRole(new Zend\Acl\Role('editor'), 'staff');
+   $acl->addRole(new Zend\Acl\Role('administrator'));
 
    // Гость может только просматривать контент
    $acl->allow($roleGuest, null, 'view');

@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.http.response:
 
-Zend_Http_Response
+Zend\Http\Response
 ==================
 
 .. _zend.http.response.introduction:
@@ -9,21 +9,21 @@ Zend_Http_Response
 導入
 --
 
-``Zend_Http_Response`` は、 *HTTP* レスポンスに簡単にアクセスできるようにします。
+``Zend\Http\Response`` は、 *HTTP* レスポンスに簡単にアクセスできるようにします。
 また、 *HTTP*
 レスポンスメッセージをパースするための静的メソッド群も提供します。 通常は、
-``Zend_Http_Response`` は ``Zend_Http_Client`` リクエストの返す結果として使用します。
+``Zend\Http\Response`` は ``Zend\Http\Client`` リクエストの返す結果として使用します。
 
-ほとんどの場合は、Zend_Http_Response オブジェクトのインスタンスを作成するには
+ほとんどの場合は、Zend\Http\Response オブジェクトのインスタンスを作成するには
 fromString() メソッドを使用します。これは、 *HTTP*
-レスポンスメッセージを含む文字列を受け取って新しい Zend_Http_Response
+レスポンスメッセージを含む文字列を受け取って新しい Zend\Http\Response
 オブジェクトを返します。
 
 
 
       .. _zend.http.response.introduction.example-1:
 
-      .. rubric:: ファクトリメソッドを使用した Zend_Http_Response オブジェクトの作成
+      .. rubric:: ファクトリメソッドを使用した Zend\Http\Response オブジェクトの作成
 
       .. code-block:: php
          :linenos:
@@ -39,7 +39,7 @@ fromString() メソッドを使用します。これは、 *HTTP*
          while ($buff = fread($sock, 1024))
              $str .= $sock;
 
-         $response = Zend_Http_Response::fromString($str);
+         $response = Zend\Http\Response::fromString($str);
 
 
 
@@ -64,7 +64,7 @@ fromString() メソッドを使用します。これは、 *HTTP*
 真偽チェック用のメソッド
 ------------
 
-``Zend_Http_Response`` のインスタンスを取得すると、
+``Zend\Http\Response`` のインスタンスを取得すると、
 レスポンスの種類を調べるためのメソッドが使用できるようになります。
 これらのメソッドは、すべて ``TRUE`` あるいは ``FALSE`` を返します。
 
@@ -141,7 +141,7 @@ fromString() メソッドを使用します。これは、 *HTTP*
 
       .. _zend.http.response.acessors.example-1:
 
-      .. rubric:: Zend_Http_Response へのアクセス用メソッドの使用
+      .. rubric:: Zend\Http\Response へのアクセス用メソッドの使用
 
       .. code-block:: php
          :linenos:
@@ -193,29 +193,29 @@ fromString() メソッドを使用します。これは、 *HTTP*
 静的 HTTP レスポンスパーサ
 ----------------
 
-``Zend_Http_Response`` クラスには、内部で使用するメソッドもいくつか含まれています。
+``Zend\Http\Response`` クラスには、内部で使用するメソッドもいくつか含まれています。
 これは、 *HTTP*
 レスポンスメッセージを処理したりパースしたりするためのものです。
 これらのメソッドは静的メソッドとして公開されています。
 つまり外部からでも使用できるということです。特にインスタンスを作成しなくても、
 レスポンスの一部を抽出したりなどといった目的で使用可能です。
 
-   - *int Zend_Http_Response::extractCode($response_str)*: *HTTP* レスポンスコード (たとえば 200 や
+   - *int Zend\Http\Response::extractCode($response_str)*: *HTTP* レスポンスコード (たとえば 200 や
      404 など) を $response_str から抽出し、それを返します。
 
-   - *string Zend_Http_Response::extractMessage($response_str)*: *HTTP* レスポンスメッセージ
+   - *string Zend\Http\Response::extractMessage($response_str)*: *HTTP* レスポンスメッセージ
      (たとえば "OK" や "File Not Found" など) を $response_str から抽出し、それを返します。
 
-   - *string Zend_Http_Response::extractVersion($response_str)*: *HTTP* バージョン (たとえば 1.1 や 1.0
+   - *string Zend\Http\Response::extractVersion($response_str)*: *HTTP* バージョン (たとえば 1.1 や 1.0
      など) を $response_str から抽出し、それを返します。
 
-   - *array Zend_Http_Response::extractHeaders($response_str)*: *HTTP* レスポンスヘッダを $response_str
+   - *array Zend\Http\Response::extractHeaders($response_str)*: *HTTP* レスポンスヘッダを $response_str
      から抽出し、それを配列で返します。
 
-   - *string Zend_Http_Response::extractBody($response_str)*: *HTTP* レスポンス本文を $response_str
+   - *string Zend\Http\Response::extractBody($response_str)*: *HTTP* レスポンス本文を $response_str
      から抽出し、それを返します。
 
-   - *string Zend_Http_Response::responseCodeAsText($code = null, $http11 = true)*: レスポンスコード $code
+   - *string Zend\Http\Response::responseCodeAsText($code = null, $http11 = true)*: レスポンスコード $code
      に対応する、標準的な *HTTP* レスポンスメッセージを取得します。 たとえば $code
      が 500 の場合は "Internal Server Error" を返します。 $http11 が ``TRUE`` の場合
      (デフォルト) は *HTTP*/1.1 のメッセージを、 そうでない場合は *HTTP*/1.0
@@ -228,12 +228,12 @@ fromString() メソッドを使用します。これは、 *HTTP*
 パーサメソッド以外にも、このクラスには 一般的な *HTTP*
 レスポンスエンコーディングに対応したデコーダが含まれています。
 
-   - *string Zend_Http_Response::decodeChunkedBody($body)*: "Content-Transfer-Encoding: Chunked"
+   - *string Zend\Http\Response::decodeChunkedBody($body)*: "Content-Transfer-Encoding: Chunked"
      の本文をデコードします。
 
-   - *string Zend_Http_Response::decodeGzip($body)*: "Content-Encoding: gzip" の本文をデコードします。
+   - *string Zend\Http\Response::decodeGzip($body)*: "Content-Encoding: gzip" の本文をデコードします。
 
-   - *string Zend_Http_Response::decodeDeflate($body)*: "Content-Encoding: deflate"
+   - *string Zend\Http\Response::decodeDeflate($body)*: "Content-Encoding: deflate"
      の本文をデコードします。
 
 

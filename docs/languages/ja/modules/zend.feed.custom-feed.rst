@@ -24,7 +24,7 @@
     * この独自エントリクラスは、自動的にフィード URI を識別 (オプション) して
     * 名前空間を追加します
     */
-   class MyEntry extends Zend_Feed_Entry_Atom
+   class MyEntry extends Zend\Feed_Entry\Atom
    {
 
        public function __construct($uri = 'http://www.example.com/myfeed/',
@@ -32,7 +32,7 @@
        {
            parent::__construct($uri, $xml);
 
-           Zend_Feed::registerNamespace('myns',
+           Zend\Feed\Feed::registerNamespace('myns',
                                         'http://www.example.com/myns/1.0');
        }
 

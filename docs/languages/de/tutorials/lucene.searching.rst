@@ -57,7 +57,7 @@ Das ``score`` Feld sind Trefferpunkte. Such Ergebnisse werden standardmäßig na
 besten Ergebnisse werden als erstes zurückgegeben).
 
 Es ist auch möglich Ergebnissets anhand von spezifischen Feldwerten zu sortieren. Siehe die
-:ref:`Zend_Search_Lucene Dokumentation <zend.search.lucene.searching.sorting>` für mehr Details über diese
+:ref:`Zend\Search\Lucene Dokumentation <zend.search.lucene.searching.sorting>` für mehr Details über diese
 Möglichkeit.
 
 Das Beispiel demonstriert auch eine Möglichkeit um auf gespeicherte Felder zugreifen zu können (z.B.

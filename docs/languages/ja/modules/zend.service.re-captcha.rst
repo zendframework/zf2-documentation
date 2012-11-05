@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.recaptcha:
 
-Zend_Service_ReCaptcha
+Zend\Service\ReCaptcha
 ======================
 
 .. _zend.service.recaptcha.introduction:
@@ -9,7 +9,7 @@ Zend_Service_ReCaptcha
 導入
 --
 
-``Zend_Service_ReCaptcha`` は `reCAPTCHA Web Service`_ 用のクライアントです。reCAPTCHA
+``Zend\Service\ReCaptcha`` は `reCAPTCHA Web Service`_ 用のクライアントです。reCAPTCHA
 のサイトによると、 "reCAPTCHA is a free CAPTCHA service that helps to digitize books (reCAPTCHA
 はフリーな CAPTCHA サービスで、 書籍の電子化を支援しています)" とのことです。
 reCAPTCHA は、ユーザにふたつの単語を入力させます。 ひとつは実際の CAPTCHA
@@ -27,7 +27,7 @@ reCAPTCHA サービスを使用するには、 `アカウントのサインア�
 単純な使用法
 ------
 
-``Zend_Service_ReCaptcha`` オブジェクトのインスタンスを作成し、
+``Zend\Service\ReCaptcha`` オブジェクトのインスタンスを作成し、
 公開鍵と秘密鍵を渡します。
 
 .. _zend.service.recaptcha.example-1:
@@ -37,7 +37,7 @@ reCAPTCHA サービスを使用するには、 `アカウントのサインア�
 .. code-block:: php
    :linenos:
 
-   $recaptcha = new Zend_Service_ReCaptcha($pubKey, $privKey);
+   $recaptcha = new Zend\Service\ReCaptcha($pubKey, $privKey);
 
 reCAPTCHA をレンダリングするには、 ``getHTML()`` メソッドをコールするだけです。
 
@@ -67,7 +67,7 @@ reCAPTCHA をレンダリングするには、 ``getHTML()`` メソッドをコ�
    );
 
 結果が得られたら、正しいものだったかどうかを確認します。結果は
-``Zend_Service_ReCaptcha_Response`` オブジェクトとなり、 このオブジェクトは ``isValid()``
+``Zend\Service_ReCaptcha\Response`` オブジェクトとなり、 このオブジェクトは ``isValid()``
 メソッドを提供しています。
 
 .. _zend.service.recaptcha.example-4:
@@ -91,7 +91,7 @@ reCAPTCHA をレンダリングするには、 ``getHTML()`` メソッドをコ�
 メールアドレスの隠蔽
 ----------
 
-``Zend_Service_ReCaptcha_MailHide`` を使うと、
+``Zend\Service_ReCaptcha\MailHide`` を使うと、
 メールアドレスを隠蔽できます。メールアドレスの一部分を、 reCAPTCHA
 チャレンジのポップアップウィンドウに置き換えます。
 チャレンジを解決すると、完全なメールアドレスがあらわれるというわけです。
@@ -111,7 +111,7 @@ reCAPTCHA をレンダリングするには、 ``getHTML()`` メソッドをコ�
 
    // mailhide コンポーネントのインスタンスを作成し、公開キーと秘密キー
    // そして隠したいメールアドレスを渡します
-   $mailHide = new Zend_Service_ReCaptcha_Mailhide();
+   $mailHide = new Zend\Service_ReCaptcha\Mailhide();
    $mailHide->setPublicKey($pubKey);
    $mailHide->setPrivateKey($privKey);
    $mailHide->setEmail($mail);
@@ -130,7 +130,7 @@ reCAPTCHA をレンダリングするには、 ``getHTML()`` メソッドをコ�
 
       .. _zend.service.recaptcha.mailhide.options.table:
 
-      .. table:: Zend_Service_ReCaptcha_MailHide のオプション
+      .. table:: Zend\Service_ReCaptcha\MailHide のオプション
 
          +---------------+------------------------------------------------+---------------+----------------------------+
          |オプション          |説明                                              |期待する値          |デフォルト値                      |
@@ -160,7 +160,7 @@ reCAPTCHA をレンダリングするには、 ``getHTML()`` メソッドをコ�
 
    // mailhide コンポーネントのインスタンスを作成し、公開キーと秘密キー
    // そして隠したいメールアドレスを渡します
-   $mailHide = new Zend_Service_ReCaptcha_Mailhide();
+   $mailHide = new Zend\Service_ReCaptcha\Mailhide();
    $mailHide->setPublicKey($pubKey);
    $mailHide->setPrivateKey($privKey);
    $mailHide->setOptions(array(

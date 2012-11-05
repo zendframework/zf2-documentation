@@ -17,7 +17,7 @@ basis klasse Zend_Exception.
    <?php
 
    try {
-       Zend_Loader::loadClass('nietbestaandeklasse');
+       Zend\Loader\Loader::loadClass('nietbestaandeklasse');
    } catch (Zend_Exception $e) {
        echo "Gevangen uitzondering: " . get_class($e) . "\n";
        echo "Bericht: " . $e->getMessage() . "\n";

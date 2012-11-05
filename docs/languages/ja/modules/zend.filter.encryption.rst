@@ -16,10 +16,10 @@ Encrypt
    :linenos:
 
    // Mcrypt アダプタを使用します
-   $filter1 = new Zend_Filter_Encrypt(array('adapter' => 'mcrypt'));
+   $filter1 = new Zend\Filter\Encrypt(array('adapter' => 'mcrypt'));
 
    // OpenSSL アダプタを使用します
-   $filter2 = new Zend_Filter_Encrypt(array('adapter' => 'openssl'));
+   $filter2 = new Zend\Filter\Encrypt(array('adapter' => 'openssl'));
 
 別のアダプタを設定するために ``setAdapter()`` を使用することもできます。また
 ``getAdapter()`` メソッドで、実際に設定されているアダプタを取得できます。
@@ -28,7 +28,7 @@ Encrypt
    :linenos:
 
    // Mcrypt アダプタを使用します
-   $filter = new Zend_Filter_Encrypt();
+   $filter = new Zend\Filter\Encrypt();
    $filter->setAdapter('openssl');
 
 .. note::
@@ -101,7 +101,7 @@ Mcrypt での暗号化
    :linenos:
 
    // デフォルト設定の blowfish を使用します
-   $filter = new Zend_Filter_Encrypt('myencryptionkey');
+   $filter = new Zend\Filter\Encrypt('myencryptionkey');
 
    // 自前のベクトルを設定します。それ以外の場合は getVector()
    // をコールしてベクトルを保存しておかないと、後で復号できなくなります
@@ -143,7 +143,7 @@ OpenSSL での暗号化
    :linenos:
 
    // openssl を使用し、秘密鍵を指定します
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
        'adapter' => 'openssl',
        'private' => '/path/to/mykey/private.pem'
    ));
@@ -166,7 +166,7 @@ OpenSSL での暗号化
    :linenos:
 
    // openssl を使用し、秘密鍵を指定します
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
        'adapter' => 'openssl',
        'private' => '/path/to/mykey/private.pem'
    ));
@@ -191,7 +191,7 @@ OpenSSL での暗号化
    :linenos:
 
    // openssl を使用し、秘密鍵を指定します
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
        'adapter' => 'openssl',
        'private' => '/path/to/mykey/private.pem'
    ));
@@ -223,7 +223,7 @@ To have a simplified usage you can set the ``package`` option to ``TRUE``. The d
    :linenos:
 
    // Use openssl and provide a private key
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
        'adapter' => 'openssl',
        'private' => '/path/to/mykey/private.pem',
        'public'  => '/public/key/path/public.pem',
@@ -237,7 +237,7 @@ To have a simplified usage you can set the ``package`` option to ``TRUE``. The d
 
 Now the returned value contains the encrypted value and the envelope. You don't need to get them after the
 compression. But, and this is the negative aspect of this feature, the encrypted value can now only be decrypted by
-using ``Zend_Filter_Encrypt``.
+using ``Zend\Filter\Encrypt``.
 
 .. _zend.filter.set.encrypt.openssl.compressed:
 
@@ -245,7 +245,7 @@ Compressing the content
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Based on the original value, the encrypted value can be a very large string. To reduce the value
-``Zend_Filter_Encrypt`` allows the usage of compression.
+``Zend\Filter\Encrypt`` allows the usage of compression.
 
 The ``compression`` option can eighter be set to the name of a compression adapter, or to an array which sets all
 wished options for the compression adapter.
@@ -254,7 +254,7 @@ wished options for the compression adapter.
    :linenos:
 
    // Use basic compression adapter
-   $filter1 = new Zend_Filter_Encrypt(array(
+   $filter1 = new Zend\Filter\Encrypt(array(
        'adapter'     => 'openssl',
        'private'     => '/path/to/mykey/private.pem',
        'public'      => '/public/key/path/public.pem',
@@ -263,7 +263,7 @@ wished options for the compression adapter.
    ));
 
    // Use basic compression adapter
-   $filter2 = new Zend_Filter_Encrypt(array(
+   $filter2 = new Zend\Filter\Encrypt(array(
        'adapter'     => 'openssl',
        'private'     => '/path/to/mykey/private.pem',
        'public'      => '/public/key/path/public.pem',

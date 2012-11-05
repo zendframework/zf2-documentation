@@ -10,12 +10,12 @@
 الفترة الزمنية التى يتم اعتبار البيانات المحفوظة فى الـ cache و
 بهذا المعرف قابلة للإستخدام "طازجة" . المفهوم الثالث هو التنفيذ
 الشرطى للأكواد, حيث يتم اهمال جزء من الكود و لا يتم تنفيذه و هذا
-يزيد من كفائة الأداء (performance) . الدالة الأساسية (*()Zend_Cache_Core::get*) تم
+يزيد من كفائة الأداء (performance) . الدالة الأساسية (*()Zend\Cache\Core::get*) تم
 تصميمها لتعيد false عندما لا تجد البيانات المطلوبة فى الـ cache
 قابلة للإستخدام . هذا يسمح للمستخدم النهائى (انت المبرمج) من
 تحديد جزء من الكود الذى يريد عمل cache له داخل جملة *{ ... }()if* حيث ان
 الشرط هو هذه الدالة من Zend_Cache . فى نهاية هذه البلوكات يجب ان تقوم
-بحفظ الناتج , بإستخدام (*()Zend_Cache_Core::save*).
+بحفظ الناتج , بإستخدام (*()Zend\Cache\Core::save*).
 
 .. note::
 
@@ -63,7 +63,7 @@
 
       # We make the good instance
       # (of course, the two last arguments are optional)
-      $cache = Zend_Cache::factory($frontendName, $backendName, $frontendOptions, $backendOptions);
+      $cache = Zend\Cache\Cache::factory($frontendName, $backendName, $frontendOptions, $backendOptions);
 
       ?>
 
@@ -74,7 +74,7 @@ parameters للـ backends التى تود إستخدامها.
 
 .. note::
 
-   دائما إستخدم *()Zend_Cache::factory* لتنشئ frontend instance . إنشاء الـ frontend
+   دائما إستخدم *()Zend\Cache\Cache::factory* لتنشئ frontend instance . إنشاء الـ frontend
    instance و الـ backends instance بنفسك مباشرة لن يعمل كما تتوقع.
 
 .. _zend.cache.tags:
@@ -121,10 +121,10 @@ parameters للـ backends التى تود إستخدامها.
    <?php
 
    // clean all records
-   $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_ALL);
 
    // clean only outdated
-   $cache->clean(Zend_Cache::CLEANING_MODE_OLD);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_OLD);
 
    ?>
 إن اردت حذف الـ cache records التى تنتمى الى tags محددة, مثلا 'tagA' و 'tagC'
@@ -135,7 +135,7 @@ parameters للـ backends التى تود إستخدامها.
 
    <?php
 
-   $cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, array('tagA', 'tagC'));
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_MATCHING_TAG, array('tagA', 'tagC'));
 
    ?>
 الـ cleaning modes المتوفرة هى : *CLEANING_MODE_ALL* تقوم بحذف كل الـ cache records

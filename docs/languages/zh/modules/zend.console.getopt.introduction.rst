@@ -4,7 +4,7 @@
 Getopt 简介
 =========
 
-*Zend_Console_Getopt* 类帮助命令行程序解析它们的选项和参数。
+*Zend\Console\Getopt* 类帮助命令行程序解析它们的选项和参数。
 
 当执行你的程序时，用户可以指定命令行参数。这些参数对程序时有意义的，或改变程序的行为，或选择资源，或详细说明参数。许多选项有传统的意义，例如
 "*--verbose*"
@@ -29,7 +29,7 @@ Getopt 简介
 
   parameter 可以作为在 flag 参数之后的分离的参数，或作为同一参数串的一部分，从 flag
   里用等号（"*=*"）分开。后者只被长的 flags 支持。例如， *-u username*\ 、 *--user username*
-  和 *--user=username* 是被 *Zend_Console_Getopt* 支持的格式。
+  和 *--user=username* 是被 *Zend\Console\Getopt* 支持的格式。
 
 - "cluster"：在一个单字串参数里的多个单字符 flags
   组合，由单个短横线引导。例如，"``ls -1str``" 使用一组四个短 flags 。这个命令和 "``ls
@@ -39,18 +39,18 @@ Getopt 简介
 ，"*--user*" 是 **flag**\ ，"*root*" 是 option 的 **parameter**\ ，根据我们的定义 "*mydatabase*" 是
 argument 而不是 option 。
 
-*Zend_Console_Getopt* 提供了接口来声明哪个 flags
+*Zend\Console\Getopt* 提供了接口来声明哪个 flags
 对你的程序有效，如果使用了无效的flag，则输出错误和用法信息，并报告给你的程序代码。
 
 .. note::
 
    **Getopt 不是应用程序框架**
 
-   *Zend_Console_Getopt* **不** 不翻译 flags 和 parameters
+   *Zend\Console\Getopt* **不** 不翻译 flags 和 parameters
    的意思，这个类也不实现程序流程或调用程序代码。你必需在你自己的程序代码中实现这些动作。你可以使用
-   *Zend_Console_Getopt* 来解析命令行和提供面向对象的方法来查询由用户给定的 options
+   *Zend\Console\Getopt* 来解析命令行和提供面向对象的方法来查询由用户给定的 options
    ，但使用这些信息去调用程序的部分应当在其它 PHP 类里。
 
-后面的章节描述 *Zend_Console_Getopt* 的用法。
+后面的章节描述 *Zend\Console\Getopt* 的用法。
 
 

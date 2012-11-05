@@ -29,31 +29,31 @@ El tamaño de la página se puede recuperar desde un objeto página:
 Colores
 -------
 
-*PDF* tiene una poderosa capacidad de representación de colores. El módulo ``Zend_Pdf`` soporta la Escala de
+*PDF* tiene una poderosa capacidad de representación de colores. El módulo ``ZendPdf`` soporta la Escala de
 Grises, y los espacios de color RGB y CMYK. Cualquiera de ellos puede ser usado en cualquier lugar, donde el objeto
-``Zend_Pdf_Color`` sea requerido. Las clases ``Zend_Pdf_Color_GrayScale``, ``Zend_Pdf_Color_Rgb`` y
-``Zend_Pdf_Color_Cmyk`` proporcionan esta funcionalidad:
+``ZendPdf\Color`` sea requerido. Las clases ``ZendPdf_Color\GrayScale``, ``ZendPdf_Color\Rgb`` y
+``ZendPdf_Color\Cmyk`` proporcionan esta funcionalidad:
 
 .. code-block:: php
    :linenos:
 
    // $grayLevel (float number). 0.0 (black) - 1.0 (white)
-   $color1 = new Zend_Pdf_Color_GrayScale($grayLevel);
+   $color1 = new ZendPdf_Color\GrayScale($grayLevel);
 
    // $r, $g, $b (float numbers). 0.0 (min intensity) - 1.0 (max intensity)
-   $color2 = new Zend_Pdf_Color_Rgb($r, $g, $b);
+   $color2 = new ZendPdf_Color\Rgb($r, $g, $b);
 
    // $c, $m, $y, $k (float numbers). 0.0 (min intensity) - 1.0 (max intensity)
-   $color3 = new Zend_Pdf_Color_Cmyk($c, $m, $y, $k);
+   $color3 = new ZendPdf_Color\Cmyk($c, $m, $y, $k);
 
-Los estilos de colores *HTML* también se proporcionan con la clase ``Zend_Pdf_Color_Html``:
+Los estilos de colores *HTML* también se proporcionan con la clase ``ZendPdf_Color\Html``:
 
 .. code-block:: php
    :linenos:
 
-   $color1 = new Zend_Pdf_Color_Html('#3366FF');
-   $color2 = new Zend_Pdf_Color_Html('silver');
-   $color3 = new Zend_Pdf_Color_Html('forestgreen');
+   $color1 = new ZendPdf_Color\Html('#3366FF');
+   $color2 = new ZendPdf_Color\Html('silver');
+   $color3 = new ZendPdf_Color\Html('forestgreen');
 
 .. _zend.pdf.drawing.shape-drawing:
 
@@ -62,7 +62,7 @@ Dibujo de Formas
 
 Todas las operaciones de dibujo se puede hacer en un contexto de página *PDF*.
 
-La clase ``Zend_Pdf_Page`` proporciona un conjunto de primitivas de dibujo:
+La clase ``ZendPdf\Page`` proporciona un conjunto de primitivas de dibujo:
 
 .. code-block:: php
    :linenos:
@@ -74,7 +74,7 @@ La clase ``Zend_Pdf_Page`` proporciona un conjunto de primitivas de dibujo:
     * @param float $y1
     * @param float $x2
     * @param float $y2
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function drawLine($x1, $y1, $x2, $y2);
 
@@ -85,20 +85,20 @@ La clase ``Zend_Pdf_Page`` proporciona un conjunto de primitivas de dibujo:
     * Dibujar un rectángulo.
     *
     * Rellenar los tipos:
-    * Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE - rellenar el rectángulo
+    * ZendPdf\Page::SHAPE_DRAW_FILL_AND_STROKE - rellenar el rectángulo
     *                                             y delinearlo (por defecto)
-    * Zend_Pdf_Page::SHAPE_DRAW_STROKE          - delinear el rectángulo
-    * Zend_Pdf_Page::SHAPE_DRAW_FILL            - rellenar el rectángulo
+    * ZendPdf\Page::SHAPE_DRAW_STROKE          - delinear el rectángulo
+    * ZendPdf\Page::SHAPE_DRAW_FILL            - rellenar el rectángulo
     *
     * @param float $x1
     * @param float $y1
     * @param float $x2
     * @param float $y2
     * @param integer $fillType
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function drawRectangle($x1, $y1, $x2, $y2,
-                       $fillType = Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE);
+                       $fillType = ZendPdf\Page::SHAPE_DRAW_FILL_AND_STROKE);
 
 .. code-block:: php
    :linenos:
@@ -106,8 +106,8 @@ La clase ``Zend_Pdf_Page`` proporciona un conjunto de primitivas de dibujo:
    /**
     * Dibujar un polígono.
     *
-    * Si $fillType es Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE o
-    * Zend_Pdf_Page::SHAPE_DRAW_FILL, entonces el polígono se cierra automáticamente.
+    * Si $fillType es ZendPdf\Page::SHAPE_DRAW_FILL_AND_STROKE o
+    * ZendPdf\Page::SHAPE_DRAW_FILL, entonces el polígono se cierra automáticamente.
     * Véase la descripción detallada de estos métodos en la documentación de PDF
     * (sección 4.4.2 Path painting Operators, Filling)
     *
@@ -115,13 +115,13 @@ La clase ``Zend_Pdf_Page`` proporciona un conjunto de primitivas de dibujo:
     * @param array $y  - array de float (la coordenada Y de los vértices)
     * @param integer $fillType
     * @param integer $fillMethod
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function drawPolygon($x, $y,
                                $fillType =
-                                   Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE,
+                                   ZendPdf\Page::SHAPE_DRAW_FILL_AND_STROKE,
                                $fillMethod =
-                                   Zend_Pdf_Page::FILL_METHOD_NON_ZERO_WINDING);
+                                   ZendPdf\Page::FILL_METHOD_NON_ZERO_WINDING);
 
 .. code-block:: php
    :linenos:
@@ -151,7 +151,7 @@ La clase ``Zend_Pdf_Page`` proporciona un conjunto de primitivas de dibujo:
     * @param mixed $param4
     * @param mixed $param5
     * @param mixed $param6
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function  drawCircle($x,
                                $y,
@@ -181,7 +181,7 @@ La clase ``Zend_Pdf_Page`` proporciona un conjunto de primitivas de dibujo:
     * @param mixed $param5
     * @param mixed $param6
     * @param mixed $param7
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function drawEllipse($x1,
                                $y1,
@@ -212,8 +212,8 @@ descripción detallada más abajo).
     * @param float $y
     * @param string $charEncoding (opcional) Codificación de caracteres del texto
     * fuente. El valor por defecto es la codificación actual y local.
-    * @throws Zend_Pdf_Exception
-    * @return Zend_Pdf_Page
+    * @throws ZendPdf\Exception
+    * @return ZendPdf\Page
     */
    public function drawText($text, $x, $y, $charEncoding = '');
 
@@ -231,7 +231,7 @@ descripción detallada más abajo).
 Por defecto, los strings de texto se interpretan usando el método de codificación de la localización actual. Si
 tiene un string que utiliza un método de codificación diferente (como un string UTF-8 a leer desde un archivo en
 disco, o un string MacRoman obtenido a partir del legado de una base de datos), puede indicar la codificación de
-caracteres a llamar en tiempo de dibujo y ``Zend_Pdf`` se encargará de la conversión. Puede proporcionar la
+caracteres a llamar en tiempo de dibujo y ``ZendPdf`` se encargará de la conversión. Puede proporcionar la
 fuente de cualquier método de codificación de strings soportados por la función de *PHP* *iconv()*:
 
 .. _zend.pdf.drawing.text-drawing.example-2:
@@ -254,8 +254,8 @@ fuente de cualquier método de codificación de strings soportados por la funci�
 Uso de Fuentes
 --------------
 
-``Zend_Pdf_Page::drawText()`` utiliza la fuente y el tamaño actual de la fuente de la página, que se establece
-con el método ``Zend_Pdf_Page::setFont()``:
+``ZendPdf\Page::drawText()`` utiliza la fuente y el tamaño actual de la fuente de la página, que se establece
+con el método ``ZendPdf\Page::setFont()``:
 
 .. code-block:: php
    :linenos:
@@ -263,20 +263,20 @@ con el método ``Zend_Pdf_Page::setFont()``:
    /**
     * Establecer la fuente actual.
     *
-    * @param Zend_Pdf_Resource_Font $font
+    * @param ZendPdf_Resource\Font $font
     * @param float $fontSize
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
-   public function setFont(Zend_Pdf_Resource_Font $font, $fontSize);
+   public function setFont(ZendPdf_Resource\Font $font, $fontSize);
 
 Los documentos *PDF* soportan fuentes PostScript Type 1 y TrueType, así como dos tipos especializados de *PDF*,
 Type 3 y fuentes compuestas. También hay 14 fuentes estándar Tipo 1 incorporadas para cada visor *PDF*: Courier
 (4 estilos), Helvetica (4 estilos), Times (4 estilos), Symbol y Zapf Dingbats.
 
-``Zend_Pdf`` actualmente soporta el estándar de 14 fuentes *PDF*, así como sus propias fuentes personalizadas
+``ZendPdf`` actualmente soporta el estándar de 14 fuentes *PDF*, así como sus propias fuentes personalizadas
 TrueType. Los objetos Font se obtienen a través de una de los dos métodos de fábrica:
-``Zend_Pdf_Font::fontWithName($fontName)`` para las 14 fuentes estándar *PDF* o
-``Zend_Pdf_Font::fontWithPath($filePath)`` para fuentes personalizadas.
+``ZendPdf\Font::fontWithName($fontName)`` para las 14 fuentes estándar *PDF* o
+``ZendPdf\Font::fontWithPath($filePath)`` para fuentes personalizadas.
 
 .. _zend.pdf.drawing.using-fonts.example-1:
 
@@ -287,41 +287,41 @@ TrueType. Los objetos Font se obtienen a través de una de los dos métodos de f
 
    ...
    // Crear una fuente nueva
-   $font = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA);
+   $font = ZendPdf\Font::fontWithName(ZendPdf\Font::FONT_HELVETICA);
 
    // Aplicar la fuente
    $pdfPage->setFont($font, 36);
    ...
 
-Los nombres de las 14 constantes para el tipo de letra estándar de PDF se definen en la clase ``Zend_Pdf_Font``:
+Los nombres de las 14 constantes para el tipo de letra estándar de PDF se definen en la clase ``ZendPdf\Font``:
 
-   - ``Zend_Pdf_Font::FONT_COURIER``
+   - ``ZendPdf\Font::FONT_COURIER``
 
-   - ``Zend_Pdf_Font::FONT_COURIER_BOLD``
+   - ``ZendPdf\Font::FONT_COURIER_BOLD``
 
-   - ``Zend_Pdf_Font::FONT_COURIER_ITALIC``
+   - ``ZendPdf\Font::FONT_COURIER_ITALIC``
 
-   - ``Zend_Pdf_Font::FONT_COURIER_BOLD_ITALIC``
+   - ``ZendPdf\Font::FONT_COURIER_BOLD_ITALIC``
 
-   - ``Zend_Pdf_Font::FONT_TIMES``
+   - ``ZendPdf\Font::FONT_TIMES``
 
-   - ``Zend_Pdf_Font::FONT_TIMES_BOLD``
+   - ``ZendPdf\Font::FONT_TIMES_BOLD``
 
-   - ``Zend_Pdf_Font::FONT_TIMES_ITALIC``
+   - ``ZendPdf\Font::FONT_TIMES_ITALIC``
 
-   - ``Zend_Pdf_Font::FONT_TIMES_BOLD_ITALIC``
+   - ``ZendPdf\Font::FONT_TIMES_BOLD_ITALIC``
 
-   - ``Zend_Pdf_Font::FONT_HELVETICA``
+   - ``ZendPdf\Font::FONT_HELVETICA``
 
-   - ``Zend_Pdf_Font::FONT_HELVETICA_BOLD``
+   - ``ZendPdf\Font::FONT_HELVETICA_BOLD``
 
-   - ``Zend_Pdf_Font::FONT_HELVETICA_ITALIC``
+   - ``ZendPdf\Font::FONT_HELVETICA_ITALIC``
 
-   - ``Zend_Pdf_Font::FONT_HELVETICA_BOLD_ITALIC``
+   - ``ZendPdf\Font::FONT_HELVETICA_BOLD_ITALIC``
 
-   - ``Zend_Pdf_Font::FONT_SYMBOL``
+   - ``ZendPdf\Font::FONT_SYMBOL``
 
-   - ``Zend_Pdf_Font::FONT_ZAPFDINGBATS``
+   - ``ZendPdf\Font::FONT_ZAPFDINGBATS``
 
 
 
@@ -343,7 +343,7 @@ excepción:
 
    ...
    // Crear una nueva fuente
-   $goodDogCoolFont = Zend_Pdf_Font::fontWithPath('/path/to/GOODDC__.TTF');
+   $goodDogCoolFont = ZendPdf\Font::fontWithPath('/path/to/GOODDC__.TTF');
 
    // Aplicar la fuente
    $pdfPage->setFont($goodDogCoolFont, 36);
@@ -363,8 +363,8 @@ una opción 'do not embed' ("no incluir") al método de fábrica:
 
    ...
    // Crear una nueva fuente
-   $goodDogCoolFont = Zend_Pdf_Font::fontWithPath('/path/to/GOODDC__.TTF',
-                                                  Zend_Pdf_Font::EMBED_DONT_EMBED);
+   $goodDogCoolFont = ZendPdf\Font::fontWithPath('/path/to/GOODDC__.TTF',
+                                                  ZendPdf\Font::EMBED_DONT_EMBED);
 
    // Aplicar la fuente
    $pdfPage->setFont($goodDogCoolFont, 36);
@@ -389,9 +389,9 @@ simplemente puede suprimir la excepción:
    :linenos:
 
    ...
-   $font = Zend_Pdf_Font::fontWithPath(
+   $font = ZendPdf\Font::fontWithPath(
               '/path/to/unEmbeddableFont.ttf',
-              Zend_Pdf_Font::EMBED_SUPPRESS_EMBED_EXCEPTION
+              ZendPdf\Font::EMBED_SUPPRESS_EMBED_EXCEPTION
            );
    ...
 
@@ -411,8 +411,8 @@ con una opción:
    :linenos:
 
    ...
-   $font = Zend_Pdf_Font::fontWithPath('/path/to/someReallyBigFont.ttf',
-                                       Zend_Pdf_Font::EMBED_DONT_COMPRESS);
+   $font = ZendPdf\Font::fontWithPath('/path/to/someReallyBigFont.ttf',
+                                       ZendPdf\Font::EMBED_DONT_COMPRESS);
    ...
 
 Por último, en caso necesario, puede combinar las opciones de la integración mediante el operador binario OR:
@@ -425,10 +425,10 @@ Por último, en caso necesario, puede combinar las opciones de la integración m
    :linenos:
 
    ...
-   $font = Zend_Pdf_Font::fontWithPath(
+   $font = ZendPdf\Font::fontWithPath(
                $someUserSelectedFontPath,
-               (Zend_Pdf_Font::EMBED_SUPPRESS_EMBED_EXCEPTION |
-               Zend_Pdf_Font::EMBED_DONT_COMPRESS));
+               (ZendPdf\Font::EMBED_SUPPRESS_EMBED_EXCEPTION |
+               ZendPdf\Font::EMBED_DONT_COMPRESS));
    ...
 
 .. _zend.pdf.drawing.standard-fonts-limitations:
@@ -440,7 +440,7 @@ Las fuentes estándar *PDF* utilizan internamente varias codificaciones de un so
 Sixth Edition, version 1.7`_ Apéndice D para más detalles). Son, en general, igual al conjunto de caracteres
 Latin1 (excepto las fuentes ZapfDingbats y Symbol).
 
-``Zend_Pdf`` usa CP1252 (WinLatin1) para dibujar el texto con las fuentes estándar.
+``ZendPdf`` usa CP1252 (WinLatin1) para dibujar el texto con las fuentes estándar.
 
 El texto todavía se puede proporcionar en cualquier otra codificación, que debe ser especificada si ésta es
 distinto de una fuente local actual. Realmente, sólo se dibujarán caracteres WinLatin1.
@@ -453,7 +453,7 @@ distinto de una fuente local actual. Realmente, sólo se dibujarán caracteres W
    :linenos:
 
    ...
-   $font = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER);
+   $font = ZendPdf\Font::fontWithName(ZendPdf\Font::FONT_COURIER);
    $pdfPage->setFont($font, 36)
            ->drawText('Euro sign - €', 72, 720, 'UTF-8')
            ->drawText('Text with umlauts - à è ì', 72, 650, 'UTF-8');
@@ -464,12 +464,12 @@ distinto de una fuente local actual. Realmente, sólo se dibujarán caracteres W
 Extracción de las fuentes
 -------------------------
 
-El módulo ``Zend_Pdf`` proporciona una posibilidad de extraer las fuentes de los documentos cargados.
+El módulo ``ZendPdf`` proporciona una posibilidad de extraer las fuentes de los documentos cargados.
 
 Puede ser útil para las actualizaciones incrementales de un documento. Sin esta funcionalidad tiene que agregar y
 posiblemente, incrustar una fuente en un documento cada vez que desee actualizarlo.
 
-Los objetos ``Zend_Pdf`` y ``Zend_Pdf_Page`` proporcionan métodos especiales para extraer todas las fuentes
+Los objetos ``ZendPdf`` y ``ZendPdf\Page`` proporcionan métodos especiales para extraer todas las fuentes
 mencionadas en un documento o una página:
 
 .. _zend.pdf.drawing.extracting-fonts.example-1:
@@ -480,15 +480,15 @@ mencionadas en un documento o una página:
    :linenos:
 
    ...
-   $pdf = Zend_Pdf::load($documentPath);
+   $pdf = ZendPdf\Pdf::load($documentPath);
    ...
    // Obtener todas las fuentes del documento
    $fontList = $pdf->extractFonts();
-   $pdf->pages[] = ($page = $pdf->newPage(Zend_Pdf_Page::SIZE_A4));
+   $pdf->pages[] = ($page = $pdf->newPage(ZendPdf\Page::SIZE_A4));
    $yPosition = 700;
    foreach ($fontList as $font) {
        $page->setFont($font, 15);
-       $fontName = $font->getFontName(Zend_Pdf_Font::NAME_POSTSCRIPT,
+       $fontName = $font->getFontName(ZendPdf\Font::NAME_POSTSCRIPT,
                                       'en',
                                       'UTF-8');
        $page->drawText($fontName . ': The quick brown fox jumps over the lazy dog',
@@ -511,16 +511,16 @@ mencionadas en un documento o una página:
    :linenos:
 
    ...
-   $pdf = new Zend_Pdf();
+   $pdf = new ZendPdf\Pdf();
    ...
-   $pdf->pages[] = ($page = $pdf->newPage(Zend_Pdf_Page::SIZE_A4));
+   $pdf->pages[] = ($page = $pdf->newPage(ZendPdf\Page::SIZE_A4));
 
-   $font = Zend_Pdf_Font::fontWithPath($fontPath);
+   $font = ZendPdf\Font::fontWithPath($fontPath);
    $page->setFont($font, $fontSize);
    $page->drawText($text, $x, $y);
    ...
    // Este nombre de fuente debe ser almacenado en algún lugar...
-   $fontName = $font->getFontName(Zend_Pdf_Font::NAME_POSTSCRIPT,
+   $fontName = $font->getFontName(ZendPdf\Font::NAME_POSTSCRIPT,
                                   'en',
                                   'UTF-8');
    ...
@@ -531,9 +531,9 @@ mencionadas en un documento o una página:
    :linenos:
 
    ...
-   $pdf = Zend_Pdf::load($docPath);
+   $pdf = ZendPdf\Pdf::load($docPath);
    ...
-   $pdf->pages[] = ($page = $pdf->newPage(Zend_Pdf_Page::SIZE_A4));
+   $pdf->pages[] = ($page = $pdf->newPage(ZendPdf\Page::SIZE_A4));
 
    /* $srcPage->extractFont($fontName) también se puede usar aquí */
    $font = $pdf->extractFont($fontName);
@@ -557,7 +557,7 @@ Las fuentes extraídas pueden ser utilizadas en el lugar de cualquier otra fuent
 
            ...
            $font = $pdf->extractFont($fontName);
-           $originalFont = Zend_Pdf_Font::fontWithPath($fontPath);
+           $originalFont = ZendPdf\Font::fontWithPath($fontPath);
 
            $page->setFont($font /* usar la fuente extraída para dibujar */, $fontSize);
            $xPosition = $x;
@@ -581,7 +581,7 @@ Las fuentes extraídas pueden ser utilizadas en el lugar de cualquier otra fuent
 Dibujo de Imágenes
 ------------------
 
-La clase ``Zend_Pdf_Page`` proporciona el método drawImage() para dibujar la imagen:
+La clase ``ZendPdf\Page`` proporciona el método drawImage() para dibujar la imagen:
 
 .. code-block:: php
    :linenos:
@@ -589,16 +589,16 @@ La clase ``Zend_Pdf_Page`` proporciona el método drawImage() para dibujar la im
    /**
     * Dibujar una imagen en una posición específica de la página.
     *
-    * @param Zend_Pdf_Resource_Image $image
+    * @param ZendPdf_Resource\Image $image
     * @param float $x1
     * @param float $y1
     * @param float $x2
     * @param float $y2
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
-   public function drawImage(Zend_Pdf_Resource_Image $image, $x1, $y1, $x2, $y2);
+   public function drawImage(ZendPdf_Resource\Image $image, $x1, $y1, $x2, $y2);
 
-Los objetos imagen deben ser creados con el método ``Zend_Pdf_Image::imageWithPath($filePath)`` (imágenes JPG,
+Los objetos imagen deben ser creados con el método ``ZendPdf\Image::imageWithPath($filePath)`` (imágenes JPG,
 PNG y TIFF ahora son soportadas):
 
 .. _zend.pdf.drawing.image-drawing.example-1:
@@ -610,7 +610,7 @@ PNG y TIFF ahora son soportadas):
 
    ...
    // Cargar la imagen
-   $image = Zend_Pdf_Image::imageWithPath('my_image.jpg');
+   $image = ZendPdf\Image::imageWithPath('my_image.jpg');
 
    $pdfPage->drawImage($image, 100, 100, 400, 300);
    ...
@@ -627,13 +627,13 @@ Estilo de Dibujo de Líneas
 --------------------------
 
 El estilo del dibujo de líneas está definido por el ancho de línea, el color de línea y el patrón del tipo de
-línea. Todo esto parámetros pueden ser asignados por los métodos de la clase ``Zend_Pdf_Page``:
+línea. Todo esto parámetros pueden ser asignados por los métodos de la clase ``ZendPdf\Page``:
 
 .. code-block:: php
    :linenos:
 
    /** Establecer el color de la línea. */
-   public function setLineColor(Zend_Pdf_Color $color);
+   public function setLineColor(ZendPdf\Color $color);
 
    /** Establecer el ancho de la línea. */
    public function setLineWidth(float $width);
@@ -647,7 +647,7 @@ línea. Todo esto parámetros pueden ser asignados por los métodos de la clase 
     *
     * @param array $pattern
     * @param array $phase
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function setLineDashingPattern($pattern, $phase = 0);
 
@@ -656,18 +656,18 @@ línea. Todo esto parámetros pueden ser asignados por los métodos de la clase 
 Estilo Relleno
 --------------
 
-Los métodos ``Zend_Pdf_Page::drawRectangle()``, ``Zend_Pdf_Page::drawPolygon()``, ``Zend_Pdf_Page::drawCircle()``
-y ``Zend_Pdf_Page::drawEllipse()`` toman el argumento ``$fillType`` como un parámetro opcional. Puede ser:
+Los métodos ``ZendPdf\Page::drawRectangle()``, ``ZendPdf\Page::drawPolygon()``, ``ZendPdf\Page::drawCircle()``
+y ``ZendPdf\Page::drawEllipse()`` toman el argumento ``$fillType`` como un parámetro opcional. Puede ser:
 
-- ``Zend_Pdf_Page::SHAPE_DRAW_STROKE``- forma del trazo
+- ``ZendPdf\Page::SHAPE_DRAW_STROKE``- forma del trazo
 
-- ``Zend_Pdf_Page::SHAPE_DRAW_FILL``- sólo llenar la forma
+- ``ZendPdf\Page::SHAPE_DRAW_FILL``- sólo llenar la forma
 
-- Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE - llenar y trazar (comportamiento por defecto)
+- ZendPdf\Page::SHAPE_DRAW_FILL_AND_STROKE - llenar y trazar (comportamiento por defecto)
 
-El método ``Zend_Pdf_Page::drawPolygon()`` también tiene un parámetro adicional ``$fillMethod``:
+El método ``ZendPdf\Page::drawPolygon()`` también tiene un parámetro adicional ``$fillMethod``:
 
-- Zend_Pdf_Page::FILL_METHOD_NON_ZERO_WINDING (comportamiento por defecto)
+- ZendPdf\Page::FILL_METHOD_NON_ZERO_WINDING (comportamiento por defecto)
 
   :t:`PDF reference`  esta norma se describe como sigue:
   | La tortuosa regla del número distinto de cero determina si un punto está dentro de un camino de un rayo
@@ -690,7 +690,7 @@ El método ``Zend_Pdf_Page::drawPolygon()`` también tiene un parámetro adicion
 
 
 
-- Zend_Pdf_Page::FILL_METHOD_EVEN_ODD
+- ZendPdf\Page::FILL_METHOD_EVEN_ODD
 
   :t:`PDF reference`  describe esta norma como sigue:
   | Una alternativa al tortuoso número distinto de cero es la regla par-impar. Esta norma determina la
@@ -717,7 +717,7 @@ Rotaciones
 ^^^^^^^^^^
 
 La página *PDF* se puede rotar antes de aplicar cualquier operación de dibujo. Se puede hacer con el método
-``Zend_Pdf_Page::rotate()``:
+``ZendPdf\Page::rotate()``:
 
 .. code-block:: php
    :linenos:
@@ -728,7 +728,7 @@ La página *PDF* se puede rotar antes de aplicar cualquier operación de dibujo.
     * @param float $x  - la coordenada X del punto de rotación
     * @param float $y  - la coordenada Y del punto de rotación
     * @param float $angle - ángulo de rotación
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function rotate($x, $y, $angle);
 
@@ -737,7 +737,7 @@ La página *PDF* se puede rotar antes de aplicar cualquier operación de dibujo.
 A partir de Zend Framework 1.8, el escalado
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La escala de transformación es proporcionada por el método: ``Zend_Pdf_Page::scale()``:
+La escala de transformación es proporcionada por el método: ``ZendPdf\Page::scale()``:
 
 .. code-block:: php
    :linenos:
@@ -747,7 +747,7 @@ La escala de transformación es proporcionada por el método: ``Zend_Pdf_Page::s
     *
     * @param float $xScale - factor de escala de la dimensión X
     * @param float $yScale - factor de escala de la dimensión Y
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function scale($xScale, $yScale);
 
@@ -756,7 +756,7 @@ La escala de transformación es proporcionada por el método: ``Zend_Pdf_Page::s
 A partir de Zend Framework 1.8, traducir
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-El desplazamiento del sistema de coordenadas es realizado por el método ``Zend_Pdf_Page::translate()``:
+El desplazamiento del sistema de coordenadas es realizado por el método ``ZendPdf\Page::translate()``:
 
 .. code-block:: php
    :linenos:
@@ -766,7 +766,7 @@ El desplazamiento del sistema de coordenadas es realizado por el método ``Zend_
     *
     * @param float $xShift - desplazamiento de la coordenada X
     * @param float $yShift - desplazamiento de la coordenada Y
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function translate($xShift, $yShift);
 
@@ -775,7 +775,7 @@ El desplazamiento del sistema de coordenadas es realizado por el método ``Zend_
 A partir de Zend Framework 1.8, el sesgo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-El sesgo de una página se puede hacer utilizando el método ``Zend_Pdf_Page::skew()``:
+El sesgo de una página se puede hacer utilizando el método ``ZendPdf\Page::skew()``:
 
 .. code-block:: php
    :linenos:
@@ -787,7 +787,7 @@ El sesgo de una página se puede hacer utilizando el método ``Zend_Pdf_Page::sk
     * @param float $y  - la coordenada Y del eje del punto de sesgo
     * @param float $xAngle - ángulo de sesgo en el eje X
     * @param float $yAngle - ángulo de sesgo en el eje Y
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function skew($x, $y, $xAngle, $yAngle);
 
@@ -801,7 +801,7 @@ color de relleno, estilo de línea, rotación de la página, clip del área) se 
 luego. Guardar la operación pone los datos a un estado de pila de gráficos, la operación de restauración se
 recupera a partir de ahí.
 
-Existen dos métodos en la clase ``Zend_Pdf_Page`` para estas operaciones:
+Existen dos métodos en la clase ``ZendPdf\Page`` para estas operaciones:
 
 .. code-block:: php
    :linenos:
@@ -812,7 +812,7 @@ Existen dos métodos en la clase ``Zend_Pdf_Page`` para estas operaciones:
     * área de recorte y cualquier rotación/traducción/escalado que ha sido
     * aplicada.
     *
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function saveGS();
 
@@ -820,7 +820,7 @@ Existen dos métodos en la clase ``Zend_Pdf_Page`` para estas operaciones:
     * Restablecer los gráficos que se guardaron con la última llamada a
     * saveGS().
     *
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function restoreGS();
 
@@ -829,10 +829,10 @@ Existen dos métodos en la clase ``Zend_Pdf_Page`` para estas operaciones:
 Señalar el área de recorte
 --------------------------
 
-*PDF* y el módulo ``Zend_Pdf`` dan soporte de recorte a la zona de dibujo. La zona actual de Clip límita las
+*PDF* y el módulo ``ZendPdf`` dan soporte de recorte a la zona de dibujo. La zona actual de Clip límita las
 regiones de la página de los operadores afectados por la pintura. En principio, es la página entera.
 
-La clase ``Zend_Pdf_Page`` proporciona un conjunto de métodos para las operaciones de recorte.
+La clase ``ZendPdf\Page`` proporciona un conjunto de métodos para las operaciones de recorte.
 
 .. code-block:: php
    :linenos:
@@ -844,7 +844,7 @@ La clase ``Zend_Pdf_Page`` proporciona un conjunto de métodos para las operacio
     * @param float $y1
     * @param float $x2
     * @param float $y2
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function clipRectangle($x1, $y1, $x2, $y2);
 
@@ -857,12 +857,12 @@ La clase ``Zend_Pdf_Page`` proporciona un conjunto de métodos para las operacio
     * @param array $x  - array de float (la coordenada X de los vértices)
     * @param array $y  - array de float (la coordenada Y de los vértices)
     * @param integer $fillMethod
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function clipPolygon($x,
                                $y,
                                $fillMethod =
-                                   Zend_Pdf_Page::FILL_METHOD_NON_ZERO_WINDING);
+                                   ZendPdf\Page::FILL_METHOD_NON_ZERO_WINDING);
 
 .. code-block:: php
    :linenos:
@@ -875,7 +875,7 @@ La clase ``Zend_Pdf_Page`` proporciona un conjunto de métodos para las operacio
     * @param float $radius
     * @param float $startAngle
     * @param float $endAngle
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function clipCircle($x,
                               $y,
@@ -901,7 +901,7 @@ La clase ``Zend_Pdf_Page`` proporciona un conjunto de métodos para las operacio
     * @param float $y2
     * @param float $startAngle
     * @param float $endAngle
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function clipEllipse($x1,
                                $y1,
@@ -915,7 +915,7 @@ La clase ``Zend_Pdf_Page`` proporciona un conjunto de métodos para las operacio
 Estilos
 -------
 
-La clase ``Zend_Pdf_Style`` proporciona la funcionalidad de los estilos.
+La clase ``ZendPdf\Style`` proporciona la funcionalidad de los estilos.
 
 Los estilos se pueden utilizar para almacenar un conjunto de parámetros de estado del gráfico y aplicarlo a un
 página *PDF* por una operación:
@@ -926,19 +926,19 @@ página *PDF* por una operación:
    /**
     * Establecer el estilo a utilizar para futuras operaciones de dibujo sobre esta página
     *
-    * @param Zend_Pdf_Style $style
-    * @return Zend_Pdf_Page
+    * @param ZendPdf\Style $style
+    * @return ZendPdf\Page
     */
-   public function setStyle(Zend_Pdf_Style $style);
+   public function setStyle(ZendPdf\Style $style);
 
    /**
     * Regresar el estilo aplicado a la página.
     *
-    * @return Zend_Pdf_Style|null
+    * @return ZendPdf\Style|null
     */
    public function getStyle();
 
-La clase ``Zend_Pdf_Style`` proporciona un conjunto de métodos para obtener o configurar diferentes parámetros de
+La clase ``ZendPdf\Style`` proporciona un conjunto de métodos para obtener o configurar diferentes parámetros de
 estado de los gráficos:
 
 .. code-block:: php
@@ -947,10 +947,10 @@ estado de los gráficos:
    /**
     * Establecer el color de la línea.
     *
-    * @param Zend_Pdf_Color $color
-    * @return Zend_Pdf_Page
+    * @param ZendPdf\Color $color
+    * @return ZendPdf\Page
     */
-   public function setLineColor(Zend_Pdf_Color $color);
+   public function setLineColor(ZendPdf\Color $color);
 
 .. code-block:: php
    :linenos:
@@ -958,7 +958,7 @@ estado de los gráficos:
    /**
     * Obtener el color de la línea.
     *
-    * @return Zend_Pdf_Color|null
+    * @return ZendPdf\Color|null
     */
    public function getLineColor();
 
@@ -969,7 +969,7 @@ estado de los gráficos:
     * Establecer el ancho de la línea.
     *
     * @param float $width
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function setLineWidth($width);
 
@@ -991,7 +991,7 @@ estado de los gráficos:
     *
     * @param array $pattern
     * @param float $phase
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function setLineDashingPattern($pattern, $phase = 0);
 
@@ -1021,10 +1021,10 @@ estado de los gráficos:
    /**
     * Establecer el color de relleno.
     *
-    * @param Zend_Pdf_Color $color
-    * @return Zend_Pdf_Page
+    * @param ZendPdf\Color $color
+    * @return ZendPdf\Page
     */
-   public function setFillColor(Zend_Pdf_Color $color);
+   public function setFillColor(ZendPdf\Color $color);
 
 .. code-block:: php
    :linenos:
@@ -1032,7 +1032,7 @@ estado de los gráficos:
    /**
     * Obtener el color de relleno.
     *
-    * @return Zend_Pdf_Color|null
+    * @return ZendPdf\Color|null
     */
    public function getFillColor();
 
@@ -1042,11 +1042,11 @@ estado de los gráficos:
    /**
     * Establecer la fuente actual.
     *
-    * @param Zend_Pdf_Resource_Font $font
+    * @param ZendPdf_Resource\Font $font
     * @param float $fontSize
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
-   public function setFont(Zend_Pdf_Resource_Font $font, $fontSize);
+   public function setFont(ZendPdf_Resource\Font $font, $fontSize);
 
 .. code-block:: php
    :linenos:
@@ -1055,7 +1055,7 @@ estado de los gráficos:
     * Modificar el tamaño de la fuente actual.
     *
     * @param float $fontSize
-    * @return Zend_Pdf_Page
+    * @return ZendPdf\Page
     */
    public function setFontSize($fontSize);
 
@@ -1065,7 +1065,7 @@ estado de los gráficos:
    /**
     * Obtener la fuente actual.
     *
-    * @return Zend_Pdf_Resource_Font $font
+    * @return ZendPdf_Resource\Font $font
     */
    public function getFont();
 
@@ -1084,9 +1084,9 @@ estado de los gráficos:
 Transparencia
 -------------
 
-El módulo ``Zend_Pdf`` soporta el manejo de la transparencia.
+El módulo ``ZendPdf`` soporta el manejo de la transparencia.
 
-La transparencia puede ser el método ``Zend_Pdf_Page::setAlpha()``:
+La transparencia puede ser el método ``ZendPdf\Page::setAlpha()``:
 
    .. code-block:: php
       :linenos:
@@ -1103,8 +1103,8 @@ La transparencia puede ser el método ``Zend_Pdf_Page::setAlpha()``:
        *
        * @param float $alpha
        * @param string $mode
-       * @throws Zend_Pdf_Exception
-       * @return Zend_Pdf_Page
+       * @throws ZendPdf\Exception
+       * @return ZendPdf\Page
        */
       public function setAlpha($alpha, $mode = 'Normal');
 

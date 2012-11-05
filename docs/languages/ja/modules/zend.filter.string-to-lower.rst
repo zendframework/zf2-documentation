@@ -9,7 +9,7 @@ Tこのフィルタは、入力を全て小文字に変換します。
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringToLower();
+   $filter = new Zend\Filter\StringToLower();
 
    print $filter->filter('SAMPLE');
    // "sample" を返します
@@ -26,10 +26,10 @@ Tこのフィルタは、入力を全て小文字に変換します。
    :linenos:
 
    // UTF-8 を使用
-   $filter = new Zend_Filter_StringToLower('UTF-8');
+   $filter = new Zend\Filter\StringToLower('UTF-8');
 
    //または、構成を使うときに、役に立つことがありえる配列を与えます
-   $filter = new Zend_Filter_StringToLower(array('encoding' => 'UTF-8'));
+   $filter = new Zend\Filter\StringToLower(array('encoding' => 'UTF-8'));
 
    //または後でこのようにします
    $filter->setEncoding('ISO-8859-1');

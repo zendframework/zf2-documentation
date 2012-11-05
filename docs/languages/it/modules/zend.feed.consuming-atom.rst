@@ -4,7 +4,7 @@
 Lettura di un feed Atom
 =======================
 
-*Zend_Feed_Atom* è utilizzato pressappoco allo stesso modo di *Zend_Feed_Rss*. Fornisce lo stesso accesso alle
+*Zend\Feed\Atom* è utilizzato pressappoco allo stesso modo di *Zend\Feed\Rss*. Fornisce lo stesso accesso alle
 proprietà del feed e la possibilità di scorrere gli elementi del feed. La principale differenza è la struttura
 stessa del formato Atom. L'Atom è un successore dell'RSS; è un formato più generalizzato e disegnato per gestire
 più facilmente i feed che forniscono l'intero contenuto all'interno del feed stesso, sdoppiando l'elemento
@@ -21,7 +21,7 @@ Lettura di un feed Atom e stampa di *title* e *summary* per ogni elemento:
 
    <?php
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/');
    echo 'Il feed contiene ' . $feed->count() . ' elementi.' . "\n\n";
    foreach ($feed as $entry) {
        echo 'Titolo: ' . $entry->title() . "\n";

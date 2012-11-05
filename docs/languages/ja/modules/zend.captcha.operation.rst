@@ -4,13 +4,13 @@
 Captcha の方法
 ===========
 
-すべての *CAPTCHA* アダプタは ``Zend_Captcha_Adapter`` を実装しています。
+すべての *CAPTCHA* アダプタは ``Zend\Captcha\Adapter`` を実装しています。
 これは次のようなインターフェイスです。
 
 .. code-block:: php
    :linenos:
 
-   interface Zend_Captcha_Adapter extends Zend_Validate_Interface
+   interface Zend\Captcha\Adapter extends Zend\Validate\Interface
    {
        public function generate();
 
@@ -22,7 +22,7 @@ Captcha の方法
 
        public function getDecorator();
 
-       // Zend_Validate_Interface のための追加のメソッド
+       // Zend\Validate\Interface のための追加のメソッド
        public function isValid($value);
 
        public function getMessages();
@@ -44,10 +44,10 @@ name アクセサを使用して、 *CAPTCHA* の識別子を設定したり取�
    :linenos:
 
    // Zend_View インスタンスを作成します
-   $view = new Zend_View();
+   $view = new Zend\View\View();
 
    // 最初のリクエスト
-   $captcha = new Zend_Captcha_Figlet(array(
+   $captcha = new Zend\Captcha\Figlet(array(
        'name' => 'foo',
        'wordLen' => 6,
        'timeout' => 300,

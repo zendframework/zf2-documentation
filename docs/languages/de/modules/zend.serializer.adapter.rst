@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.serializer.adapter:
 
-Zend_Serializer_Adapter
+Zend\Serializer\Adapter
 =======================
 
 ``Zend_Serializer`` Adapter erzeugen eine Brücke für unterschiedliche Methoden der Serialisierung mit geringem
@@ -10,13 +10,13 @@ Aufwand.
 Jeder Adpater hat andere Vor- und Nachteile. In einigen Fällen kann nicht jeder *PHP* Datentyp (z.B. Objekte) in
 die Repräsentation eines Strings konvertiert werden. In den meisten dieser Fälle wird der Typ in einen ähnlichen
 Typ konvertiert der serialisierbar ist -- zum Beispiel werden *PHP* Objekte oft zu Arrays gecastet. Wenn dies
-fehlschlägt wird eine ``Zend_Serializer_Exception`` geworfen.
+fehlschlägt wird eine ``Zend\Serializer\Exception`` geworfen.
 
 Anbei ist eine Liste der vorhandenen Adapter.
 
 .. _zend.serializer.adapter.phpserialize:
 
-Zend_Serializer_Adapter_PhpSerialize
+Zend\Serializer_Adapter\PhpSerialize
 ------------------------------------
 
 Dieser Adapter verwendet die eingebauten *PHP* Funktionen ``un/serialize`` und ist eine gute Wahl für einen
@@ -26,7 +26,7 @@ Es gibt keine konfigurierbaren Optionen für diesen Adapter.
 
 .. _zend.serializer.adapter.igbinary:
 
-Zend_Serializer_Adapter_Igbinary
+Zend\Serializer_Adapter\Igbinary
 --------------------------------
 
 `Igbinary`_ ist eine Open Source Software welche von Sulake Dynamoid Oy herausgegeben wird. Statt Zeit und Platz
@@ -40,7 +40,7 @@ Dieser Adapter nimnt keine Optionen zur Konfiguration an.
 
 .. _zend.serializer.adapter.wddx:
 
-Zend_Serializer_Adapter_Wddx
+Zend\Serializer_Adapter\Wddx
 ----------------------------
 
 `WDDX`_ (Web Distributed Data eXchange) ist eine Programmier-Sprache-, Plattform- und ein transport-neutraler
@@ -57,7 +57,7 @@ Vorhandene Optionen sind:
 
 .. _zend.serializer.adapter.wddx.table.options:
 
-.. table:: Optionen für Zend_Serializer_Adapter_Wddx
+.. table:: Optionen für Zend\Serializer_Adapter\Wddx
 
    +-------+--------+------------+----------------------------------------------------------+
    |Option |Datentyp|Standardwert|Beschreibung                                              |
@@ -67,7 +67,7 @@ Vorhandene Optionen sind:
 
 .. _zend.serializer.adapter.json:
 
-Zend_Serializer_Adapter_Json
+Zend\Serializer_Adapter\Json
 ----------------------------
 
 Der *JSON* Adapter bietet eine Brücke zur Komponente ``Zend_Json`` und zu ext/json. Lesen Sie bitte die
@@ -77,32 +77,32 @@ Vorhandene Optionen sind:
 
 .. _zend.serializer.adapter.json.table.options:
 
-.. table:: Optionen für Zend_Serializer_Adapter_Json
+.. table:: Optionen für Zend\Serializer_Adapter\Json
 
    +--------------------+-----------------+---------------------+----------------------+
    |Option              |Datentyp         |Standardwert         |Beschreibung          |
    +====================+=================+=====================+======================+
    |cycleCheck          |boolean          |false                |Siehe diesen Abschnitt|
    +--------------------+-----------------+---------------------+----------------------+
-   |objectDecodeType    |Zend_Json::TYPE_*|Zend_Json::TYPE_ARRAY|Siehe diesen Abschnitt|
+   |objectDecodeType    |Zend\Json\Json::TYPE_*|Zend\Json\Json::TYPE_ARRAY|Siehe diesen Abschnitt|
    +--------------------+-----------------+---------------------+----------------------+
    |enableJsonExprFinder|boolean          |false                |Siehe diesen Abschnitt|
    +--------------------+-----------------+---------------------+----------------------+
 
 .. _zend.serializer.adapter.amf03:
 
-Zend_Serializer_Adapter_Amf 0 und 3
+Zend\Serializer_Adapter\Amf 0 und 3
 -----------------------------------
 
-Die *AMF* Adapter ``Zend_Serializer_Adapter_Amf0`` und ``Zend_Serializer_Adapter_Amf3`` bieten eine Brücke zum
-Serialisierer der Komponente ``Zend_Amf``. Lesen Sie bitte die :ref:`Zend_Amf Dokumentation
+Die *AMF* Adapter ``Zend\Serializer_Adapter\Amf0`` und ``Zend\Serializer_Adapter\Amf3`` bieten eine Brücke zum
+Serialisierer der Komponente ``ZendAmf``. Lesen Sie bitte die :ref:`ZendAmf Dokumentation
 <zend.amf.introduction>` für weitere Informationen.
 
 Es gibt keine Optionen für diese Adapter.
 
 .. _zend.serializer.adapter.pythonpickle:
 
-Zend_Serializer_Adapter_PythonPickle
+Zend\Serializer_Adapter\PythonPickle
 ------------------------------------
 
 Dieser Adapter konvertiert *PHP* Typen in eine `Python Pickle`_ String Repräsentation. Mit Ihm können die
@@ -112,7 +112,7 @@ Vorhandene Optionen sind:
 
 .. _zend.serializer.adapter.pythonpickle.table.options:
 
-.. table:: Optionen für Zend_Serializer_Adapter_PythonPickle
+.. table:: Optionen für Zend\Serializer_Adapter\PythonPickle
 
    +--------+-----------------------+------------+----------------------------------------------------------------------+
    |Option  |Datentyp               |Standardwert|Beschreibung                                                          |
@@ -161,7 +161,7 @@ Der Wechsel von Datentypen (Python zu *PHP*) findet wie folgt statt:
    +------------------+----------------------------------------------------+
    |integer           |integer                                             |
    +------------------+----------------------------------------------------+
-   |long              |integer | float | string | Zend_Serializer_Exception|
+   |long              |integer | float | string | Zend\Serializer\Exception|
    +------------------+----------------------------------------------------+
    |float             |float                                               |
    +------------------+----------------------------------------------------+
@@ -177,12 +177,12 @@ Der Wechsel von Datentypen (Python zu *PHP*) findet wie folgt statt:
    +------------------+----------------------------------------------------+
    |dictionary        |associative array                                   |
    +------------------+----------------------------------------------------+
-   |Alle anderen Typen|Zend_Serializer_Exception                           |
+   |Alle anderen Typen|Zend\Serializer\Exception                           |
    +------------------+----------------------------------------------------+
 
 .. _zend.serializer.adapter.phpcode:
 
-Zend_Serializer_Adapter_PhpCode
+Zend\Serializer_Adapter\PhpCode
 -------------------------------
 
 Dieser Adapter erzeugt eine Repräsentation an *PHP* Code der geparst werden kann indem `var_export()`_ verwendet

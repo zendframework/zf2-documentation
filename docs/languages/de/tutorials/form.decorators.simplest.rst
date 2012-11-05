@@ -143,9 +143,9 @@ Repräsentation des Elements -- oder einem Subset von sich -- zu erstellen.
 Den ersten Decorator erstellen
 ------------------------------
 
-``Zend_Form`` Decorators implementieren alle ein gemeinsames Interface ``Zend_Form_Decorator_Interface``. Dieses
+``Zend_Form`` Decorators implementieren alle ein gemeinsames Interface ``Zend\Form_Decorator\Interface``. Dieses
 Interface bietet die Fähigkeit decorator-spezifische Optionen zu setzen, das Element zu registrieren und zu
-empfangen, und darzustellen. Der Basis Decorator, ``Zend_Form_Decorator_Abstract``, bietet die jede Funktionalität
+empfangen, und darzustellen. Der Basis Decorator, ``Zend\Form_Decorator\Abstract``, bietet die jede Funktionalität
 welche man irgendwann verwenden wird, mit Ausnahme der Logik für die Darstellung.
 
 Nehmen wir eine Situation an in der wir einfach ein Element als Standard Formular Texteinfabe mit einer
@@ -155,7 +155,7 @@ umhüllt werden soll oder nicht -- nur die Grundlagen. Solch ein Decorator könn
 .. code-block:: php
    :linenos:
 
-   class My_Decorator_SimpleInput extends Zend_Form_Decorator_Abstract
+   class My_Decorator_SimpleInput extends Zend\Form_Decorator\Abstract
    {
        protected $_format = '<label for="%s">%s</label><input id="%s" name="%s" type="text" value="%s"/>';
 
@@ -178,7 +178,7 @@ Erstellen wir ein Element welches diesen Decorator verwendet:
    :linenos:
 
    $decorator = new My_Decorator_SimpleInput();
-   $element   = new Zend_Form_Element('foo', array(
+   $element   = new Zend\Form\Element('foo', array(
        'label'      => 'Foo',
        'belongsTo'  => 'bar',
        'value'      => 'test',
@@ -199,7 +199,7 @@ auf den Decorator genauso einfach als "SimpleInput" verweisen:
 .. code-block:: php
    :linenos:
 
-   $element = new Zend_Form_Element('foo', array(
+   $element = new Zend\Form\Element('foo', array(
        'label'      => 'Foo',
        'belongsTo'  => 'bar',
        'value'      => 'test',

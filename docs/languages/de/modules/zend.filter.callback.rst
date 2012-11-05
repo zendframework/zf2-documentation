@@ -12,7 +12,7 @@ Nehmen wir an das wir einen Filter erstellen wollen der einen String umdreht.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Callback('strrev');
+   $filter = new Zend\Filter\Callback('strrev');
 
    print $filter->filter('Hello!');
    // Ausgabe "!olleH"
@@ -31,7 +31,7 @@ Callback angegeben wird.
    }
 
    // Die Filter Definition
-   $filter = new Zend_Filter_Callback(array('MyClass', 'Reverse'));
+   $filter = new Zend\Filter\Callback(array('MyClass', 'Reverse'));
    print $filter->filter('Hello!');
 
 Um den aktuell gesetzten Callback zu erhalten kann ``getCallback()`` verwendet werden, und um einen anderen
@@ -43,7 +43,7 @@ der Filter ausgeführt wird. Dieses Array wird mit dem Wert der gefiltert werden
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Callback(
+   $filter = new Zend\Filter\Callback(
        array(
            'callback' => 'MyMethod',
            'options'  => array('key' => 'param1', 'key2' => 'param2')

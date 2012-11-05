@@ -4,17 +4,17 @@
 Odbieranie danych z kanału informacyjnego RSS
 =============================================
 
-Odczytywanie kanału RSS jest tak proste jak utworzenie obiektu *Zend_Feed_Rss* z adresem URL kanału przekazanym
+Odczytywanie kanału RSS jest tak proste jak utworzenie obiektu *Zend\Feed\Rss* z adresem URL kanału przekazanym
 do konstruktora:
 
 .. code-block:: php
    :linenos:
 
-   $channel = new Zend_Feed_Rss('http://rss.example.com/channelName');
+   $channel = new Zend\Feed\Rss('http://rss.example.com/channelName');
 
 
 Jeśli wystąpi jakiś błąd podczas obróbki danych pochodzących z kanału, zostanie wyrzucony wyjątek
-*Zend_Feed_Exception*.
+*Zend\Feed\Exception*.
 
 Kiedy już masz obiekt kanału informacyjnego, możesz łatwo uzyskać dostęp do standardowych właściwości
 kanału RSS bezpośrednio na obiekcie:
@@ -41,7 +41,7 @@ Jeśli właściwości kanału mają atrybuty, są one dostępne przy użyciu sk�
 Since XML attributes cannot have children, method syntax is not necessary for accessing attribute values.
 
 Najczęściej będziesz chciał przejść pętlą po danych kanału i zrobić coś z jego wpisami. Klasa
-*Zend_Feed_Abstract* implementuje wbudowany w PHP interfejs *Iterator*, więc wyświetlenie wszystkich tytułów
+*Zend\Feed\Abstract* implementuje wbudowany w PHP interfejs *Iterator*, więc wyświetlenie wszystkich tytułów
 artykułów z kanału jest bardzo proste:
 
 .. code-block:: php

@@ -10,14 +10,14 @@ automatycznego dołączania plików (autoloader). Możliwe jest dołączenie do 
 by umożliwić odnajdywanie tworzonych klas. Typowym rozwiązaniem jest umieszczenie różnych klas w głównym
 katalogu - w tym wypadku nazwanego ``application/``- i nazywanie ich z zachowaniem wspólnego prefiksu.
 
-Klasa ``Zend_Controller_Front`` umożliwia tworzenie modułów (modules) - odrębnych części, które same w sobie
+Klasa ``Zend\Controller\Front`` umożliwia tworzenie modułów (modules) - odrębnych części, które same w sobie
 są mini-aplikacjami. W ramach każdego modułu odwzorowywana jest taka sama struktura katalogów jaka jest
 tworzona przez narzędzie ``zf`` w katalogu głównym aplikacji. Nazwy wszystkich klas w jednym module muszą
 rozpoczynać się od wspólnego prefiksu - nazwy modułu. Katalog główny -``application/`` również jest
 modułem (domyślnym) dlatego też jego zasoby zostaną uwzględnione w procesie automatycznego dołączania
 plików.
 
-``Zend_Application_Module_Autoloader`` oferuje funkcjonalność niezbędną do odwzorowania zasobów modułów na
+``Zend\Application_Module\Autoloader`` oferuje funkcjonalność niezbędną do odwzorowania zasobów modułów na
 odpowiednie ścieżki katalogów oraz ułatwia zachowanie spójnego standardu nazewnictwa. Instancja tej klasy jest
 tworzona domyślnie podczas uruchamiania klasy bootstrap. Domyślnym prefiksem używanym przez bootstrap jest
 "Application" więc modele, formularze oraz klasy tabel będą rozpoczynały się prefiksem "Application\_".
@@ -221,17 +221,17 @@ Skrypt ``scripts/load.sqlite.php`` można wypełnić w poniższy sposób:
        get_include_path(),
    )));
    require_once 'Zend/Loader/Autoloader.php';
-   Zend_Loader_Autoloader::getInstance();
+   Zend\Loader\Autoloader::getInstance();
 
    // Zdefiniowanie opcji CLI
-   $getopt = new Zend_Console_Getopt(array(
+   $getopt = new Zend\Console\Getopt(array(
        'withdata|w' => 'Load database with sample data',
        'env|e-s'    => 'Application environment for which to create database (defaults to development)',
        'help|h'     => 'Help -- usage message',
    ));
    try {
        $getopt->parse();
-   } catch (Zend_Console_Getopt_Exception $e) {
+   } catch (Zend\Console_Getopt\Exception $e) {
        // Bad options passed: report usage
        echo $e->getUsageMessage();
        return false;
@@ -250,7 +250,7 @@ Skrypt ``scripts/load.sqlite.php`` można wypełnić w poniższy sposób:
        || define('APPLICATION_ENV', (null === $env) ? 'development' : $env);
 
    // Inicjalizacja Zend_Application
-   $application = new Zend_Application(
+   $application = new Zend\Application\Application(
        APPLICATION_ENV,
        APPLICATION_PATH . '/configs/application.ini'
    );
@@ -327,12 +327,12 @@ Powinien pojawić się następujący komunikat:
    Data Loaded.
 
 Po zdefiniowaniu bazy danych aplikacji księgi gości można przystąpić do budowy kodu samej aplikacji. W
-następnych krokach zostanie zbudowana klasa dostępu do danych (poprzez ``Zend_Db_Table``), oraz klasa mapująca -
+następnych krokach zostanie zbudowana klasa dostępu do danych (poprzez ``Zend\Db\Table``), oraz klasa mapująca -
 służąca do połączenia z wcześniej opisanym modelem. Na koniec utworzony zostanie kontroler zarządzający
 modelem, którego zadaniem będzie wyświetlanie istniejących rekordów oraz obróbka nowych danych.
 
 Aby łączyć się ze źródłem danych użyty zostanie wzorzec `Table Data Gateway`_ udostępniany poprzez klasę
-``Zend_Db_Table``. Na początek należy utworzyć klasę opartą o ``Zend_Db_Table``. Podobnie jak przy layoucie
+``Zend\Db\Table``. Na początek należy utworzyć klasę opartą o ``Zend\Db\Table``. Podobnie jak przy layoucie
 oraz adapterze bazy danych - można skorzystać z narzędzia ``zf`` i jego komendy ``create db-table``. Należy
 przy tym podać minimalnie dwa argumenty: nazwę tworzonej klasy oraz nazwę tabeli bazy danych, do której
 prowadzi.
@@ -355,7 +355,7 @@ zawierający plik ``Guestbook.php``. Ten plik powinien zawierać następującą 
    /**
     * This is the DbTable class for the guestbook table.
     */
-   class Application_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
+   class Application_Model_DbTable_Guestbook extends Zend\Db_Table\Abstract
    {
        /** Table name */
        protected $_name    = 'guestbook';
@@ -365,7 +365,7 @@ Należy zwrócić uwagę na prefiks: ``Application_Model_DbTable``. Prefiks klas
 się na pierwszym miejscu. Po nim występuje komponent "Model_DbTable", który jest mapowany do katalogu
 ``models/DbTable/`` znajdującego się w module.
 
-Jedyne dane niezbędne przy tworzeniu klasy pochodnej w stosunku do ``Zend_Db_Table`` to nazwa tabeli i opcjonalnie
+Jedyne dane niezbędne przy tworzeniu klasy pochodnej w stosunku do ``Zend\Db\Table`` to nazwa tabeli i opcjonalnie
 klucz pierwotny (jeśli jest inny niż "id").
 
 Teraz należy utworzyć klasę mapującą obiekt w aplikacji na obiekt w bazie danych czyli `Data Mapper`_.
@@ -411,7 +411,7 @@ widać następujący kod:
            if (is_string($dbTable)) {
                $dbTable = new $dbTable();
            }
-           if (!$dbTable instanceof Zend_Db_Table_Abstract) {
+           if (!$dbTable instanceof Zend\Db_Table\Abstract) {
                throw new Exception('Invalid table data gateway provided');
            }
            $this->_dbTable = $dbTable;
@@ -611,7 +611,7 @@ Teraz należy zaprogramować logikę aplikacji. Aby pokazać zapisane rekordy u�
 
    // application/controllers/GuestbookController.php
 
-   class GuestbookController extends Zend_Controller_Action
+   class GuestbookController extends Zend\Controller\Action
    {
        public function indexAction()
        {
@@ -660,7 +660,7 @@ Dodatkowo potrzebny jest jeszcze widok wyświetlający dane. W pliku
 
    Skrypt ładujący dane pokazany we wcześniejszej części tego rozdziału (``scripts/load.sqlite.php``) może
    zostać użyty do utworzenia bazy danych jak i do zaimportowania przykładowych danych dla każdego środowiska.
-   Wewnętrznie korzysta z klasy ``Zend_Console_Getopt``, dzięki czemu możliwe jest podanie parametrów
+   Wewnętrznie korzysta z klasy ``Zend\Console\Getopt``, dzięki czemu możliwe jest podanie parametrów
    sterujących skryptem. Podając parametr "-h" lub "--help" można zapoznać się z dostępnymi opcjami:
 
    .. code-block:: php

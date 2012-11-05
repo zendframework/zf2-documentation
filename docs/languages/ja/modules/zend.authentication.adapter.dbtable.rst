@@ -9,9 +9,9 @@
 導入
 --
 
-``Zend_Auth_Adapter_DbTable`` は、
+``Zend\Auth_Adapter\DbTable`` は、
 データベースのテーブルに保存された証明情報に基づいた認証の機能を提供します。
-``Zend_Auth_Adapter_DbTable`` のコンストラクタには ``Zend_Db_Adapter_Abstract``
+``Zend\Auth_Adapter\DbTable`` のコンストラクタには ``Zend\Db_Adapter\Abstract``
 のインスタンスを渡す必要があるので、
 各インスタンスは特定のデータベース接続に関連付けられます。
 コンストラクタではその他の設定オプションも指定できます。
@@ -43,8 +43,8 @@
 
 .. rubric:: 基本的な使用法
 
-導入部で説明したとおり、 ``Zend_Auth_Adapter_DbTable`` のコンストラクタには
-``Zend_Db_Adapter_Abstract``
+導入部で説明したとおり、 ``Zend\Auth_Adapter\DbTable`` のコンストラクタには
+``Zend\Db_Adapter\Abstract``
 のインスタンスを渡す必要があります。これは、認証アダプタのインスタンスと
 関連付けるデータベース接続を表します。
 まず、データベース接続を作成する必要があります。
@@ -58,7 +58,7 @@
    :linenos:
 
    // メモリ内で SQLite データベース接続を作成します
-   $dbAdapter = new Zend_Db_Adapter_Pdo_Sqlite(array('dbname' =>
+   $dbAdapter = new Zend\Db\Adapter\Pdo\Sqlite(array('dbname' =>
                                                      ':memory:'));
 
    // 単純なテーブルを作成するクエリ
@@ -77,7 +77,7 @@
 
    // データを挿入します
    $dbAdapter->query($sqlInsert);
-データベース接続およびテーブルが使用可能となったので ``Zend_Auth_Adapter_DbTable``
+データベース接続およびテーブルが使用可能となったので ``Zend\Auth_Adapter\DbTable``
 のインスタンスが作成できます。 設定オプションの値は、コンストラクタで渡すか、
 あるいはインスタンスを作成した後に設定用メソッドで指定します。
 
@@ -85,7 +85,7 @@
    :linenos:
 
    // コンストラクタにパラメータを渡し、インスタンスを設定します
-   $authAdapter = new Zend_Auth_Adapter_DbTable(
+   $authAdapter = new Zend\Auth_Adapter\DbTable(
        $dbAdapter,
        'users',
        'username',
@@ -93,7 +93,7 @@
    );
 
    // あるいは、設定用メソッドでインスタンスの設定を行います
-   $authAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
+   $authAdapter = new Zend\Auth_Adapter\DbTable($dbAdapter);
 
    $authAdapter
        ->setTableName('users')
@@ -115,7 +115,7 @@
 
    // 認証クエリを実行し、結果を保存します
 
-認証結果オブジェクトでの ``getIdentity()`` メソッドに加え、 ``Zend_Auth_Adapter_DbTable``
+認証結果オブジェクトでの ``getIdentity()`` メソッドに加え、 ``Zend\Auth_Adapter\DbTable``
 は認証の成功時にテーブルの行を取得する機能もサポートしています。
 
 .. code-block:: php
@@ -146,7 +146,7 @@
 応用例: 持続的な DbTable 結果オブジェクト
 --------------------------
 
-デフォルトでは ``Zend_Auth_Adapter_DbTable`` は、
+デフォルトでは ``Zend\Auth_Adapter\DbTable`` は、
 認証に成功した際に認証情報を返します。場合によっては、 ``Zend_Auth``
 の持続ストレージの仕組みを利用して
 別の有用な情報を格納したいこともあるでしょう。その場合は、 ``getResultRowObject()``
@@ -156,7 +156,7 @@
 .. code-block:: php
    :linenos:
 
-   // Zend_Auth_Adapter_DbTable による認証を行います
+   // Zend\Auth_Adapter\DbTable による認証を行います
    $result = $this->_auth->authenticate($adapter);
 
    if ($result->isValid()) {
@@ -185,11 +185,11 @@
 高度な使用例
 ------
 
-``Zend_Auth`` (そして ``Zend_Auth_Adapter_DbTable``) の主な目的は **認証 (authentication)** であって
+``Zend_Auth`` (そして ``Zend\Auth_Adapter\DbTable``) の主な目的は **認証 (authentication)** であって
 **認可 (authorization)**, ではありませんが、認可にもかかわる問題も多少あります。
 問題によっては、認証アダプタの中で認可にかかわる問題を解決することもあるでしょう。
 
-ちょっとしたおまけとして ``Zend_Auth_Adapter_DbTable``
+ちょっとしたおまけとして ``Zend\Auth_Adapter\DbTable``
 に組み込まれている仕組みを使用すると、
 認証時にありがちな問題を解決するチェックを加えることができます。
 
@@ -197,7 +197,7 @@
    :linenos:
 
    // アカウントの status フィールドが "compromised" ではない
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
@@ -206,7 +206,7 @@
    );
 
    // アカウントの active フィールドが "TRUE" に等しい
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
@@ -241,13 +241,13 @@ salt 文字列を格納するために、テーブルの構造を変更する必
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
        'password',
        "MD5(CONCAT('"
-       . Zend_Registry::get('staticSalt')
+       . Zend\Registry\Registry::get('staticSalt')
        . "', ?, password_salt))"
    );
 .. note::
@@ -257,8 +257,8 @@ salt 文字列を格納するために、テーブルの構造を変更する必
    インジェクション攻撃などで) データベースに侵入されたとしても、
    ウェブサーバは無傷なのでデータを攻撃者に悪用されることはありません。
 
-もうひとつの方法は、アダプタを作成したあとで ``Zend_Auth_Adapter_DbTable`` の
-``getDbSelect()`` メソッドを使うことです。 このメソッドが返す ``Zend_Db_Select``
+もうひとつの方法は、アダプタを作成したあとで ``Zend\Auth_Adapter\DbTable`` の
+``getDbSelect()`` メソッドを使うことです。 このメソッドが返す ``Zend\Db\Select``
 オブジェクトのインスタンスで ``authenticate()`` を実行します。このメソッドは、
 ``authenticate()``
 をコールしたかどうかにかかわらず同じオブジェクトを返すことに注意しましょう。
@@ -273,7 +273,7 @@ salt 文字列を格納するために、テーブルの構造を変更する必
    :linenos:
 
    // 上の例の続き
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',

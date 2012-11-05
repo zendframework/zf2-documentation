@@ -9,7 +9,7 @@ Atom の個々の ``<entry>`` 要素は、それ単体でも有効です。通�
 を続けたものになります。先に使用した例の場合は、 ``http://atom.example.com/feed/1``
 となります。
 
-単一のエントリを読み込む場合にも ``Zend_Feed_Atom``
+単一のエントリを読み込む場合にも ``Zend\Feed\Atom``
 オブジェクトを使用しますが、この場合は「無名 (anonymous)」
 フィードが自動的に作成され、エントリがその中に含まれる形式になります。
 
@@ -20,7 +20,7 @@ Atom の個々の ``<entry>`` 要素は、それ単体でも有効です。通�
 .. code-block:: php
    :linenos:
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/1');
    echo 'このフィードには ' . $feed->count() . ' 件のエントリが含まれます。';
 
    $entry = $feed->current();
@@ -35,7 +35,7 @@ Atom の個々の ``<entry>`` 要素は、それ単体でも有効です。通�
 .. code-block:: php
    :linenos:
 
-   $entry = new Zend_Feed_Entry_Atom('http://atom.example.com/feed/1');
+   $entry = new Zend\Feed_Entry\Atom('http://atom.example.com/feed/1');
    echo $entry->title();
 
 

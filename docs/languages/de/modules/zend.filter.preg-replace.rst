@@ -4,7 +4,7 @@
 PregReplace
 ===========
 
-``Zend_Filter_PregReplace`` führt eine Suche durch indem es Reguläre Ausdrücke verwendet und alle gefundenen
+``Zend\Filter\PregReplace`` führt eine Suche durch indem es Reguläre Ausdrücke verwendet und alle gefundenen
 Elemente ersetzt.
 
 Die Option ``match`` muss angegeben werden um das Pattern zu Setzen nach dem gesucht wird. Es kann ein String, für
@@ -16,7 +16,7 @@ String, für ein einzelnes Pattern sein, oder ein Array von Strings für mehrere
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_PregReplace(array('match' => '/bob/',
+   $filter = new Zend\Filter\PregReplace(array('match' => '/bob/',
                                                'replace' => 'john'));
    $input  = 'Hy bob!';
 
@@ -29,7 +29,7 @@ das Ersatzpattern zu Setzen können ``getReplacement()`` und ``setReplacement()`
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_PregReplace();
+   $filter = new Zend\Filter\PregReplace();
    $filter->setMatchPattern(array('bob', 'Hy'))
           ->setReplacement(array('john', 'Bye'));
    $input  = 'Hy bob!";

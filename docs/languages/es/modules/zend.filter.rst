@@ -36,7 +36,7 @@ realizar algunas transformaciones en los datos de entrada.
 Uso básico de los filtros
 -------------------------
 
-Having this filter definition established provides the foundation for ``Zend_Filter_Interface``, which requires a
+Having this filter definition established provides the foundation for ``Zend\Filter\Interface``, which requires a
 single method named ``filter()`` to be implemented by a filter class.
 
 Following is a basic example of using a filter upon two input data, the ampersand (*&*) and double quote (*"*)
@@ -45,7 +45,7 @@ characters:
    .. code-block:: php
       :linenos:
 
-      $htmlEntities = new Zend_Filter_HtmlEntities();
+      $htmlEntities = new Zend\Filter\HtmlEntities();
 
       echo $htmlEntities->filter('&'); // &
       echo $htmlEntities->filter('"'); // "
@@ -58,7 +58,7 @@ Usando el método estático staticFilter()
 ----------------------------------------
 
 If it is inconvenient to load a given filter class and create an instance of the filter, you can use the static
-method ``Zend_Filter::filterStatic()`` as an alternative invocation style. The first argument of this method is a
+method ``Zend\Filter\Filter::filterStatic()`` as an alternative invocation style. The first argument of this method is a
 data input value, that you would pass to the ``filter()`` method. The second argument is a string, which
 corresponds to the basename of the filter class, relative to the Zend_Filter namespace. The ``staticFilter()``
 method automatically loads the class, creates an instance, and applies the ``filter()`` method to the data input.
@@ -66,7 +66,7 @@ method automatically loads the class, creates an instance, and applies the ``fil
    .. code-block:: php
       :linenos:
 
-      echo Zend_Filter::filterStatic('&', 'HtmlEntities');
+      echo Zend\Filter\Filter::filterStatic('&', 'HtmlEntities');
 
 
 
@@ -75,7 +75,7 @@ You can also pass an array of constructor arguments, if they are needed for the 
    .. code-block:: php
       :linenos:
 
-      echo Zend_Filter::filterStatic('"', 'HtmlEntities', array(ENT_QUOTES));
+      echo Zend\Filter\Filter::filterStatic('"', 'HtmlEntities', array(ENT_QUOTES));
 
 
 
@@ -83,7 +83,7 @@ The static usage can be convenient for invoking a filter ad hoc, but if you have
 multiple inputs, it's more efficient to follow the first example above, creating an instance of the filter object
 and calling its ``filter()`` method.
 
-Also, the ``Zend_Filter_Input`` class allows you to instantiate and run multiple filter and validator classes on
+Also, the ``Zend\Filter\Input`` class allows you to instantiate and run multiple filter and validator classes on
 demand to process sets of input data. See :ref:` <zend.filter.input>`.
 
 .. _zend.filter.introduction.static.namespaces:
@@ -91,13 +91,13 @@ demand to process sets of input data. See :ref:` <zend.filter.input>`.
 Namespaces
 ^^^^^^^^^^
 
-When working with self defined filters you can give a forth parameter to ``Zend_Filter::filterStatic()`` which is
+When working with self defined filters you can give a forth parameter to ``Zend\Filter\Filter::filterStatic()`` which is
 the namespace where your filter can be found.
 
 .. code-block:: php
    :linenos:
 
-   echo Zend_Filter::filterStatic(
+   echo Zend\Filter\Filter::filterStatic(
        '"',
        'MyFilter',
        array($parameters),
@@ -105,27 +105,27 @@ the namespace where your filter can be found.
    );
 
 ``Zend_Filter`` allows also to set namespaces as default. This means that you can set them once in your bootstrap
-and have not to give them again for each call of ``Zend_Filter::filterStatic()``. The following code snippet is
+and have not to give them again for each call of ``Zend\Filter\Filter::filterStatic()``. The following code snippet is
 identical to the above one.
 
 .. code-block:: php
    :linenos:
 
-   Zend_Filter::setDefaultNamespaces(array('FirstNamespace', 'SecondNamespace'));
-   echo Zend_Filter::filterStatic('"', 'MyFilter', array($parameters));
-   echo Zend_Filter::filterStatic('"', 'OtherFilter', array($parameters));
+   Zend\Filter\Filter::setDefaultNamespaces(array('FirstNamespace', 'SecondNamespace'));
+   echo Zend\Filter\Filter::filterStatic('"', 'MyFilter', array($parameters));
+   echo Zend\Filter\Filter::filterStatic('"', 'OtherFilter', array($parameters));
 
 For your convinience there are following methods which allow the handling of namespaces:
 
-- **Zend_Filter::getDefaultNamespaces()**: Returns all set default namespaces as array.
+- **Zend\Filter\Filter::getDefaultNamespaces()**: Returns all set default namespaces as array.
 
-- **Zend_Filter::setDefaultNamespaces()**: Sets new default namespaces and overrides any previous set. It accepts
+- **Zend\Filter\Filter::setDefaultNamespaces()**: Sets new default namespaces and overrides any previous set. It accepts
   eighter a string for a single namespace of an array for multiple namespaces.
 
-- **Zend_Filter::addDefaultNamespaces()**: Adds additional namespaces to already set ones. It accepts eighter a
+- **Zend\Filter\Filter::addDefaultNamespaces()**: Adds additional namespaces to already set ones. It accepts eighter a
   string for a single namespace of an array for multiple namespaces.
 
-- **Zend_Filter::hasDefaultNamespaces()**: Returns ``TRUE`` when one or more default namespaces are set, and
+- **Zend\Filter\Filter::hasDefaultNamespaces()**: Returns ``TRUE`` when one or more default namespaces are set, and
   ``FALSE`` when no default namespaces are set.
 
 

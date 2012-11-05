@@ -9,34 +9,34 @@ Arbeiten mit Seiten
 Erstellen von Seiten
 --------------------
 
-Die Seiten in einem *PDF* Dokument werden durch ``Zend_Pdf_Page`` Instanzen in ``Zend_Pdf`` abgebildet.
+Die Seiten in einem *PDF* Dokument werden durch ``ZendPdf\Page`` Instanzen in ``ZendPdf`` abgebildet.
 
-*PDF* Seiten werden entweder aus einem vorhandenen *PDF* gelesen oder erstellt indem die *API* von ``Zend_Pdf``
+*PDF* Seiten werden entweder aus einem vorhandenen *PDF* gelesen oder erstellt indem die *API* von ``ZendPdf``
 verwendet wird.
 
-Neue Seiten können durch die Instanzierung neuer ``Zend_Pdf_Page`` Objekte erstellt werden, entweder direkt oder
-durch den Aufruf der ``Zend_Pdf::newPage()`` Methode, die ein ``Zend_Pdf_Page`` Objekt zurückgibt.
-``Zend_Pdf::newPage()`` erstellt eine Seite die bereits an ein Dokument angehängt ist. Ungebundene Seiten können
+Neue Seiten können durch die Instanzierung neuer ``ZendPdf\Page`` Objekte erstellt werden, entweder direkt oder
+durch den Aufruf der ``ZendPdf\Pdf::newPage()`` Methode, die ein ``ZendPdf\Page`` Objekt zurückgibt.
+``ZendPdf\Pdf::newPage()`` erstellt eine Seite die bereits an ein Dokument angehängt ist. Ungebundene Seiten können
 nicht mit verschiedenen *PDF* Dokumenten verwendet werden, sind aber etwas schneller. [#]_
 
-Die ``Zend_Pdf::newPage()`` Methode und der ``Zend_Pdf_Page`` Konstruktor benötigen die gleichen Parameter welche
+Die ``ZendPdf\Pdf::newPage()`` Methode und der ``ZendPdf\Page`` Konstruktor benötigen die gleichen Parameter welche
 die Größe der Seite spezifizieren. Sie können entweder die Seitengröße ($x, $y) in Punkten (1/72 Zoll) nehmen
 oder eine vordefinierte Konstante, die den Seitentyp repräsentiert:
 
 
 
-   - Zend_Pdf_Page::SIZE_A4
+   - ZendPdf\Page::SIZE_A4
 
-   - Zend_Pdf_Page::SIZE_A4_LANDSCAPE
+   - ZendPdf\Page::SIZE_A4_LANDSCAPE
 
-   - Zend_Pdf_Page::SIZE_LETTER
+   - ZendPdf\Page::SIZE_LETTER
 
-   - Zend_Pdf_Page::SIZE_LETTER_LANDSCAPE
+   - ZendPdf\Page::SIZE_LETTER_LANDSCAPE
 
 
 
-Dokumentseiten werden im öffentlichen ``$pages`` Attribut der ``Zend_Pdf`` Klasse abgelegt. Das Attribut enthält
-ein Array mit ``Zend_Pdf_Page`` Objekten und definiert die komplette Instanz und die Reihenfolge der Seiten. Dieses
+Dokumentseiten werden im öffentlichen ``$pages`` Attribut der ``ZendPdf`` Klasse abgelegt. Das Attribut enthält
+ein Array mit ``ZendPdf\Page`` Objekten und definiert die komplette Instanz und die Reihenfolge der Seiten. Dieses
 Array kann wie ein normales *PHP* Array verändert werden:
 
 .. _zend.pdf.pages.example-1:
@@ -51,9 +51,9 @@ Array kann wie ein normales *PHP* Array verändert werden:
    $pdf->pages = array_reverse($pdf->pages);
    ...
    // Füge eine neue Seite hinzu
-   $pdf->pages[] = new Zend_Pdf_Page(Zend_Pdf_Page::SIZE_A4);
+   $pdf->pages[] = new ZendPdf\Page(ZendPdf\Page::SIZE_A4);
    // Füge eine neue Seite hinzu
-   $pdf->pages[] = $pdf->newPage(Zend_Pdf_Page::SIZE_A4);
+   $pdf->pages[] = $pdf->newPage(ZendPdf\Page::SIZE_A4);
 
    // Entferne eine bestimmte Seite
    unset($pdf->pages[$id]);
@@ -65,7 +65,7 @@ Array kann wie ein normales *PHP* Array verändert werden:
 Klonen von Seiten
 -----------------
 
-Bestehende *PDF* Seiten können durch das Erstellen eines neuen ``Zend_Pdf_Page`` Objektes geklont werden indem
+Bestehende *PDF* Seiten können durch das Erstellen eines neuen ``ZendPdf\Page`` Objektes geklont werden indem
 eine existierende Seite als Parameter angegeben wird:
 
 .. _zend.pdf.pages.example-2:
@@ -80,12 +80,12 @@ eine existierende Seite als Parameter angegeben wird:
    $template = $pdf->pages[$templatePageIndex];
    ...
    // Neue Seite hinzufügen
-   $page1 = new Zend_Pdf_Page($template);
+   $page1 = new ZendPdf\Page($template);
    $pdf->pages[] = $page1;
    ...
 
    // Andere Seite hinzufügen
-   $page2 = new Zend_Pdf_Page($template);
+   $page2 = new ZendPdf\Page($template);
    $pdf->pages[] = $page2;
    ...
 

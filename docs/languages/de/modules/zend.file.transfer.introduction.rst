@@ -1,20 +1,20 @@
 .. EN-Revision: none
 .. _zend.file.transfer.introduction:
 
-Zend_File_Transfer
+Zend\File\Transfer
 ==================
 
-``Zend_File_Transfer`` bietet exzessiven Support für Datei Uploads und Downloads. Es kommt mit eingebauten
+``Zend\File\Transfer`` bietet exzessiven Support für Datei Uploads und Downloads. Es kommt mit eingebauten
 Prüfungen für Dateien und Funktionslitäten um Dateien mit Filtern zu verändern. Protokoll-Adapter erlauben
-``Zend_File_Transfer`` die selbe *API* für Transportprotokolle wie *HTTP*, FTP, WEBDAV und andere zu verwenden.
+``Zend\File\Transfer`` die selbe *API* für Transportprotokolle wie *HTTP*, FTP, WEBDAV und andere zu verwenden.
 
 .. note::
 
    **Einschränkungen**
 
-   Die aktuelle Implementation von ``Zend_File_Transfer`` ist auf *HTTP* Post Uploads limitiert. Andere Adapter die
+   Die aktuelle Implementation von ``Zend\File\Transfer`` ist auf *HTTP* Post Uploads limitiert. Andere Adapter die
    Downloads und andere Protokolle unterstützen werden in zukünftigen Releases hinzugefügt. Aktuell sollte
-   ``Zend_File_Transfer_Adapter_Http`` direkt verwendet werden. Sobald andere Adapter vorhanden sind, kann ein
+   ``Zend\File\Transfer\Adapter\Http`` direkt verwendet werden. Sobald andere Adapter vorhanden sind, kann ein
    gemeinsames Interface verwendet werden.
 
 .. note::
@@ -22,12 +22,12 @@ Prüfungen für Dateien und Funktionslitäten um Dateien mit Filtern zu verände
    **Formulare**
 
    Wenn man ``Zend_Form`` verwendet sollte man die *API*\ s die von ``Zend_Form`` zur Verfügung gestellt werden,
-   und ``Zend_File_Transfer`` nicht direkt, verwenden. Der Dateitransfer Support von ``Zend_Form`` ist in
-   ``Zend_File_Transfer`` implementiert, weshalb die Informationen in diesem Kapitel für fortgeschrittene Benutzer
+   und ``Zend\File\Transfer`` nicht direkt, verwenden. Der Dateitransfer Support von ``Zend_Form`` ist in
+   ``Zend\File\Transfer`` implementiert, weshalb die Informationen in diesem Kapitel für fortgeschrittene Benutzer
    von ``Zend_Form`` interessant sind.
 
-Die Verwendung von ``Zend_File_Transfer`` ist relativ einfach. Es besteht aus zwei Teilen. Dem *HTTP* Formular,
-wärend ``Zend_File_Transfer`` die hochgeladenen Dateien behandelt. Siehe das folgende Beispiel:
+Die Verwendung von ``Zend\File\Transfer`` ist relativ einfach. Es besteht aus zwei Teilen. Dem *HTTP* Formular,
+wärend ``Zend\File\Transfer`` die hochgeladenen Dateien behandelt. Siehe das folgende Beispiel:
 
 .. _zend.file.transfer.introduction.example:
 
@@ -46,7 +46,7 @@ es nur eine Datei welche wir hochladen wollen.
        <input type="submit" value="Upload File" />
    </form>
 
-Der Bequemlichkeit halber kann :ref:`Zend_Form_Element_File <zend.form.standardElements.file>` verwendet werden
+Der Bequemlichkeit halber kann :ref:`Zend\Form_Element\File <zend.form.standardElements.file>` verwendet werden
 statt das *HTML* manuell zu erstellen.
 
 Der nächste Schritt ist die Erstellung des Empfängers des Uploads. In unserem Beispiel ist der Empfänger bei
@@ -55,7 +55,7 @@ Der nächste Schritt ist die Erstellung des Empfängers des Uploads. In unserem 
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_File_Transfer_Adapter_Http();
+   $adapter = new Zend\File\Transfer\Adapter\Http();
 
    $adapter->setDestination('C:\temp');
 
@@ -64,7 +64,7 @@ Der nächste Schritt ist die Erstellung des Empfängers des Uploads. In unserem 
        echo implode("\n", $messages);
    }
 
-Dieses Codebeispiel demonstriert die einfachste Verwendung von ``Zend_File_Transfer``. Ein lokales Ziel wird mit
+Dieses Codebeispiel demonstriert die einfachste Verwendung von ``Zend\File\Transfer``. Ein lokales Ziel wird mit
 der ``setDestination()`` Methode definiert, und anschließend die ``receive()`` Methode aufgerufen. Wenn
 irgendwelche Uploadfehler auftreten werden diese als Ausnahme zurückgegeben.
 
@@ -72,25 +72,25 @@ irgendwelche Uploadfehler auftreten werden diese als Ausnahme zurückgegeben.
 
    **Achtung**
 
-   Dieses Beispiel ist nur für die Demonstration der grundsätzlichen *API* von ``Zend_File_Transfer``. Man sollte
+   Dieses Beispiel ist nur für die Demonstration der grundsätzlichen *API* von ``Zend\File\Transfer``. Man sollte
    dieses Code Beispiel **niemals** in einer Produktivumgebung einsetzen da es massive Sicherheitslücken
    aufweisst. Man sollte immer Prüfungen verwenden um die Sicherheit zu erhöhen.
 
 .. _zend.file.transfer.introduction.adapters:
 
-Von Zend_File_Transfer unterstützte Adapter
+Von Zend\File\Transfer unterstützte Adapter
 -------------------------------------------
 
-``Zend_File_Transfer`` wurde designt um verschiedenste Adapter und auch Richtungen zu unterstützen. Mit
-``Zend_File_Transfer`` kann man Dateien Hochladen, Herunterladen und sogar Weiterleiten (Hochladen mit einem
+``Zend\File\Transfer`` wurde designt um verschiedenste Adapter und auch Richtungen zu unterstützen. Mit
+``Zend\File\Transfer`` kann man Dateien Hochladen, Herunterladen und sogar Weiterleiten (Hochladen mit einem
 Adapter und Herunterladen mit einem anderen Adapter zur gleichen Zeit).
 
 .. _zend.file.transfer.introduction.options:
 
-Optionen für Zend_File_Transfer
+Optionen für Zend\File\Transfer
 -------------------------------
 
-``Zend_File_Transfer`` und seine Adapter unterstützen verschiedene Optionen. Alle Optionen können gesetzt werden
+``Zend\File\Transfer`` und seine Adapter unterstützen verschiedene Optionen. Alle Optionen können gesetzt werden
 indem Sie entweder dem Constructor übergeben werden, oder durch Aufruf der ``setOptions($options)``.
 ``getOptions()`` gibt die Optionen zurück die aktuell gesetzt sind. Nachfolgend ist eine Liste aller
 unterstützten Optionen:
@@ -104,7 +104,7 @@ unterstützten Optionen:
 Dateien prüfen
 --------------
 
-``Zend_File_Transfer`` hat verschiedene Methoden die auf verschiedenste Stati von spezifizierten Dateien prüfen.
+``Zend\File\Transfer`` hat verschiedene Methoden die auf verschiedenste Stati von spezifizierten Dateien prüfen.
 Diese sind nützlich wenn man Dateien bearbeiten will nachdem Sie empfangen wurden. Diese Methoden beinhalten:
 
 - **isValid($files = null)**: Diese Methode prüft ob die angegebene Datei gültig ist, basierend auf den
@@ -126,7 +126,7 @@ Diese sind nützlich wenn man Dateien bearbeiten will nachdem Sie empfangen wurd
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
 
    // Gibt alle bekannten internen Datei Informationen zurück
    $files = $upload->getFileInfo();
@@ -152,7 +152,7 @@ Diese sind nützlich wenn man Dateien bearbeiten will nachdem Sie empfangen wurd
 Zusätzliche Dateiinformationen
 ------------------------------
 
-``Zend_File_Transfer`` kann zusätzliche Informationen über Dateien zurückgeben. Die folgenden Methoden sind
+``Zend\File\Transfer`` kann zusätzliche Informationen über Dateien zurückgeben. Die folgenden Methoden sind
 vorhanden:
 
 - **getFileName($file = null, $path = true)**: Diese Methode gibt den wirklichen Namen der übertragenen Datei
@@ -183,7 +183,7 @@ benötigt, kann der zweite Parameter ``$path`` gesetzt werden, welcher den Datei
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
    $upload->receive();
 
    // Gibt die Dateinamen aller Dateien zurück
@@ -209,7 +209,7 @@ benötigt, kann der zweite Parameter ``$path`` gesetzt werden, welcher den Datei
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
    $upload->receive();
 
    // Gibt die Größen aller Dateien als Array zurück
@@ -239,7 +239,7 @@ Algorithmen kann in `PHP's hash_algos Methode`_ gesehen werden. Wenn kein Algori
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
    $upload->receive();
 
    // Gibt die Hashes von allen Dateien als Array zurück
@@ -266,7 +266,7 @@ zurückgegeben, andernfalls ein String.
 .. code-block:: php
    :linenos:
 
-   $upload = new Zend_File_Transfer();
+   $upload = new Zend\File\Transfer();
    $upload->receive();
 
    $mime = $upload->getMimeType();
@@ -294,18 +294,18 @@ zurückgegeben, andernfalls ein String.
 
    **Originale Daten in $_FILES**
 
-   Aus Sicherheitsgründen werden auch die originalen Daten in $_FILES überschrieben sobald ``Zend_File_Transfer``
+   Aus Sicherheitsgründen werden auch die originalen Daten in $_FILES überschrieben sobald ``Zend\File\Transfer``
    initiiert wird. Wenn man dieses Verhalten unterdrücken will und die originalen Daten benötigt, kann bei der
    Instanzierung die Option ``detectInfos`` einfach auf ``FALSE`` gesetzt werden.
 
-   Diese Option hat keinen Effekt nachdem ``Zend_File_Transfer`` instanziert wurde.
+   Diese Option hat keinen Effekt nachdem ``Zend\File\Transfer`` instanziert wurde.
 
 .. _zend.file.transfer.introduction.uploadprogress:
 
 Fortschritt für Datei Uploads
 -----------------------------
 
-``Zend_File_Transfer`` kann den aktuellen Status eines gerade stattfindenden Datei Uploads erheben. Um dieses
+``Zend\File\Transfer`` kann den aktuellen Status eines gerade stattfindenden Datei Uploads erheben. Um dieses
 Feature zu verwenden muß man entweder die *APC* Erweiterung verwenden, die mit den meisten standardmäßigen *PHP*
 Installationen vorhanden ist, oder die ``UploadProgress`` Erweiterung. Beide Erweiterungen werden erkannt und
 automatisch verwendet. Um den Fortschritt zu erhalten muß man einige Voraussetzungen erfüllen.
@@ -314,7 +314,7 @@ Erstens, muß man entweder *APC* oder ``UploadProgress`` aktiviert haben. Es ist
 *APC* in der eigenen ``php.ini`` ausgeschaltet werden kann.
 
 Zweitens, muß man die richtigen unsichtbaren Felder im Formular hinzugefügt haben das die Dateien sendet. Wenn
-man ``Zend_Form_Element_File`` verwendet werden diese unsichtbaren Felder automatisch von ``Zend_Form``
+man ``Zend\Form_Element\File`` verwendet werden diese unsichtbaren Felder automatisch von ``Zend_Form``
 hinzugefügt.
 
 Wenn die oberen zwei Punkte vorhanden sind dann ist man in der Lage den aktuellen Fortschritt des Datei uploads zu
@@ -328,7 +328,7 @@ Verwenden eines Progressbar Adapters
 Man kann einen bequemen **Zend_ProgressBar** verwenden um den aktuellen Fortschritt zu erhalten und kann Ihn dann
 auf einfachem Wege dem Benutzer zeigen.
 
-Um das zu ermöglichen, muß man den gewünschten **Zend_ProgressBar_Adapter** bei ``getProgress()`` hinzufügen
+Um das zu ermöglichen, muß man den gewünschten **Zend\ProgressBar\Adapter** bei ``getProgress()`` hinzufügen
 wenn es das erste Mal aufgerufen wird. Für Details über den zu verwendenden Adapter, bitte im Kapitel
 :ref:`Zend_ProgressBar Standard Adapters <zend.progressbar.adapters>` nachsehen.
 
@@ -339,12 +339,12 @@ wenn es das erste Mal aufgerufen wird. Für Details über den zu verwendenden Ad
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_ProgressBar_Adapter_Console();
-   $upload  = Zend_File_Transfer_Adapter_Http::getProgress($adapter);
+   $adapter = new Zend\ProgressBar_Adapter\Console();
+   $upload  = Zend\File\Transfer\Adapter\Http::getProgress($adapter);
 
    $upload = null;
    while (!$upload['done']) {
-       $upload = Zend_File_Transfer_Adapter_Http:getProgress($upload);
+       $upload = Zend\File\Transfer\Adapter\Http:getProgress($upload);
    }
 
 Die komplette Handhabung wird von ``getProgress()`` im Hintergrund durchgeführt.
@@ -377,12 +377,12 @@ Schlüssel werden unabhängig von der Extension zurück gegeben:
   Fehler wärend des Empfangens der Daten, für den Fortschritt, aufgetreten ist, oder das der Upload abgebrochen
   wurde.
 
-- **progress**: Dieser optionale Schlüssel nimmt eine Instanz von ``Zend_ProgressBar_Adapter`` oder
+- **progress**: Dieser optionale Schlüssel nimmt eine Instanz von ``Zend\ProgressBar\Adapter`` oder
   ``Zend_ProgressBar``, und erlaubt es, den aktuellen Status des Uploads, in einer Progressbar zu erhalten
 
 - **session**: Dieser optionale Schlüssel nimmt den Namen eines Session Namespaces entgegen der in
   ``Zend_ProgressBar`` verwendet wird. Wenn dieser Schlüssel nicht angegeben wird, ist er standardmäßig
-  ``Zend_File_Transfer_Adapter_Http_ProgressBar``.
+  ``Zend\File\Transfer\Adapter\Http\ProgressBar``.
 
 Alle anderen zurückgegebenen Schlüssel werden direkt von den Extensions übernommen und werden nicht geprüft.
 
@@ -395,10 +395,10 @@ Das folgende Beispiel zeigt eine mögliche händische Verwendung:
 .. code-block:: php
    :linenos:
 
-   $upload  = Zend_File_Transfer_Adapter_Http::getProgress();
+   $upload  = Zend\File\Transfer\Adapter\Http::getProgress();
 
    while (!$upload['done']) {
-       $upload = Zend_File_Transfer_Adapter_Http:getProgress($upload);
+       $upload = Zend\File\Transfer\Adapter\Http:getProgress($upload);
        print "\nAktueller Fortschritt:".$upload['message'];
        // Tu was zu tun ist
    }

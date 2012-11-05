@@ -25,17 +25,17 @@ Erstellen eines ClientLogin autentifizierten Http Clienten
 ----------------------------------------------------------
 
 Der Prozess der Erstellung eines autentifizierten *HTTP* Clients durch Verwendung des ClientLogin Mechanismus
-besteht darin die statische Funktion ``Zend_Gdata_ClientLogin::getHttpClient()`` aufzurufen und die Google Account
+besteht darin die statische Funktion ``ZendGData\ClientLogin::getHttpClient()`` aufzurufen und die Google Account
 Zugangsdaten als reinen Text zu übergeben. Der Rückgabewert dieser Funktion ist ein Objekt der Klasse
-``Zend_Http_Client``.
+``Zend\Http\Client``.
 
 Der optionale dritte Parameter ist der Name des Google Data Services. Zum Beispiel kann dieser 'cl' sein für
 Google Calendar. Der Standardwert ist "xapi", welcher von den Google Data Servern als generischer Service Name
 erkannt wird.
 
-Der optionale vierte Parameter ist eine Instanz von ``Zend_Http_Client``. Das erlaubt das Setzen von Optionen an
+Der optionale vierte Parameter ist eine Instanz von ``Zend\Http\Client``. Das erlaubt das Setzen von Optionen an
 den Client, wie z.B. Proxy Server Einstellungen. Wenn für diesen Parameter ``NULL`` übergeben wird, wird ein
-generisches ``Zend_Http_Client`` Objekt erstellt.
+generisches ``Zend\Http\Client`` Objekt erstellt.
 
 Der optionale fünfte Parameter ist ein kurzer String den Google Data Server verwenden um die Client Anwendung für
 logging Zwecke zu identifizieren. Standardmäßig ist dieser String "Zend-ZendFramework";
@@ -49,8 +49,8 @@ angefordert wurde. Er wird nur benötigt wenn eingeloggt werden soll nachdem ein
 vorhergehenden Login Versuch empfangen wurde.
 
 Anbei ist ein Beispiel in *PHP* Code für eine Web Anwendung die Authentifizierung benötigt um das Google Calendar
-Service zu verwenden und ein ``Zend_Gdata`` Client Objekt zu erstellen das diesen authentifizierten
-``Zend_Http_Client`` verwendet.
+Service zu verwenden und ein ``ZendGData`` Client Objekt zu erstellen das diesen authentifizierten
+``Zend\Http\Client`` verwendet.
 
 .. code-block:: php
    :linenos:
@@ -59,15 +59,15 @@ Service zu verwenden und ein ``Zend_Gdata`` Client Objekt zu erstellen das diese
    $email = 'johndoe@gmail.com';
    $passwd = 'xxxxxxxx';
    try {
-      $client = Zend_Gdata_ClientLogin::getHttpClient($email, $passwd, 'cl');
-   } catch (Zend_Gdata_App_CaptchaRequiredException $cre) {
+      $client = ZendGData\ClientLogin::getHttpClient($email, $passwd, 'cl');
+   } catch (ZendGData_App\CaptchaRequiredException $cre) {
        echo 'URL des CAPTCHA Bildes: ' . $cre->getCaptchaUrl() . "\n";
        echo 'Token ID: ' . $cre->getCaptchaToken() . "\n";
-   } catch (Zend_Gdata_App_AuthException $ae) {
+   } catch (ZendGData_App\AuthException $ae) {
       echo 'Authentifizierungs Problem: ' . $ae->exception() . "\n";
    }
 
-   $cal = new Zend_Gdata_Calendar($client);
+   $cal = new ZendGData\Calendar($client);
 
 .. _zend.gdata.clientlogin.terminating:
 

@@ -4,15 +4,15 @@
 Einen RSS Feed konsumieren
 ==========================
 
-Einen *RSS* Feed zu lesen, ist so einfach wie das Instanziieren eines ``Zend_Feed_Rss`` Objekts mit der *URL* eines
+Einen *RSS* Feed zu lesen, ist so einfach wie das Instanziieren eines ``Zend\Feed\Rss`` Objekts mit der *URL* eines
 Feeds:
 
 .. code-block:: php
    :linenos:
 
-   $channel = new Zend_Feed_Rss('http://rss.example.com/channelName');
+   $channel = new Zend\Feed\Rss('http://rss.example.com/channelName');
 
-Wenn beim Abrufen des Feeds Fehler auftreten, wird eine ``Zend_Feed_Exception`` geworfen.
+Wenn beim Abrufen des Feeds Fehler auftreten, wird eine ``Zend\Feed\Exception`` geworfen.
 
 Sobald du ein Feed Objekt hast, kannst du auf jeden Channel-Eigenschaften eines Standard *RSS* Feeds direkt über
 das Objekt zugreifen:
@@ -38,7 +38,7 @@ Wenn Channel-Eigenschaften Attribute beinhalten, sind diese durch die *PHP* Arra
 Da *XML* Attribute keine Kindelemente haben können, ist die Methodensyntax für den Zugriff auf Attributwerte
 nicht notwendig.
 
-Meistens möchtest Du einen Feed durchlaufen und etwas mit seinen Einträgen machen. ``Zend_Feed_Abstract``
+Meistens möchtest Du einen Feed durchlaufen und etwas mit seinen Einträgen machen. ``Zend\Feed\Abstract``
 implementiert das ``Iterator`` Interface von *PHP*, so dass die Ausgabe aller Artikelüberschriften eines Channels
 nur dies erfordert:
 

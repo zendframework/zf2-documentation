@@ -9,15 +9,15 @@ Anpassen von Zend_Queue
 Erstellung eigener Adapter
 --------------------------
 
-``Zend_Queue`` akzeptiert jeden Adapter der ``Zend_Queue_Adapter_AdapterAbstract`` implementiert. Man kann eigene
+``Zend_Queue`` akzeptiert jeden Adapter der ``Zend\Queue_Adapter\AdapterAbstract`` implementiert. Man kann eigene
 Adapter erstellen indem einer der existierenden Adapter, oder die abstrakte Klasse
-``Zend_Queue_Adapter_AdapterAbstract`` erweitert wird. Es wird empfohlen ``Zend_Queue_Adapter_Array`` anzuschauen
+``Zend\Queue_Adapter\AdapterAbstract`` erweitert wird. Es wird empfohlen ``Zend\Queue_Adapter\Array`` anzuschauen
 da dieser Adapter in seiner Konzeption der einfachste ist.
 
 .. code-block:: php
    :linenos:
 
-   class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
+   class Custom_DbForUpdate extends Zend\Queue_Adapter\Db
    {
        /**
         * @see Code in tests/Zend/Queue/Custom/DbForUpdate.php
@@ -29,7 +29,7 @@ da dieser Adapter in seiner Konzeption der einfachste ist.
         * Trotzdem haben nicht alle Datenbanken SELECT ... FOR UPDATE als Feature.
         *
         * Notiz: Das wurde später konvertiert um eine Option für
-        * Zend_Queue_Adapter_Db zu sein.
+        * Zend\Queue_Adapter\Db zu sein.
         *
         * Dieser Code ist trotzdem ein gutes Beispiel.
         */
@@ -48,7 +48,7 @@ da dieser Adapter in seiner Konzeption der einfachste ist.
    );
 
    $adapter = new Custom_DbForUpdate($options);
-   $queue   = new Zend_Queue($adapter, $options);
+   $queue   = new Zend\Queue\Queue($adapter, $options);
 
 Man kann den Adapter auch im Betrieb ändern.
 
@@ -56,7 +56,7 @@ Man kann den Adapter auch im Betrieb ändern.
    :linenos:
 
    $adapter = new MyCustom_Adapter($options);
-   $queue   = new Zend_Queue($options);
+   $queue   = new Zend\Queue\Queue($options);
    $queue->setAdapter($adapter);
    echo "Adapter: ", get_class($queue->getAdapter()), "\n";
 
@@ -77,7 +77,7 @@ or
            'type'       => 'pdo_mysql'
        )
    );
-   $queue = new Zend_Queue('DbForUpdate', $config); // loads Custom_DbForUpdate
+   $queue = new Zend\Queue\Queue('DbForUpdate', $config); // loads Custom_DbForUpdate
 
 .. _zend.queue.custom.message:
 
@@ -90,7 +90,7 @@ Beispiel:
 .. code-block:: php
    :linenos:
 
-   class Zend_Queue_Message
+   class Zend\Queue\Message
    {
        protected $_data = array();
    }
@@ -104,9 +104,9 @@ Erstellen einer eigenen Nachrichten Iterator Klasse
 ---------------------------------------------------
 
 ``Zend_Queue`` akzeptiert auch eine eigene Nachrichten Iterator Klasse. Diese Nachrichten Iterator Klasse wird
-verwendet um Nachrichten von ``Zend_Queue_Adapter_Abstract::recieve()`` zurckzugeben.
-``Zend_Queue_Abstract::receive()`` sollte immer eine Controller Klasse zurückgeben so wie
-``Zend_Queue_Message_Iterator`` selbst wenn nur eine Nachricht vorhanden ist.
+verwendet um Nachrichten von ``Zend\Queue_Adapter\Abstract::recieve()`` zurckzugeben.
+``Zend\Queue\Abstract::receive()`` sollte immer eine Controller Klasse zurückgeben so wie
+``Zend\Queue_Message\Iterator`` selbst wenn nur eine Nachricht vorhanden ist.
 
 Siehe den Beispiel Dateinamen in ``tests/Zend/Queue/Custom/Messages.php``.
 

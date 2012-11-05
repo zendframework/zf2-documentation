@@ -12,14 +12,14 @@ formate les messages envoyés vers les logs, et les filtre. Ces fonctions sont d
      enregistreur doit contenir au moins un rédacteur (Writer), et peut facultativement contenir un ou plusieurs
      filtres.
 
-   - Un rédacteur [ou Writer] (hérite de ``Zend_Log_Writer_Abstract``) est responsable de la sauvegarde des
+   - Un rédacteur [ou Writer] (hérite de ``Zend\Log_Writer\Abstract``) est responsable de la sauvegarde des
      données dans le stockage.
 
-   - Un filtre (implémente ``Zend_Log_Filter_Interface``) bloque des données de log ne devant pas être écrites.
+   - Un filtre (implémente ``Zend\Log_Filter\Interface``) bloque des données de log ne devant pas être écrites.
      Un filtre peut être appliqué à un rédacteur en particulier, ou à tous les rédacteurs. Dans l'un ou
      l'autre cas, les filtres peuvent être enchaînés.
 
-   - Un formateur (implémente ``Zend_Log_Formatter_Interface``) peut formater les données de log avant qu'elles
+   - Un formateur (implémente ``Zend\Log_Formatter\Interface``) peut formater les données de log avant qu'elles
      soient écrites par un rédacteur. Chaque rédacteur a exactement un formateur.
 
 
@@ -34,8 +34,8 @@ Pour commencer à enregistrer, instanciez un rédacteur et passez le à une inst
    .. code-block:: php
       :linenos:
 
-      $logger = new Zend_Log();
-      $redacteur = new Zend_Log_Writer_Stream('php://output');
+      $logger = new Zend\Log\Log();
+      $redacteur = new Zend\Log_Writer\Stream('php://output');
 
       $logger->addWriter($redacteur);
 
@@ -47,7 +47,7 @@ Alternativement, vous pouvez passer un rédacteur directement au constructeur de
    .. code-block:: php
       :linenos:
 
-      $logger = new Zend_Log(new Zend_Log_Writer_Stream('php://output'));
+      $logger = new Zend\Log\Log(new Zend\Log_Writer\Stream('php://output'));
 
 L'enregistreur est maintenant prêt à être utilisé.
 
@@ -62,7 +62,7 @@ avec son niveau de priorité.
    .. code-block:: php
       :linenos:
 
-      $logger->log("Message d'information", Zend_Log::INFO);
+      $logger->log("Message d'information", Zend\Log\Log::INFO);
 
 Le premier paramètre de la méthode ``log()`` est une chaîne *message* et le deuxième paramètre est une
 *priority* fourni en nombre entier. La priorité doit être l'une des priorités identifiées par l'instance de
@@ -74,10 +74,10 @@ par le même nom que la priorité :
    .. code-block:: php
       :linenos:
 
-      $logger->log("Message d'information", Zend_Log::INFO);
+      $logger->log("Message d'information", Zend\Log\Log::INFO);
       $logger->info("Message d'information");
 
-      $logger->log("Message d'urgence", Zend_Log::EMERG);
+      $logger->log("Message d'urgence", Zend\Log\Log::EMERG);
       $logger->emerg("Message d'urgence");
 
 

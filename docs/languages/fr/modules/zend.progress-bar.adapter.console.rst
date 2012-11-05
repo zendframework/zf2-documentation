@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.progressbar.adapter.console:
 
-Zend_ProgressBar_Adapter_Console
+Zend\ProgressBar_Adapter\Console
 ================================
 
-``Zend_ProgressBar_Adapter_Console`` est un adaptateur de type texte pour les terminaux. Il peut automatiquement
+``Zend\ProgressBar_Adapter\Console`` est un adaptateur de type texte pour les terminaux. Il peut automatiquement
 détecter la largeur du terminal mais supporte aussi des largeurs personnalisées. Vous pouvez définir quels
 éléments seront affichés avec la barre de progression et personnaliser leur ordre. Vous pouvez aussi définir le
 style de la barre de progression elle-même.
@@ -23,10 +23,10 @@ sont :
 - *outputStream*\  : un flux de sortie différent, si vous ne souhaitez pas utiliser STDOUT. Peut être n'importe
   quel autre flux come *php://stderr* ou un chemin vers un fichier.
 
-- *width*\  : soit un entier ou la constante ``AUTO`` de ``Zend_Console_ProgressBar``.
+- *width*\  : soit un entier ou la constante ``AUTO`` de ``Zend\Console\ProgressBar``.
 
 - *elements*\  : soit ``NULL`` par défaut ou un tableau avec au moins l'une des constantes de
-  ``Zend_Console_ProgressBar`` suivantes comme valeur :
+  ``Zend\Console\ProgressBar`` suivantes comme valeur :
 
   - ``ELEMENT_PERCENT``\  : la valeur courante en pourcentage.
 

@@ -44,7 +44,7 @@ Um den Prozess zu vereinfachen sehen wir in der Beispiel :ref:`des vorherigen Ab
 .. code-block:: php
    :linenos:
 
-   class My_Decorator_SimpleInput extends Zend_Form_Decorator_Abstract
+   class My_Decorator_SimpleInput extends Zend\Form_Decorator\Abstract
    {
        protected $_format = '<label for="%s">%s</label>'
                           . '<input id="%s" name="%s" type="text" value="%s"/>';
@@ -67,7 +67,7 @@ Jetzt entfernen wir die Funktionalität des Labels und bauen einen eigenen Decor
 .. code-block:: php
    :linenos:
 
-   class My_Decorator_SimpleInput extends Zend_Form_Decorator_Abstract
+   class My_Decorator_SimpleInput extends Zend\Form_Decorator\Abstract
    {
        protected $_format = '<input id="%s" name="%s" type="text" value="%s"/>';
 
@@ -83,7 +83,7 @@ Jetzt entfernen wir die Funktionalität des Labels und bauen einen eigenen Decor
        }
    }
 
-   class My_Decorator_SimpleLabel extends Zend_Form_Decorator_Abstract
+   class My_Decorator_SimpleLabel extends Zend\Form_Decorator\Abstract
    {
        protected $_format = '<label for="%s">%s</label>';
 
@@ -111,14 +111,14 @@ Um das zu verhindern, muss dass in ``$content`` übergebene irgendwie mit dem Ma
 
 Das Problem mit dem obigen Ansatz kommt dann wenn man programmtechnisch wählen will ob der originale Inhalt das
 neue Markup angehängt oder vorangestellt werden soll. Glücklicherweise gibt es hierfür bereits einen
-Standardmechanismus; ``Zend_Form_Decorator_Abstract`` hat ein Konzept der Platzierung und definiert einige
+Standardmechanismus; ``Zend\Form_Decorator\Abstract`` hat ein Konzept der Platzierung und definiert einige
 Konstanten um es anzusprechen. Zusätzlich erlaubt es die Spezifikation eines Separators der zwischen beide
 platziert wird. Verwenden wir Sie:
 
 .. code-block:: php
    :linenos:
 
-   class My_Decorator_SimpleInput extends Zend_Form_Decorator_Abstract
+   class My_Decorator_SimpleInput extends Zend\Form_Decorator\Abstract
    {
        protected $_format = '<input id="%s" name="%s" type="text" value="%s"/>';
 
@@ -143,7 +143,7 @@ platziert wird. Verwenden wir Sie:
        }
    }
 
-   class My_Decorator_SimpleLabel extends Zend_Form_Decorator_Abstract
+   class My_Decorator_SimpleLabel extends Zend\Form_Decorator\Abstract
    {
        protected $_format = '<label for="%s">%s</label>';
 
@@ -175,7 +175,7 @@ Erstellen wir jetzt ein Formularelement das Sie verwendet:
 .. code-block:: php
    :linenos:
 
-   $element = new Zend_Form_Element('foo', array(
+   $element = new Zend\Form\Element('foo', array(
        'label'      => 'Foo',
        'belongsTo'  => 'bar',
        'value'      => 'test',
@@ -208,7 +208,7 @@ ist die Übergabe eines Arrays an Optionen an den Decorator wärend der Erstellu
 .. code-block:: php
    :linenos:
 
-   $element = new Zend_Form_Element('foo', array(
+   $element = new Zend\Form\Element('foo', array(
        'label'      => 'Foo',
        'belongsTo'  => 'bar',
        'value'      => 'test',

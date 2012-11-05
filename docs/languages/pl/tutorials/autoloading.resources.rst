@@ -9,7 +9,7 @@ stosunku 1:1 pomiędzy klasami a plikami jest trudne bądź niekorzystne z punkt
 że pliki z klasami nie zostaną odnalezione przez autoloader.
 
 Zgodnie z :ref:`celami autoloadera <learning.autoloading.design>` a zwłaszcza z ostatnim punktem, powyższa
-sytuacja jest obsługiwana przez autoloader Zend Framework poprzez ``Zend_Loader_Autoloader_Resource``.
+sytuacja jest obsługiwana przez autoloader Zend Framework poprzez ``Zend\Loader_Autoloader\Resource``.
 
 Zasób to jedynie nazwa odpowiadająca przestrzeni nazw komponentu (dołączona do przestrzeni nazw autoloadera)
 wraz ze ścieżką (relatywnie do ścieżki bazowej autoloadera). W praktyce można użyć następującego kodu:
@@ -17,7 +17,7 @@ wraz ze ścieżką (relatywnie do ścieżki bazowej autoloadera). W praktyce mo�
 .. code-block:: php
    :linenos:
 
-   $loader = new Zend_Application_Module_Autoloader(array(
+   $loader = new Zend\Application_Module\Autoloader(array(
        'namespace' => 'Blog',
        'basePath'  => APPLICATION_PATH . '/modules/blog',
    ));
@@ -44,12 +44,12 @@ Pierwszym krokiem jest utworzenie autoloadera zasobów:
 .. code-block:: php
    :linenos:
 
-   $loader = new Zend_Loader_Autoloader_Resource(array(
+   $loader = new Zend\Loader_Autoloader\Resource(array(
        'basePath'  => 'sciezka/do/zasobow/',
        'namespace' => 'Foo',
    ));
 
-Następnie należy zdefiniować typy zasobów. ``Zend_Loader_Autoloader_Resourse::addResourceType()`` przyjmuje
+Następnie należy zdefiniować typy zasobów. ``Zend\Loader_Autoloader\Resourse::addResourceType()`` przyjmuje
 trzy argumenty: typ zasobu (dowolny łańcuch znaków), ścieżka relatywna do ścieżki bazowej autoloadera, w
 której zasób się znajduje oraz prefiks używany przez dany typ zasobu. W powyższym przykładzie istnieją trzy
 rodzaje zasobów: formularze (w katalogu "forms" z prefiksem "Form"), modele (w katalogu "models" z prefiksem
@@ -79,8 +79,8 @@ Po zdefiniowaniu, można używać tych klas bez ręcznego dołączania:
    mini-aplikacjami w ramach tworzonego programu. Moduły przeważnie posiadają wiele typów zasobów a Zend
    Framework nawet :ref:`zaleca standardową strukturę katalogów dla modułu <project-structure.filesystem>`.
    Autoloader zasobów staje się bardzo przydatny w tym kontekście. Przez to, jeśli umieści się plik z klasą
-   bootstrap pochodną do ``Zend_Application_Module_Bootstrap`` to autoloader zostanie domyślnie włączony. Aby
-   uzyskać więcej informacji należy zapoznać się z :ref:`dokumentacją Zend_Loader_Autoloader_Module
+   bootstrap pochodną do ``Zend\Application_Module\Bootstrap`` to autoloader zostanie domyślnie włączony. Aby
+   uzyskać więcej informacji należy zapoznać się z :ref:`dokumentacją Zend\Loader_Autoloader\Module
    <zend.loader.autoloader-resource.module>`.
 
 

@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.windowsazure.storage.blob:
 
-Zend_Service_WindowsAzure_Storage_Blob
+Zend\Service\WindowsAzure\Storage\Blob
 ======================================
 
 Blob Speicher speichert ein Set von Binären Daten. Blog Speicher bietet die folgenden drei Ressourcen an: den
@@ -9,7 +9,7 @@ Speicher Account, Container und Blobs. Im eigenen Speicher Account bieten Contai
 Speicher Account zu organisieren.
 
 Blog Speicher wird von Windows Azure als *REST* *API* angeboten welcher von der Klasse
-``Zend_Service_WindowsAzure_Storage_Blob`` umhüllt ist um ein natives *PHP* Interface zum Speicher Account zu
+``Zend\Service\WindowsAzure\Storage\Blob`` umhüllt ist um ein natives *PHP* Interface zum Speicher Account zu
 bieten.
 
 .. _zend.service.windowsazure.storage.blob.api:
@@ -17,7 +17,7 @@ bieten.
 API Beispiele
 -------------
 
-Dieser Abschnitt zeigt einige Beispiele der Verwendung der Klasse ``Zend_Service_WindowsAzure_Storage_Blob``.
+Dieser Abschnitt zeigt einige Beispiele der Verwendung der Klasse ``Zend\Service\WindowsAzure\Storage\Blob``.
 Andere Features sind im Download Paket vorhanden sowie in der detailierten *API* Dokumentation dieser Features.
 
 .. _zend.service.windowsazure.storage.blob.api.create-container:
@@ -34,7 +34,7 @@ Bei Verwendung des folgenden Codes kann ein Speicher Container auf dem Developme
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Blob();
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Blob();
    $result = $storageClient->createContainer('testcontainer');
 
    echo 'Der Name des Containers ist: ' . $result->Name;
@@ -53,7 +53,7 @@ Bei Verwendung des folgenden Codes kann ein Blob Speicher Container vom Developm
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Blob();
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Blob();
    $storageClient->deleteContainer('testcontainer');
 
 .. _zend.service.windowsazure.storage.blob.api.storing-blob:
@@ -71,7 +71,7 @@ hochgeladen werden. Es ist zu beachten das der Container hierfür bereits vorher
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Blob();
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Blob();
 
    // /home/maarten/example.txt auf Azure hochladen
    $result = $storageClient->putBlob(
@@ -97,7 +97,7 @@ worden sein muss.
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Blob();
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Blob();
 
    // Kopiert example.txt auf example2.txt
    $result = $storageClient->copyBlob(
@@ -122,7 +122,7 @@ Blob darauf hochgeladen sein muss.
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Blob();
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Blob();
 
    // Lädt die Datei /home/maarten/example.txt herunter
    $storageClient->getBlob(
@@ -149,13 +149,13 @@ werden. Es ist zu beachten das der Container hierfür bereits vorher erstellt wo
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Blob();
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Blob();
 
    // Den Container öffentlich zugänglich machen
    // (alle Blobs durchgehen und Blob Daten lesen)
    $storageClient->setContainerAcl(
        'testcontainer',
-       Zend_Service_WindowsAzure_Storage_Blob::ACL_PUBLIC_CONTAINER
+       Zend\Service\WindowsAzure\Storage\Blob::ACL_PUBLIC_CONTAINER
    );
 
 .. _zend.service.windowsazure.storage.blob.root:
@@ -204,7 +204,7 @@ werden. Das kann getan werden indem die Methode ``registerStreamWrapper()`` aufg
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Blob();
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Blob();
    // registriert azure:// auf diesem Speicher Client
    $storageClient->registerStreamWrapper();
 
@@ -242,7 +242,7 @@ Erstellen einer Shared Access Signature
 
 Wenn man Eigentümer eines Windows Azure Blob Speicher Accounts ist kann man einen geteilten Zugriffsschlüssel
 für jeden Typ einer Ressource im eigenen Account erstellen und teilen. Um das zu tun kann die Methode
-``generateSharedAccessUrl()`` des ``Zend_Service_WindowsAzure_Storage_Blob`` Speicher Clients verwendet werden.
+``generateSharedAccessUrl()`` des ``Zend\Service\WindowsAzure\Storage\Blob`` Speicher Clients verwendet werden.
 
 Der folgende Beispielcode erzeugt eine Shared Access Signatur für den Schreibzugriff in einem Container der
 "container1" heißt, in einem Zeitrahmen von 3000 Sekunden.
@@ -254,7 +254,7 @@ Der folgende Beispielcode erzeugt eine Shared Access Signatur für den Schreibzu
 .. code-block:: php
    :linenos:
 
-   $storageClient   = new Zend_Service_WindowsAzure_Storage_Blob();
+   $storageClient   = new Zend\Service\WindowsAzure\Storage\Blob();
    $sharedAccessUrl = $storageClient->generateSharedAccessUrl(
        'container1',
        '',
@@ -274,7 +274,7 @@ heißt und einem Container der "container1" heißt, in einem Zeitrahmen von 3000
 .. code-block:: php
    :linenos:
 
-   $storageClient   = new Zend_Service_WindowsAzure_Storage_Blob();
+   $storageClient   = new Zend\Service\WindowsAzure\Storage\Blob();
    $sharedAccessUrl = $storageClient->generateSharedAccessUrl(
        'container1',
        'test.txt',
@@ -309,11 +309,11 @@ authorisierten Ressource zu arbeiten.
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Blob(
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Blob(
        'blob.core.windows.net', 'phpstorage', ''
    );
    $storageClient->setCredentials(
-       new Zend_Service_WindowsAzure_Credentials_SharedAccessSignature()
+       new Zend\Service\WindowsAzure\Credentials\SharedAccessSignature()
    );
    $storageClient->getCredentials()->setPermissionSet(array(
        'http://phpstorage.blob.core.windows.net/phpazuretestshared1?st=2009-08-17T09%3A06%3A17Z&se=2009-08-17T09%3A56%3A17Z&sr=c&sp=w&sig=hscQ7Su1nqd91OfMTwTkxabhJSaspx%2BD%2Fz8UqZAgn9s%3D'

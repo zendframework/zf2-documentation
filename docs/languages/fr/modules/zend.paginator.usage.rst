@@ -22,9 +22,9 @@ adaptateurs existent par défaut :
    +=============+==================================================================================================================================================================================================================+
    |Array        |Utilise un tableau PHP                                                                                                                                                                                            |
    +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |DbSelect     |Utilise une instance de Zend_Db_Select qui retourne un tableau                                                                                                                                                    |
+   |DbSelect     |Utilise une instance de Zend\Db\Select qui retourne un tableau                                                                                                                                                    |
    +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |DbTableSelect|Utilise une instance Zend_Db_Table_Select, qui retournera une instance de Zend_Db_Table_Rowset_Abstract. Ceci fournit aussi des informations supplémentaires sur le jeu de résultats, tel que les noms de colonne.|
+   |DbTableSelect|Utilise une instance Zend\Db_Table\Select, qui retournera une instance de Zend\Db\Table\Rowset\Abstract. Ceci fournit aussi des informations supplémentaires sur le jeu de résultats, tel que les noms de colonne.|
    +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Iterator     |Utilise une instance implémentant Iterator                                                                                                                                                                        |
    +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -48,7 +48,7 @@ Pour créer une instance de ``Zend_Paginator``, vous devez spécifier un adaptat
    .. code-block:: php
       :linenos:
 
-      $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($array));
+      $paginator = new Zend\Paginator\Paginator(new Zend\Paginator_Adapter\Array($array));
 
 
 
@@ -59,7 +59,7 @@ Pour une meilleure intégration, vous pouvez utiliser la fabrique ``factory()``:
    .. code-block:: php
       :linenos:
 
-      $paginator = Zend_Paginator::factory($array);
+      $paginator = Zend\Paginator\Paginator::factory($array);
 
 
 
@@ -82,7 +82,7 @@ données paginées.
 
 
 La manière la plus simple de suivre et scruter cette valeur est via l'URL. Nous recommandons l'utilisation d'un
-routeur compatible avec ``Zend_Controller_Router_Interface``, mais ceci n'est pas nécessaire.
+routeur compatible avec ``Zend\Controller_Router\Interface``, mais ceci n'est pas nécessaire.
 
 Voici une route que vous pourriez définir dans un fichier de configuration *INI*:
 
@@ -153,12 +153,12 @@ following setup:
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Paginator_Adapter_DbSelect($db->select()->from('posts'));
+   $adapter = new Zend\Paginator_Adapter\DbSelect($db->select()->from('posts'));
    $adapter->setRowCount(
-       $db->select()->from('item_counts', array(Zend_Paginator_Adapter_DbSelect::ROW_COUNT_COLUMN => 'post_count'))
+       $db->select()->from('item_counts', array(Zend\Paginator_Adapter\DbSelect::ROW_COUNT_COLUMN => 'post_count'))
    )
 
-   $paginator = new Zend_Paginator($adapter);
+   $paginator = new Zend\Paginator\Paginator($adapter);
 
 This approach will probably not give you a huge performance gain on small collections and/or simple select queries.
 However, with complex queries and large collections, a similar approach could give you a significant performance
@@ -246,8 +246,8 @@ affranchir totalement des appels à *PaginationControl*:
    .. code-block:: php
       :linenos:
 
-      Zend_Paginator::setDefaultScrollingStyle('Sliding');
-      Zend_View_Helper_PaginationControl::setDefaultViewPartial(
+      Zend\Paginator\Paginator::setDefaultScrollingStyle('Sliding');
+      Zend\View_Helper\PaginationControl::setDefaultViewPartial(
           'my_pagination_control.phtml'
       );
       $paginator->setView($view);

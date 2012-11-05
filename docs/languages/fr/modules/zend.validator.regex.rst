@@ -8,16 +8,16 @@ Ce validateur valide si une chaine correspond à un motif d'expression réguliè
 
 .. _zend.validator.set.regex.options:
 
-Options supportées par Zend_Validate_Regex
+Options supportées par Zend\Validate\Regex
 ------------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_Regex``\  :
+Les options suivantes sont supportées par ``Zend\Validate\Regex``\  :
 
 - **pattern**\  : le motif d'expression régulière.
 
 .. _zend.validator.set.regex.basic:
 
-Validation avec Zend_Validate_Regex
+Validation avec Zend\Validate\Regex
 -----------------------------------
 
 La validation au travers d'expressions régulières est pratique, très utilisée et simple dans la mesure où elle
@@ -26,7 +26,7 @@ vous évite la plupart du temps d'écrire votre propre validateur. Voyons quelqu
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Regex(array('pattern' => '/^Test/');
+   $validator = new Zend\Validate\Regex(array('pattern' => '/^Test/');
 
    $validator->isValid("Test"); // retourne true
    $validator->isValid("Testing"); // retourne true
@@ -46,7 +46,7 @@ Vous pouvez affecter / récupérer le motif après avoir crée le validateur e
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Regex(array('pattern' => '/^Test/');
+   $validator = new Zend\Validate\Regex(array('pattern' => '/^Test/');
    $validator->setPattern('ing$/');
 
    $validator->isValid("Test"); // retourne false

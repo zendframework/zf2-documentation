@@ -16,7 +16,7 @@ in un file o l'invio ad un server.
    :linenos:
 
    <?php
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/1');
    $entry = $feed->current();
 
    $entry->title = 'Questo è un nuovo titolo';
@@ -32,7 +32,7 @@ possono utilizzare quanti livelli di accesso *->* si desidera prima di eseguire 
 intermedi verranno creati in automatico, se necessario.
 
 Se si desidera utilizzare in un elemento un namespace oltre a *atom:*, *rss:* o *osrss:*, è necessario registrarlo
-in *Zend_Feed* utilizzando *Zend_Feed::registerNamespace()*. Un elemento esistente manterrà sempre il proprio
+in *Zend_Feed* utilizzando *Zend\Feed\Feed::registerNamespace()*. Un elemento esistente manterrà sempre il proprio
 namespace originale in fase di modifica. Un nuovo elemento sarà invece inserito nel namespace predefinito se non
 si specifica esplicitamente un namespace alternativo.
 
@@ -44,14 +44,14 @@ si specifica esplicitamente un namespace alternativo.
    :linenos:
 
    <?php
-   $entry = new Zend_Feed_Entry_Atom();
+   $entry = new Zend\Feed_Entry\Atom();
    // id è sempre assegnato dal server ad Atom
    $entry->title = 'il mio elemento personalizzato';
    $entry->author->name = 'Autore di Esempio';
    $entry->author->email = 'io@example.com';
 
    // ora esegue la parte personalizzata
-   Zend_Feed::registerNamespace('mions', 'http://www.example.com/mions/1.0');
+   Zend\Feed\Feed::registerNamespace('mions', 'http://www.example.com/mions/1.0');
 
    $entry->{'mions:mioelemento_uno'} = 'il mio primo valore personalizzato';
    $entry->{'mions:contenitore_elem'}->parte1 = 'prima parte personalizzata';

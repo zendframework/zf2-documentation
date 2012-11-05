@@ -17,9 +17,9 @@
       :linenos:
 
       // Создание цепочки фильтров и добавление в нее фильтров
-      $filterChain = new Zend_Filter();
-      $filterChain->addFilter(new Zend_Filter_Alpha())
-                  ->addFilter(new Zend_Filter_StringToLower());
+      $filterChain = new Zend\Filter\Filter();
+      $filterChain->addFilter(new Zend\Filter\Alpha())
+                  ->addFilter(new Zend\Filter\StringToLower());
 
       // Фильтрация имени пользователя
       $username = $filterChain->filter($_POST['username']);
@@ -29,7 +29,7 @@
 сначала удаляются все неалфавитные символы, затем все символы
 приводятся к нижнему регистру.
 
-Все объекты, реализующие интерфейс ``Zend_Filter_Interface``, могут
+Все объекты, реализующие интерфейс ``Zend\Filter\Interface``, могут
 использоваться в цепочке фильтров.
 
 

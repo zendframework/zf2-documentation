@@ -4,9 +4,9 @@
 Einführung
 ==========
 
-Die Komponente ``Zend_Pdf`` ist eine Manipulations Engine für *PDF* (Portable Document Format). Es kann Dokumente
+Die Komponente ``ZendPdf`` ist eine Manipulations Engine für *PDF* (Portable Document Format). Es kann Dokumente
 laden, erstellen, verändern und speichern. Deswegen kann es jeder *PHP* Anwendung helfen *PDF* Dokumente dynamisch
-zu erstellen indem bestehende Dokumente verändert oder neue von Grund auf erzeugt werden. ``Zend_Pdf`` bietet die
+zu erstellen indem bestehende Dokumente verändert oder neue von Grund auf erzeugt werden. ``ZendPdf`` bietet die
 folgenden Features:
 
 

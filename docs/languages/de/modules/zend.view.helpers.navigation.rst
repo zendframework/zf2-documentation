@@ -340,12 +340,12 @@ Zusätzlich zum obigen Container, wird das folgende Setup angenommen:
    :linenos:
 
    // Router Setup (Standardrouten und 'archive' Route):
-   $front = Zend_Controller_Front::getInstance();
+   $front = Zend\Controller\Front::getInstance();
    $router = $front->getRouter();
    $router->addDefaultRoutes();
    $router->addRoute(
        'archive',
-       new Zend_Controller_Router_Route(
+       new Zend\Controller_Router\Route(
            '/archive/:year',
            array(
                'module'     => 'company',

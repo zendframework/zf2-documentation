@@ -9,7 +9,7 @@ Zusammenarbeit Mit Java Lucene
 Dateiformate
 ------------
 
-``Zend_Search_Lucene`` Indexdateiformate sind binär kompatibel mit der Java Lucene Version 1.4 und größer.
+``Zend\Search\Lucene`` Indexdateiformate sind binär kompatibel mit der Java Lucene Version 1.4 und größer.
 
 Eine detaillierte Beschreibung dieses Formats ist hier erhältlich:
 `http://lucene.apache.org/java/2_3_0/fileformats.html`_. [#]_.

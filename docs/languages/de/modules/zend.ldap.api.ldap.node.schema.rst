@@ -1,25 +1,25 @@
 .. EN-Revision: none
 .. _zend.ldap.api.reference.zend-ldap-node-schema:
 
-Zend_Ldap_Node_Schema
+Zend\Ldap_Node\Schema
 =====================
 
 Die folgenden Methoden sind für alle Hersteller-spezifischen Unterklassen vorhanden.
 
-*Zend_Ldap_Node_Schema* enthält die magischen Methoden *__get()* und *__isset()* um auf die Attribute durch Ihren
-Namen zugreifen zu können. Die verweisen auf *Zend_Ldap_Node_Schema::getAttribute()* und
-*Zend_Ldap_Node_Schema::existsAttribute()*. *__set()* und *__unset()* sind auch implementiert, werfen aber eine
+*Zend\Ldap_Node\Schema* enthält die magischen Methoden *__get()* und *__isset()* um auf die Attribute durch Ihren
+Namen zugreifen zu können. Die verweisen auf *Zend\Ldap_Node\Schema::getAttribute()* und
+*Zend\Ldap_Node\Schema::existsAttribute()*. *__set()* und *__unset()* sind auch implementiert, werfen aber eine
 *BadMethodCallException* da Änderungen auf RootDSE Nodes nicht erlaubt sind. Weiters implementiert die Klasse
 *ArrayAccess* für Array-Artigen Zugriff und wirft eine *BadMethodCallException* aus den bekannten Gründen.
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.table:
 
-.. table:: Zend_Ldap_Node_Schema API
+.. table:: Zend\Ldap_Node\Schema API
 
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Methode                                                              |Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                 |
    +=====================================================================+=============================================================================================================================================================================================================================================================================================================================================================================================================+
-   |Zend_Ldap_Dn getDn()                                                 |Holt den DN des aktuellen Nodes als Zend_Ldap_Dn.                                                                                                                                                                                                                                                                                                                                                            |
+   |Zend\Ldap\Dn getDn()                                                 |Holt den DN des aktuellen Nodes als Zend\Ldap\Dn.                                                                                                                                                                                                                                                                                                                                                            |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |string getDnString(string $caseFold)                                 |Holt den DN des aktuellen Nodes als String.                                                                                                                                                                                                                                                                                                                                                                  |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -31,13 +31,13 @@ Namen zugreifen zu können. Die verweisen auf *Zend_Ldap_Node_Schema::getAttribu
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |array getObjectClass()                                               |Gibt die objectClass des aktuellen Nodes zurück.                                                                                                                                                                                                                                                                                                                                                             |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |string toString()                                                    |Gibt den DN des aktuellen Nodes zurück - verweist auf Zend_Ldap_Dn::getDnString().                                                                                                                                                                                                                                                                                                                           |
+   |string toString()                                                    |Gibt den DN des aktuellen Nodes zurück - verweist auf Zend\Ldap\Dn::getDnString().                                                                                                                                                                                                                                                                                                                           |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |string \__toString()                                                 |Castet auf eine String Darstellung - leitet auf Zend_Ldap_Dn::toString() weiter.                                                                                                                                                                                                                                                                                                                             |
+   |string \__toString()                                                 |Castet auf eine String Darstellung - leitet auf Zend\Ldap\Dn::toString() weiter.                                                                                                                                                                                                                                                                                                                             |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |array toArray(boolean $includeSystemAttributes)                      |Gibt eine Array Darstellung des aktuellen Nodes zurück. Wenn $includeSystemAttributesFALSE ist (Standardmäßig ist es TRUE) werden die System spezifischen Attribute vom Array entfernt. Anders als Zend_Ldap_Node_Schema::getAttributes() enthält das resultierende Array den DN mit dem Schlüssel 'dn'.                                                                                                     |
+   |array toArray(boolean $includeSystemAttributes)                      |Gibt eine Array Darstellung des aktuellen Nodes zurück. Wenn $includeSystemAttributesFALSE ist (Standardmäßig ist es TRUE) werden die System spezifischen Attribute vom Array entfernt. Anders als Zend\Ldap_Node\Schema::getAttributes() enthält das resultierende Array den DN mit dem Schlüssel 'dn'.                                                                                                     |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |string toJson(boolean $includeSystemAttributes)                      |Gibt eine JSON Darstellung des aktuellen Nodes zurück indem Zend_Ldap_Node_Schema::toArray() verwendet wird.                                                                                                                                                                                                                                                                                                 |
+   |string toJson(boolean $includeSystemAttributes)                      |Gibt eine JSON Darstellung des aktuellen Nodes zurück indem Zend\Ldap_Node\Schema::toArray() verwendet wird.                                                                                                                                                                                                                                                                                                 |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |array getData(boolean $includeSystemAttributes)                      |Gibt die Attribute des Nodes zurück. Das Array enthält alle Attribute in Ihrem internen Format (keine Konvertierung).                                                                                                                                                                                                                                                                                        |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -47,24 +47,24 @@ Namen zugreifen zu können. Die verweisen auf *Zend_Ldap_Node_Schema::getAttribu
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |integer count()                                                      |Gibt die Anzahl der Attribute im Node zurück. Implementiert Countable.                                                                                                                                                                                                                                                                                                                                       |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |mixed getAttribute(string $name, integer|null $index)                |Holt ein LDAP Attribut. Datenkonvertierung wird angewendet indem Zend_Ldap_Attribute::getAttribute() verwendet wird.                                                                                                                                                                                                                                                                                         |
+   |mixed getAttribute(string $name, integer|null $index)                |Holt ein LDAP Attribut. Datenkonvertierung wird angewendet indem Zend\Ldap\Attribute::getAttribute() verwendet wird.                                                                                                                                                                                                                                                                                         |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |array getAttributes(boolean $includeSystemAttributes)                |Holt alle Attribute des Nodes. Wenn $includeSystemAttributesFALSE ist (der Standardwert ist TRUE) werden systemspezifische Attribute vom Array entfernt.                                                                                                                                                                                                                                                     |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |array|integer getDateTimeAttribute(string $name, integer|null $index)|Holt ein LDAP date/time Attribut. Datenkonvertierung wird angewendet indem Zend_Ldap_Attribute::getDateTimeAttribute() verwendet wird.                                                                                                                                                                                                                                                                       |
+   |array|integer getDateTimeAttribute(string $name, integer|null $index)|Holt ein LDAP date/time Attribut. Datenkonvertierung wird angewendet indem Zend\Ldap\Attribute::getDateTimeAttribute() verwendet wird.                                                                                                                                                                                                                                                                       |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |Zend_Ldap_Node_Schema reload(Zend_Ldap $ldap)                        |Lädt die Attribute des aktuellen Nodes neu vom angegebenen LDAP Server.                                                                                                                                                                                                                                                                                                                                      |
+   |Zend\Ldap_Node\Schema reload(Zend_Ldap $ldap)                        |Lädt die Attribute des aktuellen Nodes neu vom angegebenen LDAP Server.                                                                                                                                                                                                                                                                                                                                      |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |Zend_Ldap_Node_Schema create(Zend_Ldap $ldap)                        |Factory Methode um den Schema Node zu erstellen.                                                                                                                                                                                                                                                                                                                                                             |
+   |Zend\Ldap_Node\Schema create(Zend_Ldap $ldap)                        |Factory Methode um den Schema Node zu erstellen.                                                                                                                                                                                                                                                                                                                                                             |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |array getAttributeTypes()                                            |Holt den Typ des Attributs als Array von .                                                                                                                                                                                                                                                                                                                                                                   |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |array getObjectClasses()                                             |Holt das Klassenobjekt als Array von Zend_Ldap_Node_Schema_ObjectClass_Interface.                                                                                                                                                                                                                                                                                                                            |
+   |array getObjectClasses()                                             |Holt das Klassenobjekt als Array von Zend\Ldap\Node\Schema\ObjectClass\Interface.                                                                                                                                                                                                                                                                                                                            |
    +---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.attributetype-interface.table:
 
-.. table:: Zend_Ldap_Node_Schema_AttributeType_Interface API
+.. table:: Zend\Ldap\Node\Schema\AttributeType\Interface API
 
    +------------------------+---------------------------------------------------+
    |Methode                 |Beschreibung                                       |
@@ -84,7 +84,7 @@ Namen zugreifen zu können. Die verweisen auf *Zend_Ldap_Node_Schema::getAttribu
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.objectclass-interface.table:
 
-.. table:: Zend_Ldap_Node_Schema_ObjectClass_Interface API
+.. table:: Zend\Ldap\Node\Schema\ObjectClass\Interface API
 
    +------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Methode                 |Beschreibung                                                                                                                                                                                                                                                                                                                                                                        |
@@ -99,21 +99,21 @@ Namen zugreifen zu können. Die verweisen auf *Zend_Ldap_Node_Schema::getAttribu
    +------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |string getDescription() |Gibt die Beschreibung des Attributs zurück                                                                                                                                                                                                                                                                                                                                          |
    +------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |integer getType()       |Gibt den Typ von objectClass zurück. Diese Methode gibt einen der folgenden Werte zurück: Zend_Ldap_Node_Schema::OBJECTCLASS_TYPE_UNKNOWNfür unbekannte KlassentypenZend_Ldap_Node_Schema::OBJECTCLASS_TYPE_STRUCTURALfür strukturelle KlassenZend_Ldap_Node_Schema::OBJECTCLASS_TYPE_ABSTRACTfür abstrakte KlassenZend_Ldap_Node_Schema::OBJECTCLASS_TYPE_AUXILIARYfür Hilfsklassen|
+   |integer getType()       |Gibt den Typ von objectClass zurück. Diese Methode gibt einen der folgenden Werte zurück: Zend\Ldap_Node\Schema::OBJECTCLASS_TYPE_UNKNOWNfür unbekannte KlassentypenZend\Ldap_Node\Schema::OBJECTCLASS_TYPE_STRUCTURALfür strukturelle KlassenZend\Ldap_Node\Schema::OBJECTCLASS_TYPE_ABSTRACTfür abstrakte KlassenZend\Ldap_Node\Schema::OBJECTCLASS_TYPE_AUXILIARYfür Hilfsklassen|
    +------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |array getParentClasses()|Gibt die elterliche objectClass dieser Klasse zurück. Diese enthalten strukturelle, abstrakte und Hilfsklassen.                                                                                                                                                                                                                                                                     |
    +------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Klassen welche Attributtypen repräsentieren und auch Objektklassen erweitern *Zend_Ldap_Node_Schema_Item* welche
+Klassen welche Attributtypen repräsentieren und auch Objektklassen erweitern *Zend\Ldap\Node\Schema\Item* welche
 einige Kernmethoden bietet um auf eigene Attribute im darunterliegenden *LDAP* Node zugreifen zu können.
-*Zend_Ldap_Node_Schema_Item* enthält die magischen Methoden *__get()* und *__isset()* um auf die Attribute mit
+*Zend\Ldap\Node\Schema\Item* enthält die magischen Methoden *__get()* und *__isset()* um auf die Attribute mit
 Ihrem Namen zugreifen zu können. Weiters implementiert die Klasse *ArrayAccess* für einen Array-artigen Zugriff
 auf die Attribute. *offsetSet()* und *offsetUnset()* werfen eine *BadMethodCallException* da Änderungen in Schema
 Informations Nodes nicht erlaubt sind.
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.schema-item.table:
 
-.. table:: Zend_Ldap_Node_Schema_Item API
+.. table:: Zend\Ldap\Node\Schema\Item API
 
    +---------------+--------------------------------------------------------------------------------------------------+
    |Methode        |Beschreibung                                                                                      |
@@ -128,12 +128,12 @@ Informations Nodes nicht erlaubt sind.
 OpenLDAP
 --------
 
-Zusätzlich können die üblichen Methoden von oben auf Instanzen von *Zend_Ldap_Node_Schema_OpenLDAP* angewendet
+Zusätzlich können die üblichen Methoden von oben auf Instanzen von *Zend\Ldap\Node\Schema\OpenLDAP* angewendet
 werden.
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.openldap.table:
 
-.. table:: Zend_Ldap_Node_Schema_OpenLDAP API
+.. table:: Zend\Ldap\Node\Schema\OpenLDAP API
 
    +--------------------------+-----------------------------------+
    |Methode                   |Beschreibung                       |
@@ -147,22 +147,22 @@ werden.
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.openldap.attributetype-interface.table:
 
-.. table:: Zend_Ldap_Node_Schema_AttributeType_OpenLDAP API
+.. table:: Zend\Ldap\Node\Schema\AttributeType\OpenLDAP API
 
    +-------------------------------------------------------------+-------------------------------------------------------------------------+
    |Methode                                                      |Beschreibung                                                             |
    +=============================================================+=========================================================================+
-   |Zend_Ldap_Node_Schema_AttributeType_OpenLdap|null getParent()|Gibt den Type des Elternattributs vom geerbten Baum wenn einer existiert.|
+   |Zend\Ldap\Node\Schema\AttributeType\OpenLdap|null getParent()|Gibt den Type des Elternattributs vom geerbten Baum wenn einer existiert.|
    +-------------------------------------------------------------+-------------------------------------------------------------------------+
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.openldap.objectclass-interface.table:
 
-.. table:: Zend_Ldap_Node_Schema_ObjectClass_OpenLDAP API
+.. table:: Zend\Ldap\Node\Schema\ObjectClass\OpenLDAP API
 
    +------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Methode           |Beschreibung                                                                                                                                                            |
    +==================+========================================================================================================================================================================+
-   |array getParents()|Gibt die elterlichen Objektklassen im vererbten Baum zurück wenn einer existiert. Das zurückgegebene Array ist ein Array von Zend_Ldap_Node_Schema_ObjectClass_OpenLdap.|
+   |array getParents()|Gibt die elterlichen Objektklassen im vererbten Baum zurück wenn einer existiert. Das zurückgegebene Array ist ein Array von Zend\Ldap\Node\Schema\ObjectClass\OpenLdap.|
    +------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.activedirectory:
@@ -178,22 +178,22 @@ ActiveDirectory
    generellen Such Routinen zurückgegeben werden, und wegen der Struktur des ActiveDirectory Schema Repositories,
    ist das Schema Browsen aktuell **nicht** für Microsoft ActiveDirectory Server vorhanden.
 
-*Zend_Ldap_Node_Schema_ActiveDirectory* bietet keine zusätzlichen Methoden an.
+*Zend\Ldap\Node\Schema\ActiveDirectory* bietet keine zusätzlichen Methoden an.
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.activedirectory.attributetype-interface.table:
 
-.. table:: Zend_Ldap_Node_Schema_AttributeType_ActiveDirectory API
+.. table:: Zend\Ldap\Node\Schema\AttributeType\ActiveDirectory API
 
    +------------------------------------------------------------------------------------------+
-   |Zend_Ldap_Node_Schema_AttributeType_ActiveDirectory bietet keine zusätzlichen Methoden an.|
+   |Zend\Ldap\Node\Schema\AttributeType\ActiveDirectory bietet keine zusätzlichen Methoden an.|
    +------------------------------------------------------------------------------------------+
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.activedirectory.objectclass-interface.table:
 
-.. table:: Zend_Ldap_Node_Schema_ObjectClass_ActiveDirectory API
+.. table:: Zend\Ldap\Node\Schema\ObjectClass\ActiveDirectory API
 
    +----------------------------------------------------------------------------------------+
-   |Zend_Ldap_Node_Schema_ObjectClass_ActiveDirectory bietet keine zusätzlichen Methoden an.|
+   |Zend\Ldap\Node\Schema\ObjectClass\ActiveDirectory bietet keine zusätzlichen Methoden an.|
    +----------------------------------------------------------------------------------------+
 
 

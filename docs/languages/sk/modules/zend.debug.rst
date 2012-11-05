@@ -4,7 +4,7 @@
 Zobrazovanie obsahu premenených
 ===============================
 
-Statická metóda *Zend_Debug::dump()* vypíše, alebo vráti informáciu o výraze. Tento spôsob ladenia je
+Statická metóda *Zend\Debug\Debug::dump()* vypíše, alebo vráti informáciu o výraze. Tento spôsob ladenia je
 bežný, lebo je jednoducho použiteľný a nepotrebuje inicializáciu, špeciálne nástroje, alebo ladiace
 prostredie.
 
@@ -17,18 +17,18 @@ prostredie.
 
    <?php
 
-   Zend_Debug::dump($var, $label=null, $echo=true)
+   Zend\Debug\Debug::dump($var, $label=null, $echo=true)
 
    ?>
-Argument *$var* obsahuje výraz, premennú o ktorej chceme zistiť informácie pomocou metódy *Zend_Debug::dump()*
+Argument *$var* obsahuje výraz, premennú o ktorej chceme zistiť informácie pomocou metódy *Zend\Debug\Debug::dump()*
 
-Argument *$label* je reťazec ktorý bude pridaný pre výstup *Zend_Debug::dump()*. Môže to byť užitočné
+Argument *$label* je reťazec ktorý bude pridaný pre výstup *Zend\Debug\Debug::dump()*. Môže to byť užitočné
 keď sa zobrazuje viac premenných na jednej obrazovke.
 
-Argument *$echo* určuje či výstup z *Zend_Debug::dump()* bude vypísaný, alebo nie. Ak je *true* výstup bude
+Argument *$echo* určuje či výstup z *Zend\Debug\Debug::dump()* bude vypísaný, alebo nie. Ak je *true* výstup bude
 vypísaný. Návratová hodnota vždy obsahuje výstup a nezáleží na hodnote argumentu *$echo*.
 
-Môže byť užitočné vedieť ako funguje metóda *Zend_Debug::dump()* vnútorne. Je to obalenie PHP funkcie
+Môže byť užitočné vedieť ako funguje metóda *Zend\Debug\Debug::dump()* vnútorne. Je to obalenie PHP funkcie
 `var_dump()`_. Ak je výstup detekovaný ako web, potom je výstup z *var_dump()* escapovaný pomocou
 `htmlspecialchars()`_ a obalený (X)HTML značkou *<pre>*.
 
@@ -36,12 +36,12 @@ Môže byť užitočné vedieť ako funguje metóda *Zend_Debug::dump()* vnútor
 
    **Ladenie s Zend_Log**
 
-   Použitie *Zend_Debug::dump()* je najlepšie pre okamžité použitie počas vývoja aplikácie. Pridanie a
+   Použitie *Zend\Debug\Debug::dump()* je najlepšie pre okamžité použitie počas vývoja aplikácie. Pridanie a
    odobratie kódu pre zobrazenie premennej, alebo výrazu je rýchle.
 
    Vhodné je zvážiť použitie :ref:`Zend_Log <zend.log.overview>` pre písanie trvalejšieho kódu pre ladenie.
    Napríklad je možné použiť úroveň zaznamenávania *DEBUG* a zapisovať do súboru, ..., výstup vrátený
-   metódou *Zend_Debug::dump()*.
+   metódou *Zend\Debug\Debug::dump()*.
 
 
 

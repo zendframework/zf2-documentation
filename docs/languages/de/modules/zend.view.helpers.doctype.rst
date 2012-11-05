@@ -43,7 +43,7 @@ erkennen wenn er gesetzt wurde, sodas der einfachste Weg darin besteht Ihn in de
 .. code-block:: php
    :linenos:
 
-   $doctypeHelper = new Zend_View_Helper_Doctype();
+   $doctypeHelper = new Zend\View_Helper\Doctype();
    $doctypeHelper->doctype('XHTML1_STRICT');
 
 Und Ihn dann am Beginn des Layout Scripts ausgeben:

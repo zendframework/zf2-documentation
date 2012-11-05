@@ -9,9 +9,9 @@ Datenbanktabellen Authentifizierung
 Einführung
 ----------
 
-``Zend_Auth_Adapter_DbTable`` bietet die Möglichkeit sich gegenüber Zeugnissen zu authentifizieren die in einer
-Datenbank Tabelle gespeichert sind. Weil ``Zend_Auth_Adapter_DbTable`` eine Instanz von
-``Zend_Db_Adapter_Abstract`` benötigt, die an den Konstruktor übergeben wird, ist jede Instanz an eine spezielle
+``Zend\Auth_Adapter\DbTable`` bietet die Möglichkeit sich gegenüber Zeugnissen zu authentifizieren die in einer
+Datenbank Tabelle gespeichert sind. Weil ``Zend\Auth_Adapter\DbTable`` eine Instanz von
+``Zend\Db_Adapter\Abstract`` benötigt, die an den Konstruktor übergeben wird, ist jede Instanz an eine spezielle
 Datenbank Verbindung verknüpft. Andere Konfigurationsoptionen können durch den Konstruktor gesetzt werden und
 durch die Methoden der Instanz. Eine für jede Option.
 
@@ -38,8 +38,8 @@ Die vorhandenen Konfigurationsoptionen beinhalten:
 
 .. rubric:: Grundsätzliche Verwendung
 
-Wie bereits in der Einführung beschrieben benötigt der ``Zend_Auth_Adapter_DbTable`` Konstruktor eine Instanz von
-``Zend_Db_Adapter_Abstract`` die als Datenbank Verbindung fungiert zu welcher die Instanz des
+Wie bereits in der Einführung beschrieben benötigt der ``Zend\Auth_Adapter\DbTable`` Konstruktor eine Instanz von
+``Zend\Db_Adapter\Abstract`` die als Datenbank Verbindung fungiert zu welcher die Instanz des
 Authentifizierungs-Adapters gebunden ist. Zuerst sollte die Datenbankverbindung erstellt werden.
 
 Der folgende Code erstellt einen Adapter für eine In-Memory Datenbank, erstellt ein einfaches Datenbankschema, und
@@ -50,7 +50,7 @@ benötigt die *PDO* SQLite Erweiterung:
    :linenos:
 
    // Erstellt eine In-Memory SQLite Datenbankverbindung
-   $dbAdapter = new Zend_Db_Adapter_Pdo_Sqlite(array('dbname' =>
+   $dbAdapter = new Zend\Db\Adapter\Pdo\Sqlite(array('dbname' =>
                                                      ':memory:'));
 
    // Erstellt eine einfache Datenbank-Erstellungs-Abfrage
@@ -71,7 +71,7 @@ benötigt die *PDO* SQLite Erweiterung:
    // Daten einfügen
    $dbAdapter->query($sqlInsert);
 
-Mit der Datenbankverbindung und den vorhandenen Tabellendaten, kann eine Instanz von ``Zend_Auth_Adapter_DbTable``
+Mit der Datenbankverbindung und den vorhandenen Tabellendaten, kann eine Instanz von ``Zend\Auth_Adapter\DbTable``
 erstellt werden. Die Werte der Konfigurationsoptionen können dem Konstruktor übergeben werden, oder als Parameter
 der setzenden Methoden nach der Instanziierung:
 
@@ -79,7 +79,7 @@ der setzenden Methoden nach der Instanziierung:
    :linenos:
 
    // Die Instanz mit Konstruktor Parametern konfiurieren...
-   $authAdapter = new Zend_Auth_Adapter_DbTable(
+   $authAdapter = new Zend\Auth_Adapter\DbTable(
        $dbAdapter,
        'users',
        'username',
@@ -87,7 +87,7 @@ der setzenden Methoden nach der Instanziierung:
    );
 
    // ...oder die Instanz mit den setzenden Methoden konfigurieren
-   $authAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
+   $authAdapter = new Zend\Auth_Adapter\DbTable($dbAdapter);
    $authAdapter
        ->setTableName('users')
        ->setIdentityColumn('username')
@@ -109,7 +109,7 @@ Um eine Authentifierungsabfrage zu formulieren, werden die Eingabezeugnis Werte 
    $result = $authAdapter->authenticate();
 
 Zusätzlich zum Vorhandensein der ``getIdentity()`` Methode über das Authentifizierungs Ergebnisobjekt,
-unterstützt ``Zend_Auth_Adapter_DbTable`` auch das empfangen der Tabellenzeile wenn die Authentifizierung
+unterstützt ``Zend\Auth_Adapter\DbTable`` auch das empfangen der Tabellenzeile wenn die Authentifizierung
 erfolgeich war:
 
 .. code-block:: php
@@ -141,7 +141,7 @@ abzusichern.
 Fortgeschrittene Verwendung: Ein DbTable Ergebnis Objekt dauerhaft machen
 -------------------------------------------------------------------------
 
-Standardmäßig gibt ``Zend_Auth_Adapter_DbTable`` die unterstützte Identität an das Auth Objekt bei
+Standardmäßig gibt ``Zend\Auth_Adapter\DbTable`` die unterstützte Identität an das Auth Objekt bei
 erfolgreicher Authentifizierung zurück. Ein anderes Verwendungs-Szenario, bei dem Entwickler ein Identitäts
 Objekt, welches andere nützliche Informationen enthält, in den dauerhaften Speichermechanismus von ``Zend_Auth``
 abspeichern wollen, wird durch die Verwendung der ``getResultRowObject()`` Methode gelöst die ein **stdClass**
@@ -150,7 +150,7 @@ Objekt zurück gibt. Der folgende Code Abschnitt zeigt diese Verwendung:
 .. code-block:: php
    :linenos:
 
-   // Mit Zend_Auth_Adapter_DbTable authentifizieren
+   // Mit Zend\Auth_Adapter\DbTable authentifizieren
    $result = $this->_auth->authenticate($adapter);
 
    if ($result->isValid()) {
@@ -183,19 +183,19 @@ Objekt zurück gibt. Der folgende Code Abschnitt zeigt diese Verwendung:
 Fortgeschrittene Verwendung durch Beispiele
 -------------------------------------------
 
-Wärend der primäre Zweck von ``Zend_Auth`` (und konsequenter Weise ``Zend_Auth_Adapter_DbTable``) die
+Wärend der primäre Zweck von ``Zend_Auth`` (und konsequenter Weise ``Zend\Auth_Adapter\DbTable``) die
 **Authentifizierung** und nicht die **Authorisierung** ist, gibt es ein paar Instanzen und Probleme auf dem Weg
 welche Art besser passt. Abhängig davon wie man sich entscheidet ein Problem zu beschreiben, macht es manchmal
 Sinn, das was wie ein Authorisierungsproblem aussieht im Authentifizierungs-Adapter zu lösen.
 
-Mit dieser Definition, hat ``Zend_Auth_Adapter_DbTable`` einige eingebaute Mechanismen die für zusätzliche Checks
+Mit dieser Definition, hat ``Zend\Auth_Adapter\DbTable`` einige eingebaute Mechanismen die für zusätzliche Checks
 wärend der Authentifizierungszeit angepasst werden können, um einige übliche Benutzerprobleme zu lösen.
 
 .. code-block:: php
    :linenos:
 
    // Der Feldwert des Status eines Accounts ist nicht gleich "compromised"
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
@@ -204,7 +204,7 @@ wärend der Authentifizierungszeit angepasst werden können, um einige übliche 
    );
 
    // Der aktive Feldwert des Accounts ist gleich "TRUE"
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
@@ -242,13 +242,13 @@ Und nun erstellen wir den Adapter:
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',
        'password',
        "MD5(CONCAT('"
-       . Zend_Registry::get('staticSalt')
+       . Zend\Registry\Registry::get('staticSalt')
        . "', ?, password_salt))"
    );
 
@@ -258,8 +258,8 @@ Und nun erstellen wir den Adapter:
    verwendet wird. Im Falle das die Datenbank korrumpiert wird (z.B. durch eine *SQL* Injection Attacke) aber der
    Webserver intakt bleibt sind die Daten für den Angreifer noch immer nicht verwendbar.
 
-Eine andere Alternative besteht darin die ``getDbSelect()`` Methode von ``Zend_Auth_Adapter_DbTable`` zu verwenden
-nachdem der Adapter erstellt wurde. Diese Methode gibt die Instanz des ``Zend_Db_Select`` Objekts zurück welches
+Eine andere Alternative besteht darin die ``getDbSelect()`` Methode von ``Zend\Auth_Adapter\DbTable`` zu verwenden
+nachdem der Adapter erstellt wurde. Diese Methode gibt die Instanz des ``Zend\Db\Select`` Objekts zurück welches
 verwendet wird um die ``authenticate()`` Methode zu komplettieren. Es ist wichtig anzumerken das diese Methode
 immer das gleiche Objekt zurückgibt unabhängig davon ob ``authenticate()`` aufgerufen wurde oder nicht. Diese
 Objekt **enthält keine** Identity oder Anmeldeinformationen in sich da diese Werte im Select Objekt wärend des
@@ -272,7 +272,7 @@ prüfen, in anderen Worten sehen ob der Account des Benutzers aktiviert ist.
    :linenos:
 
    // Das Beispiel von oben weiterführen
-   $adapter = new Zend_Auth_Adapter_DbTable(
+   $adapter = new Zend\Auth_Adapter\DbTable(
        $db,
        'users',
        'username',

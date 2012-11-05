@@ -13,12 +13,12 @@ methode oproep te verkrijgen:
 
    <?php
 
-   $feedArray = Zend_Feed::findFeeds('http://www.example.com/news.html');
+   $feedArray = Zend\Feed\Feed::findFeeds('http://www.example.com/news.html');
 
    ?>
-De methode *findFeeds()* stuurt een array van *Zend_Feed_Abstract* objecten terug die gereferenceerd zijn door
+De methode *findFeeds()* stuurt een array van *Zend\Feed\Abstract* objecten terug die gereferenceerd zijn door
 *<link>* afbakeningen op de news.html web pagina. Afhankelijk van het type van elk van de feeds zal elke
-respectieve entry in de *$feedArray* array een *Zend_Feed_Rss* of een *Zend_Feed_Atom* instantie zijn. *Zend_Feed*
-zal een *Zend_Feed_Exception* opwerpen bij mislukking, zoals een HTTP 404 antwoord of een misvormde feed.
+respectieve entry in de *$feedArray* array een *Zend\Feed\Rss* of een *Zend\Feed\Atom* instantie zijn. *Zend_Feed*
+zal een *Zend\Feed\Exception* opwerpen bij mislukking, zoals een HTTP 404 antwoord of een misvormde feed.
 
 

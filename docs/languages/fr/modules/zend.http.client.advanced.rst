@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.http.client.advanced:
 
-Zend_Http_Client - Utilisation avancée
+Zend\Http\Client - Utilisation avancée
 ======================================
 
 .. _zend.http.client.redirections:
@@ -9,13 +9,13 @@ Zend_Http_Client - Utilisation avancée
 Redirections HTTP
 -----------------
 
-Par défaut, ``Zend_Http_Client`` gère automatiquement les redirections *HTTP*, et suivra jusqu'à 5 redirections.
+Par défaut, ``Zend\Http\Client`` gère automatiquement les redirections *HTTP*, et suivra jusqu'à 5 redirections.
 Ce comportement peut être modifié en changeant le paramètre de configuration "maxredirects".
 
 Conformément à la RFC HTTP/1.1, les codes réponse HTTP 301 et 302 doivent être traités par le client en
 envoyant à nouveau la même requête à l'adresse spécifiée - en utilisant la même méthode de requête.
 Cependant, la plupart des clients ne réagissent pas correctement et redirige toujours via une requête GET. Par
-défaut, ``Zend_Http_Client`` agit de même - Lors d'une redirection basée sur la réception d'un code 301 ou 302,
+défaut, ``Zend\Http\Client`` agit de même - Lors d'une redirection basée sur la réception d'un code 301 ou 302,
 tous les paramètres GET et POST sont remis à zéro, et une requête GET est envoyée à la nouvelle adresse. Ce
 comportement peut être modifié en positionnant le paramètre de configuration "strictredirects" à ``TRUE``:
 
@@ -44,7 +44,7 @@ la méthode getRedirectionsCount().
 Ajout de cookies et gestion de leur persistance
 -----------------------------------------------
 
-``Zend_Http_Client`` fournit une interface simple afin d'ajouter des cookies à une requête de manière à ce
+``Zend\Http\Client`` fournit une interface simple afin d'ajouter des cookies à une requête de manière à ce
 qu'aucune modification directe de l'en-tête ne soit nécessaire. Ceci est réalisé via la méthode
 ``setCookie()``. Cette méthode peut être utilisée de plusieurs manières :
 
@@ -64,14 +64,14 @@ qu'aucune modification directe de l'en-tête ne soit nécessaire. Ceci est réal
          // Notez que la valeur doit être déjà encodée au format URL
          $client->setCookie('parfum=p%C3%A9pites%20de%20chocolat');
 
-         // En fournissant un objet Zend_Http_Cookie
+         // En fournissant un objet Zend\Http\Cookie
          $cookie =
-             Zend_Http_Cookie::fromString('parfum=p%C3%A9pites%20de%20chocolat');
+             Zend\Http\Cookie::fromString('parfum=p%C3%A9pites%20de%20chocolat');
          $client->setCookie($cookie);
 
-Pour plus d'information sur les objets ``Zend_Http_Cookie``, voir :ref:` <zend.http.cookies>`.
+Pour plus d'information sur les objets ``Zend\Http\Cookie``, voir :ref:` <zend.http.cookies>`.
 
-``Zend_Http_Client`` permet également la persistance des cookies - ce qui permet au client de stocker tous les
+``Zend\Http\Client`` permet également la persistance des cookies - ce qui permet au client de stocker tous les
 cookies reçus et transmis, et de les retransmettre automatiquement lors des requêtes suivantes. Cela se révèle
 très utile lorsqu'il est nécessaire de s'identifier sur un site donné (et de recevoir ainsi un cookie de
 session) avant de pouvoir envoyer d'autres requêtes.
@@ -103,7 +103,7 @@ session) avant de pouvoir envoyer d'autres requêtes.
          $client->setUri('http://exemple.com/lire_actualite_membres.php');
          $client->request('GET');
 
-Pour plus d'information sur la classe ``Zend_Http_CookieJar``, voir :ref:` <zend.http.cookies.cookiejar>`.
+Pour plus d'information sur la classe ``Zend\Http\CookieJar``, voir :ref:` <zend.http.cookies.cookiejar>`.
 
 .. _zend.http.client.custom_headers:
 
@@ -173,11 +173,11 @@ Envoi de fichiers
 Il est possible d'envoyer des fichiers au travers d'HTTP en utilisant la méthode *setFileUpload*. Cette méthode
 attend un nom de fichier comme premier paramètre, un nom de formulaire comme second paramètre, et, en option, des
 données comme troisième paramètre. Si le troisième paramètre est ``NULL``, la valeur du premier paramètre est
-supposée être un fichier sur le disque dur et ``Zend_Http_Client`` essaiera de lire ce fichier et de l'envoyer.
+supposée être un fichier sur le disque dur et ``Zend\Http\Client`` essaiera de lire ce fichier et de l'envoyer.
 Sinon la valeur du premier paramètre sera envoyée comme nom du fichier mais il n'est pas nécessaire que le
 fichier existe sur le disque dur. Le deuxième paramètre est toujours requis, et est équivalent à l'attribut
 "name" d'une balise <input>, si le fichier devait être envoyé à partir d'un formulaire HTML. Un quatrième
-paramètre optionnel fournit le type du fichier. S'il n'est pas spécifié et que ``Zend_Http_Client`` lit le
+paramètre optionnel fournit le type du fichier. S'il n'est pas spécifié et que ``Zend\Http\Client`` lit le
 fichier à partir du disque dur, la fonction mime_content_type sera utilisée pour tenter de définir, si possible,
 le type du fichier. Dans tous les cas, le type MIME par défaut sera 'application/octet-stream'.
 
@@ -219,7 +219,7 @@ défini comme "application/octet-stream".
 Envoyer des données brutes via POST
 -----------------------------------
 
-Vous pouvez utiliser ``Zend_Http_Client`` pour envoyer des données brutes via POST en utilisant la méthode
+Vous pouvez utiliser ``Zend\Http\Client`` pour envoyer des données brutes via POST en utilisant la méthode
 ``setRawData()``. Cette méthode accepte deux paramètres : le premier contient les données à transmettre dans le
 corps de la requête. Le deuxième paramètre, optionnel, contient le type des données. Bien que ce paramètre
 soit optionnel, vous devriez normalement le définir avant l'envoi de la requête, soit via setRawData() ou via la
@@ -261,7 +261,7 @@ php://input.
 Authentification HTTP
 ---------------------
 
-Actuellement, ``Zend_Http_Client`` propose uniquement l'authentification HTTP "basic". Cette fonctionnalité est
+Actuellement, ``Zend\Http\Client`` propose uniquement l'authentification HTTP "basic". Cette fonctionnalité est
 utilisée via la méthode ``setAuth()``, ou en spécifiant le nom d'utilisateur et le mot de passe dans l'URI. La
 méthode ``setAuth()`` accepte trois paramètres : le nom d'utilisateur, le mot de passe et un type
 d'authentification optionnel. Comme mentionné, seule l'authentification "basic" est actuellement implémentée
@@ -279,7 +279,7 @@ d'authentification optionnel. Comme mentionné, seule l'authentification "basic"
          // Utilisation de l'authentification 'basic'
          $client->setAuth('shahar',
                           'monMotdePasse!',
-                          Zend_Http_Client::AUTH_BASIC);
+                          Zend\Http\Client::AUTH_BASIC);
 
          // L'authentification 'basic' étant le comportement par défaut,
          // on peut aussi écrire ceci :
@@ -296,7 +296,7 @@ d'authentification optionnel. Comme mentionné, seule l'authentification "basic"
 Envoyer plusieurs requêtes avec le même client
 ----------------------------------------------
 
-``Zend_Http_Client`` a été également conçu spécifiquement pour gérer plusieurs requêtes consécutives avec
+``Zend\Http\Client`` a été également conçu spécifiquement pour gérer plusieurs requêtes consécutives avec
 la même instance. Ceci est utile dans les cas ou le script nécessite d'accéder à des données en provenance de
 divers emplacements ou, par exemple, lors de l'accès à des ressources *HTTP* nécessitant une authentification
 préalable.
@@ -340,12 +340,12 @@ dans la session utilisateur. De cette manière, il sera possible de ne s'identif
 
    // D'abord, instancier le client
    $client =
-       new Zend_Http_Client('http://www.exemple.com/obtientdonnees.php',
+       new Zend\Http\Client('http://www.exemple.com/obtientdonnees.php',
                             array('keepalive' => true));
 
    // Disposons-nous du cookie de session ?
    if (isset($_SESSION['cookiejar']) &&
-       $_SESSION['cookiejar'] instanceof Zend_Http_CookieJar)) {
+       $_SESSION['cookiejar'] instanceof Zend\Http\CookieJar)) {
 
        $client->setCookieJar($_SESSION['cookiejar']);
    } else {
@@ -356,7 +356,7 @@ dans la session utilisateur. De cette manière, il sera possible de ne s'identif
            'user' => 'shahar',
            'pass' => 'secret'
        ));
-       $client->request(Zend_Http_Client::POST);
+       $client->request(Zend\Http\Client::POST);
 
        // Maintenant, effaçons les paramètres et définissons l'URI
        // à sa valeur originale (notez que les cookies envoyés par le
@@ -365,7 +365,7 @@ dans la session utilisateur. De cette manière, il sera possible de ne s'identif
        $client->setUri('http://www.exemple.com/obtientdonnees.php');
    }
 
-   $reponse = $client->request(Zend_Http_Client::GET);
+   $reponse = $client->request(Zend\Http\Client::GET);
 
    // Stockons les cookies dans la session pour la page suivante
    $_SESSION['cookiejar'] = $client->getCookieJar();
@@ -375,12 +375,12 @@ dans la session utilisateur. De cette manière, il sera possible de ne s'identif
 Data Streaming
 --------------
 
-By default, ``Zend_Http_Client`` accepts and returns data as PHP strings. However, in many cases there are big
+By default, ``Zend\Http\Client`` accepts and returns data as PHP strings. However, in many cases there are big
 files to be sent or received, thus keeping them in memory might be unnecessary or too expensive. For these cases,
-``Zend_Http_Client`` supports reading data from files (and in general, PHP streams) and writing data to files
+``Zend\Http\Client`` supports reading data from files (and in general, PHP streams) and writing data to files
 (streams).
 
-In order to use stream to pass data to ``Zend_Http_Client``, use ``setRawData()`` method with data argument being
+In order to use stream to pass data to ``Zend\Http\Client``, use ``setRawData()`` method with data argument being
 stream resource (e.g., result of ``fopen()``).
 
 
@@ -403,7 +403,7 @@ In order to receive data from the server as stream, use ``setStream()``. Optiona
 where the data will be stored. If the argument is just TRUE (default), temporary file will be used and will be
 deleted once response object is destroyed. Setting argument to FALSE disables the streaming functionality.
 
-When using streaming, ``request()`` method will return object of class ``Zend_Http_Client_Response_Stream``, which
+When using streaming, ``request()`` method will return object of class ``Zend\Http\Client\Response\Stream``, which
 has two useful methods: ``getStreamName()`` will return the name of the file where the response is stored, and
 ``getStream()`` will return stream from which the response could be read.
 

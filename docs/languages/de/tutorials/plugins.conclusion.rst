@@ -9,9 +9,9 @@ von vielen Konzepten im Framework. Plugins werden in einer Vielzahl von Orten ve
 
 - ``Zend_Application``: Ressourcen.
 
-- ``Zend_Controller_Action``: Action Helfer.
+- ``Zend\Controller\Action``: Action Helfer.
 
-- ``Zend_Feed_Reader``: Plugins.
+- ``Zend\Feed\Reader``: Plugins.
 
 - ``Zend_Form``: Elemente, Filter, Prüfungen und Dekorateure.
 
@@ -24,7 +24,7 @@ Framework entsprechend umsetzen.
 
    **Nachteile**
 
-   Wir haben erwähnt das ``Zend_Controller_Front`` ein Plugin System hat - aber es hält sich nicht an
+   Wir haben erwähnt das ``Zend\Controller\Front`` ein Plugin System hat - aber es hält sich nicht an
    irgendwelche Richtlinien die in diesem Tutorial angeboten werden. Die im Front Controller registrierten Plugins
    müssen direkt instanziert und individuell in Ihm registriert werden. Der Grund hierfür ist, dass das System
    jedem anderen Plugin System im Zend Framework vorausgeht, und Änderungen an Ihm müssen sorgfältig abgewägt

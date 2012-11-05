@@ -15,7 +15,7 @@ verzia e-mailu výsledný e-mail bude typu multipart/alternative:
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setBodyText('Môj pekný Test Text');
    $mail->setBodyHtml('Môj pekný <b>Test</b> Text');
    $mail->setFrom('somebody@example.com', 'Odosielateľ');

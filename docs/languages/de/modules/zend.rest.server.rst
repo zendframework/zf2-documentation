@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.rest.server:
 
-Zend_Rest_Server
+Zend\Rest\Server
 ================
 
 .. _zend.rest.server.introduction:
@@ -9,7 +9,7 @@ Zend_Rest_Server
 Einführung
 ----------
 
-``Zend_Rest_Server`` ist ein komplett-feature REST Server.
+``Zend\Rest\Server`` ist ein komplett-feature REST Server.
 
 .. _zend.rest.server.usage:
 
@@ -18,18 +18,18 @@ Verwenden des REST Servers
 
 .. _zend.rest.server.usage.example-1:
 
-.. rubric:: Grundsätzliche Verwendung von Zend_Rest_Server: Klassen
+.. rubric:: Grundsätzliche Verwendung von Zend\Rest\Server: Klassen
 
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_Rest_Server();
+   $server = new Zend\Rest\Server();
    $server->setClass('My_Service_Class');
    $server->handle();
 
 .. _zend.rest.server.usage.example-2:
 
-.. rubric:: Grundsätzliche Verwendung von Zend_Rest_Server: Funktionen
+.. rubric:: Grundsätzliche Verwendung von Zend\Rest\Server: Funktionen
 
 .. code-block:: php
    :linenos:
@@ -46,16 +46,16 @@ Verwenden des REST Servers
        return "Hallo $who, Gut $when";
    }
 
-   $server = new Zend_Rest_Server();
+   $server = new Zend\Rest\Server();
    $server->addFunction('sayHello');
    $server->handle();
 
 .. _zend.rest.server.args:
 
-Aufruf eines Zend_Rest_Server Services
+Aufruf eines Zend\Rest\Server Services
 --------------------------------------
 
-Um ein ``Zend_Rest_Server`` Service aufzurufen, muß ein ``GET``/POST *method* Argument mit einem Wert angegeben
+Um ein ``Zend\Rest\Server`` Service aufzurufen, muß ein ``GET``/POST *method* Argument mit einem Wert angegeben
 werden, welcher der Methode entspricht, die aufgerufen werden soll. Es können anschließend beliebig viele
 Argumente folgen, die entweder den Namen des Arguments verwenden (z.B. "wer"), oder man kann *arg* verwenden,
 gefolgt von der nummerischen Position des Arguments (z.B. "arg1").
@@ -101,7 +101,7 @@ Schlüssel zurückgeben.
        return array('msg' => 'Ein Fehler ist aufgetreten', 'status' => false);
    }
 
-   $server = new Zend_Rest_Server();
+   $server = new Zend\Rest\Server();
    $server->addFunction('sayHello');
    $server->handle();
 
@@ -139,7 +139,7 @@ Objekt zurückgegeben werden.
        return $xml;
    }
 
-   $server = new Zend_Rest_Server();
+   $server = new Zend\Rest\Server();
    $server->addFunction('sayHello');
 
    $server->handle();

@@ -6,11 +6,11 @@ Barcodes mit Hilfe der Zend_Barcode Klasse erstellen
 
 .. _zend.barcode.creation.configuration:
 
-Verwendung von Zend_Barcode::factory
+Verwendung von Zend\Barcode\Barcode::factory
 ------------------------------------
 
 ``Zend_Barcode`` verwendet eine Factory Methode um die Instanz eines Renderers zu erstellen der
-``Zend_Barcode_Renderer_RendererAbstract`` erweitert. Die Factory Methode akzeptiert fünf Argumente.
+``Zend\Barcode_Renderer\RendererAbstract`` erweitert. Die Factory Methode akzeptiert fünf Argumente.
 
 . Der Name des Barcode Formats (z.B., "code39") (benötigt)
 
@@ -26,9 +26,9 @@ Verwendung von Zend_Barcode::factory
 
 .. _zend.barcode.creation.configuration.example-1:
 
-.. rubric:: Einen Renderer mit Zend_Barcode::factory() erhalten
+.. rubric:: Einen Renderer mit Zend\Barcode\Barcode::factory() erhalten
 
-``Zend_Barcode::factory()`` instanziert Barcode Objekte und Renderer und verbindet diese miteinander. In diesem
+``Zend\Barcode\Barcode::factory()`` instanziert Barcode Objekte und Renderer und verbindet diese miteinander. In diesem
 ersten Beispiel verwenden wir den **Code39** Barcode Typ zusammen mit dem **Image** Renderer.
 
 .. code-block:: php
@@ -39,13 +39,13 @@ ersten Beispiel verwenden wir den **Code39** Barcode Typ zusammen mit dem **Imag
 
    // Keine Optionen benötigt
    $rendererOptions = array();
-   $renderer = Zend_Barcode::factory(
+   $renderer = Zend\Barcode\Barcode::factory(
        'code39', 'image', $barcodeOptions, $rendererOptions
    );
 
 .. _zend.barcode.creation.configuration.example-2:
 
-.. rubric:: Zend_Barcode::factory() mit Zend_Config Objekten verwenden
+.. rubric:: Zend\Barcode\Barcode::factory() mit Zend_Config Objekten verwenden
 
 Man kann ein ``Zend_Config`` Objekt an die Factory übergeben um die notwendigen Objekte zu erstellen. Das folgende
 Beispiel ist funktionell identisch mit dem vorherigen.
@@ -54,14 +54,14 @@ Beispiel ist funktionell identisch mit dem vorherigen.
    :linenos:
 
    // Nur ein Zend_Config Objekt verwenden
-   $config = new Zend_Config(array(
+   $config = new Zend\Config\Config(array(
        'barcode'        => 'code39',
        'barcodeParams'  => array('text' => 'ZEND-FRAMEWORK'),
        'renderer'       => 'image',
        'rendererParams' => array('imageType' => 'gif'),
    ));
 
-   $renderer = Zend_Barcode::factory($config);
+   $renderer = Zend\Barcode\Barcode::factory($config);
 
 .. _zend.barcode.creation.drawing:
 
@@ -86,13 +86,13 @@ angebotene Proxy Methode verwenden.
    $rendererOptions = array();
 
    // Zeichne den Barcode in einem neuen Bild
-   $imageResource = Zend_Barcode::factory(
+   $imageResource = Zend\Barcode\Barcode::factory(
        'code39', 'image', $barcodeOptions, $rendererOptions
    )->draw();
 
 .. _zend.barcode.creation.drawing.example-2:
 
-.. rubric:: Einen Barcode mit Zend_Barcode::draw() zeichnen
+.. rubric:: Einen Barcode mit Zend\Barcode\Barcode::draw() zeichnen
 
 .. code-block:: php
    :linenos:
@@ -104,7 +104,7 @@ angebotene Proxy Methode verwenden.
    $rendererOptions = array();
 
    // Zeichne den Barcode in einem neuen Bild
-   $imageResource = Zend_Barcode::draw(
+   $imageResource = Zend\Barcode\Barcode::draw(
        'code39', 'image', $barcodeOptions, $rendererOptions
    );
 
@@ -132,7 +132,7 @@ oder einfach die Proxy Methode verwenden die von ``Zend_Barcode`` angeboten wird
 
    // Zeichne den Barcode in einem neuen Bild
    // Sende die Header und das Bild
-   Zend_Barcode::factory(
+   Zend\Barcode\Barcode::factory(
        'code39', 'image', $barcodeOptions, $rendererOptions
    )->render();
 
@@ -144,7 +144,7 @@ Das wird diesen Barcode erstellen:
 
 .. _zend.barcode.creation.renderering.example-2:
 
-.. rubric:: Einen Barcode mit Zend_Barcode::render() darstellen
+.. rubric:: Einen Barcode mit Zend\Barcode\Barcode::render() darstellen
 
 .. code-block:: php
    :linenos:
@@ -157,7 +157,7 @@ Das wird diesen Barcode erstellen:
 
    // Zeichne den Barcode in einem neuen Bild
    // Sende die Header und das Bild
-   Zend_Barcode::render(
+   Zend\Barcode\Barcode::render(
        'code39', 'image', $barcodeOptions, $rendererOptions
    );
 

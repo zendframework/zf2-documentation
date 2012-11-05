@@ -9,15 +9,15 @@
 在Zend Framework中缓存由前端操作,同时通过后端适配器(*File*, *Sqlite*, *Memcache*...)和
 一个灵活的IDs和Tags系统(标识符和标记系统)存储缓存纪录.使用此方法,易于删除特定类型的纪录(例如:"删除所有标记为tag的纪录")
 
-模块(*Zend_Cache_Core*)
+模块(*Zend\Cache\Core*)
 的核心是通用,灵活和可配置.对于特定的需要,为了便捷,这里有一些继承自
-*Zend_Cache_Core*\ 的前端: *Output*, *File*, *Function* 和 *Class*.
+*Zend\Cache\Core*\ 的前端: *Output*, *File*, *Function* 和 *Class*.
 
 .. _zend.cache.introduction.example-1:
 
-.. rubric:: 调用 *Zend_Cache::factory()*\ 取得一个前端
+.. rubric:: 调用 *Zend\Cache\Cache::factory()*\ 取得一个前端
 
-*Zend_Cache::factory()* 实例化正确的对象并把他们捆绑到一起. 在这第一个例子中我们将把
+*Zend\Cache\Cache::factory()* 实例化正确的对象并把他们捆绑到一起. 在这第一个例子中我们将把
 *Core* 前端和 *File* 后端一起使用.
 
 .. code-block:: php
@@ -32,8 +32,8 @@
        'cache_dir' => './tmp/' // 放缓存文件的目录
    );
 
-   // 取得一个Zend_Cache_Core 对象
-   $cache = Zend_Cache::factory('Core',
+   // 取得一个Zend\Cache\Core 对象
+   $cache = Zend\Cache\Cache::factory('Core',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);
@@ -62,7 +62,7 @@
 
        // 缓存不命中;连接到数据库
 
-       $db = Zend_Db::factory( [...] );
+       $db = Zend\Db\Db::factory( [...] );
 
        $result = $db->fetchAll('SELECT * FROM huge_table');
 
@@ -100,7 +100,7 @@
    // 翻译时实验系统为Windows,请使用Windows的读者修改cacheDir的路径为实际的路径
    $backendOptions = array('cache_dir' => './tmp/');
 
-   $cache = Zend_Cache::factory('Output',
+   $cache = Zend\Cache\Cache::factory('Output',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);

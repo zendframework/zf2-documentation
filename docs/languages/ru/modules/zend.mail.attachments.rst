@@ -19,44 +19,44 @@
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    // Формирование сообщения...
    $mail->createAttachment($someBinaryString);
    $mail->createAttachment($myImage,
                            'image/gif',
-                           Zend_Mime::DISPOSITION_INLINE,
-                           Zend_Mime::ENCODING_8BIT);
+                           Zend\Mime\Mime::DISPOSITION_INLINE,
+                           Zend\Mime\Mime::ENCODING_8BIT);
 
 Если требуется больший контроль над частями *MIME*,
 генерируемыми для данного вложения, то можно использовать
 возвращаемое методом ``createAttachment()`` значение для изменения
-атрибутов. Метод ``createAttachment()`` возвращает объект *Zend_Mime_Part*:
+атрибутов. Метод ``createAttachment()`` возвращает объект *Zend\Mime\Part*:
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
 
    $at = $mail->createAttachment($myImage);
    $at->type        = 'image/gif';
-   $at->disposition = Zend_Mime::DISPOSITION_INLINE;
-   $at->encoding    = Zend_Mime::ENCODING_8BIT;
+   $at->disposition = Zend\Mime\Mime::DISPOSITION_INLINE;
+   $at->encoding    = Zend\Mime\Mime::ENCODING_8BIT;
    $at->filename    = 'test.gif';
 
    $mail->send();
 
 Альтернативным способом является создание экземпляра
-``Zend_Mime_Part`` и его добавление через ``addAttachment()``:
+``Zend\Mime\Part`` и его добавление через ``addAttachment()``:
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
 
-   $at = new Zend_Mime_Part($myImage);
+   $at = new Zend\Mime\Part($myImage);
    $at->type        = 'image/gif';
-   $at->disposition = Zend_Mime::DISPOSITION_INLINE;
-   $at->encoding    = Zend_Mime::ENCODING_8BIT;
+   $at->disposition = Zend\Mime\Mime::DISPOSITION_INLINE;
+   $at->encoding    = Zend\Mime\Mime::ENCODING_8BIT;
    $at->filename    = 'test.gif';
 
    $mail->addAttachment($at);

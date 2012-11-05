@@ -22,10 +22,10 @@
    <?php
    require_once 'Zend/Session.php';
 
-   Zend_Session::start();
+   Zend\Session\Session::start();
 
 在程序的引导文件中开启会话，可以避免引发会话开启之前已经有HTTP头发向用户浏览器的异常，那样可能会破坏web页面的美观。许多高级的特性需要先执行
-*Zend_Session::start()*\ （更多高级的特性之后会展开）。
+*Zend\Session\Session::start()*\ （更多高级的特性之后会展开）。
 
 使用Zend_Session组件，有4种开启会话的方法，其中2种是错误的。
 
@@ -40,31 +40,31 @@
 
 
 . 错误的：不要直接使用PHP的 `session_start()`_\ 函数。如果你直接使用 *session_start()*\
-  ，之后再使用 *Zend_Session_Namespace*\ ，那么 *Zend_Session::start()*\
-  会抛出（"会话已经开始"）的异常。如果你在使用 *Zend_Session_Namespace*\ 或使用
-  *Zend_Session::start()*\ 后调用 *session_start()*\ ，那么会产生一个 *E_NOTICE*\
+  ，之后再使用 *Zend\Session\Namespace*\ ，那么 *Zend\Session\Session::start()*\
+  会抛出（"会话已经开始"）的异常。如果你在使用 *Zend\Session\Namespace*\ 或使用
+  *Zend\Session\Session::start()*\ 后调用 *session_start()*\ ，那么会产生一个 *E_NOTICE*\
   级别的错误，且该调用将会被忽略。
 
-. 正确的：使用 *Zend_Session::start()*\
+. 正确的：使用 *Zend\Session\Session::start()*\
   开启会话。如果你想让每个页面请求都开启会话，那么应该在ZF应用程序的引导文件（index.php）中尽早的调用这个函数。开启会话有些额外的开销，如果只有部分页面请求需要开启会话，那么就：
 
-  - 在引导文件中，使用 *Zend_Session::setOptions()*\ 无条件地设置 *strict*\ 选项为 *true*\ 。
+  - 在引导文件中，使用 *Zend\Session\Session::setOptions()*\ 无条件地设置 *strict*\ 选项为 *true*\ 。
 
-  - 在任何 *Zend_Session_Namespace()*\ 对象初始化之前对需要使用会话的请求只调用
-    *Zend_Session::start()*\ 。
+  - 在任何 *Zend\Session\Namespace()*\ 对象初始化之前对需要使用会话的请求只调用
+    *Zend\Session\Session::start()*\ 。
 
   - 象往常一样，在需要会话的地方，使用"*new
-    Zend_Session_Namespace()*"，但必须确认先前已经调用过 *Zend_Session::start()*\ 了。
+    Zend\Session\Namespace()*"，但必须确认先前已经调用过 *Zend\Session\Session::start()*\ 了。
 
-  *strict* 选项防止 *new Zend_Session_Namespace()* 自动调用 *Zend_Session::start()*\ 。
+  *strict* 选项防止 *new Zend\Session\Namespace()* 自动调用 *Zend\Session\Session::start()*\ 。
   这样，这个选项有利于应用程序的开发者强制执行一个设计原则以避免在某些页面请求中使用会话，
-  因为在调用 *Zend_Session::start()* 之前，实例化 *Zend_Session_Namespace*
-  时，会抛出一个异常。开发者需小心地考虑使用 *Zend_Session::setOptions()*
+  因为在调用 *Zend\Session\Session::start()* 之前，实例化 *Zend\Session\Namespace*
+  时，会抛出一个异常。开发者需小心地考虑使用 *Zend\Session\Session::setOptions()*
   所引起的冲突，由于它们对应于基本的ext/session这些具有全局作用选项。
 
-. 正确的：只要有需要使用会话的地方，就初始化 *new Zend_Session_Namespace()*\
+. 正确的：只要有需要使用会话的地方，就初始化 *new Zend\Session\Namespace()*\
   ，并且基本的PHP会话将自动开启。这个极端简单的用法能在大多数的情形下很好地工作。然而，如果你使用地是默认的基于cookie的会话（强烈推荐使用这种方式），你必须确保在第一次调用
-  *new Zend_Session_Namespace()*\ 在任何PHP发向向客户端输出（例如， `HTTP headers`_\ ） **之前**\
+  *new Zend\Session\Namespace()*\ 在任何PHP发向向客户端输出（例如， `HTTP headers`_\ ） **之前**\
   。参见 :ref:` <zend.session.global_session_management.headers_sent>` 有更多的信息。
 
 .. _zend.session.advanced_usage.locking:
@@ -76,7 +76,7 @@
 方法使某命名空间下会话变量为只读， *unlock()*\ 方法使一个只读的名空间为可读写，
 *isLocked()*\
 方法测试某命名空间是否已经被加锁。加锁是短暂的，且只在此页面请求内有效，不会持续到下一个页面请求。给命名空间加锁不会影响到存储在该命名空间下对象的setter方法，但是阻止了命名空间的setter方法的移除或替换对象。也就是说，虽给
-*Zend_Session_Namespace*\
+*Zend\Session\Namespace*\
 的实例加了锁，但还是不能阻止它处同样引用了命名空间下数据的对它的变更（参见
 `PHP references`_)。
 
@@ -89,7 +89,7 @@
    <?php
    require_once 'Zend/Session/Namespace.php';
 
-   $userProfileNamespace = new Zend_Session_Namespace('userProfileNamespace');
+   $userProfileNamespace = new Zend\Session\Namespace('userProfileNamespace');
 
    // 标记会话设置为只读锁定
    $userProfileNamespace->lock();
@@ -115,7 +115,7 @@
    <?php
    require_once 'Zend/Session/Namespace.php';
 
-   $s = new Zend_Session_Namespace('expireAll');
+   $s = new Zend\Session\Namespace('expireAll');
    $s->a = 'apple';
    $s->p = 'pear';
    $s->o = 'orange';
@@ -150,7 +150,7 @@
    // ...
    // in the question view controller
    require_once 'Zend/Session/Namespace.php';
-   $testSpace = new Zend_Session_Namespace('testSpace');
+   $testSpace = new Zend\Session\Namespace('testSpace');
    $testSpace->setExpirationSeconds(300, 'accept_answer'); // expire only this variable
    $testSpace->accept_answer = true;
    //...
@@ -163,7 +163,7 @@
    // ...
    // in the answer processing controller
    require_once 'Zend/Session/Namespace.php';
-   $testSpace = new Zend_Session_Namespace('testSpace');
+   $testSpace = new Zend\Session\Namespace('testSpace');
    if ($testSpace->accept_answer === true) {
        // within time
    }
@@ -178,10 +178,10 @@
 -------------
 
 尽管 :ref:`session locking <zend.session.advanced_usage.locking>`\
-提供了很好的保护来防止意外的命名空间的会话数据的使用， *Zend_Session_Namespace*
+提供了很好的保护来防止意外的命名空间的会话数据的使用， *Zend\Session\Namespace*
 也有能力防止给一个单个的命名空间创建多个实例。
 
-为开启这个动作，当创建 *Zend_Session_Namespace*\ 的最后允许的实例，传递 *true*\
+为开启这个动作，当创建 *Zend\Session\Namespace*\ 的最后允许的实例，传递 *true*\
 给第二个构造函数参数。任何后来的初始化同一个命名空间的企图都会导致一个异常的抛出。
 
 .. _zend.session.advanced_usage.single_instance.example:
@@ -194,10 +194,10 @@
    require_once 'Zend/Session/Namespace.php';
 
    // create an instance of a namespace
-   $authSpaceAccessor1 = new Zend_Session_Namespace('Zend_Auth');
+   $authSpaceAccessor1 = new Zend\Session\Namespace('Zend_Auth');
 
    // create another instance of the same namespace, but disallow any new instances
-   $authSpaceAccessor2 = new Zend_Session_Namespace('Zend_Auth', true);
+   $authSpaceAccessor2 = new Zend\Session\Namespace('Zend_Auth', true);
 
    // making a reference is still possible
    $authSpaceAccessor3 = $authSpaceAccessor2;
@@ -207,12 +207,12 @@
    assert($authSpaceAccessor2->foo, 'bar');
 
    try {
-       $aNamespaceObject = new Zend_Session_Namespace('Zend_Auth');
-   } catch (Zend_Session_Exception $e) {
+       $aNamespaceObject = new Zend\Session\Namespace('Zend_Auth');
+   } catch (Zend\Session\Exception $e) {
        echo "Cannot instantiate this namespace since \$authSpaceAccessor2 was created\n";
    }
 
-上面构造函数的第二个参数告诉 *Zend_Session_Namespace*\
+上面构造函数的第二个参数告诉 *Zend\Session\Namespace*\
 任何之后带有"*Zend_Auth*"实例的命名空间都是不允许的。企图创建这样的实例导致构造函数抛出一个异常。如果在相同的请求期间稍后需要访问会话的命名空间，开发者因此有责任在其它地方给一个实例对象（在上面的例子中
 *$authSpaceAccessor1*\ ， *$authSpaceAccessor2* 或者 *$authSpaceAccessor3*\
 ）存储一个引用。例如，开发者可以存储引用到一个静态变量，添加一个引用给一个
@@ -238,7 +238,7 @@
    :linenos:
    <?php
    require_once 'Zend/Session/Namespace.php';
-   $sessionNamespace = new Zend_Session_Namespace();
+   $sessionNamespace = new Zend\Session\Namespace();
    $sessionNamespace->array = array();
    $sessionNamespace->array['testKey'] = 1; // may not work as expected before PHP 5.2.1
    echo $sessionNamespace->array['testKey'];
@@ -253,7 +253,7 @@
    :linenos:
    <?php
    require_once 'Zend/Session/Namespace.php';
-   $sessionNamespace = new Zend_Session_Namespace('Foo');
+   $sessionNamespace = new Zend\Session\Namespace('Foo');
    $sessionNamespace->array = array('a', 'b', 'c');
 
 如果你正使用有影响的PHP版本并需要在分配给一个会话命名空间的键之后修改数组，你可以用下面的其中之一或者全部的方案。
@@ -268,7 +268,7 @@
    :linenos:
    <?php
    require_once 'Zend/Session/Namespace.php';
-   $sessionNamespace = new Zend_Session_Namespace();
+   $sessionNamespace = new Zend\Session\Namespace();
 
    // assign the initial array
    $sessionNamespace->array = array('tree' => 'apple');
@@ -294,7 +294,7 @@
    :linenos:
    <?php
    require_once 'Zend/Session/Namespace.php';
-   $myNamespace = new Zend_Session_Namespace('myNamespace');
+   $myNamespace = new Zend\Session\Namespace('myNamespace');
    $a = array(1, 2, 3);
    $myNamespace->someArray = array( &$a );
    $a['foo'] = 'bar';
@@ -315,8 +315,8 @@
 ----------
 
 Zend
-Framework利用PHPUnit来促进自身代码的测试。大多数开发者在他们的应用程序中，扩展已有的一组单元测试，以覆盖测试他们的代码。在运行单元测试时，如果在结束会话之后使用了写相关的方法，那么会抛出"**当前Zend_Session被标记为只读**"的异常。在单元测试中使用Zend_Session需要额外的注意，因为在关闭会话(*Zend_Session::writeClose()*)，或者摧毁一个会话(*Zend_Session::destroy()*)之后，不允许再设置或注销任何一个
-*Zend_Session_Namespace*\ 的实例的键名了。 这样是由底层PHP的会话机制 *session_destroy()*\ 和
+Framework利用PHPUnit来促进自身代码的测试。大多数开发者在他们的应用程序中，扩展已有的一组单元测试，以覆盖测试他们的代码。在运行单元测试时，如果在结束会话之后使用了写相关的方法，那么会抛出"**当前Zend_Session被标记为只读**"的异常。在单元测试中使用Zend_Session需要额外的注意，因为在关闭会话(*Zend\Session\Session::writeClose()*)，或者摧毁一个会话(*Zend\Session\Session::destroy()*)之后，不允许再设置或注销任何一个
+*Zend\Session\Namespace*\ 的实例的键名了。 这样是由底层PHP的会话机制 *session_destroy()*\ 和
 *session_write_close()*\
 所直接引起的，因为它未提供“撤销”机制以便单元测试setup/teardown。
 
@@ -335,13 +335,13 @@ Framework利用PHPUnit来促进自身代码的测试。大多数开发者在他�
    // testing setExpirationSeconds()
    require_once 'tests/Zend/Session/SessionTestHelper.php'; // also see SessionTest.php
    $script = 'SessionTestHelper.php';
-   $s = new Zend_Session_Namespace('space');
+   $s = new Zend\Session\Namespace('space');
    $s->a = 'apple';
    $s->o = 'orange';
    $s->setExpirationSeconds(5);
 
-   Zend_Session::regenerateId();
-   $id = Zend_Session::getId();
+   Zend\Session\Session::regenerateId();
+   $id = Zend\Session\Session::getId();
    session_write_close(); // release session so process below can use it
    sleep(4); // not long enough for things to expire
    exec($script . "expireAll $id expireAll", $result);
@@ -359,7 +359,7 @@ Framework利用PHPUnit来促进自身代码的测试。大多数开发者在他�
 
    // We could split this into a separate test, but actually, if anything leftover from above
    // contaminates the tests below, that is also a bug that we want to know about.
-   $s = new Zend_Session_Namespace('expireGuava');
+   $s = new Zend\Session\Namespace('expireGuava');
    $s->setExpirationSeconds(5, 'g'); // now try to expire only 1 of the keys in the namespace
    $s->g = 'guava';
    $s->p = 'peach';

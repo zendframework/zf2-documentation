@@ -8,11 +8,11 @@ Er zijn drie belangrijke concepten in Zend_Cache. Een is de unieke identifier (e
 cache records te identificeren. De tweede is de *'lifeTime'* parameter zoals gezien in de voorbeelden; het
 definieert hoe lang de cache als 'vers' wordt beschouwd. Het derde belangrijke concept is voorwaardelijke
 uitvoering zodat delen van de code compleet overgeslagen kunnen worden, waardoor de performance wordt verbeterd. De
-belangrijkste frontend functie (bijv. *Zend_Cache_Core::get()* is altijd ontworpen om false terug te geven wanneer
+belangrijkste frontend functie (bijv. *Zend\Cache\Core::get()* is altijd ontworpen om false terug te geven wanneer
 er geen waarde in de cache aanwezig is wanneer dat logisch is voor de aard van de frontend. Dat staat
 eindgebruikers toe om delen van de code te 'wrappen' die ze willen cachen (en dus overslaan) in *if(){...}*
 statements waarbij de voorwaarde een Zend_Cache methode is. Aan het einde van deze blokken moet je wel opslaan wat
-je hebt gegenereerd (bijvoorbeeld *Zend_Cache_Core::save()*).
+je hebt gegenereerd (bijvoorbeeld *Zend\Cache\Core::save()*).
 
 .. note::
 
@@ -56,7 +56,7 @@ voorbeeld:
 
    # We maken de goede instantie.
    # (natuurlijk zijn de laatste twee argumenten optioneel)
-   $cache = Zend_Cache::factory($frontendName, $backendName, $frontendOptions, $backendOptions);
+   $cache = Zend\Cache\Cache::factory($frontendName, $backendName, $frontendOptions, $backendOptions);
 
    ?>
 In het volgende voorbeeld zullen we uitgaan dat de *$cache* variabele een valide, geinstantieerde frontend bevat
@@ -64,7 +64,7 @@ zoals getoond en dat je begrijpt hoe je parameters naar je backends kan doorgeve
 
 .. note::
 
-   Gebruikt altijd *Zend_Cache::factory()* om frontend instanties te krijgen. Zelf frontends en backends
+   Gebruikt altijd *Zend\Cache\Cache::factory()* om frontend instanties te krijgen. Zelf frontends en backends
    instantieren zal niet zoals verwacht werken.
 
 .. _zend.cache.tags:
@@ -108,10 +108,10 @@ Bijvoorbeeld om alle cache records te verwijderen:
    <?php
 
    // Schoon alle cache records op
-   $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_ALL);
 
    // Schoon alleen verlopen records op
-   $cache->clean(Zend_Cache::CLEANING_MODE_OLD);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_OLD);
 
    ?>
 Als je cache records wil verwijderen die aan tags 'tagA' en 'tagC' voldoen:
@@ -121,7 +121,7 @@ Als je cache records wil verwijderen die aan tags 'tagA' en 'tagC' voldoen:
 
    <?php
 
-   $cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, array('tagA', 'tagC'));
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_MATCHING_TAG, array('tagA', 'tagC'));
 
    ?>
 Beschikbare opschoon modes zijn: *CLEANING_MODE_ALL*, *CLEANING_MODE_OLD*, *CLEANING_MODE_MATCHING_TAG* en

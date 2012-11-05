@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.reserved.instance:
 
-Zend_Service_Amazon_Ec2: Reservierte Instanzen
+Zend\Service_Amazon\Ec2: Reservierte Instanzen
 ==============================================
 
 Mit Amazon *EC2* Reservierte Instanzen, kann man eine geringe Einmalzahlung für jede zu reservierende Instanz
@@ -55,7 +55,7 @@ instanceType, availabilityZone, duration, fixedPrice, usagePrice, productDescrip
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance_Reserved('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance\Reserved('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->describeInstances('instanceId');
 
@@ -74,7 +74,7 @@ reservedInstancesId, instanceType, availabilityZone, duration, fixedPrice, usage
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance_Reserved('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance\Reserved('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->describeOfferings();
 
@@ -92,7 +92,7 @@ wirklich verwendeten Zeit zu erhalten.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new Zend_Service_Amazon_Ec2_Instance_Reserved('aws_key',
+   $ec2_instance = new Zend\Service\Amazon\Ec2\Instance\Reserved('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->purchaseOffering('offeringId', 'instanceCount');
 

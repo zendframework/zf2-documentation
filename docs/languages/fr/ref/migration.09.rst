@@ -16,11 +16,11 @@ Zend_Controller
 méthodes suivantes ont été effacées puisqu'elles sont maintenant encapsulées dans :ref:`l'aide d'action
 redirector <zend.controller.actionhelpers.redirector>`\  :
 
-- ``setRedirectCode()`` à remplacer par ``Zend_Controller_Action_Helper_Redirector::setCode()``.
+- ``setRedirectCode()`` à remplacer par ``Zend\Controller\Action\Helper\Redirector::setCode()``.
 
-- ``setRedirectPrependBase()`` à remplacer par ``Zend_Controller_Action_Helper_Redirector::setPrependBase()``.
+- ``setRedirectPrependBase()`` à remplacer par ``Zend\Controller\Action\Helper\Redirector::setPrependBase()``.
 
-- ``setRedirectExit()`` à remplacer par ``Zend_Controller_Action_Helper_Redirector::setExit()``.
+- ``setRedirectExit()`` à remplacer par ``Zend\Controller\Action\Helper\Redirector::setExit()``.
 
 Lisez la :ref:`documentation des aides d'actions <zend.controller.actionhelpers>`\ pour plus d'informations sur la
 récupération ou la manipulation des objets "helper", et la :ref:`documentation du helper redirector

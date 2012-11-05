@@ -35,7 +35,7 @@ Los elementos anteriores están separados por dos puntos, como en el ejemplo sig
 Detalles Específicos
 --------------------
 
-El adaptador de autenticación "Digest", ``Zend_Auth_Adapter_Digest``, requiere varios parámetros de entrada:
+El adaptador de autenticación "Digest", ``Zend\Auth_Adapter\Digest``, requiere varios parámetros de entrada:
 
 - filename - Nombre del archivo contra el que se realiza la autenticación de las consultas
 
@@ -52,14 +52,14 @@ Estos parámetros deben ser establecidos antes de llamar a ``authenticate()``.
 Identidad
 ---------
 
-El adaptador de autenticación "Digest" devuelve un objeto ``Zend_Auth_Result``, que ha sido rellenado con la
+El adaptador de autenticación "Digest" devuelve un objeto ``Zend\Auth\Result``, que ha sido rellenado con la
 identidad como un array que tenga claves **realm** y **username**. Los respectivos valores del array asociados con
 esas claves correspondes con los valores fijados andes de llamar a ``authenticate()``.
 
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Auth_Adapter_Digest($filename,
+   $adapter = new Zend\Auth_Adapter\Digest($filename,
                                            $realm,
                                            $username,
                                            $password);

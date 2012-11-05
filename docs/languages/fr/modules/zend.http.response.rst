@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.http.response:
 
-Zend_Http_Response
+Zend\Http\Response
 ==================
 
 .. _zend.http.response.introduction:
@@ -9,18 +9,18 @@ Zend_Http_Response
 Introduction
 ------------
 
-``Zend_Http_Response`` fournit un accès simplifié aux réponses *HTTP* d'un message, ainsi qu'un ensemble de
-méthodes statiques pour analyser ces réponses *HTTP*. Habituellement ``Zend_Http_Response`` est utilisé en tant
-qu'objet retourné par une requête ``Zend_Http_Client``.
+``Zend\Http\Response`` fournit un accès simplifié aux réponses *HTTP* d'un message, ainsi qu'un ensemble de
+méthodes statiques pour analyser ces réponses *HTTP*. Habituellement ``Zend\Http\Response`` est utilisé en tant
+qu'objet retourné par une requête ``Zend\Http\Client``.
 
-Dans la plupart des cas, un objet ``Zend_Http_Response`` sera instancié en utilisant la méthode ``fromString()``,
-qui lit une chaîne contenant une réponse HTTP, et retourne un nouvel objet ``Zend_Http_Response``:
+Dans la plupart des cas, un objet ``Zend\Http\Response`` sera instancié en utilisant la méthode ``fromString()``,
+qui lit une chaîne contenant une réponse HTTP, et retourne un nouvel objet ``Zend\Http\Response``:
 
 
 
       .. _zend.http.response.introduction.example-1:
 
-      .. rubric:: Instancier un objet Zend_Http_Response en utilisant la méthode factory
+      .. rubric:: Instancier un objet Zend\Http\Response en utilisant la méthode factory
 
       .. code-block:: php
          :linenos:
@@ -36,7 +36,7 @@ qui lit une chaîne contenant une réponse HTTP, et retourne un nouvel objet ``Z
          while ($buff = fread($sock, 1024))
              $str .= $sock;
 
-         $response = Zend_Http_Response::fromString($str);
+         $response = Zend\Http\Response::fromString($str);
 
 
 
@@ -61,7 +61,7 @@ paramètres de la réponse :
 Méthodes de tests booléennes
 ----------------------------
 
-Une fois qu'un objet ``Zend_Http_Response`` est instancié, il fournit plusieurs méthodes qui peuvent être
+Une fois qu'un objet ``Zend\Http\Response`` est instancié, il fournit plusieurs méthodes qui peuvent être
 utilisées pour tester le type de la réponse. Elles retournent toutes un booléen ``TRUE`` ou ``FALSE``:
 
    - ``isSuccessful()``: la requête est réussie ou non. Retourne *true* pour les codes de réponses *HTTP* 1xx et
@@ -133,7 +133,7 @@ Le but principal de l'objet réponse est de fournir un accès facile à divers p
 
       .. _zend.http.response.acessors.example-1:
 
-      .. rubric:: Utiliser les méthodes accesseurs de Zend_Http_Response
+      .. rubric:: Utiliser les méthodes accesseurs de Zend\Http\Response
 
       .. code-block:: php
          :linenos:
@@ -185,27 +185,27 @@ Le but principal de l'objet réponse est de fournir un accès facile à divers p
 Analyseurs statiques de réponse HTTP
 ------------------------------------
 
-La classe ``Zend_Http_Response`` inclut également plusieurs méthodes utilisées en interne pour traiter et
+La classe ``Zend\Http\Response`` inclut également plusieurs méthodes utilisées en interne pour traiter et
 analyser des messages de réponse *HTTP*. Ces méthodes sont toutes exposées en tant que méthodes statiques, ce
 qui permet de les utiliser extérieurement, ainsi il n'est pas nécessaire d'instancier un objet réponse si vous
 souhaitez extraire une partie spécifique de la réponse.
 
-   - *int Zend_Http_Response::extractCode($response_str)*: extrait et retourne le code de la réponse *HTTP* (par
+   - *int Zend\Http\Response::extractCode($response_str)*: extrait et retourne le code de la réponse *HTTP* (par
      ex. 200 ou 404) issu de ``$response_str``
 
-   - *string Zend_Http_Response::extractMessage($response_str)*: extrait et retourne le message de la réponse
+   - *string Zend\Http\Response::extractMessage($response_str)*: extrait et retourne le message de la réponse
      *HTTP* (par ex. "OK" ou "File Not Found") issu de ``$response_str``
 
-   - *string Zend_Http_Response::extractVersion($response_str)*: extrait et retourne la version *HTTP* (par ex. 1.1
+   - *string Zend\Http\Response::extractVersion($response_str)*: extrait et retourne la version *HTTP* (par ex. 1.1
      or 1.0) issue de ``$response_str``
 
-   - *array Zend_Http_Response::extractHeaders($response_str)*: extrait et retourne les en-têtes de la réponse
+   - *array Zend\Http\Response::extractHeaders($response_str)*: extrait et retourne les en-têtes de la réponse
      *HTTP* issus de ``$response_str`` sous la forme d'un tableau
 
-   - *string Zend_Http_Response::extractBody($response_str)*: extrait et retourne le corps de la réponse *HTTP*
+   - *string Zend\Http\Response::extractBody($response_str)*: extrait et retourne le corps de la réponse *HTTP*
      issu de ``$response_str``
 
-   - *string Zend_Http_Response::responseCodeAsText($code = null, $http11 = true)*: récupère le message standard
+   - *string Zend\Http\Response::responseCodeAsText($code = null, $http11 = true)*: récupère le message standard
      de la réponse *HTTP* pour le code ``$code``. Par exemple, la méthode retournera "Internal Server Error" si
      ``$code`` vaut 500. Si ``$http11`` vaut ``TRUE`` (valeur par défaut), la méthode retournera les messages
      standards *HTTP*/1.1 - sinon les messages *HTTP*/1.0 seront retournés. Si ``$code`` n'est pas spécifié,
@@ -217,12 +217,12 @@ souhaitez extraire une partie spécifique de la réponse.
 Indépendamment des méthodes d'analyse, la classe inclut également un ensemble de décodeurs pour les encodages
 de transfert de réponse *HTTP* communs :
 
-   - *string Zend_Http_Response::decodeChunkedBody($body)*: décode un corps complet de type
+   - *string Zend\Http\Response::decodeChunkedBody($body)*: décode un corps complet de type
      "Content-Transfer-Encoding: Chunked"
 
-   - *string Zend_Http_Response::decodeGzip($body)*: décode un corps de type "Content-Encoding: gzip"
+   - *string Zend\Http\Response::decodeGzip($body)*: décode un corps de type "Content-Encoding: gzip"
 
-   - *string Zend_Http_Response::decodeDeflate($body)*: décode un corps de type "Content-Encoding: deflate"
+   - *string Zend\Http\Response::decodeDeflate($body)*: décode un corps de type "Content-Encoding: deflate"
 
 
 

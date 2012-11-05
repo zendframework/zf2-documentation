@@ -4,15 +4,15 @@
 Callback
 ========
 
-``Zend_Validate_Callback`` erlaubt es einen Callback anzugeben der verwendet wird um einen angegebenen Wert zu
+``Zend\Validate\Callback`` erlaubt es einen Callback anzugeben der verwendet wird um einen angegebenen Wert zu
 prüfen.
 
 .. _zend.validate.set.callback.options:
 
-Unterstützte Optionen für Zend_Validate_Callback
+Unterstützte Optionen für Zend\Validate\Callback
 ------------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Validate_Callback`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Validate\Callback`` unterstützt:
 
 - **callback**: Setzt den Callback welcher für die Prüfung aufgerufen wird.
 
@@ -35,12 +35,12 @@ Angenommen wir haben die folgende Funktion.
        return true;
    }
 
-Um diese in ``Zend_Validate_Callback`` zu verwenden muss man Sie nur auf folgende Weise aufrufen:
+Um diese in ``Zend\Validate\Callback`` zu verwenden muss man Sie nur auf folgende Weise aufrufen:
 
 .. code-block:: .validator.
    :linenos:
 
-   $valid = new Zend_Validate_Callback('myMethod');
+   $valid = new Zend\Validate\Callback('myMethod');
    if ($valid->isValid($input)) {
        // Input scheint gültig zu sein
    } else {
@@ -54,12 +54,12 @@ Verwendung mit Closures
 
 *.validator.* 5.3 führt `Closures`_ ein, welche grundsätzlich selbst-enthaltene oder **anonyme** Funktionen sind. *.validator.*
 nimmt an das Closures eine andere Form eines Callbacks sind, und können daher als solche mit
-``Zend_Validate_Callback`` verwendet werden. Als Beispiel:
+``Zend\Validate\Callback`` verwendet werden. Als Beispiel:
 
 .. code-block:: .validator.
    :linenos:
 
-   $valid = new Zend_Validate_Callback(function($value){
+   $valid = new Zend\Validate\Callback(function($value){
        // einige Prüfungen
        return true;
    });
@@ -97,7 +97,7 @@ Methode erstellen und ein Array das den Callback beschreibt:
    :linenos:
 
    $object = new MyClass;
-   $valid = new Zend_Validate_Callback(array($object, 'myMethod'));
+   $valid = new Zend\Validate\Callback(array($object, 'myMethod'));
    if ($valid->isValid($input)) {
        // Input scheint gültig zu sein
    } else {
@@ -119,7 +119,7 @@ dann ist die Verwendung des Prüfers wie folgt:
        }
    }
 
-   $valid = new Zend_Validate_Callback(array('MyClass', 'test'));
+   $valid = new Zend\Validate\Callback(array('MyClass', 'test'));
    if ($valid->isValid($input)) {
        // Input scheint gültig zu sein
    } else {
@@ -142,7 +142,7 @@ definieren. Wenn man das tut dann funktioniert die Angabe einer Instanz der Klas
    }
 
    $object = new MyClass();
-   $valid = new Zend_Validate_Callback($object);
+   $valid = new Zend\Validate\Callback($object);
    if ($valid->isValid($input)) {
        // Input scheint gültig zu sein
    } else {
@@ -154,7 +154,7 @@ definieren. Wenn man das tut dann funktioniert die Angabe einer Instanz der Klas
 Optionen hinzufügen
 -------------------
 
-``Zend_Validate_Callback`` erlaubt auch die Verwendung von Optionen welche als zusätzliche Argumente dem Callback
+``Zend\Validate\Callback`` erlaubt auch die Verwendung von Optionen welche als zusätzliche Argumente dem Callback
 übergeben werden.
 
 Nehmen wir die folgende Klassen und Methoden Definition an:
@@ -180,7 +180,7 @@ Um Sie im Contructor zu übergeben, muss ein Array übergeben werden das die zwe
 .. code-block:: .validator.
    :linenos:
 
-   $valid = new Zend_Validate_Callback(array(
+   $valid = new Zend\Validate\Callback(array(
        'callback' => array('MyClass', 'myMethod'),
        'options'  => $option,
    ));
@@ -196,7 +196,7 @@ Andererseits können Sie dem Prüfer auch nach der Instanzierung übergeben werd
 .. code-block:: .validator.
    :linenos:
 
-   $valid = new Zend_Validate_Callback(array('MyClass', 'myMethod'));
+   $valid = new Zend\Validate\Callback(array('MyClass', 'myMethod'));
    $valid->setOptions($option);
 
    if ($valid->isValid($input)) {
@@ -211,7 +211,7 @@ hinzugefügt.
 .. code-block:: .validator.
    :linenos:
 
-   $valid = new Zend_Validate_Callback(array('MyClass', 'myMethod'));
+   $valid = new Zend\Validate\Callback(array('MyClass', 'myMethod'));
    $valid->setOptions($option);
 
    if ($valid->isValid($input, $additional)) {

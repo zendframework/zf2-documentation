@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.mime.part:
 
-Zend_Mime_Part
+Zend\Mime\Part
 ==============
 
 .. _zend.mime.part.introduction:
@@ -11,8 +11,8 @@ Zend_Mime_Part
 
 מחלקה זו מייצגת חלק בודד מהודעת MIME. היא מכילה את התוכן של ההודעה
 ואת המידע אודות הקידוד שלה, סוג התוכן ושם הקובץ המקורי. היא
-מספקת מתודה ליצירת סטרינג מהמידע שנשמר. אובייקטים של *Zend_Mime_Part*
-ניתנים להוספה אל :ref:`Zend_Mime_Message <zend.mime.message>` כדי להרכיב הודעה
+מספקת מתודה ליצירת סטרינג מהמידע שנשמר. אובייקטים של *Zend\Mime\Part*
+ניתנים להוספה אל :ref:`Zend\Mime\Message <zend.mime.message>` כדי להרכיב הודעה
 מרובה חלקים מלאה.
 
 .. _zend.mime.part.instantiation:
@@ -20,16 +20,16 @@ Zend_Mime_Part
 התקנה
 -----
 
-*Zend_Mime_Part* נקראת ונוצרת עם הוספת פרמטר שמהווה סטרינג שמייצג את
+*Zend\Mime\Part* נקראת ונוצרת עם הוספת פרמטר שמהווה סטרינג שמייצג את
 התוכן של החלק החדש. הסוג בדרך כלל מוגדר ל OCTET-STREAM, קידוד הינו
-8ביט. לאחר יצירת *Zend_Mime_Part*, ניתן להגדירו על ידי הצבת ערכים
+8ביט. לאחר יצירת *Zend\Mime\Part*, ניתן להגדירו על ידי הצבת ערכים
 לתכונות שלו:
 
 .. code-block:: php
    :linenos:
 
-   public $type = Zend_Mime::TYPE_OCTETSTREAM;
-   public $encoding = Zend_Mime::ENCODING_8BIT;
+   public $type = Zend\Mime\Mime::TYPE_OCTETSTREAM;
+   public $encoding = Zend\Mime\Mime::ENCODING_8BIT;
    public $id;
    public $disposition;
    public $filename;
@@ -46,7 +46,7 @@ Zend_Mime_Part
 ------
 
 *getContent()* מחזיר את התוכן המקודד של ה MimePart בתור סטרינג על ידי
-שימוש בקידוד שהוגדר בערך $encoding. ערכים חוקיים הם Zend_Mime::ENCODING_*
+שימוש בקידוד שהוגדר בערך $encoding. ערכים חוקיים הם Zend\Mime\Mime::ENCODING_*
 המרת קידודים לא נעשית.
 
 *getHeaders()* מחזיר את הכותרים של ה MimePart כפי שהם נוצרו בתכונות

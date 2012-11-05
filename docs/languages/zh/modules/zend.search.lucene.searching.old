@@ -10,7 +10,7 @@
 ----
 
 有两种方式可以在索引中进行搜索。第一个方式是使用查询分析程序(Query
-Parser)来从字符串中创建查询。第二个方式通过 Zend_Search_Lucene API
+Parser)来从字符串中创建查询。第二个方式通过 Zend\Search\Lucene API
 提供了创建自己的查询的可能。
 
 在选择使用查询分析程序之前，请考虑下面问题：
@@ -38,13 +38,13 @@ Parser)来从字符串中创建查询。第二个方式通过 Zend_Search_Lucene
 
       require_once('Zend/Search/Lucene.php');
 
-      $index = new Zend_Search_Lucene('/data/my_index');
+      $index = new Zend\Search\Lucene('/data/my_index');
 
       $index->find($query);
 
       ?>
-方法 *Zend_Search_Lucene::find()* 自动检查输入类型并使用查询分析程序从字符串建立适当的
-Zend_Search_Lucene_Search_Query 对象。
+方法 *Zend\Search\Lucene::find()* 自动检查输入类型并使用查询分析程序从字符串建立适当的
+Zend\Search\Lucene\Search\Query 对象。
 
 需要特别注意的是 *find()* 是大小写敏感的。默认的，LuceneIndexCreation.jar
 标准化所有文档为小写。可以通过命令行来关闭这个设置(输入不带参数的
@@ -57,11 +57,11 @@ LuceneIndexCreation.jar 命令来获取帮助)。提供给 *find()*
 搜索结果
 ----
 
-搜索结果是一个 Zend_Search_Lucene_Search_QueryHit 对象数组。每一个数组元素具有两个属性：
+搜索结果是一个 Zend\Search\Lucene\Search\QueryHit 对象数组。每一个数组元素具有两个属性：
 *$hit->document* 是索引中的文档编号， *$hit->score*
 是其在搜索结果中的分值。搜索结果是按照分值排序的(最高分的搜索结果位于最前面)。
 
-Zend_Search_Lucene_Search_QueryHit 对象还能将 Zend_Search_Lucene_Document
+Zend\Search\Lucene\Search\QueryHit 对象还能将 Zend\Search_Lucene\Document
 中的各个字段作为属性陈列出来。在下面这个例子中，搜索结果相应的文档具有两个字段：title
 和 author。
 
@@ -72,7 +72,7 @@ Zend_Search_Lucene_Search_QueryHit 对象还能将 Zend_Search_Lucene_Document
 
       require_once('Zend/Search/Lucene.php');
 
-      $index = new Zend_Search_Lucene('/data/my_index');
+      $index = new Zend\Search\Lucene('/data/my_index');
 
       $hits = $index->find($query);
 
@@ -87,7 +87,7 @@ Zend_Search_Lucene_Search_QueryHit 对象还能将 Zend_Search_Lucene_Document
       ?>
 
 
-可选的，原始的 Zend_Search_Lucene_Document 对象可以从 Zend_Search_Lucene_Search_QueryHit
+可选的，原始的 Zend\Search_Lucene\Document 对象可以从 Zend\Search\Lucene\Search\QueryHit
 获得。你可以使用索引对象的 *getDocument()*
 方法来获取文档进行了索引的部分并接着使用 *getFieldValue()* 方法。
 
@@ -98,18 +98,18 @@ Zend_Search_Lucene_Search_QueryHit 对象还能将 Zend_Search_Lucene_Document
 
       require_once('Zend/Search/Lucene.php');
 
-      $index = new Zend_Search_Lucene('/data/my_index');
+      $index = new Zend\Search\Lucene('/data/my_index');
 
       $hits = $index->find($query);
       foreach ($hits as $hit) {
-          // return Zend_Search_Lucene_Document object for this hit
+          // return Zend\Search_Lucene\Document object for this hit
           echo $document = $hit->getDocument();
 
-          // return a Zend_Search_Lucene_Field object
-          // from the Zend_Search_Lucene_Document
+          // return a Zend\Search_Lucene\Field object
+          // from the Zend\Search_Lucene\Document
           echo $document->getField('title');
 
-          // return the string value of the Zend_Search_Lucene_Field object
+          // return the string value of the Zend\Search_Lucene\Field object
           echo $document->getFieldValue('title');
 
           // same as getFieldValue()
@@ -117,7 +117,7 @@ Zend_Search_Lucene_Search_QueryHit 对象还能将 Zend_Search_Lucene_Document
       }
 
       ?>
-能够获取的 Zend_Search_Lucene_Document
+能够获取的 Zend\Search_Lucene\Document
 对象的字段是在进行索引的时候决定的。由索引创建程序(例如：LuceneIndexCreation.jar)在文档中建立的文档字段要么是被索引的，要么是被索引并保存的。
 
 请注意，文档标识(在本例中是'path')也保存在索引中，它必须被提取出来。
@@ -127,7 +127,7 @@ Zend_Search_Lucene_Search_QueryHit 对象还能将 Zend_Search_Lucene_Document
 结果评分
 ----
 
-Zend_Search_Lucene 使用和 Java Lucene
+Zend\Search\Lucene 使用和 Java Lucene
 一样的评分算法。搜索结果是按照分值进行排序的。分值越大，相应的搜索结果点击排在排位越靠前。
 
 不同的分值意味着一篇文档相比另一篇更能匹配查询要求。
@@ -150,7 +150,7 @@ Zend_Search_Lucene 使用和 Java Lucene
       ?>
 
 
-类 Zend_Search_Lucene_Search_Similarity 用于计算分值。请参阅 :ref:`“扩展性”中“评分算法”
+类 Zend\Search\Lucene\Search\Similarity 用于计算分值。请参阅 :ref:`“扩展性”中“评分算法”
 <zend.search.lucene.extending.scoring>`\ 一节了解详情。
 
 

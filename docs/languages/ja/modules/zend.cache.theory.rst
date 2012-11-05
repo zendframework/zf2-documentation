@@ -9,12 +9,12 @@
 ディレクティブです。これは、キャッシュされたリソースの
 「賞味期限」を定義するものです。三番目のポイントとなるのが条件付きの実行処理で、
 不要なコードを完全に読み飛ばすことで処理速度を向上させることになります。
-フロントエンドの主となる関数 (例えば ``Zend_Cache_Core::get()``)
+フロントエンドの主となる関数 (例えば ``Zend\Cache\Core::get()``)
 は、キャッシュがヒットしなかった場合には常に ``FALSE``
 を返すよう設計されています。 そのため、キャッシュしたい (そして読み飛ばしたい)
 部分を **if(){ ... }** 文で囲む際に、 条件式として ``Zend_Cache``
 のメソッド自身を使用できるようになっています。
-このブロックの最後では、出力内容を (例えば ``Zend_Cache_Core::save()`` などで)
+このブロックの最後では、出力内容を (例えば ``Zend\Cache\Core::save()`` などで)
 保存する必要があります。
 
 .. note::
@@ -58,7 +58,7 @@ Zend_Cache ファクトリメソッド
 
    // インスタンスを作成します
    // (もちろん、最後の 2 つの引数は必須ではありません)
-   $cache = Zend_Cache::factory($frontendName,
+   $cache = Zend\Cache\Cache::factory($frontendName,
                                 $backendName,
                                 $frontendOptions,
                                 $backendOptions);
@@ -69,7 +69,7 @@ Zend_Cache ファクトリメソッド
 
 .. note::
 
-   常に ``Zend_Cache::factory()`` を使用してフロントエンドの
+   常に ``Zend\Cache\Cache::factory()`` を使用してフロントエンドの
    インスタンスを作成するようにしてください。フロントエンドやバックエンドを
    自前で作成しようとしても、期待通りには動作しないでしょう。
 
@@ -113,10 +113,10 @@ Zend_Cache ファクトリメソッド
    :linenos:
 
    // すべてのレコードを削除します
-   $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_ALL);
 
    // 有効期限切れのレコードのみ削除します
-   $cache->clean(Zend_Cache::CLEANING_MODE_OLD);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_OLD);
 
 タグ 'tagA' および 'tagC'
 に該当するキャッシュエントリを削除するには、このようにします。
@@ -125,7 +125,7 @@ Zend_Cache ファクトリメソッド
    :linenos:
 
    $cache->clean(
-       Zend_Cache::CLEANING_MODE_MATCHING_TAG,
+       Zend\Cache\Cache::CLEANING_MODE_MATCHING_TAG,
        array('tagA', 'tagC')
    );
 
@@ -136,7 +136,7 @@ Zend_Cache ファクトリメソッド
    :linenos:
 
    $cache->clean(
-       Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG,
+       Zend\Cache\Cache::CLEANING_MODE_NOT_MATCHING_TAG,
        array('tagA', 'tagC')
    );
 
@@ -147,7 +147,7 @@ Zend_Cache ファクトリメソッド
    :linenos:
 
    $cache->clean(
-       Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG,
+       Zend\Cache\Cache::CLEANING_MODE_MATCHING_ANY_TAG,
        array('tagA', 'tagC')
    );
 

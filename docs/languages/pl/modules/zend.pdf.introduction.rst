@@ -4,10 +4,10 @@
 Wprowadzenie
 ============
 
-Moduł Zend_Pdf jest silnikiem służącym do manipulacji plikami PDF (Portable Document Format) napisanym w
+Moduł ZendPdf jest silnikiem służącym do manipulacji plikami PDF (Portable Document Format) napisanym w
 całości w PHP 5. Może on ładować istniejące dokumenty, tworzyć nowe, modyfikować i zapisywać zmodyfikowane
 dokumenty. Umożliwia to dowolnej aplikacji PHP dynamicznie przygotowywać dokumenty PDF modyfikując istniejące
-szablony lub generować dokumenty od podstaw. Moduł Zend_Pdf wspiera następujące funkcjonalności:
+szablony lub generować dokumenty od podstaw. Moduł ZendPdf wspiera następujące funkcjonalności:
 
 
 

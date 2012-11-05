@@ -4,7 +4,7 @@
 Einführung
 ==========
 
-Die ``Zend_Console_Getopt`` Klasse hilft Kommandozeilen Anwendungen Ihre Optionen und Argumente zu Analysieren.
+Die ``Zend\Console\Getopt`` Klasse hilft Kommandozeilen Anwendungen Ihre Optionen und Argumente zu Analysieren.
 
 Benutzer können Kommandozeilen Argumente definieren wenn die Anwendung ausgeführt wird. Diese Argumente haben
 für die Anwendung die Bedeutung, das Verhalten in einem bestimmten Weg zu Ändern oder Ressourcen auszuwählen,
@@ -33,7 +33,7 @@ Dokumentation wird die anbei beschriebenen Definitionen verwenden.
   Ein Parameter kann als separates Argument angegeben werden der einem Flag Argument folgt, oder als Teil der
   gleichen Zeichenkette des Arguments, getrennt vom Flag durch ein Gleichheitszeichen (``=``). Die zweite Form wird
   nur bei langen Flags unterstützt. Zum Beispiel, ``-u username``, ``--user username``, und ``--user=username``
-  sind Formen welche durch ``Zend_Console_Getopt`` unterstützt werden.
+  sind Formen welche durch ``Zend\Console\Getopt`` unterstützt werden.
 
 - "Verbund": Mehrere Einzel-Zeichen Flags kombiniert in einem einzelnen Argument als Zeichenkette und vorangestellt
   durch einen einzelnen Bindestrich. Zum Beispiel "``ls -1str``" benutzt einen Verbund von vier kurzen Flags.
@@ -44,7 +44,7 @@ Zum Beispiel ``mysql --user=root mydatabase``. ``mysql`` ist ein **Kommando**, `
 ``--user`` ist ein **Flag**, ``root`` ist ein **Parameter** für diese Option und ``mydatabase`` ist ein Argument
 aber nicht eine Option laut unserer Definition.
 
-``Zend_Console_Getopt`` bietet ein Interface um zu definieren welche Flags für die Anwendung gültig sind, das
+``Zend\Console\Getopt`` bietet ein Interface um zu definieren welche Flags für die Anwendung gültig sind, das
 einen Fehler und Benutzungshinweise ausgibt wenn ein ungültiges Flag verwendet wird, und dem Code der Anwendung
 bekanntgibt welche Flags der Benutzer definiert hat.
 
@@ -52,13 +52,13 @@ bekanntgibt welche Flags der Benutzer definiert hat.
 
    **Getopt ist kein Framework für eine Anwendung**
 
-   ``Zend_Console_Getopt`` kann **nicht** die Bedeutung der Flags und Parameter interpretieren, noch implementiert
+   ``Zend\Console\Getopt`` kann **nicht** die Bedeutung der Flags und Parameter interpretieren, noch implementiert
    diese Klasse einen Anwendungsworkflow oder ruft Anwendungscode auf. Diese Aktionen müssen im eigenen
-   Anwendungscode integriert werden. Die ``Zend_Console_Getopt`` Klasse kann dazu verwendet werden um die
+   Anwendungscode integriert werden. Die ``Zend\Console\Getopt`` Klasse kann dazu verwendet werden um die
    Kommandozeile zu analysieren und bietet Objekt-Orientierte Methoden für die Abfrage welche Optionen durch den
    Benutzer angegeben wurden. Aber der Code um diese Informationen zu Verwenden und Teile der eigenen Anwendung
    aufzurufen sollten in einer anderen *PHP* Klasse sein.
 
-Die folgende Sektion beschreibt die Verwendung von ``Zend_Console_Getopt``.
+Die folgende Sektion beschreibt die Verwendung von ``Zend\Console\Getopt``.
 
 

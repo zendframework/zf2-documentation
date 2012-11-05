@@ -9,7 +9,7 @@ Datenbanken arbeitet oder wenn Formularwerte bearbeitet werden.
 
 .. _zend.filter.set.boolean.default:
 
-Standardverhalten von Zend_Filter_Boolean
+Standardverhalten von Zend\Filter\Boolean
 -----------------------------------------
 
 Standardmäßig arbeitet dieser Filter indem er Eingabe auf ``BOOLEAN`` Werte castet; in anderen Worte, er arbeitet
@@ -18,20 +18,20 @@ in ähnlicher Weise wie der Aufruf von ``(boolean) $value``.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Boolean();
+   $filter = new Zend\Filter\Boolean();
    $value  = '';
    $result = $filter->filter($value);
    // gibt false zurück
 
-Dies bedeuetet dass ``Zend_Filter_Boolean`` ohne die Angabe einer Konfiguration alle Eingabetypen akteptiert und
+Dies bedeuetet dass ``Zend\Filter\Boolean`` ohne die Angabe einer Konfiguration alle Eingabetypen akteptiert und
 ein ``BOOLEAN`` zurückgibt wie man es durch Typcasting zu ``BOOLEAN`` erhält.
 
 .. _zend.filter.set.boolean.types:
 
-Das Verhalten von Zend_Filter_Boolean ändern
+Das Verhalten von Zend\Filter\Boolean ändern
 --------------------------------------------
 
-Manchmal ist das Casten mit ``(boolean)`` nicht ausreichend. ``Zend_Filter_Boolean`` erlaubt es spezifische Typen
+Manchmal ist das Casten mit ``(boolean)`` nicht ausreichend. ``Zend\Filter\Boolean`` erlaubt es spezifische Typen
 zu konfigurieren welche konvertiert werden, und jene die ignoriert werden.
 
 Die folgenden Typen können behandelt werden:
@@ -68,23 +68,23 @@ kann einen textuellen String angeben. Siehe die folgenden Beispiele:
    :linenos:
 
    // Konvertiert 0 zu false
-   $filter = new Zend_Filter_Boolean(Zend_Filter_Boolean::INTEGER);
+   $filter = new Zend\Filter\Boolean(Zend\Filter\Boolean::INTEGER);
 
    // Konvertiert 0 und '0' zu false
-   $filter = new Zend_Filter_Boolean(
-       Zend_Filter_Boolean::INTEGER + Zend_Filter_Boolean::ZERO
+   $filter = new Zend\Filter\Boolean(
+       Zend\Filter\Boolean::INTEGER + Zend\Filter\Boolean::ZERO
    );
 
    // Konvertiert 0 und '0' zu false
-   $filter = new Zend_Filter_Boolean(array(
+   $filter = new Zend\Filter\Boolean(array(
        'type' => array(
-           Zend_Filter_Boolean::INTEGER,
-           Zend_Filter_Boolean::ZERO,
+           Zend\Filter\Boolean::INTEGER,
+           Zend\Filter\Boolean::ZERO,
        ),
    ));
 
    // Konvertiert 0 und '0' zu false
-   $filter = new Zend_Filter_Boolean(array(
+   $filter = new Zend\Filter\Boolean(array(
        'type' => array(
            'integer',
            'zero',
@@ -99,9 +99,9 @@ Instanzierung zu setzen kann die Methode ``setType()`` verwendet werden.
 Lokalisierte Boolsche Werte
 ---------------------------
 
-Wie vorher erwähnt erkennt ``Zend_Filter_Boolean`` auch die lokalisierten Strings für "Ja" und "Nein". Das
+Wie vorher erwähnt erkennt ``Zend\Filter\Boolean`` auch die lokalisierten Strings für "Ja" und "Nein". Das
 bedeutet das man den Kunden in einem Formular nach "Ja" oder "Nein" in seiner eigenen Sprache fragen kann und
-``Zend_Filter_Boolean`` die Antworten zu richtigen boolschen Werten konvertieren wird.
+``Zend\Filter\Boolean`` die Antworten zu richtigen boolschen Werten konvertieren wird.
 
 Um das gewünschte Gebietsschema zu setzen kann man entweder die Option ``locale`` verwenden oder die Methode
 ``setLocale()`` verwenden.
@@ -109,8 +109,8 @@ Um das gewünschte Gebietsschema zu setzen kann man entweder die Option ``locale
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Boolean(array(
-       'type'   => Zend_Filter_Boolean::ALL,
+   $filter = new Zend\Filter\Boolean(array(
+       'type'   => Zend\Filter\Boolean::ALL,
        'locale' => 'de',
    ));
 
@@ -128,9 +128,9 @@ Casten ausschalten
 ------------------
 
 Machmal ist es nützlich nur ``TRUE`` oder ``FALSE`` zu erkennen und alle anderen Werte ohne Änderung
-zurückzugeben. ``Zend_Filter_Boolean`` erlaubt dies indem die Option ``casting`` auf ``FALSE`` gesetzt wird.
+zurückzugeben. ``Zend\Filter\Boolean`` erlaubt dies indem die Option ``casting`` auf ``FALSE`` gesetzt wird.
 
-In diesem Fall arbeitet ``Zend_Filter_Boolean`` wie in der folgenden Tabelle beschrieben, die zeigt welche Werte
+In diesem Fall arbeitet ``Zend\Filter\Boolean`` wie in der folgenden Tabelle beschrieben, die zeigt welche Werte
 ``TRUE`` oder ``FALSE`` zurückgeben. Alle anderen angegebenen Werte werden ohne Änderung zurückgegeben wenn
 ``casting`` auf ``FALSE`` gesetzt wird.
 
@@ -141,23 +141,23 @@ In diesem Fall arbeitet ``Zend_Filter_Boolean`` wie in der folgenden Tabelle bes
    +---------------------------------+-------------------------------------------------+------------------------------------------------+
    |Typ                              |True                                             |False                                           |
    +=================================+=================================================+================================================+
-   |Zend_Filter_Boolean::BOOLEAN     |TRUE                                             |FALSE                                           |
+   |Zend\Filter\Boolean::BOOLEAN     |TRUE                                             |FALSE                                           |
    +---------------------------------+-------------------------------------------------+------------------------------------------------+
-   |Zend_Filter_Boolean::INTEGER     |0                                                |1                                               |
+   |Zend\Filter\Boolean::INTEGER     |0                                                |1                                               |
    +---------------------------------+-------------------------------------------------+------------------------------------------------+
-   |Zend_Filter_Boolean::FLOAT       |0.0                                              |1.0                                             |
+   |Zend\Filter\Boolean::FLOAT       |0.0                                              |1.0                                             |
    +---------------------------------+-------------------------------------------------+------------------------------------------------+
-   |Zend_Filter_Boolean::STRING      |""                                               |                                                |
+   |Zend\Filter\Boolean::STRING      |""                                               |                                                |
    +---------------------------------+-------------------------------------------------+------------------------------------------------+
-   |Zend_Filter_Boolean::ZERO        |"0"                                              |"1"                                             |
+   |Zend\Filter\Boolean::ZERO        |"0"                                              |"1"                                             |
    +---------------------------------+-------------------------------------------------+------------------------------------------------+
-   |Zend_Filter_Boolean::EMPTY_ARRAY |array()                                          |                                                |
+   |Zend\Filter\Boolean::EMPTY_ARRAY |array()                                          |                                                |
    +---------------------------------+-------------------------------------------------+------------------------------------------------+
-   |Zend_Filter_Boolean::NULL        |NULL                                             |                                                |
+   |Zend\Filter\Boolean::NULL        |NULL                                             |                                                |
    +---------------------------------+-------------------------------------------------+------------------------------------------------+
-   |Zend_Filter_Boolean::FALSE_STRING|"false" (unabhängig von der Schreibweise)        |"true" (unabhängig von der Schreibweise)        |
+   |Zend\Filter\Boolean::FALSE_STRING|"false" (unabhängig von der Schreibweise)        |"true" (unabhängig von der Schreibweise)        |
    +---------------------------------+-------------------------------------------------+------------------------------------------------+
-   |Zend_Filter_Boolean::YES         |localized "yes" (unabhängig von der Schreibweise)|localized "no" (unabhängig von der Schreibweise)|
+   |Zend\Filter\Boolean::YES         |localized "yes" (unabhängig von der Schreibweise)|localized "no" (unabhängig von der Schreibweise)|
    +---------------------------------+-------------------------------------------------+------------------------------------------------+
 
 Das folgende Beispiel zeigt das Verhalten wenn die Option ``casting`` verändert wird:
@@ -165,8 +165,8 @@ Das folgende Beispiel zeigt das Verhalten wenn die Option ``casting`` verändert
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Boolean(array(
-       'type'    => Zend_Filter_Boolean::ALL,
+   $filter = new Zend\Filter\Boolean(array(
+       'type'    => Zend\Filter\Boolean::ALL,
        'casting' => false,
    ));
 

@@ -4,7 +4,7 @@
 Auf den Zend Server Montior schreiben
 =====================================
 
-``Zend_Log_Writer_ZendMonitor`` erlaubt es Events über Zend Server's Monitor *API* zu loggen. Das erlaubt es die
+``Zend\Log_Writer\ZendMonitor`` erlaubt es Events über Zend Server's Monitor *API* zu loggen. Das erlaubt es die
 Log Nachrichten für die Umgebung einer komplette Anwendung an einem einzelnen Ort zu sammeln. Intern verwendet es
 einfach die ``monitor_custom_event()`` Funktion der Zend Monitor *API*.
 
@@ -25,8 +25,8 @@ Die Instanzierung des ``ZendMonitor`` Log Writers ist trivial:
 .. code-block:: php
    :linenos:
 
-   $writer = new Zend_Log_Writer_ZendMonitor();
-   $log    = new Zend_Log($writer);
+   $writer = new Zend\Log_Writer\ZendMonitor();
+   $log    = new Zend\Log\Log($writer);
 
 Dann können Nachrichten einfach wie gewohnt geloggt werden:
 

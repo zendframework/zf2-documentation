@@ -34,7 +34,7 @@ le mot de passe est "**unMotdepasse**") :
 Spécifications
 --------------
 
-L'adaptateur d'authentification Digest, ``Zend_Auth_Adapter_Digest`` requiert plusieurs paramètres d'entrée :
+L'adaptateur d'authentification Digest, ``Zend\Auth_Adapter\Digest`` requiert plusieurs paramètres d'entrée :
 
 - filename : fichier utilisé pour réaliser l'authentification
 
@@ -51,7 +51,7 @@ Ces paramètres doivent être définis avant l'appel de ``authenticate()``.
 Identité
 --------
 
-L'adaptateur d'authentification Digest retourne un objet ``Zend_Auth_Result``, lequel a été alimenté avec
+L'adaptateur d'authentification Digest retourne un objet ``Zend\Auth\Result``, lequel a été alimenté avec
 l'identité sous la forme d'un tableau ayant pour clés **realm** (domaine) et **username** (identifiant). Les
 valeurs respectives associées à ces clés correspondent aux valeurs définies avant l'appel à
 ``authenticate()``.
@@ -59,7 +59,7 @@ valeurs respectives associées à ces clés correspondent aux valeurs définies 
 .. code-block:: php
    :linenos:
 
-   $adaptateur = new Zend_Auth_Adapter_Digest($nomFichier,
+   $adaptateur = new Zend\Auth_Adapter\Digest($nomFichier,
                                               $domaine,
                                               $identifiant,
                                               $motdepasse);

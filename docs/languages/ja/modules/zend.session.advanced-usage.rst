@@ -23,12 +23,12 @@
 .. code-block:: php
    :linenos:
 
-   Zend_Session::start();
+   Zend\Session\Session::start();
 
 起動ファイルでセッションを開始する際には、
 ヘッダがブラウザに送信される前に確実にセッションが始まるようにします。
 そうしないと例外が発生してしまい、おそらくユーザが見るページは崩れてしまうでしょう。
-さまざまな高度な機能を使用するには、まず ``Zend_Session::start()`` が必要です
+さまざまな高度な機能を使用するには、まず ``Zend\Session\Session::start()`` が必要です
 (高度な機能の詳細については後で説明します)。
 
 ``Zend_Session`` を使用してセッションを開始する方法は四通りありますが、
@@ -46,43 +46,43 @@
      php_value session.auto_start 0
 
 . 間違い: *PHP* の `session_start()`_ 関数を直接使用してはいけません。 ``session_start()``
-  を直接使用した後で ``Zend_Session_Namespace`` を使用した場合は、 ``Zend_Session::start()``
-  が例外 ("session has already been started") をスローします。 ``Zend_Session_Namespace``
-  を使用するか 明示的に ``Zend_Session::start()`` で開始した後で ``session_start()``
+  を直接使用した後で ``Zend\Session\Namespace`` を使用した場合は、 ``Zend\Session\Session::start()``
+  が例外 ("session has already been started") をスローします。 ``Zend\Session\Namespace``
+  を使用するか 明示的に ``Zend\Session\Session::start()`` で開始した後で ``session_start()``
   をコールすると、 *E_NOTICE* が発生し、そのコールは無視されます。
 
-. 正解: ``Zend_Session::start()`` を使用します。
+. 正解: ``Zend\Session\Session::start()`` を使用します。
   すべてのリクエストでセッションを使用したい場合は、
   この関数コールを起動コードの最初のほうで無条件に記述します。
   セッションにはある程度のオーバーヘッドがあります。
   セッションを使用したいリクエストとそうでないリクエストがある場合は、
 
-  - 起動コード内で、 ``Zend_Session::setOptions()`` を使用して 無条件にオプション *strict*
+  - 起動コード内で、 ``Zend\Session\Session::setOptions()`` を使用して 無条件にオプション *strict*
     を ``TRUE`` にします。
 
-  - セッションを必要とするリクエスト内で、 ``Zend_Session_Namespace``
-    のインスタンスを作成する前に ``Zend_Session::start()`` をコールします。
+  - セッションを必要とするリクエスト内で、 ``Zend\Session\Namespace``
+    のインスタンスを作成する前に ``Zend\Session\Session::start()`` をコールします。
 
-  - 通常どおり、必要に応じて "*new Zend_Session_Namespace()*" を使用します。事前に
-    ``Zend_Session::start()`` がコールされていることを確認しておきましょう。
+  - 通常どおり、必要に応じて "*new Zend\Session\Namespace()*" を使用します。事前に
+    ``Zend\Session\Session::start()`` がコールされていることを確認しておきましょう。
 
-  *strict* オプションにより、 *new Zend_Session_Namespace()* が自動的に ``Zend_Session::start()``
+  *strict* オプションにより、 *new Zend\Session\Namespace()* が自動的に ``Zend\Session\Session::start()``
   でセッションを開始することがなくなります。
   したがって、このオプションを使用すると、アプリケーションの開発者が
   特定のリクエストにはセッションを使用しないという設計をおこなうことができます。
-  このオプションを使用すると、明示的に ``Zend_Session::start()`` をコールする前に
-  Zend_Session_Namespace のインスタンスを作成しようとしたときに例外がスローされます。
-  開発者は、 ``Zend_Session::setOptions()``
+  このオプションを使用すると、明示的に ``Zend\Session\Session::start()`` をコールする前に
+  Zend\Session\Namespace のインスタンスを作成しようとしたときに例外がスローされます。
+  開発者は、 ``Zend\Session\Session::setOptions()``
   の使用がユーザにどれだけの影響を与えるかを注意するようにしましょう。
   これらのオプションは (もととなる ext/session のオプションと同様)、
   全体に副作用を及ぼすからです。
 
-. 正解: 必要に応じて ``Zend_Session_Namespace`` のインスタンスを作成します。 *PHP*
+. 正解: 必要に応じて ``Zend\Session\Namespace`` のインスタンスを作成します。 *PHP*
   のセッションは、自動的に開始されます。
   これはもっともシンプルな使用法で、たいていの場合にうまく動作します。
   しかし、デフォルトであるクッキーベースのセッション (強く推奨します)
   を使用している場合には、 *PHP* がクライアントに何らかの出力 (`HTTP ヘッダ`_ など)
-  をする **前に**\ 、確実に 最初の *new Zend_Session_Namespace()*
+  をする **前に**\ 、確実に 最初の *new Zend\Session\Namespace()*
   をコールしなければなりません。 詳細は :ref:`
   <zend.session.global_session_management.headers_sent>` を参照ください。
 
@@ -102,7 +102,7 @@
 セッターメソッドには何の影響も及ぼしません。
 しかし、名前空間自体のセッターメソッドは使用できず、
 名前空間に直接格納されたオブジェクトの削除や置換ができなくなります。同様に、
-``Zend_Session_Namespace`` のインスタンスをロックしたとしても、
+``Zend\Session\Namespace`` のインスタンスをロックしたとしても、
 同じデータをさすシンボルテーブルの使用をとめることはできません (`PHP
 のリファレンスについての説明`_\ も参照ください)。
 
@@ -113,7 +113,7 @@
 .. code-block:: php
    :linenos:
 
-   $userProfileNamespace = new Zend_Session_Namespace('userProfileNamespace');
+   $userProfileNamespace = new Zend\Session\Namespace('userProfileNamespace');
 
    // このセッションに読み取り専用ロックをかけます
    $userProfileNamespace->lock();
@@ -142,7 +142,7 @@
 .. code-block:: php
    :linenos:
 
-   $s = new Zend_Session_Namespace('expireAll');
+   $s = new Zend\Session\Namespace('expireAll');
    $s->a = 'apple';
    $s->p = 'pear';
    $s->o = 'orange';
@@ -187,7 +187,7 @@
 
    // ...
    // 質問を表示するコントローラ
-   $testSpace = new Zend_Session_Namespace('testSpace');
+   $testSpace = new Zend\Session\Namespace('testSpace');
    // この変数にだけ有効期限を設定します
    $testSpace->setExpirationSeconds(300, 'accept_answer');
    $testSpace->accept_answer = true;
@@ -201,7 +201,7 @@
 
    // ...
    // 回答を処理するコントローラ
-   $testSpace = new Zend_Session_Namespace('testSpace');
+   $testSpace = new Zend\Session\Namespace('testSpace');
    if ($testSpace->accept_answer === true) {
        // 時間内
    }
@@ -217,10 +217,10 @@
 
 :ref:`セッションのロック <zend.session.advanced_usage.locking>`
 を利用すれば、名前空間つきセッションデータを予期せず使用してしまうことはある程度防げます。
-しかし、 ``Zend_Session_Namespace`` には、
+しかし、 ``Zend\Session\Namespace`` には、
 単一の名前空間内で複数のインスタンスを作成することを防ぐ機能もあります。
 
-この機能を有効にするには、 ``Zend_Session_Namespace``
+この機能を有効にするには、 ``Zend\Session\Namespace``
 のインスタンスを作成する際に、コンストラクタの第二引数に ``TRUE``
 を渡します。それ以降は、同一名前空間でインスタンスを作成しようとすると例外がスローされます。
 
@@ -232,11 +232,11 @@
    :linenos:
 
    // 名前空間のインスタンスを作成します
-   $authSpaceAccessor1 = new Zend_Session_Namespace('Zend_Auth');
+   $authSpaceAccessor1 = new Zend\Session\Namespace('Zend_Auth');
 
    // 同じ名前空間で別のインスタンスを作成します。
    // しかし今後はインスタンスを作成できないようにします
-   $authSpaceAccessor2 = new Zend_Session_Namespace('Zend_Auth', true);
+   $authSpaceAccessor2 = new Zend\Session\Namespace('Zend_Auth', true);
 
    // 参照をすることは可能です
    $authSpaceAccessor3 = $authSpaceAccessor2;
@@ -246,14 +246,14 @@
    assert($authSpaceAccessor2->foo, 'bar');
 
    try {
-       $aNamespaceObject = new Zend_Session_Namespace('Zend_Auth');
-   } catch (Zend_Session_Exception $e) {
+       $aNamespaceObject = new Zend\Session\Namespace('Zend_Auth');
+   } catch (Zend\Session\Exception $e) {
        echo 'この名前空間ではインスタンスを作成できません。すでに ' .
             '$authSpaceAccessor2 があるからです\n';
    }
 
 上の例では、コンストラクタの第二引数を用いて "``Zend_Auth``"
-名前空間では今後インスタンスを作成させないよう ``Zend_Session_Namespace``
+名前空間では今後インスタンスを作成させないよう ``Zend\Session\Namespace``
 に指示しています。
 インスタンスを作成しようとすると、コンストラクタから例外がスローされます。
 したがって、このセッション名前空間へのアクセスが必要となった場合は、
@@ -282,7 +282,7 @@
 .. code-block:: php
    :linenos:
 
-   $sessionNamespace = new Zend_Session_Namespace();
+   $sessionNamespace = new Zend\Session\Namespace();
    $sessionNamespace->array = array();
 
    // PHP 5.2.1 より前のバージョンでは、期待通りに動作しません
@@ -298,7 +298,7 @@
 .. code-block:: php
    :linenos:
 
-   $sessionNamespace = new Zend_Session_Namespace('Foo');
+   $sessionNamespace = new Zend\Session\Namespace('Foo');
    $sessionNamespace->array = array('a', 'b', 'c');
 
 この問題の影響を受けるバージョンの *PHP* を使っている場合で、
@@ -315,7 +315,7 @@
 .. code-block:: php
    :linenos:
 
-   $sessionNamespace = new Zend_Session_Namespace();
+   $sessionNamespace = new Zend\Session\Namespace();
 
    // 配列を代入します
    $sessionNamespace->array = array('tree' => 'apple');
@@ -341,7 +341,7 @@
 .. code-block:: php
    :linenos:
 
-   $myNamespace = new Zend_Session_Namespace('myNamespace');
+   $myNamespace = new Zend\Session\Namespace('myNamespace');
    $a = array(1, 2, 3);
    $myNamespace->someArray = array( &$a );
    $a['foo'] = 'bar';
@@ -369,8 +369,8 @@ Zend Framework 自体のテストには PHPUnit を使用しています。
 ユニットテスト中で、セッションの終了後に書き込み関連のメソッドを使用すると
 "**Zend_Session is currently marked as read-only**" という例外がスローされます。しかし、
 ``Zend_Session`` を使用するユニットテストには要注意です。 セッションを閉じたり
-(``Zend_Session::writeClose()``) 破棄したり (``Zend_Session::destroy()``) したら、 それ以降は
-``Zend_Session_Namespace`` のインスタンスへのキーの設定や削除ができなくなります。
+(``Zend\Session\Session::writeClose()``) 破棄したり (``Zend\Session\Session::destroy()``) したら、 それ以降は
+``Zend\Session\Namespace`` のインスタンスへのキーの設定や削除ができなくなります。
 これは、ext/session や、 *PHP* の ``session_destroy()`` および ``session_write_close()``
 の仕様によるものです, これらには、ユニットテストの setup/teardown
 時に使用できるような、いわゆる "undo" 機能が備わっていないのです。
@@ -394,13 +394,13 @@ Zend Framework 自体のテストには PHPUnit を使用しています。
 
    // testing setExpirationSeconds()
    $script = 'SessionTestHelper.php';
-   $s = new Zend_Session_Namespace('space');
+   $s = new Zend\Session\Namespace('space');
    $s->a = 'apple';
    $s->o = 'orange';
    $s->setExpirationSeconds(5);
 
-   Zend_Session::regenerateId();
-   $id = Zend_Session::getId();
+   Zend\Session\Session::regenerateId();
+   $id = Zend\Session\Session::getId();
    session_write_close(); // release session so process below can use it
    sleep(4); // not long enough for things to expire
    exec($script . "expireAll $id expireAll", $result);
@@ -422,7 +422,7 @@ Zend Framework 自体のテストには PHPUnit を使用しています。
    // We could split this into a separate test, but actually, if anything
    // leftover from above contaminates the tests below, that is also a
    // bug that we want to know about.
-   $s = new Zend_Session_Namespace('expireGuava');
+   $s = new Zend\Session\Namespace('expireGuava');
    $s->setExpirationSeconds(5, 'g'); // now try to expire only 1 of the
                                      // keys in the namespace
    $s->g = 'guava';

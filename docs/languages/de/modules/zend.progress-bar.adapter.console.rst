@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.progressbar.adapter.console:
 
-Zend_ProgressBar_Adapter_Console
+Zend\ProgressBar_Adapter\Console
 ================================
 
-``Zend_ProgressBar_Adapter_Console`` ist ein Textbasierter Adater für Terminals. Er kann automatisch die
+``Zend\ProgressBar_Adapter\Console`` ist ein Textbasierter Adater für Terminals. Er kann automatisch die
 Terminalbreite erkennen unterstützt aber auch eigene Breiten. Kann kann definieren welche Elemente mit dem
 Fortschrittsbalken angezeigt werden und auch deren Reihenfolge ändern. Man kann auch den Stil des
 Fortschrittsbalkens selbst definieren.
@@ -23,10 +23,10 @@ Optionen sind:
 - *outputStream*: Ein anderer Ausgabe-Stream wenn man nicht auf STDOUT streamen will. Kann jeder andere Stream wie
   *php://stderr* oder ein Pfad zu einer Datei sein.
 
-- *width*: Entweder ein Integer oder die Konstante ``AUTO`` von ``Zend_Console_ProgressBar``.
+- *width*: Entweder ein Integer oder die Konstante ``AUTO`` von ``Zend\Console\ProgressBar``.
 
 - *elements*: Entweder ``NULL`` für Standard oder ein Array mit zumindest einer der folgenden Konstanten von
-  ``Zend_Console_ProgressBar`` als Wert:
+  ``Zend\Console\ProgressBar`` als Wert:
 
   - ``ELEMENT_PERCENT``: Der aktuelle Wert in Prozent.
 

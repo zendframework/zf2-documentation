@@ -4,15 +4,15 @@
 Float
 =====
 
-``Zend_Validate_Float`` permet de valider si une donnée contient une valeur flottante. Les entrées localisées
+``Zend\Validate\Float`` permet de valider si une donnée contient une valeur flottante. Les entrées localisées
 sont supportées.
 
 .. _zend.validator.set.float.options:
 
-Options supportées par Zend_Validate_Float
+Options supportées par Zend\Validate\Float
 ------------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_Float``:
+Les options suivantes sont supportées par ``Zend\Validate\Float``:
 
 - **locale**: Affecte la locale utilisée lors de la validation.
 
@@ -27,7 +27,7 @@ l'environnement:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Float();
+   $validator = new Zend\Validate\Float();
 
    $validator->isValid(1234.5);   // retourne true
    $validator->isValid('10a01'); // retourne false
@@ -44,13 +44,13 @@ Il peut être parfois nécessire de prendre en compte la locale pour valider une
 sont souvent écrits de manière différente en fonction de la locale/région. Par exemple en anglais on écrirait
 "1.5", mais en allemand "1,5" et dans d'autres langues le regroupement de chiffres pourrait être utilisé.
 
-``Zend_Validate_Float`` peut valider de telles notations. Il est alors limité à la locale utilisée. Voyez les
+``Zend\Validate\Float`` peut valider de telles notations. Il est alors limité à la locale utilisée. Voyez les
 exemples ci-après:
 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Float(array('locale' => 'de'));
+   $validator = new Zend\Validate\Float(array('locale' => 'de'));
 
    $validator->isValid(1234.5); // retourne true
    $validator->isValid("1 234,5"); // retourne false

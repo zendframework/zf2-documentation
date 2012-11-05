@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.flickr:
 
-Zend_Service_Flickr
+Zend\Service\Flickr
 ===================
 
 .. _zend.service.flickr.introduction:
@@ -9,7 +9,7 @@ Zend_Service_Flickr
 对Flickr搜索的介绍
 ------------
 
-*Zend_Service_Flickr* i是一组用来使用Flickr REST Web Service 的简单API. 为了可以使用Flickr web
+*Zend\Service\Flickr* i是一组用来使用Flickr REST Web Service 的简单API. 为了可以使用Flickr web
 services, 你必须拥有 API key. 获取key或需要Flickr REST Web Service更多详细信息, 请访问 `Flickr
 API Documentation`_.
 
@@ -23,7 +23,7 @@ API Documentation`_.
    <?php
    require_once 'Zend/Service/Flickr.php';
 
-   $flickr = new Zend_Service_Flickr('MY_API_KEY');
+   $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $results = $flickr->tagSearch("php");
 
@@ -40,11 +40,11 @@ API Documentation`_.
 查找 Flickr 用户
 ------------
 
-*Zend_Service_Flickr* 提供三种不同的方法来得到 Flickr的用户信息:
+*Zend\Service\Flickr* 提供三种不同的方法来得到 Flickr的用户信息:
 
 - *userSearch()*:
   接受一个以空格来作为分隔符的(由tag构成)查询字符串，用数组的方式(可选)来指定搜索选项,
-  返回一个 *Zend_Service_Flickr_ResultSet* 对象.
+  返回一个 *Zend\Service_Flickr\ResultSet* 对象.
 
 - *getIdByUsername()*: 以字符串的格式返回与给定用户名关联的用户 ID
 
@@ -60,7 +60,7 @@ API Documentation`_.
    <?php
    require_once 'Zend/Service/Flickr.php';
 
-   $flickr = new Zend_Service_Flickr('MY_API_KEY');
+   $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $results = $flickr->userSearch($userEmail);
 
@@ -73,7 +73,7 @@ API Documentation`_.
 获得 Flickr 图像详细资料
 ----------------
 
-*Zend_Service_Flickr*\
+*Zend\Service\Flickr*\
 使我们可以使用给定的图像id来非常方便快捷的得到图像的详细信息,使用
 *getImageDetails()* 方法, 如下面的例子:
 
@@ -87,7 +87,7 @@ API Documentation`_.
    <?php
    require_once 'Zend/Service/Flickr.php';
 
-   $flickr = new Zend_Service_Flickr('MY_API_KEY');
+   $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $image = $flickr->getImageDetails($imageId);
 
@@ -96,22 +96,22 @@ API Documentation`_.
    ?>
 .. _zend.service.flickr.classes:
 
-Zend_Service_Flickr 类
+Zend\Service\Flickr 类
 ---------------------
 
 下面列出的是将由 *tagSearch()* 和 *userSearch()*\ 返回的一些类:
 
-   - :ref:`Zend_Service_Flickr_ResultSet <zend.service.flickr.classes.resultset>`
+   - :ref:`Zend\Service_Flickr\ResultSet <zend.service.flickr.classes.resultset>`
 
-   - :ref:`Zend_Service_Flickr_Result <zend.service.flickr.classes.result>`
+   - :ref:`Zend\Service_Flickr\Result <zend.service.flickr.classes.result>`
 
-   - :ref:`Zend_Service_Flickr_Image <zend.service.flickr.classes.image>`
+   - :ref:`Zend\Service_Flickr\Image <zend.service.flickr.classes.image>`
 
 
 
 .. _zend.service.flickr.classes.resultset:
 
-Zend_Service_Flickr_ResultSet
+Zend\Service_Flickr\ResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 代表一个Flickr search的结果集.
@@ -126,7 +126,7 @@ Zend_Service_Flickr_ResultSet
 属性
 ^^
 
-.. table:: Zend_Service_Flickr_ResultSet 属性
+.. table:: Zend\Service_Flickr\ResultSet 属性
 
    +---------------------+---+---------------+
    |名称                   |类别 |描述             |
@@ -140,7 +140,7 @@ Zend_Service_Flickr_ResultSet
 
 .. _zend.service.flickr.classes.resultset.totalResults:
 
-Zend_Service_Flickr_ResultSet::totalResults()
+Zend\Service_Flickr\ResultSet::totalResults()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 int:``totalResults()``
@@ -152,7 +152,7 @@ int:``totalResults()``
 
 .. _zend.service.flickr.classes.result:
 
-Zend_Service_Flickr_Result
+Zend\Service_Flickr\Result
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Flickr query中的一个单一图片结果
@@ -162,7 +162,7 @@ Flickr query中的一个单一图片结果
 属性
 ^^
 
-.. table:: Zend_Service_Flickr_Result 属性
+.. table:: Zend\Service_Flickr\Result 属性
 
    +-----------+-------------------------+-------------------+
    |名称         |类别                       |描述                 |
@@ -193,24 +193,24 @@ Flickr query中的一个单一图片结果
    +-----------+-------------------------+-------------------+
    |icon_server|string                   |用来装配图标 URLs的服务器    |
    +-----------+-------------------------+-------------------+
-   |Square     |Zend_Service_Flickr_Image|一个 75x75像素大小的预览图   |
+   |Square     |Zend\Service_Flickr\Image|一个 75x75像素大小的预览图   |
    +-----------+-------------------------+-------------------+
-   |Thumbnail  |Zend_Service_Flickr_Image|一个100像素大小的预览图      |
+   |Thumbnail  |Zend\Service_Flickr\Image|一个100像素大小的预览图      |
    +-----------+-------------------------+-------------------+
-   |Small      |Zend_Service_Flickr_Image|一个240像素大小的图片       |
+   |Small      |Zend\Service_Flickr\Image|一个240像素大小的图片       |
    +-----------+-------------------------+-------------------+
-   |Medium     |Zend_Service_Flickr_Image|一个500像素大小的图片       |
+   |Medium     |Zend\Service_Flickr\Image|一个500像素大小的图片       |
    +-----------+-------------------------+-------------------+
-   |Large      |Zend_Service_Flickr_Image|一个640像素大小的图片       |
+   |Large      |Zend\Service_Flickr\Image|一个640像素大小的图片       |
    +-----------+-------------------------+-------------------+
-   |Original   |Zend_Service_Flickr_Image|原始图片               |
+   |Original   |Zend\Service_Flickr\Image|原始图片               |
    +-----------+-------------------------+-------------------+
 
 :ref:`Back to Class List <zend.service.flickr.classes>`
 
 .. _zend.service.flickr.classes.image:
 
-Zend_Service_Flickr_Image
+Zend\Service_Flickr\Image
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 代表由Flickr搜索返回的图片
@@ -220,7 +220,7 @@ Zend_Service_Flickr_Image
 属性
 ^^
 
-.. table:: Zend_Service_Flickr_Image 属性
+.. table:: Zend\Service_Flickr\Image 属性
 
    +--------+------+---------------------------+
    |名称      |类别    |描述                         |

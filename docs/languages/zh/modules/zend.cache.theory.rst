@@ -7,9 +7,9 @@
 在Zend_Cache中有三个关键概念.一是用于标识缓存纪录的唯一标识符(一个字符串).二是
 *'lifeTime'*\ 指令,正如例子中所见,
 它定义了缓存纪录的生命期(超过该值,缓存纪录被销毁).第三个关键概念是条件执行,你的部分代码可用被跳过,以加速性能.
-前端函数(例如. *Zend_Cache_Core::get()*)在缓存不命中时返回false,这使用户能处理 *if(){ ... }*
+前端函数(例如. *Zend\Cache\Core::get()*)在缓存不命中时返回false,这使用户能处理 *if(){ ... }*
 语句中的条件,包含代码中他们所要缓存(或者跳过)的部分,最后是否必须保存这些你曾经生成的块(例如:
-*Zend_Cache_Core::save()*).
+*Zend\Cache\Core::save()*).
 
 .. note::
 
@@ -44,7 +44,7 @@ Zend_Cache 工厂方法
    $backendOptions = array([...]);
 
    // 创建实例(当然,最后两个参数是可选的)
-   $cache = Zend_Cache::factory($frontendName, $backendName, $frontendOptions, $backendOptions);
+   $cache = Zend\Cache\Cache::factory($frontendName, $backendName, $frontendOptions, $backendOptions);
 
 
 
@@ -53,7 +53,7 @@ Zend_Cache 工厂方法
 
 .. note::
 
-   必须使用 *Zend_Cache::factory()*\ 来得到前端实例.你自己 直接实例化的 前端或者后端
+   必须使用 *Zend\Cache\Cache::factory()*\ 来得到前端实例.你自己 直接实例化的 前端或者后端
    不能按照期望工作.
 
 .. _zend.cache.tags:
@@ -95,10 +95,10 @@ Zend_Cache 工厂方法
    :linenos:
 
    // 清除所有缓存纪录
-   $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_ALL);
 
    // 仅清除过期的
-   $cache->clean(Zend_Cache::CLEANING_MODE_OLD);
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_OLD);
 
 
 
@@ -107,7 +107,7 @@ Zend_Cache 工厂方法
 .. code-block:: php
    :linenos:
 
-   $cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, array('tagA', 'tagC'));
+   $cache->clean(Zend\Cache\Cache::CLEANING_MODE_MATCHING_TAG, array('tagA', 'tagC'));
 
 
 可用的清除模式有: *CLEANING_MODE_ALL*, *CLEANING_MODE_OLD*, *CLEANING_MODE_MATCHING_TAG* 和

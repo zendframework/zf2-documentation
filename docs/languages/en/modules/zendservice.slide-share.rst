@@ -263,7 +263,7 @@ ZendService\SlideShare Caching policies
 
 By default, ``ZendService\SlideShare`` will cache any request against the web service automatically to the
 filesystem (default path ``/tmp``) for 12 hours. If you desire to change this behavior, you must provide your own
-:ref:`Zend_Cache <zend.cache>` object using the ``setCacheObject()`` method as shown:
+:ref:`Zend\Cache\Cache <zend.cache>` object using the ``setCacheObject()`` method as shown:
 
 .. code-block:: php
    :linenos:
@@ -274,7 +274,7 @@ filesystem (default path ``/tmp``) for 12 hours. If you desire to change this be
    $backendOptions  = array(
                            'cache_dir' => '/webtmp/');
 
-   $cache = Zend_Cache::factory('Core',
+   $cache = Zend\Cache\Cache::factory('Core',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);
@@ -293,14 +293,14 @@ Changing the behavior of the HTTP Client
 ----------------------------------------
 
 If for whatever reason you would like to change the behavior of the *HTTP* client when making the web service
-request, you can do so by creating your own instance of the ``Zend_Http_Client`` object (see :ref:`Zend_Http
+request, you can do so by creating your own instance of the ``Zend\Http\Client`` object (see :ref:`Zend\Http
 <zend.http>`). This is useful for instance when it is desirable to set the timeout for the connection to something
 other then default as shown:
 
 .. code-block:: php
    :linenos:
 
-   $client = new Zend_Http_Client();
+   $client = new Zend\Http\Client();
    $client->setConfig(array('timeout' => 5));
 
    $ss = new ZendService\SlideShare('APIKEY',

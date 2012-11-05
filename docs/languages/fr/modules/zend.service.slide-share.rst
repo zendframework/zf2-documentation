@@ -1,31 +1,31 @@
 .. EN-Revision: none
 .. _zend.service.slideshare:
 
-Zend_Service_SlideShare
+Zend\Service\SlideShare
 =======================
 
-Le composant ``Zend_Service_SlideShare`` est utilisé dans l'interaction avec les services Web de
+Le composant ``Zend\Service\SlideShare`` est utilisé dans l'interaction avec les services Web de
 `slideshare.net`_, plate-forme servant d'hébergement de diaporamas. Grâce à ce composant, vous pouvez intégrer
 des diaporamas de Slideshare, dans votre propre site Web, ou même uploader des nouveaux diaporamas sur votre
 compte Slideshare, depuis votre site Web.
 
 .. _zend.service.slideshare.basicusage:
 
-Démarrage avec Zend_Service_SlideShare
+Démarrage avec Zend\Service\SlideShare
 --------------------------------------
 
-Pour utiliser ``Zend_Service_SlideShare``, vous devez créer au préalable un compte sur slideshare.net (plus
+Pour utiliser ``Zend\Service\SlideShare``, vous devez créer au préalable un compte sur slideshare.net (plus
 d'informations à ce sujet `ici`_), afin de recevoir votre clé d'API et votre login / mot de passe, indispensables
 pour utiliser le service Web.
 
-Une fois votre compte créé, vous pouvez utiliser ``Zend_Service_SlideShare`` en créant une instance de
-``Zend_Service_SlideShare`` en lui passant vos identifiants :
+Une fois votre compte créé, vous pouvez utiliser ``Zend\Service\SlideShare`` en créant une instance de
+``Zend\Service\SlideShare`` en lui passant vos identifiants :
 
 .. code-block:: php
    :linenos:
 
    // Crée une instance du composant
-   $ss = new Zend_Service_SlideShare('APIKEY',
+   $ss = new Zend\Service\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -35,14 +35,14 @@ Une fois votre compte créé, vous pouvez utiliser ``Zend_Service_SlideShare`` e
 L'objet SlideShow
 -----------------
 
-Chaque diaporama issu de ``Zend_Service_SlideShare`` est matérialisé par un objet
-``Zend_Service_SlideShare_SlideShow`` (que ce soit pour uploader ou récupérer des diaporamas). Pour information,
+Chaque diaporama issu de ``Zend\Service\SlideShare`` est matérialisé par un objet
+``Zend\Service_SlideShare\SlideShow`` (que ce soit pour uploader ou récupérer des diaporamas). Pour information,
 voici un pseudo code de cette classe :
 
 .. code-block:: php
    :linenos:
 
-   class Zend_Service_SlideShare_SlideShow {
+   class Zend\Service_SlideShare\SlideShow {
 
        /**
         * Récupère l'emplacement du diaporama
@@ -184,7 +184,7 @@ voici un pseudo code de cette classe :
    La classe présentée ci dessus ne montre que les méthodes qui sont sensées être utilisées par les
    développeurs. D'autres méthodes internes au composant existent.
 
-Lors de l'utilisation de ``Zend_Service_SlideShare``, la classe de données Slideshow sera souvent utilisée pour
+Lors de l'utilisation de ``Zend\Service\SlideShare``, la classe de données Slideshow sera souvent utilisée pour
 parcourir, ajouter, ou modifier des diaporamas.
 
 .. _zend.service.slideshare.getslideshow:
@@ -192,16 +192,16 @@ parcourir, ajouter, ou modifier des diaporamas.
 Récupérer un diaporama simplement
 ---------------------------------
 
-La manière la plus simple d'utiliser ``Zend_Service_SlideShare`` est la récupération d'un diaporama depuis son
+La manière la plus simple d'utiliser ``Zend\Service\SlideShare`` est la récupération d'un diaporama depuis son
 ID, fournit par le service slideshare.net, ceci est effectué via la méthode ``getSlideShow()`` de l'objet
-``Zend_Service_SlideShare``. Le résultat de cette méthode est un objet de type
-``Zend_Service_SlideShare_SlideShow``.
+``Zend\Service\SlideShare``. Le résultat de cette méthode est un objet de type
+``Zend\Service_SlideShare\SlideShow``.
 
 .. code-block:: php
    :linenos:
 
    // Création d'une instance du composant
-   $ss = new Zend_Service_SlideShare('APIKEY',
+   $ss = new Zend\Service\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -237,7 +237,7 @@ Voici un exemple utilisant les méthodes décrites ci-dessus :
    :linenos:
 
    // Crée une nouvelle instance du composant
-   $ss = new Zend_Service_SlideShare('APIKEY',
+   $ss = new Zend\Service\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -257,10 +257,10 @@ Voici un exemple utilisant les méthodes décrites ci-dessus :
 
 .. _zend.service.slideshare.caching:
 
-Politique de cache de Zend_Service_SlideShare
+Politique de cache de Zend\Service\SlideShare
 ---------------------------------------------
 
-Par défaut, ``Zend_Service_SlideShare`` va mettre en cache toute requête concernant le service Web, dans le
+Par défaut, ``Zend\Service\SlideShare`` va mettre en cache toute requête concernant le service Web, dans le
 système de fichier (par défaut : */tmp*), ceci pour une durée de 12 heures. Si vous voulez changer ce
 comportement, vous devez passer votre propre objet :ref:` <zend.cache>` en utilisant la méthode *setCacheObject*:
 
@@ -273,12 +273,12 @@ comportement, vous devez passer votre propre objet :ref:` <zend.cache>` en utili
    $backendOptions  = array(
                            'cache_dir' => '/webtmp/');
 
-   $cache = Zend_Cache::factory('Core',
+   $cache = Zend\Cache\Cache::factory('Core',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);
 
-   $ss = new Zend_Service_SlideShare('APIKEY',
+   $ss = new Zend\Service\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -292,16 +292,16 @@ Changer le comportement du client HTTP
 --------------------------------------
 
 Si pour une raison quelconque vous souhaitez changer le comportement de l'objet client *HTTP* utilisé pour
-interroger le service Web, vous pouvez créer votre propre instance de ``Zend_Http_Client`` (voyez :ref:`
+interroger le service Web, vous pouvez créer votre propre instance de ``Zend\Http\Client`` (voyez :ref:`
 <zend.http>`). Ceci peut être utile par exemple pour spécifier un timeout ou toute autre chose :
 
 .. code-block:: php
    :linenos:
 
-   $client = new Zend_Http_Client();
+   $client = new Zend\Http\Client();
    $client->setConfig(array('timeout' => 5));
 
-   $ss = new Zend_Service_SlideShare('APIKEY',
+   $ss = new Zend\Service\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');

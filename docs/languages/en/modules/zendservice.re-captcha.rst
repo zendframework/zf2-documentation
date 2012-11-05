@@ -74,7 +74,7 @@ Once you have the result, test against it to see if it is valid. The result is a
        // Failed validation
    }
 
-It is even simpler to use :ref:`the reCAPTCHA <zend.captcha.adapters.recaptcha>` ``Zend_Captcha`` adapter, or to
+It is even simpler to use :ref:`the reCAPTCHA <zend.captcha.adapters.recaptcha>` ``Zend\Captcha`` adapter, or to
 use that adapter as a backend for the :ref:`CAPTCHA form element <zend.form.standardElements.captcha>`. In each
 case, the details of rendering and validating the reCAPTCHA are automated for you.
 
@@ -138,7 +138,7 @@ the following table:
 
 
 The configuration options can be set by sending them as the fourth argument to the constructor or by calling
-``setOptions($options)``, which takes an associative array or an instance of :ref:`Zend_Config <zend.config>`.
+``setOptions($options)``, which takes an associative array or an instance of :ref:`Zend\Config\Config <zend.config>`.
 
 .. _zendservice.recaptcha.mailhide.example-2:
 

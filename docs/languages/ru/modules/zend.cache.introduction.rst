@@ -13,15 +13,15 @@
 можно потом легко удалять определенные типы записей (например:
 "удалить все записи кэша, помеченные данным тегом").
 
-Ядро модуля (``Zend_Cache_Core``) является гибким, универсальным и
+Ядро модуля (``Zend\Cache\Core``) является гибким, универсальным и
 конфигурируемым. Кроме этого, для особых нужд есть фронтэнды,
-расширяющие ``Zend_Cache_Core``: **Output**, **File**, **Function** и **Class**.
+расширяющие ``Zend\Cache\Core``: **Output**, **File**, **Function** и **Class**.
 
 .. _zend.cache.introduction.example-1:
 
-.. rubric:: Получение фронтэнда с помощью Zend_Cache::factory()
+.. rubric:: Получение фронтэнда с помощью Zend\Cache\Cache::factory()
 
-``Zend_Cache::factory()`` инстанцирует нужные объекты и связывает их. В
+``Zend\Cache\Cache::factory()`` инстанцирует нужные объекты и связывает их. В
 этом первом примере мы будем использовать фронтэнд **Core** с
 бэкэндом **File**.
 
@@ -37,8 +37,8 @@
        'cache_dir' => './tmp/' // директория, в которой размещаются файлы кэша
    );
 
-   // получение объекта Zend_Cache_Core
-   $cache = Zend_Cache::factory('Core',
+   // получение объекта Zend\Cache\Core
+   $cache = Zend\Cache\Cache::factory('Core',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);
@@ -74,7 +74,7 @@
        // промах кэша
        // установка соединения с базой данных
 
-       $db = Zend_Db::factory( [...] );
+       $db = Zend\Db\Db::factory( [...] );
 
        $result = $db->fetchAll('SELECT * FROM huge_table');
 
@@ -113,7 +113,7 @@
 
    $backendOptions = array('cache_dir' => './tmp/');
 
-   $cache = Zend_Cache::factory('Output',
+   $cache = Zend\Cache\Cache::factory('Output',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);

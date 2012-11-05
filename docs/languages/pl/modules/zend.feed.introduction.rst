@@ -10,8 +10,8 @@ oraz atrybutów samych wpisów. *Zend_Feed* daje także obszerne wsparcie w mody
 wpisów w ten sam naturalny sposób i umożliwia zapisanie rezultatów jako XML. W przyszłości klasa ma zapewnić
 obsługę protokołu publikowania Atom (Atom Publishing Protocol).
 
-Programowo *Zend_Feed* składa się z bazowej klasy *Zend_Feed*, abstrakcyjnych klas *Zend_Feed_Abstract* oraz
-*Zend_Feed_Entry_Abstract* reprezentujących kanały informacyjne i ich wpisy, specyficznych implementacji
+Programowo *Zend_Feed* składa się z bazowej klasy *Zend_Feed*, abstrakcyjnych klas *Zend\Feed\Abstract* oraz
+*Zend\Feed_Entry\Abstract* reprezentujących kanały informacyjne i ich wpisy, specyficznych implementacji
 kanałów i wpisów dla RSS i Atom, oraz z pomocników odpowiedzialnych za naturalną składnię.
 
 W przykładzie poniżej pokazujemy prosty przykład odbierania danych RSS i zapisywania potrzebnych części danych
@@ -36,8 +36,8 @@ danych itp.
    // Ściągamy najnowsze nagłówki ze Slashdot
    try {
        $slashdotRss =
-           Zend_Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
-   } catch (Zend_Feed_Exception $e) {
+           Zend\Feed\Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
+   } catch (Zend\Feed\Exception $e) {
        // importowanie danych nie udało się
        echo "Exception caught importing feed: {$e->getMessage()}\n";
        exit;

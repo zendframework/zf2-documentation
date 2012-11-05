@@ -9,16 +9,16 @@
 文本分析
 ----
 
-*Zend_Search_Lucene_Analysis_Analyzer* 类被索引建立程序用于记号化文档的文本字段。
+*Zend\Search\Lucene\Analysis\Analyzer* 类被索引建立程序用于记号化文档的文本字段。
 
-*Zend_Search_Lucene_Analysis_Analyzer::getDefault()* 方法和 *Zend_Search_Lucene_Analysis_Analyzer::setDefault()*
+*Zend\Search\Lucene\Analysis\Analyzer::getDefault()* 方法和 *Zend\Search\Lucene\Analysis\Analyzer::setDefault()*
 方法用于获取和设置默认的分析程序。
 
 因此你可以使用你自己的文本分析程序或者从预设的分析程序中选择一个：
-*Zend_Search_Lucene_Analysis_Analyzer_Common_Text* 和
-*Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive*\
+*Zend\Search\Lucene\Analysis\Analyzer\Common\Text* 和
+*Zend\Search\Lucene\Analysis\Analyzer\Common\Text\CaseInsensitive*\
 (缺省的)。两者都把记号解释为一个字母序列。
-*Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive*\ 将记号转化为小写。
+*Zend\Search\Lucene\Analysis\Analyzer\Common\Text\CaseInsensitive*\ 将记号转化为小写。
 
 使用下面代码更换分析程序：
 
@@ -27,13 +27,13 @@
 
    <?php
 
-   Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-       new Zend_Search_Lucene_Analysis_Analyzer_Common_Text());
+   Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+       new Zend\Search\Lucene\Analysis\Analyzer\Common\Text());
    ...
    $index->addDocument($doc);
 
    ?>
-*Zend_Search_Lucene_Analysis_Analyzer_Common*\
+*Zend\Search\Lucene\Analysis\Analyzer\Common*\
 类设计来作为所有自定义分析程序的祖先。用户可以只定义 *tokenize()*\
 方法，它将字符串输入数据变成记号数组并返回。
 
@@ -51,14 +51,14 @@
       /** Here is a custome text analyser, which treats words with digits as one term */
 
 
-      /** Zend_Search_Lucene_Analysis_Analyzer_Common */
+      /** Zend\Search\Lucene\Analysis\Analyzer\Common */
       require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common.php';
 
-      class My_Analyzer extends Zend_Search_Lucene_Analysis_Analyzer_Common
+      class My_Analyzer extends Zend\Search\Lucene\Analysis\Analyzer\Common
       {
           /**
            * Tokenize text to a terms
-           * Returns array of Zend_Search_Lucene_Analysis_Token objects
+           * Returns array of Zend\Search\Lucene\Analysis\Token objects
            *
            * @param string $data
            * @return array
@@ -86,7 +86,7 @@
                       break;
                   }
 
-                  $token = new Zend_Search_Lucene_Analysis_Token(substr($data,
+                  $token = new Zend\Search\Lucene\Analysis\Token(substr($data,
                                                    $termStartPosition,
                                                    $position-$termStartPosition),
                                             $termStartPosition,
@@ -98,7 +98,7 @@
           }
       }
 
-      Zend_Search_Lucene_Analysis_Analyzer::setDefault(
+      Zend\Search\Lucene\Analysis\Analyzer::setDefault(
           new My_Analyzer());
 
       ?>
@@ -114,10 +114,10 @@
 *score(q,d) = sum( tf(t in d) * idf(t) * getBoost(t.field in d) * lengthNorm(t.field in d) ) * coord(q,d) *
 queryNorm(q)*
 
-tf(t in d) -*Zend_Search_Lucene_Search_Similarity::tf($freq)*-
+tf(t in d) -*Zend\Search\Lucene\Search\Similarity::tf($freq)*-
 基于搜索项或者短语在文档中出现次数的分值因子。
 
-idf(t) -*Zend_Search_Lucene_Search_SimilaritySimilarity::tf($term, $reader)*-
+idf(t) -*Zend\Search\Lucene\Search\SimilaritySimilarity::tf($term, $reader)*-
 针对特定索引的简单搜索项的分值因子。
 
 getBoost(t.field in d) - 针对搜索项字段的增益因子。
@@ -128,7 +128,7 @@ lengthNorm($term) -
 匹配较长的字段精度较低，所以这个实现方法通常在 numTikuns
 较大时返回较小的分值，而在 numTokens 较小时返回较大的分值。
 
-coord(q,d) -*Zend_Search_Lucene_Search_Similarity::coord($overlap, $maxOverlap)*-
+coord(q,d) -*Zend\Search\Lucene\Search\Similarity::coord($overlap, $maxOverlap)*-
 基于文档包含的所有查询搜索项碎片的分值因子。
 
 出现大部分的查询搜索项表示更好的匹配查询，所以这个实现方法通常当这些参数的比率较大时返回较大的分值，而这些比率较小时返回较小的分值。
@@ -139,15 +139,15 @@ queryNorm(q) -
 这对于定级没有帮助，而仅仅是尝试为不同的查询建立可比较的评分。
 
 你可以通过自定义 Similatity 类来定制评分算法。可以按照下面的定义来扩展
-Zend_Search_Lucene_Search_Similarity 类，然后使用
-*Zend_Search_Lucene_Search_Similarity::setDefault($similarity);* 方法来将其设置为缺省的评分算法。
+Zend\Search\Lucene\Search\Similarity 类，然后使用
+*Zend\Search\Lucene\Search\Similarity::setDefault($similarity);* 方法来将其设置为缺省的评分算法。
 
 .. code-block:: php
    :linenos:
 
    <?php
 
-   class MySimilarity extends Zend_Search_Lucene_Search_Similarity {
+   class MySimilarity extends Zend\Search\Lucene\Search\Similarity {
        public function lengthNorm($fieldName, $numTerms) {
            return 1.0/sqrt($numTerms);
        }
@@ -178,7 +178,7 @@ Zend_Search_Lucene_Search_Similarity 类，然后使用
    }
 
    $mySimilarity = new MySimilarity();
-   Zend_Search_Lucene_Search_Similarity::setDefault($mySimilarity);
+   Zend\Search\Lucene\Search\Similarity::setDefault($mySimilarity);
 
    ?>
 .. _zend.search.lucene.extending.storage:
@@ -186,26 +186,26 @@ Zend_Search_Lucene_Search_Similarity 类，然后使用
 存储容器
 ----
 
-抽象类 Zend_Search_Lucene_Storage_Directory 定义了目录功能。
+抽象类 Zend\Search\Lucene\Storage\Directory 定义了目录功能。
 
-Zend_Search_Lucene 构造方法使用字符串或者 Zend_Search_Lucene_Storage_Directory 对象作为输入。
+Zend\Search\Lucene 构造方法使用字符串或者 Zend\Search\Lucene\Storage\Directory 对象作为输入。
 
-Zend_Search_Lucene_Storage_Directory_Filesystem 类实现了针对文件系统的目录功能。
+Zend\Search\Lucene\Storage\Directory\Filesystem 类实现了针对文件系统的目录功能。
 
-如果字符串被用于 Zend_Search_Lucene 构造方法的输入，那么索引阅读程序(Zend_Search_Lucene
-对象)认为它是一个文件系统路径并自行实例化 Zend_Search_Lucene_Storage_Directory_Filesystem
+如果字符串被用于 Zend\Search\Lucene 构造方法的输入，那么索引阅读程序(Zend\Search\Lucene
+对象)认为它是一个文件系统路径并自行实例化 Zend\Search\Lucene\Storage\Directory\Filesystem
 对象。
 
-你可以通过扩展 Zend_Search_Lucene_Storage_Directory 类定义自己的目录实现。
+你可以通过扩展 Zend\Search\Lucene\Storage\Directory 类定义自己的目录实现。
 
-Zend_Search_Lucene_Storage_Directory 的方法：
+Zend\Search\Lucene\Storage\Directory 的方法：
 
    .. code-block:: php
       :linenos:
 
       <?php
 
-      abstract class Zend_Search_Lucene_Storage_Directory {
+      abstract class Zend\Search\Lucene\Storage\Directory {
       /**
        * Closes the store.
        *
@@ -279,10 +279,10 @@ Zend_Search_Lucene_Storage_Directory 的方法：
 
 
       /**
-       * Returns a Zend_Search_Lucene_Storage_File object for a given $filename in the directory.
+       * Returns a Zend\Search\Lucene\Storage\File object for a given $filename in the directory.
        *
        * @param string $filename
-       * @return Zend_Search_Lucene_Storage_File
+       * @return Zend\Search\Lucene\Storage\File
        */
       abstract function getFileObject($filename);
 
@@ -291,21 +291,21 @@ Zend_Search_Lucene_Storage_Directory 的方法：
       ?>
 
 
-Zend_Search_Lucene_Storage_Directory 类的 *getFileObject($filename)* 方法返回 Zend_Search_Lucene_Storage_File
+Zend\Search\Lucene\Storage\Directory 类的 *getFileObject($filename)* 方法返回 Zend\Search\Lucene\Storage\File
 对象。
 
-Zend_Search_Lucene_Storage_File 抽象类实现了文件抽象和原始的索引文件读取。
+Zend\Search\Lucene\Storage\File 抽象类实现了文件抽象和原始的索引文件读取。
 
-你还必须扩展 Zend_Search_Lucene_Storage_File 类以建立自己的目录实现。
+你还必须扩展 Zend\Search\Lucene\Storage\File 类以建立自己的目录实现。
 
-Zend_Search_Lucene_Storage_File 类中只有两个方法是你必须重载的：
+Zend\Search\Lucene\Storage\File 类中只有两个方法是你必须重载的：
 
    .. code-block:: php
       :linenos:
 
       <?php
 
-      class MyFile extends Zend_Search_Lucene_Storage_File {
+      class MyFile extends Zend\Search\Lucene\Storage\File {
           /**
            * Sets the file position indicator and advances the file pointer.
            * The new position, measured in bytes from the beginning of the file,

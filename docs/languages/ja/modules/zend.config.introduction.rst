@@ -10,15 +10,15 @@
 アプリケーションに読み込めるようになっています。
 設定データは、階層構造のデータ保存をサポートしている
 さまざまな媒体から読み込むことができます。 現時点で ``Zend_Config``
-が提供している設定データアダプタは :ref:`Zend_Config_Ini <zend.config.adapters.ini>` と
-:ref:`Zend_Config_Xml <zend.config.adapters.xml>`
+が提供している設定データアダプタは :ref:`Zend\Config\Ini <zend.config.adapters.ini>` と
+:ref:`Zend\Config\Xml <zend.config.adapters.xml>`
 の二種類で、テキストファイルに格納された設定データを使用できるようになっています。.
 
 .. _zend.config.introduction.example.using:
 
 .. rubric:: Zend_Config の使用例
 
-通常は、 :ref:`Zend_Config_Ini <zend.config.adapters.ini>` あるいは :ref:`Zend_Config_Xml
+通常は、 :ref:`Zend\Config\Ini <zend.config.adapters.ini>` あるいは :ref:`Zend\Config\Xml
 <zend.config.adapters.xml>` のようなアダプタクラスを使用することが想定されています。
 しかし、もし設定データが *PHP* の配列として存在するのなら、 単にそれを
 ``Zend_Config`` のコンストラクタに渡すだけで、
@@ -42,18 +42,18 @@
    );
 
    // 設定データに対するオブジェクト指向のラッパーを作成します
-   $config = new Zend_Config($configArray);
+   $config = new Zend\Config\Config($configArray);
 
    // 設定データを表示します (結果は 'www.example.com' となります)
    echo $config->webhost;
 
    // 設定データを使用してデータベースに接続します
-   $db = Zend_Db::factory($config->database->adapter,
+   $db = Zend\Db\Db::factory($config->database->adapter,
                           $config->database->params->toArray());
 
    // もうひとつの方法: 単に Zend_Config オブジェクトを渡します
    // Zend_Db のファクトリは、その処理方法を知っています
-   $db = Zend_Db::factory($config->database);
+   $db = Zend\Db\Db::factory($config->database);
 
 上の例で説明したように、 ``Zend_Config`` を使用すると、
 コンストラクタに渡されたデータについて、
@@ -97,7 +97,7 @@
    :linenos:
 
    // 設定を読み込みます
-   $config = new Zend_Config(require 'config.php');
+   $config = new Zend\Config\Config(require 'config.php');
 
    // 設定データを出力します (この結果は 'www.example.com' です)
    echo $config->webhost;

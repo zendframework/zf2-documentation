@@ -17,7 +17,7 @@ sturen met de PHP `mail()`_ functie doe je het volgende:
 
    <?php
    require_once 'Zend/Mail.php';
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setBodyText('Dit is de inhoud van de mail.');
    $mail->setFrom('somebody@example.com', 'Een afzender');
    $mail->addTo('somebody_else@example.com', 'Een geadresseerde');

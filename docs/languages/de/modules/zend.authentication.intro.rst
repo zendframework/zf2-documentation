@@ -19,7 +19,7 @@ Framework, sollte :ref:`Zend\Permissions\Acl <zend.permissions.acl>` angeschaut 
    Die ``Zend_Auth`` Klasse implementiert das Singleton Pattern - nur eine Instanz der Klasse ist vorhanden - durch
    Ihre statische ``getInstance()`` Methode. Das bedeutet das die Verwendung des **new** Operators und des
    **clone** Keywords mit der ``Zend_Auth`` Klasse nicht funktioniert; stattdessen muß
-   ``Zend_Auth::getInstance()`` verwendet werden.
+   ``Zend\Auth\Auth::getInstance()`` verwendet werden.
 
 .. _zend.authentication.introduction.adapters:
 
@@ -33,7 +33,7 @@ unterschiedliche Optionen und Verhaltensweisen, aber einige grundlegende Dinge s
 Identitäten), das Abfragen am Authentifizierungsservice durchgeführt werden, und das Ergebnisse zurückgegeben
 werden, sind für ``Zend_Auth`` Adapter üblich.
 
-Jede ``Zend_Auth`` Adapter Klasse implementiert ``Zend_Auth_Adapter_Interface``. Dieses Interface definiert eine
+Jede ``Zend_Auth`` Adapter Klasse implementiert ``Zend\Auth_Adapter\Interface``. Dieses Interface definiert eine
 Methode, ``authenticate()``, die eine Adapter Klasse implementieren muß um eine Authentifizierungsanfrage
 auszuführen. Jede Adapter Klasse muß vorher vorbereitet sein bevor ``authenticate()`` aufgerufen wird. Diese
 Vorbereitung des Adapters enthält das Setzen der Zeugnisse (z.B. Benutzername und Passwort) und die Definition von
@@ -47,7 +47,7 @@ der Kürze halber ausgelassen:
 .. code-block:: php
    :linenos:
 
-   class MyAuthAdapter implements Zend_Auth_Adapter_Interface
+   class MyAuthAdapter implements Zend\Auth_Adapter\Interface
    {
        /**
         * Setzt Benutzername und Passwort für die Authentifizierung
@@ -62,9 +62,9 @@ der Kürze halber ausgelassen:
        /**
         * Führt einen Authentifizierungs-Versuch durch
         *
-        * @throws Zend_Auth_Adapter_Exception Wenn die Authentifizierung nicht
+        * @throws Zend\Auth_Adapter\Exception Wenn die Authentifizierung nicht
         *                                     durchgeführt wurde
-        * @return Zend_Auth_Result
+        * @return Zend\Auth\Result
         */
        public function authenticate()
        {
@@ -72,25 +72,25 @@ der Kürze halber ausgelassen:
        }
    }
 
-Wie im Docblock angegeben, muß ``authenticate()`` eine Instanz von ``Zend_Auth_Result`` (oder einer von
-``Zend_Auth_Result`` abgeleiteten Klassen) zurückgeben. Wenn aus bestimmten Gründen eine Durchführung einer
+Wie im Docblock angegeben, muß ``authenticate()`` eine Instanz von ``Zend\Auth\Result`` (oder einer von
+``Zend\Auth\Result`` abgeleiteten Klassen) zurückgeben. Wenn aus bestimmten Gründen eine Durchführung einer
 Authentifizierungs-Anfrage nicht möglich ist, sollte ``authenticate()`` eine Ausnahme werfen die von
-``Zend_Auth_Adapter_Exception`` abgeleitet ist.
+``Zend\Auth_Adapter\Exception`` abgeleitet ist.
 
 .. _zend.authentication.introduction.results:
 
 Ergebnisse
 ----------
 
-``Zend_Auth`` Adapter geben eine Instanz von ``Zend_Auth_Result`` mit Hilfe von ``authenticate()`` zurück um die
-Ergebnisse des Authentifizierungs-Versuches darzustellen. Adapter veröffentlichen das ``Zend_Auth_Result`` Objekt
+``Zend_Auth`` Adapter geben eine Instanz von ``Zend\Auth\Result`` mit Hilfe von ``authenticate()`` zurück um die
+Ergebnisse des Authentifizierungs-Versuches darzustellen. Adapter veröffentlichen das ``Zend\Auth\Result`` Objekt
 bei der Erstellung, so das die folgenden vier Methoden ein grundsätzliches Set von Benutzerbezogenen Operationen
 bieten die für die Ergebnisse von ``Zend_Auth`` Adapter üblich sind:
 
 - ``isValid()``- Gibt ``TRUE`` zurück wenn und nur wenn das Ergebnis einen erfolgreichen
   Authentifizierungs-Versuch repräsentiert
 
-- ``getCode()``- Gibt einen konstanten ``Zend_Auth_Result`` Identifizierer damit der Typ des
+- ``getCode()``- Gibt einen konstanten ``Zend\Auth\Result`` Identifizierer damit der Typ des
   Authentifizierungs-Fehlers, oder des Erfolgs der stattgefunden hat, ermittelt werden kann. Das kann in
   Situationen verwendet werden in denen der Entwickler die verschiedenen Ergebnistypen der Authentifizierung
   unterschiedlich behandeln will. Das erlaubt es dem Entwickler zum Beispiel detailierte Statistiken über die
@@ -113,12 +113,12 @@ sind vorhanden:
 .. code-block:: php
    :linenos:
 
-   Zend_Auth_Result::SUCCESS
-   Zend_Auth_Result::FAILURE
-   Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND
-   Zend_Auth_Result::FAILURE_IDENTITY_AMBIGUOUS
-   Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID
-   Zend_Auth_Result::FAILURE_UNCATEGORIZED
+   Zend\Auth\Result::SUCCESS
+   Zend\Auth\Result::FAILURE
+   Zend\Auth\Result::FAILURE_IDENTITY_NOT_FOUND
+   Zend\Auth\Result::FAILURE_IDENTITY_AMBIGUOUS
+   Zend\Auth\Result::FAILURE_CREDENTIAL_INVALID
+   Zend\Auth\Result::FAILURE_UNCATEGORIZED
 
 Das folgende Beispiel zeigt wie ein Entwickler anhand des Ergebniscodes verzweigen könnte:
 
@@ -130,15 +130,15 @@ Das folgende Beispiel zeigt wie ein Entwickler anhand des Ergebniscodes verzweig
 
    switch ($result->getCode()) {
 
-       case Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND:
+       case Zend\Auth\Result::FAILURE_IDENTITY_NOT_FOUND:
            /** Was wegen nicht existierender Identität machen **/
            break;
 
-       case Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID:
+       case Zend\Auth\Result::FAILURE_CREDENTIAL_INVALID:
            /** Was wegen ungültigen Zeugnissen machen **/
            break;
 
-       case Zend_Auth_Result::SUCCESS:
+       case Zend\Auth\Result::SUCCESS:
            /** Was wegen erfolgreicher Authentifizierung machen **/
            break;
 
@@ -166,11 +166,11 @@ Normale Persistenz in PHP Sessions
 
 Standardmäßig bietet ``Zend_Auth`` dauerhafte Speicherung der Identität eines erfolgreichen Authentifizierungs
 Versuches durch Verwendung der *PHP* Session. Bei einem erfolgreichen Authentifizierungs Versuch speichert
-``Zend_Auth::authenticate()`` die Identität des Authentifizierungs Ergebnisses im persistenten Speicher. Solange
+``Zend\Auth\Auth::authenticate()`` die Identität des Authentifizierungs Ergebnisses im persistenten Speicher. Solange
 die Konfiguration nicht verändert wird, verwendet ``Zend_Auth`` eine Speicherklasse die
-``Zend_Auth_Storage_Session`` heißt und die im Gegenzug :ref:`Zend_Session <zend.session>` verwendet. Eine eigene
-Klasse kann stattdessen verwendet werden, indem ein Objekt an ``Zend_Auth::setStorage()`` übergeben wird welches
-``Zend_Auth_Storage_Interface`` implementiert.
+``Zend\Auth_Storage\Session`` heißt und die im Gegenzug :ref:`Zend_Session <zend.session>` verwendet. Eine eigene
+Klasse kann stattdessen verwendet werden, indem ein Objekt an ``Zend\Auth\Auth::setStorage()`` übergeben wird welches
+``Zend\Auth_Storage\Interface`` implementiert.
 
 .. note::
 
@@ -182,20 +182,20 @@ Klasse kann stattdessen verwendet werden, indem ein Objekt an ``Zend_Auth::setSt
 
 .. rubric:: Den Namensraum der Session ändern
 
-``Zend_Auth_Storage_Session`` verwendet einen Session Namensraum von '``Zend_Auth``'. Diese Namensraum kann
-überschrieben werden indem ein anderer Wert an den Konstruktor von ``Zend_Auth_Storage_Session`` übergeben wird,
-und dieser Wert wird intern an den Konstruktor von ``Zend_Session_Namespace`` weitergereicht. Das sollte vor einem
-Versuch einer Authentifizierung stattfinden da ``Zend_Auth::authenticate()`` die automatische Speicherung der
+``Zend\Auth_Storage\Session`` verwendet einen Session Namensraum von '``Zend_Auth``'. Diese Namensraum kann
+überschrieben werden indem ein anderer Wert an den Konstruktor von ``Zend\Auth_Storage\Session`` übergeben wird,
+und dieser Wert wird intern an den Konstruktor von ``Zend\Session\Namespace`` weitergereicht. Das sollte vor einem
+Versuch einer Authentifizierung stattfinden da ``Zend\Auth\Auth::authenticate()`` die automatische Speicherung der
 Identität durchführt.
 
 .. code-block:: php
    :linenos:
 
    // Eine Referenz zur Singleton Instanz von Zend_Auth speichern
-   $auth = Zend_Auth::getInstance();
+   $auth = Zend\Auth\Auth::getInstance();
 
    // 'someNamespace' statt 'Zend_Auth' verwenden
-   $auth->setStorage(new Zend_Auth_Storage_Session('someNamespace'));
+   $auth->setStorage(new Zend\Auth_Storage\Session('someNamespace'));
 
    /**
     * @todo Den Auth Adapter $authAdapter erstellen
@@ -211,8 +211,8 @@ Eigene Speicher implementieren
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zeitweise wollen Entwickler einen anderen Speichermechanismus für Identitäten verwenden als es von
-``Zend_Auth_Storage_Session`` angeboten wird. Für solche Fälle können Entwickler einfach
-``Zend_Auth_Storage_Interface`` implementieren und eine Instanz der Klasse an ``Zend_Auth::setStorage()``
+``Zend\Auth_Storage\Session`` angeboten wird. Für solche Fälle können Entwickler einfach
+``Zend\Auth_Storage\Interface`` implementieren und eine Instanz der Klasse an ``Zend\Auth\Auth::setStorage()``
 übergeben.
 
 .. _zend.authentication.introduction.persistence.custom.example:
@@ -220,17 +220,17 @@ Zeitweise wollen Entwickler einen anderen Speichermechanismus für Identitäten 
 .. rubric:: Eine eigene Speicher Klasse verwenden
 
 Um eine andere Speicherklasse für die Persistenz von Identitäten zu verwenden als sie durch
-``Zend_Auth_Storage_Session`` angeboten wird, können Entwickler ``Zend_Auth_Storage_Interface`` implementieren:
+``Zend\Auth_Storage\Session`` angeboten wird, können Entwickler ``Zend\Auth_Storage\Interface`` implementieren:
 
 .. code-block:: php
    :linenos:
 
-   class MyStorage implements Zend_Auth_Storage_Interface
+   class MyStorage implements Zend\Auth_Storage\Interface
    {
        /**
         * Gibt true zurück wenn und nur wenn der Speicher leer ist
         *
-        * @throws Zend_Auth_Storage_Exception Wenn es unmöglich ist festzustellen
+        * @throws Zend\Auth_Storage\Exception Wenn es unmöglich ist festzustellen
         *                                     ob der Speicher leer ist
         * @return boolean
         */
@@ -246,7 +246,7 @@ Um eine andere Speicherklasse für die Persistenz von Identitäten zu verwenden 
         *
         * Das Verhalten ist undefiniert wenn der Speicher leer ist.
         *
-        * @throws Zend_Auth_Storage_Exception Wenn das Lesen von Lesen vom Speicher
+        * @throws Zend\Auth_Storage\Exception Wenn das Lesen von Lesen vom Speicher
         *                                     unmöglich ist
         * @return mixed
         */
@@ -261,7 +261,7 @@ Um eine andere Speicherklasse für die Persistenz von Identitäten zu verwenden 
         * Schreibt $contents in den Speicher
         *
         * @param  mixed $contents
-        * @throws Zend_Auth_Storage_Exception Wenn das Schreiben von $contents in
+        * @throws Zend\Auth_Storage\Exception Wenn das Schreiben von $contents in
         *                                     den Speicher unmöglich ist
         * @return void
         */
@@ -275,7 +275,7 @@ Um eine andere Speicherklasse für die Persistenz von Identitäten zu verwenden 
        /**
         * Löscht die Intalte vom Speicher
         *
-        * @throws Zend_Auth_Storage_Exception Wenn das Löschen der Inhalte vom
+        * @throws Zend\Auth_Storage\Exception Wenn das Löschen der Inhalte vom
         *                                     Speicher unmöglich ist
         * @return void
         */
@@ -288,21 +288,21 @@ Um eine andere Speicherklasse für die Persistenz von Identitäten zu verwenden 
 
    }
 
-Um diese selbstgeschriebene Speicherklasse zu verwenden wird ``Zend_Auth::setStorage()`` aufgerufen bevor eine
+Um diese selbstgeschriebene Speicherklasse zu verwenden wird ``Zend\Auth\Auth::setStorage()`` aufgerufen bevor eine
 Authentifizierungsanfrage stattfindet:
 
 .. code-block:: php
    :linenos:
 
    // Zend_Auth anweisen das die selbstdefinierte Speicherklasse verwendet wird
-   Zend_Auth::getInstance()->setStorage(new MyStorage());
+   Zend\Auth\Auth::getInstance()->setStorage(new MyStorage());
 
    /**
     * @todo Den Auth Adapter $authAdapter erstellen
     */
 
    // Authentifizieren, das Ergebnis speichern, und die Identität bei Erfolg
-   $result = Zend_Auth::getInstance()->authenticate($authAdapter);
+   $result = Zend\Auth\Auth::getInstance()->authenticate($authAdapter);
 
 .. _zend.authentication.introduction.using:
 
@@ -311,7 +311,7 @@ Verwendung
 
 Es gibt zwei vorhandene Wege um ``Zend_Auth`` Adapter zu verwenden:
 
-. Indirekt durch ``Zend_Auth::authenticate()``
+. Indirekt durch ``Zend\Auth\Auth::authenticate()``
 
 . Direkt durch die ``authenticate()`` Methode des Adapters
 
@@ -322,7 +322,7 @@ Das folgende Beispiel zeigt wie ein ``Zend_Auth`` Adapter indirekt verwendet wer
    :linenos:
 
    // Eine Referenz zur Singleton-Instanz von Zend_Auth erhalten
-   $auth = Zend_Auth::getInstance();
+   $auth = Zend\Auth\Auth::getInstance();
 
    // Authentifizierungs Adapter erstellen
    $authAdapter = new MyAuthAdapter($username, $password);
@@ -348,7 +348,7 @@ zu Prüfen ob eine erfolgreich authentifizierte Identität existiert:
 .. code-block:: php
    :linenos:
 
-   $auth = Zend_Auth::getInstance();
+   $auth = Zend\Auth\Auth::getInstance();
    if ($auth->hasIdentity()) {
        // Identität existiert; auslesen
        $identity = $auth->getIdentity();
@@ -361,7 +361,7 @@ finden.
 .. code-block:: php
    :linenos:
 
-   Zend_Auth::getInstance()->clearIdentity();
+   Zend\Auth\Auth::getInstance()->clearIdentity();
 
 Wenn die automatische Verwendung von persistenten Speichern für einen bestimmten Verwendungszweck unangebracht
 ist, kann ein Entwickler einfach die Verwendung der ``Zend_Auth`` Klasse umgehen, und eine Adapter Klasse direkt

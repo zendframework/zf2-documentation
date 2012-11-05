@@ -6,9 +6,9 @@
 
 会话的默认行为可以由 *Zend_Session*\
 的一些静态方法来改变。使用Zend_Session来处理和操作所有的全局会话管理，包括使用
-*Zend_Session_Core::setOptions()* 方法对 `PHP内置的会话模块提供的常用配置选项`_\
+*Zend\Session\Core::setOptions()* 方法对 `PHP内置的会话模块提供的常用配置选项`_\
 的配置。例如，不能确保使用安全的 *save_path*\
-和PHP会话模块使用的唯一的cookie名，那么使用 *Zend_Session::setOptions()* 会引发安全问题。
+和PHP会话模块使用的唯一的cookie名，那么使用 *Zend\Session\Session::setOptions()* 会引发安全问题。
 
 .. _zend.session.global_session_management.configuration_options:
 
@@ -16,12 +16,12 @@
 ----
 
 当第一个会话命名空间被请求时，Zend_Session就会自动启动PHP会话，除非已经和
-:ref:`Zend_Session::start() <zend.session.advanced_usage.starting_a_session>`\
+:ref:`Zend\Session\Session::start() <zend.session.advanced_usage.starting_a_session>`\
 一起启动了。内部PHP的会话将会按照Zend_Session的默认配置开启，除非先前调用过
-*Zend_Session::setOptions()*\ 修改了配置。
+*Zend\Session\Session::setOptions()*\ 修改了配置。
 
 设置会话配置选项，包括基本名（在"*session.*"之后的名字部分）作为传递给
-*Zend_Session::setOptions()*\
+*Zend\Session\Session::setOptions()*\
 的数组的键。数组里相应的值用来设置会话选项值。如果开发者没有设置选项，Zend_Session将首先使用推荐的缺省选项，接着就是缺省的php.ini设置。关于这些选项的最好实践的社区反馈应该发送到
 `fw-auth@lists.zend.com`_\ 。
 
@@ -29,7 +29,7 @@
 
 .. rubric:: 使用Zend_Config配置Zend_Session
 
-使用 :ref:`Zend_Config_Ini <zend.config.adapters.ini>`\
+使用 :ref:`Zend\Config\Ini <zend.config.adapters.ini>`\
 配置这个组件（Zend_Session），首先添加配置选项到INI文件：
 
 .. code-block:: php
@@ -74,22 +74,22 @@
    ; When persisting session id cookies, request a TTL of 10 days
    remember_me_seconds = 864000
 
-接着，加载配置文件并传递它的数组表达给 *Zend_Session::setOptions()*\ ：
+接着，加载配置文件并传递它的数组表达给 *Zend\Session\Session::setOptions()*\ ：
 
 .. code-block:: php
    :linenos:
 
    <?php
    require_once 'Zend/Config/Ini.php';
-   $config = new Zend_Config_Ini('myapp.ini', 'development');
+   $config = new Zend\Config\Ini('myapp.ini', 'development');
 
    require_once 'Zend/Session.php';
-   Zend_Session::setOptions($config->toArray());
+   Zend\Session\Session::setOptions($config->toArray());
 
 上述大多数选项没有做解释，因为可以在PHP的官方文档中找到他们的解释，但这些特定的事项在下面注释。
 
 
-   - boolean *strict*- 当使用 *new Zend_Session_Namespace*\ 时，禁止自动启动 *Zend_Session*\ 。
+   - boolean *strict*- 当使用 *new Zend\Session\Namespace*\ 时，禁止自动启动 *Zend_Session*\ 。
 
    - integer *remember_me_seconds*-
      该选项指明了当用户代理结束（比如浏览器应用程序终止）后，会话标识符还将保存在cookie中的时长。
@@ -180,7 +180,7 @@ browser)”不相同，为了使得本章节更易读，我们使用的这两个
 *regenerateId()*\
 将会话数据从旧的标识符下移到了新的标识符下，所以通过旧的会话标识符访问不到会话数据。
 
-何时使用 *regenerateId()*\ ：在你的Zend框架程序引导文件中添加 *Zend_Session::regenerateId ()*\
+何时使用 *regenerateId()*\ ：在你的Zend框架程序引导文件中添加 *Zend\Session\Session::regenerateId ()*\
 ，以最安全的方式重新生成用户Web浏览器cookie中的会话标识符。如果不需要有条件的判定何时重新生成会话标识符，那么这样的方式就没什么缺陷。虽然在每个请求中重新生成会话标识预防了几种攻击的途径，但是不是每个请求需要这么做。因此，应用程序通常设法动态的确定在有较大风险的情况下，重新生成会话标识符。当站点的访问者权限上升时（比如，访问者在编辑你的个人信息前，要重新验证用户）或者敏感的会话参数发生改变时，可以考虑使用
 *regenerateId()*\ 创建新的会话标识符。如果你调用了 *rememberMe()*\ 之后，就不需要调用
 *regeneraterId()*\ ，因为前者已经调用了后者。如果用户成功登录了站点，调用
@@ -197,7 +197,7 @@ cookie，那么跨站脚本攻击的Javascript脚本会允许攻击者读取受�
 cookie，这样就劫持受害者的会话。如果受害者访问了攻击者的站点，那么攻击者还能仿真受害者用户代理的一些其他特征。如果你的站点存在着XSS漏洞，攻击者就可能插入一段AJAX脚本，秘密的访问攻击者的站点，导致攻击者知道了受害者的浏览器特征，又知悉受害者站点的会话。然而，倘若站点开发者正确地设置了
 *save_path*\ 选项，那么攻击者也不能任意地修改服务器端的PHP会话状态。
 
-当第一次使用用户会话时，调用 *Zend_Session::regenerateId()*\
+当第一次使用用户会话时，调用 *Zend\Session\Session::regenerateId()*\
 不能防止会话固定攻击，除非你能辨别最初的会话是否是攻击者伪装成受害者。初听，这个跟前面所描述的是自相矛盾的，直到我们认为攻击者首先在你的站点上发起了一个真实的会话。如果会话第一次是被攻击者开启的，那么攻击者也就知道了初始化(*regenerateId()*)后的结果（新的会话标识）。攻击者在XSS漏洞中使用这个新的会话标识，或者通过攻击者站点上的链接注入这个新的会话标识（只在
 *use_only_cookies = off*\ 时有效）。
 
@@ -223,10 +223,10 @@ cookie，这样就劫持受害者的会话。如果受害者访问了攻击者�
 
    <?php
    require_once 'Zend/Session/Namespace.php';
-   $defaultNamespace = new Zend_Session_Namespace();
+   $defaultNamespace = new Zend\Session\Namespace();
 
    if (!isset($defaultNamespace->initialized)) {
-       Zend_Session::regenerateId();
+       Zend\Session\Session::regenerateId();
        $defaultNamespace->initialized = true;
    }
 
@@ -236,8 +236,8 @@ rememberMe(integer $seconds)
 ----------------------------
 
 通常，用户代理结束时，会话也就结束了，比如当用户退出浏览器。然而，你的应用程序可能通过持久cookies的使用提供扩展用户会话超过客户端程序的生命期的能力。在会话被启动来控制在持久会话cookie过期之前时间的长度之前使用
-*Zend_Session::rememberMe()*\ 。如果你没有指定秒数，那么会话cookie的生命期缺省为
-*remember_me_seconds*\ ，它可以用 *Zend_Session::setOptions()*\
+*Zend\Session\Session::rememberMe()*\ 。如果你没有指定秒数，那么会话cookie的生命期缺省为
+*remember_me_seconds*\ ，它可以用 *Zend\Session\Session::setOptions()*\
 来设置。为了帮助阻止会话固定/劫持，当用户成功地通过你的程序的认证，使用这个函数（例如，从一个“登录”表单）。
 
 .. _zend.session.global_session_management.forgetme:
@@ -253,22 +253,22 @@ sessionExists()
 ---------------
 
 这个方法用来确定当前用户请求是否已经存在会话。这个方法可在会话开启之前使用，且这个方法独立于与
-*Zend_Session*\ 和 *Zend_Session_Namespace*\ 的其他方法。
+*Zend_Session*\ 和 *Zend\Session\Namespace*\ 的其他方法。
 
 .. _zend.session.global_session_management.destroy:
 
 destroy(bool $remove_cookie = true, bool $readonly = true)
 ----------------------------------------------------------
 
-*Zend_Session::destroy()*\
+*Zend\Session\Session::destroy()*\
 ，删除当前会话的所有数据。然而，PHP中的变量还未知情，所以你的会话命名空间（
 *Zend_Session*\ 的实例）还是可读的。为了完成“登出”动作，设置可选的参数为 *true*\
 （缺省为true）来删除用户代理端的会话cookie。可选的 *$readonly*\ 参数删除了创建新的
-*Zend_Session_Namespace*\ 实例和为 *Zend_Session*\ 方法写入会话数据存储的能力。
+*Zend\Session\Namespace*\ 实例和为 *Zend_Session*\ 方法写入会话数据存储的能力。
 
 如果你看到错误信息"Cannot modify header information - headers already sent" ， 那么要么避免使用
 *true* 作为第一个参数（会话cookie的请求删除），要么参考 :ref:`
-<zend.session.global_session_management.headers_sent>` 。这样， *Zend_Session::destroy(true)*
+<zend.session.global_session_management.headers_sent>` 。这样， *Zend\Session\Session::destroy(true)*
 一定要么在PHP发送HTTP头之前被调用，要么输出缓冲被允许。并且，为防止触发在调用
 *destroy()*\ 之前发送输出，输出发送的总数不能超过缓冲的大小。
 
@@ -285,7 +285,7 @@ stop()
 
 这个方法只是更改了 *Zend_Session*\
 中的一个标志位，以阻止之后向会话数据存储器中写数据。我们特别希望您能反馈关于这个特性的看法。当程序的执行转移到视图相关的代码上时，以免滥用，临时关闭
-*Zend_Session_Namespace*\ 实例和 *Zend_Session*\
+*Zend\Session\Namespace*\ 实例和 *Zend_Session*\
 中的方法向会话数据存储器写数据的能力，试图通过这些实例或方法向会话数据存储器写数据的动作，都将会抛出一个异常。
 
 .. _zend.session.global_session_management.writeclose:
@@ -295,7 +295,7 @@ writeClose($readonly = true)
 
 关闭会话，把 *$_SESSION*\
 数组中的数据写到后台的存储器中（文件、数据库），完成内部数据的转换。可选的
-*$readonly*\ 布尔参数可以通过抛出基于企图通过 *Zend_Session*\ 或者 *Zend_Session_Namespace*\
+*$readonly*\ 布尔参数可以通过抛出基于企图通过 *Zend_Session*\ 或者 *Zend\Session\Namespace*\
 写入会话的一个异常来删除写的能力。
 
 .. note::
@@ -317,7 +317,7 @@ expireSessionCookie()
 
 .. _zend.session.global_session_management.savehandler:
 
-setSaveHandler(Zend_Session_SaveHandler_Interface $interface)
+setSaveHandler(Zend\Session_SaveHandler\Interface $interface)
 -------------------------------------------------------------
 
 对于大多数开发者来说缺省的save
@@ -360,7 +360,7 @@ namespaceUnset($namespace)
 namespaceGet($namespace)
 ------------------------
 
-不赞成的：在 *Zend_Session_Namespace*\ 中用 *getIterator()*\ 。 这个方法返回 *$namespace*\
+不赞成的：在 *Zend\Session\Namespace*\ 中用 *getIterator()*\ 。 这个方法返回 *$namespace*\
 命名空间的内容数组 *$name*\
 。如果你有合理的理由认为该方法是公有的，请反馈到我们的邮件列表：
 `fw-auth@lists.zend.com`_\ 。实际上，所有参与相关话题讨论的，我们都是欢迎的。

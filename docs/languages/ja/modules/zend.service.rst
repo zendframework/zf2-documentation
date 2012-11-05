@@ -7,10 +7,10 @@
 ``Zend_Service`` は、 *SOAP* や REST
 などのウェブサービスの実装基盤となる抽象クラスです。
 
-汎用的な *XML* ベースの REST サービスのサポートが必要なら、 :ref:`Zend_Rest_Client
+汎用的な *XML* ベースの REST サービスのサポートが必要なら、 :ref:`Zend\Rest\Client
 <zend.rest.client>` を参照ください。
 
-``Zend_Service`` を継承したクラスや ``Zend_Rest_Client`` を使用して REST
+``Zend_Service`` を継承したクラスや ``Zend\Rest\Client`` を使用して REST
 ベースのウェブサービスにアクセスすることに加え、 Zend
 では有名なウェブサービスも個別にサポートしています。
 サポートするウェブサービスについての情報は、次のセクションを参照ください。

@@ -12,9 +12,9 @@ użytkownika musi mieć długość między 6 a 12 alfanumerycznych znaków:
       :linenos:
 
       // Tworzymy łańcuch weryfikatorów i dodajemy do niego weryfikatory
-      $validatorChain = new Zend_Validate();
-      $validatorChain->addValidator(new Zend_Validate_StringLength(6, 12))
-                     ->addValidator(new Zend_Validate_Alnum());
+      $validatorChain = new Zend\Validate\Validate();
+      $validatorChain->addValidator(new Zend\Validate\StringLength(6, 12))
+                     ->addValidator(new Zend\Validate\Alnum());
 
       // Sprawdzamy nazwę użytkownika
       if ($validatorChain->isValid($username)) {
@@ -45,13 +45,13 @@ tak jak poniżej, wtedy weryfikacja znaków alfanumerycznych nie byłaby przepro
    .. code-block:: php
       :linenos:
 
-      $validatorChain->addValidator(new Zend_Validate_StringLength(6, 12), true)
-              ->addValidator(new Zend_Validate_Alnum());
+      $validatorChain->addValidator(new Zend\Validate\StringLength(6, 12), true)
+              ->addValidator(new Zend\Validate\Alnum());
 
 
 
 
 W łańcuchu weryfikatorów może być użyty dowolny obiekt, który implementuje interfejs
-*Zend_Validate_Interface*.
+*Zend\Validate\Interface*.
 
 

@@ -15,9 +15,9 @@
       :linenos:
 
       <// Create a filter chain and add filters to the chain
-      $filterChain = new Zend_Filter();
-      $filterChain->addFilter(new Zend_Filter_Alpha())
-                  ->addFilter(new Zend_Filter_StringToLower());
+      $filterChain = new Zend\Filter\Filter();
+      $filterChain->addFilter(new Zend\Filter\Alpha())
+                  ->addFilter(new Zend\Filter\StringToLower());
 
       // Filter the username
       $username = $filterChain->filter($_POST['username']);
@@ -27,7 +27,7 @@
 שלא אותיות ומספרים מערך של השם משתמש בטופס ההתחברות מוסר, ורק
 לאחר מכן כל אותיות גדולות הופכות לקטנות.
 
-כל אובייקט אשר משתמש ב *Zend_Filter_Interface* ניתן להשתמש בו בשרשור
+כל אובייקט אשר משתמש ב *Zend\Filter\Interface* ניתן להשתמש בו בשרשור
 פילטרים.
 
 

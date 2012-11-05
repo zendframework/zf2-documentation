@@ -9,7 +9,7 @@ Spolupráca s Java Lucene
 Formáty súborov
 ---------------
 
-Indexový súbor Zend_Search_Lucene je binárne kompatibilný s verziou Lucene 1.4 a vyššou.
+Indexový súbor Zend\Search\Lucene je binárne kompatibilný s verziou Lucene 1.4 a vyššou.
 
 Detailný `popis formátu`_ je k dispozícii na stránke projektu Lucene [#]_
 

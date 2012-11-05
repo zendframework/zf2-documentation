@@ -5,7 +5,7 @@
 ===================
 
 すべてのページ（また、カスタマイズしたクラス）を、 ページ・ファクトリ
-``Zend_Navigation_Page::factory()`` を用いて 作成できます。 ファクトリは任意の配列、
+``Zend\Navigation\Page::factory()`` を用いて 作成できます。 ファクトリは任意の配列、
 または ``Zend_Config``\ オブジェクトをとることができます。 :ref:`ページ
 <zend.navigation.pages>`\ の節でご覧いただけるように、
 配列または構成の各々のキーはページ・オプションと一致します。 *uri*\
@@ -24,19 +24,19 @@ the value is *mvc* or *uri* and *MVC*/URI page will be created.
 .. code-block:: php
    :linenos:
 
-   $page = Zend_Navigation_Page::factory(array(
+   $page = Zend\Navigation\Page::factory(array(
        'label'  => 'My MVC page',
        'action' => 'index'
    ));
 
-   $page = Zend_Navigation_Page::factory(array(
+   $page = Zend\Navigation\Page::factory(array(
        'label'      => 'Search blog',
        'action'     => 'index',
        'controller' => 'search',
        'module'     => 'blog'
    ));
 
-   $page = Zend_Navigation_Page::factory(array(
+   $page = Zend\Navigation\Page::factory(array(
        'label'      => 'Home',
        'action'     => 'index',
        'controller' => 'index',
@@ -44,7 +44,7 @@ the value is *mvc* or *uri* and *MVC*/URI page will be created.
        'route'      => 'home'
    ));
 
-   $page = Zend_Navigation_Page::factory(array(
+   $page = Zend\Navigation\Page::factory(array(
        'type'   => 'mvc',
        'label'  => 'My MVC page'
    ));
@@ -56,23 +56,23 @@ the value is *mvc* or *uri* and *MVC*/URI page will be created.
 .. code-block:: php
    :linenos:
 
-   $page = Zend_Navigation_Page::factory(array(
+   $page = Zend\Navigation\Page::factory(array(
        'label' => 'My URI page',
        'uri'   => 'http://www.example.com/'
    ));
 
-   $page = Zend_Navigation_Page::factory(array(
+   $page = Zend\Navigation\Page::factory(array(
        'label'  => 'Search',
        'uri'    => 'http://www.example.com/search',
        'active' => true
    ));
 
-   $page = Zend_Navigation_Page::factory(array(
+   $page = Zend\Navigation\Page::factory(array(
        'label' => 'My URI page',
        'uri'   => '#'
    ));
 
-   $page = Zend_Navigation_Page::factory(array(
+   $page = Zend\Navigation\Page::factory(array(
        'type'   => 'uri',
        'label'  => 'My URI page'
    ));
@@ -88,7 +88,7 @@ the value is *mvc* or *uri* and *MVC*/URI page will be created.
 .. code-block:: php
    :linenos:
 
-   class My_Navigation_Page extends Zend_Navigation_Page
+   class My_Navigation_Page extends Zend\Navigation\Page
    {
        protected $_fooBar = 'ok';
 
@@ -98,7 +98,7 @@ the value is *mvc* or *uri* and *MVC*/URI page will be created.
        }
    }
 
-   $page = Zend_Navigation_Page::factory(array(
+   $page = Zend\Navigation\Page::factory(array(
        'type'    => 'My_Navigation_Page',
        'label'   => 'My custom page',
        'foo_bar' => 'foo bar'

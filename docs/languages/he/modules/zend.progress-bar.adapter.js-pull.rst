@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.progressbar.adapter.jspull:
 
-Zend_ProgressBar_Adapter_JsPull
+Zend\ProgressBar_Adapter\JsPull
 ===============================
 
-*Zend_ProgressBar_Adapter_JsPull* הוא ההפך מ jsPush, מאחר והוא מחפש ומושך אחר
+*Zend\ProgressBar_Adapter\JsPull* הוא ההפך מ jsPush, מאחר והוא מחפש ומושך אחר
 עדכונים, במקום לדחוף עדכונים בחזרה לדפדפן. בדרך כלל תדרשו
 להשתמש במתאם עם אפשרות קבוע של *Zend_ProgressBar*. בעת התראה, המתאם שולח
 סטרינג מקודד ב JSON לדפדפן, שנראה בידיוק כמו הסטרינג שנשלח בעזרת

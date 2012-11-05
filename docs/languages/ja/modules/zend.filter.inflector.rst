@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.filter.inflector:
 
-Zend_Filter_Inflector
+Zend\Filter\Inflector
 =====================
 
-``Zend_Filter_Inflector`` は、指定したターゲットに対して
+``Zend\Filter\Inflector`` は、指定したターゲットに対して
 ルールにもとづいた文字列変換を行うための汎用的なツールです。
 
 たとえば、MixedCase あるいは camelCase
@@ -13,7 +13,7 @@ Zend_Filter_Inflector
 で単語を区切ったりといったこともあるでしょう。
 インフレクタは、このような作業を行うことができます。
 
-``Zend_Filter_Inflector`` は ``Zend_Filter_Interface`` を実装しています。
+``Zend\Filter\Inflector`` は ``Zend\Filter\Interface`` を実装しています。
 インフレクションを実行するには、オブジェクトのインスタンスで ``filter()``
 をコールします。
 
@@ -24,7 +24,7 @@ Zend_Filter_Inflector
 .. code-block:: php
    :linenos:
 
-   $inflector = new Zend_Filter_Inflector('pages/:page.:suffix');
+   $inflector = new Zend\Filter\Inflector('pages/:page.:suffix');
    $inflector->setRules(array(
        ':page'  => array('Word_CamelCaseToDash', 'StringToLower'),
        'suffix' => 'html'
@@ -58,7 +58,7 @@ Zend_Filter_Inflector
 クラスを指定する際には、共通のプレフィックスを除いた短いクラス名を使用します。
 
 たとえば ``Zend_Filter`` の具象実装クラスなら何でも使用可能です。
-しかし、これを使用する際には 'Zend_Filter_Alpha' あるいは 'Zend_Filter_StringToLower'
+しかし、これを使用する際には 'Zend\Filter\Alpha' あるいは 'Zend\Filter\StringToLower'
 とするのではなく単に 'Alpha' あるいは 'StringToLower' だけで指定するということです。
 
 .. _zend.filter.inflector.paths:
@@ -66,7 +66,7 @@ Zend_Filter_Inflector
 その他のフィルタ向けのパスの設定
 ----------------
 
-``Zend_Filter_Inflector`` は、 ``Zend_Loader_PluginLoader``
+``Zend\Filter\Inflector`` は、 ``Zend\Loader\PluginLoader``
 を使用してインフレクションに使用するフィルタの読み込みを行います。
 デフォルトでは、 ``Zend_Filter`` で始まる任意のフィルタを使用できます。
 このプレフィックスで始まるけれどももっと深い階層にあるフィルタ、たとえば Word
@@ -76,10 +76,10 @@ Zend_Filter_Inflector
 .. code-block:: php
    :linenos:
 
-   // ルールとして Zend_Filter_Word_CamelCaseToDash を使用します
+   // ルールとして Zend\Filter_Word\CamelCaseToDash を使用します
    $inflector->addRules(array('script' => 'Word_CamelCaseToDash'));
 
-別のパスを使用するには、プラグインローダへのプロキシとして ``Zend_Filter_Inflector``
+別のパスを使用するには、プラグインローダへのプロキシとして ``Zend\Filter\Inflector``
 のユーティリティメソッド ``addFilterPrefixPath()`` を使用します。
 
 .. code-block:: php
@@ -117,7 +117,7 @@ Zend_Filter_Inflector
    :linenos:
 
    // コンストラクタ経由
-   $inflector = new Zend_Filter_Inflector('#foo/#bar.#sfx', null, '#');
+   $inflector = new Zend\Filter\Inflector('#foo/#bar.#sfx', null, '#');
 
    // アクセサ経由
    $inflector->setTargetReplacementIdentifier('#');
@@ -155,7 +155,7 @@ Zend_Filter_Inflector
         */
        public function __construct()
        {
-           $this->_inflector = new Zend_Filter_Inflector();
+           $this->_inflector = new Zend\Filter\Inflector();
            $this->_inflector->setTargetReference($this->_target);
        }
 
@@ -203,7 +203,7 @@ Zend_Filter_Inflector
 .. code-block:: php
    :linenos:
 
-   $inflector = new Zend_Filter_Inflector(':script.:suffix');
+   $inflector = new Zend\Filter\Inflector(':script.:suffix');
    $inflector->setStaticRule('suffix', 'phtml');
 
    // あとで変更します
@@ -231,7 +231,7 @@ Zend_Filter_Inflector
         */
        public function __construct()
        {
-           $this->_inflector = new Zend_Filter_Inflector(':script.:suffix');
+           $this->_inflector = new Zend\Filter\Inflector(':script.:suffix');
            $this->_inflector->setStaticRuleReference('suffix', $this->_suffix);
        }
 
@@ -268,7 +268,7 @@ Filter Inflector ルール
   (インフレクタのプラグインローダーで登録されたもの。 デフォルトは 'Zend_Filter')
   を取り除いた部分となります。
 
-- **Filter オブジェクト**\ 。 ``Zend_Filter_Interface``
+- **Filter オブジェクト**\ 。 ``Zend\Filter\Interface``
   を実装した任意のオブジェクトのインスタンスをフィルタとして渡せます。
 
 - **配列**\ 。 上で説明した文字列やフィルタオブジェクトを配列にしたものです。
@@ -276,18 +276,18 @@ Filter Inflector ルール
 .. code-block:: php
    :linenos:
 
-   $inflector = new Zend_Filter_Inflector(':script.:suffix');
+   $inflector = new Zend\Filter\Inflector(':script.:suffix');
 
-   // ルールとして Zend_Filter_Word_CamelCaseToDash フィルタを使用するように設定します
+   // ルールとして Zend\Filter_Word\CamelCaseToDash フィルタを使用するように設定します
    $inflector->setFilterRule('script', 'Word_CamelCaseToDash');
 
    // 文字列を小文字変換するルールを追加します
-   $inflector->addFilterRule('script', new Zend_Filter_StringToLower());
+   $inflector->addFilterRule('script', new Zend\Filter\StringToLower());
 
    // 複数のルールを一括して指定します
    $inflector->setFilterRule('script', array(
        'Word_CamelCaseToDash',
-       new Zend_Filter_StringToLower()
+       new Zend\Filter\StringToLower()
    ));
 
 .. _zend.filter.inflector.rules.multiple:
@@ -296,7 +296,7 @@ Filter Inflector ルール
 ^^^^^^^^^^^^^^
 
 一般に、各変数に対して個別にインフレクタルールを設定するよりも、
-一括してルールを設定できたほうが楽でしょう。 ``Zend_Filter_Inflector`` の ``addRules()``
+一括してルールを設定できたほうが楽でしょう。 ``Zend\Filter\Inflector`` の ``addRules()``
 メソッドや ``setRules()`` メソッドを使用すると、 一括設定できます。
 
 それぞれのメソッドには、変数/ルール のペアの配列を指定します。
@@ -331,12 +331,12 @@ Filter Inflector ルール
 ユーティリティメソッド
 -----------
 
-``Zend_Filter_Inflector`` のユーティリティメソッド群には、
+``Zend\Filter\Inflector`` のユーティリティメソッド群には、
 プラグインローダーの取得や設定、 ルールの操作や取得、
 例外をスローするかどうかやその時期の設定といったことを行えるものがあります。
 
 - ``setPluginLoader()`` は、 独自のプラグインローダーを設定してそれを
-  ``Zend_Filter_Inflector`` で使いたい場合に使用します。 ``getPluginLoader()`` は、
+  ``Zend\Filter\Inflector`` で使いたい場合に使用します。 ``getPluginLoader()`` は、
   現在設定されているプラグインローダーを取得します。
 
 - ``setThrowTargetExceptionsOn()`` は、
@@ -357,7 +357,7 @@ Filter Inflector ルール
 
 .. _zend.filter.inflector.config:
 
-Zend_Filter_Inflector での Zend_Config の使用法
+Zend\Filter\Inflector での Zend_Config の使用法
 -----------------------------------------
 
 ``Zend_Config`` を使用してルールを設定したり、
@@ -382,17 +382,17 @@ Zend_Filter_Inflector での Zend_Config の使用法
 
 .. _zend.filter.inflector.config.example:
 
-.. rubric:: Zend_Filter_Inflector での Zend_Config の使用法
+.. rubric:: Zend\Filter\Inflector での Zend_Config の使用法
 
 .. code-block:: php
    :linenos:
 
    // コンストラクタで
-   $config    = new Zend_Config($options);
-   $inflector = new Zend_Filter_Inflector($config);
+   $config    = new Zend\Config\Config($options);
+   $inflector = new Zend\Filter\Inflector($config);
 
    // あるいは setOptions() で
-   $inflector = new Zend_Filter_Inflector();
+   $inflector = new Zend\Filter\Inflector();
    $inflector->setOptions($config);
 
 

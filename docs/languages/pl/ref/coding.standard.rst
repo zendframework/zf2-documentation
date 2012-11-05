@@ -110,11 +110,11 @@ hierarchicznie w tych katalogach.
 
 Nazwy klas mogą zawierać tylko znaki alfanumeryczne. Liczby są dozwolone w nazwach klas, jednak ich użycie jest
 odradzane w większości przypadków. Użycie znaków podkreślenia jest dozwolone tylko w przypadku gdy są
-separatorami ścieżek; plik "Zend/Db/Table.php" musi odpowiadać nazwie klasy "Zend_Db_Table".
+separatorami ścieżek; plik "Zend/Db/Table.php" musi odpowiadać nazwie klasy "Zend\Db\Table".
 
 Jeśli nazwa klasy składa się z więcej niż jednego słowa, pierwsza litera każdego kolejnego słowa powinna
 być wielka. Zapisanie wyrazów w całości wielkimi literami jest niedozwolone, przykładowo nazwa klasy
-"Zend_PDF" jest niedozwolona, a nazwa "Zend_Pdf" jest już akceptowalna.
+"ZendPDF" jest niedozwolona, a nazwa "ZendPdf" jest już akceptowalna.
 
 Te konwencje określają mechanizm pseudo-przestrzeni nazw dla Zend Framework. Zend Framework będzie używać
 funkcjonalności przestrzeni nazw PHP gdy będą już dostępne dla programistów do użycia w swoich aplikacjach.

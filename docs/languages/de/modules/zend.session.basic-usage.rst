@@ -4,38 +4,38 @@
 Grundsätzliche Verwendung
 =========================
 
-``Zend_Session_Namespace`` Instanzen stellen die primäre *API* für das Manipulieren von Session Daten im Zend
+``Zend\Session\Namespace`` Instanzen stellen die primäre *API* für das Manipulieren von Session Daten im Zend
 Framework bereit. Namensräume werden verwendet um alle Session Daten zu kapseln, aber es existiert auch ein
 Standard Namensraum für jene die nur einen Namensraum für alle Session Daten benötigen. ``Zend_Session``
 verwendet die Erweiterung ext/session und dessen spezielle superglobale Variable ``$_SESSION`` als
 Speichermechanismus für Session Daten. Wärend ``$_SESSION`` im globalen Namensraum von *PHP* noch immer vorhanden
 ist, sollten Entwickler davon absehen diese direkt zu verwenden, damit ``Zend_Session`` und
-``Zend_Session_Namespace`` am effizientesten und sichersten Ihre Sammlung von Session relevanten Funktionen
+``Zend\Session\Namespace`` am effizientesten und sichersten Ihre Sammlung von Session relevanten Funktionen
 bereitstellen können.
 
-Jede Instanz von ``Zend_Session_Namespace`` korrespondiert mit einem Eintrag des Superglobalen Arrays
+Jede Instanz von ``Zend\Session\Namespace`` korrespondiert mit einem Eintrag des Superglobalen Arrays
 ``$_SESSION``, wobei die Namensräume als Schlüssel verwendet werden.
 
 .. code-block:: php
    :linenos:
 
-   $myNamespace = new Zend_Session_Namespace('myNamespace');
+   $myNamespace = new Zend\Session\Namespace('myNamespace');
 
    // $myNamespace corresponds to $_SESSION['myNamespace']
 
 Es ist möglich ``Zend_Session`` in Verbindung mit anderem Code zu verwenden welche ``$_SESSION`` direkt verwendet.
 Um Probleme zu vermeiden wird trotzdem stärkstens empfohlen das solcher Code nur Teile von ``$_SESSION`` verwendet
-die nicht mit Instanzen von ``Zend_Session_Namespace`` korrespondieren.
+die nicht mit Instanzen von ``Zend\Session\Namespace`` korrespondieren.
 
 .. _zend.session.basic_usage.basic_examples:
 
 Übungs Beispiele
 ----------------
 
-Wenn kein Namensraum bei der Instanziierung von ``Zend_Session_Namespace`` definiert wurde, werden alle Daten
+Wenn kein Namensraum bei der Instanziierung von ``Zend\Session\Namespace`` definiert wurde, werden alle Daten
 transparent in einem Namensraum gespeichert der "*Default*" heißt. ``Zend_Session`` ist nicht dazu gedacht um
 direkt mit den Inhalten von Containern der Session Namensräume zu arbeiten. Stattdessen wird
-``Zend_Session_Namespace`` verwendet. Das folgende Beispiel demonstriert die Verwendung dieses Standard Namensraums
+``Zend\Session\Namespace`` verwendet. Das folgende Beispiel demonstriert die Verwendung dieses Standard Namensraums
 und zeigt wie die Anzahl der Zugriffe eines Benutzers gezählt werden kann.
 
 .. _zend.session.basic_usage.basic_examples.example.counting_page_views:
@@ -45,7 +45,7 @@ und zeigt wie die Anzahl der Zugriffe eines Benutzers gezählt werden kann.
 .. code-block:: php
    :linenos:
 
-   $defaultNamespace = new Zend_Session_Namespace('Default');
+   $defaultNamespace = new Zend\Session\Namespace('Default');
 
    if (isset($defaultNamespace->numberOfPageRequests)) {
     // Das erhöht den Zählen für jeden Seitenaufruf
@@ -57,8 +57,8 @@ und zeigt wie die Anzahl der Zugriffe eines Benutzers gezählt werden kann.
    echo "Seitenzugriffe in dieser Session: ",
        $defaultNamespace->numberOfPageRequests;
 
-Wenn mehrere Module Instanzen von ``Zend_Session_Namespace`` verwenden die verschiedene Namensräume haben, erhält
-jedes Modul Datenkapselung für die eigenen Daten der Session. Dem ``Zend_Session_Namespace`` Konstruktor kann ein
+Wenn mehrere Module Instanzen von ``Zend\Session\Namespace`` verwenden die verschiedene Namensräume haben, erhält
+jedes Modul Datenkapselung für die eigenen Daten der Session. Dem ``Zend\Session\Namespace`` Konstruktor kann ein
 optionales ``$namespace`` Argument übergeben werden, welches Entwicklern erlaubt Session Daten in eigene
 Namensräume zu partitionieren. Die Verwendung von Namensräumen ist ein effektiver und populärer Weg um Session
 Daten gegenüber Änderungen durch ungewollte Namenskollisionen sicher zu machen.
@@ -76,11 +76,11 @@ inkludiert sind sollten Namen für Namensräume der wenden die mit "*Zend*" begi
 
    // In der Zend_Auth Komponente
    require_once 'Zend/Session.php';
-   $authNamespace = new Zend_Session_Namespace('Zend_Auth');
+   $authNamespace = new Zend\Session\Namespace('Zend_Auth');
    $authNamespace->user = "meinbenutzername";
 
    // In einer Web Service Komponente
-   $webServiceNamespace = new Zend_Session_Namespace('Mein_Web_Service');
+   $webServiceNamespace = new Zend\Session\Namespace('Mein_Web_Service');
    $webServiceNamespace->user = "meinwebbenutzername";
 
 Das obige Beispiel erzielt den gleichen Effekt wie der folgende Code, ausser das die obigen Session Objekte die
@@ -101,7 +101,7 @@ Kapselung der Session Daten innerhalb des jeweiligen Namensraumes aufrecht erhä
 Session Namensräume wiederholen
 -------------------------------
 
-``Zend_Session_Namespace`` stellt das komplette `IteratorAggregate Interface`_ zur Verfügung, was die
+``Zend\Session\Namespace`` stellt das komplette `IteratorAggregate Interface`_ zur Verfügung, was die
 Unterstützung der *foreach* Anweisung beinhält:
 
 .. _zend.session.basic_usage.iteration.example:
@@ -112,7 +112,7 @@ Unterstützung der *foreach* Anweisung beinhält:
    :linenos:
 
    $aNamespace =
-       new Zend_Session_Namespace('Einige_Namensräume_Mit_aktuellen_Daten');
+       new Zend\Session\Namespace('Einige_Namensräume_Mit_aktuellen_Daten');
 
    foreach ($aNamespace as $index => $value) {
        echo "aNamespace->$index = '$value';\n";
@@ -123,7 +123,7 @@ Unterstützung der *foreach* Anweisung beinhält:
 Zugriffsfunktionen für Session Namensräume
 ------------------------------------------
 
-``Zend_Session_Namespace`` implementiert die `magischen Methoden`_ ``__get()``, ``__set()``, ``__isset()``, und
+``Zend\Session\Namespace`` implementiert die `magischen Methoden`_ ``__get()``, ``__set()``, ``__isset()``, und
 ``__unset()`` welche nicht direkt angesprochen werden sollte, ausser von innerhalb einer Subklasse. Stattdessen
 verwenden die normalen Opteratoren automatisch diese Methoden, wie im folgenden Beispiel:
 
@@ -134,7 +134,7 @@ verwenden die normalen Opteratoren automatisch diese Methoden, wie im folgenden 
 .. code-block:: php
    :linenos:
 
-   $namespace = new Zend_Session_Namespace(); // Standard Namensraum
+   $namespace = new Zend\Session\Namespace(); // Standard Namensraum
 
    $namespace->foo = 100;
 

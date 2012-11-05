@@ -13,12 +13,12 @@ jednoduchého volania metódy:
 
    <?php
 
-   $feedArray = Zend_Feed::findFeeds('http://www.example.com/news.html');
+   $feedArray = Zend\Feed\Feed::findFeeds('http://www.example.com/news.html');
 
    ?>
-Metóda *findFeeds()* vráti pole objektov typu *Zend_Feed_Abstract* pre každý rozpoznaný *<link>* na stránke
+Metóda *findFeeds()* vráti pole objektov typu *Zend\Feed\Abstract* pre každý rozpoznaný *<link>* na stránke
 news.html V závislosti od typu zdroja je každá položka v poli *$feedArray* je inštancia objektu
-*Zend_Feed_Rss* alebo *Zend_Feed_Atom*. *Zend_Feed* môže vyvolať výnimku *Zend_Feed_Exception* v prípade
+*Zend\Feed\Rss* alebo *Zend\Feed\Atom*. *Zend_Feed* môže vyvolať výnimku *Zend\Feed\Exception* v prípade
 chyby, napríklad chyba 404 v prípade HTTP alebo nespracovateľný (chybný) zdroj.
 
 

@@ -8,12 +8,12 @@ default project we created instantiates an autoloader. We can attach other autol
 to find different classes. Typically, we want our various MVC classes grouped under the same tree -- in this case,
 ``application/``-- and most often using a common prefix.
 
-``Zend_Controller_Front`` has a notion of "modules", which are individual mini-applications. Modules mimic the
+``Zend\Controller\Front`` has a notion of "modules", which are individual mini-applications. Modules mimic the
 directory structure that the ``zf`` tool sets up under ``application/``, and all classes inside them are assumed to
 begin with a common prefix, the module name. ``application/`` is itself a module -- the "default" or "application"
 module. As such, we'll want to setup autoloading for resources within this directory.
 
-``Zend_Application_Module_Autoloader`` provides the functionality needed to map the various resources under a
+``Zend\Application_Module\Autoloader`` provides the functionality needed to map the various resources under a
 module to the appropriate directories, and provides a standard naming mechanism as well. An instance of the class
 is created by default during initialization of the bootstrap object; your application bootstrap will be default use
 the module prefix "Application". As such, our models, forms, and table classes will all begin with the class prefix
@@ -217,17 +217,17 @@ database requirements locally so they can have the fully working application. Cr
        get_include_path(),
    )));
    require_once 'Zend/Loader/Autoloader.php';
-   Zend_Loader_Autoloader::getInstance();
+   Zend\Loader\Autoloader::getInstance();
 
    // Define some CLI options
-   $getopt = new Zend_Console_Getopt(array(
+   $getopt = new Zend\Console\Getopt(array(
        'withdata|w' => 'Load database with sample data',
        'env|e-s'    => 'Application environment for which to create database (defaults to development)',
        'help|h'     => 'Help -- usage message',
    ));
    try {
        $getopt->parse();
-   } catch (Zend_Console_Getopt_Exception $e) {
+   } catch (Zend\Console_Getopt\Exception $e) {
        // Bad options passed: report usage
        echo $e->getUsageMessage();
        return false;
@@ -246,7 +246,7 @@ database requirements locally so they can have the fully working application. Cr
        || define('APPLICATION_ENV', (null === $env) ? 'development' : $env);
 
    // Initialize Zend_Application
-   $application = new Zend_Application(
+   $application = new Zend\Application\Application(
        APPLICATION_ENV,
        APPLICATION_PATH . '/configs/application.ini'
    );
@@ -324,12 +324,12 @@ You should see output like the following:
    Data Loaded.
 
 Now we have a fully working database and table for our guestbook application. Our next few steps are to build out
-our application code. This includes building a data source (in our case, we will use ``Zend_Db_Table``), and a data
+our application code. This includes building a data source (in our case, we will use ``Zend\Db\Table``), and a data
 mapper to connect that data source to our domain model. Finally we'll also create the controller that will interact
 with this model to both display existing entries and process new entries.
 
-We'll use a `Table Data Gateway`_ to connect to our data source; ``Zend_Db_Table`` provides this functionality. To
-get started, lets create a ``Zend_Db_Table``-based table class. Just as we've done for layouts and the database
+We'll use a `Table Data Gateway`_ to connect to our data source; ``Zend\Db\Table`` provides this functionality. To
+get started, lets create a ``Zend\Db\Table``-based table class. Just as we've done for layouts and the database
 adapter, we can use the ``zf`` tool to assist, using the command ``create db-table``. This takes minimally two
 arguments, the name by which you want to refer to the class, and the database table it maps to.
 
@@ -351,7 +351,7 @@ with the file ``Guestbook.php``. If you open that file, you'll see the following
    /**
     * This is the DbTable class for the guestbook table.
     */
-   class Application_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
+   class Application_Model_DbTable_Guestbook extends Zend\Db_Table\Abstract
    {
        /** Table name */
        protected $_name    = 'guestbook';
@@ -361,7 +361,7 @@ Note the class prefix: ``Application_Model_DbTable``. The class prefix for our m
 segment, and then we have the component, "Model_DbTable"; the latter is mapped to the ``models/DbTable/`` directory
 of the module.
 
-All that is truly necessary when extending ``Zend_Db_Table`` is to provide a table name and optionally the primary
+All that is truly necessary when extending ``Zend\Db\Table`` is to provide a table name and optionally the primary
 key (if it is not "id").
 
 Now let's create a `Data Mapper`_. A **Data Mapper** maps a domain object to the database. In our case, it will map
@@ -407,7 +407,7 @@ read as follows:
            if (is_string($dbTable)) {
                $dbTable = new $dbTable();
            }
-           if (!$dbTable instanceof Zend_Db_Table_Abstract) {
+           if (!$dbTable instanceof Zend\Db_Table\Abstract) {
                throw new Exception('Invalid table data gateway provided');
            }
            $this->_dbTable = $dbTable;
@@ -606,7 +606,7 @@ entries. This would look like the following:
 
    // application/controllers/GuestbookController.php
 
-   class GuestbookController extends Zend_Controller_Action
+   class GuestbookController extends Zend\Controller\Action
    {
        public function indexAction()
        {
@@ -655,7 +655,7 @@ And, of course, we need a view script to go along with that. Edit
 
    The data loader script introduced in this section (``scripts/load.sqlite.php``) can be used to create the
    database for each environment you have defined, as well as to load it with sample data. Internally, it utilizes
-   ``Zend_Console_Getopt``, which allows it to provide a number of command line switches. If you pass the "-h" or
+   ``Zend\Console\Getopt``, which allows it to provide a number of command line switches. If you pass the "-h" or
    "--help" switch, it will give you the available options:
 
    .. code-block:: php

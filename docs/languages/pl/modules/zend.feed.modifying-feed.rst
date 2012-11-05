@@ -15,7 +15,7 @@ go do pliku lub wysłać na serwer.
 .. code-block:: php
    :linenos:
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/1');
    $entry = $feed->current();
 
    $entry->title = 'To jest nowy tytuł';
@@ -32,7 +32,7 @@ Zauważ, że powyższy przykład będzie działał nawet gdy istniejący wpis ni
 poziomy zostaną automatycznie utworzone gdy będzie to potrzebne.
 
 Jeśli chcesz użyć innej przestrzeni nazw niż *atom:*, *rss:*, lub *osrss:* w swoim wpisie, musisz
-zarejestrować przestrzeń nazw w *Zend_Feed* używając metody *Zend_Feed::registerNamespace()*. Gdy modyfikujesz
+zarejestrować przestrzeń nazw w *Zend_Feed* używając metody *Zend\Feed\Feed::registerNamespace()*. Gdy modyfikujesz
 istniejący element, będzie on zawsze zachowywał oryginalną przestrzeń nazw. Gdy dodajesz nowy element, będzie
 on utworzony w domyślnej przestrzeni nazw jeśli nie określisz precyzyjnie innej przestrzeni.
 
@@ -43,14 +43,14 @@ on utworzony w domyślnej przestrzeni nazw jeśli nie określisz precyzyjnie inn
 .. code-block:: php
    :linenos:
 
-   $entry = new Zend_Feed_Entry_Atom();
+   $entry = new Zend\Feed_Entry\Atom();
    // id w Atom jest zawsze nadane przez serwer
    $entry->title = 'mój własny wpis';
    $entry->author->name = 'Przykładowy autor';
    $entry->author->email = 'me@example.com';
 
    // Teraz własna część
-   Zend_Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
+   Zend\Feed\Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
 
    $entry->{'myns:myelement_one'} = 'pierwsza własna część';
    $entry->{'myns:container_elt'}->part1 = 'pierwsza zagnieżdżona część';

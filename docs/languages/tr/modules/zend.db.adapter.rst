@@ -1,11 +1,11 @@
 .. EN-Revision: none
 .. _zend.db.adapter:
 
-Zend_Db_Adapter
+Zend\Db\Adapter
 ===============
 
 Zend_Db ve alakalı sınıflar Zend Framework için basit SQL veri tabanı arayüzü sağlamaktadır.
-Zend_Db_Adapter PHP uygulamalarınızı ilişkisel veri tabanı yönetim sistemlerine(RDBMS) bağlamak için
+Zend\Db\Adapter PHP uygulamalarınızı ilişkisel veri tabanı yönetim sistemlerine(RDBMS) bağlamak için
 kullanılan temel sınıftır. Farklı RDBMS'ler için farklı bağdaştırıcı sınıfları mevcuttur.
 
 Zend_Db sağlayıcıya özel PHP eklentileri ile genel arayüz arasında köprü oluşturarak , az bir emek ile PHP
@@ -66,7 +66,7 @@ Bağdaştırıcı yapıcısı bağlantıyı tanımlamak için parametreler dizis
    <?php
    require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
 
-   $db = new Zend_Db_Adapter_Pdo_Mysql(array(
+   $db = new Zend\Db\Adapter\Pdo\Mysql(array(
        'host'     => '127.0.0.1',
        'username' => 'webuser',
        'password' => 'xxxxxxxx',
@@ -79,12 +79,12 @@ Zend_Db Factory kullanmak
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Direk olarak Bağdaştırıcı yapıcısı(constructor) kullanmaya alternatif olarak bağdaştırıcının statik
-metodunu *Zend_Db::factory()* kullanarak bağdaştırıcı instance'ı olşturulabilir.Bu metod istem sırasında
-Bağdaştırıcı sınıf dosyasını :ref:`Zend_Loader::loadClass() <zend.loader.load.class>` kullanarak dinamik
+metodunu *Zend\Db\Db::factory()* kullanarak bağdaştırıcı instance'ı olşturulabilir.Bu metod istem sırasında
+Bağdaştırıcı sınıf dosyasını :ref:`Zend\Loader\Loader::loadClass() <zend.loader.load.class>` kullanarak dinamik
 olarak yükler.
 
 İlk argüman Bağdaştırıcı sınıfının esas adını adlandıran string argümandır. Örneğin 'Pdo_Mysql'
-string'i Zend_Db_Adapter_Pdo_Mysql sınıfını karşılamaktadır. İkinci argüman aynı Bağdaştırıcı
+string'i Zend\Db\Adapter\Pdo\Mysql sınıfını karşılamaktadır. İkinci argüman aynı Bağdaştırıcı
 yapıcısına verilen parametreler dizisi gibidir.
 
 .. _zend.db.adapter.connecting.factory.example:
@@ -96,15 +96,15 @@ yapıcısına verilen parametreler dizisi gibidir.
 
    <?php
    require_once 'Zend/Db.php';
-   // Zend_Db_Adapter_Pdo_Mysql sınıfını otomatik yükle ve instance'ını oluştur.
-   $db = Zend_Db::factory('Pdo_Mysql', array(
+   // Zend\Db\Adapter\Pdo\Mysql sınıfını otomatik yükle ve instance'ını oluştur.
+   $db = Zend\Db\Db::factory('Pdo_Mysql', array(
        'host'     => '127.0.0.1',
        'username' => 'webuser',
        'password' => 'xxxxxxxx',
        'dbname'   => 'test'
    ));
 
-Zend_Db_Adapter_Abstract sınıfını genişleten bir sınıf oluşturup , sınıf adını "Zend_Db_Adapter" paket
+Zend\Db_Adapter\Abstract sınıfını genişleten bir sınıf oluşturup , sınıf adını "Zend\Db\Adapter" paket
 öneki ile isimlendirmediyseniz bağdaştırınızı yüklemek için bağdaştırıcı sınıfının kılavuzluk
 eden kısmını parametre dizisindeki 'adapterNamespace' anahtarı ile belirtirseniz *factory()* metodunu
 kullanabilirsiniz.
@@ -120,7 +120,7 @@ kullanabilirsiniz.
    require_once 'Zend/Db.php';
 
    // Otomatik olarak MyProject_Db_Adapter_Pdo_Mysql sınıfını yükle ve instance'ını oluştur.
-   $db = Zend_Db::factory('Pdo_Mysql', array(
+   $db = Zend\Db\Db::factory('Pdo_Mysql', array(
                        'host'             => '127.0.0.1',
                        'username'         => 'webuser',
                        'password'         => 'xxxxxxxx',
@@ -146,7 +146,7 @@ olmadığında kullanılır.
 .. rubric:: Bağdaştırıcı factory metodunun Zend_Config nesnesiyle kullanımı
 
 Aşağıdaki örnekte Zend_Config nesnesi diziden oluşturuldu. Ayrıca veriyi harici bir dosyadan da
-yükleyebilirsiniz , örneğin :ref:`Zend_Config_Ini <zend.config.adapters.ini>` veya :ref:`Zend_Config_Xml
+yükleyebilirsiniz , örneğin :ref:`Zend\Config\Ini <zend.config.adapters.ini>` veya :ref:`Zend\Config\Xml
 <zend.config.adapters.xml>` ile.
 
 .. code-block:: php
@@ -156,7 +156,7 @@ yükleyebilirsiniz , örneğin :ref:`Zend_Config_Ini <zend.config.adapters.ini>`
    require_once 'Zend/Config.php';
    require_once 'Zend/Db.php';
 
-   $config = new Zend_Config(
+   $config = new Zend\Config\Config(
                    array(
                        'database' => array(
                                'adapter' => 'Mysqli',
@@ -169,7 +169,7 @@ yükleyebilirsiniz , örneğin :ref:`Zend_Config_Ini <zend.config.adapters.ini>`
                        )
                    );
 
-                   $db = Zend_Db::factory($config->database);
+                   $db = Zend\Db\Db::factory($config->database);
                    ));
 
 *factory()* metodunun ikinci argümanı bağdaştırıcı parametrelerine karşı gelen kayıtları içeren
@@ -197,7 +197,7 @@ açıklamaktadır.
   edebilir. Port parametresi PHP uygulamanızın RDBMS sunucusunda tanımlı olan port numarası ile eşleşmesi
   için port numarasını belirlemeye yarar.
 
-- **options**: Bu parametre tüm Zend_Db_Adapter sınıflarına genel olan seçeneklerin birleşmeli dizisidir.
+- **options**: Bu parametre tüm Zend\Db\Adapter sınıflarına genel olan seçeneklerin birleşmeli dizisidir.
 
 - **driver_options**: Bu parametre verilen veri tabanı eklentisine ilişkin ek seçenekler birleşmeli dizisidir.
   Bu parametrenin bir tipik kullanımı ise PDO sürücüsünün özniteliklerini(attribute) vermektir.
@@ -206,17 +206,17 @@ açıklamaktadır.
 
 .. rubric:: Factory'ye case-folding seçeneği vermek
 
-Bu seçeneği *Zend_Db::CASE_FOLDING*. sabiti ile belirtebilirsiniz. Bu , PDO ve IBM DB veri tabanı
+Bu seçeneği *Zend\Db\Db::CASE_FOLDING*. sabiti ile belirtebilirsiniz. Bu , PDO ve IBM DB veri tabanı
 sürücülerindeki sorgu sonuç setlerindeki string anahtarlarının küçük , büyük harf durumunu ayarlamaya
 yarayan *ATTR_CASE* özniteliğine karşılık gelmektedir. Bu seçeneğin aldığı değerler
-*Zend_Db::CASE_NATURAL* (varsayılan), *Zend_Db::CASE_UPPER*, ve *Zend_Db::CASE_LOWER*.
+*Zend\Db\Db::CASE_NATURAL* (varsayılan), *Zend\Db\Db::CASE_UPPER*, ve *Zend\Db\Db::CASE_LOWER*.
 
 .. code-block:: php
    :linenos:
 
    <?php
    $options = array(
-       Zend_Db::CASE_FOLDING => Zend_Db::CASE_UPPER
+       Zend\Db\Db::CASE_FOLDING => Zend\Db\Db::CASE_UPPER
    );
 
    $params = array(
@@ -227,13 +227,13 @@ yarayan *ATTR_CASE* özniteliğine karşılık gelmektedir. Bu seçeneğin aldı
        'options'        => $options
    );
 
-   $db = Zend_Db::factory('Db2', $params);
+   $db = Zend\Db\Db::factory('Db2', $params);
 
 .. _zend.db.adapter.connecting.parameters.example2:
 
 .. rubric:: Otomatik tırnaklama seçeneğini factory'ye vermek
 
-Bu seçeneği *Zend_Db::AUTO_QUOTE_IDENTIFIERS* sabiti le belirtebilirsiniz. Eğer değer *true* ise , tablo
+Bu seçeneği *Zend\Db\Db::AUTO_QUOTE_IDENTIFIERS* sabiti le belirtebilirsiniz. Eğer değer *true* ise , tablo
 isimleri , sütun isimleri , hatta alias'lar gibi tanımlayacılar Bağdaştırıcı nesnesi tarafından
 oluşturulan SQL sözdiziminde sınırlandırılır. Bu SQL kelimeleri veya özel karakter içeren
 tanımlayıcılar kullanmayı kolaylaştırır. Eğer değer *false* ise tanımlayıcılar otomatik olarak
@@ -245,7 +245,7 @@ kendiniz yapmalısınız.
 
    <?php
    $options = array(
-       Zend_Db::AUTO_QUOTE_IDENTIFIERS => false
+       Zend\Db\Db::AUTO_QUOTE_IDENTIFIERS => false
    );
 
    $params = array(
@@ -256,7 +256,7 @@ kendiniz yapmalısınız.
        'options'        => $options
    );
 
-   $db = Zend_Db::factory('Pdo_Mysql', $params);
+   $db = Zend\Db\Db::factory('Pdo_Mysql', $params);
 
 .. _zend.db.adapter.connecting.parameters.example3:
 
@@ -278,7 +278,7 @@ kendiniz yapmalısınız.
        'driver_options' => $pdoParams
    );
 
-   $db = Zend_Db::factory('Pdo_Mysql', $params);
+   $db = Zend\Db\Db::factory('Pdo_Mysql', $params);
 
    echo $db->getConnection()->getAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY);
 
@@ -313,9 +313,9 @@ uygulama kodunuzu basitleştirmenize yardım edebilir.
 
    <?php
    try {
-       $db = Zend_Db::factory('Pdo_Mysql', $parameters);
+       $db = Zend\Db\Db::factory('Pdo_Mysql', $parameters);
        $db->getConnection();
-   } catch (Zend_Db_Adapter_Exception $e) {
+   } catch (Zend\Db_Adapter\Exception $e) {
        // muhtemelen geçersiz oturum bilgisi ,veya belki de RDBMS çalışmıyor
    } catch (Zend_Exception $e) {
        // muhtemelen factory() belirli Bağdaştırıcı sınıfını yükleyemedi
@@ -398,7 +398,7 @@ SQL SELECT sorgusu çalıştırıp , sonuçlarını *fetchAll()* metodunu kullan
 getirebilirsiniz.
 
 Bu metodun aldığı ilk argüman SELECT deyimini içeren bir string'dir. Alternatif olarak ilk argüman bir
-sınıfın nesnesi :ref:`Zend_Db_Select <zend.db.select>` olabilir. Bağdaştırıcı otomatik olarak bu nesneyi
+sınıfın nesnesi :ref:`Zend\Db\Select <zend.db.select>` olabilir. Bağdaştırıcı otomatik olarak bu nesneyi
 SELECT deyiminin string gösterimine dönüştürür.
 
 *fetchAll()*'ın ikinci argümanı SQL deyiminde sembol yerini alan değerler dizisidir.
@@ -426,29 +426,29 @@ anahtarları select sorgusunda isimlendirilen sütunlar veya sütun takma isimle
 *setFetchMode()* metodunu kullanarak sonuç alma modunu belirleyebilirsiniz. Desteklenen modlar sabitler
 tarafından tanımlanmaktadır:
 
-- **Zend_Db::FETCH_ASSOC**: Veriyi ilişkili diziler olarak döndürür. Dizi anahtarları string olarak sütun
-  adlarıdır. Bu Zend_Db_Adapter sınıflarında varsayılan sonuç alma modudur.
+- **Zend\Db\Db::FETCH_ASSOC**: Veriyi ilişkili diziler olarak döndürür. Dizi anahtarları string olarak sütun
+  adlarıdır. Bu Zend\Db\Adapter sınıflarında varsayılan sonuç alma modudur.
 
   Eğer select listesi aynı isimli sütunlar içeriyorsa , örneğin JOIN ile farklı tablolardan geliyorsa
   ilişkili dizide verilen isim için sadece bir girdi olabilir. Eğer FETCH_ASSOC modunu kullanırsanız , eşsiz
   dizi anahtarları sağlamak için SELECT sorgunuzda sütun takma isimlerini (alias) belirlemelisiniz.
 
   Bu stringler varsayılan olarak veri tabanı sürücüsünden döndüğü gibi döner.Bu tipik olarak RDBMS
-  sunucusundaki sütun imlasıdır. Bu stringlerin küçük,büyük harf durumunu *Zend_Db::CASE_FOLDING*
+  sunucusundaki sütun imlasıdır. Bu stringlerin küçük,büyük harf durumunu *Zend\Db\Db::CASE_FOLDING*
   seçeneğini kullanarak belirleyebilirsiniz.Bunu bir örnekle desteklemek gerekirse , bakınız :ref:`
   <zend.db.adapter.connecting.parameters.example1>`.
 
-- **Zend_Db::FETCH_NUM**: veriyi dizi içinde diziler olarak döndürür. Bu diziler sorgunun select listesi
+- **Zend\Db\Db::FETCH_NUM**: veriyi dizi içinde diziler olarak döndürür. Bu diziler sorgunun select listesi
   alanlarının pozizyonlarına karşı gelen tamsayılar tarafından indekslenir.
 
-- **Zend_Db::FETCH_BOTH**: veriyi dizi içinde diziler olarak döndürür. Dizi anahtarları FETCH_ASSOC modunda
+- **Zend\Db\Db::FETCH_BOTH**: veriyi dizi içinde diziler olarak döndürür. Dizi anahtarları FETCH_ASSOC modunda
   kullanıldığı gibi hem stringler hemde FETCH_NUM modunda kullanıldığı gibi tamsayılardır.Dikkat edilirse
   dizideki öğe sayısı FETCH_ASSOC veya FETCH_NUM kullanımındakinin iki katıdır.
 
-- **Zend_Db::FETCH_COLUMN**: veriyi değerler dizisi olarak döndürür. Her dizideki değer sonuç listesindeki
+- **Zend\Db\Db::FETCH_COLUMN**: veriyi değerler dizisi olarak döndürür. Her dizideki değer sonuç listesindeki
   bir sütundan dönen değerdir. Varsayılan olarak bu 0 ile indekslenmiş ilk sütundur.
 
-- **Zend_Db::FETCH_OBJ**: veriyi nesneler dizisi olarak döndürür. Varsayılan sınıf PHP yerleşik stdClass
+- **Zend\Db\Db::FETCH_OBJ**: veriyi nesneler dizisi olarak döndürür. Varsayılan sınıf PHP yerleşik stdClass
   sınıfıdır. Sonuç listesinin sütunları nesnenin genel (public) özellikleridir.
 
 .. _zend.db.adapter.select.fetch-mode.example:
@@ -459,7 +459,7 @@ tarafından tanımlanmaktadır:
    :linenos:
 
    <?php
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchAll('SELECT * FROM bugs WHERE bug_id = ?', 2);
 
@@ -481,7 +481,7 @@ Sonuç listesinin Birleşmeli Dizi olarak Alınması
    :linenos:
 
    <?php
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchAssoc('SELECT * FROM bugs WHERE bug_id = ?', 2);
 
@@ -506,7 +506,7 @@ Eğer ilk sütundan başka sütunu döndürmeniz gerkiyorsa bakınız :ref:`
    :linenos:
 
    <?php
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchCol('SELECT bug_description, bug_id FROM bugs WHERE bug_id = ?', 2);
 
@@ -534,7 +534,7 @@ sütunda birbirinin kopyası değerler bulunuyorsa birleşmeli dizideki kayıtla
    :linenos:
 
    <?php
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchPairs('SELECT bug_id, bug_status FROM bugs');
 
@@ -556,7 +556,7 @@ satırını döndürür.
    :linenos:
 
    <?php
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchRow('SELECT * FROM bugs WHERE bug_id = 2');
    // dikkat edilirse $result tek bir nesne , nesneler dizisi değil
@@ -627,7 +627,7 @@ yok.
 Veri dizisinde tırnak içinde tutulmaması gereken durumda SQL ifadesi sayılan değerlere ihtiyaç
 duyabilirsiniz. Varsayılan olarak string veri değerleri yalın string olarak sayılır. Değerin SQL ifadesi
 olduğunu , bundan dolayı tırnak içine alınmaması gerektiğini belirtmek için düz metin olarak vermek yerine
-veri dizisindeki değeri Zend_Db_Expre tipinde nesne olarak verin.
+veri dizisindeki değeri Zend\Db\Expre tipinde nesne olarak verin.
 
 .. _zend.db.adapter.write.insert.example2:
 
@@ -638,7 +638,7 @@ veri dizisindeki değeri Zend_Db_Expre tipinde nesne olarak verin.
 
    <?php
    $data = array(
-       'created_on'      => new Zend_Db_Expr('CURDATE()'),
+       'created_on'      => new Zend\Db\Expr('CURDATE()'),
        'bug_description' => 'Something wrong',
        'bug_status'      => 'NEW'
    );
@@ -917,11 +917,11 @@ Belirttiğiniz SQL veritipi için opsiyonel ikinci argümanı kullanabilirsiniz.
         . $db->quoteType($value, 'INTEGER');
 
 
-Her Zend_Db_Adapter sınıfı sayısal SQL veritiplerini karşı gelen RDBMS markaları için kodlamıştır.
-Ayrıca sabitleri (*Zend_Db::INT_TYPE*, *Zend_Db::BIGINT_TYPE*, ve *Zend_Db::FLOAT_TYPE*) kullanarak daha RDBMS
+Her Zend\Db\Adapter sınıfı sayısal SQL veritiplerini karşı gelen RDBMS markaları için kodlamıştır.
+Ayrıca sabitleri (*Zend\Db\Db::INT_TYPE*, *Zend\Db\Db::BIGINT_TYPE*, ve *Zend\Db\Db::FLOAT_TYPE*) kullanarak daha RDBMS
 bağımsız şekilde kod yazabilirsiniz.
 
-Tabloların anahtar sütunlarına başvuran SQL sorguları üretirken Zend_Db_Table SQL tiplerini *quote()*'a
+Tabloların anahtar sütunlarına başvuran SQL sorguları üretirken Zend\Db\Table SQL tiplerini *quote()*'a
 belirtir.
 
 .. _zend.db.adapter.quoting.quote-into:
@@ -1014,7 +1014,7 @@ yazımı tam olarak şemanızda olduğu gibi , harflerin küçük-büyük harf d
 tıp aynı olmalı.
 
 Çoğu durumda Zend_Db sınıfları tarafından üretilen SQL'de varsayılan olarak tüm tanımlayıcılar otomatik
-olarak sınırlandırılır. Bu davranışı *Zend_Db::AUTO_QUOTE_IDENTIFIERS* seçeneği ile
+olarak sınırlandırılır. Bu davranışı *Zend\Db\Db::AUTO_QUOTE_IDENTIFIERS* seçeneği ile
 değiştirebilirsiniz.Bunu Bağdaştırcı instance'ı oluşturken belirtin. Bakınız :ref:`
 <zend.db.adapter.connecting.parameters.example2>`.
 
@@ -1043,7 +1043,7 @@ vaat edildiği gibi hareket sırasında yapılan değişiklikleri işaretler , b
 Değişiklikler etkin olarak yapılmamıştır , dönen verinin durumu harekete başlamadan önceki gibidir. Ancak
 hareketi geri almak aynı zamanda çalışan hareketler tarafından yapılan değişiklikleri etiklemeyecektir.
 
-Hareketi ortadan kaldırdıktan sonra *Zend_Db_Adapter* siz tekrar *beginTransaction()* çağırana kadar
+Hareketi ortadan kaldırdıktan sonra *Zend\Db\Adapter* siz tekrar *beginTransaction()* çağırana kadar
 auto-commit modunu döndürür.
 
 .. _zend.db.adapter.transactions.example:
@@ -1176,7 +1176,7 @@ Diğer Veri tabanı deyimlerinin çalıştırılması
 ---------------------------------------------
 
 PHP veri tabanı eklentisi tarafından sağlanan bağlantı nesnesine direk bağlantı kurma ihtiyacınız olacak
-durumlar olabilir. Bu eklentilerin kimisi Zend_Db_Adapter_Abstract tarafından kapsanmayan özellikler sunabilir.
+durumlar olabilir. Bu eklentilerin kimisi Zend\Db_Adapter\Abstract tarafından kapsanmayan özellikler sunabilir.
 
 Örneğin Zend_Db'nin çalıştırdığı tüm SQL deyimleri önce hazırlanır sonra çalıştırılır. Ancak
 bazı veri tabanı özellikleri hazırlanmış deyimlerle uyumsuzdur. CREATE ve ALTER gibi DDL deyimleri MySQL'de
@@ -1249,7 +1249,7 @@ Oracle
 
 - Oracle eklentisi konumsal parametreleri desteklemiyor. Adlandırılan parametreleri kullanmalısınız.
 
-- Şu anda *Zend_Db::CASE_FOLDING* seçeneği Oracle bağdaştırıcısı tarafından desteklenmiyor. Bu seçeneği
+- Şu anda *Zend\Db\Db::CASE_FOLDING* seçeneği Oracle bağdaştırıcısı tarafından desteklenmiyor. Bu seçeneği
   Oracle ile kullanabilmek için PDO OCI bağdaştırıcısını kullanmalısınız.
 
 .. _zend.db.adapter.adapter-notes.pdo-ibm:
@@ -1276,7 +1276,7 @@ PDO Microsoft SQL Server
 - Microsoft SQL Server sequence'ları desteklemiyor bu yüzden *lastInsertId()* argümanlarını yok sayar ve
   otomatik artışlı anahtar içi üretilen son değeri döndürür. *lastSequenceId()* metodu *null* döndürür.
 
-- Zend_Db_Adapter_Pdo_Mssql SQL Server veri tabanına bağlanır bağlanmaz *QUOTED_IDENTIFIER ON* yapar. Bu
+- Zend\Db\Adapter\Pdo\Mssql SQL Server veri tabanına bağlanır bağlanmaz *QUOTED_IDENTIFIER ON* yapar. Bu
   sürücünün tanıtıcı sınırlandırmaları için SQL Server'ın köşeli parantezi yerine standart SQL
   tanıtıcı sınırlandırıcı sembolü (*"*) kullanmasını sağlar.
 

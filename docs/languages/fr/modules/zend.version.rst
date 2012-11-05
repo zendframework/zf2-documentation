@@ -4,10 +4,10 @@
 Lire la version de Zend Framework
 =================================
 
-``Zend_Version`` fournit la constante de classe ``Zend_Version::VERSION`` qui contient une chaîne identifiant la
-version courante de Zend Framework. ``Zend_Version::VERSION`` contient "1.7.2", par exemple.
+``Zend_Version`` fournit la constante de classe ``Zend\Version\Version::VERSION`` qui contient une chaîne identifiant la
+version courante de Zend Framework. ``Zend\Version\Version::VERSION`` contient "1.7.2", par exemple.
 
-La méthode statique ``Zend_Version::compareVersion($version)`` est basée sur la fonction *PHP*
+La méthode statique ``Zend\Version\Version::compareVersion($version)`` est basée sur la fonction *PHP*
 `version_compare()`_. La méthode retourne -1 si la ``$version`` fournie est plus ancienne que la version courante
 de Zend Framework, 0 si c'est la même, et +1 si la ``$version`` fournie est plus récente que la version courante
 de Zend Framework.
@@ -20,9 +20,9 @@ de Zend Framework.
    :linenos:
 
    // retourne -1, 0 or 1
-   $cmp = Zend_Version::compareVersion('2.0.0');
+   $cmp = Zend\Version\Version::compareVersion('2.0.0');
 
-La méthode statique ``Zend_Version::getLatest()`` permet d'obtenir le numéro de version de la dernière release
+La méthode statique ``Zend\Version\Version::getLatest()`` permet d'obtenir le numéro de version de la dernière release
 stable disponible au téléchargement sur le site `Zend Framework`_.
 
 .. _zend.version.latest.example:
@@ -33,7 +33,7 @@ stable disponible au téléchargement sur le site `Zend Framework`_.
    :linenos:
 
    // retourne 1.11.0 (ou une version ultérieure)
-   echo Zend_Version::getLatest();
+   echo Zend\Version\Version::getLatest();
 
 
 

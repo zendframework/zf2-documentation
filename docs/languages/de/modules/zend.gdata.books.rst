@@ -46,7 +46,7 @@ aller Volumes deren Metadaten oder Texte dem Suchbegriff "domino" entsprechen:
 .. code-block:: php
    :linenos:
 
-   $books = new Zend_Gdata_Books();
+   $books = new ZendGData\Books();
    $query = $books->newVolumeQuery();
 
    $query->setQuery('domino');
@@ -157,10 +157,10 @@ Anmerkungsfeed gesendet werden. Im unten gezeigten Beispiel starten wir von eine
 .. code-block:: php
    :linenos:
 
-   $entry = new Zend_Gdata_Books_VolumeEntry();
-   $entry->setId(new Zend_Gdata_App_Extension_Id(VOLUME_ID));
-   $entry->setRating(new Zend_Gdata_Extension_Rating(3, 1, 5, 1));
-   $books->insertVolume($entry, Zend_Gdata_Books::MY_ANNOTATION_FEED_URI);
+   $entry = new ZendGData_Books\VolumeEntry();
+   $entry->setId(new ZendGData\App\Extension\Id(VOLUME_ID));
+   $entry->setRating(new ZendGData_Extension\Rating(3, 1, 5, 1));
+   $books->insertVolume($entry, ZendGData\Books::MY_ANNOTATION_FEED_URI);
 
 .. _zend.gdata.books.reviews:
 
@@ -183,7 +183,7 @@ Anmerkungsfeed übertragen. Im unteren Beispiel starten wir von einem bestehende
    :linenos:
 
    $annotationUrl = $entry->getAnnotationLink()->href;
-   $review        = new Zend_Gdata_Books_Extension_Review();
+   $review        = new ZendGData\Books\Extension\Review();
 
    $review->setText("Dieses Buch ist aufregend!");
    $entry->setReview($review);
@@ -201,7 +201,7 @@ modifizieren, und dann an den Anmerkungsfeed übertragen.
    :linenos:
 
    $entryUrl = $entry->getId()->getText();
-   $review   = new Zend_Gdata_Books_Extension_Review();
+   $review   = new ZendGData\Books\Extension\Review();
 
    $review->setText("Dieses Buch ist leider nicht sehr gut!");
    $entry->setReview($review);
@@ -228,11 +228,11 @@ hinzugefügt und an den Anmerkungsfeed übergeben werden.
    :linenos:
 
    $annotationUrl = $entry->getAnnotationLink()->href;
-   $category      = new Zend_Gdata_App_Extension_Category(
+   $category      = new ZendGData\App\Extension\Category(
        'rated',
        'http://schemas.google.com/books/2008/labels');
    $entry->setCategory(array($category));
-   $books->insertVolume($entry, Zend_Gdata_Books::MY_ANNOTATION_FEED_URI);
+   $books->insertVolume($entry, ZendGData\Books::MY_ANNOTATION_FEED_URI);
 
 .. _zend.gdata.books.retrieving_annotations:
 
@@ -374,11 +374,11 @@ Das folgende Beispiel erstellt einen neuen Eintrag und fügt Ihn der Bibliothek 
 .. code-block:: php
    :linenos:
 
-   $entry = new Zend_Gdata_Books_VolumeEntry();
-   $entry->setId(new Zend_Gdata_App_Extension_Id(VOLUME_ID));
+   $entry = new ZendGData_Books\VolumeEntry();
+   $entry->setId(new ZendGData\App\Extension\Id(VOLUME_ID));
    $books->insertVolume(
        $entry,
-       Zend_Gdata_Books::MY_LIBRARY_FEED_URI
+       ZendGData\Books::MY_LIBRARY_FEED_URI
    );
 
 Das folgende Beispiel fügt ein bestehendes ``VolumeEntry`` Objekt in der Bibliothek hinzu:
@@ -388,7 +388,7 @@ Das folgende Beispiel fügt ein bestehendes ``VolumeEntry`` Objekt in der Biblio
 
    $books->insertVolume(
        $entry,
-       Zend_Gdata_Books::MY_LIBRARY_FEED_URI
+       ZendGData\Books::MY_LIBRARY_FEED_URI
    );
 
 .. _zend.gdata.books.library_book_remove:

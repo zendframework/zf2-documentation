@@ -359,19 +359,19 @@ posts, including *URL*, title, notes, and tags.
 HTTP client
 -----------
 
-``ZendService\Delicious`` uses ``Zend_Rest_Client`` for making *HTTP* requests to the del.icio.us web service. To
+``ZendService\Delicious`` uses ``Zend\Rest\Client`` for making *HTTP* requests to the del.icio.us web service. To
 change which *HTTP* client ``ZendService\Delicious`` uses, you need to change the *HTTP* client of
-``Zend_Rest_Client``.
+``Zend\Rest\Client``.
 
 .. _zendservice.delicious.httpclient.changing:
 
-.. rubric:: Changing the HTTP client of Zend_Rest_Client
+.. rubric:: Changing the HTTP client of Zend\Rest\Client
 
 .. code-block:: php
    :linenos:
 
    $myHttpClient = new My_Http_Client();
-   Zend_Rest_Client::setHttpClient($myHttpClient);
+   Zend\Rest\Client::setHttpClient($myHttpClient);
 
 When you are making more than one request with ``ZendService\Delicious`` to speed your requests, it's better to
 configure your *HTTP* client to keep connections alive.
@@ -383,13 +383,13 @@ configure your *HTTP* client to keep connections alive.
 .. code-block:: php
    :linenos:
 
-   Zend_Rest_Client::getHttpClient()->setConfig(array(
+   Zend\Rest\Client::getHttpClient()->setConfig(array(
            'keepalive' => true
    ));
 
 .. note::
 
-   When a ``ZendService\Delicious`` object is constructed, the *SSL* transport of ``Zend_Rest_Client`` is set to
+   When a ``ZendService\Delicious`` object is constructed, the *SSL* transport of ``Zend\Rest\Client`` is set to
    *'ssl'* rather than the default of *'ssl2'*. This is because del.icio.us has some problems with *'ssl2'*, such
    as requests taking a long time to complete (around 2 seconds).
 

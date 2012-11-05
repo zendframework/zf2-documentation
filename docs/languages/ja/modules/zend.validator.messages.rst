@@ -10,7 +10,7 @@ information to set your own messages, or to translate existing messages which a 
 different.
 
 These validation messages are constants which can be found at top of each validator class. Let's look into
-``Zend_Validate_GreaterThan`` for an descriptive example:
+``Zend\Validate\GreaterThan`` for an descriptive example:
 
 .. code-block:: php
    :linenos:
@@ -28,7 +28,7 @@ you the above array which contains all messages a validator could return in the 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_GreaterThan();
+   $validator = new Zend\Validate\GreaterThan();
    $messages  = $validator->getMessageTemplates();
 
 Using the ``setMessage()`` method you can set another message to be returned in case of the specified failure.
@@ -36,10 +36,10 @@ Using the ``setMessage()`` method you can set another message to be returned in 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_GreaterThan();
+   $validator = new Zend\Validate\GreaterThan();
    $validator->setMessage(
        'Please enter a lower value',
-       Zend_Validate_GreaterThan::NOT_GREATER
+       Zend\Validate\GreaterThan::NOT_GREATER
    );
 
 The second parameter defines the failure which will be overridden. When you omit this parameter, then the given
@@ -68,15 +68,15 @@ So to translate all validation messages to German for example, all you have to d
 .. code-block:: php
    :linenos:
 
-   $translator = new Zend_Translator(
+   $translator = new Zend\Translator\Translator(
        array(
            'adapter' => 'array',
            'content' => '/resources/languages',
            'locale'  => $language,
-           'scan' => Zend_Translator::LOCALE_DIRECTORY
+           'scan' => Zend\Translator\Translator::LOCALE_DIRECTORY
        )
    );
-   Zend_Validate_Abstract::setDefaultTranslator($translator);
+   Zend\Validate\Abstract::setDefaultTranslator($translator);
 
 .. note::
 
@@ -106,12 +106,12 @@ So to translate all validation messages to German for example, all you have to d
 このような場合のため、 ``Zend_Validate``
 では自動的に検証メッセージの最大長を制限できるようになっています。
 
-実際に設定されているサイズを取得するには ``Zend_Validate::getMessageLength()``
+実際に設定されているサイズを取得するには ``Zend\Validate\Validate::getMessageLength()``
 を使用します。 この結果が -1
 の場合は、返されるメッセージが切り詰められることはありません。
 これがデフォルトの挙動です。
 
-返されるメッセージのサイズを制限するには ``Zend_Validate::setMessageLength()``
+返されるメッセージのサイズを制限するには ``Zend\Validate\Validate::setMessageLength()``
 を使用します。 必要に応じて任意の整数値を設定します。
 返されるメッセージのサイズがここで設定した長さを超えると、
 メッセージが切り詰められて最後に文字列 '**...**' が付加されます。
@@ -119,14 +119,14 @@ So to translate all validation messages to German for example, all you have to d
 .. code-block:: php
    :linenos:
 
-   Zend_Validate::setMessageLength(100);
+   Zend\Validate\Validate::setMessageLength(100);
 
 .. note::
 
    **このパラメータはどこで使われますか？**
 
    ここで設定したメッセージ長はすべてのバリデータで使われます。
-   自前で定義したバリデータでさえも、それが ``Zend_Validate_Abstract``
+   自前で定義したバリデータでさえも、それが ``Zend\Validate\Abstract``
    を継承したものである限りは同じです。
 
 

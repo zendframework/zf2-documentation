@@ -9,11 +9,11 @@ Indexes Bouwen
 Een Nieuwe Index Maken
 ----------------------
 
-De mogelijkheid om nieuwe Indexes te maken en ze up te daten is geïmplementeerd in de Zend_Search_Lucene module en
+De mogelijkheid om nieuwe Indexes te maken en ze up te daten is geïmplementeerd in de Zend\Search\Lucene module en
 Java Lucene. Je kan beide mogelijkheden gebruiken.
 
 Het volgende PHP code voorbeeld geeft een voorbeeld van hoe een bestand kan worden geïndexeerd door de
-Zend_Search_Lucene indexing API te gebruiken:
+Zend\Search\Lucene indexing API te gebruiken:
 
 .. code-block:: php
    :linenos:
@@ -21,15 +21,15 @@ Zend_Search_Lucene indexing API te gebruiken:
    <?php
 
    // Het tweede argument naar TRUE zetten maakt een nieuwe index
-   $index = new Zend_Search_Lucene('/data/mijn-index', true);
+   $index = new Zend\Search\Lucene('/data/mijn-index', true);
 
-   $doc = new Zend_Search_Lucene_Document();
+   $doc = new Zend\Search_Lucene\Document();
 
    // De document URL opslaan om het in het zoekresultaat te identificeren.
-   $doc->addField(Zend_Search_Lucene_Field::Text('url', $docUrl));
+   $doc->addField(Zend\Search_Lucene\Field::Text('url', $docUrl));
 
    // Documentinhoud indexeren
-   $doc->addField(Zend_Search_Lucene_Field::UnStored('inhoud', $docContent));
+   $doc->addField(Zend\Search_Lucene\Field::UnStored('inhoud', $docContent));
 
    // Een document aan de index toevoegen.
    $index->addDocument($doc);
@@ -39,13 +39,13 @@ Zend_Search_Lucene indexing API te gebruiken:
    ?>
 Nieuw toegevoegde documenten kunnen na de commit operatie van de index worden verkregen.
 
-*Zend_Search_Lucene::commit()* wordt automatisch opgeroepen aan het einde van de script uitvoering en vòòr elke
+*Zend\Search\Lucene::commit()* wordt automatisch opgeroepen aan het einde van de script uitvoering en vòòr elke
 zoekopdracht.
 
 Elke oproep van commit() genereert een nieuw index segment. [#]_ Het moet dus zo weinig mogelijk worden gebruikt.
 Aan de andere hand, het comitten van een groot aantal documenten in één keer verbruikt meer geheugen.
 
-Automatisch segment management optimalisatie is onderdeel van de toekomstige Zend_Search_Lucene verbeteringen.
+Automatisch segment management optimalisatie is onderdeel van de toekomstige Zend\Search\Lucene verbeteringen.
 
 .. _zend.search.lucene.index-creation.updating:
 
@@ -61,15 +61,15 @@ worden geopend zonder tweede parameter:
    <?php
 
    // Een bestaande index openen
-   $index = new Zend_Search_Lucene('/data/mijn-index');
+   $index = new Zend\Search\Lucene('/data/mijn-index');
 
-   $doc = new Zend_Search_Lucene_Document();
+   $doc = new Zend\Search_Lucene\Document();
 
    // Het document URL opslaan om het in het zoekresultaat te identificeren.
-   $doc->addField(Zend_Search_Lucene_Field::Text('url', $docUrl));
+   $doc->addField(Zend\Search_Lucene\Field::Text('url', $docUrl));
 
    // Documentinhoud indexeren
-   $doc->addField(Zend_Search_Lucene_Field::UnStored('inhoud', $docContent));
+   $doc->addField(Zend\Search_Lucene\Field::UnStored('inhoud', $docContent));
 
    // Een document aan de index toevoegen.
    $index->addDocument($doc);
@@ -79,11 +79,11 @@ worden geopend zonder tweede parameter:
    ?>
 Elke oproep (impliciet of expliciet) aan commit() genereert een nieuw index segment.
 
-Zend_Search_Lucene beheert segmenten niet automatisch. Je moet dus rekening houden met segmentgroottes. Een groot
+Zend\Search\Lucene beheert segmenten niet automatisch. Je moet dus rekening houden met segmentgroottes. Een groot
 segment is meer optimaal, maar heeft meer geheugen nodig tijdens zijn creatie.
 
 Lucene Java en Luke (Lucene Index Toolbox -`http://www.getopt.org/luke/`_) kunnen worden geraadpleegd om indexes te
-optimaliseren met deze versie van Zend_Search_Lucene.
+optimaliseren met deze versie van Zend\Search\Lucene.
 
 .. _zend.search.lucene.index-creation.document-updating:
 
@@ -93,7 +93,7 @@ Documenten updaten
 Het Lucene index bestandformaat ondersteund het updaten van documenten niet. Documenten zouden moeten worden
 verwijderd en opnieuw toegevoegd worden om de index up te daten.
 
-De *Zend_Search_Lucene::delete()* methode werkt met een intern document id index. Deze kan worden bekomen via een
+De *Zend\Search\Lucene::delete()* methode werkt met een intern document id index. Deze kan worden bekomen via een
 query hit per 'id' eigenschap:
 
 .. code-block:: php

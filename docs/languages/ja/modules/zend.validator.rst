@@ -30,7 +30,7 @@
 バリデータの基本的な使用法
 -------------
 
-ここで考えたバリデータについての定義をもとにして ``Zend_Validate_Interface``
+ここで考えたバリデータについての定義をもとにして ``Zend\Validate\Interface``
 が作成されました。これは、 ``isValid()`` および ``getMessages()``
 のふたつのメソッドを定義するものです。 ``isValid()``
 メソッドは指定した値に対する検証を行います。
@@ -57,7 +57,7 @@
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_EmailAddress();
+      $validator = new Zend\Validate\EmailAddress();
 
       if ($validator->isValid($email)) {
           // email は妥当な形式です
@@ -83,7 +83,7 @@
 はすべてのバリデータがサポートしており、 これは ``isValid()``
 に渡した値に置き換えられます。
 その他、バリデーションクラスによっていろいろなトークンをサポートしています。
-たとえば、 ``Zend_Validate_LessThan`` では **%max%** というトークンをサポートしています。
+たとえば、 ``Zend\Validate\LessThan`` では **%max%** というトークンをサポートしています。
 ``getMessageVariables()`` メソッドは、
 そのバリデータがサポートする変数トークンの配列を返します。
 
@@ -99,11 +99,11 @@
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_StringLength(8);
+      $validator = new Zend\Validate\StringLength(8);
 
       $validator->setMessage(
           '文字列 \'%value%\' は短すぎます。最低 %min% 文字以上必要です',
-          Zend_Validate_StringLength::TOO_SHORT);
+          Zend\Validate\StringLength::TOO_SHORT);
 
       if (!$validator->isValid('word')) {
           $messages = $validator->getMessages();
@@ -120,11 +120,11 @@
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_StringLength(array('min' => 8, 'max' => 12));
+      $validator = new Zend\Validate\StringLength(array('min' => 8, 'max' => 12));
 
       $validator->setMessages( array(
-          Zend_Validate_StringLength::TOO_SHORT => '文字列 \'%value%\' は短すぎます',
-          Zend_Validate_StringLength::TOO_LONG  => '文字列 \'%value%\' は長すぎます'
+          Zend\Validate\StringLength::TOO_SHORT => '文字列 \'%value%\' は短すぎます',
+          Zend\Validate\StringLength::TOO_LONG  => '文字列 \'%value%\' は長すぎます'
       ));
 
 
@@ -140,7 +140,7 @@
 
       require_once 'Zend/Validate/StringLength.php';
 
-      $validator = new Zend_Validate_StringLength(array('min' => 8, 'max' => 12));
+      $validator = new Zend\Validate\StringLength(array('min' => 8, 'max' => 12));
 
       if (!validator->isValid('word')) {
           echo 'これは、単語として無効です: '
@@ -160,7 +160,7 @@
 ----------------
 
 指定したバリデーションクラスを読み込んでそのインスタンスを作成するというのが面倒ならば、
-もうひとつの方法として、静的メソッド ``Zend_Validate::is()``
+もうひとつの方法として、静的メソッド ``Zend\Validate\Validate::is()``
 を実行する方法もあります。このメソッドの最初の引数には、 ``isValid()``
 メソッドに渡す入力値を指定します。
 二番目の引数は文字列で、バリデーションクラスのベースネーム (``Zend_Validate``
@@ -171,7 +171,7 @@
    .. code-block:: php
       :linenos:
 
-      if (Zend_Validate::is($email, 'EmailAddress')) {
+      if (Zend\Validate\Validate::is($email, 'EmailAddress')) {
           // email は妥当な形式です
       }
 
@@ -185,7 +185,7 @@
 
       require_once 'Zend/Validate.php';
 
-      if (Zend_Validate::is($value, 'Between', array('min' => 1, 'max' => 12))) {
+      if (Zend\Validate\Validate::is($value, 'Between', array('min' => 1, 'max' => 12))) {
           // $value は 1 から 12 までの間です
       }
 
@@ -200,7 +200,7 @@
 最初の例の方式、つまりバリデータオブジェクトのインスタンスを作成して その
 ``isValid()`` メソッドをコールする方式のほうがより効率的です。
 
-また、 ``Zend_Filter_Input`` クラスでも、特定の入力データのセットを処理する際に
+また、 ``Zend\Filter\Input`` クラスでも、特定の入力データのセットを処理する際に
 複数のフィルタやバリデータを必要に応じて実行させる機能も提供しています。
 詳細は :ref:` <zend.filter.input>` を参照ください。
 
@@ -209,49 +209,49 @@
 名前空間
 ^^^^
 
-自分で定義したバリデータを使う際に、 ``Zend_Validate::is()`` に 4
+自分で定義したバリデータを使う際に、 ``Zend\Validate\Validate::is()`` に 4
 番目のパラメータを指定できます。
 これは、バリデータを探すための名前空間となります。
 
 .. code-block:: php
    :linenos:
 
-   if (Zend_Validate::is($value, 'MyValidator', array('min' => 1, 'max' => 12),
+   if (Zend\Validate\Validate::is($value, 'MyValidator', array('min' => 1, 'max' => 12),
                          array('FirstNamespace', 'SecondNamespace')) {
        // $value は妥当な値です
    }
 
 ``Zend_Validate`` には、名前空間をデフォルトで設定することもできます。
-つまり、起動時に一度設定しておけば ``Zend_Validate::is()``
+つまり、起動時に一度設定しておけば ``Zend\Validate\Validate::is()``
 のたびに指定する必要がなくなるということです。
 次のコード片は、上のコードと同じ意味となります。
 
 .. code-block:: php
    :linenos:
 
-   Zend_Validate::setDefaultNamespaces(array('FirstNamespace', 'SecondNamespace'));
-   if (Zend_Validate::is($value, 'MyValidator', array('min' => 1, 'max' => 12)) {
+   Zend\Validate\Validate::setDefaultNamespaces(array('FirstNamespace', 'SecondNamespace'));
+   if (Zend\Validate\Validate::is($value, 'MyValidator', array('min' => 1, 'max' => 12)) {
        // $value は妥当な値です
    }
 
-   iif (Zend_Validate::is($value, 'OtherValidator', array('min' => 1, 'max' => 12)) {
+   iif (Zend\Validate\Validate::is($value, 'OtherValidator', array('min' => 1, 'max' => 12)) {
        // $value は妥当な値です
    }
 
 名前空間の操作のために、次のような便利なメソッド群が用意されています。
 
-- **Zend_Validate::getDefaultNamespaces()**:
+- **Zend\Validate\Validate::getDefaultNamespaces()**:
   設定されているすべての名前空間を配列で返します。
 
-- **Zend_Validate::setDefaultNamespaces()**:
+- **Zend\Validate\Validate::setDefaultNamespaces()**:
   新たなデフォルト名前空間を設定し、既存の名前空間を上書きします。
   単一の名前空間の場合は文字列、複数の場合は配列で指定できます。
 
-- **Zend_Validate::addDefaultNamespaces()**:
+- **Zend\Validate\Validate::addDefaultNamespaces()**:
   新たな名前空間を、既に設定されているものに追加します。
   単一の名前空間の場合は文字列、複数の場合は配列で指定できます。
 
-- **Zend_Validate::hasDefaultNamespaces()**: デフォルトの名前空間が設定されている場合は
+- **Zend\Validate\Validate::hasDefaultNamespaces()**: デフォルトの名前空間が設定されている場合は
   ``TRUE`` 、 設定されていない場合は ``FALSE`` を返します。
 
 .. _zend.validator.introduction.translation:
@@ -267,12 +267,12 @@ Validate クラスには ``setTranslator()`` メソッドがあり、 ``Zend_Tra
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(array('min' => 8, 'max' => 12));
-   $translate = new Zend_Translator(
+   $validator = new Zend\Validate\StringLength(array('min' => 8, 'max' => 12));
+   $translate = new Zend\Translator\Translator(
        array(
            'adapter' => 'array',
            'content' => array(
-               Zend_Validate_StringLength::TOO_SHORT => 'Translated \'%value%\''
+               Zend\Validate\StringLength::TOO_SHORT => 'Translated \'%value%\''
            ),
            'locale' => 'en'
        )
@@ -288,16 +288,16 @@ Validate クラスには ``setTranslator()`` メソッドがあり、 ``Zend_Tra
 .. code-block:: php
    :linenos:
 
-   $translate = new Zend_Translator(
+   $translate = new Zend\Translator\Translator(
        array(
            'adapter' => 'array',
            'content' => array(
-               Zend_Validate_StringLength::TOO_SHORT => 'Translated \'%value%\''
+               Zend\Validate\StringLength::TOO_SHORT => 'Translated \'%value%\''
            ),
            'locale' => 'en'
        )
    );
-   Zend_Validate::setDefaultTranslator($translate);
+   Zend\Validate\Validate::setDefaultTranslator($translate);
 
 .. note::
 
@@ -311,7 +311,7 @@ Validate クラスには ``setTranslator()`` メソッドがあり、 ``Zend_Tra
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_StringLength(array('min' => 8, 'max' => 12));
+   $validator = new Zend\Validate\StringLength(array('min' => 8, 'max' => 12));
    if (!$validator->isTranslatorDisabled()) {
        $validator->setDisableTranslator();
    }

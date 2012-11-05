@@ -8,9 +8,9 @@
 SOAP, alebo REST.
 
 Ak potrebuješ podporu pre všeobecné na XML založené REST služby, možno sa budeš chcieť pozrieť na
-:ref:`Zend_Rest_Client <zend.rest.client>`.
+:ref:`Zend\Rest\Client <zend.rest.client>`.
 
-Okrem možnosti rozširenia *Zend_Service* a použitia *Zend_Rest_Client* pre web služby založené na REST je k
+Okrem možnosti rozširenia *Zend_Service* a použitia *Zend\Rest\Client* pre web služby založené na REST je k
 dispozícii podpora pre známe web služby ako:
 
 - :ref:`Akismet <zend.service.akismet>`

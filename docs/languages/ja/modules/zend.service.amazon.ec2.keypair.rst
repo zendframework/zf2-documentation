@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.keypairs:
 
-Zend_Service_Amazon_Ec2: Keypairs
+Zend\Service_Amazon\Ec2: Keypairs
 =================================
 
 Keypairsはインスタンスにアクセスするために使われます。
@@ -19,7 +19,7 @@ Keypairsはインスタンスにアクセスするために使われます。
 .. code-block:: php
    :linenos:
 
-   $ec2_kp = new Zend_Service_Amazon_Ec2_Keypair('aws_key','aws_secret_key');
+   $ec2_kp = new Zend\Service\Amazon\Ec2\Keypair('aws_key','aws_secret_key');
    $return = $ec2_kp->create('my-new-key');
 
 .. _zend.service.amazon.ec2.keypairs.delete:
@@ -35,7 +35,7 @@ keypairで現在実行中のインスタンスは、今まで通りそれらに�
 .. code-block:: php
    :linenos:
 
-   $ec2_kp = new Zend_Service_Amazon_Ec2_Keypair('aws_key','aws_secret_key');
+   $ec2_kp = new Zend\Service\Amazon\Ec2\Keypair('aws_key','aws_secret_key');
    $return = $ec2_kp->delete('my-new-key');
 
 .. _zend.service.amazon.ec2.describe:
@@ -51,7 +51,7 @@ keypairで現在実行中のインスタンスは、今まで通りそれらに�
 .. code-block:: php
    :linenos:
 
-   $ec2_kp = new Zend_Service_Amazon_Ec2_Keypair('aws_key','aws_secret_key');
+   $ec2_kp = new Zend\Service\Amazon\Ec2\Keypair('aws_key','aws_secret_key');
    $return = $ec2_kp->describe('my-new-key');
 
 

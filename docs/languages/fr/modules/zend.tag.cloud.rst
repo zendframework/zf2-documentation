@@ -1,41 +1,41 @@
 .. EN-Revision: none
 .. _zend.tag.cloud:
 
-Zend_Tag_Cloud
+Zend\Tag\Cloud
 ==============
 
-``Zend_Tag_Cloud`` est la partie qui s'occupe du rendu dans ``Zend_Tag``. par défaut, elle utilise un ensemble de
+``Zend\Tag\Cloud`` est la partie qui s'occupe du rendu dans ``Zend_Tag``. par défaut, elle utilise un ensemble de
 décorateurs HTML , ce qui permet de créer des nuages de tags pour un site, mais elle met aussi à votre
 disposition 2 classes abstraites vous permettant de créer vos propres rendus, par exemple pour créer des tags
 rendus en *PDF*.
 
-Vous pouvez instancier et configurer ``Zend_Tag_Cloud`` de manière classique, ou via un tableau ou un objet
+Vous pouvez instancier et configurer ``Zend\Tag\Cloud`` de manière classique, ou via un tableau ou un objet
 ``Zend_Config``. Voici les options disponibles:
 
 - *cloudDecorator*\  : défini le décorateur du nuage. Ceci peut être un objet, un nom de classe qui sera
-  chargée par pluginloader, une instance de ``Zend_Tag_Cloud_Decorator_Cloud`` ou un tableau contenant les clés
+  chargée par pluginloader, une instance de ``Zend\Tag\Cloud\Decorator\Cloud`` ou un tableau contenant les clés
   *decorator* et optionnellement *options*, qui est elle-même un tableau passé comme options au constructeur du
   décorateur.
 
 - *tagDecorator*\  : le décorateur d'un tag individuel. Ceci peut être un objet, un nom de classe qui sera
-  chargée par pluginloader, une instance de ``Zend_Tag_Cloud_Decorator_Cloud`` ou un tableau contenant les clés
+  chargée par pluginloader, une instance de ``Zend\Tag\Cloud\Decorator\Cloud`` ou un tableau contenant les clés
   *decorator* et optionnellement *options*, qui est elle-même un tableau passé comme options au constructeur du
   décorateur.
 
 - *pluginLoader*\  : un chargeur de classe à utiliser. Doit implémenter l'interface
-  ``Zend_Loader_PluginLoader_Interface``.
+  ``Zend\Loader_PluginLoader\Interface``.
 
 - *prefixPath*\  : préfixes de chemins à ajouter au chargeur de classes. Doit être un tableau contenant les
   préfixes et les chemins. Les éléments invalides seront ignorés.
 
-- *itemList*\  : une liste d'entités à utiliser. Doit être une instance de ``Zend_Tag_ItemList``.
+- *itemList*\  : une liste d'entités à utiliser. Doit être une instance de ``Zend\Tag\ItemList``.
 
-- *tags*\  : une liste de tags à assigner au nuage. Chacun doit implémenter ``Zend_Tag_Taggable`` ou être un
-  tableau qui pourra être utilisé pour instancier ``Zend_Tag_Item``.
+- *tags*\  : une liste de tags à assigner au nuage. Chacun doit implémenter ``Zend\Tag\Taggable`` ou être un
+  tableau qui pourra être utilisé pour instancier ``Zend\Tag\Item``.
 
 .. _zend.tag.cloud.example.using:
 
-.. rubric:: Utiliser Zend_Tag_Cloud
+.. rubric:: Utiliser Zend\Tag\Cloud
 
 Cet exemple illustre les manipulations de base pour créer un nuage de tags, ajouter des tags et afficher le rendu.
 
@@ -43,7 +43,7 @@ Cet exemple illustre les manipulations de base pour créer un nuage de tags, ajo
    :linenos:
 
    // Crée un nuage et assigne des tags statiques
-   $cloud = new Zend_Tag_Cloud(array(
+   $cloud = new Zend\Tag\Cloud(array(
        'tags' => array(
            array('title' => 'Code', 'weight' => 50,
                  'params' => array('url' => '/tag/code')),
@@ -64,8 +64,8 @@ Ceci affichera le nuage de tags, avec les polices par défaut.
 Decorateurs
 -----------
 
-``Zend_Tag_Cloud`` a besoin de 2 types de décorateurs afin de rendre le nuage. Un décorateur pour rendre chacun
-des tags, et un décorateur pour rendre le nuage lui-même. ``Zend_Tag_Cloud`` propose un décorateur par défaut
+``Zend\Tag\Cloud`` a besoin de 2 types de décorateurs afin de rendre le nuage. Un décorateur pour rendre chacun
+des tags, et un décorateur pour rendre le nuage lui-même. ``Zend\Tag\Cloud`` propose un décorateur par défaut
 qui formate le nuage en HTML. Il utilise par défaut des listes ul/li et des tailles de polices différentes selon
 les poids des tags.
 

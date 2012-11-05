@@ -3,7 +3,7 @@
 Lucene Index Structure
 ======================
 
-In order to fully utilize ``Zend_Search_Lucene``'s capabilities with maximum performance, you need to understand
+In order to fully utilize ``Zend\Search\Lucene``'s capabilities with maximum performance, you need to understand
 it's internal index structure.
 
 An **index** is stored as a set of files within a single directory.
@@ -53,6 +53,6 @@ starts).
 
 
 .. [#] Starting with Lucene 2.3, document storage files can be shared between segments; however,
-       ``Zend_Search_Lucene`` doesn't use this capability
-.. [#] This call is provided only by Java Lucene now, but it's planned to extend the ``Zend_Search_Lucene`` *API*
+       ``Zend\Search\Lucene`` doesn't use this capability
+.. [#] This call is provided only by Java Lucene now, but it's planned to extend the ``Zend\Search\Lucene`` *API*
        with similar functionality

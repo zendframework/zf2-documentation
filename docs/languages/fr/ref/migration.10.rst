@@ -37,7 +37,7 @@ désactiver *ViewRenderer* dans votre fichier d'amorçage du contrôleur frontal
 .. code-block:: php
    :linenos:
 
-   // En considérant que $front est une instance de Zend_Controller_Front
+   // En considérant que $front est une instance de Zend\Controller\Front
    $front->setParam('noViewRenderer', true);
 
 Cependant, ceci n'est pas une bonne stratégie à long terme, car il apparaît aisément que vous devrez écrire
@@ -102,8 +102,8 @@ réalisé facilement à tout moment.
      :linenos:
 
      // En considérant que $view a déjà été définie
-     $viewRenderer = new Zend_Controller_Action_Helper_ViewRenderer($view);
-     Zend_Controller_Action_HelperBroker::addHelper($viewRenderer);
+     $viewRenderer = new Zend\Controller\Action\Helper\ViewRenderer($view);
+     Zend\Controller_Action\HelperBroker::addHelper($viewRenderer);
 
 - A tout moment durant le processus d'amorçage :
 
@@ -111,7 +111,7 @@ réalisé facilement à tout moment.
      :linenos:
 
      $viewRenderer =
-         Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
+         Zend\Controller_Action\HelperBroker::getStaticHelper('viewRenderer');
      $viewRenderer->setView($view);
 
 Il existe plusieurs manières de modifier *ViewRenderer*, incluant le réglage d'un script de vue différent à
@@ -134,7 +134,7 @@ mettre à ``NULL``, le paramètre script est optionnel et peut être spécifié 
 .. code-block:: php
    :linenos:
 
-   $currency = new Zend_Currency($currency, $locale);
+   $currency = new Zend\Currency\Currency($currency, $locale);
 
 La méthode ``setFormat()`` prend maintenant en paramètre un tableau d'options. Ces options sont permanentes et
 écrasent les précédentes déjà présentes. La nouvelle option "precision" a été intégrée :

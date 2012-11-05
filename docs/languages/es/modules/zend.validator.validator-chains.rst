@@ -12,11 +12,11 @@ de usuario debe tener entre 6 y 12 caracteres alfanuméricos.
    :linenos:
 
    // Crea una cadena de validadores y le agrega validadores
-   $validatorChain = new Zend_Validate();
+   $validatorChain = new Zend\Validate\Validate();
    $validatorChain->addValidator(
-                       new Zend_Validate_StringLength(array('min' => 6,
+                       new Zend\Validate\StringLength(array('min' => 6,
                                                             'max' => 12)))
-                  ->addValidator(new Zend_Validate_Alnum());
+                  ->addValidator(new Zend\Validate\Alnum());
 
    // Valida el username
    if ($validatorChain->isValid($username)) {
@@ -45,11 +45,11 @@ la longitud del string de validación:
    :linenos:
 
    $validatorChain->addValidator(
-                       new Zend_Validate_StringLength(array('min' => 6,
+                       new Zend\Validate\StringLength(array('min' => 6,
                                                             'max' => 12)),
                        true)
-                  ->addValidator(new Zend_Validate_Alnum());
+                  ->addValidator(new Zend\Validate\Alnum());
 
-Cualquier objeto que implemente ``Zend_Validate_Interface`` puede ser utilizado en una cadena de validación.
+Cualquier objeto que implemente ``Zend\Validate\Interface`` puede ser utilizado en una cadena de validación.
 
 

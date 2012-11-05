@@ -9,7 +9,7 @@
 
 JSON לא מאפשר שיוך אובייקטים, לכן לא מומלץ לקודד אובייקטים אשר
 משוייכים או מיוחסים לאובייקטים אחרים. אם ישנה בעיה עם רקורסיה
-באובייקטים, *Zend_Json::encode()* ו *Zend_Json_Encoder::encode()* מאפשרים הזנה של
+באובייקטים, *Zend\Json\Json::encode()* ו *Zend\Json\Encoder::encode()* מאפשרים הזנה של
 פרמטר שני אופציונלי לבדיקת רקורסיה; אם התבצע קידוד לאובייקט
 פעמיים, חריג יזרק אשר יודיע על כך.
 
@@ -26,7 +26,7 @@ JSON לא מאפשר שיוך אובייקטים, לכן לא מומלץ לקו�
    :linenos:
 
    // Decode JSON objects as PHP objects
-   $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);
+   $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
 
 
 אובייקטים אשר יפוענחו יוחזרו כאובייקטים של *StdClass* עם ערכים

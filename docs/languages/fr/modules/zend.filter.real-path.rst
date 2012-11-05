@@ -8,14 +8,14 @@ Ce filtre va résoudre un lien ou un chemin en chemin absolu canonique. Toutes r
 ``'/../'`` et tout ajout supplémentaire de ``'/'`` sera résolu ou supprimé. Aucun caractère de lien symbolique
 ne sera présent dans le résultat (``'/./'`` ou ``'/../'``)
 
-``Zend_Filter_RealPath`` retourne ``FALSE`` en cas d'echec par exemple si le fichier n'existe pas. Sur les systems
-BSD, ``Zend_Filter_RealPath`` n'échoue pas si seule la dernière partie du chemin n'existe pas, les autres
+``Zend\Filter\RealPath`` retourne ``FALSE`` en cas d'echec par exemple si le fichier n'existe pas. Sur les systems
+BSD, ``Zend\Filter\RealPath`` n'échoue pas si seule la dernière partie du chemin n'existe pas, les autres
 systèmes retourneront ``FALSE``.
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_RealPath();
+   $filter = new Zend\Filter\RealPath();
    $path   = '/www/var/path/../../mypath';
    $filtered = $filter->filter($path);
 
@@ -28,7 +28,7 @@ utiliser ``setExists()``.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_RealPath(false);
+   $filter = new Zend\Filter\RealPath(false);
    $path   = '/www/var/path/../../non/existing/path';
    $filtered = $filter->filter($path);
 

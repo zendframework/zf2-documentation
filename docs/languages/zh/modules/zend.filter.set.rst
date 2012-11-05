@@ -71,8 +71,8 @@ RealPath
 字符并且返回规范化后的绝对路径名，返回的结果路径将没有符号链接 '/./' 或 '/../'
 部分。
 
-如果失败，例如文件不存在， *Zend_Filter_RealPath* 将返回 *FALSE*\ 。在 BSD
-系统，如果只有路径最后部分不存在， *Zend_Filter_RealPath* 不会失败，但其它系统返回
+如果失败，例如文件不存在， *Zend\Filter\RealPath* 将返回 *FALSE*\ 。在 BSD
+系统，如果只有路径最后部分不存在， *Zend\Filter\RealPath* 不会失败，但其它系统返回
 *FALSE*\ 。
 
 .. _zend.filter.set.stringtolower:

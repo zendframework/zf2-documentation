@@ -4,7 +4,7 @@
 Odbieranie danych z kanału informacyjnego Atom
 ==============================================
 
-*Zend_Feed_Atom* jest używany w prawie taki sam sposób jak *Zend_Feed_Rss*. Zapewnia taki sam dostęp do
+*Zend\Feed\Atom* jest używany w prawie taki sam sposób jak *Zend\Feed\Rss*. Zapewnia taki sam dostęp do
 właściwości samego kanału i taką samą iterację po wpisach w kanale. Główną różnicą jest sama struktura
 protokołu Atom. Atom jest następcą RSS; jest bardziej uogólnionym protokołem i jest zaprojektowany aby
 łatwiej radzić sobie z kanałami, które ukazują cała swoją zawartość wewnątrz pliku RSS dzieląc
@@ -19,7 +19,7 @@ Odczytywanie kanału Atom i wyświetlenie pól *title* i *summary* dla każdego 
 .. code-block:: php
    :linenos:
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/');
    echo 'Kanał zawiera ' . $feed->count() . ' wpisów.' . "\n\n";
    foreach ($feed as $entry) {
        echo 'Tytuł: ' . $entry->title() . "\n";

@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.dom.query:
 
-Zend_Dom_Query
+Zend\Dom\Query
 ==============
 
-``Zend_Dom_Query`` を使用すると、 *XML* や (X) *HTML* ドキュメントに対して XPath あるいは
+``Zend\Dom\Query`` を使用すると、 *XML* や (X) *HTML* ドキュメントに対して XPath あるいは
 *CSS* セレクタを用いた問い合わせができるようになります。 *MVC*
 アプリケーションの機能テストを支援するために作られたものですが、
 スクリーンスクレイパーを手早く作成するためにも使うことができます。
@@ -21,13 +21,13 @@ Javascript のツールキットの中にも *CSS*
 動作原理
 ----
 
-``Zend_Dom_Query`` を使用するには、 ``Zend_Dom_Query``
+``Zend\Dom\Query`` を使用するには、 ``Zend\Dom\Query``
 オブジェクトのインスタンスを作成します。 その際に、問い合わせたいドキュメント
 (文字列) をオプションで渡すことができます。 ドキュメントを用意すれば、 ``query()``
 メソッドあるいは ``queryXpath()`` メソッドを使用できます。どちらのメソッドも、
-マッチしたノードを含む ``Zend_Dom_Query_Result`` オブジェクトを返します。
+マッチしたノードを含む ``Zend\Dom_Query\Result`` オブジェクトを返します。
 
-``Zend_Dom_Query`` を使うことと DOMDocument + DOMXPath を使うことの最大の違いは、 *CSS*
+``Zend\Dom\Query`` を使うことと DOMDocument + DOMXPath を使うことの最大の違いは、 *CSS*
 セレクタによる選択が可能かどうかということです。
 以下の内容を、任意の組み合わせで使用できます。
 
@@ -87,14 +87,14 @@ Javascript のツールキットの中にも *CSS*
 
 問い合わせを実行したら、その結果のオブジェクトを用いてノードの情報を取得したり、
 そのノード (あるいはノードの内容) を取り出して操作したりできます。
-``Zend_Dom_Query_Result`` は ``Countable`` と ``Iterator`` を実装しており、内部では結果を DOMNodes
+``Zend\Dom_Query\Result`` は ``Countable`` と ``Iterator`` を実装しており、内部では結果を DOMNodes
 および DOMElements で保持しています。 たとえば、次のようなコードを上の *HTML*
 に対して実行することを考えてみましょう。
 
 .. code-block:: php
    :linenos:
 
-   $dom = new Zend_Dom_Query($html);
+   $dom = new Zend\Dom\Query($html);
    $results = $dom->query('.foo .bar a');
 
    $count = count($results); // マッチした数: 4
@@ -102,24 +102,24 @@ Javascript のツールキットの中にも *CSS*
        // $result は DOMElement です
    }
 
-``Zend_Dom_Query`` では、 ``queryXpath()`` メソッドで XPath
+``Zend\Dom\Query`` では、 ``queryXpath()`` メソッドで XPath
 クエリを直接使用することもできます。 XPath
 クエリとして正しいものならなんでもこのメソッドに渡すことができ、 結果は
-``Zend_Dom_Query_Result`` オブジェクトで返されます。
+``Zend\Dom_Query\Result`` オブジェクトで返されます。
 
 .. _zend.dom.query.methods:
 
 使用可能なメソッド
 ---------
 
-``Zend_Dom_Query`` 系のクラスでは、次のメソッドが使用できます。
+``Zend\Dom\Query`` 系のクラスでは、次のメソッドが使用できます。
 
 .. _zend.dom.query.methods.zenddomquery:
 
-Zend_Dom_Query
+Zend\Dom\Query
 ^^^^^^^^^^^^^^
 
-次のメソッドが ``Zend_Dom_Query`` で使用できます。
+次のメソッドが ``Zend\Dom\Query`` で使用できます。
 
 - ``setDocumentXml($document)``: 対象となる *XML* 文字列を指定します。
 
@@ -127,7 +127,7 @@ Zend_Dom_Query
 
 - ``setDocumentHtml($document)``: 対象となる *HTML* 文字列を指定します。
 
-- ``setDocument($document)``: 対象となる文字列を指定します。 ``Zend_Dom_Query``
+- ``setDocument($document)``: 対象となる文字列を指定します。 ``Zend\Dom\Query``
   がドキュメントの形式を自動判定します。
 
 - ``getDocument()``: オブジェクトに渡した元の文字列を取得します。
@@ -141,10 +141,10 @@ Zend_Dom_Query
 
 .. _zend.dom.query.methods.zenddomqueryresult:
 
-Zend_Dom_Query_Result
+Zend\Dom_Query\Result
 ^^^^^^^^^^^^^^^^^^^^^
 
-先ほど説明したように、 ``Zend_Dom_Query_Result`` は ``Iterator`` と ``Countable``
+先ほど説明したように、 ``Zend\Dom_Query\Result`` は ``Iterator`` と ``Countable``
 を実装しており、 ``foreach`` ループで使用したり ``count()``
 関数を利用したりできます。 さらに、次のメソッドを公開しています。
 
@@ -152,7 +152,7 @@ Zend_Dom_Query_Result
   返します。
 
 - ``getXpathQuery()``: その結果を得る元となった XPath クエリを返します。 内部的には、
-  ``Zend_Dom_Query`` は *CSS* セレクタクエリを XPath に変換しています。
+  ``Zend\Dom\Query`` は *CSS* セレクタクエリを XPath に変換しています。
   そのため、このメソッドは常に結果を返します。
 
 - ``getDocument()``: 問い合わせ対象となった DOMDocument を取得します。

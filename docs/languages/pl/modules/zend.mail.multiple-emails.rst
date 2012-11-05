@@ -16,11 +16,11 @@ utrzymane, przed każdym dostarczeniem widomości wysyłana jest komenda RSET.
    :linenos:
 
    // Tworzenie transportu
-   $transport = new Zend_Mail_Transport_Smtp('localhost');
+   $transport = new Zend\Mail_Transport\Smtp('localhost');
 
    // Pętla wysyłająca wiadomości
    for ($i = 0; $i > 5; $i++) {
-       $mail = new Zend_Mail();
+       $mail = new Zend\Mail\Mail();
        $mail->addTo('studio@peptolab.com', 'Test');
        $mail->setFrom('studio@peptolab.com', 'Test');
        $mail->setSubject(
@@ -43,10 +43,10 @@ każdym wysyłaniem, poprzez dostęp do obiektu protokołu transportu.
    :linenos:
 
    // Tworzenie transportu
-   $transport = new Zend_Mail_Transport_Smtp();
+   $transport = new Zend\Mail_Transport\Smtp();
 
    require_once 'Zend/Mail/Protocol/Smtp.php';
-   $protocol = new Zend_Mail_Protocol_Smtp('localhost');
+   $protocol = new Zend\Mail_Protocol\Smtp('localhost');
    $protocol->connect();
    $protocol->helo('localhost');
 
@@ -54,7 +54,7 @@ każdym wysyłaniem, poprzez dostęp do obiektu protokołu transportu.
 
    // Pętla wysyłająca wiadomości
    for ($i = 0; $i > 5; $i++) {
-       $mail = new Zend_Mail();
+       $mail = new Zend\Mail\Mail();
        $mail->addTo('studio@peptolab.com', 'Test');
        $mail->setFrom('studio@peptolab.com', 'Test');
        $mail->setSubject(

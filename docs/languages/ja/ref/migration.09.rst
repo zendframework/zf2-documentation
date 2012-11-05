@@ -17,13 +17,13 @@ Zend_Controller
 :ref:`リダイレクタ アクションヘルパー <zend.controller.actionhelpers.redirector>`
 に組み込まれました。
 
-- ``setRedirectCode()`` の代わりに ``Zend_Controller_Action_Helper_Redirector::setCode()``
+- ``setRedirectCode()`` の代わりに ``Zend\Controller\Action\Helper\Redirector::setCode()``
   を使用します。
 
-- ``setRedirectPrependBase()`` の代わりに ``Zend_Controller_Action_Helper_Redirector::setPrependBase()``
+- ``setRedirectPrependBase()`` の代わりに ``Zend\Controller\Action\Helper\Redirector::setPrependBase()``
   を使用します。
 
-- ``setRedirectExit()`` の代わりに ``Zend_Controller_Action_Helper_Redirector::setExit()``
+- ``setRedirectExit()`` の代わりに ``Zend\Controller\Action\Helper\Redirector::setExit()``
   を使用します。
 
 ヘルパーオブジェクトの取得方法や操作方法についての詳細は

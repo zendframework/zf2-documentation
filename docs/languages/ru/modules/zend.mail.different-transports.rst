@@ -17,10 +17,10 @@
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    // построение сообщения...
-   $tr1 = new Zend_Mail_Transport_Smtp('server@example.com');
-   $tr2 = new Zend_Mail_Transport_Smtp('other_server@example.com');
+   $tr1 = new Zend\Mail_Transport\Smtp('server@example.com');
+   $tr2 = new Zend\Mail_Transport\Smtp('other_server@example.com');
    $mail->send($tr1);
    $mail->send($tr2);
    $mail->send();  // опять используется транспорт по умолчанию
@@ -30,6 +30,6 @@
    **Дополнительные транспорты**
 
    Дополнительные транспорты могут быть написаны посредством
-   реализации интерфейса *Zend_Mail_Transport_Interface*.
+   реализации интерфейса *Zend\Mail_Transport\Interface*.
 
 

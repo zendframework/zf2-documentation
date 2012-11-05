@@ -6,7 +6,7 @@ Backendy Zend_Cache
 
 .. _zend.cache.backends.file:
 
-Zend_Cache_Backend_File
+Zend\Cache_Backend\File
 -----------------------
 
 Ten backend przechowuje rekordy bufora w plikach (w wybranym katalogu).
@@ -41,7 +41,7 @@ Dostępne opcje to:
 
 .. _zend.cache.backends.sqlite:
 
-Zend_Cache_Backend_Sqlite
+Zend\Cache_Backend\Sqlite
 -------------------------
 
 Ten backend przechowuje rekordy bufora w bazie SQLite.
@@ -62,7 +62,7 @@ Dostępne opcje to:
 
 .. _zend.cache.backends.memcached:
 
-Zend_Cache_Backend_Memcached
+Zend\Cache_Backend\Memcached
 ----------------------------
 
 Ten backend przechowuje rekordy bufora w serwerze memcached. `memcached`_ jest systemem buforowania w pamięci
@@ -90,7 +90,7 @@ Dostępne opcje to:
 
 .. _zend.cache.backends.apc:
 
-Zend_Cache_Backend_Apc
+Zend\Cache_Backend\Apc
 ----------------------
 
 Ten backend przechowuje rekordy bufora we współdzielonej pamięci za pomocą rozszerzenia `APC`_ (Alternatywny
@@ -103,7 +103,7 @@ Ten backend nie ma żadnych opcji.
 
 .. _zend.cache.backends.xcache:
 
-Zend_Cache_Backend_Xcache
+Zend\Cache_Backend\Xcache
 -------------------------
 
 Ten backend przechowuje rekordy buforu we współdzielonej pamięci za pomocą rozszerzenia `XCache`_ (które
@@ -127,7 +127,7 @@ Dostępne opcje to:
 
 .. _zend.cache.backends.platform:
 
-Zend_Cache_Backend_ZendPlatform
+Zend\Cache_Backend\ZendPlatform
 -------------------------------
 
 Ten backend używa API produktu `Zend Platform`_ do buforowania zawartości. Oczywiście aby użyć tego backendu,
@@ -135,19 +135,19 @@ musisz mieć zainstalowaną aplikację Zend Platform.
 
 Ten backend obsługuje etykiety, ale nie obsługuje trybu ``CLEANING_MODE_NOT_MATCHING_TAG`` czyszczenia bufora.
 
-Gdy określasz nazwę tego backendu podczas użycia metody ``Zend_Cache::factory()``, wstaw pomiędzy słowami
+Gdy określasz nazwę tego backendu podczas użycia metody ``Zend\Cache\Cache::factory()``, wstaw pomiędzy słowami
 'Zend' oraz 'Platform' jeden z dozwolonych separatorów wyrazów -- '-', '.', ' ', lub '\_':
 
 .. code-block:: php
    :linenos:
 
-   $cache = Zend_Cache::factory('Core', 'Zend Platform');
+   $cache = Zend\Cache\Cache::factory('Core', 'Zend Platform');
 
 Ten backend nie ma żadnych opcji.
 
 .. _zend.cache.backends.twolevels:
 
-Zend_Cache_Backend_TwoLevels
+Zend\Cache_Backend\TwoLevels
 ----------------------------
 
 Ten backend jest backendem hybrydowym. PRzechowuje on rekordu buforu w dwóch innych backendach : w szybkim (ale
@@ -174,9 +174,9 @@ Dostępne opcje to :
    +--------------------------+----------+----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |fast_backend_options      |Array     |array()         |opcje backendu "szybkiego"                                                                                                                                                                           |
    +--------------------------+----------+----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |slow_backend_custom_naming|Boolean   |FALSE           |jeśli ma wartość true, argument slow_backend jest używany jako kompletna nazwa klasy ; jeśli ma wartość false, argument jest traktowany jako klasa z przedrostkiem "Zend_Cache_Backend_[...]"        |
+   |slow_backend_custom_naming|Boolean   |FALSE           |jeśli ma wartość true, argument slow_backend jest używany jako kompletna nazwa klasy ; jeśli ma wartość false, argument jest traktowany jako klasa z przedrostkiem "Zend\Cache_Backend\[...]"        |
    +--------------------------+----------+----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |fast_backend_custom_naming|Boolean   |FALSE           |jeśli ma wartość true, argument fast_backend argument jest używany jako kompletna nazwa klasy; jeśli ma wartość false, argument jest traktowany jako klasa z przedrostkiem "Zend_Cache_Backend_[...]"|
+   |fast_backend_custom_naming|Boolean   |FALSE           |jeśli ma wartość true, argument fast_backend argument jest używany jako kompletna nazwa klasy; jeśli ma wartość false, argument jest traktowany jako klasa z przedrostkiem "Zend\Cache_Backend\[...]"|
    +--------------------------+----------+----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |slow_backend_autoload     |Boolean   |FALSE           |jeśli ma wartość true, dla wolnego backendu nie będzie wywoływana funkcja require_once (użyteczne tylko dla własnych backendów)                                                                      |
    +--------------------------+----------+----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -189,7 +189,7 @@ Dostępne opcje to :
 
 .. _zend.cache.backends.zendserver:
 
-Zend_Cache_Backend_ZendServer_Disk oraz Zend_Cache_Backend_ZendServer_ShMem
+Zend\Cache\Backend\ZendServer\Disk oraz Zend\Cache\Backend\ZendServer\ShMem
 ---------------------------------------------------------------------------
 
 Te backendy przechowują rekordu bufora używając metod buforowania serwera `Zend Server`_.

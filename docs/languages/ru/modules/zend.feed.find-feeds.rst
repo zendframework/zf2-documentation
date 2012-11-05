@@ -12,14 +12,14 @@
 .. code-block:: php
    :linenos:
 
-   $feedArray = Zend_Feed::findFeeds('http://www.example.com/news.html');
+   $feedArray = Zend\Feed\Feed::findFeeds('http://www.example.com/news.html');
 
 
 Здесь метод *findFeeds()* возвращает массив объектов лент
-*Zend_Feed_Abstract*, на которые ссылались теги *<link>* в коде веб-страницы
+*Zend\Feed\Abstract*, на которые ссылались теги *<link>* в коде веб-страницы
 *news.html*. В зависимости от типа ленты, каждый элемент массива
-``$feedArray`` может быть экземпляром *Zend_Feed_Rss* или *Zend_Feed_Atom*. *Zend_Feed*
-будет генерировать исключение *Zend_Feed_Exception* в случае ошибки,
+``$feedArray`` может быть экземпляром *Zend\Feed\Rss* или *Zend\Feed\Atom*. *Zend_Feed*
+будет генерировать исключение *Zend\Feed\Exception* в случае ошибки,
 такой, как возврат HTTP-кода 404 или плохо сформированная лента.
 
 

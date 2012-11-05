@@ -26,7 +26,7 @@ ausgibt. Wenn man die Datei ausführen will, muß man etwas ähnliches wie folgt
 .. code-block:: php
    :linenos:
 
-   $progressBar = new Zend_ProgressBar($adapter, 0, $fileSize);
+   $progressBar = new Zend\ProgressBar\ProgressBar($adapter, 0, $fileSize);
 
    while (!feof($fp)) {
        // Mach was
@@ -64,11 +64,11 @@ Standard Adapter
 
 
 
-   - :ref:`Zend_ProgressBar_Adapter_Console <zend.progressbar.adapter.console>`
+   - :ref:`Zend\ProgressBar_Adapter\Console <zend.progressbar.adapter.console>`
 
-   - :ref:`Zend_ProgressBar_Adapter_JsPush <zend.progressbar.adapter.jspush>`
+   - :ref:`Zend\ProgressBar_Adapter\JsPush <zend.progressbar.adapter.jspush>`
 
-   - :ref:`Zend_ProgressBar_Adapter_JsPull <zend.progressbar.adapter.jspull>`
+   - :ref:`Zend\ProgressBar_Adapter\JsPull <zend.progressbar.adapter.jspull>`
 
 
 

@@ -1,16 +1,16 @@
 .. EN-Revision: none
 .. _zend.service.windowsazure.storage.table:
 
-Zend_Service_WindowsAzure_Storage_Table
+Zend\Service\WindowsAzure\Storage\Table
 =======================================
 
 Der Table Service bietet einen strukturierten Speicher in der Form von Tabellen.
 
 Tabellen Speicher wird von Windows Azure als REST *API* angeboten die von der Klasse
-``Zend_Service_WindowsAzure_Storage_Table`` umhüllt ist um ein natives *PHP* Interface zum Speicher Konto zu
+``Zend\Service\WindowsAzure\Storage\Table`` umhüllt ist um ein natives *PHP* Interface zum Speicher Konto zu
 bieten.
 
-Dieses Thema zeigt einige Beispiele der Verwendung der Klasse ``Zend_Service_WindowsAzure_Storage_Table``. Andere
+Dieses Thema zeigt einige Beispiele der Verwendung der Klasse ``Zend\Service\WindowsAzure\Storage\Table``. Andere
 Features sind im Download Paket enthalten sowie in den detailierten *API* Dokumentationen dieser Features.
 
 Es ist zu beachten das bei der Entwicklung der Tabellen Speicher (in der *SDK* von Windows Azure) nicht alle
@@ -39,7 +39,7 @@ werden.
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Table(
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Table(
        'table.core.windows.net', 'myaccount', 'myauthkey'
    );
    $result = $storageClient->createTable('testtable');
@@ -61,7 +61,7 @@ abgefragt werden.
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Table(
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Table(
        'table.core.windows.net', 'myaccount', 'myauthkey'
    );
    $result = $storageClient->listTables();
@@ -82,7 +82,7 @@ Der Tabellen Service erzwingt kein Schema für Tabellen, deshalb können zwei En
 unterschiedliche Sets von Eigenschaften haben. Entwickler können auswählen das ein Schema auf Seite des Clients
 erzwungen wird. Eine Tabelle kann eine beliebige Anzahl an Entitäten enthalten.
 
-``Zend_Service_WindowsAzure_Storage_Table`` bietet 2 Wege um mit Entitäten zu arbeiten:
+``Zend\Service\WindowsAzure\Storage\Table`` bietet 2 Wege um mit Entitäten zu arbeiten:
 
 - Erzwungenes Schema
 
@@ -97,7 +97,7 @@ Alle Beispiel verwenden die folgende erwzungene Schema Klasse.
 .. code-block:: php
    :linenos:
 
-   class SampleEntity extends Zend_Service_WindowsAzure_Storage_TableEntity
+   class SampleEntity extends Zend\Service\WindowsAzure\Storage\TableEntity
    {
        /**
        * @azure Name
@@ -115,20 +115,20 @@ Alle Beispiel verwenden die folgende erwzungene Schema Klasse.
        public $Visible = false;
    }
 
-Es ist zu beachten das ``Zend_Service_WindowsAzure_Storage_Table``, wenn keine Schema Klasse an die Tabellen
-Speicher Methoden übergeben, automatisch mit ``Zend_Service_WindowsAzure_Storage_DynamicTableEntity`` arbeitet.
+Es ist zu beachten das ``Zend\Service\WindowsAzure\Storage\Table``, wenn keine Schema Klasse an die Tabellen
+Speicher Methoden übergeben, automatisch mit ``Zend\Service\WindowsAzure\Storage\DynamicTableEntity`` arbeitet.
 
 .. _zend.service.windowsazure.storage.table.entities.enforced:
 
 Erzwungene Schema Entitäten
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Um ein Schema auf der Seite des Clients bei Verwendung der Klasse ``Zend_Service_WindowsAzure_Storage_Table`` zu
-erzwingen muss eine Klasse erstellt werden welche sich von ``Zend_Service_WindowsAzure_Storage_TableEntity``
+Um ein Schema auf der Seite des Clients bei Verwendung der Klasse ``Zend\Service\WindowsAzure\Storage\Table`` zu
+erzwingen muss eine Klasse erstellt werden welche sich von ``Zend\Service\WindowsAzure\Storage\TableEntity``
 ableitet. Diese Klasse bietet einige grundsätzliche Funktionalitäten damit die Klasse
-``Zend_Service_WindowsAzure_Storage_Table`` mit einem client-seitigen Schema arbeitet.
+``Zend\Service\WindowsAzure\Storage\Table`` mit einem client-seitigen Schema arbeitet.
 
-Grundsätzliche Eigenschaften welche von ``Zend_Service_WindowsAzure_Storage_TableEntity`` angeboten werden sind:
+Grundsätzliche Eigenschaften welche von ``Zend\Service\WindowsAzure\Storage\TableEntity`` angeboten werden sind:
 
 - PartitionKey (durch ``getPartitionKey()`` und ``setPartitionKey()`` bekanntgemacht)
 
@@ -138,7 +138,7 @@ Grundsätzliche Eigenschaften welche von ``Zend_Service_WindowsAzure_Storage_Tab
 
 - Etag Wert (durch ``getEtag()`` und ``setEtag()`` bekanntgemacht)
 
-Hier ist eine Beispielklasse welche sich von ``Zend_Service_WindowsAzure_Storage_TableEntity`` ableitet:
+Hier ist eine Beispielklasse welche sich von ``Zend\Service\WindowsAzure\Storage\TableEntity`` ableitet:
 
 .. _zend.service.windowsazure.storage.table.entities.enforced.schema:
 
@@ -147,7 +147,7 @@ Hier ist eine Beispielklasse welche sich von ``Zend_Service_WindowsAzure_Storage
 .. code-block:: php
    :linenos:
 
-   class SampleEntity extends Zend_Service_WindowsAzure_Storage_TableEntity
+   class SampleEntity extends Zend\Service\WindowsAzure\Storage\TableEntity
    {
        /**
         * @azure Name
@@ -165,8 +165,8 @@ Hier ist eine Beispielklasse welche sich von ``Zend_Service_WindowsAzure_Storage
        public $Visible = false;
    }
 
-Die Klasse ``Zend_Service_WindowsAzure_Storage_Table`` mappt jede Klasse welche sich von
-``Zend_Service_WindowsAzure_Storage_TableEntity`` ableitet auf Windows Azure Tabellen Speicher Entitäten mit dem
+Die Klasse ``Zend\Service\WindowsAzure\Storage\Table`` mappt jede Klasse welche sich von
+``Zend\Service\WindowsAzure\Storage\TableEntity`` ableitet auf Windows Azure Tabellen Speicher Entitäten mit dem
 richtigen Datentyp und dem Namen der Eigenschaft. Alles dort dient dem Speichern einer Eigenschaft in Windows Azure
 indem ein Docblock Kommentar zu einer öffentlichen Eigenschaft oder einem öffentlichen Getter oder Setter, im
 folgenden Format hinzugefügt wird:
@@ -225,12 +225,12 @@ Die folgenden Datentypen werden unterstützt:
 Entitäten ohne erzwungenes Schema (a.k.a. DynamicEntity)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Um die Klasse ``Zend_Service_WindowsAzure_Storage_Table`` ohne Definition eines Schemas zu verwenden kann die
-Klasse ``Zend_Service_WindowsAzure_Storage_DynamicTableEntity`` verwendet werden. Diese Klasse erweitert
-``Zend_Service_WindowsAzure_Storage_TableEntity`` wie es eine Klasse für ein erzwungenes Schema machen würde,
+Um die Klasse ``Zend\Service\WindowsAzure\Storage\Table`` ohne Definition eines Schemas zu verwenden kann die
+Klasse ``Zend\Service\WindowsAzure\Storage\DynamicTableEntity`` verwendet werden. Diese Klasse erweitert
+``Zend\Service\WindowsAzure\Storage\TableEntity`` wie es eine Klasse für ein erzwungenes Schema machen würde,
 enthält aber zusätzliche Logik um Sie dynamisch zu machen und nicht an ein Schema zu binden.
 
-Die grundsätzlichen Eigenschaften welche von ``Zend_Service_WindowsAzure_Storage_DynamicTableEntity`` angeboten
+Die grundsätzlichen Eigenschaften welche von ``Zend\Service\WindowsAzure\Storage\DynamicTableEntity`` angeboten
 werden sind:
 
 - PartitionKey (durch ``getPartitionKey()`` und ``setPartitionKey()`` bekanntgemacht)
@@ -246,12 +246,12 @@ on the Fly ermittelt:
 
 .. _zend.service.windowsazure.storage.table.entities.dynamic.schema:
 
-.. rubric:: Eigenschaften zu Zend_Service_WindowsAzure_Storage_DynamicTableEntity dynamisch hinzufügen
+.. rubric:: Eigenschaften zu Zend\Service\WindowsAzure\Storage\DynamicTableEntity dynamisch hinzufügen
 
 .. code-block:: php
    :linenos:
 
-   $target = new Zend_Service_WindowsAzure_Storage_DynamicTableEntity(
+   $target = new Zend\Service\WindowsAzure\Storage\DynamicTableEntity(
        'partition1', '000001'
    );
    $target->Name = 'Name'; // Fügt die Eigenschaft "Name" vom Typ "Edm.String" hinzu
@@ -261,12 +261,12 @@ Optional kann der Typ einer Eigenschaft erzwungen werden:
 
 .. _zend.service.windowsazure.storage.table.entities.dynamic.schema-forcedproperties:
 
-.. rubric:: Erzwingen von Eigenschaftstypen auf Zend_Service_WindowsAzure_Storage_DynamicTableEntity
+.. rubric:: Erzwingen von Eigenschaftstypen auf Zend\Service\WindowsAzure\Storage\DynamicTableEntity
 
 .. code-block:: php
    :linenos:
 
-   $target = new Zend_Service_WindowsAzure_Storage_DynamicTableEntity(
+   $target = new Zend\Service\WindowsAzure\Storage\DynamicTableEntity(
        'partition1', '000001'
    );
    $target->Name = 'Name'; // Fügt die Eigenschaft "Name" vom Typ "Edm.String" hinzu
@@ -275,8 +275,8 @@ Optional kann der Typ einer Eigenschaft erzwungen werden:
    // Ändert den Typ der Eigenschaft "Age" auf "Edm.Int32":
    $target->setAzurePropertyType('Age', 'Edm.Int64');
 
-Die Klasse ``Zend_Service_WindowsAzure_Storage_Table`` arbeitet automatisch mit
-``Zend_Service_WindowsAzure_Storage_TableEntity`` wenn an die Tabellen Speicher Methoden keine spezielle Klasse
+Die Klasse ``Zend\Service\WindowsAzure\Storage\Table`` arbeitet automatisch mit
+``Zend\Service\WindowsAzure\Storage\TableEntity`` wenn an die Tabellen Speicher Methoden keine spezielle Klasse
 übergeben wurde.
 
 .. _zend.service.windowsazure.storage.table.entities.api:
@@ -304,7 +304,7 @@ heißt. Es ist zu beachten das die Tabelle vorher schon erstellt worden sein mus
    $entity->Age = 25;
    $entity->Visible = true;
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Table(
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Table(
        'table.core.windows.net', 'myaccount', 'myauthkey'
    );
    $result = $storageClient->insertEntity('testtable', $entity);
@@ -328,7 +328,7 @@ beachten das die Tabelle und die Entität bereits vorher erstellt worden sein m�
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Table(
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Table(
        'table.core.windows.net', 'myaccount', 'myauthkey'
    );
    $entity= $storageClient->retrieveEntityById(
@@ -350,7 +350,7 @@ die Entität hierfür bereits vorher erstellt worden sein muss.
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Table(
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Table(
        'table.core.windows.net', 'myaccount', 'myauthkey'
    );
    $entity = $storageClient->retrieveEntityById(
@@ -371,7 +371,7 @@ sicherzustellen das neuere Daten nicht überschrieben werden.
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Table(
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Table(
        'table.core.windows.net', 'myaccount', 'myauthkey'
    );
    $entity = $storageClient->retrieveEntityById(
@@ -398,7 +398,7 @@ Entität hierfür bereits erstellt worden sein müssen.
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Table(
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Table(
        'table.core.windows.net', 'myaccount', 'myauthkey'
    );
    $entity = $storageClient->retrieveEntityById(
@@ -411,12 +411,12 @@ Entität hierfür bereits erstellt worden sein müssen.
 Durchführen von Abfragen
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Abfragen im ``Zend_Service_WindowsAzure_Storage_Table`` Tabellen Speicher können auf zwei Wegen durchgeführt
+Abfragen im ``Zend\Service\WindowsAzure\Storage\Table`` Tabellen Speicher können auf zwei Wegen durchgeführt
 werden:
 
 - Durch manuelles Erstellen einer Filter Kondition (was das Lernen einer neuen Abfrage Sprache beinhaltet)
 
-- Durch Verwendung des fluent Interfaces welches von ``Zend_Service_WindowsAzure_Storage_Table`` angeboten wird.
+- Durch Verwendung des fluent Interfaces welches von ``Zend\Service\WindowsAzure\Storage\Table`` angeboten wird.
 
 Bei Verwendung des folgenden Codes kann eine Tabelle abgefragt werden indem eine Filter Kondition verwendet wird.
 Es ist zu beachten das die Tabelle und die Entitäten hierfür vorher bereits erstellt worden sein müssen.
@@ -428,7 +428,7 @@ Es ist zu beachten das die Tabelle und die Entitäten hierfür vorher bereits er
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Table(
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Table(
        'table.core.windows.net', 'myaccount', 'myauthkey'
    );
    $entities = $storageClient->storageClient->retrieveEntities(
@@ -451,7 +451,7 @@ Es ist zu beachten das die Tabelle und die Entität hierfür bereits vorher erst
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Table(
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Table(
        'table.core.windows.net', 'myaccount', 'myauthkey'
    );
    $entities = $storageClient->storageClient->retrieveEntities(
@@ -487,7 +487,7 @@ Das folgende Beispiel verwendet eine Batch Operation (Transaktion) um ein Set vo
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Table(
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Table(
        'table.core.windows.net', 'myaccount', 'myauthkey'
    );
 
@@ -510,10 +510,10 @@ Session Handler für Tabellen Speicher
 
 Wenn eine *PHP* Anwendung auf der Windows Azure Plattform in einem Load-Balanced Modus läuft (wenn 2 oder mehr Web
 Rollen Instanzen laufen), ist es wichtig dass *PHP* Session Daten zwischen mehreren Web Rollen Instanzen verwendet
-werden können. Die Windows Azure *SDK* von *PHP* bietet die Klasse ``Zend_Service_WindowsAzure_SessionHandler`` an
+werden können. Die Windows Azure *SDK* von *PHP* bietet die Klasse ``Zend\Service_WindowsAzure\SessionHandler`` an
 welche den Windows Azure Tabellen Speicher als Session Handler für *PHP* Anwendungen verwendet.
 
-Um den ``Zend_Service_WindowsAzure_SessionHandler`` Session Handler zu verwenden sollte er als Default Session
+Um den ``Zend\Service_WindowsAzure\SessionHandler`` Session Handler zu verwenden sollte er als Default Session
 Handler für die *PHP* Anwendung registriert sein:
 
 .. _zend.service.windowsazure.storage.table.api.sessionhandler-register:
@@ -523,19 +523,19 @@ Handler für die *PHP* Anwendung registriert sein:
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Table(
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Table(
        'table.core.windows.net', 'myaccount', 'myauthkey'
    );
 
-   $sessionHandler = new Zend_Service_WindowsAzure_SessionHandler(
+   $sessionHandler = new Zend\Service_WindowsAzure\SessionHandler(
        $storageClient , 'sessionstable'
    );
    $sessionHandler->register();
 
-Der obenstehende Klassenname registriert den ``Zend_Service_WindowsAzure_SessionHandler`` Session Handler und
+Der obenstehende Klassenname registriert den ``Zend\Service_WindowsAzure\SessionHandler`` Session Handler und
 speichert Sessions in einer Tabelle die "sessionstable" genannt wird.
 
-Nach der Registrierung des ``Zend_Service_WindowsAzure_SessionHandler`` Session Handlers können Session gestartet
+Nach der Registrierung des ``Zend\Service_WindowsAzure\SessionHandler`` Session Handlers können Session gestartet
 und auf dem gleichen Weg wie normale *PHP* Sessions verwendet werden:
 
 .. _zend.service.windowsazure.storage.table.api.sessionhandler-usage:
@@ -545,11 +545,11 @@ und auf dem gleichen Weg wie normale *PHP* Sessions verwendet werden:
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Table(
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Table(
        'table.core.windows.net', 'myaccount', 'myauthkey'
    );
 
-   $sessionHandler = new Zend_Service_WindowsAzure_SessionHandler(
+   $sessionHandler = new Zend\Service_WindowsAzure\SessionHandler(
        $storageClient , 'sessionstable'
    );
    $sessionHandler->register();
@@ -564,7 +564,7 @@ und auf dem gleichen Weg wie normale *PHP* Sessions verwendet werden:
 
 .. warning::
 
-   Der ``Zend_Service_WindowsAzure_SessionHandler`` Session Handler sollte registriert werden bevor ein Aufruf zu
+   Der ``Zend\Service_WindowsAzure\SessionHandler`` Session Handler sollte registriert werden bevor ein Aufruf zu
    ``session_start()`` durchgeführt wird!
 
 

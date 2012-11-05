@@ -4,7 +4,7 @@
 Introduction
 ============
 
-La classe ``Zend_Console_Getopt`` aide les applications lancées en ligne de commande à analyser les options et
+La classe ``Zend\Console\Getopt`` aide les applications lancées en ligne de commande à analyser les options et
 arguments.
 
 Les utilisateurs peuvent spécifier des arguments en ligne de commande quand ils exécutent votre application. Ces
@@ -37,7 +37,7 @@ utilisera les définitions ci-dessous.
   Un paramètre peut être donné comme un argument séparé après un argument de drapeau, ou comme faisant partie
   de la même chaîne de caractères, séparé du drapeau par le symbole égal ("``=``"). La dernière forme est
   autorisée seulement avec des drapeaux longs. Par exemple, ``-u username``, ``--user username``, et
-  ``--user=username`` sont des formats supportés par ``Zend_Console_Getopt``.
+  ``--user=username`` sont des formats supportés par ``Zend\Console\Getopt``.
 
 - "cluster" (groupe) : les drapeaux courts peuvent être combinés dans une chaîne de caractère unique
   précédée par un tiret simple. Par exemple, "``ls -1str``" emploie un groupe de quatre drapeaux courts. Cette
@@ -48,7 +48,7 @@ Par exemple, dans "``mysql --user=root mabase``", "``mysql``" est la **commande*
 **option**, "``--user``" est un **drapeau**, "``root``" est un **paramètre** de l'option, et "``mabase``" est un
 argument mais pas une option dans notre définition.
 
-``Zend_Console_Getopt`` fournit une interface pour déclarer quels drapeaux sont valides pour votre application,
+``Zend\Console\Getopt`` fournit une interface pour déclarer quels drapeaux sont valides pour votre application,
 produit une erreur et un message s'ils emploient un drapeau invalide, et transmet à votre application les drapeaux
 spécifiés par l'utilisateur.
 
@@ -56,13 +56,13 @@ spécifiés par l'utilisateur.
 
    **Getopt n'est pas une application framework**
 
-   ``Zend_Console_Getopt`` **n'interprète pas** le sens des drapeaux ou des paramètres, cette classe n'exécute
+   ``Zend\Console\Getopt`` **n'interprète pas** le sens des drapeaux ou des paramètres, cette classe n'exécute
    pas non plus de processus d'application ou n'invoque pas le code d'application. Vous devez implémenter ces
-   actions dans votre propre code d'application. Vous pouvez utiliser la classe ``Zend_Console_Getopt`` pour
+   actions dans votre propre code d'application. Vous pouvez utiliser la classe ``Zend\Console\Getopt`` pour
    analyser la ligne d'instruction et fournir des méthodes orientées objet pour savoir quelles options ont été
    données par un utilisateur, mais le code pour utiliser ces données pour appeler les parties de votre
    application devra être dans une autre classe *PHP*.
 
-Les sections suivantes décrivent l'utilisation de ``Zend_Console_Getopt``.
+Les sections suivantes décrivent l'utilisation de ``Zend\Console\Getopt``.
 
 

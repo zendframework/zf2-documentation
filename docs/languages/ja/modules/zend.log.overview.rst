@@ -18,17 +18,17 @@
      ログオブジェクトには最低ひとつのライターが含まれる必要があり、
      オプションでひとつあるいは複数のフィルタを含むことができます。
 
-   - ライター (``Zend_Log_Writer_Abstract`` を継承したもの)
+   - ライター (``Zend\Log_Writer\Abstract`` を継承したもの)
      は、データを保存する役割を受け持ちます。
 
-   - フィルタ (``Zend_Log_Filter_Interface`` を実装したもの)
+   - フィルタ (``Zend\Log_Filter\Interface`` を実装したもの)
      は、保存するログデータをブロックします。
      フィルタは個々のライターに適用することもできますし、
      ログに適用することもできます。ログに適用した場合は、
      すべてのライターの前に適用されます。どちらの場合についても、
      複数のフィルタを連結することが可能です。
 
-   - フォーマッタ (``Zend_Log_Formatter_Interface`` を実装したもの)
+   - フォーマッタ (``Zend\Log_Formatter\Interface`` を実装したもの)
      は、ログのデータをライターに書き出す前に書式設定できます。
      個々のライターは、それぞれひとつのフォーマッタを保持しています。
 
@@ -45,8 +45,8 @@
 .. code-block:: php
    :linenos:
 
-   $logger = new Zend_Log();
-   $writer = new Zend_Log_Writer_Stream('php://output');
+   $logger = new Zend\Log\Log();
+   $writer = new Zend\Log_Writer\Stream('php://output');
 
    $logger->addWriter($writer);
 
@@ -59,8 +59,8 @@
 .. code-block:: php
    :linenos:
 
-   $writer = new Zend_Log_Writer_Stream('php://output');
-   $logger = new Zend_Log($writer);
+   $writer = new Zend\Log_Writer\Stream('php://output');
+   $logger = new Zend\Log\Log($writer);
 
 これで、ログが使用できるようになりました。
 
@@ -75,7 +75,7 @@
 .. code-block:: php
    :linenos:
 
-   $logger->log('Informational message', Zend_Log::INFO);
+   $logger->log('Informational message', Zend\Log\Log::INFO);
 
 ``log()`` メソッドの最初のパラメータはメッセージを表す文字列で、
 二番目のパラメータは優先度を表す整数値です。
@@ -88,10 +88,10 @@
 .. code-block:: php
    :linenos:
 
-   $logger->log('Informational message', Zend_Log::INFO);
+   $logger->log('Informational message', Zend\Log\Log::INFO);
    $logger->info('Informational message');
 
-   $logger->log('Emergency message', Zend_Log::EMERG);
+   $logger->log('Emergency message', Zend\Log\Log::EMERG);
    $logger->emerg('Emergency message');
 
 .. _zend.log.overview.destroying-a-logger:

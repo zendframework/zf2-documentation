@@ -22,9 +22,9 @@ Framework standardmäßig ausgeliefert:
    +=============+=========================================================================================================================================================================================================+
    |Array        |Verwendet ein PHP Array                                                                                                                                                                                  |
    +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |DbSelect     |Verwendet eine Instanz von Zend_Db_Select, welche ein Array zurückgibt                                                                                                                                   |
+   |DbSelect     |Verwendet eine Instanz von Zend\Db\Select, welche ein Array zurückgibt                                                                                                                                   |
    +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |DbTableSelect|Verwendet eine Instanz von Zend_Db_Table_Select, welche eine Instanz von Zend_Db_Table_Rowset_Abstract zurückgibt. Das gibt zusätzliche Information pber das Ergebnisset, wie z.B. die Namen der Spalten.|
+   |DbTableSelect|Verwendet eine Instanz von Zend\Db_Table\Select, welche eine Instanz von Zend\Db\Table\Rowset\Abstract zurückgibt. Das gibt zusätzliche Information pber das Ergebnisset, wie z.B. die Namen der Spalten.|
    +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Iterator     |Verwendet eine Instanz von Iterator                                                                                                                                                                      |
    +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -45,7 +45,7 @@ Um eine Instanz von ``Zend_Paginator`` zu erstellen, muß ein Adapter an den Kon
 .. code-block:: php
    :linenos:
 
-   $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($array));
+   $paginator = new Zend\Paginator\Paginator(new Zend\Paginator_Adapter\Array($array));
 
 Der Einfachheit halber kann man für die mit dem Zend Framework mitgelieferten Adapter die statische ``factory()``
 verwenden:
@@ -53,7 +53,7 @@ verwenden:
 .. code-block:: php
    :linenos:
 
-   $paginator = Zend_Paginator::factory($array);
+   $paginator = Zend\Paginator\Paginator::factory($array);
 
 .. note::
 
@@ -70,7 +70,7 @@ seitenweisen Daten zuzugreifen.
    $paginator->setCurrentPageNumber($page);
 
 Der einfachste Weg um diesen Wert zu verfolgen ist über eine *URL*. Auch wenn wir empfehlen einen
-``Zend_Controller_Router_Interface``-kompatiblen Router zu verwenden um dies zu bewerkstelligen, ist das keine
+``Zend\Controller_Router\Interface``-kompatiblen Router zu verwenden um dies zu bewerkstelligen, ist das keine
 Notwendigkeit.
 
 Das folgende ist eine Beispielroute die in einer *INI* Konfigurationsdatei verwendet werden könnte:
@@ -132,18 +132,18 @@ eigenen Tabelle speichert, kann eine schnellere Abfrage der Anzahl mit dem folge
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Paginator_Adapter_DbSelect($db->select()->from('posts'));
+   $adapter = new Zend\Paginator_Adapter\DbSelect($db->select()->from('posts'));
    $adapter->setRowCount(
        $db->select()
           ->from(
               'item_counts',
               array(
-                  Zend_Paginator_Adapter_DbSelect::ROW_COUNT_COLUMN => 'post_count'
+                  Zend\Paginator_Adapter\DbSelect::ROW_COUNT_COLUMN => 'post_count'
               )
           )
    );
 
-   $paginator = new Zend_Paginator($adapter);
+   $paginator = new Zend\Paginator\Paginator($adapter);
 
 Dieser Ansatz wird jetzt wahrscheinlich keine große Performance Verbesserung bei kleinen Datemengen und oder
 einfachen Abfragen ergeben. Aber bei komplexen Abfragen und großen Datenmengen kann ein ähnlicher Weg eine
@@ -224,8 +224,8 @@ Instanz kann dei Aufruf der PaginationControl komplett eliminiert werden:
 .. code-block:: php
    :linenos:
 
-   Zend_Paginator::setDefaultScrollingStyle('Sliding');
-   Zend_View_Helper_PaginationControl::setDefaultViewPartial(
+   Zend\Paginator\Paginator::setDefaultScrollingStyle('Sliding');
+   Zend\View_Helper\PaginationControl::setDefaultViewPartial(
        'my_pagination_control.phtml'
    );
    $paginator->setView($view);

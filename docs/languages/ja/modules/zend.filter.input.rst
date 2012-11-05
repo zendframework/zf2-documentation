@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.filter.input:
 
-Zend_Filter_Input
+Zend\Filter\Input
 =================
 
-``Zend_Filter_Input`` は宣言型のインターフェイスです。
+``Zend\Filter\Input`` は宣言型のインターフェイスです。
 複数のフィルタやバリデータを関連付け、それをデータの集合に適用し、
 そのフィルタやバリデータで処理した後の結果を取得できます。
 デフォルトでは、HTML 出力に適した形式にエスケープされた結果を返します。
@@ -45,7 +45,7 @@ Zend_Filter_Input
   これらの文字をエスケープすることで特殊な意味を除去し、
   通常の文字として出力できるようになります。
 
-``Zend_Filter_Input`` は、以下の手順で使用します。
+``Zend\Filter\Input`` は、以下の手順で使用します。
 
 . フィルタルールおよび検証ルールを宣言する
 
@@ -62,13 +62,13 @@ Zend_Filter_Input
 フィルタルールおよび検証ルールの宣言
 ------------------
 
-``Zend_Filter_Input`` のインスタンスを作成する前に、
+``Zend\Filter\Input`` のインスタンスを作成する前に、
 フィルタルールと検証ルールの配列を宣言します。
 これらの連想配列は、ルールの名前を フィルタやバリデータの名前、
 あるいはフィルタチェインやバリデータチェインの名前と関連付けるものです。
 
-次の例のフィルタルールは、'month' フィールドを ``Zend_Filter_Digits``
-でフィルタリングし、'account' フィールドを ``Zend_Filter_StringTrim``
+次の例のフィルタルールは、'month' フィールドを ``Zend\Filter\Digits``
+でフィルタリングし、'account' フィールドを ``Zend\Filter\StringTrim``
 でフィルタリングすることを表します。 また、検証ルールでは、'account'
 フィールドには英字のみを許可することを指定しています。
 
@@ -101,13 +101,13 @@ Zend_Filter_Input
 
 
 
-- Zend_Filter_Interface あるいは Zend_Validate_Interface
+- Zend\Filter\Interface あるいは Zend\Validate\Interface
   を実装したクラスのいずれかのインスタンス。
 
      .. code-block:: php
         :linenos:
 
-        $digits = new Zend_Validate_Digits();
+        $digits = new Zend\Validate\Digits();
 
         $validators = array(
             'month'   => $digits
@@ -127,7 +127,7 @@ Zend_Filter_Input
         $validators = array(
             'month'   => array(
                 'Digits',                // 文字列
-                new Zend_Validate_Int(), // オブジェクトのインスタンス
+                new Zend\Validate\Int(), // オブジェクトのインスタンス
                 array('Between', 1, 12)  // 文字列とコンストラクタの引数
             )
         );
@@ -160,7 +160,7 @@ Zend_Filter_Input
 フィルタおよびバリデータの処理装置の作成
 --------------------
 
-フィルタやバリデータの配列を宣言したら、 それを ``Zend_Filter_Input``
+フィルタやバリデータの配列を宣言したら、 それを ``Zend\Filter\Input``
 のコンストラクタの引数で指定します。
 その結果、すべてのフィルタリング規則と検証規則を知っているオブジェクトが返されます。
 このオブジェクトを使用して、入力データを処理していきます。
@@ -168,13 +168,13 @@ Zend_Filter_Input
 .. code-block:: php
    :linenos:
 
-   $input = new Zend_Filter_Input($filters, $validators);
+   $input = new Zend\Filter\Input($filters, $validators);
 
 入力データは、コンストラクタの第三引数として指定できます。
 このデータは、連想配列形式で指定します。フィールド名が連想配列のキー、
 それに対応する値がデータの値となります。 *PHP* が標準機能として提供している
 *$_GET* や *$_POST* といったスーパーグローバル変数がこの形式となります。
-つまり、これらのスーパーグローバル変数を、直接 ``Zend_Filter_Input``
+つまり、これらのスーパーグローバル変数を、直接 ``Zend\Filter\Input``
 への入力として渡すことができます。
 
 .. code-block:: php
@@ -182,7 +182,7 @@ Zend_Filter_Input
 
    $data = $_GET;
 
-   $input = new Zend_Filter_Input($filters, $validators, $data);
+   $input = new Zend\Filter\Input($filters, $validators, $data);
 
 あるいは、 ``setData()`` メソッドを使用してデータを渡すこともできます。
 ここで渡すデータの形式は、先ほど説明したのと同じ形式の連想配列となります。
@@ -190,10 +190,10 @@ Zend_Filter_Input
 .. code-block:: php
    :linenos:
 
-   $input = new Zend_Filter_Input($filters, $validators);
+   $input = new Zend\Filter\Input($filters, $validators);
    $input->setData($newData);
 
-``setData()`` メソッドは、既存の ``Zend_Filter_Input`` オブジェクトに対して
+``setData()`` メソッドは、既存の ``Zend\Filter\Input`` オブジェクトに対して
 フィルタルールや検証ルールはそのままで別の入力データを再定義できます。
 このメソッドを使用すると、同じルールを
 複数の異なる入力データに対して適用できます。
@@ -292,7 +292,7 @@ Zend_Filter_Input
 を参照ください。
 
 ``getMissing()`` が返すメッセージは、オプション 'missingMessage' で指定できます。
-これは、 ``Zend_Filter_Input`` のコンストラクタへの引数か、あるいは ``setOptions()``
+これは、 ``Zend\Filter\Input`` のコンストラクタへの引数か、あるいは ``setOptions()``
 メソッドで指定します。
 
 .. code-block:: php
@@ -302,30 +302,30 @@ Zend_Filter_Input
        'missingMessage' => "Field '%field%' is required"
    );
 
-   $input = new Zend_Filter_Input($filters, $validators, $data, $options);
+   $input = new Zend\Filter\Input($filters, $validators, $data, $options);
 
    // もうひとつの方法
 
-   $input = new Zend_Filter_Input($filters, $validators, $data);
+   $input = new Zend\Filter\Input($filters, $validators, $data);
    $input->setOptions($options);
 
-``Zend_Filter_Input`` によって返されるメッセージで、
+``Zend\Filter\Input`` によって返されるメッセージで、
 複数の言語を提供できるようにするトランスレータも追加できます。
 
 .. code-block:: php
    :linenos:
 
-   $translate = new Zend_Translator_Adapter_Array(array(
+   $translate = new Zend\Translator_Adapter\Array(array(
        'content' => array(
-           Zend_Filter_Input::MISSING_MESSAGE => "Where is the field?"
+           Zend\Filter\Input::MISSING_MESSAGE => "Where is the field?"
        )
    );
 
-   $input = new Zend_Filter_Input($filters, $validators, $data);
+   $input = new Zend\Filter\Input($filters, $validators, $data);
    $input->setTranslator($translate);
 
 アプリケーション全体のトランスレータを使っているときは、 それは
-``Zend_Filter_Input`` でも使われます。
+``Zend\Filter\Input`` でも使われます。
 この場合、手動でトランスレータを設定する必要はありません。
 
 ``getUnknown()`` メソッドの結果は、
@@ -351,7 +351,7 @@ Zend_Filter_Input
    $m = $input->getEscaped('month');   // エスケープ済み
    $m = $input->getUnescaped('month'); // エスケープ前
 
-デフォルトでは、値を取得する際には ``Zend_Filter_HtmlEntities``
+デフォルトでは、値を取得する際には ``Zend\Filter\HtmlEntities``
 によるフィルタリングが行われます。
 これがデフォルトとなっている理由は、ほとんどの場合は フィールドの値を HTML
 に出力するであろうと考えられるからです。 HtmlEntities フィルタを使用すると、 HTML
@@ -378,7 +378,7 @@ Zend_Filter_Input
 
       $validators = array('*' => array());
 
-      $input = new Zend_Filter_Input($filters, $validators, $data, $options);
+      $input = new Zend\Filter\Input($filters, $validators, $data, $options);
 
    この方式はセキュリティ面で問題があり、
    クロスサイトスクリプティング攻撃に使われる可能性があることに注意しましょう。
@@ -391,15 +391,15 @@ Zend_Filter_Input
    :linenos:
 
    $options = array('escapeFilter' => 'StringTrim');
-   $input = new Zend_Filter_Input($filters, $validators, $data, $options);
+   $input = new Zend\Filter\Input($filters, $validators, $data, $options);
 
 あるいは、 ``setDefaultEscapeFilter()`` メソッドを使用することもできます。
 
 .. code-block:: php
    :linenos:
 
-   $input = new Zend_Filter_Input($filters, $validators, $data);
-   $input->setDefaultEscapeFilter(new Zend_Filter_StringTrim());
+   $input = new Zend\Filter\Input($filters, $validators, $data);
+   $input->setDefaultEscapeFilter(new Zend\Filter\StringTrim());
 
 どちらの場合についても、エスケープフィルタの指定方法は
 フィルタクラスのベース名を表す文字列かフィルタクラスのインスタンスの
@@ -419,8 +419,8 @@ Zend_Filter_Input
 ``getEscaped()`` というメソッドがひとつあるだけなので、
 エスケープ用のフィルタはひとつだけしか指定できません
 (とはいえ、そのフィルタとしてフィルタチェインを指定することもできます)。
-ひとつの ``Zend_Filter_Input`` のインスタンスから
-複数のフィルタリングメソッドの結果を返したい場合は、 ``Zend_Filter_Input``
+ひとつの ``Zend\Filter\Input`` のインスタンスから
+複数のフィルタリングメソッドの結果を返したい場合は、 ``Zend\Filter\Input``
 を継承したサブクラスで新しいメソッドを実装して対応しましょう。
 
 .. _zend.filter.input.metacommands:
@@ -429,7 +429,7 @@ Zend_Filter_Input
 ----------------------------
 
 フィールドとフィルタやバリデータの対応を宣言するのに加えて、
-配列を宣言する際に "メタコマンド" を指定できます。 これは、 ``Zend_Filter_Input``
+配列を宣言する際に "メタコマンド" を指定できます。 これは、 ``Zend\Filter\Input``
 の挙動を制御するオプションです。
 メタコマンドは、フィルタ配列やバリデータ配列の値として指定する
 文字列インデックスのエントリとなります。
@@ -442,7 +442,7 @@ FIELDS メタコマンド
 フィルタやバリデータの名前がそれを適用するフィールドの名前と異なる場合は、
 'fields' メタコマンドでフィールド名を指定できます。
 
-このメタコマンドを指定する際に、文字列ではなくクラス定数 ``Zend_Filter_Input::FIELDS``
+このメタコマンドを指定する際に、文字列ではなくクラス定数 ``Zend\Filter\Input::FIELDS``
 を使用できます。
 
 .. code-block:: php
@@ -482,7 +482,7 @@ FIELDS メタコマンド
            'fields' => array('password1', 'password2')
        )
    );
-   // 仮想クラス Zend_Validate_StringEquals に、
+   // 仮想クラス Zend\Validate\StringEquals に、
    // ふたつのフィールド 'password1' および 'password2'
    // の値を含む配列を渡します
 
@@ -500,7 +500,7 @@ PRESENCE メタコマンド
 未入力の場合は「存在しないフィールド」として報告されます。
 
 このメタコマンドを指定する際に、文字列ではなくクラス定数
-``Zend_Filter_Input::PRESENCE`` を使用できます。
+``Zend\Filter\Input::PRESENCE`` を使用できます。
 
 .. code-block:: php
    :linenos:
@@ -523,7 +523,7 @@ DEFAULT_VALUE メタコマンド
 がルールで指定されていれば そのメタコマンドの値がフィールドの値となります。
 
 このメタコマンドを指定する際に、文字列ではなくクラス定数
-``Zend_Filter_Input::DEFAULT_VALUE`` を使用できます。
+``Zend\Filter\Input::DEFAULT_VALUE`` を使用できます。
 
 このデフォルト値は、バリデータを適用する前にフィールドの代入されます。
 また、そのフィールドのデフォルト値は現在のルールでのみ適用されます。
@@ -544,7 +544,7 @@ DEFAULT_VALUE メタコマンド
    // 'month' フィールドの値がありません
    $data = array();
 
-   $input = new Zend_Filter_Input(null, $validators, $data);
+   $input = new Zend\Filter\Input(null, $validators, $data);
    echo $input->month; // 1 を出力します
 
 *FIELDS* メタコマンドで複数のフィールドをルールに定義している場合、 *DEFAULT_VALUE*
@@ -573,7 +573,7 @@ ALLOW_EMPTY メタコマンド
 すると、入力データとして空の文字列が渡された場合も検証を通過します。
 
 このメタコマンドを指定する際に、文字列ではなくクラス定数
-``Zend_Filter_Input::ALLOW_EMPTY`` を使用できます。
+``Zend\Filter\Input::ALLOW_EMPTY`` を使用できます。
 
 .. code-block:: php
    :linenos:
@@ -589,9 +589,9 @@ ALLOW_EMPTY メタコマンド
 
 非常に珍しいケースですが、バリデータは一切登録せずにメタコマンド 'allowEmpty' を
 ``FALSE`` (つまり、空の値は無効とみなす) と設定した検証ルールを定義すると、
-``Zend_Filter_Input`` はデフォルトのエラーメッセージを返します。 このメッセージは
+``Zend\Filter\Input`` はデフォルトのエラーメッセージを返します。 このメッセージは
 ``getMessages()`` で取得できます。 このメッセージは、'notEmptyMessage'
-オプションで設定します。 このオプションは、 ``Zend_Filter_Input``
+オプションで設定します。 このオプションは、 ``Zend\Filter\Input``
 のコンストラクタへの引数か、 あるいは ``setOptions()`` メソッドで指定します。
 
 .. code-block:: php
@@ -601,11 +601,11 @@ ALLOW_EMPTY メタコマンド
        'notEmptyMessage' => "'%field%' に何か値を入力してください"
    );
 
-   $input = new Zend_Filter_Input($filters, $validators, $data, $options);
+   $input = new Zend\Filter\Input($filters, $validators, $data, $options);
 
    // 別の方法
 
-   $input = new Zend_Filter_Input($filters, $validators, $data);
+   $input = new Zend\Filter\Input($filters, $validators, $data);
    $input->setOptions($options);
 
 .. _zend.filter.input.metacommands.break-chain:
@@ -624,7 +624,7 @@ BREAK_CHAIN メタコマンド
 さらに別のエラーが発生する可能性があるということです。
 
 このメタコマンドを指定する際に、文字列ではなくクラス定数
-``Zend_Filter_Input::BREAK_CHAIN`` を使用できます。
+``Zend\Filter\Input::BREAK_CHAIN`` を使用できます。
 
 .. code-block:: php
    :linenos:
@@ -632,19 +632,19 @@ BREAK_CHAIN メタコマンド
    $validators = array(
        'month' => array(
            'Digits',
-           new Zend_Validate_Between(1,12),
-           new Zend_Validate_GreaterThan(0),
+           new Zend\Validate\Between(1,12),
+           new Zend\Validate\GreaterThan(0),
            'breakChainOnFailure' => true
        )
    );
-   $input = new Zend_Filter_Input(null, $validators);
+   $input = new Zend\Filter\Input(null, $validators);
 
 このメタコマンドのデフォルト値は ``FALSE`` です。
 
 バリデータチェインクラスである ``Zend_Validate``
-は、チェインの実行を中断できるという点で ``Zend_Filter_Input`` よりも柔軟です。
+は、チェインの実行を中断できるという点で ``Zend\Filter\Input`` よりも柔軟です。
 バリデータチェインクラスでは、チェイン内のバリデータのひとつが失敗したときに
-即時に処理を終了させるオプションが設定できます。 ``Zend_Filter_Input``
+即時に処理を終了させるオプションが設定できます。 ``Zend\Filter\Input``
 の場合は、メタコマンド 'breakChainOnFailure'
 の設定がルール内のすべてのバリデータに適用されます。
 より柔軟にしたい場合は、バリデータチェインを自前で作成して
@@ -655,16 +655,16 @@ BREAK_CHAIN メタコマンド
 
    // breakChainOnFailure 属性を個別に設定した
    // バリデータチェインを作成します
-   $chain = new Zend_Validate();
-   $chain->addValidator(new Zend_Validate_Digits(), true);
-   $chain->addValidator(new Zend_Validate_Between(1,12), false);
-   $chain->addValidator(new Zend_Validate_GreaterThan(0), true);
+   $chain = new Zend\Validate\Validate();
+   $chain->addValidator(new Zend\Validate\Digits(), true);
+   $chain->addValidator(new Zend\Validate\Between(1,12), false);
+   $chain->addValidator(new Zend\Validate\GreaterThan(0), true);
 
    // さきほど作成したチェインを用いるバリデータルールを宣言します
    $validators = array(
        'month' => $chain
    );
-   $input = new Zend_Filter_Input(null, $validators);
+   $input = new Zend\Filter\Input(null, $validators);
 
 .. _zend.filter.input.metacommands.messages:
 
@@ -679,7 +679,7 @@ MESSAGES メタコマンド
 指定したバリデータで特定のエラー条件のときにのみ指定したメッセージを返したりといったことが考えられます。
 
 このメタコマンドを指定する際に、文字列ではなくクラス定数
-``Zend_Filter_Input::MESSAGES`` を使用できます。
+``Zend\Filter\Input::MESSAGES`` を使用できます。
 
 以下に示すのは、あるバリデータにデフォルトのエラーメッセージを設定する例です。
 
@@ -708,7 +708,7 @@ MESSAGES メタコマンド
    $validators = array(
        'month' => array(
            'digits',
-           new Zend_Validate_Between(1, 12),
+           new Zend\Validate\Between(1, 12),
            'messages' => array(
                // バリデータ [0] はデフォルトのメッセージを使用し、
                // バリデータ [1] のみ独自のメッセージを指定します
@@ -730,14 +730,14 @@ MESSAGES メタコマンド
 
    $validators = array(
        'month' => array(
-           'digits', new Zend_Validate_Between(1, 12),
+           'digits', new Zend\Validate\Between(1, 12),
            'messages' => array(
                '月として指定できるのは数字のみです',
                array(
-                   Zend_Validate_Between::NOT_BETWEEN =>
+                   Zend\Validate\Between::NOT_BETWEEN =>
                        '月の値 %value% は、' .
                        '%min% 以上 %max% 以下の値でなければなりません',
-                   Zend_Validate_Between::NOT_BETWEEN_STRICT =>
+                   Zend\Validate\Between::NOT_BETWEEN_STRICT =>
                        '月の値 %value% は、%min% より大きく、' .
                        'かつ %max% より小さい値でなければなりません'
                )
@@ -758,12 +758,12 @@ MESSAGES メタコマンド
 
    $validators = array(
        'month' => array(
-           new Zend_Validate_Between(1, 12),
+           new Zend\Validate\Between(1, 12),
            'messages' => array(
-                           Zend_Validate_Between::NOT_BETWEEN =>
+                           Zend\Validate\Between::NOT_BETWEEN =>
                                '月の値 %value% は、' .
                                '%min% 以上 %max% 以下の値でなければなりません',
-                           Zend_Validate_Between::NOT_BETWEEN_STRICT =>
+                           Zend\Validate\Between::NOT_BETWEEN_STRICT =>
                                '月の値 %value% は、%min% より大きく、' .
                                'かつ %max% より小さい値でなければなりません'
            )
@@ -776,7 +776,7 @@ MESSAGES メタコマンド
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 メタコマンド 'allowEmpty' や 'breakChainOnFailure'、 'presence'
-の全ルール共通のデフォルト値は、 ``Zend_Filter_Input`` のコンストラクタの引数 *$options*
+の全ルール共通のデフォルト値は、 ``Zend\Filter\Input`` のコンストラクタの引数 *$options*
 で設定できます。これを使用すると、 個別のルールにメタコマンドを設定しなくても
 全ルール共通のデフォルト値を設定できます。
 
@@ -795,7 +795,7 @@ MESSAGES メタコマンド
        )
    );
 
-   $input = new Zend_Filter_Input($filters, $validators, $data, $options);
+   $input = new Zend\Filter\Input($filters, $validators, $data, $options);
 
 メタコマンド 'fields'、'messages' と 'default' については、
 このテクニックを使うことができません。
@@ -808,12 +808,12 @@ MESSAGES メタコマンド
 デフォルトでは、フィルタやバリデータを文字列で指定した場合は、
 対応するクラスを ``Zend_Filter`` 名前空間あるいは ``Zend_Validate``
 名前空間から探します。 たとえば、文字列 'digits' でフィルタを指定すると、
-``Zend_Filter_Digits`` クラスを探すことになります。
+``Zend\Filter\Digits`` クラスを探すことになります。
 
 独自のフィルタクラスやバリデータクラスを作成したり、
 サードパーティのフィルタやバリデータを使用したりする場合は、
 そのクラスの名前空間は ``Zend_Filter`` や ``Zend_Validate`` とは異なるでしょう。
-その場合は、 ``Zend_Filter_Input`` に別の名前空間を通知できます。
+その場合は、 ``Zend\Filter\Input`` に別の名前空間を通知できます。
 名前空間は、コンストラクタのオプションで指定できます。
 
 .. code-block:: php
@@ -821,10 +821,10 @@ MESSAGES メタコマンド
 
    $options = array('filterNamespace' => 'My_Namespace_Filter',
                     'validatorNamespace' => 'My_Namespace_Validate');
-   $input = new Zend_Filter_Input($filters, $validators, $data, $options);
+   $input = new Zend\Filter\Input($filters, $validators, $data, $options);
 
 あるいは、 ``addValidatorPrefixPath($prefix, $path)`` メソッドや ``addFilterPrefixPath($prefix, $path)``
-メソッドを使うこともできます。 これらは、 ``Zend_Filter_Input``
+メソッドを使うこともできます。 これらは、 ``Zend\Filter\Input``
 が使うプラグインローダへの直接のプロキシとなります。
 
 .. code-block:: php
@@ -851,14 +851,14 @@ MESSAGES メタコマンド
 
    バージョン 1.5 で関数 ``addNamespace($namespace)`` は非推奨となり、
    代わりにプラグインローダと ``addFilterPrefixPath`` および ``addValidatorPrefixPath``
-   が追加されました。 また、定数 ``Zend_Filter_Input::INPUT_NAMESPACE``
-   も非推奨となりました。 定数 ``Zend_Filter_Input::VALIDATOR_NAMESPACE`` および
-   ``Zend_Filter_Input::FILTER_NAMESPACE`` が 1.7.0 以降のリリースで使用可能です。
+   が追加されました。 また、定数 ``Zend\Filter\Input::INPUT_NAMESPACE``
+   も非推奨となりました。 定数 ``Zend\Filter\Input::VALIDATOR_NAMESPACE`` および
+   ``Zend\Filter\Input::FILTER_NAMESPACE`` が 1.7.0 以降のリリースで使用可能です。
 
 .. note::
 
-   バージョン 1.0.4 で、値 ``namespace`` をもつ定数 ``Zend_Filter_Input::NAMESPACE`` が値
-   ``inputNamespace`` を持つ定数 ``Zend_Filter_Input::INPUT_NAMESPACE`` に変わりました。 これは、
+   バージョン 1.0.4 で、値 ``namespace`` をもつ定数 ``Zend\Filter\Input::NAMESPACE`` が値
+   ``inputNamespace`` を持つ定数 ``Zend\Filter\Input::INPUT_NAMESPACE`` に変わりました。 これは、
    *PHP* 5.3 以降の予約語 ``namespace`` に対応させるためです。
 
 

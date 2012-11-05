@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.delicious:
 
-Zend_Service_Delicious
+Zend\Service\Delicious
 ======================
 
 .. _zend.service.delicious.introduction:
@@ -9,7 +9,7 @@ Zend_Service_Delicious
 Einführung
 ----------
 
-``Zend_Service_Delicious`` ist eine simple *API*, um die *XML*- und *JSON*-Webservices von `del.icio.us`_ nutzen zu
+``Zend\Service\Delicious`` ist eine simple *API*, um die *XML*- und *JSON*-Webservices von `del.icio.us`_ nutzen zu
 können. Diese Komponente bietet Lese- und Schreibzugriff auf Beiträge bei del.icio.us, sofern man die nötigen
 Zugrffisrechte vorweist.
 
@@ -20,7 +20,7 @@ Zugrffisrechte vorweist.
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('username', 'password');
+   $delicious = new Zend\Service\Delicious('username', 'password');
    $posts = $delicious->getAllPosts();
 
    foreach ($posts as $post) {
@@ -34,9 +34,9 @@ Zugrffisrechte vorweist.
 Beiträge abrufen
 ----------------
 
-``Zend_Service_Delicious`` bietet drei Möglichkeiten, um Beiträge von del.icio.us abzurufen: ``getPosts()``,
+``Zend\Service\Delicious`` bietet drei Möglichkeiten, um Beiträge von del.icio.us abzurufen: ``getPosts()``,
 ``getRecentPosts()`` und ``getAllPosts()``. Jede dieser Methoden liefert eine Instanz der Klasse
-``Zend_Service_Delicious_PostList``, welche die abgerufenen Beiträge beinhaltet.
+``Zend\Service_Delicious\PostList``, welche die abgerufenen Beiträge beinhaltet.
 
 .. code-block:: php
    :linenos:
@@ -49,7 +49,7 @@ Beiträge abrufen
     * @param string $tag Optionaler Filter nach einem bestimmten tag
     * @param Zend_Date $dt Optionaler Filter nach Datum
     * @param string $url Optionaler Filter nach URL
-    * @return Zend_Service_Delicious_PostList
+    * @return Zend\Service_Delicious\PostList
     */
    public function getPosts($tag = null, $dt = null, $url = null);
 
@@ -59,7 +59,7 @@ Beiträge abrufen
     * @param string $tag   Optionaler Filter nach einem bestimmten tag
     * @param string $count Maximale Anzahl der Beiträge, die
     *                      zurückgeliefert werden (standardmäßig 15)
-    * @return Zend_Service_Delicious_PostList
+    * @return Zend\Service_Delicious\PostList
     */
    public function getRecentPosts($tag = null, $count = 15);
 
@@ -67,17 +67,17 @@ Beiträge abrufen
     * Alle Beiträge abrufen
     *
     * @param string $tag Optionaler Filter nach einem bestimmten tag
-    * @return Zend_Service_Delicious_PostList
+    * @return Zend\Service_Delicious\PostList
     */
    public function getAllPosts($tag = null);
 
 .. _zend.service.delicious.postlist:
 
-Zend_Service_Delicious_PostList
+Zend\Service_Delicious\PostList
 -------------------------------
 
 Instanzen dieser Klasse werden von den Methoden ``getPosts()``, ``getAllPosts()``, ``getRecentPosts()`` und
-``getUserPosts()`` der Klasse ``Zend_Service_Delicious`` zurückgegeben.
+``getUserPosts()`` der Klasse ``Zend\Service\Delicious`` zurückgegeben.
 
 Für den leichteren Zugriff implementiert diese Klasse die Interfaces *Countable*, *Iterator* and *ArrayAccess*.
 
@@ -88,7 +88,7 @@ Für den leichteren Zugriff implementiert diese Klasse die Interfaces *Countable
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('username', 'password');
+   $delicious = new Zend\Service\Delicious('username', 'password');
    $posts = $delicious->getAllPosts();
 
    // Beiträge zählen
@@ -124,7 +124,7 @@ werden soll.
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('username', 'password');
+   $delicious = new Zend\Service\Delicious('username', 'password');
    $posts = $delicious->getAllPosts();
 
    // Alle Beiträge ausgeben, denen die tags "php" und "zend" zugeordnet sind
@@ -143,7 +143,7 @@ passender regulärer Ausdruck spezifiziert wird.
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('username', 'password');
+   $delicious = new Zend\Service\Delicious('username', 'password');
    $posts = $delicious->getAllPosts();
 
    // Beiträge ausgeben, deren URL "/help/" enthält
@@ -164,7 +164,7 @@ Das Bearbeiten von Beiträgen
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('username', 'password');
+   $delicious = new Zend\Service\Delicious('username', 'password');
    $posts = $delicious->getPosts();
 
    // Titel setzen
@@ -181,7 +181,7 @@ Jede set-Methode gibt das Beitragsobjekt zurück, so dass man die Methodenaufruf
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('username', 'password');
+   $delicious = new Zend\Service\Delicious('username', 'password');
    $posts = $delicious->getPosts();
 
    $posts[0]->setTitle('New title')
@@ -203,7 +203,7 @@ durch den Aufruf der Methode ``delete()`` mit dem Objekt, welches den zu lösche
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('username', 'password');
+   $delicious = new Zend\Service\Delicious('username', 'password');
 
    // Explizites Löschen eines Beitrags über einen URL
    $delicious->deletePost('http://framework.zend.com');
@@ -221,7 +221,7 @@ Das Hinzufügen von neuen Beiträgen
 ----------------------------------
 
 Um einen Beitrag hinzuzufügen, muss zu Beginn die Methode ``createNewPost()`` aufgerufen werden, welche eine
-Instanz der Klasse ``Zend_Service_Delicious_Post`` zurückgibt. Danach kann mit Hilfe des erhaltenen Objekts der
+Instanz der Klasse ``Zend\Service_Delicious\Post`` zurückgibt. Danach kann mit Hilfe des erhaltenen Objekts der
 Beitrag verändert werden. Nach der Änderung muss die ``save()``-Methode aufgerufen werden, damit die Änderungen
 in die del.icio.us-Datenbank übernommen werden.
 
@@ -232,7 +232,7 @@ in die del.icio.us-Datenbank übernommen werden.
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('username', 'password');
+   $delicious = new Zend\Service\Delicious('username', 'password');
 
    // Neuen Beitrag erstellen, ändern und abspeichern
    // (Verkettung der Methodenaufrufe)
@@ -258,7 +258,7 @@ Tags
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('username', 'password');
+   $delicious = new Zend\Service\Delicious('username', 'password');
 
    // Abrufen aller tags
    print_r($delicious->getTags());
@@ -278,7 +278,7 @@ Bundles
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('username', 'password');
+   $delicious = new Zend\Service\Delicious('username', 'password');
 
    // get all bundles
    print_r($delicious->getBundles());
@@ -307,14 +307,14 @@ Die del.icio.us webservice *API* ermöglicht den Zugriff auf die öffentlichen D
    +----------------+----------------------------------------------+-------------------------------+
    |getUserNetwork()|Liefert das Netzwerk eines Nutzers            |Array                          |
    +----------------+----------------------------------------------+-------------------------------+
-   |getUserPosts()  |Liefert alle Beiträge eines Nutzers           |Zend_Service_Delicious_PostList|
+   |getUserPosts()  |Liefert alle Beiträge eines Nutzers           |Zend\Service_Delicious\PostList|
    +----------------+----------------------------------------------+-------------------------------+
    |getUserTags()   |Liefert alle tags, die der Nutzer vergeben hat|Array                          |
    +----------------+----------------------------------------------+-------------------------------+
 
 .. note::
 
-   Sollten nur diese Methoden verwendet werden, ist dem Konstruktor der Klasse ``Zend_Service_Delicious`` bei der
+   Sollten nur diese Methoden verwendet werden, ist dem Konstruktor der Klasse ``Zend\Service\Delicious`` bei der
    Instanzierung kein Nutzername in Kombination mit dem entsprechenden Passwort zu übergeben.
 
 .. _zend.service.delicious.public_data.retrieving_public_data:
@@ -325,7 +325,7 @@ Die del.icio.us webservice *API* ermöglicht den Zugriff auf die öffentlichen D
    :linenos:
 
    // Nutzername und Passwort werden nicht benötigt
-   $delicious = new Zend_Service_Delicious();
+   $delicious = new Zend\Service\Delicious();
 
    // Laden der Fans eines Nutzers
    print_r($delicious->getUserFans('someUser'));
@@ -342,13 +342,13 @@ Die del.icio.us webservice *API* ermöglicht den Zugriff auf die öffentlichen D
 ^^^^^^^^^^^^^^^^^^^^
 
 Wenn öffentliche Beiträge über die Methode ``getUserPosts()`` bezogen werden wird ein
-``Zend_Service_Delicious_PostList`` Objekt zurückgegeben, welches die einzelnen Beiträge in einer Liste von
-``Zend_Service_Delicious_SimplePost``-Objekten speichert. Diese Objekte enthalten Basisinformationen über den
+``Zend\Service_Delicious\PostList`` Objekt zurückgegeben, welches die einzelnen Beiträge in einer Liste von
+``Zend\Service_Delicious\SimplePost``-Objekten speichert. Diese Objekte enthalten Basisinformationen über den
 Beitrag, wie z.B. den *URL*, den Titel, die Notizen und Tags.
 
 .. _zend.service.delicious.public_data.posts.SimplePost_methods:
 
-.. table:: Methoden der Klasse Zend_Service_Delicious_SimplePost
+.. table:: Methoden der Klasse Zend\Service_Delicious\SimplePost
 
    +----------+-----------------------------------------+------------+
    |Name      |Beschreibung                             |Rückgabewert|
@@ -367,21 +367,21 @@ Beitrag, wie z.B. den *URL*, den Titel, die Notizen und Tags.
 HTTP client
 -----------
 
-``Zend_Service_Delicious`` verwendet die Klasse ``Zend_Rest_Client``, um *HTTP*-Request an den del.icio.us
-Webservice zu schicken. Um einzustellen, welchen *HTTP* Client ``Zend_Service_Delicious`` verwenden soll, muss der
-*HTTP* Client der Klasse ``Zend_Rest_Client`` geändert werden.
+``Zend\Service\Delicious`` verwendet die Klasse ``Zend\Rest\Client``, um *HTTP*-Request an den del.icio.us
+Webservice zu schicken. Um einzustellen, welchen *HTTP* Client ``Zend\Service\Delicious`` verwenden soll, muss der
+*HTTP* Client der Klasse ``Zend\Rest\Client`` geändert werden.
 
 .. _zend.service.delicious.httpclient.changing:
 
-.. rubric:: Veränderung des HTTP clients der Klasse Zend_Rest_Client
+.. rubric:: Veränderung des HTTP clients der Klasse Zend\Rest\Client
 
 .. code-block:: php
    :linenos:
 
    $myHttpClient = new My_Http_Client();
-   Zend_Rest_Client::setHttpClient($myHttpClient);
+   Zend\Rest\Client::setHttpClient($myHttpClient);
 
-Sollte man mehr als einen Request mit ``Zend_Service_Delicious`` senden, ist es sinnvoll den *HTTP* Client so zu
+Sollte man mehr als einen Request mit ``Zend\Service\Delicious`` senden, ist es sinnvoll den *HTTP* Client so zu
 konfigurieren, dass die Verbindungen offen gehalten werden, um die Geschwindigkeit der Requests zu erhöhen.
 
 .. _zend.service.delicious.httpclient.keepalive:
@@ -391,14 +391,14 @@ konfigurieren, dass die Verbindungen offen gehalten werden, um die Geschwindigke
 .. code-block:: php
    :linenos:
 
-   Zend_Rest_Client::getHttpClient()->setConfig(array(
+   Zend\Rest\Client::getHttpClient()->setConfig(array(
            'keepalive' => true
    ));
 
 .. note::
 
-   Bei der Instanzierung eines ``Zend_Service_Delicious`` Objekts wird der *SSL* Transport der Klasse
-   ``Zend_Rest_Client`` auf *'ssl'* anstatt auf *'ssl2'* gesetzt, da del.icio.us einige Probleme mit *'ssl2'* hat.
+   Bei der Instanzierung eines ``Zend\Service\Delicious`` Objekts wird der *SSL* Transport der Klasse
+   ``Zend\Rest\Client`` auf *'ssl'* anstatt auf *'ssl2'* gesetzt, da del.icio.us einige Probleme mit *'ssl2'* hat.
    So kann es vorkommen, dass die Vervollständigung eines Request sehr lange (um die zwei Sekunden) dauert.
 
 

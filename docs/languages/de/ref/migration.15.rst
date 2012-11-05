@@ -44,7 +44,7 @@ Wenn man findet das man auf dieses "Feature" nicht verzichten kann gibt es mehre
   Skripte hat die auf dem vorigen aufbauen führt das, unerwarteter Weise, zu vielen Umbenennungen die
   durchgeführt werden müssen.
 
-- Zweitbeste Option: Der ViewRenderer delegiert nun die Auflösung von View Skripten zu ``Zend_Filter_Inflector``;
+- Zweitbeste Option: Der ViewRenderer delegiert nun die Auflösung von View Skripten zu ``Zend\Filter\Inflector``;
   man kann die Regeln des Inflectors ändern damit er nicht länger die Wörter der Aktion mit einem Bindestrich
   trennt:
 
@@ -52,10 +52,10 @@ Wenn man findet das man auf dieses "Feature" nicht verzichten kann gibt es mehre
      :linenos:
 
      $viewRenderer =
-         Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
+         Zend\Controller_Action\HelperBroker::getStaticHelper('viewRenderer');
      $inflector = $viewRenderer->getInflector();
      $inflector->setFilterRule(':action', array(
-         new Zend_Filter_PregReplace(
+         new Zend\Filter\PregReplace(
              '#[^a-z0-9' . preg_quote(DIRECTORY_SEPARATOR, '#') . ']+#i',
              ''
          ),

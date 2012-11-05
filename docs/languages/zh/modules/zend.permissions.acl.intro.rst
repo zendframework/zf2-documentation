@@ -27,9 +27,9 @@ role，而这辆汽车就是 resource，因为不是所有人都有权进入汽�
 --------------
 
 在 Zend_Acl 中，创建一个 resource 非常简单。Zend_Acl 提供了 resource 接口
-*Zend_Acl_Resource_Interface* 使开发者在程序中创建 resources 非常容易。
+*Zend\Acl_Resource\Interface* 使开发者在程序中创建 resources 非常容易。
 为了使Zend_Acl把某个对象当作一个resource，一个类只需要实现这个只包含了一个方法
-*getResourceId()* 的接口。 另外， *Zend_Acl_Resource*\ 是一个包含在 Zend_Acl 里作为一个基本的
+*getResourceId()* 的接口。 另外， *Zend\Acl\Resource*\ 是一个包含在 Zend_Acl 里作为一个基本的
 resource 实现的类，开发者可以任意扩展它。
 
 Zend_Acl 提供了一个树结构，它可以添加多个 resources
@@ -48,9 +48,9 @@ Zend_Acl 也支持基于 resources 的权限（例如："create", "read", "updat
 关于角色(Role)
 ----------
 
-象 Resources 一样，创建一个 role 也非常简单。 Zend_Acl 提供了 *Zend_Acl_Role_Interface*
+象 Resources 一样，创建一个 role 也非常简单。 Zend_Acl 提供了 *Zend\Acl_Role\Interface*
 使开发者创建 roles 非常容易。 为了使Zend_Acl把某个对象当作一个
-role，一个类只需要实现这个只包含了一个方法 *getRoleId()* 的接口。 另外， *Zend_Acl_Role*\
+role，一个类只需要实现这个只包含了一个方法 *getRoleId()* 的接口。 另外， *Zend\Acl\Role*\
 是一个包含在Zend_Acl里作为一个基本的 role 实现的类，开发者可以任意扩展它。
 
 在 Zend_Acl, 一个 role 可以从一个或多个 role 继承，这就是在 role
@@ -74,16 +74,16 @@ role，如：“editor”和“administrator”。开发者可以分别给“edi
 .. code-block::
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
-   $acl->addRole(new Zend_Acl_Role('guest'))
-       ->addRole(new Zend_Acl_Role('member'))
-       ->addRole(new Zend_Acl_Role('admin'));
+   $acl->addRole(new Zend\Acl\Role('guest'))
+       ->addRole(new Zend\Acl\Role('member'))
+       ->addRole(new Zend\Acl\Role('admin'));
 
    $parents = array('guest', 'member', 'admin');
-   $acl->addRole(new Zend_Acl_Role('someUser'), $parents);
+   $acl->addRole(new Zend\Acl\Role('someUser'), $parents);
 
-   $acl->add(new Zend_Acl_Resource('someResource'));
+   $acl->add(new Zend\Acl\Resource('someResource'));
 
    $acl->deny('guest', 'someResource');
    $acl->allow('member', 'someResource');
@@ -120,7 +120,7 @@ ACL
 .. code-block::
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
 
 .. note::
@@ -155,32 +155,32 @@ CMS 通常需要一个分级的权限系统来决定它的用户的授权能力�
    |Administrator|(Granted all access)    |N/A      |
    +-------------+------------------------+---------+
 
-对于这个范例， *Zend_Acl_Role* 被使用，但任何实现 *Zend_Acl_Role_Interface*
+对于这个范例， *Zend\Acl\Role* 被使用，但任何实现 *Zend\Acl_Role\Interface*
 的对象是可接受的。这些组可以被添加到 role 注册表如下：
 
 .. code-block::
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
-   // 用 Zend_Acl_Role 把组添加到 Role 注册表
+   // 用 Zend\Acl\Role 把组添加到 Role 注册表
    // Guest 不继承访问控制
-   $roleGuest = new Zend_Acl_Role('guest');
+   $roleGuest = new Zend\Acl\Role('guest');
    $acl->addRole($roleGuest);
 
    // Staff 从 guest 继承
-   $acl->addRole(new Zend_Acl_Role('staff'), $roleGuest);
+   $acl->addRole(new Zend\Acl\Role('staff'), $roleGuest);
 
    /*
    另外, 上面的也可这样来写：
-   $acl->addRole(new Zend_Acl_Role('staff'), 'guest');
+   $acl->addRole(new Zend\Acl\Role('staff'), 'guest');
    */
 
    // Editor 从 staff 继承
-   $acl->addRole(new Zend_Acl_Role('editor'), 'staff');
+   $acl->addRole(new Zend\Acl\Role('editor'), 'staff');
 
    // Administrator 不继承访问控制
-   $acl->addRole(new Zend_Acl_Role('administrator'));
+   $acl->addRole(new Zend\Acl\Role('administrator'));
 
 
 .. _zend.acl.introduction.defining:
@@ -203,13 +203,13 @@ resources 和 roles 继承由它们祖先定义的规则。
 .. code-block::
    :linenos:
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
-   $roleGuest = new Zend_Acl_Role('guest');
+   $roleGuest = new Zend\Acl\Role('guest');
    $acl->addRole($roleGuest);
-   $acl->addRole(new Zend_Acl_Role('staff'), $roleGuest);
-   $acl->addRole(new Zend_Acl_Role('editor'), 'staff');
-   $acl->addRole(new Zend_Acl_Role('administrator'));
+   $acl->addRole(new Zend\Acl\Role('staff'), $roleGuest);
+   $acl->addRole(new Zend\Acl\Role('editor'), 'staff');
+   $acl->addRole(new Zend\Acl\Role('administrator'));
 
    // Guest 只可以浏览内容
    $acl->allow($roleGuest, null, 'view');

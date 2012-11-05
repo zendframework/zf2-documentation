@@ -1,15 +1,15 @@
 .. EN-Revision: none
 .. _zend.service.strikeiron:
 
-Zend_Service_StrikeIron
+Zend\Service\StrikeIron
 =======================
 
-``Zend_Service_StrikeIron`` bietet einen *PHP* 5 Clienten zu den Web Services von StrikeIron. Siehe die folgenden
+``Zend\Service\StrikeIron`` bietet einen *PHP* 5 Clienten zu den Web Services von StrikeIron. Siehe die folgenden
 Sektionen:
 
 
 
-   - :ref:`Zend_Service_StrikeIron <zend.service.strikeiron>`
+   - :ref:`Zend\Service\StrikeIron <zend.service.strikeiron>`
 
 
 
@@ -37,14 +37,14 @@ einzelnen Account, was es für Lösungsanbieter perfekt macht. Man kann mit frei
 
 Die Services von StrikeIron können schon alleine durch die `PHP 5 SOAP Erweiterung`_ verwendet werden. Trotzdem
 bietet die Verwendung von StrikeIron auf diesem Weg kein ideales *PHP*-artiges Interface. Die
-``Zend_Service_StrikeIron`` Componente bietet einen leichtgewichtigen Layer aufbauend auf der *SOAP* Erweiterung
+``Zend\Service\StrikeIron`` Componente bietet einen leichtgewichtigen Layer aufbauend auf der *SOAP* Erweiterung
 für die Arbeit mit den Services von StrikeIron auf einem bequemeren und *PHP*-artigeren Weg.
 
 .. note::
 
-   Die *PHP* 5 *SOAP* Erweiterung muß installiert und aktiviert sein um ``Zend_Service_StrikeIron`` zu verwenden.
+   Die *PHP* 5 *SOAP* Erweiterung muß installiert und aktiviert sein um ``Zend\Service\StrikeIron`` zu verwenden.
 
-Die ``Zend_Service_StrikeIron`` Komponente bietet:
+Die ``Zend\Service\StrikeIron`` Komponente bietet:
 
 
 
@@ -66,11 +66,11 @@ Die ``Zend_Service_StrikeIron`` Komponente bietet:
 Registrieren mit StrikeIron
 ---------------------------
 
-Bevor man mit ``Zend_Service_StrikeIron`` beginnen kann, muß man sich zuerst für einen StrikeIron Entwickler
+Bevor man mit ``Zend\Service\StrikeIron`` beginnen kann, muß man sich zuerst für einen StrikeIron Entwickler
 Zugang `registrieren`_.
 
 Nach der Registrierung erhält man einen StrikeIron Benutzernamen und ein Passwort. Diese werden Verwendet wenn man
-sich auf StrikeIron verbindet indem man ``Zend_Service_StrikeIron`` verwendet.
+sich auf StrikeIron verbindet indem man ``Zend\Service\StrikeIron`` verwendet.
 
 Man muß sich auch für StrikeIron's Super Data Pack Web Service `anmelden`_.
 
@@ -83,9 +83,9 @@ Beginnen
 --------
 
 Sobald man sich für einen StrikeIron Account `registriert`_ und für das `Super Data Pack`_ angemeldet hat, ist
-man für die Benutzung von ``Zend_Service_StrikeIron`` bereit.
+man für die Benutzung von ``Zend\Service\StrikeIron`` bereit.
 
-StrikeIron besteht aus hunderten von verschiedenen WebServices. ``Zend_Service_StrikeIron`` kann mit vielen dieser
+StrikeIron besteht aus hunderten von verschiedenen WebServices. ``Zend\Service\StrikeIron`` kann mit vielen dieser
 Services verwendet werden bietet aber nur für drei von Ihnen unterstützte Wrapper:
 
 - :ref:`ZIP Code Informationen <zend.service.strikeiron.bundled-services.zip-code-information>`
@@ -94,21 +94,21 @@ Services verwendet werden bietet aber nur für drei von Ihnen unterstützte Wrap
 
 - :ref:`Verkaufs- & Steuergrundlagen <zend.service.strikeiron.bundled-services.sales-use-tax-basic>`
 
-Die Klasse ``Zend_Service_StrikeIron`` bietet einen einfachen Web um die eigenen Account Informationen von
+Die Klasse ``Zend\Service\StrikeIron`` bietet einen einfachen Web um die eigenen Account Informationen von
 StrikeIron und andere Option im Konstruktor zu spezifizieren. Sie bietet auch eine Factory Methode die Clients für
 StrikeIron Services zurück gibt:
 
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new Zend_Service_StrikeIron(array('username' => 'your-username',
+   $strikeIron = new Zend\Service\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    $taxBasic = $strikeIron->getService(array('class' => 'SalesUseTaxBasic'));
 
 Die ``getService()`` Methode gibt einen Client für irgendein StrikeIron Service zurück das durch den Namen seiner
 *PHP* Wrapper Klasse definiert wurde. In diesem Fall, referiert der Name 'SalesUseTaxBasic' zu der Wrapper Klasse
-``Zend_Service_StrikeIron_SalesUseTaxBasic``. Wrapper sind für drei Services inkludiert und in :ref:`Bundled
+``Zend\Service_StrikeIron\SalesUseTaxBasic``. Wrapper sind für drei Services inkludiert und in :ref:`Bundled
 Services <zend.service.strikeiron.bundled-services>` beschrieben.
 
 Die ``getService()`` Methode kann auch einen Client für ein StrikeIron Service zurückgeben das bisher keinen
@@ -126,7 +126,7 @@ erhalten, kann dieser Client verwendet werden durch Aufruf seiner Methoden ganz 
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new Zend_Service_StrikeIron(array('username' => 'your-username',
+   $strikeIron = new Zend\Service\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    // Einen Client für das Verkaufs / Steuerbasis Service erhalten
@@ -158,7 +158,7 @@ Ergebnisse betrachten
 
 Wenn man Services von StrikeIron lernt oder versucht fehler zu beheben, ist es oft nützlich das Ergebnis das von
 einem Methodenaufruf zurückgegeben wird auszugeben. Das Ergebnis wird immer ien Objekt sein das eine Instanz von
-``Zend_Service_StrikeIron_Decorator`` ist. Das ist ein kleines `Dekorator`_ Objekt das die Ergebnisse des Methoden
+``Zend\Service_StrikeIron\Decorator`` ist. Das ist ein kleines `Dekorator`_ Objekt das die Ergebnisse des Methoden
 Aufrufs ummantelt.
 
 Der einfachste Weg ein Ergebnis vom Service zu betrachten ist die Verwendung der eingebauten *PHP* Methode
@@ -167,7 +167,7 @@ Der einfachste Weg ein Ergebnis vom Service zu betrachten ist die Verwendung der
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new Zend_Service_StrikeIron(array('username' => 'your-username',
+   $strikeIron = new Zend\Service\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    $taxBasic = $strikeIron->getService(array('class' => 'SalesUseTaxBasic'));
@@ -176,7 +176,7 @@ Der einfachste Weg ein Ergebnis vom Service zu betrachten ist die Verwendung der
    print_r($rateInfo);
    ?>
 
-   Zend_Service_StrikeIron_Decorator Object
+   Zend\Service_StrikeIron\Decorator Object
    (
        [_name:protected] => GetTaxRateCanadaResult
        [_object:protected] => stdClass Object
@@ -221,7 +221,7 @@ fangen wenn man Methodenaufrufe zu einem Service durchführt:
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new Zend_Service_StrikeIron(array('username' => 'your-username',
+   $strikeIron = new Zend\Service\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    $taxBasic = $strikeIron->getService(array('class' => 'SalesUseTaxBasic'));
@@ -230,13 +230,13 @@ fangen wenn man Methodenaufrufe zu einem Service durchführt:
 
      $taxBasic->getTaxRateCanada(array('province' => 'ontario'));
 
-   } catch (Zend_Service_StrikeIron_Exception $e) {
+   } catch (Zend\Service_StrikeIron\Exception $e) {
 
      // Fehler handhaben für Events wie Verbindungsprobleme oder Account Probleme
 
    }
 
-Die geworfenen Ausnahmen werden immer ``Zend_Service_StrikeIron_Exception`` sein.
+Die geworfenen Ausnahmen werden immer ``Zend\Service_StrikeIron\Exception`` sein.
 
 Es ist wichtig die Unterschiede zwischen Ausnahmen und normalen fehlgeschlagenen Methodenaufrufen zu verstehen.
 Ausnahmen treten für **ausgenommene** Verhaltenweisen auf, wie z.B. ein Netzwerk das abstürzt oder ein
@@ -266,7 +266,7 @@ Status für diesen Service zu prüfen indem die ``getSubscriptionInfo()`` Method
    :linenos:
 
    // Einen Client für das Verkaufs / Steuerbasis Service erhalten
-   $strikeIron = new Zend_Service_StrikeIron(array('username' => 'your-username',
+   $strikeIron = new Zend\Service\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    $taxBasic = $strikeIron->getService(array('class => 'SalesUseTaxBasic'));

@@ -4,7 +4,7 @@
 Google Kalender verwenden
 =========================
 
-Die ``Zend_Gdata_Calendar`` Klasse kann verwendet werden um Events im Online Google Kalender Service zu sehen,
+Die ``ZendGData\Calendar`` Klasse kann verwendet werden um Events im Online Google Kalender Service zu sehen,
 erstellen, updaten und löschen.
 
 Siehe `http://code.google.com/apis/calendar/overview.html`_ für weitere Informationen über die Google Kalender
@@ -21,7 +21,7 @@ Servern läuft über *HTTP* und erlaubt sowohl authentifizierte als auch unauthe
 
 Bevor irgendeine Transaktion stattfinden kann, muß diese Verbindung erstellt werden. Die Erstellung einer
 Verbindung zu den Kalender Server beinhaltet zwei Schritte: Erstellung eines *HTTP* Clients und das binden einer
-``Zend_Gdata_Calendar`` Instanz an diesen Client.
+``ZendGData\Calendar`` Instanz an diesen Client.
 
 .. _zend.gdata.calendar.connecting.authentication:
 
@@ -47,7 +47,7 @@ werden:
   das Benutzer ihre Sicherheits *URL* manuell empfangen, bevor sie sich authentifizieren können, und ist limitiert
   auf nur-lesenden Zugriff.
 
-Die ``Zend_Gdata`` Bibliothek bietet Unterstützung für alle drei Authentifizierungs Schemas. Der Rest dieses
+Die ``ZendGData`` Bibliothek bietet Unterstützung für alle drei Authentifizierungs Schemas. Der Rest dieses
 Kapitels nimmt an das die vorhandenen Authentifizierungs Schemas geläufig sind und wie eine korrekte
 Authentifizierte Verbindung erstellt wird. Für weitere Details kann in die :ref:`Authentifizierungs Sektion
 <zend.gdata.introduction.authentication>` dieses Handbuches, oder in die `Authentifizierungs Übersicht im Google
@@ -58,15 +58,15 @@ Data API Entwickler Guide`_ gesehen werden.
 Eine Service Instanz erstellen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Um mit dem Google Kalender zu interagieren, bietet diese Bibliothek die ``Zend_Gdata_Calendar`` Service Klasse.
+Um mit dem Google Kalender zu interagieren, bietet diese Bibliothek die ``ZendGData\Calendar`` Service Klasse.
 Diese Klasse bietet ein übliches Interface zu den Google Data und Atom Publishing Protocol Modellen und assistiert
 in der Behandlung der Anfragen zum und von den Kalender Servern.
 
 Sobald ein Authentifizierung Schema ausgewählt wurde, besteht der nächste Schritt darin eine Instanz von
-``Zend_Gdata_Calendar`` zu erstellen. Der Klassen Konstruktor nimmt eine Instanz von ``Zend_Http_Client`` als
+``ZendGData\Calendar`` zu erstellen. Der Klassen Konstruktor nimmt eine Instanz von ``Zend\Http\Client`` als
 einzelnes Argument. Das bietet ein Interface für AuthSub und ClientAuth Authentifizierungen, da beide von Ihnen
 die Erstellung eines speziellen authentifizierten *HTTP* Clients benötigen. Wenn keine Argumente angegeben werden,
-wird automatisch eine unauthentifizierte Instanz von ``Zend_Http_Client`` erstellt.
+wird automatisch eine unauthentifizierte Instanz von ``Zend\Http\Client`` erstellt.
 
 Das folgende Beispiel zeigt wie man eine Kalender Service Klasse erstellt und dabei die ClientAuth
 Authentifizierung verwendet:
@@ -75,15 +75,15 @@ Authentifizierung verwendet:
    :linenos:
 
    // Parameter für die ClientAuth Authentifizierung
-   $service = Zend_Gdata_Calendar::AUTH_SERVICE_NAME;
+   $service = ZendGData\Calendar::AUTH_SERVICE_NAME;
    $user = "sample.user@gmail.com";
    $pass = "pa$$w0rd";
 
    // Erstellt einen authentifizierten HTTP Client
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
 
    // Erstellt eine Instanz des Kalender Services
-   $service = new Zend_Gdata_Calendar($client);
+   $service = new ZendGData\Calendar($client);
 
 Ein Kalender Service der AuthSub verwendet, kann ähnlich erstellt werden, durch eine etwas längere Schreibweise:
 
@@ -141,7 +141,7 @@ Ein Kalender Service der AuthSub verwendet, kann ähnlich erstellt werden, durch
 
            // Den Benutzer zum AuthSub server umleiten zur Anmeldung
 
-           $authSubUrl = Zend_Gdata_AuthSub::getAuthSubTokenUri($next,
+           $authSubUrl = ZendGData\AuthSub::getAuthSubTokenUri($next,
                                                                 $scope,
                                                                 $secure,
                                                                 $session);
@@ -156,14 +156,14 @@ Ein Kalender Service der AuthSub verwendet, kann ähnlich erstellt werden, durch
        // Token wenn das notwendig ist
        if (!isset($_SESSION['sessionToken']) && isset($_GET['token'])) {
            $_SESSION['sessionToken'] =
-               Zend_Gdata_AuthSub::getAuthSubSessionToken($_GET['token']);
+               ZendGData\AuthSub::getAuthSubSessionToken($_GET['token']);
        }
 
        // An diesem Punkt sind wir authentifiziert über AuthSub und können
        // eine authentifizierte HTTP Client Instanz holen
 
        // Erstellt einen authentifizierte HTTP Client
-       $client = Zend_Gdata_AuthSub::getHttpClient($_SESSION['sessionToken']);
+       $client = ZendGData\AuthSub::getHttpClient($_SESSION['sessionToken']);
        return $client;
    }
 
@@ -175,7 +175,7 @@ Ein Kalender Service der AuthSub verwendet, kann ähnlich erstellt werden, durch
 
    // Erstellt eine Instanz des Kalender Services, und leitet den Benutzer
    // zum AuthSub Server um wenn das notwendig ist.
-   $service = new Zend_Gdata_Calendar(getAuthSubHttpClient());
+   $service = new ZendGData\Calendar(getAuthSubHttpClient());
 
 Schlußendlich, kann ein nicht authentifizierter Server erstellt werden um Ihn entweder mit öffentlichen Feeds
 oder MagicCookie Authentifizierung zu verwenden:
@@ -186,7 +186,7 @@ oder MagicCookie Authentifizierung zu verwenden:
    // Erstellt eine Instanz des Kalender Services wobei ein nicht
    // authentifizierter HTTP Client verwendet wird
 
-   $service = new Zend_Gdata_Calendar();
+   $service = new ZendGData\Calendar();
 
 Es ist zu beachten das die MagicCookie Authentifizierung nicht mit der *HTTP* Verbindung unterstützt wird, sonder
 stattdessen wärend der gewählten Sichtbarkeit spezifiziert wird, wärend Anfragen abgeschickt werden. Siehe die
@@ -210,18 +210,18 @@ Statuc Code resultieren.
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Calendar::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $service = new Zend_Gdata_Calendar($client);
+   $service = ZendGData\Calendar::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $service = new ZendGData\Calendar($client);
 
    try {
        $listFeed= $service->getCalendarListFeed();
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
-Der Aufruf von ``getCalendarListFeed()`` erstellt eine neue Instanz von ``Zend_Gdata_Calendar_ListFeed`` die jeden
-vorhandenen Kalender als Instanz von ``Zend_Gdata_Calendar_ListEntry`` enthält. Nachdem der Feed empfangen wurde,
+Der Aufruf von ``getCalendarListFeed()`` erstellt eine neue Instanz von ``ZendGData_Calendar\ListFeed`` die jeden
+vorhandenen Kalender als Instanz von ``ZendGData_Calendar\ListEntry`` enthält. Nachdem der Feed empfangen wurde,
 können der Iterator und der Accessor die innerhalb des Feeds enthalten sind, verwendet werden um die enthaltenen
 Kalender zu inspizieren.
 
@@ -241,9 +241,9 @@ Kalender zu inspizieren.
 Events erhalten
 ---------------
 
-Wie die Liste der Kalender können auch die Events empfangen werden durch Verwendung der ``Zend_Gdata_Calendar``
-Service Klasse. Die zurückgegebene Event Liste ist vom Typ ``Zend_Gdata_Calendar_EventFeed`` und enthält jedes
-Event als Instanz von ``Zend_Gdata_Calendar_EventEntry``. Wie vorher, erlauben die in der Instanz des Event Feeds
+Wie die Liste der Kalender können auch die Events empfangen werden durch Verwendung der ``ZendGData\Calendar``
+Service Klasse. Die zurückgegebene Event Liste ist vom Typ ``ZendGData_Calendar\EventFeed`` und enthält jedes
+Event als Instanz von ``ZendGData_Calendar\EventEntry``. Wie vorher, erlauben die in der Instanz des Event Feeds
 enthaltenen Accessoren und der Iterator das individuelle Events inspiziert werden können.
 
 .. _zend.gdata.event_retrieval.queries:
@@ -252,7 +252,7 @@ Abfragen
 ^^^^^^^^
 
 Wenn Events mit der Kalender *API* empfangen werden, werden speziell erstellte Abfrage *URL*\ s verwendet um zu
-beschreiben welche Events zurückgegeben werden sollten. Die ``Zend_Gdata_Calendar_EventQuery`` Klasse vereinfacht
+beschreiben welche Events zurückgegeben werden sollten. Die ``ZendGData_Calendar\EventQuery`` Klasse vereinfacht
 diese Aufgabe durch automatische Erstellung einer Abfrage *URL* basierend auf den gegebenen Parametern. Eine
 komplette Liste dieser Parameter ist in der `Abfrage Sektion des Google Data API Protokoll Referenz`_ enthalten.
 Trotzdem gibt es drei Parameter die es Wert sind speziell genannt zu werden:
@@ -277,7 +277,7 @@ Trotzdem gibt es drei Parameter die es Wert sind speziell genannt zu werden:
 Events in der Reihenfolge Ihres Startzeitpunktes erhalten
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Das folgende Beispiel zeigt die Verwendung der ``Zend_Gdata_Query`` Klasse und spezifiziert den privat sichtbaren
+Das folgende Beispiel zeigt die Verwendung der ``ZendGData\Query`` Klasse und spezifiziert den privat sichtbaren
 Feed, welcher eine vorhandene authentifizierte Verbindung zu den Kalender Servern benötigt. Wenn ein MagicCookie
 für die Authentifizierung verwendet wird, sollte die Sichtbarkeit zuerst auf "**private-magicCookieValue**"
 gesetzt werden, sobei magicCookieValue der zufälliger String ist, der erhalten wird, wenn man die private *XML*
@@ -299,7 +299,7 @@ Events die in der Zukunft stattfinden werden zurückgegeben.
    // Empfängt die Event Liste vom Kalender Server
    try {
        $eventFeed = $service->getCalendarEventFeed($query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -311,7 +311,7 @@ Events die in der Zukunft stattfinden werden zurückgegeben.
    echo "</ul>";
 
 Zusätzliche Eigenschaften wie ID, Autor, Wann, Event Status, Sichtbarkeit, Web Inhalt, und Inhalt, sowie andere
-sind innerhalb von ``Zend_Gdata_Calendar_EventEntry`` vorhanden. Siehe die `Zend Framework API Dokumentation`_ und
+sind innerhalb von ``ZendGData_Calendar\EventEntry`` vorhanden. Siehe die `Zend Framework API Dokumentation`_ und
 die `Lalender Protokol Referenz`_ für eine komplette Liste.
 
 .. _zend.gdata.event_retrieval.date_range:
@@ -365,7 +365,7 @@ Individuelle Events können empfangen werden indem deren Event ID als Teil der A
 
    try {
        $event = $service->getCalendarEventEntry($query);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -381,7 +381,7 @@ alle notwendigen Informationen enthält um das Event zu erhalten.
 
    try {
        $event = $service->getCalendarEventEntry($eventURL);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -395,8 +395,8 @@ Events erstellen
 Ein einmal vorkommendes Event erstellen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Events werden einem Kalender hinzugefügt indem eine Instanz von ``Zend_Gdata_EventEntry`` erstellt wird, und diese
-mit den richtigen Daten bekanntgegeben wird. Die Kalender Service Instanz (``Zend_Gdata_Calendar``) wird dann
+Events werden einem Kalender hinzugefügt indem eine Instanz von ``ZendGData\EventEntry`` erstellt wird, und diese
+mit den richtigen Daten bekanntgegeben wird. Die Kalender Service Instanz (``ZendGData\Calendar``) wird dann
 verwendet um das Event transparent in *XML* zu konvertieren und diese an den Kalender Server zu senden.
 
 Mindestens die folgenden Attribute sollten gesetzt werden:
@@ -616,7 +616,7 @@ speichern.
    // Die Änderungen an den Server hochladen
    try {
        $event->save();
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -672,7 +672,7 @@ Kommentars in der ``author`` Eigenschaft und der Kommentar Text in der ``content
    // Die Kommentarliste für das Event erhalten
    try {
    $commentFeed = $service->getFeed($commentUrl);
-   } catch (Zend_Gdata_App_Exception $e) {
+   } catch (ZendGData_App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 

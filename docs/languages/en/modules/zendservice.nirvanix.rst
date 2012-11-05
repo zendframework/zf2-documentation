@@ -47,7 +47,7 @@ Features
 --------
 
 Nirvanix's REST service can be used effectively with *PHP* using the `SimpleXML`_ extension and
-``Zend_Http_Client`` alone. However, using it this way is somewhat inconvenient due to repetitive operations like
+``Zend\Http\Client`` alone. However, using it this way is somewhat inconvenient due to repetitive operations like
 passing the session token on every request and repeatedly checking the response body for error codes.
 
 ``ZendService\Nirvanix`` provides the following functionality:

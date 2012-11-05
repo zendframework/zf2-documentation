@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.ldap.node:
 
-Objektorientierter Zugriff auf den LDAP Baum durch Verwendung von Zend_Ldap_Node
+Objektorientierter Zugriff auf den LDAP Baum durch Verwendung von Zend\Ldap\Node
 ================================================================================
 
 .. _zend.ldap.node.basic:
@@ -72,7 +72,7 @@ Baum Durchlaufen
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind();
    $ri = new RecursiveIteratorIterator($ldap->getBaseNode(),
                                        RecursiveIteratorIterator::SELF_FIRST);

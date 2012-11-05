@@ -61,7 +61,7 @@ Date
 Devuelve ``TRUE`` si y sólo si ``$valor`` es una fecha válida en el formato ``YYYY-MM-DD`` (AAAA-MM-DD). Si se
 usa la opción ``locale`` entonces la fecha será validada de acuerdo a lo establecido para ese locale. Además, si
 se establece la opción ``format`` ese formato se utiliza para la validación. Para más detalles acerca de los
-parámetros opcionales ver en: :ref:`Zend_Date::isDate() <zend.date.others.comparison.table>`.
+parámetros opcionales ver en: :ref:`Zend\Date\Date::isDate() <zend.date.others.comparison.table>`.
 
 .. include:: zend.validator.db.rst
 .. _zend.validator.set.digits:
@@ -110,7 +110,7 @@ given IBAN number will then be validated against this country.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Iban('de_AT');
+   $validator = new Zend\Validate\Iban('de_AT');
    $iban = 'AT611904300234573201';
    if ($validator->isValid($iban)) {
        // IBAN appears to be valid
@@ -127,7 +127,7 @@ not to give a locale like shown in the next example.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Iban();
+   $validator = new Zend\Validate\Iban();
    $iban = 'AT611904300234573201';
    if ($validator->isValid($iban)) {
        // IBAN appears to be valid

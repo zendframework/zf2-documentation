@@ -56,7 +56,7 @@ Ccnum
 
 当 *$value*\ 是一个格式为 *YYYY-MM-DD*\ 的有效日期，返回 *true* 。如果 *locale*
 选项被设置那么日期将根据locale来校验，如果 *format*
-选项被设置成这个格式用来校验。关于选项参数的细节参见 :ref:`Zend_Date::isDate()
+选项被设置成这个格式用来校验。关于选项参数的细节参见 :ref:`Zend\Date\Date::isDate()
 <zend.date.others.comparison.table>`\ 。
 
 .. _zend.validator.set.digits:

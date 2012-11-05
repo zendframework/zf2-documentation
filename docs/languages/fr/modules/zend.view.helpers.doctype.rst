@@ -44,7 +44,7 @@ spécifier dans votre fichier d'amorçage :
 .. code-block:: php
    :linenos:
 
-   $doctypeHelper = new Zend_View_Helper_Doctype();
+   $doctypeHelper = new Zend\View_Helper\Doctype();
    $doctypeHelper->doctype('XHTML1_STRICT');
 
 Ensuite vous l'affichez en début de votre layout :

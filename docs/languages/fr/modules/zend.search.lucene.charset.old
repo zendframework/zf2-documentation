@@ -9,10 +9,10 @@ Jeu de caractères
 Support UTF-8 et caractères sur un octet
 ----------------------------------------
 
-``Zend_Search_Lucene`` utilise l'UTF-8 en interne. Les fichiers d'index stockent des données Unicode dans le
-"format UTF-8 modifié" de Java. ``Zend_Search_Lucene`` supporte totalement ce format, à une exception près. [#]_
+``Zend\Search\Lucene`` utilise l'UTF-8 en interne. Les fichiers d'index stockent des données Unicode dans le
+"format UTF-8 modifié" de Java. ``Zend\Search\Lucene`` supporte totalement ce format, à une exception près. [#]_
 
-L'encodage des caractères d'entrée peut être spécifié grâce à l'API de ``Zend_Search_Lucene``. Les données
+L'encodage des caractères d'entrée peut être spécifié grâce à l'API de ``Zend\Search\Lucene``. Les données
 seront converties automatiquement en UTF-8.
 
 .. _zend.search.lucene.charset.default_analyzer:
@@ -35,18 +35,18 @@ l'indexation. Le même processus est utilisé de manière transparente lors du r
 Analyseurs de texte compatibles UTF-8
 -------------------------------------
 
-``Zend_Search_Lucene`` contient aussi des analyseurs compatibles UTF-8 :
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8``, ``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8Num``,
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive``,
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8Num_CaseInsensitive``.
+``Zend\Search\Lucene`` contient aussi des analyseurs compatibles UTF-8 :
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8``, ``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8Num``,
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8\CaseInsensitive``,
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8Num\CaseInsensitive``.
 
 N'importe quel analyseur peut être activé avec un code comme celui-ci:
 
    .. code-block:: php
       :linenos:
 
-      Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-          new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+      Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+          new Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8());
 
 
 
@@ -90,24 +90,24 @@ minuscule :
 
       ...
 
-      Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-          new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+      Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+          new Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8());
 
       ...
 
-      $doc = new Zend_Search_Lucene_Document();
+      $doc = new Zend\Search_Lucene\Document();
 
-      $doc->addField(Zend_Search_Lucene_Field::UnStored(
+      $doc->addField(Zend\Search_Lucene\Field::UnStored(
                           'contents', strtolower($contents))
                     );
 
       // champ titre (indexed, unstored)
-      $doc->addField(Zend_Search_Lucene_Field::UnStored(
+      $doc->addField(Zend\Search_Lucene\Field::UnStored(
                           'title', strtolower($title))
                     );
 
       // champ titre (unindexed, stored)
-      $doc->addField(Zend_Search_Lucene_Field::UnIndexed('_title', $title));
+      $doc->addField(Zend\Search_Lucene\Field::UnIndexed('_title', $title));
 
 
 
@@ -119,8 +119,8 @@ minuscule :
 
       ...
 
-      Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-          new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+      Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+          new Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8());
 
       ...
 
@@ -132,7 +132,7 @@ minuscule :
 
 .. _`mbstring`: http://www.php.net/manual/en/ref.mbstring.php
 
-.. [#] Zend_Search_Lucene supporte seulement les caractères Basic Multilingual Plane (BMP) (de 0x0000 à 0xFFFF)
+.. [#] Zend\Search\Lucene supporte seulement les caractères Basic Multilingual Plane (BMP) (de 0x0000 à 0xFFFF)
        et ne supporte pas les "caractères supplémentaires" (caractères dont les codes sont supérieurs à
        0xFFFF).
 

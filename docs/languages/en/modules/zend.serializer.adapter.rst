@@ -1,20 +1,20 @@
 .. _zend.serializer.adapter:
 
-Zend_Serializer_Adapter
+Zend\Serializer\Adapter
 =======================
 
-``Zend_Serializer`` adapters create a bridge for different methods of serializing with very little effort.
+``Zend\Serializer`` adapters create a bridge for different methods of serializing with very little effort.
 
 Every adapter has different pros and cons. In some cases, not every *PHP* datatype (e.g., objects) can be converted
 to a string representation. In most such cases, the type will be converted to a similar type that is serializable
--- as an example, *PHP* objects will often be cast to arrays. If this fails, a ``Zend_Serializer_Exception`` will
+-- as an example, *PHP* objects will often be cast to arrays. If this fails, a ``Zend\Serializer\Exception`` will
 be thrown.
 
 Below is a list of available adapters.
 
 .. _zend.serializer.adapter.phpserialize:
 
-Zend_Serializer_Adapter_PhpSerialize
+Zend\Serializer\Adapter\PhpSerialize
 ------------------------------------
 
 This adapter uses the built-in ``un/serialize`` *PHP* functions, and is a good default adapter choice.
@@ -23,7 +23,7 @@ There are no configurable options for this adapter.
 
 .. _zend.serializer.adapter.igbinary:
 
-Zend_Serializer_Adapter_IgBinary
+Zend\Serializer\Adapter\IgBinary
 --------------------------------
 
 `Igbinary`_ is Open Source Software released by Sulake Dynamoid Oy. It's a drop-in replacement for the standard
@@ -37,7 +37,7 @@ There adapter takes no configuration options.
 
 .. _zend.serializer.adapter.wddx:
 
-Zend_Serializer_Adapter_Wddx
+Zend\Serializer\Adapter\Wddx
 ----------------------------
 
 `WDDX`_ (Web Distributed Data eXchange) is a programming-language-, platform-, and transport-neutral data
@@ -53,7 +53,7 @@ Available options include:
 
 .. _zend.serializer.adapter.wddx.table.options:
 
-.. table:: Zend_Serializer_Adapter_Wddx Options
+.. table:: Zend\Serializer\Adapter\Wddx Options
 
    +-------+---------+-------------+------------------------------------------------------+
    |Option |Data Type|Default Value|Description                                           |
@@ -63,42 +63,42 @@ Available options include:
 
 .. _zend.serializer.adapter.json:
 
-Zend_Serializer_Adapter_Json
+Zend\Serializer\Adapter\Json
 ----------------------------
 
-The *JSON* adapter provides a bridge to the ``Zend_Json`` component and/or ext/json. Please read the
-:ref:`Zend_Json documentation <zend.json.introduction>` for further information.
+The *JSON* adapter provides a bridge to the ``Zend\Json`` component and/or ext/json. Please read the
+:ref:`Zend\Json documentation <zend.json.introduction>` for further information.
 
 Available options include:
 
 .. _zend.serializer.adapter.json.table.options:
 
-.. table:: Zend_Serializer_Adapter_Json Options
+.. table:: Zend\Serializer\Adapter\Json Options
 
-   +--------------------+-----------------+---------------------+----------------+
-   |Option              |Data Type        |Default Value        |Description     |
-   +====================+=================+=====================+================+
-   |cycleCheck          |boolean          |false                |See this section|
-   +--------------------+-----------------+---------------------+----------------+
-   |objectDecodeType    |Zend_Json::TYPE_*|Zend_Json::TYPE_ARRAY|See this section|
-   +--------------------+-----------------+---------------------+----------------+
-   |enableJsonExprFinder|boolean          |false                |See this section|
-   +--------------------+-----------------+---------------------+----------------+
+   +--------------------+----------------------+--------------------------+----------------+
+   |Option              |Data Type             |Default Value             |Description     |
+   +====================+======================+==========================+================+
+   |cycleCheck          |boolean               |false                     |See this section|
+   +--------------------+----------------------+--------------------------+----------------+
+   |objectDecodeType    |Zend\Json\Json::TYPE_*|Zend\Json\Json::TYPE_ARRAY|See this section|
+   +--------------------+----------------------+--------------------------+----------------+
+   |enableJsonExprFinder|boolean               |false                     |See this section|
+   +--------------------+----------------------+--------------------------+----------------+
 
 .. _zend.serializer.adapter.amf03:
 
-Zend_Serializer_Adapter_Amf 0 and 3
+Zend\Serializer\Adapter\Amf 0 and 3
 -----------------------------------
 
-The *AMF* adapters, ``Zend_Serializer_Adapter_Amf0`` and ``Zend_Serializer_Adapter_Amf3``, provide a bridge to the
-serializer of the ``Zend_Amf`` component. Please read the :ref:`Zend_Amf documentation <zend.amf.introduction>` for
+The *AMF* adapters, ``Zend\Serializer\Adapter\Amf0`` and ``Zend\Serializer\Adapter\Amf3``, provide a bridge to the
+serializer of the ``ZendAmf`` component. Please read the :ref:`ZendAmf documentation <zendamf.introduction>` for
 further information.
 
 There are no options for these adapters.
 
 .. _zend.serializer.adapter.pythonpickle:
 
-Zend_Serializer_Adapter_PythonPickle
+Zend\Serializer\Adapter\PythonPickle
 ------------------------------------
 
 This adapter converts *PHP* types to a `Python Pickle`_ string representation. With it, you can read the serialized
@@ -108,7 +108,7 @@ Available options include:
 
 .. _zend.serializer.adapter.pythonpickle.table.options:
 
-.. table:: Zend_Serializer_Adapter_PythonPickle Options
+.. table:: Zend\Serializer\Adapter\PythonPickle Options
 
    +--------+-----------------------+-------------+---------------------------------------------+
    |Option  |Data Type              |Default Value|Description                                  |
@@ -157,7 +157,7 @@ Datatype merging (Python to *PHP*) occurs per the following:
    +---------------+----------------------------------------------------+
    |integer        |integer                                             |
    +---------------+----------------------------------------------------+
-   |long           |integer | float | string | Zend_Serializer_Exception|
+   |long           |integer | float | string | Zend\Serializer\Exception|
    +---------------+----------------------------------------------------+
    |float          |float                                               |
    +---------------+----------------------------------------------------+
@@ -173,12 +173,12 @@ Datatype merging (Python to *PHP*) occurs per the following:
    +---------------+----------------------------------------------------+
    |dictionary     |associative array                                   |
    +---------------+----------------------------------------------------+
-   |All other types|Zend_Serializer_Exception                           |
+   |All other types|Zend\Serializer\Exception                           |
    +---------------+----------------------------------------------------+
 
 .. _zend.serializer.adapter.phpcode:
 
-Zend_Serializer_Adapter_PhpCode
+Zend\Serializer\Adapter\PhpCode
 -------------------------------
 
 This adapter generates a parsable *PHP* code representation using `var_export()`_. On restoring, the data will be

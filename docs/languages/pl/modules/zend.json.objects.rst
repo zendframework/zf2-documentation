@@ -8,8 +8,8 @@ Kiedy kodujemy obiekt PHP jako JSON, wszystkie publiczne właściwości tego obi
 JSON.
 
 JSON nie pozwala na referencje obiektów, więc musisz uważać abyś nie próbował kodować obiektów z
-rekurencyjnymi referencjami. Jeśli masz problemy z rekurencją, metody *Zend_Json::encode()* oraz
-*Zend_Json_Encoder::encode()* przyjmują opcjonalny drugi parametr, określający czy ma być sprawdzana
+rekurencyjnymi referencjami. Jeśli masz problemy z rekurencją, metody *Zend\Json\Json::encode()* oraz
+*Zend\Json\Encoder::encode()* przyjmują opcjonalny drugi parametr, określający czy ma być sprawdzana
 rekurencja; jeśli obiekt jest kodowany drugi raz, zostanie wyrzucony wyjątek.
 
 Odkodowanie obiektów JSON sprawia dodatkową trudność, ponieważ obiekty Javascript prawie dokładnie
@@ -24,7 +24,7 @@ możesz to określić w ten sposób:
    :linenos:
 
    // Odkoduj obiekty JSON jako obiekty PHP
-   $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);
+   $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
 
 
 Wszystkie dekodowane obiekty są zwracane jako obiekty klasy *StdClass* z właściwościami odpowiadającymi parom

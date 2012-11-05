@@ -220,7 +220,7 @@ Using the Proxy adapter requires several additional configuration parameters to 
 
       .. _zend.http.client.adapters.proxy.table:
 
-      .. table:: Zend_Http_Client configuration parameters
+      .. table:: Zend\Http\Client configuration parameters
 
          +----------+------------------------------+-------------+--------------------------------------+
          |Parameter |Description                   |Expected Type|Example Value                         |
@@ -521,7 +521,7 @@ adapter class. All the public functions defined in this example must be defined 
         * Send request to the remote server
         *
         * @param string        $method
-        * @param Zend_Uri_Http $url
+        * @param Zend\Uri\Http $url
         * @param string        $http_ver
         * @param array         $headers
         * @param string        $body

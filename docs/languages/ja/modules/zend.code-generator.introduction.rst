@@ -25,12 +25,12 @@ Theory of Operation
    :linenos:
 
    //構成をコンストラクタに渡す
-   $file = new Zend_CodeGenerator_Php_File(array(
+   $file = new Zend\CodeGenerator_Php\File(array(
        'classes' => array(
-           new Zend_CodeGenerator_Php_Class(array(
+           new Zend\CodeGenerator_Php\Class(array(
                'name'    => 'World',
                'methods' => array(
-                   new Zend_CodeGenerator_Php_Method(array(
+                   new Zend\CodeGenerator_Php\Method(array(
                        'name' => 'hello',
                        'body' => 'echo \'Hello world!\';',
                    )),
@@ -40,15 +40,15 @@ Theory of Operation
    ));
 
    //インスタンス化のあと設定
-   $method = new Zend_CodeGenerator_Php_Method();
+   $method = new Zend\CodeGenerator_Php\Method();
    $method->setName('hello')
           ->setBody('echo \'Hello world!\';');
 
-   $class = new Zend_CodeGenerator_Php_Class();
+   $class = new Zend\CodeGenerator_Php\Class();
    $class->setName('World')
          ->setMethod($method);
 
-   $file = new Zend_CodeGenerator_Php_File();
+   $file = new Zend\CodeGenerator_Php\File();
    $file->setClass($class);
 
    //生成されたファイルのレンダリング
@@ -86,16 +86,16 @@ Theory of Operation
 .. code-block:: php
    :linenos:
 
-   $class = Zend_CodeGenerator_Php_Class::fromReflection(
-       new Zend_Reflection_Class('World')
+   $class = Zend\CodeGenerator_Php\Class::fromReflection(
+       new Zend\Reflection\Class('World')
    );
 
-   $method = new Zend_CodeGenerator_Php_Method();
+   $method = new Zend\CodeGenerator_Php\Method();
    $method->setName('mrMcFeeley')
           ->setBody('echo \'Hello, Mr. McFeeley!\';');
    $class->setMethod($method);
 
-   $file = new Zend_CodeGenerator_Php_File();
+   $file = new Zend\CodeGenerator_Php\File();
    $file->setClass($class);
 
    //生成されたファイルのレンダリング

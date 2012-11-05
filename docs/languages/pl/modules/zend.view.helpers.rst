@@ -8,9 +8,9 @@ W skryptach widoków często potrzebne jest przeprowadzanie złożonych funkcji:
 generowanie elementów formularzy, czy wyświetlanie odnośników akcji. Możesz użyć klas helperów w tym celu.
 
 Klasa helpera jest prostą klasą. Powiedzmy, że potrzebujemy klasę helpera o nazwie 'fooBar'. Domyślnie nazwa
-klasy jest poprzedzona przedrostkiem *'Zend_View_Helper_'* (możesz określić własny przedrostek podczas
+klasy jest poprzedzona przedrostkiem *'Zend\View_Helper\'* (możesz określić własny przedrostek podczas
 ustawiania ścieżki do klas helperów), a ostatni segment nazwy klasy jest nazwą klasy helpera; ten segment
-powinien być w postaci TitleCapped; pełna nazwa klasy wygląda więc tak: *Zend_View_Helper_FooBar*. Ta klasa
+powinien być w postaci TitleCapped; pełna nazwa klasy wygląda więc tak: *Zend\View_Helper\FooBar*. Ta klasa
 powinna zawierać przynajmniej jedną metodę, nazwaną tak jak klasa helpera, ale już w postaci camelCased:
 *fooBar()*.
 
@@ -30,7 +30,7 @@ powinna zawierać przynajmniej jedną metodę, nazwaną tak jak klasa helpera, a
    domyślna ścieżka zawsze będzie ustawiona aby być pewnym, że domyślne helpery będą zawsze działać.
 
 Aby użyć helpera w swoim skrypcie widoku, wywołaj go za pomocą *$this->nazwaHelpera()*. Obiekt *Zend_View*
-załaduje klasę *Zend_View_Helper_NazwaHelpera*, utworzy obiekt tej klasy i wywoła metodę *nazwaHelpera()*.
+załaduje klasę *Zend\View_Helper\NazwaHelpera*, utworzy obiekt tej klasy i wywoła metodę *nazwaHelpera()*.
 Instancja obiektu istnieje teraz w instancji *Zend_View* i będzie ona ponownie używana przy następnych
 wywołaniach *$this->nazwaHelpera()*.
 
@@ -256,12 +256,12 @@ Tak jak ze skryptami widoków, kontroler może określić stos ścieżek, w któ
 helperów. Domyślnie *Zend_View* szuka klas helperów w katalogu "Zend/View/Helper/\*". Możesz wybrać inny
 katalog używając metod *setHelperPath()* oraz *addHelperPath()*. Dodatkowo możesz określić przedrostek klas
 helperów znajdujących się w podanej ścieżce aby utworzyć przestrzenie nazw dla klas helperów. Domyślnie,
-gdy żaden przedrostek nie zostanie określony, przyjęty zostanie przedrostek 'Zend_View_Helper\_'.
+gdy żaden przedrostek nie zostanie określony, przyjęty zostanie przedrostek 'Zend\View\Helper\_'.
 
 .. code-block:: php
    :linenos:
 
-   $view = new Zend_View();
+   $view = new Zend\View\View();
    // Ustaw ścieżkę na /path/to/more/helpers, z przedrostkiem 'My_View_Helper'
    $view->setHelperPath('/path/to/more/helpers', 'My_View_Helper');
 
@@ -273,7 +273,7 @@ nawet nadpisanie) podstawowego pakietu klas helperów swoimi własnymi klasami.
 .. code-block:: php
    :linenos:
 
-   $view = new Zend_View();
+   $view = new Zend\View\View();
 
    // Dodaj ścieżkę /path/to/some/helpers z przedrostkiem
    // klasy 'My_View_Helper'
@@ -289,7 +289,7 @@ nawet nadpisanie) podstawowego pakietu klas helperów swoimi własnymi klasami.
    // następnie w "/other/path/to/helpers/HelperName.php" używając
    // nazwy klasy "My_View_Helper_HelperName"
    // i ostatecznie w "Zend/View/Helper/HelperName.php" używając
-   // nazwy klasy "Zend_View_Helper_HelperName".
+   // nazwy klasy "Zend\View_Helper\HelperName".
 
 
 .. _zend.view.helpers.custom:
@@ -329,7 +329,7 @@ Poniżej przykład kodu naszego przykładowego helpera *twojHelper*:
 .. code-block:: php
    :linenos:
 
-   class My_View_Helper_TwojHelper extends Zend_View_Helper_Abstract
+   class My_View_Helper_TwojHelper extends Zend\View_Helper\Abstract
    {
        protected $_count = 0;
        public function twojHelper()
@@ -374,7 +374,7 @@ dostęp do obiektu widoku, klasa helpera powinna posiadać metodę *setView($vie
    {
        public $view;
 
-       public function setView(Zend_View_Interface $view)
+       public function setView(Zend\View\Interface $view)
        {
            $this->view = $view;
        }
@@ -391,7 +391,7 @@ utworzona instancja klasy helpera i przekazany zostanie obecny obiekt widoku. Je
 widoku w klasie helpera, a także po to, aby określić w jaki sposób powinno się uzyskiwać do tego obiektu
 dostęp.
 
-Jeśli rozszerzasz klasę *Zend_View_Helper_Abstract* nie musisz definiować tej metody, ponieważ jest ona
+Jeśli rozszerzasz klasę *Zend\View_Helper\Abstract* nie musisz definiować tej metody, ponieważ jest ona
 zdefiniowana przez klasę rozszerzaną.
 
 

@@ -344,7 +344,7 @@ instantiated for a new *URI* or an existing valid one, it is possible that the
 
 .. _zend.uri.instance-methods.valid.example-1:
 
-.. rubric:: Validating a Zend_Uri_* Object
+.. rubric:: Validating a Zend\Uri\* Object
 
 .. code-block:: php
    :linenos:

@@ -9,16 +9,16 @@ Zend_Queueのカスタマイズ
 独自のアダプタ作成
 ---------
 
-``Zend_Queue``\ は、 ``Zend_Queue_Adapter_AdapterAbstract``\
+``Zend_Queue``\ は、 ``Zend\Queue_Adapter\AdapterAbstract``\
 を実装するどんなアダプタも扱います。 既存のアダプタ、 または抽象クラス
-``Zend_Queue_Adapter_AdapterAbstract``\ のうちの1つを拡張することにより、
-独自のアダプタを作成できます。 このアダプタとして ``Zend_Queue_Adapter_Array``\
+``Zend\Queue_Adapter\AdapterAbstract``\ のうちの1つを拡張することにより、
+独自のアダプタを作成できます。 このアダプタとして ``Zend\Queue_Adapter\Array``\
 を検討することが、 最も簡単に概念化できると提案します。
 
 .. code-block:: php
    :linenos:
 
-   class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
+   class Custom_DbForUpdate extends Zend\Queue_Adapter\Db
    {
        /**
         * @see tests/Zend/Queue/Custom/DbForUpdate.php のコード
@@ -28,7 +28,7 @@ Zend_Queueのカスタマイズ
         *
         * しかしながら、データベース全てに SELECT ... FOR UPDATE フィーチャがあるとは限りません。
         *
-        * 注意: これは後でZend_Queue_Adapter_Dbのオプションに変換されました。
+        * 注意: これは後でZend\Queue_Adapter\Dbのオプションに変換されました。
         *
         * このコードは良い例をまだ提供します。
         */
@@ -47,7 +47,7 @@ Zend_Queueのカスタマイズ
    );
 
    $adapter = new Custom_DbForUpdate($options);
-   $queue = new Zend_Queue($adapter, $options);
+   $queue = new Zend\Queue\Queue($adapter, $options);
 
 同様に即座にアダプタを変えることもできます。
 
@@ -55,7 +55,7 @@ Zend_Queueのカスタマイズ
    :linenos:
 
    $adapter = new MyCustom_Adapter($options);
-   $queue   = new Zend_Queue($options);
+   $queue   = new Zend\Queue\Queue($options);
    $queue->setAdapter($adapter);
    echo "Adapter: ", get_class($queue->getAdapter()), "\n";
 
@@ -76,7 +76,7 @@ or
            'type'       => 'pdo_mysql'
        )
    );
-   $queue = new Zend_Queue('DbForUpdate', $config); // Custom_DbForUpdate をロード
+   $queue = new Zend\Queue\Queue('DbForUpdate', $config); // Custom_DbForUpdate をロード
 
 .. _zend.queue.custom.message:
 
@@ -89,7 +89,7 @@ or
 .. code-block:: php
    :linenos:
 
-   class Zend_Queue_Message
+   class Zend\Queue\Message
    {
        protected $_data = array();
    }
@@ -103,9 +103,9 @@ or
 --------------------
 
 ``Zend_Queue``\ は、独自のメッセージ・イテレータ・クラスも扱います。
-メッセージ・イテレータ・クラスは、 ``Zend_Queue_Adapter_Abstract::recieve()``\
+メッセージ・イテレータ・クラスは、 ``Zend\Queue_Adapter\Abstract::recieve()``\
 からメッセージを返すために使われます。 たとえメッセージが１つだけだとしても、
-``Zend_Queue_Abstract::receive()``\ は、 ``Zend_Queue_Message_Iterator``\
+``Zend\Queue\Abstract::receive()``\ は、 ``Zend\Queue_Message\Iterator``\
 のようなコンテナ・クラスを常に返さなければなりません。
 
 ``tests/Zend/Queue/Custom/Messages.php``\ でファイル名の例をご覧ください。

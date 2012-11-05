@@ -4,15 +4,15 @@
 RSS Feed的使用
 ===========
 
-用一个 *Zend_Feed_Rss*\ 对象实例和一个Feed的URL来读取一个RSS Feed再简单不过了:
+用一个 *Zend\Feed\Rss*\ 对象实例和一个Feed的URL来读取一个RSS Feed再简单不过了:
 
 .. code-block:: php
    :linenos:
 
-   $channel = new Zend_Feed_Rss('http://rss.example.com/channelName');
+   $channel = new Zend\Feed\Rss('http://rss.example.com/channelName');
 
 
-如果在获得feed时发生任何错误，那么一个 *Zend_Feed_Exception*\ 异常将被抛出。
+如果在获得feed时发生任何错误，那么一个 *Zend\Feed\Exception*\ 异常将被抛出。
 
 一旦你获得一个Feed对象，那么你就能在这个对象上直接访问任何RSS
 标准定义的channel属性:
@@ -37,7 +37,7 @@ RSS Feed的使用
 
 因为XML的属性不能拥有子节点，所以不需要用方法的语法访问其属性。 values.
 
-最常用的是您可以通过循环遍历Feed的条目来作些事情。 *Zend_Feed_Abstract* 实现的是PHP
+最常用的是您可以通过循环遍历Feed的条目来作些事情。 *Zend\Feed\Abstract* 实现的是PHP
 的Iterator接口，因此要打印channel中的文章标题可以像下面这样:
 
 .. code-block:: php

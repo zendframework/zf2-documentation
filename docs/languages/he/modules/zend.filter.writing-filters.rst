@@ -7,18 +7,18 @@
 Zend_Filter מספק כמה פילטרים שימושיים ונפוצים, אבל לעיתים מתכנתים
 ירצו לכתוב פילטרים בעצמם לדרישות שלהם. כדי ליצור פילטר חדש וכדי
 להשתמש בו לאחר מכן בשרשור הפילטרים יש ליצור מחלקה אשר תיישם את
-*Zend_Filter_Interface*./
+*Zend\Filter\Interface*./
 
-*Zend_Filter_Interface* מגדירה מתודה אחת בלבדף *filter()*, אשר ניתן לכלול אותה
+*Zend\Filter\Interface* מגדירה מתודה אחת בלבדף *filter()*, אשר ניתן לכלול אותה
 במחלקות שונות. אובייקט שמיישם את הממשק, ניתן יהיה להוסיף אותו
-לשרשרת הפילטרים בעזרת *Zend_Filter::addFilter()*.
+לשרשרת הפילטרים בעזרת *Zend\Filter\Filter::addFilter()*.
 
 הדוגמא הבאה מציגה כיצד ניתן לכתוב פילטר בעצמכם:
 
    .. code-block:: php
       :linenos:
 
-      class MyFilter implements Zend_Filter_Interface
+      class MyFilter implements Zend\Filter\Interface
       {
           public function filter($value)
           {
@@ -37,7 +37,7 @@ Zend_Filter מספק כמה פילטרים שימושיים ונפוצים, אב
    .. code-block:: php
       :linenos:
 
-      $filterChain = new Zend_Filter();
+      $filterChain = new Zend\Filter\Filter();
       $filterChain->addFilter(new MyFilter());
 
 

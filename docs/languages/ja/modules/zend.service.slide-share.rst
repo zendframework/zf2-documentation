@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.service.slideshare:
 
-Zend_Service_SlideShare
+Zend\Service\SlideShare
 =======================
 
-``Zend_Service_SlideShare`` コンポーネントは、 `slideshare.net`_
+``Zend\Service\SlideShare`` コンポーネントは、 `slideshare.net`_
 ウェブサービスを操作するためのものです。
 これは、スライドショーをオンラインで公開するためのサービスです。
 このコンポーネントを使用すると、
@@ -13,23 +13,23 @@ Zend_Service_SlideShare
 
 .. _zend.service.slideshare.basicusage:
 
-Zend_Service_SlideShare の使い方
+Zend\Service\SlideShare の使い方
 ----------------------------
 
-``Zend_Service_SlideShare`` コンポーネントを使うには、まず slideshare.net
+``Zend\Service\SlideShare`` コンポーネントを使うには、まず slideshare.net
 のアカウントを作成して (詳細は `こちら`_ を参照ください) *API*
 キーやユーザ名、パスワード、そして共有する秘密の値を取得しなければなりません。
-``Zend_Service_SlideShare`` コンポーネントを使用するには、これらすべてが必要です。
+``Zend\Service\SlideShare`` コンポーネントを使用するには、これらすべてが必要です。
 
-アカウントを取得したら、 ``Zend_Service_SlideShare`` を使い始めることができます。
-``Zend_Service_SlideShare``
+アカウントを取得したら、 ``Zend\Service\SlideShare`` を使い始めることができます。
+``Zend\Service\SlideShare``
 オブジェクトのインスタンスを作成し、それぞれの値を次のように指定しましょう。
 
 .. code-block:: php
    :linenos:
 
    // このコンポーネントの新しいインスタンスを作成します
-   $ss = new Zend_Service_SlideShare('APIKEY',
+   $ss = new Zend\Service\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -39,15 +39,15 @@ Zend_Service_SlideShare の使い方
 SlideShow オブジェクト
 ----------------
 
-``Zend_Service_SlideShare`` コンポーネントのすべてのスライドショーは
-``Zend_Service_SlideShare_SlideShow`` オブジェクトで表されます
+``Zend\Service\SlideShare`` コンポーネントのすべてのスライドショーは
+``Zend\Service_SlideShare\SlideShow`` オブジェクトで表されます
 (取得する際も新規スライドショーのアップロードの際も同じです)。
 このクラスの構造を擬似コードで表すと次のようになります。
 
 .. code-block:: php
    :linenos:
 
-   class Zend_Service_SlideShare_SlideShow {
+   class Zend\Service_SlideShare\SlideShow {
 
        /**
         * スライドショーの場所を取得します
@@ -188,7 +188,7 @@ SlideShow オブジェクト
    上の擬似クラスは、開発者がどんなメソッドを使えるのかを示すためだけのものです。
    それ以外に、内部で用いられているメソッドもあります。
 
-``Zend_Service_SlideShare`` コンポーネントを使う際には、
+``Zend\Service\SlideShare`` コンポーネントを使う際には、
 このデータクラスを使用してスライドショーの閲覧や追加を行うことになります。
 
 .. _zend.service.slideshare.getslideshow:
@@ -196,17 +196,17 @@ SlideShow オブジェクト
 単一のスライドショーの取得
 -------------
 
-``Zend_Service_SlideShare`` コンポーネントのもっともシンプルな使用法は、 slideshare.net
+``Zend\Service\SlideShare`` コンポーネントのもっともシンプルな使用法は、 slideshare.net
 が提供するスライドショー ID を指定して単一のスライドショーを取得することです。
-これは、 ``Zend_Service_SlideShare`` オブジェクトの ``getSlideShow()`` メソッドで行います。
-そして、返された ``Zend_Service_SlideShare_SlideShow``
+これは、 ``Zend\Service\SlideShare`` オブジェクトの ``getSlideShow()`` メソッドで行います。
+そして、返された ``Zend\Service_SlideShare\SlideShow``
 オブジェクトをこのように使用します。
 
 .. code-block:: php
    :linenos:
 
    // このコンポーネントの新しいインスタンスを作成します
-   $ss = new Zend_Service_SlideShare('APIKEY',
+   $ss = new Zend\Service\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -248,7 +248,7 @@ SlideShow オブジェクト
    :linenos:
 
    // このコンポーネントの新しいインスタンスを作成します
-   $ss = new Zend_Service_SlideShare('APIKEY',
+   $ss = new Zend\Service\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -268,10 +268,10 @@ SlideShow オブジェクト
 
 .. _zend.service.slideshare.caching:
 
-Zend_Service_SlideShare のキャッシュ処理のポリシー
+Zend\Service\SlideShare のキャッシュ処理のポリシー
 -------------------------------------
 
-デフォルトでは、 ``Zend_Service_SlideShare``
+デフォルトでは、 ``Zend\Service\SlideShare``
 はウェブサービスに対する任意のリクエストを自動的にキャッシュします。
 キャッシュは、ファイルシステム上 (デフォルトのパスは */tmp*) に 12
 時間保存されます。この振る舞いを変更したい場合は、独自の :ref:` <zend.cache>`
@@ -286,12 +286,12 @@ Zend_Service_SlideShare のキャッシュ処理のポリシー
    $backendOptions  = array(
                            'cache_dir' => '/webtmp/');
 
-   $cache = Zend_Cache::factory('Core',
+   $cache = Zend\Cache\Cache::factory('Core',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);
 
-   $ss = new Zend_Service_SlideShare('APIKEY',
+   $ss = new Zend\Service\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -306,17 +306,17 @@ HTTP クライアントの振る舞いの変更
 
 何らかの理由でウェブサービスにリクエストを送る *HTTP*
 クライアントの振る舞いを変更したくなったとしましょう。 そんな場合は、独自の
-``Zend_Http_Client`` オブジェクトのインスタンスを作成します (:ref:` <zend.http>`
+``Zend\Http\Client`` オブジェクトのインスタンスを作成します (:ref:` <zend.http>`
 を参照ください)。これは、
 たとえば接続のタイムアウト秒数をデフォルトから変更したい場合などに便利です。
 
 .. code-block:: php
    :linenos:
 
-   $client = new Zend_Http_Client();
+   $client = new Zend\Http\Client();
    $client->setConfig(array('timeout' => 5));
 
-   $ss = new Zend_Service_SlideShare('APIKEY',
+   $ss = new Zend\Service\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');

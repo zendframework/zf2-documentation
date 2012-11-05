@@ -4,7 +4,7 @@
 Übliche Seiten Features
 =======================
 
-Alle Seiten Klassen müssen ``Zend_Navigation_Page`` erweitern, und teilen deshalb ein übliches Set von Features
+Alle Seiten Klassen müssen ``Zend\Navigation\Page`` erweitern, und teilen deshalb ein übliches Set von Features
 und Eigenschaften. Am ehesten zu beachten ist, das Sie die Optionen in der anbei zu sehenden Tabelle und den
 gleichen Initialisierungs Prozess teilen.
 
@@ -12,7 +12,7 @@ Options Schlüssel werden zu *set* Methoden gemappt. Das bedeutet das die Option
 ``setOrder()`` gemappt wird, und *reset_params* auf die Methode ``setResetParams()``. Wenn es keine Setter Methode
 für die Option gibt, wird diese als eigene Eigenschaft der Seite gesetzt.
 
-Lesen Sie mehr über das erweitern von ``Zend_Navigation_Page`` in :ref:`Erstellung eigener Seiten Typen
+Lesen Sie mehr über das erweitern von ``Zend\Navigation\Page`` in :ref:`Erstellung eigener Seiten Typen
 <zend.navigation.pages.custom>`.
 
 .. _zend.navigation.pages.common.options:
@@ -46,7 +46,7 @@ Lesen Sie mehr über das erweitern von ``Zend_Navigation_Page`` in :ref:`Erstell
    +---------+---------------------------------------------------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |visible  |bool                                                           |TRUE        |Ob die Seite für den Benutzer sichtbar sein soll, oder nur ein Teil einer Struktur ist. Unsichtbare Seiten werden von View Helfern übersprungen.                                                                                                                                                                                                                                                                                                                                                                                                                                         |
    +---------+---------------------------------------------------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |pages    |Array | Zend_Config | NULL                                     |NULL        |Kind Seiten der Seite. Das sollte ein Array oder Zend_Config Objekt sein das entweder Seiten Optionen enthält die in die factory() Methode übergeben werden können, oder die aktuelle Zend_Navigation_Page Instanz, oder einen Mix von beiden.                                                                                                                                                                                                                                                                                                                                           |
+   |pages    |Array | Zend_Config | NULL                                     |NULL        |Kind Seiten der Seite. Das sollte ein Array oder Zend_Config Objekt sein das entweder Seiten Optionen enthält die in die factory() Methode übergeben werden können, oder die aktuelle Zend\Navigation\Page Instanz, oder einen Mix von beiden.                                                                                                                                                                                                                                                                                                                                           |
    +---------+---------------------------------------------------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. note::
@@ -71,7 +71,7 @@ Dieses Beispiel zeigt wie eigene Eigenschaften verwendet werden können.
 .. code-block:: php
    :linenos:
 
-   $page = new Zend_Navigation_Page_Mvc();
+   $page = new Zend\Navigation_Page\Mvc();
    $page->foo = 'bar';
    $page->meaning = 42;
 
