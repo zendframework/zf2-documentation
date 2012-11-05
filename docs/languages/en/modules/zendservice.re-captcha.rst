@@ -23,7 +23,7 @@ with the service in order to generate public and private keys.
 Simplest use
 ------------
 
-Instantiate a ``ZendService\ReCaptcha`` object, passing it your public and private keys:
+Instantiate a ``ZendService\ReCaptcha\ReCaptcha`` object, passing it your public and private keys:
 
 .. _zendservice.recaptcha.example-1:
 
@@ -32,7 +32,7 @@ Instantiate a ``ZendService\ReCaptcha`` object, passing it your public and priva
 .. code-block:: php
    :linenos:
 
-   $recaptcha = new ZendService\ReCaptcha($pubKey, $privKey);
+   $recaptcha = new ZendService\ReCaptcha\ReCaptcha($pubKey, $privKey);
 
 To render the reCAPTCHA, simply call the ``getHTML()`` method:
 

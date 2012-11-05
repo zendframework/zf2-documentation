@@ -83,7 +83,7 @@ a file. ``ZendService\Nirvanix`` provides convenience methods for these three op
                  'password' => 'your-password',
                  'appKey'   => 'your-app-key');
 
-   $nirvanix = new ZendService\Nirvanix($auth);
+   $nirvanix = new ZendService\Nirvanix\Nirvanix($auth);
    $imfs = $nirvanix->getService('IMFS');
 
    $imfs->putContents('/foo.txt', 'contents to store');
@@ -133,7 +133,7 @@ Let's say you want to call the REST *API* method `RenameFile`_, which does not h
                  'password' => 'your-password',
                  'appKey'   => 'your-app-key');
 
-   $nirvanix = new ZendService\Nirvanix($auth);
+   $nirvanix = new ZendService\Nirvanix\Nirvanix($auth);
    $imfs = $nirvanix->getService('IMFS');
 
    $result = $imfs->renameFile(array('filePath' => '/path/to/foo.txt',
@@ -168,7 +168,7 @@ The simplest way to examine a result from the service is to use the built-in *PH
                  'password' => 'your-password',
                  'appKey'   => 'your-app-key');
 
-   $nirvanix = new ZendService\Nirvanix($auth);
+   $nirvanix = new ZendService\Nirvanix\Nirvanix($auth);
    $imfs = $nirvanix->getService('IMFS');
 
    $result = $imfs->putContents('/foo.txt', 'fourteen bytes');
@@ -224,14 +224,14 @@ automatically checks each response returned by Nirvanix. If the *ResponseCode* i
    $auth = array('username' => 'your-username',
                  'password' => 'your-password',
                  'appKey'   => 'your-app-key');
-   $nirvanix = new ZendService\Nirvanix($auth);
+   $nirvanix = new ZendService\Nirvanix\Nirvanix($auth);
 
    try {
 
      $imfs = $nirvanix->getService('IMFS');
      $imfs->unlink('/a-nonexistant-path');
 
-   } catch (ZendService\Nirvanix\Exception $e) {
+   } catch (ZendService\Nirvanix\Exception\DomainException $e) {
      echo $e->getMessage() . "\n";
      echo $e->getCode();
    }
