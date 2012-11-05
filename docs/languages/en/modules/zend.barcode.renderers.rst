@@ -18,7 +18,7 @@ Renderers have some common options. These options can be set in three ways:
 .. code-block:: php
    :linenos:
 
-   use Zend\Barcode;
+   use Zend\Barcode\Renderer;
 
    $options = array('topOffset' => 10);
 

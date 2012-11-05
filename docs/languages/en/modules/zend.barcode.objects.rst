@@ -22,7 +22,7 @@ ways:
 .. code-block:: php
    :linenos:
 
-   use Zend\Barcode;
+   use Zend\Barcode\Object;
 
    $options = array('text' => 'ZEND-FRAMEWORK', 'barHeight' => 40);
 
@@ -103,7 +103,7 @@ the ``setFont()`` method.
 .. code-block:: php
    :linenos:
 
-   use Zend\Barcode;
+   use Zend\Barcode\Barcode;
 
    // In your bootstrap:
    Barcode::setBarcodeFont('my_font.ttf');
