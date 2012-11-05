@@ -20,7 +20,7 @@ To try a StrikeIron service that does not have a wrapper class available, give t
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new ZendService\StrikeIron(array('username' => 'your-username',
+   $strikeIron = new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    // Get a generic client to the Reverse Phone Lookup service
@@ -62,7 +62,7 @@ the appropriate methods like `\__getLastRequest()`_ and `\__getLastRequest()`_:
    :linenos:
 
    $strikeIron =
-       new ZendService\StrikeIron(array('username' => 'your-username',
+       new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
                                          'password' => 'your-password',
                                          'options'  => array('trace' => true)));
 

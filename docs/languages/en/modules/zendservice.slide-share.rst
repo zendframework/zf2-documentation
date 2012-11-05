@@ -23,7 +23,7 @@ instance of the ``ZendService\SlideShare`` object and providing these values as 
    :linenos:
 
    // Create a new instance of the component
-   $ss = new ZendService\SlideShare('APIKEY',
+   $ss = new ZendService\SlideShare\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -198,7 +198,7 @@ show ID provided by the slideshare.net application and is done by calling the ``
    :linenos:
 
    // Create a new instance of the component
-   $ss = new ZendService\SlideShare('APIKEY',
+   $ss = new ZendService\SlideShare\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -238,7 +238,7 @@ method is shown below:
    :linenos:
 
    // Create a new instance of the component
-   $ss = new ZendService\SlideShare('APIKEY',
+   $ss = new ZendService\SlideShare\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -261,7 +261,7 @@ method is shown below:
 ZendService\SlideShare Caching policies
 ----------------------------------------
 
-By default, ``ZendService\SlideShare`` will cache any request against the web service automatically to the
+By default, ``ZendService\SlideShare\SlideShare`` will cache any request against the web service automatically to the
 filesystem (default path ``/tmp``) for 12 hours. If you desire to change this behavior, you must provide your own
 :ref:`Zend\Cache\Cache <zend.cache>` object using the ``setCacheObject()`` method as shown:
 
@@ -279,7 +279,7 @@ filesystem (default path ``/tmp``) for 12 hours. If you desire to change this be
                                 $frontendOptions,
                                 $backendOptions);
 
-   $ss = new ZendService\SlideShare('APIKEY',
+   $ss = new ZendService\SlideShare\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -303,7 +303,7 @@ other then default as shown:
    $client = new Zend\Http\Client();
    $client->setConfig(array('timeout' => 5));
 
-   $ss = new ZendService\SlideShare('APIKEY',
+   $ss = new ZendService\SlideShare\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');

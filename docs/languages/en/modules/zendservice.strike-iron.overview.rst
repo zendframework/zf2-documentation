@@ -95,7 +95,7 @@ other options in its constructor. It also has a factory method that will return 
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new ZendService\StrikeIron(array('username' => 'your-username',
+   $strikeIron = new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    $taxBasic = $strikeIron->getService(array('class' => 'SalesUseTaxBasic'));
@@ -120,7 +120,7 @@ that client by calling methods on it just like any other *PHP* object.
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new ZendService\StrikeIron(array('username' => 'your-username',
+   $strikeIron = new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    // Get a client for the Sales & Use Tax Basic service
@@ -159,7 +159,7 @@ The simplest way to examine a result from the service is to use the built-in *PH
    :linenos:
 
    <?php
-   $strikeIron = new ZendService\StrikeIron(array('username' => 'your-username',
+   $strikeIron = new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    $taxBasic = $strikeIron->getService(array('class' => 'SalesUseTaxBasic'));
@@ -212,7 +212,7 @@ method calls to the service:
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new ZendService\StrikeIron(array('username' => 'your-username',
+   $strikeIron = new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    $taxBasic = $strikeIron->getService(array('class' => 'SalesUseTaxBasic'));
@@ -221,7 +221,7 @@ method calls to the service:
 
      $taxBasic->getTaxRateCanada(array('province' => 'ontario'));
 
-   } catch (ZendService\StrikeIron\Exception $e) {
+   } catch (ZendService\StrikeIron\Exception\RuntimeException $e) {
 
      // error handling for events like connection
      // problems or subscription errors
@@ -258,7 +258,7 @@ that service using the ``getSubscriptionInfo()`` method of the client:
    :linenos:
 
    // Get a client for the Sales & Use Tax Basic service
-   $strikeIron = new ZendService\StrikeIron(array('username' => 'your-username',
+   $strikeIron = new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    $taxBasic = $strikeIron->getService(array('class => 'SalesUseTaxBasic'));
