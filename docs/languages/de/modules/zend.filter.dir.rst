@@ -9,10 +9,10 @@ Verzeichnisses zurückgeben.
 
 .. _zend.filter.set.dir.options:
 
-Unterstützte Optionen für Zend_Filter_Dir
+Unterstützte Optionen für Zend\Filter\Dir
 -----------------------------------------
 
-Es gibt keine zusätzlichen Optionen für ``Zend_Filter_Dir``.
+Es gibt keine zusätzlichen Optionen für ``Zend\Filter\Dir``.
 
 .. _zend.filter.set.dir.basic:
 
@@ -24,7 +24,7 @@ Ein einfaches Beispiel der Verwendung ist nachfolgend zu finden:
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Dir();
+   $filter = new Zend\Filter\Dir();
 
    print $filter->filter('/etc/passwd');
 
@@ -33,7 +33,7 @@ Dies gibt "``/etc``" zurück.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Dir();
+   $filter = new Zend\Filter\Dir();
 
    print $filter->filter('C:/Temp/x');
 

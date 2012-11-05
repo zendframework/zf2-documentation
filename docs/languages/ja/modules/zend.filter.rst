@@ -44,7 +44,7 @@
 フィルタの基本的な使用法
 ------------
 
-ここで考えたフィルタについての定義をもとにして ``Zend_Filter_Interface``
+ここで考えたフィルタについての定義をもとにして ``Zend\Filter\Interface``
 が作成されました。 これは、フィルタクラスに対して ``filter()``
 という名前のメソッドを実装するよう強制するものです。
 
@@ -54,7 +54,7 @@
    .. code-block:: php
       :linenos:
 
-      $htmlEntities = new Zend_Filter_HtmlEntities();
+      $htmlEntities = new Zend\Filter\HtmlEntities();
 
       echo $htmlEntities->filter('&'); // &
       echo $htmlEntities->filter('"'); // "
@@ -67,7 +67,7 @@
 --------------------------
 
 指定したフィルタクラスを読み込んでそのインスタンスを作成するというのが面倒ならば、
-もうひとつの方法として、静的メソッド ``Zend_Filter::filterStatic()``
+もうひとつの方法として、静的メソッド ``Zend\Filter\Filter::filterStatic()``
 を実行する方法もあります。このメソッドの最初の引数には、 ``filter()``
 メソッドに渡す入力値を指定します。
 二番目の引数は文字列で、フィルタクラスのベースネーム (Zend_Filter
@@ -78,7 +78,7 @@
    .. code-block:: php
       :linenos:
 
-      echo Zend_Filter::filterStatic('&', 'HtmlEntities');
+      echo Zend\Filter\Filter::filterStatic('&', 'HtmlEntities');
 
 
 
@@ -88,7 +88,7 @@
    .. code-block:: php
       :linenos:
 
-      echo Zend_Filter::filterStatic('"',
+      echo Zend\Filter\Filter::filterStatic('"',
                                      'HtmlEntities',
                                      array('quotestyle' => ENT_QUOTES));
 
@@ -99,7 +99,7 @@
 最初の例の方式、つまりフィルタオブジェクトのインスタンスを作成して その
 ``filter()`` メソッドをコールする方式のほうがより効率的です。
 
-また、 ``Zend_Filter_Input`` クラスでも、特定の入力データのセットを処理する際に
+また、 ``Zend\Filter\Input`` クラスでも、特定の入力データのセットを処理する際に
 複数のフィルタやバリデータを必要に応じて実行させる機能も提供しています。
 詳細は :ref:` <zend.filter.input>` を参照ください。
 
@@ -108,14 +108,14 @@
 名前空間
 ^^^^
 
-自分で定義したフィルタを使う際に、 ``Zend_Filter::filterStatic()`` に 4
+自分で定義したフィルタを使う際に、 ``Zend\Filter\Filter::filterStatic()`` に 4
 番目のパラメータを指定できます。
 これは、フィルタを探すための名前空間となります。
 
 .. code-block:: php
    :linenos:
 
-   echo Zend_Filter::filterStatic(
+   echo Zend\Filter\Filter::filterStatic(
        '"',
        'MyFilter',
        array($parameters),
@@ -123,30 +123,30 @@
    );
 
 ``Zend_Filter`` には、名前空間をデフォルトで設定することもできます。
-つまり、起動時に一度設定しておけば ``Zend_Filter::filterStatic()``
+つまり、起動時に一度設定しておけば ``Zend\Filter\Filter::filterStatic()``
 のたびに指定する必要がなくなるということです。
 次のコード片は、上のコードと同じ意味となります。
 
 .. code-block:: php
    :linenos:
 
-   Zend_Filter::setDefaultNamespaces(array('FirstNamespace', 'SecondNamespace'));
-   echo Zend_Filter::filterStatic('"', 'MyFilter', array($parameters));
-   echo Zend_Filter::filterStatic('"', 'OtherFilter', array($parameters));
+   Zend\Filter\Filter::setDefaultNamespaces(array('FirstNamespace', 'SecondNamespace'));
+   echo Zend\Filter\Filter::filterStatic('"', 'MyFilter', array($parameters));
+   echo Zend\Filter\Filter::filterStatic('"', 'OtherFilter', array($parameters));
 
 名前空間の操作のために、次のような便利なメソッド群が用意されています。
 
-- **Zend_Filter::getDefaultNamespaces()**: 設定されているすべての名前空間を配列で返します。
+- **Zend\Filter\Filter::getDefaultNamespaces()**: 設定されているすべての名前空間を配列で返します。
 
-- **Zend_Filter::setDefaultNamespaces()**:
+- **Zend\Filter\Filter::setDefaultNamespaces()**:
   新たなデフォルト名前空間を設定し、既存の名前空間を上書きします。
   単一の名前空間の場合は文字列、複数の場合は配列で指定できます。
 
-- **Zend_Filter::addDefaultNamespaces()**:
+- **Zend\Filter\Filter::addDefaultNamespaces()**:
   新たな名前空間を、既に設定されているものに追加します。
   単一の名前空間の場合は文字列、複数の場合は配列で指定できます。
 
-- **Zend_Filter::hasDefaultNamespaces()**: デフォルトの名前空間が設定されている場合は ``TRUE``
+- **Zend\Filter\Filter::hasDefaultNamespaces()**: デフォルトの名前空間が設定されている場合は ``TRUE``
   、 設定されていない場合は ``FALSE`` を返します。
 
 

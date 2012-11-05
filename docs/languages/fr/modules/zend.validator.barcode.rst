@@ -4,9 +4,9 @@
 Barcode
 =======
 
-``Zend_Validate_Barcode`` permet de vérifier si une donnée représente un code barres.
+``Zend\Validate\Barcode`` permet de vérifier si une donnée représente un code barres.
 
-``Zend_Validate_Barcode`` supporte de multiples standards de codes à barres et peut être étendu pour les codes
+``Zend\Validate\Barcode`` supporte de multiples standards de codes à barres et peut être étendu pour les codes
 barres propriétaires. Les formats suivants sont supportés:
 
 - **CODE25**: Aussi appelé "two of five" ou "Code25 Industrial".
@@ -159,10 +159,10 @@ barres propriétaires. Les formats suivants sont supportés:
 
 .. _zend.validator.set.barcode.options:
 
-Options supportées par Zend_Validate_Barcode
+Options supportées par Zend\Validate\Barcode
 --------------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_Barcode``:
+Les options suivantes sont supportées par ``Zend\Validate\Barcode``:
 
 - **adapter**: Affecte l'adaptateur de code barres à utiliser. La liste des adaptateurs est donnée ci-dessus. Si
   vous voulez préciser un adaptateur personnalisé, le nom complet de la classe est requis.
@@ -183,7 +183,7 @@ EAN13:
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Barcode('EAN13');
+   $valid = new Zend\Validate\Barcode('EAN13');
    if ($valid->isValid($input)) {
        // input semble être valide
    } else {
@@ -202,7 +202,7 @@ utilisant l'option ``checksum`` vous pouvez indiquer si oui ou non la somme de c
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_Barcode(array(
+   $valid = new Zend\Validate\Barcode(array(
        'adapter'  => 'EAN13',
        'checksum' => false,
    ));
@@ -225,7 +225,7 @@ utilisant l'option ``checksum`` vous pouvez indiquer si oui ou non la somme de c
 Ecrire des validateurs personnalisés
 ------------------------------------
 
-Vous pouvez créer vos propres validateurs pour ``Zend_Validate_Barcode``; ce qui est nécessaire si vous traitez
+Vous pouvez créer vos propres validateurs pour ``Zend\Validate\Barcode``; ce qui est nécessaire si vous traitez
 des codes barres propriétaires. Vous aurez alors besoin des informations suivantes.
 
 - **Length**: La taille du code barres. Peut être une des valeur suivantes:
@@ -246,8 +246,8 @@ des codes barres propriétaires. Vous aurez alors besoin des informations suivan
 
 - **Checksum**: Une chaine utilisée comme callback pour valideer la somme de contrôle.
 
-Votre validateur de code à barres personnalisé doit étendre ``Zend_Validate_Barcode_AdapterAbstract`` ou
-implémenter Zend_Validate_Barcode_AdapterInterface.
+Votre validateur de code à barres personnalisé doit étendre ``Zend\Validate_Barcode\AdapterAbstract`` ou
+implémenter Zend\Validate_Barcode\AdapterInterface.
 
 Comme exemple, créons un validateur qui utilise un nombre pair de caractères pouvant être des chiffres et les
 lettres 'ABCDE'. Une somme de contrôle sera aussi calculée.
@@ -255,7 +255,7 @@ lettres 'ABCDE'. Une somme de contrôle sera aussi calculée.
 .. code-block:: php
    :linenos:
 
-   class My_Barcode_MyBar extends Zend_Validate_Barcode_AdapterAbstract
+   class My_Barcode_MyBar extends Zend\Validate_Barcode\AdapterAbstract
    {
        protected $_length     = 'even';
        protected $_characters = '0123456789ABCDE';
@@ -267,7 +267,7 @@ lettres 'ABCDE'. Une somme de contrôle sera aussi calculée.
        }
    }
 
-   $valid = new Zend_Validate_Barcode('My_Barcode_MyBar');
+   $valid = new Zend\Validate\Barcode('My_Barcode_MyBar');
    if ($valid->isValid($input)) {
        // input semble valide
    } else {

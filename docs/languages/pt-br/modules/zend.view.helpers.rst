@@ -9,9 +9,9 @@ vezes: p. ex.: formatar uma data, gerar um elemento de formulário, ou exibir li
 empregar classes assistentes para executar estas tarefas para você.
 
 A helper is simply a class. Let's say we want a helper named 'fooBar'. By default, the class is prefixed with
-'Zend_View_Helper\_' (you can specify a custom prefix when setting a helper path), and the last segment of the
+'Zend\View\Helper\_' (you can specify a custom prefix when setting a helper path), and the last segment of the
 class name is the helper name; this segment should be TitleCapped; the full class name is then:
-``Zend_View_Helper_FooBar``. This class should contain at the minimum a single method, named after the helper, and
+``Zend\View_Helper\FooBar``. This class should contain at the minimum a single method, named after the helper, and
 camelCased: ``fooBar()``.
 
 .. note::
@@ -30,7 +30,7 @@ camelCased: ``fooBar()``.
    work.
 
 Para usar um assistente em seu script de visualização, chame-o usando ``$this->helperName()``. Em segundo plano,
-``Zend_View`` irá carregar a classe ``Zend_View_Helper_HelperName``, instanciá-la e chamar seu método
+``Zend_View`` irá carregar a classe ``Zend\View_Helper\HelperName``, instanciá-la e chamar seu método
 ``helperName()``. O objeto criado é persistente dentro do escopo da instância ``Zend_View``, e será reutilizado
 por todas as chamadas futuras a ``$this->helperName()``.
 
@@ -242,12 +242,12 @@ Assim como os scripts de visualização, seu controlador pode especificar uma li
 em "Zend/View/Helper/\*". Você pode instruir o ``Zend_View`` a procurar em outros locais usando os métodos
 ``setHelperPath()`` e ``addHelperPath()``. Além disso, você pode indicar um prefixo da classe a ser usado para os
 assistentes no caminho fornecido, permitindo o uso de namespaces em suas classes assistentes. Por padrão, se
-nenhum prefixo da classe for fornecido, 'Zend_View_Helper\_' é assumido.
+nenhum prefixo da classe for fornecido, 'Zend\View\Helper\_' é assumido.
 
 .. code-block:: php
    :linenos:
 
-   $view = new Zend_View();
+   $view = new Zend\View\View();
 
    // Set path to /path/to/more/helpers, with prefix 'My_View_Helper'
    $view->setHelperPath('/path/to/more/helpers', 'My_View_Helper');
@@ -259,7 +259,7 @@ conjunto original de assistentes (ou susbstituir) com os seus próprios personal
 .. code-block:: php
    :linenos:
 
-   $view = new Zend_View();
+   $view = new Zend\View\View();
    // Add /path/to/some/helpers with class prefix 'My_View_Helper'
    $view->addHelperPath('/path/to/some/helpers', 'My_View_Helper');
    // Add /other/path/to/helpers with class prefix 'Your_View_Helper'
@@ -271,7 +271,7 @@ conjunto original de assistentes (ou susbstituir) com os seus próprios personal
    // "/other/path/to/helpers/HelperName.php" using class name
    // "My_View_Helper_HelperName", and finally for
    // "Zend/View/Helper/HelperName.php" using class name
-   // "Zend_View_Helper_HelperName".
+   // "Zend\View_Helper\HelperName".
 
 .. _zend.view.helpers.custom:
 
@@ -280,8 +280,8 @@ Escrevendo Assistentes Personalizados
 
 Escrever assistentes personalizados é fácil; basta seguir estas regras:
 
-- While not strictly necessary, we recommend either implementing ``Zend_View_Helper_Interface`` or extending
-  ``Zend_View_Helper_Abstract`` when creating your helpers. Introduced in 1.6.0, these simply define a
+- While not strictly necessary, we recommend either implementing ``Zend\View_Helper\Interface`` or extending
+  ``Zend\View_Helper\Abstract`` when creating your helpers. Introduced in 1.6.0, these simply define a
   ``setView()`` method; however, in upcoming releases, we plan to implement a strategy pattern that will simplify
   much of the naming schema detailed below. Building off these now will help you future-proof your code.
 
@@ -309,7 +309,7 @@ Aqui está um exemplo do assistente ``SpecialPurpose``:
 .. code-block:: php
    :linenos:
 
-   class My_View_Helper_SpecialPurpose extends Zend_View_Helper_Abstract
+   class My_View_Helper_SpecialPurpose extends Zend\View_Helper\Abstract
    {
        protected $_count = 0;
        public function specialPurpose()
@@ -351,7 +351,7 @@ object, your helper class should have a ``setView($view)`` method, like the foll
    {
        public $view;
 
-       public function setView(Zend_View_Interface $view)
+       public function setView(Zend\View\Interface $view)
        {
            $this->view = $view;
        }
@@ -366,7 +366,7 @@ If your helper class has a ``setView()`` method, it will be called when the help
 passed the current view object. It is up to you to persist the object in your class, as well as determine how it
 should be accessed.
 
-If you are extending ``Zend_View_Helper_Abstract``, you do not need to define this method, as it is defined for
+If you are extending ``Zend\View_Helper\Abstract``, you do not need to define this method, as it is defined for
 you.
 
 .. _zend.view.helpers.registering-concrete:

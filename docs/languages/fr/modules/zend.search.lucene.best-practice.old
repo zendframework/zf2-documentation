@@ -9,12 +9,12 @@ Bonnes pratiques
 Nommage des champs
 ------------------
 
-Il n'y a pas de limitation pour les noms de champs dans ``Zend_Search_Lucene``.
+Il n'y a pas de limitation pour les noms de champs dans ``Zend\Search\Lucene``.
 
 Cependant, il est préférable de ne pas utiliser les noms '**id**' et '**score**' afin d'éviter toute ambiguïté
 dans les propriétés de *QueryHit*.
 
-Les propriétés *id* et *score* de ``Zend_Search_Lucene_Search_QueryHit`` font toujours référence à
+Les propriétés *id* et *score* de ``Zend\Search\Lucene\Search\QueryHit`` font toujours référence à
 l'identifiant interne du document Lucene et au :ref:`score <zend.search.lucene.searching.results-scoring>` de hit.
 Si le document indexé possède les mêmes champs stockés, vous devrez utiliser la méthode ``getDocument()`` pour
 y accéder :
@@ -70,7 +70,7 @@ L'optimisation complète de l'index peut être effectuée avec la méthode ``opt
    .. code-block:: php
       :linenos:
 
-      $index = Zend_Search_Lucene::open($indexPath);
+      $index = Zend\Search\Lucene::open($indexPath);
 
       $index->optimize();
 
@@ -101,8 +101,8 @@ d'index <zend.search.lucene.index-creation.optimization>`) :
 
    .. note::
 
-      Toutes ces options sont des propriétés de la classe ``Zend_Search_Lucene``, pas des propriétés d'index.
-      Elles n'affectent que les instances de ``Zend_Search_Lucene`` et peuvent varier selon les scripts.
+      Toutes ces options sont des propriétés de la classe ``Zend\Search\Lucene``, pas des propriétés d'index.
+      Elles n'affectent que les instances de ``Zend\Search\Lucene`` et peuvent varier selon les scripts.
 
 
 
@@ -150,7 +150,7 @@ nombre de segments fusionnés. Ce qui peut également déclencher l'erreur "Too 
 
 
 
-``Zend_Search_Lucene`` vérifie à chaque appel de ``addDocument()`` si la fusion de n'importe quel segment pour
+``Zend\Search\Lucene`` vérifie à chaque appel de ``addDocument()`` si la fusion de n'importe quel segment pour
 déplacer le segment nouvellement créé dans le groupe suivant. Si c'est le cas, la fusion est effectuée.
 
 Ainsi, un index avec N groupes peut contenir **MaxBufferedDocs** + (N-1)* **MergeFactor** segments et contient au
@@ -174,7 +174,7 @@ meilleures performances d'indexation de masse (batch indexing).
 Indexation à l'arrêt du programme
 ---------------------------------
 
-L'instance de ``Zend_Search_Lucene`` effectue quelques tâches à la sortie du programme si des documents ont été
+L'instance de ``Zend\Search\Lucene`` effectue quelques tâches à la sortie du programme si des documents ont été
 ajoutés à l'index mais pas écrits dans un nouveau segment.
 
 Elle peut également déclencher le processus d'auto-optimisation.
@@ -197,7 +197,7 @@ Le premier est de forcer l'index à sortir de la portée (du scope) :
    .. code-block:: php
       :linenos:
 
-      $index = Zend_Search_Lucene::open($indexPath);
+      $index = Zend\Search\Lucene::open($indexPath);
 
       ...
 
@@ -210,7 +210,7 @@ Le second est d'effectuer une opération de commit avant la fin du script exécu
    .. code-block:: php
       :linenos:
 
-      $index = Zend_Search_Lucene::open($indexPath);
+      $index = Zend\Search\Lucene::open($indexPath);
 
       $index->commit();
 
@@ -225,7 +225,7 @@ Récupération de documents par leur id unique
 C'est une pratique commune de stocker un identifiant unique de document dans l'index. Par exemple, une url, un
 chemin ou un identifiant tiré d'une base de données.
 
-``Zend_Search_Lucene`` fournit une méthode ``termDocs()`` pour récupérer des documents contenant les termes
+``Zend\Search\Lucene`` fournit une méthode ``termDocs()`` pour récupérer des documents contenant les termes
 spécifiés.
 
 C'est plus efficace que d'utiliser la méthode ``find()``:
@@ -246,8 +246,8 @@ C'est plus efficace que d'utiliser la méthode ``find()``:
 
       // Récupération de documents avec la méthode find()
       // en utilisant l'API de requête.
-      $term = new Zend_Search_Lucene_Index_Term($docId, $idFieldName);
-      $query = new Zend_Search_Lucene_Search_Query_Term($term);
+      $term = new Zend\Search\Lucene\Index\Term($docId, $idFieldName);
+      $query = new Zend\Search\Lucene\Search\Query\Term($term);
       $hits  = $index->find($query);
       foreach ($hits as $hit) {
           $title    = $hit->title;
@@ -258,7 +258,7 @@ C'est plus efficace que d'utiliser la méthode ``find()``:
       ...
 
       // Récupération de documents avec la méthode termDocs()
-      $term = new Zend_Search_Lucene_Index_Term($docId, $idFieldName);
+      $term = new Zend\Search\Lucene\Index\Term($docId, $idFieldName);
       $docIds  = $index->termDocs($term);
       foreach ($docIds as $id) {
           $doc = $index->getDocument($id);
@@ -274,7 +274,7 @@ C'est plus efficace que d'utiliser la méthode ``find()``:
 Utilisation de la mémoire
 -------------------------
 
-``Zend_Search_Lucene`` est un module relativement gourmand en mémoire.
+``Zend\Search\Lucene`` est un module relativement gourmand en mémoire.
 
 Il utilise la mémoire pour mettre en cache certaines informations et optimiser la recherche, ainsi que les
 performances de l'indexation.
@@ -305,15 +305,15 @@ une grosse quantité de mémoire.
 Encodage
 --------
 
-``Zend_Search_Lucene`` travaille avec des chaînes en UTF-8 en interne. Ainsi toutes les chaînes de caractères
-retournée par ``Zend_Search_Lucene`` sont encodées en UTF-8.
+``Zend\Search\Lucene`` travaille avec des chaînes en UTF-8 en interne. Ainsi toutes les chaînes de caractères
+retournée par ``Zend\Search\Lucene`` sont encodées en UTF-8.
 
 Vous ne devriez pas être concernés par l'encodage si vous travaillez avec des chaîne purement *ASCII*, mais vous
 devez être prudent si ce n'est pas le cas.
 
 Un mauvais encodage peut causer des notices (erreur) durant la conversation d'encodage, voire la perte de données.
 
-``Zend_Search_Lucene`` offre un large éventail de possibilités d'encodage pour les documents indexés et les
+``Zend\Search\Lucene`` offre un large éventail de possibilités d'encodage pour les documents indexés et les
 requêtes analysées.
 
 L'encodage peut être explicitement spécifié en passant un paramètre optionnel à la méthode de création d'un
@@ -322,11 +322,11 @@ champ :
    .. code-block:: php
       :linenos:
 
-      $doc = new Zend_Search_Lucene_Document();
-      $doc->addField(Zend_Search_Lucene_Field::Text('title',
+      $doc = new Zend\Search_Lucene\Document();
+      $doc->addField(Zend\Search_Lucene\Field::Text('title',
                                                     $title,
                                                     'iso-8859-1'));
-      $doc->addField(Zend_Search_Lucene_Field::UnStored('contents',
+      $doc->addField(Zend\Search_Lucene\Field::UnStored('contents',
                                                         $contents,
                                                         'utf-8'));
 
@@ -360,7 +360,7 @@ recherche :
       :linenos:
 
       $query =
-          Zend_Search_Lucene_Search_QueryParser::parse($queryStr, 'iso-8859-5');
+          Zend\Search\Lucene\Search\QueryParser::parse($queryStr, 'iso-8859-5');
       $hits = $index->find($query);
       ...
 
@@ -371,7 +371,7 @@ L'encodage par défaut peut également être spécifié avec la méthode ``setDe
    .. code-block:: php
       :linenos:
 
-      Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('iso-8859-1');
+      Zend\Search\Lucene\Search\QueryParser::setDefaultEncoding('iso-8859-1');
       $hits = $index->find($queryStr);
       ...
        chaîne vide sous-entend "locale courante".
@@ -387,14 +387,14 @@ dépend de quel analyseur est utilisé. Consultez la section sur les :ref:`Jeu d
 Maintenance de l'index
 ----------------------
 
-Il devrait être clair que ``Zend_Search_Lucene`` comme toute autre implémentation de Lucene ne comporte pas de
+Il devrait être clair que ``Zend\Search\Lucene`` comme toute autre implémentation de Lucene ne comporte pas de
 "base de données".
 
 Les index ne devrait pas être utilisés pour du stockage de données. Ils ne fournissent pas de fonctionnalités
 de backup/restauration partiel, journalisation, logs, transactions et beaucoup d'autres fonctionnalités
 assimilées aux systèmes de gestion de bases de données.
 
-Cependant, ``Zend_Search_Lucene`` tente de garder ses index dans un état constant en tout temps.
+Cependant, ``Zend\Search\Lucene`` tente de garder ses index dans un état constant en tout temps.
 
 Le backup et la restauration d'un index devrait être effectué en copiant le contenu du répertoire de l'index.
 
@@ -409,10 +409,10 @@ considérablement le temps de restauration.
 
 .. [#] ``memory_get_usage()`` et ``memory_get_peak_usage()`` peuvent être utilisées pour contrôler l'utilisation
        de la mémoire.
-.. [#] ``Zend_Search_Lucene`` maintient chaque segment ouvert pour améliorer les performances de recherche.
+.. [#] ``Zend\Search\Lucene`` maintient chaque segment ouvert pour améliorer les performances de recherche.
 .. [#] Cela peut aussi se produire s'il y a une référence à l'index ou à l'un de ses résultats de recherche
        dans une structure de données cyclique, car le ramasse-miettes de *PHP* ne récupère les objets avec des
        références cycliques qu'en fin d'exécution de script
-.. [#] Le format de fichier Lucene permet de configurer ce nombre, mais ``Zend_Search_Lucene`` n'expose pas cette
+.. [#] Le format de fichier Lucene permet de configurer ce nombre, mais ``Zend\Search\Lucene`` n'expose pas cette
        possibilité dans l'API. Cependant vous pouvez toujours configurer ce nombre si l'index est géré par une
        autre implémentation de Lucene.

@@ -24,7 +24,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
    экзмепляр класса доступен – через статический метод
    ``getInstance()``. Это означает, что ключевые слова **new** или **clone** не
    будут работать с классом ``Zend_Auth``. Вместо них используйте
-   ``Zend_Auth::getInstance()``.
+   ``Zend\Auth\Auth::getInstance()``.
 
 .. _zend.authentication.introduction.adapters:
 
@@ -38,7 +38,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 адаптеры ``Zend_Auth`` принимают учетные данные, выполненяют запрос
 к аутентификационному сервису и возвращают результат.
 
-Каждый адаптер ``Zend_Auth`` реализует ``Zend_Auth_Adapter_Interface``. Этот
+Каждый адаптер ``Zend_Auth`` реализует ``Zend\Auth_Adapter\Interface``. Этот
 интерфейс определяет лишь один метод: ``authenticate()``, который
 должен быть реализовать для выполнения аутентификационного
 запроса. Адаптер должен быть настроен до вызова ``authenticate()``,
@@ -54,7 +54,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 .. code-block:: php
    :linenos:
 
-   class MyAuthAdapter implements Zend_Auth_Adapter_Interface
+   class MyAuthAdapter implements Zend\Auth_Adapter\Interface
    {
        /**
         * Устанавливает логин и пароль для аутентификации
@@ -69,8 +69,8 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
        /**
         * Выполняет попытку аутентификации
         *
-        * @throws Zend_Auth_Adapter_Exception Если аутентификация не может быть выполнена
-        * @return Zend_Auth_Result
+        * @throws Zend\Auth_Adapter\Exception Если аутентификация не может быть выполнена
+        * @return Zend\Auth\Result
         */
        public function authenticate()
        {
@@ -79,9 +79,9 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
    }
 
 Как указано в докблоке, ``authenticate()`` должен вернуть экземпляр
-``Zend_Auth_Result`` (или унаследованный от него). Если по какой либо
+``Zend\Auth\Result`` (или унаследованный от него). Если по какой либо
 причине выполнение аутентификации невозможно, ``authenticate()``
-должен бросить исключение, происходящее от ``Zend_Auth_Adapter_Exception``.
+должен бросить исключение, происходящее от ``Zend\Auth_Adapter\Exception``.
 
 .. _zend.authentication.introduction.results:
 
@@ -89,15 +89,15 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 ------------------------
 
 Метод ``authenticate()`` адаптера ``Zend_Auth`` возвращает экзмепляр
-``Zend_Auth_Result`` для представления результата попытки
-аутентификации. Объект ``Zend_Auth_Result`` заполняется адаптером при
+``Zend\Auth\Result`` для представления результата попытки
+аутентификации. Объект ``Zend\Auth\Result`` заполняется адаптером при
 создании, и следующие четыре метода представляют его базовый
 набор операций:
 
 - ``isValid()``- возвращает ``TRUE`` только в случае успешной попытки
   аутентификации.
 
-- ``getCode()``- возвращает значение одной из констант ``Zend_Auth_Result`` для
+- ``getCode()``- возвращает значение одной из констант ``Zend\Auth\Result`` для
   обозначения успешности попытки или типа возникшей ошибки.
   Это может быть использовано в ситуации, когда разработчик
   хочет различать результаты попыток аутентификации. К
@@ -125,12 +125,12 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 .. code-block:: php
    :linenos:
 
-   Zend_Auth_Result::SUCCESS
-   Zend_Auth_Result::FAILURE
-   Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND
-   Zend_Auth_Result::FAILURE_IDENTITY_AMBIGUOUS
-   Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID
-   Zend_Auth_Result::FAILURE_UNCATEGORIZED
+   Zend\Auth\Result::SUCCESS
+   Zend\Auth\Result::FAILURE
+   Zend\Auth\Result::FAILURE_IDENTITY_NOT_FOUND
+   Zend\Auth\Result::FAILURE_IDENTITY_AMBIGUOUS
+   Zend\Auth\Result::FAILURE_CREDENTIAL_INVALID
+   Zend\Auth\Result::FAILURE_UNCATEGORIZED
 
 Этот пример показывает, как разработчик может различным
 образом обработать результат аутентификации, используя
@@ -144,15 +144,15 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 
    switch ($result->getCode()) {
 
-       case Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND:
+       case Zend\Auth\Result::FAILURE_IDENTITY_NOT_FOUND:
            /** Выполнить действия при несуществующем идентификаторе **/
            break;
 
-       case Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID:
+       case Zend\Auth\Result::FAILURE_CREDENTIAL_INVALID:
            /** Выполнить действия при некорректных учетных данных **/
            break;
 
-       case Zend_Auth_Result::SUCCESS:
+       case Zend\Auth\Result::SUCCESS:
            /** Выполнить действия при успешной аутентификации **/
            break;
 
@@ -184,12 +184,12 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 идентификатора полученного в результате успешной попытки
 аутентификации в *PHP* сессии.
 
-При успешной попытке, ``Zend_Auth::authenticate()`` сохраняет идентификатор
+При успешной попытке, ``Zend\Auth\Auth::authenticate()`` сохраняет идентификатор
 в постоянном хранилище. Если не настроено по другому, ``Zend_Auth``
-использует класс хранилища ``Zend_Auth_Storage_Session``, который в свою
+использует класс хранилища ``Zend\Auth_Storage\Session``, который в свою
 очередь использует :ref:`Zend_Session <zend.session>`. Вместо него может быть
 использован пользовательский класс, для этого нужно передать
-``Zend_Auth::setStorage()`` объект, реализующий ``Zend_Auth_Storage_Interface``.
+``Zend\Auth\Auth::setStorage()`` объект, реализующий ``Zend\Auth_Storage\Interface``.
 
 .. note::
 
@@ -202,22 +202,22 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 
 .. rubric:: Изменение пространства имен в сессии
 
-``Zend_Auth_Storage_Session`` использует пространство имен '``Zend_Auth``'. Оно
+``Zend\Auth_Storage\Session`` использует пространство имен '``Zend_Auth``'. Оно
 может быть переопределено передачей другого значения
-конструктору ``Zend_Auth_Storage_Session``, которое будет дальше передано
-конструктору ``Zend_Session_Namespace``. Это нужно сделать до того, как
+конструктору ``Zend\Auth_Storage\Session``, которое будет дальше передано
+конструктору ``Zend\Session\Namespace``. Это нужно сделать до того, как
 будет произведена попытка аутентификации, так как
-``Zend_Auth::authenticate()`` выполняет автоматическое сохранение
+``Zend\Auth\Auth::authenticate()`` выполняет автоматическое сохранение
 идентификатора.
 
 .. code-block:: php
    :linenos:
 
    // Получение синглтон экземпляра Zend_Auth
-   $auth = Zend_Auth::getInstance();
+   $auth = Zend\Auth\Auth::getInstance();
 
    // Установка 'someNamespace' вместо 'Zend_Auth'
-   $auth->setStorage(new Zend_Auth_Storage_Session('someNamespace'));
+   $auth->setStorage(new Zend\Auth_Storage\Session('someNamespace'));
 
    /**
     * @todo подготовка адаптера, $authAdapter
@@ -234,26 +234,26 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 
 Иногда разработчику может понадобиться использовать иной
 механизм хранения идентификаторов, нежели предоставляется в
-``Zend_Auth_Storage_Session``. В том случае он может реализовать
-``Zend_Auth_Storage_Interface`` и передать экземпляр методу ``Zend_Auth::setStorage()``.
+``Zend\Auth_Storage\Session``. В том случае он может реализовать
+``Zend\Auth_Storage\Interface`` и передать экземпляр методу ``Zend\Auth\Auth::setStorage()``.
 
 .. _zend.authentication.introduction.persistence.custom.example:
 
 .. rubric:: Использование пользовательского хранилища
 
 Для того, чтобы использовать иной класс хранилища
-пользовательских идентификаторов, нежели ``Zend_Auth_Storage_Session``,
-разработчик реализует ``Zend_Auth_Storage_Interface``:
+пользовательских идентификаторов, нежели ``Zend\Auth_Storage\Session``,
+разработчик реализует ``Zend\Auth_Storage\Interface``:
 
 .. code-block:: php
    :linenos:
 
-   class MyStorage implements Zend_Auth_Storage_Interface
+   class MyStorage implements Zend\Auth_Storage\Interface
    {
        /**
         * Возвращает  true, если хранилище пусто
         *
-        * @throws Zend_Auth_Storage_Exception В случае если невозможно
+        * @throws Zend\Auth_Storage\Exception В случае если невозможно
         *                                     определить, пусто ли
         *                                     хранилище
         * @return boolean
@@ -270,7 +270,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
         *
         * Поведение неопределено, когда хранилище пусто.
         *
-        * @throws Zend_Auth_Storage_Exception Если получение содержимого
+        * @throws Zend\Auth_Storage\Exception Если получение содержимого
         *                                     хранилища невозможно
         * @return mixed
         */
@@ -285,7 +285,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
         * Записывает $contents в хранилище
         *
         * @param  mixed $contents
-        * @throws Zend_Auth_Storage_Exception Если запись содержимого в
+        * @throws Zend\Auth_Storage\Exception Если запись содержимого в
         *                                     хранилище невозможна
         * @return void
         */
@@ -299,7 +299,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
        /**
         * Очищает содержмое хранилища
         *
-        * @throws Zend_Auth_Storage_Exception Если очищение хранилища
+        * @throws Zend\Auth_Storage\Exception Если очищение хранилища
         *                                     невозможно
         * @return void
         */
@@ -311,14 +311,14 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
        }
    }
 
-Для использования этого класса, ``Zend_Auth::setStorage()`` вызывается до
+Для использования этого класса, ``Zend\Auth\Auth::setStorage()`` вызывается до
 выполнения попытки авторизации:
 
 .. code-block:: php
    :linenos:
 
    // Сказать Zend_Auth использовать пользовательский класс хранилища
-   Zend_Auth::getInstance()->setStorage(new MyStorage());
+   Zend\Auth\Auth::getInstance()->setStorage(new MyStorage());
 
    /**
     * @todo подготовка адаптера, $authAdapter
@@ -326,7 +326,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 
    // Аутентификация, сохранение результата, и хранение идентификатора
    // при успехе.
-   $result = Zend_Auth::getInstance()->authenticate($authAdapter);
+   $result = Zend\Auth\Auth::getInstance()->authenticate($authAdapter);
 
 .. _zend.authentication.introduction.using:
 
@@ -335,7 +335,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 
 Существует два пути использования адаптеров ``Zend_Auth``:
 
-. непрямое, через ``Zend_Auth::authenticate()``
+. непрямое, через ``Zend\Auth\Auth::authenticate()``
 
 . прямое, через метод адаптера ``authenticate()``
 
@@ -346,7 +346,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
    :linenos:
 
    // Получение синглтон экземпляра Zend_Auth
-   $auth = Zend_Auth::getInstance();
+   $auth = Zend\Auth\Auth::getInstance();
 
    // Установка адаптера
    $authAdapter = new MyAuthAdapter($username, $password);
@@ -373,7 +373,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 .. code-block:: php
    :linenos:
 
-   $auth = Zend_Auth::getInstance();
+   $auth = Zend\Auth\Auth::getInstance();
    if ($auth->hasIdentity()) {
        // Идентификатор существует; получить его
        $identity = $auth->getIdentity();
@@ -386,7 +386,7 @@ Zend Framework смотрите в :ref:`Zend_Acl <zend.acl>`.
 .. code-block:: php
    :linenos:
 
-   Zend_Auth::getInstance()->clearIdentity();
+   Zend\Auth\Auth::getInstance()->clearIdentity();
 
 Когда автоматическое использование постоянного хранилища не
 подходит, разработчик может просто обойти ``Zend_Auth`` и

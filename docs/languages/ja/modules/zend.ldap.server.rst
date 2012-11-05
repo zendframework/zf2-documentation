@@ -26,7 +26,7 @@ LDAPサーバから情報を取得
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $rootdse = $ldap->getRootDse();
    $serverType = $rootdse->getServerType();
 
@@ -43,7 +43,7 @@ LDAPサーバから情報を取得
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $schema = $ldap->getSchema();
    $classes = $schema->getObjectClasses();
 

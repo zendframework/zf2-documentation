@@ -24,23 +24,23 @@ Statische Methodes en Constanten
 
 *Zend_Mime* definieert een set van constanten die veel worden gebruikt in MIME Messages:
 
-   - *Zend_Mime::TYPE_OCTETSTREAM*: 'application/octet-stream'
+   - *Zend\Mime\Mime::TYPE_OCTETSTREAM*: 'application/octet-stream'
 
-   - *Zend_Mime::TYPE_TEXT*: 'text/plain'
+   - *Zend\Mime\Mime::TYPE_TEXT*: 'text/plain'
 
-   - *Zend_Mime::TYPE_HTML*: 'text/html'
+   - *Zend\Mime\Mime::TYPE_HTML*: 'text/html'
 
-   - *Zend_Mime::ENCODING_7BIT*: '7bit'
+   - *Zend\Mime\Mime::ENCODING_7BIT*: '7bit'
 
-   - *Zend_Mime::ENCODING_8BIT*: '8bit'
+   - *Zend\Mime\Mime::ENCODING_8BIT*: '8bit'
 
-   - *Zend_Mime::ENCODING_QUOTEDPRINTABLE*: 'quoted-printable'
+   - *Zend\Mime\Mime::ENCODING_QUOTEDPRINTABLE*: 'quoted-printable'
 
-   - *Zend_Mime::ENCODING_BASE64*: 'base64'
+   - *Zend\Mime\Mime::ENCODING_BASE64*: 'base64'
 
-   - *Zend_Mime::DISPOSITION_ATTACHMENT*: 'attachment'
+   - *Zend\Mime\Mime::DISPOSITION_ATTACHMENT*: 'attachment'
 
-   - *Zend_Mime::DISPOSITION_INLINE*: 'inline'
+   - *Zend\Mime\Mime::DISPOSITION_INLINE*: 'inline'
 
 
 

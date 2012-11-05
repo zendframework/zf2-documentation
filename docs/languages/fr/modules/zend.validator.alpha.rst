@@ -4,16 +4,16 @@
 Alpha
 =====
 
-``Zend_Validate_Alpha`` permet de valider qu'une donnée ne contient que des caractères alphabétiques. Il n'y a
-pas de limite de taille. Ce validateur fonctionne comme le validateur ``Zend_Validate_Alnum`` à l'exception qu'il
+``Zend\Validate\Alpha`` permet de valider qu'une donnée ne contient que des caractères alphabétiques. Il n'y a
+pas de limite de taille. Ce validateur fonctionne comme le validateur ``Zend\Validate\Alnum`` à l'exception qu'il
 n'accepte pas les chiffres.
 
 .. _zend.validator.set.alpha.options:
 
-Options suportées par Zend_Validate_Alpha
+Options suportées par Zend\Validate\Alpha
 -----------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_Alpha``:
+Les options suivantes sont supportées par ``Zend\Validate\Alpha``:
 
 - **allowWhiteSpace**: Si les caractères d'espace sont autorisés ou pas. Par défaut ``FALSE``
 
@@ -27,7 +27,7 @@ Voici un exemple de base:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Alpha();
+   $validator = new Zend\Validate\Alpha();
    if ($validator->isValid('Abcd')) {
        // value ne contient que des caractères autorisés
    } else {
@@ -48,7 +48,7 @@ création de l'objet ou après au moyen des méthodes ``setAllowWhiteSpace()`` e
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Alpha(array('allowWhiteSpace' => true));
+   $validator = new Zend\Validate\Alpha(array('allowWhiteSpace' => true));
    if ($validator->isValid('Abcd and efg')) {
        // value ne contient que des caractères autorisés
    } else {
@@ -60,7 +60,7 @@ création de l'objet ou après au moyen des méthodes ``setAllowWhiteSpace()`` e
 Utiliser des langues différentes
 --------------------------------
 
-En utilisant ``Zend_Validate_Alpha``, la langue que l'utilisateur précise dans son navigateur sera utilisée pour
+En utilisant ``Zend\Validate\Alpha``, la langue que l'utilisateur précise dans son navigateur sera utilisée pour
 autoriser ou non certains caractères. Ainsi si l'utilisateur règle son navigateur sur **de** pour de l'allemand,
 alors les caractères comme **ä**, **ö** et **ü** seront eux aussi autorisés.
 

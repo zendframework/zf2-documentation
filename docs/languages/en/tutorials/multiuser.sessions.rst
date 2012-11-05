@@ -29,14 +29,14 @@ Basic Usage of Zend_Session
 
 The ``Zend_Session`` component is both a session manager as well as an *API* for storing data into a session object
 for long-term persistence. The ``Zend_Session`` *API* is for managing the options and behavior of a session, like
-options, starting and stopping a session, whereas ``Zend_Session_Namespace`` is the actual object used to store
+options, starting and stopping a session, whereas ``Zend\Session\Namespace`` is the actual object used to store
 data.
 
 While its generally good practice to start a session inside a bootstrap process, this is generally not necessary as
-all sessions will be automatically started upon the first creation of a ``Zend_Session_Namespace`` object.
+all sessions will be automatically started upon the first creation of a ``Zend\Session\Namespace`` object.
 
 ``Zend_Application`` is capable of configuring ``Zend_Session`` for you as part of the
-``Zend_Application_Resource`` system. To use this, assuming your project uses ``Zend_Application`` to bootstrap,
+``Zend\Application\Resource`` system. To use this, assuming your project uses ``Zend_Application`` to bootstrap,
 you would add the following code to your application.ini file:
 
 .. code-block:: php
@@ -53,10 +53,10 @@ to a data session directory.
 
 Most Zend Framework components that use sessions need nothing more to use ``Zend_Session``. At this point, you an
 either use a component that consumes ``Zend_Session``, or start storing your own data inside a session with
-``Zend_Session_Namespace``.
+``Zend\Session\Namespace``.
 
-``Zend_Session_Namespace`` is a simple class that proxies data via an easy to use *API* into the ``Zend_Session``
-managed $_SESSION superglobal. The reason it is called ``Zend_Session_Namespace`` is that it effectively namespaces
+``Zend\Session\Namespace`` is a simple class that proxies data via an easy to use *API* into the ``Zend_Session``
+managed $_SESSION superglobal. The reason it is called ``Zend\Session\Namespace`` is that it effectively namespaces
 the data inside $_SESSION, thus allowing multiple components and objects to safely store and retrieve data. In the
 following code, we'll explore how to build a simple session incrementing counter, starting at 1000 and resetting
 itself after 1999.
@@ -64,7 +64,7 @@ itself after 1999.
 .. code-block:: php
    :linenos:
 
-   $mysession = new Zend_Session_Namespace('mysession');
+   $mysession = new Zend\Session\Namespace('mysession');
 
    if (!isset($mysession->counter)) {
        $mysession->counter = 1000;
@@ -91,7 +91,7 @@ your application.ini:
 .. code-block:: php
    :linenos:
 
-   resources.session.saveHandler.class = "Zend_Session_SaveHandler_DbTable"
+   resources.session.saveHandler.class = "Zend\Session_SaveHandler\DbTable"
    resources.session.saveHandler.options.name = "session"
    resources.session.saveHandler.options.primary.session_id = "session_id"
    resources.session.saveHandler.options.primary.save_path = "save_path"

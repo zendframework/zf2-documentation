@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.delicious:
 
-Zend_Service_Delicious
+Zend\Service\Delicious
 ======================
 
 .. _zend.service.delicious.introduction:
@@ -9,7 +9,7 @@ Zend_Service_Delicious
 Introduction
 ------------
 
-``Zend_Service_Delicious`` est une *API* pour accéder aux Web services *XML* et *JSON* de `del.icio.us`_. Ce
+``Zend\Service\Delicious`` est une *API* pour accéder aux Web services *XML* et *JSON* de `del.icio.us`_. Ce
 composant vous donne, si vous avez les droits, un accès en lecture-écriture à vos entrées sur del.icio.us. Il
 permet également un accès en lecture seule aux données de tous les utilisateurs.
 
@@ -20,7 +20,7 @@ permet également un accès en lecture seule aux données de tous les utilisateu
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('identifiant', 'mot_de_passe');
+   $delicious = new Zend\Service\Delicious('identifiant', 'mot_de_passe');
    $posts = $delicious->getAllPosts();
 
    foreach ($posts as $post) {
@@ -34,9 +34,9 @@ permet également un accès en lecture seule aux données de tous les utilisateu
 Récupérer vos entrées
 ---------------------
 
-``Zend_Service_Delicious`` fournis trois méthodes pour récupérer vos entrées : ``getPosts()``,
+``Zend\Service\Delicious`` fournis trois méthodes pour récupérer vos entrées : ``getPosts()``,
 ``getRecentPosts()`` et ``getAllPosts()``. Elles retournent toutes une instance de la classe
-``Zend_Service_Delicious_PostList``, qui contient toutes les entrées récupérées.
+``Zend\Service_Delicious\PostList``, qui contient toutes les entrées récupérées.
 
 .. code-block:: php
    :linenos:
@@ -49,7 +49,7 @@ Récupérer vos entrées
     * @param string $tag Optionnel pour filtrer par tag
     * @param Zend_Date $dt Optionnel pour filtrer par date
     * @param string $url Optionnel pour filtrer par url
-    * @return Zend_Service_Delicious_PostList
+    * @return Zend\Service_Delicious\PostList
     */
    public function getPosts($tag = null, $dt = null, $url = null);
 
@@ -59,7 +59,7 @@ Récupérer vos entrées
     * @param string $tag Optionnel pour filtrer par tag
     * @param string $count Nombre maximum d'entrées à récupérer
     *                     (15 par défaut)
-    * @return Zend_Service_Delicious_PostList
+    * @return Zend\Service_Delicious\PostList
     */
    public function getRecentPosts($tag = null, $count = 15);
 
@@ -67,17 +67,17 @@ Récupérer vos entrées
     * Récupère toutes les entrées
     *
     * @param string $tag Optionnel pour filtrer par tag
-    * @return Zend_Service_Delicious_PostList
+    * @return Zend\Service_Delicious\PostList
     */
    public function getAllPosts($tag = null);
 
 .. _zend.service.delicious.postlist:
 
-Zend_Service_Delicious_PostList
+Zend\Service_Delicious\PostList
 -------------------------------
 
 Des instances de cette classe sont retournées par les méthodes ``getPosts()``, ``getAllPosts()``,
-``getRecentPosts()``, et ``getUserPosts()`` de ``Zend_Service_Delicious``.
+``getRecentPosts()``, et ``getUserPosts()`` de ``Zend\Service\Delicious``.
 
 Pour faciliter l'accès au données cette classe implémente les interfaces *Countable*, *Iterator*, et
 *ArrayAccess*.
@@ -89,7 +89,7 @@ Pour faciliter l'accès au données cette classe implémente les interfaces *Cou
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('nom_d_utilisateur',
+   $delicious = new Zend\Service\Delicious('nom_d_utilisateur',
                                            'mot_de_passe');
    $posts = $delicious->getAllPosts();
 
@@ -125,7 +125,7 @@ confort, ``withTag()`` est aussi fourni quand il est nécessaire 'e ne spécifie
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('nom_d_utilisateur',
+   $delicious = new Zend\Service\Delicious('nom_d_utilisateur',
                                            'mot_de_passe');
    $posts = $delicious->getAllPosts();
 
@@ -145,7 +145,7 @@ la méthode ``withUrl()``:
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('nom_d_utilisateur',
+   $delicious = new Zend\Service\Delicious('nom_d_utilisateur',
                                            'mot_de_passe');
    $posts = $delicious->getAllPosts();
 
@@ -167,7 +167,7 @@ la méthode ``withUrl()``:
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('nom_d_utilisateur',
+   $delicious = new Zend\Service\Delicious('nom_d_utilisateur',
                                            'mot_de_passe');
    $posts = $delicious->getPosts();
 
@@ -180,13 +180,13 @@ la méthode ``withUrl()``:
 
 .. rubric:: Enchaînement des appels de méthode
 
-Toutes les méthodes "setter" renvoient l'objet ``Zend_Service_Delicious_PostList`` vous pouvez donc chaîner les
+Toutes les méthodes "setter" renvoient l'objet ``Zend\Service_Delicious\PostList`` vous pouvez donc chaîner les
 appels aux méthodes en utilisant une interface fluide.
 
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('nom_d_utilisateur',
+   $delicious = new Zend\Service\Delicious('nom_d_utilisateur',
                                            'mot_de_passe');
    $posts = $delicious->getPosts();
 
@@ -200,7 +200,7 @@ Supprimer des entrées
 ---------------------
 
 Il y a deux moyens de supprimer une entrée, en spécifiant son *URL* ou en appelant la méthode ``delete()`` sur
-un objet Zend_Service_Delicious_PostList.
+un objet Zend\Service_Delicious\PostList.
 
 .. _zend.service.delicious.deleting_posts.deleting_posts:
 
@@ -209,13 +209,13 @@ un objet Zend_Service_Delicious_PostList.
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('nom_d_utilisateur',
+   $delicious = new Zend\Service\Delicious('nom_d_utilisateur',
                                            'mot_de_passe');
 
    // en spécifiant l' URL
    $delicious->deletePost('http://framework.zend.com');
 
-   // en appelant la méthode de l'objet Zend_Service_Delicious_PostList
+   // en appelant la méthode de l'objet Zend\Service_Delicious\PostList
    $posts = $delicious->getPosts();
    $posts[0]->delete();
 
@@ -228,7 +228,7 @@ Ajout d'entrées
 ---------------
 
 Pour ajouter une entrée vous devez appeler la méthode ``createNewPost()``, qui renvoie un objet
-``Zend_Service_Delicious_Post``. Quand vous éditez l'entrée, vous devez la sauvegarder dans la base de donnée de
+``Zend\Service_Delicious\Post``. Quand vous éditez l'entrée, vous devez la sauvegarder dans la base de donnée de
 del.icio.us en appelant la méthode ``save()``.
 
 .. _zend.service.delicious.adding_posts.adding_a_post:
@@ -238,7 +238,7 @@ del.icio.us en appelant la méthode ``save()``.
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('nom_d_utilisateur',
+   $delicious = new Zend\Service\Delicious('nom_d_utilisateur',
                                            'mot_de_passe');
 
    // créé et sauvegarde une nouvelle entrée (en chainant les méthodes)
@@ -264,7 +264,7 @@ Les étiquettes ("tags")
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('nom_d_utilisateur',
+   $delicious = new Zend\Service\Delicious('nom_d_utilisateur',
                                            'mot_de_passe');
 
    // récupère tous les étiquettes
@@ -285,7 +285,7 @@ Les groupes d'étiquettes
 .. code-block:: php
    :linenos:
 
-   $delicious = new Zend_Service_Delicious('nom_d_utilisateur',
+   $delicious = new Zend\Service\Delicious('nom_d_utilisateur',
                                            'mot_de_passe');
 
    // récupère tous les groupes
@@ -315,7 +315,7 @@ L'API Web del.icio.us autorise l'accès aux données publiques de tous les utili
    +----------------+----------------------------------------+-------------------------------+
    |getUserNetwork()|Récupère le réseau d'un utilisateur     |Array                          |
    +----------------+----------------------------------------+-------------------------------+
-   |getUserPosts()  |Récupère les entrées d'un utilisateur   |Zend_Service_Delicious_PostList|
+   |getUserPosts()  |Récupère les entrées d'un utilisateur   |Zend\Service_Delicious\PostList|
    +----------------+----------------------------------------+-------------------------------+
    |getUserTags()   |Récupère les étiquettes d'un utilisateur|Array                          |
    +----------------+----------------------------------------+-------------------------------+
@@ -323,7 +323,7 @@ L'API Web del.icio.us autorise l'accès aux données publiques de tous les utili
 .. note::
 
    Si vous utilisez uniquement ces méthodes, le nom d'utilisateur et le mot de passe ne sont pas obligatoires pour
-   créer un nouvel objet ``Zend_Service_Delicious``.
+   créer un nouvel objet ``Zend\Service\Delicious``.
 
 .. _zend.service.delicious.public_data.retrieving_public_data:
 
@@ -333,7 +333,7 @@ L'API Web del.icio.us autorise l'accès aux données publiques de tous les utili
    :linenos:
 
    // nom d'utilisateur et mot de passe optionnels
-   $delicious = new Zend_Service_Delicious();
+   $delicious = new Zend\Service\Delicious();
 
    // récupère les fans de l'utilisateur someUser
    print_r($delicious->getUserFans('someUser'));
@@ -350,12 +350,12 @@ Entrées publiques
 ^^^^^^^^^^^^^^^^^
 
 Quand vous récupérez des entrées publiques, la méthode ``getUserPosts()`` retourne un objet
-``Zend_Service_Delicious_PostList`` qui contient des objets ``Zend_Service_Delicious_SimplePost``. Ces derniers
+``Zend\Service_Delicious\PostList`` qui contient des objets ``Zend\Service_Delicious\SimplePost``. Ces derniers
 contiennent des informations basiques sur l'entrée : *URL*, title, notes, and tags.
 
 .. _zend.service.delicious.public_data.posts.SimplePost_methods:
 
-.. table:: Méthodes de la classe Zend_Service_Delicious_SimplePost
+.. table:: Méthodes de la classe Zend\Service_Delicious\SimplePost
 
    +----------+-----------------------------------+--------------+
    |Nom       |Description                        |Type de retour|
@@ -374,21 +374,21 @@ contiennent des informations basiques sur l'entrée : *URL*, title, notes, and t
 Client HTTP
 -----------
 
-``Zend_Service_Delicious`` utilise ``Zend_Rest_Client`` pour effectuer les requêtes *HTTP* sur le Web service de
-del.icio.us. Pour modifier le client *HTTP* utiliser par ``Zend_Service_Delicious``, vous devez modifier le client
-*HTTP* de ``Zend_Rest_Client``.
+``Zend\Service\Delicious`` utilise ``Zend\Rest\Client`` pour effectuer les requêtes *HTTP* sur le Web service de
+del.icio.us. Pour modifier le client *HTTP* utiliser par ``Zend\Service\Delicious``, vous devez modifier le client
+*HTTP* de ``Zend\Rest\Client``.
 
 .. _zend.service.delicious.httpclient.changing:
 
-.. rubric:: Modifier le client HTTP de ``Zend_Rest_Client``
+.. rubric:: Modifier le client HTTP de ``Zend\Rest\Client``
 
 .. code-block:: php
    :linenos:
 
    $myHttpClient = new My_Http_Client();
-   Zend_Rest_Client::setHttpClient($myHttpClient);
+   Zend\Rest\Client::setHttpClient($myHttpClient);
 
-Quand vous effectuez plus d'une requête avec ``Zend_Service_Delicious`` vous pouvez accélérez vos requêtes en
+Quand vous effectuez plus d'une requête avec ``Zend\Service\Delicious`` vous pouvez accélérez vos requêtes en
 configurant votre client *HTTP* pour qu'il ne ferme pas les connexions.
 
 .. _zend.service.delicious.httpclient.keepalive:
@@ -398,14 +398,14 @@ configurant votre client *HTTP* pour qu'il ne ferme pas les connexions.
 .. code-block:: php
    :linenos:
 
-   Zend_Rest_Client::getHttpClient()->setConfig(array(
+   Zend\Rest\Client::getHttpClient()->setConfig(array(
            'keepalive' => true
    ));
 
 .. note::
 
    En raison de quelques problèmes de del.icio.us avec *'ssl2'* (environs 2 secondes pour une requête), quand un
-   objet ``Zend_Service_Delicious`` est construit, le transport *SSL* de ``Zend_Rest_Client`` est configuré sur
+   objet ``Zend\Service\Delicious`` est construit, le transport *SSL* de ``Zend\Rest\Client`` est configuré sur
    *'ssl'* au lieu de la valeur par défaut *'ssl2'*.
 
 

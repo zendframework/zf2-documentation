@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.http.response:
 
-Zend_Http_Response
+Zend\Http\Response
 ==================
 
 .. _zend.http.response.introduction:
@@ -9,18 +9,18 @@ Zend_Http_Response
 Einführung
 ----------
 
-``Zend_Http_Response`` stellt den einfachen Zugriff auf eine *HTTP* Rückantwort sowie einige statische Methoden
-zum Analysieren der *HTTP* Rückantworten bereit. Normalerweise wird ``Zend_Http_Response`` als ein Objekt
-verwendet, dass von einer ``Zend_Http_Client`` Anfrage zurückgegeben wurde.
+``Zend\Http\Response`` stellt den einfachen Zugriff auf eine *HTTP* Rückantwort sowie einige statische Methoden
+zum Analysieren der *HTTP* Rückantworten bereit. Normalerweise wird ``Zend\Http\Response`` als ein Objekt
+verwendet, dass von einer ``Zend\Http\Client`` Anfrage zurückgegeben wurde.
 
-In den meisten Fällen wird ein ``Zend_Http_Response`` Objekt über die fromString() Methode instanziert, die einen
-String liest, der eine *HTTP* Rückantwort enthält und ein ``Zend_Http_Response`` Objekt zurückgibt.
+In den meisten Fällen wird ein ``Zend\Http\Response`` Objekt über die fromString() Methode instanziert, die einen
+String liest, der eine *HTTP* Rückantwort enthält und ein ``Zend\Http\Response`` Objekt zurückgibt.
 
 
 
       .. _zend.http.response.introduction.example-1:
 
-      .. rubric:: Ein Zend_Http_Response Object über die factory Methode instanzieren
+      .. rubric:: Ein Zend\Http\Response Object über die factory Methode instanzieren
 
       .. code-block:: php
          :linenos:
@@ -36,7 +36,7 @@ String liest, der eine *HTTP* Rückantwort enthält und ein ``Zend_Http_Response
          while ($buff = fread($sock, 1024))
              $str .= $sock;
 
-         $response = Zend_Http_Response::fromString($str);
+         $response = Zend\Http\Response::fromString($str);
 
 
 
@@ -61,7 +61,7 @@ für die Antwort angibt:
 Boolesche Testmethoden
 ----------------------
 
-Sobald ein ``Zend_Http_Response`` Objekt instantiert ist, stellt es mehrere Methoden bereit, die zum Testen des
+Sobald ein ``Zend\Http\Response`` Objekt instantiert ist, stellt es mehrere Methoden bereit, die zum Testen des
 Typs der Antwort verwendet werden können. Diese geben alle ein boolesches ``TRUE`` oder ``FALSE`` zurück:
 
 
@@ -136,7 +136,7 @@ Der Hauptzweck eines Response Okjektes ist der einfache Zugriff auf diverse Antw
 
       .. _zend.http.response.acessors.example-1:
 
-      .. rubric:: Zend_Http_Response Zugriffsmethoden verwenden
+      .. rubric:: Zend\Http\Response Zugriffsmethoden verwenden
 
       .. code-block:: php
          :linenos:
@@ -187,29 +187,29 @@ Der Hauptzweck eines Response Okjektes ist der einfache Zugriff auf diverse Antw
 Statische HTTP Antwortanalysierer
 ---------------------------------
 
-Die ``Zend_Http_Response`` Klasse beinhaltet auch verschiedene, intern verwendete Methoden für die Verarbeitung
+Die ``Zend\Http\Response`` Klasse beinhaltet auch verschiedene, intern verwendete Methoden für die Verarbeitung
 und Analyse der *HTTP* Rückantworten bereit. Diese Methoden sind alle als statische Methoden eingerichtet, so dass
 man sie extern verwenden kann, ohne dass man ein Response Objekt instanzierebn muss und nur einen bestimmten Teil
 der Antwort extrahieren möchte.
 
 
 
-   - ``Zend_Http_Response::extractCode($response_str)``: Extrahiere den *HTTP* Antwortcode (z.B. 200 oder 404) von
+   - ``Zend\Http\Response::extractCode($response_str)``: Extrahiere den *HTTP* Antwortcode (z.B. 200 oder 404) von
      ``$response_str`` und gebe ihn zurück.
 
-   - ``Zend_Http_Response::extractMessage($response_str)``: Extrahiere die *HTTP* Rückantwort (z.B. "OK" oder
+   - ``Zend\Http\Response::extractMessage($response_str)``: Extrahiere die *HTTP* Rückantwort (z.B. "OK" oder
      "File Not Found") von ``$response_str`` und gebe sie zurück.
 
-   - ``Zend_Http_Response::extractVersion($response_str)``: Extrahiere die *HTTP* Version (z.B. 1.1 oder 1.0) von
+   - ``Zend\Http\Response::extractVersion($response_str)``: Extrahiere die *HTTP* Version (z.B. 1.1 oder 1.0) von
      ``$response_str`` und gebe sie zurück.
 
-   - ``Zend_Http_Response::extractHeaders($response_str)``: Extrahiere die *HTTP* Antwort Header von
+   - ``Zend\Http\Response::extractHeaders($response_str)``: Extrahiere die *HTTP* Antwort Header von
      ``$response_str`` und gebe sie in einem Array zurück.
 
-   - ``Zend_Http_Response::extractBody($response_str)``: Extrahiere den *HTTP* Antworthauptteil aus
+   - ``Zend\Http\Response::extractBody($response_str)``: Extrahiere den *HTTP* Antworthauptteil aus
      ``$response_str`` und gebe ihn zurück.
 
-   - ``Zend_Http_Response::responseCodeAsText($code, $http11)``: Erhalte die Standard *HTTP* Rückantwort für
+   - ``Zend\Http\Response::responseCodeAsText($code, $http11)``: Erhalte die Standard *HTTP* Rückantwort für
      einen Antwortcode $code. Zum Beispiel wird "Internal Server Error" zurückgegeben, wenn ``$code`` gleich 500
      ist. Wenn ``$http11`` gleich ``TRUE`` ist (Standard), werden die *HTTP*/1.1 Standardantworten zurück gegeben,
      andernfalls die *HTTP*/1.0 Antworten. Wird ``$code`` nicht angegeben, wird diese Methode alle bekannten *HTTP*
@@ -222,12 +222,12 @@ Transferkodierungen:
 
 
 
-   - ``Zend_Http_Response::decodeChunkedBody($body)``: Dekodiere einen kompletten "Content-Transfer-Encoding:
+   - ``Zend\Http\Response::decodeChunkedBody($body)``: Dekodiere einen kompletten "Content-Transfer-Encoding:
      Chunked" Hauptteil
 
-   - ``Zend_Http_Response::decodeGzip($body)``: Dekodiere einen "Content-Encoding: gzip" Hauptteil
+   - ``Zend\Http\Response::decodeGzip($body)``: Dekodiere einen "Content-Encoding: gzip" Hauptteil
 
-   - ``Zend_Http_Response::decodeDeflate($body)``: Dekodiere einen "Content-Encoding: deflate" Hauptteil
+   - ``Zend\Http\Response::decodeDeflate($body)``: Dekodiere einen "Content-Encoding: deflate" Hauptteil
 
 
 

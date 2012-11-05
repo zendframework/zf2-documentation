@@ -112,11 +112,11 @@ carpeta "ZendX/". Todas las clases de Zend Framework están almacenadas jerárqu
 
 Los nombres de clases pueden contener sólo caracteres alfanuméricos. Los números están permitidos en los
 nombres de clase, pero desaconsejados en la mayoría de casos. Las barras bajas (\_) están permitidas solo como
-separador de ruta (el archivo "``Zend/Db/Table.php``" debe apuntar al nombre de clase "``Zend_Db_Table``").
+separador de ruta (el archivo "``Zend/Db/Table.php``" debe apuntar al nombre de clase "``Zend\Db\Table``").
 
 Si el nombre de una clase esta compuesto por mas de una palabra, la primera letra de cada palabra debe aparecer en
-mayúsculas. Poner en mayúsculas las letras siguientes no está permitido, ej: "Zend_PDF" no está permitido,
-mientras que "``Zend_Pdf``" es admisible.
+mayúsculas. Poner en mayúsculas las letras siguientes no está permitido, ej: "ZendPDF" no está permitido,
+mientras que "``ZendPdf``" es admisible.
 
 Estas convenciones definen un mecanismo de pseudo-espacio de nombres para Zend Framework. Zend Framework adoptará
 la funcionalidad *PHP* de espacio de nombres cuando esté disponible y sea factible su uso en las aplicaciones de
@@ -139,8 +139,8 @@ Clases Abstractas
 En general, las clases abstractas siguen las mismas convenciones que las :ref:`clases
 <coding-standard.naming-conventions.classes>`, con una regla adicional: Los nombres de las clases abstractas deben
 acabar con el término, "Abstract", y ese término no debe ser precedida por un guión bajo. Ejemplo,
-``Zend_Controller_Plugin_Abstract`` es considerado un nombre no válido, pero ``Zend_Controller_PluginAbstract`` o
-``Zend_Controller_Plugin_PluginAbstract`` serian nombres válidos.
+``Zend\Controller_Plugin\Abstract`` es considerado un nombre no válido, pero ``Zend\Controller\PluginAbstract`` o
+``Zend\Controller_Plugin\PluginAbstract`` serian nombres válidos.
 
 .. note::
 
@@ -155,8 +155,8 @@ Interfaces
 En general, las clases abstractas siguen las mismas convenciones que las :ref:`classes
 <coding-standard.naming-conventions.classes>`, con una regla adicional: Los nombres de las interfaces opcionalmente
 pueden acabar con el término, "Interface",pero término no debe ser precedida por un guión bajo. Ejemplo,
-``Zend_Controller_Plugin_Interface`` es considerado un nombre no válido, pero ``Zend_Controller_PluginInterface``
-o ``Zend_Controller_Plugin_PluginInterface`` serian nombres válidos.
+``Zend\Controller_Plugin\Interface`` es considerado un nombre no válido, pero ``Zend\Controller\PluginInterface``
+o ``Zend\Controller_Plugin\PluginInterface`` serian nombres válidos.
 
 Si bien esta regla no es necesaria, se recomienda encarecidamente su uso, ya que proporciona una buena refrencia
 visual a los desarrolladores, como saber que archivos contienen interfaces en lugar de clases.
@@ -860,7 +860,7 @@ The ``@package`` annotation must be assigned, and should be equivalent to the co
 in the file; typically, this will only have two segments, the "Zend" prefix, and the component name.
 
 The ``@subpackage`` annotation is optional. If provided, it should be the subcomponent name, minus the class
-prefix. In the example above, the assumption is that the class in the file is either "``Zend_Magic_Wand``", or uses
+prefix. In the example above, the assumption is that the class in the file is either "``Zend\Magic\Wand``", or uses
 that classname as part of its prefix.
 
 .. _coding-standards.inline-documentation.classes:
@@ -896,7 +896,7 @@ The ``@package`` annotation must be assigned, and should be equivalent to the co
 typically, this will only have two segments, the "Zend" prefix, and the component name.
 
 The ``@subpackage`` annotation is optional. If provided, it should be the subcomponent name, minus the class
-prefix. In the example above, the assumption is that the class described is either "``Zend_Magic_Wand``", or uses
+prefix. In the example above, the assumption is that the class described is either "``Zend\Magic\Wand``", or uses
 that classname as part of its prefix.
 
 .. _coding-standards.inline-documentation.functions:

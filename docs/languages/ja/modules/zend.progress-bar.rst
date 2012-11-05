@@ -28,7 +28,7 @@ Zend_Progressbar の基本的な使用法
 .. code-block:: php
    :linenos:
 
-   $progressBar = new Zend_ProgressBar($adapter, 0, $fileSize);
+   $progressBar = new Zend\ProgressBar\ProgressBar($adapter, 0, $fileSize);
 
    while (!feof($fp)) {
        // なにかの処理

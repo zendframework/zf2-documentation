@@ -13,9 +13,9 @@ zeigt wie eine Verkettung von zwei Filtern für das übermitteln eines Benutzern
    :linenos:
 
    // Eine Filterkette erstellen und die Filter der Kette hinzufügen
-   $filterChain = new Zend_Filter();
-   $filterChain->addFilter(new Zend_Filter_Alpha())
-               ->addFilter(new Zend_Filter_StringToLower());
+   $filterChain = new Zend\Filter\Filter();
+   $filterChain->addFilter(new Zend\Filter\Alpha())
+               ->addFilter(new Zend\Filter\StringToLower());
 
    // Den Benutzernamen filtern
    $username = $filterChain->filter($_POST['username']);
@@ -24,7 +24,7 @@ Filter werden in der Reihenfolge ausgeführt in der Sie ``Zend_Filter`` hinzugef
 wird dem Benutzernamen zuerst jedes nicht-alphabetische Zeichen entfernt und anschließend jeder Großbuchstabe in
 einen Kleinbuchstaben umgewandelt.
 
-Jedes Objekt das ``Zend_Filter_Interface`` implementiert kann in einer Filterkette verwendet werden.
+Jedes Objekt das ``Zend\Filter\Interface`` implementiert kann in einer Filterkette verwendet werden.
 
 .. _zend.filter.filter_chains.order:
 
@@ -39,13 +39,13 @@ Benutzernamens:
    :linenos:
 
    // Eine Filterkette erstellen und die Filter der Kette hinzufügen
-   $filterChain = new Zend_Filter();
+   $filterChain = new Zend\Filter\Filter();
 
    // Dieser Filter wird der Filterkette angehängt
-   $filterChain->appendFilter(new Zend_Filter_StringToLower());
+   $filterChain->appendFilter(new Zend\Filter\StringToLower());
 
    // Dieser Filter wird am Beginn der Kette vorangestellt
-   $filterChain->prependFilter(new Zend_Filter_Alpha());
+   $filterChain->prependFilter(new Zend\Filter\Alpha());
 
    // Nach dem Benutzernamen filtern
    $username = $filterChain->filter($_POST['username']);

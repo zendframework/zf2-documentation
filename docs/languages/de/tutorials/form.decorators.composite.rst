@@ -22,7 +22,7 @@ für das Geburtsdatum" gezeigt hat:
            'size' => 4, 'maxlength' => 4)) ?>
    </div>
 
-Wie könnte man dieses Element als ``Zend_Form_Element`` Element darstellen? Wie kann man einen Decoratpr schreiben
+Wie könnte man dieses Element als ``Zend\Form\Element`` Element darstellen? Wie kann man einen Decoratpr schreiben
 um es darzustellen?
 
 .. _learning.form.decorators.composite.element:
@@ -63,7 +63,7 @@ So würde die Klasse aussehen:
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend_Form_Element_Xhtml
+   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
    {
        protected $_dateFormat = '%year%-%month%-%day%';
        protected $_day;
@@ -163,7 +163,7 @@ gesammelt.
 .. code-block:: php
    :linenos:
 
-   class My_Form_Decorator_Date extends Zend_Form_Decorator_Abstract
+   class My_Form_Decorator_Date extends Zend\Form_Decorator\Abstract
    {
        public function render($content)
        {
@@ -174,7 +174,7 @@ gesammelt.
            }
 
            $view = $element->getView();
-           if (!$view instanceof Zend_View_Interface) {
+           if (!$view instanceof Zend\View\Interface) {
                // verwenden von View Helfers, deshalb ist nichts zu tun
                // wenn keine View vorhanden ist
                return $content;
@@ -215,7 +215,7 @@ Pfad des Decorators informieren. Wir können das im Constructor tun:
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend_Form_Element_Xhtml
+   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
    {
        // ...
 
@@ -244,7 +244,7 @@ verwenden:
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend_Form_Element_Xhtml
+   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
    {
        // ...
 
@@ -280,7 +280,7 @@ Wie sieht die endgültige Ausgabe aus=? Nehmen wir das folgende Element an:
 
    $d = new My_Form_Element_Date('dateOfBirth');
    $d->setLabel('Geburtsdatum: ')
-     ->setView(new Zend_View());
+     ->setView(new Zend\View\View());
 
    // Das sind Äquivalente:
    $d->setValue('20 April 2009');

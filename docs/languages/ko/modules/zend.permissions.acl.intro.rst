@@ -29,11 +29,11 @@ Zend_Acl는 가볍고 유연한 접근 제어 리스트(ACL : Access Control Lis
 -----------------
 
 Zend_Acl에서 자원을 작성하는 것은 간단합니다. Zend_Acl은 개발자가 자원을 작성하기
-쉽도록 *Zend_Acl_Resource_Interface*\ 를 제공합니다. 자원 클래스는 단지 이 인터페이스를
+쉽도록 *Zend\Acl_Resource\Interface*\ 를 제공합니다. 자원 클래스는 단지 이 인터페이스를
 구현하는 것만으로 작성할 수 있습니다. 이 인터페이스에는 *getResourceId()*\ 라는 단
 하나의 메소드만 포함되어 있습니다. 이 메소드에 의해, Zend_Acl는 그 객체가 자원인지
 아닌지 여부를 판단합니다. 게다가, Zend_Acl는 개발자가 필요한 부분을 확장하여 자원을
-작성하기 위한 기본 자원 도구로써 *Zend_Acl_Resource*\ 를 포함하고 있습니다.
+작성하기 위한 기본 자원 도구로써 *Zend\Acl\Resource*\ 를 포함하고 있습니다.
 
 Zend_Acl 은 복수의 자원(혹은 "접근이 제어되고 있는 영역들")을 추가할 수 있는 트리
 구조를 제공하고 있습니다. 자원은 이와 같이 트리 구조로 저장되기 때문에,
@@ -52,11 +52,11 @@ Zend_Acl 은 복수의 자원(혹은 "접근이 제어되고 있는 영역들")�
 ------------
 
 자원과 같이, 롤을 작성하는 것도 간단합니다. Zend_Acl는 개발자가 롤을 작성하기 쉽게
-*Zend_Acl_Role_Interface*\ 를 제공합니다. 롤 클래스는 단지 이 인터페이스를 구현하는
+*Zend\Acl_Role\Interface*\ 를 제공합니다. 롤 클래스는 단지 이 인터페이스를 구현하는
 것만으로 작성할 수 있습니다. 이 인터페이스에는 *getRoleId()*\ 라는 단 하나의 메소드만
 포함되어 있습니다. 이 메소드에 의해, Zend_Acl는 그 객체가 롤인지 아닌지 여부를
 판단합니다. 게다가, Zend_Acl는 개발자가 필요한 부분을 확장하여 롤을 작성하기 위한
-기본 롤 도구로써 *Zend_Acl_Role*\ 를 포함하고 있습니다.
+기본 롤 도구로써 *Zend\Acl\Role*\ 를 포함하고 있습니다.
 
 Zend_Acl 에서 롤은 하나 혹은 그 이상의 롤들로부터 상속받을 수 있습니다. 이것은
 각각의 롤들이 가지고 있는 규칙들을 상속받기 위한 것입니다. 예를 들어, "sally"와
@@ -83,18 +83,18 @@ Zend_Acl 에서 롤은 하나 혹은 그 이상의 롤들로부터 상속받을 
    :linenos:
    <?php
    require_once 'Zend/Acl.php';
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
    require_once 'Zend/Acl/Role.php';
-   $acl->addRole(new Zend_Acl_Role('guest'))
-       ->addRole(new Zend_Acl_Role('member'))
-       ->addRole(new Zend_Acl_Role('admin'));
+   $acl->addRole(new Zend\Acl\Role('guest'))
+       ->addRole(new Zend\Acl\Role('member'))
+       ->addRole(new Zend\Acl\Role('admin'));
 
    $parents = array('guest', 'member', 'admin');
-   $acl->addRole(new Zend_Acl_Role('someUser'), $parents);
+   $acl->addRole(new Zend\Acl\Role('someUser'), $parents);
 
    require_once 'Zend/Acl/Resource.php';
-   $acl->add(new Zend_Acl_Resource('someResource'));
+   $acl->add(new Zend\Acl\Resource('someResource'));
 
    $acl->deny('guest', 'someResource');
    $acl->allow('member', 'someResource');
@@ -137,7 +137,7 @@ ACL를 생각합니다. 이것은, 다양한 영역에서 복수 계층의 그�
    <?php
    require_once 'Zend/Acl.php';
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
 .. note::
 
@@ -175,7 +175,7 @@ ACL를 생각합니다. 이것은, 다양한 영역에서 복수 계층의 그�
    |Administrator|(Granted all access)    |N/A                     |
    +-------------+------------------------+------------------------+
 
-이 예에서는, *Zend_Acl_Role*\ 을 이용하고 있지만, *Zend_Acl_Role_Interface*\ 를 구현하고 있는
+이 예에서는, *Zend\Acl\Role*\ 을 이용하고 있지만, *Zend\Acl_Role\Interface*\ 를 구현하고 있는
 객체라면 뭐든지 사용 가능합니다. 이러한 그룹들은 다음과 같이 롤 레지스트리에
 추가합니다.:
 
@@ -184,27 +184,27 @@ ACL를 생각합니다. 이것은, 다양한 영역에서 복수 계층의 그�
    <?php
    require_once 'Zend/Acl.php';
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
-   // Zend_Acl_Role를 사용하여 그룹을 롤 레지스트리에 추가합니다
+   // Zend\Acl\Role를 사용하여 그룹을 롤 레지스트리에 추가합니다
    require_once 'Zend/Acl/Role.php';
 
    // guest는 접근 제어를 상속받지 않습니다
-   $roleGuest = new Zend_Acl_Role('guest');
+   $roleGuest = new Zend\Acl\Role('guest');
    $acl->addRole($roleGuest);
 
    // Staff는 guest부터 상속받습니다
-   $acl->addRole(new Zend_Acl_Role('staff'), $roleGuest);
+   $acl->addRole(new Zend\Acl\Role('staff'), $roleGuest);
 
    /* 또는, 위의 내용은 다음과 같이 쓸 수도 있습니다:
-   $acl->addRole(new Zend_Acl_Role('staff'), 'guest');
+   $acl->addRole(new Zend\Acl\Role('staff'), 'guest');
    //*/
 
    // Editor는 staff로부터 상속받습니다
-   $acl->addRole(new Zend_Acl_Role('editor'), 'staff');
+   $acl->addRole(new Zend\Acl\Role('editor'), 'staff');
 
    // Administrator는 접근 제어를 상속받지 않습니다
-   $acl->addRole(new Zend_Acl_Role('administrator'));
+   $acl->addRole(new Zend\Acl\Role('administrator'));
 
 .. _zend.acl.introduction.defining:
 
@@ -226,15 +226,15 @@ Zend_Acl를 사용하면, 상위에서 하위까지 규칙을 적용하는 것�
    <?php
    require_once 'Zend/Acl.php';
 
-   $acl = new Zend_Acl();
+   $acl = new Zend\Acl\Acl();
 
    require_once 'Zend/Acl/Role.php';
 
-   $roleGuest = new Zend_Acl_Role('guest');
+   $roleGuest = new Zend\Acl\Role('guest');
    $acl->addRole($roleGuest);
-   $acl->addRole(new Zend_Acl_Role('staff'), $roleGuest);
-   $acl->addRole(new Zend_Acl_Role('editor'), 'staff');
-   $acl->addRole(new Zend_Acl_Role('administrator'));
+   $acl->addRole(new Zend\Acl\Role('staff'), $roleGuest);
+   $acl->addRole(new Zend\Acl\Role('editor'), 'staff');
+   $acl->addRole(new Zend\Acl\Role('administrator'));
 
    // Guest는, 콘텐츠를 보는 것만 가능합니다
    $acl->allow($roleGuest, null, 'view');

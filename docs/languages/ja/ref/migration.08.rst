@@ -18,30 +18,30 @@ Zend_Controller
 .. code-block:: php
    :linenos:
 
-   Zend_Controller_Front::run('/path/to/controllers');
+   Zend\Controller\Front::run('/path/to/controllers');
 
 しかし、ディレクトリ構造を見直し、いくつかのコンポーネントが削除されました。
 また、名前が変更されたり新たに追加されたものもあります。以下にそれらをまとめます。
 
-- ``Zend_Controller_Router`` は削除されました。 かわりに rewrite
+- ``Zend\Controller\Router`` は削除されました。 かわりに rewrite
   ルータを使用してください。
 
-- ``Zend_Controller_RewriteRouter`` は ``Zend_Controller_Router_Rewrite`` という名前に変わり、
-  このフレームワークの標準ルータに格上げされました。 ``Zend_Controller_Front`` は、
+- ``Zend\Controller\RewriteRouter`` は ``Zend\Controller_Router\Rewrite`` という名前に変わり、
+  このフレームワークの標準ルータに格上げされました。 ``Zend\Controller\Front`` は、
   特に別のルータを指定しない限りこのルータをデフォルトで使用します。
 
 - rewrite ルータで使用する、新しいルートクラスが追加されました。名前は
-  ``Zend_Controller_Router_Route_Module`` です。 これは *MVC*
+  ``Zend\Controller\Router\Route\Module`` です。 これは *MVC*
   で使用するデフォルトのルートのほかに、 :ref:`コントローラモジュール
   <zend.controller.modular>` をサポートしています。
 
-- ``Zend_Controller_Router_StaticRoute`` は ``Zend_Controller_Router_Route_Static``
+- ``Zend\Controller_Router\StaticRoute`` は ``Zend\Controller\Router\Route\Static``
   という名前に変わりました。
 
-- ``Zend_Controller_Dispatcher`` は ``Zend_Controller_Dispatcher_Standard``
+- ``Zend\Controller\Dispatcher`` は ``Zend\Controller_Dispatcher\Standard``
   という名前に変わりました。
 
-- ``Zend_Controller_Action::_forward()`` の引数が変わりました。
+- ``Zend\Controller\Action::_forward()`` の引数が変わりました。
   新しいシグネチャは次のとおりです。
 
   .. code-block:: php

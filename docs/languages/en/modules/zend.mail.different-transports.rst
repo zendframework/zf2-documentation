@@ -14,10 +14,10 @@ default transport for the actual ``send()`` request.
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Message();
    // build message...
-   $tr1 = new Zend_Mail_Transport_Smtp('server@example.com');
-   $tr2 = new Zend_Mail_Transport_Smtp('other_server@example.com');
+   $tr1 = new Zend\Mail\Transport\Smtp('server@example.com');
+   $tr2 = new Zend\Mail\Transport\Smtp('other_server@example.com');
    $mail->send($tr1);
    $mail->send($tr2);
    $mail->send();  // use default again
@@ -26,6 +26,6 @@ default transport for the actual ``send()`` request.
 
    **Additional transports**
 
-   Additional transports can be written by implementing ``Zend_Mail_Transport_Interface``.
+   Additional transports can be written by implementing ``Zend\Mail\Transport\Interface``.
 
 

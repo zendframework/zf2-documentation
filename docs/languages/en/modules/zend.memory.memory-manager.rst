@@ -8,11 +8,11 @@ Memory Manager
 Creating a Memory Manager
 -------------------------
 
-You can create new a memory manager (``Zend_Memory_Manager`` object) using the ``Zend_Memory::factory($backendName
+You can create new a memory manager (``Zend\Memory\Manager`` object) using the ``Zend\Memory\Memory::factory($backendName
 [, $backendOprions])`` method.
 
 The first argument ``$backendName`` is a string that names one of the backend implementations supported by
-``Zend_Cache``.
+``Zend\Cache``.
 
 The second argument ``$backendOptions`` is an optional backend options array.
 
@@ -23,16 +23,16 @@ The second argument ``$backendOptions`` is an optional backend options array.
        'cache_dir' => './tmp/' // Directory where to put the swapped memory blocks
    );
 
-   $memoryManager = Zend_Memory::factory('File', $backendOptions);
+   $memoryManager = Zend\Memory\Memory::factory('File', $backendOptions);
 
-``Zend_Memory`` uses :ref:`Zend_Cache backends <zend.cache.backends>` as storage providers.
+``Zend\Memory`` uses :ref:`Zend\Cache backends <zend.cache.backends>` as storage providers.
 
-You may use the special name 'None' as a backend name, in addition to standard ``Zend_Cache`` backends.
+You may use the special name 'None' as a backend name, in addition to standard ``Zend\Cache`` backends.
 
 .. code-block:: php
    :linenos:
 
-   $memoryManager = Zend_Memory::factory('None');
+   $memoryManager = Zend\Memory\Memory::factory('None');
 
 If you use 'None' as the backend name, then the memory manager never swaps memory blocks. This is useful if you
 know that memory is not limited or the overall size of objects never reaches the memory limit.
@@ -52,7 +52,7 @@ manager behavior.
 Creating Movable Objects
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Create movable objects (objects, which may be swapped) using the ``Zend_Memory_Manager::create([$data])`` method:
+Create movable objects (objects, which may be swapped) using the ``Zend\Memory\Manager::create([$data])`` method:
 
 .. code-block:: php
    :linenos:
@@ -67,7 +67,7 @@ the value is an empty string.
 Creating Locked Objects
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Create locked objects (objects, which are not swapped) using the ``Zend_Memory_Manager::createLocked([$data])``
+Create locked objects (objects, which are not swapped) using the ``Zend\Memory\Manager::createLocked([$data])``
 method:
 
 .. code-block:: php

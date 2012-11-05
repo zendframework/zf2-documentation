@@ -15,7 +15,7 @@ unabhängig verwenden kann. Aber Zend Framework bietet auch eine fortgeschritten
 Implementation die verwendet werden kann um eine Basisstruktur für eigene Zend Framework Anwendungen zu sein. Eine
 komplette Liste der Komponenten des Zend Frameworks mit einer kurzen Beschreibung kann in der `Komponenten
 Übersicht`_ gefunden werden. Dieser Schnellstart zeigt einige der am meisten verwendeten Komponenten vom Zend
-Framework, inklusive ``Zend_Controller``, ``Zend_Layout``, ``Zend_Config``, ``Zend_Db``, ``Zend_Db_Table``,
+Framework, inklusive ``Zend_Controller``, ``Zend_Layout``, ``Zend_Config``, ``Zend_Db``, ``Zend\Db\Table``,
 ``Zend_Registry``, zusammen mit ein paar View Helfern.
 
 Durch Verwendung dieser Komponenten bauen wir eine einfache Datenbank-gesteuerte Guest Book Anwendung in wenigen

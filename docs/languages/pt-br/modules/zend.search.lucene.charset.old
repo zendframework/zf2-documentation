@@ -9,11 +9,11 @@ Conjunto de Caracteres
 Suporte aos conjuntos de caracteres UTF-8 e single-byte
 -------------------------------------------------------
 
-``Zend_Search_Lucene`` trabalha internamente com o conjunto de caracteres UTF-8. Arquivos de índice armazenam
-dados unicode no formato de codificação "UTF-8 modificado" usado pelo Java. O núcleo do ``Zend_Search_Lucene``
+``Zend\Search\Lucene`` trabalha internamente com o conjunto de caracteres UTF-8. Arquivos de índice armazenam
+dados unicode no formato de codificação "UTF-8 modificado" usado pelo Java. O núcleo do ``Zend\Search\Lucene``
 suporta esta codificação plenamente, com uma exceção. [#]_
 
-A codificação dos dados de entrada pode ser especificada através da *API* de ``Zend_Search_Lucene``. Os dados
+A codificação dos dados de entrada pode ser especificada através da *API* de ``Zend\Search\Lucene``. Os dados
 serão convertidos automaticamente na codificação UTF-8.
 
 .. _zend.search.lucene.charset.default_analyzer:
@@ -38,18 +38,18 @@ consulta. [#]_
 Analisadores de texto compatíveis com UTF-8
 -------------------------------------------
 
-``Zend_Search_Lucene`` também contém um conjunto de analisadores compatíveis com UTF-8:
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8``, ``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8Num``,
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive``,
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8Num_CaseInsensitive``.
+``Zend\Search\Lucene`` também contém um conjunto de analisadores compatíveis com UTF-8:
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8``, ``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8Num``,
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8\CaseInsensitive``,
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8Num\CaseInsensitive``.
 
 Qualquer um desses analisadores pode ser ativado como o código a seguir:
 
 .. code-block:: php
    :linenos:
 
-   Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-       new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+   Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+       new Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8());
 
 .. warning::
 
@@ -91,22 +91,22 @@ antes de pesquisar, convertendo-os em minúsculas:
 
    ...
 
-   Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-       new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+   Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+       new Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8());
 
    ...
 
-   $doc = new Zend_Search_Lucene_Document();
+   $doc = new Zend\Search_Lucene\Document();
 
-   $doc->addField(Zend_Search_Lucene_Field::UnStored('contents',
+   $doc->addField(Zend\Search_Lucene\Field::UnStored('contents',
                                                      strtolower($contents)));
 
    // Título de campo para pesquisa direta (indexado, não armazenado)
-   $doc->addField(Zend_Search_Lucene_Field::UnStored('title',
+   $doc->addField(Zend\Search_Lucene\Field::UnStored('title',
                                                      strtolower($title)));
 
    // Título de campo para recuperação (não indexado, armazenado)
-   $doc->addField(Zend_Search_Lucene_Field::UnIndexed('_title', $title));
+   $doc->addField(Zend\Search_Lucene\Field::UnIndexed('_title', $title));
 
 .. code-block:: php
    :linenos:
@@ -116,8 +116,8 @@ antes de pesquisar, convertendo-os em minúsculas:
 
    ...
 
-   Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-       new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+   Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+       new Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8());
 
    ...
 
@@ -127,7 +127,7 @@ antes de pesquisar, convertendo-os em minúsculas:
 
 .. _`mbstring`: http://www.php.net/manual/en/ref.mbstring.php
 
-.. [#] ``Zend_Search_Lucene`` suporta somente os caracteres do Plano Multilingual Básico (BMP) (de 0x0000 a
+.. [#] ``Zend\Search\Lucene`` suporta somente os caracteres do Plano Multilingual Básico (BMP) (de 0x0000 a
        0xFFFF), não suportando os caracteres suplementares (caracteres acima de 0xFFFF)
 
        O Java 2 representa estes caracteres como um par de valores do tipo char (16 bits), o primeiro vem da faixa

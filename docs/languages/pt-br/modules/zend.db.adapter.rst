@@ -1,11 +1,11 @@
 .. EN-Revision: none
 .. _zend.db.adapter:
 
-Zend_Db_Adapter
+Zend\Db\Adapter
 ===============
 
 ``Zend_Db`` e suas classes relacionadas provêem uma interface de banco de dados *SQL* simples para Zend Framework.
-``Zend_Db_Adapter`` é a classe básica que você usa para conectar sua aplicação *PHP*\ a um *SGBDR*. Há uma
+``Zend\Db\Adapter`` é a classe básica que você usa para conectar sua aplicação *PHP*\ a um *SGBDR*. Há uma
 classe adaptadora diferente para cada marca de *SGBDR*.
 
 Os adaptadores ``Zend_Db`` criam uma ponte entre extensões *PHP* específicas de cada fabricante para uma
@@ -68,7 +68,7 @@ leva um argumento, que é um matriz de parâmetros usado para declarar a conexã
 .. code-block:: php
    :linenos:
 
-   $db = new Zend_Db_Adapter_Pdo_Mysql(array(
+   $db = new Zend\Db\Adapter\Pdo\Mysql(array(
        'host'     => '127.0.0.1',
        'username' => 'webuser',
        'password' => 'xxxxxxxx',
@@ -81,11 +81,11 @@ Usando a Fábrica Zend_Db
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Como uma alternativa ao uso direto do construtor da classe adaptadora, você pode criar uma instância de uma
-adaptadora usando o método estático ``Zend_Db::factory()``. Este método carrega dinamicamente o arquivo da
-classe adaptadora sob demanda usando o método :ref:`Zend_Loader::loadClass() <zend.loader.load.class>`.
+adaptadora usando o método estático ``Zend\Db\Db::factory()``. Este método carrega dinamicamente o arquivo da
+classe adaptadora sob demanda usando o método :ref:`Zend\Loader\Loader::loadClass() <zend.loader.load.class>`.
 
 O primeiro argumento é um string que identifica o nome base da classe adaptadora. Por exemplo, a string
-'``Pdo_Mysql``' corresponde à classe ``Zend_Db_Adapter_Pdo_Mysql``. O segundo argumento é a mesma matriz de
+'``Pdo_Mysql``' corresponde à classe ``Zend\Db\Adapter\Pdo\Mysql``. O segundo argumento é a mesma matriz de
 parâmetros que você teria passado para o construtor da adaptadora.
 
 .. _zend.db.adapter.connecting.factory.example:
@@ -96,22 +96,22 @@ parâmetros que você teria passado para o construtor da adaptadora.
    :linenos:
 
    // Nós não precisamos seguir a declaração a seguir porque o
-   // arquivo Zend_Db_Adapter_Pdo_Mysql será carregado para nós pelo método Zend_Db
+   // arquivo Zend\Db\Adapter\Pdo\Mysql será carregado para nós pelo método Zend_Db
    // factory.
 
    // require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
 
-   // Carrega automaticamente a classe Zend_Db_Adapter_Pdo_Mysql
+   // Carrega automaticamente a classe Zend\Db\Adapter\Pdo\Mysql
    // e cria uma instância dela.
-   $db = Zend_Db::factory('Pdo_Mysql', array(
+   $db = Zend\Db\Db::factory('Pdo_Mysql', array(
        'host'     => '127.0.0.1',
        'username' => 'webuser',
        'password' => 'xxxxxxxx',
        'dbname'   => 'test'
    ));
 
-Se você criar sua própria classe que estende ``Zend_Db_Adapter_Abstract``, mas não nomear sua classe com o
-prefixo de pacote "``Zend_Db_Adapter``", você pode usar o método ``factory()`` para carregar sua adaptadora se
+Se você criar sua própria classe que estende ``Zend\Db_Adapter\Abstract``, mas não nomear sua classe com o
+prefixo de pacote "``Zend\Db\Adapter``", você pode usar o método ``factory()`` para carregar sua adaptadora se
 você especificar a parte principal da classe adaptadora com a chave 'adapterNamespace' na matriz de parâmetros.
 
 .. _zend.db.adapter.connecting.factory.example2:
@@ -126,7 +126,7 @@ você especificar a parte principal da classe adaptadora com a chave 'adapterNam
 
    // Carrega automaticamente a classe MyProject_Db_Adapter_Pdo_Mysql e cria
    // uma instância dela.
-   $db = Zend_Db::factory('Pdo_Mysql', array(
+   $db = Zend\Db\Db::factory('Pdo_Mysql', array(
        'host'             => '127.0.0.1',
        'username'         => 'webuser',
        'password'         => 'xxxxxxxx',
@@ -152,13 +152,13 @@ adaptadora. Isso é usado somente se o segundo argumento do método ``factory()`
 .. rubric:: Usando o Método de Fábrica da Adaptadora com um Objeto Zend_Config
 
 No exemplo abaixo, um objeto ``Zend_Config`` é criado a partir de um matriz. Você pode também carregar dados a
-partir de um arquivo externo usando classes tais como :ref:`Zend_Config_Ini <zend.config.adapters.ini>` e
-:ref:`Zend_Config_Xml <zend.config.adapters.xml>`.
+partir de um arquivo externo usando classes tais como :ref:`Zend\Config\Ini <zend.config.adapters.ini>` e
+:ref:`Zend\Config\Xml <zend.config.adapters.xml>`.
 
 .. code-block:: php
    :linenos:
 
-   $config = new Zend_Config(
+   $config = new Zend\Config\Config(
        array(
            'database' => array(
                'adapter' => 'Mysqli',
@@ -172,7 +172,7 @@ partir de um arquivo externo usando classes tais como :ref:`Zend_Config_Ini <zen
        )
    );
 
-   $db = Zend_Db::factory($config->database);
+   $db = Zend\Db\Db::factory($config->database);
 
 O segundo argumento do método ``factory()`` pode ser um matriz associativo contendo entradas correspondentes aos
 parâmetros da adaptadora. Esse argumento é opcional. Se o primeiro argumento é do tipo ``Zend_Config``, é
@@ -201,30 +201,30 @@ A seguinte lista explica parâmetros comuns reconhecidos pelas classes adaptador
 - **charset**: especifica o conjunto de caracteres usado para a conexão.
 
 - **options**: este parâmetro é um matriz associativo de opções que são genéricas para todas as classes
-  ``Zend_Db_Adapter``.
+  ``Zend\Db\Adapter``.
 
 - **driver_options**: este parâmetro é um matriz associativo de opções adicionais que são específicas para
   uma dada extensão de banco de dados. Um uso típico deste parâmetro é para configurar atributos de um driver
   *PDO*.
 
 - **adapterNamespace**: nomeia a parte inicial do nome da classe para a adaptadora, em vez de
-  '``Zend_Db_Adapter``'. Use isto se você precisar do método ``factory()`` para carregar uma classe adaptadora de
+  '``Zend\Db\Adapter``'. Use isto se você precisar do método ``factory()`` para carregar uma classe adaptadora de
   banco de dados não-Zend.
 
 .. _zend.db.adapter.connecting.parameters.example1:
 
 .. rubric:: Passando a Opção Case-Folding para a Fábrica
 
-Você pode especificar essa opção pela constante ``Zend_Db::CASE_FOLDING``. Ela corresponde ao atributo
+Você pode especificar essa opção pela constante ``Zend\Db\Db::CASE_FOLDING``. Ela corresponde ao atributo
 ``ATTR_CASE`` nos drivers de banco de dados *PDO* e *IBM* *DB2*, ajustando a caixa das chaves de string nos
-conjuntos de resultado de consulta. A opção leva os valores ``Zend_Db::CASE_NATURAL`` (padrão),
-``Zend_Db::CASE_UPPER``, e ``Zend_Db::CASE_LOWER``.
+conjuntos de resultado de consulta. A opção leva os valores ``Zend\Db\Db::CASE_NATURAL`` (padrão),
+``Zend\Db\Db::CASE_UPPER``, e ``Zend\Db\Db::CASE_LOWER``.
 
 .. code-block:: php
    :linenos:
 
    $options = array(
-       Zend_Db::CASE_FOLDING => Zend_Db::CASE_UPPER
+       Zend\Db\Db::CASE_FOLDING => Zend\Db\Db::CASE_UPPER
    );
 
    $params = array(
@@ -235,13 +235,13 @@ conjuntos de resultado de consulta. A opção leva os valores ``Zend_Db::CASE_NA
        'options'        => $options
    );
 
-   $db = Zend_Db::factory('Db2', $params);
+   $db = Zend\Db\Db::factory('Db2', $params);
 
 .. _zend.db.adapter.connecting.parameters.example2:
 
 .. rubric:: Passando a Opção Auto-Quoting para a Fábrica
 
-Você pode especificar essa opção pela constante ``Zend_Db::AUTO_QUOTE_IDENTIFIERS``. Se o valor é ``TRUE``
+Você pode especificar essa opção pela constante ``Zend\Db\Db::AUTO_QUOTE_IDENTIFIERS``. Se o valor é ``TRUE``
 (padrão), identificadores como nomes de tabela, nomes de coluna, e mesmo apelidos são delimitados em toda sintaxe
 *SQL* gerada pelo objeto adaptador. Isso torna simples usar identificadores que contêm palavras-chave *SQL*, ou
 caracteres especiais. Se o valor é ``FALSE``, identificadores não são delimitados automaticamente. Se você
@@ -251,7 +251,7 @@ precisa delimitar identificadores, você deve fazer por conta própria usando o 
    :linenos:
 
    $options = array(
-       Zend_Db::AUTO_QUOTE_IDENTIFIERS => false
+       Zend\Db\Db::AUTO_QUOTE_IDENTIFIERS => false
    );
 
    $params = array(
@@ -262,7 +262,7 @@ precisa delimitar identificadores, você deve fazer por conta própria usando o 
        'options'        => $options
    );
 
-   $db = Zend_Db::factory('Pdo_Mysql', $params);
+   $db = Zend\Db\Db::factory('Pdo_Mysql', $params);
 
 .. _zend.db.adapter.connecting.parameters.example3:
 
@@ -283,7 +283,7 @@ precisa delimitar identificadores, você deve fazer por conta própria usando o 
        'driver_options' => $pdoParams
    );
 
-   $db = Zend_Db::factory('Pdo_Mysql', $params);
+   $db = Zend\Db\Db::factory('Pdo_Mysql', $params);
 
    echo $db->getConnection()
            ->getAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY);
@@ -296,7 +296,7 @@ precisa delimitar identificadores, você deve fazer por conta própria usando o 
    :linenos:
 
    $options = array(
-       Zend_Db::ALLOW_SERIALIZATION => false
+       Zend\Db\Db::ALLOW_SERIALIZATION => false
    );
 
    $params = array(
@@ -307,7 +307,7 @@ precisa delimitar identificadores, você deve fazer por conta própria usando o 
        'options'        => $options
    );
 
-   $db = Zend_Db::factory('Pdo_Mysql', $params);
+   $db = Zend\Db\Db::factory('Pdo_Mysql', $params);
 
 .. _zend.db.adapter.connecting.getconnection:
 
@@ -332,11 +332,11 @@ você manipular as exceções em um lugar, em vez de fazê-lo na primeira consul
 
 Adicionalmente, uma adaptadora pode ser serializada para armazená-la, por exemplo, em uma variável de sessão.
 Isso pode ser muito útil não somente para a própria adaptadora, mas para outros objetos que a agreguem, como um
-objeto ``Zend_Db_Select``. Por padrão, adaptadoras têm permissão de serem serializadas, se você não quiser
-isso, deve considerar passar a opção ``Zend_Db::ALLOW_SERIALIZATION`` com ``FALSE``, veja o exemplo abaixo. Em
+objeto ``Zend\Db\Select``. Por padrão, adaptadoras têm permissão de serem serializadas, se você não quiser
+isso, deve considerar passar a opção ``Zend\Db\Db::ALLOW_SERIALIZATION`` com ``FALSE``, veja o exemplo abaixo. Em
 respeito ao princípio de conexões preguiçosas, a adaptadora não reconectará a si própria depois de ser
 revertida sua serialização. Você deve então chamar ``getConnection()`` por conta própria. Você pode fazer a
-adaptadora se autorreconectar pela passagem de ``Zend_Db::AUTO_RECONNECT_ON_UNSERIALIZE`` com ``TRUE`` como uma
+adaptadora se autorreconectar pela passagem de ``Zend\Db\Db::AUTO_RECONNECT_ON_UNSERIALIZE`` com ``TRUE`` como uma
 opção da adaptadora.
 
 .. _zend.db.adapter.connecting.getconnection.example:
@@ -347,9 +347,9 @@ opção da adaptadora.
    :linenos:
 
    try {
-       $db = Zend_Db::factory('Pdo_Mysql', $parameters);
+       $db = Zend\Db\Db::factory('Pdo_Mysql', $parameters);
        $db->getConnection();
-   } catch (Zend_Db_Adapter_Exception $e) {
+   } catch (Zend\Db_Adapter\Exception $e) {
        // talvez uma credencial de login falhou, ou talvez o SGBDR não está rodando
    } catch (Zend_Exception $e) {
        // talvez factory() falhou em carregar a classe adaptadora especificada
@@ -431,7 +431,7 @@ Você pode rodar uma consulta *SQL* *SELECT* e recuperar seus resultados em um p
 ``fetchAll()``.
 
 O primeiro argumento para este método é uma string contendo uma declaração *SELECT*. Como alternativa, o
-primeiro argumento pode ser um objeto da classe :ref:`Zend_Db_Select <zend.db.select>`. A classe adaptadora
+primeiro argumento pode ser um objeto da classe :ref:`Zend\Db\Select <zend.db.select>`. A classe adaptadora
 converte automaticamente esse objeto em uma representação de string da declaração *SELECT*.
 
 O segundo argumento para ``fetchAll()`` é um matriz de valores para substituir por curingas de parâmetro na
@@ -459,8 +459,8 @@ matriz associativo são as colunas ou apelidos de coluna dados na consulta de se
 Você pode especificar um estilo diferente de resultados de busca usando o método ``setFetchMode()``. Os modos
 suportados são identificados por constantes:
 
-- **Zend_Db::FETCH_ASSOC**: retorna dados em um matriz de matrizs associativos. As chaves de matriz são nomes de
-  coluna, como strings. Este é o modo padrão de busca para classes ``Zend_Db_Adapter``.
+- **Zend\Db\Db::FETCH_ASSOC**: retorna dados em um matriz de matrizs associativos. As chaves de matriz são nomes de
+  coluna, como strings. Este é o modo padrão de busca para classes ``Zend\Db\Adapter``.
 
   Note que se sua lista de seleção contém mais de uma coluna com o mesmo nome, por exemplo se elas são de duas
   tabelas diferentes em um *JOIN*, pode haver somente uma entrada na matriz associativa para o nome dado. Se você
@@ -469,20 +469,20 @@ suportados são identificados por constantes:
 
   Por padrão, essas strings são devolvidas como foram devolvidas pelo driver de banco de dados. Isso é
   tipicamente a leitura da coluna no servidor *SGBDR*. Você pode especificar a caixa para essas strings, usando a
-  opção ``Zend_Db::CASE_FOLDING``. Especifique isso quando instanciar a adaptadora. Veja :ref:`este exemplo
+  opção ``Zend\Db\Db::CASE_FOLDING``. Especifique isso quando instanciar a adaptadora. Veja :ref:`este exemplo
   <zend.db.adapter.connecting.parameters.example1>`.
 
-- **Zend_Db::FETCH_NUM**: retorna dados em um matriz de matrizs. Os matrizs são indexados por inteiros,
+- **Zend\Db\Db::FETCH_NUM**: retorna dados em um matriz de matrizs. Os matrizs são indexados por inteiros,
   correspondendo à posição do respectivo campo na lista de seleção da consulta.
 
-- **Zend_Db::FETCH_BOTH**: retorna dados em um matriz de matrizs. As chaves de matriz são tanto strings como as
+- **Zend\Db\Db::FETCH_BOTH**: retorna dados em um matriz de matrizs. As chaves de matriz são tanto strings como as
   usadas no modo ``FETCH_ASSOC``, como inteiros como os usados no modo ``FETCH_NUM``. Note que o número de
   elementos na matriz é o dobro do que seria se você usasse ``FETCH_ASSOC`` ou ``FETCH_NUM``.
 
-- **Zend_Db::FETCH_COLUMN**: retorna dados em um matriz de valores. O valor em cada matriz é o valor retornado
+- **Zend\Db\Db::FETCH_COLUMN**: retorna dados em um matriz de valores. O valor em cada matriz é o valor retornado
   pela coluna do conjunto de resultados. Por padrão, essa é a primeira coluna, indexada por 0.
 
-- **Zend_Db::FETCH_OBJ**: retorna dados em um matriz de objetos. A classe padrão é a classe interna *PHP*
+- **Zend\Db\Db::FETCH_OBJ**: retorna dados em um matriz de objetos. A classe padrão é a classe interna *PHP*
   stdClass. Colunas do conjunto de resultados estão disponíveis como propriedades públicas do objeto.
 
 .. _zend.db.adapter.select.fetch-mode.example:
@@ -492,7 +492,7 @@ suportados são identificados por constantes:
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchAll('SELECT * FROM bugs WHERE bug_id = ?', 2);
 
@@ -514,7 +514,7 @@ tenha configurado para o modo de busca, utilizando a primeira coluna como índic
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchAssoc(
        'SELECT bug_id, bug_description, bug_status FROM bugs'
@@ -541,7 +541,7 @@ veja :ref:`esta seção <zend.db.statement.fetching.fetchcolumn>`.
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchCol(
        'SELECT bug_description, bug_id FROM bugs WHERE bug_id = ?', 2);
@@ -569,7 +569,7 @@ valores duplicados na primeira coluna, entradas na matriz associativo serão sob
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchPairs('SELECT bug_id, bug_status FROM bugs');
 
@@ -590,7 +590,7 @@ partir do conjunto de resultados.
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchRow('SELECT * FROM bugs WHERE bug_id = 2');
 
@@ -661,7 +661,7 @@ tipos de problemas de segurança. Você não precisa aplicar escaping ou quoting
 Você pode precisar que valores na matriz de dados sejam tratados como expressões *SQL*, caso no qual elas não
 devam sofrer quoting. Por padrão, todos os valores de dados passados como strings são tratados como literais
 string. Para especificar que o valor é uma expressão *SQL* e portanto não deve sofrer quoting, passe o valor na
-matriz de dados como um objeto do tipo ``Zend_Db_Expr`` em vez de texto claro.
+matriz de dados como um objeto do tipo ``Zend\Db\Expr`` em vez de texto claro.
 
 .. _zend.db.adapter.write.insert.example2:
 
@@ -671,7 +671,7 @@ matriz de dados como um objeto do tipo ``Zend_Db_Expr`` em vez de texto claro.
    :linenos:
 
    $data = array(
-       'created_on'      => new Zend_Db_Expr('CURDATE()'),
+       'created_on'      => new Zend\Db\Expr('CURDATE()'),
        'bug_description' => 'Something wrong',
        'bug_status'      => 'NEW'
    );
@@ -971,11 +971,11 @@ tipo de dados *SQL* que você especificar.
    $sql = 'SELECT * FROM atable WHERE intColumn = '
         . $db->quote($value, 'INTEGER');
 
-Cada classe ``Zend_Db_Adapter`` tem codificada os nomes de tipos de dados *SQL* numéricos para a respectiva marca
-de *SGBDR*. Você também pode usar as constantes ``Zend_Db::INT_TYPE``, ``Zend_Db::BIGINT_TYPE``, e
-``Zend_Db::FLOAT_TYPE`` para escrever código de uma forma mais independente de *SGBDR*.
+Cada classe ``Zend\Db\Adapter`` tem codificada os nomes de tipos de dados *SQL* numéricos para a respectiva marca
+de *SGBDR*. Você também pode usar as constantes ``Zend\Db\Db::INT_TYPE``, ``Zend\Db\Db::BIGINT_TYPE``, e
+``Zend\Db\Db::FLOAT_TYPE`` para escrever código de uma forma mais independente de *SGBDR*.
 
-``Zend_Db_Table`` especifica *SQL* para ``quote()`` automaticamente ao gerar consultas *SQL* que referenciam
+``Zend\Db\Table`` especifica *SQL* para ``quote()`` automaticamente ao gerar consultas *SQL* que referenciam
 colunas-chave de uma tabela.
 
 .. _zend.db.adapter.quoting.quote-into:
@@ -1066,7 +1066,7 @@ ela é armazenada no seu esquema, incluindo a caixa das letras.
 
 Na maioria dos casos onde *SQL* é gerada dentro de classes ``Zend_Db``, o padrão é que todos os identificadores
 sejam delimitados automaticamente. Você pode alterar esse comportamento com a opção
-``Zend_Db::AUTO_QUOTE_IDENTIFIERS``. Especifique essa opção ao instanciar o adaptador. Veja :ref:`este exemplo
+``Zend\Db\Db::AUTO_QUOTE_IDENTIFIERS``. Especifique essa opção ao instanciar o adaptador. Veja :ref:`este exemplo
 <zend.db.adapter.connecting.parameters.example2>`.
 
 .. _zend.db.adapter.transactions:
@@ -1095,7 +1095,7 @@ efetivamente desfeitas, e o estado dos dados retorna a como estava antes de voc�
 entanto, a reversão de sua transação não tem efeito sobre as mudanças feitas por outras transações
 executadas simultaneamente.
 
-Depois de resolver essa operação, ``Zend_Db_Adapter`` retorna ao modo auto-commit, até que você chame
+Depois de resolver essa operação, ``Zend\Db\Adapter`` retorna ao modo auto-commit, até que você chame
 ``beginTransaction()`` novamente.
 
 .. _zend.db.adapter.transactions.example:
@@ -1237,7 +1237,7 @@ adaptadores *PDO*, mas não para os outros.
    .. code-block:: php
       :linenos:
 
-      $db = Zend_Db::factory('Oracle', array(
+      $db = Zend\Db\Db::factory('Oracle', array(
           'host'       => '127.0.0.1',
           'username'   => 'webuser',
           'password'   => 'xxxxxxxx',
@@ -1265,7 +1265,7 @@ Rodando Outras Declarações de Banco de Dados
 
 Pode haver casos em que você precisa acessar o objeto de conexão diretamente, como provido pela extensão de
 banco de dados *PHP*. Algumas dessas extensões podem oferecer recursos que não são cobertos por métodos de
-``Zend_Db_Adapter_Abstract``.
+``Zend\Db_Adapter\Abstract``.
 
 Por exemplo, todas as declarações *SQL* rodadas por ``Zend_Db`` são preparadas, então executadas. No entanto,
 algumas funções de banco de dados são incompatíveis com declarações preparadas. Instruções ``DDL`` como
@@ -1366,7 +1366,7 @@ Oracle
 
 - A extensão da Oracle não suporta parâmetros posicionais. Você deve usar parâmetros nomeados.
 
-- Atualmente, a opção ``Zend_Db::CASE_FOLDING`` não é suportada pelo adaptador Oracle. Para utilizar essa
+- Atualmente, a opção ``Zend\Db\Db::CASE_FOLDING`` não é suportada pelo adaptador Oracle. Para utilizar essa
   opção com a Oracle, você deve usar o adaptador *PDO* *OCI*.
 
 - Por padrão, os campos *LOB* são devolvidos como objetos *OCI*-Lob. Você pode recuperá-los como string para
@@ -1388,7 +1388,7 @@ Microsoft SQL Server
   retorna o último valor gerado para uma chave de autoincremento se um nome de tabela for especificado ou o
   último id retornado por uma consulta de inserção. O método ``lastSequenceId()`` retorna ``NULL``.
 
-- ``Zend_Db_Adapter_Sqlsrv`` configura ``QUOTED_IDENTIFIER`` ON imediatamente após conectar-se a um servidor
+- ``Zend\Db_Adapter\Sqlsrv`` configura ``QUOTED_IDENTIFIER`` ON imediatamente após conectar-se a um servidor
   *SQL*. Isso faz com que o driver utilize o o símbolo delimitador de identificador da *SQL* padrão (**"**) em
   vez dos colchetes que a sintaxe do *SQL* Server usa para delimitar identificadores.
 
@@ -1430,7 +1430,7 @@ PDO Microsoft SQL Server
   você pode ter que realizar uma conversão no código de sua aplicação ou armazenar os dados em uma coluna
   binária. Por favor, consulte a `Base de Conhecimento da Microsoft`_ para mais informações.
 
-- ``Zend_Db_Adapter_Pdo_Mssql`` configura ``QUOTED_IDENTIFIER`` ON imediatamente depois de conectar-se a um banco
+- ``Zend\Db\Adapter\Pdo\Mssql`` configura ``QUOTED_IDENTIFIER`` ON imediatamente depois de conectar-se a um banco
   de dados *SQL* Server. Isso faz com que o driver utilize o símbolo delimitador de identificador da *SQL* padrão
   ( ") em vez dos colchetes que a sintaxe *SQL* Server utiliza para delimitar identificadores.
 
@@ -1511,7 +1511,7 @@ Firebird (Interbase)
 - Firebird (Interbase) não suporta chaves de autoincremento, portanto, você deve especificar o nome de uma
   sequência para ``lastInsertId()`` ou ``lastSequenceId()``.
 
-- Atualmente, a opção ``Zend_Db::CASE_FOLDING`` não é suportada pelo adaptador Firebird (Interbase).
+- Atualmente, a opção ``Zend\Db\Db::CASE_FOLDING`` não é suportada pelo adaptador Firebird (Interbase).
   Identificadores não citadas são automaticamente devolvidos em maiúsculas.
 
 - O nome do adaptador é ``ZendX_Db_Adapter_Firebird``.

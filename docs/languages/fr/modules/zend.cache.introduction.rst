@@ -11,15 +11,15 @@ grâce à des adaptateurs de backend (**File**, **Sqlite**, **Memcache**...) gr�
 de balises. En les utilisant, il est simple de supprimer des types spécifiques d'enregistrements par la suite (par
 exemple: "supprime tous les enregistrements de cache marqués avec une balise donnée").
 
-Le coeur du module (``Zend_Cache_Core``) est générique, souple et configurable. Pour le moment, pour vos besoins
-spécifiques, il y a des frontends qui étendent ``Zend_Cache_Core`` simplement : **Output**, **File**,
+Le coeur du module (``Zend\Cache\Core``) est générique, souple et configurable. Pour le moment, pour vos besoins
+spécifiques, il y a des frontends qui étendent ``Zend\Cache\Core`` simplement : **Output**, **File**,
 **Function** et **Class**.
 
 .. _zend.cache.introduction.example-1:
 
-.. rubric:: Créer un frontend avec Zend_Cache::factory()
+.. rubric:: Créer un frontend avec Zend\Cache\Cache::factory()
 
-``Zend_Cache::factory()`` instancie les objets corrects et les lie ensemble. Dans le premier exemple, nous allons
+``Zend\Cache\Cache::factory()`` instancie les objets corrects et les lie ensemble. Dans le premier exemple, nous allons
 utiliser le frontend **Core** avec le backend **File**.
 
 .. code-block:: php
@@ -35,8 +35,8 @@ utiliser le frontend **Core** avec le backend **File**.
        'cache_dir' => './tmp/'
    );
 
-   // créer un objet Zend_Cache_Core
-   $cache = Zend_Cache::factory('Core',
+   // créer un objet Zend\Cache\Core
+   $cache = Zend\Cache\Cache::factory('Core',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);
@@ -67,7 +67,7 @@ enregistrements récupérés depuis le cache sont désérialisés.
    if(!$result = $cache->load('myresult')) {
 
        // le cache est manquant, connexion à la base de données
-       $db = Zend_Db::factory( [...] );
+       $db = Zend\Db\Db::factory( [...] );
 
        $result = $db->fetchAll('SELECT * FROM grosse_table');
 
@@ -106,7 +106,7 @@ récupération de son cache (si le cache est encore valide).
 
    $backendOptions = array('cache_dir' => './tmp/');
 
-   $cache = Zend_Cache::factory('Output',
+   $cache = Zend\Cache\Cache::factory('Output',
                                 'File',
                                 $frontendOptions,
                                 $backendOptions);

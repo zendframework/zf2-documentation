@@ -16,9 +16,9 @@ Il codice seguente dimostra come gestire un'eccezione lanciata all'interno di un
    :linenos:
 
    try {
-       // La chiamata a Zend_Loader::loadClass() con una classe non esistente
+       // La chiamata a Zend\Loader\Loader::loadClass() con una classe non esistente
        // causa il lancio di un'eccezione in Zend_Loader
-       Zend_Loader::loadClass('classenonesistente');
+       Zend\Loader\Loader::loadClass('classenonesistente');
    } catch (Zend_Exception $e) {
        echo "Catturata eccezione: " . get_class($e) . "\n";
        echo "Messaggio: " . $e->getMessage() . "\n";

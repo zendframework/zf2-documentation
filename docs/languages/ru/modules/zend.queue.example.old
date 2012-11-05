@@ -13,13 +13,13 @@ retrieval, message deletion, and sending messages. Приведённый ниж
    :linenos:
 
    // Конфигурационные параметры
-   // @see Zend_Queue_Adapater::__construct()
+   // @see Zend\Queue\Adapater::__construct()
    $options = array(
        'name' => 'queue1',
    );
 
    // Создание очереди на основе массива
-   $queue = new Zend_Queue('Array', $options);
+   $queue = new Zend\Queue\Queue('Array', $options);
 
    // Получение списка очередей
    foreach ($queue->getQueues() as $name) {

@@ -8,15 +8,15 @@ Introductie
 webapplicaties. Het levert een op geneste object eigenschap gebaseerde gebruikers interface om toegang te krijgen
 tot de configuratie data vanuit de webapplicatie. De configuratie data kan van verschillende media komen die
 ondersteuning hebben van hiërarchische data opslag. Momenteel levert *Zend_Config* hulpklassen voor
-configuratiedata die in tekstbestanden wordt opgeslagen via :ref:`Zend_Config_Ini <zend.config.adapters.ini>` en
-:ref:`Zend_Config_Xml <zend.config.adapters.xml>`.
+configuratiedata die in tekstbestanden wordt opgeslagen via :ref:`Zend\Config\Ini <zend.config.adapters.ini>` en
+:ref:`Zend\Config\Xml <zend.config.adapters.xml>`.
 
 .. _zend.config.introduction.example.using:
 
 .. rubric:: Zend_Config gebruiken zonder hulpklasse
 
-Normaal gesproken wordt er verondersteld dat gebruikers één van de hulpklassen als :ref:`Zend_Config_Ini
-<zend.config.adapters.ini>` of :ref:`Zend_Config_Xml <zend.config.adapters.xml>` zullen gebruiken, maar indien de
+Normaal gesproken wordt er verondersteld dat gebruikers één van de hulpklassen als :ref:`Zend\Config\Ini
+<zend.config.adapters.ini>` of :ref:`Zend\Config\Xml <zend.config.adapters.xml>` zullen gebruiken, maar indien de
 configuratiedata in een PHP array is opgeslaan, kan je de data direct aan *Zend_Config* doorgeven om een eenvoudig
 object geörienteerde interface te gebruiken:
 
@@ -40,19 +40,19 @@ object geörienteerde interface te gebruiken:
 
    // De object geörienteerde wrapper over de configuratiedata aanmaken
    require_once 'Zend/Config.php';
-   $config = new Zend_Config($configArray);
+   $config = new Zend\Config\Config($configArray);
 
    // Configuratiedata weergeven (resulteert in 'www.example.com')
    echo $config->webhost;
 
    // De configuratiedata gebruiken om een verbinding met de database
    // tot stand te brenegen
-   $db = Zend_Db::factory($config->database->adapter,
+   $db = Zend\Db\Db::factory($config->database->adapter,
                           $config->database->params->toArray());
 
    // Alternatief gebruik: geef simpelweg het Zend_Config object mee.
    // Zend_Db factory weet hoe het geinterpreteerd moet worden.
-   $db = Zend_Db::factory($config->database);
+   $db = Zend\Db\Db::factory($config->database);
 Zoals in het voorbeeld hierboven is geïllustreerd, verstrekt *Zend_Config* een geneste objecteigenschap syntax om
 de configuratiedata aan te spreken die aan zijn constructor werd doorgegeven.
 
@@ -95,7 +95,7 @@ hoe dat bereikt kan worden:
    <?php
    // Configuratie gebruiken
    require_once 'Zend/Config.php';
-   $config = new Zend_Config(require 'config.php');
+   $config = new Zend\Config\Config(require 'config.php');
 
    // Geeft een configuratie waarde weer (resulteert in 'www.example.com')
    echo $config->webhost;

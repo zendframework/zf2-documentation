@@ -5,12 +5,12 @@
 =========
 
 ``Zend_Feed`` を使用すると、フィードの取得が非常に簡単に行えます。 フィードの *URI*
-がわかれば、単に ``Zend_Feed::import()`` メソッドを使用すればよいのです。
+がわかれば、単に ``Zend\Feed\Feed::import()`` メソッドを使用すればよいのです。
 
 .. code-block:: php
    :linenos:
 
-   $feed = Zend_Feed::import('http://feeds.example.com/feedName');
+   $feed = Zend\Feed\Feed::import('http://feeds.example.com/feedName');
 
 ``Zend_Feed`` を使用して、ファイルや *PHP*
 文字列変数からフィードを読み込むこともできます。
@@ -19,18 +19,18 @@
    :linenos:
 
    // テキストファイルからフィードを読み込みます
-   $feedFromFile = Zend_Feed::importFile('feed.xml');
+   $feedFromFile = Zend\Feed\Feed::importFile('feed.xml');
 
    // PHP の文字列変数からフィードを読み込みます
-   $feedFromPHP = Zend_Feed::importString($feedString);
+   $feedFromPHP = Zend\Feed\Feed::importString($feedString);
 
-上のすべての例では、成功した場合に返されるのは ``Zend_Feed_Abstract``
+上のすべての例では、成功した場合に返されるのは ``Zend\Feed\Abstract``
 を実装したクラスのオブジェクトで、
 フィードの形式によって異なります。もし上のメソッドで *RSS*
-フィードを取得したのなら、 返されるオブジェクトは ``Zend_Feed_Rss`` です。一方、Atom
-フィードを読み込んだのなら ``Zend_Feed_Atom``
+フィードを取得したのなら、 返されるオブジェクトは ``Zend\Feed\Rss`` です。一方、Atom
+フィードを読み込んだのなら ``Zend\Feed\Atom``
 オブジェクトが返されます。読み込みに失敗したりフィードの形式がおかしかったりした場合は
-``Zend_Feed_Exception`` がスローされます。
+``Zend\Feed\Exception`` がスローされます。
 
 .. _zend.feed.importing.custom:
 
@@ -39,8 +39,8 @@
 
 ``Zend_Feed`` を使用すると、独自のフィードを簡単に作成できます。
 単に、配列を作成してそれを ``Zend_Feed`` で読み込むだけでいいのです。
-配列を読み込むには ``Zend_Feed::importArray()`` あるいは ``Zend_Feed::importBuilder()``
-を使用します。 この場合、 ``Zend_Feed_Builder_Interface``
+配列を読み込むには ``Zend\Feed\Feed::importArray()`` あるいは ``Zend\Feed\Feed::importBuilder()``
+を使用します。 この場合、 ``Zend\Feed_Builder\Interface``
 を実装した独自のデータソースによって配列がその場で算出されます。
 
 .. _zend.feed.importing.custom.importarray:
@@ -52,14 +52,14 @@
    :linenos:
 
    // フィードを配列から読み込みます
-   $atomFeedFromArray = Zend_Feed::importArray($array);
+   $atomFeedFromArray = Zend\Feed\Feed::importArray($array);
 
    // この行は、上と同じ意味です。
-   // デフォルトで Zend_Feed_Atom のインスタンスを返します
-   $atomFeedFromArray = Zend_Feed::importArray($array, 'atom');
+   // デフォルトで Zend\Feed\Atom のインスタンスを返します
+   $atomFeedFromArray = Zend\Feed\Feed::importArray($array, 'atom');
 
    // rss フィードを配列から読み込みます
-   $rssFeedFromArray = Zend_Feed::importArray($array, 'rss');
+   $rssFeedFromArray = Zend\Feed\Feed::importArray($array, 'rss');
 
 配列の書式は、次のような構造になっていなければなりません。
 
@@ -260,52 +260,52 @@
 独自のデータソースの読み込み
 ^^^^^^^^^^^^^^
 
-``Zend_Feed_Builder_Interface`` を実装した任意のデータソースから、 ``Zend_Feed``
+``Zend\Feed_Builder\Interface`` を実装した任意のデータソースから、 ``Zend_Feed``
 のインスタンスを作成できます。単に ``getHeader()`` メソッドおよび ``getEntries()``
-メソッドを実装するだけで、自分で作成したオブジェクトが ``Zend_Feed::importBuilder()``
-で使用できるようになります。 ``Zend_Feed_Builder``
+メソッドを実装するだけで、自分で作成したオブジェクトが ``Zend\Feed\Feed::importBuilder()``
+で使用できるようになります。 ``Zend\Feed\Builder``
 は、これを単純に実装したものです。
 コンストラクタで配列を受け取り、ちょっとした検証を行い、 そして ``importBuilder()``
-メソッドで使用できるようにします。 ``getHeader()`` メソッドは ``Zend_Feed_Builder_Header``
-のインスタンスを返さなければなりません。また ``getEntries()`` は ``Zend_Feed_Builder_Entry``
+メソッドで使用できるようにします。 ``getHeader()`` メソッドは ``Zend\Feed_Builder\Header``
+のインスタンスを返さなければなりません。また ``getEntries()`` は ``Zend\Feed_Builder\Entry``
 のインスタンスの配列を返さなければなりません。
 
 .. note::
 
-   ``Zend_Feed_Builder`` は、使用法を説明するための具体的な実装例です。
-   実際に使用する際には、 ``Zend_Feed_Builder_Interface``
+   ``Zend\Feed\Builder`` は、使用法を説明するための具体的な実装例です。
+   実際に使用する際には、 ``Zend\Feed_Builder\Interface``
    を実装した独自のクラスを作成することを推奨します。
 
-これが、 ``Zend_Feed::importBuilder()`` の使用例です。
+これが、 ``Zend\Feed\Feed::importBuilder()`` の使用例です。
 
 .. code-block:: php
    :linenos:
 
    // 独自のビルダソースからフィードを読み込みます
    $atomFeedFromArray =
-       Zend_Feed::importBuilder(new Zend_Feed_Builder($array));
+       Zend\Feed\Feed::importBuilder(new Zend\Feed\Builder($array));
 
    // この行は、上と同じ意味です。
-   // デフォルトで Zend_Feed_Atom のインスタンスを返します
+   // デフォルトで Zend\Feed\Atom のインスタンスを返します
    $atomFeedFromArray =
-       Zend_Feed::importBuilder(new Zend_Feed_Builder($array), 'atom');
+       Zend\Feed\Feed::importBuilder(new Zend\Feed\Builder($array), 'atom');
 
    // 独自のビルダ配列から rss フィードを読み込みます
    $rssFeedFromArray =
-       Zend_Feed::importBuilder(new Zend_Feed_Builder($array), 'rss');
+       Zend\Feed\Feed::importBuilder(new Zend\Feed\Builder($array), 'rss');
 
 .. _zend.feed.importing.custom.dump:
 
 フィードの内容の出力
 ^^^^^^^^^^
 
-``Zend_Feed_Abstract`` インスタンスの内容を出力するには、 *send()* メソッドあるいは
+``Zend\Feed\Abstract`` インスタンスの内容を出力するには、 *send()* メソッドあるいは
 *saveXml()* メソッドを使用します。
 
 .. code-block:: php
    :linenos:
 
-   assert($feed instanceof Zend_Feed_Abstract);
+   assert($feed instanceof Zend\Feed\Abstract);
 
    // フィードを標準出力に出力します
    print $feed->saveXML();

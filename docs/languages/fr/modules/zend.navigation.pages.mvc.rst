@@ -1,12 +1,12 @@
 .. EN-Revision: none
 .. _zend.navigation.pages.mvc:
 
-Zend_Navigation_Page_Mvc
+Zend\Navigation_Page\Mvc
 ========================
 
 Les pages de type *MVC* utilisent des paramètres *MVC* issus du composant ``Zend_Controller``. Une page *MVC*
-utilisera en interne ``Zend_Controller_Action_Helper_Url`` dans la méthode ``getHref()`` pour générer des cibles
-(hrefs), et la méthode ``isActive()`` utilisera les paramètres issus de ``Zend_Controller_Request_Abstract`` et
+utilisera en interne ``Zend\Controller\Action\Helper\Url`` dans la méthode ``getHref()`` pour générer des cibles
+(hrefs), et la méthode ``isActive()`` utilisera les paramètres issus de ``Zend\Controller_Request\Abstract`` et
 les comparera aux paramètres internes à la page.
 
 .. _zend.navigation.pages.mvc.options:
@@ -33,34 +33,34 @@ les comparera aux paramètres internes à la page.
 
    Les trois exemples qui suivent supposent une configuration *MVC* par défaut, avec une route *default*.
 
-   L'*URI* retournée est relative au *baseUrl* de ``Zend_Controller_Front``. Dans nos exemples, le baseUrl vaut
+   L'*URI* retournée est relative au *baseUrl* de ``Zend\Controller\Front``. Dans nos exemples, le baseUrl vaut
    '/' pour simplifier.
 
 .. _zend.navigation.pages.mvc.example.getHref:
 
 .. rubric:: getHref() génères les URI de la page
 
-Cet exemple montre que les pages de type *MVC* utilisent ``Zend_Controller_Action_Helper_Url`` en interne pour
+Cet exemple montre que les pages de type *MVC* utilisent ``Zend\Controller\Action\Helper\Url`` en interne pour
 générer les *URI*\ s suite à l'appel à *$page->getHref()*.
 
 .. code-block:: php
    :linenos:
 
    // getHref() retourne /
-   $page = new Zend_Navigation_Page_Mvc(array(
+   $page = new Zend\Navigation_Page\Mvc(array(
        'action'     => 'index',
        'controller' => 'index'
    ));
 
    // getHref() retourne /blog/post/view
-   $page = new Zend_Navigation_Page_Mvc(array(
+   $page = new Zend\Navigation_Page\Mvc(array(
        'action'     => 'view',
        'controller' => 'post',
        'module'     => 'blog'
    ));
 
    // getHref() retourne /blog/post/view/id/1337
-   $page = new Zend_Navigation_Page_Mvc(array(
+   $page = new Zend\Navigation_Page\Mvc(array(
        'action'     => 'view',
        'controller' => 'post',
        'module'     => 'blog',
@@ -83,12 +83,12 @@ actives ou non.
     * - controller: index
     * - action:     index
     */
-   $page1 = new Zend_Navigation_Page_Mvc(array(
+   $page1 = new Zend\Navigation_Page\Mvc(array(
        'action'     => 'index',
        'controller' => 'index'
    ));
 
-   $page2 = new Zend_Navigation_Page_Mvc(array(
+   $page2 = new Zend\Navigation_Page\Mvc(array(
        'action'     => 'bar',
        'controller' => 'index'
    ));
@@ -103,7 +103,7 @@ actives ou non.
     * - action:     view
     * - id:         1337
     */
-   $page = new Zend_Navigation_Page_Mvc(array(
+   $page = new Zend\Navigation_Page\Mvc(array(
        'action'     => 'view',
        'controller' => 'post',
        'module'     => 'blog'
@@ -118,7 +118,7 @@ actives ou non.
     * - controller: post
     * - action:     view
     */
-   $page = new Zend_Navigation_Page_Mvc(array(
+   $page = new Zend\Navigation_Page\Mvc(array(
        'action'     => 'view',
        'controller' => 'post',
        'module'     => 'blog',
@@ -140,16 +140,16 @@ Les routes sont utilisables dans les pages de type *MVC*. Si une page a une rout
    Notez que si vous utilisez le paramètre *route*, vous devrez préciser les paramètres par défaut de la route
    (module, controller, action, etc.), autremant ``isActive()`` ne pourra déterminer si la page est active ou pas.
    La raison est qu'il n'existe actuellement aucune méthode permettant de récupérer les paramètres par défaut
-   d'une route un objet ``Zend_Controller_Router_Route_Interface``, ni même de récupérer la route courante
-   depuis un objet ``Zend_Controller_Router_Interface``.
+   d'une route un objet ``Zend\Controller\Router\Route\Interface``, ni même de récupérer la route courante
+   depuis un objet ``Zend\Controller_Router\Interface``.
 
 .. code-block:: php
    :linenos:
 
    // La route suivante est ajoutée au routeur de ZF
-   Zend_Controller_Front::getInstance()->getRouter()->addRoute(
+   Zend\Controller\Front::getInstance()->getRouter()->addRoute(
        'article_view', // nom de la route
-       new Zend_Controller_Router_Route(
+       new Zend\Controller_Router\Route(
            'a/:id',
            array(
                'module'     => 'news',
@@ -161,7 +161,7 @@ Les routes sont utilisables dans les pages de type *MVC*. Si une page a une rout
    );
 
    // Une page est créee avec un paramètre 'route'
-   $page = new Zend_Navigation_Page_Mvc(array(
+   $page = new Zend\Navigation_Page\Mvc(array(
        'label'      => 'A news article',
        'route'      => 'article_view',
        'module'     => 'news',    // requis pour isActive(), voyez les notes ci-dessus

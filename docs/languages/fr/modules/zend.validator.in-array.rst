@@ -4,15 +4,15 @@
 InArray
 =======
 
-``Zend_Validate_InArray`` vous permet de valider qu'une entrée est bien présente dans un tableau. Ceci fonctionne
+``Zend\Validate\InArray`` vous permet de valider qu'une entrée est bien présente dans un tableau. Ceci fonctionne
 aussi avec des tableaux multidimensionnels.
 
 .. _zend.validator.set.in_array.options:
 
-Options supportées par Zend_Validate_InArray
+Options supportées par Zend\Validate\InArray
 --------------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_InArray``\  :
+Les options suivantes sont supportées par ``Zend\Validate\InArray``\  :
 
 - **haystack**\  : spécifie le tableau pour la validation.
 
@@ -31,7 +31,7 @@ Passez simplement un tableau dans lequel rechercher une valeur:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray(array('key' => 'value',
+   $validator = new Zend\Validate\InArray(array('key' => 'value',
                                                 'otherkey' => 'othervalue'));
    if ($validator->isValid('value')) {
        // value trouvée
@@ -51,7 +51,7 @@ méthode ``getHaystack()`` retourne le tableau actuellement fourni.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray();
+   $validator = new Zend\Validate\InArray();
    $validator->setHaystack(array('key' => 'value', 'otherkey' => 'othervalue'));
 
    if ($validator->isValid('value')) {
@@ -73,7 +73,7 @@ Pour spécifier une validation stricte à l'instanciation de l'objet, agissez co
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray(
+   $validator = new Zend\Validate\InArray(
        array(
            'haystack' => array('key' => 'value', 'otherkey' => 'othervalue'),
            'strict'   => true
@@ -109,7 +109,7 @@ Pour cela, utilisez l'option **recursive**.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray(
+   $validator = new Zend\Validate\InArray(
        array(
            'haystack' => array(
                'firstDimension' => array('key' => 'value',
@@ -133,7 +133,7 @@ retrouver.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray(
+   $validator = new Zend\Validate\InArray(
        array(
            'firstDimension' => array('key' => 'value',
                                      'otherkey' => 'othervalue'),

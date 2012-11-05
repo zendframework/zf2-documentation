@@ -513,7 +513,7 @@ dem Label 'Home' zu finden. Andere Kombinationen sind ``findByLabel(...)``, ``fi
 .. code-block:: php
    :linenos:
 
-   $container = new Zend_Navigation(array(
+   $container = new Zend\Navigation\Navigation(array(
        array(
            'label' => 'Seite 1',
            'uri'   => 'page-1',

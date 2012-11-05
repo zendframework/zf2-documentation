@@ -17,18 +17,18 @@ L'utilisation de base des composants *MVC* n'a pas changé ; vous pouvez toujour
 .. code-block:: php
    :linenos:
 
-   Zend_Controller_Front::run('/chemin/vers/controleurs');
+   Zend\Controller\Front::run('/chemin/vers/controleurs');
 
 .. code-block:: php
    :linenos:
 
    /* -- créer un routeur -- */
-   $router = new Zend_Controller_RewriteRouter();
+   $router = new Zend\Controller\RewriteRouter();
    $router->addRoute('user', 'user/:username', array('controller' => 'user',
    'action' => 'info'));
 
    /* -- l'affecter à un contrôleur -- */
-   $ctrl = Zend_Controller_Front::getInstance();
+   $ctrl = Zend\Controller\Front::getInstance();
    $ctrl->setRouter($router);
 
    /* -- régler le répertoire des contrôleurs et distribuer -- */
@@ -49,7 +49,7 @@ documentation.
 Le changement le plus important auquel vous devrez faire attention apparaîtra quand vous tenterez de sous-classer
 les différents composants. La clé se trouve ci-dessous :
 
-- ``Zend_Controller_Front::dispatch()`` intercepte par défaut les exceptions dans l'objet réponse, et ne les
+- ``Zend\Controller\Front::dispatch()`` intercepte par défaut les exceptions dans l'objet réponse, et ne les
   affiche pas, afin d'éviter l'affichage d'information sensible du système. Vous pouvez surcharger ceci de
   différentes manières :
 
@@ -74,25 +74,25 @@ les différents composants. La clé se trouve ci-dessous :
        $response->renderExceptions(true);
        echo $response;
 
-- ``Zend_Controller_Dispatcher_Interface::dispatch()`` accepte maintenant et retourne un objet :ref:`
+- ``Zend\Controller_Dispatcher\Interface::dispatch()`` accepte maintenant et retourne un objet :ref:`
   <zend.controller.request>` au lieu d'un élément du distributeur.
 
-- ``Zend_Controller_Router_Interface::route()`` accepte maintenant et retourne un objet :ref:`
+- ``Zend\Controller_Router\Interface::route()`` accepte maintenant et retourne un objet :ref:`
   <zend.controller.request>` au lieu d'un élément du distributeur.
 
-- Les changements de ``Zend_Controller_Action`` incluent :
+- Les changements de ``Zend\Controller\Action`` incluent :
 
-  - Le constructeur accepte maintenant exactement trois arguments, ``Zend_Controller_Request_Abstract $request``,
-    ``Zend_Controller_Response_Abstract $response``, et le tableau facultatif ``$params``.
-    ``Zend_Controller_Action::__construct()`` les utilise pour affecter la requête, la réponse, et les
+  - Le constructeur accepte maintenant exactement trois arguments, ``Zend\Controller_Request\Abstract $request``,
+    ``Zend\Controller_Response\Abstract $response``, et le tableau facultatif ``$params``.
+    ``Zend\Controller\Action::__construct()`` les utilise pour affecter la requête, la réponse, et les
     propriétés *invokeArgs* de l'objet, et si vous devez surcharger le constructeur, vous devez faire de même.
     La meilleure solution est d'utiliser la méthode ``init()`` pour réaliser toute configuration de l'instance,
     puisque cette méthode est appelée en tant que action finale du constructeur.
 
   - ``run()`` n'est plus défini en tant qu'élément final, mais n'est pas non plus utilisé par le contrôleur
     frontal ; son seul but apparaît lors de l'utilisation de la classe en tant que contrôleur de page. Il prend
-    maintenant deux arguments facultatifs, un ``Zend_Controller_Request_Abstract $request`` et un
-    ``Zend_Controller_Response_Abstract $response``.
+    maintenant deux arguments facultatifs, un ``Zend\Controller_Request\Abstract $request`` et un
+    ``Zend\Controller_Response\Abstract $response``.
 
   - ``indexAction()`` ne nécessite plus d'être défini, mais est recommandé en tant qu'action par défaut. Ceci
     permet lors de l'utilisation de *RewriteRouter* et des contrôleurs d'action de spécifier différentes
@@ -104,7 +104,7 @@ les différents composants. La clé se trouve ci-dessous :
     redirection, et un troisième paramètre optionnel, ``$prependBase``, qui peut indiquer que l'URL de base
     enregistré avec l'objet requête peut être ajouté en tant que suffixe à l'URL spécifié.
 
-  - La propriété *_action* n'existe plus. Cette propriété était un ``Zend_Controller_Dispatcher_Token``, qui
+  - La propriété *_action* n'existe plus. Cette propriété était un ``Zend\Controller_Dispatcher\Token``, qui
     n'existe plus maintenant. Le seul but de cet élément est de fournir l'information concernant le contrôleur,
     l'action et les paramètres d'URL de la requête. Cette information est maintenant disponible dans l'objet
     requête, et peut être interrogé comme ceci :
@@ -146,14 +146,14 @@ les différents composants. La clé se trouve ci-dessous :
                return $this->defaultAction();
            }
 
-           throw new Zend_Controller_Exception('Appel de methode invalide');
+           throw new Zend\Controller\Exception('Appel de methode invalide');
        }
 
-- ``Zend_Controller_RewriteRouter::setRewriteBase()`` a été effacée. Utilisez plutôt
-  ``Zend_Controller_Front::setBaseUrl()`` (ou Zend_Controller_Request_Http::setBaseUrl(), si vous utilisez cette
+- ``Zend\Controller\RewriteRouter::setRewriteBase()`` a été effacée. Utilisez plutôt
+  ``Zend\Controller\Front::setBaseUrl()`` (ou Zend\Controller_Request\Http::setBaseUrl(), si vous utilisez cette
   classe de requête).
 
-- ``Zend_Controller_Plugin_Interface`` a été remplacée par ``Zend_Controller_Plugin_Abstract``. Toutes les
+- ``Zend\Controller_Plugin\Interface`` a été remplacée par ``Zend\Controller_Plugin\Abstract``. Toutes les
   méthodes acceptent et retournent maintenant un objet :ref:` <zend.controller.request>` au lieu d'un élément du
   distributeur.
 

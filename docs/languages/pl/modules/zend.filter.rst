@@ -36,7 +36,7 @@ Basic usage of filters
 ----------------------
 
 Mająć ustaloną w ten sposób definicję filtra, możemy zapewnić podstawę dla interfejsu
-*Zend_Filter_Interface*, który wymaga zaimplementowania przez klasę filtra jednej metody nazwanej *filter()*.
+*Zend\Filter\Interface*, który wymaga zaimplementowania przez klasę filtra jednej metody nazwanej *filter()*.
 
 Poniżej jest podstawowy przykład użycia filtra na dwóch danych wyjściowych, na znaku Et (*&*) oraz na znaku
 podwójnego cudzysłowu (*"*):
@@ -44,7 +44,7 @@ podwójnego cudzysłowu (*"*):
    .. code-block:: php
       :linenos:
 
-      $htmlEntities = new Zend_Filter_HtmlEntities();
+      $htmlEntities = new Zend\Filter\HtmlEntities();
 
       echo $htmlEntities->filter('&'); // &
       echo $htmlEntities->filter('"'); // "
@@ -58,7 +58,7 @@ Użycie statycznej metody get()
 ------------------------------
 
 Jeśli niewygodne jest ładowanie danej klasy filtra i tworzenie instancji filtra, możesz użyć statycznej metody
-*Zend_Filter::get()* jako alternatywnego sposobu wywołania. Pierwszym argumentem tej metody są dane wejściowe,
+*Zend\Filter\Filter::get()* jako alternatywnego sposobu wywołania. Pierwszym argumentem tej metody są dane wejściowe,
 które chcesz przekazać do metody *filter()*. Drugi argument jest łańcuchem znaków, który odpowiada, bazowej
 nazwie klasy filtra, relatywnie do przestrzeni nazw Zend_Filter. Metoda *get()* automatycznie ładuje klasę,
 tworzy instancję i wywołuje metodę *filter()* na danych wejściowych.
@@ -66,7 +66,7 @@ tworzy instancję i wywołuje metodę *filter()* na danych wejściowych.
    .. code-block:: php
       :linenos:
 
-      echo Zend_Filter::get('&', 'HtmlEntities');
+      echo Zend\Filter\Filter::get('&', 'HtmlEntities');
 
 
 
@@ -76,7 +76,7 @@ Możesz także przekazać tablicę argumentów konstruktora, jeśli są one potr
    .. code-block:: php
       :linenos:
 
-      echo Zend_Filter::get('"', 'HtmlEntities', array(ENT_QUOTES));
+      echo Zend\Filter\Filter::get('"', 'HtmlEntities', array(ENT_QUOTES));
 
 
 
@@ -85,7 +85,7 @@ Użycie statyczne może być wygodne dla jednorazowego wywołania filtra, ale je
 większej ilości danych, bardziej efektywne jest wykorzystanie rozwiązania pokazanego w pierwszym przykładzie,
 czyli utworzenie instancji obiektu filtra i wywołanie metody *filter()*.
 
-Dodatkowo klasa Zend_Filter_Input pozwala na utworzenie instancji i wywołanie większej ilości klas filtrów i
+Dodatkowo klasa Zend\Filter\Input pozwala na utworzenie instancji i wywołanie większej ilości klas filtrów i
 weryfikatorów w celu przetworzenia zestawu danych wejściowych. Zobacz :ref:` <zend.filter.input>`.
 
 

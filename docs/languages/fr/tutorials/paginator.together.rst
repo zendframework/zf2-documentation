@@ -19,22 +19,22 @@ cette façon.
 .. code-block:: php
    :linenos:
 
-   class IndexController extends Zend_Controller_Action
+   class IndexController extends Zend\Controller\Action
    {
        public function indexAction()
        {
            // Configuration du script de navigation. Voyez le tutoriel sur le script
            // des éléments de contrôle de la pagination pour plus d'informations
-           Zend_View_Helper_PaginationControl::setDefaultViewPartial('controls.phtml');
+           Zend\View_Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
 
            // Cherchons une connection à une base depuis le registre
-           $db = Zend_Registry::get('db');
+           $db = Zend\Registry\Registry::get('db');
 
            // Créons un objet select qui récupère des billets et les range par date de création descendante
            $select = $db->select()->from('posts')->order('date_created DESC');
 
            // Créons un paginateur pour cette requête
-           $paginator = Zend_Paginator::factory($select);
+           $paginator = Zend\Paginator\Paginator::factory($select);
 
            // Nous lisons le numéro de page depuis la requête. Si le paramètre n'est pas précisé
            // la valeur 1 sera utilisée par défaut

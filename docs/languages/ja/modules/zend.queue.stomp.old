@@ -4,7 +4,7 @@
 Stomp
 =====
 
-``Zend_Queue_Stomp``\ は、 `Stomp`_\ 互換の一部のサーバと通信するために、
+``Zend\Queue\Stomp``\ は、 `Stomp`_\ 互換の一部のサーバと通信するために、
 基本的なクライアントを提供します。 一部のサーバ（例えばApache
 ActiveMQとRabbitMQ）では、 *HTTP*\ や *XMPP*\ のような
 他のメソッドで情報を交換できます。
@@ -18,11 +18,11 @@ Stompプロトコルは、どんな `Javaメッセージサービス(JMS)`_
 Stomp - サポートするクラス
 -----------------
 
-- ``Zend_Queue_Stomp_Frame``\ 。
+- ``Zend\Queue_Stomp\Frame``\ 。
   このクラスは、Stompフレームを操作するための基底関数を提供します。
 
-- ``Zend_Queue_Stomp_Client``. このクラスは  provides 基本関数 to ``send()`` and ``receive()``
-  ``Zend_Queue_Stomp_Frame``\ s to and from a Stomp互換サーバ
+- ``Zend\Queue_Stomp\Client``. このクラスは  provides 基本関数 to ``send()`` and ``receive()``
+  ``Zend\Queue_Stomp\Frame``\ s to and from a Stomp互換サーバ
 
 
 

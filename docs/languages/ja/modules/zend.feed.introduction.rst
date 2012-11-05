@@ -11,8 +11,8 @@
 にも対応させる予定です。
 
 ``Zend_Feed`` の構成は、基底クラス ``Zend_Feed``\ 、
-フィードやエントリを扱うための基底抽象クラス ``Zend_Feed_Abstract`` および
-``Zend_Feed_Entry_Abstract``\ 、 *RSS* や Atom 用のフィードクラスとエントリクラスの実装、
+フィードやエントリを扱うための基底抽象クラス ``Zend\Feed\Abstract`` および
+``Zend\Feed_Entry\Abstract``\ 、 *RSS* や Atom 用のフィードクラスとエントリクラスの実装、
 そして自然な方法でそれらを操作するためのヘルパーから成り立っています。
 
 以下では、 *RSS* フィードの取得、 フィードデータの *PHP*
@@ -37,8 +37,8 @@
    // 最新の Slashdot ヘッドラインを取得します
    try {
        $slashdotRss =
-           Zend_Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
-   } catch (Zend_Feed_Exception $e) {
+           Zend\Feed\Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
+   } catch (Zend\Feed\Exception $e) {
        // フィードの読み込みに失敗しました
        echo "フィードの読み込み中に例外が発生: {$e->getMessage()}\n";
        exit;

@@ -9,12 +9,12 @@ Die besten Anwendungen
 Feldnamen
 ---------
 
-Es gibt keine Begrenzungen für Feldnamen in ``Zend_Search_Lucene``.
+Es gibt keine Begrenzungen für Feldnamen in ``Zend\Search\Lucene``.
 
 Trotzdem ist es eine gute Idee die '**id**' und '**score**' Namen nicht zu verwenden um Doppeldeutigkeiten in den
 Namen der ``QueryHit`` Eigenschaften zu verhindern.
 
-Die ``Zend_Search_Lucene_Search_QueryHit`` ``id`` und ``score`` Eigenschaften referieren immer zur internen Lucene
+Die ``Zend\Search\Lucene\Search\QueryHit`` ``id`` und ``score`` Eigenschaften referieren immer zur internen Lucene
 Dokumenten Id und Treffer-:ref:`Anzahl <zend.search.lucene.searching.results-scoring>`. Wenn ein indiziertes
 Dokument die gleichen Felder gespeichert hat, muß die ``getDocument()`` Methode verwendet werden um auf Sie
 zuzugreifen:
@@ -68,7 +68,7 @@ Komplette Indexoptimierung kann mit der ``optimize()`` Methode durchgeführt wer
 .. code-block:: php
    :linenos:
 
-   $index = Zend_Search_Lucene::open($indexPath);
+   $index = Zend\Search\Lucene::open($indexPath);
 
    $index->optimize();
 
@@ -99,8 +99,8 @@ Optimierung <zend.search.lucene.index-creation.optimization>`):
 
    .. note::
 
-      Alle diese Optionen sind Objekteigenschaften von ``Zend_Search_Lucene``, aber keine Indexeigenschaften. Sie
-      beeinflussen nur das Verhalten des aktuellen ``Zend_Search_Lucene`` Objekts und können sich für
+      Alle diese Optionen sind Objekteigenschaften von ``Zend\Search\Lucene``, aber keine Indexeigenschaften. Sie
+      beeinflussen nur das Verhalten des aktuellen ``Zend\Search\Lucene`` Objekts und können sich für
       verschiedene Skripte unterscheiden.
 
 
@@ -150,7 +150,7 @@ Segmenten. Das wiederum kann wieder zu einem "Too many open files" Fehler führe
 
 
 
-``Zend_Search_Lucene`` prüft wärend jedem Aufruf von ``addDocument()`` ob das Zusammenführen von Segmentgruppen
+``Zend\Search\Lucene`` prüft wärend jedem Aufruf von ``addDocument()`` ob das Zusammenführen von Segmentgruppen
 dazu führt das neu erstellte Segmente in die nächste Gruppe verschoben werden. Wenn ja, wird das Zusammenführen
 durchgeführt.
 
@@ -175,7 +175,7 @@ Geschwindigkeit für die Indizieren per Batch zu erhalten.
 Index wärend des Herunterfahrens
 --------------------------------
 
-Die ``Zend_Search_Lucene`` Instanz führt einiges an Arbeit während des Herunterfahrens durch, wenn Dokumente zum
+Die ``Zend\Search\Lucene`` Instanz führt einiges an Arbeit während des Herunterfahrens durch, wenn Dokumente zum
 Index hinzugefügt aber nicht in ein neues Segment geschrieben wurden.
 
 Das kann auch einen automatischen Optimierungsprozess anwerfen.
@@ -198,7 +198,7 @@ Der erste ist, dass das Herausgehen aus dem Sichtbereich erzwungen wird:
 .. code-block:: php
    :linenos:
 
-   $index = Zend_Search_Lucene::open($indexPath);
+   $index = Zend\Search\Lucene::open($indexPath);
 
    ...
 
@@ -209,7 +209,7 @@ Und der zweite ist, das eine commit Operation vor dem Ausführungsende des Skrip
 .. code-block:: php
    :linenos:
 
-   $index = Zend_Search_Lucene::open($indexPath);
+   $index = Zend\Search\Lucene::open($indexPath);
 
    $index->commit();
 
@@ -224,7 +224,7 @@ Dokumente anhand der eindeutigen Id erhalten
 Eine übliche Praxis ist es eindeutige Dokument Id's im Index zu speichern. Beispiele beinhalten URL, Pfad,
 Datenbank Id.
 
-``Zend_Search_Lucene`` bietet eine ``termDocs()`` Methode um Dokumente zu empfangen die spezielle Terme enthalten.
+``Zend\Search\Lucene`` bietet eine ``termDocs()`` Methode um Dokumente zu empfangen die spezielle Terme enthalten.
 
 Das ist effizienter als die Verwendung der ``find()`` Methode:
 
@@ -242,8 +242,8 @@ Das ist effizienter als die Verwendung der ``find()`` Methode:
    ...
 
    // Dokumente mit der find() Methode empfangen durch verwenden der Anfrage API
-   $term = new Zend_Search_Lucene_Index_Term($docId, $idFieldName);
-   $query = new Zend_Search_Lucene_Search_Query_Term($term);
+   $term = new Zend\Search\Lucene\Index\Term($docId, $idFieldName);
+   $query = new Zend\Search\Lucene\Search\Query\Term($term);
    $hits  = $index->find($query);
    foreach ($hits as $hit) {
        $title    = $hit->title;
@@ -254,7 +254,7 @@ Das ist effizienter als die Verwendung der ``find()`` Methode:
    ...
 
    // Dokumente mit der termDocs() Methode empfangen
-   $term = new Zend_Search_Lucene_Index_Term($docId, $idFieldName);
+   $term = new Zend\Search\Lucene\Index\Term($docId, $idFieldName);
    $docIds  = $index->termDocs($term);
    foreach ($docIds as $id) {
        $doc = $index->getDocument($id);
@@ -268,7 +268,7 @@ Das ist effizienter als die Verwendung der ``find()`` Methode:
 Speicherverwendung
 ------------------
 
-``Zend_Search_Lucene`` ist ein relativ speicherintensives Modul.
+``Zend\Search\Lucene`` ist ein relativ speicherintensives Modul.
 
 Es verwendet Speicher um Informationen zu Cachen, das Suchen zu optimieren und das Indizieren zu beschleunigen.
 
@@ -299,7 +299,7 @@ Speicher.
 Verschlüsselung
 ---------------
 
-``Zend_Search_Lucene`` arbeitet intern mit UTF-8 Strings. Das bedeutet also das alle von ``Zend_Search_Lucene``
+``Zend\Search\Lucene`` arbeitet intern mit UTF-8 Strings. Das bedeutet also das alle von ``Zend\Search\Lucene``
 zurückgegebenen Strings UTF-8 verschlüsselt sind.
 
 Man sollte sich keine Gedanken über Verschlüsselung machen solange man mit reinen *ASCII* Daten arbeitet, sollte
@@ -307,7 +307,7 @@ aber vorsichtig sein wenn das nicht der Fall ist.
 
 Eine falsche Verschlüsselung kann Fehlernotizen wärend der Konvertierung oder den Verlust von Daten verursachen.
 
-``Zend_Search_Lucene`` bietet einen breite Palette von Möglichkeiten für die Verschlüsselung von indizierten
+``Zend\Search\Lucene`` bietet einen breite Palette von Möglichkeiten für die Verschlüsselung von indizierten
 Dokumenten und analysierten Abfragen.
 
 Verschlüsselung kann explizit als optionaler Parameter bei den Felderstellung Methoden spezifiziert werden:
@@ -315,11 +315,11 @@ Verschlüsselung kann explizit als optionaler Parameter bei den Felderstellung M
 .. code-block:: php
    :linenos:
 
-   $doc = new Zend_Search_Lucene_Document();
-   $doc->addField(Zend_Search_Lucene_Field::Text('title',
+   $doc = new Zend\Search_Lucene\Document();
+   $doc->addField(Zend\Search_Lucene\Field::Text('title',
                                                  $title,
                                                  'iso-8859-1'));
-   $doc->addField(Zend_Search_Lucene_Field::UnStored('contents',
+   $doc->addField(Zend\Search_Lucene\Field::UnStored('contents',
                                                      $contents,
                                                      'utf-8'));
 
@@ -353,7 +353,7 @@ wird:
    :linenos:
 
    $query =
-       Zend_Search_Lucene_Search_QueryParser::parse($queryStr, 'iso-8859-5');
+       Zend\Search\Lucene\Search\QueryParser::parse($queryStr, 'iso-8859-5');
    $hits = $index->find($query);
    ...
 
@@ -362,7 +362,7 @@ Die Standardverschlüsselung kann auch mit der ``setDefaultEncoding()`` Methode 
 .. code-block:: php
    :linenos:
 
-   Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('iso-8859-1');
+   Zend\Search\Lucene\Search\QueryParser::setDefaultEncoding('iso-8859-1');
    $hits = $index->find($queryStr);
    ...
 
@@ -377,14 +377,14 @@ aktuelle Verhalten hängt vom verwendeten Analysator ab. Siehe das Kapitel :ref:
 Index Wartung
 -------------
 
-Es sollte klar sein das ``Zend_Search_Lucene``, genauso wie jede andere Lucene Implementation, keine "Datenbank"
+Es sollte klar sein das ``Zend\Search\Lucene``, genauso wie jede andere Lucene Implementation, keine "Datenbank"
 ersetzt.
 
 Indizes sollten nicht als Datenspeicher verwendet werden. Sie bieten keine partiellen Backup/Wiederherstellungs
 Funktionen, Journal, Logging, Transactions und viele andere Features die mit Datenbank Management Systemen
 assoziiert werden.
 
-Trotzdem versucht ``Zend_Search_Lucene`` Indizes jederzeit in einem gültigen Status zu halten.
+Trotzdem versucht ``Zend\Search\Lucene`` Indizes jederzeit in einem gültigen Status zu halten.
 
 Index Backup/Wiederherstellung sollte durch Kopieren des Inhalts des Index Verzeichnisses durchgeführt werden.
 
@@ -399,10 +399,10 @@ Wiederherstellungszeit des Index dramatisch.
 
 .. [#] ``memory_get_usage()`` und ``memory_get_peak_usage()`` können verwendet werden um die Verwendung des
        Speichers zu kontrollieren.
-.. [#] ``Zend_Search_Lucene`` hält jedes Segment offen um die Geschwindigkeit des Suchens zu erhöhen.
+.. [#] ``Zend\Search\Lucene`` hält jedes Segment offen um die Geschwindigkeit des Suchens zu erhöhen.
 .. [#] Das kann auch vorkommen wenn der Index oder die QueryHit Instanzen in zyklischen Datenstrukturen
        referenziert werden, weil *PHP* Objekte mit zyklischen Referenzen nur am Ende der Skriptausführung
        beseitigt.
-.. [#] Das Lucene Dateiformat erlaubt es diese Zahl zu ändern, aber ``Zend_Search_Lucene`` bietet keine
+.. [#] Das Lucene Dateiformat erlaubt es diese Zahl zu ändern, aber ``Zend\Search\Lucene`` bietet keine
        Möglichkeit das über seine *API* durchzuführen. Trotzdem gibt es die Möglichkeit diesen Wert zu ändern
        wenn er mit einer anderen Lucene Implementation vorbereitet wird.

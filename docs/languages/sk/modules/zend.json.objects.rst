@@ -7,8 +7,8 @@ JSON objekty
 Keď sa serializuje PHP objekt na JSON objekt všetky verejné vlastnosti sú zahrnuté vo výslednom objekte.
 
 JSON nedovoľuje referencie na objekty a teda je potrebné dať pozor na objekty s rekurzívnymi referenciami. Ak
-máte problém s rekurziou, môžete nastaviť druhy nepovinný parameter pri volaniach *Zend_Json::encode()* a
-*Zend_Json_Encoder::encode()*, ktorý zisťuje rekurziu - ak je objekt serializovaný druhý raz bude vyvolaná
+máte problém s rekurziou, môžete nastaviť druhy nepovinný parameter pri volaniach *Zend\Json\Json::encode()* a
+*Zend\Json\Encoder::encode()*, ktorý zisťuje rekurziu - ak je objekt serializovaný druhý raz bude vyvolaná
 výnimka.
 
 Deserializácia JSON objektov nie je jednoduchá, pretože Javascript objekty sú podobné asociatívnym poliam v
@@ -22,7 +22,7 @@ a hodnoty z JSON objektu - ostatným sa to zdá ako značná bezpečnostná dier
 
    <?php
    // Decode objects as objects
-   $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);
+   $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
    ?>
 Všetky objekty sú takto deserializované ako *StdClass* a ich vlastnosti zodpovedajú vlastnostiam a ich
 hodnotám z JSON objektu.

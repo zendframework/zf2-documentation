@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.zones:
 
-Zend_Service_Amazon_Ec2:リージョンおよび利用可能ゾーン
+Zend\Service_Amazon\Ec2:リージョンおよび利用可能ゾーン
 =======================================
 
 アマゾンEC2は、リージョンおよび利用可能ゾーン毎にインスタンスを設置する能力を提供します。
@@ -39,7 +39,7 @@ Zend_Service_Amazon_Ec2:リージョンおよび利用可能ゾーン
 .. code-block:: php
    :linenos:
 
-   $ec2_region = new Zend_Service_Amazon_Ec2_Region('aws_key','aws_secret_key');
+   $ec2_region = new Zend\Service\Amazon\Ec2\Region('aws_key','aws_secret_key');
    $regions = $ec2_region->describe();
 
    foreach($regions as $region) {
@@ -71,7 +71,7 @@ Zend_Service_Amazon_Ec2:リージョンおよび利用可能ゾーン
 .. code-block:: php
    :linenos:
 
-   $ec2_zones = new Zend_Service_Amazon_Ec2_Availabilityzones('aws_key',
+   $ec2_zones = new Zend\Service\Amazon\Ec2\Availabilityzones('aws_key',
                                                               'aws_secret_key');
    $zones = $ec2_zones->describe();
 

@@ -36,7 +36,7 @@ durchzuführen.
 Normale Verwendung von Filtern
 ------------------------------
 
-Diese Filterdefinition bekanntgegeben zu haben bietet die Grundlage für ``Zend_Filter_Interface``, welches eine
+Diese Filterdefinition bekanntgegeben zu haben bietet die Grundlage für ``Zend\Filter\Interface``, welches eine
 einzelne Methode benötigt die ``filter()`` genannt wird, und von der Filterklasse implementiert werden muß.
 
 Nachfolgend ist ein grundsätzliches Beispiel der Verwendung eines Filters über zwei Eingabedaten, einem
@@ -45,7 +45,7 @@ Und-Zeichen (**&**) und einem Hochkommazeichen (**"**):
 .. code-block:: php
    :linenos:
 
-   $htmlEntities = new Zend_Filter_HtmlEntities();
+   $htmlEntities = new Zend\Filter\HtmlEntities();
 
    echo $htmlEntities->filter('&'); // &
    echo $htmlEntities->filter('"'); // "
@@ -56,7 +56,7 @@ Verwenden der statischen staticFilter() Methode
 -----------------------------------------------
 
 Wenn es unbequem ist einen gegebene Filterklasse zu Laden und eine Instanz des Filters zu erstellen, kann die
-statische ``Zend_Filter::staticFilter()`` Methode als alternativer Aufrufstil verwendet werden. Das erste Argument
+statische ``Zend\Filter\Filter::staticFilter()`` Methode als alternativer Aufrufstil verwendet werden. Das erste Argument
 dieser Methode ist der Eingabewert, der die ``filter()`` Methode passieren soll. Das zweite Argument ist ein
 String, der dem Basisnamen der Filterklasse, relativ zum ``Zend_Filter`` Namensraum, entspricht. Die
 ``filterStatic()`` Methode lädt die Klasse automatisch, erstellt eine Instanz, und führt die Eingabedaten der
@@ -65,7 +65,7 @@ String, der dem Basisnamen der Filterklasse, relativ zum ``Zend_Filter`` Namensr
 .. code-block:: php
    :linenos:
 
-   echo Zend_Filter::filterStatic('&', 'HtmlEntities');
+   echo Zend\Filter\Filter::filterStatic('&', 'HtmlEntities');
 
 Es kann auch ein Array von Konstruktor Argumenten übergeben werden, wen diese für die Filterklasse benötigt
 werden.
@@ -73,7 +73,7 @@ werden.
 .. code-block:: php
    :linenos:
 
-   echo Zend_Filter::filterStatic('"',
+   echo Zend\Filter\Filter::filterStatic('"',
                                   'HtmlEntities',
                                   array('quotestyle' => ENT_QUOTES));
 
@@ -81,8 +81,8 @@ Die statische Verwendung kann für das Ad-Hoc aufrufen von Filtern bequem sein, 
 mehrere Eingaben anwenden will ist es effizienter den ersten Beispiel von oben zu folgen, eine Instanz des Filter
 Objekts zu erstellen und dessen ``filter()`` Methode aufzurufen.
 
-Die ``Zend_Filter_Input`` Klasse erlaubt es also, mehrere Filter zu instanzieren und auszurufen, und wenn
-benötigt, den Prüfklassen diese Sets von Eingabedaten zu verarbeiten. Siehe :ref:`Zend_Filter_Input
+Die ``Zend\Filter\Input`` Klasse erlaubt es also, mehrere Filter zu instanzieren und auszurufen, und wenn
+benötigt, den Prüfklassen diese Sets von Eingabedaten zu verarbeiten. Siehe :ref:`Zend\Filter\Input
 <zend.filter.input>`.
 
 .. _zend.filter.introduction.static.namespaces:
@@ -90,13 +90,13 @@ benötigt, den Prüfklassen diese Sets von Eingabedaten zu verarbeiten. Siehe :r
 Namespaces
 ^^^^^^^^^^
 
-Wenn man mit selbst definierten Filtern arbeitet, dann kann man an ``Zend_Filter::filterStatic()`` einen vierten
+Wenn man mit selbst definierten Filtern arbeitet, dann kann man an ``Zend\Filter\Filter::filterStatic()`` einen vierten
 Parameter übergeben welcher der Namespace ist, an dem der eigene Filter gefunden werden kann.
 
 .. code-block:: php
    :linenos:
 
-   echo Zend_Filter::filterStatic(
+   echo Zend\Filter\Filter::filterStatic(
        '"',
        'MyFilter',
        array($parameters),
@@ -104,28 +104,28 @@ Parameter übergeben welcher der Namespace ist, an dem der eigene Filter gefunde
    );
 
 ``Zend_Filter`` erlaubt es auch standardmäßige Namespaces zu setzen. Das bedeutet das man Sie einmal in der
-Bootstrap setzt und sie nicht mehr bei jedem Aufruf von ``Zend_Filter::filterStatic()`` angeben muß. Der folgende
+Bootstrap setzt und sie nicht mehr bei jedem Aufruf von ``Zend\Filter\Filter::filterStatic()`` angeben muß. Der folgende
 Codeschnipsel ist identisch mit dem vorherigen.
 
 .. code-block:: php
    :linenos:
 
-   Zend_Filter::setDefaultNamespaces(array('FirstNamespace', 'SecondNamespace'));
-   echo Zend_Filter::filterStatic('"', 'MyFilter', array($parameters));
-   echo Zend_Filter::filterStatic('"', 'OtherFilter', array($parameters));
+   Zend\Filter\Filter::setDefaultNamespaces(array('FirstNamespace', 'SecondNamespace'));
+   echo Zend\Filter\Filter::filterStatic('"', 'MyFilter', array($parameters));
+   echo Zend\Filter\Filter::filterStatic('"', 'OtherFilter', array($parameters));
 
 Der Bequemlichkeit halber gibt es die folgenden Methoden welche die Behandlung von Namespaces erlauben:
 
-- **Zend_Filter::getDefaultNamespaces()**: Gibt alle standardmäßigen Namespaces als Array zurück.
+- **Zend\Filter\Filter::getDefaultNamespaces()**: Gibt alle standardmäßigen Namespaces als Array zurück.
 
-- **Zend_Filter::setDefaultNamespaces()**: Setzt neue standardmäßige Namespaces und überschreibt alle vorher
+- **Zend\Filter\Filter::setDefaultNamespaces()**: Setzt neue standardmäßige Namespaces und überschreibt alle vorher
   gesetzten. Es wird entweder ein String für einen einzelnen Namespace akzeptiert, oder ein Array für mehrere
   Namespaces.
 
-- **Zend_Filter::addDefaultNamespaces()**: Fügt zusätzliche Namespaces zu den bereits gesetzten hinzu. Es wird
+- **Zend\Filter\Filter::addDefaultNamespaces()**: Fügt zusätzliche Namespaces zu den bereits gesetzten hinzu. Es wird
   entweder ein String für einen einzelnen Namespace akzeptiert, oder ein Array für mehrere Namespaces.
 
-- **Zend_Filter::hasDefaultNamespaces()**: Gibt ``TRUE`` zurück wenn ein oder mehrere standardmäßige Namespaces
+- **Zend\Filter\Filter::hasDefaultNamespaces()**: Gibt ``TRUE`` zurück wenn ein oder mehrere standardmäßige Namespaces
   gesetzt sind, und ``FALSE`` wenn keine standardmäßigen Namespaces gesetzt sind.
 
 .. _zend.filter.introduction.caveats:
@@ -142,11 +142,11 @@ Ausgabe zu erhalten indem der gegensätzliche Filter verwendet wird. Nehmen wir 
    $original = "my_original_content";
 
    // Einen Filter anwenden
-   $filter   = new Zend_Filter_Word_UnderscoreToCamelCase();
+   $filter   = new Zend\Filter_Word\UnderscoreToCamelCase();
    $filtered = $filter->filter($original);
 
    // Sein gegenstück verwenden
-   $filter2  = new Zend_Filter_Word_CamelCaseToUnderscore();
+   $filter2  = new Zend\Filter_Word\CamelCaseToUnderscore();
    $filtered = $filter2->filter($filtered)
 
 Das oben stehende Code Beispiel könnte zur Vermutung führen dass man die originale Ausgabe erhält nachdem der

@@ -4,14 +4,14 @@
 Hex
 ===
 
-``Zend_Validate_Hex`` erlaubt es zu prüfen ob ein angegebener Wert nur hexadezimale Zeichen enthält. Das sint
+``Zend\Validate\Hex`` erlaubt es zu prüfen ob ein angegebener Wert nur hexadezimale Zeichen enthält. Das sint
 alle Zeichen von **0 bis 9** und unabhängig von der Schreibweise **A bis F**. Es gibt keine Begrenzung der Länge
 für den Wert welchen man prüfen will.
 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Hex();
+   $validator = new Zend\Validate\Hex();
    if ($validator->isValid('123ABC')) {
        // Der Wert enthält nur Hex Zeichen
    } else {
@@ -27,9 +27,9 @@ für den Wert welchen man prüfen will.
 
 .. _zend.validator.set.hex.options:
 
-Unterstützte Optionen für Zend_Validate_Hex
+Unterstützte Optionen für Zend\Validate\Hex
 -------------------------------------------
 
-Es gibt keine zusätzlichen Optionen für ``Zend_Validate_Hex``:
+Es gibt keine zusätzlichen Optionen für ``Zend\Validate\Hex``:
 
 

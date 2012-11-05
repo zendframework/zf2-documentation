@@ -9,11 +9,11 @@ Zeichensätze
 Unterstützung für UTF-8 und Einzel-Byte Zeichensätze
 ----------------------------------------------------
 
-``Zend_Search_Lucene`` arbeitet intern mit dem UTF-8 Zeichensatz. Indexdateien speichern Unicode Daten in Java's
-"modifiziertem UTF-8 Codierung". Der Kern von ``Zend_Search_Lucene`` unterstützt diesen Zeichensatz mit einer
+``Zend\Search\Lucene`` arbeitet intern mit dem UTF-8 Zeichensatz. Indexdateien speichern Unicode Daten in Java's
+"modifiziertem UTF-8 Codierung". Der Kern von ``Zend\Search\Lucene`` unterstützt diesen Zeichensatz mit einer
 Ausnahme komplett. [#]_
 
-Die Codierung der aktuellen Eingabedaten dann über die *API* von ``Zend_Search_Lucene`` spezifiziert werden. Daten
+Die Codierung der aktuellen Eingabedaten dann über die *API* von ``Zend\Search\Lucene`` spezifiziert werden. Daten
 werden automatisch in die UTF-8 Codierung konvertiert.
 
 .. _zend.search.lucene.charset.default_analyzer:
@@ -38,18 +38,18 @@ durchgeführt [#]_
 UTF-8 kompatibler Textanalysator
 --------------------------------
 
-``Zend_Search_Lucene`` enthält auch ein Set von UTF-8 kompatiblen Analysatoren:
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8``, ``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8Num``,
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive``,
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8Num_CaseInsensitive``.
+``Zend\Search\Lucene`` enthält auch ein Set von UTF-8 kompatiblen Analysatoren:
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8``, ``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8Num``,
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8\CaseInsensitive``,
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8Num\CaseInsensitive``.
 
 Jeder dieser Analysatoren kenn mit Code wie dem folgenden eingeschaltet werden:
 
 .. code-block:: php
    :linenos:
 
-   Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-       new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+   Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+       new Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8());
 
 .. warning::
 
@@ -91,22 +91,22 @@ der Suche normalisieren indem diese zur Kleinschreibung konvertiert werden:
 
    ...
 
-   Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-       new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+   Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+       new Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8());
 
    ...
 
-   $doc = new Zend_Search_Lucene_Document();
+   $doc = new Zend\Search_Lucene\Document();
 
-   $doc->addField(Zend_Search_Lucene_Field::UnStored('contents',
+   $doc->addField(Zend\Search_Lucene\Field::UnStored('contents',
                                                      strtolower($contents)));
 
    // Titel Feld für das Durchsuchen (indiziert, nicht gespeichert)
-   $doc->addField(Zend_Search_Lucene_Field::UnStored('title',
+   $doc->addField(Zend\Search_Lucene\Field::UnStored('title',
                                                      strtolower($title)));
 
    // Titel Feld für das Empfangen (nicht indiziert, gespeichert)
-   $doc->addField(Zend_Search_Lucene_Field::UnIndexed('_title', $title));
+   $doc->addField(Zend\Search_Lucene\Field::UnIndexed('_title', $title));
 
 .. code-block:: php
    :linenos:
@@ -116,8 +116,8 @@ der Suche normalisieren indem diese zur Kleinschreibung konvertiert werden:
 
    ...
 
-   Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-       new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+   Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+       new Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8());
 
    ...
 
@@ -127,7 +127,7 @@ der Suche normalisieren indem diese zur Kleinschreibung konvertiert werden:
 
 .. _`mbstring`: http://www.php.net/manual/en/ref.mbstring.php
 
-.. [#] ``Zend_Search_Lucene`` unterstützt nur Basic Multilingual Plane (BMP) Zeichen (von 0x0000 bis 0xFFFF) und
+.. [#] ``Zend\Search\Lucene`` unterstützt nur Basic Multilingual Plane (BMP) Zeichen (von 0x0000 bis 0xFFFF) und
        unterstützt keine "zusätzlichen Zeichen" (Zeichen deren Codepunkte größer als 0xFFFF sind).
 
        Java 2 zeigt diese Werte als Paare von Zeichen (16-bit) Werten an, der erste vom High-Surrogate Bereich

@@ -64,7 +64,7 @@ the following to your bootstrap class:
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
    {
        protected function _initDocType()
        {
@@ -108,7 +108,7 @@ and specify an initial title as well as a separator.
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
    {
        // ...
 
@@ -178,7 +178,7 @@ to the document root); we'll specify this in our ``_initPlaceholders()`` bootstr
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
    {
        // ...
 
@@ -252,7 +252,7 @@ In this example, we'll specify that a script, "``/js/site.js``" needs to be load
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
    {
        // ...
 

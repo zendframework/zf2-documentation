@@ -1,11 +1,11 @@
 .. EN-Revision: none
 .. _zend.db.adapter:
 
-Zend_Db_Adapter
+Zend\Db\Adapter
 ===============
 
 ``Zend_Db`` und die zugehörigen Klassen bieten eine einfache *SQL* Schnittstelle für Zend Framework.
-``Zend_Db_Adapter`` ist die Basisklasse zur Anbindung einer *PHP* Anwendung an ein *RDBMS*. Es gibt für jede
+``Zend\Db\Adapter`` ist die Basisklasse zur Anbindung einer *PHP* Anwendung an ein *RDBMS*. Es gibt für jede
 *RDBMS* Marke einen eigenen Adapter.
 
 Die ``Zend_Db`` Adapter bilden eine Schnittstelle zu den Hersteller spezifischen *PHP* Erweiterungen und
@@ -67,7 +67,7 @@ benötigt ein Argument, wobei es sich um ein Array mit Parametern für die Verbi
 .. code-block:: php
    :linenos:
 
-   $db = new Zend_Db_Adapter_Pdo_Mysql(array(
+   $db = new Zend\Db\Adapter\Pdo\Mysql(array(
        'host'     => '127.0.0.1',
        'username' => 'webuser',
        'password' => 'xxxxxxxx',
@@ -80,11 +80,11 @@ Nutzung der Zend_Db Factory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Als Alternative zur direkten Nutzung des Konstruktors kann man auch eine Instanz des Adapters erzeugen indem man
-die statische Methode ``Zend_Db::factory()`` nutzt. Diese Methode lädt die Adapterklasse dynamisch bei Aufruf
-unter Nutzung von :ref:`Zend_Loader::loadClass() <zend.loader.load.class>`.
+die statische Methode ``Zend\Db\Db::factory()`` nutzt. Diese Methode lädt die Adapterklasse dynamisch bei Aufruf
+unter Nutzung von :ref:`Zend\Loader\Loader::loadClass() <zend.loader.load.class>`.
 
 Das erste Argument ist ein String der den Namen der Adapterklasse enthält. Zum Beispiel entspricht der String
-'``Pdo_Mysql``' der Klasse ``Zend_Db_Adapter_Pdo_Mysql``. Das zweite Argument ist das gleiche Array von Parametern
+'``Pdo_Mysql``' der Klasse ``Zend\Db\Adapter\Pdo\Mysql``. Das zweite Argument ist das gleiche Array von Parametern
 wie bei der Verwendung des Adapter Konstruktors.
 
 .. _zend.db.adapter.connecting.factory.example:
@@ -95,22 +95,22 @@ wie bei der Verwendung des Adapter Konstruktors.
    :linenos:
 
    // Wir benötigen das folgende Statement nicht da die
-   // Zend_Db_Adapter_Pdo_Mysql Datei für uns durch die Factory
+   // Zend\Db\Adapter\Pdo\Mysql Datei für uns durch die Factory
    // Methode von Zend_Db geladen wird
 
    // require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
 
-   // Lädt automatisch die Klasse Zend_Db_Adapter_Pdo_Mysql
+   // Lädt automatisch die Klasse Zend\Db\Adapter\Pdo\Mysql
    // und erzeugt eine Instanz von Ihr.
-   $db = Zend_Db::factory('Pdo_Mysql', array(
+   $db = Zend\Db\Db::factory('Pdo_Mysql', array(
        'host'     => '127.0.0.1',
        'username' => 'webuser',
        'password' => 'xxxxxxxx',
        'dbname'   => 'test'
    ));
 
-Wenn eine eigene Klasse geschrieben wird, die ``Zend_Db_Adapter_Abstract`` erweitert aber nicht mit dem Präfix
-"``Zend_Db_Adapter``" beginnt, kann die ``factory()`` Methode verwendet werden um den Adapter zu Laden wenn der
+Wenn eine eigene Klasse geschrieben wird, die ``Zend\Db_Adapter\Abstract`` erweitert aber nicht mit dem Präfix
+"``Zend\Db\Adapter``" beginnt, kann die ``factory()`` Methode verwendet werden um den Adapter zu Laden wenn der
 führende Teil der Adapter Klasse mit dem 'adapterNamespace' Schlüssel im Parameter Array spezifiziert wird.
 
 .. _zend.db.adapter.connecting.factory.example2:
@@ -125,7 +125,7 @@ führende Teil der Adapter Klasse mit dem 'adapterNamespace' Schlüssel im Param
 
    // Die MyProject_Db_Adapter_Pdo_Mysql Klasse automatisch laden
    // und eine Instanz von Ihr erstellen.
-   $db = Zend_Db::factory('Pdo_Mysql', array(
+   $db = Zend\Db\Db::factory('Pdo_Mysql', array(
        'host'             => '127.0.0.1',
        'username'         => 'webuser',
        'password'         => 'xxxxxxxx',
@@ -135,7 +135,7 @@ führende Teil der Adapter Klasse mit dem 'adapterNamespace' Schlüssel im Param
 
 .. _zend.db.adapter.connecting.factory-config:
 
-Zend_Config mit Zend_Db_Factory verwenden
+Zend_Config mit Zend\Db\Factory verwenden
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Optional kann jedes Argument der ``factory()`` Methode als Objekt des Typs :ref:`Zend_Config <zend.config>`
@@ -151,13 +151,13 @@ Adapters. Das wird nur verwendet wenn das zweite Argument für die ``factory()``
 .. rubric:: Verwenden der Factory Methode des Adapters mit einem Zend_Config Objekt
 
 Im Beispiel anbei wird ein ``Zend_Config`` Objekt von einem Array erstellt. Die Daten können auch aus einer
-externen Datei geladen werden indem Klassen wie zum Beispiel :ref:`Zend_Config_Ini <zend.config.adapters.ini>` oder
-:ref:`Zend_Config_Xml <zend.config.adapters.xml>` verwendet werden.
+externen Datei geladen werden indem Klassen wie zum Beispiel :ref:`Zend\Config\Ini <zend.config.adapters.ini>` oder
+:ref:`Zend\Config\Xml <zend.config.adapters.xml>` verwendet werden.
 
 .. code-block:: php
    :linenos:
 
-   $config = new Zend_Config(
+   $config = new Zend\Config\Config(
        array(
            'database' => array(
                'adapter' => 'Mysqli',
@@ -171,7 +171,7 @@ externen Datei geladen werden indem Klassen wie zum Beispiel :ref:`Zend_Config_I
        )
    );
 
-   $db = Zend_Db::factory($config->database);
+   $db = Zend\Db\Db::factory($config->database);
 
 Das zweite Argument der ``factory()`` Methode kann ein assoziatives Array sein das Einträge enthält die den
 Parameters des Adapters entsprechen. Dieses Argument ist optional. Wenn das erste Argument vom Typ ``Zend_Config``
@@ -199,7 +199,7 @@ Die folgende Liste erklärt die gemeinsamen Parameter die von ``Zend_Db`` Adapte
 
 - **charset**: Spezifiziert das Zeichenset das für diese Verbindung verwendet werden soll.
 
-- **options**: Dieser Parameter ist ein assoziatives Array von Optionen die in allen ``Zend_Db_Adapter`` Klassen
+- **options**: Dieser Parameter ist ein assoziatives Array von Optionen die in allen ``Zend\Db\Adapter`` Klassen
   enthalten sind.
 
 - **driver_options**: Dieser Parameter ist ein assoziatives Array von zusätzlichen Optionen die spezifisch für
@@ -207,23 +207,23 @@ Die folgende Liste erklärt die gemeinsamen Parameter die von ``Zend_Db`` Adapte
   *PDO* Treiber zu setzen.
 
 - **adapterNamespace**: Benennt den führenden Teil des Klassen Namens für den Adapter statt
-  '``Zend_Db_Adapter``'. Dies kann verwendet werden wenn man die ``factory()``\ Methode verwenden muß um eine
+  '``Zend\Db\Adapter``'. Dies kann verwendet werden wenn man die ``factory()``\ Methode verwenden muß um eine
   nicht von Zend kommende Datenbank Adapter Klasse zu laden.
 
 .. _zend.db.adapter.connecting.parameters.example1:
 
 .. rubric:: Übergeben der case-folding Option an die factory
 
-Diese Option kann über die Konstante ``Zend_Db::CASE_FOLDING`` angegeben werden. Sie entspricht dem ``ATTR_CASE``
+Diese Option kann über die Konstante ``Zend\Db\Db::CASE_FOLDING`` angegeben werden. Sie entspricht dem ``ATTR_CASE``
 Attribut in *PDO* und *IBM* *DB2* Datenbanktreibern und stellt die Schreibweise von String Schlüsseln in
-Abfrageergebnissen ein. Die Option kann den Wert ``Zend_Db::CASE_NATURAL`` (der Standard), ``Zend_Db::CASE_UPPER``
-oder ``Zend_Db::CASE_LOWER`` annehmen.
+Abfrageergebnissen ein. Die Option kann den Wert ``Zend\Db\Db::CASE_NATURAL`` (der Standard), ``Zend\Db\Db::CASE_UPPER``
+oder ``Zend\Db\Db::CASE_LOWER`` annehmen.
 
 .. code-block:: php
    :linenos:
 
    $options = array(
-       Zend_Db::CASE_FOLDING => Zend_Db::CASE_UPPER
+       Zend\Db\Db::CASE_FOLDING => Zend\Db\Db::CASE_UPPER
    );
 
    $params = array(
@@ -234,13 +234,13 @@ oder ``Zend_Db::CASE_LOWER`` annehmen.
        'options'        => $options
    );
 
-   $db = Zend_Db::factory('Db2', $params);
+   $db = Zend\Db\Db::factory('Db2', $params);
 
 .. _zend.db.adapter.connecting.parameters.example2:
 
 .. rubric:: Übergeben der auto-quoting Option an die factory
 
-Diese Option kann über die Konstante ``Zend_Db::AUTO_QUOTE_IDENTIFIERS`` angegeben werden. Wenn der Wert ``TRUE``
+Diese Option kann über die Konstante ``Zend\Db\Db::AUTO_QUOTE_IDENTIFIERS`` angegeben werden. Wenn der Wert ``TRUE``
 (der Standard) ist, werden Bezeichner wie Tabellennamen, Spaltennamen und auch Aliase in jeder *SQL* Syntax die vom
 Adapter Objekt generiert wurde begrenzt. Dies macht es einfach Bezeichner zu verwenden, die *SQL* Schlüsselwörter
 oder spezielle Zeichen enthalten. Wenn der Wert ``FALSE`` ist, werden Bezeichner nicht automatisch begrenzt. Wenn
@@ -250,7 +250,7 @@ Bezeichner begrenzt werden müssen, so kann dies über die ``quoteIdentifier()``
    :linenos:
 
    $options = array(
-       Zend_Db::AUTO_QUOTE_IDENTIFIERS => false
+       Zend\Db\Db::AUTO_QUOTE_IDENTIFIERS => false
    );
 
    $params = array(
@@ -261,7 +261,7 @@ Bezeichner begrenzt werden müssen, so kann dies über die ``quoteIdentifier()``
        'options'        => $options
    );
 
-   $db = Zend_Db::factory('Pdo_Mysql', $params);
+   $db = Zend\Db\Db::factory('Pdo_Mysql', $params);
 
 .. _zend.db.adapter.connecting.parameters.example3:
 
@@ -282,7 +282,7 @@ Bezeichner begrenzt werden müssen, so kann dies über die ``quoteIdentifier()``
        'driver_options' => $pdoParams
    );
 
-   $db = Zend_Db::factory('Pdo_Mysql', $params);
+   $db = Zend\Db\Db::factory('Pdo_Mysql', $params);
 
    echo $db->getConnection()
            ->getAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY);
@@ -295,7 +295,7 @@ Bezeichner begrenzt werden müssen, so kann dies über die ``quoteIdentifier()``
    :linenos:
 
    $options = array(
-       Zend_Db::ALLOW_SERIALIZATION => false
+       Zend\Db\Db::ALLOW_SERIALIZATION => false
    );
 
    $params = array(
@@ -306,7 +306,7 @@ Bezeichner begrenzt werden müssen, so kann dies über die ``quoteIdentifier()``
        'options'        => $options
    );
 
-   $db = Zend_Db::factory('Pdo_Mysql', $params);
+   $db = Zend\Db\Db::factory('Pdo_Mysql', $params);
 
 .. _zend.db.adapter.connecting.getconnection:
 
@@ -332,11 +332,11 @@ diese Exceptions an einer Stelle bearbeitet werden, und nicht erst bei der erste
 
 Zusätzlich kann ein Adapter serialisiert werden um Ihn zu speichern, zum Beispiel in einer Session Variable. Das
 kann sehr nütlich sein, nicht nur für den Adapter selbst, sondern auch für andere Objekte die Ihn verwenden, wie
-ein ``Zend_Db_Select`` Objekt. Standardmäßig, ist es Adaptern erlaubt serialisiert zu werden. Wenn man das nicht
-will, sollte man die ``Zend_Db::ALLOW_SERIALIZATION`` Option mit ``FALSE`` übergeben, wie im Beispiel anbei
+ein ``Zend\Db\Select`` Objekt. Standardmäßig, ist es Adaptern erlaubt serialisiert zu werden. Wenn man das nicht
+will, sollte man die ``Zend\Db\Db::ALLOW_SERIALIZATION`` Option mit ``FALSE`` übergeben, wie im Beispiel anbei
 gezeigt. Um das Prinzip von Lazy Connections zu erlauben, wird der Adapter sich selbst nicht wiederverbinden wenn
 er deserialisiert wird. Man muß ``getConnection()`` selbst aufrufen. Mann kann den Adapter dazu bringen sich
-automatisch wieder zu verbinden indem ``Zend_Db::AUTO_RECONNECT_ON_UNSERIALIZE`` als Option mit ``TRUE`` zum
+automatisch wieder zu verbinden indem ``Zend\Db\Db::AUTO_RECONNECT_ON_UNSERIALIZE`` als Option mit ``TRUE`` zum
 Adapter übergeben wird.
 
 .. _zend.db.adapter.connecting.getconnection.example:
@@ -347,9 +347,9 @@ Adapter übergeben wird.
    :linenos:
 
    try {
-       $db = Zend_Db::factory('Pdo_Mysql', $parameters);
+       $db = Zend\Db\Db::factory('Pdo_Mysql', $parameters);
        $db->getConnection();
-   } catch (Zend_Db_Adapter_Exception $e) {
+   } catch (Zend\Db_Adapter\Exception $e) {
        // Möglicherweise ein fehlgeschlagener login,
        // oder die RDBMS läuft möglicherweise nicht
    } catch (Zend_Exception $e) {
@@ -432,7 +432,7 @@ Man kann eine *SQL* *SELECT* Anfrage ausführen und alle Ergebnisse auf einmal m
 abrufen.
 
 Das erste Argument dieser Methode ist ein String der die *SELECT* Anweisung enthält. Als Alternative kann das
-erste Argument auch ein Objekt der :ref:`Zend_Db_Select <zend.db.select>` Klasse sein. Der Adapter konvertiert
+erste Argument auch ein Objekt der :ref:`Zend\Db\Select <zend.db.select>` Klasse sein. Der Adapter konvertiert
 dieses automatisch in einen String der die *SELECT* Anweisung repräsentiert.
 
 Das zweite Argument von ``fetchAll()`` ist ein Array von Werten die Parameterplatzhalter in der *SQL* Anweisung
@@ -460,8 +460,8 @@ diesem assoziativem Array entsprechen den Spalten oder Spaltenaliasen wie sie in
 Man kann einen anderen Stil für das Holen der Ergebnisse mit der ``setFetchMode()`` Methode angeben. Die
 unterstützten Modi werden mit folgenden Konstanten identifiziert:
 
-- **Zend_Db::FETCH_ASSOC**: Gibt Daten in einem assoziativem Array zurück. Die Array Schlüssel sind Strings der
-  Spaltennamen. Dies ist der Standardmodus für ``Zend_Db_Adapter`` Klassen.
+- **Zend\Db\Db::FETCH_ASSOC**: Gibt Daten in einem assoziativem Array zurück. Die Array Schlüssel sind Strings der
+  Spaltennamen. Dies ist der Standardmodus für ``Zend\Db\Adapter`` Klassen.
 
   Zu beachten ist, dass wenn die Select-Liste mehr als eine Spalte mit dem selben Namen enthält, zum Beispiel wenn
   diese aus verschiedenen Tabellen durch einem *JOIN* bestehen, kann nur einer der Einträge im assoziativem Array
@@ -470,21 +470,21 @@ unterstützten Modi werden mit folgenden Konstanten identifiziert:
 
   Standardmäßig werden die Strings so zurück gegeben wie sie von dem Datenbanktreiber geliefert werden. Dies
   entspricht der typischen Schreibweise der Spaltennamen auf dem *RDBMS* Server. Die Schreibweise dieser Strings
-  kann mit der ``Zend_Db::CASE_FOLDING`` Option angegeben werden. Dies muss bei der Instanziierung des Adapters
+  kann mit der ``Zend\Db\Db::CASE_FOLDING`` Option angegeben werden. Dies muss bei der Instanziierung des Adapters
   angegeben werden. Beschreibung unter :ref:`dieses Beispiel <zend.db.adapter.connecting.parameters.example1>`.
 
-- **Zend_Db::FETCH_NUM**: Gibt Daten in einem Array von Arrays zurück. Die Arrays werden über Integer indiziert,
+- **Zend\Db\Db::FETCH_NUM**: Gibt Daten in einem Array von Arrays zurück. Die Arrays werden über Integer indiziert,
   entsprechend der Position der betreffenden Felder in der Select-Liste der Anfrage.
 
-- **Zend_Db::FETCH_BOTH**: Gibt ein Array von Arrays zurück. Die Arrayschlüssel sind sowohl Strings wie beim
+- **Zend\Db\Db::FETCH_BOTH**: Gibt ein Array von Arrays zurück. Die Arrayschlüssel sind sowohl Strings wie beim
   ``FETCH_ASSOC`` Modus, als auch Integer wie beim ``FETCH_NUM`` modus. Zu beachten ist, dass die Anzahl der
   Elemente in dem Array doppelt so groß ist, als wenn ``FETCH_ASSOC`` oder ``FETCH_NUM`` verwendet worden wäre.
 
-- **Zend_Db::FETCH_COLUMN**: Gibt Daten in einem Array von Werten zurück. Die Werte in jedem Array sind die Werte
+- **Zend\Db\Db::FETCH_COLUMN**: Gibt Daten in einem Array von Werten zurück. Die Werte in jedem Array sind die Werte
   wie sie in einer Spalte des Ergebnisses zurück gegeben wurden. Standardmäßig ist die erste Spalte mit 0
   indiziert.
 
-- **Zend_Db::FETCH_OBJ**: Gibt Daten in einem Array von Objekten zurück. Die Standardklasse ist die in *PHP*
+- **Zend\Db\Db::FETCH_OBJ**: Gibt Daten in einem Array von Objekten zurück. Die Standardklasse ist die in *PHP*
   eingebaute Klasse stdClass. Spalten des Ergebnisses sind als öffentliche Eigenschaften des Objekts verfügbar.
 
 .. _zend.db.adapter.select.fetch-mode.example:
@@ -494,7 +494,7 @@ unterstützten Modi werden mit folgenden Konstanten identifiziert:
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchAll('SELECT * FROM bugs WHERE bug_id = ?', 2);
 
@@ -516,7 +516,7 @@ fetch-Modus gesetzt wurde, indem die erste Spalte als Array Index verwendet wird
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchAssoc(
        'SELECT bug_id, bug_description, bug_status FROM bugs'
@@ -543,7 +543,7 @@ verworfen. Wenn eine andere Spalte als die Erste benötigt wird sollte :ref:`die
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchCol(
        'SELECT bug_description, bug_id FROM bugs WHERE bug_id = ?', 2);
@@ -571,7 +571,7 @@ Werte in der ersten Spalte vorkommen, werden entsprechende Einträge in dem asso
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchAssoc('SELECT bug_id, bug_status FROM bugs');
 
@@ -592,7 +592,7 @@ Ergebnisssatzes.
 .. code-block:: php
    :linenos:
 
-   $db->setFetchMode(Zend_Db::FETCH_OBJ);
+   $db->setFetchMode(Zend\Db\Db::FETCH_OBJ);
 
    $result = $db->fetchRow('SELECT * FROM bugs WHERE bug_id = 2');
 
@@ -662,7 +662,7 @@ von Sicherheitsproblemen. Die Werte in dem Array müssen daher nicht escaped ode
 Einige Werte in dem Array könnten als *SQL* Expressions benötigt werden, in diesem Fall dürfen sie nicht in
 Anführungszeichen stehen. Standardmäßig werden alle übergebenen String-Werte als String-literale behandelt. Um
 anzugeben das ein Wert eine *SQL* Expression ist, und daher nicht quotiert werden soll, muss der Wert als ein
-Objekt des Typs ``Zend_Db_Expr`` übergeben werden, und nicht als einfacher String.
+Objekt des Typs ``Zend\Db\Expr`` übergeben werden, und nicht als einfacher String.
 
 .. _zend.db.adapter.write.insert.example2:
 
@@ -672,7 +672,7 @@ Objekt des Typs ``Zend_Db_Expr`` übergeben werden, und nicht als einfacher Stri
    :linenos:
 
    $data = array(
-       'created_on'      => new Zend_Db_Expr('CURDATE()'),
+       'created_on'      => new Zend\Db\Expr('CURDATE()'),
        'bug_description' => 'Etwas falsch',
        'bug_status'      => 'NEW'
    );
@@ -976,11 +976,11 @@ Anführungszeichen selektiv für den spezifizierten *SQL* Datentyp auszuwählen.
    $sql = 'SELECT * FROM atable WHERE intColumn = '
         . $db->quote($value, 'INTEGER');
 
-Jede ``Zend_Db_Adapter`` Klasse hat den Namen des nummerischen *SQL* Datentyps für die respektive Marke von
-*RDBMS* codiert. Man kann genauso die Konstanten ``Zend_Db::INT_TYPE``, ``Zend_Db::BIGINT_TYPE``, und
-``Zend_Db::FLOAT_TYPE`` verwenden um Code in einem mehr *RDBMS*-unabhängigen Weg zu schreiben.
+Jede ``Zend\Db\Adapter`` Klasse hat den Namen des nummerischen *SQL* Datentyps für die respektive Marke von
+*RDBMS* codiert. Man kann genauso die Konstanten ``Zend\Db\Db::INT_TYPE``, ``Zend\Db\Db::BIGINT_TYPE``, und
+``Zend\Db\Db::FLOAT_TYPE`` verwenden um Code in einem mehr *RDBMS*-unabhängigen Weg zu schreiben.
 
-``Zend_Db_Table`` definiert *SQL* Typen zu ``quote()`` automatisch wenn *SQL* Abfragen erstellt werden die einer
+``Zend\Db\Table`` definiert *SQL* Typen zu ``quote()`` automatisch wenn *SQL* Abfragen erstellt werden die einer
 Tabellen Schlüssel Spalte entsprechen.
 
 .. _zend.db.adapter.quoting.quote-into:
@@ -1072,7 +1072,7 @@ Daher muss, bei Verwendung von begrenztern Bezeichnern, die Schreibung der Bezei
 Bezeichner im Tabellenschema entsprechen. Einschließlich der Groß- und Kleinschreibung.
 
 In den meisten Fällen wo *SQL* innerhalb der ``Zend_Db`` Klassen generiert wird, werden standardmäßig alle
-Bezeichner automatisch begrenzt. Dieses Verhalten kann mit der Option ``Zend_Db::AUTO_QUOTE_IDENTIFIERS`` geändert
+Bezeichner automatisch begrenzt. Dieses Verhalten kann mit der Option ``Zend\Db\Db::AUTO_QUOTE_IDENTIFIERS`` geändert
 werden. Dies muss beim Instanziieren des Adapters wie in :ref:`diesem Beispiel
 <zend.db.adapter.connecting.parameters.example2>` angegeben werden.
 
@@ -1103,7 +1103,7 @@ durchgeführt wurden. Die Änderungen werden gewissermaßen ungeschehen gemacht,
 zurück auf jenen wie sie vor Beginn der Transaktion waren. Allerdings hat das rückgängig machen keinen Einfluss
 auf Änderungen die von anderen, gleichzeitig laufenden Transaktionen verursacht wurden.
 
-Nach dem Auflösen der Transaktion befindet sich der ``Zend_Db_Adapter`` wieder im auto-commit Modus, bis
+Nach dem Auflösen der Transaktion befindet sich der ``Zend\Db\Adapter`` wieder im auto-commit Modus, bis
 ``beginTransaction()`` wieder aufgerufen wird.
 
 .. _zend.db.adapter.transactions.example:
@@ -1247,7 +1247,7 @@ zu schließen. Das war bereits vor 1.7.2 der Fall für *PDO* Adapter, aber nicht
    .. code-block:: php
       :linenos:
 
-      $db = Zend_Db::factory('Oracle', array(
+      $db = Zend\Db\Db::factory('Oracle', array(
           'host'       => '127.0.0.1',
           'username'   => 'webuser',
           'password'   => 'xxxxxxxx',
@@ -1275,7 +1275,7 @@ Ausführen anderer Datenbank Anweisungen
 
 Es könnte Fälle geben in denen direkter Zugriff auf das Verbindungsobjekt benötigt wird, wie es von der *PHP*
 Erweiterung bereitgestellt wird. Einige der Erweiterungen könnten Features anbieten, welche nicht von Methoden der
-``Zend_Db_Adapter_Abstract`` Klasse auftauchen..
+``Zend\Db_Adapter\Abstract`` Klasse auftauchen..
 
 Zum Beispiel werden alle *SQL* Anweisungen von ``Zend_Db`` vorbereitet und dann ausgeführt. Trotzdem gibt es
 einige Features welche nicht kompatibel mit vorbereiteten Anweisungen sind. ``DDL`` Anweisungen wie ``CREATE`` und
@@ -1352,7 +1352,7 @@ Microsoft SQL Server
   Tabellenname spezifiziert wurde oder die letzte Insert Abfrage eine Id zurückgegeben hat. Die
   ``lastSequenceId()`` Methode gibt ``NULL`` zurück.
 
-- ``Zend_Db_Adapter_Sqlsrv`` setzt ``QUOTED_IDENTIFIER`` ON unmittelbar nach der Verbindung zu einer *SQL* Server
+- ``Zend\Db_Adapter\Sqlsrv`` setzt ``QUOTED_IDENTIFIER`` ON unmittelbar nach der Verbindung zu einer *SQL* Server
   Datenbank. Dadurch verwendet der Treiber das standardmäßige *SQL* Trennzeichen (**"**) statt den propietären
   eckigen Klammern die der *SQL* Server für die Identifikatoren als Trennzeichen verwendet.
 
@@ -1409,7 +1409,7 @@ Oracle
 - Die Oracle Erweiterung unterstützt keine positionierten Parameter. Es müssen benannte Parameter verwendet
   werden.
 
-- Aktuell wird die ``Zend_Db::CASE_FOLDING`` Option vom Oracle Adapter nicht unterstützt. Um diese Option mit
+- Aktuell wird die ``Zend\Db\Db::CASE_FOLDING`` Option vom Oracle Adapter nicht unterstützt. Um diese Option mit
   Oracle zu nutzen muss der *PDO* *OCI* Adapter verwendet werden.
 
 - Standardmäßig werden *LOB* Felder als *OCI*-Log Objekte zurückgegeben. Man kann Sie für alle Anfragen als
@@ -1445,7 +1445,7 @@ PDO Microsoft SQL Server
   eine Konvertierung im eigenen Anwendungscode durchführen, oder die Daten in einer Binären Spalte speichern
   muß. Referieren Sie bitte auf `Microsoft's Knowledge Base`_ für weitere Informationen.
 
-- ``Zend_Db_Adapter_Pdo_Mssql`` setzt ``QUOTED_IDENTIFIER`` ON direkt nach dem Verbinden zu einer *SQL* Server
+- ``Zend\Db\Adapter\Pdo\Mssql`` setzt ``QUOTED_IDENTIFIER`` ON direkt nach dem Verbinden zu einer *SQL* Server
   Datenbank. Dadurch verwendet der Treiber das Standard *SQL* Bezeichner Begrenzungssymbol (") an Stelle der
   proprietären Eckige-Klammer Syntax die der *SQL* Server standradmäßig nutzt.
 
@@ -1530,7 +1530,7 @@ Firebird (Interbase)
 - Firebird (Interbase) unterstützt keine auto-increment Schlüssel, deswegen sollte der Name einer Sequenz bei
   ``lastInsertId()`` oder ``lastSequenceId()`` spezifiziert werden.
 
-- Aktuell wird die ``Zend_Db::CASE_FOLDING`` Option vom Firebird (Interbase) Adapter nicht unterstützt. Nicht
+- Aktuell wird die ``Zend\Db\Db::CASE_FOLDING`` Option vom Firebird (Interbase) Adapter nicht unterstützt. Nicht
   gequotete Identifizierer werden automatisch in Großschreibweise zurückgegeben.
 
 - Der Name des Adapters ist ``ZendX_Db_Adapter_Firebird``.

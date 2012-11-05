@@ -16,7 +16,7 @@
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->addHeader('X-MailGenerator', 'MyCoolApplication');
    $mail->addHeader('X-greetingsTo', 'Mom', true); // multiple values
    $mail->addHeader('X-greetingsTo', 'Dad', true);

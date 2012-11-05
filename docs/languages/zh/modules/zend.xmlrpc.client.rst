@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.xmlrpc.client:
 
-Zend_XmlRpc_Client
+Zend\XmlRpc\Client
 ==================
 
 .. _zend.xmlrpc.client.introduction:
@@ -9,7 +9,7 @@ Zend_XmlRpc_Client
 介绍
 --
 
-Zend Framework 通过 *Zend_XmlRpc_Client* 作为客户端提供了调用远程 XML-RPC
+Zend Framework 通过 *Zend\XmlRpc\Client* 作为客户端提供了调用远程 XML-RPC
 服务的功能。主要功能包括在 PHP 和 XML-RPC 之间进行类型的自动转换， 服务代理对象（a
 server proxy object），和访问服务器的自省功能 （introspection capabilities）。
 
@@ -18,7 +18,7 @@ server proxy object），和访问服务器的自省功能 （introspection capa
 方法调用
 ----
 
-*Zend_XmlRpc_Client* 的构造函数接受 XML-RPC 服务器端 URL
+*Zend\XmlRpc\Client* 的构造函数接受 XML-RPC 服务器端 URL
 地址作为第一个参数。返回新的实例可以用来调用这个服务器端任意数量的远程方法。
 
 使用 XML-RPC 客户端调用远程方法，需要实例化它并且使用 *call()*
@@ -34,7 +34,7 @@ server proxy object），和访问服务器的自省功能 （introspection capa
 
    require_once 'Zend/XmlRpc/Client.php';
 
-   $client = new Zend_XmlRpc_Client('http://framework.zend.com/xmlrpc');
+   $client = new Zend\XmlRpc\Client('http://framework.zend.com/xmlrpc');
 
    echo $client->call('test.sayHello');
 
@@ -56,7 +56,7 @@ server proxy object），和访问服务器的自省功能 （introspection capa
 
    require_once 'Zend/XmlRpc/Client.php';
 
-   $client = new Zend_XmlRpc_Client('http://framework.zend.com/xmlrpc');
+   $client = new Zend\XmlRpc\Client('http://framework.zend.com/xmlrpc');
 
    $arg1 = 1.1;
    $arg2 = 'foo';
@@ -67,20 +67,20 @@ server proxy object），和访问服务器的自省功能 （introspection capa
 
 
 如果远程方法不需要任何参数，这个可选参数可以留空或者传递一个空的 *array()*
-过去。远程方法的参数数组可以包含原始的 PHP 类型， *Zend_XmlRpc_Value*
+过去。远程方法的参数数组可以包含原始的 PHP 类型， *Zend\XmlRpc\Value*
 对象，或者两种的混合。
 
 *call()* 方法会自动转换 XML-PRC 响应并返回等价的 PHP 原始类型。 返回值的
-*Zend_XmlRpc_Response* 对象也可以在调用之后使用 *getLastResponse()* 方法获得。
+*Zend\XmlRpc\Response* 对象也可以在调用之后使用 *getLastResponse()* 方法获得。
 
 .. _zend.xmlrpc.value.parameters:
 
 类型及转换
 -----
 
-一些远程方法调用时需要参数。它们作为数组传递到 *Zend_XmlRpc_Client* 的 *call()*
+一些远程方法调用时需要参数。它们作为数组传递到 *Zend\XmlRpc\Client* 的 *call()*
 方法的第二个参数。每个参数，不论是原始的 PHP 类型， 还是一个对象表示的特定的
-XML-RPC 类型（一个 *Zend_XmlRpc_Value* 对象）都会自动转换。
+XML-RPC 类型（一个 *Zend\XmlRpc\Value* 对象）都会自动转换。
 
 .. _zend.xmlrpc.value.parameters.php-native:
 
@@ -118,11 +118,11 @@ PHP 原始类型作为参数
    **一个空的数组会如何转换？**
 
    传递空数组到 XML-RPC 方法，由于它既可表示为一个数组也可表示为一个结构，
-   所以会产生问题。 *Zend_XmlRpc_Client* 会监测这种情况并向服务器进行一个
+   所以会产生问题。 *Zend\XmlRpc\Client* 会监测这种情况并向服务器进行一个
    *system.methodSignature* 请求来决定实际将要转换到的 XML-RPC 类型。
 
    不过，这样做本身就可能导致问题出现。首先，服务器不支持 *system.methodSignature*
-   将会产生一个失败请求，同时 *Zend_XmlRpc_Client* 会强制转换这个值为 XML-RPC
+   将会产生一个失败请求，同时 *Zend\XmlRpc\Client* 会强制转换这个值为 XML-RPC
    数组类型。此外，这意味着任何数组参数都可能导致对远端服务器的一次额外请求。
 
    可以在 XML-RPC 调用前调用 *setSkipSystemLookup()* 方法，以便完全屏蔽这个查询：
@@ -136,10 +136,10 @@ PHP 原始类型作为参数
 
 .. _zend.xmlrpc.value.parameters.xmlrpc-value:
 
-Zend_XmlRpc_Value 对象作为参数
+Zend\XmlRpc\Value 对象作为参数
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-也可以创建 *Zend_XmlRpc_Value* 实例作为参数，以表示特定的 XML-RPC
+也可以创建 *Zend\XmlRpc\Value* 实例作为参数，以表示特定的 XML-RPC
 类型。这样做的主要原因如下：
 
    - 当希望确定的参数类型被传递传递时（例如，方法需要一个整型，
@@ -153,39 +153,39 @@ Zend_XmlRpc_Value 对象作为参数
 
 
 
-有两种方法创建 *Zend_XmlRpc_Value* 对象：直接实例化某个 *Zend_XmlRpc_Value*
-的子类；或者使用静态工厂方法 *Zend_XmlRpc_Value::getXmlRpcValue()*\ 。
+有两种方法创建 *Zend\XmlRpc\Value* 对象：直接实例化某个 *Zend\XmlRpc\Value*
+的子类；或者使用静态工厂方法 *Zend\XmlRpc\Value::getXmlRpcValue()*\ 。
 
 .. _zend.xmlrpc.value.parameters.xmlrpc-value.table-1:
 
-.. table:: Zend_XmlRpc_Value 对象作为 XML-RPC 类型
+.. table:: Zend\XmlRpc\Value 对象作为 XML-RPC 类型
 
    +----------------+---------------------------------------+--------------------------+
-   |XML-RPC 类型      |Zend_XmlRpc_Value 常量                   |Zend_XmlRpc_Value 对象      |
+   |XML-RPC 类型      |Zend\XmlRpc\Value 常量                   |Zend\XmlRpc\Value 对象      |
    +================+=======================================+==========================+
-   |int             |Zend_XmlRpc_Value::XMLRPC_TYPE_INTEGER |Zend_XmlRpc_Value_Integer |
+   |int             |Zend\XmlRpc\Value::XMLRPC_TYPE_INTEGER |Zend\XmlRpc_Value\Integer |
    +----------------+---------------------------------------+--------------------------+
-   |double          |Zend_XmlRpc_Value::XMLRPC_TYPE_DOUBLE  |Zend_XmlRpc_Value_Double  |
+   |double          |Zend\XmlRpc\Value::XMLRPC_TYPE_DOUBLE  |Zend\XmlRpc_Value\Double  |
    +----------------+---------------------------------------+--------------------------+
-   |boolean         |Zend_XmlRpc_Value::XMLRPC_TYPE_BOOLEAN |Zend_XmlRpc_Value_Boolean |
+   |boolean         |Zend\XmlRpc\Value::XMLRPC_TYPE_BOOLEAN |Zend\XmlRpc_Value\Boolean |
    +----------------+---------------------------------------+--------------------------+
-   |string          |Zend_XmlRpc_Value::XMLRPC_TYPE_STRING  |Zend_XmlRpc_Value_String  |
+   |string          |Zend\XmlRpc\Value::XMLRPC_TYPE_STRING  |Zend\XmlRpc_Value\String  |
    +----------------+---------------------------------------+--------------------------+
-   |base64          |Zend_XmlRpc_Value::XMLRPC_TYPE_BASE64  |Zend_XmlRpc_Value_Base64  |
+   |base64          |Zend\XmlRpc\Value::XMLRPC_TYPE_BASE64  |Zend\XmlRpc_Value\Base64  |
    +----------------+---------------------------------------+--------------------------+
-   |dateTime.iso8601|Zend_XmlRpc_Value::XMLRPC_TYPE_DATETIME|Zend_XmlRpc_Value_DateTime|
+   |dateTime.iso8601|Zend\XmlRpc\Value::XMLRPC_TYPE_DATETIME|Zend\XmlRpc_Value\DateTime|
    +----------------+---------------------------------------+--------------------------+
-   |array           |Zend_XmlRpc_Value::XMLRPC_TYPE_ARRAY   |Zend_XmlRpc_Value_Array   |
+   |array           |Zend\XmlRpc\Value::XMLRPC_TYPE_ARRAY   |Zend\XmlRpc_Value\Array   |
    +----------------+---------------------------------------+--------------------------+
-   |struct          |Zend_XmlRpc_Value::XMLRPC_TYPE_STRUCT  |Zend_XmlRpc_Value_Struct  |
+   |struct          |Zend\XmlRpc\Value::XMLRPC_TYPE_STRUCT  |Zend\XmlRpc_Value\Struct  |
    +----------------+---------------------------------------+--------------------------+
 
 .. note::
 
    **自动转换**
 
-   当创建新的 *Zend_XmlRpc_Value* 对象时，它的值通过 PHP 类型设置。PHP 类型将会通过 PHP
-   类型转换到指定的类型。例如， 如果给 *Zend_XmlRpc_Value_Integer*
+   当创建新的 *Zend\XmlRpc\Value* 对象时，它的值通过 PHP 类型设置。PHP 类型将会通过 PHP
+   类型转换到指定的类型。例如， 如果给 *Zend\XmlRpc_Value\Integer*
    对象提供一个字符串，它将由 *(int)$value* 转换。
 
 .. _zend.xmlrpc.client.requests-and-responses:
@@ -196,8 +196,8 @@ Zend_XmlRpc_Value 对象作为参数
 另一个使用 XML-RPC 客户端调用远程方法的途径是使用服务代理。这是一个 PHP
 对象代理远程 XML-RPC 名字空间，使其工作方式尽可能的贴近原始的 PHP 对象。
 
-调用 *Zend_XmlRpc_Client* 实例的 *getProxy()* 方法实例化一个服务器代理。该方法将返回一个
-*Zend_XmlRpc_Client_ServerProxy*
+调用 *Zend\XmlRpc\Client* 实例的 *getProxy()* 方法实例化一个服务器代理。该方法将返回一个
+*Zend\XmlRpc_Client\ServerProxy*
 实例。对服务器代理方法的任何调用将会传递到远程，而参数的传递就如同其他任何 PHP
 方法一样。
 
@@ -210,7 +210,7 @@ Zend_XmlRpc_Value 对象作为参数
 
    require_once 'Zend/XmlRpc/Client.php';
 
-   $client = new Zend_XmlRpc_Client('http://framework.zend.com/xmlrpc');
+   $client = new Zend\XmlRpc\Client('http://framework.zend.com/xmlrpc');
 
    $server = $client->getProxy();           // Proxy the default namespace
 
@@ -228,7 +228,7 @@ Zend_XmlRpc_Value 对象作为参数
 .. code-block::
    :linenos:
 
-   $client = new Zend_XmlRpc_Client('http://framework.zend.com/xmlrpc');
+   $client = new Zend\XmlRpc\Client('http://framework.zend.com/xmlrpc');
 
    $test  = $client->getProxy('test');     // Proxy the "test" namespace
 
@@ -243,7 +243,7 @@ Zend_XmlRpc_Value 对象作为参数
 错误处理
 ----
 
-在 XML-RPC 方法中可能出现两种错误：HTTP 错误和 XML-RPC 失败。 *Zend_XmlRpc_Client*
+在 XML-RPC 方法中可能出现两种错误：HTTP 错误和 XML-RPC 失败。 *Zend\XmlRpc\Client*
 可以识别并分别检测并捕获它们。
 
 .. _zend.xmlrpc.client.error-handling.http:
@@ -252,7 +252,7 @@ HTTP 错误
 ^^^^^^^
 
 当 HTTP 错误发生时，例如远端 HTTP 服务器返回 *404 Not Found*\ ，将会抛出一个
-*Zend_XmlRpc_Client_HttpException* 异常。
+*Zend\XmlRpc_Client\HttpException* 异常。
 
 .. _zend.xmlrpc.client.error-handling.http.example-1:
 
@@ -261,13 +261,13 @@ HTTP 错误
 .. code-block::
    :linenos:
 
-   $client = new Zend_XmlRpc_Client('http://foo/404');
+   $client = new Zend\XmlRpc\Client('http://foo/404');
 
    try {
 
        $client->call('bar', array($arg1, $arg2));
 
-   } catch (Zend_XmlRpc_Client_HttpException $e) {
+   } catch (Zend\XmlRpc_Client\HttpException $e) {
 
        // $e->getCode() returns 404
        // $e->getMessage() returns "Not Found"
@@ -276,7 +276,7 @@ HTTP 错误
 
 
 不论是如何使用 XML-RPC 客户端的，当 HTTP 错误发生时，都会抛出
-*Zend_XmlRpc_Client_HttpException* 异常。
+*Zend\XmlRpc_Client\HttpException* 异常。
 
 .. _zend.xmlrpc.client.error-handling.faults:
 
@@ -284,11 +284,11 @@ XML-RPC 失败
 ^^^^^^^^^^
 
 XML-RPC 失败类似于 PHP 异常。它是从 XML-RPC 方法调用返回的，有着指定的类型，
-同时具有错误代码和错误消息。XML-RPC 失败的处理方式随着 *Zend_XmlRpc_Client*
+同时具有错误代码和错误消息。XML-RPC 失败的处理方式随着 *Zend\XmlRpc\Client*
 使用方式不同而不同。
 
 当 *call()* 方法或者服务器代理对象被使用时，XML-RPC 失败会抛出一个
-*Zend_XmlRpc_Client_FaultException* 异常。异常代码和消息会直接映射到原始的 XML-RPC
+*Zend\XmlRpc_Client\FaultException* 异常。异常代码和消息会直接映射到原始的 XML-RPC
 失败相应的内容上去。
 
 .. _zend.xmlrpc.client.error-handling.faults.example-1:
@@ -298,13 +298,13 @@ XML-RPC 失败类似于 PHP 异常。它是从 XML-RPC 方法调用返回的，�
 .. code-block::
    :linenos:
 
-   $client = new Zend_XmlRpc_Client('http://framework.zend.com/xmlrpc');
+   $client = new Zend\XmlRpc\Client('http://framework.zend.com/xmlrpc');
 
    try {
 
        $client->call('badMethod');
 
-   } catch (Zend_XmlRpc_Client_FaultException $e) {
+   } catch (Zend\XmlRpc_Client\FaultException $e) {
 
        // $e->getCode() returns 1
        // $e->getMessage() returns "Unknown method"
@@ -312,21 +312,21 @@ XML-RPC 失败类似于 PHP 异常。它是从 XML-RPC 方法调用返回的，�
    }
 
 
-当请求时使用 *call()* 方法，会在失败的时候抛出 *Zend_XmlRpc_Client_FaultException*
-异常。可以调用 *getLastResponse()* 获得包含在 *Zend_XmlRpc_Response* 对象中的异常。
+当请求时使用 *call()* 方法，会在失败的时候抛出 *Zend\XmlRpc_Client\FaultException*
+异常。可以调用 *getLastResponse()* 获得包含在 *Zend\XmlRpc\Response* 对象中的异常。
 
 当请求时使用 *doRequest()* 方法，则不会抛出异常。将返回一个包含错误信息的
-*Zend_XmlRpc_Response* 对象。可以使用 *Zend_XmlRpc_Response* 示例的 *isFault()* 方法检查。
+*Zend\XmlRpc\Response* 对象。可以使用 *Zend\XmlRpc\Response* 示例的 *isFault()* 方法检查。
 
 .. _zend.xmlrpc.client.introspection:
 
 服务器自省（introspection）
 --------------------
 
-一些 XML-RPC 服务器支持 *system.* 命名空间下的自省。 *Zend_XmlRpc_Client*
+一些 XML-RPC 服务器支持 *system.* 命名空间下的自省。 *Zend\XmlRpc\Client*
 对这些服务器的这种功能特别进行了支持。
 
-调用 *Zend_XmlRpcClient* 的 *getIntrospector()* 方法可以获得 *Zend_XmlRpc_Client_ServerIntrospection*
+调用 *Zend_XmlRpcClient* 的 *getIntrospector()* 方法可以获得 *Zend\XmlRpc_Client\ServerIntrospection*
 实例。 通过它可以使用服务器的自省功能。
 
 .. _zend.xmlrpc.client.request-to-response:
@@ -334,9 +334,9 @@ XML-RPC 失败类似于 PHP 异常。它是从 XML-RPC 方法调用返回的，�
 从请求作出回应
 -------
 
-本质上说， *Zend_XmlRpc_Client* 实例的 *call()* 方法创建了请求对象（ *Zend_XmlRpc_Request*\
+本质上说， *Zend\XmlRpc\Client* 实例的 *call()* 方法创建了请求对象（ *Zend\XmlRpc\Request*\
 ）并将其传递给另一个方法 *doRequest()*\ ， *doRequest()* 方法返回响应对象（
-*Zend_XmlRpc_Response*\ ）。
+*Zend\XmlRpc\Response*\ ）。
 
 *doRequest()* 方法也可直接调用。
 
@@ -347,16 +347,16 @@ XML-RPC 失败类似于 PHP 异常。它是从 XML-RPC 方法调用返回的，�
 .. code-block::
    :linenos:
 
-   $client = new Zend_XmlRpc_Client('http://framework.zend.com/xmlrpc');
+   $client = new Zend\XmlRpc\Client('http://framework.zend.com/xmlrpc');
 
-   $request = new Zend_XmlRpc_Request();
+   $request = new Zend\XmlRpc\Request();
    $request->setMethod('test.sayHello');
    $request->setParams(array('foo', 'bar'));
 
    $client->doRequest($request);
 
-   // $server->getLastRequest() returns instanceof Zend_XmlRpc_Request
-   // $server->getLastResponse() returns instanceof Zend_XmlRpc_Response
+   // $server->getLastRequest() returns instanceof Zend\XmlRpc\Request
+   // $server->getLastResponse() returns instanceof Zend\XmlRpc\Response
 
 
 无论客户端通过任何方法调用 XML-RPC 方法，如 *call()* 方法、 *doRequest()*
@@ -368,13 +368,13 @@ XML-RPC 失败类似于 PHP 异常。它是从 XML-RPC 方法调用返回的，�
 HTTP 客户端和测试
 -----------
 
-在前面所有的例子中，从未指定 HTTP 客户端。这是因为在使用 *Zend_XmlRpc_Client*
-时会使用默认配置自动创建一个 *Zend_Http_Client* 实例。
+在前面所有的例子中，从未指定 HTTP 客户端。这是因为在使用 *Zend\XmlRpc\Client*
+时会使用默认配置自动创建一个 *Zend\Http\Client* 实例。
 
 可以在任何时候使用 *getHttpClient()* 方法获得 HTTP 客户端。 多数情况下默认的 HTTP
 客户端已经足够使用。不过仍然可以使用 *setHttpClient()* 方法设置新的 HTTP 客户端实例。
 
-*setHttpClient()* 在单元测试时特别有用。在 *Zend_Http_Client_Adapter_Test*
-中测试时可以欺骗远程服务器。阅读 *Zend_XmlRpc_Client* 的单元测试了解如何这样做。
+*setHttpClient()* 在单元测试时特别有用。在 *Zend\Http\Client\Adapter\Test*
+中测试时可以欺骗远程服务器。阅读 *Zend\XmlRpc\Client* 的单元测试了解如何这样做。
 
 

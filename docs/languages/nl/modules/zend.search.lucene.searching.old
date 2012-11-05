@@ -10,7 +10,7 @@ Opbouwen van Queries
 --------------------
 
 Er zijn twee manieren om door een index te zoeken. De eerste methode gebruikt de Query Parser om een query op te
-bouwen van een string. De tweede bied de mogelijkheid je eigen queries te maken via de Zend_Search_Lucene API.
+bouwen van een string. De tweede bied de mogelijkheid je eigen queries te maken via de Zend\Search\Lucene API.
 
 Alvorens te kiezen voor de aangeboden Query Parser, hou het volgende in gedachte:
 
@@ -42,13 +42,13 @@ Beide manieren gebruiken dezelfde API methode om door de index te zoeken:
 
    require_once('Zend/Search/Lucene.php');
 
-   $index = new Zend_Search_Lucene('/data/my_index');
+   $index = new Zend\Search\Lucene('/data/my_index');
 
    $index->find($query);
 
    ?>
-De *Zend_Search_Lucene::find()* methode herkent automatisch het invoer type en gebruikt de query parser om het
-juiste Zend_Search_Lucene_Search_Query object van een string te maken.
+De *Zend\Search\Lucene::find()* methode herkent automatisch het invoer type en gebruikt de query parser om het
+juiste Zend\Search\Lucene\Search\Query object van een string te maken.
 
 Het is belangrijk om te zien dat *find()* case sensitive is. Standaard normaliseert LuceneIndexCreation.jar alle
 documenten naar kleine letters. Dit kan uitgezet worden met een command line switch (type LuceneIndexCreation.jar
@@ -61,12 +61,12 @@ doorgegeven worden onderworpen aan *strtolower()*, anders worden mogelijk geen r
 Zoek resultaten
 ---------------
 
-Het zoek resultaat is een array van Zend_Search_Lucene_Search_QueryHit objecten. Ieder van deze objecten heeft twee
+Het zoek resultaat is een array van Zend\Search\Lucene\Search\QueryHit objecten. Ieder van deze objecten heeft twee
 eigenschappen: *$hit->document* is een documentnummer binnen de index en *$hit->score* is een score van het
 resultaat binnen het volledige zoekresultaat. Resultaat wordt geordend op score (hoogste score komt eerst).
 
-Het Zend_Search_Lucene_Search_QueryHit object bied daarnaast ook ieder veld van het gevonden
-Zend_Search_Lucene_Document als een eigenschap. In het volgende voorbeeld wordt een resultaat teruggegeven en heeft
+Het Zend\Search\Lucene\Search\QueryHit object bied daarnaast ook ieder veld van het gevonden
+Zend\Search_Lucene\Document als een eigenschap. In het volgende voorbeeld wordt een resultaat teruggegeven en heeft
 het document twee velden: title en author.
 
 .. code-block:: php
@@ -76,7 +76,7 @@ het document twee velden: title en author.
 
    require_once('Zend/Search/Lucene.php');
 
-   $index = new Zend_Search_Lucene('/data/my_index');
+   $index = new Zend\Search\Lucene('/data/my_index');
 
    $hits = $index->find($query);
 
@@ -89,8 +89,8 @@ het document twee velden: title en author.
    }
 
    ?>
-Het originele Zend_Search_Lucene_Document object kan ook worden teruggegeven vanuit de
-Zend_Search_Lucene_Search_QueryHit. Je kan opgeslagen delen van het document verkrijgen door gebruik te maken van
+Het originele Zend\Search_Lucene\Document object kan ook worden teruggegeven vanuit de
+Zend\Search\Lucene\Search\QueryHit. Je kan opgeslagen delen van het document verkrijgen door gebruik te maken van
 de *getDocument()*\ methode van het index object en dan de *getFieldValue()* methode te gebruiken:
 
 .. code-block:: php
@@ -100,18 +100,18 @@ de *getDocument()*\ methode van het index object en dan de *getFieldValue()* met
 
    require_once('Zend/Search/Lucene.php');
 
-   $index = new Zend_Search_Lucene('/data/my_index');
+   $index = new Zend\Search\Lucene('/data/my_index');
 
    $hits = $index->find($query);
    foreach ($hits as $hit) {
-       // geef een Zend_Search_Lucene_Document object terug voor dit resultaat
+       // geef een Zend\Search_Lucene\Document object terug voor dit resultaat
        echo $document = $hit->getDocument();
 
-       // geef een Zend_Search_Lucene_Field object terug
-       // uit het Zend_Search_Lucene_Document
+       // geef een Zend\Search_Lucene\Field object terug
+       // uit het Zend\Search_Lucene\Document
        echo $document->getField('title');
 
-       // geef de string waarde terug van een Zend_Search_Lucene_Field object
+       // geef de string waarde terug van een Zend\Search_Lucene\Field object
        echo $document->getFieldValue('title');
 
        // hetzelfde als getFieldValue()
@@ -119,7 +119,7 @@ de *getDocument()*\ methode van het index object en dan de *getFieldValue()* met
    }
 
    ?>
-De velden die beschikbaar zijn via het Zend_Search_Lucene_Document object worden besloten tijdens het indexeren. De
+De velden die beschikbaar zijn via het Zend\Search_Lucene\Document object worden besloten tijdens het indexeren. De
 document velden worden ofwel geindexeerd, ofwel geindexeerd en opgeslagen, in het document door de
 indexeringsapplicatie (bijvoorbeeld LuceneIndexCreation.jar).
 
@@ -131,7 +131,7 @@ opgehaald dient te worden.
 Resultaten Scoring
 ------------------
 
-Zend_Search_Lucene gebruikt hetzelfde score algoritme als Java Lucene. Zoek resultaten worden geordend op score,
+Zend\Search\Lucene gebruikt hetzelfde score algoritme als Java Lucene. Zoek resultaten worden geordend op score,
 met de hoogste score als eerst.
 
 Een verschillende score betekent dat een document meer overeenkomt met de zoekopdracht dan de andere.
@@ -153,7 +153,7 @@ Score kan worden verkregen via de *score* eigenschap van het resultaat:
    }
 
    ?>
-Zend_Search_Lucene_Search_Similarity klasse wordt gebruikt om de score te berekenen. Zie :ref:`Uitbreidbaarheid.
+Zend\Search\Lucene\Search\Similarity klasse wordt gebruikt om de score te berekenen. Zie :ref:`Uitbreidbaarheid.
 Scoring Algoritmes <zend.search.lucene.extending.scoring>` sectie voor details.
 
 

@@ -23,7 +23,7 @@
     * The custom entry class automatically knows the feed URI (optional) and
     * can automatically add extra namespaces.
     */
-   class MyEntry extends Zend_Feed_Entry_Atom
+   class MyEntry extends Zend\Feed_Entry\Atom
    {
 
        public function __construct($uri = 'http://www.example.com/myfeed/',
@@ -31,7 +31,7 @@
        {
            parent::__construct($uri, $xml);
 
-           Zend_Feed::registerNamespace('myns',
+           Zend\Feed\Feed::registerNamespace('myns',
                                         'http://www.example.com/myns/1.0');
        }
 

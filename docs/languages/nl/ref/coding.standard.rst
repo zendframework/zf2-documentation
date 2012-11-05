@@ -100,10 +100,10 @@ klassen hiërarchisch zijn ondergebracht.
 
 Klassenamen mogen alleen alfanumerieke tekens bevatten. Nummers zijn toegelaten in klassename maar worden
 afgeraden. Underscores zijn alleen toegelaten als vervanging van een padscheider -- de bestandsnaam
-"Zend/Db/Table.php" moet overeenkomen met de klassenaam "Zend_Db_Table".
+"Zend/Db/Table.php" moet overeenkomen met de klassenaam "Zend\Db\Table".
 
 Indien een klassenaam bestaat uit meer dan één woord moet de eerste letter van elk woord een hoofdletter zijn.
-Opeenvolgende hoofdletters zijn niet toegestaan, bv. een klasse "Zend_PDF" is niet toegestaan terwijl "Zend_Pdf"
+Opeenvolgende hoofdletters zijn niet toegestaan, bv. een klasse "ZendPDF" is niet toegestaan terwijl "ZendPdf"
 aanvaardbaar is.
 
 Zend Framework klassenamen waarvan Zend of één van de bijdragende partners de auteur is en die met het Framework
@@ -120,7 +120,7 @@ Dit zijn voorbeelden van aanvaardbare klassenamen:
 
       Zend_View
 
-      Zend_View_Helper
+      Zend\View\Helper
 
 **BELANGRIJK:** Code die werkt met het Framework maar er geen deel van is, bv. code geschreven door een
 Frameworkgebruiker en niet door Zend of één van de Framework partnerbedrijven, mogen nooit beginnen met "Zend\_".
@@ -138,8 +138,8 @@ bovendien eindigen op het woord "interface", zoals in deze voorbeelden:
    .. code-block:: php
       :linenos:
 
-      Zend_Log_Adapter_Interface
-      Zend_Controller_Dispatcher_Interface
+      Zend\Log_Adapter\Interface
+      Zend\Controller_Dispatcher\Interface
 
 
 .. _coding-standard.naming-conventions.filenames:

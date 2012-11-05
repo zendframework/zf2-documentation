@@ -10,17 +10,17 @@ Werte zugeordnet wurden.
 
 .. _zend.validator.set.notempty.options:
 
-Unterstützte Optionen für Zend_Validate_NotEmpty
+Unterstützte Optionen für Zend\Validate\NotEmpty
 ------------------------------------------------
 
-Die folgenden Optionen werden für ``Zend_Validate_NotEmpty`` unterstützt:
+Die folgenden Optionen werden für ``Zend\Validate\NotEmpty`` unterstützt:
 
 - **type**: Setzt den Typ der Prüfung welcher durchgeführt wird. Für Details sollte in :ref:`diesem Abschnitt
   <zend.validator.set.notempty.types>` nachgesehen werden.
 
 .. _zend.validator.set.notempty.default:
 
-Standardverhalten für Zend_Validate_NotEmpty
+Standardverhalten für Zend\Validate\NotEmpty
 --------------------------------------------
 
 Standardmäßig arbeitet diese Prüfung anders als man es laut *PHP*'s ``empty()`` Funktion erwarten würde. Im
@@ -29,7 +29,7 @@ speziellen evaluiert diese Prüfung den den Integer **0** und den String '**0**'
 .. code-block:: php
    :linenos:
 
-   $valid = new Zend_Validate_NotEmpty();
+   $valid = new Zend\Validate\NotEmpty();
    $value  = '';
    $result = $valid->isValid($value);
    // gibt false zurück
@@ -38,17 +38,17 @@ speziellen evaluiert diese Prüfung den den Integer **0** und den String '**0**'
 
    **Unterschiedliches Standardverhalten zu PHP**
 
-   Ohne Angabe einer Konfiguration ist das Verhalten von ``Zend_Validate_NotEmpty`` anders als das von *PHP*.
+   Ohne Angabe einer Konfiguration ist das Verhalten von ``Zend\Validate\NotEmpty`` anders als das von *PHP*.
 
 .. _zend.validator.set.notempty.types:
 
-Ändern des Verhaltens für Zend_Validate_NotEmpty
+Ändern des Verhaltens für Zend\Validate\NotEmpty
 ------------------------------------------------
 
 Einige Projekte haben andere Ansichten davon was als "leerer" Wert angesehen wird: ein String der nur Leerzeichen
 enthält könnte als leer angesehen werden, oder **0** könnte als nicht leer angesehen werden (speziell für
 boolsche Sequenzen). Um den unterschiedlichen Notwendigkeiten gerecht zu werden erlaubt es
-``Zend_Validate_NotEmpty`` die Typen zu konfigurieren welche als leer angesehen werden und jene die es nicht
+``Zend\Validate\NotEmpty`` die Typen zu konfigurieren welche als leer angesehen werden und jene die es nicht
 werden.
 
 Die folgenden Typen können behandelt werden:
@@ -95,21 +95,21 @@ textuellen String an. Siehe auch die folgenden Beispiele:
    :linenos:
 
    // Gibt bei 0 false zurück
-   $validator = new Zend_Validate_NotEmpty(Zend_Validate_NotEmpty::INTEGER);
+   $validator = new Zend\Validate\NotEmpty(Zend\Validate\NotEmpty::INTEGER);
 
    // Gibt bei 0 oder '0' false zurück
-   $validator = new Zend_Validate_NotEmpty(
-       Zend_Validate_NotEmpty::INTEGER + Zend_NotEmpty::ZERO
+   $validator = new Zend\Validate\NotEmpty(
+       Zend\Validate\NotEmpty::INTEGER + Zend\NotEmpty\NotEmpty::ZERO
    );
 
    // Gibt bei 0 oder '0' false zurück
-   $validator = new Zend_Validate_NotEmpty(array(
-       Zend_Validate_NotEmpty::INTEGER,
-       Zend_Validate_NotEmpty::ZERO
+   $validator = new Zend\Validate\NotEmpty(array(
+       Zend\Validate\NotEmpty::INTEGER,
+       Zend\Validate\NotEmpty::ZERO
    ));
 
    // Gibt bei 0 oder '0' false zurück
-   $validator = new Zend_Validate_NotEmpty(array(
+   $validator = new Zend\Validate\NotEmpty(array(
        'integer',
        'zero',
    ));

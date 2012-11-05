@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.server.reflection:
 
-Zend_Server_Reflection
+Zend\Server\Reflection
 ======================
 
 .. _zend.server.reflection.introduction:
@@ -9,7 +9,7 @@ Zend_Server_Reflection
 简介
 --
 
-Zend_Server_Reflection
+Zend\Server\Reflection
 提供了一个标准机制，在这个机制下，和服务器类一起执行函数和类自定义（
 introspection ），它基于 PHP 5 的 Reflection
 API，并且集成它来提供方法来获取参数和返回值类型和描述、函数和方法原型的全部列表（例如，所有可能的有效调用组合）和函数/方法描述。
@@ -28,8 +28,8 @@ API，并且集成它来提供方法来获取参数和返回值类型和描述�
 
    <?php
    require_once 'Zend/Server/Reflection.php';
-   $class    = Zend_Server_Reflection::reflectClass('My_Class');
-   $function = Zend_Server_Reflection::reflectFunction('my_function');
+   $class    = Zend\Server\Reflection::reflectClass('My_Class');
+   $function = Zend\Server\Reflection::reflectFunction('my_function');
 
    // Get prototypes
    $prototypes = $reflection->getPrototypes();
@@ -55,7 +55,7 @@ API，并且集成它来提供方法来获取参数和返回值类型和描述�
    // setNamespace()
    $reflection->getNamespace();
 
-*reflectFunction()* 返回一个 *Zend_Server_Reflection_Function* 对象； *reflectClass* 返回一个
-*Zend_Server_Reflection_Class* 对象。请参考 API 文档来获知那些方法有用。
+*reflectFunction()* 返回一个 *Zend\Server_Reflection\Function* 对象； *reflectClass* 返回一个
+*Zend\Server_Reflection\Class* 对象。请参考 API 文档来获知那些方法有用。
 
 

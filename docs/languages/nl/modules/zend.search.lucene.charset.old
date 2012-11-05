@@ -9,8 +9,8 @@ Karakterset.
 Support voor UTF-8 en single-byte karaktersets.
 -----------------------------------------------
 
-Zend_Search_Lucene is ontworpen om met de UTF-8 karakterset te werken. Indexbestanden slaan unicode data op in
-Java's "modified UTF-8 encoding". Zend_Search_Lucene core biedt volledige support voor deze vorm op één
+Zend\Search\Lucene is ontworpen om met de UTF-8 karakterset te werken. Indexbestanden slaan unicode data op in
+Java's "modified UTF-8 encoding". Zend\Search\Lucene core biedt volledige support voor deze vorm op één
 uitzondering na. [#]_
 
 Niettemin, tekst analysator, query parser tekst analysator en query parser gebruiken ctype_alpha() om tekst en
@@ -24,10 +24,10 @@ brondocumenten):
    :linenos:
 
    <?php
-   $doc = new Zend_Search_Lucene_Document();
+   $doc = new Zend\Search_Lucene\Document();
    ...
    $docText = iconv('ISO-8859-1', 'ASCII//TRANSLIT', $docText);
-   $doc->addField(Zend_Search_Lucene_Field::UnStored('contents', $docText));
+   $doc->addField(Zend\Search_Lucene\Field::UnStored('contents', $docText));
 
    ...
 
@@ -36,7 +36,7 @@ brondocumenten):
    ?>
 
 
-.. [#] Zend_Search_Lucene biedt alleen support voor Basic Multilingual Plane (BMP) karakters (van 0x0000 tot
+.. [#] Zend\Search\Lucene biedt alleen support voor Basic Multilingual Plane (BMP) karakters (van 0x0000 tot
        0xFFFF) en biedt geen support voor bijkomende karakters (karakters waarvan de codes groter zijn dan 0xFFFF)
 
        Java 2 stelt deze karakters voor als een paar van char (16-bit) waarden, het eerste paar van de hogere reeks

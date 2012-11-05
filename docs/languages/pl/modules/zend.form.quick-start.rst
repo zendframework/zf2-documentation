@@ -86,7 +86,7 @@ Kilka przykładów:
    :linenos:
 
    // Utworzenie egzemplarza elementu i przekazanie go do obiektu formularza:
-   $form->addElement(new Zend_Form_Element_Text('username'));
+   $form->addElement(new Zend\Form_Element\Text('username'));
 
    // Przekazanie typu elementu do obiektu:
    $form->addElement('text', 'username');
@@ -98,15 +98,15 @@ formularza, (b) za pomocą opcji konfiguracyjnych przekazanych podczas tworzenia
 ``Zend_Form`` lub (c) pobierając istniejący element z obiektu formularza i konfigurując go.
 
 Najpierw należy przyjrzeć się tworzeniu walidatorów dla konkretnego egzemplarza elementu. Można przekazać
-obiekt ``Zend_Validate_*`` lub nazwę walidatora który ma zostać użyty:
+obiekt ``Zend\Validate\*`` lub nazwę walidatora który ma zostać użyty:
 
 .. code-block:: php
    :linenos:
 
-   $username = new Zend_Form_Element_Text('username');
+   $username = new Zend\Form_Element\Text('username');
 
-   // Przekazanie obiektu Zend_Validate_*:
-   $username->addValidator(new Zend_Validate_Alnum());
+   // Przekazanie obiektu Zend\Validate\*:
+   $username->addValidator(new Zend\Validate\Alnum());
 
    // Przekazanie nazwy walidatora:
    $username->addValidator('alnum');
@@ -166,7 +166,7 @@ Finalnie konfiguracja elementu może wyglądać tak:
 
 
 Tworzenie obiektu dla każdego z elementów formularza może być nieco kłopotliwe. Można spróbować użyć
-sposobu (b) przedstawionego wyżej. Podczas tworzenia nowego elementu metodą ``Zend_Form::addElement()`` jako
+sposobu (b) przedstawionego wyżej. Podczas tworzenia nowego elementu metodą ``Zend\Form\Form::addElement()`` jako
 fabryki, można opcjonalnie przekazać również opcje konfiguracyjne. Obejmuje to także konfigurację filtrów i
 walidatorów. Aby to zrobić można użyć kodu:
 
@@ -186,7 +186,7 @@ walidatorów. Aby to zrobić można użyć kodu:
 .. note::
 
    Jeśli w kilku miejscach konfigurowane są elementy za pomocą tych samych opcji, można rozważyć stworzenie
-   własnej klasy rozszerzającej klasę ``Zend_Form_Element`` i następnie użycie tej klasy do tworzenia
+   własnej klasy rozszerzającej klasę ``Zend\Form\Element`` i następnie użycie tej klasy do tworzenia
    własnych elementów. Może to oszczędzić nieco pracy.
 
 .. _zend.form.quickstart.render:
@@ -208,7 +208,7 @@ po prostu wyświetlenie formularza za pomocą konstrukcji echo.
    echo $form;
 
 
-Domyślnie obiekty ``Zend_Form`` oraz ``Zend_Form_Element`` używają obiektu widoku zainicjowanego w obiekcie
+Domyślnie obiekty ``Zend_Form`` oraz ``Zend\Form\Element`` używają obiektu widoku zainicjowanego w obiekcie
 ``ViewRenderer``, co oznacza, że nie trzeba go ręcznie ustawiać dla wzorca MVC Zend Framework. Renderowanie
 formularza w skrypcie widoku jest wtedy bardzo proste:
 
@@ -220,7 +220,7 @@ formularza w skrypcie widoku jest wtedy bardzo proste:
 
 ``Zend_Form`` używa "dekoratorów" do przeprowadzania renderowania. Te dekoratory mogą zastępować zawartość,
 dodawać treść na początku lub na końcu, a także mieć pełny wgląd w element przekazany do nich. Można
-użyć kilku dekoratorów aby uzyskać wymagany efekt. Domyślnie ``Zend_Form_Element`` używa czterech
+użyć kilku dekoratorów aby uzyskać wymagany efekt. Domyślnie ``Zend\Form\Element`` używa czterech
 dekoratorów aby wygenerować kod wyjściowy. Wygląda to w taki sposób:
 
 .. code-block:: php
@@ -379,7 +379,7 @@ Aby zbudować formularz można skorzystać z metod konfiguracyjnych obiektu ``Ze
 .. code-block:: php
    :linenos:
 
-   $form = new Zend_Form();
+   $form = new Zend\Form\Form();
    $form->setAction('/user/login')
         ->setMethod('post');
 
@@ -407,7 +407,7 @@ Następnie należy utworzyć kontroler obsługujący formularz:
 .. code-block:: php
    :linenos:
 
-   class UserController extends Zend_Controller_Action
+   class UserController extends Zend\Controller\Action
    {
        public function getForm()
        {
@@ -494,8 +494,8 @@ Powyższe można przekazać do konstruktora obiektu formularza:
 .. code-block:: php
    :linenos:
 
-   $config = new Zend_Config_Ini($configFile, 'development');
-   $form   = new Zend_Form($config->user->login);
+   $config = new Zend\Config\Ini($configFile, 'development');
+   $form   = new Zend\Form\Form($config->user->login);
 
 w ten sposób cały formularz został zdefiniowany.
 

@@ -8,7 +8,7 @@
 כלל הקישור לערך בודד הוא הקישור לכל הסנדקציה ולאחר מכן */<entryId>*
 שמהווה בעצם מספר רשומה, כמו למשל *http://atom.example.com/feed/1*.
 
-אם הנכם קוראים ערך בודד, עדיין יווצר אובייקט *Zend_Feed_Atom* חדש, אבל
+אם הנכם קוראים ערך בודד, עדיין יווצר אובייקט *Zend\Feed\Atom* חדש, אבל
 הוא יצור אוטומטית פיד אנונימי כדי להכיל את הערך שנלקח.
 
 .. _zend.feed.consuming-atom-single-entry.example.atom:
@@ -18,7 +18,7 @@
 .. code-block:: php
    :linenos:
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/1');
    echo 'The feed has: ' . $feed->count() . ' entry.';
 
    $entry = $feed->current();
@@ -34,7 +34,7 @@
 .. code-block:: php
    :linenos:
 
-   $entry = new Zend_Feed_Entry_Atom('http://atom.example.com/feed/1');
+   $entry = new Zend\Feed_Entry\Atom('http://atom.example.com/feed/1');
    echo $entry->title();
 
 

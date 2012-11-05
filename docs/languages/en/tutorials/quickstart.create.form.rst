@@ -102,7 +102,7 @@ look like this:
 
    // application/controllers/GuestbookController.php
 
-   class GuestbookController extends Zend_Controller_Action
+   class GuestbookController extends Zend\Controller\Action
    {
        // snipping indexAction()...
 

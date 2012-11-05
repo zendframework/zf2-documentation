@@ -16,10 +16,10 @@
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    // メッセージを作成します...
-   $tr1 = new Zend_Mail_Transport_Smtp('server@example.com');
-   $tr2 = new Zend_Mail_Transport_Smtp('other_server@example.com');
+   $tr1 = new Zend\Mail_Transport\Smtp('server@example.com');
+   $tr2 = new Zend\Mail_Transport\Smtp('other_server@example.com');
    $mail->send($tr1);
    $mail->send($tr2);
    $mail->send();  // もう一度デフォルトを使用します
@@ -28,6 +28,6 @@
 
    **転送手段の追加**
 
-   別の転送手段を用意するには、 ``Zend_Mail_Transport_Interface`` を実装します。
+   別の転送手段を用意するには、 ``Zend\Mail_Transport\Interface`` を実装します。
 
 

@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.ldap.node:
 
-Zend_Ldap_Nodeを使用してLDAPツリーへのオブジェクト指向アクセス
+Zend\Ldap\Nodeを使用してLDAPツリーへのオブジェクト指向アクセス
 ========================================
 
 .. _zend.ldap.node.basic:
@@ -72,7 +72,7 @@ LDAPでノードをコピーまたは移動
    :linenos:
 
    $options = array(/* ... */);
-   $ldap = new Zend_Ldap($options);
+   $ldap = new Zend\Ldap\Ldap($options);
    $ldap->bind();
    $ri = new RecursiveIteratorIterator($ldap->getBaseNode(),
                                        RecursiveIteratorIterator::SELF_FIRST);

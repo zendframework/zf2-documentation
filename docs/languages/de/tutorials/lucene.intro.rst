@@ -1,17 +1,17 @@
 .. EN-Revision: none
 .. _learning.lucene.intro:
 
-Einführung in Zend_Search_Lucene
+Einführung in Zend\Search\Lucene
 ================================
 
-Die Komponente ``Zend_Search_Lucene`` ist dazu gedacht eine sofort verwendbare Volltext Suchlösung anzubieten. Es
+Die Komponente ``Zend\Search\Lucene`` ist dazu gedacht eine sofort verwendbare Volltext Suchlösung anzubieten. Es
 benötigt keine *PHP* Erweiterungen [#]_ und auch keine zusätzlich installierte Software, und kann sofort nach der
 Installation von Zend Framework verwendet werden.
 
-``Zend_Search_Lucene`` ist eine reine *PHP* Portierung der populären Open Source Volltext Such Maschine auch
+``Zend\Search\Lucene`` ist eine reine *PHP* Portierung der populären Open Source Volltext Such Maschine auch
 bekannt als Apache Lucene. Siehe `http://lucene.apache.org/`_ für Details.
 
-Die Information vor einer Suche muss indiziert werden. ``Zend_Search_Lucene`` und Java Lucene verwenden ein
+Die Information vor einer Suche muss indiziert werden. ``Zend\Search\Lucene`` und Java Lucene verwenden ein
 Dokumenten Konzept welches als "atomar indiziertes Element" bekannt ist.
 
 Jedes Dokument ist ein Set von Feldern: <name, value> Paaren wobei Name und Wert *UTF-8* String [#]_ sind. Jedes
@@ -22,7 +22,7 @@ Feldwerte können wärend des Indizierens in Token übersetzt werden. Wenn ein F
 dann wird der Feldwert als ein Ausdruck gespeichert; andernfalls wird der aktuelle Analysator für die Übersetzung
 in Token verwendet.
 
-Verschiedene Analysatoren werden im ``Zend_Search_Lucene`` Paket angeboten. Der Standard Analysator arbeitet mit
+Verschiedene Analysatoren werden im ``Zend\Search\Lucene`` Paket angeboten. Der Standard Analysator arbeitet mit
 *ASCII* Text (da der *UTF-8* Analysator die Aktivierung der **mbstring** Erweiterung benötigt). Er ist unabhängig
 von der Schreibweise und überspringt Nummern. Um dieses Verhalten zu verändern kann entweder ein anderer
 Analysator verwendet, oder ein eigener Analysator erstellt werden.

@@ -15,7 +15,7 @@ Formatter是一个负责取得一个描述日志事件的 *event*\
 简单格式化
 -----
 
-*Zend_Log_Formatter_Simple* 是默认的.当未指定任何formatter时使用.
+*Zend\Log_Formatter\Simple* 是默认的.当未指定任何formatter时使用.
 默认的配置等同于下面的配置:
 
    .. code-block:: php
@@ -23,7 +23,7 @@ Formatter是一个负责取得一个描述日志事件的 *event*\
 
       <?php
       $format = '%timestamp% %priorityName% (%priority%): %message%' . PHP_EOL;
-      $formatter = new Zend_Log_Formatter_Simple($format);
+      $formatter = new Zend\Log_Formatter\Simple($format);
 
 
 
@@ -33,11 +33,11 @@ Formatter是一个负责取得一个描述日志事件的 *event*\
       :linenos:
 
       <?php
-      $writer = new Zend_Log_Writer_Stream('php://output');
-      $formatter = new Zend_Log_Formatter_Simple('hello %message%' . PHP_EOL);
+      $writer = new Zend\Log_Writer\Stream('php://output');
+      $formatter = new Zend\Log_Formatter\Simple('hello %message%' . PHP_EOL);
       $writer->setFormatter($formatter);
 
-      $logger = new Zend_Log();
+      $logger = new Zend\Log\Log();
       $logger->addWriter($writer);
 
       $logger->info('there');
@@ -46,9 +46,9 @@ Formatter是一个负责取得一个描述日志事件的 *event*\
 
 
 
-*Zend_Log_Formatter_Simple*\ 的构造函数接受单个参数:
+*Zend\Log_Formatter\Simple*\ 的构造函数接受单个参数:
 格式化字符串.该字符串包含有单个百分号包裹的键(例如, *%message%*).
-格式化字符串可以包含来自于任何事件数据数组的键。在 *Zend_Log_Formatter_Simple* 里使用
+格式化字符串可以包含来自于任何事件数据数组的键。在 *Zend\Log_Formatter\Simple* 里使用
 DEFAULT_FORMAT 常量，可以获取缺省键。
 
 .. _zend.log.formatters.xml:
@@ -56,18 +56,18 @@ DEFAULT_FORMAT 常量，可以获取缺省键。
 格式化到XML
 -------
 
-*Zend_Log_Formatter_Xml*\ 格式化日志数据到XML字符串中.
+*Zend\Log_Formatter\Xml*\ 格式化日志数据到XML字符串中.
 默认,它自动地纪录在事件数据数组中的所有项.
 
    .. code-block:: php
       :linenos:
 
       <?php
-      $writer = new Zend_Log_Writer_Stream('php://output');
-      $formatter = new Zend_Log_Formatter_Xml();
+      $writer = new Zend\Log_Writer\Stream('php://output');
+      $formatter = new Zend\Log_Formatter\Xml();
       $writer->setFormatter($formatter);
 
-      $logger = new Zend_Log();
+      $logger = new Zend\Log\Log();
       $logger->addWriter($writer);
 
       $logger->info('informational message');
@@ -88,7 +88,7 @@ DEFAULT_FORMAT 常量，可以获取缺省键。
 
 
 
-可以定制根元素并指定一个到事件数据数组的XML元素映射. *Zend_Log_Formatter_Xml*\
+可以定制根元素并指定一个到事件数据数组的XML元素映射. *Zend\Log_Formatter\Xml*\
 的构造函数接受一个根元素名字
 的字符串作为第一个参数和一个元素映射的关联数组作为第二个参数:
 
@@ -96,11 +96,11 @@ DEFAULT_FORMAT 常量，可以获取缺省键。
       :linenos:
 
       <?php
-      $writer = new Zend_Log_Writer_Stream('php://output');
-      $formatter = new Zend_Log_Formatter_Xml('log', array('msg' => 'message', 'level' => 'priorityName'));
+      $writer = new Zend\Log_Writer\Stream('php://output');
+      $formatter = new Zend\Log_Formatter\Xml('log', array('msg' => 'message', 'level' => 'priorityName'));
       $writer->setFormatter($formatter);
 
-      $logger = new Zend_Log();
+      $logger = new Zend\Log\Log();
       $logger->addWriter($writer);
 
       $logger->info('informational message');

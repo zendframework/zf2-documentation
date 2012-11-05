@@ -14,17 +14,17 @@ Zend Framework Auth 团队也非常期望大家在邮件列表中进行反馈和
 数据不同，会话数据不储存在客户端，仅当服务器端程序源代码使得会话数据可用，
 才通过回应来自客户端的请求与客户端共享会话数据。在该组件及其文档中，术语“session
 data”代表服务器端存储在 `$_SESSION`_ 中的数据。该数据使用 *Zend_Session* 来管理，由
-*Zend_Session_Namespace* 采用对象的方式来控制。 **会话命名空间(Session Namespaces)**
+*Zend\Session\Namespace* 采用对象的方式来控制。 **会话命名空间(Session Namespaces)**
 提供了使用经典的 `命名空间`_
 方式来访问会话数据，命名空间逻辑上就是一系列被命名（键名为字符串）的联合数组（类似于普通的
 PHP 数组）。
 
-*Zend_Session_Namespace* 的实例用对象存储的方式实现了 *$_SESSION* 的命名空间。 *Zend_Session*
-组件包装了PHP内置的会话模块，提供了一个管理会话的接口，也为 *Zend_Session_Namespace*
-持久化命名空间数据提供了API。 *Zend_Session_Namespace*
+*Zend\Session\Namespace* 的实例用对象存储的方式实现了 *$_SESSION* 的命名空间。 *Zend_Session*
+组件包装了PHP内置的会话模块，提供了一个管理会话的接口，也为 *Zend\Session\Namespace*
+持久化命名空间数据提供了API。 *Zend\Session\Namespace*
 为会话命名空间数据到PHP内部会话机制的持久化提供了一个标准的、面向对象的接口。
 *Zend_Session* 支持现有无名的会话，同时也支持“登录会话”。Zend Framework
-的用户验证组件 *Zend_Auth*\ ，使用了 *Zend_Session_Namespace*\
+的用户验证组件 *Zend_Auth*\ ，使用了 *Zend\Session\Namespace*\
 ，把用户的鉴别信息储存到了"Zend_Auth"命名空间下。 因为 *Zend_Session*
 使用了PHP内置的会话函数，常用的配置选项和设置都仍然适用(请参考
 `http://www.php.net/session`_)。

@@ -28,7 +28,7 @@ Podstawowe użycie weryfikatorów
 -------------------------------
 
 Mająć ustaloną w ten sposób definicję weryfikacji, możemy zapewnić podstawę dla interfejsu
-*Zend_Validate_Interface*, który wymaga zaimplementowania przez klasę weryfikatora dwóch metod, *isValid()* oraz
+*Zend\Validate\Interface*, który wymaga zaimplementowania przez klasę weryfikatora dwóch metod, *isValid()* oraz
 *getMessages()*. Metoda *isValid()* przeprowadza weryfikację podanej wartości, zwracając *true* wtedy i tylko
 wtedy, gdy wartość spełnia kryteria weryfikacji.
 
@@ -51,7 +51,7 @@ Poniższy przykład pokazuje weryfikację adresu e-mail:
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_EmailAddress();
+      $validator = new Zend\Validate\EmailAddress();
 
       if ($validator->isValid($email)) {
           // adres email jest prawidłowy
@@ -76,7 +76,7 @@ zwracanego przez metodę *getMessages()* w przypadku nieudanej weryfikacji. Pier
 identyfikatorów, które zostaną zastąpione odpowiednimi danymi pochodzącymi z weryfikatora. Identyfikator
 *%value%* jest obsługiwany przez wszystkie weryfikatory; będzie on zastąpiony wartością, która została
 przekazana do metody *isValid()*. Inne identyfikatory mogą być obsługiwane indywidualnie w każdej klasie
-weryfikatora. Na przykład identyfikator *%max%* jest obsługiwany przez klasę *Zend_Validate_LessThan*. Metoda
+weryfikatora. Na przykład identyfikator *%max%* jest obsługiwany przez klasę *Zend\Validate\LessThan*. Metoda
 *getMessageVariables()* zwraca tablicę identyfikatorów obsługiwanych przez weryfikator.
 
 Drugi opcjonalny argument jest łańcuchem znaków, który identyfikuje szablon komunikatu który chcesz ustawić,
@@ -90,12 +90,12 @@ błędu, więc nie ma potrzeby dokładnego określania szablonu komunikatu, któ
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_StringLength(8);
+      $validator = new Zend\Validate\StringLength(8);
 
       $validator->setMessage(
           'Łańcuch znaków \'%value%\' jest za krotki; ' .
           'musi składać się z przynajmniej %min% znaków',
-          Zend_Validate_StringLength::TOO_SHORT);
+          Zend\Validate\StringLength::TOO_SHORT);
 
       if (!$validator->isValid('word')) {
           $messages = $validator->getMessages();
@@ -114,12 +114,12 @@ zawierająca pary klucz/komunikat.
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_StringLength(8, 12);
+      $validator = new Zend\Validate\StringLength(8, 12);
 
       $validator->setMessages( array(
-          Zend_Validate_StringLength::TOO_SHORT =>
+          Zend\Validate\StringLength::TOO_SHORT =>
               'Łańcuch znaków \'%value%\' jest za krótki',
-          Zend_Validate_StringLength::TOO_LONG  =>
+          Zend\Validate\StringLength::TOO_LONG  =>
               'Łańcuch znaków \'%value%\' jest za długi'
       ));
 
@@ -135,7 +135,7 @@ każdej klasie weryfikatora.
    .. code-block:: php
       :linenos:
 
-      $validator = new Zend_Validate_StringLength(8, 12);
+      $validator = new Zend\Validate\StringLength(8, 12);
 
       if (!validator->isValid('word')) {
           echo 'Słowo niepoprawne: '
@@ -156,7 +156,7 @@ Użycie statycznej metody is()
 -----------------------------
 
 Jeśli niewygodne jest ładowanie danej klasy weryfikatora i tworzenie instancji weryfikatora, możesz użyć
-statycznej metody *Zend_Validate::is()* jako alternatywnego sposobu wywołania. Pierwszym argumentem tej metody są
+statycznej metody *Zend\Validate\Validate::is()* jako alternatywnego sposobu wywołania. Pierwszym argumentem tej metody są
 dane wejściowe, które chcesz przekazać do metody *isValid()*. Drugi argument jest łańcuchem znaków, który
 odpowiada, bazowej nazwie klasy weryfikatora, relatywnie do przestrzeni nazw *Zend_Validate*. Metoda *is()*
 automatycznie ładuje klasę, tworzy instancję i wywołuje metodę *isValid()* na danych wejściowych.
@@ -164,7 +164,7 @@ automatycznie ładuje klasę, tworzy instancję i wywołuje metodę *isValid()* 
    .. code-block:: php
       :linenos:
 
-      if (Zend_Validate::is($email, 'EmailAddress')) {
+      if (Zend\Validate\Validate::is($email, 'EmailAddress')) {
           // Tak, adres email jest poprawny
       }
 
@@ -176,7 +176,7 @@ Możesz także przekazać tablicę argumentów konstruktora, jeśli są one potr
    .. code-block:: php
       :linenos:
 
-      if (Zend_Validate::is($value, 'Between', array(1, 12))) {
+      if (Zend\Validate\Validate::is($value, 'Between', array(1, 12))) {
           // Tak, wartość $value jest pomiędzy 1 i 12
       }
 
@@ -190,7 +190,7 @@ Użycie statyczne może być wygodne dla jednorazowego wywołania weryfikatora, 
 weryfikator dla większej ilości danych, bardziej efektywne jest wykorzystanie rozwiązania niestatycznego, czyli
 utworzenie instancji obiektu weryfikatora i wywołanie metody *isValid()*.
 
-Dodatkowo klasa *Zend_Filter_Input* pozwala na utworzenie instancji i wywołanie większej ilości klas filtrów i
+Dodatkowo klasa *Zend\Filter\Input* pozwala na utworzenie instancji i wywołanie większej ilości klas filtrów i
 weryfikatorów w celu przetworzenia zestawu danych wejściowych. Zobacz :ref:` <zend.filter.input>`.
 
 

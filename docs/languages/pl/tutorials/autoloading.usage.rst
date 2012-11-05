@@ -5,17 +5,17 @@ Podstawowe użycie autoloadera
 =============================
 
 Po krótkim opisie samej idei autoloadera jak i konwencji oraz celi związanych z jego implementacją w Zend
-Framework można przejść do opisu użycia ``Zend_Loader_Autoloader``.
+Framework można przejść do opisu użycia ``Zend\Loader\Autoloader``.
 
 W najprostszym przypadku należy dołączyć plik z definicją klasy i uzyskać dostęp do obiektu.
-``Zend_Loader_Autoloader`` jest singletonem (co jest uwarunkowane autoloaderem *SPL*, który jest pojedynczym
+``Zend\Loader\Autoloader`` jest singletonem (co jest uwarunkowane autoloaderem *SPL*, który jest pojedynczym
 zasobem) więc do uzyskania jego instancji należy użyć metody ``getInstance()``.
 
 .. code-block:: php
    :linenos:
 
    require_once 'Zend/Loader/Autoloader.php';
-   Zend_Loader_Autoloader::getInstance();
+   Zend\Loader\Autoloader::getInstance();
 
 Domyślnie spowoduje to automatyczne dołączanie dowolnych klas zawierających prefiks przestrzeni nazw "Zend\_"
 oraz "ZendX\_" pod warunkiem, że znajdują się w katalogu zawartym w ``include_path``.
@@ -28,11 +28,11 @@ ich całą tablicę:
    :linenos:
 
    require_once 'Zend/Loader/Autoloader.php';
-   $loader = Zend_Loader_Autoloader::getInstance();
+   $loader = Zend\Loader\Autoloader::getInstance();
    $loader->registerNamespace('Foo_');
    $loader->registerNamespace(array('Foo_', 'Bar_'));
 
-Alternatywnie można skonfigurować ``Zend_Loader_Autoloader`` aby działał jako autoloader awaryjny ("fallback"
+Alternatywnie można skonfigurować ``Zend\Loader\Autoloader`` aby działał jako autoloader awaryjny ("fallback"
 autoloader). To oznacza, że będzie próbował działać dla każdej używanej klasy niezależnie od jej prefiksu
 przestrzeni nazw.
 
@@ -45,9 +45,9 @@ przestrzeni nazw.
 
    **Nie należy używać autoloadera awaryjnego**
 
-   Użycie ``Zend_Loader_Autoloader`` jako autoloadera awaryjnego może być kuszące ale nie jest rekomendowane.
+   Użycie ``Zend\Loader\Autoloader`` jako autoloadera awaryjnego może być kuszące ale nie jest rekomendowane.
 
-   Wewnętrznie ``Zend_Loader_Autoloader`` używa ``Zend_Loader::loadClass()`` do dołączania definicji klas. Ta
+   Wewnętrznie ``Zend\Loader\Autoloader`` używa ``Zend\Loader\Loader::loadClass()`` do dołączania definicji klas. Ta
    metoda używa ``include()`` do załadowania danego pliku z klasą. Funkcja ``include()`` zwraca wartość
    ``FALSE`` w przypadku niepowodzenia a dodatkowo wysyła błąd ostrzeżenia *PHP* co może prowadzić do
    następujących konsekwencji:
@@ -58,7 +58,7 @@ przestrzeni nazw.
    - W zależności od wybranego poziomu opcji ``error_reporting`` może powodować bałagan w logach.
 
    Istnieje możliwość wyłączenia wyświetlania komunikatów błędów przez autoloader (opisana w dokumentacji
-   ``Zend_Loader_Autoloader``) ale należy pamiętać iż działa to tylko w przypadku włączenia opcji
+   ``Zend\Loader\Autoloader``) ale należy pamiętać iż działa to tylko w przypadku włączenia opcji
    ``display_errors``. Plik z logami błędów i tak będzie przechowywał wszystkie komunikaty. Z tego powodu
    zalecane jest używanie prefiksów przestrzeni nazw i powiadomienie o nich autoloadera.
 
@@ -79,7 +79,7 @@ przestrzeni nazw.
 
 Jeśli deweloper posiada własny autoloader (np. pochodzący z innej biblioteki, która jest używana równolegle),
 który powinien zostać użyty z Zend Framework to można to uczynić za pomocą metod klasy
-``Zend_Loader_Autoloader`` o nazwach ``pushAutoloader()`` oraz ``unshiftAutoloader()``. Powyższe metody dopiszą
+``Zend\Loader\Autoloader`` o nazwach ``pushAutoloader()`` oraz ``unshiftAutoloader()``. Powyższe metody dopiszą
 podane funkcje do listy autoloaderów (która jest uruchamiana przed wewnętrznymi mechanizmami Zend Framework)
 odpowiednio na koniec bądź na początek. Takie podejście oferuje następujące korzyści:
 
@@ -91,7 +91,7 @@ odpowiednio na koniec bądź na początek. Takie podejście oferuje następując
 - Jeśli zajdzie potrzeba manipulowania rejestrem funkcji ``spl_autoload()``, każdy autoloader, który stanowi
   odwołanie do metody klasy może powodować problemy. Dzieje się tak ponieważ funkcja
   ``spl_autoload_functions()`` nie zwraca tych samych instancji obiektów (tylko ich kopie).
-  ``Zend_Loader_Autoloader`` nie posiada takich wad.
+  ``Zend\Loader\Autoloader`` nie posiada takich wad.
 
 W powyższy sposób można użyć każdego poprawnego odwołania do funkcji *PHP*
 

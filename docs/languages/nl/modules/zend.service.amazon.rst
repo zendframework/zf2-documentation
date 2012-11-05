@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon:
 
-Zend_Service_Amazon
+Zend\Service\Amazon
 ===================
 
 .. _zend.service.amazon.introduction:
@@ -9,11 +9,11 @@ Zend_Service_Amazon
 Inleiding
 ---------
 
-*Zend_Service_Amazon* is een eenvoudige API om Amazon webservices te gebruiken. *Zend_Service_Amazon* heeft twee
+*Zend\Service\Amazon* is een eenvoudige API om Amazon webservices te gebruiken. *Zend\Service\Amazon* heeft twee
 APIs: een meer traditionele die Amazons eigen API volgt, en een eenvoudigere "Query API" om nog meer complexe
 zoekqueries gemakkelijk op te bouwen.
 
-*Zend_Service_Amazon* staat ontwikkelaars toe om informatie die door Amazon.com web sites worden verstrekt direct
+*Zend\Service\Amazon* staat ontwikkelaars toe om informatie die door Amazon.com web sites worden verstrekt direct
 op te vragen via de Amazon Web Services API. Voorbeelden:
 
    - Item informatie opvragen, zoals beelden, beschrijvingen, prijzen, en meer
@@ -28,7 +28,7 @@ op te vragen via de Amazon Web Services API. Voorbeelden:
 
 
 
-Om *Zend_Service_Amazon* te gebruiken dien je een Amazon developer API key moeten hebben. Om die te verkrijgen, en
+Om *Zend\Service\Amazon* te gebruiken dien je een Amazon developer API key moeten hebben. Om die te verkrijgen, en
 voor meer informatie, kan je terecht op de `Amazon Web Services`_ website.
 
 .. note::
@@ -45,7 +45,7 @@ In dit voorbeeld zoeken we naar PHP boeken op Amazon en doorlopen we de resultat
 
    <?php
    require_once 'Zend/Service/Amazon.php';
-   $amazon = new Zend_Service_Amazon('AMAZON_API_KEY&');
+   $amazon = new Zend\Service\Amazon('AMAZON_API_KEY&');
    $response = $amazon->itemSearch(array('SearchIndex' => 'Books', 'Keywords' => 'php'));
    foreach ($response as $r) {
        echo $r->Title .'<br />';
@@ -61,7 +61,7 @@ ontwerp patroon.
 
    <?php
    require_once 'Zend/Service/Amazon/Query.php';
-   $query = new Zend_Service_Amazon_Query('AMAZON_API_KEY');
+   $query = new Zend\Service_Amazon\Query('AMAZON_API_KEY');
    $query->category('Books')->Keywords('PHP');
    $results = $query->search();
    foreach ($results as $result) {
@@ -73,7 +73,7 @@ ontwerp patroon.
 Landcodes
 ---------
 
-Standaard maakt *Zend_Service_Amazon* een verbinding met de Amazon web service in de Verenigde Staten ("*US*"). Om
+Standaard maakt *Zend\Service\Amazon* een verbinding met de Amazon web service in de Verenigde Staten ("*US*"). Om
 verbinding te maken met een ander land geef je eenvoudigweg de landcode van dit land op als de tweede parameter van
 de constructor:
 
@@ -85,7 +85,7 @@ de constructor:
    <?php
    // Verbind met Amazon in Frankrijk
    require_once 'Zend/Service/Amazon.php';
-   $amazon = new Zend_Service_Amazon('AMAZON_API_KEY', 'FR');
+   $amazon = new Zend\Service\Amazon('AMAZON_API_KEY', 'FR');
    ?>
 .. note::
 
@@ -105,7 +105,7 @@ De *itemLookup()* methode biedt de mogelijkheid om een specifiek Amazon item op 
 
    <?php
    require_once 'Zend/Service/Amazon.php';
-   $amazon = new Zend_Service_Amazon('AMAZON_API_KEY');
+   $amazon = new Zend\Service\Amazon('AMAZON_API_KEY');
    $item = $amazon->itemLookup('B0000A432X');
    ?>
 De *itemLookup()* methode aanvaardt ook een optionele tweede parameter om zoekopties af te handelen. Voor alle
@@ -133,7 +133,7 @@ Het zoeken naar items gebaseerd op een van de verschillende voorhande criteria w
 
    <?php
    require_once 'Zend/Service/Amazon.php';
-   $amazon = new Zend_Service_Amazon('AMAZON_API_KEY');
+   $amazon = new Zend\Service\Amazon('AMAZON_API_KEY');
    $response = $amazon->itemSearch(array('SearchIndex' => 'Books', 'Keywords' => 'php'));
    foreach($response as $r) {
        echo $r->Title .'<br />';
@@ -144,7 +144,7 @@ details, inclusief een lijst van beschikbare opties, zie de `relevante Amazon do
 
 .. tip::
 
-   De :ref:`Zend_Service_Amazon_Query <zend.service.amazon.query>` klasse is een gemakkelijk te gebruiken "wrapper"
+   De :ref:`Zend\Service_Amazon\Query <zend.service.amazon.query>` klasse is een gemakkelijk te gebruiken "wrapper"
    van deze methode.
 
 .. _zend.service.amazon.query:
@@ -157,11 +157,11 @@ De Alternatieve Query API gebruiken
 Inleiding
 ^^^^^^^^^
 
-*Zend_Service_Amazon_Query* bied een alternatieve API om de Amazon Web Service te gebruiken. De alternatieve API
+*Zend\Service_Amazon\Query* bied een alternatieve API om de Amazon Web Service te gebruiken. De alternatieve API
 gebruikt het Fluent Interface ontwerppatroon. Dus, alle oproepen kunnen gemaakt worden door aaneengeregen
 methode-oproepen te maken. (bv: *$obj->method()->method2($arg)*)
 
-De *Zend_Service_Amazon_Query* API gebruikt overloading om gemakkelijk een item zoekopdracht op te zetten en laat
+De *Zend\Service_Amazon\Query* API gebruikt overloading om gemakkelijk een item zoekopdracht op te zetten en laat
 je dan toe te zoeken op de gespecifieerde criteria. Elk van de opties is als een methode-oproep aangeboden, en elk
 argument van een methode komt overeen met de benoemde waarde van de optie:
 
@@ -175,7 +175,7 @@ respectievelijke waarden te specificeren:
 
    <?php
    require_once 'Zend/Service/Amazon/Query.php';
-   $query = new Zend_Service_Amazon_Query('MY_API_KEY');
+   $query = new Zend\Service_Amazon\Query('MY_API_KEY');
    $query->Category('Books')->Keywords('PHP');
    $results = $query->search();
    foreach ($results as $result) {
@@ -189,46 +189,46 @@ documentatie`_.
 
 .. _zend.service.amazon.classes:
 
-Zend_Service_Amazon Klassen
+Zend\Service\Amazon Klassen
 ---------------------------
 
-De volgende klassen worden allemaal teruggegeven door :ref:`Zend_Service_Amazon::itemLookup()
-<zend.service.amazon.itemlookup>` en :ref:`Zend_Service_Amazon::itemSearch() <zend.service.amazon.itemsearch>`:
+De volgende klassen worden allemaal teruggegeven door :ref:`Zend\Service\Amazon::itemLookup()
+<zend.service.amazon.itemlookup>` en :ref:`Zend\Service\Amazon::itemSearch() <zend.service.amazon.itemsearch>`:
 
-   - :ref:`Zend_Service_Amazon_Item <zend.service.amazon.classes.item>`
+   - :ref:`Zend\Service_Amazon\Item <zend.service.amazon.classes.item>`
 
-   - :ref:`Zend_Service_Amazon_Image <zend.service.amazon.classes.image>`
+   - :ref:`Zend\Service_Amazon\Image <zend.service.amazon.classes.image>`
 
-   - :ref:`Zend_Service_Amazon_ResultSet <zend.service.amazon.classes.resultset>`
+   - :ref:`Zend\Service_Amazon\ResultSet <zend.service.amazon.classes.resultset>`
 
-   - :ref:`Zend_Service_Amazon_OfferSet <zend.service.amazon.classes.offerset>`
+   - :ref:`Zend\Service_Amazon\OfferSet <zend.service.amazon.classes.offerset>`
 
-   - :ref:`Zend_Service_Amazon_Offer <zend.service.amazon.classes.offer>`
+   - :ref:`Zend\Service_Amazon\Offer <zend.service.amazon.classes.offer>`
 
-   - :ref:`Zend_Service_Amazon_SimilarProduct <zend.service.amazon.classes.similarproduct>`
+   - :ref:`Zend\Service_Amazon\SimilarProduct <zend.service.amazon.classes.similarproduct>`
 
-   - :ref:`Zend_Service_Amazon_Accessories <zend.service.amazon.classes.accessories>`
+   - :ref:`Zend\Service_Amazon\Accessories <zend.service.amazon.classes.accessories>`
 
-   - :ref:`Zend_Service_Amazon_CustomerReview <zend.service.amazon.classes.customerreview>`
+   - :ref:`Zend\Service_Amazon\CustomerReview <zend.service.amazon.classes.customerreview>`
 
-   - :ref:`Zend_Service_Amazon_EditorialReview <zend.service.amazon.classes.editorialreview>`
+   - :ref:`Zend\Service_Amazon\EditorialReview <zend.service.amazon.classes.editorialreview>`
 
-   - :ref:`Zend_Service_Amazon_ListMania <zend.service.amazon.classes.listmania>`
+   - :ref:`Zend\Service_Amazon\ListMania <zend.service.amazon.classes.listmania>`
 
 
 
 .. _zend.service.amazon.classes.item:
 
-Zend_Service_Amazon_Item
+Zend\Service_Amazon\Item
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-*Zend_Service_Amazon_Item* is de typeklasse die gebruikt wordt om een Amazon item voor te stellen dat werd
+*Zend\Service_Amazon\Item* is de typeklasse die gebruikt wordt om een Amazon item voor te stellen dat werd
 teruggestuurd door de web service. Het omvat alle item eigenschappen, inclusief de titel, beschrijving, recensies
 enz...
 
 .. _zend.service.amazon.classes.item.asxml:
 
-Zend_Service_Amazon_Item::asXML()
+Zend\Service_Amazon\Item::asXML()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 string:``asXML()``
@@ -241,10 +241,10 @@ Geeft de oorspronkelijke XML van het item terug
 Eigenschappen
 ^^^^^^^^^^^^^
 
-*Zend_Service_Amazon_Item* heeft een aantal eigenschappen die onmiddellijk verwant zijn aan hun Amazon API
+*Zend\Service_Amazon\Item* heeft een aantal eigenschappen die onmiddellijk verwant zijn aan hun Amazon API
 tegenhangers.
 
-.. table:: Zend_Service_Amazon_Item Eigenschappen
+.. table:: Zend\Service_Amazon\Item Eigenschappen
 
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
    |Naam            |Type                        |Beschrijving                                                                                      |
@@ -255,27 +255,27 @@ tegenhangers.
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
    |SalesRank       |string                      |Verkoopsrang van het item                                                                         |
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
-   |SmallImage      |Zend_Service_Amazon_Image   |Klein beeld van het item                                                                          |
+   |SmallImage      |Zend\Service_Amazon\Image   |Klein beeld van het item                                                                          |
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
-   |MediumImage     |Zend_Service_Amazon_Image   |Medium beeld van het item                                                                         |
+   |MediumImage     |Zend\Service_Amazon\Image   |Medium beeld van het item                                                                         |
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
-   |LargeImage      |Zend_Service_Amazon_Image   |Groot beeld van het item                                                                          |
+   |LargeImage      |Zend\Service_Amazon\Image   |Groot beeld van het item                                                                          |
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
    |Subjects        |array                       |Item onderwerpen                                                                                  |
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
-   |Offers          |Zend_Service_Amazon_OfferSet|Samenvatting van en aanbiedingen voor het item                                                    |
+   |Offers          |Zend\Service_Amazon\OfferSet|Samenvatting van en aanbiedingen voor het item                                                    |
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
-   |CustomerReviews |array                       |Klantrecensies voorgesteld als een array van Zend_Service_Amazon_CustomerReview objecten          |
+   |CustomerReviews |array                       |Klantrecensies voorgesteld als een array van Zend\Service_Amazon\CustomerReview objecten          |
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
-   |EditorialReviews|array                       |Uitgeversrecensies voorgesteld als een array van Zend_Service_Amazon_EditorialReview objecten     |
+   |EditorialReviews|array                       |Uitgeversrecensies voorgesteld als een array van Zend\Service_Amazon\EditorialReview objecten     |
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
-   |SimilarProducts |array                       |Gelijksoortige producten voorgesteld als een array van Zend_Service_Amazon_SimilarProduct objecten|
+   |SimilarProducts |array                       |Gelijksoortige producten voorgesteld als een array van Zend\Service_Amazon\SimilarProduct objecten|
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
-   |Accessories     |array                       |Accessoires voor het item voorgesteld als een array van Zend_Service_Amazon_Accessories objecten  |
+   |Accessories     |array                       |Accessoires voor het item voorgesteld als een array van Zend\Service_Amazon\Accessories objecten  |
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
    |Tracks          |array                       |Een array van liedjes, nummers en namen voor muziek CDs en DVDs                                   |
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
-   |ListmaniaLists  |array                       |ListMania lijsten verwant met het item als een array van Zend_Service_Amazon_ListmainList objecten|
+   |ListmaniaLists  |array                       |ListMania lijsten verwant met het item als een array van Zend\Service_Amazon\ListmainList objecten|
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
    |PromotionalTag  |string                      |Item promotievlag                                                                                 |
    +----------------+----------------------------+--------------------------------------------------------------------------------------------------+
@@ -284,17 +284,17 @@ tegenhangers.
 
 .. _zend.service.amazon.classes.image:
 
-Zend_Service_Amazon_Image
+Zend\Service_Amazon\Image
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-*Zend_Service_Amazon_Image* vetegenwoordigt een (remote) beeld voor een product.
+*Zend\Service_Amazon\Image* vetegenwoordigt een (remote) beeld voor een product.
 
 .. _zend.service.amazon.classes.image.properties:
 
 Eigenschappen
 ^^^^^^^^^^^^^
 
-.. table:: Zend_Service_Amazon_Image Eigenschappen
+.. table:: Zend\Service_Amazon\Image Eigenschappen
 
    +------+--------+----------------------------------+
    |Naam  |Type    |Beschrijving                      |
@@ -310,10 +310,10 @@ Eigenschappen
 
 .. _zend.service.amazon.classes.resultset:
 
-Zend_Service_Amazon_ResultSet
+Zend\Service_Amazon\ResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-*Zend_Service_Amazon_ResultSet* objecten worden teruggestuurd door :ref:`Zend_Service_Amazon::itemSearch()
+*Zend\Service_Amazon\ResultSet* objecten worden teruggestuurd door :ref:`Zend\Service\Amazon::itemSearch()
 <zend.service.amazon.itemsearch>` en laten je toe gemakkelijk meervoudige resultaten verwerken.
 
 .. note::
@@ -323,7 +323,7 @@ Zend_Service_Amazon_ResultSet
 
 .. _zend.service.amazon.classes.resultset.totalresults:
 
-Zend_Service_Amazon_ResultSet::totalResults()
+Zend\Service_Amazon\ResultSet::totalResults()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 int:``totalResults()``
@@ -333,11 +333,11 @@ Geeft het totaal aantal resultaten verkregen door de zoekopdracht
 
 .. _zend.service.amazon.classes.offerset:
 
-Zend_Service_Amazon_OfferSet
+Zend\Service_Amazon\OfferSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Elk resultaat teruggegeven door :ref:`Zend_Service_Amazon::itemSearch() <zend.service.amazon.itemsearch>` en
-:ref:`Zend_Service_Amazon::itemLookup() <zend.service.amazon.itemlookup>` bevat een *Zend_Service_Amazon_OfferSet*
+Elk resultaat teruggegeven door :ref:`Zend\Service\Amazon::itemSearch() <zend.service.amazon.itemsearch>` en
+:ref:`Zend\Service\Amazon::itemLookup() <zend.service.amazon.itemlookup>` bevat een *Zend\Service_Amazon\OfferSet*
 object via welke prijsinformatie voor het item kan worden opgevraagd.
 
 .. _zend.service.amazon.classes.offerset.parameters:
@@ -345,7 +345,7 @@ object via welke prijsinformatie voor het item kan worden opgevraagd.
 Eigenschappen
 ^^^^^^^^^^^^^
 
-.. table:: Zend_Service_Amazon_OfferSet Eigenschappen
+.. table:: Zend\Service_Amazon\OfferSet Eigenschappen
 
    +----------------------+------+----------------------------------------------------------+
    |Naam                  |Type  |Beschrijving                                              |
@@ -366,21 +366,21 @@ Eigenschappen
    +----------------------+------+----------------------------------------------------------+
    |TotalRefurbished      |int   |Totaal aantal beschikbare items in "gerenoveerd" conditie |
    +----------------------+------+----------------------------------------------------------+
-   |Offers                |array |Een array van Zend_Service_Amazon_Offer objecten.         |
+   |Offers                |array |Een array van Zend\Service_Amazon\Offer objecten.         |
    +----------------------+------+----------------------------------------------------------+
 
 :ref:`Terug naar de klasselijst <zend.service.amazon.classes>`
 
 .. _zend.service.amazon.classes.offer:
 
-Zend_Service_Amazon_Offer
+Zend\Service_Amazon\Offer
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Elke aanbieding voor een item is een *Zend_Service_Amazon_Offer* object.
+Elke aanbieding voor een item is een *Zend\Service_Amazon\Offer* object.
 
 .. _zend.service.amazon.classes.offer.properties:
 
-Zend_Service_Amazon_Offer Eigenschappen
+Zend\Service_Amazon\Offer Eigenschappen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. table:: Eigenschappen
@@ -409,11 +409,11 @@ Zend_Service_Amazon_Offer Eigenschappen
 
 .. _zend.service.amazon.classes.similarproduct:
 
-Zend_Service_Amazon_SimilarProduct
+Zend\Service_Amazon\SimilarProduct
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Wanneer je naar items zoekt geeft Amazon ook een lijst van gelijksoortige producten terug die de zoekende persoon
-zouden kunnen interesseren. Elk van deze items is een *Zend_Service_Amazon_SimilarProduct* object.
+zouden kunnen interesseren. Elk van deze items is een *Zend\Service_Amazon\SimilarProduct* object.
 
 Elk object bevat de informatie die je toelaat opeenvolgende verzoeken te maken om de volledige informatie van het
 item te verkrijgen.
@@ -423,7 +423,7 @@ item te verkrijgen.
 Eigenschappen
 ^^^^^^^^^^^^^
 
-.. table:: Zend_Service_Amazon_SimilarProduct Eigenschappen
+.. table:: Zend\Service_Amazon\SimilarProduct Eigenschappen
 
    +-----+------+---------------------------------------+
    |Naam |Type  |Beschrijving                           |
@@ -437,17 +437,17 @@ Eigenschappen
 
 .. _zend.service.amazon.classes.accessories:
 
-Zend_Service_Amazon_Accessories
+Zend\Service_Amazon\Accessories
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Accessoires voor het teruggegeven item worden vertegenwoordigd door *Zend_Service_Amazon_Accessories* objecten
+Accessoires voor het teruggegeven item worden vertegenwoordigd door *Zend\Service_Amazon\Accessories* objecten
 
 .. _zend.service.amazon.classes.accessories.properties:
 
 Eigenschappen
 ^^^^^^^^^^^^^
 
-.. table:: Zend_Service_Amazon_Accessories Eigenschappen
+.. table:: Zend\Service_Amazon\Accessories Eigenschappen
 
    +-----+------+---------------------------------------+
    |Naam |Type  |Beschrijving                           |
@@ -461,17 +461,17 @@ Eigenschappen
 
 .. _zend.service.amazon.classes.customerreview:
 
-Zend_Service_Amazon_CustomerReview
+Zend\Service_Amazon\CustomerReview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Elke klantrecensie wordt teruggegeven als een *Zend_Service_Amazon_CustomerReview* object.
+Elke klantrecensie wordt teruggegeven als een *Zend\Service_Amazon\CustomerReview* object.
 
 .. _zend.service.amazon.classes.customerreview.properties:
 
 Eigenschappen
 ^^^^^^^^^^^^^
 
-.. table:: Zend_Service_Amazon_CustomerReview Eigenschappen
+.. table:: Zend\Service_Amazon\CustomerReview Eigenschappen
 
    +------------+------+---------------------------------------+
    |Naam        |Type  |Beschrijving                           |
@@ -495,17 +495,17 @@ Eigenschappen
 
 .. _zend.service.amazon.classes.editorialreview:
 
-Zend_Service_Amazon_EditorialReview
+Zend\Service_Amazon\EditorialReview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Elke uitgeversrecensie van een item is een *Zend_Service_Amazon_EditorialReview* object
+Elke uitgeversrecensie van een item is een *Zend\Service_Amazon\EditorialReview* object
 
 .. _zend.service.amazon.classes.editorialreview.properties:
 
 Eigenschappen
 ^^^^^^^^^^^^^
 
-.. table:: Zend_Service_Amazon_EditorialReview Eigenschappen
+.. table:: Zend\Service_Amazon\EditorialReview Eigenschappen
 
    +-------+------+-----------------------------+
    |Naam   |Type  |Beschrijving                 |
@@ -519,17 +519,17 @@ Eigenschappen
 
 .. _zend.service.amazon.classes.listmania:
 
-Zend_Service_Amazon_Listmania
+Zend\Service_Amazon\Listmania
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Elke ListMania resultaatlijst is een *Zend_Service_Amazon_Listmania* object.
+Elke ListMania resultaatlijst is een *Zend\Service_Amazon\Listmania* object.
 
 .. _zend.service.amazon.classes.listmania.properties:
 
 Eigenschappen
 ^^^^^^^^^^^^^
 
-.. table:: Zend_Service_Amazon_Listmania Eigenschappen
+.. table:: Zend\Service_Amazon\Listmania Eigenschappen
 
    +--------+------+------------+
    |Naam    |Type  |Beschrijving|

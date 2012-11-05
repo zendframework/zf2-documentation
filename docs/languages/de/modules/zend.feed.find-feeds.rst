@@ -11,12 +11,12 @@ abzurufen.
 .. code-block:: php
    :linenos:
 
-   $feedArray = Zend_Feed::findFeeds('http://www.example.com/news.html');
+   $feedArray = Zend\Feed\Feed::findFeeds('http://www.example.com/news.html');
 
-Hier gibt die ``findFeeds()`` Methode ein Array mit ``Zend_Feed_Abstract`` Objekten zurück, die durch die
+Hier gibt die ``findFeeds()`` Methode ein Array mit ``Zend\Feed\Abstract`` Objekten zurück, die durch die
 **<link>** Tags der ``news.html`` Webseite referenziert worden sind. Abhängig vom Typ jedes Feeds kann jeder
-einzelne Eintrag in ``$feedArray`` eine ``Zend_Feed_Rss`` oder ``Zend_Feed_Atom`` Instanz enthalten. Bei Fehlern,
+einzelne Eintrag in ``$feedArray`` eine ``Zend\Feed\Rss`` oder ``Zend\Feed\Atom`` Instanz enthalten. Bei Fehlern,
 wie z.B. ein *HTTP* 404 Response Code oder ein nicht wohlgeformter Feed, wirft ``Zend_Feed`` eine
-``Zend_Feed_Exception``.
+``Zend\Feed\Exception``.
 
 

@@ -16,43 +16,43 @@ weiteren Parametern an ``createAttachment()`` überschrieben werden:
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    // erstelle Nachricht...
    $mail->createAttachment($someBinaryString);
    $mail->createAttachment($myImage,
                            'image/gif',
-                           Zend_Mime::DISPOSITION_INLINE,
-                           Zend_Mime::ENCODING_BASE64);
+                           Zend\Mime\Mime::DISPOSITION_INLINE,
+                           Zend\Mime\Mime::ENCODING_BASE64);
 
 Wenn du weitere Kontrolle über den für diesen Anhang generierten *MIME* Teil benötigst, kannst du
 zurückgegebenen Wert von ``createAttachment()`` verwenden, um die Attributes zu verändern. Die
-``createAttachment()`` Methode gibt ein ``Zend_Mime_Part`` Objekt zurück:
+``createAttachment()`` Methode gibt ein ``Zend\Mime\Part`` Objekt zurück:
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
 
    $at = $mail->createAttachment($myImage);
    $at->type        = 'image/gif';
-   $at->disposition = Zend_Mime::DISPOSITION_INLINE;
-   $at->encoding    = Zend_Mime::ENCODING_BASE64;
+   $at->disposition = Zend\Mime\Mime::DISPOSITION_INLINE;
+   $at->encoding    = Zend\Mime\Mime::ENCODING_BASE64;
    $at->filename    = 'test.gif';
 
    $mail->send();
 
-Eine Alternative ist die Erstellung einer Instanz von ``Zend_Mime_Part`` und das Hinzufügen von Ihr mit
+Eine Alternative ist die Erstellung einer Instanz von ``Zend\Mime\Part`` und das Hinzufügen von Ihr mit
 ``addAttachment()``:
 
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
 
-   $at = new Zend_Mime_Part($myImage);
+   $at = new Zend\Mime\Part($myImage);
    $at->type        = 'image/gif';
-   $at->disposition = Zend_Mime::DISPOSITION_INLINE;
-   $at->encoding    = Zend_Mime::ENCODING_BASE64;
+   $at->disposition = Zend\Mime\Mime::DISPOSITION_INLINE;
+   $at->encoding    = Zend\Mime\Mime::ENCODING_BASE64;
    $at->filename    = 'test.gif';
 
    $mail->addAttachment($at);

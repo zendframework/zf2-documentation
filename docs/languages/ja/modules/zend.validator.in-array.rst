@@ -4,15 +4,15 @@
 InArray
 =======
 
-任意の値が配列の中で含まれるかどうか、 ``Zend_Validate_InArray``\ で検証できます。
+任意の値が配列の中で含まれるかどうか、 ``Zend\Validate\InArray``\ で検証できます。
 それは、多次元配列を確認することもできます。
 
 .. _zend.validator.set.in_array.options:
 
-Supported options for Zend_Validate_InArray
+Supported options for Zend\Validate\InArray
 -------------------------------------------
 
-The following options are supported for ``Zend_Validate_InArray``:
+The following options are supported for ``Zend\Validate\InArray``:
 
 - **haystack**: Sets the haystack for the validation.
 
@@ -30,7 +30,7 @@ The following options are supported for ``Zend_Validate_InArray``:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray(array('key' => 'value',
+   $validator = new Zend\Validate\InArray(array('key' => 'value',
                                                 'otherkey' => 'othervalue'));
    if ($validator->isValid('value')) {
        // 値が見つかりました
@@ -52,7 +52,7 @@ The following options are supported for ``Zend_Validate_InArray``:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray();
+   $validator = new Zend\Validate\InArray();
    $validator->setHaystack(array('key' => 'value', 'otherkey' => 'othervalue'));
 
    if ($validator->isValid('value')) {
@@ -77,7 +77,7 @@ The following options are supported for ``Zend_Validate_InArray``:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray(
+   $validator = new Zend\Validate\InArray(
        array(
            'haystack' => array('key' => 'value', 'otherkey' => 'othervalue'),
            'strict'   => true
@@ -115,7 +115,7 @@ The following options are supported for ``Zend_Validate_InArray``:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray(
+   $validator = new Zend\Validate\InArray(
        array(
            'haystack' => array(
                'firstDimension' => array('key' => 'value',
@@ -139,7 +139,7 @@ The following options are supported for ``Zend_Validate_InArray``:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_InArray(
+   $validator = new Zend\Validate\InArray(
        array(
            'firstDimension' => array('key' => 'value',
                                      'otherkey' => 'othervalue'),

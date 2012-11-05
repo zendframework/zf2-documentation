@@ -4,13 +4,13 @@
 Créer et charger des documents PDF
 ==================================
 
-La classe ``Zend_Pdf`` représente le document *PDF* en lui-même et fournis des méthodes pour manipuler
+La classe ``ZendPdf`` représente le document *PDF* en lui-même et fournis des méthodes pour manipuler
 l'ensemble du document.
 
-Pour créer un nouveau document, un nouvel objet ``Zend_Pdf`` doit être créé.
+Pour créer un nouveau document, un nouvel objet ``ZendPdf`` doit être créé.
 
-La classe ``Zend_Pdf`` fournis deux méthodes statiques pour charger un *PDF* existant. Ce sont les méthodes
-``Zend_Pdf::load()`` et ``Zend_Pdf::parse()``. Les deux retournent un objet ``Zend_Pdf`` ou lève une exception en
+La classe ``ZendPdf`` fournis deux méthodes statiques pour charger un *PDF* existant. Ce sont les méthodes
+``ZendPdf\Pdf::load()`` et ``ZendPdf\Pdf::parse()``. Les deux retournent un objet ``ZendPdf`` ou lève une exception en
 cas d'erreur.
 
 .. _zend.pdf.create.example-1:
@@ -22,21 +22,21 @@ cas d'erreur.
 
    ...
    /// Crée un nouveau document PDF.
-   $pdf1 = new Zend_Pdf();
+   $pdf1 = new ZendPdf\Pdf();
 
    // Charge un document PDF depuis un fichier.
-   $pdf2 = Zend_Pdf::load($fileName);
+   $pdf2 = ZendPdf\Pdf::load($fileName);
 
    // Charge un document PDF depuis une string
-   $pdf3 = Zend_Pdf::parse($pdfString);
+   $pdf3 = ZendPdf\Pdf::parse($pdfString);
    ...
 
 Le format de fichier *PDF* supporte la mise à jour incrémentale d'un document. Ainsi chaque fois que le document
-est mis à jour, une nouvelle version du document est créée. Le module ``Zend_Pdf`` supporte la récupération
+est mis à jour, une nouvelle version du document est créée. Le module ``ZendPdf`` supporte la récupération
 d'une version spécifique.
 
-La version peut-être donnée en second paramètre des méthodes ``Zend_Pdf::load()`` et ``Zend_Pdf::parse()`` ou
-obligatoire dans le cas d'un appel à ``Zend_Pdf::rollback()`` [#]_
+La version peut-être donnée en second paramètre des méthodes ``ZendPdf\Pdf::load()`` et ``ZendPdf\Pdf::parse()`` ou
+obligatoire dans le cas d'un appel à ``ZendPdf\Pdf::rollback()`` [#]_
 
 .. _zend.pdf.create.example-2:
 
@@ -47,18 +47,18 @@ obligatoire dans le cas d'un appel à ``Zend_Pdf::rollback()`` [#]_
 
    ...
    // Charge la version précédente d'un document PDF.
-   $pdf1 = Zend_Pdf::load($fileName, 1);
+   $pdf1 = ZendPdf\Pdf::load($fileName, 1);
 
    // Charge la version précédente d'un document PDF.
-   $pdf2 = Zend_Pdf::parse($pdfString, 1);
+   $pdf2 = ZendPdf\Pdf::parse($pdfString, 1);
 
    // Charge la première version d'un document
-   $pdf3 = Zend_Pdf::load($fileName);
+   $pdf3 = ZendPdf\Pdf::load($fileName);
    $revisions = $pdf3->revisions();
    $pdf3->rollback($revisions - 1);
    ...
 
 
 
-.. [#] La méthode ``Zend_Pdf::rollback()`` doit être appelée avant tout changement. Sinon le comportement est
+.. [#] La méthode ``ZendPdf\Pdf::rollback()`` doit être appelée avant tout changement. Sinon le comportement est
        indéfini.

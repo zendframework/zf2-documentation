@@ -4,14 +4,14 @@
 Consommer un flux RSS
 =====================
 
-Lire un flux *RSS* se résume à instancier un objet ``Zend_Feed_Rss`` en passant l'URL du flux :
+Lire un flux *RSS* se résume à instancier un objet ``Zend\Feed\Rss`` en passant l'URL du flux :
 
 .. code-block:: php
    :linenos:
 
-   $canal = new Zend_Feed_Rss('http://rss.exemple.com/nomDuCanal');
+   $canal = new Zend\Feed\Rss('http://rss.exemple.com/nomDuCanal');
 
-Si une erreur a lieu lors de l'obtention du flux, une ``Zend_Feed_Exception`` sera déclenchée.
+Si une erreur a lieu lors de l'obtention du flux, une ``Zend\Feed\Exception`` sera déclenchée.
 
 Une fois que vous disposez d'un objet "flux *RSS*", vous pouvez accéder aux propriétés *RSS* standard du canal,
 et ce directement à partir de l'objet :
@@ -38,7 +38,7 @@ Comme les attributs *XML* ne peuvent avoir des enfants, la syntaxe *$obj->propri
 nécessaire pour accéder aux valeurs des attributs.
 
 La plupart du temps vous voudrez itérer sur le flux et réaliser quelque chose avec ses entrées.
-``Zend_Feed_Abstract`` implémente l'interface *iterator* de *PHP*, ce qui résume au code suivant l'affichage des
+``Zend\Feed\Abstract`` implémente l'interface *iterator* de *PHP*, ce qui résume au code suivant l'affichage des
 titres de tous les articles du canal :
 
 .. code-block:: php

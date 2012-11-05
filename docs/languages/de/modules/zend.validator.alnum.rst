@@ -4,15 +4,15 @@
 Alnum
 =====
 
-``Zend_Validate_Alnum`` erlaubt es zu prüfen ob ein angegebener Wert nur alphabetische Zeichen und Ziffern
+``Zend\Validate\Alnum`` erlaubt es zu prüfen ob ein angegebener Wert nur alphabetische Zeichen und Ziffern
 enthält. Es gibt keine Begrenzung der Länge für die Eingabe welche geprüft werden soll.
 
 .. _zend.validator.set.alnum.options:
 
-Unterstützte Optionen für Zend_Validate_Alnum
+Unterstützte Optionen für Zend\Validate\Alnum
 ---------------------------------------------
 
-Die folgenden Optionen werden von ``Zend_Validate_Alnum`` unterstützt:
+Die folgenden Optionen werden von ``Zend\Validate\Alnum`` unterstützt:
 
 - **allowWhiteSpace**: Ob Leerzeichen erlaubt sind. Diese Option ist standardmäßig ``FALSE``
 
@@ -26,7 +26,7 @@ Das folgende ist ein Standardbeispiel:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Alnum();
+   $validator = new Zend\Validate\Alnum();
    if ($validator->isValid('Abcd12')) {
        // Der Wert enthält nur erlaubte Zeichen
    } else {
@@ -48,7 +48,7 @@ wird. Um den aktuellen Zustand zu erhalten kann ``getAllowWhiteSpace()`` verwend
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Alnum(array('allowWhiteSpace' => true));
+   $validator = new Zend\Validate\Alnum(array('allowWhiteSpace' => true));
    if ($validator->isValid('Abcd und 12')) {
        // Der Wert enthält nur erlaubte Zeichen
    } else {
@@ -60,7 +60,7 @@ wird. Um den aktuellen Zustand zu erhalten kann ``getAllowWhiteSpace()`` verwend
 Andere Sprachen verwenden
 -------------------------
 
-Wenn ``Zend_Validate_Alnum`` verwendet wird dann wird jene Sprache verwendet, welche der Benutzer in seinem Browser
+Wenn ``Zend\Validate\Alnum`` verwendet wird dann wird jene Sprache verwendet, welche der Benutzer in seinem Browser
 gesetzt hat, um die erlaubten Zeichen zu setzen. Das bedeutet, wenn ein Benutzer **de** für Deutsch setzt dann
 kann er auch Zeichen wie **ä**, **ö** und **ü** zusätzlich zu den Zeichen des englischen Alphabeths setzen.
 

@@ -10,13 +10,13 @@ anhängen damit er weiss wo andere Klassen zu finden sind. Typischerweise wollen
 Klassen im selben Baum gruppiert sind -- in diesem Fall ``application/``-- und meistens einen gemeinsamen Präfix
 verwenden.
 
-``Zend_Controller_Front`` hat den Begriff von "Modulen", welche individuelle Mini-Anwendungen sind. Module mimen
+``Zend\Controller\Front`` hat den Begriff von "Modulen", welche individuelle Mini-Anwendungen sind. Module mimen
 die Verzeichnisstruktur welche das ``zf`` Tool unter ``application/`` einrichtet, und von allen Klassen in Ihm wird
 angenommen das Sie mit einen gemeinsamen Präfix beginnen, dem Namen des Moduls. ``application/`` selbst ist ein
 Modul -- das "default" oder "application" Modul. Als solches richten wir das Autoloading für Ressourcen in diesem
 Verzeichnis ein.
 
-``Zend_Application_Module_Autoloader`` bietet die Funktionalität welche benötigt wird um die verschiedenen
+``Zend\Application_Module\Autoloader`` bietet die Funktionalität welche benötigt wird um die verschiedenen
 Ressourcen unter einem Modul mit den richtigen Verzeichnissen zu verbinden, und auch einen standardmäßigen
 Namensmechanismus. Standardmäßig wird eine Instanz der Klasse wärend der Initialisierung des Bootstrap Objekts
 erstellt; unser Application Bootstrap verwendet standardmäßig das Modulpräfix "Application". Daher beginnen alle
@@ -225,10 +225,10 @@ erstellen:
        get_include_path(),
    )));
    require_once 'Zend/Loader/Autoloader.php';
-   Zend_Loader_Autoloader::getInstance();
+   Zend\Loader\Autoloader::getInstance();
 
    // Definiert einige CLI Optionen
-   $getopt = new Zend_Console_Getopt(array(
+   $getopt = new Zend\Console\Getopt(array(
        'withdata|w' => 'Datenbank mit einigen Daten laden',
        'env|e-s'    => "Anwendungsumgebung für welche die Datenbank "
                      . "erstellt wird (Standard ist Development)",
@@ -236,7 +236,7 @@ erstellen:
    ));
    try {
        $getopt->parse();
-   } catch (Zend_Console_Getopt_Exception $e) {
+   } catch (Zend\Console_Getopt\Exception $e) {
        // Schlechte Option übergeben: Verwendung ausgeben
        echo $e->getUsageMessage();
        return false;
@@ -255,7 +255,7 @@ erstellen:
        || define('APPLICATION_ENV', (null === $env) ? 'development' : $env);
 
    // Zend_Application initialisieren
-   $application = new Zend_Application(
+   $application = new Zend\Application\Application(
        APPLICATION_ENV,
        APPLICATION_PATH . '/configs/application.ini'
    );
@@ -334,12 +334,12 @@ Man sollte eine ähnliche Ausgabe wie folgt sehen:
 
 Jetzt haben wir eine voll funktionsfähige Datenbank und eine Tabelle für unsere Guestbook Anwendung. Unsere
 nächsten paar Schritte sind die Ausarbeitung unseres Anwendungscodes. Das inkludiert das Bauen einer Datenquelle
-(in unserem Fall verwenden wir ``Zend_Db_Table``), und einen Daten Mapper um diese Datenquelle mit unserem Domain
+(in unserem Fall verwenden wir ``Zend\Db\Table``), und einen Daten Mapper um diese Datenquelle mit unserem Domain
 Modell zu verbinden. Letztendlich erstellen wir den Controller der mit diesem Modell interagiert damit sowohl
 existierende Einträge angezeigt als auch neue Einträge bearbeitet werden.
 
-Wir verwenden ein `Table Data Gateway`_ um uns mit unserer Datenquelle zu verbinden; ``Zend_Db_Table`` bietet diese
-Funktionalität. Um anzufangen erstellen wir eine ``Zend_Db_Table``-basierende Tabellenklasse. Wie wir es für
+Wir verwenden ein `Table Data Gateway`_ um uns mit unserer Datenquelle zu verbinden; ``Zend\Db\Table`` bietet diese
+Funktionalität. Um anzufangen erstellen wir eine ``Zend\Db\Table``-basierende Tabellenklasse. Wie wir es für
 Layouts und den Datenbank Adapter getan haben, können wir das ``zf`` Tool verwenden um uns zu assistieren indem
 der Befehl ``create db-table`` verwendet wird. Dieser nimmt mindestens zwei Argumente, den Namen mit dem man auf
 die Klasse referenzieren will, und die Datenbanktabelle auf die Sie zeigt.
@@ -363,7 +363,7 @@ wird man den folgenden Inhalt sehen:
    /**
     * Das ist die DbTable Klasse für die Guestbook Tabelle.
     */
-   class Application_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
+   class Application_Model_DbTable_Guestbook extends Zend\Db_Table\Abstract
    {
        /** Tabellenname */
        protected $_name    = 'guestbook';
@@ -373,7 +373,7 @@ Der Klassenpräfix ist zu beachten: ``Application_Model_DbTable``. Der Klassenpr
 "Application" ist das erste Segment, und dann haben wir die Komponente "Model_DbTable"; die letztere verweist auf
 das Verzeichnis ``models/DbTable/`` des Moduls.
 
-Alles das ist wirklich notwendig wenn ``Zend_Db_Table`` erweitert wird um einen Tabellennamen anzubieten und
+Alles das ist wirklich notwendig wenn ``Zend\Db\Table`` erweitert wird um einen Tabellennamen anzubieten und
 optional den primären Schlüssel (wenn es nicht die "id" ist).
 
 Jetzt erstellen wir einen `Daten Mapper`_. Ein **Daten Mapper** bildet ein Domain Objekt in der Datenbank ab. In
@@ -419,7 +419,7 @@ gefunden werden kann so geändert werden dass Sie wie folgt zu lesen ist:
            if (is_string($dbTable)) {
                $dbTable = new $dbTable();
            }
-           if (!$dbTable instanceof Zend_Db_Table_Abstract) {
+           if (!$dbTable instanceof Zend\Db_Table\Abstract) {
                throw new Exception('Ungültiges Table Data Gateway angegeben');
            }
            $this->_dbTable = $dbTable;
@@ -620,7 +620,7 @@ Guestbook Einträge an. Das würde wie folgt aussehen:
 
    // application/controllers/GuestbookController.php
 
-   class GuestbookController extends Zend_Controller_Action
+   class GuestbookController extends Zend\Controller\Action
    {
        public function indexAction()
        {
@@ -669,7 +669,7 @@ Und natürlich benötigen wir ein View Skript um damit weiterzumachen.
 
    Das Datenlade Skript welches in diesem Kapitel beschrieben wird (``scripts/load.sqlite.php``) kann verwendet
    werden um die Datenbank, für jede Umgebung die man definiert hat, zu erstellen sowie Sie mit Beispieldaten zu
-   laden. Intern verwendet es ``Zend_Console_Getopt``, was es erlaubt eine Anzahl von Kommandozeilen Schalter
+   laden. Intern verwendet es ``Zend\Console\Getopt``, was es erlaubt eine Anzahl von Kommandozeilen Schalter
    anzubieten. Wenn man den "-h" oder "--help" Schalter übergibt, werden die folgenden Optionen angegeben:
 
    .. code-block:: php

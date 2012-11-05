@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.livedocx:
 
-Zend_Service_LiveDocx
+Zend\Service\LiveDocx
 =====================
 
 .. _zend.service.livedocx.introduction:
@@ -14,18 +14,18 @@ Daten von *PHP* mit einem Template kombiniert werden, die in einer MS Word-kompa
 Das resultierende Dokument kann als *PDF*, *DOCX*, *DOC*, *HTML* oder *RTF* Datei gespeichert werden. LiveDocx
 implementiert `Mail-Merge`_ in *PHP*.
 
-Die Familie der ``Zend_Service_LiveDocx`` Komponenten bietet ein klares und einfaches Interface zur `LiveDocx API`_
+Die Familie der ``Zend\Service\LiveDocx`` Komponenten bietet ein klares und einfaches Interface zur `LiveDocx API`_
 und bietet zusätzlich Funktionalitäten, um die Geschwindigkeit im Netzwerk zu erhöhen.
 
-Wenn man zusätzlich zu diesem Kapitel des Handbuchs daran interessiert ist, mehr über ``Zend_Service_LiveDocx``
+Wenn man zusätzlich zu diesem Kapitel des Handbuchs daran interessiert ist, mehr über ``Zend\Service\LiveDocx``
 und den dahinterliegenden *SOAP*-Service LiveDocx zu lernen, kann man bei den folgenden Ressourcen nachsehen:
 
 - **Mitgelieferte Beispielanwendungen**. Es gibt eine große Anzahl an Beispielanwendungen im Verzeichnis
   **/demos/Zend/Service/LiveDocx** der Zend Framework Distributionsdatei, oder der Trunk Version die vom
   standardmäßigen SVN Repository ausgecheckt werden kann. Diese sind dazu gedacht, schnell, in nur ein paar
-  Minuten, mit ``Zend_Service_LiveDocx`` zurecht zu kommen.
+  Minuten, mit ``Zend\Service\LiveDocx`` zurecht zu kommen.
 
-- `Zend_Service_LiveDocx Blog und Webseite`_.
+- `Zend\Service\LiveDocx Blog und Webseite`_.
 
 - `LiveDocx SOAP API Dokumentation`_.
 
@@ -122,10 +122,10 @@ Das resultierende Dokument kann in jedem der folgenden grafischen Dateiformate g
 
 .. _zend.service.livedocx.mailmerge:
 
-Zend_Service_LiveDocx_MailMerge
+Zend\Service_LiveDocx\MailMerge
 -------------------------------
 
-``Zend_Service_LiveDocx_MailMerge`` ist das Mail-Merge-Objekt in der ``Zend_Service_LiveDocx`` Familie.
+``Zend\Service_LiveDocx\MailMerge`` ist das Mail-Merge-Objekt in der ``Zend\Service\LiveDocx`` Familie.
 
 .. _zend.service.livedocx.mailmerge.generation:
 
@@ -184,7 +184,7 @@ folgende geschrieben werden:
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -215,7 +215,7 @@ Resultierendes Dokument als *PDF* im Document Viewer 2.26.1.
 Gehobeneres Mail-Merge
 ^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_Service_LiveDocx_MailMerge`` erlaubt es Entwicklern eine beliebige Anzahl an Text-Feldern in ein Template
+``Zend\Service_LiveDocx\MailMerge`` erlaubt es Entwicklern eine beliebige Anzahl an Text-Feldern in ein Template
 einzufügen. Diese Text-Felder werden mit Daten gefüllt, wenn **createDocument()** aufgerufen wird.
 
 Zusätzlich zu Textfeldern ist es auch möglich, spezielle Regionen eines Dokuments anzugeben, die wiederholt
@@ -265,7 +265,7 @@ Der folgende Code füllt das obige Template mit Daten.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -325,7 +325,7 @@ Man kann die *DOC* `Template Datei`_ und das resultierende `PDF Dokument`_ hier 
 Erstellen von Bitmap Bildern
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Zusätzlich zu den Dateiformaten für Dokumente erlaubt es ``Zend_Service_LiveDocx_MailMerge`` auch Dokumente als
+Zusätzlich zu den Dateiformaten für Dokumente erlaubt es ``Zend\Service_LiveDocx\MailMerge`` auch Dokumente als
 eine Anzahl von Bildern zu speichern (*BMP*, *GIF*, *JPG*, *PNG* und *TIFF*). Jede Seite des Dokuments wird als
 eine Datei gespeichert.
 
@@ -341,10 +341,10 @@ man ``getImageExportFormats()`` aufruft.
 .. code-block:: php
    :linenos:
 
-   $date = new Zend_Date();
+   $date = new Zend\Date\Date();
    $date->setLocale('en_US');
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -354,8 +354,8 @@ man ``getImageExportFormats()`` aufruft.
    $phpLiveDocx->assign('software', 'Magic Graphical Compression Suite v1.9')
                ->assign('licensee', 'Daï Lemaitre')
                ->assign('company',  'Megasoft Co-operation')
-               ->assign('date',     $date->get(Zend_Date::DATE_LONG))
-               ->assign('time',     $date->get(Zend_Date::TIME_LONG))
+               ->assign('date',     $date->get(Zend\Date\Date::DATE_LONG))
+               ->assign('time',     $date->get(Zend\Date\Date::TIME_LONG))
                ->assign('city',     'Lyon')
                ->assign('country',  'France');
 
@@ -406,7 +406,7 @@ Der folgende Code zeigt, wie man ein lokales Template verwendet.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -425,7 +425,7 @@ Der folgende Code zeigt, wie ein Template auf den Server übertragen wird:
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -437,7 +437,7 @@ Der folgende Code zeigt, wie auf das remote gespeicherte Template bei allen weit
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -451,7 +451,7 @@ Der folgende Code zeigt, wie auf das remote gespeicherte Template bei allen weit
 Informationen erhalten
 ^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend_Service_LiveDocx_MailMerge`` bietet eine Anzahl an Methoden um Informationen über Feldnamen, vorhandene
+``Zend\Service_LiveDocx\MailMerge`` bietet eine Anzahl an Methoden um Informationen über Feldnamen, vorhandene
 Schriftarten und unterstützte Formate zu erhalten.
 
 .. _zend.service.livedocx.mailmerge.information.getfieldname:
@@ -465,7 +465,7 @@ aktualisieren kann.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -490,7 +490,7 @@ herauszufinden.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -520,12 +520,12 @@ führen.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
 
-   Zend_Debug::dump($phpLiveDocx->getFontNames());
+   Zend\Debug\Debug::dump($phpLiveDocx->getFontNames());
 
 **BEACHTE:** Da sich der Rückgabewert diese Methode sehr selten ändert, ist es sehr empfehlenswert einen Cache zu
 verwenden, wie z.B. ``Zend_Cache``- das macht die Anwendung sichtbar schneller.
@@ -541,12 +541,12 @@ Eingabeformat für den Erstellungsprozess des Dokuments auszuwählen.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge()
+   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge()
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
 
-   Zend_Debug::dump($phpLiveDocx->getTemplateFormats());
+   Zend\Debug\Debug::dump($phpLiveDocx->getTemplateFormats());
 
 **BEACHTE:** Da sich der Rückgabewert diese Methode sehr selten ändert, ist es sehr empfehlenswert einen Cache zu
 verwenden, wie z.B. ``Zend_Cache``- das macht die Anwendung sichtbar schneller.
@@ -562,12 +562,12 @@ den Erstellungsprozess des Dokuments auszuwählen.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
 
-   Zend_Debug::dump($phpLiveDocx->getDocumentFormats());
+   Zend\Debug\Debug::dump($phpLiveDocx->getDocumentFormats());
 
 .. _zend.service.livedocx.mailmerge.information.getimageexportformats:
 
@@ -580,12 +580,12 @@ den Erstellungsprozess des Dokuments auszuwählen.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
 
-   Zend_Debug::dump($phpLiveDocx->getImageExportFormats());
+   Zend\Debug\Debug::dump($phpLiveDocx->getImageExportFormats());
 
 **BEACHTE:** Da sich der Rückgabewert diese Methode sehr selten ändert, ist es sehr empfehlenswert einen Cache zu
 verwenden, wie z.B. ``Zend_Cache``- das macht die Anwendung sichtbar schneller.
@@ -594,7 +594,7 @@ verwenden, wie z.B. ``Zend_Cache``- das macht die Anwendung sichtbar schneller.
 
 .. _`Mail-Merge`: http://en.wikipedia.org/wiki/Mail_merge
 .. _`LiveDocx API`: http://www.livedocx.com
-.. _`Zend_Service_LiveDocx Blog und Webseite`: http://www.phplivedocx.org/
+.. _`Zend\Service\LiveDocx Blog und Webseite`: http://www.phplivedocx.org/
 .. _`LiveDocx SOAP API Dokumentation`: http://www.livedocx.com/pub/documentation/api.aspx
 .. _`LiveDocx WSDL`: https://api.livedocx.com/1.2/mailmerge.asmx?wsdl
 .. _`LiveDocx Blog und Webseite`: https://www.livedocx.com/

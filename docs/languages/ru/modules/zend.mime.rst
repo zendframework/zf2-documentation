@@ -11,7 +11,7 @@ Zend_Mime
 
 ``Zend_Mime`` является вспомогательным классом для работы с
 сообщениями *MIME* multipart. Он используется :ref:`Zend_Mail <zend.mail>` и
-:ref:`Zend_Mime_Message <zend.mime.message>`, может использоваться в приложениях,
+:ref:`Zend\Mime\Message <zend.mime.message>`, может использоваться в приложениях,
 требующих поддержки *MIME*.
 
 .. _zend.mime.mime.static:
@@ -22,12 +22,12 @@ Zend_Mime
 ``Zend_Mime`` предоставляет простой набор статических методов для
 работы с *MIME*:
 
-   - ``Zend_Mime::isPrintable()``: Возвращает TRUE, если переданная строка не
+   - ``Zend\Mime\Mime::isPrintable()``: Возвращает TRUE, если переданная строка не
      содержит непечатаемых символов, иначе FALSE.
 
-   - ``Zend_Mime::encodeBase64()``: Кодирует строку по алгоритму base64.
+   - ``Zend\Mime\Mime::encodeBase64()``: Кодирует строку по алгоритму base64.
 
-   - ``Zend_Mime::encodeQuotedPrintable()``: Кодирует строку по алгоритму
+   - ``Zend\Mime\Mime::encodeQuotedPrintable()``: Кодирует строку по алгоритму
      quoted-printable.
 
 
@@ -35,23 +35,23 @@ Zend_Mime
 ``Zend_Mime`` определяет набор констант, обычно используемых с
 *MIME*-сообщениями:
 
-   - ``Zend_Mime::TYPE_OCTETSTREAM``: 'application/octet-stream'
+   - ``Zend\Mime\Mime::TYPE_OCTETSTREAM``: 'application/octet-stream'
 
-   - ``Zend_Mime::TYPE_TEXT``: 'text/plain'
+   - ``Zend\Mime\Mime::TYPE_TEXT``: 'text/plain'
 
-   - ``Zend_Mime::TYPE_HTML``: 'text/html'
+   - ``Zend\Mime\Mime::TYPE_HTML``: 'text/html'
 
-   - ``Zend_Mime::ENCODING_7BIT``: '7bit'
+   - ``Zend\Mime\Mime::ENCODING_7BIT``: '7bit'
 
-   - ``Zend_Mime::ENCODING_8BIT``: '8bit'
+   - ``Zend\Mime\Mime::ENCODING_8BIT``: '8bit'
 
-   - ``Zend_Mime::ENCODING_QUOTEDPRINTABLE``: 'quoted-printable'
+   - ``Zend\Mime\Mime::ENCODING_QUOTEDPRINTABLE``: 'quoted-printable'
 
-   - ``Zend_Mime::ENCODING_BASE64``: 'base64'
+   - ``Zend\Mime\Mime::ENCODING_BASE64``: 'base64'
 
-   - ``Zend_Mime::DISPOSITION_ATTACHMENT``: 'attachment'
+   - ``Zend\Mime\Mime::DISPOSITION_ATTACHMENT``: 'attachment'
 
-   - ``Zend_Mime::DISPOSITION_INLINE``: 'inline'
+   - ``Zend\Mime\Mime::DISPOSITION_INLINE``: 'inline'
 
 
 

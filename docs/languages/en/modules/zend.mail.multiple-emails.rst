@@ -21,15 +21,15 @@ defaults can be done through the use of the ``clearDefaultFrom()`` and ``clearDe
 
    // Create transport
    $config = array('name' => 'sender.example.com');
-   $transport = new Zend_Mail_Transport_Smtp('mail.example.com', $config);
+   $transport = new Zend\Mail\Transport\Smtp('mail.example.com', $config);
 
    // Set From & Reply-To address and name for all emails to send.
-   Zend_Mail::setDefaultFrom('sender@example.com', 'John Doe');
-   Zend_Mail::setDefaultReplyTo('replyto@example.com','Jane Doe');
+   Zend\Mail\Message::setDefaultFrom('sender@example.com', 'John Doe');
+   Zend\Mail\Message::setDefaultReplyTo('replyto@example.com','Jane Doe');
 
    // Loop through messages
    for ($i = 0; $i < 5; $i++) {
-       $mail = new Zend_Mail();
+       $mail = new Zend\Mail\Message();
        $mail->addTo('studio@example.com', 'Test');
 
        $mail->setSubject(
@@ -40,8 +40,8 @@ defaults can be done through the use of the ``clearDefaultFrom()`` and ``clearDe
    }
 
    // Reset defaults
-   Zend_Mail::clearDefaultFrom();
-   Zend_Mail::clearDefaultReplyTo();
+   Zend\Mail\Message::clearDefaultFrom();
+   Zend\Mail\Message::clearDefaultReplyTo();
 
 If you wish to have a separate connection for each mail delivery, you will need to create and destroy your
 transport before and after each ``send()`` method is called. Or alternatively, you can manipulate the connection
@@ -55,9 +55,9 @@ between each delivery by accessing the transport's protocol object.
    :linenos:
 
    // Create transport
-   $transport = new Zend_Mail_Transport_Smtp();
+   $transport = new Zend\Mail\Transport\Smtp();
 
-   $protocol = new Zend_Mail_Protocol_Smtp('mail.example.com');
+   $protocol = new Zend\Mail\Protocol\Smtp('mail.example.com');
    $protocol->connect();
    $protocol->helo('sender.example.com');
 
@@ -65,7 +65,7 @@ between each delivery by accessing the transport's protocol object.
 
    // Loop through messages
    for ($i = 0; $i < 5; $i++) {
-       $mail = new Zend_Mail();
+       $mail = new Zend\Mail\Message();
        $mail->addTo('studio@example.com', 'Test');
        $mail->setFrom('studio@example.com', 'Test');
        $mail->setSubject(

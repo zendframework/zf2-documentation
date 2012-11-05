@@ -28,7 +28,7 @@
 
 .. rubric:: Zend_Memory コンポーネントの使用法
 
-``Zend_Memory::factory()`` は、
+``Zend\Memory\Memory::factory()`` は、
 指定したバックエンドオプションでメモリマネージャオブジェクトの
 インスタンスを作成します。
 
@@ -39,7 +39,7 @@
        'cache_dir' => './tmp/' // スワップしたメモリブロックを配置するディレクトリ
    );
 
-   $memoryManager = Zend_Memory::factory('File', $backendOptions);
+   $memoryManager = Zend\Memory\Memory::factory('File', $backendOptions);
 
    $loadedFiles = array();
 

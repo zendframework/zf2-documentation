@@ -89,7 +89,7 @@ Zend_Form クイックスタート
    :linenos:
 
    // 要素のインスタンスを作成してフォームオブジェクトに渡します
-   $form->addElement(new Zend_Form_Element_Text('username'));
+   $form->addElement(new Zend\Form_Element\Text('username'));
 
    // フォーム要素の型をフォームオブジェクトに渡します
    $form->addElement('text', 'username');
@@ -103,16 +103,16 @@ Zend_Form クイックスタート
 のいずれかの方法で行います。
 
 まずは要素のインスタンスにバリデータを追加する例を見てみましょう。
-``Zend_Validate_*`` オブジェクトそのものを渡すか、
+``Zend\Validate\*`` オブジェクトそのものを渡すか、
 あるいは使用するバリデータの名前を渡すことになります。
 
 .. code-block:: php
    :linenos:
 
-   $username = new Zend_Form_Element_Text('username');
+   $username = new Zend\Form_Element\Text('username');
 
-   // Zend_Validate_* オブジェクトを渡します
-   $username->addValidator(new Zend_Validate_Alnum());
+   // Zend\Validate\* オブジェクトを渡します
+   $username->addValidator(new Zend\Validate\Alnum());
 
    // バリデータ名を渡します
    $username->addValidator('alnum');
@@ -174,7 +174,7 @@ Zend_Form クイックスタート
 シンプルといえばシンプルですが、
 フォームのすべての要素についてこれを行うというのも
 ちょっと面白くありません。上で説明した (b) の方法を試してみましょう。
-``Zend_Form::addElement()``
+``Zend\Form\Form::addElement()``
 をファクトリメソッドとして使用して新しい要素を作成する際に、
 設定オプションを渡すことができます。
 たとえば、使用するバリデータやフィルタをここで指定することが可能です。
@@ -195,7 +195,7 @@ Zend_Form クイックスタート
 .. note::
 
    同じオプションを指定した要素をいろんな場所で使用するような場合は、
-   ``Zend_Form_Element`` のサブクラスを作成してそれを使用するといいでしょう。
+   ``Zend\Form\Element`` のサブクラスを作成してそれを使用するといいでしょう。
    長い目で見れば、そのほうがタイピング量を軽減できます。
 
 .. _zend.form.quickstart.render:
@@ -217,7 +217,7 @@ Zend_Form クイックスタート
    // 事前に setView() でビューオブジェクトが設定されているものとします
    echo $form;
 
-デフォルトでは、 ``Zend_Form`` と ``Zend_Form_Element`` は ``ViewRenderer``
+デフォルトでは、 ``Zend_Form`` と ``Zend\Form\Element`` は ``ViewRenderer``
 が初期化したビューオブジェクトを使おうと試みます。 つまり、Zend Framework の *MVC*
 を使用している場合は、自分でビューを設定する必要はないということです。
 フォームをビュースクリプト内でレンダリングするには、
@@ -232,7 +232,7 @@ Zend_Form クイックスタート
 このデコレータが、コンテンツの置換や 先頭 (あるいは末尾)
 へのコンテンツの追加、 その他コンテンツに対する操作を行うことになります。
 複数のデコレータを組み合わせることで、 さまざまな効果を適用できます。
-デフォルトでは、 ``Zend_Form_Element`` は 4
+デフォルトでは、 ``Zend\Form\Element`` は 4
 つのデコレータを組み合わせて出力を行います。
 その設定は、次のようになっています。
 
@@ -406,7 +406,7 @@ can remain unvalidated.
 .. code-block:: php
    :linenos:
 
-   $form = new Zend_Form();
+   $form = new Zend\Form\Form();
    $form->setAction('/user/login')
         ->setMethod('post');
 
@@ -434,7 +434,7 @@ can remain unvalidated.
 .. code-block:: php
    :linenos:
 
-   class UserController extends Zend_Controller_Action
+   class UserController extends Zend\Controller\Action
    {
        public function getForm()
        {
@@ -524,8 +524,8 @@ recommendations, and place our configurations into sections reflecting the relea
 .. code-block:: php
    :linenos:
 
-   $config = new Zend_Config_Ini($configFile, 'development');
-   $form   = new Zend_Form($config->user->login);
+   $config = new Zend\Config\Ini($configFile, 'development');
+   $form   = new Zend\Form\Form($config->user->login);
 
 これでフォームの定義が完了しました。
 

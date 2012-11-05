@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.http.response:
 
-Zend_Http_Response
+Zend\Http\Response
 ==================
 
 .. _zend.http.response.introduction:
@@ -9,7 +9,7 @@ Zend_Http_Response
 简介
 --
 
-对于由 :ref:` <zend.http.client>`\ 返回的应答(Response)信息， *Zend_Http_Response*
+对于由 :ref:` <zend.http.client>`\ 返回的应答(Response)信息， *Zend\Http\Response*
 可以提供简单的访问方式。 它提供一组友好的方法来获得从请求返回的应答信息:
 
    - *isError()*: 如果收到HTTP出错状态的代码,返回TRUE, 否则返回FALSE.
@@ -34,7 +34,7 @@ Zend_Http_Response
    <?php
    require_once 'Zend/Http/Client.php';
    try {
-       $http = new Zend_Http_Client('http://example.org');
+       $http = new Zend\Http\Client('http://example.org');
        $response = $http->get();
        if ($response->isSuccessful()) {
            echo $response->getBody();
@@ -47,7 +47,7 @@ Zend_Http_Response
                echo "$responseHeaderName: $responseHeaderValue\n";
            }
        }
-   } catch (Zend_Http_Client_Exception $e) {
+   } catch (Zend\Http_Client\Exception $e) {
        echo '<p>An error occurred (' .$e->getMessage(). ')</p>';
    }
    ?>

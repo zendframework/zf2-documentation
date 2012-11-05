@@ -9,16 +9,16 @@ Uitbreidbaarheid
 Tekst analysator
 ----------------
 
-De *Zend_Search_Lucene_Analysis_Analyzer* klasse wordt gebruikt door de indexer om tekstvelden van het document van
+De *Zend\Search\Lucene\Analysis\Analyzer* klasse wordt gebruikt door de indexer om tekstvelden van het document van
 tokens te voorzien.
 
-De *Zend_Search_Lucene_Analysis_Analyzer::getDefault()* en *Zend_Search_Lucene_Analysis_Analyzer::setDefault()*
+De *Zend\Search\Lucene\Analysis\Analyzer::getDefault()* en *Zend\Search\Lucene\Analysis\Analyzer::setDefault()*
 methodes worden gebruikt om de standaard analysator te verkrijgen of te zetten.
 
 Je kan dus je eigen tekst analysator aanwijzen of er één kiezen uit de aangeboden set van analysators:
-*Zend_Search_Lucene_Analysis_Analyzer_Common_Text* en
-*Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive* (standaard). Beiden interpreteren tokens als een
-opeenvolging van letters. *Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive* past tokens aan naar
+*Zend\Search\Lucene\Analysis\Analyzer\Common\Text* en
+*Zend\Search\Lucene\Analysis\Analyzer\Common\Text\CaseInsensitive* (standaard). Beiden interpreteren tokens als een
+opeenvolging van letters. *Zend\Search\Lucene\Analysis\Analyzer\Common\Text\CaseInsensitive* past tokens aan naar
 kleine letters.
 
 Om tussen analysatoren te wisselen kan je de volgende code gebruiken:
@@ -28,13 +28,13 @@ Om tussen analysatoren te wisselen kan je de volgende code gebruiken:
 
    <?php
 
-   Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-       new Zend_Search_Lucene_Analysis_Analyzer_Common_Text());
+   Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+       new Zend\Search\Lucene\Analysis\Analyzer\Common\Text());
    ...
    $index->addDocument($doc);
 
    ?>
-De *Zend_Search_Lucene_Analysis_Analyzer_Common* is ontworpen om de parent van alle door gebruikers gedefinieerde
+De *Zend\Search\Lucene\Analysis\Analyzer\Common* is ontworpen om de parent van alle door gebruikers gedefinieerde
 analysatoren te zijn. De gebruiker zou alleen de *tokenize()* methode moeten schrijven, die een string als input
 data moet aanvaarden en een array van tokens moet terugsturen.
 
@@ -52,14 +52,14 @@ Hier is een voorbeeld van een zelfgemaakte analysator, welke woorden met cijfers
       /** Dit is een zelfgemaakte tekst analysator, die woorden met cijfers als een enkele term beschouwt */
 
 
-      /** Zend_Search_Lucene_Analysis_Analyzer_Common */
+      /** Zend\Search\Lucene\Analysis\Analyzer\Common */
       require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common.php';
 
-      class My_Analyzer extends Zend_Search_Lucene_Analysis_Analyzer_Common
+      class My_Analyzer extends Zend\Search\Lucene\Analysis\Analyzer\Common
       {
           /**
            * Tekst van termtokens voorzien
-           * Geeft een array van Zend_Search_Lucene_Analysis_Token objecten terug
+           * Geeft een array van Zend\Search\Lucene\Analysis\Token objecten terug
            *
            * @param string $data
            * @return array
@@ -87,7 +87,7 @@ Hier is een voorbeeld van een zelfgemaakte analysator, welke woorden met cijfers
                       break;
                   }
 
-                  $token = new Zend_Search_Lucene_Analysis_Token(substr($data,
+                  $token = new Zend\Search\Lucene\Analysis\Token(substr($data,
                                                    $termStartPosition,
                                                    $position-$termStartPosition),
                                             $termStartPosition,
@@ -99,7 +99,7 @@ Hier is een voorbeeld van een zelfgemaakte analysator, welke woorden met cijfers
           }
       }
 
-      Zend_Search_Lucene_Analysis_Analyzer::setDefault(
+      Zend\Search\Lucene\Analysis\Analyzer::setDefault(
           new My_Analyzer());
 
       ?>
@@ -115,10 +115,10 @@ De score van een query ``q`` voor document ``d`` is als volgt gedefinieerd:
 *score(q,d) = sum( tf(t in d) * idf(t) * getBoost(t.field in d) * lengthNorm(t.field in d) ) * coord(q,d) *
 queryNorm(q)*
 
-tf(t in d) -*Zend_Search_Lucene_Search_Similarity::tf($freq)*- een score factor gebaseerd op de frequentie van een
+tf(t in d) -*Zend\Search\Lucene\Search\Similarity::tf($freq)*- een score factor gebaseerd op de frequentie van een
 term of zin in een document.
 
-idf(t) -*Zend_Search_Lucene_Search_SimilaritySimilarity::tf($term, $reader)*- een score factor van een eenvoudige
+idf(t) -*Zend\Search\Lucene\Search\SimilaritySimilarity::tf($term, $reader)*- een score factor van een eenvoudige
 term voor de gespecificeerde index.
 
 getBoost(t.field in d) - boost factor voor het termveld.
@@ -130,7 +130,7 @@ vermenigvuldigd in scores door de zoekcode voor hits op elk veld.
 Overeenkomsten op langere velden zijn minder precies, dus geven implementaties van deze methode meestal kleinere
 waarden terug als numTokens groot is, en grotere waarden als numTokens klein is.
 
-coord(q,d) -*Zend_Search_Lucene_Search_Similarity::coord($overlap, $maxOverlap)*- een score factor gebaseerd op de
+coord(q,d) -*Zend\Search\Lucene\Search\Similarity::coord($overlap, $maxOverlap)*- een score factor gebaseerd op de
 fractie van alle query termen dat een document bevat.
 
 De aanwezigheid van een groot deel van de query termen duidt een betere overeenkomst met de query aan, dus zullen
@@ -143,15 +143,15 @@ het vierkant. Het gewicht van elke query term wordt dan vermenigvuldigd met deze
 Dit beïnvloedt het ordenen niet, maar probeert enkel scores van verschillende queries vergelijkbaar te maken.
 
 Het scoring algoritme kan verpersoonlijkt worden door je eigen Similarity klasse te maken. Om dit te doen moet je
-de Zend_Search_Lucene_Search_Similarity klasse uitbreiden zoals hierna is gedefinieerd, en dan de
-*Zend_Search_Lucene_Search_Similarity::setDefault($similarity);* methode gebruiken om het tot standaard te zetten.
+de Zend\Search\Lucene\Search\Similarity klasse uitbreiden zoals hierna is gedefinieerd, en dan de
+*Zend\Search\Lucene\Search\Similarity::setDefault($similarity);* methode gebruiken om het tot standaard te zetten.
 
 .. code-block:: php
    :linenos:
 
    <?php
 
-   class MySimilarity extends Zend_Search_Lucene_Search_Similarity {
+   class MySimilarity extends Zend\Search\Lucene\Search\Similarity {
        public function lengthNorm($fieldName, $numTerms) {
            return 1.0/sqrt($numTerms);
        }
@@ -182,7 +182,7 @@ de Zend_Search_Lucene_Search_Similarity klasse uitbreiden zoals hierna is gedefi
    }
 
    $mySimilarity = new MySimilarity();
-   Zend_Search_Lucene_Search_Similarity::setDefault($mySimilarity);
+   Zend\Search\Lucene\Search\Similarity::setDefault($mySimilarity);
 
    ?>
 .. _zend.search.lucene.extending.storage:
@@ -190,27 +190,27 @@ de Zend_Search_Lucene_Search_Similarity klasse uitbreiden zoals hierna is gedefi
 Opslag containers
 -----------------
 
-Een abstracte klasse Zend_Search_Lucene_Storage_Directory definieert mapfunctionaliteit.
+Een abstracte klasse Zend\Search\Lucene\Storage\Directory definieert mapfunctionaliteit.
 
-De Zend_Search_Lucene constructor gebruikt ofwel een string of een Zend_Search_Lucene_Storage_Directory object als
+De Zend\Search\Lucene constructor gebruikt ofwel een string of een Zend\Search\Lucene\Storage\Directory object als
 input.
 
-De Zend_Search_Lucene_Storage_Directory_Filesystem klasse implementeert mapfunctionaliteit voor het bestandssyteem.
+De Zend\Search\Lucene\Storage\Directory\Filesystem klasse implementeert mapfunctionaliteit voor het bestandssyteem.
 
-Indien een string werd opgegeven als input voor de Zend_Search_Lucene constructor, zal de indexlezer
-(Zend_Search_Lucene object) het beschouwen als een bestandssysteempad en zelf een
-Zend_Search_Lucene_Storage_Directory_Filesystem object instantiëren.
+Indien een string werd opgegeven als input voor de Zend\Search\Lucene constructor, zal de indexlezer
+(Zend\Search\Lucene object) het beschouwen als een bestandssysteempad en zelf een
+Zend\Search\Lucene\Storage\Directory\Filesystem object instantiëren.
 
-Je kan je eigen implementatiemap definiëren door de Zend_Search_Lucene_Storage_Directory klasse uit te breiden.
+Je kan je eigen implementatiemap definiëren door de Zend\Search\Lucene\Storage\Directory klasse uit te breiden.
 
-Zend_Search_Lucene_Storage_Directory methodes:
+Zend\Search\Lucene\Storage\Directory methodes:
 
 .. code-block:: php
    :linenos:
 
    <?php
 
-   abstract class Zend_Search_Lucene_Storage_Directory {
+   abstract class Zend\Search\Lucene\Storage\Directory {
    /**
     * Sluit de opslag.
     *
@@ -284,25 +284,25 @@ Zend_Search_Lucene_Storage_Directory methodes:
 
 
    /**
-    * Geeft een Zend_Search_Lucene_Storage_File object terug voor een gegeven $filename in de map.
+    * Geeft een Zend\Search\Lucene\Storage\File object terug voor een gegeven $filename in de map.
     *
     * @param string $filename
-    * @return Zend_Search_Lucene_Storage_File
+    * @return Zend\Search\Lucene\Storage\File
     */
    abstract function getFileObject($filename);
 
    }
 
    ?>
-De *getFileObject($filename)* methode van de Zend_Search_Lucene_Storage_Directory klasse geeft een
-Zend_Search_Lucene_Storage_File object terug.
+De *getFileObject($filename)* methode van de Zend\Search\Lucene\Storage\Directory klasse geeft een
+Zend\Search\Lucene\Storage\File object terug.
 
-De abstrakte klasse Zend_Search_Lucene_Storage_File implementeert bestandsabstractie en voorziet in indexbestand
+De abstrakte klasse Zend\Search\Lucene\Storage\File implementeert bestandsabstractie en voorziet in indexbestand
 leesprimitieven.
 
-Je moet ook de Zend_Search_Lucene_Storage_File klasse uitbreiden voor jouw Directory implementatie.
+Je moet ook de Zend\Search\Lucene\Storage\File klasse uitbreiden voor jouw Directory implementatie.
 
-Slechts twee methodes van de Zend_Search_Lucene_Storage_File klasse hoeven te worden overloaded in jouw
+Slechts twee methodes van de Zend\Search\Lucene\Storage\File klasse hoeven te worden overloaded in jouw
 implementatie:
 
 .. code-block:: php
@@ -310,7 +310,7 @@ implementatie:
 
    <?php
 
-   class MyFile extends Zend_Search_Lucene_Storage_File {
+   class MyFile extends Zend\Search\Lucene\Storage\File {
        /**
         * Zet de bestandpositie indicator en zet de bestandswijzer voort.
         * De nieuwe positie, berekend in bytes vanaf het begin van het

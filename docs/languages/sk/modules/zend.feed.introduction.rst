@@ -9,8 +9,8 @@ k jednotlivým častiam zdroja, ako sú elementy, atribúty a jednotlivé polož
 poskytuje podporu pre modifikáciu zdroja a jeho položiek a spätné uloženie do XML. V budúcnosti pribudne aj
 podpora Atom Publishing Protocol
 
-Programátorsky, *Zend_Feed* pozostáva zo základnej triedy *Zend_Feed* abstraktných tried *Zend_Feed_Abstract* a
-*Zend_Feed_Entry_Abstract* pre reprezentáciu zdroja a položiek v zdroji. Ďalej sú to špecifické
+Programátorsky, *Zend_Feed* pozostáva zo základnej triedy *Zend_Feed* abstraktných tried *Zend\Feed\Abstract* a
+*Zend\Feed_Entry\Abstract* pre reprezentáciu zdroja a položiek v zdroji. Ďalej sú to špecifické
 implementácie zdroja a jeho položiek pre RSS a Atom.
 
 V uvedenom príklade je ukázané získanie RSS zdroja a uloženie relevantných častí do jednoduchého poľa,
@@ -35,8 +35,8 @@ ktoré môže byť použité pre zobrazenie dát, alebo ich uloženie do databá
 
    // Získanie posledných noviniek zo slashdot.org
    try {
-       $slashdotRss = Zend_Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
-   } catch (Zend_Feed_Exception $e) {
+       $slashdotRss = Zend\Feed\Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
+   } catch (Zend\Feed\Exception $e) {
        // zlyhal import zdroja
        echo "Exception caught importing feed: {$e->getMessage()}\n";
        exit;

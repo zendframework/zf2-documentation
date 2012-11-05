@@ -1,24 +1,24 @@
 .. EN-Revision: none
 .. _zend.config.writer.introduction:
 
-Zend_Config_Writer
+Zend\Config\Writer
 ==================
 
-``Zend_Config_Writer`` は、設定ファイルに ``Zend_Config`` オブジェクトを書き出します。
+``Zend\Config\Writer`` は、設定ファイルに ``Zend_Config`` オブジェクトを書き出します。
 アダプタなしでも動作するので、使用するのも簡単です。 デフォルトでは
-``Zend_Config_Writer`` には 3
+``Zend\Config\Writer`` には 3
 種類のアダプタが同梱されており、全てファイル・ベースです。 まず、 **filename** や
 **config** のオプションを指定してライターのインスタンスを作成します。
 それからライターの ``write()`` メソッドをコールすると、
 設定ファイルが作成されます。 ``$filename`` や ``$config`` を、直接 ``write()``
-メソッドで設定することもできます。現在は、次のライターが ``Zend_Config_Writer``
+メソッドで設定することもできます。現在は、次のライターが ``Zend\Config\Writer``
 に同梱されています。
 
-- ``Zend_Config_Writer_Array``
+- ``Zend\Config_Writer\Array``
 
-- ``Zend_Config_Writer_Ini``
+- ``Zend\Config_Writer\Ini``
 
-- ``Zend_Config_Writer_Xml``
+- ``Zend\Config_Writer\Xml``
 
 *INI* ライターでは、セクションについてのレンダリング用のモードが２つあります。
 既定では、トップレベルの構成節は、常にセクション名に含まれます。
@@ -26,10 +26,10 @@ Zend_Config_Writer
 ファイルのグローバル名前空間に含まれます。
 そして、セクションは使用されません。
 
-加えて、 ``Zend_Config_Writer_Ini`` にはオプションのパラメータ **nestSeparator**
+加えて、 ``Zend\Config_Writer\Ini`` にはオプションのパラメータ **nestSeparator**
 が用意されています。
 これは、ノードを区切る文字を定義します。デフォルトはドットひとつで、 これは
-``Zend_Config_Ini`` のデフォルトと同じです。
+``Zend\Config\Ini`` のデフォルトと同じです。
 
 ``Zend_Config`` オブジェクトを変更したり作成したりする際には、
 知っておくべきことがあります。値を作成したり変更したりするには、
@@ -41,16 +41,16 @@ Zend_Config_Writer
 
 .. _zend.config.writer.example.using:
 
-.. rubric:: Zend_Config_Writer の使用法
+.. rubric:: Zend\Config\Writer の使用法
 
-この例では、 ``Zend_Config_Writer_Xml``
+この例では、 ``Zend\Config_Writer\Xml``
 で新しい設定ファイルを作成する方法を説明します。
 
 .. code-block:: php
    :linenos:
 
    // config オブジェクトを作成します
-   $config = new Zend_Config(array(), true);
+   $config = new Zend\Config\Config(array(), true);
    $config->production = array();
    $config->staging    = array();
 
@@ -65,18 +65,18 @@ Zend_Config_Writer
 
    // 次のいずれかの方法で設定ファイルを書き出します
    // a)
-   $writer = new Zend_Config_Writer_Xml(array('config'   => $config,
+   $writer = new Zend\Config_Writer\Xml(array('config'   => $config,
                                               'filename' => 'config.xml'));
    $writer->write();
 
    // b)
-   $writer = new Zend_Config_Writer_Xml();
+   $writer = new Zend\Config_Writer\Xml();
    $writer->setConfig($config)
           ->setFilename('config.xml')
           ->write();
 
    // c)
-   $writer = new Zend_Config_Writer_Xml();
+   $writer = new Zend\Config_Writer\Xml();
    $writer->write('config.xml', $config);
 
 これは、production と staging というセクションを持つ *XML*
@@ -92,7 +92,7 @@ Zend_Config_Writer
    :linenos:
 
    // すべてのセクションを既存の設定ファイルから読み込みますが継承は読み飛ばします
-   $config = new Zend_Config_Ini('config.ini',
+   $config = new Zend\Config\Ini('config.ini',
                                  null,
                                  array('skipExtends'        => true,
                                        'allowModifications' => true));
@@ -101,7 +101,7 @@ Zend_Config_Writer
    $config->production->hostname = 'foobar';
 
    // 設定ファイルを書き出します
-   $writer = new Zend_Config_Writer_Ini(array('config'   => $config,
+   $writer = new Zend\Config_Writer\Ini(array('config'   => $config,
                                               'filename' => 'config.ini'));
    $writer->write();
 

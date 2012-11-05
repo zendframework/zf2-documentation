@@ -4,10 +4,10 @@
 Introduction
 ============
 
-``Zend_Pdf`` est un composant entièrement écrit en PHP5 permettant la manipulation de documents *PDF* (Portable
+``ZendPdf`` est un composant entièrement écrit en PHP5 permettant la manipulation de documents *PDF* (Portable
 Document Format). Il peut charger des documents, créer, modifier et les sauvegarder. Cela peut aider toute les
 applications *PHP* à générer dynamiquement des documents *PDF* en modifiant un modèle existant ou en générant
-un document à partir de rien. ``Zend_Pdf`` supporte les fonctionnalités suivantes :
+un document à partir de rien. ``ZendPdf`` supporte les fonctionnalités suivantes :
 
    - Créer un nouveau document ou en charger un qui existe déjà. [#]_
 

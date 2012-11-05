@@ -47,6 +47,6 @@ das zu tun kann das Cachen durch Verwendung der ``disableCache()`` Methode abges
 .. code-block:: php
    :linenos:
 
-   Zend_Locale::disableCache(true);
+   Zend\Locale\Locale::disableCache(true);
 
 

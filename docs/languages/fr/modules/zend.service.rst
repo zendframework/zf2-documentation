@@ -7,10 +7,10 @@ Introduction
 ``Zend_Service`` est une classe abstraite qui sert de fondation à l'implémentation des services Web, comme
 *SOAP* ou REST.
 
-``Zend_Service`` offre un support pour tout service Web basé sur REST à travers :ref:`Zend_Rest_Client
+``Zend_Service`` offre un support pour tout service Web basé sur REST à travers :ref:`Zend\Rest\Client
 <zend.rest.client>`.
 
-En plus d'être capable d'étendre ``Zend_Service`` et d'utiliser ``Zend_Rest_Client`` pour des services Web basé
+En plus d'être capable d'étendre ``Zend_Service`` et d'utiliser ``Zend\Rest\Client`` pour des services Web basé
 sur REST, Zend Framework fournit un support pour les services Web populaires. Consultez les sections suivantes pour
 des informations spécifiques à chaque service Web supporté.
 

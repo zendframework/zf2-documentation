@@ -9,7 +9,7 @@ Este filtro convierte cualquier entrada en Mayúculas
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringToUpper();
+   $filter = new Zend\Filter\StringToUpper();
 
    print $filter->filter('Sample');
    // returns "SAMPLE"
@@ -22,7 +22,7 @@ igual que con ``StringToLower``.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_StringToUpper(array('encoding' => 'UTF-8'));
+   $filter = new Zend\Filter\StringToUpper(array('encoding' => 'UTF-8'));
 
    // or do this afterwards
    $filter->setEncoding('ISO-8859-1');

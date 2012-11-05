@@ -25,7 +25,7 @@ Der Memory Manager verwendet :ref:`Zend_Cache backends <zend.cache.backends>` al
 
 .. rubric:: Verwenden der Zend_Memory Komponente
 
-``Zend_Memory::factory()`` instantiiert das Speichermanager Objekt mit den definierten Backend Optionen.
+``Zend\Memory\Memory::factory()`` instantiiert das Speichermanager Objekt mit den definierten Backend Optionen.
 
 .. code-block:: php
    :linenos:
@@ -35,7 +35,7 @@ Der Memory Manager verwendet :ref:`Zend_Cache backends <zend.cache.backends>` al
        'cache_dir' => './tmp/'
    );
 
-   $memoryManager = Zend_Memory::factory('File', $backendOptions);
+   $memoryManager = Zend\Memory\Memory::factory('File', $backendOptions);
 
    $loadedFiles = array();
 

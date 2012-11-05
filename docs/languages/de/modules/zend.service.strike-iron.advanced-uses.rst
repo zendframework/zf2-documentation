@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.service.strikeiron.advanced-uses:
 
-Zend_Service_StrikeIron: Erweiterte Verwendung
+Zend\Service\StrikeIron: Erweiterte Verwendung
 ==============================================
 
-Diese Sektion beschreibt die erweiterte Verwendung von ``Zend_Service_StrikeIron``.
+Diese Sektion beschreibt die erweiterte Verwendung von ``Zend\Service\StrikeIron``.
 
 .. _zend.service.strikeiron.advanced-uses.services-by-wsdl:
 
@@ -21,7 +21,7 @@ der ``class`` Option an ``getService()`` übergeben werden:
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new Zend_Service_StrikeIron(
+   $strikeIron = new Zend\Service\StrikeIron(
        array('username' => 'your-username', 'password' => 'your-password')
    );
 
@@ -50,12 +50,12 @@ SOAP Transaktionen betrachten
 Die gesamte Kommunikation mit StrikeIron wird durch Verwenden der *SOAP* Erweiterung durchgeführt. Es kann
 zeitweise nützlich sein das mit StrikeIron getauschte *XML* für Debugging Zwecke zu betrachten.
 
-Jeder StrikeIron Client (Subklasse von ``Zend_Service_StrikeIron_Base``) enthält eine ``getSoapClient()`` Methode
+Jeder StrikeIron Client (Subklasse von ``Zend\Service_StrikeIron\Base``) enthält eine ``getSoapClient()`` Methode
 um die darunterliegende Instanz von ``SOAPClient`` zu retournieren, die für die Kommunikation mit StrikeIron
 verwendet wird.
 
 *PHP*'s `SOAPClient`_ hat eine ``trace`` Option die dazu führt dass das *XML*, das wärend der letzten Transaktion
-getauscht wurde, gemerkt wird. ``Zend_Service_StrikeIron`` aktiviert die ``trace`` Option nicht standardmäßig
+getauscht wurde, gemerkt wird. ``Zend\Service\StrikeIron`` aktiviert die ``trace`` Option nicht standardmäßig
 aber das kann einfach getan werden durch Spezifizierung der Option die dazu verwendet wird den ``SOAPClient``
 Konstruktor zu übergeben.
 
@@ -67,7 +67,7 @@ Instanz zu erhalten und anschließend die entsprechenden Methoden wie `\__getLas
    :linenos:
 
    $strikeIron =
-       new Zend_Service_StrikeIron(array('username' => 'your-username',
+       new Zend\Service\StrikeIron(array('username' => 'your-username',
                                          'password' => 'your-password',
                                          'options'  => array('trace' => true)));
 

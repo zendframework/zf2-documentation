@@ -7,10 +7,10 @@
 *Zend_Service* je abstraktní třída, která poskytuje základ pro implementaci webových služeb jako je SOAP
 nebo REST.
 
-Pokud potřebuje podporu obecných REST služeb založených na XML, můžete se podívat na :ref:`Zend_Rest_Client
+Pokud potřebuje podporu obecných REST služeb založených na XML, můžete se podívat na :ref:`Zend\Rest\Client
 <zend.rest.client>`.
 
-Kromě možností pro rozšíření *Zend_Service* a použití *Zend_Rest_Client* (pro webové služby založené
+Kromě možností pro rozšíření *Zend_Service* a použití *Zend\Rest\Client* (pro webové služby založené
 na REST), Zend také nabízí podporu pro populární webové služby. Navštivte následující sekce pro
 detailní informace o každé z podporovaných služeb.
 

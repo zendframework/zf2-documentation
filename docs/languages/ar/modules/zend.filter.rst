@@ -12,7 +12,7 @@ Zend_Filter
 توفر ``Zend_Filter`` مكتبة من الـ static methods لفلترة البيانات , و لفلترة
 البيانات المدخلة من المستخدم , يجب ان تستخدم :ref:` <zend.filter.input>`
 بدلا منها, و ذلك لأنها توفر بيئة كاملة لفلترة البيانات المدخلة
-من المستخدم , و لكن لأن ``Zend_Filter_Input`` تم تصميمه فى الأصل للـ arrays ,
+من المستخدم , و لكن لأن ``Zend\Filter\Input`` تم تصميمه فى الأصل للـ arrays ,
 فيمكن ان يكن ``Zend_Filter`` مفيد عند فلترة البيانات ذات البعد الواحد
 (strings او اعداد), لأنها تتصرف مثل الدوال المتوفرة فى لغة PHP:
 
@@ -21,7 +21,7 @@ Zend_Filter
 
        <?php
 
-       $alphaUsername = Zend_Filter::getAlpha('John123Doe');
+       $alphaUsername = Zend\Filter\Filter::getAlpha('John123Doe');
 
        /* $alphaUsername = 'JohnDoe'; */
 
@@ -41,7 +41,7 @@ Whitelist Filtering:
 
        <?php
 
-       if (Zend_Filter::isEmail($value)) {
+       if (Zend\Filter\Filter::isEmail($value)) {
            /* $value is a valid email format. */
        } else {
            /* $value is not a valid email format. */
@@ -56,7 +56,7 @@ Blind Filtering:
 
        <?php
 
-       $alphaName = Zend_Filter::getAlpha($value);
+       $alphaName = Zend\Filter\Filter::getAlpha($value);
 
        ?>
 
@@ -67,7 +67,7 @@ Blacklist Filtering:
 
        <?php
 
-       $taglessComment = Zend_Filter::noTags($value);
+       $taglessComment = Zend\Filter\Filter::noTags($value);
 
        ?>
 

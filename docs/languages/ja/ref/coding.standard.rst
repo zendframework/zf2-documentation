@@ -116,13 +116,13 @@ Framework 追加ライブラリの最上位レベルのディレクトリは "Ze
 
 クラス名には英数字のみが使用できます。クラス名に数字を使用することは可能ですが、
 ほとんどの場合はお勧めしません。アンダースコアはパス区切り文字としてのみ使用可能です。
-ファイル名が "``Zend/Db/Table.php``" の場合、クラス名を "``Zend_Db_Table``"
+ファイル名が "``Zend/Db/Table.php``" の場合、クラス名を "``Zend\Db\Table``"
 としなければなりません。
 
 クラス名が複数の単語から成り立つ場合は、
 それぞれの単語の最初の文字を大文字にしなければなりません。
-大文字を連続して使用することはできません。例えば "Zend_PDF"
-というクラス名は許可されません。代わりに "``Zend_Pdf``" を使用します。
+大文字を連続して使用することはできません。例えば "ZendPDF"
+というクラス名は許可されません。代わりに "``ZendPdf``" を使用します。
 
 これらの規約によって、Zend Framework 上で擬似名前空間を定義しています。 *PHP*
 に名前空間機能が追加されるようになったら、Zend Framework もそれに対応させます。
@@ -145,8 +145,8 @@ Framework 追加ライブラリの最上位レベルのディレクトリは "Ze
 一般に、抽象クラスの規約は通常の :ref:`クラス <coding-standard.naming-conventions.classes>`
 と同じものとなります。追加の規則として、抽象クラスの名前は最後が "Abstract"
 (そしてその前にはアンダースコアはつけない) でなければなりません。 たとえば
-``Zend_Controller_Plugin_Abstract`` は規約にそった名前ではありません。規約に従った名前は
-``Zend_Controller_PluginAbstract`` あるいは ``Zend_Controller_Plugin_PluginAbstract`` となります。
+``Zend\Controller_Plugin\Abstract`` は規約にそった名前ではありません。規約に従った名前は
+``Zend\Controller\PluginAbstract`` あるいは ``Zend\Controller_Plugin\PluginAbstract`` となります。
 
 .. note::
 
@@ -160,7 +160,7 @@ Framework 追加ライブラリの最上位レベルのディレクトリは "Ze
    simply "Abstract" or "Interface" -- both of which are reserved keywords in *PHP*. If we prepend the
    (sub)component name to the classname, we can avoid these issues.
 
-   To illustrate the situation, consider converting the class ``Zend_Controller_Request_Abstract`` to use
+   To illustrate the situation, consider converting the class ``Zend\Controller_Request\Abstract`` to use
    namespaces:
 
    .. code-block:: php
@@ -197,9 +197,9 @@ Framework 追加ライブラリの最上位レベルのディレクトリは "Ze
 <coding-standard.naming-conventions.classes>`
 と同じものとなります。追加の規則として、インターフェイスの名前の最後は
 "Interface" (そしてその前にはアンダースコアはつけない) にすることもできます。
-たとえば ``Zend_Controller_Plugin_Interface``
-は規約にそった名前ではありません。規約に従った名前は ``Zend_Controller_PluginInterface``
-あるいは ``Zend_Controller_Plugin_PluginInterface`` となります。
+たとえば ``Zend\Controller_Plugin\Interface``
+は規約にそった名前ではありません。規約に従った名前は ``Zend\Controller\PluginInterface``
+あるいは ``Zend\Controller_Plugin\PluginInterface`` となります。
 
 この規約は必須ではありませんが、強く推奨します。
 そのファイルがクラスではなくインターフェイスを含むものであることが
@@ -936,7 +936,7 @@ Zend Framework
 
 ``@subpackage`` アノテーションはオプションです。
 指定する場合は、サブコンポーネント名からクラスのプレフィックスを除いたものとしなければなりません。
-上の例の場合は、ファイルに含まれるクラス名が "``Zend_Magic_Wand``" であるか、
+上の例の場合は、ファイルに含まれるクラス名が "``Zend\Magic\Wand``" であるか、
 そのクラス名をプレフィックスの一部として使っているのでしょう。
 
 .. _coding-standards.inline-documentation.classes:
@@ -974,7 +974,7 @@ Zend Framework
 
 ``@subpackage`` アノテーションはオプションです。
 指定する場合は、サブコンポーネント名からクラスのプレフィックスを除いたものとしなければなりません。
-上の例の場合は、ファイルに含まれるクラス名が "``Zend_Magic_Wand``" であるか、
+上の例の場合は、ファイルに含まれるクラス名が "``Zend\Magic\Wand``" であるか、
 そのクラス名をプレフィックスの一部として使っているのでしょう。
 
 .. _coding-standards.inline-documentation.functions:

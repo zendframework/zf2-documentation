@@ -6,7 +6,7 @@ Zend_Cache backends
 
 .. _zend.cache.backends.file:
 
-Zend_Cache_Backend_File
+Zend\Cache_Backend\File
 -----------------------
 
 Deze backends slaat cache records op in bestanden (in een gekozen map).
@@ -33,7 +33,7 @@ Beschikbare opties zijn :
 
 .. _zend.cache.backends.sqlite:
 
-Zend_Cache_Backend_Sqlite
+Zend\Cache_Backend\Sqlite
 -------------------------
 
 Deze backend slaat cache records op in een SQLite database.
@@ -50,7 +50,7 @@ Beschikbare opties zijn :
 
 .. _zend.cache.backends.memcached:
 
-Zend_Cache_Backend_Memcached
+Zend\Cache_Backend\Memcached
 ----------------------------
 
 Deze backend slaat cache records op in een memcache server. `memcached`_ is een high-performance, gedistribueerd
@@ -73,7 +73,7 @@ Beschikbare opties zijn :
 
 .. _zend.cache.backends.apc:
 
-Zend_Cache_Backend_APC
+Zend\Cache_Backend\APC
 ----------------------
 
 Deze backend slaat cache records op in shared memory via de `APC`_ (Alternative PHP Cache) extensie (welke

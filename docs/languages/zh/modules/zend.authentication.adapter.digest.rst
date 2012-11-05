@@ -33,7 +33,7 @@
 规范（Specifics）
 -------------
 
-摘要式认证适配器 *Zend_Auth_Adapter_Digest*\ 需要若干输入参数：
+摘要式认证适配器 *Zend\Auth_Adapter\Digest*\ 需要若干输入参数：
 
    - 文件名 － 认证查询被执行是所需的文件名
 
@@ -50,7 +50,7 @@
 身份（Identity）
 ------------
 
-摘要式认证返回一个 *Zend_Auth_Result* 对象，它由包含 *realm*\ 和 *username*\
+摘要式认证返回一个 *Zend\Auth\Result* 对象，它由包含 *realm*\ 和 *username*\
 健值的数组的身份形成。在 *authenticate()*\
 被调用之前，分别设置和这些健值关联的数组值为相符的值。
 
@@ -58,7 +58,7 @@
    :linenos:
 
    <
-   $adapter = new Zend_Auth_Adapter_Digest($filename,
+   $adapter = new Zend\Auth_Adapter\Digest($filename,
                                            $realm,
                                            $username,
                                            $password);

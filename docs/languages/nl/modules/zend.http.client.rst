@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.http.client:
 
-Zend_Http_Client
+Zend\Http\Client
 ================
 
 .. _zend.http.client.introduction:
@@ -9,7 +9,7 @@ Zend_Http_Client
 Inleiding
 ---------
 
-*Zend_Http_Client* verstrekt een eenvoudige interface om HTTP verzoeken te maken. *Zend_Http_Client* kan GET, POST,
+*Zend\Http\Client* verstrekt een eenvoudige interface om HTTP verzoeken te maken. *Zend\Http\Client* kan GET, POST,
 PUT en DELETE verzoeken maken.
 
 .. note::
@@ -27,14 +27,14 @@ PUT en DELETE verzoeken maken.
       <?php
           require_once 'Zend/Http/Client.php';
           try {
-              $http = new Zend_Http_Client('http://example.org');
+              $http = new Zend\Http\Client('http://example.org');
               $response = $http->get();
               if ($response->isSuccessful()) {
                   echo $response->getBody();
               } else {
                   echo '<p>Er trad een fout op</p>';
               }
-          } catch (Zend_Http_Client_Exception $e) {
+          } catch (Zend\Http_Client\Exception $e) {
               echo '<p>Er trad een fout op (' .$e->getMessage(). ')</p>';
           }
           ?>
@@ -45,12 +45,12 @@ PUT en DELETE verzoeken maken.
 Basis GET verzoeken met gespecificeerde HTTP Headers
 ----------------------------------------------------
 
-De *Zend_Http_Client* constructor maakt een *Zend_Http_Client* instantie om HTTP verzoeken te zenden.
+De *Zend\Http\Client* constructor maakt een *Zend\Http\Client* instantie om HTTP verzoeken te zenden.
 
-Als je *Zend_Http_Client* gebruikt op één enkele URL kan je in de meeste gevallen de URL en relevante headers aan
+Als je *Zend\Http\Client* gebruikt op één enkele URL kan je in de meeste gevallen de URL en relevante headers aan
 de **constructor** geven, zoals in de volgende voorbeelden:
 
-.. rubric:: Een Basis Zend_Http_Client maken
+.. rubric:: Een Basis Zend\Http\Client maken
 
 .. code-block:: php
    :linenos:
@@ -59,7 +59,7 @@ de **constructor** geven, zoals in de volgende voorbeelden:
        require_once 'Zend/Http/Client.php';
 
        // Specificeer de URL en een enkele header
-       $http = new Zend_Http_Client('http://example.org', 'Accept: text/html');
+       $http = new Zend\Http\Client('http://example.org', 'Accept: text/html');
        ?>
 
 
@@ -72,10 +72,10 @@ de **constructor** geven, zoals in de volgende voorbeelden:
        require_once 'Zend/Http/Client.php';
 
        // Specificeer de URL en meerdere headers
-       $http = new Zend_Http_Client('http://example.org',
+       $http = new Zend\Http\Client('http://example.org',
                                array('Accept: text/html', 'Accept-Language: en-us,en;q=0.5'));
        ?>
-Als je *Zend_Http_Client* wenst te gebruiken om verzoeken aan **meerdere** URLs te sturen, zie dan :ref:`
+Als je *Zend\Http\Client* wenst te gebruiken om verzoeken aan **meerdere** URLs te sturen, zie dan :ref:`
 <zend.http.client.requesting-multiple-domains>`
 
 .. _zend.http.client.requesting-multiple-domains:
@@ -83,8 +83,8 @@ Als je *Zend_Http_Client* wenst te gebruiken om verzoeken aan **meerdere** URLs 
 Multidomein verzoeken
 ---------------------
 
-*Zend_Http_Client* ondersteunt het sturen van verzoeken aan meerdere domeinen door het zetten van de URL via de
-methode *Zend_Http_Client::setUri()*.
+*Zend\Http\Client* ondersteunt het sturen van verzoeken aan meerdere domeinen door het zetten van de URL via de
+methode *Zend\Http\Client::setUri()*.
 
 .. note::
 
@@ -99,7 +99,7 @@ methode *Zend_Http_Client::setUri()*.
        require_once 'Zend/Http/Client.php';
 
        // Het client object instantiëren
-       $http = new Zend_Http_Client();
+       $http = new Zend\Http\Client();
 
        // De URI naar Slashdot's hoofd feed zetten
        $http->setUri('http://rss.slashdot.org/Slashdot/slashdot');
@@ -118,7 +118,7 @@ methode *Zend_Http_Client::setUri()*.
 De HTTP Timeout wijzigen
 ------------------------
 
-*Zend_Http_Client::setTimeout()* laat je toe de timeout voor de HTTP verbinding te zetten, in seconden.
+*Zend\Http\Client::setTimeout()* laat je toe de timeout voor de HTTP verbinding te zetten, in seconden.
 
 .. note::
 
@@ -129,7 +129,7 @@ De HTTP Timeout wijzigen
 Dynamisch HTTP Headers zetten
 -----------------------------
 
-Je kan een **array** headers zetten met *Zend_Http_Client::setHeaders()*.
+Je kan een **array** headers zetten met *Zend\Http\Client::setHeaders()*.
 
 .. important::
 
@@ -140,12 +140,12 @@ Je kan een **array** headers zetten met *Zend_Http_Client::setHeaders()*.
 POST, PUT en DELETE HTTP verzoeken maken
 ----------------------------------------
 
-Het maken van POST, PUT en DELETE HTTP verzoeken wordt vereenvoudigd in *Zend_Http_Client* door middel van drie
+Het maken van POST, PUT en DELETE HTTP verzoeken wordt vereenvoudigd in *Zend\Http\Client* door middel van drie
 methodes: *post()*, *put()*, en *delete()*, respectievelijk. De *post()* en *put()* methodes aanvaarden elk één
 string parameter, *$data*, waarin een string met de data correct ge-encodeerd zoals volgt: **name=value&foo=bar**.
 De *delete()* methode heeft geen parameters.
 
-.. rubric:: POST data verzenden met Zend_Http_Client
+.. rubric:: POST data verzenden met Zend\Http\Client
 
 .. code-block:: php
    :linenos:
@@ -154,7 +154,7 @@ De *delete()* methode heeft geen parameters.
        require_once 'Zend/Http/Client.php';
 
        // Het client object instantiëren
-       $http = new Zend_Http_Client();
+       $http = new Zend\Http\Client();
 
        // De URI naar een POST dataverwerker zetten
        $http->setUri('http://example.org/post/processor');

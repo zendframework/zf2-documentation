@@ -14,10 +14,10 @@ größere "logische" Interface Erfahrung über den Zugriff, auf virtuelle Objekt
 Komponente bietet automatische Darstellung von Funktionen und Klassen und verwendet ein bedeutungsvolles und
 einfaches *XML* Format. Beim Zugriff auf solche Services mit dem Client, ist es möglich, die zurückgegebenen
 Daten vom Entfernten Aufruf einfachst zu erhalten. Sollte es gewünscht sein den Client mit einem
-nicht-Zend_Rest_Server basierenden Service zu verwenden, bietet er immer noch vereinfachten Zugriff auf die Daten.
+nicht-Zend\Rest\Server basierenden Service zu verwenden, bietet er immer noch vereinfachten Zugriff auf die Daten.
 
-Zusätzlich zu den Komponenten ``Zend_Rest_Server`` und ``Zend_Rest_Client`` bieten die Klassen
-:ref:`Zend_Rest_Route und Zend_Rest_Controller <zend.controller.router.routes.rest>` Hilfe beim Routen von REST
+Zusätzlich zu den Komponenten ``Zend\Rest\Server`` und ``Zend\Rest\Client`` bieten die Klassen
+:ref:`Zend\Rest\Route und Zend\Rest\Controller <zend.controller.router.routes.rest>` Hilfe beim Routen von REST
 Anfragen zum Controller.
 
 

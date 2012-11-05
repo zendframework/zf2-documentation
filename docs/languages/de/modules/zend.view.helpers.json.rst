@@ -27,11 +27,11 @@ Die Verwendung des *JSON* Helfers ist sehr geradlienig:
 
 .. note::
 
-   **Layouts behalten und Encoding einschalten durch Verwendung von Zend_Json_Expr**
+   **Layouts behalten und Encoding einschalten durch Verwendung von Zend\Json\Expr**
 
    Jede Methode im *JSON* Helfer akzwptiert ein zweites, optionales, Argument. Dieses zweite Argument kan ein
    boolsches Flag sein um Layouts ein- oder auszuschalten, oder ein Array von Optionen die an
-   ``Zend_Json::encode()`` übergeben und intern verwendet werden um Daten zu kodieren.
+   ``Zend\Json\Json::encode()`` übergeben und intern verwendet werden um Daten zu kodieren.
 
    Um Layouts zu behalten muß der zweite Parameter ein boolsches ``TRUE`` sein. Wenn der zweite Parameter ein
    Array ist, können Layouts behalten werden indem ein ``keepLayouts`` Schlüssel mit dem boolschen Wert ``TRUE``
@@ -46,7 +46,7 @@ Die Verwendung des *JSON* Helfers ist sehr geradlienig:
       // Oder ein boolsches true als "keepLayouts" Schlüssel:
       echo $this->json($this->data, array('keepLayouts' => true));
 
-   ``Zend_Json::encode`` erlaubt es native *JSON* Ausdrücke zu kodieren indem ``Zend_Json_Expr`` Objekte verwendet
+   ``Zend\Json\Json::encode`` erlaubt es native *JSON* Ausdrücke zu kodieren indem ``Zend\Json\Expr`` Objekte verwendet
    werden. Diese Option ist standardmäßig deaktiviert. Um diese Option zu aktivieren, muß ein boolsches ``TRUE``
    an den ``enableJsonExprFinder`` Schlüssel des Options Arrays übergeben werden:
 

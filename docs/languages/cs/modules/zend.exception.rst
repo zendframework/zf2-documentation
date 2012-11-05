@@ -15,7 +15,7 @@ Všechny výjimky vyhozené v Zend Frameworku by měly být odvozeny od hlavní 
 
    <?php
    try {
-       Zend_Loader::loadClass('neexistujicitrida');
+       Zend\Loader\Loader::loadClass('neexistujicitrida');
    } catch (Zend_Exception $e) {
        echo "Zachycená výjimka: " . get_class($e) . "\n";
        echo "Zpráva: " . $e->getMessage() . "\n";

@@ -13,10 +13,10 @@ Comme ces deux méthodes d'encryptage sont très différentes, l'utilisation de 
    :linenos:
 
    // Utiliser Mcrypt
-   $filter1 = new Zend_Filter_Encrypt(array('adapter' => 'mcrypt'));
+   $filter1 = new Zend\Filter\Encrypt(array('adapter' => 'mcrypt'));
 
    // Utiliser OpenSSL
-   $filter2 = new Zend_Filter_Encrypt(array('adapter' => 'openssl'));
+   $filter2 = new Zend\Filter\Encrypt(array('adapter' => 'openssl'));
 
 Les méthodes *setAdapter()* et *getAdapter()* existent aussi.
 
@@ -24,7 +24,7 @@ Les méthodes *setAdapter()* et *getAdapter()* existent aussi.
    :linenos:
 
    // Utiliser Mcrypt
-   $filter = new Zend_Filter_Encrypt();
+   $filter = new Zend\Filter\Encrypt();
    $filter->setAdapter('openssl');
 
 .. note::
@@ -82,7 +82,7 @@ vecteur pour être utilisée avec l'algorithme en cours.
    :linenos:
 
    // Utilise blowfish par défaut
-   $filter = new Zend_Filter_Encrypt('myencryptionkey');
+   $filter = new Zend\Filter\Encrypt('myencryptionkey');
 
    // Affecte un vecteur précis.
    $filter->setVector('myvector');
@@ -114,7 +114,7 @@ les options d'instanciation:
    :linenos:
 
    // Utiliser openssl
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
        'adapter' => 'openssl',
        'private' => '/path/to/mykey/private.pem'
    ));
@@ -136,7 +136,7 @@ passphrase sera nécessaire pour décoder les clés.
    :linenos:
 
    // Utilise openssl avec une clé privée
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
        'adapter' => 'openssl',
        'private' => '/path/to/mykey/private.pem'
    ));
@@ -159,7 +159,7 @@ Voici donc un exemple complet de cryptage de données avec *OpenSSL*.
    :linenos:
 
    // Utilisons openssl avec une clé privée
-   $filter = new Zend_Filter_Encrypt(array(
+   $filter = new Zend\Filter\Encrypt(array(
        'adapter' => 'openssl',
        'private' => '/path/to/mykey/private.pem'
    ));

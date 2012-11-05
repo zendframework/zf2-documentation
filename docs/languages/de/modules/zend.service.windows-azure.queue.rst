@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.windowsazure.storage.queue:
 
-Zend_Service_WindowsAzure_Storage_Queue
+Zend\Service\WindowsAzure\Storage\Queue
 =======================================
 
 Das Queue Service speichert Nachrichten die von jedem Client gelesen werden können welche auf den Speicher Account
@@ -14,7 +14,7 @@ die Daten der Nachricht als Queue gespeichert werden oder in einer Tabelle und a
 Daten als Nachricht in der Queue.
 
 Der Queue Speicher wird von Windows Azure als *REST* *API* angeboten welche von der
-``Zend_Service_WindowsAzure_Storage_Queue`` Klasse umhüllt wird um ein natives *PHP* Interface zum Speicher
+``Zend\Service\WindowsAzure\Storage\Queue`` Klasse umhüllt wird um ein natives *PHP* Interface zum Speicher
 Account zu bieten.
 
 .. _zend.service.windowsazure.storage.queue.api:
@@ -22,7 +22,7 @@ Account zu bieten.
 API Beispiele
 -------------
 
-Dieses Thema listet einige Beispiele der Verwendung der ``Zend_Service_WindowsAzure_Storage_Queue`` Klasse auf.
+Dieses Thema listet einige Beispiele der Verwendung der ``Zend\Service\WindowsAzure\Storage\Queue`` Klasse auf.
 Andere Features sind im Download Paket vorhanden, sowie eine detailierte *API* Dokumentation dieser Features.
 
 .. _zend.service.windowsazure.storage.queue.api.create-queue:
@@ -39,7 +39,7 @@ Bei Verwendung des folgenden Codes kann eine Queue auf dem Development Speicher 
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Queue();
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Queue();
    $result = $storageClient->createQueue('testqueue');
 
    echo 'Der Name der Queue ist: ' . $result->Name;
@@ -58,7 +58,7 @@ Bei Verwendung des folgenden Codes kann eine Queue vom Development Speicher entf
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Queue();
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Queue();
    $storageClient->deleteQueue('testqueue');
 
 .. _zend.service.windowsazure.storage.queue.api.storing-queue:
@@ -76,7 +76,7 @@ Es ist zu beachten das die Queue hierfür bereits erstellt worden sein muss.
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Queue();
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Queue();
 
    // 3600 = Lebenszeit der Nachricht,
    // wenn nicht angegeben ist der Standardwert 7 Tage
@@ -97,7 +97,7 @@ ist zu beachten das die Queue und die Nachricht hierfür bereits erstellt worden
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Queue();
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Queue();
 
    // 10 Nachrichten auf einmal empfangen
    $messages = $storageClient->getMessages('testqueue', 10);
@@ -117,7 +117,7 @@ von der Queue zu entfernen, kann die Methode ``deleteMessage()`` verwendet werde
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Queue();
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Queue();
 
    // 10 Nachrichten auf einmal empfangen
    $messages = $storageClient->getMessages('testqueue', 10);
@@ -144,7 +144,7 @@ Queue und die Nachricht hierfür bereits erstellt worden sein müssen.
 .. code-block:: php
    :linenos:
 
-   $storageClient = new Zend_Service_WindowsAzure_Storage_Queue();
+   $storageClient = new Zend\Service\WindowsAzure\Storage\Queue();
 
    // 10 Nachrichten auf einmal empfangen
    $messages = $storageClient->peekMessages('testqueue', 10);

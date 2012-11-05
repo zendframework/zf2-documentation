@@ -8,38 +8,38 @@
 используя статические методы класса Zend_Session. Все управление
 производится посредством Zend_Session, включая конфигурирование
 `через опции, предоставляемые расширением ext/session`_, с
-использованием метода *Zend_Session::setOptions()*.
+использованием метода *Zend\Session\Session::setOptions()*.
 
 .. _zend.session.setoptions:
 
-Zend_Session::setOptions()
+Zend\Session\Session::setOptions()
 --------------------------
 
 Когда запрашивается первое пространство имен, то
 автоматически запустится Zend_Session, если только оно не было
-запущено ранее через метод :ref:`Zend_Session::start() <zend.session.startingasession>`.
+запущено ранее через метод :ref:`Zend\Session\Session::start() <zend.session.startingasession>`.
 Встроенный в PHP механизм сессий будет использовать принятые по
 умолчанию настройки из Zend_Session, пока они не будут изменены
-через метод *Zend_Session::setOptions()*.
+через метод *Zend\Session\Session::setOptions()*.
 
 Для того, чтобы передать опции, просто передайте базовое имя
-(без приставки *session.*) как часть массива методу *Zend_Session::setOptions()*.
+(без приставки *session.*) как часть массива методу *Zend\Session\Session::setOptions()*.
 Если опции не были установлены, то Zend_Session будет сначала
 использовать рекомендуемые опции, затем установки по
 умолчанию из php.ini. Предложения по оптимизации работы с опциями
 отправляйте в список рассылки `fw-auth@lists.zend.com`_.
 
 "Автоматическое" конфигурипрование этой компоненты с
-использованием Zend_Config_Ini:
+использованием Zend\Config\Ini:
 
    .. rubric:: Использование Zend_Config для конфирурирования Zend_Session
 
    .. code-block:: php
       :linenos:
       <?php
-      $config = new Zend_Config_Ini('myapp.ini', 'sandbox');
+      $config = new Zend\Config\Ini('myapp.ini', 'sandbox');
       require_once 'Zend/Session.php';
-      Zend_Session::setOptions($config->toArray());
+      Zend\Session\Session::setOptions($config->toArray());
       ?>
 Используемый файл "myapp.ini":
 
@@ -103,7 +103,7 @@ Zend_Session::setOptions()
 стандартной документации по PHP.
 
    - boolean *strict*- отключает автоматический запуск *Zend_Session* при
-     использовании *new Zend_Session_Namespace()*.
+     использовании *new Zend\Session\Namespace()*.
 
    - integer *remember_me_seconds*- время хранения идентификатора сессии в
      куках после того, как агент пользователя завершит свою
@@ -231,7 +231,7 @@ regenerateId()
 сессии со старого идентификатора на новый, и поэтому данные
 этой сессии не будут доступны через старый идентификатор.
 
-Когда использовать regenerateId(): Добавление *Zend_Session::regenerateId()* в файл
+Когда использовать regenerateId(): Добавление *Zend\Session\Session::regenerateId()* в файл
 загрузки Zend Framework является одним из самых безопасных и
 надежных способов регенерации идентификаторов сессии в куках
 агента пользователя. Само по себе отсутствие условной логики,
@@ -282,7 +282,7 @@ regenerateId()
 сервера при условии, что разработчик корректно установил
 значение опции *save_path*.
 
-Сам по себе вызов *Zend_Session::regenerateId()* в то время, как сессия еще
+Сам по себе вызов *Zend\Session\Session::regenerateId()* в то время, как сессия еще
 только начинает использоваться, не предотвращает атаку через
 фиксацию сессии, за исключением того случая, когда вы можете
 отличить сессию, созданную атакующим, имитирующим личность
@@ -328,11 +328,11 @@ XSS-уязвимостью или добавляет идентификатор 
    :linenos:
    <?php
    require_once 'Zend/Session.php';
-   $defaultNamespace = new Zend_Session_Namespace();
+   $defaultNamespace = new Zend\Session\Namespace();
 
    if (!isset($defaultNamespace->initialized))
    {
-       Zend_Session::regenerateId();
+       Zend\Session\Session::regenerateId();
        $defaultNamespace->initialized = true;
    }
    ?>
@@ -347,11 +347,11 @@ rememberMe(integer $seconds)
 систему, может понадобиться хранить его сессию 24 часа и больше.
 Программное обеспечение форумов обычно предоставляет
 пользователю возможность выбирать, сколько времени должна
-храниться сессиия. Используйте *Zend_Session::rememberMe()* для отправки
+храниться сессиия. Используйте *Zend\Session\Session::rememberMe()* для отправки
 обновленной сессионной куки агенту пользователя со временем
 жизни, по умолчанию равному *remember_me_seconds*, который равен 2
 неделям до тех пор, пока вы не измените это значение через
-метод *Zend_Session::setOptions()*. Для того, чтобы помешать угону или
+метод *Zend\Session\Session::setOptions()*. Для того, чтобы помешать угону или
 фиксации сессии, используйте эту функцию, когда пользователь
 успешно прошел аутентификацию и ваше приложение выполнило
 "регистрацию"
@@ -375,22 +375,22 @@ sessionExists()
 Используйте этот метод для определения того, есть ли уже
 сессия для текущего агента пользователя/запроса. Он может
 использоваться до старта сессии и независимо от всех других
-методов Zend_Session и Zend_Session_Namespace.
+методов Zend_Session и Zend\Session\Namespace.
 
 .. _zend.session.destroy:
 
 destroy(bool $remove_cookie = true, bool $readonly = true)
 ----------------------------------------------------------
 
-*Zend_Session::destroy()* уничтожает все постоянные данные, связанные с
+*Zend\Session\Session::destroy()* уничтожает все постоянные данные, связанные с
 текущей сессией. Это не влияет на переменные в PHP, поэтому ваши
-сессии с пространствами имен (экземпляры *Zend_Session_Namespace*)
+сессии с пространствами имен (экземпляры *Zend\Session\Namespace*)
 остаются доступными для чтения. Для выхода из системы
 установите необязательный параметр в ``TRUE`` (по умолчанию он
 равен ``TRUE``), при этом будет удалена кука с идентификатором
 сессии в агенте пользователя. Установленный в ``TRUE``
 необязательный параметр ``$readonly`` блокирует возможность записи
-в данные сессии (т.е. в $_SESSION) для экземпляров Zend_Session_Namespace и
+в данные сессии (т.е. в $_SESSION) для экземпляров Zend\Session\Namespace и
 методов Zend_Session.
 
 .. note::
@@ -410,7 +410,7 @@ stop()
 для предотвращения дальнейшей записи в хранилище данных
 сессии (т.е. ``$_SESSION``). Одним из вариантов его использования
 является временное отключение возможности записи в хранилище
-данных сессии через экземпляры *Zend_Session_Namespace* или методы
+данных сессии через экземпляры *Zend\Session\Namespace* или методы
 *Zend_Session* во время выполнения кода, связанного с отображением
 вида. Попытка выполнить действия, подразумевающие запись
 через эти экземпляры или методы вызовет генерацию исключения.
@@ -425,7 +425,7 @@ writeClose($readonly = true)
 преобразование данных для данного запроса. Необязательный
 параметр булевого типа $readonly позволяет отключить возможность
 записи (т.е. генерация исключения при попытке записи через
-любые методы Zend_Session_Namespace или Zend_Session).
+любые методы Zend\Session\Namespace или Zend_Session).
 
 .. note::
 
@@ -447,7 +447,7 @@ expireSessionCookie()
 
 .. _zend.session.savehandler:
 
-setSaveHandler(Zend_Session_SaveHandler_Interface $interface)
+setSaveHandler(Zend\Session_SaveHandler\Interface $interface)
 -------------------------------------------------------------
 
 Большинство разработчиков находят достаточным использовать
@@ -477,7 +477,7 @@ namespaceIsset($namespace)
 namespaceUnset($namespace)
 --------------------------
 
-Вместо создания экземпляра Zend_Session_Namespace для пространства имен
+Вместо создания экземпляра Zend\Session\Namespace для пространства имен
 и итерации по его содержимому для удаления каждой отдельной
 записи используйте метод *namespaceUnset($namespace)* для быстрого
 удаления всего пространства имен и его содержимого. Как это
@@ -503,7 +503,7 @@ namespaceGet($namespace)
 ------------------------
 
 Не рекомендуется к использованию: Используйте *getIterator()* в
-Zend_Session_Namespace. Этот метод возвращает массив содержимого
+Zend\Session\Namespace. Этот метод возвращает массив содержимого
 пространства имен ``$namespace``. Этот метод позднее может быть
 определен как закрытый. Если вы считаете, что есть разумные
 причины оставить этот метод открытым, то пишите в список
@@ -532,11 +532,11 @@ getIterator()
 .. code-block:: php
    :linenos:
    <?php
-   foreach(Zend_Session::getIterator() as $space) {
+   foreach(Zend\Session\Session::getIterator() as $space) {
        try {
            $core->namespaceUnset($space);
-       } catch (Zend_Session_Exception $e) {
-           return; // possible if Zend_Session::stop() has been executed
+       } catch (Zend\Session\Exception $e) {
+           return; // possible if Zend\Session\Session::stop() has been executed
        }
    }
 

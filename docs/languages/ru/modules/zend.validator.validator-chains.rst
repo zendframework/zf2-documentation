@@ -15,9 +15,9 @@
       :linenos:
 
       // Создает цепочку валидаторов и добавляет валидаторы в нее
-      $validatorChain = new Zend_Validate();
-      $validatorChain->addValidator(new Zend_Validate_StringLength(6, 12))
-                     ->addValidator(new Zend_Validate_Alnum());
+      $validatorChain = new Zend\Validate\Validate();
+      $validatorChain->addValidator(new Zend\Validate\StringLength(6, 12))
+                     ->addValidator(new Zend\Validate\Alnum());
 
       // Валидация имени пользователя
       if ($validatorChain->isValid($username)) {
@@ -53,12 +53,12 @@
    .. code-block:: php
       :linenos:
 
-      $validatorChain->addValidator(new Zend_Validate_StringLength(6, 12), true)
-              ->addValidator(new Zend_Validate_Alnum());
+      $validatorChain->addValidator(new Zend\Validate\StringLength(6, 12), true)
+              ->addValidator(new Zend\Validate\Alnum());
 
 
 
-Любые объекты, реализующие ``Zend_Validate_Interface``, могут быть
+Любые объекты, реализующие ``Zend\Validate\Interface``, могут быть
 использованы в цепочке валидаторов.
 
 

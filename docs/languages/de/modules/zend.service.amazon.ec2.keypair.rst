@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.keypairs:
 
-Zend_Service_Amazon_Ec2: Schlüsselpaare
+Zend\Service_Amazon\Ec2: Schlüsselpaare
 =======================================
 
 Schlüsselpaare werden verwendet um auf Instanzen zuzugreifen.
@@ -18,7 +18,7 @@ um auf diese Schlüsselpaare zu referenzieren wenn eine neue Instanz gestartet w
 .. code-block:: php
    :linenos:
 
-   $ec2_kp = new Zend_Service_Amazon_Ec2_Keypair('aws_key','aws_secret_key');
+   $ec2_kp = new Zend\Service\Amazon\Ec2\Keypair('aws_key','aws_secret_key');
    $return = $ec2_kp->create('my-new-key');
 
 .. _zend.service.amazon.ec2.keypairs.delete:
@@ -33,7 +33,7 @@ diesem Schlüsselpaar laufende Instanzen, erlauben es trotzdem das man auf Sie z
 .. code-block:: php
    :linenos:
 
-   $ec2_kp = new Zend_Service_Amazon_Ec2_Keypair('aws_key','aws_secret_key');
+   $ec2_kp = new Zend\Service\Amazon\Ec2\Keypair('aws_key','aws_secret_key');
    $return = $ec2_kp->delete('my-new-key');
 
 .. _zend.service.amazon.ec2.describe:
@@ -49,7 +49,7 @@ spezifiziert, werden Informationen über diese Schlüsselpaare zurückgegeben. A
 .. code-block:: php
    :linenos:
 
-   $ec2_kp = new Zend_Service_Amazon_Ec2_Keypair('aws_key','aws_secret_key');
+   $ec2_kp = new Zend\Service\Amazon\Ec2\Keypair('aws_key','aws_secret_key');
    $return = $ec2_kp->describe('my-new-key');
 
 

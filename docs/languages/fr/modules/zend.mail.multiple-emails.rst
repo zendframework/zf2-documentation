@@ -22,16 +22,16 @@ defaults can be done through the use of the ``clearDefaultFrom()`` and ``clearDe
 
    // Créer un transport
    $config = array('name' => 'sender.example.com');
-   $transport = new Zend_Mail_Transport_Smtp('mail.example.com', $config);
+   $transport = new Zend\Mail_Transport\Smtp('mail.example.com', $config);
 
    // Ajouter les nom et adresses "From" & "Reply-To" pour tous les émails
    // à envoyer
-   Zend_Mail::setDefaultFrom('sender@example.com', 'John Doe');
-   Zend_Mail::setDefaultReplyTo('replyto@example.com','Jane Doe');
+   Zend\Mail\Mail::setDefaultFrom('sender@example.com', 'John Doe');
+   Zend\Mail\Mail::setDefaultReplyTo('replyto@example.com','Jane Doe');
 
    // Boucle à travers les messages
    for ($i = 0; $i < 5; $i++) {
-       $mail = new Zend_Mail();
+       $mail = new Zend\Mail\Mail();
        $mail->addTo('studio@example.com', 'Test');
        $mail->setSubject(
            'Démonstration - Envoyer plusieurs emails par connexion SMTP'
@@ -41,8 +41,8 @@ defaults can be done through the use of the ``clearDefaultFrom()`` and ``clearDe
    }
 
    // Effacer les valeurs par défaut
-   Zend_Mail::clearDefaultFrom();
-   Zend_Mail::clearDefaultReplyTo();
+   Zend\Mail\Mail::clearDefaultFrom();
+   Zend\Mail\Mail::clearDefaultReplyTo();
 
 Si vous voulez avoir une connexion SMTP séparée pour chaque distribution d'émail, vous devez créer et détruire
 votre transport avant et après chaque appel de la méthode ``send()``. Ou sinon, vous pouvez manipuler la
@@ -56,9 +56,9 @@ connexion entre chaque distribution en accédant à l'objet de protocole de tran
    :linenos:
 
    // Créer un transport
-   $transport = new Zend_Mail_Transport_Smtp();
+   $transport = new Zend\Mail_Transport\Smtp();
 
-   $protocol = new Zend_Mail_Protocol_Smtp('mail.example.com');
+   $protocol = new Zend\Mail_Protocol\Smtp('mail.example.com');
    $protocol->connect();
    $protocol->helo('sender.example.com');
 
@@ -66,7 +66,7 @@ connexion entre chaque distribution en accédant à l'objet de protocole de tran
 
    // Boucle à travers les messages
    for ($i = 0; $i < 5; $i++) {
-       $mail = new Zend_Mail();
+       $mail = new Zend\Mail\Mail();
        $mail->addTo('studio@example.com', 'Test');
        $mail->setFrom('studio@example.com', 'Test');
        $mail->setSubject(

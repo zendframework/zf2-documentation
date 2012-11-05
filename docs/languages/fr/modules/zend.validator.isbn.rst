@@ -4,20 +4,20 @@
 Isbn
 ====
 
-``Zend_Validate_Isbn`` permet de valider des valeurs *ISBN-10* ou *ISBN-13*.
+``Zend\Validate\Isbn`` permet de valider des valeurs *ISBN-10* ou *ISBN-13*.
 
 .. _zend.validator.set.isbn.options:
 
-Options supportées par Zend_Validate_Isbn
+Options supportées par Zend\Validate\Isbn
 -----------------------------------------
 
-Les options suivantes sont supportées par ``Zend_Validate_Isbn``\  :
+Les options suivantes sont supportées par ``Zend\Validate\Isbn``\  :
 
 - **separator**\  : définit le séparateur autorisé pour la valeur *ISBN*. Par défaut, il s'agit d'une chaîne
   vide.
 
 - **type**\  : définit le type des valeurs *ISBN* autorisées. Par défaut, il s'agit de
-  ``Zend_Validate_Isbn::AUTO``. Pour plus de détails reportez vous à :ref:`cette section
+  ``Zend\Validate\Isbn::AUTO``. Pour plus de détails reportez vous à :ref:`cette section
   <zend.validator.set.isbn.type-explicit>`.
 
 .. _zend.validator.set.isbn.basic:
@@ -30,7 +30,7 @@ Voici un exemple banal :
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Isbn();
+   $validator = new Zend\Validate\Isbn();
    if ($validator->isValid($isbn)) {
        // isbn valide
    } else {
@@ -49,11 +49,11 @@ Voici comment effectuer une restriction de type de l'*ISBN*\  :
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Isbn();
-   $validator->setType(Zend_Validate_Isbn::ISBN13);
+   $validator = new Zend\Validate\Isbn();
+   $validator->setType(Zend\Validate\Isbn::ISBN13);
    // OU
-   $validator = new Zend_Validate_Isbn(array(
-       'type' => Zend_Validate_Isbn::ISBN13,
+   $validator = new Zend\Validate\Isbn(array(
+       'type' => Zend\Validate\Isbn::ISBN13,
    ));
 
    if ($validator->isValid($isbn)) {
@@ -66,11 +66,11 @@ Seules les valeurs de *ISBN-13* sont validées ci-dessus.
 
 Les types valides sont :
 
-- ``Zend_Validate_Isbn::AUTO`` (défaut)
+- ``Zend\Validate\Isbn::AUTO`` (défaut)
 
-- ``Zend_Validate_Isbn::ISBN10``
+- ``Zend\Validate\Isbn::ISBN10``
 
-- ``Zend_Validate_Isbn::ISBN13``
+- ``Zend\Validate\Isbn::ISBN13``
 
 .. _zend.validator.set.isbn.separator:
 
@@ -82,10 +82,10 @@ Voici un exemple de restriction de séparateur :
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_Isbn();
+   $validator = new Zend\Validate\Isbn();
    $validator->setSeparator('-');
    // OU
-   $validator = new Zend_Validate_Isbn(array(
+   $validator = new Zend\Validate\Isbn(array(
        'separator' => '-',
    ));
 

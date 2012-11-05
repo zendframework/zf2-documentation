@@ -4,10 +4,10 @@
 Introducción
 ============
 
-El componente ``Zend_Pdf`` es un motor para manipular documentos *PDF* (Portable Document Format). Puede cargar,
+El componente ``ZendPdf`` es un motor para manipular documentos *PDF* (Portable Document Format). Puede cargar,
 crear, modificar y guardar documentos. Por lo tanto, puede ayudar a cualquier aplicación *PHP* a crear
 dinámicamente documentos *PDF* modificando los documentos existentes o generar unos nuevos desde cero.
-``Zend_Pdf`` ofrece las siguientes características:
+``ZendPdf`` ofrece las siguientes características:
 
    - Crear un documento nuevo o cargar uno existente. [#]_
 

@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.server.reflection:
 
-Zend_Server_Reflection
+Zend\Server\Reflection
 ======================
 
 .. _zend.server.reflection.introduction:
@@ -9,7 +9,7 @@ Zend_Server_Reflection
 導入
 --
 
-``Zend_Server_Reflection`` は、サーバクラス群で
+``Zend\Server\Reflection`` は、サーバクラス群で
 関数やクラスの内容を知るための標準的な仕組みを提供します。 *PHP* 5
 のリフレクション *API* をもとにして拡張したものです。
 パラメータや返り値の型と説明の取得、関数やメソッドのプロトタイプの一覧
@@ -28,8 +28,8 @@ Zend_Server_Reflection
 .. code-block:: php
    :linenos:
 
-   $class    = Zend_Server_Reflection::reflectClass('My_Class');
-   $function = Zend_Server_Reflection::reflectFunction('my_function');
+   $class    = Zend\Server\Reflection::reflectClass('My_Class');
+   $function = Zend\Server\Reflection::reflectFunction('my_function');
 
    // プロトタイプを取得します
    $prototypes = $reflection->getPrototypes();
@@ -55,8 +55,8 @@ Zend_Server_Reflection
    // setNamespace() で設定します。
    $reflection->getNamespace();
 
-``reflectFunction()`` は ``Zend_Server_Reflection_Function`` オブジェクトを返します。 ``reflectClass``
-は ``Zend_Server_Reflection_Class`` オブジェクトを返します。
+``reflectFunction()`` は ``Zend\Server_Reflection\Function`` オブジェクトを返します。 ``reflectClass``
+は ``Zend\Server_Reflection\Class`` オブジェクトを返します。
 これらのオブジェクトで使用できるメソッドについては *API*
 ドキュメントを参照ください。
 

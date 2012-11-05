@@ -9,15 +9,15 @@ RealPath
 記号は取り除かれます。 結果のパスにはいかなるシンボリックリンクも無く、
 '``/./``' や '``/../``' 文字もありません。
 
-たとえばファイルが存在しない場合、 ``Zend_Filter_RealPath``\ は失敗すると ``FALSE``\
+たとえばファイルが存在しない場合、 ``Zend\Filter\RealPath``\ は失敗すると ``FALSE``\
 を返します。 もし最後のパスのコンポーネントだけが存在しない場合、 *BSD*
-システムでは ``Zend_Filter_RealPath``\ は失敗しますが、 他のシステムでは ``FALSE``\
+システムでは ``Zend\Filter\RealPath``\ は失敗しますが、 他のシステムでは ``FALSE``\
 を返します。
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_RealPath();
+   $filter = new Zend\Filter\RealPath();
    $path   = '/www/var/path/../../mypath';
    $filtered = $filter->filter($path);
 
@@ -32,7 +32,7 @@ RealPath
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_RealPath(false);
+   $filter = new Zend\Filter\RealPath(false);
    $path   = '/www/var/path/../../non/existing/path';
    $filtered = $filter->filter($path);
 

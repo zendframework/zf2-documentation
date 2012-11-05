@@ -58,7 +58,7 @@ sidebar in a resource method of our bootstrap:
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
    {
        // ...
 
@@ -112,7 +112,7 @@ To invoke the above view script, we would write the following in our ``preDispat
 .. code-block:: php
    :linenos:
 
-   class UserController extends Zend_Controller_Action
+   class UserController extends Zend\Controller\Action
    {
        // ...
 

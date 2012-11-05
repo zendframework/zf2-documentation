@@ -9,12 +9,12 @@ modificação.
 
 Historicamente essas informações são armazenadas com o uso de estruturas especiais. Esta estrutura está
 disponível para leitura e escrita como uma matriz associativa usando a propriedade pública *properties* dos
-objetos ``Zend_Pdf``:
+objetos ``ZendPdf``:
 
 .. code-block:: php
    :linenos:
 
-   $pdf = Zend_Pdf::load($pdfPath);
+   $pdf = ZendPdf\Pdf::load($pdfPath);
 
    echo $pdf->properties['Title'] . "\n";
    echo $pdf->properties['Author'] . "\n";
@@ -97,13 +97,13 @@ As seguintes chaves são definidas pelo padrão *PDF* v1.4 (Acrobat 5):
 Desde a versão 1.6 do *PDF*, os metadados podem ser armazenados em um documento *XML* especial anexado ao *PDF*
 (XMP -`Extensible Metadata Platform`_).
 
-Este documento *XML* pode ser recuperado e anexado ao PDF com os métodos ``Zend_Pdf::getMetadata()`` e
-``Zend_Pdf::setMetadata($metadata)``:
+Este documento *XML* pode ser recuperado e anexado ao PDF com os métodos ``ZendPdf\Pdf::getMetadata()`` e
+``ZendPdf\Pdf::setMetadata($metadata)``:
 
 .. code-block:: php
    :linenos:
 
-   $pdf = Zend_Pdf::load($pdfPath);
+   $pdf = ZendPdf\Pdf::load($pdfPath);
    $metadata = $pdf->getMetadata();
    $metadataDOM = new DOMDocument();
    $metadataDOM->loadXML($metadata);

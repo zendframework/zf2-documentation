@@ -11,13 +11,13 @@ Empfangen der Queue, Empfangen von Nachrichten, Löschen von Nachrichten und Sen
    :linenos:
 
    // Für Konfigurations Optionen siehe
-   // @see Zend_Queue_Adapater::__construct()
+   // @see Zend\Queue\Adapater::__construct()
    $options = array(
        'name' => 'queue1',
    );
 
    // Erstellung einer Array Queue
-   $queue = new Zend_Queue('Array', $options);
+   $queue = new Zend\Queue\Queue('Array', $options);
 
    // Eine Liste von Queues erhalten
    foreach ($queue->getQueues() as $name) {

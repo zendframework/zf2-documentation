@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.rest.server:
 
-Zend_Rest_Server
+Zend\Rest\Server
 ================
 
 .. _zend.rest.server.introduction:
@@ -9,7 +9,7 @@ Zend_Rest_Server
 Introduction
 ------------
 
-Zend_Rest_Server est prévu comme un serveur supportant l'ensemble des fonctionnalités d'un serveur REST.
+Zend\Rest\Server est prévu comme un serveur supportant l'ensemble des fonctionnalités d'un serveur REST.
 
 .. _zend.rest.server.usage:
 
@@ -18,18 +18,18 @@ Utilisation d'un serveur REST
 
 .. _zend.rest.server.usage.example-1:
 
-.. rubric:: Utilisation basique Zend_Rest_Server - Avec des classes
+.. rubric:: Utilisation basique Zend\Rest\Server - Avec des classes
 
 .. code-block:: php
    :linenos:
 
-   $server = new Zend_Rest_Server();
+   $server = new Zend\Rest\Server();
    $server->setClass('Mon_Service_Classe');
    $server->handle();
 
 .. _zend.rest.server.usage.example-2:
 
-.. rubric:: Utilisation basique Zend_Rest_Server - Avec des fonctions
+.. rubric:: Utilisation basique Zend\Rest\Server - Avec des fonctions
 
 .. code-block:: php
    :linenos:
@@ -46,16 +46,16 @@ Utilisation d'un serveur REST
        return "Bonjour $qui, bonne $quand";
    }
 
-   $server = new Zend_Rest_Server();
+   $server = new Zend\Rest\Server();
    $server->addFunction('ditBonjour');
    $server->handle();
 
 .. _zend.rest.server.args:
 
-Appelé un service Zend_Rest_Server
+Appelé un service Zend\Rest\Server
 ----------------------------------
 
-Pour appeler un service ``Zend_Rest_Server``, vous devez fournir un argument de *method* GET/POST avec une valeur
+Pour appeler un service ``Zend\Rest\Server``, vous devez fournir un argument de *method* GET/POST avec une valeur
 qui est la méthode que vous souhaitez appeler. Vous pouvez alors ajouter tout nombre d'arguments en utilisant le
 nom de l'argument (c.-à-d. "qui ") ou en utilisant 'arg' suivi de la position numérique de l'argument (c.-à-d.
 "arg1").
@@ -101,7 +101,7 @@ En envoyant des valeurs, pour ajouter un statut personnalisé, vous pouvez envoy
        return array('msg' => "Une erreur est apparue", 'status' => false);
    }
 
-   $server = new Zend_Rest_Server();
+   $server = new Zend\Rest\Server();
    $server->addFunction('ditBonjour');
    $server->handle();
 
@@ -139,7 +139,7 @@ Si vous voulez retourner du *XML* personnalisé, retournez simplement un objet *
        return $xml;
    }
 
-   $server = new Zend_Rest_Server();
+   $server = new Zend\Rest\Server();
    $server->addFunction('ditBonjour');
 
    $server->handle();

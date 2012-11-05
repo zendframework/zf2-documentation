@@ -8,7 +8,7 @@ Pojedyncze elementy *<entry>* kanału Atom są same w sobie poprawne. Zazwyczaj 
 adresem URL kanału z dodanym identyfikatorem */<entryId>* wpisu, na przykład *http://atom.example.com/feed/1*,
 dla przykładowego URL, który był użyty wcześniej.
 
-Gdy odczytujesz pojedynczy wpis, wciąż masz obiekt *Zend_Feed_Atom*, ale automatycznie tworzy on "anonimowy"
+Gdy odczytujesz pojedynczy wpis, wciąż masz obiekt *Zend\Feed\Atom*, ale automatycznie tworzy on "anonimowy"
 kanał zawierający ten wpis.
 
 .. _zend.feed.consuming-atom-single-entry.example.atom:
@@ -18,7 +18,7 @@ kanał zawierający ten wpis.
 .. code-block:: php
    :linenos:
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/1');
    echo 'Kanał zawiera: ' . $feed->count() . ' wspisów.';
 
    $entry = $feed->current();
@@ -34,7 +34,7 @@ pojedynczego wpisu *<entry>*:
 .. code-block:: php
    :linenos:
 
-   $entry = new Zend_Feed_Entry_Atom('http://atom.example.com/feed/1');
+   $entry = new Zend\Feed_Entry\Atom('http://atom.example.com/feed/1');
    echo $entry->title();
 
 

@@ -5,7 +5,7 @@ Framework
 =========
 
 ``Zend_Queue`` ist ein Proxy der die Details des Queue Services versteckt. Die Queue Services werden durch
-``Zend_Queue_Adapter_<service>`` repräsentiert. Zum Beispiel ist ``Zend_Queue_Adapter_Db`` eine Queue die
+``Zend\Queue_Adapter\<service>`` repräsentiert. Zum Beispiel ist ``Zend\Queue_Adapter\Db`` eine Queue die
 Datenbanktabellen verwendet um Nachrichten zu speichern und zu empfangen.
 
 Anbei ist ein Beispiel für die Verwendung von Datenbanktabellen für ein Queueing System:
@@ -26,18 +26,18 @@ Anbei ist ein Beispiel für die Verwendung von Datenbanktabellen für ein Queuei
    );
 
    // Erstellt eine Datenbank Queue.
-   // Zend_Queue fügt vorne Zend_Queue_Adapter_ an 'Db' für den Klassennamen an.
-   $queue = new Zend_Queue('Db', $options);
+   // Zend_Queue fügt vorne Zend\Queue_Adapter\ an 'Db' für den Klassennamen an.
+   $queue = new Zend\Queue\Queue('Db', $options);
 
-Der Constructor von ``Zend_Queue`` erstellt eine ``Zend_Queue_Adapter_Db`` und initialisiert den Adapter mit den
+Der Constructor von ``Zend_Queue`` erstellt eine ``Zend\Queue_Adapter\Db`` und initialisiert den Adapter mit den
 Konfigurationseinstellungen.
 
 Die akzeptierten Konfigurationseinstellungen für jeden Adapter sind in den :ref:`Adapter Notizen
 <zend.queue.adapters>` beschrieben.
 
-``Zend_Queue`` gibt Nachrichten zurück indem es die ``Zend_Queue_Message_Iterator`` Klasse verwendet, welche eine
-Implementation vom *SPL* ``Iterator`` und von ``Countable`` ist. ``Zend_Queue_Message_Iterator`` enthält ein Array
-von ``Zend_Queue_Message`` Objekten.
+``Zend_Queue`` gibt Nachrichten zurück indem es die ``Zend\Queue_Message\Iterator`` Klasse verwendet, welche eine
+Implementation vom *SPL* ``Iterator`` und von ``Countable`` ist. ``Zend\Queue_Message\Iterator`` enthält ein Array
+von ``Zend\Queue\Message`` Objekten.
 
 .. code-block:: php
    :linenos:
@@ -47,7 +47,7 @@ von ``Zend_Queue_Message`` Objekten.
        echo "$i) Nachricht => ", $message->body, "\n";
    }
 
-Alle Exceptions die geworfen werden sind von der Klasse ``Zend_Queue_Exception``.
+Alle Exceptions die geworfen werden sind von der Klasse ``Zend\Queue\Exception``.
 
 .. _zend.queue.framework.basics:
 
@@ -67,12 +67,12 @@ Gemeinsamkeiten für alle Adapter
 --------------------------------
 
 Die Queue Services die von ``Zend_Queue`` unterstützt werden unterstützen nicht alle die gleichen
-Funktionalitäten. Zum Beispiel unterstützen ``Zend_Queue_Adapter_Array`` und ``Zend_Queue_Adapter_Db`` alle
-Funktionen, wärend ``Zend_Queue_Adapter_Activemq`` das Auflisten und Löschen von Queues der das Zählen von
+Funktionalitäten. Zum Beispiel unterstützen ``Zend\Queue_Adapter\Array`` und ``Zend\Queue_Adapter\Db`` alle
+Funktionen, wärend ``Zend\Queue_Adapter\Activemq`` das Auflisten und Löschen von Queues der das Zählen von
 Nachrichten nicht unterstützt.
 
-Man kann erkennen welche Funktionen unterstützt werden indem ``Zend_Queue::isSupported()`` oder
-``Zend_Queue::getCapabilities()`` verwendet wird.
+Man kann erkennen welche Funktionen unterstützt werden indem ``Zend\Queue\Queue::isSupported()`` oder
+``Zend\Queue\Queue::getCapabilities()`` verwendet wird.
 
 - **createQueue()**- Erstellt eine Queue
 
@@ -80,11 +80,11 @@ Man kann erkennen welche Funktionen unterstützt werden indem ``Zend_Queue::isSu
 
 - **send()**- Sendet eine Nachricht
 
-  ``send()`` ist nicht in allen Adaptern vorhanden; ``Zend_Queue_Adapter_Null`` unterstützt ``send()`` nicht.
+  ``send()`` ist nicht in allen Adaptern vorhanden; ``Zend\Queue_Adapter\Null`` unterstützt ``send()`` nicht.
 
 - **receive()**- Empfängt eine Nachricht
 
-  ``receive()`` ist nicht in allen Adaptern vorhanden; ``Zend_Queue_Adapter_Null`` unterstützt ``receive()``
+  ``receive()`` ist nicht in allen Adaptern vorhanden; ``Zend\Queue_Adapter\Null`` unterstützt ``receive()``
   nicht.
 
 - **deleteMessage()**- Löscht eine Nachricht

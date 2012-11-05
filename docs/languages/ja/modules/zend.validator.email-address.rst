@@ -4,7 +4,7 @@
 メールアドレス
 =======
 
-``Zend_Validate_EmailAddress`` は、メールアドレスの検証を行います。
+``Zend\Validate\EmailAddress`` は、メールアドレスの検証を行います。
 このバリデータは、まずメールアドレスを local-part @ hostname
 に分割し、メールアドレスやホスト名の仕様にあわせて検証します。
 
@@ -18,7 +18,7 @@
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_EmailAddress();
+   $validator = new Zend\Validate\EmailAddress();
    if ($validator->isValid($email)) {
        // メールアドレスは正しい形式のようです
    } else {
@@ -36,7 +36,7 @@
 メールアドレス検証のオプション
 ---------------
 
-``Zend_Validate_EmailAddress``\ は、
+``Zend\Validate\EmailAddress``\ は、
 開始時に関係するオプションを持つ配列を与えることによって、 または後で
 ``setOptions()`` を使って セットできるいくつかのオプションをサポートします。
 下記のオプションがサポートされます。
@@ -69,7 +69,7 @@
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_EmailAddress();
+   $validator = new Zend\Validate\EmailAddress();
    $validator->setOptions(array('domain' => false));
 
 .. _zend.validator.set.email_address.complexlocal:
@@ -77,7 +77,7 @@
 複雑なローカルパート
 ----------
 
-``Zend_Validate_EmailAddress`` は、メールアドレスの検証を RFC2822
+``Zend\Validate\EmailAddress`` は、メールアドレスの検証を RFC2822
 にもとづいて行います。たとえば、妥当な形式のメールアドレスとしては
 *bob@domain.com*\ 、 *bob+jones@domain.us*\ 、 *"bob@jones"@domain.com* および *"bob jones"@domain.com*
 などがあります。
@@ -91,14 +91,14 @@
 ------------
 
 もしメールアドレスのローカルパートのみをチェックするために
-``Zend_Validate_EmailAddress`` を必要として、 ホスト名の検証を無効にしたいなら、 ``domain``
-オプションに ``FALSE`` を設定できます。 これにより、 ``Zend_Validate_EmailAddress`` が
+``Zend\Validate\EmailAddress`` を必要として、 ホスト名の検証を無効にしたいなら、 ``domain``
+オプションに ``FALSE`` を設定できます。 これにより、 ``Zend\Validate\EmailAddress`` が
 メールアドレスのホスト名部分を検証しないようにします。
 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_EmailAddress();
+   $validator = new Zend\Validate\EmailAddress();
    $validator->setOptions(array('domain' => FALSE));
 
 .. _zend.validator.set.email_address.hostnametype:
@@ -106,23 +106,23 @@
 さまざまな形式のホスト名の検証
 ---------------
 
-メールアドレスのホスト名部分の検証は、 :ref:`Zend_Validate_Hostname
+メールアドレスのホスト名部分の検証は、 :ref:`Zend\Validate\Hostname
 <zend.validator.set.hostname>` で行います。デフォルトでは、 *domain.com* 形式の DNS
 ホスト名のみが有効となります。しかし、 IP
 アドレスやローカルホスト名も有効にしたいこともあるでしょう。
 
-その場合は、 ``Zend_Validate_EmailAddress``
+その場合は、 ``Zend\Validate\EmailAddress``
 のインスタンスを作成する際にパラメータを渡さなければなりません。
 このパラメータで、認めたいホスト名の形式を指定します。 詳細は
-``Zend_Validate_Hostname`` を参照ください。 たとえば DNS
+``Zend\Validate\Hostname`` を参照ください。 たとえば DNS
 ホスト名およびローカルホスト名のどちらも許可するには、次のようにします。
 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_EmailAddress(
-                       Zend_Validate_Hostname::ALLOW_DNS |
-                       Zend_Validate_Hostname::ALLOW_LOCAL);
+   $validator = new Zend\Validate\EmailAddress(
+                       Zend\Validate\Hostname::ALLOW_DNS |
+                       Zend\Validate\Hostname::ALLOW_LOCAL);
    if ($validator->isValid($email)) {
        // メールアドレスは正しい形式のようです
    } else {
@@ -146,14 +146,14 @@
 そのメールアドレス自体が正しいものであるかどうかを知ることはできません。
 
 MX のチェックはデフォルトでは無効です。 MX のチェックを有効にするには、
-``Zend_Validate_EmailAddress`` コンストラクタの 2 番目のパラメータを渡します。
+``Zend\Validate\EmailAddress`` コンストラクタの 2 番目のパラメータを渡します。
 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_EmailAddress(
+   $validator = new Zend\Validate\EmailAddress(
        array(
-           'allow' => Zend_Validate_Hostname::ALLOW_DNS,
+           'allow' => Zend\Validate\Hostname::ALLOW_DNS,
            'mx'    => true
        )
    );
@@ -177,7 +177,7 @@ MX のチェックはデフォルトでは無効です。 MX のチェックを�
 を返します。 この振る舞いの背後にある理由は、サーバが MX
 レコードを提供しなくてもサーバはメールを受付できることです。
 この場合、サーバは A, A6 または ``AAAA`` レコードを提供します。
-それらのほかのレコードでも ``Zend_Validate_EmailAddress``
+それらのほかのレコードでも ``Zend\Validate\EmailAddress``
 がチェックできるようにするためには、 強度の MX 検証を設定する必要があります。
 これは開始時に ``deep`` オプションを設定するか、 または ``setOptions()``
 を使って行ないます。
@@ -185,9 +185,9 @@ MX のチェックはデフォルトでは無効です。 MX のチェックを�
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_EmailAddress(
+   $validator = new Zend\Validate\EmailAddress(
        array(
-           'allow' => Zend_Validate_Hostname::ALLOW_DNS,
+           'allow' => Zend\Validate\Hostname::ALLOW_DNS,
            'mx'    => true,
            'deep'  => true
        )
@@ -215,11 +215,11 @@ MX のチェックはデフォルトでは無効です。 MX のチェックを�
 国際化ドメイン名の検証
 -----------
 
-``Zend_Validate_EmailAddress``
+``Zend\Validate\EmailAddress``
 は、ドメインの中に国際文字が使われている場合も処理できます。
 このようなドメインは、国際化ドメイン名 (International Domain Name: IDN)
 と呼ばれています。これはデフォルトで有効になっていますが、無効にすることも可能です。
-無効にするには、 ``Zend_Validate_EmailAddress`` が内部で保持している ``Zend_Validate_Hostname``
+無効にするには、 ``Zend\Validate\EmailAddress`` が内部で保持している ``Zend\Validate\Hostname``
 オブジェクトの設定を変更します。
 
 .. code-block:: php
@@ -227,7 +227,7 @@ MX のチェックはデフォルトでは無効です。 MX のチェックを�
 
    $validator->getHostnameValidator()->setValidateIdn(false);
 
-``setValidateIdn()`` の詳細な使用法は、 ``Zend_Validate_Hostname``
+``setValidateIdn()`` の詳細な使用法は、 ``Zend\Validate\Hostname``
 のドキュメントを参照ください。
 
 IDN の検証は、DNS
@@ -240,7 +240,7 @@ IDN の検証は、DNS
 
 デフォルトでは、ホスト名の検証は既知の TLD の一覧に基づいて行われます。
 これはデフォルトで有効になっていますが、無効にすることもできます。無効にするには、
-無効にするには、 ``Zend_Validate_EmailAddress`` が内部で保持している ``Zend_Validate_Hostname``
+無効にするには、 ``Zend\Validate\EmailAddress`` が内部で保持している ``Zend\Validate\Hostname``
 オブジェクトの設定を変更します。
 
 .. code-block:: php
@@ -248,7 +248,7 @@ IDN の検証は、DNS
 
    $validator->getHostnameValidator()->setValidateTld(false);
 
-``setValidateTld()`` の詳細な使用法は、 ``Zend_Validate_Hostname``
+``setValidateTld()`` の詳細な使用法は、 ``Zend\Validate\Hostname``
 のドキュメントを参照ください。
 
 TLD の検証は、DNS
@@ -259,23 +259,23 @@ TLD の検証は、DNS
 メッセージの設定
 --------
 
-``Zend_Validate_EmailAddress`` は、 ``Zend_Validate_Hostname``
+``Zend\Validate\EmailAddress`` は、 ``Zend\Validate\Hostname``
 を使用してメールアドレスのホスト名部分をチェックします。 Zend Framework 1.10 以降、
-``Zend_Validate_Hostname`` 用のメッセージを ``Zend_Validate_EmailAddress``
+``Zend\Validate\Hostname`` 用のメッセージを ``Zend\Validate\EmailAddress``
 から設定できるようになります。
 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend_Validate_EmailAddress();
+   $validator = new Zend\Validate\EmailAddress();
    $validator->setMessages(
        array(
-           Zend_Validate_Hostname::UNKNOWN_TLD => 'I don't know the TLD you gave'
+           Zend\Validate\Hostname::UNKNOWN_TLD => 'I don't know the TLD you gave'
        )
    );
 
-Zend Framework 1.10 より前のバージョンでは、まず ``Zend_Validate_Hostname``
-にメッセージをアタッチしてからそれを ``Zend_Validate_EmailAddress``
+Zend Framework 1.10 より前のバージョンでは、まず ``Zend\Validate\Hostname``
+にメッセージをアタッチしてからそれを ``Zend\Validate\EmailAddress``
 に設定しないと独自のメッセージを返せませんでした。
 
 

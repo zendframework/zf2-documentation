@@ -14,6 +14,6 @@ pozwalają na otrzymanie bardziej "lokalnego" interfejsu za pośrednictwem wirtu
 Komponent serwera umożliwia automatyczne udostępnianie funkcji i klas za pomocą prostego formatu XML. Kiedy
 uzyskujemy dostęp do tych webserwisów za pomocą klienta, możliwe jest łatwe pobranie i zwrócenie danych
 otrzymanych po wywołaniu. Jeśli chcesz użyć klienta z serwerem webserwisów nie opartym na klasie
-Zend_Rest_Server, dostęp wciąż będzie łatwy.
+Zend\Rest\Server, dostęp wciąż będzie łatwy.
 
 

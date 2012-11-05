@@ -9,7 +9,7 @@ HTTP 認証アダプタ
 導入
 --
 
-``Zend_Auth_Adapter_Http`` は、 `RFC-2617`_ や `ベーシック`_\ 、 `ダイジェスト`_ *HTTP*
+``Zend\Auth_Adapter\Http`` は、 `RFC-2617`_ や `ベーシック`_\ 、 `ダイジェスト`_ *HTTP*
 認証にほぼ準拠した実装を提供します。ダイジェスト認証とは *HTTP*
 認証方式のひとつで、パスワードを平文でネットワークに送信する必要がないという点で
 ベーシック認証より優れています。
@@ -52,7 +52,7 @@ HTTP 認証アダプタ
 設定オプション
 -------
 
-``Zend_Auth_Adapter_Http`` クラスのコンストラクタには、
+``Zend\Auth_Adapter\Http`` クラスのコンストラクタには、
 設定配列を渡す必要があります。使用可能なオプションはいくつかあり、
 その中には必須のものもあります。
 
@@ -96,7 +96,7 @@ HTTP 認証アダプタ
 (をコロンでつなげたもの) のハッシュを受け取ります。
 現在サポートしているハッシュアルゴリズムは *MD5* のみです。
 
-``Zend_Auth_Adapter_Http`` ``Zend_Auth_Adapter_Http_Resolver_Interface``
+``Zend\Auth_Adapter\Http`` ``Zend\Auth\Adapter\Http\Resolver\Interface``
 を実装したオブジェクトを使用しています。
 このアダプタにはテキストファイル用のリゾルバクラスが含まれていますが、
 リゾルバインターフェイスを実装することで、
@@ -133,7 +133,7 @@ Apache の htpasswd ファイルと似た形式で
    :linenos:
 
    $path     = 'files/passwd.txt';
-   $resolver = new Zend_Auth_Adapter_Http_Resolver_File($path);
+   $resolver = new Zend\Auth\Adapter\Http\Resolver\File($path);
 
 もうひとつは
 
@@ -141,7 +141,7 @@ Apache の htpasswd ファイルと似た形式で
    :linenos:
 
    $path     = 'files/passwd.txt';
-   $resolver = new Zend_Auth_Adapter_Http_Resolver_File();
+   $resolver = new Zend\Auth\Adapter\Http\Resolver\File();
    $resolver->setFile($path);
 
 指定したパスが空だったり読み込みできなかったりした場合は、
@@ -170,13 +170,13 @@ Apache の htpasswd ファイルと似た形式で
 の値は、通常はブラウザのパスワードダイアログボックスに表示されます。
 ``nonce_timeout`` は、もちろん、先ほど説明したとおりの振る舞いをします。
 
-次に、 ``Zend_Auth_Adapter_Http`` オブジェクトを作成します。
+次に、 ``Zend\Auth_Adapter\Http`` オブジェクトを作成します。
 
 .. code-block:: php
    :linenos:
 
    require_once 'Zend/Auth/Adapter/Http.php';
-   $adapter = new Zend_Auth_Adapter_Http($config);
+   $adapter = new Zend\Auth_Adapter\Http($config);
 
 ベーシック認証およびダイジェスト認証の両方をサポートしているので、
 ふたつのリゾルバオブジェクトを作成する必要があります。
@@ -185,10 +185,10 @@ Apache の htpasswd ファイルと似た形式で
 .. code-block:: php
    :linenos:
 
-   $basicResolver = new Zend_Auth_Adapter_Http_Resolver_File();
+   $basicResolver = new Zend\Auth\Adapter\Http\Resolver\File();
    $basicResolver->setFile('files/basicPasswd.txt');
 
-   $digestResolver = new Zend_Auth_Adapter_Http_Resolver_File();
+   $digestResolver = new Zend\Auth\Adapter\Http\Resolver\File();
    $digestResolver->setFile('files/digestPasswd.txt');
 
    $adapter->setBasicResolver($basicResolver);
@@ -200,8 +200,8 @@ Apache の htpasswd ファイルと似た形式で
 .. code-block:: php
    :linenos:
 
-   assert($request instanceof Zend_Controller_Request_Http);
-   assert($response instanceof Zend_Controller_Response_Http);
+   assert($request instanceof Zend\Controller_Request\Http);
+   assert($response instanceof Zend\Controller_Response\Http);
 
    $adapter->setRequest($request);
    $adapter->setResponse($response);

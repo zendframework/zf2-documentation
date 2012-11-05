@@ -18,26 +18,26 @@ Durch bisherige Änderungen bleibt die wesentliche Verwendung der *MVC* Komponen
    :linenos:
 
    require_once 'Zend/Controller/Front.php';
-   Zend_Controller_Front::run('/path/to/controllers');
+   Zend\Controller\Front::run('/path/to/controllers');
 
 Dennoch wurde die Verzeichnisstruktur gründliche überarbeitet, verschiedene Komponenten wurden entfernt und
 mehrere andere umbenannt und hinzugefügt. Die Änderungen beinhalten:
 
-- ``Zend_Controller_Router`` wurde entfernt für den Rewrite Router entfernt.
+- ``Zend\Controller\Router`` wurde entfernt für den Rewrite Router entfernt.
 
-- ``Zend_Controller_RewriteRouter`` wurde in ``Zend_Controller_Router_Rewrite`` umbenannt und zum Standard Router
-  befördert, der mit dem Framework ausgeliefert wird; ``Zend_Controller_Front`` wird ihn als Standard verwenden,
+- ``Zend\Controller\RewriteRouter`` wurde in ``Zend\Controller_Router\Rewrite`` umbenannt und zum Standard Router
+  befördert, der mit dem Framework ausgeliefert wird; ``Zend\Controller\Front`` wird ihn als Standard verwenden,
   wenn kein anderer Router übergeben wird.
 
 - Eine neue Route Klasse für die Verwendung mit dem Rewrite Router wurde eingeführt:
-  ``Zend_Controller_Router_Route_Module``; sie deckt die Standardrouten ab, die vom *MVC* verwendet werden und
+  ``Zend\Controller\Router\Route\Module``; sie deckt die Standardrouten ab, die vom *MVC* verwendet werden und
   bietet die Unterstützung für :ref:`Controller Module <zend.controller.modular>`.
 
-- ``Zend_Controller_Router_StaticRoute`` wurde umbenannt in ``Zend_Controller_Router_Route_Static``.
+- ``Zend\Controller_Router\StaticRoute`` wurde umbenannt in ``Zend\Controller\Router\Route\Static``.
 
-- ``Zend_Controller_Dispatcher`` wurde umbenannt in ``Zend_Controller_Dispatcher_Standard``.
+- ``Zend\Controller\Dispatcher`` wurde umbenannt in ``Zend\Controller_Dispatcher\Standard``.
 
-- ``Zend_Controller_Action::_forward()``'s Argumente wurden geändert. Die Signatur ist nun:
+- ``Zend\Controller\Action::_forward()``'s Argumente wurden geändert. Die Signatur ist nun:
 
   .. code-block:: php
      :linenos:

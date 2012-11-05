@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.sqs:
 
-Zend_Service_Amazon_Sqs
+Zend\Service_Amazon\Sqs
 =======================
 
 .. _zend.service.amazon.sqs.introduction:
@@ -28,7 +28,7 @@ gleichen Zeit laufen.
 Bei Amazon SQS registrieren
 ---------------------------
 
-Bevor man mit ``Zend_Service_Amazon_Sqs`` beginnt muß man einen Account registrieren. Sehen Sie bitte in die `SQS
+Bevor man mit ``Zend\Service_Amazon\Sqs`` beginnt muß man einen Account registrieren. Sehen Sie bitte in die `SQS
 FAQ`_ Seite auf der Amazon Website für weitere Informationen.
 
 Nach der Registrierung, bekommt man einen Anwendungsschlüssel und einen geheimen Schlüssel. Man benötigt beide
@@ -39,7 +39,7 @@ um auf den SQS Service zugreifen zu können.
 API Dokumentation
 -----------------
 
-Die ``Zend_Service_Amazon_Sqs`` Klasse bietet den *PHP* Wrapper zum Amazon SQS REST Interface. Bitte konsultieren
+Die ``Zend\Service_Amazon\Sqs`` Klasse bietet den *PHP* Wrapper zum Amazon SQS REST Interface. Bitte konsultieren
 Sie die `Amazon SQS Dokumentation`_ für eine detailierte Beschreibung des Services. Man muß mit dem
 grundsätzlichen Konzept vertraut sein um dieses Service verwenden zu können.
 
@@ -48,7 +48,7 @@ grundsätzlichen Konzept vertraut sein um dieses Service verwenden zu können.
 Features
 --------
 
-``Zend_Service_Amazon_Sqs`` bietet die folgende Funktionalität:
+``Zend\Service_Amazon\Sqs`` bietet die folgende Funktionalität:
 
 - Einen einzelnen Punkt für die Konfiguration des Authentifizierungsdaten von amazon.sqs die über den kompletten
   amazon.sqs Namespace verwendet werden können.
@@ -74,12 +74,12 @@ Das folgende Beispiel demonstriert die Erstellung einer Queue, und das speichern
 
 .. _zend.service.amazon.sqs.storing-your-first.example:
 
-.. rubric:: Beispiel der Verwendung von Zend_Service_Amazon_Sqs
+.. rubric:: Beispiel der Verwendung von Zend\Service_Amazon\Sqs
 
 .. code-block:: php
    :linenos:
 
-   $sqs = new Zend_Service_Amazon_Sqs($my_aws_key, $my_aws_secret_key);
+   $sqs = new Zend\Service_Amazon\Sqs($my_aws_key, $my_aws_secret_key);
 
    $queue_url = $sqs->create('test');
 
@@ -90,15 +90,15 @@ Das folgende Beispiel demonstriert die Erstellung einer Queue, und das speichern
        echo $message['body'].'<br/>';
    }
 
-Das der ``Zend_Service_Amazon_Sqs`` Service eine Authentifizierung benötigt, kann man seine Zugangsdaten (AWS
+Das der ``Zend\Service_Amazon\Sqs`` Service eine Authentifizierung benötigt, kann man seine Zugangsdaten (AWS
 Schlüssel und geheimer Schlüssel) im Constructor angeben. Wenn man nur einen Account verwendet kann man
 standardmäßige Zugangsdaten für den Service setzen:
 
 .. code-block:: php
    :linenos:
 
-   Zend_Service_Amazon_Sqs::setKeys($my_aws_key, $my_aws_secret_key);
-   $sqs = new Zend_Service_Amazon_Sqs();
+   Zend\Service_Amazon\Sqs::setKeys($my_aws_key, $my_aws_secret_key);
+   $sqs = new Zend\Service_Amazon\Sqs();
 
 .. _zend.service.amazon.sqs.queues:
 
@@ -119,12 +119,12 @@ haben.
 
   .. _zend.service.amazon.sqs.queues.removalExample:
 
-  .. rubric:: Beispiel für das Entfernen von Queues aus Zend_Service_Amazon_Sqs
+  .. rubric:: Beispiel für das Entfernen von Queues aus Zend\Service_Amazon\Sqs
 
   .. code-block:: php
      :linenos:
 
-     $sqs = new Zend_Service_Amazon_Sqs($my_aws_key, $my_aws_secret_key);
+     $sqs = new Zend\Service_Amazon\Sqs($my_aws_key, $my_aws_secret_key);
      $queue_url = $sqs->create('test_1');
      $sqs->delete($queue_url);
 
@@ -132,12 +132,12 @@ haben.
 
   .. _zend.service.amazon.sqs.queues.countExample:
 
-  .. rubric:: Beispiel für das Zählen von Queues in Zend_Service_Amazon_Sqs
+  .. rubric:: Beispiel für das Zählen von Queues in Zend\Service_Amazon\Sqs
 
   .. code-block:: php
      :linenos:
 
-     $sqs = new Zend_Service_Amazon_Sqs($my_aws_key, $my_aws_secret_key);
+     $sqs = new Zend\Service_Amazon\Sqs($my_aws_key, $my_aws_secret_key);
      $queue_url = $sqs->create('test_1');
      $sqs->send($queue_url, 'Das ist ein Test');
      $count = $sqs->count($queue_url); // Gibt '1' zurück
@@ -146,12 +146,12 @@ haben.
 
   .. _zend.service.amazon.sqs.queues.listExample:
 
-  .. rubric:: Beispiel für das Auflisten von Queues in Zend_Service_Amazon_Sqs
+  .. rubric:: Beispiel für das Auflisten von Queues in Zend\Service_Amazon\Sqs
 
   .. code-block:: php
      :linenos:
 
-     $sqs = new Zend_Service_Amazon_Sqs($my_aws_key, $my_aws_secret_key);
+     $sqs = new Zend\Service_Amazon\Sqs($my_aws_key, $my_aws_secret_key);
      $list = $sqs->getQueues();
      foreach($list as $queue) {
         echo "Ich habe $queue Queues\n";
@@ -171,12 +171,12 @@ die eine Queue enthalten kann.
 
   .. _zend.service.amazon.sqs.messages.sendExample:
 
-  .. rubric:: Beispiel für das Senden von Nachrichten an Zend_Service_Amazon_Sqs
+  .. rubric:: Beispiel für das Senden von Nachrichten an Zend\Service_Amazon\Sqs
 
   .. code-block:: php
      :linenos:
 
-     $sqs = new Zend_Service_Amazon_Sqs($my_aws_key, $my_aws_secret_key);
+     $sqs = new Zend\Service_Amazon\Sqs($my_aws_key, $my_aws_secret_key);
      $queue_url = $sqs->create('test_queue');
      $sqs->send($queue_url, 'Das ist eine Test Nachricht');
 
@@ -184,12 +184,12 @@ die eine Queue enthalten kann.
 
   .. _zend.service.amazon.sqs.messages.receiveExample:
 
-  .. rubric:: Beispiel für das Empfangen von Nachrichten von Zend_Service_Amazon_Sqs
+  .. rubric:: Beispiel für das Empfangen von Nachrichten von Zend\Service_Amazon\Sqs
 
   .. code-block:: php
      :linenos:
 
-     $sqs = new Zend_Service_Amazon_Sqs($my_aws_key, $my_aws_secret_key);
+     $sqs = new Zend\Service_Amazon\Sqs($my_aws_key, $my_aws_secret_key);
      $queue_url = $sqs->create('test_queue');
      $sqs->send($queue_url, 'Das ist eine Test Nachricht');
      foreach ($sqs->receive($queue_url) as $message) {
@@ -201,12 +201,12 @@ die eine Queue enthalten kann.
 
   .. _zend.service.amazon.sqs.messages.deleteExample:
 
-  .. rubric:: Beispiel für das Löschen von Nachrichten aus Zend_Service_Amazon_Sqs
+  .. rubric:: Beispiel für das Löschen von Nachrichten aus Zend\Service_Amazon\Sqs
 
   .. code-block:: php
      :linenos:
 
-     $sqs = new Zend_Service_Amazon_Sqs($my_aws_key, $my_aws_secret_key);
+     $sqs = new Zend\Service_Amazon\Sqs($my_aws_key, $my_aws_secret_key);
      $queue_url = $sqs->create('test_queue');
      $sqs->send($queue_url, 'Das ist eine Test Nachricht');
      foreach ($sqs->receive($queue_url) as $message) {

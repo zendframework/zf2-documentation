@@ -15,7 +15,7 @@ automatycznie zostanie wygenerowana wiadomość o typie MIME *multipart/alternat
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend_Mail();
+   $mail = new Zend\Mail\Mail();
    $mail->setBodyText('Testowy tekst');
    $mail->setBodyHtml('<b>Testowy</b> tekst');
    $mail->setFrom('somebody@example.com', 'Nadawca');

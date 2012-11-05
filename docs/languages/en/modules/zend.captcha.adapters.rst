@@ -15,7 +15,7 @@ provides mutators for specifying word length, session *TTL* and the session cont
 ``Zend\Captcha\Word`` also encapsulates validation logic.
 
 By default, the word length is 8 characters, the session timeout is 5 minutes, and ``Zend\Session\Container`` is
-used for persistence (using the namespace "``Zend_Form_Captcha_<captcha ID>``").
+used for persistence (using the namespace "``Zend\Form\Captcha\<captcha ID>``").
 
 In addition to the methods required by the ``Zend\Captcha\AdapterInterface`` interface, ``Zend\Captcha\Word``
 exposes the following methods:

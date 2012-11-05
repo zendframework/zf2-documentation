@@ -35,7 +35,7 @@ Die obigen Elemente werden durch Doppelpunkte getrennt, wie im folgenden Beispie
 Spezifisches
 ------------
 
-Der Digest Authentifizierungs Adapter, ``Zend_Auth_Adapter_Digest``, benötigt verschiedene Eingabeparameter:
+Der Digest Authentifizierungs Adapter, ``Zend\Auth_Adapter\Digest``, benötigt verschiedene Eingabeparameter:
 
 - filename - Der Dateiename gegen den Authentifizierungs-Anfragen durchgeführt werden
 
@@ -52,7 +52,7 @@ Diese Parameter müssen vor dem Aufruf von ``authenticate()`` gesetzt werden.
 Identität
 ---------
 
-Der Digest Authentifizierungs Adapter gibt ein ``Zend_Auth_Result`` Objekt zurück, welches mit der Identität wird
+Der Digest Authentifizierungs Adapter gibt ein ``Zend\Auth\Result`` Objekt zurück, welches mit der Identität wird
 wobei dieses als Arry mit Schlüssel von **realm** und **username** veröffentlicht wird. Die entsprechenden Array
 Werte welche diesen Schlüsseln zugeordnet sind korrespondieren mit den Werte die vorher durch den Aufruf von
 ``authenticate()`` gesetzt wurden.
@@ -60,7 +60,7 @@ Werte welche diesen Schlüsseln zugeordnet sind korrespondieren mit den Werte di
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend_Auth_Adapter_Digest($filename,
+   $adapter = new Zend\Auth_Adapter\Digest($filename,
                                            $realm,
                                            $username,
                                            $password);

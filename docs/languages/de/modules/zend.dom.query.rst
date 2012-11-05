@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.dom.query:
 
-Zend_Dom_Query
+Zend\Dom\Query
 ==============
 
-``Zend_Dom_Query`` bietet einen Mechanismus für die Abfrage von *XML* und (X) *HTML* Dokumenten indem entweder
+``Zend\Dom\Query`` bietet einen Mechanismus für die Abfrage von *XML* und (X) *HTML* Dokumenten indem entweder
 XPath oder *CSS* Selektoren verwendet werden. Sie wurde entwickelt um bei funktionalem Testen von *MVC* Anwendungen
 zu helfen, könnte aber auch für schnelle Entwicklung von Screen Scraper verwendet werden.
 
@@ -19,12 +19,12 @@ sind beides Inspirationen für diese Komponente).
 Theorie der Anwendung
 ---------------------
 
-Um ``Zend_Dom_Query`` zu verwenden muß ein ``Zend_Dom_Query`` Objekt instanziert werden, optional kann ein zu
+Um ``Zend\Dom\Query`` zu verwenden muß ein ``Zend\Dom\Query`` Objekt instanziert werden, optional kann ein zu
 parsendes Dokument (ein String) übergeben werden. Sobald man ein Dokument hat, kann die ``query()`` oder die
-``queryXpath()`` Methode verwendet werden; jede Methode gibt ein ``Zend_Dom_Query_Result`` Objekt mit allen
+``queryXpath()`` Methode verwendet werden; jede Methode gibt ein ``Zend\Dom_Query\Result`` Objekt mit allen
 passenden Knoten zurück.
 
-Der grundsätzliche Unterschied zwischen ``Zend_Dom_Query`` und der Verwendung von DOMDocument + DOMXPath ist die
+Der grundsätzliche Unterschied zwischen ``Zend\Dom\Query`` und der Verwendung von DOMDocument + DOMXPath ist die
 Möglichkeit *CSS* Selektoren auszuwählen. Alle folgenden Elemente können in jeder Kombination verwendet werden:
 
 - **Element Typen**: Bietet einen Elementtypen an, der zu den folgenden passt: 'div', 'a', 'span', 'h2', usw.
@@ -80,13 +80,13 @@ Möglichkeit *CSS* Selektoren auszuwählen. Alle folgenden Elemente können in j
 
 Wenn man eine Abfrage ausgeführt hat, kann man mit dem Ergebnis Objekt arbeiten um Informationen über die Knoten
 zu bekommen, sowie um Sie und/oder Ihren Inhalt direkt für die Extrahierung und Manipulation herauszuholen.
-``Zend_Dom_Query_Result`` implementiert ``Countable`` und ``Iterator`` und speichert die Ergebnisse intern als
+``Zend\Dom_Query\Result`` implementiert ``Countable`` und ``Iterator`` und speichert die Ergebnisse intern als
 DOMNodes und DOMElements. Als Beispiel nehmen wir erstmal den folgenden Aufruf an der das obige *HTML* auswählt:
 
 .. code-block:: php
    :linenos:
 
-   $dom = new Zend_Dom_Query($html);
+   $dom = new Zend\Dom\Query($html);
    $results = $dom->query('.foo .bar a');
 
    $count = count($results); // Gib die Anzahl an Gefundenen Nodes zurück: 4
@@ -94,22 +94,22 @@ DOMNodes und DOMElements. Als Beispiel nehmen wir erstmal den folgenden Aufruf a
        // $result ist ein DOMElement
    }
 
-``Zend_Dom_Query`` erlaubt auch strenge XPath Abfragen durch Verwendung der ``queryXpath()`` Methode; man kann eine
-gültige XPath Abfrage an diese Methode übergeben, und Sie wird ein ``Zend_Dom_Query_Result`` Objekt zurückgeben.
+``Zend\Dom\Query`` erlaubt auch strenge XPath Abfragen durch Verwendung der ``queryXpath()`` Methode; man kann eine
+gültige XPath Abfrage an diese Methode übergeben, und Sie wird ein ``Zend\Dom_Query\Result`` Objekt zurückgeben.
 
 .. _zend.dom.query.methods:
 
 Vorhandene Methoden
 -------------------
 
-Die ``Zend_Dom_Query`` Familie an Klassen enthält die folgenden Methoden.
+Die ``Zend\Dom\Query`` Familie an Klassen enthält die folgenden Methoden.
 
 .. _zend.dom.query.methods.zenddomquery:
 
-Zend_Dom_Query
+Zend\Dom\Query
 ^^^^^^^^^^^^^^
 
-Die folgenden Methoden sind in ``Zend_Dom_Query`` vorhanden:
+Die folgenden Methoden sind in ``Zend\Dom\Query`` vorhanden:
 
 - ``setDocumentXml($document)``: Spezifiziert einen *XML* String der abgefragt werden soll.
 
@@ -117,7 +117,7 @@ Die folgenden Methoden sind in ``Zend_Dom_Query`` vorhanden:
 
 - ``setDocumentHtml($document)``: Spezifiziert einen *HTML* String der abgefragt werden soll.
 
-- ``setDocument($document)``: Spezifiziert einen String der abgefragt werden soll; ``Zend_Dom_Query`` wird
+- ``setDocument($document)``: Spezifiziert einen String der abgefragt werden soll; ``Zend\Dom\Query`` wird
   anschließend versuchen den Typ des Dokument automatisch herauszufinden.
 
 - ``getDocument()``: Empfängt den String des Original Dokuments welches an das Objekt übergeben wurde.
@@ -131,10 +131,10 @@ Die folgenden Methoden sind in ``Zend_Dom_Query`` vorhanden:
 
 .. _zend.dom.query.methods.zenddomqueryresult:
 
-Zend_Dom_Query_Result
+Zend\Dom_Query\Result
 ^^^^^^^^^^^^^^^^^^^^^
 
-Wie vorher erwähnt, implementiert ``Zend_Dom_Query_Result`` beide, ``Iterator`` und ``Countable``, und kann
+Wie vorher erwähnt, implementiert ``Zend\Dom_Query\Result`` beide, ``Iterator`` und ``Countable``, und kann
 deswegen in einer ``foreach()`` Schleife verwendet werden wie auch mit der ``count()`` Funktion. Zusätzlich bietet
 es die folgenden Methoden an:
 
@@ -142,7 +142,7 @@ es die folgenden Methoden an:
   wurde (wenn vorhanden).
 
 - ``getXpathQuery()``: Gibt die XPath Abfrage zurück die für die Erstellung des Ergebnisses verwendet wurde.
-  Intern konvertiert ``Zend_Dom_Query`` *CSS* Selektor Abfragen zu XPath, so das dieser Wert immer angeboten wird.
+  Intern konvertiert ``Zend\Dom\Query`` *CSS* Selektor Abfragen zu XPath, so das dieser Wert immer angeboten wird.
 
 - ``getDocument()``: Empfängt das DOMDocument auf das die Abfrage ausgeführt wurde.
 

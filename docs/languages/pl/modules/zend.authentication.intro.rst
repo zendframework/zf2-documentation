@@ -17,7 +17,7 @@ informacji o autoryzacji i kontroli dostępu za pomocą Zend Framework, proszę 
 
    Klasa ``Zend_Auth`` implementuje wzorzec singletona, czyli dostępna jest tylko jej jedna instancja - za pomocą
    statycznej metody ``getInstance()``. Oznacza to, że użycie operatorów **new** oraz **clone** nie będzie
-   możliwe z klasą ``Zend_Auth``; zamiast nich użyj metody ``Zend_Auth::getInstance()``.
+   możliwe z klasą ``Zend_Auth``; zamiast nich użyj metody ``Zend\Auth\Auth::getInstance()``.
 
 .. _zend.authentication.introduction.adapters:
 
@@ -30,7 +30,7 @@ niektóre podstawowe funkcjonalności są wspólne dla wszystkich adapterów. Na
 uwierzytelniania, przeprowadzanie zapytań do serwisu uwierzytelniania i zwracanie rezultatów są wspólne dla
 adapterów ``Zend_Auth``.
 
-Każda klasa adaptera ``Zend_Auth`` implementuje interfejs ``Zend_Auth_Adapter_Interface``. Ten interfejs definiuje
+Każda klasa adaptera ``Zend_Auth`` implementuje interfejs ``Zend\Auth_Adapter\Interface``. Ten interfejs definiuje
 jedną metodę, ``authenticate()``, którą klasa adaptera musi implementować dla zastosowań przeprowadzania
 zapytania uwierzytelniania. Każda klasa adaptera musi być przygotowana przed wywołaniem metody
 ``authenticate()``. Przygotowanie takiego adaptera obejmuje ustawienie danych uwierzytelniania (np. nazwy
@@ -44,7 +44,7 @@ zostały pominięte w celu zwiększenia czytelności:
 .. code-block:: php
    :linenos:
 
-   class MyAuthAdapter implements Zend_Auth_Adapter_Interface
+   class MyAuthAdapter implements Zend\Auth_Adapter\Interface
    {
        /**
         * Ustawia nazwę użytkownika oraz hasła dla uwierzytelniania
@@ -59,9 +59,9 @@ zostały pominięte w celu zwiększenia czytelności:
        /**
         * Przeprowadza próbę uwierzytelniania
         *
-        * @throws Zend_Auth_Adapter_Exception Jeśli uwierzytelnianie
+        * @throws Zend\Auth_Adapter\Exception Jeśli uwierzytelnianie
         *                                     nie może być przeprowadzone
-        * @return Zend_Auth_Result
+        * @return Zend\Auth\Result
         */
        public function authenticate()
        {
@@ -69,25 +69,25 @@ zostały pominięte w celu zwiększenia czytelności:
        }
    }
 
-Jak pokazano w bloku dokumentacyjnym, metoda ``authenticate()`` musi zwracać instancję ``Zend_Auth_Result`` (lub
-instancję klasy rozszerzającej ``Zend_Auth_Result``). Jeśli z jakiegoś powodu przeprowadzenie zapytania
+Jak pokazano w bloku dokumentacyjnym, metoda ``authenticate()`` musi zwracać instancję ``Zend\Auth\Result`` (lub
+instancję klasy rozszerzającej ``Zend\Auth\Result``). Jeśli z jakiegoś powodu przeprowadzenie zapytania
 uwierzytelniającego jest niemożliwe, metoda ``authenticate()`` powinna wyrzucić wyjątek rozszerzający
-``Zend_Auth_Adapter_Exception``.
+``Zend\Auth_Adapter\Exception``.
 
 .. _zend.authentication.introduction.results:
 
 Resultat
 --------
 
-Adaptery ``Zend_Auth`` zwracają instancję ``Zend_Auth_Result`` za pomocą metody ``authenticate()`` w celu
-przekazania rezultatu próby uwierzytelniania. Adaptery wypełniają obiekt ``Zend_Auth_Result`` podczas
+Adaptery ``Zend_Auth`` zwracają instancję ``Zend\Auth\Result`` za pomocą metody ``authenticate()`` w celu
+przekazania rezultatu próby uwierzytelniania. Adaptery wypełniają obiekt ``Zend\Auth\Result`` podczas
 konstrukcji, dlatego poniższe cztery metody zapewniają podstawowy zestaw operacji, które są wspólne dla
 rezultatów adapterów ``Zend_Auth``:
 
 - ``isValid()``- zwraca logiczną wartość true tylko wtedy, gdy rezultat reprezentuje udaną próbę
   uwierzytelniania.
 
-- ``getCode()``- zwraca identyfikator w postaci stałej klasy ``Zend_Auth_Result`` dla określenia powodu
+- ``getCode()``- zwraca identyfikator w postaci stałej klasy ``Zend\Auth\Result`` dla określenia powodu
   nieudanego uwierzytelniania lub sprawdzenia czy uwierzytelnianie się udało. Metoda może być użyta w
   sytuacjach gdy programista chce rozróżnić poszczególne typy wyników uwierzytelniania. Pozwala to na
   przykład programiście na zarządzanie szczegółowymi statystykami na temat wyników uwierzytelniania. Innym
@@ -109,12 +109,12 @@ kody wyników:
 .. code-block:: php
    :linenos:
 
-   Zend_Auth_Result::SUCCESS
-   Zend_Auth_Result::FAILURE
-   Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND
-   Zend_Auth_Result::FAILURE_IDENTITY_AMBIGUOUS
-   Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID
-   Zend_Auth_Result::FAILURE_UNCATEGORIZED
+   Zend\Auth\Result::SUCCESS
+   Zend\Auth\Result::FAILURE
+   Zend\Auth\Result::FAILURE_IDENTITY_NOT_FOUND
+   Zend\Auth\Result::FAILURE_IDENTITY_AMBIGUOUS
+   Zend\Auth\Result::FAILURE_CREDENTIAL_INVALID
+   Zend\Auth\Result::FAILURE_UNCATEGORIZED
 
 Poniższy przykład pokazuje w jaki sposób programista może obsłużyć to kodzie:
 
@@ -126,15 +126,15 @@ Poniższy przykład pokazuje w jaki sposób programista może obsłużyć to kod
 
    switch ($result->getCode()) {
 
-       case Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND:
+       case Zend\Auth\Result::FAILURE_IDENTITY_NOT_FOUND:
            /** obsługujemy nieistniejącą tożsamość **/
            break;
 
-       case Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID:
+       case Zend\Auth\Result::FAILURE_CREDENTIAL_INVALID:
            /** obsługujemy nieprawidłowe hasło **/
            break;
 
-       case Zend_Auth_Result::SUCCESS:
+       case Zend\Auth\Result::SUCCESS:
            /** obsługujemy udane uwierzytelnianie **/
            break;
 
@@ -161,11 +161,11 @@ Domyślne przechowywanie w sesji PHP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Domyślnie ``Zend_Auth`` zapewnia trwały pojemnik do przechowywania tożsamości pochodzącej z udanej próby
-uwierzytelniania używając sesji *PHP*. Po udanej próbie uwierzytelniania, metoda ``Zend_Auth::authenticate()``
+uwierzytelniania używając sesji *PHP*. Po udanej próbie uwierzytelniania, metoda ``Zend\Auth\Auth::authenticate()``
 przechowuje wtrwałym pojemniku tożsamość pochodzącą z wyniku uwierzytelniania. Jeśli nie skonfigurujemy tego
-inaczej, klasa ``Zend_Auth`` użyje klasy pojemnika o nazwie ``Zend_Auth_Storage_Session``, który używa klasy
-:ref:`Zend_Session <zend.session>`. Zamiast tego za pomocą metody ``Zend_Auth::setStorage()`` może być ustawiona
-własna klasa implementująca interfejs ``Zend_Auth_Storage_Interface``.
+inaczej, klasa ``Zend_Auth`` użyje klasy pojemnika o nazwie ``Zend\Auth_Storage\Session``, który używa klasy
+:ref:`Zend_Session <zend.session>`. Zamiast tego za pomocą metody ``Zend\Auth\Auth::setStorage()`` może być ustawiona
+własna klasa implementująca interfejs ``Zend\Auth_Storage\Interface``.
 
 .. note::
 
@@ -177,20 +177,20 @@ własna klasa implementująca interfejs ``Zend_Auth_Storage_Interface``.
 
 .. rubric:: Modyfikowanie przestrzeni nazw sesji
 
-``Zend_Auth_Storage_Session`` używa przestrzeni nazw sesji o nazwie '``Zend_Auth``'. Ta przestrzeń nazw może
-być nadpisana przez przekazanie innej wartości do konstruktora klasy ``Zend_Auth_Storage_Session``, a ta
-wartość wewnętrznie jest przekazywana do konstruktora klasy ``Zend_Session_Namespace``. Powinno to nastąpić
-zanim przeprowadzone zostanie uwierzytelnianie, ponieważ metoda ``Zend_Auth::authenticate()`` automatycznie
+``Zend\Auth_Storage\Session`` używa przestrzeni nazw sesji o nazwie '``Zend_Auth``'. Ta przestrzeń nazw może
+być nadpisana przez przekazanie innej wartości do konstruktora klasy ``Zend\Auth_Storage\Session``, a ta
+wartość wewnętrznie jest przekazywana do konstruktora klasy ``Zend\Session\Namespace``. Powinno to nastąpić
+zanim przeprowadzone zostanie uwierzytelnianie, ponieważ metoda ``Zend\Auth\Auth::authenticate()`` automatycznie
 zapisuje dane tożsamości.
 
 .. code-block:: php
    :linenos:
 
    // Zapisujemy referencję do pojedynczej instancji Zend_Auth
-   $auth = Zend_Auth::getInstance();
+   $auth = Zend\Auth\Auth::getInstance();
 
    // Używamy przestrzeni nazw 'someNamespace' zamiast 'Zend_Auth'
-   $auth->setStorage(new Zend_Auth_Storage_Session('someNamespace'));
+   $auth->setStorage(new Zend\Auth_Storage\Session('someNamespace'));
 
    /**
     * @todo Ustawić adapter uwierzytelniania, $authAdapter
@@ -206,25 +206,25 @@ Implementacja własnego pojemnika
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Czasem programiści mogą potrzebować użyć innego sposobu trwałego przechowywania tożsamości niż ten
-zapewniony przez ``Zend_Auth_Storage_Session``. W takich przypadkach programiści mogą po prostu zaimplementować
-interfejs ``Zend_Auth_Storage_Interface`` i przekazać instancję klasy do metody ``Zend_Auth::setStorage()``.
+zapewniony przez ``Zend\Auth_Storage\Session``. W takich przypadkach programiści mogą po prostu zaimplementować
+interfejs ``Zend\Auth_Storage\Interface`` i przekazać instancję klasy do metody ``Zend\Auth\Auth::setStorage()``.
 
 .. _zend.authentication.introduction.persistence.custom.example:
 
 .. rubric:: Użycie własnej klasy do przechowywania tożsamości
 
-W celu użycia klasy trwale przechowującej tożsamość innej niż ``Zend_Auth_Storage_Session``, programista
-implementuje interfejs ``Zend_Auth_Storage_Interface``:
+W celu użycia klasy trwale przechowującej tożsamość innej niż ``Zend\Auth_Storage\Session``, programista
+implementuje interfejs ``Zend\Auth_Storage\Interface``:
 
 .. code-block:: php
    :linenos:
 
-   class MyStorage implements Zend_Auth_Storage_Interface
+   class MyStorage implements Zend\Auth_Storage\Interface
    {
        /**
         * Zwraca wartość logiczną true tylko wtedy gdy pojemnik jest pusty
         *
-        * @throws Zend_Auth_Storage_Exception Jeśli okreslenie czy pojemnik
+        * @throws Zend\Auth_Storage\Exception Jeśli okreslenie czy pojemnik
         *                                     jest pusty jest niemożliwe
         * @return boolean
         */
@@ -240,7 +240,7 @@ implementuje interfejs ``Zend_Auth_Storage_Interface``:
         *
         * Zachowanie jest nieokreślone w przypadku gdy pojemnik jest pusty.
         *
-        * @throws Zend_Auth_Storage_Exception Jeśli odczyt zawartości
+        * @throws Zend\Auth_Storage\Exception Jeśli odczyt zawartości
         *                                     pojemnika jest niemożliwy
         * @return mixed
         */
@@ -255,7 +255,7 @@ implementuje interfejs ``Zend_Auth_Storage_Interface``:
         * Zapisuje zawartość $contents w pojemniku
         *
         * @param  mixed $contents
-        * @throws Zend_Auth_Storage_Exception Jeśli zapisanie zawartości $contents
+        * @throws Zend\Auth_Storage\Exception Jeśli zapisanie zawartości $contents
         *                                     do pojemnika jest niemożliwe
         * @return void
         */
@@ -269,7 +269,7 @@ implementuje interfejs ``Zend_Auth_Storage_Interface``:
        /**
         * Czyści zawartość pojemnika
         *
-        * @throws Zend_Auth_Storage_Exception Jeśli wyczyszczenie zawartości
+        * @throws Zend\Auth_Storage\Exception Jeśli wyczyszczenie zawartości
         *                                     pojemnika jest niemożliwe
         * @return void
         */
@@ -282,7 +282,7 @@ implementuje interfejs ``Zend_Auth_Storage_Interface``:
 
    }
 
-W celu użycia własnej klasy pojemnika, wywołaj metodę ``Zend_Auth::setStorage()`` przed przeprowadzeniem
+W celu użycia własnej klasy pojemnika, wywołaj metodę ``Zend\Auth\Auth::setStorage()`` przed przeprowadzeniem
 zapytania uwierzytelniającego:
 
 .. code-block:: php
@@ -290,14 +290,14 @@ zapytania uwierzytelniającego:
 
    <?php
    // Instruujemy klasę Zend_Auth aby użyła niestandardowej klasy pojemnika
-   Zend_Auth::getInstance()->setStorage(new MyStorage());
+   Zend\Auth\Auth::getInstance()->setStorage(new MyStorage());
 
    /**
     * @todo Ustawić adapter uwierzytelniania, $authAdapter
     */
 
    // Uwierzytelniamy, zapisując wynik i przechowując tożsamość po udanym uwierzytelnieniu
-   $result = Zend_Auth::getInstance()->authenticate($authAdapter);
+   $result = Zend\Auth\Auth::getInstance()->authenticate($authAdapter);
 
 .. _zend.authentication.introduction.using:
 
@@ -306,7 +306,7 @@ Użycie
 
 Są dwa możliwe sposoby użycia adapterów ``Zend_Auth``:
 
-. pośrednio, za pomocą metody ``Zend_Auth::authenticate()``
+. pośrednio, za pomocą metody ``Zend\Auth\Auth::authenticate()``
 
 . bezpośrednio, za pomocą metody ``authenticate()`` adaptera
 
@@ -316,7 +316,7 @@ Poniższy przykład pokazuje jak użyć adaptera ``Zend_Auth`` pośrednio, poprz
    :linenos:
 
    // Pobieramy instancję Zend_Auth
-   $auth = Zend_Auth::getInstance();
+   $auth = Zend\Auth\Auth::getInstance();
 
    // Ustawiamy adapter uwierzytelniania
    $authAdapter = new MyAuthAdapter($username, $password);
@@ -340,7 +340,7 @@ sprawdzenie czy istnieje pomyślnie uwierzytelniona tożsamość:
 .. code-block:: php
    :linenos:
 
-   $auth = Zend_Auth::getInstance();
+   $auth = Zend\Auth\Auth::getInstance();
    if ($auth->hasIdentity()) {
        // Tożsamość istnieje; pobieramy ją
        $identity = $auth->getIdentity();
@@ -352,7 +352,7 @@ użyte do implementacji w aplikacji operacji wylogowania:
 .. code-block:: php
    :linenos:
 
-   Zend_Auth::getInstance()->clearIdentity();
+   Zend\Auth\Auth::getInstance()->clearIdentity();
 
 Gdy automatyczne użycie trwałego pojemnika jest nieodpowiednie w konkretnym przypadku, programista może w prostu
 sposób ominąć użycie klasy ``Zend_Auth``, używając bezpośrednio klasy adaptera. Bezpośrednie użycie klasy

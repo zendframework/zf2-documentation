@@ -13,7 +13,7 @@ Cuando se codifican objetos *PHP* como *JSON*, todas las propiedades públicas d
 un objeto *JSON*.
 
 *JSON* no permite referencias a objetos, de manera que debe tenerse cuidado de no codificar objetos con referencias
-recursivas. Si tiene problemas con la recursión, ``Zend_Json::encode()`` y ``Zend_Json_Encoder::encode()``
+recursivas. Si tiene problemas con la recursión, ``Zend\Json\Json::encode()`` y ``Zend\Json\Encoder::encode()``
 permiten un segundo parámetro opcional para comprobar si hay recursión; si un objeto es serializado dos veces, se
 emitirá una excepción.
 
@@ -29,7 +29,7 @@ objeto, puede especificar esto:
    :linenos:
 
    // Decodifica objetos JSON como objetos PHP
-   $phpNative = Zend_Json::decode($encodedValue, Zend_Json::TYPE_OBJECT);
+   $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
 
 Por lo tanto, cualquiera de los objetos decodificados son devueltos como objetos ``StdClass`` con propiedades
 correspondientea a pares clave/valor en la notación *JSON*.
@@ -64,7 +64,7 @@ instalado. Puede hacer esto llamando a:
 .. code-block:: php
    :linenos:
 
-   Zend_Json::$useBuiltinEncoderDecoder = true:
+   Zend\Json\Json::$useBuiltinEncoderDecoder = true:
 
 .. _zend.json.advanced.expr:
 
@@ -76,9 +76,9 @@ del objeto *JSON*. Aunque solo funcionan si no regresaron dentro comillas dobles
 ``Zend_Json``. Con la Expression de apoyo para Zend_Json este apoyo puede codificar objetos *JSON* con callbacks
 validos de javascript. Esto funciona tanto con ``json_encode()`` como con el codificador interno.
 
-Un callback javascript se representa usando el objero ``Zend_Json_Expr``. Este implementa el patrón del objeto
+Un callback javascript se representa usando el objero ``Zend\Json\Expr``. Este implementa el patrón del objeto
 valor y es inmutable. Se puede establecer la expresión de javascript como el primer argumento del constructor. Por
-defecto ``Zend_Json::encode`` no codifica callbacks javascript, usted tiene que pasar la opción
+defecto ``Zend\Json\Json::encode`` no codifica callbacks javascript, usted tiene que pasar la opción
 ``'enableJsonExprFinder' = true`` dentro de la función ``encode``. Si se habilita, la expresión de apoyo trabaja
 para todas las expresiones anidadas en grandes estructuras de objetos. Un ejemplo de uso se vería así:
 
@@ -86,12 +86,12 @@ para todas las expresiones anidadas en grandes estructuras de objetos. Un ejempl
    :linenos:
 
    $data = array(
-       'onClick' => new Zend_Json_Expr('function() {'
+       'onClick' => new Zend\Json\Expr('function() {'
                  . 'alert("Yo soy un callback válido de javascript '
                  . 'creado por Zend_Json"); }'),
        'other' => 'sin expresión',
    );
-   $jsonObjectWithExpression = Zend_Json::encode(
+   $jsonObjectWithExpression = Zend\Json\Json::encode(
        $data,
        false,
        array('enableJsonExprFinder' => true)

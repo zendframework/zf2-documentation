@@ -11,7 +11,7 @@ Feed und Eintragsstruktur sowie die Rückgabe der Ergebniss nach *XML*. In Zukun
 Modifizierungsunterstützung auch das Atom Publishing Protocol unterstützen.
 
 ``Zend_Feed`` besteht aus der Basisklasse ``Zend_Feed``, sowie den beiden abstrakten Basisklassen
-``Zend_Feed_Abstract`` und ``Zend_Feed_Entry_Abstract`` für die Darstellung von Feeds und Einträgen, aus
+``Zend\Feed\Abstract`` und ``Zend\Feed_Entry\Abstract`` für die Darstellung von Feeds und Einträgen, aus
 speziellen Implementationen von Feeds und Einträgen für *RSS* und Atom sowie einem Helfer, der hinter den
 Kulissen die natürliche Syntax ermöglicht.
 
@@ -37,8 +37,8 @@ Daten, das Speichern in eine Datenbank, usw. genutzt werden kann.
    // hole die neuesten Slashdot Schlagzeilen
    try {
        $slashdotRss =
-           Zend_Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
-   } catch (Zend_Feed_Exception $e) {
+           Zend\Feed\Feed::import('http://rss.slashdot.org/Slashdot/slashdot');
+   } catch (Zend\Feed\Exception $e) {
        // Import des Feeds ist fehlgeschlagen
        echo "Exception caught importing feed: {$e->getMessage()}\n";
        exit;

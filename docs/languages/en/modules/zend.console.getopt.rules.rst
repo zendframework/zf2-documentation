@@ -3,7 +3,7 @@
 Declaring Getopt Rules
 ======================
 
-The constructor for the ``Zend_Console_Getopt`` class takes from one to three arguments. The first argument
+The constructor for the ``Zend\Console\Getopt`` class takes from one to three arguments. The first argument
 declares which options are supported by your application. This class supports alternative syntax forms for
 declaring the options. See the sections below for the format and usage of these syntax forms.
 
@@ -11,7 +11,7 @@ The constructor takes two more arguments, both of which are optional. The second
 command-line arguments. This defaults to ``$_SERVER['argv']``.
 
 The third argument of the constructor may contain an configuration options to customize the behavior of
-``Zend_Console_Getopt``. See :ref:`Adding Configuration <zend.console.getopt.configuration.config>` for reference
+``Zend\Console\Getopt``. See :ref:`Adding Configuration <zend.console.getopt.configuration.config>` for reference
 on the options available.
 
 .. _zend.console.getopt.rules.short:
@@ -19,7 +19,7 @@ on the options available.
 Declaring Options with the Short Syntax
 ---------------------------------------
 
-``Zend_Console_Getopt`` supports a compact syntax similar to that used by *GNU* Getopt (see
+``Zend\Console\Getopt`` supports a compact syntax similar to that used by *GNU* Getopt (see
 `http://www.gnu.org/software/libc/manual/html_node/Getopt.html`_. This syntax supports only single-character flags.
 In a single string, you type each of the letters that correspond to flags supported by your application. A letter
 followed by a colon character (**:**) indicates a flag that requires a parameter.
@@ -31,9 +31,9 @@ followed by a colon character (**:**) indicates a flag that requires a parameter
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt('abp:');
+   $opts = new Zend\Console\Getopt('abp:');
 
-The example above shows using ``Zend_Console_Getopt`` to declare that options may be given as ``-a``, ``-b``, or
+The example above shows using ``Zend\Console\Getopt`` to declare that options may be given as ``-a``, ``-b``, or
 ``-p``. The latter flag requires a parameter.
 
 The short syntax is limited to flags of a single character. Aliases, parameter types, and help strings are not
@@ -70,7 +70,7 @@ The value of each element in the associative array is a help string to describe 
 .. code-block:: php
    :linenos:
 
-   $opts = new Zend_Console_Getopt(
+   $opts = new Zend\Console\Getopt(
      array(
        'apple|a'    => 'apple option, with no parameter',
        'banana|b=i' => 'banana option, with required integer parameter',

@@ -4,7 +4,7 @@
 Atom Feed的使用
 ============
 
-*Zend_Feed_Atom*\ 在使用上有许多方法与 *Zend_Feed_Rss*\
+*Zend\Feed\Atom*\ 在使用上有许多方法与 *Zend\Feed\Rss*\
 是大相径庭的。它提供了相同的方法访问Feed中的属性和遍历所有Feed中的所有条目。不同之处在于Atom协议结构自身。Atom作为RSS的继承者，它是一个更广泛的协议，在处理Feed中提供的所有内容方面它被设计的更加容易，RSS中的
 *description*\ 标记在Atom中被分割成两个元素 *summary* 和 *content*\ 就是为了这个目的。
 
@@ -19,7 +19,7 @@ Atom Feed的使用
 
    <?php
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/');
    echo 'The feed contains ' . $feed->count() . ' entries.' . "\n\n";
    foreach ($feed as $entry) {
        echo '标题: ' . $entry->title() . "\n";

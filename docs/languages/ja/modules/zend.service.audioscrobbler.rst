@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.audioscrobbler:
 
-Zend_Service_Audioscrobbler
+Zend\Service\Audioscrobbler
 ===========================
 
 .. _zend.service.audioscrobbler.introduction:
@@ -9,13 +9,13 @@ Zend_Service_Audioscrobbler
 導入
 --
 
-``Zend_Service_Audioscrobbler`` は、Audioscrobbler REST ウェブサービス
+``Zend\Service\Audioscrobbler`` は、Audioscrobbler REST ウェブサービス
 を使用するためのシンプルな *API* です。Audioscrobbler Web Service は、ユーザ (Users)
 やアーティスト (Artists)、アルバム (Albums)、曲 (Tracks)、 タグ (Tags)、グループ (Groups)
 そしてフォーラム (Forums) といったデータへの アクセス機能を提供します。
-``Zend_Service_Audioscrobbler`` クラスのメソッドは、
+``Zend\Service\Audioscrobbler`` クラスのメソッドは、
 これらの単語のいずれかで始まります。Audioscrobbler Web Service
-の文法および名前空間が、 ``Zend_Service_Audioscrobbler``
+の文法および名前空間が、 ``Zend\Service\Audioscrobbler``
 にまとめられています。Audioscrobbler REST ウェブサービスについての詳細は `Audioscrobbler
 Web Service のサイト`_ を参照ください。
 
@@ -25,7 +25,7 @@ Web Service のサイト`_ を参照ください。
 -----------
 
 特定のユーザについての情報を取得するには、 まず ``setUser()`` メソッドを使用して
-データを取得したいユーザを選択します。 ``Zend_Service_Audioscrobbler`` では、
+データを取得したいユーザを選択します。 ``Zend\Service\Audioscrobbler`` では、
 指定したユーザについての情報を取得するためのいくつかのメソッドを提供しています。
 
 
@@ -109,7 +109,7 @@ Web Service のサイト`_ を参照ください。
 .. code-block:: php
    :linenos:
 
-   $as = new Zend_Service_Audioscrobbler();
+   $as = new Zend\Service\Audioscrobbler();
    // プロファイル情報を取得したいユーザを設定します
    $as->setUser('BigDaddy71');
    // BigDaddy71 のプロファイル情報を取得します
@@ -125,7 +125,7 @@ Web Service のサイト`_ を参照ください。
 .. code-block:: php
    :linenos:
 
-   $as = new Zend_Service_Audioscrobbler();
+   $as = new Zend\Service\Audioscrobbler();
    // 週間アーティストチャートを取得したいユーザを設定します
    $as->setUser('lo_fye');
    // チャートデータが存在する、過去の一覧を取得します
@@ -154,7 +154,7 @@ Web Service のサイト`_ を参照ください。
 アーティスト (Artists)
 ----------------
 
-``Zend_Service_Audioscrobbler`` は、 ``setArtist()``
+``Zend\Service\Audioscrobbler`` は、 ``setArtist()``
 で指定した特定のアーティストに関するデータを取得するためのいくつかのメソッドを提供しています。
 
 
@@ -182,7 +182,7 @@ Web Service のサイト`_ を参照ください。
 .. code-block:: php
    :linenos:
 
-   $as = new Zend_Service_Audioscrobbler();
+   $as = new Zend\Service\Audioscrobbler();
    // 関連アーティストを取得したいアーティストを設定します
    $as->setArtist('LCD Soundsystem');
    // 関連アーティストを取得します
@@ -197,7 +197,7 @@ Web Service のサイト`_ を参照ください。
 曲 (Tracks)
 ----------
 
-``Zend_Service_Audioscrobbler`` は、 ``setTrack()``
+``Zend\Service\Audioscrobbler`` は、 ``setTrack()``
 メソッドで指定した曲についてのデータを取得する、ふたつのメソッドを提供しています。
 
 
@@ -214,7 +214,7 @@ Web Service のサイト`_ を参照ください。
 タグ (Tags)
 ---------
 
-``Zend_Service_Audioscrobbler`` は、 ``setTag()``
+``Zend\Service\Audioscrobbler`` は、 ``setTag()``
 メソッドで指定したタグに関するデータを取得するためのいくつかのメソッドを提供しています。
 
 
@@ -238,7 +238,7 @@ Web Service のサイト`_ を参照ください。
 グループ (Groups)
 -------------
 
-``Zend_Service_Audioscrobbler`` は、 ``setGroup()``
+``Zend\Service\Audioscrobbler`` は、 ``setGroup()``
 メソッドで指定したグループに関するデータを取得するためのいくつかのメソッドを提供しています。
 
 
@@ -276,7 +276,7 @@ Web Service のサイト`_ を参照ください。
 フォーラム (Forums)
 --------------
 
-``Zend_Service_Audioscrobbler`` は、 ``setForum()``
+``Zend\Service\Audioscrobbler`` は、 ``setForum()``
 メソッドで指定した特定のフォーラムの情報を取得するメソッドを提供しています。
 
    - ``forumGetRecentPosts()``: 現在のフォーラムの最近の投稿一覧を含む SimpleXML

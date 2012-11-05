@@ -10,7 +10,7 @@ Zend_Mime
 --
 
 ``Zend_Mime`` は、マルチパート *MIME* メッセージを処理するためのサポートクラスです。
-:ref:`Zend_Mail <zend.mail>` や :ref:`Zend_Mime_Message <zend.mime.message>`\ 、 そして *MIME*
+:ref:`Zend_Mail <zend.mail>` や :ref:`Zend\Mime\Message <zend.mime.message>`\ 、 そして *MIME*
 サポートを必要とするその他のアプリケーションから使用されます。
 
 .. _zend.mime.mime.static:
@@ -23,19 +23,19 @@ Zend_Mime
 
 
 
-   - ``Zend_Mime::isPrintable()``: 指定した文字列の中に表示できない文字がなければ ``TRUE``
+   - ``Zend\Mime\Mime::isPrintable()``: 指定した文字列の中に表示できない文字がなければ ``TRUE``
      、 それ以外の場合に ``FALSE`` を返します。
 
-   - ``Zend_Mime::encode()``: 指定されたエンコードで文字列を エンコードします。
+   - ``Zend\Mime\Mime::encode()``: 指定されたエンコードで文字列を エンコードします。
 
-   - ``Zend_Mime::encodeBase64()``: 文字列を base64 でエンコードします。
+   - ``Zend\Mime\Mime::encodeBase64()``: 文字列を base64 でエンコードします。
 
-   - ``Zend_Mime::encodeQuotedPrintable()``: 文字列を quoted-printable でエンコードします。
+   - ``Zend\Mime\Mime::encodeQuotedPrintable()``: 文字列を quoted-printable でエンコードします。
 
-   - ``Zend_Mime::encodeBase64Header()``: メールヘッダ用に文字列を base64
+   - ``Zend\Mime\Mime::encodeBase64Header()``: メールヘッダ用に文字列を base64
      でエンコードします。
 
-   - ``Zend_Mime::encodeQuotedPrintableHeader()``: メールヘッダ用に文字列を quoted-printable
+   - ``Zend\Mime\Mime::encodeQuotedPrintableHeader()``: メールヘッダ用に文字列を quoted-printable
      でエンコードします。
 
 
@@ -44,29 +44,29 @@ Zend_Mime
 
 
 
-   - ``Zend_Mime::TYPE_OCTETSTREAM``: 'application/octet-stream'
+   - ``Zend\Mime\Mime::TYPE_OCTETSTREAM``: 'application/octet-stream'
 
-   - ``Zend_Mime::TYPE_TEXT``: 'text/plain'
+   - ``Zend\Mime\Mime::TYPE_TEXT``: 'text/plain'
 
-   - ``Zend_Mime::TYPE_HTML``: 'text/html'
+   - ``Zend\Mime\Mime::TYPE_HTML``: 'text/html'
 
-   - ``Zend_Mime::ENCODING_7BIT``: '7bit'
+   - ``Zend\Mime\Mime::ENCODING_7BIT``: '7bit'
 
-   - ``Zend_Mime::ENCODING_8BIT``: '8bit'
+   - ``Zend\Mime\Mime::ENCODING_8BIT``: '8bit'
 
-   - ``Zend_Mime::ENCODING_QUOTEDPRINTABLE``: 'quoted-printable'
+   - ``Zend\Mime\Mime::ENCODING_QUOTEDPRINTABLE``: 'quoted-printable'
 
-   - ``Zend_Mime::ENCODING_BASE64``: 'base64'
+   - ``Zend\Mime\Mime::ENCODING_BASE64``: 'base64'
 
-   - ``Zend_Mime::DISPOSITION_ATTACHMENT``: 'attachment'
+   - ``Zend\Mime\Mime::DISPOSITION_ATTACHMENT``: 'attachment'
 
-   - ``Zend_Mime::DISPOSITION_INLINE``: 'inline'
+   - ``Zend\Mime\Mime::DISPOSITION_INLINE``: 'inline'
 
-   - ``Zend_Mime::MULTIPART_ALTERNATIVE``: 'multipart/alternative'
+   - ``Zend\Mime\Mime::MULTIPART_ALTERNATIVE``: 'multipart/alternative'
 
-   - ``Zend_Mime::MULTIPART_MIXED``: 'multipart/mixed'
+   - ``Zend\Mime\Mime::MULTIPART_MIXED``: 'multipart/mixed'
 
-   - ``Zend_Mime::MULTIPART_RELATED``: 'multipart/related'
+   - ``Zend\Mime\Mime::MULTIPART_RELATED``: 'multipart/related'
 
 
 

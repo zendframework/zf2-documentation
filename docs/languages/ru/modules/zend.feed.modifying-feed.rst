@@ -17,7 +17,7 @@
 .. code-block:: php
    :linenos:
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/1');
    $entry = $feed->current();
 
    $entry->title = 'This is a new title';
@@ -39,7 +39,7 @@ XML-представление новой публикации, включающ
 Если вы хотите использовать в своих сообщениях пространство
 имен, отличное от *atom:*, *rss:* или *osrss:*, то вам нужно
 зарегистрировать его через *Zend_Feed*, используя метод
-*Zend_Feed::registerNamespace()*. Когда вы изменяете существующий элемент, он
+*Zend\Feed\Feed::registerNamespace()*. Когда вы изменяете существующий элемент, он
 всегда будет сохранять свое исходное пространство имен. Когда
 вы добавляете новый элемент, то он будет включен в
 пространство имен по умолчанию, если не было указано явно
@@ -52,14 +52,14 @@ XML-представление новой публикации, включающ
 .. code-block:: php
    :linenos:
 
-   $entry = new Zend_Feed_Entry_Atom();
+   $entry = new Zend\Feed_Entry\Atom();
    // id уже присвоен сервером
    $entry->title = 'my custom entry';
    $entry->author->name = 'Example Author';
    $entry->author->email = 'me@example.com';
 
    // теперь выполнение специальной части
-   Zend_Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
+   Zend\Feed\Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
 
    $entry->{'myns:myelement_one'} = 'my first custom value';
    $entry->{'myns:container_elt'}->part1 = 'first nested custom part';

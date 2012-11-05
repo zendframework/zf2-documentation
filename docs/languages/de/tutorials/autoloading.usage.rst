@@ -5,17 +5,17 @@ Grundsätzliche Verwendung von Autoloadern
 =========================================
 
 Jetzt da wir verstehen was Autoloading ist, und was die Ziele und das Design von Zend Framework's Autoloading
-Lösung sind, schauen wir und an wie ``Zend_Loader_Autoloader`` verwendet wird.
+Lösung sind, schauen wir und an wie ``Zend\Loader\Autoloader`` verwendet wird.
 
 Im einfachsten Fall wird die Klasse einfach mit "require" verwendet und anschließend instanziert. Da
-``Zend_Loader_Autoloader`` ein Singleton ist (aus dem Grund da auch der *SPL* Autoloader eine einzelne Ressource
+``Zend\Loader\Autoloader`` ein Singleton ist (aus dem Grund da auch der *SPL* Autoloader eine einzelne Ressource
 ist) verwenden wir ``getInstance()`` um eine Instanz zu erhalten.
 
 .. code-block:: php
    :linenos:
 
    require_once 'Zend/Loader/Autoloader.php';
-   Zend_Loader_Autoloader::getInstance();
+   Zend\Loader\Autoloader::getInstance();
 
 Standardmäßig erlaubt dies das Laden jeder Klasse mit dem Klassen Namespace Präfix "Zend\_" oder "ZendX\_",
 solange Sie im eigenen ``include_path`` liegen.
@@ -28,11 +28,11 @@ Array von Ihnen:
    :linenos:
 
    require_once 'Zend/Loader/Autoloader.php';
-   $loader = Zend_Loader_Autoloader::getInstance();
+   $loader = Zend\Loader\Autoloader::getInstance();
    $loader->registerNamespace('Foo_');
    $loader->registerNamespace(array('Foo_', 'Bar_'));
 
-Alternativ kann man ``Zend_Loader_Autoloader`` sagen das es als "fallback" Autoloader arbeiten soll. Das bedeutet
+Alternativ kann man ``Zend\Loader\Autoloader`` sagen das es als "fallback" Autoloader arbeiten soll. Das bedeutet
 das er versuchen wird jede Klasse aufzulösen unabhängig vom Namespace Präfix.
 
 .. code-block:: php
@@ -44,10 +44,10 @@ das er versuchen wird jede Klasse aufzulösen unabhängig vom Namespace Präfix.
 
    **Ein Fallback Autloader sollte nicht verwendet werden**
 
-   Wärend es nützlich erscheint ``Zend_Loader_Autoloader`` als Fallback Autoloader zu verwenden, empfehlen wir
+   Wärend es nützlich erscheint ``Zend\Loader\Autoloader`` als Fallback Autoloader zu verwenden, empfehlen wir
    diese Praxis nicht.
 
-   Intern verwendet ``Zend_Loader_Autoloader`` ``Zend_Loader::loadClass()`` um Klassen zu laden. Diese Methode
+   Intern verwendet ``Zend\Loader\Autoloader`` ``Zend\Loader\Loader::loadClass()`` um Klassen zu laden. Diese Methode
    verwendet ``include()`` um zu versuchen die gegebene Klassendatei zu laden. ``include()`` gibt ein boolsches
    ``FALSE`` zurück wenn es nicht erfolgreich war -- löst aber auch eine *PHP* Warnung aus. Der letztere Fakt
    kann zu einigen Problemen führen:
@@ -56,7 +56,7 @@ das er versuchen wird jede Klasse aufzulösen unabhängig vom Namespace Präfix.
 
    - Abhängig vom ``error_reporting`` Level den man ausgewählt hat, könnte es auch die Logs zuschütten.
 
-   Man kann die Fehlermeldungen unterdrücken (die Dokumentation von ``Zend_Loader_Autoloader`` gibt Details), aber
+   Man kann die Fehlermeldungen unterdrücken (die Dokumentation von ``Zend\Loader\Autoloader`` gibt Details), aber
    man sollte beachten die Unterdrückung nur relevant ist wenn ``display_errors`` aktiviert ist; das Fehler Log
    wird die Meldung immer zeigen. Aus diesem Grund empfehlen wir die Namespace Präfixe welche der Autoloader
    behandeln soll, immer zu konfigurieren.
@@ -77,7 +77,7 @@ das er versuchen wird jede Klasse aufzulösen unabhängig vom Namespace Präfix.
    seine eigene Bibliothek wird Namespaces beginnend mit Version 2.0.0 verwenden.
 
 Wenn man eigene Autoloader hat, die man mit Zend Framework verwenden will -- möglicherweise einen Autoloader von
-einer anderen Bibliothek die man verwendet -- kann man das mit ``Zend_Loader_Autoloader``'s ``pushAutoloader()``
+einer anderen Bibliothek die man verwendet -- kann man das mit ``Zend\Loader\Autoloader``'s ``pushAutoloader()``
 und ``unshiftAutoloader()`` Methoden durchführen. Diese Methoden stellen Autoloader einer Kette voran welche
 aufgerufen wird, oder hängen Sie an, bevor Zend Framework's interner autoloading Mechanismus ausgeführt wird.
 Dieser Ansatz bietet die folgenden Vorteile:
@@ -89,7 +89,7 @@ Dieser Ansatz bietet die folgenden Vorteile:
 
 - Wenn man ``spl_autoload()``'s Registry verändern muss, können alle Autoloader welche Callbacks sind und auf
   Methoden einer Instanz sind, Probleme verursachen da ``spl_autoload_functions()`` nicht exakt die gleichen
-  Callbacks zurückgibt. ``Zend_Loader_Autoloader`` hat keine entsprechenden Begrenzungen.
+  Callbacks zurückgibt. ``Zend\Loader\Autoloader`` hat keine entsprechenden Begrenzungen.
 
 Autoloader welche auf diesem Weg gemanaged werden können alle gültigen *PHP* Callbacks sein.
 

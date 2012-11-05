@@ -16,9 +16,9 @@ O código a seguir demonstra como tratar uma exceção lançada em uma classe do
    :linenos:
 
    try {
-       // Chamar Zend_Loader::loadClass() com uma classe inexistente irá causar
-       // uma exceção para ser lançada em Zend_Loader:
-       Zend_Loader::loadClass('nonexistantclass');
+       // Chamar Zend\Loader\Loader::loadClass() com uma classe inexistente irá causar
+       // uma exceção para ser lançada em Zend\Loader\Loader:
+       Zend\Loader\Loader::loadClass('nonexistantclass');
    } catch (Zend_Exception $e) {
        echo "Tratando a exceção: " . get_class($e) . "\n";
        echo "Mensagem: " . $e->getMessage() . "\n";

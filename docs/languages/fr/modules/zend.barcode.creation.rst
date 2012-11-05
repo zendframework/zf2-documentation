@@ -6,11 +6,11 @@ Création de code-barres avec la classe Zend_Barcode
 
 .. _zend.barcode.creation.configuration:
 
-Utilisation de la fabrique Zend_Barcode::factory
+Utilisation de la fabrique Zend\Barcode\Barcode::factory
 ------------------------------------------------
 
 ``Zend_Barcode`` possède une méthode de fabrique pour créer une instance d'un générateur de rendu qui étend
-``Zend_Barcode_Renderer_RendererAbstract``. Ce méthode accepte 5 arguments.
+``Zend\Barcode_Renderer\RendererAbstract``. Ce méthode accepte 5 arguments.
 
 . Le nom du format de code-barres (ex. "code39") (obligatoire)
 
@@ -25,9 +25,9 @@ Utilisation de la fabrique Zend_Barcode::factory
 
 .. _zend.barcode.creation.configuration.example-1:
 
-.. rubric:: Récupérer un générateur de rendu avec Zend_Barcode::factory()
+.. rubric:: Récupérer un générateur de rendu avec Zend\Barcode\Barcode::factory()
 
-``Zend_Barcode::factory()`` instancie un objet code-barres et un générateur de rendu et les lie ensemble. Dans le
+``Zend\Barcode\Barcode::factory()`` instancie un objet code-barres et un générateur de rendu et les lie ensemble. Dans le
 premier exemple, nous allons utiliser le type de code-barres **Code39** avec le générateur de rendu **Image**.
 
 .. code-block:: php
@@ -37,13 +37,13 @@ premier exemple, nous allons utiliser le type de code-barres **Code39** avec le 
    $barcodeOptions = array('text' => 'ZEND-FRAMEWORK');
    // Pas d'options requises
    $rendererOptions = array();
-   $renderer = Zend_Barcode::factory(
+   $renderer = Zend\Barcode\Barcode::factory(
        'code39', 'image', $barcodeOptions, $rendererOptions
    );
 
 .. _zend.barcode.creation.configuration.example-2:
 
-.. rubric:: Utiliser Zend_Barcode::factory() avec des objets Zend_Config
+.. rubric:: Utiliser Zend\Barcode\Barcode::factory() avec des objets Zend_Config
 
 Vous pouvez fournir un objet ``Zend_Config`` à la fabrique afin de créer les objets souhaités. L'exemple suivant
 est fonctionnellement équivalent au précédent.
@@ -52,13 +52,13 @@ est fonctionnellement équivalent au précédent.
    :linenos:
 
    // En utilisant seulement un objet Zend_Config
-   $config = new Zend_Config(array(
+   $config = new Zend\Config\Config(array(
        'barcode'        => 'code39',
        'barcodeParams'  => array('text' => 'ZEND-FRAMEWORK'),
        'renderer'       => 'image',
        'rendererParams' => array('imageType' => 'gif'),
    ));
-   $renderer = Zend_Barcode::factory($config);
+   $renderer = Zend\Barcode\Barcode::factory($config);
 
 .. _zend.barcode.creation.drawing:
 
@@ -81,13 +81,13 @@ simplement utiliser la méthode proxy fournie par ``Zend_Barcode``.
    // Pas d'options requises
    $rendererOptions = array();
    // Tracé du code-barres dans une nouvelle image
-   $imageResource = Zend_Barcode::factory(
+   $imageResource = Zend\Barcode\Barcode::factory(
        'code39', 'image', $barcodeOptions, $rendererOptions
    )->draw();
 
 .. _zend.barcode.creation.drawing.example-2:
 
-.. rubric:: Trace un code-barres avec Zend_Barcode::draw()
+.. rubric:: Trace un code-barres avec Zend\Barcode\Barcode::draw()
 
 .. code-block:: php
    :linenos:
@@ -97,7 +97,7 @@ simplement utiliser la méthode proxy fournie par ``Zend_Barcode``.
    // Pas d'options requises
    $rendererOptions = array();
    // Tracé du code-barres dans une nouvelle image
-   $imageResource = Zend_Barcode::draw(
+   $imageResource = Zend\Barcode\Barcode::draw(
        'code39', 'image', $barcodeOptions, $rendererOptions
    );
 
@@ -123,7 +123,7 @@ ressource (par exemple vers un navigateur). Pour rendre un code-barres, vous pou
    $rendererOptions = array();
    // Tracé du code-barres dans une nouvelle image,
    // envoi des entêtes et de l'image
-   Zend_Barcode::factory(
+   Zend\Barcode\Barcode::factory(
        'code39', 'image', $barcodeOptions, $rendererOptions
    )->render();
 
@@ -135,7 +135,7 @@ Ceci générera ce code-barres :
 
 .. _zend.barcode.creation.renderering.example-2:
 
-.. rubric:: Effectuer le rendu d'un code-barres avec Zend_Barcode::render()
+.. rubric:: Effectuer le rendu d'un code-barres avec Zend\Barcode\Barcode::render()
 
 .. code-block:: php
    :linenos:
@@ -146,7 +146,7 @@ Ceci générera ce code-barres :
    $rendererOptions = array();
    // Tracé du code-barres dans une nouvelle image,
    // envoi des entêtes et de l'image
-   Zend_Barcode::render(
+   Zend\Barcode\Barcode::render(
        'code39', 'image', $barcodeOptions, $rendererOptions
    );
 

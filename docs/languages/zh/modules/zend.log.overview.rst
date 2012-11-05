@@ -14,13 +14,13 @@
      的实例)是应用程序使用最多的对象.如果你想你可以有任意多的Log对象;
      它们之间不会相互影响.一个Log对象必须至少包含一个Writer对象,可选的可以包含一个或多个Filter.
 
-   - 一个 Writer (继承自 *Zend_Log_Writer_Abstract*) 负责向存储中保存数据.
+   - 一个 Writer (继承自 *Zend\Log_Writer\Abstract*) 负责向存储中保存数据.
 
-   - 一个 Filter (实现 *Zend_Log_Filter_Interface*\
+   - 一个 Filter (实现 *Zend\Log_Filter\Interface*\
      接口)阻塞数据被保存.一个Filter可以应用到个别的Writer,
      或则在所有Writer之前应用到一个Log.这样Filter是串联起来的.
 
-   - 一个 Formatter (实现了 *Zend_Log_Formatter_Interface*\ 接口)
+   - 一个 Formatter (实现了 *Zend\Log_Formatter\Interface*\ 接口)
      在由Writer写入数据之前可以对日志数据进行格式化.每一个Writer只能有一个Formatter.
 
 
@@ -35,8 +35,8 @@
    .. code-block:: php
       :linenos:
 
-      $logger = new Zend_Log();
-      $writer = new Zend_Log_Writer_Stream('php://output');
+      $logger = new Zend\Log\Log();
+      $writer = new Zend\Log_Writer\Stream('php://output');
 
       $logger->addWriter($writer);
 
@@ -48,8 +48,8 @@
    .. code-block:: php
       :linenos:
 
-      $writer = new Zend_Log_Writer_Stream('php://output');
-      $logger = new Zend_Log($writer);
+      $writer = new Zend\Log_Writer\Stream('php://output');
+      $logger = new Zend\Log\Log($writer);
 
 
 现在Log就可以使用了.
@@ -64,7 +64,7 @@
    .. code-block:: php
       :linenos:
 
-      $logger->log('Informational message', Zend_Log::INFO);
+      $logger->log('Informational message', Zend\Log\Log::INFO);
 
 
 *log()*\ 方法的第一个参数是是一个字符串 *message*,第二个参数是一个整数 *priority*.
@@ -75,10 +75,10 @@ priortiy必须是一个可以被Log实例识别的消息等级之一.这会在�
    .. code-block:: php
       :linenos:
 
-      $logger->log('Informational message', Zend_Log::INFO);
+      $logger->log('Informational message', Zend\Log\Log::INFO);
       $logger->info('Informational message');
 
-      $logger->log('Emergency message', Zend_Log::EMERG);
+      $logger->log('Emergency message', Zend\Log\Log::EMERG);
       $logger->emerg('Emergency message');
 
 

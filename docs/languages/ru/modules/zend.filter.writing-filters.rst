@@ -7,12 +7,12 @@
 ``Zend_Filter`` предоставляет набор наиболее часто используемых
 фильтров, но в некоторых случаях может потребоваться
 написание своих фильтров. Эта задача облегчается реализацией
-интерфейса ``Zend_Filter_Interface``.
+интерфейса ``Zend\Filter\Interface``.
 
-``Zend_Filter_Interface`` определяет единственный метод *filter()*, который
+``Zend\Filter\Interface`` определяет единственный метод *filter()*, который
 должен быть реализован классом фильтра. Объект класса,
 реализующего данный интерфейс, может быть добавлен в цепочку
-фильтров через метод *Zend_Filter::addFilter()*.
+фильтров через метод *Zend\Filter\Filter::addFilter()*.
 
 Следующий пример демонстрирует, как можно создавать свои
 фильтры:
@@ -20,7 +20,7 @@
    .. code-block:: php
       :linenos:
 
-      class MyFilter implements Zend_Filter_Interface
+      class MyFilter implements Zend\Filter\Interface
       {
           public function filter($value)
           {
@@ -38,7 +38,7 @@
    .. code-block:: php
       :linenos:
 
-      $filterChain = new Zend_Filter();
+      $filterChain = new Zend\Filter\Filter();
       $filterChain->addFilter(new MyFilter());
 
 

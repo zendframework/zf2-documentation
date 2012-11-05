@@ -133,10 +133,10 @@ Framework classes are stored hierarchically under these root directories..
 
 Class names may only contain alphanumeric characters. Numbers are permitted in class names but are discouraged in
 most cases. Underscores are only permitted in place of the path separator; the filename "``Zend/Db/Table.php``"
-must map to the class name "``Zend_Db_Table``".
+must map to the class name "``Zend\Db\Table``".
 
 If a class name is comprised of more than one word, the first letter of each new word must be capitalized.
-Successive capitalized letters are not allowed, e.g. a class "Zend_PDF" is not allowed while "``Zend_Pdf``" is
+Successive capitalized letters are not allowed, e.g. a class "ZendPDF" is not allowed while "``ZendPdf``" is
 acceptable.
 
 These conventions define a pseudo-namespace mechanism for Zend Framework. Zend Framework will adopt the *PHP*
@@ -157,8 +157,8 @@ Abstract Classes
 
 In general, abstract classes follow the same conventions as :ref:`classes
 <coding-standard.naming-conventions.classes>`, with one additional rule: abstract class names must end in the term,
-"Abstract", and that term must not be preceded by an underscore. As an example, ``Zend_Controller_Plugin_Abstract``
-is considered an invalid name, but ``Zend_Controller_PluginAbstract`` or ``Zend_Controller_Plugin_PluginAbstract``
+"Abstract", and that term must not be preceded by an underscore. As an example, ``Zend\Controller_Plugin\Abstract``
+is considered an invalid name, but ``Zend\Controller\PluginAbstract`` or ``Zend\Controller_Plugin\PluginAbstract``
 would be valid names.
 
 .. note::
@@ -173,8 +173,8 @@ Interfaces
 
 In general, interfaces follow the same conventions as :ref:`classes <coding-standard.naming-conventions.classes>`,
 with one additional rule: interface names may optionally end in the term, "Interface", but that term must not be
-preceded by an underscore. As an example, ``Zend_Controller_Plugin_Interface`` is considered an invalid name, but
-``Zend_Controller_PluginInterface`` or ``Zend_Controller_Plugin_PluginInterface`` would be valid names.
+preceded by an underscore. As an example, ``Zend\Controller_Plugin\Interface`` is considered an invalid name, but
+``Zend\Controller\PluginInterface`` or ``Zend\Controller_Plugin\PluginInterface`` would be valid names.
 
 While this rule is not required, it is strongly recommended, as it provides a good visual cue to developers as to
 which files contain interfaces rather than classes.
@@ -860,7 +860,7 @@ The ``@package`` annotation must be assigned, and should be equivalent to the co
 in the file; typically, this will only have two segments, the "Zend" prefix, and the component name.
 
 The ``@subpackage`` annotation is optional. If provided, it should be the subcomponent name, minus the class
-prefix. In the example above, the assumption is that the class in the file is either "``Zend_Magic_Wand``", or uses
+prefix. In the example above, the assumption is that the class in the file is either "``Zend\Magic\Wand``", or uses
 that classname as part of its prefix.
 
 .. _coding-standards.inline-documentation.classes:
@@ -895,7 +895,7 @@ The ``@package`` annotation must be assigned, and should be equivalent to the co
 typically, this will only have two segments, the "Zend" prefix, and the component name.
 
 The ``@subpackage`` annotation is optional. If provided, it should be the subcomponent name, minus the class
-prefix. In the example above, the assumption is that the class described is either "``Zend_Magic_Wand``", or uses
+prefix. In the example above, the assumption is that the class described is either "``Zend\Magic\Wand``", or uses
 that classname as part of its prefix.
 
 .. _coding-standards.inline-documentation.functions:

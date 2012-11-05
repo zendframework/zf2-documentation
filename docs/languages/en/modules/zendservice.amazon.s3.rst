@@ -271,7 +271,7 @@ It is possible to get and put objects using not stream data held in memory but f
 especially useful when file sizes are large in order not to overcome memory limits.
 
 To receive object using streaming, use method ``getObjectStream($object, $filename)``. This method will return
-``Zend_Http_Response_Stream``, which can be used as described in :ref:`HTTP Client Data Streaming
+``Zend\Http\Response\Stream``, which can be used as described in :ref:`HTTP Client Data Streaming
 <zend.http.client.streaming>` section.
 
 

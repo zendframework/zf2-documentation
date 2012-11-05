@@ -44,7 +44,7 @@ Zend_Controller
 .. code-block:: php
    :linenos:
 
-   // $front は Zend_Controller_Front のインスタンスであるとします
+   // $front は Zend\Controller\Front のインスタンスであるとします
    $front->setParam('noViewRenderer', true);
 
 しかし、長い目で見ればこれはあまりよい作戦ではありません。
@@ -114,8 +114,8 @@ Zend_Controller
      :linenos:
 
      // $view はすでに定義されているものとします
-     $viewRenderer = new Zend_Controller_Action_Helper_ViewRenderer($view);
-     Zend_Controller_Action_HelperBroker::addHelper($viewRenderer);
+     $viewRenderer = new Zend\Controller\Action\Helper\ViewRenderer($view);
+     Zend\Controller_Action\HelperBroker::addHelper($viewRenderer);
 
 - 起動処理の中ならどこでも
 
@@ -123,7 +123,7 @@ Zend_Controller
      :linenos:
 
      $viewRenderer =
-         Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
+         Zend\Controller_Action\HelperBroker::getStaticHelper('viewRenderer');
      $viewRenderer->setView($view);
 ``ViewRenderer`` を変更するにはさまざまな方法があります。
 たとえばレンダリングするビュースクリプトを別のものに変更したり
@@ -148,7 +148,7 @@ script パラメータはオプションとなり、後で ``setFormat()``
 .. code-block:: php
    :linenos:
 
-   $currency = new Zend_Currency($currency, $locale);
+   $currency = new Zend\Currency\Currency($currency, $locale);
 
 ``setFormat()`` メソッドには、オプションの配列を渡せるようになりました。
 このオプションはそれ以降もずっと有効で、

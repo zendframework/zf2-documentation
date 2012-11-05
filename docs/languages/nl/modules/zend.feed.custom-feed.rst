@@ -22,7 +22,7 @@ namespaces hoeft bezig te houden.
     * De aangepaste entry klasse kent automatisch de feed URI (optioneel) en
     * kan automatisch extra namespaces toevoegen.
     */
-   class MyEntry extends Zend_Feed_Entry_Atom
+   class MyEntry extends Zend\Feed_Entry\Atom
    {
 
        public function __construct($uri = 'http://www.example.com/myfeed/',
@@ -30,7 +30,7 @@ namespaces hoeft bezig te houden.
        {
            parent::__construct($uri, $xml);
 
-           Zend_Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
+           Zend\Feed\Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
        }
 
        public function __get($var)

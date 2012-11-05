@@ -18,19 +18,19 @@ Eine Liste von Dokumenten erhalten
 
 Man kann eine Liste von den Google Dokumenten für einen bestimmten Benutzer erhalten indem die
 ``getDocumentListFeed()`` Methode des Docs Services verwendet wird. Das Service gibt ein
-``Zend_Gdata_Docs_DocumentListFeed`` Objekt zurück das eine Liste von Dokumenten enthält die mit dem
+``ZendGData_Docs\DocumentListFeed`` Objekt zurück das eine Liste von Dokumenten enthält die mit dem
 authentifizierten Benutzer assoziiert sind.
 
 .. code-block:: php
    :linenos:
 
-   $service = Zend_Gdata_Docs::AUTH_SERVICE_NAME;
-   $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-   $docs = new Zend_Gdata_Docs($client);
+   $service = ZendGData\Docs::AUTH_SERVICE_NAME;
+   $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
+   $docs = new ZendGData\Docs($client);
    $feed = $docs->getDocumentListFeed();
 
-Das sich ergebende ``Zend_Gdata_Docs_DocumentListFeed`` Objekt repräsentiert die Antwort des Servers. Dieser Feed
-enthält eine Liste von ``Zend_Gdata_Docs_DocumentListEntry`` Objekten (``$feed->entries``), wobei jeder von Ihnen
+Das sich ergebende ``ZendGData_Docs\DocumentListFeed`` Objekt repräsentiert die Antwort des Servers. Dieser Feed
+enthält eine Liste von ``ZendGData_Docs\DocumentListEntry`` Objekten (``$feed->entries``), wobei jeder von Ihnen
 ein einzelnes Google Dokument repräsentiert.
 
 .. _zend.gdata.docs.creating:
@@ -49,7 +49,7 @@ vom Server.
    /**
     * Ein spezielles Dokument hochladen
     *
-    * @param Zend_Gdata_Docs $docs Das Service Objekt das für die Kommunikation
+    * @param ZendGData\Docs $docs Das Service Objekt das für die Kommunikation
     *                              mit dem Google Dokument Service verwendet wird
     * @param boolean $html True Wenn die Ausgabe für die Ausgabe in einem Web
     *                           Browser formatiert sein soll
@@ -80,7 +80,7 @@ vom Server.
      // Dateiname wird als Titel des Dokuments verwendet und der MIME Typ wird
      // basieren auf der erweiterung des originalen Dateinamens eruiert.
      $newDocumentEntry = $docs->uploadFile($fileToUpload, $originalFileName,
-         null, Zend_Gdata_Docs::DOCUMENTS_LIST_FEED_URI);
+         null, ZendGData\Docs::DOCUMENTS_LIST_FEED_URI);
 
      echo "Neuer Titel des Dokuments: ";
 
@@ -141,7 +141,7 @@ Um eine Liste aller eigenen Google Tabellenkalkulationen zu erhalten kann die fo
 Eine Textabfrage durchführen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Der Inhalt von Dokumenten kann durch Verwendung von ``Zend_Gdata_Docs_Query`` in der Abfrage durchsucht werden. Ein
+Der Inhalt von Dokumenten kann durch Verwendung von ``ZendGData_Docs\Query`` in der Abfrage durchsucht werden. Ein
 Abfrage Objekt kann verwendet werden um eine Abfrage *URI* zu erstellen, wobei der Suchbegriff als Parameter
 übergeben wird. Hier ist eine Beispielmethode welche die Dokumenten Liste nach Dokumenten abfrage die den
 Suchstring enthalten:
@@ -149,7 +149,7 @@ Suchstring enthalten:
 .. code-block:: php
    :linenos:
 
-   $docsQuery = new Zend_Gdata_Docs_Query();
+   $docsQuery = new ZendGData_Docs\Query();
    $docsQuery->setQuery($query);
    $feed = $client->getDocumentListFeed($docsQuery);
 

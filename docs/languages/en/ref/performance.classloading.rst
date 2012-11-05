@@ -160,7 +160,7 @@ comment out each call. Try executing the following statements (where '%' indicat
 
 This one-liner (broken into two lines for readability) iterates through each *PHP* file and tells it to replace
 each instance of 'require_once' with '// require_once', effectively commenting out each such statement. (It
-selectively keeps ``require_once()`` calls within ``Zend_Application`` and ``Zend_Loader_Autoloader``, as these
+selectively keeps ``require_once()`` calls within ``Zend_Application`` and ``Zend\Loader\Autoloader``, as these
 classes will fail without them.)
 
 This command could be added to an automated build or release process trivially, helping boost performance in your
@@ -171,7 +171,7 @@ autoloading; you can do that from your "``public/index.php``" file with the foll
    :linenos:
 
    require_once 'Zend/Loader/Autoloader.php';
-   Zend_Loader_Autoloader::getInstance();
+   Zend\Loader\Autoloader::getInstance();
 
 .. _performance.classloading.pluginloader:
 
@@ -191,13 +191,13 @@ imagine, this can lead to many stat calls on the file system.
 Multiply this by the number of components that use the PluginLoader, and you get an idea of the scope of this
 issue. At the time of this writing, the following components made use of the PluginLoader:
 
-- ``Zend_Controller_Action_HelperBroker``: helpers
+- ``Zend\Controller_Action\HelperBroker``: helpers
 
-- ``Zend_File_Transfer``: adapters
+- ``Zend\File\Transfer``: adapters
 
-- ``Zend_Filter_Inflector``: filters (used by the ViewRenderer action helper and ``Zend_Layout``)
+- ``Zend\Filter\Inflector``: filters (used by the ViewRenderer action helper and ``Zend_Layout``)
 
-- ``Zend_Filter_Input``: filters and validators
+- ``Zend\Filter\Input``: filters and validators
 
 - ``Zend_Form``: elements, validators, filters, decorators, captcha and file transfer adapters
 

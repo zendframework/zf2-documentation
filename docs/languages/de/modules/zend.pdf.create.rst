@@ -4,12 +4,12 @@
 Erstellen und Laden von PDF Dokumenten
 ======================================
 
-Die ``Zend_Pdf`` Klasse bildet das *PDF* Dokument ab und stellt Operationen auf Dokumentebene bereit.
+Die ``ZendPdf`` Klasse bildet das *PDF* Dokument ab und stellt Operationen auf Dokumentebene bereit.
 
-Um ein neues Dokument zu stellen, sollte zuerst ein neues ``Zend_Pdf`` Objekt erstellt werden.
+Um ein neues Dokument zu stellen, sollte zuerst ein neues ``ZendPdf`` Objekt erstellt werden.
 
-Die ``Zend_Pdf`` Klasse stellt zwei statische Methoden zum Laden von bestehenden *PDF* Dokumenten bereit. Dies sind
-die ``Zend_Pdf::load()`` und ``Zend_Pdf::parse()`` Methoden. Beide geben als Ergebnis ``Zend_Pdf`` Objekte zurück
+Die ``ZendPdf`` Klasse stellt zwei statische Methoden zum Laden von bestehenden *PDF* Dokumenten bereit. Dies sind
+die ``ZendPdf\Pdf::load()`` und ``ZendPdf\Pdf::parse()`` Methoden. Beide geben als Ergebnis ``ZendPdf`` Objekte zurück
 oder werfen eine Ausnahme, wenn ein Fehler auftritt.
 
 .. _zend.pdf.create.example-1:
@@ -21,21 +21,21 @@ oder werfen eine Ausnahme, wenn ein Fehler auftritt.
 
    ...
    // Erstelle ein neues PDF Dokument
-   $pdf1 = new Zend_Pdf();
+   $pdf1 = new ZendPdf\Pdf();
 
    // Lade ein PDF Dokument aus einer Datei
-   $pdf2 = Zend_Pdf::load($fileName);
+   $pdf2 = ZendPdf\Pdf::load($fileName);
 
    // Lade ein PDF Dokument aus einer Zeichenkette
-   $pdf3 = Zend_Pdf::parse($pdfString);
+   $pdf3 = ZendPdf\Pdf::parse($pdfString);
    ...
 
 Das *PDF* Datei Format unterstützt die schrittweise Aktualisierung von Dokumenten. Jedes Mal, wenn ein Dokument
-aktualisiert wird, wird eine neue Revision des Dokuments erstellt. Die ``Zend_Pdf`` Komponente unterstützt die
+aktualisiert wird, wird eine neue Revision des Dokuments erstellt. Die ``ZendPdf`` Komponente unterstützt die
 Rückgabe einer vorgegebenen Revision des Dokuments.
 
-Die Revision kann den Methoden ``Zend_Pdf::load()`` und ``Zend_Pdf::parse()`` als zweiter Parameter übergeben oder
-durch Aufruf der ``Zend_Pdf::rollback()`` Methode. [#]_ Aufruf angefordert werden.
+Die Revision kann den Methoden ``ZendPdf\Pdf::load()`` und ``ZendPdf\Pdf::parse()`` als zweiter Parameter übergeben oder
+durch Aufruf der ``ZendPdf\Pdf::rollback()`` Methode. [#]_ Aufruf angefordert werden.
 
 .. _zend.pdf.create.example-2:
 
@@ -46,18 +46,18 @@ durch Aufruf der ``Zend_Pdf::rollback()`` Methode. [#]_ Aufruf angefordert werde
 
    ...
    // Lade die vorherige Revision des PDF Dokuments
-   $pdf1 = Zend_Pdf::load($fileName, 1);
+   $pdf1 = ZendPdf\Pdf::load($fileName, 1);
 
    // Lade die vorherige Revision des PDF Dokuments
-   $pdf2 = Zend_Pdf::parse($pdfString, 1);
+   $pdf2 = ZendPdf\Pdf::parse($pdfString, 1);
 
    // Lade die erste Revision des PDF Dokuments
-   $pdf3 = Zend_Pdf::load($fileName);
+   $pdf3 = ZendPdf\Pdf::load($fileName);
    $revisions = $pdf3->revisions();
    $pdf3->rollback($revisions - 1);
    ...
 
 
 
-.. [#] Die ``Zend_Pdf::rollback()`` Methode muss vor einer Änderung eines Dokuments aufgerufen werden, andernfalls
+.. [#] Die ``ZendPdf\Pdf::rollback()`` Methode muss vor einer Änderung eines Dokuments aufgerufen werden, andernfalls
        ist das Verhalten nicht definiert.

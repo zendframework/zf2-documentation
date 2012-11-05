@@ -57,7 +57,7 @@ Le champ ``score`` est un score de résultat. Les résultats de recherche sont t
 résultats en premier).
 
 Il est aussi possible de trier l'ensemble de résultats en fonction d'une valeur de champ spécifique. Voir la
-:ref:`documentation Zend_Search_Lucene <zend.search.lucene.searching.sorting>` pour plus de détails sur cette
+:ref:`documentation Zend\Search\Lucene <zend.search.lucene.searching.sorting>` pour plus de détails sur cette
 possibilité.
 
 Cette exemple montre aussi la possibilité d'accéder à des champs stockés (ex : ``$hit->title``). Les champs de

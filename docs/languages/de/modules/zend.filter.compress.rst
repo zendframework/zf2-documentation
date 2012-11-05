@@ -33,17 +33,17 @@ Um einen Kompressions Filter zu erstellen muss man das Kompressions Format ausw�
 Die folgende Beschreibung nimmt den **Bz2** Adapter. Details f체r alle anderen Adapter werden nach dieser Sektion
 beschrieben.
 
-Diese zwei Filter sind grunds채tzlich identisch, da Sie das gleiche Backend verwenden. ``Zend_Filter_Compress``
-sollte verwendet werden wenn man Elemente komprimieren will, und ``Zend_Filter_Decompress`` sollte verwendet werden
+Diese zwei Filter sind grunds채tzlich identisch, da Sie das gleiche Backend verwenden. ``Zend\Filter\Compress``
+sollte verwendet werden wenn man Elemente komprimieren will, und ``Zend\Filter\Decompress`` sollte verwendet werden
 wenn man Elemente dekomprimieren will.
 
-Wenn man zum Beispiel einen String komprimieren will, m체ssen wir ``Zend_Filter_Compress`` instanziieren und den
+Wenn man zum Beispiel einen String komprimieren will, m체ssen wir ``Zend\Filter\Compress`` instanziieren und den
 gew체nschten Adapter angeben.
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Compress('Bz2');
+   $filter = new Zend\Filter\Compress('Bz2');
 
 Um einen anderen Adapter zu verwenden muss dieser einfach im Constructor spezifiziert werden.
 
@@ -55,7 +55,7 @@ wird).
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Compress(array(
+   $filter = new Zend\Filter\Compress(array(
        'adapter' => 'Bz2',
        'options' => array(
            'blocksize' => 8,
@@ -74,7 +74,7 @@ Dekompressions Filter verwenden.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Decompress('Bz2');
+   $filter = new Zend\Filter\Decompress('Bz2');
 
 Um einen komprimierten String zu erhalten muss der originale String angegeben werden. Der gefilterte Wert ist die
 komprimierte Version des originalen Strings.
@@ -82,7 +82,7 @@ komprimierte Version des originalen Strings.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Compress('Bz2');
+   $filter     = new Zend\Filter\Compress('Bz2');
    $compressed = $filter->filter('Uncompressed string');
    // Gibt den komprimierten String zur체ck
 
@@ -91,7 +91,7 @@ Dekomprimierung funktioniert auf die gleiche Weise.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Decompress('Bz2');
+   $filter     = new Zend\Filter\Decompress('Bz2');
    $compressed = $filter->filter('Compressed string');
    // Gibt den dekomprimierten String zur체ck
 
@@ -115,7 +115,7 @@ erstellen wollen.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Compress(array(
+   $filter     = new Zend\Filter\Compress(array(
        'adapter' => 'Bz2',
        'options' => array(
            'archive' => 'filename.bz2',
@@ -139,7 +139,7 @@ Wenn man eine Datei komprimieren will, dann muss man den Namen der Datei mit des
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Compress(array(
+   $filter     = new Zend\Filter\Compress(array(
        'adapter' => 'Bz2',
        'options' => array(
            'archive' => 'filename.bz2'
@@ -154,7 +154,7 @@ allen seinen Dateien und Unterverzeichnissen in das Archiv komprimiert.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Compress(array(
+   $filter     = new Zend\Filter\Compress(array(
        'adapter' => 'Bz2',
        'options' => array(
            'archive' => 'filename.bz2'
@@ -182,7 +182,7 @@ Die Dekomprimierung einer Archivdatei arbeitet fast wie dessen Komprimierung. Ma
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Decompress('Bz2');
+   $filter     = new Zend\Filter\Decompress('Bz2');
    $compressed = $filter->filter('filename.bz2');
    // Gibt bei Erfolg true zur체ck und dekomprimiert die Archiv Datei
 
@@ -192,7 +192,7 @@ der Parameter ``target`` spezifiziert werden.
 .. code-block:: php
    :linenos:
 
-   $filter     = new Zend_Filter_Decompress(array(
+   $filter     = new Zend\Filter\Decompress(array(
        'adapter' => 'Zip',
        'options' => array(
            'target' => 'C:\temp',

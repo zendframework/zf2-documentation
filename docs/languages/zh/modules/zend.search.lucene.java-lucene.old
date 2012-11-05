@@ -9,7 +9,7 @@
 文件格式
 ----
 
-Zend_Search_Lucene 的索引文件格式和 1.4 或更高版本的 Java Lucene 二进制兼容。
+Zend\Search\Lucene 的索引文件格式和 1.4 或更高版本的 Java Lucene 二进制兼容。
 
 关于文件格式的更详细的描述在这里： `http://lucene.apache.org/java/docs/fileformats.html`_\ 。
 [#]_

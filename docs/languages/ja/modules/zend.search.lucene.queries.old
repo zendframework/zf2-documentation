@@ -13,7 +13,7 @@
    .. code-block:: php
       :linenos:
 
-      $query = Zend_Search_Lucene_Search_QueryParser::parse($queryString);
+      $query = Zend\Search\Lucene\Search\QueryParser::parse($queryString);
 
 
 
@@ -24,35 +24,35 @@
 
 クエリパーサは、二種類の例外を発生させます。
 
-   - ``Zend_Search_Lucene_Exception`` がスローされるのは、
+   - ``Zend\Search_Lucene\Exception`` がスローされるのは、
      クエリパーサ自体に何らかの問題が発生した場合です。
 
-   - ``Zend_Search_Lucene_Search_QueryParserException``
+   - ``Zend\Search\Lucene\Search\QueryParserException``
      がスローされるのは、クエリの構文エラーが発生した場合です。
 
-つまり、 ``Zend_Search_Lucene_Search_QueryParserException``
+つまり、 ``Zend\Search\Lucene\Search\QueryParserException``
 を捕捉して適切なメッセージを表示させるようにしておくことが大切です。
 
    .. code-block:: php
       :linenos:
 
       try {
-          $query = Zend_Search_Lucene_Search_QueryParser::parse($queryString);
-      } catch (Zend_Search_Lucene_Search_QueryParserException $e) {
+          $query = Zend\Search\Lucene\Search\QueryParser::parse($queryString);
+      } catch (Zend\Search\Lucene\Search\QueryParserException $e) {
           echo "クエリの構文エラー: " . $e->getMessage() . "\n";
       }
 
 
 
-``Zend_Search_Lucene`` オブジェクトの find() メソッドでも同様のテクニックを使えます。
+``Zend\Search\Lucene`` オブジェクトの find() メソッドでも同様のテクニックを使えます。
 
 バージョン 1.5
 以降では、クエリのパース時の例外はデフォルトで抑制されるようになります。
 クエリ言語に反するクエリが渡された場合は、現在のデフォルトの解析器を用いてそれをトークン化し、
 トークン化された単語で検索します。 例外を有効にするには
-``Zend_Search_Lucene_Search_QueryParser::dontSuppressQueryParsingExceptions()`` メソッドを使用します。
-``Zend_Search_Lucene_Search_QueryParser::suppressQueryParsingExceptions()`` メソッドおよび
-``Zend_Search_Lucene_Search_QueryParser::queryParsingExceptionsSuppressed()``
+``Zend\Search\Lucene\Search\QueryParser::dontSuppressQueryParsingExceptions()`` メソッドを使用します。
+``Zend\Search\Lucene\Search\QueryParser::suppressQueryParsingExceptions()`` メソッドおよび
+``Zend\Search\Lucene\Search\QueryParser::queryParsingExceptionsSuppressed()``
 メソッドも、例外処理の振る舞いを変更するためのものです。
 
 .. _zend.search.lucene.queries.term-query:
@@ -76,19 +76,19 @@
 .. code-block:: php
    :linenos:
 
-   $term  = new Zend_Search_Lucene_Index_Term('word1', 'field1');
-   $query = new Zend_Search_Lucene_Search_Query_Term($term);
+   $term  = new Zend\Search\Lucene\Index\Term('word1', 'field1');
+   $query = new Zend\Search\Lucene\Search\Query\Term($term);
    $hits  = $index->find($query);
 
-単語のフィールドは任意で指定します。 指定しなかった場合は、 ``Zend_Search_Lucene``
+単語のフィールドは任意で指定します。 指定しなかった場合は、 ``Zend\Search\Lucene``
 は全フィールドを対象に検索します。
 
    .. code-block:: php
       :linenos:
 
       // インデックス化されている全フィールドから 'word1' を探します
-      $term  = new Zend_Search_Lucene_Index_Term('word1');
-      $query = new Zend_Search_Lucene_Search_Query_Term($term);
+      $term  = new Zend\Search\Lucene\Index\Term('word1');
+      $query = new Zend\Search\Lucene\Search\Query\Term($term);
       $hits  = $index->find($query);
 
 
@@ -146,12 +146,12 @@
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_MultiTerm();
+   $query = new Zend\Search\Lucene\Search\Query\MultiTerm();
 
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('word1'), true);
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('word2', 'author'),
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('word1'), true);
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('word2', 'author'),
                    null);
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('word3'), false);
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('word3'), false);
 
    $hits  = $index->find($query);
 
@@ -160,12 +160,12 @@ MultiTerm クエリのコンストラクタで、単語のリストを指定す�
    .. code-block:: php
       :linenos:
 
-      $terms = array(new Zend_Search_Lucene_Index_Term('word1'),
-                     new Zend_Search_Lucene_Index_Term('word2', 'author'),
-                     new Zend_Search_Lucene_Index_Term('word3'));
+      $terms = array(new Zend\Search\Lucene\Index\Term('word1'),
+                     new Zend\Search\Lucene\Index\Term('word2', 'author'),
+                     new Zend\Search\Lucene\Index\Term('word3'));
       $signs = array(true, null, false);
 
-      $query = new Zend_Search_Lucene_Search_Query_MultiTerm($terms, $signs);
+      $query = new Zend\Search\Lucene\Search\Query\MultiTerm($terms, $signs);
 
       $hits  = $index->find($query);
 
@@ -232,19 +232,19 @@ boolean クエリには、両方の方式の検索メソッドが使用可能で
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Boolean();
+   $query = new Zend\Search\Lucene\Search\Query\Boolean();
 
-   $subquery1 = new Zend_Search_Lucene_Search_Query_MultiTerm();
-   $subquery1->addTerm(new Zend_Search_Lucene_Index_Term('word1'));
-   $subquery1->addTerm(new Zend_Search_Lucene_Index_Term('word2'));
-   $subquery1->addTerm(new Zend_Search_Lucene_Index_Term('word3'));
+   $subquery1 = new Zend\Search\Lucene\Search\Query\MultiTerm();
+   $subquery1->addTerm(new Zend\Search\Lucene\Index\Term('word1'));
+   $subquery1->addTerm(new Zend\Search\Lucene\Index\Term('word2'));
+   $subquery1->addTerm(new Zend\Search\Lucene\Index\Term('word3'));
 
-   $subquery2 = new Zend_Search_Lucene_Search_Query_MultiTerm();
-   $subquery2->addTerm(new Zend_Search_Lucene_Index_Term('word4', 'author'));
-   $subquery2->addTerm(new Zend_Search_Lucene_Index_Term('word5', 'author'));
+   $subquery2 = new Zend\Search\Lucene\Search\Query\MultiTerm();
+   $subquery2->addTerm(new Zend\Search\Lucene\Index\Term('word4', 'author'));
+   $subquery2->addTerm(new Zend\Search\Lucene\Index\Term('word5', 'author'));
 
-   $term6 = new Zend_Search_Lucene_Index_Term('word6');
-   $subquery3 = new Zend_Search_Lucene_Search_Query_Term($term6);
+   $term6 = new Zend\Search\Lucene\Index\Term('word6');
+   $subquery3 = new Zend\Search\Lucene\Search\Query\Term($term6);
 
    $query->addSubquery($subquery1, true  /* required */);
    $query->addSubquery($subquery2, null  /* optional */);
@@ -261,7 +261,7 @@ Boolean クエリのコンストラクタで、単語のリストを指定する
       $subqueries = array($subquery1, $subquery2, $subquery3);
       $signs = array(true, null, false);
 
-      $query = new Zend_Search_Lucene_Search_Query_Boolean($subqueries, $signs);
+      $query = new Zend\Search\Lucene\Search\Query\Boolean($subqueries, $signs);
 
       $hits  = $index->find($query);
 
@@ -321,20 +321,20 @@ boolean 演算子を使用する各クエリは、符号記法や *API*
    .. code-block:: php
       :linenos:
 
-      $pattern = new Zend_Search_Lucene_Index_Term('test*', 'field1');
-      $query = new Zend_Search_Lucene_Search_Query_Wildcard($pattern);
+      $pattern = new Zend\Search\Lucene\Index\Term('test*', 'field1');
+      $query = new Zend\Search\Lucene\Search\Query\Wildcard($pattern);
       $hits  = $index->find($query);
 
 
 
-フィールドの指定はオプションです。省略した場合は、 ``Zend_Search_Lucene``
+フィールドの指定はオプションです。省略した場合は、 ``Zend\Search\Lucene``
 は全フィールドを対象に検索を行います。
 
    .. code-block:: php
       :linenos:
 
-      $pattern = new Zend_Search_Lucene_Index_Term('test*');
-      $query = new Zend_Search_Lucene_Search_Query_Wildcard($pattern);
+      $pattern = new Zend\Search\Lucene\Index\Term('test*');
+      $query = new Zend\Search\Lucene\Search\Query\Wildcard($pattern);
       $hits  = $index->find($query);
 
 
@@ -362,8 +362,8 @@ or
    .. code-block:: php
       :linenos:
 
-      $term = new Zend_Search_Lucene_Index_Term('test', 'field1');
-      $query = new Zend_Search_Lucene_Search_Query_Fuzzy($term);
+      $term = new Zend\Search\Lucene\Index\Term('test', 'field1');
+      $query = new Zend\Search\Lucene\Search\Query\Fuzzy($term);
       $hits  = $index->find($query);
 
 
@@ -386,20 +386,20 @@ or
    .. code-block:: php
       :linenos:
 
-      $term = new Zend_Search_Lucene_Index_Term('test', 'field1');
-      $query = new Zend_Search_Lucene_Search_Query_Fuzzy($term, 0.4);
+      $term = new Zend\Search\Lucene\Index\Term('test', 'field1');
+      $query = new Zend\Search\Lucene\Search\Query\Fuzzy($term, 0.4);
       $hits  = $index->find($query);
 
 
 
 単語のフィールドはオプションです。 このフィールドを省略した場合、
-``Zend_Search_Lucene`` は各ドキュメントのすべてのフィールドを検索します。
+``Zend\Search\Lucene`` は各ドキュメントのすべてのフィールドを検索します。
 
    .. code-block:: php
       :linenos:
 
-      $term = new Zend_Search_Lucene_Index_Term('test');
-      $query = new Zend_Search_Lucene_Search_Query_Fuzzy($term);
+      $term = new Zend\Search\Lucene\Index\Term('test');
+      $query = new Zend\Search\Lucene\Search\Query\Fuzzy($term);
       $hits  = $index->find($query);
 
 
@@ -422,44 +422,44 @@ or
 .. code-block:: php
    :linenos:
 
-   $query1 = new Zend_Search_Lucene_Search_Query_Phrase();
+   $query1 = new Zend\Search\Lucene\Search\Query\Phrase();
 
    // 'word1' を 0 番目の位置に追加します。
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word1'));
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word1'));
 
    // 'word2' を 1 番目の位置に追加します。
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word2'));
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word2'));
 
    // 'word3' を 3 番目の位置に追加します。
-   $query1->addTerm(new Zend_Search_Lucene_Index_Term('word3'), 3);
+   $query1->addTerm(new Zend\Search\Lucene\Index\Term('word3'), 3);
 
    ...
 
-   $query2 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query2 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2', 'word3'), array(0,1,3));
 
    ...
 
    // 隙間をあけないクエリ
-   $query3 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query3 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2', 'word3'));
 
    ...
 
-   $query4 = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query4 = new Zend\Search\Lucene\Search\Query\Phrase(
                    array('word1', 'word2'), array(0,1), 'annotation');
 
 フレーズクエリを作成するには、コンストラクタで一気に構築してしまう方法と
-``Zend_Search_Lucene_Search_Query_Phrase::addTerm()`` メソッドでひとつひとつ作成する方法に 2
+``Zend\Search\Lucene\Search\Query\Phrase::addTerm()`` メソッドでひとつひとつ作成する方法に 2
 通りがあります。
 
-``Zend_Search_Lucene_Search_Query_Phrase`` クラスのコンストラクタで、 オプションの 3
+``Zend\Search\Lucene\Search\Query\Phrase`` クラスのコンストラクタで、 オプションの 3
 つの引数を指定できます。
 
 .. code-block:: php
    :linenos:
 
-   Zend_Search_Lucene_Search_Query_Phrase(
+   Zend\Search\Lucene\Search\Query\Phrase(
        [array $terms[, array $offsets[, string $field]]]
    );
 
@@ -482,14 +482,14 @@ or
    :linenos:
 
    $query =
-       new Zend_Search_Lucene_Search_Query_Phrase(array('zend', 'framework'));
+       new Zend\Search\Lucene\Search\Query\Phrase(array('zend', 'framework'));
 
 は 'zend framework' を検索します。
 
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query = new Zend\Search\Lucene\Search\Query\Phrase(
                     array('zend', 'download'), array(0, 2)
                 );
 
@@ -499,20 +499,20 @@ download'、'zend framework download' などがマッチします
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase(
+   $query = new Zend\Search\Lucene\Search\Query\Phrase(
                     array('zend', 'framework'), null, 'title'
                 );
 
 は 'title' フィールドから 'zend framework' を検索します。
 
-``Zend_Search_Lucene_Search_Query_Phrase::addTerm()`` メソッドは 2 つの引数をとります。
-``Zend_Search_Lucene_Index_Term`` オブジェクトが必須で、position はオプションです。
+``Zend\Search\Lucene\Search\Query\Phrase::addTerm()`` メソッドは 2 つの引数をとります。
+``Zend\Search\Lucene\Index\Term`` オブジェクトが必須で、position はオプションです。
 
 .. code-block:: php
    :linenos:
 
-   Zend_Search_Lucene_Search_Query_Phrase::addTerm(
-       Zend_Search_Lucene_Index_Term $term[, integer $position]
+   Zend\Search\Lucene\Search\Query\Phrase::addTerm(
+       Zend\Search\Lucene\Index\Term $term[, integer $position]
    );
 
 ``$term`` はフレーズ内の次の単語を指定します。
@@ -526,18 +526,18 @@ download'、'zend framework download' などがマッチします
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase();
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'));
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'));
+   $query = new Zend\Search\Lucene\Search\Query\Phrase();
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('zend'));
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('framework'));
 
 は 'zend framework' を検索します。
 
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase();
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('zend'), 0);
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('framework'), 2);
+   $query = new Zend\Search\Lucene\Search\Query\Phrase();
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('zend'), 0);
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('framework'), 2);
 
 は 'zend ????? download' を検索し、'zend platform download' や 'zend studio download'、 'zend core
 download'、'zend framework download' などがマッチします
@@ -545,9 +545,9 @@ download'、'zend framework download' などがマッチします
 .. code-block:: php
    :linenos:
 
-   $query = new Zend_Search_Lucene_Search_Query_Phrase();
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('zend', 'title'));
-   $query->addTerm(new Zend_Search_Lucene_Index_Term('framework', 'title'));
+   $query = new Zend\Search\Lucene\Search\Query\Phrase();
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('zend', 'title'));
+   $query->addTerm(new Zend\Search\Lucene\Index\Term('framework', 'title'));
 
 は 'title' フィールドから 'zend framework' を検索します。
 
@@ -573,7 +573,7 @@ NEAR 演算子と同様な動作となります。
 
    // 隙間をあけないクエリ
    $query =
-       new Zend_Search_Lucene_Search_Query_Phrase(array('word1', 'word2'));
+       new Zend\Search\Lucene\Search\Query\Phrase(array('word1', 'word2'));
 
    // 'word1 word2'、'word1 ... word2' を検索します
    $query->setSlop(1);
@@ -609,24 +609,24 @@ NEAR 演算子と同様な動作となります。
    .. code-block:: php
       :linenos:
 
-      $from = new Zend_Search_Lucene_Index_Term('20020101', 'mod_date');
-      $to   = new Zend_Search_Lucene_Index_Term('20030101', 'mod_date');
-      $query = new Zend_Search_Lucene_Search_Query_Range(
+      $from = new Zend\Search\Lucene\Index\Term('20020101', 'mod_date');
+      $to   = new Zend\Search\Lucene\Index\Term('20030101', 'mod_date');
+      $query = new Zend\Search\Lucene\Search\Query\Range(
                        $from, $to, true // inclusive
                    );
       $hits  = $index->find($query);
 
 
 
-フィールドの指定はオプションです。省略した場合は、 ``Zend_Search_Lucene``
+フィールドの指定はオプションです。省略した場合は、 ``Zend\Search\Lucene``
 は全フィールドを対象に検索を行います。
 
    .. code-block:: php
       :linenos:
 
-      $from = new Zend_Search_Lucene_Index_Term('Aida');
-      $to   = new Zend_Search_Lucene_Index_Term('Carmen');
-      $query = new Zend_Search_Lucene_Search_Query_Range(
+      $from = new Zend\Search\Lucene\Index\Term('Aida');
+      $to   = new Zend\Search\Lucene\Index\Term('Carmen');
+      $query = new Zend\Search\Lucene\Search\Query\Range(
                        $from, $to, false // non-inclusive
                    );
       $hits  = $index->find($query);
@@ -634,7 +634,7 @@ NEAR 演算子と同様な動作となります。
 
 
 上限あるいは下限のどちらか一方を ``NULL`` にできます (両方を ``NULL``
-にすることはできません)。この場合、Zend_Search_Lucene
+にすることはできません)。この場合、Zend\Search\Lucene
 は「先頭から指定した値まで」あるいは「指定した値から最後まで」
 という条件で検索します。
 
@@ -642,8 +642,8 @@ NEAR 演算子と同様な動作となります。
       :linenos:
 
       // searches for ['20020101' TO ...]
-      $from = new Zend_Search_Lucene_Index_Term('20020101', 'mod_date');
-      $query = new Zend_Search_Lucene_Search_Query_Range(
+      $from = new Zend\Search\Lucene\Index\Term('20020101', 'mod_date');
+      $query = new Zend\Search\Lucene\Search\Query\Range(
                        $from, null, true // inclusive
                    );
       $hits  = $index->find($query);

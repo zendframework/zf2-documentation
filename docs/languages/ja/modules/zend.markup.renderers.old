@@ -19,9 +19,9 @@ Zend_Markup レンダラー
 .. code-block:: php
    :linenos:
 
-   // Zend_Markup_Parser_BbCode をパーサーとして、
-   // Zend_Markup_Renderer_Html のインスタンスを生成します。
-   $bbcode = Zend_Markup::factory('Bbcode');
+   // Zend\Markup_Parser\BbCode をパーサーとして、
+   // Zend\Markup_Renderer\Html のインスタンスを生成します。
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    // これは単純な 'foo' タグが作成されるでしょう
    // 第一引数は自身のタグ名を定義します。
@@ -30,7 +30,7 @@ Zend_Markup レンダラー
    // 他のことを配列にて定義します。
    $bbcode->addTag(
        'foo',
-       Zend_Markup_Renderer_RendererAbstract::TYPE_REPLACE,
+       Zend\Markup_Renderer\RendererAbstract::TYPE_REPLACE,
        array(
            'start' => '-bar-',
            'end'   => '-baz-',
@@ -56,16 +56,16 @@ Add a callback tag
 By adding a callback tag, you can do a lot more then just a simple replace of the tags. For instance, you can
 change the contents, use the parameters to influence the output etc.
 
-A callback is a class that implements the ``Zend_Markup_Renderer_TokenInterface`` interface. An example of a
+A callback is a class that implements the ``Zend\Markup_Renderer\TokenInterface`` interface. An example of a
 callback class:
 
 .. code-block:: php
    :linenos:
 
-   class My_Markup_Renderer_Html_Upper extends Zend_Markup_Renderer_TokenConverterInterface
+   class My_Markup_Renderer_Html_Upper extends Zend\Markup_Renderer\TokenConverterInterface
    {
 
-       public function convert(Zend_Markup_Token $token, $text)
+       public function convert(Zend\Markup\Token $token, $text)
        {
            return '!up!' . strtoupper($text) . '!up!';
        }
@@ -78,9 +78,9 @@ simple example:
 .. code-block:: php
    :linenos:
 
-   // Creates instance of Zend_Markup_Renderer_Html,
-   // with Zend_Markup_Parser_BbCode as its parser
-   $bbcode = Zend_Markup::factory('Bbcode');
+   // Creates instance of Zend\Markup_Renderer\Html,
+   // with Zend\Markup_Parser\BbCode as its parser
+   $bbcode = Zend\Markup\Markup::factory('Bbcode');
 
    // this will create a simple 'foo' tag
    // The first parameter defines the tag's name.
@@ -89,7 +89,7 @@ simple example:
    // tag, like the tag's group, and (in this case) a start and end tag.
    $bbcode->addTag(
        'upper',
-       Zend_Markup_Renderer_RendererAbstract::TYPE_CALLBACK,
+       Zend\Markup_Renderer\RendererAbstract::TYPE_CALLBACK,
        array(
            'callback' => new My_Markup_Renderer_Html_Upper(),
            'group'    => 'inline'

@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.ebs:
 
-Zend_Service_Amazon_Ec2: Elastischer Block Speicher (EBS)
+Zend\Service_Amazon\Ec2: Elastischer Block Speicher (EBS)
 =========================================================
 
 Amazon Elastischer Block Speicher (Amazon EBS) ist ein neuer Typ an Speicher der speziell für Amazon EC2 Instanzen
@@ -35,7 +35,7 @@ volumeId, size, zone, status und createTime.
 .. code-block:: php
    :linenos:
 
-   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $ec2_ebs = new Zend\Service\Amazon\Ec2\Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->createNewVolume(40, 'us-east-1a');
 
 .. _zend.service.amazon.ec2.ebs.creating.volumesnapshot:
@@ -51,7 +51,7 @@ createTime und snapshotId.
 .. code-block:: php
    :linenos:
 
-   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $ec2_ebs = new Zend\Service\Amazon\Ec2\Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->createVolumeFromSnapshot('snap-78a54011', 'us-east-1a');
 
 .. _zend.service.amazon.ec2.ebs.creating.snapshot:
@@ -66,7 +66,7 @@ beinhaltet snapshotId, volumeId, status, startTime und progress.
 .. code-block:: php
    :linenos:
 
-   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $ec2_ebs = new Zend\Service\Amazon\Ec2\Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->createSnapshot('volumeId');
 
 .. _zend.service.amazon.ec2.ebs.describing:
@@ -90,7 +90,7 @@ ist. Diese enthalten volumeId, instanceId, device, status und attachTime.
 .. code-block:: php
    :linenos:
 
-   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $ec2_ebs = new Zend\Service\Amazon\Ec2\Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->describeVolume('volumeId');
 
 .. _zend.service.amazon.ec2.ebs.describing.attachedvolumes:
@@ -107,7 +107,7 @@ Volumes die der spezifizierten instanceId aktuell angehängt sind.
 .. code-block:: php
    :linenos:
 
-   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $ec2_ebs = new Zend\Service\Amazon\Ec2\Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->describeAttachedVolumes('instanceId');
 
 .. _zend.service.amazon.ec2.ebs.describing.snapshot:
@@ -125,7 +125,7 @@ snapshotId, volumeId, status, startTime und progress.
 .. code-block:: php
    :linenos:
 
-   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $ec2_ebs = new Zend\Service\Amazon\Ec2\Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->describeSnapshot('volumeId');
 
 .. _zend.service.amazon.ec2.ebs.attachdetach:
@@ -146,7 +146,7 @@ volumeId, instanceId, device, status und attachTime.
 .. code-block:: php
    :linenos:
 
-   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $ec2_ebs = new Zend\Service\Amazon\Ec2\Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->attachVolume('volumeId', 'instanceid', '/dev/sdh');
 
 .. _zend.service.amazon.ec2.ebs.attachdetach.detach:
@@ -164,7 +164,7 @@ instanceId, device, status und attachTime.
 .. code-block:: php
    :linenos:
 
-   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $ec2_ebs = new Zend\Service\Amazon\Ec2\Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->detachVolume('volumeId');
 
 .. note::
@@ -194,7 +194,7 @@ EBS Volumes und Snapshots löschen
 .. code-block:: php
    :linenos:
 
-   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $ec2_ebs = new Zend\Service\Amazon\Ec2\Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->deleteVolume('volumeId');
 
 .. _zend.service.amazon.ec2.ebs.deleting.snapshot:
@@ -208,7 +208,7 @@ EBS Volumes und Snapshots löschen
 .. code-block:: php
    :linenos:
 
-   $ec2_ebs = new Zend_Service_Amazon_Ec2_Ebs('aws_key','aws_secret_key');
+   $ec2_ebs = new Zend\Service\Amazon\Ec2\Ebs('aws_key','aws_secret_key');
    $return = $ec2_ebs->deleteSnapshot('snapshotId');
 
 

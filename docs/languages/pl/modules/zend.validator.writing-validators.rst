@@ -8,20 +8,20 @@ Zend_Validate zapewnia zestaw najczęściej potrzebnych weryfikatorów, ale prog
 napisać własne weryfikatory dla ich szczególnych zastosowań. Zadanie pisania własnego filtru jest opisane w
 tej sekcji.
 
-Interfejs *Zend_Validate_Interface* definiuje trzy metody, *isValid()*, *getMessages()* oraz *getErrors()*, które
+Interfejs *Zend\Validate\Interface* definiuje trzy metody, *isValid()*, *getMessages()* oraz *getErrors()*, które
 mogą być zaimplementowane przez klasę użytkownika w celu utworzenia własnych obiektów weryfikujących.
-Obiekt, który implementuje interfejs *Zend_Validate_Interface* może być dodany do łańcucha weryfikatorów za
-pomocą metody *Zend_Validate::addValidator()*. Taki obiekt może być także użyty przez klasę
-:ref:`Zend_Filter_Input <zend.filter.input>`.
+Obiekt, który implementuje interfejs *Zend\Validate\Interface* może być dodany do łańcucha weryfikatorów za
+pomocą metody *Zend\Validate\Validate::addValidator()*. Taki obiekt może być także użyty przez klasę
+:ref:`Zend\Filter\Input <zend.filter.input>`.
 
-As you may already have inferred from the above description of *Zend_Validate_Interface*, validation classes
+As you may already have inferred from the above description of *Zend\Validate\Interface*, validation classes
 provided with Zend Framework return a boolean value for whether or not a value validates successfully. They also
 provide information about **why** a value failed validation. The availability of the reasons for validation
 failures may be valuable to an application for various purposes, such as providing statistics for usability
 analysis.
 
-Basic validation failure message functionality is implemented in *Zend_Validate_Abstract*. To include this
-functionality when creating a validation class, simply extend *Zend_Validate_Abstract*. In the extending class you
+Basic validation failure message functionality is implemented in *Zend\Validate\Abstract*. To include this
+functionality when creating a validation class, simply extend *Zend\Validate\Abstract*. In the extending class you
 would implement the *isValid()* method logic and define the message variables and message templates that correspond
 to the types of validation failures that can occur. If a value fails your validation tests, then *isValid()* should
 return *false*. If the value passes your validation tests, then *isValid()* should return *true*.
@@ -41,7 +41,7 @@ rules are simply that the input value must be a floating point value.
    .. code-block:: php
       :linenos:
 
-      class MyValid_Float extends Zend_Validate_Abstract
+      class MyValid_Float extends Zend\Validate\Abstract
       {
           const FLOAT = 'float';
 
@@ -92,7 +92,7 @@ These validation failure reasons are then translated to definitions in the class
    .. code-block:: php
       :linenos:
 
-      class MyValid_NumericBetween extends Zend_Validate_Abstract
+      class MyValid_NumericBetween extends Zend\Validate\Abstract
       {
           const MSG_NUMERIC = 'msgNumeric';
           const MSG_MINIMUM = 'msgMinimum';
@@ -172,7 +172,7 @@ The following class implements these validation criteria:
    .. code-block:: php
       :linenos:
 
-      class MyValid_PasswordStrength extends Zend_Validate_Abstract
+      class MyValid_PasswordStrength extends Zend\Validate\Abstract
       {
           const LENGTH = 'length';
           const UPPER  = 'upper';

@@ -15,7 +15,7 @@ es als Datei zu speichern oder an einen Server zu senden.
 .. code-block:: php
    :linenos:
 
-   $feed = new Zend_Feed_Atom('http://atom.example.com/feed/1');
+   $feed = new Zend\Feed\Atom('http://atom.example.com/feed/1');
    $entry = $feed->current();
 
    $entry->title = 'Dies ist ein neuer Titel';
@@ -31,7 +31,7 @@ kannst soviele Ebenen von ``->`` Verweisen verwenden, wie Du möchtest, um auf e
 alle dieser zwischengeschalteten Stufen werden automatisch für dich erstellt wenn notwendig.
 
 Wenn du einen anderen Namensraum als ``atom:``, ``rss:``, oder ``osrss:`` in deinem Eintrag verwenden möchtest,
-musst du den Namensraum mit ``Zend_Feed`` durch die Verwendung von ``Zend_Feed::registerNamespace()`` registrieren.
+musst du den Namensraum mit ``Zend_Feed`` durch die Verwendung von ``Zend\Feed\Feed::registerNamespace()`` registrieren.
 Wenn du ein bestehendes Element veränderst, wird es immer den ursprünglichen Namensraum beibehalten. Wenn du ein
 neues Element hinzufügst, wird es den standardmäßigen Namensraum verwenden, wenn du nicht explizit einen anderen
 Namensraum festgelegt hast.
@@ -43,14 +43,14 @@ Namensraum festgelegt hast.
 .. code-block:: php
    :linenos:
 
-   $entry = new Zend_Feed_Entry_Atom();
+   $entry = new Zend\Feed_Entry\Atom();
    // Die ID wird immer vom Server in Atom zugewiesen
    $entry->title = 'mein eigener Eintrag';
    $entry->author->name = 'Beispiel Autor';
    $entry->author->email = 'me@example.com';
 
    // Nun erledige den eigenen Teil
-   Zend_Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
+   Zend\Feed\Feed::registerNamespace('myns', 'http://www.example.com/myns/1.0');
 
    $entry->{'myns:myelement_one'} = 'mein erster eigener Wert ';
    $entry->{'myns:container_elt'}->part1 = 'Erster verschachtelter Teil';

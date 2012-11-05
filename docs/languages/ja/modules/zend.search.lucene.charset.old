@@ -9,12 +9,12 @@
 UTF-8 およびシングルバイト文字セットのサポート
 --------------------------
 
-``Zend_Search_Lucene`` は、内部的には UTF-8 文字セットで動作します。
+``Zend\Search\Lucene`` は、内部的には UTF-8 文字セットで動作します。
 インデックスファイルには、unicode のデータが Java の "modified UTF-8 encoding"
-で保存されます。 ``Zend_Search_Lucene``
+で保存されます。 ``Zend\Search\Lucene``
 はこの文字セットを完全にサポートしていますが、 ひとつだけ例外があります。 [#]_
 
-実際の入力データのエンコーディングを指定するには ``Zend_Search_Lucene`` の *API*
+実際の入力データのエンコーディングを指定するには ``Zend\Search\Lucene`` の *API*
 を使用します。 データは、自動的に UTF-8 エンコーディングに変換されます。
 
 .. _zend.search.lucene.charset.default_analyzer:
@@ -39,10 +39,10 @@ ctype_alpha() は UTF-8 と互換性がありません。 したがって、こ�
 UTF-8 互換のテキスト解析器
 ----------------
 
-``Zend_Search_Lucene`` には、 ``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8``\ 、
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8Num``\ 、
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive``\ 、
-``Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8Num_CaseInsensitive`` といった UTF-8
+``Zend\Search\Lucene`` には、 ``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8``\ 、
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8Num``\ 、
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8\CaseInsensitive``\ 、
+``Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8Num\CaseInsensitive`` といった UTF-8
 解析器も含まれています。
 
 これを有効にするには、以下のようなコードを使用します。
@@ -50,8 +50,8 @@ UTF-8 互換のテキスト解析器
    .. code-block:: php
       :linenos:
 
-      Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-          new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+      Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+          new Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8());
 
 
 
@@ -102,22 +102,22 @@ PCRE が UTF-8 に対応しているかどうかを調べるには、次のコ�
 
       ...
 
-      Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-          new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+      Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+          new Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8());
 
       ...
 
-      $doc = new Zend_Search_Lucene_Document();
+      $doc = new Zend\Search_Lucene\Document();
 
-      $doc->addField(Zend_Search_Lucene_Field::UnStored('contents',
+      $doc->addField(Zend\Search_Lucene\Field::UnStored('contents',
                                                         strtolower($contents)));
 
       // 検索用の Title フィールド (インデックス化しますが保存しません)
-      $doc->addField(Zend_Search_Lucene_Field::UnStored('title',
+      $doc->addField(Zend\Search_Lucene\Field::UnStored('title',
                                                         strtolower($title)));
 
       // 取得用の Title フィールド (インデックス化せず、保存します)
-      $doc->addField(Zend_Search_Lucene_Field::UnIndexed('_title', $title));
+      $doc->addField(Zend\Search_Lucene\Field::UnIndexed('_title', $title));
 
 
 
@@ -129,8 +129,8 @@ PCRE が UTF-8 に対応しているかどうかを調べるには、次のコ�
 
       ...
 
-      Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-          new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+      Zend\Search\Lucene\Analysis\Analyzer::setDefault(
+          new Zend\Search\Lucene\Analysis\Analyzer\Common\Utf8());
 
       ...
 
@@ -142,7 +142,7 @@ PCRE が UTF-8 に対応しているかどうかを調べるには、次のコ�
 
 .. _`mbstring`: http://www.php.net/manual/ja/ref.mbstring.php
 
-.. [#] ``Zend_Search_Lucene`` では Basic Multilingual Plane (BMP) 文字 (0x0000 から 0xFFFF まで)
+.. [#] ``Zend\Search\Lucene`` では Basic Multilingual Plane (BMP) 文字 (0x0000 から 0xFFFF まで)
        のみをサポートしており、 "supplementary characters" (コードポイントが 0xFFFF
        より大きい文字) はサポートしていません。
 

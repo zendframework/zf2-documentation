@@ -8,9 +8,9 @@
 שרת אשר נעזרות ב SOAP או REST לדוגמא.
 
 אם הינך דורש תמיכה בשירותי REST אשר מבוססים על XML, תרצה לעיין ב
-:ref:`Zend_Rest_Client <zend.rest.client>`.
+:ref:`Zend\Rest\Client <zend.rest.client>`.
 
-בנוסף כדי להרחיב את *Zend_Service* ולהשתמש ב *Zend_Rest_Client* עבור שירותים
+בנוסף כדי להרחיב את *Zend_Service* ולהשתמש ב *Zend\Rest\Client* עבור שירותים
 המבוססים על REST, Zend מאפשרת גם תמיכה בשירותים פופולרים. ראו את
 החלק הבא לגבי מידע אודות כל אחד מהשירותים.
 

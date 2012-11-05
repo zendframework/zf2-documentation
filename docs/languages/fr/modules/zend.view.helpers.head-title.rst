@@ -32,7 +32,7 @@ action et ressources potentielles.
 
    // Paramétrage des noms de contrôleurs et d'action
    // en tant que segment de titre :
-   $request = Zend_Controller_Front::getInstance()->getRequest();
+   $request = Zend\Controller\Front::getInstance()->getRequest();
    $this->headTitle($request->getActionName())
         ->headTitle($request->getControllerName());
 

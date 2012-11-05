@@ -4,14 +4,14 @@
 Int
 ===
 
-``Zend_Filter_Int`` erlaubt es einen skalaren Wert in einen Integer Wert zu konvertieren.
+``Zend\Filter\Int`` erlaubt es einen skalaren Wert in einen Integer Wert zu konvertieren.
 
 .. _zend.filter.set.int.options:
 
-Unterstützte Optionen für Zend_Filter_Int
+Unterstützte Optionen für Zend\Filter\Int
 -----------------------------------------
 
-Es gibt keine zusätzlichen Optionen für ``Zend_Filter_Int``.
+Es gibt keine zusätzlichen Optionen für ``Zend\Filter\Int``.
 
 .. _zend.filter.set.int.basic:
 
@@ -23,7 +23,7 @@ Ein einfaches Beispiel der Verwendung ist nachfolgend zu finden:
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend_Filter_Int();
+   $filter = new Zend\Filter\Int();
 
    print $filter->filter('-4 ist weniger als 0');
 

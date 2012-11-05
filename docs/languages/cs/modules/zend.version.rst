@@ -4,9 +4,9 @@
 Získání informací o verzi Zend Frameworku
 =========================================
 
-Hodnotou konstanty *Zend_Version::VERSION* je řetězec označující aktuální číslo verze, např. "0.9.0beta".
+Hodnotou konstanty *Zend\Version\Version::VERSION* je řetězec označující aktuální číslo verze, např. "0.9.0beta".
 
-Statická metoda *Zend_Version::compareVersion($version)* pracuje s funkcí `version_compare()`_. Tato metoda
+Statická metoda *Zend\Version\Version::compareVersion($version)* pracuje s funkcí `version_compare()`_. Tato metoda
 vrací -1 v případě, že parametr *$version* udává starší verzi, než je aktuální verze Zend Frameworku, 0
 pokud je verze stejná a +1 v případě, že parametr *$version* označuje novější verzi Zend Frameworku.
 
@@ -20,7 +20,7 @@ pokud je verze stejná a +1 v případě, že parametr *$version* označuje nov�
    <?php
 
    // vrací -1, 0, nebo 1
-   $cmp = Zend_Version::compareVersion('1.0.0');
+   $cmp = Zend\Version\Version::compareVersion('1.0.0');
 
    ?>
 

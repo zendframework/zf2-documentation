@@ -4,15 +4,15 @@
 RSS フィードの使用
 ===========
 
-*RSS* フィードの読み込みは、フィードの *URL* を指定して ``Zend_Feed_Rss``
+*RSS* フィードの読み込みは、フィードの *URL* を指定して ``Zend\Feed\Rss``
 のインスタンスを作成するのと同じくらい簡単です。
 
 .. code-block:: php
    :linenos:
 
-   $channel = new Zend_Feed_Rss('http://rss.example.com/channelName');
+   $channel = new Zend\Feed\Rss('http://rss.example.com/channelName');
 
-フィードの取得時にエラーが発生した場合は ``Zend_Feed_Exception`` がスローされます。
+フィードの取得時にエラーが発生した場合は ``Zend\Feed\Exception`` がスローされます。
 
 フィードオブジェクトを取得すると、標準的な *RSS* の "channel"
 プロパティに対して直接アクセスできるようになります。
@@ -39,7 +39,7 @@ RSS フィードの使用
 属性値へアクセスする際にメソッド構文を使用する必要はありません。
 
 たいていの場合は、フィードをループさせたうえで、
-個々のエントリに対して何かをすることになるでしょう。 ``Zend_Feed_Abstract`` は *PHP* の
+個々のエントリに対して何かをすることになるでしょう。 ``Zend\Feed\Abstract`` は *PHP* の
 *Iterator* インターフェイスを実装しているので、
 例えばチャネル内の全記事のタイトルを表示するには単にこのようにするだけです。
 

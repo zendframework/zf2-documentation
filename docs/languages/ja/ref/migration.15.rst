@@ -53,7 +53,7 @@ camelCasing 形式のアクションメソッド名を作成します。 しか�
   もし対象となるビュースクリプトが多い場合は、
   多くのファイルの名前を変更しなければならなくなります。
 
-- その次にいい方法: ViewRenderer はビュースクリプトの解決を ``Zend_Filter_Inflector``
+- その次にいい方法: ViewRenderer はビュースクリプトの解決を ``Zend\Filter\Inflector``
   に委譲しています。 インフレクタのルールを変更し、
   アクションの単語間をダッシュで区切らないようにします。
 
@@ -61,10 +61,10 @@ camelCasing 形式のアクションメソッド名を作成します。 しか�
      :linenos:
 
      $viewRenderer =
-         Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
+         Zend\Controller_Action\HelperBroker::getStaticHelper('viewRenderer');
      $inflector = $viewRenderer->getInflector();
      $inflector->setFilterRule(':action', array(
-         new Zend_Filter_PregReplace(
+         new Zend\Filter\PregReplace(
              '#[^a-z0-9' . preg_quote(DIRECTORY_SEPARATOR, '#') . ']+#i',
              ''
          ),

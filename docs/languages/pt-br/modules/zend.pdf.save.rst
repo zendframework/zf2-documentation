@@ -4,14 +4,14 @@
 Salvar Mudanças em Documentos PDF
 =================================
 
-Existem dois métodos que salvam as mudanças feitas em documentos *PDF*: os métodos ``Zend_Pdf::save()`` e
-``Zend_Pdf::render()``.
+Existem dois métodos que salvam as mudanças feitas em documentos *PDF*: os métodos ``ZendPdf\Pdf::save()`` e
+``ZendPdf\Pdf::render()``.
 
-``Zend_Pdf::save($filename, $updateOnly = false)`` salva o documento *PDF* em um arquivo. Se $updateOnly for
+``ZendPdf\Pdf::save($filename, $updateOnly = false)`` salva o documento *PDF* em um arquivo. Se $updateOnly for
 ``TRUE``, então apenas o novo segmento do arquivo *PDF* será acrescentado ao arquivo. De outra forma, o arquivo
 é sobrescrito.
 
-``Zend_Pdf::render($newSegmentOnly = false)`` retorna o documento *PDF* como uma string. Se $newSegmentOnly for
+``ZendPdf\Pdf::render($newSegmentOnly = false)`` retorna o documento *PDF* como uma string. Se $newSegmentOnly for
 ``TRUE``, então apenas o novo segmento do arquivo *PDF* será retornado.
 
 .. _zend.pdf.save.example-1:
@@ -23,7 +23,7 @@ Existem dois métodos que salvam as mudanças feitas em documentos *PDF*: os mé
 
    ...
    // Carrega o documento PDF
-   $pdf = Zend_Pdf::load($fileName);
+   $pdf = ZendPdf\Pdf::load($fileName);
    ...
    // Atualiza o documento PDF
    $pdf->save($fileName, true);
