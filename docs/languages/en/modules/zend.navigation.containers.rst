@@ -37,12 +37,12 @@ the container class, which means that each element in the array/config can be an
        array(
            'label' => 'Page 1',
            'id' => 'home-link',
-           'uri' => '/'
+           'uri' => '/',
        ),
        array(
            'label' => 'Zend',
            'uri' => 'http://www.zend-project.com/',
-           'order' => 100
+           'order' => 100,
        ),
        array(
            'label' => 'Page 2',
@@ -54,25 +54,25 @@ the container class, which means that each element in the array/config can be an
                    'controller' => 'page2',
                    'class' => 'special-one',
                    'title' => 'This element has a special class',
-                   'active' => true
+                   'active' => true,
                ),
                array(
                    'label' => 'Page 2.2',
                    'action' => 'page2_2',
                    'controller' => 'page2',
                    'class' => 'special-two',
-                   'title' => 'This element has a special class too'
-               )
-           )
+                   'title' => 'This element has a special class too',
+               ),
+           ),
        ),
        array(
            'label' => 'Page 2 with params',
            'action' => 'index',
            'controller' => 'page2',
-           // specify a param or two
+           // specify a param or two,
            'params' => array(
                'format' => 'json',
-               'foo' => 'bar'
+               'foo' => 'bar',
            )
        ),
        array(
@@ -82,15 +82,15 @@ the container class, which means that each element in the array/config can be an
            // specify a route name and a param for the route
            'route' => 'nav-route-example',
            'params' => array(
-               'format' => 'json'
-           )
+               'format' => 'json',
+           ),
        ),
        array(
            'label' => 'Page 3',
            'action' => 'index',
            'controller' => 'index',
            'module' => 'mymodule',
-           'reset_params' => false
+           'reset_params' => false,
        ),
        array(
            'label' => 'Page 4',
@@ -107,17 +107,17 @@ the container class, which means that each element in the array/config can be an
                            'action' => 'index',
                            'controller' => 'page4',
                            // let's say this page is active
-                           'active' => '1'
+                           'active' => '1',
                        )
-                   )
-               )
-           )
+                   ),
+               ),
+           ),
        ),
        array(
            'label' => 'Page 0?',
            'uri' => '/setting/the/order/option',
            // setting order to -1 should make it appear first
-           'order' => -1
+           'order' => -1,
        ),
        array(
            'label' => 'Page 5',
@@ -137,13 +137,13 @@ the container class, which means that each element in the array/config can be an
                                    'label' => 'Page 5.1.2',
                                    'uri' => '#',
                                    // let's say this page is active
-                                   'active' => true
-                               )
-                           )
-                       )
-                   )
-               )
-           )
+                                   'active' => true,
+                               ),
+                           ),
+                       ),
+                   ),
+               ),
+           ),
        ),
        array(
            'label' => 'ACL page 1 (guest)',
@@ -153,29 +153,29 @@ the container class, which means that each element in the array/config can be an
                array(
                    'label' => 'ACL page 1.1 (foo)',
                    'uri' => '#acl-foo',
-                   'resource' => 'nav-foo'
+                   'resource' => 'nav-foo',
                ),
                array(
                    'label' => 'ACL page 1.2 (bar)',
                    'uri' => '#acl-bar',
-                   'resource' => 'nav-bar'
+                   'resource' => 'nav-bar',
                ),
                array(
                    'label' => 'ACL page 1.3 (baz)',
                    'uri' => '#acl-baz',
-                   'resource' => 'nav-baz'
+                   'resource' => 'nav-baz',
                ),
                array(
                    'label' => 'ACL page 1.4 (bat)',
                    'uri' => '#acl-bat',
-                   'resource' => 'nav-bat'
-               )
-           )
+                   'resource' => 'nav-bat',
+               ),
+           ),
        ),
        array(
            'label' => 'ACL page 2 (member)',
            'uri' => '#acl-member',
-           'resource' => 'nav-member'
+           'resource' => 'nav-member',
        ),
        array(
            'label' => 'ACL page 3 (admin',
@@ -184,14 +184,14 @@ the container class, which means that each element in the array/config can be an
            'pages' => array(
                array(
                    'label' => 'ACL page 3.1 (nothing)',
-                   'uri' => '#acl-nada'
-               )
-           )
+                   'uri' => '#acl-nada',
+               ),
+           ),
        ),
        array(
            'label' => 'Zend Framework',
-           'route' => 'zf-route'
-       )
+           'route' => 'zf-route',
+       ),
    ));
 
 .. _zend.navigation.containers.creating.example.config:
@@ -410,28 +410,38 @@ examples below for explanation.
    $container = new Zend\Navigation();
 
    // add page by giving a page instance
-   $container->addPage(Zend\Navigation\Page::factory(array(
-       'uri' => 'http://www.example.com/'
-   )))
+   $container->addPage(
+       Zend\Navigation\Page::factory(
+           array(
+               'uri' => 'http://www.example.com/',
+           )
+       )
+   );
 
    // add page by giving an array
-   $container->addPage(array(
-       'uri' => 'http://www.example.com/'
-   )))
+   $container->addPage(
+       array(
+           'uri' => 'http://www.example.com/',
+       )
+   );
 
    // add page by giving a config object
-   $container->addPage(new Zend\Config(array(
-       'uri' => 'http://www.example.com/'
-   )))
+   $container->addPage(
+       new Zend\Config(
+           array(
+               'uri' => 'http://www.example.com/',
+           )
+       )
+   );
 
    $pages = array(
        array(
-           'label'  => 'Save'
+           'label'  => 'Save',
            'action' => 'save',
        ),
        array(
            'label' =>  'Delete',
-           'action' => 'delete'
+           'action' => 'delete',
        )
    );
 
@@ -460,16 +470,16 @@ in the container.
    $container = new Zend\Navigation(array(
        array(
            'label'  => 'Page 1',
-           'action' => 'page1'
+           'action' => 'page1',
        ),
        array(
            'label'  => 'Page 2',
            'action' => 'page2',
-           'order'  => 200
+           'order'  => 200,
        ),
        array(
            'label'  => 'Page 3',
-           'action' => 'page3'
+           'action' => 'page3',
        )
    ));
 
@@ -530,7 +540,7 @@ also work on custom properties, such as ``findByFoo('bar')``.
                    'type'   => 'uri',
                    'label'  => 'Page 1.3',
                    'uri'    => 'page-1.3',
-                   'action' => 'about'
+                   'action' => 'about',
                )
            )
        ),
@@ -540,14 +550,14 @@ also work on custom properties, such as ``findByFoo('bar')``.
            'class'      => 'my-class',
            'module'     => 'page2',
            'controller' => 'index',
-           'action'     => 'page1'
+           'action'     => 'page1',
        ),
        array(
            'label'      => 'Page 3',
            'id'         => 'page_2_and_3',
            'module'     => 'page3',
-           'controller' => 'index'
-       )
+           'controller' => 'index',
+       ),
    ));
 
    // The 'id' is not required to be unique, but be aware that
@@ -610,7 +620,7 @@ class. To iterate a container recursively, use the ``RecursiveIteratorIterator``
    $container = new Zend\Navigation(array(
        array(
            'label' => 'Page 1',
-           'uri'   => '#'
+           'uri'   => '#',
        ),
        array(
            'label' => 'Page 2',
@@ -618,18 +628,18 @@ class. To iterate a container recursively, use the ``RecursiveIteratorIterator``
            'pages' => array(
                array(
                    'label' => 'Page 2.1',
-                   'uri'   => '#'
+                   'uri'   => '#',
                ),
                array(
                    'label' => 'Page 2.2',
-                   'uri'   => '#'
+                   'uri'   => '#',
                )
            )
        )
        array(
            'label' => 'Page 3',
-           'uri'   => '#'
-       )
+           'uri'   => '#',
+       ),
    ));
 
    // Iterate flat using regular foreach:
@@ -668,7 +678,7 @@ and debugging.
    $container = new Zend\Navigation(array(
        array(
            'label' => 'Page 1',
-           'uri'   => '#'
+           'uri'   => '#',
        ),
        array(
            'label' => 'Page 2',
@@ -676,14 +686,14 @@ and debugging.
            'pages' => array(
                array(
                    'label' => 'Page 2.1',
-                   'uri'   => '#'
+                   'uri'   => '#',
                ),
                array(
                    'label' => 'Page 2.2',
-                  'uri'   => '#'
-               )
-           )
-       )
+                  'uri'   => '#',
+               ),
+           ),
+       ),
    ));
 
    var_dump($container->toArray());
