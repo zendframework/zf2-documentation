@@ -724,7 +724,7 @@ ZendService\\SlideShare
 ZendService\\StrikeIron
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-        * :doc:`modules/zendservice.strike-iron`
+        * :doc:`modules/zendservice.strike-iron.overview`
 
 ZendService\\Technorati
 ^^^^^^^^^^^^^^^^^^^^^^^
