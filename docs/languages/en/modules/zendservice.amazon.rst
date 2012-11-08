@@ -50,7 +50,7 @@ In this example, we search for *PHP* books at Amazon and loop through the result
 .. code-block:: php
    :linenos:
 
-   $amazon = new ZendService\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
+   $amazon = new ZendService\Amazon\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
    $results = $amazon->itemSearch(array('SearchIndex' => 'Books',
                                         'Keywords' => 'php'));
    foreach ($results as $result) {
@@ -92,7 +92,7 @@ different country, simply specify the appropriate country code string as the sec
    :linenos:
 
    // Connect to Amazon in Japan
-   $amazon = new ZendService\Amazon('AMAZON_API_KEY', 'JP', 'AMAZON_SECRET_KEY');
+   $amazon = new ZendService\Amazon\Amazon('AMAZON_API_KEY', 'JP', 'AMAZON_SECRET_KEY');
 
 .. note::
 
@@ -114,7 +114,7 @@ The ``itemLookup()`` method provides the ability to fetch a particular Amazon it
 .. code-block:: php
    :linenos:
 
-   $amazon = new ZendService\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
+   $amazon = new ZendService\Amazon\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
    $item = $amazon->itemLookup('B0000A432X');
 
 The ``itemLookup()`` method also accepts an optional second parameter for handling search options. For full
@@ -142,7 +142,7 @@ as in the following example:
 .. code-block:: php
    :linenos:
 
-   $amazon = new ZendService\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
+   $amazon = new ZendService\Amazon\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
    $results = $amazon->itemSearch(array('SearchIndex' => 'Books',
                                         'Keywords' => 'php'));
    foreach ($results as $result) {
@@ -158,7 +158,7 @@ The *ResponseGroup* option is used to control the specific information that will
 .. code-block:: php
    :linenos:
 
-   $amazon = new ZendService\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
+   $amazon = new ZendService\Amazon\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
    $results = $amazon->itemSearch(array(
        'SearchIndex'   => 'Books',
        'Keywords'      => 'php',
