@@ -59,7 +59,7 @@ To configure a given serializer adapter, you can optionally add an array or an i
        echo $e;
    }
 
-Options passed to the ``factory()`` are valid for the instantiated object. You can change these options using the
+Options passed to the ``factory()`` are valid for the instantiated class. You can change these options using the
 ``setOption(s)`` method. To change one or more options only for a single call, pass them as the second argument to
 either the ``serialize()`` or ``unserialize()`` method.
 

@@ -372,7 +372,7 @@ Optional third parameter is a highlighter object which has to implement
 Where ``Zend\Search\Lucene\Document\Html`` object is an object constructed from the source *HTML* provided to the
 ``Zend\Search\Lucene\Search\Query->highlightMatches()`` method.
 
-If ``$highlighter`` parameter is omitted, then ``Zend\Search\Lucene\Search\Highlighter\Default`` object is
+If ``$highlighter`` parameter is omitted, then ``Zend\Search\Lucene\Search\Highlighter\Default`` class is
 instantiated and used.
 
 Highlighter ``highlight()`` method is invoked once per subquery, so it has an ability to differentiate highlighting

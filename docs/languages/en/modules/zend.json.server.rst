@@ -339,7 +339,7 @@ metadata describing the service using mutators, and specify services (methods an
 
 The service descriptions themselves are typically instances of ``Zend\Json\Server\Smd\Service``; you can also pass
 all information as an array to the various service mutators in ``Zend\Json\Server\Smd``, and it will instantiate a
-service object for you. The service objects contain information such as the name of the service (typically the
+service class for you. The service objects contain information such as the name of the service (typically the
 function or method name), the parameters (names, types, and position), and the return value type. Optionally, each
 service can have its own target and envelope, though this functionality is rarely used.
 
