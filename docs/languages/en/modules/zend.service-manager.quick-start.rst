@@ -217,7 +217,7 @@ First, let's create a class that holds configuration.
                $form = new Form\User();
 
                // Retrieve a dependency from the service manager and inject it!
-               $form->setInputFilter($serviceManager->get('UserInputFilter'),
+               $form->setInputFilter($serviceManager->get('UserInputFilter'));
                return $form;
            });
            $serviceManager->setInvokableClass('UserInputFilter', 'SomeModule\InputFilter\User');
