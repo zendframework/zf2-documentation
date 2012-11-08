@@ -119,7 +119,7 @@ Submitting known spam
 Spam data will occasionally get through the filter. If you discover spam that you feel should have been caught, you
 can submit it to Akismet to help improve their filter.
 
-``ZendService\Akismet::submitSpam()`` takes the same data array as passed to ``isSpam()``, but does not return a
+``ZendService\Akismet\Akismet::submitSpam()`` takes the same data array as passed to ``isSpam()``, but does not return a
 value. An exception will be raised if the *API* key used is invalid.
 
 .. _zendservice.akismet.submitspam.example-1:
