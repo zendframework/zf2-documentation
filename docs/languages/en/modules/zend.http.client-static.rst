@@ -20,7 +20,7 @@ Quick Start
 .. code-block:: php
    :linenos:
 
-   use Zend\Http\Client;
+   use Zend\Http\ClientStatic;
 
    // Simple GET request
    $response = ClientStatic::get('http://example.org')
