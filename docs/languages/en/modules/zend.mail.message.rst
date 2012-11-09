@@ -110,7 +110,7 @@ automatically set a "MIME-Version" header, as well as an appropriate "Content-Ty
    $html = new MimePart($htmlMarkup);
    $html->type = "text/html";
 
-   $image = new MimePart(fopen($pathToImage));
+   $image = new MimePart(fopen($pathToImage, 'r'));
    $image->type = "image/jpeg";
 
    $body = new MimeMessage();
