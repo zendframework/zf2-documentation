@@ -266,7 +266,7 @@ any class implementing ``Zend\ServiceManager\ServiceLocatorAwareInterface``. A s
    use Zend\Stdlib\RequestInterface as Request;
    use Zend\Stdlib\ResponseInterface as Response;
 
-   class BareController implements 
+   class BareController implements
        Dispatchable,
        ServiceLocatorAwareInterface
    {
