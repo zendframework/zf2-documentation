@@ -5,19 +5,19 @@ CAPTCHA Adapters
 
 The following adapters are shipped with Zend Framework by default.
 
-.. _zend.captcha.adapters.word:
+.. _zend.captcha.adapters.abstractword:
 
-Zend\\Captcha\\Word
+Zend\\Captcha\\AbstractWord
 -------------------
 
-``Zend\Captcha\Word`` is an abstract adapter that serves as the base class for most other *CAPTCHA* adapters. It
+``Zend\Captcha\AbstractWord`` is an abstract adapter that serves as the base class for most other *CAPTCHA* adapters. It
 provides mutators for specifying word length, session *TTL* and the session container object to use.
-``Zend\Captcha\Word`` also encapsulates validation logic.
+``Zend\Captcha\AbstractWord`` also encapsulates validation logic.
 
 By default, the word length is 8 characters, the session timeout is 5 minutes, and ``Zend\Session\Container`` is
 used for persistence (using the namespace "``Zend\Form\Captcha\<captcha ID>``").
 
-In addition to the methods required by the ``Zend\Captcha\AdapterInterface`` interface, ``Zend\Captcha\Word``
+In addition to the methods required by the ``Zend\Captcha\AdapterInterface`` interface, ``Zend\Captcha\AbstractWord``
 exposes the following methods:
 
 - ``setWordLen($length)`` and ``getWordLen()`` allow you to specify the length of the generated "word" in
@@ -47,7 +47,7 @@ all be used. Each concrete implementation may define additional keys or utilize 
 
 .. note::
 
-   ``Zend\Captcha\Word`` is an abstract class and may not be instantiated directly.
+   ``Zend\Captcha\AbstractWord`` is an abstract class and may not be instantiated directly.
 
 .. _zend.captcha.adapters.dumb:
 
@@ -56,7 +56,7 @@ Zend\\Captcha\\Dumb
 
 The ``Zend\Captcha\Dumb`` adapter is mostly self-descriptive. It provides a random string that must be typed in
 reverse to validate. As such, it's not a good *CAPTCHA* solution and should only be used for testing. It extends
-``Zend\Captcha\Word``.
+``Zend\Captcha\AbstractWord``.
 
 .. _zend.captcha.adapters.figlet:
 
@@ -79,7 +79,7 @@ The ``Zend\Captcha\Image`` adapter takes the generated word and renders it as an
 permutations to make it difficult to automatically decipher. It requires the `GD extension`_ compiled with TrueType
 or Freetype support. Currently, the ``Zend\Captcha\Image`` adapter can only generate *PNG* images.
 
-``Zend\Captcha\Image`` extends ``Zend\Captcha\Word``, and additionally exposes the following methods:
+``Zend\Captcha\Image`` extends ``Zend\Captcha\AbstractWord``, and additionally exposes the following methods:
 
 - ``setExpiration($expiration)`` and ``getExpiration()`` allow you to specify a maximum lifetime the *CAPTCHA*
   image may reside on the filesystem. This is typically a longer than the session lifetime. Garbage collection is
