@@ -23,7 +23,7 @@ Quick Start
    use Zend\Http\ClientStatic;
 
    // Simple GET request
-   $response = ClientStatic::get('http://example.org')
+   $response = ClientStatic::get('http://example.org');
 
    // More complex GET request, specifying query string 'foo=bar' and adding a
    // custom header to request JSON data be returned (Accept: application/json)
