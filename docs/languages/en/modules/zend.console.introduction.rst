@@ -36,6 +36,11 @@ Let's assume that we'd like our application to handle the following command line
 When a user runs our application (``zf``) with these parameters, we'd like to call action ``resetpassword`` of
 ``Application\Controller\IndexController``.
 
+.. note::
+
+   We will use ``zf`` to depict the entry point for your application, it can be shell script in application bin folder or simply an alias for ``php public/index.php``
+
+
 First we need to create a **route definition**:
 
 .. code-block:: bash
