@@ -277,12 +277,17 @@ any class implementing ``Zend\ServiceManager\ServiceLocatorAwareInterface``. A s
            $this->services = $serviceLocator;
        }
 
+       public function getServiceLocator()
+       {
+           return $this->services;
+       }
+
        public function dispatch(Request $request, Response $response = null)
        {
            // ...
 
            // Retrieve something from the service manager
-           $router = $this->services->get('Router');
+           $router = $this->getServiceLocator()->get('Router');
 
            // ...
        }
