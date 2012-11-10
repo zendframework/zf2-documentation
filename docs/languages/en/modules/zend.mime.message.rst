@@ -45,7 +45,7 @@ Boundary handling
 
 ``Zend\Mime\Message`` usually creates and uses its own ``Zend\Mime\Mime`` Object to generate a boundary. If you need
 to define the boundary or want to change the behaviour of the ``Zend\Mime\Mime`` object used by ``Zend\Mime\Message``,
-you can instantiate the ``Zend\Mime\Mime`` object yourself and then register it to ``Zend\Mime\Message``. Usually you
+you can instantiate the ``Zend\Mime\Mime`` class yourself and then register it to ``Zend\Mime\Message``. Usually you
 will not need to do this. ``setMime(Zend\Mime\Mime $mime)`` sets a special instance of ``Zend\Mime\Mime`` to be used
 by this ``Zend\Mime\Message``.
 

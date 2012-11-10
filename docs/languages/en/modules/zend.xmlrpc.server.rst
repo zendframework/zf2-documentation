@@ -399,8 +399,8 @@ constructor of ``Services_PricingService2``.
 
 .. rubric:: Attaching a class instance
 
-``setClass()`` allows to register a previously instantiated object at the server. Just pass an instance instead of
-the class name. Obviously passing arguments to the constructor is not possible with pre-instantiated objects.
+``setClass()`` allows to register a previously instantiated class at the server. Just pass an instance instead of
+the class name. Obviously passing arguments to the constructor is not possible with pre-instantiated classes.
 
 .. _zend.xmlrpc.server.use.attach-several-classes-namespaces:
 
@@ -454,7 +454,7 @@ transfer protocol. It is possible to use other transfer protocols like *SSH* or 
 response data over the wire. Another use case is authentication and authorization. In case of a different transfer
 protocol, one need to change the implementation to read request data.
 
-The example below instantiates a custom request object and passes it to the server to handle.
+The example below instantiates a custom request class and passes it to the server to handle.
 
 .. code-block:: php
    :linenos:

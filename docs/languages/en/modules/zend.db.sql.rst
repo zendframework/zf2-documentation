@@ -98,7 +98,7 @@ Zend\\Db\\Sql\\Select
 ---------------------
 
 ``Zend\Db\Sql\Select`` is an object who's primary function is to present a unified API for building platform
-specific SQL SELECT queries. The object can be instantiated and consumed without ``Zend\Db\Sql\Sql``:
+specific SQL SELECT queries. The class can be instantiated and consumed without ``Zend\Db\Sql\Sql``:
 
 .. code-block:: php
    :linenos:

@@ -285,7 +285,7 @@ The ``Zend\Search\Lucene\Storage\Directory\Filesystem`` class implements directo
 
 If a string is used as an input for the ``Zend\Search\Lucene`` constructor, then the index reader
 (``Zend\Search\Lucene`` object) treats it as a file system path and instantiates the
-``Zend\Search\Lucene\Storage\Directory\Filesystem`` object.
+``Zend\Search\Lucene\Storage\Directory\Filesystem`` class.
 
 You can define your own directory implementation by extending the ``Zend\Search\Lucene\Storage\Directory`` class.
 
