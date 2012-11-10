@@ -76,7 +76,7 @@ Another example, of a Sqlite connection via PDO:
 
 It is important to know that by using this style of adapter creation, the ``Adapter`` will attempt to create any
 dependencies that were not explicitly provided. A Driver object will be created from the configuration
-array provided in the constructor. A Platform object will be created based off the type of Driver object that was
+array provided in the constructor. A Platform object will be created based off the type of Driver class that was
 instantiated. And lastly, a default ResultSet object is created and utilized. Any of these objects can be injected,
 to do this, see the next section.
 
@@ -190,7 +190,7 @@ are requested.  The workflow looks like this:
 
 * An adapter is created with a set of connection parameters
 * The adapter chooses the proper driver to instantiate, for example ``Zend\Db\Adapter\Driver\Mysqli``
-* That driver object is instantiated
+* That driver class is instantiated
 * If no connection, statement or result objects are injected, defaults are instantiated
 
 This driver is now ready to be called on when particular workflows are requested.  Here is what the

@@ -82,7 +82,7 @@ To just check for IP addresses you can use the example below:
    }
 
 As well as using ``ALLOW_ALL`` to accept all common hostnames types you can combine these types to allow for
-combinations. For example, to accept *DNS* and Local hostnames instantiate your ``Zend\Validator\Hostname`` object
+combinations. For example, to accept *DNS* and Local hostnames instantiate your ``Zend\Validator\Hostname`` class
 as so:
 
 .. code-block:: php

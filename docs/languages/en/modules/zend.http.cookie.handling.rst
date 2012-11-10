@@ -137,7 +137,7 @@ produce a *HTTP* request "Cookie" header string, showing the cookie's name and v
 Zend\Http\Cookie getter methods
 -------------------------------
 
-Once a ``Zend\Http\Cookie`` object is instantiated, it provides several getter methods to get the different
+Once a ``Zend\Http\Cookie`` class is instantiated, it provides several getter methods to get the different
 properties of the *HTTP* cookie:
 
 
@@ -292,13 +292,13 @@ $matchSessionCookies, [int $now]]);``
 The Zend\Http\CookieJar Class: Instantiation
 --------------------------------------------
 
-In most cases, there is no need to directly instantiate a ``Zend\Http\CookieJar`` object. If you want to attach a
+In most cases, there is no need to directly instantiate a ``Zend\Http\CookieJar`` class. If you want to attach a
 new cookie jar to your ``Zend\Http\Client`` object, just call the Zend\Http\Client->setCookieJar() method, and a
 new, empty cookie jar will be attached to your client. You could later get this cookie jar using
 Zend\Http\Client->getCookieJar().
 
-If you still wish to manually instantiate a CookieJar object, you can do so by calling "new Zend\Http\CookieJar()"
-directly - the constructor method does not take any parameters. Another way to instantiate a CookieJar object is to
+If you still wish to manually instantiate a CookieJar class, you can do so by calling "new Zend\Http\CookieJar()"
+directly - the constructor method does not take any parameters. Another way to instantiate a CookieJar class is to
 use the static Zend\Http\CookieJar::fromResponse() method. This method takes two parameters: a
 ``Zend\Http\Response`` object, and a reference *URI*, as either a string or a ``Zend\Uri\Http`` object. This method
 will return a new ``Zend\Http\CookieJar`` object, already containing the cookies set by the passed *HTTP* response.
