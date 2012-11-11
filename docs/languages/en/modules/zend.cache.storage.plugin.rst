@@ -143,7 +143,7 @@ The OptimizeByFactor Plugin
 .. _zend.cache.storage.plugin.serializer
 
 The Serializer Plugin
--------------------
+---------------------
 
    The ``Zend\Cache\Storage\Adapter\Serializer`` plugin will serialize data on
    writing to cache and unserialize on reading. So it's possible to store
@@ -208,7 +208,7 @@ Available Methods
 .. _zend.cache.storage.plugin.examples:
 
 Examples
---------------
+--------
 
 .. _zend.cache.storage.plugin.examples.write-basics:
 

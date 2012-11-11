@@ -106,7 +106,7 @@ Basic Configuration Options
 .. _zend.cache.storage.adapter.methods-storage-interface:
 
 The StorageInterface
----------------------
+--------------------
 
 The ``Zend\Cache\Storage\StorageInterface`` is the basic interface implemented by all storage adapters.
 
@@ -314,7 +314,7 @@ The ``Zend\Cache\Storage\StorageInterface`` is the basic interface implemented b
 .. _zend.cache.storage.adapter.methods-available-space-capable-interface:
 
 The AvailableSpaceCapableInterface
------------------------------------
+----------------------------------
 
 The ``Zend\Cache\Storage\AvailableSpaceCapableInterface`` implements a method
 to make it possible getting the current available space of the storage.
@@ -331,7 +331,7 @@ to make it possible getting the current available space of the storage.
 .. _zend.cache.storage.adapter.methods-total-space-capable-interface:
 
 The TotalSpaceCapableInterface
--------------------------------
+------------------------------
 
 The ``Zend\Cache\Storage\TotalSpaceCapableInterface`` implements a method to
 make it possible getting the total space of the storage.
@@ -348,7 +348,7 @@ make it possible getting the total space of the storage.
 .. _zend.cache.storage.adapter.methods-clear-by-namespace-interface:
 
 The ClearByNamespaceInterface
--------------------------------
+-----------------------------
 
 The ``Zend\Cache\Storage\ClearByNamespaceInterface`` implements a method to
 clear all items of a given namespace.
@@ -365,7 +365,7 @@ clear all items of a given namespace.
 .. _zend.cache.storage.adapter.methods-clear-by-prefix-interface
 
 The ClearByPrefixInterface
--------------------------
+--------------------------
 
 The ``Zend\Cache\Storage\ClearByPrefixInterface`` implements a method to clear
 all items of a given prefix (within the current configured namespace).
@@ -451,7 +451,7 @@ optimization processes on the storage.
 .. _zend.cache.storage.adapter.methods-taggable-interface
 
 The TaggableInterface
-----------------------
+---------------------
 
 The ``Zend\Cache\Storage\TaggableInterface`` implements methods to mark items
 with one or more tags and to clean items matching tags.
@@ -490,7 +490,7 @@ with one or more tags and to clean items matching tags.
 .. _zend.cache.storage.adapter.apc
 
 The Apc Adapter
-----------------
+---------------
 
    The ``Zend\Cache\Storage\Adapter\Apc`` adapter stores cache items in shared
    memory through the required PHP extension APC_ (Alternative PHP Cache).
@@ -550,7 +550,7 @@ The Apc Adapter
 .. _zend.cache.storage.adapter.dba
 
 The Dba Adapter
-----------------
+---------------
 
    The ``Zend\Cache\Storage\Adapter\Dba`` adapter stores cache items into dbm_
    like databases using the required PHP extension dba_.
@@ -615,7 +615,7 @@ The Dba Adapter
 .. _zend.cache.storage.adapter.filesystem
 
 The Filesystem Adapter
------------------------
+----------------------
 
    The ``Zend\Cache\Storage\Adapter\Filesystem`` adapter stores cache items
    into the filesystem.
@@ -698,7 +698,7 @@ The Filesystem Adapter
 .. _zend.cache.storage.adapter.memcached
 
 The Memcached Adapter
-------------------------
+---------------------
 
    The ``Zend\\Cache\\Storage\\Adapter\\Memcached`` adapter stores cache
    items over the memcached protocol. It's using the required PHP extension
@@ -761,7 +761,7 @@ The Memcached Adapter
 .. _zend.cache.storage.adapter.memory
 
 The Memory Adapter
---------------------
+------------------
 
    The ``Zend\Cache\Storage\Adapter\Memory`` adapter stores cache items into
    the PHP process using an array.
@@ -828,7 +828,7 @@ The Memory Adapter
 .. _zend.cache.storage.adapter.wincache
 
 The WinCache Adapter
----------------------------------------
+--------------------
 
    The ``Zend\Cache\Storage\Adapter\WinCache`` adapter stores cache items into
    shared memory through the required PHP extension WinCache_.
@@ -883,7 +883,7 @@ The WinCache Adapter
 .. _zend.cache.storage.adapter.zend-server-disk
 
 The ZendServerDisk Adapter
----------------------------------------------
+--------------------------
 
    This ``Zend\Cache\Storage\Adapter\ZendServerDisk`` adapter stores cache
    items on filesystem through the `Zend Server Data Caching API`_.
@@ -929,7 +929,7 @@ The ZendServerDisk Adapter
 .. _zend.cache.storage.adapter.zend-server-shm
 
 The ZendServerShm Adapter
----------------------------------------------
+-------------------------
 
    The ``Zend\Cache\Storage\Adapter\ZendServerShm`` adapter stores cache
    items in shared memory through the `Zend Server Data Caching API`_.
@@ -974,7 +974,7 @@ The ZendServerShm Adapter
 .. _zend.cache.storage.adapter.examples:
 
 Examples
---------------
+--------
 
 .. _zend.cache.storage.adapter.examples.basic:
 
