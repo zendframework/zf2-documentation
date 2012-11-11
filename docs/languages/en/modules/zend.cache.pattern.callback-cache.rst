@@ -38,7 +38,7 @@ For instantiation you can use the ``PatternFactory`` or do it manual:
 
 .. _zend.cache.pattern.callback-cache.options:
 
-Configuration options
+Configuration Options
 ---------------------
 
 +-------------+-------------------------------------------------------------+--------------+--------------------------------------+

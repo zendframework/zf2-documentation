@@ -31,7 +31,7 @@ Instantiating the class cache pattern
 
 .. _zend.cache.pattern.class-cache.options:
 
-Configuration options
+Configuration Options
 ---------------------
 
 +------------------------+-------------------------------------------------------------+--------------+-----------------------------------------------------------------+

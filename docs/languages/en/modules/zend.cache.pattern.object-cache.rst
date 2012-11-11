@@ -32,7 +32,7 @@ Instantiating the object cache pattern
 
 .. _zend.cache.pattern.object-cache.options:
 
-Configuration options
+Configuration Options
 ---------------------
 
 +------------------------------+-------------------------------------------------------------+-----------------------+-----------------------------------------------------------------+

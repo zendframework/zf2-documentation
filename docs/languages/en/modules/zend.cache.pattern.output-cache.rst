@@ -28,7 +28,7 @@ Instantiating the output cache pattern
 
 .. _zend.cache.pattern.output-cache.options:
 
-Configuration options
+Configuration Options
 ---------------------
 
 +--------+-------------------------------------------------------------+--------------+--------------------------------------+

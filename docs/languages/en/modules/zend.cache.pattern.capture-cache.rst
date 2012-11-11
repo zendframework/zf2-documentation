@@ -45,7 +45,7 @@ Simplest usage as Apache-404 handler
 
 .. _zend.cache.pattern.capture-cache.options:
 
-Configuration options
+Configuration Options
 ---------------------
 
 +------------------+------------------------+------------------------+-----------------------------------------------------------------+
