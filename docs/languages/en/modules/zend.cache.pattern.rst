@@ -57,18 +57,16 @@ Please read documentation of specific patterns to get more information.
 
 .. _zend.cache.pattern.methods.set-options:
 
-**setOptions**
-   ``setOptions(Zend\Cache\Pattern\PatternOptions $options)``
+.. function:: setOptions(Zend\\Cache\\Pattern\\PatternOptions $options)
+   :noindex:
 
-   Set pattern options
+   Set pattern options.
 
-   Returns Zend\\Cache\\Pattern
+   :rtype: Zend\\Cache\\Pattern\\PatternInterface
 
-.. _zend.cache.pattern.methods.get-options:
+.. function:: getOptions()
+   :noindex:
 
-**getOptions**
-   ``getOptions()``
+   Get all pattern options.
 
-   Get all pattern options
-
-   Returns ``PatternOptions`` instance.
+   :rtype: Zend\\Cache\\Pattern\\PatternOptions

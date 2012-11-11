@@ -48,11 +48,12 @@ all given plugins at once.
 
 .. _zend.cache.storage.plugin.clear-expired-by-factor
 
-Zend\\Cache\\Storage\\Adapter\\ClearExpiredByFactor
----------------------------------------------------
+The ClearExpiredByFactor Plugin
+-------------------------------
 
-   This plugin calls the storage method ``clearExpired()`` randomly (by factor)
-   after every call of ``setItem()``, ``setItems()``, ``addItem()`` and ``addItems()``.
+   The ``Zend\Cache\Storage\Adapter\ClearExpiredByFactor`` plugin calls the
+   storage method ``clearExpired()`` randomly (by factor) after every call of
+   ``setItem()``, ``setItems()``, ``addItem()`` and ``addItems()``.
 
 .. _zend.cache.storage.plugin.clear-expired-by-factor.options
 
@@ -64,13 +65,21 @@ Zend\\Cache\\Storage\\Adapter\\ClearExpiredByFactor
    |clearing_factor     |``integer`` |0              |The automatic clearing factor               |
    +--------------------+------------+---------------+--------------------------------------------+
 
+.. note::
+
+    ** The ClearExpiredInterface is required **
+
+    The storage have to implement the ``Zend\Cache\Storage\ClearExpiredInterface``
+    to work with this plugin.
+
 .. _zend.cache.storage.plugin.exaption-handler
 
-Zend\\Cache\\Storage\\Adapter\\ExceptionHandler
------------------------------------------------
+The ExceptionHandler Plugin
+---------------------------
 
-   This plugin catches all exceptions thown on reading or writing to cache
-   and sends the exception to a defined callack function.
+   The ``Zend\Cache\Storage\Adapter\ExceptionHandler`` plugin catches all
+   exceptions thown on reading or writing to cache and sends the exception
+   to a defined callack function.
    
    It's configurable if the plugin should re-throw the catched exception.
    
@@ -90,10 +99,11 @@ Zend\\Cache\\Storage\\Adapter\\ExceptionHandler
 
 .. _zend.cache.storage.plugin.ignore-user-abort
 
-Zend\\Cache\\Storage\\Adapter\\IgnoreUserAbort
-----------------------------------------------
+The IgnoreUserAbort Plugin
+--------------------------
 
-   This plugin ignores script terminations by users until write operations to cache finished.
+   The ``Zend\Cache\Storage\Adapter\IgnoreUserAbort`` plugin ignores script
+   terminations by users until write operations to cache finished.
 
 .. _zend.cache.storage.plugin.ignore-user-abort.options
 
@@ -107,11 +117,11 @@ Zend\\Cache\\Storage\\Adapter\\IgnoreUserAbort
 
 .. _zend.cache.storage.plugin.optimize-by-factor
 
-Zend\\Cache\\Storage\\Adapter\\OptimizeByFactor
-----------------------------------------------
+The OptimizeByFactor Plugin
+---------------------------
 
-   This plugin calls the storage method ``optimize()`` randomly (by factor)
-   after removing items from cache.
+   The ``Zend\Cache\Storage\Adapter\OptimizeByFactor`` plugin calls the storage
+   method ``optimize()`` randomly (by factor) after removing items from cache.
 
 .. _zend.cache.storage.plugin.optimize-by-factor.options
 
@@ -123,13 +133,21 @@ Zend\\Cache\\Storage\\Adapter\\OptimizeByFactor
    |optimizing_factor   |``integer``  |0              |The automatic optimization factor                    |
    +--------------------+-------------+---------------+-----------------------------------------------------+
 
+.. note::
+
+    ** The OptimizableInterface is required **
+
+    The storage have to implement the ``Zend\Cache\Storage\OptimizableInterface``
+    to work with this plugin.
+
 .. _zend.cache.storage.plugin.serializer
 
-Zend\\Cache\\Storage\\Adapter\\Serializer
-----------------------------------------------
+The Serializer Plugin
+---------------------
 
-   This plugin will serialize data on writing to cache and unserialize on reading.
-   So it's possible to store different datatypes into cache storages only support strings.
+   The ``Zend\Cache\Storage\Adapter\Serializer`` plugin will serialize data on
+   writing to cache and unserialize on reading. So it's possible to store
+   different datatypes into cache storages only support strings.
 
 .. _zend.cache.storage.plugin.serializer.options
 
@@ -151,46 +169,38 @@ Zend\\Cache\\Storage\\Adapter\\Serializer
 Available Methods
 -----------------
 
-.. _zend.cache.storage.plugin.methods.set-options:
+.. function:: setOptions(Zend\\Cache\\Storage\\Plugin\\PluginOptions $options)
+   :noindex:
 
-**setOptions**
-   ``setOptions(Zend\Cache\Storage\Plugin\PluginOptions $options)``
+   Set options.
 
-   Set options
+   :rtype: Zend\\Cache\\Storage\\Plugin\\PluginInterface
 
-   Implements a fluent interface.
+.. function:: getOptions()
+   :noindex:
 
-.. _zend.cache.storage.plugin.methods.get-options:
+   Get options.
 
-**getOptions**
-   ``getOptions()``
+   :rtype: Zend\\Cache\\Storage\\Plugin\\PluginOptions
 
-   Get options
+.. function:: attach(Zend\\EventManager\\EventManagerInterface $events)
+   :noindex:
 
-   Returns PluginOptions
+   Defined by ``Zend\EventManager\ListenerAggregateInterface``, attach one or more listeners.
 
-.. _zend.cache.storage.plugin.methods.attach:
+   :rtype: void
 
-**attach**
-   ``attach(EventCollection $events)``
+.. function:: detach(Zend\\EventManager\\EventManagerInterface $events)
+   :noindex:
 
-   Defined by ``Zend\EventManager\ListenerAggregate``, attach one or more listeners.
+   Defined by ``Zend\EventManager\ListenerAggregateInterface``, detach all previously attached listeners.
 
-   Returns void
-
-.. _zend.cache.storage.plugin.methods.detach:
-
-**detach**
-   ``detach(EventCollection $events)``
-
-   Defined by ``Zend\EventManager\ListenerAggregate``, detach all previously attached listeners.
-
-   Returns void
+   :rtype: void
 
 .. _zend.cache.storage.plugin.examples:
 
 Examples
---------------
+--------
 
 .. _zend.cache.storage.plugin.examples.write-basics:
 

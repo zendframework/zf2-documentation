@@ -74,7 +74,7 @@ Quick Start
 
 .. _zend.cache.storage.adapter.options:
 
-Basic configuration Options
+Basic Configuration Options
 ---------------------------
 
 .. _zend.cache.adapter.common.options:
@@ -105,364 +105,331 @@ Basic configuration Options
 
 .. _zend.cache.storage.adapter.methods-storage-interface:
 
-Available Methods defined by ``Zend\Cache\Storage\StorageInterface``
---------------------------------------------------------------------
+The StorageInterface
+--------------------
 
-.. _zend.cache.storage.adapter.methods.get-item:
+The ``Zend\Cache\Storage\StorageInterface`` is the basic interface implemented by all storage adapters.
 
-**getItem**
-   ``getItem(string $key, boolean & $success = null, mixed & $casToken = null)``
+.. function:: getItem(string $key, boolean & $success = null, mixed & $casToken = null)
+   :noindex:
 
    Load an item with the given $key.
-
+   
    If item exists set parameter $success to ``true``, set parameter $casToken and returns ``mixed`` value of item.
-
+   
    If item can't load set parameter $success to ``false`` and returns ``null``.
 
-.. _zend.cache.storage.adapter.methods.get-items:
+   :rtype: mixed
 
-**getItems**
-   ``getItems(array $keys)``
+.. function:: getItems(array $keys)
+   :noindex:
 
-   Load all items given by $keys.
+   Load all items given by $keys returning key-value pairs.
 
-   Returns ``array`` of key-value pairs of available items.
+   :rtype: array
 
-.. _zend.cache.storage.adapter.methods.has-item:
-
-**hasItem**
-   ``hasItem(string $key)``
+.. function:: hasItem(string $key)
+   :noindex:
 
    Test if an item exists.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.has-items:
-
-**hasItems**
-   ``hasItems(array $keys)``
+.. function:: hasItems(array $keys)
+   :noindex:
 
    Test multiple items.
 
-   Returns ``array``
+   :rtype: string[]
 
-.. _zend.cache.storage.adapter.methods.get-metadata:
-
-**getMetadata**
-   ``getMetadata(string $key)``
+.. function:: getMetadata(string $key)
+   :noindex:
 
    Get metadata of an item.
 
-   Returns ``array``|``boolean``
+   :rtype: array|boolean
 
-.. _zend.cache.storage.adapter.methods.get-metadatas:
-
-**getMetadatas**
-   ``getMetadatas(array $keys)``
+.. function:: getMetadatas(array $keys)
+   :noindex:
 
    Get multiple metadata.
 
-   Returns ``array``
+   :rtype: array
 
-.. _zend.cache.storage.adapter.methods.set-item:
-
-**setItem**
-   ``setItem(string $key, mixed $value)``
+.. function:: setItem(string $key, mixed $value)
+   :noindex:
 
    Store an item.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.set-items:
-
-**setItems**
-   ``setItems(array $keyValuePairs)``
+.. function:: setItems(array $keyValuePairs)
+   :noindex:
 
    Store multiple items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.add-item:
-
-**addItem**
-   ``addItem(string $key, mixed $value)``
+.. function:: addItem(string $key, mixed $value)
+   :noindex:
 
    Add an item.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.add-items:
-
-**addItems**
-   ``addItems(array $keyValuePairs)``
+.. function:: addItems(array $keyValuePairs)
+   :noindex:
 
    Add multiple items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.replace-item:
-
-**replaceItem**
-   ``replaceItem(string $key, mixed $value)``
+.. function:: replaceItem(string $key, mixed $value)
+   :noindex:
 
    Replace an item.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.replace-items:
-
-**replaceItems**
-   ``replaceItems(array $keyValuePairs)``
+.. function:: replaceItems(array $keyValuePairs)
+   :noindex:
 
    Replace multiple items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.check-and-set-item:
+.. function:: checkAndSetItem(mixed $token, string $key, mixed $value)
+   :noindex:
 
-**checkAndSetItem**
-   ``checkAndSetItem(mixed $token, string $key, mixed $value)``
+   Set item only if token matches. It uses the token received from ``getItem()``
+   to check if the item has changed before overwriting it.
 
-   Set item only if token matches.
-   It uses the token received from ``getItem()`` to check if the item has changed before overwriting it.
+   :rtype: boolean
 
-   Returns ``boolean``
-
-.. _zend.cache.storage.adapter.methods.touch-item:
-
-**touchItem**
-   ``touchItem(string $key)``
+.. function:: touchItem(string $key)
+   :noindex:
 
    Reset lifetime of an item.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.touch-items:
-
-**touchItems**
-   ``touchItems(array $keys)``
+.. function:: touchItems(array $keys)
+   :noindex:
 
    Reset lifetime of multiple items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.remove-item:
-
-**removeItem**
-   ``removeItem(string $key)``
+.. function:: removeItem(string $key)
+   :noindex:
 
    Remove an item.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.remove-items:
-
-**removeItems**
-   ``removeItems(array $keys)``
+.. function:: removeItems(array $keys)
+   :noindex:
 
    Remove multiple items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.increment-item:
-
-**incrementItem**
-   ``incrementItem(string $key, int $value)``
+.. function:: incrementItem(string $key, int $value)
+   :noindex:
 
    Increment an item.
 
-   Returns ``integer``|``boolean``
+   :rtype: integer|boolean
 
-.. _zend.cache.storage.adapter.methods.increment-items:
-
-**incrementItems**
-   ``incrementItems(array $keyValuePairs)``
+.. function:: incrementItems(array $keyValuePairs)
+   :noindex:
 
    Increment multiple items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.decrement-item:
-
-**decrementItem**
-   ``decrementItem(string $key, int $value)``
+.. function:: decrementItem(string $key, int $value)
+   :noindex:
 
    Decrement an item.
 
-   Returns ``interger``|``boolean``
+   :rtype: interger|boolean
 
-.. _zend.cache.storage.adapter.methods.decrement-items:
-
-**decrementItems**
-   ``decrementItems(array $keyValuePairs)``
+.. function:: decrementItems(array $keyValuePairs)
+   :noindex:
 
    Decrement multiple items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.get-capabilities:
-
-**getCapabilities**
-   ``getCapabilities()``
+.. function:: getCapabilities()
+   :noindex:
 
    Capabilities of this storage.
 
-   Returns ``Zend\Cache\Storage\Capabilities``
+   :rtype: Zend\\Cache\\Storage\\Capabilities
 
 .. _zend.cache.storage.adapter.methods-available-space-capable-interface:
 
-Available Methods defined by ``Zend\Cache\Storage\AvailableSpaceCapableInterface``
-----------------------------------------------------------------------------------
+The AvailableSpaceCapableInterface
+----------------------------------
 
-.. _zend.cache.storage.adapter.methods.get-available-space:
+The ``Zend\Cache\Storage\AvailableSpaceCapableInterface`` implements a method
+to make it possible getting the current available space of the storage.
 
-**getAvailableSpace**
-   ``getAvailableSpace()``
+.. function:: getAvailableSpace()
+   :noindex:
 
    Get available space in bytes.
 
-   Returns ``integer``|``float``
+   :rtype: integer|float
 
 .. _zend.cache.storage.adapter.methods-total-space-capable-interface:
 
-Available Methods defined by ``Zend\Cache\Storage\TotalSpaceCapableInterface``
-------------------------------------------------------------------------------
+The TotalSpaceCapableInterface
+------------------------------
 
-.. _zend.cache.storage.adapter.methods.get-total-space:
+The ``Zend\Cache\Storage\TotalSpaceCapableInterface`` implements a method to
+make it possible getting the total space of the storage.
 
-**getTotalSpace**
-   ``getTotalSpace()``
+.. function:: getTotalSpace()
+   :noindex:
 
    Get total space in bytes.
 
-   Returns ``integer``|``float``
+   :rtype: integer|float
 
 .. _zend.cache.storage.adapter.methods-clear-by-namespace-interface:
 
-Available Methods defined by ``Zend\Cache\Storage\ClearByNamespaceInterface``
------------------------------------------------------------------------------
+The ClearByNamespaceInterface
+-----------------------------
 
-.. _zend.cache.storage.adapter.methods.clear-by-namespace:
+The ``Zend\Cache\Storage\ClearByNamespaceInterface`` implements a method to
+clear all items of a given namespace.
 
-**clearByNamespace**
-   ``clearByNamespace(string $namespace)``
+.. function:: clearByNamespace(string $namespace)
+   :noindex:
 
    Remove items of given namespace.
 
-   Returns ``boolean``
+   :rtype: boolean
 
 .. _zend.cache.storage.adapter.methods-clear-by-prefix-interface
 
-Available Methods defined by ``Zend\Cache\Storage\ClearByPrefixInterface``
---------------------------------------------------------------------------
+The ClearByPrefixInterface
+--------------------------
 
-.. _zend.cache.storage.adapter.methods.clear-by-prefix:
+The ``Zend\Cache\Storage\ClearByPrefixInterface`` implements a method to clear
+all items of a given prefix (within the current configured namespace).
 
-**clearByPrefix**
-   ``clearByPrefix(string $prefix)``
+.. function:: clearByPrefix(string $prefix)
+   :noindex:
 
    Remove items matching given prefix.
 
-   Returns ``boolean``
+   :rtype: boolean
 
 .. _zend.cache.storage.adapter.methods-clear-expired-interface
 
-Available Methods defined by ``Zend\Cache\Storage\ClearExpiredInterface``
--------------------------------------------------------------------------
+The ClearExpiredInterface
+-------------------------
 
-.. _zend.cache.storage.adapter.methods.clear-expired:
+The ``Zend\Cache\Storage\ClearExpiredInterface`` implements a method to clear
+all expired items (within the current configured namespace).
 
-**clearExpired**
-   ``clearExpired()``
+.. function:: clearExpired()
+   :noindex:
 
    Remove expired items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
 .. _zend.cache.storage.adapter.methods-flushable-interface
 
-Available Methods defined by ``Zend\Cache\Storage\FlushableInterface``
-----------------------------------------------------------------------
+The FlushableInterface
+----------------------
 
-.. _zend.cache.storage.adapter.methods.flush:
+The ``Zend\Cache\Storage\FlushableInterface`` implements a method to flush
+the complete storage.
 
-**flush**
-   ``flush()``
+.. function:: flush()
+   :noindex:
 
    Flush the whole storage.
 
-   Returns ``boolean``
+   :rtype: boolean
 
 .. _zend.cache.storage.adapter.methods-iterable-interface
 
-Available Methods defined by ``Zend\Cache\Storage\IterableInterface`` (extends ``IteratorAggregate``)
------------------------------------------------------------------------------------------------------
+The IterableInterface
+---------------------
 
-.. _zend.cache.storage.adapter.methods.get-iterator:
+The ``Zend\Cache\Storage\IterableInterface`` implements a method to get an
+iterator to iterate over items of the storage. It extends ``IteratorAggregate``
+so it's possible to directly iterator over the storage using ``foreach``.
 
-**getIterator**
-   ``getIterator()``
+.. function:: getIterator()
+   :noindex:
 
    Get an Iterator.
 
-   Returns ``Zend\Cache\Storage\IteratorInterface``
+   :rtype: Zend\\Cache\\Storage\\IteratorInterface
 
 .. _zend.cache.storage.adapter.methods-optimizable-interface
 
-Available Methods defined by ``Zend\Cache\Storage\OptimizableInterface``
-------------------------------------------------------------------------
+The OptimizableInterface
+------------------------
 
-.. _zend.cache.storage.adapter.methods.optimize:
+The ``Zend\Cache\Storage\OptimizableInterface`` implements a method to run
+optimization processes on the storage.
 
-**optimize**
-   ``optimize()``
+.. function:: optimize()
+   :noindex:
 
    Optimize the storage.
 
-   Returns ``boolean``
+   :rtype: boolean
 
 .. _zend.cache.storage.adapter.methods-taggable-interface
 
-Available Methods defined by ``Zend\Cache\Storage\TaggableInterface``
----------------------------------------------------------------------
+The TaggableInterface
+---------------------
 
-.. _zend.cache.storage.adapter.methods.set-tags:
+The ``Zend\Cache\Storage\TaggableInterface`` implements methods to mark items
+with one or more tags and to clean items matching tags.
 
-**setTags**
-   ``setTags(string $key, string[] $tags)``
+.. function:: setTags(string $key, string[] $tags)
+   :noindex:
 
    Set tags to an item by given key.
    (An empty array will remove all tags)
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.get-tags:
-
-**getTags**
-   ``getTags(string $key)``
+.. function:: getTags(string $key)
+   :noindex:
 
    Get tags of an item by given key.
 
-   Returns ``string[]``|``false``
+   :rtype: string[]|false
 
-.. _zend.cache.storage.adapter.methods.get-tags:
-
-**clearByTags**
-   ``clearByTags(string[] $tags, boolean $disjunction = false)``
+.. function:: clearByTags(string[] $tags, boolean $disjunction = false)
+   :noindex:
 
    Remove items matching given tags.
 
    If $disjunction is ``true`` only one of the given tags must match
    else all given tags must match.
 
-   Returns ``boolean``
+   :rtype: boolean
 
 .. _zend.cache.storage.adapter.apc
 
-Zend\\Cache\\Storage\\Adapter\\Apc
-----------------------------------
+The Apc Adapter
+---------------
 
-   This adapter stores cache items in shared memory through the required PHP extension APC_ (Alternative PHP Cache).
+   The ``Zend\Cache\Storage\Adapter\Apc`` adapter stores cache items in shared
+   memory through the required PHP extension APC_ (Alternative PHP Cache).
 
    This adapter implements the following interfaces:
 
@@ -518,10 +485,11 @@ Zend\\Cache\\Storage\\Adapter\\Apc
 
 .. _zend.cache.storage.adapter.dba
 
-Zend\\Cache\\Storage\\Adapter\\Dba
-----------------------------------
+The Dba Adapter
+---------------
 
-   This adapter stores cache items into dbm_ like databases using the required PHP extension dba_.
+   The ``Zend\Cache\Storage\Adapter\Dba`` adapter stores cache items into dbm_
+   like databases using the required PHP extension dba_.
 
    This adapter implements the following interfaces:
 
@@ -573,12 +541,20 @@ Zend\\Cache\\Storage\\Adapter\\Dba
    |handler             |``string`` |"flatfile"     |The name of the handler which shall be used for accessing the database.             |
    +--------------------+-----------+---------------+------------------------------------------------------------------------------------+
 
+.. note::
+
+   **This adapter doesn't support automatically expire items**
+
+   Because of this adapter doesn't support automatically expire items it's
+   very important to clean outdated items by self.
+
 .. _zend.cache.storage.adapter.filesystem
 
-Zend\\Cache\\Storage\\Adapter\\Filesystem
------------------------------------------
+The Filesystem Adapter
+----------------------
 
-   This adapter stores cache items into the filesystem.
+   The ``Zend\Cache\Storage\Adapter\Filesystem`` adapter stores cache items
+   into the filesystem.
 
    This adapter implements the following interfaces:
 
@@ -657,11 +633,12 @@ Zend\\Cache\\Storage\\Adapter\\Filesystem
 
 .. _zend.cache.storage.adapter.memcached
 
-Zend\\Cache\\Storage\\Adapter\\Memcached
-----------------------------------------
+The Memcached Adapter
+---------------------
 
-   This adapter stores cache items over the memcached protocol.
-   It's using the required PHP extension memcached_ which is based on Libmemcached_.
+   The ``Zend\\Cache\\Storage\\Adapter\\Memcached`` adapter stores cache
+   items over the memcached protocol. It's using the required PHP extension
+   memcached_ which is based on Libmemcached_.
 
    This adapter implements the following interfaces:
 
@@ -719,10 +696,11 @@ Zend\\Cache\\Storage\\Adapter\\Memcached
 
 .. _zend.cache.storage.adapter.memory
 
-Zend\\Cache\\Storage\\Adapter\\Memory
--------------------------------------
+The Memory Adapter
+------------------
 
-   This adapter stores cache items into the PHP process using an array.
+   The ``Zend\Cache\Storage\Adapter\Memory`` adapter stores cache items into
+   the PHP process using an array.
 
    This adapter implements the following interfaces:
 
@@ -785,10 +763,11 @@ Zend\\Cache\\Storage\\Adapter\\Memory
 
 .. _zend.cache.storage.adapter.wincache
 
-Zend\\Cache\\Storage\\Adapter\\WinCache
----------------------------------------
+The WinCache Adapter
+--------------------
 
-   This adapter stores cache items in shared memory through the required PHP extension WinCache_.
+   The ``Zend\Cache\Storage\Adapter\WinCache`` adapter stores cache items into
+   shared memory through the required PHP extension WinCache_.
 
    This adapter implements the following interfaces:
 
@@ -839,10 +818,11 @@ Zend\\Cache\\Storage\\Adapter\\WinCache
 
 .. _zend.cache.storage.adapter.zend-server-disk
 
-Zend\\Cache\\Storage\\Adapter\\ZendServerDisk
----------------------------------------------
+The ZendServerDisk Adapter
+--------------------------
 
-   This adapter stores cache items on filesystem through the `Zend Server Data Caching API`_.
+   This ``Zend\Cache\Storage\Adapter\ZendServerDisk`` adapter stores cache
+   items on filesystem through the `Zend Server Data Caching API`_.
 
    This adapter implements the following interfaces:
 
@@ -884,10 +864,11 @@ Zend\\Cache\\Storage\\Adapter\\ZendServerDisk
 
 .. _zend.cache.storage.adapter.zend-server-shm
 
-Zend\\Cache\\Storage\\Adapter\\ZendServerShm
----------------------------------------------
+The ZendServerShm Adapter
+-------------------------
 
-   This adapter stores cache items in shared memory through the `Zend Server Data Caching API`_.
+   The ``Zend\Cache\Storage\Adapter\ZendServerShm`` adapter stores cache
+   items in shared memory through the `Zend Server Data Caching API`_.
 
    This adapter implements the following interfaces:
 
@@ -929,7 +910,7 @@ Zend\\Cache\\Storage\\Adapter\\ZendServerShm
 .. _zend.cache.storage.adapter.examples:
 
 Examples
---------------
+--------
 
 .. _zend.cache.storage.adapter.examples.basic:
 
@@ -942,7 +923,7 @@ Examples
        'storage' => 'filesystem',
        'plugins' => array(
            // Don't throw exceptions on cache errors
-           'ExaptionHander' => array(
+           'exaption_hander' => array(
                'throw_exceptions' => false
            ),
        )
@@ -973,7 +954,7 @@ Examples
        ),
        'plugins' => array(
            // Don't throw exceptions on cache errors
-           'ExceptionHandler' => array(
+           'exception_handler' => array(
                'throw_exceptions' => false
            ),
            // We store database rows on filesystem so we need to serialize them
