@@ -74,7 +74,7 @@ Quick Start
 
 .. _zend.cache.storage.adapter.options:
 
-Basic configuration Options
+Basic Configuration Options
 ---------------------------
 
 .. _zend.cache.adapter.common.options:
@@ -105,8 +105,10 @@ Basic configuration Options
 
 .. _zend.cache.storage.adapter.methods-storage-interface:
 
-Available Methods defined by ``Zend\Cache\Storage\StorageInterface``
---------------------------------------------------------------------
+The StorageInterface
+---------------------
+
+The ``Zend\Cache\Storage\StorageInterface`` is the basic interface implemented by all storage adapters.
 
 .. _zend.cache.storage.adapter.methods.get-item:
 
@@ -153,7 +155,7 @@ Available Methods defined by ``Zend\Cache\Storage\StorageInterface``
 
    Get metadata of an item.
 
-   Returns ``array``|``boolean``
+   Returns ``array`` ``boolean``
 
 .. _zend.cache.storage.adapter.methods.get-metadatas:
 
@@ -271,7 +273,7 @@ Available Methods defined by ``Zend\Cache\Storage\StorageInterface``
 
    Increment an item.
 
-   Returns ``integer``|``boolean``
+   Returns ``integer`` ``boolean``
 
 .. _zend.cache.storage.adapter.methods.increment-items:
 
@@ -289,7 +291,7 @@ Available Methods defined by ``Zend\Cache\Storage\StorageInterface``
 
    Decrement an item.
 
-   Returns ``interger``|``boolean``
+   Returns ``interger`` ``boolean``
 
 .. _zend.cache.storage.adapter.methods.decrement-items:
 
@@ -311,8 +313,11 @@ Available Methods defined by ``Zend\Cache\Storage\StorageInterface``
 
 .. _zend.cache.storage.adapter.methods-available-space-capable-interface:
 
-Available Methods defined by ``Zend\Cache\Storage\AvailableSpaceCapableInterface``
-----------------------------------------------------------------------------------
+The AvailableSpaceCapableInterface
+-----------------------------------
+
+The ``Zend\Cache\Storage\AvailableSpaceCapableInterface`` implements a method
+to make it possible getting the current available space of the storage.
 
 .. _zend.cache.storage.adapter.methods.get-available-space:
 
@@ -321,12 +326,15 @@ Available Methods defined by ``Zend\Cache\Storage\AvailableSpaceCapableInterface
 
    Get available space in bytes.
 
-   Returns ``integer``|``float``
+   Returns ``integer`` ``float``
 
 .. _zend.cache.storage.adapter.methods-total-space-capable-interface:
 
-Available Methods defined by ``Zend\Cache\Storage\TotalSpaceCapableInterface``
-------------------------------------------------------------------------------
+The TotalSpaceCapableInterface
+-------------------------------
+
+The ``Zend\Cache\Storage\TotalSpaceCapableInterface`` implements a method to
+make it possible getting the total space of the storage.
 
 .. _zend.cache.storage.adapter.methods.get-total-space:
 
@@ -335,12 +343,15 @@ Available Methods defined by ``Zend\Cache\Storage\TotalSpaceCapableInterface``
 
    Get total space in bytes.
 
-   Returns ``integer``|``float``
+   Returns ``integer`` ``float``
 
 .. _zend.cache.storage.adapter.methods-clear-by-namespace-interface:
 
-Available Methods defined by ``Zend\Cache\Storage\ClearByNamespaceInterface``
------------------------------------------------------------------------------
+The ClearByNamespaceInterface
+-------------------------------
+
+The ``Zend\Cache\Storage\ClearByNamespaceInterface`` implements a method to
+clear all items of a given namespace.
 
 .. _zend.cache.storage.adapter.methods.clear-by-namespace:
 
@@ -353,8 +364,11 @@ Available Methods defined by ``Zend\Cache\Storage\ClearByNamespaceInterface``
 
 .. _zend.cache.storage.adapter.methods-clear-by-prefix-interface
 
-Available Methods defined by ``Zend\Cache\Storage\ClearByPrefixInterface``
---------------------------------------------------------------------------
+The ClearByPrefixInterface
+-------------------------
+
+The ``Zend\Cache\Storage\ClearByPrefixInterface`` implements a method to clear
+all items of a given prefix (within the current configured namespace).
 
 .. _zend.cache.storage.adapter.methods.clear-by-prefix:
 
@@ -367,8 +381,11 @@ Available Methods defined by ``Zend\Cache\Storage\ClearByPrefixInterface``
 
 .. _zend.cache.storage.adapter.methods-clear-expired-interface
 
-Available Methods defined by ``Zend\Cache\Storage\ClearExpiredInterface``
--------------------------------------------------------------------------
+The ClearExpiredInterface
+-------------------------
+
+The ``Zend\Cache\Storage\ClearExpiredInterface`` implements a method to clear
+all expired items (within the current configured namespace).
 
 .. _zend.cache.storage.adapter.methods.clear-expired:
 
@@ -381,8 +398,11 @@ Available Methods defined by ``Zend\Cache\Storage\ClearExpiredInterface``
 
 .. _zend.cache.storage.adapter.methods-flushable-interface
 
-Available Methods defined by ``Zend\Cache\Storage\FlushableInterface``
-----------------------------------------------------------------------
+The FlushableInterface
+----------------------
+
+The ``Zend\Cache\Storage\FlushableInterface`` implements a method to flush
+the complete storage.
 
 .. _zend.cache.storage.adapter.methods.flush:
 
@@ -395,8 +415,12 @@ Available Methods defined by ``Zend\Cache\Storage\FlushableInterface``
 
 .. _zend.cache.storage.adapter.methods-iterable-interface
 
-Available Methods defined by ``Zend\Cache\Storage\IterableInterface`` (extends ``IteratorAggregate``)
------------------------------------------------------------------------------------------------------
+The IterableInterface
+---------------------
+
+The ``Zend\Cache\Storage\IterableInterface`` implements a method to get an
+iterator to iterate over items of the storage. It extends ``IteratorAggregate``
+so it's possible to directly iterator over the storage using ``foreach``.
 
 .. _zend.cache.storage.adapter.methods.get-iterator:
 
@@ -409,8 +433,11 @@ Available Methods defined by ``Zend\Cache\Storage\IterableInterface`` (extends `
 
 .. _zend.cache.storage.adapter.methods-optimizable-interface
 
-Available Methods defined by ``Zend\Cache\Storage\OptimizableInterface``
-------------------------------------------------------------------------
+The OptimizableInterface
+------------------------
+
+The ``Zend\Cache\Storage\OptimizableInterface`` implements a method to run
+optimization processes on the storage.
 
 .. _zend.cache.storage.adapter.methods.optimize:
 
@@ -423,8 +450,11 @@ Available Methods defined by ``Zend\Cache\Storage\OptimizableInterface``
 
 .. _zend.cache.storage.adapter.methods-taggable-interface
 
-Available Methods defined by ``Zend\Cache\Storage\TaggableInterface``
----------------------------------------------------------------------
+The TaggableInterface
+----------------------
+
+The ``Zend\Cache\Storage\TaggableInterface`` implements methods to mark items
+with one or more tags and to clean items matching tags.
 
 .. _zend.cache.storage.adapter.methods.set-tags:
 
@@ -443,7 +473,7 @@ Available Methods defined by ``Zend\Cache\Storage\TaggableInterface``
 
    Get tags of an item by given key.
 
-   Returns ``string[]``|``false``
+   Returns ``string[]`` ``false``
 
 .. _zend.cache.storage.adapter.methods.get-tags:
 
@@ -459,10 +489,11 @@ Available Methods defined by ``Zend\Cache\Storage\TaggableInterface``
 
 .. _zend.cache.storage.adapter.apc
 
-Zend\\Cache\\Storage\\Adapter\\Apc
-----------------------------------
+The Apc Adapter
+----------------
 
-   This adapter stores cache items in shared memory through the required PHP extension APC_ (Alternative PHP Cache).
+   The ``Zend\Cache\Storage\Adapter\Apc`` adapter stores cache items in shared
+   memory through the required PHP extension APC_ (Alternative PHP Cache).
 
    This adapter implements the following interfaces:
 
@@ -518,10 +549,11 @@ Zend\\Cache\\Storage\\Adapter\\Apc
 
 .. _zend.cache.storage.adapter.dba
 
-Zend\\Cache\\Storage\\Adapter\\Dba
-----------------------------------
+The Dba Adapter
+----------------
 
-   This adapter stores cache items into dbm_ like databases using the required PHP extension dba_.
+   The ``Zend\Cache\Storage\Adapter\Dba`` adapter stores cache items into dbm_
+   like databases using the required PHP extension dba_.
 
    This adapter implements the following interfaces:
 
@@ -573,12 +605,20 @@ Zend\\Cache\\Storage\\Adapter\\Dba
    |handler             |``string`` |"flatfile"     |The name of the handler which shall be used for accessing the database.             |
    +--------------------+-----------+---------------+------------------------------------------------------------------------------------+
 
+.. note::
+
+   **This adapter doesn't support automatically expire items**
+
+   Because of this adapter doesn't support automatically expire items it's
+   very important to clean outdated items by self.
+
 .. _zend.cache.storage.adapter.filesystem
 
-Zend\\Cache\\Storage\\Adapter\\Filesystem
------------------------------------------
+The Filesystem Adapter
+-----------------------
 
-   This adapter stores cache items into the filesystem.
+   The ``Zend\Cache\Storage\Adapter\Filesystem`` adapter stores cache items
+   into the filesystem.
 
    This adapter implements the following interfaces:
 
@@ -657,11 +697,12 @@ Zend\\Cache\\Storage\\Adapter\\Filesystem
 
 .. _zend.cache.storage.adapter.memcached
 
-Zend\\Cache\\Storage\\Adapter\\Memcached
-----------------------------------------
+The Memcached Adapter
+------------------------
 
-   This adapter stores cache items over the memcached protocol.
-   It's using the required PHP extension memcached_ which is based on Libmemcached_.
+   The ``Zend\\Cache\\Storage\\Adapter\\Memcached`` adapter stores cache
+   items over the memcached protocol. It's using the required PHP extension
+   memcached_ which is based on Libmemcached_.
 
    This adapter implements the following interfaces:
 
@@ -719,10 +760,11 @@ Zend\\Cache\\Storage\\Adapter\\Memcached
 
 .. _zend.cache.storage.adapter.memory
 
-Zend\\Cache\\Storage\\Adapter\\Memory
--------------------------------------
+The Memory Adapter
+--------------------
 
-   This adapter stores cache items into the PHP process using an array.
+   The ``Zend\Cache\Storage\Adapter\Memory`` adapter stores cache items into
+   the PHP process using an array.
 
    This adapter implements the following interfaces:
 
@@ -785,10 +827,11 @@ Zend\\Cache\\Storage\\Adapter\\Memory
 
 .. _zend.cache.storage.adapter.wincache
 
-Zend\\Cache\\Storage\\Adapter\\WinCache
+The WinCache Adapter
 ---------------------------------------
 
-   This adapter stores cache items in shared memory through the required PHP extension WinCache_.
+   The ``Zend\Cache\Storage\Adapter\WinCache`` adapter stores cache items into
+   shared memory through the required PHP extension WinCache_.
 
    This adapter implements the following interfaces:
 
@@ -839,10 +882,11 @@ Zend\\Cache\\Storage\\Adapter\\WinCache
 
 .. _zend.cache.storage.adapter.zend-server-disk
 
-Zend\\Cache\\Storage\\Adapter\\ZendServerDisk
+The ZendServerDisk Adapter
 ---------------------------------------------
 
-   This adapter stores cache items on filesystem through the `Zend Server Data Caching API`_.
+   This ``Zend\Cache\Storage\Adapter\ZendServerDisk`` adapter stores cache
+   items on filesystem through the `Zend Server Data Caching API`_.
 
    This adapter implements the following interfaces:
 
@@ -884,10 +928,11 @@ Zend\\Cache\\Storage\\Adapter\\ZendServerDisk
 
 .. _zend.cache.storage.adapter.zend-server-shm
 
-Zend\\Cache\\Storage\\Adapter\\ZendServerShm
+The ZendServerShm Adapter
 ---------------------------------------------
 
-   This adapter stores cache items in shared memory through the `Zend Server Data Caching API`_.
+   The ``Zend\Cache\Storage\Adapter\ZendServerShm`` adapter stores cache
+   items in shared memory through the `Zend Server Data Caching API`_.
 
    This adapter implements the following interfaces:
 
@@ -942,7 +987,7 @@ Examples
        'storage' => 'filesystem',
        'plugins' => array(
            // Don't throw exceptions on cache errors
-           'ExaptionHander' => array(
+           'exaption_hander' => array(
                'throw_exceptions' => false
            ),
        )
@@ -973,7 +1018,7 @@ Examples
        ),
        'plugins' => array(
            // Don't throw exceptions on cache errors
-           'ExceptionHandler' => array(
+           'exception_handler' => array(
                'throw_exceptions' => false
            ),
            // We store database rows on filesystem so we need to serialize them
