@@ -95,23 +95,19 @@ Each serializer implements the interface ``Zend\Serializer\Adapter\AdapterInterf
 
 This interface defines the following methods:
 
-.. _zend.serializer.adapter.adapterinterface.methods.serialize:
-
-**serialize**
-   ``serialize(mixed $value)``
+.. function:: serialize(mixed $value)
+   :noindex:
 
    Generates a storable representation of a value.
 
-   Returns ``string`` of the serialized value
+   :rtype: string
 
-.. _zend.serializer.adapter.adapterinterface.methods.unserialize:
-
-**unserialize**
-   ``unserialize(string $value)``
+.. function:: unserialize(string $value)
+   :noindex:
 
    Creates a PHP value from a stored representation.
 
-   Returns the PHP value
+   :rtype: mixed
 
 
 The basic class ``Zend\Serializer\Serializer`` will be used to instantiate the
@@ -119,79 +115,63 @@ adapters, to configure the factory and to handle static serializing.
 
 It defines the following **static** methods:
 
-.. _zend.serializer.serializer.methods.factory:
-
-**factory**
-   ``factory(string|Zend\Serializer\Adapter\AdapterInterface $adapterName, Zend\Serializer\Adapter\AdapterOptions|array|Traversable|null $adapterOptions = null)``
+.. function:: factory(string|Zend\\Serializer\\Adapter\\AdapterInterface $adapterName, Zend\\Serializer\\Adapter\\AdapterOptions|array|Traversable|null $adapterOptions = null)
+   :noindex:
 
    Create a serializer adapter instance.
 
-   Returns ``Zend\Serializer\Adapter\AdapterInterface``
+   :rtype: Zend\\Serializer\\Adapter\\AdapterInterface
 
-.. _zend.serializer.serializer.methods.set-adapter-plugin-manager:
+.. function:: setAdapterPluginManager(Zend\\Serializer\\AdapterPluginManager $adapters)
+   :noindex:
 
-**setAdapterPluginManager**
-   ``setAdapterPluginManager(Zend\Serializer\AdapterPluginManager $adapters)``
+   Change the adapter plugin manager.
 
-   Change the adapter plugin manager
+   :rtype: void
 
-   Returns ``void``
+.. function:: getAdapterPluginManager()
+   :noindex:
 
-.. _zend.serializer.serializer.methods.get-adapter-plugin-manager:
+   Get the adapter plugin manager.
 
-**getAdapterPluginManager**
-   ``getAdapterPluginManager()``
+   :rtype: Zend\\Serializer\\AdapterPluginManager
 
-   Get the adapter plugin manager
+.. function:: resetAdapterPluginManager()
+   :noindex:
 
-   Returns ``Zend\Serializer\AdapterPluginManager``
+   Resets the internal adapter plugin manager.
 
-.. _zend.serializer.serializer.methods.reset-adapter-plugin-manager:
+   :rtype: void
 
-**resetAdapterPluginManager**
-   ``resetAdapterPluginManager()``
-
-   Resets the internal adapter plugin manager
-
-   Returns ``void``
-
-.. _zend.serializer.serializer.methods.set-default-adapter:
-
-**setDefaultAdapter**
-   ``setDefaultAdapter(string|Zend\Serializer\Adapter\AdapterInterface $adapter, Zend\Serializer\Adapter\AdapterOptions|array|Traversable|null $adapterOptions = null)``
+.. function:: setDefaultAdapter(string|Zend\\Serializer\\Adapter\\AdapterInterface $adapter, Zend\\Serializer\\Adapter\\AdapterOptions|array|Traversable|null $adapterOptions = null)
+   :noindex:
 
    Change the default adapter.
 
-   Returns ``void``
+   :rtype: void
 
-.. _zend.serializer.serializer.methods.get-default-adapter:
-
-**getDefaultAdapter**
-   ``getDefaultAdapter()``
+.. function:: getDefaultAdapter()
+   :noindex:
 
    Get the default adapter.
 
-   Returns ``Zend\Serializer\Adapter\AdapterInterface``
+   :rtype: Zend\\Serializer\\Adapter\\AdapterInterface
 
-.. _zend.serializer.serializer.methods.serialize:
-
-**serialize**
-   ``serialize(mixed $value, string|Zend\Serializer\Adapter\AdapterInterface|null $adapter = null, Zend\Serializer\Adapter\AdapterOptions|array|Traversable|null $adapterOptions = null)``
+.. function:: serialize(mixed $value, string|Zend\\Serializer\\Adapter\\AdapterInterface|null $adapter = null, Zend\\Serializer\\Adapter\\AdapterOptions|array|Traversable|null $adapterOptions = null)
+   :noindex:
 
    Generates a storable representation of a value using the default adapter.
    Optionally different adapter could be provided as second argument.
 
-   Returns ``string`` of the serialized value
+   :rtype: string
 
-.. _zend.serializer.serializer.methods.unserialize:
-
-**unserialize**
-   ``unserialize(string $value, string|Zend\Serializer\Adapter\AdapterInterface|null $adapter = null, Zend\Serializer\Adapter\AdapterOptions|array|Traversable|null $adapterOptions = null)``
+.. function:: unserialize(string $value, string|Zend\\Serializer\\Adapter\\AdapterInterface|null $adapter = null, Zend\\Serializer\\Adapter\\AdapterOptions|array|Traversable|null $adapterOptions = null)
+   :noindex:
 
    Creates a PHP value from a stored representation using the default adapter.
-   Optionally different adapter could be provided as second argument
+   Optionally different adapter could be provided as second argument.
 
-   Returns PHP value
+   :rtype: mixed
 
 .. _PHP: http://php.net
 .. _Serialization: http://en.wikipedia.org/wiki/Serialization
