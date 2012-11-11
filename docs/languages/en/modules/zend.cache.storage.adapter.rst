@@ -110,206 +110,164 @@ The StorageInterface
 
 The ``Zend\Cache\Storage\StorageInterface`` is the basic interface implemented by all storage adapters.
 
-.. _zend.cache.storage.adapter.methods.get-item:
-
-**getItem**
-   ``getItem(string $key, boolean & $success = null, mixed & $casToken = null)``
+.. function:: getItem(string $key, boolean & $success = null, mixed & $casToken = null)
+   :noindex:
 
    Load an item with the given $key.
-
+   
    If item exists set parameter $success to ``true``, set parameter $casToken and returns ``mixed`` value of item.
-
+   
    If item can't load set parameter $success to ``false`` and returns ``null``.
 
-.. _zend.cache.storage.adapter.methods.get-items:
+   :rtype: mixed
 
-**getItems**
-   ``getItems(array $keys)``
+.. function:: getItems(array $keys)
+   :noindex:
 
-   Load all items given by $keys.
+   Load all items given by $keys returning key-value pairs.
 
-   Returns ``array`` of key-value pairs of available items.
+   :rtype: array
 
-.. _zend.cache.storage.adapter.methods.has-item:
-
-**hasItem**
-   ``hasItem(string $key)``
+.. function:: hasItem(string $key)
+   :noindex:
 
    Test if an item exists.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.has-items:
-
-**hasItems**
-   ``hasItems(array $keys)``
+.. function:: hasItems(array $keys)
+   :noindex:
 
    Test multiple items.
 
-   Returns ``array``
+   :rtype: string[]
 
-.. _zend.cache.storage.adapter.methods.get-metadata:
-
-**getMetadata**
-   ``getMetadata(string $key)``
+.. function:: getMetadata(string $key)
+   :noindex:
 
    Get metadata of an item.
 
-   Returns ``array`` ``boolean``
+   :rtype: array|boolean
 
-.. _zend.cache.storage.adapter.methods.get-metadatas:
-
-**getMetadatas**
-   ``getMetadatas(array $keys)``
+.. function:: getMetadatas(array $keys)
+   :noindex:
 
    Get multiple metadata.
 
-   Returns ``array``
+   :rtype: array
 
-.. _zend.cache.storage.adapter.methods.set-item:
-
-**setItem**
-   ``setItem(string $key, mixed $value)``
+.. function:: setItem(string $key, mixed $value)
+   :noindex:
 
    Store an item.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.set-items:
-
-**setItems**
-   ``setItems(array $keyValuePairs)``
+.. function:: setItems(array $keyValuePairs)
+   :noindex:
 
    Store multiple items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.add-item:
-
-**addItem**
-   ``addItem(string $key, mixed $value)``
+.. function:: addItem(string $key, mixed $value)
+   :noindex:
 
    Add an item.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.add-items:
-
-**addItems**
-   ``addItems(array $keyValuePairs)``
+.. function:: addItems(array $keyValuePairs)
+   :noindex:
 
    Add multiple items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.replace-item:
-
-**replaceItem**
-   ``replaceItem(string $key, mixed $value)``
+.. function:: replaceItem(string $key, mixed $value)
+   :noindex:
 
    Replace an item.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.replace-items:
-
-**replaceItems**
-   ``replaceItems(array $keyValuePairs)``
+.. function:: replaceItems(array $keyValuePairs)
+   :noindex:
 
    Replace multiple items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.check-and-set-item:
+.. function:: checkAndSetItem(mixed $token, string $key, mixed $value)
+   :noindex:
 
-**checkAndSetItem**
-   ``checkAndSetItem(mixed $token, string $key, mixed $value)``
+   Set item only if token matches. It uses the token received from ``getItem()``
+   to check if the item has changed before overwriting it.
 
-   Set item only if token matches.
-   It uses the token received from ``getItem()`` to check if the item has changed before overwriting it.
+   :rtype: boolean
 
-   Returns ``boolean``
-
-.. _zend.cache.storage.adapter.methods.touch-item:
-
-**touchItem**
-   ``touchItem(string $key)``
+.. function:: touchItem(string $key)
+   :noindex:
 
    Reset lifetime of an item.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.touch-items:
-
-**touchItems**
-   ``touchItems(array $keys)``
+.. function:: touchItems(array $keys)
+   :noindex:
 
    Reset lifetime of multiple items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.remove-item:
-
-**removeItem**
-   ``removeItem(string $key)``
+.. function:: removeItem(string $key)
+   :noindex:
 
    Remove an item.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.remove-items:
-
-**removeItems**
-   ``removeItems(array $keys)``
+.. function:: removeItems(array $keys)
+   :noindex:
 
    Remove multiple items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.increment-item:
-
-**incrementItem**
-   ``incrementItem(string $key, int $value)``
+.. function:: incrementItem(string $key, int $value)
+   :noindex:
 
    Increment an item.
 
-   Returns ``integer`` ``boolean``
+   :rtype: integer|boolean
 
-.. _zend.cache.storage.adapter.methods.increment-items:
-
-**incrementItems**
-   ``incrementItems(array $keyValuePairs)``
+.. function:: incrementItems(array $keyValuePairs)
+   :noindex:
 
    Increment multiple items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.decrement-item:
-
-**decrementItem**
-   ``decrementItem(string $key, int $value)``
+.. function:: decrementItem(string $key, int $value)
+   :noindex:
 
    Decrement an item.
 
-   Returns ``interger`` ``boolean``
+   :rtype: interger|boolean
 
-.. _zend.cache.storage.adapter.methods.decrement-items:
-
-**decrementItems**
-   ``decrementItems(array $keyValuePairs)``
+.. function:: decrementItems(array $keyValuePairs)
+   :noindex:
 
    Decrement multiple items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.get-capabilities:
-
-**getCapabilities**
-   ``getCapabilities()``
+.. function:: getCapabilities()
+   :noindex:
 
    Capabilities of this storage.
 
-   Returns ``Zend\Cache\Storage\Capabilities``
+   :rtype: Zend\\Cache\\Storage\\Capabilities
 
 .. _zend.cache.storage.adapter.methods-available-space-capable-interface:
 
@@ -319,14 +277,12 @@ The AvailableSpaceCapableInterface
 The ``Zend\Cache\Storage\AvailableSpaceCapableInterface`` implements a method
 to make it possible getting the current available space of the storage.
 
-.. _zend.cache.storage.adapter.methods.get-available-space:
-
-**getAvailableSpace**
-   ``getAvailableSpace()``
+.. function:: getAvailableSpace()
+   :noindex:
 
    Get available space in bytes.
 
-   Returns ``integer`` ``float``
+   :rtype: integer|float
 
 .. _zend.cache.storage.adapter.methods-total-space-capable-interface:
 
@@ -336,14 +292,12 @@ The TotalSpaceCapableInterface
 The ``Zend\Cache\Storage\TotalSpaceCapableInterface`` implements a method to
 make it possible getting the total space of the storage.
 
-.. _zend.cache.storage.adapter.methods.get-total-space:
-
-**getTotalSpace**
-   ``getTotalSpace()``
+.. function:: getTotalSpace()
+   :noindex:
 
    Get total space in bytes.
 
-   Returns ``integer`` ``float``
+   :rtype: integer|float
 
 .. _zend.cache.storage.adapter.methods-clear-by-namespace-interface:
 
@@ -353,14 +307,12 @@ The ClearByNamespaceInterface
 The ``Zend\Cache\Storage\ClearByNamespaceInterface`` implements a method to
 clear all items of a given namespace.
 
-.. _zend.cache.storage.adapter.methods.clear-by-namespace:
-
-**clearByNamespace**
-   ``clearByNamespace(string $namespace)``
+.. function:: clearByNamespace(string $namespace)
+   :noindex:
 
    Remove items of given namespace.
 
-   Returns ``boolean``
+   :rtype: boolean
 
 .. _zend.cache.storage.adapter.methods-clear-by-prefix-interface
 
@@ -370,14 +322,12 @@ The ClearByPrefixInterface
 The ``Zend\Cache\Storage\ClearByPrefixInterface`` implements a method to clear
 all items of a given prefix (within the current configured namespace).
 
-.. _zend.cache.storage.adapter.methods.clear-by-prefix:
-
-**clearByPrefix**
-   ``clearByPrefix(string $prefix)``
+.. function:: clearByPrefix(string $prefix)
+   :noindex:
 
    Remove items matching given prefix.
 
-   Returns ``boolean``
+   :rtype: boolean
 
 .. _zend.cache.storage.adapter.methods-clear-expired-interface
 
@@ -387,14 +337,12 @@ The ClearExpiredInterface
 The ``Zend\Cache\Storage\ClearExpiredInterface`` implements a method to clear
 all expired items (within the current configured namespace).
 
-.. _zend.cache.storage.adapter.methods.clear-expired:
-
-**clearExpired**
-   ``clearExpired()``
+.. function:: clearExpired()
+   :noindex:
 
    Remove expired items.
 
-   Returns ``boolean``
+   :rtype: boolean
 
 .. _zend.cache.storage.adapter.methods-flushable-interface
 
@@ -404,14 +352,12 @@ The FlushableInterface
 The ``Zend\Cache\Storage\FlushableInterface`` implements a method to flush
 the complete storage.
 
-.. _zend.cache.storage.adapter.methods.flush:
-
-**flush**
-   ``flush()``
+.. function:: flush()
+   :noindex:
 
    Flush the whole storage.
 
-   Returns ``boolean``
+   :rtype: boolean
 
 .. _zend.cache.storage.adapter.methods-iterable-interface
 
@@ -422,14 +368,12 @@ The ``Zend\Cache\Storage\IterableInterface`` implements a method to get an
 iterator to iterate over items of the storage. It extends ``IteratorAggregate``
 so it's possible to directly iterator over the storage using ``foreach``.
 
-.. _zend.cache.storage.adapter.methods.get-iterator:
-
-**getIterator**
-   ``getIterator()``
+.. function:: getIterator()
+   :noindex:
 
    Get an Iterator.
 
-   Returns ``Zend\Cache\Storage\IteratorInterface``
+   :rtype: Zend\\Cache\\Storage\\IteratorInterface
 
 .. _zend.cache.storage.adapter.methods-optimizable-interface
 
@@ -439,14 +383,12 @@ The OptimizableInterface
 The ``Zend\Cache\Storage\OptimizableInterface`` implements a method to run
 optimization processes on the storage.
 
-.. _zend.cache.storage.adapter.methods.optimize:
-
-**optimize**
-   ``optimize()``
+.. function:: optimize()
+   :noindex:
 
    Optimize the storage.
 
-   Returns ``boolean``
+   :rtype: boolean
 
 .. _zend.cache.storage.adapter.methods-taggable-interface
 
@@ -456,36 +398,30 @@ The TaggableInterface
 The ``Zend\Cache\Storage\TaggableInterface`` implements methods to mark items
 with one or more tags and to clean items matching tags.
 
-.. _zend.cache.storage.adapter.methods.set-tags:
-
-**setTags**
-   ``setTags(string $key, string[] $tags)``
+.. function:: setTags(string $key, string[] $tags)
+   :noindex:
 
    Set tags to an item by given key.
    (An empty array will remove all tags)
 
-   Returns ``boolean``
+   :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods.get-tags:
-
-**getTags**
-   ``getTags(string $key)``
+.. function:: getTags(string $key)
+   :noindex:
 
    Get tags of an item by given key.
 
-   Returns ``string[]`` ``false``
+   :rtype: string[]|false
 
-.. _zend.cache.storage.adapter.methods.get-tags:
-
-**clearByTags**
-   ``clearByTags(string[] $tags, boolean $disjunction = false)``
+.. function:: clearByTags(string[] $tags, boolean $disjunction = false)
+   :noindex:
 
    Remove items matching given tags.
 
    If $disjunction is ``true`` only one of the given tags must match
    else all given tags must match.
 
-   Returns ``boolean``
+   :rtype: boolean
 
 .. _zend.cache.storage.adapter.apc
 

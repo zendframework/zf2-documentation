@@ -42,43 +42,35 @@ Configuration Options
 Available Methods
 -----------------
 
-.. _zend.cache.pattern.output-cache.methods.start:
+.. function:: start(string $key)
+   :noindex:
 
-**start**
-   ``start(string $key)``
+   If there is a cached item with the given key display it's data and return ``true``
+   else start buffering output until ``end()`` is called or the script ends and return ``false``.
 
-   If there is a cached item with the given key display it's data and return true
-   else start buffering output until end() is called or the script ends and return false.
+   :rtype: boolean
 
-   Returns boolean
+.. function:: end()
+   :noindex:
 
-.. _zend.cache.pattern.output-cache.methods.end:
-
-**end**
-   ``end()``
-
-   Stops buffering output, write buffered data to cache using the given key on start()
+   Stops buffering output, write buffered data to cache using the given key on ``start()``
    and displays the buffer.
 
-   Returns boolean
+   :rtype: boolean
 
-.. _zend.cache.pattern.output-cache.methods.set-options:
+.. function:: setOptions(Zend\\Cache\\Pattern\\PatternOptions $options)
+   :noindex:
 
-**setOptions**
-   ``setOptions(Zend\Cache\Pattern\PatternOptions $options)``
+   Set pattern options.
 
-   Set pattern options
+   :rtype: Zend\\Cache\\Pattern\\OutputCache
 
-   Returns Zend\\Cache\\Pattern\\OutputCache
+.. function:: getOptions()
+   :noindex:
 
-.. _zend.cache.pattern.output-cache.methods.get-options:
+   Get all pattern options.
 
-**getOptions**
-   ``getOptions()``
-
-   Get all pattern options
-
-   Returns ``PatternOptions`` instance.
+   :rtype: Zend\\Cache\\Pattern\\PatternOptions
 
 .. _zend.cache.pattern.pattern-factory.examples:
 

@@ -54,49 +54,41 @@ Configuration Options
 Available Methods
 -----------------
 
-.. _zend.cache.pattern.callback-cache.methods.call:
+.. function:: call(callable $callback, array $args = array())
+   :noindex:
 
-**call**
-   ``call(callable $callback, array $args = array())``
+   Call the specified callback or get the result from cache.
 
-   Call the specified callback or get the result from cache
+   :rtype: mixed
 
-   Returns the result
+.. function:: __call(string $function, array $args)
+   :noindex:
 
-.. _zend.cache.pattern.callback-cache.methods.__call:
+   Function call handler.
 
-**__call**
-   ``__call(string $function, array $args)``
+   :rtype: mixed
 
-   Function call handler
-
-   Returns the result
-
-**generateKey**
-   ``generateKey(callable $callback, array $args = array())``
+.. function:: generateKey(callable $callback, array $args = array())
+   :noindex:
 
    Generate a unique key in base of a key representing the callback part
    and a key representing the arguments part.
 
-   Returns the key
+   :rtype: string
 
-.. _zend.cache.pattern.callback-cache.methods.set-options:
+.. function:: setOptions(Zend\\Cache\\Pattern\\PatternOptions $options)
+   :noindex:
 
-**setOptions**
-   ``setOptions(Zend\Cache\Pattern\PatternOptions $options)``
+   Set pattern options.
 
-   Set pattern options
+   :rtype: Zend\\Cache\\Pattern\\CallbackCache
 
-   Returns Zend\\Cache\\Pattern\\CallbackCache
+.. function:: getOptions()
+   :noindex:
 
-.. _zend.cache.pattern.callback-cache.methods.get-options:
+   Get all pattern options.
 
-**getOptions**
-   ``getOptions()``
-
-   Get all pattern options
-
-   Returns ``PatternOptions`` instance.
+   :rtype: Zend\\Cache\\Pattern\\PatternOptions
 
 .. _zend.cache.pattern.pattern-factory.examples:
 

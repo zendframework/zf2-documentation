@@ -169,41 +169,33 @@ The Serializer Plugin
 Available Methods
 -----------------
 
-.. _zend.cache.storage.plugin.methods.set-options:
+.. function:: setOptions(Zend\\Cache\\Storage\\Plugin\\PluginOptions $options)
+   :noindex:
 
-**setOptions**
-   ``setOptions(Zend\Cache\Storage\Plugin\PluginOptions $options)``
+   Set options.
 
-   Set options
+   :rtype: Zend\\Cache\\Storage\\Plugin\\PluginInterface
 
-   Implements a fluent interface.
+.. function:: getOptions()
+   :noindex:
 
-.. _zend.cache.storage.plugin.methods.get-options:
+   Get options.
 
-**getOptions**
-   ``getOptions()``
+   :rtype: Zend\\Cache\\Storage\\Plugin\\PluginOptions
 
-   Get options
+.. function:: attach(Zend\\EventManager\\EventManagerInterface $events)
+   :noindex:
 
-   Returns PluginOptions
+   Defined by ``Zend\EventManager\ListenerAggregateInterface``, attach one or more listeners.
 
-.. _zend.cache.storage.plugin.methods.attach:
+   :rtype: void
 
-**attach**
-   ``attach(EventCollection $events)``
+.. function:: detach(Zend\\EventManager\\EventManagerInterface $events)
+   :noindex:
 
-   Defined by ``Zend\EventManager\ListenerAggregate``, attach one or more listeners.
+   Defined by ``Zend\EventManager\ListenerAggregateInterface``, detach all previously attached listeners.
 
-   Returns void
-
-.. _zend.cache.storage.plugin.methods.detach:
-
-**detach**
-   ``detach(EventCollection $events)``
-
-   Defined by ``Zend\EventManager\ListenerAggregate``, detach all previously attached listeners.
-
-   Returns void
+   :rtype: void
 
 .. _zend.cache.storage.plugin.examples:
 
