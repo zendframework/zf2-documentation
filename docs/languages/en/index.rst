@@ -575,7 +575,7 @@ Zend\\Permissions\\Rbac
 .. _zend.serializer:
 
 Zend\\Serializer
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zend.serializer`
         * :doc:`modules/zend.serializer.adapters`
