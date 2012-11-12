@@ -45,7 +45,7 @@ Simplest usage as Apache-404 handler
 
 .. _zend.cache.pattern.capture-cache.options:
 
-Configuration options
+Configuration Options
 ---------------------
 
 +------------------+------------------------+------------------------+-----------------------------------------------------------------+
@@ -69,69 +69,61 @@ Configuration options
 Available Methods
 -----------------
 
-.. _zend.cache.pattern.capture-cache.methods.start:
+.. function:: start(string|null $pageId = null)
+   :noindex:
 
-**start**
-   ``start(string|null $pageId = null)``
+   Start capturing output.
 
-   Start capturing output
+   :rtype: void
 
-   Returns void
+.. function:: set(string $content, string|null $pageId = null)
+   :noindex:
 
-.. _zend.cache.pattern.capture-cache.methods.set:
+   Write content to page identity.
 
-**set**
-   ``set(string $content, string|null $pageId = null)``
+   :rtype: void
 
-   Write content to page identity
+.. function:: get(string|null $pageId = null)
+   :noindex:
 
-   Returns void
+   Get content of an already cached page.
 
-**get**
-   ``get(string|null $pageId = null)``
+   :rtype: string|false
 
-   Get content of an already cached page
+.. function:: has(string|null $pageId = null)
+   :noindex:
 
-   Returns string|false
+   Check if a page has been created.
 
-**has**
-   ``has(string|null $pageId = null)``
+   :rtype: boolean
 
-   Check if a page has been created
+.. function:: remove(string|null $pageId = null)
+   :noindex:
 
-   Returns boolean
+   Remove a page.
 
-**remove**
-   ``remove(string|null $pageId = null)``
+   :rtype: boolean
 
-   Remove a page
+.. function:: clearByGlob(string $pattern = '**')
+   :noindex:
 
-   Returns boolean
+   Clear pages matching glob pattern.
 
-**clearByGlob**
-   ``clearByGlob(string $pattern = '**')``
+   :rtype: void
 
-   Clear pages matching glob pattern
+.. function:: setOptions(Zend\\Cache\\Pattern\\PatternOptions $options)
+   :noindex:
 
-   Returns void
+   Set pattern options.
 
-.. _zend.cache.pattern.capture-cache.methods.set-options:
+   :rtype: Zend\\Cache\\Pattern\\OutputCache
 
-**setOptions**
-   ``setOptions(Zend\Cache\Pattern\PatternOptions $options)``
+.. function:: getOptions()
+   :noindex:
 
-   Set pattern options
+   Get all pattern options.
 
-   Returns Zend\\Cache\\Pattern\\OutputCache
-
-.. _zend.cache.pattern.capture-cache.methods.get-options:
-
-**getOptions**
-   ``getOptions()``
-
-   Get all pattern options
-
-   Returns ``PatternOptions`` instance.
+   :rtype: Zend\\Cache\\Pattern\\PatternOptions
 
 .. _zend.cache.pattern.pattern-factory.examples:
 

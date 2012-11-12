@@ -217,7 +217,7 @@ First, let's create a class that holds configuration.
                $form = new Form\User();
 
                // Retrieve a dependency from the service manager and inject it!
-               $form->setInputFilter($serviceManager->get('UserInputFilter'),
+               $form->setInputFilter($serviceManager->get('UserInputFilter'));
                return $form;
            });
            $serviceManager->setInvokableClass('UserInputFilter', 'SomeModule\InputFilter\User');
@@ -277,12 +277,17 @@ any class implementing ``Zend\ServiceManager\ServiceLocatorAwareInterface``. A s
            $this->services = $serviceLocator;
        }
 
+       public function getServiceLocator()
+       {
+           return $this->services;
+       }
+
        public function dispatch(Request $request, Response $response = null)
        {
            // ...
 
            // Retrieve something from the service manager
-           $router = $this->services->get('Router');
+           $router = $this->getServiceLocator()->get('Router');
 
            // ...
        }

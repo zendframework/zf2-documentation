@@ -36,8 +36,8 @@ not using ``Zend\Mvc``, the meat of your code should look something like the fol
    use Zend\Log\Writer\Stream as LogWriter;
    use Zend\Log\Filter\Priority as LogFilter;
 
-   $username = $this->_request->getParam('username');
-   $password = $this->_request->getParam('password');
+   $username = $this->getRequest()->getPost('username');
+   $password = $this->getRequest()->getPost('password');
 
 
    $auth = new AuthenticationService();

@@ -23,7 +23,7 @@ The memory manager uses :ref:`Zend\Cache backends <zend.cache.backends>` as stor
 
 .. rubric:: Using Zend\Memory component
 
-``Zend\Memory\Memory::factory()`` instantiates the memory manager object with specified backend options.
+``Zend\Memory\Memory::factory()`` instantiates the memory manager class with specified backend options.
 
 .. code-block:: php
    :linenos:

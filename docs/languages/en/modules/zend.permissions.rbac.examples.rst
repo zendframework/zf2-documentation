@@ -58,7 +58,7 @@ Handling roles with children.
     $foo  = new Role('foo');
     $bar  = new Role('bar');
 
-    // 1 - Add a role with child role directly with instantiated objects.
+    // 1 - Add a role with child role directly with instantiated classes.
     $foo->addChild($bar);
     $rbac->addRole($foo);
 

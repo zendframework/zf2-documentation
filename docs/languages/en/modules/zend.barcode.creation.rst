@@ -26,7 +26,7 @@ Using Zend\\Barcode\\Barcode::factory
 
 .. rubric:: Getting a Renderer with Zend\\Barcode\\Barcode::factory()
 
-``Zend\Barcode\Barcode::factory()`` instantiates barcode objects and renderers and ties them together. In this
+``Zend\Barcode\Barcode::factory()`` instantiates barcode classes and renderers and ties them together. In this
 first example, we will use the **Code39** barcode type together with the **Image** renderer.
 
 .. code-block:: php

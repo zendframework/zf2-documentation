@@ -31,7 +31,7 @@ Instantiating the class cache pattern
 
 .. _zend.cache.pattern.class-cache.options:
 
-Configuration options
+Configuration Options
 ---------------------
 
 +------------------------+-------------------------------------------------------------+--------------+-----------------------------------------------------------------+
@@ -55,73 +55,69 @@ Configuration options
 Available Methods
 -----------------
 
-.. _zend.cache.pattern.class-cache.methods.call:
+.. function:: call(string $method, array $args = array())
+   :noindex:
 
-**call**
-   ``call(string $method, array $args = array())``
+    Call the specified method of the configured class.
 
-   Call the specified method of the configured class
+   :rtype: mixed
 
-   Returns the result
+.. function:: __call(string $method, array $args)
+   :noindex:
 
-.. _zend.cache.pattern.class-cache.methods.__call:
+    Call the specified method of the configured class.
 
-**__call**
-   ``__call(string $method, array $args)``
+   :rtype: mixed
 
-   Call the specified method of the configured class
+.. function:: __set(string $name, mixed $value)
+   :noindex:
 
-   Returns the result
+    Set a static property of the configured class.
 
-**__set**
+   :rtype: void
 
-    ``__set(string $name, mixed $value)``
-    
-    Set a static property of the configured class
+.. function:: __get(string $name)
+   :noindex:
 
-**__get**
+    Get a static property of the configured class.
 
-    ``__get(string $name)``
-    
-    Get a static property of the configured class
+   :rtype: mixed
 
-**__isset**
+.. function:: __isset(string $name)
+   :noindex:
 
-    ``__isset(string $name)``
+    Checks if a static property of the configured class exists.
 
-    Checks if a static property of the configured class exists
+   :rtype: boolean
 
-**__unset**
+.. function:: __unset(string $name)
+   :noindex:
 
-    ``__unset(string $name)``
+    Unset a static property of the configured class.
 
-    Unset a static property of the configured class
+   :rtype: void
 
-**generateKey**
-   ``generateKey(string $method, array $args = array())``
+.. function:: generateKey(string $method, array $args = array())
+   :noindex:
 
    Generate a unique key in base of a key representing the callback part
    and a key representing the arguments part.
 
-   Returns the key
+   :rtype: string
 
-.. _zend.cache.pattern.class-cache.methods.set-options:
+.. function:: setOptions(Zend\\Cache\\Pattern\\PatternOptions $options)
+   :noindex:
 
-**setOptions**
-   ``setOptions(Zend\Cache\Pattern\PatternOptions $options)``
+   Set pattern options.
 
-   Set pattern options
+   :rtype: Zend\\Cache\\Pattern\\ClassCache
 
-   Returns Zend\\Cache\\Pattern\\ClassCache
+.. function:: getOptions()
+   :noindex:
 
-.. _zend.cache.pattern.class-cache.methods.get-options:
+   Get all pattern options.
 
-**getOptions**
-   ``getOptions()``
-
-   Get all pattern options
-
-   Returns ``PatternOptions`` instance.
+   :rtype: Zend\\Cache\\Pattern\\PatternOptions
 
 .. _zend.cache.pattern.pattern-factory.examples:
 
