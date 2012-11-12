@@ -24,212 +24,166 @@ marker object and can create your own marker to instantiate a new object of ``Ze
 Available Methods
 -----------------
 
-.. _zend.cache.storage.capabilities.methods.__construct:
-
-**__construct**
-   ``__construct(Zend\Cache\Storage\StorageInterface $storage, stdClass $marker, array $capabilities = array(), Capabilities $baseCapabilities = null)``
+.. function:: __construct(Zend\\Cache\\Storage\\StorageInterface $storage, stdClass $marker, array $capabilities = array(), Zend\\Cache\\Storage\\Capabilities|null $baseCapabilities = null)
+   :noindex:
 
    Constructor
 
-.. _zend.cache.storage.capabilities.methods.get-supported-datatypes:
+.. function:: getSupportedDatatypes()
+   :noindex:
 
-**getSupportedDatatypes**
-   ``getSupportedDatatypes()``
+   Get supported datatypes.
+   
+   :rtype: array
 
-   Get supported datatypes
-
-   Returns ``array``
-
-.. _zend.cache.storage.capabilities.methods.set-supported-datatypes:
-
-**setSupportedDatatypes**
-   ``setSupportedDatatypes(stdClass $marker, array $datatypes)``
+.. function:: setSupportedDatatypes(stdClass $marker, array $datatypes)
+   :noindex:
 
    Set supported datatypes.
+   
+   :rtype: Zend\\Cache\\Storage\\Capabilities
 
-   Implements a fluent interface.
-
-.. _zend.cache.storage.capabilities.methods.get-supported-metadata:
-
-**getSupportedMetadata**
-   ``getSupportedMetadata()``
+.. function:: getSupportedMetadata()
+   :noindex:
 
    Get supported metadata.
+   
+   :rtype: array
 
-   Returns array.
+.. function:: setSupportedMetadata(stdClass $marker, string $metadata)
+   :noindex:
 
-.. _zend.cache.storage.capabilities.methods.set-supported-metadata:
+   Set supported metadata.
+   
+   :rtype: Zend\\Cache\\Storage\\Capabilities
 
-**setSupportedMetadata**
-   ``setSupportedMetadata(stdClass $marker, string $metadata)``
+.. function:: getMinTtl()
+   :noindex:
 
-   Set supported metadata
+   Get minimum supported time-to-live.
+   
+   (Returning 0 means items never expire) 
+   
+   :rtype: integer
 
-   Implements a fluent interface.
+.. function:: setMinTtl(stdClass $marker, int $minTtl)
+   :noindex:
 
+   Set minimum supported time-to-live.
+   
+   :rtype: Zend\\Cache\\Storage\\Capabilities
 
-.. _zend.cache.storage.capabilities.methods.get-min-ttl:
+.. function:: getMaxTtl()
+   :noindex:
 
-**getMinTtl**
-   ``getMinTtl()``
+   Get maximum supported time-to-live.
+   
+   :rtype: integer
 
-   Get minimum supported time-to-live
+.. function:: setMaxTtl(stdClass $marker, int $maxTtl)
+   :noindex:
 
-   Returns int (0 means items never expire)
+   Set maximum supported time-to-live.
+   
+   :rtype: Zend\\Cache\\Storage\\Capabilities
 
-.. _zend.cache.storage.capabilities.methods.set-min-ttl:
-
-**setMinTtl**
-   ``setMinTtl(stdClass $marker, int $minTtl)``
-
-   Set minimum supported time-to-live
-
-   Implements a fluent interface.
-
-
-.. _zend.cache.storage.capabilities.methods.get-max-ttl:
-
-**getMaxTtl**
-   ``getMaxTtl()``
-
-   Get maximum supported time-to-live
-
-   Returns int
-
-.. _zend.cache.storage.capabilities.methods.set-max-ttl:
-
-**setMaxTtl**
-   ``setMaxTtl(stdClass $marker, int $maxTtl)``
-
-   Set maximum supported time-to-live
-
-   Implements a fluent interface.
-
-.. _zend.cache.storage.capabilities.methods.get-static-ttl:
-
-**getStaticTtl**
-   ``getStaticTtl()``
+.. function:: getStaticTtl()
+   :noindex:
 
    Is the time-to-live handled static (on write), or dynamic (on read).
+   
+   :rtype: boolean
 
-   Returns boolean
+.. function:: setStaticTtl(stdClass $marker, boolean $flag)
+   :noindex:
 
-.. _zend.cache.storage.capabilities.methods.set-static-ttl:
+   Set if the time-to-live is handled statically (on write) or dynamically (on read).
+   
+   :rtype: Zend\\Cache\\Storage\\Capabilities
 
-**setStaticTtl**
-   ``setStaticTtl(stdClass $marker, boolean $flag)``
-
-   Set if the time-to-live is handled statically (on write) or dynamically (on read)
-
-   Implements a fluent interface.
-
-.. _zend.cache.storage.capabilities.methods.get-ttl-precision:
-
-**getTtlPrecision**
-   ``getTtlPrecision()``
+.. function:: getTtlPrecision()
+   :noindex:
 
    Get time-to-live precision.
+   
+   :rtype: float
 
-   Returns float.
-
-.. _zend.cache.storage.capabilities.methods.set-ttl-precision:
-
-**setTtlPrecision**
-   ``setTtlPrecision(stdClass $marker, float $ttlPrecision)``
+.. function:: setTtlPrecision(stdClass $marker, float $ttlPrecision)
+   :noindex:
 
    Set time-to-live precision.
+   
+   :rtype: Zend\\Cache\\Storage\\Capabilities
 
-   Implements a fluent interface.
+.. function:: getUseRequestTime()
+   :noindex:
 
-.. _zend.cache.storage.capabilities.methods.get-use-request-time:
+   Get the "use request time" flag status.
+   
+   :rtype: boolean
 
-**getUseRequestTime**
-   ``getUseRequestTime()``
-
-   Get the "use request time" flag status
-
-   Returns boolean
-
-.. _zend.cache.storage.capabilities.methods.set-use-request-time:
-
-**setUseRequestTime**
-   ``setUseRequestTime(stdClass $marker, boolean $flag)``
+.. function:: setUseRequestTime(stdClass $marker, boolean $flag)
+   :noindex:
 
    Set the "use request time" flag.
+   
+   :rtype: Zend\\Cache\\Storage\\Capabilities
 
-   Implements a fluent interface.
-
-.. _zend.cache.storage.capabilities.methods.get-expired-read:
-
-**getExpiredRead**
-   ``getExpiredRead()``
+.. function:: getExpiredRead()
+   :noindex:
 
    Get flag indicating if expired items are readable.
+   
+   :rtype: boolean
 
-   Returns boolean
-
-.. _zend.cache.storage.capabilities.methods.set-expired-read:
-
-**setExpiredRead**
-   ``setExpiredRead(stdClass $marker, boolean $flag)``
+.. function:: setExpiredRead(stdClass $marker, boolean $flag)
+   :noindex:
 
    Set if expired items are readable.
+   
+   :rtype: Zend\\Cache\\Storage\\Capabilities
 
-   Implements a fluent interface.
-
-.. _zend.cache.storage.capabilities.methods.get-max-key-length:
-
-**getMaxKeyLength**
-   ``getMaxKeyLength()``
+.. function:: getMaxKeyLength()
+   :noindex:
 
    Get maximum key lenth.
+   
+   :rtype: integer
 
-   Returns int
-
-.. _zend.cache.storage.capabilities.methods.set-max-key-length:
-
-**setMaxKeyLength**
-   ``setMaxKeyLength(stdClass $marker, int $maxKeyLength)``
+.. function:: setMaxKeyLength(stdClass $marker, int $maxKeyLength)
+   :noindex:
 
    Set maximum key lenth.
+   
+   :rtype: Zend\\Cache\\Storage\\Capabilities
 
-   Implements a fluent interface.
-
-.. _zend.cache.storage.capabilities.methods.get-namespace-is-prefix:
-
-**getNamespaceIsPrefix**
-   ``getNamespaceIsPrefix()``
+.. function:: getNamespaceIsPrefix()
+   :noindex:
 
    Get if namespace support is implemented as a key prefix.
+   
+   :rtype: boolean
 
-   Returns boolean
-
-.. _zend.cache.storage.capabilities.methods.set-namespace-is-prefix:
-
-**setNamespaceIsPrefix**
-   ``setNamespaceIsPrefix(stdClass $marker, boolean $flag)``
+.. function:: setNamespaceIsPrefix(stdClass $marker, boolean $flag)
+   :noindex:
 
    Set if namespace support is implemented as a key prefix.
+   
+   :rtype: Zend\\Cache\\Storage\\Capabilities
 
-   Implements a fluent interface.
-
-.. _zend.cache.storage.capabilities.methods.get-namespace-separator:
-
-**getNamespaceSeparator**
-   ``getNamespaceSeparator()``
+.. function:: getNamespaceSeparator()
+   :noindex:
 
    Get namespace separator if namespace is implemented as a key prefix.
+   
+   :rtype: string
 
-   Returns string
-
-.. _zend.cache.storage.capabilities.methods.set-namespace-separator:
-
-**setNamespaceSeparator**
-   ``setNamespaceSeparator(stdClass $marker, string $separator)``
+.. function:: setNamespaceSeparator(stdClass $marker, string $separator)
+   :noindex:
 
    Set the namespace separator if namespace is implemented as a key prefix.
-
-   Implements a fluent interface.
+   
+   :rtype: Zend\\Cache\\Storage\\Capabilities
 
 .. _zend.cache.storage.capabilities.examples:
 
