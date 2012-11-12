@@ -816,6 +816,75 @@ The WinCache Adapter
    |namespace_separator |``string`` |":"            |A separator for the namespace and prefix    |
    +--------------------+-----------+---------------+--------------------------------------------+
 
+.. _zend.cache.storage.adapter.xcache
+
+The XCache Adapter
+--------------------
+
+   The ``Zend\Cache\Storage\Adapter\XCache`` adapter stores cache items into
+   shared memory through the required PHP extension XCache_.
+
+   This adapter implements the following interfaces:
+
+   - ``Zend\Cache\Storage\StorageInterface``
+   - ``Zend\Cache\Storage\AvailableSpaceCapableInterface``
+   - ``Zend\Cache\Storage\ClearByNamespaceInterface``
+   - ``Zend\Cache\Storage\ClearByPrefixInterface``
+   - ``Zend\Cache\Storage\FlushableInterface``
+   - ``Zend\Cache\Storage\IterableInterface``
+   - ``Zend\Cache\Storage\TotalSpaceCapableInterface``
+
+.. _zend.cache.storage.adapter.xcache.capabilities
+
+.. table:: Capabilities
+
+   +--------------------+---------------------------------------------------------------------------------------------------+
+   |Capability          |Value                                                                                              |
+   +====================+===================================================================================================+
+   |supportedDatatypes  |``boolean``, ``integer``, ``double``, ``string``, ``array`` (serialized), ``object`` (serialized)  |
+   +--------------------+---------------------------------------------------------------------------------------------------+
+   |supportedMetadata   |internal_key, size, refcount, hits, ctime, atime, hvalue                                           |
+   +--------------------+---------------------------------------------------------------------------------------------------+
+   |minTtl              |1                                                                                                  |
+   +--------------------+---------------------------------------------------------------------------------------------------+
+   |maxTtl              |<ini value of ``xcache.var_maxttl``>                                                               |
+   +--------------------+---------------------------------------------------------------------------------------------------+
+   |staticTtl           |``true``                                                                                           |
+   +--------------------+---------------------------------------------------------------------------------------------------+
+   |ttlPrecision        |1                                                                                                  |
+   +--------------------+---------------------------------------------------------------------------------------------------+
+   |useRequestTime      |``true``                                                                                           |
+   +--------------------+---------------------------------------------------------------------------------------------------+
+   |expiredRead         |``false``                                                                                          |
+   +--------------------+---------------------------------------------------------------------------------------------------+
+   |maxKeyLength        |5182                                                                                               |
+   +--------------------+---------------------------------------------------------------------------------------------------+
+   |namespaceIsPrefix   |``true``                                                                                           |
+   +--------------------+---------------------------------------------------------------------------------------------------+
+   |namespaceSeparator  |<Option value of ``namespace_separator``>                                                          |
+   +--------------------+---------------------------------------------------------------------------------------------------+
+
+-------------------------------
+
+.. _zend.cache.storage.adapter.xcache.options
+
+.. table:: Adapter specific options
+
+   +--------------------+------------+---------------+---------------------------------------------------------------------------------------+
+   |Name                |Data Type   |Default Value  |Describtion                                                                            |
+   +====================+============+===============+=======================================================================================+
+   |namespace_separator |``string``  |":"            |A separator for the namespace and prefix                                               |
+   +--------------------+------------+---------------+---------------------------------------------------------------------------------------+
+   |admin_auth          |``boolean`` |``false``      |Enable admin authentication by configuration options ``admin_user`` and ``admin_pass`` |
+   |                    |            |               |                                                                                       |
+   |                    |            |               |This makes XCache_ administration functions accessible if ``xcache.admin.enable_auth`` |
+   |                    |            |               |is enabled without the need of HTTP-Authentication.                                    |
+   +--------------------+------------+---------------+---------------------------------------------------------------------------------------+
+   |admin_user          |``string``  |""             |The username of ``xcache.admin.user``                                                  |
+   +--------------------+------------+---------------+---------------------------------------------------------------------------------------+
+   |admin_pass          |``string``  |""             |The password of ``xcache.admin.pass`` in plain text                                    |
+   +--------------------+------------+---------------+---------------------------------------------------------------------------------------+
+
 .. _zend.cache.storage.adapter.zend-server-disk
 
 The ZendServerDisk Adapter
@@ -989,4 +1058,5 @@ Examples
 .. _memcached: http://pecl.php.net/package/memcached
 .. _Libmemcached: http://libmemcached.org/
 .. _WinCache: http://pecl.php.net/package/WinCache
+.. _XCache: http://xcache.lighttpd.net/
 .. _Zend Server Data Caching API: http://www.zend.com/en/products/server/
