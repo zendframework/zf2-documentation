@@ -64,7 +64,7 @@ enregistrements récupérés depuis le cache sont désérialisés.
    // $cache initialisé dans l'exemple précédent
 
    // on regarde si un cache existe déjà
-   if(!$result = $cache->load('myresult')) {
+   if (!$result = $cache->load('myresult')) {
 
        // le cache est manquant, connexion à la base de données
        $db = Zend\Db\Db::factory( [...] );
@@ -112,7 +112,7 @@ récupération de son cache (si le cache est encore valide).
                                 $backendOptions);
 
    // nous passons un identifiant unique de la méthode start()
-   if(!$cache->start('mypage')) {
+   if (!$cache->start('mypage')) {
        // affichage
 
        echo 'Hello world! ';

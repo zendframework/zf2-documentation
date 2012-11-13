@@ -36,7 +36,7 @@ regionName and regionUrl.
    $ec2_region = new ZendService\Amazon\Ec2\Region('aws_key','aws_secret_key');
    $regions = $ec2_region->describe();
 
-   foreach($regions as $region) {
+   foreach ($regions as $region) {
        print $region['regionName'] . ' -- ' . $region['regionUrl'] . '<br />';
    }
 
@@ -68,7 +68,7 @@ zoneName and zoneState.
                                                               'aws_secret_key');
    $zones = $ec2_zones->describe();
 
-   foreach($zones as $zone) {
+   foreach ($zones as $zone) {
        print $zone['zoneName'] . ' -- ' . $zone['zoneState'] . '<br />';
    }
 

@@ -163,7 +163,7 @@ Zend\Cache_Frontend\Output
    <?php
 
    // if it is a cache miss, output buffering is triggered
-   if(!$cache->start('mypage')):
+   if (!$cache->start('mypage')):
 
    // output everything as usual
    echo 'Hello world! ';

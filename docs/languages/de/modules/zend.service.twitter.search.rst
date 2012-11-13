@@ -28,7 +28,7 @@ unterstützt die Such *API* für Trends nur eine Rückgabe von *JSON* weswegen d
    $twitterSearch = new Zend\Service_Twitter\Search();
    $twitterTrends = $twitterSearch->trends();
 
-   foreach($twitterTrends as $trend) {
+   foreach ($twitterTrends as $trend) {
        print $trend['name'] . ' - ' . $trend['url'] . PHP_EOL
    }
 

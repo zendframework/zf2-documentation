@@ -218,7 +218,7 @@ Maildir もほぼ同様ですが、こちらはディレクトリ名を指定し
    $type = $message->contentType;
 
    // CC が設定されているかどうかを調べます
-   if( isset($message->cc) ) { // あるいは $message->headerExists('cc');
+   if (isset($message->cc)) { // あるいは $message->headerExists('cc');
        $cc = $message->cc;
    }
 

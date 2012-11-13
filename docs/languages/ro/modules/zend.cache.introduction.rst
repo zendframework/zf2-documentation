@@ -61,7 +61,7 @@ să ne conectăm la baza de date; înregistrările sunt preluate din
    // $cache a fost iniţializat în exemplul anterior
 
    // vezi dacă obiectul este deja în cache
-   if(!$result = $cache->load('myresult')) {
+   if (!$result = $cache->load('myresult')) {
 
        // nu e în cache, se face o conexiune la baza de date
 
@@ -106,7 +106,7 @@ condiţia ca înregistrarea din cache să fie validă).
    $cache = Zend\Cache\Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
 
    // pasăm un identificator unic metodei start()
-   if(!$cache->start('mypage')) {
+   if (!$cache->start('mypage')) {
        // afişare normală:
 
        echo 'Salut lume! ';

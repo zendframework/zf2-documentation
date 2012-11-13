@@ -258,7 +258,7 @@ Beispiel der Verwendung jeder Methode wird anbei gezeigt:
    $ss_group = $ss->getSlideShowsByGroup('mygroup', $starting_offset, $limit);
 
    // Durch die Slideshows iterieren
-   foreach($ss_user as $slideshow) {
+   foreach ($ss_user as $slideshow) {
       print "Slide Show Titel: {$slideshow->getTitle}<br/>\n";
    }
 

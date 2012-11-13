@@ -63,7 +63,7 @@ obtienen del caché de forma no serializada.
    // $cache initializada en el ejemplo anterior
 
    // Verificar si la cahce existe:
-   if(!$result = $cache->load('myresult')) {
+   if (!$result = $cache->load('myresult')) {
 
        // no existe cache; conectar a la base de datos
 
@@ -110,7 +110,7 @@ de datos del caché (tanto tiempo como el registro del caché sea válido).
                                 $backendOptions);
 
    // Pasamos un identificador único al método start()
-   if(!$cache->start('mypage')) {
+   if (!$cache->start('mypage')) {
        // salida como de costumbre:
 
        echo 'Hola mundo! ';

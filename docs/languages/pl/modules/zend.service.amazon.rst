@@ -145,7 +145,7 @@ Wyszukiwanie przedmiotów oparte na różnych dostępnych kryteriach jest przepr
    $amazon = new Zend\Service\Amazon('AMAZON_API_KEY');
    $results = $amazon->itemSearch(array('SearchIndex' => 'Books',
                                         'Keywords' => 'php'));
-   foreach($results as $result) {
+   foreach ($results as $result) {
        echo $result->Title .'<br />';
    }
 
