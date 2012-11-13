@@ -418,7 +418,7 @@ result" and "stream" resources.
         */
        public function parse($resource) {
            $result = array();
-           while($row = mysql_fetch_assoc($resource)) {
+           while ($row = mysql_fetch_assoc($resource)) {
                $result[] = $row;
            }
            return $result;

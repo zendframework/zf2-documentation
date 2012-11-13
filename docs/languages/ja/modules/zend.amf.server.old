@@ -447,7 +447,7 @@ myContact にバインドされているすべての内容は、返された Con
         */
        public function parse($resource) {
            $result = array();
-           while($row = mysql_fetch_assoc($resource)) {
+           while ($row = mysql_fetch_assoc($resource)) {
                $result[] = $row;
            }
            return $result;
