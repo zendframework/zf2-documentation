@@ -58,7 +58,7 @@
    // $cache 在先前的例子中已经初始化了
 
    // 查看一个缓存是否存在:
-   if(!$result = $cache->load('myresult')) {
+   if (!$result = $cache->load('myresult')) {
 
        // 缓存不命中;连接到数据库
 
@@ -106,7 +106,7 @@
                                 $backendOptions);
 
    // 传递一个唯一标识符给start()方法
-   if(!$cache->start('mypage')) {
+   if (!$cache->start('mypage')) {
        // output as usual:
 
        echo 'Hello world! ';

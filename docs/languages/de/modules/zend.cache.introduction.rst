@@ -63,7 +63,7 @@ deserialisiert.
    // $cache initialisiert im vorhergehenden Beispiel
 
    // Nachsehen, ob der Cache bereits existiert:
-   if(!$result = $cache->load('myresult')) {
+   if (!$result = $cache->load('myresult')) {
 
        // Cache miss; mit Datenbank verbinden
 
@@ -110,7 +110,7 @@ die Daten vom Cache geholt (solange der Cache Datensatz gültig ist).
                                 $backendOptions);
 
    // Wir übergeben eine eindeutige Identifizierung an die start() Methode
-   if(!$cache->start('mypage')) {
+   if (!$cache->start('mypage')) {
        // Ausgabe wie gewöhnlich:
 
        echo 'Hallo Welt! ';

@@ -73,7 +73,7 @@ Zend Framework
    // $cache は先ほどの例で作成したものです
 
    // キャッシュがすでに存在するかどうかを調べます
-   if(!$result = $cache->load('myresult')) {
+   if (!$result = $cache->load('myresult')) {
 
        // キャッシュが見つかりませんでした。データベースに接続します
 
@@ -121,7 +121,7 @@ Zend Framework
                                 $backendOptions);
 
    // start() メソッドに一意な ID を渡します
-   if(!$cache->start('mypage')) {
+   if (!$cache->start('mypage')) {
        // 通常通りに出力します
 
        echo 'Hello world! ';

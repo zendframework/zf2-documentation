@@ -197,7 +197,7 @@ Ein Beispiel wird ganz am Anfang des Handbuches gegeben. Hier ist es mit kleinen
    :linenos:
 
    // Wenn es ein Cache Miss ist, wird das puffern der Ausgabe ausgelöst
-   if( ! ($cache->start('mypage'))) {
+   if ( ! ($cache->start('mypage'))) {
 
        // Alle wie gewohnt ausgeben
        echo 'Hallo Welt! ';

@@ -278,13 +278,13 @@ sein kann.
 
    $links = Zend\Feed\Reader::findFeedLinks('http://www.planet-php.net');
 
-   if(isset($links->rdf)) {
+   if (isset($links->rdf)) {
        echo $links->rdf, "\n"; // http://www.planet-php.org/rdf/
    }
-   if(isset($links->rss)) {
+   if (isset($links->rss)) {
        echo $links->rss, "\n"; // http://www.planet-php.org/rss/
    }
-   if(isset($links->atom)) {
+   if (isset($links->atom)) {
        echo $links->atom, "\n"; // http://www.planet-php.org/atom/
    }
 
@@ -773,7 +773,7 @@ der Registrierung der Erweiterung, wenn diese nicht bereits geladen wurde, und d
 .. code-block:: php
    :linenos:
 
-   if(!Zend\Feed\Reader::isRegistered('JungleBooks')) {
+   if (!Zend\Feed\Reader::isRegistered('JungleBooks')) {
        Zend\Feed\Reader::addPrefixPath(
            'My_FeedReader_Extension', '/path/to/My/FeedReader/Extension'
        );
@@ -824,7 +824,7 @@ wird.
 .. code-block:: php
    :linenos:
 
-   if(!Zend\Feed\Reader::isRegistered('JungleBooks')) {
+   if (!Zend\Feed\Reader::isRegistered('JungleBooks')) {
        Zend\Feed\Reader::addPrefixPath(
            'My_FeedReader_Extension', '/path/to/My/FeedReader/Extension'
        );
