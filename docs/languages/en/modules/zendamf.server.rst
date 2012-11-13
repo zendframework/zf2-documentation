@@ -588,7 +588,7 @@ be denied.
 .. code-block:: php
    :linenos:
 
-   if($this->_acl->isAllowed($role, $class, $function)) {
+   if ($this->_acl->isAllowed($role, $class, $function)) {
        return true;
    } else {
        require_once 'Zend/Amf/Server/Exception.php';
