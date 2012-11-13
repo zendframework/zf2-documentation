@@ -252,7 +252,7 @@ method is shown below:
    $ss_group = $ss->getSlideShowsByGroup('mygroup', $starting_offset, $limit);
 
    // Iterate over the slide shows
-   foreach($ss_user as $slideshow) {
+   foreach ($ss_user as $slideshow) {
       print "Slide Show Title: {$slideshow->getTitle}<br/>\n";
    }
 
