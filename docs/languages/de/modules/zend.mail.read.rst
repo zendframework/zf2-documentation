@@ -207,7 +207,7 @@ Schreibweisen kein Header gefunden wird, wird eine Ausnahme geworfen. Um das zu 
    $type = $message->contentType;
 
    // Prüfen ob CC gesetzt ist:
-   if( isset($message->cc) ) { // oder $message->headerExists('cc');
+   if (isset($message->cc)) { // oder $message->headerExists('cc');
        $cc = $message->cc;
    }
 

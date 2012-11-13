@@ -199,7 +199,7 @@ existence of a header.
    $type = $message->contentType;
 
    // check if CC isset:
-   if( isset($message->cc) ) { // or $message->headerExists('cc');
+   if (isset($message->cc)) { // or $message->headerExists('cc');
        $cc = $message->cc;
    }
 

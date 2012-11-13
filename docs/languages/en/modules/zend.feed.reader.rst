@@ -232,13 +232,13 @@ element of the ``ArrayObject`` is a simple array with the keys "type" and "uri" 
 
    $links = Zend\Feed\Reader\Reader::findFeedLinks('http://www.planet-php.net');
 
-   if(isset($links->rdf)) {
+   if (isset($links->rdf)) {
        echo $links->rdf, "\n"; // http://www.planet-php.org/rdf/
    }
-   if(isset($links->rss)) {
+   if (isset($links->rss)) {
        echo $links->rss, "\n"; // http://www.planet-php.org/rss/
    }
-   if(isset($links->atom)) {
+   if (isset($links->atom)) {
        echo $links->atom, "\n"; // http://www.planet-php.org/atom/
    }
 
@@ -707,7 +707,7 @@ Extension, if it's not already loaded, and using it in practice.
 .. code-block:: php
    :linenos:
 
-   if(!Zend\Feed\Reader\Reader::isRegistered('JungleBooks')) {
+   if (!Zend\Feed\Reader\Reader::isRegistered('JungleBooks')) {
         $extensions = Zend\Feed\Reader\Reader::getExtensionManager();
         $extensions->setInvokableClass('JungleBooksEntry', 'My\FeedReader\Extension\JungleBooks\Entry');
         Zend\Feed\Reader\Reader::registerExtension('JungleBooks');
@@ -756,7 +756,7 @@ Let's repeat the last example using a custom Extension to show the method being 
 .. code-block:: php
    :linenos:
 
-   if(!Zend\Feed\Reader\Reader::isRegistered('JungleBooks')) {
+   if (!Zend\Feed\Reader\Reader::isRegistered('JungleBooks')) {
         $extensions = Zend\Feed\Reader\Reader::getExtensionManager();
         $extensions->setInvokableClass('JungleBooksFeed', 'My\FeedReader\Extension\JungleBooks\Feed');
         Zend\Feed\Reader\Reader::registerExtension('JungleBooks');

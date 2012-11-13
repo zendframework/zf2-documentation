@@ -74,7 +74,7 @@ WSDL object and in conjunction with ``toXml()`` function you can posts it to the
    .. code-block:: php
       :linenos:
 
-      if(isset($_GET['wsdl'])) {
+      if (isset($_GET['wsdl'])) {
           $autodiscover = new Zend\Soap\AutoDiscover();
           $autodiscover->setClass('HelloWorldService')
                        ->setUri('http://example.com/soap.php');
