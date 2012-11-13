@@ -32,8 +32,8 @@ format with ``Zend\Json\Json::prettyPrint()``.
 
    // Encode it to return to the client:
    $json = Zend\Json\Json::encode($phpNative);
-   if($debug) {
-   echo Zend\Json\Json::prettyPrint($json, array("indent" => " "));
+   if ($debug) {
+       echo Zend\Json\Json::prettyPrint($json, array("indent" => " "));
    }
 
 Second optional argument of ``Zend\Json\Json::prettyPrint()`` is an option array. Option *indent* allows to set

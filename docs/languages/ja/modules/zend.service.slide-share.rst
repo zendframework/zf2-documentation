@@ -262,7 +262,7 @@ SlideShow オブジェクト
    $ss_group = $ss->getSlideShowsByGroup('mygroup', $starting_offset, $limit);
 
    // 個々のスライドショーを処理します
-   foreach($ss_user as $slideshow) {
+   foreach ($ss_user as $slideshow) {
       print "スライドショーのタイトル: {$slideshow->getTitle}<br/>\n";
    }
 

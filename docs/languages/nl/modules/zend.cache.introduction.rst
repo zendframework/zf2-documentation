@@ -51,7 +51,7 @@ gedeserialiseerd.
    // $cache die in het vorige voorbeeld werd geïnitialiseerd
 
    // nagaan of de cache reeds bestaat:
-   if(!$result = $cache->get('mijnresultaat')) {
+   if (!$result = $cache->get('mijnresultaat')) {
 
        // geen cache; verbind met de database
 
@@ -96,7 +96,7 @@ verkrijgen van de data uit de cache (zolang de cache record geldig is).
    $cache = Zend\Cache\Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
 
    // we geven een unieke id door aan de start() methode
-   if(!$cache->start('mijnpagina')) {
+   if (!$cache->start('mijnpagina')) {
        // output zoals gewoonlijk:
 
        echo 'Hallo wereld! ';

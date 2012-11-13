@@ -69,7 +69,7 @@
    // $cache определен в предыдущем примере
 
    // проверка, есть ли уже запись в кэше:
-   if(!$result = $cache->load('myresult')) {
+   if (!$result = $cache->load('myresult')) {
 
        // промах кэша
        // установка соединения с базой данных
@@ -119,7 +119,7 @@
                                 $backendOptions);
 
    // передаем уникальный идентификатор методу start()
-   if(!$cache->start('mypage')) {
+   if (!$cache->start('mypage')) {
        // производим вывод, как обычно:
 
        echo 'Hello world! ';

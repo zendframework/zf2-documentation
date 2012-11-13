@@ -157,7 +157,7 @@ Een voorbeeld is in het begin van de handleiding gegeven. Hier is het met enkele
    <?php
 
    // indien het een cache miss is, output buffering inroepen
-   if(!$cache->start('mijnpagina')):
+   if (!$cache->start('mijnpagina')):
 
    // alles weergeven zoals gewoonlijk
    echo 'Dag wereld! ';
