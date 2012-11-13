@@ -86,7 +86,7 @@ man die Funktionen ``dump($filename)`` oder ``toXml()`` verwenden welche die Aut
    .. code-block:: php
       :linenos:
 
-      if(isset($_GET['wsdl'])) {
+      if (isset($_GET['wsdl'])) {
           $autodiscover = new Zend\Soap\AutoDiscover();
           $autodiscover->setClass('HelloWorldService');
           $autodiscover->handle();

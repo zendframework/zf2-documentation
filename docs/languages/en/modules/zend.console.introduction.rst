@@ -156,7 +156,7 @@ We will now add ``resetpassword`` action to ``Application\IndexController``:
             //  Fetch the user and change his password, then email him ...
             // [...]
 
-            if(!$verbose){
+            if (!$verbose){
                 return "Done! $userEmail has received an email with his new password.\n";
             }else{
                 return "Done! New password for user $userEmail is '$newPassword'. It has also been emailed to him. \n";

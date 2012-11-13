@@ -30,7 +30,7 @@ ausgedruckt, in einem menschlich-lesbaren Format, zu erhalten, indem man ``Zend\
 
    // Kodieren und an den Client zurückzugeben:
    $json = Zend\Json\Json::encode($phpNative);
-   if($debug) {
+   if ($debug) {
        echo Zend\Json\Json::prettyPrint($json, array("indent" => " "));
    }
 

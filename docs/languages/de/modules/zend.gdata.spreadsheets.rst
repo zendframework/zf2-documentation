@@ -117,7 +117,7 @@ enthält. Dieses Array kann extrahiert und angezeigt werden:
    :linenos:
 
    $rowData = $listFeed->entries[1]->getCustom();
-   foreach($rowData as $customEntry) {
+   foreach ($rowData as $customEntry) {
      echo $customEntry->getColumnName() . " = " . $customEntry->getText();
    }
 
@@ -265,7 +265,7 @@ Information kann angezeigt werden:
 .. code-block:: php
    :linenos:
 
-   foreach($cellFeed as $cellEntry) {
+   foreach ($cellFeed as $cellEntry) {
      $row = $cellEntry->cell->getRow();
      $col = $cellEntry->cell->getColumn();
      $val = $cellEntry->cell->getText();
