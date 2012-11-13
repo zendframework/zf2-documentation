@@ -13,7 +13,7 @@ The example below shows how to use the bcrypt algorithm to store a user's passwo
 
    use Zend\Crypt\Password\Bcrypt;
 
-   $bcrypt = new Bcrypt()
+   $bcrypt = new Bcrypt();
    $securePass = $bcrypt->create('user password');
 
 The output of the ``create()`` method is the encrypted password. This value can then be stored in a repository like a
