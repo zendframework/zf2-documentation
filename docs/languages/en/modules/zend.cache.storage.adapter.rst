@@ -990,4 +990,4 @@ Examples
 .. _Libmemcached: http://libmemcached.org/
 .. _WinCache: http://pecl.php.net/package/WinCache
 .. _Zend Server Data Caching API: http://www.zend.com/en/products/server/
-.. _umask: wikipedia.org/wiki/Umask
+.. _umask: http://wikipedia.org/wiki/Umask
