@@ -93,7 +93,7 @@ This is a Bootstrap written by Evan Coury which can just be dropped in, only the
 
             if(isset($testConfig['module_listener_options']['module_paths'])) {
                 $modulePaths = $testConfig['module_listener_options']['module_paths'];
-                foreach($modulePaths as $modulePath) {
+                foreach ($modulePaths as $modulePath) {
                     if (($path = static::findParentPath($modulePath)) ) {
                         $zf2ModulePaths[] = $path;
                     }

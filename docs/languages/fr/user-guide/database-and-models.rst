@@ -334,7 +334,7 @@ name}``. We can now fill in the ``index.phtml`` view script:
         <th>Artist</th>
         <th>&nbsp;</th>
     </tr>
-    <?php foreach($albums as $album) : ?>
+    <?php foreach ($albums as $album) : ?>
     <tr>
         <td><?php echo $this->escapeHtml($album->title);?></td>
         <td><?php echo $this->escapeHtml($album->artist);?></td>    <td>
