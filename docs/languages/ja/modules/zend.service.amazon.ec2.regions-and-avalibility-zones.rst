@@ -42,7 +42,7 @@ Zend\Service_Amazon\Ec2:リージョンおよび利用可能ゾーン
    $ec2_region = new Zend\Service\Amazon\Ec2\Region('aws_key','aws_secret_key');
    $regions = $ec2_region->describe();
 
-   foreach($regions as $region) {
+   foreach ($regions as $region) {
        print $region['regionName'] . ' -- ' . $region['regionUrl'] . '<br />';
    }
 
@@ -75,7 +75,7 @@ Zend\Service_Amazon\Ec2:リージョンおよび利用可能ゾーン
                                                               'aws_secret_key');
    $zones = $ec2_zones->describe();
 
-   foreach($zones as $zone) {
+   foreach ($zones as $zone) {
        print $zone['zoneName'] . ' -- ' . $zone['zoneState'] . '<br />';
    }
 

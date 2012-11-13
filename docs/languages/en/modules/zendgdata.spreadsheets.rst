@@ -108,7 +108,7 @@ can extract and display this array:
    :linenos:
 
    $rowData = $listFeed->entries[1]->getCustom();
-   foreach($rowData as $customEntry) {
+   foreach ($rowData as $customEntry) {
      echo $customEntry->getColumnName() . " = " . $customEntry->getText();
    }
 
@@ -252,7 +252,7 @@ Among other things, this feed contains an array of ``ZendGData\Spreadsheets\Cell
 .. code-block:: php
    :linenos:
 
-   foreach($cellFeed as $cellEntry) {
+   foreach ($cellFeed as $cellEntry) {
      $row = $cellEntry->cell->getRow();
      $col = $cellEntry->cell->getColumn();
      $val = $cellEntry->cell->getText();

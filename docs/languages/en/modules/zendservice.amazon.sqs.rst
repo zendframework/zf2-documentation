@@ -145,7 +145,7 @@ allowed. Queue names can be a maximum of 80 characters.
 
      $sqs = new ZendService\Amazon\Sqs($my_aws_key, $my_aws_secret_key);
      $list = $sqs->getQueues();
-     foreach($list as $queue) {
+     foreach ($list as $queue) {
         echo "I have queue $queue\n";
      }
 

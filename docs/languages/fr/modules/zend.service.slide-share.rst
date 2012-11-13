@@ -251,7 +251,7 @@ Voici un exemple utilisant les méthodes décrites ci-dessus :
    $ss_group = $ss->getSlideShowsByGroup('mygroup', $starting_offset, $limit);
 
    // Itère sur les diaporamas
-   foreach($ss_user as $slideshow) {
+   foreach ($ss_user as $slideshow) {
       print "Titre du diaporama : {$slideshow->getTitle}<br/>\n";
    }
 
