@@ -43,7 +43,7 @@ Here is with the array notation:
     $form->add(array(
     	'type' => 'Zend\Form\Element\Captcha',
     	'name' => 'captcha',
-    	'options => array(
+    	'options' => array(
     		'label' => 'Please verify you are human',
     		'captcha' => new Captcha\Dumb(),
     	),

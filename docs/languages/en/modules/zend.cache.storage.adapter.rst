@@ -616,11 +616,11 @@ The Filesystem Adapter
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
    |dir_level           |``integer``           |1                        |Defines how much sub-directaries should be created                                  |
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
-   |dir_permission      |``integer``           |0700                     |Permission creating new directories                                                 |
+   |dir_permission      |``integer`` ``false`` |0700                     |Set explicit permission on creating new directories                                 |
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
    |file_locking        |``boolean``           |``true``                 |Lock files on writing                                                               |
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
-   |file_permission     |``integer``           |0700                     |Permission creating new files                                                       |
+   |file_permission     |``integer`` ``false`` |0600                     |Set explicit permission on creating new files                                       |
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
    |key_pattern         |``string``            |``/^[a-z0-9_\+\-]*$/Di`` |Validate key against pattern                                                        |
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
@@ -628,7 +628,7 @@ The Filesystem Adapter
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
    |no_ctime            |``boolean``           |``true``                 |Don't get 'filectime' as 'ctime' on metadata                                        |
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
-   |umask               |``integer`` ``false`` |``false``                |Don't get 'filectime' as 'ctime' on metadata                                        |
+   |umask               |``integer`` ``false`` |``false``                |Use umask_ to set file and directory permissions                                    |
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
 
 .. _zend.cache.storage.adapter.memcached
@@ -636,7 +636,7 @@ The Filesystem Adapter
 The Memcached Adapter
 ---------------------
 
-   The ``Zend\\Cache\\Storage\\Adapter\\Memcached`` adapter stores cache
+   The ``Zend\Cache\Storage\Adapter\Memcached`` adapter stores cache
    items over the memcached protocol. It's using the required PHP extension
    memcached_ which is based on Libmemcached_.
 
@@ -1038,7 +1038,7 @@ Examples
        // Load rows from db if loading from cache failed
        $missingIds     = array_diff($ids, array_keys($results));
        $missingResults = array();
-       $query          = 'SELEcT * FROM dbtable WHERE id IN (' . implode(',', $missingIds) . ')';
+       $query          = 'SELECT * FROM dbtable WHERE id IN (' . implode(',', $missingIds) . ')';
        foreach ($pdo->query($query, PDO::FETCH_ASSOC) as $row) {
            $missingResults[ $row['id'] ] = $row;
        }
@@ -1060,3 +1060,4 @@ Examples
 .. _WinCache: http://pecl.php.net/package/WinCache
 .. _XCache: http://xcache.lighttpd.net/
 .. _Zend Server Data Caching API: http://www.zend.com/en/products/server/
+.. _umask: http://wikipedia.org/wiki/Umask

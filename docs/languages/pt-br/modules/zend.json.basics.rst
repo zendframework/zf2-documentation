@@ -30,7 +30,7 @@ formato legível com ``Zend\Json\Json::prettyPrint()``.
 
    // Codificá-lo para retornar para o cliente:
    $json = Zend\Json\Json::encode($phpNative);
-   if($debug) {
+   if ($debug) {
        echo Zend\Json\Json::prettyPrint($json, array("indent" => " "));
    }
 

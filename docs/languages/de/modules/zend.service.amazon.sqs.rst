@@ -153,7 +153,7 @@ haben.
 
      $sqs = new Zend\Service_Amazon\Sqs($my_aws_key, $my_aws_secret_key);
      $list = $sqs->getQueues();
-     foreach($list as $queue) {
+     foreach ($list as $queue) {
         echo "Ich habe $queue Queues\n";
      }
 

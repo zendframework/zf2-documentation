@@ -58,7 +58,7 @@ cache لهذه البيانات, لن نحتاج الى ان نتصل حتى ب�
       // $cache initialized in previous example
 
       // see if a cache already exists:
-      if(!$result = $cache->load('myresult')) {
+      if (!$result = $cache->load('myresult')) {
 
           // cache miss; connect to the database
 
@@ -108,7 +108,7 @@ cache له عندما يتم الوصول الى *()end*. عند تشغيل هذ
       $cache = Zend\Cache\Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
 
       // we pass a unique identifier to the start() method
-      if(!$cache->start('mypage')) {
+      if (!$cache->start('mypage')) {
           // output as usual:
 
           echo 'Hello world! ';

@@ -43,7 +43,7 @@ Here is with the array notation:
     $form->add(array(
     	'type' => 'Zend\Form\Element\Number',
     	'name' => 'quantity',
-    	'options => array(
+    	'options' => array(
     		'label' => 'Quantity'
     	),
     	'attributes' => array(

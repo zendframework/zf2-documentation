@@ -62,7 +62,7 @@ potrzeby aby łączyć się z bazą; rekordy są pobierane z bufora, a następni
    // obiekt $cache zainicjalizowany jak w poprzednim przykładzie
 
    // sprawdzamy czy bufor istnieje:
-   if(!$result = $cache->load('myresult')) {
+   if (!$result = $cache->load('myresult')) {
 
        // bufor nie istnieje; łączymy się z bazą
 
@@ -109,7 +109,7 @@ długo jak rekord bufora jest prawidłowy).
                                 $backendOptions);
 
    // przekazujemy unikalny identyfikator do metody start()
-   if(!$cache->start('mypage')) {
+   if (!$cache->start('mypage')) {
        // wyświetlamy jak zawsze:
 
        echo 'Witajcie! ';

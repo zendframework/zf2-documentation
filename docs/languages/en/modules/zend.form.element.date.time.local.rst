@@ -43,7 +43,7 @@ Here is with the array notation:
     $form->add(array(
     	'type' => 'Zend\Form\Element\DateTimeLocal',
     	'name' => 'appointment-date-time',
-    	'options => array(
+    	'options' => array(
     		'label' => 'Appointment Date'
     	),
     	'attributes' => array(

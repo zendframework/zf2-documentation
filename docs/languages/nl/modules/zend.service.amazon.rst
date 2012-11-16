@@ -135,7 +135,7 @@ Het zoeken naar items gebaseerd op een van de verschillende voorhande criteria w
    require_once 'Zend/Service/Amazon.php';
    $amazon = new Zend\Service\Amazon('AMAZON_API_KEY');
    $response = $amazon->itemSearch(array('SearchIndex' => 'Books', 'Keywords' => 'php'));
-   foreach($response as $r) {
+   foreach ($response as $r) {
        echo $r->Title .'<br />';
    }
    ?>

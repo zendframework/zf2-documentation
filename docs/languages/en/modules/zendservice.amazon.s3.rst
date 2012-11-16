@@ -140,7 +140,7 @@ address (e.g. "192.168.16.255") are not allowed.
      $s3 = new ZendService\Amazon\S3($my_aws_key, $my_aws_secret_key);
 
      $list = $s3->getBuckets();
-     foreach($list as $bucket) {
+     foreach ($list as $bucket) {
        echo "I have bucket $bucket\n";
      }
 
@@ -249,7 +249,7 @@ object with public access, in which case it will be available through the *URL*:
      $s3 = new ZendService\Amazon\S3($my_aws_key, $my_aws_secret_key);
 
      $list = $s3->getObjectsByBucket("my-own-bucket");
-     foreach($list as $name) {
+     foreach ($list as $name) {
        echo "I have $name key:\n";
        $data = $s3->getObject("my-own-bucket/$name");
        echo "with data: $data\n";
