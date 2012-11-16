@@ -45,7 +45,7 @@ Here is with the array notation:
     $form->add(array(
     	'type' => 'Zend\Form\Element\Email',
     	'name' => 'email',
-    	'options => array(
+    	'options' => array(
     		'label' => 'Email Address'
     	),
     ));
