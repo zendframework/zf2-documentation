@@ -43,7 +43,7 @@ Here is with the array notation:
     $form->add(array(
     	'type' => 'Zend\Form\Element\Range',
     	'name' => 'range',
-    	'options => array(
+    	'options' => array(
     		'label' => 'Minimum and Maximum Amount'
     	),
     	'attributes' => array(
