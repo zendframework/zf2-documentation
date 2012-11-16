@@ -18,7 +18,7 @@ want to instantiate a container.
 ``Zend\Navigation`` can be constructed entirely empty, or take an array or a ``Zend\Config`` object with pages to
 put in the container. Each page in the given array/config will eventually be passed to the ``addPage()`` method of
 the container class, which means that each element in the array/config can be an array or a config object, or a
-``Zend\Navigation\Page`` instance.
+``Zend\Navigation\Page\AbstractPage`` instance.
 
 .. _zend.navigation.containers.creating.example.array:
 
@@ -31,9 +31,9 @@ the container class, which means that each element in the array/config can be an
     * Create a container from an array
     *
     * Each element in the array will be passed to
-    * Zend\Navigation\Page::factory() when constructing.
+    * Zend\Navigation\Page\AbstractPage::factory() when constructing.
     */
-   $container = new Zend\Navigation(array(
+   $container = new Zend\Navigation\Navigation(array(
        array(
            'label' => 'Page 1',
            'id' => 'home-link',
@@ -389,7 +389,7 @@ the container class, which means that each element in the array/config can be an
     */
 
    $config = new Zend\Config\Xml('/path/to/navigation.xml', 'nav');
-   $container = new Zend\Navigation($config);
+   $container = new Zend\Navigation\Navigation($config);
 
 .. _zend.navigation.containers.adding:
 
@@ -407,11 +407,11 @@ examples below for explanation.
    :linenos:
 
    // create container
-   $container = new Zend\Navigation();
+   $container = new Zend\Navigation\Navigation();
 
    // add page by giving a page instance
    $container->addPage(
-       Zend\Navigation\Page::factory(
+       Zend\Navigation\Page\AbstractPage::factory(
            array(
                'uri' => 'http://www.example.com/',
            )
@@ -467,7 +467,7 @@ in the container.
 .. code-block:: php
    :linenos:
 
-   $container = new Zend\Navigation(array(
+   $container = new Zend\Navigation\Navigation(array(
        array(
            'label'  => 'Page 1',
            'action' => 'page1',
@@ -520,7 +520,7 @@ also work on custom properties, such as ``findByFoo('bar')``.
 .. code-block:: php
    :linenos:
 
-   $container = new Zend\Navigation(array(
+   $container = new Zend\Navigation\Navigation(array(
        array(
            'label' => 'Page 1',
            'uri'   => 'page-1',
@@ -617,7 +617,7 @@ class. To iterate a container recursively, use the ``RecursiveIteratorIterator``
    /*
     * Create a container from an array
     */
-   $container = new Zend\Navigation(array(
+   $container = new Zend\Navigation\Navigation(array(
        array(
            'label' => 'Page 1',
            'uri'   => '#',
@@ -662,8 +662,9 @@ class. To iterate a container recursively, use the ``RecursiveIteratorIterator``
 Other operations
 ----------------
 
-The method ``hasPage(Zend\Navigation\Page $page)`` checks if the container has the given page. The method
-``hasPages()`` checks if there are any pages in the container, and is equivalent to ``count($container) > 1``.
+The method ``hasPage(Zend\Navigation\Page\AbstractPage $page)`` checks if the container has the given page. The
+method ``hasPages()`` checks if there are any pages in the container, and is equivalent to
+``count($container) > 1``.
 
 The ``toArray()`` method converts the container and the pages in it to an array. This can be useful for serializing
 and debugging.
@@ -675,7 +676,7 @@ and debugging.
 .. code-block:: php
    :linenos:
 
-   $container = new Zend\Navigation(array(
+   $container = new Zend\Navigation\Navigation(array(
        array(
            'label' => 'Page 1',
            'uri'   => '#',

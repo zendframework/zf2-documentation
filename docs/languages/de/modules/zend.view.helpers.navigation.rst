@@ -73,7 +73,7 @@ Zusätzlich zu den Methoden die vom Interface kommen, implementiert die abstrakt
   ``$maxDepth`` inklusive liegen. Gibt ein Array zurück das Referenzen zu der gefundenen Instanz der Seite
   enthält, und die Tiefe bei der die Seite gefunden wurde.
 
-- ``htmlify()`` stellt ein **'a'** *HTML* Element von einer ``Zend\Navigation\Page`` Instanz dar.
+- ``htmlify()`` stellt ein **'a'** *HTML* Element von einer ``Zend\Navigation\Page\AbstractPage`` Instanz dar.
 
 - ``accept()`` wird verwendet um zu erkennen ub eine Seite akzeptiert werden soll wenn durch Container iteriert
   wird. Diese Methode prüft die Sichtbarkeit der Seite und verifiziert das die Rolle des Helfers auf die
@@ -168,7 +168,7 @@ Notizen zum Setup:
    /*
     * Navigations Container (config/array)
 
-    * Jedes Element im Array wird an Zend\Navigation\Page::factory()
+    * Jedes Element im Array wird an Zend\Navigation\Page\AbstractPage::factory()
     * übergeben wenn der unten angezeigt Navigations Container
     * erstellt wird.
     */
@@ -326,7 +326,7 @@ Notizen zum Setup:
    );
 
    // Container von einem Array erstellen
-   $container = new Zend\Navigation($pages);
+   $container = new Zend\Navigation\Navigation($pages);
 
    // Den Container im Proxy Helfer speichern
    $view->getHelper('navigation')->setContainer($container);
@@ -572,7 +572,7 @@ durch eine Suche gefunden werden können:
 
    Wenn in der Instanz der Seite nach Beziehungen gesehen wird ( (*$page->getRel($type)* oder
    *$page->getRev($type)*), akzeptiert der Helfer Wert vom Typ ``String``, ``Array``, ``Zend\Config``, oder
-   ``Zend\Navigation\Page``. Wenn ein String gefunden wird, wird dieser zu einer ``Zend\Navigation\Page\Uri``
+   ``Zend\Navigation\Page\AbstractPage``. Wenn ein String gefunden wird, wird dieser zu einer ``Zend\Navigation\Page\Uri``
    konvertiert. Wenn ein Array oder eine Config gefunden wird, wird diese in ein oder mehrere Seiteninstanzen
    konvertiert, und jedes Element wird an die :ref:`Seiten Factory <zend.navigation.pages.factory>` übergeben.
    Wenn der erste Schlüssel nicht nummerische ist, wird das Array/Config direkt an die Seiten Factory übergeben,
@@ -654,7 +654,7 @@ Dieses Beispiel zeigt wir Beziehungen in Seiten spezifiziert werden können.
 .. code-block:: php
    :linenos:
 
-   $container = new Zend\Navigation(array(
+   $container = new Zend\Navigation\Navigation(array(
        array(
            'label' => 'Strings für Beziehungen verwenden',
            'rel'   => array(
@@ -685,7 +685,7 @@ Dieses Beispiel zeigt wir Beziehungen in Seiten spezifiziert werden können.
        array(
            'label' => 'Instanzen von Seiten für Beziehungen verwenden',
            'rel'   => array(
-               'alternate' => Zend\Navigation\Page::factory(array(
+               'alternate' => Zend\Navigation\Page\AbstractPage::factory(array(
                    'label' => 'Example.org',
                    'uri'   => 'http://www.example.org/'
                ))
