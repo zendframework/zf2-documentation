@@ -197,6 +197,7 @@
    modules/zend.view.renderer.php-renderer
    modules/zend.view.php-renderer.scripts
    modules/zend.view.helpers
+   modules/zend.view.helpers.advanced-usage
    modules/zend.xmlrpc.intro
    modules/zend.xmlrpc.client
    modules/zend.xmlrpc.server
@@ -661,6 +662,7 @@ Zend\\View
         * :doc:`modules/zend.view.renderer.php-renderer`
         * :doc:`modules/zend.view.php-renderer.scripts`
         * :doc:`modules/zend.view.helpers`
+        * :doc:`modules/zend.view.helpers.advanced-usage`
 
 .. _zend.xmlrpc:
 
