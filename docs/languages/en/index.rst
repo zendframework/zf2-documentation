@@ -171,6 +171,8 @@
    modules/zend.permissions.rbac.intro
    modules/zend.permissions.rbac.methods
    modules/zend.permissions.rbac.examples
+   modules/zend.serializer
+   modules/zend.serializer.adapters
    modules/zend.server
    modules/zend.server.reflection
    modules/zend.service-manager.intro
@@ -569,6 +571,14 @@ Zend\\Permissions\\Rbac
         * :doc:`modules/zend.permissions.rbac.intro`
         * :doc:`modules/zend.permissions.rbac.methods`
         * :doc:`modules/zend.permissions.rbac.examples`
+
+.. _zend.serializer:
+
+Zend\\Serializer
+^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.serializer`
+        * :doc:`modules/zend.serializer.adapters`
 
 .. _zend.server:
 
