@@ -145,7 +145,7 @@ bis 255 Zeichen lang sein. Namen die wie eine IP Adresse aussehen (z.B. "192.168
      $s3 = new Zend\Service_Amazon\S3($my_aws_key, $my_aws_secret_key);
 
      $list = $s3->getBuckets();
-     foreach($list as $bucket) {
+     foreach ($list as $bucket) {
        echo "Ich habe das Bucket $bucket\n";
      }
 
@@ -257,7 +257,7 @@ zugreifen kann: *http://s3.amazonaws.com/[bucket-name]/[object-name]*.
      $s3 = new Zend\Service_Amazon\S3($my_aws_key, $my_aws_secret_key);
 
      $list = $s3->getObjectsByBucket("my-own-bucket");
-     foreach($list as $name) {
+     foreach ($list as $name) {
        echo "Ich habe $name Schlüssel:\n";
        $data = $s3->getObject("my-own-bucket/$name");
        echo "with data: $data\n";

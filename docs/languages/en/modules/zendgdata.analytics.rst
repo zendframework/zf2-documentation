@@ -56,7 +56,7 @@ all the `metrics and dimensions`_ specified by the API. Additionally you can app
      ->setMaxResults(50);
 
    $result = $analytics->getDataFeed($query);
-   foreach($result as $row){
+   foreach ($result as $row){
      echo $row->getMetric('ga:visits')."\t";
      echo $row->getValue('ga:bounces')."\n";
    }

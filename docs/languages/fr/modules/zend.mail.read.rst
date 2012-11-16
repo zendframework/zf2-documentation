@@ -209,7 +209,7 @@ utilisée pour vérifier l'existence d'un en-tête.
    $type = $message->contentType;
 
    // vérifier si CC est spécifié :
-   if( isset($message->cc) ) { // ou $message->headerExists('cc');
+   if (isset($message->cc)) { // ou $message->headerExists('cc');
        $cc = $message->cc;
    }
 

@@ -43,7 +43,7 @@ Here is the same example using the array notation:
     $form->add(array(
     	'type' => 'Zend\Form\Element\Week',
     	'name' => 'week',
-    	'options => array(
+    	'options' => array(
     		'label' => 'Week'
     	),
     	'attributes' => array(
