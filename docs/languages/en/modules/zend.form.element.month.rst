@@ -43,7 +43,7 @@ Here is with the array notation:
     $form->add(array(
     	'type' => 'Zend\Form\Element\Month',
     	'name' => 'month',
-    	'options => array(
+    	'options' => array(
     		'label' => 'Month'
     	),
     	'attributes' => array(
