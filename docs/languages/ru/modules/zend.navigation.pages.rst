@@ -9,10 +9,10 @@
 
 
    - :ref:`страницы MVC <zend.navigation.pages.mvc>`, с использованием класса
-     ``Zend\Navigation_Page\Mvc``
+     ``Zend\Navigation\Page\Mvc``
 
    - :ref:`страницы URI <zend.navigation.pages.uri>`, с использованием класса
-     ``Zend\Navigation_Page\Uri``
+     ``Zend\Navigation\Page\Uri``
 
 Страницы MVC являются ссылками на внутренние веб-страницы сайта
 и определяются с использованием параметров MVC (*action*, *controller*,

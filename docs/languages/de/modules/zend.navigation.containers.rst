@@ -19,7 +19,7 @@ wenn ein Container instanziiert werden soll.
 ``Zend\Navigation`` kann komplett leer erstellt werden, oder indem ein Array genommen wird, oder ein
 ``Zend\Config`` Objekt mit Seiten in den Container gegeben wird. Jede seite in dem gegebenen Array/Config wird
 eventuell an die ``addPage()`` Methode der Container Klasse übergeben, was bedeutet das jedes Element im
-Array/Config ein Array oder Config Objekt sein kann, oder eine Instanz von ``Zend\Navigation\Page``.
+Array/Config ein Array oder Config Objekt sein kann, oder eine Instanz von ``Zend\Navigation\Page\AbstractPage``.
 
 .. _zend.navigation.containers.creating.example.array:
 
@@ -31,10 +31,10 @@ Array/Config ein Array oder Config Objekt sein kann, oder eine Instanz von ``Zen
    /*
     * Erstellt einen Container von einem Array
     *
-    * Jedes Element im Array wird an Zend\Navigation\Page::factory() übergeben
+    * Jedes Element im Array wird an Zend\Navigation\Page\AbstractPage::factory() übergeben
     * wenn es erstellt wird.
     */
-   $container = new Zend\Navigation(array(
+   $container = new Zend\Navigation\Navigation(array(
        array(
            'label' => 'Seite 1',
            'id' => 'home-link',
@@ -390,7 +390,7 @@ Array/Config ein Array oder Config Objekt sein kann, oder eine Instanz von ``Zen
     */
 
    $config = new Zend\Config\Xml('/path/to/navigation.xml', 'nav');
-   $container = new Zend\Navigation($config);
+   $container = new Zend\Navigation\Navigation($config);
 
 .. _zend.navigation.containers.adding:
 
@@ -408,10 +408,10 @@ Das Hinzufügen von Seiten in einen Container kann mit den Methoden ``addPage()`
    :linenos:
 
    // Container erstellen
-   $container = new Zend\Navigation();
+   $container = new Zend\Navigation\Navigation();
 
    // Seite durch die Angabe eine Instanz einer Page hinzufügen
-   $container->addPage(Zend\Navigation\Page::factory(array(
+   $container->addPage(Zend\Navigation\Page\AbstractPage::factory(array(
        'uri' => 'http://www.example.com/'
    )))
 
@@ -458,7 +458,7 @@ Seite hat. Die letztere Methode entfernt alle Seiten vom Container.
 .. code-block:: php
    :linenos:
 
-   $container = new Zend\Navigation(array(
+   $container = new Zend\Navigation\Navigation(array(
        array(
            'label'  => 'Seite 1',
            'action' => 'page1'
@@ -611,7 +611,7 @@ verwendet werden.
    /*
     * Erstellt einen Container von einem Array
     */
-   $container = new Zend\Navigation(array(
+   $container = new Zend\Navigation\Navigation(array(
        array(
            'label' => 'Seite 1',
            'uri'   => '#'
@@ -656,9 +656,9 @@ verwendet werden.
 Andere Operationen
 ------------------
 
-Die Methode ``hasPage(Zend\Navigation\Page $page)`` prüft ob der Container die angegebene Seite besitzt. Die
-Methode ``hasPages()`` prüft ob irgendeine Seite im Container existiert, und ist gleich mit ``count($container) >
-1``.
+Die Methode ``hasPage(Zend\Navigation\Page\AbstractPage $page)`` prüft ob der Container die angegebene Seite
+besitzt. Die Methode ``hasPages()`` prüft ob irgendeine Seite im Container existiert, und ist gleich mit
+``count($container) > 1``.
 
 Die ``toArray()`` Methode konvertiert den Container und die Seiten in Ihm zu einem Array. Das kann für eine
 Serialisierung und das Debugging nützlich sein.
@@ -670,7 +670,7 @@ Serialisierung und das Debugging nützlich sein.
 .. code-block:: php
    :linenos:
 
-   $container = new Zend\Navigation(array(
+   $container = new Zend\Navigation\Navigation(array(
        array(
            'label' => 'Seite 1',
            'uri'   => '#'

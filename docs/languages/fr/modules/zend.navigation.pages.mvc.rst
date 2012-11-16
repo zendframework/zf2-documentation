@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.navigation.pages.mvc:
 
-Zend\Navigation_Page\Mvc
+Zend\Navigation\Page\Mvc
 ========================
 
 Les pages de type *MVC* utilisent des paramètres *MVC* issus du composant ``Zend_Controller``. Une page *MVC*
@@ -47,20 +47,20 @@ générer les *URI*\ s suite à l'appel à *$page->getHref()*.
    :linenos:
 
    // getHref() retourne /
-   $page = new Zend\Navigation_Page\Mvc(array(
+   $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'index',
        'controller' => 'index'
    ));
 
    // getHref() retourne /blog/post/view
-   $page = new Zend\Navigation_Page\Mvc(array(
+   $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'view',
        'controller' => 'post',
        'module'     => 'blog'
    ));
 
    // getHref() retourne /blog/post/view/id/1337
-   $page = new Zend\Navigation_Page\Mvc(array(
+   $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'view',
        'controller' => 'post',
        'module'     => 'blog',
@@ -83,12 +83,12 @@ actives ou non.
     * - controller: index
     * - action:     index
     */
-   $page1 = new Zend\Navigation_Page\Mvc(array(
+   $page1 = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'index',
        'controller' => 'index'
    ));
 
-   $page2 = new Zend\Navigation_Page\Mvc(array(
+   $page2 = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'bar',
        'controller' => 'index'
    ));
@@ -103,7 +103,7 @@ actives ou non.
     * - action:     view
     * - id:         1337
     */
-   $page = new Zend\Navigation_Page\Mvc(array(
+   $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'view',
        'controller' => 'post',
        'module'     => 'blog'
@@ -118,7 +118,7 @@ actives ou non.
     * - controller: post
     * - action:     view
     */
-   $page = new Zend\Navigation_Page\Mvc(array(
+   $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'view',
        'controller' => 'post',
        'module'     => 'blog',
@@ -161,7 +161,7 @@ Les routes sont utilisables dans les pages de type *MVC*. Si une page a une rout
    );
 
    // Une page est créee avec un paramètre 'route'
-   $page = new Zend\Navigation_Page\Mvc(array(
+   $page = new Zend\Navigation\Page\Mvc(array(
        'label'      => 'A news article',
        'route'      => 'article_view',
        'module'     => 'news',    // requis pour isActive(), voyez les notes ci-dessus
