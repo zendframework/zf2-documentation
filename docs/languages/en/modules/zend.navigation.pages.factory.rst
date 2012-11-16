@@ -6,7 +6,7 @@ Creating pages using the page factory
 All pages (also custom classes), can be created using the page factory, ``Zend\Navigation\Page::factory()``. The
 factory can take an array with options, or a ``Zend\Config`` object. Each key in the array/config corresponds to a
 page option, as seen in the section on :ref:`Pages <zend.navigation.pages>`. If the option *uri* is given and no
-*MVC* options are given (*action, controller, module, route*), an *URI* page will be created. If any of the *MVC*
+*MVC* options are given (*action, controller, route*), an *URI* page will be created. If any of the *MVC*
 options are given, an *MVC* page will be created.
 
 If *type* is given, the factory will assume the value to be the name of the class that should be created. If the
@@ -21,27 +21,23 @@ value is *mvc* or *uri* and *MVC*/URI page will be created.
 
    $page = Zend\Navigation\Page::factory(array(
        'label'  => 'My MVC page',
-       'action' => 'index'
+       'action' => 'index',
    ));
 
    $page = Zend\Navigation\Page::factory(array(
        'label'      => 'Search blog',
        'action'     => 'index',
        'controller' => 'search',
-       'module'     => 'blog'
    ));
 
    $page = Zend\Navigation\Page::factory(array(
-       'label'      => 'Home',
-       'action'     => 'index',
-       'controller' => 'index',
-       'module'     => 'index',
-       'route'      => 'home'
+       'label' => 'Home',
+       'route' => 'home',
    ));
 
    $page = Zend\Navigation\Page::factory(array(
        'type'   => 'mvc',
-       'label'  => 'My MVC page'
+       'label'  => 'My MVC page',
    ));
 
 .. _zend.navigation.pages.factory.example.uri:
@@ -53,23 +49,23 @@ value is *mvc* or *uri* and *MVC*/URI page will be created.
 
    $page = Zend\Navigation\Page::factory(array(
        'label' => 'My URI page',
-       'uri'   => 'http://www.example.com/'
+       'uri'   => 'http://www.example.com/',
    ));
 
    $page = Zend\Navigation\Page::factory(array(
        'label'  => 'Search',
        'uri'    => 'http://www.example.com/search',
-       'active' => true
+       'active' => true,
    ));
 
    $page = Zend\Navigation\Page::factory(array(
        'label' => 'My URI page',
-       'uri'   => '#'
+       'uri'   => '#',
    ));
 
    $page = Zend\Navigation\Page::factory(array(
-       'type'   => 'uri',
-       'label'  => 'My URI page'
+       'type'  => 'uri',
+       'label' => 'My URI page',
    ));
 
 .. _zend.navigation.pages.factory.example.custom:
@@ -94,7 +90,7 @@ To create a custom page type using the factory, use the option *type* to specify
    $page = Zend\Navigation\Page::factory(array(
        'type'    => 'My\Navigation\Page',
        'label'   => 'My custom page',
-       'foo_bar' => 'foo bar'
+       'foo_bar' => 'foo bar',
    ));
 
 
