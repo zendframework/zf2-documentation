@@ -4,7 +4,7 @@
 Caractéristiques communes aux pages
 ===================================
 
-Toutes les classes pour des pages doivent étendre ``Zend\Navigation\Page``, elles partageront ainsi des
+Toutes les classes pour des pages doivent étendre ``Zend\Navigation\Page\AbstractPage``, elles partageront ainsi des
 caractéristiques communes. Ces options sont représentées dans le tableau ci-après.
 
 Les noms des options (en clés) sont dirigées vers les setters appropriés *set*. Ceci signifie qu'une option
@@ -12,7 +12,7 @@ appelée *order* sera passée à la méthode ``setOrder()``, et une option nomm�
 vers ``setResetParams()``. Si aucune méthode setter ne correspond, l'option sera alors évaluée comme un attribut
 personnalisé de la page.
 
-Documentez vous au sujet de la création de pages ``Zend\Navigation\Page`` dans :ref:`la documentation appropriée
+Documentez vous au sujet de la création de pages ``Zend\Navigation\Page\AbstractPage`` dans :ref:`la documentation appropriée
 <zend.navigation.pages.custom>`.
 
 .. _zend.navigation.pages.common.options:
@@ -46,7 +46,7 @@ Documentez vous au sujet de la création de pages ``Zend\Navigation\Page`` dans 
    +---------+---------------------------------------------------------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |visible  |booléen                                                        |TRUE             |Si oui ou non la page doit être visible à l'utilisateur ou juste présente dans la structure mais non représentée visuellement.                                                                                                                                                                                                                                                                                                           |
    +---------+---------------------------------------------------------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |pages    |tableau | Zend_Config | NULL                                   |NULL             |Pages enfant de la page en cours. Peut être de type tableau ou Zend_Config contenant des options à passer à la méthode factory() ou des instances de Zend\Navigation\Page, ou un mélange des deux types.                                                                                                                                                                                                                                 |
+   |pages    |tableau | Zend_Config | NULL                                   |NULL             |Pages enfant de la page en cours. Peut être de type tableau ou Zend_Config contenant des options à passer à la méthode factory() ou des instances de Zend\Navigation\Page\AbstractPage, ou un mélange des deux types.                                                                                                                                                                                                                                 |
    +---------+---------------------------------------------------------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. note::
@@ -71,7 +71,7 @@ Cet exemple montre comment les propriétés personnalisées des pages peuvent ê
 .. code-block:: php
    :linenos:
 
-   $page = new Zend\Navigation_Page\Mvc();
+   $page = new Zend\Navigation\Page\Mvc();
    $page->foo = 'bar';
    $page->meaning = 42;
 

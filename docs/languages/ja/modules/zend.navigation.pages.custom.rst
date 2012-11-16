@@ -4,7 +4,7 @@
 カスタム・ページ・タイプの作成
 ===============
 
-``Zend\Navigation\Page``\ を拡張するとき、 通常は、コンストラクタ、メソッド
+``Zend\Navigation\Page\AbstractPage``\ を拡張するとき、 通常は、コンストラクタ、メソッド
 ``setOptions()``\ 、 または ``setConfig()``\ をオーバーライドする必要はありません。
 ページ・コンストラクタは単一のパラメータ、 ``Array``\ 、 または ``Zend_Config``\
 オブジェクトを受け取ります。 そして、それはそれぞれ ``setOptions()`` または
@@ -27,7 +27,7 @@
 .. code-block:: php
    :linenos:
 
-   class My_Simple_Page extends Zend\Navigation\Page
+   class My_Simple_Page extends Zend\Navigation\Page\AbstractPage
    {
        public function getHref()
        {
@@ -45,7 +45,7 @@
 .. code-block:: php
    :linenos:
 
-   class My_Navigation_Page extends Zend\Navigation\Page
+   class My_Navigation_Page extends Zend\Navigation\Page\AbstractPage
    {
        private $_foo;
        private $_fooBar;
@@ -84,7 +84,7 @@
    ));
 
    //または
-   $page = Zend\Navigation\Page::factory(array(
+   $page = Zend\Navigation\Page\AbstractPage::factory(array(
        'type'    => 'My_Navigation_Page',
        'label'   => 'Property names are mapped to setters',
        'foo'     => 'bar',

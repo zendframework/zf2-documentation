@@ -4,7 +4,7 @@
 Créer des pages de type personnalisé
 ====================================
 
-Etendre ``Zend\Navigation\Page`` ne nécessite pas forcément de réécrire le constructeur ou les méthodes
+Etendre ``Zend\Navigation\Page\AbstractPage`` ne nécessite pas forcément de réécrire le constructeur ou les méthodes
 ``setOptions()`` ou ``setConfig()``. Le constructeur prend un seul paramètre de type ``Array`` ou ``Zend_Config``
 et il est passé à ``setOptions()`` ou ``setConfig()`` respectivement. Ces méthodes appellerons par la suite les
 setters ``set()`` qui distribueront leurs options. Si l'option *internal_id* est présente, alors la méthode
@@ -21,7 +21,7 @@ La seule chose à définir dans une page personnalisée est la méthode ``getHre
 .. code-block:: php
    :linenos:
 
-   class My_Simple_Page extends Zend\Navigation\Page
+   class My_Simple_Page extends Zend\Navigation\Page\AbstractPage
    {
        public function getHref()
        {
@@ -39,7 +39,7 @@ Ajouter des propriétés à vos pages étendues ne nécessite pas de réécrire 
 .. code-block:: php
    :linenos:
 
-   class My_Navigation_Page extends Zend\Navigation\Page
+   class My_Navigation_Page extends Zend\Navigation\Page\AbstractPage
    {
        private $_foo;
        private $_fooBar;
@@ -78,7 +78,7 @@ Ajouter des propriétés à vos pages étendues ne nécessite pas de réécrire 
    ));
 
    // ...or
-   $page = Zend\Navigation\Page::factory(array(
+   $page = Zend\Navigation\Page\AbstractPage::factory(array(
        'type'    => 'My_Navigation_Page',
        'label'   => 'Les noms des propriétés sont dirigés vers les setters',
        'foo'     => 'bar',

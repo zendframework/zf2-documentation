@@ -67,7 +67,7 @@ In addition to the method stubs from the interface, the abstract class also impl
   ``getMaxDepth()``. The deepest active page must be between ``$minDepth`` and ``$maxDepth`` inclusively. Returns
   an array containing a reference to the found page instance and the depth at which the page was found.
 
-- ``htmlify()`` renders an **'a'** *HTML* element from a ``Zend\Navigation\Page`` instance.
+- ``htmlify()`` renders an **'a'** *HTML* element from a ``Zend\Navigation\Page\AbstractPage`` instance.
 
 - ``accept()`` is used for determining if a page should be accepted when iterating containers. This method checks
   for page visibility and verifies that the helper's role is allowed access to the page's resource and privilege.
@@ -156,7 +156,7 @@ Notes on the setup:
     * Navigation container (config/array)
 
     * Each element in the array will be passed to
-    * Zend\Navigation\Page::factory() when constructing
+    * Zend\Navigation\Page\AbstractPage::factory() when constructing
     * the navigation container below.
     */
    $pages = array(
@@ -313,7 +313,7 @@ Notes on the setup:
    );
 
    // Create container from array
-   $container = new Zend\Navigation($pages);
+   $container = new Zend\Navigation\Navigation($pages);
 
    // Store the container in the proxy helper:
    $view->getHelper('navigation')->setContainer($container);
@@ -549,9 +549,9 @@ searching:
 .. note::
 
    When looking for relations in the page instance (*$page->getRel($type)* or *$page->getRev($type)*), the helper
-   accepts the values of type ``String``, ``Array``, ``Zend\Config``, or ``Zend\Navigation\Page``. If a string is
-   found, it will be converted to a ``Zend\Navigation\Page\Uri``. If an array or a config is found, it will be
-   converted to one or several page instances. If the first key of the array/config is numeric, it will be
+   accepts the values of type ``String``, ``Array``, ``Zend\Config``, or ``Zend\Navigation\Page\AbstractPage``. If
+   a string is found, it will be converted to a ``Zend\Navigation\Page\Uri``. If an array or a config is found, it
+   will be converted to one or several page instances. If the first key of the array/config is numeric, it will be
    considered to contain several pages, and each element will be passed to the :ref:`page factory
    <zend.navigation.pages.factory>`. If the first key is not numeric, the array/config will be passed to the page
    factory directly, and a single page will be returned.
@@ -629,7 +629,7 @@ This example shows how to specify relations in pages.
 .. code-block:: php
    :linenos:
 
-   $container = new Zend\Navigation(array(
+   $container = new Zend\Navigation\Navigation(array(
        array(
            'label' => 'Relations using strings',
            'rel'   => array(
@@ -660,7 +660,7 @@ This example shows how to specify relations in pages.
        array(
            'label' => 'Relations using pages instance',
            'rel'   => array(
-               'alternate' => Zend\Navigation\Page::factory(array(
+               'alternate' => Zend\Navigation\Page\AbstractPage::factory(array(
                    'label' => 'Example.org',
                    'uri'   => 'http://www.example.org/'
                ))
