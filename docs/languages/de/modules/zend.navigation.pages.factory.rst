@@ -5,7 +5,7 @@ Erstellen von Seiten durch Verwendung der Page Factory
 ======================================================
 
 Alle Seiten (also auch eigene Klassen), können durch Verwendung der Page Factory
-``Zend\Navigation\Page::factory()`` erstellt werden. Die Factory kann ein Array mit Optionen oder ein
+``Zend\Navigation\Page\AbstractPage::factory()`` erstellt werden. Die Factory kann ein Array mit Optionen oder ein
 ``Zend\Config`` Objekt annehmen. Jeder Schlüssel im Array/Config entspricht einer Seiten Option, wie im Kapitel
 :ref:`Seiten <zend.navigation.pages>` gezeigt. Wenn die Option *uri* angegeben wird und keine *MVC* Optionen
 angegeben werden (*action, controller, module, route*) wird eine *URI* Seite erstellt. Wenn eine der *MVC* Optionen
@@ -21,19 +21,19 @@ Wenn der Wert *mvc* oder *uri* ist wird eine MVC/URI Seite erstellt.
 .. code-block:: php
    :linenos:
 
-   $page = Zend\Navigation\Page::factory(array(
+   $page = Zend\Navigation\Page\AbstractPage::factory(array(
        'label'  => 'My MVC page',
        'action' => 'index'
    ));
 
-   $page = Zend\Navigation\Page::factory(array(
+   $page = Zend\Navigation\Page\AbstractPage::factory(array(
        'label'      => 'Search blog',
        'action'     => 'index',
        'controller' => 'search',
        'module'     => 'blog'
    ));
 
-   $page = Zend\Navigation\Page::factory(array(
+   $page = Zend\Navigation\Page\AbstractPage::factory(array(
        'label'      => 'Home',
        'action'     => 'index',
        'controller' => 'index',
@@ -41,7 +41,7 @@ Wenn der Wert *mvc* oder *uri* ist wird eine MVC/URI Seite erstellt.
        'route'      => 'home'
    ));
 
-   $page = Zend\Navigation\Page::factory(array(
+   $page = Zend\Navigation\Page\AbstractPage::factory(array(
        'type'   => 'mvc',
        'label'  => 'My MVC page'
    ));
@@ -53,23 +53,23 @@ Wenn der Wert *mvc* oder *uri* ist wird eine MVC/URI Seite erstellt.
 .. code-block:: php
    :linenos:
 
-   $page = Zend\Navigation\Page::factory(array(
+   $page = Zend\Navigation\Page\AbstractPage::factory(array(
        'label' => 'My URI page',
        'uri'   => 'http://www.example.com/'
    ));
 
-   $page = Zend\Navigation\Page::factory(array(
+   $page = Zend\Navigation\Page\AbstractPage::factory(array(
        'label'  => 'Search',
        'uri'    => 'http://www.example.com/search',
        'active' => true
    ));
 
-   $page = Zend\Navigation\Page::factory(array(
+   $page = Zend\Navigation\Page\AbstractPage::factory(array(
        'label' => 'My URI page',
        'uri'   => '#'
    ));
 
-   $page = Zend\Navigation\Page::factory(array(
+   $page = Zend\Navigation\Page\AbstractPage::factory(array(
        'type'   => 'uri',
        'label'  => 'My URI page'
    ));
@@ -84,7 +84,7 @@ werden um den Klassennamen zu spezifizieren der instanziiert werden muß.
 .. code-block:: php
    :linenos:
 
-   class My\Navigation\Page extends Zend\Navigation\Page
+   class My\Navigation\Page extends Zend\Navigation\Page\AbstractPage
    {
        protected $_fooBar = 'ok';
 
@@ -94,7 +94,7 @@ werden um den Klassennamen zu spezifizieren der instanziiert werden muß.
        }
    }
 
-   $page = Zend\Navigation\Page::factory(array(
+   $page = Zend\Navigation\Page\AbstractPage::factory(array(
        'type'    => 'My\Navigation\Page',
        'label'   => 'My custom page',
        'foo_bar' => 'foo bar'

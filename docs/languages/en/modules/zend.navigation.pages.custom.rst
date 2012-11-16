@@ -3,8 +3,8 @@
 Creating custom page types
 ==========================
 
-When extending ``Zend\Navigation\Page``, there is usually no need to override the constructor or the methods
-``setOptions()`` or ``setConfig()``. The page constructor takes a single parameter, an ``Array`` or a
+When extending ``Zend\Navigation\Page\AbstractPage``, there is usually no need to override the constructor or the
+methods ``setOptions()`` or ``setConfig()``. The page constructor takes a single parameter, an ``Array`` or a
 ``Zend\Config`` object, which is passed to ``setOptions()`` or ``setConfig()`` respectively. Those methods will in
 turn call ``set()`` method, which will map options to native or custom properties. If the option ``internal_id`` is
 given, the method will first look for a method named ``setInternalId()``, and pass the option to this method if it
@@ -20,7 +20,7 @@ The only thing a custom page class needs to implement is the ``getHref()`` metho
 .. code-block:: php
    :linenos:
 
-   class My\Simple\Page extends Zend\Navigation\Page
+   class My\Simple\Page extends Zend\Navigation\Page\AbstractPage
    {
        public function getHref()
        {
@@ -38,7 +38,7 @@ When adding properties to an extended page, there is no need to override/modify 
 .. code-block:: php
    :linenos:
 
-   class My\Navigation\Page extends Zend\Navigation\Page
+   class My\Navigation\Page extends Zend\Navigation\Page\AbstractPage
    {
        protected $foo;
        protected $fooBar;
@@ -77,7 +77,7 @@ When adding properties to an extended page, there is no need to override/modify 
    ));
 
    // ...or
-   $page = Zend\Navigation\Page::factory(array(
+   $page = Zend\Navigation\Page\AbstractPage::factory(array(
        'type'    => 'My\Navigation\Page',
        'label'   => 'Property names are mapped to setters',
        'foo'     => 'bar',

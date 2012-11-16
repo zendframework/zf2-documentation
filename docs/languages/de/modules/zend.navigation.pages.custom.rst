@@ -4,7 +4,7 @@
 Erstellung eigener Seitentypen
 ==============================
 
-Wenn ``Zend\Navigation\Page`` erweitert wird, besteht normalerweise keine Notwendigkeit den Konstruktor oder die
+Wenn ``Zend\Navigation\Page\AbstractPage`` erweitert wird, besteht normalerweise keine Notwendigkeit den Konstruktor oder die
 Methoden ``setOptions()`` oder ``setConfig()`` zu überladen. Der Konstruktor der Seite nimmt einen einzelnen
 Parameter (ein ``Array`` oder ein ``Zend\Config``-Objekt) entgegen, welches an ``setOptions()`` bzw. an ``setConfig()``
 weitergeleitet wird. Diese Methoden rufen dann die ``set()`` Methode auf, welche die Optionen in native oder eigene
@@ -79,7 +79,7 @@ Wenn Eigenschaften in eine erweiterte Seite eingefügt werden, dann müssen die 
    ));
 
    // ...oder
-   $page = Zend\Navigation\Page::factory(array(
+   $page = Zend\Navigation\Page\AbstractPage::factory(array(
        'type'    => 'My\Navigation\Page',
        'label'   => 'Namen von Eigenschaften werden auf Setter-Methoden gemappt',
        'foo'     => 'bar',

@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.navigation.pages.mvc:
 
-Zend\Navigation_Page\Mvc
+Zend\Navigation\Page\Mvc
 ========================
 
 *MVC* Seiten werden definiert indem *MVC* Parameter verwendet werden wie von der ``Zend_Controller`` Komponent
@@ -47,20 +47,20 @@ erstellen wenn *$page->getHref()* aufgerufen wird.
    :linenos:
 
    // getHref() gibt / zurück
-   $page = new Zend\Navigation_Page\Mvc(array(
+   $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'index',
        'controller' => 'index'
    ));
 
    // getHref() gibt /blog/post/view zurück
-   $page = new Zend\Navigation_Page\Mvc(array(
+   $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'view',
        'controller' => 'post',
        'module'     => 'blog'
    ));
 
    // getHref() gibt /blog/post/view/id/1337 zurück
-   $page = new Zend\Navigation_Page\Mvc(array(
+   $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'view',
        'controller' => 'post',
        'module'     => 'blog',
@@ -83,12 +83,12 @@ Anfrage Objekt gefunden werden.
     * - controller: index
     * - action:     index
     */
-   $page1 = new Zend\Navigation_Page\Mvc(array(
+   $page1 = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'index',
        'controller' => 'index'
    ));
 
-   $page2 = new Zend\Navigation_Page\Mvc(array(
+   $page2 = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'bar',
        'controller' => 'index'
    ));
@@ -103,7 +103,7 @@ Anfrage Objekt gefunden werden.
     * - action:     view
     * - id:         1337
     */
-   $page = new Zend\Navigation_Page\Mvc(array(
+   $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'view',
        'controller' => 'post',
        'module'     => 'blog'
@@ -119,7 +119,7 @@ Anfrage Objekt gefunden werden.
     * - controller: post
     * - action:     view
     */
-   $page = new Zend\Navigation_Page\Mvc(array(
+   $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'view',
        'controller' => 'post',
        'module'     => 'blog',
@@ -163,7 +163,7 @@ verwendet um die *URL* für die Seite zu erstellen.
    );
 
    // Eine Seite wird mit der 'route' Option erstellt
-   $page = new Zend\Navigation_Page\Mvc(array(
+   $page = new Zend\Navigation\Page\Mvc(array(
        'label'      => 'A news article',
        'route'      => 'article_view',
        'module'     => 'news',    // wird für isActive() benötigt, siehe oben

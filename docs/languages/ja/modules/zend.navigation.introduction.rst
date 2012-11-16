@@ -22,7 +22,7 @@
 ページ
 ^^^
 
-``Zend_Navigation``\ におけるページ (``Zend\Navigation\Page``) は、 - その最も基本的な形式で -
+``Zend_Navigation``\ におけるページ (``Zend\Navigation\Page\AbstractPage``) は、 - その最も基本的な形式で -
 ポインターをウェブ・ページに保持するオブジェクトです。
 ポインターそのものに加えて、ページオブジェクトはナビゲーションのために
 一般的に関連するいくつかのその他の性能、 例えば *label*\ や *title*\ 他を含みます。
@@ -45,7 +45,7 @@
 
 .. note::
 
-   ``Zend\Navigation\Page``\ は ``Zend\Navigation\Container``
+   ``Zend\Navigation\Page\AbstractPage``\ は ``Zend\Navigation\Container``
    を拡張します。それはページがサブページを持てることを意味します。
 
 .. _zend.navigation.introduction.separation:

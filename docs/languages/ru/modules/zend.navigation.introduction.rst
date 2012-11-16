@@ -22,7 +22,7 @@
 Страницы
 ^^^^^^^^
 
-Страница (``Zend\Navigation\Page``) в ``Zend_Navigation`` в своем основном
+Страница (``Zend\Navigation\Page\AbstractPage``) в ``Zend_Navigation`` в своем основном
 проявлении является объектом, которй хранит ссылку на
 веб-страницу. Кроме собственно ссылки, объект страницы
 содержит и другие свойства, которые, как правило, относятся к
@@ -48,7 +48,7 @@
 
 .. note::
 
-   ``Zend\Navigation\Page`` расширяет ``Zend\Navigation\Container``, это значит, что
+   ``Zend\Navigation\Page\AbstractPage`` расширяет ``Zend\Navigation\Container``, это значит, что
    любая страница может содержать подстраницы.
 
 .. _zend.navigation.introduction.separation:

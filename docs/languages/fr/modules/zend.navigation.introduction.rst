@@ -20,7 +20,7 @@ Deux concepts existent dans ``Zend_Navigation``:
 Pages
 ^^^^^
 
-Une page (``Zend\Navigation\Page``) dans ``Zend_Navigation`` – dans sa forme la plus simple – est un objet
+Une page (``Zend\Navigation\Page\AbstractPage``) dans ``Zend_Navigation`` – dans sa forme la plus simple – est un objet
 pointant vers une page web. En plus d'un pointeur vers une page web, l'objet page contient d'autres informations
 utiles à la navigation comme un *label*, un titre *title*, etc.
 
@@ -40,7 +40,7 @@ Pour plus d'informations sur les conteneurs, lisez :ref:`leur section <zend.navi
 
 .. note::
 
-   ``Zend\Navigation\Page`` étend ``Zend\Navigation\Container``, ce qui signifie qu'une page peut posséder des
+   ``Zend\Navigation\Page\AbstractPage`` étend ``Zend\Navigation\Container``, ce qui signifie qu'une page peut posséder des
    sous-pages.
 
 .. _zend.navigation.introduction.separation:
