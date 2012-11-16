@@ -36,7 +36,7 @@ You can change the options of the CSRF validator using the ``setCsrfValidatorOpt
     $form->add(array(
     	'type' => 'Zend\Form\Element\Csrf',
     	'name' => 'csrf',
-    	'options => array(
+    	'options' => array(
     		'csrf_options' => array(
     			'timeout' => 600
     		)
