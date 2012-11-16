@@ -266,7 +266,7 @@ This information will be used to validate the input field. You don't need to
 manually add filters or validators for this input as that element provides a
 reasonable input specification.
 
-Finally, ``getInputSpecification()`` gives the specification for the remaining
+Finally, ``getInputFilterSpecification()`` gives the specification for the remaining
 input ("name"), indicating that this input is required. Note that *required* in
 the array "attributes" (when elements are added) is only meant to add the
 "required" attribute to the form markup (and therefore has semantic meaning
