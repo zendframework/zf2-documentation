@@ -26,11 +26,11 @@ eliminar albums. De ahí que las páginas requeridas sean las siguientes:
 Antes de comenzar a montar nuestros archivos, es importante entender como espera el
 framework que las páginas estén organizadas. Cada página de la aplicación es conocida como una
 *acción* y las acciones están agrupadas dentro de *controladores* contenidos en *módulos*.
-De esta forma, agrupará generalmente acciones relacionadas dentro de un mismo controlador;
+De esta forma, generalmente agruparás acciones relacionadas dentro de un mismo controlador;
 por ejemplo, un controlador de noticias debería tener acciones ``current``, ``archived`` y ``view``.
 
-Como tenemos cuatro páginas que están todas relacionadas con albums, vamos a agruparlas en un controlador
-único ``AlbumController`` dentro de nuestro módulo ``Album`` como cuatro acciones.
+Como tenemos cuatro páginas que están todas relacionadas con albums, vamos a agruparlas como cuatro
+acciones en un controlador único ``AlbumController`` dentro de nuestro módulo ``Album``.
 Las cuatro acciones serán:
 
 +-----------------+---------------------+------------+
@@ -59,7 +59,7 @@ acciones de album. Este es el archivo de configuración actualizado, con el nuev
             ),
         ),
         
-        // La siguiente sección es nueva y debería ser añadida a su fichero
+        // La siguiente sección es nueva y debería ser añadida a tu fichero
         'router' => array(
             'routes' => array(
                 'album' => array(
@@ -124,7 +124,7 @@ En este caso ``{action name}`` debe comenzar con una letra minúscula.
 .. note::
 
     Esto es por convención. Zend Framework 2 no provee demasiadas
-    restricciones en los controladores además del deber de implementar la
+    restricciones en los controladores más que deben implementar la
     interfaz ``Zend\Stdlib\Dispatchable``. El framework provee dos clases
     abstractas que hacen esto por nosotros: ``Zend\Mvc\Controller\AbstractActionController``
     y ``Zend\Mvc\Controller\AbstractRestfulController``. Nosotros utilizaremos el
@@ -190,7 +190,7 @@ Inicializar los scripts de vista
 
 Para integrar la vista en nuestra aplicación todo lo que necesitamos hacer es crear algunos
 ficheros script de vista. Estos ficheros serán ejecutados por ``DefaultViewStrategy`` y serán
-pasados cualquier variable o modelo de vista que sean devueltos desde el método acción del
+pasados cualquier variable o modelo de vista que sean devueltos por el método de la acción del
 controlador. Estos scripts de vista están almacenados en nuestro directorio de vistas del módulo dentro de un
 directorio llamado como el controlador. Cree ahora estos cuatro archivos vacíos:
 
