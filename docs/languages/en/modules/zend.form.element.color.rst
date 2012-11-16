@@ -37,7 +37,7 @@ Here is the same example using the array notation:
     $form->add(array(
     	'type' => 'Zend\Form\Element\Color',
     	'name' => 'color',
-    	'options => array(
+    	'options' => array(
     		'label' => 'Background color'
     	)
     ));
