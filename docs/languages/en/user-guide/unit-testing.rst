@@ -21,7 +21,7 @@ that you already have PHPUnit installed.
 Setting up the tests directory
 ------------------------------
 
-Start by creating a directory called ``tests`` in the project root with
+Start by creating a directory called ``test`` in ``zf2-tutorial\module\Application`` with
 the following subdirectories:
 
 .. code-block:: text
@@ -33,11 +33,9 @@ the following subdirectories:
                     /ApplicationTest
                         /Controller
 
-The structure of the ``tests`` directory matches exactly with that of the
-project's source files, and it will allow you to keep your tests
-well-organized and easy to find. Later, you will create the proper
-directories to test your models, but right now there is only the
-IndexController for the Application module.
+The structure of the ``test`` directory matches exactly with that of the
+module's source files, and it will allow you to keep your tests
+well-organized and easy to find.
 
 Bootstrapping your tests
 ------------------------
