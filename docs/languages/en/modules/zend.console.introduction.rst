@@ -34,7 +34,7 @@ Let's assume that we'd like our application to handle the following command line
     > zf user resetpassword user@mail.com
 
 When a user runs our application (``zf``) with these parameters, we'd like to call action ``resetpassword`` of
-``Application\IndexController``.
+``Application\Controller\IndexController``.
 
 First we need to create a **route definition**:
 
@@ -82,12 +82,12 @@ following location inside config file:
         ),
     )
 
-Let's create our console route and point it to ``Application\IndexController::resetpasswordAction()``
+Let's create our console route and point it to ``Application\Controller\IndexController::resetpasswordAction()``
 
 .. code-block:: php
     :linenos:
 
-    // we could define routes for Application\IndexController in Application module config file
+    // we could define routes for Application\Controller\IndexController in Application module config file
     // which is usually located at modules/application/config/module.config.php
     array(
         'console' => array(
@@ -97,7 +97,7 @@ Let's create our console route and point it to ``Application\IndexController::re
                         'options' => array(
                             'route'    => 'user resetpassword [--verbose|-v] <userEmail>',
                             'defaults' => array(
-                                'controller' => 'Application\Index',
+                                'controller' => 'Application\Controller\Index',
                                 'action'     => 'password'
                             )
                         )
@@ -117,7 +117,7 @@ Handling console requests
 When a user runs our application from command line and arguments match our console route, a ``controller``
 class will be instantiated and an ``action`` method will be called, just like it is with http requests.
 
-We will now add ``resetpassword`` action to ``Application\IndexController``:
+We will now add ``resetpassword`` action to ``Application\Controller\IndexController``:
 
 .. code-block:: php
     :linenos:
@@ -189,7 +189,7 @@ Usage info in ZF2 console applications is provided by :doc:`loaded modules <zend
 console route matches console arguments, ``Zend\Console`` will query all loaded modules and ask for their console
 usage info.
 
-Let's modify our ``Application\IndexController`` to provide usage info:
+Let's modify our ``Application\Controller\IndexController`` to provide usage info:
 
 .. code-block:: php
     :linenos:
