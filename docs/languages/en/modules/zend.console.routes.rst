@@ -61,14 +61,14 @@ A single route can be described with the following array:
         'options' => array(
             'route'    => 'foo bar',
             'defaults' => array(
-                'controller' => 'Application\Index',
+                'controller' => 'Application\Controller\Index',
                 'action'     => 'password'
             )
         )
     )
 
 We have created a ``simple`` console route with a name ``my-first-route``. It expects two parameters:
-``foo`` and ``bar``. If user puts these in a console, ``Application\IndexController::passwordAction()`` action will be
+``foo`` and ``bar``. If user puts these in a console, ``Application\Controller\IndexController::passwordAction()`` action will be
 invoked.
 
 
@@ -102,7 +102,7 @@ These parameters are expected to appear on the command line exactly the way they
         'options' => array(
             'route'    => 'show users',
             'defaults' => array(
-                'controller' => 'Application\Users',
+                'controller' => 'Application\Controller\Users',
                 'action'     => 'show'
             )
         )
@@ -128,7 +128,7 @@ We can also provide **optional literal parameters**, for example:
         'options' => array(
             'route'    => 'show [all] users',
             'defaults' => array(
-                'controller' => 'Application\Users',
+                'controller' => 'Application\Controller\Users',
                 'action'     => 'show'
             )
         )
@@ -151,7 +151,7 @@ We can also provide **parameter alternative**:
         'options' => array(
             'route'    => 'show [all|deleted|locked|admin] users',
             'defaults' => array(
-                'controller' => 'Application\Users',
+                'controller' => 'Application\Controller\Users',
                 'action'     => 'show'
             )
         )
@@ -193,7 +193,7 @@ Let's create a route with **optional long flags**
         'options' => array(
             'route'    => 'check users [--verbose] [--fast] [--thorough]',
             'defaults' => array(
-                'controller' => 'Application\Users',
+                'controller' => 'Application\Controller\Users',
                 'action'     => 'check'
             )
         )
@@ -219,7 +219,7 @@ We can also define one or more **mandatory long flags** and group them as an alt
         'options' => array(
             'route'    => 'check users (--suspicious|--expired) [--verbose] [--fast] [--thorough]',
             'defaults' => array(
-                'controller' => 'Application\Users',
+                'controller' => 'Application\Controller\Users',
                 'action'     => 'check'
             )
         )
@@ -243,7 +243,7 @@ We can also use **short flags** in our routes and group them with long flags for
         'options' => array(
             'route'    => 'check users [--verbose|-v] [--fast|-f] [--thorough|-t]',
             'defaults' => array(
-                'controller' => 'Application\Users',
+                'controller' => 'Application\Controller\Users',
                 'action'     => 'check'
             )
         )
@@ -275,7 +275,7 @@ Value parameters capture any text-based input and come in two forms - positional
         'options' => array(
             'route'    => 'delete user <userEmail>',
             'defaults' => array(
-                'controller' => 'Application\Users',
+                'controller' => 'Application\Controller\Users',
                 'action'     => 'delete'
             )
         )
@@ -301,7 +301,7 @@ We can also define **optional positional value parameters** by adding square bra
         'options' => array(
             'route'    => 'delete user [<userEmail>]',
             'defaults' => array(
-                'controller' => 'Application\Users',
+                'controller' => 'Application\Controller\Users',
                 'action'     => 'delete'
             )
         )
@@ -320,7 +320,7 @@ We can define any number of positional value parameters, for example:
         'options' => array(
             'route'    => 'create user <firstName> <lastName> <email> <position>',
             'defaults' => array(
-                'controller' => 'Application\Users',
+                'controller' => 'Application\Controller\Users',
                 'action'     => 'create'
             )
         )
@@ -360,7 +360,7 @@ not want to enforce the order of parameters, we can define **value flags**.
         'options' => array(
             'route'    => 'find user [--id=] [--firstName=] [--lastName=] [--email=] [--position=] ',
             'defaults' => array(
-                'controller' => 'Application\Users',
+                'controller' => 'Application\Controller\Users',
                 'action'     => 'find'
             )
         )
@@ -398,7 +398,7 @@ In previous example, all value flags are optional. It is also possible to define
         'options' => array(
             'route'    => 'rename user --id= [--firstName=] [--lastName=]',
             'defaults' => array(
-                'controller' => 'Application\Users',
+                'controller' => 'Application\Controller\Users',
                 'action'     => 'rename'
             )
         )
@@ -428,7 +428,7 @@ This special route will catch all console requests, regardless of the parameters
         'options' => array(
             'type'     => 'catchall',
             'defaults' => array(
-                'controller' => 'Application\Index',
+                'controller' => 'Application\Controller\Index',
                 'action'     => 'consoledefault'
             )
         )
