@@ -51,7 +51,7 @@ In this example we'll use the following simple route:
                         'options' => array(
                             'route'    => 'show [all|disabled|deleted]:mode users [--verbose|-v]',
                             'defaults' => array(
-                                'controller' => 'Application\Index',
+                                'controller' => 'Application\Controller\Index',
                                 'action'     => 'show-users'
                             )
                         )
@@ -69,7 +69,7 @@ This route will match commands such as:
     > php public/index.php show all users
     > php public/index.php show disabled users
 
-This route points to the method ``Application\IndexController::showUsersAction()``.
+This route points to the method ``Application\Controller\IndexController::showUsersAction()``.
 
 Let's add it to our controller.
 
@@ -280,7 +280,7 @@ Assuming we have the following route:
         'options' => array(
             'route'    => 'show (all|deleted|locked|admin) [<groupName>]'
             'defaults' => array(
-                'controller' => 'Application\Users',
+                'controller' => 'Application\Controller\Users',
                 'action'     => 'showusers'
             )
         )
@@ -291,7 +291,7 @@ If this route matches, our action can now query parameters in the following way:
 .. code-block:: php
     :linenos:
 
-    // an action inside Application\UsersController:
+    // an action inside Application\Controller\UsersController:
     public function showUsersAction()
     {
         $request = $this->getRequest();
@@ -320,7 +320,7 @@ in our action controllers. We can do this with the following syntax:
         'options' => array(
             'route'    => 'show (all|deleted|locked|admin):userTypeFilter [<groupName>]'
             'defaults' => array(
-                'controller' => 'Application\Users',
+                'controller' => 'Application\Controller\Users',
                 'action'     => 'showusers'
             )
         )
@@ -369,7 +369,7 @@ Given the following route:
         'options' => array(
             'route'    => 'find user [--fast] [--verbose] [--id=] [--firstName=] [--lastName=] [--email=] ',
             'defaults' => array(
-                'controller' => 'Application\Users',
+                'controller' => 'Application\Controller\Users',
                 'action'     => 'find',
             )
         )
