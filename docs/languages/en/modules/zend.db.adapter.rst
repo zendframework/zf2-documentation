@@ -199,6 +199,8 @@ Driver API looks like:
 .. code-block:: php
    :linenos:
 
+   namespace Zend\Db\Adapter\Driver;
+
     interface DriverInterface
     {
         const PARAMETERIZATION_POSITIONAL = 'positional';
@@ -230,6 +232,8 @@ Statement objects generally look like this:
 .. code-block:: php
    :linenos:
    
+   namespace Zend\Db\Adapter\Driver;
+
    interface StatementInterface extends StatementContainerInterface
    {
        public function getResource();
@@ -249,6 +253,8 @@ Result objects generally look like this:
 .. code-block:: php
    :linenos:
    
+   namespace Zend\Db\Adapter\Driver;
+
    interface ResultInterface extends \Countable, \Iterator
    {
        public function buffer();
@@ -271,8 +277,10 @@ object looks like this:
 
 .. code-block:: php
    :linenos:
+   
+   namespace Zend\Db\Adapter\Platform;
 
-   interface Zend\Db\Adapter\Platform\PlatformInterface
+   interface PlatformInterface
    {
        public function getName();
        public function getQuoteIdentifierSymbol();
