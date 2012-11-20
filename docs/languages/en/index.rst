@@ -207,6 +207,7 @@
    modules/zendservice.delicious
    modules/zendservice.developer-garden
    modules/zendservice.flickr
+   modules/zendservice.googlecloudmessaging
    modules/zendservice.livedocx
    modules/zendservice.nirvanix
    modules/zendservice.rackspace
@@ -707,6 +708,11 @@ ZendService\\Flickr
 ^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.flickr`
+
+ZendService\\GoogleCloudMessaging
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zendservice.googlecloudmessaging`
 
 ZendService\\LiveDocx
 ^^^^^^^^^^^^^^^^^^^^^
