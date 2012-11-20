@@ -164,6 +164,14 @@ Consider the following class and method definition:
            // some validation
            return true;
        }
+
+       //if a context is present
+       function myMethod($value, $context, $option)
+       {
+           // some validation
+           return true;
+       }
+
    }
 
 There are two ways to inform the validator of additional options: pass them in the constructor, or pass them to the
