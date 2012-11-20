@@ -352,6 +352,8 @@ interface.  Below is the ParameterContainer API:
 
 .. code-block:: php
 
+   namespace Zend\Db\Adapter;
+
     class ParameterContainer implements \Iterator, \ArrayAccess, \Countable {
         public function __construct(array $data = array())
         
