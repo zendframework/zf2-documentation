@@ -1,3 +1,4 @@
+.. EN-Revision: 3728e7b
 .. _zend.db.metadata:
 
 Zend\\Db\\Metadata
