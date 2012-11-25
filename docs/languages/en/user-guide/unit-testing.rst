@@ -152,4 +152,4 @@ in your tests controllers :
         $this->assertMatchedRouteName('myaction');
     }
 
-More informations at the Zend\Test component documentation page.
+More informations at the ``Zend\Test`` component documentation page.

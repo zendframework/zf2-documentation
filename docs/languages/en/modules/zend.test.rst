@@ -62,15 +62,12 @@ In order to test your MVC application, you will need to setup the application co
 
 .. code-block:: php
 
-    public function testIndexActionCanBeAccessed()
+    public function setUp()
     {
-        $this->dispatch('/');
-        $this->assertResponseStatusCode(200);
-
-        $this->assertModule('application');
-        $this->assertControllerName('application_index');
-        $this->assertControllerClass('IndexController');
-        $this->assertMatchedRouteName('home');
+        $this->setApplicationConfig(
+            include '/path/to/application/config/test/application.config.php'
+        );
+        parent::setUp();
     }
 
 Once the application is set up, you can write your tests. To help debug tests, you can activate the flag ``traceError`` to 
