@@ -184,7 +184,8 @@
    modules/zend.stdlib.hydrator
    modules/zend.tag.introduction
    modules/zend.tag.cloud
-   modules/zend.test.rst
+   modules/zend.test.introduction.rst
+   modules/zend.test.phpunit.rst
    modules/zend.text.figlet
    modules/zend.text.table
    modules/zend.uri

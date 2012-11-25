@@ -1,11 +1,3 @@
-.. _zend.test.introduction:
-
-Introduction
-============
-
-The ``Zend\Test`` component provides tools to facilitate unit testing of your Zend Framework applications. At this 
-time, we offer facilities to enable testing of your Zend Framework MVC applications.
-
 .. _zend.test.phpunit:
 
 Unit testing with PHPUnit
