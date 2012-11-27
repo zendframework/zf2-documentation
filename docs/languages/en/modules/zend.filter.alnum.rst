@@ -38,6 +38,11 @@ The above example returns 'Thisismycontent123'. As you see all whitespaces and a
    and Korean. Within these languages the english alphabet is use instead of the characters from these languages.
    The language itself is detected by using ``Locale``.
 
+.. note::
+   
+   Because ``Zend\Filter\Alnum`` uses the ``I18n`` module, the ``intl`` extension for PHP must be installed 
+   in order to use this filter.
+
 .. _zend.filter.set.alnum.whitespace:
 
 Allow whitespaces
