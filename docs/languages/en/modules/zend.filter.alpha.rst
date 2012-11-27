@@ -36,7 +36,7 @@ The above example returns 'Thisismycontent'. Notice that the whitespace characte
 
    ``Zend\Filter\Alpha`` works on most languages; however, there are three exceptions: Chinese, Japanese and
    Korean. With these languages the english alphabet is used. The language is detected through the use of
-   ``Locale``.
+   ``Locale``, and therefore requires the ``intl`` extension for php.
 
 .. _zend.filter.set.alpha.whitespace:
 
