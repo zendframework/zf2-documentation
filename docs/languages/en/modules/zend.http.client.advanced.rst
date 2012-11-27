@@ -113,8 +113,7 @@ further requests.
 
    // First request: log in and start a session
    $client->setUri('http://example.com/login.php');
-   $client->setParameterPost(array('user' => 'h4x0r'));
-   $client->setParameterPost(array('password' => 'l33t'));
+   $client->setParameterPost(array('user' => 'h4x0r', 'password' => 'l33t'));
    $response = $client->request('POST');
    $cookies->addCookiesFromResponse($response, $client->getUri());
 
