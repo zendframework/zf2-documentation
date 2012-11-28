@@ -91,9 +91,9 @@ Zend\\Db\\ResultSet\\HydratingResultSet
 ---------------------------------------
 
 ``Zend\Db\ResultSet\HydratingResultSet`` is a more flexible ``ResultSet`` object that allows the developer to
-choose an appropriate "hydration strategy" for getting row data into a target object. While iterating,
-``HydratingResultSet`` will take a prototype of a target object and clone it for each successive new row it
-iterates. With this newly cloned row, ``HydratingResultSet`` will hydrate the target object with the row data.
+choose an appropriate "hydration strategy" for getting row data into a target object. While iterating over 
+results, ``HydratingResultSet`` will take a prototype of a target object and clone it once for each row.
+The ``HydratingResultSet`` will then hydrate that clone with the row data.
 
 In the example below, rows from the database will be iterated, and during iteration, ``HydratingRowSet`` will use
 the Reflection based hydrator to inject the row data directly into the protected members of the cloned UserEntity
