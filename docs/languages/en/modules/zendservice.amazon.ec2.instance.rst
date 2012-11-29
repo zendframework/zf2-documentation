@@ -211,7 +211,7 @@ in imageId
 
 .. _zendservice.amazon.ec2.instance.utility.consoleOutput:
 
-.. rubric:: Retreiving Console Output
+.. rubric:: Retrieving Console Output
 
 *consoleOutput* retrieves console output for the specified instance.
 

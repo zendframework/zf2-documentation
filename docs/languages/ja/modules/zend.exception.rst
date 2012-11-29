@@ -20,7 +20,7 @@
    try {
        // Zend\Loader\Loader::loadClass() で、存在しないクラスを指定してコールすると
        // Zend_Loader で例外がスローされます
-       Zend\Loader\Loader::loadClass('nonexistantclass');
+       Zend\Loader\Loader::loadClass('NonExistentClass');
    } catch (Zend_Exception $e) {
        echo "キャッチした例外: " . get_class($e) . "\n";
        echo "メッセージ: " . $e->getMessage() . "\n";

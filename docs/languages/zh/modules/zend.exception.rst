@@ -16,7 +16,7 @@ Zend Framework 抛出的所有异常都必须是 Zend_Exception 的子类的对�
    <?php
 
    try {
-       Zend\Loader\Loader::loadClass('nonexistantclass');
+       Zend\Loader\Loader::loadClass('NonExistentClass');
    } catch (Zend_Exception $e) {
        echo "Caught exception: " . get_class($e) . "\n";
        echo "Message: " . $e->getMessage() . "\n";

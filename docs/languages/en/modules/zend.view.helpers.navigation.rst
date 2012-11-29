@@ -381,7 +381,7 @@ active page is a root page. If *maxDepth* is specified, the helper will stop ren
 
 Methods in the breadcrumbs helper:
 
-- *{get|set}Separator()* gets/sets separator string that is used between breadcrumbs. Defualt is *' &gt; '*.
+- *{get|set}Separator()* gets/sets separator string that is used between breadcrumbs. Default is *' &gt; '*.
 
 - *{get|set}LinkLast()* gets/sets whether the last breadcrumb should be rendered as an anchor or not. Default is
   ``FALSE``.
