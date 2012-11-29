@@ -63,7 +63,7 @@ that does escaping on its own, you should always escape variables when you outpu
 applying the correct escaping strategy to each HTML context you use.
 
 The ``PhpRenderer`` includes a selection of helpers you can use for this purpose: ``EscapeHtml``,
-``EscapeHtmlAttr`` ``EscapeJs``, ``EscapeCss``, and ``EscapeUrl``. Matching the correct helper (or combination of
+``EscapeHtmlAttr``, ``EscapeJs``, ``EscapeCss``, and ``EscapeUrl``. Matching the correct helper (or combination of
 helpers) to the context into which you are injecting untrusted variables will ensure that you are protected against
 Cross-Site Scripting (XSS) vulnerabilities.
 
