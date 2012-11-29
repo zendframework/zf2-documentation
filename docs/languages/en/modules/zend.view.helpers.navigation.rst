@@ -562,7 +562,7 @@ Those calls correspond to *$helper->findRelation($page, 'rel', 'alternate');* an
 'rev', 'section');* respectively.
 
 To customize which relations should be rendered, the helper uses a render flag. The render flag is an integer
-value, and will be used in a `bitwse and (&) operation`_ against the helper's render constants to determine if the
+value, and will be used in a `bitwise and (&) operation`_ against the helper's render constants to determine if the
 relation that belongs to the render constant should be rendered.
 
 See the :ref:`example below <zend.view.helpers.initial.navigation.links.example3>` for more information.
@@ -1539,7 +1539,7 @@ of static methods.
 .. _`Breadcrumbs Pattern - Yahoo! Design Pattern Library`: http://developer.yahoo.com/ypatterns/pattern.php?pattern=breadcrumbs
 .. _`Document relationships: the LINK element (HTML4 W3C Rec.)`: http://www.w3.org/TR/html4/struct/links.html#h-12.3
 .. _`Link types (HTML4 W3C Rec.)`: http://www.w3.org/TR/html4/types.html#h-6.12
-.. _`bitwse and (&) operation`: http://php.net/manual/en/language.operators.bitwise.php
+.. _`bitwise and (&) operation`: http://php.net/manual/en/language.operators.bitwise.php
 .. _`Sitemaps on Wikpedia`: http://en.wikipedia.org/wiki/Sitemaps
 .. _`Sitemap XSD Schema`: http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
 .. _`PHP: DOMDocument - Manual`: http://php.net/domdocument
