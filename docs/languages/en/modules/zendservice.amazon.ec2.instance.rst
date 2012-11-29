@@ -154,7 +154,7 @@ once, each call will succeed.
 Amazon Instance Utilities
 -------------------------
 
-In this section you will find out how to retreive information, the console output and see if an instance contains a
+In this section you will find out how to retrieve information, the console output and see if an instance contains a
 product code.
 
 .. _zendservice.amazon.ec2.instance.utility.describe:
