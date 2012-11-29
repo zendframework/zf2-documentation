@@ -22,7 +22,7 @@ Pubsubhubbub has garnered attention because it is a pubsub protocol which is eas
 over *HTTP*. Its philosophy is to replace the traditional model where blog feeds have been polled at regular
 intervals to detect and retrieve updates. Depending on the frequency of polling, this can take a lot of time to
 propagate updates to interested parties from planet aggregators to desktop readers. With a pubsub system in place,
-updates are not simply polled by Subscribers, they are pushed to Subscribers, elimenating any delay. For this
+updates are not simply polled by Subscribers, they are pushed to Subscribers, eliminating any delay. For this
 reason, Pubsubhubbub forms part of what has been dubbed the real-time web.
 
 The protocol does not exist in isolation. Pubsub systems have been around for a while, such as the familiar Jabber
@@ -253,8 +253,8 @@ Behind the scenes, the Subscriber above will send a request to the Hub endpoint 
 You can modify several of these parameters to indicate a different preference. For example, you can set a different
 lease seconds value using ``Zend\Feed\PubSubHubbub\Subscriber::setLeaseSeconds()`` or show a preference for the async
 verify mode by using ``setPreferredVerificationMode(Zend\Feed\PubSubHubbub\PubSubHubbub::VERIFICATION_MODE_ASYNC)``.
-However the Hubs retain the capability to enforce their own preferences and for this reason the component is 
-deliberately designed to work across almost any set of options with minimum end-user configuration required. 
+However the Hubs retain the capability to enforce their own preferences and for this reason the component is
+deliberately designed to work across almost any set of options with minimum end-user configuration required.
 Conventions are great when they work!
 
 .. note::

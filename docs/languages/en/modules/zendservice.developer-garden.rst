@@ -330,7 +330,7 @@ Normally the Service works as followed:
 
 - If the connection is successful, call the second participant.
 
-- If second participant connects succesfully, both participants are connected.
+- If second participant connects successfully, both participants are connected.
 
 - The call is open until one of the participants hangs up or the expire mechanism intercepts.
 
