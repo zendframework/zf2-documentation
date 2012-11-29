@@ -7,7 +7,7 @@ Zend\Serializer\Adapter
 ``Zend_Serializer`` Adapter erzeugen eine Brücke für unterschiedliche Methoden der Serialisierung mit geringem
 Aufwand.
 
-Jeder Adpater hat andere Vor- und Nachteile. In einigen Fällen kann nicht jeder *PHP* Datentyp (z.B. Objekte) in
+Jeder Adapter hat andere Vor- und Nachteile. In einigen Fällen kann nicht jeder *PHP* Datentyp (z.B. Objekte) in
 die Repräsentation eines Strings konvertiert werden. In den meisten dieser Fälle wird der Typ in einen ähnlichen
 Typ konvertiert der serialisierbar ist -- zum Beispiel werden *PHP* Objekte oft zu Arrays gecastet. Wenn dies
 fehlschlägt wird eine ``Zend\Serializer\Exception`` geworfen.
