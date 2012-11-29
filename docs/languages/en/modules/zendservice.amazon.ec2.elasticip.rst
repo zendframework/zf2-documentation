@@ -38,7 +38,7 @@ account.
 
 .. rubric:: Describing Allocated Elastic IP Addresses
 
-*describe* has an optional paramater to describe all of your allocated Elastic IP addresses or just some of your
+*describe* has an optional parameter to describe all of your allocated Elastic IP addresses or just some of your
 allocated addresses.
 
 *describe* returns an array that contains information on each Elastic IP Address which contains the publicIp and
