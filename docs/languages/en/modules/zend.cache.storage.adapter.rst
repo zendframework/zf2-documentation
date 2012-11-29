@@ -14,7 +14,7 @@ Overview
    They comes with tons of methods to read, write and modify stored items
    and to get information about stored items and the storage.
 
-   All adapters implements the interface ``Zend\Cache\Storage\StorageInterface``
+   All adapters implement the interface ``Zend\Cache\Storage\StorageInterface``
    and most extend ``Zend\Cache\Storage\Adapter\AbstractAdapter``, which comes with basic logic.
 
    Configuration is handled by either ``Zend\Cache\Storage\Adapter\AdapterOptions``,
