@@ -9,7 +9,7 @@ Datenbanktabellen Authentifizierung
 Einführung
 ----------
 
-``Zend\Auth_Adapter\DbTable`` bietet die Möglichkeit sich gegenüber Zeugnissen zu authentifizieren die in einer
+``Zend\Auth_Adapter\DbTable`` bietet die Möglichkeit, sich gegenüber Zeugnissen zu authentifizieren, die in einer
 Datenbank Tabelle gespeichert sind. Weil ``Zend\Auth_Adapter\DbTable`` eine Instanz von
 ``Zend\Db_Adapter\Abstract`` benötigt, die an den Konstruktor übergeben wird, ist jede Instanz an eine spezielle
 Datenbank Verbindung verknüpft. Andere Konfigurationsoptionen können durch den Konstruktor gesetzt werden und
@@ -17,14 +17,14 @@ durch die Methoden der Instanz. Eine für jede Option.
 
 Die vorhandenen Konfigurationsoptionen beinhalten:
 
-- **tableName**: Das ist der Name der Datenbanktabelle welche die Authentifikations Zeugnisse enthält, und gegen
-  die jene Datenbank Authentifikations Abfrage durchgeführt wird.
+- **tableName**: Das ist der Name der Datenbanktabelle, welche die Authentifikations Zeugnisse enthält, und gegen
+  die jene Datenbank-Authentifikations-Abfrage durchgeführt wird.
 
-- **identityColumn**: Ist der Name der Spalte der Datenbanktabelle welche die Identität repräsentiert. Die Spalte
+- **identityColumn**: Ist der Name der Spalte der Datenbanktabelle, welche die Identität repräsentiert. Die Spalte
   der Identität muß eindeutige und einmalige Werte enthalten, wie einen Benutzernamen oder eine Email Adresse.
 
-- **credentialColumn**: Das ist der Name der Spalte der Datenbanktabelle die verwendet wird um die Zeugnisse zu
-  repräsentieren. Bei einem einfachen Identitäts und Passwort-Authentifizierungs Schema korrespondieren die
+- **credentialColumn**: Das ist der Name der Spalte der Datenbanktabelle, die verwendet wird, um die Zeugnisse zu
+  repräsentieren. Bei einem einfachen Identitäts- und Passwort-Authentifizierungs-Schema korrespondieren die
   Zeugnisse mit dem Passwort. Siehe auch die ``credentialTreatment`` Option.
 
 - **credentialTreatment**: In vielen Fällen sind Passwörter und andere sensitive Daten verschlüsselt, gehasht,
