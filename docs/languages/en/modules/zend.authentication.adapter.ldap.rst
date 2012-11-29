@@ -70,7 +70,7 @@ not using ``Zend\Mvc``, the meat of your code should look something like the fol
        foreach ($messages as $i => $message) {
            if ($i-- > 1) { // $messages[2] and up are log messages
                $message = str_replace("\n", "\n  ", $message);
-               $logger->log(Logger::DEBUG, "Ldap: $i: $message");
+               $logger->debug("Ldap: $i: $message");
            }
        }
    }
