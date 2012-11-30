@@ -136,8 +136,8 @@ There are a number of features built-in and shipped with Zend\\Db:
 .. code-block:: php
    :linenos:
 
-   use \Zend\Db\TableGateway\AbstractTableGateway;
-   use \Zend\Db\TableGateway\Feature;
+   use Zend\Db\TableGateway\AbstractTableGateway;
+   use Zend\Db\TableGateway\Feature;
 
    class MyTableGateway extends AbstractTableGateway
    {
