@@ -44,6 +44,15 @@ If you are encoding *PHP* objects by default the encoding mechanism can only acc
 objects. When a method ``toJson()`` is implemented on an object to encode, ``Zend\Json\Json`` calls this method
 and expects the object to return a *JSON* representation of its internal state.
 
+``Zend\Json\Json`` can encode PHP objects recursively but does not do so by default. This can be enabled by passing
+``true`` as a second argument to ``Zend\Json\Json::encode()``.
+
+.. code-block:: php
+    :linenos:
+
+    // Encode PHP object recursively
+    $jsonObject = Zend\Json\Json::encode($data, true);
+
 .. _zend.json.advanced.internal:
 
 Internal Encoder/Decoder
