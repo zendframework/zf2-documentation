@@ -35,6 +35,6 @@ this example:
 
    When you want to validate numbers or numeric values, be aware that this validator only validates digits. This
    means that any other sign like a thousand separator or a comma will not pass this validator. In this case you
-   should use ``Zend\Validator\Int`` or ``Zend\Validator\Float``.
+   should use ``Zend\I18n\Validator\Int`` or ``Zend\I18n\Validator\Float``.
 
 
