@@ -8,7 +8,7 @@ Zend\\Feed\\Reader\\Reader
 Introduction
 ------------
 
-``Zend\Feed\Reader\Reader`` is a component used to consume *RSS* and Atom feeds of any version, including 
+``Zend\Feed\Reader\Reader`` is a component used to consume *RSS* and Atom feeds of any version, including
 *RDF*/*RSS* 1.0, *RSS* 2.0, Atom 0.3 and Atom 1.0. The *API* for retrieving feed data is deliberately simple since
 ``Zend\Feed\Reader`` is capable of searching any feed of any type for the information requested through the *API*.
 If the typical elements containing this information are not present, it will adapt and fall back on a variety of
@@ -16,20 +16,20 @@ alternative elements instead. This ability to choose from alternatives removes t
 own abstraction layer on top of the component to make it useful or have any in-depth knowledge of the underlying
 standards, current alternatives, and namespaced extensions.
 
-Internally, ``Zend\Feed\Reader\Reaeder`` works almost entirely on the basis of making XPath queries against the feed
+Internally, ``Zend\Feed\Reader\Reader`` works almost entirely on the basis of making XPath queries against the feed
 *XML*'s Document Object Model. This singular approach to parsing is consistent and the component offers a plugin
 system to add to the Feed and Entry level *API* by writing Extensions on a similar basis.
 
 Performance is assisted in three ways. First of all, ``Zend\Feed\Reader\Reader`` supports caching using ``Zend\Cache``
 to maintain a copy of the original feed *XML*. This allows you to skip network requests for a feed *URI* if the cache
-is valid. Second, the Feed and Entry level *API* is backed by an internal cache (non-persistant) so repeat *API*
+is valid. Second, the Feed and Entry level *API* is backed by an internal cache (non-persistent) so repeat *API*
 calls for the same feed will avoid additional *DOM* or XPath use. Thirdly, importing feeds from a *URI* can take
 advantage of *HTTP* Conditional ``GET`` requests which allow servers to issue an empty 304 response when the
 requested feed has not changed since the last time you requested it. In the final case, an instance of
 ``Zend\Cache`` will hold the last received feed along with the ETag and Last-Modified header values sent in the
 *HTTP* response.
 
-``Zend\Feed\Reader\Reader`` is not capable of constructing feeds and delegates this responsibility to 
+``Zend\Feed\Reader\Reader`` is not capable of constructing feeds and delegates this responsibility to
 ``Zend\Feed\Writer\Writer``.
 
 .. _zend.feed.reader.import:
@@ -73,9 +73,9 @@ a database or elsewhere.
 The example above demonstrates ``Zend\Feed\Reader\Reader``'s *API*, and it also demonstrates some of its internal
 operation. In reality, the *RDF* feed selected does not have any native date or author elements, however it does
 utilise the Dublin Core 1.1 module which offers namespaced creator and date elements. ``Zend\Feed\Reader\Reader``
-falls back on these and similar options if no relevant native elements exist. If it absolutely cannot find an 
+falls back on these and similar options if no relevant native elements exist. If it absolutely cannot find an
 alternative it will return ``NULL``, indicating the information could not be found in the feed. You should note
-that classes implementing ``Zend\Feed\Reader\Feed\AbstractFeed`` also implement the *SPL* ``Iterator`` and 
+that classes implementing ``Zend\Feed\Reader\Feed\AbstractFeed`` also implement the *SPL* ``Iterator`` and
 ``Countable`` interfaces.
 
 Feeds can also be imported from strings or files.
@@ -97,11 +97,11 @@ Feeds can also be imported from strings or files.
 Retrieving Underlying Feed and Entry Sources
 --------------------------------------------
 
-``Zend\Feed\Reader\Reader`` does its best not to stick you in a narrow confine. If you need to work on a feed 
+``Zend\Feed\Reader\Reader`` does its best not to stick you in a narrow confine. If you need to work on a feed
 outside of ``Zend\Feed\Reader\Reader``, you can extract the base DOMDocument or DOMElement objects from any class,
-or even an *XML* string containing these. Also provided are methods to extract the current DOMXPath object (with 
+or even an *XML* string containing these. Also provided are methods to extract the current DOMXPath object (with
 all core and Extension namespaces registered) and the correct prefix used in all XPath queries for the current Feed
-or Entry.  The basic methods to use (on any object) are ``saveXml()``, ``getDomDocument()``, ``getElement()``, 
+or Entry.  The basic methods to use (on any object) are ``saveXml()``, ``getDomDocument()``, ``getElement()``,
 ``getXpath()`` and ``getXpathPrefix()``. These will let you break free of ``Zend\Feed\Reader`` and do whatever else
 you want.
 
@@ -151,7 +151,7 @@ Adding Cache Support to Zend\Feed\Reader\Reader
 
 ``Zend\Feed\Reader\Reader`` supports using an instance of ``Zend\Cache`` to cache feeds (as *XML*) to avoid
 unnecessary network requests. Adding a cache is as simple here as it is for other Zend Framework components,
-create and configure your cache and then tell ``Zend\Feed\Reader\Reader`` to use it! The cache key used is 
+create and configure your cache and then tell ``Zend\Feed\Reader\Reader`` to use it! The cache key used is
 "``Zend\Feed\Reader\``" followed by the *MD5* hash of the feed's *URI*.
 
 .. code-block:: php
@@ -171,9 +171,9 @@ can add *HTTP* Conditional ``GET`` support to your arsenal to answer that questi
 
 Using this method, you can request feeds from *URI*\ s and include their last known ETag and Last-Modified response
 header values with the request (using the If-None-Match and If-Modified-Since headers). If the feed on the server
-remains unchanged, you should receive a 304 response which tells ``Zend\Feed\Reader\Reader`` to use the cached 
+remains unchanged, you should receive a 304 response which tells ``Zend\Feed\Reader\Reader`` to use the cached
 version. If a full feed is sent in a response with a status code of 200, this means the feed has changed and
-``Zend\Feed\Reader\Reader`` will parse the new version and save it to the cache. It will also cache the new ETag 
+``Zend\Feed\Reader\Reader`` will parse the new version and save it to the cache. It will also cache the new ETag
 and Last-Modified header values for future use.
 
 These "conditional" requests are not guaranteed to be supported by the server you request a *URI* of, but can be
@@ -214,7 +214,7 @@ Locating Feed URIs from Websites
 These days, many websites are aware that the location of their *XML* feeds is not always obvious. A small *RDF*,
 *RSS* or Atom graphic helps when the user is reading the page, but what about when a machine visits trying to
 identify where your feeds are located? To assist in this, websites may point to their feeds using <link> tags in
-the <head> section of their *HTML*. To take advantage of this, you can use ``Zend\Feed\Reader\Reader`` to locate 
+the <head> section of their *HTML*. To take advantage of this, you can use ``Zend\Feed\Reader\Reader`` to locate
 these feeds using the static ``findFeedLinks()`` method.
 
 This method calls any *URI* and searches for the location of *RSS*, *RDF* and Atom feeds assuming the website's
@@ -263,7 +263,7 @@ Attribute Collections
 ---------------------
 
 In an attempt to simplify return types, return types from the various feed and entry level methods may include an
-object of type ``Zend\Feed\Reader\Collection\AbstractCollection``. Despite the special class name which I'll 
+object of type ``Zend\Feed\Reader\Collection\AbstractCollection``. Despite the special class name which I'll
 explain below, this is just a simple subclass of *SPL*'s ``ArrayObject``.
 
 The main purpose here is to allow the presentation of as much data as possible from the requested elements, while
@@ -321,7 +321,7 @@ principals) uses a clearly defined *API* which is exactly the same regardless of
 *RSS*, *RDF* or Atom. The same goes for sub-versions of these standards and we've tested every single *RSS* and
 Atom version. While the underlying feed *XML* can differ substantially in terms of the tags and elements they
 present, they nonetheless are all trying to convey similar information and to reflect this all the differences and
-wrangling over alternative tags are handled internally by ``Zend\Feed\Reader\Reader`` presenting you with an 
+wrangling over alternative tags are handled internally by ``Zend\Feed\Reader\Reader`` presenting you with an
 identical interface for each. Ideally, you should not have to care whether a feed is *RSS* or Atom so long as you
 can extract the information you want.
 
@@ -335,7 +335,7 @@ can extract the information you want.
    allowed where it does not directly prevent the application of the two documents mentioned above.
 
 Of course, we don't live in an ideal world so there may be times the *API* just does not cover what you're looking
-for. To assist you, ``Zend\Feed\Reader\Reader`` offers a plugin system which allows you to write Extensions to 
+for. To assist you, ``Zend\Feed\Reader\Reader`` offers a plugin system which allows you to write Extensions to
 expand the core *API* and cover any additional data you are trying to extract from feeds. If writing another Extension
 is too much trouble, you can simply grab the underlying *DOM* or XPath objects and do it by hand in your application.
 Of course, we really do encourage writing an Extension simply to make it more portable and reusable, and useful
@@ -343,7 +343,7 @@ Extensions may be proposed to the Framework for formal addition.
 
 Here's a summary of the Core *API* for Feeds. You should note it comprises not only the basic *RSS* and Atom
 standards, but also accounts for a number of included Extensions bundled with ``Zend\Feed\Reader\Reader``. The naming
-of these Extension sourced methods remain fairly generic - all Extension methods operate at the same level as the 
+of these Extension sourced methods remain fairly generic - all Extension methods operate at the same level as the
 Core *API* though we do allow you to retrieve any specific Extension object separately if required.
 
 .. table:: Feed Level API Methods
@@ -391,7 +391,7 @@ information (Atom may be used to supplement *RSS*'s syntax)? Failing that, we co
 pick the most recent, and use its ``<pubDate>`` element. Assuming it exists... Many feeds also use Dublin Core 1.0
 or 1.1 ``<dc:date>`` elements for feeds and entries. Or we could find Atom lurking again.
 
-The point is, ``Zend\Feed\Reader\Reader`` was designed to know this. When you ask for the modification date (or 
+The point is, ``Zend\Feed\Reader\Reader`` was designed to know this. When you ask for the modification date (or
 anything else), it will run off and search for all these alternatives until it either gives up and returns ``NULL``,
 or finds an alternative that should have the right answer.
 
@@ -528,8 +528,8 @@ not needed here.
 Extending Feed and Entry APIs
 -----------------------------
 
-Extending ``Zend\Feed\Reader\Reader`` allows you to add methods at both the feed and entry level which cover the 
-retrieval of information not already supported by ``Zend\Feed\Reader\Reader``. Given the number of *RSS* and Atom 
+Extending ``Zend\Feed\Reader\Reader`` allows you to add methods at both the feed and entry level which cover the
+retrieval of information not already supported by ``Zend\Feed\Reader\Reader``. Given the number of *RSS* and Atom
 extensions that exist, this is a good thing since ``Zend\Feed\Reader\Reader`` couldn't possibly add everything.
 
 There are two types of Extensions possible, those which retrieve information from elements which are immediate
@@ -539,9 +539,9 @@ these are grouped as classes within a namespace based on the extension standard'
 have ``Zend\Feed\Reader\Extension\DublinCore\Feed`` and ``Zend\Feed\Reader\Extension\DublinCore\Entry`` classes
 which are two Extensions implementing Dublin Core 1.0 and 1.1 support.
 
-Extensions are loaded into ``Zend\Feed\Reader\Reader`` using a ``Zend\ServiceManager\AbstractPluginManager`` 
-implementation, ``Zend\Feed\Reader\ExtensionManager``, so its operation will be familiar from other Zend Framework 
-components. ``Zend\Feed\Reader\Reader`` already bundles a number of these Extensions, however those which are not 
+Extensions are loaded into ``Zend\Feed\Reader\Reader`` using a ``Zend\ServiceManager\AbstractPluginManager``
+implementation, ``Zend\Feed\Reader\ExtensionManager``, so its operation will be familiar from other Zend Framework
+components. ``Zend\Feed\Reader\Reader`` already bundles a number of these Extensions, however those which are not
 used internally and registered by default (so called Core Extensions) must be registered to ``Zend\Feed\Reader\Reader``
 before they are used. The bundled Extensions include:
 
@@ -576,13 +576,13 @@ place of more common Extensions like Dublin Core.
    |CreativeCommons|A RSS module that adds an element at the <channel> or <item> level that specifies which Creative Commons license applies.|
    +---------------+-------------------------------------------------------------------------------------------------------------------------+
 
-The additional non-Core Extensions are offered but not registered to ``Zend\Feed\Reader\Reader`` by default. If you 
-want to use them, you'll need to tell ``Zend\Feed\Reader\Reader`` to load them in advance of importing a feed. 
+The additional non-Core Extensions are offered but not registered to ``Zend\Feed\Reader\Reader`` by default. If you
+want to use them, you'll need to tell ``Zend\Feed\Reader\Reader`` to load them in advance of importing a feed.
 Additional non-Core Extensions will be included in future iterations of the component.
 
-Registering an Extension with ``Zend\Feed\Reader\Reader``, so it is loaded and its *API* is available to Feed and 
-Entry objects, is a simple affair using the ``Zend\Feed\Reader\ExtensionManager``. Here we register the optional 
-Syndication Extension, and discover that it can be directly called from the Entry level *API* without any effort. 
+Registering an Extension with ``Zend\Feed\Reader\Reader``, so it is loaded and its *API* is available to Feed and
+Entry objects, is a simple affair using the ``Zend\Feed\Reader\ExtensionManager``. Here we register the optional
+Syndication Extension, and discover that it can be directly called from the Entry level *API* without any effort.
 Note that Extension names are case sensitive and use camel casing for multiple terms.
 
 .. code-block:: php
@@ -612,8 +612,8 @@ methods. As an alternative, you can also directly access any Extension object fo
 Writing Zend\Feed\Reader\Reader Extensions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Inevitably, there will be times when the ``Zend\Feed\Reader\Reader`` *API* is just not capable of getting 
-something you need from a feed or entry. You can use the underlying source objects, like DOMDocument, to get 
+Inevitably, there will be times when the ``Zend\Feed\Reader\Reader`` *API* is just not capable of getting
+something you need from a feed or entry. You can use the underlying source objects, like DOMDocument, to get
 these by hand however there is a more reusable method available by writing Extensions supporting these new queries.
 
 As an example, let's take the case of a purely fictitious corporation named Jungle Books. Jungle Books have been
@@ -768,7 +768,7 @@ Let's repeat the last example using a custom Extension to show the method being 
 
 Going through these examples, you'll note that we don't register feed and entry Extensions separately. Extensions
 within the same standard may or may not include both a feed and entry class, so ``Zend\Feed\Reader\Reader`` only
-requires you to register the overall parent name, e.g. JungleBooks, DublinCore, Slash. Internally, it can check at 
+requires you to register the overall parent name, e.g. JungleBooks, DublinCore, Slash. Internally, it can check at
 what level Extensions exist and load them up if found. In our case, we have a full set of Extensions now:
 ``JungleBooks\Feed`` and ``JungleBooks\Entry``.
 

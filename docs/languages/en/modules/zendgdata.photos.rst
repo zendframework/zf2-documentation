@@ -155,7 +155,7 @@ A service instance using AuthSub can be created in a similar, though slightly mo
     *
     * Uses the $_SESSION['sessionToken'] to store the AuthSub session token after
     * it is obtained. The single use token supplied in the URL when redirected
-    * after the user succesfully authenticated to Google is retrieved from the
+    * after the user successfully authenticated to Google is retrieved from the
     * $_GET['token'] variable.
     *
     * @return Zend\Http\Client

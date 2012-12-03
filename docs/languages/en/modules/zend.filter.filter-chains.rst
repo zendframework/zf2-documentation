@@ -4,8 +4,8 @@ Filter Chains
 =============
 
 Often multiple filters should be applied to some value in a particular order. For example, a login form accepts a
-username that should be only lowercase, alphabetic characters. ``Zend\Filter\FilterChain`` provides a simple method 
-by which filters may be chained together. The following code illustrates how to chain together two filters for the 
+username that should be only lowercase, alphabetic characters. ``Zend\Filter\FilterChain`` provides a simple method
+by which filters may be chained together. The following code illustrates how to chain together two filters for the
 submitted username:
 
 .. code-block:: php
@@ -19,7 +19,7 @@ submitted username:
    // Filter the username
    $username = $filterChain->filter($_POST['username']);
 
-Filters are run in the order they were added to ``Zend\Filter\FilterChain``. In the above example, the username is 
+Filters are run in the order they were added to ``Zend\Filter\FilterChain``. In the above example, the username is
 first removed of any non-alphabetic characters, and then any uppercase characters are converted to lowercase.
 
 Any object that implements ``Zend\Filter\FilterInterface`` may be used in a filter chain.
@@ -30,7 +30,7 @@ Setting filter chain order
 ---------------------------
 
 For each filter added to the ``FilterChain`` you can set a priority to define the chain order. The default value is
-``1000``. In the following example, any uppercase characters are converted to lowercase before any non-alphabetic 
+``1000``. In the following example, any uppercase characters are converted to lowercase before any non-alphabetic
 characters are removed.
 
 .. code-block:: php
@@ -46,11 +46,11 @@ characters are removed.
 Using the plugin manager
 ------------------------
 
-To every ``FilterChain`` object an instance of the ``FilterPluginManager`` is attached. Every filter that is used 
-in a ``FilterChain`` must be know by this ``FilterPluginManager``. To add a filter that is known by the 
-``FilterPluginManager`` you can use the ``attachByName()`` method. The first parameter is the name of the filter 
-within the ``FilterPluginManager``. The second paramater takes any options for creating the filter instance. The
-third parameter is the priority. 
+To every ``FilterChain`` object an instance of the ``FilterPluginManager`` is attached. Every filter that is used
+in a ``FilterChain`` must be know by this ``FilterPluginManager``. To add a filter that is known by the
+``FilterPluginManager`` you can use the ``attachByName()`` method. The first parameter is the name of the filter
+within the ``FilterPluginManager``. The second parameter takes any options for creating the filter instance. The
+third parameter is the priority.
 
 .. code-block:: php
    :linenos:
@@ -60,7 +60,7 @@ third parameter is the priority.
    $filterChain->attachByName('alpha')
                ->attachByName('stringtolower', array('encoding' => 'utf-8'), 500);
 
-The following example shows how to add a custom filter to the ``FilterPluginManager`` and the ``FilterChain``. 
+The following example shows how to add a custom filter to the ``FilterPluginManager`` and the ``FilterChain``.
 
 .. code-block:: php
    :linenos:

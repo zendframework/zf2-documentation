@@ -513,7 +513,7 @@ Local vs. Remote Templates
 Templates can be stored **locally**, on the client machine, or **remotely**, by LiveDocx. There are advantages
 and disadvantages to each approach.
 
-In the case that a template is stored locally, it must be transfered from the client to LiveDocx on every
+In the case that a template is stored locally, it must be transferred from the client to LiveDocx on every
 request. If the content of the template rarely changes, this approach is inefficient. Similarly, if the template is
 several megabytes in size, it may take considerable time to transfer it to LiveDocx. Local template are useful in
 situations in which the content of the template is constantly changing.
@@ -539,7 +539,7 @@ The following code illustrates how to use a local template.
 
 In the case that a template is stored remotely, it is uploaded once to LiveDocx and then simply referenced on all
 subsequent requests. Obviously, this is much quicker than using a local template, as the template does not have to
-be transfered on every request. For speed critical applications, it is recommended to use the remote template
+be transferred on every request. For speed critical applications, it is recommended to use the remote template
 method.
 
 The following code illustrates how to upload a template to the server:
