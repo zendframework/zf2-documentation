@@ -1,21 +1,21 @@
-.. _zend.validator.set.float:
+.. _zend.i18n.validator.float:
 
 Float
 =====
 
-``Zend\Validator\Float`` allows you to validate if a given value contains a floating-point value. This validator
+``Zend\I18n\Validator\Float`` allows you to validate if a given value contains a floating-point value. This validator
 validates also localized input.
 
-.. _zend.validator.set.float.options:
+.. _zend.i18n.validator.float.options:
 
-Supported options for Zend\\Validator\\Float
+Supported options for Zend\\I18n\\Validator\\Float
 --------------------------------------------
 
-The following options are supported for ``Zend\Validator\Float``:
+The following options are supported for ``Zend\I18n\Validator\Float``:
 
 - **locale**: Sets the locale which will be used to validate localized float values.
 
-.. _zend.validator.set.float.basic:
+.. _zend.i18n.validator.float.basic:
 
 Simple float validation
 -----------------------
@@ -26,7 +26,7 @@ locale is used for validation:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\Float();
+   $validator = new Zend\I18n\Validator\Float();
 
    $validator->isValid(1234.5);   // returns true
    $validator->isValid('10a01'); // returns false
@@ -34,7 +34,7 @@ locale is used for validation:
 
 In the above example we expected that our environment is set to "en" as locale.
 
-.. _zend.validator.set.float.localized:
+.. _zend.i18n.validator.float.localized:
 
 Localized float validation
 --------------------------
@@ -43,13 +43,13 @@ Often it's useful to be able to validate also localized values. Float values are
 countries. For example using english you will write "1.5". In german you may write "1,5" and in other languages you
 may use grouping.
 
-``Zend\Validator\Float`` is able to validate such notations. But it is limited to the locale you set. See the
+``Zend\I18n\Validator\Float`` is able to validate such notations. However,it is limited to the locale you set. See the
 following code:
 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\Float(array('locale' => 'de'));
+   $validator = new Zend\I18n\Validator\Float(array('locale' => 'de'));
 
    $validator->isValid(1234.5); // returns true
    $validator->isValid("1 234,5"); // returns false
@@ -59,5 +59,6 @@ As you can see, by using a locale, your input is validated localized. Using a di
 ``FALSE`` when the locale forces a different notation.
 
 The locale can also be set afterwards by using ``setLocale()`` and retrieved by using ``getLocale()``.
+
 
 
