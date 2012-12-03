@@ -49,7 +49,7 @@ available to address it.
 .. _`object-oriented`: http://en.wikipedia.org/wiki/Object-oriented_programming
 .. _`namespaces`: http://php.net/manual/en/language.namespaces.php
 .. _`late static binding`: http://it.php.net/lsb
-.. _`lambda functions and closures`: http://it2.php.net/manual/en/functions.anonymous.php
+.. _`lambda functions and closures`: http://php.net/manual/en/functions.anonymous.php
 .. _`SOLID`: http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29
 .. _`Pyrus`: http://pear.php.net/manual/en/pyrus.php
 .. _`Composer`: http://getcomposer.org/
