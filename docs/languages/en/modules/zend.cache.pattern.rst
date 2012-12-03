@@ -13,7 +13,7 @@ specific situations they are designed to address. For example you can use one of
 ``ObjectCache`` or ``ClassCache`` patterns to cache method and function calls; to cache output generation, the
 ``OutputCache`` pattern could assist.
 
-All cache patterns implements the same interface, ``Zend\Cache\Pattern\PatternInterface``, and most extend the abstract
+All cache patterns implement the same interface, ``Zend\Cache\Pattern\PatternInterface``, and most extend the abstract
 class ``Zend\Cache\Pattern\AbstractPattern`` to implement basic logic.
 
 Configuration is provided via the ``Zend\Cache\Pattern\PatternOptions`` class, which can simply be instantiated
@@ -39,7 +39,7 @@ instantiating one of the ``Zend\Cache\Pattern\*Cache`` classes.
    $callbackCache = Zend\Cache\PatternFactory::factory('callback', array(
        'storage' => 'apc',
    ));
-   
+
 .. code-block:: php
    :linenos:
 

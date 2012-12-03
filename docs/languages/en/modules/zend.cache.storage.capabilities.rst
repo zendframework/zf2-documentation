@@ -33,156 +33,156 @@ Available Methods
    :noindex:
 
    Get supported datatypes.
-   
+
    :rtype: array
 
 .. function:: setSupportedDatatypes(stdClass $marker, array $datatypes)
    :noindex:
 
    Set supported datatypes.
-   
+
    :rtype: Zend\\Cache\\Storage\\Capabilities
 
 .. function:: getSupportedMetadata()
    :noindex:
 
    Get supported metadata.
-   
+
    :rtype: array
 
 .. function:: setSupportedMetadata(stdClass $marker, string $metadata)
    :noindex:
 
    Set supported metadata.
-   
+
    :rtype: Zend\\Cache\\Storage\\Capabilities
 
 .. function:: getMinTtl()
    :noindex:
 
    Get minimum supported time-to-live.
-   
-   (Returning 0 means items never expire) 
-   
+
+   (Returning 0 means items never expire)
+
    :rtype: integer
 
 .. function:: setMinTtl(stdClass $marker, int $minTtl)
    :noindex:
 
    Set minimum supported time-to-live.
-   
+
    :rtype: Zend\\Cache\\Storage\\Capabilities
 
 .. function:: getMaxTtl()
    :noindex:
 
    Get maximum supported time-to-live.
-   
+
    :rtype: integer
 
 .. function:: setMaxTtl(stdClass $marker, int $maxTtl)
    :noindex:
 
    Set maximum supported time-to-live.
-   
+
    :rtype: Zend\\Cache\\Storage\\Capabilities
 
 .. function:: getStaticTtl()
    :noindex:
 
    Is the time-to-live handled static (on write), or dynamic (on read).
-   
+
    :rtype: boolean
 
 .. function:: setStaticTtl(stdClass $marker, boolean $flag)
    :noindex:
 
    Set if the time-to-live is handled statically (on write) or dynamically (on read).
-   
+
    :rtype: Zend\\Cache\\Storage\\Capabilities
 
 .. function:: getTtlPrecision()
    :noindex:
 
    Get time-to-live precision.
-   
+
    :rtype: float
 
 .. function:: setTtlPrecision(stdClass $marker, float $ttlPrecision)
    :noindex:
 
    Set time-to-live precision.
-   
+
    :rtype: Zend\\Cache\\Storage\\Capabilities
 
 .. function:: getUseRequestTime()
    :noindex:
 
    Get the "use request time" flag status.
-   
+
    :rtype: boolean
 
 .. function:: setUseRequestTime(stdClass $marker, boolean $flag)
    :noindex:
 
    Set the "use request time" flag.
-   
+
    :rtype: Zend\\Cache\\Storage\\Capabilities
 
 .. function:: getExpiredRead()
    :noindex:
 
    Get flag indicating if expired items are readable.
-   
+
    :rtype: boolean
 
 .. function:: setExpiredRead(stdClass $marker, boolean $flag)
    :noindex:
 
    Set if expired items are readable.
-   
+
    :rtype: Zend\\Cache\\Storage\\Capabilities
 
 .. function:: getMaxKeyLength()
    :noindex:
 
-   Get maximum key lenth.
-   
+   Get maximum key length.
+
    :rtype: integer
 
 .. function:: setMaxKeyLength(stdClass $marker, int $maxKeyLength)
    :noindex:
 
-   Set maximum key lenth.
-   
+   Set maximum key length.
+
    :rtype: Zend\\Cache\\Storage\\Capabilities
 
 .. function:: getNamespaceIsPrefix()
    :noindex:
 
    Get if namespace support is implemented as a key prefix.
-   
+
    :rtype: boolean
 
 .. function:: setNamespaceIsPrefix(stdClass $marker, boolean $flag)
    :noindex:
 
    Set if namespace support is implemented as a key prefix.
-   
+
    :rtype: Zend\\Cache\\Storage\\Capabilities
 
 .. function:: getNamespaceSeparator()
    :noindex:
 
    Get namespace separator if namespace is implemented as a key prefix.
-   
+
    :rtype: string
 
 .. function:: setNamespaceSeparator(stdClass $marker, string $separator)
    :noindex:
 
    Set the namespace separator if namespace is implemented as a key prefix.
-   
+
    :rtype: Zend\\Cache\\Storage\\Capabilities
 
 .. _zend.cache.storage.capabilities.examples:

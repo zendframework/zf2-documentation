@@ -514,7 +514,7 @@ For your convenience there are also the ``setImageWidth()`` and ``setImageHeight
 and maximum height and width of the image file. They, too, have corresponding ``getImageWidth()`` and
 ``getImageHeight()`` methods to retrieve the currently set values.
 
-To bypass validation of a particular dimension, the relevent option simply should not be set.
+To bypass validation of a particular dimension, the relevant option simply should not be set.
 
 .. _zend.file.transfer.validators.imagesize.example:
 

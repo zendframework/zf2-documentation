@@ -359,12 +359,12 @@ You may use any route type as a child route of a ``Part`` route.
 .. note::
 
     ``Part`` routes are not meant to be used directly. When you add definitions for ``child_routes`` to any route
-    type, that route will become a ``Part`` route. As already said, describing ``Part`` routes with words is 
+    type, that route will become a ``Part`` route. As already said, describing ``Part`` routes with words is
     difficult, so hopefully the additional :ref:`examples at the end <zend.mvc.routing.http-route-types.examples>`
     will provide further insight.
 
 .. note::
-    
+
     In the above example, the ``$routePlugins`` is an instance of ``Zend\Mvc\Router\RoutePluginManager``.
 
     .. code-block:: php
@@ -403,7 +403,7 @@ within the string, with the keys coming from either the captured values or named
 ``assemble()`` method.
 
 Just like other routes, the ``Regex`` route can accept "defaults", parameters to include in the ``RouteMatch`` when
-succesfully matched.
+successfully matched.
 
 .. code-block:: php
    :linenos:

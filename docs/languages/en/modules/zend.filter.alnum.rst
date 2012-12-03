@@ -4,7 +4,7 @@ Alnum
 =====
 
 ``Zend\Filter\Alnum`` is a filter which returns only alphabetic characters and digits. All other characters are
-supressed.
+suppressed.
 
 .. _zend.filter.set.alnum.options:
 
@@ -13,7 +13,7 @@ Supported options for Zend\\Filter\\Alnum
 
 The following options are supported for ``Zend\Filter\Alnum``:
 
-- **allowwhitespace**: If this option is set then whitespace characters are allowed. Otherwise they are supressed.
+- **allowwhitespace**: If this option is set then whitespace characters are allowed. Otherwise they are suppressed.
   Per default whitespaces are not allowed.
 
 .. _zend.filter.set.alnum.basic:
@@ -39,8 +39,8 @@ The above example returns 'Thisismycontent123'. As you see all whitespaces and a
    The language itself is detected by using ``Locale``.
 
 .. note::
-   
-   Because ``Zend\Filter\Alnum`` uses the ``I18n`` module, the ``intl`` extension for PHP must be installed 
+
+   Because ``Zend\Filter\Alnum`` uses the ``I18n`` module, the ``intl`` extension for PHP must be installed
    in order to use this filter.
 
 .. _zend.filter.set.alnum.whitespace:

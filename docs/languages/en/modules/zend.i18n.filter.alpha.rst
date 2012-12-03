@@ -4,7 +4,7 @@ Alpha Filter
 ------------
 
 The ``Alpha`` filter can be used to return only alphabetic characters in the unicode "letter" category. All other
-characters are supressed.
+characters are suppressed.
 
 .. _zend.i18n.filter.alpha.options:
 
