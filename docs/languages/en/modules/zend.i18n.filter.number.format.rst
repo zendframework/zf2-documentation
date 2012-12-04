@@ -36,15 +36,15 @@ The following options are supported for ``NumberFormat``:
 .. code-block:: php
    :linenos:
 
-   $filter = \Zend\I18n\Filter\NumberFormat("de_DE");
+   $filter = new \Zend\I18n\Filter\NumberFormat("de_DE");
    echo $filter->filter(1234567.8912346);
    // Returns "1.234.567,891"
 
-   $filter = \Zend\I18n\Filter\NumberFormat("en_US", NumberFormatter::PERCENT);
+   $filter = new \Zend\I18n\Filter\NumberFormat("en_US", NumberFormatter::PERCENT);
    echo $filter->filter(0.80);
    // Returns "80%"
 
-   $filter = \Zend\I18n\Filter\NumberFormat("fr_FR", NumberFormatter::SCIENTIFIC);
+   $filter = new \Zend\I18n\Filter\NumberFormat("fr_FR", NumberFormatter::SCIENTIFIC);
    echo $filter->filter(0.00123456789);
    // Returns "1,23456789E-3"
 
