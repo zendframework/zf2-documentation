@@ -10,7 +10,7 @@ retrieval, message deletion, and sending messages.
    :linenos:
 
    // For configuration options
-   // @see Zend\Queue\Adapater::__construct()
+   // @see Zend\Queue\Adapter::__construct()
    $options = array(
        'name' => 'queue1',
    );

@@ -18,7 +18,7 @@ O código a seguir demonstra como tratar uma exceção lançada em uma classe do
    try {
        // Chamar Zend\Loader\Loader::loadClass() com uma classe inexistente irá causar
        // uma exceção para ser lançada em Zend\Loader\Loader:
-       Zend\Loader\Loader::loadClass('nonexistantclass');
+       Zend\Loader\Loader::loadClass('NonExistentClass');
    } catch (Zend_Exception $e) {
        echo "Tratando a exceção: " . get_class($e) . "\n";
        echo "Mensagem: " . $e->getMessage() . "\n";

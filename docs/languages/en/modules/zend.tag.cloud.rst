@@ -85,7 +85,7 @@ Decorators
 ----------
 
 ``Zend\Tag\Cloud`` requires two types of decorators to be able to render a tag cloud. This includes a decorator
-which renders the single tags as well as a decorator which renders the surounding cloud. ``Zend\Tag\Cloud`` ships a
+which renders the single tags as well as a decorator which renders the surrounding cloud. ``Zend\Tag\Cloud`` ships a
 default decorator set for formatting a tag cloud in *HTML*. This set will by default create a tag cloud as
 ul/li-list, spread with different font-sizes according to the weight values of the tags assigned to them.
 
@@ -95,7 +95,7 @@ HTML Tag decorator
 ^^^^^^^^^^^^^^^^^^
 
 The *HTML* tag decorator will by default render every tag in an anchor element, surounded by a li element. The
-anchor itself is fixed and cannot be changed, but the surounding element(s) can.
+anchor itself is fixed and cannot be changed, but the surrounding element(s) can.
 
 .. note::
 
@@ -117,7 +117,7 @@ configuration options are available:
 
 - ``classList``: an arry of classes distributed through the tags.
 
-- ``htmlTags``: an array of *HTML* tags surounding the anchor. Each element can either be a string, which is used
+- ``htmlTags``: an array of *HTML* tags surrounding the anchor. Each element can either be a string, which is used
   as element type then, or an array containing an attribute list for the element, defined as key/value pair. In
   this case, the array key is used as element type.
 
@@ -156,12 +156,12 @@ HTML Cloud decorator
 ^^^^^^^^^^^^^^^^^^^^
 
 The *HTML* cloud decorator will suround the *HTML* tags with an ul-element by default and add no separation. Like
-in the tag decorator, you can define multiple surounding *HTML* tags and additionally define a separator. The
+in the tag decorator, you can define multiple surrounding *HTML* tags and additionally define a separator. The
 available options are:
 
 - ``separator``: defines the separator which is placed between all tags.
 
-- ``htmlTags``: an array of *HTML* tags surounding all tags. Each element can either be a string, which is used as
+- ``htmlTags``: an array of *HTML* tags surrounding all tags. Each element can either be a string, which is used as
   element type then, or an array containing an attribute list for the element, defined as key/value pair. In this
   case, the array key is used as element type.
 

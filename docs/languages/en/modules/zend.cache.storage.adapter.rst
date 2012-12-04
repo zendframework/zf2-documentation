@@ -114,9 +114,9 @@ The ``Zend\Cache\Storage\StorageInterface`` is the basic interface implemented b
    :noindex:
 
    Load an item with the given $key.
-   
+
    If item exists set parameter $success to ``true``, set parameter $casToken and returns ``mixed`` value of item.
-   
+
    If item can't load set parameter $success to ``false`` and returns ``null``.
 
    :rtype: mixed
@@ -366,7 +366,7 @@ The IterableInterface
 
 The ``Zend\Cache\Storage\IterableInterface`` implements a method to get an
 iterator to iterate over items of the storage. It extends ``IteratorAggregate``
-so it's possible to directly iterator over the storage using ``foreach``.
+so it's possible to directly iterate over the storage using ``foreach``.
 
 .. function:: getIterator()
    :noindex:
@@ -1030,7 +1030,7 @@ Examples
            'Serializer'
        )
    ));
-   
+
    // Load two rows from cache if possible
    $ids     = array(1, 2);
    $results = $cache->getItems($ids);
@@ -1042,10 +1042,10 @@ Examples
        foreach ($pdo->query($query, PDO::FETCH_ASSOC) as $row) {
            $missingResults[ $row['id'] ] = $row;
        }
-       
+
        // Update cache items of the loaded rows from db
        $cache->setItems($missingResults);
-       
+
        // merge results from cache and db
        $results = array_merge($results, $missingResults);
    }

@@ -13,7 +13,7 @@ Theory of Operation
 -------------------
 
 To allow easy configuration of all the different parts of the `MVC` system, a somewhat complex set of services and
-their factories has been created. We'll try to give a simplified explanation of the proccess. 
+their factories has been created. We'll try to give a simplified explanation of the process.
 
 When a ``Zend\Mvc\Application`` is created, a ``Zend\ServiceManager\ServiceManager`` object is created and configured
 via ``Zend\Mvc\Service\ServiceManagerConfig``. The ``ServiceManagerConfig`` gets the configuration from
@@ -332,20 +332,20 @@ Default Configuration Options
 -----------------------------
 
 The following options are available when using the default services configured by the ``ServiceManagerConfig``
-and ``ViewManager``. 
+and ``ViewManager``.
 
 These configuration directives can go to the ``config/autoload/{,*.}{global,local}.php`` files, or in the
 ``module/<module name>/config/module.config.php`` configuration files. The merging of these configuration
 files is done by the ``ModuleManager``. It first merges each module's ``module.config.php`` file, and then
 the files in ``config/autoload`` (first the ``*.global.php`` and then the ``*.local.php`` files). The order
-of the merge is relevant so you can override a module's configuration with your application configuration. 
+of the merge is relevant so you can override a module's configuration with your application configuration.
 If you have both a ``config/autoload/my.global.config.php`` and ``config/autoload/my.local.config.php``, the
 local configuration file overrides the global configuration.
 
 .. warning::
 
     Local configuration files are intended to keep sensitive information, such as database credentials, and as
-    such, it is highly recommended to keep these local configuration files out of your VCS. The 
+    such, it is highly recommended to keep these local configuration files out of your VCS. The
     ``ZendSkeletonApplication``\'s ``config/autoload/.gitignore`` file ignores ``*.local.php`` files by default.
 
 .. code-block:: php

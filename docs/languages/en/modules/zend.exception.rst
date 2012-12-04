@@ -17,7 +17,7 @@ The following code listing demonstrates how to catch an exception thrown in a Ze
    try {
        // Calling Zend\Loader\Loader::loadClass() with a non-existant class will cause
        // an exception to be thrown in Zend\Loader\Loader:
-       Zend\Loader\Loader::loadClass('nonexistantclass');
+       Zend\Loader\Loader::loadClass('NonExistentClass');
    } catch (Zend_Exception $e) {
        echo "Caught exception: " . get_class($e) . "\n";
        echo "Message: " . $e->getMessage() . "\n";

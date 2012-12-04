@@ -832,7 +832,7 @@ wird.
    }
    $feed = Zend\Feed\Reader::import('http://example.com/junglebooks/rss');
 
-   // URI zur Informations Seite des populärsten Buchs des Tages mit Besuchern
+   // URI zur Informations-Seite des populärsten Buchs des Tages mit Besuchern
    $daysPopularBookLink = $feed->getDaysPopularBookLink();
 
    // ISBN für irgendein Buch dem der erste Eintrag im Feed gewidmet war

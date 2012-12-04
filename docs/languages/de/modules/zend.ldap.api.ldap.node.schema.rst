@@ -108,8 +108,8 @@ Klassen welche Attributtypen repräsentieren und auch Objektklassen erweitern *Z
 einige Kernmethoden bietet um auf eigene Attribute im darunterliegenden *LDAP* Node zugreifen zu können.
 *Zend\Ldap\Node\Schema\Item* enthält die magischen Methoden *__get()* und *__isset()* um auf die Attribute mit
 Ihrem Namen zugreifen zu können. Weiters implementiert die Klasse *ArrayAccess* für einen Array-artigen Zugriff
-auf die Attribute. *offsetSet()* und *offsetUnset()* werfen eine *BadMethodCallException* da Änderungen in Schema
-Informations Nodes nicht erlaubt sind.
+auf die Attribute. *offsetSet()* und *offsetUnset()* werfen eine *BadMethodCallException* da Änderungen in Schema-
+Informations-Nodes nicht erlaubt sind.
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.schema-item.table:
 
@@ -118,9 +118,9 @@ Informations Nodes nicht erlaubt sind.
    +---------------+--------------------------------------------------------------------------------------------------+
    |Methode        |Beschreibung                                                                                      |
    +===============+==================================================================================================+
-   |array getData()|Holt die darunterliegenden Daten vom Schema Informations Node.                                    |
+   |array getData()|Holt die darunterliegenden Daten vom Schema-Informations-Node.                                    |
    +---------------+--------------------------------------------------------------------------------------------------+
-   |integer count()|Gibt die Anzahl der Attribute für diesen Schema Informations Node zurück. Implementiert Countable.|
+   |integer count()|Gibt die Anzahl der Attribute für diesen Schema-Informations-Node zurück. Implementiert Countable.|
    +---------------+--------------------------------------------------------------------------------------------------+
 
 .. _zend.ldap.api.reference.zend-ldap-node-schema.openldap:
