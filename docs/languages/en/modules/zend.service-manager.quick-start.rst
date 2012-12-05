@@ -12,7 +12,7 @@ By default, the module manager listener ``Zend\ModuleManager\Listener\ServiceLis
   ``getServiceConfig()`` method, it will call that method and merge the configuration.
 
 - After all modules have been processed, it will grab the configuration from the registered
-  ``Zend\ModuleManager\Feature\ConfigListener``, and merge any configuration under the ``service_manager`` key.
+  ``Zend\ModuleManager\Listener\ConfigListener``, and merge any configuration under the ``service_manager`` key.
 
 - Finally, it will use the merged configuration to configure the ``ServiceManager``.
 
