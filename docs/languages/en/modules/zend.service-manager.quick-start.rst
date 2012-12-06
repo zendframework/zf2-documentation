@@ -8,7 +8,7 @@ providing services, invokable classes, aliases, and factories either via configu
 
 By default, the module manager listener ``Zend\ModuleManager\Listener\ServiceListener`` will do the following:
 
-- For modules implementing the ``Zend\ModuleManager\Feature\ServiceProvider`` interface, or the
+- For modules implementing ``Zend\ModuleManager\Feature\ServiceProviderInterface``, or the
   ``getServiceConfig()`` method, it will call that method and merge the configuration.
 
 - After all modules have been processed, it will grab the configuration from the registered
