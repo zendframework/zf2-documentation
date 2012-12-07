@@ -405,9 +405,9 @@ entity from the database.
 The form’s ``bind()`` method attaches the model to the form. This is used in two
 ways:
 
-# When displaying the form, the initial values for each element are extracted
+* When displaying the form, the initial values for each element are extracted
   from the model.
-# After successful validation in isValid(), the data from the form is put back
+* After successful validation in isValid(), the data from the form is put back
   into the model.
 
 These operations are done using a hydrator object. There are a number of
