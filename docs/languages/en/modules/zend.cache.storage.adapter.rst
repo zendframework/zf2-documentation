@@ -920,7 +920,9 @@ Examples
    :linenos:
 
    $cache   = \Zend\Cache\StorageFactory::factory(array(
-       'storage' => 'filesystem',
+       'adapter' => array(
+            'name' => 'filesystem'
+       )
        'plugins' => array(
            // Don't throw exceptions on cache errors
            'exaption_hander' => array(
@@ -944,7 +946,7 @@ Examples
 
    // Instantiate the cache instance using a namespace for the same type of items
    $cache   = \Zend\Cache\StorageFactory::factory(array(
-       'storage' => array(
+       'adapter' => array(
            'name'    => 'filesystem'
            // With a namespace we can indicate the same type of items
            // -> So we can simple use the db id as cache key
@@ -961,7 +963,7 @@ Examples
            'Serializer'
        )
    ));
-   
+
    // Load two rows from cache if possible
    $ids     = array(1, 2);
    $results = $cache->getItems($ids);
@@ -973,10 +975,10 @@ Examples
        foreach ($pdo->query($query, PDO::FETCH_ASSOC) as $row) {
            $missingResults[ $row['id'] ] = $row;
        }
-       
+
        // Update cache items of the loaded rows from db
        $cache->setItems($missingResults);
-       
+
        // merge results from cache and db
        $results = array_merge($results, $missingResults);
    }
