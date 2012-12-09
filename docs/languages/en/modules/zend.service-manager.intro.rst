@@ -4,7 +4,7 @@ Zend\\ServiceManager
 ====================
 
 The `Service Locator design pattern`_ is implemented by the ``ServiceManager``.  The Service Locator is a 
-service/object locator, tasked with retrieving other objects. You may interact with the ``ServiceManger`` 
+service/object locator, tasked with retrieving other objects. You may interact with the ``ServiceManager`` 
 via the following methods
 
 .. code-block:: php
@@ -22,7 +22,7 @@ via the following methods
 
 - ``get($name)``, retrieves a service by the given name.
 
-In addition to above methods, the ``ServiceManger`` can be instantiated via the following features:
+In addition to above methods, the ``ServiceManager`` can be instantiated via the following features:
 
 - **Service registration**. You can register an object under a given name ``$services->setService('foo',
   $object)``.
