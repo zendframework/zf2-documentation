@@ -410,6 +410,7 @@ Zend\\Form
         * :doc:`modules/zend.form.intro`
         * :doc:`modules/zend.form.quick-start`
         * :doc:`modules/zend.form.collections`
+        * :doc:`modules/zend.form.advanced-use-of-forms`
         * :doc:`modules/zend.form.elements`
         * :doc:`modules/zend.form.view.helpers`
 
