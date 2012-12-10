@@ -922,10 +922,10 @@ Examples
    $cache   = \Zend\Cache\StorageFactory::factory(array(
        'adapter' => array(
            'name' => 'filesystem'
-       )
+       ),
        'plugins' => array(
            // Don't throw exceptions on cache errors
-           'exaption_hander' => array(
+           'exception_handler' => array(
                'throw_exceptions' => false
            ),
        )
