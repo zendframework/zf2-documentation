@@ -12,10 +12,10 @@ between 6 and 12 alphanumeric characters:
 
    // Create a validator chain and add validators to it
    $validatorChain = new Zend\Validator\ValidatorChain();
-   $validatorChain->addValidator(
+   $validatorChain->attach(
                        new Zend\Validator\StringLength(array('min' => 6,
                                                             'max' => 12)))
-                  ->addValidator(new Zend\Validator\Alnum());
+                  ->attach(new Zend\Validator\Alnum());
 
    // Validate the username
    if ($validatorChain->isValid($username)) {
@@ -34,7 +34,7 @@ performed regardless of whether the first validation, for length between 6 and 1
 that if both validations fail, ``getMessages()`` will return failure messages from both validators.
 
 In some cases it makes sense to have a validator break the chain if its validation process fails.
-``Zend\Validator\ValidatorChain`` supports such use cases with the second parameter to the ``addValidator()``
+``Zend\Validator\ValidatorChain`` supports such use cases with the second parameter to the ``attach()``
 method. By setting ``$breakChainOnFailure`` to ``TRUE``, the added validator will break the chain execution upon
 failure, which avoids running any other validations that are determined to be unnecessary or inappropriate for the
 situation. If the above example were written as follows, then the alphanumeric validation would not occur if the
@@ -43,11 +43,11 @@ string length validation fails:
 .. code-block:: php
    :linenos:
 
-   $validatorChain->addValidator(
+   $validatorChain->attach(
                        new Zend\Validator\StringLength(array('min' => 6,
                                                             'max' => 12)),
                        true)
-                  ->addValidator(new Zend\Validator\Alnum());
+                  ->attach(new Zend\Validator\Alnum());
 
 Any object that implements ``Zend\Validator\ValidatorInterface`` may be used in a validator chain.
 
