@@ -280,4 +280,4 @@ this, then your application is ready for more tests!
 
     Time: 0 seconds, Memory: 5.75Mb
 
-    OK (1 test, 2 assertions)
+    OK (1 test, 1 assertions)
