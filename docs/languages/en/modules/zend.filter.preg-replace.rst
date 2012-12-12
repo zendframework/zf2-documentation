@@ -12,9 +12,9 @@ Supported options for Zend\\Filter\\PregReplace
 
 The following options are supported for ``Zend\Filter\PregReplace``:
 
-- **match**: The pattern which will be searched for.
+- **pattern**: The pattern which will be searched for.
 
-- **replace**: The string which is used as replacement for the matches.
+- **replacement**: The string which is used as replacement for the matches.
 
 .. _zend.filter.set.pregreplace.basic:
 
@@ -23,25 +23,25 @@ Basic usage
 
 To use this filter properly you must give two options:
 
-The option ``match`` has to be given to set the pattern which will be searched for. It can be a string for a single
+The option ``pattern`` has to be given to set the pattern which will be searched for. It can be a string for a single
 pattern, or an array of strings for multiple pattern.
 
-To set the pattern which will be used as replacement the option ``replace`` has to be used. It can be a string for
+To set the pattern which will be used as replacement the option ``replacement`` has to be used. It can be a string for
 a single pattern, or an array of strings for multiple pattern.
 
 .. code-block:: php
    :linenos:
 
    $filter = new Zend\Filter\PregReplace(array(
-       'match'   => '/bob/',
-       'replace' => 'john',
+       'pattern'     => '/bob/',
+       'replacement' => 'john',
    ));
    $input  = 'Hy bob!";
 
    $filter->filter($input);
    // returns 'Hy john!'
 
-You can use ``getMatchPattern()`` and ``setMatchPattern()`` to set the matching pattern afterwards. To set the
+You can use ``getPattern()`` and ``setPattern()`` to set the matching pattern afterwards. To set the
 replacement pattern you can use ``getReplacement()`` and ``setReplacement()``.
 
 .. code-block:: php
