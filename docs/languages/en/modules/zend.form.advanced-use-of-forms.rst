@@ -43,6 +43,7 @@ First, create your own element:
 
 .. code-block:: php
    :linenos:
+   
    namespace Application\Form\Element;
    
    use Zend\Form\Element;
@@ -56,6 +57,7 @@ Then, just adds it to the plugin manager, in your ``Module.php`` class:
 
 .. code-block:: php
    :linenos:
+   
    namespace Application;
    
    use Zend\ModuleManager\Feature\FormElementProviderInterface;
@@ -88,6 +90,7 @@ As a consequence of this, you can easily override any standard Zend elements if 
 
 .. code-block:: php
    :linenos:
+   
    namespace Application;
    
    use Zend\ModuleManager\Feature\FormElementProviderInterface;
@@ -110,6 +113,7 @@ However, in order for this to work, there is one thing to change in your code. I
 
 .. code-block:: php
    :linenos:
+   
    namespace Application\Form;
    
    use Zend\Form\Form;
@@ -131,6 +135,7 @@ In your controller (or in your service, or whenever you want to create a form), 
 
 .. code-block:: php
    :linenos:
+   
    public function testAction()
    {
    		$form = new \Application\Form\MyForm();
@@ -140,6 +145,7 @@ This code will work if you use only built-in elements, however, as we added a cu
 
 .. code-block:: php
    :linenos:
+   
    public function testAction()
    {
    		$formManager = $this->serviceLocator->get('FormElementManager');
@@ -166,6 +172,7 @@ For instance, let's say that a form create a fieldset called AlbumFieldset:
 
 .. code-block:: php
    :linenos:
+   
    namespace Application\Form;
    
    use Zend\Form\Form;
@@ -185,6 +192,7 @@ Let's now create the `AlbumFieldset` that has a dependency with an `AlbumTable` 
 
 .. code-block:: php
    :linenos:
+   
    namespace Application\Form;
    
    use Album\Model;
@@ -204,6 +212,7 @@ an element in your Module.php class:
 
 .. code-block:: php
    :linenos:
+   
    namespace Application;
    
    use Application\Form\AlbumFieldset;
@@ -233,6 +242,7 @@ instantiate it:
    
 .. code-block:: php
    :linenos:
+   
    public function testAction()
    {
    		$formManager = $this->serviceLocator->get('FormElementManager');
@@ -249,6 +259,7 @@ The problem with initializers is that they are injected AFTER the construction o
    
 .. code-block:: php
    :linenos:
+   
    namespace Application\Form;
    
    use Album\Model;
@@ -280,6 +291,7 @@ Hopefully, there is an easy workaround: every form elements now implements the n
 
 .. code-block:: php
    :linenos:
+   
    namespace Application\Form;
    
    use Album\Model;
