@@ -343,7 +343,7 @@ Testing
 
 Let's write a few tests for all this code we've just written. First, we need
 to create a test class for the ``AlbumTable``.
-Create a file ``AlbumTableTest.php`` in ``module/Album/test/AlbumTableTest/Model``
+Create a file ``AlbumTableTest.php`` in ``module/Album/test/AlbumTest/Model``
 
 .. code-block:: php
 

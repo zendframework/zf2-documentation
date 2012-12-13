@@ -10,9 +10,9 @@ the key name with the ``Zend\Navigation`` view helper to output the container.
 .. code-block:: php
    :linenos:
 
-   <?php
-   // your configuration file, e.g., config/autoload/global.php
-   return array(
+    <?php
+    // your configuration file, e.g., config/autoload/global.php
+    return array(
         // ...
 
         'navigation' => array(
