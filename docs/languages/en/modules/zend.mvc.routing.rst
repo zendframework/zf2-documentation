@@ -653,6 +653,55 @@ from the above example:
     echo $this->url('blog/post', array('slug' => 'my-post')); // gives "/blog/my-post"
     echo $this->url('blog/rss'); // gives "/blog/rss"
 
+Most of the routing definitions will be done in module configuration files, so the following examples will show
+how to set up routes in config files.
+
+.. rubric:: Simple example with two segment routes using optional values
+
+.. code-block:: php
+    :linenos:
+
+    return array(
+        'router' => array(
+            'routes' => array(
+                // Segment route named "home"
+                'home' => array(
+                    'type' => 'segment',
+                    'options' => array(
+                        'route' => '/[:module[/:controller]]',
+                        'defaults' => array(
+                            'module' => 'application',
+                            'controller' => 'index',
+                            'action' => 'index'
+                        )
+                    )
+                ),
+                // Segment route named "about"
+                'about' => array(
+                    'type' => 'segment',
+                    'options' => array(
+                        'route' => '/about',
+                        'defaults' => array(
+                            'controller' => 'Company\Controller\AboutController',
+                            'action' => 'index'
+                        )
+                    )
+                )
+            )
+        )
+    );
+
+.. code-block:: php
+    :linenos:
+
+    echo $this->url('blog/about'); // results to Blog\Controller\AboutController
+    echo $this->url('blog/index/about'); // results to Company\Controller\AboutController
+
+.. warning::
+
+    When defining optional parts in a route, you have to fill these optional parts with values when using
+    a child route. Otherwise your URL won't match any route.
+
 .. warning::
 
     When defining child routes pay attentiont that the ``may_terminate`` and ``child_routes`` definitions
