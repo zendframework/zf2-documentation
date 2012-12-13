@@ -6,35 +6,44 @@ Getting started: A skeleton application
 
 In order to build our application, we will start with the
 `ZendSkeletonApplication <https://github.com/zendframework/ZendSkeletonApplication>`_ 
-available on `github <https://github.com/>`_. 
-Go to https://github.com/zendframework/ZendSkeletonApplication and click the “Zip”
-button. This will download a file with a name like
-``zendframework-ZendSkeletonApplication-zfrelease-2.0.0beta5-2-gc2c7315.zip`` or
-similar. 
-
-Unzip this file into the directory where you keep all your vhosts and rename the
-resultant directory to ``zf2-tutorial``. 
-
-ZendSkeletonApplication is set up to use Composer (http://getcomposer.org) to
-resolve its dependencies. In this case, the dependency is Zend Framework 2
-itself.
-
-To install Zend Framework 2 into our application we simply type:
+available on `github <https://github.com/>`_. Use Composer (http://getcomposer.org)
+to create a new project from scratch with Zend Framework:
 
 .. code-block:: bash
 
-    php composer.phar self-update
-    php composer.phar install
+    php composer.phar create-project --repository-url="http://packages.zendframework.com" zendframework/skeleton-application path/to/install
 
-from the ``zf2-tutorial`` folder. This takes a while. You should see an output like:
+.. note::
 
-.. code-block:: bash
+    Another way to install the ZendSkeletonApplication is to use github.  Go to 
+    https://github.com/zendframework/ZendSkeletonApplication and click the “Zip”
+    button. This will download a file with a name like
+    ``zendframework-ZendSkeletonApplication-zfrelease-2.0.0beta5-2-gc2c7315.zip`` or
+    similar. 
 
-    Installing dependencies from lock file
-    - Installing zendframework/zendframework (dev-master)
-      Cloning 18c8e223f070deb07c17543ed938b54542aa0ed8
+    Unzip this file into the directory where you keep all your vhosts and rename the
+    resultant directory to ``zf2-tutorial``. 
 
-    Generating autoload files
+    ZendSkeletonApplication is set up to use Composer (http://getcomposer.org) to
+    resolve its dependencies. In this case, the dependency is Zend Framework 2
+    itself.
+
+    To install Zend Framework 2 into our application we simply type:
+
+    .. code-block:: bash
+
+        php composer.phar self-update
+        php composer.phar install
+
+    from the ``zf2-tutorial`` folder. This takes a while. You should see an output like:
+
+    .. code-block:: bash
+
+        Installing dependencies from lock file
+        - Installing zendframework/zendframework (dev-master)
+          Cloning 18c8e223f070deb07c17543ed938b54542aa0ed8
+
+        Generating autoload files
 
 .. note::
 
