@@ -89,21 +89,20 @@ Option groups are also supported. You just need to add an 'options' key to the v
    	$select = new Element\Select('language');
    	$select->setLabel('Which is your mother tongue?');
    	$select->setValueOptions(array(
-   			'european' => array(
-               'label' => 'European languages',
-      	      'options' => array(
-   				   '0' => 'French',
-   				   '1' => 'Italian',
-               ),
-   			),
-   			'asian' => array(
-               'label' => 'Asian languages',
-      	      'options' => array(
-   				   '2' => 'Japanese',
-   				   '3' => 'Chinese',
-               ),
-   			),
-   		)   		
+        'european' => array(
+            'label' => 'European languages',
+            'options' => array(
+                '0' => 'French',
+                '1' => 'Italian',
+            ),
+        ),
+        'asian' => array(
+            'label' => 'Asian languages',
+            'options' => array(
+                '2' => 'Japanese',
+                '3' => 'Chinese',
+            ),
+        ),
    	));
 
    	$form = new Form('language');
