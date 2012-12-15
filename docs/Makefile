@@ -20,7 +20,7 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 pre-build:
 	@rm -rf tmp/$(LANG)
 	@mkdir -p tmp/$(LANG)
-	@cp -R languages/en/* tmp/$(LANG)/
+	@cp -Rp languages/en/* tmp/$(LANG)/
 ifneq ($(LANG),en)
 	@for f in $$(cd languages/$(LANG) && find . -type f \( ! -iname ".*" \) | sort); do \
 		if [ -f languages/en/$$f ]; then \
