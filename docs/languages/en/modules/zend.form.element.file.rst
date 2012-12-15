@@ -12,8 +12,8 @@ It can be used with the ``Zend\Form\View\Helper\FormFile`` view helper.
 
 .. rubric:: Basic Usage
 
-This element automatically adds a ``"type"`` attribute of value ``"file"``,
-and will set the form's enctype to ``multipart/form-data``.
+This element automatically adds a ``"type"`` attribute of value ``"file"``.
+It will also set the form's enctype to ``multipart/form-data`` during ``$form->prepare()``.
 
 .. code-block:: php
    :linenos:
@@ -21,7 +21,16 @@ and will set the form's enctype to ``multipart/form-data``.
    use Zend\Form\Element;
    use Zend\Form\Form;
 
-   $file = new Element\File('my-file');
+   // Single file upload
+   $file = new Element\File('file');
+   $file->setLabel('Single file input');
+
+   // HTML5 multiple file upload
+   $multiFile = new Element\File('multi-file');
+   $multiFile->setLabel('Multi file input')
+             ->setAttribute('multiple', true);
 
    $form = new Form('my-file');
-   $form->add($file);
+   $form->add($file)
+        ->add($multiFile);
+
