@@ -112,6 +112,7 @@
    modules/zend.i18n.filters
    modules/zend.i18n.validators
    modules/zend.input-filter.intro
+   modules/zend.input-filter.file-input
    modules/zend.json.introduction
    modules/zend.json.basics
    modules/zend.json.objects
@@ -446,6 +447,7 @@ Zend\\InputFilter
 ^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zend.input-filter.intro`
+        * :doc:`modules/zend.input-filter.file-input`
 
 .. _zend.json:
 
