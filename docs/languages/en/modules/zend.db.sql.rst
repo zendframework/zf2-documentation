@@ -347,7 +347,7 @@ values():
    :linenos:
 
    // merging values with previous calls
-   $insert->values(array('col_2' => 'value2'), $insert::VALUES);
+   $insert->values(array('col_2' => 'value2'), $insert::VALUES_MERGE);
 
 .. _zend.db.sql.update:
 
