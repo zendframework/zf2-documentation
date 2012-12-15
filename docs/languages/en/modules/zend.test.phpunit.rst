@@ -236,10 +236,10 @@ The following assertions are available.
 
 * ``assertResponseCode($code)``: assert that the response resulted in the given HTTP response code.
 
-* ``assertHeader($header)``: assert that the response contains the given header.
+* ``assertResponseHeader($header)``: assert that the response contains the given header.
 
-* ``assertHeaderContains($header, $match)``: assert that the response contains the given header and that its content contains the given string.
+* ``assertResponseHeaderContains($header, $match)``: assert that the response contains the given header and that its content contains the given string.
 
-* ``assertHeaderRegex($header, $pattern)``: assert that the response contains the given header and that its content matches the given regex.
+* ``assertResponseHeaderRegex($header, $pattern)``: assert that the response contains the given header and that its content matches the given regex.
 
 Additionally, each of the above assertions have a 'Not' variant for negative assertions.
