@@ -1,7 +1,7 @@
 .. _zend.form.element.week:
 
-Week Element
-^^^^^^^^^^^^
+Week
+^^^^
 
 ``Zend\Form\Element\Week`` is meant to be paired with the ``Zend\Form\View\Helper\FormWeek`` for `HTML5 inputs with type
 week`_. This element adds filters and validators to it's input filter specification in order to validate HTML5 week
@@ -9,8 +9,7 @@ input values on the server.
 
 .. _zend.form.element.week.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 This element automatically adds a ``"type"`` attribute of value ``"week"``.
 
@@ -60,8 +59,7 @@ Here is the same example using the array notation:
 
 .. _zend.form.element.week.methods:
 
-Public Methods
-""""""""""""""
+.. rubric:: Public Methods
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element\\DateTime
 <zend.form.element.date-time.methods>`.

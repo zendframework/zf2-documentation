@@ -1,7 +1,7 @@
 .. _zend.form.element.textarea:
 
-Textarea Element
-^^^^^^^^^^^^^^^^
+Textarea
+^^^^^^^^
 
 ``Zend\Form\Element\Textarea`` represents a textarea form input.
 It can be used with the ``Zend\Form\View\Helper\FormTextarea`` view helper.
@@ -10,8 +10,7 @@ It can be used with the ``Zend\Form\View\Helper\FormTextarea`` view helper.
 
 .. _zend.form.element.textarea.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 .. code-block:: php
    :linenos:

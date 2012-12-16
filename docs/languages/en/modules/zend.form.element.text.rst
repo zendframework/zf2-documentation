@@ -1,7 +1,7 @@
 .. _zend.form.element.text:
 
-Text Element
-^^^^^^^^^^^^
+Text
+^^^^
 
 ``Zend\Form\Element\Text`` represents a text form input.
 It can be used with the ``Zend\Form\View\Helper\FormText`` view helper.
@@ -10,8 +10,7 @@ It can be used with the ``Zend\Form\View\Helper\FormText`` view helper.
 
 .. _zend.form.element.text.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 This element automatically adds a ``"type"`` attribute of value ``"text"``.
 
