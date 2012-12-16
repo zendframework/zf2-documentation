@@ -1,14 +1,14 @@
 .. _zend.i18n.filter.alpha:
 
-Alpha Filter
-------------
+Alpha
+-----
 
 The ``Alpha`` filter can be used to return only alphabetic characters in the unicode "letter" category. All other
 characters are suppressed.
 
 .. _zend.i18n.filter.alpha.options:
 
-.. rubric:: Supported options for Alpha Filter
+.. rubric:: Supported Options for Alpha Filter
 
 The following options are supported for ``Alpha``:
 

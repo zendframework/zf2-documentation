@@ -1,21 +1,19 @@
 .. _zend.filter.set.dashtocamelcase:
 
-Word\\DashToCamelCase
----------------------
+DashToCamelCase
+---------------
 
 This filter modifies a given string such that 'words-with-dashes' are converted to 'WordsWithDashes'.
 
 .. _zend.filter.set.dashtocamelcase.options:
 
-Supported options for Zend\\Filter\\Word\\DashToCamelCase
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Supported Options
 
 There are no additional options for ``Zend\Filter\Word\DashToCamelCase``:
 
 .. _zend.filter.set.dashtocamelcase.basic:
 
-Basic usage
-^^^^^^^^^^^
+.. rubric:: Basic Usage
 
 A basic example of usage is below:
 
