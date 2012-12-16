@@ -91,6 +91,7 @@
    modules/zend.filter
    modules/zend.filter.set
    modules/zend.filter.word
+   modules/zend.filter.file
    modules/zend.filter.filter-chains
    modules/zend.filter.inflector
    modules/zend.filter.writing-filters
@@ -401,6 +402,7 @@ Zend\\Filter
         * :doc:`modules/zend.filter`
         * :doc:`modules/zend.filter.set`
         * :doc:`modules/zend.filter.word`
+        * :doc:`modules/zend.filter.file`
         * :doc:`modules/zend.filter.filter-chains`
         * :doc:`modules/zend.filter.inflector`
         * :doc:`modules/zend.filter.writing-filters`
