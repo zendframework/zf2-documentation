@@ -1,14 +1,13 @@
 .. _zend.filter.set.separatortoseparator:
 
-Word\\SeparatorToSeparator
---------------------------
+SeparatorToSeparator
+--------------------
 
 This filter modifies a given string such that 'words with separators' are converted to 'words-with-separators'.
 
 .. _zend.filter.set.separatortoseparator.options:
 
-Supported options for Zend\\Filter\\Word\\SeparatorToSeparator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Supported Options
 
 The following options are supported for ``Zend\Filter\Word\SeparatorToSeparator``:
 
@@ -18,8 +17,7 @@ The following options are supported for ``Zend\Filter\Word\SeparatorToSeparator`
 
 .. _zend.filter.set.separatortoseparator.basic:
 
-Basic usage
-^^^^^^^^^^^
+.. rubric:: Basic Usage
 
 A basic example of usage is below:
 
@@ -32,8 +30,7 @@ A basic example of usage is below:
 
 The above example returns 'this+is+my+content'.
 
-Default behaviour for Zend\\Filter\\Word\\SeparatorToSeparator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Default Behaviour
 
 .. code-block:: php
    :linenos:

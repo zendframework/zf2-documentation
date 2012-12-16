@@ -7,8 +7,7 @@ This filter converts any input to be lowercased.
 
 .. _zend.filter.set.stringtolower.options:
 
-Supported options for Zend\\Filter\\StringToLower
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Supported Options
 
 The following options are supported for ``Zend\Filter\StringToLower``:
 
@@ -16,8 +15,7 @@ The following options are supported for ``Zend\Filter\StringToLower``:
 
 .. _zend.filter.set.stringtolower.basic:
 
-Basic usage
-^^^^^^^^^^^
+.. rubric:: Basic Usage
 
 This is a basic example:
 
@@ -31,8 +29,7 @@ This is a basic example:
 
 .. _zend.filter.set.stringtolower.encoding:
 
-Different encoded strings
-^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Different Encoded Strings
 
 Per default it will only handle characters from the actual locale of your server. Characters from other charsets
 would be ignored. Still, it's possible to also lowercase them when the mbstring extension is available in your

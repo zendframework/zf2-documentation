@@ -1,21 +1,19 @@
 .. _zend.filter.set.underscoretodash:
 
-Word\\UnderscoreToDash
-----------------------
+UnderscoreToDash
+----------------
 
 This filter modifies a given string such that 'words_with_underscores' are converted to 'words-with-underscores'.
 
 .. _zend.filter.set.underscoretodash.options:
 
-Supported options for Zend\\Filter\\Word\\UnderscoreToDash
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Supported Options
 
 There are no additional options for ``Zend\Filter\Word\UnderscoreToDash``:
 
 .. _zend.filter.set.underscoretodash.basic:
 
-Basic usage
-^^^^^^^^^^^
+.. rubric:: Basic usage
 
 A basic example of usage is below:
 

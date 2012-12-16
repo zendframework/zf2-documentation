@@ -1,14 +1,13 @@
 .. _zend.filter.set.underscoretoseparator:
 
-Word\\UnderscoreToSeparator
----------------------------
+UnderscoreToSeparator
+---------------------
 
 This filter modifies a given string such that 'words_with_underscorees' are converted to 'words with underscorees'.
 
 .. _zend.filter.set.underscoretoseparator.options:
 
-Supported options for Zend\\Filter\\Word\\UnderscoreToSeparator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Supported Options
 
 The following options are supported for ``Zend\Filter\Word\UnderscoreToSeparator``:
 
@@ -16,8 +15,7 @@ The following options are supported for ``Zend\Filter\Word\UnderscoreToSeparator
 
 .. _zend.filter.set.underscoretoseparator.basic:
 
-Basic usage
-^^^^^^^^^^^
+.. rubric:: Basic usage
 
 A basic example of usage is below:
 
@@ -31,8 +29,7 @@ A basic example of usage is below:
 
 The above example returns 'this+is+my+content'.
 
-Default behaviour for Zend\\Filter\\Word\\UnderscoreToSeparator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Default Behavior
 
 .. code-block:: php
    :linenos:
