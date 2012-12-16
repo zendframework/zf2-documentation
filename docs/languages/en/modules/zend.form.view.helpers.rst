@@ -58,3 +58,9 @@ HTML5 Helpers
 .. include:: zend.form.view.helper.form-week.rst
 
 
+File Upload Progress Helpers
+----------------------------
+
+.. include:: zend.form.view.helper.form-file-apc-progress.rst
+.. include:: zend.form.view.helper.form-file-session-progress.rst
+.. include:: zend.form.view.helper.form-file-upload-progress.rst
