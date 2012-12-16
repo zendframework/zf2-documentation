@@ -10,7 +10,10 @@ Form Element as a parameter.
 
 An ``id`` attribute with a value of ``"progress_key"`` will automatically be added.
 
-NOTE: It **must** be rendered *before* the file input in the form, or upload progress will not work correctly.
+.. warning::
+
+   The view helper **must** be rendered *before* the file input in the form,
+   or upload progress will not work correctly.
 
 Best used with the :ref:`Zend\\ProgressBar\\Upload\\ApcProgress <zend.progress-bar.upload.apc-progress>` handler.
 

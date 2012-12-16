@@ -9,7 +9,10 @@ other Form view helpers, the ``FormFileSessionProgress`` helper does not accept 
 
 An ``id`` attribute with a value of ``"progress_key"`` will automatically be added.
 
-NOTE: The view helper **must** be rendered *before* the file input in the form, or upload progress will not work correctly.
+.. warning::
+
+   The view helper **must** be rendered *before* the file input in the form,
+   or upload progress will not work correctly.
 
 Best used with the :ref:`Zend\\ProgressBar\\Upload\\SessionProgress <zend.progress-bar.upload.session-progress>` handler.
 
