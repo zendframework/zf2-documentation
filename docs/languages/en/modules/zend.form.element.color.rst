@@ -1,7 +1,7 @@
 .. _zend.form.element.color:
 
-Color Element
-^^^^^^^^^^^^^
+Color
+^^^^^
 
 ``Zend\Form\Element\Color`` is meant to be paired with the ``Zend\Form\View\Helper\FormColo
 type color`_. This element adds filters and a ``Regex`` validator to it's input filter spr`` for `HTML5 inputs withecification in order to
@@ -9,8 +9,7 @@ validate a `HTML5 valid simple color`_ value on the server.
 
 .. _zend.form.element.color.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 This element automatically adds a ``"type"`` attribute of value ``"color"``.
 
@@ -44,8 +43,7 @@ Here is the same example using the array notation:
 
 .. _zend.form.element.color.methods:
 
-Public Methods
-""""""""""""""
+.. rubric:: Public Methods
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.

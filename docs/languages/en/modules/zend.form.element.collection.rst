@@ -1,5 +1,5 @@
-Collection Element
-^^^^^^^^^^^^^^^^^^
+Collection
+^^^^^^^^^^
 
 Sometimes, you may want to add input (or a set of inputs) multiple times, either because you don't want
 to duplicate code, or because you does not know in advance how many elements you need (in the case of elements
@@ -10,8 +10,7 @@ to :ref:`Zend\Collection tutorial <zend.form.collections>`.
 
 .. _zend.form.element.collection.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 .. code-block:: php
    :linenos:
@@ -49,8 +48,7 @@ Using the array notation:
 
 .. _zend.form.element.collection.methods:
 
-Public Methods
-""""""""""""""
+.. rubric:: Public Methods
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element <zend.form.element.methods>` .
 
