@@ -1,4 +1,4 @@
-.. EN-Revision: 3728e7b
+.. EN-Revision: 39b7eeb
 .. _zend.db.sql:
 
 Zend\\Db\\Sql
@@ -347,7 +347,7 @@ values():
    :linenos:
 
    // merging values with previous calls
-   $insert->values(array('col_2' => 'value2'), $insert::VALUES);
+   $insert->values(array('col_2' => 'value2'), $insert::VALUES_MERGE);
 
 .. _zend.db.sql.update:
 
