@@ -227,7 +227,7 @@ Add the 3 files as described in unit Testing to ``module/Album/test
 * ``phpunit.xml.dist``
 * ``TestConfig.php.dist``
 
-Remeber here to change the namespace in ``Bootstrap.php`` and change the Module ``Application`` to ``Album in the ``TestConfig.php.dist``.
+Remember here to change the namespace in ``Bootstrap.php`` and change the Module ``Application`` to ``Album in the ``TestConfig.php.dist``.
 In phpunit.xml change the directory to point at `AlbumTest`
 
 Create ``zf2-tutorial/module/Album/test/AlbumTest/Controller/AlbumControllerTest.php```
