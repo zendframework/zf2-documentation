@@ -234,6 +234,7 @@ Create ``zf2-tutorial/module/Album/test/AlbumTest/Controller/AlbumControllerTest
 with the following contents:
 
 .. code-block:: php
+
     <?php
     namespace AlbumTest\Controller;
 
