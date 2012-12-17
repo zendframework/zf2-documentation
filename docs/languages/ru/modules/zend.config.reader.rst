@@ -4,9 +4,9 @@
 Zend\\Config\\Reader
 ====================
 
-``Zend\Config\Reader`` gives you the ability to read a config file. It works with concrete implementations for
-different file format. The ``Zend\Config\Reader`` is only an interface, that define the two methods ``fromFile()``
-and ``fromString()``. The concrete implementations of this interface are:
+``Zend\Config\Reader`` дает вам возможность прочитать конфигурационный файл. Он работает с конкретными
+реализациями под различные форматы файлов. ``Zend\Config\Reader`` является просто интерфейсом, который определяюет
+два метода: ``fromFile()`` и ``fromString()``. Конкретными реализациями этого интерфейса являются:
 
 - ``Zend\Config\Reader\Ini``
 
@@ -16,36 +16,36 @@ and ``fromString()``. The concrete implementations of this interface are:
 
 - ``Zend\Config\Reader\Yaml``
 
-The ``fromFile()`` and ``fromString()`` return a PHP array contains the data of the configuration file.
+Методы ``fromFile()`` и ``fromString()`` возвращают PHP-массив, содержащий данные конфигурационного файла.
 
 .. note::
 
-   **Differences from ZF1**
+   **Отличия от ZF1**
 
-   The ``Zend\Config\Reader`` component no longer supports the following features:
+   Компонент ``Zend\Config\Reader`` больше не поддерживает следующие возможности:
 
-   - Inheritance of sections.
+   - Наследование разделов.
 
-   - Reading of specific sections.
+   - Чтение конкретных разделов.
 
 .. _zend.config.reader.ini:
 
 Zend\\Config\\Reader\\Ini
 -------------------------
 
-``Zend\Config\Reader\Ini`` enables developers to store configuration data in a familiar *INI* format and read them
-in the application by using an array syntax.
+``Zend\Config\Reader\Ini`` позволяет разработчикам хранить конфигурационные данные в знакомом формате *INI* и
+читать их в приложении, используя синтаксис массива.
 
-``Zend\Config\Reader\Ini`` utilizes the `parse_ini_file()`_ *PHP* function. Please review this documentation to be
-aware of its specific behaviors, which propagate to ``Zend\Config\Reader\Ini``, such as how the special values of
-"``TRUE``", "``FALSE``", "yes", "no", and "``NULL``" are handled.
+``Zend\Config\Reader\Ini`` использует *PHP*-функцию `parse_ini_file()`_. Пожалуйста, прочитайте документацию, чтобы
+быть в курсе особенностей её поведения, которые распространяются и на ``Zend\Config\Reader\Ini``, таких как
+обработка специальных значений "``TRUE``", "``FALSE``", "yes", "no", и "``NULL``".
 
 .. note::
 
-   **Key Separator**
+   **Разделитель Ключей**
 
-   By default, the key separator character is the period character ("**.**"). This can be changed, however, using
-   the ``setNestSeparator()`` method. For example:
+   По умолчанию, символом-разделителем ключей является символ точки ("**.**"). При необходимости его можно
+   изменить, используя метод ``setNestSeparator()``. Например:
 
    .. code-block:: php
       :linenos:
@@ -53,9 +53,9 @@ aware of its specific behaviors, which propagate to ``Zend\Config\Reader\Ini``, 
       $reader = new Zend\Config\Reader\Ini();
       $reader->setNestSeparator('-');
 
-The following example illustrates a basic use of ``Zend\Config\Reader\Ini`` for loading configuration data from an
-*INI* file. In this example there are configuration data for both a production system and for a staging system.
-Suppose we have the following INI configuration file:
+Следующий пример показывает базовое использование ``Zend\Config\Reader\Ini`` для загрузки конфигурационных данных
+из *INI*-файла. В этом примере есть конфигурационные данные для двух систем: находящейся в промышленной
+эксплуатиции и в подготовительной эксплуатации. Предположим, что у нас есть следующий конфигурационный INI-файл:
 
 .. code-block:: ini
    :linenos:
@@ -67,7 +67,7 @@ Suppose we have the following INI configuration file:
    database.params.password = 'secret'
    database.params.dbname   = 'dbproduction'
 
-We can use the ``Zend\Config\Reader\Ini`` to read this INI file:
+Для чтения этого INI-файла мы можем использовать ``Zend\Config\Reader\Ini``:
 
 .. code-block:: php
    :linenos:
@@ -75,11 +75,11 @@ We can use the ``Zend\Config\Reader\Ini`` to read this INI file:
    $reader = new Zend\Config\Reader\Ini();
    $data   = $reader->fromFile('/path/to/config.ini');
 
-   echo $data['webhost']  // prints "www.example.com"
-   echo $data['database']['params']['dbname'];  // prints "dbproduction"
+   echo $data['webhost']  // выведет "www.example.com"
+   echo $data['database']['params']['dbname'];  // выведет "dbproduction"
 
-The ``Zend\Config\Reader\Ini`` supports a feature to include the content of a INI file in a specific section of
-another INI file. For instance, suppose we have an INI file with the database configuration:
+``Zend\Config\Reader\Ini`` поддерживает возможность включать содержимое одного INI-файла в определенный раздел
+другого INI-файла. Например, предположим, у нас есть INI-файл с конфигурацией подключения к базе данных:
 
 .. code-block:: ini
    :linenos:
@@ -90,7 +90,7 @@ another INI file. For instance, suppose we have an INI file with the database co
    database.params.password = 'secret'
    database.params.dbname   = 'dbproduction'
 
-We can include this configuration in another INI file, for instance:
+Мы можем включить эту конфигурацию в другой INI-файл. Напрмиер:
 
 .. code-block:: ini
    :linenos:
@@ -98,11 +98,11 @@ We can include this configuration in another INI file, for instance:
    webhost  = 'www.example.com'
    @include = 'database.ini'
 
-If we read this file using the component ``Zend\Config\Reader\Ini`` we will obtain the same configuration data
-structure of the previous example.
+Если мы прочтём этот файл используя компонент ``Zend\Config\Reader\Ini``, мы получим такую же структуру
+конфигурационных данных, как в предыдущем примере.
 
-The ``@include = 'file-to-include.ini'`` can be used also in a subelement of a value. For instance we can have an
-INI file like that:
+``@include = 'file-to-include.ini'`` может применяться и как значение вложенного эелемента. Например, у нас может
+быть такой  INI-файл:
 
 .. code-block:: ini
    :linenos:
@@ -113,7 +113,7 @@ INI file like that:
    params.password = 'secret'
    params.dbname   = 'dbproduction'
 
-And assign the ``@include`` as sublement of the database value:
+И присвоение ``@include`` как вложенного элемента значения базы данных:
 
 .. code-block:: ini
    :linenos:
