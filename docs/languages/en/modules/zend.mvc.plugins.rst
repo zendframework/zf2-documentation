@@ -211,6 +211,8 @@ This plugin can be invoked with two arguments:
 
 When no arguments are provided, the current matched route is used.
 
+.. rubric:: Example Usage
+
 .. code-block:: php
    :linenos:
 
@@ -302,7 +304,7 @@ This plugin can be invoked with three arguments:
        // Form not valid, but file uploads might be valid and uploaded
        $fileErrors = $form->get('file')->getMessages();
        if (empty($fileErrors)) {
-           $tempFiles = $form->get('file')->getValue();
+           $tempFile = $form->get('file')->getValue();
        }
    }
 
