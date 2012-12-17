@@ -1,116 +1,303 @@
-.. EN-Revision: none
-.. _zend.config.writer.introduction:
+.. EN-Revision: 9e6907f
+.. _zend.config.writer:
 
-Zend\Config\Writer
-==================
+Zend\\Config\\Writer
+====================
 
-``Zend\Config\Writer`` позволяет создавать конфигурационные файлы из
-объектов ``Zend_Config``. Он работает и без использования адаптеров и,
-таким образом, очень прост в использовании. По умолчанию
-``Zend\Config\Writer`` поставляется с тремя адаптерами, которые
-используются одинаково. Вы инстанцируете класс для записи с
-опциями, которыми могут быть **filename** (имя файла) и **config**
-(конфигурационные данные). Затем вы вызываете метод ``write()``
-объекта, и он создает конфигурационный файл. Вы можете также
-передавать ``$filename`` и ``$config`` непосредственно методу ``write()``. В
-настоящее время вместе с ``Zend\Config\Writer`` поставляются следующие
-адаптеры:
+``Zend\Config\Writer`` gives you the ability to write config files out of array, ``Zend\Config\Config`` and any
+Traversable object. The ``Zend\Config\Writer`` is an interface that defines two methods: ``toFile()`` and
+``toString()``. We have five specific writers that implement this interface:
 
-- ``Zend\Config_Writer\Array``
+- ``Zend\Config\Writer\Ini``
 
-- ``Zend\Config_Writer\Ini``
+- ``Zend\Config\Writer\Xml``
 
-- ``Zend\Config_Writer\Xml``
+- ``Zend\Config\Writer\PhpArray``
 
-В качестве исключения ``Zend\Config_Writer\Ini`` имеет еще один
-опциональный параметр **nestSeparator**, через который указывается
-символ-разделитель для узлов. По умолчанию это точка, как и в
-``Zend\Config\Ini``.
+- ``Zend\Config\Writer\Json``
 
-При изменении или создании объекта ``Zend_Config`` следует знать
-следующее. Для того, чтобы создать или изменить значение,
-устанавливайте параметр объекта ``Zend_Config`` через аксессор (**->**).
-Для того, чтобы создать раздел в корне или ветку, создавайте
-новый массив ("``$config->branch = array()``"). Для того, чтобы указать, от
-какого раздела наследует другой, вызывайте метод ``setExtend()`` в
-корне объекта ``Zend_Config``.
+- ``Zend\Config\Writer\Yaml``
 
-.. _zend.config.writer.example.using:
+.. _zend.config.writer.ini:
 
-.. rubric:: Использование Zend\Config\Writer
+Zend\\Config\\Writer\\Ini
+-------------------------
 
-Этот пример демонстрирует использование ``Zend\Config_Writer\Xml`` для
-создания нового конфигурационного файла:
+The *INI* writer has two modes for rendering with regard to sections. By default the top-level configuration is
+always written into section names. By calling ``$writer->setRenderWithoutSectionsFlags(true);`` all options are
+written into the global namespace of the *INI* file and no sections are applied.
+
+As an addition ``Zend\Config\Writer\Ini`` has an additional option parameter **nestSeparator**, which defines with
+which character the single nodes are separated. The default is a single dot, like it is accepted by
+``Zend\Config\Reader\Ini`` by default.
+
+When modifying or creating a ``Zend\Config\Config`` object, there are some things to know. To create or modify a
+value, you simply say set the parameter of the ``Config`` object via the parameter accessor (**->**). To create a
+section in the root or to create a branch, you just create a new array ("``$config->branch = array();``").
+
+.. _zend.config.writer.ini.example:
+
+.. rubric:: Using Zend\\Config\\Writer\\Ini
+
+This example illustrates the basic use of ``Zend\Config\Writer\Ini`` to create a new config file:
 
 .. code-block:: php
    :linenos:
 
-   // Создание объекта конфигурации
+   // Create the config object
    $config = new Zend\Config\Config(array(), true);
    $config->production = array();
-   $config->staging    = array();
 
-   $config->setExtend('staging', 'production');
+   $config->production->webhost = 'www.example.com';
+   $config->production->database = array();
+   $config->production->database->params = array();
+   $config->production->database->params->host = 'localhost';
+   $config->production->database->params->username = 'production';
+   $config->production->database->params->password = 'secret';
+   $config->production->database->params->dbname = 'dbproduction';
 
-   $config->production->db = array();
-   $config->production->db->hostname = 'localhost';
-   $config->production->db->username = 'production';
+   $writer = new Zend\Config\Writer\Ini();
+   echo $writer->toString($config);
 
-   $config->staging->db = array();
-   $config->staging->db->username = 'staging';
+The result of this code is an INI string contains the following values:
 
-   // Вы можете записать конфигурационный файл одним из следующих способов:
-   // а)
-   $writer = new Zend\Config_Writer\Xml(array('config'   => $config,
-                                              'filename' => 'config.xml'));
-   $writer->write();
+.. code-block:: ini
+   :linenos:
 
-   // б)
-   $writer = new Zend\Config_Writer\Xml();
-   $writer->setConfig($config)
-          ->setFilename('config.xml')
-          ->write();
+   [production]
+   webhost = "www.example.com"
+   database.params.host = "localhost"
+   database.params.username = "production"
+   database.params.password = "secret"
+   database.params.dbname = "dbproduction"
 
-   // в)
-   $writer = new Zend\Config_Writer\Xml();
-   $writer->write('config.xml', $config);
+You can use the method ``toFile()`` to store the INI data in a file.
 
-В этом примере создается конфигурационный *XML*-файл с
-"промежуточным" (staging) и "производственным" (production) разделами, в
-котором первый раздел наследует от второго.
+.. _zend.config.writer.xml:
 
-.. _zend.config.writer.modifying:
+Zend\\Config\\Writer\\Xml
+-------------------------
 
-.. rubric:: Изменение существующего конфигурационного файла
+The ``Zend\Config\Writer\Xml`` can be used to generate an XML string or file starting from a
+``Zend\Config\Config`` object.
 
-Этот пример демонстрирует редактирование существующего
-конфигурационного файла.
+.. _zend.config.writer.xml.example:
+
+.. rubric:: Using Zend\\Config\\Writer\\Ini
+
+This example illustrates the basic use of ``Zend\Config\Writer\Xml`` to create a new config file:
 
 .. code-block:: php
    :linenos:
 
-   // Загрузка всех разделов из существующего конфигурационного файла с
-   // пропуском "расширений"
-   $config = new Zend\Config\Ini('config.ini',
-                                 null,
-                                 array('skipExtends'        => true,
-                                       'allowModifications' => true));
+   // Create the config object
+   $config = new Zend\Config\Config(array(), true);
+   $config->production = array();
 
-   // Изменение значения
-   $config->production->hostname = 'foobar';
+   $config->production->webhost = 'www.example.com';
+   $config->production->database = array();
+   $config->production->database->params = array();
+   $config->production->database->params->host = 'localhost';
+   $config->production->database->params->username = 'production';
+   $config->production->database->params->password = 'secret';
+   $config->production->database->params->dbname = 'dbproduction';
 
-   // Сохранение
-   $writer = new Zend\Config_Writer\Ini(array('config'   => $config,
-                                              'filename' => 'config.ini'));
-   $writer->write();
+   $writer = new Zend\Config\Writer\Xml();
+   echo $writer->toString($config);
 
-.. note::
+The result of this code is an XML string contains the following data:
 
-   **Загрузка конфигурационного файла**
+.. code-block:: xml
+   :linenos:
 
-   При загрузке существующего файла для последующих изменений
-   важно загрузить все разделы с пропуском расширений с тем,
-   чтобы значения не объединялись. Это достигается путем
-   передачи опции **skipExtends** конструктору.
+   <?xml version="1.0" encoding="UTF-8"?>
+   <zend-config>
+       <production>
+           <webhost>www.example.com</webhost>
+           <database>
+               <params>
+                   <host>localhost</host>
+                   <username>production</username>
+                   <password>secret</password>
+                   <dbname>dbproduction</dbname>
+               </params>
+           </database>
+       </production>
+   </zend-config>
+
+You can use the method ``toFile()`` to store the XML data in a file.
+
+.. _zend.config.writer.phparray:
+
+Zend\\Config\\Writer\\PhpArray
+------------------------------
+
+The ``Zend\Config\Writer\PhpArray`` can be used to generate a PHP code that returns an array representation of an
+``Zend\Config\Config`` object.
+
+.. _zend.config.writer.phparray.example:
+
+.. rubric:: Using Zend\\Config\\Writer\\PhpArray
+
+This example illustrates the basic use of ``Zend\Config\Writer\PhpArray`` to create a new config file:
+
+.. code-block:: php
+   :linenos:
+
+   // Create the config object
+   $config = new Zend\Config\Config(array(), true);
+   $config->production = array();
+
+   $config->production->webhost = 'www.example.com';
+   $config->production->database = array();
+   $config->production->database->params = array();
+   $config->production->database->params->host = 'localhost';
+   $config->production->database->params->username = 'production';
+   $config->production->database->params->password = 'secret';
+   $config->production->database->params->dbname = 'dbproduction';
+
+   $writer = new Zend\Config\Writer\PhpArray();
+   echo $writer->toString($config);
+
+The result of this code is a PHP script that returns an array as follow:
+
+.. code-block:: php
+   :linenos:
+
+   <?php
+   return array (
+     'production' =>
+     array (
+       'webhost' => 'www.example.com',
+       'database' =>
+       array (
+         'params' =>
+         array (
+           'host' => 'localhost',
+           'username' => 'production',
+           'password' => 'secret',
+           'dbname' => 'dbproduction',
+         ),
+       ),
+     ),
+   );
+
+You can use the method ``toFile()`` to store the PHP script in a file.
+
+.. _zend.config.writer.json:
+
+Zend\\Config\\Writer\\Json
+--------------------------
+
+The ``Zend\Config\Writer\Json`` can be used to generate a PHP code that returns the JSON representation of a
+``Zend\Config\Config`` object.
+
+.. _zend.config.writer.json.example:
+
+.. rubric:: Using Zend\\Config\\Writer\\Json
+
+This example illustrates the basic use of ``Zend\Config\Writer\Json`` to create a new config file:
+
+.. code-block:: php
+   :linenos:
+
+   // Create the config object
+   $config = new Zend\Config\Config(array(), true);
+   $config->production = array();
+
+   $config->production->webhost = 'www.example.com';
+   $config->production->database = array();
+   $config->production->database->params = array();
+   $config->production->database->params->host = 'localhost';
+   $config->production->database->params->username = 'production';
+   $config->production->database->params->password = 'secret';
+   $config->production->database->params->dbname = 'dbproduction';
+
+   $writer = new Zend\Config\Writer\Json();
+   echo $writer->toString($config);
+
+The result of this code is a JSON string contains the following values:
+
+.. code-block:: json
+   :linenos:
+
+   { "webhost"  : "www.example.com",
+     "database" : {
+       "params"  : {
+         "host"     : "localhost",
+         "username" : "production",
+         "password" : "secret",
+         "dbname"   : "dbproduction"
+       }
+     }
+   }
+
+You can use the method ``toFile()`` to store the JSON data in a file.
+
+The ``Zend\Config\Writer\Json`` class uses the ``Zend\Json\Json`` component to convert the data in a JSON format.
+
+.. _zend.config.writer.yaml:
+
+Zend\\Config\\Writer\\Yaml
+--------------------------
+
+The ``Zend\Config\Writer\Yaml`` can be used to generate a PHP code that returns the YAML representation of a
+``Zend\Config\Config`` object. In order to use the YAML writer we need to pass a callback to an external PHP
+library or use the `Yaml PECL extension`_.
+
+.. _zend.config.writer.yaml.example:
+
+.. rubric:: Using Zend\\Config\\Writer\\Yaml
+
+This example illustrates the basic use of ``Zend\Config\Writer\Yaml`` to create a new config file using the Yaml
+PECL extension:
+
+.. code-block:: php
+   :linenos:
+
+   // Create the config object
+   $config = new Zend\Config\Config(array(), true);
+   $config->production = array();
+
+   $config->production->webhost = 'www.example.com';
+   $config->production->database = array();
+   $config->production->database->params = array();
+   $config->production->database->params->host = 'localhost';
+   $config->production->database->params->username = 'production';
+   $config->production->database->params->password = 'secret';
+   $config->production->database->params->dbname = 'dbproduction';
+
+   $writer = new Zend\Config\Writer\Yaml();
+   echo $writer->toString($config);
+
+The result of this code is a YAML string contains the following values:
+
+.. code-block:: yaml
+   :linenos:
+
+   webhost: www.example.com
+   database:
+       params:
+         host:     localhost
+         username: production
+         password: secret
+         dbname:   dbproduction
+
+You can use the method ``toFile()`` to store the YAML data in a file.
+
+If you want to use an external YAML writer library you have to pass the callback function in the constructor of the
+class. For instance, if you want to use the `Spyc`_ library:
+
+.. code-block:: php
+   :linenos:
+
+   // include the Spyc library
+   require_once ('path/to/spyc.php');
+
+   $writer = new Zend\Config\Writer\Yaml(array('Spyc','YAMLDump'));
+   echo $writer->toString($config);
 
 
+
+.. _`Yaml PECL extension`: http://www.php.net/manual/en/book.yaml.php
+.. _`Spyc`: http://code.google.com/p/spyc/

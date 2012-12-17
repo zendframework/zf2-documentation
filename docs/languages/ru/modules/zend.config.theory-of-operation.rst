@@ -1,89 +1,54 @@
-.. EN-Revision: none
+.. EN-Revision: 9e6907f
 .. _zend.config.theory_of_operation:
 
-Теоретические основы работы с Zend_Config
-=========================================
+Теоретические основы
+====================
 
-Конфигурационные данные передаются конструктору ``Zend_Config`` в
-виде ассоциативного массива, который может быть многомерным,
-что дает возможность организовывать данные от общего к
-частному. Классы адаптеров преобразуют конфигурационные
-данные из хранилища в ассоциативный массив для конструктора
-``Zend_Config``. Можно также передавать массивы непосредственно
-конструктору ``Zend_Config`` без использования класса адаптера, т.к.
-это может быть наиболее подходящим решением в некоторых
-ситуациях.
+Configuration data are made accessible to ``Zend\Config\Config``'s constructor with an associative array,
+which may be multi-dimensional, so data can be organized from general to specific. Concrete adapter
+classes adapt configuration data from storage to produce the associative array for ``Zend\Config\Config``'s
+constructor. If needed, user scripts may provide such arrays directly to ``Zend\Config\Config``'s constructor, without using
+a reader class.
 
-Каждое значение массива конфигурационных значений становится
-свойством объекта ``Zend_Config``. Ключ массива используется как имя
-свойства. Если значение само является массивом, то
-соответствующее свойство создается как объект ``Zend_Config``,
-который заполняется данными этого массива. Это производится
-рекурсивно, т.о., иерархия конфигурационных данных может иметь
-любой уровень вложенности.
+Each value in the configuration data array becomes a property of the ``Zend\Config\Config`` object. The key is used as the
+property name. If a value is itself an array, then the resulting object property is created as a new
+``Zend\Config\Config`` object, loaded with the array data. This occurs recursively, such that a hierarchy of
+configuration data may be created with any number of levels.
 
-``Zend_Config`` реализует интерфейсы **Countable** и **Iterator** для того, чтобы
-обеспечить простой доступ к конфигурационным данным. Поэтому
-с объектами ``Zend_Config`` можно использовать функцию `count()`_ и такие
-конструкции языка *PHP*, как `foreach`_.
+``Zend\Config\Config`` implements the `Countable`_ and `Iterator`_ interfaces in order to facilitate simple
+access to configuration data. Thus, ``Zend\Config\Config`` objects support the `count()`_ function and
+*PHP* constructs such as `foreach`_.
 
-По умолчанию через ``Zend_Config`` конфигурационные данные доступны
-только для чтения, и операция присваивания (например,
-``$config->database->host = 'example.com'``) вызовет исключение. Тем не менее, это
-поведение может быть отменено при вызове конструктора, и тогда
-можно будет изменять конфигурационные данные. Если
-модификации разрешены, то ``Zend_Config`` также поддерживает
-уничтожение значений (т.е. ``unset($config->database->host)``). Метод ``readOnly()``
-может использоваться для определения того, был ли разрешены
-модификации в данном объекте ``Zend_Config``. Метод ``setReadOnly()``
-запрещает все дальнейшие изменения в объекте ``Zend_Config``, который
-был создан с разрешением изменений.
+By default, configuration data made available through ``Zend\Config\Config`` are read-only, and an assignment
+(e.g. ``$config->database->host = 'example.com';``) results in a thrown exception. This default behavior may be
+overridden through the constructor, allowing modification of data values. Also, when modifications are
+allowed, ``Zend\Config\Config`` supports unsetting of values (i.e. ``unset($config->database->host)``). The
+``isReadOnly()`` method can be used to determine if modifications to a given ``Zend\Config\Config`` object are
+allowed and the ``setReadOnly()`` method can be used to stop any further modifications to a ``Zend\Config\Config``
+object that was created allowing modifications.
 
 .. note::
 
-   Важно не путать изменение данных в памяти с сохранением
-   конфигурационных данных на физическом носителе данных.
-   Создание и изменение конфигурационных данных на различных
-   носителях данных не входит в сферу назначений ``Zend_Config``. Для
-   создания и изменения конфигурационных данных на различных
-   носителях информации можно использовать сторонние
-   разработки с открытым исходным кодом.
+   **Modifying Config does not save changes**
 
-Классы адаптеров наследуют от класса ``Zend_Config``, и,
-следовательно, имеют тот же функционал.
+   It is important not to confuse such in-memory modifications with saving configuration data out to specific
+   storage media. Tools for creating and modifying configuration data for various storage media are out of scope
+   with respect to ``Zend\Config\Config``. Third-party open source solutions are readily available for the purpose
+   of creating and modifying configuration data for various storage media.
 
-Семейство классов ``Zend_Config`` позволяет организовывать
-конфигурационные данные, разбивая их на разделы. В объекты
-адаптеров ``Zend_Config`` можно загружать один определенный раздел,
-несколько разделов или все разделы данных (если не указан
-раздел).
-
-Классы адаптеров ``Zend_Config`` поддерживают единую модель
-наследования, которая позволяет одному разделу наследовать
-конфигурационные данные из другого. Это сделано для того,
-чтобы уменьшить или устранить необходимость дублирования
-конфигурационных данных разного назначения. Наследующий
-раздел может замещать данные, унаследованные от родительского
-раздела. Как и при наследовании классов PHP, раздел может
-наследовать от родительского раздела, который в свою очередь
-наследует от другого и т.д., но множественное наследование (т.е.
-раздел C наследует напрямую от разделов A и B) не поддерживается.
-
-Если вы имеете два объекта ``Zend_Config``, то можете объединить их в
-один, используя функцию ``merge()``. Например, имея ``$config`` и ``$localConfig``
-вы можете объединить данные из ``$localConfig`` с данными из ``$config``,
-используя ``$config->merge($localConfig)``. Элементы из ``$localConfig`` при
-совпадении имен заменят собой элементы ``$config``.
+If you have two ``Zend\Config\Config`` objects, you can merge them into a single object using the ``merge()``
+function. For example, given ``$config`` and ``$localConfig``, you can merge data from ``$localConfig`` to
+``$config`` using ``$config->merge($localConfig);``. The items in ``$localConfig`` will override any items with the
+same name in ``$config``.
 
 .. note::
 
-   Объект ``Zend_Config``, который выполняет объединение, должен быть
-   создан с разрешением модификаций путем передачи ``TRUE`` в
-   качестве второго параметра конструктора. После того, как
-   объединение будет завершено, можно использовать метод
-   ``setReadOnly()`` для предотвращения всех дальнейших изменений.
+   The ``Zend\Config\Config`` object that is performing the merge must have been constructed to allow
+   modifications, by passing ``TRUE`` as the second parameter of the constructor. The ``setReadOnly()`` method can
+   then be used to prevent any further modifications after the merge is complete.
 
 
-
+.. _`Countable`: http://php.net/manual/en/class.countable.php
+.. _`Iterator`: http://php.net/manual/en/class.iterator.php
 .. _`count()`: http://php.net/count
 .. _`foreach`: http://php.net/foreach
