@@ -4,37 +4,21 @@
 Введение
 ========
 
-``Zend_Config`` создан для того, чтобы сделать более простым доступ к
-конфигурационным данным и их использование внутри приложения.
-Он предоставляет основанный на вложенных свойствах объектов
-пользовательский интерфейс для доступа к конфигурационным
-данным внутри приложения. Конфигурационные данные могут
-храниться на различных носителях информации, поддерживающих
-хранение данных в виде иерархии. На данный момент ``Zend_Config``
-предоставляет адаптеры для конфигурационных данных,
-хранящихся в текстовых файлах: :ref:`Zend\Config\Ini <zend.config.adapters.ini>` и
-:ref:`Zend\Config\Xml <zend.config.adapters.xml>`.
-
-``Zend\Config`` is designed to simplify access to configuration data within applications. It
-provides a nested object property-based user interface for accessing this configuration data within application
-code. The configuration data may come from a variety of media supporting hierarchical data storage. Currently,
-``Zend\Config`` provides adapters that read and write configuration data stored in .ini, JSON, YAML and XML files.
+``Zend\Config`` создан для упрощения доступа к конфигурационным данным приложения. Для доступа к
+конфигурационным данным внутри приложения он предоставляет пользовательский интерфейс,
+основанный на вложенных свойствах объектов. Конфигурационные данные могут поступать из различных источников,
+поддерживающих иерархическое хранение данных. На данный момент ``Zend\Config`` предоставляет
+адаптеры, которые могут читать и записывать данные сохраненные в .ini, JSON, YAML и XML файлах.
 
 .. _zend.config.introduction.example.using:
 
-Using Zend\\Config\\Config with a Reader Class
-----------------------------------------------
+Использование Zend\\Config\\Config с классом-читателем
+------------------------------------------------------
 
-Обычно предполагается, что используется один из классов
-адаптеров, например, :ref:`Zend\Config\Ini <zend.config.adapters.ini>` или
-:ref:`Zend\Config\Xml <zend.config.adapters.xml>`. Но если конфигурационные данные
-доступны в виде массива *PHP*, то можно передавать эти данные
-конструктору ``Zend_Config``, чтобы использовать преимущества
-простого объектно-ориентированного интерфейса.
-
-Normally, it is expected that users would use one of the :ref:`reader classes <zend.config.reader>` to read a
-configuration file, but if configuration data are available in a *PHP* array, one may simply pass the data
-to ``Zend\Config\Config``'s constructor in order to utilize a simple object-oriented interface:
+Как правило, предполагается, что пользователи будут использовать один из
+:ref:`классов для чтения <zend.config.reader>` конфигурационного файла, однако, если конфигурационные данные
+доступны в виде *PHP*-массива, достаточно передать его в конструктор ``Zend\Config\Config`` для использования
+простого объектно-ориентированного интерфейса:
 
 .. code-block:: php
    :linenos:
@@ -59,21 +43,11 @@ to ``Zend\Config\Config``'s constructor in order to utilize a simple object-orie
    // Вывод элемента конфигурационных данных (результатом будет 'www.example.com')
    echo $config->webhost;
 
-Как показано в предыдущем примере, в ``Zend_Config`` для доступа к
-конфигурационным данным, переданным его конструктору,
-используется синтаксис вложенных свойств объектов.
+Как показано в примере выше, ``Zend\Config\Config`` предоставляет возможность использовать вложенных свойств для
+доступа к конфигурационным данным, переданным в конструктор.
 
-Кроме объектно-ориентированного доступа к значениям данных,
-``Zend_Config`` также предоставляет метод ``get()``, который будет
-возвращать значение по умолчанию, если элемент данных не
-существует. Например:
-
-
-As illustrated in the example above, ``Zend\Config\Config`` provides nested object property syntax to access
-configuration data passed to its constructor.
-
-Along with the object oriented access to the data values, ``Zend\Config\Config`` also has ``get()`` method that
-returns the supplied value if the data element doesn't exist in the configuration array. For example:
+Наравне с объектно-ориентированным доступом к данным, ``Zend\Config\Config`` так же имеет метод ``get()``,
+который возвращает значение по умолчанию, если такого элемента нет в конфигурационном массиве. Например:
 
 .. code-block:: php
    :linenos:
@@ -82,15 +56,11 @@ returns the supplied value if the data element doesn't exist in the configuratio
 
 .. _zend.config.introduction.example.file.php:
 
-Using Zend\\Config\\Config with a PHP Configuration File
---------------------------------------------------------
+Использование Zend\\Config\\Config с конфигурационным файлом на PHP
+----------------------------------------------------------------
 
-Часто требуется использовать конфигурационный файл,
-основанный на "чистом"*PHP*. Следующий код показывает, как просто
-этого достичь:
-
-It is often desirable to use a purely *PHP*-based configuration file. The following code illustrates how easily this
-can be accomplished:
+Часто возникает необходимость использовать конфигурационный файл на "чистом" *PHP*. В следующем примере показано
+на сколько легко это можно сделать:
 
 .. code-block:: php
    :linenos:
