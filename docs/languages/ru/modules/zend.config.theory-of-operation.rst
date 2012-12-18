@@ -4,48 +4,48 @@
 Теоретические основы
 ====================
 
-Configuration data are made accessible to ``Zend\Config\Config``'s constructor with an associative array,
-which may be multi-dimensional, so data can be organized from general to specific. Concrete adapter
-classes adapt configuration data from storage to produce the associative array for ``Zend\Config\Config``'s
-constructor. If needed, user scripts may provide such arrays directly to ``Zend\Config\Config``'s constructor, without using
-a reader class.
+Конфигурационные данные доступны конструктору ``Zend\Config\Config`` в виде ассоциативного массива, который может
+быть многомерным, что позволяет огранизовать данные от общего к частному. Конкретные классы адаптеров преобразуют
+конфигурационные данные, полученные из хранилища, в ассоциативный массив для конструктора ``Zend\Config\Config``.
+При необходимости, пользовательские скрипты так же могут напрямую передавать необходимые массивы непосредственно в
+конструктор ``Zend\Config\Config`` без использования классов-читателей.
 
-Each value in the configuration data array becomes a property of the ``Zend\Config\Config`` object. The key is used as the
-property name. If a value is itself an array, then the resulting object property is created as a new
-``Zend\Config\Config`` object, loaded with the array data. This occurs recursively, such that a hierarchy of
-configuration data may be created with any number of levels.
+Каждое значение в массиве конфигурационных данных становится свойством объекта ``Zend\Config\Config``. Ключ массива
+используется в качестве имени свойства. Если значение само является массивом, то свойство объекта создается в виде
+нового объекта ``Zend\Config\Config``, в который загружаются данные массива. Это происходит рекурсивно, так что
+иерархия конфигурационных данных может быть создана с любым уровнем вложенности.
 
-``Zend\Config\Config`` implements the `Countable`_ and `Iterator`_ interfaces in order to facilitate simple
-access to configuration data. Thus, ``Zend\Config\Config`` objects support the `count()`_ function and
-*PHP* constructs such as `foreach`_.
+``Zend\Config\Config`` реализует интерфейсы  `Countable`_ и `Iterator`_ для обеспечения простого доступа к
+конфигурационным данным. Таким образом, объект ``Zend\Config\Config`` поддерживает функцию `count()`_ и
+*PHP*-конструкции, такие как `foreach`_.
 
-By default, configuration data made available through ``Zend\Config\Config`` are read-only, and an assignment
-(e.g. ``$config->database->host = 'example.com';``) results in a thrown exception. This default behavior may be
-overridden through the constructor, allowing modification of data values. Also, when modifications are
-allowed, ``Zend\Config\Config`` supports unsetting of values (i.e. ``unset($config->database->host)``). The
-``isReadOnly()`` method can be used to determine if modifications to a given ``Zend\Config\Config`` object are
-allowed and the ``setReadOnly()`` method can be used to stop any further modifications to a ``Zend\Config\Config``
-object that was created allowing modifications.
-
-.. note::
-
-   **Modifying Config does not save changes**
-
-   It is important not to confuse such in-memory modifications with saving configuration data out to specific
-   storage media. Tools for creating and modifying configuration data for various storage media are out of scope
-   with respect to ``Zend\Config\Config``. Third-party open source solutions are readily available for the purpose
-   of creating and modifying configuration data for various storage media.
-
-If you have two ``Zend\Config\Config`` objects, you can merge them into a single object using the ``merge()``
-function. For example, given ``$config`` and ``$localConfig``, you can merge data from ``$localConfig`` to
-``$config`` using ``$config->merge($localConfig);``. The items in ``$localConfig`` will override any items with the
-same name in ``$config``.
+По умолчанию, конфигурационные данные, доступные через ``Zend\Config\Config``, доступны только для чтения, и
+попытка присвоения (например, ``$config->database->host = 'example.com';``) приведет к выбросу исключения. Это
+поведение по умолчанию можно изменить с помощью конструктора, разрешив изменять значения данных. Кроме того, при
+разрешенной модификации, ``Zend\Config\Config`` поддерживает удаление значений (т.е.
+``unset($config->database->host)``). Метод ``isReadOnly()`` можно использовать для определения разрешена ли
+модификация данного объекта ``Zend\Config\Config``, а метод ``setReadOnly()`` можно использовать для запрета
+изменения в будущем объекта ``Zend\Config\Config``, созданного с разрешением модификаций.
 
 .. note::
 
-   The ``Zend\Config\Config`` object that is performing the merge must have been constructed to allow
-   modifications, by passing ``TRUE`` as the second parameter of the constructor. The ``setReadOnly()`` method can
-   then be used to prevent any further modifications after the merge is complete.
+   **Модифицированный Config не сохраняет изменения**
+
+   Важно не путать такие модификации в памяти с сохранением данных конфигурации на конкретных носителях информации.
+   Инструменты для создания и изменения конфигурационных данных на различных носителях выходят за рамки сферы
+   ответственности ``Zend\Config\Config``. Сторонние решения с открытым кодом легко доступны для целей создания и
+   изменения конфигурационных данных на различных носителях.
+
+Если у вас есть два объекта ``Zend\Config\Config``, вы можете объединить их в один объект с помощью метода
+``merge()``. Например, даны ``$config`` и ``$localConfig``, вы можете объединить данные из ``$localConfig`` с
+``$config`` используя ``$config->merge($localConfig);``. Элементы из ``$localConfig`` заменят все элементы в
+``$config`` при совпадении имен.
+
+.. note::
+
+   Объект ``Zend\Config\Config`` который выполняет слияние, должен быть создан с разрешением изменений. Это
+   достигается передачей в конструктор ``TRUE`` вторым параметром. Метод ``setReadOnly()`` можно использовать
+   для предотвращения в будущем любых изменений после завершения слияния.
 
 
 .. _`Countable`: http://php.net/manual/en/class.countable.php
