@@ -175,6 +175,8 @@
    modules/zend.permissions.rbac.intro
    modules/zend.permissions.rbac.methods
    modules/zend.permissions.rbac.examples
+   modules/zend.progress-bar
+   modules/zend.progress-bar.upload
    modules/zend.serializer
    modules/zend.serializer.adapters
    modules/zend.server
@@ -587,6 +589,14 @@ Zend\\Permissions\\Rbac
         * :doc:`modules/zend.permissions.rbac.intro`
         * :doc:`modules/zend.permissions.rbac.methods`
         * :doc:`modules/zend.permissions.rbac.examples`
+
+.. _zend.progress-bar:
+
+Zend\\ProgressBar
+^^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.progress-bar`
+        * :doc:`modules/zend.progress-bar.upload`
 
 .. _zend.serializer:
 

@@ -1,7 +1,7 @@
-.. _zend.progressbar.adapter.jspull:
+.. _zend.progress-bar.adapter.js-pull:
 
-Zend\ProgressBar\Adapter\JsPull
-===============================
+JsPull Adapter
+^^^^^^^^^^^^^^
 
 ``Zend\ProgressBar\Adapter\JsPull`` is the opposite of jsPush, as it requires to pull for new updates, instead of
 pushing updates out to the browsers. Generally you should use the adapter with the persistence option of the

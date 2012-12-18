@@ -1,22 +1,20 @@
-.. _zend.progressbar.introduction:
+Progress Bars
+=============
 
-Zend\ProgressBar
-================
-
-.. _zend.progressbar.whatisit:
+.. _zend.progress-bar.introduction:
 
 Introduction
 ------------
 
-``Zend\ProgressBar`` is a component to create and update progressbars in different environments. It consists of a
+``Zend\ProgressBar`` is a component to create and update progress bars in different environments. It consists of a
 single backend, which outputs the progress through one of the multiple adapters. On every update, it takes an
 absolute value and optionally a status message, and then calls the adapter with some precalculated values like
 percentage and estimated time left.
 
-.. _zend.progressbar.basic:
+.. _zend.progress-bar.basic:
 
-Basic Usage of Zend\Progressbar
--------------------------------
+Basic Usage
+-----------
 
 ``Zend\ProgressBar`` is quite easy in its usage. You simply create a new instance of ``Zend\Progressbar``, defining
 a min- and a max-value, and choose an adapter to output the data. If you want to process a file, you would do
@@ -42,9 +40,9 @@ current byte count. At the end of the loop, the progressbar status is set to fin
 You can also call the ``update()`` method of ``Zend\ProgressBar`` without arguments, which just recalculates ETA
 and notifies the adapter. This is useful when there is no data update but you want the progressbar to be updated.
 
-.. _zend.progressbar.persistent:
+.. _zend.progress-bar.persistent:
 
-Persistent progress
+Persistent Progress
 -------------------
 
 If you want the progressbar to be persistent over multiple requests, you can give the name of a session namespace
@@ -52,20 +50,20 @@ as fourth argument to the constructor. In that case, the progressbar will not no
 constructor, but only when you call ``update()`` or ``finish()``. Also the current value, the status text and the
 start time for ETA calculation will be fetched in the next request run again.
 
-.. _zend.progressbar.adapters:
+.. _zend.progress-bar.adapters:
 
-Standard adapters
+Standard Adapters
 -----------------
 
 ``Zend\ProgressBar`` comes with the following three adapters:
 
 
 
-   - :ref:`Zend\Progressbar\Adapter\Console <zend.progressbar.adapter.console>`
+   - :ref:`Zend\\Progressbar\\Adapter\\Console <zend.progress-bar.adapter.console>`
 
-   - :ref:`Zend\Progressbar\Adapter\JsPush <zend.progressbar.adapter.jspush>`
+   - :ref:`Zend\\Progressbar\\Adapter\\JsPush <zend.progress-bar.adapter.js-push>`
 
-   - :ref:`Zend\ProgressBar\Adapter\JsPull <zend.progressbar.adapter.jspull>`
+   - :ref:`Zend\\ProgressBar\\Adapter\\JsPull <zend.progress-bar.adapter.js-pull>`
 
 
 

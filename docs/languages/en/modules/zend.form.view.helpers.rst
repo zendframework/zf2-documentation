@@ -14,6 +14,8 @@ You can use helper, or plugin, classes to perform these behaviors for you.
 
 See the section on :ref:`view helpers <zend.view.helpers>` for more information.
 
+.. _zend.form.view.helper.standard:
+
 Standard Helpers
 ----------------
 
@@ -40,6 +42,8 @@ Standard Helpers
 .. include:: zend.form.view.helper.form-textarea.rst
 .. include:: zend.form.view.helper.abstract-helper.rst
 
+.. _zend.form.view.helper.html5:
+
 HTML5 Helpers
 -------------
 
@@ -57,6 +61,7 @@ HTML5 Helpers
 .. include:: zend.form.view.helper.form-url.rst
 .. include:: zend.form.view.helper.form-week.rst
 
+.. _zend.form.view.helper.file:
 
 File Upload Progress Helpers
 ----------------------------
