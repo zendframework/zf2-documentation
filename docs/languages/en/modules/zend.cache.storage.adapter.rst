@@ -29,9 +29,9 @@ Overview
 
    **Many methods throw exceptions**
 
-   Because many caching methods can throw exceptions, you need to catch them manually or you can use the plug-in
-   ``Zend\Cache\Storage\Plugin\ExceptionHandler`` to automatically catch them and redirect exceptions into a log
-   file using the option "exception_callback".
+   Because many caching operations throw an exception on error, you need to catch them manually or you can use the
+   plug-in ``Zend\Cache\Storage\Plugin\ExceptionHandler`` with ``throw_exceptions`` set to ``false`` to automatically
+   catch them. You can also define an ``exception_callback`` to log exceptions.
 
 .. _zend.cache.storage.adapter.quick-start:
 
