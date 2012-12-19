@@ -184,6 +184,8 @@
    modules/zend.stdlib.hydrator
    modules/zend.tag.introduction
    modules/zend.tag.cloud
+   modules/zend.test.introduction
+   modules/zend.test.phpunit
    modules/zend.text.figlet
    modules/zend.text.table
    modules/zend.uri
@@ -621,6 +623,12 @@ Zend\\Tag
 
         * :doc:`modules/zend.tag.introduction`
         * :doc:`modules/zend.tag.cloud`
+
+Zend\\Test
+^^^^^^^^^
+
+        * :doc:`modules/zend.test.introduction`
+        * :doc:`modules/zend.test.phpunit`
 
 Zend\\Text
 ^^^^^^^^^^
