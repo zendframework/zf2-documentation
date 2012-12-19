@@ -1,14 +1,14 @@
 .. _zend.i18n.filter.number-format:
 
-NumberFormat Filter
--------------------
+NumberFormat
+------------
 
 The ``NumberFormat`` filter can be used to return locale-specific number and percentage strings. It acts as a
 wrapper for the ``NumberFormatter`` class within the Internationalization extension (Intl).
 
 .. _zend.i18n.filter.number-format.options:
 
-.. rubric:: Supported options for NumberFormat Filter
+.. rubric:: Supported Options for NumberFormat Filter
 
 The following options are supported for ``NumberFormat``:
 

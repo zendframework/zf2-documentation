@@ -7,15 +7,13 @@ This filter modifies a given string and removes all new line characters within t
 
 .. _zend.filter.set.stripnewlines.options:
 
-Supported options for Zend\\Filter\\StripNewLines
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Supported Options
 
 There are no additional options for ``Zend\Filter\StripNewLines``:
 
 .. _zend.filter.set.stripnewlines.basic:
 
-Basic usage
-^^^^^^^^^^^
+.. rubric:: Basic Usage
 
 A basic example of usage is below:
 
