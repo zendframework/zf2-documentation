@@ -1,7 +1,7 @@
 .. _zend.form.element.radio:
 
-Radio Element
-^^^^^^^^^^^^^
+Radio
+^^^^^
 
 ``Zend\Form\Element\Radio`` is meant to be paired with the ``Zend\Form\View\Helper\FormRadio`` for HTML inputs
 with type radio. This element adds an ``InArray`` validator to its input filter specification in order to validate
@@ -9,8 +9,7 @@ on the server if the value is contains within the radio value elements.
 
 .. _zend.form.element.radio.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 This element automatically adds a ``"type"`` attribute of value ``"radio"`` for every radio.
 
@@ -55,7 +54,6 @@ Using the array notation:
 
 .. _zend.form.element.radio.methods:
 
-Public Methods
-""""""""""""""
+.. rubric:: Public Methods
 
 All the methods from the inherited :ref:`methods of Zend\\Form\\Element\\MultiCheckbox <zend.form.element.multicheckbox.methods>` are also available for this element.

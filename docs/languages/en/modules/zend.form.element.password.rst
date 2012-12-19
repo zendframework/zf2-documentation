@@ -1,7 +1,7 @@
 .. _zend.form.element.password:
 
-Password Element
-^^^^^^^^^^^^^^^^
+Password
+^^^^^^^^
 
 ``Zend\Form\Element\Password`` represents a password form input.
 It can be used with the ``Zend\Form\View\Helper\FormPassword`` view helper.
@@ -10,8 +10,7 @@ It can be used with the ``Zend\Form\View\Helper\FormPassword`` view helper.
 
 .. _zend.form.element.password.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 This element automatically adds a ``"type"`` attribute of value ``"password"``.
 
