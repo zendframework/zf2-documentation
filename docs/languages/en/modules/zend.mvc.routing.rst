@@ -20,7 +20,7 @@ workings are more consistent, performant, and often simpler.
     such, as every route can match and assemble URIs by themselves, which makes them routers, too.
 
     That said, in most cases the developer does not need to worry about this, because Zend Framework 2.x will take
-    care of this "under the hood". The work of the router will done by ``Zend\Mvc\Router\SimpleRouteStack``
+    care of this "under the hood". The work of the router will be done by ``Zend\Mvc\Router\SimpleRouteStack``
     or ``Zend\Mvc\Router\Http\TreeRouteStack``.
 
 The base unit of routing is a ``Route``:
