@@ -1,7 +1,7 @@
 .. _zend.form.element.image:
 
-Image Element
-^^^^^^^^^^^^^
+Image
+^^^^^
 
 ``Zend\Form\Element\Image`` represents a image button form input.
 It can be used with the ``Zend\Form\View\Helper\FormImage`` view helper.
@@ -10,8 +10,7 @@ It can be used with the ``Zend\Form\View\Helper\FormImage`` view helper.
 
 .. _zend.form.element.image.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 This element automatically adds a ``"type"`` attribute of value ``"image"``.
 

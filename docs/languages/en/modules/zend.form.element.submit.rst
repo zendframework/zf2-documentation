@@ -1,7 +1,7 @@
 .. _zend.form.element.submit:
 
-Submit Element
-^^^^^^^^^^^^^^
+Submit
+^^^^^^
 
 ``Zend\Form\Element\Submit`` represents a submit button form input.
 It can be used with the ``Zend\Form\View\Helper\FormSubmit`` view helper.
@@ -10,8 +10,7 @@ It can be used with the ``Zend\Form\View\Helper\FormSubmit`` view helper.
 
 .. _zend.form.element.submit.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 This element automatically adds a ``"type"`` attribute of value ``"submit"``.
 
