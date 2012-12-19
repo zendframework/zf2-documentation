@@ -1,7 +1,7 @@
 .. _zend.form.element.hidden:
 
-Hidden Element
-^^^^^^^^^^^^^^
+Hidden
+^^^^^^
 
 ``Zend\Form\Element\Hidden`` represents a hidden form input.
 It can be used with the ``Zend\Form\View\Helper\FormHidden`` view helper.
@@ -10,8 +10,7 @@ It can be used with the ``Zend\Form\View\Helper\FormHidden`` view helper.
 
 .. _zend.form.element.hidden.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 This element automatically adds a ``"type"`` attribute of value ``"hidden"``.
 

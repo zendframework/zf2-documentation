@@ -1,7 +1,7 @@
 .. _zend.form.element.email:
 
-Email Element
-^^^^^^^^^^^^^
+Email
+^^^^^
 
 ``Zend\Form\Element\Email`` is meant to be paired with the ``Zend\Form\View\Helper\FormEmail`` for `HTML5 inputs with
 type email`_. This element adds filters and validators to it's input filter specification in order to validate
@@ -9,8 +9,7 @@ type email`_. This element adds filters and validators to it's input filter spec
 
 .. _zend.form.element.email.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 This element automatically adds a ``"type"`` attribute of value ``"email"``.
 
@@ -68,8 +67,7 @@ Here is with the array notation:
 
 .. _zend.form.element.email.methods:
 
-Public Methods
-""""""""""""""
+.. rubric:: Public Methods
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.
