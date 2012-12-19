@@ -1,7 +1,7 @@
 .. _zend.form.element.captcha:
 
-Captcha Element
-^^^^^^^^^^^^^^^
+Captcha
+^^^^^^^
 
 ``Zend\Form\Element\Captcha`` can be used with forms where authenticated users are not necessary, but you want to prevent
 spam submissions. It is pairs with one of the ``Zend/Form/View/Helper/Captcha/*`` view helpers that matches the
@@ -9,8 +9,7 @@ type of *CAPTCHA* adapter in use.
 
 .. _zend.form.element.captcha.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 A *CAPTCHA* adapter must be attached in order for validation to be included in the element's input filter
 specification. See the section on :ref:`Zend CAPTCHA Adapters <zend.captcha.adapters>` for more information on what
@@ -51,8 +50,7 @@ Here is with the array notation:
     
 .. _zend.form.element.captcha.methods:
 
-Public Methods
-""""""""""""""
+.. rubric:: Public Methods
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element
 <zend.form.element.methods>`.
