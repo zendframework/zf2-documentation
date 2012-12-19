@@ -26,7 +26,7 @@ Any object that implements ``Zend\Filter\FilterInterface`` may be used in a filt
 
 .. _zend.filter.filter_chains.order:
 
-Setting filter chain order
+Setting Filter Chain Order
 ---------------------------
 
 For each filter added to the ``FilterChain`` you can set a priority to define the chain order. The default value is
@@ -43,7 +43,7 @@ characters are removed.
 
 .. _zend.filter.filter_chains.plugin_manager:
 
-Using the plugin manager
+Using the Plugin Manager
 ------------------------
 
 To every ``FilterChain`` object an instance of the ``FilterPluginManager`` is attached. Every filter that is used
