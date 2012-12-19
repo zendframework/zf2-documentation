@@ -9,7 +9,7 @@ Overview
 --------
 
 ``Zend\Http\Client`` provides an easy interface for performing Hyper-Text Transfer Protocol (HTTP) requests.
-``Zend\Http\Client`` supports most simple features expected from an *HTTP* client, as well as some more complex
+``Zend\Http\Client`` supports the most simple features expected from an *HTTP* client, as well as some more complex
 features such as *HTTP* authentication and file uploads. Successful requests (and most unsuccessful ones too)
 return a ``Zend\Http\Response`` object, which provides access to the response's headers and body (see :ref:`this
 section <zend.http.response>`).
@@ -138,7 +138,7 @@ Available Methods
 .. _zend.http.client.methods.set-request:
 
 **setRequest**
-   ``setRequest(Zend\Http\Zend\Http\Request $request)``
+   ``setRequest(Zend\Http\Request $request)``
 
    Set request object
 
@@ -322,7 +322,7 @@ Available Methods
 .. _zend.http.client.methods.set-headers:
 
 **setHeaders**
-   ``setHeaders(Headers|array $headers)``
+   ``setHeaders(Zend\Http\Headers|array $headers)``
 
    Set the headers (for the request)
 
@@ -463,27 +463,34 @@ Examples
 
 .. _zend.http.client.basic-requests.example-1:
 
-.. rubric:: Performing a Simple GET Request
+Performing a Simple GET Request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Performing simple *HTTP* requests is very easily done using the request() method, and rarely needs more than three
-lines of code:
+Performing simple *HTTP* requests is very easily done using the setRequest() and dispatch() methods:
 
 .. code-block:: php
    :linenos:
 
-   use Zend\Config\Client;
-   $client = new Client('http://example.org');
-   $response = $client->send();
+   use Zend\Http\Client;
+   use Zend\Http\Request;
 
-The request() method takes one optional parameter - the request method. This can be either ``GET``, ``POST``,
-``PUT``, ``HEAD``, ``DELETE``, ``TRACE``, ``OPTIONS`` or ``CONNECT`` as defined by the *HTTP* protocol [#]_.
+   $request = new Request();
+   $client = new Client('http://example.org');
+   $client->setRequest($request);
+   $response = $client->dispatch();
+
+The ``request`` object can be configured using his methods as shown in the
+:ref:`Zend\\Http\\Request manual page<zend.http.request>`. One of these methods is ``setMethod`` which refers
+to the HTTP Method. This can be either ``GET``, ``POST``, ``PUT``, ``HEAD``, ``DELETE``, ``TRACE``, 
+``OPTIONS`` or ``CONNECT`` as defined by the *HTTP* protocol [#]_.
 
 .. _zend.http.client.basic-requests.example-2:
 
-.. rubric:: Using Request Methods Other Than GET
+Using Request Methods Other Than GET
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For convenience, these are all defined as class constants: Zend\\Http\\Client::GET, Zend\\Http\\Client::POST and so
-on.
+For convenience, these are all defined as class constants: Zend\\Http\\Request::METHOD_GET, 
+Zend\\Http\\Request::METHOD_POST and so on.
 
 If no method is specified, the method set by the last ``setMethod()`` call is used. If ``setMethod()`` was never
 called, the default request method is ``GET`` (see the above example).
@@ -492,17 +499,23 @@ called, the default request method is ``GET`` (see the above example).
    :linenos:
 
    use Zend\Http\Client;
-   $client = new Client();
+   use Zend\Http\Request;
+
+   $request = new Request();
+   $client = new Client('http://example.org');
+
    // Performing a POST request
-   $client->setMethod(Client::POST);
-   $response = $client->send();
+   $request->setMethod(Request::METHOD_POST);
+   $client->setRequest($request);
+   $response = $client->dispatch();
 
 .. _zend.http.client.parameters.example-1:
 
-.. rubric:: Adding GET and POST parameters
+Setting GET parameters
+^^^^^^^^^^^^^^^^^^^^^^
 
 Adding ``GET`` parameters to an *HTTP* request is quite simple, and can be done either by specifying them as part
-of the URL, or by using the setParameterGet() method. This method takes the ``GET`` parameters as an associative 
+of the URL, or by using the ``setParameterGet()`` method. This method takes the ``GET`` parameters as an associative 
 array of name => value ``GET`` variables.
 
 .. code-block:: php
@@ -511,23 +524,25 @@ array of name => value ``GET`` variables.
    use Zend\Http\Client;
    $client = new Client();
 
-   // This is equivalent to setting such URL:
+   // This is equivalent to setting a URL in the Client's constructor:
    $client->setUri('http://example.com/index.php?knight=lancelot');
 
    // Adding several parameters with one call
    $client->setParameterGet(array(
-       'first_name'  => 'Bender',
-       'middle_name' => 'Bending',
-       'made_in'     => 'Mexico',
+      'first_name'  => 'Bender',
+      'middle_name' => 'Bending',
+      'last_name'   => 'Rodríguez',
+      'made_in'     => 'Mexico',
    ));
 
 .. _zend.http.client.parameters.example-2:
 
-.. rubric:: Setting POST Parameters
+Setting POST Parameters
+^^^^^^^^^^^^^^^^^^^^^^^
 
-While ``GET`` parameters can be sent with every request method, POST parameters are only sent in the body of POST
-requests. Adding POST parameters to a request is very similar to adding ``GET`` parameters, and can be done with
-the setParameterPost() method, which is similar to the setParameterGet() method in structure.
+While ``GET`` parameters can be sent with every request method, ``POST`` parameters are only sent in the body of ``POST``
+requests. Adding ``POST`` parameters to a request is very similar to adding ``GET`` parameters, and can be done with
+the ``setParameterPost()`` method, which is identical to the ``setParameterGet()`` method in structure.
 
 .. code-block:: php
    :linenos:
@@ -542,13 +557,14 @@ the setParameterPost() method, which is similar to the setParameterGet() method 
        'selection' => array(45, 32, 80)
    ));
 
-Note that when sending POST requests, you can set both ``GET`` and POST parameters. On the other hand, while
-setting POST parameters for a non-POST request will not trigger and error, it is useless. Unless the request is a
-POST request, POST parameters are simply ignored.
+Note that when sending ``POST`` requests, you can set both ``GET`` and ``POST`` parameters. On the other hand,
+setting POST parameters on a non-``POST`` request will not trigger an error, rendering it useless. Unless the request is a
+``POST`` request, ``POST`` parameters are simply ignored.
 
 .. _zend.http.client.request-object-usage:
 
-.. rubric:: Using A Request Object With The Client
+A Complete Example
+^^^^^^^^^^^^^^^^^^
 
 
 
