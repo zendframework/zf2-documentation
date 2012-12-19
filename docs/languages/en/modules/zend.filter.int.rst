@@ -7,15 +7,13 @@ Int
 
 .. _zend.filter.set.int.options:
 
-Supported options for Zend\\Filter\\Int
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Supported Options
 
 There are no additional options for ``Zend\Filter\Int``.
 
 .. _zend.filter.set.int.basic:
 
-Basic usage
-^^^^^^^^^^^
+.. rubric:: Basic Usage
 
 A basic example of usage is below:
 
