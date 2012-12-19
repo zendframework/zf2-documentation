@@ -1,14 +1,14 @@
 .. _zend.i18n.filter.alnum:
 
-Alnum Filter
-------------
+Alnum
+-----
 
 The ``Alnum`` filter can be used to return only alphabetic characters and digits in the unicode "letter" and
 "number" categories, respectively. All other characters are suppressed.
 
 .. _zend.i18n.filter.alnum.options:
 
-.. rubric:: Supported options for Alnum Filter
+.. rubric:: Supported Options for Alnum Filter
 
 The following options are supported for ``Alnum``:
 

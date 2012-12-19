@@ -1,21 +1,19 @@
 .. _zend.filter.set.camelcasetounderscore:
 
-Word\\CamelCaseToUnderscore
----------------------------
+CamelCaseToUnderscore
+---------------------
 
 This filter modifies a given string such that 'CamelCaseWords' are converted to 'camel_case_words'.
 
 .. _zend.filter.set.camelcasetounderscore.options:
 
-Supported options for Zend\\Filter\\Word\\CamelCaseToUnderscore
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Supported Options
 
 There are no additional options for ``Zend\Filter\Word\CamelCaseToUnderscore``:
 
 .. _zend.filter.set.camelcasetounderscore.basic:
 
-Basic usage
-^^^^^^^^^^^
+.. rubric:: Basic usage
 
 A basic example of usage is below:
 

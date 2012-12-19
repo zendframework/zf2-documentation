@@ -8,8 +8,7 @@ adapters for the ``Mcrypt`` and ``OpenSSL`` extensions from *PHP*.
 
 .. _zend.filter.set.encrypt.options:
 
-Supported options for Zend\\Filter\\Encrypt and Zend\\Filter\\Decrypt
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Supported Options
 
 The following options are supported for ``Zend\Filter\Encrypt`` and ``Zend\Filter\Decrypt``:
 
@@ -54,8 +53,7 @@ The following options are supported for ``Zend\Filter\Encrypt`` and ``Zend\Filte
 
 .. _zend.filter.set.encrypt.adapterusage:
 
-Adapter usage
-^^^^^^^^^^^^^
+.. rubric:: Adapter Usage
 
 As these two encryption methodologies work completely different, also the usage of the adapters differ. You have to
 select the adapter you want to use when initiating the filter.
@@ -86,8 +84,7 @@ adapter.
 
 .. _zend.filter.set.encrypt.mcrypt:
 
-Encryption with Mcrypt
-^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Encryption with Mcrypt
 
 When you have installed the ``Mcrypt`` extension you can use the ``Mcrypt`` adapter. If you provide a string
 instead of an array of options, this string will be used as key.
@@ -130,8 +127,7 @@ truncated or padded to the needed vector size of the used algorithm.
 
 .. _zend.filter.set.encrypt.mcryptdecrypt:
 
-Decryption with Mcrypt
-^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Decryption with Mcrypt
 
 For decrypting content which was previously encrypted with ``Mcrypt`` you need to have the options with which the
 encryption has been called.
@@ -165,8 +161,7 @@ As soon as you have provided all options decryption is as simple as encryption.
 
 .. _zend.filter.set.encrypt.openssl:
 
-Encryption with OpenSSL
-^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Encryption with OpenSSL
 
 When you have installed the ``OpenSSL`` extension you can use the ``OpenSSL`` adapter. You can get or set the
 public keys also afterwards with the ``getPublicKey()`` and ``setPublicKey()`` methods. The private key can also be
@@ -243,8 +238,7 @@ So our complete example for encrypting content with ``OpenSSL`` look like this.
 
 .. _zend.filter.set.encrypt.openssl.simplified:
 
-Simplified usage with Openssl
-+++++++++++++++++++++++++++++
+.. rubric:: Simplified usage with Openssl
 
 As seen before, you need to get the envelope key to be able to decrypt the previous encrypted value. This can be
 very annoying when you work with multiple values.
@@ -273,8 +267,7 @@ using ``Zend\Filter\Encrypt``.
 
 .. _zend.filter.set.encrypt.openssl.compressed:
 
-Compressing the content
-+++++++++++++++++++++++
+.. rubric:: Compressing Content
 
 Based on the original value, the encrypted value can be a very large string. To reduce the value
 ``Zend\Filter\Encrypt`` allows the usage of compression.
@@ -312,8 +305,7 @@ wished options for the compression adapter.
 
 .. _zend.filter.set.encrypt.openssldecrypt:
 
-Decryption with OpenSSL
-^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Decryption with OpenSSL
 
 Decryption with ``OpenSSL`` is as simple as encryption. But you need to have all data from the person who encrypted
 the content. See the following example:
