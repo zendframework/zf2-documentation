@@ -83,8 +83,8 @@ Let’s start by creating a file called ``Album.php`` under ``module/Album/src/A
         }
     }
 
-Our ``Album`` entity object is a simple PHP class. In order to work with
-``Zend\Db``’s ``TableGateway`` class, we need to implement the ``exchangeArray()``
+Our ``Album`` entity object is a simple PHP class. In order to work with the
+``Zend\Db\TableGateway`` class, we need to implement the ``exchangeArray()``
 method. This method simply copies the data from the passed in array to our entity’s
 properties. We will add an input filter for use with our form later.
 
