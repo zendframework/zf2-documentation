@@ -40,16 +40,19 @@ Read more about containers in the :ref:`containers <zend.navigation.containers>`
    ``Zend\Navigation\AbstractPage`` extends ``Zend\Navigation\AbstractContainer``, which means that a page 
    can have sub pages.
 
-.. _zend.navigation.introduction.separation:
+.. _zend.navigation.introduction.view.helpers:
+
+View Helpers
+------------
 
 Separation of data (model) and rendering (view)
------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Classes in the ``Zend\Navigation`` namespace do not deal with rendering of navigational elements. Rendering is done
 with navigational view helpers. However, pages contain information that is used by view helpers when rendering,
 such as; ``label``, ``class`` (*CSS*), ``title``, ``lastmod`` and ``priority`` properties for sitemaps, etc.
 
-Read more about rendering navigational elements in the manual section on :ref:`navigation helpers
-<zend.view.helpers.initial.navigation>`.
+Read more about rendering navigational elements in the :ref:`view helpers <zend.navigation.view.helpers>`
+section.
 
 .. _`SPL`: http://php.net/spl
