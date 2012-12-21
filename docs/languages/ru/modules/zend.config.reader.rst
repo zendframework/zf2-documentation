@@ -126,12 +126,12 @@ Zend\\Config\\Reader\\Ini
 Zend\\Config\\Reader\\Xml
 -------------------------
 
-``Zend\Config\Reader\Xml`` enables developers to read configuration data in a familiar *XML* format and read them
-in the application by using an array syntax. The root element of the *XML* file or string is irrelevant and may be
-named arbitrarily.
+``Zend\Config\Reader\Xml`` позволяет разработчикам читать конфигурационные данные из привычного формата *XML* и
+читать его в приложении аналогично массивам. Корневой элемент *XML*-файла или строки не имеет значения и может быть
+назван произвольно.
 
-The following example illustrates a basic use of ``Zend\Config\Reader\Xml`` for loading configuration data from an
-*XML* file. Suppose we have the following *XML* configuration file:
+Следующий пример иллюстрирует основное использование ``Zend\Config\Reader\Xml`` для загрузки конфигурационных
+данных из *XML*-файла. Предположим, что у нас есть следующий конфигурационный *XML*-файл:
 
 .. code-block:: xml
    :linenos:
@@ -150,7 +150,7 @@ The following example illustrates a basic use of ``Zend\Config\Reader\Xml`` for 
        </database>
    </config>
 
-We can use the ``Zend\Config\Reader\Xml`` to read this XML file:
+Мы можем использовать ``Zend\Config\Reader\Xml`` для чтения этого XML-файла:
 
 .. code-block:: php
    :linenos:
@@ -158,16 +158,16 @@ We can use the ``Zend\Config\Reader\Xml`` to read this XML file:
    $reader = new Zend\Config\Reader\Xml();
    $data   = $reader->fromFile('/path/to/config.xml');
 
-   echo $data['webhost']  // prints "www.example.com"
-   echo $data['database']['params']['dbname'];  // prints "dbproduction"
+   echo $data['webhost']  // выведет "www.example.com"
+   echo $data['database']['params']['dbname'];  // выведет "dbproduction"
 
-``Zend\Config\Reader\Xml`` utilizes the `XMLReader`_ *PHP* class. Please review this documentation to be aware of
-its specific behaviors, which propagate to ``Zend\Config\Reader\Xml``.
+``Zend\Config\Reader\Xml`` использует *PHP*-класс `XMLReader`_. Пожалуйста, прочитайте документацию, чтобы
+быть в курсе особенностей её поведения, которые распространяются и на ``Zend\Config\Reader\Xml``.
 
-Using ``Zend\Config\Reader\Xml`` we can include the content of XML files in a specific XML element. This is
-provided using the standard function `XInclude`_ of XML. To use this function you have to add the namespace
-``xmlns:xi="http://www.w3.org/2001/XInclude"`` to the XML file. Suppose we have an XML files that contains only the
-database configuration:
+Используя ``Zend\Config\Reader\Xml`` мы можем включать содержимое XML-файлов в определенный XML-элемент. Это
+обеспечивается с помощью стандартной функции XML `XInclude`_. Что бы воспользоваться этой функцией нужно добавить в
+XML-файл пространство имен ``xmlns:xi="http://www.w3.org/2001/XInclude"``. Предположим, у нас есть XML-файлы,
+содержщие только настройки соединения с базой данных:
 
 .. code-block:: xml
    :linenos:
@@ -185,7 +185,7 @@ database configuration:
        </database>
    </config>
 
-We can include this configuration in another XML file, for instance:
+Мы можем включить эти настройки в другой XML-файл. Например:
 
 .. code-block:: xml
    :linenos:
@@ -196,18 +196,18 @@ We can include this configuration in another XML file, for instance:
        <xi:include href="database.xml"/>
    </config>
 
-The syntax to include an XML file in a specific element is ``<xi:include href="file-to-include.xml"/>``
+Синтаксис для включения XML-файла в определенный элемент - ``<xi:include href="file-to-include.xml"/>``
 
 .. _zend.config.reader.json:
 
 Zend\\Config\\Reader\\Json
 --------------------------
 
-``Zend\Config\Reader\Json`` enables developers to read configuration data in a *JSON* format and read them in the
-application by using an array syntax.
+``Zend\Config\Reader\Json`` позволяет разработчикам читать конфигурационные данные из формата *JSON* и читать его в
+приложении аналогично массивам.
 
-The following example illustrates a basic use of ``Zend\Config\Reader\Json`` for loading configuration data from a
-*JSON* file. Suppose we have the following *JSON* configuration file:
+Следующий пример показвает основы использования ``Zend\Config\Reader\Json`` для загрузки конфигурационных данных
+из *JSON*-файла. Предположим, у нас есть следующий конфигурационный файл в формате *JSON*:
 
 .. code-block:: json
    :linenos:
@@ -225,7 +225,7 @@ The following example illustrates a basic use of ``Zend\Config\Reader\Json`` for
      }
    }
 
-We can use the ``Zend\Config\Reader\>Json`` to read this JSON file:
+Мы можем использовать ``Zend\Config\Reader\Json`` для чтения этого JSON-файла:
 
 .. code-block:: php
    :linenos:
@@ -233,14 +233,14 @@ We can use the ``Zend\Config\Reader\>Json`` to read this JSON file:
    $reader = new Zend\Config\Reader\Json();
    $data   = $reader->fromFile('/path/to/config.json');
 
-   echo $data['webhost']  // prints "www.example.com"
-   echo $data['database']['params']['dbname'];  // prints "dbproduction"
+   echo $data['webhost']  // выведет "www.example.com"
+   echo $data['database']['params']['dbname'];  // выведет "dbproduction"
 
-``Zend\Config\Reader\Json`` utilizes the :ref:`Zend\\Json\\Json <zend.json.introduction>` class.
+``Zend\Config\Reader\Json`` использует класс :ref:`Zend\\Json\\Json <zend.json.introduction>`.
 
-Using ``Zend\Config\Reader\Json`` we can include the content of a JSON file in a specific JSON section or element.
-This is provided using the special syntax ``@include``. Suppose we have a JSON file that contains only the database
-configuration:
+Используя ``Zend\Config\Reader\Json`` мы можем включать содержимое JSON-файла в определенный раздел или элемент
+JSON. Это обеспечивается с помощью специальной инструкции ``@include``. Предположим, у нас есть
+JSON-файл, который содержит только настройки подключения к базе данных:
 
 .. code-block:: json
    :linenos:
@@ -257,7 +257,8 @@ configuration:
      }
    }
 
-We can include this configuration in another JSON file, for instance:
+
+Мы можем включить эту настройку в другой JSON-файл. Пример:
 
 .. code-block:: json
    :linenos:
@@ -272,12 +273,12 @@ We can include this configuration in another JSON file, for instance:
 Zend\\Config\\Reader\\Yaml
 --------------------------
 
-``Zend\Config\Reader\Yaml`` enables developers to read configuration data in a *YAML* format and read them in the
-application by using an array syntax. In order to use the YAML reader we need to pass a callback to an external PHP
-library or use the `Yaml PECL extension`_.
+``Zend\Config\Reader\Yaml`` позволяет разработчикам читать конфигурационные данные в формате *YAML* и использовать
+их в приложении аналогично массивам. Для использования читателя YAML нам нужно передать функцию обратного вызова
+во внешнюю бибилиотеку PHP или воспользоваться `Yaml PECL extension`_.
 
-The following example illustrates a basic use of ``Zend\Config\Reader\Yaml`` that use the Yaml PECL extension.
-Suppose we have the following *YAML* configuration file:
+Следующий пример показывает основы использования ``Zend\Config\Reader\Yaml`` применяя PECL-расширение Yaml.
+Предположим, у нас есть следующий конфигурационный *YAML*-файл:
 
 .. code-block:: yaml
    :linenos:
@@ -291,7 +292,7 @@ Suppose we have the following *YAML* configuration file:
          password: secret
          dbname:   dbproduction
 
-We can use the ``Zend\Config\Reader\Yaml`` to read this YAML file:
+Мы можем использовать ``Zend\Config\Reader\Yaml`` для чтения этого YAML-файла:
 
 .. code-block:: php
    :linenos:
@@ -299,30 +300,30 @@ We can use the ``Zend\Config\Reader\Yaml`` to read this YAML file:
    $reader = new Zend\Config\Reader\Yaml();
    $data   = $reader->fromFile('/path/to/config.yaml');
 
-   echo $data['webhost']  // prints "www.example.com"
-   echo $data['database']['params']['dbname'];  // prints "dbproduction"
+   echo $data['webhost']  // выведет "www.example.com"
+   echo $data['database']['params']['dbname'];  // выведет "dbproduction"
 
-If you want to use an external YAML reader you have to pass the callback function in the constructor of the class.
-For instance, if you want to use the `Spyc`_ library:
+Если вы хотите использовать внешний читатель YAML, вы должны передать в конструктор класса функцию обратного
+вызова. Например, если вы хотите использовать библиотеку `Spyc`_:
 
 .. code-block:: php
    :linenos:
 
-   // include the Spyc library
+   // подключаем библиотеку Spyc
    require_once ('path/to/spyc.php');
 
    $reader = new Zend\Config\Reader\Yaml(array('Spyc','YAMLLoadString'));
    $data   = $reader->fromFile('/path/to/config.yaml');
 
-   echo $data['webhost']  // prints "www.example.com"
-   echo $data['database']['params']['dbname'];  // prints "dbproduction"
+   echo $data['webhost']  // выводит "www.example.com"
+   echo $data['database']['params']['dbname'];  // выводит "dbproduction"
 
-You can also instantiate the ``Zend\Config\Reader\Yaml`` without any parameter and specify the YAML reader in a
-second moment using the ``setYamlDecoder()`` method.
+Так же вы можете инициализировать ``Zend\Config\Reader\Yaml`` вообще без параметров и указать читателя YAML позже
+воспользовавшись методом ``setYamlDecoder()``.
 
-Using ``Zend\Config\ReaderYaml`` we can include the content of a YAML file in a specific YAML section or element.
-This is provided using the special syntax ``@include``. Suppose we have a YAML file that contains only the database
-configuration:
+Используя ``Zend\Config\ReaderYaml`` вы можете включать содержимое YAML-файла в определенный раздел или элемент
+другого YAML-файла. Это обеспечивается с помощью специальной инструкции ``@include``. Предположим, у нас есть
+YAML-файл, который содержит только настройки доступа к базе данных:
 
 .. code-block:: yaml
    :linenos:
@@ -335,7 +336,7 @@ configuration:
          password: secret
          dbname:   dbproduction
 
-We can include this configuration in another YAML file, for instance:
+Мы можем включить эти настройки в другой YAML-файл. Пример:
 
 .. code-block:: yaml
    :linenos:
