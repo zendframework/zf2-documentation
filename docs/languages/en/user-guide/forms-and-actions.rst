@@ -110,7 +110,7 @@ going to add the input filter to our ``Album.php`` file in ``module/Album/src/Al
 
         public function getInputFilter()
         {
-            if (!$this->inputFilter) {
+            if (!isset($this->inputFilter)) {
                 $inputFilter = new InputFilter();
                 $factory     = new InputFactory();
 
