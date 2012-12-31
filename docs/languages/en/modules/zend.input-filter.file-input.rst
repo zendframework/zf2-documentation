@@ -1,7 +1,7 @@
 .. _zend.input-filter.file-input:
 
-File Upload Inputs
-==================
+File Upload Input
+=================
 
 The ``Zend\FileInput`` class is a special ``Input`` type for uploaded files found in the ``$_FILES`` array.
 
