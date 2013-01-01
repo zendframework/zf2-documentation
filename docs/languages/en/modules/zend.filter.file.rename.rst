@@ -119,17 +119,3 @@ The specific public methods for the ``Rename`` filter, besides the common ``filt
 
    :param $options: See :ref:`Supported Options <zend.filter.file.rename.options>` section for more information.
 
-
-.. _zend.filter.file.rename-upload:
-
-RenameUpload
-------------
-
-``Zend\Filter\File\RenameUpload`` can be used to rename or move an uploaded file
-to a new path.
-
-``RenameUpload`` extends from the ``Rename`` filter. It's only difference
-is that the ``move_uploaded_file()`` function is used instead of ``rename()``
-for securely renaming uploaded files.
-
-See the :ref:`Rename Filter <zend.filter.file.rename>` documentation for more information.

@@ -8,12 +8,14 @@ as file renaming.
 
 .. note::
 
-   All of the File Filter Classes' ``filter()`` methods expect a file path string as the argument passed in.
+   All of the File Filter Classes' ``filter()`` methods support both a file path string *or*
+   a ``$_FILES`` array as the supplied argument.
 
 .. include:: zend.filter.file.decrypt.rst
 .. include:: zend.filter.file.encrypt.rst
 .. include:: zend.filter.file.lowercase.rst
 .. include:: zend.filter.file.rename.rst
+.. include:: zend.filter.file.rename-upload.rst
 .. include:: zend.filter.file.uppercase.rst
 
 
