@@ -94,7 +94,7 @@ Basic Configuration Options
    +==============+=========================+================+=================================================+
    |ttl           |``integer``              |0               |Time to live                                     |
    +--------------+-------------------------+----------------+-------------------------------------------------+
-   |namespace     |``string``               |""              |The "namespace" in which cache items will live   |
+   |namespace     |``string``               |"zfcache"       |The "namespace" in which cache items will live   |
    +--------------+-------------------------+----------------+-------------------------------------------------+
    |key_pattern   |``null`` ``string``      |``null``        |Pattern against which to validate cache keys     |
    +--------------+-------------------------+----------------+-------------------------------------------------+
