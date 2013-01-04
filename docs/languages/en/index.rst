@@ -195,6 +195,7 @@
    modules/zend.uri
    modules/zend.validator
    modules/zend.validator.set
+   modules/zend.validator.file
    modules/zend.validator.validator-chains
    modules/zend.validator.writing-validators
    modules/zend.validator.messages
@@ -667,6 +668,7 @@ Zend\\Validator
 
         * :doc:`modules/zend.validator`
         * :doc:`modules/zend.validator.set`
+        * :doc:`modules/zend.validator.file`
         * :doc:`modules/zend.validator.validator-chains`
         * :doc:`modules/zend.validator.writing-validators`
         * :doc:`modules/zend.validator.messages`
