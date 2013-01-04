@@ -8,8 +8,8 @@ such as file size validation and CRC checking.
 
 .. note::
 
-   All of the File validators' ``filter()`` methods accept both a ``string`` with the file path,
-   or an ``array`` of ``$_FILES`` information for a file.
+   All of the File validators' ``filter()`` methods support both a file path ``string`` *or*
+   a ``$_FILES`` array as the supplied argument.
    When a ``$_FILES`` array is passed in, the ``tmp_name`` is used for the file path.
 
 .. include:: zend.validator.file.crc32.rst
