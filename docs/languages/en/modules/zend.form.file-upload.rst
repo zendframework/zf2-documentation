@@ -39,15 +39,15 @@ In this example we will:
 The Form and InputFilter
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Here we define a required ``Zend\Form\Element\File`` input in a Form class named ``UploadForm``.
+Here we define a ``Zend\Form\Element\File`` input in a Form class named ``UploadForm``.
 
 .. code-block:: php
    :linenos:
 
    // File: UploadForm.php
 
-   use Zend\Form\Form;
    use Zend\Form\Element;
+   use Zend\Form\Form;
 
    class UploadForm extends Form
    {
@@ -65,13 +65,6 @@ Here we define a required ``Zend\Form\Element\File`` input in a Form class named
                 ->setAttribute('id', 'image-file');
            $this->add($file);
        }
-
-       public function getInputFilter()
-       {
-           $inputFilter = parent::getInputFilter();
-           $inputFilter->get('image-file')->setRequired(true);
-           return $inputFilter;
-       }
    }
 
 
@@ -83,7 +76,7 @@ The ``File`` element provides some automatic features that happen behind the sce
   :ref:`Zend\\InputFilter\\FileInput <zend.input-filter.file-input>`.
 - The ``FileInput`` will automatically prepend an
   :ref:`Upload Validator <zend.validator.file.upload>`,
-  to securely validate that the file is actually an uploaded file, and to report any
+  to securely validate that the file is actually an uploaded file, and to report
   other types of upload errors to the user.
 
 
@@ -161,7 +154,7 @@ data.
        return array('form' => $form);
    }
 
-Upon a successful form submission, ``$form->getData()`` would return:
+Upon a successful file upload, ``$form->getData()`` would return:
 
 .. code-block:: php
 
@@ -238,41 +231,52 @@ is valid.
 Changing our earlier example to use the ``fileprg`` plugin will require two changes.
 
 1. Adding a ``RenameUpload`` filter to our form's file input, with details on
-   where the file should be stored when valid:
+   where the valid files should be stored:
 
    .. code-block:: php
       :linenos:
 
       // File: UploadForm.php
 
-      use Zend\Form\Form;
+      use Zend\InputFilter;
       use Zend\Form\Element;
+      use Zend\Form\Form;
 
       class UploadForm extends Form
       {
-          /* No changes in these methods from the UploadForm example above...
           public function __construct($name = null, $options = array())
-          public function addElements()
-          */
-
-          public function getInputFilter()
           {
-              $hasAddedDefaults = $this->hasAddedInputFilterDefaults;
-              $inputFilter = parent::getInputFilter();
+              parent::__construct($name, $options);
+              $this->addElements();
+              $this->addInputFilter();
+          }
 
-              // Ensure that filters/validators are only added once with the defaults
-              if (!$hasAddedDefaults) {
-                  $fileInput = $inputFilter->get('image-file');
-                  $fileInput->setRequired(true);
-                  $fileInput->getFilterChain()->attachByName(
-                      'filerenameupload',
-                      array(
-                          'target'    => './data/tmpuploads/avatar.png',
-                          'randomize' => true,
-                      )
-                  );
-              }
-              return $inputFilter;
+          public function addElements()
+          {
+              // File Input
+              $file = new Element\File('image-file');
+              $file->setLabel('Avatar Image Upload')
+                   ->setAttribute('id', 'image-file');
+              $this->add($file);
+          }
+
+          public function addInputFilter()
+          {
+              $inputFilter = new InputFilter\InputFilter();
+
+              // File Input
+              $fileInput = new InputFilter\FileInput('image-file');
+              $fileInput->setRequired(true);
+              $fileInput->getFilterChain()->attachByName(
+                  'filerenameupload',
+                  array(
+                      'target'    => './data/tmpuploads/avatar.png',
+                      'randomize' => true,
+                  )
+              );
+              $inputFilter->add($fileInput);
+
+              $this->setInputFilter($inputFilter);
           }
       }
 
@@ -355,8 +359,9 @@ To enable multiple file uploads in Zend Framework, just set the file element's
 
    // File: UploadForm.php
 
-   use Zend\Form\Form;
+   use Zend\InputFilter;
    use Zend\Form\Element;
+   use Zend\Form\Form;
 
    class UploadForm extends Form
    {
@@ -364,6 +369,7 @@ To enable multiple file uploads in Zend Framework, just set the file element's
        {
            parent::__construct($name, $options);
            $this->addElements();
+           $this->addInputFilter();
        }
 
        public function addElements()
@@ -376,34 +382,36 @@ To enable multiple file uploads in Zend Framework, just set the file element's
            $this->add($file);
        }
 
-       public function getInputFilter()
+       public function addInputFilter()
        {
-           $hasAddedDefaults = $this->hasAddedInputFilterDefaults;
-           $inputFilter = parent::getInputFilter();
+           $inputFilter = new InputFilter\InputFilter();
 
-           // Ensure that filters/validators are only added once with the defaults
-           if (!$hasAddedDefaults) {
-               $fileInput = $inputFilter->get('image-file');
-               $fileInput->setRequired(true);
+           // File Input
+           $fileInput = new InputFilter\FileInput('image-file');
+           $fileInput->setRequired(true);
 
-               // You only need to define validators and filters
-               // as if only one file was being uploaded. All files
-               // will be run through the same validators and filters
-               // automatically.
-               $fileInput->getValidatorChain()
-                   ->attachByName('filesize',      array('max' => 204800))
-                   ->attachByName('filemimetype',  array('mimeType' => 'image/png,image/x-png'))
-                   ->attachByName('fileimagesize', array('maxWidth' => 100, 'maxHeight' => 100));
+           // You only need to define validators and filters
+           // as if only one file was being uploaded. All files
+           // will be run through the same validators and filters
+           // automatically.
+           $fileInput->getValidatorChain()
+               ->attachByName('filesize',      array('max' => 204800))
+               ->attachByName('filemimetype',  array('mimeType' => 'image/png,image/x-png'))
+               ->attachByName('fileimagesize', array('maxWidth' => 100, 'maxHeight' => 100));
 
-               $fileInput->getFilterChain()->attachByName(
-                   'filerenameupload',
-                   array(
-                       'target'    => './data/tmpuploads/avatar.png',
-                       'randomize' => true,
-                   )
-               );
-           }
-           return $inputFilter;
+           // All files will be renamed, i.e.:
+           //   ./data/tmpuploads/avatar_4b3403665fea6.png,
+           //   ./data/tmpuploads/avatar_5c45147660fb7.png
+           $fileInput->getFilterChain()->attachByName(
+               'filerenameupload',
+               array(
+                   'target'    => './data/tmpuploads/avatar.png',
+                   'randomize' => true,
+               )
+           );
+           $inputFilter->add($fileInput);
+
+           $this->setInputFilter($inputFilter);
        }
    }
 
@@ -431,9 +439,9 @@ or feature enabled.
 
 .. note::
 
-   For this example we will use PHP 5.4's `Session progress handler`_
+   For this example we will use PHP **5.4**'s `Session progress handler`_
 
-   You may need to verify these php.ini settings for it to work:
+   **PHP 5.4 is required** and you may need to verify these php.ini settings for it to work:
 
    .. code-block:: ini
 
@@ -443,7 +451,7 @@ or feature enabled.
       session.upload_progress.enabled = On
       session.upload_progress.freq =  "1%"
       session.upload_progress.min_freq = "1"
-      ; Also make certain 'upload_tmp_dir' is writeable
+      ; Also make certain 'upload_tmp_dir' is writable
 
 .. _`Session progress handler`: http://php.net/manual/en/session.upload-progress.php
 
@@ -597,12 +605,33 @@ to be performed.
            // Perform the submit
            //$.fn.ajaxSubmit.debug = true;
            $(this).ajaxSubmit({
+               beforeSubmit: function(arr, $form, options) {
+                   // Notify backend that submit is via ajax
+                   arr.push({ name: "isAjax", value: "1" });
+               },
                success: function (response, statusText, xhr, $form) {
                    clearInterval(progressInterval);
                    showProgress(100, 'Complete!');
-                   // TODO: Do something when form has successfully completed
+
+                   // TODO: You'll need to do some custom logic here to handle a successful
+                   // form post, and when the form is invalid with validation errors.
+                   if (response.status) {
+                       // TODO: Do something with a successful form post, like redirect
+                       // window.location.replace(response.redirect);
+                   } else {
+                       // Clear the file input, otherwise the same file gets re-uploaded
+                       // http://stackoverflow.com/a/1043969
+                       var fileInput = $('#image-file');
+                       fileInput.replaceWith( fileInput.val('').clone( true ) );
+
+                       // TODO: Do something with these errors
+                       // showErrors(response.formErrors);
+                   }
                },
                error: function(a, b, c) {
+                   // NOTE: This callback is *not* called when the form is invalid.
+                   // It is called when the browser is unable to initiate or complete the ajax submit.
+                   // You will need to handle validation errors in the 'success' callback.
                    console.log(a, b, c);
                }
            });
@@ -611,6 +640,54 @@ to be performed.
        });
    });
    </script>
+
+And finally, our Controller action can be modified to return form status and validation messages
+in JSON format if we see the 'isAjax' post parameter (which was set in the JavaScript just before submit):
+
+.. code-block:: php
+   :linenos:
+
+   // File: MyController.php
+
+   public function uploadFormAction()
+   {
+       $form = new UploadForm('upload-form');
+
+       if ($this->getRequest()->isPost()) {
+           // Make certain to merge the files info!
+           $post = array_merge(
+               $this->getRequest()->getPost()->toArray(),
+               $this->getRequest()->getFiles()->toArray()
+           );
+
+           $form->setData($post);
+           if ($form->isValid()) {
+               $data = $form->getData();
+               // Form is valid, save the form!
+               if (!empty($post['isAjax'])) {
+                   return new JsonModel(array(
+                       'status'   => true,
+                       'redirect' => $this->url()->fromRoute('upload-form/success'),
+                       'formData' => $data,
+                   ));
+               } else {
+                   // Fallback for non-JS clients
+                   return $this->redirect()->toRoute('upload-form/success');
+               }
+           } else {
+               if (!empty($post['isAjax'])) {
+                    // Send back failure information via JSON
+                    return new JsonModel(array(
+                        'status'     => false,
+                        'formErrors' => $form->getMessages(),
+                        'formData'   => $form->getData(),
+                    ));
+               }
+           }
+       }
+
+       return array('form' => $form);
+   }
 
 
 Additional Info
