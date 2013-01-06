@@ -98,6 +98,7 @@
    modules/zend.form.intro
    modules/zend.form.quick-start
    modules/zend.form.collections
+   modules/zend.form.file-upload
    modules/zend.form.elements
    modules/zend.form.view.helpers
    modules/zend.http
@@ -418,6 +419,7 @@ Zend\\Form
         * :doc:`modules/zend.form.intro`
         * :doc:`modules/zend.form.quick-start`
         * :doc:`modules/zend.form.collections`
+        * :doc:`modules/zend.form.file-upload`
         * :doc:`modules/zend.form.advanced-use-of-forms`
         * :doc:`modules/zend.form.elements`
         * :doc:`modules/zend.form.view.helpers`

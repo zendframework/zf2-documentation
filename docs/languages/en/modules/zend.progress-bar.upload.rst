@@ -1,3 +1,4 @@
+.. _zend.progress-bar.upload:
 
 File Upload Handlers
 ====================
@@ -10,11 +11,11 @@ Introduction
 ``Zend\ProgressBar\Upload`` provides handlers that can give you the actual state of a
 file upload in progress. To use this feature you need to choose one of the upload progress handlers
 (APC, uploadprogress, or Session) and ensure that your server setup has the appropriate extension
-or feature enabled. All of the handlers use the same interface.
+or feature enabled. All of the progress handlers use the same interface.
 
 When uploading a file with a form POST, you must also include the progress identifier in a
-hidden input. The :ref:`File Upload Progress View Helpers <zend.form.view.helper.file>` provide an easy way to add
-the hidden input based on your handler type.
+hidden input. The :ref:`File Upload Progress View Helpers <zend.form.view.helper.file>` provide a
+convenient way to add the hidden input based on your handler type.
 
 Methods of Reporting Progress
 -----------------------------

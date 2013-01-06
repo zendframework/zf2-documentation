@@ -233,6 +233,7 @@ When no arguments are provided, the current matched route is used.
 
    // ... your form processing code here
 
+.. _zend.mvc.controller-plugins.file-postredirectget:
 
 File Post/Redirect/Get Plugin
 -----------------------------
@@ -307,7 +308,6 @@ This plugin can be invoked with three arguments:
            $tempFile = $form->get('file')->getValue();
        }
    }
-
 
 .. _zend.mvc.controller-plugins.redirect:
 

@@ -8,7 +8,7 @@ and will return descriptive messages for any upload errors.
 
 .. note::
 
-   :ref:`Zend\InputFilter\FileInput <zend.input-filter.file-input>` will automatically
+   :ref:`Zend\\InputFilter\\FileInput <zend.input-filter.file-input>` will automatically
    prepend this validator in it's validation chain.
 
 .. _zend.validator.file.upload.usage:
