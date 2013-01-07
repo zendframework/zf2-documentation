@@ -138,7 +138,7 @@ data.
 
        if ($this->getRequest()->isPost()) {
            // Make certain to merge the files info!
-           $post = array_merge(
+           $post = array_merge_recursive(
                $this->getRequest()->getPost()->toArray(),
                $this->getRequest()->getFiles()->toArray()
            );
@@ -525,7 +525,7 @@ The following is an example Controller action which provides the progress inform
 
 .. note::
 
-   This is not the most efficient way of providing upload progress, since each polling request must go
+   This is *not* the most efficient way of providing upload progress, since each polling request must go
    through the Zend Framework bootstrap process. A better example would be to use a standalone
    php file in the public folder that bypasses the MVC bootstrapping and only uses the essential
    ``Zend\ProgressBar`` adapters. **TODO**
@@ -655,7 +655,7 @@ in JSON format if we see the 'isAjax' post parameter (which was set in the JavaS
 
        if ($this->getRequest()->isPost()) {
            // Make certain to merge the files info!
-           $post = array_merge(
+           $post = array_merge_recursive(
                $this->getRequest()->getPost()->toArray(),
                $this->getRequest()->getFiles()->toArray()
            );
