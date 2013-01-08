@@ -26,7 +26,7 @@ Service Manager.
     :emphasize-lines: 8
 
     namespace Application;
-    use Zend\Console\AdapterInterface as Console;
+    use Zend\Console\Adapter\AdapterInterface as Console;
 
     class Module
     {
