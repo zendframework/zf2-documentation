@@ -33,7 +33,7 @@ which allows injecting a translator and setting a text domain.
 .. function:: hasTranslator()
    :noindex:
 
-   Returns a true if a ``Zend\I18n\Translator\Translator`` is set in the helper, and false if otherwise.
+   Returns true if a ``Zend\I18n\Translator\Translator`` is set in the helper, and false if otherwise.
 
    :rtype: boolean
 
