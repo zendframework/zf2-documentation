@@ -1,36 +1,36 @@
 ﻿.. EN-Revision: 9e6907f
 .. _zend.config.factory:
 
-The Factory
-===========
+Фабрика
+=======
 
-The factory gives you the ability to load a configuration file to an array or to ``Zend\Config\Config`` object.
-The factory has two purposes
+Фабрика дает вам возможность загружать конфигурационные файлы в массив или в объект ``Zend\Config\Config``.
+Фабрика имеет два назначения:
 
-- Loading configuration file(s)
-- Storing a configuration file
+- Загрузка конфигурационного файла(ов)
+- Сохранение конфигурационного файла
 
 .. note::
 
-   Storing the configuration will be done to *one* file. The factory is not aware of merging two
-   or more configurations and will not store it into multiple files. If you want to store particular configuration sections to a different file
-   you should separate it manually.
+   Сохранение конфигурации будет выполнено для *одного* файла. Фабрике не известно об объединении двух и
+   более конфигураций, поэтому не может сохранить их в несколько файлов. Если вы хотите сохранить определенные
+   разделы конфигурации в отдельный файл, вы должны выделить их самостоятельно.
 
-Loading configuration file
---------------------------
+Загрузка файла конфигурации
+---------------------------
 
-The next example illustrates how to load a single configuration file
+Следующий пример демонстрирует как загрузить один файл конфигурации
 
 .. code-block:: php
    :linenos:
 
-   //Load a php file as array
+   //Загружить файл как php-массив
    $config = Zend\Config\Factory::fromFile(__DIR__.'/config/my.config.php');
 
-   //Load a xml file as Config object
+   //Загрузить xml-файл как объект Config
    $config = Zend\Config\Factory::fromFile(__DIR__.'/config/my.config.xml', true);
 
-For merging multiple configuration files
+Для объединения нескольких файлов конфигураций
 
 .. code-block::php
    :linenos:
@@ -42,10 +42,10 @@ For merging multiple configuration files
         )
     );
 
-Storing configuration file
---------------------------
+Сохранение файла конфигурации
+-----------------------------
 
-Sometimes you want to store the configuration to a file. Also this is really easy to do
+Иногда вы хотите сохранить конфигурацию в файл. Что ж, это действительно легко сделать.
 
 .. code-block::php
    :linenos:
@@ -55,10 +55,10 @@ Sometimes you want to store the configuration to a file. Also this is really eas
    $config->settings->myname = 'framework';
    $config->settings->date	 = '2012-12-12 12:12:12';
 
-   //Store the configuration
+   //Сохранение конфигурации
    Zend\Config\Factory::toFile(__DIR__.'/config/my.config.php', $config);
 
-   //Store an array
+   //Сохранение массива
    $config = array(
        'settings' => array(
            'myname' => 'framework',
