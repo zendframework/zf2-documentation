@@ -4,22 +4,22 @@
 Zend\\Config\\Processor
 =======================
 
-``Zend\Config\Processor`` gives you the ability to perform some operations on a ``Zend\Config\Config`` object. The
-``Zend\Config\Processor`` is an interface that defines two methods: ``process()`` and ``processValue()``. These
-operations are provided by the following concrete implementations:
+``Zend\Config\Processor`` дает вам возможность выполнить некоторые операции над объектом ``Zend\Config\Config``.
+``Zend\Config\Processor`` это интерфейс, который определяет два метода: ``process()`` и ``processValue()``. Эти
+операции предоставляются следующими конкретными реализациями:
 
-- ``Zend\Config\Processor\Constant``: manage PHP constant values;
+- ``Zend\Config\Processor\Constant``: управление значениями PHP-констант;
 
-- ``Zend\Config\Processor\Filter``: filter the configuration data using ``Zend\Filter``;
+- ``Zend\Config\Processor\Filter``: фильтрация конфигурационных данных с помощью  ``Zend\Filter``;
 
-- ``Zend\Config\Processor\Queue``: manage a queue of operations to apply to configuration data;
+- ``Zend\Config\Processor\Queue``: управление очередью операций, применяемых к конфигурационным данным;
 
-- ``Zend\Config\Processor\Token``: find and replace specific tokens;
+- ``Zend\Config\Processor\Token``: нахождение и замена определенных маркеров;
 
-- ``Zend\Config\Processor\Translator``: translate configuration values in other languages using
+- ``Zend\Config\Processor\Translator``: перевод значений параметров на другие языки используя
   ``Zend\I18n\Translator``;
 
-Below we reported some examples for each type of processor.
+Ниже мы представили некоторые примеры для каждого типа процессора.
 
 .. _zend.config.processor.constant:
 
@@ -28,15 +28,15 @@ Zend\\Config\\Processor\\Constant
 
 .. _zend.config.processor.constant.example:
 
-.. rubric:: Using Zend\\Config\\Processor\\Constant
+.. rubric:: Использование Zend\\Config\\Processor\\Constant
 
-This example illustrates the basic use of ``Zend\Config\Processor\Constant``:
+Этот пример демонстрирует основы использования ``Zend\Config\Processor\Constant``:
 
 .. code-block:: php
    :linenos:
 
    define ('TEST_CONST', 'bar');
-   // set true to Zend\Config\Config to allow modifications
+   // установим true у Zend\Config\Config для возможности модификации
    $config = new Zend\Config\Config(array('foo' => 'TEST_CONST'), true);
    $processor = new Zend\Config\Processor\Constant();
 
@@ -44,7 +44,7 @@ This example illustrates the basic use of ``Zend\Config\Processor\Constant``:
    $processor->process($config);
    echo $config->foo;
 
-This example returns the output: ``TEST_CONST, bar.``.
+Этот пример возвращает вывод: ``TEST_CONST, bar.``.
 
 .. _zend.config.processor.filter:
 
@@ -53,9 +53,9 @@ Zend\\Config\\Processor\\Filter
 
 .. _zend.config.processor.filter.example:
 
-.. rubric:: Using Zend\\Config\\Processor\\Filter
+.. rubric:: Использование Zend\\Config\\Processor\\Filter
 
-This example illustrates the basic use of ``Zend\Config\Processor\Filter``:
+Этот пример демонстрирует основы использования ``Zend\Config\Processor\Filter``:
 
 .. code-block:: php
    :linenos:
@@ -73,7 +73,7 @@ This example illustrates the basic use of ``Zend\Config\Processor\Filter``:
    $upperProcessor->process($config);
    echo $config->foo;
 
-This example returns the output: ``bar,BAR``.
+Этот пример возвращает вывод: ``bar,BAR``.
 
 .. _zend.config.processor.queue:
 
@@ -82,9 +82,9 @@ Zend\\Config\\Processor\\Queue
 
 .. _zend.config.processor.queue.example:
 
-.. rubric:: Using Zend\\Config\\Processor\\Queue
+.. rubric:: Использование Zend\\Config\\Processor\\Queue
 
-This example illustrates the basic use of ``Zend\Config\Processor\Queue``:
+Этот пример демонстрирует основы использования ``Zend\Config\Processor\Queue``:
 
 .. code-block:: php
    :linenos:
@@ -109,8 +109,8 @@ This example illustrates the basic use of ``Zend\Config\Processor\Queue``:
 
    echo $config->foo;
 
-This example returns the output: ``bar``. The filters in the queue are applied with a *FIFO* logic (First In, First
-Out).
+Этот пример возвращает вывод: ``bar``. Фильтры в очереди применяются по принципу *FIFO* ("First In, First
+Out" - первым вошел, первым вышел).
 
 .. _zend.config.processor.token:
 
@@ -119,14 +119,14 @@ Zend\\Config\\Processor\\Token
 
 .. _zend.config.processor.token.example:
 
-.. rubric:: Using Zend\\Config\\Processor\\Token
+.. rubric:: Использование Zend\\Config\\Processor\\Token
 
-This example illustrates the basic use of ``Zend\Config\Processor\Token``:
+Этот пример демонстрирует основы использования ``Zend\Config\Processor\Token``:
 
 .. code-block:: php
    :linenos:
 
-   // set the Config to true to allow modifications
+   // установим true у Config для возможности модификации
    $config = new Config(array('foo' => 'Value is TOKEN'), true);
    $processor = new TokenProcessor();
 
@@ -135,7 +135,7 @@ This example illustrates the basic use of ``Zend\Config\Processor\Token``:
    $processor->process($config);
    echo $config->foo;
 
-This example returns the output: ``Value is TOKEN,Value is bar``.
+Этот пример возвращает вывод: ``Value is TOKEN,Value is bar``.
 
 .. _zend.config.processor.translator:
 
@@ -144,9 +144,9 @@ Zend\\Config\\Processor\\Translator
 
 .. _zend.config.processor.translator.example:
 
-.. rubric:: Using Zend\\Config\\Processor\\Translator
+.. rubric:: Использование Zend\\Config\\Processor\\Translator
 
-This example illustrates the basic use of ``Zend\Config\Processor\Translator``:
+Этот пример демонстрирует основы использования ``Zend\Config\Processor\Translator``:
 
 .. code-block:: php
    :linenos:
@@ -158,21 +158,20 @@ This example illustrates the basic use of ``Zend\Config\Processor\Translator``:
    $config = new Config(array('animal' => 'dog'), true);
 
    /*
-    * The following mapping would exist for the translation
-    * loader you provide to the translator instance
+    * Следующее отношение должно быть загружено в экземпляр переводчика
     * $italian = array(
     *     'dog' => 'cane'
     * );
     */
 
    $translator = new Translator();
-   // ... configure the translator ...
+   // ... настраиваем переводчик ...
    $processor = new TranslatorProcessor($translator);
 
    echo "English: {$config->animal}, ";
    $processor->process($config);
    echo "Italian: {$config->animal}";
 
-This example returns the output: ``English: dog, Italian: cane``.
+Этот пример возвращает вывод: ``English: dog, Italian: cane``.
 
 
