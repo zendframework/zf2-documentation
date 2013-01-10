@@ -1,6 +1,6 @@
 .. _zendservice.googlecloudmessaging:
 
-``ZendService\GoogleCloudMessaging``
+``ZendService\Google\Gcm``
 ====================================
 
 .. _zendservice.googlecloudmessaging.introduction:
@@ -8,8 +8,8 @@
 Introduction
 ------------
 
-``ZendService\GoogleCloudMessaging`` provides a client for the Google Cloud Messaging (GCM) API`.
-``ZendService\GoogleCloudMessaging\Client`` allows you to send data from servers to your Android Applications
+``ZendService\Google\Gcm`` provides a client for the Google Cloud Messaging (GCM) API`.
+``ZendService\Google\Gcm\Client`` allows you to send data from servers to your Android Applications
 on Android devices (Google API driven).  
 
 In order to leverage GCM you **must** create your project in the Google API Console and enable the GCM service
@@ -18,9 +18,9 @@ on your device.  To get started with GCM prior to building out the 3rd-party ser
 
 The service is composed of 3 distinct parts:
 
-* The Client: ``ZendService\GoogleCloudMessaging\Client``
-* The Message: ``ZendService\GoogleCloudMessaging\Message``
-* The Response: ``ZendService\GoogleCloudMessaging\Response``
+* The Client: ``ZendService\Google\Gcm\Client``
+* The Message: ``ZendService\Google\Gcm\Message``
+* The Response: ``ZendService\Google\Gcm\Response``
 
 The Client is the broker that sends the message to the GCM server and returns the response.  The Message
 is where you define all of the message specific data that you would like to send.  The response is the feedback
@@ -37,9 +37,9 @@ prepare ourselves to send out messages.
 .. code-block:: php
    :linenos:   
 
-   use ZendService\GoogleCloudMessaging\Client;
-   use ZendService\GoogleCloudMessaging\Message;
-   use ZendService\GoogleCloudMessaging\Exception\RuntimeException;
+   use ZendService\Google\Gcm\Client;
+   use ZendService\Google\Gcm\Message;
+   use ZendService\Google\Exception\RuntimeException;
 
    $client = new Client();
    $client->setApiKey('the-api-key-for-gcm');
