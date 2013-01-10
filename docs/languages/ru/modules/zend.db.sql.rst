@@ -1,25 +1,25 @@
+.. EN-Revision: 39b7eeb
 .. _zend.db.sql:
 
 Zend\\Db\\Sql
 =============
 
-``Zend\Db\Sql`` is a SQL abstraction layer for building platform specific SQL queries via a object-oriented API.
-The end result of an ``Zend\Db\Sql`` object will be to either produce a Statement and Parameter container that
-represents the target query, or a full string that can be directly executed against the database platform. To
-achieve this, ``Zend\Db\Sql`` objects require a ``Zend\Db\Adapter\Adapter`` object in order to produce the
-desired results.
+``Zend\Db\Sql`` представляет собой слой абстракции для SQL, позволяющий строить SQL запросы через
+объектно-ориентированный API. Конечным результатом работы объекта ``Zend\Db\Sql``  являются контейнеры Statement
+и Parameter (параметры) целевого запроса или полная строка, которая может быть непосредственно выполнена на
+платформе базы данных. Для своей работы объектам ``Zend\Db\Sql`` необходим объект ``Zend\Db\Adapter\Adapter``.
 
 .. _zend.db.sql.sql:
 
-Zend\\Db\\Sql\\Sql (Quickstart)
--------------------------------
+Zend\\Db\\Sql\\Sql (Быстрый старт)
+----------------------------------
 
-As there are four primary tasks associated with interacting with a database (from the DML, or Data Manipulation
-Language): selecting, inserting, updating and deleting. As such, there are four primary objects that developers can
-interact or building queries, ``Zend\Db\Sql\Select``, ``Insert``, ``Update`` and ``Delete``.
+Существует ряд основных задач, выполняемых при работе с базой данных: выборка, вставка, обновление и удаление.
+Поэтому реализовано четыре основных обекта, которые разработчики могут использовать для построения запросов:
+``Zend\Db\Sql\Select``, ``Insert``, ``Update`` и ``Delete``.
 
-Since these four tasks are so closely related, and generally used together within the same application,
-``Zend\Db\Sql\Sql`` objects help you create them and produce the result you are attempting to achieve.
+Так как эти четыре задачи тесно связаны и обычно используются вместе в одном приложении, объекты
+``Zend\Db\Sql\Sql`` помогут вам создать их и получить результат, который вы пытаетесь достичь.
 
 .. code-block:: php
    :linenos:
@@ -31,10 +31,11 @@ Since these four tasks are so closely related, and generally used together withi
    $update = $sql->update(); // @return Zend\Db\Sql\Update
    $delete = $sql->delete(); // @return Zend\Db\Sql\Delete
 
-As a developer, you can now interact with these objects, as described in the sections below, to specialize each
-query. Once they have been populated with values, they are ready to either be prepared or executed.
+Как разработчик, теперь вы можете взаимодействовать с этими объектами для построения запросов, как показано в
+примере ниже. Как только они были заполнены необходимыми значениями, они сразу могут быть использованы для
+подготовки (prepared) и выполнения (executed).
 
-To prepare (using a Select object):
+Для подготовки (используя объект Select):
 
 .. code-block:: php
    :linenos:
@@ -48,7 +49,7 @@ To prepare (using a Select object):
    $statement = $sql->prepareStatementForSqlObject($select);
    $results = $statement->execute();
 
-To execute (using a Select object)
+Для выполнения (используя объект Select)
 
 .. code-block:: php
    :linenos:
@@ -62,8 +63,8 @@ To execute (using a Select object)
    $selectString = $sql->getSqlStringForSqlObject($select);
    $results = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
 
-Zend\\Db\\Sql\\Sql objects can also be bound to a particular table so that in getting a select, insert, update, or
-delete object, they are all primarily seeded with the same table when produced.
+Так же объекты Zend\\Db\\Sql\\Sql могут быть привязаны к заданной таблице. Поэтому все действия с объектами
+select, insert, update, delete будут выполняются с одной таблицей.
 
 .. code-block:: php
    :linenos:
@@ -75,10 +76,10 @@ delete object, they are all primarily seeded with the same table when produced.
 
 .. _zend.db.sql.sql-objects:
 
-Zend\\Db\\Sql's Select, Insert, Update and Delete
+Zend\\Db\\Sql Select, Insert, Update и Delete
 -------------------------------------------------
 
-Each of these objects implement the following (2) interfaces:
+Каждый из этих объектов реализует следующие (2) интерфейсы:
 
 .. code-block:: php
    :linenos:
@@ -90,28 +91,29 @@ Each of these objects implement the following (2) interfaces:
         public function getSqlString(PlatformInterface $adapterPlatform = null);
    }
 
-These are the functions you can call to either produce (a) a prepared statement, or (b) a string to be executed.
+Эти функции Вы можете вызывать при создании либо (а) подготовленного выражения, либо (б) полной строки запроса,
+которые будут выполнены.
 
 .. _zend.db.sql.select:
 
 Zend\\Db\\Sql\\Select
 ---------------------
 
-``Zend\Db\Sql\Select`` is an object who's primary function is to present a unified API for building platform
-specific SQL SELECT queries. The class can be instantiated and consumed without ``Zend\Db\Sql\Sql``:
+Основная роль ``Zend\Db\Sql\Select`` - это предоставление унифицированного API для создания специфичных для
+конкретной платформы SQL запросов SELECT. Этот класс может быть создан и использован без ``Zend\Db\Sql\Sql``:
 
 .. code-block:: php
    :linenos:
 
    use Zend\Db\Sql\Select;
    $select = new Select();
-   // or, to produce a $select bound to a specific table
+   // или дял создания $select, привязанного к конкретной таблице
    $select = new Select('foo');
 
-If a table is provided to the Select object, then from() cannot be called later to change the name of the table.
+Если вы указали имя таблицы в объекте Select, то уже нельзя будет вызвать метод from() для изменения имени таблицы.
 
-Once you have a valid Select object, the following API can be used to further specify various select statement
-parts:
+Как только вы получили валидный объект Select, следующее API можно использовать для определения различных частей
+выражения:
 
 .. code-block:: php
    :linenos:
@@ -193,8 +195,8 @@ join():
 where(), having():
 ..................
 
-The ``Zend\Db\Sql\Select`` object provides bit of flexibility as it regards to what kind of
-parameters are acceptable when calling where() or having().  The method signature is listed as:
+Объект ``Zend\Db\Sql\Select`` предоставляет большую гибкость при выборе способов задания необходимых параметров
+для where() и having(). Синтаксис метода следующий:
 
 .. code-block:: php
     :linenos:
@@ -208,16 +210,14 @@ parameters are acceptable when calling where() or having().  The method signatur
      */
     public function where($predicate, $combination = Predicate\PredicateSet::OP_AND);
     
-As you can see, there are a number of different ways to pass criteria to both having() and
-where().  
+Как вы смогли убедиться, существует множество различных путей для назначения параметров для where() и having().
 
-If you provide a ``Zend\Db\Sql\Where`` object to where() or a
-``Zend\Db\Sql\Having`` object to having(), the internal objects for Select will be replaced
-completely.  When the where/having() is processed, this object will be iterated to produce
-the WHERE or HAVING section of the SELECT statement.
+Если вы передаете объект ``Zend\Db\Sql\Where`` в метод where()  или объект ``Zend\Db\Sql\Having`` в метод
+having(), то внутренние объекты для Select будут полностью заменены. При выполнении метода where/having() он будет
+использован для построения секции WHERE или HAVING в выражении SELECT.
 
-If you provide a ``Closure`` to where() or having(), this function will be called with
-the Select's ``Where`` object as the only parameter.  So the following is possible:
+Если вы передаете замыкание (``Closure``) в where() или having(), то эта функция будет вызвана с объектом
+``Where`` в качестве единственного параметра. Таким образом, возможно следующее:
 
 .. code-block:: php
     :linenos:
@@ -228,11 +228,11 @@ the Select's ``Where`` object as the only parameter.  So the following is possib
     
     $select->where($spec);
 
-If you provide a string, this string will be used to instantiate a
-``Zend\Db\Sql\Predicate\Expression`` object so that it's contents will be applied
-as is.  This means that there will be no quoting in the fragment provided.
+Если же вы передаете строку, то она будет использована для создания экземпляра объекта
+``Zend\Db\Sql\Predicate\Expression`` и её содержимое будет использоваться без обработки. Это означает, что
+фрагмент не будет заключен в кавычки.
 
-Consider the following code:
+Рассмотрим следующий код:
 
 .. code-block:: php
     :linenos:
@@ -240,12 +240,12 @@ Consider the following code:
     // SELECT "foo".* FROM "foo" WHERE x = 5
     $select->from('foo')->where('x = 5');
 
-If you provide an array who's values are keyed by an integer, the value can either 
-be a string that will be then used to build a ``Predicate\Expression`` or any object
-that implements ``Predicate\PredicateInterface``.  These objects are pushed onto the
-Where stack with the $combination provided.
+Если вы передаете массив, где ключами являются целые числа, значениями могут быть либо строки, которые будут
+использованы для построения ``Predicate\Expression``, либо любые объекты, реализующие
+``Predicate\PredicateInterface``. Эти объекты помещаются в очередь Where с предоставленным $combination
+(условием объединения).
 
-Consider the following code:
+Рассмотрим следующий код:
 
 .. code-block:: php
     :linenos:
@@ -253,14 +253,14 @@ Consider the following code:
     // SELECT "foo".* FROM "foo" WHERE x = 5 AND y = z
     $select->from('foo')->where(array('x = 5', 'y = z'));
 
-If you provide an array who's values are keyed with a string, these values will
-be handled in the following:
+Если вы передаете массив, где ключами являются строки, то эти значения будут обрабатываться следующим образом:
 
-* PHP value nulls will be made into a ``Predicate\IsNull`` object
-* PHP value array()s will be made into a ``Predicate\In`` object
-* PHP value strings will be made into a ``Predicate\Operator`` object such that the string key will be identifier, and the value will target value.
+* значение PHP-типа NULL будет преобразовано в объект ``Predicate\IsNull``
+* значение PHP-типа array() будет преобразовано в объект ``Predicate\In``
+* значение PHP-типа string  будет преобразовано в объект ``Predicate\Operator`` так, что строковой ключ будет
+  идентификатором, значение будет соответствовать целевому значению
 
-Consider the following code:
+Рассмотрим следующий код:
 
 .. code-block:: php
     :linenos:
@@ -304,7 +304,7 @@ limit() and offset():
 Zend\\Db\\Sql\\Insert
 ---------------------
 
-The Insert API:
+Insert API:
 
 .. code-block:: php
    :linenos:
@@ -320,7 +320,7 @@ The Insert API:
    	public function values(array $values, $flag = self::VALUES_SET);
    }
 
-Similarly to Select objects, the table can be set at construction time or via into().
+Так же как и в объекте Select, имя таблицы можно указывать в конструкторе или в методе into().
 
 columns():
 ..........
@@ -380,7 +380,7 @@ set():
 where():
 ........
 
-See where section below.
+Смотрите раздел where далее.
 
 .. _zend.db.sql.delete:
 
@@ -401,28 +401,28 @@ Zend\\Db\\Sql\\Delete
 where():
 ........
 
-See where section below.
+Смотрите раздел where далее.
 
 .. _zend.db.sql.where:
 
-Zend\\Db\\Sql\\Where & Zend\\Db\\Sql\\Having
+Zend\\Db\\Sql\\Where и Zend\\Db\\Sql\\Having
 --------------------------------------------
 
-In the following, we will talk about Where, Having is implies as being the same API.
+Далее, говоря о Where, будем подразумевать, что они с Having имеют одинаковый API. 
 
-Effectively, Where and Having extend from the same base object, a Predicate (and PredicateSet). All of the parts
-that make up a where or having that are and'ed or or'd together are called predicates. The full set of predicates
-is called a PredicateSet. This object set generally contains the values (and identifiers) separate from the
-fragment they belong to until the last possible moment when the statement is either used to be prepared
-(parameteritized), or executed. In parameterization, the parameters will be replaced with their proper placeholder
-(a named or positional parameter), and the values stored inside a Adapter\\ParameterContainer. When executed, the
-values will be interpolated into the fragments they belong to and properly quoted.
+Очевидно, что Where и Having наследуются от одного объекта - Predicate (и PredicateSet). Все части Where и Having
+которые могут быть соединены через «AND» или «OR» называются предикатами (predicates). Полный набор предикатов
+называется PredicateSet. Этот объект обычно содержит контейнер со значениями (и идентификаторами) отдельно от
+фрагментов к которым они принадлежат до того момента, когда выражение должно быть подготовлено (параметризировано)
+или выполнено.  При  параметризации параметры замещают заполнители (placeholder), а сами значения хранятся внутри
+Adapter\\ParameterContainer. А при выполении значения будут интерполированы в принадлежащие им фрагменты и
+заключены в кавычки если это необходимо.
 
-It is important to know that in this API, a distinction is made between what elements are considered identifiers
-(TYPE_IDENTIFIER) and which of those is a value (TYPE_VALUE). There is also a special use case type for literal
-values (TYPE_LITERAL). These are all exposed via the ``Zend\Db\Sql\ExpressionInterface`` interface.
+Важно помнить, что в этом API есть различия между элементами являющимися идентификаторами (TYPE_IDENTIFIER) и
+значениями (TYPE_VALUE). Так же есть специальная методика использования для типа литерального типа - TYPE_LITERAL.
+Все выше перечисленное доступно через интерфейс Zend\Db\Sql\ExpressionInterface. 
 
-The Zend\\Db\\Sql\\Where (Predicate/PredicateSet) API:
+Zend\\Db\\Sql\\Where (Predicate/PredicateSet) API:
 
 .. code-block:: php
    :linenos:
@@ -463,8 +463,8 @@ The Zend\\Db\\Sql\\Where (Predicate/PredicateSet) API:
         public function count();
    }
 
-Each method in the Where API will produce a corresponding Predicate object of a similarly named type, described
-below, with the full API of the object:
+Каждый метод Where API производит соответствующий объект предиката (Predicate) одноименных типов, описанных ниже,
+в полном API:
 
 equalTo(), lessThan(), greaterThan(), lessThanOrEqualTo(), greaterThanOrEqualTo():
 ..................................................................................

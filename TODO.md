@@ -54,7 +54,6 @@ example section is present, but full documentation is missing.
 - Mail (Lead: Dolf Schimmel (Freeaqingme))
 - ServiceManager (Lead: Ralph Schindler (ralphschindler))
 - Stdlib (Lead: Matthew Weier O'Phinney (weierophinney))
-- View (Lead: Matthew Weier O'Phinney (weierophinney))
 
 Broken documentation
 --------------------
@@ -68,3 +67,4 @@ on the mailing list to determine what needs to be fixed.
 - Loader (Lead: Matthew Weier O'Phinney (weierophinney))
 - ModuleManager (Lead: Evan Coury (EvanDotPro))
 - Mvc (Lead: Matthew Weier O'Phinney (weierophinney))
+- View (Lead: Matthew Weier O'Phinney (weierophinney))

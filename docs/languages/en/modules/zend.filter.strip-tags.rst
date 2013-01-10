@@ -20,8 +20,7 @@ This filter can strip XML and HTML tags from given content.
 
 .. _zend.filter.set.striptags.options:
 
-Supported options for Zend\\Filter\\StripTags
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Supported Options
 
 The following options are supported for ``Zend\Filter\StripTags``:
 
@@ -33,8 +32,7 @@ from the given content.
 
 .. _zend.filter.set.striptags.basic:
 
-Basic usage
-^^^^^^^^^^^
+.. rubric:: Basic Usage
 
 See the following example for the default behaviour of this filter: 
 
@@ -61,8 +59,7 @@ The above will return 'This contains' with the rest being stripped.
 
 .. _zend.filter.set.striptags.allowtags:
 
-Allowing defined tags
-^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Allowing Defined Tags
 
 ``Zend\Filter\StripTags`` allows stripping of all but defined tags. This can be used for example to
 strip all tags but links from a text.
@@ -85,8 +82,7 @@ the link. By providing an array you can set multiple tags at once.
 
 .. _zend.filter.set.striptags.allowattributes:
 
-Allowing defined attributes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Allowing Defined Attributes
 
 It is also possible to strip all but allowed attributes from a tag. 
 

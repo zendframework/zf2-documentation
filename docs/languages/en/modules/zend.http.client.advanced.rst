@@ -113,8 +113,7 @@ further requests.
 
    // First request: log in and start a session
    $client->setUri('http://example.com/login.php');
-   $client->setParameterPost(array('user' => 'h4x0r'));
-   $client->setParameterPost(array('password' => 'l33t'));
+   $client->setParameterPost(array('user' => 'h4x0r', 'password' => 'l33t'));
    $response = $client->request('POST');
    $cookies->addCookiesFromResponse($response, $client->getUri());
 
@@ -147,18 +146,18 @@ as the following example shows:
 
     // Setting a single header. Will not overwrite any 
     // previously-added headers of the same name.
-    $client->addHeaderLine('Host', 'www.example.com');
+    $headers->addHeaderLine('Host', 'www.example.com');
 
     // Another way of doing the exact same thing
-    $client->addHeaderLine('Host: www.example.com');
+    $headers->addHeaderLine('Host: www.example.com');
 
     // Another way of doing the exact same thing using
     // the provided Zend\Http\Header class
-    $client->addHeader(Zend\Http\Header\Host::fromString('Host: www.example.com'));
+    $headers->addHeader(Zend\Http\Header\Host::fromString('Host: www.example.com'));
 
     // You can also add multiple headers at once by passing an
     // array to addHeaders using any of the formats below:
-    $client->addHeaders(array(
+    $headers->addHeaders(array(
         // Zend\Http\Header\* object
         Zend\Http\Header\Host::fromString('Host: www.example.com'),
 

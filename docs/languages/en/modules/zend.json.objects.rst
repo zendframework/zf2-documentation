@@ -44,6 +44,15 @@ If you are encoding *PHP* objects by default the encoding mechanism can only acc
 objects. When a method ``toJson()`` is implemented on an object to encode, ``Zend\Json\Json`` calls this method
 and expects the object to return a *JSON* representation of its internal state.
 
+``Zend\Json\Json`` can encode PHP objects recursively but does not do so by default. This can be enabled by passing
+``true`` as a second argument to ``Zend\Json\Json::encode()``.
+
+.. code-block:: php
+    :linenos:
+
+    // Encode PHP object recursively
+    $jsonObject = Zend\Json\Json::encode($data, true);
+
 .. _zend.json.advanced.internal:
 
 Internal Encoder/Decoder
@@ -67,8 +76,8 @@ achieve this by calling:
 JSON Expressions
 ----------------
 
-Javascript makes heavy use of anonymnous function callbacks, which can be saved within *JSON* object variables.
-Still they only work if not returned inside double qoutes, which ``Zend\Json`` naturally does. With the Expression
+Javascript makes heavy use of anonymous function callbacks, which can be saved within *JSON* object variables.
+Still they only work if not returned inside double quotes, which ``Zend\Json`` naturally does. With the Expression
 support for ``Zend\Json`` support you can encode *JSON* objects with valid javascript callbacks. This works for
 both ``json_encode()`` or the internal encoder.
 

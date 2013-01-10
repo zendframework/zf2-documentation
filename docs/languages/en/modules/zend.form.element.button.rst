@@ -1,7 +1,7 @@
 .. _zend.form.element.button:
 
-Button Element
-^^^^^^^^^^^^^^
+Button
+^^^^^^
 
 ``Zend\Form\Element\Button`` represents a button form input.
 It can be used with the ``Zend/Form/View/Helper/FormButton`` view helper.
@@ -10,8 +10,7 @@ It can be used with the ``Zend/Form/View/Helper/FormButton`` view helper.
 
 .. _zend.form.element.button.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 This element automatically adds a ``type`` attribute of value ``button``.
 

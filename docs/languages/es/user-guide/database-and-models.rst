@@ -88,12 +88,12 @@ Vamos a empezar con nuestra clase ``Album`` que se encuentra dentro del director
 
 Nuestro objeto ``Album`` es uma simple clase PHP. Para poder trabajar con la clase
 ``Zend\Db``’s ``AbstractTableGateway``, tenemos que usar el método
-``exchangeArray()``. This method simply copies the data from the passed
-in array to our entity’s properties. We will add an input filter for use with
-our form later.
+``exchangeArray()``. Este método simplemente copia los datos pasados 
+en un array a las propiedades de nuestra entidad. Añadiremos un filtro de entrada para utilizar con nuestro 
+formulario más tarde.
 
-Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
-``AlbumTable`` class in the module’s ``Model`` directory like this:
+Después extendemos ``Zend\Db\TableGateway\AbstractTableGateway`` y creamos nuestro propia
+clase ``AlbumTable`` en el directorio ``Model`` del módulo, así:
 
 .. code-block:: php
 
@@ -157,39 +157,39 @@ Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
         }
     }
 
-There’s a lot going on here. Firstly, we set the protected property ``$table``
-to the name of the database table, ‘album’ in this case. We then write a
-constructor that takes a database adapter as its only parameter and assigns it
-to the adapter property of our class. We then need to tell the table gateway’s
-result set that whenever it creates a new row object, it should use an ``Album``
-object to do so. The ``TableGateway`` classes use the prototype pattern for
-creation of result sets and entities. This means that instead of instantiating
-when required, the system clones a previously instantiated object. See 
+Aquí ocurren muchas cosas. En primer lugar, asignamos a la propiedad protegida ``$table``
+el nombre de la tabla en la base de datos, ‘album’ en este caso. Entonces escribimos un
+constructor que tome un adaptador para la base de datos como único parámetro y lo asigne
+a la propiedad adapter de nuestra clase. Entonces, necesitamos decirle al result set del
+table gateway que cada vez que cree un nuevo objeto fila (row), debería utilizar un objeto
+``Album`` para hacerlo. Las clases ``TableGateway`` utilizan el patrón prototipo para la
+creación de result sets y entidades. Esto significa que en lugar de instanciar
+cuando es necesario, el sistema clona un objeto previamente instanciado. Mire
 `PHP Constructor Best Practices and the Prototype Pattern 
 <http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prototype-pattern>`_
-for more details.
+para mas detalles.
 
-We then create some helper methods that our application will use to interface
-with the database table.  ``fetchAll()`` retrieves all albums rows from the
-database as a ``ResultSet``, ``getAlbum()`` retrieves a single row as an
-``Album`` object, ``saveAlbum()`` either creates a new row in the database or
-updates a row that already exists and ``deleteAlbum()`` removes the row
-completely. The code for each of these methods is, hopefully, self-explanatory.
+Entonces creamos algunos métodos de ayuda que nuestra aplicación utilizará como interfaz
+con la tabla de la base de datos. ``fetchAll()`` recupera todas las filas de albums de la
+base de datos como un ``ResultSet``, ``getAlbum()`` recupera una única fila como un
+objeto ``Album``, ``saveAlbum()`` crea una nueva fila en la base de datos o
+actualiza una fila que ya existe y ``deleteAlbum()`` elimina la fila completamente.
+El código para cada uno de estos métodos, afortunadamente, se explica por sí solo.
 
-Using ServiceManager to configure the database credentials and inject into the controller
------------------------------------------------------------------------------------------
+Utilizando ServiceManager para configurar las credenciales de la base de datos e inyección en el controlador
+------------------------------------------------------------------------------------------------------------
 
-In order to always use the same instance of our ``AlbumTable``, we will use the
-``ServiceManager`` to define how to create one. This is most easily done in the
-Module class where we create a method called ``getServiceConfig()`` which is
-automatically called by the ``ModuleManager`` and applied to the ``ServiceManager``.
-We’ll then be able to retrieve it in our controller when we need it.
+Para utilizar siempre la misma instancia de nuestro ``AlbumTable``, utilizaremos el
+``ServiceManager`` para definir como crear una. Esto se hace de manera simple en la
+clase Module donde creamos un método llamado ``getServiceConfig()`` que es
+automáticamente llamado por el ``ModuleManager`` y aplicado en el ``ServiceManager``.
+Entonces podremos recuperarlo en nuestro controlador cuando lo necesitemos.
 
-To configure the ``ServiceManager``, we can either supply the name of the class
-to be instantiated or a factory (closure or callback) that instantiates the
-object when the ``ServiceManager`` needs it. We start by implementing
-``getServiceConfig()`` to provide a factory that creates an ``AlbumTable``. Add
-this method to the bottom of the ``Module`` class.
+Para configurar el ``ServiceManager``, podemos suministrar el nombre de la clase
+para que sea instanciada o una factoría que instancie el
+objeto cuando el ``ServiceManager`` lo necesite. Empezamos por implementar 
+``getServiceConfig()`` para proveer una factoría que cree un ``AlbumTable``. Añada
+este método al final de la clase ``Module``.
 
 .. code-block:: php
 
@@ -218,17 +218,17 @@ this method to the bottom of the ``Module`` class.
         }
     }
 
-This method returns an array of ``factories`` that are all merged together by
-the ``ModuleManager`` before passing to the ``ServiceManager``. We also need to
-configure the ``ServiceManager`` so that it knows how to get a
-``Zend\Db\Adapter\Adapter``. This is done using a factory called
-``Zend\Db\Adapter\AdapterServiceFactory`` which we can configure within the
-merged config system. Zend Framework 2’s ``ModuleManager`` merges all the
-configuration from each module’s ``module.config.php`` file and then merges in
-the files in ``config/autoload`` (``*.global.php`` and then ``*.local.php``
-files). We’ll add our database configuration information to ``global.php`` which
-you should commit to your version control system.You can use ``local.php``
-(outside of the VCS) to store the credentials for your database if you want to.
+Este método devuelve un array de ``factories`` que son todas combinadas por
+el ``ModuleManager`` antes de pasar al ``ServiceManager``. También necesitamos
+configurar el ``ServiceManager`` para que sepa como tomar un
+``Zend\Db\Adapter\Adapter``. Esto se hace utilizando una factoría llamada
+``Zend\Db\Adapter\AdapterServiceFactory`` que podemos configurar dentro del
+sistema de configuración. El ``ModuleManager`` de Zend Framework 2 combina toda la
+configuración del fichero ``module.config.php`` de cada módulo y entonces une
+los archivos en ``config/autoload`` (archivos ``*.global.php`` y entonces ``*.local.php``).
+Añadiremos la información de configuración de nuestra base de datos en ``global.php``
+que deberá asignar a su sistema de control de versiones. Puede utilizar ``local.php`
+(aparte del VCS) para almacenar las credenciales para su base de datos si lo desea.
 
 .. code-block:: php
 
@@ -249,8 +249,8 @@ you should commit to your version control system.You can use ``local.php``
         ),
     );
 
-You should put your database credentials in ``config/autoloader/local.php`` so
-that they are not in the git repository (as ``local.php`` is ignored):
+Debería poner las credenciales de su base de datos en ``config/autoloader/local.php``
+ya que no están en el repositorio git (``local.php`` es ignorado):
 
 .. code-block:: php
 
@@ -262,9 +262,9 @@ that they are not in the git repository (as ``local.php`` is ignored):
         ),
     );
 
-Now that the ``ServiceManager`` can create an ``AlbumTable`` instance for us, we
-can add a method to the controller to retrieve it. Add ``getAlbumTable()`` to
-the ``AlbumController`` class:
+Ahora que el ``ServiceManager`` puede crear una instancia de ``AlbumTable`` para nosotros,
+podemos añadir un método al controlador para recuperarla. Añada ``getAlbumTable()`` a la
+clase ``AlbumController``:
 
 .. code-block:: php
 
@@ -278,25 +278,24 @@ the ``AlbumController`` class:
             return $this->albumTable;
         }
 
-You should also add:
+Debería añadir también:
 
 .. code-block:: php
 
     protected $albumTable;
 
-to the top of the class.
+al principio de la clase.
 
-We can now call ``getAlbumTable()`` from within our controller whenever we need
-to interact with our model. Let’s start with a list of albums when the ``index``
-action is called.
+Ahora podemos llamar a ``getAlbumTable()`` desde dentro de nuestro controlador cuando lo necesitemos
+para interactuar con nuestro modelo. Empecemos con una lista de albums donde la acción
+``index`` es llamada.
 
 Listado de álbumes 
 ------------------
 
-In order to list the albums, we need to retrieve them from the model and pass
-them to the view. To do this, we fill in ``indexAction()`` within
-``AlbumController``.  Update the ``AlbumController``’s ``indexAction()`` like
-this:
+Para listar los albums, necesitamos recuperarlos del modelo y pasarlos
+a la vista. Para hacer esto, completamos ``indexAction()`` dentro de
+``AlbumController``. Actualiza la acción ``indexAction()`` así:
 
 .. code-block:: php
 
@@ -310,12 +309,12 @@ this:
         }
     // ...
 
-With Zend Framework 2, in order to set variables in the view, we return a
-``ViewModel`` instance where the first parameter of the constructor is an array
-from the action containing data we need. These are then automatically passed to
-the view script. The ``ViewModel`` object also allows us to change the view
-script that is used, but the default is to use ``{controller name}/{action
-name}``. We can now fill in the ``index.phtml`` view script:
+Con Zend Framework 2, para establecer variables en la vista, devolvemos una
+instancia de ``ViewModel`` donde el primer parámetro del constructor es un array
+de la acción que contiene los datos que necesitamos. Estos son entonces automáticamente pasados
+al script de vista. El objeto ``ViewModel`` también nos permite cambiar el script de
+vista que es utilizado, pero por defecto utiliza ``{controller name}/{action
+name}``. Ahora podemos completar el script de vista ``index.phtml``:
 
 .. code-block:: php
 
@@ -336,7 +335,7 @@ name}``. We can now fill in the ``index.phtml`` view script:
         <th>Artist</th>
         <th>&nbsp;</th>
     </tr>
-    <?php foreach ($albums as $album) : ?>
+    <?php foreach($albums as $album) : ?>
     <tr>
         <td><?php echo $this->escapeHtml($album->title);?></td>
         <td><?php echo $this->escapeHtml($album->artist);?></td>    <td>
@@ -349,36 +348,36 @@ name}``. We can now fill in the ``index.phtml`` view script:
     <?php endforeach; ?>
     </table>
 
-The first thing we do is to set the title for the page (used in the layout) and
-also set the title for the ``<head>`` section using the ``headTitle()`` view
-helper which will display in the browser’s title bar. We then create a link to
-add a new album. 
+Lo primero que hacemos es establecer el título para la página (utilizado en el diseño) y
+además establecer el título para la sección ``<head>`` utilizando el método de ayuda
+``headTitle()`` que lo mostrará en la barra de títulos del navegador. Entonces creamos un link
+para añadir un nuevo album.
 
-The ``url()`` view helper is provided by Zend Framework 2 and is used to create
-the links we need. The first parameter to ``url()`` is the route name we wish to use
-for construction of the URL, and the the second parameter is an array of all the
-variables to fit into the placeholders to use. In this case we use our ‘album’
-route which is set up to accept two placeholder variables: ``action`` and ``id``. 
+El método de ayuda ``url()`` es provisto por Zend Framework 2 y es utilizado para crear
+los links que necesitamos. El primer parámetro para ``url()`` es el nombre de la ruta que queremos utilizar
+para la construcción de la URL, y el segundo parámetro es un array de todas las
+variables para encajar en los lugares de almacenamiento a utilizar. En este caso utilizamos nuestra
+ruta ‘album’ que está montada para aceptar dos variables: ``action`` and ``id``.
 
-We iterate over the ``$albums`` that we assigned from the controller action. The
-Zend Framework 2 view system automatically ensures that these variables are
-extracted into the scope of the view script, so that we don’t have to worry
-about prefixing them with ``$this->`` as we used to have to do with Zend
-Framework 1; however you can do so if you wish. 
+Iteramos sobre la variable ``$albums`` que habíamos asignado en la acción del controlador. El
+sistema de vistas de Zend Framework 2 automáticamente asegura que estas variables son
+extraídas en el ámbito del script de vista, por lo que no tenemos que preocuparnos
+de prefijarlas con ``$this->`` como teníamos que hacer con Zend Framework 1;
+no obstante puede hacerlo si lo desea.
 
-We then create a table to display each album’s title and artist, and provide
-links to allow for editing and deleting the record. A standard ``foreach:`` loop
-is used to iterate over the list of albums, and we use the alternate form using
-a colon and ``endforeach;`` as it is easier to scan than to try and match up
-braces. Again, the ``url()`` view helper is used to create the edit and delete
-links.
+Entonces creamos una tabla para mostrar el título y el artista de cada album, y proveemos
+links para permitir editar y eliminar cada disco. Utilizamos un bucle estándar ``foreach:``
+para iterar sobre la lista de albums, y utilizamos la forma alternativa utilizando
+dos puntos y ``endforeach;`` ya que es más sencillo escanear que probar y emparejar.
+De nuevo, el método de ayuda ``url()`` es utilizado para crear los links de edición y
+eliminación.
 
 .. note::
 
-    We always use the ``escapeHtml()`` view helper to help protect
-    ourselves from XSS vulnerabilities.  
+    Siempre utilizamos el método de ayuda ``escapeHtml()`` para ayudar a protegernos
+    contra vulnerabilidades XSS.
 
-If you open http://zf2-tutorial.localhost/album you should see this:
+Si abre http://zf2-tutorial.localhost/album debería ver algo como esto:
 
 .. image:: ../images/user-guide.database-and-models.album-list.png
     :width: 940 px

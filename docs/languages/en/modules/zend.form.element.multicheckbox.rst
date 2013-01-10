@@ -1,7 +1,7 @@
 .. _zend.form.element.multicheckbox:
 
-MultiCheckbox Element
-^^^^^^^^^^^^^^^^^^^^^
+MultiCheckbox
+^^^^^^^^^^^^^
 
 ``Zend\Form\Element\MultiCheckbox`` is meant to be paired with the ``Zend\Form\View\Helper\FormMultiCheckbox``
 for HTML inputs with type checkbox. This element adds an ``InArray`` validator to its input filter specification
@@ -9,8 +9,7 @@ in order to validate on the server if the checkbox contains values from the mult
 
 .. _zend.form.element.multicheckbox.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 This element automatically adds a ``"type"`` attribute of value ``"checkbox"`` for every checkboxes.
 
@@ -57,8 +56,7 @@ Using the array notation:
 
 .. _zend.form.element.multicheckbox.methods:
 
-Public Methods
-""""""""""""""
+.. rubric:: Public Methods
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element\\Checkbox <zend.form.element.checkbox.methods>` .
 

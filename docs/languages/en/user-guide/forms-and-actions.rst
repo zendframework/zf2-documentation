@@ -83,17 +83,17 @@ going to add the input filter to our ``Album.php`` file in ``module/Album/src/Al
     <?php
     namespace Album\Model;
 
-    use Zend\InputFilter\Factory as InputFactory;
-    use Zend\InputFilter\InputFilter;
-    use Zend\InputFilter\InputFilterAwareInterface;
-    use Zend\InputFilter\InputFilterInterface;
+    use Zend\InputFilter\Factory as InputFactory;     // <-- Add this import
+    use Zend\InputFilter\InputFilter;                 // <-- Add this import
+    use Zend\InputFilter\InputFilterAwareInterface;   // <-- Add this import
+    use Zend\InputFilter\InputFilterInterface;        // <-- Add this import
 
     class Album implements InputFilterAwareInterface
     {
         public $id;
         public $artist;
         public $title;
-        protected $inputFilter;//Add this variable
+        protected $inputFilter;                       // <-- Add this variable
 
         public function exchangeArray($data)
         {
@@ -102,6 +102,7 @@ going to add the input filter to our ``Album.php`` file in ``module/Album/src/Al
             $this->title  = (isset($data['title']))  ? $data['title']  : null;
         }
 
+        // Add content to this method:
         public function setInputFilter(InputFilterInterface $inputFilter)
         {
             throw new \Exception("Not used");
@@ -404,9 +405,9 @@ entity from the database.
 The form’s ``bind()`` method attaches the model to the form. This is used in two
 ways:
 
-# When displaying the form, the initial values for each element are extracted
+* When displaying the form, the initial values for each element are extracted
   from the model.
-# After successful validation in isValid(), the data from the form is put back
+* After successful validation in isValid(), the data from the form is put back
   into the model.
 
 These operations are done using a hydrator object. There are a number of

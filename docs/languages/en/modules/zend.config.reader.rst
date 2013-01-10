@@ -224,7 +224,7 @@ The following example illustrates a basic use of ``Zend\Config\Reader\Json`` for
      }
    }
 
-We can use the ``Zend\Config\Reader\>Json`` to read this JSON file:
+We can use the ``Zend\Config\Reader\Json`` to read this JSON file:
 
 .. code-block:: php
    :linenos:

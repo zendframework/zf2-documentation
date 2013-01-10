@@ -20,7 +20,7 @@ workings are more consistent, performant, and often simpler.
     such, as every route can match and assemble URIs by themselves, which makes them routers, too.
 
     That said, in most cases the developer does not need to worry about this, because Zend Framework 2.x will take
-    care of this "under the hood". The work of the router will done by ``Zend\Mvc\Router\SimpleRouteStack``
+    care of this "under the hood". The work of the router will be done by ``Zend\Mvc\Router\SimpleRouteStack``
     or ``Zend\Mvc\Router\Http\TreeRouteStack``.
 
 The base unit of routing is a ``Route``:
@@ -359,12 +359,12 @@ You may use any route type as a child route of a ``Part`` route.
 .. note::
 
     ``Part`` routes are not meant to be used directly. When you add definitions for ``child_routes`` to any route
-    type, that route will become a ``Part`` route. As already said, describing ``Part`` routes with words is 
+    type, that route will become a ``Part`` route. As already said, describing ``Part`` routes with words is
     difficult, so hopefully the additional :ref:`examples at the end <zend.mvc.routing.http-route-types.examples>`
     will provide further insight.
 
 .. note::
-    
+
     In the above example, the ``$routePlugins`` is an instance of ``Zend\Mvc\Router\RoutePluginManager``.
 
     .. code-block:: php
@@ -403,7 +403,7 @@ within the string, with the keys coming from either the captured values or named
 ``assemble()`` method.
 
 Just like other routes, the ``Regex`` route can accept "defaults", parameters to include in the ``RouteMatch`` when
-succesfully matched.
+successfully matched.
 
 .. code-block:: php
    :linenos:

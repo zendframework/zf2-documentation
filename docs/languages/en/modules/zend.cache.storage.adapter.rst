@@ -11,10 +11,10 @@ Overview
    Storage adapters are wrappers for real storage resources such as memory
    and the filesystem, using the well known adapter pattern.
 
-   They comes with tons of methods to read, write and modify stored items
+   They come with tons of methods to read, write and modify stored items
    and to get information about stored items and the storage.
 
-   All adapters implements the interface ``Zend\Cache\Storage\StorageInterface``
+   All adapters implement the interface ``Zend\Cache\Storage\StorageInterface``
    and most extend ``Zend\Cache\Storage\Adapter\AbstractAdapter``, which comes with basic logic.
 
    Configuration is handled by either ``Zend\Cache\Storage\Adapter\AdapterOptions``,
@@ -94,7 +94,7 @@ Basic Configuration Options
    +==============+=========================+================+=================================================+
    |ttl           |``integer``              |0               |Time to live                                     |
    +--------------+-------------------------+----------------+-------------------------------------------------+
-   |namespace     |``string``               |""              |The "namespace" in which cache items will live   |
+   |namespace     |``string``               |"zfcache"       |The "namespace" in which cache items will live   |
    +--------------+-------------------------+----------------+-------------------------------------------------+
    |key_pattern   |``null`` ``string``      |``null``        |Pattern against which to validate cache keys     |
    +--------------+-------------------------+----------------+-------------------------------------------------+
@@ -114,9 +114,9 @@ The ``Zend\Cache\Storage\StorageInterface`` is the basic interface implemented b
    :noindex:
 
    Load an item with the given $key.
-   
+
    If item exists set parameter $success to ``true``, set parameter $casToken and returns ``mixed`` value of item.
-   
+
    If item can't load set parameter $success to ``false`` and returns ``null``.
 
    :rtype: mixed
@@ -366,7 +366,7 @@ The IterableInterface
 
 The ``Zend\Cache\Storage\IterableInterface`` implements a method to get an
 iterator to iterate over items of the storage. It extends ``IteratorAggregate``
-so it's possible to directly iterator over the storage using ``foreach``.
+so it's possible to directly iterate over the storage using ``foreach``.
 
 .. function:: getIterator()
    :noindex:
@@ -920,10 +920,12 @@ Examples
    :linenos:
 
    $cache   = \Zend\Cache\StorageFactory::factory(array(
-       'storage' => 'filesystem',
+       'adapter' => array(
+           'name' => 'filesystem'
+       ),
        'plugins' => array(
            // Don't throw exceptions on cache errors
-           'exaption_hander' => array(
+           'exception_handler' => array(
                'throw_exceptions' => false
            ),
        )
@@ -944,7 +946,7 @@ Examples
 
    // Instantiate the cache instance using a namespace for the same type of items
    $cache   = \Zend\Cache\StorageFactory::factory(array(
-       'storage' => array(
+       'adapter' => array(
            'name'    => 'filesystem'
            // With a namespace we can indicate the same type of items
            // -> So we can simple use the db id as cache key
@@ -961,7 +963,7 @@ Examples
            'Serializer'
        )
    ));
-   
+
    // Load two rows from cache if possible
    $ids     = array(1, 2);
    $results = $cache->getItems($ids);
@@ -973,10 +975,10 @@ Examples
        foreach ($pdo->query($query, PDO::FETCH_ASSOC) as $row) {
            $missingResults[ $row['id'] ] = $row;
        }
-       
+
        // Update cache items of the loaded rows from db
        $cache->setItems($missingResults);
-       
+
        // merge results from cache and db
        $results = array_merge($results, $missingResults);
    }

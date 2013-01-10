@@ -65,12 +65,12 @@ not using ``Zend\Mvc``, the meat of your code should look something like the fol
        $logger->addWriter($writer);
 
        $filter = new LogFilter(Logger::DEBUG);
-       $logger->addFilter($filter);
+       $writer->addFilter($filter);
 
        foreach ($messages as $i => $message) {
            if ($i-- > 1) { // $messages[2] and up are log messages
                $message = str_replace("\n", "\n  ", $message);
-               $logger->log("Ldap: $i: $message", Logger::DEBUG);
+               $logger->debug("Ldap: $i: $message");
            }
        }
    }

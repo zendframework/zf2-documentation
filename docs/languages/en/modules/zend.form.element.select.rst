@@ -1,7 +1,7 @@
 .. _zend.form.element.select:
 
-Select Element
-^^^^^^^^^^^^^^
+Select
+^^^^^^
 
 ``Zend\Form\Element\Select`` is meant to be paired with the ``Zend\Form\View\Helper\FormSelect`` for HTML inputs
 with type select. This element adds an ``InArray`` validator to its input filter specification in order to validate
@@ -10,8 +10,7 @@ the "multiple" HTML attribute to the element.
 
 .. _zend.form.element.select.usage:
 
-Basic Usage
-"""""""""""
+.. rubric:: Basic Usage
 
 This element automatically adds a ``"type"`` attribute of value ``"select"``.
 
@@ -89,16 +88,20 @@ Option groups are also supported. You just need to add an 'options' key to the v
    	$select = new Element\Select('language');
    	$select->setLabel('Which is your mother tongue?');
    	$select->setValueOptions(array(
-   		'options' => array(
-   			'European languages' => array(
-   				'0' => 'French',
-   				'1' => 'Italian',
-   			),
-   			'Asian languages' => array(
-   				'2' => 'Japanese',
-   				'3' => 'Chinese',
-   			)
-   		)   		
+        'european' => array(
+            'label' => 'European languages',
+            'options' => array(
+                '0' => 'French',
+                '1' => 'Italian',
+            ),
+        ),
+        'asian' => array(
+            'label' => 'Asian languages',
+            'options' => array(
+                '2' => 'Japanese',
+                '3' => 'Chinese',
+            ),
+        ),
    	));
 
    	$form = new Form('language');
@@ -106,8 +109,7 @@ Option groups are also supported. You just need to add an 'options' key to the v
 
 .. _zend.form.element.select.methods:
 
-Public Methods
-""""""""""""""
+.. rubric:: Public Methods
 
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element <zend.form.element.methods>` .
 
