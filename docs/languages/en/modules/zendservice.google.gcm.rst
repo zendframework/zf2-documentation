@@ -1,9 +1,9 @@
-.. _zendservice.googlecloudmessaging:
+.. _zendservice.google.gcm:
 
 ``ZendService\Google\Gcm``
 ====================================
 
-.. _zendservice.googlecloudmessaging.introduction:
+.. _zendservice.google.gcm.introduction:
 
 Introduction
 ------------
@@ -26,7 +26,7 @@ The Client is the broker that sends the message to the GCM server and returns th
 is where you define all of the message specific data that you would like to send.  The response is the feedback
 given back from the GCM server on success, failures and any new canonical id's that must be updated.
 
-.. _zendservice.googlecloudmessaging.quickstart:
+.. _zendservice.google.gcm.quickstart:
 
 Quick Start
 ------------
