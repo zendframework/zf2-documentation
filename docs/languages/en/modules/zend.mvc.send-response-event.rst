@@ -31,3 +31,9 @@ Currently, three listeners are listening to this event at different priorities b
 3. ``Zend\Mvc\SendResponseListener\SimpleStreamResponseSender`` / priority : -3000 / method called : ``__invoke``
 
 Because all these listeners have negative priorities, adding your own logic to modify ``Reponse`` object is easy: just add a new listener without any priority (it will default to 1) and it will always be executed first.
+
+
+Triggerers
+----------
+
+This event is executed when MvcEvent::FINISH event is triggered, with a priority of -10000.
