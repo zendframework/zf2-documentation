@@ -156,6 +156,7 @@
    modules/zend.mvc.services
    modules/zend.mvc.routing
    modules/zend.mvc.mvc-event
+   modules/zend.mvc.send-response-event
    modules/zend.mvc.controllers
    modules/zend.mvc.plugins
    modules/zend.mvc.examples
@@ -542,6 +543,7 @@ Zend\\Mvc
         * :doc:`modules/zend.mvc.services`
         * :doc:`modules/zend.mvc.routing`
         * :doc:`modules/zend.mvc.mvc-event`
+        * :doc:`modules/zend.mvc.send-response-event`
         * :doc:`modules/zend.mvc.controllers`
         * :doc:`modules/zend.mvc.plugins`
         * :doc:`modules/zend.mvc.examples`
