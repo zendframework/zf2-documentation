@@ -59,21 +59,21 @@ Listeners
 The following classes are listening to this event (they are sorted from higher priority to lower priority):
 
 For PhpStrategy
-"""""""""""""""""""""""
+"""""""""""""""
 
 This listener are added when the strategy used for rendering is ``PhpStrategy``:
 
 1. ``Zend\View\Strategy\PhpStrategy`` / priority : 1 / method called: ``selectRenderer`` => return a ``PhpRenderer``
 
 For JsonStrategy
-"""""""""""""""""""""""
+""""""""""""""""
 
 This listener are added when the strategy used for rendering is ``JsonStrategy``:
 
 1. ``Zend\View\Strategy\JsonStrategy`` / priority : 1 / method called: ``selectRenderer`` => return a ``JsonRenderer``
 
 For FeedStrategy
-"""""""""""""""""""""""
+""""""""""""""""
 
 This listener are added when the strategy used for rendering is ``FeedStrategy``:
 
@@ -115,21 +115,21 @@ Listeners
 The following classes are listening to this event (they are sorted from higher priority to lower priority):
 
 For PhpStrategy
-"""""""""""""""""""""""
+"""""""""""""""
 
 This listener are added when the strategy used for rendering is ``PhpStrategy``:
 
 1. ``Zend\View\Strategy\PhpStrategy`` / priority : 1 / method called: ``injectResponse`` => populate the ``Response`` object from the view.
 
 For JsonStrategy
-"""""""""""""""""""""""
+""""""""""""""""
 
 This listener are added when the strategy used for rendering is ``JsonStrategy``:
 
 1. ``Zend\View\Strategy\JsonStrategy`` / priority : 1 / method called: ``injectResponse`` => populate the ``Response`` object from the view.
 
 For FeedStrategy
-"""""""""""""""""""""""
+""""""""""""""""
 
 This listener are added when the strategy used for rendering is ``FeedStrategy``:
 
