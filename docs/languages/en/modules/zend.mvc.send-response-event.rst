@@ -21,7 +21,8 @@ The methods it defines are:
 - ``headersSent()``
 
 
-## Listeners
+Listeners
+---------
 
 Currently, three listeners are listening to this event at different priorities based on which listener is used most.
 
