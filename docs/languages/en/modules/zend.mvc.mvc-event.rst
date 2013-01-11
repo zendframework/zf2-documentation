@@ -72,3 +72,239 @@ execution in the event, to allow event listeners to introspect them and utilize 
 example, the results could be passed into a view renderer.
 
 
+Order of events
+---------------
+
+The following events are triggered, in the following order:
+
+1. BOOTSTRAP: Bootstrap the application by creating the ViewManager.
+2. ROUTE: Perform all the route work (matching…).
+3. DISPATCH: Dispatch the matched route to a controller/action.
+4. DISPATCH_ERROR: Event triggered in case of a problem during dispatch process (unknown controller…).
+5. RENDER: Prepare the data and delegate the rendering to the view layer.
+6. RENDER_ERROR: Event triggered in case of a problem during the render process (no renderer found…).
+7. FINISH: Perform any task once everything is done.
+
+Those events are extensively describe in the following sections.
+
+
+MvcEvent::BOOTSRAP
+------------------
+
+Listeners
+^^^^^^^^^
+
+The following classes are listening to this event (they are sorted from higher priority to lower priority):
+
+1. ``Zend\Mvc\View\Http\ViewManager`` / priority : 10000 / method: ``onBootstrap`` / itself triggers: none => preparing the view layer (instantiate a ``Zend\Mvc\View\Http\ViewManager``…).
+
+
+Triggerers
+^^^^^^^^^^
+
+This event is triggered by the following classes:
+
+* ``Zend\Mvc\Application`` / method: ``bootstrap``.
+
+
+MvcEvent::ROUTE
+---------------
+
+Listeners
+^^^^^^^^^
+
+The following classes are listening to this event (they are sorted from higher priority to lower priority):
+
+1. ``Zend\Mvc\ModuleRouteListener`` / priority: 1 / method: ``onRoute`` / itself triggers: none => this listener determines if the module namespace should be prepended to the controller name. This is the case if the route match contains a parameter key matching the MODULE_NAMESPACE constant.
+2. ``Zend\Mvc\RouteListener`` / priority: 1 / method: ``onRoute`` / itself triggers: MvcEvent::EVENT_DISPATCH_ERROR (if no route is matched) => tries to match the request to the router and return a RouteMatch object.
+
+
+Triggerers
+^^^^^^^^^^
+
+This event is triggered by the following classes:
+
+* ``Zend\Mvc\Application`` / method: ``run`` => it also has a short circuit callback that allows to stop the propagation of the event if an error is raised during the routing.
+
+
+
+MvcEvent::DISPATCH
+------------------
+
+Listeners
+^^^^^^^^^
+
+The following classes are listening to this event (they are sorted from higher priority to lower priority):
+
+Console context only
+""""""""""""""""""""
+
+Those listeners are only attached in a Console context:
+
+1. ``Zend\Mvc\View\Console\InjectNamedConsoleParamsListener`` / priority: 1000 / method: ``injectNamedParams`` => merge all the params (route matched params and params in the command) and add them to the Request obbject.
+2. ``Zend\Mvc\View\Console\CreateViewModelListener`` / priority: -80 / method: ``createViewModelFromArray`` => if the controller action returned an associative array, it casts it to a ``ConsoleModel`` object.
+3. ``Zend\Mvc\View\Console\CreateViewModelListener`` / priority: -80 / method: ``createViewModelFromString`` => if the controller action returned a string, it casts it to a ``ConsoleModel`` object.
+4. ``Zend\Mvc\View\Console\CreateViewModelListener`` / priority: -80 / method: ``createViewModelFromNull`` => if the controller action returned null, it casts it to a ``ConsoleModel`` object.
+5. ``Zend\Mvc\View\Console\InjectViewModelListener`` / priority: -100 / method: ``injectViewModel`` => inserts the ``ViewModel`` (in this case, a ``ConsoleModel``) and adds it to the MvcEvent object. It either (a) adds it as a child to the default, composed view model, or (b) replaces it if the result is marked as terminable.
+
+
+Http context only
+"""""""""""""""""
+
+Those listeners are only attached in a Http context:
+
+1. ``Zend\Mvc\View\Http\CreateViewModelListener`` / priority: -80 / method: ``createViewModelFromArray`` => if the controller action returned an associative array, it casts it to a ``ViewModel`` object.
+2. ``Zend\Mvc\View\Http\CreateViewModelListener`` / priority: -80 / method: ``createViewModelFromNull`` => if the controller action returned null, it casts it to a ``ViewModel`` object.
+3. ``Zend\Mvc\View\Http\RouteNotFoundStrategy`` / priority: -90 / method: ``prepareNotFoundViewModel`` => it creates and return a 404 ``ViewModel``.
+4. ``Zend\Mvc\View\Http\InjectTemplateListener`` / priority: -90 / method: ``injectTemplate`` => inject a template into the view model, if none present. Template is derived from the controller found in the route match, and, optionally, the action, if present.
+5. ``Zend\Mvc\View\Http\InjectViewModelListener`` / priority: -100 / method: ``injectViewModel`` => inserts the ``ViewModel`` (in this case, a ``ViewModel``) and adds it to the MvcEvent object. It either (a) adds it as a child to the default, composed view model, or (b) replaces it if the result is marked as terminable.
+
+
+All contexts
+""""""""""""
+
+Those listeners are attached for both contexts:
+
+1. ``Zend\Mvc\DispatchListener`` / priority: 1 / method: ``onDispatch`` / itself triggers: MvcEvent::EVENT_DISPATCH_ERROR (if an exception is raised during dispatch processs) => try to load the matched controller from the service manager (and throws various exceptions if it does not).
+2. ``Zend\Mvc\AbstractController`` / priority: 1 / method: ``onDispatch`` => the ``onDispatch`` method of the ``AbstractController`` is an abstract method. In ``AbstractActionController`` for instance, it simply calls the action method.
+
+
+Triggerers
+^^^^^^^^^^
+
+This event is triggered by the following classes:
+
+* ``Zend\Mvc\Application`` / method: ``run`` => it also has a short circuit callback that allows to stop the propagation of the event if an error is raised during the routing.
+* ``Zend\Mvc\Controller\AbstractController`` / method: ``dispatch`` => if a listener returns a ``Response`` object, it stops propagation. Note: every ``AbstractController`` listen to this event and execute the ``onBootstrap`` method when it is triggered.
+
+
+MvcEvent::DISPATCH_ERROR
+------------------------
+
+Listeners
+^^^^^^^^^
+
+The following classes are listening to this event (they are sorted from higher priority to lower priority):
+
+Console context only
+""""""""""""""""""""
+
+Those listeners are only attached in a Console context:
+
+1. ``Zend\Mvc\View\Console\RouteNotFoundStrategy`` / priority: 1 / method: ``handleRouteNotFoundError`` => detect if an error is a route not found condition. If a "controller not found" or "invalid controller" error type is encountered, sets the response status code to 404.
+2. ``Zend\Mvc\View\Console\ExceptionStrategy`` / priority: 1 / method: ``prepareExceptionViewModel`` => create an exception view model and set the status code to 404
+3. ``Zend\Mvc\View\Console\InjectViewModelListener`` / priority: -100 / method: ``injectViewModel`` => inserts the ``ViewModel`` (in this case, a ``ConsoleModel``) and adds it to the MvcEvent object. It either (a) adds it as a child to the default, composed view model, or (b) replaces it if the result is marked as terminable.
+
+
+Http context only
+"""""""""""""""""
+
+Those listeners are only attached in a Http context:
+
+1. ``Zend\Mvc\View\Http\RouteNotFoundStrategy`` / priority: 1 / method: ``detectNotFoundError`` => detect if an error is a 404 condition. If a "controller not found" or "invalid controller" error type is encountered, sets the response status code to 404.
+2. ``Zend\Mvc\View\Http\RouteNotFoundStrategy`` / priority: 1 / method: ``prepareNotFoundViewModel`` => create and return a 404 view model.
+3. ``Zend\Mvc\View\Http\ExceptionStrategy`` / priority: 1 / method: ``prepareExceptionViewModel`` => create an exception view model and set the status code to 404
+4. ``Zend\Mvc\View\Http\InjectViewModelListener`` / priority: -100 / method: ``injectViewModel`` => inserts the ``ViewModel`` (in this case, a ``ViewModel``) and adds it to the MvcEvent object. It either (a) adds it as a child to the default, composed view model, or (b) replaces it if the result is marked as terminable.
+
+
+All contexts
+""""""""""""
+
+Those listeners are attached for both contexts:
+
+1. ``Zend\Mvc\DispatchListener`` / priority: 1 / method: ``reportMonitorEvent`` => used to monitoring when Zend Server is used.
+
+
+Triggerers
+^^^^^^^^^^
+
+This event is triggered by the following classes:
+
+* ``Zend\Mvc\DispatchListener`` / method: ``onDispatch``.
+* ``Zend\Mvc\DispatchListener`` / method: ``marshallControllerNotFoundEvent``.
+* ``Zend\Mvc\DispatchListener`` / method: ``marshallBadControllerEvent``.
+
+
+MvcEvent::RENDER
+----------------
+
+Listeners
+^^^^^^^^^
+
+The following classes are listening to this event (they are sorted from higher priority to lower priority):
+
+Console context only
+""""""""""""""""""""
+
+Those listeners are only attached in a Console context:
+
+1. ``Zend\Mvc\View\Console\DefaultRenderingStrategy`` / priority: -10000 / method: ``render`` => render the view.
+
+
+Http context only
+"""""""""""""""""
+
+Those listeners are only attached in a Http context:
+
+1. ``Zend\Mvc\View\Http\DefaultRenderingStrategy`` / priority: -10000 / method: ``render`` => render the view.
+
+
+Triggerers
+^^^^^^^^^^
+
+This event is triggered by the following classes:
+
+* ``Zend\Mvc\Application`` / method: ``completeRequest`` => this event is triggered just before the MvcEvent::FINISH event.
+
+
+MvcEvent::RENDER_ERROR
+----------------------
+
+Listeners
+^^^^^^^^^
+
+The following classes are listening to this event (they are sorted from higher priority to lower priority):
+
+
+Console context only
+""""""""""""""""""""
+
+Those listeners are only attached in a Console context:
+
+1. ``Zend\Mvc\View\Console\ExceptionStrategy`` / priority: 1 / method: ``prepareExceptionViewModel`` => create an exception view model and set the status code to 404.
+2. ``Zend\Mvc\View\Console\InjectViewModelListener`` / priority: -100 / method: ``injectViewModel`` => inserts the ``ViewModel`` (in this case, a ``ConsoleModel``) and adds it to the MvcEvent object. It either (a) adds it as a child to the default, composed view model, or (b) replaces it if the result is marked as terminable.
+
+Http context only
+"""""""""""""""""
+
+Those listeners are only attached in a Http context:
+
+1. ``Zend\Mvc\View\Console\ExceptionStrategy`` / priority: 1 / method: ``prepareExceptionViewModel`` => create an exception view model and set the status code to 404.
+2. ``Zend\Mvc\View\Console\InjectViewModelListener`` / priority: -100 / method: ``injectViewModel`` => inserts the ``ViewModel`` (in this case, a ``ViewModel``) and adds it to the MvcEvent object. It either (a) adds it as a child to the default, composed view model, or (b) replaces it if the result is marked as terminable.
+
+
+Triggerers
+^^^^^^^^^^
+
+This event is triggered by the following classes:
+
+* ``Zend\Mvc\View\Http\DefaultRenderingStrategy`` / method: ``render`` => this event is triggered if an exception is raised during rendering.
+
+
+MvcEvent::FINISH
+----------------
+
+Listeners
+^^^^^^^^^
+
+The following classes are listening to this event (they are sorted from higher priority to lower priority):
+
+1. ``Zend\Mvc\SendResponseListener`` / priority: -10000 / method: ``sendResponse`` => it triggers the ``SendResponseEvent`` in order to prepare the response (see the next page for more information about ``SendResponseEvent``).
+
+
+Triggerers
+^^^^^^^^^^
+
+* ``Zend\Mvc\Application`` / method: ``run`` => this event is triggered once the MvcEvent::ROUTE event returns a correct ``ResponseInterface``.
+* ``Zend\Mvc\Application`` / method: ``run`` => this event is triggered once the MvcEvent::DISPATCH event returns a correct ``ResponseInterface``.
+* ``Zend\Mvc\Application`` / method: ``completeRequest`` => this event is triggered after the MvcEvent::RENDER (this means that, at this point, the view is already rendered).

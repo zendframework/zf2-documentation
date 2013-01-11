@@ -87,6 +87,7 @@
    modules/zend.feed.reader
    modules/zend.feed.writer
    modules/zend.feed.pubsubhubbub
+   modules/zend.file.class-file-locator
    modules/zend.filter
    modules/zend.filter.set
    modules/zend.filter.word
@@ -384,6 +385,13 @@ Zend\\Feed
         * :doc:`modules/zend.feed.writer`
         * :doc:`modules/zend.feed.pubsubhubbub`
 
+.. _zend.file:
+
+Zend\\File
+^^^^^^^^^^^^
+
+        * :doc:`modules/zend.file.class-file-locator`
+
 .. _zend.filter:
 
 Zend\\Filter
@@ -404,6 +412,7 @@ Zend\\Form
         * :doc:`modules/zend.form.intro`
         * :doc:`modules/zend.form.quick-start`
         * :doc:`modules/zend.form.collections`
+        * :doc:`modules/zend.form.advanced-use-of-forms`
         * :doc:`modules/zend.form.elements`
         * :doc:`modules/zend.form.view.helpers`
 
