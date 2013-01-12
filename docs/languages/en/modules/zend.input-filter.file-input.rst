@@ -5,10 +5,14 @@ File Upload Input
 
 The ``Zend\FileInput`` class is a special ``Input`` type for uploaded files found in the ``$_FILES`` array.
 
-While ``FileInput`` uses the same interface as ``Input``, it is special in two ways:
+While ``FileInput`` uses the same interface as ``Input``, it differs in a few ways:
 
 1. It expects the raw value to be in the ``$_FILES`` array format.
 2. The validators are run **before** the filters (which is the opposite behavior of ``Input``).
+   This is so that any ``is_uploaded_file()`` validation can be run prior to any filters that may
+   rename/move/modify the file.
+3. Instead of adding a ``NotEmpty`` validator, it will (by default) automatically add a
+   ``Zend\Validator\File\Upload`` validator.
 
 The biggest thing to be concerned about is that if you are using a ``<input type="file">`` element in your form,
 you will need to use the ``FileInput`` **instead of** ``Input`` or else you will encounter issues.
