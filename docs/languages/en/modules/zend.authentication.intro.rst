@@ -201,6 +201,43 @@ performs the automatic storage of the identity.
    // success
    $result = $auth->authenticate($authAdapter);
 
+.. _zend.authentication.introduction.persistence.chain:
+
+Chain Storage
+^^^^^^^^^^^^^
+
+A website may have multiple storage in place. The ``Chain`` Storage can be used to glue these together.
+
+The ``Chain`` can for example be configured to first use a ``Session`` Storage and then use a ``OAuth`` as
+a secundary Storage. One could configure this in the following way:
+
+.. code-block:: php
+   :linenos:
+
+    $storage = new Chain;
+    $storage->add(new Session);
+    $storage->add(new OAuth); // Note: imaginary storage, not part of ZF2
+
+Now if the ``Chain`` Storage is accessed its underlying Storage will get accessed in the order in which they were
+added to the chain. Thus first the ``Session`` Storage is used. Now either:
+
+- The ``Session`` Storage is non-empty and the ``Chain`` will use its contents.
+
+- The ``Sesssion`` Storage is empty. Next the ``OAuth`` Storage is accessed.
+
+  -  If this one is also empty the Chain will act as empty. 
+
+  -  If this one is non-empty the ``Chain`` will use its contents. However it will also populate all Storage with 
+     higher priority. Thus the ``Session`` Storage will be populated with the contents of the ``Oauth`` Storage.
+
+The priority of Storage in the Chain can be made explicit via the ``Chain::add`` method.
+
+.. code-block:: php
+   :linenos:
+
+    $chain->add(new A, 2);
+    $chain->add(new B, 10); // First use B
+
 .. _zend.authentication.introduction.persistence.custom:
 
 Implementing Customized Storage
