@@ -109,7 +109,7 @@ customized authentication result messages to the user. The following result code
 
    Result::SUCCESS
    Result::FAILURE
-   Result::FAILURE_IDENTITY_NOT_FOUNDpopulated
+   Result::FAILURE_IDENTITY_NOT_FOUND
    Result::FAILURE_IDENTITY_AMBIGUOUS
    Result::FAILURE_CREDENTIAL_INVALID
    Result::FAILURE_UNCATEGORIZED
