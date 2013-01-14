@@ -304,7 +304,8 @@ the files in ``config/autoload`` (``*.global.php`` and then ``*.local.php``
 files). We’ll add our database configuration information to ``global.php`` which
 you should commit to your version control system. You can use ``local.php``
 (outside of the VCS) to store the credentials for your database if you want to.
-Modify ``config/autoload/global.php`` with following code:
+Modify ``config/autoload/global.php`` (in the Zend Skeleton root, not inside the 
+Album module) with following code:
 
 .. code-block:: php
 

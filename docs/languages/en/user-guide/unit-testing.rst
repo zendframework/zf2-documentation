@@ -216,7 +216,7 @@ the following contents:
     use Zend\Mvc\Router\RouteMatch;
     use PHPUnit_Framework_TestCase;
 
-    class IndexControllerTest extends PHPUnit_Framework_TestCase
+    class IndexControllerTest extends \PHPUnit_Framework_TestCase
     {
         protected $controller;
         protected $request;
@@ -263,8 +263,7 @@ Now, add the following function to the ``IndexControllerTest`` class:
         $this->assertEquals(200, $response->getStatusCode());
     }
 
-The test is verifying that the homepage responds with HTTP status code 200 and
-that the controller's return value is an instance of ``Zend\View\Model\ViewModel``.
+The test is verifying that the homepage responds with HTTP status code 200.
 
 Testing
 -----------
