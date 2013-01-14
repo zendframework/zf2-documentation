@@ -218,7 +218,7 @@ a secundary Storage. One could configure this in the following way:
     $storage->add(new Session);
     $storage->add(new OAuth); // Note: imaginary storage, not part of ZF2
 
-.. _zend.authentication.introduction.persistence.custom:
+.. _zend.authentication.introduction.persistence.chain.scenario:
 
 Now if the ``Chain`` Storage is accessed its underlying Storage will get accessed in the order in which they were
 added to the chain. Thus first the ``Session`` Storage is used. Now either:
@@ -240,7 +240,7 @@ The priority of Storage in the Chain can be made explicit via the ``Chain::add``
     $chain->add(new A, 2);
     $chain->add(new B, 10); // First use B
 
-.. _zend.authentication.introduction.persistence.custom:
+.. _zend.authentication.introduction.persistence.chain.priority:
 
 Implementing Customized Storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
