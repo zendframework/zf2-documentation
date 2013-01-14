@@ -112,7 +112,7 @@ or any callable:
    });
 
 By default, every filter you add will be added with a conditional ``or``. If you want to add it with ``and``
-(as the ``NumberOfParameterFilter`` that is added to the ``ClassMethods`` hydrator by default) you can to that too:
+(as the ``NumberOfParameterFilter`` that is added to the ``ClassMethods`` hydrator by default) you can do that too:
 
 .. code-block:: php
    :linenos:
