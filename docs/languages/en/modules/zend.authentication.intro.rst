@@ -109,7 +109,7 @@ customized authentication result messages to the user. The following result code
 
    Result::SUCCESS
    Result::FAILURE
-   Result::FAILURE_IDENTITY_NOT_FOUND
+   Result::FAILURE_IDENTITY_NOT_FOUNDpopulated
    Result::FAILURE_IDENTITY_AMBIGUOUS
    Result::FAILURE_CREDENTIAL_INVALID
    Result::FAILURE_UNCATEGORIZED
@@ -230,7 +230,7 @@ added to the chain. Thus first the ``Session`` Storage is used. Now either:
   -  If this one is also empty the Chain will act as empty. 
 
   -  If this one is non-empty the ``Chain`` will use its contents. However it will also populate all Storage with 
-     higher priority. Thus the ``Session`` Storage will be popluated with the contents of the ``Oauth`` Storage.
+     higher priority. Thus the ``Session`` Storage will be populated with the contents of the ``Oauth`` Storage.
 
 The priority of Storage in the Chain can be made explicit via the ``Chain::add`` method.
 
