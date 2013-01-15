@@ -113,7 +113,7 @@ Checking permission using ``isGranted()`` with a class implementing ``Zend\Permi
         public function __construct($userId)
         {
             $this->userId = $userId;
-        ]
+        }
 
         public function setArticle($article)
         {
