@@ -183,6 +183,7 @@
    modules/zend.soap.wsdl
    modules/zend.soap.auto-discovery
    modules/zend.stdlib.hydrator
+   modules/zend.stdlib.hydrator.strategy
    modules/zend.tag.introduction
    modules/zend.tag.cloud
    modules/zend.text.figlet
@@ -616,6 +617,7 @@ Zend\\Stdlib
 ^^^^^^^^^^^^
 
         * :doc:`modules/zend.stdlib.hydrator`
+        * :doc:`modules/zend.stdlib.hydrator.strategy`
 
 .. _zend.tag:
 
