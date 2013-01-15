@@ -3,7 +3,7 @@
 Zend\\Stdlib\\Hydrator\\Filter
 ==============================
 
-The hydrator filters, allows you to manipulate the behaviour, when you want to ``extract()`` your stuff to arrays.
+The hydrator filters, allows you to manipulate the behavior, when you want to ``extract()`` your stuff to arrays.
 This is especially useful, if you want to ``extract()`` your objects to the userland and strip some internals (e.g.
 ``getServiceManager()``).
 
@@ -42,25 +42,25 @@ Filter implementations
 
 - **Zend\\Stdlib\\Hydrator\\Filter\\HasFilter**
 
-  This filter is used in the ``ClassMethods`` hydrator, to decide that has methods will be extracted.
+  This filter is used in the ``ClassMethods`` hydrator, to decide that ``has`` methods will be extracted.
   It checks, if the key that should be extracted starts with ``has`` or looks like this ``Zend\Foo\Bar::hasFoo``
 
 - **Zend\\Stdlib\\Hydrator\\Filter\\IsFilter**
 
-  This filter is used in the ``ClassMethods`` hydrator, to decide that is methods will be extracted.
+  This filter is used in the ``ClassMethods`` hydrator, to decide that ``is`` methods will be extracted.
   It checks, if the key that should be extracted starts with ``is`` or looks like this ``Zend\Foo\Bar::isFoo``
 
 - **Zend\\Stdlib\\Hydrator\\Filter\\MethodMatchFilter**
 
   This filter allows you to strip methods from the extraction with the correct condition in the composite.
-  It checks, if the key that should be extracted matches a method name. Eiter ``getServiceLocator`` or
-  ``Zend\Foo::getServicelocator``. The methodname is specified in the constructor of this filter. The 2nd parameter
-  decides wheter to use white or blacklisting to decide. Default is blacklisting - pass ``false`` to change it.
+  It checks, if the key that should be extracted matches a method name. Either ``getServiceLocator`` or
+  ``Zend\Foo::getServicelocator``. The name of the method is specified in the constructor of this filter. The 2nd parameter
+  decides whether to use white or blacklisting to decide. Default is blacklisting - pass ``false`` to change it.
 
 - **Zend\\Stdlib\\Hydrator\\Filter\\NumberOfParameterFilter**
 
-  This filter is used in the ``ClassMethods`` hydrator, to check the number of parameters. By convention, the get, has
-  and is methods do not get any parameters - but it may happen. You can add your own number of needed parameters,
+  This filter is used in the ``ClassMethods`` hydrator, to check the number of parameters. By convention, the ``get``, ``has``
+  and ``is`` methods do not get any parameters - but it may happen. You can add your own number of needed parameters,
   simply add the number to the constructor. The default value is 0
 
 .. _zend.stdlib.hydrator.filter.remove:
@@ -138,7 +138,7 @@ Or you can add the shipped ones:
 The example above will exclude the ``getServiceManager`` method or the key from the extraction, even if the ``get``
 filter wants to add it.
 
-.. _zend.stdlib.hydrator.filter.compisite:
+.. _zend.stdlib.hydrator.filter.composite:
 
 Use the composite for complex filters
 -------------------------------------
@@ -153,7 +153,7 @@ different composites with different conditions. You can pass the condition to th
 
 **Zend\\Stdlib\\Hydrator\\Filter\\FilterComposite::CONDITION_AND**
 
-  At one level of the composite, all of the filters in that condition block has to return true in order to get extracted
+  At one level of the composite, all of the filters in that condition block has to return ``true`` in order to get extracted
 
 This composition will have a similar logic as the if below:
 
@@ -178,12 +178,11 @@ This composition will have a similar logic as the if below:
             $condition4
             && $condition5
          )
-     )
-    {
+     ) {
     //do extraction
     }
 
-If you've only one condition (only ``and`` or ``or``)block, the other one will be completely ignored.
+If you've only one condition (only ``and`` or ``or``) block, the other one will be completely ignored.
 
 A bit more complex filter can look like this:
 
@@ -218,8 +217,7 @@ A bit more complex filter can look like this:
             $serviceManagerFilter
             && $eventManagerFilter
          )
-     )
-    {
+    ) {
     // do extraction
     }
 
@@ -231,7 +229,7 @@ and ``getEventManager``.
 Using the provider interface
 ----------------------------
 
-There is also a provider interface, that allows you to configure the behaviour of the hydrator inside your objects.
+There is also a provider interface, that allows you to configure the behavior of the hydrator inside your objects.
 
 .. code-block:: php
    :linenos:
