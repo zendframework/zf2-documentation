@@ -96,7 +96,7 @@ Available implementations
 
 - **Zend\\Stdlib\\Hydrator\\Strategy\\SerializableStrategy**
 
-  This is the strategy, that provides the functionality for ``Zend\Stdlib\Hydrator\ArraySerializeable``.
+  This is the strategy, that provides the functionality for ``Zend\Stdlib\Hydrator\ArraySerializable``.
   You can use it with custom implementations for ``Zend\Serializer\Adapter\AdapterInterface`` if you want to.
 
 - **Zend\\Stdlib\\Hydrator\\Strategy\\DefaultStrategy**
@@ -109,7 +109,7 @@ Available implementations
 Writing custom strategies
 -------------------------
 
-As usual, this is not really a very useful example, but will give you a good point how to start with writing your own
+As usual, this is not really a very useful example, but will give you a good point about how to start with writing your own
 strategies and where to use them. This strategy simply transform the value for the defined key to rot13 on ``extract()``
 and back on ``hydrate()``:
 
