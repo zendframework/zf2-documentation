@@ -62,6 +62,13 @@ By default, Zend Framework provides several useful module manager listeners.
    method. If so, it calls the ``getAutoloaderConfig()`` method on the module class and passes the returned array
    to ``Zend\Loader\AutoloaderFactory``.
 
+**Zend\\ModuleManager\\Listener\\ModuleDependencyCheckerListener**
+   This listener checks each module to verify if all the modules it depends on were loaded.
+   When a module class implements ``Zend\ModuleManager\Feature\DependencyIndicatorInterface`` or simply
+   has a defined ``getDependencyModules()`` method, the listener will call ``getDependencyModules()``. Each of
+   the values returned by the method is checked against the loaded modules list: if one of the values is not in
+   that list, a ``Zend\ModuleManager\Exception\MissingDependencyModuleException`` is be thrown.
+
 **Zend\\ModuleManager\\Listener\\ConfigListener**
    If a module class has a ``getConfig()`` method, or implements ``Zend\ModuleManager\Feature\ConfigProviderInterface``,
    this listener will call it and merge the returned array (or ``Traversable`` object) into the main application configuration.
