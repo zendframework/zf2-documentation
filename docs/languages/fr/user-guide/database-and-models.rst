@@ -13,8 +13,8 @@ Rappelez-vous que le modèle est le composant qui est en charge des objectifs
 principaux de l'application (les "règles métier") et, dans notre cas, interagit
 avec la base de données.
 Nous utiliserons la classe ``Zend\Db\TableGateway\TableGateway`` qui est en
-charge de lire, ajouter, modifier et supprimer des enregisrements d'un table
-de la base de donnée.
+charge de lire, ajouter, modifier et supprimer des enregisrements d'une table
+de la base de données.
 
 Nous utiliserons MySQL, au travers du pilote PHP PDO. Il convient alors de créer
 une base de données appelée ``zf2tutorial``, puis d'exécuter les requêtes
@@ -40,7 +40,7 @@ suivantes pour créer la table album avec quelques données.
         VALUES  ('Gotye',  'Making  Mirrors');
 
 (Les données de test choisies sont issues des Bestsellers sur Amazon UK au
-momentat de la rédaction de ces lignes !)
+moment de la rédaction de ces lignes !)
 
 Nous avons maintenant un jeu de données en base et nous pouvons écrire un
 modèle très simple.
@@ -61,7 +61,7 @@ classe ``AlbumTable`` qui étend ``Zend\Db\TableGateway\TableGateway`` pour
 laquelle chaque album est un objet ``Album`` (il s'agit d'une *entité*).
 C'est une implémentation du design pattern Table Data Gateway qui permet
 d'interagir avec les données d'une table.
-Soyez bien concients que le pattern Table Data Gateway peut se révélé limité
+Soyez bien concients que le pattern Table Data Gateway peut se révéler limité
 pour des systèmes de taille importante. Il y a aussi la tentation
 d'implémenter les accès à la base directement dans les actions du controleur
 car ils sont exposés par ``Zend\Db\TableGateway\AbstractTableGateway``.
