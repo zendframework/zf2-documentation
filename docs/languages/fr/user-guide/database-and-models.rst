@@ -1,24 +1,24 @@
-.. EN-Revision: none
 .. _user-guide.database-and-models:
 
 ###################
-Database and models
+La base de données et les modèles
 ###################
 
-The database
+La base de données
 ------------
 
-Now that we have the ``Album`` module set up with controller action methods and
-view scripts, it is time to look at the model section of our application.
-Remember that the model is the part that deals with the application’s core
-purpose (the so-called “business rules”) and, in our case, deals with the
-database. We will make use of Zend Framework class
-``Zend\Db\TableGateway\TableGateway`` which is used to find, insert, update and
-delete rows from a database table.
+Maintenant que nous avons configuré les actions et les vues du module ``Album``,
+nous pouvons nous intéresser à la partie modèle de notre application.
+Rappelez-vous que le modèle est le composant qui est en charge des objectifs
+principaux de l'application (les "règles métier") et, dans notre cas, interagit
+avec la base de données.
+Nous utiliserons la classe ``Zend\Db\TableGateway\TableGateway`` qui est en
+charge de lire, ajouter, modifier et supprimer des enregisrements d'un table
+de la base de donnée.
 
-We are going to use MySQL, via PHP’s PDO driver, so create a database called
-``zf2tutorial``, and run these SQL statements to create the album table with some
-data in it.
+Nous utiliserons MySQL, au travers du pilote PHP PDO. Il convient alors de créer
+une base de données appelée ``zf2tutorial``, puis d'exécuter les requêtes
+suivantes pour créer la table album avec quelques données.
 
 .. code-block:: sql
 
@@ -39,35 +39,39 @@ data in it.
     INSERT INTO album (artist, title)
         VALUES  ('Gotye',  'Making  Mirrors');
 
-(The test data chosen happens to be the Bestsellers on Amazon UK at the time of
-writing!)
+(Les données de test choisies sont issues des Bestsellers sur Amazon UK au
+momentat de la rédaction de ces lignes !)
 
-We now have some data in a database and can write a very simple model for it.
+Nous avons maintenant un jeu de données en base et nous pouvons écrire un
+modèle très simple.
 
-The model files
+Les fichiers de modèles
 ---------------
 
-Zend Framework does not provide a ``Zend\Model`` component as the model is your
-business logic and it’s up to you to decide how you want it to work. There are
-many components that you can use for this depending on your needs. One approach
-is to have model classes that represent each entity in your application and then
-use mapper objects that load and save entities to the database. Another is to
-use an ORM like Doctrine or Propel.
+Zend Framework ne fournit pas un composant ``Zend\Model`` car le modèle
+représente votre logique métier et c'est donc à vous de décider comment il doit
+fonctionner. Il y a plusieurs composants que vous pouvez utiliser en fonction
+de vos besoins. Une approche possible est d'avoir une classe modèle représentant
+chaque entité de votre application et d'utiliser des objets mapper qui chargent
+et sauvegardent ces entitées dans la base de données. Une autre solution est
+d'utiliser un ORM comme Doctrine ou Propel.
 
-For this tutorial, we are going to create a very simple model by creating an
-``AlbumTable`` class that extends ``Zend\Db\TableGateway\TableGateway`` where
-each album object is an ``Album`` object (known as an *entity*). This is an
-implementation of the Table Data Gateway design pattern to allow for interfacing
-with data in a database table. Be aware though that the Table Data Gateway
-pattern can become limiting in larger systems. There is also a temptation to put
-database access code into controller action methods as these are exposed by
-``Zend\Db\TableGateway\AbstractTableGateway``. *Don’t do this*!
+Pour ce tutoriel, nous allons créer un modèle très simple en implémentant une
+classe ``AlbumTable`` qui étend ``Zend\Db\TableGateway\TableGateway`` pour
+laquelle chaque album est un objet ``Album`` (il s'agit d'une *entité*).
+C'est une implémentation du design pattern Table Data Gateway qui permet
+d'interagir avec les données d'une table.
+Soyez bien concients que le pattern Table Data Gateway peut se révélé limité
+pour des systèmes de taille importante. Il y a aussi la tentation
+d'implémenter les accès à la base directement dans les actions du controleur
+car ils sont exposés par ``Zend\Db\TableGateway\AbstractTableGateway``.
+*Ne faites surtout pas ça*!
 
-Let’s start with our ``Album`` entity class within the ``Model`` directory:
+Commençons par créer notre classe entité ``Album`` du répertoire ``Model``:
 
 .. code-block:: php
 
-    // module/Album/src/Album/Model/Album.php:
+    <?php
     namespace Album\Model;
 
     class Album
@@ -84,46 +88,110 @@ Let’s start with our ``Album`` entity class within the ``Model`` directory:
         }
     }
 
-Our ``Album`` entity object is a simple PHP class. In order to work with
-``Zend\Db``’s ``AbstractTableGateway`` class, we need to implement the
-``exchangeArray()`` method. This method simply copies the data from the passed
-in array to our entity’s properties. We will add an input filter for use with
-our form later.
+Notre objet entité ``Album`` est une simple classe PHP. Afin de travailler avec
+la classe ``AbstractTableGateway`` de ``Zend\Db``, nous avons besoin de coder
+la méthode ``exchangeArray()``. Cette méthode copie simplement les données
+passées en tableau vers les propriétés de notre entité. Nous ajouterons par la
+suite un filtre de contrôle pour utiliser les données issues d'un formulaire.
 
-Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
-``AlbumTable`` class in the module’s ``Model`` directory like this:
+Mais d'abord, vérifions que ce modèle Album se comporte comme attendu ?
+Ecrivons quelques tests pour en être sûrs.
+Pour cela, nous créons un fichier ``AlbumTest.php`` dans le dossier
+``module/Album/test/AlbumTest/Model``:
 
 .. code-block:: php
 
-    // module/Album/src/Album/Model/AlbumTable.php:
+    namespace AlbumTest\Model;
+
+    use Album\Model\Album;
+    use PHPUnit_Framework_TestCase;
+
+    class AlbumTest extends PHPUnit_Framework_TestCase
+    {
+        public function testAlbumInitialState()
+        {
+            $album = new Album();
+
+            $this->assertNull($album->artist, '"artist" should initially be null');
+            $this->assertNull($album->id, '"id" should initially be null');
+            $this->assertNull($album->title, '"title" should initially be null');
+        }
+
+        public function testExchangeArraySetsPropertiesCorrectly()
+        {
+            $album = new Album();
+            $data  = array('artist' => 'some artist',
+                           'id'     => 123,
+                           'title'  => 'some title');
+
+            $album->exchangeArray($data);
+
+            $this->assertSame($data['artist'], $album->artist, '"artist" was not set correctly');
+            $this->assertSame($data['id'], $album->id, '"id" was not set correctly');
+            $this->assertSame($data['title'], $album->title, '"title" was not set correctly');
+        }
+
+        public function testExchangeArraySetsPropertiesToNullIfKeysAreNotPresent()
+        {
+            $album = new Album();
+
+            $album->exchangeArray(array('artist' => 'some artist',
+                                        'id'     => 123,
+                                        'title'  => 'some title'));
+            $album->exchangeArray(array());
+
+            $this->assertNull($album->artist, '"artist" should have defaulted to null');
+            $this->assertNull($album->id, '"id" should have defaulted to null');
+            $this->assertNull($album->title, '"title" should have defaulted to null');
+        }
+    }
+
+Nous testons trois choses:
+
+1. Est-ce que toutes les propriétés de Album sont initialement NULL ?
+2. Est-ce que ces propriétés vont être correctement alimentées lorsque nous appellerons ``exchangeArray()`` ?
+3. Est-ce qu'une valeur NULL par défaut sera utilisée pour les propriétés dont la clé est absente du tableau ``$data`` ?
+
+Si nous lançons ``phpunit`` une nouvelle fois, nous allons confirmer que la réponse à ces trois question est "OUI":
+
+.. code-block:: text
+
+    PHPUnit 3.5.15 by Sebastian Bergmann.
+
+    ........
+
+    Time: 0 seconds, Memory: 5.50Mb
+
+    OK (8 tests, 19 assertions)
+
+Ensuite, nous créons notre fichier ``AlbumTable.php`` dans le dossier ``module/Album/src/Album/Model`` de cette façon:
+
+.. code-block:: php
+
+    <?php
     namespace Album\Model;
 
-    use Zend\Db\Adapter\Adapter;
-    use Zend\Db\ResultSet\ResultSet;
-    use Zend\Db\TableGateway\AbstractTableGateway;
+    use Zend\Db\TableGateway\TableGateway;
 
-    class AlbumTable extends AbstractTableGateway
+    class AlbumTable
     {
-        protected $table ='album';
+        protected $tableGateway;
 
-        public function __construct(Adapter $adapter)
+        public function __construct(TableGateway $tableGateway)
         {
-            $this->adapter = $adapter;
-            $this->resultSetPrototype = new ResultSet();
-            $this->resultSetPrototype->setArrayObjectPrototype(new Album());
-            $this->initialize();
+            $this->tableGateway = $tableGateway;
         }
 
         public function fetchAll()
         {
-            $resultSet = $this->select();
+            $resultSet = $this->tableGateway->select();
             return $resultSet;
         }
 
         public function getAlbum($id)
         {
             $id  = (int) $id;
-            $rowset = $this->select(array('id' => $id));
+            $rowset = $this->tableGateway->select(array('id' => $id));
             $row = $rowset->current();
             if (!$row) {
                 throw new \Exception("Could not find row $id");
@@ -137,12 +205,13 @@ Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
                 'artist' => $album->artist,
                 'title'  => $album->title,
             );
+
             $id = (int)$album->id;
             if ($id == 0) {
-                $this->insert($data);
+                $this->tableGateway->insert($data);
             } else {
                 if ($this->getAlbum($id)) {
-                    $this->update($data, array('id' => $id));
+                    $this->tableGateway->update($data, array('id' => $id));
                 } else {
                     throw new \Exception('Form id does not exist');
                 }
@@ -151,51 +220,52 @@ Next, we extend ``Zend\Db\TableGateway\AbstractTableGateway`` and create our own
 
         public function deleteAlbum($id)
         {
-            $this->delete(array('id' => $id));
+            $this->tableGateway->delete(array('id' => $id));
         }
     }
 
-There’s a lot going on here. Firstly, we set the protected property ``$table``
-to the name of the database table, ‘album’ in this case. We then write a
-constructor that takes a database adapter as its only parameter and assigns it
-to the adapter property of our class. We then need to tell the table gateway’s
-result set that whenever it creates a new row object, it should use an ``Album``
-object to do so. The ``TableGateway`` classes use the prototype pattern for
-creation of result sets and entities. This means that instead of instantiating
-when required, the system clones a previously instantiated object. See 
-`PHP Constructor Best Practices and the Prototype Pattern 
-<http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prototype-pattern>`_
-for more details.
+Beaucoup de choses se sont passées ici.
+Premièrement, nous alimentons l'attribut protégé ``$tableGateway`` avec l'instance
+``TableGateway`` passée dans le constructeur. Nous l'utiliserons par la suite
+pour effectuer des opérations sur la table en base pour nos albums.
 
-We then create some helper methods that our application will use to interface
-with the database table.  ``fetchAll()`` retrieves all albums rows from the
-database as a ``ResultSet``, ``getAlbum()`` retrieves a single row as an
-``Album`` object, ``saveAlbum()`` either creates a new row in the database or
-updates a row that already exists and ``deleteAlbum()`` removes the row
-completely. The code for each of these methods is, hopefully, self-explanatory.
+Nous créons ensuite que méthodes helpers que notre application utilisera pour
+interagir avec la passerelle vers les tables.
+``fetchAll()`` lit tous les enregistrements albums de la base dans un ``ResultSet``,
+``getAlbum()`` lit un seul enregistrement dans un objet ``Album``,
+``saveAlbum()`` ajoute ou modifie une ligne dans la base et ``deleteAlbum()``
+supprime complètement une ligne. Le code de chacune de ces méthodes est, nous
+l'espérons, assez explicite.
 
-Using ServiceManager to configure the database credentials and inject into the controller
+Utiliser le ServiceManager pour configurer le table gateway et injecter dans l'objet AlbumTable
 -----------------------------------------------------------------------------------------
 
-In order to always use the same instance of our ``AlbumTable``, we will use the
-``ServiceManager`` to define how to create one. This is most easily done in the
-Module class where we create a method called ``getServiceConfig()`` which is
-automatically called by the ``ModuleManager`` and applied to the ``ServiceManager``.
-We’ll then be able to retrieve it in our controller when we need it.
+Afin de n'utiliser qu'une seule et même instance de notre ``AlbumTable``, nous
+allons utiliser le ``ServiceManager`` pour définir la création de cette instance.
+C'est assez facile à faire au sein de la classe Module à l'endroit où nous
+avons déjà implementé une méthode appelée ``getServiceConfig()`` qui est
+automatiquement appelée par le ``ModuleManager`` et appliquée au ``ServiceManager``.
+Nous serons alors capables de retrouver cette instance dans notre
+controleur lorsque nous en aurons besoin.
 
-To configure the ``ServiceManager``, we can either supply the name of the class
-to be instantiated or a factory (closure or callback) that instantiates the
-object when the ``ServiceManager`` needs it. We start by implementing
-``getServiceConfig()`` to provide a factory that creates an ``AlbumTable``. Add
-this method to the bottom of the ``Module`` class.
+Pour configurer le ``ServiceManager``, nous pouvons soit fournir le nom de la
+classe à instancier ou une factory (closure or fonction de rappel) qui va
+instancier l'objet quand ``ServiceManager`` en aura besoin. Nous commencons par
+implementer ``getServiceConfig()`` pour fournir une factory qui créee une
+``AlbumTable``. Ajouter cette méthode à la fin du fichier ``Module.php`` dans
+``module/Album``.
 
 .. code-block:: php
+    :emphasize-lines: 5-8,14-32
 
-    // module/Album/Module.php:
+    <?php
     namespace Album;
 
-    // Add this import statement:
+    // Add these import statements:
+    use Album\Model\Album;
     use Album\Model\AlbumTable;
+    use Zend\Db\ResultSet\ResultSet;
+    use Zend\Db\TableGateway\TableGateway;
 
     class Module
     {
@@ -207,62 +277,251 @@ this method to the bottom of the ``Module`` class.
             return array(
                 'factories' => array(
                     'Album\Model\AlbumTable' =>  function($sm) {
-                        $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                        $table     = new AlbumTable($dbAdapter);
+                        $tableGateway = $sm->get('AlbumTableGateway');
+                        $table = new AlbumTable($tableGateway);
                         return $table;
+                    },
+                    'AlbumTableGateway' => function ($sm) {
+                        $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                        $resultSetPrototype = new ResultSet();
+                        $resultSetPrototype->setArrayObjectPrototype(new Album());
+                        return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
                     },
                 ),
             );
         }
     }
 
-This method returns an array of ``factories`` that are all merged together by
-the ``ModuleManager`` before passing to the ``ServiceManager``. We also need to
-configure the ``ServiceManager`` so that it knows how to get a
-``Zend\Db\Adapter\Adapter``. This is done using a factory called
-``Zend\Db\Adapter\AdapterServiceFactory`` which we can configure within the
-merged config system. Zend Framework 2’s ``ModuleManager`` merges all the
-configuration from each module’s ``module.config.php`` file and then merges in
-the files in ``config/autoload`` (``*.global.php`` and then ``*.local.php``
-files). We’ll add our database configuration information to ``global.php`` which
-you should commit to your version control system.You can use ``local.php``
-(outside of the VCS) to store the credentials for your database if you want to.
+Cette méthode retourne un tableau de ``factories`` qui sont toutes fusionnées
+par le ``ModuleManager`` avant d'être transmises au ``ServiceManager``. La
+factory de ``Album\Model\AlbumTable`` utilise le ``ServiceManager`` pour créer
+un ``AlbumTableGateway`` à tranmettre vers ``AlbumTable``. Nous indiquons aussi
+au ``ServiceManager`` qu'un objet ``AlbumTableGateway`` est créé en obtenant un
+``Zend\Db\Adapter\Adapter`` (également en provenance du ``ServiceManager``) et
+que cet adaptateur est utilisé pour créer un objet ``TableGateway``. Le
+``TableGateway`` est informé d'utiliser un objet ``Album`` chaque fois qu'il
+crée un nouvel enregistrement résultat. La classe TableGateway utilise le
+prototype pour la création d'ensembles de résultats et pour les entités.
+Cela signifie qu'au lieu d'instancier l'objet quand il en a besoin, le système
+clone un objet précédemment instancié. Pour plus de détails, voir
+`PHP Constructor Best Practices and the Prototype Pattern <http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prototype-pattern>`_.
+
+Enfin, nous avons besoin de configurer le ``ServiceManager`` pour qu'il puisse
+savoir comment obtenir un ``Zend\Db\Adapter\Adapter``. Ceci est effectué en
+utilisant une factory appellée ``Zend\Db\Adapter\AdapterServiceFactory`` que
+nous pouvons configurer dans le système de configuration fusionnée. Le
+``ModuleManager`` de Zend Framework 2 fusionne toutes les fichiers de
+configuration ``module.config.php`` de chaque module et fusionne ensuite les
+fichiers du dossier ``config/autoload`` (les fichiers ``*.global.php`` et
+ensuite les fichiers ``*.local.php``). Nous allons ajouter la configuration de
+notre base de données au fichier ``global.php`` qui sera ajouté au système de
+contrôle de version. Vous pouvez utiliser ``local.php`` (exclu du SCV) pour
+stocker les informations de connexion à votre si vous le souhaitez.
+Modifiez ``config/autoload/global.php`` (à la racine de du Zend Skeleton, et non
+pas dans le module Album) avec le code suivant:
 
 .. code-block:: php
 
-    // config/autoload/global.php:
+    <?php
     return array(
         'db' => array(
             'driver'         => 'Pdo',
-            'dsn'            => 'mysql:dbname=zf2tutorial;hostname=localhost',
+            'dsn'            => 'mysql:dbname=zf2tutorial;host=localhost',
             'driver_options' => array(
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
             ),
         ),
         'service_manager' => array(
             'factories' => array(
-                'Zend\Db\Adapter\Adapter' 
+                'Zend\Db\Adapter\Adapter'
                         => 'Zend\Db\Adapter\AdapterServiceFactory',
             ),
         ),
     );
 
-You should put your database credentials in ``config/autoloader/local.php`` so
-that they are not in the git repository (as ``local.php`` is ignored):
+Vous devriez garder les infos de connexion dans ``config/autoload/local.php``
+pour qu'elles ne soient pas intégrées au dépôt git (car ``local.php`` est
+ignoré):
 
 .. code-block:: php
 
-    // config.autoload/local.php:
+    <?php
     return array(
         'db' => array(
-            'username' => 'YOUR USERNAME HERE',
-            'password' => 'YOUR PASSWORD HERE',
+            'username' => 'VOTRE NOM UTILISATEUR',
+            'password' => 'VOTRE MOT DE PASSE',
         ),
     );
 
-Now that the ``ServiceManager`` can create an ``AlbumTable`` instance for us, we
-can add a method to the controller to retrieve it. Add ``getAlbumTable()`` to
-the ``AlbumController`` class:
+Tester
+-------
+
+Ecrivons quelques tests pour tout ce code que nous venons d'écrire.
+Premièrement, nous avons besoin d'une classe de test ``AlbumTable``.
+Créez un fichier ``AlbumTableTest.php`` dans ``module/Album/test/AlbumTest/Model``
+
+.. code-block:: php
+
+    <?php
+    namespace AlbumTest\Model;
+
+    use Album\Model\AlbumTable;
+    use Album\Model\Album;
+    use Zend\Db\ResultSet\ResultSet;
+    use PHPUnit_Framework_TestCase;
+
+    class AlbumTableTest extends PHPUnit_Framework_TestCase
+    {
+        public function testFetchAllReturnsAllAlbums()
+        {
+            $resultSet        = new ResultSet();
+            $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway',
+                                               array('select'), array(), '', false);
+            $mockTableGateway->expects($this->once())
+                             ->method('select')
+                             ->with()
+                             ->will($this->returnValue($resultSet));
+
+            $albumTable = new AlbumTable($mockTableGateway);
+
+            $this->assertSame($resultSet, $albumTable->fetchAll());
+        }
+    }
+
+
+Dans ce test, nous introduisons le concept `d'objets Mock
+<http://www.phpunit.de/manual/3.6/en/test-doubles.html#test-doubles.mock-objects>`_.
+Une explication plus détaillée de ce qu'est un objet Mock est hors du champs de
+ce tutoriel, mais il s'agit principalement d'un objet qui agit en lieu et place
+d'un autre et qui se comporte d'une manière prédéfinie. Comme nous testons ici
+``AlbumTable`` et PAS la classe ``TableGateway`` (l'équipe Zend a déjà testé la
+classe ``TableGateway`` et nous savons qu'elle fonctionne), nous voulons juste
+nous assurer que notre classe ``AlbumTable`` interagit comme nous l'attendons
+avec la classe ``TableGatway``. Au dela de cela, nous vérifions que la méthode
+``fetchAll()`` de ``AlbumTable`` va appeler la méthode ``select()`` de
+l'attribut ``$tableGateway`` sans aucun paramètre. Si c'est bien le cas, elle
+doit retourner un objet ``ResultSet``. Enfin, nous nous attendons à ce que ce
+même objet ``ResultSet`` soit retourné à la méthode appelante. Ce test doit se
+dérouler correctement, et nous pouvons ajouter le reste des méthodes de test :
+
+.. code-block:: php
+
+    public function testCanRetrieveAnAlbumByItsId()
+    {
+        $album = new Album();
+        $album->exchangeArray(array('id'     => 123,
+                                    'artist' => 'The Military Wives',
+                                    'title'  => 'In My Dreams'));
+
+        $resultSet = new ResultSet();
+        $resultSet->setArrayObjectPrototype(new Album());
+        $resultSet->initialize(array($album));
+
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('select'), array(), '', false);
+        $mockTableGateway->expects($this->once())
+                         ->method('select')
+                         ->with(array('id' => 123))
+                         ->will($this->returnValue($resultSet));
+
+        $albumTable = new AlbumTable($mockTableGateway);
+
+        $this->assertSame($album, $albumTable->getAlbum(123));
+    }
+
+    public function testCanDeleteAnAlbumByItsId()
+    {
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('delete'), array(), '', false);
+        $mockTableGateway->expects($this->once())
+                         ->method('delete')
+                         ->with(array('id' => 123));
+
+        $albumTable = new AlbumTable($mockTableGateway);
+        $albumTable->deleteAlbum(123);
+    }
+
+    public function testSaveAlbumWillInsertNewAlbumsIfTheyDontAlreadyHaveAnId()
+    {
+        $albumData = array('artist' => 'The Military Wives', 'title' => 'In My Dreams');
+        $album     = new Album();
+        $album->exchangeArray($albumData);
+
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('insert'), array(), '', false);
+        $mockTableGateway->expects($this->once())
+                         ->method('insert')
+                         ->with($albumData);
+
+        $albumTable = new AlbumTable($mockTableGateway);
+        $albumTable->saveAlbum($album);
+    }
+
+    public function testSaveAlbumWillUpdateExistingAlbumsIfTheyAlreadyHaveAnId()
+    {
+        $albumData = array('id' => 123, 'artist' => 'The Military Wives', 'title' => 'In My Dreams');
+        $album     = new Album();
+        $album->exchangeArray($albumData);
+
+        $resultSet = new ResultSet();
+        $resultSet->setArrayObjectPrototype(new Album());
+        $resultSet->initialize(array($album));
+
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway',
+                                           array('select', 'update'), array(), '', false);
+        $mockTableGateway->expects($this->once())
+                         ->method('select')
+                         ->with(array('id' => 123))
+                         ->will($this->returnValue($resultSet));
+        $mockTableGateway->expects($this->once())
+                         ->method('update')
+                         ->with(array('artist' => 'The Military Wives', 'title' => 'In My Dreams'),
+                                array('id' => 123));
+
+        $albumTable = new AlbumTable($mockTableGateway);
+        $albumTable->saveAlbum($album);
+    }
+
+    public function testExceptionIsThrownWhenGettingNonexistentAlbum()
+    {
+        $resultSet = new ResultSet();
+        $resultSet->setArrayObjectPrototype(new Album());
+        $resultSet->initialize(array());
+
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('select'), array(), '', false);
+        $mockTableGateway->expects($this->once())
+                         ->method('select')
+                         ->with(array('id' => 123))
+                         ->will($this->returnValue($resultSet));
+
+        $albumTable = new AlbumTable($mockTableGateway);
+
+        try
+        {
+            $albumTable->getAlbum(123);
+        }
+        catch (\Exception $e)
+        {
+            $this->assertSame('Could not find row 123', $e->getMessage());
+            return;
+        }
+
+        $this->fail('Expected exception was not thrown');
+    }
+
+Examinons un peu nous tests. Nous testons que:
+
+1. Nous pouvons retrouver un unique album par son ID.
+2. Nous pouvons supprimer des albums.
+3. Nous pouvons sauvegarder un nouvel album.
+4. Nous pouvons modifier les albums existants.
+5. Nous allons rencontrer une exception si nous tentons de récupérer un album qui n'existe pas.
+
+Parfait ! Notre classe ``AlbumTable`` est testée. Let's move on!
+
+Retour au controleur
+----------------------
+
+Maintenant que le ``ServiceManager`` peut créer une instance ``AlbumTable`` pour
+nous, nous pouvons ajouter une méthode du contrôleur pour récupérer cette
+instance. Ajoutez ``getAlbumTable()`` à la classe ``AlbumController``:
 
 .. code-block:: php
 
@@ -276,29 +535,41 @@ the ``AlbumController`` class:
             return $this->albumTable;
         }
 
-You should also add:
+Vous devez également ajouter:
 
 .. code-block:: php
 
     protected $albumTable;
 
-to the top of the class.
+au début de la classe.
 
-We can now call ``getAlbumTable()`` from within our controller whenever we need
-to interact with our model. Let’s start with a list of albums when the ``index``
-action is called.
+Nous pouvons désormais appeler ``getAlbumTable()`` depuis notre contrôleur quand
+nous avons besoin pour interagir avec notre modèle. Assurons nous que cela
+fonctionne en écrivant un test.
 
-Listing albums
---------------
-
-In order to list the albums, we need to retrieve them from the model and pass
-them to the view. To do this, we fill in ``indexAction()`` within
-``AlbumController``.  Update the ``AlbumController``’s ``indexAction()`` like
-this:
+Ajoutez ce test à votre classe ``AlbumControllerTest``:
 
 .. code-block:: php
 
-    module/Album/src/Album/Controller/AlbumController.php:
+    public function testGetAlbumTableReturnsAnInstanceOfAlbumTable()
+    {
+        $this->assertInstanceOf('Album\Model\AlbumTable', $this->controller->getAlbumTable());
+    }
+
+Si le service locator est correctement configuré dans ``Module.php``, nous
+devrions avoir une instance de ``Album\Model\AlbumTable`` en appelant ``getAlbumTable()``.
+
+Lister les albums
+--------------
+
+Pour pouvoir lister les albums, nous avons besoin de les récupérer à partir du
+modèle et les transmettre à la vue. Pour cela, nous alimentons ``indexAction()``
+de ``AlbumController``. Modifiez ``indexAction()`` dans ``AlbumController``
+comme ceci:
+
+.. code-block:: php
+
+    // module/Album/src/Album/Controller/AlbumController.php:
     // ...
         public function indexAction()
         {
@@ -308,25 +579,26 @@ this:
         }
     // ...
 
-With Zend Framework 2, in order to set variables in the view, we return a
-``ViewModel`` instance where the first parameter of the constructor is an array
-from the action containing data we need. These are then automatically passed to
-the view script. The ``ViewModel`` object also allows us to change the view
-script that is used, but the default is to use ``{controller name}/{action
-name}``. We can now fill in the ``index.phtml`` view script:
+Avec Zend Framework 2, pour pouvoir aimenter les variables de vue, nous
+retournons une instance ``ViewModel`` pour laquelle le premier paramètre du
+constructeur est un tableau contenant les données dont nous avons besoin. Elles
+sont alors automatiquement passées au script de vue. L'objet ``ViewModel`` nous
+autorise également à changer le script de vue utilisé, mais le comportement par
+défaut est d'utiliser ``{controller name}/{action name}``. Nous pouvons
+maintenant alimenter le script de vue ``index.phtml``:
 
 .. code-block:: php
 
-    <?php 
+    <?php
     // module/Album/view/album/album/index.phtml:
 
     $title = 'My albums';
     $this->headTitle($title);
     ?>
     <h1><?php echo $this->escapeHtml($title); ?></h1>
-
-    <p><a href="<?php echo $this->url('album', array( 
-            'action'=>'add'));?>">Add new album</a></p>
+    <p>
+        <a href="<?php echo $this->url('album', array('action'=>'add'));?>">Add new album</a>
+    </p>
 
     <table class="table">
     <tr>
@@ -337,7 +609,8 @@ name}``. We can now fill in the ``index.phtml`` view script:
     <?php foreach ($albums as $album) : ?>
     <tr>
         <td><?php echo $this->escapeHtml($album->title);?></td>
-        <td><?php echo $this->escapeHtml($album->artist);?></td>    <td>
+        <td><?php echo $this->escapeHtml($album->artist);?></td>
+        <td>
             <a href="<?php echo $this->url('album',
                 array('action'=>'edit', 'id' => $album->id));?>">Edit</a>
             <a href="<?php echo $this->url('album',
@@ -347,33 +620,39 @@ name}``. We can now fill in the ``index.phtml`` view script:
     <?php endforeach; ?>
     </table>
 
-The first thing we do is to set the title for the page (used in the layout) and
-also set the title for the ``<head>`` section using the ``headTitle()`` view
-helper which will display in the browser’s title bar. We then create a link to
-add a new album. 
+La première chose que nous faisons est d'alimenter le titre pour la page
+(utilisé dans le layout) et nous fixons également le titre pour la section
+``<head>`` qui va s'afficher dans la barre de titre du navigateur en utilisant
+l'aide de vue ``headTitle()``. Nous ajoutons ensuite un lien pour ajouter un
+nouvel album.
 
-The ``url()`` view helper is provided by Zend Framework 2 and is used to create
-the links we need. The first parameter to ``url()`` is the route name we wish to use
-for construction of the URL, and the the second parameter is an array of all the
-variables to fit into the placeholders to use. In this case we use our ‘album’
-route which is set up to accept two placeholder variables: ``action`` and ``id``. 
+L'aide de vue ``url()`` est fournie par Zend Framework 2 et est utilisée pour
+créer les liens nécessaires. Le premier paramètre de ``url()`` est le nom de la
+route que nous souhaitons utiliser pour la construction de l'URL, et le second
+paramètre est un tableau des variables de cette route. Dans notre cas, nous
+utilisons la route ‘album’ qui accepte deux variables : ``action`` et ``id``.
 
-We iterate over the ``$albums`` that we assigned from the controller action. The
-Zend Framework 2 view system automatically ensures that these variables are
-extracted into the scope of the view script, so that we don’t have to worry
-about prefixing them with ``$this->`` as we used to have to do with Zend
-Framework 1; however you can do so if you wish. 
+Nous itérons sur les ``$albums`` que nous avons assignés dans l'action du
+contrôleurt. Le système de vues de Zend Framework 2 assure que ces variables
+sont automatiquement extraites dans la portée du script de vue, et nous n'avons
+alors pas à les préfixer par ``$this->`` comme nous en avions l'habitude avec
+Zend Framework 1; quoi qu'il ensoit, vous pouvez quand même le faire.
 
-We then create a table to display each album’s title and artist, and provide
-links to allow for editing and deleting the record. A standard ``foreach:`` loop
-is used to iterate over the list of albums, and we use the alternate form using
-a colon and ``endforeach;`` as it is easier to scan than to try and match up
-braces. Again, the ``url()`` view helper is used to create the edit and delete
-links.
+Nous créons ensuite une table pour afficher chaque titre et artiste de l'album,
+et nous fournissons and des liens pour permettre de modifier et de supprimer les
+enregistrements. Une boucle standard ``foreach:`` est utilisée pour itérer sur la
+liste des albums, et nous utilisons la syntaxe alternative utlisant les doubles
+points et ``endforeach;`` car c'est plus simple à utiliser et à lire plutôt que
+de devoir appareiller des accolades. Encore une fois, l'aide de vue ``url()``
+est utilisée pour créer les liens de modification et de suppression.
 
-Note that we always use the ``escapeHtml()`` view helper to help protect
-ourselves from XSS vulnerabilities.  If you open
-http://zf2-tutorial.localhost/album you should see this:
+.. note::
+
+    Nous utilisons systématiquement l'aide de vue ``escapeHtml()`` pour nous
+    protéger des failles XSS.
+
+Si vous ouvrez la page http://zf2-tutorial.localhost/album vous devriez voir
+ceci:
 
 .. image:: ../images/user-guide.database-and-models.album-list.png
     :width: 940 px
