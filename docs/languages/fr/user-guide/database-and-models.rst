@@ -13,8 +13,8 @@ Rappelez-vous que le modèle est le composant qui est en charge des objectifs
 principaux de l'application (les "règles métier") et, dans notre cas, interagit
 avec la base de données.
 Nous utiliserons la classe ``Zend\Db\TableGateway\TableGateway`` qui est en
-charge de lire, ajouter, modifier et supprimer des enregisrements d'un table
-de la base de donnée.
+charge de lire, ajouter, modifier et supprimer des enregisrements d'une table
+de la base de données.
 
 Nous utiliserons MySQL, au travers du pilote PHP PDO. Il convient alors de créer
 une base de données appelée ``zf2tutorial``, puis d'exécuter les requêtes
@@ -40,7 +40,7 @@ suivantes pour créer la table album avec quelques données.
         VALUES  ('Gotye',  'Making  Mirrors');
 
 (Les données de test choisies sont issues des Bestsellers sur Amazon UK au
-momentat de la rédaction de ces lignes !)
+moment de la rédaction de ces lignes !)
 
 Nous avons maintenant un jeu de données en base et nous pouvons écrire un
 modèle très simple.
@@ -61,7 +61,7 @@ classe ``AlbumTable`` qui étend ``Zend\Db\TableGateway\TableGateway`` pour
 laquelle chaque album est un objet ``Album`` (il s'agit d'une *entité*).
 C'est une implémentation du design pattern Table Data Gateway qui permet
 d'interagir avec les données d'une table.
-Soyez bien concients que le pattern Table Data Gateway peut se révélé limité
+Soyez bien concients que le pattern Table Data Gateway peut se révéler limité
 pour des systèmes de taille importante. Il y a aussi la tentation
 d'implémenter les accès à la base directement dans les actions du controleur
 car ils sont exposés par ``Zend\Db\TableGateway\AbstractTableGateway``.
@@ -94,7 +94,7 @@ la méthode ``exchangeArray()``. Cette méthode copie simplement les données
 passées en tableau vers les propriétés de notre entité. Nous ajouterons par la
 suite un filtre de contrôle pour utiliser les données issues d'un formulaire.
 
-Mais d'abord, vérifions que ce modèle Album se comporte comme attendu ?
+Mais d'abord, vérifions que ce modèle Album se comporte comme attendu.
 Ecrivons quelques tests pour en être sûrs.
 Pour cela, nous créons un fichier ``AlbumTest.php`` dans le dossier
 ``module/Album/test/AlbumTest/Model``:
@@ -229,7 +229,7 @@ Premièrement, nous alimentons l'attribut protégé ``$tableGateway`` avec l'ins
 ``TableGateway`` passée dans le constructeur. Nous l'utiliserons par la suite
 pour effectuer des opérations sur la table en base pour nos albums.
 
-Nous créons ensuite que méthodes helpers que notre application utilisera pour
+Nous créons ensuite quelques méthodes que notre application utilisera pour
 interagir avec la passerelle vers les tables.
 ``fetchAll()`` lit tous les enregistrements albums de la base dans un ``ResultSet``,
 ``getAlbum()`` lit un seul enregistrement dans un objet ``Album``,
@@ -250,7 +250,7 @@ controleur lorsque nous en aurons besoin.
 
 Pour configurer le ``ServiceManager``, nous pouvons soit fournir le nom de la
 classe à instancier ou une factory (closure or fonction de rappel) qui va
-instancier l'objet quand ``ServiceManager`` en aura besoin. Nous commencons par
+instancier l'objet quand le ``ServiceManager`` en aura besoin. Nous commencons par
 implementer ``getServiceConfig()`` pour fournir une factory qui créee une
 ``AlbumTable``. Ajouter cette méthode à la fin du fichier ``Module.php`` dans
 ``module/Album``.
@@ -308,7 +308,7 @@ clone un objet précédemment instancié. Pour plus de détails, voir
 
 Enfin, nous avons besoin de configurer le ``ServiceManager`` pour qu'il puisse
 savoir comment obtenir un ``Zend\Db\Adapter\Adapter``. Ceci est effectué en
-utilisant une factory appellée ``Zend\Db\Adapter\AdapterServiceFactory`` que
+utilisant une factory appelée ``Zend\Db\Adapter\AdapterServiceFactory`` que
 nous pouvons configurer dans le système de configuration fusionnée. Le
 ``ModuleManager`` de Zend Framework 2 fusionne toutes les fichiers de
 configuration ``module.config.php`` de chaque module et fusionne ensuite les
@@ -316,7 +316,7 @@ fichiers du dossier ``config/autoload`` (les fichiers ``*.global.php`` et
 ensuite les fichiers ``*.local.php``). Nous allons ajouter la configuration de
 notre base de données au fichier ``global.php`` qui sera ajouté au système de
 contrôle de version. Vous pouvez utiliser ``local.php`` (exclu du SCV) pour
-stocker les informations de connexion à votre si vous le souhaitez.
+stocker les informations de connexion à votre base si vous le souhaitez.
 Modifiez ``config/autoload/global.php`` (à la racine de du Zend Skeleton, et non
 pas dans le module Album) avec le code suivant:
 
@@ -391,7 +391,7 @@ Créez un fichier ``AlbumTableTest.php`` dans ``module/Album/test/AlbumTest/Mode
 
 Dans ce test, nous introduisons le concept `d'objets Mock
 <http://www.phpunit.de/manual/3.6/en/test-doubles.html#test-doubles.mock-objects>`_.
-Une explication plus détaillée de ce qu'est un objet Mock est hors du champs de
+Une explication plus détaillée de l'objet Mock est hors du champs de
 ce tutoriel, mais il s'agit principalement d'un objet qui agit en lieu et place
 d'un autre et qui se comporte d'une manière prédéfinie. Comme nous testons ici
 ``AlbumTable`` et PAS la classe ``TableGateway`` (l'équipe Zend a déjà testé la
@@ -506,7 +506,7 @@ dérouler correctement, et nous pouvons ajouter le reste des méthodes de test :
         $this->fail('Expected exception was not thrown');
     }
 
-Examinons un peu nous tests. Nous testons que:
+Examinons un peu nos tests. Nous testons que:
 
 1. Nous pouvons retrouver un unique album par son ID.
 2. Nous pouvons supprimer des albums.
@@ -516,7 +516,7 @@ Examinons un peu nous tests. Nous testons que:
 
 Parfait ! Notre classe ``AlbumTable`` est testée. Let's move on!
 
-Retour au controleur
+Retour au contrôleur
 ----------------------
 
 Maintenant que le ``ServiceManager`` peut créer une instance ``AlbumTable`` pour
@@ -636,7 +636,7 @@ Nous itérons sur les ``$albums`` que nous avons assignés dans l'action du
 contrôleurt. Le système de vues de Zend Framework 2 assure que ces variables
 sont automatiquement extraites dans la portée du script de vue, et nous n'avons
 alors pas à les préfixer par ``$this->`` comme nous en avions l'habitude avec
-Zend Framework 1; quoi qu'il ensoit, vous pouvez quand même le faire.
+Zend Framework 1; quoi qu'il en soit, vous pouvez quand même le faire.
 
 Nous créons ensuite une table pour afficher chaque titre et artiste de l'album,
 et nous fournissons and des liens pour permettre de modifier et de supprimer les
