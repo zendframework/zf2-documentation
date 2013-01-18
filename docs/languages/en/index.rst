@@ -185,6 +185,7 @@
    modules/zend.soap.auto-discovery
    modules/zend.stdlib.hydrator
    modules/zend.stdlib.hydrator.filter
+   modules/zend.stdlib.hydrator.strategy
    modules/zend.tag.introduction
    modules/zend.tag.cloud
    modules/zend.text.figlet
@@ -210,6 +211,7 @@
    modules/zendservice.delicious
    modules/zendservice.developer-garden
    modules/zendservice.flickr
+   modules/zendservice.google
    modules/zendservice.livedocx
    modules/zendservice.nirvanix
    modules/zendservice.rackspace
@@ -219,6 +221,7 @@
    modules/zendservice.technorati
    modules/zendservice.twitter
    modules/zendservice.windows-azure
+   modules/zendtool.introduction
    ref/copyrights
 
 |IntroductiontoZendFramework|
@@ -241,6 +244,11 @@
     * :doc:`user-guide/styling-and-translations`
     * :doc:`user-guide/forms-and-actions`
     * :doc:`user-guide/conclusion`
+
+|ZFTool|
+--------
+
+    * :doc:`modules/zendtool.introduction`
 
 |LearningZendFramework|
 -----------------------
@@ -626,6 +634,7 @@ Zend\\Stdlib
 
         * :doc:`modules/zend.stdlib.hydrator`
         * :doc:`modules/zend.stdlib.hydrator.filter`
+        * :doc:`modules/zend.stdlib.hydrator.strategy`
 
 .. _zend.tag:
 
@@ -720,6 +729,11 @@ ZendService\\Flickr
 ^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.flickr`
+
+ZendService\\Google\\Gcm
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zendservice.google.gcm`
 
 ZendService\\LiveDocx
 ^^^^^^^^^^^^^^^^^^^^^
