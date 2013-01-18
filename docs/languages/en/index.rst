@@ -218,6 +218,7 @@
    modules/zendservice.technorati
    modules/zendservice.twitter
    modules/zendservice.windows-azure
+   modules/zendtool.introduction
    ref/copyrights
 
 |IntroductiontoZendFramework|
@@ -240,6 +241,11 @@
     * :doc:`user-guide/styling-and-translations`
     * :doc:`user-guide/forms-and-actions`
     * :doc:`user-guide/conclusion`
+
+|ZFTool|
+--------
+
+    * :doc:`modules/zendtool.introduction`
 
 |LearningZendFramework|
 -----------------------
