@@ -70,7 +70,7 @@ Project creation
 
     <path>              The path of the project to be created
 
-This command install the `ZendSkeletonApplication`_ in the specified path.
+This command installs the `ZendSkeletonApplication`_ in the specified path.
 
 Module creation
 ^^^^^^^^^^^^^^^
