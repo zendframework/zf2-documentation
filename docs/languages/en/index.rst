@@ -76,6 +76,15 @@
    modules/zend.di.debugging-and-complex-use-cases
    modules/zend.dom.intro
    modules/zend.dom.query
+   modules/zend.escaper.introduction
+   modules/zend.escaper.theory-of-operation
+   modules/zend.escaper.configuration
+   modules/zend.escaper.escaping-html
+   modules/zend.escaper.escaping-html-attributes
+   modules/zend.escaper.escaping-javascript
+   modules/zend.escaper.escaping-css
+   modules/zend.escaper.escaping-url
+   modules/zend.escaper.advanced-examples
    modules/zend.event-manager.event-manager
    modules/zend.feed.introduction
    modules/zend.feed.importing
@@ -368,6 +377,21 @@ Zend\\Dom
 
         * :doc:`modules/zend.dom.intro`
         * :doc:`modules/zend.dom.query`
+
+.. _zend.escaper:
+
+Zend\\Escaper
+^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.escaper.introduction`
+        * :doc:`modules/zend.escaper.theory-of-operation`
+        * :doc:`modules/zend.escaper.configuration`
+        * :doc:`modules/zend.escaper.escaping-html`
+        * :doc:`modules/zend.escaper.escaping-html-attributes`
+        * :doc:`modules/zend.escaper.escaping-javascript`
+        * :doc:`modules/zend.escaper.escaping-css`
+        * :doc:`modules/zend.escaper.escaping-url`
+        * :doc:`modules/zend.escaper.advanced-examples`
 
 .. _zend.event-manager:
 
