@@ -3,7 +3,7 @@
 Escaping HTML
 =============
 
-Probably the most common escaping happens in the HTML Body context. There are very few characters with special
+Probably the most common escaping happens in the **HTML Body context**. There are very few characters with special
 meaning in this context, yet it is quite common to escape data incorrectly, namely by setting the wrong flags
 and character encoding.
 
@@ -28,6 +28,11 @@ uses PHP's ``htmlspecialchars``, and additionally correctly sets the flags and e
 One thing a developer needs to pay special attention too, is that the encoding in which the document is served to 
 the client, as it **must be the same** as the encoding used for escaping!
 
+.. _zend.escaper.escaping-html.bad-examples:
+
+Examples of Bad HTML Escaping
+-----------------------------
+
 An example of incorrect usage:
 
 .. code-block:: php
@@ -50,6 +55,11 @@ An example of incorrect usage:
         echo $escaper->escapeHtml($input);
         ?>
     </body>
+
+.. _zend.escaper.escaping-html.good-examples:
+
+Examples of Good HTML Escaping
+------------------------------
 
 An example of correct usage:
 
