@@ -13,6 +13,33 @@ suffers a catastrophic bug in it's HTML parser or Javascript interpreter - both 
 The contexts in which ``Zend\Escaper`` should be used are **HTML Body**, **HTML Attribute**, **Javascript**, **CSS**
 and **URL/URI** contexts.
 
+Every escaper method will take the data to be escaped, make sure it is utf-8 encoded data, or try to convert it to
+utf-8, do the context-based escaping, encode the escaped data back to it's original encoding and return the data to
+the caller.
+
+The actual escaping of the data differs between each method, they all have their own set of rules according to which
+the escaping is done. An example will allow us to clearly demonstrate the difference, and how the
+same characters are being escaped differently between contexts:
+
+.. code-block:: php
+    :linenos:
+
+    $escaper = new Zend\Escaper\Escaper('utf-8');
+
+    // &lt;script&gt;alert(&quot;zf2&quot;)&lt;/script&gt;
+    echo $escaper->escapeHtml('<script>alert("zf2")</script>');
+    // &lt;script&gt;alert&#x28;&quot;zf2&quot;&#x29;&lt;&#x2F;script&gt;
+    echo $escaper->escapeHtmlAttr('<script>alert("zf2")</script>');
+    // \x3Cscript\x3Ealert\x28\x22zf2\x22\x29\x3C\x2Fscript\x3E
+    echo $escaper->escapeJs('<script>alert("zf2")</script>');
+    // \3C script\3E alert\28 \22 zf2\22 \29 \3C \2F script\3E 
+    echo $escaper->escapeCss('<script>alert("zf2")</script>');
+    // %3Cscript%3Ealert%28%22zf2%22%29%3C%2Fscript%3E
+    echo $escaper->escapeUrl('<script>alert("zf2")</script>');
+
+
+More detailed examples will be given in later chapters.
+
 .. _zend.escaper.theory-of-operation.problem-with-inconsistent-functionality
 
 The Problem with Inconsistent Functionality
