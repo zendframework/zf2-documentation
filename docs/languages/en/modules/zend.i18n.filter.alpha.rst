@@ -33,12 +33,12 @@ The following options are supported for ``Alpha``:
    :linenos:
 
    // Default settings, deny whitespace
-   $filter = \Zend\I18n\Filter\Alpha();
+   $filter = new \Zend\I18n\Filter\Alpha();
    echo $filter->filter("This is (my) content: 123");
    // Returns "Thisismycontent"
 
    // Allow whitespace
-   $filter = \Zend\I18n\Filter\Alpha(true);
+   $filter = new \Zend\I18n\Filter\Alpha(true);
    echo $filter->filter("This is (my) content: 123");
    // Returns "This is my content "
 
