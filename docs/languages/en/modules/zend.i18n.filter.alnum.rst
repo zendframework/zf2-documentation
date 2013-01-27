@@ -33,12 +33,12 @@ The following options are supported for ``Alnum``:
    :linenos:
 
    // Default settings, deny whitespace
-   $filter = \Zend\I18n\Filter\Alnum();
+   $filter = new \Zend\I18n\Filter\Alnum();
    echo $filter->filter("This is (my) content: 123");
    // Returns "Thisismycontent123"
 
    // First param in constructor is $allowWhiteSpace
-   $filter = \Zend\I18n\Filter\Alnum(true);
+   $filter = new \Zend\I18n\Filter\Alnum(true);
    echo $filter->filter("This is (my) content: 123");
    // Returns "This is my content 123"
 
