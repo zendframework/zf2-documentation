@@ -1,6 +1,6 @@
 .. _performance.view:
 
-View Rendering
+视图渲染
 ==============
 
 When using Zend Framework's *MVC* layer, chances are you will be using ``Zend_View``. ``Zend_View`` is performs

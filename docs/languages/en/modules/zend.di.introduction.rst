@@ -1,6 +1,6 @@
 .. _zend.di.intro:
 
-Introduction to Zend\\Di
+Zend\\Di介绍
 ========================
 
 .. _zend.di.intro.di:

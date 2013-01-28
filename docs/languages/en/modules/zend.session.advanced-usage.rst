@@ -1,6 +1,6 @@
 .. _zend.session.advanced_usage:
 
-Advanced Usage
+高级用例
 ==============
 
 While the basic usage examples are a perfectly acceptable way to utilize Zend Framework sessions, there are some

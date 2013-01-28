@@ -1,6 +1,6 @@
 .. _zend.mail.encoding:
 
-Encoding
+编码
 ========
 
 Text and *HTML* message bodies are encoded with the quotedprintable mechanism by default. Message headers are also

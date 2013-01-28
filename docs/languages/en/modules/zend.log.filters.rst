@@ -1,6 +1,6 @@
 .. _zend.log.filters:
 
-Filters
+过滤器
 =======
 
 A Filter object blocks a message from being written to the log.

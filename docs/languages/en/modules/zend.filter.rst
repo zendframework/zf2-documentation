@@ -1,6 +1,6 @@
 .. _zend.filter.introduction:
 
-Introduction
+介绍
 ============
 
 The ``Zend\Filter`` component provides a set of commonly needed data filters. It also provides a simple filter

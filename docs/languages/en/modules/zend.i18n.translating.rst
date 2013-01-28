@@ -1,6 +1,6 @@
 .. _zend.i18n.translating:
 
-Translating
+翻译
 ===========
 
 Zend\I18n comes with a complete translation suite which supports all major formats and includes popular features

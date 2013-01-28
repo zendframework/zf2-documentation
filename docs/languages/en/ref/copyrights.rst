@@ -1,7 +1,7 @@
 .. _copyrights:
 
 *********************
-Copyright Information
+版权信息
 *********************
 
 The following copyrights are applicable to portions of Zend Framework.

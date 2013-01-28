@@ -1,6 +1,6 @@
 .. _zend.mvc.routing:
 
-Routing
+路由
 =======
 
 Routing is the act of matching a request to a given controller.

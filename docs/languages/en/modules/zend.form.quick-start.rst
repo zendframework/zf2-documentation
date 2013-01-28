@@ -1,6 +1,6 @@
 .. _zend.form.quick-start:
 
-Form Quick Start
+Form入门指南
 ================
 
 Forms are relatively easy to create. At the bare minimum, each element or fieldset requires a name; typically,

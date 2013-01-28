@@ -1,6 +1,6 @@
 .. _zend.json.advanced:
 
-Advanced Usage of Zend\\Json
+Zend\\Json高级用例
 ===========================
 
 .. _zend.json.advanced.objects1:

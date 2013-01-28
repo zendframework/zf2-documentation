@@ -1,6 +1,6 @@
 .. _zend.module-manager.intro:
 
-Introduction to the Module System
+模块系统介绍
 =================================
 
 Zend Framework 2.0 introduces a new and powerful approach to modules. This new module system is designed with

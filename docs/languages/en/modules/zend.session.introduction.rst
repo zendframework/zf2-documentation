@@ -1,6 +1,6 @@
 .. _zend.session.introduction:
 
-Introduction
+介绍
 ============
 
 The Zend Framework Auth team greatly appreciates your feedback and contributions on our email list:

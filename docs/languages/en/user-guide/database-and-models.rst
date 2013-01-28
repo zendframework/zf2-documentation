@@ -1,7 +1,7 @@
 .. _user-guide.database-and-models:
 
 ###################
-Database and models
+数据和模型
 ###################
 
 The database

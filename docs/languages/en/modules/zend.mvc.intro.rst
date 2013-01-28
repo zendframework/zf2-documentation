@@ -1,6 +1,6 @@
 .. _zend.mvc.intro:
 
-Introduction to the MVC Layer
+MVC布局介绍
 =============================
 
 ``Zend\Mvc`` is a brand new MVC implementation designed from the ground up for Zend Framework 2,

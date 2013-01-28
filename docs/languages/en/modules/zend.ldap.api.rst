@@ -1,6 +1,6 @@
 .. _zend.ldap.api:
 
-API overview
+API概述
 ============
 
 .. _zend.ldap.api.configuration:

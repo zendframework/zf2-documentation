@@ -1,6 +1,6 @@
 .. _zend.json.basics:
 
-Basic Usage
+基础用例
 ===========
 
 Usage of ``Zend\Json`` involves using the two public static methods available: ``Zend\Json\Json::encode()`` and

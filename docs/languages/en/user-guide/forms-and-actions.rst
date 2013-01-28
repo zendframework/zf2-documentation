@@ -1,7 +1,7 @@
 .. _user-guide-forms-and-actions:
 
 #################
-Forms and actions
+表单和动作
 #################
 
 Adding new albums

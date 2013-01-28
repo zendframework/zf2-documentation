@@ -1,6 +1,6 @@
 .. _zendsearch.lucene.overview:
 
-Overview
+概述
 ========
 
 .. _zendsearch.lucene.introduction:

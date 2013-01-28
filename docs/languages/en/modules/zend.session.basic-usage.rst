@@ -1,6 +1,6 @@
 .. _zend.session.basic_usage:
 
-Basic Usage
+基础用例
 ===========
 
 ``Zend\Session\Namespace`` instances provide the primary *API* for manipulating session data in the Zend Framework.
@@ -26,7 +26,7 @@ to instances of ``Zend\Session\Namespace``.
 
 .. _zend.session.basic_usage.basic_examples:
 
-Tutorial Examples
+实例教程
 -----------------
 
 If no namespace is specified when instantiating ``Zend\Session\Namespace``, all data will be transparently stored

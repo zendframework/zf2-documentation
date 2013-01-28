@@ -1,6 +1,6 @@
 .. _zend.log.formatters:
 
-Formatters
+格式化
 ==========
 
 A Formatter is an object that is responsible for taking an ``event`` array describing a log event and outputting a

@@ -1,6 +1,6 @@
 .. _zend.form.collections
 
-Form Collections
+Form集合
 ================
 
 Often, fieldsets or elements in your forms will correspond to other domain

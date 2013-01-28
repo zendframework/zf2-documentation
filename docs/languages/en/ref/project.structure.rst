@@ -6,7 +6,7 @@ Recommended Project Structure for Zend Framework MVC Applications
 
 .. _project-structure.overview:
 
-Overview
+概述
 --------
 
 Many developers seek guidance on the best project structure for a Zend Framework project in a relatively flexible

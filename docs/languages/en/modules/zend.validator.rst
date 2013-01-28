@@ -1,6 +1,6 @@
 .. _zend.validator.introduction:
 
-Introduction
+介绍
 ============
 
 The ``Zend\Validator`` component provides a set of commonly needed validators. It also provides a simple validator

@@ -1,6 +1,6 @@
 .. _zendamf.introduction:
 
-Introduction
+介绍
 ============
 
 ``ZendAmf`` provides support for Adobe's `Action Message Format`_ (*AMF*), to allow communication between Adobe's

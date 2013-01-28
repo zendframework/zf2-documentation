@@ -1,7 +1,7 @@
 .. _user-guide.routing-and-controllers:
 
 #######################
-Routing and controllers
+路由和控制器
 #######################
 
 We will build a very simple inventory system to display our album

@@ -1,6 +1,6 @@
 .. _zend.xmlrpc.introduction:
 
-Introduction
+介绍
 ============
 
 From its `home page`_, *XML-RPC* is described as a "...remote procedure calling using *HTTP* as the transport and

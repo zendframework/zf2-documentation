@@ -1,6 +1,6 @@
 .. _zend.mvc.controllers:
 
-Available Controllers
+可用控制器
 =====================
 
 Controllers in the MVC layer simply need to be objects implementing ``Zend\Stdlib\DispatchableInterface``. That

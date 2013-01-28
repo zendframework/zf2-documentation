@@ -1,6 +1,6 @@
 .. _performance.localization:
 
-Internationalization (i18n) and Localization (l10n)
+国际化 (i18n) and 本地化 (l10n)
 ===================================================
 
 Internationalizing and localizing a site are fantastic ways to expand your audience and ensure that all visitors

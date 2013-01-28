@@ -1,6 +1,6 @@
 .. _zend.authentication.introduction:
 
-Introduction
+介绍
 ============
 
 The ``Zend\Authentication`` component provides an *API* for authentication and includes concrete authentication

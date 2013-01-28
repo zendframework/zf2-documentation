@@ -1,6 +1,6 @@
 .. _zend.module-manager.module-class:
 
-The Module Class
+模块类
 ================
 
 By default, the Zend Framework 2 module system simply expects each module name to be capable of resolving to an object

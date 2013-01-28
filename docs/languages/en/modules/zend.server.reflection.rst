@@ -17,7 +17,7 @@ Typically, this functionality will only be used by developers of server classes 
 
 .. _zend.server.reflection.usage:
 
-Usage
+用例
 -----
 
 Basic usage is simple:

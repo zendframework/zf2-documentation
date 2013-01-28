@@ -1,6 +1,6 @@
 .. _learning.autoloading.conclusion:
 
-Conclusion
+总结
 ==========
 
 Zend Framework encourages the use of autoloading, and even initializes it by default in ``Zend_Application``.

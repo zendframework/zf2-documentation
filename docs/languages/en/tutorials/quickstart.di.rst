@@ -1,12 +1,12 @@
 .. _learning.di:
 
 #############################
-Learning Dependency Injection
+学习依赖注入
 #############################
 
 .. _learning.di.very-brief-introduction-to-di:
 
-Very brief introduction to Di.
+Di简要介绍.
 ------------------------------
 
 **Dependency Injection** is a concept that has been talked about in numerous places over the web. For the purposes
@@ -23,7 +23,7 @@ DI`_, or Fabien Potencier's `Series on DI`_.
 
 .. _learning.di.very-brief-introduction-to-di-container:
 
-Very brief introduction to Di Container.
+Di容器(Container)简要介绍.
 ----------------------------------------
 
 .. code-block:: php
@@ -33,7 +33,7 @@ Very brief introduction to Di Container.
 
 .. _learning.di.simplest-usage-case-2-classes-one-consumes-the-other:
 
-Simplest usage case (2 classes, one consumes the other)
+极简用例 (2类, 一个消耗另一个)
 -------------------------------------------------------
 
 In the simplest use case, a developer might have one class (``A``) that is consumed by another class (``B``)
@@ -191,7 +191,8 @@ annotation based injection.
 
 .. _learning.di.simplest-usage-case-without-type-hints:
 
-Simplest Usage Case Without Type-hints
+
+无类型提示的极简用例
 --------------------------------------
 
 If your code does not have type-hints or you are using 3rd party code that does not have type-hints but does

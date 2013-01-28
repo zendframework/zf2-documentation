@@ -1,6 +1,6 @@
 .. _zend.i18n.view.helper.translate:
 
-Translate Helper
+翻译助手
 ----------------
 
 The ``Translate`` view helper can be used to translate content. It acts as a wrapper for the

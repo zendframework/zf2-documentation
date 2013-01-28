@@ -1,6 +1,6 @@
 .. _zend.navigation.quick-start:
 
-Zend\\Navigation Quick Start
+Zend\\Navigation入门指南
 ============================
 
 The fastest way to get up and running with ``Zend\Navigation`` is by the **navigation** key in your service manager

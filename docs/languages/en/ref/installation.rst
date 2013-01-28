@@ -1,7 +1,7 @@
 .. _introduction.installation:
 
 ************
-Installation
+安装
 ************
 
 .. See the :ref:`requirements appendix <requirements>` for a detailed list of requirements for Zend Framework.

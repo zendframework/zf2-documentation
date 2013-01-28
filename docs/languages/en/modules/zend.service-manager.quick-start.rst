@@ -1,6 +1,6 @@
 .. _zend.service-manager.quick-start:
 
-Zend\\ServiceManager Quick Start
+Zend\\ServiceManager入门指南
 ================================
 
 By default, Zend Framework utilizes ``Zend\ServiceManager`` within the MVC layer. As such, in most cases you'll be

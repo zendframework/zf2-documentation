@@ -1,7 +1,7 @@
 .. _user-guide.overview:
 
 #####################################
-Getting Started with Zend Framework 2
+Zend Framework 2入门指南
 #####################################
 
 This tutorial is intended to give an introduction to using Zend Framework 2 by

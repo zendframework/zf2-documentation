@@ -1,6 +1,6 @@
 .. _zend.input-filter.intro:
 
-Introduction
+介绍
 ============
 
 The ``Zend\InputFilter`` component can be used to filter and validate generic sets of input data. For instance, you

@@ -1,6 +1,6 @@
 .. _zend.log.overview:
 
-Overview
+概述
 ========
 
 ``Zend\Log\Logger`` is a component for general purpose logging. It supports multiple log backends, formatting

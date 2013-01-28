@@ -1,6 +1,6 @@
 .. _performance.database:
 
-Zend_Db Performance
+Zend_Db 性能
 ===================
 
 ``Zend_Db`` is a database abstraction layer, and is intended to provide a common *API* for *SQL* operations.

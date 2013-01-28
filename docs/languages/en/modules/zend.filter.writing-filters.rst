@@ -1,6 +1,6 @@
 .. _zend.filter.writing_filters:
 
-Writing Filters
+编写过滤器
 ===============
 
 ``Zend\Filter`` supplies a set of commonly needed filters, but developers will often need to write custom filters

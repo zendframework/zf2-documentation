@@ -1,22 +1,20 @@
 .. TO TRANSLATORS: You don't need to copy this file to your translation, use
    translated-snippets.rst to translate title if you want
 
-.. |ProgrammersReferenceGuideofZendFramework2| replace:: Programmer's Reference Guide of Zend Framework 2
+.. |ProgrammersReferenceGuideofZendFramework2| replace:: Zend Framework 2程序员参考手册
 
-.. |IntroductiontoZendFramework| replace:: Introduction to Zend Framework 2
+.. |IntroductiontoZendFramework| replace:: Zend Framework 2介绍
 
-.. |UserGuide| replace:: User Guide
+.. |UserGuide| replace:: 用户指南
 
-.. |UserGuideIntroduction| replace:: The user guide is provided to take you through a non-trivial example, showing
-   you various techniques and features of the framework in order to build an
-   application.
+.. |UserGuideIntroduction| replace:: 本例，教你如何用框架的不同的技术和功能来创建一个应用.
 
-.. |LearningZendFramework| replace:: Learning Zend Framework 2
+.. |LearningZendFramework| replace:: 学习Zend Framework 2
 
-.. |ZendFrameworkReference| replace:: Zend Framework 2 Reference
+.. |ZendFrameworkReference| replace:: Zend Framework 2 参考
 
-.. |ZendServiceReference| replace:: Services for Zend Framework 2 Reference
+.. |ZendServiceReference| replace:: Zend Framework 2服务参考
 
-.. |IndicesAndTables| replace:: Indices and tables
+.. |IndicesAndTables| replace:: 索引和表格
 
-.. |ZFTool| replace:: Zend Framework Tool (ZFTool)
+.. |ZFTool| replace:: Zend Framework工具 (ZFTool)

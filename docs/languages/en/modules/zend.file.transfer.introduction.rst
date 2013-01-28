@@ -1,6 +1,6 @@
 .. _zend.file.transfer.introduction:
 
-Zend\File\Transfer
+Zend\File\Transfer介绍
 ==================
 
 ``Zend\File\Transfer`` provides extensive support for file uploads and downloads. It comes with built-in validators

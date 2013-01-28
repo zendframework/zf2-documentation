@@ -1,7 +1,7 @@
 .. _user-guide.skeleton-application:
 
 #######################################
-Getting started: A skeleton application
+入门指南: 一个框架应用
 #######################################
 
 In order to build our application, we will start with the

@@ -1,6 +1,6 @@
 .. _performance.introduction:
 
-Introduction
+介绍
 ============
 
 The purpose of this appendix is to provide some concrete strategies for improving the performance of your Zend

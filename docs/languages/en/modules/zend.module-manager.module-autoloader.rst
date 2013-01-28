@@ -1,6 +1,6 @@
 .. _zend.module-manager.module-autoloader:
 
-The Module Autoloader
+模块自动加载
 =====================
 
 Zend Framework 2 ships with the default module autoloader ``Zend\Loader\ModuleAutoloader``. It is a specialized

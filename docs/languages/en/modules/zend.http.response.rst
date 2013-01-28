@@ -1,6 +1,6 @@
 .. _zend.http.response:
 
-The Response Class
+响应类
 ==================
 
 .. _zend.http.response.intro:

@@ -1,6 +1,6 @@
 .. _zend.event-manager.event-manager:
 
-The EventManager
+事件管理器(EventManager)
 ================
 
 .. _zend.event-manager.event-manager.intro:
@@ -21,7 +21,7 @@ well as via shared collections; trigger events; and interrupt execution of liste
 
 .. _zend.event-manager.event-manager.quick-start:
 
-Quick Start
+入门指南
 -----------
 
 Typically, you will compose an ``EventManager`` instance in a class.
@@ -257,7 +257,7 @@ Configuration Options
 
 .. _zend.event-manager.event-manager.methods:
 
-Available Methods
+可用方法
 -----------------
 
 .. _zend.event-manager.event-manager.methods.constructor:

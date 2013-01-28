@@ -1,6 +1,6 @@
 .. _zendqueue.framework:
 
-Framework
+框架
 =========
 
 The ``ZendQueue\Queue`` is a proxy that hides the details of the queue services. The queue services are represented by

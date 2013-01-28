@@ -1,6 +1,6 @@
 .. _zend.mvc.quick-start:
 
-Quick Start
+入门指南
 ===========
 
 Now that you have basic knowledge of applications, modules, and how they are each structured, we'll show you the easy way to get

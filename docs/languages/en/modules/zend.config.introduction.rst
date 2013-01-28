@@ -1,6 +1,6 @@
 .. _zend.config.introduction:
 
-Introduction
+介绍
 ============
 
 ``Zend\Config`` is designed to simplify access to configuration data within applications. It

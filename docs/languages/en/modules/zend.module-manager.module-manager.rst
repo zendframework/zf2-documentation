@@ -1,6 +1,6 @@
 .. _zend.module-manager.module-manager:
 
-The Module Manager
+模块类管理
 ==================
 
 The module manager, ``Zend\ModuleManager\ModuleManager``, is a very simple class which is responsible for iterating

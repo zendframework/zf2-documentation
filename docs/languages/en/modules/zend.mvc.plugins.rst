@@ -1,6 +1,6 @@
 .. _zend.mvc.controller-plugins:
 
-Controller Plugins
+控制器插件
 ==================
 
 When using the ``AbstractActionController`` or ``AbstractRestfulController``, or if you implement the
