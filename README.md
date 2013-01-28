@@ -1,23 +1,24 @@
-### Welcome to the *Zend Framework 2.0.0* documentation
+### 欢迎使用 *Zend Framework 2.0.0* 手册
 
-## RELEASE INFORMATION
+## 发布信息
 
-This documentation is based on *Zend Framework 2.0-DEV* (master branch)
+本文档是基于*Zend Framework 2.0-DEV* (最大分支)
 
 
-### VIEW THE DOCUMENTATION ONLINE
+### 在线查看文档
 
-We used the [readthedocs.org](http://readthedocs.org/) project to render online the development version of the
-documentation of Zend Framework 2.0.
+使用[readthedocs.org](http://readthedocs.org/)在线渲染Zend Framework 2.0的开发版本文档.
 
-You can read the development online documentation in 
+英文线上文档： 
 [http://zf2.readthedocs.org](http://zf2.readthedocs.org/en/latest/index.html).
+翻译的在线中文文档
+[http://zf2-documentation-zh.readthedocs.org](https://zf2-documentation-zh.readthedocs.org/en/latest/).
 
-You can read the last stable documentation in 
+最新稳定版文档
 [http://packages.zendframework.com/docs/latest/manual/en/](http://packages.zendframework.com/docs/latest/manual/en/).
 
 
-### CONTRIBUTING
+### 贡献
 
 If you wish to contribute to the documentation of Zend Framework 2.0, please read the
 CONTRIBUTING.md file.
@@ -25,12 +26,12 @@ CONTRIBUTING.md file.
 If you don't know where to begin, or where you can best help, please review the
 TODO.md file.
 
-### LICENSE
+### 版本
 
 The files in this archive are released under the Zend Framework license.
 You can find a copy of this license in LICENSE.txt.
 
-### ACKNOWLEDGEMENTS
+### 感谢
 
 The Zend Framework team would like to thank all the [contributors](https://github.com/zendframework/zf2-documentation/contributors) to the Zend
 Framework Documentation project, our corporate sponsor, and you, the Zend Framework user.
