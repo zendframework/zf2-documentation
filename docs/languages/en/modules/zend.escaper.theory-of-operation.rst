@@ -78,3 +78,55 @@ To circumvent the lack of escaping methods in PHP, ``Zend\Escaper`` addresses th
 escaping in web applications. It implements methods that specifically target XSS and offers programmers a tool to
 secure their applications without misusing other inadequate methods, or using, most likely incomplete, home-grown
 solutions.
+
+.. _zend.escaper.theory-of-operation.why-contextual-escaping
+
+Why Contextual Escaping?
+------------------------
+
+To understand why multiple standardised escaping methods are needed, here's a couple of quick points (by no means a
+complete set!):
+
+HTML escaping of unquoted HTML attribute values still allows XSS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is probably the best known way to defeat htmlspecialchars() when used on attribute values since any space 
+(or character interpreted as a space - there are a lot) lets you inject new attributes whose content can't be 
+neutralised by HTML escaping. The solution (where this is possible) is additional escaping as defined by the OWASP
+ESAPI codecs. The point here can be extended further - escaping only works if a programmer or designer know what 
+they're doing. In many contexts, there are additional practices and gotchas that need to be carefully monitored 
+since escaping sometimes needs a little extra help to protect against XSS - even if that means ensuring all 
+attribute values are properly double quoted despite this not being required for valid HTML.
+
+HTML escaping of CSS, Javascript or URIs is often reversed when passed to non-HTML interpreters by the browser
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+HTML escaping is just that - it's designed to escape a string for HTML (i.e. prevent tag or attribute insertion) 
+but not alter the underlying meaning of the content whether it be Text, Javascript, CSS or URIs. For that purpose 
+a fully HTML escaped version of any other context may still have its unescaped form extracted before it's interpreted
+or executed. For this reason we need separate escapers for Javascript, CSS and URIs and those writing templates 
+**must** know which escaper to apply to which context. Of course this means you need to be able to identify the 
+correct context before selecting the right escaper!
+
+DOM based XSS requires a defence using at least two levels of different escaping in many cases
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+DOM based XSS has become increasingly common as Javascript has taken off in popularity for large scale client side
+coding. A simple example is Javascript defined in a template which inserts a new piece of HTML text into the DOM. 
+If the string is only HTML escaped, it may still contain Javascript that will execute in that context. If the string
+is only Javascript escaped, it may contain HTML markup (new tags and attributes) which will be injected into the DOM
+and parsed once the inserting Javascript executes. Damned either way? The solution is to escape twice - first escape
+the string for HTML (make it safe for DOM insertion), and then for Javascript (make it safe for the current 
+Javascript context). Nested contexts are a common means of bypassing naïve escaping habits (e.g. you can inject 
+Javascript into a CSS expression within a HTML Attribute).
+
+PHP has no known anti-XSS escape functions (only those kidnapped from their original purposes)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A simple example, widely used, is when you see ``json_encode()`` used to escape Javascript, or worse, some kind of
+mutant ``addslashes()`` implementation. These were never designed to eliminate XSS yet PHP programmers use them as such.
+For example, ``json_encode()`` does not escape the ampersand or semi-colon characters by default. That means you can 
+easily inject HTML entities which could then be decoded before the Javascript is evaluated in a HTML document. This
+lets you break out of strings, add new JS statements, close tags, etc. In other words, using ``json_encode()`` is 
+insufficient and naïve. The same, arguably, could be said for ``htmlspecialchars()`` which has its own well known 
+limitations that make a singular reliance on it a questionable practice.
