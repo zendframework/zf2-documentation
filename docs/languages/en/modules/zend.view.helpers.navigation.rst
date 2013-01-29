@@ -316,7 +316,7 @@ Notes on the setup:
    $container = new Zend\Navigation\Navigation($pages);
 
    // Store the container in the proxy helper:
-   $view->getHelper('navigation')->setContainer($container);
+   $view->plugin('navigation')->setContainer($container);
 
    // ...or simply:
    $view->navigation($container);
