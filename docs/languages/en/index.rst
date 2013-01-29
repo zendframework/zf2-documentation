@@ -22,6 +22,7 @@
    user-guide/styling-and-translations
    user-guide/forms-and-actions
    user-guide/conclusion
+   modules/zendtool.introduction
    tutorials/quickstart.di
    modules/zend.authentication.intro
    modules/zend.authentication.adapter.dbtable
