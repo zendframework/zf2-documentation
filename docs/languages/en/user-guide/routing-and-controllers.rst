@@ -322,4 +322,4 @@ And execute ``phpunit`` from ``module/Album/test``.
 
     Time: 0 seconds, Memory: 5.75Mb
 
-    OK (5 tests, 10 assertions)
+    OK (4 tests, 4 assertions)

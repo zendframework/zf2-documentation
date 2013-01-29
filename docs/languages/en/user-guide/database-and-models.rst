@@ -155,7 +155,7 @@ If we run ``phpunit`` again, we'll see that the answer to all three questions is
 
     Time: 0 seconds, Memory: 5.50Mb
 
-    OK (8 tests, 19 assertions)
+    OK (7 tests, 13 assertions)
 
 Next, we create our ``AlbumTable.php`` file in ``module/Album/src/Album/Model`` directory like this:
 
