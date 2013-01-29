@@ -201,6 +201,7 @@
    modules/zend.view.quick-start
    modules/zend.view.renderer.php-renderer
    modules/zend.view.php-renderer.scripts
+   modules/zend.view.view-event
    modules/zend.view.helpers
    modules/zend.view.helpers.advanced-usage
    modules/zend.xmlrpc.intro
@@ -685,6 +686,7 @@ Zend\\View
         * :doc:`modules/zend.view.quick-start`
         * :doc:`modules/zend.view.renderer.php-renderer`
         * :doc:`modules/zend.view.php-renderer.scripts`
+        * :doc:`modules/zend.view.view-event`
         * :doc:`modules/zend.view.helpers`
         * :doc:`modules/zend.view.helpers.advanced-usage`
 
