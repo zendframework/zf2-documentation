@@ -41,8 +41,8 @@ For an extra layer of convenience, both ``AbstractActionController`` and ``Abstr
 
 .. _zend.mvc.controller-plugins.flashmessenger:
 
-The FlashMessenger
-------------------
+FlashMessenger Plugin
+---------------------
 
 The ``FlashMessenger`` is a plugin designed to create and retrieve self-expiring, session-based messages. It
 exposes a number of methods:
@@ -78,8 +78,7 @@ iterate over and count the flash messages in the current namespace within the se
 
 .. _zend.mvc.controller-plugins.examples:
 
-Examples
-^^^^^^^^
+.. rubric:: Examples
 
 .. code-block:: php
    :linenos:
@@ -103,8 +102,8 @@ Examples
 
 .. _zend.mvc.controller-plugins.forward:
 
-The Forward Plugin
-------------------
+Forward Plugin
+--------------
 
 Occasionally, you may want to dispatch additional controllers from within the matched controller -- for instance,
 you might use this approach to build up "widgetized" content. The ``Forward`` plugin helps enable this.
@@ -137,8 +136,8 @@ As an example:
 
 .. _zend.mvc.controller-plugins.layout:
 
-The Layout Plugin
------------------
+Layout Plugin
+-------------
 
 The ``Layout`` plugin allows for changing layout templates from within controller actions.
 
@@ -162,8 +161,8 @@ It also implements the ``__invoke`` magic method, which allows for even easier s
 
 .. _zend.mvc.controller-plugins.params:
 
-The Params Plugin
------------------
+Params Plugin
+-------------
 
 The ``Params`` plugin allows for accessing parameters in actions from different sources.
 
@@ -195,8 +194,8 @@ It also implements the ``__invoke`` magic method, which allows for short circuit
 
 .. _zend.mvc.controller-plugins.postredirectget:
 
-The Post/Redirect/Get Plugin
-----------------------------
+Post/Redirect/Get Plugin
+------------------------
 
 When a user sends a POST request (e.g. after submitting a form), their browser will try to protect them from
 sending the POST again, breaking the back button, causing browser warnings and pop-ups, and sometimes reposting
@@ -211,6 +210,8 @@ This plugin can be invoked with two arguments:
   of a route name (this is required when redirecting to a URL instead of a route). This argument defaults to false.
 
 When no arguments are provided, the current matched route is used.
+
+.. rubric:: Example Usage
 
 .. code-block:: php
    :linenos:
@@ -232,10 +233,86 @@ When no arguments are provided, the current matched route is used.
 
    // ... your form processing code here
 
+.. _zend.mvc.controller-plugins.file-postredirectget:
+
+File Post/Redirect/Get Plugin
+-----------------------------
+
+While similar to the standard :ref:`Post/Redirect/Get Plugin <zend.mvc.controller-plugins.postredirectget>`,
+the File PRG Plugin will work for forms with file inputs.
+The difference is in the behavior: The File PRG Plugin will interact
+directly with your form instance and the file inputs, rather than *only* returning the POST params
+from the previous request.
+
+By interacting directly with the form, the File PRG Plugin will turn off any file inputs'
+``required`` flags for already uploaded files (for a partially valid form state), as well as
+run the file input filters to move the uploaded files into a new location
+(configured by the user).
+
+.. warning::
+
+   You **must** attach a Filter for moving the uploaded files to a new location,
+   such as the :ref:`RenameUpload Filter <zend.filter.file.rename-upload>`, or else your files will
+   be removed upon the redirect.
+
+This plugin can be invoked with three arguments:
+
+- ``$form``: the form instance.
+- ``$redirect``: (Optional) a string containing the redirect location which can either be a named route or a URL, based on
+  the contents of the second parameter. If this argument is not provided, it will default to the current matched route.
+- ``$redirectToUrl``: (Optional) a boolean that when set to TRUE, causes the first parameter to be treated as a URL instead
+  of a route name (this is required when redirecting to a URL instead of a route). This argument defaults to false.
+
+.. rubric:: Example Usage
+
+.. code-block:: php
+   :linenos:
+
+   $myForm = new Zend\Form\Form('my-form');
+   $myForm->add(array(
+       'type' => 'Zend\Form\Element\File',
+       'name' => 'file',
+   ));
+   // NOTE: Without a filter to move the file,
+   //       our files will disappear between the requests
+   $myForm->getInputFilter()->getFilterChain()->attach(
+       new Zend\Filter\File\RenameUpload(array(
+           'target'    => './data/tmpuploads/file',
+           'randomize' => true,
+       ))
+   );
+
+   // Pass in the route/url you want to redirect to after the POST
+   $prg = $this->prg($myForm, '/user/profile-pic', true);
+
+   if ($prg instanceof \Zend\Http\PhpEnvironment\Response) {
+       // Returned a response to redirect us
+       return $prg;
+   } elseif ($prg === false) {
+       // First time the form was loaded
+       return array('form' => $myForm);
+   }
+
+   // Form was submitted.
+   // $prg is now an array containing the POST params from the previous request,
+   // but we don't have to apply it to the form since that has already been done.
+
+   // Process the form
+   if ($form->isValid()) {
+       // ...Save the form...
+       return $this->redirect()->toRoute('/user/profile-pic/success');
+   } else {
+       // Form not valid, but file uploads might be valid and uploaded
+       $fileErrors = $form->get('file')->getMessages();
+       if (empty($fileErrors)) {
+           $tempFile = $form->get('file')->getValue();
+       }
+   }
+
 .. _zend.mvc.controller-plugins.redirect:
 
-The Redirect Plugin
--------------------
+Redirect Plugin
+---------------
 
 Redirections are quite common operations within applications. If done manually, you will need to do the following
 steps:
@@ -270,8 +347,8 @@ As an example:
 
 .. _zend.mvc.controller-plugins.url:
 
-The Url Plugin
---------------
+Url Plugin
+----------
 
 Often you may want to generate URLs from route definitions within your controllers -- in order to seed the view,
 generate headers, etc. While the ``MvcEvent`` object composes the router, doing so manually would require this

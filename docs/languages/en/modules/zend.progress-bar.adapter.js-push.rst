@@ -1,7 +1,7 @@
-.. _zend.progressbar.adapter.jspush:
+.. _zend.progress-bar.adapter.js-push:
 
-Zend\ProgressBar\Adapter\JsPush
-===============================
+JsPush Adapter
+^^^^^^^^^^^^^^
 
 ``Zend\ProgressBar\Adapter\JsPush`` is an adapter which let's you update a progressbar in a browser via Javascript
 Push. This means that no second connection is required to gather the status about a running process, but that the
@@ -34,7 +34,7 @@ update with a json object, containing the following parameters:
 
 - *text*: The optional status message, if given
 
-.. _zend.progressbar-adapter.jspush.example:
+.. _zend.progress-bar.adapter.js-push.example:
 
 .. rubric:: Basic example for the client-side stuff
 
