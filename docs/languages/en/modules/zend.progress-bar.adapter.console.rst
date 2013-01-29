@@ -1,7 +1,7 @@
-.. _zend.progressbar.adapter.console:
+.. _zend.progress-bar.adapter.console:
 
-Zend\ProgressBar\Adapter\Console
-================================
+Console Adapter
+^^^^^^^^^^^^^^^
 
 ``Zend\ProgressBar\Adapter\Console`` is a text-based adapter for terminals. It can automatically detect terminal
 widths but supports custom widths as well. You can define which elements are displayed with the progressbar and as
