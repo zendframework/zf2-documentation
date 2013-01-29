@@ -88,15 +88,18 @@
    modules/zend.feed.reader
    modules/zend.feed.writer
    modules/zend.feed.pubsubhubbub
+   modules/zend.file.class-file-locator
    modules/zend.filter
    modules/zend.filter.set
    modules/zend.filter.word
+   modules/zend.filter.file
    modules/zend.filter.filter-chains
    modules/zend.filter.inflector
    modules/zend.filter.writing-filters
    modules/zend.form.intro
    modules/zend.form.quick-start
    modules/zend.form.collections
+   modules/zend.form.file-upload
    modules/zend.form.elements
    modules/zend.form.view.helpers
    modules/zend.http
@@ -112,6 +115,7 @@
    modules/zend.i18n.filters
    modules/zend.i18n.validators
    modules/zend.input-filter.intro
+   modules/zend.input-filter.file-input
    modules/zend.json.introduction
    modules/zend.json.basics
    modules/zend.json.objects
@@ -156,6 +160,7 @@
    modules/zend.mvc.services
    modules/zend.mvc.routing
    modules/zend.mvc.mvc-event
+   modules/zend.mvc.send-response-event
    modules/zend.mvc.controllers
    modules/zend.mvc.plugins
    modules/zend.mvc.examples
@@ -173,6 +178,8 @@
    modules/zend.permissions.rbac.intro
    modules/zend.permissions.rbac.methods
    modules/zend.permissions.rbac.examples
+   modules/zend.progress-bar
+   modules/zend.progress-bar.upload
    modules/zend.serializer
    modules/zend.serializer.adapters
    modules/zend.server
@@ -184,6 +191,7 @@
    modules/zend.soap.wsdl
    modules/zend.soap.auto-discovery
    modules/zend.stdlib.hydrator
+   modules/zend.stdlib.hydrator.filter
    modules/zend.stdlib.hydrator.strategy
    modules/zend.tag.introduction
    modules/zend.tag.cloud
@@ -192,6 +200,7 @@
    modules/zend.uri
    modules/zend.validator
    modules/zend.validator.set
+   modules/zend.validator.file
    modules/zend.validator.validator-chains
    modules/zend.validator.writing-validators
    modules/zend.validator.messages
@@ -199,6 +208,7 @@
    modules/zend.view.quick-start
    modules/zend.view.renderer.php-renderer
    modules/zend.view.php-renderer.scripts
+   modules/zend.view.view-event
    modules/zend.view.helpers
    modules/zend.view.helpers.advanced-usage
    modules/zend.xmlrpc.intro
@@ -393,6 +403,13 @@ Zend\\Feed
         * :doc:`modules/zend.feed.writer`
         * :doc:`modules/zend.feed.pubsubhubbub`
 
+.. _zend.file:
+
+Zend\\File
+^^^^^^^^^^^^
+
+        * :doc:`modules/zend.file.class-file-locator`
+
 .. _zend.filter:
 
 Zend\\Filter
@@ -401,6 +418,7 @@ Zend\\Filter
         * :doc:`modules/zend.filter`
         * :doc:`modules/zend.filter.set`
         * :doc:`modules/zend.filter.word`
+        * :doc:`modules/zend.filter.file`
         * :doc:`modules/zend.filter.filter-chains`
         * :doc:`modules/zend.filter.inflector`
         * :doc:`modules/zend.filter.writing-filters`
@@ -413,6 +431,8 @@ Zend\\Form
         * :doc:`modules/zend.form.intro`
         * :doc:`modules/zend.form.quick-start`
         * :doc:`modules/zend.form.collections`
+        * :doc:`modules/zend.form.file-upload`
+        * :doc:`modules/zend.form.advanced-use-of-forms`
         * :doc:`modules/zend.form.elements`
         * :doc:`modules/zend.form.view.helpers`
 
@@ -446,6 +466,7 @@ Zend\\InputFilter
 ^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zend.input-filter.intro`
+        * :doc:`modules/zend.input-filter.file-input`
 
 .. _zend.json:
 
@@ -542,6 +563,7 @@ Zend\\Mvc
         * :doc:`modules/zend.mvc.services`
         * :doc:`modules/zend.mvc.routing`
         * :doc:`modules/zend.mvc.mvc-event`
+        * :doc:`modules/zend.mvc.send-response-event`
         * :doc:`modules/zend.mvc.controllers`
         * :doc:`modules/zend.mvc.plugins`
         * :doc:`modules/zend.mvc.examples`
@@ -584,6 +606,14 @@ Zend\\Permissions\\Rbac
         * :doc:`modules/zend.permissions.rbac.methods`
         * :doc:`modules/zend.permissions.rbac.examples`
 
+.. _zend.progress-bar:
+
+Zend\\ProgressBar
+^^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.progress-bar`
+        * :doc:`modules/zend.progress-bar.upload`
+
 .. _zend.serializer:
 
 Zend\\Serializer
@@ -624,6 +654,7 @@ Zend\\Stdlib
 ^^^^^^^^^^^^
 
         * :doc:`modules/zend.stdlib.hydrator`
+        * :doc:`modules/zend.stdlib.hydrator.filter`
         * :doc:`modules/zend.stdlib.hydrator.strategy`
 
 .. _zend.tag:
@@ -654,6 +685,7 @@ Zend\\Validator
 
         * :doc:`modules/zend.validator`
         * :doc:`modules/zend.validator.set`
+        * :doc:`modules/zend.validator.file`
         * :doc:`modules/zend.validator.validator-chains`
         * :doc:`modules/zend.validator.writing-validators`
         * :doc:`modules/zend.validator.messages`
@@ -673,6 +705,7 @@ Zend\\View
         * :doc:`modules/zend.view.quick-start`
         * :doc:`modules/zend.view.renderer.php-renderer`
         * :doc:`modules/zend.view.php-renderer.scripts`
+        * :doc:`modules/zend.view.view-event`
         * :doc:`modules/zend.view.helpers`
         * :doc:`modules/zend.view.helpers.advanced-usage`
 
