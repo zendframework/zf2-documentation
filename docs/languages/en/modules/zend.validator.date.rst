@@ -51,7 +51,7 @@ you can define the locale which the date format should use for validation.
    $validator->isValid('10.Feb.2010'); // returns true
    $validator->isValid('10.May.2010'); // returns false
 
-The ``locale`` option sets the default date format. In the above example this is 'dd.MM.yyyy' which is defined as
+The ``locale`` option sets the default date format. In the above example this is 'j.M.Y' which is defined as
 default date format for 'de'.
 
 .. _zend.validator.set.date.formats:
@@ -60,12 +60,12 @@ Self defined date validation
 ----------------------------
 
 ``Zend\Validator\Date`` supports also self defined date formats. When you want to validate such a date you can use
-the ``format`` option.
+the ``format`` option. This option accepts format as specified in the standard PHP function `date() <http://php.net/manual/en/function.date.php>`_.
 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\Date(array('format' => 'yyyy'));
+   $validator = new Zend\Validator\Date(array('format' => 'Y'));
 
    $validator->isValid('2010'); // returns true
    $validator->isValid('May');  // returns false
@@ -75,7 +75,7 @@ Of course you can combine ``format`` and ``locale``. In this case you can also u
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\Date(array('format' => 'yyyy MMMM', 'locale' => 'de'));
+   $validator = new Zend\Validator\Date(array('format' => 'Y F', 'locale' => 'de'));
 
    $validator->isValid('2010 Dezember'); // returns true
    $validator->isValid('2010 June');     // returns false
