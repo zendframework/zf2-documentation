@@ -121,7 +121,8 @@ Sample Usage of "loadModules.post" Event
            // This method is called once all modules are loaded.
            $moduleManager = $e->getTarget();
            $loadedModules = $moduleManager->getLoadedModules();
-           $config        = $moduleManager->getConfig();
+           // To get the configuration from another module named 'FooModule'
+           $config = $moduleManager->getModule('FooModule')->getConfig();
        }
    }
 
