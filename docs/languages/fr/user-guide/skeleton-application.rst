@@ -16,7 +16,7 @@ Zend Framework:
 
 .. note::
 
-    Une autre possibilité pour instalelr le ZendSkeletonApplication est
+    Une autre possibilité pour installer le ZendSkeletonApplication est
     d'utiliseri github.  Rendez vous sur
     https://github.com/zendframework/ZendSkeletonApplication et cliquez sur le
     bouton “Zip”. Cela ca télécharger un fichier avec un nom similaire à

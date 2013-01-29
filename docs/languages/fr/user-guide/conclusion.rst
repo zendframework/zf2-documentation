@@ -4,5 +4,5 @@
 Conclusion
 ##########
 
-Ceci conclue notre bref exemple de création d'une application MVC, simple mais
+Ceci conclut notre bref exemple de création d'une application MVC, simple mais
 fonctionnelle en utilisant Zend Framework 2.

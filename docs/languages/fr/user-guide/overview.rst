@@ -4,7 +4,7 @@
 Débuter avec Zend Framework 2
 #####################################
 
-Ce tutotriel est une introduction à l'utilisation de Zend Framework 2 en créant
+Ce tutoriel est une introduction à l'utilisation de Zend Framework 2 en créant
 une application pilotée par une base de données très simple et basée su le
 paradigme Model-View-Controller. A la fin de ce tutoriel, vous obtiendrez une
 application ZF2 fonctionnelle et vous pourrez en examiner le code pour

@@ -13,7 +13,7 @@ des alertes quand l'un d'eux ne se comporte pas comme il se comportait au moment
 de l'écriture du test.
 
 L'API du Zend Framework 2 utlise `PHPUnit <http://phpunit.de/>`_, tout comme
-l'appilcation e ce tutoriel. Une explicatino détaillée des tests unitaires n'est
+l'application de ce tutoriel. Une explication détaillée des tests unitaires n'est
 pas le but de ce tutoriel, et nous ne fournirons que des exemples de tests pour
 les composants des pages suivantes. Ce tutoriel suppose que vous avez déjà
 installé PHPUnit.
@@ -265,7 +265,7 @@ Maintenant, ajoutez la fonction suivante à la classe ``IndexControllerTest``:
         $this->assertEquals(200, $response->getStatusCode());
     }
 
-Le test vérifie que la page d'accueil répond avec un code HTTP 20.
+Le test vérifie que la page d'accueil répond avec un code HTTP 200.
 
 Tester
 -----------

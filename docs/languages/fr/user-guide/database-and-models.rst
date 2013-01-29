@@ -13,10 +13,10 @@ Rappelez-vous que le modèle est le composant qui est en charge des objectifs
 principaux de l'application (les "règles métier") et, dans notre cas, interagit
 avec la base de données.
 Nous utiliserons la classe ``Zend\Db\TableGateway\TableGateway`` qui est en
-charge de lire, ajouter, modifier et supprimer des enregisrements d'une table
+charge de lire, ajouter, modifier et supprimer des enregistrements d'une table
 de la base de données.
 
-Nous utiliserons MySQL, au travers du pilote PHP PDO. Il convient alors de créer
+Nous utiliserons MySQL, grâce au pilote PHP PDO. Il convient alors de créer
 une base de données appelée ``zf2tutorial``, puis d'exécuter les requêtes
 suivantes pour créer la table album avec quelques données.
 
@@ -53,7 +53,7 @@ représente votre logique métier et c'est donc à vous de décider comment il d
 fonctionner. Il y a plusieurs composants que vous pouvez utiliser en fonction
 de vos besoins. Une approche possible est d'avoir une classe modèle représentant
 chaque entité de votre application et d'utiliser des objets mapper qui chargent
-et sauvegardent ces entitées dans la base de données. Une autre solution est
+et sauvegardent ces entités dans la base de données. Une autre solution est
 d'utiliser un ORM comme Doctrine ou Propel.
 
 Pour ce tutoriel, nous allons créer un modèle très simple en implémentant une
@@ -95,7 +95,7 @@ passées en tableau vers les propriétés de notre entité. Nous ajouterons par 
 suite un filtre de contrôle pour utiliser les données issues d'un formulaire.
 
 Mais d'abord, vérifions que ce modèle Album se comporte comme attendu.
-Ecrivons quelques tests pour en être sûrs.
+Ecrivons quelques tests pour en être sûr.
 Pour cela, nous créons un fichier ``AlbumTest.php`` dans le dossier
 ``module/Album/test/AlbumTest/Model``:
 
@@ -633,7 +633,7 @@ paramètre est un tableau des variables de cette route. Dans notre cas, nous
 utilisons la route ‘album’ qui accepte deux variables : ``action`` et ``id``.
 
 Nous itérons sur les ``$albums`` que nous avons assignés dans l'action du
-contrôleurt. Le système de vues de Zend Framework 2 assure que ces variables
+contrôleur. Le système de vues de Zend Framework 2 assure que ces variables
 sont automatiquement extraites dans la portée du script de vue, et nous n'avons
 alors pas à les préfixer par ``$this->`` comme nous en avions l'habitude avec
 Zend Framework 1; quoi qu'il en soit, vous pouvez quand même le faire.
