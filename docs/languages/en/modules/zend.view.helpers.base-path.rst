@@ -36,6 +36,6 @@ Usage of the ``basePath()`` helper is straightforward:
 
    For simplicity's sake, we strip out the entry *PHP* file (e.g., "``index.php``") from the base *URL* .
    However, in some situations this may cause a problem. If one occurs, use
-   ``$this->getHelper('basePath')->setBasePath()`` to manually set the base path.
+   ``$this->plugin('basePath')->setBasePath()`` to manually set the base path.
 
 
