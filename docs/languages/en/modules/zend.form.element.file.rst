@@ -3,7 +3,9 @@
 File
 ^^^^
 
-``Zend\Form\Element\File`` represents a form file input.
+``Zend\Form\Element\File`` represents a form file input and
+provides a default input specification with a type of :ref:`FileInput <zend.input-filter.file-input>`
+(important for handling validators and filters correctly).
 It can be used with the ``Zend\Form\View\Helper\FormFile`` view helper.
 
 ``Zend\Form\Element\File`` extends from :ref:`Zend\Form\Element <zend.form.element>`.
