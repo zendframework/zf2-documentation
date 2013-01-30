@@ -26,7 +26,7 @@ such as file size validation and CRC checking.
 .. include:: zend.validator.file.not-exists.rst
 .. include:: zend.validator.file.sha1.rst
 .. include:: zend.validator.file.size.rst
-.. include:: zend.validator.file.upload.rst
+.. include:: zend.validator.file.upload-file.rst
 .. include:: zend.validator.file.word-count.rst
 
 

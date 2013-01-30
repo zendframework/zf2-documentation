@@ -12,7 +12,7 @@ handling file uploads in your projects.
 
    If the reader has experience with file uploading in Zend Framework v1.x,
    he/she will notice some major differences.
-   ``Zend_File_Transfer`` has been removed in favor of using the standard ZF2 ``Zend\Form``
+   ``Zend_File_Transfer`` has been deprecated in favor of using the standard ZF2 ``Zend\Form``
    and ``Zend\InputFilter`` features.
 
 .. note::
@@ -75,7 +75,7 @@ The ``File`` element provides some automatic features that happen behind the sce
 - The file element's default input specification will create the correct ``Input`` type:
   :ref:`Zend\\InputFilter\\FileInput <zend.input-filter.file-input>`.
 - The ``FileInput`` will automatically prepend an
-  :ref:`Upload Validator <zend.validator.file.upload>`,
+  :ref:`UploadFile Validator <zend.validator.file.upload-file>`,
   to securely validate that the file is actually an uploaded file, and to report
   other types of upload errors to the user.
 

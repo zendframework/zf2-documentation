@@ -12,7 +12,7 @@ While ``FileInput`` uses the same interface as ``Input``, it differs in a few wa
    This is so that any ``is_uploaded_file()`` validation can be run prior to any filters that may
    rename/move/modify the file.
 3. Instead of adding a ``NotEmpty`` validator, it will (by default) automatically add a
-   ``Zend\Validator\File\Upload`` validator.
+   ``Zend\Validator\File\UploadFile`` validator.
 
 The biggest thing to be concerned about is that if you are using a ``<input type="file">`` element in your form,
 you will need to use the ``FileInput`` **instead of** ``Input`` or else you will encounter issues.
@@ -39,7 +39,7 @@ Usage of ``FileInput`` is essentially the same as ``Input``:
    // File upload input
    $file = new FileInput('file');           // Special File Input type
    $file->getValidatorChain()               // Validators are run first w/ FileInput
-        ->addValidator(new Validator\File\Upload());
+        ->addValidator(new Validator\File\UploadFile());
    $file->getFilterChain()                  // Filters are run second w/ FileInput
         ->attach(new Filter\File\RenameUpload(array(
             'target'    => './data/tmpuploads/file',

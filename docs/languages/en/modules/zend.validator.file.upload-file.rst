@@ -1,9 +1,9 @@
-.. _zend.validator.file.upload:
+.. _zend.validator.file.upload-file:
 
-Upload
-------
+UploadFile
+----------
 
-``Zend\Validator\File\Upload`` checks whether a file has been uploaded via a form ``POST``
+``Zend\Validator\File\UploadFile`` checks whether a single file has been uploaded via a form ``POST``
 and will return descriptive messages for any upload errors.
 
 .. note::
@@ -11,7 +11,7 @@ and will return descriptive messages for any upload errors.
    :ref:`Zend\\InputFilter\\FileInput <zend.input-filter.file-input>` will automatically
    prepend this validator in it's validation chain.
 
-.. _zend.validator.file.upload.usage:
+.. _zend.validator.file.upload-file.usage:
 
 .. rubric:: Usage Examples
 
@@ -24,7 +24,7 @@ and will return descriptive messages for any upload errors.
    $files   = $request->getFiles();
    // i.e. $files['my-upload']['error'] == 0
 
-   $validator = \Zend\Validator\File\Upload();
+   $validator = \Zend\Validator\File\UploadFile();
    if ($validator->isValid($files['my-upload'])) {
        // file is valid
    }
