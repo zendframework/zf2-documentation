@@ -297,7 +297,7 @@ the ``TreeRouteStack``.
             'blog' => array(
                 'type' => 'literal',
                 'options' => array(
-                    'route' => 'blog',
+                    'route' => '/blog',
                     'defaults' => array(
                         'controller' => 'Application\Controller\BlogController',
                         'action' => 'index'
