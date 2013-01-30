@@ -85,7 +85,6 @@
    modules/zend.escaper.escaping-javascript
    modules/zend.escaper.escaping-css
    modules/zend.escaper.escaping-url
-   modules/zend.escaper.advanced-examples
    modules/zend.event-manager.event-manager
    modules/zend.feed.introduction
    modules/zend.feed.importing
@@ -402,7 +401,6 @@ Zend\\Escaper
         * :doc:`modules/zend.escaper.escaping-javascript`
         * :doc:`modules/zend.escaper.escaping-css`
         * :doc:`modules/zend.escaper.escaping-url`
-        * :doc:`modules/zend.escaper.advanced-examples`
 
 .. _zend.event-manager:
 
