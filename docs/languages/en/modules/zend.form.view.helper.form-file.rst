@@ -4,8 +4,8 @@ FormFile
 ^^^^^^^^
 
 The ``FormFile`` view helper can be used to render a ``<input type="file">``
-form input. It is meant to work with the :ref:`Zend\\Form\\Element\\Email <zend.form.element.file>`
-element, which provides a default input specification with a ``FileUpload`` validator.
+form input. It is meant to work with the :ref:`Zend\\Form\\Element\\File <zend.form.element.file>`
+element.
 
 ``FormFile`` extends from :ref:`Zend\\Form\\View\\Helper\\FormInput <zend.form.view.helper.form-input>`.
 
