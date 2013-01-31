@@ -285,7 +285,7 @@ Changing our earlier example to use the ``fileprg`` plugin will require two chan
 
    See the
    :ref:`RenameUpload filter <zend.filter.file.rename-upload>` documentation for
-   more information about it's supported options.
+   more information on its supported options.
 
 
 2. And, changing the Controller action to use the ``fileprg`` plugin:
@@ -523,12 +523,12 @@ The following is an example Controller action which provides the progress inform
    //    "done"     : false
    //}
 
-.. note::
+.. warning::
 
    This is *not* the most efficient way of providing upload progress, since each polling request must go
    through the Zend Framework bootstrap process. A better example would be to use a standalone
    php file in the public folder that bypasses the MVC bootstrapping and only uses the essential
-   ``Zend\ProgressBar`` adapters. **TODO**
+   ``Zend\ProgressBar`` adapters.
 
 Back in our view template, we will add the JavaScript to perform the AJAX POST of the form data, and
 to start a timeout interval for the progress polling. To keep the example code relatively short, we are using the
