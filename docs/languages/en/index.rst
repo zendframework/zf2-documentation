@@ -176,6 +176,12 @@
    modules/zend.navigation.quick-start
    modules/zend.navigation.pages
    modules/zend.navigation.containers
+   modules/zend.navigation.view.helpers
+   modules/zend.navigation.view.helpers.breadcrumbs
+   modules/zend.navigation.view.helpers.links
+   modules/zend.navigation.view.helpers.menu
+   modules/zend.navigation.view.helpers.sitemap
+   modules/zend.navigation.view.helpers.navigation
    modules/zend.paginator.introduction
    modules/zend.paginator.usage
    modules/zend.paginator.configuration
