@@ -25,7 +25,7 @@ Quick Start
    use Zend\Mail\Transport\File as FileTransport;
    use Zend\Mail\Transport\FileOptions;
 
-   // Setup SMTP transport using LOGIN authentication
+   // Setup File transport
    $transport = new FileTransport();
    $options   = new FileOptions(array(
        'path'              => 'data/mail/',

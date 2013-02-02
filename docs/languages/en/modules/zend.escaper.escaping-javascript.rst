@@ -31,7 +31,7 @@ An example of incorrect Javascript escaping:
     <!DOCTYPE html>
     <?php
     $input = <<<INPUT
-    bar&quot;; alert(&quot;ZF2!&quot;); var xss=&quot;true
+    bar&quot;; alert(&quot;Meow!&quot;); var xss=&quot;true
     INPUT;
     $output = json_encode($input);
     ?>

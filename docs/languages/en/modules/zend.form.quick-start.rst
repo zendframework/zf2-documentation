@@ -540,7 +540,7 @@ configuration for an input filter.
                        array('name' => 'Zend\Filter\StringTrim'),
                    ),
                    'validators' => array(
-                       new Validator\Email(),
+                       new Validator\EmailAddress(),
                    ),
                ),
            );

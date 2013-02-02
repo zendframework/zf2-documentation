@@ -74,7 +74,7 @@ An example of correct usage:
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Encodings set incorrectly!</title>
+        <title>Encodings set correctly!</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
