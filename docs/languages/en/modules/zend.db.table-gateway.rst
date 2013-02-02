@@ -170,7 +170,7 @@ There are a number of features built-in and shipped with Zend\\Db:
 .. code-block:: php
    :linenos:
 
-   $table = new TableGateway('artist', $adapter, new Feature\MeatadataFeature());
+   $table = new TableGateway('artist', $adapter, new Feature\MetadataFeature());
 
 - EventFeature: the ability utilize a ``TableGateway`` object with Zend\\EventManager and to be able to subscribe
   to various events in a ``TableGateway`` lifecycle.
