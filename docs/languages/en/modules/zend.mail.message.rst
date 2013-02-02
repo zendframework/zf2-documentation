@@ -127,7 +127,7 @@ If you want a string representation of your email, you can get that:
    echo $message->toString();
 
 Finally, you can fully introspect the message -- including getting all addresses of recipients and senders, all
-ehaders, and the message body.
+headers, and the message body.
 
 .. code-block:: php
    :linenos:
