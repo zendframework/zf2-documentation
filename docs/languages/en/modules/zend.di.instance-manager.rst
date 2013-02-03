@@ -178,8 +178,8 @@ Note: Aliases can also have parameters registered at alias time
        'password' => $config->db->readAdapter->password,
    ));
    $im->addAlias('dbadapter-readwrite', 'MyLibrary\DbAdapter', array(
-       'username' => $config->db->readWriteAdapter>username,
-       'password' => $config->db->readWriteAdapter>password,
+       'username' => $config->db->readWriteAdapter->username,
+       'password' => $config->db->readWriteAdapter->password,
    ));
 
    // set a default type to use, pointing to an alias

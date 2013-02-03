@@ -45,7 +45,7 @@ The simplest way, is just to give the array which should be searched against at 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\InArray(array('value1', 'value2',...'valueN'));
+   $validator = new Zend\Validator\InArray(array('haystack' => array('value1', 'value2',...'valueN')));
    if ($validator->isValid('value')) {
        // value found
    } else {
