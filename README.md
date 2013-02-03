@@ -2,13 +2,13 @@
 
 ## RELEASE INFORMATION
 
-This documentation is based on *Zend Framework 2.0-DEV* (master branch)
+This documentation is based on *Zend Framework 2* (master branch)
 
 
 ### VIEW THE DOCUMENTATION ONLINE
 
 We used the [readthedocs.org](http://readthedocs.org/) project to render online the development version of the
-documentation of Zend Framework 2.0.
+documentation of Zend Framework 2.
 
 You can read the development online documentation in 
 [http://zf2.readthedocs.org](http://zf2.readthedocs.org/en/latest/index.html).
@@ -19,7 +19,7 @@ You can read the last stable documentation in
 
 ### CONTRIBUTING
 
-If you wish to contribute to the documentation of Zend Framework 2.0, please read the
+If you wish to contribute to the documentation of Zend Framework 2, please read the
 CONTRIBUTING.md file.
 
 If you don't know where to begin, or where you can best help, please review the
