@@ -1,4 +1,4 @@
-### Welcome to the *Zend Framework 2.0.0* documentation
+### Welcome to the *Zend Framework 2* documentation
 
 ## RELEASE INFORMATION
 
