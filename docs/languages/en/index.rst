@@ -244,7 +244,6 @@
    modules/zendservice.technorati
    modules/zendservice.twitter
    modules/zendservice.windows-azure
-   modules/zendtool.introduction
    ref/copyrights
 
 |IntroductiontoZendFramework|
