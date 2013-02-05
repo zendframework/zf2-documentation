@@ -3,7 +3,7 @@
 Captcha Operation
 =================
 
-All *CAPTCHA* adapter implement ``Zend\Captcha\AdapterInterface``, which looks like the following:
+All *CAPTCHA* adapters implement ``Zend\Captcha\AdapterInterface``, which looks like the following:
 
 .. code-block:: php
    :linenos:
