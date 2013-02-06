@@ -31,7 +31,8 @@ Simplest usage as Apache-404 handler
    :linenos:
 
    // index.php
-   use Zend\Cache\PatternFactory;   $capture = Zend\Cache\PatternFactory::factory('capture', array(
+   use Zend\Cache\PatternFactory;
+   $capture = Zend\Cache\PatternFactory::factory('capture', array(
        'public_dir' => __DIR__,
    ));
 
@@ -116,7 +117,7 @@ Available Methods
 
    Set pattern options.
 
-   :rtype: Zend\\Cache\\Pattern\\OutputCache
+   :rtype: Zend\\Cache\\Pattern\\CaptureCache
 
 .. function:: getOptions()
    :noindex:
