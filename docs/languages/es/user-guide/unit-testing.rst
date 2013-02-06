@@ -14,8 +14,8 @@ no está trabajando de la misma forma de cuando lo escribiste y probaste.
 
 El API de Zend Framework 2 usa `PHPUnit <http://phpunit.de/>`_, el cual
 usaremos en la aplicación de este tutorial. Una explicación detallada
-una prueba unitaria está mas allá del alcance de este tutorial, por lo que
-sólo se proporcionara pruebas de muestras para los componentes en las paginas 
+de una prueba unitaria está mas allá del alcance de este tutorial, por lo que
+sólo se proporcionarán pruebas de muestra para los componentes en las páginas
 que sigue. Este tutorial asume que ya tienes instalado PHPUnit.
 
 Configuración del directorio de prueba
@@ -34,8 +34,8 @@ los siguientes subdirectorios:
                         /Controller
 
 La estructura del directorio ``test`` coincide exactamente con el de los
-archivos fuentes de los módulos, lo que permitirá tener las pruebas
-bien organizados y fáciles de encontrar.
+archivos fuente de los módulos, lo que permitirá tener las pruebas
+bien organizadas y fáciles de encontrar.
 
  Bootstrapping en la prueba.
 -----------------------------
@@ -55,8 +55,8 @@ Crea un archivo llamado ``phpunit.xml.dist`` en ``zf2-tutorial/module/Applicatio
     </phpunit>
 
 
-Un archivo ``Bootstrap.php``, también en ``zf-tutorial/module/Application/test``:
-Este es el Bootstrap escrito por Evan Coury, sólo los namespace necesitan ser cambiados. 
+Y un archivo ``Bootstrap.php``, también en ``zf-tutorial/module/Application/test``:
+Este es el Bootstrap escrito por Evan Coury, sólo los namespaces necesitan ser cambiados.
 
 
 .. code-block:: php
@@ -193,7 +193,7 @@ Y crea un archivo llamado ``TestConfig.php.dist``
         ),
     );
 
-Básicamente es lo mismo que config/application.config.php, pero nosotros definimos solo los módulos que se requieren en esta prueba.
+Básicamente es lo mismo que config/application.config.php, pero nosotros definimos sólo los módulos que se requieren en esta prueba.
 
 Primera prueba del controlador
 -------------------------------
@@ -269,8 +269,8 @@ La prueba consiste en verificar que la página principal responda con el código
 Probando
 -----------
 
-Finalmente ``cd`` a ``zf-tutorial/module/Application/test/`` y ejecutar ``phpunit``. Si vez algo como
-esto, entonces ¡tu aplicación está lista para mas pruebas!.
+Finalmente ``cd`` a ``zf-tutorial/module/Application/test/`` y ejecutar ``phpunit``. Si ves algo como
+esto, entonces ¡tu aplicación está lista para más pruebas!.
 
 .. code-block:: text
 
