@@ -4,7 +4,7 @@ Button
 ^^^^^^
 
 ``Zend\Form\Element\Button`` represents a button form input.
-It can be used with the ``Zend/Form/View/Helper/FormButton`` view helper.
+It can be used with the ``Zend\Form\View\Helper\FormButton`` view helper.
 
 ``Zend\Form\Element\Button`` extends from :ref:`Zend\Form\Element <zend.form.element>`.
 
