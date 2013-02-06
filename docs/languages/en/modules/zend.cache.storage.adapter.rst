@@ -110,7 +110,7 @@ The StorageInterface
 
 The ``Zend\Cache\Storage\StorageInterface`` is the basic interface implemented by all storage adapters.
 
-.. function:: getItem(string $key, boolean & $success = null, mixed & $casToken = null)
+.. function:: getItem(string $key, boolean $success = null, mixed $casToken = null)
    :noindex:
 
    Load an item with the given $key.
