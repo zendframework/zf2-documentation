@@ -293,7 +293,7 @@ Available Methods
 .. _zend.event-manager.event-manager.methods.trigger:
 
 **trigger**
-   ``trigger(string $event, mixed $target, mixed $argv, callback $callback)``
+   ``trigger(string $event, mixed $context, mixed $params, callback $callback)``
 
    Triggers all listeners to a named event. The recommendation is to use the current function/method name for
    ``$event``, appending it with values such as ".pre", ".post", etc. as needed. ``$context`` should be the current
@@ -308,7 +308,7 @@ Available Methods
 .. _zend.event-manager.event-manager.methods.trigger-until:
 
 **triggerUntil**
-   ``triggerUntil(string $event, mixed $context, mixed $argv, callback $callback)``
+   ``triggerUntil(string $event, mixed $context, mixed $params, callback $callback)``
 
    Triggers all listeners to a named event, just like :ref:`trigger()
    <zend.event-manager.event-manager.methods.trigger>`, with the addition that it passes the return value from each
