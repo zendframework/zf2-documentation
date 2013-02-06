@@ -139,7 +139,7 @@ Examples
    $filter       = new Zend\Filter\RealPath();
    $cachedFilter = Zend\Cache\PatternFactory::factory('object', array(
        'object'     => $filter,
-	   'object_key' => 'RealpathFilter',
+       'object_key' => 'RealpathFilter',
        'storage'    => 'apc',
        
        // The realpath filter doesn't output anything
