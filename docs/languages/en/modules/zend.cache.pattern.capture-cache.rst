@@ -117,7 +117,7 @@ Available Methods
 
    Set pattern options.
 
-   :rtype: Zend\\Cache\\Pattern\\OutputCache
+   :rtype: Zend\\Cache\\Pattern\\CaptureCache
 
 .. function:: getOptions()
    :noindex:
