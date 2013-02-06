@@ -36,7 +36,7 @@ A simple use case might look like the following:
    :linenos:
 
    // Originating request:
-   $captcha = new Zend\Captcha\Figlet(array(
+   $captcha = new \Zend\Captcha\Figlet(array(
        'name' => 'foo',
        'wordLen' => 6,
        'timeout' => 300,
