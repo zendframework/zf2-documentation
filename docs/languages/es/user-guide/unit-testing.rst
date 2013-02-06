@@ -55,7 +55,7 @@ Crea un archivo llamado ``phpunit.xml.dist`` en ``zf2-tutorial/module/Applicatio
     </phpunit>
 
 
-Un archivo ``Bootstrap.php``, también en ``zf-tutorial/module/Application/test``:
+Crea un archivo ``Bootstrap.php``, también en ``zf-tutorial/module/Application/test``:
 Este es el Bootstrap escrito por Evan Coury quien solo puede ser dejado en, solo los namespace necesitan ser cambiados. 
 
 
