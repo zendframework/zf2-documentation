@@ -32,7 +32,7 @@ Manual installation
 
     1. Clone using `git` or `download zipball`_
     2. Extract to `vendor/ZFTool` in your ZF2 application
-    3. Edit your `config/application.config.php` and add `ZFTool` to `modules` array.
+    3. Enter the `vendor/ZFTool` folder and execute `zf.php` as reported below.
 
 Without installation, using the PHAR file
 -----------------------------------------
