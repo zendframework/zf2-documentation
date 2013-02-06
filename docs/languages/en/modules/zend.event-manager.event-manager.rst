@@ -340,7 +340,7 @@ Available Methods
 .. _zend.event-manager.event-manager.methods.detach:
 
 **detach**
-   ``detach(CallbackHandler $listener)``
+   ``detach(Zend\Stdlib\CallbackHandler|Zend\EventManager\ListenerAggregateInterface $listener)``
 
    Scans all listeners, and detaches any that match ``$listener`` so that they will no longer be triggered.
 
@@ -350,7 +350,7 @@ Available Methods
 .. _zend.event-manager.event-manager.methods.detach-aggregate:
 
 **detachAggregate**
-   ``detachAggregate(ListenerAggregate $aggregate)``
+   ``detachAggregate(Zend\EventManager\ListenerAggregateInterface $aggregate)``
 
    Loops through all listeners of all events to identify listeners that are represented by the aggregate; for all
    matches, the listeners will be removed.
