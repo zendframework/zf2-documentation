@@ -108,6 +108,7 @@
    modules/zend.form.quick-start
    modules/zend.form.collections
    modules/zend.form.file-upload
+   modules/zend.form.advanced-use-of-forms
    modules/zend.form.elements
    modules/zend.form.view.helpers
    modules/zend.http
@@ -604,6 +605,7 @@ Zend\\Navigation
         * :doc:`modules/zend.navigation.quick-start`
         * :doc:`modules/zend.navigation.pages`
         * :doc:`modules/zend.navigation.containers`
+        * :doc:`modules/zend.navigation.view.helpers`
 
 .. _zend.paginator:
 
