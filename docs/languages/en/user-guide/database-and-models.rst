@@ -94,6 +94,7 @@ Create a file called ``AlbumTest.php`` under ``module/Album/test/AlbumTest/Model
 
 .. code-block:: php
 
+    <?php
     namespace AlbumTest\Model;
 
     use Album\Model\Album;
