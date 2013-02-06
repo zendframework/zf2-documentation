@@ -1,6 +1,6 @@
 .. _zend.form.advanced-use-of-forms:
 
-Advanced Use of Forms
+Advanced use of forms
 =====================
 
 Beginning with Zend Framework 2.1, forms elements can be registered using a designated plugin manager of
@@ -10,7 +10,7 @@ dependencies in forms/fieldsets. This section describes all the benefits of this
 
 .. _zend.form.advanced-use-of-forms.short-names:
 
-Short Names
+Short names
 -----------
 
 The first advantage of pulling form elements from the service manager is that now you can use short names to create new elements through the factory. Therefore, this code:
@@ -37,7 +37,7 @@ Each element provided out-of-the-box by Zend Framework 2 support this natively, 
 
 .. _zend.form.advanced-use-of-forms.create-your-own-elements:
 
-Creating Custom Elements
+Creating custom elements
 ------------------------
 
 Similar to :doc:`how you would add a view helper <zend.view.helpers.custom>`, you can easily create your own form
@@ -173,7 +173,7 @@ In short, to create your own form elements (or even reusable fieldsets !) and be
 
 .. _zend.form.advanced-use-of-forms.handling-dependencies:
 
-Handling Dependencies
+Handling dependencies
 ---------------------
 
 One of the most complex issues in ''Zend\\Form 2.0'' was dependency management. For instance, a very frequent use case
@@ -268,7 +268,7 @@ instantiating it:
 Et voilà! The dependency will be automatically handled by the form element manager, and you don't need to create the 
 `AlbumTable` in your controller, transfer it to the form, which itself passes it over to the fieldset.
    
-The Specific Case of Initializers
+The specific case of initializers
 ---------------------------------
 
 In the previous example, we explicitely defined the dependency in the constructor of the `AlbumFieldset` class. 
