@@ -55,7 +55,7 @@ Next, create a file called ``phpunit.xml.dist`` under ``zf2-tutorial/module/Appl
     </phpunit>
 
 
-A file called ``Bootstrap.php``, also under ``zf-tutorial/module/Application/test``:
+Create a file called ``Bootstrap.php``, also under ``zf-tutorial/module/Application/test``:
 This is a Bootstrap written by Evan Coury which can just be dropped in, only the namespace needs changing.
 
 .. code-block:: php
