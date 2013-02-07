@@ -37,7 +37,7 @@ do so with this method.
    // resource being used
    $akismet = new ZendService\Akismet\Akismet($apiKey,
                                        'http://framework.zend.com/wiki/');
-   if ($akismet->verifyKey($apiKey) {
+   if ($akismet->verifyKey($apiKey)) {
        echo "Key is valid.\n";
    } else {
        echo "Key is not valid\n";
@@ -95,7 +95,7 @@ invalid.
 
    $data = array(
        'user_ip'              => '111.222.111.222',
-       'user_agent'           => 'Mozilla/5.0 ' . (Windows; U; Windows NT ' .
+       'user_agent'           => 'Mozilla/5.0 ' . '(Windows; U; Windows NT ' .
                                  '5.2; en-GB; rv:1.8.1) Gecko/20061010 ' .
                                  'Firefox/2.0',
        'comment_type'         => 'contact',
