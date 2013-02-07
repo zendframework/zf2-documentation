@@ -40,7 +40,7 @@ Each element provided out-of-the-box by Zend Framework 2 support this natively, 
 Creating custom elements
 ------------------------
 
-Similar to :doc:`how you would add a view helper <zend.view.helpers.custom>`, you can easily create your own form
+Similar to :ref:`how you would add a view helper <zend.view.helpers.custom>`, you can easily create your own form
 elements, and add them to the ``Zend\Form\FormElementManager`` plugin manager to be able to set dependencies or use 
 the short name. For this, Zend Framework 2.1 adds a new feature interface through the ``getFormElementConfig`` function.
 
@@ -176,11 +176,11 @@ In short, to create your own form elements (or even reusable fieldsets !) and be
 Handling dependencies
 ---------------------
 
-One of the most complex issues in ''Zend\\Form 2.0'' was dependency management. For instance, a very frequent use case
-is a form that creates a fieldset, that itself need access to the database to populate a ''Select'' element. Previously
+One of the most complex issues in ``Zend\\Form 2.0`` was dependency management. For instance, a very frequent use case
+is a form that creates a fieldset, that itself need access to the database to populate a ``Select`` element. Previously
 in such a situation, you would either rely on the Registry using the Singleton pattern, or either you would "transfer" 
 the dependency from controller to form, and from form to fieldset (and even from fieldset to another fieldset if you 
-have a complex form). This was ugly and not easy to use. Hopefully, ''ServiceManager'' solves this use case in an
+have a complex form). This was ugly and not easy to use. Hopefully, ``Zend\\ServiceManager`` solves this use case in an
 elegant manner.
 
 For instance, let's say that a form create a fieldset called AlbumFieldset:
@@ -272,7 +272,7 @@ The specific case of initializers
 ---------------------------------
 
 In the previous example, we explicitely defined the dependency in the constructor of the `AlbumFieldset` class. 
-However, in some cases, you may want to use an initializer (like `Zend\ServiceManager\ServiceLocatorAwareInterface`) 
+However, in some cases, you may want to use an initializer (like `Zend\\ServiceManager\\ServiceLocatorAwareInterface`) 
 to inject a specific object to all your forms/fieldsets/elements.
    
 The problem with initializers is that they are injected AFTER the construction of the object, which means that if you
@@ -309,7 +309,7 @@ need this dependency when you create elements, it won't be available yet. For in
    }
    
 Thankfully, there is an easy workaround: every form element now implements the new interface 
-`Zend\Stdlib\InitializableInterface`, that defines a single `init()` function. In the context of form elements, 
+`Zend\\Stdlib\\InitializableInterface`, that defines a single `init()` function. In the context of form elements, 
 this `init()` function is automatically called once all the dependencies (including all initializers) are resolved. 
 Therefore, the previous example can be rewritten as such:
 
