@@ -293,7 +293,7 @@ Available Methods
 .. _zend.event-manager.event-manager.methods.trigger:
 
 **trigger**
-   ``trigger($event, $target = null, $argv = array(), $callback = null)``
+   ``trigger(string $event, mixed $target = null, mixed $argv = array(), callback $callback = null)``
 
    Triggers all listeners to a named event. The recommendation is to use the current function/method name for
    ``$event``, appending it with values such as ".pre", ".post", etc. as needed. ``$target`` should be the current
