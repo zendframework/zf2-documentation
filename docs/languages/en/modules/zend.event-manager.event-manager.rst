@@ -293,11 +293,11 @@ Available Methods
 .. _zend.event-manager.event-manager.methods.trigger:
 
 **trigger**
-   ``trigger(string $event, mixed $context, mixed $params, callback $callback)``
+   ``trigger($event, $target = null, $argv = array(), $callback = null)``
 
    Triggers all listeners to a named event. The recommendation is to use the current function/method name for
-   ``$event``, appending it with values such as ".pre", ".post", etc. as needed. ``$context`` should be the current
-   object instance, or the name of the function if not triggering within an object. ``$params`` should typically be
+   ``$event``, appending it with values such as ".pre", ".post", etc. as needed. ``$target`` should be the current
+   object instance, or the name of the function if not triggering within an object. ``$argv`` should typically be
    an associative array or ``ArrayAccess`` instance; we recommend using the parameters passed to the
    function/method (``compact()`` is often useful here). This method can also take a callback and behave in the
    same way as ``triggerUntil()``.
