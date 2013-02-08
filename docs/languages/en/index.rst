@@ -108,6 +108,7 @@
    modules/zend.form.quick-start
    modules/zend.form.collections
    modules/zend.form.file-upload
+   modules/zend.form.advanced-use-of-forms
    modules/zend.form.elements
    modules/zend.form.view.helpers
    modules/zend.http
@@ -177,11 +178,11 @@
    modules/zend.navigation.pages
    modules/zend.navigation.containers
    modules/zend.navigation.view.helpers
-   modules/zend.navigation.view.helpers.breadcrumbs
-   modules/zend.navigation.view.helpers.links
-   modules/zend.navigation.view.helpers.menu
-   modules/zend.navigation.view.helpers.sitemap
-   modules/zend.navigation.view.helpers.navigation
+   modules/zend.navigation.view.helper.breadcrumbs
+   modules/zend.navigation.view.helper.links
+   modules/zend.navigation.view.helper.menu
+   modules/zend.navigation.view.helper.sitemap
+   modules/zend.navigation.view.helper.navigation
    modules/zend.paginator.introduction
    modules/zend.paginator.usage
    modules/zend.paginator.configuration
@@ -209,6 +210,8 @@
    modules/zend.stdlib.hydrator.strategy
    modules/zend.tag.introduction
    modules/zend.tag.cloud
+   modules/zend.test.introduction
+   modules/zend.test.phpunit
    modules/zend.text.figlet
    modules/zend.text.table
    modules/zend.uri
@@ -604,6 +607,7 @@ Zend\\Navigation
         * :doc:`modules/zend.navigation.quick-start`
         * :doc:`modules/zend.navigation.pages`
         * :doc:`modules/zend.navigation.containers`
+        * :doc:`modules/zend.navigation.view.helpers`
 
 .. _zend.paginator:
 
@@ -691,6 +695,12 @@ Zend\\Tag
 
         * :doc:`modules/zend.tag.introduction`
         * :doc:`modules/zend.tag.cloud`
+
+Zend\\Test
+^^^^^^^^^
+
+        * :doc:`modules/zend.test.introduction`
+        * :doc:`modules/zend.test.phpunit`
 
 Zend\\Text
 ^^^^^^^^^^
