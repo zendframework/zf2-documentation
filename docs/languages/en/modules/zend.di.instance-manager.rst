@@ -3,7 +3,7 @@
 Zend\\Di InstanceManager
 ========================
 
-The InstanceManage is responsible for any runtime information associated with the Zend\\Di\\Di DiC. This means that
+The InstanceManager is responsible for any runtime information associated with the Zend\\Di\\Di DiC. This means that
 the information that goes into the instance manager is specific to both how the particular consuming Application's
 needs and even more specifically to the environment in which the application is running.
 
