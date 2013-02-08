@@ -308,7 +308,7 @@ Available Methods
 .. _zend.event-manager.event-manager.methods.trigger-until:
 
 **triggerUntil**
-   ``triggerUntil(string $event, mixed $context, mixed $params, callback $callback)``
+   ``triggerUntil(string $event, mixed $target, mixed $argv = null, callback $callback = null)``
 
    Triggers all listeners to a named event, just like :ref:`trigger()
    <zend.event-manager.event-manager.methods.trigger>`, with the addition that it passes the return value from each
