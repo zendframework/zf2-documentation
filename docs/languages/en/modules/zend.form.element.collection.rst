@@ -60,19 +60,19 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 .. function:: setCount($count)
    :noindex:
 
-   Defines how many times the target element will be initially rendered by the ``Zend/Form/View/Helper/FormCollection`` view helper.
+   Defines how many times the target element will be initially rendered by the ``Zend\Form\View\Helper\FormCollection`` view helper.
 
 .. function:: getCount()
    :noindex:
 
-   Return the number of times the target element will be initially rendered by the ``Zend/Form/View/Helper/FormCollection`` view helper.
+   Return the number of times the target element will be initially rendered by the ``Zend\Form\View\Helper\FormCollection`` view helper.
 
    :rtype: integer
 
 .. function:: setTargetElement($elementOrFieldset)
    :noindex:
 
-   This function either takes an ``Zend/Form/ElementInterface``, ``Zend/Form/FieldsetInterface`` instance or an array to pass to the form factory. When the Collection element will be validated, the input filter will be retrieved from this target element and be used to validate each element in the collection.
+   This function either takes an ``Zend\Form\ElementInterface``, ``Zend\Form\FieldsetInterface`` instance or an array to pass to the form factory. When the Collection element will be validated, the input filter will be retrieved from this target element and be used to validate each element in the collection.
 
 .. function:: getTargetElement()
    :noindex:
