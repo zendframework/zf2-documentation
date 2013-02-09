@@ -723,7 +723,7 @@ Validation groups for fieldsets and collection
 Validation groups allow you to validate a subset of fields.
 
 As an example, although the ``Brand`` entity has a ``URL`` property, we don't
-want to user to specify it in the creation form (but may wish to later in the
+want the user to specify it in the creation form (but may wish to later in the
 "Edit Product" form, for instance). Let's update the view to remove the ``URL``
 input:
 
