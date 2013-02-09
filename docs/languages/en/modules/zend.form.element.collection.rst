@@ -6,7 +6,7 @@ Collection
 Sometimes, you may want to add input (or a set of inputs) multiple times, either because you don't want
 to duplicate code, or because you do not know in advance how many elements you will need (in the case of elements
 dynamically added to a form using JavaScript, for instance). For more information about Collection, please refer
-to :ref:`Zend\\Form\\Collections tutorial <zend.form.collections>`.
+to :ref:`Form Collections tutorial <zend.form.collections>`.
 
 ``Zend\Form\Element\Collection`` is meant to be paired with the ``Zend\Form\View\Helper\FormCollection``.
 
