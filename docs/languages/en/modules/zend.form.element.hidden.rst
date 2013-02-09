@@ -6,7 +6,7 @@ Hidden
 ``Zend\Form\Element\Hidden`` represents a hidden form input.
 It can be used with the ``Zend\Form\View\Helper\FormHidden`` view helper.
 
-``Zend\Form\Element\Hidden`` extends from :ref:`Zend\Form\Element <zend.form.element>`.
+``Zend\Form\Element\Hidden`` extends from :ref:`Zend\\Form\\Element <zend.form.element>`.
 
 .. _zend.form.element.hidden.usage:
 
