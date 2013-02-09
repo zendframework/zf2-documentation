@@ -20,28 +20,28 @@ to define some domain objects that we'll be using.
     {
         /**
          * @var string
-         \*/
+         */
         protected $name;
     
         /**
          * @var int
-         \*/
+         */
         protected $price;
     
         /**
          * @var Brand
-         \*/
+         */
         protected $brand;
     
         /**
          * @var array
-         \*/
+         */
         protected $categories;
     
         /**
          * @param string $name
          * @return Product
-         \*/
+         */
         public function setName($name)
         {
             $this->name = $name;
@@ -50,7 +50,7 @@ to define some domain objects that we'll be using.
     
         /**
          * @return string
-         \*/
+         */
         public function getName()
         {
             return $this->name;
@@ -59,7 +59,7 @@ to define some domain objects that we'll be using.
         /**
          * @param int $price
          * @return Product
-         \*/
+         */
         public function setPrice($price)
         {
             $this->price = $price;
@@ -68,7 +68,7 @@ to define some domain objects that we'll be using.
     
         /**
          * @return int
-         \*/
+         */
         public function getPrice()
         {
             return $this->price;
@@ -77,7 +77,7 @@ to define some domain objects that we'll be using.
         /**
          * @param Brand $brand
          * @return Product
-         \*/
+         */
         public function setBrand(Brand $brand)
         {
             $this->brand = $brand;
@@ -86,7 +86,7 @@ to define some domain objects that we'll be using.
     
         /**
          * @return Brand
-         \*/
+         */
         public function getBrand()
         {
             return $this->brand;
@@ -95,7 +95,7 @@ to define some domain objects that we'll be using.
         /**
          * @param array $categories
          * @return Product
-         \*/
+         */
         public function setCategories(array $categories)
         {
             $this->categories = $categories;
@@ -104,7 +104,7 @@ to define some domain objects that we'll be using.
     
         /**
          * @return array
-         \*/
+         */
         public function getCategories()
         {
             return $this->categories;
@@ -115,18 +115,18 @@ to define some domain objects that we'll be using.
     {
         /**
          * @var string
-         \*/
+         */
         protected $name;
     
         /**
          * @var string
-         \*/
+         */
         protected $url;
     
         /**
          * @param string $name
          * @return Brand
-         \*/
+         */
         public function setName($name)
         {
             $this->name = $name;
@@ -135,7 +135,7 @@ to define some domain objects that we'll be using.
     
         /**
          * @return string
-         \*/
+         */
         public function getName()
         {
             return $this->name;
@@ -144,7 +144,7 @@ to define some domain objects that we'll be using.
         /**
          * @param string $url
          * @return Brand
-         \*/
+         */
         public function setUrl($url)
         {
             $this->url = $url;
@@ -153,7 +153,7 @@ to define some domain objects that we'll be using.
     
         /**
          * @return string
-         \*/
+         */
         public function getUrl()
         {
             return $this->url;
@@ -164,13 +164,13 @@ to define some domain objects that we'll be using.
     {
         /**
          * @var string
-         \*/
+         */
         protected $name;
     
         /**
          * @param string $name
          * @return Category
-         \*/
+         */
         public function setName($name)
         {
             $this->name = $name;
@@ -179,7 +179,7 @@ to define some domain objects that we'll be using.
     
         /**
          * @return string
-         \*/
+         */
         public function getName()
         {
             return $this->name;
@@ -241,7 +241,7 @@ Here is the ``Brand`` fieldset:
     
         /**
          * @return array
-         \*/
+         */
         public function getInputFilterSpecification()
         {
             return array(
@@ -306,7 +306,7 @@ Here is the ``Category`` fieldset:
     
         /**
          * @return array
-         \*/
+         */
         public function getInputFilterSpecification()
         {
             return array(
@@ -386,7 +386,7 @@ And finally the ``Product`` fieldset:
          * {@link Zend\InputFilter\Factory::createInputFilter()}.
          *
          * @return array
-         \*/
+         */
         public function getInputFilterSpecification()
         {
             return array(
@@ -507,7 +507,7 @@ Now, let's create the action in the controller:
 
        /**
          * @return array
-         \*/
+         */
         public function indexAction()
         {
             $form = new CreateProduct();
