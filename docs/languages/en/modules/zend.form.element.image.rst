@@ -6,7 +6,7 @@ Image
 ``Zend\Form\Element\Image`` represents a image button form input.
 It can be used with the ``Zend\Form\View\Helper\FormImage`` view helper.
 
-``Zend\Form\Element\Image`` extends from :ref:`Zend\Form\Element <zend.form.element>`.
+``Zend\Form\Element\Image`` extends from :ref:`Zend\\Form\\Element <zend.form.element>`.
 
 .. _zend.form.element.image.usage:
 
