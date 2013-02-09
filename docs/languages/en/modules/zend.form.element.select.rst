@@ -135,9 +135,9 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 
    Optionally set a label for an empty option (option with no value). It is set to "null" by default, which means that no empty option will be rendered.
 
-.. function:: setEmptyOption()
+.. function:: getEmptyOption()
    :noindex:
 
    Get the label for the empty option (null if none).
 
-   :rtype: string
+   :rtype: string|null
