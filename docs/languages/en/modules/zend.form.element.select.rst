@@ -42,7 +42,7 @@ Using the array notation:
    	$form = new Form('my-form');   	
    	$form->add(array(
    		'type' => 'Zend\Form\Element\Select',
-   		'name' => 'language'
+   		'name' => 'language',
    		'options' => array(
    			'label' => 'Which is your mother tongue?',
    			'value_options' => array(
