@@ -483,7 +483,7 @@ not forms. And only ``Form`` instances can be validated. So here is the form :
         }
     }
 
-``CreateForm`` is quite simple, as it only defines a ``Product`` fieldset, as
+``CreateProduct`` is quite simple, as it only defines a ``Product`` fieldset, as
 well as some other useful fields (``CSRF`` for security, and a ``Submit`` button).
 
 Notice the ``use_base_fieldset`` option. This option is here to say to the form:
@@ -764,7 +764,7 @@ course this is not recommended, as a lot of code will be duplicated.
 
 The solution: validation groups. A validation group is specified in a ``Form``
 object (hence, in our case, in the ``CreateProduct`` form) by giving an array of
-all the elements we want to validate.  Our ``CreateForm`` now looks like this:
+all the elements we want to validate.  Our ``CreateProduct`` now looks like this:
 
 .. code-block:: php
 
