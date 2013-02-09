@@ -121,7 +121,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 .. function:: setValueOptions(array $options)
    :noindex:
 
-   Set the value options for every checkbox of the multi-checkbox. The array must contain a key => value for every checkbox.
+   Set the value options for the select element. The array must contain key => value pairs.
 
 .. function:: getValueOptions()
    :noindex:
