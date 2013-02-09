@@ -64,7 +64,7 @@ You can add an empty option (option with no value) using the ``"empty_option"`` 
    	$form = new Form('my-form');   	
    	$form->add(array(
    		'type' => 'Zend\Form\Element\Select',
-   		'name' => 'language'
+   		'name' => 'language',
    		'options' => array(
    			'label' => 'Which is your mother tongue?',
    			'empty_option' => 'Please choose your language',
