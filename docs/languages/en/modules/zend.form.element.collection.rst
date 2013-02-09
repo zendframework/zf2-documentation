@@ -1,3 +1,5 @@
+.. _zend.form.element.collection:
+
 Collection
 ^^^^^^^^^^
 
