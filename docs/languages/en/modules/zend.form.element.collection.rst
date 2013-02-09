@@ -2,7 +2,7 @@ Collection
 ^^^^^^^^^^
 
 Sometimes, you may want to add input (or a set of inputs) multiple times, either because you don't want
-to duplicate code, or because you does not know in advance how many elements you need (in the case of elements
+to duplicate code, or because you do not know in advance how many elements you will need (in the case of elements
 dynamically added to a form using JavaScript, for instance). For more information about Collection, please refer
 to :ref:`Zend\Collection tutorial <zend.form.collections>`.
 
