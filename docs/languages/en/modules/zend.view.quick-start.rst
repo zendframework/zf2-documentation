@@ -679,7 +679,7 @@ through the HTTP Accept header, and selects the appropriate Renderer based on wh
 
    namespace Content\View;
 
-   use Zend\EventManager\EventCollection;
+   use Zend\EventManager\EventManagerInterface;
    use Zend\EventManager\ListenerAggregateInterface;
    use Zend\Feed\Writer\Feed;
    use Zend\View\Renderer\FeedRenderer;
@@ -703,7 +703,7 @@ through the HTTP Accept header, and selects the appropriate Renderer based on wh
            $this->feedRenderer = $feedRenderer;
        }
 
-       public function attach(EventCollection $events, $priority = null)
+       public function attach(EventManagerInterface $events, $priority = null)
        {
            if (null === $priority) {
                $this->listeners[] = $events->attach('renderer', array($this, 'selectRenderer'));
@@ -714,7 +714,7 @@ through the HTTP Accept header, and selects the appropriate Renderer based on wh
            }
        }
 
-       public function detach(EventCollection $events)
+       public function detach(EventManagerInterface $events)
        {
            foreach ($this->listeners as $index => $listener) {
                if ($events->detach($listener)) {
