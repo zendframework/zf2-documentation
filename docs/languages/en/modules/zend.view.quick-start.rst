@@ -134,7 +134,7 @@ module from the framework's `ZendSkeletonApplication`_, or to one of your autolo
 Controllers and View Models
 ---------------------------
 
-``Zend\View\View`` consumes ``ViewModel``s, passing them to the selected renderer. Where do you create these,
+``Zend\View\View`` consumes ``ViewModel``'s, passing them to the selected renderer. Where do you create these,
 though?
 
 The most explicit way is to create them in your controllers and return them.
@@ -228,6 +228,7 @@ a couple of sidebars; one of the sidebars may include content from multiple View
            // get the article from the persistence layer, etc...
 
            $view = new ViewModel();
+           $view->setTemplate('content/article/view'); // this is not needed since it matches "module/controller/action"
 
            $articleView = new ViewModel(array('article' => $article));
            $articleView->setTemplate('content/article');
@@ -251,7 +252,7 @@ a couple of sidebars; one of the sidebars may include content from multiple View
        }
    }
 
-The above will create and return a View Model specifying the template "content/article". When the View is rendered,
+The above will create and return a View Model specifying the template "content/article/view". When the View is rendered,
 it will render three child Views, the ``$articleView``, ``$primarySidebarView``, and ``$secondarySidebarView``;
 these will be captured to the ``$view``'s "article", "sidebar_primary", and "sidebar_secondary" variables,
 respectively, so that when it renders, you may include that content. Additionally, the ``$secondarySidebarView``
@@ -265,7 +266,8 @@ Here are the templates, rendered based on a 12-column grid:
 .. code-block:: php
    :linenos:
 
-   <?php // "content/article" template ?>
+   <?php // "content/article/view" template ?>
+   <!-- This is from the $view View Model, and the "content/article/view" template -->
    <div class="row content">
        <?php echo $this->article ?>
 
@@ -274,12 +276,18 @@ Here are the templates, rendered based on a 12-column grid:
        <?php echo $this->sidebar_secondary ?>
    </div>
 
+.. code-block:: php
+   :linenos:
+
    <?php // "content/article" template ?>
        <!-- This is from the $articleView View Model, and the "content/article"
             template -->
        <article class="span8">
            <?php echo $this->escapeHtml('article') ?>
        </article>
+
+.. code-block:: php
+   :linenos:
 
    <?php // "content/main-sidebar" template ?>
        <!-- This is from the $primarySidebarView View Model, and the
@@ -288,12 +296,18 @@ Here are the templates, rendered based on a 12-column grid:
            sidebar content...
        </div>
 
+.. code-block:: php
+   :linenos:
+
    <?php // "content/secondary-sidebar template ?>
        <!-- This is from the $secondarySidebarView View Model, and the
             "content/secondary-sidebar" template -->
        <div class="span2 sidebar pull-right">
            <?php echo $this->block ?>
        </div>
+
+.. code-block:: php
+   :linenos:
 
    <?php // "content/block template ?>
            <!-- This is from the $sidebarBlockView View Model, and the
@@ -307,7 +321,7 @@ And here is the aggregate, generated content:
 .. code-block:: html
    :linenos:
 
-   <!-- This is from the $view View Model, and the "article/view" template -->
+   <!-- This is from the $view View Model, and the "content/article/view" template -->
    <div class="row content">
        <!-- This is from the $articleView View Model, and the "content/article"
             template -->
@@ -316,16 +330,16 @@ And here is the aggregate, generated content:
        </article>
 
        <!-- This is from the $primarySidebarView View Model, and the
-            "content/main-sidebar template -->
+            "content/main-sidebar" template -->
        <div class="span2 sidebar">
            sidebar content...
        </div>
 
        <!-- This is from the $secondarySidebarView View Model, and the
-            "content/secondary-sidebar template -->
+            "content/secondary-sidebar" template -->
        <div class="span2 sidebar pull-right">
            <!-- This is from the $sidebarBlockView View Model, and the
-               "content/block template -->
+               "content/block" template -->
            <div class="block">
                block content...
            </div>
@@ -539,7 +553,7 @@ event.
        {
            $matches    = $e->getRouteMatch();
            $controller = $matches->getParam('controller');
-           if (false !== strpos($controller, __NAMESPACE__)) {
+           if (false === strpos($controller, __NAMESPACE__)) {
                // not a controller from this module
                return;
            }
@@ -634,7 +648,7 @@ the layout for a specific module:
        {
            $matches    = $e->getRouteMatch();
            $controller = $matches->getParam('controller');
-           if (false !== strpos($controller, __NAMESPACE__)) {
+           if (false === strpos($controller, __NAMESPACE__)) {
                // not a controller from this module
                return;
            }
