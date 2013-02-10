@@ -18,7 +18,7 @@ to create a new project from scratch with Zend Framework:
     Another way to install the ZendSkeletonApplication is to use github.  Go to 
     https://github.com/zendframework/ZendSkeletonApplication and click the “Zip”
     button. This will download a file with a name like
-    ``zendframework-ZendSkeletonApplication-zfrelease-2.0.0beta5-2-gc2c7315.zip`` or
+    ``ZendSkeletonApplication-master.zip`` or
     similar. 
 
     Unzip this file into the directory where you keep all your vhosts and rename the
