@@ -17,7 +17,7 @@ Extending and adding roles via instantation.
 
     <?php
     use Zend\Permissions\Rbac\Rbac;
-    use Zend\Permissions\Rbac\Role;
+    use Zend\Permissions\Rbac\AbstractRole;
 
     class MyRole extends AbstractRole
     {
@@ -146,7 +146,7 @@ Checking permission using ``isGranted()`` with a class implementing ``Zend\Permi
 
     // true always - bad!
     if ($rbac->isGranted($user->getRole(), 'edit.article')) {
-        // hacks another users article
+        // hacks another user's article
     }
 
     // true for user id 5, because he belongs to write group and user id matches
@@ -158,7 +158,7 @@ Checking permission using ``isGranted()`` with a class implementing ``Zend\Permi
 
     // false for user id 5
     if ($rbac->isGranted($user->getRole(), 'edit.article', $assertion)) {
-        // can not edit another users article
+        // can not edit another user's article
     }
 
 Performing the same as above with a Closure.
