@@ -22,11 +22,9 @@ This element automatically adds a ``"type"`` attribute of value ``"checkbox"`` f
    	$multiCheckbox = new Element\MultiCheckbox('multi-checkbox');
    	$multiCheckbox->setLabel('What do you like ?');
    	$multiCheckbox->setValueOptions(array(
-   		array(
    			'0' => 'Apple',
    			'1' => 'Orange',
    			'2' => 'Lemon'
-   		)
    	));
 
    	$form = new Form('my-form');
