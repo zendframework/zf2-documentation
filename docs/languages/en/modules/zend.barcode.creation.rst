@@ -175,4 +175,4 @@ This will generate the same barcode as the previous example.
 
 
 
-.. _`Traversable`: php.net/traversable
+.. _`Traversable`: http://php.net/traversable
