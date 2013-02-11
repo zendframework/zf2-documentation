@@ -78,6 +78,6 @@ Available Implementations
 - **Zend\\Stdlib\\Hydrator\\ObjectProperty**
 
   Any data key matching a publically accessible property will be hydrated; any public properties will be used for
-  extration.
+  extraction.
 
 
