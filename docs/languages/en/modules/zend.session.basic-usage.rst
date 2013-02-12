@@ -8,21 +8,21 @@ Namespaces are used to segregate all session data, although a default namespace 
 namespace for all their session data. ``Zend\Session`` utilizes ext/session and its special ``$_SESSION``
 superglobal as the storage mechanism for session state data. while ``$_SESSION`` is still available in *PHP*'s
 global namespace, developers should refrain from directly accessing it, so that ``Zend\Session`` and
-``Zend\Session\Namespace`` can most effectively and securely provide its suite of session related functionality.
+``Zend\Session\Container`` can most effectively and securely provide its suite of session related functionality.
 
-Each instance of ``Zend\Session\Namespace`` corresponds to an entry of the ``$_SESSION`` superglobal array, where
+Each instance of ``Zend\Session\Container`` corresponds to an entry of the ``$_SESSION`` superglobal array, where
 the namespace is used as the key.
 
 .. code-block:: php
    :linenos:
 
-   $myNamespace = new Zend\Session\Namespace('myNamespace');
+   $myNamespace = new Zend\Session\Container('myNamespace');
 
    // $myNamespace corresponds to $_SESSION['myNamespace']
 
 It is possible to use ``Zend\Session`` in conjunction with other code that uses ``$_SESSION`` directly. To avoid
 problems, however, it is highly recommended that such code only uses parts of ``$_SESSION`` that do not correspond
-to instances of ``Zend\Session\Namespace``.
+to instances of ``Zend\Session\Container``.
 
 .. _zend.session.basic_usage.basic_examples:
 
@@ -53,8 +53,8 @@ default namespace, showing how to count the number of client requests during a s
    echo "Page requests this session: ",
        $defaultNamespace->numberOfPageRequests;
 
-When multiple modules use instances of ``Zend\Session\Namespace`` having different namespaces, each module obtains
-data encapsulation for its session data. The ``Zend\Session\Namespace`` constructor can be passed an optional
+When multiple modules use instances of ``Zend\Session\Container`` having different namespaces, each module obtains
+data encapsulation for its session data. The ``Zend\Session\Container`` constructor can be passed an optional
 ``$namespace`` argument, which allows developers to partition session data into separate namespaces. Namespacing
 provides an effective and popular way to secure session state data against changes due to accidental naming
 collisions.
@@ -71,11 +71,11 @@ starting with "*Zend*".
    :linenos:
 
    // in the Zend\Authentication component
-   $authNamespace = new Zend\Session\Namespace('Zend_Auth');
+   $authNamespace = new Zend\Session\Container('Zend_Auth');
    $authNamespace->user = "myusername";
 
    // in a web services component
-   $webServiceNamespace = new Zend\Session\Namespace('Some_Web_Service');
+   $webServiceNamespace = new Zend\Session\Container('Some_Web_Service');
    $webServiceNamespace->user = "mywebusername";
 
 The example above achieves the same effect as the code below, except that the session objects above preserve
@@ -107,7 +107,7 @@ statement:
    :linenos:
 
    $aNamespace =
-       new Zend\Session\Namespace('some_namespace_with_data_present');
+       new Zend\Session\Container('some_namespace_with_data_present');
 
    foreach ($aNamespace as $index => $value) {
        echo "aNamespace->$index = '$value';\n";
@@ -118,7 +118,7 @@ statement:
 Accessors for Session Namespaces
 --------------------------------
 
-``Zend\Session\Namespace`` implements the ``__get()``, ``__set()``, ``__isset()``, and ``__unset()`` `magic
+``Zend\Session\Container`` implements the ``__get()``, ``__set()``, ``__isset()``, and ``__unset()`` `magic
 methods`_, which should not be invoked directly, except from within a subclass. Instead, the normal operators
 automatically invoke these methods, such as in the following example:
 
@@ -129,7 +129,7 @@ automatically invoke these methods, such as in the following example:
 .. code-block:: php
    :linenos:
 
-   $namespace = new Zend\Session\Namespace(); // default namespace
+   $namespace = new Zend\Session\Container(); // default namespace
 
    $namespace->foo = 100;
 
