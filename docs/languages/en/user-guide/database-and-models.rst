@@ -20,6 +20,7 @@ We are going to use MySQL, via PHP’s PDO driver, so create a database called
 data in it.
 
 .. code-block:: sql
+   :linenos:
 
     CREATE TABLE album (
       id int(11) NOT NULL auto_increment,
@@ -65,6 +66,7 @@ database access code into controller action methods as these are exposed by
 Let’s start by creating a file called ``Album.php`` under ``module/Album/src/Album/Model``:
 
 .. code-block:: php
+   :linenos:
 
     <?php
     namespace Album\Model;
@@ -93,6 +95,7 @@ Create a file called ``AlbumTest.php`` under ``module/Album/test/AlbumTest/Model
 
 
 .. code-block:: php
+   :linenos:
 
     <?php
     namespace AlbumTest\Model;
@@ -161,6 +164,7 @@ If we run ``phpunit`` again, we'll see that the answer to all three questions is
 Next, we create our ``AlbumTable.php`` file in ``module/Album/src/Album/Model`` directory like this:
 
 .. code-block:: php
+   :linenos:
 
     <?php
     namespace Album\Model;
@@ -246,7 +250,8 @@ object when the ``ServiceManager`` needs it. We start by implementing
 this method to the bottom of the ``Module.php`` file in ``module/Album``.
 
 .. code-block:: php
-    :emphasize-lines: 5-8,14-32
+   :linenos:
+   :emphasize-lines: 5-8,14-32
 
     <?php
     namespace Album;
@@ -309,6 +314,7 @@ Modify ``config/autoload/global.php`` (in the Zend Skeleton root, not inside the
 Album module) with following code:
 
 .. code-block:: php
+   :linenos:
 
     <?php
     return array(
@@ -331,6 +337,7 @@ You should put your database credentials in ``config/autoload/local.php`` so
 that they are not in the git repository (as ``local.php`` is ignored):
 
 .. code-block:: php
+   :linenos:
 
     <?php
     return array(
@@ -348,6 +355,7 @@ to create a test class for the ``AlbumTable``.
 Create a file ``AlbumTableTest.php`` in ``module/Album/test/AlbumTest/Model``
 
 .. code-block:: php
+   :linenos:
 
     <?php
     namespace AlbumTest\Model;
@@ -390,6 +398,7 @@ this same ``ResultSet`` object will be returned to the calling method. This test
 fine, so now we can add the rest of the test methods:
 
 .. code-block:: php
+   :linenos:
 
     public function testCanRetrieveAnAlbumByItsId()
     {
@@ -509,20 +518,22 @@ can add a method to the controller to retrieve it. Add ``getAlbumTable()`` to
 the ``AlbumController`` class:
 
 .. code-block:: php
+   :linenos:
 
     // module/Album/src/Album/Controller/AlbumController.php:
-        public function getAlbumTable()
-        {
-            if (!$this->albumTable) {
-                $sm = $this->getServiceLocator();
-                $this->albumTable = $sm->get('Album\Model\AlbumTable');
-            }
-            return $this->albumTable;
+    public function getAlbumTable()
+    {
+        if (!$this->albumTable) {
+            $sm = $this->getServiceLocator();
+            $this->albumTable = $sm->get('Album\Model\AlbumTable');
         }
+        return $this->albumTable;
+    }
 
 You should also add:
 
 .. code-block:: php
+   :linenos:
 
     protected $albumTable;
 
@@ -534,6 +545,7 @@ to interact with our model. Let's make sure it works by writing a test.
 Add this test to your ``AlbumControllerTest`` class:
 
 .. code-block:: php
+   :linenos:
 
     public function testGetAlbumTableReturnsAnInstanceOfAlbumTable()
     {
@@ -552,15 +564,16 @@ them to the view. To do this, we fill in ``indexAction()`` within
 this:
 
 .. code-block:: php
+   :linenos:
 
     // module/Album/src/Album/Controller/AlbumController.php:
     // ...
-        public function indexAction()
-        {
-            return new ViewModel(array(
-                'albums' => $this->getAlbumTable()->fetchAll(),
-            ));
-        }
+    public function indexAction()
+    {
+        return new ViewModel(array(
+            'albums' => $this->getAlbumTable()->fetchAll(),
+        ));
+    }
     // ...
 
 With Zend Framework 2, in order to set variables in the view, we return a
@@ -571,6 +584,7 @@ script that is used, but the default is to use ``{controller name}/{action
 name}``. We can now fill in the ``index.phtml`` view script:
 
 .. code-block:: php
+   :linenos:
 
     <?php
     // module/Album/view/album/album/index.phtml:
