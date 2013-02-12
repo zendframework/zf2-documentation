@@ -311,13 +311,10 @@ defining a form for re-use in your application.
    {
        protected $captcha;
 
-       public function setCaptcha(CaptchaAdapter $captcha)
+       public function __construct(CaptchaAdapter $captcha)
        {
-           $this->captcha = $captcha;
-       }
+		   $this->captcha = $captcha;
 
-       public function prepareElements()
-       {
            // add() can take either an Element/Fieldset instance,
            // or a specification, from which the appropriate object
            // will be built.
@@ -376,7 +373,7 @@ defining a form for re-use in your application.
        }
    }
 
-You'll note that this example introduces a method, ``prepareElements()``. This is done to allow altering and/or
+You'll note that this example, the elements are added in the constructor. This is done to allow altering and/or
 configuring either the form or input filter factory instances, which could then have bearing on how elements,
 inputs, etc. are created. In this case, it also allows injection of the CAPTCHA adapter, allowing us to configure
 it elsewhere in our application and inject it into the form.
