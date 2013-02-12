@@ -5,18 +5,20 @@ Zend\\ServiceManager
 
 The `Service Locator design pattern`_ is implemented by the ``ServiceManager``.  The Service Locator is a 
 service/object locator, tasked with retrieving other objects. You may interact with the ``ServiceManager`` 
-via the following methods
+via the following methods:
 
 .. code-block:: php
+   
+   <?php
+   // /library/Zend/ServiceManager/ServiceLocatorInterface.php
+   
+   namespace Zend\ServiceManager;
 
-  // /library/Zend/ServiceManager/ServiceLocatorInterface.php
-	namespace Zend\ServiceManager;
-
-	interface ServiceLocatorInterface
-	{
-		public function get($name);
-		public function has($name);
-	}
+   interface ServiceLocatorInterface
+   {
+       public function get($name);
+       public function has($name);
+   }
 	
 - ``has($name)``, tests whether the ``ServiceManager`` has a named service;
 
