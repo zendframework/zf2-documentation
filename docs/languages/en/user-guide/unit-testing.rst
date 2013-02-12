@@ -106,7 +106,7 @@ Now, add the following function to the ``IndexControllerTest`` class:
         $this->dispatch('/');
         $this->assertResponseStatusCode(200);
 
-        $this->assertModule('application');
+        $this->assertModuleName('application');
         $this->assertControllerName('application_index');
         $this->assertControllerClass('IndexController');
         $this->assertMatchedRouteName('home');
@@ -146,7 +146,7 @@ in your tests controllers :
         $this->dispatch('--your-arg');
         $this->assertResponseStatusCode(0);
 
-        $this->assertModule('application');
+        $this->assertModuleName('application');
         $this->assertControllerName('application_console');
         $this->assertControllerClass('ConsoleController');
         $this->assertMatchedRouteName('myaction');
