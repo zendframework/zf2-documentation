@@ -1,8 +1,7 @@
 .. _user-guide.routing-and-controllers:
 
-#######################
 Routing and controllers
-#######################
+=======================
 
 We will build a very simple inventory system to display our album
 collection. The home page will list our collection and allow us to add, edit and

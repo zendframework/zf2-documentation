@@ -1,8 +1,7 @@
 .. _user-guide.database-and-models:
 
-###################
 Database and models
-###################
+===================
 
 The database
 ------------

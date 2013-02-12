@@ -1,8 +1,7 @@
 .. _user-guide.skeleton-application:
 
-#######################################
 Getting started: A skeleton application
-#######################################
+=======================================
 
 In order to build our application, we will start with the
 `ZendSkeletonApplication <https://github.com/zendframework/ZendSkeletonApplication>`_ 
