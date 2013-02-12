@@ -1,8 +1,7 @@
 .. _user-guide-forms-and-actions:
 
-#################
 Forms and actions
-#################
+=================
 
 Adding new albums
 -----------------
@@ -512,7 +511,7 @@ Let’s start with the action code in ``AlbumController::deleteAction()``:
         }
     //...
 
-As before, we get the ``id`` from the matched route,and check the request
+As before, we get the ``id`` from the matched route, and check the request
 object’s ``isPost()`` to determine whether to show the confirmation page or to
 delete the album. We use the table object to delete the row using the
 ``deleteAlbum()`` method and then redirect back the list of albums. If the
