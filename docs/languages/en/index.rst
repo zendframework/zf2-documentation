@@ -608,6 +608,11 @@ Zend\\Navigation
         * :doc:`modules/zend.navigation.pages`
         * :doc:`modules/zend.navigation.containers`
         * :doc:`modules/zend.navigation.view.helpers`
+        * :doc:`modules/zend.navigation.view.helper.breadcrumbs`
+        * :doc:`modules/zend.navigation.view.helper.links`
+        * :doc:`modules/zend.navigation.view.helper.menu`
+        * :doc:`modules/zend.navigation.view.helper.sitemap`
+        * :doc:`modules/zend.navigation.view.helper.navigation`
 
 .. _zend.paginator:
 
