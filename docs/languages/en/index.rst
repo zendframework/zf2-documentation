@@ -201,6 +201,12 @@
    modules/zend.server.reflection
    modules/zend.service-manager.intro
    modules/zend.service-manager.quick-start
+   modules/zend.session.config
+   modules/zend.session.container
+   modules/zend.session.manager
+   modules/zend.session.save-handler
+   modules/zend.session.storage
+   modules/zend.session.validator
    modules/zend.soap.server
    modules/zend.soap.client
    modules/zend.soap.wsdl
