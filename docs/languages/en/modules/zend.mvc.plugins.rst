@@ -9,6 +9,8 @@ Additionally, you can register your own custom plugins with the manager.
 
 The built-in plugins are:
 
+- ``Zend\Mvc\Controller\Plugin\AcceptableViewModelSelector``
+
 - ``Zend\Mvc\Controller\Plugin\FlashMessenger``
 
 - ``Zend\Mvc\Controller\Plugin\Forward``
@@ -40,6 +42,15 @@ For an extra layer of convenience, both ``AbstractActionController`` and ``Abstr
    $plugin = $this->url();
 
 .. _zend.mvc.controller-plugins.flashmessenger:
+
+AcceptableViewModelSelector Plugin
+----------------------------------
+
+The ``AcceptableViewModelSelector`` is a plugin that helps to detect the appropiate response type based on the
+accept header in the request. The intend is you detect early in the controller and based on that you can 
+construct the appropiate view model. 
+
+
 
 FlashMessenger Plugin
 ---------------------
