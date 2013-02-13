@@ -18,9 +18,14 @@ user guide <user-guide.overview>`. It is in no way a guide to
 unit testing in general, but is here only to help overcome the
 initial hurdles in writing unit tests for ZF2 applications.
 
+It is recommended to have at least a basic understanding of unit
+tests, assertions and mocks.
+
 As the Zend Framework 2 API uses `PHPUnit <http://phpunit.de/>`_, so
 will this tutorial. This tutorial assumes that you already have PHPUnit
 installed. The version of PHPUnit used should be 3.7.*
+
+.. _setting-up-the-tests-directory:
 
 Setting up the tests directory
 ------------------------------
@@ -48,6 +53,8 @@ the following subdirectories:
 The structure of the ``test`` directory matches exactly with that of the
 module's source files, and it will allow you to keep your tests
 well-organized and easy to find.
+
+.. _bootstrapping-your-tests:
 
 Bootstrapping your tests
 ------------------------
@@ -193,7 +200,9 @@ Even though no tests were executed, we at least know that the autoloader found t
 ZF2 files, otherwise it would throw a ``RuntimeException``, defined on line 69 of
 our bootstrap file.
 
-Your first Controller test
+.. _your-first-controller-test:
+
+Your first controller test
 --------------------------
 
 Testing controllers is never an easy task, but Zend Framework 2 comes
@@ -254,6 +263,8 @@ and that we ended up in the desired module and controller.
     routing configuration for the Album module. In our example this should be defined on line
     19 of the ``module.config.php`` file in the Album module.
 
+.. _a-failing-test-case:
+
 A failing test case
 -------------------
 
@@ -303,7 +314,9 @@ something like:
 From this error message it is clear that not all our dependencies are available in the
 service manager. Let us take a look how can we fix this.
 
-Configuring the Service Manager for the tests
+.. _configuring-the-service-manager-for-the-tests:
+
+Configuring the service manager for the tests
 ---------------------------------------------
 
 The error says that the service manager can not create an instance of a database adapter
@@ -380,6 +393,7 @@ tests now pass:
 
     OK (1 test, 6 assertions)
 
+.. _testing-actions-with-post:
 
 Testing actions with POST
 -------------------------
@@ -432,14 +446,23 @@ Running ``phpunit`` gives us the following output:
 Testing the ``editAction`` and ``deleteAction`` methods can be easily done in a manner similar
 as shown for the ``addAction``.
 
+.. _testing-model-entities:
 
+Testing model entities
+----------------------
 
+Now that we know how to test our controllers, let us move to an other important part of our
+application - the model entity.
 
-But first, does the Album model we have so far work the way we expect it to? Let's write a few tests to be sure.
-Create a file called ``AlbumTest.php`` under ``module/Album/test/AlbumTest/Model``:
+Here we want to test that the initial state of the entity is what we expect it to be,
+that we can convert the model's parameters to and from an array, and that it has all
+the input filters we need.
 
+Create the file ``AlbumTest.php`` in ``module/Album/test/AlbumTest/Model`` directory
+with the following contents:
 
 .. code-block:: php
+    :linenos:
 
     <?php
     namespace AlbumTest\Model;
@@ -485,34 +508,74 @@ Create a file called ``AlbumTest.php`` under ``module/Album/test/AlbumTest/Model
             $this->assertNull($album->id, '"id" should have defaulted to null');
             $this->assertNull($album->title, '"title" should have defaulted to null');
         }
+
+        public function testGetArrayCopyReturnsAnArrayWithPropertyValues()
+        {
+            $album = new Album();
+            $data  = array('artist' => 'some artist',
+                           'id'     => 123,
+                           'title'  => 'some title');
+
+            $album->exchangeArray($data);
+            $copyArray = $album->getArrayCopy();
+
+            $this->assertSame($data['artist'], $copyArray['artist'], '"artist" was not set correctly');
+            $this->assertSame($data['id'], $copyArray['id'], '"id" was not set correctly');
+            $this->assertSame($data['title'], $copyArray['title'], '"title" was not set correctly');
+        }
+
+        public function testInputFiltersAreSetCorrectly()
+        {
+            $album = new Album();
+
+            $inputFilter = $album->getInputFilter();
+
+            $this->assertSame(3, $inputFilter->count());
+            $this->assertTrue($inputFilter->has('artist'));
+            $this->assertTrue($inputFilter->has('id'));
+            $this->assertTrue($inputFilter->has('title'));
+        }
     }
 
-We are testing for 3 things:
+We are testing for 5 things:
 
 1. Are all of the Album's properties initially set to NULL?
 2. Will the Album's properties be set correctly when we call ``exchangeArray()``?
 3. Will a default value of NULL be used for properties whose keys are not present in the ``$data`` array?
+4. Can we get an array copy of our model?
+5. Do all elements have input filters present?
 
-If we run ``phpunit`` again, we'll see that the answer to all three questions is "YES":
+If we run ``phpunit`` again, we will get the following output, confirming that our model is
+indeed correct:
 
 .. code-block:: text
 
-    PHPUnit 3.5.15 by Sebastian Bergmann.
+    PHPUnit 3.7.13 by Sebastian Bergmann.
 
-    ........
+    Configuration read from /var/www/zf2-tutorial/module/Album/test/phpunit.xml
 
-    Time: 0 seconds, Memory: 5.50Mb
+    .......
 
-    OK (8 tests, 19 assertions)
+    Time: 0 seconds, Memory: 11.00Mb
 
+    OK (7 tests, 25 assertions)
 
+.. _testing-model-tables:
 
-Testing
--------
+Testing model tables
+--------------------
 
-Let's write a few tests for all this code we've just written. First, we need
-to create a test class for the ``AlbumTable``.
+The final step in this unit testing tutorial for Zend Framework 2 applications
+is writing tests for our model tables.
+
+This test assures that we can get a list of albums, or one album by it's ID,
+and that we can save and delete albums from the database.
+
+To avoid actual interaction with the database itself, we will replace certain
+parts with `mocks`.
+
 Create a file ``AlbumTableTest.php`` in ``module/Album/test/AlbumTest/Model``
+with the following contents:
 
 .. code-block:: php
 
@@ -528,7 +591,7 @@ Create a file ``AlbumTableTest.php`` in ``module/Album/test/AlbumTest/Model``
     {
         public function testFetchAllReturnsAllAlbums()
         {
-            $resultSet        = new ResultSet();
+            $resultSet = new ResultSet();
             $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway',
                                                array('select'), array(), '', false);
             $mockTableGateway->expects($this->once())
@@ -543,13 +606,9 @@ Create a file ``AlbumTableTest.php`` in ``module/Album/test/AlbumTest/Model``
     }
 
 
-In this test, we introduce the concept of `Mock objects
-<http://www.phpunit.de/manual/3.6/en/test-doubles.html#test-doubles.mock-objects>`_.
-A thorough explanation of what a Mock object is goes beyond the scope of this tutorial,
-but it's basically an object that takes the place of another object and behaves in
-a predefined way. Since we are testing the ``AlbumTable`` here and NOT the ``TableGateway``
-class (the Zend team has already tested the ``TableGateway`` class and we know it works),
-we just want to make sure that our ``AlbumTable`` class is interacting with the ``TableGatway``
+Since we are testing the ``AlbumTable`` here and not the ``TableGateway``
+class (which has already been tested in Zend Framework),
+we just want to make sure that our ``AlbumTable`` class is interacting with the ``TableGateway``
 class the way that we expect it to. Above, we're testing to see if the ``fetchAll()`` method
 of ``AlbumTable`` will call the ``select()`` method of the ``$tableGateway`` property with
 no parameters. If it does, it should return a ``ResultSet`` object. Finally, we expect that
@@ -631,7 +690,7 @@ fine, so now we can add the rest of the test methods:
         $albumTable->saveAlbum($album);
     }
 
-    public function testExceptionIsThrownWhenGettingNonexistentAlbum()
+    public function testExceptionIsThrownWhenGettingNonExistentAlbum()
     {
         $resultSet = new ResultSet();
         $resultSet->setArrayObjectPrototype(new Album());
@@ -645,12 +704,10 @@ fine, so now we can add the rest of the test methods:
 
         $albumTable = new AlbumTable($mockTableGateway);
 
-        try
-        {
+        try {
             $albumTable->getAlbum(123);
         }
-        catch (\Exception $e)
-        {
+        catch (\Exception $e) {
             $this->assertSame('Could not find row 123', $e->getMessage());
             return;
         }
@@ -658,7 +715,11 @@ fine, so now we can add the rest of the test methods:
         $this->fail('Expected exception was not thrown');
     }
 
-Let's review our tests. We are testing that:
+These tests are nothing complicated and they should be self explanatory. In each test
+we are injecting a mock table gateway into our ``AlbumTable`` and set our expectations
+accordingly.
+
+We are testing that:
 
 1. We can retrieve an individual album by its ID.
 2. We can delete albums.
@@ -666,123 +727,32 @@ Let's review our tests. We are testing that:
 4. We can update existing albums.
 5. We will encounter an exception if we're trying to retrieve an album that doesn't exist.
 
-Great - our ``AlbumTable`` class is tested. Let's move on!
-
-Let's make sure it works by writing a test.
-
-Add this test to your ``AlbumControllerTest`` class:
-
-.. code-block:: php
-
-    public function testGetAlbumTableReturnsAnInstanceOfAlbumTable()
-    {
-        $this->assertInstanceOf('Album\Model\AlbumTable', $this->controller->getAlbumTable());
-    }
-
-And execute ``phpunit`` from ``module/Album/test``.
+Running ``phpunit`` command for one last time, we get the output as follows:
 
 .. code-block:: text
 
-    PHPUnit 3.5.15 by Sebastian Bergmann.
+    PHPUnit 3.7.13 by Sebastian Bergmann.
 
-    ..............
+    Configuration read from /var/www/zf2-tutorial/module/Album/test/phpunit.xml
 
-    Time: 1 seconds, Memory: 12.25Mb
+    .............
 
-    OK (14 tests, 23 assertions)
+    Time: 0 seconds, Memory: 11.50Mb
 
-And execute ``phpunit`` from ``module/Album/test``.
-
-.. code-block:: text
-
-    PHPUnit 3.5.15 by Sebastian Bergmann.
-
-    ...F...........
-
-    Time: 1 second, Memory: 13.00Mb
-
-    There was 1 failure:
-
-    1) AlbumTest\Controller\AlbumControllerTest::testEditActionCanBeAccessed
-    Failed asserting that 302 matches expected 200.
-
-    /var/www/tutorial/module/Album/test/AlbumTest/Controller/AlbumControllerTest.php:65
-
-    FAILURES!
-    Tests: 14, Assertions: 23, Failures: 1.
-
-We need to change the test for edit 'AlbumControllerTest'  in ``module/Album/test/AlbumTest/Controller`` :
-
-.. code-block:: php
-
-    <?php
-    ...
-    public function testEditActionCanBeAccessed()
-    {
-        $this->routeMatch->setParam('action', 'edit');
-        $this->routeMatch->setParam('id', '1');//Add this Row
-
-        $result   = $this->controller->dispatch($this->request);
-        $response = $this->controller->getResponse();
-
-        $this->assertEquals(200, $response->getStatusCode());
-    }
-
-If we do not send any ``id`` parameter the Controller will redirect us to the ``album`` route which returns the HTTP Status Code ``302``
-
-We will also add another test to check if the redirection works.
-Add the following also to ``AlbumControllerTest.php``
-
-.. code-block:: php
-
-    <?php
-    ...
-    public function testEditActionRedirect()
-    {
-        $this->routeMatch->setParam('action', 'edit');
-
-        $result   = $this->controller->dispatch($this->request);
-        $response = $this->controller->getResponse();
-
-        $this->assertEquals(302, $response->getStatusCode());
-    }
-
-And execute ``phpunit`` from ``module/Album/test``.
-
-.. code-block:: text
-
-    PHPUnit 3.5.15 by Sebastian Bergmann.
-
-    ...............
-
-    Time: 1 second, Memory: 13.00Mb
+    OK (13 tests, 34 assertions)
 
 
-    OK (15 tests, 24 assertions)
+Conclusion
+----------
 
-Modify the tests in ``AlbumControllerTest.php`` in ``module/Album/test/AlbumTest/Controller``:
+In this short tutorial we gave a few examples how different parts of a Zend
+Framework 2 MVC application can be tested. We covered :ref:`setting up
+<setting-up-the-tests-directory>` the environment
+for testing, how to test :ref:`controllers and actions <testing-actions-with-post>`, 
+how to approach :ref:`failing test cases <a-failing-test-case>`, how to configure
+:ref:`the service manager <configuring-the-service-manager-for-the-tests>`,
+as well as how to test :ref:`model entities <testing-model-entities>`
+and :ref:`model tables <testing-model-tables>`.
 
-.. code-block:: php
-
-        public function testDeleteActionCanBeAccessed()
-        {
-            $this->routeMatch->setParam('action', 'delete');
-            $this->routeMatch->setParam('id', '1');
-
-            $result   = $this->controller->dispatch($this->request);
-            $response = $this->controller->getResponse();
-
-            $this->assertEquals(200, $response->getStatusCode());
-        }
-
-        public function testDeleteActionRedirect()
-        {
-            $this->routeMatch->setParam('action', 'delete');
-
-            $result   = $this->controller->dispatch($this->request);
-            $response = $this->controller->getResponse();
-
-            $this->assertEquals(302, $response->getStatusCode());
-        }
-
-
+This tutorial is by no means a definitive guide to writing unit tests, just
+a small stepping stone helping you develop applications of higher quality.
