@@ -42,7 +42,7 @@ Using the array notation:
    	$form = new Form('my-form');   	
    	$form->add(array(
    		'type' => 'Zend\Form\Element\Select',
-   		'name' => 'language'
+   		'name' => 'language',
    		'options' => array(
    			'label' => 'Which is your mother tongue?',
    			'value_options' => array(
@@ -64,7 +64,7 @@ You can add an empty option (option with no value) using the ``"empty_option"`` 
    	$form = new Form('my-form');   	
    	$form->add(array(
    		'type' => 'Zend\Form\Element\Select',
-   		'name' => 'language'
+   		'name' => 'language',
    		'options' => array(
    			'label' => 'Which is your mother tongue?',
    			'empty_option' => 'Please choose your language',
@@ -88,20 +88,20 @@ Option groups are also supported. You just need to add an 'options' key to the v
    	$select = new Element\Select('language');
    	$select->setLabel('Which is your mother tongue?');
    	$select->setValueOptions(array(
-        'european' => array(
+         'european' => array(
             'label' => 'European languages',
             'options' => array(
-                '0' => 'French',
-                '1' => 'Italian',
+               '0' => 'French',
+               '1' => 'Italian',
             ),
-        ),
-        'asian' => array(
+         ),
+         'asian' => array(
             'label' => 'Asian languages',
             'options' => array(
-                '2' => 'Japanese',
-                '3' => 'Chinese',
+               '2' => 'Japanese',
+               '3' => 'Chinese',
             ),
-        ),
+         ),
    	));
 
    	$form = new Form('language');
@@ -116,12 +116,12 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 .. function:: setOptions(array $options)
    :noindex:
 
-   Set options for an element of type Checkbox. Accepted options, in addition to the inherited options of Zend\\Form\\Element\\Checkbox <zend.form.element.checkbox.methods.set-options>` , are: ``"value_options"`` and ``"empty_option"``, which call ``setValueOptions`` and ``setEmptyOption``, respectively.
+   Set options for an element of type Checkbox. Accepted options, in addition to the inherited :ref:`options of Zend\\Form\\Element\\Checkbox <zend.form.element.checkbox.methods.set-options>` , are: ``"value_options"`` and ``"empty_option"``, which call ``setValueOptions`` and ``setEmptyOption``, respectively.
    
 .. function:: setValueOptions(array $options)
    :noindex:
 
-   Set the value options for every checkbox of the multi-checkbox. The array must contain a key => value for every checkbox.
+   Set the value options for the select element. The array must contain key => value pairs.
 
 .. function:: getValueOptions()
    :noindex:
@@ -135,9 +135,9 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 
    Optionally set a label for an empty option (option with no value). It is set to "null" by default, which means that no empty option will be rendered.
 
-.. function:: setEmptyOption()
+.. function:: getEmptyOption()
    :noindex:
 
    Get the label for the empty option (null if none).
 
-   :rtype: string
+   :rtype: string|null

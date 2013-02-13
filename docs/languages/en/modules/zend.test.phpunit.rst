@@ -31,7 +31,7 @@ The following is a simple test case for a IndexController to verify things like 
             $this->dispatch('/');
             $this->assertResponseStatusCode(200);
             
-            $this->assertModule('application');
+            $this->assertModuleName('application');
             $this->assertControllerName('application_index');
             $this->assertControllerClass('IndexController');
             $this->assertMatchedRouteName('home');

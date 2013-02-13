@@ -8,7 +8,7 @@ provides a default input specification with a type of :ref:`FileInput <zend.inpu
 (important for handling validators and filters correctly).
 It can be used with the ``Zend\Form\View\Helper\FormFile`` view helper.
 
-``Zend\Form\Element\File`` extends from :ref:`Zend\Form\Element <zend.form.element>`.
+``Zend\Form\Element\File`` extends from :ref:`Zend\\Form\\Element <zend.form.element>`.
 
 .. _zend.form.element.file.usage:
 

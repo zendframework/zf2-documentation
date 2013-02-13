@@ -20,28 +20,28 @@ to define some domain objects that we'll be using.
     {
         /**
          * @var string
-         \*/
+         */
         protected $name;
     
         /**
          * @var int
-         \*/
+         */
         protected $price;
     
         /**
          * @var Brand
-         \*/
+         */
         protected $brand;
     
         /**
          * @var array
-         \*/
+         */
         protected $categories;
     
         /**
          * @param string $name
          * @return Product
-         \*/
+         */
         public function setName($name)
         {
             $this->name = $name;
@@ -50,7 +50,7 @@ to define some domain objects that we'll be using.
     
         /**
          * @return string
-         \*/
+         */
         public function getName()
         {
             return $this->name;
@@ -59,7 +59,7 @@ to define some domain objects that we'll be using.
         /**
          * @param int $price
          * @return Product
-         \*/
+         */
         public function setPrice($price)
         {
             $this->price = $price;
@@ -68,7 +68,7 @@ to define some domain objects that we'll be using.
     
         /**
          * @return int
-         \*/
+         */
         public function getPrice()
         {
             return $this->price;
@@ -77,7 +77,7 @@ to define some domain objects that we'll be using.
         /**
          * @param Brand $brand
          * @return Product
-         \*/
+         */
         public function setBrand(Brand $brand)
         {
             $this->brand = $brand;
@@ -86,7 +86,7 @@ to define some domain objects that we'll be using.
     
         /**
          * @return Brand
-         \*/
+         */
         public function getBrand()
         {
             return $this->brand;
@@ -95,7 +95,7 @@ to define some domain objects that we'll be using.
         /**
          * @param array $categories
          * @return Product
-         \*/
+         */
         public function setCategories(array $categories)
         {
             $this->categories = $categories;
@@ -104,7 +104,7 @@ to define some domain objects that we'll be using.
     
         /**
          * @return array
-         \*/
+         */
         public function getCategories()
         {
             return $this->categories;
@@ -115,18 +115,18 @@ to define some domain objects that we'll be using.
     {
         /**
          * @var string
-         \*/
+         */
         protected $name;
     
         /**
          * @var string
-         \*/
+         */
         protected $url;
     
         /**
          * @param string $name
          * @return Brand
-         \*/
+         */
         public function setName($name)
         {
             $this->name = $name;
@@ -135,7 +135,7 @@ to define some domain objects that we'll be using.
     
         /**
          * @return string
-         \*/
+         */
         public function getName()
         {
             return $this->name;
@@ -144,7 +144,7 @@ to define some domain objects that we'll be using.
         /**
          * @param string $url
          * @return Brand
-         \*/
+         */
         public function setUrl($url)
         {
             $this->url = $url;
@@ -153,7 +153,7 @@ to define some domain objects that we'll be using.
     
         /**
          * @return string
-         \*/
+         */
         public function getUrl()
         {
             return $this->url;
@@ -164,13 +164,13 @@ to define some domain objects that we'll be using.
     {
         /**
          * @var string
-         \*/
+         */
         protected $name;
     
         /**
          * @param string $name
          * @return Category
-         \*/
+         */
         public function setName($name)
         {
             $this->name = $name;
@@ -179,7 +179,7 @@ to define some domain objects that we'll be using.
     
         /**
          * @return string
-         \*/
+         */
         public function getName()
         {
             return $this->name;
@@ -241,7 +241,7 @@ Here is the ``Brand`` fieldset:
     
         /**
          * @return array
-         \*/
+         */
         public function getInputFilterSpecification()
         {
             return array(
@@ -306,7 +306,7 @@ Here is the ``Category`` fieldset:
     
         /**
          * @return array
-         \*/
+         */
         public function getInputFilterSpecification()
         {
             return array(
@@ -386,7 +386,7 @@ And finally the ``Product`` fieldset:
          * {@link Zend\InputFilter\Factory::createInputFilter()}.
          *
          * @return array
-         \*/
+         */
         public function getInputFilterSpecification()
         {
             return array(
@@ -483,7 +483,7 @@ not forms. And only ``Form`` instances can be validated. So here is the form :
         }
     }
 
-``CreateForm`` is quite simple, as it only defines a ``Product`` fieldset, as
+``CreateProduct`` is quite simple, as it only defines a ``Product`` fieldset, as
 well as some other useful fields (``CSRF`` for security, and a ``Submit`` button).
 
 Notice the ``use_base_fieldset`` option. This option is here to say to the form:
@@ -507,7 +507,7 @@ Now, let's create the action in the controller:
 
        /**
          * @return array
-         \*/
+         */
         public function indexAction()
         {
             $form = new CreateProduct();
@@ -723,7 +723,7 @@ Validation groups for fieldsets and collection
 Validation groups allow you to validate a subset of fields.
 
 As an example, although the ``Brand`` entity has a ``URL`` property, we don't
-want to user to specify it in the creation form (but may wish to later in the
+want the user to specify it in the creation form (but may wish to later in the
 "Edit Product" form, for instance). Let's update the view to remove the ``URL``
 input:
 
@@ -764,7 +764,7 @@ course this is not recommended, as a lot of code will be duplicated.
 
 The solution: validation groups. A validation group is specified in a ``Form``
 object (hence, in our case, in the ``CreateProduct`` form) by giving an array of
-all the elements we want to validate.  Our ``CreateForm`` now looks like this:
+all the elements we want to validate.  Our ``CreateProduct`` now looks like this:
 
 .. code-block:: php
 

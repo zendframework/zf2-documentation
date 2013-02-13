@@ -69,7 +69,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    
    :rtype: array
    
-.. function:: setCsrfValidator(CsrfValidator $validator)
+.. function:: setCsrfValidator(Zend\Validator\Csrf $validator)
    :noindex:
 
    Override the default CSRF validator by setting another one.
@@ -79,4 +79,4 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 
    Get the CSRF validator.
    
-   :rtype: CsrfValidator 
+   :rtype: Zend\Validator\Csrf 
