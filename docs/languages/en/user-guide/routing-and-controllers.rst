@@ -69,7 +69,7 @@ actions. This is the updated module config file with the new code highlighted.
                         'route'    => '/album[/:action][/:id]',
                         'constraints' => array(
                             'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            'id'     => '[0-9]+',
+                            'id'     => '[0-9]*',
                         ),
                         'defaults' => array(
                             'controller' => 'Album\Controller\Album',
