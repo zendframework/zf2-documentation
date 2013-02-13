@@ -1,8 +1,7 @@
 .. _tutorials.unittesting.rst:
 
-############
-Unit Testing
-############
+Unit Testing a Zend Framework 2 application
+===========================================
 
 A solid unit test suite is essential for ongoing development in large
 projects, especially those with many people involved. Going back and
@@ -12,26 +11,38 @@ by automatically testing your application's components and alerting
 you when something is not working the same way it was when you wrote
 your tests.
 
+This tutorial is written in the hopes of showing how to test different
+parts of a Zend Framework 2 MVC application. As such, this tutorial
+will use the application written in the :ref:`getting started
+user guide <user-guide.overview>`. It is in no way a guide to
+unit testing in general, but is here only to help overcome the
+initial hurdles in writing unit tests for ZF2 applications.
+
 As the Zend Framework 2 API uses `PHPUnit <http://phpunit.de/>`_, so
-will this tutorial. A detailed explanation of unit testing
-is beyond the scope of this tutorial, so we will only provide sample
-tests for the components in the pages that follow. This tutorial assumes
-that you already have PHPUnit installed. The version of PHPUnit should be
-3.7.*
+will this tutorial. This tutorial assumes that you already have PHPUnit
+installed. The version of PHPUnit used should be 3.7.*
 
 Setting up the tests directory
 ------------------------------
 
-Start by creating a directory called ``test`` in ``zf2-tutorial\module\Application`` with
+As Zend Framework 2 applications are built from modules that should be
+standalone blocks of an application, we don't test the application in
+it's entirety, but module by module.
+
+We will show how to set up the minimum requirements to test a module,
+the ``Album`` module we wrote in the user guide, and which then can be
+used as a base for testing any other module.
+
+Start by creating a directory called ``test`` in ``zf2-tutorial\module\Album`` with
 the following subdirectories:
 
 .. code-block:: text
 
     zf2-tutorial/
         /module
-            /Application
+            /Album
                 /test
-                    /ApplicationTest
+                    /AlbumTest
                         /Controller
 
 The structure of the ``test`` directory matches exactly with that of the
@@ -41,33 +52,146 @@ well-organized and easy to find.
 Bootstrapping your tests
 ------------------------
 
-Next, create a file called ``phpunit.xml.dist`` under ``zf2-tutorial/module/Application/test``:
+Next, create a file called ``phpunit.xml`` under ``zf2-tutorial/module/Album/test``:
 
 .. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
 
-    <phpunit bootstrap="Bootstrap.php">
+    <phpunit bootstrap="Bootstrap.php" colours="true">
         <testsuites>
             <testsuite name="zf2tutorial">
-                <directory>./ApplicationTest</directory>
+                <directory>./AlbumTest</directory>
             </testsuite>
         </testsuites>
     </phpunit>
 
-
-And a file called ``Bootstrap.php``, also under zf-tutorial/tests/:
+And a file called ``Bootstrap.php``, also under ``zf2-tutorial/module/Album/test``:
 
 .. code-block:: php
+    :linenos:
+    :emphasize-lines: 38
 
-    chdir(dirname(__DIR__));
+    <?php
 
-    include __DIR__ . '/../init_autoloader.php';
+    namespace AlbumTest;
 
-The contents of the bootstrap file are similar to those of zf-tutorial/public/index.php, except 
-we don’t initialize the application. We’ll be doing that in our tests to ensure that each test 
-is executed against a freshly initialized instance of our application without any previous tests 
-influencing the current test’s results.
+    use Zend\Loader\AutoloaderFactory;
+    use Zend\Mvc\Service\ServiceManagerConfig;
+    use Zend\ServiceManager\ServiceManager;
+    use RuntimeException;
+
+    error_reporting(E_ALL | E_STRICT);
+    chdir(__DIR__);
+
+    /**
+     * Test bootstrap, for setting up autoloading
+     */
+    class Bootstrap
+    {
+        protected static $serviceManager;
+
+        public static function init()
+        {
+            $zf2ModulePaths = array(dirname(dirname(__DIR__)));
+            if (($path = static::findParentPath('vendor'))) {
+                $zf2ModulePaths[] = $path;
+            }
+            if (($path = static::findParentPath('module')) !== $zf2ModulePaths[0]) {
+                $zf2ModulePaths[] = $path;
+            }
+
+            static::initAutoloader();
+
+            // use ModuleManager to load this module and it's dependencies
+            $config = array(
+                'module_listener_options' => array(
+                    'module_paths' => $zf2ModulePaths,
+                ),
+                'modules' => array(
+                    'Album'
+                )
+            );
+
+            $serviceManager = new ServiceManager(new ServiceManagerConfig());
+            $serviceManager->setService('ApplicationConfig', $config);
+            $serviceManager->get('ModuleManager')->loadModules();
+            static::$serviceManager = $serviceManager;
+        }
+
+        public static function getServiceManager()
+        {
+            return static::$serviceManager;
+        }
+
+        protected static function initAutoloader()
+        {
+            $vendorPath = static::findParentPath('vendor');
+
+            $zf2Path = getenv('ZF2_PATH');
+            if (!$zf2Path) {
+                if (defined('ZF2_PATH')) {
+                    $zf2Path = ZF2_PATH;
+                } else {
+                    if (is_dir($vendorPath . '/ZF2/library')) {
+                        $zf2Path = $vendorPath . '/ZF2/library';
+                    }
+                }
+            }
+
+            if (!$zf2Path) {
+                throw new RuntimeException('Unable to load ZF2. Run `php composer.phar install` or define a ZF2_PATH environment variable.');
+            }
+
+            include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
+            AutoloaderFactory::factory(array(
+                'Zend\Loader\StandardAutoloader' => array(
+                    'autoregister_zf' => true,
+                    'namespaces' => array(
+                        __NAMESPACE__ => __DIR__ . '/' . __NAMESPACE__,
+                    ),
+                ),
+            ));
+        }
+
+        protected static function findParentPath($path)
+        {
+            $dir = __DIR__;
+            $previousDir = '.';
+            while (!is_dir($dir . '/' . $path)) {
+                $dir = dirname($dir);
+                if ($previousDir === $dir) return false;
+                $previousDir = $dir;
+            }
+            return $dir . '/' . $path;
+        }
+    }
+
+    Bootstrap::init();
+
+The contents of this bootstrap file can be daunting at first site, but all it
+really does is ensuring that all the necessary files are autoloadable for our
+tests. The most important lines is line 38 on which we say what
+modules we want to load for our test. In this case we are only loading the
+``Album`` module as it has no dependencies against other modules.
+
+Now, if you navigate to the ``zf2-tutorial/module/Album/test/`` directory,
+and run ``phpunit``, you should get a similar output to this:
+
+.. code-block:: text
+
+    PHPUnit 3.7.13 by Sebastian Bergmann.
+
+    Configuration read from /var/www/zf2-tutorial/module/Album/test/phpunit.xml
+
+    Time: 0 seconds, Memory: 1.75Mb
+
+    No tests executed!
+
+
+Even though no tests were executed, we at least know that the autoloader found the
+ZF2 files, otherwise it would throw a ``RuntimeException``, defined on line 69 of
+our bootstrap file.
 
 Your first Controller test
 --------------------------
