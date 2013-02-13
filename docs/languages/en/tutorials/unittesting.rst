@@ -58,7 +58,7 @@ Next, create a file called ``phpunit.xml`` under ``zf2-tutorial/module/Album/tes
 
     <?xml version="1.0" encoding="UTF-8"?>
 
-    <phpunit bootstrap="Bootstrap.php" colours="true">
+    <phpunit bootstrap="Bootstrap.php" colors="true">
         <testsuites>
             <testsuite name="zf2tutorial">
                 <directory>./AlbumTest</directory>
@@ -196,212 +196,241 @@ our bootstrap file.
 Your first Controller test
 --------------------------
 
-Next, create ``IndexControllerTest.php`` under
-``zf-tutorial/module/Application/test/ApplicationTest/Controller`` with
+Testing controllers is never an easy task, but Zend Framework 2 comes
+with the ``Zend\Test`` component which should make testing much less
+cumbersome.
+
+First, create ``IndexControllerTest.php`` under
+``zf2-tutorial/module/Albumtest/AlbumTest/Controller`` with
 the following contents:
 
 .. code-block:: php
 
     <?php
 
-    namespace ApplicationTest\Controller;
+    namespace AlbumTest\Controller;
 
     use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
-    class IndexControllerTest extends AbstractHttpControllerTestCase
+    class AlbumControllerTest extends AbstractHttpControllerTestCase
     {
         public function setUp()
         {
             $this->setApplicationConfig(
-                include '/path/to/application/config/test/application.config.php'
+                include '/var/www/zf2-tutorial/config/application.config.php'
             );
             parent::setUp();
         }
     }
 
-Add your application config with the ``setApplicationConfig`` method. You can use several config 
-to test modules dependencies or your current application config.
+The ``AbstractHttpControllerTestCase`` class we extend here helps us setting up the
+application itself, helps with dispatching and other tasks that happen during a request,
+as well offers methods for asserting request params, response headers, redirects and more.
+See :ref:`Zend\\Test <zend.test.introduction>` documentation for more.
 
-Now, add the following function to the ``IndexControllerTest`` class:
+One thing that is needed is to set the application config with the ``setApplicationConfig``
+method.
+
+Now, add the following function to the ``AlbumControllerTest`` class:
 
 .. code-block:: php
 
     public function testIndexActionCanBeAccessed()
     {
-        $this->dispatch('/');
+        $this->dispatch('/album');
         $this->assertResponseStatusCode(200);
 
-        $this->assertModule('application');
-        $this->assertControllerName('application_index');
-        $this->assertControllerClass('IndexController');
-        $this->assertMatchedRouteName('home');
+        $this->assertModule('Album');
+        $this->assertControllerName('Album\Controller\Album');
+        $this->assertControllerClass('AlbumController');
+        $this->assertMatchedRouteName('album');
     }
 
-The test is verifying that the homepage responds with HTTP status code 200 and
-that the controller's return value is equal to 'IndexController'.
+This test case dispatches the ``/album`` URL, asserts that the response code is 200,
+and that we ended up in the desired module and controller.
 
-Testing
------------
+.. note::
+    For asserting the *controller name* we are using the controller name we defined in our
+    routing configuration for the Album module. In our example this should be defined on line
+    19 of the ``module.config.php`` file in the Album module.
 
-Finally, ``cd`` to ``zf-tutorial/module/Application/test/`` and run ``phpunit``. If you see something like
-this, then your application is ready for more tests!
+A failing test case
+-------------------
+
+Finally, ``cd`` to ``zf2-tutorial/module/Album/test/`` and run ``phpunit``. Uh-oh! The test
+failed!
 
 .. code-block:: text
 
-    PHPUnit 3.5.15 by Sebastian Bergmann.
+    PHPUnit 3.7.13 by Sebastian Bergmann.
+
+    Configuration read from /var/www/zf2-tutorial/module/Album/test/phpunit.xml
+
+    F
+
+    Time: 0 seconds, Memory: 8.50Mb
+
+    There was 1 failure:
+
+    1) AlbumTest\Controller\AlbumControllerTest::testIndexActionCanBeAccessed
+    Failed asserting response code "200", actual status code is "500"
+
+    /var/www/zf2-tutorial/vendor/ZF2/library/Zend/Test/PHPUnit/Controller/AbstractControllerTestCase.php:373
+    /var/www/zf2-tutorial/module/Album/test/AlbumTest/Controller/AlbumControllerTest.php:22
+
+    FAILURES!
+    Tests: 1, Assertions: 0, Failures: 1.
+
+The failure message doesn't tell us much, apart from that the expected status code
+is not 200, but 500. To get a bit more information when something goes wrong in a
+test case, we set the protected ``$traceError`` member to ``true``. Add the following
+just above the ``setUp`` method in our ``AlbumControllerTest`` class:
+
+.. code-block:: php
+
+    protected $traceError = true;
+
+
+Running the ``phpunit`` command again and we should see some more information about
+what went wrong in our test. The main error message we are interested in should read
+something like:
+
+.. code-block:: text
+
+    Zend\ServiceManager\Exception\ServiceNotFoundException: Zend\ServiceManager\ServiceManager::get
+    was unable to fetch or create an instance for Zend\Db\Adapter\Adapter
+
+From this error message it is clear that not all our dependencies are available in the
+service manager. Let us take a look how can we fix this.
+
+Configuring the Service Manager for the tests
+---------------------------------------------
+
+The error says that the service manager can not create an instance of a database adapter
+for us. The database adapter is indirectly used by our ``Album\Model\AlbumTable`` to
+fetch the list of albums from the database.
+
+The first thought would be to create an instance of an adapter, pass it to the
+service manager and let the code run from there as is. Problem with this approach
+is that we would end up with our test cases doing actualy queries against the database.
+To keep our tests fast, and to reduce the number of possible failure points in our tests,
+this should be avoided.
+
+The second thought would be then to create a mock of the database adapter, and prevent
+the actual database calls by mocking them out. This is a much better approach, but creating
+the adapter mock is tedious (but no doubt we will have to create it at one point).
+
+The best thing to do would be to mock out our ``Album\Model\AlbumTable`` class which
+retrieves the list of albums from the database. Remember, we are now testing our controller,
+so we can mock out the actual call to ``fetchAll`` and replace the return values with
+dummy values. At this point, we are not interested in how does ``fetchAll`` retrieve the
+albums, but only that it gets called and that it returns an array of albums, so that is
+why we can get away with this mocking. When we will test ``AlbumTable`` itself,
+then we will write the actual tests for the ``fetchAll`` method.
+
+Here is how we can accomplish this, by modifying the ``testIndexActionCanBeAccessed``
+test method as follows:
+
+.. code-block:: php
+    :linenos:
+    :emphasize-lines: 3-13
+
+    public function testIndexActionCanBeAccessed()
+    {
+        $albumTableMock = $this->getMockBuilder('Album\Model\AlbumTable')
+                                ->disableOriginalConstructor()
+                                ->getMock();
+
+        $albumTableMock->expects($this->once())
+                        ->method('fetchAll')
+                        ->will($this->returnValue(array()));
+
+        $serviceManager = $this->getApplicationServiceLocator();
+        $serviceManager->setAllowOverride(true);
+        $serviceManager->setService('Album\Model\AlbumTable', $albumTableMock);
+
+        $this->dispatch('/album');
+        $this->assertResponseStatusCode(200);
+
+        $this->assertModuleName('Album');
+        $this->assertControllerName('Album\Controller\Album');
+        $this->assertControllerClass('AlbumController');
+        $this->assertMatchedRouteName('album');
+    }
+
+By default, the Service Manager does not allow us to replace existing services. As the
+``Album\Model\AlbumTable`` was already set, we are allowing for overrides (line 12), and then
+replacing the real instance of the `AlbumTable` with a mock. The mock is created so that it
+will return just an empty array when the ``fetchAll`` method is called. This allows us to
+test for what we care about in this test, and that is that by dispatching to the ``/album``
+URL we get to the `Album` module's `AlbumController`.
+
+Running the ``phpunit`` command at this point, we will get the following output as the
+tests now pass:
+
+.. code-block:: text
+
+    PHPUnit 3.7.13 by Sebastian Bergmann.
+
+    Configuration read from /var/www/zf2-tutorial/module/Album/test/phpunit.xml
 
     .
 
-    Time: 0 seconds, Memory: 15.75Mb
+    Time: 0 seconds, Memory: 9.00Mb
 
-    OK (1 test, 5 assertions)
-
-
-Test your console router
---------------------------
-
-Zend\Test component provide a HTTP controller tests case and a console controller. To test your application 
-with the console, just switch with the AbstractConsoleControllerTestCaseTest. Now, you can use the same methods 
-in your tests controllers :
-
-.. code-block:: php
-
-    public function testConsoleActionCanBeAccessed()
-    {
-        $this->dispatch('--your-arg');
-        $this->assertResponseStatusCode(0);
-
-        $this->assertModule('application');
-        $this->assertControllerName('application_console');
-        $this->assertControllerClass('ConsoleController');
-        $this->assertMatchedRouteName('myaction');
-    }
-
-More informations at the ``Zend\Test`` component documentation page.
+    OK (1 test, 6 assertions)
 
 
-Write the tests
----------------
+Testing actions with POST
+-------------------------
 
-Our Album controller doesn't do much yet, so it should be easy to test.
-
-Create a directory structure like described in the previous section `Unit Testing<http://framework.zend.com/manual/2.0/en/user-guide/routing-and-controllers.html/>
-
-Create the follwing subdirectories:
-
-.. code-block:: text
-
-    zf2-tutorial/
-        /module
-            /Album
-                /test
-                    /AlbumTest
-                        /Controller
-
-
-Add the 3 files as described in unit Testing to ``module/Album/test
-* ``Bootstrap.php``
-* ``phpunit.xml.dist``
-* ``TestConfig.php.dist``
-
-Remember here to change the namespace in ``Bootstrap.php`` and change the Module ``Application`` to ``Album in the ``TestConfig.php.dist``.
-In phpunit.xml change the directory to point at `AlbumTest`
-
-Create ``zf2-tutorial/module/Album/test/AlbumTest/Controller/AlbumControllerTest.php```
-with the following contents:
+One of the most common actions happening in controllers is submitting a form
+with some POST data. Testing this is surprisingly easy:
 
 .. code-block:: php
 
-    <?php
-    namespace AlbumTest\Controller;
-
-    use AlbumTest\Bootstrap;
-    use Album\Controller\AlbumController;
-    use Zend\Http\Request;
-    use Zend\Http\Response;
-    use Zend\Mvc\MvcEvent;
-    use Zend\Mvc\Router\RouteMatch;
-    use Zend\Mvc\Router\Http\TreeRouteStack as HttpRouter;
-    use PHPUnit_Framework_TestCase;
-
-    class AlbumControllerTest extends PHPUnit_Framework_TestCase
+    public function testAddActionRedirectsAfterValidPost()
     {
-        protected $controller;
-        protected $request;
-        protected $response;
-        protected $routeMatch;
-        protected $event;
+        $albumTableMock = $this->getMockBuilder('Album\Model\AlbumTable')
+                                ->disableOriginalConstructor()
+                                ->getMock();
 
-        protected function setUp()
-        {
-            $serviceManager = Bootstrap::getServiceManager();
-            $this->controller = new AlbumController();
-            $this->request    = new Request();
-            $this->routeMatch = new RouteMatch(array('controller' => 'index'));
-            $this->event      = new MvcEvent();
-            $config = $serviceManager->get('Config');
-            $routerConfig = isset($config['router']) ? $config['router'] : array();
-            $router = HttpRouter::factory($routerConfig);
-            $this->event->setRouter($router);
-            $this->event->setRouteMatch($this->routeMatch);
-            $this->controller->setEvent($this->event);
-            $this->controller->setServiceLocator($serviceManager);
-        }
+        $albumTableMock->expects($this->once())
+                        ->method('saveAlbum')
+                        ->will($this->returnValue(null));
 
-        public function testAddActionCanBeAccessed()
-        {
-            $this->routeMatch->setParam('action', 'add');
+        $serviceManager = $this->getApplicationServiceLocator();
+        $serviceManager->setAllowOverride(true);
+        $serviceManager->setService('Album\Model\AlbumTable', $albumTableMock);
 
-            $result   = $this->controller->dispatch($this->request);
-            $response = $this->controller->getResponse();
+        $postData = array('title' => 'Led Zeppelin III', 'artist' => 'Led Zeppelin');
+        $this->dispatch('/album/add', 'POST', $postData);
+        $this->assertResponseStatusCode(302);
 
-            $this->assertEquals(200, $response->getStatusCode());
-        }
-
-        public function testDeleteActionCanBeAccessed()
-        {
-            $this->routeMatch->setParam('action', 'delete');
-
-            $result   = $this->controller->dispatch($this->request);
-            $response = $this->controller->getResponse();
-
-            $this->assertEquals(200, $response->getStatusCode());
-        }
-
-        public function testEditActionCanBeAccessed()
-        {
-            $this->routeMatch->setParam('action', 'edit');
-
-            $result   = $this->controller->dispatch($this->request);
-            $response = $this->controller->getResponse();
-
-            $this->assertEquals(200, $response->getStatusCode());
-        }
-
-        public function testIndexActionCanBeAccessed()
-        {
-            $this->routeMatch->setParam('action', 'index');
-
-            $result   = $this->controller->dispatch($this->request);
-            $response = $this->controller->getResponse();
-
-            $this->assertEquals(200, $response->getStatusCode());
-        }
+        $this->assertRedirectTo('/album');
     }
 
-And execute ``phpunit`` from ``module/Album/test``.
+Here we test that when we make a POST request against the ``/album/add`` URL, the
+``Album\Model\AlbumTable``'s ``saveAlbum`` will be called and after that we will
+be redirected back to the ``/album`` URL.
+
+Running ``phpunit`` gives us the following output:
 
 .. code-block:: text
 
-    PHPUnit 3.5.15 by Sebastian Bergmann.
+    PHPUnit 3.7.13 by Sebastian Bergmann.
 
-    .....
+    Configuration read from /home/robert/www/zf2-tutorial/module/Album/test/phpunit.xml
 
-    Time: 0 seconds, Memory: 5.75Mb
+    ..
 
-    OK (5 tests, 10 assertions)
+    Time: 0 seconds, Memory: 10.75Mb
+
+    OK (2 tests, 9 assertions)
 
 
+Testing the ``editAction`` and ``deleteAction`` methods can be easily done in a manner similar
+as shown for the ``addAction``.
 
 
 
