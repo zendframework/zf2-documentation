@@ -131,25 +131,4 @@ this, then your application is ready for more tests!
 
     OK (1 test, 5 assertions)
 
-
-Test your console router
---------------------------
-
-Zend\Test component provide a HTTP controller tests case and a console controller. To test your application 
-with the console, just switch with the AbstractConsoleControllerTestCaseTest. Now, you can use the same methods 
-in your tests controllers :
-
-.. code-block:: php
-
-    public function testConsoleActionCanBeAccessed()
-    {
-        $this->dispatch('--your-arg');
-        $this->assertResponseStatusCode(0);
-
-        $this->assertModuleName('application');
-        $this->assertControllerName('application_console');
-        $this->assertControllerClass('ConsoleController');
-        $this->assertMatchedRouteName('myaction');
-    }
-
 More informations at the ``Zend\Test`` component documentation page.
