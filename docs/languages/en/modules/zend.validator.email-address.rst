@@ -236,7 +236,7 @@ email address. As with Zend Framework 1.10 you can simply set messages for ``Zen
    $validator = new Zend\Validator\EmailAddress();
    $validator->setMessages(
        array(
-           Zend\Validator\Hostname::UNKNOWN_TLD => 'I don't know the TLD you gave'
+           Zend\Validator\Hostname::UNKNOWN_TLD => 'I don\'t know the TLD you gave'
        )
    );
 
