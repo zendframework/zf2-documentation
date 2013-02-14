@@ -249,7 +249,7 @@ Now, add the following function to the ``AlbumControllerTest`` class:
         $this->dispatch('/album');
         $this->assertResponseStatusCode(200);
 
-        $this->assertModule('Album');
+        $this->assertModuleName('Album');
         $this->assertControllerName('Album\Controller\Album');
         $this->assertControllerClass('AlbumController');
         $this->assertMatchedRouteName('album');
