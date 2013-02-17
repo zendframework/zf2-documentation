@@ -3,7 +3,7 @@
 Session Config
 ==============
 
-Zend Framework comes with a standard set of confiug classes which are ready for you to use.  Config handles setting
+Zend Framework comes with a standard set of config classes which are ready for you to use.  Config handles setting
 various configuration such as where a cookie lives, lifetime, including several bits to configure ext/session when
 using ``Zend\Session\Config\SessionConfig``.
 

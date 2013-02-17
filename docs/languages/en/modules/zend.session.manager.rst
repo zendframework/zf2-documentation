@@ -7,9 +7,9 @@ The session manager, ``Zend\Session\SessionManager``, is a class that is respons
 management.  It initializes and configures configuration, storage and save handling.  Additionally the session
 manager can be injected into the session container to provide a wrapper or namespace around your session data.
 
-The session manager is responsible for starting a session, checking if a session exists, writing session data to
-from the storage container to the save handler, regenerating session ids, time to live and destorying sessions.
-The session manager can valid sessions from a validator chain to ensure that the session data is indeed correct.
+The session manager is responsible for session start, session exists, session write, regenerate id, time to live
+and session destroy. The session manager can valid sessions from a validator chain to ensure that the session data
+is indeed correct.
 
 Initializing the Session Manager
 --------------------------------
@@ -33,9 +33,7 @@ The following illustrates how you may configure session manager by setting optio
                    'name' => 'myapp',
                ),
            ),
-           'storage' => array(
-               'class' => 'Zend\Session\Storage\SessionArrayStorage',
-           ),
+           'storage' => 'Zend\Session\Storage\SessionArrayStorage',
            'validators' => array(
                array(
                    'Zend\Session\Validator\RemoteAddr',
@@ -83,10 +81,10 @@ The following illustrates how you might utilize the above configuration to creat
            return array(
                'factories' => array(
                    'Zend\Session\SessionManager' => function ($sm) {
-                       $config = $sm->getConfig();
+                       $config = $sm->get('config');
                        if (isset($config['session'])) {
                            $session = $config['session'];
-                           // check for config class:
+
                            $sessionConfig = null;
                            if (isset($session['config'])) {
                                $class = isset($session['config']['class'])  ? $session['config']['class'] : 'Zend\Session\Config\SessionConfig';
@@ -94,18 +92,19 @@ The following illustrates how you might utilize the above configuration to creat
                                $sessionConfig = new $class();
                                $sessionConfig->setOptions($options);
                            }
+
                            $sessionStorage = null;
                            if (isset($session['storage'])) {
-                               $class = isset($session['storage']['class'])  ? $session['storage']['class'] : 'Zend\Session\Storage\SessionArrayStorage';
-                               $options = isset($session['storage']['options']) ? $session['storage']['options'] : array();
+                               $class = $session['storage'];
                                $sessionStorage = new $class();
-                               $sessionStorage->setOptions($options);
                            }
+
                            $sessionSaveHandler = null;
                            if (isset($session['save_handler'])) {
                                // class should be fetched from service manager since it will require constructor arguments
                                $sessionSaveHandler = $sm->get($session['save_handler']);
                            }
+
                            $sessionManager = new SessionManager($sessionConfig, $sessionStorage, $sessionSaveHandler);
 
                            if (isset($session['validator'])) {
