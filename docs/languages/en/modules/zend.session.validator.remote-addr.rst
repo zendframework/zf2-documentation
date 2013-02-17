@@ -13,11 +13,11 @@ Basic Usage
 A basic example is one like the following:
 
 .. code-block:: php
-:linenos:
+   :linenos:
 
-use Zend\Session\Validator\RemoteAddr;
-use Zend\Session\SessionManager;
-
-$manager = new SessionManager();
-$manager->getValidatorChain()->attach('session.validate', array(new RemoteAddr(), 'isValid'));
+   use Zend\Session\Validator\RemoteAddr;
+   use Zend\Session\SessionManager;
+   
+   $manager = new SessionManager();
+   $manager->getValidatorChain()->attach('session.validate', array(new RemoteAddr(), 'isValid'));
 

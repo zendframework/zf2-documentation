@@ -675,6 +675,17 @@ Zend\\ServiceManager
         * :doc:`modules/zend.service-manager.intro`
         * :doc:`modules/zend.service-manager.quick-start`
 
+.. _zend.session
+
+Zend\\Session
+^^^^^^^^^^^^^
+        * :doc:`modules/zend.session.config`
+        * :doc:`modules/zend.session.container`
+        * :doc:`modules/zend.session.manager`
+        * :doc:`modules/zend.session.save-handler`
+        * :doc:`modules/zend.session.storage`
+        * :doc:`modules/zend.session.validator`
+
 .. _zend.soap:
 
 Zend\\Soap
