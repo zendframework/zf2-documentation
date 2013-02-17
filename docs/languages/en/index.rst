@@ -29,6 +29,7 @@
    modules/zend.authentication.adapter.digest
    modules/zend.authentication.adapter.http
    modules/zend.authentication.adapter.ldap
+   modules/zend.authentication.validator.authentication
    modules/zend.barcode.intro
    modules/zend.barcode.creation
    modules/zend.barcode.objects
@@ -293,6 +294,7 @@ Zend\\Authentication
         * :doc:`modules/zend.authentication.adapter.digest`
         * :doc:`modules/zend.authentication.adapter.http`
         * :doc:`modules/zend.authentication.adapter.ldap`
+        * :doc:`modules/zend.authentication.validator.authentication`
 
 .. _zend.barcode:
 
