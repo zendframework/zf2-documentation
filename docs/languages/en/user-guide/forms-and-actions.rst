@@ -4,7 +4,7 @@
 表单和动作
 #################
 
-Adding new albums
+添加新专辑
 -----------------
 
 We can now code up the functionality to add new albums. There are two bits to
@@ -330,7 +330,7 @@ And execute ``phpunit`` from ``module/Album/test``.
 
     OK (14 tests, 23 assertions)
 
-Editing an album
+编辑专辑
 ----------------
 
 Editing an album is almost identical to adding one, so the code is very similar.
@@ -545,7 +545,7 @@ And execute ``phpunit`` from ``module/Album/test``.
     OK (15 tests, 24 assertions)
 
 
-Deleting an album
+删除专辑
 -----------------
 
 To round out our application, we need to add deletion. We have a Delete link
@@ -659,7 +659,7 @@ Modify the tests in ``AlbumControllerTest.php`` in ``module/Album/test/AlbumTest
         }
 
 
-Ensuring that the home page displays the list of albums
+确保主页显示专辑列表
 -------------------------------------------------------
 
 One final point. At the moment, the home page, http://zf2-tutorial.localhost/

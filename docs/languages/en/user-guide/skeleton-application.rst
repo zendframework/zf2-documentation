@@ -69,7 +69,7 @@ to create a new project from scratch with Zend Framework:
 
 We can now move on to the virtual host.
 
-Virtual host
+虚拟机
 ------------
 
 You now need to create an Apache virtual host for the application and edit your
@@ -110,8 +110,9 @@ http://zf2-tutorial.localhost.
 
     127.0.0.1               zf2-tutorial.localhost localhost
 
-Restart your web server.
-If you’ve done it right, you should see something like this:
+重启web服务器.
+
+如果你做的对, 你一定会看到像下面这样的画面:
 
 .. image:: ../images/user-guide.skeleton-application.hello-world.png
     :width: 940 px

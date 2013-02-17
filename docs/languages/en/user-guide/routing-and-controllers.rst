@@ -112,7 +112,7 @@ This route allows us to have the following URLs:
 | ``/album/delete/4`` | Delete album with an id of 4 | ``delete`` |
 +---------------------+------------------------------+------------+
 
-Create the controller
+创建控制器
 =====================
 
 We are now ready to set up our controller. In Zend Framework 2, the controller
@@ -187,7 +187,7 @@ application.
 
 It’s time to build the view and the model layer.
 
-Initialise the view scripts
+初始化视图脚本
 ---------------------------
 
 To integrate the view into our application all we need to do is create some view
@@ -203,7 +203,7 @@ directory named after the controller. Create these four empty files now:
 
 We can now start filling everything in, starting with our database and models.
 
-Write the tests
+写测试
 ---------------
 
 Our Album controller doesn't do much yet, so it should be easy to test.

@@ -4,7 +4,7 @@
 数据和模型
 ###################
 
-The database
+数据
 ------------
 
 Now that we have the ``Album`` module set up with controller action methods and
@@ -43,7 +43,7 @@ writing!)
 
 We now have some data in a database and can write a very simple model for it.
 
-The model files
+模型文件
 ---------------
 
 Zend Framework does not provide a ``Zend\Model`` component as the model is your
@@ -229,7 +229,7 @@ database as a ``ResultSet``, ``getAlbum()`` retrieves a single row as an
 updates a row that already exists and ``deleteAlbum()`` removes the row
 completely. The code for each of these methods is, hopefully, self-explanatory.
 
-Using ServiceManager to configure the table gateway and inject into the AlbumTable
+使用ServiceManager配置表网关并注入到AlbumTable
 -----------------------------------------------------------------------------------------
 
 In order to always use the same instance of our ``AlbumTable``, we will use the
@@ -339,7 +339,7 @@ that they are not in the git repository (as ``local.php`` is ignored):
         ),
     );
 
-Testing
+测试
 -------
 
 Let's write a few tests for all this code we've just written. First, we need
@@ -500,7 +500,7 @@ Let's review our tests. We are testing that:
 
 Great - our ``AlbumTable`` class is tested. Let's move on!
 
-Back to the controller
+返回控制器
 ----------------------
 
 Now that the ``ServiceManager`` can create an ``AlbumTable`` instance for us, we
@@ -542,7 +542,7 @@ Add this test to your ``AlbumControllerTest`` class:
 If the service locator was configured correctly in ``Module.php``, then we
 should get an instance of ``Album\Model\AlbumTable`` when calling ``getAlbumTable()``.
 
-Listing albums
+列出专辑
 --------------
 
 In order to list the albums, we need to retrieve them from the model and pass

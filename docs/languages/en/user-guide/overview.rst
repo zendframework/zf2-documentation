@@ -1,7 +1,7 @@
 .. _user-guide.overview:
 
 #####################################
-Zend Framework 2入门指南
+入门指南
 #####################################
 
 This tutorial is intended to give an introduction to using Zend Framework 2 by
@@ -11,7 +11,7 @@ poke around the code to find out more about how it all works and fits together.
 
 .. _user-guide.overview.assumptions:
 
-Some assumptions
+一些假设
 ----------------
 
 This tutorial assumes that you are running PHP 5.3.3 with the Apache web server
@@ -36,7 +36,7 @@ exact details. You will not be able to navigate to any page other than the home
 page in this tutorial if you have not configured mod_rewrite and .htaccess usage
 correctly.
 
-The tutorial application
+本教程应用程序
 ------------------------
 
 The application that we are going to build is a simple inventory system to

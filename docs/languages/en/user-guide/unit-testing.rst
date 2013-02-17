@@ -18,7 +18,7 @@ is beyond the scope of this tutorial, so we will only provide sample
 tests for the components in the pages that follow. This tutorial assumes
 that you already have PHPUnit installed.
 
-Setting up the tests directory
+设置测试目录
 ------------------------------
 
 Start by creating a directory called ``test`` in ``zf2-tutorial\module\Application`` with
@@ -37,7 +37,7 @@ The structure of the ``test`` directory matches exactly with that of the
 module's source files, and it will allow you to keep your tests
 well-organized and easy to find.
 
-Bootstrapping your tests
+引导测试
 ------------------------
 
 Next, create a file called ``phpunit.xml.dist`` under ``zf2-tutorial/module/Application/test``:
@@ -194,7 +194,7 @@ And a file called TestConfig.php.dist
 
 This is basically the same as config/application.config.php but we define only the modules which are required for this test
 
-Your first Controller test
+你的第一个控制器测试
 --------------------------
 
 Next, create ``IndexControllerTest.php`` under
@@ -265,11 +265,10 @@ Now, add the following function to the ``IndexControllerTest`` class:
 
 The test is verifying that the homepage responds with HTTP status code 200.
 
-Testing
+测试
 -----------
 
-Finally, ``cd`` to ``zf-tutorial/module/Application/test/`` and run ``phpunit``. If you see something like
-this, then your application is ready for more tests!
+最后, ``cd`` 到 ``zf-tutorial/module/Application/test/`` 并运行 ``phpunit``. 如果你看如下的代码,那么你的应用程序已经为更多的测试准备好!
 
 .. code-block:: text
 

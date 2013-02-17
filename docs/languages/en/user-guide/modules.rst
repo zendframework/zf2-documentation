@@ -18,7 +18,7 @@ the Application module as required.
 
 Let’s start with the directories required.
 
-Setting up the Album module
+设置Album模块
 ---------------------------
 
 Start by creating a directory called ``Album`` under ``module`` with the following
@@ -84,7 +84,7 @@ Create a file called ``Module.php`` under ``zf2-tutorial/module/Album``:
 The ``ModuleManager`` will call ``getAutoloaderConfig()`` and ``getConfig()``
 automatically for us.
 
-Autoloading files
+自动加载文件
 ^^^^^^^^^^^^^^^^
 
 Our ``getAutoloaderConfig()`` method returns an array that is compatible with
@@ -114,7 +114,7 @@ As this is an empty array, whenever the autoloader looks for a class within the
     this way, then you need to run ``php composer.phar update`` to update the
     composer autoloading files.
 
-Configuration
+配置
 -------------
 
 Having registered the autoloader, let’s have a quick look at the ``getConfig()``
@@ -150,7 +150,7 @@ Within the ``view_manager`` section, we add our view directory to the
 ``TemplatePathStack`` configuration. This will allow it to find the view scripts for
 the ``Album`` module that are stored in our ``view/`` directory.
 
-Informing the application about our new module
+通知应用程序，我们添加了新模块
 ----------------------------------------------
 
 We now need to tell the ``ModuleManager`` that this new module exists. This is done

@@ -8,3 +8,4 @@ tmp/
 composer.lock
 .*.sw*
 .*.un~
+/*.md~

@@ -20,8 +20,7 @@ Press Save in the toolbar and poedit will create an ``en_US.mo`` file for us.
 If you find that no ``.mo`` file is generated, check ``Preferences -> Editor -> Behavior`` 
 and see if the checkbox marked ``Automatically compile .mo file on save`` is checked.
 
-To remove the copyright message, we need to edit the ``Application`` module’s
-``layout.phtml`` view script:
+想移除版权信息, 我们需要编辑 ``Application`` 模块的 ``layout.phtml`` 视图脚本:
 
 .. code-block:: php
 

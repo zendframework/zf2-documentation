@@ -1,9 +1,9 @@
 .. TO TRANSLATORS: You don't need to copy this file to your translation, use
    translated-snippets.rst to translate title if you want
 
-.. |ProgrammersReferenceGuideofZendFramework2| replace:: Zend Framework 2程序员参考手册
+.. |ProgrammersReferenceGuideofZendFramework2| replace:: ZF2程序员参考手册
 
-.. |IntroductiontoZendFramework| replace:: Zend Framework 2介绍
+.. |IntroductiontoZendFramework| replace:: 介绍
 
 .. |UserGuide| replace:: 用户指南
 
