@@ -241,8 +241,8 @@ want to match, and the "defaults", or parameters you want returned on a match.
        ),
    ));
 
-The above route would match a path "/foo", and return the key "controller" in the ``RouteMatch``, with the value
-"foo-index".
+The above route would match a path "/foo", and return the key "action" in the ``RouteMatch``, with the value
+"foo".
 
 .. _zend.mvc.routing.http-route-types.method:
 
