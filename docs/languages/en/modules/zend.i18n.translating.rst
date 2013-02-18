@@ -29,8 +29,8 @@ To add a single file to the translator, use the ``addTranslationFile()`` method:
    $translator = new Translator();
    $translator->addTranslationFile($type, $filename, $textDomain, $locale);
 
-The type given there is a name of one of the format loaders listed in the next section. Filename points to the file
-containing the file containing the translations and the text domain specifies a category name for the translations.
+The type given there is a name of one of the format loaders listed in the next section. Filename points to the 
+file containing the translations, and the text domain specifies a category name for the translations.
 If the text domain is omitted, it will default to the "default" value. The locale specifies which language the
 translated strings are from and is only required for formats which contain translations for a single locale.
 
@@ -51,9 +51,9 @@ translations to the file system, without touching your code. Patterns are added 
    $translator = new Translator();
    $translator->addTranslationFilePattern($type, $pattern, $textDomain);
 
-The parameters for adding patterns is pretty similar to adding individual files, except that don't specify a locale
-and give the file location as sprtinf pattern. The locale is passed to the sprintf call, so you can either use %s
-or the %1$s where it should be substituted. So when your translation files are located in
+The parameters for adding patterns is pretty similar to adding individual files, except that you don't specify a locale
+and give the file location as a sprtinf pattern. The locale is passed to the sprintf call, so you can either use %s
+or %1$s where it should be substituted. So when your translation files are located in
 /var/messages/LOCALE/messages.mo, you would specify your pattern as /var/messages/%s/messages.mo.
 
 .. _zend.i18n.translating.supported-formats:
@@ -79,7 +79,7 @@ Setting a locale
 By default, the translator will get the locale to use from the Intl extension's ``Locale`` class. If you want to
 set an alternative locale explicitly, you can do so by passing it to the ``setLocale()`` method.
 
-When there is not translation for a specific message ID in a locale, the message ID itself will be returned by
+When there is no translation for a specific message ID in a locale, the message ID itself will be returned by
 default. Alternatively you can set a fallback locale which is used to retrieve a fallback translation. To do so,
 pass it to the ``setFallbackLocale()`` method.
 
@@ -101,7 +101,7 @@ translations. If omitted, the default text domain will be used. The locale param
 this context, as by default the locale is taken from the locale set in the translator.
 
 To translate plural messages, you can use the ``translatePlural()`` method. It works similar to ``translate()``,
-but instead of a single messages it takes a singluar and a plural value and an additional integer number on which
+but instead of a single message it takes a singular and a plural value and an additional integer number on which
 the returned plural form is based on:
 
 .. code-block:: php
