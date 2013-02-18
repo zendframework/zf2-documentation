@@ -240,7 +240,7 @@ The AbstractRestfulController
 -----------------------------
 
 The second abstract controller ZF2 provides is ``Zend\Mvc\Controller\AbstractRestfulController``. This controller
-provides a naive RESTful implementation that simply maps HTTP request methods to controller methods, using the
+provides a native RESTful implementation that simply maps HTTP request methods to controller methods, using the
 following matrix:
 
 - **GET** maps to either ``get()`` or ``getList()``, depending on whether or not an "id" parameter is found in the
