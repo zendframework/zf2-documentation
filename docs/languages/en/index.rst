@@ -202,6 +202,12 @@
    modules/zend.server.reflection
    modules/zend.service-manager.intro
    modules/zend.service-manager.quick-start
+   modules/zend.session.config
+   modules/zend.session.container
+   modules/zend.session.manager
+   modules/zend.session.save-handler
+   modules/zend.session.storage
+   modules/zend.session.validator
    modules/zend.soap.server
    modules/zend.soap.client
    modules/zend.soap.wsdl
@@ -670,6 +676,17 @@ Zend\\ServiceManager
 
         * :doc:`modules/zend.service-manager.intro`
         * :doc:`modules/zend.service-manager.quick-start`
+
+.. _zend.session
+
+Zend\\Session
+^^^^^^^^^^^^^
+        * :doc:`modules/zend.session.config`
+        * :doc:`modules/zend.session.container`
+        * :doc:`modules/zend.session.manager`
+        * :doc:`modules/zend.session.save-handler`
+        * :doc:`modules/zend.session.storage`
+        * :doc:`modules/zend.session.validator`
 
 .. _zend.soap:
 
