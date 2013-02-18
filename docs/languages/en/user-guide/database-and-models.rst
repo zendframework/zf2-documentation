@@ -1,8 +1,7 @@
 .. _user-guide.database-and-models:
 
-###################
 Database and models
-###################
+===================
 
 The database
 ------------
@@ -87,76 +86,6 @@ Our ``Album`` entity object is a simple PHP class. In order to work with
 ``Zend\Db``’s ``TableGateway`` class, we need to implement the ``exchangeArray()``
 method. This method simply copies the data from the passed in array to our entity’s
 properties. We will add an input filter for use with our form later.
-
-But first, does the Album model we have so far work the way we expect it to? Let's write a few tests to be sure.
-Create a file called ``AlbumTest.php`` under ``module/Album/test/AlbumTest/Model``:
-
-
-.. code-block:: php
-
-    <?php
-    namespace AlbumTest\Model;
-
-    use Album\Model\Album;
-    use PHPUnit_Framework_TestCase;
-
-    class AlbumTest extends PHPUnit_Framework_TestCase
-    {
-        public function testAlbumInitialState()
-        {
-            $album = new Album();
-
-            $this->assertNull($album->artist, '"artist" should initially be null');
-            $this->assertNull($album->id, '"id" should initially be null');
-            $this->assertNull($album->title, '"title" should initially be null');
-        }
-
-        public function testExchangeArraySetsPropertiesCorrectly()
-        {
-            $album = new Album();
-            $data  = array('artist' => 'some artist',
-                           'id'     => 123,
-                           'title'  => 'some title');
-
-            $album->exchangeArray($data);
-
-            $this->assertSame($data['artist'], $album->artist, '"artist" was not set correctly');
-            $this->assertSame($data['id'], $album->id, '"id" was not set correctly');
-            $this->assertSame($data['title'], $album->title, '"title" was not set correctly');
-        }
-
-        public function testExchangeArraySetsPropertiesToNullIfKeysAreNotPresent()
-        {
-            $album = new Album();
-
-            $album->exchangeArray(array('artist' => 'some artist',
-                                        'id'     => 123,
-                                        'title'  => 'some title'));
-            $album->exchangeArray(array());
-
-            $this->assertNull($album->artist, '"artist" should have defaulted to null');
-            $this->assertNull($album->id, '"id" should have defaulted to null');
-            $this->assertNull($album->title, '"title" should have defaulted to null');
-        }
-    }
-
-We are testing for 3 things:
-
-1. Are all of the Album's properties initially set to NULL?
-2. Will the Album's properties be set correctly when we call ``exchangeArray()``?
-3. Will a default value of NULL be used for properties whose keys are not present in the ``$data`` array?
-
-If we run ``phpunit`` again, we'll see that the answer to all three questions is "YES":
-
-.. code-block:: text
-
-    PHPUnit 3.5.15 by Sebastian Bergmann.
-
-    ........
-
-    Time: 0 seconds, Memory: 5.50Mb
-
-    OK (8 tests, 19 assertions)
 
 Next, we create our ``AlbumTable.php`` file in ``module/Album/src/Album/Model`` directory like this:
 
@@ -340,167 +269,6 @@ that they are not in the git repository (as ``local.php`` is ignored):
         ),
     );
 
-Testing
--------
-
-Let's write a few tests for all this code we've just written. First, we need
-to create a test class for the ``AlbumTable``.
-Create a file ``AlbumTableTest.php`` in ``module/Album/test/AlbumTest/Model``
-
-.. code-block:: php
-
-    <?php
-    namespace AlbumTest\Model;
-
-    use Album\Model\AlbumTable;
-    use Album\Model\Album;
-    use Zend\Db\ResultSet\ResultSet;
-    use PHPUnit_Framework_TestCase;
-
-    class AlbumTableTest extends PHPUnit_Framework_TestCase
-    {
-        public function testFetchAllReturnsAllAlbums()
-        {
-            $resultSet        = new ResultSet();
-            $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway',
-                                               array('select'), array(), '', false);
-            $mockTableGateway->expects($this->once())
-                             ->method('select')
-                             ->with()
-                             ->will($this->returnValue($resultSet));
-
-            $albumTable = new AlbumTable($mockTableGateway);
-
-            $this->assertSame($resultSet, $albumTable->fetchAll());
-        }
-    }
-
-
-In this test, we introduce the concept of `Mock objects
-<http://www.phpunit.de/manual/3.6/en/test-doubles.html#test-doubles.mock-objects>`_.
-A thorough explanation of what a Mock object is goes beyond the scope of this tutorial,
-but it's basically an object that takes the place of another object and behaves in
-a predefined way. Since we are testing the ``AlbumTable`` here and NOT the ``TableGateway``
-class (the Zend team has already tested the ``TableGateway`` class and we know it works),
-we just want to make sure that our ``AlbumTable`` class is interacting with the ``TableGatway``
-class the way that we expect it to. Above, we're testing to see if the ``fetchAll()`` method
-of ``AlbumTable`` will call the ``select()`` method of the ``$tableGateway`` property with
-no parameters. If it does, it should return a ``ResultSet`` object. Finally, we expect that
-this same ``ResultSet`` object will be returned to the calling method. This test should run
-fine, so now we can add the rest of the test methods:
-
-.. code-block:: php
-
-    public function testCanRetrieveAnAlbumByItsId()
-    {
-        $album = new Album();
-        $album->exchangeArray(array('id'     => 123,
-                                    'artist' => 'The Military Wives',
-                                    'title'  => 'In My Dreams'));
-
-        $resultSet = new ResultSet();
-        $resultSet->setArrayObjectPrototype(new Album());
-        $resultSet->initialize(array($album));
-
-        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('select'), array(), '', false);
-        $mockTableGateway->expects($this->once())
-                         ->method('select')
-                         ->with(array('id' => 123))
-                         ->will($this->returnValue($resultSet));
-
-        $albumTable = new AlbumTable($mockTableGateway);
-
-        $this->assertSame($album, $albumTable->getAlbum(123));
-    }
-
-    public function testCanDeleteAnAlbumByItsId()
-    {
-        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('delete'), array(), '', false);
-        $mockTableGateway->expects($this->once())
-                         ->method('delete')
-                         ->with(array('id' => 123));
-
-        $albumTable = new AlbumTable($mockTableGateway);
-        $albumTable->deleteAlbum(123);
-    }
-
-    public function testSaveAlbumWillInsertNewAlbumsIfTheyDontAlreadyHaveAnId()
-    {
-        $albumData = array('artist' => 'The Military Wives', 'title' => 'In My Dreams');
-        $album     = new Album();
-        $album->exchangeArray($albumData);
-
-        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('insert'), array(), '', false);
-        $mockTableGateway->expects($this->once())
-                         ->method('insert')
-                         ->with($albumData);
-
-        $albumTable = new AlbumTable($mockTableGateway);
-        $albumTable->saveAlbum($album);
-    }
-
-    public function testSaveAlbumWillUpdateExistingAlbumsIfTheyAlreadyHaveAnId()
-    {
-        $albumData = array('id' => 123, 'artist' => 'The Military Wives', 'title' => 'In My Dreams');
-        $album     = new Album();
-        $album->exchangeArray($albumData);
-
-        $resultSet = new ResultSet();
-        $resultSet->setArrayObjectPrototype(new Album());
-        $resultSet->initialize(array($album));
-
-        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway',
-                                           array('select', 'update'), array(), '', false);
-        $mockTableGateway->expects($this->once())
-                         ->method('select')
-                         ->with(array('id' => 123))
-                         ->will($this->returnValue($resultSet));
-        $mockTableGateway->expects($this->once())
-                         ->method('update')
-                         ->with(array('artist' => 'The Military Wives', 'title' => 'In My Dreams'),
-                                array('id' => 123));
-
-        $albumTable = new AlbumTable($mockTableGateway);
-        $albumTable->saveAlbum($album);
-    }
-
-    public function testExceptionIsThrownWhenGettingNonexistentAlbum()
-    {
-        $resultSet = new ResultSet();
-        $resultSet->setArrayObjectPrototype(new Album());
-        $resultSet->initialize(array());
-
-        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('select'), array(), '', false);
-        $mockTableGateway->expects($this->once())
-                         ->method('select')
-                         ->with(array('id' => 123))
-                         ->will($this->returnValue($resultSet));
-
-        $albumTable = new AlbumTable($mockTableGateway);
-
-        try
-        {
-            $albumTable->getAlbum(123);
-        }
-        catch (\Exception $e)
-        {
-            $this->assertSame('Could not find row 123', $e->getMessage());
-            return;
-        }
-
-        $this->fail('Expected exception was not thrown');
-    }
-
-Let's review our tests. We are testing that:
-
-1. We can retrieve an individual album by its ID.
-2. We can delete albums.
-3. We can save new album.
-4. We can update existing albums.
-5. We will encounter an exception if we're trying to retrieve an album that doesn't exist.
-
-Great - our ``AlbumTable`` class is tested. Let's move on!
-
 Back to the controller
 ----------------------
 
@@ -529,16 +297,7 @@ You should also add:
 to the top of the class.
 
 We can now call ``getAlbumTable()`` from within our controller whenever we need
-to interact with our model. Let's make sure it works by writing a test.
-
-Add this test to your ``AlbumControllerTest`` class:
-
-.. code-block:: php
-
-    public function testGetAlbumTableReturnsAnInstanceOfAlbumTable()
-    {
-        $this->assertInstanceOf('Album\Model\AlbumTable', $this->controller->getAlbumTable());
-    }
+to interact with our model.
 
 If the service locator was configured correctly in ``Module.php``, then we
 should get an instance of ``Album\Model\AlbumTable`` when calling ``getAlbumTable()``.
@@ -636,3 +395,5 @@ If you open http://zf2-tutorial.localhost/album you should see this:
 
 .. image:: ../images/user-guide.database-and-models.album-list.png
     :width: 940 px
+
+
