@@ -139,7 +139,7 @@ As such, you have a variety of ways to override service manager configuration se
                'Auth' => new SomeModule\Authentication\AuthenticationService(),
            ),
            'shared' => array(
-               // Usually, you'll only indicate services that should _NOT_ be
+               // Usually, you'll only indicate services that should **NOT** be
                // shared -- i.e., ones where you want a different instance
                // every time.
                'UserForm' => false,
@@ -258,7 +258,7 @@ any class implementing ``Zend\ServiceManager\ServiceLocatorAwareInterface``. A s
 .. code-block:: php
    :linenos:
 
-   namespace SomeModule\Controller\BareController;
+   namespace SomeModule\Controller;
 
    use Zend\ServiceManager\ServiceLocatorAwareInterface;
    use Zend\ServiceManager\ServiceLocatorInterface;
