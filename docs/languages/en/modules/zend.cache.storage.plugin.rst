@@ -94,7 +94,7 @@ The ExceptionHandler Plugin
    |exception_callback  |``callable`` ``null`` |``null``       |Callback will be called on an exception     |
    |                    |                      |               |and get the exception as argument           |
    +--------------------+----------------------+---------------+--------------------------------------------+
-   |throw_exceptions    |``boolean``           |``true``       |Re-throw catched excaptions                 |
+   |throw_exceptions    |``boolean``           |``true``       |Re-throw catched exceptions                 |
    +--------------------+----------------------+---------------+--------------------------------------------+
 
 .. _zend.cache.storage.plugin.ignore-user-abort
