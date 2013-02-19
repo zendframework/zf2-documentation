@@ -34,7 +34,7 @@ relative value according to the speed of the CPU used).
 
 If you want to change the *cost* parameter of the bcrypt algorithm you can use the ``setCost()`` method.
 Please note that if you change the cost parameter, the resulting hash will be different.
-This will not affect the verification process of the algorithm, without breaking all the password hashes
+This will not affect the verification process of the algorithm, therefore not breaking the password hashes
 you already have stored. Bcrypt reads the *cost* parameter from the hash value, during the password
 authentication. All of the parts needed to verify the hash are all together, separated with $'s, first the
 algorithm, then the cost, the salt, and then finally the hash.
