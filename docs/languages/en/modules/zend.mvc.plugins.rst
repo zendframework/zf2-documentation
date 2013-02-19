@@ -259,8 +259,8 @@ This plugin can be invoked with three arguments:
 
 - ``$form``: the form instance.
 - ``$redirect``: (Optional) a string containing the redirect location which can either be a named route or a URL, based on
-  the contents of the second parameter. If this argument is not provided, it will default to the current matched route.
-- ``$redirectToUrl``: (Optional) a boolean that when set to TRUE, causes the first parameter to be treated as a URL instead
+  the contents of the third parameter. If this argument is not provided, it will default to the current matched route.
+- ``$redirectToUrl``: (Optional) a boolean that when set to TRUE, causes the second parameter to be treated as a URL instead
   of a route name (this is required when redirecting to a URL instead of a route). This argument defaults to false.
 
 .. rubric:: Example Usage

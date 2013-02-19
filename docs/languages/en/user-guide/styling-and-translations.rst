@@ -1,8 +1,7 @@
 .. _user-guide.styling-and-translations:
 
-########################
 Styling and Translations
-########################
+========================
 
 We’ve picked up the SkeletonApplication’s styling, which is fine, but we need to
 change the title and remove the copyright message. 

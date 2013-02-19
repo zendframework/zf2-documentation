@@ -1,8 +1,7 @@
 .. _user-guide.overview:
 
-#####################################
 Getting Started with Zend Framework 2
-#####################################
+=====================================
 
 This tutorial is intended to give an introduction to using Zend Framework 2 by
 creating a simple database driven application using the Model-View-Controller
@@ -14,7 +13,7 @@ poke around the code to find out more about how it all works and fits together.
 Some assumptions
 ----------------
 
-This tutorial assumes that you are running PHP 5.3.3 with the Apache web server
+This tutorial assumes that you are running at least PHP 5.3.3 with the Apache web server
 and MySQL, accessible via the PDO extension. Your Apache installation must have
 the mod_rewrite extension installed and configured.
 

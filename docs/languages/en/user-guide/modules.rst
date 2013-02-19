@@ -1,8 +1,7 @@
 .. _user-guide.modules:
 
-#######
 Modules
-#######
+=======
 
 Zend Framework 2 uses a module system and you organise your main
 application-specific code within each module. The Application module provided by

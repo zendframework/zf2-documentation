@@ -885,7 +885,7 @@ And that is all there is to it. You are now using LiveDocx Fully Licensed.
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/instantiation``.
 
-.. _`GitHub (ZendServiceLiveDocx)`: https://github.com/zendframework/ZendServiceLiveDocx
+.. _`GitHub (ZendServiceLiveDocx)`: https://github.com/zendframework/ZendService_LiveDocx
 .. _`LiveDocx pricing`: http://www.livedocx.com/pub/pricing
 .. _`mail-merge`: http://en.wikipedia.org/wiki/Mail_merge
 .. _`LiveDocx API`: http://www.livedocx.com

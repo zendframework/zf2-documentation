@@ -15,7 +15,6 @@
    ref/installation
    user-guide/overview
    user-guide/skeleton-application
-   user-guide/unit-testing
    user-guide/modules
    user-guide/routing-and-controllers
    user-guide/database-and-models
@@ -24,11 +23,13 @@
    user-guide/conclusion
    modules/zendtool.introduction
    tutorials/quickstart.di
+   tutorials/unittesting
    modules/zend.authentication.intro
    modules/zend.authentication.adapter.dbtable
    modules/zend.authentication.adapter.digest
    modules/zend.authentication.adapter.http
    modules/zend.authentication.adapter.ldap
+   modules/zend.authentication.validator.authentication
    modules/zend.barcode.intro
    modules/zend.barcode.creation
    modules/zend.barcode.objects
@@ -201,6 +202,12 @@
    modules/zend.server.reflection
    modules/zend.service-manager.intro
    modules/zend.service-manager.quick-start
+   modules/zend.session.config
+   modules/zend.session.container
+   modules/zend.session.manager
+   modules/zend.session.save-handler
+   modules/zend.session.storage
+   modules/zend.session.validator
    modules/zend.soap.server
    modules/zend.soap.client
    modules/zend.soap.wsdl
@@ -262,7 +269,6 @@
 
     * :doc:`user-guide/overview`
     * :doc:`user-guide/skeleton-application`
-    * :doc:`user-guide/unit-testing`
     * :doc:`user-guide/modules`
     * :doc:`user-guide/routing-and-controllers`
     * :doc:`user-guide/database-and-models`
@@ -279,6 +285,7 @@
 -----------------------
 
     * :doc:`tutorials/quickstart.di`
+    * :doc:`tutorials/unittesting`
 
 |ZendFrameworkReference|
 ------------------------
@@ -293,6 +300,7 @@ Zend\\Authentication
         * :doc:`modules/zend.authentication.adapter.digest`
         * :doc:`modules/zend.authentication.adapter.http`
         * :doc:`modules/zend.authentication.adapter.ldap`
+        * :doc:`modules/zend.authentication.validator.authentication`
 
 .. _zend.barcode:
 
@@ -608,6 +616,11 @@ Zend\\Navigation
         * :doc:`modules/zend.navigation.pages`
         * :doc:`modules/zend.navigation.containers`
         * :doc:`modules/zend.navigation.view.helpers`
+        * :doc:`modules/zend.navigation.view.helper.breadcrumbs`
+        * :doc:`modules/zend.navigation.view.helper.links`
+        * :doc:`modules/zend.navigation.view.helper.menu`
+        * :doc:`modules/zend.navigation.view.helper.sitemap`
+        * :doc:`modules/zend.navigation.view.helper.navigation`
 
 .. _zend.paginator:
 
@@ -668,6 +681,17 @@ Zend\\ServiceManager
 
         * :doc:`modules/zend.service-manager.intro`
         * :doc:`modules/zend.service-manager.quick-start`
+
+.. _zend.session
+
+Zend\\Session
+^^^^^^^^^^^^^
+        * :doc:`modules/zend.session.config`
+        * :doc:`modules/zend.session.container`
+        * :doc:`modules/zend.session.manager`
+        * :doc:`modules/zend.session.save-handler`
+        * :doc:`modules/zend.session.storage`
+        * :doc:`modules/zend.session.validator`
 
 .. _zend.soap:
 
