@@ -9,6 +9,8 @@ Additionally, you can register your own custom plugins with the manager.
 
 The built-in plugins are:
 
+- ``Zend\Mvc\Controller\Plugin\AcceptableViewModelSelector``
+
 - ``Zend\Mvc\Controller\Plugin\FlashMessenger``
 
 - ``Zend\Mvc\Controller\Plugin\Forward``
@@ -39,7 +41,45 @@ For an extra layer of convenience, both ``AbstractActionController`` and ``Abstr
 
    $plugin = $this->url();
 
+.. _zend.mvc.controller-plugins.acceptableviewmodelselector:
+
+AcceptableViewModelSelector Plugin
+----------------------------------
+
+The ``AcceptableViewModelSelector`` is a helper that can be used to select an appropiate view model based on 
+user defined criteria will be tested against the Accept header in the request.
+
+As an example:
+
+.. code-block:: php
+   :linenos:
+
+   class SomeController extends AbstractActionController
+   {
+      protected $acceptCriteria = array(
+         'Zend\View\Model\JsonModel' => array(
+            'application/json',
+         ),
+         'Zend\View\Model\FeedModel' => array(
+            'application/rss+xml',
+         ),
+      );
+
+      public function apiAction()
+      {
+         $viewModel = $this->acceptableViewModelSelector($this->acceptCriteria);
+        
+         // Potentially vary execution based on model returned
+         if ($viewModel instanceof JsonModel) {
+            // ...
+         }
+      }
+   }
+
 .. _zend.mvc.controller-plugins.flashmessenger:
+
+The above would return a standard Zend\View\Model\ViewModel instance if the criteria is not met, and the specified 
+view model types if the specific criteria is met. Rules are matched in order, with the first match "winning."
 
 FlashMessenger Plugin
 ---------------------
