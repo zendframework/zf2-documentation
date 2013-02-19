@@ -32,9 +32,12 @@ represented by an integer value between 4 to 31. The default *cost* value of the
 component is 14, that means almost a second using a CPU Intel i5 at 3.3Ghz (the *cost* parameter is a
 relative value according to the speed of the CPU used).
 
-If you want to change the cost parameter of the bcrypt algorithm you can use the ``setCost()`` method.
+If you want to change the *cost* parameter of the bcrypt algorithm you can use the ``setCost()`` method.
 Please note that if you change the cost parameter, the resulting hash will be different.
-That means if you change the cost for existing user passwords you need to regenerate all the passwords.
+This will not affect the verification process of the algorithm, therefore not breaking the password hashes
+you already have stored. Bcrypt reads the *cost* parameter from the hash value, during the password
+authentication. All of the parts needed to verify the hash are all together, separated with $'s, first the
+algorithm, then the cost, the salt, and then finally the hash.
 
 The example below shows how to use the bcrypt algorithm to store a user's password:
 
