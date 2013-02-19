@@ -9,14 +9,13 @@
 
 本文档使用[readthedocs.org](http://readthedocs.org/)在线渲染Zend Framework 2.0的开发版本文档.
 
-英文线上文档： 
-[http://zf2.readthedocs.org](http://zf2.readthedocs.org/en/latest/index.html).
+[在线英文文档](http://zf2.readthedocs.org/en/latest/index.html).
 
-翻译的在线中文文档
-[http://zf2-documentation-zh.readthedocs.org](https://zf2-documentation-zh.readthedocs.org/en/latest/).
 
-最新稳定版文档
-[http://packages.zendframework.com/docs/latest/manual/en/](http://packages.zendframework.com/docs/latest/manual/en/).
+[在线中文文档](https://zf2-documentation-zh.readthedocs.org/en/latest/).
+
+
+[最新稳定版文档](http://packages.zendframework.com/docs/latest/manual/en/).
 
 
 ### 贡献
