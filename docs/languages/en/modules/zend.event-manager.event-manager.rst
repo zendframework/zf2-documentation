@@ -293,11 +293,11 @@ Available Methods
 .. _zend.event-manager.event-manager.methods.trigger:
 
 **trigger**
-   ``trigger(string $event, mixed $target, mixed $argv, callback $callback)``
+   ``trigger(string $event, mixed $target = null, mixed $argv = array(), callback $callback = null)``
 
    Triggers all listeners to a named event. The recommendation is to use the current function/method name for
-   ``$event``, appending it with values such as ".pre", ".post", etc. as needed. ``$context`` should be the current
-   object instance, or the name of the function if not triggering within an object. ``$params`` should typically be
+   ``$event``, appending it with values such as ".pre", ".post", etc. as needed. ``$target`` should be the current
+   object instance, or the name of the function if not triggering within an object. ``$argv`` should typically be
    an associative array or ``ArrayAccess`` instance; we recommend using the parameters passed to the
    function/method (``compact()`` is often useful here). This method can also take a callback and behave in the
    same way as ``triggerUntil()``.
@@ -308,7 +308,7 @@ Available Methods
 .. _zend.event-manager.event-manager.methods.trigger-until:
 
 **triggerUntil**
-   ``triggerUntil(string $event, mixed $context, mixed $argv, callback $callback)``
+   ``triggerUntil(string $event, mixed $target, mixed $argv = null, callback $callback = null)``
 
    Triggers all listeners to a named event, just like :ref:`trigger()
    <zend.event-manager.event-manager.methods.trigger>`, with the addition that it passes the return value from each
@@ -340,7 +340,7 @@ Available Methods
 .. _zend.event-manager.event-manager.methods.detach:
 
 **detach**
-   ``detach(CallbackHandler $listener)``
+   ``detach(CallbackHandler|ListenerAggregateInterface $listener)``
 
    Scans all listeners, and detaches any that match ``$listener`` so that they will no longer be triggered.
 
@@ -350,7 +350,7 @@ Available Methods
 .. _zend.event-manager.event-manager.methods.detach-aggregate:
 
 **detachAggregate**
-   ``detachAggregate(ListenerAggregate $aggregate)``
+   ``detachAggregate(ListenerAggregateInterface $aggregate)``
 
    Loops through all listeners of all events to identify listeners that are represented by the aggregate; for all
    matches, the listeners will be removed.
