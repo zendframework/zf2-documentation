@@ -41,8 +41,8 @@ The following is an example workflow similar to what one might find inside
    use Zend\Db\ResultSet\ResultSet;
 
    $stmt = $driver->createStatement('SELECT * FROM users');
-   $stmt->prepare($parameters);
-   $result = $stmt->execute();
+   $stmt->prepare();
+   $result = $stmt->execute($parameters);
 
    if ($result instanceof ResultInterface && $result->isQueryResult()) {
        $resultSet = new ResultSet;
@@ -70,17 +70,17 @@ the ``AbstractResultSet`` offers the following core functionality:
         public function initialize($dataSource)
         public function getDataSource()
         public function getFieldCount()
-        
+
         /** Iterator */
         public function next()
         public function key()
         public function current()
         public function valid()
         public function rewind()
-        
+
         /** countable */
         public function count()
-        
+
         /** get rows as array */
         public function toArray()
     }
@@ -91,7 +91,7 @@ Zend\\Db\\ResultSet\\HydratingResultSet
 ---------------------------------------
 
 ``Zend\Db\ResultSet\HydratingResultSet`` is a more flexible ``ResultSet`` object that allows the developer to
-choose an appropriate "hydration strategy" for getting row data into a target object. While iterating over 
+choose an appropriate "hydration strategy" for getting row data into a target object. While iterating over
 results, ``HydratingResultSet`` will take a prototype of a target object and clone it once for each row.
 The ``HydratingResultSet`` will then hydrate that clone with the row data.
 
