@@ -4,7 +4,7 @@ FormLabel
 ^^^^^^^^^
 
 The ``FormLabel`` view helper is used to render a ``<label>`` HTML element and its attributes.
-If you have a ``Zend\\I18n\\Translator\\Translator`` attached, ``FormLabel`` will translate
+If you have a ``Zend\I18n\Translator\Translator`` attached, ``FormLabel`` will translate
 the label contents during it's rendering.
 
 Basic usage:
@@ -57,11 +57,11 @@ Attaching a translator and setting a text domain:
 
    // Setting both
    $this->formLabel()->setTranslator($translator, 'my-text-domain');
-   
+
 .. note::
 
-   Note: If you have a translator in the Service Manager under the key, 'translator', the view helper plugin 
-   manager will automatically attach the translator to the FormLabel view helper. See 
+   Note: If you have a translator in the Service Manager under the key, 'translator', the view helper plugin
+   manager will automatically attach the translator to the FormLabel view helper. See
    ``Zend\\View\\HelperPluginManager::injectTranslator()`` for more information.
 
 .. _zend.form.view.helper.form-label.methods:
