@@ -51,7 +51,7 @@ Here is with the array notation:
     		'step' => '1', // minutes; default step interval is 1 mint
     	)
     ));
-    
+
 .. note::
 
    Note: the ``min``, ``max``, and ``step`` attributes should be set prior to calling Zend\\Form::prepare().
@@ -78,7 +78,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    If the ``max`` attribute is set, a ``Zend\Validator\LessThanValidator`` validator will be added to ensure the
    date value is less than the maximum value.
 
-   If the ``step`` attribute is set to "any", step validations will be skipped. Otherwise, a a
+   If the ``step`` attribute is set to "any", step validations will be skipped. Otherwise, a
    ``Zend\Validator\DateStep`` validator will be added to ensure the date value is within a certain interval of
    minutes (default is 1 minute).
 

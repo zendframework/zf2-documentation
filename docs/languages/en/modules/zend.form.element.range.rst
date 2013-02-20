@@ -64,7 +64,7 @@ Here is with the array notation:
 The following methods are in addition to the inherited :ref:`methods of Zend\\Form\\Element\\Number
 <zend.form.element.number.methods>`.
 
-.. function:: getInputSpecification()``
+.. function:: getInputSpecification()
    :noindex:
 
    Returns a input filter specification, which includes ``Zend\Filter\StringTrim`` and will add the appropriate

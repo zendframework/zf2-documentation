@@ -29,18 +29,18 @@ This element automatically adds a ``"type"`` attribute of value ``"checkbox"`` f
 
    	$form = new Form('my-form');
    	$form->add($multiCheckbox);
-   
+
 Using the array notation:
 
 .. code-block:: php
    :linenos:
-   
+
     use Zend\Form\Form;
-    
-   	$form = new Form('my-form');   	
+
+   	$form = new Form('my-form');
    	$form->add(array(
    		'type' => 'Zend\Form\Element\MultiCheckbox',
-   		'name' => 'multi-checkbox'
+   		'name' => 'multi-checkbox',
    		'options' => array(
    			'label' => 'What do you like ?',
    			'value_options' => array(
@@ -50,7 +50,7 @@ Using the array notation:
    			),
    		)
    	));
-   
+
 
 .. _zend.form.element.multicheckbox.methods:
 
@@ -62,7 +62,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    :noindex:
 
    Set options for an element of type Checkbox. Accepted options, in addition to the inherited :ref:`options of Zend\\Form\\Element\\Checkbox <zend.form.element.checkbox.methods.set-options>` , are: ``"value_options"``, which call ``setValueOptions``.
-   
+
 .. function:: setValueOptions(array $options)
    :noindex:
 
