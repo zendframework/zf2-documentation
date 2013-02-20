@@ -183,7 +183,7 @@ join():
    	'foo' // table name,
    	'id = bar.id', // expression to join on (will be quoted by platform object before insertion),
    	array('bar', 'baz'), // (optional) list of columns, same requiremetns as columns() above
-   	$select::JOIN_OUTER // (optional), one of inner, outer, left, right also represtned by constants in the API
+   	$select::JOIN_OUTER // (optional), one of inner, outer, left, right also represented by constants in the API
    );
 
    $select->from(array('f' => 'foo'))  // base table
@@ -198,7 +198,7 @@ parameters are acceptable when calling where() or having().  The method signatur
 
 .. code-block:: php
     :linenos:
-    
+
     /**
      * Create where clause
      *
@@ -207,9 +207,9 @@ parameters are acceptable when calling where() or having().  The method signatur
      * @return Select
      */
     public function where($predicate, $combination = Predicate\PredicateSet::OP_AND);
-    
+
 As you can see, there are a number of different ways to pass criteria to both having() and
-where().  
+where().
 
 If you provide a ``Zend\Db\Sql\Where`` object to where() or a
 ``Zend\Db\Sql\Having`` object to having(), the internal objects for Select will be replaced
@@ -221,11 +221,11 @@ the Select's ``Where`` object as the only parameter.  So the following is possib
 
 .. code-block:: php
     :linenos:
-    
+
     $spec = function (Where $where) {
         $where->like('username', 'ralph%');
     };
-    
+
     $select->where($spec);
 
 If you provide a string, this string will be used to instantiate a
@@ -236,11 +236,11 @@ Consider the following code:
 
 .. code-block:: php
     :linenos:
-    
+
     // SELECT "foo".* FROM "foo" WHERE x = 5
     $select->from('foo')->where('x = 5');
 
-If you provide an array who's values are keyed by an integer, the value can either 
+If you provide an array who's values are keyed by an integer, the value can either
 be a string that will be then used to build a ``Predicate\Expression`` or any object
 that implements ``Predicate\PredicateInterface``.  These objects are pushed onto the
 Where stack with the $combination provided.
@@ -249,7 +249,7 @@ Consider the following code:
 
 .. code-block:: php
     :linenos:
-    
+
     // SELECT "foo".* FROM "foo" WHERE x = 5 AND y = z
     $select->from('foo')->where(array('x = 5', 'y = z'));
 
@@ -264,14 +264,14 @@ Consider the following code:
 
 .. code-block:: php
     :linenos:
-    
+
     // SELECT "foo".* FROM "foo" WHERE "c1" IS NULL AND "c2" IN (?, ?, ?) AND "c3" IS NOT NULL
     $select->from('foo')->where(array(
         'c1' => null,
         'c2' => array(1, 2, 3),
         new \Zend\Db\Sql\Predicate\IsNotNull('c3')
     ));
-        
+
 
 order():
 ........
@@ -435,7 +435,7 @@ The Zend\\Db\\Sql\\Where (Predicate/PredicateSet) API:
         public $AND;
         public $OR;
         public $NEST;
-        public $UNNSET;
+        public $UNNEST;
 
         public function nest();
         public function setUnnest(Predicate $predicate);
