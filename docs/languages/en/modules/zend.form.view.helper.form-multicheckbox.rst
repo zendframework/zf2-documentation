@@ -5,7 +5,7 @@ FormMultiCheckbox
 
 The ``FormMultiCheckbox`` view helper can be used to render a group ``<input type="checkbox">`` HTML
 form inputs. It is meant to work with the :ref:`Zend\\Form\\Element\\MultiCheckbox <zend.form.element.multicheckbox>`
-element, which provides a default input specification for validating the a multi checkbox.
+element, which provides a default input specification for validating a multi checkbox.
 
 ``FormMultiCheckbox`` extends from :ref:`Zend\\Form\\View\\Helper\\FormInput <zend.form.view.helper.form-input.methods>`.
 
@@ -34,7 +34,7 @@ Basic usage:
    // <label><input type="checkbox" name="my-multicheckbox[]" value="0">Apple</label>
    // <label><input type="checkbox" name="my-multicheckbox[]" value="1">Orange</label>
    // <label><input type="checkbox" name="my-multicheckbox[]" value="2">Lemon</label>
-   
+
    /**
     * Example #2: using the prepend label placement
     */
