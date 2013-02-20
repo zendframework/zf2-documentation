@@ -30,18 +30,18 @@ This element automatically adds a ``"type"`` attribute of value ``"radio"`` for 
 
    	$form = new Form('my-form');
    	$form->add($radio);
-   
+
 Using the array notation:
 
 .. code-block:: php
    :linenos:
-   
+
     use Zend\Form\Form;
-    
-   	$form = new Form('my-form');   	
+
+   	$form = new Form('my-form');
    	$form->add(array(
    		'type' => 'Zend\Form\Element\Radio',
-   		'name' => 'gender'
+   		'name' => 'gender',
    		'options' => array(
    			'label' => 'What is your gender ?',
    			'value_options' => array(
@@ -50,7 +50,7 @@ Using the array notation:
    			),
    		)
    	));
-   
+
 
 .. _zend.form.element.radio.methods:
 
