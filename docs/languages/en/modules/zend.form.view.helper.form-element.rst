@@ -4,7 +4,7 @@ FormElement
 ^^^^^^^^^^^
 
 The ``FormElement`` view helper proxies the rendering to specific form view helpers
-depending on the type of the ``Zend\\Form\\Element`` that is passed in. For instance,
+depending on the type of the ``Zend\Form\Element`` that is passed in. For instance,
 if the passed in element had a type of "text", the ``FormElement`` helper will retrieve
 and use the ``FormText`` helper to render the element.
 
