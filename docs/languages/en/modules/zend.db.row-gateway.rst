@@ -26,7 +26,7 @@ assumed when a component has a dependency that is expected to be an instance of 
 Quickstart
 ----------
 
-While most of the time, RowGateway will be used in conjucntion with other Zend\\Db\\ResultSet producing objects, it
+While most of the time, RowGateway will be used in conjunction with other Zend\\Db\\ResultSet producing objects, it
 is possible to use it standalone. To use it standalone, you simply need an Adapter and a set of data to work with.
 The following use case demonstrates Zend\\Db\\RowGateway\\RowGateway usage in its simplest form:
 
