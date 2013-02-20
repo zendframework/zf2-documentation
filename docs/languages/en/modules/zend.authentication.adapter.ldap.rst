@@ -214,7 +214,7 @@ Alternatively, they may also be set with the ``setUsername()`` and ``setPassword
 Server Options
 --------------
 
-Each set of server options **in the context of Zend\Authentication\Adapter\Ldap** consists of the following
+Each set of server options **in the context of Zend\\Authentication\\Adapter\\Ldap** consists of the following
 options, which are passed, largely unmodified, to ``Zend\Ldap\Ldap::setOptions()``:
 
 .. _zend.authentication.adapter.ldap.server-options.table:
