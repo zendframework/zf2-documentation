@@ -10,7 +10,7 @@ adapters for common use case scenarios.
 loosely defined as determining whether an entity actually is what it purports to be (i.e., identification), based
 on some set of credentials. Authorization, the process of deciding whether to allow an entity access to, or to
 perform operations upon, other entities is outside the scope of ``Zend\Authentication``. For more information about
-authorization and access control with Zend Framework, please see the :ref:`Zend\\Permissions\\Acl <zend.permissions.acl>` component.
+authorization and access control with Zend Framework, please see the :ref:`Zend\\Permissions\\Acl <zend.permissions.acl>` or :ref:`Zend\\Permissions\\Rbac <zend.permissions.rbac>` component.
 
 .. note::
 
@@ -225,9 +225,9 @@ added to the chain. Thus first the ``Session`` Storage is used. Now either:
 
 - The ``Sesssion`` Storage is empty. Next the ``OAuth`` Storage is accessed.
 
-  -  If this one is also empty the Chain will act as empty. 
+  -  If this one is also empty the Chain will act as empty.
 
-  -  If this one is non-empty the ``Chain`` will use its contents. However it will also populate all Storage with 
+  -  If this one is non-empty the ``Chain`` will use its contents. However it will also populate all Storage with
      higher priority. Thus the ``Session`` Storage will be populated with the contents of the ``Oauth`` Storage.
 
 The priority of Storage in the Chain can be made explicit via the ``Chain::add`` method.
