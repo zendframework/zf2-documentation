@@ -3,8 +3,8 @@
 Color
 ^^^^^
 
-``Zend\Form\Element\Color`` is meant to be paired with the ``Zend\Form\View\Helper\FormColo
-type color`_. This element adds filters and a ``Regex`` validator to it's input filter spr`` for `HTML5 inputs withecification in order to
+``Zend\Form\Element\Color`` is meant to be paired with the ``Zend\Form\View\Helper\FormColor`` for `HTML5 inputs with
+type color`_. This element adds filters and a ``Regex`` validator to it's input filter specification in order to
 validate a `HTML5 valid simple color`_ value on the server.
 
 .. _zend.form.element.color.usage:

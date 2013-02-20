@@ -120,7 +120,7 @@ TableGateway Features
 
 The Features API allows for extending the functionality of the base ``TableGateway`` object without having to
 polymorphically extend the base class. This allows for a wider array of possible mixing and matching of features to
-achieve a particular behiavior that needs to be attained to make the base implementation of ``TableGateway`` useful
+achieve a particular behavior that needs to be attained to make the base implementation of ``TableGateway`` useful
 for a particular problem.
 
 With the ``TableGateway`` object, features should be injected though the constructor. The constructor can take
@@ -181,6 +181,7 @@ There are a number of features built-in and shipped with Zend\\Db:
    $table = new TableGateway('artist', $adapter, new Feature\EventFeature($eventManagerInstance));
 
 - RowGatewayFeature: the ability for ``select()`` to return a ResultSet object that upon iteration will
+  return a ``RowGateway`` object for each row.
 
 .. code-block:: php
    :linenos:

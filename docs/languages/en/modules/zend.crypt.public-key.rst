@@ -84,7 +84,7 @@ these parameters. To know how to choose secure numbers you can read the `RFC 352
 .. note::
 
    The ``Zend\Crypt\PublicKey\DiffieHellman`` class use by default the `OpenSSL`_ extension of PHP to generate the
-   parameters. If you want don't want to use the OpenSSL library you have to set the ``useOpensslExtension`` static
+   parameters. If you don't want to use the OpenSSL library you have to set the ``useOpensslExtension`` static
    method to ``false``.
 
 .. _zend.crypt.public-key.rsa:
@@ -106,7 +106,7 @@ public key of Bob to encrypt the message. Bob can decrypt the message using his 
 only one that can access to his private key, he is the only one that can decrypt the message.
 If Alice wants to provide authenticity and integrity of a message to Bob she can use her private key to sign the
 message. Bob can check the correctness of the digital signature using the public key of Alice.
-Alice can provide encryption, authenticity and integrity of a message to Bob using the previous schemas in 
+Alice can provide encryption, authenticity and integrity of a message to Bob using the previous schemas in
 sequence, applying the encryption first and the digital signature after.
 
 Below we reported some examples of usage of the ``Zend\Crypt\PublicKey\Rsa`` class in order to:
@@ -145,7 +145,7 @@ You can also generate the public and private key using OpenSSL from the command 
 .. code-block:: bash
 
    ssh-keygen -t rsa
- 
+
 
 .. _zend.crypt.public-key.rsa.encrypt:
 
@@ -156,7 +156,7 @@ Below is reported an example on how to encrypt and decrypt a string using the RS
 only small strings. The maximum size of encryption is given by the length of the public/private key - 88 bits.
 For instance, if we use a size of 2048 bit you can encrypt string with a maximum size of 1960 bit
 (245 characters). This limitation is related to the OpenSSL implementation for a security reason related to the
-nature of the RSA algorithm. 
+nature of the RSA algorithm.
 
 The normal application of a public key encryption algorithm is to store a key or a hash of the data you want to
 respectively encrypt or sign. A hash is typically 128-256 bits (the PHP sha1() function returns a 160 bit hash).

@@ -75,10 +75,10 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    If the ``min`` attribute is set, a ``Zend\Validator\GreaterThan`` validator will be added to ensure the number
    value is greater than the minimum value. The ``min`` value should be a `valid floating point number`_.
 
-   If the ``max`` attribute is set, a ``Zend\Validator\LessThanValidator`` validator will be added to ensure the
+   If the ``max`` attribute is set, a ``Zend\Validator\LessThan`` validator will be added to ensure the
    number value is less than the maximum value. The ``max`` value should be a `valid floating point number`_.
 
-   If the ``step`` attribute is set to "any", step validations will be skipped. Otherwise, a a
+   If the ``step`` attribute is set to "any", step validations will be skipped. Otherwise, a
    ``Zend\Validator\Step`` validator will be added to ensure the number value is within a certain interval (default
    is 1). The ``step`` value should be either "any" or a `valid floating point number`_.
 
