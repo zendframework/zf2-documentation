@@ -164,7 +164,7 @@ JS toolkits provide some mechanism for pulling DOM elements based on CSS selecto
 
 This functionality is provided via ``Zend\Dom\Query``, and integrated into a set of 'Query' assertions. Each of these
 assertions takes as their first argument a CSS selector, with optionally additional arguments and/or an error message,
-based on the assertion type. You can find the rules for writing the CSS selectors in the ``Zend\Dom\Query`` theory of operation chapter.
+based on the assertion type. You can find the rules for writing the CSS selectors in the ``Zend\Dom\Query`` :ref:`Theory of Operation <zend.dom.query.operation>` chapter.
 Query assertions include:
 
 * ``assertQuery($path)``: assert that one or more DOM elements matching the given CSS selector are present.
