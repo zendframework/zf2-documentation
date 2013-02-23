@@ -47,7 +47,7 @@ Setup your TestCase
 --------------------
 
 As noted in the previous example, all MVC test cases should extend AbstractHttpControllerTestCase.
-This class in turn extends PHPUnit_Framework_TestCase, and gives you all the structure and assertions
+This class in turn extends ``PHPUnit_Framework_TestCase``, and gives you all the structure and assertions
 you'd expect from PHPUnit -- as well as some scaffolding and assertions specific to Zend Framework's MVC implementation.
 
 In order to test your MVC application, you will need to setup the application config. Use simply the the ``setApplicationConfig`` method :
