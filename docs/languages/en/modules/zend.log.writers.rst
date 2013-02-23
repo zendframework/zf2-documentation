@@ -113,7 +113,7 @@ selected fields.
 The previous example will store only the log information timestamp, priority and message in the database fields
 date, type and event.
 
-The ``Zend\Log\Writer\Db`` has a second optional parameter in the constructor. This parameter is the character
+The ``Zend\Log\Writer\Db`` has a fourth optional parameter in the constructor. This parameter is the character
 separator for the log events managed by an array. For instance, if we have a log that contains an array extra
 fields, this will be translated in 'extra-field', where '-' is the character separator (default) and field is the
 subname of the specific extra field.
