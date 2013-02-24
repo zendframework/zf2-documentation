@@ -161,6 +161,17 @@ As such, you have a variety of ways to override service manager configuration se
    Additionally you will lose the ability to use the caching feature of the configuration files when you use 
    closures within them. This is a limitation of PHP which can't (de)serialize closures.
 
+.. note::
+
+   ** Service names good practices**
+
+   When defining a new service, it is usually a good idea to use the fully qualified class name of the produced 
+   instance or of one of the interfaces it implements as service name.
+   
+   Using a FQCN as service name makes collisions with other services very hard if the class is part of your 
+   own code base, and also aids the developer that consumes that service to have a clear overview on what the 
+   API of the service looks like.
+
 .. _zend.service-manager.quick-start.examples.return-array:
 
 Module Returning an Array
@@ -292,5 +303,4 @@ any class implementing ``Zend\ServiceManager\ServiceLocatorAwareInterface``. A s
            // ...
        }
    }
-
 
