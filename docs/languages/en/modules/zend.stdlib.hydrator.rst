@@ -67,7 +67,7 @@ Available Implementations
 
 - **Zend\\Stdlib\\Hydrator\\ArraySerializable**
 
-  Follows the definition of ``ArrayObject``. Objects must implement either the the ``exchangeArray()`` or
+  Follows the definition of ``ArrayObject``. Objects must implement either the ``exchangeArray()`` or
   ``populate()`` methods to support hydration, and the ``getArrayCopy()`` method to support extraction.
 
 - **Zend\\Stdlib\\Hydrator\\ClassMethods**

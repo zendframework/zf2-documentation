@@ -294,7 +294,7 @@ For example:
                 FilterComposite::CONDITION_AND
             );
 
-            $composite->addFilter("excludes", $exclusionComposite. FilterComposite::CONDITION_AND);
+            $composite->addFilter("excludes", $exclusionComposite, FilterComposite::CONDITION_AND);
 
             return $composite;
         }
