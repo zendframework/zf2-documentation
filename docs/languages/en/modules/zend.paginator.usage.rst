@@ -40,8 +40,8 @@ To create an instance of ``Zend\Paginator``, you must supply an adapter to the c
 
    $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($array));
 
-   In the case of the ``Null`` adapter, in lieu of a data collection you must supply an item count to its
-   constructor.
+In the case of the ``Null`` adapter, in lieu of a data collection you must supply an item count to its
+constructor.
 
 Although the instance is technically usable in this state, in your controller action you'll need to tell the
 paginator what page number the user requested. This allows advancing through the paginated data.
@@ -96,9 +96,9 @@ The DbSelect adapter
 The usage of most adapters is pretty straight-forward. However, the database adapter requires a more detailed
 explanation regarding the retrieval and count of the data from the database.
 
-To use the DbSelect adapter you don't have to retrieve the data upfront from the database. The adapter will do the 
-retrieval for you, as well as the counting of the total pages. If additional work has to be done on the database results 
-which cannot be expressed via the provided ``Zend\Db\Sql\Select`` object you must extend the adapter and override the 
+To use the DbSelect adapter you don't have to retrieve the data upfront from the database. The adapter will do the
+retrieval for you, as well as the counting of the total pages. If additional work has to be done on the database results
+which cannot be expressed via the provided ``Zend\Db\Sql\Select`` object you must extend the adapter and override the
 ``getItems()`` method.
 
 Additionally this adapter does **not** fetch all records from the database in order to count them. Instead, the
@@ -138,8 +138,8 @@ This approach will probably not give you a huge performance gain on small collec
 However, with complex queries and large collections, a similar approach could give you a significant performance
 boost.
 
-The DbSelect adapter also supports returning of fetched records using the ``Zend\Db\ResultSet`` component of ``Zend\Db``.  
-You can override the concrete RowSet implementation by passing an object implementing ``Zend\Db\ResultSet\ResultSetInterface`` 
+The DbSelect adapter also supports returning of fetched records using the ``Zend\Db\ResultSet`` component of ``Zend\Db``.
+You can override the concrete RowSet implementation by passing an object implementing ``Zend\Db\ResultSet\ResultSetInterface``
 as the third constructor argument to the DbSelect adapter:
 
 .. code-block:: php
@@ -147,7 +147,7 @@ as the third constructor argument to the DbSelect adapter:
 
    // $objectPrototype is an instance of our custom entity
    // $hydrator is a custom hydrator for our entity (implementing Zend\Stdlib\Hydrator\HydratorInterface)
-   $resultSet = new Zend\Db\ResultSet\HydratingResultSet($hydrator, $objectPrototype); 
+   $resultSet = new Zend\Db\ResultSet\HydratingResultSet($hydrator, $objectPrototype);
 
    $adapter = new Zend\Paginator\Adapter\DbSelect($query, $dbAdapter, $resultSet)
    $paginator = new Zend\Paginator\Paginator($adapter);
@@ -279,10 +279,10 @@ Search pagination:
    <!-- Previous page link -->
    <?php if (isset($this->previous)): ?>
      <a href="<?php echo $this->url($this->route, array('page' => $this->previous)); ?>">
-       < Previous
+       &lt; Previous
      </a> |
    <?php else: ?>
-     <span class="disabled">< Previous</span> |
+     <span class="disabled">&lt; Previous</span> |
    <?php endif; ?>
 
    <!-- Numbered page links -->
@@ -299,10 +299,10 @@ Search pagination:
    <!-- Next page link -->
    <?php if (isset($this->next)): ?>
      <a href="<?php echo $this->url($this->route, array('page' => $this->next)); ?>">
-       Next >
+       Next &gt;
      </a>
    <?php else: ?>
-     <span class="disabled">Next ></span>
+     <span class="disabled">Next &gt;</span>
    <?php endif; ?>
    </div>
    <?php endif; ?>
@@ -333,19 +333,19 @@ Item pagination:
    <!-- Previous page link -->
    <?php if (isset($this->previous)): ?>
      <a href="<?php echo $this->url($this->route, array('page' => $this->previous)); ?>">
-       < Previous
+       &lt; Previous
      </a> |
    <?php else: ?>
-     <span class="disabled">< Previous</span> |
+     <span class="disabled">&lt; Previous</span> |
    <?php endif; ?>
 
    <!-- Next page link -->
    <?php if (isset($this->next)): ?>
      <a href="<?php echo $this->url($this->route, array('page' => $this->next)); ?>">
-       Next >
+       Next &gt;
      </a> |
    <?php else: ?>
-     <span class="disabled">Next ></span> |
+     <span class="disabled">Next &gt;</span> |
    <?php endif; ?>
 
    <!-- Last page link -->
