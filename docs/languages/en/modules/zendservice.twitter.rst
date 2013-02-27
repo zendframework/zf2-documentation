@@ -8,7 +8,7 @@ ZendService\Twitter
 Introduction
 ------------
 
-``ZendService\Twitter`` provides a client for the `Twitter RESTAPI`_. ``ZendService\Twitter`` allows you to query
+``ZendService\Twitter`` provides a client for the `Twitter REST API`_. ``ZendService\Twitter`` allows you to query
 the public timeline. If you provide a username and OAuth details for Twitter, it will allow you to get and update
 your status, reply to friends, direct message friends, mark tweets as favorite, and much more.
 
@@ -648,4 +648,4 @@ Block Methods
 .. include:: zendservice.twitter.search.rst
 
 
-.. _`Twitter RESTAPI`: http://apiwiki.twitter.com/Twitter-API-Documentation
+.. _`Twitter REST API`: https://dev.twitter.com/docs/api
