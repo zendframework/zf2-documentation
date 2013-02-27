@@ -22,10 +22,8 @@ This element automatically adds a ``"type"`` attribute of value ``"radio"`` for 
    	$radio = new Element\Radio('gender');
    	$radio->setLabel('What is your gender ?');
    	$radio->setValueOptions(array(
-   		array(
    			'0' => 'Female',
    			'1' => 'Male',
-   		)
    	));
 
    	$form = new Form('my-form');
