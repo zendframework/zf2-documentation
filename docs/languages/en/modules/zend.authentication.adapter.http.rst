@@ -58,7 +58,7 @@ several configuration options available, and some are required:
    +--------------+----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
    |Option Name   |Required                                |Description                                                                                                                                        |
    +==============+========================================+===================================================================================================================================================+
-   |accept_schemes|Yes                                     |Determines which authentication schemes the adapter will accept from the client. Must be a space=separated list containing 'basic' and/or 'digest'.|
+   |accept_schemes|Yes                                     |Determines which authentication schemes the adapter will accept from the client. Must be a space-separated list containing 'basic' and/or 'digest'.|
    +--------------+----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
    |realm         |Yes                                     |Sets the authentication realm; usernames should be unique within a given realm.                                                                    |
    +--------------+----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
