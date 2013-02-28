@@ -3,7 +3,7 @@
 Unit testing with PHPUnit
 --------------------
 
-Zend\Test\PHPUnit provides a TestCase for MVC applications that contains assertions for testing against a variety of 
+``Zend\Test\PHPUnit`` provides a TestCase for MVC applications that contains assertions for testing against a variety of
 responsibilities. Probably the easiest way to understand what it can do is to see an example.
 
 The following is a simple test case for a IndexController to verify things like HTTP code, controller and action name :
@@ -25,12 +25,12 @@ The following is a simple test case for a IndexController to verify things like 
             );
             parent::setUp();
         }
-        
+
         public function testIndexActionCanBeAccessed()
         {
             $this->dispatch('/');
             $this->assertResponseStatusCode(200);
-            
+
             $this->assertModuleName('application');
             $this->assertControllerName('application_index');
             $this->assertControllerClass('IndexController');
@@ -38,7 +38,7 @@ The following is a simple test case for a IndexController to verify things like 
         }
     }
 
-The setup of the test case can to define the application config. You can use several config 
+The setup of the test case can to define the application config. You can use several config
 to test modules dependencies or your current application config.
 
 .. _zend.test.setup:
@@ -46,8 +46,8 @@ to test modules dependencies or your current application config.
 Setup your TestCase
 --------------------
 
-As noted in the previous example, all MVC test cases should extend AbstractHttpControllerTestCase. 
-This class in turn extends PHPUnit_Framework_TestCase, and gives you all the structure and assertions 
+As noted in the previous example, all MVC test cases should extend AbstractHttpControllerTestCase.
+This class in turn extends ``PHPUnit_Framework_TestCase``, and gives you all the structure and assertions
 you'd expect from PHPUnit -- as well as some scaffolding and assertions specific to Zend Framework's MVC implementation.
 
 In order to test your MVC application, you will need to setup the application config. Use simply the the ``setApplicationConfig`` method :
@@ -62,7 +62,7 @@ In order to test your MVC application, you will need to setup the application co
         parent::setUp();
     }
 
-Once the application is set up, you can write your tests. To help debug tests, you can activate the flag ``traceError`` to 
+Once the application is set up, you can write your tests. To help debug tests, you can activate the flag ``traceError`` to
 throw MVC exception during the tests writing :
 
 .. code-block:: php
@@ -83,7 +83,7 @@ throw MVC exception during the tests writing :
 Testing your Controllers and MVC Applications
 --------------------
 
-Once you have your application config in place, you can begin testing. Testing is basically as you would expect in an PHPUnit test 
+Once you have your application config in place, you can begin testing. Testing is basically as you would expect in an PHPUnit test
 suite, with a few minor differences.
 
 First, you will need to dispatch a URL to test, using the ``dispatch`` method of the TestCase:
@@ -95,7 +95,7 @@ First, you will need to dispatch a URL to test, using the ``dispatch`` method of
         $this->dispatch('/');
     }
 
-There will be times, however, that you need to provide extra information -- GET and POST variables, COOKIE information, etc. 
+There will be times, however, that you need to provide extra information -- GET and POST variables, COOKIE information, etc.
 You can populate the request with that information:
 
 .. code-block:: php
@@ -131,14 +131,14 @@ Now that the request is made, it's time to start making assertions against it.
 Assertions
 --------------------
 
-Assertions are at the heart of Unit Testing; you use them to verify that the results are what you expect. 
-To this end, Zend\Test\PHPUnit\AbstractControllerTestCase provides a number of assertions to make testing your 
+Assertions are at the heart of Unit Testing; you use them to verify that the results are what you expect.
+To this end, ``Zend\Test\PHPUnit\AbstractControllerTestCase`` provides a number of assertions to make testing your
 MVC apps and controllers simpler.
 
 Request Assertions
 --------------------
 
-It's often useful to assert against the last run action, controller, and module; additionally, you may want 
+It's often useful to assert against the last run action, controller, and module; additionally, you may want
 to assert against the route that was matched. The following assertions can help you in this regard:
 
 * ``assertModulesLoaded(array $modules)``: Assert that the given modules was loaded by the application.
@@ -158,22 +158,22 @@ Each also has a 'Not' variant for negative assertions.
 CSS Selector Assertions
 --------------------
 
-CSS selectors are an easy way to verify that certain artifacts are present in the response content. 
-They also make it trivial to ensure that items necessary for Javascript UIs and/or AJAX integration will be present; most 
+CSS selectors are an easy way to verify that certain artifacts are present in the response content.
+They also make it trivial to ensure that items necessary for Javascript UIs and/or AJAX integration will be present; most
 JS toolkits provide some mechanism for pulling DOM elements based on CSS selectors, so the syntax would be the same.
 
-This functionality is provided via Zend\Dom\Query, and integrated into a set of 'Query' assertions. Each of these 
-assertions takes as their first argument a CSS selector, with optionally additional arguments and/or an error message, 
-based on the assertion type. You can find the rules for writing the CSS selectors in the Zend_Dom_Query theory of operation chapter. 
+This functionality is provided via ``Zend\Dom\Query``, and integrated into a set of 'Query' assertions. Each of these
+assertions takes as their first argument a CSS selector, with optionally additional arguments and/or an error message,
+based on the assertion type. You can find the rules for writing the CSS selectors in the ``Zend\Dom\Query`` :ref:`Theory of Operation <zend.dom.query.operation>` chapter.
 Query assertions include:
 
 * ``assertQuery($path)``: assert that one or more DOM elements matching the given CSS selector are present.
 
-* ``assertQueryContentContains($path, $match)``: assert that one or more DOM elements matching the given CSS selector are present, 
+* ``assertQueryContentContains($path, $match)``: assert that one or more DOM elements matching the given CSS selector are present,
 and that at least one contains the content provided in $match.
 
-* ``assertQueryContentRegex($path, $pattern)``: assert that one or more DOM elements matching the given CSS selector are present, 
-and that at least one matches the regular expression provided in $pattern. If a $message is present, it will be prepended to any 
+* ``assertQueryContentRegex($path, $pattern)``: assert that one or more DOM elements matching the given CSS selector are present,
+and that at least one matches the regular expression provided in $pattern. If a $message is present, it will be prepended to any
 failed assertion message.
 
 * ``assertQueryCount($path, $count)``: assert that there are exactly $count DOM elements matching the given CSS selector present.
@@ -182,17 +182,17 @@ failed assertion message.
 
 * ``assertQueryCountMax($path, $count)``: assert that there are no more than $count DOM elements matching the given CSS selector present.
 
-Additionally, each of the above has a 'Not' variant that provides a negative assertion: assertNotQuery(), assertNotQueryContentContains(), 
-assertNotQueryContentRegex(), and assertNotQueryCount(). (Note that the min and max counts do not have these variants, for what should 
+Additionally, each of the above has a 'Not' variant that provides a negative assertion: assertNotQuery(), assertNotQueryContentContains(),
+assertNotQueryContentRegex(), and assertNotQueryCount(). (Note that the min and max counts do not have these variants, for what should
 be obvious reasons.)
 
 XPath Assertions
 --------------------
 
-Some developers are more familiar with XPath than with CSS selectors, and thus XPath variants of all the Query assertions are also provided. 
+Some developers are more familiar with XPath than with CSS selectors, and thus XPath variants of all the Query assertions are also provided.
 These are:
 
-* ``assertXpath($path)``
+* ``assertXpathQuery($path)``
 
 * ``assertNotXpathQuery($path)``
 
@@ -215,14 +215,14 @@ These are:
 Redirect Assertions
 --------------------
 
-Often an action will redirect. Instead of following the redirect, Zend_Test_PHPUnit_ControllerTestCase allows you to test for redirects 
+Often an action will redirect. Instead of following the redirect, ``Zend\Test\PHPUnit\ControllerTestCase`` allows you to test for redirects
 with a handful of assertions.
 
 * ``assertRedirect()``: assert simply that a redirect has occurred.
 
 * ``assertRedirectTo($url)``: assert that a redirect has occurred, and that the value of the Location header is the $url provided.
 
-* ``assertRedirectRegex($pattern)``: assert that a redirect has occurred, and that the value of the Location header matches the regular 
+* ``assertRedirectRegex($pattern)``: assert that a redirect has occurred, and that the value of the Location header matches the regular
 expression provided by $pattern.
 
 Each also has a 'Not' variant for negative assertions.
@@ -230,8 +230,8 @@ Each also has a 'Not' variant for negative assertions.
 Response Header Assertions
 --------------------
 
-In addition to checking for redirect headers, you will often need to check for specific HTTP response codes and headers -- for instance, 
-to determine whether an action results in a 404 or 500 response, or to ensure that JSON responses contain the appropriate Content-Type header. 
+In addition to checking for redirect headers, you will often need to check for specific HTTP response codes and headers -- for instance,
+to determine whether an action results in a 404 or 500 response, or to ensure that JSON responses contain the appropriate Content-Type header.
 The following assertions are available.
 
 * ``assertResponseCode($code)``: assert that the response resulted in the given HTTP response code.
