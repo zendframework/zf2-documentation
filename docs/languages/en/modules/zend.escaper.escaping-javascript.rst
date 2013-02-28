@@ -3,9 +3,9 @@
 Escaping Javascript
 ===================
 
-Javascript string literals in HTML are subject to significant restrictions particularly due to the potential for 
-unquoted attributes and any uncertainty as to whether Javascript will be viewed as being CDATA or PCDATA by the 
-browser. To eliminate any possible XSS vulnerabilities, Javascript escaping for HTML extends the escaping rules of 
+Javascript string literals in HTML are subject to significant restrictions particularly due to the potential for
+unquoted attributes and any uncertainty as to whether Javascript will be viewed as being CDATA or PCDATA by the
+browser. To eliminate any possible XSS vulnerabilities, Javascript escaping for HTML extends the escaping rules of
 both ECMAScript and JSON to include any potentially dangerous character. Very similar to HTML attribute value escaping,
 this means escaping everything except basic alphanumeric characters and the comma, period and underscore characters
 as hexadecimal or unicode escapes.
@@ -14,7 +14,7 @@ Javascript escaping applies to all literal strings and digits. It is not possibl
 markup.
 
 To escape data in the **Javascript context**, use ``Zend\Escaper\Escaper``'s ``escapeJs`` method. An extended set
-of characters are escaped beyond ECMAScript's rules for Javascript literal string escaping in order to prevent 
+of characters are escaped beyond ECMAScript's rules for Javascript literal string escaping in order to prevent
 misinterpretation of Javascript as HTML leading to the injection of special characters and entities.
 
 .. _zend.escaper.escaping-javascript.bad-examples:
@@ -76,7 +76,7 @@ By using the ``escapeJs`` method in the Javascript context, such attacks can be 
     ?>
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Unescaped Entities</title>
+        <title>Escaped Entities</title>
         <meta charset="UTF-8"/>
         <script type="text/javascript">
             <?php

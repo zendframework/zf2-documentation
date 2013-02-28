@@ -3,8 +3,8 @@
 Escaping Cascading Style Sheets
 ===============================
 
-CSS is similar to :ref:`Javascript <zend.escaper.escaping-javascript>` for the same reasons. CSS escaping excludes 
-only basic alphanumeric characters and escapes all other characters into valid CSS hexadecimal escapes. 
+CSS is similar to :ref:`Javascript <zend.escaper.escaping-javascript>` for the same reasons. CSS escaping excludes
+only basic alphanumeric characters and escapes all other characters into valid CSS hexadecimal escapes.
 
 .. _zend.escaper.escaping-css.bad-examples:
 
@@ -63,7 +63,7 @@ By using ``escapeCss`` method in the CSS context, such attacks can be prevented:
     ?>
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Unescaped CSS</title>
+        <title>Escaped CSS</title>
         <meta charset="UTF-8"/>
         <style>
         <?php
