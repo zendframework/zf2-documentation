@@ -431,10 +431,10 @@ You will then pull that value back into your method.
            return;
        }
        if (!isset($values['date'])) {
-           $values['date'] = new DateTime('now');
+           $values['date'] = new \DateTime('now');
            return;
        }
-       $values['date'] = new Datetime($values['date']);
+       $values['date'] = new \Datetime($values['date']);
    });
 
    $v->inject(array(
