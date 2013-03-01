@@ -125,3 +125,24 @@ The following illustrates how you might utilize the above configuration to creat
            )
        }
    }
+
+Session Compatibility
+---------------------
+
+In order to work with other 3rd party libraries and share sessions across software that may not be ZF2
+related; you will need to ensure that you still provide access to the ZF2 autoloader as well as module
+autoloading.
+
+In the shared software make certain before the session starts that you bootstrap the ZF2 autoloader and
+initialize the ZF2 Application.
+
+.. code-block:: php
+   :linenos:
+
+   $cwd = getcwd();
+   chdir('/path/to/zf2-application');
+   require 'init_autoloader.php';
+   Zend\Mvc\Application::init(require 'config/application.config.php');
+   chdir($cwd);
+   session_start();
+
