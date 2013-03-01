@@ -14,6 +14,16 @@ to create a new project from scratch with Zend Framework:
 
 .. note::
 
+    If you come across  the following error:
+
+    .. code-block:: none
+
+        [Composer\Downloader\TransportException]                                                             
+        The "https://api.github.com/repos/zendframework/ZendSkeletonApplication/zipball/packages.json" file  
+        could not be downloaded (HTTP/1.1 404 Not Found)
+
+    Then add the ``--prefer-source`` argument to the command.
+
     Another way to install the ZendSkeletonApplication is to use github.  Go to 
     https://github.com/zendframework/ZendSkeletonApplication and click the “Zip”
     button. This will download a file with a name like
