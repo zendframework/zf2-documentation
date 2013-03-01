@@ -389,7 +389,7 @@ links.
 .. note::
 
     We always use the ``escapeHtml()`` view helper to help protect
-    ourselves from XSS vulnerabilities.
+    ourselves from Cross Site Scripting (XSS) vulnerabilities (see http://en.wikipedia.org/wiki/Cross-site_scripting).
 
 If you open http://zf2-tutorial.localhost/album you should see this:
 
