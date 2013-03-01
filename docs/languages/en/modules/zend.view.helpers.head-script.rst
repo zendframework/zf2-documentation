@@ -79,9 +79,10 @@ you wish to use in the element.
 programmatically, and then place it elsewhere. The usage for this will be showed in an example below.
 
 Finally, you can also use the ``headScript()`` method to quickly add script elements; the signature for this is
-``headScript($mode = 'FILE', $spec, $placement = 'APPEND')``. The ``$mode`` is either 'FILE' or 'SCRIPT', depending
-on if you're linking a script or defining one. ``$spec`` is either the script file to link or the script source
-itself. ``$placement`` should be either 'APPEND', 'PREPEND', or 'SET'.
+``headScript($mode = 'FILE', $spec = null, $placement = 'APPEND', array $attrs = array(), $type = 'text/javascript')``.
+The ``$mode`` is either 'FILE' or 'SCRIPT', depending on if you're linking a script or defining one. ``$spec`` is
+either the script file to link or the script source itself. ``$placement`` should be either 'APPEND', 'PREPEND', or 'SET'.
+``$attrs`` is an array of script attributes. ``$type`` is the script type attribute.
 
 ``HeadScript`` overrides each of ``append()``, ``offsetSet()``, ``prepend()``, and ``set()`` to enforce usage of
 the special methods as listed above. Internally, it stores each item as a ``stdClass`` token, which it later
