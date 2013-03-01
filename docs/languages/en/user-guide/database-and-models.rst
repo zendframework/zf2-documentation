@@ -45,12 +45,12 @@ We now have some data in a database and can write a very simple model for it.
 The model files
 ---------------
 
-Zend Framework does not provide a ``Zend\Model`` component as the model is your
+Zend Framework does not provide a ``Zend\Model`` component because the model is your
 business logic and it’s up to you to decide how you want it to work. There are
 many components that you can use for this depending on your needs. One approach
 is to have model classes represent each entity in your application and then
 use mapper objects that load and save entities to the database. Another is to
-use an ORM like Doctrine or Propel.
+use an Object-relational mapping (ORM) technology, such as Doctrine or Propel.
 
 For this tutorial, we are going to create a very simple model by creating an
 ``AlbumTable`` class that uses the ``Zend\Db\TableGateway\TableGateway`` class
