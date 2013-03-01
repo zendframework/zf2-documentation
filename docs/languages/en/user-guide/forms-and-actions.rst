@@ -339,7 +339,17 @@ This time we use ``editAction()`` in the ``AlbumController``:
                     'action' => 'add'
                 ));
             }
-            $album = $this->getAlbumTable()->getAlbum($id);
+
+            // Get the Album with the specified id.  An exception is thrown
+            // if it cannot be found, in which case go to the index page.
+            try {
+                $album = $this->getAlbumTable()->getAlbum($id);
+            }
+            catch (\Exception $ex) {
+                return $this->redirect()->toRoute('album', array(
+                    'action' => 'index'
+                ));
+            }
 
             $form  = new AlbumForm();
             $form->bind($album);
@@ -377,13 +387,27 @@ and use it to load the album to be edited:
             'action' => 'add'
         ));
     }
-    $album = $this->getAlbumTable()->getAlbum($id);
+
+    // Get the album with the specified id.  An exception is thrown 
+    // if it cannot be found, in which case go to the index page.
+    try {
+        $album = $this->getAlbumTable()->getAlbum($id);
+    }
+    catch (\Exception $ex) {
+        return $this->redirect()->toRoute('album', array(
+            'action' => 'index'
+        ));
+    }
 
 ``params`` is a controller plugin that provides a convenient way to retrieve
 parameters from the matched route.  We use it to retrieve the ``id`` from the
 route we created in the modules’ ``module.config.php``. If the ``id`` is zero,
 then we redirect to the add action, otherwise, we continue by getting the album
 entity from the database.
+
+We have to check to make sure that the Album with the specified ``id`` can actually be found.
+If it cannot, then the data access method throws an exception.  We catch that exception and re-route the user
+to the index page.
 
 .. code-block:: php
 
