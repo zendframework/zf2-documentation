@@ -23,13 +23,13 @@ The components of the view layer are as follows:
   renderers by default: a ``PhpRenderer`` which utilizes PHP templates in order to generate markup, a ``JsonRenderer``,
   and a ``FeedRenderer`` for generating RSS and Atom feeds.
 
-- **Resolvers** utilizes Resolver Strategies to resolve a template name to a resource a Renderer may consume. 
+- **Resolvers** utilizes Resolver Strategies to resolve a template name to a resource a Renderer may consume.
   As an example, a Resolver may take the name "blog/entry" and resolve it to a PHP view script.
 
 - The **View** consists of strategies that map the current Request to a Renderer, and strategies for
   injecting the result of rendering to the Response.
 
-- **Rendering Strategies** listen to the "renderer" event of the View and decide which Renderer should be selected 
+- **Rendering Strategies** listen to the "renderer" event of the View and decide which Renderer should be selected
   based on the Request or other criteria.
 
 - **Response Strategies** are used to inject the Response object with the results of rendering.
@@ -43,8 +43,8 @@ Additionally, Zend Framework 2 provides integration with the MVC via a number of
 Usage
 =====
 
-This section of the manual is designed to show you typical usage patterns of the view layer when using it within 
-the Zend Framework 2 MVC. The assumptions are that you are using :ref:`Dependency Injection <zend.di>` and the 
+This section of the manual is designed to show you typical usage patterns of the view layer when using it within
+the Zend Framework 2 MVC. The assumptions are that you are using :ref:`Dependency Injection <zend.di>` and the
 default MVC view strategies.
 
 .. _zend.view.quick-start.usage.config:
@@ -66,8 +66,8 @@ module from the framework's `ZendSkeletonApplication`_, or to one of your autolo
        'view_manager' => array(
            // The TemplateMapResolver allows you to directly map template names
            // to specific templates. The following map would provide locations
-           // for a home page template ("application/index/index"), as well as for 
-           // the layout ("layout/layout"), error pages ("error/index"), and 
+           // for a home page template ("application/index/index"), as well as for
+           // the layout ("layout/layout"), error pages ("error/index"), and
            // 404 page ("error/404"), resolving them to view scripts.
            'template_map' => array(
                'application/index/index' => __DIR__ .  '/../view/application/index/index.phtml',
@@ -90,9 +90,9 @@ module from the framework's `ZendSkeletonApplication`_, or to one of your autolo
            ),
 
            // Set the template name for the site's layout.
-           // 
+           //
            // By default, the MVC's default Rendering Strategy uses the
-           // template name "layout/layout" for the site's layout. 
+           // template name "layout/layout" for the site's layout.
            // Here, we tell it to use the "site/layout" template,
            // which we mapped via the TemplateMapResolver above.
            'layout' => 'site/layout',
@@ -134,7 +134,7 @@ module from the framework's `ZendSkeletonApplication`_, or to one of your autolo
 Controllers and View Models
 ---------------------------
 
-``Zend\View\View`` consumes ``ViewModel``'s, passing them to the selected renderer. Where do you create these,
+``Zend\View\View`` consumes ``ViewModel``\s, passing them to the selected renderer. Where do you create these,
 though?
 
 The most explicit way is to create them in your controllers and return them.
@@ -159,7 +159,7 @@ The most explicit way is to create them in your controllers and return them.
        }
    }
 
-This sets a "message" variable in the View Model, and sets the template name "foo/baz-bat/do-something-crazy". 
+This sets a "message" variable in the View Model, and sets the template name "foo/baz-bat/do-something-crazy".
 The View Model is then returned.
 
 In most cases, you'll likely have a template name based on the module namespace, controller, and action.
@@ -167,13 +167,13 @@ Considering that, and if you're simply passing some variables, could this be mad
 
 The MVC registers a couple of listeners for controllers to automate this. The first will look to see if you
 returned an associative array from your controller; if so, it will create a View Model and make this associative
-array the Variables Container; this View Model then replaces the :ref:`MvcEvent <zend.mvc.mvc-event>`'s result. 
-It will also look to see if you returned nothing or null; if so, it will create a View Model without any variables 
+array the Variables Container; this View Model then replaces the :ref:`MvcEvent <zend.mvc.mvc-event>`'s result.
+It will also look to see if you returned nothing or null; if so, it will create a View Model without any variables
 attached; this View Model also replaces the ``MvcEvent``'s result.
 
 The second listener checks to see if the ``MvcEvent`` result is a View Model, and, if so, if it has a template
-associated with it. If not, it will inspect the controller matched during routing to determine the module namespace 
-and the controller class name, and, if available, it's "action" parameter in order to create a template name. 
+associated with it. If not, it will inspect the controller matched during routing to determine the module namespace
+and the controller class name, and, if available, it's "action" parameter in order to create a template name.
 This will be "module/controller/action", all normalized to lowercase, dash-separated words.
 
 As an example, the controller ``Foo\Controller\BazBatController`` with action "doSomethingCrazyAction", would be mapped
@@ -206,7 +206,7 @@ explicitly create and return a View Model and specify the template manually, as 
 Nesting View Models
 -------------------
 
-The other use case you may have for setting explicit View Models is if you wish to **nest** them. 
+The other use case you may have for setting explicit View Models is if you wish to **nest** them.
 In other words, you might want to render templates to be included within the main View you return.
 
 As an example, you may want the View from an action to be one primary section that includes both an "article" and
@@ -354,17 +354,17 @@ rendering isolated from the Request/Response lifecycle of the controller.
 Dealing with Layouts
 --------------------
 
-Most sites enforce a cohesive look-and-feel which we typically call the site's "layout". It includes the default 
+Most sites enforce a cohesive look-and-feel which we typically call the site's "layout". It includes the default
 stylesheets and JavaScript necessary, if any, as well as the basic markup structure into which all site
 content will be injected.
 
 Within Zend Framework 2, layouts are handled via nesting of View Models (see the :ref:`previous example
-<zend.view.quick-start.usage.nesting>` for examples of View Model nesting). The ``Zend\Mvc\View\Http\ViewManager`` 
-composes a View Model which acts as the "root" for nested View Models. As such, it should contain the skeleton 
-(or layout) template for the site. All other content is then rendered and captured to view variables of this root 
+<zend.view.quick-start.usage.nesting>` for examples of View Model nesting). The ``Zend\Mvc\View\Http\ViewManager``
+composes a View Model which acts as the "root" for nested View Models. As such, it should contain the skeleton
+(or layout) template for the site. All other content is then rendered and captured to view variables of this root
 View Model.
 
-The ``ViewManager`` sets the layout template as "layout/layout" by default. To change this, you can add some 
+The ``ViewManager`` sets the layout template as "layout/layout" by default. To change this, you can add some
 configuration to the "view_manager" area of your :ref:`configuration <zend.view.quick-start.usage.config>`.
 
 A listener on the controllers, ``Zend\Mvc\View\Http\InjectViewModelListener``, will take a View Model returned from a
@@ -502,7 +502,7 @@ the layout View Model:
 
 Sometimes, you may want to access the layout from within your actual view scripts when using the ``PhpRenderer``.
 Reasons might include wanting to change the layout template or wanting to either access or inject layout view variables.
-Similar to the "layout" controller plugin, you can use the "layout" View Helper. If you provide a string argument to it, 
+Similar to the "layout" controller plugin, you can use the "layout" View Helper. If you provide a string argument to it,
 you will change the template; if you provide no arguments, the root layout View Model is returned.
 
 .. code-block:: php
