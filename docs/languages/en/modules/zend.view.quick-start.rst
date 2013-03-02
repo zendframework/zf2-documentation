@@ -71,7 +71,7 @@ module from the framework's `ZendSkeletonApplication`_, or to one of your autolo
            // 404 page ("error/404"), resolving them to view scripts.
            'template_map' => array(
                'application/index/index' => __DIR__ .  '/../view/application/index/index.phtml',
-               'site/layout'           => __DIR__ . '/../view/layout/layout.phtml',
+               'site/layout'             => __DIR__ . '/../view/layout/layout.phtml',
                'error/index'             => __DIR__ . '/../view/error/index.phtml',
                'error/404'               => __DIR__ . '/../view/error/404.phtml',
            ),
@@ -120,7 +120,7 @@ module from the framework's `ZendSkeletonApplication`_, or to one of your autolo
           // template (which we mapped via the TemplateMapResolver, above).
           //
           // You can opt in to inject the reason for a 404 situation; see the
-          // various `Application::ERROR_*`_ constants for a list of values.
+          // various `Application\:\:ERROR_*`_ constants for a list of values.
           // Additionally, a number of 404 situations derive from exceptions
           // raised during routing or dispatching. You can opt-in to display
           // these.
@@ -792,4 +792,4 @@ need to define DI configuration to ensure the various renderers are injected whe
 the application's locator instance.
 
 .. _`ZendSkeletonApplication`: https://github.com/zendframework/ZendSkeletonApplication
-.. _`Application::ERROR_*`: https://github.com/zendframework/zf2/blob/master/library/Zend/Mvc/Application.php
+.. _`Application\:\:ERROR_*`: https://github.com/zendframework/zf2/blob/master/library/Zend/Mvc/Application.php
