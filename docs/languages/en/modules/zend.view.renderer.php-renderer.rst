@@ -257,7 +257,7 @@ properties and methods. Thus, a very basic view script could look like this:
    you are most likely to encounter.
 
    By using the provided helpers and being aware of your variables' contexts, you will prevent your templates from
-   running afoul of Cross-Site Scripting (XSS) vulnerabilities.
+   running afoul of `Cross-Site Scripting (XSS)`_ vulnerabilities.
 
 We've now toured the basic usage of the ``PhpRenderer``. By now you should know how to instantiate the renderer,
 provide it with a resolver, assign variables and/or create view models, create view scripts, and render view
@@ -271,43 +271,53 @@ Options and Configuration
 ``Zend\View\Renderer\PhpRenderer`` utilizes several collaborators in order to do its work. use the following
 methods to configure the renderer.
 
-.. _zend.view.renderer.php-renderer.options.broker:
+.. _zend.view.renderer.php-renderer.options.plugin-manager:
 
-**broker**
-   ``setBroker(Zend\View\HelperBroker $broker)``
+.. function:: setHelperPluginManager(string|Zend\\View\\HelperPluginManager $helpers)
+   :noindex:
 
-   Set the broker instance used to load, register, and retrieve :ref:`helpers <zend.view.helpers>`.
+   Set the helper plugin manager instance used to load, register, and retrieve :ref:`helpers <zend.view.helpers>`.
+
+   :rtype: Zend\\View\\Renderer\\PhpRenderer
 
 .. _zend.view.renderer.php-renderer.options.resolver:
 
-**resolver**
-   ``setResolver(Zend\View\Resolver $resolver)``
+.. function:: setResolver(Zend\\View\\Resolver\\ResolverInterface $resolver)
+   :noindex:
 
    Set the resolver instance.
 
+   :rtype: Zend\\View\\Renderer\\PhpRenderer
+
 .. _zend.view.renderer.php-renderer.options.filter-chain:
 
-**filters**
-   ``setFilterChain(Zend\Filter\FilterChain $filters)``
+.. function:: setFilterChain(Zend\\Filter\\FilterChain $filters)
+   :noindex:
 
    Set a filter chain to use as an output filter on rendered content.
 
+   :rtype: Zend\\View\\Renderer\\PhpRenderer
+
 .. _zend.view.renderer.php-renderer.options.vars:
 
-**vars**
-   ``setVars(array|ArrayAccess|Zend\View\Variables $variables)``
+.. function:: setVars(array|ArrayAccess|Zend\\View\\Variables $variables)
+   :noindex:
 
    Set the variables to use when rendering a view script/template.
 
+   :rtype: mixed
+
 .. _zend.view.renderer.php-renderer.options.can-render-trees:
 
-**canRenderTrees**
-   ``setCanRenderTrees(bool $canRenderTrees)``
+.. function:: setCanRenderTrees(boolean $canRenderTrees)
+   :noindex:
 
    Set flag indicating whether or not we should render trees of view models. If set to true, the ``Zend\View\View``
    instance will not attempt to render children separately, but instead pass the root view model directly to the
    ``PhpRenderer``. It is then up to the developer to render the children from within the view script. This is
    typically done using the ``RenderChildModel`` helper: *$this->renderChildModel('child_name')*.
+
+   :rtype: Zend\\View\\Renderer\\PhpRenderer
 
 .. _zend.view.renderer.php-renderer.methods:
 
@@ -319,8 +329,8 @@ when interacting with the ``PhpRenderer``. However, there are a few additional m
 
 .. _zend.view.renderer.php-renderer.methods.render:
 
-**render**
-   ``render(string|Zend\View\Model $nameOrModel, $values = null)``
+.. function:: render(string|Zend\\View\\Model\\ModelInterface $nameOrModel, array|Traversable $values = null)
+   :noindex:
 
    Render a template/view model.
 
@@ -334,34 +344,48 @@ when interacting with the ``PhpRenderer``. However, there are a few additional m
    if the model contains any variables, these will be used when rendering; otherwise, the variables container
    already present, if any, will be used.
 
+   It will return the script output.
+
+   :rtype: string
+
 .. _zend.view.renderer.php-renderer.methods.resolver:
 
-**resolver**
-   ``resolver()``
+.. function:: resolver()
+   :noindex:
 
    Retrieves the ``Resolver`` instance.
 
+   :rtype: string|Zend\\View\\Resolver\\ResolverInterface
+
 .. _zend.view.renderer.php-renderer.methods.vars:
 
-**vars**
-   ``vars(string $key = null)``
+.. function:: vars(string $key = null)
+   :noindex:
 
-   Retrieve the variables container, or a single variable from the container..
+   Retrieve a single variable from the container if a key is provided, otherwise it will return the variables
+   container.
+
+   :rtype: mixed
 
 .. _zend.view.renderer.php-renderer.methods.plugin:
 
-**plugin**
-   ``plugin(string $name, array $options = null)``
+.. function:: plugin(string $name, array $options = null)
+   :noindex:
 
-   Get a plugin/helper instance. Proxies to the broker's ``load()`` method; as such, any ``$options`` you pass will
-   be passed to the plugin's constructor if this is the first time the plugin has been retrieved. See the section
-   on :ref:`helpers <zend.view.helpers>` for more information.
+   Get a plugin/helper instance. Proxies to the plugin manager's ``get()`` method; as such, any ``$options`` you
+   pass will be passed to the plugin's constructor if this is the first time the plugin has been retrieved. See
+   the section on :ref:`helpers <zend.view.helpers>` for more information.
+
+   :rtype: Zend\\View\\Helper\\HelperInterface
 
 .. _zend.view.renderer.php-renderer.methods.add-template:
 
-**addTemplate**
-   ``addTemplate(string $template)``
+.. function:: addTemplate(string $template)
+   :noindex:
 
    Add a template to the stack. When used, the next call to ``render()`` will loop through all template added using
    this method, rendering them one by one; the output of the last will be returned.
 
+   :rtype: Zend\\View\\Renderer\\PhpRenderer
+
+.. _`Cross-Site Scripting (XSS)`: http://en.wikipedia.org/wiki/Cross-site_scripting
