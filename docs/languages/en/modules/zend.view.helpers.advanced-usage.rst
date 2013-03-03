@@ -8,11 +8,11 @@ Advanced usage of helpers
 Registering Helpers
 -------------------
 
-``Zend\View\Renderer\PhpRenderer`` composes a :ref:`plugin broker <zend.loader.plugin-broker>` for managing
-helpers, specifically an instance of ``Zend\View\HelperBroker``, which extends the base plugin broker in order to
-ensure we have valid helpers available. The ``HelperBroker`` by default uses ``Zend\View\HelperLoader`` as its
-helper locator. The ``HelperLoader`` is a map-based loader, which means that you will simply map the helper/plugin
-name by which you wish to refer to it to the actual class name of the helper/plugin.
+``Zend\View\Renderer\PhpRenderer`` composes a *plugin manager* for managing helpers, specifically an instance of
+``Zend\View\HelperPluginManager``, which extends ``Zend\ServiceManager\AbstractPluginManager``, and this extends
+``Zend\ServiceManager\ServiceManager``. As you can see, the *HelperPluginManager* is a specialized service manager,
+so you can register a helper/plugin like any other service (see :ref:`the Service Manager documentation
+<zend.service-manager.intro>` for more information).
 
 Programmatically, this is done as follows:
 
@@ -20,17 +20,19 @@ Programmatically, this is done as follows:
    :linenos:
 
    // $view is an instance of PhpRenderer
-   $broker = $view->getBroker();
-   $loader = $broker->getClassLoader();
+   $pluginManager = $view->getHelperPluginManager();
 
-   // Register singly:
-   $loader->registerPlugin('lowercase', 'My\Helper\LowerCase');
+   // Register as a invokable class:
+   $pluginManager->setInvokableClass('lowercase', 'MyModule\View\Helper\LowerCase');
 
-   // Register several:
-   $loader->registerPlugins(array(
-       'lowercase' => 'My\Helper\LowerCase',
-       'uppercase' => 'My\Helper\UpperCase',
-   ));
+   // Register as a factory:
+   $pluginManager->setFactory('lowercase', function ($pluginManager) {
+      $lowercaseHelper = new MyModule\View\Helper\LowerCase;
+
+      // ...do some configuration or dependency injection...
+
+      return $lowercaseHelper;
+   });
 
 Within an MVC application, you will typically simply pass a map of plugins to the class via your configuration.
 
@@ -41,15 +43,39 @@ Within an MVC application, you will typically simply pass a map of plugins to th
    return array(
       'view_helpers' => array(
          'invokables' => array(
-            'lowercase' => 'My\Helper\LowerCase',
-            'uppercase' => 'My\Helper\UpperCase',
+            'lowercase' => 'MyModule\View\Helper\LowerCase',
+            'uppercase' => 'MyModule\View\Helper\UpperCase',
          ),
       ),
    );
 
-The above can be done in each module that needs to register helpers with the ``PhpRenderer``; however, be aware
-that another module can register helpers with the same name, so order of modules can impact which helper class will
-actually be registered!
+If your module class implements ``Zend\ModuleManager\Feature\ViewHelperProviderInterface``, or just the method
+``getViewHelperConfig()``, you could do the following (it's the same as the previous example).
+
+.. code-block:: php
+   :linenos:
+
+   namespace MyModule;
+
+   class Module
+   {
+       public function getAutoloaderConfig(){ /*common code*/ }
+       public function getConfig(){ /*common code*/ }
+
+       public function getViewHelperConfig()
+       {
+           return array(
+              'invokables' => array(
+                 'lowercase' => 'MyModule\View\Helper\LowerCase',
+                 'uppercase' => 'MyModule\View\Helper\UpperCase',
+              ),
+           );
+      }
+   }
+
+The two latter examples can be done in each module that needs to register helpers with the ``PhpRenderer``;
+however, be aware that another module can register helpers with the same name, so order of modules can impact
+which helper class will actually be registered!
 
 .. _zend.view.helpers.custom:
 
@@ -57,20 +83,22 @@ Writing Custom Helpers
 ----------------------
 
 Writing custom helpers is easy. We recommend extending ``Zend\View\Helper\AbstractHelper``, but at the minimum, you
-need only implement the ``Zend\View\Helper`` interface:
+need only implement the ``Zend\View\Helper\HelperInterface`` interface:
 
 .. code-block:: php
    :linenos:
 
-   namespace Zend\View;
+   namespace Zend\View\Helper;
 
-   interface Helper
+   use Zend\View\Renderer\RendererInterface as Renderer;
+
+   interface HelperInterface
    {
        /**
         * Set the View object
         *
         * @param  Renderer $view
-        * @return Helper
+        * @return HelperInterface
         */
        public function setView(Renderer $view);
 
@@ -86,17 +114,17 @@ If you want your helper to be capable of being invoked as if it were a method ca
 should also implement an ``__invoke()`` method within your helper.
 
 As previously noted, we recommend extending ``Zend\View\Helper\AbstractHelper``, as it implements the methods
-defined in ``Helper``, giving you a headstart in your development.
+defined in ``HelperInterface``, giving you a headstart in your development.
 
 Once you have defined your helper class, make sure you can autoload it, and then :ref:`register it with the plugin
-broker <zend.view.helpers.register>`.
+manager <zend.view.helpers.register>`.
 
 Here is an example helper, which we're titling "SpecialPurpose"
 
 .. code-block:: php
    :linenos:
 
-   namespace My\View\Helper;
+   namespace MyModule\View\Helper;
 
    use Zend\View\Helper\AbstractHelper;
 
@@ -112,8 +140,8 @@ Here is an example helper, which we're titling "SpecialPurpose"
        }
    }
 
-Then assume that when we :ref:`register it with the plugin broker <zend.view.helpers.register>`, we map it to the
-string "specialpurpose".
+Then assume that we :ref:`register it with the plugin manager <zend.view.helpers.register>`, by the name
+"specialpurpose".
 
 Within a view script, you can call the ``SpecialPurpose`` helper as many times as you like; it will be instantiated
 once, and then it persists for the life of that ``PhpRenderer`` instance.
@@ -121,7 +149,7 @@ once, and then it persists for the life of that ``PhpRenderer`` instance.
 .. code-block:: php
    :linenos:
 
-   // remember, in a view script, $this refers to the Zend\View instance.
+   // remember, in a view script, $this refers to the Zend\View\Renderer\PhpRenderer instance.
    echo $this->specialPurpose();
    echo $this->specialPurpose();
    echo $this->specialPurpose();
@@ -143,7 +171,7 @@ to take advantage of the ``EscapeHtml`` helper:
 .. code-block:: php
    :linenos:
 
-   namespace My\View\Helper;
+   namespace MyModule\View\Helper;
 
    use Zend\View\Helper\AbstractHelper;
 
@@ -166,16 +194,17 @@ Registering Concrete Helpers
 ----------------------------
 
 Sometimes it is convenient to instantiate a view helper, and then register it with the renderer. This can be done
-by injecting it directly into the plugin broker.
+by injecting it directly into the plugin manager.
 
 .. code-block:: php
    :linenos:
 
    // $view is a PhpRenderer instance
 
-   $helper = new My_Helper_Foo();
+   $helper = new MyModule\View\Helper\LowerCase;
    // ...do some configuration or dependency injection...
 
-   $view->getBroker()->register('foo', $helper);
+   $view->getHelperPluginManager()->setService('lowercase', $helper);
 
-When registered, the plugin broker will inject the ``PhpRenderer`` instance into the helper.
+The plugin manager will validate the helper/plugin, and if the validation passes, the helper/plugin will be
+registered.
