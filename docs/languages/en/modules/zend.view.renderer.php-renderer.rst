@@ -3,9 +3,9 @@
 The PhpRenderer
 ===============
 
-``Zend\View\Renderer\PhpRenderer``"renders" view scripts written in PHP, capturing and returning the output. It
-composes Variable containers and/or View Models, a plugin broker for :ref:`helpers <zend.view.helpers>`, and
-optional filtering of the captured output.
+``Zend\View\Renderer\PhpRenderer`` "renders" view scripts written in PHP, capturing and returning the output. It
+composes Variable containers and/or View Models, a helper plugin manager for :ref:`helpers <zend.view.helpers>`,
+and optional filtering of the captured output.
 
 The ``PhpRenderer`` is template system agnostic; you may use *PHP* as your template language, or create instances
 of other template systems and manipulate them within your view script. Anything you can do with PHP is available to
@@ -190,10 +190,10 @@ Let's consider the following code from within an action method of a controller.
            $model = new ViewModel(array('books' => $data));
 
            // Optionally specify a template; if we don't, by default it will be
-           // auto-determined based on the controller name and this action. In
-           // this example, the template would resolve to "book/list", and thus
-           // the file "book/list.phtml"; the following overrides that to set
-           // the template to "booklist", and thus the file "booklist.phtml"
+           // auto-determined based on the module name, controller name and this action.
+           // In this example, the template would resolve to "bookstore/book/list",
+           // and thus the file "bookstore/book/list.phtml"; the following overrides
+           // that to set the template to "booklist", and thus the file "booklist.phtml"
            // (note the lack of directory preceding the filename).
            $model->setTemplate('booklist');
 
@@ -364,5 +364,4 @@ when interacting with the ``PhpRenderer``. However, there are a few additional m
 
    Add a template to the stack. When used, the next call to ``render()`` will loop through all template added using
    this method, rendering them one by one; the output of the last will be returned.
-
 
