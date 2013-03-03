@@ -25,7 +25,7 @@ Usage of the *JSON* helper is very straightforward:
 
 .. note::
 
-   **Keeping layouts and enabling encoding using Zend\Json\Expr**
+   **Keeping layouts and enabling encoding using Zend\\Json\\Expr**
 
    Each method in the *JSON* helper accepts a second, optional argument. This second argument can be a boolean flag
    to enable or disable layouts, or an array of options that will be passed to ``Zend\Json\Json::encode()`` and used
