@@ -1,6 +1,6 @@
 # CONTRIBUTING
 
-To contribute to the Zend Framework 2 documentation you can send us a 
+To contribute to the Zend Framework 2 documentation you can send us a
 [pull request](https://help.github.com/articles/using-pull-requests) using GitHub, that's it!
 
 If you are not familiar with github you can read the
@@ -65,7 +65,7 @@ To render the documentation in HTML format:
 The HTML documentation will be generated in `docs/_build/html`.
 
 By default, the `make html` command renders the documentation in English.
-To render in a different language you have to specify the LANG in the command line. 
+To render in a different language you have to specify the LANG in the command line.
 
 For instance, to render the documentation in Italian (`it`), execute the following command:
 
@@ -86,7 +86,7 @@ in your language directory if it exists with the same filemame in the same tree.
 copy the English file to your directory and start the translation. When the translation is completed, you have
 to add a revcheck tag like '.. EN-Revision: 1a526e4' at the top of the file. '1a526e4' are the 7 first characters
 of the English commit on which your translation is based. This helps the maintainer of the translation to know if
-it exists one ore multiples modifications of the English that need to be added to the translation.
+it exists one or multiples modifications of the English that need to be added to the translation.
 
 All revcheck tags have been initialized to 'none'. This indicates to all maintainers of translations that it needs
 at least one review of the file after the automatic migration from ZF1 (Docbook to reST). We will provide in a
@@ -97,6 +97,6 @@ In this philosophy, you can translate an image if you want. But there are 2 spec
 root of English directory that you musn't translate:
  - 'index.rst'
  - 'snippets.rst'
- 
+
 All sentences in these files that need a translation are handled by the reST substitution syntax. You can find them
 in the 'translated-snippets.rst' file.
