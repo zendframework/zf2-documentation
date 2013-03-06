@@ -1,15 +1,16 @@
 TODO
 ====
 
-The following is a list of documentation that needs work. Everyone is welcome to fork and edit the documentation, 
-but if you plan to seriously work on a component, please drop a note to the ZF contributors mailing list
-(http://framework.zend.com/archives/contributors) and/or
-[the #zftalk.dev IRC channel](irc://irc.freenode.net/zftalk.dev).
+The ZF2 documentation has its roots in the ZF1 documentation. Therefore, some sections are outdated, some are missing,
+and some are just plain wrong. The following is the list of documentation sections that need work.
+Everyone is welcome to fork and edit the documentation, but if you plan to seriously work on a component,
+please first drop a note to the ZF contributors mailing list (http://framework.zend.com/archives/contributors)
+and/or to the [#zftalk.dev IRC channel](irc://irc.freenode.net/zftalk.dev).
 
-Needs refactor from ZF1
------------------------
+Components that need refactoring
+--------------------------------
 
-The following documentation needs to be refactored from the ZF1 version.
+The following documentation sections need to be refactored from the ZF1 docs.
 Typically, this will mean updating class names to reference namespaced versions,
 and potentially updating code samples to reflect any API changes.
 
@@ -23,7 +24,7 @@ and potentially updating code samples to reflect any API changes.
 - ProgressBar (Lead: Ben Scholzen (DASPRiD))
 - Serializer (Lead: Marc Bennewitz (marc-mabe))
 
-New Components needing documentation
+New Components with no documentation
 ------------------------------------
 
 The following are new components in need of documentation. In some cases, the
@@ -37,7 +38,7 @@ components existed previously, but have been rewritten.
 Incomplete documentation
 ------------------------
 
-The following documentation is incomplete. Typically, a quickstart and/or
+The following documentation sections are incomplete. Typically, a quickstart and/or
 example section is present, but full documentation is missing.
 
 - Code (Lead: Ralph Schindler (ralphschindler))
@@ -58,7 +59,7 @@ example section is present, but full documentation is missing.
 Broken documentation
 --------------------
 
-The following documentation is complete, but is incorrect due to API changes
+The following documentation sections are complete, but incorrect, due to API changes
 that happened before release. You will likely need to contact somebody in IRC or
 on the mailing list to determine what needs to be fixed.
 
@@ -68,3 +69,4 @@ on the mailing list to determine what needs to be fixed.
 - ModuleManager (Lead: Evan Coury (EvanDotPro))
 - Mvc (Lead: Matthew Weier O'Phinney (weierophinney))
 - View (Lead: Matthew Weier O'Phinney (weierophinney))
+- Learning Dependency Injection
