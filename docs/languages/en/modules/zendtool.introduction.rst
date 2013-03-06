@@ -3,7 +3,7 @@
 Zend Framework Tool (ZFTool)
 ============================
 
-`ZFTool`_ is an utility module for maintaining modular Zend Framework 2 applications.
+`ZFTool`_ is a utility module for maintaining modular Zend Framework 2 applications.
 It runs from the command line and can be installed as ZF2 module or as PHAR (see below).
 This tool gives you the ability to:
 
