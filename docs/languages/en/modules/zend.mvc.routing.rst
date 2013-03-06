@@ -372,15 +372,15 @@ You may use any route type as a child route of a ``Part`` route.
 
         $routePlugins = new Zend\Mvc\Router\RoutePluginManager();
         $plugins = array(
-            'hostname' => 'Zend\Mvc\Http\Route\Hostname',
-            'literal' => 'Zend\Mvc\Http\Route\Literal',
-            'part' => 'Zend\Mvc\Http\Route\Part',
-            'regex' => 'Zend\Mvc\Http\Route\Regex',
-            'scheme' => 'Zend\Mvc\Http\Route\Scheme',
-            'segment' => 'Zend\Mvc\Http\Route\Segment',
-            'wildcard' => 'Zend\Mvc\Http\Route\Wildcard',
-            'query' => 'Zend\Mvc\Http\Route\Query',
-            'method' => 'Zend\Mvc\Http\Route\Method'
+            'hostname' => 'Zend\Mvc\Router\Http\Hostname',
+            'literal' => 'Zend\Mvc\Router\Http\Literal',
+            'part' => 'Zend\Mvc\Router\Http\Part',
+            'regex' => 'Zend\Mvc\Router\Http\Regex',
+            'scheme' => 'Zend\Mvc\Router\Http\Scheme',
+            'segment' => 'Zend\Mvc\Router\Http\Segment',
+            'wildcard' => 'Zend\Mvc\Router\Http\Wildcard',
+            'query' => 'Zend\Mvc\Router\Http\Query',
+            'method' => 'Zend\Mvc\Router\Http\Method'
         );
         $foreach ($plugins as $name => $class) {
             $routePlugins->setInvokableClass($name, $class);
