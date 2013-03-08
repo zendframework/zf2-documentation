@@ -540,18 +540,24 @@ event.
 
    namespace Content;
 
-   use Zend\Mvc\MvcEvent;
-
    class Module
    {
-       public function onBootstrap(MvcEvent $e)
+       /**
+        * @param  \Zend\Mvc\MvcEvent $e The MvcEvent instance
+        * @return void
+        */
+       public function onBootstrap($e)
        {
            // Register a dispatch event
            $app = $e->getParam('application');
            $app->getEventManager()->attach('dispatch', array($this, 'setLayout'));
        }
 
-       public function setLayout(MvcEvent $e)
+       /**
+        * @param  \Zend\Mvc\MvcEvent $e The MvcEvent instance
+        * @return void
+        */
+       public function setLayout($e)
        {
            $matches    = $e->getRouteMatch();
            $controller = $matches->getParam('controller');
@@ -602,11 +608,13 @@ priority to ensure they match before the ``PhpRendererStrategy``. As an example,
 
    namespace Application;
 
-   use Zend\Mvc\MvcEvent;
-
    class Module
    {
-       public function onBootstrap(MvcEvent $e)
+       /**
+        * @param  \Zend\Mvc\MvcEvent $e The MvcEvent instance
+        * @return void
+        */
+       public function onBootstrap($e)
        {
            // Register a "render" event, at high priority (so it executes prior
            // to the view attempting to render)
@@ -614,7 +622,11 @@ priority to ensure they match before the ``PhpRendererStrategy``. As an example,
            $app->getEventManager()->attach('render', array($this, 'registerJsonStrategy'), 100);
        }
 
-       public function registerJsonStrategy(MvcEvent $e)
+       /**
+        * @param  \Zend\Mvc\MvcEvent $e The MvcEvent instance
+        * @return void
+        */
+       public function registerJsonStrategy($e)
        {
            $app          = $e->getTarget();
            $locator      = $app->getServiceManager();
@@ -639,18 +651,24 @@ the layout for a specific module:
 
    namespace Content;
 
-   use Zend\Mvc\MvcEvent;
-
    class Module
    {
-       public function onBootstrap(MvcEvent $e)
+       /**
+        * @param  \Zend\Mvc\MvcEvent $e The MvcEvent instance
+        * @return void
+        */
+       public function onBootstrap($e)
        {
            // Register a render event
            $app = $e->getParam('application');
            $app->getEventManager()->attach('render', array($this, 'registerJsonStrategy'), 100);
        }
 
-       public function registerJsonStrategy(MvcEvent $e)
+       /**
+        * @param  \Zend\Mvc\MvcEvent $e The MvcEvent instance
+        * @return void
+        */
+       public function registerJsonStrategy($e)
        {
            $matches    = $e->getRouteMatch();
            $controller = $matches->getParam('controller');
@@ -691,7 +709,6 @@ through the HTTP Accept header, and selects the appropriate Renderer based on wh
    use Zend\View\Renderer\FeedRenderer;
    use Zend\View\Renderer\JsonRenderer;
    use Zend\View\Renderer\PhpRenderer;
-   use Zend\Mvc\MvcEvent;
 
    class AcceptStrategy implements ListenerAggregateInterface
    {
@@ -730,7 +747,11 @@ through the HTTP Accept header, and selects the appropriate Renderer based on wh
            }
        }
 
-       public function selectRenderer(MvcEvent $e)
+       /**
+        * @param  \Zend\Mvc\MvcEvent $e The MvcEvent instance
+        * @return \Zend\View\Renderer\RendererInterface
+        */
+       public function selectRenderer($e)
        {
            $request = $e->getRequest();
            $headers = $request->getHeaders();
@@ -760,7 +781,11 @@ through the HTTP Accept header, and selects the appropriate Renderer based on wh
            return $this->phpRenderer;
        }
 
-       public function injectResponse(MvcEvent $e)
+       /**
+        * @param  \Zend\Mvc\MvcEvent $e The MvcEvent instance
+        * @return void
+        */
+       public function injectResponse($e)
        {
            $renderer = $e->getRenderer();
            $response = $e->getResponse();
