@@ -13,7 +13,7 @@ this part:
 * Process the form submission and store to database
 
 We use ``Zend\Form`` to do this. The ``Zend\Form`` component manages the form
-and for validation, we add a ``Zend\InputFilter`` to our ``Album`` entity. We
+and, for validation, we add a ``Zend\InputFilter`` to our ``Album`` entity. We
 start by creating a new class ``Album\Form\AlbumForm`` that extends from
 ``Zend\Form\Form`` to define our form.
 Create a file called ``AlbumForm.php`` in ``module/Album/src/Album/Form``:
@@ -67,15 +67,15 @@ Create a file called ``AlbumForm.php`` in ``module/Album/src/Album/Form``:
         }
     }
 
-Within the constructor of ``AlbumForm``, we set the name when we call the parent’s
-constructor and then set the method and then create four form elements for the
-id, title, artist, and submit button. For each item we set various attributes
-and options, including the label to be displayed.
+Within the constructor of ``AlbumForm`` we do several things.  First, we set the name 
+of the form as we call the parent’s constructor.  We then set the form's method, in this case, ``post``.  
+Finally, we create four form elements: the id, title, artist, and submit button. For each item we set 
+various attributes and options, including the label to be displayed.
 
 We also need to set up validation for this form. In Zend Framework 2 this is
-done using an input filter which can either be standalone or within any class
-that implements ``InputFilterAwareInterface``, such as a model entity. We are
-going to add the input filter to our ``Album.php`` file in ``module/Album/src/Album/Model``:
+done using an input filter, which can either be standalone or defined within any class
+that implements the ``InputFilterAwareInterface`` interface, such as a model entity. In our case, we are
+going to add the input filter to the Album class, which resides in the ``Album.php`` file in ``module/Album/src/Album/Model``:
 
 .. code-block:: php
     :emphasize-lines: 5-8,15,23-86
@@ -176,7 +176,7 @@ Within ``getInputFilter()``, we instantiate an ``InputFilter`` and then add the
 inputs that we require. We add one input for each property that we wish to
 filter or validate. For the ``id`` field we add an ``Int`` filter as we only
 need integers. For the text elements, we add two filters, ``StripTags`` and
-``StringTrim`` to remove unwanted HTML and unnecessary white space. We also set
+``StringTrim``, to remove unwanted HTML and unnecessary white space. We also set
 them to be *required* and add a ``StringLength`` validator to ensure that the
 user doesn’t enter more characters than we can store into the database.
 
