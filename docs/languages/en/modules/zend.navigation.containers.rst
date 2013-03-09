@@ -509,7 +509,7 @@ one of the two former methods depending on the ``$all`` flag.
 
 The finder methods can also be used magically by appending the property name to ``findBy``, ``findOneBy``, or
 ``findAllBy``, e.g. ``findOneByLabel('Home')`` to return the first matching page with label 'Home'. Other
-combinations are ``findByLabel(...)``, ``findOnyByTitle(...)``, ``findAllByController(...)``, etc. Finder methods
+combinations are ``findByLabel(...)``, ``findOneByTitle(...)``, ``findAllByController(...)``, etc. Finder methods
 also work on custom properties, such as ``findByFoo('bar')``.
 
 .. _zend.navigation.containers.finding.example:
