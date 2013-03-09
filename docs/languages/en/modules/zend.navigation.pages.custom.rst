@@ -50,7 +50,7 @@ When adding properties to an extended page, there is no need to override/modify 
 
        public function getFoo()
        {
-           return $this->oo;
+           return $this->foo;
        }
 
        public function setFooBar($fooBar)
