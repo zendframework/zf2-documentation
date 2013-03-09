@@ -199,7 +199,7 @@ mais nous ne définissons que les modules requis pour ce test.
 Votre premier test de contrôleur
 --------------------------
 
-Esuite, créez ``IndexControllerTest.php`` sous
+Ensuite, créez ``IndexControllerTest.php`` sous
 ``zf-tutorial/module/Application/test/ApplicationTest/Controller`` avec le
 contenu suivant :
 
