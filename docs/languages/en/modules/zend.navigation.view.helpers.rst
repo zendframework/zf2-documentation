@@ -328,36 +328,77 @@ In addition to the container above, the following setup is assumed:
 .. code-block:: php
    :linenos:
 
-   // Setup router (default routes and 'archive' route):
-   $front = Zend\Controller\Front::getInstance();
-   $router = $front->getRouter();
-   $router->addDefaultRoutes();
-   $router->addRoute(
-       'archive',
-       new Zend\Controller\Router\Route(
-           '/archive/:year',
-           array(
-               'module'     => 'company',
-               'controller' => 'news',
-               'action'     => 'archive',
-               'year'       => (int) date('Y') - 1
+   <?php
+   // module/MyModule/config/module.config.php
+
+   return array(
+       /* ... */
+       'router' array(
+           'routes' => array(
+               'archive' => array(
+                   'type'    => 'Segment',
+                   'options' => array(
+                       'route'    => '/archive/:year',
+                       'defaults' => array(
+                           'module'     => 'company',
+                           'controller' => 'news',
+                           'action'     => 'archive',
+                           'year'       => (int) date('Y') - 1,
+                       ),
+                       'constraints' => array(
+                           'year' => '\d+',
+                       ),
+                   ),
+               ),
+               /* You can have other routes here... */
            ),
-           array('year' => '\d+')
-       )
+       ),
+       /* ... */
    );
 
-   // Setup ACL:
-   $acl = new Zend\Permissions\Acl\Acl();
-   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('member'));
-   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('admin'));
-   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('mvc:admin'));
-   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('mvc:community.account'));
-   $acl->allow('member', 'mvc:community.account');
-   $acl->allow('admin', null);
+.. code-block:: php
+   :linenos:
 
-   // Store ACL and role in the proxy helper:
-   $view->navigation()->setAcl($acl)->setRole('member');
+   <?php
+   // module/MyModule/Module.php
 
-   // ...or set default ACL and role statically:
-   Zend\View\Helper\Navigation\HelperAbstract::setDefaultAcl($acl);
-   Zend\View\Helper\Navigation\HelperAbstract::setDefaultRole('member');
+   namespace MyModule;
+
+   use Zend\View\HelperPluginManager;
+   use Zend\Permissions\Acl\Acl;
+   use Zend\Permissions\Acl\Role\GenericRole;
+   use Zend\Permissions\Acl\Resource\GenericResource;
+
+   class Module
+   {
+       /* ... */
+       public function getViewHelperConfig()
+       {
+           return array(
+               'factories' => array(
+                   // This will overwrite the native navigation helper
+                   'navigation' => function(HelperPluginManager $pm) {
+                       // Setup ACL:
+                       $acl = new Acl();
+                       $acl->addRole(new GenericRole('member'));
+                       $acl->addRole(new GenericRole('admin'));
+                       $acl->addResource(new GenericResource('mvc:admin'));
+                       $acl->addResource(new GenericResource('mvc:community.account'));
+                       $acl->allow('member', 'mvc:community.account');
+                       $acl->allow('admin', null);
+
+                       // Get an instance of the proxy helper
+                       $navigation = $pm->get('Zend\View\Helper\Navigation');
+
+                       // Store ACL and role in the proxy helper:
+                       $navigation->setAcl($acl)
+                                  ->setRole('member');
+
+                       // Return the new navigation helper instance
+                       return $navigation;
+                   }
+               )
+           );
+       }
+       /* ... */
+   }
