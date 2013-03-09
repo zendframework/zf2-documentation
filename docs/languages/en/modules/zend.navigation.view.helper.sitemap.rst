@@ -4,7 +4,7 @@ View Helper - Sitemap
 =====================
 
 The Sitemap helper is used for generating *XML* sitemaps, as defined by the `Sitemaps XML format`_. Read more about
-`Sitemaps on Wikpedia`_.
+`Sitemaps on Wikipedia`_.
 
 By default, the sitemap helper uses :ref:`sitemap validators <zend.validator.sitemap>` to validate each element
 that is rendered. This can be disabled by calling *$helper->setUseSitemapValidators(false)*.
@@ -266,6 +266,6 @@ Render the sitemap using a maximum depth of 1.
    in your custom view implementation.
 
 .. _`Sitemaps XML format`: http://www.sitemaps.org/protocol.php
-.. _`Sitemaps on Wikpedia`: http://en.wikipedia.org/wiki/Sitemaps
+.. _`Sitemaps on Wikipedia`: http://en.wikipedia.org/wiki/Sitemaps
 .. _`Sitemap XSD Schema`: http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
 .. _`PHP: DOMDocument - Manual`: http://php.net/domdocument
