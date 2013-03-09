@@ -663,7 +663,7 @@ Other operations
 
 The method ``hasPage(Zend\Navigation\Page\AbstractPage $page)`` checks if the container has the given page. The
 method ``hasPages()`` checks if there are any pages in the container, and is equivalent to
-``count($container) > 1``.
+``count($container) > 0``.
 
 The ``toArray()`` method converts the container and the pages in it to an array. This can be useful for serializing
 and debugging.
