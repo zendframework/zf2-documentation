@@ -32,7 +32,7 @@ Permissions
 -----------
 
 Each role can have zero or more permissions and can be set directly to the role or by first retrieving the role from
-the RBAC container. Any child role will inherit the permissions of their parent.
+the RBAC container. Any parent role will inherit the permissions of their children.
 
 Dynamic Assertions
 ------------------
