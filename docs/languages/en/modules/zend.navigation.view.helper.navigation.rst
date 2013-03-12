@@ -9,7 +9,7 @@ entry point to all navigation-related view tasks. The aforementioned navigationa
 helper path to the view. With the proxy helper residing in the ``Zend\View\Helper`` namespace, it will always be
 available, without the need to add any helper paths to the view.
 
-The Navigation helper finds other helpers that implement the ``Zend\View\Helper\Navigation\Helper`` interface,
+The Navigation helper finds other helpers that implement the ``Zend\View\Helper\Navigation\HelperInterface``,
 which means custom view helpers can also be proxied. This would, however, require that the custom helper path is
 added to the view.
 

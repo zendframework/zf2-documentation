@@ -73,7 +73,7 @@ See the :ref:`example below <zend.navigation.view.helper.links.example3>` for mo
 
 - ``Zend\View\Helper\Navigation\Links::RENDER_NEXT``
 
-- ``Zend\View\Helper\Navigation\Links:::RENDER_PREV``
+- ``Zend\View\Helper\Navigation\Links::RENDER_PREV``
 
 - ``Zend\View\Helper\Navigation\Links::RENDER_CONTENTS``
 
@@ -81,7 +81,7 @@ See the :ref:`example below <zend.navigation.view.helper.links.example3>` for mo
 
 - ``Zend\View\Helper\Navigation\Links::RENDER_GLOSSARY``
 
-- ``Zend\View\Helper\Navigation\Links:::RENDER_COPYRIGHT``
+- ``Zend\View\Helper\Navigation\Links::RENDER_COPYRIGHT``
 
 - ``Zend\View\Helper\Navigation\Links::RENDER_CHAPTER``
 
@@ -149,7 +149,7 @@ This example shows how to specify relations in pages.
        array(
            'label' => 'Relations using configs',
            'rel'   => array(
-               'alternate' => new Zend\Config(array(
+               'alternate' => new Zend\Config\Config(array(
                    'label' => 'Example.org',
                    'uri'   => 'http://www.example.org/'
                ))

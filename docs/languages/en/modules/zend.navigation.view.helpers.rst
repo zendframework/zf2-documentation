@@ -3,7 +3,7 @@
 View Helpers
 ============
 
-The navigation helpers are used for rendering navigational elements from :ref:`Zend\Navigation\Container
+The navigation helpers are used for rendering navigational elements from :ref:`Zend\\Navigation\\Navigation
 <zend.navigation.containers>` instances.
 
 There are 5 built-in helpers:
@@ -22,9 +22,9 @@ There are 5 built-in helpers:
 - :ref:`Navigation <zend.navigation.view.helper.navigation>`, used for proxying calls to other
   navigational helpers.
 
-All built-in helpers extend ``Zend\View\Helper\Navigation\HelperAbstract``, which adds integration with :ref:`ACL
+All built-in helpers extend ``Zend\View\Helper\Navigation\AbstractHelper``, which adds integration with :ref:`ACL
 <zend.permissions.acl>` and :ref:`translation <zend.i18n.translating>`. The abstract class implements the interface
-``Zend\View\Helper\Navigation\Helper``, which defines the following methods:
+``Zend\View\Helper\Navigation\HelperInterface``, which defines the following methods:
 
 - ``getContainer()`` and ``setContainer()`` gets and sets the navigation container the helper should operate on by
   default, and ``hasContainer()`` checks if the helper has container registered.
@@ -33,10 +33,11 @@ All built-in helpers extend ``Zend\View\Helper\Navigation\HelperAbstract``, whic
   ``getUseTranslator()`` and ``setUseTranslator()`` controls whether the translator should be enabled. The method
   ``hasTranslator()`` checks if the helper has a translator registered.
 
-- ``getAcl()``, ``setAcl()``, ``getRole()`` and ``setRole()``, gets and sets *ACL* (``Zend\Permissions\Acl``) instance and role
-  (``String`` or ``Zend\Permissions\Acl\Role\RoleInterface``) used for filtering out pages when rendering. ``getUseAcl()`` and
-  ``setUseAcl()`` controls whether *ACL* should be enabled. The methods ``hasAcl()`` and ``hasRole()`` checks if
-  the helper has an *ACL* instance or a role registered.
+- ``getAcl()``, ``setAcl()``, ``getRole()`` and ``setRole()``, gets and sets *ACL*
+  (``Zend\Permissions\Acl\AclInterface``) instance and role
+  (``String`` or ``Zend\Permissions\Acl\Role\RoleInterface``) used for filtering out pages when rendering.
+  ``getUseAcl()`` and ``setUseAcl()`` controls whether *ACL* should be enabled. The methods ``hasAcl()`` and
+  ``hasRole()`` checks if the helper has an *ACL* instance or a role registered.
 
 - ``__toString()``, magic method to ensure that helpers can be rendered by echoing the helper instance directly.
 
@@ -76,7 +77,7 @@ In addition to the method stubs from the interface, the abstract class also impl
 
 - The static method ``setDefaultRole()`` is used for setting a default *ACL* that will be used by helpers
 
-If a container is not explicitly set, the helper will create an empty ``Zend\Navigation``
+If a container is not explicitly set, the helper will create an empty ``Zend\Navigation\Navigation``
 container when calling ``$helper->getContainer()``.
 
 .. _zend.navigation.view.helpers.proxy.example:
@@ -119,10 +120,11 @@ Integration with ACL
 --------------------
 
 All navigational view helpers support *ACL* inherently from the class
-``Zend\View\Helper\Navigation\HelperAbstract``. A ``Zend\Permissions\Acl`` object can be assigned to a helper instance with
-*$helper->setAcl($acl)*, and role with *$helper->setRole('member')* or *$helper->setRole(new
-Zend\Permissions\Acl\Role\GenericRole('member'))*. If *ACL* is used in the helper, the role in the helper must be allowed by the *ACL* to
-access a page's *resource* and/or have the page's *privilege* for the page to be included when rendering.
+``Zend\View\Helper\Navigation\AbstractHelper``. An object implementing ``Zend\Permissions\Acl\AclInterface`` can be
+assigned to a helper instance with *$helper->setAcl($acl)*, and role with *$helper->setRole('member')* or
+*$helper->setRole(new Zend\\Permissions\\Acl\\Role\\GenericRole('member'))*. If *ACL* is used in the helper, the
+role in the helper must be allowed by the *ACL* to access a page's *resource* and/or have the page's *privilege*
+for the page to be included when rendering.
 
 If a page is not accepted by *ACL*, any descendant page will also be excluded from rendering.
 
@@ -316,7 +318,7 @@ Notes on the setup:
    $container = new Zend\Navigation\Navigation($pages);
 
    // Store the container in the proxy helper:
-   $view->getHelper('navigation')->setContainer($container);
+   $view->plugin('navigation')->setContainer($container);
 
    // ...or simply:
    $view->navigation($container);
@@ -326,36 +328,77 @@ In addition to the container above, the following setup is assumed:
 .. code-block:: php
    :linenos:
 
-   // Setup router (default routes and 'archive' route):
-   $front = Zend\Controller\Front::getInstance();
-   $router = $front->getRouter();
-   $router->addDefaultRoutes();
-   $router->addRoute(
-       'archive',
-       new Zend\Controller\Router\Route(
-           '/archive/:year',
-           array(
-               'module'     => 'company',
-               'controller' => 'news',
-               'action'     => 'archive',
-               'year'       => (int) date('Y') - 1
+   <?php
+   // module/MyModule/config/module.config.php
+
+   return array(
+       /* ... */
+       'router' array(
+           'routes' => array(
+               'archive' => array(
+                   'type'    => 'Segment',
+                   'options' => array(
+                       'route'    => '/archive/:year',
+                       'defaults' => array(
+                           'module'     => 'company',
+                           'controller' => 'news',
+                           'action'     => 'archive',
+                           'year'       => (int) date('Y') - 1,
+                       ),
+                       'constraints' => array(
+                           'year' => '\d+',
+                       ),
+                   ),
+               ),
+               /* You can have other routes here... */
            ),
-           array('year' => '\d+')
-       )
+       ),
+       /* ... */
    );
 
-   // Setup ACL:
-   $acl = new Zend\Permissions\Acl\Acl();
-   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('member'));
-   $acl->addRole(new Zend\Permissions\Acl\Role\GenericRole('admin'));
-   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('mvc:admin'));
-   $acl->add(new Zend\Permissions\Acl\Resource\GenericResource('mvc:community.account'));
-   $acl->allow('member', 'mvc:community.account');
-   $acl->allow('admin', null);
+.. code-block:: php
+   :linenos:
 
-   // Store ACL and role in the proxy helper:
-   $view->navigation()->setAcl($acl)->setRole('member');
+   <?php
+   // module/MyModule/Module.php
 
-   // ...or set default ACL and role statically:
-   Zend\View\Helper\Navigation\HelperAbstract::setDefaultAcl($acl);
-   Zend\View\Helper\Navigation\HelperAbstract::setDefaultRole('member');
+   namespace MyModule;
+
+   use Zend\View\HelperPluginManager;
+   use Zend\Permissions\Acl\Acl;
+   use Zend\Permissions\Acl\Role\GenericRole;
+   use Zend\Permissions\Acl\Resource\GenericResource;
+
+   class Module
+   {
+       /* ... */
+       public function getViewHelperConfig()
+       {
+           return array(
+               'factories' => array(
+                   // This will overwrite the native navigation helper
+                   'navigation' => function(HelperPluginManager $pm) {
+                       // Setup ACL:
+                       $acl = new Acl();
+                       $acl->addRole(new GenericRole('member'));
+                       $acl->addRole(new GenericRole('admin'));
+                       $acl->addResource(new GenericResource('mvc:admin'));
+                       $acl->addResource(new GenericResource('mvc:community.account'));
+                       $acl->allow('member', 'mvc:community.account');
+                       $acl->allow('admin', null);
+
+                       // Get an instance of the proxy helper
+                       $navigation = $pm->get('Zend\View\Helper\Navigation');
+
+                       // Store ACL and role in the proxy helper:
+                       $navigation->setAcl($acl)
+                                  ->setRole('member');
+
+                       // Return the new navigation helper instance
+                       return $navigation;
+                   }
+               )
+           );
+       }
+       /* ... */
+   }

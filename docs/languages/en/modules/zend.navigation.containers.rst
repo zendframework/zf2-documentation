@@ -12,13 +12,13 @@ interfaces ``RecursiveIterator`` and ``Countable``, meaning that a container can
 Creating containers
 -------------------
 
-``Zend\Navigation\Container`` is abstract, and can not be instantiated directly. Use ``Zend\Navigation`` if you
+``Zend\Navigation\AbstractContainer`` can not be instantiated directly. Use ``Zend\Navigation\Navigation`` if you
 want to instantiate a container.
 
-``Zend\Navigation`` can be constructed entirely empty, or take an array or a ``Zend\Config`` object with pages to
-put in the container. Each page in the given array/config will eventually be passed to the ``addPage()`` method of
-the container class, which means that each element in the array/config can be an array or a config object, or a
-``Zend\Navigation\Page\AbstractPage`` instance.
+``Zend\Navigation\Navigation`` can be constructed entirely empty, or take an array or a ``Zend\Config\Config``
+object with pages to put in the container. Each page in the given array/config will eventually be passed to the
+``addPage()`` method of the container class, which means that each element in the array/config can be an array, a
+config object or a ``Zend\Navigation\Page\AbstractPage`` instance.
 
 .. _zend.navigation.containers.creating.example.array:
 
@@ -203,192 +203,191 @@ the container class, which means that each element in the array/config can be an
 
    /* CONTENTS OF /path/to/navigation.xml:
    <?xml version="1.0" encoding="UTF-8"?>
-   <config>
-       <nav>
+   <nav>
 
-           <zend>
-               <label>Zend</label>
-               <uri>http://www.zend-project.com/</uri>
-               <order>100</order>
-           </zend>
+     <zend>
+         <label>Zend</label>
+         <uri>http://www.zend-project.com/</uri>
+         <order>100</order>
+     </zend>
 
-           <page1>
-               <label>Page 1</label>
-               <uri>page1</uri>
-               <pages>
+     <page1>
+         <label>Page 1</label>
+         <uri>page1</uri>
+         <pages>
 
-                   <page1_1>
-                       <label>Page 1.1</label>
-                       <uri>page1/page1_1</uri>
-                   </page1_1>
+             <page1_1>
+                 <label>Page 1.1</label>
+                 <uri>page1/page1_1</uri>
+             </page1_1>
 
-               </pages>
-           </page1>
+         </pages>
+     </page1>
 
-           <page2>
-               <label>Page 2</label>
-               <uri>page2</uri>
-               <pages>
+     <page2>
+         <label>Page 2</label>
+         <uri>page2</uri>
+         <pages>
 
-                   <page2_1>
-                       <label>Page 2.1</label>
-                       <uri>page2/page2_1</uri>
-                   </page2_1>
+             <page2_1>
+                 <label>Page 2.1</label>
+                 <uri>page2/page2_1</uri>
+             </page2_1>
 
-                   <page2_2>
-                       <label>Page 2.2</label>
-                       <uri>page2/page2_2</uri>
-                       <pages>
+             <page2_2>
+                 <label>Page 2.2</label>
+                 <uri>page2/page2_2</uri>
+                 <pages>
 
-                           <page2_2_1>
-                               <label>Page 2.2.1</label>
-                               <uri>page2/page2_2/page2_2_1</uri>
-                           </page2_2_1>
+                     <page2_2_1>
+                         <label>Page 2.2.1</label>
+                         <uri>page2/page2_2/page2_2_1</uri>
+                     </page2_2_1>
 
-                           <page2_2_2>
-                               <label>Page 2.2.2</label>
-                               <uri>page2/page2_2/page2_2_2</uri>
-                               <active>1</active>
-                           </page2_2_2>
+                     <page2_2_2>
+                         <label>Page 2.2.2</label>
+                         <uri>page2/page2_2/page2_2_2</uri>
+                         <active>1</active>
+                     </page2_2_2>
 
-                       </pages>
-                   </page2_2>
+                 </pages>
+             </page2_2>
 
-                   <page2_3>
-                       <label>Page 2.3</label>
-                       <uri>page2/page2_3</uri>
-                       <pages>
+             <page2_3>
+                 <label>Page 2.3</label>
+                 <uri>page2/page2_3</uri>
+                 <pages>
 
-                           <page2_3_1>
-                               <label>Page 2.3.1</label>
-                               <uri>page2/page2_3/page2_3_1</uri>
-                           </page2_3_1>
+                     <page2_3_1>
+                         <label>Page 2.3.1</label>
+                         <uri>page2/page2_3/page2_3_1</uri>
+                     </page2_3_1>
 
-                           <page2_3_2>
-                               <label>Page 2.3.2</label>
-                               <uri>page2/page2_3/page2_3_2</uri>
-                               <visible>0</visible>
-                               <pages>
+                     <page2_3_2>
+                         <label>Page 2.3.2</label>
+                         <uri>page2/page2_3/page2_3_2</uri>
+                         <visible>0</visible>
+                         <pages>
 
-                                       <page2_3_2_1>
-                                           <label>Page 2.3.2.1</label>
-                                           <uri>page2/page2_3/page2_3_2/1</uri>
-                                           <active>1</active>
-                                       </page2_3_2_1>
+                                 <page2_3_2_1>
+                                     <label>Page 2.3.2.1</label>
+                                     <uri>page2/page2_3/page2_3_2/1</uri>
+                                     <active>1</active>
+                                 </page2_3_2_1>
 
-                                       <page2_3_2_2>
-                                           <label>Page 2.3.2.2</label>
-                                           <uri>page2/page2_3/page2_3_2/2</uri>
-                                           <active>1</active>
+                                 <page2_3_2_2>
+                                     <label>Page 2.3.2.2</label>
+                                     <uri>page2/page2_3/page2_3_2/2</uri>
+                                     <active>1</active>
 
-                                           <pages>
-                                               <page_2_3_2_2_1>
-                                                   <label>Ignore</label>
-                                                   <uri>#</uri>
-                                                   <active>1</active>
-                                               </page_2_3_2_2_1>
-                                           </pages>
-                                       </page2_3_2_2>
+                                     <pages>
+                                         <page_2_3_2_2_1>
+                                             <label>Ignore</label>
+                                             <uri>#</uri>
+                                             <active>1</active>
+                                         </page_2_3_2_2_1>
+                                     </pages>
+                                 </page2_3_2_2>
 
-                               </pages>
-                           </page2_3_2>
+                         </pages>
+                     </page2_3_2>
 
-                           <page2_3_3>
-                               <label>Page 2.3.3</label>
-                               <uri>page2/page2_3/page2_3_3</uri>
-                               <resource>admin</resource>
-                               <pages>
+                     <page2_3_3>
+                         <label>Page 2.3.3</label>
+                         <uri>page2/page2_3/page2_3_3</uri>
+                         <resource>admin</resource>
+                         <pages>
 
-                                       <page2_3_3_1>
-                                           <label>Page 2.3.3.1</label>
-                                           <uri>page2/page2_3/page2_3_3/1</uri>
-                                           <active>1</active>
-                                       </page2_3_3_1>
+                                 <page2_3_3_1>
+                                     <label>Page 2.3.3.1</label>
+                                     <uri>page2/page2_3/page2_3_3/1</uri>
+                                     <active>1</active>
+                                 </page2_3_3_1>
 
-                                       <page2_3_3_2>
-                                           <label>Page 2.3.3.2</label>
-                                           <uri>page2/page2_3/page2_3_3/2</uri>
-                                           <resource>guest</resource>
-                                           <active>1</active>
-                                       </page2_3_3_2>
+                                 <page2_3_3_2>
+                                     <label>Page 2.3.3.2</label>
+                                     <uri>page2/page2_3/page2_3_3/2</uri>
+                                     <resource>guest</resource>
+                                     <active>1</active>
+                                 </page2_3_3_2>
 
-                               </pages>
-                           </page2_3_3>
+                         </pages>
+                     </page2_3_3>
 
-                       </pages>
-                   </page2_3>
+                 </pages>
+             </page2_3>
 
-               </pages>
-           </page2>
+         </pages>
+     </page2>
 
-           <page3>
-               <label>Page 3</label>
-               <uri>page3</uri>
-               <pages>
+     <page3>
+         <label>Page 3</label>
+         <uri>page3</uri>
+         <pages>
 
-                   <page3_1>
-                       <label>Page 3.1</label>
-                       <uri>page3/page3_1</uri>
-                       <resource>guest</resource>
-                   </page3_1>
+             <page3_1>
+                 <label>Page 3.1</label>
+                 <uri>page3/page3_1</uri>
+                 <resource>guest</resource>
+             </page3_1>
 
-                   <page3_2>
-                       <label>Page 3.2</label>
-                       <uri>page3/page3_2</uri>
-                       <resource>member</resource>
-                       <pages>
+             <page3_2>
+                 <label>Page 3.2</label>
+                 <uri>page3/page3_2</uri>
+                 <resource>member</resource>
+                 <pages>
 
-                           <page3_2_1>
-                               <label>Page 3.2.1</label>
-                               <uri>page3/page3_2/page3_2_1</uri>
-                           </page3_2_1>
+                     <page3_2_1>
+                         <label>Page 3.2.1</label>
+                         <uri>page3/page3_2/page3_2_1</uri>
+                     </page3_2_1>
 
-                           <page3_2_2>
-                               <label>Page 3.2.2</label>
-                               <uri>page3/page3_2/page3_2_2</uri>
-                               <resource>admin</resource>
-                           </page3_2_2>
+                     <page3_2_2>
+                         <label>Page 3.2.2</label>
+                         <uri>page3/page3_2/page3_2_2</uri>
+                         <resource>admin</resource>
+                     </page3_2_2>
 
-                       </pages>
-                   </page3_2>
+                 </pages>
+             </page3_2>
 
-                   <page3_3>
-                       <label>Page 3.3</label>
-                       <uri>page3/page3_3</uri>
-                       <resource>special</resource>
-                       <pages>
+             <page3_3>
+                 <label>Page 3.3</label>
+                 <uri>page3/page3_3</uri>
+                 <resource>special</resource>
+                 <pages>
 
-                           <page3_3_1>
-                               <label>Page 3.3.1</label>
-                               <uri>page3/page3_3/page3_3_1</uri>
-                               <visible>0</visible>
-                           </page3_3_1>
+                     <page3_3_1>
+                         <label>Page 3.3.1</label>
+                         <uri>page3/page3_3/page3_3_1</uri>
+                         <visible>0</visible>
+                     </page3_3_1>
 
-                           <page3_3_2>
-                               <label>Page 3.3.2</label>
-                               <uri>page3/page3_3/page3_3_2</uri>
-                               <resource>admin</resource>
-                           </page3_3_2>
+                     <page3_3_2>
+                         <label>Page 3.3.2</label>
+                         <uri>page3/page3_3/page3_3_2</uri>
+                         <resource>admin</resource>
+                     </page3_3_2>
 
-                       </pages>
-                   </page3_3>
+                 </pages>
+             </page3_3>
 
-               </pages>
-           </page3>
+         </pages>
+     </page3>
 
-           <home>
-               <label>Home</label>
-               <order>-100</order>
-               <module>default</module>
-               <controller>index</controller>
-               <action>index</action>
-           </home>
+     <home>
+         <label>Home</label>
+         <order>-100</order>
+         <module>default</module>
+         <controller>index</controller>
+         <action>index</action>
+     </home>
 
-       </nav>
-   </config>
+   </nav>
     */
 
-   $config = new Zend\Config\Xml('/path/to/navigation.xml', 'nav');
+   $reader = new Zend\Config\Reader\Xml();
+   $config = $reader->fromFile('/path/to/navigation.xml');
    $container = new Zend\Navigation\Navigation($config);
 
 .. _zend.navigation.containers.adding:
@@ -427,7 +426,7 @@ examples below for explanation.
 
    // add page by giving a config object
    $container->addPage(
-       new Zend\Config(
+       new Zend\Config\Config(
            array(
                'uri' => 'http://www.example.com/',
            )
@@ -510,7 +509,7 @@ one of the two former methods depending on the ``$all`` flag.
 
 The finder methods can also be used magically by appending the property name to ``findBy``, ``findOneBy``, or
 ``findAllBy``, e.g. ``findOneByLabel('Home')`` to return the first matching page with label 'Home'. Other
-combinations are ``findByLabel(...)``, ``findOnyByTitle(...)``, ``findAllByController(...)``, etc. Finder methods
+combinations are ``findByLabel(...)``, ``findOneByTitle(...)``, ``findAllByController(...)``, etc. Finder methods
 also work on custom properties, such as ``findByFoo('bar')``.
 
 .. _zend.navigation.containers.finding.example:
@@ -604,7 +603,7 @@ also work on custom properties, such as ``findByFoo('bar')``.
 Iterating containers
 --------------------
 
-``Zend\Navigation\Container`` implements ``RecursiveIteratorIterator``, and can be iterated using any ``Iterator``
+``Zend\Navigation\AbstractContainer`` implements ``RecursiveIterator``, and can be iterated using any ``Iterator``
 class. To iterate a container recursively, use the ``RecursiveIteratorIterator`` class.
 
 .. _zend.navigation.containers.iterating.example:
@@ -664,7 +663,7 @@ Other operations
 
 The method ``hasPage(Zend\Navigation\Page\AbstractPage $page)`` checks if the container has the given page. The
 method ``hasPages()`` checks if there are any pages in the container, and is equivalent to
-``count($container) > 1``.
+``count($container) > 0``.
 
 The ``toArray()`` method converts the container and the pages in it to an array. This can be useful for serializing
 and debugging.
