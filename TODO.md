@@ -7,6 +7,10 @@ Everyone is welcome to fork and edit the documentation, but if you plan to serio
 please first drop a note to the ZF contributors mailing list (http://framework.zend.com/archives/contributors)
 and/or to the [#zftalk.dev IRC channel](irc://irc.freenode.net/zftalk.dev).
 
+Alternatively, some issues are reported to the
+[documentation issue tracker](https://github.com/zendframework/zf2-documentation/pull/714/files), if you're looking
+for issues to fix, you can pick an issue there as well.
+
 Components that need refactoring
 --------------------------------
 
