@@ -18,8 +18,9 @@ your status, reply to friends, direct message friends, mark tweets as favorites,
 ``ZendService\Twitter`` is broken up into subsections so you can easily identify which type of call is being
 requested.
 
-- *account* allows you to check that your account credentials are valid, as well
-  as check your API rate limits.
+- *account* allows you to check that your account credentials are valid
+
+- *application* allows you to check your API rate limits.
 
 - *blocks* blocks and unblocks users from following you.
 
@@ -161,10 +162,16 @@ Account Methods
      $twitter  = new ZendService\Twitter\Twitter($options);
      $response = $twitter->account->verifyCredentials();
 
+
+.. _zendservice.twitter.application:
+
+Application Methods
+-------------------
+
 - ``rateLimitStatus()`` returns the remaining number of *API* requests available to the authenticating user before
   the *API* limit is reached for the current hour.
 
-  .. _zendservice.twitter.account.ratelimitstatus:
+  .. _zendservice.twitter.application.ratelimitstatus:
 
   .. rubric:: Rating limit status
 
@@ -172,7 +179,7 @@ Account Methods
      :linenos:
 
      $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->account->rateLimitStatus();
+     $response = $twitter->application->rateLimitStatus();
      $userTimelineLimit = $response->resources->statuses->{'/statuses/user_timeline'}->remaining;
 
 .. _zendservice.twitter.blocks:
