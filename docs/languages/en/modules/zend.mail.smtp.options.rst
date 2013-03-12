@@ -44,7 +44,7 @@ Quick Start
    use Zend\Mail\Transport\Smtp as SmtpTransport;
    use Zend\Mail\Transport\SmtpOptions;
 
-   // Setup SMTP transport using LOGIN authentication
+   // Setup SMTP transport using PLAIN authentication
    $transport = new SmtpTransport();
    $options   = new SmtpOptions(array(
        'name'              => 'localhost.localdomain',
@@ -90,7 +90,7 @@ Quick Start
    use Zend\Mail\Transport\Smtp as SmtpTransport;
    use Zend\Mail\Transport\SmtpOptions;
 
-   // Setup SMTP transport using LOGIN authentication
+   // Setup SMTP transport using CRAM-MD5 authentication
    $transport = new SmtpTransport();
    $options   = new SmtpOptions(array(
        'name'              => 'localhost.localdomain',
@@ -105,7 +105,7 @@ Quick Start
 
 .. _zend.mail.smtp-options.quick-start.plain-smtp-with-ssl-usage:
 
-.. rubric:: SMTP Transport Usage with PLAIN AUTH
+.. rubric:: SMTP Transport Usage with PLAIN AUTH over TLS
 
 .. code-block:: php
    :linenos:
@@ -113,7 +113,7 @@ Quick Start
    use Zend\Mail\Transport\Smtp as SmtpTransport;
    use Zend\Mail\Transport\SmtpOptions;
 
-   // Setup SMTP transport using LOGIN authentication
+   // Setup SMTP transport using PLAIN authentication over TLS
    $transport = new SmtpTransport();
    $options   = new SmtpOptions(array(
        'name'              => 'example.com',
