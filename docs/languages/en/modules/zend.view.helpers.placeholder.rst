@@ -33,7 +33,7 @@ Aggregating content via placeholders can be useful at times as well. For instanc
 variable array from which you wish to retrieve messages to display later; a later view script can then determine
 how those will be rendered.
 
-The ``Placeholder`` view helper uses containers that extend ``ArrayObject``, providing a rich featureset for
+The ``Placeholder`` view helper uses containers that extend ``ArrayObject``, providing a rich feature set for
 manipulating arrays. In addition, it offers a variety of methods for formatting the content stored in the
 container:
 
@@ -162,5 +162,3 @@ Documentation for each element is covered separately, as linked below:
 - :ref:`HeadTitle <zend.view.helpers.initial.headtitle>`
 
 - :ref:`InlineScript <zend.view.helpers.initial.inlinescript>`
-
-
