@@ -37,7 +37,7 @@ La structure du répertoire ``test`` correspond exactement à celle des fichiers
 sources du module, et cela va nous permettre d'avoir des tests bien organisés
 et facile à trouver.
 
-Bootstrapp des tests
+Bootstrap des tests
 ------------------------
 
 Ensuite, nous créons un fichier ``phpunit.xml.dist`` sous ``zf2-tutorial/module/Application/test``:
@@ -199,7 +199,7 @@ mais nous ne définissons que les modules requis pour ce test.
 Votre premier test de contrôleur
 --------------------------
 
-Esuite, créez ``IndexControllerTest.php`` sous
+Ensuite, créez ``IndexControllerTest.php`` sous
 ``zf-tutorial/module/Application/test/ApplicationTest/Controller`` avec le
 contenu suivant :
 
@@ -271,7 +271,7 @@ Tester
 -----------
 
 Enfin, placez vous sur ``zf-tutorial/module/Application/test/`` et exécutez
-``phpunit``. Si vous vouyez quelque chose comme ceci, votre application est
+``phpunit``. Si vous voyez quelque chose comme ceci, votre application est
 prête pour plus de tests !
 
 .. code-block:: text
