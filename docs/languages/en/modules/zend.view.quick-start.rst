@@ -29,7 +29,7 @@ The components of the view layer are as follows:
 - The **View** consists of strategies that map the current Request to a Renderer, and strategies for
   injecting the result of rendering to the Response.
 
-- **Rendering Strategies** listen to the "renderer" event of the View and decide which Renderer should be selected
+- **Rendering Strategies** listen to the ``Zend\View\ViewEvent::EVENT_RENDERER`` event of the View and decide which Renderer should be selected 
   based on the Request or other criteria.
 
 - **Response Strategies** are used to inject the Response object with the results of rendering.
