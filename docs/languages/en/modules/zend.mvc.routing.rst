@@ -482,8 +482,10 @@ As a complex example:
 
 .. _zend.mvc.routing.http-route-types.query:
 
-Zend\\Mvc\\Router\\Http\\Query
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Zend\\Mvc\\Router\\Http\\Query (Deprecated)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This route part is deprecated since you can now add query parameters without a query route.
 
 The ``Query`` route part allows you to specify and capture query string parameters for a given route.
 

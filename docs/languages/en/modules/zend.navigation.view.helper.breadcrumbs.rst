@@ -11,7 +11,7 @@ script.
 
 The Breadcrumbs helper works like this; it finds the deepest active page in a navigation container, and renders an
 upwards path to the root. For *MVC* pages, the "activeness" of a page is determined by inspecting the request
-object, as stated in the section on :ref:`Zend\Navigation\Page\Mvc <zend.navigation.pages.mvc>`.
+object, as stated in the section on :ref:`Zend\\Navigation\\Page\\Mvc <zend.navigation.pages.mvc>`.
 
 The helper sets the *minDepth* property to 1 by default, meaning breadcrumbs will not be rendered if the deepest
 active page is a root page. If *maxDepth* is specified, the helper will stop rendering when at the specified depth
@@ -52,7 +52,7 @@ This example shows how to render breadcrumbs with default settings.
    <?php echo $this->navigation()->breadcrumbs()->render(); ?>
 
    Output:
-   <a href="/products">Products</a> > <a href="/products/server">Foo Server</a> > FAQ
+   <a href="/products">Products</a> &gt; <a href="/products/server">Foo Server</a> &gt; FAQ
 
 .. _zend.navigation.view.helper.breadcrumbs.example2:
 
@@ -67,13 +67,13 @@ This example shows how to render breadcrumbs with initial indentation.
    <?php echo $this->navigation()->breadcrumbs()->setIndent(8);?>
 
    Output:
-           <a href="/products">Products</a> > <a href="/products/server">Foo Server</a> > FAQ
+           <a href="/products">Products</a> &gt; <a href="/products/server">Foo Server</a> &gt; FAQ
 
 .. _zend.navigation.view.helper.breadcrumbs.example3:
 
 .. rubric:: Customize breadcrumbs output
 
-This example shows how to customze breadcrumbs output by specifying various options.
+This example shows how to customize breadcrumbs output by specifying various options.
 
 .. code-block:: php
    :linenos:
@@ -118,17 +118,16 @@ In a layout:
 .. code-block:: php
    :linenos:
 
-   $partial = ;
    echo $this->navigation()->breadcrumbs()
-                           ->setPartial(array('breadcrumbs.phtml', 'default'));
+                           ->setPartial('my-module/partials/breadcrumbs');
 
-Contents of *application/modules/default/views/breadcrumbs.phtml*:
+Contents of *module/MyModule/view/my-module/partials/breadcrumbs.phtml*:
 
 .. code-block:: php
    :linenos:
 
    echo implode(', ', array_map(
-           create_function('$a', 'return $a->getLabel();'),
+           function ($a) { return $a->getLabel(); },
            $this->pages));
 
 Output:

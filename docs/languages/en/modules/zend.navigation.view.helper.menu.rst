@@ -30,7 +30,7 @@ Methods in the Menu helper:
 
   If ``$container`` is not given, the container registered in the helper will be rendered.
 
-  ``$options`` is used for overriding options specified temporarily without rsetting the values in the helper
+  ``$options`` is used for overriding options specified temporarily without resetting the values in the helper
   instance. It is an associative array where each key corresponds to an option in the helper.
 
   Recognized options:
@@ -452,7 +452,7 @@ $options)`` with the following options:
 
 .. rubric:: Rendering a custom menu using a partial view script
 
-This example shows how to render a custom menu using a partial vew script. By calling ``setPartial()``, you can
+This example shows how to render a custom menu using a partial view script. By calling ``setPartial()``, you can
 specify a partial view script that will be used when calling ``render()``. When a partial is specified, the
 ``renderPartial()`` method will be called. This method will assign the container to the view with the key
 *container*.
@@ -462,17 +462,16 @@ In a layout:
 .. code-block:: php
    :linenos:
 
-   $partial = array('menu.phtml', 'default');
-   $this->navigation()->menu()->setPartial($partial);
+   $this->navigation()->menu()->setPartial('my-module/partials/menu');
    echo $this->navigation()->menu()->render();
 
-In application/modules/default/views/menu.phtml:
+In *module/MyModule/view/my-module/partials/menu.phtml*:
 
 .. code-block:: php
    :linenos:
 
    foreach ($this->container as $page) {
-       echo $this->navigation()->menu()->htmlify($page), PHP_EOL;
+       echo $this->navigation()->menu()->htmlify($page) . PHP_EOL;
    }
 
 Output:

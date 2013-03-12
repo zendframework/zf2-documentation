@@ -31,7 +31,7 @@ determine if the page is active.
 
 .. note::
 
-   The *URI* returned is relative to the *baseUrl* in ``Zend\Mvc\Router\Http\TreeRouteStack``. In the examples, 
+   The *URI* returned is relative to the *baseUrl* in ``Zend\Mvc\Router\Http\TreeRouteStack``. In the examples,
    the baseUrl is '/' for simplicity.
 
 .. _zend.navigation.pages.mvc.example.getHref:
@@ -66,7 +66,7 @@ calling *$page->getHref()*.
        'controller' => 'album',
    ));
 
-   // getHref() returns /album/edit/id/1337
+   // getHref() returns /album/edit/1337
    $page = new Zend\Navigation\Page\Mvc(array(
        'action'     => 'edit',
        'controller' => 'album',

@@ -27,17 +27,21 @@ the key name with the ``Zend\Navigation`` view helper to output the container.
                     'pages' => array(
                         array(
                             'label' => 'Child #1',
-                            'route' => 'page-1-child'
-                        )
-                    )
+                            'route' => 'page-1-child',
+                        ),
+                    ),
                 ),
                 array(
                     'label' => 'Page #2',
                     'route' => 'page-2',
-                )
-            )
-        )
-
+                ),
+            ),
+        ),
+        'service_manager' => array(
+            'factories' => array(
+                'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            ),
+        ),
         // ...
     );
 
@@ -48,6 +52,6 @@ the key name with the ``Zend\Navigation`` view helper to output the container.
     <!-- ... -->
 
     <body>
-        <?php echo $this->navigation('default')->menu(); ?>
+        <?php echo $this->navigation('navigation')->menu(); ?>
     </body>
     <!-- ... -->
