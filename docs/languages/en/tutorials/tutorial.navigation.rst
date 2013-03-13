@@ -1,4 +1,4 @@
-Using Zend Navigation in your Album module
+Using Zend\Navigation in your Album module
 ==========================================
 
 In this tutorial we will use ``Zend\Navigation`` to add a navigation
@@ -8,8 +8,8 @@ above the main site content.
 Preparation
 -----------
 
-In order to have more than one area of the tutorial application, let's
-undo some work we did earlier. Currently, navigating to the root of your
+In a real world application, something like the album browser would generally only a portion of a working website. Usually the user would land on a homepage first, and be able to view albums by using a standard navigation menu. So that we have a site that is more realistic than just the albums feature, lets make the standard skeleton welcome page our homepage, with the `/album` route still showing our album module.
+In order to make this change, we need to undo some work we did earlier. Currently, navigating to the root of your
 app (/) routes you to the ``AlbumController``'s default action. Let's
 undo this route change so we have two discrete entry points to the app,
 a home page, and an albums area.
