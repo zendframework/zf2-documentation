@@ -125,7 +125,7 @@ layout by using the ``menu`` view helper:
     <a class="brand"
            href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>
     <?php // <-- Add this !!
-    echo $this->navigation()->menu('navigation');
+    echo $this->navigation('navigation')->menu();
     ?>
     ...
 
@@ -141,8 +141,8 @@ ugly) menu, with just a few tweaks however, we can make it look awesome:
     <a class="brand"
        href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>
     <?php // <-- Update this !!
-    echo $this->navigation()
-        ->menu('navigation')
+    echo $this->navigation('navigation')
+        ->menu()
         ->setMinDepth(0)
         ->setMaxDepth(0)
         ->setUlClass('nav')
@@ -173,7 +173,7 @@ simple breadcrumb:
 
     ...
     <div class="container">
-        <?php echo $this->navigation()->breadcrumbs('navigation')->setMinDepth(0); // <-- Add this!! ?>   
+        <?php echo $this->navigation('navigation')->breadcrumbs()->setMinDepth(0); // <-- Add this!! ?>   
         <?php echo $this->content; ?>
     </div>
     ...
@@ -221,8 +221,8 @@ tell the breadcrumb helper to use the partial we have just written:
 
     ...
     <div class="container">
-        <?php echo $this->navigation() // <-- Update this!!
-        ->breadcrumbs('navigation')
+        <?php echo $this->navigation('navigation') // <-- Update this!!
+        ->breadcrumbs()
         ->setMinDepth(0)
         ->setPartial(array('partial/breadcrumb.phtml', 'Album'));
         ?>
