@@ -232,5 +232,3 @@ tell the breadcrumb helper to use the partial we have just written:
 
 Refreshing the page now gives us a lovely styled set of breadcrumbs on
 each page.
-
-FIN
