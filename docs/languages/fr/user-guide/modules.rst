@@ -167,7 +167,7 @@ comme ci-dessous :
     return array(
         'modules' => array(
             'Application',
-            'Album',                  // <-- Add this line
+            'Album',                  // <-- Ajouter cette ligne
         ),
         'module_listener_options' => array( 
             'config_glob_paths'    => array(
