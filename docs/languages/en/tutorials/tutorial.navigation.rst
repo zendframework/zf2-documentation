@@ -211,7 +211,7 @@ album specific):
             <?php endforeach; ?>
     </ul>
 
-Notice how the partial is passed a `Zend\View\Model\ViewModel` instance with the ``pages``
+Notice how the partial is passed a ``Zend\View\Model\ViewModel`` instance with the ``pages``
 property set to an array of pages to render. Now all we have to do is
 tell the breadcrumb helper to use the partial we have just written:
 
