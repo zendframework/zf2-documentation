@@ -1,4 +1,4 @@
-Using Zend\Navigation in your Album module
+Using Zend\\Navigation in your Album module
 ==========================================
 
 In this tutorial we will use ``Zend\Navigation`` to add a navigation
@@ -34,15 +34,15 @@ This change means that if you go to the home page of your application
 application introduction. Your list of albums is still available at the
 /album route.
 
-Setting Up Zend
+Setting Up Zend\\Navigation
 ---------------
 
 Firstly, we need to tell our application which ``NavigationFactory`` to
 use when using the bundled navigation view helpers. Thankfully, ZF2
 comes with a default factory that will suit our needs just fine. To tell
 ZF2 to use this default factory, we simply add a ``navigation`` key to
-the service manager. It's best to do this in the ``Application`` module,
-because, like the translation data this is specific to the entire
+the service manager. Its best to do this in the ``Application`` module,
+because, like the translation data, this is specific to the entire
 application, and not just to our album pages:
 
 ``module/Application/config/module.config.php``
@@ -155,7 +155,7 @@ level of any given page. If you view your application in your browser,
 you will now see a nicely styled menu appear in the title bar. The great
 thing about ``Zend\Navigation`` is that it integrates with ZF2's route
 so can tell which page you are currently viewing. Because of this, it
-set's the active page to have a class of ``active`` in the menu. Twitter
+sets the active page to have a class of ``active`` in the menu. Twitter
 Bootstrap uses this to highlight your current page accordingly.
 
 Adding Breadcrumbs
@@ -181,7 +181,7 @@ simple breadcrumb:
 This adds a simple but functional breadcrumb to every page (we simply
 tell it to render from a depth of 0 so we see all level of pages) but we
 can do better than that! Because Bootstrap has a styled breadcrumb as
-part of it's base CSS, so let's add a partial that output's the UL in
+part of it's base CSS, so let's add a partial that outputs the UL in
 bootstrap happy CSS. We'll create it in the ``view`` directory of the
 ``Application`` module (this partial is application wide, rather than
 album specific):
@@ -202,11 +202,11 @@ album specific):
                     ?>
                     <a href="<?php echo $page->getHref(); ?>"><?php echo $page->getLabel(); ?></a>
                     <span class="divider">/</span>
-                    <?php // otherwise, just output the name
-                    else:
-                    ?>
+                <?php // otherwise, just output the name
+                else:
+                ?>
                     <?php echo $page->getLabel(); ?>
-                    <?php endif; ?>
+                <?php endif; ?>
             </li>
             <?php endforeach; ?>
     </ul>
