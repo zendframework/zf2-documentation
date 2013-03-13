@@ -5,25 +5,26 @@
 Modules
 #######
 
-Zend Framework 2 uses a module system and you organise your main
-application-specific code within each module. The Application module provided by
-the skeleton is used to provide bootstrapping, error and routing configuration to
-the whole application. It is usually used to provide application level
-controllers for, say, the home page of an application, but we are not going to
-use the default one provided in this tutorial as we want our album list to be
-the home page, which will live in our own module.  
+Zend Framework 2 utilise un système de modules, et vous organisez le code
+spécifique à votre application au sein de chaque module. Le module Application
+qui est fourni avec le skeleton est utilisé pour le boostrapping, la gestion des erreurs
+et le routing de toute votre application. Il est généralement  utilisé pour fournir les
+contrôleurs de base de l'application (ex: la page d'accueil de votre application), mais
+nous n'allons pas utiliser celui fourni dans ce tutoriel, étant donné que nous voulons que
+notre liste d'albums soit la page d'accueil de notre application, qui sera elle-même dans 
+notre module.
 
-We are going to put all our code into the Album module which will contain our
-controllers, models, forms and views, along with configuration. We’ll also tweak
-the Application module as required.
+Nous allons placer tout notre code dans le module Album, qui contiendra nos contrôleurs,
+modèles, formulaires et vues, avec leur configuration respective. Nous serons de même amenés à modifier
+le module Application
 
-Let’s start with the directories required.
+Commençons avec l'arborescence requise.
 
-Setting up the Album module
+Mise en place du module Album
 ---------------------------
 
-Start by creating a directory called ``Album`` under with the following
-subdirectories to hold the module’s files:
+Commencez par créer un dossier ``Album`` ainsi que ses sous-dossiers
+qui contiendront les fichiers du module.
 
 .. code-block:: text
 
@@ -40,19 +41,19 @@ subdirectories to hold the module’s files:
                     /album
                         /album
 
-As you can see the ``Album`` module has separate directories for the different
-types of files we will have. The PHP files that contain classes within the
-``Album`` namespace live in the ``src/Album`` directory so that we can have
-multiple namespaces within our module should we require it. The view directory
-also has a sub-folder called ``album`` for our module’s view scripts.
+Comme vous pouvez le voir, le module ``Album`` a des dossiers distincts pour
+chaque type de fichiers qu'il contiendra. Les fichiers de classes PHP du namespace
+``Album`` seront stockés dans le dossier ``src/Album``, ce qui nous permettra d'avoir
+autant de namespaces que nécessaire. Le dossier view contient lui-aussi un sous-dossier
+``album`` pour les fichiers de vue de notre module.
 
-In order to load and configure a module, Zend Framework 2 has a
-``ModuleManager``. This will look for ``Module.php`` in the root of the module
-directory (``module/Album``) and expect to find a class called ``Album\Module``
-within it. That is, the classes within a given module will have the namespace of
-the module’s name, which is the directory name of the module. 
+Afin de charger et de configurer un module, Zend Framework 2 a un ``ModuleManager``.
+Il ira lire ``Module.php`` dans le dossier racine du module (``module/Album``), et 
+s'attendra à y trouver une classe nommée ``Album\Module``. Ainsi, les classes d'un 
+module auront pour namespace le nom du module lui-même, qui est aussi le nom du dossier
+qui contient le module.
 
-Create ``Module.php`` in the ``Album`` module:
+Creez ``Module.php`` dans le module ``Album`` :
 
 .. code-block:: php
 
@@ -81,22 +82,23 @@ Create ``Module.php`` in the ``Album`` module:
         }
     }
 
-The ``ModuleManager`` will call ``getAutoloaderConfig()`` and ``getConfig()``
-automatically for us.
+Le ``ModuleManager`` appelera ``getAutoloaderConfig()`` and ``getConfig()``
+automatiquement pour nous.
 
-Autoloading files
-^^^^^^^^^^^^^^^^
+Chargement automatique des fichiers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Our ``getAutoloaderConfig()`` method returns an array that is compatible with
-ZF2’s ``AutoloaderFactory``. We configure it so that we add a class map file to
-the ``ClassmapAutoloader`` and also add this module’s namespace to the
-``StandardAutoloader``. The standard autoloader requires a namespace and the
-path where to find the files for that namespace. It is PSR-0 compliant and so
-classes map directly to files as per the `PSR-0 rules
+Notre méthode``getAutoloaderConfig()`` retourne un tableau qui est compatible avec
+l'``AutoloaderFactory`` de ZF2. nous le configurons de sorte que nous ajoutons un
+fichier de classe au ``ClassmapAutoloader``, et nous ajoutons aussi le namespace
+au ``StandardAutoloader``. Ce dernier a besoin comme paramètres d'un namespace et
+du chemin où sont stockés les fichiers du namespace. Il est PSR-0 compliant, ie. 
+classes et fichiers obéissent aux règles définies par la norme PSR-0
 <https://github.com/php-fig/fig-standards/blog/master/accepted/PSR-0.md>`_.
 
-As we are in development, we don’t need to load files via the classmap, so we provide an empty array for the 
-classmap autoloader. Create ``autoload_classmap.php`` with these contents:
+Comme nous sommes en développement, nous n'avons pas la nécessité d'auto-charger nos fichiers,
+on retourne donc un tableau vide à l'autoloader. On crée le fichier ``autoload_classmap.php`` avec 
+le contenu suivant : 
 
 .. code-block:: php
 
@@ -104,23 +106,22 @@ classmap autoloader. Create ``autoload_classmap.php`` with these contents:
     // module/Album/autoload_classmap.php:
     return array();
 
-As this is an empty array, whenever the autoloader looks for a class within the
-``Album`` namespace, it will fall back to the to ``StandardAutoloader`` for us.
+Comme il s'agit d'un tableau vide, quand l'autoloader cherchera une classe dans 
+le namespace ``Album``, il sera redirigé vers le `StandardAutoloader`` pour nous.
 
-Note that as we are using Composer, as an alternative, you could not implement
-``getAutoloaderConfig()`` and instead add ``"Application":
-"module/Application/src"`` to the ``psr-0`` key in ``composer.json``. If you go
-this way, then you need to run ``php composer.phar update`` to update the
-composer autoloading files.
+Alternativement, si vous utilisez Composer, vous pourriez ne pas implémenter 
+``getAutoloaderConfig()`` et à la place, ajouter ``"Application":
+"module/Application/src"`` à la clé ``psr-0`` dans ``composer.json``. Si vous choisissez
+cette technique, vous devrez lancer `php composer.phar update`` afin de mettre
+à jour les fichiers d'auto-chargement de composer.
 
 Configuration
 -------------
 
-Having registered the autoloader, let’s have a quick look at the ``getConfig()``
-method in ``Album\Module``.  This method simply loads the
-``config/module.config.php`` file.
+Ayant satisfait l'autoloader, regardons rapidement la méthode ``getConfig()``
+dans ``Album\Module``.  Cette méthode charge simplement le fichier ``config/module.config.php``
 
-Create the following configuration file for the ``Album`` module:
+Créer le fichier suivant de configuration pour le module  ``Album`` :
 
 .. code-block:: php
 
@@ -138,26 +139,27 @@ Create the following configuration file for the ``Album`` module:
         ),
     );
 
-The config information is passed to the relevant components by the
-``ServiceManager``.  We need two initial sections: ``controller`` and
-``view_manager``. The controller section provides a list of all the controllers
-provided by the module. We will need one controller, ``AlbumController``, which
-we’ll reference as ``Album\Controller\Album``. We call it this as the key must
-be unique across all modules, so we prefix with our module name.
+La configuration est passée aux composants respectifs par le
+``ServiceManager``. Nous avons besoin de deux sections distinctes : 
+`controller`` and ``view_manager``. La section controller renvoie une liste
+de tous les contrôleurs que propose le module. Nous aurons besoin d'un contrôleur,
+``AlbumController``, qui nous référencerons comme ``Album\Controller\Album``.
+Nous le nommons ainsi étant donné que la clé doit être unique parmi tous les 
+modules, donc nous la préfixons du nom de notre module.
 
-Within the ``view_manager`` section, we add our view directory to the
-``TemplatePathStack`` configuration. This will allow it to find the view scripts for
-the ``Album`` module that are stored in our ``views/`` directory.
+Dans la section ``view_manager``, nous ajoutons notre dossier view à 
+la configuration de ``TemplatePathStack``. Cela nous permettra de trouver les scripts
+de vues du module ``Album``, stockés dans notre dossier ``views/``.
 
-Informing the application about our new module
+Informez l'application de notre nouveau module
 ----------------------------------------------
 
-We now need to tell the ``ModuleManager`` that this new module exists. This is done
-in the application’s ``config/application.config.php`` file which is provided by the
-skeleton application. Update this file so that its ``modules`` section contains the
-``Album`` module as well, so the file now looks like this:
+Nous devons maintenant dire au ``ModuleManager`` que notre nouveau module existe. Cela
+est fait dans le fichier `config/application.config.php`` fourni avec le skeleton. Mettez à 
+jour ce fichier de telle façon que sa section ``modules`` contienne notre module ``Album``
+comme ci-dessous :
 
-(Changes required are highlighted using comments.)
+(Les changements à effectuer sont montrés dans les commentaires du code)
 
 .. code-block:: php
 
@@ -178,7 +180,7 @@ skeleton application. Update this file so that its ``modules`` section contains 
         ),
     );
 
-As you can see, we have added our ``Album`` module into the list of modules
-after the ``Application`` module.    
+Comme vous pouvez le voir, nous avons ajouté notre module `Album`` dans la liste
+des modules, après le module `Application``
 
-We have now set up the module ready for putting our custom code into it.
+Le module est désormais prêt, nous allons pouvoir y ajouter notre code.
