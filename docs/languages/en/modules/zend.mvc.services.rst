@@ -92,7 +92,7 @@ This is the one service class referenced directly in the application bootstrappi
 
     It instantiates an instance of ``Zend\ModuleManager\Listener\DefaultListenerAggregate``, using the
     "module_listener_options" retrieved. Checks if a service with the name ``ServiceListener`` exists, otherwise
-    falls back to the ``ServiceListenerFactory``, and instantiates it. A bunch of service listerns will be added
+    falls back to the ``ServiceListenerFactory``, and instantiates it. A bunch of service listeners will be added
     to the ``ServiceListener``, like listeners for the ``getServiceConfig``, ``getControllerConfig``,
     ``getControllerPluginConfig``, ``getViewHelperConfig`` module methods.
 
@@ -110,7 +110,7 @@ This is the one service class referenced directly in the application bootstrappi
     before instantiating the default ``ServiceListener``.
 
     In addition to this, it retrieves the ``ApplicationConfig`` and looks for the ``service_listener_options`` key.
-    This allows you to register own listerns for module methods and configuration keys to create an own service
+    This allows you to register own listeners for module methods and configuration keys to create an own service
     manager; see the application configuration options for samples.
 
   - ``Request``, mapping to ``Zend\Mvc\Service\RequestFactory``. The factory is used to create and return a
