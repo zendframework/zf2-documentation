@@ -24,7 +24,7 @@
    modules/zendtool.introduction
    tutorials/quickstart.di
    tutorials/unittesting
-   tutoirals/tutorials.navigation
+   tutoirals/tutorial.navigation
    modules/zend.authentication.intro
    modules/zend.authentication.adapter.dbtable
    modules/zend.authentication.adapter.digest
@@ -287,7 +287,7 @@
 
     * :doc:`tutorials/quickstart.di`
     * :doc:`tutorials/unittesting`
-    * :doc:`tutorials/tutorials.navigation`
+    * :doc:`tutorials/tutorial.navigation`
 
 |ZendFrameworkReference|
 ------------------------
