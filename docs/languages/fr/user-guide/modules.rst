@@ -88,12 +88,12 @@ automatiquement pour nous.
 Chargement automatique des fichiers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Notre méthode``getAutoloaderConfig()`` retourne un tableau qui est compatible avec
+Notre méthode ``getAutoloaderConfig()`` retourne un tableau qui est compatible avec
 l'``AutoloaderFactory`` de ZF2. nous le configurons de sorte que nous ajoutons un
 fichier de classe au ``ClassmapAutoloader``, et nous ajoutons aussi le namespace
 au ``StandardAutoloader``. Ce dernier a besoin comme paramètres d'un namespace et
 du chemin où sont stockés les fichiers du namespace. Il est PSR-0 compliant, ie. 
-classes et fichiers obéissent aux règles définies par la norme PSR-0
+classes et fichiers obéissent aux règles définies par la norme `PSR-0
 <https://github.com/php-fig/fig-standards/blog/master/accepted/PSR-0.md>`_.
 
 Comme nous sommes en développement, nous n'avons pas la nécessité d'auto-charger nos fichiers,
@@ -107,12 +107,12 @@ le contenu suivant :
     return array();
 
 Comme il s'agit d'un tableau vide, quand l'autoloader cherchera une classe dans 
-le namespace ``Album``, il sera redirigé vers le `StandardAutoloader`` pour nous.
+le namespace ``Album``, il sera redirigé vers le ``StandardAutoloader`` pour nous.
 
 Alternativement, si vous utilisez Composer, vous pourriez ne pas implémenter 
 ``getAutoloaderConfig()`` et à la place, ajouter ``"Application":
 "module/Application/src"`` à la clé ``psr-0`` dans ``composer.json``. Si vous choisissez
-cette technique, vous devrez lancer `php composer.phar update`` afin de mettre
+cette technique, vous devrez lancer ``php composer.phar update`` afin de mettre
 à jour les fichiers d'auto-chargement de composer.
 
 Configuration
@@ -141,7 +141,7 @@ Créer le fichier suivant de configuration pour le module  ``Album`` :
 
 La configuration est passée aux composants respectifs par le
 ``ServiceManager``. Nous avons besoin de deux sections distinctes : 
-`controller`` and ``view_manager``. La section controller renvoie une liste
+``controller`` and ``view_manager``. La section controller renvoie une liste
 de tous les contrôleurs que propose le module. Nous aurons besoin d'un contrôleur,
 ``AlbumController``, qui nous référencerons comme ``Album\Controller\Album``.
 Nous le nommons ainsi étant donné que la clé doit être unique parmi tous les 
@@ -155,7 +155,7 @@ Informez l'application de notre nouveau module
 ----------------------------------------------
 
 Nous devons maintenant dire au ``ModuleManager`` que notre nouveau module existe. Cela
-est fait dans le fichier `config/application.config.php`` fourni avec le skeleton. Mettez à 
+est fait dans le fichier ``config/application.config.php`` fourni avec le skeleton. Mettez à 
 jour ce fichier de telle façon que sa section ``modules`` contienne notre module ``Album``
 comme ci-dessous :
 
@@ -180,7 +180,7 @@ comme ci-dessous :
         ),
     );
 
-Comme vous pouvez le voir, nous avons ajouté notre module `Album`` dans la liste
-des modules, après le module `Application``
+Comme vous pouvez le voir, nous avons ajouté notre module ``Album`` dans la liste
+des modules, après le module ``Application``
 
 Le module est désormais prêt, nous allons pouvoir y ajouter notre code.
