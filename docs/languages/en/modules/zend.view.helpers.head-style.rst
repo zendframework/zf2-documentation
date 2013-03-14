@@ -33,7 +33,7 @@ to provide to the ``style`` tag: lang, title, media, or dir are all permissible.
    specific browsers. To add the conditional tags, pass the conditional value as part of the ``$attributes``
    parameter in the method calls.
 
-   .. _zend.view.helpers.initial.headstyle.conditional:
+.. _zend.view.helpers.initial.headstyle.conditional:
 
    .. rubric:: Headstyle With Conditional Comments
 
@@ -47,8 +47,8 @@ to provide to the ``style`` tag: lang, title, media, or dir are all permissible.
 programmatically, and then place them elsewhere. The usage for this will be showed in an example below.
 
 Finally, you can also use the ``headStyle()`` method to quickly add declarations elements; the signature for this
-is ``headStyle($content$placement = 'APPEND', $attributes = array())``. ``$placement`` should be either 'APPEND',
-'PREPEND', or 'SET'.
+is ``headStyle($content = null, $placement = 'APPEND', $attributes = array())``. ``$placement`` should be either
+'APPEND', 'PREPEND', or 'SET'.
 
 ``HeadStyle`` overrides each of ``append()``, ``offsetSet()``, ``prepend()``, and ``set()`` to enforce usage of the
 special methods as listed above. Internally, it stores each item as a ``stdClass`` token, which it later serializes
@@ -58,19 +58,136 @@ modify these items by simply modifying the object returned.
 The ``HeadStyle`` helper is a concrete implementation of the :ref:`Placeholder helper
 <zend.view.helpers.initial.placeholder>`.
 
+.. _zend.view.helpers.initial.headstyle.encoding:
+
 .. note::
 
    **UTF-8 encoding used by default**
 
    By default, Zend Framework uses *UTF-8* as its default encoding, and, specific to this case, ``Zend\View`` does
-   as well. Character encoding can be set differently on the view object itself using the ``setEncoding()`` method
-   (or the the ``encoding`` instantiation parameter). However, since ``Zend\View\Interface`` does not define
-   accessors for encoding, it's possible that if you are using a custom view implementation with this view helper,
-   you will not have a ``getEncoding()`` method, which is what the view helper uses internally for determining the
-   character set in which to encode.
+   as well. So if you want to use another encoding with ``headStyle``, you will have do three things:
+      1. Create a custom renderer and implement a ``getEncoding()`` method;
+      2. Create a custom rendering strategy that will return an instance of your custom renderer;
+      3. Attach the custom strategy in the ``ViewEvent``;
 
-   If you do not want to utilize *UTF-8* in such a situation, you will need to implement a ``getEncoding()`` method
-   in your custom view implementation.
+   See the example below.
+
+.. _zend.view.helpers.initial.headstyle.encoding.example:
+
+First we have to write the custom renderer:
+
+.. code-block:: php
+   :linenos:
+
+   // module/MyModule/View/Renderer/MyRenderer.php
+   <?php
+
+   namespace MyModule\View\Renderer;
+
+   // Since we just want to implement the getEncoding() method, we can extend the Zend native renderer
+   use Zend\View\Renderer\PhpRenderer;
+
+   class MyRenderer extends PhpRenderer
+   {
+      /**
+       * @var string
+       */
+      protected $encoding;
+
+      /**
+       * Constructor
+       *
+       * @param  string $encoding The encoding to be used
+       */
+      public function __construct($encoding)
+      {
+         parent::__construct();
+         $this->encoding = $encoding;
+      }
+
+      /**
+       * Sets the encoding
+       *
+       * @param string $encoding The encoding to be used
+       */
+      public function setEncoding($encoding)
+      {
+         $this->encoding = $encoding;
+      }
+
+      /**
+       * Gets the encoding
+       *
+       * @return string The encoding being used
+       */
+      public function getEncoding()
+      {
+         return $this->encoding;
+      }
+   }
+
+Now we make some configuration in the module class:
+
+.. code-block:: php
+   :linenos:
+
+   // module/MyModule.php
+   <?php
+
+   namespace MyModule;
+
+   use MyModule\View\Renderer\MyRenderer;
+   use Zend\Mvc\MvcEvent;
+   use Zend\View\Strategy\PhpRendererStrategy;
+
+   class Module
+   {
+      public function getConfig(){/* ... */}
+
+      public function getAutoloaderConfig(){/* ... */}
+
+      public function getServiceConfig()
+      {
+         return array(
+            'factories' => array(
+               // Register our custom renderer in the service manager
+               'MyCustomRenderer' => function ($serviceManager) {
+                  $myRenderer = new MyRenderer('ISO-8859-1');
+                  return $myRenderer;
+               },
+               'MyCustomStrategy' => function ($serviceManager) {
+                  // As stated before, we just want to implement the getEncoding() method, so we can use
+                  // Zend\View\Strategy\PhpRendererStrategy and just provide our custom renderer to it.
+                  $myRenderer = $serviceManager->get('MyCustomRenderer');
+                  $strategy = new PhpRendererStrategy($myRenderer);
+                  return $strategy;
+               }
+            ),
+         );
+      }
+
+      public function onBootstrap(MvcEvent $e)
+      {
+         // Register a render event
+         $app = $e->getParam('application');
+         $app->getEventManager()->attach('render', array($this, 'registerMyStrategy'), 100);
+      }
+
+       public function registerMyStrategy(MvcEvent $e)
+       {
+           $app          = $e->getTarget();
+           $locator      = $app->getServiceManager();
+           $view         = $locator->get('Zend\View\View');
+           $myStrategy = $locator->get('MyCustomStrategy');
+
+           // Attach strategy, which is a listener aggregate, at high priority
+           $view->getEventManager()->attach($myStrategy, 100);
+       }
+   }
+
+See the quick start :ref:`Creating and Registering Alternate Rendering and Response Strategies
+<zend.view.quick-start.usage.strategies>` chapter for more information on how to create and register custom
+strategies to your view.
 
 .. _zend.view.helpers.initial.headstyle.basicusage:
 
