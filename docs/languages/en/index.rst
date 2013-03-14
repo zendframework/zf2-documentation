@@ -24,7 +24,7 @@
    modules/zendtool.introduction
    tutorials/quickstart.di
    tutorials/unittesting
-   tutoirals/tutorials.navigation
+   tutorials/tutorials.navigation
    modules/zend.authentication.intro
    modules/zend.authentication.adapter.dbtable
    modules/zend.authentication.adapter.digest
