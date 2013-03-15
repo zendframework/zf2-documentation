@@ -1,5 +1,5 @@
-Using Zend\\Navigation in your Album module
-==========================================
+Using Zend\\Navigation in your Album Module
+===========================================
 
 In this tutorial we will use ``Zend\Navigation`` to add a navigation
 menu to the black bar at the top of the screen, and add breadcrumbs
@@ -16,7 +16,7 @@ a home page, and an albums area.
 
 ``module/Application/config/module.config.php``
 
-::
+.. code-block:: php
 
     'home' => array(
        'type' => 'Zend\Mvc\Router\Http\Literal',
@@ -67,7 +67,7 @@ module:
 
 ``module/Application/config/module.config.php``
 
-::
+.. code-block:: php
 
     return array(
     ...
@@ -119,7 +119,7 @@ layout by using the ``menu`` view helper:
 
 ``module/Application/view/layout/layout.phtml``
 
-::
+.. code-block:: php
 
     ...
     <a class="brand"
@@ -136,7 +136,7 @@ ugly) menu, with just a few tweaks however, we can make it look awesome:
 
 ``module/Application/view/layout/layout.phtml``
 
-::
+.. code-block:: php
 
     <a class="brand"
        href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>
@@ -169,7 +169,7 @@ simple breadcrumb:
 
 ``module/Application/view/layout/layout.phtml``
 
-::
+.. code-block:: php
 
     ...
     <div class="container">
@@ -188,7 +188,7 @@ album specific):
 
 ``module/Application/view/partial/breadcrumb.phtml``
 
-::
+.. code-block:: php
 
     <ul class="breadcrumb">
         <?php
@@ -217,7 +217,7 @@ tell the breadcrumb helper to use the partial we have just written:
 
 ``module/Application/view/layout/layout.phtml``
 
-::
+.. code-block:: php
 
     ...
     <div class="container">
