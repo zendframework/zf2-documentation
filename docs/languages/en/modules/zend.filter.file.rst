@@ -3,7 +3,7 @@
 File Filter Classes
 ===================
 
-Zend Framework comes with set of classes for filtering file contents as well as performing other actions, such
+Zend Framework comes with a set of classes for filtering file contents as well as performing other actions, such
 as file renaming.
 
 .. note::

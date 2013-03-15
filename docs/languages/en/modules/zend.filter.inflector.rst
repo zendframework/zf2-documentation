@@ -9,8 +9,8 @@ As an example, you may find you need to transform MixedCase or camelCasedWords i
 policies, or other reasons, you also need to lower case this, and you want to separate the words using a dash
 ('-'). An inflector can do this for you.
 
-``Zend\Filter\Inflector`` implements ``Zend\Filter\FilterInterface``; you perform inflection by calling ``filter()`` on
-the object instance.
+``Zend\Filter\Inflector`` implements ``Zend\Filter\FilterInterface``; you perform inflection by calling
+``filter()`` on the object instance.
 
 .. _zend.filter.inflector.camel_case_example:
 
@@ -22,7 +22,7 @@ the object instance.
    $inflector = new Zend\Filter\Inflector('pages/:page.:suffix');
    $inflector->setRules(array(
        ':page'  => array('Word\CamelCaseToDash', 'StringToLower'),
-       'suffix' => 'html'
+       'suffix' => 'html',
    ));
 
    $string   = 'camelCasedWords';
@@ -57,10 +57,10 @@ As an example, you can use any ``Zend\Filter`` concrete implementations; however
 Using Custom Filters
 --------------------
 
-``Zend\Filter\Inflector`` uses ``Zend\Filter\FilterPluginManager`` to manage loading filters to use with inflection.
-By default, filters registered with ``Zend\Filter\FilterPluginManager`` are available. To access filters with that
-prefix but which occur deeper in the hierarchy, such as the various ``Word`` filters, simply strip off the
-``Zend\Filter`` prefix:
+``Zend\Filter\Inflector`` uses ``Zend\Filter\FilterPluginManager`` to manage loading filters to use with
+inflection. By default, filters registered with ``Zend\Filter\FilterPluginManager`` are available. To access
+filters with that prefix but which occur deeper in the hierarchy, such as the various ``Word`` filters, simply
+strip off the ``Zend\Filter`` prefix:
 
 .. code-block:: php
    :linenos:
@@ -98,14 +98,12 @@ argument to the constructor:
    // Via accessor:
    $inflector->setTargetReplacementIdentifier('#');
 
-Typically, you will set the target via the constructor. However, you may want to re-set the target later (for
-instance, to modify the default inflector in core components, such as the ``ViewRenderer`` or ``Zend\Layout``).
+Typically, you will set the target via the constructor. However, you may want to re-set the target later.
 ``setTarget()`` can be used for this purpose:
 
 .. code-block:: php
    :linenos:
 
-   $inflector = $layout->getInflector();
    $inflector->setTarget('layouts/:script.phtml');
 
 Additionally, you may wish to have a class member for your class that you can use to keep the inflector target

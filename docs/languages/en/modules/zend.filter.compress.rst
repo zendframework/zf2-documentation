@@ -187,7 +187,7 @@ or give the filename of the archive when you decompress the file.
    :linenos:
 
    $filter     = new Zend\Filter\Decompress('Bz2');
-   $compressed = $filter->filter('filename.bz2');
+   $decompressed = $filter->filter('filename.bz2');
    // Returns true on success and decompresses the archive file
 
 Some adapters support decompressing the archive into another subdirectory. In this case you can set the ``target``
@@ -202,7 +202,7 @@ parameter.
            'target' => 'C:\temp',
        )
    ));
-   $compressed = $filter->filter('filename.zip');
+   $decompressed = $filter->filter('filename.zip');
    // Returns true on success and decompresses the archive file
    // into the given target directory
 

@@ -38,7 +38,7 @@ You can set and receive the ``FilterPluginManager`` for the ``StaticFilter`` to 
    $pluginManager = StaticFilter::getPluginManager()->setInvokableClass(
        'myNewFilter', 'MyCustom\Filter\MyNewFilter'
    );
-   
+
    StaticFilter::setPluginManager(new MyFilterPluginManager());
 
 This is useful when adding custom filters to be used by the ``StaticFilter``.
