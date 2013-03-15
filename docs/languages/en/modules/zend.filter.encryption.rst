@@ -17,7 +17,8 @@ The following options are supported for ``Zend\Filter\Encrypt`` and ``Zend\Filte
 - **algorithm**: Only ``BlockCipher``. The algorithm which has to be used by the adapter
  ``Zend\Crypt\Symmetric\Mcrypt``. It should be one of the algorithm ciphers supported by
  ``Zend\Crypt\Symmetric\Mcrypt`` (see the ``getSupportedAlgorithms()`` method). If not set it
- defaults to ``aes``, the Advanced Encryption Standard (see :ref:`Zend\\Crypt\\BlockCipher<zend.crypt.blockcipher>` for more details).
+ defaults to ``aes``, the Advanced Encryption Standard (see :ref:`Zend\\Crypt\\BlockCipher<zend.crypt.blockcipher>`
+ for more details).
 
 - **compression**: If the encrypted value should be compressed. Default is no compression.
 
@@ -25,14 +26,14 @@ The following options are supported for ``Zend\Filter\Encrypt`` and ``Zend\Filte
   either provide the path and filename of the key file, or just the content of the key file itself. When the
   ``package`` option has been set, then you can omit this parameter.
 
-- **key**: Only ``BlockCipher``. The encryption key with which the input will be encrypted. You need the same key for
-  decryption.
+- **key**: Only ``BlockCipher``. The encryption key with which the input will be encrypted. You need the same key
+  for decryption.
 
-- **mode**: Only ``BlockCipher``. The encryption mode which has to be used. It should be one of the modes which can be
-  found under `PHP's mcrypt modes`_. If not set it defaults to 'cbc'.
+- **mode**: Only ``BlockCipher``. The encryption mode which has to be used. It should be one of the modes which can
+  be found under `PHP's mcrypt modes`_. If not set it defaults to 'cbc'.
 
-- **mode_directory**: Only ``BlockCipher``. The directory where the mode can be found. If not set it defaults to the
-  path set within the ``Mcrypt`` extension.
+- **mode_directory**: Only ``BlockCipher``. The directory where the mode can be found. If not set it defaults to
+  the path set within the ``Mcrypt`` extension.
 
 - **package**: Only ``OpenSSL``. If the envelope key should be packed with the encrypted value. Default is
   ``FALSE``.
@@ -75,8 +76,8 @@ adapter.
 
 .. note::
 
-   When you do not supply the ``adapter`` option or do not use ``setAdapter()``, then the ``BlockCipher`` adapter will
-   be used per default.
+   When you do not supply the ``adapter`` option or do not use ``setAdapter()``, then the ``BlockCipher`` adapter
+   will be used per default.
 
 .. _zend.filter.set.encrypt.blockcipher:
 
@@ -171,8 +172,8 @@ This script will produce always the same encryption output.
 
 .. rubric:: Decryption with BlockCipher
 
-For decrypting content which was previously encrypted with ``BlockCipher`` you need to have the options with which the
-encryption has been called.
+For decrypting content which was previously encrypted with ``BlockCipher`` you need to have the options with which
+the encryption has been called.
 
 If you used only the encryption key, you can just use it to decrypt the content. As soon as you have provided
 all options decryption is as simple as encryption.
@@ -190,8 +191,8 @@ all options decryption is as simple as encryption.
    // Decrypt: message
 
 Note that even if we did not specify the same Vector, the ``BlockCipher`` is able to decrypt the message because
-the Vector is stored in the encryption string itself (note that the Vector can be stored in plaintext, it is not a secret,
-the Vector is only used to improve the randomness of the encryption algorithm).
+the Vector is stored in the encryption string itself (note that the Vector can be stored in plaintext, it is not a
+secret, the Vector is only used to improve the randomness of the encryption algorithm).
 
 
 .. note::

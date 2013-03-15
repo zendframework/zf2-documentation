@@ -100,8 +100,8 @@ them, you can give an array, you can use constants, or you can give a textual st
        ),
    ));
 
-You can also give an instance of ``Zend\Config\Config`` to set the desired types. To set types after instantiation, use
-the ``setType()`` method.
+You can also give an instance of ``Zend\Config\Config`` to set the desired types. To set types after instantiation,
+use the ``setType()`` method.
 
 .. _zend.filter.set.boolean.localized:
 

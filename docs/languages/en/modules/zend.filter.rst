@@ -32,8 +32,8 @@ input. A filter that escapes the *HTML* entities, however, transforms the input 
 Basic usage of filters
 ----------------------
 
-Having this filter definition established provides the foundation for ``Zend\Filter\FilterInterface``, which requires a
-single method named ``filter()`` to be implemented by a filter class.
+Having this filter definition established provides the foundation for ``Zend\Filter\FilterInterface``, which
+requires a single method named ``filter()`` to be implemented by a filter class.
 
 Following is a basic example of using a filter upon two input data, the ampersand (**&**) and double quote (**"**)
 characters:

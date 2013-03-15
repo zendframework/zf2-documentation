@@ -9,8 +9,8 @@ As an example, you may find you need to transform MixedCase or camelCasedWords i
 policies, or other reasons, you also need to lower case this, and you want to separate the words using a dash
 ('-'). An inflector can do this for you.
 
-``Zend\Filter\Inflector`` implements ``Zend\Filter\FilterInterface``; you perform inflection by calling ``filter()`` on
-the object instance.
+``Zend\Filter\Inflector`` implements ``Zend\Filter\FilterInterface``; you perform inflection by calling
+``filter()`` on the object instance.
 
 .. _zend.filter.inflector.camel_case_example:
 
@@ -57,10 +57,10 @@ As an example, you can use any ``Zend\Filter`` concrete implementations; however
 Using Custom Filters
 --------------------
 
-``Zend\Filter\Inflector`` uses ``Zend\Filter\FilterPluginManager`` to manage loading filters to use with inflection.
-By default, filters registered with ``Zend\Filter\FilterPluginManager`` are available. To access filters with that
-prefix but which occur deeper in the hierarchy, such as the various ``Word`` filters, simply strip off the
-``Zend\Filter`` prefix:
+``Zend\Filter\Inflector`` uses ``Zend\Filter\FilterPluginManager`` to manage loading filters to use with
+inflection. By default, filters registered with ``Zend\Filter\FilterPluginManager`` are available. To access
+filters with that prefix but which occur deeper in the hierarchy, such as the various ``Word`` filters, simply
+strip off the ``Zend\Filter`` prefix:
 
 .. code-block:: php
    :linenos:
