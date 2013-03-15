@@ -455,13 +455,13 @@ Examples
 There are three possibilities for the return value of the above call to the ``get`` method:
 
  -  If no Content-Type header was set in the Request, ``get`` will return false.
- 
+
  -  If only one Content-Type header was set in the Request,
     ``get`` will return an instance of ``Zend\Http\Header\ContentType``.
 
  -  If more than one Content-Type header was set in the Request,
     ``get`` will return an ArrayIterator containing one
-    ``Zend\Http\Header\ContentType`` instance per header. 
+    ``Zend\Http\Header\ContentType`` instance per header.
 
 .. _zend.http.headers.examples.adding-headers:
 
@@ -484,7 +484,7 @@ There are three possibilities for the return value of the above call to the ``ge
    $headers->addHeaderLine('Content-Type: text/html');
 
    // We can also add headers in bulk using addHeaders, which accepts
-   // an array of individual header definitions that can be in any of 
+   // an array of individual header definitions that can be in any of
    // the accepted formats outlined below:
    $headers->addHeaders(array(
 
@@ -504,7 +504,7 @@ There are three possibilities for the return value of the above call to the ``ge
 
 .. rubric:: Removing headers from a Zend\\Http\\Headers object
 
-We can remove all headers of a specific type using the ``removeHeader`` method, 
+We can remove all headers of a specific type using the ``removeHeader`` method,
 which accepts a single object implementing ``Zend\Http\Header\HeaderInterface``
 
 .. code-block:: php
@@ -526,7 +526,7 @@ which accepts a single object implementing ``Zend\Http\Header\HeaderInterface``
        $headers->removeHeader($header);
    }
 
-   // In addition to this, we can clear all the headers currently stored in 
+   // In addition to this, we can clear all the headers currently stored in
    // the container by calling the clearHeaders() method
    $matches->clearHeaders();
 

@@ -481,7 +481,7 @@ Performing simple *HTTP* requests is very easily done using the setRequest() and
 
 The ``request`` object can be configured using his methods as shown in the
 :ref:`Zend\\Http\\Request manual page<zend.http.request>`. One of these methods is ``setMethod`` which refers
-to the HTTP Method. This can be either ``GET``, ``POST``, ``PUT``, ``HEAD``, ``DELETE``, ``TRACE``, 
+to the HTTP Method. This can be either ``GET``, ``POST``, ``PUT``, ``HEAD``, ``DELETE``, ``TRACE``,
 ``OPTIONS`` or ``CONNECT`` as defined by the *HTTP* protocol [#]_.
 
 .. _zend.http.client.basic-requests.example-2:
@@ -489,7 +489,7 @@ to the HTTP Method. This can be either ``GET``, ``POST``, ``PUT``, ``HEAD``, ``D
 Using Request Methods Other Than GET
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For convenience, these are all defined as class constants: Zend\\Http\\Request::METHOD_GET, 
+For convenience, these are all defined as class constants: Zend\\Http\\Request::METHOD_GET,
 Zend\\Http\\Request::METHOD_POST and so on.
 
 If no method is specified, the method set by the last ``setMethod()`` call is used. If ``setMethod()`` was never
@@ -515,7 +515,7 @@ Setting GET parameters
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Adding ``GET`` parameters to an *HTTP* request is quite simple, and can be done either by specifying them as part
-of the URL, or by using the ``setParameterGet()`` method. This method takes the ``GET`` parameters as an associative 
+of the URL, or by using the ``setParameterGet()`` method. This method takes the ``GET`` parameters as an associative
 array of name => value ``GET`` variables.
 
 .. code-block:: php
