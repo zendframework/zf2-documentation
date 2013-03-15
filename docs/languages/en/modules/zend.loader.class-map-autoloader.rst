@@ -190,7 +190,7 @@ used to configure the autoloader:
        ),
    );
 
-An eqivalent INI style configuration might look like this:
+An equivalent INI style configuration might look like this:
 
 .. code-block:: ini
    :linenos:

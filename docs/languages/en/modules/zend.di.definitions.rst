@@ -74,7 +74,7 @@ this is the place to do it.
 The RuntimeDefinition also can be used to look up either all classes (implicitly, which is default), or explicitly
 look up for particular pre-defined classes. This is useful when your strategy for inspecting one set of classes
 might differ from those of another strategy for another set of classes. This can be achieved by using the
-setExplictClasses() method or by passing a list of classes as a second argument to the constructor of the
+setExplicitClasses() method or by passing a list of classes as a second argument to the constructor of the
 RuntimeDefinition.
 
 .. _zend.di.definition.compilerdefinition:

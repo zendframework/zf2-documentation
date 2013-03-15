@@ -112,7 +112,7 @@ INI file like that:
    params.password = 'secret'
    params.dbname   = 'dbproduction'
 
-And assign the ``@include`` as sublement of the database value:
+And assign the ``@include`` as subelement of the database value:
 
 .. code-block:: ini
    :linenos:

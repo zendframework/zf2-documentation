@@ -122,7 +122,7 @@ posts.
 
 This is where assertions come in. Assertions are methods that will be called out to when the static rule checking
 is simply not enough. When registering an assertion object this object will be consulted to determine, typically
-dynamically, if some roles has access to some resource, with some optional privlidge that can only be answered by
+dynamically, if some roles has access to some resource, with some optional privilege that can only be answered by
 the logic within the assertion. For this example, we'll use the following assertion:
 
 .. code-block:: php

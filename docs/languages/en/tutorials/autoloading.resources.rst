@@ -49,7 +49,7 @@ Our first step is creating the resource loader:
        'namespace' => 'Foo',
    ));
 
-Next, we need to define some resource types. ``Zend\Loader_Autoloader\Resourse::addResourceType()`` has three
+Next, we need to define some resource types. ``Zend\Loader_Autoloader\Resource::addResourceType()`` has three
 arguments: the "type" of resource (an arbitrary string), the path under the base path in which the resource type
 may be found, and the component prefix to use for the resource type. In the above tree, we have three resource
 types: form (in the subdirectory "forms", with a component prefix of "Form"), model (in the subdirectory "models",

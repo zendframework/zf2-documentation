@@ -24,7 +24,7 @@ Zend Framework.
    **Caveat**
 
    We'll note here that ``Zend\Controller\Front`` has a plugin system - but it does not adhere to any of the
-   guidelines offerred in this tutorial. The plugins registered with the front controller must be instantiated
+   guidelines offered in this tutorial. The plugins registered with the front controller must be instantiated
    directly and registered individually with it. The reason for this is that this system predates any other plugin
    system in the framework, and changes to it must be carefully weighed to ensure existing plugins written by
    developers continue to work with it.

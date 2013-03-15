@@ -209,7 +209,7 @@ Chain Storage
 A website may have multiple storage in place. The ``Chain`` Storage can be used to glue these together.
 
 The ``Chain`` can for example be configured to first use a ``Session`` Storage and then use a ``OAuth`` as
-a secundary Storage. One could configure this in the following way:
+a secondary Storage. One could configure this in the following way:
 
 .. code-block:: php
    :linenos:

@@ -85,7 +85,7 @@ If you specify a list of executable users, only users that have launch permissio
 You can specify account IDs (if you own the *AMI*\ (s)), self for *AMI*\ s for which you own or have explicit
 permissions, or all for public *AMI*\ s.
 
-*describe* returns an array for all the images that match the critera that was passed in. The array contains the
+*describe* returns an array for all the images that match the criteria that was passed in. The array contains the
 imageId, imageLocation, imageState, imageOwnerId, isPublic, architecture, imageType, kernelId, ramdiskId and
 platform.
 

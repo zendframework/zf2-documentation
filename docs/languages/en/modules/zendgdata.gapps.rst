@@ -590,7 +590,7 @@ Groups can be updated by calling the ``updateGroup()`` convenience method:
    $gdata->updateGroup('group-id-here', 'Group Name Here');
 
 The first parameter is required. The second, third and fourth parameter, representing the group name, group
-descscription, and email permission, respectively are optional. Setting any of these optional parameters to null
+description, and email permission, respectively are optional. Setting any of these optional parameters to null
 will not update that item.
 
 .. _zendgdata.gapps.groups.retrieve:

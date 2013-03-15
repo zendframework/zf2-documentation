@@ -87,7 +87,7 @@ Basic Configuration Options
 
    The following configuration options are defined by ``Zend\Cache\Storage\Adapter\AdapterOptions``
    and are available for every supported adapter. Adapter-specific configuration options
-   are descriped on adapter level below.
+   are described on adapter level below.
 
    +--------------+-------------------------+----------------+-------------------------------------------------+
    |Option        |Data Type                |Default Value   |Description                                      |
@@ -253,7 +253,7 @@ The ``Zend\Cache\Storage\StorageInterface`` is the basic interface implemented b
 
    Decrement an item.
 
-   :rtype: interger|boolean
+   :rtype: integer|boolean
 
 .. function:: decrementItems(array $keyValuePairs)
    :noindex:
@@ -478,7 +478,7 @@ The Apc Adapter
 .. table:: Adapter specific options
 
    +--------------------+-----------+---------------+--------------------------------------------+
-   |Name                |Data Type  |Default Value  |Describtion                                 |
+   |Name                |Data Type  |Default Value  |Description                                 |
    +====================+===========+===============+============================================+
    |namespace_separator |``string`` |":"            |A separator for the namespace and prefix    |
    +--------------------+-----------+---------------+--------------------------------------------+
@@ -529,7 +529,7 @@ The Dba Adapter
 .. table:: Adapter specific options
 
    +--------------------+-----------+---------------+------------------------------------------------------------------------------------+
-   |Name                |Data Type  |Default Value  |Describtion                                                                         |
+   |Name                |Data Type  |Default Value  |Description                                                                         |
    +====================+===========+===============+====================================================================================+
    |namespace_separator |``string`` |":"            |A separator for the namespace and prefix                                            |
    +--------------------+-----------+---------------+------------------------------------------------------------------------------------+
@@ -606,7 +606,7 @@ The Filesystem Adapter
 .. table:: Adapter specific options
 
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
-   |Name                |Data Type             |Default Value            |Describtion                                                                         |
+   |Name                |Data Type             |Default Value            |Description                                                                         |
    +====================+======================+=========================+====================================================================================+
    |namespace_separator |``string``            |":"                      |A separator for the namespace and prefix                                            |
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
@@ -614,7 +614,7 @@ The Filesystem Adapter
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
    |clear_stat_cache    |``boolean``           |``true``                 |Call ``clearstatcache()`` enabled?                                                  |
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
-   |dir_level           |``integer``           |1                        |Defines how much sub-directaries should be created                                  |
+   |dir_level           |``integer``           |1                        |Defines how much sub-directories should be created                                  |
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
    |dir_permission      |``integer`` ``false`` |0700                     |Set explicit permission on creating new directories                                 |
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
@@ -684,11 +684,11 @@ The Memcached Adapter
 .. table:: Adapter specific options
 
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------------------------+
-   |Name                |Data Type             |Default Value            |Describtion                                                                                           |
+   |Name                |Data Type             |Default Value            |Description                                                                                           |
    +====================+======================+=========================+======================================================================================================+
    |servers             |``array``             |``[]``                   |List of servers in [] = array(``string`` host, ``integer`` port)                                      |
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------------------------+
-   |lib_options         |``array``             |``[]``                   |Assosiative array of Libmemcached options were the array key is the option name                       |
+   |lib_options         |``array``             |``[]``                   |Associative array of Libmemcached options were the array key is the option name                       |
    |                    |                      |                         |(without the prefix "OPT\_") or the constant value. The array value is the option value               |
    |                    |                      |                         |                                                                                                      |
    |                    |                      |                         |Please read this<http://php.net/manual/memcached.setoption.php> for more information                  |
@@ -748,7 +748,7 @@ The Memory Adapter
 .. table:: Adapter specific options
 
    +--------------------+-----------------------+-------------------------------------+-----------------------------------------------------------------------------------------------+
-   |Name                |Data Type              |Default Value                        |Describtion                                                                                    |
+   |Name                |Data Type              |Default Value                        |Description                                                                                    |
    +====================+=======================+=====================================+===============================================================================================+
    |memory_limit        |``string`` ``integer`` |<50% of ini value ``memory_limit``>  |Limit of how much memory can PHP allocate to allow store items into this adapter               |
    |                    |                       |                                     |                                                                                               |
@@ -811,7 +811,7 @@ The WinCache Adapter
 .. table:: Adapter specific options
 
    +--------------------+-----------+---------------+--------------------------------------------+
-   |Name                |Data Type  |Default Value  |Describtion                                 |
+   |Name                |Data Type  |Default Value  |Description                                 |
    +====================+===========+===============+============================================+
    |namespace_separator |``string`` |":"            |A separator for the namespace and prefix    |
    +--------------------+-----------+---------------+--------------------------------------------+
@@ -871,7 +871,7 @@ The XCache Adapter
 .. table:: Adapter specific options
 
    +--------------------+------------+---------------+---------------------------------------------------------------------------------------+
-   |Name                |Data Type   |Default Value  |Describtion                                                                            |
+   |Name                |Data Type   |Default Value  |Description                                                                            |
    +====================+============+===============+=======================================================================================+
    |namespace_separator |``string``  |":"            |A separator for the namespace and prefix                                               |
    +--------------------+------------+---------------+---------------------------------------------------------------------------------------+

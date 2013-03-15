@@ -99,7 +99,7 @@ Creating your own message iterator class
 ----------------------------------------
 
 ``ZendQueue\Queue`` will also accept your own message iterator class. The message iterator class is used to return
-messages from ``Zend\Queue\Adapter\Abstract::recieve()``. ``Zend\Queue\Abstract::receive()`` should always return a
+messages from ``Zend\Queue\Adapter\Abstract::receive()``. ``Zend\Queue\Abstract::receive()`` should always return a
 container class like ``Zend\Queue\Message\Iterator``, even if there is only one message.
 
 See the example filename in ``tests/Zend/Queue/Custom/Messages.php``.

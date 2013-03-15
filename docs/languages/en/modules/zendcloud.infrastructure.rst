@@ -206,7 +206,7 @@ Available Methods
 
    **$id** is the ID of the instance;
 
-   **$metric** is the metric to be monitored. The allowed metrics are reported as contants of the
+   **$metric** is the metric to be monitored. The allowed metrics are reported as constants of the
    ``Zend\Cloud\Infrastructure\Instance`` class: MONITOR_CPU, MONITOR_RAM, MONITOR_NETWORK_IN, MONITOR_NETWORK_OUT,
    MONITOR_DISK, MONITOR_DISK_WRITE, MONITOR_DISK_READ.
 

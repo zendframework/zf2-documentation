@@ -94,7 +94,7 @@ ul/li-list, spread with different font-sizes according to the weight values of t
 HTML Tag decorator
 ^^^^^^^^^^^^^^^^^^
 
-The *HTML* tag decorator will by default render every tag in an anchor element, surounded by a li element. The
+The *HTML* tag decorator will by default render every tag in an anchor element, surrounded by a li element. The
 anchor itself is fixed and cannot be changed, but the surrounding element(s) can.
 
 .. note::
@@ -105,7 +105,7 @@ anchor itself is fixed and cannot be changed, but the surrounding element(s) can
    for every tag used in it.
 
 The tag decorator can either spread different font-sizes over the anchors or a defined list of classnames. When
-setting options for one of those possibilities, the corespondening one will automatically be enabled. The following
+setting options for one of those possibilities, the corresponding one will automatically be enabled. The following
 configuration options are available:
 
 - ``fontSizeUnit``: defines the font-size unit used for all font-sizes. The possible values are: em, ex, px, in,
@@ -115,7 +115,7 @@ configuration options are available:
 
 - ``maxFontSize``: the maximum font-size distributed through the tags (must be an integer). Default value is 20.
 
-- ``classList``: an arry of classes distributed through the tags.
+- ``classList``: an array of classes distributed through the tags.
 
 - ``htmlTags``: an array of *HTML* tags surrounding the anchor. Each element can either be a string, which is used
   as element type then, or an array containing an attribute list for the element, defined as key/value pair. In
@@ -155,7 +155,7 @@ The following example shows how to create a tag cloud with a customized *HTML* t
 HTML Cloud decorator
 ^^^^^^^^^^^^^^^^^^^^
 
-The *HTML* cloud decorator will suround the *HTML* tags with an ul-element by default and add no separation. Like
+The *HTML* cloud decorator will surround the *HTML* tags with an ul-element by default and add no separation. Like
 in the tag decorator, you can define multiple surrounding *HTML* tags and additionally define a separator. The
 available options are:
 

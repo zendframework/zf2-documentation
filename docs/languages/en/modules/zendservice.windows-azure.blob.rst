@@ -204,7 +204,7 @@ This can be done by calling the ``registerStreamWrapper()`` method:
 
    // or:
 
-   // regiters blob:// on this storage client
+   // registers blob:// on this storage client
    $storageClient->registerStreamWrapper('blob://');
 
 To unregister the stream wrapper, the ``unregisterStreamWrapper()`` method can be used.

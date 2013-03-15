@@ -114,18 +114,18 @@ call the ``draw()`` of the renderer, or simply use the proxy method provided by 
        'code39', 'image', $barcodeOptions, $rendererOptions
    );
 
-.. _zend.barcode.creation.renderering:
+.. _zend.barcode.creation.rendering:
 
-Renderering a barcode
----------------------
+Rendering a barcode
+-------------------
 
 When you render a barcode, you draw the barcode, you send the headers and you send the resource (e.g. to a
 browser). To render a barcode, you can call the ``render()`` method of the renderer or simply use the proxy method
 provided by ``Zend\Barcode\Barcode``.
 
-.. _zend.barcode.creation.renderering.example-1:
+.. _zend.barcode.creation.rendering.example-1:
 
-.. rubric:: Renderering a barcode with the renderer object
+.. rubric:: Rendering a barcode with the renderer object
 
 .. code-block:: php
    :linenos:
@@ -150,9 +150,9 @@ This will generate this barcode:
    :width: 275
    :align: center
 
-.. _zend.barcode.creation.renderering.example-2:
+.. _zend.barcode.creation.rendering.example-2:
 
-.. rubric:: Renderering a barcode with Zend\\Barcode\\Barcode::render()
+.. rubric:: Rendering a barcode with Zend\\Barcode\\Barcode::render()
 
 .. code-block:: php
    :linenos:

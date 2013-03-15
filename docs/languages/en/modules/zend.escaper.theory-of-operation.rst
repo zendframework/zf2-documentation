@@ -117,7 +117,7 @@ If the string is only HTML escaped, it may still contain Javascript that will ex
 is only Javascript escaped, it may contain HTML markup (new tags and attributes) which will be injected into the DOM
 and parsed once the inserting Javascript executes. Damned either way? The solution is to escape twice - first escape
 the string for HTML (make it safe for DOM insertion), and then for Javascript (make it safe for the current 
-Javascript context). Nested contexts are a common means of bypassing naïve escaping habits (e.g. you can inject 
+Javascript context). Nested contexts are a common means of bypassing naive escaping habits (e.g. you can inject
 Javascript into a CSS expression within a HTML Attribute).
 
 PHP has no known anti-XSS escape functions (only those kidnapped from their original purposes)
@@ -128,5 +128,5 @@ mutant ``addslashes()`` implementation. These were never designed to eliminate X
 For example, ``json_encode()`` does not escape the ampersand or semi-colon characters by default. That means you can 
 easily inject HTML entities which could then be decoded before the Javascript is evaluated in a HTML document. This
 lets you break out of strings, add new JS statements, close tags, etc. In other words, using ``json_encode()`` is 
-insufficient and naïve. The same, arguably, could be said for ``htmlspecialchars()`` which has its own well known 
+insufficient and naive. The same, arguably, could be said for ``htmlspecialchars()`` which has its own well known
 limitations that make a singular reliance on it a questionable practice.

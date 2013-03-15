@@ -291,7 +291,7 @@ The first one is utilizing ``Zend\Search\Lucene\Document\Html`` class (see :ref:
                                   using the array or string.
     * @param callback $callback   Callback method, used to transform
                                   (highlighting) text.
-    * @param array    $params     Array of additionall callback parameters passed
+    * @param array    $params     Array of additional callback parameters passed
                                   through into it (first non-optional parameter
                                   is an HTML fragment for highlighting)
     * @return string

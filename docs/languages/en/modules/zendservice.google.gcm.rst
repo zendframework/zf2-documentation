@@ -86,4 +86,4 @@ as throwing exceptions in the cases of server failures.
    }
    echo 'Successful: ' . $response->getSuccessCount() . PHP_EOL;
    echo 'Failures: ' . $response->getFailureCount() . PHP_EOL;
-   echo 'Canonicals: ' . $repsonse->getCanonicalCount() . PHP_EOL;
+   echo 'Canonicals: ' . $response->getCanonicalCount() . PHP_EOL;

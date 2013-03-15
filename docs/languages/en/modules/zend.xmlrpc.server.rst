@@ -569,7 +569,7 @@ The example below illustrates caching server definitions between requests.
 **ext/dom** is available on a lot of hosts it is not exactly the fastest. Benchmarks have shown, that ``XmlWriter``
 from **ext/xmlwriter** performs better.
 
-If **ext/xmlwriter** is available on your host, you can select a the ``XmlWriter``-based generator to leaverage the
+If **ext/xmlwriter** is available on your host, you can select a the ``XmlWriter``-based generator to leverage the
 performance differences.
 
 .. code-block:: php

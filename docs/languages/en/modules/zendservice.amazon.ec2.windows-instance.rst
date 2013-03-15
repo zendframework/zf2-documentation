@@ -59,7 +59,7 @@ Windows Instances Usage
 
 .. rubric:: Bundles an Amazon EC2 instance running Windows
 
-``bundle()`` has three require paramters and one optional
+``bundle()`` has three require parameters and one optional
 
 - **instanceId** The instance you want to bundle
 
@@ -68,9 +68,9 @@ Windows Instances Usage
 - **s3Prefix** The prefix you want to assign to the *AMI* on S3
 
 - **uploadExpiration** The expiration of the upload policy. Amazon recommends 12 hours or longer. This is based in
-  nubmer of minutes. Default is 1440 minutes (24 hours)
+  number of minutes. Default is 1440 minutes (24 hours)
 
-``bundle()`` returns a multi-demential array that contains instanceId, bundleId, state, startTime, updateTime,
+``bundle()`` returns a multi-dimensional array that contains instanceId, bundleId, state, startTime, updateTime,
 progress s3Bucket and s3Prefix.
 
 .. code-block:: php
@@ -86,7 +86,7 @@ progress s3Bucket and s3Prefix.
 
 ``describeBundle()`` Describes current bundling tasks
 
-``describeBundle()`` returns a multi-demential array that contains instanceId, bundleId, state, startTime,
+``describeBundle()`` returns a multi-dimensional array that contains instanceId, bundleId, state, startTime,
 updateTime, progress s3Bucket and s3Prefix.
 
 .. code-block:: php
