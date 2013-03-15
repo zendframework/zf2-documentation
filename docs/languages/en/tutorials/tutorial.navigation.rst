@@ -105,7 +105,7 @@ module:
 
 This configuration maps out the pages we've defined in our controller,
 with labels linking to the given route names. You can define highly
-complex heirachical sites here with pages and sub-pages linking to route
+complex hierarchical sites here with pages and sub-pages linking to route
 names, controller/action pairs or external uris. For more information
 see the docs
 `here <http://framework.zend.com/manual/2.1/en/modules/zend.navigation.quick-start.html>`__.
@@ -197,7 +197,7 @@ album specific):
             ?>
             <li>
                 <?php
-                // if this isn't the last page, add a link and the seperator
+                // if this isn't the last page, add a link and the separator
                 if ($key < count($this->pages) - 1):
                     ?>
                     <a href="<?php echo $page->getHref(); ?>"><?php echo $page->getLabel(); ?></a>

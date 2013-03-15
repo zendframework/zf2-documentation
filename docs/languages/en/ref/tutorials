@@ -322,7 +322,7 @@ This will generate the following output:
 
     Zend Framework supports this in two different ways:
 
-    - You can render your headScript() tag whereever you
+    - You can render your headScript() tag wherever you
     - like in your layout script; just because the title references "head" does
     - not mean it needs to be rendered in that location.
     - Alternately, you may use the inlineScript() helper,

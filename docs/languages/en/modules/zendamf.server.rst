@@ -557,7 +557,7 @@ in order to authenticate. These values are set by the server using ``setCredenti
 The identity returned by the adapter should be an object containing property ``role`` for the *ACL* access control
 to work.
 
-If the authentication result is not successful, the request is not proceseed further and failure message is
+If the authentication result is not successful, the request is not processed further and failure message is
 returned with the reasons for failure taken from the result.
 
 The adapter is connected to the server using ``setAuth()`` method:

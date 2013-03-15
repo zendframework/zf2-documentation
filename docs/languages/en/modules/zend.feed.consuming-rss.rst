@@ -32,7 +32,7 @@ attribute name, and the value is the attribute value.
    echo $author['name'];
 
 Most commonly you'll want to loop through the feed and do something with its entries. ``Zend\Feed\Reader\Feed\Rss``
-internally converts all entries to a ``Zend\Feed\Reader\Entry\Rss``. Entry properties, similary to channel
+internally converts all entries to a ``Zend\Feed\Reader\Entry\Rss``. Entry properties, similarly to channel
 properties, can be accessed via getter methods, such as ``getTitle``, ``getDescription`` ...
 
 An example of printing all titles of articles in a channel is:

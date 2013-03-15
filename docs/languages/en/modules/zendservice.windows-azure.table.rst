@@ -176,7 +176,7 @@ public property or public getter/setter, in the following format:
     */
    public $<property name in PHP>;
 
-Let's see how to define a propety "Age" as an integer on Windows Azure table storage:
+Let's see how to define a property "Age" as an integer on Windows Azure table storage:
 
 .. _zendservice.windowsazure.storage.table.entities.enforced.schema-property-sample:
 
@@ -237,7 +237,7 @@ Other properties can be added on the fly. Their Windows Azure table storage type
 
 .. _zendservice.windowsazure.storage.table.entities.dynamic.schema:
 
-.. rubric:: Dynamicaly adding properties ZendService\WindowsAzure\Storage\DynamicTableEntity
+.. rubric:: Dynamically adding properties ZendService\WindowsAzure\Storage\DynamicTableEntity
 
 .. code-block:: php
    :linenos:

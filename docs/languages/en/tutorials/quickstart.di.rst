@@ -17,7 +17,7 @@ of this quickstart, we'll explain the act of injecting dependencies simply with 
 
    $b = new B(new A());
 
-Above, A is a dependency of B, and A was **injected** into B. If you are not familar with the concept of dependency
+Above, A is a dependency of B, and A was **injected** into B. If you are not familiar with the concept of dependency
 injection, here are a couple of great reads: Matthew Weier O'Phinney's `Analogy`_, Ralph Schindler's `Learning
 DI`_, or Fabien Potencier's `Series on DI`_.
 
@@ -239,7 +239,7 @@ You'll notice the only change is that setA now does not include any type-hinting
    $builder->addClass(($class = new Builder\PhpClass));
 
    $class->setName('My\B');
-   $class->addInjectableMethod(($im = new Builder\InjectibleMethod));
+   $class->addInjectableMethod(($im = new Builder\InjectableMethod));
 
    $im->setName('setA');
    $im->addParameter('a', 'My\A');
@@ -279,7 +279,7 @@ in-memory between requests, and you get a recipe that is less performant than si
 and .Net (where there is an application layer with in-memory object storage.)
 
 To mitigate this shortcoming, ``Zend\Di`` has several features built in capable of pre-compiling the most expensive
-tasks that surround dependency injection. It is worth noting that the ``RuntimeDefition``, which is used by
+tasks that surround dependency injection. It is worth noting that the ``RuntimeDefinition``, which is used by
 default, is the **only** definition that does lookups on-demand. The rest of the ``Definition`` objects are capable
 of being aggregated and stored to disk in a very performant way.
 
@@ -296,7 +296,7 @@ is a breakdown of the job of each definition type:
   ``Zend\Di\Definition`` suitable for usage by ``Di`` or an ``AggregateDefinition``
 
 - ``BuilderDefinition``- Creates a definition based on an object graph consisting of various ``Builder\PhpClass``
-  objects and ``Builder\InectionMethod`` objects that describe the mapping needs of the target codebase and …
+  objects and ``Builder\InjectionMethod`` objects that describe the mapping needs of the target codebase and …
 
 - ``Compiler``- This is not actually a definition, but produces an ``ArrayDefinition`` based off of a code scanner
   (``Zend\Code\Scanner\DirectoryScanner`` or ``Zend\Code\Scanner\FileScanner``).
@@ -359,7 +359,7 @@ Creating a precompiled definition for others to use
 ---------------------------------------------------
 
 If you are a 3rd party code developer, it makes sense to produce a ``Definition`` file that describes your code so
-that others can utilize this ``Definition`` without having to ``Reflect`` it via the ``RuntimeDefintion``, or
+that others can utilize this ``Definition`` without having to ``Reflect`` it via the ``RuntimeDefinition``, or
 create it via the ``Compiler``. To do this, use the same technique as above. Instead of writing the resulting array
 to disk, you would write the information into a definition directly, by way of ``Zend\Code\Generator``:
 

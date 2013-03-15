@@ -336,7 +336,7 @@ Retrieving Cookies From a Zend\Http\CookieJar object
 Just like with adding cookies, there is usually no need to manually fetch cookies from a CookieJar object. Your
 ``Zend\Http\Client`` object will automatically fetch the cookies required for an *HTTP* request for you. However,
 you can still use 3 provided methods to fetch cookies from the jar object: ``getCookie()``, ``getAllCookies()``,
-and ``getMatchingCookies()``. Additionnaly, iterating over the CookieJar will let you retrieve all the
+and ``getMatchingCookies()``. Additionally, iterating over the CookieJar will let you retrieve all the
 ``Zend\Http\Cookie`` objects from it.
 
 It is important to note that each one of these methods takes a special parameter, which sets the return type of the

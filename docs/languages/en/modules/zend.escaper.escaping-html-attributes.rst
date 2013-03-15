@@ -10,7 +10,7 @@ using the HTML Attribute escaper method in the HTML Attribute context.
 
 To escape data in the HTML Attribute, use ``Zend\Escaper\Escaper``'s ``escapeHtmlAttr`` method. Internally it will 
 convert the data to UTF-8, check for it's validity, and use an extended set of characters to escape that are not
-covered by ``htmlspecialchars`` to cover the cases where an attribute might be unquoted or quoted illegaly.
+covered by ``htmlspecialchars`` to cover the cases where an attribute might be unquoted or quoted illegally.
 
 .. _zend.escaper.escaping-html-attributes.bad-examples:
 
@@ -54,7 +54,7 @@ An example of incorrect HTML attribute escaping:
 In the above example, the default ``ENT_COMPAT`` flag is being used, which does not escape single quotes, thus
 resulting in an alert box popping up when the ``onmouseover`` event happens on the ``span`` element.
 
-Another example of incorrect HTML attribue escaping can happen when unquoted attributes are used, which is, by the
+Another example of incorrect HTML attribute escaping can happen when unquoted attributes are used, which is, by the
 way, perfectly valid HTML5:
 
 .. code-block:: php

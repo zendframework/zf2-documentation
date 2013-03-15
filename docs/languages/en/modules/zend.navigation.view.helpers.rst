@@ -308,7 +308,7 @@ Notes on the setup:
                    'label'      => 'Write new article',
                    'module'     => 'admin',
                    'controller' => 'post',
-                   'aciton'     => 'write'
+                   'action'     => 'write'
                )
            )
        )

@@ -211,7 +211,7 @@ A bit more complex filter can look like this:
                 || $hasFilter
                 || $isFilter
              ) && (
-                $numberOfParamterFilter
+                $numberOfParameterFilter
              )
          ) && (  // new composite, added to the one above
             $serviceManagerFilter

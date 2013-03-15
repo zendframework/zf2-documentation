@@ -42,7 +42,7 @@ account.
 allocated addresses.
 
 *describe* returns an array that contains information on each Elastic IP Address which contains the publicIp and
-the instanceId if it is assocated.
+the instanceId if it is associated.
 
 .. code-block:: php
    :linenos:
@@ -89,7 +89,7 @@ Returns a boolean ``TRUE`` or ``FALSE``.
 
 .. rubric:: Disassociate an Elastic IP from an instance
 
-*disassociate* will disassociate an Elastic IP from an instance. If you terminate an Instance it will automaticly
+*disassociate* will disassociate an Elastic IP from an instance. If you terminate an Instance it will automatically
 disassociate the Elastic IP address for you.
 
 Returns a boolean ``TRUE`` or ``FALSE``.

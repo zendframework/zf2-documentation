@@ -111,7 +111,7 @@ tags, a new paragraph will be added.
 Lists
 ^^^^^
 
-The Textile parser also supports two types of lists. The numeric type, using the "#" character and bullit-lists
+The Textile parser also supports two types of lists. The numeric type, using the "#" character and bullet-lists
 using the "\*" character. An example of both lists:
 
 .. code-block:: text

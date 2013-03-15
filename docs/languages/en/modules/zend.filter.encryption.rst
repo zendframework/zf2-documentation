@@ -40,8 +40,8 @@ The following options are supported for ``Zend\Filter\Encrypt`` and ``Zend\Filte
 - **private**: Only ``OpenSSL``. Your private key which will be used for encrypting the content. Also the private
   key can be either a filename with path of the key file, or just the content of the key file itself.
 
-- **public**: Only ``OpenSSL``. The public key of the user whom you want to provide the encrpted content. You can
-  give multiple public keys by using an array. You can eigther provide the path and filename of the key file, or
+- **public**: Only ``OpenSSL``. The public key of the user whom you want to provide the encrypted content. You can
+  give multiple public keys by using an array. You can either provide the path and filename of the key file, or
   just the content of the key file itself.
 
 - **vector**: Only ``BlockCipher``. The initialization vector which shall be used. If not set it will be a random
@@ -312,7 +312,7 @@ using ``Zend\Filter\Encrypt``.
 Based on the original value, the encrypted value can be a very large string. To reduce the value
 ``Zend\Filter\Encrypt`` allows the usage of compression.
 
-The ``compression`` option can eighter be set to the name of a compression adapter, or to an array which sets all
+The ``compression`` option can either be set to the name of a compression adapter, or to an array which sets all
 wished options for the compression adapter.
 
 .. code-block:: php

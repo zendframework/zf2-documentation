@@ -154,7 +154,7 @@ There are a number of features built-in and shipped with Zend\\Db:
    Zend\Db\TableGateway\Feature\GlobalAdapterFeature::setStaticAdapter($adapter);
 
    // in a controller, or model somewhere
-   $table = new MyTableGateway(); // adapter is statially loaded
+   $table = new MyTableGateway(); // adapter is statically loaded
 
 - MasterSlaveFeature: the ability to use a master adapter for insert(), update(), and delete() while using a slave
   adapter for all select() operations.

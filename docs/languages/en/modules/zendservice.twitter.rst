@@ -152,7 +152,7 @@ Account Methods
 
 - ``verifyCredentials()`` tests if supplied user credentials are valid with minimal overhead.
 
-  .. _zendservice.twitter.account.verifycredentails:
+  .. _zendservice.twitter.account.verifycredentials:
 
   .. rubric:: Verifying credentials
 

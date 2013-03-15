@@ -80,7 +80,7 @@ Available Methods
    ``__construct($map = null)``
 
    **__construct()**
-   The constructor is used to instantiate and intialize the plugin class loader. If passed a string, an array, or a
+   The constructor is used to instantiate and initialize the plugin class loader. If passed a string, an array, or a
    ``Traversable`` object, it will pass this to the :ref:`registerPlugins()
    <zend.loader.plugin-class-loader.methods.register-plugins>` method in order to seed (or overwrite) the plugin
    class map.

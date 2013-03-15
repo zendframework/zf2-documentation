@@ -125,7 +125,7 @@ registerPath
 
    **registerPath()**
    Register a single path with the autoloader. The first parameter, ``$path``, is expected to be a string. The
-   second paremeter, ``$moduleName``, is expected to be a module name, which allows for registering an explicit
+   second parameter, ``$moduleName``, is expected to be a module name, which allows for registering an explicit
    path to that module.
 
 .. _zend.loader.module-autoloader.methods.getPaths:
