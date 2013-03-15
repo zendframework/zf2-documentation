@@ -60,8 +60,8 @@ double, single, or both types of quotes un-filtered. See the following example:
    $input  = "A 'single' and " . '"double"';
    print $filter->filter($input);
 
-The above example returns **A 'single' and "double"**. Notice that 'single' as well as "double" quotes are
-filtered.
+The above example returns ``A &#039;single&#039; and &quot;double&quot;``. Notice that ``'single'`` as well as
+``"double"`` quotes are filtered.
 
 .. code-block:: php
    :linenos:
@@ -71,8 +71,8 @@ filtered.
    $input  = "A 'single' and " . '"double"';
    print $filter->filter($input);
 
-The above example returns **A 'single' and "double"**. Notice that "double" quotes are filtered while 'single'
-quotes are not altered.
+The above example returns ``A 'single' and &quot;double&quot;``. Notice that ``"double"`` quotes are filtered while
+``'single'`` quotes are not altered.
 
 .. code-block:: php
    :linenos:
@@ -82,7 +82,8 @@ quotes are not altered.
    $input  = "A 'single' and " . '"double"';
    print $filter->filter($input);
 
-The above example returns **A 'single' and "double"**. Notice that neither "double" or 'single' quotes are altered.
+The above example returns **A 'single' and "double"**. Notice that neither ``"double"`` or ``'single'`` quotes are
+altered.
 
 .. _zend.filter.set.htmlentities.:
 
