@@ -31,7 +31,7 @@ Basic Usage of Zend\Permissions\Acl
 When using ``Zend\Permissions\Acl``, any models can serve as roles or resources by simply implementing the proper interface. To
 be used in a role capacity, the class must implement the ``Zend\Permissions\Acl\Role\RoleInterface``, which requires only
 ``getRoleId()``. To be used in a resource capacity, a class must implement the ``Zend\Permissions\Acl\Resource\ResourceInterface``
-which similarly requires the class implement the ``getResourceId()`` method.
+which similarly requires the class implements the ``getResourceId()`` method.
 
 Demonstrated below is a simple user model. This model can take part in our *ACL* system simply by implementing the
 ``Zend\Permissions\Acl\Role\RoleInterface``. The method ``getRoleId()`` will return the id "guest" when an ID is not known, or it
