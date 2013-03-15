@@ -86,7 +86,7 @@ The constructor and setOptions() method accept an associative array of configura
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
          |outputstream   |Destination for streaming of received data (options: string (filename), true for temp file, false/null to disable streaming)                                                        |boolean        |FALSE                                |
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
-         |rfc3986strict  |Whether to strictly adhere to RFC 3986 (in practice, this means replacing '+' with '%20')                                                                                       |boolean        |FALSE                                |
+         |rfc3986strict  |Whether to strictly adhere to RFC 3986 (in practice, this means replacing '+' with '%20')                                                                                           |boolean        |FALSE                                |
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
 
 .. _zend.http.client.methods:
@@ -481,7 +481,7 @@ Performing simple *HTTP* requests is very easily done using the setRequest() and
 
 The ``request`` object can be configured using his methods as shown in the
 :ref:`Zend\\Http\\Request manual page<zend.http.request>`. One of these methods is ``setMethod`` which refers
-to the HTTP Method. This can be either ``GET``, ``POST``, ``PUT``, ``HEAD``, ``DELETE``, ``TRACE``, 
+to the HTTP Method. This can be either ``GET``, ``POST``, ``PUT``, ``HEAD``, ``DELETE``, ``TRACE``,
 ``OPTIONS`` or ``CONNECT`` as defined by the *HTTP* protocol [#]_.
 
 .. _zend.http.client.basic-requests.example-2:
@@ -489,7 +489,7 @@ to the HTTP Method. This can be either ``GET``, ``POST``, ``PUT``, ``HEAD``, ``D
 Using Request Methods Other Than GET
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For convenience, these are all defined as class constants: Zend\\Http\\Request::METHOD_GET, 
+For convenience, these are all defined as class constants: Zend\\Http\\Request::METHOD_GET,
 Zend\\Http\\Request::METHOD_POST and so on.
 
 If no method is specified, the method set by the last ``setMethod()`` call is used. If ``setMethod()`` was never
@@ -515,8 +515,8 @@ Setting GET parameters
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Adding ``GET`` parameters to an *HTTP* request is quite simple, and can be done either by specifying them as part
-of the URL, or by using the ``setParameterGet()`` method. This method takes the ``GET`` parameters as an associative 
-array of name => value ``GET`` variables.
+of the URL, or by using the ``setParameterGet()`` method. This method takes the ``GET`` parameters as an
+associative array of name => value ``GET`` variables.
 
 .. code-block:: php
    :linenos:
@@ -540,9 +540,9 @@ array of name => value ``GET`` variables.
 Setting POST Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-While ``GET`` parameters can be sent with every request method, ``POST`` parameters are only sent in the body of ``POST``
-requests. Adding ``POST`` parameters to a request is very similar to adding ``GET`` parameters, and can be done with
-the ``setParameterPost()`` method, which is identical to the ``setParameterGet()`` method in structure.
+While ``GET`` parameters can be sent with every request method, ``POST`` parameters are only sent in the body of
+``POST`` requests. Adding ``POST`` parameters to a request is very similar to adding ``GET`` parameters, and can be
+done with the ``setParameterPost()`` method, which is identical to the ``setParameterGet()`` method in structure.
 
 .. code-block:: php
    :linenos:
@@ -558,8 +558,8 @@ the ``setParameterPost()`` method, which is identical to the ``setParameterGet()
    ));
 
 Note that when sending ``POST`` requests, you can set both ``GET`` and ``POST`` parameters. On the other hand,
-setting POST parameters on a non-``POST`` request will not trigger an error, rendering it useless. Unless the request is a
-``POST`` request, ``POST`` parameters are simply ignored.
+setting POST parameters on a non-``POST`` request will not trigger an error, rendering it useless. Unless the
+request is a ``POST`` request, ``POST`` parameters are simply ignored.
 
 .. _zend.http.client.request-object-usage:
 
