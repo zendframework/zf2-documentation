@@ -43,8 +43,8 @@ characters:
 
    $htmlEntities = new Zend\Filter\HtmlEntities();
 
-   echo $htmlEntities->filter('&'); // &
-   echo $htmlEntities->filter('"'); // "
+   echo $htmlEntities->filter('&'); // &amp;
+   echo $htmlEntities->filter('"'); // &quot;
 
 Also, if a Filter inherits from ``Zend\Filter\AbstractFilter`` (just like all out-of-the-box Filters)
 you can also use them as such:

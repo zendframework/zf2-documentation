@@ -3,7 +3,7 @@
 Int
 ---
 
-``Zend\Filter\Int`` allows you to transform a sclar value which contains into an integer.
+``Zend\Filter\Int`` allows you to transform a scalar value which contains into an integer.
 
 .. _zend.filter.set.int.options:
 

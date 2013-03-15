@@ -22,7 +22,7 @@ the object instance.
    $inflector = new Zend\Filter\Inflector('pages/:page.:suffix');
    $inflector->setRules(array(
        ':page'  => array('Word\CamelCaseToDash', 'StringToLower'),
-       'suffix' => 'html'
+       'suffix' => 'html',
    ));
 
    $string   = 'camelCasedWords';
@@ -98,14 +98,12 @@ argument to the constructor:
    // Via accessor:
    $inflector->setTargetReplacementIdentifier('#');
 
-Typically, you will set the target via the constructor. However, you may want to re-set the target later (for
-instance, to modify the default inflector in core components, such as the ``ViewRenderer`` or ``Zend\Layout``).
+Typically, you will set the target via the constructor. However, you may want to re-set the target later.
 ``setTarget()`` can be used for this purpose:
 
 .. code-block:: php
    :linenos:
 
-   $inflector = $layout->getInflector();
    $inflector->setTarget('layouts/:script.phtml');
 
 Additionally, you may wish to have a class member for your class that you can use to keep the inflector target

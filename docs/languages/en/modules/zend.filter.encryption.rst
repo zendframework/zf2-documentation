@@ -17,7 +17,7 @@ The following options are supported for ``Zend\Filter\Encrypt`` and ``Zend\Filte
 - **algorithm**: Only ``BlockCipher``. The algorithm which has to be used by the adapter
  ``Zend\Crypt\Symmetric\Mcrypt``. It should be one of the algorithm ciphers supported by
  ``Zend\Crypt\Symmetric\Mcrypt`` (see the ``getSupportedAlgorithms()`` method). If not set it
- defaults to ``aes``, the Advanced Encryption Standard (see ``Zend\Crypt\BlockCipher`` for more details).
+ defaults to ``aes``, the Advanced Encryption Standard (see :ref:`Zend\\Crypt\\BlockCipher<zend.crypt.blockcipher>` for more details).
 
 - **compression**: If the encrypted value should be compressed. Default is no compression.
 
@@ -40,8 +40,8 @@ The following options are supported for ``Zend\Filter\Encrypt`` and ``Zend\Filte
 - **private**: Only ``OpenSSL``. Your private key which will be used for encrypting the content. Also the private
   key can be either a filename with path of the key file, or just the content of the key file itself.
 
-- **public**: Only ``OpenSSL``. The public key of the user whom you want to provide the encrpted content. You can
-  give multiple public keys by using an array. You can eigther provide the path and filename of the key file, or
+- **public**: Only ``OpenSSL``. The public key of the user whom you want to provide the encrypted content. You can
+  give multiple public keys by using an array. You can either provide the path and filename of the key file, or
   just the content of the key file itself.
 
 - **vector**: Only ``BlockCipher``. The initialization vector which shall be used. If not set it will be a random
@@ -412,3 +412,4 @@ At last, decode the content. Our complete example for decrypting the previously 
 
 
 .. _`Mcrypt`: http://php.net/mcrypt
+.. _`PHP's mcrypt modes`: http://php.net/manual/en/mcrypt.constants.php
