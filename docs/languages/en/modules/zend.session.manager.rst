@@ -8,14 +8,14 @@ management.  It initializes and configures configuration, storage and save handl
 manager can be injected into the session container to provide a wrapper or namespace around your session data.
 
 The session manager is responsible for session start, session exists, session write, regenerate id, time to live
-and session destroy. The session manager can valid sessions from a validator chain to ensure that the session data
+and session destroy. The session manager can validate sessions from a validator chain to ensure that the session data
 is indeed correct.
 
 Initializing the Session Manager
 --------------------------------
 
 Generally speaking you will always want to initialize the session manager and ensure that you had initialized it
-on your end; this puts in place a simple solution to prevent against session fixation.  Generally you will likely
+on your end; this puts in place a simple solution to prevent against session fixation.  Generally you will 
 setup configuration and then inside of your Application module bootstrap the session manager.
 
 Additionally you will likely want to supply validators to prevent against session hijacking.
