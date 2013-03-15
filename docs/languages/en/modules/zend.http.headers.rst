@@ -9,8 +9,8 @@ Overview
 --------
 
 The ``Zend\Http\Headers`` class is a container for HTTP headers. It is typically accessed as part of a
-``Zend\Http\Request`` or ``Zend\Http\Response`` ``getHeaders()`` call. The Headers container will lazily load actual
-Header objects as to reduce the overhead of header specific parsing.
+``Zend\Http\Request`` or ``Zend\Http\Response`` ``getHeaders()`` call. The Headers container will lazily load
+actual Header objects as to reduce the overhead of header specific parsing.
 
 The ``Zend\Http\Header\*`` classes are the domain specific implementations for the various types of Headers that
 one might encounter during the typical HTTP request. If a header of unknown type is encountered, it will be

@@ -33,7 +33,8 @@ location. This behavior can be changed by setting the ``strictredirects`` config
 
 
 
-You can always get the number of redirections done after sending a request using the ``getRedirectionsCount()`` method.
+You can always get the number of redirections done after sending a request using the ``getRedirectionsCount()``
+method.
 
 .. _zend.http.client.cookies:
 
@@ -97,10 +98,10 @@ adding the new cookies:
 
 For more information about ``Zend\Http\Header\SetCookie`` objects, see :ref:`this section <zend.http.header.set-cookie>`.
 
-``Zend\Http\Client`` also provides a means for simplifying cookie stickiness - that is having the client internally store all
-sent and received cookies, and resend them on subsequent requests: ``Zend\Http\Client\Cookies``. This is useful, for example when
-you need to log in to a remote site first and receive and authentication or session ID cookie before sending
-further requests.
+``Zend\Http\Client`` also provides a means for simplifying cookie stickiness - that is having the client internally
+store all sent and received cookies, and resend them on subsequent requests: ``Zend\Http\Client\Cookies``. This is
+useful, for example when you need to log in to a remote site first and receive and authentication or session ID
+cookie before sending further requests.
 
 .. _zend.http.client.cookies.example-3:
 
@@ -200,10 +201,10 @@ parameter, a form name as the second parameter, and data as a third optional par
 is ``NULL``, the first file name parameter is considered to be a real file on disk, and ``Zend\Http\Client`` will
 try to read this file and upload it. If the data parameter is not ``NULL``, the first file name parameter will be
 sent as the file name, but no actual file needs to exist on the disk. The second form name parameter is always
-required, and is equivalent to the "name" attribute of an ``<input>`` tag, if the file was to be uploaded through an
-*HTML* form. A fourth optional parameter provides the file's content-type. If not specified, and
-``Zend\Http\Client`` reads the file from the disk, the ``mime_content_type`` function will be used to guess the file's
-content type, if it is available. In any case, the default MIME type will be application/octet-stream.
+required, and is equivalent to the "name" attribute of an ``<input>`` tag, if the file was to be uploaded through
+an *HTML* form. A fourth optional parameter provides the file's content-type. If not specified, and
+``Zend\Http\Client`` reads the file from the disk, the ``mime_content_type`` function will be used to guess the
+file's content type, if it is available. In any case, the default MIME type will be application/octet-stream.
 
 
 .. _zend.http.client.file_uploads.example-1:
@@ -224,10 +225,10 @@ content type, if it is available. In any case, the default MIME type will be app
     $client->setMethod('POST');
     $client->send();
 
-In the first example, the ``$text`` variable is uploaded and will be available as ``$_FILES['upload']`` on the server side.
-In the second example, the existing file ``/tmp/Backup.tar.gz`` is uploaded to the server and will be available as
-``$_FILES['bufile']``. The content type will be guessed automatically if possible - and if not, the content type will
-be set to 'application/octet-stream'.
+In the first example, the ``$text`` variable is uploaded and will be available as ``$_FILES['upload']`` on the
+server side. In the second example, the existing file ``/tmp/Backup.tar.gz`` is uploaded to the server and will be
+available as ``$_FILES['bufile']``. The content type will be guessed automatically if possible - and if not, the
+content type will be set to 'application/octet-stream'.
 
 .. note::
 

@@ -239,16 +239,16 @@ Using the Proxy adapter requires several additional configuration parameters to 
 
 
 ``proxy_host`` should always be set - if it is not set, the client will fall back to a direct connection using
-``Zend\Http\Client\Adapter\Socket``. ``proxy_port`` defaults to '8080' - if your proxy listens on a different port you
-must set this one as well.
+``Zend\Http\Client\Adapter\Socket``. ``proxy_port`` defaults to '8080' - if your proxy listens on a different port
+you must set this one as well.
 
 ``proxy_user`` and ``proxy_pass`` are only required if your proxy server requires you to authenticate. Providing
 these will add a 'Proxy-Authentication' header to the request. If your proxy does not require authentication, you
 can leave these two options out.
 
-``proxy_auth`` sets the proxy authentication type, if your proxy server requires authentication. Possibly values are
-similar to the ones accepted by the ``Zend\Http\Client::setAuth()`` method.  Currently, only basic authentication
-(``Zend\Http\Client::AUTH_BASIC``) is supported.
+``proxy_auth`` sets the proxy authentication type, if your proxy server requires authentication. Possibly values
+are similar to the ones accepted by the ``Zend\Http\Client::setAuth()`` method.  Currently, only basic
+authentication (``Zend\Http\Client::AUTH_BASIC``) is supported.
 
 .. _zend.http.client.adapters.proxy.example-1:
 
@@ -427,8 +427,8 @@ your program might need before returning to the caller.
    // inject the http client object ($client) into your object
    // being tested and then test your object's behavior below
 
-The ``setResponse()`` method clears any responses in the ``Zend\Http\Client\Adapter\Test``'s buffer and sets the first
-response that will be returned. The ``addResponse()`` method will add successive responses.
+The ``setResponse()`` method clears any responses in the ``Zend\Http\Client\Adapter\Test``'s buffer and sets the
+first response that will be returned. The ``addResponse()`` method will add successive responses.
 
 The responses will be replayed in the order that they were added. If more requests are made than the number of
 responses stored, the responses will cycle again in order.
@@ -436,9 +436,9 @@ responses stored, the responses will cycle again in order.
 In the example above, the adapter is configured to test your object's behavior when it encounters a 302 redirect.
 Depending on your application, following a redirect may or may not be desired behavior. In our example, we expect
 that the redirect will be followed and we configure the test adapter to help us test this. The initial 302 response
-is set up with the ``setResponse()`` method and the 200 response to be returned next is added with the ``addResponse()``
-method. After configuring the test adapter, inject the *HTTP* client containing the adapter into your object under
-test and test its behavior.
+is set up with the ``setResponse()`` method and the 200 response to be returned next is added with the
+``addResponse()`` method. After configuring the test adapter, inject the *HTTP* client containing the adapter into
+your object under test and test its behavior.
 
 If you need the adapter to fail on demand you can use ``setNextRequestWillFail($flag)``. The method will cause the
 next call to ``connect()`` to throw an ``Zend\Http\Client\Adapter\Exception\RuntimeException`` exception. This can
@@ -481,8 +481,9 @@ You could, for example, create a connection adapter that uses persistent sockets
 adapter with caching abilities, and use them as needed in your application.
 
 In order to do so, you must create your own adapter class that implements the
-``Zend\Http\Client\Adapter\AdapterInterface`` interface. The following example shows the skeleton of a user-implemented
-adapter class. All the public functions defined in this example must be defined in your adapter as well:
+``Zend\Http\Client\Adapter\AdapterInterface`` interface. The following example shows the skeleton of a
+user-implemented adapter class. All the public functions defined in this example must be defined in your adapter as
+well:
 
 .. _zend.http.client.adapters.extending.example-1:
 

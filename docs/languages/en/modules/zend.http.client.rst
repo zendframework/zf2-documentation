@@ -515,8 +515,8 @@ Setting GET parameters
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Adding ``GET`` parameters to an *HTTP* request is quite simple, and can be done either by specifying them as part
-of the URL, or by using the ``setParameterGet()`` method. This method takes the ``GET`` parameters as an associative
-array of name => value ``GET`` variables.
+of the URL, or by using the ``setParameterGet()`` method. This method takes the ``GET`` parameters as an
+associative array of name => value ``GET`` variables.
 
 .. code-block:: php
    :linenos:
@@ -540,9 +540,9 @@ array of name => value ``GET`` variables.
 Setting POST Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-While ``GET`` parameters can be sent with every request method, ``POST`` parameters are only sent in the body of ``POST``
-requests. Adding ``POST`` parameters to a request is very similar to adding ``GET`` parameters, and can be done with
-the ``setParameterPost()`` method, which is identical to the ``setParameterGet()`` method in structure.
+While ``GET`` parameters can be sent with every request method, ``POST`` parameters are only sent in the body of
+``POST`` requests. Adding ``POST`` parameters to a request is very similar to adding ``GET`` parameters, and can be
+done with the ``setParameterPost()`` method, which is identical to the ``setParameterGet()`` method in structure.
 
 .. code-block:: php
    :linenos:
@@ -558,8 +558,8 @@ the ``setParameterPost()`` method, which is identical to the ``setParameterGet()
    ));
 
 Note that when sending ``POST`` requests, you can set both ``GET`` and ``POST`` parameters. On the other hand,
-setting POST parameters on a non-``POST`` request will not trigger an error, rendering it useless. Unless the request is a
-``POST`` request, ``POST`` parameters are simply ignored.
+setting POST parameters on a non-``POST`` request will not trigger an error, rendering it useless. Unless the
+request is a ``POST`` request, ``POST`` parameters are simply ignored.
 
 .. _zend.http.client.request-object-usage:
 
