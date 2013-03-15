@@ -44,7 +44,7 @@ The following options are supported for ``Alpha``:
 
 .. note::
 
-   Note: ``Alpha`` works on almost all languages, except: Chinese, Japanese and Korean. Within these languages the
+   ``Alpha`` works on almost all languages, except: Chinese, Japanese and Korean. Within these languages the
    english alphabet is used instead of the characters from these languages. The language itself is detected using
    the ``Locale``.
 

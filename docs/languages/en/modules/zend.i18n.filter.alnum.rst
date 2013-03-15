@@ -44,7 +44,7 @@ The following options are supported for ``Alnum``:
 
 .. note::
 
-   Note: ``Alnum`` works on almost all languages, except: Chinese, Japanese and Korean. Within these languages the
+   ``Alnum`` works on almost all languages, except: Chinese, Japanese and Korean. Within these languages the
    english alphabet is used instead of the characters from these languages. The language itself is detected using
    the ``Locale``.
 
