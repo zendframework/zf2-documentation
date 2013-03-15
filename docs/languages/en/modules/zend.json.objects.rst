@@ -78,12 +78,12 @@ JSON Expressions
 
 Javascript makes heavy use of anonymous function callbacks, which can be saved within *JSON* object variables.
 Still they only work if not returned inside double quotes, which ``Zend\Json`` naturally does. With the Expression
-support for ``Zend\Json`` support you can encode *JSON* objects with valid javascript callbacks. This works for
+support for ``Zend\Json`` support you can encode *JSON* objects with valid JavaScript callbacks. This works for
 both ``json_encode()`` or the internal encoder.
 
-A javascript callback is represented using the ``Zend\Json\Expr`` object. It implements the value object pattern
-and is immutable. You can set the javascript expression as the first constructor argument. By default
-``Zend\Json\Json::encode`` does not encode javascript callbacks, you have to pass the option ``enableJsonExprFinder``
+A JavaScript callback is represented using the ``Zend\Json\Expr`` object. It implements the value object pattern
+and is immutable. You can set the JavaScript expression as the first constructor argument. By default
+``Zend\Json\Json::encode`` does not encode JavaScript callbacks, you have to pass the option ``enableJsonExprFinder``
 and set it to ``TRUE`` into the ``encode`` function. If enabled the expression support works for all nested
 expressions in large object structures. A usage example would look like:
 
@@ -92,7 +92,7 @@ expressions in large object structures. A usage example would look like:
 
    $data = array(
        'onClick' => new Zend\Json\Expr('function() {'
-                 . 'alert("I am a valid javascript callback '
+                 . 'alert("I am a valid JavaScript callback '
                  . 'created by Zend\Json"); }'),
        'other' => 'no expression',
    );
