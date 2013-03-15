@@ -100,7 +100,7 @@ or passing it during the constructor.
 
    $encrypted = $filter->filter('text to be encrypted');
    printf ("Encrypted text: %s\n", $encrypted);
-   
+
 
 You can get and set the encryption values also afterwards with the ``getEncryption()`` and ``setEncryption()``
 methods.
@@ -124,7 +124,7 @@ methods.
    //  ["key"]=>
    //  string(14) "encryption key"
    //}
-  
+
 .. note::
 
    The ``BlockCipher`` adapter uses the `Mcrypt`_ PHP extension by default. That means you will need to
@@ -141,7 +141,7 @@ that even if the output is always different you can decrypt it using the same ke
    $text = 'message to encrypt';
 
    // use the default adapter that is BlockCipher
-   $filter = new \Zend\Filter\Encrypt(); 
+   $filter = new \Zend\Filter\Encrypt();
    $filter->setKey('encryption key');
    for ($i=0; $i < 10; $i++) {
       printf("%d) %s\n", $i, $filter->filter($text));
@@ -154,7 +154,7 @@ This script will produce always the same encryption output.
    :linenos:
 
    // use the default adapter that is BlockCipher
-   $filter = new \Zend\Filter\Encrypt(); 
+   $filter = new \Zend\Filter\Encrypt();
    $filter->setKey('encryption key');
    $filter->setVector('12345678901234567890');
    printf("%s\n", $filter->filter('message'));
@@ -191,13 +191,13 @@ all options decryption is as simple as encryption.
 
 Note that even if we did not specify the same Vector, the ``BlockCipher`` is able to decrypt the message because
 the Vector is stored in the encryption string itself (note that the Vector can be stored in plaintext, it is not a secret,
-the Vector is only used to improve the randomness of the encryption algorithm). 
+the Vector is only used to improve the randomness of the encryption algorithm).
 
 
 .. note::
 
    You should also note that all settings which be checked when you create the instance or when you call
-   ``setEncryption()``. 
+   ``setEncryption()``.
 
 .. _zend.filter.set.encrypt.openssl:
 

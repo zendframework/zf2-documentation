@@ -13,9 +13,9 @@ The following example demonstrates how to write a custom filter:
 
 .. code-block:: php
    :linenos:
-   
+
    namespace Application\Filter;
-   
+
    class MyFilter implements Zend\Filter\FilterInterface
    {
        public function filter($value)

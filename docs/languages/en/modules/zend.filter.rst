@@ -46,7 +46,7 @@ characters:
    echo $htmlEntities->filter('&'); // &
    echo $htmlEntities->filter('"'); // "
 
-Also, if a Filter inherits from ``Zend\Filter\AbstractFilter`` (just like all out-of-the-box Filters) 
+Also, if a Filter inherits from ``Zend\Filter\AbstractFilter`` (just like all out-of-the-box Filters)
 you can also use them as such:
 
 .. code-block:: php
