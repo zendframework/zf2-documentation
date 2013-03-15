@@ -220,7 +220,7 @@ Using the Proxy adapter requires several additional configuration parameters to 
 
       .. _zend.http.client.adapters.proxy.table:
 
-      .. table:: Zend\Http\Client configuration parameters
+      .. table:: Zend\\Http\\Client configuration parameters
 
          +----------+------------------------------+-------------+--------------------------------------+
          |Parameter |Description                   |Expected Type|Example Value                         |
@@ -233,7 +233,7 @@ Using the Proxy adapter requires several additional configuration parameters to 
          +----------+------------------------------+-------------+--------------------------------------+
          |proxy_pass|Proxy password, if required   |string       |'secret' or '' for none (default)     |
          +----------+------------------------------+-------------+--------------------------------------+
-         |proxy_auth|Proxy HTTP authentication type|string       |Zend\Http\Client::AUTH_BASIC (default)|
+         |proxy_auth|Proxy HTTP authentication type|string       |Zend\\Http\\Client::AUTH_BASIC (default)|
          +----------+------------------------------+-------------+--------------------------------------+
 
 
@@ -242,12 +242,12 @@ Using the Proxy adapter requires several additional configuration parameters to 
 ``Zend\Http\Client\Adapter\Socket``. ``proxy_port`` defaults to '8080' - if your proxy listens on a different port you
 must set this one as well.
 
-``proxy_user`` and ``proxy_pass`` are only required if your proxy server requires you to authenticate. Providing 
-these will add a 'Proxy-Authentication' header to the request. If your proxy does not require authentication, you 
+``proxy_user`` and ``proxy_pass`` are only required if your proxy server requires you to authenticate. Providing
+these will add a 'Proxy-Authentication' header to the request. If your proxy does not require authentication, you
 can leave these two options out.
 
 ``proxy_auth`` sets the proxy authentication type, if your proxy server requires authentication. Possibly values are
-similar to the ones accepted by the ``Zend\Http\Client::setAuth()`` method.  Currently, only basic authentication 
+similar to the ones accepted by the ``Zend\Http\Client::setAuth()`` method.  Currently, only basic authentication
 (``Zend\Http\Client::AUTH_BASIC``) is supported.
 
 .. _zend.http.client.adapters.proxy.example-1:
@@ -442,7 +442,7 @@ test and test its behavior.
 
 If you need the adapter to fail on demand you can use ``setNextRequestWillFail($flag)``. The method will cause the
 next call to ``connect()`` to throw an ``Zend\Http\Client\Adapter\Exception\RuntimeException`` exception. This can
-be useful when our application caches content from an external site (in case the site goes down) and you want to 
+be useful when our application caches content from an external site (in case the site goes down) and you want to
 test this feature.
 
 .. _zend.http.client.adapters.test.example-3:
@@ -476,8 +476,8 @@ test this feature.
 Creating your own connection adapters
 -------------------------------------
 
-``Zend\Http\Client`` has been designed so that you can create and use your own connection adapters. 
-You could, for example, create a connection adapter that uses persistent sockets, or a connection 
+``Zend\Http\Client`` has been designed so that you can create and use your own connection adapters.
+You could, for example, create a connection adapter that uses persistent sockets, or a connection
 adapter with caching abilities, and use them as needed in your application.
 
 In order to do so, you must create your own adapter class that implements the

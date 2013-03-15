@@ -41,7 +41,7 @@ Adding Cookies and Using Cookie Persistence
 -------------------------------------------
 
 ``Zend\Http\Client`` provides an easy interface for adding cookies to your request, so that no direct header
-modification is required. Cookies can be added using either the `addCookie()` or ``setCookies`` method.  The 
+modification is required. Cookies can be added using either the `addCookie()` or ``setCookies`` method.  The
 ``addCookie`` method has a number of operating modes:
 
 .. _zend.http.client.cookies.example-1:
@@ -71,7 +71,7 @@ modification is required. Cookies can be added using either the `addCookie()` or
     $client->addCookie($cookies);
 
 The ``setCookies()`` method works in a similar manner, except that it requires an array
-of cookie values as its only argument and also clears the cookie container before 
+of cookie values as its only argument and also clears the cookie container before
 adding the new cookies:
 
 .. _zend.http.client.cookies.example-2:
@@ -130,8 +130,8 @@ For more information about the ``Zend\Http\Client\Cookies`` class, see :ref:`thi
 Setting Custom Request Headers
 ------------------------------
 
-Setting custom headers is performed by first fetching the header container from the client's 
-``Zend\Http\Request`` object.  This method is quite diverse and can be used in several ways, 
+Setting custom headers is performed by first fetching the header container from the client's
+``Zend\Http\Request`` object.  This method is quite diverse and can be used in several ways,
 as the following example shows:
 
 .. _zend.http.client.custom_headers.example-1:
@@ -144,7 +144,7 @@ as the following example shows:
     // Fetch the container
     $headers = $client->getRequest()->getHeaders();
 
-    // Setting a single header. Will not overwrite any 
+    // Setting a single header. Will not overwrite any
     // previously-added headers of the same name.
     $headers->addHeaderLine('Host', 'www.example.com');
 
@@ -200,7 +200,7 @@ parameter, a form name as the second parameter, and data as a third optional par
 is ``NULL``, the first file name parameter is considered to be a real file on disk, and ``Zend\Http\Client`` will
 try to read this file and upload it. If the data parameter is not ``NULL``, the first file name parameter will be
 sent as the file name, but no actual file needs to exist on the disk. The second form name parameter is always
-required, and is equivalent to the "name" attribute of an >input< tag, if the file was to be uploaded through an
+required, and is equivalent to the "name" attribute of an ``<input>`` tag, if the file was to be uploaded through an
 *HTML* form. A fourth optional parameter provides the file's content-type. If not specified, and
 ``Zend\Http\Client`` reads the file from the disk, the ``mime_content_type`` function will be used to guess the file's
 content type, if it is available. In any case, the default MIME type will be application/octet-stream.
@@ -255,10 +255,10 @@ encoding type using ``setEncType()``.
     :linenos:
 
     $xml = '<book>' .
-        '  <title>Islands in the Stream</title>' .
-        '  <author>Ernest Hemingway</author>' .
-        '  <year>1970</year>' .
-        '</book>';
+           '  <title>Islands in the Stream</title>' .
+           '  <author>Ernest Hemingway</author>' .
+           '  <year>1970</year>' .
+           '</book>';
     $client->setMethod('POST');
     $client->setRawBody($xml);
     $client->setEncType('text/xml');
@@ -330,9 +330,9 @@ body and headers are reset and are not reused in the next request.
    To clean all cookies as well, use ``resetParameters(true)``, or call ``clearCookies()`` after
    calling ``resetParameters()``.
 
-Another feature designed specifically for consecutive requests is the ``Zend\Http\Client\Cookies`` object. 
+Another feature designed specifically for consecutive requests is the ``Zend\Http\Client\Cookies`` object.
 This "Cookie Jar" allow you to save cookies set by the server in a request, and send them back on consecutive
-requests transparently. This allows, for example, going through an authentication request before sending 
+requests transparently. This allows, for example, going through an authentication request before sending
 the actual data-fetching request.
 
 If your application requires one authentication request per user, and consecutive requests might be performed in
