@@ -8,8 +8,8 @@ HTTP Client - Static Usage
 Overview
 --------
 
-The ``Zend\Http`` component also provides ``Zend\Http\ClientStatic``, a static 
-HTTP client which exposes a simplified API for quickly performing GET and POST 
+The ``Zend\Http`` component also provides ``Zend\Http\ClientStatic``, a static
+HTTP client which exposes a simplified API for quickly performing GET and POST
 operations:
 
 .. _zend.http.client-static.quick-start:
@@ -36,7 +36,7 @@ Quick Start
    // We can also do a POST request using the same format.  Here we POST
    // login credentials (username/password) to a login page:
    $response = ClientStatic::post('https://example.org/login.php', array(
-       'username' => 'foo', 
+       'username' => 'foo',
        'password' => 'bar',
    ));
 
@@ -44,8 +44,8 @@ Quick Start
 Configuration Options
 ---------------------
 
-It is not possible to set configuration options on the ``Zend\Http\Client`` instance 
-encapsulated by ``Zend\Http\ClientStatic``. To perform a HTTP request which requires 
+It is not possible to set configuration options on the ``Zend\Http\Client`` instance
+encapsulated by ``Zend\Http\ClientStatic``. To perform a HTTP request which requires
 non-default configurations, please use ``Zend\Http\Client`` directly.
 
 .. _zend.http.client-static.methods:
@@ -59,7 +59,7 @@ Available Methods
    ``get(string $url, array $query = array(), array $headers = array(), mixed $body = null)``
 
    Perform an HTTP ``GET`` request using the provided URL, query string variables, headers
-   and request body. 
+   and request body.
 
    Returns Zend\\Http\\Response
 
@@ -69,7 +69,7 @@ Available Methods
    ``post(string $url, array $params, array $headers = array(), mixed $body = null)``
 
    Perform an HTTP ``POST`` request using the provided URL, parameters, headers
-   and request body. 
+   and request body.
 
    Returns Zend\\Http\\Response
 
