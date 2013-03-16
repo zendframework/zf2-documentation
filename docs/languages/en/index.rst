@@ -22,7 +22,7 @@
    user-guide/forms-and-actions
    user-guide/conclusion
    modules/zendtool.introduction
-   tutorials/quickstart.di
+   tutorials/concepts-and-best-practice/concept.di
    tutorials/unittesting
    tutorials/tutorial.navigation
    tutorials/tutorial.pagination
@@ -264,32 +264,40 @@
     * :doc:`ref/overview`
     * :doc:`ref/installation`
 
-|UserGuide|
------------
-
-|UserGuideIntroduction|
-
-    * :doc:`user-guide/overview`
-    * :doc:`user-guide/skeleton-application`
-    * :doc:`user-guide/modules`
-    * :doc:`user-guide/routing-and-controllers`
-    * :doc:`user-guide/database-and-models`
-    * :doc:`user-guide/styling-and-translations`
-    * :doc:`user-guide/forms-and-actions`
-    * :doc:`user-guide/conclusion`
-
-|ZFTool|
---------
-
-    * :doc:`modules/zendtool.introduction`
-
 |LearningZendFramework|
------------------------
+---------
 
-    * :doc:`tutorials/quickstart.di`
+|Introduction|
+^^^^^^^^^
+|AlbumAppIntroduction|
+
+    * :doc:`tutorials/album-app/overview`
+    * :doc:`tutorials/album-app/skeleton-application`
+    * :doc:`tutorials/album-app/modules`
+    * :doc:`tutorials/album-app/routing-and-controllers`
+    * :doc:`tutorials/album-app/database-and-models`
+    * :doc:`tutorials/album-app/styling-and-translations`
+    * :doc:`tutorials/album-app/forms-and-actions`
+    * :doc:`tutorials/album-app/conclusion`
+
+|MovingOn|
+^^^^^^^^
+|MovingOnIntroduction|
+
     * :doc:`tutorials/unittesting`
     * :doc:`tutorials/tutorial.navigation`
     * :doc:`tutorials/tutorial.pagination`
+
+|ConceptsAndBestPractices|
+^^^^^^^^^^^^^^^^^^^^
+|ConceptsAndBestPracticeIntroduction|
+
+    * :doc:`tutorials/concepts-and-best-practice/concept.di`
+
+|ZFTool|
+^^^^^^
+
+    * :doc:`modules/zendtool.introduction`
 
 |ZendFrameworkReference|
 ------------------------
@@ -706,7 +714,7 @@ Zend\\Soap
         * :doc:`modules/zend.soap.client`
         * :doc:`modules/zend.soap.wsdl`
         * :doc:`modules/zend.soap.auto-discovery`
-        
+
 .. _zend.stdlib:
 
 Zend\\Stdlib
