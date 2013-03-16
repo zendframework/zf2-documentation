@@ -58,7 +58,7 @@ objet ``Zend_Config`` peut être utilisé avec ``setConfig()``). Par défaut, le
 Zend\Captcha\Dumb
 -----------------
 
-L'adaptateur ``Zend\Captch\Dumb`` propose une chaine aléatoire qui doit être ressaisie, mais inversée. Ce n'est
+L'adaptateur ``Zend\Captch\Dumb`` propose une chaîne aléatoire qui doit être ressaisie, mais inversée. Ce n'est
 pas une solution *CAPTCHA* idéale (un robot peut la détourner), il devrait être utilisé comme solution de
 remplacement extrême, ou pour les tests. Il étend ``Zend\Captcha\Word``.
 

@@ -17,7 +17,7 @@ activé en passant le paramètre "ssl" ou "tls" au tableau de configuration du c
    :linenos:
 
    $config = array('ssl' => 'tls',
-                   'port' => 25); // Port optionel fourni
+                   'port' => 25); // Port optionnel fourni
 
    $transport = new Zend\Mail_Transport\Smtp('mail.server.com', $config);
 

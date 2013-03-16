@@ -7,7 +7,7 @@ Zend\Filter\Inflector
 ``Zend\Filter\Inflector`` est un outil de conversion de règles (sous forme de chaîne de caractères), vers une
 cible. Ce procédé est appelé inflexion.
 
-Par exemple, transformer des MotsEncasseMélangée ou des motsEnCamelCase vers un chemin. Vous pourriez avoir
+Par exemple, transformer des MotsEnCasseMélangée ou des motsEnCamelCase vers un chemin. Vous pourriez avoir
 besoin de passer les caractères en minuscules, et séparer les mots en utilisant un tiret ("-"). Un inflecteur
 sert à ceci.
 

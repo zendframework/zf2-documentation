@@ -75,9 +75,9 @@ comment employer votre programme.
 
    $opts = new Zend\Console\Getopt(
      array(
-       'abricot|a'  => 'option abricot, sans parametres',
-       'banane|b=i' => 'option banane, avec un parametre entier obligatoire',
-       'pear|p-s'   => 'option pear, avec un parametre chaîne optionel'
+       'abricot|a'  => 'option abricot, sans paramètres',
+       'banane|b=i' => 'option banane, avec un paramètre entier obligatoire',
+       'pear|p-s'   => 'option pear, avec un paramètre chaîne optionel'
      )
    );
 

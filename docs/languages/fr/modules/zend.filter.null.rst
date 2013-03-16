@@ -39,20 +39,20 @@ déclarer quels types seront convertis.
 
 Les types suivants sont gérés:
 
-- **booleen**: Convertit le booléen **FALSE** en ``NULL``.
+- **booléen**: Convertit le booléen **FALSE** en ``NULL``.
 
 - **entier**: Convertit l'entier **0** en ``NULL``.
 
 - **tableau_vide**: Convertit le **tableau** vide en ``NULL``.
 
-- **chaine**: Convertit la chaine vide **''** en ``NULL``.
+- **chaîne**: Convertit la chaine vide **''** en ``NULL``.
 
-- **zero**: Convertit la chaine zéro (**'0'**) en ``NULL``.
+- **zero**: Convertit la chaîne zéro (**'0'**) en ``NULL``.
 
 - **tout**: Convertit tous les types cités en ``NULL``. (comportement par défaut).
 
 Il existe plusieurs manières de spécifier les types à filtrer, des constantes, des types ajoutés à la suite,
-des chaines de caractères, un tableau... Voyez les exemples suivants:
+des chaînes de caractères, un tableau... Voyez les exemples suivants:
 
 .. code-block:: php
    :linenos:

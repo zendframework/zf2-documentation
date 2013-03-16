@@ -13,7 +13,7 @@ données n'est connu que des entreprises délivrant les cartes et devrait être 
 Cependant, il est utile de savoir si le numéro de la carte est valable **avant** d'effectuer de telles
 vérifications complexes. ``Zend\Validate\CreditCard`` vérifie simplement que le numéro est bien formé.
 
-Dans les cas où vous possederiez un service capable d'effectuer des vérifications complètes,
+Dans les cas où vous posséderiez un service capable d'effectuer des vérifications complètes,
 ``Zend\Validate\CreditCard`` vous permet de passer une fonction de rappel à utiliser si le numéro a été
 vérifié comme valide. Le retour de la fonction de rappel servira alors de retour général du validateur.
 

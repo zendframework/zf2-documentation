@@ -11,7 +11,7 @@ LessThan
 
    **Zend\Validate\LessThan ne supporte que les chiffres**
 
-   ``Zend\Validate\LessThan`` ne fonctionnera pas avec les chaines et les dates.
+   ``Zend\Validate\LessThan`` ne fonctionnera pas avec les chaînes et les dates.
 
 .. _zend.validator.set.lessthan.options:
 

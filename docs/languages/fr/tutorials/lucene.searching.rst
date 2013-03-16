@@ -50,7 +50,7 @@ Ou récupération d'un document à partir de l'index :
 
    Note importante ! Les identifiants de documents internes peuvent changer suite à une optimisation de l'index
    ou au processus d'auto-optimisation, mais il ne sera jamais changé pendant l'exécution d'un script à moins
-   que ne soient appellées les méthodes ``addDocument()`` (ce qui peut impliquer une procédure
+   que ne soient appelées les méthodes ``addDocument()`` (ce qui peut impliquer une procédure
    d'auto-optimisation) ou ``optimize()``.
 
 Le champ ``score`` est un score de résultat. Les résultats de recherche sont triés par score (meilleurs

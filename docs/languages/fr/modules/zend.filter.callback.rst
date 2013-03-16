@@ -7,7 +7,7 @@ Callback
 Ce filtre vous permet d'utiliser votre propre fonction en tant que filtre de ``Zend_Filter``. Nul besoin de créer
 un filtre si une fonction ou méthode fait déja le travail.
 
-Par exemple un filtre qui inverse une chaine.
+Par exemple un filtre qui inverse une chaîne.
 
 .. code-block:: php
    :linenos:

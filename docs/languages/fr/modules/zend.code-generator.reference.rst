@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.codegenerator.reference:
 
-Zend_CodeGenerator Réference
+Zend_CodeGenerator Référence
 ============================
 
 .. _zend.codegenerator.reference.abstracts:

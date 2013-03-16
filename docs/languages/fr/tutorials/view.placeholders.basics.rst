@@ -25,9 +25,9 @@ comme des collections. Vous pouvez ainsi :
 
 - **Rendre** le contenu agrégé.
 
-Typiquement, vous appelerez cette aide de vue sans argument, ce qui retournera le conteneur sur lequel opérer.
-Après vous afficherez (echo) ce contenu ou appelerez une méthode dessus pour le remplir ou le configurer. Si le
-conteneur est vide, son rendu sera une simple chaîne vide, sinon, le contenu sera aggrégé en fonction des
+Typiquement, vous appellerez cette aide de vue sans argument, ce qui retournera le conteneur sur lequel opérer.
+Après vous afficherez (echo) ce contenu ou appellerez une méthode dessus pour le remplir ou le configurer. Si le
+conteneur est vide, son rendu sera une simple chaîne vide, sinon, le contenu sera agrégé en fonction des
 règles que vous avez fixées.
 
 Par exemple, créons une barre de menu qui contient des "blocs" de contenu. Supposons que la structure de chaque

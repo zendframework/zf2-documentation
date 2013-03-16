@@ -485,11 +485,11 @@ La méta commande ALLOW_EMPTY
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Par défaut, si un champ existe dans le tableau d'entrées, alors les validateurs lui sont appliqués, même si la
-valeur de ce champs est la chaine vide (*''*). Ceci peut mener à des échecs de validation. Par exemple un
-validateur digits (chiffres) va échouer sur une chaine vide (laissant croire que la donnée puisse être composée
+valeur de ce champs est la chaîne vide (*''*). Ceci peut mener à des échecs de validation. Par exemple un
+validateur digits (chiffres) va échouer sur une chaîne vide (laissant croire que la donnée puisse être composée
 de lettres).
 
-Si la chaine vide doit pouvoir être considérée comme valide, utilisez la méta commande "allowEmpty" avec la
+Si la chaîne vide doit pouvoir être considérée comme valide, utilisez la méta commande "allowEmpty" avec la
 valeur ``TRUE``.
 
 Vous pouvez spécifier cette méta commande avec la constante de classe ``Zend\Filter\Input::ALLOW_EMPTY``
@@ -555,10 +555,10 @@ Vous pouvez spécifier cette méta commande au moyen de la constante de classe `
 
 La valeur par défaut de cette méta commande est ``FALSE``.
 
-La classe ``Zend_Validate`` est plus flexible lors du bris de la chaine d'exécution, par rapport à
-``Zend\Filter\Input``. Avec ``Zend_Validate``, vous pouvez mettre l'option pour casser la chaine indépendamment
+La classe ``Zend_Validate`` est plus flexible lors du bris de la chaîne d'exécution, par rapport à
+``Zend\Filter\Input``. Avec ``Zend_Validate``, vous pouvez mettre l'option pour casser la chaîne indépendamment
 pour chaque validateur. Avec ``Zend\Filter\Input``, la méta commande "breakChainOnFailure" s'applique à tous les
-validateurs dans la règle. Pour un usage plus flexible, créez votre propre chaine de validation comme ceci :
+validateurs dans la règle. Pour un usage plus flexible, créez votre propre chaîne de validation comme ceci :
 
 .. code-block:: php
    :linenos:
@@ -725,7 +725,7 @@ Alternativement, vous pouvez utiliser les méthodes ``addValidatorPrefixPath($pr
    $input->addValidatorPrefixPath('Autre_Namespace', 'Autre/Namespace');
    $input->addFilterPrefixPath('Foo_Namespace', 'Foo/Namespace');
 
-   // Maitenant l'ordre de recherche des validateurs est :
+   // Maintenant l'ordre de recherche des validateurs est :
    // 1. My_Namespace_Validate
    // 2. Autre_Namespace
    // 3. Zend_Validate

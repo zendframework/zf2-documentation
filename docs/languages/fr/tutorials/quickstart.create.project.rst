@@ -40,7 +40,7 @@ Créer votre projet
    Dans la dossier ``bin/`` de votre installation de Zend Framework se trouvent les scripts ``zf.sh`` et ``zf.bat``
    pour Unix et Windows respectivement. Notez le chemin absolu vers ces fichiers.
 
-   Partout ou vous voyez uyne référence à la commande ``zf``, utilisez le chemin absolu du script. Sur les
+   Partout ou vous voyez une référence à la commande ``zf``, utilisez le chemin absolu du script. Sur les
    système Unix, vous pouvez utiliser la fonctionnalité d'alias dans le shell: ``alias
    zf.sh=path/to/ZendFramework/bin/zf.sh``.
 
@@ -394,7 +394,7 @@ hôtes virtuels:
 Notons plusieurs points. D'abord le ``DocumentRoot`` pointe vers le dossier ``public`` du projet; ceci signifie que
 seuls les fichiers sous cette arborescence peuvent être servis directement par le serveur. Ensuite,
 ``AllowOverride``, ``Order``, et ``Allow``; ces directives servent à autoriser l'utilisation de fichiers
-``htacess`` dans le projet. Pendant le développement, c'est une bonne pratique car ça évite de redémarrer sans
+``htaccess`` dans le projet. Pendant le développement, c'est une bonne pratique car ça évite de redémarrer sans
 arrêt le serveur dès qu'un changement y est opéré; cependant en production le contenu de ``htaccess`` devrait
 être reproduit dans la configuration puis désactivé. Enfin notez ``SetEnv``. Ici nous renseignons une variable
 d'environnement pour l'hôte virtuel, celle-ci sera récupérée dans ``index.php`` et utilisée pour affecter la

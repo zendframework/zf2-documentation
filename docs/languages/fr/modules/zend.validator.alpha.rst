@@ -10,8 +10,8 @@ n'accepte pas les chiffres.
 
 .. _zend.validator.set.alpha.options:
 
-Options suportées par Zend\Validate\Alpha
------------------------------------------
+Options supportées par Zend\Validate\Alpha
+------------------------------------------
 
 Les options suivantes sont supportées par ``Zend\Validate\Alpha``:
 

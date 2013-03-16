@@ -10,12 +10,12 @@ Introduction à l'authentification
 ---------------------------------
 
 Une fois que l'application a récupéré les informations d'un utilisateur, elle doit vérifier leur
-"authenticité", c'est l'authentification. Pour celà, deux informations sont nécessaires : l'identifiant et un
-ensemble de règles régissant cet identifiant, aujourd'hui typiquement une chaine de caractères servant de mot de
-passe est très classique, mais d'autres procédés existent (reconnaissances digitales, occulaires...)
+"authenticité", c'est l'authentification. Pour cela, deux informations sont nécessaires : l'identifiant et un
+ensemble de règles régissant cet identifiant, aujourd'hui typiquement une chaîne de caractères servant de mot de
+passe est très classique, mais d'autres procédés existent (reconnaissances digitales, oculaires...)
 
 Un identifiant peut lui aussi être un "login" tout banal, mais pourquoi pas un numéro de membre, une adresse
-email... le secret, lui, est donc souvent un mot de passe sous forme de chaine de caractères.
+email... le secret, lui, est donc souvent un mot de passe sous forme de chaîne de caractères.
 
 .. _learning.multiuser.authentication.basic-usage:
 
@@ -45,7 +45,7 @@ Supposant une table de base de données suivante:
    )
 
 C'est une table qui inclue des champs nom, password et aussi grain de sel. Le grain de sel est utilisé pour
-améliorer la sécurité contre les attaques par force brute qui cibleraient l'alogithme de hashage du mot de
+améliorer la sécurité contre les attaques par force brute qui cibleraient l'algorithme de hashage du mot de
 passe. `Plus d'informations`_ sur le grain de sel.
 
 Créons un formulaire de login simple. Nous utiliserons ``Zend_Form``.

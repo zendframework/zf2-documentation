@@ -7,12 +7,12 @@ Test unitaires
 Une suite de tests unitaires est essentielle pour un développement de gros
 projets, surtout ceux avec beaucoup de personnes impliquées. Revenir en arrière
 et tester manuellement chaque composant d'une application après chaque changement
-n'est pas envisageable. Vos tests unitaires vont pemettre d'alléger ce processus
-en testant automatiquement les composants de votre application et en déclanchant
+n'est pas envisageable. Vos tests unitaires vont permettre d'alléger ce processus
+en testant automatiquement les composants de votre application et en déclenchant
 des alertes quand l'un d'eux ne se comporte pas comme il se comportait au moment
 de l'écriture du test.
 
-L'API du Zend Framework 2 utlise `PHPUnit <http://phpunit.de/>`_, tout comme
+L'API du Zend Framework 2 utilise `PHPUnit <http://phpunit.de/>`_, tout comme
 l'application de ce tutoriel. Une explication détaillée des tests unitaires n'est
 pas le but de ce tutoriel, et nous ne fournirons que des exemples de tests pour
 les composants des pages suivantes. Ce tutoriel suppose que vous avez déjà

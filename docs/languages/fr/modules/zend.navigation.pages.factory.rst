@@ -4,11 +4,11 @@
 Créer des pages avec la fabrique
 ================================
 
-Toute les pages (même les personnalisées) peuvent petre créer via la fabrique
+Toute les pages (même les personnalisées) peuvent être créer via la fabrique
 ``Zend\Navigation\Page\AbstractPage::factory()``. Celle-ci peut prendre un tableau d'options ou un objet ``Zend_Config``. Chaque
 clé correspondant à une option de l'obet page à créer comme l'indique la section concernant les :ref:`Pages
 <zend.navigation.pages>`. Si le paramètre *uri* est passé et qu'aucun paramètre concernant *MVC* ne sont
-présents (*action, controller, module, route*), une page de type *URI* sera créee. Si un ou plusieurs paramètres
+présents (*action, controller, module, route*), une page de type *URI* sera créée. Si un ou plusieurs paramètres
 concernant *MVC* sont passés, une page de type *MVC* sera retournée.
 
 Si le paramètre *type* est passé, la fabrique l'utilisera pour déterminer le nom de la classe à utiliser. Les

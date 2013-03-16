@@ -53,7 +53,7 @@ cas de notre exemple, notre élément devrait avoir trois comportements distinct
 - Si un tableau contenant les clés jour, mois, année est utilisé, alors les valeurs doivent être stockées.
 
 En interne, les jour, mois et année seront stockés distinctement. Lorsque la valeur de l'élément sera
-demandée, nous récupèrerons une chaine formatée et normalisée. Nous surchargerons ``getValue()`` pour
+demandée, nous récupérerons une chaîne formatée et normalisée. Nous surchargerons ``getValue()`` pour
 assembler les segments élémentaires composant la date.
 
 Voici à quoi ressemblerait la classe:

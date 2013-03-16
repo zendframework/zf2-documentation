@@ -79,7 +79,7 @@ Utilisez ce code pour vérifier si le support d'UTF-8 est assuré pour PCRE :
 Les analyseurs UTF-8 insensibles à la casse ont aussi besoin de l'extension `mbstring`_ pour être activés.
 
 Si vous voulez les analyseurs UTF-8 insensibles à la casse, mais que vous n'avez pas mbstring, normalisez alors
-vos données avant de les indexer ainsi que vos requêtes avant vos recherches, ceci en les tranformant en casse
+vos données avant de les indexer ainsi que vos requêtes avant vos recherches, ceci en les transformant en casse
 minuscule :
 
    .. code-block:: php
