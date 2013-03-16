@@ -313,7 +313,7 @@ defining a form for re-use in your application.
 
        public function __construct(CaptchaAdapter $captcha)
        {
-		   $this->captcha = $captcha;
+           $this->captcha = $captcha;
 
            // add() can take either an Element/Fieldset instance,
            // or a specification, from which the appropriate object
@@ -444,67 +444,67 @@ factory to create an input. Every HTML5 (email, url, color…) elements have a b
 
     namespace Zend\Form\Element;
 
-	use Zend\Form\Element;
-	use Zend\InputFilter\InputProviderInterface;
-	use Zend\Validator\Regex as RegexValidator;
-	use Zend\Validator\ValidatorInterface;
-	
-	/**
-	 * @category   Zend
-	 * @package    Zend_Form
-	 * @subpackage Element
-	 */
-	class Color extends Element implements InputProviderInterface
-	{
-	    /**
-	     * Seed attributes
-	     *
-	     * @var array
-	     */
-	    protected $attributes = array(
-	        'type' => 'color',
-	    );
-	
-	    /**
-	     * @var ValidatorInterface
-	     */
-	    protected $validator;
-	
-	    /**
-	     * Get validator
-	     *
-	     * @return ValidatorInterface
-	     */
-	    protected function getValidator()
-	    {
-	        if (null === $this->validator) {
-	            $this->validator = new RegexValidator('/^#[0-9a-fA-F]{6}$/');
-	        }
-	        return $this->validator;
-	    }
-	
-	    /**
-	     * Provide default input rules for this element
-	     *
-	     * Attaches an email validator.
-	     *
-	     * @return array
-	     */
-	    public function getInputSpecification()
-	    {
-	        return array(
-	            'name' => $this->getName(),
-	            'required' => true,
-	            'filters' => array(
-	                array('name' => 'Zend\Filter\StringTrim'),
-	                array('name' => 'Zend\Filter\StringToLower'),
-	            ),
-	            'validators' => array(
-	                $this->getValidator(),
-	            ),
-	        );
-	    }
-	}
+    use Zend\Form\Element;
+    use Zend\InputFilter\InputProviderInterface;
+    use Zend\Validator\Regex as RegexValidator;
+    use Zend\Validator\ValidatorInterface;
+    
+    /**
+     * @category   Zend
+     * @package    Zend_Form
+     * @subpackage Element
+     */
+    class Color extends Element implements InputProviderInterface
+    {
+        /**
+         * Seed attributes
+         *
+         * @var array
+         */
+        protected $attributes = array(
+            'type' => 'color',
+        );
+    
+        /**
+         * @var ValidatorInterface
+         */
+        protected $validator;
+    
+        /**
+         * Get validator
+         *
+         * @return ValidatorInterface
+         */
+        protected function getValidator()
+        {
+            if (null === $this->validator) {
+                $this->validator = new RegexValidator('/^#[0-9a-fA-F]{6}$/');
+            }
+            return $this->validator;
+        }
+    
+        /**
+         * Provide default input rules for this element
+         *
+         * Attaches an email validator.
+         *
+         * @return array
+         */
+        public function getInputSpecification()
+        {
+            return array(
+                'name' => $this->getName(),
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'Zend\Filter\StringTrim'),
+                    array('name' => 'Zend\Filter\StringToLower'),
+                ),
+                'validators' => array(
+                    $this->getValidator(),
+                ),
+            );
+        }
+    }
 
 The above would hint to the input filter to create and attach an input named after the element, marking it as
 required, and giving it a ``StringTrim`` and ``StringToLower`` filters and a ``Regex`` validator. Note that you can either rely on the input filter to create filters and validators, or directly instantiate them.
@@ -787,21 +787,23 @@ HTML5 brings a lot of exciting features, one of them being a simplified client f
 .. code-block:: php
    :linenos:
 
-   	$form->add(array(
-   		'name' => 'phoneNumber',
-   		'options' => array(
-   			'label' => 'Your phone number'
-   		),
-   		'attributes' => array(
-   			'type' => 'tel'
-   			'required' => 'required',
-   			'pattern'  => '^0[1-68]([-. ]?[0-9]{2}){4}$'
-   		)
-   	));
+   $form->add(array(
+       'name' => 'phoneNumber',
+       'options' => array(
+           'label' => 'Your phone number'
+       ),
+       'attributes' => array(
+           'type' => 'tel'
+           'required' => 'required',
+           'pattern'  => '^0[1-68]([-. ]?[0-9]{2}){4}$'
+       )
+   ));
 
 View helpers will automatically render those attributes, and hence allowing modern browsers to perform automatic validation.
 
-> Note: although client validation is nice from a user experience point of view, it has to be used in addition with server validation, as client validation can be easily fooled.
+.. note::
+
+    Although client validation is nice from a user experience point of view, it has to be used in addition with server validation, as client validation can be easily fooled.
 
 .. _zend.form.quick-start.partial:
 
