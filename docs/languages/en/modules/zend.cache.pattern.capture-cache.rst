@@ -62,7 +62,7 @@ Configuration Options
 +------------------+------------------------+------------------------+-----------------------------------------------------------------+
 |dir_permission    |``integer`` ``boolean`` |0700 (``false`` on win) |Set permissions of generated output directories                  |
 +------------------+------------------------+------------------------+-----------------------------------------------------------------+
-|umask             |``integer`` ``boolean`` |``false``               |Using umask on generationg output files / directories            |
+|umask             |``integer`` ``boolean`` |``false``               |Using umask on generating output files / directories             |
 +------------------+------------------------+------------------------+-----------------------------------------------------------------+
 
 .. _zend.cache.pattern.capture-cache.methods:

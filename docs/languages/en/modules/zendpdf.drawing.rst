@@ -756,8 +756,8 @@ Scaling transformation is provided by ``ZendPdf\Page::scale()`` method:
    /**
     * Scale coordination system.
     *
-    * @param float $xScale - X dimention scale factor
-    * @param float $yScale - Y dimention scale factor
+    * @param float $xScale - X dimension scale factor
+    * @param float $yScale - Y dimension scale factor
     * @return ZendPdf\Page
     */
    public function scale($xScale, $yScale);

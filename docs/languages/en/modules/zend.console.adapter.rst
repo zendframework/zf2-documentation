@@ -15,7 +15,7 @@ drawing capabilities.
     for running modular console applications without directly writing to or reading from console window.
 
 
-Retreving console adapter
+Retrieving console adapter
 --------------------------
 
 If you are using :doc:`MVC controllers <zend.mvc.controllers>` you can obtain Console adapter instance using
@@ -104,7 +104,7 @@ Writing to console
 
 **$console->write( string $text, $color = null, $bgColor = null )**
     Write a ``$text`` to the console, optionally using foreground ``$color`` and background ``$bgColor``.
-    Color value is one of the constants in ``Zend\Console\ColorInteface``.
+    Color value is one of the constants in ``Zend\Console\ColorInterface``.
 
 **$console->writeLine( string $text, $color = null, $bgColor = null )**
     Write a single line of ``$text`` to the console. This method will output a newline character at the end of text

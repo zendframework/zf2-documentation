@@ -706,7 +706,7 @@ The service supports deleting a tag for an authenticated user:
 
    $service->deleteTagEntry($tagEntry, true);
 
-.. _zendgdata.photos.optimistic_concurrenty:
+.. _zendgdata.photos.optimistic_concurrency:
 
 Optimistic Concurrency (Notes On Deletion)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

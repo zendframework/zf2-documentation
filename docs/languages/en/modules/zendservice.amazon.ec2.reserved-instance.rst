@@ -47,7 +47,7 @@ Reserved Instances Usage
 
 ``describeInstances()`` will return information about a reserved instance or instances that you purchased.
 
-``describeInstances()`` returns a multi-demential array that contains reservedInstancesId, instanceType,
+``describeInstances()`` returns a multi-dimensional array that contains reservedInstancesId, instanceType,
 availabilityZone, duration, fixedPrice, usagePrice, productDescription, instanceCount and state.
 
 .. code-block:: php
@@ -65,7 +65,7 @@ availabilityZone, duration, fixedPrice, usagePrice, productDescription, instance
 Reserved Instances, you purchase the right to launch Amazon *EC2* instances for a period of time (without getting
 insufficient capacity errors) and pay a lower usage rate for the actual time used.
 
-``describeOfferings()`` returns a multi-demential array that contains reservedInstancesId, instanceType,
+``describeOfferings()`` returns a multi-dimensional array that contains reservedInstancesId, instanceType,
 availabilityZone, duration, fixedPrice, usagePrice and productDescription.
 
 .. code-block:: php

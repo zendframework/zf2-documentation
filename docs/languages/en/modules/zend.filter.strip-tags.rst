@@ -45,7 +45,7 @@ See the following example for the default behaviour of this filter:
 
 As result you will get the stripped content 'My content'.
 
-When the content contains broken or partitial tags then the complete following content will be erased.
+When the content contains broken or partial tags then the complete following content will be erased.
 See the following example: 
 
 .. code-block:: php

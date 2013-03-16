@@ -191,7 +191,7 @@ fault is returned. If you specify an instance that you do not own, it will not b
 *describeByImageId* is functionally the same as *describe* but it will only return the instances that are using the
 provided imageId.
 
-*describeByImageId* will return an array containing information on the instances thare were started by the passed
+*describeByImageId* will return an array containing information on the instances there were started by the passed
 in imageId
 
 .. code-block:: php

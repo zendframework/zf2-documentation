@@ -87,7 +87,7 @@ Structure of ZendGData
      the data retrieved back from services and for constructing data to be sent to services. These include getters
      and setters such as ``setText()`` to set the child text node of an element, ``getText()`` to retrieve the text
      node of an element, ``getStartTime()`` to retrieve the start time attribute of a When element, and other
-     similiar methods. The data model classes also include methods such as ``getDOM()`` to retrieve a DOM
+     similar methods. The data model classes also include methods such as ``getDOM()`` to retrieve a DOM
      representation of the element and all children and ``transferFromDOM()`` to construct a data model
      representation of a DOM tree.
 

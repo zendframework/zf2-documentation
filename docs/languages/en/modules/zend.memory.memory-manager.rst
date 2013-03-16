@@ -9,7 +9,7 @@ Creating a Memory Manager
 -------------------------
 
 You can create new a memory manager (``Zend\Memory\Manager`` object) using the ``Zend\Memory\Memory::factory($backendName
-[, $backendOprions])`` method.
+[, $backendOptions])`` method.
 
 The first argument ``$backendName`` is a string that names one of the backend implementations supported by
 ``Zend\Cache``.

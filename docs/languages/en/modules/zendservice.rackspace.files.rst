@@ -117,7 +117,7 @@ To publish a container as *CDN* (Content Delivery Network) you can use the **ena
        printf("ERROR: %s",$rackspace->getErrorMsg());
    }
 
-This example publish the container **test** as *CDN*. If the operation is successfull returns an associative arrays
+This example publish the container **test** as *CDN*. If the operation is successful returns an associative arrays
 with the following values:
 
 - **cdn_uri**, the url of the CDN container;
