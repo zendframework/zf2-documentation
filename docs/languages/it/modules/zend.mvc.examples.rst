@@ -101,22 +101,13 @@ registrare i listener in quel momento. Un esempio:
 
    namespace SomeCustomModule;
 
-   use Zend\EventManager\StaticEventManager;
-
    class Module
    {
-       public function init()
+       public function onBootstrap($e)
        {
-           // Remember to keep the init() method as lightweight as possible
-           $events = StaticEventManager::getInstance();
-           $events->attach('bootstrap', 'bootstrap', array($this, 'registerListeners'));
-       }
-
-       public function registerListeners($e)
-       {
-           $application = $e->getParam('application');
-           $config      = $e->getParam('config');
-           $view        = $application->getLocator()->get('view');
+           $application = $e->getApplication();
+           $config      = $application->getServiceManager()->get('Config');
+           $view        = $application->getServiceManager()->get('ViewHelperManager');
            $view->headTitle($config['view']['base_title']);
 
            $listeners   = new Listeners\ViewListener();
@@ -126,7 +117,7 @@ registrare i listener in quel momento. Un esempio:
    }
 
 Questo dimostra molte cose. Primo, mostra come registrare un callback sull'evento "bootstrap" del bootstrap (con il
-metodo ``init()``). Secondo, mostra che il listener e come può essere usato per registrare listener con
+metodo ``onBootstrap()``). Secondo, mostra che il listener e come può essere usato per registrare listener con
 l'applicazione. Usa l'istanza ``Application`` come l'istanza del module manager. Dalla ``Application`` è capace di
 attaccare il locator e dal ``Manager`` ne prende la configurazione. Questo sono spesso utilizzate per prendere la
 vista, configurare alcuni helper e allora registrare un listener aggregato con l'event manager dell'applicazione.

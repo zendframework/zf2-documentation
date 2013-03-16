@@ -109,8 +109,8 @@ time. As an example:
        public function onBootstrap($e)
        {
            $application = $e->getApplication();
-           $config      = $application->getConfiguration();
-           $view        = $application->getServiceManager()->get('View');
+           $config      = $application->getServiceManager()->get('Config');
+           $view        = $application->getServiceManager()->get('ViewHelperManager');
            $view->headTitle($config['view']['base_title']);
 
            $listeners   = new Listeners\ViewListener();
