@@ -7,26 +7,25 @@ In your view scripts, often it is necessary to perform certain complex functions
 date, generating form elements, or displaying action links. You can use helper, or plugin, classes to perform these
 behaviors for you.
 
-A helper is simply a class that implements the interface ``Zend\View\Helper``. ``Helper`` simply defines two
-methods, ``setView()``, which accepts a ``Zend\View\Renderer`` instance/implementation, and ``getView()``, used to
-retrieve that instance. ``Zend\View\PhpRenderer`` composes a :ref:`plugin broker <zend.loader.plugin-broker>`,
-allowing you to retrieve helpers, and also provides some method overloading capabilities that allow proxying method
-calls to helpers.
+A helper is simply a class that implements ``Zend\View\Helper\HelperInterface`` and it simply defines two methods,
+``setView()``, which accepts a ``Zend\View\Renderer\RendererInterface`` instance/implementation, and ``getView()``,
+used to retrieve that instance. ``Zend\View\Renderer\PhpRenderer`` composes a *plugin manager*, allowing you to
+retrieve helpers, and also provides some method overloading capabilities that allow proxying method calls to helpers.
 
-As an example, let's say we have a helper class named ``My\Helper\LowerCase``, which we map in our plugin broker to
-the name "lowercase". We can retrieve or invoke it in one of the following ways:
+As an example, let's say we have a helper class named ``MyModule\View\Helper\LowerCase``, which we register in our
+plugin manager with the name "lowercase". We can retrieve it in one of the following ways:
 
 .. code-block:: php
    :linenos:
 
    // $view is a PhpRenderer instance
 
-   // Via the plugin broker:
-   $broker = $view->getBroker();
-   $helper = $broker->load('lowercase');
+   // Via the plugin manager:
+   $pluginManager = $view->getHelperPluginManager();
+   $helper        = $pluginManager->get('lowercase');
 
    // Retrieve the helper instance, via the method "plugin",
-   // which proxies to the plugin broker:
+   // which proxies to the plugin manager:
    $helper = $view->plugin('lowercase');
 
    // If the helper does not define __invoke(), the following also retrieves it:
@@ -40,8 +39,7 @@ The last two examples demonstrate how the ``PhpRenderer`` uses method overloadin
 directly, offering a convenience API for end users.
 
 A large number of helpers are provided in the standard distribution of Zend Framework. You can also register
-helpers by adding them to the :ref:`plugin broker <zend.loader.plugin-broker>`, or the plugin locator the broker
-composes. Please refer to the :ref:`plugin broker documentation <zend.loader.plugin-broker>` for details.
+helpers by adding them to the *plugin manager*.
 
 .. _zend.view.helpers.initial:
 
