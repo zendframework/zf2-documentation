@@ -82,9 +82,9 @@ Which would then render:
       // in final partial view script:
       $view->partialLoop()->setObjectKey('model');
 
-   This technique is particularly useful when passing ``Zend\Db\Table\Rowset``\ s to ``partialLoop()``, as you then
-   have full access to your row objects within the view scripts, allowing you to call methods on them (such as
-   retrieving values from parent or dependent rows).
+   This technique is particularly useful when passing ``Zend\Db\ResultSet\ResultSet``\s to ``partialLoop()``,
+   as you then have full access to your row objects within the view scripts, allowing you to call methods on them
+   (such as retrieving values from parent or dependent rows).
 
 .. _zend.view.helpers.initial.partial.partialloop:
 
