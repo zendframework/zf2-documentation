@@ -208,7 +208,7 @@ Upon a successful file upload, ``$form->getData()`` would return:
       }
 
    :ref:`Zend\\InputFilter\\FileInput <zend.input-filter.file-input>`
-   expects the file data be in this remapped array format.
+   expects the file data be in this re-mapped array format.
 
 
 File Post-Redirect-Get Plugin

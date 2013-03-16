@@ -105,7 +105,7 @@ The ``HeadScript`` helper is a concrete implementation of the :ref:`Placeholder 
    **Arbitrary Attributes are Disabled by Default**
 
    By default, ``HeadScript`` only will render **<script>** attributes that are blessed by the W3C. These include
-   'type', 'charset', 'defer', 'language', and 'src'. However, some javascript frameworks, notably `Dojo`_, utilize
+   'type', 'charset', 'defer', 'language', and 'src'. However, some JavaScript frameworks, notably `Dojo`_, utilize
    custom attributes in order to modify behavior. To allow such attributes, you can enable them via the
    ``setAllowArbitraryAttributes()`` method:
 
