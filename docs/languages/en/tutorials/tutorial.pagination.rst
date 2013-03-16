@@ -1,7 +1,7 @@
-Using Zend\\Pagination in your Album Module
+Using Zend\\Paginator in your Album Module
 ===========================================
 
-In this tutorial we will use ``Zend\Pagination`` to add a handy pagination controller to the bottom of the album list.
+In this tutorial we will use ``Zend\Paginator`` to add a handy pagination controller to the bottom of the album list.
 
 Currently, we only have a handful of albums to display, so showing everything on one page is not a problem. 
 However, how will the album list look when we have 100 albums or more in our database? The standard solution
@@ -243,6 +243,6 @@ ground work needed to display the control:
     );
     ?>
 
-All we need to do here is to echo the `paginatorControl` helper, and tell it to use our paginator object, sliding
+All we need to do here is to echo the `paginationControl` helper, and tell it to use our paginator object, sliding
 scrolling style, our paginator partial, and which route to use for clicks. Refreshing your application should give
 you a lovely bootstrap styled pagination control!
