@@ -135,12 +135,13 @@ data.
    public function uploadFormAction()
    {
        $form = new UploadForm('upload-form');
-
-       if ($this->getRequest()->isPost()) {
+        
+       $request = $this->getRequest(); 
+       if ($request->isPost()) {
            // Make certain to merge the files info!
            $post = array_merge_recursive(
-               $this->getRequest()->getPost()->toArray(),
-               $this->getRequest()->getFiles()->toArray()
+               $request->getPost()->toArray(),
+               $request->getFiles()->toArray()
            );
 
            $form->setData($post);
@@ -652,12 +653,13 @@ in JSON format if we see the 'isAjax' post parameter (which was set in the JavaS
    public function uploadFormAction()
    {
        $form = new UploadForm('upload-form');
-
-       if ($this->getRequest()->isPost()) {
+        
+       $request = $this->getRequest();
+       if ($request->isPost()) {
            // Make certain to merge the files info!
            $post = array_merge_recursive(
-               $this->getRequest()->getPost()->toArray(),
-               $this->getRequest()->getFiles()->toArray()
+               $request->getPost()->toArray(),
+               $request->getFiles()->toArray()
            );
 
            $form->setData($post);

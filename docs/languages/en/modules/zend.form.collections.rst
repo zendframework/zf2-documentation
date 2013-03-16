@@ -513,9 +513,10 @@ Now, let's create the action in the controller:
             $form = new CreateProduct();
             $product = new Product();
             $form->bind($product);
-
-            if ($this->request->isPost()) {
-                $form->setData($this->request->getPost());
+            
+            $request = $this->getRequest();
+            if ($request->isPost()) {
+                $form->setData($request->getPost());
 
                 if ($form->isValid()) {
                     var_dump($product);
