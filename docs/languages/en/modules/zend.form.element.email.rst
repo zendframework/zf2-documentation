@@ -45,7 +45,7 @@ Here is with the array notation:
     	'type' => 'Zend\Form\Element\Email',
     	'name' => 'email',
     	'options' => array(
-    		'label' => 'Email Address'
+            'label' => 'Email Address'
     	),
     ));
     
@@ -56,7 +56,7 @@ Here is with the array notation:
     		'label' => 'Email Addresses'
     	),
     	'attributes' => array(
-    		'multiple' => true
+            'multiple' => true
     	)
     ));
     
@@ -86,6 +86,33 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 
    :rtype: array
 
+.. function:: setValidator(ValidatorInterface $validator)
+   :noindex:
+
+   Sets the primary validator to use for this element
+
+.. function:: getValidator()
+   :noindex:
+
+   Get the primary validator
+
+   :rtype: ValidatorInterface
+
+.. function:: setEmailValidator(ValidatorInterface $validator)
+   :noindex:
+
+   Sets the email validator to use for multiple or single email addresses.
+
+.. function:: getEmailValidator()
+   :noindex:
+
+   Get the email validator to use for multiple or single
+   email addresses.
+
+   The default Regex validator in use is to match that of the
+   browser validation, but you are free to set a different
+   (more strict) email validator such as ``Zend\Validator\Email``
+   if you wish.
 
 
 .. _`HTML5 inputs with type email`: http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-(type=email)
