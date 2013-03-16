@@ -6,7 +6,7 @@ Collection
 Sometimes, you may want to add input (or a set of inputs) multiple times, either because you don't want
 to duplicate code, or because you do not know in advance how many elements you will need (in the case of elements
 dynamically added to a form using JavaScript, for instance). For more information about Collection, please refer
-to :ref:`Form Collections tutorial <zend.form.collections>`.
+to the :ref:`Form Collections tutorial <zend.form.collections>`.
 
 ``Zend\Form\Element\Collection`` is meant to be paired with the ``Zend\Form\View\Helper\FormCollection``.
 
@@ -34,19 +34,19 @@ Using the array notation:
 .. code-block:: php
    :linenos:
    
-    use Zend\Form\Element;
-    use Zend\Form\Form;
+   use Zend\Form\Element;
+   use Zend\Form\Form;
     
-   	$form = new Form('my-form');   	
-   	$form->add(array(
-   		'type' => 'Zend\Form\Element\Collection',
-   		'options' => array(
-   			'label' => 'Colors',
-   			'count' => 2,
-   			'should_create_template' => true,
-   			'target_element' => new Element\Color()
-   		)
-   	));
+   $form = new Form('my-form');       
+   $form->add(array(
+       'type' => 'Zend\Form\Element\Collection',
+       'options' => array(
+           'label' => 'Colors',
+           'count' => 2,
+           'should_create_template' => true,
+           'target_element' => new Element\Color()
+       )
+   ));
 
 .. _zend.form.element.collection.methods:
 
@@ -58,6 +58,30 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    :noindex:
 
    Set options for an element of type Collection. Accepted options, in addition to the inherited options of Zend\\Form\\Element <zend.form.element.methods.set-options>` , are: ``"target_element"``, ``"count"``, ``"allow_add"``, ``"allow_remove"``, ``"should_create_template"`` and ``"template_placeholder"``. Those option keys respectively call call ``setTargetElement``, ``setCount``, ``setAllowAdd``, ``setAllowRemove``, ``setShouldCreateTemplate`` and ``setTemplatePlaceholder``.
+
+.. function:: allowObjectBinding(object $object)
+   :noindex:
+
+   Checks if the object can be set in this fieldset.
+
+   :rtype: bool
+
+.. function:: setObject(array|Traversable $object)
+   :noindex:
+
+   Set the object used by the hydrator. In this case the "object" is a collection of objects.
+
+.. function:: populateValues(array|Traversable $data)
+   :noindex:
+
+   Populate values
+
+.. function:: allowValueBinding()
+   :noindex:
+
+   Checks if this fieldset can bind data
+
+   :rtype: bool
 
 .. function:: setCount($count)
    :noindex:
@@ -130,3 +154,20 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    Returns the template placeholder used to index element in the template.
 
    :rtype: string
+
+.. function:: getTemplateElement()
+   :noindex:
+
+   Get a template element used for rendering purposes only
+
+   :rtype: null|ElementInterface|FieldsetInterface
+
+.. function:: prepareElement
+   :noindex:
+
+   Prepare the collection by adding a dummy template element if the user want one
+
+.. function:: prepareFieldset()
+   :noindex:
+
+   If both count and targetElement are set, add them to the fieldset
