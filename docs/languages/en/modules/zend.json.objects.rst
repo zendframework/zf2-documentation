@@ -53,6 +53,19 @@ and expects the object to return a *JSON* representation of its internal state.
     // Encode PHP object recursively
     $jsonObject = Zend\Json\Json::encode($data, true);
 
+When doing recursive encoding of objects, as JSON does not support cycles, an ``Zend\Json\Exception\RecursionException``
+will be thrown. If you wish, you can silence these exceptions by passing the ``silenceCyclicalExceptions`` option:
+
+.. code-block:: php
+    :linenos:
+
+    $jsonObject = Zend\Json\Json::encode(
+        $data,
+        true,
+        array('silenceCyclicalExceptions' => true)
+    );
+
+
 .. _zend.json.advanced.internal:
 
 Internal Encoder/Decoder
