@@ -113,9 +113,9 @@ time. As an example:
            $view        = $application->getServiceManager()->get('ViewHelperManager');
            $view->headTitle($config['view']['base_title']);
 
-           $listeners   = new Listeners\ViewListener();
-           $listeners->setView($view);
-           $application->getEventManager()->attachAggregate($listeners);
+           $listener   = new Listeners\ViewListener();
+           $listener->setView($view);
+           $application->getEventManager()->attachAggregate($listener);
        }
    }
 
