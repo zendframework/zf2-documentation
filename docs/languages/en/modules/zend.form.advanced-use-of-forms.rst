@@ -19,7 +19,7 @@ The first advantage of pulling form elements from the service manager is that no
     :linenos:
 
     $form->add(array(
-        'type' => 'Zend\Form\Element\Email'
+        'type' => 'Zend\Form\Element\Email',
         'name' => 'email'
     ));
    
@@ -29,7 +29,7 @@ can now be replaced by:
    :linenos:
 
    $form->add(array(
-        'type' => 'Email'
+        'type' => 'Email',
         'name' => 'email'
    ));
 
@@ -87,7 +87,7 @@ Then, you can use your custom element like any other element:
     :linenos:
 
     $form->add(array(
-        'type' => 'Custom' // Note that it's not case-sensitive!
+        'type' => 'Custom', // Note that it's not case-sensitive!
         'name' => 'myCustomElement'
     ));
    
