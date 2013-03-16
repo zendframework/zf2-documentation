@@ -46,7 +46,7 @@ possède l'architecture et les buts suivants:
   complexes et non optimisés.
 
 - **Permettre la non-suppression des erreurs**. Nous pensons -- et la plus grande partie de la communauté *PHP*
-  aussi -- que la suppression des erreurs est une mauvaise idée. C'est couteux en ressources et cela masque les
+  aussi -- que la suppression des erreurs est une mauvaise idée. C'est coûteux en ressources et cela masque les
   problèmes réels de l'application. Ainsi, par défaut, la suppression des erreurs devrait être désactivée.
   Cependant, si un développeur **insiste** pour l'activer, nous le permettons.
 
@@ -54,7 +54,7 @@ possède l'architecture et les buts suivants:
   ``Zend\Loader\Loader::loadClass()`` pour l'autoload, mais veulent tout de même bénéficier des mécanismes du Zend
   Framework. ``Zend\Loader\Autoloader`` permet de préciser ses propres fonctions d'auto-chargement.
 
-- **Permettre la manipulation de la chaine des autoloads de la SPL**. Ceci autorise la spécification d'autoloaders
+- **Permettre la manipulation de la chaîne des autoloads de la SPL**. Ceci autorise la spécification d'autoloaders
   additionnels -- par exemple les chargeurs de ressources pour les classes n'ayant pas une correspondance 1:1 avec
   le système de fichiers -- ces autoloaders pouvant être chargés avant ou après l'autoloader principal de Zend
   Framework.

@@ -40,7 +40,7 @@ Dans l'exemple ci-dessus, nous supposons un environnement à locale "en".
 Validation float localisée
 --------------------------
 
-Il peut être parfois nécessire de prendre en compte la locale pour valider une valeur flottante. Les flottants
+Il peut être parfois nécessaire de prendre en compte la locale pour valider une valeur flottante. Les flottants
 sont souvent écrits de manière différente en fonction de la locale/région. Par exemple en anglais on écrirait
 "1.5", mais en allemand "1,5" et dans d'autres langues le regroupement de chiffres pourrait être utilisé.
 

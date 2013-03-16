@@ -16,15 +16,15 @@ les comparera aux paramètres internes à la page.
    +------------+------+-----------------+----------------------------------------------------------------+
    |Clé         |Type  |Valeur par défaut|Description                                                     |
    +============+======+=================+================================================================+
-   |action      |chaine|NULL             |Nom de l'action pour générer des cibles vers la page.           |
+   |action      |chaîne|NULL             |Nom de l'action pour générer des cibles vers la page.           |
    +------------+------+-----------------+----------------------------------------------------------------+
-   |controller  |chaine|NULL             |Nom du contrôleur pour générer des cibles vers la page.         |
+   |controller  |chaîne|NULL             |Nom du contrôleur pour générer des cibles vers la page.         |
    +------------+------+-----------------+----------------------------------------------------------------+
-   |module      |chaine|NULL             |Nom du module pour générer des cibles vers la page.             |
+   |module      |chaîne|NULL             |Nom du module pour générer des cibles vers la page.             |
    +------------+------+-----------------+----------------------------------------------------------------+
    |params      |Array |array()          |Paramètres utilisateurs pour générer des cibles vers la page.   |
    +------------+------+-----------------+----------------------------------------------------------------+
-   |route       |chaine|NULL             |Nom de la route à utiliser pour générer des cibles vers la page.|
+   |route       |chaîne|NULL             |Nom de la route à utiliser pour générer des cibles vers la page.|
    +------------+------+-----------------+----------------------------------------------------------------+
    |reset_params|bool  |TRUE             |Remettre à zéro les paramètres de la route ou non.              |
    +------------+------+-----------------+----------------------------------------------------------------+

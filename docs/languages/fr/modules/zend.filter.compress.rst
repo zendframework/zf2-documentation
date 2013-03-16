@@ -4,7 +4,7 @@
 Compression et décompression
 ============================
 
-Ces deux filtres sont capables de compresser et décompresser des chaines, des fichiers ou des dossiers. Ils
+Ces deux filtres sont capables de compresser et décompresser des chaînes, des fichiers ou des dossiers. Ils
 utilisent des adaptateurs dans ce but et supportent les formats suivants:
 
 - **Bz2**
@@ -21,7 +21,7 @@ utilisent des adaptateurs dans ce but et supportent les formats suivants:
 
 Chaque format de compression possède des caractéristiques propres et ils s'utilisent tous d'une manière commune.
 Seules leurs options vont différer ainsi que les types de compressions qu'ils offrent (algorithmes, fichiers,
-chaines et dossiers)
+chaînes et dossiers)
 
 .. _zend.filter.set.compress.generic:
 
@@ -73,15 +73,15 @@ Concernant la décompression, le principe est exactement identique.
 
    $filter = new Zend\Filter\Decompress('Bz2');
 
-Pour récupérer une chaine compressée, il faut indiquer la chaine originale. La valeur "filtrée" récupérée
-sera alors la chaine compressée, tout simplement.
+Pour récupérer une chaîne compressée, il faut indiquer la chaîne originale. La valeur "filtrée" récupérée
+sera alors la chaîne compressée, tout simplement.
 
 .. code-block:: php
    :linenos:
 
    $filter     = new Zend\Filter\Compress('Bz2');
    $compressed = $filter->filter('Uncompressed string');
-   // Retourne la chaine compressée
+   // Retourne la chaîne compressée
 
 La décompression suit exactement le même principe.
 
@@ -90,13 +90,13 @@ La décompression suit exactement le même principe.
 
    $filter     = new Zend\Filter\Decompress('Bz2');
    $compressed = $filter->filter('Compressed string');
-   // Retourne la chaine décompressée
+   // Retourne la chaîne décompressée
 
 .. note::
 
-   **Note sur la compression de chaines**
+   **Note sur la compression de chaîne**
 
-   Tous les adaptateurs ne supportent pas la compression de chaines. Les formats tels que **Rar** ne savent que
+   Tous les adaptateurs ne supportent pas la compression de chaînes. Les formats tels que **Rar** ne savent que
    traiter des fichiers ou des répertoires. Pour les détails, consultez la documentation relative à l'adaptateur
    en question.
 
@@ -105,7 +105,7 @@ La décompression suit exactement le même principe.
 Créer une archive
 -----------------
 
-Créer une archive fonctionne quasiment de la même manière que la compression d'une chaine. Cependant dans ce
+Créer une archive fonctionne quasiment de la même manière que la compression d'une chaîne. Cependant dans ce
 cas, nous devons préciser une options supplémentaire indiquant le nom de l'archive à créer.
 
 .. code-block:: php
@@ -120,7 +120,7 @@ cas, nous devons préciser une options supplémentaire indiquant le nom de l'arc
    $compressed = $filter->filter('Uncompressed string');
    // Retourne true en cas de succès et crée le fichier d'archive
 
-Dans l'exemple ci-dessus, la chaine est compressée puis retournée dans une archive.
+Dans l'exemple ci-dessus, la chaîne est compressée puis retournée dans une archive.
 
 .. note::
 
@@ -368,15 +368,15 @@ L'adaptateur Zip peut compresser et décompresser:
 
 .. note::
 
-   **Zip ne supporte pas la décompression vers des chaines**
+   **Zip ne supporte pas la décompression vers des chaînes**
 
-   L'adaptateur Zip ne supporte pas la décompression vers des chaines. Un fichier sera systématiquement crée.
+   L'adaptateur Zip ne supporte pas la décompression vers des chaînes. Un fichier sera systématiquement crée.
 
 Cet adaptateur utilise l'extension *PHP* ``Zip``.
 
 Les options suivantes sont supportées :
 
-- **Archive**: Précise l'archive qui sera utilisée ou créee.
+- **Archive**: Précise l'archive qui sera utilisée ou créée.
 
 - **Target**: La cible vers laquelle décompresser.
 

@@ -70,8 +70,8 @@ achieve this by calling:
 JSON Expressions
 ----------------
 
-Javascript makes heavy use of anonymnous function callbacks, which can be saved within *JSON* object variables.
-Still they only work if not returned inside double qoutes, which ``Zend_Json`` naturally does. With the Expression
+Javascript makes heavy use of anonymous function callbacks, which can be saved within *JSON* object variables.
+Still they only work if not returned inside double quotes, which ``Zend_Json`` naturally does. With the Expression
 support for Zend_Json support you can encode *JSON* objects with valid javascript callbacks. This works for both
 ``json_encode()`` or the internal encoder.
 

@@ -42,7 +42,7 @@ Les types suivants sont acceptés :
 
 - **flottant**\  : convertit le flottant **0.0** en ``FALSE``.
 
-- **chaine**\  : convertit la chaîne vide **''** en ``FALSE``.
+- **chaîne**\  : convertit la chaîne vide **''** en ``FALSE``.
 
 - **zero**\  : convertit la chaîne contenant zéro (**'0'**) en ``FALSE``.
 
@@ -52,7 +52,7 @@ Les types suivants sont acceptés :
 
 - **php**\  : convertit une valeur, comme *PHP* le ferait, en ``BOOLEEN``.
 
-- **false_string**\  : convertit une chaine contenant le mot "false" en booléen ``FALSE``.
+- **false_string**\  : convertit une chaîne contenant le mot "false" en booléen ``FALSE``.
 
 - **yes**\  : convertit une chaîne localisée contenant le mot "no" en ``FALSE``.
 

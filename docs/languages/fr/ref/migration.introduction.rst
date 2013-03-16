@@ -5,9 +5,9 @@ Introduction
 ============
 
 Quand vous travaillez depuis longtemps avec Zend Framework, vous pouvez souhaiter mettre à jour avec les nouvelles
-versions puuisque de nouvelles fonctionnalités sont ajoutées et que des bogues sont corrigés.
+versions puisque de nouvelles fonctionnalités sont ajoutées et que des bogues sont corrigés.
 
-Nous essayons avec Zend Framework d'empêcher au maximum les problèmes qui peuvent apparaitre quand vous devez
+Nous essayons avec Zend Framework d'empêcher au maximum les problèmes qui peuvent apparaître quand vous devez
 mettre à jour. La rétro-compatibilité est un de nos buts primordiaux.
 
 Cependant, de temps en temps, il n'est pas possible ou parfois nécessaire de faire des changements qui vont avoir

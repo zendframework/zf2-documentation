@@ -41,11 +41,11 @@ objet ``ZendPdf\Color`` est requis. Les classes ``ZendPdf_Color\GrayScale``, ``Z
    $color1 = new ZendPdf_Color\GrayScale($grayLevel);
 
    // $r, $g, $b (float).
-   // 0.0 (intensité mimimum) - 1.0 (intensité maximum)
+   // 0.0 (intensité minimum) - 1.0 (intensité maximum)
    $color2 = new ZendPdf_Color\RGB($r, $g, $b);
 
    // $c, $m, $y, $k (float).
-   // 0.0 (intensité mimimum) - 1.0 (intensité maximum)
+   // 0.0 (intensité minimum) - 1.0 (intensité maximum)
    $color3 = new ZendPdf_Color\CMYK($c, $m, $y, $k);
 
 Les différentes couleurs HTML sont aussi fourni avec la classe ``ZendPdf_Color\Html``:
@@ -804,8 +804,8 @@ La mise à l'échelle est fournie par la méthode ``ZendPdf\Page::scale()``:
    /**
     * Mise à l'échelle
     *
-    * @param float $xScale - X dimention scale factor
-    * @param float $yScale - Y dimention scale factor
+    * @param float $xScale - X dimension scale factor
+    * @param float $yScale - Y dimension scale factor
     * @return ZendPdf\Page
     */
    public function scale($xScale, $yScale);

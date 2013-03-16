@@ -6,7 +6,7 @@ Démarrer: Un modèle d'application
 
 Pour construire notre , nous allons commencer avec le modèle
 `ZendSkeletonApplication <https://github.com/zendframework/ZendSkeletonApplication>`_
-dsponible sur `github <https://github.com/>`_. Use Composer
+disponible sur `github <https://github.com/>`_. Use Composer
 (http://getcomposer.org) pour créer un nouveau projet "from scratch" avec
 Zend Framework:
 
@@ -17,7 +17,7 @@ Zend Framework:
 .. note::
 
     Une autre possibilité pour installer le ZendSkeletonApplication est
-    d'utiliseri github.  Rendez vous sur
+    d'utiliser github.  Rendez vous sur
     https://github.com/zendframework/ZendSkeletonApplication et cliquez sur le
     bouton “Zip”. Cela ca télécharger un fichier avec un nom similaire à
     ``zendframework-ZendSkeletonApplication-zfrelease-2.0.0beta5-2-gc2c7315.zip``.
@@ -29,7 +29,7 @@ Zend Framework:
     (http://getcomposer.org) pour résoudre ses dépendances. Dans notre cas, la
     dépendance est Zend Framework 2 lui-même.
 
-    Pour instaler Zend Framework 2 dans notre application, nous entrons
+    Pour installer Zend Framework 2 dans notre application, nous entrons
     simplement:
 
     .. code-block:: bash

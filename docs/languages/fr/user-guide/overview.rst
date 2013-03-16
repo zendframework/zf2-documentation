@@ -8,8 +8,8 @@ Ce tutoriel est une introduction à l'utilisation de Zend Framework 2 en créant
 une application pilotée par une base de données très simple et basée su le
 paradigme Model-View-Controller. A la fin de ce tutoriel, vous obtiendrez une
 application ZF2 fonctionnelle et vous pourrez en examiner le code pour
-comprendre comment elle fonctionne et comment interragissent ses différents
-élements
+comprendre comment elle fonctionne et comment interagissent ses différents
+éléments
 
 .. _user-guide.overview.assumptions:
 
@@ -18,7 +18,7 @@ Quelques prérequis
 
 Ce tutoriel suppose que vous avez un environnement PHP 5.3.3 avec un serveur web
 Apache web et une base MySQL, accessible via l'extension PDO. Votre installation
-Apache doit inclure l'extension mod_rewrite corretement configurée.
+Apache doit inclure l'extension mod_rewrite correctement configurée.
 
 Vous devez aussi vous assurer qu'Apache supporte les fichiers``.htaccess``.
 Ceci est normalement mis en place en modifiant ce paramètrage:

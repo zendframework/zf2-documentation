@@ -51,7 +51,7 @@ Donc c'est une bonne idée :
 - **De ne pas** utiliser l'index Lucene comme du stockage car cela réduirait les performance de récupération de
   résultat de recherche. Stocker uniquement les identifiants de documents (chemin de documents, *URL*\ s,
   identifiant unique de base données) et associer les données au sein de l'index. Ex. titre, annotation,
-  categorie, information de langue, avatar. (Note : un champs peut être inclu dans l'indexation, mais pas stocké,
+  catégorie, information de langue, avatar. (Note : un champ peut être inclus dans l'indexation, mais pas stocké,
   ou stocké, mais pas indexé).
 
 - D'écrire des fonctionalités qui peuvent reconstruire intégralement l'index, si il a été corrompu pour une

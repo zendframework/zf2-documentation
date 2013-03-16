@@ -55,7 +55,7 @@ Un cas d'utilisation typique pourrait ressembler à ceci :
    echo $captcha->render($view);
 
    // Lors de la requête suivante :
-   // suppose que $captcha a été paramètré avant,
+   // suppose que $captcha a été paramétré avant,
    // et que $value est la valeur soumise :
    if ($captcha->isValid($_POST['foo'], $_POST)) {
        // Validated!

@@ -27,7 +27,7 @@ Toutefois, ils existent des techniques permettant d'améliorer ceci.
 Utiliser le cache des métadonnées
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Db\Table`` peut optionnellement utiliser ``Zend_Cache`` pour mettre en cahce les métadonnées de la table.
+``Zend\Db\Table`` peut optionnellement utiliser ``Zend_Cache`` pour mettre en cache les métadonnées de la table.
 C'est typiquement plus rapide d'accès et moins coûteux que d'accéder à ces métadonnées directement dans la
 base de données.
 
@@ -49,7 +49,7 @@ données évolue rarement, ou que vous êtes certain de pouvoir maintenir à jou
 Le SQL généré avec Zend\Db\Select n'utilise pas mes index ; comment améliorer ceci ?
 ------------------------------------------------------------------------------------
 
-``Zend\Db\Select`` est plutôt bon dans son trvail. Cependant si vous avez des requêtes complexes requiérant des
+``Zend\Db\Select`` est plutôt bon dans son travail. Cependant si vous avez des requêtes complexes requérant des
 jointures ou des sous-sélections, il est souvent assez naïf.
 
 .. _performance.database.select.writeyourown:

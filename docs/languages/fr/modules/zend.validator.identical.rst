@@ -74,7 +74,7 @@ valeurs fournies et à valider doivent être identiques.
 Configuration
 -------------
 
-omme tous les autres validateurs ``Zend\Validate\Identical`` supporte aussi des paramètres de configuration en
+Comme tous les autres validateurs ``Zend\Validate\Identical`` supporte aussi des paramètres de configuration en
 tant que paramètre d'entrée. Ceci veut dire que vous pouvez configurer ce validateur avec une objet
 ``Zend_Config``.
 

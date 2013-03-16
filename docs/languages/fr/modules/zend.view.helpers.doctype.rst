@@ -38,7 +38,7 @@ L'aide *Doctype* est une implémentation concrète de l':ref:`aide Conteneur
 .. rubric:: Utilisation basique de l'aide Doctype
 
 Vous pouvez spécifier le doctype à n'importe quel moment. Cependant, les aides de vues qui utilisent pour leur
-affichage ne le reconnaissent qu'une fois qu'il a été paramètré, donc la manière la plus simple est de le
+affichage ne le reconnaissent qu'une fois qu'il a été paramétré, donc la manière la plus simple est de le
 spécifier dans votre fichier d'amorçage :
 
 .. code-block:: php
