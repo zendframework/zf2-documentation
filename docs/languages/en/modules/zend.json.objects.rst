@@ -14,7 +14,7 @@ When encoding *PHP* objects as *JSON*, all public properties of that object will
 If you have issues with recursion, ``Zend\Json\Json::encode()`` and ``Zend\Json\Encoder::encode()`` allow an optional
 second parameter to check for recursion; if an object is serialized twice, an exception will be thrown.
 
-Decoding *JSON* objects poses an additional difficulty, however, since Javascript objects correspond most closely
+Decoding *JSON* objects poses an additional difficulty, however, since JavaScript objects correspond most closely
 to *PHP*'s associative array. Some suggest that a class identifier should be passed, and an object instance of that
 class should be created and populated with the key/value pairs of the *JSON* object; others feel this could pose a
 substantial security risk.
@@ -76,7 +76,7 @@ achieve this by calling:
 JSON Expressions
 ----------------
 
-Javascript makes heavy use of anonymous function callbacks, which can be saved within *JSON* object variables.
+JavaScript makes heavy use of anonymous function callbacks, which can be saved within *JSON* object variables.
 Still they only work if not returned inside double quotes, which ``Zend\Json`` naturally does. With the Expression
 support for ``Zend\Json`` support you can encode *JSON* objects with valid JavaScript callbacks. This works for
 both ``json_encode()`` or the internal encoder.
