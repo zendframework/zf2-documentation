@@ -308,7 +308,7 @@ Searching for books in a user's library
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Just as you can `search across all books`_, you can do a full-text search over just the books in a user's library.
-To do this, just set the appropriate paramters on the ``VolumeQuery`` object.
+To do this, just set the appropriate parameters on the ``VolumeQuery`` object.
 
 For example, the following query returns all the books in your library that contain the word "bear":
 

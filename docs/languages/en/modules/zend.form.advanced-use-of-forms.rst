@@ -271,7 +271,7 @@ Et voilà! The dependency will be automatically handled by the form element mana
 The specific case of initializers
 ---------------------------------
 
-In the previous example, we explicitely defined the dependency in the constructor of the `AlbumFieldset` class. 
+In the previous example, we explicitly defined the dependency in the constructor of the `AlbumFieldset` class.
 However, in some cases, you may want to use an initializer (like `Zend\\ServiceManager\\ServiceLocatorAwareInterface`) 
 to inject a specific object to all your forms/fieldsets/elements.
    

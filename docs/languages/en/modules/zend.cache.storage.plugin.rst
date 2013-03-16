@@ -60,7 +60,7 @@ The ClearExpiredByFactor Plugin
 .. table:: Plugin specific options
 
    +--------------------+------------+---------------+--------------------------------------------+
-   |Name                |Data Type   |Default Value  |Describtion                                 |
+   |Name                |Data Type   |Default Value  |Description                                 |
    +====================+============+===============+============================================+
    |clearing_factor     |``integer`` |0              |The automatic clearing factor               |
    +--------------------+------------+---------------+--------------------------------------------+
@@ -72,24 +72,24 @@ The ClearExpiredByFactor Plugin
     The storage have to implement the ``Zend\Cache\Storage\ClearExpiredInterface``
     to work with this plugin.
 
-.. _zend.cache.storage.plugin.exaption-handler
+.. _zend.cache.storage.plugin.exeption-handler
 
 The ExceptionHandler Plugin
 ---------------------------
 
    The ``Zend\Cache\Storage\Adapter\ExceptionHandler`` plugin catches all
-   exceptions thown on reading or writing to cache and sends the exception
-   to a defined callack function.
+   exceptions thrown on reading or writing to cache and sends the exception
+   to a defined callback function.
    
    It's configurable if the plugin should re-throw the catched exception.
    
 
-.. _zend.cache.storage.plugin.exaption-handler.options
+.. _zend.cache.storage.plugin.exeption-handler.options
 
 .. table:: Plugin specific options
 
    +--------------------+----------------------+---------------+--------------------------------------------+
-   |Name                |Data Type             |Default Value  |Describtion                                 |
+   |Name                |Data Type             |Default Value  |Description                                 |
    +====================+======================+===============+============================================+
    |exception_callback  |``callable`` ``null`` |``null``       |Callback will be called on an exception     |
    |                    |                      |               |and get the exception as argument           |
@@ -110,7 +110,7 @@ The IgnoreUserAbort Plugin
 .. table:: Plugin specific options
 
    +--------------------+-------------+---------------+-----------------------------------------------------+
-   |Name                |Data Type    |Default Value  |Describtion                                          |
+   |Name                |Data Type    |Default Value  |Description                                          |
    +====================+=============+===============+=====================================================+
    |exit_on_abort       |``boolean``  |``true``       |Terminate script execution if user abort the script  |
    +--------------------+----------------------+---------------+--------------------------------------------+
@@ -128,7 +128,7 @@ The OptimizeByFactor Plugin
 .. table:: Plugin specific options
 
    +--------------------+-------------+---------------+-----------------------------------------------------+
-   |Name                |Data Type    |Default Value  |Describtion                                          |
+   |Name                |Data Type    |Default Value  |Description                                          |
    +====================+=============+===============+=====================================================+
    |optimizing_factor   |``integer``  |0              |The automatic optimization factor                    |
    +--------------------+-------------+---------------+-----------------------------------------------------+
@@ -154,7 +154,7 @@ The Serializer Plugin
 .. table:: Plugin specific options
 
    +--------------------+-----------------------------------------------------------------+---------------+-------------------------------------------------------------------------+
-   |Name                |Data Type                                                        |Default Value  |Describtion                                                              |
+   |Name                |Data Type                                                        |Default Value  |Description                                                              |
    +====================+=================================================================+===============+=========================================================================+
    |serializer          |``null`` ``string`` ``Zend\Serializer\Adapter\AdapterInterface`` |``null``       |The serializer to use                                                    |
    |                    |                                                                 |               |                                                                         |
@@ -253,7 +253,7 @@ Examples
    $plugin = new MyPlugin();
    $cache->addPlugin($plugin);
    
-   // Now on calling getItem our basic plugin should print the expacted output
+   // Now on calling getItem our basic plugin should print the expected output
    $cache->getItem('cache-key');
    // Method 'getItem' with key 'cache-key' started
    // Method 'getItem' with key 'cache-key' finished

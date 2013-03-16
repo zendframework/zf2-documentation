@@ -495,7 +495,7 @@ Deleting an album
 -----------------
 
 To round out our application, we need to add deletion. We have a Delete link
-next to each album on our list page and the naïve approach would be to do a
+next to each album on our list page and the naive approach would be to do a
 delete when it’s clicked. This would be wrong. Remembering our HTTP spec, we
 recall that you shouldn’t do an irreversible action using GET and should use
 POST instead.

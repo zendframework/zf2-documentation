@@ -13,7 +13,7 @@ discussed can be adapted to other parsers and renderers.
 We will first instantiate a ``Zend\Markup\Renderer\Html`` class using the ``Zend\Markup\Markup::factory()`` method. This
 will also create a ``Zend\Markup\Parser\Bbcode`` object which will be added to the renderer object.
 
-Afther that, we will use the ``render()`` method to convert a piece of BBCode to *HTML*.
+After that, we will use the ``render()`` method to convert a piece of BBCode to *HTML*.
 
 .. code-block:: php
    :linenos:

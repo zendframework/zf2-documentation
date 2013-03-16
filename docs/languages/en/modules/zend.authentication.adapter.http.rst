@@ -193,7 +193,7 @@ order to do its job:
 
    $result = $adapter->authenticate();
    if (!$result->isValid()) {
-       // Bad userame/password, or canceled password prompt
+       // Bad username/password, or canceled password prompt
    }
 
 

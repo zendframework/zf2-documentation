@@ -37,9 +37,9 @@ Methods in the Menu helper:
 
   - *indent*; indentation. Expects a ``String`` or an *int* value.
 
-  - *minDepth*; minimum depth. Expcects an *int* or ``NULL`` (no minimum depth).
+  - *minDepth*; minimum depth. Expects an *int* or ``NULL`` (no minimum depth).
 
-  - *maxDepth*; maximum depth. Expcects an *int* or ``NULL`` (no maximum depth).
+  - *maxDepth*; maximum depth. Expects an *int* or ``NULL`` (no maximum depth).
 
   - *ulClass*; *CSS* class for *ul* element. Expects a ``String``.
 

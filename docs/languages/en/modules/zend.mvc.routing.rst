@@ -394,7 +394,7 @@ You may use any route type as a child route of a ``Part`` route.
 Zend\\Mvc\\Router\\Http\\Regex
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A ``Regex`` route utilizes a regular expression to match against the URI path. Any valid regular expession is
+A ``Regex`` route utilizes a regular expression to match against the URI path. Any valid regular expression is
 allowed; our recommendation is to use named captures for any values you want to return in the ``RouteMatch``.
 
 Since regular expression routes are often complex, you must specify a "spec" or specification to use when
@@ -610,7 +610,7 @@ how to set up routes in config files.
                     'options' => array(
                         'route' => '/blog',
                         'defaults' => array(
-                            'controller' => 'Applicaton\Controller\BlogController',
+                            'controller' => 'Application\Controller\BlogController',
                             'action' => 'index'
                         ),
                     ),
@@ -657,8 +657,8 @@ from the above example:
 
 .. warning::
 
-    When defining child routes pay attentiont that the ``may_terminate`` and ``child_routes`` definitions
-    are in same level as the ``options`` and ``type`` definitions. A common pitfal is to have those two
+    When defining child routes pay attention that the ``may_terminate`` and ``child_routes`` definitions
+    are in same level as the ``options`` and ``type`` definitions. A common pitfall is to have those two
     definitions nested in ``options``, which will not result in the desired routes.
 
 .. _zend.mvc.routing.console-route-types:

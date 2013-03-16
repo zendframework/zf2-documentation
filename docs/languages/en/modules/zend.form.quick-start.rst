@@ -98,7 +98,7 @@ information, and another for the message details.
    $form->add($csrf);
    $form->add($send);
 
-Regardles of approach, as you can see, this can be tedious.
+Regardless of approach, as you can see, this can be tedious.
 
 .. _zend.form.quick-start.factory:
 
@@ -881,7 +881,7 @@ Annotations allow us to solve this problem. You can define the following behavio
 - *Exclude*: mark a property to exclude from the form or fieldset. This annotation does not require a value.
 
 - *Filter*: provide a specification for a filter to use on a given element. Expects an associative array of values,
-  with a "name" key pointing to a string filter name, and an "options" key pointing to an associatve array of
+  with a "name" key pointing to a string filter name, and an "options" key pointing to an associative array of
   filter options for the constructor: ``@Filter({"name": "Boolean", "options": {"casting":true}})``. This annotation
   may be specified multiple times.
 
@@ -906,7 +906,7 @@ Annotations allow us to solve this problem. You can define the following behavio
 - *Type*: indicate the class to use for the current element, fieldset, or form. A string value is expected.
 
 - *Validator*: provide a specification for a validator to use on a given element. Expects an associative array of
-  values, with a "name" key pointing to a string validator name, and an "options" key pointing to an associatve
+  values, with a "name" key pointing to a string validator name, and an "options" key pointing to an associative
   array of validator options for the constructor: ``@Validator({"name": "StringLength", "options": {"min":3, "max":
   25}})``. This annotation may be specified multiple times.
 

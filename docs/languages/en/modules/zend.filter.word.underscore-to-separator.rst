@@ -3,7 +3,7 @@
 UnderscoreToSeparator
 ---------------------
 
-This filter modifies a given string such that 'words_with_underscorees' are converted to 'words with underscorees'.
+This filter modifies a given string such that 'words_with_underscores' are converted to 'words with underscores'.
 
 .. _zend.filter.set.underscoretoseparator.options:
 

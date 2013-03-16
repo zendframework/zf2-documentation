@@ -325,7 +325,7 @@ fetch the list of albums from the database.
 
 The first thought would be to create an instance of an adapter, pass it to the
 service manager and let the code run from there as is. Problem with this approach
-is that we would end up with our test cases doing actualy queries against the database.
+is that we would end up with our test cases doing actually queries against the database.
 To keep our tests fast, and to reduce the number of possible failure points in our tests,
 this should be avoided.
 

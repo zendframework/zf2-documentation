@@ -102,7 +102,7 @@ This prompt asks for a line of text input.
     (`boolean`) Can this prompt be skipped, by pressing [ENTER] ? (default fo false)
 
 **$maxLength**
-    (`integer`) Maximum length of the input. Anythin above this limit will be truncated.
+    (`integer`) Maximum length of the input. Anything above this limit will be truncated.
 
 Example usage:
 

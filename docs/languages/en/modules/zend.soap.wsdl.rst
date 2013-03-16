@@ -266,7 +266,7 @@ exist:
 
 - Class ``Zend\Soap\Wsdl\ComplexTypeStrategy\ArrayOfTypeSequence``: This strategy allows to specify return
   parameters of the type: *int[]* or *string[]*. As of Zend Framework version 1.9 it can handle both simple *PHP*
-  types such as int, string, boolean, float aswell as objects and arrays of objects.
+  types such as int, string, boolean, float as well as objects and arrays of objects.
 
 - Class ``Zend\Soap\Wsdl\ComplexTypeStrategy\ArrayOfTypeComplex``: This strategy allows to detect very complex
   arrays of objects. Objects types are detected based on the ``Zend\Soap\Wsdl\Strategy\DefaultComplexType`` and an
