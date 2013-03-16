@@ -10,10 +10,10 @@ process itself sends its status directly to the browser.
 You can set the adapter options either via the *set** methods or give an array or a ``Zend\Config\Config`` instance with
 options as first parameter to the constructor. The available options are:
 
-- *updateMethodName*: The javascript method which should be called on every update. Default value is
+- *updateMethodName*: The JavaScript method which should be called on every update. Default value is
   ``Zend\ProgressBar\Update``.
 
-- *finishMethodName*: The javascript method which should be called after finish status was set. Default value is
+- *finishMethodName*: The JavaScript method which should be called after finish status was set. Default value is
   ``NULL``, which means nothing is done.
 
 The usage of this adapter is quite simple. First you create a progressbar in your browser, either with JavaScript

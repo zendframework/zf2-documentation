@@ -78,7 +78,7 @@ delete object, they are all primarily seeded with the same table when produced.
 Zend\\Db\\Sql's Select, Insert, Update and Delete
 -------------------------------------------------
 
-Each of these objects implement the following (2) interfaces:
+Each of these objects implements the following (2) interfaces:
 
 .. code-block:: php
    :linenos:
