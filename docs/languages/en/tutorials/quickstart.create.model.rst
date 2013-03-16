@@ -297,7 +297,7 @@ database requirements locally so they can have the fully working application. Cr
        }
 
    } catch (Exception $e) {
-       echo 'AN ERROR HAS OCCURED:' . PHP_EOL;
+       echo 'AN ERROR HAS OCCURRED:' . PHP_EOL;
        echo $e->getMessage() . PHP_EOL;
        return false;
    }

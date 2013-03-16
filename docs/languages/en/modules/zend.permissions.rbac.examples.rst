@@ -10,7 +10,7 @@ The following is a list of common use-case examples for ``Zend\Permission\Rbac``
 Roles
 -----
 
-Extending and adding roles via instantation.
+Extending and adding roles via instantiation.
 
 .. code-block:: php
    :linenos:

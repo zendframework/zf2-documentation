@@ -184,7 +184,7 @@ interfaces, and uses the following assumptions:
   otherwise, the discovered method is called.
 
 - The results of executing the given action method are injected into the ``MvcEvent``'s "result" property (via
-  ``setResult()``, and accesible via ``getResult()``).
+  ``setResult()``, and accessible via ``getResult()``).
 
 Essentially, a route mapping to an ``AbstractActionController`` needs to return both "controller" and "action" keys
 in its matches.
@@ -249,7 +249,7 @@ following matrix:
   should provide a list of entities.
 
 - **POST** maps to ``create()``. That method expects a ``$data`` argument, usually the ``$_POST`` superglobal
-  array. The data should be used to create a new entitiy, and the response should typically be an HTTP 201 response
+  array. The data should be used to create a new entity, and the response should typically be an HTTP 201 response
   with the Location header indicating the URI of the newly created entity and the response body providing the
   representation.
 

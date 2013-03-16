@@ -22,14 +22,14 @@ use controllers in this manner.
    {
        public function indexAction()
        {
-           // Setup pagination control view script. See the pagation control tutorial page
+           // Setup pagination control view script. See the pagination control tutorial page
            // for more information about this view script.
            Zend\View_Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
 
            // Fetch an already instantiated database connection from the registry
            $db = Zend\Registry\Registry::get('db');
 
-           // Create a select object which fetches blog posts, sorted decending by date of creation
+           // Create a select object which fetches blog posts, sorted descending by date of creation
            $select = $db->select()->from('posts')->order('date_created DESC');
 
            // Create a Paginator for the blog posts query

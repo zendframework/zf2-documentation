@@ -96,7 +96,7 @@ corresponding getter prefixed with "get" (e.g. "getBarHeight"). Available option
 Particular case of static setBarcodeFont()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can set a commont font for all your objects by using the static method
+You can set a common font for all your objects by using the static method
 ``Zend\Barcode\Barcode::setBarcodeFont()``. This value can be always be overridden for individual objects by using
 the ``setFont()`` method.
 

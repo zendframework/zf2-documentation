@@ -185,7 +185,7 @@ PDO, and other PHP level drivers.  To make this possible, each driver is compose
 * A statement: ``Zend\Db\Adapter\Driver\StatementInterface``
 * A result: ``Zend\Db\Adapter\Driver\ResultInterface``
 
-Each of the built-in drivers practices "prytotyping" as a means of creating objects when new instances
+Each of the built-in drivers practices "prototyping" as a means of creating objects when new instances
 are requested.  The workflow looks like this:
 
 * An adapter is created with a set of connection parameters
@@ -221,7 +221,7 @@ From this DriverInterface, you can
 
 * Determine the name of the platform this driver supports (useful for choosing the proper platform object)
 * Check that the environment can support this driver
-* Return the Connnection object
+* Return the Connection object
 * Create a Statement object which is optionally seeded by an SQL statement (this will generally be a clone of a prototypical statement object)
 * Create a Result object which is optionally seeded by a statement resource (this will generally be a clone of a prototypical result object)
 * Format parameter names, important to distinguish the difference between the various ways parameters are named between extensions
@@ -293,7 +293,7 @@ object looks like this:
        public function quoteIdentifierInFragment($identifier, array $additionalSafeWords = array());
    }
 
-While one can instantiate your own Plaform object, generally speaking, it is easier to get the proper
+While one can instantiate your own Platform object, generally speaking, it is easier to get the proper
 Platform instance from the configured adapter (by default the Platform type will match the underlying
 driver implementation):
 

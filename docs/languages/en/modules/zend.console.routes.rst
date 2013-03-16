@@ -6,7 +6,7 @@ Console routes and routing
 Zend Framework 2 has :doc:`native MVC integration with console<zend.console.introduction>`,
 which means that command line arguments are read and used to determine the appropriate
 :doc:`action controller <zend.mvc.controllers>` and action method that will handle the request. Actions can
-perform any numer of task prior to returning a result, that will be displayed to the user in his console window.
+perform any number of task prior to returning a result, that will be displayed to the user in his console window.
 
 There are several routes you can use with Console. All of them are defined in ``Zend\Mvc\Router\Console\*`` classes.
 

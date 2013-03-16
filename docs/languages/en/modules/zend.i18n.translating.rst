@@ -52,7 +52,7 @@ translations to the file system, without touching your code. Patterns are added 
    $translator->addTranslationFilePattern($type, $pattern, $textDomain);
 
 The parameters for adding patterns is pretty similar to adding individual files, except that you don't specify a locale
-and give the file location as a sprtinf pattern. The locale is passed to the sprintf call, so you can either use %s
+and give the file location as a sprintf pattern. The locale is passed to the sprintf call, so you can either use %s
 or %1$s where it should be substituted. So when your translation files are located in
 /var/messages/LOCALE/messages.mo, you would specify your pattern as /var/messages/%s/messages.mo.
 

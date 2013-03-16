@@ -29,7 +29,7 @@ directly through the Amazon Web Services *API*. Examples include:
 
 
 
-In order to use ``ZendService\Amazon``, you should already have an Amazon developer *API* key aswell as a secret
+In order to use ``ZendService\Amazon``, you should already have an Amazon developer *API* key as well as a secret
 key. To get a key and for more information, please visit the `Amazon Web Services`_ web site. As of August 15th,
 2009 you can only use the Amazon Product Advertising *API* through ``ZendService\Amazon``, when specifying the
 additional secret key.
@@ -307,7 +307,7 @@ counterparts.
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
    |Tracks          |array                       |An array of track numbers and names for Music CDs and DVDs                                 |
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
-   |ListmaniaLists  |array                       |Item related Listmania Lists as an array of ZendService\Amazon\ListmainList objects       |
+   |ListmaniaLists  |array                       |Item related Listmania Lists as an array of ZendService\Amazon\ListmaniaList objects       |
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
    |PromotionalTag  |string                      |Item Promotional Tag                                                                       |
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+

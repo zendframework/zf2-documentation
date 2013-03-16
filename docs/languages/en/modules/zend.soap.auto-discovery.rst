@@ -146,7 +146,7 @@ If set of functions are used to provide SOAP server functionality, then the same
    ...
    $wsdl = $autodiscover->generate();
 
-The same rules apply to generation as described in the class audodiscover seection above.
+The same rules apply to generation as described in the class autodiscover section above.
 
 .. _zend.soap.autodiscovery.datatypes:
 

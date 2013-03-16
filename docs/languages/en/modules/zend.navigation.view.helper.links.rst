@@ -7,7 +7,7 @@ The links helper is used for rendering *HTML* ``LINK`` elements. Links are used 
 relationships of the currently active page. Read more about links and link types at `Document relationships: the
 LINK element (HTML4 W3C Rec.)`_ and `Link types (HTML4 W3C Rec.)`_ in the *HTML*\ 4 W3C Recommendation.
 
-There are two types of relations; forward and reverse, indicated by the keyords *'rel'* and *'rev'*. Most methods
+There are two types of relations; forward and reverse, indicated by the kewyords *'rel'* and *'rev'*. Most methods
 in the helper will take a ``$rel`` param, which must be either *'rel'* or *'rev'*. Most methods also take a
 ``$type`` param, which is used for specifying the link type (e.g. alternate, start, next, prev, chapter, etc).
 

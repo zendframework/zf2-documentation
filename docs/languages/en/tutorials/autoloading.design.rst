@@ -49,7 +49,7 @@ and design elements:
 
 - **Allow specifying custom callbacks for autoloading**. Some developers don't want to use
   ``Zend\Loader\Loader::loadClass()`` for autoloading, but still want to make use of Zend Framework's mechanisms.
-  ``Zend\Loader\Autoloader`` allows specyfing an alternate callback for autoloading.
+  ``Zend\Loader\Autoloader`` allows specifying an alternate callback for autoloading.
 
 - **Allow manipulation of the SPL autoload callback chain**. The purpose of this is to allow specifying additional
   autoloaders -- for instance, resource loaders for classes that don't have a 1:1 mapping to the filesystem -- to

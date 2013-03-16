@@ -14,7 +14,7 @@ CloudWatch Usage
 
 .. _zendservice.amazon.ec2.cloudwatch.usage.list:
 
-.. rubric:: Listing Aviable Metrics
+.. rubric:: Listing Available Metrics
 
 ``listMetrics()`` returns a list of up to 500 valid metrics for which there is recorded data available to a you and
 a NextToken string that can be used to query for the next set of results.

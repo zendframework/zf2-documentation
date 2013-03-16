@@ -8,7 +8,7 @@ ZendService\Amazon\Ec2
 Introduction
 ------------
 
-``ZendService\Amazon\Ec2`` provides an interface to Amazon Elastic Clound Computing (EC2).
+``ZendService\Amazon\Ec2`` provides an interface to Amazon Elastic Cloud Computing (EC2).
 
 .. _zendservice.amazon.ec2.whatis:
 
@@ -54,6 +54,6 @@ will throw an exception stating that.
 
    **Set Amazon Ec2 Region**
 
-   Alternativly you can set the region when you create each class as the third parameter in the constructor method.
+   Alternatively you can set the region when you create each class as the third parameter in the constructor method.
 
 

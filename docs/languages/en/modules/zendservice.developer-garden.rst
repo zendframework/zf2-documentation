@@ -137,7 +137,7 @@ You get a ``result`` object that contains all the information you need, optional
 
 Here a list of all ``getQuotaInformation`` methods:
 
-- ``getConfernceCallQuotaInformation()``
+- ``getConferenceCallQuotaInformation()``
 
 - ``getIPLocationQuotaInformation()``
 
@@ -500,7 +500,7 @@ The ``[PHP CONSTANT]`` can be one of the following values:
 
 - ``WSDL_CACHE_NONE``: disabled both caching
 
-If you also want to cache the result for calls to the SecuritTokenServer you can setup a ``Zend_Cache`` instance
+If you also want to cache the result for calls to the SecurityTokenServer you can setup a ``Zend_Cache`` instance
 and pass it to the ``setCache()``.
 
 .. _zend.service.developergarden.performance.cache.example:

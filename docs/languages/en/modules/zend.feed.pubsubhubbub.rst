@@ -72,7 +72,7 @@ Zend\\Feed\\PubSubHubbub\\Publisher
 
 In Pubsubhubbub, the Publisher is the party who publishes a live feed and frequently updates it with new content.
 This may be a blog, an aggregator, or even a web service with a public feed based *API*. In order for these updates
-to be pushed to Subscribers, the Publisher must notify all of its supported Hubs that an update has occured using a
+to be pushed to Subscribers, the Publisher must notify all of its supported Hubs that an update has occurred using a
 simple *HTTP* *POST* request containing the *URI* or the updated Topic (i.e the updated *RSS* or Atom feed). The
 Hub will confirm receipt of the notification, fetch the updated feed, and forward any updates to any Subscribers
 who have subscribed to that Hub for updates from the relevant feed.
@@ -144,7 +144,7 @@ at some level to ensure updates are retrieved if ever a Hub goes offline). All s
 the *URI* of the Topic being subscribed and a Callback *URL* which the Hub will use to confirm the subscription and
 to forward updates.
 
-The Subsciber therefore has two roles. To create and manage subscriptions, including subscribing for new Topics
+The Subscriber therefore has two roles. To create and manage subscriptions, including subscribing for new Topics
 with a Hub, unsubscribing (if necessary), and periodically renewing subscriptions since they may have a limited
 validity as set by the Hub. This is handled by ``Zend\Feed\PubSubHubbub\Subscriber``.
 

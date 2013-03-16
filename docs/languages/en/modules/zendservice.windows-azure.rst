@@ -21,7 +21,7 @@ Installing the Windows Azure SDK
 There are two development scenario's when working with Windows Azure.
 
 - You can develop your application using ``ZendService\WindowsAzure`` and the Windows Azure *SDK*, which provides
-  a local developent environment of the services provided by Windows Azure's cloud infrastructure.
+  a local development environment of the services provided by Windows Azure's cloud infrastructure.
 
 - You can develop your application using ``ZendService\WindowsAzure``, working directly with the Windows Azure
   cloud infrastructure.
