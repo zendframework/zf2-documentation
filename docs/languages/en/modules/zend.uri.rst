@@ -111,7 +111,7 @@ Otherwise, ``Zend\Uri\UriFactory::factory()`` will return a class implementing
 Common Instance Methods
 -----------------------
 
-The `Zend\Uri\UriInterface`` defines several instance methods that are useful 
+The ``Zend\Uri\UriInterface`` defines several instance methods that are useful 
 for working with any kind of *URI*.
 
 .. _zend.uri.instance-methods.getscheme:
