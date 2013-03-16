@@ -40,11 +40,12 @@ Each element provided out-of-the-box by Zend Framework 2 support this natively, 
 Creating custom elements
 ------------------------
 
-Similar to :ref:`how you would add a view helper <zend.view.helpers.custom>`, you can easily create your own form
-elements, and add them to the ``Zend\Form\FormElementManager`` plugin manager to be able to set dependencies or use 
-the short name. For this, Zend Framework 2.1 adds a new feature interface through the ``getFormElementConfig`` function.
+``Zend\Form`` also supports custom form elements. 
 
-First, create your own element:
+To create a custom form element, make it extend the ``Zend\Form\Element\Element`` class, or if you need a more specific
+one, extend one of the ``Zend\Form\Element`` classes.
+
+First, create your custom element:
 
 .. code-block:: php
     :linenos:
@@ -58,7 +59,50 @@ First, create your own element:
         // Define your element…
     }
 
-Then, add it to the plugin manager, in your ``Module.php`` class:
+
+The easiest way of start using your new custom element in your forms is to use the custom element's FCQN:
+
+.. code-block:: php
+    :linenos:
+
+    $form = new Zend\Form\Form();
+    $form->add(array(
+        'name' => 'custom',
+        'type' => 'Application\Form\Element\CustomElement',
+    ));
+
+Or, if you are extending ``Zend\Form\Form``:
+
+.. code-block:: php
+    :linenos:
+
+    namespace Application\Form;
+
+    use Zend\Form\Form;
+
+    class MyForm extends Form
+    {
+        public function __construct($name = null)
+        {
+            parent::__construct($name);
+
+            $this->add(array(
+                'name' => 'custom',
+                'type' => 'Application\Form\Element\CustomElement',
+            ))
+        }
+    }
+
+
+If you don't want to use the custom element's FCQN, but rather a short name, as of Zend Framework 2.1 you can do so
+by adding them to the ``Zend\Form\FormElementManager`` plugin manager by utilising the ``getFormElementConfig`` function.
+
+.. warning::
+
+    To use custom elements with the FormElementManager needs a bit more work and most likely a change in how you write and
+    use your forms.
+
+First, add the custom element to the plugin manager, in your ``Module.php`` class:
 
 .. code-block:: php
     :linenos:
@@ -73,25 +117,73 @@ Then, add it to the plugin manager, in your ``Module.php`` class:
         {
             return array(
                 'invokables' => array(
-                    'custom' => 'Application\Form\Element\CustomElement'
+                    'customelement' => 'Application\Form\Element\CustomElement'
                 )
             );
         }
     }
-   
-Of course, you can use a factory instead of an invokable in order to handle dependencies in your elements/fieldsets/forms.
 
-Then, you can use your custom element like any other element:
+Or, you can do the same in your ``module.config.php`` file:
 
 .. code-block:: php
     :linenos:
 
-    $form->add(array(
-        'type' => 'Custom', // Note that it's not case-sensitive!
-        'name' => 'myCustomElement'
-    ));
+    return array(
+        'form_elements' => array(
+            'invokables' => array(
+                'customelement' => 'Application\Form\Element\CustomElement'
+            )
+        )
+    );
    
-As a consequence of this, you can easily override any built-in Zend elements if they do not fit your needs. For instance, if you want to create your own Email element instead of the standard one, you can simply create your element and add it to the form element config with the same key as the element you want to replace:
+You can use a factory instead of an invokable in order to handle dependencies in your elements/fieldsets/forms.
+
+**And now comes the first catch.**
+
+If you are creating your form class by extending ``Zend\Form\Form``, you *must not* add the custom element in the
+``__construct``-or (as we have done in the previous example where we used the custom element's FCQN),
+but rather in the ``init()`` method:
+
+.. code-block:: php
+
+    namespace Application\Form;
+
+    use Zend\Form\Form;
+
+    class MyForm extends Form
+    {
+        public function init()
+        {
+            $this->add(array(
+                'name' => 'custom',
+                'type' => 'customelement',
+            ))
+        }
+    }
+
+**The second catch** is that you *must not* directly instantiate your form class, but rather get an instance of it
+through the ``Zend\Form\FormElementManager``:
+
+.. code-block:: php
+
+    namespace Application\Controller;
+
+    use Zend\Mvc\Controller\AbstractActionController;
+
+    class IndexController extends AbstractActionController
+    {
+        public function indexAction()
+        {
+            $sl = $this->getServiceLocator();
+            $form = $sl->get('FormElementManager')->get('\Application\Form\MyForm');
+            return array('form' => $form);
+        }
+    }
+
+  
+The biggest gain of this is that you can easily override any built-in Zend Framework form elements if they do not fit your needs.
+For instance, if you want to create your own Email element instead of the standard one, you can simply create your element and add it to
+the form element config with the same key as the element you want to replace:
 
 .. code-block:: php
     :linenos:
@@ -119,57 +211,16 @@ Now, whenever you'll create an element whose ``type`` is 'Email', it will create
    if you want to be able to use both the built-in one and your own one, you can still provide the FQCN of the element, 
    i.e. ``Zend\Form\Element\Email``.
 
-However, in order for this to work, there is one thing to change in your code. If you want to be able to use your own elements (as well as to handle dependencies, as we will see later), you must create your forms using the ''ServiceManager''. For instance, if you have the following form, that is using our ``custom`` element that we defined earlier:
-
-.. code-block:: php
-    :linenos:
-
-    namespace Application\Form;
-
-    use Zend\Form\Form;
-
-    class MyForm extends Form
-    {
-        public function __construct()
-        {
-            $this->add(
-                array(
-                    'name' => 'foo',
-                    'type' => 'Custom'
-                )
-            );
-        }
-    }
-   
-In your controller (or in your service, or whenever you want to create a form), directly instantiating your form this way won't work:
-
-.. code-block:: php
-    :linenos:
-
-    public function testAction()
-    {
-        $form = new \Application\Form\MyForm();
-    }
-
-This code will work if you use only built-in elements, however, as we added a custom element, we altered the plugin manager configuration, and the form won't be aware of this modified plugin manager, unless we create it using the ''ServiceManager''. Hopefully, this is easy, as you just need to replace the previous code by:
-
-.. code-block:: php
-    :linenos:
-
-    public function testAction()
-    {
-        $formManager = $this->serviceLocator->get('FormElementManager');
-        $form = $formManager->get('Application\Form\MyForm');
-    }
-
-As you can see here, we first get the form manager (that we modified in our Module.php class), and create the form by specifying the fully qualified class name of the form. Please note that you don't need to add `Application\Form\MyForm` to the `invokables` array. If it is not specified, the form manager will just instantiate it directly.
+As you can see here, we first get the form manager (that we modified in our Module.php class), and create the form by specifying the fully
+qualified class name of the form. Please note that you don't need to add `Application\Form\MyForm` to the `invokables` array. If it is not
+specified, the form manager will just instantiate it directly.
 
 In short, to create your own form elements (or even reusable fieldsets !) and be able to use them in your form using the short-name notation, you need to:
 
 1. Create your element (like you did before).
 2. Add it to the form element manager by defining the `getFormElementConfig`, exactly like using ''getServiceConfig()'' and ''getControllerConfig''.
-3. Create your form through the form element manager instead of directly instantiating it.
-
+3. Make sure the custom form element is not added in the form's __construct-or, but rather in it's init() method, or after getting an instance of the form.
+4. Create your form through the form element manager instead of directly instantiating it.
 
 .. _zend.form.advanced-use-of-forms.handling-dependencies:
 
