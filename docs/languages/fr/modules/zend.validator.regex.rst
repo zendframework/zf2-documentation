@@ -4,7 +4,7 @@
 Regex
 =====
 
-Ce validateur valide si une chaine correspond à un motif d'expression régulière.
+Ce validateur valide si une chaîne correspond à un motif d'expression régulière.
 
 .. _zend.validator.set.regex.options:
 

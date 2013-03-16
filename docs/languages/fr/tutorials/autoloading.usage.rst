@@ -79,8 +79,8 @@ signifie qu'il essayera de charger toute classe peu importe son préfixe.
 Si vous possédez votre propre autoloader et que vous voulez l'utiliser avec Zend Framework -- peut être un
 autoloader provenant d'une autre librairie que vous utilisez -- vous pouvez l'enregistrer grâce aux méthodes de
 ``Zend\Loader\Autoloader`` ``pushAutoloader()`` et ``unshiftAutoloader()``. Ces méthodes ajoutent des autoloaders
-à la fin ou au début de la chaine utilisée avant l'exécution des mecanismes internes d'auto-chargement de Zend
-Framewor. Cette approche a les avantages suivants:
+à la fin ou au début de la chaîne utilisée avant l'exécution des mecanismes internes d'auto-chargement de Zend
+Framework. Cette approche a les avantages suivants:
 
 - Chaque méthode prend un deuxième paramètre : un espace de noms qui indique que l'autoloader passé ne doit
   être utilisé que pour charger des classes dans cet espace de noms là. Si la classe n'est pas dans cet espace

@@ -6,7 +6,7 @@ Hex
 
 ``Zend\Validate\Hex`` permet de valider qu'un nombre ne contienne bien que des caractères hexadécimaux. Ce sont
 les caractères de **0 à 9** et de **A à F** insensibles à la casse. Il n'existe pas de limite de longueur de la
-chaine à valider.
+chaîne à valider.
 
 .. code-block:: php
    :linenos:

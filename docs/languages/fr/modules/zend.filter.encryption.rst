@@ -4,7 +4,7 @@
 Encrypt
 =======
 
-Ce filtre va crypter toute chaine avec les paramètres spécifiés. Des adaptateurs sont utilisés. Actuellement,
+Ce filtre va crypter toute chaîne avec les paramètres spécifiés. Des adaptateurs sont utilisés. Actuellement,
 il existe des adaptateurs pour les extensions PHP *Mcrypt* et *OpenSSL*.
 
 Comme ces deux méthodes d'encryptage sont très différentes, l'utilisation de leurs adaptateurs l'est aussi.
@@ -57,7 +57,7 @@ Cet adaptateur nécessite la présence de l'extension PHP *Mcrypt*. Voici ses op
 - **salt**: Si la clé doit être utilisé comme grain de sel. Dans ce cas la clé utilisée pour le cryptage sera
   elle même cryptée. Par défaut false : ce n'est pas le cas.
 
-Si vous passez une chaine à la place d'un tableau pour la clé, celle-ci sera utilisée.
+Si vous passez une chaîne à la place d'un tableau pour la clé, celle-ci sera utilisée.
 
 Les méthodes *getEncryption()* et *setEncryption()* sont aussi présentes.
 

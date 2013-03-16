@@ -8,7 +8,7 @@ Ce validateur vérifie la longueur d'une chaine de caractères.
 
 .. note::
 
-   **Zend\Validate\StringLength ne supporte que les chaines**
+   **Zend\Validate\StringLength ne supporte que les chaînes**
 
    Zend\Validate\StringLength ne fonctionnera pas avec les entiers, flottants, les dates ou encore les objets.
 
@@ -19,7 +19,7 @@ Options gérées par Zend\Validate\StringLength
 
 Les options suivantes sont reconnues par ``Zend\Validate\StringLength``:
 
-- **encoding**: Définit l'encodage ``ICONV`` à utiliser avec la chaine.
+- **encoding**: Définit l'encodage ``ICONV`` à utiliser avec la chaîne.
 
 - **min**: Définit le nombre de caractères minimum requis.
 
@@ -30,10 +30,10 @@ Les options suivantes sont reconnues par ``Zend\Validate\StringLength``:
 Comportement par défaut de Zend\Validate\StringLength
 -----------------------------------------------------
 
-Par défaut, ce validateur vérifie qu'une valeur de chaine est bien entre ``min`` et ``max`` caractères. Pour
+Par défaut, ce validateur vérifie qu'une valeur de chaîne est bien entre ``min`` et ``max`` caractères. Pour
 ``min``, la valeur par défaut est **0** et pour ``max`` c'est **NULL** ce qui signifie illimité.
 
-Ainsi par défaut, sans aucune option, ce validateur vérifie que la donnée traitée est bien une chaine.
+Ainsi par défaut, sans aucune option, ce validateur vérifie que la donnée traitée est bien une chaîne.
 
 .. _zend.validator.set.stringlength.maximum:
 

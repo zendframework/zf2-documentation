@@ -4,7 +4,7 @@
 Introduction
 ============
 
-Le composant ``Zend_Markup`` offre des possibilités extensibles d'anakyse de texte et de rendu concernant les
+Le composant ``Zend_Markup`` offre des possibilités extensibles d'analyse de texte et de rendu concernant les
 langages à balises comme BBcode et Textile. Il est disponible depuis Zend Framework version 1.10.
 
 ``Zend_Markup`` utilise une fabrique pour instancier un moteur de rendu (renderer) qui étend

@@ -9,11 +9,11 @@ Simplement, dans un bloc ``catch``, il est possible d'envoyer une exception fais
 ce qui améliore le contexte de débogage. Ce support dans Zend Framework apporte le support complet de PHP 5.3
 concernant les exceptions.
 
-L'exception précedente s'utilise comme troisième paramètre du constructeur de la classe Exception.
+L'exception précédente s'utilise comme troisième paramètre du constructeur de la classe Exception.
 
 .. _zend.exception.previous.example:
 
-.. rubric:: Exceptions précedentes
+.. rubric:: Exceptions précédentes
 
 .. code-block:: php
    :linenos:

@@ -70,7 +70,7 @@ Serialiser une entrée LDAP vers LDIF
 
 .. _zend.ldap.ldif.decode:
 
-Desérialiser une chaine LDIF dans une entrée LDAP
+Desérialiser une chaîne LDIF dans une entrée LDAP
 -------------------------------------------------
 
 .. code-block:: php

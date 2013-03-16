@@ -10,8 +10,8 @@ par programme de créer et de stocker le titre afin de le récupérer plus tard 
 L'aide *HeadTitle* est une implémentation concrète de l'aide :ref:`Placeholder
 <zend.view.helpers.initial.placeholder>`. Elle surcharge la méthode ``toString()`` pour forcer la génération
 d'un élément *<title>*, et ajoute une méthode ``headTitle()`` pour des réglages faciles et rapides et pour
-l'aggrégation des éléments du titre. La signature de la méthode est ``headTitle($title, $setType = null)``; par
-défaut, la valeur est ajoutée en fin de pile (pour aggréger les segments du titre) si laissé à null, mais vous
+l'agrégation des éléments du titre. La signature de la méthode est ``headTitle($title, $setType = null)``; par
+défaut, la valeur est ajoutée en fin de pile (pour agréger les segments du titre) si laissé à null, mais vous
 pouvez aussi spécifier "``PREPEND``" (pour l'ajouter en début de pile) ou "``SET``" (pour remplacer la pile
 existante).
 
@@ -23,7 +23,7 @@ explicitly pass a different attach order as the second parameter.
 
 .. rubric:: Utilisation basique de l'aide HeadTitle
 
-Vous pouvez spécifier la balise de titre à n'importe quel moment. Un usage typique serait de paramètrer les
+Vous pouvez spécifier la balise de titre à n'importe quel moment. Un usage typique serait de paramétrer les
 différents segments du titre à chaque niveau de profondeur de votre application : site, module, contrôleur,
 action et ressources potentielles.
 
@@ -40,7 +40,7 @@ action et ressources potentielles.
    // de disposition :
    $this->headTitle('Zend Framework');
 
-   // Réglage de la haîne de séparation des segments :
+   // Réglage de la chaîne de séparation des segments :
    $this->headTitle()->setSeparator(' / ');
 
 Quand vous êtes finalement prêt à afficher le titre dans votre script de disposition, faîtes simplement un

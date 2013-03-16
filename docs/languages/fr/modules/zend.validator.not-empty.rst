@@ -24,7 +24,7 @@ Comportement par défaut de Zend\Validate\NotEmpty
 -------------------------------------------------
 
 Par défaut, ce validateur fonctionne différement de la fonction *PHP* ``empty()``. En particulier, ce validateur
-va évaluer l'entier **0** et la chaine '**0**' comme vides.
+va évaluer l'entier **0** et la chaîne '**0**' comme vides.
 
 .. code-block:: php
    :linenos:
@@ -45,7 +45,7 @@ va évaluer l'entier **0** et la chaine '**0**' comme vides.
 Changer le comportement de Zend\Validate\NotEmpty
 -------------------------------------------------
 
-Certains projets ont des opinions différentes sur ce qui peut être considéré comme 'vide'. Une chaine seulement
+Certains projets ont des opinions différentes sur ce qui peut être considéré comme 'vide'. Une chaîne seulement
 composée d'espaces blancs pourrait être considérée comme vide, ou **0** pourrait être considéré comme
 non-vide (surtout dans les séquences logiques booléennes). Pour correspondre aux différents besoins,
 ``Zend\Validate\NotEmpty`` vous permet de configurer les types que vous considérez comme vides.
@@ -60,7 +60,7 @@ Les types suivants sont gérés :
 - **flottant**\  : Retourne ``FALSE`` lorsque le flottant **0.0** est passé. Par défaut cette validation n'est
   pas activée et retourne ``TRUE`` pour toute valeur de flottant.
 
-- **chaine**\  : Retourne ``FALSE`` lorsque la chaine vide **''** est passée.
+- **chane**\  : Retourne ``FALSE`` lorsque la chaîne vide **''** est passée.
 
 - **zero**\  : Retourne ``FALSE`` lorsque le seul caractère zéro (**'0'**) est passé.
 
@@ -70,14 +70,14 @@ Les types suivants sont gérés :
 
 - **php**\  : Retourne ``FALSE`` lorsque la fonction *PHP* ``empty()`` retournerait ``TRUE``.
 
-- **espace**\  : Retourne ``FALSE`` lorsqu'une chaine ne contenant que des caractères espace est passée.
+- **espace**\  : Retourne ``FALSE`` lorsqu'une chaîne ne contenant que des caractères espace est passée.
 
 - **tout**\  : Retourne ``FALSE`` pour tous les types gérés cités ci-dessus.
 
 Toute autre valeur passée retourne ``TRUE`` par défaut.
 
-Il existe différentes manières de selectionner les types ci-dessus. Vous pouvez en spécifier un ou plusieurs,
-sous forme de tableau ou de constantes ou encore de chaines. Voyez les exemples ci-après :
+Il existe différentes manières de sélectionner les types ci-dessus. Vous pouvez en spécifier un ou plusieurs,
+sous forme de tableau ou de constantes ou encore de chaînes. Voyez les exemples ci-après :
 
 .. code-block:: php
    :linenos:

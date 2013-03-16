@@ -17,7 +17,7 @@ composants. Les plugins sont utilisés à de nombreux endroits:
 
 - ``Zend_View``: aides de vue.
 
-Encore beaucoup d'autres endroits. Prennez en main ce concept et vous pourrez alors étendre de manière soutenue
+Encore beaucoup d'autres endroits. Prenez en main ce concept et vous pourrez alors étendre de manière soutenue
 le Zend Framework.
 
 .. note::

@@ -52,7 +52,7 @@ as a second parameter to the ``Zend\Uri\Uri::factory()`` method. This enables yo
 own custom URI classes, and instantiate new URI objects based on your own custom classes.
 
 The 2nd parameter passed to ``Zend\Uri\Uri::factory()`` must be a string with the name of a class extending
-``Zend_Uri``. The class must either be alredy-loaded, or loadable using ``Zend\Loader\Loader::loadClass()``- that is, it
+``Zend_Uri``. The class must either be already-loaded, or loadable using ``Zend\Loader\Loader::loadClass()``- that is, it
 must follow the Zend Framework class and file naming conventions, and must be in your include_path.
 
 .. _zend.uri.creation.custom.example-1:

@@ -36,7 +36,7 @@ Voici un exemple d'utilisation basique :
    // Essai
    $log->error('unable to connect to database');
 
-   // A la fermeture, Zend\Mail\Mail::send() est inviqué et concernera
+   // A la fermeture, Zend\Mail\Mail::send() est invoqué et concernera
    // tous les logs passés dans le filtre.
 
 ``Zend\Log_Writer\Mail`` utilisera un corps de message en texte plein (plain text) par défaut.
