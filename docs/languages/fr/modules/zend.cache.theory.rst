@@ -47,7 +47,7 @@ suivant :
    // Nous définissons un tableau d'options pour le frontend choisit
    $frontendOptions = array([...]);
 
-   // Nous définissons un tableau d'options pour le banckend choisit
+   // Nous définissons un tableau d'options pour le backend choisit
    $backendOptions = array([...]);
 
    // Nous créons la bonne instance

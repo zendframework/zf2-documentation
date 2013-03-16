@@ -5,11 +5,11 @@ Placeholders standards
 ======================
 
 Dans la :ref:`section précédente <learning.view.placeholders.basics>`, nous avons vu l'aide de vue
-``placeholder()`` et comment l'utiliser pour aggréger du contenu personnalisable. Dans ce chapitre, nous allons
+``placeholder()`` et comment l'utiliser pour agréger du contenu personnalisable. Dans ce chapitre, nous allons
 passer en revue quelques placeholders concrets fournis avec Zend Framework, ainsi que la manière de les utiliser
 à votre avantage pour créer des layouts complexes.
 
-La plupart des placeholders fournis permettent de gérer le contenur de la section **<head>** de la layout -- une
+La plupart des placeholders fournis permettent de gérer le contenu de la section **<head>** de la layout -- une
 zone qui ne peut typiquement pas être manipulée directement par vos scripts de vue, mais que vous voulez tout de
 même traiter. Par exemples: vous voudriez que votre titre se compose d'un certain contenu sur toutes les pages
 mais aussi d'une partie dynamique relative au contrôleur/action en cours; aussi vous voudriez préciser des

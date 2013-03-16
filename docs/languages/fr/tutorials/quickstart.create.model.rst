@@ -17,7 +17,7 @@ ressources sous ce dossier.
 
 ``Zend\Application_Module\Autoloader`` propose la fonctionnalité nécessaire à la correspondance entre les
 ressources d'un module et ses dossiers, il propose pour cela un mécanisme de nommage standard. Une instance de la
-classe est créee par défaut pendant l'initialisation de l'objet de bootstrap et utilisera le préfixe de module
+classe est créée par défaut pendant l'initialisation de l'objet de bootstrap et utilisera le préfixe de module
 "Application". De ce fait, nos classes de modèles, formulaires, et tables commenceront toutes par le préfixe de
 classe "Application\_".
 
@@ -62,16 +62,16 @@ fait, l'*API* du modèle d'un simple livre d'or ressemblerait à ceci:
        public function fetchAll();
    }
 
-``__get()`` et ``__set()`` nous simpliferons l'accès aux attributs et proxieront vers les autres getters et
+``__get()`` et ``__set()`` nous simplifierons l'accès aux attributs et proxieront vers les autres getters et
 setters. Ils nous permettront de même de nous assurer que seuls les attributs que nous avons définis seront
 accessibles dans l'objet.
 
 ``find()`` et ``fetchAll()`` permettent de récupérer une seule entrée ou toutes les entrées alors que
 ``save()`` offrira la possibilité de stocker une entrée dans le support de stockage.
 
-Maintenant à partir de là, nous pouvons commecer à penser en terme de base de données.
+Maintenant à partir de là, nous pouvons commencer à penser en terme de base de données.
 
-Nous devons d'abord intialiser une ressource ``Db``. Comme pour les ressources ``Layout`` et ``View``, nous pouvons
+Nous devons d'abord initialiser une ressource ``Db``. Comme pour les ressources ``Layout`` et ``View``, nous pouvons
 utiliser de la configuration pour ``Db``. Cela est possible au moyen de la commande ``zf configure db-adapter``:
 
 .. code-block:: console

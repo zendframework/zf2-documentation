@@ -12,7 +12,7 @@ alphanumériques.
    .. code-block:: php
       :linenos:
 
-      // Creation d'une chaine de validateurs et ajout de validateurs
+      // Creation d'une chaîne de validateurs et ajout de validateurs
       $validateurChaine = new Zend\Validate\Validate();
       $validateurChaine->addValidator(
                           new Zend\Validate\StringLength(array('min' => 6,

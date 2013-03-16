@@ -58,7 +58,7 @@ Il peut arriver de ne vouloir valider qu'un seul des deux formats. Par exemple s
 il serait idiot de demander une telle validation.
 
 Pour limiter ``Zend\Validate\Ip`` sur un seul des deux protocoles, utilisez les options ``allowipv4`` ou
-``allowipv6`` et mettez les à ``FALSE``. Il est possible d'effectuer celà au moyen du constructeur ou avec la
+``allowipv6`` et mettez les à ``FALSE``. Il est possible d'effectuer cela au moyen du constructeur ou avec la
 méthode ``setOptions()``.
 
 .. code-block:: php

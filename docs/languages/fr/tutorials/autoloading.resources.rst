@@ -41,7 +41,7 @@ Considérons ce qui suit comme exemple:
    |   |-- Guestbook.php        // Foo_Model_Guestbook
    |   `-- GuestbookMapper.php  // Foo_Model_GuestbookMapper
 
-Le premier reflexe est de créer un chargeur de ressources:
+Le premier réflexe est de créer un chargeur de ressources:
 
 .. code-block:: php
    :linenos:
@@ -52,7 +52,7 @@ Le premier reflexe est de créer un chargeur de ressources:
    ));
 
 Puis, nous définissons des types de ressources. ``Zend\Loader_Autoloader\Resourse::addResourceType()`` prend trois
-arguments: le "type" de resource (une chaine arbitraire), le chemin sous le chemin de base dans lequel le type de
+arguments: le "type" de resource (une chaîne arbitraire), le chemin sous le chemin de base dans lequel le type de
 ressource doit se trouver, et le préfixe particulier à utiliser pour ce type de ressource. Dans l'arbre
 représenté ci-dessus, il y a trois types : form (dans le sous-dossier "forms", avec un préfixe "Form"), model
 (dans le sous-dossier "models", avec un préfixe "Model"), et dbtable (dans le sous-dossier "``models/DbTable``",

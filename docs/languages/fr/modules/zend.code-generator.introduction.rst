@@ -49,7 +49,7 @@ le code généré, un simple echo suffira, ou l'appel à sa méthode ``generate(
    // Rendu du fichier généré:
    echo $file;
 
-   // 2criture du fichier généré:
+   // écriture du fichier généré:
    file_put_contents('World.php', $file->generate());
 
 Les 2 exemples ci-dessus vont rendre le même résultat :

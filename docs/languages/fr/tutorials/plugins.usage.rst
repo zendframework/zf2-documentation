@@ -75,7 +75,7 @@ validateurs vont correspondre à ``Zend\Validate\NotEmpty`` et ``Zend\Validate\I
 .. rubric:: Exemple intermédiaire: Surcharger un plugin existant
 
 Une des forces du PluginLoader est qu'il utilise une pile LIFO, ceci vous permet de surcharger des plugins
-existants par les votres stockés dans des chemins différents en enregistrant ce chemin dans la pile.
+existants par les vôtres stockés dans des chemins différents en enregistrant ce chemin dans la pile.
 
 Par exemple, considérons ``Zend\View_Helper\FormButton`` (les aides de vue sont une forme de plugin). Cette aide
 de vue accepte trois paramètres, un nom DOM, une valeur (utilisée comme libéllé de bouton), et un tableau

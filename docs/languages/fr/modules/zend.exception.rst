@@ -20,7 +20,7 @@ Le code suivant montre comment attraper une exception levée par une classe de Z
        Zend\Loader\Loader::loadClass('classnonexistante');
    } catch (Zend_Exception $e) {
        // Appeler Zend\Loader\Loader::loadClass() sur une classe non-existante
-       //entrainera la levée d'une exception dans Zend_Loader
+       // entraînera la levée d'une exception dans Zend_Loader
        echo "Récupère exception: " . get_class($e) . "\n";
        echo "Message: " . $e->getMessage() . "\n";
        // puis tout le code nécessaire pour récupérer l'erreur
@@ -32,6 +32,6 @@ fonctionner en essayant d'attraper un type d'exception spécifique.
 
 La documentation pour chaque composant de Zend Framework et de ses classes contient les informations plus
 spécifiques sur les méthodes qui lèvent des exceptions, les circonstances de lancement de ces exceptions et
-quelles types declasses d'exception peuvent être levées.
+quelles types de classes d'exception peuvent être levées.
 
 

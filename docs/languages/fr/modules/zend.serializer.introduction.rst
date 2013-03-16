@@ -18,11 +18,11 @@ Pour instancier un sérialiseur, vous devriez utiliser la méthode de fabrique d
 
    $serializer = Zend\Serializer\Serializer::factory('PhpSerialize');
    // $serializer est instance de Zend\Serializer_Adapter\AdapterInterface,
-   // précisémment Zend\Serializer_Adapter\PhpSerialize
+   // précisément Zend\Serializer_Adapter\PhpSerialize
 
    try {
        $serialized = $serializer->serialize($data);
-       // $serialized est une chaine
+       // $serialized est une chaîne
 
        $unserialized = $serializer->unserialize($serialized);
        // ici $data == $unserialized
@@ -30,7 +30,7 @@ Pour instancier un sérialiseur, vous devriez utiliser la méthode de fabrique d
        echo $e;
    }
 
-La méhode ``serialize`` génère une chaine. Pour regénérer la donnée utilisez la méthode ``unserialize``.
+La méthode ``serialize`` génère une chaîne. Pour regénérer la donnée utilisez la méthode ``unserialize``.
 
 Si une erreur survient à la sérialisation ou désérialisation, ``Zend_Serializer`` enverra une
 ``Zend\Serializer\Exception``.
@@ -54,7 +54,7 @@ Pour configurer l'adaptateur, vous pouvez passer un tableau ou un objet instance
 
 Les options passées à ``factory`` sont valides pour l'objet crée. Vous pouvez alors changer ces options grâce
 à la méthode ``setOption(s)``. Pour changer des options pour un seul appel, passez celles-ci en deuxième
-arguement des méthodes ``serialize`` ou ``unserialize``.
+argument des méthodes ``serialize`` ou ``unserialize``.
 
 .. _zend.serializer.introduction.example.static.php:
 

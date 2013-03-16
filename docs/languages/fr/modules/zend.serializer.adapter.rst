@@ -7,7 +7,7 @@ Zend\Serializer\Adapter
 Les adaptateurs ``Zend_Serializer`` servent à changer les méthodes de sérialisation facilement.
 
 Chaque adaptateurs possède ses propres atouts et inconvénients. Dans certains cas, certains types PHP (objets) ne
-peuvent être représentés sous forme de chaines. Dans ce cas, ces types seront convertis vers un type
+peuvent être représentés sous forme de chaînes. Dans ce cas, ces types seront convertis vers un type
 sérialisable (par exemple, les objets seront convertis en tableaux). Ci ceci échoue, une exception
 ``Zend\Serializer\Exception`` sera alors envoyée.
 
@@ -28,7 +28,7 @@ Zend\Serializer_Adapter\Igbinary
 --------------------------------
 
 `Igbinary`_ est un logiciel Open Source crée par Sulake Dynamoid Oy. C'est un remplaçant du sérialiseur utiliser
-par PHP. Au lieu d'utiliser une représentation textuelle (couteuse en temps et en poids), igbinary représente les
+par PHP. Au lieu d'utiliser une représentation textuelle (coûteuse en temps et en poids), igbinary représente les
 structures de données PHP dans un format binaire compact. Les gains sont importants lorsqu'un système de stockage
 comme memcache est utilisé pour les données sérialisées.
 
@@ -59,7 +59,7 @@ Les options disponibles sont:
    +-------+--------------+-----------------+-----------------------------------------------------+
    |Option |Type de donnée|Valeur par défaut|Description                                          |
    +=======+==============+=================+=====================================================+
-   |comment|chaine        |                 |Un commentaire qui apparait dans l'en=tête du paquet.|
+   |comment|chaîne        |                 |Un commentaire qui apparaît dans l'entête du paquet. |
    +-------+--------------+-----------------+-----------------------------------------------------+
 
 .. _zend.serializer.adapter.json:
@@ -67,7 +67,7 @@ Les options disponibles sont:
 Zend\Serializer_Adapter\Json
 ----------------------------
 
-L'adaptateur *JSON* acréer un pont vers ``Zend_Json`` et/ou ext/json (l'extension json de PHP). Pour plus
+L'adaptateur *JSON* créer un pont vers ``Zend_Json`` et/ou ext/json (l'extension json de PHP). Pour plus
 d'informations, lisez le manuel de :ref:`Zend_Json <zend.json.introduction>`.
 
 Les options disponibles sont:

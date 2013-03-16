@@ -32,7 +32,7 @@ Conteneurs
 ^^^^^^^^^^
 
 Un conteneur de navigation (``Zend\Navigation\Container``) est une classe contenant des pages. Elle possède des
-méthodes pour ajouter, supprimer, récupérer et itrérer au travers de pages. Elle implémente les interfaces de
+méthodes pour ajouter, supprimer, récupérer et itérer au travers de pages. Elle implémente les interfaces de
 la `SPL`_ ``RecursiveIterator`` et ``Countable``, et peuvent ainsi être parcourues avec les itérateurs de la SPL
 tels que ``RecursiveIteratorIterator``.
 
