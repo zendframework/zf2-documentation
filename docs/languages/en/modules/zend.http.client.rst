@@ -121,7 +121,7 @@ Available Methods
 
    Load the connection adapter
 
-   While this method is not called more than once for a client, it is seperated from ->send() to preserve logic
+   While this method is not called more than once for a client, it is separated from ->send() to preserve logic
    and readability
 
    Returns Zend\\Http\\Client

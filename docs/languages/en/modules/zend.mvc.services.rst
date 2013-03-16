@@ -214,7 +214,7 @@ values as noted below. The following services are created and managed by the ``V
   ``template_map`` key is present, it will be used to seed the template map.
 
 - ``ViewTemplatePathStack``, representing and aliased to ``Zend\View\Resolver\TemplatePathStack``. If a
-  ``template_path_stack`` key is prsent, it will be used to seed the stack.
+  ``template_path_stack`` key is present, it will be used to seed the stack.
 
 - ``ViewResolver``, representing and aliased to ``Zend\View\Resolver\AggregateResolver`` and
   ``Zend\View\Resolver\ResolverInterface``. It is seeded with the ``ViewTemplateMapResolver`` and
@@ -238,7 +238,7 @@ values as noted below. The following services are created and managed by the ``V
   ``display_exceptions`` or ``exception_template`` keys are present, they are used to configure the strategy.
 
 - ``RouteNotFoundStrategy``, representing and aliased to ``Zend\Mvc\View\RouteNotFoundStrategy`` and
-  ``404Stategy``. If the ``display_not_found_reason`` or ``not_found_template`` keys are present, they are used to
+  ``404Strategy``. If the ``display_not_found_reason`` or ``not_found_template`` keys are present, they are used to
   configure the strategy.
 
 - ``ViewModel``. In this case, no service is registered; the ``ViewModel`` is simply retrieved from the
@@ -283,7 +283,7 @@ directives go to the ``config/application.config.php`` file.
            ),
 
            // An array of paths from which to glob configuration files after
-           // modules are loaded. These effectively overide configuration
+           // modules are loaded. These effectively override configuration
            // provided by modules themselves. Paths may use GLOB_BRACE notation.
            'config_glob_paths' => array(
            ),

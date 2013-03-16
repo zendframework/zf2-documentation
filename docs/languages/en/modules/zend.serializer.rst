@@ -50,7 +50,7 @@ Any time an error is encountered serializing or unserializing,
 
 Because of an application often uses internally only one serializer it is
 possible to define and use a default serializer. That serializer will be used
-by defaut by other components like ``Zend\Cache\Storage\Plugin\Serializer``.
+by default by other components like ``Zend\Cache\Storage\Plugin\Serializer``.
 
 To use the default serializer you can simply use the static serialization
 methods of the basic ``Zend\Serializer\Serializer``:
@@ -78,7 +78,7 @@ Basic configuration Options
 To configure a serializer adapter, you can optionally use an instance of
 ``Zend\Serializer\Adapter\AdapterOptions``, an instance of one of the adapter
 specific options class, an ``array`` or an instance of ``Traversable``.
-The adapter will convert it into the adapter specífic options class instance
+The adapter will convert it into the adapter specific options class instance
 (if present) or into the basic ``Zend\Serializer\Adapter\AdapterOptions`` class
 instance.
 

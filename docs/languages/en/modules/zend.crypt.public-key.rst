@@ -138,7 +138,7 @@ In order to generate a public and private key you can use the following code:
    file_put_contents('private_key.pem', $rsaOptions->getPrivateKey());
    file_put_contents('public_key.pub', $rsaOptions->getPublicKey());
 
-This example generates a public and privat key of 2048 bit storing the keys in two separate files,
+This example generates a public and private key of 2048 bit storing the keys in two separate files,
 the ``private_key.pem`` for the private key and the ``public_key.pub`` for the public key.
 You can also generate the public and private key using OpenSSL from the command line (Unix style syntax):
 

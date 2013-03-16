@@ -80,7 +80,7 @@ The following ways of using parameters are available:
 
    // forcing a particular dependency to be used by the instance manager
    $di->instanceManager()->setParameters('MyMovieApp\MovieFinder', array(
-       'dbAdapter' => new MyLibrary\DbAdaper('myusername', 'mypassword')
+       'dbAdapter' => new MyLibrary\DbAdapter('myusername', 'mypassword')
    ));
 
    // passing instance parameters at call time

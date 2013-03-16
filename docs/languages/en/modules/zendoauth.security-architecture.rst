@@ -22,7 +22,7 @@ registered Consumer Secret. Assuming only the Consumer and the Provider know wha
 alter requests all they wish - but they will not be able to validly sign them and unsigned or invalidly signed
 requests would be discarded by both parties. Digital signatures therefore offer a guarantee that validly signed
 requests do come from the expected party and have not been altered en route. This is the core of why OAuth can
-operate over an unsecure connection.
+operate over an unsecured connection.
 
 How these digital signatures operate depends on the method used, i.e. HMAC-SHA1, RSA-SHA1 or perhaps another method
 defined by the service provider. HMAC-SHA1 is a simple mechanism which generates a Message Authentication Code

@@ -143,7 +143,7 @@ Examples
        'storage'    => 'apc',
        
        // The realpath filter doesn't output anything
-       // so the output don't need to be catched and cached
+       // so the output don't need to be caught and cached
        'cache_output' => false,
    ));
 

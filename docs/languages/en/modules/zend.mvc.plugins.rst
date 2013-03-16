@@ -46,7 +46,7 @@ For an extra layer of convenience, both ``AbstractActionController`` and ``Abstr
 AcceptableViewModelSelector Plugin
 ----------------------------------
 
-The ``AcceptableViewModelSelector`` is a helper that can be used to select an appropiate view model based on 
+The ``AcceptableViewModelSelector`` is a helper that can be used to select an appropriate view model based on
 user defined criteria will be tested against the Accept header in the request.
 
 As an example:

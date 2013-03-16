@@ -175,7 +175,7 @@ Available Methods
 **next**
    ``next()``
 
-   Advance the pointer for this object as an interator
+   Advance the pointer for this object as an iterator
 
    Returns void
 
@@ -184,7 +184,7 @@ Available Methods
 **key**
    ``key()``
 
-   Return the current key for this object as an interator
+   Return the current key for this object as an iterator
 
    Returns mixed
 

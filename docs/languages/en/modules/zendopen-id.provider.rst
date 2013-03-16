@@ -354,7 +354,7 @@ Anything Else?
 Building OpenID providers is much less common than building OpenID-enabled sites, so this manual doesn't cover all
 ``ZendOpenId\Provider`` features exhaustively, as was done for ``ZendOpenId\Consumer``.
 
-To summamize, ``ZendOpenId\Provider`` contains:
+To summarize, ``ZendOpenId\Provider`` contains:
 
 - A set of methods to build an end-user GUI that allows users to register and manage their trusted sites and
   profiles

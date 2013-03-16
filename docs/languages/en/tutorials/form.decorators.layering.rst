@@ -223,7 +223,7 @@ The above results in the markup **<input id="bar-foo" name="bar[foo]" type="text
 for="bar-foo">**.
 
 Using this technique, you can have decorators that target specific metadata of the element or form and create only
-the markup relevant to that metadata; by using mulitiple decorators, you can then build up the complete element
+the markup relevant to that metadata; by using multiple decorators, you can then build up the complete element
 markup. Our onion is the result.
 
 There are pros and cons to this approach. First, the cons:

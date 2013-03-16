@@ -355,7 +355,7 @@ Create a virtual host
 
 For purposes of this quick start, we will assume you are using the `Apache web server`_. Zend Framework works
 perfectly well with other web servers -- including Microsoft Internet Information Server, lighttpd, nginx, and more
--- but most developers should be famililar with Apache at the minimum, and it provides an easy introduction to Zend
+-- but most developers should be familiar with Apache at the minimum, and it provides an easy introduction to Zend
 Framework's directory structure and rewrite capabilities.
 
 To create your vhost, you need to know the location of your ``httpd.conf`` file, and potentially where other
@@ -393,7 +393,7 @@ virtual host:
 There are several things to note. First, note that the ``DocumentRoot`` setting specifies the ``public``
 subdirectory of our project; this means that only files under that directory can ever be served directly by the
 server. Second, note the ``AllowOverride``, ``Order``, and ``Allow`` directives; these are to allow us to use
-``htacess`` files within our project. During development, this is a good practice, as it prevents the need to
+``htaccess`` files within our project. During development, this is a good practice, as it prevents the need to
 constantly restart the web server as you make changes to your site directives; however, in production, you should
 likely push the content of your ``htaccess`` file into your server configuration and disable this. Third, note the
 ``SetEnv`` directive. What we are doing here is setting an environment variable for your virtual host; this

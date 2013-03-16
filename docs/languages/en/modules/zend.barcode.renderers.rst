@@ -41,7 +41,7 @@ Common Options
 In the following list, the values have no unit; we will use the term "unit." For example, the default value of the
 "thin bar" is "1 unit." The real units depend on the rendering support. The individual setters are obtained by
 uppercasing the initial letter of the option and prefixing the name with "set" (e.g. "barHeight" =>
-"setBarHeight"). All options have a correspondant getter prefixed with "get" (e.g. "getBarHeight"). Available
+"setBarHeight"). All options have a correspondent getter prefixed with "get" (e.g. "getBarHeight"). Available
 options are:
 
 .. _zend.barcode.renderers.common.options.table:

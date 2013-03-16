@@ -19,11 +19,11 @@ To ease the work with dependencies inside our applications, we use the
 To be able to map a request to controllers and their actions, we use
 :ref:`routes <zend.mvc.routing>`.
 
-Data persistance, in most cases, includes using :ref:`Zend\\Db <zend.db.adapter>`
+Data persistence, in most cases, includes using :ref:`Zend\\Db <zend.db.adapter>`
 to communicate with one of the databases. Input data is filtered and validated
 with :ref:`input filters <zend.input-filter.intro>` and together with 
 :ref:`Zend\\Form <zend.form.intro>` they provide a strong bridge between
 the domain model and the view layer.
 
-:ref:`Zend\\View <zend.view.quick-start>` is repsonsible for the View in the MVC
+:ref:`Zend\\View <zend.view.quick-start>` is responsible for the View in the MVC
 stack, together with a vast amount of :ref:`view helpers <zend.view.helpers>`.

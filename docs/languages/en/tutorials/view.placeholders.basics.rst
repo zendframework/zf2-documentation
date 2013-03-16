@@ -128,7 +128,7 @@ To invoke the above view script, we would write the following in our ``preDispat
        // ...
    }
 
-Note that we're not capturing the rendered value; there's no need, as the entierty of that view is being captured
+Note that we're not capturing the rendered value; there's no need, as the entirety of that view is being captured
 into a placeholder.
 
 Now, let's assume our "view" action in that same controller needs to present some information. Within the

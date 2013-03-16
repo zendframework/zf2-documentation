@@ -165,7 +165,7 @@ All contexts
 
 Those listeners are attached for both contexts:
 
-1. ``Zend\Mvc\DispatchListener`` / priority: 1 / method called: ``onDispatch`` / itself triggers: MvcEvent::EVENT_DISPATCH_ERROR (if an exception is raised during dispatch processs) => try to load the matched controller from the service manager (and throws various exceptions if it does not).
+1. ``Zend\Mvc\DispatchListener`` / priority: 1 / method called: ``onDispatch`` / itself triggers: MvcEvent::EVENT_DISPATCH_ERROR (if an exception is raised during dispatch processes) => try to load the matched controller from the service manager (and throws various exceptions if it does not).
 2. ``Zend\Mvc\AbstractController`` / priority: 1 / method called: ``onDispatch`` => the ``onDispatch`` method of the ``AbstractController`` is an abstract method. In ``AbstractActionController`` for instance, it simply calls the action method.
 
 

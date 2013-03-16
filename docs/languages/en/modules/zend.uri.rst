@@ -60,7 +60,7 @@ URI objects based on your own custom classes.
 
 The 2nd parameter passed to ``Zend\Uri\UriFactory::registerScheme()`` must be a
 string with the name of a class implementing ``Zend\Uri\UriInterface``. The 
-class must either be alredy loaded, or be loadable by the autoloader. 
+class must either be already loaded, or be loadable by the autoloader.
 
 .. _zend.uri.creation.custom.example-1:
 
