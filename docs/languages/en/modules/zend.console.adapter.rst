@@ -26,13 +26,16 @@ Service Manager.
     :emphasize-lines: 8
 
     namespace Application;
+    
+    use Zend\Mvc\Controller\AbstractActionController;
     use Zend\Console\Adapter\AdapterInterface as Console;
+    use Zend\Console\Exception\RuntimeException;
 
-    class Module
+    class ConsoleController extends AbstractActionController
     {
         public function testAction()
         {
-            $console = $this->getServiceManager()->get('console');
+            $console = $this->getServiceLocator()->get('console');
             if (!$console instanceof Console) {
                 throw new RuntimeException('Cannot obtain console adapter. Are we running in a console?');
             }
