@@ -56,8 +56,6 @@ the right amount of data needed to display the given page. Let's modify the ``fe
             if($paginated) {
                 // create a new Select object for the table album
                 $select = new Select('album');
-                // order the results by title
-                $select->order('title');
                 // create a new result set based on the Album entity
                 $resultSetPrototype = new ResultSet();
                 $resultSetPrototype->setArrayObjectPrototype(new Album());
