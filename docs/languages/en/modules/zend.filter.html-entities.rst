@@ -82,7 +82,7 @@ The above example returns ``A 'single' and &quot;double&quot;``. Notice that ``"
    $input  = "A 'single' and " . '"double"';
    print $filter->filter($input);
 
-The above example returns **A 'single' and "double"**. Notice that neither ``"double"`` or ``'single'`` quotes are
+The above example returns ``A 'single' and "double"``. Notice that neither ``"double"`` or ``'single'`` quotes are
 altered.
 
 .. _zend.filter.set.htmlentities.:
