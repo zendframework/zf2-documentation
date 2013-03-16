@@ -10,7 +10,7 @@ pages using a pagination control. Just type "Zend Framework" into Google, and yo
 control at the bottom of the page:
 
 .. image:: ../images/tutorial.pagination.sample.png
-:alt: Example pagination control
+    :alt: Example pagination control
     :align: center
 
 Preparation
