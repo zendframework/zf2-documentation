@@ -42,15 +42,15 @@ qui contiendront les fichiers du module.
                         /album
 
 Comme vous pouvez le voir, le module ``Album`` a des dossiers distincts pour
-chaque type de fichiers qu'il contiendra. Les fichiers de classes PHP du namespace
-``Album`` seront stockés dans le dossier ``src/Album``, ce qui nous permettra d'avoir
-autant de namespaces que nécessaire. Le dossier view contient lui-aussi un sous-dossier
+chaque type de fichiers qu'il contiendra. Les fichiers de classes PHP de l'espace de nom 
+(namespace) ``Album`` seront stockés dans le dossier ``src/Album``, ce qui nous permettra d'avoir
+autant d'espaces de nom que nécessaire. Le dossier view contient lui-aussi un sous-dossier
 ``album`` pour les fichiers de vue de notre module.
 
 Afin de charger et de configurer un module, Zend Framework 2 a un ``ModuleManager``.
 Il ira lire ``Module.php`` dans le dossier racine du module (``module/Album``), et 
 s'attendra à y trouver une classe nommée ``Album\Module``. Ainsi, les classes d'un 
-module auront pour namespace le nom du module lui-même, qui est aussi le nom du dossier
+module auront pour espace de nom le nom du module lui-même, qui est aussi le nom du dossier
 qui contient le module.
 
 Creez ``Module.php`` dans le module ``Album`` :
@@ -82,15 +82,15 @@ Creez ``Module.php`` dans le module ``Album`` :
         }
     }
 
-Le ``ModuleManager`` appelera ``getAutoloaderConfig()`` and ``getConfig()``
+Le ``ModuleManager`` appelera ``getAutoloaderConfig()`` et ``getConfig()``
 automatiquement pour nous.
 
 Chargement automatique des fichiers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Notre méthode ``getAutoloaderConfig()`` retourne un tableau qui est compatible avec
-l'``AutoloaderFactory`` de ZF2. nous le configurons de sorte que nous ajoutons un
-fichier de classe au ``ClassmapAutoloader``, et nous ajoutons aussi le namespace
+l'``AutoloaderFactory`` de ZF2. Nous le configurons de sorte que nous ajoutons un
+fichier de classe au ``ClassmapAutoloader``, et nous ajoutons aussi l'espace de nom 
 au ``StandardAutoloader``. Ce dernier a besoin comme paramètres d'un namespace et
 du chemin où sont stockés les fichiers du namespace. Il est PSR-0 compliant, ie. 
 classes et fichiers obéissent aux règles définies par la norme `PSR-0
@@ -107,7 +107,7 @@ le contenu suivant :
     return array();
 
 Comme il s'agit d'un tableau vide, quand l'autoloader cherchera une classe dans 
-le namespace ``Album``, il sera redirigé vers le ``StandardAutoloader`` pour nous.
+l'espace de nom ``Album``, il sera redirigé vers le ``StandardAutoloader`` pour nous.
 
 Alternativement, si vous utilisez Composer, vous pourriez ne pas implémenter 
 ``getAutoloaderConfig()`` et à la place, ajouter ``"Application":
@@ -141,7 +141,7 @@ Créer le fichier suivant de configuration pour le module  ``Album`` :
 
 La configuration est passée aux composants respectifs par le
 ``ServiceManager``. Nous avons besoin de deux sections distinctes : 
-``controller`` and ``view_manager``. La section controller renvoie une liste
+``controllers`` and ``view_manager``. La section controllers renvoie une liste
 de tous les contrôleurs que propose le module. Nous aurons besoin d'un contrôleur,
 ``AlbumController``, qui nous référencerons comme ``Album\Controller\Album``.
 Nous le nommons ainsi étant donné que la clé doit être unique parmi tous les 
