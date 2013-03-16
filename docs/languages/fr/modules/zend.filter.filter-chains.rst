@@ -12,7 +12,7 @@ suivant illustre comment chaîner deux filtres pour l'identifiant soumis :
    .. code-block:: php
       :linenos:
 
-      // Création d'une chaine de filtrage et ajout de filtres à celle-ci
+      // Création d'une chaîne de filtrage et ajout de filtres à celle-ci
       $filtreChaine = new Zend\Filter\Filter();
       $filtreChaine->addFilter(new Zend\Filter\Alpha())
                    ->addFilter(new Zend\Filter\StringToLower());

@@ -10,7 +10,7 @@ GreaterThan
 
    **Zend\Validate\GreaterThan ne supporte que les nombres**
 
-   Zend\Validate\GreaterThan ne fonctionnera pas avec les chaines ou les dates.
+   Zend\Validate\GreaterThan ne fonctionnera pas avec les chaînes ou les dates.
 
 .. _zend.validator.set.greaterthan.options:
 

@@ -6,7 +6,7 @@ Outils
 
 .. _zend.ldap.tools.dn:
 
-Création et modification de chaines DN
+Création et modification de chaînes DN
 --------------------------------------
 
 

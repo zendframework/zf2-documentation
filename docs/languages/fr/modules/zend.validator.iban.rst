@@ -62,7 +62,7 @@ de ``Zend\Validate\Iban``, celui-ci va chercher la locale globale. Voyez le code
 Validation IBAN simplifiée
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il peut arriver parfois que vous ayiez juste besoin de vérifier le format du numéro et s'il **est** un numéro
+Il peut arriver parfois que vous ayez juste besoin de vérifier le format du numéro et s'il **est** un numéro
 *IBAN*. Vous ne voudriez pas utiliser un pays particulier pour valider. Ceci peut être réalisé en passant
 ``FALSE`` en tant que locale.
 

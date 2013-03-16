@@ -31,7 +31,7 @@ Le composant Zend_Session est un gestionnaire de session et une API pour stocker
 manière objet. L'API de la classe Zend_Session API permet de régler des options et de démarrer/arrêter la
 session alors que Zend\Session\Namespace représente un objet contenant des données à stocker en session.
 
-C'est générallement une bonne pratique que de démarrer sa session en bootstrap, cependant la première création
+C'est généralement une bonne pratique que de démarrer sa session en bootstrap, cependant la première création
 d'un objet Zend\Session\Namespace démarrera la session par défaut.
 
 Zend_Application peut permettre de configurer Zend_Session grâce aux parties Zend\Application\Resource. Pour les

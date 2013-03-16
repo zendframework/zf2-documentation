@@ -45,7 +45,7 @@ Tous les serveurs de temps ne sont pas disponibles tout le temps, à 100%. Il pe
 maintenance, ou tout simplement se retrouver saturés. Dans de tels cas, une exception sera levée.
 
 ``Zend_TimeSync`` peut gérer plusieurs serveurs, et se connecter automatiquement au suivant, si le précédent ne
-répond pas. Passez un tableau de serverus de temps au constructeur de l'objet, ou utilisez la méthode
+répond pas. Passez un tableau de serveurs de temps au constructeur de l'objet, ou utilisez la méthode
 ``addServer()``:
 
 .. code-block:: php

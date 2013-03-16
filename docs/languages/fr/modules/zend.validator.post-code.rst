@@ -7,12 +7,12 @@ PostCode
 ``Zend\Validate\PostCode`` vous permet de déterminer si une valeur donnée est un code postal valide. Les codes
 postaux siont spécifiques aux villes et dans quelques cas spéciaux sont nommés des codes *ZIP*.
 
-``Zend\Validate\PostCode`` reconnait plus de 160 différents formats de codes postaux. Pour sélectionner le format
+``Zend\Validate\PostCode`` reconnaît plus de 160 différents formats de codes postaux. Pour sélectionner le format
 correct, il existe deux manières. Vous pouvez soit utiliser une locale complète, soit paramétrer votre propre
 format manuellement.
 
-Utiliser la locale est la méthode la plus commode puisque Zend Framework connait les formats des codes postaux
-assoicés à chaque locale  cependant, vous devez utiliser une locale complète (c'est-à-dire contenant aussi le
+Utiliser la locale est la méthode la plus commode puisque Zend Framework connaît les formats des codes postaux
+associés à chaque locale  cependant, vous devez utiliser une locale complète (c'est-à-dire contenant aussi le
 spécificateur de région) dans ce cas. Par exemple, la locale "fr" est une bien une locale mais ne peut pas être
 utilisée avec ``Zend\Validate\PostCode`` puisqu'elle ne contient pas la région ; "fr_FR" sera, cependant, une
 locale valide puisqu'elle spécifie une région ("FR", pour France).

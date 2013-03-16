@@ -61,9 +61,9 @@ classe ``AlbumTable`` qui étend ``Zend\Db\TableGateway\TableGateway`` pour
 laquelle chaque album est un objet ``Album`` (il s'agit d'une *entité*).
 C'est une implémentation du design pattern Table Data Gateway qui permet
 d'interagir avec les données d'une table.
-Soyez bien concients que le pattern Table Data Gateway peut se révéler limité
+Soyez bien conscients que le pattern Table Data Gateway peut se révéler limité
 pour des systèmes de taille importante. Il y a aussi la tentation
-d'implémenter les accès à la base directement dans les actions du controleur
+d'implémenter les accès à la base directement dans les actions du contrôleur
 car ils sont exposés par ``Zend\Db\TableGateway\AbstractTableGateway``.
 *Ne faites surtout pas ça*!
 

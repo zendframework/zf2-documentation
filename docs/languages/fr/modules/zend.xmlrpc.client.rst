@@ -370,7 +370,7 @@ La méthode ``doRequest()`` est disponible directement si besoin :
 
    $client->doRequest($request);
 
-   // $client->getLastRequest() retoure instanceof Zend\XmlRpc\Request
+   // $client->getLastRequest() retourne instanceof Zend\XmlRpc\Request
    // $client->getLastResponse() retourne instanceof Zend\XmlRpc\Response
 
 Lorsqu'une méthode XML-RPC est appelée, quel qu'en soit le moyen, (``call()``, ``doRequest()`` ou proxy serveur),

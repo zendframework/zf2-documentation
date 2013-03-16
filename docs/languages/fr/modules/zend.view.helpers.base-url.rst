@@ -32,7 +32,7 @@ L'utilisation de l'aide de vue BaseUrl est très simple:
 
 .. note::
 
-   Pour plus de simplicité, le fichier *PHP* (par exemple "``index.php``") est enelevé de l'*URL* de base gérée
+   Pour plus de simplicité, le fichier *PHP* (par exemple "``index.php``") est enlevé de l'*URL* de base gérée
    par ``Zend_Controller``. Cependant, si ceci vous gène, utilisez ``$this->getHelper('BaseUrl')->setBaseUrl()``
    pour affecter votre propre BaseUrl.
 

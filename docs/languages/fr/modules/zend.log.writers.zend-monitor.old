@@ -5,7 +5,7 @@ Ecrire vers le moniteur Zend Server
 ===================================
 
 ``Zend\Log_Writer\ZendMonitor`` vous permet de journaliser des évènements via l'API de Zend Server. Vous pouvez
-alors aggréger des messages de journal pour l'application et tout son environnement, ceci vers un seul endroit. En
+alors agréger des messages de journal pour l'application et tout son environnement, ceci vers un seul endroit. En
 interne, cet objet utilise simplement la fonction ``monitor_custom_event()`` issue de Zend Monitor.
 
 Une caractéristique particulière de l'API Monitor est que vous pouvez spécifier n'importe quelle information
@@ -17,7 +17,7 @@ Server.
 
    **Zend Monitor doit être installé et activé**
 
-   Pour utiliser cet objet d'écriture, Zend Monitor doit petre installé et activé. Si ce n'est pas le cas, alors
+   Pour utiliser cet objet d'écriture, Zend Monitor doit être installé et activé. Si ce n'est pas le cas, alors
    l'objet d'écriture agira de manière transparente et ne fera rien du tout.
 
 Instancier l'objet d'écriture ``ZendMonitor`` est très simple:

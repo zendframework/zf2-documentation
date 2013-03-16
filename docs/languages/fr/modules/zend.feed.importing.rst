@@ -75,33 +75,33 @@ Le format du tableau doit être conforme à cette structure :
        // obligatoire
        'charset'     => 'charset des données textuelles',
 
-       // optionel
+       // optionnel
        'description' => 'description courte du flux',
        'author'      => 'auteur du flux',
        'email'       => 'email de l'auteur du flux',
 
-        // optionel, ignoré si le flux est de type atom
+        // optionnel, ignoré si le flux est de type atom
        'webmaster'   => 'email de la personne responsable'
                       . 'en cas de problème technique'
 
-       // optionel
+       // optionnel
        'copyright'   => 'informations de copyright',
        'image'       => 'url de l'image',
        'generator'   => 'générateur du flux',
        'language'    => 'langue dans la quelle le flux est écrit',
 
-       // optionel, ignoré si le flux est de type atom
+       // optionnel, ignoré si le flux est de type atom
        'ttl'         => 'combien de temps en minutes un flux peut être'
-                      . 'mis en cache avant rafraichissement',
+                      . 'mis en cache avant rafraîchissement',
        'rating'      => 'l'évaluation PICS du canal',
 
-       // optionel, ignoré si le flux est de type atom
+       // optionnel, ignoré si le flux est de type atom
        // un nuage pour être averti des mises à jour
        'cloud'       => array(
            // obligatoire
            'domain'            => 'domaine du nuage, ex. rpc.sys.com',
 
-           // optionel, par défault port 80
+           // optionnel, par défaut port 80
            'port'              => 'port de connexion',
 
            // obligatoire
@@ -111,7 +111,7 @@ Le format du tableau doit être conforme à cette structure :
            'protocol'          => 'protocole à utiliser , ex. soap ou xml-rpc',
        ),
 
-       // optionel, ignoré si le flux est de type atom
+       // optionnel, ignoré si le flux est de type atom
        // une boîte de saisie qui peut être montrée avec le flux
        'textInput'   => array(
            // obligatoire
@@ -122,17 +122,17 @@ Le format du tableau doit être conforme à cette structure :
            'link'        => 'l'URL du CGI qui va analyser la requête',
        )
 
-       // optionel, ignoré si le flux est de type atom
-       // Information disant aux aggrégateurs quelles heures ils peuvent ignorer
+       // optionnel, ignoré si le flux est de type atom
+       // Information disant aux agrégateurs quelles heures ils peuvent ignorer
        'skipHours'   => array(
            // jusqu'à 24 lignes dont les valeurs
-           // sont des nombres commpris entre 0 et 23
+           // sont des nombres compris entre 0 et 23
            // ex. 13 (1pm)
            'heures dans le format 24H',
        )
 
-       // optionel, ignoré si le flux est de type atom
-       // Information disant aux aggrégateurs quels jours ils peuvent ignorer
+       // optionnel, ignoré si le flux est de type atom
+       // Information disant aux agrégateurs quels jours ils peuvent ignorer
        'skipDays '   => array(
            // jusqu'à 7 lignes dont les valeurs peuvent être
            // Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday
@@ -140,7 +140,7 @@ Le format du tableau doit être conforme à cette structure :
            'jour'
        )
 
-       // optionel, ignoré si le flux est de type atom
+       // optionnel, ignoré si le flux est de type atom
        // Données d'extension iTunes
        'itunes'      => array(
            // optionel, par défaut l'auteur principal
@@ -152,16 +152,16 @@ Le format du tableau doit être conforme à cette structure :
                'email' => 'email du propriétaire',
            )
 
-           // optionel, default to the main image value
+           // optionnel, default to the main image value
            'image'        => 'image de l'album/podcast',
 
-           // optionel, default to the main description value
+           // optionnel, default to the main description value
            'subtitle'     => 'description courte',
 
-           // optionel, default to the main description value
+           // optionnel, default to the main description value
            'summary'      => 'description longue',
 
-           // optionel
+           // optionnel
            'block'        => 'empêcher l'apparition d'un épisode (yes|no)',
 
            // obligatoire, catégorie et information de recherche
@@ -171,12 +171,12 @@ Le format du tableau doit être conforme à cette structure :
                array(
                    // obligatoire
                    'main' => 'catégorie principale',
-                   // optionel
+                   // optionnel
                    'sub'  => 'sous-catégorie'
                ),
            )
 
-           // optionel
+           // optionnel
            'explicit'     => 'graphique d'avertissement parental (yes|no|clean)',
            'keywords'     => 'une liste d'au maximum 12 mot clés'
                            . 'séparés par des virgules',
@@ -193,32 +193,32 @@ Le format du tableau doit être conforme à cette structure :
                // obligatoire, seulement du text, pas d'html
                'description'  => 'version raccourci du texte',
 
-               // optionel
+               // optionnel
                'guid'         => 'id de l'article, si aucun alors'
                                . 'la valeur link est utilisée',
 
-                // optionel, peut contenir html
+                // optionnel, peut contenir html
                'content'      => 'version complète de l'information',
 
-               // optionel
+               // optionnel
                'lastUpdate'   => 'date de publication au format timestamp',
                'comments'     => 'page de commentaires de l'item',
                'commentRss'   => 'l'url du flux des commentaires associés',
 
-               // optionel, source originale de l'item
+               // optionnel, source originale de l'item
                'source'       => array(
                    // obligatoire
                    'title' => 'titre de la source originale',
                    'url' => 'url de la source originale'
                )
 
-               // optionel, liste des catégories attachées
+               // optionnel, liste des catégories attachées
                'category'     => array(
                    array(
                        // obligatoire
                        'term' => 'intitulé de la première catégorie',
 
-                       // optionel
+                       // optionnel
                        'scheme' => 'url qui décrit l'organisation de la catégorie'
                    ),
                    array(
@@ -226,13 +226,13 @@ Le format du tableau doit être conforme à cette structure :
                    )
                ),
 
-               // optionel, liste des pièces jointes à l'item
+               // optionnel, liste des pièces jointes à l'item
                'enclosure'    => array(
                    array(
                        // obligatoire
                        'url' => 'url de la pièce jointe',
 
-                       // optionel
+                       // optionnel
                        'type' => 'type mime de la pièce jointe',
                        'length' => 'length de la pièce jointe en octets'
                    ),

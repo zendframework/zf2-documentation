@@ -8,7 +8,7 @@ Analyseurs Zend_Markup (parsers)
 
 .. _zend.markup.parsers.theory:
 
-Theorie de l'analyse
+Théorie de l'analyse
 --------------------
 
 Les analyseurs syntaxiques de ``Zend_Markup`` sont des classes qui convertissent du texte balisé en un arbre
