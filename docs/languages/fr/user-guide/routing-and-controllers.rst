@@ -125,7 +125,7 @@ le contrôleur est une classe que l'on nomme généralement ``{Nom du contrôleu
 Notez que ``{Nom du contrôleur}`` doit commencer par une majuscule. Cette classe réside dans
 un fichier nommé ``{Nom du contrôleur}Controller.php``, sous le dossier ``Controller`` du 
 module. Dans notre cas, ce sera ``module/Album/src/Album/Controller``. Chaque action est une méthode
-publique de la classe contrôleur nommé ``{nom de l'action}Action``. Dans notre cas, ``{nom de l'action}``
+publique de la classe contrôleur nommée ``{nom de l'action}Action``. Dans notre cas, ``{nom de l'action}``
 devrait commencer par une lettre minuscule.
 
 Ceci n'est qu'une convention. Zend Framework 2 n'impose pas beaucoup de 
