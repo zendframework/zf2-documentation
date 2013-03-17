@@ -1,4 +1,4 @@
-.. _user-guide.access-control-with-bjy-authorize.rst
+.. _user-guide.access-control-with-bjy-authorize.rst:
 
 Access control with BjyAuthorize
 ================================
@@ -11,10 +11,11 @@ event listeners that check the authentication status of our user and halts
 the application when unauthorized access is detected.
 
 This is just one of the modules that can provide this sort of functionality,
-and is specifically built on top of the the ``Zend\Permissions\Acl`` component.
+and is specifically built on top of the the :ref:`Zend\\Permissions\\Acl <zend.permissions.acl.introduction>`
+component.
 
-If you want to use ``Zend\Permissions\Rbac`` instead, you could use `ZfcRbac`_
-or look up the `modules repository`_.
+If you want to use :ref:`Zend\\Permissions\\Rbac <zend.permissions.rbac.introduction>`
+instead, you could use `ZfcRbac`_ or look up the `modules repository`_.
 
 Installing BjyAuthorize
 -----------------------
@@ -37,15 +38,14 @@ We can then enable it in our modules list:
 
     <?php
     return array(
-    'modules' => array(
-        'ZfcBase',
-        'ZfcUser',
-        'BjyAuthorize',                  // <-- Add this line
-        'Application',
-        'Album',
-    ),
-
-    // ...
+        'modules' => array(
+            'ZfcBase',
+            'ZfcUser',
+            'BjyAuthorize',   // <-- Add this line
+            'Application',
+            'Album',
+        ),
+        // ...
 
 We also need to import the `sql schema definitions`_ for our ACL roles:
 
@@ -105,6 +105,7 @@ Let us create a ``config/autoload/bjy-authorize.global.php`` file with following
 
     return array(
         'bjyauthorize' => array(
+
             // role providers are invoked when the list of existing roles
             // is required by bjy-authorize
             'role_providers' => array(
@@ -156,6 +157,10 @@ Let us create a ``config/autoload/bjy-authorize.global.php`` file with following
 This will attach a `BjyAuthorize\Guard\Controller`_ listener to our application, which
 basically uses the names assigned to the controller services names and their actions
 method names as resource names.
+
+
+Verifying the installation
+--------------------------
 
 If we try to access ``http://zf2-tutorial.localhost/album/add`` now, we will see
 a ``403 unauthorized`` error message.

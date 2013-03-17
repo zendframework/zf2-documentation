@@ -279,6 +279,8 @@
     * :doc:`user-guide/database-and-models`
     * :doc:`user-guide/styling-and-translations`
     * :doc:`user-guide/forms-and-actions`
+    * :doc:`user-guide/authentication-with-zfc-user`
+    * :doc:`user-guide/access-control-with-bjy-authorize`
     * :doc:`user-guide/conclusion`
 
 |ZFTool|

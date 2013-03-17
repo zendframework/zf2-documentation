@@ -6,15 +6,15 @@ Authentication with ZfcUser
 Our module is now complete, but we still want to be able to login/logout
 and to disallow unwanted operations on our user list.
 
-We will first start with authentication.
+We will first start with :ref:`authentication <zend.authentication.introduction>`.
 
 Installing ZfcUser
 ------------------
 
-`ZfcUser`_ is a module that simplifies handling of authentication and secure handling
-of authentication credentials.
+`ZfcUser`_ is a module that simplifies handling of :ref:`authentication <zend.authentication.introduction>`
+and secure hashing of authentication credentials.
 
-To install `ZfcUser`_, you can use composer:
+To install `ZfcUser`_, you can use `composer`_:
 
 .. code-block:: bash
 
@@ -31,16 +31,15 @@ Once installed, we have to enable `ZfcUser`_ in our ``config/application.config.
 .. code-block:: php
     :emphasize-lines: 3,4
 
-        <?php
-        return array(
-            'modules' => array(
-                'ZfcBase',                  // <-- Add this line
-                'ZfcUser',                  // <-- Add this line
-                'Application',
-                'Album',
-            ),
-
-            // ...
+    <?php
+    return array(
+        'modules' => array(
+            'ZfcBase',       // <-- Add this line
+            'ZfcUser',       // <-- Add this line
+            'Application',
+            'Album',
+        ),
+        // ...
 
 We now have to import the `schema definitions`_ for `ZfcUser`_ in our database:
 
@@ -56,8 +55,13 @@ We now have to import the `schema definitions`_ for `ZfcUser`_ in our database:
        state SMALLINT
    );
 
+Registration and login
+----------------------
+
 Now we can visit our page at ``http://zf2-tutorial.localhost/user/register`` and create
-our own account. We can add the login/logout links to your pages by putting something like
+our own account.
+
+We can add the login/logout links to your pages by putting something like
 following code somewhere in your ``module/Application/view/layout/layout.phtml``:
 
 .. code-block:: php
@@ -70,6 +74,7 @@ following code somewhere in your ``module/Application/view/layout/layout.phtml``
 
 The ``zfcUserIdentity`` bit is a view helper provided by `ZfcUser`_ itself.
 
+.. _`composer`: http://getcomposer.org/
 .. _`ZfcUser`: https://github.com/ZF-Commons/ZfcUser
 .. _`ZfcBase`: https://github.com/ZF-Commons/ZfcBase
 .. _`schema definitions`: https://github.com/ZF-Commons/ZfcUser/blob/0.1.1/data/schema.sql
