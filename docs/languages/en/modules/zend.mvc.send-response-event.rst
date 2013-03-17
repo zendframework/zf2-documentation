@@ -26,7 +26,7 @@ Listeners
 
 Currently, three listeners are listening to this event at different priorities based on which listener is used most.
 
-1. ``Zend\Mvc\SendResponseListener\PhpEnvironmentResponseSender`` / priority : -1000 / method called : ``__invoke`` => this is used in context of HTTP (this is the most ofen used).
+1. ``Zend\Mvc\SendResponseListener\PhpEnvironmentResponseSender`` / priority : -1000 / method called : ``__invoke`` => this is used in context of HTTP (this is the most often used).
 2. ``Zend\Mvc\SendResponseListener\ConsoleResponseSender`` / priority : -2000 / method called : ``__invoke`` => this is used in context of Console.
 3. ``Zend\Mvc\SendResponseListener\SimpleStreamResponseSender`` / priority : -3000 / method called : ``__invoke``
 
