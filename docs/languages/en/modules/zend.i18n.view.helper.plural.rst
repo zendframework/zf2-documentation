@@ -31,13 +31,13 @@ plural rules for tons of languages:
 
 **Basic Usage**
 
-The first thing to do is to defining rules. You may want to add this in your ``Module.php`` file, for example:
+The first thing to do is to defining rule. You may want to add this in your ``Module.php`` file, for example:
 
 .. code-block:: php
    :linenos:
 
    // Get the ViewHelperPlugin Manager from Service manager, so we can fetch the ``Plural``
-   // helper and add the plural rule for the language of the application
+   // helper and add the plural rule for the application's language
    $viewHelperManager = $serviceManager->get('ViewHelperManager');
    $pluralHelper      = $viewHelperManager->get('Plural);
    
