@@ -122,7 +122,7 @@ hint to the view layer how it might render the item.
 
    :rtype: mixed
 
-.. funcion:: removeAttribute(string $key)
+.. function:: removeAttribute(string $key)
    :noindex:
 
    Remove a single attribute
