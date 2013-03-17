@@ -218,8 +218,8 @@ specified, the form manager will just instantiate it directly.
 In short, to create your own form elements (or even reusable fieldsets !) and be able to use them in your form using the short-name notation, you need to:
 
 1. Create your element (like you did before).
-2. Add it to the form element manager by defining the `getFormElementConfig`, exactly like using ''getServiceConfig()'' and ''getControllerConfig''.
-3. Make sure the custom form element is not added in the form's ``__construct``-or, but rather in it's init() method, or after getting an instance of the form.
+2. Add it to the form element manager by defining the ``getFormElementConfig``, exactly like using ``getServiceConfig()`` and ``getControllerConfig``.
+3. Make sure the custom form element is not added in the form's ``__construct``-or, but rather in it's ``init()`` method, or after getting an instance of the form.
 4. Create your form through the form element manager instead of directly instantiating it.
 
 .. _zend.form.advanced-use-of-forms.handling-dependencies:
@@ -234,7 +234,7 @@ the dependency from controller to form, and from form to fieldset (and even from
 have a complex form). This was ugly and not easy to use. Hopefully, ``Zend\\ServiceManager`` solves this use case in an
 elegant manner.
 
-For instance, let's say that a form create a fieldset called AlbumFieldset:
+For instance, let's say that a form create a fieldset called ``AlbumFieldset``:
 
 .. code-block:: php
     :linenos:
@@ -254,7 +254,7 @@ For instance, let's say that a form create a fieldset called AlbumFieldset:
         }
     }
 
-Let's now create the `AlbumFieldset` that depends on an `AlbumTable` object that allows you to fetch albums from the 
+Let's now create the ``AlbumFieldset`` that depends on an ``AlbumTable`` object that allows you to fetch albums from the 
 database.
 
 .. code-block:: php
@@ -317,17 +317,17 @@ instantiating it:
     }
 
 Et voilà! The dependency will be automatically handled by the form element manager, and you don't need to create the 
-`AlbumTable` in your controller, transfer it to the form, which itself passes it over to the fieldset.
+``AlbumTable`` in your controller, transfer it to the form, which itself passes it over to the fieldset.
    
 The specific case of initializers
 ---------------------------------
 
-In the previous example, we explicitly defined the dependency in the constructor of the `AlbumFieldset` class.
-However, in some cases, you may want to use an initializer (like `Zend\\ServiceManager\\ServiceLocatorAwareInterface`) 
+In the previous example, we explicitly defined the dependency in the constructor of the ``AlbumFieldset`` class.
+However, in some cases, you may want to use an initializer (like ``Zend\\ServiceManager\\ServiceLocatorAwareInterface``) 
 to inject a specific object to all your forms/fieldsets/elements.
    
 The problem with initializers is that they are injected AFTER the construction of the object, which means that if you
-need this dependency when you create elements, it won't be available yet. For instance, this example won't work:
+need this dependency when you create elements, it won't be available yet. For instance, this example **won't work**:
    
 .. code-block:: php
     :linenos:
@@ -360,8 +360,8 @@ need this dependency when you create elements, it won't be available yet. For in
     }
    
 Thankfully, there is an easy workaround: every form element now implements the new interface 
-`Zend\\Stdlib\\InitializableInterface`, that defines a single `init()` function. In the context of form elements, 
-this `init()` function is automatically called once all the dependencies (including all initializers) are resolved. 
+``Zend\\Stdlib\\InitializableInterface``, that defines a single ``init()`` function. In the context of form elements, 
+this ``init()`` function is automatically called once all the dependencies (including all initializers) are resolved. 
 Therefore, the previous example can be rewritten as such:
 
 .. code-block:: php
