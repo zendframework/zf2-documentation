@@ -69,7 +69,7 @@ esto.
 
 .. _zend.permissions.acl.introduction.roles.example.multiple_inheritance:
 
-.. rubric:: Herencia Múlltiple entre Roles
+.. rubric:: Herencia Múltiple entre Roles
 
 El siguiente código define tres roles principales - "invitado", "miembro", y "admin" - de los cuales otros roles
 pueden heredar. Entonces, un rol identificado como "unUsuario" es colocado y hereda de los otros tres roles. El

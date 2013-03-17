@@ -5,7 +5,7 @@ Obteniendo la versión de Zend Framework Version
 ===============================================
 
 ``Zend_Version`` proporciona una constante de clase ``Zend\Version\Version::VERSION`` que contiene una cadena que
-identifica el número de version de la instalcíón de Zend Framework. ``Zend\Version\Version::VERSION`` puede contener por
+identifica el número de version de la instalación de Zend Framework. ``Zend\Version\Version::VERSION`` puede contener por
 ejemplo "1.7.4".
 
 El método estático ``Zend\Version\Version::compareVersion($version)`` esta basada en la función `version_compare()`_ de

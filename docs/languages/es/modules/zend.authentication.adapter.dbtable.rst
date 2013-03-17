@@ -151,7 +151,7 @@ almacenamiento de un objeto identidad ``Zend_Auth`` que contiene información ú
    $result = $this->_auth->authenticate($adapter);
 
    if ($result->isValid()) {
-       // Almacena la identidad como un objedo dónde solo username y
+       // Almacena la identidad como un objeto dónde solo username y
        // real_name han sido devueltos
        $storage = $this->_auth->getStorage();
        $storage->write($adapter->getResultRowObject(array(

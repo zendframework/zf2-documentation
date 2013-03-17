@@ -214,7 +214,7 @@ to the above one.
        // Yes, $value is ok
    }
 
-For your convinience there are following methods which allow the handling of namespaces:
+For your convenience there are following methods which allow the handling of namespaces:
 
 - **Zend\Validate\Validate::getDefaultNamespaces()**: Returns all set default namespaces as array.
 

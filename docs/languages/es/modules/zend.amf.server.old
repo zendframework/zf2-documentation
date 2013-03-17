@@ -86,7 +86,7 @@ Todos las solicitudes *AMF* enviadas al script serán manejadas por el servidor,
        * @param  string $saludo
        * @return string
        */
-      function holaMundo($ombre, $saludo = 'Hola')
+      function holaMundo($nombre, $saludo = 'Hola')
       {
           return $saludo . ', ' . $nombre;
       }

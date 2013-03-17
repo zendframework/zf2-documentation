@@ -126,7 +126,7 @@ Lo anterior resulta en la siguiente definición de clase:
 .. rubric:: Generando clases PHP con métodos de clase
 
 ``Zend\CodeGenerator_Php\Class`` le permite adjuntar métodos con contenido opcional a sus clases. Los métodos
-pueden adjuntarse tanto como arrys o como instancias concretas de ``Zend\CodeGenerator_Php\Method``.
+pueden adjuntarse tanto como arrays o como instancias concretas de ``Zend\Code\Generator\MethodGenerator``.
 
 .. code-block:: php
    :linenos:
