@@ -1,4 +1,4 @@
-.. _zend.form.collections
+.. _zend.form.collections:
 
 Form Collections
 ================
