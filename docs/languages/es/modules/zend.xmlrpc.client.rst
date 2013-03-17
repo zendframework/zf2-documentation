@@ -11,7 +11,7 @@ Introdución
 
 Zend Framework provee soporte para consumo remoto para servicios *XML-RPC* como un cliente en el paquete
 ``Zend\XmlRpc\Client``. Su mejor característica es la conversión automática de tipos entre *PHP* y *XML-RPC*, un
-servidor de objeto proxy, y acceso a capacidades de instrospección del servidor.
+servidor de objeto proxy, y acceso a capacidades de introspección del servidor.
 
 .. _zend.xmlrpc.client.method-calls:
 
@@ -19,7 +19,7 @@ Method Calls
 ------------
 
 El constructor de ``Zend\XmlRpc\Client`` recibe la *URL* del servidor *XML-RPC* como su primer parámetro. La nueva
-instacia devuelta puede ser usada para llamar cualquier número de métodos remotos en el punto final.
+instancia devuelta puede ser usada para llamar cualquier número de métodos remotos en el punto final.
 
 Para llamar un método remoto con el cliente *XML-RPC*, instáncealo y usa el método de instancia ``call()``. El
 código de ejemplo a continuación utiliza una demostración en el servidor *XML-RPC* en el sitio web de Zend

@@ -102,7 +102,7 @@ Zend/Validate/Hostname, especificando los caracteres adicionales se puede realiz
 Tenga en cuenta que una validación IDN solo se realizará si tiene habilidada la validación para nombres de host
 DNS.
 
-**Validacuión de dominios de nivel superior**
+**Validación de dominios de nivel superior**
 
 Por defecto un nombre de host se cotejará con una lista de TLDs conocidos. Si esta funcionalidad no es necesaria,
 puede ser desactivada en la misma forma que deshabilita el soporte IDN. Puede deshabilitar la validación TLD
@@ -124,7 +124,7 @@ a la validación IDN a través del segundo parámetro.
 Alternativamente puede pasar ``TRUE`` o ``FALSE`` a ``setValidateTld()`` para activar o desactivar la validación
 TLD.
 
-Tenga en cuenta que una validación de TLDs solo se realizará si tiene habilidada la validación para nombres de
+Tenga en cuenta que una validación de TLDs solo se realizará si tiene habilitada la validación para nombres de
 host DNS.
 
 

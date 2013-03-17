@@ -14,7 +14,7 @@ excepción si ocurre un error.
 
 .. _zend.pdf.create.example-1:
 
-.. rubric:: Crear un nuevo documento PDF o cargar uno ya esistente
+.. rubric:: Crear un nuevo documento PDF o cargar uno ya existente
 
 .. code-block:: php
    :linenos:

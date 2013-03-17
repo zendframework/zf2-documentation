@@ -26,7 +26,7 @@ Adaptadores
 
 Un adaptador ``Zend_Auth`` es usado para autenticar en contra de un tipo particular de servicio de autenticación,
 como *LDAP*, *RDBMS*, o almacenamiento basado en ficheros. Diferentes adaptadores pueden tener opciones y
-compotamientos muy diferentes, pero algunas cosas básicas son comunes entre los adaptadores de autenticación. Por
+comportamientos muy diferentes, pero algunas cosas básicas son comunes entre los adaptadores de autenticación. Por
 ejemplo, aceptar credenciales de autenticación (incluyendo una identidad supuesta), realizar consultas ante el
 servicio de autenticación, y regresar resultados, son comunes para los adaptadores ``Zend_Auth``.
 
@@ -47,7 +47,7 @@ autenticación, han sido omitídos por brevedad:
    class MyAuthAdapter implements Zend\Auth_Adapter\Interface
    {
        /**
-        * Establece nombre de usuario y contraseña para autenticacón
+        * Establece nombre de usuario y contraseña para autenticación
         *
         * @return void
         */
@@ -101,7 +101,7 @@ usuario" que son comunes a los resultados de adaptadores Zend\Auth\Auth:
 El desarrollador podría desear ramificar basado en el tipo de resultado de la autenticación a fin de realizar
 operaciones mas específicas. Algunas operaciones que los desarrolladores podrían encontrar útiles son: bloquear
 cuentas despues de varios intentos fallidos de ingresar una contraseña, marcar una dirección IP despues de que ha
-intentado muchas identidades no existentes, y porporcionar al usuario mensajes especificos resultados de la
+intentado muchas identidades no existentes, y proporcionar al usuario mensajes especificos resultados de la
 autenticación. Los siguientes codigos de resultado están disponibles:
 
 .. code-block:: php
@@ -323,7 +323,7 @@ El siguiente ejemplo ilustra como usar el adaptador ``:Zend_Auth``: indirectamen
    $result = $auth->authenticate($authAdapter);
 
    if (!$result->isValid()) {
-       // Fautenticación fallida: imprime el por que
+       // Autenticación fallida: imprime el por que
        foreach ($result->getMessages() as $message) {
            echo "$message\n";
        }

@@ -138,7 +138,7 @@ La clase ``ZendPdf\Page`` proporciona un conjunto de primitivas de dibujo:
     * drawCircle($x, $y, $radius, $startAngle, $endAngle, $fillType);
     *
     *
-    * No es un círculo de verdad, porque PDF sólo admite curvas cúbicss de Bezier,
+    * No es un círculo de verdad, porque PDF sólo admite curvas cúbicas de Bezier,
     * pero con muy buena aproximación.
     * Se distingue de un verdadero círculo en un máximo de 0.00026 radios (en PI/8,
     * 3*PI/8, 5*PI/8, 7*PI/8, 9*PI/8, 11*PI/8, 13*PI/8 y 15*PI/8 ángulos).

@@ -9,7 +9,7 @@ de transmisión el *HTTP* y como codificación de datos el *XML*. *XML-RPC* est�
 como sea posible, permitiendo al mismo tiempo estructuras complejas de datos que deben ser transmitidos, procesados
 y devueltos".
 
-Zend Framework ofrece soporte tanto para el consumo de servcios remotos *XML-RPC* como para la construcción de
+Zend Framework ofrece soporte tanto para el consumo de servicios remotos *XML-RPC* como para la construcción de
 nuevos servidores *XML-RPC*.
 
 

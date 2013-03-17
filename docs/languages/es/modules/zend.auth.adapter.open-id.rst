@@ -19,7 +19,7 @@ describe que servidor usar y que información (identidad) se debe enviar. Puedes
 OpenID en el `sitio oficial de OpenId`_.
 
 La clase ``Zend\Auth_Adapter\OpenId`` encapsula al componente ``ZendOpenId\Consumer``, el cual implementa el
-protocolo de autentificación OpenID.
+protocolo de autenticación OpenID.
 
 .. note::
 
