@@ -69,8 +69,8 @@ The following example shows how to add a custom filter to the ``FilterPluginMana
    $filterChain->getPluginManager()->setInvokableClass(
        'myNewFilter', 'MyCustom\Filter\MyNewFilter'
    );
-   $filterChain->attach(new Zend\Filter\Alpha())
-               ->attach(new MyCustom\Filter\MyNewFilter());
+   $filterChain->attachByName('alpha')
+               ->attachByName('myNewFilter');
 
 You can also add your own ``FilterPluginManager`` implementation.
 
