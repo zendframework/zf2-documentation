@@ -133,7 +133,7 @@ Filters
 A menudo es útil y/o necesario realizar alguna normalización en la entrada antes de la validación – por
 ejemplo, puede querer eliminar todo el *HTML*, pero realizar las validaciones sobre lo restante para asegurarse que
 el envío es válido. O puede eliminar los espacios en blanco al inicio o fin de la entrada para asegurarse de que
-un validador StringLenth (longitud de la cadena) no regrese un positivo falso. Estas operaciones pueden realizarse
+un validador StringLength (longitud de la cadena) no regrese un positivo falso. Estas operaciones pueden realizarse
 usando ``Zend_Filter``, y ``Zend\Form\Element`` que soportan cadenas de filtros, permitiéndole especificar
 múltiples filtros secuenciales a utilizar. El filtrado sucede tanto en la validación como cuando recupera el
 valor del elemento vía ``getValue()``:

@@ -13,10 +13,12 @@ The following example demonstrates how to write a custom filter:
 
 .. code-block:: php
    :linenos:
-   
+
    namespace Application\Filter;
-   
-   class MyFilter implements Zend\Filter\FilterInterface
+
+   use Zend\Filter\FilterInterface;
+
+   class MyFilter implements FilterInterface
    {
        public function filter($value)
        {

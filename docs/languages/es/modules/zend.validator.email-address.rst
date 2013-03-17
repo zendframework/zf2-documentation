@@ -68,7 +68,7 @@ with the related options, or afterwards, by using ``setOptions()``. The followin
 Complex local parts
 -------------------
 
-``Zend\Validate\EmailAddress`` se comparará con cualquier dirección de correo válida de acuardo a RFC2822. Por
+``Zend\Validate\EmailAddress`` se comparará con cualquier dirección de correo válida de acuerdo a RFC2822. Por
 ejemplo, correos electrónicos válidos incluyen *bob@domain.com*, *bob+jones@domain.us*, *"bob@jones"@domain.com*
 y *"bob jones"@domain.com*
 

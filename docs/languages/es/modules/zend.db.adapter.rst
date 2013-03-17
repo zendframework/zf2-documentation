@@ -12,7 +12,7 @@ Las clases Adapters de ``Zend_Db`` crean un puente entre las extensiones de base
 interfaz común, para ayudarle a escribir aplicaciones *PHP* una sola vez y poder desplegar múltiples tipos de
 base de datos (*RDBMS*) con muy poco esfuerzo.
 
-La Interfaz de la clase adaptador (adapter) es similar a la intefaz de la extensión `PHP Data Objects`_.
+La Interfaz de la clase adaptador (adapter) es similar a la interfaz de la extensión `PHP Data Objects`_.
 ``Zend_Db`` proporciona clases Adaptadoras para los drivers *PDO* de los siguientes tipos de *RDBMS*:
 
 - IBM DB2 e Informix Dynamic Server (IDS), usando la extensión *PHP* `pdo_ibm`_

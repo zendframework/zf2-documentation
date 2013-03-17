@@ -9,7 +9,7 @@ Introducción a MVC & ZF
 Zend Framework
 --------------
 
-Zend Framework es un framework de código abierto y orientado a objectos para facilitar el desarrollo de
+Zend Framework es un framework de código abierto y orientado a objetos para facilitar el desarrollo de
 aplicaciones web con *PHP* 5. A menudo es considerado una 'biblioteca de componentes', debido a que estos poseen
 bajo acoplamiento entre sí lo cual permite reutilizarlos con un alto grado de independencia. Proporciona además
 una sofisticada implementación del patrón Modelo-Vista-Controlador (*MVC*) el cual puede ser utilizado para fijar
