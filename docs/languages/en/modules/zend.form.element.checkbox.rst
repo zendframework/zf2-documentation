@@ -33,19 +33,19 @@ Using the array notation:
 .. code-block:: php
    :linenos:
    
-    use Zend\Form\Form;
+   use Zend\Form\Form;
     
-   	$form = new Form('my-form');   	
-   	$form->add(array(
-   		'type' => 'Zend\Form\Element\Checkbox',
-   		'name' => 'checkbox',
-   		'options' => array(
-   			'label' => 'A checkbox',
-   			'use_hidden_element' => true,
-   			'checked_value' => 'good',
-   			'unchecked_value' => 'bad'
-   		)
-   	));
+   $form = new Form('my-form');       
+   $form->add(array(
+       'type' => 'Zend\Form\Element\Checkbox',
+       'name' => 'checkbox',
+       'options' => array(
+           'label' => 'A checkbox',
+           'use_hidden_element' => true,
+           'checked_value' => 'good',
+           'unchecked_value' => 'bad'
+       )
+   ));
    
 
 .. _zend.form.element.checkbox.methods:
@@ -101,3 +101,15 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    Returns a input filter specification, which includes a ``Zend\Validator\InArray`` to validate if the value is either checked value or unchecked value.
 
    :rtype: array
+
+.. function:: isChecked()
+   :noindex:
+
+   Checks if the checkbox is checked.
+   
+   :rtype: boolean
+
+.. function:: setChecked(bool $value)
+   :noindex:
+
+   Checks or unchecks the checkbox.
