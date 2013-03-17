@@ -28,6 +28,7 @@ Standard Elements
 .. include:: zend.form.element.file.rst
 .. include:: zend.form.element.hidden.rst
 .. include:: zend.form.element.image.rst
+.. include:: zend.form.element.monthselect.rst
 .. include:: zend.form.element.multicheckbox.rst
 .. include:: zend.form.element.password.rst
 .. include:: zend.form.element.radio.rst
