@@ -26,6 +26,7 @@
    tutorials/unittesting
    tutorials/tutorial.navigation
    tutorials/tutorial.pagination
+   tutorials/tutorial.flashmessenger
    modules/zend.authentication.intro
    modules/zend.authentication.adapter.dbtable
    modules/zend.authentication.adapter.digest
@@ -291,6 +292,7 @@
     * :doc:`tutorials/unittesting`
     * :doc:`tutorials/tutorial.navigation`
     * :doc:`tutorials/tutorial.pagination`
+    * :doc:`tutorials/tutorial.flashmessenger`
 
 |ZendFrameworkReference|
 ------------------------
