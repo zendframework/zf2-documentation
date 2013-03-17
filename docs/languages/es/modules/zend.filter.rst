@@ -24,7 +24,7 @@ ejemplo, si un campo del formulario es completado automáticamente y contiene da
 datos ingresados desde un navegador web), este valor debe estar libre de las entidades *HTML* o sólo contener
 entidades *HTML* de forma escapada, a fin de evitar comportamientos no deseados y vulnerabilidades de seguridad.
 Para cumplir este requerimiento, las entidades *HTML* que aparecen en los datos introducidos deben ser suprimidos o
-escapados. Por supuesto, el enfoque más adecuado depende del contexto y de la situción. Un filtro que quita las
+escapados. Por supuesto, el enfoque más adecuado depende del contexto y de la situación. Un filtro que quita las
 entidades *HTML* funciona dentro del ámbito o alcance de la primera definición del filtro - un operador que
 produce un subconjunto de la entrada. Un filtro que escapa a las entidades *HTML*, sin embargo, transforma la
 entrada (por ejemplo, "*&*" se transforma en "*&amp;*"). El Apoyo a los casos de uso como para la web los
@@ -115,14 +115,14 @@ identical to the above one.
    echo Zend\Filter\Filter::filterStatic('"', 'MyFilter', array($parameters));
    echo Zend\Filter\Filter::filterStatic('"', 'OtherFilter', array($parameters));
 
-For your convinience there are following methods which allow the handling of namespaces:
+For your convenience there are following methods which allow the handling of namespaces:
 
 - **Zend\Filter\Filter::getDefaultNamespaces()**: Returns all set default namespaces as array.
 
 - **Zend\Filter\Filter::setDefaultNamespaces()**: Sets new default namespaces and overrides any previous set. It accepts
-  eighter a string for a single namespace of an array for multiple namespaces.
+  either a string for a single namespace of an array for multiple namespaces.
 
-- **Zend\Filter\Filter::addDefaultNamespaces()**: Adds additional namespaces to already set ones. It accepts eighter a
+- **Zend\Filter\Filter::addDefaultNamespaces()**: Adds additional namespaces to already set ones. It accepts either a
   string for a single namespace of an array for multiple namespaces.
 
 - **Zend\Filter\Filter::hasDefaultNamespaces()**: Returns ``TRUE`` when one or more default namespaces are set, and

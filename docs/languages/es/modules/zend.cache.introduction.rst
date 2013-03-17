@@ -7,7 +7,7 @@ Introducción
 ``Zend_Cache`` provee una forma genérica para cualquier caché de datos.
 
 El almacenamiento en caché en Zend Framework se opera por interfaces, mientras que los registros de caché son
-almacenados a través de adapatadores del backend (**Archivo**, **Sqlite**, **Memcache**...) mediante un sistema
+almacenados a través de adaptadores del backend (**Archivo**, **Sqlite**, **Memcache**...) mediante un sistema
 flexible de documentos de identidad y etiquetas. Utilizando éstas, es fácil en el futuro eliminar determinados
 tipos de registro.(Ejemplo: "eliminar todos los registros caché de determinada etiqueta").
 
@@ -62,7 +62,7 @@ obtienen del caché de forma no serializada.
 
    // $cache initializada en el ejemplo anterior
 
-   // Verificar si la cahce existe:
+   // Verificar si la cache existe:
    if (!$result = $cache->load('myresult')) {
 
        // no existe cache; conectar a la base de datos
