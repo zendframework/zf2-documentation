@@ -40,7 +40,7 @@ Once installed, we have to enable `ZfcUser`_ in our ``config/application.config.
                 'Album',
             ),
 
-            // ...st_inconveniente
+            // ...
 
 We now have to import the `schema definitions`_ for `ZfcUser`_ in our database:
 
