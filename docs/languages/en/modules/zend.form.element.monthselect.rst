@@ -14,8 +14,8 @@ populated with years. By default, it sets 100 years in the past for the year ele
 .. code-block:: php
     :linenos:
 
-   	use Zend\Form\Element;
-   	use Zend\Form\Form;
+    use Zend\Form\Element;
+    use Zend\Form\Form;
 
     $monthYear = new Element\MonthSelect('monthyear');
     $monthYear->setLabel('Select a month and a year');
