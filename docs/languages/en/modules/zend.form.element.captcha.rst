@@ -4,7 +4,7 @@ Captcha
 ^^^^^^^
 
 ``Zend\Form\Element\Captcha`` can be used with forms where authenticated users are not necessary, but you want to prevent
-spam submissions. It is pairs with one of the ``Zend\Form\View\Helper\Captcha\*`` view helpers that matches the
+spam submissions. It is paired with one of the ``Zend\Form\View\Helper\Captcha\*`` view helpers that matches the
 type of *CAPTCHA* adapter in use.
 
 .. _zend.form.element.captcha.usage:
@@ -35,17 +35,17 @@ Here is with the array notation:
 .. code-block:: php
    :linenos:
 
-	use Zend\Captcha;
+    use Zend\Captcha;
     use Zend\Form\Form;
 
     $form = new Form('my-form');
     $form->add(array(
-    	'type' => 'Zend\Form\Element\Captcha',
-    	'name' => 'captcha',
-    	'options' => array(
-    		'label' => 'Please verify you are human',
-    		'captcha' => new Captcha\Dumb(),
-    	),
+        'type' => 'Zend\Form\Element\Captcha',
+        'name' => 'captcha',
+        'options' => array(
+            'label' => 'Please verify you are human',
+            'captcha' => new Captcha\Dumb(),
+        ),
     ));
     
 .. _zend.form.element.captcha.methods:
