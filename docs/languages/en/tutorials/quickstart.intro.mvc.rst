@@ -8,7 +8,7 @@ Zend Framework & MVC Introduction
 Zend Framework
 --------------
 
-Zend Framework is an open source, object oriented web application framework for *PHP* 5. Zend Framework is often
+Zend Framework is an open source, object-oriented web application framework for *PHP* 5. Zend Framework is often
 called a 'component library', because it has many loosely coupled components that you can use more or less
 independently. But Zend Framework also provides an advanced Model-View-Controller (*MVC*) implementation that can
 be used to establish a basic structure for your Zend Framework applications. A full list of Zend Framework

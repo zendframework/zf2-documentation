@@ -44,7 +44,7 @@ to ``Zend\Config\Config``'s constructor in order to utilize a simple object-orie
 As illustrated in the example above, ``Zend\Config\Config`` provides nested object property syntax to access
 configuration data passed to its constructor.
 
-Along with the object oriented access to the data values, ``Zend\Config\Config`` also has ``get()`` method that
+Along with the object-oriented access to the data values, ``Zend\Config\Config`` also has ``get()`` method that
 returns the supplied value if the data element doesn't exist in the configuration array. For example:
 
 .. code-block:: php

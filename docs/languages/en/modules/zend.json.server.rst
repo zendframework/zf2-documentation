@@ -334,7 +334,7 @@ the request envelope type (usually based on the protocol of the server), the tar
 and a map of services available. In the case of JSON-RPC, the service map is a list of available methods, which
 each method documenting the available parameters and their types, as well as the expected return value type.
 
-``Zend\Json\Server\Smd`` provides an object oriented way to build service maps. At its most basic, you pass it
+``Zend\Json\Server\Smd`` provides an object-oriented way to build service maps. At its most basic, you pass it
 metadata describing the service using mutators, and specify services (methods and functions).
 
 The service descriptions themselves are typically instances of ``Zend\Json\Server\Smd\Service``; you can also pass
