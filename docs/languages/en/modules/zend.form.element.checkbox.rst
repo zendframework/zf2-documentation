@@ -106,6 +106,8 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    :noindex:
 
    Checks if the checkbox is checked.
+   
+   :rtype: boolean
 
 .. function:: setChecked(bool $value)
    :noindex:
