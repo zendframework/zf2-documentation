@@ -19,6 +19,8 @@
    user-guide/routing-and-controllers
    user-guide/database-and-models
    user-guide/styling-and-translations
+   user-guide/authentication-with-zfc-user
+   user-guide/access-control-with-bjy-authorize
    user-guide/forms-and-actions
    user-guide/conclusion
    modules/zendtool.introduction
