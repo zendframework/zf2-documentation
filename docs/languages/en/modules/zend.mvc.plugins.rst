@@ -68,7 +68,7 @@ As an example:
       public function apiAction()
       {
          $viewModel = $this->acceptableViewModelSelector($this->acceptCriteria);
-        
+
          // Potentially vary execution based on model returned
          if ($viewModel instanceof JsonModel) {
             // ...
@@ -78,7 +78,7 @@ As an example:
 
 .. _zend.mvc.controller-plugins.flashmessenger:
 
-The above would return a standard Zend\View\Model\ViewModel instance if the criteria is not met, and the specified 
+The above would return a standard Zend\View\Model\ViewModel instance if the criteria is not met, and the specified
 view model types if the specific criteria is met. Rules are matched in order, with the first match "winning."
 
 FlashMessenger Plugin

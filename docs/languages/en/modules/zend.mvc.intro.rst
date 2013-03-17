@@ -12,8 +12,8 @@ The MVC layer is built on top of the following components:
   ``Zend\Mvc\Service``. The ``ServiceManager`` creates and configures your application instance and
   workflow.
 
-- ``Zend\EventManager`` - The MVC is event driven. This component is used everywhere 
-  from initial bootstrapping of the application, through returning response and request calls, 
+- ``Zend\EventManager`` - The MVC is event driven. This component is used everywhere
+  from initial bootstrapping of the application, through returning response and request calls,
   to setting and retrieving routes and matched routes, as well as render views.
 
 - ``Zend\Http`` - specifically the request and response objects, used within:
