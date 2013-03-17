@@ -26,7 +26,7 @@ See the following example for the default behaviour of this filter:
     :linenos:
 
     $filter = new Zend\Filter\UriNormalize(array(
-        'enforceScheme' => 'https'
+        'enforcedScheme' => 'https'
     ));
 
     echo $filter->filter('www.example.com');
