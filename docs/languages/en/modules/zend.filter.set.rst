@@ -25,5 +25,6 @@ Zend Framework comes with a standard set of filters, which are ready for you to 
 .. include:: zend.filter.string-trim.rst
 .. include:: zend.filter.strip-new-lines.rst
 .. include:: zend.filter.strip-tags.rst
+.. include:: zend.filter.uri-normalize.rst
 
 
