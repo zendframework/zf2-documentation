@@ -72,7 +72,7 @@ generan *XHTML* vía auxiliares ``Zend_View``. Son los siguientes:
 - textarea
 
 Tiene dos opciones para añadir elementos a un formulario; puede instanciar elementos concretos y pasarlos como
-objetos, o simplemente puede pasar el tipo de elemento y ``Zend_Form`` instaciará por usted un objeto del tipo
+objetos, o simplemente puede pasar el tipo de elemento y ``Zend_Form`` instanciará por usted un objeto del tipo
 correspondiente.
 
 Algunos ejemplos:
@@ -135,7 +135,7 @@ agregar un filtro para poner en minúsculas el valor final:
 .. code-block:: php
    :linenos:
 
-   $username->addFilter('StringtoLower');
+   $username->addFilter('StringToLower');
 
 Entonces, la configuración final de nuestro elemento queda así:
 
@@ -189,7 +189,7 @@ método render() del formulario, o simplemente mostrarlo con echo.
 .. code-block:: php
    :linenos:
 
-   // Llamando a render()  explicitamente, y pasando un objeto vista opcional:
+   // Llamando a render() explicitamente, y pasando un objeto vista opcional:
    echo $form->render($view);
 
    // Suponiendo un objeto vista ha sido previamente establecido vía setView():

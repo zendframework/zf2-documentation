@@ -68,10 +68,10 @@ requerida por *PHP*, y omitirla evita la inyección de espacios en blanco en la 
 
 .. _coding-standard.php-file-formatting.indentation:
 
-Identación
-^^^^^^^^^^
+Indentación
+^^^^^^^^^^^
 
-La identación suele estar compuesta por 4 espacios. Las tabulaciones no están permitidas.
+La indentación suele estar compuesta por 4 espacios. Las tabulaciones no están permitidas.
 
 .. _coding-standard.php-file-formatting.max-line-length:
 
@@ -158,7 +158,7 @@ pueden acabar con el término, "Interface",pero término no debe ser precedida p
 ``Zend\Controller_Plugin\Interface`` es considerado un nombre no válido, pero ``Zend\Controller\PluginInterface``
 o ``Zend\Controller_Plugin\PluginInterface`` serian nombres válidos.
 
-Si bien esta regla no es necesaria, se recomienda encarecidamente su uso, ya que proporciona una buena refrencia
+Si bien esta regla no es necesaria, se recomienda encarecidamente su uso, ya que proporciona una buena referencia
 visual a los desarrolladores, como saber que archivos contienen interfaces en lugar de clases.
 
 .. note::
@@ -284,7 +284,7 @@ El código *PHP* debe estar delimitado siempre por la forma completa de las etiq
    ?>
 
 Las etiquetas cortas (short tags) no se permiten nunca. Para archivos que contengan únicamente código *PHP*, la
-etiqueta de cierrre debe omitirse siempre (Ver :ref:` <coding-standard.php-file-formatting.general>`).
+etiqueta de cierre debe omitirse siempre (Ver :ref:` <coding-standard.php-file-formatting.general>`).
 
 .. _coding-standard.coding-style.strings:
 

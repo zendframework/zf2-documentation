@@ -76,7 +76,7 @@ componente puede necesitar el componente dependiente en situaciones especiales o
 
 .. note::
 
-   Incluso si es posible separar componentes indiduales para usarlo desde Zend Framework completo, usted debe tener
+   Incluso si es posible separar componentes individuales para usarlo desde Zend Framework completo, usted debe tener
    en cuenta que esto puede conducir a problemas cuando se perdieron los ficheros o los componentes se utilizan
    dinámicamente.
 

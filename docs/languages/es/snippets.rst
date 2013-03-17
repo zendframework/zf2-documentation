@@ -8,7 +8,7 @@
 .. |UserGuide| replace:: Guía de Usuario
 
 .. |UserGuideIntroduction| replace:: La Guía del Usuario ofrece llevarte a 
-   través de un ejemplo no trivial, monstrando diversas técnicas y características 
+   través de un ejemplo no trivial, mostrando diversas técnicas y características
    del framework con el fin de construir una aplicación.
 
 .. |LearningZendFramework| replace:: Aprendiendo Zend Framework 2
