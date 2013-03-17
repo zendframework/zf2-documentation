@@ -15,11 +15,12 @@ Theory of Operation
 To allow easy configuration of all the different parts of the `MVC` system, a somewhat complex set of services and
 their factories has been created. We'll try to give a simplified explanation of the process.
 
-When a ``Zend\Mvc\Application`` is created, a ``Zend\ServiceManager\ServiceManager`` object is created and configured
-via ``Zend\Mvc\Service\ServiceManagerConfig``. The ``ServiceManagerConfig`` gets the configuration from
-``application.config.php`` (or some other `application` configuration you passed to the ``Application`` when creating
-it). From all the service and factories provided in the ``Zend\Mvc\Service`` namespace, ``ServiceManagerConfig`` is
-responsible of configuring only three: ``SharedEventManager``, ``EventManager``, and ``ModuleManager``.
+When a ``Zend\Mvc\Application`` is created, a ``Zend\ServiceManager\ServiceManager`` object is created and
+configured via ``Zend\Mvc\Service\ServiceManagerConfig``. The ``ServiceManagerConfig`` gets the configuration from
+``application.config.php`` (or some other `application` configuration you passed to the ``Application`` when
+creating it). From all the service and factories provided in the ``Zend\Mvc\Service`` namespace,
+``ServiceManagerConfig`` is responsible of configuring only three: ``SharedEventManager``, ``EventManager``,
+and ``ModuleManager``.
 
 After this, the ``Application`` calls for the ``ModuleManager``. At this point, the ``ModuleManager`` further
 configures the ``ServiceManager`` with services and factories provided in ``Zend\Mvc\Service\ServiceLocator``.
@@ -132,9 +133,9 @@ This is the one service class referenced directly in the application bootstrappi
 
     It instantiates an instance of ``Zend\ModuleManager\Listener\DefaultListenerAggregate``, using the
     "module_listener_options" retrieved. Checks if a service with the name ``ServiceListener`` exists, otherwise
-    it sets a factory with that name mapping to ``Zend\Mvc\Service\ServiceListenerFactory``. A bunch of service listeners will be added
-    to the ``ServiceListener``, like listeners for the ``getServiceConfig``, ``getControllerConfig``,
-    ``getControllerPluginConfig``, ``getViewHelperConfig`` module methods.
+    it sets a factory with that name mapping to ``Zend\Mvc\Service\ServiceListenerFactory``. A bunch of service
+    listeners will be added to the ``ServiceListener``, like listeners for the ``getServiceConfig``,
+    ``getControllerConfig``, ``getControllerPluginConfig``, ``getViewHelperConfig`` module methods.
 
     Next, it retrieves the ``EventManager`` service, and attaches the above listeners.
 

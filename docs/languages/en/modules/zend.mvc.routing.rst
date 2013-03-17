@@ -152,7 +152,8 @@ A ``TreeRouteStack`` will consist of the following configuration:
 
 - A base "route", which describes the base match needed, the root of the tree.
 
-- An optional "route_plugins", which is a configured ``Zend\Mvc\Router\RoutePluginManager`` that can lazy-load routes.
+- An optional "route_plugins", which is a configured ``Zend\Mvc\Router\RoutePluginManager`` that can lazy-load
+  routes.
 
 - The option "may_terminate", which hints to the router that no other segments will follow it.
 
@@ -419,8 +420,8 @@ successfully matched.
    ));
 
 The above would match "/blog/001-some-blog_slug-here.html", and return four items in the ``RouteMatch``, an "id",
-the "controller", the "action", and the "format". When assembling a URL from this route, the "id" and "format" values would be
-used to fill the specification.
+the "controller", the "action", and the "format". When assembling a URL from this route, the "id" and "format"
+values would be used to fill the specification.
 
 .. _zend.mvc.routing.http-route-types.scheme:
 

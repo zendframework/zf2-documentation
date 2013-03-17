@@ -135,7 +135,8 @@ examples:
 To facilitate these actions while also making them available to alternate controller implementations, we've created
 a ``PluginManager`` implementation for the controller layer, ``Zend\Mvc\Controller\PluginManager``, building on the
 ``Zend\ServiceManager\AbstractPluginManager`` functionality. To utilize it, you simply need to implement the
-``setPluginManager(PluginManager $plugins)`` method, and set up your code to use the controller-specific implementation by default:
+``setPluginManager(PluginManager $plugins)`` method, and set up your code to use the controller-specific
+implementation by default:
 
 .. code-block:: php
    :linenos:

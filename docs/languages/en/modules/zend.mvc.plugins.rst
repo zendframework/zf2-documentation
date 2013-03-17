@@ -208,8 +208,8 @@ The ``Params`` plugin allows for accessing parameters in actions from different 
 
 It exposes several methods, one for each parameter source:
 
-- ``fromFiles($name=null,$default=null)``, for retrieving all, or one single file. If ``$name`` is `null`, all files
-  will be returned.
+- ``fromFiles($name=null,$default=null)``, for retrieving all, or one single file. If ``$name`` is `null`, all
+  files will be returned.
 
 - ``fromHeader($header=null,$default=null)``, for retrieving all, or one single header parameter. If ``$header``
   is `null`, all header parameters will be returned.
@@ -298,10 +298,12 @@ run the file input filters to move the uploaded files into a new location
 This plugin can be invoked with three arguments:
 
 - ``$form``: the form instance.
-- ``$redirect``: (Optional) a string containing the redirect location which can either be a named route or a URL, based on
-  the contents of the third parameter. If this argument is not provided, it will default to the current matched route.
-- ``$redirectToUrl``: (Optional) a boolean that when set to TRUE, causes the second parameter to be treated as a URL instead
-  of a route name (this is required when redirecting to a URL instead of a route). This argument defaults to false.
+- ``$redirect``: (Optional) a string containing the redirect location which can either be a named route or a URL,
+  based on the contents of the third parameter. If this argument is not provided, it will default to the current
+  matched route.
+- ``$redirectToUrl``: (Optional) a boolean that when set to TRUE, causes the second parameter to be treated as a
+  URL instead of a route name (this is required when redirecting to a URL instead of a route). This argument
+  defaults to false.
 
 .. rubric:: Example Usage
 

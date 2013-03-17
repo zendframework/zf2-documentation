@@ -144,11 +144,11 @@ The ``Module.php`` file directly under the module root directory will be in the 
    }
 
 When an ``init()`` method is defined, this method will be triggered by a ``Zend\ModuleManager`` listener
-when it loads the module class, and passed an instance of the manager by default.  This allows you to perform tasks such as
-setting up module-specific event listeners.  But be cautious, the ``init()`` method is called for **every** module on **every** page
-request and should **only** be used for performing **lightweight** tasks such as registering event listeners.
-Similarly, an ``onBootstrap()`` method (which accepts an ``MvcEvent`` instance) may be defined; it is also
-triggered for every page request, and should be used for lightweight tasks as well.
+when it loads the module class, and passed an instance of the manager by default.  This allows you to perform tasks
+such as setting up module-specific event listeners.  But be cautious, the ``init()`` method is called for **every**
+module on **every** page request and should **only** be used for performing **lightweight** tasks such as
+registering event listeners. Similarly, an ``onBootstrap()`` method (which accepts an ``MvcEvent`` instance) may be
+defined; it is also triggered for every page request, and should be used for lightweight tasks as well.
 
 The three ``autoload_*.php`` files are not required, but recommended. They provide the following:
 
@@ -162,8 +162,8 @@ The three ``autoload_*.php`` files are not required, but recommended. They provi
   with ``spl_autoload_register()``.
 
 The point of these three files is to provide reasonable default mechanisms for autoloading the classes contained in
-the module, thus providing a trivial way to consume the module without requiring ``Zend\ModuleManager`` (e.g., for use
-outside a ZF2 application).
+the module, thus providing a trivial way to consume the module without requiring ``Zend\ModuleManager`` (e.g., for
+use outside a ZF2 application).
 
 The ``config`` directory should contain any module-specific configuration. These files may be in any format
 ``Zend\Config`` supports. We recommend naming the main configuration "module.format", and for PHP-based
@@ -343,8 +343,8 @@ Each ``Module`` class that has configuration it wants the ``Application`` to kno
    }
 
 There are a number of other methods you can define for tasks ranging from providing autoloader configuration, to
-providing services to the ``ServiceManager``, to listening to the bootstrap event. The :ref:`ModuleManager documentation
-<zend.module-manager.intro>` goes into more detail on these.
+providing services to the ``ServiceManager``, to listening to the bootstrap event. The :ref:`ModuleManager
+documentation <zend.module-manager.intro>` goes into more detail on these.
 
 .. _zend.mvc.intro.conclusion:
 

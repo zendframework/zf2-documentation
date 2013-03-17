@@ -3,8 +3,8 @@
 Quick Start
 ===========
 
-Now that you have basic knowledge of applications, modules, and how they are each structured, we'll show you the easy way to get
-started.
+Now that you have basic knowledge of applications, modules, and how they are each structured, we'll show you the
+easy way to get started.
 
 .. _zend.mvc.quick-start.install:
 
@@ -171,8 +171,8 @@ such, we've created two base controller classes for you to start with:
   after the action will be called by the controller. As an example, if you had a route that returned "foo" for the
   "action" key, the "fooAction" method would be invoked.
 
-- ``Zend\Mvc\Controller\AbstractRestfulController`` introspects the ``Request`` to determine what HTTP method was used,
-  and calls a method according to that .
+- ``Zend\Mvc\Controller\AbstractRestfulController`` introspects the ``Request`` to determine what HTTP method was
+  used, and calls a method according to that.
 
   - ``GET`` will call either the ``getList()`` method, or, if an "id" was matched during routing, the ``get()``
     method (with that identifer value).
@@ -362,8 +362,8 @@ One problem: we haven't told our application about our new module!
 By default, modules are not parsed unless we tell the module manager about them. As such, we need to notify the
 application about them.
 
-Remember the ``config/application.config.php`` file? Let's modify it to add our new module. Once done, it should read as
-follows:
+Remember the ``config/application.config.php`` file? Let's modify it to add our new module. Once done, it should
+read as follows:
 
 .. code-block:: php
    :linenos:

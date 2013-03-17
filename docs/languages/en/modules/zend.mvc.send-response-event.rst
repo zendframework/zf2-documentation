@@ -3,8 +3,9 @@
 The SendResponseEvent
 =====================
 
-The MVC layer of Zend Framework 2 also incorporates and utilizes a custom ``Zend\EventManager\Event`` implementation located at
-``Zend\Mvc\ResponseSender\SendResponseEvent``. This event allows listeners to update the response object, by setting headers and content.
+The MVC layer of Zend Framework 2 also incorporates and utilizes a custom ``Zend\EventManager\Event``
+implementation located at ``Zend\Mvc\ResponseSender\SendResponseEvent``. This event allows listeners to update the
+response object, by setting headers and content.
 
 The methods it defines are:
 
