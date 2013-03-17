@@ -1,4 +1,4 @@
-.. EN-Revision: b02c7c75f2799d305e067ab084b0c091b9f36a9a
+.. EN-Revision: ae1fe7a64187111097c0d18a0e800e1084299e48
 .. _zend.config.introduction:
 
 Inleiding
