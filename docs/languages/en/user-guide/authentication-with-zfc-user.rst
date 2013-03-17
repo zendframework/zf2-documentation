@@ -68,7 +68,7 @@ following code somewhere in your ``module/Application/view/layout/layout.phtml``
        <a href="<?php echo $this->escapeHtmlAttr($this->url('zfcuser/login')); ?>">Login</a>
    <?php endif; ?>
 
-The ``zfcUserIdentity`` helper is provided by `ZfcUser`_
+The ``zfcUserIdentity`` bit is a view helper provided by `ZfcUser`_ itself.
 
 .. _`ZfcUser`: https://github.com/ZF-Commons/ZfcUser
 .. _`ZfcBase`: https://github.com/ZF-Commons/ZfcBase
