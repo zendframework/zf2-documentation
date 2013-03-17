@@ -17,6 +17,7 @@ See the section on :ref:`view helpers <zend.view.helpers>` for more information.
 .. include:: zend.i18n.view.helper.currency.format.rst
 .. include:: zend.i18n.view.helper.date.format.rst
 .. include:: zend.i18n.view.helper.number.format.rst
+.. include:: zend.i18n.view.helper.plural.rst
 .. include:: zend.i18n.view.helper.translate.rst
 .. include:: zend.i18n.view.helper.translate.plural.rst
 .. include:: zend.i18n.view.helper.abstract-translator-helper.rst
