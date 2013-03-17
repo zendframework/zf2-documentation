@@ -219,7 +219,7 @@ In short, to create your own form elements (or even reusable fieldsets !) and be
 
 1. Create your element (like you did before).
 2. Add it to the form element manager by defining the `getFormElementConfig`, exactly like using ''getServiceConfig()'' and ''getControllerConfig''.
-3. Make sure the custom form element is not added in the form's __construct-or, but rather in it's init() method, or after getting an instance of the form.
+3. Make sure the custom form element is not added in the form's ``__construct``-or, but rather in it's init() method, or after getting an instance of the form.
 4. Create your form through the form element manager instead of directly instantiating it.
 
 .. _zend.form.advanced-use-of-forms.handling-dependencies:
