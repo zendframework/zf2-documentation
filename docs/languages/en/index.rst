@@ -242,6 +242,7 @@
    modules/zend.xmlrpc.server
    modules/zendservice.akismet
    modules/zendservice.amazon
+   modules/zendservice.apple.apns
    modules/zendservice.audioscrobbler
    modules/zendservice.delicious
    modules/zendservice.developer-garden
@@ -797,6 +798,11 @@ ZendService\\Amazon
 ^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.amazon`
+
+ZendService\\Apple\Apns
+^^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zendservice.apple.apns`
 
 ZendService\\Audioscrobbler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
