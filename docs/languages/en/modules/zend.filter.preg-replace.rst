@@ -21,11 +21,11 @@ The following options are supported for ``Zend\Filter\PregReplace``:
 
 To use this filter properly you must give two options:
 
-The option ``pattern`` has to be given to set the pattern which will be searched for. It can be a string for a single
-pattern, or an array of strings for multiple pattern.
+The option ``pattern`` has to be given to set the pattern which will be searched for. It can be a string for a
+single pattern, or an array of strings for multiple pattern.
 
-To set the pattern which will be used as replacement the option ``replacement`` has to be used. It can be a string for
-a single pattern, or an array of strings for multiple pattern.
+To set the pattern which will be used as replacement the option ``replacement`` has to be used. It can be a string
+for a single pattern, or an array of strings for multiple pattern.
 
 .. code-block:: php
    :linenos:
