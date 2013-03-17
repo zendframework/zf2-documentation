@@ -878,6 +878,6 @@ Copyright
 |IndicesAndTables|
 ==================
 
-* :ref:`index`
+* :doc:`index`
 * :ref:`search`
 
