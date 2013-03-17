@@ -1,7 +1,10 @@
 Using the Flash Messenger in your Album Module
 ==============================================
 
-When our user edits, deletes or adds an album, how do they know they have been successful in their action?
+Throughout this tutorial we have adhered to the best practice that states after form data has been processed,
+we should always redirect to a "clean" page. (`Post-Redirect-Get pattern
+<http://en.wikipedia.org/wiki/Post/Redirect/Get>`_). Therefore, when our user edits,
+deletes or adds an album, how do they know they have been successful in their action?
 
 In this tutorial we will use the ``FlashMessenger`` view helper to give the user feedback after they have
 added, edited or deleted an album.
