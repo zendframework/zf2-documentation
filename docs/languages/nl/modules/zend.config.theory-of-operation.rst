@@ -6,7 +6,7 @@ Werking
 
 De ``Zend\Config\Config`` constructor accepteert configuratiegegevens in de vorm van een
 associatieve array, die multi-dimensionaal mag zijn, zodat de gegevens gestructureerd zijn van generiek
-tot specifiek. Concrete adapter classes zorgen ervoor dat opgeslagen configuratiegegevens als een 
+tot specifiek. Concrete adapter classes zorgen ervoor dat opgeslagen configuratiegegevens als een
 associatieve array aan de ``Zend\Config\Config`` constructor worden aangeleverd. Indien gewenst kunnen
 associatieve arrays rechtstreeks aan de ``Zend\Config\Config`` constructor meegegeven worden, zodat
 het gebruik van een reader class overbodig wordt.
@@ -16,7 +16,7 @@ De array key wordt daarbij gebruikt als property name. Indien de waarde een arra
 zelf ook omgezet naar een nieuw ``Zend\Config\Config`` object en ingvuld met de array data.
 Dit gebeurt recursief zodat een hiërarchie met een willekeurig aantal niveaus van configuratiegegevens kan opgebouwd worden.
 
-``Zend\Config\Config`` implementeert de `Countable`_ and `Iterator`_ zodat de configuratiegegevens makkelijk
+``Zend\Config\Config`` implementeert de `Countable`_ en `Iterator`_ zodat de configuratiegegevens makkelijk
 toegankelijk zijn. Bijgevolg ondersteunen ``Zend\Config\Config`` objecten de `count()`_ functie en *PHP* constructs
 zoals `foreach`_.
 
@@ -25,7 +25,7 @@ gegevens tracht weg te schrijven (b.v. ``$config->database->host = 'example.com'
 Dit standaardgedrag kan gewijzigd worden via de constructor, waardoor gegevens wel overschrijfbaar worden.
 Wanneer gegevens overschrijfbaar zijn, laat ``Zend\Config\Config`` ook toe om gegevens te verwijderen
 (b.v. ``unset($config->database->host)``). De ``isReadOnly()`` methode kan gebruikt worden om te verifiëren
-of gegevens overschrijfbaar zijn of niet en de ``setReadOnly()`` methode kan gebruikt worden om het 
+of gegevens overschrijfbaar zijn of niet en de ``setReadOnly()`` methode kan gebruikt worden om het
 ``Zend\Config\Config`` object terug in read-only modus te plaatsen en verdere aanpassingen onmogelijk te maken.
 
 .. note::
@@ -37,7 +37,7 @@ of gegevens overschrijfbaar zijn of niet en de ``setReadOnly()`` methode kan geb
    van configuratiegegevens voor de verschillende opslagmedia, vallen buiten het bereik van ``Zend\Config\Config``.
    Er zijn third-party open source oplossingen beschikbaar die het mogelijk maken om configuratiegegevens aan te
    maken en te beheren voor verschillende opslagmedia.
-   
+
 Als je twee ``Zend\Config\Config`` objecten hebt, kan je ze samenvoegen in één object met de ``merge()``
 functie. Stel dat je ``$config`` en ``$localConfig`` hebt, dan kan je de gegevens van ``$localConfig`` overzetten
 naar ``$config`` door middel van ``$config->merge($localConfig);``. De items in ``$localConfig`` zullen de
