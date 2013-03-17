@@ -203,7 +203,7 @@ También está el archivo ``test.pdf``, que puede ser usado con esta demo con fi
 
    $page2->restoreGS();
 
-   // Movimineto del sistema de coordenadas, sesgado y escalado
+   // Movimiento del sistema de coordenadas, sesgado y escalado
    $page2->saveGS();
    $page2->translate(60, 150)     // Despalazamiento del sistema de coordenadas
          ->skew(0, 0, 0, -M_PI/9) // Sesgar el sistema de coordenadas

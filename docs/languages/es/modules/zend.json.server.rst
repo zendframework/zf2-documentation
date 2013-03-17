@@ -221,7 +221,7 @@ conjunto de opciones, y puede mostrase a si mismo como JSON vía el método ``to
 El objeto solicitud tiene los siguientes métodos disponibles:
 
 - ``setOptions(array $options)``: Especifica la configuración del objeto. ``$options`` puede contener claves que
-  concuerden con cualuier método 'set': ``setParams()``, ``setMethod()``, ``setId()``, y ``setVersion()``.
+  concuerden con cualquier método 'set': ``setParams()``, ``setMethod()``, ``setId()``, y ``setVersion()``.
 
 - ``addParam($value, $key = null)``: Agrega un parámetro para usar con el método de llamada. Los parámetros
   pueden ser sólo los valores, o pueden incluir opcionalmente el nombre del parámetro.

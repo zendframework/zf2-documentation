@@ -17,7 +17,7 @@ resultante es creada como un nuevo objeto ``Zend_Config``, cargado con los datos
 recursivamente, de forma que una jerarquía de datos de configuración puede ser creada con cualquier número de
 niveles.
 
-``Zend_Config`` implementa las interfaces **Countable** e **Iterator** para facilitar el aceso sencillo a los datos
+``Zend_Config`` implementa las interfaces **Countable** e **Iterator** para facilitar el acceso sencillo a los datos
 de configuración. Así, uno puede usar la función `count()`_ y constructores *PHP* como `foreach`_ sobre objetos
 ``Zend_Config``.
 
