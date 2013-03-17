@@ -96,6 +96,20 @@ hint to the view layer how it might render the item.
    Set options for an element. Accepted options are: ``"label"`` and ``"label_attributes"``, which call
    ``setLabel`` and ``setLabelAttributes``, respectively.
 
+.. function:: getOptions()
+   :noindex:
+
+   Get defined options for an element
+
+   :rtype: array
+
+.. function:: getOption(string $option)
+   :noindex:
+
+   Return the specified option, if defined. If it's not defined, returns null.
+
+   :rtype: null|mixed
+
 .. function:: setAttribute(string $key, mixed $value)
    :noindex:
 
@@ -107,6 +121,11 @@ hint to the view layer how it might render the item.
    Retrieve a single element attribute.
 
    :rtype: mixed
+
+.. funcion:: removeAttribute(string $key)
+   :noindex:
+
+   Remove a single attribute
 
 .. function:: hasAttribute(string $key)
    :noindex:
@@ -126,6 +145,11 @@ hint to the view layer how it might render the item.
    Retrieve all attributes at once.
 
    :rtype: array|Traversable
+
+.. function:: removeAttributes(array $keys)
+   :noindex:
+
+   Remove many attributes at once
 
 .. function:: clearAttributes()
    :noindex:
