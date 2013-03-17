@@ -2,53 +2,58 @@
 .. _user-guide.routing-and-controllers:
 
 #######################
-Routing and controllers
+Routing et contrôleurs
 #######################
 
-We are going to build a very simple inventory system to display our album
-collection. The home page will list our collection and allow us to add, edit and
-delete albums. Hence the following pages are required:
+Nous allons mettre en place un système d'inventaire très simple pour afficher
+notre collection d'albums. La page d'accueil listera notre collection et nous
+permettra d'ajouter, modifier et effacer des albums. Pour cela, il nous faut 
+les pages suivantes :
 
 +---------------+------------------------------------------------------------+
 | Page          | Description                                                |
 +===============+============================================================+
-| Home          | This will display the list of albums and provide links to  |
-|               | edit and delete them. Also, a link to enable adding new    |
-|               | albums will be provided.                                   |
+| Accueil       | Cette page affichera la liste d'albums et contiendra des   |
+|               | liens pour les modifier et les effacer. Elle contiendra    |
+|               | aussi un bouton qui nous permettra d'ajouter de nouveaux   |
+|               | albums.                                                    |
+|               |                                                            |
 +---------------+------------------------------------------------------------+
-| Add new album | This page will provide a form for adding a new album.      |
+| Ajouter album | Cette page contiendra un formulaire pour ajouter un album. |
 +---------------+------------------------------------------------------------+
-| Edit album    | This page will provide a form for editing an album.        |
+| Modifier album| Cette page contiendra un formulaire pour modifier un album.|
 +---------------+------------------------------------------------------------+
-| Delete album  | This page will confirm that we want to delete an album and |
-|               | then delete it.                                            |
+| Effacer album | Cette page nous permettra d'effacer un album avec demande  |
+|               | de confirmation.                                           |
 +---------------+------------------------------------------------------------+
 
-Before we set up our files, it’s important to understand how the framework
-expects the pages to be organised. Each page of the application is known as an
-*action* and actions are grouped into *controllers* within *modules*. Hence, you
-would generally group related actions into a controller; for instance, a news
-controller might have actions of ``current``, ``archived`` and ``view``.
+Avant tout chose, il est important de comprendre comment les pages doivent être
+organisées pour le framework. Chaque page de l'application est une *action* et
+les actions sont regroupées au sein de *contrôleurs* dans les *modules*. Ainsi,
+vous regrouperez généralement les actions au sein d'un contrôleur; par exemple,
+un contrôleur qui gèrerait des actualités auraient des actions  comme ``nouvelles``,
+``archivées`` etc.
 
-As we have four pages that all apply to albums, we will group them in a single
-controller ``AlbumController`` within our ``Album`` module as four actions. The
-four actions will be:
+Comme nous avons quatre pages pour nos albums, nous les regrouperons dans un seul 
+contrôleur ``AlbumController`` dans notre module ``Album`` sous forme de 4 actions.
+Ces 4 actions seront :
 
 +---------------+---------------------+------------+
-| Page          | Controller          | Action     |
+| Page          | Contrôleur          | Action     |
 +===============+=====================+============+
-| Home          | ``AlbumController`` | ``index``  |
+| Accueil       | ``AlbumController`` | ``index``  |
 +---------------+---------------------+------------+
-| Add new album | ``AlbumController`` | ``add``    |
+| Ajouter album | ``AlbumController`` | ``add``    |
 +---------------+---------------------+------------+
-| Edit album    | ``AlbumController`` | ``edit``   |
+| Modifier album| ``AlbumController`` | ``edit``   |
 +---------------+---------------------+------------+
-| Delete album  | ``AlbumController`` | ``delete`` |
+| Effacer album | ``AlbumController`` | ``delete`` |
 +---------------+---------------------+------------+
 
-The mapping of a URL to a particular action is done using routes that are defined
-in the module’s ``module.config.php`` file. We will add a route for our album
-actions. This is the updated config file with the new code commented.
+La correspondance entre une URL et une action particulière se fait à l'aide des
+routes qui sont décrites dans le fichier ``module.config.php`` du module. Nous 
+ajouterons une route pour nos 4 actions. Voici le fichier de configuration 
+mis à jour avec le code qui est commenté.
 
 .. code-block:: php
 
@@ -60,7 +65,7 @@ actions. This is the updated config file with the new code commented.
             ),
         ),
 
-        // The following section is new and should be added to your file
+        // Code à ajouter à votre fichier.
         'router' => array(
             'routes' => array(
                 'album' => array(
@@ -87,51 +92,51 @@ actions. This is the updated config file with the new code commented.
         ),
     );
 
-The name of the route is ‘album’ and has a type of ‘segment’. The segment route
-allows us to specify placeholders in the URL pattern (route) that will be mapped
-to named parameters in the matched route. In this case, the route is
-**``/album[/:action][/:id]``** which will match any URL that starts with
-``/album``. The next segment will be an optional action name, and then finally
-the next segment will be mapped to an optional id. The square brackets indicate
-that a segment is optional. The constraints section allows us to ensure that the
-characters within a segment are as expected, so we have limited actions to
-starting with a letter and then subsequent characters only being alphanumeric,
-underscore or hyphen. We also limit the id to a number.
+Le nom de la route est ‘album’ et possède un type de ‘segment’. Les segments
+nous permettent de spécifier des espaces réservés dans l'URL qui seront mappés
+aux paramètres nommés dans la route correspondante. Dans notre cas, la route est
+**``/album[/:action][/:id]``**, qui vérifiera chaque url qui commence par ``/album``. 
+Le segment suivant correspond au nom d'une action optionnelle, et le dernier segment
+correspond à un id, optionnel lui aussi. Les crochets indiquent qu'un segment est 
+optionnel. La section constraints permet de nous assurer que les caractères relevés 
+dans un segment correspondent bien à ceux attendus, nous avons donc restreint les actions
+pour qu'elles commencent par une lettre, les caractères suivants étant alphanumériques, 
+le signe souligné '_', et le tiret. Les id sont ainsi limités aux seuls chiffres.
 
-This route allows us to have the following URLs:
+Cette route nous permet d'avoir les URL suivantes :
 
 +---------------------+------------------------------+------------+
 | URL                 | Page                         | Action     |
 +=====================+==============================+============+
-| ``/album``          | Home (list of albums)        | ``index``  |
+| ``/album``          | Accueil (listes des albums)  | ``index``  |
 +---------------------+------------------------------+------------+
-| ``/album/add``      | Add new album                | ``add``    |
+| ``/album/add``      | Ajouter un album             | ``add``    |
 +---------------------+------------------------------+------------+
-| ``/album/edit/2``   | Edit album with an id of 2   | ``edit``   |
+| ``/album/edit/2``   | Modifier l'album avec l'id 2 | ``edit``   |
 +---------------------+------------------------------+------------+
-| ``/album/delete/4`` | Delete album with an id of 4 | ``delete`` |
+| ``/album/delete/4`` | Effacer l'album avec l'id 4  | ``delete`` |
 +---------------------+------------------------------+------------+
 
-Create the controller
-=====================
+Créer le contrôleur
+===================
 
-We are now ready to set up our controller. In Zend Framework 2, the controller
-is a class that is generally called ``{Controller name}Controller``. Note that
-``{Controller name}`` must start with a capital letter.  This class lives in a file
-called ``{Controller name}Controller.php`` within the ``Controller`` directory for the
-module. In our case that is ``module/Album/src/Album/Controller``. Each action is
-a public function within the controller class that is named ``{action name}Action``.
-In this case ``{action name}`` should start with a lower case letter.
+Nous sommes maintenant prêts à mettre en place notre contrôleur. Dans zend framework 2,
+le contrôleur est une classe que l'on nomme généralement ``{Nom du contrôleur}Controller``.
+Notez que ``{Nom du contrôleur}`` doit commencer par une majuscule. Cette classe réside dans
+un fichier nommé ``{Nom du contrôleur}Controller.php``, sous le dossier ``Controller`` du 
+module. Dans notre cas, ce sera ``module/Album/src/Album/Controller``. Chaque action est une méthode
+publique de la classe contrôleur nommée ``{nom de l'action}Action``. Dans notre cas, ``{nom de l'action}``
+devrait commencer par une lettre minuscule.
 
-Note that this is by convention. Zend Framework 2 doesn’t provide many
-restrictions on controllers other than that they must implement the
-``Zend\Stdlib\Dispatchable`` interface. The framework provides two abstract
-classes that do this for us: ``Zend\Mvc\Controller\AbstractActionController``
-and ``Zend\Mvc\Controller\AbstractRestfulController``. We’ll be using the
-standard ``AbstractActionController``, but if you’re intending to write a
-RESTful web service, ``AbstractRestfulController`` may be useful.
+Ceci n'est qu'une convention. Zend Framework 2 n'impose pas beaucoup de 
+restrictions sur les contrôleurs, outre le fait qu'ils doivent implémenter
+l'interface ``Zend\Stdlib\Dispatchable``. Le framework propose deux classes 
+abstraites qui font le travail pour nous : ``Zend\Mvc\Controller\AbstractActionController``
+et ``Zend\Mvc\Controller\AbstractRestfulController``. Nous utiliserons  
+``AbstractActionController``, mais si vous avez l'intention d'écrire un service RESTful,
+``AbstractRestfulController`` vous sera plus utile.
 
-Let’s go ahead and create our controller class:
+Allons-y et créons notre classe contrôleur :
 
 .. code-block:: php
 
@@ -160,14 +165,15 @@ Let’s go ahead and create our controller class:
         }
     }
 
-Note that we have already informed the module about our controller in the
-‘controller’ section of ``config/module.config.php``.
+Notez que nous avons déjà informé le module de l'existence de notre contrôleur
+dans la section ‘controllers’ de ``config/module.config.php``.
 
-We have now set up the four actions that we want to use. They won’t work yet
-until we set up the views. The URLs for each action are:
+Nous avons désormais nos 4 actions que nous souhaitons utiliser. Elles ne 
+fonctionneront que lorsque nous aurons mis en place les vues. Les URL de chaque
+action sont :
 
 +--------------------------------------------+----------------------------------------------------+
-| URL                                        | Method called                                      |
+| URL                                        | Methode appelée                                    |
 +============================================+====================================================+
 | http://zf2-tutorial.localhost/album        | ``Album\Controller\AlbumController::indexAction``  |
 +--------------------------------------------+----------------------------------------------------+
@@ -178,23 +184,23 @@ until we set up the views. The URLs for each action are:
 | http://zf2-tutorial.localhost/album/delete | ``Album\Controller\AlbumController::deleteAction`` |
 +--------------------------------------------+----------------------------------------------------+
 
-We now have a working router and the actions are set up for each page of our
-application.
+Nous avons désormais un routeur fonctionnel et les actions sont renseignées 
+pour chaque page de notre application.
 
-It’s time to build the view and the model layer.
+Il est temps de construire la vue et la couche modèle.
 
-Initialise the view scripts
----------------------------
+Initialiser les scripts de vue
+------------------------------
 
-To integrate the view into our application all we need to do is create some view
-script files. These files will be executed by the ``DefaultViewStrategy`` and be
-passed any variables or view models that are returned from the controller action
-method. These view scripts are stored in our module’s views directory within a
-directory named after the controller. Create these four empty files now:
+Pour intégrer la vue dans notre application, tout ce que nous avons à faire est de 
+créer les fichiers de la vue. Ces fichiers seront exécutés par le ``DefaultViewStrategy``
+et recevront n'importe quelle variable ou modèles de vue retournées par les méthodes d'action 
+du contrôleur. Créez maintenant ces 4 fichiers vides :
 
 * ``module/Album/view/album/album/index.phtml``
 * ``module/Album/view/album/album/add.phtml``
 * ``module/Album/view/album/album/edit.phtml``
 * ``module/Album/view/album/album/delete.phtml``
 
-We can now start filling everything in, starting with our database and models.
+Nous pouvons désormais commencer à tout renseigner, à commencer par notre base de données 
+et les modèles.
