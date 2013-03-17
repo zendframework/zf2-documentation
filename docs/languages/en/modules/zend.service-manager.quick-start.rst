@@ -163,7 +163,7 @@ As such, you have a variety of ways to override service manager configuration se
 
 .. note::
 
-   ** Service names good practices**
+   **Service names good practices**
 
    When defining a new service, it is usually a good idea to use the fully qualified class name of the produced 
    instance or of one of the interfaces it implements as service name.
