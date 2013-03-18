@@ -1,7 +1,7 @@
 .. _zend.feed.introduction:
 
-Introduction
-============
+Introduction to Zend\\Feed
+==========================
 
 ``Zend\Feed`` provides functionality for consuming *RSS* and *Atom* feeds. It provides a natural syntax for accessing
 elements of feeds, feed attributes, and entry attributes. ``Zend\Feed`` also has extensive support for modifying
