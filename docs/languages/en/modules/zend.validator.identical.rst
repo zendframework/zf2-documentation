@@ -28,7 +28,7 @@ which validates a string against the given token.
    :linenos:
 
    $valid = new Zend\Validator\Identical('origin');
-   if ($valid->isValid($value) {
+   if ($valid->isValid($value)) {
        return true;
    }
 
