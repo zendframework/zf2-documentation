@@ -151,7 +151,7 @@ API "Features" позволяет расширять функционально�
    Zend\Db\TableGateway\Feature\GlobalAdapterFeature::setStaticAdapter($adapter);
 
    // in a controller, or model somewhere
-   $table = new MyTableGateway(); // adapter is statially loaded
+   $table = new MyTableGateway(); // adapter is statically loaded
 
 - MasterSlaveFeature: возможность использовать мастер-адаптер для insert(), update() и delete() при использовании
   слейв-адаптера для операций select().
@@ -167,7 +167,7 @@ API "Features" позволяет расширять функционально�
 .. code-block:: php
    :linenos:
 
-   $table = new TableGateway('artist', $adapter, new Feature\MeatadataFeature());
+   $table = new TableGateway('artist', $adapter, new Feature\MetadataFeature());
 
 - EventFeature: возможность использовать объект ``TableGateway`` в связке с Zend\\EventManager для обеспечения
   возможности подписываться на различные события в течении жизненного цикла ``TableGateway``.
