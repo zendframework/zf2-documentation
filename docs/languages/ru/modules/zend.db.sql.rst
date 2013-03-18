@@ -184,8 +184,8 @@ join():
    $select->join(
    	'foo' // table name,
    	'id = bar.id', // expression to join on (will be quoted by platform object before insertion),
-   	array('bar', 'baz'), // (optional) list of columns, same requiremetns as columns() above
-   	$select::JOIN_OUTER // (optional), one of inner, outer, left, right also represtned by constants in the API
+   	array('bar', 'baz'), // (optional) list of columns, same requirements as columns() above
+   	$select::JOIN_OUTER // (optional), one of inner, outer, left, right also represented by constants in the API
    );
 
    $select->from(array('f' => 'foo'))  // base table
@@ -337,7 +337,7 @@ values():
    :linenos:
 
    // default behavior of values is to set the values
-   // succesive calls will not preserve values from previous calls
+   // successive calls will not preserve values from previous calls
    $insert->values(array(
    	'col_1' => 'value1',
    	'col_2' => 'value2'
@@ -435,7 +435,7 @@ Zend\\Db\\Sql\\Where (Predicate/PredicateSet) API:
         public $AND;
         public $OR;
         public $NEST;
-        public $UNNSET;
+        public $UNNEST;
 
         public function nest();
         public function setUnnest(Predicate $predicate);
