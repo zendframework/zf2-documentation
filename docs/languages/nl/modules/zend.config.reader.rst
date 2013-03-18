@@ -272,7 +272,7 @@ Zend\\Config\\Reader\\Yaml
 
 ``Zend\Config\Reader\Yaml`` biedt de mogelijkheid om configuratiegegevens in *YAML* formaat in te laden en ze
 beschikbaar te stellen door middel van de array syntax. Om de YAML reader te kunnen gebruiken, moet je een 
-callback specifiëren uit een externe library of de `Yaml PECL extension`_ gebruiken.
+callback specifiÃ«ren uit een externe library of de `Yaml PECL extension`_ gebruiken.
 
 Het volgende voorbeeld illustreert het gebruik van ``Zend\Config\Reader\Yaml`` en de Yaml PECL extensie om
 configuratiegegevens in te lezen uit een *YAML* bestand:
@@ -300,7 +300,7 @@ Het YAML bestand kan vervolgens ingelezen worden met behulp van ``Zend\Config\Re
    echo $data['webhost']  // prints "www.example.com"
    echo $data['database']['params']['dbname'];  // prints "dbproduction"
 
-Als je een externe YAML reader wenst te gebruiken, dan moet je een callback functie specifiëren in de 
+Als je een externe YAML reader wenst te gebruiken, dan moet je een callback functie specifiÃ«ren in de
 constructor. Stel dat je de `Spyc`_ wenst te gebruiken:
 
 .. code-block:: php
@@ -315,7 +315,7 @@ constructor. Stel dat je de `Spyc`_ wenst te gebruiken:
    echo $data['webhost']  // prints "www.example.com"
    echo $data['database']['params']['dbname'];  // prints "dbproduction"
 
-Je kan ook de ``Zend\Config\Reader\Yaml`` instantiëren zonder parameters en de YAML reader nadien toewijzen
+Je kan ook de ``Zend\Config\Reader\Yaml`` instantiÃ«ren zonder parameters en de YAML reader nadien toewijzen
 via de ``setYamlDecoder()`` methode.
 
 Met ``Zend\Config\Reader\Yaml`` kan je ook de inhoud van een YAML bestand inladen in een specifieke YAML sectie

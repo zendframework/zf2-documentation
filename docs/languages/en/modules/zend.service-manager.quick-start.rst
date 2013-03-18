@@ -3,32 +3,33 @@
 Zend\\ServiceManager Quick Start
 ================================
 
-By default, Zend Framework utilizes ``Zend\ServiceManager`` within the MVC layer. As such, in most cases you'll be
-providing services, invokable classes, aliases, and factories either via configuration or via your module classes.
+By default, Zend Framework utilizes ``Zend\ServiceManager`` within the MVC layer and in various other components.
+As such, in most cases you'll be providing services, invokable classes, aliases, and factories either via
+configuration or via your module classes.
 
 By default, the module manager listener ``Zend\ModuleManager\Listener\ServiceListener`` will do the following:
 
 - For modules implementing ``Zend\ModuleManager\Feature\ServiceProviderInterface``, or the
-  ``getServiceConfig()`` method, it will call that method and merge the configuration.
+  ``getServiceConfig()`` method, it will call that method and merge the retrieved configuration.
 
 - After all modules have been processed, it will grab the configuration from the registered
   ``Zend\ModuleManager\Listener\ConfigListener``, and merge any configuration under the ``service_manager`` key.
 
-- Finally, it will use the merged configuration to configure the ``ServiceManager``.
+- Finally, it will use the merged configuration to configure the ``ServiceManager`` instance.
 
-In most cases, you won't interact with the ``ServiceManager``, other than to provide services to it; your
-application will typically rely on good configuration in the ``ServiceManager`` to ensure that classes are
+In most cases, you won't interact with the ``ServiceManager``, other than to providing services to it; your
+application will typically rely on the configuration of the ``ServiceManager`` to ensure that services are
 configured correctly with their dependencies. When creating factories, however, you may want to interact with the
 ``ServiceManager`` to retrieve other services to inject as dependencies. Additionally, there are some cases where
-you may want to receive the ``ServiceManager`` to lazy-retrieve dependencies; as such, you'll want to implement
-``ServiceLocatorAwareInterface``, and learn the API of the ``ServiceManager``.
+you may want to receive the ``ServiceManager`` to lazy-retrieve dependencies; as such, you may want to implement
+``ServiceLocatorAwareInterface`` and know more details about the API of the ``ServiceManager``.
 
 .. _zend.service-manager.quick-start.config:
 
 Using Configuration
 -------------------
 
-Configuration requires a ``service_manager`` key at the top level of your configuration, with one or more of the
+Configuration requires a ``service_manager`` key at the top level of your configuration, with any of the
 following sub-keys:
 
 - **abstract_factories**, which should be an array of abstract factory class names.
@@ -188,6 +189,7 @@ the array configuration from the previous example.
 
    namespace SomeModule;
 
+   // you may eventually want to implement Zend\ModuleManager\Feature\ServiceProviderInterface
    class Module
    {
        public function getServiceConfig()
@@ -203,71 +205,15 @@ the array configuration from the previous example.
        }
    }
 
-.. _zend.service-manager.quick-start.examples.return-config-instance:
-
-.. rubric:: Returning a Configuration instance
-
-First, let's create a class that holds configuration.
-
-.. code-block:: php
-   :linenos:
-
-   namespace SomeModule\Service;
-
-   use SomeModule\Authentication;
-   use SomeModule\Form;
-   use Zend\ServiceManager\Config;
-   use Zend\ServiceManager\ServiceManager;
-
-   class ServiceConfiguration extends Config
-   {
-       /**
-        * This is hard-coded for brevity.
-        */
-       public function configureServiceManager(ServiceManager $serviceManager)
-       {
-           $serviceManager->setFactory('User', 'SomeModule\Service\UserFactory');
-           $serviceManager->setFactory('UserForm', function ($serviceManager) {
-               $form = new Form\User();
-
-               // Retrieve a dependency from the service manager and inject it!
-               $form->setInputFilter($serviceManager->get('UserInputFilter'));
-               return $form;
-           });
-           $serviceManager->setInvokableClass('UserInputFilter', 'SomeModule\InputFilter\User');
-           $serviceManager->setService('Auth', new Authentication\AuthenticationService());
-           $serviceManager->setAlias('SomeModule\Model\User', 'User');
-           $serviceManager->setAlias('AdminUser', 'User');
-           $serviceManager->setAlias('SuperUser', 'AdminUser');
-           $serviceManager->setShared('UserForm', false);
-       }
-   }
-
-Now, we'll consume it from our Module.
-
-.. code-block:: php
-   :linenos:
-
-   namespace SomeModule;
-
-   // We could implement Zend\ModuleManager\Feature\ServiceProviderInterface.
-   // However, the module manager will still find the method without doing so.
-   class Module
-   {
-       public function getServiceConfig()
-       {
-           return new Service\ServiceConfiguration();
-           // OR:
-           // return 'SomeModule\Service\ServiceConfiguration';
-       }
-   }
-
 .. _zend.service-manager.quick-start.examples.service-manager-aware:
 
 .. rubric:: Creating a ServiceLocator-aware class
 
-By default, the Zend Framework MVC registers an initializer that will inject the ``ServiceManager`` instance, which is an implementation of ``Zend\ServiceManager\ServiceLocatorInterface``, into
-any class implementing ``Zend\ServiceManager\ServiceLocatorAwareInterface``. A simple implementation looks like the following.
+By default, the Zend Framework MVC registers an initializer that will inject the ``ServiceManager`` instance,
+which is an implementation of ``Zend\ServiceManager\ServiceLocatorInterface``, into
+any class implementing ``Zend\ServiceManager\ServiceLocatorAwareInterface``.
+
+A simple implementation looks like following:
 
 .. code-block:: php
    :linenos:
@@ -306,4 +252,3 @@ any class implementing ``Zend\ServiceManager\ServiceLocatorAwareInterface``. A s
            // ...
        }
    }
-
