@@ -7,7 +7,7 @@ Creating tag clouds with Zend\\Tag\\Cloud
 which allow you to create tag clouds for a website, but also supplies you with two abstract classes to create your
 own decorators, to create tag clouds in *PDF* documents for example.
 
-You can instantiate and configure ``Zend\Tag\Cloud`` either programatically or completely via an array or an
+You can instantiate and configure ``Zend\Tag\Cloud`` either programmatically or completely via an array or an
 instance of ``Zend\Config\Config``. The available options are:
 
 - ``cloudDecorator``: defines the decorator for the cloud. Can either be the name of the class which should be
