@@ -35,6 +35,7 @@
    modules/zend.barcode.intro
    modules/zend.barcode.creation
    modules/zend.barcode.objects
+   modules/zend.barcode.objects.details
    modules/zend.barcode.renderers
    modules/zend.cache.storage.adapter
    modules/zend.cache.storage.capabilities
@@ -315,6 +316,7 @@ Zend\\Barcode
         * :doc:`modules/zend.barcode.intro`
         * :doc:`modules/zend.barcode.creation`
         * :doc:`modules/zend.barcode.objects`
+        * :doc:`modules/zend.barcode.objects.details`
         * :doc:`modules/zend.barcode.renderers`
 
 .. _zend.cache:
@@ -707,7 +709,7 @@ Zend\\Soap
         * :doc:`modules/zend.soap.client`
         * :doc:`modules/zend.soap.wsdl`
         * :doc:`modules/zend.soap.auto-discovery`
-        
+
 .. _zend.stdlib:
 
 Zend\\Stdlib
