@@ -14,7 +14,7 @@ het gebruik van een reader class overbodig wordt.
 Elke waarde in de array met configuratiegegevens wordt een property van het ``Zend\Config\Config`` object.
 De array key wordt daarbij gebruikt als property name. Indien de waarde een array is, dan wordt deze
 zelf ook omgezet naar een nieuw ``Zend\Config\Config`` object en ingvuld met de array data.
-Dit gebeurt recursief zodat een hiërarchie met een willekeurig aantal niveaus van configuratiegegevens kan opgebouwd worden.
+Dit gebeurt recursief zodat een hiÃ«rarchie met een willekeurig aantal niveaus van configuratiegegevens kan opgebouwd worden.
 
 ``Zend\Config\Config`` implementeert de `Countable`_ en `Iterator`_ zodat de configuratiegegevens makkelijk
 toegankelijk zijn. Bijgevolg ondersteunen ``Zend\Config\Config`` objecten de `count()`_ functie en *PHP* constructs
@@ -24,7 +24,7 @@ Configuratiegegevens kunnen standaard enkel ingelezen worden via ``Zend\Config\C
 gegevens tracht weg te schrijven (b.v. ``$config->database->host = 'example.com';``) zal er zich een exception voordoen.
 Dit standaardgedrag kan gewijzigd worden via de constructor, waardoor gegevens wel overschrijfbaar worden.
 Wanneer gegevens overschrijfbaar zijn, laat ``Zend\Config\Config`` ook toe om gegevens te verwijderen
-(b.v. ``unset($config->database->host)``). De ``isReadOnly()`` methode kan gebruikt worden om te verifiëren
+(b.v. ``unset($config->database->host)``). De ``isReadOnly()`` methode kan gebruikt worden om te verifiÃ«ren
 of gegevens overschrijfbaar zijn of niet en de ``setReadOnly()`` methode kan gebruikt worden om het
 ``Zend\Config\Config`` object terug in read-only modus te plaatsen en verdere aanpassingen onmogelijk te maken.
 
@@ -38,7 +38,7 @@ of gegevens overschrijfbaar zijn of niet en de ``setReadOnly()`` methode kan geb
    Er zijn third-party open source oplossingen beschikbaar die het mogelijk maken om configuratiegegevens aan te
    maken en te beheren voor verschillende opslagmedia.
 
-Als je twee ``Zend\Config\Config`` objecten hebt, kan je ze samenvoegen in één object met de ``merge()``
+Als je twee ``Zend\Config\Config`` objecten hebt, kan je ze samenvoegen in Ã©Ã©n object met de ``merge()``
 functie. Stel dat je ``$config`` en ``$localConfig`` hebt, dan kan je de gegevens van ``$localConfig`` overzetten
 naar ``$config`` door middel van ``$config->merge($localConfig);``. De items in ``$localConfig`` zullen de
 gelijknamige items in ``$config`` overschrijven.
