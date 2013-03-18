@@ -13,7 +13,7 @@ De factory heeft twee doelen
 
 .. opmerking::
 
-   Een configuratie opslaan gebeurt naar *één* bestand. De factory is zich niet bewust van het feit dat
+   Een configuratie opslaan gebeurt naar *Ã©Ã©n* bestand. De factory is zich niet bewust van het feit dat
    er meerdere configuraties worden samengevoegd en zal deze dus niet afzonderlijk opslaan. Indien je specifieke
    secties van de configuratie in verschillende bestanden wilt opslaan, dan dien je die manueel te splitsen.
 
