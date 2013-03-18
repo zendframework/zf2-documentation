@@ -96,6 +96,98 @@ By using the elements name from the first element as ``token`` for the second el
 the second element is equal with the first element. In the case your user does not enter two identical values, you
 will get a validation error.
 
+.. _zend.validator.set.identical.formelements.fieldset:
+
+Validating a Value From a Fieldset
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Sometimes you will need to validate an input that lives inside a fieldset, and this can be accomplished, see the
+following example.
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Form\Element;
+   use Zend\Form\Fieldset;
+   use Zend\Form\Form;
+   use Zend\InputFilter\Input;
+   use Zend\InputFilter\InputFilter;
+
+   $userFieldset = new Fieldset('user'); // (1)
+   $userFieldset->add(array(
+       'name' => 'email', // (2)
+       'type' => 'Email',
+   ));
+
+   // Let's add one fieldset inside the 'user' fieldset,
+   // so we can see how to manage the token in a different deepness
+   $deeperFieldset = new Fieldset('deeperFieldset'); // (3)
+   $deeperFieldset->add(array(
+       'name'    => 'deeperFieldsetInput', // (4)
+       'type'    => 'Text',
+       'options' => array(
+           'label' => 'What validator are we testing?',
+       ),
+   ));
+   $userFieldset->add($deeperFieldset);
+
+   $signUpForm = new Form('signUp');
+   $signUpForm->add($userFieldset);
+   // Add an input that will validate the 'email' input from 'user' fieldset
+   $signUpForm->add(array(
+       'name' => 'confirmEmail', // (5)
+       'type' => 'Email',
+   ));
+   // Add an input that will validate the 'deeperFieldsetInput' from 'deeperFieldset'
+   // that lives inside the 'user' fieldset
+   $signUpForm->add(array(
+       'name' => 'confirmTestingValidator', // (6)
+       'type' => 'Text',
+   ));
+
+   $inputFilter = new InputFilter();
+   // This will ensure the user enter the same email in 'email' (2) and 'confirmEmail' (5)
+   $inputFilter->add(array(
+       'name' => 'confirmEmail', // references (5)
+       'validators' => array(
+           array(
+               'name' => 'Identical',
+               'options' => array(
+                   // 'user' key references 'user' fieldset (1), and 'email' references 'email' element inside
+                   // 'user' fieldset (2)
+                   'token' => array('user' => 'email'),
+               ),
+           ),
+       ),
+   ));
+   // This will ensure the user enter the same string in 'deeperFieldsetInput' (4)
+   // and 'confirmTestingValidator' (6)
+   $inputFilter->add(array(
+       'name' => 'confirmTestingValidator', // references (6)
+       'validators' => array(
+           array(
+               'name' => 'Identical',
+               'options' => array(
+                   'token' => array(
+                       'user' => array( // references 'user' fieldset (1)
+                           // 'deeperFieldset' key references 'deeperFieldset' fieldset (3)
+                           // 'deeperFieldsetInput' references 'deeperFieldsetInput' element (4)
+                           'deeperFieldset' => 'deeperFieldsetInput'
+                       )
+                  ),
+               ),
+           ),
+       ),
+   ));
+
+   $signUpForm->setInputFilter($inputFilter);
+
+.. note::
+
+   Aways make sure that your token array have just one key per level all the way till the leaf, otherwise you can
+   end up with unexpected results.
+
+
 .. _zend.validator.set.identical.strict:
 
 Strict validation
