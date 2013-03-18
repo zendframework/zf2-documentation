@@ -1,7 +1,7 @@
 .. _zend.json.introduction:
 
-Introduction
-============
+Introduction to Zend\\Json
+==========================
 
 ``Zend\Json`` provides convenience methods for serializing native *PHP* to *JSON* and decoding *JSON* to native
 *PHP*. For more information on *JSON*, `visit the JSON project site`_.

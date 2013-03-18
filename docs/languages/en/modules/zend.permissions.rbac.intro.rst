@@ -1,7 +1,7 @@
 .. _zend.permissions.rbac.introduction:
 
-Introduction
-============
+Introduction to Zend\\Permissions\\Rbac
+=======================================
 
 The ``Zend\Permissions\Rbac`` component provides a lightweight role-based access control implementation based around
 PHP 5.3's SPL RecursiveIterator and RecursiveIteratorIterator. RBAC differs from access control lists (ACL) by putting

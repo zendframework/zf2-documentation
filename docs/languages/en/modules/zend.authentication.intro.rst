@@ -1,7 +1,7 @@
 .. _zend.authentication.introduction:
 
-Introduction
-============
+Introduction to Zend\\Authentication
+====================================
 
 The ``Zend\Authentication`` component provides an *API* for authentication and includes concrete authentication
 adapters for common use case scenarios.
