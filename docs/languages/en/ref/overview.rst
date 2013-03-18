@@ -17,7 +17,7 @@ downloads.
     the framework, and due to major rewrites of many components.
 
 The component structure of Zend Framework 2 is unique; each component is designed with few
-dependencies on other components. ZF2 follows the `SOLID`_ object oriented design principle. This loosely coupled 
+dependencies on other components. ZF2 follows the `SOLID`_ object-oriented design principle. This loosely coupled 
 architecture allows developers to use whichever components they want. We call this a "use-at-will" design. 
 We support `Pyrus`_ and `Composer`_ as installation  and dependency tracking mechanisms for the framework as a whole and 
 for each component, further enhancing this design.

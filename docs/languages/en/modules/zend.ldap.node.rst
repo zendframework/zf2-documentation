@@ -1,6 +1,6 @@
 .. _zend.ldap.node:
 
-Object oriented access to the LDAP tree using Zend\\Ldap\\Node
+Object-oriented access to the LDAP tree using Zend\\Ldap\\Node
 ==============================================================
 
 .. _zend.ldap.node.basic:
