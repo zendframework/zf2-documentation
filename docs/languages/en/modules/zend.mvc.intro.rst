@@ -299,8 +299,15 @@ quick and easy initialization of the Application.
    // get application stack configuration
    $configuration = include 'config/application.config.php';
 
-   // Run the application!
+   // The init() method does something very similar with the previous example.
    Application::init($configuration)->run();
+
+The ``init()`` method will basically do the following:
+   * Grabs the application configuration and pulls from the ``service_manager`` key, creating a ``ServiceManager``
+      instance with it and with the default services shipped with ``Zend\Mvc``;
+   * Create a service named ``ApplicationConfig`` with the application configuration array;
+   * Grabs the ``ModuleManager`` service and load the modules;
+   * ``bootstrap()``\s the ``Application`` and returns its instance;
 
 .. note::
 
@@ -308,9 +315,9 @@ quick and easy initialization of the Application.
    service manager config. This name is reserved to hold the array from application.config.php.
 
    The following services can only be overridden from application.config.php:
-      - ModuleManager
-      - SharedEventManager
-      - EventManager & ``Zend\EventManager\EventManagerInterface``
+      - ``ModuleManager``
+      - ``SharedEventManager``
+      - ``EventManager`` & ``Zend\EventManager\EventManagerInterface``
 
    All other services are configured after module loading, thus can be overridden by modules.
 
