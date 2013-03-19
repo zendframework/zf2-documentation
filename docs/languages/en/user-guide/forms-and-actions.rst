@@ -29,9 +29,9 @@ Create a file called ``AlbumForm.php`` in ``module/Album/src/Album/Form``:
     {
         public function __construct($name = null)
         {
-            // we want to ignore the name passed
+            // in this example we ignore the name passed
             parent::__construct('album');
-            $this->setAttribute('method', 'post');
+
             $this->add(array(
                 'name' => 'id',
                 'attributes' => array(
@@ -67,10 +67,9 @@ Create a file called ``AlbumForm.php`` in ``module/Album/src/Album/Form``:
         }
     }
 
-Within the constructor of ``AlbumForm`` we do several things.  First, we set the name 
-of the form as we call the parent’s constructor.  We then set the form's method, in this case, ``post``.  
-Finally, we create four form elements: the id, title, artist, and submit button. For each item we set 
-various attributes and options, including the label to be displayed.
+Within the constructor of ``AlbumForm`` we do two things.  First, we set the name 
+of the form as we call the parent’s constructor. Second, we create four form elements: the id, title, artist, and submit button. For each item we set 
+various attributes and options, including the label to be displayed. The ``Form`` base class uses the ``post`` method by default.
 
 We also need to set up validation for this form. In Zend Framework 2 this is
 done using an input filter, which can either be standalone or defined within any class
