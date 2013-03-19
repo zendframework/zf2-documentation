@@ -83,7 +83,7 @@ To get you started with modules, we recommend using the ``ZendSkeletonModule`` a
 - Tarball: `https://github.com/zendframework/ZendSkeletonModule/tarball/master`_
 
 Deflate the package, and rename the directory "ZendSkeletonModule" to reflect the name of the new module you want
-to create; when done, move the module into your new project's ``modules/`` directory.
+to create; when done, move the module into your new project's ``module/`` directory.
 
 At this point, it's time to create some functionality.
 
