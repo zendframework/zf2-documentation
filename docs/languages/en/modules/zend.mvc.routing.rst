@@ -200,7 +200,7 @@ needed:
    $route = Hostname::factory(array(
        'route' => ':subdomain.domain.tld',
        'constraints' => array(
-           'subdomain' => 'fw\d{2}'
+           'subdomain' => 'fw\d{2}',
        ),
    ));
 
@@ -214,7 +214,7 @@ defaults.
    $route = Hostname::factory(array(
        'route' => ':subdomain.domain.tld',
        'constraints' => array(
-           'subdomain' => 'fw\d{2}'
+           'subdomain' => 'fw\d{2}',
        ),
        'defaults' => array(
            'type' => 'json',
@@ -238,7 +238,7 @@ want to match, and the "defaults", or parameters you want returned on a match.
        'route' => '/foo',
        'defaults' => array(
            'controller' => 'Application\Controller\IndexController',
-           'action' => 'foo'
+           'action' => 'foo',
        ),
    ));
 
@@ -261,7 +261,7 @@ tokens.
        'verb' => 'post,put',
        'defaults' => array(
            'controller' => 'Application\Controller\IndexController',
-           'action' => 'form-submit'
+           'action' => 'form-submit',
        ),
    ));
 
@@ -288,8 +288,8 @@ the ``TreeRouteStack``.
                 'route' => '/',
                 'defaults' => array(
                     'controller' => 'Application\Controller\IndexController',
-                    'action' => 'index'
-                )
+                    'action' => 'index',
+                ),
             ),
         ),
         'route_plugins' => $routePlugins,
@@ -301,8 +301,8 @@ the ``TreeRouteStack``.
                     'route' => '/blog',
                     'defaults' => array(
                         'controller' => 'Application\Controller\BlogController',
-                        'action' => 'index'
-                    )
+                        'action' => 'index',
+                    ),
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
@@ -311,7 +311,7 @@ the ``TreeRouteStack``.
                         'options' => array(
                             'route' => '/rss',
                             'defaults' => array(
-                                'action' => 'rss'
+                                'action' => 'rss',
                             )
                         ),
                         'may_terminate' => true,
@@ -321,13 +321,13 @@ the ``TreeRouteStack``.
                                 'options' => array(
                                     'route' => '/sub',
                                     'defaults' => array(
-                                        'action' => 'subrss'
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
+                                        'action' => 'subrss',
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
             ),
             'forum' => array(
                 'type' => 'literal',
@@ -335,11 +335,11 @@ the ``TreeRouteStack``.
                     'route' => 'forum',
                     'defaults' => array(
                         'controller' => 'Application\Controller\ForumController',
-                        'action' => 'index'
-                    )
-                )
-            )
-        )
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+        ),
     ));
 
 
@@ -374,14 +374,14 @@ You may use any route type as a child route of a ``Part`` route.
         $routePlugins = new Zend\Mvc\Router\RoutePluginManager();
         $plugins = array(
             'hostname' => 'Zend\Mvc\Router\Http\Hostname',
-            'literal' => 'Zend\Mvc\Router\Http\Literal',
-            'part' => 'Zend\Mvc\Router\Http\Part',
-            'regex' => 'Zend\Mvc\Router\Http\Regex',
-            'scheme' => 'Zend\Mvc\Router\Http\Scheme',
-            'segment' => 'Zend\Mvc\Router\Http\Segment',
+            'literal'  => 'Zend\Mvc\Router\Http\Literal',
+            'part'     => 'Zend\Mvc\Router\Http\Part',
+            'regex'    => 'Zend\Mvc\Router\Http\Regex',
+            'scheme'   => 'Zend\Mvc\Router\Http\Scheme',
+            'segment'  => 'Zend\Mvc\Router\Http\Segment',
             'wildcard' => 'Zend\Mvc\Router\Http\Wildcard',
-            'query' => 'Zend\Mvc\Router\Http\Query',
-            'method' => 'Zend\Mvc\Router\Http\Method'
+            'query'    => 'Zend\Mvc\Router\Http\Query',
+            'method'   => 'Zend\Mvc\Router\Http\Method',
         );
         $foreach ($plugins as $name => $class) {
             $routePlugins->setInvokableClass($name, $class);
@@ -508,15 +508,15 @@ An example of its usage would be
            ),
        ),
        'may_terminate' => true,
-       'route_plugins'  => $routePlugins,
+       'route_plugins' => $routePlugins,
        'child_routes'  => array(
            'query' => array(
                'type' => 'Query',
                'options' => array(
                    'defaults' => array(
-                       'foo' => 'bar'
-                   )
-               )
+                       'foo' => 'bar',
+                   ),
+               ),
            ),
        ),
    ));
@@ -530,9 +530,9 @@ strings using the url view helper.
    $this->url(
        'page/query',
        array(
-           'name'=>'my-test-page',
+           'name'   => 'my-test-page',
            'format' => 'rss',
-           'limit' => 10,
+           'limit'  => 10,
        )
    );
 
@@ -567,9 +567,9 @@ how to set up routes in config files.
                         'route' => '/',
                         'defaults' => array(
                             'controller' => 'Application\Controller\IndexController',
-                            'action' => 'index'
-                        )
-                    )
+                            'action' => 'index',
+                        ),
+                    ),
                 ),
                 // Literal route named "contact"
                 'contact' => array(
@@ -578,12 +578,12 @@ how to set up routes in config files.
                         'route' => 'contact',
                         'defaults' => array(
                             'controller' => 'Application\Controller\ContactController',
-                            'action' => 'form'
-                        )
-                    )
-                )
-            )
-        )
+                            'action' => 'form',
+                        ),
+                    ),
+                ),
+            ),
+        ),
     );
 
 .. rubric:: A complex example with child routes
@@ -601,9 +601,9 @@ how to set up routes in config files.
                         'route' => '/',
                         'defaults' => array(
                             'controller' => 'Application\Controller\IndexController',
-                            'action' => 'index'
-                        )
-                    )
+                            'action' => 'index',
+                        ),
+                    ),
                 ),
                 // Literal route named "blog", with child routes
                 'blog' => array(
@@ -612,7 +612,7 @@ how to set up routes in config files.
                         'route' => '/blog',
                         'defaults' => array(
                             'controller' => 'Application\Controller\BlogController',
-                            'action' => 'index'
+                            'action' => 'index',
                         ),
                     ),
                     'may_terminate' => true,
@@ -623,12 +623,12 @@ how to set up routes in config files.
                             'options' => array(
                                 'route' => '/[:slug]',
                                 'constraints' => array(
-                                    'slug' => '[a-zA-Z0-9_-]+'
+                                    'slug' => '[a-zA-Z0-9_-]+',
                                 ),
                                 'defaults' => array(
-                                    'action' => 'view'
-                                )
-                            )
+                                    'action' => 'view',
+                                ),
+                            ),
                         ),
                         // Literal route for viewing blog RSS feed
                         'rss' => array(
@@ -636,14 +636,14 @@ how to set up routes in config files.
                             'options' => array(
                                 'route' => '/rss',
                                 'defaults' => array(
-                                    'action' => 'rss'
-                                )
-                            )
-                        )
-                    )
-                )
-            )
-        )
+                                    'action' => 'rss',
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+        ),
     );
 
 When using child routes, naming of the routes follows the ``parent/child`` pattern, so to use the child routes
