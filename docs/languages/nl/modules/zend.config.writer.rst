@@ -243,7 +243,7 @@ Zend\\Config\\Writer\\Yaml
 --------------------------
 
 ``Zend\Config\Writer\Yaml`` kan gebruikt worden om een ``Zend\Config\Config`` object weg te schrijven
-naar een YAML string of bestand. Om de YAML writer te kunnen gebruiken, moet je een callback specifiëren uit
+naar een YAML string of bestand. Om de YAML writer te kunnen gebruiken, moet je een callback specifiÃ«ren uit
 een externe PHP library of de `Yaml PECL extension`_ gebruiken.
 
 .. _zend.config.writer.yaml.example:
@@ -285,7 +285,7 @@ Het resultaat is een YAML string die er als volgt uitziet:
 
 De YAML string kan nu met de ``toFile()`` methode worden weggeschreven naar een bestand.
 
-Als je een externe YAML writer wenst te gebruiken, dan moet je een callback functie specifiëren in de
+Als je een externe YAML writer wenst te gebruiken, dan moet je een callback functie specifiÃ«ren in de
 constructor. Stel dat je de `Spyc`_ library wenst te gebruiken:
 
 .. code-block:: php
