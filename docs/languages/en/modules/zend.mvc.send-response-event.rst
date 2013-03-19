@@ -30,7 +30,7 @@ Currently, three listeners are listening to this event at different priorities b
 
 .. _zend.mvc.send-response-event.listeners.table:
 
-.. table:: ``MvcEvent::EVENT_DISPATCH_ERROR`` Listeners for Console context only
+.. table:: ``SendResponseEvent`` Listeners
 
    +---------------------------------------------------------------+---------+--------------+--------------------------------------------------------------+
    |Class                                                          |Priority |Method Called |Description                                                   |
