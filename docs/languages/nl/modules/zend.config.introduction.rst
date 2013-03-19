@@ -7,7 +7,7 @@ Inleiding
 ``Zend\Config`` is ontwikkeld om de toegang tot configuratiegegevens binnen een applicatie te vereenvoudigen.
 Het biedt een genestelde object property-based gebruikersinterface om de configuratiegegevens binnen een applicatie te
 raadplegen. De configuratiegegevens kunnen afkomstig zijn van verschillende media met ondersteuning voor
-hiërarchische opslag. Op dit moment biedt ``Zend\Config`` de mogelijkheid om gegevens in te lezen uit en weg te
+hiÃ«rarchische opslag. Op dit moment biedt ``Zend\Config`` de mogelijkheid om gegevens in te lezen uit en weg te
 schrijven naar .ini, JSON, YAML en XML bestanden.
 
 .. _zend.config.introduction.example.using:
@@ -15,7 +15,7 @@ schrijven naar .ini, JSON, YAML en XML bestanden.
 Zend\\Config\\Config gebruiken met een Reader Class
 ---------------------------------------------------
 
-Normaal gezien wordt er verondersteld dat je één van de :ref:`reader classes <zend.config.reader>` gebruikt
+Normaal gezien wordt er verondersteld dat je Ã©Ã©n van de :ref:`reader classes <zend.config.reader>` gebruikt
 om een configuratiebestand in te lezen, maar als de configuratiegegevens beschikbaar zijn in een *PHP* array, dan
 kan je die gewoon meegeven aan de ``Zend\Config\Config`` constructor en op die manier gebruik maken van de eenvoudige
 object-oriented interface:
@@ -45,9 +45,9 @@ object-oriented interface:
 
 
 Zoals blijkt uit het voorbeeld hierboven, biedt ``Zend\Config\Config`` een genestelde object property syntax om
-de configuratiegegevens, die aan de constuctor werden meegegeven, te raadplegen.
+de configuratiegegevens, die aan de constructor werden meegegeven, te raadplegen.
 
-Naast de object georiënteerde toegang tot de gegevens, biedt ``Zend\Config\Config`` ook een ``get()`` methode die
+Naast de object georiÃ«nteerde toegang tot de gegevens, biedt ``Zend\Config\Config`` ook een ``get()`` methode die
 een bepaalde waarde kan teruggeven indien het gevraagde element niet bestaat. Bijvoorbeeld:
 
 .. code-block:: php
