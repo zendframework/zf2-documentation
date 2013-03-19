@@ -54,6 +54,6 @@ for filtering input data. For such tasks, the :ref:`Zend\\Filter component <zend
 
 .. _`OWASP Top 10 web security risks`: https://www.owasp.org/index.php/Top_10_2010-Main
 .. _`Composer`: http://getcomposer.org/
-.. _`Security Policy`: http://www.framework.zend.com/security/
+.. _`Security Policy`: http://framework.zend.com/security/
 .. _`HTMLPurifier`: http://htmlpurifier.org/
 .. _`Filter`: http://php.net/manual/en/book.filter.php
