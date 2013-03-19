@@ -282,6 +282,38 @@ shipped with the MVC.
    $response = $application->run();
    $response->send();
 
+You can make this even simpler by using the ``init()`` method of the ``Application``. This is a static method for
+quick and easy initialization of the Application.
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Loader\AutoloaderFactory;
+   use Zend\Mvc\Application;
+   use Zend\Mvc\Service\ServiceManagerConfig;
+   use Zend\ServiceManager\ServiceManager;
+
+   // setup autoloader
+   AutoloaderFactory::factory();
+
+   // get application stack configuration
+   $configuration = include 'config/application.config.php';
+
+   // Run the application!
+   Application::init($configuration)->run();
+
+.. note::
+
+   If you use the ``init()`` method, you cannot specify a service with the name of 'ApplicationConfig' in your
+   service manager config. This name is reserved to hold the array from application.config.php.
+
+   The following services can only be overridden from application.config.php:
+      - ModuleManager
+      - SharedEventManager
+      - EventManager & ``Zend\EventManager\EventManagerInterface``
+
+   All other services are configured after module loading, thus can be overridden by modules.
+
 You'll note that you have a great amount of control over the workflow. Using the ``ServiceManager``, you have
 fine-grained control over what services are available, how they are instantiated, and what dependencies are
 injected into them. Using the ``EventManager``'s priority system, you can intercept any of the application events
