@@ -35,7 +35,7 @@ Het modulesysteem bestaat uit:
    De naam van een module in een typische Zend Framework 2 applicatie is gewoon een `PHP namespace`_ en moet bijgevolg
    alle regels volgen die gelden voor de namespace naamgeving.
 
-De aanbevolen structuur voor een typische MVC-geörienteerde ZF2 module is:
+De aanbevolen structuur voor een typische MVC-geÃ¶rienteerde ZF2 module is:
 
 
 ::
