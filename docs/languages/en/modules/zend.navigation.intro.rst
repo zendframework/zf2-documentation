@@ -1,7 +1,7 @@
 .. _zend.navigation.introduction:
 
-Introduction
-============
+Introduction to Zend\\Navigation
+================================
 
 ``Zend\Navigation`` is a component for managing trees of pointers to web pages. Simply put: It can be used for
 creating menus, breadcrumbs, links, and sitemaps, or serve as a model for other navigation related purposes.

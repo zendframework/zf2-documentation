@@ -1,7 +1,7 @@
 .. _zend.filter.introduction:
 
-Introduction
-============
+Introduction to Zend\\Filter
+============================
 
 The ``Zend\Filter`` component provides a set of commonly needed data filters. It also provides a simple filter
 chaining mechanism by which multiple filters may be applied to a single datum in a user-defined order.

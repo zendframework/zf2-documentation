@@ -1,7 +1,7 @@
 .. _zend.ldap.introduction:
 
-Introduction
-============
+Introduction to Zend\\Ldap
+==========================
 
 ``Zend\Ldap\Ldap`` is a class for performing *LDAP* operations including but not limited to binding, searching and
 modifying entries in an *LDAP* directory.

@@ -1,7 +1,7 @@
 .. _zend.tag.introduction:
 
-Introduction
-============
+Introduction to Zend\\Tag
+=========================
 
 ``Zend\Tag`` is a component suite which provides a facility to work with taggable Items. As its base, it provides
 two classes to work with Tags, ``Zend\Tag\Item`` and ``Zend\Tag\ItemList``. Additionally, it comes with the

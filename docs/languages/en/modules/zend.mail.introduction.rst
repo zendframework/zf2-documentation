@@ -1,7 +1,7 @@
 .. _zend.mail.introduction:
 
-Introduction
-============
+Introduction to Zend\\Mail
+==========================
 
 .. _zend.mail.introduction.getting-started:
 
