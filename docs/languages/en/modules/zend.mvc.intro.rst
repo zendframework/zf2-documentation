@@ -152,14 +152,20 @@ defined; it is also triggered for every page request, and should be used for lig
 
 The three ``autoload_*.php`` files are not required, but recommended. They provide the following:
 
-- ``autoload_classmap.php`` should return an array classmap of class name/filename pairs (with the filenames
-  resolved via the ``__DIR__`` magic constant).
+.. table:: ``autoload_*.php`` Files
 
-- ``autoload_function.php`` should return a PHP callback that can be passed to ``spl_autoload_register()``.
-  Typically, this callback should utilize the map returned by ``autoload_classmap.php``.
-
-- ``autoload_register.php`` should register a PHP callback (is typically returned by ``autoload_function.php``
-  with ``spl_autoload_register()``.
+   +--------------------------+--------------------------------------------------------------------------------------+
+   |File                      |Description                                                                           |
+   +==========================+======================================================================================+
+   |``autoload_classmap.php`` |Should return an array classmap of class name/filename pairs (with the filenames      |
+   |                          |resolved via the ``__DIR__`` magic constant).                                         |
+   +--------------------------+--------------------------------------------------------------------------------------+
+   |``autoload_function.php`` |Should return a PHP callback that can be passed to ``spl_autoload_register()``.       |
+   |                          |Typically, this callback should utilize the map returned by ``autoload_classmap.php``.|
+   +--------------------------+--------------------------------------------------------------------------------------+
+   |``autoload_register.php`` |should register a PHP callback (is typically returned by ``autoload_function.php``    |
+   |                          |with ``spl_autoload_register()``.                                                     |
+   +--------------------------+--------------------------------------------------------------------------------------+
 
 The point of these three files is to provide reasonable default mechanisms for autoloading the classes contained in
 the module, thus providing a trivial way to consume the module without requiring ``Zend\ModuleManager`` (e.g., for
