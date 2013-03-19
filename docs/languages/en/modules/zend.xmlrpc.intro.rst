@@ -1,7 +1,7 @@
 .. _zend.xmlrpc.introduction:
 
-Introduction
-============
+Introduction to Zend\\XmlRpc
+============================
 
 From its `home page`_, *XML-RPC* is described as a "...remote procedure calling using *HTTP* as the transport and
 *XML* as the encoding. *XML-RPC* is designed to be as simple as possible, while allowing complex data structures to

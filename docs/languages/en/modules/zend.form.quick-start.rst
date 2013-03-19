@@ -519,6 +519,7 @@ configuration for an input filter.
 
    use Zend\Form\Fieldset;
    use Zend\InputFilter\InputFilterProviderInterface;
+   use Zend\Validator;
 
    class SenderFieldset extends Fieldset implements InputFilterProviderInterface
    {
