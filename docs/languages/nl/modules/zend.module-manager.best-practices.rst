@@ -36,7 +36,7 @@ Er zijn enkele aanbevelingen waar je rekening mee dient te houden als je een ZF2
   conflicten te vermijden met services van andere modules. Bijvoorbeeld: de database adapter van MyModule kan
   beter "MyModule\DbAdapter" genoemd worden dan "DbAdapter". Als je een service wenst te delen met een andere module,
   onthou dan dat de Service Manager "alias" feature kan gebruikt worden om in een samengevoegde configuratie
-  factories te definiï¿½ren van individuele modules. In een ideale wereld definiï¿½ren modules hun eigen service dependencies,
+  factories te definiëren van individuele modules. In een ideale wereld definiëren modules hun eigen service dependencies,
   maar aliases kunnen gedefinieerd worden op applicatie niveau zodat je zeker kan zijn dat gemeenschappelijke services
   in aparte modules refereren naar dezelfde instantie.
 
