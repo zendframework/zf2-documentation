@@ -1,7 +1,7 @@
 .. _zend.server.introduction:
 
-Introduction
-============
+Introduction to Zend\\Server
+============================
 
 The ``Zend\Server`` family of classes provides functionality for the various server classes, including
 ``Zend\XmlRpc\Server`` and ``Zend\Json\Server``. ``Zend\Server\Server`` provides an interface that mimics *PHP* 5's
