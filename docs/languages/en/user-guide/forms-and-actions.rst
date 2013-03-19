@@ -31,7 +31,6 @@ Create a file called ``AlbumForm.php`` in ``module/Album/src/Album/Form``:
         {
             // we want to ignore the name passed
             parent::__construct('album');
-            $this->setAttribute('method', 'post');
             $this->add(array(
                 'name' => 'id',
                 'attributes' => array(
@@ -68,7 +67,7 @@ Create a file called ``AlbumForm.php`` in ``module/Album/src/Album/Form``:
     }
 
 Within the constructor of ``AlbumForm`` we do several things.  First, we set the name 
-of the form as we call the parent’s constructor.  We then set the form's method, in this case, ``post``.  
+of the form as we call the parent’s constructor.  We form's method defaults to ``post``.
 Finally, we create four form elements: the id, title, artist, and submit button. For each item we set 
 various attributes and options, including the label to be displayed.
 
