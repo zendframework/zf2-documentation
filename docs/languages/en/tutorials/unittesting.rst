@@ -140,8 +140,8 @@ And a file called ``Bootstrap.php``, also under ``zf2-tutorial/module/Album/test
                 if (defined('ZF2_PATH')) {
                     $zf2Path = ZF2_PATH;
                 } else {
-                    if (is_dir($vendorPath . '/ZF2/library')) {
-                        $zf2Path = $vendorPath . '/ZF2/library';
+                    if (is_dir($vendorPath . '/zendframework/zendframework/library')) {
+                        $zf2Path = $vendorPath . '/zendframework/zendframework/library';
                     }
                 }
             }
