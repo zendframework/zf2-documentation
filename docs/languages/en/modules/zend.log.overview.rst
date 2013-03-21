@@ -13,10 +13,10 @@ objects:
 
 - A Writer (inherits from ``Zend\Log\Writer\AbstractWriter``) is responsible for saving data to storage.
 
-- A Filter (implements ``Zend\Log\Filter``) blocks log data from being saved. A filter is applied to an  individual
+- A Filter (implements ``Zend\Log\Filter\FilterInterface``) blocks log data from being saved. A filter is applied to an  individual
   writer. Filters can be chained.
 
-- A Formatter (inheriting from ``Zend\Log\Formatter\AbstractFormatter``) can format the log data before it is
+- A Formatter (implements ``Zend\Log\Formatter\FormatterInterface``) can format the log data before it is
   written by a Writer. Each Writer has exactly one Formatter.
 
 .. _zend.log.overview.creating-a-logger:
