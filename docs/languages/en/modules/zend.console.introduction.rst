@@ -155,6 +155,9 @@ We will now add ``resetpassword`` action to ``Application\Controller\IndexContro
             $userEmail   = $request->getParam('userEmail');
             $verbose     = $request->getParam('verbose');
 
+            // make verbose true in case shortened parameter is given
+            $verbose = $verbose !== null;
+
             // reset new password
             $newPassword = Rand::getString(16);
 
@@ -176,7 +179,8 @@ wildcard route or a 3rd party module might erroneously route some requests to ou
 sure that the request is always coming from a Console environment.
 
 All console arguments supplied by the user are accessible via ``$request->getParam()`` method. Flags will be represented
-by a booleans, where ``true`` means a flag has been used and ``false`` otherwise.
+by a booleans, where ``true`` means a fully qualified flag has been used (``--verbose``),
+``false`` means shortened flag has been used (``-v``) and ``null`` otherwise.
 
 When our action has finished working it returns a simple ``string`` that will be shown to the user in console window.
 
