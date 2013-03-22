@@ -47,7 +47,7 @@ Accessing routing parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The parameters returned when routing completes are wrapped in a ``Zend\Mvc\Router\RouteMatch`` object. This object
-is detailed in the section on routing.
+is detailed in the section on :ref:`Routing <zend.mvc.routing>`.
 
 Within your controller, if you implement ``InjectApplicationEventInterface`` (as both ``AbstractActionController``
 and ``AbstractRestfulController`` do), you can access this object from the attached ``MvcEvent``:
@@ -94,7 +94,8 @@ configuration here, or setup event listeners for you module here. The ``onBootst
 registering event listeners.
 
 The base ``Application`` class shipped with the framework has an ``EventManager`` associated with it, and once the
-modules are initialized, it triggers a "bootstrap" event, with a ``getApplication()`` method on the event.
+modules are initialized, it triggers the :ref:`bootstrap <zend.mvc.mvc-event.bootstrap>` event, with a
+``getApplication()`` method on the event.
 
 So, one way to accomplish module-specific listeners is to listen to that event, and register listeners at that
 time. As an example:
@@ -119,10 +120,9 @@ time. As an example:
        }
    }
 
-The above demonstrates several things. First, it demonstrates a listener on the application's "bootstrap" event
-(the ``onBootstrap()`` method). Second, it demonstrates that listener, and how it can be used to register listeners
-with the application. It grabs the ``Application`` instance; from the ``Application``, it is able to grab the
-attached service manager and configuration. These are then used to retrieve the view, configure some helpers, and
-then register a listener aggregate with the application event manager.
-
-
+The above demonstrates several things. First, it demonstrates a listener on the application's
+:ref:`bootstrap <zend.mvc.mvc-event.bootstrap>` event (the ``onBootstrap()`` method). Second, it demonstrates that
+listener, and how it can be used to register listeners with the application. It grabs the ``Application`` instance;
+from the ``Application``, it is able to grab the attached service manager and configuration. These are then used to
+retrieve the view, configure some helpers, and then register a listener aggregate with the application event
+manager.
