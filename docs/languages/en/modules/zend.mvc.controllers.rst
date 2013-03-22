@@ -233,6 +233,8 @@ The composed ``EventManager`` will be configured to listen on the following cont
 
 - ``Zend\Mvc\Controller\AbstractActionController``
 
+- ``Zend\Mvc\Controller\AbstractController``
+
 Additionally, if you extend the class, it will listen on the extending class's name.
 
 .. _zend.mvc.controllers.restful-controller:
@@ -286,8 +288,8 @@ The composed ``EventManager`` will be configured to listen on the following cont
 
 - ``Zend\Stdlib\DispatchableInterface``
 
-- ``Zend\Mvc\Controller\AbstractActionController``
+- ``Zend\Mvc\Controller\AbstractRestfulController``
+
+- ``Zend\Mvc\Controller\AbstractController``
 
 Additionally, if you extend the class, it will listen on the extending class's name.
-
-
