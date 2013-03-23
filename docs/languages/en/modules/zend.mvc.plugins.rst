@@ -15,6 +15,8 @@ The built-in plugins are:
 
 - ``Zend\Mvc\Controller\Plugin\Forward``
 
+- ``Zend\Mvc\Controller\Plugin\Identity``
+
 - ``Zend\Mvc\Controller\Plugin\Layout``
 
 - ``Zend\Mvc\Controller\Plugin\Params``
@@ -251,6 +253,96 @@ As an example:
        'somekey' => $somevalue,
        'foo'     => $foo,
    );
+
+.. _zend.mvc.controller-plugins.identity:
+
+Identity Plugin
+---------------
+
+Sometimes you will need to retrieve an identity from ``Zend\Authentication\AuthenticationService`` within your
+controllers, to do that you would need something like the following:
+
+.. code-block:: php
+    :linenos:
+
+    $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+    if ($authService->hasIdentity()) {
+        $identity = $authService->getIdentity();
+    }
+
+The ``Identity`` plugin makes this slightly simpler, take a look in the following example:
+
+.. code-block:: php
+    :linenos:
+
+    // $identity will have the same value as in the previous example
+    $identity = $this->plugin('identity');
+
+    // or even simpler
+    $identity = $this->identity();
+
+In order for the ``Identity`` plugin to work it needs a ``Zend\Authentication\AuthenticationService`` instance
+attached. The plugin will look for a service by the name ``Zend\Authentication\AuthenticationService`` in the
+``ServiceManager``, so the easier way to get the instance attached is providing this service through the
+``ServiceManager``:
+
+.. code-block:: php
+    :linenos:
+
+    // In a configuration file...
+    return array(
+        'service_manager' => array(
+            'invokables' => array(
+                'Zend\Authentication\AuthenticationService' => 'Zend\Authentication\AuthenticationService',
+            ),
+        ),
+    );
+
+Or you use the ``setAuthenticationService()`` method to attached the instance:
+
+.. code-block:: php
+    :linenos:
+
+    namespace MyModule
+
+    class Module
+    {
+        /**
+        * @param  \Zend\Mvc\MvcEvent $e The MvcEvent instance
+        * @return void
+        */
+        public function onBootstrap($e)
+        {
+            $app            = $e->getApplication();
+            $sm             = $e->getServiceManager();
+            $identityPlugin = $sm->get('ControllerPluginManager')->get('identity');
+            $authService    = $sm->get('MyModule\Authentication\MyAuth');
+            // Keep in mind that $authService must be an instance of Zend\Authentication\AuthenticationService
+            // or any class that extends it
+            $identityPlugin->setAuthenticationService($authService);
+        }
+    }
+
+Using the previous example you can customize your authentication service before attach it into the plugin. You also
+don't need to set the service as a invokable like the first example.
+
+The ``Identity`` plugin exposes two methods:
+
+.. function:: setAuthenticationService(Zend\\Authentication\\AuthenticationService $authenticationService)
+   :noindex:
+
+   Sets the authentication service instance to be used by the plugin.
+
+   :rtype: ``void``
+
+
+.. function:: getAuthenticationService()
+   :noindex:
+
+   Retrieves the current authentication service instance if any is attached.
+
+   :rtype: ``Zend\Authentication\AuthenticationService``
+
 
 .. _zend.mvc.controller-plugins.layout:
 
