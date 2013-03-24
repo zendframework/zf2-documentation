@@ -133,8 +133,8 @@ The easiest way of start using your new custom element in your forms is to use t
 
     $form = new Zend\Form\Form();
     $form->add(array(
-        'name' => 'custom',
-        'type' => 'Application\Form\Element\CustomElement',
+        'name' => 'phone',
+        'type' => 'Application\Form\Element\Phone',
     ));
 
 Or, if you are extending ``Zend\Form\Form``:
@@ -153,8 +153,8 @@ Or, if you are extending ``Zend\Form\Form``:
             parent::__construct($name);
 
             $this->add(array(
-                'name' => 'custom',
-                'type' => 'Application\Form\Element\CustomElement',
+                'name' => 'phone',
+                'type' => 'Application\Form\Element\Phone',
             ))
         }
     }
@@ -183,7 +183,7 @@ First, add the custom element to the plugin manager, in your ``Module.php`` clas
         {
             return array(
                 'invokables' => array(
-                    'customelement' => 'Application\Form\Element\CustomElement'
+                    'phone' => 'Application\Form\Element\Phone'
                 )
             );
         }
@@ -197,7 +197,7 @@ Or, you can do the same in your ``module.config.php`` file:
     return array(
         'form_elements' => array(
             'invokables' => array(
-                'customelement' => 'Application\Form\Element\CustomElement'
+                'phone' => 'Application\Form\Element\Phone'
             )
         )
     );
@@ -221,8 +221,8 @@ but rather in the ``init()`` method:
         public function init()
         {
             $this->add(array(
-                'name' => 'custom',
-                'type' => 'customelement',
+                'name' => 'phone',
+                'type' => 'Phone',
             ))
         }
     }
