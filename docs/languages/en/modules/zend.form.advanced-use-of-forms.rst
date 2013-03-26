@@ -45,7 +45,7 @@ Creating custom elements
 To create a custom form element, make it extend the ``Zend\Form\Element`` class, or if you need a more specific
 one, extend one of the ``Zend\Form\Element`` classes.
 
-In the following will we show how to create a custom ``Phone`` element for entering phone numbers. It will extend
+In the following we will show how to create a custom ``Phone`` element for entering phone numbers. It will extend
 ``Zend\Form\Element`` class and provide some default input rules.
 
 Our custom phone element could look something like this:
