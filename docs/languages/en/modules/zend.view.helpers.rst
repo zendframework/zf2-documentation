@@ -66,6 +66,15 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
 - :ref:`Partial <zend.view.helpers.initial.partial>`
 - :ref:`Placeholder <zend.view.helpers.initial.placeholder>`
 
+.. note::
+
+   View helpers related to **Internationalization** are documented in the
+   :ref:`I18n View Helpers <zend.i18n.view.helpers>` chapter.
+
+.. note::
+
+   View helpers related to **navigation** are documented in the
+   :ref:`Navigation View Helpers <zend.navigation.view.helpers>` chapter.
 
 .. include:: zend.view.helpers.url.rst
 .. include:: zend.view.helpers.html-list.rst
