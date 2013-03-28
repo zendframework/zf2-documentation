@@ -68,7 +68,7 @@ So to translate all validation messages to German for example, all you have to d
 
    $translator = new Zend\I18n\Translator\Translator();
    $translator->addTranslationFile(
-       'phpArray'
+       'phpArray',
        'resources/languages/en.php',
        'default',
        'en_US'
