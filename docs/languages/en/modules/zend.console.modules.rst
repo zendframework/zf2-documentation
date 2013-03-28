@@ -15,8 +15,8 @@ supports two types of information: :ref:`application banners <banner>` and :ref:
 Application banner
 ------------------
 
-The first time you run your ZF2 application in a Console, it will not be able to display any usage information or
-present itself. You will see something like this:
+To run the console ZF 2 component, go to your `public` folder, and type `php index.php`. By default, it will simply
+output the current ZF 2 version, like this:
 
 .. image:: ../images/zend.console.empty.png
    :width: 610
@@ -40,23 +40,23 @@ our Module class has to implement ``Zend\ModuleManager\Feature\ConsoleBannerProv
         /**
          * This method is defined in ConsoleBannerProviderInterface
          */
-        public function getConsoleBanner(Console $console){
-            return
-                "==------------------------------------------------------==\n" .
-                "        Welcome to my ZF2 Console-enabled app             \n" .
-                "==------------------------------------------------------==\n" .
-                "Version 0.0.1\n"
-            ;
+        public function getConsoleBanner(Console $console)
+        {
+            return 'MyModule 0.0.1';
         }
     }
+
+As you can see, the application banner should be a single line string that returns the module's name and (if available)
+its current version.
+
+If several modules define their own banner, they are all shown one after the other (they will be joined together in
+the order modules are loaded). This way, it makes it very easy to spot which modules provide console commands.
 
 After running our application, we'll see our newly created banner.
 
 .. image:: ../images/zend.console.banner.png
    :width: 614
    :align: center
-
-Console banners can be provided by 1 or more modules. They will be joined together in the order modules are loaded.
 
 Let's create and load second module that provides a banner.
 
@@ -91,7 +91,7 @@ User module will add-on a short info about itself:
          * This method is defined in ConsoleBannerProviderInterface
          */
         public function getConsoleBanner(Console $console){
-            return "User Module BETA1";
+            return "User Module 0.0.1";
         }
     }
 
@@ -103,8 +103,8 @@ Because ``User`` module is loaded after ``Application`` module, the result will 
 
 .. note::
 
-    Application banner is displayed as-is - no trimming or other adjustments will be performed on the text. If you'd
-    like to fit your banner inside console window, you could check its width with ``$console->getWidth()``.
+    Application banner is displayed as-is - no trimming or other adjustments will be performed on the text. As you can see,
+    banners are also automatically colorized as blue.
 
 .. _usage:
 
@@ -132,7 +132,8 @@ In order to display usage information, our Module class has to implement
         /**
          * This method is defined in ConsoleUsageProviderInterface
          */
-        public function getConsoleUsage(Console $console){
+        public function getConsoleUsage(Console $console)
+        {
             return array(
                 'show stats'             => 'Show application statistics',
                 'run cron'               => 'Run automated jobs',
@@ -150,6 +151,10 @@ This will display the following information:
 Similar to :ref:`application banner <banner>` multiple modules can provide usage information,
 which will be joined together and displayed to the user. The order in which usage information is displayed is the
 order in which modules are loaded.
+
+As you can see, Console component also prepended each module's usage by the module's name. This helps to visually
+separate each modules (this can be useful when you have multiple modules that provide commands). By default, the
+component colorizes those in red.
 
 .. note::
 
@@ -169,7 +174,8 @@ or an array of strings, for example:
 .. code-block:: php
     :linenos:
 
-    public function getConsoleUsage(Console $console){
+    public function getConsoleUsage(Console $console)
+    {
         return 'User module expects exactly one argument - user name. It will display information for this user.';
     }
 
@@ -195,7 +201,8 @@ ways of running the application.
 .. code-block:: php
     :linenos:
 
-    public function getConsoleUsage(Console $console){
+    public function getConsoleUsage(Console $console)
+    {
          return array(
             'delete user <userEmail>'        => 'Delete user with email <userEmail>',
             'disable user <userEmail>'       => 'Disable user with email <userEmail>',
@@ -305,3 +312,12 @@ You can use mix together all of the above styles to provide comprehensive usage 
 .. image:: ../images/zend.console.usage6.png
    :width: 752
    :align: center
+
+
+Best practices
+--------------
+
+As a reminder, here are the best practices when providing usage for your commands:
+
+1. Your `getConsoleBanner` should only return a one-line string containing the module's name and its version (if available).
+2. Your `getConsoleUsage` should not return module's name: it is prepended automatically for you by Console component.
