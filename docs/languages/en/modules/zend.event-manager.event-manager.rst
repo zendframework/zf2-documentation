@@ -145,7 +145,7 @@ instance, via dependency injection), we could change the above example to attach
 
    // Later, instantiate Foo:
    $foo = new Foo();
-   $foo->getEventManager()->setSharedEventCollection($events);
+   $foo->getEventManager()->setSharedManager($events);
 
    // And we can still trigger the above event:
    $foo->bar('baz', 'bat');
