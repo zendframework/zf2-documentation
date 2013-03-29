@@ -502,7 +502,8 @@ called, the default request method is ``GET`` (see the above example).
    use Zend\Http\Request;
 
    $request = new Request();
-   $client = new Client('http://example.org');
+   $request->setUri('http://example.org');
+   $client = new Client();
 
    // Performing a POST request
    $request->setMethod(Request::METHOD_POST);
