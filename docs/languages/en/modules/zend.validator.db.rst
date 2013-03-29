@@ -14,15 +14,19 @@ Supported options for Zend\\Validator\\Db\\*
 The following options are supported for ``Zend\Validator\Db\NoRecordExists`` and
 ``Zend\Validator\Db\RecordExists``:
 
-- **adapter**: The database adapter which will be used for the search.
+- **adapter**: The database adapter that will be used for the search.
 
-- **exclude**: Sets records which will be excluded from the search.
+- **exclude**: Sets records that will be excluded from the search.
 
-- **field**: The database field within this table which will be searched for the record.
+- **field**: The database field within this table that will be searched for the record.
 
-- **schema**: Sets the schema which will be used for the search.
+- **schema**: Sets the schema that will be used for the search.
 
-- **table**: The table which will be searched for the record.
+- **table**: The table that will be searched for the record.
+
+.. note::
+   In ZF1 it was possible to set an application wide default database adapter that was consumed by this class. As
+   this is not possible in ZF2, it is now always required to supply an adapter.
 
 .. _zend.validator.db.basic-usage:
 
@@ -37,8 +41,9 @@ An example of basic usage of the validators:
    //Check that the email address exists in the database
    $validator = new Zend\Validator\Db\RecordExists(
        array(
-           'table' => 'users',
-           'field' => 'emailaddress'
+           'table'   => 'users',
+           'field'   => 'emailaddress',
+           'adapter' => $dbAdapter
        )
    );
 
@@ -60,8 +65,9 @@ of ``$emailaddress`` in the specified column, then an error message is displayed
    //Check that the username is not present in the database
    $validator = new Zend\Validator\Db\NoRecordExists(
        array(
-           'table' => 'users',
-           'field' => 'username'
+           'table'   => 'users',
+           'field'   => 'username',
+           'adapter' => $dbAdapter
        )
    );
    if ($validator->isValid($username)) {
@@ -125,11 +131,12 @@ useful for testing against composite keys.
    :linenos:
 
    $email     = 'user@example.com';
-   $clause    = $db->quoteInto('email = ?', $email);
+   $clause    = $dbAdapter->quoteIdentifier('email') . ' = ' . $dbAdapter->quoteValue($email);
    $validator = new Zend\Validator\Db\RecordExists(
        array(
            'table'   => 'users',
            'field'   => 'username',
+           'adapter' => $dbAdapter,
            'exclude' => $clause
        )
    );
