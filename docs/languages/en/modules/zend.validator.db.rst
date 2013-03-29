@@ -188,7 +188,7 @@ of records used for validation.
    $select = new Zend\Db\Sql\Select();
    $select->from('users')
           ->where->equalTo('id', $user_id)
-          ->where->equalTo('email, $email);
+          ->where->equalTo('email', $email);
 
    $validator = new Zend\Validator\Db\RecordExists($select);
    
