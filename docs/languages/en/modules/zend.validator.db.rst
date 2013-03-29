@@ -154,25 +154,6 @@ useful for testing against composite keys.
 The above example will check the 'users' table to ensure that only a record with both the username ``$username``
 and with the email ``$email`` is valid.
 
-.. _zend.validator.db.database-adapters:
-
-Database Adapters
------------------
-
-You can also specify an adapter. This will allow you to work with applications using multiple database adapters, or
-where you have not set a default adapter. As in the example below:
-
-.. code-block:: php
-   :linenos:
-
-   $validator = new Zend\Validator\Db\RecordExists(
-       array(
-           'table' => 'users',
-           'field' => 'id',
-           'adapter' => $dbAdapter
-       )
-   );
-
 .. _zend.validator.db.database-schemas:
 
 Database Schemas
