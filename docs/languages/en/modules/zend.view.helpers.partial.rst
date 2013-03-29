@@ -65,7 +65,7 @@ Which would then render:
    - **Object implementing toArray() method**. If an object is passed an has a ``toArray()`` method, the results of
      ``toArray()`` will be assigned to the view object as view variables.
 
-   - **Standard object**. Any other object will assign the results of ``object_get_vars()`` (essentially all public
+   - **Standard object**. Any other object will assign the results of ``get_object_vars()`` (essentially all public
      properties of the object) to the view object.
 
    If your model is an object, you may want to have it passed **as an object** to the partial script, instead of
