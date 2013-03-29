@@ -192,4 +192,38 @@ with ``table`` and ``schema`` keys. As in the example below:
        )
    );
 
+.. _zend.validator.db.using.a.select.object:
 
+Using a Select object
+-------------------
+
+It is also possible to supply the validators with a ``Zend\Db\Sql\Select`` object in place of options.
+The validator then uses this object instead of building its own. This allows for greater flexibility with selection
+of records used for validation.
+
+.. code-block:: php
+   :linenos:
+
+   $select = new Zend\Db\Sql\Select();
+   $select->from('users')
+          ->where->equalTo('id', $user_id)
+          ->where->equalTo('email, $email);
+
+   $validator = new Zend\Validator\Db\RecordExists($select);
+   
+   // We still need to set our database adapter
+   $validator->setAdapter($dbAdapter);
+   
+   // Validation is then performed as usual
+   if ($validator->isValid($username)) {
+       // username appears to be valid
+   } else {
+       // username is invalid; print the reason
+       $messages = $validator->getMessages();
+       foreach ($messages as $message) {
+           echo "$message\n";
+       }
+   }
+
+   The above example will check the 'users' table to ensure that only a record with both the username ``$username``
+   and with the email ``$email`` is valid.
