@@ -551,7 +551,6 @@ Now, let's create a ``ListenerAggregateInterface`` that can handle caching for u
    :linenos:
 
    use Zend\Cache\Cache;
-   use Zend\EventManager\EventCollection;
    use Zend\EventManager\ListenerAggregateInterface;
    use Zend\EventManager\EventInterface;
 
