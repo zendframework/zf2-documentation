@@ -29,8 +29,8 @@ The components of the view layer are as follows:
 - The **View** consists of strategies that map the current Request to a Renderer, and strategies for
   injecting the result of rendering to the Response.
 
-- **Rendering Strategies** listen to the ``Zend\View\ViewEvent::EVENT_RENDERER`` event of the View and decide which Renderer should be selected 
-  based on the Request or other criteria.
+- **Rendering Strategies** listen to the ``Zend\View\ViewEvent::EVENT_RENDERER`` event of the View and decide which
+  Renderer should be selected based on the Request or other criteria.
 
 - **Response Strategies** are used to inject the Response object with the results of rendering.
   That may also include taking actions such as setting Content-Type headers.
@@ -228,7 +228,9 @@ a couple of sidebars; one of the sidebars may include content from multiple View
            // get the article from the persistence layer, etc...
 
            $view = new ViewModel();
-           $view->setTemplate('content/article/view'); // this is not needed since it matches "module/controller/action"
+
+           // this is not needed since it matches "module/controller/action"
+           $view->setTemplate('content/article/view');
 
            $articleView = new ViewModel(array('article' => $article));
            $articleView->setTemplate('content/article');
