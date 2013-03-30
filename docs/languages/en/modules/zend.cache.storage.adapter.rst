@@ -39,7 +39,7 @@ Quick Start
 -----------
 
    Caching adapters can either be created from the provided ``Zend\Cache\StorageFactory`` factory, or by simply
-   instantiating one of the ``Zend\Cache\Storage\Adapter\*``\ classes.
+   instantiating one of the ``Zend\Cache\Storage\Adapter\*`` classes.
 
    To make life easier, the ``Zend\Cache\StorageFactory`` comes with a ``factory`` method to create an adapter and
    create/add all requested plugins at once.
@@ -96,7 +96,7 @@ Basic Configuration Options
    +--------------+-------------------------+----------------+-------------------------------------------------+
    |namespace     |``string``               |"zfcache"       |The "namespace" in which cache items will live   |
    +--------------+-------------------------+----------------+-------------------------------------------------+
-   |key_pattern   |``null`` ``string``      |``null``        |Pattern against which to validate cache keys     |
+   |key_pattern   |``null``|``string``      |``null``        |Pattern against which to validate cache keys     |
    +--------------+-------------------------+----------------+-------------------------------------------------+
    |readable      |``boolean``              |``true``        |Enable/Disable reading data from cache           |
    +--------------+-------------------------+----------------+-------------------------------------------------+
