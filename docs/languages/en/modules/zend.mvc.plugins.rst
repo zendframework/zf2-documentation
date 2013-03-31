@@ -346,6 +346,32 @@ The ``Identity`` plugin exposes two methods:
 
 .. _zend.mvc.controller-plugins.layout:
 
+Identity Plugin
+--------------
+
+The ``Identity`` plugin allows for getting the identity from the ``AuthenticationService``.
+
+For the ``Identity`` plugin to work, a ``Zend\Authentication\AuthenticationService`` name or alias must be
+defined and recognized by the ``serviceLocator``.
+
+``Identity`` returns the identity in the ``AuthenticationService`` or `null` if no identity is available.
+
+As an example:
+
+.. code-block:: php
+   :linenos:
+
+   public function testAction()
+   {
+       if ($user = $this->identity()) {
+            // someone is logged !
+       } else {
+            // not logged in
+       }
+   }
+
+.. _zend.mvc.controller-plugins.identity:
+
 Layout Plugin
 -------------
 
