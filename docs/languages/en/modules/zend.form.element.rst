@@ -90,6 +90,8 @@ hint to the view layer how it might render the item.
 
    :rtype: array
 
+.. _zend.form.element.methods.set-options:
+
 .. function:: setOptions(array $options)
    :noindex:
 
