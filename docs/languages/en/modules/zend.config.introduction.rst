@@ -3,10 +3,8 @@
 介绍
 ============
 
-``Zend\Config`` is designed to simplify access to configuration data within applications. It
-provides a nested object property-based user interface for accessing this configuration data within application
-code. The configuration data may come from a variety of media supporting hierarchical data storage. Currently,
-``Zend\Config`` provides adapters that read and write configuration data stored in .ini, JSON, YAML and XML files.
+``Zend\Config``被设计用来简单的读取应用中的配置信息。它提供一个基于属性的嵌套型对象用户接口，以便存取应用中的配置信息。
+这里说的配置信息可以是多种格式的。当前``Zend\Config``支持读写.ini, JSON, YAML和XML文件格式。
 
 .. _zend.config.introduction.example.using:
 
