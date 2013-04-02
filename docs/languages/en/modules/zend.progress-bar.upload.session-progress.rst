@@ -3,8 +3,8 @@
 Session Progress Handler
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``Zend\ProgressBar\Upload\SessionProgress`` handler uses the the PHP 5.4 `Session Progress`_
-feature for tracking upload progress.
+The ``Zend\ProgressBar\Upload\SessionProgress`` handler uses the PHP 5.4 `Session Progress`_ feature for tracking
+upload progress.
 
 .. note::
 

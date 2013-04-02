@@ -14,15 +14,19 @@ Supported options for Zend\\Validator\\Db\\*
 The following options are supported for ``Zend\Validator\Db\NoRecordExists`` and
 ``Zend\Validator\Db\RecordExists``:
 
-- **adapter**: The database adapter which will be used for the search.
+- **adapter**: The database adapter that will be used for the search.
 
-- **exclude**: Sets records which will be excluded from the search.
+- **exclude**: Sets records that will be excluded from the search.
 
-- **field**: The database field within this table which will be searched for the record.
+- **field**: The database field within this table that will be searched for the record.
 
-- **schema**: Sets the schema which will be used for the search.
+- **schema**: Sets the schema that will be used for the search.
 
-- **table**: The table which will be searched for the record.
+- **table**: The table that will be searched for the record.
+
+.. note::
+   In ZF1 it was possible to set an application wide default database adapter that was consumed by this class. As
+   this is not possible in ZF2, it is now always required to supply an adapter.
 
 .. _zend.validator.db.basic-usage:
 
@@ -37,8 +41,9 @@ An example of basic usage of the validators:
    //Check that the email address exists in the database
    $validator = new Zend\Validator\Db\RecordExists(
        array(
-           'table' => 'users',
-           'field' => 'emailaddress'
+           'table'   => 'users',
+           'field'   => 'emailaddress',
+           'adapter' => $dbAdapter
        )
    );
 
@@ -60,8 +65,9 @@ of ``$emailaddress`` in the specified column, then an error message is displayed
    //Check that the username is not present in the database
    $validator = new Zend\Validator\Db\NoRecordExists(
        array(
-           'table' => 'users',
-           'field' => 'username'
+           'table'   => 'users',
+           'field'   => 'username',
+           'adapter' => $dbAdapter
        )
    );
    if ($validator->isValid($username)) {
@@ -125,11 +131,12 @@ useful for testing against composite keys.
    :linenos:
 
    $email     = 'user@example.com';
-   $clause    = $db->quoteInto('email = ?', $email);
+   $clause    = $dbAdapter->quoteIdentifier('email') . ' = ' . $dbAdapter->quoteValue($email);
    $validator = new Zend\Validator\Db\RecordExists(
        array(
            'table'   => 'users',
            'field'   => 'username',
+           'adapter' => $dbAdapter,
            'exclude' => $clause
        )
    );
@@ -146,25 +153,6 @@ useful for testing against composite keys.
 
 The above example will check the 'users' table to ensure that only a record with both the username ``$username``
 and with the email ``$email`` is valid.
-
-.. _zend.validator.db.database-adapters:
-
-Database Adapters
------------------
-
-You can also specify an adapter. This will allow you to work with applications using multiple database adapters, or
-where you have not set a default adapter. As in the example below:
-
-.. code-block:: php
-   :linenos:
-
-   $validator = new Zend\Validator\Db\RecordExists(
-       array(
-           'table' => 'users',
-           'field' => 'id',
-           'adapter' => $dbAdapter
-       )
-   );
 
 .. _zend.validator.db.database-schemas:
 
@@ -185,4 +173,38 @@ with ``table`` and ``schema`` keys. As in the example below:
        )
    );
 
+.. _zend.validator.db.using.a.select.object:
 
+Using a Select object
+-------------------
+
+It is also possible to supply the validators with a ``Zend\Db\Sql\Select`` object in place of options.
+The validator then uses this object instead of building its own. This allows for greater flexibility with selection
+of records used for validation.
+
+.. code-block:: php
+   :linenos:
+
+   $select = new Zend\Db\Sql\Select();
+   $select->from('users')
+          ->where->equalTo('id', $user_id)
+          ->where->equalTo('email', $email);
+
+   $validator = new Zend\Validator\Db\RecordExists($select);
+   
+   // We still need to set our database adapter
+   $validator->setAdapter($dbAdapter);
+   
+   // Validation is then performed as usual
+   if ($validator->isValid($username)) {
+       // username appears to be valid
+   } else {
+       // username is invalid; print the reason
+       $messages = $validator->getMessages();
+       foreach ($messages as $message) {
+           echo "$message\n";
+       }
+   }
+
+   The above example will check the 'users' table to ensure that only a record with both the username ``$username``
+   and with the email ``$email`` is valid.
