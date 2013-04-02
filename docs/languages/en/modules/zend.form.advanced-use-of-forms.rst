@@ -337,6 +337,7 @@ need this dependency when you create elements, it won't be available yet. For in
     use Album\Model;
     use Zend\Form\Fieldset;
     use Zend\ServiceManager\ServiceLocatorAwareInterface;
+    use Zend\ServiceManager\ServiceLocatorInterface;
 
     class AlbumFieldset extends Fieldset implements ServiceLocatorAwareInterface
     {
@@ -348,7 +349,7 @@ need this dependency when you create elements, it won't be available yet. For in
             // injected yet, as initializers are run after __construct
         }
 
-        public function setServiceLocator(ServiceLocator $sl)
+        public function setServiceLocator(ServiceLocatorInterface $sl)
         {
             $this->serviceLocator = $sl;
         }
@@ -372,6 +373,7 @@ Therefore, the previous example can be rewritten as such:
     use Album\Model;
     use Zend\Form\Fieldset;
     use Zend\ServiceManager\ServiceLocatorAwareInterface;
+    use Zend\ServiceManager\ServiceLocatorInterface;
 
     class AlbumFieldset extends Fieldset implements ServiceLocatorAwareInterface
     {
@@ -382,7 +384,7 @@ Therefore, the previous example can be rewritten as such:
             // Here, we have $this->serviceLocator !!
         }
 
-        public function setServiceLocator(ServiceLocator $sl)
+        public function setServiceLocator(ServiceLocatorInterface $sl)
         {
             $this->serviceLocator = $sl;
         }
