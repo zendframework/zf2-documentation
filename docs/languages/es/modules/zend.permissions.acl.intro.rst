@@ -55,7 +55,7 @@ Acerca de las Reglas
 Al igual que los recursos, la creación de un rol también es muy simple. ``Zend\Permissions\Acl`` proporciona
 ``Zend\Permissions\Acl\Role\RoleInterface`` para facilitar a los desarrolladores la creación de roles. Una clase solo necesita la
 implementación de su interfaz, la cual consiste en un método único, ``getRoleId()``, para que ``Zend\Permissions\Acl``
-considere que el objeto es un Rol. Adicionalmente, ``Zend\Permissions\Acl\Role`` está incluido con ``Zend\Permissions\Acl`` como una
+considere que el objeto es un Rol. Adicionalmente, ``Zend\Permissions\Acl\GenericRole`` está incluido con ``Zend\Permissions\Acl`` como una
 implementación principal del rol para que los desarrolladores la extiendan hasta donde lo deseen.
 
 En ``Zend\Permissions\Acl``, un Rol puede heredar de otro o más roles. Esto es para soportar herencia de reglas entre roles.
@@ -167,7 +167,7 @@ privilegios solo para su grupo individual. Los permisos pueden ser expresados co
    |Administrador|(Todos los accesos permitidos)|N/A               |
    +-------------+------------------------------+------------------+
 
-Para este ejemplo, se usa ``Zend\Permissions\Acl\Role``, pero cualquier objeto que implemente ``Zend\Permissions\Acl\Role\RoleInterface`` es
+Para este ejemplo, se usa ``Zend\Permissions\Acl\GenericRole``, pero cualquier objeto que implemente ``Zend\Permissions\Acl\Role\RoleInterface`` es
 admisible. Estos grupos pueden ser agregados al registro de roles de la siguiente manera:
 
 .. code-block:: php
