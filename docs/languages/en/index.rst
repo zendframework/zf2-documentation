@@ -291,6 +291,7 @@
     * :doc:`tutorials/unittesting`
     * :doc:`tutorials/tutorial.navigation`
     * :doc:`tutorials/tutorial.pagination`
+    * :doc:`tutorials/tutorial.dbadapter`
 
 |ZendFrameworkReference|
 ------------------------
