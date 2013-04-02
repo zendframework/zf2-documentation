@@ -682,9 +682,9 @@ element by validating it, filtering it and retrieving it:
 
 .. image:: ../images/zend.form.collections.dynamic-elements.result.png
 
-Of course, if you don't want to allow adding elements in a collection, you must
-to set the option ``allow_add`` to ``false``. This way, even if new elements are
-added, they won't be validated and hence, not added to the entity. Also, as we don't 
+Of course, if you don't want to allow adding elements in a collection, you must 
+set the option ``allow_add`` to ``false``. This way, even if new elements are
+added, they won't be validated and hence, not added to the entity. Also, if we don't 
 want elements to be added, we don't need the data template, either. Here's how
 you do it:
 
