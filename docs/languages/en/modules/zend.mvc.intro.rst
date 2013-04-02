@@ -12,8 +12,8 @@ The MVC layer is built on top of the following components:
   ``Zend\Mvc\Service``. The ``ServiceManager`` creates and configures your application instance and
   workflow.
 
-- ``Zend\EventManager`` - The MVC is event driven. This component is used everywhere 
-  from initial bootstrapping of the application, through returning response and request calls, 
+- ``Zend\EventManager`` - The MVC is event driven. This component is used everywhere
+  from initial bootstrapping of the application, through returning response and request calls,
   to setting and retrieving routes and matched routes, as well as render views.
 
 - ``Zend\Http`` - specifically the request and response objects, used within:
@@ -144,26 +144,32 @@ The ``Module.php`` file directly under the module root directory will be in the 
    }
 
 When an ``init()`` method is defined, this method will be triggered by a ``Zend\ModuleManager`` listener
-when it loads the module class, and passed an instance of the manager by default.  This allows you to perform tasks such as
-setting up module-specific event listeners.  But be cautious, the ``init()`` method is called for **every** module on **every** page
-request and should **only** be used for performing **lightweight** tasks such as registering event listeners.
-Similarly, an ``onBootstrap()`` method (which accepts an ``MvcEvent`` instance) may be defined; it is also
-triggered for every page request, and should be used for lightweight tasks as well.
+when it loads the module class, and passed an instance of the manager by default.  This allows you to perform tasks
+such as setting up module-specific event listeners.  But be cautious, the ``init()`` method is called for **every**
+module on **every** page request and should **only** be used for performing **lightweight** tasks such as
+registering event listeners. Similarly, an ``onBootstrap()`` method (which accepts an ``MvcEvent`` instance) may be
+defined; it is also triggered for every page request, and should be used for lightweight tasks as well.
 
 The three ``autoload_*.php`` files are not required, but recommended. They provide the following:
 
-- ``autoload_classmap.php`` should return an array classmap of class name/filename pairs (with the filenames
-  resolved via the ``__DIR__`` magic constant).
+.. table:: ``autoload_*.php`` Files
 
-- ``autoload_function.php`` should return a PHP callback that can be passed to ``spl_autoload_register()``.
-  Typically, this callback should utilize the map returned by ``autoload_classmap.php``.
-
-- ``autoload_register.php`` should register a PHP callback (is typically returned by ``autoload_function.php``
-  with ``spl_autoload_register()``.
+   +--------------------------+--------------------------------------------------------------------------------------+
+   |File                      |Description                                                                           |
+   +==========================+======================================================================================+
+   |``autoload_classmap.php`` |Should return an array classmap of class name/filename pairs (with the filenames      |
+   |                          |resolved via the ``__DIR__`` magic constant).                                         |
+   +--------------------------+--------------------------------------------------------------------------------------+
+   |``autoload_function.php`` |Should return a PHP callback that can be passed to ``spl_autoload_register()``.       |
+   |                          |Typically, this callback should utilize the map returned by ``autoload_classmap.php``.|
+   +--------------------------+--------------------------------------------------------------------------------------+
+   |``autoload_register.php`` |should register a PHP callback (is typically returned by ``autoload_function.php``    |
+   |                          |with ``spl_autoload_register()``.                                                     |
+   +--------------------------+--------------------------------------------------------------------------------------+
 
 The point of these three files is to provide reasonable default mechanisms for autoloading the classes contained in
-the module, thus providing a trivial way to consume the module without requiring ``Zend\ModuleManager`` (e.g., for use
-outside a ZF2 application).
+the module, thus providing a trivial way to consume the module without requiring ``Zend\ModuleManager`` (e.g., for
+use outside a ZF2 application).
 
 The ``config`` directory should contain any module-specific configuration. These files may be in any format
 ``Zend\Config`` supports. We recommend naming the main configuration "module.format", and for PHP-based
@@ -276,6 +282,45 @@ shipped with the MVC.
    $response = $application->run();
    $response->send();
 
+You can make this even simpler by using the ``init()`` method of the ``Application``. This is a static method for
+quick and easy initialization of the Application.
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Loader\AutoloaderFactory;
+   use Zend\Mvc\Application;
+   use Zend\Mvc\Service\ServiceManagerConfig;
+   use Zend\ServiceManager\ServiceManager;
+
+   // setup autoloader
+   AutoloaderFactory::factory();
+
+   // get application stack configuration
+   $configuration = include 'config/application.config.php';
+
+   // The init() method does something very similar with the previous example.
+   Application::init($configuration)->run();
+
+The ``init()`` method will basically do the following:
+   * Grabs the application configuration and pulls from the ``service_manager`` key, creating a ``ServiceManager``
+      instance with it and with the default services shipped with ``Zend\Mvc``;
+   * Create a service named ``ApplicationConfig`` with the application configuration array;
+   * Grabs the ``ModuleManager`` service and load the modules;
+   * ``bootstrap()``\s the ``Application`` and returns its instance;
+
+.. note::
+
+   If you use the ``init()`` method, you cannot specify a service with the name of 'ApplicationConfig' in your
+   service manager config. This name is reserved to hold the array from application.config.php.
+
+   The following services can only be overridden from application.config.php:
+      - ``ModuleManager``
+      - ``SharedEventManager``
+      - ``EventManager`` & ``Zend\EventManager\EventManagerInterface``
+
+   All other services are configured after module loading, thus can be overridden by modules.
+
 You'll note that you have a great amount of control over the workflow. Using the ``ServiceManager``, you have
 fine-grained control over what services are available, how they are instantiated, and what dependencies are
 injected into them. Using the ``EventManager``'s priority system, you can intercept any of the application events
@@ -343,8 +388,8 @@ Each ``Module`` class that has configuration it wants the ``Application`` to kno
    }
 
 There are a number of other methods you can define for tasks ranging from providing autoloader configuration, to
-providing services to the ``ServiceManager``, to listening to the bootstrap event. The :ref:`ModuleManager documentation
-<zend.module-manager.intro>` goes into more detail on these.
+providing services to the ``ServiceManager``, to listening to the bootstrap event. The :ref:`ModuleManager
+documentation <zend.module-manager.intro>` goes into more detail on these.
 
 .. _zend.mvc.intro.conclusion:
 
