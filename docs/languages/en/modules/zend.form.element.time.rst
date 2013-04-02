@@ -19,7 +19,7 @@ This element automatically adds a ``"type"`` attribute of value ``"time"``.
    use Zend\Form\Element;
    use Zend\Form\Form;
 
-   $time = new Element\Month('time');
+   $time = new Element\Time('time');
    $time
        ->setLabel('Time')
        ->setAttributes(array(
@@ -40,7 +40,7 @@ Here is the same example using the array notation:
 
     $form = new Form('my-form');
     $form->add(array(
-    	'type' => 'Zend\Form\Element\Month',
+    	'type' => 'Zend\Form\Element\Time',
     	'name' => 'time',
     	'options'=> array(
     		'label' => 'Time'
