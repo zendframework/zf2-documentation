@@ -31,7 +31,7 @@ wünscht, dass ein Objekt zurück gegeben wird, kannst du dies angeben:
    // Dekodiere JSON Objekte als PHP Objekte
    $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
 
-Jedes dekodierte Objekte wird als ``StdClass`` Objekt mit Eigenschaften entsprechend der Schlüssel/Wert Paare der
+Jedes dekodierte Objekte wird als ``stdClass`` Objekt mit Eigenschaften entsprechend der Schlüssel/Wert Paare der
 *JSON* Notation zuürckgegeben.
 
 Die Empfehlung des Zend Framework ist, dass der einzelne Entwickler selber entscheiden sollte, wie er *JSON*
