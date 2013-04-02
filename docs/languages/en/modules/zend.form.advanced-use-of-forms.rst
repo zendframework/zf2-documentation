@@ -42,10 +42,13 @@ Creating custom elements
 
 ``Zend\Form`` also supports custom form elements. 
 
-To create a custom form element, make it extend the ``Zend\Form\Element\Element`` class, or if you need a more specific
+To create a custom form element, make it extend the ``Zend\Form\Element`` class, or if you need a more specific
 one, extend one of the ``Zend\Form\Element`` classes.
 
-First, create your custom element:
+In the following we will show how to create a custom ``Phone`` element for entering phone numbers. It will extend
+``Zend\Form\Element`` class and provide some default input rules.
+
+Our custom phone element could look something like this:
 
 .. code-block:: php
     :linenos:
@@ -54,11 +57,74 @@ First, create your custom element:
 
     use Zend\Form\Element;
 
-    class CustomElement extends Element
+    use Zend\Form\Element;
+    use Zend\InputFilter\InputProviderInterface;
+    use Zend\Validator\Regex as RegexValidator;
+
+    class Phone extends Element implements InputProviderInterface
     {
-        // Define your element…
+        /**
+         * @var ValidatorInterface
+         */
+        protected $validator;
+
+        /**
+        * Get a validator if none has been set.
+        *
+        * @return ValidatorInterface
+        */
+        public function getValidator()
+        {
+            if (null === $this->validator) {
+                $validator = new RegexValidator('/^\+?\d{11,12}$/');
+                $validator->setMessage('Please enter 11 or 12 digits only!',
+                                        RegexValidator::NOT_MATCH);
+
+                $this->validator = $validator;
+            }
+
+            return $this->validator;
+        }
+
+        /**
+         * Sets the validator to use for this element
+         *
+         * @param  ValidatorInterface $validator
+         * @return Application\Form\Element\Phone
+         */
+        public function setValidator(ValidatorInterface $validator)
+        {
+            $this->validator = $validator;
+            return $this;
+        }
+
+        /**
+         * Provide default input rules for this element
+         *
+         * Attaches a phone number validator.
+         *
+         * @return array
+         */
+        public function getInputSpecification()
+        {
+            return array(
+                'name' => $this->getName(),
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'Zend\Filter\StringTrim'),
+                ),
+                'validators' => array(
+                    $this->getValidator(),
+                ),
+            );
+        }
     }
 
+By implementing the ``Zend\InputFilter\InputProviderInterface`` interface, we are hinting to our form
+object that this element provides some default input rules for filtering and/or validating values. In this
+example the default input specification provides a ``Zend\Filter\StringTrim`` filter and a ``Zend\Validator\Regex``
+validator that validates that the value optionally has a + sign at the beginning and is followed by 11 or 12
+digits.
 
 The easiest way of start using your new custom element in your forms is to use the custom element's FCQN:
 
@@ -67,8 +133,8 @@ The easiest way of start using your new custom element in your forms is to use t
 
     $form = new Zend\Form\Form();
     $form->add(array(
-        'name' => 'custom',
-        'type' => 'Application\Form\Element\CustomElement',
+        'name' => 'phone',
+        'type' => 'Application\Form\Element\Phone',
     ));
 
 Or, if you are extending ``Zend\Form\Form``:
@@ -87,8 +153,8 @@ Or, if you are extending ``Zend\Form\Form``:
             parent::__construct($name);
 
             $this->add(array(
-                'name' => 'custom',
-                'type' => 'Application\Form\Element\CustomElement',
+                'name' => 'phone',
+                'type' => 'Application\Form\Element\Phone',
             ))
         }
     }
@@ -117,7 +183,7 @@ First, add the custom element to the plugin manager, in your ``Module.php`` clas
         {
             return array(
                 'invokables' => array(
-                    'customelement' => 'Application\Form\Element\CustomElement'
+                    'phone' => 'Application\Form\Element\Phone'
                 )
             );
         }
@@ -131,7 +197,7 @@ Or, you can do the same in your ``module.config.php`` file:
     return array(
         'form_elements' => array(
             'invokables' => array(
-                'customelement' => 'Application\Form\Element\CustomElement'
+                'phone' => 'Application\Form\Element\Phone'
             )
         )
     );
@@ -155,8 +221,8 @@ but rather in the ``init()`` method:
         public function init()
         {
             $this->add(array(
-                'name' => 'custom',
-                'type' => 'customelement',
+                'name' => 'phone',
+                'type' => 'Phone',
             ))
         }
     }
