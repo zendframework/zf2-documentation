@@ -54,7 +54,7 @@ Rollen
 
 Wie bei den Ressourcen ist auch das Erstellen einer Rolle sehr einfach. Alle Rollen müssen
 ``Zend\Permissions\Acl\Role\RoleInterface`` implementieren. Dieses Interface besteht aus einer einzelnen Methode, ``getRoleId()``,
-zusätzlich wird ``Zend\Permissions\Acl\Role`` von ``Zend\Permissions\Acl`` als einfache Rollen Implementation angeboten, damit Entwickler
+zusätzlich wird ``Zend\Permissions\Acl\GenericRole`` von ``Zend\Permissions\Acl`` als einfache Rollen Implementation angeboten, damit Entwickler
 sie bei Bedarf erweitern können.
 
 In ``Zend\Permissions\Acl`` kann eine Rolle von einer oder mehreren Rollen erben. Dies soll die Vererbung von Regeln zwischen
@@ -166,7 +166,7 @@ stellen. Diese Genehmigungen können wie folgt ausgedrückt werden:
    |Administrator|(bekommt kompletten Zugriff gewährt)|N/A                   |
    +-------------+------------------------------------+----------------------+
 
-Für dieses Beispiel wird ``Zend\Permissions\Acl\Role`` verwendet, aber jedes Objekt wird akzeptiert, das
+Für dieses Beispiel wird ``Zend\Permissions\Acl\GenericRole`` verwendet, aber jedes Objekt wird akzeptiert, das
 ``Zend\Permissions\Acl\Role\RoleInterface`` implementiert. Diese Gruppen können zur Rollenregistrierung wie folgt hinzugefügt
 werden:
 
