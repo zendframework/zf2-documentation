@@ -126,7 +126,7 @@ The following illustrates how you might utilize the above configuration to creat
        }
    }
 
-When you create a new \Zend\Session\Container (see Session Container page) in a controller for example, it will use the session configured above.
+When you create a new ``Zend\Session\Container`` (see Session Container page) in a controller for example, it will use the session configured above.
 
 Session Compatibility
 ---------------------
