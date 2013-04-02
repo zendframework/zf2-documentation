@@ -82,7 +82,7 @@ achieve this by calling:
 .. code-block:: php
    :linenos:
 
-   Zend\Json\Json::$useBuiltinEncoderDecoder = true:
+   Zend\Json\Json::$useBuiltinEncoderDecoder = true;
 
 .. _zend.json.advanced.expr:
 
