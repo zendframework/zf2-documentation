@@ -26,6 +26,7 @@
    tutorials/unittesting
    tutorials/tutorial.navigation
    tutorials/tutorial.pagination
+   tutorials/tutorial.dbadapter
    modules/zend.authentication.intro
    modules/zend.authentication.adapter.dbtable
    modules/zend.authentication.adapter.digest
