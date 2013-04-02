@@ -31,7 +31,7 @@ avoir un objet en retour, vous pouvez le spécifier :
       // Décode des objets JSON en tant qu'objets PHP
       $phpNatif = Zend\Json\Json::decode($valeurEncodee, Zend\Json\Json::TYPE_OBJECT);
 
-Tous les objets sont ainsi décodés et retournés comme des objets de type *StdClass*, avec leurs propriétés
+Tous les objets sont ainsi décodés et retournés comme des objets de type *stdClass*, avec leurs propriétés
 correspondantes aux paires clé/valeur de la notation JSON.
 
 La recommandation de Zend Framework est que le développeur doit décider comment décoder les objets *JSON*. Si un

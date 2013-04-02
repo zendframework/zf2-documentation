@@ -27,7 +27,7 @@ desidera che il metodo restituisca un oggetto, è possibile specificarlo:
    // Decodifica gli oggetti JSON in oggetti PHP
    $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
 
-Ogni oggetto decodificato è restituito come oggetto istanza della classe *StdClass* dove le proprietà sono
+Ogni oggetto decodificato è restituito come oggetto istanza della classe *stdClass* dove le proprietà sono
 rappresentate dalle coppie di chiave/valore nella notazione JSON.
 
 La raccomandazione del Framework Zend è che ciascun sviluppatore decida come decodificare gli oggetti JSON. Se è

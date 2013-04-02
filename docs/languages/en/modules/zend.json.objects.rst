@@ -28,7 +28,7 @@ returned, you can specify this:
    // Decode JSON objects as PHP objects
    $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
 
-Any objects thus decoded are returned as ``StdClass`` objects with properties corresponding to the key/value pairs
+Any objects thus decoded are returned as ``stdClass`` objects with properties corresponding to the key/value pairs
 in the *JSON* notation.
 
 The recommendation of Zend Framework is that the individual developer should decide how to decode *JSON* objects.
