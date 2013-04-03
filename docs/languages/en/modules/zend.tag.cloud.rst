@@ -1,7 +1,7 @@
 .. _zend.tag.cloud:
 
 Creating tag clouds with Zend\\Tag\\Cloud
-==============
+=========================================
 
 ``Zend\Tag\Cloud`` is the rendering part of ``Zend\Tag``. By default it comes with a set of *HTML* decorators,
 which allow you to create tag clouds for a website, but also supplies you with two abstract classes to create your
@@ -11,24 +11,26 @@ You can instantiate and configure ``Zend\Tag\Cloud`` either programmatically or 
 instance of ``Zend\Config\Config``. The available options are:
 
 - ``cloudDecorator``: defines the decorator for the cloud. Can either be the name of the class which should be
-  loaded by the pluginloader, an instance of ``Zend\Tag\Cloud\Decorator\Cloud`` or an array containing the string
-  'decorator' and optionally an array 'options', which will be passed to the decorators constructor.
+  loaded by the pluginloader, an instance of ``Zend\Tag\Cloud\Decorator\Cloud`` or an array containing the
+  decorator under the key 'decorator' and optionally an array under the key 'options', which will be passed to the
+  decorator's constructor.
 
 - ``tagDecorator``: defines the decorator for individual tags. This can either be the name of the class which
   should be loaded by the pluginloader, an instance of ``Zend\Tag\Cloud\Decorator\Tag`` or an array containing the
-  string 'decorator' and optionally an array 'options', which will be passed to the decorators constructor.
+  decorator under the key 'decorator' and optionally an array under the key 'options', which will be passed to the
+  decorator's constructor.
 
 - ``pluginDecoratorManager``: a different plugin manager to use. Must be an instance of
   ``Zend\ServiceManager\AbstractPluginManager``.
 
 - ``itemList``: a different item list to use. Must be an instance of ``Zend\Tag\ItemList``.
 
-- ``tags``: a list of tags to assign to the cloud. Each tag must either implement ``Zend\Tag\TaggableInterface`` or be an
-  array which can be used to instantiate ``Zend\Tag\Item``.
+- ``tags``: a array of tags to assign to the cloud. Each tag must either implement ``Zend\Tag\TaggableInterface``
+  or be an array which can be used to instantiate ``Zend\Tag\Item``.
 
 .. _zend.tag.cloud.example.using:
 
-.. rubric:: Using Zend\\Tag\\Cloud
+.. rubric:: Using ``Zend\Tag\Cloud``
 
 This example illustrates a basic example of how to create a tag cloud, add multiple tags to it and finally render
 it.
@@ -94,23 +96,23 @@ Decorators
 ----------
 
 ``Zend\Tag\Cloud`` requires two types of decorators to be able to render a tag cloud. This includes a decorator
-which renders the single tags as well as a decorator which renders the surrounding cloud. ``Zend\Tag\Cloud`` ships a
-default decorator set for formatting a tag cloud in *HTML*. This set will by default create a tag cloud as
-ul/li-list, spread with different font-sizes according to the weight values of the tags assigned to them.
+which renders the single tags as well as a decorator which renders the surrounding cloud. ``Zend\Tag\Cloud`` ships
+a default decorator set for formatting a tag cloud in *HTML*. This set will, by default, create a tag cloud as
+ul/li -list, spread with different font-sizes according to the weight values of the tags assigned to them.
 
 .. _zend.tag.cloud.decorators.htmltag:
 
 HTML Tag decorator
 ^^^^^^^^^^^^^^^^^^
 
-The *HTML* tag decorator will by default render every tag in an anchor element, surrounded by a li element. The
-anchor itself is fixed and cannot be changed, but the surrounding element(s) can.
+The *HTML* tag decorator will by default render every tag in an anchor element, surrounded by a ``<li>`` element.
+The anchor itself is fixed and cannot be changed, but the surrounding element(s) can.
 
 .. note::
 
    **URL parameter**
 
-   As the *HTML* tag decorator always surounds the tag title with an anchor, you should define an *URL* parameter
+   As the *HTML* tag decorator always surounds the tag title with an anchor, you should define a *URL* parameter
    for every tag used in it.
 
 The tag decorator can either spread different font-sizes over the anchors or a defined list of classnames. When
@@ -127,7 +129,7 @@ configuration options are available:
 - ``classList``: an array of classes distributed through the tags.
 
 - ``htmlTags``: an array of *HTML* tags surrounding the anchor. Each element can either be a string, which is used
-  as element type then, or an array containing an attribute list for the element, defined as key/value pair. In
+  as element type, or an array containing an attribute list for the element, defined as key/value pair. In
   this case, the array key is used as element type.
 
 The following example shows how to create a tag cloud with a customized *HTML* tag decorator.
@@ -173,14 +175,12 @@ The following example shows how to create a tag cloud with a customized *HTML* t
 HTML Cloud decorator
 ^^^^^^^^^^^^^^^^^^^^
 
-The *HTML* cloud decorator will surround the *HTML* tags with an ul-element by default and add no separation. Like
-in the tag decorator, you can define multiple surrounding *HTML* tags and additionally define a separator. The
-available options are:
+By default the *HTML* cloud decorator will surround the *HTML* tags with a ``<ul>`` element and add no separation.
+Like in the tag decorator, you can define multiple surrounding *HTML* tags and additionally define a separator.
+The available options are:
 
 - ``separator``: defines the separator which is placed between all tags.
 
 - ``htmlTags``: an array of *HTML* tags surrounding all tags. Each element can either be a string, which is used as
-  element type then, or an array containing an attribute list for the element, defined as key/value pair. In this
+  element type, or an array containing an attribute list for the element, defined as key/value pair. In this
   case, the array key is used as element type.
-
-
