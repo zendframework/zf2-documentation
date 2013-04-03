@@ -205,6 +205,7 @@
    modules/zend.server.reflection
    modules/zend.service-manager.intro
    modules/zend.service-manager.quick-start
+   modules/zend.service-manager.delegator-factories
    modules/zend.session.config
    modules/zend.session.container
    modules/zend.session.manager
@@ -688,6 +689,7 @@ Zend\\ServiceManager
 
         * :doc:`modules/zend.service-manager.intro`
         * :doc:`modules/zend.service-manager.quick-start`
+        * :doc:`modules/zend.service-manager.delegator-factories`
 
 .. _zend.session
 
