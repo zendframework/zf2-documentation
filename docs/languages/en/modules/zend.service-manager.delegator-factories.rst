@@ -12,7 +12,7 @@ or generally intercept actions being performed on the delegate in an `AOP`_ fash
 Delegator factory signature
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A delegator factory has following signature:
+A delegator factory has the following signature:
 
 .. code-block:: php
 
@@ -23,7 +23,7 @@ A delegator factory has following signature:
        public function createDelegatorWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName, $callback);
    }
 
-The parameters passed to the ``DelegatorFactoryInterface#createDelegatorWithName`` factory are following:
+The parameters passed to the ``DelegatorFactoryInterface#createDelegatorWithName`` factory are the following:
 
  - ``$serviceLocator`` is the service locator that is used while creating the delegator for the requested service
 
@@ -54,7 +54,7 @@ The delegated object ``Buzzer`` (original object) is defined as following:
        }
    }
 
-The delegator class ``BuzzerDelegator`` has following structure:
+The delegator class ``BuzzerDelegator`` has the following structure:
 
 .. code-block:: php
    :linenos:
@@ -80,7 +80,7 @@ The delegator class ``BuzzerDelegator`` has following structure:
        }
    }
 
-To use the ``BuzzerDelegator``, you can run following code:
+To use the ``BuzzerDelegator``, you can run the following code:
 
 .. code-block:: php
    :linenos:
@@ -103,7 +103,7 @@ complexity.
 
 Delegator factories solve this specific problem by allowing you to wrap, decorate or modify any existing service.
 
-A simple delegator factory for the ``'buzzer'`` service can be implemented as following:
+A simple delegator factory for the ``buzzer`` service can be implemented as following:
 
 .. code-block:: php
    :linenos:
@@ -124,7 +124,7 @@ A simple delegator factory for the ``'buzzer'`` service can be implemented as fo
        }
    }
 
-You can then instruct the service manager to handle the service ``'buzzer'`` as a delegate:
+You can then instruct the service manager to handle the service ``buzzer`` as a delegate:
 
 .. code-block:: php
    :linenos:
@@ -148,6 +148,24 @@ You can then instruct the service manager to handle the service ``'buzzer'`` as 
 You can also call ``$serviceManager->addDelegator()`` multiple times, with the same or different delegator
 factory service names. Each call will add one decorator around the instantiation logic of that particular
 service.
+
+Another way of configuring the service manager to use delegator factories is via configuration:
+
+.. code-block:: php
+   :linenos:
+
+   $config = array(
+       'invokables' => array(
+           'buzzer'                   => 'Buzzer',
+           'buzzer-delegator-factory' => 'BuzzerDelegatorFactory',
+       ),
+       'delegators' => array(
+           'buzzer' => array(
+                'buzzer-delegator-factory'
+                // eventually add more delegators here
+           ),
+       ),
+   );
 
 .. _`AOP`: http://en.wikipedia.org/wiki/Aspect-oriented_programming
 .. _`decorator`: http://en.wikipedia.org/wiki/Decorator_pattern
