@@ -28,6 +28,8 @@ A delegator factory has following signature:
        );
    }
 
+The parameters passed to the ``DelegatorFactoryInterface#createDelegatorWithName`` factory are following:
+
  - ``$serviceLocator`` is the service locator that is used while creating the delegator for the requested service
 
  - ``$name`` is the canonical name of the service being requested
