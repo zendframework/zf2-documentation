@@ -8,19 +8,19 @@ which allow you to create tag clouds for a website, but also supplies you with t
 own decorators, to create tag clouds in *PDF* documents for example.
 
 You can instantiate and configure ``Zend\Tag\Cloud`` either programmatically or completely via an array or an
-instance of ``Zend\Config\Config``. The available options are:
+instance of ``Traversable``. The available options are:
 
 - ``cloudDecorator``: defines the decorator for the cloud. Can either be the name of the class which should be
-  loaded by the pluginloader, an instance of ``Zend\Tag\Cloud\Decorator\Cloud`` or an array containing the
+  loaded by the plugin manager, an instance of ``Zend\Tag\Cloud\Decorator\AbstractCloud`` or an array containing the
   decorator under the key 'decorator' and optionally an array under the key 'options', which will be passed to the
   decorator's constructor.
 
 - ``tagDecorator``: defines the decorator for individual tags. This can either be the name of the class which
-  should be loaded by the pluginloader, an instance of ``Zend\Tag\Cloud\Decorator\Tag`` or an array containing the
+  should be loaded by the plugin manager, an instance of ``Zend\Tag\Cloud\Decorator\AbstractTag`` or an array containing the
   decorator under the key 'decorator' and optionally an array under the key 'options', which will be passed to the
   decorator's constructor.
 
-- ``pluginDecoratorManager``: a different plugin manager to use. Must be an instance of
+- ``decoratorPluginManager``: a different plugin manager to use. Must be an instance of
   ``Zend\ServiceManager\AbstractPluginManager``.
 
 - ``itemList``: a different item list to use. Must be an instance of ``Zend\Tag\ItemList``.
