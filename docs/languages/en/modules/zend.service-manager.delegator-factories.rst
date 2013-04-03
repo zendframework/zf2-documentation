@@ -3,7 +3,7 @@
 Delegator service factories
 ===========================
 
-``Zend\ServiceManager`` can generate `delegators`_ of requested services, decorating them
+``Zend\ServiceManager`` can instantiate `delegators`_ of requested services, decorating them
 as specified in a delegate factory implementing the `delegator factory interface`_.
 
 The delegate pattern is useful in cases when you want to wrap a real service in a `decorator`_,
@@ -20,12 +20,7 @@ A delegator factory has following signature:
 
    interface DelegatorFactoryInterface
    {
-       public function createDelegatorWithName(
-           ServiceLocatorInterface $serviceLocator,
-           $name,
-           $requestedName,
-           $callback
-       );
+       public function createDelegatorWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName, $callback);
    }
 
 The parameters passed to the ``DelegatorFactoryInterface#createDelegatorWithName`` factory are following:
@@ -49,6 +44,7 @@ is prepended.
 The delegated object ``Buzzer`` (original object) is defined as following:
 
 .. code-block:: php
+   :linenos:
 
    class Buzzer
    {
@@ -61,6 +57,7 @@ The delegated object ``Buzzer`` (original object) is defined as following:
 The delegator class ``BuzzerDelegator`` has following structure:
 
 .. code-block:: php
+   :linenos:
 
    use Zend\EventManager\EventManagerInterface;
 
@@ -86,6 +83,7 @@ The delegator class ``BuzzerDelegator`` has following structure:
 To use the ``BuzzerDelegator``, you can run following code:
 
 .. code-block:: php
+   :linenos:
 
    $wrappedBuzzer = new Buzzer();
    $eventManager  = new Zend\EventManager\EventManager();
@@ -108,6 +106,7 @@ Delegator factories solve this specific problem by allowing you to wrap, decorat
 A simple delegator factory for the ``'buzzer'`` service can be implemented as following:
 
 .. code-block:: php
+   :linenos:
 
    use Zend\ServiceManager\DelegatorFactoryInterface;
    use Zend\ServiceManager\ServiceLocatorInterface;
@@ -128,6 +127,7 @@ A simple delegator factory for the ``'buzzer'`` service can be implemented as fo
 You can then instruct the service manager to handle the service ``'buzzer'`` as a delegate:
 
 .. code-block:: php
+   :linenos:
 
    $serviceManager = new Zend\ServiceManager\ServiceManager();
 
