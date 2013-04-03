@@ -39,13 +39,22 @@ it.
    // Create the cloud and assign static tags to it
    $cloud = new Zend\Tag\Cloud(array(
        'tags' => array(
-           array('title' => 'Code', 'weight' => 50,
-                 'params' => array('url' => '/tag/code')),
-           array('title' => 'Zend Framework', 'weight' => 1,
-                 'params' => array('url' => '/tag/zend-framework')),
-           array('title' => 'PHP', 'weight' => 5,
-                 'params' => array('url' => '/tag/php')),
-       )
+           array(
+               'title'  => 'Code',
+               'weight' => 50,
+               'params' => array('url' => '/tag/code'),
+           ),
+           array(
+               'title'  => 'Zend Framework',
+               'weight' => 1,
+               'params' => array('url' => '/tag/zend-framework'),
+           ),
+           array(
+               'title' => 'PHP',
+               'weight' => 5,
+               'params' => array('url' => '/tag/php'),
+           ),
+       ),
    ));
 
    // Render the cloud
@@ -129,22 +138,31 @@ The following example shows how to create a tag cloud with a customized *HTML* t
     $cloud = new Zend\Tag\Cloud(array(
         'tagDecorator' => array(
             'decorator' => 'htmltag',
-            'options' => array(
+            'options'   => array(
                 'minFontSize' => '20',
                 'maxFontSize' => '50',
-                'htmlTags' => array(
-                    'li' => array('class' => 'my_custom_class')
-                )
-            )
+                'htmlTags'    => array(
+                    'li' => array('class' => 'my_custom_class'),
+                ),
+            ),
         ),
         'tags' => array(
-           array('title' => 'Code', 'weight' => 50,
-                 'params' => array('url' => '/tag/code')),
-           array('title' => 'Zend Framework', 'weight' => 1,
-                 'params' => array('url' => '/tag/zend-framework')),
-           array('title' => 'PHP', 'weight' => 5,
-                 'params' => array('url' => '/tag/php')),
-       )
+           array(
+               'title'  => 'Code',
+               'weight' => 50,
+               'params' => array('url' => '/tag/code'),
+           ),
+           array(
+               'title'  => 'Zend Framework',
+               'weight' => 1,
+               'params' => array('url' => '/tag/zend-framework'),
+           ),
+           array(
+               'title'  => 'PHP',
+               'weight' => 5,
+               'params' => array('url' => '/tag/php')
+           ),
+       ),
     ));
 
     // Render the cloud
