@@ -124,7 +124,7 @@ The following classes are listening to this event (they are sorted from higher p
    |Class                              |Priority |Method Called   |Itself Triggers |Description                                                                 |
    +===================================+=========+================+================+============================================================================+
    |``Zend\Mvc\View\Http\ViewManager`` |10000    |``onBootstrap`` |*none*          |Prepares the view layer (instantiate a ``Zend\Mvc\View\Http\ViewManager``). |
-   +-----------------------------------+---------+----------------+---------------------------------------------------------------------------------------------+
+   +-----------------------------------+---------+----------------+----------------+----------------------------------------------------------------------------+
 
 
 .. _zend.mvc.mvc-event.bootstrap.triggerers:

@@ -57,7 +57,7 @@ This is the one service class referenced directly in the application bootstrappi
     ``Zend\Mvc\Controller\ControllerManager``, passing the service manager instance.
 
     Additionally, it uses the ``DiStrictAbstractServiceFactory`` service -- effectively allowing you to fall back
-    to DI in order to retrieve your controllers. If you want to use ``Zend\Di`` to retrieve your controllers,you
+    to DI in order to retrieve your controllers. If you want to use ``Zend\Di`` to retrieve your controllers, you
     must white-list them in your DI configuration under the ``allowed_controllers`` key (otherwise, they will just
     be ignored).
 
