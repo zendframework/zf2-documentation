@@ -10,27 +10,37 @@ own decorators, to create tag clouds in *PDF* documents for example.
 You can instantiate and configure ``Zend\Tag\Cloud`` either programmatically or completely via an array or an
 instance of ``Traversable``. The available options are:
 
-- ``cloudDecorator``: defines the decorator for the cloud. Can either be the name of the class which should be
-  loaded by the plugin manager, an instance of ``Zend\Tag\Cloud\Decorator\AbstractCloud`` or an array containing the
-  decorator under the key 'decorator' and optionally an array under the key 'options', which will be passed to the
-  decorator's constructor.
+.. _zend.tag.cloud.options.table:
 
-- ``tagDecorator``: defines the decorator for individual tags. This can either be the name of the class which
-  should be loaded by the plugin manager, an instance of ``Zend\Tag\Cloud\Decorator\AbstractTag`` or an array containing the
-  decorator under the key 'decorator' and optionally an array under the key 'options', which will be passed to the
-  decorator's constructor.
+.. table:: ``Zend\Tag\Cloud`` Options
 
-- ``decoratorPluginManager``: a different plugin manager to use. Must be an instance of
-  ``Zend\ServiceManager\AbstractPluginManager``.
+   +--------------------------+------------------------------------------------------------------------------------------------+
+   |Option                    |Description                                                                                     |
+   +==========================+================================================================================================+
+   |``cloudDecorator``        |Defines the decorator for the cloud. Can either be the name of the class which should be loaded |
+   |                          |by the plugin manager, an instance of ``Zend\Tag\Cloud\Decorator\AbstractCloud`` or an array    |
+   |                          |containing the decorator under the key ``decorator`` and optionally an array under the key      |
+   |                          |``options``, which will be passed to the decorator's constructor.                               |
+   +--------------------------+------------------------------------------------------------------------------------------------+
+   |``tagDecorator``          |Defines the decorator for individual tags. This can either be the name of the class which       |
+   |                          |should be loaded by the plugin manager, an instance of ``Zend\Tag\Cloud\Decorator\AbstractTag`` |
+   |                          |or an array containing the decorator under the key ``decorator`` and optionally an array under  |
+   |                          |the key ``options``, which will be passed to the decorator's constructor.                       |
+   +--------------------------+------------------------------------------------------------------------------------------------+
+   |``decoratorPluginManager``|A different plugin manager to use.                                                              |
+   |                          |Must be an instance of ``Zend\ServiceManager\AbstractPluginManager``.                           |
+   +--------------------------+------------------------------------------------------------------------------------------------+
+   |``itemList``              |A different item list to use. Must be an instance of ``Zend\Tag\ItemList``.                     |
+   +--------------------------+------------------------------------------------------------------------------------------------+
+   |``tags``                  |A array of tags to assign to the cloud. Each tag must either implement                          |
+   |                          |``Zend\Tag\TaggableInterface`` or be an array which can be used to instantiate                  |
+   |                          |``Zend\Tag\Item``.                                                                              |
+   +--------------------------+------------------------------------------------------------------------------------------------+
 
-- ``itemList``: a different item list to use. Must be an instance of ``Zend\Tag\ItemList``.
-
-- ``tags``: a array of tags to assign to the cloud. Each tag must either implement ``Zend\Tag\TaggableInterface``
-  or be an array which can be used to instantiate ``Zend\Tag\Item``.
 
 .. _zend.tag.cloud.example.using:
 
-.. rubric:: Using ``Zend\Tag\Cloud``
+.. rubric:: Using Zend\\Tag\\Cloud
 
 This example illustrates a basic example of how to create a tag cloud, add multiple tags to it and finally render
 it.
@@ -119,18 +129,28 @@ The tag decorator can either spread different font-sizes over the anchors or a d
 setting options for one of those possibilities, the corresponding one will automatically be enabled. The following
 configuration options are available:
 
-- ``fontSizeUnit``: defines the font-size unit used for all font-sizes. The possible values are: em, ex, px, in,
-  cm, mm, pt, pc and %. Default value is px.
+.. _zend.tag.cloud.decorators.htmltag.options.table:
 
-- ``minFontSize``: the minimum font-size distributed through the tags (must be an integer). Default value is 10.
+.. table:: HTML Tag decorator Options
 
-- ``maxFontSize``: the maximum font-size distributed through the tags (must be an integer). Default value is 20.
+   +----------------+---------------+----------------------------------------------------------------------+
+   |Option          |Default        |Description                                                           |
+   +================+===============+======================================================================+
+   |``fontSizeUnit``|``px``         |Defines the font-size unit used for all font-sizes. The possible      |
+   |                |               |values are: em, ex, px, in, cm, mm, pt, pc and %.                     |
+   +----------------+---------------+----------------------------------------------------------------------+
+   |``minFontSize`` |``10``         |The minimum font-size distributed through the tags (must be numeric). |
+   +----------------+---------------+----------------------------------------------------------------------+
+   |``maxFontSize`` |``20``         |The maximum font-size distributed through the tags (must be numeric). |
+   +----------------+---------------+----------------------------------------------------------------------+
+   |``classList``   |``null``       |An array of classes distributed through the tags.                     |
+   +----------------+---------------+----------------------------------------------------------------------+
+   |``htmlTags``    |``array('li')``|An array of *HTML* tags surrounding the anchor. Each element can      |
+   |                |               |either be a string, which is used as element type, or an array        |
+   |                |               |containing an attribute list for the element, defined as key/value    |
+   |                |               |pair. In this case, the array key is used as element type.            |
+   +----------------+---------------+----------------------------------------------------------------------+
 
-- ``classList``: an array of classes distributed through the tags.
-
-- ``htmlTags``: an array of *HTML* tags surrounding the anchor. Each element can either be a string, which is used
-  as element type, or an array containing an attribute list for the element, defined as key/value pair. In
-  this case, the array key is used as element type.
 
 The following example shows how to create a tag cloud with a customized *HTML* tag decorator.
 
@@ -179,8 +199,17 @@ By default the *HTML* cloud decorator will surround the *HTML* tags with a ``<ul
 Like in the tag decorator, you can define multiple surrounding *HTML* tags and additionally define a separator.
 The available options are:
 
-- ``separator``: defines the separator which is placed between all tags.
+.. _zend.tag.cloud.decorators.htmlcloud.options.table:
 
-- ``htmlTags``: an array of *HTML* tags surrounding all tags. Each element can either be a string, which is used as
-  element type, or an array containing an attribute list for the element, defined as key/value pair. In this
-  case, the array key is used as element type.
+.. table:: HTML Cloud decorator Options
+
+   +--------------+-----------------------------------------------------+---------------------------------------------------------------------+
+   |Option        |Default                                              |Description                                                          |
+   +==============+=====================================================+=====================================================================+
+   |``separator`` |``' '`` *(a whitespace)*                             |Defines the separator which is placed between all tags.              |
+   +--------------+-----------------------------------------------------+---------------------------------------------------------------------+
+   |``htmlTags``  |``array('ul' => array('class' => 'Zend\Tag\Cloud'))``|An array of *HTML* tags surrounding all tags. Each element can either|
+   |              |                                                     |be a string, which is used as element type, or an array containing an|
+   |              |                                                     |attribute list for the element, defined as key/value pair. In this   |
+   |              |                                                     |case, the array key is used as element type.                         |
+   +--------------+-----------------------------------------------------+---------------------------------------------------------------------+

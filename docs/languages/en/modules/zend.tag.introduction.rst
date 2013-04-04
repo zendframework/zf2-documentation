@@ -17,7 +17,7 @@ functionality to calculate absolute weight values based on the given relative we
 
 .. _zend.tag.example.using:
 
-.. rubric:: Using ``Zend\Tag``
+.. rubric:: Using Zend\\Tag
 
 This example illustrates how to create a list of tags and spread absolute weight values on them.
 
