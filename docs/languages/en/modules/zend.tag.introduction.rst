@@ -5,8 +5,8 @@ Introduction to Zend\\Tag
 
 ``Zend\Tag`` is a component suite which provides a facility to work with taggable Items. As its base, it provides
 two classes to work with Tags, ``Zend\Tag\Item`` and ``Zend\Tag\ItemList``. Additionally, it comes with the
-interface ``Zend\Tag\Taggable``, which allows you to use any of your models as a taggable item in conjunction with
-``Zend\Tag``.
+interface ``Zend\Tag\TaggableInterface``, which allows you to use any of your models as a taggable item in
+conjunction with ``Zend\Tag``.
 
 ``Zend\Tag\Item`` is a basic taggable item implementation which comes with the essential functionality required to
 work with the ``Zend\Tag`` suite. A taggable item always consists of a title and a relative weight (e.g. number of
@@ -17,7 +17,7 @@ functionality to calculate absolute weight values based on the given relative we
 
 .. _zend.tag.example.using:
 
-.. rubric:: Using Zend\Tag
+.. rubric:: Using Zend\\Tag
 
 This example illustrates how to create a list of tags and spread absolute weight values on them.
 
@@ -41,5 +41,3 @@ This example illustrates how to create a list of tags and spread absolute weight
    }
 
 This will output the three items Code, Zend Framework and *PHP* with the absolute values 10, 1 and 2.
-
-
