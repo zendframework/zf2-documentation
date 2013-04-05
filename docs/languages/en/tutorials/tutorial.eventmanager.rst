@@ -35,8 +35,7 @@ The minimal things necessary to start using events are:
 The simplest example looks something like this:
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     use Zend\EventManager\EventManager;
 
@@ -74,8 +73,7 @@ triggering actions within methods. The middle argument to ``trigger()`` is the
 gives event listeners access to the calling object, which can often be useful.
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     use Zend\EventManager\EventManager;
     use Zend\EventManager\EventManagerAwareInterface;
@@ -154,8 +152,7 @@ How does this work, exactly?
 Consider the following:
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     use Zend\EventManager\SharedEventManager;
 
@@ -188,8 +185,7 @@ registered, and also that the ``Example`` class is defined as above. We can then
 execute the following:
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     $example = new Example();
     $example->getEventManager()->setSharedManager($sharedEvents);
@@ -202,8 +198,7 @@ and expect the following to be ``echo``'d::
 Now, let's say we extended ``Example`` as follows:
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     class SubExample extends Example
     {
@@ -258,8 +253,7 @@ The answer is to supply an array of events or targets, or a wildcard, ``*``.
 Consider the following examples:
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     // Multiple named events:
     $events->attach(
@@ -334,8 +328,7 @@ implementing class to determine what to do.
 As an example:
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     use Zend\EventManager\EventInterface;
     use Zend\EventManager\EventManagerInterface;
@@ -443,8 +436,7 @@ a boolean ``true``, execution is halted.
 Here's an example:
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     public function someExpensiveCall($criteria1, $criteria2)
     {
@@ -474,8 +466,7 @@ and the ``EventManager`` will then return without notifying any additional
 listeners.
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     $events->attach('do', function ($e) {
         $e->stopPropagation();
@@ -508,8 +499,7 @@ However, if you provide a priority value, you can influence order of execution.
 To borrow an example from earlier:
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     $priority = 100;
     $events->attach('Example', 'do', function($e) {
@@ -546,8 +536,7 @@ As an example, one thing that looks like a code smell is when you have code like
 this:
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     $routeMatch = $e->getParam('route-match', false);
     if (!$routeMatch) {
@@ -565,8 +554,7 @@ Similarly, consider how you might represent a computational result of a method
 when triggering an event. As an example:
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     // in the method:
     $params['__RESULT'] = $computedResult;
@@ -586,8 +574,7 @@ the router, the route match object, request and response objects, the view
 model, and also a result. We end up with code like this in our listeners:
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     $response = $e->getResponse();
     $result   = $e->getResult();
@@ -600,8 +587,7 @@ But how do we use this custom event? Simple: ``trigger()`` can accept an event
 object instead of any of the event name, target, or params arguments.
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     $event = new CustomEvent();
     $event->setSomeKey($value);
@@ -653,8 +639,7 @@ typically reserved for the sytem.
 Here's what the method will look like:
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     public function someExpensiveCall($criteria1, $criteria2)
     {
@@ -690,8 +675,7 @@ want to return early if a hit is detected, and execute late when saving a cache
 "someExpensiveCall.post" listener to execute with priority ``-100``.
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     $events->attach('someExpensiveCall.pre', function($e) use ($cache) {
         $params = $e->getParams();
@@ -719,8 +703,7 @@ which would allow using the priority system in order to implement caching. That
 would look like this:
 
 .. code-block:: php
-    :startinline: true
-    :number-lines: 1
+    :linenos:
 
     public function setEventManager(EventManagerInterface $events)
     {
