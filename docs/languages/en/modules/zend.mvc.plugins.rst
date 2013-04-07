@@ -259,32 +259,30 @@ As an example:
 Identity Plugin
 ---------------
 
-Sometimes you will need to retrieve an identity from ``Zend\Authentication\AuthenticationService`` within your
-controllers, to do that you would need something like the following:
+The ``Identity`` plugin allows for getting the identity from the ``AuthenticationService``.
+
+For the ``Identity`` plugin to work, a ``Zend\Authentication\AuthenticationService`` name or alias must be
+defined and recognized by the ``ServiceManager``.
+
+``Identity`` returns the identity in the ``AuthenticationService`` or `null` if no identity is available.
+
+As an example:
 
 .. code-block:: php
-    :linenos:
+   :linenos:
 
-    $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
-    if ($authService->hasIdentity()) {
-        $identity = $authService->getIdentity();
-    }
+   public function testAction()
+   {
+       if ($user = $this->identity()) {
+            // someone is logged !
+       } else {
+            // not logged in
+       }
+   }
 
-The ``Identity`` plugin makes this slightly simpler, take a look in the following example:
-
-.. code-block:: php
-    :linenos:
-
-    // $identity will have the same value as in the previous example
-    $identity = $this->plugin('identity');
-
-    // or even simpler
-    $identity = $this->identity();
-
-In order for the ``Identity`` plugin to work it needs a ``Zend\Authentication\AuthenticationService`` instance
-attached. The plugin will look for a service by the name ``Zend\Authentication\AuthenticationService`` in the
-``ServiceManager``, so the easier way to get the instance attached is providing this service through the
-``ServiceManager``:
+When invoked, the ``Identity`` plugin will look for a service by the name or alias
+``Zend\Authentication\AuthenticationService`` in the ``ServiceManager``.
+You can provide this service to the ``ServiceManager`` in a configuration file:
 
 .. code-block:: php
     :linenos:
@@ -292,13 +290,18 @@ attached. The plugin will look for a service by the name ``Zend\Authentication\A
     // In a configuration file...
     return array(
         'service_manager' => array(
-            'invokables' => array(
-                'Zend\Authentication\AuthenticationService' => 'Zend\Authentication\AuthenticationService',
+            'alias' => array(
+                'Zend\Authentication\AuthenticationService' => 'my_auth_service',
+            ),
+            'factories' => array(
+                'my_auth_service' => function ($sm) {
+                    return new \Zend\Authentication\AuthenticationService();
+                },
             ),
         ),
     );
 
-Or you use the ``setAuthenticationService()`` method to attached the instance:
+Alternatively the ``setAuthenticationService()`` method can be used to attach the instance:
 
 .. code-block:: php
     :linenos:
@@ -316,15 +319,14 @@ Or you use the ``setAuthenticationService()`` method to attached the instance:
             $app            = $e->getApplication();
             $sm             = $e->getServiceManager();
             $identityPlugin = $sm->get('ControllerPluginManager')->get('identity');
-            $authService    = $sm->get('MyModule\Authentication\MyAuth');
+            $authService    = $sm->get('my_auth_service');
             // Keep in mind that $authService must be an instance of Zend\Authentication\AuthenticationService
             // or any class that extends it
             $identityPlugin->setAuthenticationService($authService);
         }
     }
 
-Using the previous example you can customize your authentication service before attach it into the plugin. You also
-don't need to set the service as a invokable like the first example.
+Note that this way the ``Identity`` plugin is always instantiated.
 
 The ``Identity`` plugin exposes two methods:
 
@@ -345,32 +347,6 @@ The ``Identity`` plugin exposes two methods:
 
 
 .. _zend.mvc.controller-plugins.layout:
-
-Identity Plugin
---------------
-
-The ``Identity`` plugin allows for getting the identity from the ``AuthenticationService``.
-
-For the ``Identity`` plugin to work, a ``Zend\Authentication\AuthenticationService`` name or alias must be
-defined and recognized by the ``serviceLocator``.
-
-``Identity`` returns the identity in the ``AuthenticationService`` or `null` if no identity is available.
-
-As an example:
-
-.. code-block:: php
-   :linenos:
-
-   public function testAction()
-   {
-       if ($user = $this->identity()) {
-            // someone is logged !
-       } else {
-            // not logged in
-       }
-   }
-
-.. _zend.mvc.controller-plugins.identity:
 
 Layout Plugin
 -------------
