@@ -6,7 +6,7 @@ Identity Helper
 The ``Identity`` helper allows for getting the identity from the ``AuthenticationService``.
 
 For the ``Identity`` helper to work, a ``Zend\Authentication\AuthenticationService`` name or alias must be
-defined and recognized by the ``serviceLocator``.
+defined and recognized by the ``ServiceManager``.
 
 ``Identity`` returns the identity in the ``AuthenticationService`` or `null` if no identity is available.
 
@@ -22,3 +22,25 @@ As an example:
             echo 'Not logged in';
         }
     ?>
+
+When invoked, the ``Identity`` plugin will look for a service by the name or alias
+``Zend\Authentication\AuthenticationService`` in the ``ServiceManager``.
+You can provide this service to the ``ServiceManager`` in a configuration file:
+
+.. code-block:: php
+    :linenos:
+
+    // In a configuration file...
+    return array(
+        'service_manager' => array(
+            'alias' => array(
+                'Zend\Authentication\AuthenticationService' => 'my_auth_service',
+            ),
+            'factories' => array(
+                'my_auth_service' => function ($sm) {
+                    return new \Zend\Authentication\AuthenticationService();
+                },
+            ),
+        ),
+    );
+
