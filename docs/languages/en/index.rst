@@ -207,6 +207,7 @@
    modules/zend.service-manager.intro
    modules/zend.service-manager.quick-start
    modules/zend.service-manager.delegator-factories
+   modules/zend.service-manager.lazy-services
    modules/zend.session.config
    modules/zend.session.container
    modules/zend.session.manager
