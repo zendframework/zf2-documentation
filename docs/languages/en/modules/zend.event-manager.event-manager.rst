@@ -145,7 +145,7 @@ instance, via dependency injection), we could change the above example to attach
 
    // Later, instantiate Foo:
    $foo = new Foo();
-   $foo->getEventManager()->setSharedEventCollection($events);
+   $foo->getEventManager()->setSharedManager($events);
 
    // And we can still trigger the above event:
    $foo->bar('baz', 'bat');
@@ -551,7 +551,7 @@ Now, let's create a ``ListenerAggregateInterface`` that can handle caching for u
    :linenos:
 
    use Zend\Cache\Cache;
-   use Zend\EventManager\EventCollection;
+   use Zend\EventManager\EventManagerInterface;
    use Zend\EventManager\ListenerAggregateInterface;
    use Zend\EventManager\EventInterface;
 
@@ -566,7 +566,7 @@ Now, let's create a ``ListenerAggregateInterface`` that can handle caching for u
            $this->cache = $cache;
        }
 
-       public function attach(EventCollection $events)
+       public function attach(EventManagerInterface $events)
        {
            $this->listeners[] = $events->attach('get.pre', array($this, 'load'), 100);
            $this->listeners[] = $events->attach('get.post', array($this, 'save'), -100);

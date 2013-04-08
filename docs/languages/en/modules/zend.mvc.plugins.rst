@@ -9,21 +9,23 @@ Additionally, you can register your own custom plugins with the manager.
 
 The built-in plugins are:
 
-- ``Zend\Mvc\Controller\Plugin\AcceptableViewModelSelector``
+- :ref:`Zend\\Mvc\\Controller\\Plugin\\AcceptableViewModelSelector <zend.mvc.controller-plugins.acceptableviewmodelselector>`
 
-- ``Zend\Mvc\Controller\Plugin\FlashMessenger``
+- :ref:`Zend\\Mvc\\Controller\\Plugin\\FlashMessenger <zend.mvc.controller-plugins.flashmessenger>`
 
-- ``Zend\Mvc\Controller\Plugin\Forward``
+- :ref:`Zend\\Mvc\\Controller\\Plugin\\Forward <zend.mvc.controller-plugins.forward>`
 
-- ``Zend\Mvc\Controller\Plugin\Layout``
+- :ref:`Zend\\Mvc\\Controller\\Plugin\\Identity <zend.mvc.controller-plugins.identity>`
 
-- ``Zend\Mvc\Controller\Plugin\Params``
+- :ref:`Zend\\Mvc\\Controller\\Plugin\\Layout <zend.mvc.controller-plugins.layout>`
 
-- ``Zend\Mvc\Controller\Plugin\PostRedirectGet``
+- :ref:`Zend\\Mvc\\Controller\\Plugin\\Params <zend.mvc.controller-plugins.params>`
 
-- ``Zend\Mvc\Controller\Plugin\Redirect``
+- :ref:`Zend\\Mvc\\Controller\\Plugin\\PostRedirectGet <zend.mvc.controller-plugins.postredirectget>`
 
-- ``Zend\Mvc\Controller\Plugin\Url``
+- :ref:`Zend\\Mvc\\Controller\\Plugin\\Redirect <zend.mvc.controller-plugins.redirect>`
+
+- :ref:`Zend\\Mvc\\Controller\\Plugin\\Url <zend.mvc.controller-plugins.url>`
 
 If your controller implements the ``setPluginManager``, ``getPluginManager`` and ``plugin`` methods, you can access
 these using their shortname via the ``plugin()`` method:
@@ -54,6 +56,9 @@ As an example:
 .. code-block:: php
    :linenos:
 
+   use Zend\Mvc\Controller\AbstractActionController;
+   use Zend\View\Model\JsonModel;
+
    class SomeController extends AbstractActionController
    {
       protected $acceptCriteria = array(
@@ -68,7 +73,7 @@ As an example:
       public function apiAction()
       {
          $viewModel = $this->acceptableViewModelSelector($this->acceptCriteria);
-        
+
          // Potentially vary execution based on model returned
          if ($viewModel instanceof JsonModel) {
             // ...
@@ -78,8 +83,9 @@ As an example:
 
 .. _zend.mvc.controller-plugins.flashmessenger:
 
-The above would return a standard Zend\View\Model\ViewModel instance if the criteria is not met, and the specified 
-view model types if the specific criteria is met. Rules are matched in order, with the first match "winning."
+The above would return a standard ``Zend\View\Model\ViewModel`` instance if the criteria is not met, and the
+specified view model types if the specific criteria is met. Rules are matched in order, with the first match
+"winning."
 
 FlashMessenger Plugin
 ---------------------
@@ -87,31 +93,105 @@ FlashMessenger Plugin
 The ``FlashMessenger`` is a plugin designed to create and retrieve self-expiring, session-based messages. It
 exposes a number of methods:
 
-- ``setSessionManager()`` allows you to specify an alternate session manager, if desired.
+.. function:: setSessionManager(Zend\\Session\\ManagerInterface $manager)
+   :noindex:
 
-- ``getSessionManager()`` allows you to retrieve the session manager registered.
+   Allows you to specify an alternate session manager, if desired.
 
-- ``getContainer()`` returns the ``Zend\Session\Container`` instance in which the flash messages are stored.
+   :rtype: ``Zend\Mvc\Controller\Plugin\FlashMessenger``
 
-- ``setNamespace()`` allows you to specify a specific namespace in the container in which to store or from which to
-  retrieve flash messages.
+
+.. function:: getSessionManager()
+   :noindex:
+
+   Allows you to retrieve the session manager registered.
+
+   :rtype: ``Zend\Session\ManagerInterface``
+
+
+.. function:: getContainer()
+   :noindex:
+
+   Returns the ``Zend\Session\Container`` instance in which the flash messages are stored.
+
+   :rtype: ``Zend\Session\Container``
+
+
+.. function:: setNamespace(string $namespace = 'default')
+   :noindex:
+
+   Allows you to specify a specific namespace in the container in which to store or from which to retrieve flash
+   messages.
+
+   :rtype: ``Zend\Mvc\Controller\Plugin\FlashMessenger``
 
 - ``getNamespace()`` retrieves the name of the flash message namespace.
 
-- ``addMessage()`` allows you to add a message to the current namespace of the session container.
 
-- ``hasMessages()`` lets you determine if there are any flash messages from the current namespace in the session
-  container.
+.. function:: getNamespace()
+   :noindex:
 
-- ``getMessages()`` retrieves the flash messages from the current namespace of the session container.
+   Retrieves the name of the flash message namespace.
 
-- ``clearMessages()`` clears all flash messages in current namespace of the session container.
+   :rtype: ``string``
 
-- ``hasCurrentMessages()`` indicates whether any messages were added during the current request.
 
-- ``getCurrentMessages()`` retrieves any messages added during the current request.
+.. function:: addMessage(string $message)
+   :noindex:
 
-- ``clearCurrentMessages()`` removes any messages added during the current request.
+   Allows you to add a message to the current namespace of the session container.
+
+   :rtype: ``Zend\Mvc\Controller\Plugin\FlashMessenger``
+
+
+.. function:: hasMessages()
+   :noindex:
+
+   Lets you determine if there are any flash messages from the current namespace in the session container.
+
+   :rtype: ``boolean``
+
+
+.. function:: getMessages()
+   :noindex:
+
+   Retrieves the flash messages from the current namespace of the session container
+
+   :rtype: ``array``
+
+
+.. function:: clearMessages()
+   :noindex:
+
+   Clears all flash messages in current namespace of the session container. Returns ``true`` if messages were
+   cleared, ``false`` if none existed.
+
+   :rtype: ``boolean``
+
+
+.. function:: hasCurrentMessages()
+   :noindex:
+
+   Indicates whether any messages were added during the current request.
+
+   :rtype: ``boolean``
+
+
+.. function:: getCurrentMessages()
+   :noindex:
+
+   Retrieves any messages added during the current request.
+
+   :rtype: ``array``
+
+
+.. function:: clearCurrentMessages()
+   :noindex:
+
+   Removes any messages added during the current request. Returns ``true`` if current messages were cleared,
+   ``false`` if none existed.
+
+   :rtype: ``boolean``
 
 Additionally, the ``FlashMessenger`` implements both ``IteratorAggregate`` and ``Countable``, allowing you to
 iterate over and count the flash messages in the current namespace within the session container.
@@ -174,6 +254,96 @@ As an example:
        'foo'     => $foo,
    );
 
+.. _zend.mvc.controller-plugins.identity:
+
+Identity Plugin
+---------------
+
+Sometimes you will need to retrieve an identity from ``Zend\Authentication\AuthenticationService`` within your
+controllers, to do that you would need something like the following:
+
+.. code-block:: php
+    :linenos:
+
+    $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+    if ($authService->hasIdentity()) {
+        $identity = $authService->getIdentity();
+    }
+
+The ``Identity`` plugin makes this slightly simpler, take a look in the following example:
+
+.. code-block:: php
+    :linenos:
+
+    // $identity will have the same value as in the previous example
+    $identity = $this->plugin('identity');
+
+    // or even simpler
+    $identity = $this->identity();
+
+In order for the ``Identity`` plugin to work it needs a ``Zend\Authentication\AuthenticationService`` instance
+attached. The plugin will look for a service by the name ``Zend\Authentication\AuthenticationService`` in the
+``ServiceManager``, so the easier way to get the instance attached is providing this service through the
+``ServiceManager``:
+
+.. code-block:: php
+    :linenos:
+
+    // In a configuration file...
+    return array(
+        'service_manager' => array(
+            'invokables' => array(
+                'Zend\Authentication\AuthenticationService' => 'Zend\Authentication\AuthenticationService',
+            ),
+        ),
+    );
+
+Or you use the ``setAuthenticationService()`` method to attached the instance:
+
+.. code-block:: php
+    :linenos:
+
+    namespace MyModule
+
+    class Module
+    {
+        /**
+        * @param  \Zend\Mvc\MvcEvent $e The MvcEvent instance
+        * @return void
+        */
+        public function onBootstrap($e)
+        {
+            $app            = $e->getApplication();
+            $sm             = $e->getServiceManager();
+            $identityPlugin = $sm->get('ControllerPluginManager')->get('identity');
+            $authService    = $sm->get('MyModule\Authentication\MyAuth');
+            // Keep in mind that $authService must be an instance of Zend\Authentication\AuthenticationService
+            // or any class that extends it
+            $identityPlugin->setAuthenticationService($authService);
+        }
+    }
+
+Using the previous example you can customize your authentication service before attach it into the plugin. You also
+don't need to set the service as a invokable like the first example.
+
+The ``Identity`` plugin exposes two methods:
+
+.. function:: setAuthenticationService(Zend\\Authentication\\AuthenticationService $authenticationService)
+   :noindex:
+
+   Sets the authentication service instance to be used by the plugin.
+
+   :rtype: ``void``
+
+
+.. function:: getAuthenticationService()
+   :noindex:
+
+   Retrieves the current authentication service instance if any is attached.
+
+   :rtype: ``Zend\Authentication\AuthenticationService``
+
+
 .. _zend.mvc.controller-plugins.layout:
 
 Layout Plugin
@@ -208,20 +378,50 @@ The ``Params`` plugin allows for accessing parameters in actions from different 
 
 It exposes several methods, one for each parameter source:
 
-- ``fromFiles($name=null,$default=null)``, for retrieving all, or one single file. If ``$name`` is `null`, all files
-  will be returned.
 
-- ``fromHeader($header=null,$default=null)``, for retrieving all, or one single header parameter. If ``$header``
-  is `null`, all header parameters will be returned.
+.. function:: fromFiles(string $name = null, mixed $default = null)
+   :noindex:
 
-- ``fromPost($param=null,$default=null)``, for retrieving all, or one single post parameter. If ``$param`` is
-  `null`, all post parameters will be returned.
+   For retrieving all or one single **file**. If ``$name`` is `null`, all files will be returned.
 
-- ``fromQuery($param=null,$default=null)``, for retrieving all, or one single query parameter. If ``$param`` is
-  `null`, all query parameters will be returned.
+   :rtype: ``array|ArrayAccess|null``
 
-- ``fromRoute($param=null,$default=null)``, for retrieving all, or one single route parameter. If ``$param`` is
-  `null`, all route parameters will be returned.
+
+.. function:: fromHeader(string $header = null, mixed $default = null)
+   :noindex:
+
+   For retrieving all or one single **header** parameter. If ``$header`` is `null`, all header parameters will be
+   returned.
+
+   :rtype: ``null|Zend\Http\Header\HeaderInterface``
+
+
+.. function:: fromPost(string $param = null, mixed $default = null)
+   :noindex:
+
+   For retrieving all or one single **post** parameter. If ``$param`` is `null`, all post parameters will be
+   returned.
+
+   :rtype: ``mixed``
+
+
+.. function:: fromQuery(string $param = null, mixed $default = null)
+   :noindex:
+
+   For retrieving all or one single **query** parameter. If ``$param`` is `null`, all query parameters will be
+   returned.
+
+   :rtype: ``mixed``
+
+
+.. function:: fromRoute(string $param = null, mixed $default = null)
+   :noindex:
+
+   For retrieving all or one single **route** parameter. If ``$param`` is `null`, all route parameters will be
+   returned.
+
+   :rtype: ``mixed``
+
 
 It also implements the ``__invoke`` magic method, which allows for short circuiting to the ``fromRoute`` method:
 
@@ -298,10 +498,12 @@ run the file input filters to move the uploaded files into a new location
 This plugin can be invoked with three arguments:
 
 - ``$form``: the form instance.
-- ``$redirect``: (Optional) a string containing the redirect location which can either be a named route or a URL, based on
-  the contents of the third parameter. If this argument is not provided, it will default to the current matched route.
-- ``$redirectToUrl``: (Optional) a boolean that when set to TRUE, causes the second parameter to be treated as a URL instead
-  of a route name (this is required when redirecting to a URL instead of a route). This argument defaults to false.
+- ``$redirect``: (Optional) a string containing the redirect location which can either be a named route or a URL,
+  based on the contents of the third parameter. If this argument is not provided, it will default to the current
+  matched route.
+- ``$redirectToUrl``: (Optional) a boolean that when set to TRUE, causes the second parameter to be treated as a
+  URL instead of a route name (this is required when redirecting to a URL instead of a route). This argument
+  defaults to false.
 
 .. rubric:: Example Usage
 
@@ -363,20 +565,38 @@ steps:
 
 - Set the status code of the ``Response`` object to one of the 3xx HTTP statuses.
 
-The ``Redirect`` plugin does this work for you. It offers two methods:
+The ``Redirect`` plugin does this work for you. It offers three methods:
 
-- ``toRoute($route, array $params = array(), array $options = array())``: Redirects to a named route, using the
-  provided ``$params`` and ``$options`` to assembled the URL.
+.. function:: toRoute(string $route = null, array $params = array(), array $options = array(), boolean $reuseMatchedParams = false)
+   :noindex:
 
-- ``toUrl($url)``: Simply redirects to the given URL.
+   Redirects to a named route, using the provided ``$params`` and ``$options`` to assembled the URL.
+
+   :rtype: ``Zend\Http\Response``
+
+
+.. function:: toUrl(string $url)
+   :noindex:
+
+   Simply redirects to the given URL.
+
+   :rtype: ``Zend\Http\Response``
+
+
+.. function:: refresh()
+   :noindex:
+
+   Refresh to current route
+
+   :rtype: ``Zend\Http\Response``
 
 In each case, the ``Response`` object is returned. If you return this immediately, you can effectively
 short-circuit execution of the request.
 
 .. note::
 
-    This plugin requires that the controller invoking it implements ``InjectApplicationEvent``, and thus has
-    an ``MvcEvent`` composed, as it retrieves the router from the event object.
+    This plugin requires that the controller invoking it implements ``InjectApplicationEventInterface``, and thus
+    has an ``MvcEvent`` composed, as it retrieves the router from the event object.
 
 As an example:
 
@@ -416,6 +636,5 @@ The ``fromRoute()`` method is the only public method defined, and has the follow
 
 .. note::
 
-    This plugin requires that the controller invoking it implements ``InjectApplicationEvent``, and thus has
-    an ``MvcEvent`` composed, as it retrieves the router from the event object.
-
+    This plugin requires that the controller invoking it implements ``InjectApplicationEventInterface``, and thus
+    has an ``MvcEvent`` composed, as it retrieves the router from the event object.

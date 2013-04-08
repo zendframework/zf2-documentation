@@ -15,4 +15,4 @@ This handler is best used with the :ref:`FormFileUploadProgress <zend.form.view.
 view helper, to provide a hidden element with the upload progress identifier.
 
 
-.. _`PECL Uploadprogress extension`: http://php.net/manual/en/book.apc.php
+.. _`PECL Uploadprogress extension`: http://pecl.php.net/package/uploadprogress
