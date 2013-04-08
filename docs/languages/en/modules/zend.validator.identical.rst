@@ -16,6 +16,9 @@ The following options are supported for ``Zend\Validator\Identical``:
 
 - **token**: Sets the token with which the input will be validated against.
 
+- **literal**: If set to ``TRUE``, the validation will skip the lookup for elements in the form context, and
+  validate the token just the way it was provided. The default value is ``FALSE``.
+
 .. _zend.validator.set.identical.basic:
 
 Basic usage
