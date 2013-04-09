@@ -9,7 +9,7 @@ retrieve the barcode as an array of drawing instructions that you can provide to
 Objects have a large number of options. Most of them are common to all objects. These options can be set in three
 ways:
 
-- As an array or a `Traversable`_ object) object passed to the constructor.
+- As an array or a `Traversable`_ object passed to the constructor.
 
 - As an array passed to the ``setOptions()`` method.
 
