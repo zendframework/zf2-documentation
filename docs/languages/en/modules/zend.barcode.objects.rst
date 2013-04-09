@@ -161,4 +161,4 @@ Common Additional Getters
 .. include:: zend.barcode.objects.details.rst
 
 
-.. _`Traversable`: php.net/traversable
+.. _`Traversable`: http://php.net/traversable
