@@ -486,7 +486,7 @@ not forms. And only ``Form`` instances can be validated. So here is the form :
 ``CreateProduct`` is quite simple, as it only defines a ``Product`` fieldset, as
 well as some other useful fields (``CSRF`` for security, and a ``Submit`` button).
 
-Notice the ``use_base_fieldset`` option. This option is here to say to the form:
+Notice the ``use_as_base_fieldset`` option. This option is here to say to the form:
 "hey, the object I bind to you is, in fact, bound to the fieldset that is the
 base fieldset." This will be to true most of the times.
 
