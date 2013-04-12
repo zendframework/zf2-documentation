@@ -301,33 +301,6 @@ You can provide this service to the ``ServiceManager`` in a configuration file:
         ),
     );
 
-Alternatively the ``setAuthenticationService()`` method can be used to attach the instance:
-
-.. code-block:: php
-    :linenos:
-
-    namespace MyModule
-
-    class Module
-    {
-        /**
-        * @param  \Zend\Mvc\MvcEvent $e The MvcEvent instance
-        * @return void
-        */
-        public function onBootstrap($e)
-        {
-            $app            = $e->getApplication();
-            $sm             = $e->getServiceManager();
-            $identityPlugin = $sm->get('ControllerPluginManager')->get('identity');
-            $authService    = $sm->get('my_auth_service');
-            // Keep in mind that $authService must be an instance of Zend\Authentication\AuthenticationService
-            // or any class that extends it
-            $identityPlugin->setAuthenticationService($authService);
-        }
-    }
-
-Note that this way the ``Identity`` plugin is always instantiated.
-
 The ``Identity`` plugin exposes two methods:
 
 .. function:: setAuthenticationService(Zend\\Authentication\\AuthenticationService $authenticationService)
