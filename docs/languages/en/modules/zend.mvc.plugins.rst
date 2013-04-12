@@ -293,10 +293,8 @@ You can provide this service to the ``ServiceManager`` in a configuration file:
             'alias' => array(
                 'Zend\Authentication\AuthenticationService' => 'my_auth_service',
             ),
-            'factories' => array(
-                'my_auth_service' => function ($sm) {
-                    return new \Zend\Authentication\AuthenticationService();
-                },
+            'invokables' => array(
+                'my_auth_service' => 'Zend\Authentication\AuthenticationService',
             ),
         ),
     );
