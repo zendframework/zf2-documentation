@@ -34,32 +34,26 @@ Create a file called ``AlbumForm.php`` in ``module/Album/src/Album/Form``:
             $this->setAttribute('method', 'post');
             $this->add(array(
                 'name' => 'id',
-                'attributes' => array(
-                    'type'  => 'hidden',
-                ),
+                'type' => 'hidden',
             ));
             $this->add(array(
                 'name' => 'title',
-                'attributes' => array(
-                    'type'  => 'text',
-                ),
+                'type' => 'text',
                 'options' => array(
                     'label' => 'Title',
                 ),
             ));
             $this->add(array(
                 'name' => 'artist',
-                'attributes' => array(
-                    'type'  => 'text',
-                ),
+                'type' => 'text',
                 'options' => array(
                     'label' => 'Artist',
                 ),
             ));
             $this->add(array(
                 'name' => 'submit',
+                'type' => 'submit',
                 'attributes' => array(
-                    'type'  => 'submit',
                     'value' => 'Go',
                     'id' => 'submitbutton',
                 ),
