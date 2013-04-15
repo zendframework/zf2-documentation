@@ -176,7 +176,7 @@ And a file called ``Bootstrap.php``, also under ``zf2-tutorial/module/Album/test
 
     Bootstrap::init();
 
-The contents of this bootstrap file can be daunting at first site, but all it
+The contents of this bootstrap file can be daunting at first sight, but all it
 really does is ensuring that all the necessary files are autoloadable for our
 tests. The most important lines is line 38 on which we say what
 modules we want to load for our test. In this case we are only loading the
