@@ -38,25 +38,25 @@ Bu dosyayı şimdi oluşturalım:
             $this->setAttribute('method', 'post');
             $this->add(array(
                 'name' => 'id',
-                'type' => 'hidden',
+                'type' => 'Hidden',
             ));
             $this->add(array(
                 'name' => 'artist',
-                'type' => 'text',
+                'type' => 'Text',
                 'options' => array(
                     'label' => 'Sanatçı',
                 ),
             ));
             $this->add(array(
                 'name' => 'title',
-                'type' => 'text',
+                'type' => 'Text',
                 'options' => array(
                     'label' => 'Başlık',
                 ),
             ));
             $this->add(array(
                 'name' => 'submit',
-                'type' => 'submit',
+                'type' => 'Submit',
                 'attributes' => array(
                     'value' => 'Git',
                     'id' => 'submitbutton',
