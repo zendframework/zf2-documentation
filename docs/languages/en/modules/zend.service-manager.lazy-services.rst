@@ -98,8 +98,8 @@ You can now simply retrieve the ``buzzer``:
 
    echo $buzzer->buzz();
 
-To verify that proxying occurred correctly, you can simply run following code, which should delay the 5
-seconds wait time hardcoded in ``Buzzer::__construct`` until ``Buzzer::buzz`` is invoked:
+To verify that the proxying occurred correctly, you can simply run the following code, which should delay
+the 5 seconds wait time hardcoded in ``Buzzer::__construct`` until ``Buzzer::buzz`` is invoked:
 
 .. code-block:: php
    :linenos:
@@ -167,6 +167,9 @@ This is the config structure expected by ``Zend\ServiceManager\Proxy\LazyService
 
            // namespace of the generated proxies, default to "ProxyManagerGeneratedProxy"
            'proxies_namespace' => null,
+
+            // whether the generated proxy classes should be written to disk
+            'write_proxy_files' => false,
        ),
    );
 
