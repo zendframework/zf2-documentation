@@ -44,7 +44,7 @@ Usage of ``FileInput`` is essentially the same as ``Input``:
         ->attach(new Filter\File\RenameUpload(array(
             'target'    => './data/tmpuploads/file',
             'randomize' => true,
-        ));
+        )));
 
    // Merge $_POST and $_FILES data together
    $request  = new Request();

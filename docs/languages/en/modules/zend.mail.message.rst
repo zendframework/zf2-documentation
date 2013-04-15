@@ -15,8 +15,8 @@ If desired, multi-part email messages may also be created. This is as trivial as
 the :ref:`Zend\\Mime <zend.mime>` component, assigning it to the mail message body.
 
 The ``Message`` class is simply a value object. It is not capable of sending or storing itself; for those purposes,
-you will need to use, respectively, a :ref:`Storage adapter <zend.mail.read>` or :ref:`Transport adapter
-<zend.mail.transport>`.
+you will need to use, respectively, a :ref:`Transport adapter <zend.mail.transport>` or :ref:`Storage adapter
+<zend.mail.read>`.
 
 .. _zend.mail.message.quick-start:
 

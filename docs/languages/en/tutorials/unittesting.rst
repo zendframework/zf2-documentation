@@ -210,7 +210,7 @@ with the ``Zend\Test`` component which should make testing much less
 cumbersome.
 
 First, create ``IndexControllerTest.php`` under
-``zf2-tutorial/module/Albumtest/AlbumTest/Controller`` with
+``zf2-tutorial/module/Album/test/AlbumTest/Controller`` with
 the following contents:
 
 .. code-block:: php

@@ -24,8 +24,10 @@
    modules/zendtool.introduction
    tutorials/quickstart.di
    tutorials/unittesting
+   tutorials/tutorial.eventmanager
    tutorials/tutorial.navigation
    tutorials/tutorial.pagination
+   tutorials/tutorial.dbadapter
    modules/zend.authentication.intro
    modules/zend.authentication.adapter.dbtable
    modules/zend.authentication.adapter.digest
@@ -289,8 +291,10 @@
 
     * :doc:`tutorials/quickstart.di`
     * :doc:`tutorials/unittesting`
+    * :doc:`tutorials/tutorial.eventmanager`
     * :doc:`tutorials/tutorial.navigation`
     * :doc:`tutorials/tutorial.pagination`
+    * :doc:`tutorials/tutorial.dbadapter`
 
 |ZendFrameworkReference|
 ------------------------

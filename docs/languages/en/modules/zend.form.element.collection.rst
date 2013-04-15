@@ -57,7 +57,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 .. function:: setOptions(array $options)
    :noindex:
 
-   Set options for an element of type Collection. Accepted options, in addition to the inherited options of Zend\\Form\\Element <zend.form.element.methods.set-options>` , are: ``"target_element"``, ``"count"``, ``"allow_add"``, ``"allow_remove"``, ``"should_create_template"`` and ``"template_placeholder"``. Those option keys respectively call call ``setTargetElement``, ``setCount``, ``setAllowAdd``, ``setAllowRemove``, ``setShouldCreateTemplate`` and ``setTemplatePlaceholder``.
+   Set options for an element of type Collection. Accepted options, in addition to the inherited options of :ref:`Zend\\Form\\Element <zend.form.element.methods.set-options>` , are: ``"target_element"``, ``"count"``, ``"allow_add"``, ``"allow_remove"``, ``"should_create_template"`` and ``"template_placeholder"``. Those option keys respectively call call ``setTargetElement``, ``setCount``, ``setAllowAdd``, ``setAllowRemove``, ``setShouldCreateTemplate`` and ``setTemplatePlaceholder``.
 
 .. function:: allowObjectBinding(object $object)
    :noindex:

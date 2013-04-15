@@ -113,7 +113,7 @@ The IgnoreUserAbort Plugin
    |Name                |Data Type    |Default Value  |Description                                          |
    +====================+=============+===============+=====================================================+
    |exit_on_abort       |``boolean``  |``true``       |Terminate script execution if user abort the script  |
-   +--------------------+----------------------+---------------+--------------------------------------------+
+   +--------------------+-------------+---------------+-----------------------------------------------------+
 
 .. _zend.cache.storage.plugin.optimize-by-factor
 

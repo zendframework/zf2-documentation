@@ -51,18 +51,43 @@ route-based *URL*\ s and *HTML* lists, as well as declaring variables. Additiona
 helpers for providing values for, and rendering, the various HTML *<head>* tags, such as ``HeadTitle``,
 ``HeadLink``, and ``HeadScript``. The currently shipped helpers include:
 
-.. include:: zend.view.helpers.url.rst
-.. include:: zend.view.helpers.html-list.rst
+- :ref:`BasePath <zend.view.helpers.initial.basepath>`
+- :ref:`Cycle <zend.view.helpers.initial.cycle>`
+- :ref:`Doctype <zend.view.helpers.initial.doctype>`
+- :ref:`HeadLink <zend.view.helpers.initial.headlink>`
+- :ref:`HeadMeta <zend.view.helpers.initial.headmeta>`
+- :ref:`HeadScript <zend.view.helpers.initial.headscript>`
+- :ref:`HeadStyle <zend.view.helpers.initial.headstyle>`
+- :ref:`HeadTitle <zend.view.helpers.initial.headtitle>`
+- :ref:`HtmlList <zend.view.helpers.initial.htmllist>`
+- :ref:`HTML Object Plugins <zend.view.helpers.initial.object>`
+- :ref:`InlineScript <zend.view.helpers.initial.inlinescript>`
+- :ref:`JSON <zend.view.helpers.initial.json>`
+- :ref:`Partial <zend.view.helpers.initial.partial>`
+- :ref:`Placeholder <zend.view.helpers.initial.placeholder>`
+
+.. note::
+
+   View helpers related to **Internationalization** are documented in the
+   :ref:`I18n View Helpers <zend.i18n.view.helpers>` chapter.
+
+.. note::
+
+   View helpers related to **navigation** are documented in the
+   :ref:`Navigation View Helpers <zend.navigation.view.helpers>` chapter.
+
 .. include:: zend.view.helpers.base-path.rst
 .. include:: zend.view.helpers.cycle.rst
-.. include:: zend.view.helpers.partial.rst
-.. include:: zend.view.helpers.placeholder.rst
 .. include:: zend.view.helpers.doctype.rst
 .. include:: zend.view.helpers.head-link.rst
 .. include:: zend.view.helpers.head-meta.rst
 .. include:: zend.view.helpers.head-script.rst
 .. include:: zend.view.helpers.head-style.rst
 .. include:: zend.view.helpers.head-title.rst
+.. include:: zend.view.helpers.html-list.rst
 .. include:: zend.view.helpers.html-object.rst
 .. include:: zend.view.helpers.inline-script.rst
 .. include:: zend.view.helpers.json.rst
+.. include:: zend.view.helpers.partial.rst
+.. include:: zend.view.helpers.placeholder.rst
+.. include:: zend.view.helpers.url.rst

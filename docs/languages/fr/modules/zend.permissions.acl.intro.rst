@@ -53,7 +53,7 @@ A propos des rôles
 ------------------
 
 Comme pour les ressources, créer un rôle est très simple. Tout rôle doit implémenter
-``Zend\Permissions\Acl\Role\RoleInterface`` qui consiste en une seule méthode ``getRoleId()``. De plus, ``Zend\Permissions\Acl\Role`` est
+``Zend\Permissions\Acl\Role\RoleInterface`` qui consiste en une seule méthode ``getRoleId()``. De plus, ``Zend\Permissions\Acl\GenericRole`` est
 inclus dans ``Zend\Permissions\Acl`` comme une implémentation basique de rôle que les développeurs peuvent étendre si
 besoin.
 
@@ -167,7 +167,7 @@ manière suivante :
    |Administrateur|(Reçoit tous les accès)     |N/A                    |
    +--------------+----------------------------+-----------------------+
 
-Pour cet exemple, ``Zend\Permissions\Acl\Role`` est utilisé, mais n'importe quel objet qui implémente
+Pour cet exemple, ``Zend\Permissions\Acl\GenericRole`` est utilisé, mais n'importe quel objet qui implémente
 ``Zend\Permissions\Acl\Role\RoleInterface`` est acceptable. Ces groupes peuvent être ajoutés au registre des rôles comme suit :
 
 .. code-block:: php
