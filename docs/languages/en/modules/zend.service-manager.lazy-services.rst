@@ -1,0 +1,178 @@
+.. _zend.service-manager.lazy-services:
+
+Lazy Services
+=============
+
+``Zend\ServiceManager`` can use :ref:`delegator factories <zend.service-manager.delegator-factories>` to
+generate "lazy" references to your services.
+
+Lazy services are `proxies`_ that get lazily instantiated, and keep a reference to the real instance of
+the proxied service.
+
+Use cases
+^^^^^^^^^
+
+You may want to lazily initialize a service when it is instantiated very often, but not always used.
+
+A typical example is a database connection: it is a dependency to many other elements in your application,
+but that doesn't mean that every request will execute queries through it.
+
+Additionally, instantiating a connection to the database may require some time and eat up resources.
+
+Proxying the database connection would allow to delay that overhead until the object is really needed.
+
+Setup
+^^^^^
+
+```Zend\ServiceManager\Proxy\LazyServiceFactory`` is a :ref:`delegator factory` capable of generating
+lazy loading proxies for your services.
+
+The ``LazyServiceFactory`` depends on `ProxyManager`_, so be sure to install it before going through
+the following steps:
+
+.. code-block:: sh
+
+   php composer.phar require ocramius/proxy-manager:0.3.*
+
+
+Practical example
+^^^^^^^^^^^^^^^^^
+
+To demonstrate how a lazy service works, you may use the following ``Buzzer`` example class, which
+is designed to be slow at instantiation time for demonstration purposes:
+
+.. code-block:: php
+   :linenos:
+
+   namespace MyApp;
+
+   class Buzzer
+   {
+       public function __construct()
+       {
+           // deliberately halting the application for 5 seconds
+           sleep(5);
+       }
+
+       public function buzz()
+       {
+           return 'Buzz!';
+       }
+   }
+
+You can then proceed and configure the service manager to generate proxies instead of real services:
+
+.. code-block:: php
+   :linenos:
+
+   $serviceManager = new \Zend\ServiceManager\ServiceManager();
+
+   $config = array(
+       'lazy_services' => array(
+            // mapping services to their class names is required
+            // since the ServiceManager is not a declarative DIC
+            'map' => array(
+                'buzzer' => 'MyApp\Buzzer',
+            ),
+       ),
+   );
+
+   $serviceManager->setService('Config', $config);
+   $serviceManager->setInvokableClass('buzzer', 'MyApp\Buzzer');
+   $serviceManager->setFactory('LazyServiceFactory', 'Zend\ServiceManager\Proxy\LazyServiceFactoryFactory');
+   $serviceManager->addDelegator('buzzer', 'LazyServiceFactory');
+
+This will tell the service manager to use the ``LazyServiceFactory`` delegator factory to
+instantiate the ``buzzer`` service.
+
+As you may have noticed, the standard setup for the ``LazyServiceFactory`` requires you to define
+a ``Config`` service. That's because the functionality was thought to be easily integrated into
+``Zend\Mvc``.
+
+You can now simply retrieve the ``buzzer``:
+
+.. code-block:: php
+   :linenos:
+
+   $buzzer = $serviceManager->get('buzzer');
+
+   echo $buzzer->buzz();
+
+To verify that the proxying occurred correctly, you can simply run the following code, which should delay
+the 5 seconds wait time hardcoded in ``Buzzer::__construct`` until ``Buzzer::buzz`` is invoked:
+
+.. code-block:: php
+   :linenos:
+
+   for ($i = 0; $i < 100; $i += 1) {
+       $buzzer = $serviceManager->create('buzzer');
+
+       echo "created buzzer $i\n";
+   }
+
+   echo $buzzer->buzz();
+
+The setup above can also be represented via configuration in an MVC application's context:
+
+.. code-block:: php
+   :linenos:
+
+   return array(
+       'service_manager' => array(
+           'invokables' => array(
+               'buzzer' => 'MyApp\Buzzer',
+           ),
+           'delegators' => array(
+               'buzzer' => array(
+                   'LazyServiceFactory'
+               ),
+           ),
+           'factories' => array(
+               'LazyServiceFactory' => 'Zend\ServiceManager\Proxy\LazyServiceFactoryFactory',
+           ),
+       ),
+       'lazy_services' => array(
+           'map' => array(
+               'buzzer' => 'MyApp\Buzzer',
+           ),
+       ),
+   );
+
+
+Configuration
+^^^^^^^^^^^^^
+
+This is the config structure expected by ``Zend\ServiceManager\Proxy\LazyServiceFactoryFactory``:
+
+
+.. code-block:: php
+   :linenos:
+
+   return array(
+       'lazy_services' => array(
+
+           // map of service names and their relative class names - this
+           // is required since the service manager cannot know the
+           // class name of defined services upfront
+           'map' => array(
+               // 'foo' => 'MyApplication\Foo',
+           ),
+
+           // directory where proxy classes will be written - default to system_get_tmp_dir()
+           'proxies_target_dir' => null,
+
+           // boolean flag to indicate whether to generate proxies
+           // proxies are auto-generated by default
+           'auto_generate_proxies' => null,
+
+           // namespace of the generated proxies, default to "ProxyManagerGeneratedProxy"
+           'proxies_namespace' => null,
+
+            // whether the generated proxy classes should be written to disk
+            'write_proxy_files' => false,
+       ),
+   );
+
+
+.. _`proxies`: http://en.wikipedia.org/wiki/Proxy_pattern
+.. _`ProxyManager`: https://github.com/Ocramius/ProxyManager
