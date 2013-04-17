@@ -139,10 +139,10 @@ And a file called ``Bootstrap.php``, also under ``zf2-tutorial/module/Album/test
             if (!$zf2Path) {
                 if (defined('ZF2_PATH')) {
                     $zf2Path = ZF2_PATH;
-                } else {
-                    if (is_dir($vendorPath . '/zendframework/zendframework/library')) {
-                        $zf2Path = $vendorPath . '/zendframework/zendframework/library';
-                    }
+                } elseif (is_dir($vendorPath . '/ZF2/library')) {
+                    $zf2Path = $vendorPath . '/ZF2/library';
+                } elseif (is_dir($vendorPath . '/zendframework/zendframework/library')) {
+                    $zf2Path = $vendorPath . '/zendframework/zendframework/library';
                 }
             }
 
