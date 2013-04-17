@@ -25,6 +25,7 @@
    tutorials/quickstart.di
    tutorials/unittesting
    migration/overview
+   migration/zf1_zf2_parallel
    modules/zend.authentication.intro
    modules/zend.authentication.adapter.dbtable
    modules/zend.authentication.adapter.digest
@@ -292,6 +293,7 @@
 -----------
 
     * :doc:`migration/overview`
+    * :doc:`migration/zf1_zf2_parallel`
 
 |ZendFrameworkReference|
 ------------------------
