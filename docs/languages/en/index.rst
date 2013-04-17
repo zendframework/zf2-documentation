@@ -25,6 +25,7 @@
    tutorials/quickstart.di
    tutorials/unittesting
    migration/overview
+   migration/namespacing-old-classes
    migration/zf1_zf2_parallel
    modules/zend.authentication.intro
    modules/zend.authentication.adapter.dbtable
@@ -293,6 +294,7 @@
 -----------
 
     * :doc:`migration/overview`
+    * :doc:`migration/namespacing-old-classes`
     * :doc:`migration/zf1_zf2_parallel`
 
 |ZendFrameworkReference|
