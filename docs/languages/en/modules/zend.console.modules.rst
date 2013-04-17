@@ -12,6 +12,8 @@ supports two types of information: :ref:`application banners <banner>` and :ref:
 
 .. _banner:
 
+.. _zend.console.modules.application-banner:
+
 Application banner
 ------------------
 
@@ -55,7 +57,7 @@ the order modules are loaded). This way, it makes it very easy to spot which mod
 After running our application, we'll see our newly created banner.
 
 .. image:: ../images/zend.console.banner.png
-   :width: 614
+   :width: 610
    :align: center
 
 Let's create and load second module that provides a banner.
@@ -107,6 +109,8 @@ Because ``User`` module is loaded after ``Application`` module, the result will 
     banners are also automatically colorized as blue.
 
 .. _usage:
+
+.. _zend.console.modules.usage-information:
 
 Usage information
 ------------------
@@ -165,6 +169,8 @@ component colorizes those in red.
 
 .. _free-form:
 
+.. _zend.console.modules.free-form-text:
+
 Free-form text
 ^^^^^^^^^^^^^^^
 
@@ -189,6 +195,8 @@ or an array of strings, for example:
     The text provided is displayed as-is - no trimming or other adjustments will be performed. If you'd
     like to fit your usage information inside console window, you could check its width with ``$console->getWidth()``.
 
+
+.. _zend.console.modules.command-list:
 
 List of commands
 ^^^^^^^^^^^^^^^^^^
@@ -221,6 +229,8 @@ ways of running the application.
     resized, some texts might be wrapped but all content will be aligned accordingly. If you don't like this
     behavior, you can always return :ref:`free-form text <free-form>` that will not be transformed in any way.
 
+
+.. _zend.console.modules.params-list:
 
 List of params and flags
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -278,6 +288,8 @@ Using this method, we can display more than 2 columns of information, for exampl
     transformed in any way.
 
 
+.. _zend.console.modules.mixing-styles:
+
 Mixing styles
 ^^^^^^^^^^^^^^
 
@@ -314,10 +326,14 @@ You can use mix together all of the above styles to provide comprehensive usage 
    :align: center
 
 
+.. _zend.console.modules.best-practices:
+
 Best practices
 --------------
 
 As a reminder, here are the best practices when providing usage for your commands:
 
-1. Your `getConsoleBanner` should only return a one-line string containing the module's name and its version (if available).
-2. Your `getConsoleUsage` should not return module's name: it is prepended automatically for you by Console component.
+#. Your ``getConsoleBanner`` should only return a one-line string containing the module's name and
+   its version (if available).
+#. Your ``getConsoleUsage`` should not return module's name; it is prepended automatically for you
+   by Console component.
