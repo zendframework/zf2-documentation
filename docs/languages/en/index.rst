@@ -28,6 +28,9 @@
    tutorials/tutorial.navigation
    tutorials/tutorial.pagination
    tutorials/tutorial.dbadapter
+   migration/overview
+   migration/namespacing-old-classes
+   migration/zf1_zf2_parallel
    modules/zend.authentication.intro
    modules/zend.authentication.adapter.dbtable
    modules/zend.authentication.adapter.digest
@@ -295,6 +298,13 @@
     * :doc:`tutorials/tutorial.navigation`
     * :doc:`tutorials/tutorial.pagination`
     * :doc:`tutorials/tutorial.dbadapter`
+
+|Migration|
+-----------
+
+    * :doc:`migration/overview`
+    * :doc:`migration/namespacing-old-classes`
+    * :doc:`migration/zf1_zf2_parallel`
 
 |ZendFrameworkReference|
 ------------------------
