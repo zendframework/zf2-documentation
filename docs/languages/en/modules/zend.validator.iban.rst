@@ -21,7 +21,7 @@ IBAN validation
 ---------------
 
 *IBAN* numbers are always related to a country. This means that different countries use different formats for their
-*IBAN* numbers. This is the reason why *IBAN* numbers always need a locale. By knowing this we already know how to
+*IBAN* numbers. This is the reason why *IBAN* numbers always need a country code. By knowing this we already know how to
 use ``Zend\Validator\Iban``.
 
 .. _zend.validator.set.iban.basic.false:
