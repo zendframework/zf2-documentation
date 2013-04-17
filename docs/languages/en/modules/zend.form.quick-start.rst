@@ -123,9 +123,7 @@ store your forms as pure configuration; you can simply pass the configuration to
                    'options' => array(
                        'label' => 'Your name',
                    ),
-                   'attributes' => array(
-                       'type'  => 'text'
-                   ),
+                   'type'  => 'Text',
                )
            ),
            array(
@@ -143,9 +141,7 @@ store your forms as pure configuration; you can simply pass the configuration to
                    'options' => array(
                        'label' => 'Subject',
                    ),
-                   'attributes' => array(
-                       'type'  => 'text',
-                   ),
+                   'type'  => 'Text',
                ),
            ),
            array(
@@ -178,8 +174,8 @@ store your forms as pure configuration; you can simply pass the configuration to
            array(
                'spec' => array(
                    'name' => 'send',
+                   'type'  => 'Submit',
                    'attributes' => array(
-                       'type'  => 'submit',
                        'value' => 'Submit',
                    ),
                ),
@@ -219,9 +215,7 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
                        'options' => array(
                            'label' => 'Your name',
                		   ),
-                       'attributes' => array(
-                           'type'  => 'text'
-                       ),
+                       'type'  => 'Text'
                    ),
                    array(
                        'type' => 'Zend\Form\Element\Email',
@@ -240,11 +234,10 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
                        'options' => array(
                            'label' => 'Subject',
                		   ),
-                       'attributes' => array(
-                           'type'  => 'text',
-                       ),
+                       'type'  => 'Text',
                    ),
                    array(
+                       'name' => 'message',
                        'type' => 'Zend\Form\Element\Textarea',
                        'options' => array(
                            'label' => 'Message',
@@ -270,8 +263,8 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
            ),
            array(
                'name' => 'send',
+               'type'  => 'Submit',
                'attributes' => array(
-                   'type'  => 'submit',
                    'value' => 'Submit',
                ),
            ),
@@ -324,9 +317,7 @@ defining a form for re-use in your application.
                'options' => array(
                    'label' => 'Your name',
                ),
-               'attributes' => array(
-                   'type'  => 'text',
-               ),
+               'type'  => 'Text',
            ));
            $this->add(array(
                'type' => 'Zend\Form\Element\Email',
@@ -340,9 +331,7 @@ defining a form for re-use in your application.
                'options' => array(
                    'label' => 'Subject',
                ),
-               'attributes' => array(
-                   'type'  => 'text',
-               ),
+               'type'  => 'Text',
            ));
            $this->add(array(
                'type' => 'Zend\Form\Element\Textarea',
@@ -362,8 +351,8 @@ defining a form for re-use in your application.
            $this->add(new Element\Csrf('security'));
            $this->add(array(
                'name' => 'send',
+               'type'  => 'Submit',
                'attributes' => array(
-                   'type'  => 'submit',
                    'value' => 'Submit',
                ),
            ));
