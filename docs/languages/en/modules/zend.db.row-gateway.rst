@@ -51,6 +51,7 @@ The following use case demonstrates Zend\\Db\\RowGateway\\RowGateway usage in it
    // or delete this row:
    $rowGateway->delete();
 
+
 The workflow described above is greatly simplified when RowGateway is used in conjunction with the TableGateway
 feature. What this achieves is a Table Gateway object that when select()'ing from a table, will produce a ResultSet
 that is then capable of producing valid Row Gateway objects. Its usage looks like this:
@@ -67,5 +68,36 @@ that is then capable of producing valid Row Gateway objects. Its usage looks lik
    $artistRow = $results->current();
    $artistRow->name = 'New Name';
    $artistRow->save();
+
+
+.. _zend.db.row-gateway.active-record-style:
+
+ActiveRecord Style Objects
+--------------------------
+
+If you wish to have custom behaviour for your RowGateway objects (essentially making them behave
+similarly to the ActiveRecord pattern), pass a prototype object implementing the
+``RowGatewayInterface`` to the ``RowGatewayFeature`` constructor instead of a primary key:
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Db\TableGateway\Feature\RowGatewayFeature;
+   use Zend\Db\TableGateway\TableGateway;
+   use Zend\Db\RowGateway\RowGatewayInterface;
+
+   class Artist implements RowGatewayInterface
+   {
+       protected $adapter;
+
+       public function __construct($adapter)
+       {
+          $this->adapter = $adapter;
+       }
+
+       // ... save() and delete() implementations
+   }
+
+   $table = new TableGateway('artist', $adapter, new RowGatewayFeature(new Artist($adapter)));
 
 
