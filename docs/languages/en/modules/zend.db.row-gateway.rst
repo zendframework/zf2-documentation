@@ -70,12 +70,14 @@ that is then capable of producing valid Row Gateway objects. Its usage looks lik
    $artistRow->save();
 
 
+.. _zend.db.row-gateway.active-record-style:
+
 ActiveRecord Style Objects
 --------------------------
 
-If you wish to have custom behaviour for your RowGateway objects (essentially making them instances of the
-ActiveRecord pattern), pass a prototype object implementing the RowGatewayInterface to the RowGatewayFeature
-constructor instead of a primary key:
+If you wish to have custom behaviour for your RowGateway objects (essentially making them behave
+similarly to the ActiveRecord pattern), pass a prototype object implementing the
+``RowGatewayInterface`` to the ``RowGatewayFeature`` constructor instead of a primary key:
 
 .. code-block:: php
    :linenos:
@@ -97,3 +99,5 @@ constructor instead of a primary key:
    }
 
    $table = new TableGateway('artist', $adapter, new RowGatewayFeature(new Artist($adapter)));
+
+
