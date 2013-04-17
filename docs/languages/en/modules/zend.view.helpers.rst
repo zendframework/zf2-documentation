@@ -61,6 +61,7 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
 - :ref:`HeadTitle <zend.view.helpers.initial.headtitle>`
 - :ref:`HtmlList <zend.view.helpers.initial.htmllist>`
 - :ref:`HTML Object Plugins <zend.view.helpers.initial.object>`
+- :ref:`Identity <zend.view.helpers.initial.identity>`
 - :ref:`InlineScript <zend.view.helpers.initial.inlinescript>`
 - :ref:`JSON <zend.view.helpers.initial.json>`
 - :ref:`Partial <zend.view.helpers.initial.partial>`
@@ -86,6 +87,7 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
 .. include:: zend.view.helpers.head-title.rst
 .. include:: zend.view.helpers.html-list.rst
 .. include:: zend.view.helpers.html-object.rst
+.. include:: zend.view.helpers.identity.rst
 .. include:: zend.view.helpers.inline-script.rst
 .. include:: zend.view.helpers.json.rst
 .. include:: zend.view.helpers.partial.rst
