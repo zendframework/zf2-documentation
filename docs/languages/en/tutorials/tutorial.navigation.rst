@@ -49,7 +49,7 @@ application, and not just to our album pages:
 
 ``module/Application/config/module.config.php``
 
-::
+.. code-block:: php
 
     'service_manager' => array(
         'factories' => array(

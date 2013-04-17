@@ -8,6 +8,8 @@ PAPER         =
 BUILDDIR      = _build
 LANG          = en
 
+CALIBRE      ?= ebook-convert
+
 # Internal variables.
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
@@ -117,8 +119,14 @@ devhelp: pre-build
 	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/ZendFramework2"
 	@echo "# devhelp"
 
-epub: pre-build
+CALIBRE_EXISTS:
+	@which $(CALIBRE) > /dev/null
+
+epub: pre-build CALIBRE_EXISTS
 	$(SPHINXBUILD) -b epub $(ALLSPHINXOPTS) $(BUILDDIR)/epub
+	-mv $(BUILDDIR)/epub/ZendFramework2.epub $(BUILDDIR)/epub/ZendFramework2.src.epub
+	$(CALIBRE) $(BUILDDIR)/epub/ZendFramework2.src.epub $(BUILDDIR)/epub/ZendFramework2.epub
+	-rm $(BUILDDIR)/epub/ZendFramework2.src.epub
 	@echo
 	@echo "Build finished. The epub file is in $(BUILDDIR)/epub."
 
