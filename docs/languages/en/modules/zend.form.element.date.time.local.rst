@@ -26,6 +26,9 @@ This element automatically adds a ``"type"`` attribute of value ``"datetime-loca
            'min'  => '2010-01-01T00:00:00',
            'max'  => '2020-01-01T00:00:00',
            'step' => '1', // minutes; default step interval is 1 min
+       ))
+       ->setOptions(array(
+           'format' => 'Y-m-d\TH:i'
        ));
 
    $form = new Form('my-form');
@@ -43,7 +46,8 @@ Here is with the array notation:
     	'type' => 'Zend\Form\Element\DateTimeLocal',
     	'name' => 'appointment-date-time',
     	'options' => array(
-    		'label' => 'Appointment Date'
+    		'label'  => 'Appointment Date',
+    		'format' => 'Y-m-d\TH:i'
     	),
     	'attributes' => array(
     		'min' => '2010-01-01T00:00:00',
@@ -68,7 +72,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    :noindex:
 
    Returns a input filter specification, which includes ``Zend\Filter\StringTrim`` and will add the appropriate
-   validators based on the values from the ``min``, ``max``, and ``step`` attributes. See
+   validators based on the values from the ``min``, ``max``, and ``step`` attributes and ``format`` option. See
    :ref:`getInputSpecification in Zend\\Form\\Element\\DateTime
    <zend.form.element.date-time.methods.get-input-specification>` for more information.
 
