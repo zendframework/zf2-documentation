@@ -124,6 +124,7 @@ Here is an example helper, which we're titling "SpecialPurpose"
 .. code-block:: php
    :linenos:
 
+   // /module/src/MyModule/View/Helper/SpecialPurpose.php
    namespace MyModule\View\Helper;
 
    use Zend\View\Helper\AbstractHelper;
