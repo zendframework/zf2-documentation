@@ -224,7 +224,7 @@ These may be satisfied at instantiation:
 
    $serviceManager = new ServiceManager();
    $serviceManager->setService('EventManager', new EventManager());
-   $serviceManager->setService('ModuleManager', new ModuleManager());
+   $serviceManager->setService('ModuleManager', new ModuleManager($config));
    $serviceManager->setService('Request', new PhpEnvironment\Request());
    $serviceManager->setService('Response', new PhpEnvironment\Response());
 
