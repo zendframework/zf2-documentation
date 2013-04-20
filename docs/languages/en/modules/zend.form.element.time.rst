@@ -26,6 +26,9 @@ This element automatically adds a ``"type"`` attribute of value ``"time"``.
            'min'  => '00:00:00',
            'max'  => '23:59:59',
            'step' => '60', // seconds; default step interval is 60 seconds
+       ))
+       ->setOptions(array(
+           'format' => 'H:i:s'
        ));
 
    $form = new Form('my-form');
@@ -43,7 +46,8 @@ Here is the same example using the array notation:
     	'type' => 'Zend\Form\Element\Time',
     	'name' => 'time',
     	'options'=> array(
-    		'label' => 'Time'
+    		'label'  => 'Time',
+    		'format' => 'H:i:s'
     	),
     	'attributes' => array(
     		'min' => '00:00:00',
@@ -54,8 +58,14 @@ Here is the same example using the array notation:
 
 .. note::
 
-   Note: the ``min``, ``max``, and ``step`` attributes should be set prior to calling Zend\\Form::prepare().
+   The ``min``, ``max``, and ``step`` attributes should be set prior to calling Zend\\Form::prepare().
    Otherwise, the default input specification for the element may not contain the correct validation rules.
+
+.. note::
+
+   The default date format for the validator is ``H:i:s``. A valid time string is however not required to have a
+   seconds part. In fact some user agent UIs such as Google Chrome and Opera submits a value on the ``H:i`` format (i.e.
+   without a second part). You might therefore want to set the date format accordingly.
 
 .. _zend.form.element.time.methods:
 
@@ -68,7 +78,7 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    :noindex:
 
    Returns a input filter specification, which includes ``Zend\Filter\StringTrim`` and will add the appropriate
-   validators based on the values from the ``min``, ``max``, and ``step`` attributes. See
+   validators based on the values from the ``min``, ``max``, and ``step`` attributes and ``format`` option. See
    :ref:`getInputSpecification in Zend\\Form\\Element\\DateTime
    <zend.form.element.date-time.methods.get-input-specification>` for more information.
 
