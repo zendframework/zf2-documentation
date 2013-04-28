@@ -131,3 +131,35 @@ before continuing.  If you're are using IIS with the URL Rewrite Module, import 
 
 You now have a working skeleton application and we can start adding the specifics
 for our application.
+
+Error reporting
+------------
+
+Optionaly you can use the APPLICATION_ENV setting in your virtualhost to let PHP output all it's errors to the browser.
+This can be usefull when you're developing your application.
+
+Edit ``index.php`` from the ``zf2-tutorial/public`` directory and change it to the following:
+
+.. code-block:: php
+
+    <?php
+
+    /**
+     * Display all errors when APPLICATION_ENV is development.
+     */
+    if ($_SERVER['APPLICATION_ENV'] == 'development') {
+        error_reporting(E_ALL);
+        ini_set("display_errors", 1);
+    }
+    
+    /**
+     * This makes our life easier when dealing with paths. Everything is relative
+     * to the application root now.
+     */
+    chdir(dirname(__DIR__));
+    
+    // Setup autoloading
+    require 'init_autoloader.php';
+    
+    // Run the application!
+    Zend\Mvc\Application::init(require 'config/application.config.php')->run();
