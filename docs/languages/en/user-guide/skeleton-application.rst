@@ -133,7 +133,7 @@ You now have a working skeleton application and we can start adding the specific
 for our application.
 
 Error reporting
-------------
+---------------
 
 Optionaly you can use the APPLICATION_ENV setting in your virtualhost to let PHP output all it's errors to the browser.
 This can be usefull when you're developing your application.
