@@ -61,7 +61,7 @@ The delegator class ``BuzzerDelegator`` has the following structure:
 
    use Zend\EventManager\EventManagerInterface;
 
-   class BuzzerDelegator extends Buzzer
+   class BuzzerDelegator
    {
        protected $realBuzzer;
        protected $eventManager;
