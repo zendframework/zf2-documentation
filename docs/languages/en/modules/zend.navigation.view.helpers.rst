@@ -75,7 +75,7 @@ In addition to the method stubs from the interface, the abstract class also impl
 
 - The static method ``setDefaultAcl()`` is used for setting a default *ACL* object that will be used by helpers.
 
-- The static method ``setDefaultRole()`` is used for setting a default *ACL* that will be used by helpers
+- The static method ``setDefaultRole()`` is used for setting a default *Role* that will be used by helpers
 
 If a container is not explicitly set, the helper will create an empty ``Zend\Navigation\Navigation``
 container when calling ``$helper->getContainer()``.

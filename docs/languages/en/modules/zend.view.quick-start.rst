@@ -89,6 +89,9 @@ module from the framework's `ZendSkeletonApplication`_, or to one of your autolo
                'application' => __DIR__ . '/../view',
            ),
 
+           // This will be used as the default suffix for template scripts resolving, it defaults to 'phtml'.
+           'default_template_suffix' => 'php',
+
            // Set the template name for the site's layout.
            //
            // By default, the MVC's default Rendering Strategy uses the
