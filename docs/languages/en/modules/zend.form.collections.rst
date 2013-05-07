@@ -204,18 +204,14 @@ Here is the ``Brand`` fieldset:
 
     namespace Application\Form;
     
-    use Application\Entity\Brand;
     use Zend\Form\Fieldset;
     use Zend\InputFilter\InputFilterProviderInterface;
-    use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
     
     class BrandFieldset extends Fieldset implements InputFilterProviderInterface
     {
         public function __construct()
         {
             parent::__construct('brand');
-            $this->setHydrator(new ClassMethodsHydrator(false))
-                ->setObject(new Brand());
     
             $this->add(array(
                 'name' => 'name',
@@ -252,16 +248,7 @@ Here is the ``Brand`` fieldset:
         }
     }
 
-We can discover some new things here. As you can see, the fieldset calls the
-method ``setHydrator()``, giving it a ``ClassMethods`` hydrator, and the
-``setObject()`` method, giving it an empty instance of a concrete ``Brand``
-object.
-
-When the data will be validated, the ``Form`` will automatically iterate through
-all the field sets it contains, and automatically populate the sub-objects, in
-order to return a complete entity.
-
-Also notice that the ``Url`` element has a type of ``Zend\Form\Element\Url``.
+Notice that the ``Url`` element has a type of ``Zend\Form\Element\Url``.
 This information will be used to validate the input field. You don't need to
 manually add filters or validators for this input as that element provides a
 reasonable input specification.
@@ -278,18 +265,14 @@ Here is the ``Category`` fieldset:
 
     namespace Application\Form;
     
-    use Application\Entity\Category;
     use Zend\Form\Fieldset;
     use Zend\InputFilter\InputFilterProviderInterface;
-    use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
     
     class CategoryFieldset extends Fieldset implements InputFilterProviderInterface
     {
         public function __construct()
         {
             parent::__construct('category');
-            $this->setHydrator(new ClassMethodsHydrator(false))
-                 ->setObject(new Category());
     
             $this->setLabel('Category');
     
@@ -325,18 +308,14 @@ And finally the ``Product`` fieldset:
 
     namespace Application\Form;
     
-    use Application\Entity\Product;
     use Zend\Form\Fieldset;
     use Zend\InputFilter\InputFilterProviderInterface;
-    use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
     
     class ProductFieldset extends Fieldset implements InputFilterProviderInterface
     {
         public function __construct()
         {
             parent::__construct('product');
-            $this->setHydrator(new ClassMethodsHydrator(false))
-                 ->setObject(new Product());
     
             $this->add(array(
                 'name' => 'name',
@@ -411,9 +390,9 @@ First, notice how the brand element is added: we specify it to be of type
 ``Application\Form\BrandFieldset``. This is how you handle a OneToOne
 relationship.  When the form is validated, the ``BrandFieldset`` will first be
 populated, and will return a ``Brand`` entity (as we have specified a
-``ClassMethods`` hydrator, and bound the fieldset to a ``Brand`` entity using
-the ``setObject()`` method). This ``Brand`` entity will then be used to populate
-the ``Product`` entity by calling the ``setBrand()`` method.
+``ClassMethods`` hydrator in the controller below, and bound the fieldset to a ``Brand`` 
+entity using the ``setObject()`` method). This ``Brand`` entity will then be used 
+to populate the ``Product`` entity by calling the ``setBrand()`` method.
 
 The next element shows you how to handle OneToMany relationship. The type is
 ``Zend\Form\Element\Collection``, which is a specialized element to handle such
@@ -449,7 +428,6 @@ not forms. And only ``Form`` instances can be validated. So here is the form :
     
     use Zend\Form\Form;
     use Zend\InputFilter\InputFilter;
-    use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
     
     class CreateProduct extends Form
     {
@@ -458,7 +436,6 @@ not forms. And only ``Form`` instances can be validated. So here is the form :
             parent::__construct('create_product');
     
             $this->setAttribute('method', 'post')
-                 ->setHydrator(new ClassMethodsHydrator(false))
                  ->setInputFilter(new InputFilter());
     
             $this->add(array(
@@ -505,6 +482,12 @@ Now, let's create the action in the controller:
 
 .. code-block:: php
 
+        use Application\Entity\Brand;
+        use Application\Entity\Category;
+        use Application\Entity\Product;
+        use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
+        ...
+
        /**
          * @return array
          */
@@ -512,6 +495,18 @@ Now, let's create the action in the controller:
         {
             $form = new CreateProduct();
             $product = new Product();
+            
+            /* Prepare form for object hydration */
+            $form->get('product')
+                ->setHydrator(new ClassMethodsHydrator(false))
+                ->setObject(new Product());
+            $form->get('product')->get('brand')
+                ->setHydrator(new ClassMethodsHydrator(false))
+                ->setObject(new Brand());
+            $form->get('product')->get('categories')->getTargetElement()
+                ->setObject(new Category())
+                ->setHydrator(new ClassMethodsHydrator(false));
+            
             $form->bind($product);
             
             $request = $this->getRequest();
@@ -528,8 +523,20 @@ Now, let's create the action in the controller:
             );
         }
 
-This is super easy. Nothing to do in the controllers. All the magic is done
-behind the scene.
+We can discover some new things here. As you can see, we call the
+method ``setHydrator()``, giving it a ``ClassMethods`` hydrator, and the
+``setObject()`` method, giving it an empty instance of a concrete ``Brand``
+object. The same is done for the ``Product``.
+
+When the data will be validated, the ``Form`` will automatically iterate through
+all the field sets it contains, and automatically populate the sub-objects, in
+order to return a complete entity.
+
+Notice the ``getTargetElement()`` which returns the collection ``target_element``
+set in the forms definition. This way you can set the hydrator and the object
+(``setObject(new Category())``) used as template for all collection elements.
+
+
 
 .. _zend.form.collections.view
 
