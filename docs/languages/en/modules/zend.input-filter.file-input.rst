@@ -32,7 +32,7 @@ Usage of ``FileInput`` is essentially the same as ``Input``:
    // Description text input
    $description = new Input('description'); // Standard Input type
    $description->getFilterChain()           // Filters are run first w/ Input
-               ->attach(new Filter\StringTrim();
+               ->attach(new Filter\StringTrim());
    $description->getValidatorChain()        // Validators are run second w/ Input
                ->addValidator(new Validator\StringLength(array('max' => 140));
 
