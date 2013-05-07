@@ -13,6 +13,8 @@
 
 .. |LearningZendFramework| replace:: Learning Zend Framework 2
 
+.. |Migration| replace:: Migration
+
 .. |ZendFrameworkReference| replace:: Zend Framework 2 Reference
 
 .. |ZendServiceReference| replace:: Services for Zend Framework 2 Reference
