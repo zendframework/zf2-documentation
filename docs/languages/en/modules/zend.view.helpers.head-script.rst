@@ -61,7 +61,7 @@ you wish to use in the element.
 
    .. _zend.view.helpers.initial.headscript.noescape:
 
-   .. rubric:: Create an jQuery template with the headScript
+   .. rubric:: Create a jQuery template with the headScript
 
    .. code-block:: php
       :linenos:
@@ -71,7 +71,7 @@ you wish to use in the element.
       $this->headScript()->appendScript(
           $template,
           'text/x-jquery-tmpl',
-          array('id='tmpl-book', 'noescape' => true)
+          array('id' => 'tmpl-book', 'noescape' => true)
       );
 
 
