@@ -25,7 +25,7 @@ app, a home page, and an albums area.
         'options' => array(
             'route'    => '/',
             'defaults' => array(
-                'controller' => 'Application\Controller\Album', // <-- change back here
+                'controller' => 'Application\Controller\Index', // <-- change back here
                 'action'     => 'index',
             ),
         ),
@@ -54,7 +54,7 @@ application, and not just to our album pages:
     'service_manager' => array(
         'factories' => array(
             'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
-            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory', \\ <-- add this
+            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory', // <-- add this
         ),
     ),
 
