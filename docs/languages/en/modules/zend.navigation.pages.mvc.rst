@@ -12,22 +12,25 @@ determine if the page is active.
 
 .. table:: MVC page options
 
-   +----------+---------------------------------------+-------+--------------------------------------------------------+
-   |Key       |Type                                   |Default|Description                                             |
-   +==========+=======================================+=======+========================================================+
-   |action    |String                                 |NULL   |Action name to use when generating href to the page.    |
-   +----------+---------------------------------------+-------+--------------------------------------------------------+
-   |controller|String                                 |NULL   |Controller name to use when generating href to the page.|
-   +----------+---------------------------------------+-------+--------------------------------------------------------+
-   |params    |Array                                  |array()|User params to use when generating href to the page.    |
-   +----------+---------------------------------------+-------+--------------------------------------------------------+
-   |route     |String                                 |NULL   |Route name to use when generating href to the page.     |
-   +----------+---------------------------------------+-------+--------------------------------------------------------+
-   |routeMatch|``Zend\Mvc\Router\RouteMatch``         |NULL   |RouteInterface matches used for routing parameters and  |
-   |          |                                       |       |testing validity.                                       |
-   +----------+---------------------------------------+-------+--------------------------------------------------------+
-   |router    |``Zend\Mvc\Router\RouteStackInterface``|NULL   |Router for assembling URLs                              |
-   +----------+---------------------------------------+-------+--------------------------------------------------------+
+   +-------------+---------------------------------------+-------+--------------------------------------------------------+
+   |Key          |Type                                   |Default|Description                                             |
+   +=============+=======================================+=======+========================================================+
+   |action       |String                                 |NULL   |Action name to use when generating href to the page.    |
+   +-------------+---------------------------------------+-------+--------------------------------------------------------+
+   |controller   |String                                 |NULL   |Controller name to use when generating href to the page.|
+   +-------------+---------------------------------------+-------+--------------------------------------------------------+
+   |params       |Array                                  |array()|User params to use when generating href to the page.    |
+   +-------------+---------------------------------------+-------+--------------------------------------------------------+
+   |route        |String                                 |NULL   |Route name to use when generating href to the page.     |
+   +-------------+---------------------------------------+-------+--------------------------------------------------------+
+   |routeMatch   |``Zend\Mvc\Router\RouteMatch``         |NULL   |RouteInterface matches used for routing parameters and  |
+   |             |                                       |       |testing validity.                                       |
+   +-------------+---------------------------------------+-------+--------------------------------------------------------+
+   |useRouteMatch|Boolean                                |FALSE  |If true and set routeMatch than getHref function will   |
+   |             |                                       |       |use routeMatch parameters to assemble URI               |
+   +-------------+---------------------------------------+-------+--------------------------------------------------------+
+   |router       |``Zend\Mvc\Router\RouteStackInterface``|NULL   |Router for assembling URLs                              |
+   +-------------+---------------------------------------+-------+--------------------------------------------------------+
 
 .. note::
 
