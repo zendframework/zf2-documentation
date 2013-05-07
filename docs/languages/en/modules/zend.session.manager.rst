@@ -122,7 +122,7 @@ The following illustrates how you might utilize the above configuration to creat
                        return $sessionManager;
                    },
                ),
-           )
+           );
        }
    }
 
