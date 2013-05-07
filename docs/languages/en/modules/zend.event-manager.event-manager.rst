@@ -221,7 +221,7 @@ Note that if you specify a priority, that priority will be used for all events s
 
 .. _zend.event-manager.event-manager.quick-start.wildcard.shared-wildcard:
 
-.. rubric:: Attaching to many events at once via a SharedEventManager
+.. rubric:: Attaching using the wildcard via a SharedEventManager
 
 .. code-block:: php
    :linenos:
