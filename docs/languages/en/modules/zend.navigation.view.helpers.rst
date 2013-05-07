@@ -402,3 +402,5 @@ In addition to the container above, the following setup is assumed:
        }
        /* ... */
    }
+
+.. _`Sitemaps XML format`: http://www.sitemaps.org/protocol.php

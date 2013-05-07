@@ -256,14 +256,13 @@ Render the sitemap using a maximum depth of 1.
    **UTF-8 encoding used by default**
 
    By default, Zend Framework uses *UTF-8* as its default encoding, and, specific to this case, ``Zend\View`` does
-   as well. Character encoding can be set differently on the view object itself using the ``setEncoding()`` method
-   (or the the ``encoding`` instantiation parameter). However, since ``Zend\View\Interface`` does not define
-   accessors for encoding, it's possible that if you are using a custom view implementation with the Dojo view
-   helper, you will not have a ``getEncoding()`` method, which is what the view helper uses internally for
-   determining the character set in which to encode.
+   as well. So if you want to use another encoding with ``Sitemap``, you will have do three things:
+      1. Create a custom renderer and implement a ``getEncoding()`` method;
+      2. Create a custom rendering strategy that will return an instance of your custom renderer;
+      3. Attach the custom strategy in the ``ViewEvent``;
 
-   If you do not want to utilize *UTF-8* in such a situation, you will need to implement a ``getEncoding()`` method
-   in your custom view implementation.
+   See the :ref:`example from **headStile** documentation <zend.view.helpers.initial.headstyle.encoding.example>`
+   to see how you can achieve this.
 
 .. _`Sitemaps XML format`: http://www.sitemaps.org/protocol.php
 .. _`Sitemaps on Wikipedia`: http://en.wikipedia.org/wiki/Sitemaps
