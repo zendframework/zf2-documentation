@@ -345,8 +345,6 @@ Here is how we can accomplish this, by modifying the ``testIndexActionCanBeAcces
 test method as follows:
 
 .. code-block:: php
-    :linenos:
-    :emphasize-lines: 3-13
 
     public function testIndexActionCanBeAccessed()
     {
