@@ -19,7 +19,7 @@ Installation requirements for the AggregateHydrator
 The ``AggregateHydrator`` is based on the ``Zend\EventManager`` component, so be
 sure to have it installed before getting started:
 
-.. code-block:: sh
+.. code-block:: bash
    php composer.phar require zendframework/zend-eventmanager:2.*
 
 .. _zend.stdlib.aggregate.hydrator.usage:
