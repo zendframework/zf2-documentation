@@ -62,6 +62,37 @@ the user that created it, the time it was created, the current publishing status
    keys, you may decide which one has to be executed first or last by passing a
    higher or lower integer priority to the second argument of ``AggregateHydrator::add``
 
+In order to work with this logic, each of the hydrators that are attached should
+just ignore any unknown object type passed in, such as in following example:
+
+.. code-block:: php
+   :linenos:
+
+   namespace My;
+
+   use Zend\Stdlib\Hydrator\HydratorInterface
+
+   class BlogPostHydrator implements HydratorInterface
+   {
+       public function hydrate($data, $object)
+       {
+           if (!$object instanceof BlogPost) {
+               return $object;
+           }
+
+           // ... continue hydration ...
+       }
+
+       public function extract($object)
+       {
+           if (!$object instanceof BlogPost) {
+               return array();
+           }
+
+           // ... continue extraction ...
+       }
+   }
+
 .. _zend.stdlib.aggregate.hydrator.advanced.use.cases:
 
 Advanced use cases of the AggregateHydrator
