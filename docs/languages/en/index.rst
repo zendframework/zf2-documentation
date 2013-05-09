@@ -734,6 +734,7 @@ Zend\\Stdlib
         * :doc:`modules/zend.stdlib.hydrator`
         * :doc:`modules/zend.stdlib.hydrator.filter`
         * :doc:`modules/zend.stdlib.hydrator.strategy`
+        * :doc:`modules/zend.stdlib.aggregate.hydrator`
 
 .. _zend.tag:
 
