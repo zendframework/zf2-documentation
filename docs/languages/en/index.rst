@@ -224,6 +224,7 @@
    modules/zend.stdlib.hydrator
    modules/zend.stdlib.hydrator.filter
    modules/zend.stdlib.hydrator.strategy
+   modules/zend.stdlib.hydrator.aggregate
    modules/zend.tag.introduction
    modules/zend.tag.cloud
    modules/zend.test.introduction
@@ -734,7 +735,7 @@ Zend\\Stdlib
         * :doc:`modules/zend.stdlib.hydrator`
         * :doc:`modules/zend.stdlib.hydrator.filter`
         * :doc:`modules/zend.stdlib.hydrator.strategy`
-        * :doc:`modules/zend.stdlib.aggregate.hydrator`
+        * :doc:`modules/zend.stdlib.hydrator.aggregate`
 
 .. _zend.tag:
 
