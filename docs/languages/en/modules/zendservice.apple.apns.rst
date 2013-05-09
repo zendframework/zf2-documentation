@@ -138,10 +138,8 @@ last send.
 .. code-block:: php
    :linenos:   
 
-   use ZendService\Apple\Apns\Client\Message as Client;
-   use ZendService\Apple\Apns\Message;
-   use ZendService\Apple\Apns\Message\Alert;
-   use ZendService\Apple\Apns\Response\Message as Response;
+   use ZendService\Apple\Apns\Client\Feedback as Client;
+   use ZendService\Apple\Apns\Response\Feedback as Response;
    use ZendService\Apple\Apns\Exception\RuntimeException;
 
    $client = new Client();
