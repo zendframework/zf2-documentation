@@ -157,7 +157,8 @@ The plugin exposes a single method, ``dispatch()``, which takes two arguments:
   defined and recognized by the ``ServiceManager`` instance attached to the invoking controller.
 
 - ``$params`` is an optional array of parameters with which to see a ``RouteMatch`` object for purposes of this
-  specific request.
+  specific request. Meaning the parameters will be matched by their key to the routing identifiers in the config
+  (otherwise non-matching keys are ignored)
 
 ``Forward`` returns the results of dispatching the requested controller; it is up to the developer to determine
 what, if anything, to do with those results. One recommendation is to aggregate them in any return value from the
