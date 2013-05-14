@@ -153,10 +153,10 @@ services configured out of the box.
     ``Zend\Mvc\Service\DiStrictAbstractServiceFactoryFactory`` injecting the ``Di`` service
     instance.
 
-  - ``EventManager``, mapping to ``Zend\Mvc\Service\EventManagerFactory``. This factory composes a
-    shared reference to a ``SharedEventManager``, which is injected in a new ``EventManager``
-    instance. This service is not shared by default, allowing the ability to have an
-    ``EventManager`` per service, with a shared ``SharedEventManager`` injected in each.
+  - ``EventManager``, mapping to ``Zend\Mvc\Service\EventManagerFactory``. This factory returns a
+    new instance of ``Zend\EventManager\EventManager`` on each request.  This service is not shared
+    by default, allowing the ability to have an ``EventManager`` per service, with a shared
+    ``SharedEventManager`` injected in each.
 
   - ``FilterManager``, mapping to ``Zend\Mvc\Service\FilterManagerFactory``. This instantiates the
     ``Zend\Filter\FilterPluginManager`` instance, passing it the service manager instance -- this is
