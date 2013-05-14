@@ -8,6 +8,14 @@ Zend\\Navigation\\Page\\Mvc
 ``isActive()`` method will compare the ``Zend\Mvc\Router\RouteMatch`` params with the page's params to
 determine if the page is active.
 
+.. note::
+
+    Starting in version 2.2.0, if you want to re-use any matched route
+    parameters when generating a link, you can do so via the "useRouteMatch"
+    flag. This is particularly useful when creating segment routes that include
+    the currently selected language or locale as an initial segment, as it
+    ensures the links generated all include the matched value.
+
 .. _zend.navigation.pages.mvc.options:
 
 .. table:: MVC page options
@@ -26,8 +34,8 @@ determine if the page is active.
    |routeMatch   |``Zend\Mvc\Router\RouteMatch``         |NULL   |RouteInterface matches used for routing parameters and  |
    |             |                                       |       |testing validity.                                       |
    +-------------+---------------------------------------+-------+--------------------------------------------------------+
-   |useRouteMatch|Boolean                                |FALSE  |If true and set routeMatch than getHref function will   |
-   |             |                                       |       |use routeMatch parameters to assemble URI               |
+   |useRouteMatch|Boolean                                |FALSE  |If true, then getHref method will use the               |
+   |             |                                       |       |routeMatch parameters to assemble the URI               |
    +-------------+---------------------------------------+-------+--------------------------------------------------------+
    |router       |``Zend\Mvc\Router\RouteStackInterface``|NULL   |Router for assembling URLs                              |
    +-------------+---------------------------------------+-------+--------------------------------------------------------+
