@@ -66,7 +66,7 @@ So to translate all validation messages to German for example, all you have to d
 .. code-block:: php
    :linenos:
 
-   $translator = new Zend\I18n\Translator\Translator();
+   $translator = new Zend\Mvc\I18n\Translator();
    $translator->addTranslationFile(
        'phpArray',
        'resources/languages/en.php',

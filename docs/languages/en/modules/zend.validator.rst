@@ -133,27 +133,54 @@ may be supported on a case-by-case basis in each validation class.
 Translating messages
 --------------------
 
+.. note::
+
+    In versions 2.0 - 2.1, ``Zend\Validator\AbstractValidator`` implemented
+    ``Zend\I18n\Translator\TranslatorAwareInterface`` and accepted instances of
+    ``Zend\I18n\Translator\Translator``. Starting in version 2.2.0,
+    ``Zend\Validator`` now defines a translator interface,
+    ``Zend\Validator\Translator\TranslatorInterface``, as well as it's own -aware variant,
+    ``Zend\Validator\Translator\TranslatorAwareInterface``. This was done to reduce dependencies for
+    the component, and follows the principal of Separated Interfaces.
+
+    The upshot is that if you are migrating from a pre-2.2 version, and receiving errors indicating
+    that the translator provided does not implement
+    ``Zend\Validator\Translator\TranslatorInterface``, you will need to make a change to your code.
+
+    An implementation of ``Zend\Validator\Translator\TranslatorInterface`` is provided in
+    ``Zend\Mvc\I18n\Translator``, which also extends ``Zend\I18n\Translator\Translator``. This
+    version can be instantiated and used just as the original ``Zend\I18n`` version.
+
+    A new service has also been registered with the MVC, ``MvcTranslator``, which will return this
+    specialized, bridge instance.
+
+    Most users should see no issues, as ``Zend\Validator\ValidatorPluginManager`` has been modified
+    to use the ``MvcTranslator`` service internally, which is how most developers were getting the
+    translator instance into validators in the first place. You will only need to change code if you
+    were manually injecting the instance previously.
+
 Validator classes provide a ``setTranslator()`` method with which you can specify an instance of
-``Zend\I18n\Translator\Translator`` which will translate the messages in case of a validation failure. The
-``getTranslator()`` method returns the set translator instance.
+``Zend\Validator\Translator\TranslatorInterface`` which will translate the messages in case of a
+validation failure. The ``getTranslator()`` method returns the translator instance.
+``Zend\Mvc\I18n\Translator`` provides an implementation compatible with the validator component.
 
 .. code-block:: php
    :linenos:
 
    $validator = new Zend\Validator\StringLength(array('min' => 8, 'max' => 12));
-   $translate = new Zend\I18n\Translator\Translator();
+   $translate = new Zend\Mvc\Translator\Translator();
    // configure the translator...
 
    $validator->setTranslator($translate);
 
-With the static ``setDefaultTranslator()`` method you can set a instance of ``Zend\I18n\Translator\Translator``
+With the static ``setDefaultTranslator()`` method you can set a instance of ``Zend\Validator\Translator\TranslatorInterface``
 which will be used for all validation classes, and can be retrieved with ``getDefaultTranslator()``. This prevents
 you from setting a translator manually for all validator classes, and simplifies your code.
 
 .. code-block:: php
    :linenos:
 
-   $translate = new Zend\I18n\Translator\Translator();
+   $translate = new Zend\Mvc\I18n\Translator();
    // configure the translator...
 
    Zend\Validator\AbstractValidator::setDefaultTranslator($translate);
