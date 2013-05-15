@@ -422,6 +422,14 @@ It is important to know that in this API, a distinction is made between what ele
 (TYPE_IDENTIFIER) and which of those is a value (TYPE_VALUE). There is also a special use case type for literal
 values (TYPE_LITERAL). These are all exposed via the ``Zend\Db\Sql\ExpressionInterface`` interface.
 
+Note: In ZF 2.1, an actual ``Literal`` type was added.  ``Zend\Db\Sql`` now makes
+the distinction that Literals will not have any parameters that need
+interpolating whereas it is expected that Expressions *might* have parameters
+that need interpolating.  In cases where there are parameters in an Expression
+Zend\Db\Sql\AbstractSql will do its best to identify placeholders when the 
+Expression is processed during statement creation.  In short, if you don't have
+parameters, use Literal objects.
+
 The Zend\\Db\\Sql\\Where (Predicate/PredicateSet) API:
 
 .. code-block:: php
@@ -446,7 +454,8 @@ The Zend\\Db\\Sql\\Where (Predicate/PredicateSet) API:
         public function lessThanOrEqualTo($left, $right, $leftType = self::TYPE_IDENTIFIER, $rightType = self::TYPE_VALUE);
         public function greaterThanOrEqualTo($left, $right, $leftType = self::TYPE_IDENTIFIER, $rightType = self::TYPE_VALUE);
         public function like($identifier, $like);
-        public function literal($literal, $parameter);
+        public function literal($literal);
+        public function expression($expression, $parameter);
         public function isNull($identifier);
         public function isNotNull($identifier);
         public function in($identifier, array $valueSet = array());
@@ -532,24 +541,46 @@ like($identifier, $like):
        public function getLike();
    }
 
-literal($literal, $parameter);
-..............................
+literal($literal);
+..................
 
 .. code-block:: php
    :linenos:
 
-   $where->literal($literal, $parameter);
+   $where->literal($literal);
 
    // same as
    $where->addPredicate(
-       new Predicate\Expression($literal, $parameter)
+       new Predicate\Literal($literal)
+   );
+
+   // full API
+   class Literal implements ExpressionInterface, PredicateInterface
+   {
+       const PLACEHOLDER = '?';
+   	   public function __construct($literal = '');
+       public function setLiteral($literal);
+       public function getLiteral();
+   }
+   
+expression($expression, $parameter);
+....................................
+
+.. code-block:: php
+   :linenos:
+
+   $where->expression($expression, $parameter);
+
+   // same as
+   $where->addPredicate(
+       new Predicate\Expression($expression, $parameter)
    );
 
    // full API
    class Expression implements ExpressionInterface, PredicateInterface
    {
        const PLACEHOLDER = '?';
-   	public function __construct($expression = null, $valueParameter = null /*[, $valueParameter, ... ]*/);
+   	   public function __construct($expression = null, $valueParameter = null /*[, $valueParameter, ... ]*/);
        public function setExpression($expression);
        public function getExpression();
        public function setParameters($parameters);
