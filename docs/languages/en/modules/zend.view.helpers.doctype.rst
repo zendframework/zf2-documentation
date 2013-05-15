@@ -19,7 +19,11 @@ The ``Doctype`` helper allows you to specify one of the following types:
 
 - ``XHTML1_RDFA``
 
+- ``XHTML1_RDFA11``
+
 - ``XHTML_BASIC1``
+
+- ``XHTML5``
 
 - ``HTML4_STRICT``
 
@@ -28,6 +32,10 @@ The ``Doctype`` helper allows you to specify one of the following types:
 - ``HTML4_FRAMESET``
 
 - ``HTML5``
+
+- ``CUSTOM_XHTML``
+
+- ``CUSTOM``
 
 You can also specify a custom doctype as long as it is well-formed.
 
