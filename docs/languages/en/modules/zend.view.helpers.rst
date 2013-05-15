@@ -74,6 +74,11 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
 
 .. note::
 
+   View helpers related to **form** are documented in the
+   :ref:`Form View Helpers <zend.form.view.helpers>` chapter.
+
+.. note::
+
    View helpers related to **navigation** are documented in the
    :ref:`Navigation View Helpers <zend.navigation.view.helpers>` chapter.
 
