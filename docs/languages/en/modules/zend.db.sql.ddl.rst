@@ -6,7 +6,7 @@ Zend\\Db\\Sql\\Ddl
 ``Zend\Db\Sql\Ddl`` is a sub-component of ``Zend\Db\Sql`` that allows consumers
 to create statement objects that will produce DDL (Data Definition Language) SQL
 statements.  When combined with a platform specific ``Zend\Db\Sql\Sql`` object,
-these DDL objects are capable of producing platform-specific CREATE TABLE
+these DDL objects are capable of producing platform-specific ``CREATE TABLE``
 statements, with specialized data types, constraints, and indexes for a
 database/schema.
 
@@ -21,11 +21,11 @@ Creating Tables
 ===============
 
 Like ``Zend\Db\Sql`` objects, each statement type is represented by a class.
-For example, CREATE TABLE is modeled by a CreateTable object; this is likewise
-the same for ALTER TABLE (as AlterTable), and DROP TABLE (as DropTable).  These
-classes exist in the ``Zend\Db\Sql\Ddl`` namespace.  To initiate the building of
-a DDL statement, such as CreateTable, one needs to instantiate the object.
-There are a couple of valid patterns for this:
+For example, ``CREATE TABLE`` is modeled by a ``CreateTable`` object; this is
+likewise the same for ``ALTER TABLE`` (as ``AlterTable``), and ``DROP TABLE``
+(as ``DropTable``).  These classes exist in the ``Zend\Db\Sql\Ddl`` namespace.
+To initiate the building of a DDL statement, such as ``CreateTable``, one needs
+to instantiate the object. There are a couple of valid patterns for this:
 
 .. code-block:: php
     :linenos:
@@ -93,8 +93,8 @@ same way:
 
 The primary difference between a ``CreateTable`` and ``AlterTable`` is that
 the ``AlterTable`` takes into account that the table and its assets already
-exist.  Therefore, while you still have addColumn(), addConstraint(); you will
-also see the ability to change existing columns:
+exist.  Therefore, while you still have ``addColumn()``, ``addConstraint()``;
+you will also see the ability to change existing columns:
 
 .. code-block:: php
     :linenos:
@@ -115,7 +115,7 @@ Or drop existing columns or constraints:
 Dropping Tables
 ===============
 
-Dropping a table is a simple as creating a DropTable statement object:
+Dropping a table is a simple as creating a ``DropTable`` statement object:
 
 .. code-block:: php
     :linenos:
@@ -129,11 +129,11 @@ Executing DDL Statements
 
 After a DDL statement object has been created and configured, execution of this
 object might be the next step.   To do this, it is optimal to utilize two other
-objects to make this happen: an Adapter object, and a properly seeded Sql
-object.
+objects to make this happen: an ``Adapter`` object, and a properly seeded
+``Sql`` object.
 
-The workflow might look something like this, with $ddl being a CreateTable,
-AlterTable or DropTable object:
+The workflow might look something like this, with $ddl being a ``CreateTable``,
+``AlterTable`` or ``DropTable`` object:
 
 .. code-block:: php
     :linenos:
@@ -148,9 +148,10 @@ AlterTable or DropTable object:
         $adapter::QUERY_MODE_EXECUTE
     );
     
-By passing the $ddl object through the $sql object's getSqlStringForSqlObject()
-method, we ensure that any platform specific specializations/modifications are
-utilized to create a platform specific SQL statement.
+By passing the ``$ddl`` object through the ``$sql`` object's
+``getSqlStringForSqlObject()`` method, we ensure that any platform specific
+specializations/modifications are utilized to create a platform specific
+SQL statement.
 
 Next, using the ``Zend\Db\Adapter\Adapter::QUERY_MODE_EXECUTE`` ensures that the
 sql statement is not prepared as many DDL statements on a variety of platforms
@@ -166,20 +167,29 @@ implement the ``ColumnInterface`` interface.
 
 In alphabetical order:
 
-================ ============================================================================
-      Type                             Arguments For Construction
-================ ============================================================================
-Blob             $name, $length, $nullable = false, $default = null, array $options = array()
-Boolean          $name
-Char             $name, $length
-Column (generic) $name = null
-Date             $name
-Decimal          $name, $precision, $scale = null
-Float            $name, $digits, $decimal
-Integer          $name, $nullable = false, $default = null, array $options = array()
-Time             $name
-Varchar          $name, $length
-================ ============================================================================
++----------------+---------------------------------------------------------------------------------+
+|      Type      |                       Arguments For Construction                                |
++================+=================================================================================+
+|Blob            | ``$name, $length, $nullable = false, $default = null, array $options = array()``|
++----------------+---------------------------------------------------------------------------------+
+|Boolean         | ``$name``                                                                       |
++----------------+---------------------------------------------------------------------------------+
+|Char            | ``$name, $length``                                                              |
++----------------+---------------------------------------------------------------------------------+
+|Column (generic)| ``$name = null``                                                                |
++----------------+---------------------------------------------------------------------------------+
+|Date            | ``$name``                                                                       |
++----------------+---------------------------------------------------------------------------------+
+|Decimal         | ``$name, $precision, $scale = null``                                            |
++----------------+---------------------------------------------------------------------------------+
+|Float           | ``$name, $digits, $decimal``                                                    |
++----------------+---------------------------------------------------------------------------------+
+|Integer         | ``$name, $nullable = false, $default = null, array $options = array()``         |
++----------------+---------------------------------------------------------------------------------+
+|Time            | ``$name``                                                                       |
++----------------+---------------------------------------------------------------------------------+
+|Varchar         | ``$name, $length``                                                              |
++----------------+---------------------------------------------------------------------------------+
 
 Each of the above types can be utilized in any place that accepts a
 ``Column\ColumnInterface`` instance.  Currently, this is primarily in
@@ -196,14 +206,18 @@ implement the ``ConstraintInterface`` interface.
 
 In alphabetical order:
 
-================ =============================================================================================
-      Type                             Arguments For Construction
-================ =============================================================================================
-Check            $expression, $name
-ForeignKey       $name, $column, $referenceTable, $referenceColumn, $onDeleteRule = null, $onUpdateRule = null
-PrimaryKey       $columns
-UniqueKey        $column, $name = null
-================ =============================================================================================
++----------------+--------------------------------------------------------------------------------------------------+
+|      Type      |                                  Arguments For Construction                                      |
++================+==================================================================================================+
+|Check           | ``$expression, $name``                                                                           |
++----------------+--------------------------------------------------------------------------------------------------+
+|ForeignKey      | ``$name, $column, $referenceTable, $referenceColumn, $onDeleteRule = null, $onUpdateRule = null``|
++----------------+--------------------------------------------------------------------------------------------------+
+|PrimaryKey      | ``$columns``                                                                                     |
++----------------+--------------------------------------------------------------------------------------------------+
+|UniqueKey       | ``$column, $name = null``                                                                        |
++----------------+--------------------------------------------------------------------------------------------------+
+
 
 Each of the above types can be utilized in any place that accepts a
 ``Column\ConstraintInterface`` instance.  Currently, this is primarily in

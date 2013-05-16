@@ -422,13 +422,13 @@ It is important to know that in this API, a distinction is made between what ele
 (TYPE_IDENTIFIER) and which of those is a value (TYPE_VALUE). There is also a special use case type for literal
 values (TYPE_LITERAL). These are all exposed via the ``Zend\Db\Sql\ExpressionInterface`` interface.
 
-Note: In ZF 2.1, an actual ``Literal`` type was added.  ``Zend\Db\Sql`` now makes
-the distinction that Literals will not have any parameters that need
-interpolating whereas it is expected that Expressions *might* have parameters
-that need interpolating.  In cases where there are parameters in an Expression
-Zend\Db\Sql\AbstractSql will do its best to identify placeholders when the 
-Expression is processed during statement creation.  In short, if you don't have
-parameters, use Literal objects.
+.. note::  In ZF 2.1, an actual ``Literal`` type was added.  ``Zend\Db\Sql`` now makes
+  the distinction that Literals will not have any parameters that need
+  interpolating whereas it is expected that ``Expression``s *might* have parameters
+  that need interpolating.  In cases where there are parameters in an ``Expression``
+  ``Zend\Db\Sql\AbstractSql`` will do its best to identify placeholders when the 
+  Expression is processed during statement creation.  In short, if you don't have
+  parameters, use ``Literal`` objects.
 
 The Zend\\Db\\Sql\\Where (Predicate/PredicateSet) API:
 
@@ -558,7 +558,7 @@ literal($literal);
    class Literal implements ExpressionInterface, PredicateInterface
    {
        const PLACEHOLDER = '?';
-   	   public function __construct($literal = '');
+       public function __construct($literal = '');
        public function setLiteral($literal);
        public function getLiteral();
    }
@@ -580,7 +580,7 @@ expression($expression, $parameter);
    class Expression implements ExpressionInterface, PredicateInterface
    {
        const PLACEHOLDER = '?';
-   	   public function __construct($expression = null, $valueParameter = null /*[, $valueParameter, ... ]*/);
+       public function __construct($expression = null, $valueParameter = null /*[, $valueParameter, ... ]*/);
        public function setExpression($expression);
        public function getExpression();
        public function setParameters($parameters);
