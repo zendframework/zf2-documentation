@@ -74,6 +74,7 @@
    modules/zend.db.adapter
    modules/zend.db.result-set
    modules/zend.db.sql
+   modules/zend.db.sql.ddl
    modules/zend.db.table-gateway
    modules/zend.db.row-gateway
    modules/zend.db.metadata
@@ -402,6 +403,7 @@ Zend\\Db
         * :doc:`modules/zend.db.adapter`
         * :doc:`modules/zend.db.result-set`
         * :doc:`modules/zend.db.sql`
+        * :doc:`modules/zend.db.sql.ddl`
         * :doc:`modules/zend.db.table-gateway`
         * :doc:`modules/zend.db.row-gateway`
         * :doc:`modules/zend.db.metadata`
