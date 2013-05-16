@@ -12,8 +12,8 @@ database/schema.
 
 The following platforms have platform specializations for DDL:
 
-* MySQL
-* Anything SQL92
+- MySQL
+- All databases compatible with ANSI SQL92
 
 .. _zend.db.sql.ddl.creating-tables:
 
@@ -30,7 +30,6 @@ to instantiate the object. There are a couple of valid patterns for this:
 .. code-block:: php
     :linenos:
     
-    use Zend\Db\Sql\Sql;
     use Zend\Db\Sql\Ddl;
 
     $table = new Ddl\CreateTable();
@@ -41,7 +40,7 @@ to instantiate the object. There are a couple of valid patterns for this:
     // optionally, as a temporary table
     $table = new Ddl\CreateTable('bar', true);
     
-Table can be set after instantiation:
+You can also set the table after instantiation:
     
 .. code-block:: php
     :linenos:
@@ -74,8 +73,7 @@ Beyond adding columns to a table, constraints can also be added:
 Altering Tables
 ===============
 
-Similarly to ``CreateTable``, ``AlterTable`` can be instantiated in much the
-same way:
+Similarly to ``CreateTable``, you may also instantiate ``AlterTable``:
 
 .. code-block:: php
     :linenos:
@@ -90,31 +88,31 @@ same way:
     // optionally, as a temporary table
     $table = new Ddl\AlterTable('bar', true);
 
-The primary difference between a ``CreateTable`` and ``AlterTable`` is that
-the ``AlterTable`` takes into account that the table and its assets already
-exist.  Therefore, while you still have ``addColumn()``, ``addConstraint()``;
-you will also see the ability to change existing columns:
+The primary difference between a ``CreateTable`` and ``AlterTable`` is that the
+``AlterTable`` takes into account that the table and its assets already exist.
+Therefore, while you still have ``addColumn()`` and ``addConstraint()``, you
+will also see the ability to change existing columns:
 
 .. code-block:: php
     :linenos:
 
-    use Zend\Db\Sql\Ddl\Column as Col;
-    $table->changeColumn('name', Col\Varchar('new_name', 50));
+    use Zend\Db\Sql\Ddl\Column;
+    $table->changeColumn('name', Column\Varchar('new_name', 50));
 
-Or drop existing columns or constraints:
+You may also drop existing columns or constraints:
 
 .. code-block:: php
     :linenos:
     
-    $t->dropColumn('foo');
-    $t->dropConstraint('my_index');
+    $table->dropColumn('foo');
+    $table->dropConstraint('my_index');
 
 .. _zend.db.sql.ddl.dropping-tables:
 
 Dropping Tables
 ===============
 
-Dropping a table is a simple as creating a ``DropTable`` statement object:
+To drop a table, create a ``DropTable`` statement object:
 
 .. code-block:: php
     :linenos:
@@ -126,13 +124,12 @@ Dropping a table is a simple as creating a ``DropTable`` statement object:
 Executing DDL Statements
 ========================
 
-After a DDL statement object has been created and configured, execution of this
-object might be the next step.   To do this, it is optimal to utilize two other
-objects to make this happen: an ``Adapter`` object, and a properly seeded
-``Sql`` object.
+After a DDL statement object has been created and configured, at some point you
+will want to execute the statement. To do this, you will need two other objects:
+an ``Adapter`` instance, and a properly seeded ``Sql`` instance.
 
-The workflow might look something like this, with $ddl being a ``CreateTable``,
-``AlterTable`` or ``DropTable`` object:
+The workflow looks something like this, with ``$ddl`` being a ``CreateTable``,
+``AlterTable``, or ``DropTable`` instance:
 
 .. code-block:: php
     :linenos:
@@ -152,9 +149,9 @@ By passing the ``$ddl`` object through the ``$sql`` object's
 specializations/modifications are utilized to create a platform specific
 SQL statement.
 
-Next, using the ``Zend\Db\Adapter\Adapter::QUERY_MODE_EXECUTE`` ensures that the
-sql statement is not prepared as many DDL statements on a variety of platforms
-cannot be prepared then executed, but only executed.
+Next, using the constant ``Zend\Db\Adapter\Adapter::QUERY_MODE_EXECUTE`` ensures
+that the SQL statement is not prepared, as many DDL statements on a variety of
+platforms cannot be prepared, only executed.
     
 .. _zend.db.sql.ddl.supported-data-types:
 
@@ -162,60 +159,60 @@ Currently Supported Data Types
 ==============================
 
 These types exist in the ``Zend\Db\Sql\Ddl\Column`` namespace.  Data types must
-implement the ``ColumnInterface`` interface.
+implement ``Zend\Db\Sql\Ddl\Column\ColumnInterface``.
 
 In alphabetical order:
 
-+----------------+---------------------------------------------------------------------------------+
-|      Type      |                       Arguments For Construction                                |
-+================+=================================================================================+
-|Blob            | ``$name, $length, $nullable = false, $default = null, array $options = array()``|
-+----------------+---------------------------------------------------------------------------------+
-|Boolean         | ``$name``                                                                       |
-+----------------+---------------------------------------------------------------------------------+
-|Char            | ``$name, $length``                                                              |
-+----------------+---------------------------------------------------------------------------------+
-|Column (generic)| ``$name = null``                                                                |
-+----------------+---------------------------------------------------------------------------------+
-|Date            | ``$name``                                                                       |
-+----------------+---------------------------------------------------------------------------------+
-|Decimal         | ``$name, $precision, $scale = null``                                            |
-+----------------+---------------------------------------------------------------------------------+
-|Float           | ``$name, $digits, $decimal``                                                    |
-+----------------+---------------------------------------------------------------------------------+
-|Integer         | ``$name, $nullable = false, $default = null, array $options = array()``         |
-+----------------+---------------------------------------------------------------------------------+
-|Time            | ``$name``                                                                       |
-+----------------+---------------------------------------------------------------------------------+
-|Varchar         | ``$name, $length``                                                              |
-+----------------+---------------------------------------------------------------------------------+
++------------------+----------------------------------------------------------------------------------+
+|       Type       |                            Arguments For Construction                            |
++==================+==================================================================================+
+| Blob             | ``$name, $length, $nullable = false, $default = null, array $options = array()`` |
++------------------+----------------------------------------------------------------------------------+
+| Boolean          | ``$name``                                                                        |
++------------------+----------------------------------------------------------------------------------+
+| Char             | ``$name, $length``                                                               |
++------------------+----------------------------------------------------------------------------------+
+| Column (generic) | ``$name = null``                                                                 |
++------------------+----------------------------------------------------------------------------------+
+| Date             | ``$name``                                                                        |
++------------------+----------------------------------------------------------------------------------+
+| Decimal          | ``$name, $precision, $scale = null``                                             |
++------------------+----------------------------------------------------------------------------------+
+| Float            | ``$name, $digits, $decimal``                                                     |
++------------------+----------------------------------------------------------------------------------+
+| Integer          | ``$name, $nullable = false, $default = null, array $options = array()``          |
++------------------+----------------------------------------------------------------------------------+
+| Time             | ``$name``                                                                        |
++------------------+----------------------------------------------------------------------------------+
+| Varchar          | ``$name, $length``                                                               |
++------------------+----------------------------------------------------------------------------------+
 
 Each of the above types can be utilized in any place that accepts a
 ``Column\ColumnInterface`` instance.  Currently, this is primarily in
-``CreateTable::addColumn()`` and ``AlterTable``'s ``addColumn()``, and
-``changeColumn()``.
+``CreateTable::addColumn()`` and ``AlterTable``'s ``addColumn()`` and
+``changeColumn()`` methods.
 
 .. _zend.db.sql.ddl.supported-constraints:
 
 Currently Supported Constraint Types
 ====================================
 
-These types exist in the ``Zend\Db\Sql\Ddl\Constraint`` namespace.  Data types must
-implement the ``ConstraintInterface`` interface.
+These types exist in the ``Zend\Db\Sql\Ddl\Constraint`` namespace. Data types must
+implement ``Zend\Db\Sql\Ddl\Constraint\ConstraintInterface``.
 
 In alphabetical order:
 
++----------------+---------------------------------------------------------------------------------------------------+
+|      Type      |                                    Arguments For Construction                                     |
++================+===================================================================================================+
+| Check          | ``$expression, $name``                                                                            |
 +----------------+--------------------------------------------------------------------------------------------------+
-|      Type      |                                  Arguments For Construction                                      |
-+================+==================================================================================================+
-|Check           | ``$expression, $name``                                                                           |
-+----------------+--------------------------------------------------------------------------------------------------+
-|ForeignKey      | ``$name, $column, $referenceTable, $referenceColumn, $onDeleteRule = null, $onUpdateRule = null``|
-+----------------+--------------------------------------------------------------------------------------------------+
-|PrimaryKey      | ``$columns``                                                                                     |
-+----------------+--------------------------------------------------------------------------------------------------+
-|UniqueKey       | ``$column, $name = null``                                                                        |
-+----------------+--------------------------------------------------------------------------------------------------+
+| ForeignKey     | ``$name, $column, $referenceTable, $referenceColumn, $onDeleteRule = null, $onUpdateRule = null`` |
++----------------+---------------------------------------------------------------------------------------------------+
+| PrimaryKey     | ``$columns``                                                                                      |
++----------------+---------------------------------------------------------------------------------------------------+
+| UniqueKey      | ``$column, $name = null``                                                                         |
++----------------+---------------------------------------------------------------------------------------------------+
 
 
 Each of the above types can be utilized in any place that accepts a
