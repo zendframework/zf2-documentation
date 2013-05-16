@@ -30,7 +30,7 @@ The base unit of routing is a ``Route``:
 
    namespace Zend\Mvc\Router;
 
-   use zend\Stdlib\RequestInterface as Request;
+   use Zend\Stdlib\RequestInterface as Request;
 
    interface RouteInterface
    {
