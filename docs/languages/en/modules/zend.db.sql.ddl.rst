@@ -54,19 +54,19 @@ data type table in the data type section below:
 .. code-block:: php
     :linenos:
 
-    use Zend\Db\Sql\Ddl\Column as Col;
-    $table->addColumn(new Col\Integer('id'));
-    $table->addColumn(new Col\Varchar('name', 255));
+    use Zend\Db\Sql\Ddl\Column;
+    $table->addColumn(new Column\Integer('id'));
+    $table->addColumn(new Column\Varchar('name', 255));
     
 Beyond adding columns to a table, constraints can also be added:
 
 .. code-block:: php
     :linenos:
 
-    use Zend\Db\Sql\Ddl\Constraint as Cnsrt;
-    $table->addConstraint(new Cnsrt\PrimaryKey('id'));
+    use Zend\Db\Sql\Ddl\Constraint;
+    $table->addConstraint(new Constraint\PrimaryKey('id'));
     $table->addConstraint(
-        new Cnsrt\UniqueKey(['name', 'foo'], 'my_unique_key')
+        new Constraint\UniqueKey(['name', 'foo'], 'my_unique_key')
     );
 
 .. _zend.db.sql.ddl.altering-tables:
@@ -80,7 +80,6 @@ same way:
 .. code-block:: php
     :linenos:
     
-    use Zend\Db\Sql\Sql;
     use Zend\Db\Sql\Ddl;
 
     $table = new Ddl\AlterTable();
@@ -138,9 +137,9 @@ The workflow might look something like this, with $ddl being a ``CreateTable``,
 .. code-block:: php
     :linenos:
 
-    // existence of $adapter is assumed
-    
     use Zend\Db\Sql\Sql;
+
+    // existence of $adapter is assumed
     $sql = new Sql($adapter);
     
     $adapter->query(
