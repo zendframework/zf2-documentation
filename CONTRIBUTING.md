@@ -37,7 +37,8 @@ If you are not familiar with this format we suggest to have a look at this
 To render the documentation we use the [Sphinx](http://sphinx.pocoo.org/) project. At the moment we support only
 the **HTML** render format but we are going to support soon the **PDF** and **ePub** formats.
 
-There is a soft limit on the max line length of 115 characters. Is recommended to keep this limit whenever possible
+There is a soft limit on the max line length of 115 characters. It is recommended to keep this limit whenever
+possible.
 
 ## RENDER THE DOCUMENTATION
 
@@ -82,19 +83,19 @@ The name of the directory must be the [ISO 639-1 code](http://en.wikipedia.org/w
 for your language.
 
 The compilation process takes all English files in the directory 'docs/languages/en' and overwrites them with those
-in your language directory if it exists with the same filemame in the same tree. If you want to translate a file,
+in your language directory if it exists with the same filename in the same tree. If you want to translate a file,
 copy the English file to your directory and start the translation. When the translation is completed, you have
 to add a revcheck tag like '.. EN-Revision: 1a526e4' at the top of the file. '1a526e4' are the 7 first characters
 of the English commit on which your translation is based. This helps the maintainer of the translation to know if
-it exists one or multiples modifications of the English that need to be added to the translation.
+there exist one or multiple modifications of the English file that need to be added to the translation.
 
 All revcheck tags have been initialized to 'none'. This indicates to all maintainers of translations that it needs
 at least one review of the file after the automatic migration from ZF1 (Docbook to reST). We will provide in a
 next future a visual tool for translators to be able to detect non-translated files or outdated files (based on
 the revcheck tag).
 
-In this philosophy, you can translate an image if you want. But there are 2 specifics files at the
-root of English directory that you musn't translate:
+In this philosophy, you can translate an image if you want. But there are 2 specific files at the
+root of the English directory that you must not translate:
  - 'index.rst'
  - 'snippets.rst'
 
