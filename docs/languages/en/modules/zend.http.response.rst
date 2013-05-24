@@ -62,7 +62,7 @@ completely empty object to start with, by simply instantiating the ``Zend\Http\R
    $response->getHeaders()->addHeaders(array(
        'HeaderField1' => 'header-field-value',
        'HeaderField2' => 'header-field-value2',
-   );
+   ));
    $response->setContent(<<<EOS
    <html>
    <body>
@@ -363,7 +363,7 @@ Examples
    $response->getHeaders()->addHeaders(array(
        'HeaderField1' => 'header-field-value',
        'HeaderField2' => 'header-field-value2',
-   );
+   ));
    $response->setContent(<<<EOS
    <html>
    <body>
