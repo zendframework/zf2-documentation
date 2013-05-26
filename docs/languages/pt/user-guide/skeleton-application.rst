@@ -1,8 +1,8 @@
 .. EN-Revision: 96c6ad3
 .. _user-guide.skeleton-application:
 
-Getting started: A skeleton application
-=======================================
+Iniciando: A Sekeleton Application
+==================================
 
 Com o objetivo de desenolver nossa aplicação vamos começar utilizando a
 `ZendSkeletonApplication <https://github.com/zendframework/ZendSkeletonApplication>`_ 
@@ -68,7 +68,7 @@ parea criar um novo projeto inicial com Zend Framework da seguinte forma:
 
 Você pode agora prosseguir para as configurações de Virtual Host.
 
-Virtual host
+Virtual Host
 ------------
 
 Você agora precisará criar um Virtual Host no Apache para sua aplicação e editar seu
@@ -131,8 +131,8 @@ antes de continuar.  Se estiver usanso IIS com o módulo URL Rewrite utilize o s
 
 Você agora tem sua Skeleton Application funcionando e pode começar a desenvolver sua aplicação.
 
-Error reporting
----------------
+Exibição de Erros
+-----------------
 
 De forma opcional você pode usuar a configuração de ``APPLICATION_ENV`` do seu Virtual Host para
 permitir que o PHP exiba todos os erros no navegador. Isso pode ser útil durante o desenvolvimento
