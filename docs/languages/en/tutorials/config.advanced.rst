@@ -236,9 +236,8 @@ path in the system configuration slightly:
 
 .. code-block:: php
 
-    'config_glob_paths' => sprintf(
-        'config/autoload/{,*.}{global,%s,local}.php',
-        $env
+    'config_glob_paths' => array(
+        sprintf('config/autoload/{,*.}{global,%s,local}.php', $env)
     ),
 
 The above will allow you to define an additional set of application
@@ -396,7 +395,7 @@ modify the merged configuration from your module, via the ``init()`` method.
         public function onMergeConfig(ModuleEvent $e)
         {
             $configListener = $e->getConfigListener();
-            $config         = $configListener->getMergedConfig();
+            $config         = $configListener->getMergedConfig(false);
 
             // Modify the configuration; here, we'll remove a specific key:
             if (isset($config['some_key'])) {
