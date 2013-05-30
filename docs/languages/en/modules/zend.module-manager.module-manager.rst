@@ -37,7 +37,7 @@ Module Manager Events
 
 **configMerge**
    After all modules have been loaded, the ``configMerge`` event is triggered.  By default,
-   ``Zend\ModuleManager\Listener\\ConfigLister`` listens on this event at priority 1000, and merges
+   ``Zend\ModuleManager\Listener\ConfigLister`` listens on this event at priority 1000, and merges
    all configuration. You may attach additional listeners to this event in order to manipulate the
    merged configuration. See :ref:`the tutorial on manipulating merged configuration <tutorials.config.advanced.manipulating-merged-configuration>` for more information.
 
