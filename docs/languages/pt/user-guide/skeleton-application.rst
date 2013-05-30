@@ -6,8 +6,8 @@ Iniciando: A Sekeleton Application
 
 Com o objetivo de desenolver nossa aplicação vamos começar utilizando a
 `ZendSkeletonApplication <https://github.com/zendframework/ZendSkeletonApplication>`_ 
-disponível em `github <https://github.com/>`_. Use o Composer (http://getcomposer.org)
-parea criar um novo projeto inicial com Zend Framework da seguinte forma:
+disponível no `github <https://github.com/>`_. Use o Composer (http://getcomposer.org)
+para criar um novo projeto inicial com Zend Framework da seguinte forma:
 
 .. code-block:: bash
 
@@ -15,9 +15,9 @@ parea criar um novo projeto inicial com Zend Framework da seguinte forma:
 
 .. note::
 
-    Outra maneira de instalar a  ZendSkeletonApplication é usando github. Para isso acesse 
+    Outra maneira de instalar a  ZendSkeletonApplication é usando o github. Para isso acesse 
     https://github.com/zendframework/ZendSkeletonApplication e clique no botão “Zip”. 
-    Isso irá disparar um download de arquivo com um nome parecido com
+    Isso irá disparar um download de um arquivo com um nome parecido com
     ``ZendSkeletonApplication-master.zip``. 
 
     Extraia esse arquivo no diretório onde você guarda suas vhosts e renomeie o
@@ -138,7 +138,7 @@ De forma opcional você pode usuar a configuração de ``APPLICATION_ENV`` do se
 permitir que o PHP exiba todos os erros no navegador. Isso pode ser útil durante o desenvolvimento
 de sua aplicação.
 
-Para isso edite o qrquivo ``index.php`` do ditório ``zf2-tutorial/public/`` substituindo todo seu
+Para isso edite o arquivo ``index.php`` do diretório ``zf2-tutorial/public/`` substituindo todo seu
 conteúdo pelo seguinte:
 
 .. code-block:: php
