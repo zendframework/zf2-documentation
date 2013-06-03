@@ -3,7 +3,7 @@
 CamelCaseToSeparator
 --------------------
 
-This filter modifies a given string such that 'CamelCaseWords' are converted to 'camel case words'.
+This filter modifies a given string such that 'CamelCaseWords' are converted to 'Camel Case Words'.
 
 .. _zend.filter.set.camelcasetoseparator.options:
 
@@ -27,7 +27,7 @@ A basic example of usage is below:
 
    print $filter->filter('ThisIsMyContent');
 
-The above example returns 'this:is:my:content'.
+The above example returns 'This:Is:My:Content'.
 
 .. rubric:: Default Behavior
 
@@ -38,5 +38,5 @@ The above example returns 'this:is:my:content'.
 
    print $filter->filter('ThisIsMyContent');
 
-The above example returns 'this is my content'.
+The above example returns 'This Is My Content'.
 
