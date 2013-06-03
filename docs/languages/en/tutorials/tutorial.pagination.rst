@@ -247,7 +247,7 @@ Next, we need to tell the album controller to return a ``Pagination`` object ins
 Both these objects can by iterated over to return hydrated ``Album`` objects, so we won't need to make many
 changes to the view script:
 
-``module/Album/src/Album/Model/AlbumTable.php``
+``module/Album/src/Album/Controller/AlbumController.php``
 
 .. code-block:: php
    :linenos:
@@ -381,7 +381,7 @@ parameter which we have already told our controller to use to display the curren
 Using the PaginationControl View Helper
 =======================================
 
-The only thing left for us to do so that we can page through the alumbs is to use the
+The only thing left for us to do so that we can page through the albums is to use the
 :ref:`paginationControl view helper <zend.paginator.rendering>` to display our
 pagination control. This is nicely straightforward as we have already done all
 the ground work needed to display the control:
