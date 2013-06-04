@@ -27,7 +27,7 @@ uns ein Beispiel an:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validate\Regex(array('pattern' => '/^Test/');
+   $validator = new Zend\Validate\Regex(array('pattern' => '/^Test/'));
 
    $validator->isValid("Test"); // Gibt true zurück
    $validator->isValid("Testing"); // Gibt true zurück
@@ -47,7 +47,7 @@ gesetzte Pattern mit ``getPattern()`` erhalten.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validate\Regex(array('pattern' => '/^Test/');
+   $validator = new Zend\Validate\Regex(array('pattern' => '/^Test/'));
    $validator->setPattern('ing$/');
 
    $validator->isValid("Test"); // Gibt false zurück
