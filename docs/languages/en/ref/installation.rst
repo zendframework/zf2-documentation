@@ -28,7 +28,7 @@ To fix that, you can add the Zend Framework's library path to the *PHP* `include
 Also, you should set an environment path named 'ZF2_PATH' in httpd.conf (or equivalent).
 i.e.  ``SetEnv ZF2_PATH /var/ZF2`` running Linux.
 
-`Rob Allen`_ has kindly provided the community with an introductory tutorial, `Getting Started with Zend Framework 2`_. 
+If you want to download the package with Skeleton application, use the `Rob Allen`'s guide. He has kindly provided the community with an introductory tutorial, `Getting Started with Zend Framework 2`_. 
 Other Zend Framework community members are actively working on `expanding the tutorial`_.
 
 
