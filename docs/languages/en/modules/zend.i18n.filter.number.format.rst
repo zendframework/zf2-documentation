@@ -3,8 +3,9 @@
 NumberFormat
 ------------
 
-The ``NumberFormat`` filter can be used to return locale-specific number and percentage strings. It acts as a
-wrapper for the ``NumberFormatter`` class within the Internationalization extension (Intl).
+The ``NumberFormat`` filter can be used to return locale-specific number and percentage strings. It extends the
+``NumberParse`` filter, which acts as wrapper for the ``NumberFormatter`` class within the Internationalization
+extension (Intl).
 
 .. _zend.i18n.filter.number-format.options:
 
