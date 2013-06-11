@@ -1,9 +1,9 @@
 Using Zend\\Navigation in your Album Module
 ===========================================
 
-In this tutorial we will use ``Zend\Navigation`` to add a navigation
-menu to the black bar at the top of the screen, and add breadcrumbs
-above the main site content.
+In this tutorial we will use the :ref:`Zend\Navigation component <zend.navigation.intro>`
+to add a navigation menu to the black bar at the top of the screen, and add
+breadcrumbs above the main site content.
 
 Preparation
 -----------
@@ -19,6 +19,7 @@ app, a home page, and an albums area.
 ``module/Application/config/module.config.php``
 
 .. code-block:: php
+   :linenos:
 
     'home' => array(
        'type' => 'Zend\Mvc\Router\Http\Literal',
@@ -37,7 +38,7 @@ application introduction. Your list of albums is still available at the
 /album route.
 
 Setting Up Zend\\Navigation
----------------
+---------------------------
 
 Firstly, we need to tell our application which ``NavigationFactory`` to
 use when using the bundled navigation view helpers. Thankfully, ZF2
@@ -50,6 +51,7 @@ application, and not just to our album pages:
 ``module/Application/config/module.config.php``
 
 .. code-block:: php
+   :linenos:
 
     'service_manager' => array(
         'factories' => array(
@@ -70,6 +72,7 @@ module:
 ``module/Application/config/module.config.php``
 
 .. code-block:: php
+   :linenos:
 
     return array(
     ...
@@ -117,11 +120,12 @@ Adding the Menu View Helper
 
 Now that we have the navigation helper configured by our service manager
 and merged config, we can easily add the menu to the title bar to our
-layout by using the ``menu`` view helper:
+layout by using the :ref:`menu view helper <zend.navigation.view.helper.menu>`:
 
 ``module/Application/view/layout/layout.phtml``
 
 .. code-block:: php
+   :linenos:
 
     ...
     <a class="brand"
@@ -139,16 +143,16 @@ ugly) menu, with just a few tweaks however, we can make it look awesome:
 ``module/Application/view/layout/layout.phtml``
 
 .. code-block:: php
+   :linenos:
 
     <a class="brand"
        href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>
     <?php // <-- Update this !!
     echo $this->navigation('navigation')
-        ->menu()
-        ->setMinDepth(0)
-        ->setMaxDepth(0)
-        ->setUlClass('nav')
-        ->render();
+              ->menu()
+              ->setMinDepth(0)
+              ->setMaxDepth(0)
+              ->setUlClass('nav');
     ?>
 
 Here we tell the renderer to give the root UL the class of 'nav' so that
@@ -167,11 +171,13 @@ Adding breadcrumbs is initially just as simple. In our ``layout.phtml``
 we want to add breadcrumbs above the main content pane, so our foolish
 user knows exactly where they are in our complex website. Inside the
 container div, before we output the content from the view, let's add a
-simple breadcrumb:
+simple breadcrumb by using the
+:ref:`breadcrumbs view helper <zend.navigation.view.helper.breadcrumbs>`:
 
 ``module/Application/view/layout/layout.phtml``
 
 .. code-block:: php
+   :linenos:
 
     ...
     <div class="container">
@@ -191,6 +197,7 @@ album specific):
 ``module/Application/view/partial/breadcrumb.phtml``
 
 .. code-block:: php
+   :linenos:
 
     <ul class="breadcrumb">
         <?php
@@ -204,7 +211,8 @@ album specific):
                     ?>
                     <a href="<?php echo $page->getHref(); ?>"><?php echo $page->getLabel(); ?></a>
                     <span class="divider">/</span>
-                <?php // otherwise, just output the name
+                <?php
+                // otherwise, just output the name
                 else:
                 ?>
                     <?php echo $page->getLabel(); ?>
@@ -220,13 +228,15 @@ tell the breadcrumb helper to use the partial we have just written:
 ``module/Application/view/layout/layout.phtml``
 
 .. code-block:: php
+   :linenos:
 
     ...
     <div class="container">
-        <?php echo $this->navigation('navigation') // <-- Update this!!
-        ->breadcrumbs()
-        ->setMinDepth(0)
-        ->setPartial(array('partial/breadcrumb.phtml', 'Album'));
+        <?php
+        echo $this->navigation('navigation') // <-- Update this!!
+                  ->breadcrumbs()
+                  ->setMinDepth(0)
+                  ->setPartial(array('partial/breadcrumb.phtml', 'Album'));
         ?>
         <?php echo $this->content; ?>
     </div>
