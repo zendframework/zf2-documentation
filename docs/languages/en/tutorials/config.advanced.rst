@@ -197,8 +197,8 @@ configuration) based on the environment?
 
 .. _tutorials.config.advanced.system-configuration.environment-specific-application:
 
-Environment-specific applicationconfiguration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Environment-specific application configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sometimes you want to change application configuration to load things such as
 database adapters, log writers, cache adapters, and more based on the
