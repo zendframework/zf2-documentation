@@ -3,7 +3,7 @@
 CamelCaseToUnderscore
 ---------------------
 
-This filter modifies a given string such that 'CamelCaseWords' are converted to 'camel_case_words'.
+This filter modifies a given string such that 'CamelCaseWords' are converted to 'Camel_Case_Words'.
 
 .. _zend.filter.set.camelcasetounderscore.options:
 
@@ -24,4 +24,4 @@ A basic example of usage is below:
 
    print $filter->filter('ThisIsMyContent');
 
-The above example returns 'this_is_my_content'.
+The above example returns 'This_Is_My_Content'.
