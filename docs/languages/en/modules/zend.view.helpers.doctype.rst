@@ -136,6 +136,9 @@ Here is how you check if the doctype is set to XHTML1_RDFA:
          <?php endif; ?>
    >
 
+.. rubric:: Zend MVC View Manager
+
+If you're running a Zend\Mvc application, you should specify doctype via the :ref:`ViewManager service <zend.mvc.services#viewmanager>`.
 
 
 .. _`Open Graph Protocol`: http://opengraphprotocol.org/
