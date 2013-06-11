@@ -1002,7 +1002,7 @@ Examples
    $key    = 'unique-cache-key';
    $result = $cache->getItem($key, $success);
    if (!$success) {
-       $result = doExpansiveStuff();
+       $result = doExpensiveStuff();
        $cache->setItem($key, $result);
    }
 
