@@ -140,7 +140,7 @@ Shared managers
 One aspect that the ``EventManager`` implementation provides is an ability to
 compose a ``SharedEventManagerInterface`` implementation. 
 
-``Zend\EventManager\\SharedEventManagerInterface`` describes an object that
+``Zend\EventManager\SharedEventManagerInterface`` describes an object that
 aggregates listeners for events attached to objects with specific *identifiers*.
 It does not trigger events itself. Instead, an ``EventManager`` instance that
 composes a ``SharedEventManager`` will query the ``SharedEventManager`` for
