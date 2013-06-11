@@ -194,7 +194,7 @@ Usage info in ZF2 console applications is provided by :doc:`loaded modules <zend
 console route matches console arguments, ``Zend\Console`` will query all loaded modules and ask for their console
 usage info.
 
-Let's modify our ``Application\Controller\IndexController`` to provide usage info:
+Let's modify our ``Application\Module`` to provide usage info:
 
 .. code-block:: php
     :linenos:
