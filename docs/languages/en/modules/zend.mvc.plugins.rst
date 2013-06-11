@@ -291,7 +291,7 @@ You can provide this service to the ``ServiceManager`` in a configuration file:
     // In a configuration file...
     return array(
         'service_manager' => array(
-            'alias' => array(
+            'aliases' => array(
                 'Zend\Authentication\AuthenticationService' => 'my_auth_service',
             ),
             'invokables' => array(
