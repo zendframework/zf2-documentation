@@ -26,7 +26,7 @@ vous évite la plupart du temps d'écrire votre propre validateur. Voyons quelqu
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validate\Regex(array('pattern' => '/^Test/');
+   $validator = new Zend\Validate\Regex(array('pattern' => '/^Test/'));
 
    $validator->isValid("Test"); // retourne true
    $validator->isValid("Testing"); // retourne true
@@ -46,7 +46,7 @@ Vous pouvez affecter / récupérer le motif après avoir crée le validateur e
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validate\Regex(array('pattern' => '/^Test/');
+   $validator = new Zend\Validate\Regex(array('pattern' => '/^Test/'));
    $validator->setPattern('ing$/');
 
    $validator->isValid("Test"); // retourne false
