@@ -35,10 +35,8 @@ The following illustrates how you may configure session manager by setting optio
            ),
            'storage' => 'Zend\Session\Storage\SessionArrayStorage',
            'validators' => array(
-               array(
-                   'Zend\Session\Validator\RemoteAddr',
-                   'Zend\Session\Validator\HttpUserAgent',
-               ),
+               'Zend\Session\Validator\RemoteAddr',
+               'Zend\Session\Validator\HttpUserAgent',
            ),
        ),
    );
@@ -107,9 +105,9 @@ The following illustrates how you might utilize the above configuration to creat
 
                            $sessionManager = new SessionManager($sessionConfig, $sessionStorage, $sessionSaveHandler);
 
-                           if (isset($session['validator'])) {
+                           if (isset($session['validators'])) {
                                $chain = $sessionManager->getValidatorChain();
-                               foreach ($session['validator'] as $validator) {
+                               foreach ($session['validators'] as $validator) {
                                    $validator = new $validator();
                                    $chain->attach('session.validate', array($validator, 'isValid'));
 
