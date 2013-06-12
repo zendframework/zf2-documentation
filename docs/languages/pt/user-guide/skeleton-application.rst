@@ -4,7 +4,7 @@
 Iniciando: A Sekeleton Application
 ==================================
 
-Com o objetivo de desenolver nossa aplicação vamos começar utilizando a
+Com o objetivo de desenvolver nossa aplicação vamos começar utilizando a
 `ZendSkeletonApplication <https://github.com/zendframework/ZendSkeletonApplication>`_ 
 disponível no `github <https://github.com/>`_. Use o Composer (http://getcomposer.org)
 para criar um novo projeto inicial com Zend Framework da seguinte forma:
@@ -75,7 +75,7 @@ Você agora precisará criar um Virtual Host no Apache para sua aplicação e ed
 arquivo de hosts para que ao acessar http://zf2-tutorial.localhost seja servido o arquivo ``index.php``
 do diretório ``zf2-tutorial/public``.
 
-A configuração do Virtual Host e geralmente feita no arquivo ``httpd.conf`` ou
+A configuração do Virtual Host é geralmente feita no arquivo ``httpd.conf`` ou
 no arquivo ``extra/httpd-vhosts.conf``.  Se você estiver usando ``httpd-vhosts.conf``, certifique-se
 que esse arquivo esteja incluido no arquivo principal ``httpd.conf`` file.  Em algumas distribuiçõe Linux 
 (ex: Ubuntu) os arquivos de configuração do Apache são armazenados em  ``/etc/apache2`` 
@@ -122,7 +122,7 @@ http://zf2-tutorial.localhost/1234 e você deverá ver a seguinte página:
     :width: 940 px
 
 Se ao invês disso você estiver vendo uma página de erro 404 padrão do Apache, você deverá corrigir o arquivo ``.htaccess``
-antes de continuar.  Se estiver usanso IIS com o módulo URL Rewrite utilize o seguinte código:
+antes de continuar.  Se estiver usando IIS com o módulo URL Rewrite utilize o seguinte código:
 
 .. code-block:: apache
 
