@@ -25,6 +25,7 @@
    tutorials/quickstart.di
    tutorials/unittesting
    tutorials/tutorial.eventmanager
+   tutorials/config.advanced
    tutorials/tutorial.navigation
    tutorials/tutorial.pagination
    tutorials/tutorial.dbadapter
@@ -298,6 +299,7 @@
 
     * :doc:`tutorials/quickstart.di`
     * :doc:`tutorials/unittesting`
+    * :doc:`tutorials/config.advanced`
     * :doc:`tutorials/tutorial.eventmanager`
     * :doc:`tutorials/tutorial.navigation`
     * :doc:`tutorials/tutorial.pagination`
