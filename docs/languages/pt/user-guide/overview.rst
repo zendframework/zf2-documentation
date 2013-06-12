@@ -14,7 +14,7 @@ forma conjunta.
 Algumas Suposições
 ----------------
 
-Esse tutorial assim que você tenha pelo menos um servidor apache com PHP 5.3.3 rodando
+Esse tutorial assume que você tenha pelo menos um servidor apache com PHP 5.3.3 rodando
 e um servidor MySQL, acessível pela extensão PDO. Sua configuração do Apache deve ter a 
 extensão mod_rewrite instalada e habilitada.
 
@@ -46,8 +46,8 @@ que você adicione, edite e delete albuns. Para isso nós vamos precisar de quat
 | Pagina             | Descrição                                                  |
 +====================+============================================================+
 | Lista de Albuns    | Ess página ira exibir a lista de albuns e possuir links    |
-|                    | para edição e exclusão deles. também conterá u link para a |
-|                    | inclusão de um novo album.                                 |
+|                    | para edição e exclusão deles. também conterá um link para  |
+|                    | a inclusão de um novo album.                               |
 +--------------------+------------------------------------------------------------+
 | Inclusão de Albuns | Conterá um formulário para inclusão de um novo album.      |
 +--------------------+------------------------------------------------------------+
