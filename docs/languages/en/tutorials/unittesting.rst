@@ -149,6 +149,10 @@ And a file called ``Bootstrap.php``, also under ``zf2-tutorial/module/Album/test
             if (!$zf2Path) {
                 throw new RuntimeException('Unable to load ZF2. Run `php composer.phar install` or define a ZF2_PATH environment variable.');
             }
+            
+            if (file_exists($vendorPath . '/autoload.php')) {
+                include $vendorPath . '/autoload.php';
+            }
 
             include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
             AutoloaderFactory::factory(array(
