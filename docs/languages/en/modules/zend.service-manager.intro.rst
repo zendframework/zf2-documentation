@@ -55,7 +55,7 @@ In addition to the above described methods, the ``ServiceManager`` provides addi
 
      class MyFactory implements FactoryInterface
      {
-         public function createService()
+         public function createService(ServiceLocatorInterface $serviceLocator)
          {
              return new \stdClass();
          }
