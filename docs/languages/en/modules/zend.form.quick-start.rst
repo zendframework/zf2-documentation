@@ -207,7 +207,7 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
    $form    = $factory->createForm(array(
       'hydrator'  => 'Zend\Stdlib\Hydrator\ArraySerializable',
       'fieldsets' => array(
-         array(     
+         array(
             'spec' => array(
                'name' => 'sender',
                'elements' => array(
@@ -223,10 +223,9 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
                   array(   
                      'spec' => array(
                         'type' => 'Zend\Form\Element\Email',
-                           'name' => 'email',
-                           'options' => array(
-                              'label' => 'Your email address',
-                           ),
+                        'name' => 'email',
+                        'options' => array(
+                           'label' => 'Your email address',
                         ),
                      ),
                   ),
@@ -258,42 +257,42 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
                ),
             ),
          ),
-         'elements' => array(
-            array(
-               'spec' => array(
-                  'type' => 'Zend\Form\Element\Captcha',
-                  'name' => 'captcha',
-                  'options' => array(
-                      'label' => 'Please verify you are human. ',
-                      'captcha' => array(
-                          'class' => 'Dumb',
-                      ),
-                  ),
-               ),
-            ),
-            array(
-               'spec' => array(
-                  'type' => 'Zend\Form\Element\Csrf',
-                  'name' => 'security',
-               ),
-            ),
-            array(
-               'spec' => array(
-                  'name' => 'send',
-                  'type'  => 'Submit',
-                  'attributes' => array(
-                      'value' => 'Submit',
-                  ),
+      ),
+      'elements' => array(
+         array(
+            'spec' => array(
+               'type' => 'Zend\Form\Element\Captcha',
+               'name' => 'captcha',
+               'options' => array(
+                   'label' => 'Please verify you are human. ',
+                   'captcha' => array(
+                       'class' => 'Dumb',
+                   ),
                ),
             ),
          ),
-         // Configuration to pass on to
-         // Zend\InputFilter\Factory::createInputFilter()
-         'input_filter' => array(
-          /* ... */
+         array(
+            'spec' => array(
+               'type' => 'Zend\Form\Element\Csrf',
+               'name' => 'security',
+            ),
          ),
-      )
-   );
+         array(
+            'spec' => array(
+               'name' => 'send',
+               'type'  => 'Submit',
+               'attributes' => array(
+                   'value' => 'Submit',
+               ),
+            ),
+         ),
+      ),
+      // Configuration to pass on to
+      // Zend\InputFilter\Factory::createInputFilter()
+      'input_filter' => array(
+       /* ... */
+      ),
+   ));
 
 Note that the chief difference is nesting; otherwise, the information is basically the same.
 
