@@ -62,11 +62,11 @@ The Socket adapter allows several extra configuration options that can be set us
          +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
          |sslpassphrase      |Passphrase for the SSL certificate file                                             |string       |NULL         |
          +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
-         |sslverifypeer      |Whether to verify the SSL peer                                                      |string       |NULL         |
+         |sslverifypeer      |Whether to verify the SSL peer                                                      |string       |TRUE         |
          +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
          |sslcapath          |Path to SSL certificate directory                                                   |string       |NULL         |
          +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
-         |sslallowselfsigned |Whether to allow self-signed certificates                                           |string       |NULL         |
+         |sslallowselfsigned |Whether to allow self-signed certificates                                           |string       |FALSE         |
          +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
          |sslusecontext      |Enables proxied connections to use SSL even if the proxy connection itself does not.|boolean      |FALSE        |
          +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
