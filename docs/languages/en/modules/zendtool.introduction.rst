@@ -43,7 +43,7 @@ Without installation, using the PHAR file
 Usage
 -----
 
-In the following usage examples, the **zf.php** command can be replace with **zftool.phar**.
+In the following usage examples, the **zf.php** command can be replaced with **zftool.phar**.
 
 Basic information
 ^^^^^^^^^^^^^^^^^
