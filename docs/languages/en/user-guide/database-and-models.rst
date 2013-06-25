@@ -136,7 +136,7 @@ Next, we create our ``AlbumTable.php`` file in ``module/Album/src/Album/Model`` 
                 if ($this->getAlbum($id)) {
                     $this->tableGateway->update($data, array('id' => $id));
                 } else {
-                    throw new \Exception('Form id does not exist');
+                    throw new \Exception('Album id does not exist');
                 }
             }
         }
