@@ -28,6 +28,13 @@ The following set of options are supported:
    When true, this filter will use the $_FILES['name'] as the target filename.
    Otherwise, the default ``target`` rules and the ``$_FILES['tmp_name']`` will be used.
 
+- **use_upload_extension** ``(boolean) default: false``
+    When true, the uploaded file will maintains its original extension if not
+    specified.
+
+    For example, if the uploaded file is ``"file.txt"`` and the target is something
+    like ``"mynewfile"``, the upload will be renamed to ``"mynewfile.txt"``.
+
 .. warning::
 
    Be **very** careful when using the ``use_upload_name`` option. For instance,
