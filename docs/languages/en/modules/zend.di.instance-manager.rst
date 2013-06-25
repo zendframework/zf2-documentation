@@ -91,7 +91,7 @@ The following ways of using parameters are available:
 
    // passing a specific instance at call time
    $movieLister = $di->get('MyMovieApp\MovieLister', array(
-       'dbAdapter' => new MyLibrary\DbAdaper('myusername', 'mypassword')
+       'dbAdapter' => new MyLibrary\DbAdapter('myusername', 'mypassword')
    ));
 
 .. _zend.di.instancemanager.preferences:
