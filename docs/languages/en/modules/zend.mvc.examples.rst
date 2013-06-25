@@ -73,7 +73,7 @@ up to the ``Application`` instance, where it is immediately returned.
 
 As an example, the ``Redirect`` plugin returns a ``Response``, which can be returned immediately so as to complete
 the request as quickly as possible. Other use cases might be for returning JSON or XML results from web service
-endpoints, returning "401 Forbidden" results, etc.
+endpoints, returning "401 Unauthorized" results, etc.
 
 .. _zend.mvc.examples.bootstrapping:
 
