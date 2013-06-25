@@ -2,7 +2,7 @@ Using Zend\\Paginator in your Album Module
 ===========================================
 
 In this tutorial we will use the
-:ref:`Zend\Paginator component <zend.paginator.introduction>` to add a handy
+:ref:`Zend\\Paginator component <zend.paginator.introduction>` to add a handy
 pagination controller to the bottom of the album list.
 
 Currently, we only have a handful of albums to display, so showing everything on one page is not a problem. 
@@ -185,7 +185,7 @@ Modifying the AlbumTable
 ------------------------
 
 In order to let ZF2 handle our database queries automatically for us, we will be using the
-:ref:`Zend\Paginator\Adapter\DbSelect paginator adapter <zend.paginator.usage.dbselect>`.
+:ref:`Zend\\Paginator\\Adapter\\DbSelect paginator adapter <zend.paginator.usage.dbselect>`.
 This will automatically manipulate and run a ``Zend\Db\Sql\Select`` object to
 include the correct ``LIMIT`` and ``WHERE`` clauses, so that it returns only
 the right amount of data needed to display the given page. Let's modify the
