@@ -82,6 +82,11 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
    View helpers related to **navigation** are documented in the
    :ref:`Navigation View Helpers <zend.navigation.view.helpers>` chapter.
 
+.. note::
+
+   View helpers related to **paginator** are documented in the
+   :ref:`Paginator Usage <zend.paginator.rendering>` chapter.
+
 .. include:: zend.view.helpers.base-path.rst
 .. include:: zend.view.helpers.cycle.rst
 .. include:: zend.view.helpers.doctype.rst
