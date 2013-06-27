@@ -364,6 +364,7 @@ an element to your Module.php class:
                         $serviceLocator = $sm->getServiceLocator();
                         $albumTable = $serviceLocator->get('Album\Model\AlbumTable');
                         $fieldset = new AlbumFieldset($albumTable);
+                        return $fieldset;
                     }
                 )
             );
