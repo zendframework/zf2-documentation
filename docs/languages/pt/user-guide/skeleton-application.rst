@@ -102,7 +102,7 @@ defina um Virtual Host a partir das linhas abaixo:
 
 Tenha certeza de atualizar o arquivo ``/etc/hosts`` ou
 ``c:\windows\system32\drivers\etc\hosts`` para que ``zf2-tutorial.localhost``
-esteja apontando pata ``127.0.0.1``. Sua aplicação poderá então ser acessada usando
+esteja apontando para ``127.0.0.1``. Sua aplicação poderá então ser acessada usando
 http://zf2-tutorial.localhost.  
 
 .. code-block:: txt
