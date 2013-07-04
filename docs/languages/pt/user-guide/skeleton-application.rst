@@ -1,8 +1,8 @@
 .. EN-Revision: 96c6ad3
 .. _user-guide.skeleton-application:
 
-Iniciando: A Sekeleton Application
-==================================
+Iniciando: A Aplicação Sekeleton
+================================
 
 Com o objetivo de desenvolver nossa aplicação vamos começar utilizando a
 `ZendSkeletonApplication <https://github.com/zendframework/ZendSkeletonApplication>`_ 
@@ -15,7 +15,7 @@ para criar um novo projeto inicial com Zend Framework da seguinte forma:
 
 .. note::
 
-    Outra maneira de instalar a  ZendSkeletonApplication é usando o github. Para isso acesse 
+    Outra maneira de instalar a ZendSkeletonApplication é usando o github. Para isso acesse 
     https://github.com/zendframework/ZendSkeletonApplication e clique no botão “Zip”. 
     Isso irá disparar um download de um arquivo com um nome parecido com
     ``ZendSkeletonApplication-master.zip``. 
@@ -77,7 +77,7 @@ do diretório ``zf2-tutorial/public``.
 
 A configuração do Virtual Host é geralmente feita no arquivo ``httpd.conf`` ou
 no arquivo ``extra/httpd-vhosts.conf``.  Se você estiver usando ``httpd-vhosts.conf``, certifique-se
-que esse arquivo esteja incluido no arquivo principal ``httpd.conf`` file.  Em algumas distribuiçõe Linux 
+que esse arquivo esteja incluido no arquivo principal ``httpd.conf``.  Em algumas distribuiçõe Linux 
 (ex: Ubuntu) os arquivos de configuração do Apache são armazenados em  ``/etc/apache2`` 
 e são criados arquivos separados para cada Virtual Host dentro do diretório ``/etc/apache2/sites-enabled``. 
 Nesse caso, você deve inserir o bloco de código abaixo em um arquivo nomeado 
@@ -102,7 +102,7 @@ defina um Virtual Host a partir das linhas abaixo:
 
 Tenha certeza de atualizar o arquivo ``/etc/hosts`` ou
 ``c:\windows\system32\drivers\etc\hosts`` para que ``zf2-tutorial.localhost``
-esteja apontando pata ``127.0.0.1``. Seu aplicação poderá então ser acessada usando
+esteja apontando pata ``127.0.0.1``. Sua aplicação poderá então ser acessada usando
 http://zf2-tutorial.localhost.  
 
 .. code-block:: txt
@@ -134,7 +134,7 @@ Você agora tem sua Skeleton Application funcionando e pode começar a desenvolv
 Exibição de Erros
 -----------------
 
-De forma opcional você pode usuar a configuração de ``APPLICATION_ENV`` do seu Virtual Host para
+De forma opcional você pode usar a configuração de ``APPLICATION_ENV`` do seu Virtual Host para
 permitir que o PHP exiba todos os erros no navegador. Isso pode ser útil durante o desenvolvimento
 de sua aplicação.
 
