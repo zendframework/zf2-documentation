@@ -1,8 +1,8 @@
 .. EN-Revision: 96c6ad3
 .. _user-guide.skeleton-application:
 
-Iniciando: A Aplicação Sekeleton
-================================
+Iniciando: A Aplicação Skeleton
+===============================
 
 Com o objetivo de desenvolver nossa aplicação vamos começar utilizando a
 `ZendSkeletonApplication <https://github.com/zendframework/ZendSkeletonApplication>`_ 
