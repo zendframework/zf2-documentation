@@ -311,7 +311,7 @@ For instance, let's say that a form create a fieldset called ``AlbumFieldset``:
 
     class CreateAlbum extends Form
     {
-        public function __construct()
+        public function init()
         {
             $this->add(array(
                 'name' => 'album',
@@ -328,7 +328,7 @@ database.
 
     namespace Application\Form;
 
-    use Album\Model;
+    use Album\Model\AlbumTable;
     use Zend\Form\Fieldset;
 
     class AlbumFieldset extends Fieldset
@@ -371,7 +371,7 @@ an element to your Module.php class:
         }
     }
    
-Finally, create your form using the form element manager instead of directly
+Create your form using the form element manager instead of directly
 instantiating it:
    
 .. code-block:: php
@@ -382,6 +382,16 @@ instantiating it:
         $formManager = $this->serviceLocator->get('FormElementManager');
         $form = $formManager->get('Application\Form\CreateAlbum');
     }
+
+Finally, to use your fieldset in a view you need to use the formCollection function.
+
+.. code-block:: php
+    :linenos:
+
+    echo $this->form()->openTag($form);
+    echo $this->formCollection($form->get('album'));
+    echo $this->form()->closeTag();
+
 
 Et voilà! The dependency will be automatically handled by the form element manager, and you don't need to create the 
 ``AlbumTable`` in your controller, transfer it to the form, which itself passes it over to the fieldset.
