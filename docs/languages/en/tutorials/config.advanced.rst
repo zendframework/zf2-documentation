@@ -186,7 +186,7 @@ We'll modify the ``config/application.config.php`` file to read as follows:
             'cache_dir' => 'data/config/',
     
             // Use the $env value to determine the state of the flag
-            'check_dependencies' => ($env != 'production),
+            'check_dependencies' => ($env != 'production'),
         ),
     );
 
