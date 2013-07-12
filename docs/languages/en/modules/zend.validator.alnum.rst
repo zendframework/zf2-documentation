@@ -3,15 +3,15 @@
 Alnum
 =====
 
-``Zend\Validator\Alnum`` allows you to validate if a given value contains only alphabetical characters and digits.
+``Zend\I18n\Validator\Alnum`` allows you to validate if a given value contains only alphabetical characters and digits.
 There is no length limitation for the input you want to validate.
 
 .. _zend.validator.set.alnum.options:
 
-Supported options for Zend\\Validator\\Alnum
+Supported options for Zend\I18n\Validator\Alnum
 --------------------------------------------
 
-The following options are supported for ``Zend\Validator\Alnum``:
+The following options are supported for ``Zend\I18n\Validator\Alnum``:
 
 - **allowWhiteSpace**: If whitespace characters are allowed. This option defaults to ``FALSE``
 
@@ -59,7 +59,7 @@ an instance of the validator, or afterwards by using ``setAllowWhiteSpace()``. T
 Using different languages
 -------------------------
 
-When using ``Zend\Validator\Alnum`` then the language which the user sets within his browser will be used to set
+When using ``Zend\I18n\Validator\Alnum`` then the language which the user sets within his browser will be used to set
 the allowed characters. This means when your user sets **de** for german then he can also enter characters like
 **ä**, **ö** and **ü** additionally to the characters from the english alphabet.
 
