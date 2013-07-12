@@ -205,75 +205,92 @@ If we wanted to use fieldsets, as we demonstrated in the previous example, we co
 
    $factory = new Factory();
    $form    = $factory->createForm(array(
-       'hydrator'  => 'Zend\Stdlib\Hydrator\ArraySerializable'
+       'hydrator'  => 'Zend\Stdlib\Hydrator\ArraySerializable',
        'fieldsets' => array(
            array(
-               'name' => 'sender',
-               'elements' => array(
-                   array(
-                       'name' => 'name',
-                       'options' => array(
-                           'label' => 'Your name',
-               		   ),
-                       'type'  => 'Text'
-                   ),
-                   array(
-                       'type' => 'Zend\Form\Element\Email',
-                       'name' => 'email',
-                       'options' => array(
-                           'label' => 'Your email address',
-               		   ),
+               'spec' => array(
+                   'name' => 'sender',
+                   'elements' => array(
+                       array(
+                           'spec' => array(
+                               'name' => 'name',
+                               'options' => array(
+                                   'label' => 'Your name',
+                               ),
+                               'type' => 'Text'
+                           ),
+                       ),
+                       array(
+                           'spec' => array(
+                               'type' => 'Zend\Form\Element\Email',
+                               'name' => 'email',
+                               'options' => array(
+                                   'label' => 'Your email address',
+                               ),
+                           ),
+                       ),
                    ),
                ),
            ),
            array(
-               'name' => 'details',
-               'elements' => array(
-                   array(
-                       'name' => 'subject',
-                       'options' => array(
-                           'label' => 'Subject',
-               		   ),
-                       'type'  => 'Text',
-                   ),
-                   array(
-                       'name' => 'message',
-                       'type' => 'Zend\Form\Element\Textarea',
-                       'options' => array(
-                           'label' => 'Message',
-               		   ),
+               'spec' => array(
+                   'name' => 'details',
+                   'elements' => array(
+                       array(
+                           'spec' => array(
+                               'name' => 'subject',
+                               'options' => array(
+                                   'label' => 'Subject',
+                               ),
+                               'type' => 'Text',
+                           ),
+                       ),
+                       array(
+                           'spec' => array(
+                               'name' => 'message',
+                               'type' => 'Zend\Form\Element\Textarea',
+                               'options' => array(
+                                   'label' => 'Message',
+                               ),
+                           ),
+                       ),
                    ),
                ),
            ),
        ),
        'elements' => array(
            array(
-               'type' => 'Zend\Form\Element\Captcha',
-               'name' => 'captcha',
-               'options' => array(
-                   'label' => 'Please verify you are human. ',
-                   'captcha' => array(
-                       'class' => 'Dumb',
+               'spec' => array(
+                   'type' => 'Zend\Form\Element\Captcha',
+                   'name' => 'captcha',
+                   'options' => array(
+                       'label' => 'Please verify you are human. ',
+                       'captcha' => array(
+                           'class' => 'Dumb',
+                       ),
                    ),
                ),
            ),
            array(
+               'spec' => array(
                'type' => 'Zend\Form\Element\Csrf',
                'name' => 'security',
            ),
-           array(
+       ),
+       array(
+           'spec' => array(
                'name' => 'send',
                'type'  => 'Submit',
                'attributes' => array(
                    'value' => 'Submit',
                ),
            ),
+        ),
        ),
-
        // Configuration to pass on to
        // Zend\InputFilter\Factory::createInputFilter()
        'input_filter' => array(
-           /* ... */
+       /* ... */
        ),
    ));
 
@@ -832,10 +849,10 @@ When your form contains nested fieldsets, you can use an array notation to valid
    :linenos:
 
    $form->setValidationGroup(array(
-   		'profile' => array(
-   	    	'firstname',
-   	    	'lastname'
-   		)
+        'profile' => array(
+            'firstname',
+            'lastname'
+        )
    ));
    $form->setData($data);
    if ($form->isValid()) {
