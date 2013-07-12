@@ -51,14 +51,17 @@ Quick Start
 
    // Via factory:
    $cache = StorageFactory::factory(array(
-       'adapter' => 'apc',
+       'adapter' => array(
+           'name'    => 'apc',
+           'options' => array('ttl' => 3600),
+       ),
        'plugins' => array(
            'exception_handler' => array('throw_exceptions' => false),
        ),
    ));
 
    // Alternately:
-   $cache  = StorageFactory::adapterFactory('apc');
+   $cache  = StorageFactory::adapterFactory('apc', array('ttl' => 3600));
    $plugin = StorageFactory::pluginFactory('exception_handler', array(
        'throw_exceptions' => false,
    ));
@@ -66,9 +69,10 @@ Quick Start
 
    // Or manually:
    $cache  = new Zend\Cache\Storage\Adapter\Apc();
-   $plugin = new Zend\Cache\Storage\Plugin\ExceptionHandler(array(
-       'throw_exceptions' => false,
-   ));
+   $cache->getOptions()->setTtl(3600);
+   
+   $plugin = new Zend\Cache\Storage\Plugin\ExceptionHandler();
+   $plugin->getOptions()->setThrowExceptions(false);
    $cache->addPlugin($plugin);
 
 
