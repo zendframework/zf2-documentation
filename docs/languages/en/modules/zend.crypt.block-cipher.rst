@@ -78,7 +78,7 @@ follow:
    use Zend\Crypt\BlockCipher;
    use Zend\Crypt\Symmetric\Mcrypt;
 
-   $blockCipher = new BlockCipher(new Mcrypt(array('algo' => 'aes'));
+   $blockCipher = new BlockCipher(new Mcrypt(array('algo' => 'aes')));
    $blockCipher->setKey('encryption key');
    $result = $blockCipher->encrypt('this is a secret message');
    echo "Encrypted text: $result \n";
