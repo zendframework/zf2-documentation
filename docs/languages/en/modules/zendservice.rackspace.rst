@@ -99,6 +99,21 @@ contains a set of public methods shared with all the service. This public method
    Authenticate the Rackspace API using the user and the key specified in the concrete class that extend
    ``ZendService\Rackspace``. Return **true** in case of success and **false** in case of error.
 
+.. _zendservice.rackspace.files.methods.set-service-net:
+
+**setServiceNet**
+   ``setServiceNet(boolean $useServiceNet = true)``
+
+   Use the Rackspace 'ServiceNet' internal network.
+
+.. _zendservice.rackspace.files.methods.get-service-net:
+
+**getServiceNet**
+   ``getServiceNet()``
+
+   Are we using the Rackspace 'ServiceNet' internal network?
+   Returns a boolean.
+
 .. _zendservice.rackspace.files.methods.get-auth-url:
 
 **getAuthUrl**
