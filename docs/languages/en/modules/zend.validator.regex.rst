@@ -25,7 +25,7 @@ validator. The usage of regular expression is quite common and simple. Let's loo
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\Regex(array('pattern' => '/^Test/');
+   $validator = new Zend\Validator\Regex(array('pattern' => '/^Test/'));
 
    $validator->isValid("Test"); // returns true
    $validator->isValid("Testing"); // returns true
@@ -45,7 +45,7 @@ pattern with ``getPattern()``.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\Regex(array('pattern' => '/^Test/');
+   $validator = new Zend\Validator\Regex(array('pattern' => '/^Test/'));
    $validator->setPattern('ing$/');
 
    $validator->isValid("Test"); // returns false

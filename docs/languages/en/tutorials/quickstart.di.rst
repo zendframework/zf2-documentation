@@ -21,16 +21,6 @@ Above, A is a dependency of B, and A was **injected** into B. If you are not fam
 injection, here are a couple of great reads: Matthew Weier O'Phinney's `Analogy`_, Ralph Schindler's `Learning
 DI`_, or Fabien Potencier's `Series on DI`_.
 
-.. _learning.di.very-brief-introduction-to-di-container:
-
-Very brief introduction to Di Container.
-----------------------------------------
-
-.. code-block:: php
-   :linenos:
-
-   TBD.
-
 .. _learning.di.simplest-usage-case-2-classes-one-consumes-the-other:
 
 Simplest usage case (2 classes, one consumes the other)

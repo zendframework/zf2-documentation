@@ -12,7 +12,7 @@ needs and even more specifically to the environment in which the application is 
 Parameters
 ----------
 
-Parameters are simply entry points for either dependencies or instance configuration values. A class consist of a
+Parameters are simply entry points for either dependencies or instance configuration values. A class consists of a
 set of parameters, each uniquely named. When writing your classes, you should attempt to not use the same parameter
 name twice in the same class when you expect that that parameters is used for either instance configuration or an
 object dependency. This leads to an ambiguous parameter, and is a situation best avoided.
@@ -91,7 +91,7 @@ The following ways of using parameters are available:
 
    // passing a specific instance at call time
    $movieLister = $di->get('MyMovieApp\MovieLister', array(
-       'dbAdapter' => new MyLibrary\DbAdaper('myusername', 'mypassword')
+       'dbAdapter' => new MyLibrary\DbAdapter('myusername', 'mypassword')
    ));
 
 .. _zend.di.instancemanager.preferences:

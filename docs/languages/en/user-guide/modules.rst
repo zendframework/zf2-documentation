@@ -88,7 +88,7 @@ Autoloading files
 
 Our ``getAutoloaderConfig()`` method returns an array that is compatible with
 ZF2’s ``AutoloaderFactory``. We configure it so that we add a class map file to
-the ``ClassmapAutoloader`` and also add this module’s namespace to the
+the ``ClassMapAutoloader`` and also add this module’s namespace to the
 ``StandardAutoloader``. The standard autoloader requires a namespace and the
 path where to find the files for that namespace. It is PSR-0 compliant and so
 classes map directly to files as per the `PSR-0 rules

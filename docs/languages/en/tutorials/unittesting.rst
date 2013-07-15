@@ -149,6 +149,10 @@ And a file called ``Bootstrap.php``, also under ``zf2-tutorial/module/Album/test
             if (!$zf2Path) {
                 throw new RuntimeException('Unable to load ZF2. Run `php composer.phar install` or define a ZF2_PATH environment variable.');
             }
+            
+            if (file_exists($vendorPath . '/autoload.php')) {
+                include $vendorPath . '/autoload.php';
+            }
 
             include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
             AutoloaderFactory::factory(array(
@@ -324,8 +328,8 @@ for us. The database adapter is indirectly used by our ``Album\Model\AlbumTable`
 fetch the list of albums from the database.
 
 The first thought would be to create an instance of an adapter, pass it to the
-service manager and let the code run from there as is. Problem with this approach
-is that we would end up with our test cases doing actually queries against the database.
+service manager and let the code run from there as is. The problem with this approach
+is that we would end up with our test cases actually doing queries against the database.
 To keep our tests fast, and to reduce the number of possible failure points in our tests,
 this should be avoided.
 
@@ -336,7 +340,7 @@ the adapter mock is tedious (but no doubt we will have to create it at one point
 The best thing to do would be to mock out our ``Album\Model\AlbumTable`` class which
 retrieves the list of albums from the database. Remember, we are now testing our controller,
 so we can mock out the actual call to ``fetchAll`` and replace the return values with
-dummy values. At this point, we are not interested in how does ``fetchAll`` retrieve the
+dummy values. At this point, we are not interested in how ``fetchAll`` retrieves the
 albums, but only that it gets called and that it returns an array of albums, so that is
 why we can get away with this mocking. When we will test ``AlbumTable`` itself,
 then we will write the actual tests for the ``fetchAll`` method.

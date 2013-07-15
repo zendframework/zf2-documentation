@@ -13,7 +13,7 @@ this part:
 * Process the form submission and store to database
 
 We use ``Zend\Form`` to do this. The ``Zend\Form`` component manages the form
-and, for validation, we add a ``Zend\InputFilter`` to our ``Album`` entity. We
+and, form validation, we add a ``Zend\InputFilter`` to our ``Album`` entity. We
 start by creating a new class ``Album\Form\AlbumForm`` that extends from
 ``Zend\Form\Form`` to define our form.
 Create a file called ``AlbumForm.php`` in ``module/Album/src/Album/Form``:
@@ -358,7 +358,7 @@ This time we use ``editAction()`` in the ``AlbumController``:
                 $form->setData($request->getPost());
 
                 if ($form->isValid()) {
-                    $this->getAlbumTable()->saveAlbum($form->getData());
+                    $this->getAlbumTable()->saveAlbum($album);
 
                     // Redirect to list of albums
                     return $this->redirect()->toRoute('album');

@@ -128,17 +128,31 @@ By default, Zend Framework provides several useful module manager listeners.
    ``Zend\ModuleManager\Feature`` namespace) , and the module method to
    optionally define to provide configuration.
 
-   +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
-   | Plugin Manager                            | Config Key             | Interface                             | Module Method                 |
-   +===========================================+========================+=======================================+===============================+
-   | ``Zend\ServiceManager\ServiceManager``    | ``service_manager``    | ``ServiceProviderInterface``          | ``getServiceConfig``          |
-   +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
-   | ``Zend\View\HelperPluginManager``         | ``view_helpers``       | ``ViewHelperProviderInterface``       | ``getViewHelperConfig``       |
-   +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
-   | ``Zend\Mvc\Controller\ControllerManager`` | ``controllers``        | ``ControllerProviderInterface``       | ``getControllerConfig``       |
-   +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
-   | ``Zend\Mvc\Controller\PluginManager``     | ``controller_plugins`` | ``ControllerPluginProviderInterface`` | ``getControllerPluginConfig`` |
-   +-------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | Plugin Manager                                 | Config Key             | Interface                             | Module Method                 |
+   +================================================+========================+=======================================+===============================+
+   | ``Zend\Mvc\Controller\ControllerManager``      | ``controllers``        | ``ControllerProviderInterface``       | ``getControllerConfig``       |
+   +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | ``Zend\Mvc\Controller\PluginManager``          | ``controller_plugins`` | ``ControllerPluginProviderInterface`` | ``getControllerPluginConfig`` |
+   +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | ``Zend\Filter\FilterPluginManager``            | ``filters``            | ``FilterProviderInterface``           | ``getFilterConfig``           |
+   +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | ``Zend\Form\FormElementManager``               | ``form_elements``      | ``FormElementProviderInterface``      | ``getFormElementConfig``      |
+   +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | ``Zend\Stdlib\Hydrator\HydratorPluginManager`` | ``hydrators``          | ``HydratorProviderInterface``         | ``getHydratorConfig``         |
+   +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | ``Zend\InputFilter\InputFilterPluginManager``  | ``input_filters``      | ``InputFilterProviderInterface``      | ``getInputFilterConfig``      |
+   +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | ``Zend\Mvc\Router\RoutePluginManager``         | ``route_manager``      | ``RouteProviderInterface``            | ``getRouteConfig``            |
+   +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | ``Zend\Serializer\AdapterPluginManager``       | ``serializers``        | ``SerializerProviderInterface``       | ``getSerializerConfig``       |
+   +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | ``Zend\ServiceManager\ServiceManager``         | ``service_manager``    | ``ServiceProviderInterface``          | ``getServiceConfig``          |
+   +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | ``Zend\Validator\ValidatorPluginManager``      | ``validators``         | ``ValidatorProviderInterface``        | ``getValidatorConfig``        |
+   +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | ``Zend\View\HelperPluginManager``              | ``view_helpers``       | ``ViewHelperProviderInterface``       | ``getViewHelperConfig``       |
+   +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
 
    Configuration follows the examples in the :ref:`ServiceManager configuration
    section <zend.service-manager.quick-start.config>`. As a brief recap, the
