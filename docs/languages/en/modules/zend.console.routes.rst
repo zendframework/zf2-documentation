@@ -57,7 +57,7 @@ A single route can be described with the following array:
     // inside config.console.router.routes:
     // [...]
     'my-first-route' => array(
-        'type'    => 'simple'       // <- simple route is created by default, we can skip that
+        'type'    => 'simple',       // <- simple route is created by default, we can skip that
         'options' => array(
             'route'    => 'foo bar',
             'defaults' => array(
