@@ -1,7 +1,7 @@
 .. EN-Revision: 1a4ca34
 .. _user-guide.modules:
 
-Modulos
+Módulos
 =======
 
 O Zend Framework 2 usa um sistema modular atraves do qual você pode organizaro código 
@@ -156,7 +156,7 @@ que iremos referenciar como ``Album\Controller\Album``. A chave do controller de
 única por todos os módulos, por isso nos a prefixamos com o nome do módulo.
 
 Na seção ``view_manager``, nos inlcuimos nosso diretório de views na configuração
-``TemplatePathStack``. Isso permitirá que os arquivos de view para o modulo ``Album``
+``TemplatePathStack``. Isso permitirá que os arquivos de view para o módulo ``Album``
 sejam econtrados dentro do nosso diretório ``view/``.
 
 Informando a Aplicação sobre o Novo Módulo
