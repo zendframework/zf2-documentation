@@ -39,7 +39,7 @@ interface:
 
    class CleanIPAssertion implements Zend\Permissions\Acl\Assertion\AssertionInterface
    {
-       public function assert(Zend\Permissions\Acl $acl,
+       public function assert(Zend\Permissions\Acl\Acl $acl,
                               Zend\Permissions\Acl\Role\RoleInterface $role = null,
                               Zend\Permissions\Acl\Resource\ResourceInterface $resource = null,
                               $privilege = null)
