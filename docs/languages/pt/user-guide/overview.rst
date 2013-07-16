@@ -1,7 +1,7 @@
 .. _user-guide.overview:
 
-Getting Started with Zend Framework 2
-=====================================
+Iniciando com Zend Framework 2
+==============================
 
 Esse tutorial pretende fornecer uma introdução ao desenvolvimento com Zend Framework 2 
 atraves da criação de uma simples aplicação guiada por banco de dados usando o padrão
@@ -12,7 +12,7 @@ forma conjunta.
 .. _user-guide.overview.assumptions:
 
 Algumas Suposições
-----------------
+------------------
 
 Esse tutorial assume que você tenha pelo menos um servidor apache com PHP 5.3.3 rodando
 e um servidor MySQL, acessível pela extensão PDO. Sua configuração do Apache deve ter a 
@@ -36,7 +36,7 @@ mais precisos. Você não poderá navegar para nenhuma página além da página 
 tutoria se não tiver configurado corretamente o uso de mod_rewrite e .htaccess.
 
 A Aplicação Tutorial
-------------------------
+--------------------
 
 A aplicação que você está prestes a desenvolver é uma simples biblioteca para exibir quais
 albuns de música você possui. A página principal ira exibir uma lista de sua coleção e permitir
