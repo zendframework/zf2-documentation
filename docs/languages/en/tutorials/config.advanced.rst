@@ -298,31 +298,31 @@ where ``module.config.php`` returns a PHP array.
 Second, modules can implement a number of interfaces and/or methods related to
 specific service manager or plugin manager configuration. Examples include:
 
-+---------------------------------------+---------------------------------+
-| Interface name                        | Method name                     |
-+=======================================+=================================+
-| ``ControllerPluginProviderInterface`` | ``getControllerPluginConfig()`` |
-+---------------------------------------+---------------------------------+
-| ``ControllerProviderInterface``       | ``getControllerConfig()``       |
-+---------------------------------------+---------------------------------+
-| ``FilterProviderInterface``           | ``getFilterConfig()``           |
-+---------------------------------------+---------------------------------+
-| ``FormElementProviderInterface``      | ``getFormElementConfig()``      |
-+---------------------------------------+---------------------------------+
-| ``HydratorProviderInterface``         | ``getHydratorConfig()``         |
-+---------------------------------------+---------------------------------+
-| ``InputFilterProviderInterface``      | ``getInputFilterConfig()``      |
-+---------------------------------------+---------------------------------+
-| ``RouteProviderInterface``            | ``getRouteConfig()``            |
-+---------------------------------------+---------------------------------+
-| ``SerializerProviderInterface``       | ``getSerializerConfig()``       |
-+---------------------------------------+---------------------------------+
-| ``ServiceProviderInterface``          | ``getServiceConfig()``          |
-+---------------------------------------+---------------------------------+
-| ``ValidatorProviderInterface``        | ``getValidatorConfig()``        |
-+---------------------------------------+---------------------------------+
-| ``ViewHelperProviderInterface``       | ``getViewHelperConfig()``       |
-+---------------------------------------+---------------------------------+
++---------------------------------------+---------------------------------+------------------------+
+| Interface name                        | Method name                     | Configuration Key      |
++=======================================+=================================+========================+
+| ``ControllerPluginProviderInterface`` | ``getControllerPluginConfig()`` | ``controller_plugins`` |
++---------------------------------------+---------------------------------+------------------------+
+| ``ControllerProviderInterface``       | ``getControllerConfig()``       | ``controllers``        |
++---------------------------------------+---------------------------------+------------------------+
+| ``FilterProviderInterface``           | ``getFilterConfig()``           | ``filters``            |
++---------------------------------------+---------------------------------+------------------------+
+| ``FormElementProviderInterface``      | ``getFormElementConfig()``      | ``form_elements``      |
++---------------------------------------+---------------------------------+------------------------+
+| ``HydratorProviderInterface``         | ``getHydratorConfig()``         | ``hydrators``          |
++---------------------------------------+---------------------------------+------------------------+
+| ``InputFilterProviderInterface``      | ``getInputFilterConfig()``      | ``input_filters``      |
++---------------------------------------+---------------------------------+------------------------+
+| ``RouteProviderInterface``            | ``getRouteConfig()``            | ``route_manager``      |
++---------------------------------------+---------------------------------+------------------------+
+| ``SerializerProviderInterface``       | ``getSerializerConfig()``       | ``serializers``        |
++---------------------------------------+---------------------------------+------------------------+
+| ``ServiceProviderInterface``          | ``getServiceConfig()``          | ``service_manager``    |
++---------------------------------------+---------------------------------+------------------------+
+| ``ValidatorProviderInterface``        | ``getValidatorConfig()``        | ``validators``         |
++---------------------------------------+---------------------------------+------------------------+
+| ``ViewHelperProviderInterface``       | ``getViewHelperConfig()``       | ``view_helpers``       |
++---------------------------------------+---------------------------------+------------------------+
 
 All interfaces listed are in the ``Zend\ModuleManager\Feature`` namespace, and
 each is expected to return an array of configuration for a service manager, as
