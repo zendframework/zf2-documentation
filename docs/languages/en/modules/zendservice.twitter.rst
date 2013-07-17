@@ -39,6 +39,91 @@ requested.
 - *users* retrieves friends and followers for the authenticated user and returns extended information about a passed
   user.
 
+.. _zendservice.twitter.quick-start:
+
+Quick Start
+-----------
+
+To get started, first you'll need to either create a new application with Twitter, or get the
+details of an existing one you control. To do this:
+
+- Go to https://dev.twitter.com/ and sign in.
+
+- Go to https://dev.twitter.ocm/apps
+
+- Either create a new application, or select an existing one.
+
+- On the application's settings page, grab the following information:
+
+    - From the header "OAuth settings", grab the "Consumer key" and "Consumer secret" values.
+
+    - From the header "Your access token", grab the "Access token" and "Access token secret" values.
+
+Armed with this information, you can now configure and create your
+``ZendService_Twitter\Twitter\Twitter`` instance:
+
+.. code-block:: php
+    :linenos:
+
+    $config = array(
+        'access_token' => array(
+            'token'  => 'twitter-access-token-here',
+            'secret' => 'twitter-access-secret-here',
+        ),
+        'oauth_options' => array(
+            'consumerKey' => 'twitter-consumer-key-here',
+            'consumerSecret' => 'twitter-consumer-secret-here',
+        ),
+        'http_client_options' => array(
+            'adapter' => 'Zend\Http\Client\Adapter\Curl',
+            'curloptions' => array(
+                CURLOPT_SSL_VERIFYHOST => false,
+                CURLOPT_SSL_VERIFYPEER => false,
+            ),
+        ),
+    );
+     
+    $twitter = new Twitter($config);
+
+Make sure you substitute the values you discovered earlier in the configuration before attempting to
+connect.
+
+.. note::
+
+    Twitter has a known issue with the SSL certificate for their API endpoints, which requires that
+    you use insecure settings for the SSL certificate verification.
+
+Once you have the client configured, you can start consuming it:
+
+.. code-block:: php
+    :linenos:
+
+    // Verify your credentials:
+    $response = $twitter->account->verifyCredentials();
+    if (!$response->isSuccess()) {
+        die('Something is wrong with my credentials!');
+    }
+
+    // Search for something:
+    $response = $twitter->search->tweets('#zf2');
+    foreach ($response->toValue() as $tweet) {
+        printf("%s\n- (%s)\n", $tweet->text, $tweet->user->name);
+    }
+
+    // Tweet something:
+    $twitter->statuses->update('Hello world!');
+
+Every action you take returns a ``ZendService_Twitter\Twitter\Response`` object. This object
+contains some general purpose methods for determining the status of the response (``isSuccess()``,
+``isError()``), and otherwise acts as a value object containing the data returned. Essentially, if
+the response returns an object, you will be able to access the members listed by the `Twitter API
+documentation <https://dev.twitter.com/docs/api/1.1>`_. In the case of responses that return arrays,
+such as the ``$twitter->search->tweets()`` example shown earlier, you should use the ``toValue()``
+method of the response to retrieve the array.
+
+If you wish to dive in more into how authentication works, and what methods are exposed, keep
+reading!
+
 .. _zendservice.twitter.authentication:
 
 Authentication
