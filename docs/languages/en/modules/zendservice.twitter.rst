@@ -49,7 +49,7 @@ details of an existing one you control. To do this:
 
 - Go to https://dev.twitter.com/ and sign in.
 
-- Go to https://dev.twitter.ocm/apps
+- Go to https://dev.twitter.com/apps
 
 - Either create a new application, or select an existing one.
 
