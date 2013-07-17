@@ -1,4 +1,4 @@
-.. EN-Revision: 96c6ad3
+.. EN-Revision: 1551c1d
 .. _user-guide.skeleton-application:
 
 Iniciando: A Aplicação Skeleton
