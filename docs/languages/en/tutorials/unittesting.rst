@@ -125,7 +125,13 @@ And a file called ``Bootstrap.php``, also under ``zf2-tutorial/module/Album/test
             $serviceManager->get('ModuleManager')->loadModules();
             static::$serviceManager = $serviceManager;
         }
-
+        
+        public static function chroot()
+        {
+            $rootPath = dirname(static::findParentPath('module'));
+            chdir($rootPath);
+        }
+        
         public static function getServiceManager()
         {
             return static::$serviceManager;
@@ -179,6 +185,7 @@ And a file called ``Bootstrap.php``, also under ``zf2-tutorial/module/Album/test
     }
 
     Bootstrap::init();
+    Bootstrap::chroot();
 
 The contents of this bootstrap file can be daunting at first sight, but all it
 really does is ensuring that all the necessary files are autoloadable for our
