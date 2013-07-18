@@ -281,7 +281,7 @@ Module Configuration
 One responsibility of modules is to provide their own configuration to the
 application. Modules have two general mechanisms for doing this.
 
-First, modules that either implement
+**First**, modules that either implement
 ``Zend\ModuleManager\Feature\ConfigProviderInterface`` and/or a ``getConfig()``
 method can return their configuration. The default, recommended implementation
 of the ``getConfig()`` method is:
@@ -293,41 +293,50 @@ of the ``getConfig()`` method is:
         return include __DIR__ . '/config/module.config.php';
     }
 
-where ``module.config.php`` returns a PHP array.
+where ``module.config.php`` returns a PHP array. From that PHP array you can provide general configuration as
+well as configuration for all the available Manager classes provided by the ServiceManager. Please refer to 
+the `Configuration mapping table`_ to see which configuration key is used for each specific Manager.
 
-Second, modules can implement a number of interfaces and/or methods related to
-specific service manager or plugin manager configuration. Examples include:
+**Second**, modules can implement a number of interfaces and/or methods related to
+specific service manager or plugin manager configuration. You will find an overview of all 
+interfaces and their matching Module Configuration functions inside the `Configuration mapping table`_.
 
-+---------------------------------------+---------------------------------+------------------------+
-| Interface name                        | Method name                     | Configuration Key      |
-+=======================================+=================================+========================+
-| ``ControllerPluginProviderInterface`` | ``getControllerPluginConfig()`` | ``controller_plugins`` |
-+---------------------------------------+---------------------------------+------------------------+
-| ``ControllerProviderInterface``       | ``getControllerConfig()``       | ``controllers``        |
-+---------------------------------------+---------------------------------+------------------------+
-| ``FilterProviderInterface``           | ``getFilterConfig()``           | ``filters``            |
-+---------------------------------------+---------------------------------+------------------------+
-| ``FormElementProviderInterface``      | ``getFormElementConfig()``      | ``form_elements``      |
-+---------------------------------------+---------------------------------+------------------------+
-| ``HydratorProviderInterface``         | ``getHydratorConfig()``         | ``hydrators``          |
-+---------------------------------------+---------------------------------+------------------------+
-| ``InputFilterProviderInterface``      | ``getInputFilterConfig()``      | ``input_filters``      |
-+---------------------------------------+---------------------------------+------------------------+
-| ``RouteProviderInterface``            | ``getRouteConfig()``            | ``route_manager``      |
-+---------------------------------------+---------------------------------+------------------------+
-| ``SerializerProviderInterface``       | ``getSerializerConfig()``       | ``serializers``        |
-+---------------------------------------+---------------------------------+------------------------+
-| ``ServiceProviderInterface``          | ``getServiceConfig()``          | ``service_manager``    |
-+---------------------------------------+---------------------------------+------------------------+
-| ``ValidatorProviderInterface``        | ``getValidatorConfig()``        | ``validators``         |
-+---------------------------------------+---------------------------------+------------------------+
-| ``ViewHelperProviderInterface``       | ``getViewHelperConfig()``       | ``view_helpers``       |
-+---------------------------------------+---------------------------------+------------------------+
-
-All interfaces listed are in the ``Zend\ModuleManager\Feature`` namespace, and
+All interfaces are in the ``Zend\ModuleManager\Feature`` namespace, and
 each is expected to return an array of configuration for a service manager, as
 denoted in the :ref:`section on default service configuration
 <zend.mvc.services.service-manager-configuration>`.
+
+Configuration mapping table 
+---------------------------
+
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| Manager name                 | Interface name                        | Module Method name              | Config key name        | 
++==============================+=======================================+=================================+========================+
+| ``ControllerPluginManager``  | ``ControllerPluginProviderInterface`` | ``getControllerPluginConfig()`` | ``controller_plugins`` |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``ControllerLoader``         | ``ControllerProviderInterface``       | ``getControllerConfig()``       | ``controllers``        |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``FilterManager``            | ``FilterProviderInterface``           | ``getFilterConfig()``           | ``filters``            |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``FormElementManager``       | ``FormElementProviderInterface``      | ``getFormElementConfig()``      | ``form_elements``      |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``HydratorManager``          | ``HydratorProviderInterface``         | ``getHydratorConfig()``         | ``hydrators``          |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``InputFilterManager``       | ``InputFilterProviderInterface``      | ``getInputFilterConfig()``      | ``input_filters``      |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``RoutePluginManager``       | ``RouteProviderInterface``            | ``getRouteConfig()``            | ``route_manager``      |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``SerializerAdapterManager`` | ``SerializerProviderInterface``       | ``getSerializerConfig()``       | ``serializers``        |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``ServiceLocator``           | ``ServiceProviderInterface``          | ``getServiceConfig()``          | ``service_manager``    |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``ValidatorManager``         | ``ValidatorProviderInterface``        | ``getValidatorConfig()``        | ``validators``         |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``ViewHelperManager``        | ``ViewHelperProviderInterface``       | ``getViewHelperConfig()``       | ``view_helpers``       |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+
+Configuration Priority
+----------------------
 
 Considering that you may have service configuration in your module configuration
 file, what has precedence?
