@@ -26,7 +26,7 @@ look something like this:
 .. code-block:: php
    :linenos:
 
-   // config/autoload/database.local.php
+   // config/autoload/global.php
 
    return array(
       'db' => array(
@@ -67,7 +67,7 @@ In order to utilize this adapter in non-ServiceLocatorAware classes, you can use
 .. code-block:: php
    :linenos:
 
-   // config/autoload/database.local.php
+   // config/autoload/global.php
 
    return array(
       'db' => array(
