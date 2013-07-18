@@ -98,6 +98,6 @@ for use in e.g. ``Zend\Validator\DbRecordExists``:
       array(
          'table'   => 'users',
          'field'   => 'emailaddress',
-         'adapter' => \Zend\Db\TableGateway\Feature\GlobalAdapterFeature::getStaticAdapter();
+         'adapter' => \Zend\Db\TableGateway\Feature\GlobalAdapterFeature::getStaticAdapter()
       )
    );
