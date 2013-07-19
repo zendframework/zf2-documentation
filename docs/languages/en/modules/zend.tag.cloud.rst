@@ -72,9 +72,40 @@ it.
    // Render the cloud
    echo $cloud;
 
-This will output the tag cloud with the three tags, spread with the default font-sizes.
+This will output the tag cloud with the three tags, spread with the default
+font-sizes:
 
-The following example shows how create a tag cloud from a ``Zend\Config\Config`` object.
+.. code-block:: html
+   :linenos:
+
+   <ul class="zend-tag-cloud">
+       <li>
+           <a href="/tag/code" style="font-size: 20px;">
+               Code
+           </a>
+       </li>
+       <li>
+           <a href="/tag/zend-framework" style="font-size: 10px;">
+               Zend Framework
+           </a>
+       </li>
+       <li>
+           <a href="/tag/php" style="font-size: 11px;">
+               PHP
+           </a>
+       </li>
+   </ul>
+
+.. note::
+
+   The HTML code examples are preformatted for a better visualization in the
+   documentation.
+
+   You can define a output separator for the
+   :ref:`HTML Cloud decorator<zend.tag.cloud.decorators.htmlcloud>`.
+
+The following example shows how create the **same** tag cloud from a
+``Zend\Config\Config`` object.
 
 .. code-block:: ini
     :linenos:
@@ -155,7 +186,7 @@ configuration options are available:
 The following example shows how to create a tag cloud with a customized *HTML* tag decorator.
 
 .. code-block:: php
-    :linenos:
+   :linenos:
 
     $cloud = new Zend\Tag\Cloud(array(
         'tagDecorator' => array(
@@ -190,6 +221,23 @@ The following example shows how to create a tag cloud with a customized *HTML* t
     // Render the cloud
     echo $cloud;
 
+The output:
+
+.. code-block:: html
+   :linenos:
+
+   <ul class="zend-tag-cloud">
+       <li class="my_custom_class">
+           <a href="/tag/code" style="font-size: 50px;">Code</a>
+       </li>
+       <li class="my_custom_class">
+           <a href="/tag/zend-framework" style="font-size: 20px;">Zend Framework</a>
+       </li>
+       <li class="my_custom_class">
+           <a href="/tag/php" style="font-size: 23px;">PHP</a>
+       </li>
+   </ul>
+
 .. _zend.tag.cloud.decorators.htmlcloud:
 
 HTML Cloud decorator
@@ -208,8 +256,58 @@ The available options are:
    +==============+=====================================================+=====================================================================+
    |``separator`` |``' '`` *(a whitespace)*                             |Defines the separator which is placed between all tags.              |
    +--------------+-----------------------------------------------------+---------------------------------------------------------------------+
-   |``htmlTags``  |``array('ul' => array('class' => 'Zend\Tag\Cloud'))``|An array of *HTML* tags surrounding all tags. Each element can either|
+   |``htmlTags``  |``array('ul' => array('class' => 'zend-tag-cloud'))``|An array of *HTML* tags surrounding all tags. Each element can either|
    |              |                                                     |be a string, which is used as element type, or an array containing an|
    |              |                                                     |attribute list for the element, defined as key/value pair. In this   |
    |              |                                                     |case, the array key is used as element type.                         |
    +--------------+-----------------------------------------------------+---------------------------------------------------------------------+
+
+.. code-block:: php
+   :linenos:
+
+   // Create the cloud and assign static tags to it
+   $cloud = new Zend\Tag\Cloud(array(
+       'cloudDecorator' => array(
+           'decorator' => 'htmlcloud',
+           'options'   => array(
+               'separator' => "\n\n",
+               'htmlTags'  => array(
+                   'ul' => array(
+                       'class' => 'my_custom_class',
+                       'id'    => 'tag-cloud',
+                   ),
+               ),
+           ),
+       ),
+       'tags' => array(
+           array(
+               'title'  => 'Code',
+               'weight' => 50,
+               'params' => array('url' => '/tag/code'),
+           ),
+           array(
+               'title'  => 'Zend Framework',
+               'weight' => 1,
+               'params' => array('url' => '/tag/zend-framework'),
+           ),
+           array(
+               'title' => 'PHP',
+               'weight' => 5,
+               'params' => array('url' => '/tag/php'),
+           ),
+       ),
+   ));
+
+   // Render the cloud
+   echo $cloud;
+
+The ouput:
+
+.. code-block:: html
+   :linenos:
+
+   <ul class="my_custom_class" id="tag-cloud"><li><a href="/tag/code" style="font-size: 20px;">Code</a></li>
+
+   <li><a href="/tag/zend-framework" style="font-size: 10px;">Zend Framework</a></li>
+
+   <li><a href="/tag/php" style="font-size: 11px;">PHP</a></li></ul>

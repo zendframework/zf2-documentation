@@ -40,4 +40,12 @@ This example illustrates how to create a list of tags and spread absolute weight
        printf("%s: %d\n", $item->getTitle(), $item->getParam('weightValue'));
    }
 
-This will output the three items Code, Zend Framework and *PHP* with the absolute values 10, 1 and 2.
+This will output the three items "Code", "Zend Framework" and "PHP" with the
+absolute values 10, 1 and 2.
+
+.. code-block:: txt
+   :linenos:
+
+   Code: 10
+   Zend Framework: 1
+   PHP: 2
