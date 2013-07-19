@@ -432,7 +432,8 @@ with some POST data. Testing this is surprisingly easy:
         $serviceManager->setService('Album\Model\AlbumTable', $albumTableMock);
 
         $postData = array(
-            'title' => 'Led Zeppelin III', 'artist' => 'Led Zeppelin'
+            'title'  => 'Led Zeppelin III',
+            'artist' => 'Led Zeppelin',
         );
         $this->dispatch('/album/add', 'POST', $postData);
         $this->assertResponseStatusCode(302);
@@ -493,13 +494,16 @@ with the following contents:
             $album = new Album();
 
             $this->assertNull(
-                $album->artist, '"artist" should initially be null'
+                $album->artist,
+                '"artist" should initially be null'
             );
             $this->assertNull(
-                $album->id, '"id" should initially be null'
+                $album->id,
+                '"id" should initially be null'
             );
             $this->assertNull(
-                $album->title, '"title" should initially be null'
+                $album->title,
+                '"title" should initially be null'
             );
         }
 
@@ -513,13 +517,19 @@ with the following contents:
             $album->exchangeArray($data);
 
             $this->assertSame(
-                $data['artist'], $album->artist, '"artist" was not set correctly'
+                $data['artist'],
+                $album->artist,
+                '"artist" was not set correctly'
             );
             $this->assertSame(
-                $data['id'], $album->id, '"id" was not set correctly'
+                $data['id'],
+                $album->id,
+                '"id" was not set correctly'
             );
             $this->assertSame(
-                $data['title'], $album->title, '"title" was not set correctly'
+                $data['title'],
+                $album->title,
+                '"title" was not set correctly'
             );
         }
 
