@@ -66,6 +66,7 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
 - :ref:`JSON <zend.view.helpers.initial.json>`
 - :ref:`Partial <zend.view.helpers.initial.partial>`
 - :ref:`Placeholder <zend.view.helpers.initial.placeholder>`
+- :ref:`Url <zend.view.helpers.initial.url>`
 
 .. note::
 
