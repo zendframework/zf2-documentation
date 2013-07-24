@@ -86,3 +86,8 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
 
    View helpers related to **paginator** are documented in the
    :ref:`Paginator Usage <zend.paginator.rendering>` chapter.
+
+.. note::
+
+   For documentation on writing **custom view helpers** see the
+   :ref:`Advanced usage <zend.view.helpers.advanced-usage>` chapter.
