@@ -34,7 +34,7 @@ an associative array. Below is an example on how to validate the data coming fro
    } else {
        echo "The form is not valid\n";
        foreach ($inputFilter->getInvalidInput() as $error) {
-           print_r ($error->getMessages());
+           print_r($error->getMessages());
        }
    }
 
