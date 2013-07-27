@@ -18,11 +18,11 @@ an associative array. Below is an example on how to validate the data coming fro
 
    $email = new Input('email');
    $email->getValidatorChain()
-         ->addValidator(new Validator\EmailAddress());
+         ->attach(new Validator\EmailAddress());
 
    $password = new Input('password');
    $password->getValidatorChain()
-            ->addValidator(new Validator\StringLength(8));
+            ->attach(new Validator\StringLength(8));
 
    $inputFilter = new InputFilter();
    $inputFilter->add($email)
@@ -42,7 +42,7 @@ In this example we validated the email and password values. The email must be a 
 be composed with at least 8 characters. If the input data are not valid, we report the list of invalid input using
 the ``getInvalidInput()`` method.
 
-You can add one or more validators to each input using the ``addValidator()`` method for each validator. It is also
+You can add one or more validators to each input using the ``attach()`` method for each validator. It is also
 possible to specify a "validation group", a subset of the data to be validated; this may be done using the
 ``setValidationGroup()`` method. You can specify the list of the input names as an array or as individual
 parameters.
