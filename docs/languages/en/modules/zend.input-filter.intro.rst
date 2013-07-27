@@ -51,10 +51,10 @@ parameters.
    :linenos:
 
    // As individual parameters
-   $filterInput->setValidationGroup('email', 'password');
+   $inputFilter->setValidationGroup('email', 'password');
 
    // or as an array of names
-   $filterInput->setValidationGroup(array('email', 'password'));
+   $inputFilter->setValidationGroup(array('email', 'password'));
 
 You can validate and/or filter the data using the ``InputFilter``. To filter data, use the ``getFilterChain()``
 method of individual ``Input`` instances, and attach filters to the returned filter chain. Below is an example that
