@@ -72,7 +72,7 @@ that implements the ``InputFilterAwareInterface`` interface, such as a model ent
 going to add the input filter to the Album class, which resides in the ``Album.php`` file in ``module/Album/src/Album/Model``:
 
 .. code-block:: php
-    :emphasize-lines: 5-8,15,23-86
+    :emphasize-lines: 5-8,10,15,23-86
 
     <?php
     namespace Album\Model;
