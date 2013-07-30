@@ -72,13 +72,12 @@ that implements the ``InputFilterAwareInterface`` interface, such as a model ent
 going to add the input filter to the Album class, which resides in the ``Album.php`` file in ``module/Album/src/Album/Model``:
 
 .. code-block:: php
-    :emphasize-lines: 5-8,10,15,23-86
+    :emphasize-lines: 5-7,9,14,23-84
 
     <?php
     namespace Album\Model;
 
     // Add these import statements
-    use Zend\InputFilter\Factory as InputFactory;
     use Zend\InputFilter\InputFilter;
     use Zend\InputFilter\InputFilterAwareInterface;
     use Zend\InputFilter\InputFilterInterface;
@@ -107,17 +106,16 @@ going to add the input filter to the Album class, which resides in the ``Album.p
         {
             if (!$this->inputFilter) {
                 $inputFilter = new InputFilter();
-                $factory     = new InputFactory();
 
-                $inputFilter->add($factory->createInput(array(
+                $inputFilter->add(array(
                     'name'     => 'id',
                     'required' => true,
                     'filters'  => array(
                         array('name' => 'Int'),
                     ),
-                )));
+                ));
 
-                $inputFilter->add($factory->createInput(array(
+                $inputFilter->add(array(
                     'name'     => 'artist',
                     'required' => true,
                     'filters'  => array(
@@ -134,9 +132,9 @@ going to add the input filter to the Album class, which resides in the ``Album.p
                             ),
                         ),
                     ),
-                )));
+                ));
 
-                $inputFilter->add($factory->createInput(array(
+                $inputFilter->add(array(
                     'name'     => 'title',
                     'required' => true,
                     'filters'  => array(
@@ -153,7 +151,7 @@ going to add the input filter to the Album class, which resides in the ``Album.p
                             ),
                         ),
                     ),
-                )));
+                ));
 
                 $this->inputFilter = $inputFilter;
             }
