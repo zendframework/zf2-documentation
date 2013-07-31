@@ -157,7 +157,7 @@ We'll modify the ``config/application.config.php`` file to read as follows:
         'Application',
     );
     if ($env == 'development') {
-        $modules[] = 'ZendDeveloperTools',
+        $modules[] = 'ZendDeveloperTools';
     }
 
     return array(
