@@ -255,7 +255,7 @@ If ``$env`` evaluates to ``testing``, then the following files will be merged,
 in the following order::
 
     global.php
-    users.test.php
+    users.testing.php
     local.php
     users.local.php
 
