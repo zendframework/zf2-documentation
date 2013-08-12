@@ -1,3 +1,4 @@
+.. EN-Revision: 96c6ad3
 .. _user-guide.styling-and-translations:
 
 Estilizando e Traduzindo
