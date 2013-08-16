@@ -72,6 +72,16 @@ following location inside config file:
     :linenos:
 
     array(
+        'controllers' => array(
+            'invokables' => array(
+                'Application\Controller\Index' => 'Application\Controller\IndexController'
+                // previously added
+                
+            )
+        ),    
+    ),    
+
+    array(
         'router' => array(
             'routes' => array(
                 // HTTP routes are defined here
