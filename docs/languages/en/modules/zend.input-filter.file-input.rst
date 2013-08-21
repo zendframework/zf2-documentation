@@ -34,12 +34,12 @@ Usage of ``FileInput`` is essentially the same as ``Input``:
    $description->getFilterChain()           // Filters are run first w/ Input
                ->attach(new Filter\StringTrim());
    $description->getValidatorChain()        // Validators are run second w/ Input
-               ->addValidator(new Validator\StringLength(array('max' => 140));
+               ->attach(new Validator\StringLength(array('max' => 140)));
 
    // File upload input
    $file = new FileInput('file');           // Special File Input type
    $file->getValidatorChain()               // Validators are run first w/ FileInput
-        ->addValidator(new Validator\File\UploadFile());
+        ->attach(new Validator\File\UploadFile());
    $file->getFilterChain()                  // Filters are run second w/ FileInput
         ->attach(new Filter\File\RenameUpload(array(
             'target'    => './data/tmpuploads/file',
