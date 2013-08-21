@@ -66,6 +66,7 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
 - :ref:`JSON <zend.view.helpers.initial.json>`
 - :ref:`Partial <zend.view.helpers.initial.partial>`
 - :ref:`Placeholder <zend.view.helpers.initial.placeholder>`
+- :ref:`Url <zend.view.helpers.initial.url>`
 
 .. note::
 
@@ -87,19 +88,7 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
    View helpers related to **paginator** are documented in the
    :ref:`Paginator Usage <zend.paginator.rendering>` chapter.
 
-.. include:: zend.view.helpers.base-path.rst
-.. include:: zend.view.helpers.cycle.rst
-.. include:: zend.view.helpers.doctype.rst
-.. include:: zend.view.helpers.head-link.rst
-.. include:: zend.view.helpers.head-meta.rst
-.. include:: zend.view.helpers.head-script.rst
-.. include:: zend.view.helpers.head-style.rst
-.. include:: zend.view.helpers.head-title.rst
-.. include:: zend.view.helpers.html-list.rst
-.. include:: zend.view.helpers.html-object.rst
-.. include:: zend.view.helpers.identity.rst
-.. include:: zend.view.helpers.inline-script.rst
-.. include:: zend.view.helpers.json.rst
-.. include:: zend.view.helpers.partial.rst
-.. include:: zend.view.helpers.placeholder.rst
-.. include:: zend.view.helpers.url.rst
+.. note::
+
+   For documentation on writing **custom view helpers** see the
+   :ref:`Advanced usage <zend.view.helpers.advanced-usage>` chapter.

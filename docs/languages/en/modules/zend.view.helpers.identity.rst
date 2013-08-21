@@ -1,7 +1,7 @@
 .. _zend.view.helpers.initial.identity:
 
-Identity Helper
----------------
+View Helper - Identity
+----------------------
 
 The ``Identity`` helper allows for getting the identity from the ``AuthenticationService``.
 
