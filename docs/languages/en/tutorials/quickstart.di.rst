@@ -117,7 +117,7 @@ expanded to this (we'll throw a 3rd class in for good measure):
 
    }
 
-With the above, we need to ensure that our ``Di`` is capable of seeing the ``A`` class with a few
+With the above, we need to ensure that our ``Di`` is capable of setting the ``A`` class with a few
 configuration values (which are generally scalar in nature). To do this, we need to interact with the
 ``InstanceManager``:
 
