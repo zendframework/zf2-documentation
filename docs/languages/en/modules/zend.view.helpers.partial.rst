@@ -14,8 +14,8 @@ partial for each item.
 
    **PartialLoop Counter**
 
-   The ``PartialLoop`` view helper assigns a variable to the view named **partialCounter** which passes the current
-   position of the array to the view script. This provides an easy way to have alternating colors on table rows for
+   The ``PartialLoop`` view helper gives access to the current
+   position of the array within the view script via ``$this->partialLoop()->getPartialCounter()``. This provides an easy way to have alternating colors on table rows for
    example.
 
 .. _zend.view.helpers.initial.partial.usage:
