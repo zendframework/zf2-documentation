@@ -246,6 +246,22 @@
    modules/zend.view.php-renderer.scripts
    modules/zend.view.view-event
    modules/zend.view.helpers
+   modules/zend.view.helpers.basepath
+   modules/zend.view.helpers.cycle
+   modules/zend.view.helpers.doctype
+   modules/zend.view.helpers.headlink
+   modules/zend.view.helpers.headmeta
+   modules/zend.view.helpers.headscript
+   modules/zend.view.helpers.headstyle
+   modules/zend.view.helpers.headtitle
+   modules/zend.view.helpers.htmllist
+   modules/zend.view.helpers.object
+   modules/zend.view.helpers.identity
+   modules/zend.view.helpers.inlinescript
+   modules/zend.view.helpers.json
+   modules/zend.view.helpers.partial
+   modules/zend.view.helpers.placeholder
+   modules/zend.view.helpers.url
    modules/zend.view.helpers.advanced-usage
    modules/zend.xmlrpc.intro
    modules/zend.xmlrpc.client
@@ -730,7 +746,7 @@ Zend\\Soap
         * :doc:`modules/zend.soap.client`
         * :doc:`modules/zend.soap.wsdl`
         * :doc:`modules/zend.soap.auto-discovery`
-        
+
 .. _zend.stdlib:
 
 Zend\\Stdlib
@@ -797,6 +813,22 @@ Zend\\View
         * :doc:`modules/zend.view.php-renderer.scripts`
         * :doc:`modules/zend.view.view-event`
         * :doc:`modules/zend.view.helpers`
+        * :doc:`modules/zend.view.helpers.base-path`
+        * :doc:`modules/zend.view.helpers.cycle`
+        * :doc:`modules/zend.view.helpers.doctype`
+        * :doc:`modules/zend.view.helpers.head-link`
+        * :doc:`modules/zend.view.helpers.head-meta`
+        * :doc:`modules/zend.view.helpers.head-script`
+        * :doc:`modules/zend.view.helpers.head-style`
+        * :doc:`modules/zend.view.helpers.head-title`
+        * :doc:`modules/zend.view.helpers.html-list`
+        * :doc:`modules/zend.view.helpers.html-object`
+        * :doc:`modules/zend.view.helpers.identity`
+        * :doc:`modules/zend.view.helpers.inline-script`
+        * :doc:`modules/zend.view.helpers.json`
+        * :doc:`modules/zend.view.helpers.partial`
+        * :doc:`modules/zend.view.helpers.placeholder`
+        * :doc:`modules/zend.view.helpers.url`
         * :doc:`modules/zend.view.helpers.advanced-usage`
 
 .. _zend.xmlrpc:

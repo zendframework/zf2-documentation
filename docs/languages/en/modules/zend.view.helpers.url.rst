@@ -1,10 +1,10 @@
 .. _zend.view.helpers.initial.url:
 
-URL Helper
-----------
+View Helper - URL
+-----------------
 
-- ``url($name, $urlParams, $routeOptions, $reuseMatchedParams)``: Creates a *URL* string based on a named route.
-  ``$urlParams`` should be an associative array of key/value pairs used by the particular route.
+``url($name, $urlParams, $routeOptions, $reuseMatchedParams)``: Creates a *URL* string based on a named route.
+``$urlParams`` should be an associative array of key/value pairs used by the particular route.
 
 .. code-block:: php
    :linenos:
