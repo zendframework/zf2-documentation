@@ -1,7 +1,7 @@
 .. _zend.view.helpers.initial.placeholder:
 
-Placeholder Helper
-------------------
+View Helper - Placeholder
+-------------------------
 
 The ``Placeholder`` view helper is used to persist content between view scripts and view instances. It also offers
 some useful features such as aggregating content, capturing view script content for later use, and adding pre- and
