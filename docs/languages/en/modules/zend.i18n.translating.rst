@@ -67,9 +67,7 @@ The translator supports the following major translation formats:
 
 - Gettext
 
-- Tmx
-
-- Xliff
+- INI
 
 .. _zend.i18n.translating.setting-a-locale:
 
