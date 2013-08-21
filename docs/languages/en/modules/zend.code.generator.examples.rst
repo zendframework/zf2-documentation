@@ -13,7 +13,7 @@ The following example generates an empty class with a class-level DocBlock.
    :linenos:
 
    $foo      = new Zend\Code\Generator\ClassGenerator();
-   $docblock = new Zend\Code\Generator\DocblockGenerator(array(
+   $docblock = Zend\Code\Generator\DocblockGenerator::fromArray(array(
        'shortDescription' => 'Sample generated class',
        'longDescription'  => 'This is a class generated with Zend\Code\Generator.',
        'tags'             => array(
@@ -60,7 +60,7 @@ Building on the previous example, we now add properties to our generated class.
    :linenos:
 
    $foo      = new Zend\Code\Generator\ClassGenerator();
-   $docblock = new Zend\Code\Generator\DocBlockGenerator(array(
+   $docblock = Zend\Code\Generator\DocBlockGenerator::fromArray(array(
        'shortDescription' => 'Sample generated class',
        'longDescription'  => 'This is a class generated with Zend\Code\Generator.',
        'tags'             => array(
@@ -77,21 +77,9 @@ Building on the previous example, we now add properties to our generated class.
    $foo->setName('Foo')
        ->setDocblock($docblock)
        ->setProperties(array(
-           array(
-               'name'         => '_bar',
-               'visibility'   => 'protected',
-               'defaultValue' => 'baz',
-           ),
-           array(
-               'name'         => 'baz',
-               'visibility'   => 'public',
-               'defaultValue' => 'bat',
-           ),
-           array(
-               'name'         => 'bat',
-               'const'        => true,
-               'defaultValue' => 'foobarbazbat',
-           ),
+            array('_bar', 'baz', Zend\Code\Generator\PropertyGenerator::FLAG_PROTECTED),
+            array('baz', 'bat', Zend\Code\Generator\PropertyGenerator::FLAG_PUBLIC),
+            array('bat', 'foobarbazbat', Zend\Code\Generator\PropertyGenerator::FLAG_CONSTANT),
        ));
    echo $foo->generate();
 
@@ -130,75 +118,65 @@ attached as either arrays or concrete ``Zend\Code\Generator\MethodGenerator`` in
 .. code-block:: php
    :linenos:
 
-   $foo      = new Zend\Code\Generator\ClassGenerator();
-   $docblock = new Zend\Code\Generator\DocBlockGenerator(array(
-       'shortDescription' => 'Sample generated class',
-       'longDescription'  => 'This is a class generated with Zend\Code\Generator.',
-       'tags'             => array(
-           array(
-               'name'        => 'version',
-               'description' => '$Rev:$',
-           ),
-           array(
-               'name'        => 'license',
-               'description' => 'New BSD',
-           ),
-       ),
-   ));
-   $foo->setName('Foo')
-       ->setDocblock($docblock)
-       ->setProperties(array(
-           array(
-               'name'         => '_bar',
-               'visibility'   => 'protected',
-               'defaultValue' => 'baz',
-           ),
-           array(
-               'name'         => 'baz',
-               'visibility'   => 'public',
-               'defaultValue' => 'bat',
-           ),
-           array(
-               'name'         => 'bat',
-               'const'        => true,
-               'defaultValue' => 'foobarbazbat',
-           ),
-       ))
-       ->setMethods(array(
-           // Method passed as array
-           array(
-               'name'       => 'setBar',
-               'parameters' => array(
-                   array('name' => 'bar'),
-               ),
-               'body'       => '$this->_bar = $bar;' . "\n" . 'return $this;',
-               'docblock'   => new Zend\Code\Generator\DocBlockGenerator(array(
-                   'shortDescription' => 'Set the bar property',
-                   'tags'             => array(
-                       new Zend\Code\Generator\DocBlock\Tag\ParamTag(array(
-                           'paramName' => 'bar',
-                           'datatype'  => 'string'
-                       )),
-                       new Zend\Code\Generator\DocBlock\Tag\ReturnTag(array(
-                           'datatype'  => 'string',
-                       )),
-                   ),
-               )),
-           ),
-           // Method passed as concrete instance
-           new Zend\Code\Generator\MethodGenerator(array(
-               'name' => 'getBar',
-               'body'       => 'return $this->_bar;',
-               'docblock'   => new Zend\Code\Generator\DocBlockGenerator(array(
-                   'shortDescription' => 'Retrieve the bar property',
-                   'tags'             => array(
-                       new Zend\Code\Generator\DocBlock\Tag\ReturnTag(array(
-                           'datatype'  => 'string|null',
-                       )),
-                   ),
-               )),
-           )),
-       ));
+    $foo      = new Zend\Code\Generator\ClassGenerator();
+    $docblock = Zend\Code\Generator\DocBlockGenerator::fromArray(array(
+        'shortDescription' => 'Sample generated class',
+        'longDescription'  => 'This is a class generated with Zend\Code\Generator.',
+        'tags'             => array(
+            array(
+                'name'        => 'version',
+                'description' => '$Rev:$',
+            ),
+            array(
+                'name'        => 'license',
+                'description' => 'New BSD',
+            ),
+        ),
+    ));
+    $foo->setName('Foo')
+        ->setDocblock($docblock)
+        ->addProperties(array(
+            array('_bar', 'baz', Zend\Code\Generator\PropertyGenerator::FLAG_PROTECTED),
+            array('baz', 'bat', Zend\Code\Generator\PropertyGenerator::FLAG_PUBLIC),
+            array('bat', 'foobarbazbat', Zend\Code\Generator\PropertyGenerator::FLAG_CONSTANT),
+        ))
+        ->addMethods(array(
+            // Method passed as array
+            Zend\Code\Generator\MethodGenerator::fromArray(array(
+                'name'       => 'setBar',
+                'parameters' => array('bar'),
+                'body'       => '$this->_bar = $bar;' . "\n" . 'return $this;',
+                'docblock'   => Zend\Code\Generator\DocBlockGenerator::fromArray(array(
+                    'shortDescription' => 'Set the bar property',
+                    'longDescription'  => null,
+                    'tags'             => array(
+                        new Zend\Code\Generator\DocBlock\Tag\ParamTag(array(
+                            'paramName' => 'bar',
+                            'datatype'  => 'string'
+                        )),
+                        new Zend\Code\Generator\DocBlock\Tag\ReturnTag(array(
+                            'datatype'  => 'string',
+                        )),
+                    ),
+                )),
+            )),
+            // Method passed as concrete instance
+            new Zend\Code\Generator\MethodGenerator(
+                'getBar',
+                array(),
+                Zend\Code\Generator\MethodGenerator::FLAG_PUBLIC,
+                'return $this->_bar;',
+                Zend\Code\Generator\DocBlockGenerator::fromArray(array(
+                    'shortDescription' => 'Retrieve the bar property',
+                    'longDescription'  => null,
+                    'tags'             => array(
+                        new Zend\Code\Generator\DocBlock\Tag\ReturnTag(array(
+                            'datatype'  => 'string|null',
+                        )),
+                    ),
+                ))
+            ),
+        ));
 
    echo $foo->generate();
 
@@ -262,19 +240,20 @@ example.
 .. code-block:: php
    :linenos:
 
-   $file = new Zend\Code\Generator\FileGenerator(array(
-       'classes'  => array($foo);
-       'docblock' => new Zend\Code\Generator\DocBlockGenerator(array(
-           'shortDescription' => 'Foo class file',
-           'tags'             => array(
-               array(
-                   'name'        => 'license',
-                   'description' => 'New BSD',
-               ),
-           ),
-       )),
-       'body'     => 'define(\'APPLICATION_ENV\', \'testing\');',
-   ));
+    $file = Zend\Code\Generator\FileGenerator::fromArray(array(
+        'classes'  => array($foo),
+        'docblock' => Zend\Code\Generator\DocBlockGenerator::fromArray(array(
+            'shortDescription' => 'Foo class file',
+            'longDescription'   => null,
+            'tags'             => array(
+                array(
+                    'name'        => 'license',
+                    'description' => 'New BSD',
+                ),
+            ),
+        )),
+        'body'     => 'define(\'APPLICATION_ENV\', \'testing\');',
+    ));
 
 Calling ``generate()`` will generate the code -- but not write it to a file. You will need to capture the contents
 and write them to a file yourself. As an example:
@@ -365,28 +344,26 @@ into a generator object. From there, you may add additional properties or method
 .. code-block:: php
    :linenos:
 
-   $generator = Zend\Code\Generator\ClassGenerator::fromReflection(
-       new Zend\Code\Reflection\ClassReflection($class)
-   );
-   $generator->setMethod(array(
-       'name'       => 'setBaz',
-       'parameters' => array(
-           array('name' => 'baz'),
-       ),
-       'body'       => '$this->_baz = $baz;' . "\n" . 'return $this;',
-       'docblock'   => new Zend\Code\Generator\DocBlockGenerator(array(
-           'shortDescription' => 'Set the baz property',
-           'tags'             => array(
-               new Zend\Code\Generator\DocBlock\Tag\ParamTag(array(
-                   'paramName' => 'baz',
-                   'datatype'  => 'string'
-               )),
-               new Zend\Code\Generator\DocBlock\Tag\ReturnTag(array(
-                   'datatype'  => 'string',
-               )),
-           ),
-       )),
-   ));
+    $generator = Zend\Code\Generator\ClassGenerator::fromReflection(
+        new Zend\Code\Reflection\ClassReflection($class)
+    );
+    $generator->addMethod(
+        'setBaz',
+        array('baz'),
+        Zend\Code\Generator\MethodGenerator::FLAG_PUBLIC,
+        '$this->_baz = $baz;' . "\n" . 'return $this;',
+        Zend\Code\Generator\DocBlockGenerator::fromArray(array(
+            'shortDescription' => 'Set the baz property',
+            'longDescription'  => null,
+            'tags'             => array(
+                new Zend\Code\Generator\DocBlock\Tag\ParamTag(array(
+                    'paramName' => 'baz',
+                    'datatype'  => 'string'
+                )),
+                new Zend\Code\Generator\DocBlock\Tag\ReturnTag(array(
+                    'datatype'  => 'string',
+                )),
+            ),
+        ))
+    );
    $code = $generator->generate();
-
-
