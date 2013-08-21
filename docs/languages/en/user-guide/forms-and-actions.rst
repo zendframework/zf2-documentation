@@ -31,7 +31,7 @@ Create a file called ``AlbumForm.php`` in ``module/Album/src/Album/Form``:
         {
             // we want to ignore the name passed
             parent::__construct('album');
-            $this->setAttribute('method', 'post');
+
             $this->add(array(
                 'name' => 'id',
                 'type' => 'Hidden',
@@ -274,7 +274,6 @@ We now need to render the form in the add.phtml view script:
     ?>
     <h1><?php echo $this->escapeHtml($title); ?></h1>
     <?php
-    $form = $this->form;
     $form->setAttribute('action', $this->url('album', array('action' => 'add')));
     $form->prepare();
 
