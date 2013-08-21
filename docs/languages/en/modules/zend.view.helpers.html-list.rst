@@ -1,12 +1,12 @@
 .. _zend.view.helpers.initial.htmllist:
 
-HtmlList Helper
----------------
+View Helper - HtmlList
+----------------------
 
-- ``htmlList($items, $ordered, $attribs, $escape)``: generates unordered and ordered lists based on the ``$items``
-  passed to it. If ``$items`` is a multidimensional array, a nested list will be built. If the ``$escape`` flag is
-  ``TRUE`` (default), individual items will be escaped using the view objects registered escaping mechanisms; pass
-  a ``FALSE`` value if you want to allow markup in your lists.
+``htmlList($items, $ordered, $attribs, $escape)``: generates unordered and ordered lists based on the ``$items``
+passed to it. If ``$items`` is a multidimensional array, a nested list will be built. If the ``$escape`` flag is
+``TRUE`` (default), individual items will be escaped using the view objects registered escaping mechanisms; pass
+a ``FALSE`` value if you want to allow markup in your lists.
 
 Unordered list
 ^^^^^^^^^^^^^^

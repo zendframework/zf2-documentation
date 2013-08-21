@@ -1,7 +1,7 @@
 .. _zend.view.helpers.initial.doctype:
 
-Doctype Helper
---------------
+View Helper - Doctype
+---------------------
 
 Valid *HTML* and *XHTML* documents should include a ``DOCTYPE`` declaration. Besides being difficult to remember,
 these can also affect how certain elements in your document should be rendered (for instance, CDATA escaping in

@@ -1,7 +1,7 @@
 .. _zend.view.helpers.initial.headtitle:
 
-HeadTitle Helper
-----------------
+View Helper - HeadTitle
+-----------------------
 
 The *HTML* **<title>** element is used to provide a title for an *HTML* document. The ``HeadTitle`` helper allows
 you to programmatically create and store the title for later retrieval and output.
