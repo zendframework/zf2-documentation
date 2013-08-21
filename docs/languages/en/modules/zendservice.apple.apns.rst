@@ -91,7 +91,7 @@ as throwing exceptions in the cases of server failures.
    $client->close();
 
    if ($response->getCode() != Response::RESULT_OK) {
-        switch ($response->getCode() {
+        switch ($response->getCode()) {
             case Response::RESULT_PROCESSING_ERROR:
                 // you may want to retry
                 break;
