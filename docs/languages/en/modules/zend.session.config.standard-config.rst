@@ -1,14 +1,14 @@
 .. _zend.session.config.standard-config:
 
 Standard Config
-===============
+---------------
 
 ``Zend\Session\Config\StandardConfig`` provides you a basic interface for implementing sessions when *not* leveraging
 ext/session.  This is utilized more for specialized cases such as when you might have session management done by another
 system.
 
 Basic Configuration Options
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. _zend.session.config.standard-config.options:
 
@@ -51,7 +51,7 @@ The following configuration options are defined by ``Zend\Session\Config\Standar
 +------------------------+------------+-------------------------------------------------------------------------------------------+
 
 Basic Usage
-===========
+^^^^^^^^^^^
 
 A basic example is one like the following:
 
