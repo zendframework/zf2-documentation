@@ -1,14 +1,14 @@
 .. _zend.session.save-handler.cache:
 
 Cache
-=====
+-----
 
 ``Zend\Session\SaveHandler\Cache`` allows you to provide an instance of ``Zend\Cache`` to be utilized as a
 session save handler.  Generally if you are utilizing the Cache save handler; you are likely using products
 such as memcached.
 
 Basic usage
------------
+^^^^^^^^^^^
 
 A basic example is one like the following:
 
