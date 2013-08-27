@@ -54,6 +54,7 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
 - :ref:`BasePath <zend.view.helpers.initial.basepath>`
 - :ref:`Cycle <zend.view.helpers.initial.cycle>`
 - :ref:`Doctype <zend.view.helpers.initial.doctype>`
+- :ref:`FlashMessenger <zend.view.helpers.initial.flashmessenger>`
 - :ref:`HeadLink <zend.view.helpers.initial.headlink>`
 - :ref:`HeadMeta <zend.view.helpers.initial.headmeta>`
 - :ref:`HeadScript <zend.view.helpers.initial.headscript>`
@@ -85,6 +86,7 @@ helpers for providing values for, and rendering, the various HTML *<head>* tags,
 .. include:: zend.view.helpers.base-path.rst
 .. include:: zend.view.helpers.cycle.rst
 .. include:: zend.view.helpers.doctype.rst
+.. include:: zend.view.helpers.flash-messenger.rst
 .. include:: zend.view.helpers.head-link.rst
 .. include:: zend.view.helpers.head-meta.rst
 .. include:: zend.view.helpers.head-script.rst
