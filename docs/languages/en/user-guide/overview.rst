@@ -21,12 +21,14 @@ You must also ensure that Apache is configured to support ``.htaccess`` files. T
 usually done by changing the setting:
 
 .. code-block:: apache
+   :linenos:
 
     AllowOverride None
 
 to
 
 .. code-block:: apache
+   :linenos:
 
     AllowOverride FileInfo
 
