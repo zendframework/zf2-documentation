@@ -229,7 +229,7 @@ automatically checks each response returned by Nirvanix. If the *ResponseCode* i
    try {
 
      $imfs = $nirvanix->getService('IMFS');
-     $imfs->unlink('/a-nonexistant-path');
+     $imfs->unlink('/a-nonexistent-path');
 
    } catch (ZendService\Nirvanix\Exception\DomainException $e) {
      echo $e->getMessage() . "\n";
