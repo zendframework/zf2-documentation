@@ -581,11 +581,11 @@ also work on custom properties, such as ``findByFoo('bar')``.
    // Find first matching CSS class my-class
    $found = $container->findOneByClass('my-class');  // returns Page 1.2
 
-   // Find all matching CSS class non-existant
-   $found = $container->findAllByClass('non-existant'); // returns array()
+   // Find all matching CSS class non-existent
+   $found = $container->findAllByClass('non-existent'); // returns array()
 
-   // Find first matching CSS class non-existant
-   $found = $container->findOneByClass('non-existant'); // returns null
+   // Find first matching CSS class non-existent
+   $found = $container->findOneByClass('non-existent'); // returns null
 
    // Find all pages with custom property 'foo' = 'bar'
    $found = $container->findAllBy('foo', 'bar'); // returns Page 1 and Page 1.1
