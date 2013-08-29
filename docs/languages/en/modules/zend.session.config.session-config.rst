@@ -1,13 +1,13 @@
 .. _zend.session.config.session-config:
 
 Session Config
-==============
+--------------
 
 ``Zend\Session\Config\SessionConfig`` provides you a basic interface for implementing sessions when that leverage PHP's 
 ext/session.  Most configuration options configure either the ``Zend\Session\Storage`` OR configure ext/session directly.
 
 Basic Configuration Options
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. _zend.session.config.session-config.options:
 
@@ -31,7 +31,7 @@ configuration from ``Zend\Session\Config\StandardConfig``.
 +------------------------+------------+-------------------------------------------------------------------------------------------+
 
 Basic Usage
-===========
+^^^^^^^^^^^
 
 A basic example is one like the following:
 
