@@ -3,6 +3,11 @@
 View Helpers
 ============
 
+.. _zend.navigation.view.helpers.introduction:
+
+Introduction
+------------
+
 The navigation helpers are used for rendering navigational elements from :ref:`Zend\\Navigation\\Navigation
 <zend.navigation.containers>` instances.
 
