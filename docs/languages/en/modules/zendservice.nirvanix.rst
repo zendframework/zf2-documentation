@@ -1,6 +1,6 @@
 .. _zendservice.nirvanix:
 
-ZendService\Nirvanix
+ZendService\\Nirvanix
 =====================
 
 .. _zendservice.nirvanix.introduction:

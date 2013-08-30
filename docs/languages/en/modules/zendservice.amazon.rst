@@ -1,6 +1,6 @@
 .. _zendservice.amazon:
 
-ZendService\Amazon
+ZendService\\Amazon
 ===================
 
 .. _zendservice.amazon.introduction:
@@ -218,7 +218,7 @@ For more information on the available options, please refer to the `relevant Ama
 
 .. _zendservice.amazon.classes:
 
-ZendService\Amazon Classes
+ZendService\\Amazon Classes
 ---------------------------
 
 The following classes are all returned by :ref:`ZendService\Amazon::itemLookup() <zendservice.amazon.itemlookup>`
@@ -250,16 +250,16 @@ and :ref:`ZendService\Amazon::itemSearch() <zendservice.amazon.itemsearch>`:
 
 .. _zendservice.amazon.classes.item:
 
-ZendService\Amazon\Item
-^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Amazon\\Item
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Amazon\Item`` is the class type used to represent an Amazon item returned by the web service. It
 encompasses all of the items attributes, including title, description, reviews, etc.
 
 .. _zendservice.amazon.classes.item.asxml:
 
-ZendService\Amazon\Item::asXML()
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Amazon\\Item::asXML()
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 string:``asXML()``
 
@@ -316,8 +316,8 @@ counterparts.
 
 .. _zendservice.amazon.classes.image:
 
-ZendService\Amazon\Image
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Amazon\\Image
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Amazon\Image`` represents a remote Image for a product.
 
@@ -344,8 +344,8 @@ Properties
 
 .. _zendservice.amazon.classes.resultset:
 
-ZendService\Amazon\ResultSet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Amazon\\ResultSet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Amazon\ResultSet`` objects are returned by :ref:`ZendService\Amazon::itemSearch()
 <zendservice.amazon.itemsearch>` and allow you to easily handle the multiple results returned.
@@ -359,8 +359,8 @@ ZendService\Amazon\ResultSet
 
 .. _zendservice.amazon.classes.resultset.totalresults:
 
-ZendService\Amazon\ResultSet::totalResults()
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Amazon\\ResultSet::totalResults()
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 int:``totalResults()``
 Returns the total number of results returned by the search
@@ -369,8 +369,8 @@ Returns the total number of results returned by the search
 
 .. _zendservice.amazon.classes.offerset:
 
-ZendService\Amazon\OfferSet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Amazon\\OfferSet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Each result returned by :ref:`ZendService\Amazon::itemSearch() <zendservice.amazon.itemsearch>` and
 :ref:`ZendService\Amazon::itemLookup() <zendservice.amazon.itemlookup>` contains a
@@ -411,15 +411,15 @@ Properties
 
 .. _zendservice.amazon.classes.offer:
 
-ZendService\Amazon\Offer
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Amazon\\Offer
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Each offer for an item is returned as an ``ZendService\Amazon\Offer`` object.
 
 .. _zendservice.amazon.classes.offer.properties:
 
-ZendService\Amazon\Offer Properties
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Amazon\\Offer Properties
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. _zendservice.amazon.classes.offer.properties.table-1:
 
@@ -451,8 +451,8 @@ ZendService\Amazon\Offer Properties
 
 .. _zendservice.amazon.classes.similarproduct:
 
-ZendService\Amazon\SimilarProduct
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Amazon\\SimilarProduct
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When searching for items, Amazon also returns a list of similar products that the searcher may find to their
 liking. Each of these is returned as a ``ZendService\Amazon\SimilarProduct`` object.
@@ -481,8 +481,8 @@ Properties
 
 .. _zendservice.amazon.classes.accessories:
 
-ZendService\Amazon\Accessories
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Amazon\\Accessories
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Accessories for the returned item are represented as ``ZendService\Amazon\Accessories`` objects
 
@@ -507,8 +507,8 @@ Properties
 
 .. _zendservice.amazon.classes.customerreview:
 
-ZendService\Amazon\CustomerReview
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Amazon\\CustomerReview
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Each Customer Review is returned as a ``ZendService\Amazon\CustomerReview`` object.
 
@@ -543,8 +543,8 @@ Properties
 
 .. _zendservice.amazon.classes.editorialreview:
 
-ZendService\Amazon\EditorialReview
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Amazon\\EditorialReview
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Each items Editorial Reviews are returned as a ``ZendService\Amazon\EditorialReview`` object
 
@@ -569,8 +569,8 @@ Properties
 
 .. _zendservice.amazon.classes.listmania:
 
-ZendService\Amazon\Listmania
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Amazon\\Listmania
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Each results List Mania List items are returned as ``ZendService\Amazon\Listmania`` objects.
 

@@ -1,6 +1,6 @@
 .. _zendservice.akismet:
 
-ZendService\Akismet
+ZendService\\Akismet
 ====================
 
 .. _zendservice.akismet.introduction:
