@@ -246,18 +246,18 @@
    modules/zend.view.php-renderer.scripts
    modules/zend.view.view-event
    modules/zend.view.helpers
-   modules/zend.view.helpers.basepath
+   modules/zend.view.helpers.base-path
    modules/zend.view.helpers.cycle
    modules/zend.view.helpers.doctype
-   modules/zend.view.helpers.headlink
-   modules/zend.view.helpers.headmeta
-   modules/zend.view.helpers.headscript
-   modules/zend.view.helpers.headstyle
-   modules/zend.view.helpers.headtitle
-   modules/zend.view.helpers.htmllist
-   modules/zend.view.helpers.object
+   modules/zend.view.helpers.head-link
+   modules/zend.view.helpers.head-meta
+   modules/zend.view.helpers.head-script
+   modules/zend.view.helpers.head-style
+   modules/zend.view.helpers.head-title
+   modules/zend.view.helpers.html-list
+   modules/zend.view.helpers.html-object
    modules/zend.view.helpers.identity
-   modules/zend.view.helpers.inlinescript
+   modules/zend.view.helpers.inline-script
    modules/zend.view.helpers.json
    modules/zend.view.helpers.partial
    modules/zend.view.helpers.placeholder

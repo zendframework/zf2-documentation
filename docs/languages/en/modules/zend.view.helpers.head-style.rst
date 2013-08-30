@@ -1,7 +1,12 @@
 .. _zend.view.helpers.initial.headstyle:
 
 View Helper - HeadStyle
------------------------
+=======================
+
+.. _zend.view.helpers.initial.headstyle.introduction:
+
+Introduction
+------------
 
 The *HTML* **<style>** element is used to include *CSS* stylesheets inline in the *HTML* **<head>** element.
 
@@ -191,7 +196,8 @@ strategies to your view.
 
 .. _zend.view.helpers.initial.headstyle.basicusage:
 
-.. rubric:: HeadStyle Helper Basic Usage
+Basic Usage
+-----------
 
 You may specify a new style tag at any time:
 
@@ -227,7 +233,8 @@ When you're finally ready to output all style declarations in your layout script
 
 .. _zend.view.helpers.initial.headstyle.capture:
 
-.. rubric:: Capturing Style Declarations Using the HeadStyle Helper
+Capturing Style Declarations
+----------------------------
 
 Sometimes you need to generate *CSS* style declarations programmatically. While you could use string concatenation,
 heredocs, and the like, often it's easier just to do so by creating the styles and sprinkling in *PHP* tags.
@@ -249,5 +256,3 @@ The following assumptions are made:
 
 - If you wish to specify any additional attributes for the **<style>** tag, pass them in an array as the second
   argument to ``captureStart()``.
-
-

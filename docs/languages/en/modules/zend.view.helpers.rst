@@ -3,6 +3,11 @@
 View Helpers
 ============
 
+.. _zend.view.helpers.introduction:
+
+Introduction
+------------
+
 In your view scripts, often it is necessary to perform certain complex functions over and over: e.g., formatting a
 date, generating form elements, or displaying action links. You can use helper, or plugin, classes to perform these
 behaviors for you.
@@ -44,7 +49,7 @@ helpers by adding them to the *plugin manager*.
 .. _zend.view.helpers.initial:
 
 Included Helpers
-================
+----------------
 
 Zend Framework comes with an initial set of helper classes. In particular, there are helpers for creating
 route-based *URL*\ s and *HTML* lists, as well as declaring variables. Additionally, there are a rich set of
