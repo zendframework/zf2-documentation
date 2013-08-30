@@ -25,17 +25,17 @@ Usage of the ``basePath()`` helper is straightforward:
 .. code-block:: php
    :linenos:
 
-   /**
+   /*
     * The following assume that the base URL of the page/application is "/mypage".
     */
 
-   /**
+   /*
     * Prints:
     * <base href="/mypage/" />
     */
    <base href="<?php echo $this->basePath(); ?>" />
 
-   /**
+   /*
     * Prints:
     * <link rel="stylesheet" type="text/css" href="/mypage/css/base.css" />
     */

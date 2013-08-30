@@ -38,7 +38,7 @@ Add to the layout script:
        <!-- Content -->
 
        <?php
-       echo $this->inlineScript()->prependFile($this->basePath('js/foundation.min.js'))
+       echo $this->inlineScript()->prependFile($this->basePath('js/vendor/foundation.min.js'))
                                  ->prependFile($this->basePath('js/vendor/jquery.js'));
        ?>
    </body>
@@ -51,8 +51,8 @@ Output:
    <body>
        <!-- Content -->
 
-       <script type="text/javascript" src="/js/jquery.js"></script>
-       <script type="text/javascript" src="/js/foundation.min.js"></script>
+       <script type="text/javascript" src="/js/vendor/jquery.js"></script>
+       <script type="text/javascript" src="/js/vendor/foundation.min.js"></script>
    </body>
 
 .. _zend.view.helpers.initial.inlinescript.capture:
@@ -81,8 +81,8 @@ Output:
    <body>
        <!-- Content -->
 
-       <script type="text/javascript" src="/js/jquery.js"></script>
-       <script type="text/javascript" src="/js/foundation.min.js"></script>
+       <script type="text/javascript" src="/js/vendor/jquery.js"></script>
+       <script type="text/javascript" src="/js/vendor/foundation.min.js"></script>
        <script type="text/javascript">
            //<!--
            $('select').change(function(){
