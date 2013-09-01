@@ -1,7 +1,12 @@
-.. _zend.text.table.introduction:
+.. _zend.text.table:
 
 Zend\\Text\\Table
 =================
+
+.. _zend.text.table.introduction:
+
+Introduction
+------------
 
 ``Zend\Text\Table`` is a component to create text based tables on the fly with different decorators. This can be
 helpful, if you either want to send structured data in text emails, which are used to have mono-spaced fonts, or to
@@ -68,9 +73,10 @@ row object with the column object as parameter. Alternatively you can directly g
 To finally render the table, you can either use the ``render()`` method of the table, or use the magic method
 ``__toString()`` by doing ``echo $table;`` or ``$tableString = (string) $table``.
 
-.. _zend.text.table.example.using:
+.. _zend.text.table.basic-usage:
 
-.. rubric:: Using Zend\\Text\\Table
+Basic Usage
+-----------
 
 This example illustrates the basic use of ``Zend\Text\Table`` to create a simple table:
 
