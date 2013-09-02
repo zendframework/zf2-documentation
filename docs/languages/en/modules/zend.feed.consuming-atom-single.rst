@@ -11,7 +11,8 @@ If you read a single entry, you will have a ``Zend\Feed\Reader\Entry\Atom`` obje
 
 .. _zend.feed.consuming-atom-single-entry.example.atom:
 
-.. rubric:: Reading a Single-Entry Atom Feed
+Reading a Single-Entry Atom Feed
+--------------------------------
 
 .. code-block:: php
    :linenos:

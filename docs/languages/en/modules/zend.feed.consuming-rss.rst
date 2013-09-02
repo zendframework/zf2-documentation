@@ -3,6 +3,11 @@
 Consuming an RSS Feed
 =====================
 
+.. _zend.feed.consuming-rss.reading-feed:
+
+Reading a feed
+--------------
+
 Reading an *RSS* feed is as simple as passing the *URL* of the feed to ``Zend\Feed\Reader\Reader``'s ``import``
 method.
 
@@ -12,6 +17,11 @@ method.
    $channel = new Zend\Feed\Reader\Reader::import('http://rss.example.com/channelName');
 
 If any errors occur fetching the feed, a ``Zend\Feed\Reader\Exception\RuntimeException`` will be thrown.
+
+.. _zend.feed.consuming-rss.get-properties:
+
+Get properties
+--------------
 
 Once you have a feed object, you can access any of the standard *RSS* "channel" properties directly on the object:
 

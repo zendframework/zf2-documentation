@@ -3,6 +3,11 @@
 Retrieving Feeds from Web Pages
 ===============================
 
+.. _zend.feed.findFeeds.introduction:
+
+Find Feed Links
+---------------
+
 Web pages often contain **<link>** tags that refer to feeds with content relevant to the particular page.
 ``Zend\Feed\Reader\Reader`` enables you to retrieve all feeds referenced by a web page with one simple method call:
 
