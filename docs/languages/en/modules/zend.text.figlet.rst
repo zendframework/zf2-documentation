@@ -3,6 +3,11 @@
 Zend\\Text\\Figlet
 ==================
 
+.. _zend.text.figlet.introduction:
+
+Introduction
+------------
+
 ``Zend\Text\Figlet`` is a component which enables developers to create a so called FIGlet text. A FIGlet text is a
 string, which is represented as *ASCII* art. FIGlets use a special font format, called FLT (FigLet Font). By
 default, one standard font is shipped with ``Zend\Text\Figlet``, but you can download additional fonts at
@@ -52,9 +57,10 @@ array or an instance of ``Zend\Config``.
      used. The smush mode option is normally used only by font designers testing the various layoutmodes with a new
      font.
 
-.. _zend.text.figlet.example.using:
+.. _zend.text.figlet.basic-usage:
 
-.. rubric:: Using Zend\\Text\\Figlet
+Basic Usage
+-----------
 
 This example illustrates the basic use of ``Zend\Text\Figlet`` to create a simple FIGlet text:
 
