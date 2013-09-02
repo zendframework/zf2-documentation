@@ -1,6 +1,6 @@
 .. _zendservice.flickr:
 
-ZendService\Flickr
+ZendService\\Flickr
 ===================
 
 .. _zendservice.flickr.introduction:
@@ -122,7 +122,7 @@ Once you have a Flickr image ID, it is a simple matter to fetch information abou
 
 .. _zendservice.flickr.classes:
 
-ZendService\Flickr Result Classes
+ZendService\\Flickr Result Classes
 ----------------------------------
 
 The following classes are all returned by ``tagSearch()`` and ``userSearch()``:
@@ -139,8 +139,8 @@ The following classes are all returned by ``tagSearch()`` and ``userSearch()``:
 
 .. _zendservice.flickr.classes.resultset:
 
-ZendService\Flickr\ResultSet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Flickr\\ResultSet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Represents a set of Results from a Flickr search.
 
@@ -170,8 +170,8 @@ Properties
 
 .. _zendservice.flickr.classes.resultset.totalResults:
 
-ZendService\Flickr\ResultSet::totalResults()
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Flickr\\ResultSet::totalResults()
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 int:``totalResults()``
 
@@ -182,8 +182,8 @@ Returns the total number of results in this result set.
 
 .. _zendservice.flickr.classes.result:
 
-ZendService\Flickr\Result
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Flickr\\Result
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A single Image result from a Flickr query
 
@@ -242,8 +242,8 @@ Properties
 
 .. _zendservice.flickr.classes.image:
 
-ZendService\Flickr\Image
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Flickr\\Image
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Represents an Image returned by a Flickr search.
 

@@ -1,7 +1,7 @@
 .. _zendservice.windowsazure.storage.table:
 
-ZendService\WindowsAzure\Storage\Table
-=======================================
+ZendService\\WindowsAzure\\Storage\\Table
+=========================================
 
 The Table service offers structured storage in the form of tables.
 
@@ -554,5 +554,3 @@ used in the same way as a normal *PHP* session:
 
    The ``ZendService\WindowsAzure\SessionHandler`` session handler should be registered before a call to
    ``session_start()`` is made!
-
-

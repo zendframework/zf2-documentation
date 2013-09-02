@@ -1,6 +1,6 @@
 .. _zendservice.delicious:
 
-ZendService\Delicious
+ZendService\\Delicious
 ======================
 
 .. _zendservice.delicious.introduction:
@@ -71,8 +71,8 @@ retrieved posts.
 
 .. _zendservice.delicious.postlist:
 
-ZendService\Delicious\PostList
--------------------------------
+ZendService\\Delicious\\PostList
+--------------------------------
 
 Instances of this class are returned by the ``getPosts()``, ``getAllPosts()``, ``getRecentPosts()``, and
 ``getUserPosts()`` methods of ``ZendService\Delicious``.

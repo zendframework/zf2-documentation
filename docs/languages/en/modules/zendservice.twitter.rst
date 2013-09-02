@@ -1,6 +1,6 @@
 .. _zendservice.twitter:
 
-ZendService\Twitter
+ZendService\\Twitter
 ====================
 
 .. _zendservice.twitter.introduction:
@@ -55,9 +55,9 @@ details of an existing one you control. To do this:
 
 - On the application's settings page, grab the following information:
 
-    - From the header "OAuth settings", grab the "Consumer key" and "Consumer secret" values.
+  - From the header "OAuth settings", grab the "Consumer key" and "Consumer secret" values.
 
-    - From the header "Your access token", grab the "Access token" and "Access token secret" values.
+  - From the header "Your access token", grab the "Access token" and "Access token secret" values.
 
 Armed with this information, you can now configure and create your
 ``ZendService_Twitter\Twitter\Twitter`` instance:
@@ -230,22 +230,23 @@ client configuration for setting up an instance, use the key
        ),
    ));
 
+
 .. _zendservice.twitter.account:
 
 Account Methods
 ---------------
 
-- ``verifyCredentials()`` tests if supplied user credentials are valid with minimal overhead.
+.. _zendservice.twitter.account.verifycredentials:
 
-  .. _zendservice.twitter.account.verifycredentials:
+.. rubric:: Verifying credentials
 
-  .. rubric:: Verifying credentials
+``verifyCredentials()`` tests if supplied user credentials are valid with minimal overhead.
 
-  .. code-block:: php
-     :linenos:
+.. code-block:: php
+   :linenos:
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->account->verifyCredentials();
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->account->verifyCredentials();
 
 
 .. _zendservice.twitter.application:
@@ -253,146 +254,153 @@ Account Methods
 Application Methods
 -------------------
 
-- ``rateLimitStatus()`` returns the remaining number of *API* requests available to the authenticating user before
+.. _zendservice.twitter.application.ratelimitstatus:
+
+.. rubric:: Rating limit status
+
+``rateLimitStatus()`` returns the remaining number of *API* requests available to the authenticating user before
   the *API* limit is reached for the current hour.
 
-  .. _zendservice.twitter.application.ratelimitstatus:
+.. code-block:: php
+   :linenos:
 
-  .. rubric:: Rating limit status
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->application->rateLimitStatus();
+   $userTimelineLimit = $response->resources->statuses->{'/statuses/user_timeline'}->remaining;
 
-  .. code-block:: php
-     :linenos:
-
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->application->rateLimitStatus();
-     $userTimelineLimit = $response->resources->statuses->{'/statuses/user_timeline'}->remaining;
 
 .. _zendservice.twitter.blocks:
 
 Blocking Methods
 ----------------
 
-- ``create()`` blocks the user specified in the *id* parameter as the authenticating user and destroys a friendship
+.. _zendservice.twitter.blocks.create:
+
+.. rubric:: Blocking a user
+
+``create()`` blocks the user specified in the *id* parameter as the authenticating user and destroys a friendship
   to the blocked user if one exists. Returns the blocked user in the requested format when successful.
 
-  .. _zendservice.twitter.blocks.create:
+.. code-block:: php
+   :linenos:
 
-  .. rubric:: Blocking a user
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->blocks->create('usertoblock');
 
-  .. code-block:: php
-     :linenos:
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->blocks->create('usertoblock');
+.. _zendservice.twitter.blocks.destroy:
 
-- ``destroy()`` un-blocks the user specified in the *id* parameter for the authenticating user. Returns the
+.. rubric:: Removing a block
+
+``destroy()`` un-blocks the user specified in the *id* parameter for the authenticating user. Returns the
   un-blocked user in the requested format when successful.
 
-  .. _zendservice.twitter.blocks.destroy:
+.. code-block:: php
+   :linenos:
 
-  .. rubric:: Removing a block
-
-  .. code-block:: php
-     :linenos:
-
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->blocks->destroy('blockeduser');
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->blocks->destroy('blockeduser');
 
 - ``ids()`` returns an array of user identifiers that the authenticating user is blocking.
 
-  .. _zendservice.twitter.blocks.ids
 
-  .. rubric:: Who are you blocking (identifiers only)
+.. _zendservice.twitter.blocks.ids:
 
-  .. code-block:: php
-     :linenos:
+.. rubric:: Who are you blocking (identifiers only)
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->blocks->ids();
+.. code-block:: php
+   :linenos:
 
-- ``list()`` returns an array of user objects that the authenticating user is blocking.
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->blocks->ids();
 
-  .. _zendservice.twitter.blocks.list:
 
-  .. rubric:: Who are you blocking
+.. _zendservice.twitter.blocks.list:
 
-  .. code-block:: php
-     :linenos:
+.. rubric:: Who are you blocking
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->blocks->list();
+``list()`` returns an array of user objects that the authenticating user is blocking.
+
+.. code-block:: php
+   :linenos:
+
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->blocks->list();
+
 
 .. _zendservice.twitter.directmessages:
 
 Direct Message Methods
 ----------------------
 
-- ``messages()`` returns a list of the 20 most recent direct messages sent to the authenticating user.
+.. _zendservice.twitter.directmessages.messages:
 
-  .. _zendservice.twitter.directmessages.messages:
+.. rubric:: Retrieving recent direct messages received
 
-  .. rubric:: Retrieving recent direct messages received
+``messages()`` returns a list of the 20 most recent direct messages sent to the authenticating user.
 
-  .. code-block:: php
-     :linenos:
+.. code-block:: php
+   :linenos:
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->directMessages->messages();
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->directMessages->messages();
 
-  The ``message()`` method accepts an array of optional parameters to modify the query.
+The ``message()`` method accepts an array of optional parameters to modify the query.
 
-  - *since_id* narrows the returned results to just those statuses after the specified identifier
-    (up to 24 hours old).
+- *since_id* narrows the returned results to just those statuses after the specified identifier
+  (up to 24 hours old).
 
-  - *max_id* narrows the returned results to just those statuses earlier than the specified
-    identifier.
+- *max_id* narrows the returned results to just those statuses earlier than the specified
+  identifier.
 
-  - *count* specifies the number of statuses to return, up to 200.
+- *count* specifies the number of statuses to return, up to 200.
 
-  - *skip_status*, when set to boolean true, "t", or 1 will skip including a user's most recent
-    status in the results.
+- *skip_status*, when set to boolean true, "t", or 1 will skip including a user's most recent
+  status in the results.
 
-  - *include_entities* controls whether or not entities, which includes URLs, mentioned users, and hashtags, will be returned.
+- *include_entities* controls whether or not entities, which includes URLs, mentioned users, and hashtags, will be returned.
 
-- ``sent()`` returns a list of the 20 most recent direct messages sent by the authenticating user.
 
-  .. _zendservice.twitter.directmessages.sent:
+.. _zendservice.twitter.directmessages.sent:
 
-  .. rubric:: Retrieving recent direct messages sent
+.. rubric:: Retrieving recent direct messages sent
 
-  .. code-block:: php
-     :linenos:
+``sent()`` returns a list of the 20 most recent direct messages sent by the authenticating user.
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->directMessages->sent();
+.. code-block:: php
+   :linenos:
 
-  The ``sent()`` method accepts an array of optional parameters to modify the query.
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->directMessages->sent();
 
-  - *count* specifies the number of statuses to return, up to 20.
+The ``sent()`` method accepts an array of optional parameters to modify the query.
 
-  - *page* specifies the page of results to return, based on the *count* provided.
+- *count* specifies the number of statuses to return, up to 20.
 
-  - *since_id* narrows the returned results to just those statuses after the specified identifier
-    (up to 24 hours old).
+- *page* specifies the page of results to return, based on the *count* provided.
 
-  - *max_id* narrows the returned results to just those statuses earlier than the specified
-    identifier.
+- *since_id* narrows the returned results to just those statuses after the specified identifier
+  (up to 24 hours old).
 
-  - *include_entities* controls whether or not entities, which includes URLs, mentioned users, and
-    hashtags, will be returned.
+- *max_id* narrows the returned results to just those statuses earlier than the specified
+  identifier.
 
-- ``new()`` sends a new direct message to the specified user from the authenticating user. Requires both the user
-  and text parameters below.
+- *include_entities* controls whether or not entities, which includes URLs, mentioned users, and
+  hashtags, will be returned.
 
-  .. _zendservice.twitter.directmessages.new:
 
-  .. rubric:: Sending a direct message
+.. _zendservice.twitter.directmessages.new:
 
-  .. code-block:: php
-     :linenos:
+.. rubric:: Sending a direct message
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->directMessages->new('myfriend', 'mymessage');
+``new()`` sends a new direct message to the specified user from the authenticating user. Requires both the user
+and text parameters below.
+
+.. code-block:: php
+   :linenos:
+
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->directMessages->new('myfriend', 'mymessage');
 
 - ``destroy()`` destroys the direct message specified in the required *id* parameter. The authenticating user must
   be the recipient of the specified direct message.
@@ -407,337 +415,352 @@ Direct Message Methods
      $twitter  = new ZendService\Twitter\Twitter($options);
      $response = $twitter->directMessages->destroy(123548);
 
+
 .. _zendservice.twitter.favorites:
 
 Favorites Methods
 -----------------
 
-- ``list()`` returns the 20 most recent favorite statuses for the authenticating user or user specified by the
-  *id* parameter.
+.. _zendservice.twitter.favorites.list:
 
-  .. _zendservice.twitter.favorites.list:
+.. rubric:: Retrieving favorites
 
-  .. rubric:: Retrieving favorites
+``list()`` returns the 20 most recent favorite statuses for the authenticating user or user specified by the
+*id* parameter.
 
-  .. code-block:: php
-     :linenos:
+.. code-block:: php
+   :linenos:
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->favorites->list();
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->favorites->list();
 
-  The ``list()`` method accepts an array of optional parameters to modify the query.
+The ``list()`` method accepts an array of optional parameters to modify the query.
 
-  - *user_id* specifies the ID of the user for whom to return the timeline.
+- *user_id* specifies the ID of the user for whom to return the timeline.
 
-  - *screen_name* specifies the screen name of the user for whom to return the timeline.
+- *screen_name* specifies the screen name of the user for whom to return the timeline.
 
-  - *since_id* narrows the returned results to just those statuses after the specified identifier
-    (up to 24 hours old).
+- *since_id* narrows the returned results to just those statuses after the specified identifier
+  (up to 24 hours old).
 
-  - *max_id* narrows the returned results to just those statuses earlier than the specified identifier.
+- *max_id* narrows the returned results to just those statuses earlier than the specified identifier.
 
-  - *count* specifies the number of statuses to return, up to 200.
+- *count* specifies the number of statuses to return, up to 200.
 
-  - *include_entities* controls whether or not entities, which includes URLs, mentioned users, and hashtags, will be returned.
+- *include_entities* controls whether or not entities, which includes URLs, mentioned users, and hashtags, will be returned.
 
-- ``create()`` favorites the status specified in the *id* parameter as the authenticating user.
 
-  .. _zendservice.twitter.favorites.create:
+.. _zendservice.twitter.favorites.create:
 
-  .. rubric:: Creating favorites
+.. rubric:: Creating favorites
 
-  .. code-block:: php
-     :linenos:
+``create()`` favorites the status specified in the *id* parameter as the authenticating user.
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->favorites->create(12351);
+.. code-block:: php
+   :linenos:
 
-- ``destroy()`` un-favorites the status specified in the *id* parameter as the authenticating user.
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->favorites->create(12351);
 
-  .. _zendservice.twitter.favorites.destroy:
 
-  .. rubric:: Deleting a favorite
+.. _zendservice.twitter.favorites.destroy:
 
-  .. code-block:: php
-     :linenos:
+.. rubric:: Deleting a favorite
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->favorites->destroy(12351);
+``destroy()`` un-favorites the status specified in the *id* parameter as the authenticating user.
+
+.. code-block:: php
+   :linenos:
+
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->favorites->destroy(12351);
+
 
 .. _zendservice.twitter.friendships:
 
 Friendship Methods
 ------------------
 
-- ``create()`` befriends the user specified in the *id* parameter with the authenticating user.
+.. _zendservice.twitter.friendships.create:
 
-  .. _zendservice.twitter.friendships.create:
+.. rubric:: Creating a friend
 
-  .. rubric:: Creating a friend
+``create()`` befriends the user specified in the *id* parameter with the authenticating user.
 
-  .. code-block:: php
-     :linenos:
+.. code-block:: php
+   :linenos:
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->friendships->create('mynewfriend');
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->friendships->create('mynewfriend');
 
-- ``destroy()`` discontinues friendship with the user specified in the *id* parameter and the authenticating user.
 
-  .. _zendservice.twitter.friendships.destroy:
+.. _zendservice.twitter.friendships.destroy:
 
-  .. rubric:: Deleting a friend
+.. rubric:: Deleting a friend
 
-  .. code-block:: php
-     :linenos:
+``destroy()`` discontinues friendship with the user specified in the *id* parameter and the authenticating user.
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->friendships->destroy('myoldfriend');
+.. code-block:: php
+   :linenos:
+
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->friendships->destroy('myoldfriend');
+
 
 .. _zendservice.twitter.search:
 
 Search Methods
 --------------
 
-- ``tweets()`` returns a list of tweets matching the criteria specified in *$query*. By default, 15
-  will be returned, but this value may be changed using the *count* option.
+.. _zendservice.twitter.search.tweets:
 
-  .. _zendservice.twitter.search.tweets:
+.. rubric:: Searching for tweets
 
-  .. rubric:: Searching for tweets
+``tweets()`` returns a list of tweets matching the criteria specified in *$query*. By default, 15
+will be returned, but this value may be changed using the *count* option.
 
-  .. code-block:: php
-     :linenos:
+.. code-block:: php
+   :linenos:
 
-     $twitter  = new Zend_Service_Twitter($options);
-     $response = $twitter->search->tweets('#zendframework');
+   $twitter  = new Zend_Service_Twitter($options);
+   $response = $twitter->search->tweets('#zendframework');
 
-  The ``tweets()`` method accepts an optional second argument, array of optional parameters to
-  modify the query.
+The ``tweets()`` method accepts an optional second argument, array of optional parameters to
+modify the query.
 
-  - *since_id* narrows the returned results to just those statuses after the specified identifier
-    (up to 24 hours old).
+- *since_id* narrows the returned results to just those statuses after the specified identifier
+  (up to 24 hours old).
 
-  - *max_id* narrows the returned results to just those statuses earlier than the specified
-    identifier.
+- *max_id* narrows the returned results to just those statuses earlier than the specified
+  identifier.
 
-  - *count* specifies the number of statuses to return, up to 200.
+- *count* specifies the number of statuses to return, up to 200.
 
-  - *include_entities* controls whether or not entities, which includes URLs, mentioned users, and
-    hashtags, will be returned.
+- *include_entities* controls whether or not entities, which includes URLs, mentioned users, and
+  hashtags, will be returned.
 
-  - *lang* indicates which two-letter language code to restrict results to.
+- *lang* indicates which two-letter language code to restrict results to.
 
-  - *locale* indicates which two-letter language code is being used in the query.
+- *locale* indicates which two-letter language code is being used in the query.
 
-  - *geocode* can be used to indicate the geographical radius in which tweets should originate; the
-    string should be in the form "latitude,longitude,radius", with "radius" being a unit followed by
-    one of "mi" or "km".
+- *geocode* can be used to indicate the geographical radius in which tweets should originate; the
+  string should be in the form "latitude,longitude,radius", with "radius" being a unit followed by
+  one of "mi" or "km".
 
-  - *result_type* indicates what type of results to retrieve, and should be one of "mixed,"
-    "recent," or "popular."
+- *result_type* indicates what type of results to retrieve, and should be one of "mixed,"
+  "recent," or "popular."
 
-  - *until* can be used to specify a the latest date for which to return tweets.
+ - *until* can be used to specify a the latest date for which to return tweets.
+
 
 .. _zendservice.twitter.statuses:
 
 Status Methods
 --------------
 
-- ``sample()`` returns the 20 most recent statuses from non-protected users with a custom user icon.
-  The public timeline is cached by Twitter for 60 seconds.
+.. _zendservice.twitter.statuses.sample:
 
-  .. _zendservice.twitter.statuses.sample:
+.. rubric:: Retrieving the public timeline
 
-  .. rubric:: Retrieving the public timeline
+``sample()`` returns the 20 most recent statuses from non-protected users with a custom user icon.
+The public timeline is cached by Twitter for 60 seconds.
 
-  .. code-block:: php
+.. code-block:: php
+   :linenos:
+
+   $twitter  = new ZendService\Twitter($options);
+   $response = $twitter->statuses->sample();
+
+
+.. _zendservice.twitter.statuses.hometimeline:
+
+.. rubric:: Retrieving the home timeline
+
+``homeTimeline()`` returns the 20 most recent statuses posted by the authenticating user and that user's
+friends.
+
+.. code-block:: php
+   :linenos:
+
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->statuses->homeTimeline();
+
+The ``homeTimeline()`` method accepts an array of optional parameters to modify the query.
+
+- *since_id* narrows the returned results to just those statuses after the specified identifier
+  (up to 24 hours old).
+
+- *max_id* narrows the returned results to just those statuses earlier than the specified
+  identifier.
+
+- *count* specifies the number of statuses to return, up to 200.
+
+- *trim_user*, when set to boolean true, "t", or 1, will list the author identifier only in
+  embedded user objects in the statuses returned.
+
+- *contributor_details*, when set to boolean true, will return the screen name of any contributors
+  to a status (instead of only the contributor identifier).
+
+- *include_entities* controls whether or not entities, which includes URLs, mentioned users, and
+  hashtags, will be returned.
+
+- *exclude_replies* controls whether or not status updates that are in reply to other
+  statuses will be returned.
+
+
+.. _zendservice.twitter.statuses.usertimeline:
+
+.. rubric:: Retrieving the user timeline
+
+``userTimeline()`` returns the 20 most recent statuses posted from the authenticating user.
+
+.. code-block:: php
+   :linenos:
+
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->statuses->userTimeline();
+
+The ``userTimeline()`` method accepts an array of optional parameters to modify the query.
+
+- *user_id* specifies the ID of the user for whom to return the timeline.
+
+- *screen_name* specifies the screen name of the user for whom to return the timeline.
+
+- *since_id* narrows the returned results to just those statuses after the specified identifier
+  (up to 24 hours old).
+
+- *max_id* narrows the returned results to just those statuses earlier than the specified
+  identifier.
+
+- *count* specifies the number of statuses to return, up to 200.
+
+- *trim_user*, when set to boolean true, "t", or 1, will list the author identifier only in
+  embedded user objects in the statuses returned.
+
+- *contributor_details*, when set to boolean true, will return the screen name of any contributors
+  to a status (instead of only the contributor identifier).
+
+- *include_rts* controls whether or not to include native retweets in the returned list.
+
+- *exclude_replies* controls whether or not status updates that are in reply to other statuses will be returned.
+
+
+.. _zendservice.twitter.statuses.show:
+
+.. rubric:: Showing user status
+
+``show()`` returns a single status, specified by the *id* parameter below. The status' author will be returned
+inline.
+
+.. code-block:: php
+   :linenos:
+
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->statuses->show(1234);
+
+
+.. _zendservice.twitter.statuses.update:
+
+.. rubric:: Updating user status
+
+``update()`` updates the authenticating user's status. This method requires that you pass in the status update
+that you want to post to Twitter.
+
+.. code-block:: php
+   :linenos:
+
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->statuses->update('My Great Tweet');
+
+The ``update()`` method accepts a second additional parameter.
+
+* *inReplyTo_StatusId* specifies the ID of an existing status that the status to be posted is in reply to.
+
+
+.. _zendservice.twitter.statuses.mentionstimeline:
+
+.. rubric:: Showing user replies
+
+``mentionsTimeline()`` returns the 20 most recent @replies (status updates prefixed with @username) for the authenticating
+user.
+
+.. code-block:: php
      :linenos:
 
-     $twitter  = new ZendService\Twitter($options);
-     $response = $twitter->statuses->sample();
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->statuses->mentionsTimeline();
 
-- ``homeTimeline()`` returns the 20 most recent statuses posted by the authenticating user and that user's
-  friends.
+The ``mentionsTimeline()`` method accepts an array of optional parameters to modify the query.
 
-  .. _zendservice.twitter.statuses.hometimeline:
+- *since_id* narrows the returned results to just those statuses after the specified identifier
+  (up to 24 hours old).
 
-  .. rubric:: Retrieving the home timeline
+- *max_id* narrows the returned results to just those statuses earlier than the specified
+  identifier.
 
-  .. code-block:: php
-     :linenos:
+- *count* specifies the number of statuses to return, up to 200.
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->statuses->homeTimeline();
+- *trim_user*, when set to boolean true, "t", or 1, will list the author identifier only in
+  embedded user objects in the statuses returned.
 
-  The ``homeTimeline()`` method accepts an array of optional parameters to modify the query.
+- *contributor_details*, when set to boolean true, will return the screen name of any contributors
+  to a status (instead of only the contributor identifier).
 
-  - *since_id* narrows the returned results to just those statuses after the specified identifier
-    (up to 24 hours old).
+- *include_entities* controls whether or not entities, which includes URLs, mentioned users, and
+  hashtags, will be returned.
 
-  - *max_id* narrows the returned results to just those statuses earlier than the specified
-    identifier.
 
-  - *count* specifies the number of statuses to return, up to 200.
+.. _zendservice.twitter.statuses.destroy:
 
-  - *trim_user*, when set to boolean true, "t", or 1, will list the author identifier only in
-    embedded user objects in the statuses returned.
+.. rubric:: Deleting user status
 
-  - *contributor_details*, when set to boolean true, will return the screen name of any contributors
-    to a status (instead of only the contributor identifier).
+``destroy()`` destroys the status specified by the required *id* parameter.
 
-  - *include_entities* controls whether or not entities, which includes URLs, mentioned users, and
-    hashtags, will be returned.
+.. code-block:: php
+   :linenos:
 
-  - *exclude_replies* controls whether or not status updates that are in reply to other
-    statuses will be returned.
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->statuses->destroy(12345);
 
-- ``userTimeline()`` returns the 20 most recent statuses posted from the authenticating user.
-
-  .. _zendservice.twitter.statuses.usertimeline:
-
-  .. rubric:: Retrieving the user timeline
-
-  .. code-block:: php
-     :linenos:
-
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->statuses->userTimeline();
-
-  The ``userTimeline()`` method accepts an array of optional parameters to modify the query.
-
-  - *user_id* specifies the ID of the user for whom to return the timeline.
-
-  - *screen_name* specifies the screen name of the user for whom to return the timeline.
-
-  - *since_id* narrows the returned results to just those statuses after the specified identifier
-    (up to 24 hours old).
-
-  - *max_id* narrows the returned results to just those statuses earlier than the specified
-    identifier.
-
-  - *count* specifies the number of statuses to return, up to 200.
-
-  - *trim_user*, when set to boolean true, "t", or 1, will list the author identifier only in
-    embedded user objects in the statuses returned.
-
-  - *contributor_details*, when set to boolean true, will return the screen name of any contributors
-    to a status (instead of only the contributor identifier).
-
-  - *include_rts* controls whether or not to include native retweets in the returned list.
-
-  - *exclude_replies* controls whether or not status updates that are in reply to other statuses will be returned.
-
-- ``show()`` returns a single status, specified by the *id* parameter below. The status' author will be returned
-  inline.
-
-  .. _zendservice.twitter.statuses.show:
-
-  .. rubric:: Showing user status
-
-  .. code-block:: php
-     :linenos:
-
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->statuses->show(1234);
-
-- ``update()`` updates the authenticating user's status. This method requires that you pass in the status update
-  that you want to post to Twitter.
-
-  .. _zendservice.twitter.statuses.update:
-
-  .. rubric:: Updating user status
-
-  .. code-block:: php
-     :linenos:
-
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->statuses->update('My Great Tweet');
-
-  The ``update()`` method accepts a second additional parameter.
-
-  - *inReplyTo_StatusId* specifies the ID of an existing status that the status to be posted is in reply to.
-
-- ``mentionsTimeline()`` returns the 20 most recent @replies (status updates prefixed with @username) for the authenticating
-  user.
-
-  .. _zendservice.twitter.statuses.mentionstimeline:
-
-  .. rubric:: Showing user replies
-
-  .. code-block:: php
-     :linenos:
-
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->statuses->mentionsTimeline();
-
-  The ``mentionsTimeline()`` method accepts an array of optional parameters to modify the query.
-
-  - *since_id* narrows the returned results to just those statuses after the specified identifier
-    (up to 24 hours old).
-
-  - *max_id* narrows the returned results to just those statuses earlier than the specified
-    identifier.
-
-  - *count* specifies the number of statuses to return, up to 200.
-
-  - *trim_user*, when set to boolean true, "t", or 1, will list the author identifier only in
-    embedded user objects in the statuses returned.
-
-  - *contributor_details*, when set to boolean true, will return the screen name of any contributors
-    to a status (instead of only the contributor identifier).
-
-  - *include_entities* controls whether or not entities, which includes URLs, mentioned users, and
-    hashtags, will be returned.
-
-- ``destroy()`` destroys the status specified by the required *id* parameter.
-
-  .. _zendservice.twitter.statuses.destroy:
-
-  .. rubric:: Deleting user status
-
-  .. code-block:: php
-     :linenos:
-
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->statuses->destroy(12345);
 
 .. _zendservice.twitter.users:
 
 User Methods
 ------------
 
-- ``show()`` returns extended information of a given user, specified by ID or screen name as per the required *id*
-  parameter below.
+.. _zendservice.twitter.users.show:
 
-  .. _zendservice.twitter.users.show:
+.. rubric:: Showing user information
 
-  .. rubric:: Showing user information
+``show()`` returns extended information of a given user, specified by ID or screen name as per the required *id*
+parameter below.
 
-  .. code-block:: php
-     :linenos:
+.. code-block:: php
+   :linenos:
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->users->show('myfriend');
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->users->show('myfriend');
 
-- ``search()`` will search for users matching the query provided.
 
-  .. _zendservice.twitter.users.search:
+.. _zendservice.twitter.users.search:
 
-  .. rubric:: Searching for users
+.. rubric:: Searching for users
 
-  .. code-block:: php
-     :linenos:
+``search()`` will search for users matching the query provided.
 
-     $twitter  = new ZendService\Twitter\Twitter($options);
-     $response = $twitter->users->search('Zend');
+.. code-block:: php
+   :linenos:
 
-  The ``search()`` method accepts an array of optional parameters to modify the query.
+   $twitter  = new ZendService\Twitter\Twitter($options);
+   $response = $twitter->users->search('Zend');
 
-  - *count* specifies the number of statuses to return, up to 20.
+The ``search()`` method accepts an array of optional parameters to modify the query.
 
-  - *page* specifies the page of results to return, based on the *count* provided.
+- *count* specifies the number of statuses to return, up to 20.
 
-  - *include_entities* controls whether or not entities, which includes URLs, mentioned users, and
+- *page* specifies the page of results to return, based on the *count* provided.
+
+- *include_entities* controls whether or not entities, which includes URLs, mentioned users, and
     hashtags, will be returned.
 
 

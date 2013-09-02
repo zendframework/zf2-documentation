@@ -1,6 +1,6 @@
 .. _zendservice.audioscrobbler:
 
-ZendService\Audioscrobbler
+ZendService\\Audioscrobbler
 ===========================
 
 .. _zendservice.audioscrobbler.introduction:
@@ -269,11 +269,7 @@ Forums
 ``ZendService\Audioscrobbler\Audioscrobbler`` provides a method for retrieving data specific to a single forum, specified via the
 ``setForum()`` method:
 
-
-
    - ``forumGetRecentPosts()``: Returns a SimpleXML object containing a list of recent posts in the current forum.
-
-
 
 
 
