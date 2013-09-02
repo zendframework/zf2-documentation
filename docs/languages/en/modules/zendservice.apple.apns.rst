@@ -1,7 +1,7 @@
 .. _zendservice.apple.apns:
 
-``ZendService\Apple\Apns``
-==========================
+ZendService\\Apple\\Apns
+========================
 
 .. _zendservice.apple.apns.introduction:
 
@@ -17,10 +17,13 @@ In order to leverage APNS you **must** follow the
 The service is composed of 3 distinct parts:
 
 * The Clients:
+
   * Feedback: ``ZendService\Apple\Apns\Client\Feedback``
   * Message: ``ZendService\Apple\Apns\Client\Message``
+
 * The Message: ``ZendService\Apple\Apns\Message\Alert``
 * The Responses:
+
   * Feedback: ``ZendService\Apple\Apns\Response\Feedback``
   * Message: ``ZendService\Apple\Apns\Response\Message``
 
@@ -150,4 +153,3 @@ last send.
    foreach ($responses as $response) {
        echo $response->getTime() . ': ' . $response->getToken();
    }
-

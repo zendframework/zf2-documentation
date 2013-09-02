@@ -1,7 +1,7 @@
 .. _zendservice.windowsazure.storage.queue:
 
-ZendService\WindowsAzure\Storage\Queue
-=======================================
+ZendService\\WindowsAzure\\Storage\Queue
+========================================
 
 The Queue service stores messages that may be read by any client who has access to the storage account.
 
@@ -151,5 +151,3 @@ been created before.
 
 Note that messages that are read using ``peekMessages()`` will not become invisible in the queue, nor can they be
 marked as processed using the ``deleteMessage()`` method. To do this, use ``getMessages()`` instead.
-
-

@@ -1,7 +1,7 @@
 .. _zendservice.windowsazure.storage.blob:
 
-ZendService\WindowsAzure\Storage\Blob
-======================================
+ZendService\\WindowsAzure\\Storage\\Blob
+========================================
 
 Blob Storage stores sets of binary data. Blob storage offers the following three resources: the storage account,
 containers, and blobs. Within your storage account, containers provide a way to organize sets of blobs within your
@@ -319,5 +319,3 @@ Note that there was no explicit permission to write to a specific blob. Instead,
 determined that a permission was required to either write to that specific blob, or to write to its container.
 Since only a signature was available for the latter, the Windows Azure *SDK* for *PHP* chose those credentials to
 perform the request on Windows Azure blob storage.
-
-

@@ -1,6 +1,6 @@
 .. _zendservice.recaptcha:
 
-ZendService\ReCaptcha
+ZendService\\ReCaptcha
 ======================
 
 .. _zendservice.recaptcha.introduction:

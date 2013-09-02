@@ -1,7 +1,7 @@
 .. _zendservice.google.gcm:
 
-``ZendService\Google\Gcm``
-====================================
+ZendService\\Google\\Gcm
+========================
 
 .. _zendservice.google.gcm.introduction:
 

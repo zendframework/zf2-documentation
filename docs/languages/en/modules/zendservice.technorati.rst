@@ -1,6 +1,6 @@
 .. _zendservice.technorati:
 
-ZendService\Technorati
+ZendService\\Technorati
 =======================
 
 .. _zendservice.technorati.introduction:
@@ -494,7 +494,7 @@ details please see ``ZendService\Technorati\Technorati::keyInfo()`` in the `API 
 
 .. _zendservice.technorati.classes:
 
-ZendService\Technorati Classes
+ZendService\\Technorati Classes
 -------------------------------
 
 The following classes are returned by the various Technorati queries. Each ``ZendService\Technorati\*ResultSet``
@@ -552,8 +552,8 @@ reference guide`_.
 
 .. _zendservice.technorati.classes.resultset:
 
-ZendService\Technorati\ResultSet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\ResultSet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\ResultSet`` is the most essential result set. The scope of this class is to be extended
 by a query-specific child result set class, and it should never be used to initialize a standalone object. Each of
@@ -584,8 +584,8 @@ result objects via the *PHP* ``foreach()`` statement.
 
 .. _zendservice.technorati.classes.cosmosresultset:
 
-ZendService\Technorati\CosmosResultSet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\CosmosResultSet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\CosmosResultSet`` represents a Technorati Cosmos query result set.
 
@@ -596,8 +596,8 @@ ZendService\Technorati\CosmosResultSet
 
 .. _zendservice.technorati.classes.searchresultset:
 
-ZendService\Technorati\SearchResultSet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\SearchResultSet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\SearchResultSet`` represents a Technorati Search query result set.
 
@@ -608,8 +608,8 @@ ZendService\Technorati\SearchResultSet
 
 .. _zendservice.technorati.classes.tagresultset:
 
-ZendService\Technorati\TagResultSet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\TagResultSet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\TagResultSet`` represents a Technorati Tag query result set.
 
@@ -620,8 +620,8 @@ ZendService\Technorati\TagResultSet
 
 .. _zendservice.technorati.classes.dailycountsresultset:
 
-ZendService\Technorati\DailyCountsResultSet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\DailyCountsResultSet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\DailyCountsResultSet`` represents a Technorati DailyCounts query result set.
 
@@ -632,8 +632,8 @@ ZendService\Technorati\DailyCountsResultSet
 
 .. _zendservice.technorati.classes.tagsresultset:
 
-ZendService\Technorati\TagsResultSet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\TagsResultSet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\TagsResultSet`` represents a Technorati TopTags or BlogPostTags queries result set.
 
@@ -644,16 +644,16 @@ ZendService\Technorati\TagsResultSet
 
 .. _zendservice.technorati.classes.result:
 
-ZendService\Technorati\Result
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\Result
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\Result`` is the most essential result object. The scope of this class is to be extended
 by a query specific child result class, and it should never be used to initialize a standalone object.
 
 .. _zendservice.technorati.classes.cosmosresult:
 
-ZendService\Technorati\CosmosResult
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\CosmosResult
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\CosmosResult`` represents a single Technorati Cosmos query result object. It is never
 returned as a standalone object, but it always belongs to a valid :ref:`ZendService\Technorati\CosmosResultSet
@@ -666,8 +666,8 @@ returned as a standalone object, but it always belongs to a valid :ref:`ZendServ
 
 .. _zendservice.technorati.classes.searchresult:
 
-ZendService\Technorati\SearchResult
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\SearchResult
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\SearchResult`` represents a single Technorati Search query result object. It is never
 returned as a standalone object, but it always belongs to a valid :ref:`ZendService\Technorati\SearchResultSet
@@ -680,8 +680,8 @@ returned as a standalone object, but it always belongs to a valid :ref:`ZendServ
 
 .. _zendservice.technorati.classes.tagresult:
 
-ZendService\Technorati\TagResult
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\TagResult
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\TagResult`` represents a single Technorati Tag query result object. It is never returned
 as a standalone object, but it always belongs to a valid :ref:`ZendService\Technorati\TagResultSet
@@ -694,8 +694,8 @@ as a standalone object, but it always belongs to a valid :ref:`ZendService\Techn
 
 .. _zendservice.technorati.classes.dailycountsresult:
 
-ZendService\Technorati\DailyCountsResult
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\DailyCountsResult
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\DailyCountsResult`` represents a single Technorati DailyCounts query result object. It is
 never returned as a standalone object, but it always belongs to a valid
@@ -708,8 +708,8 @@ never returned as a standalone object, but it always belongs to a valid
 
 .. _zendservice.technorati.classes.tagsresult:
 
-ZendService\Technorati\TagsResult
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\TagsResult
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\TagsResult`` represents a single Technorati TopTags or BlogPostTags query result object.
 It is never returned as a standalone object, but it always belongs to a valid
@@ -722,22 +722,22 @@ It is never returned as a standalone object, but it always belongs to a valid
 
 .. _zendservice.technorati.classes.getinforesult:
 
-ZendService\Technorati\GetInfoResult
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\GetInfoResult
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\GetInfoResult`` represents a single Technorati GetInfo query result object.
 
 .. _zendservice.technorati.classes.bloginforesult:
 
-ZendService\Technorati\BlogInfoResult
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\BlogInfoResult
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\BlogInfoResult`` represents a single Technorati BlogInfo query result object.
 
 .. _zendservice.technorati.classes.keyinforesult:
 
-ZendService\Technorati\KeyInfoResult
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Technorati\\KeyInfoResult
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ZendService\Technorati\KeyInfoResult`` represents a single Technorati KeyInfo query result object. It provides
 information about your :ref:`Technorati API Key daily usage <zendservice.technorati.checking-api-daily-usage>`.
