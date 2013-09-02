@@ -11,7 +11,8 @@ designed to deal more easily with feeds that provide their full content inside t
 
 .. _zend.feed.consuming-atom.example.usage:
 
-.. rubric:: Basic Use of an Atom Feed
+Basic Use of an Atom Feed
+-------------------------
 
 Read an Atom feed and print the ``title`` and ``summary`` of each entry:
 
