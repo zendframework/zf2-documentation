@@ -1,6 +1,6 @@
 .. _zendservice.windowsazure:
 
-ZendService\WindowsAzure
+ZendService\\WindowsAzure
 =========================
 
 .. _zendservice.windowsazure.introduction:

@@ -273,13 +273,15 @@
    modules/zendservice.delicious
    modules/zendservice.developer-garden
    modules/zendservice.flickr
-   modules/zendservice.google
+   modules/zendservice.google.gcm
    modules/zendservice.livedocx
    modules/zendservice.nirvanix
    modules/zendservice.rackspace
    modules/zendservice.re-captcha
    modules/zendservice.slide-share
    modules/zendservice.strike-iron.overview
+   modules/zendservice.strike-iron.bundled-services
+   modules/zendservice.strike-iron.advanced-uses
    modules/zendservice.technorati
    modules/zendservice.twitter
    modules/zendservice.windows-azure
@@ -914,6 +916,8 @@ ZendService\\StrikeIron
 ^^^^^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.strike-iron.overview`
+        * :doc:`modules/zendservice.strike-iron.bundled-services`
+        * :doc:`modules/zendservice.strike-iron.advanced-uses`
 
 ZendService\\Technorati
 ^^^^^^^^^^^^^^^^^^^^^^^

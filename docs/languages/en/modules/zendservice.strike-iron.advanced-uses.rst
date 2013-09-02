@@ -1,6 +1,6 @@
 .. _zendservice.strikeiron.advanced-uses:
 
-ZendService\StrikeIron: Advanced Uses
+ZendService\\StrikeIron: Advanced Uses
 ======================================
 
 This section describes the more advanced uses of ``ZendService\StrikeIron``.
