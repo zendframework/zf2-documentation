@@ -1,6 +1,6 @@
 .. _zendservice.slideshare:
 
-ZendService\SlideShare
+ZendService\\SlideShare
 =======================
 
 The ``ZendService\SlideShare`` component is used to interact with the `slideshare.net`_ web services for hosting
@@ -9,7 +9,7 @@ site and even upload new slide shows to your account.
 
 .. _zendservice.slideshare.basicusage:
 
-Getting Started with ZendService\SlideShare
+Getting Started with ZendService\\SlideShare
 --------------------------------------------
 
 In order to use the ``ZendService\SlideShare`` component you must first create an account on the slideshare.net
@@ -258,7 +258,7 @@ method is shown below:
 
 .. _zendservice.slideshare.caching:
 
-ZendService\SlideShare Caching policies
+ZendService\\SlideShare Caching policies
 ----------------------------------------
 
 By default, ``ZendService\SlideShare\SlideShare`` will cache any request against the web service automatically to the

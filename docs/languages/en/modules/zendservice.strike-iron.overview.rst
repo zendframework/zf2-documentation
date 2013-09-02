@@ -1,6 +1,6 @@
 .. _zendservice.strikeiron:
 
-ZendService\StrikeIron
+ZendService\\StrikeIron
 =======================
 
 ``ZendService\StrikeIron`` provides a *PHP* 5 client to StrikeIron web services. See the following sections:
