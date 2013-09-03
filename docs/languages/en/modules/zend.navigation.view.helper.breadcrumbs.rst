@@ -3,6 +3,11 @@
 View Helper - Breadcrumbs
 =========================
 
+.. _zend.navigation.view.helpers.breadcrumbs.introduction:
+
+Introduction
+------------
+
 Breadcrumbs are used for indicating where in a sitemap a user is currently browsing, and are typically rendered
 like this: "You are here: Home > Products > FantasticProduct 1.0". The breadcrumbs helper follows the guidelines
 from `Breadcrumbs Pattern - Yahoo! Design Pattern Library`_, and allows simple customization (minimum/maximum
@@ -35,9 +40,10 @@ Methods in the breadcrumbs helper:
 
 - ``renderPartial()`` is used for rendering using a partial view script.
 
-.. _zend.navigation.view.helper.breadcrumbs.example1:
+.. _zend.navigation.view.helper.breadcrumbs.basic-usage:
 
-.. rubric:: Rendering breadcrumbs
+Basic usage
+-----------
 
 This example shows how to render breadcrumbs with default settings.
 
@@ -54,9 +60,10 @@ This example shows how to render breadcrumbs with default settings.
    Output:
    <a href="/products">Products</a> &gt; <a href="/products/server">Foo Server</a> &gt; FAQ
 
-.. _zend.navigation.view.helper.breadcrumbs.example2:
+.. _zend.navigation.view.helper.breadcrumbs.specifying-indentation:
 
-.. rubric:: Specifying indentation
+Specifying indentation
+----------------------
 
 This example shows how to render breadcrumbs with initial indentation.
 
@@ -69,9 +76,10 @@ This example shows how to render breadcrumbs with initial indentation.
    Output:
            <a href="/products">Products</a> &gt; <a href="/products/server">Foo Server</a> &gt; FAQ
 
-.. _zend.navigation.view.helper.breadcrumbs.example3:
+.. _zend.navigation.view.helper.breadcrumbs.customize-output:
 
-.. rubric:: Customize breadcrumbs output
+Customize output
+----------------
 
 This example shows how to customize breadcrumbs output by specifying various options.
 
@@ -104,9 +112,10 @@ This example shows how to customize breadcrumbs output by specifying various opt
    Output:
    Nothing, because the deepest active page is not at level 10 or deeper.
 
-.. _zend.navigation.view.helper.breadcrumbs.example4:
+.. _zend.navigation.view.helper.breadcrumbs.using-partial:
 
-.. rubric:: Rendering breadcrumbs using a partial view script
+Rendering using a partial view script
+-------------------------------------
 
 This example shows how to render customized breadcrumbs using a partial vew script. By calling ``setPartial()``,
 you can specify a partial view script that will be used when calling ``render()``. When a partial is specified, the
