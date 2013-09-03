@@ -9,6 +9,7 @@ available on `github <https://github.com/>`_. Use Composer (http://getcomposer.o
 to create a new project from scratch with Zend Framework:
 
 .. code-block:: bash
+   :linenos:
 
     php composer.phar create-project --repository-url="https://packages.zendframework.com" -s dev zendframework/skeleton-application path/to/install
 
@@ -30,6 +31,7 @@ to create a new project from scratch with Zend Framework:
     To install Zend Framework 2 into our application we simply type:
 
     .. code-block:: bash
+       :linenos:
 
         php composer.phar self-update
         php composer.phar install
@@ -37,6 +39,7 @@ to create a new project from scratch with Zend Framework:
     from the ``zf2-tutorial`` folder. This takes a while. You should see an output like:
 
     .. code-block:: bash
+       :linenos:
 
         Installing dependencies from lock file
         - Installing zendframework/zendframework (dev-master)
@@ -49,6 +52,7 @@ to create a new project from scratch with Zend Framework:
     If you see this message: 
 
     .. code-block:: bash
+       :linenos:
 
         [RuntimeException]      
           The process timed out. 
@@ -57,12 +61,14 @@ to create a new project from scratch with Zend Framework:
     timed out. To avoid this, instead of running:
 
     .. code-block:: bash
+       :linenos:
 
         php composer.phar install
 
     run instead:
 
     .. code-block:: bash
+       :linenos:
 
         COMPOSER_PROCESS_TIMEOUT=5000 php composer.phar install
 
@@ -87,6 +93,7 @@ Ensure that ``NameVirtualHost`` is defined and set to “\*:80” or similar, an
 define a virtual host along these lines:
 
 .. code-block:: apache
+   :linenos:
 
     <VirtualHost *:80>
         ServerName zf2-tutorial.localhost
@@ -106,6 +113,7 @@ is mapped to ``127.0.0.1``. The website can then be accessed using
 http://zf2-tutorial.localhost.  
 
 .. code-block:: txt
+   :linenos:
 
     127.0.0.1               zf2-tutorial.localhost localhost
 
@@ -125,6 +133,7 @@ If you see a standard Apache 404 error, then you need to fix ``.htaccess`` usage
 before continuing.  If you're are using IIS with the URL Rewrite Module, import the following:
 
 .. code-block:: apache
+   :linenos:
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^.*$ index.php [NC,L]
@@ -143,7 +152,7 @@ Edit ``index.php`` from the ``zf2-tutorial/public/`` directory and change it to
 the following:
 
 .. code-block:: php
-    :linenos:
+   :linenos:
 
     <?php
 

@@ -24,6 +24,7 @@ Start by creating a directory called ``Album`` under ``module`` with the followi
 subdirectories to hold the module’s files:
 
 .. code-block:: text
+   :linenos:
 
     zf2-tutorial/
         /module
@@ -54,8 +55,8 @@ Create ``Module.php`` in the ``Album`` module:
 Create a file called ``Module.php`` under ``zf2-tutorial/module/Album``:
 
 .. code-block:: php
+   :linenos:
 
-    <?php
     namespace Album;
 
     class Module
@@ -98,8 +99,8 @@ As we are in development, we don’t need to load files via the classmap, so we 
 classmap autoloader. Create a file called ``autoload_classmap.php`` under ``zf2-tutorial/module/Album``:
 
 .. code-block:: php
+   :linenos:
 
-    <?php
     return array();
 
 As this is an empty array, whenever the autoloader looks for a class within the
@@ -111,6 +112,7 @@ As this is an empty array, whenever the autoloader looks for a class within the
     ``getAutoloaderConfig() { }`` and add to composer.json:
 
     .. code-block:: javascript
+       :linenos:
 
         "autoload": {
             "psr-0": { "Album": "module/Album/src/" }
@@ -129,8 +131,8 @@ method in ``Album\Module``.  This method simply loads the
 Create a file called ``module.config.php`` under ``zf2-tutorial/module/Album/config``:
 
 .. code-block:: php
+   :linenos:
 
-    <?php
     return array(
         'controllers' => array(
             'invokables' => array(
@@ -166,9 +168,9 @@ skeleton application. Update this file so that its ``modules`` section contains 
 (Changes required are highlighted using comments.)
 
 .. code-block:: php
-    :emphasize-lines: 5
+   :linenos:
+   :emphasize-lines: 5
 
-    <?php
     return array(
         'modules' => array(
             'Application',

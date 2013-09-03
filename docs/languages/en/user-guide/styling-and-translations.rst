@@ -23,6 +23,7 @@ To remove the copyright message, we need to edit the ``Application`` module’s
 ``layout.phtml`` view script:
 
 .. code-block:: php
+   :linenos:
 
     // module/Application/view/layout/layout.phtml:
     // Remove this line:
