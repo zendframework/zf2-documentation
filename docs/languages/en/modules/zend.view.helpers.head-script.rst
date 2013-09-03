@@ -1,7 +1,12 @@
 .. _zend.view.helpers.initial.headscript:
 
 View Helper - HeadScript
-------------------------
+========================
+
+.. _zend.view.helpers.initial.headscript.introduction:
+
+Introduction
+------------
 
 The *HTML* **<script>** element is used to either provide inline client-side scripting elements or link to a remote
 resource containing client-side scripting code. The ``HeadScript`` helper allows you to manage both.
@@ -116,7 +121,8 @@ The ``HeadScript`` helper is a concrete implementation of the :ref:`Placeholder 
 
 .. _zend.view.helpers.initial.headscript.basicusage:
 
-.. rubric:: HeadScript Helper Basic Usage
+Basic Usage
+-----------
 
 You may specify a new script tag at any time. As noted above, these may be links to outside resource files or
 scripts themselves.
@@ -154,7 +160,8 @@ When you're finally ready to output all scripts in your layout script, simply ec
 
 .. _zend.view.helpers.initial.headscript.capture:
 
-.. rubric:: Capturing Scripts Using the HeadScript Helper
+Capturing Scripts
+-----------------
 
 Sometimes you need to generate client-side scripts programmatically. While you could use string concatenation,
 heredocs, and the like, often it's easier just to do so by creating the script and sprinkling in *PHP* tags.

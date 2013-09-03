@@ -1,7 +1,12 @@
 .. _zend.view.helpers.initial.url:
 
 View Helper - URL
------------------
+=================
+
+.. _zend.view.helpers.initial.url.basicusage:
+
+Basic Usage
+-----------
 
 ``url($name, $urlParams, $routeOptions, $reuseMatchedParams)``: Creates a *URL* string based on a named route.
 ``$urlParams`` should be an associative array of key/value pairs used by the particular route.

@@ -1,12 +1,24 @@
 .. _zend.view.helpers.initial.htmllist:
 
 View Helper - HtmlList
-----------------------
+======================
+
+.. _zend.view.helpers.initial.htmllist.introduction:
+
+Introduction
+------------
 
 ``htmlList($items, $ordered, $attribs, $escape)``: generates unordered and ordered lists based on the ``$items``
 passed to it. If ``$items`` is a multidimensional array, a nested list will be built. If the ``$escape`` flag is
 ``TRUE`` (default), individual items will be escaped using the view objects registered escaping mechanisms; pass
 a ``FALSE`` value if you want to allow markup in your lists.
+
+.. _zend.view.helpers.initial.htmllist.basicusage:
+
+Basic Usage
+-----------
+
+.. _zend.view.helpers.initial.htmllist.basicusage.unordered-list:
 
 Unordered list
 ^^^^^^^^^^^^^^
@@ -49,6 +61,8 @@ Output:
        <li>Level one, number two</li>
    </ul>
 
+.. _zend.view.helpers.initial.htmllist.basicusage.ordered-list:
+
 Ordered list
 ^^^^^^^^^^^^
 
@@ -76,6 +90,8 @@ Output:
        </li>
        <li>Level one, number two</li>
    </ol>
+
+.. _zend.view.helpers.initial.htmllist.basicusage.html-attributes:
 
 HTML attributes
 ^^^^^^^^^^^^^^^
@@ -108,6 +124,8 @@ Output:
        </li>
        <li>Level one, number two</li>
    </ul>
+
+.. _zend.view.helpers.initial.htmllist.basicusage.escape-output:
 
 Escape Output
 ^^^^^^^^^^^^^
