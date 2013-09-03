@@ -1,7 +1,12 @@
 .. _zend.view.helpers.initial.headlink:
 
 View Helper - HeadLink
-----------------------
+======================
+
+.. _zend.view.helpers.initial.headlink.introduction:
+
+Introduction
+------------
 
 The *HTML* **<link>** element is increasingly used for linking a variety of resources for your site: stylesheets,
 feeds, favicons, trackbacks, and more. The ``HeadLink`` helper provides a simple interface for creating and
@@ -41,7 +46,8 @@ The ``HeadLink`` helper is a concrete implementation of the :ref:`Placeholder he
 
 .. _zend.view.helpers.initial.headlink.basicusage:
 
-.. rubric:: HeadLink Helper Basic Usage
+Basic Usage
+-----------
 
 You may specify a **headLink** at any time. Typically, you will specify global links in your layout script, and
 application specific links in your application view scripts. In your layout script, in the <head> section, you will
@@ -65,5 +71,3 @@ then echo the helper to output it.
    ?>
    <?php // rendering the links: ?>
    <?php echo $this->headLink() ?>
-
-

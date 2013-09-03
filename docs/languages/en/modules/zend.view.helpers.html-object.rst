@@ -1,7 +1,12 @@
 .. _zend.view.helpers.initial.object:
 
 View Helper - HTML Object
--------------------------
+=========================
+
+.. _zend.view.helpers.initial.object.introduction:
+
+Introduction
+------------
 
 The *HTML* **<object>** element is used for embedding media like Flash or QuickTime in web pages. The object view
 helpers take care of embedding media with minimum effort.
@@ -21,7 +26,8 @@ two of these helpers.
 
 .. _zend.view.helpers.initial.object.flash:
 
-.. rubric:: Flash helper
+Flash helper
+------------
 
 Embedding Flash in your page using the helper is pretty straight-forward. The only required argument is the
 resource *URI*.
@@ -47,7 +53,8 @@ This will be demonstrated using the ``htmlObject()`` helper.
 
 .. _zend.view.helpers.initial.object.object:
 
-.. rubric:: Customizing the object by passing additional arguments
+Customizing the object by passing additional arguments
+------------------------------------------------------
 
 The first argument in the object helpers is always required. It is the *URI* to the resource you want to embed. The
 second argument is only required in the ``htmlObject()`` helper. The other helpers already contain the correct
@@ -74,8 +81,10 @@ utilizes all arguments.
        'some content'
    );
 
-   /*
-   This would output:
+This would output:
+
+.. code-block:: html
+   :linenos:
 
    <object data="/path/to/file.ext" type="mime/type"
        attr1="aval1" attr2="aval2">
@@ -83,6 +92,3 @@ utilizes all arguments.
        <param name="param2" value="pval2" />
        some content
    </object>
-   */
-
-

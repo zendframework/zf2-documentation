@@ -1,13 +1,19 @@
 .. _zend.view.helpers.initial.cycle:
 
 View Helper - Cycle
--------------------
+===================
+
+.. _zend.view.helpers.initial.cycle.introduction:
+
+Introduction
+------------
 
 The ``Cycle`` helper is used to alternate a set of values.
 
 .. _zend.view.helpers.initial.cycle.basicusage:
 
-.. rubric:: Cycle Helper Basic Usage
+Basic Usage
+-----------
 
 To add elements to cycle just specify them in constructor:
 
@@ -68,7 +74,8 @@ The output:
 
 .. _zend.view.helpers.initial.cycle.advanceusage:
 
-.. rubric:: Working with two or more cycles
+Working with two or more cycles
+-------------------------------
 
 To use two cycles you have to specify the names of cycles. Just set second
 parameter in cycle method: ``$this->cycle(array('#F0F0F0', '#FFF'), 'cycle2')``
