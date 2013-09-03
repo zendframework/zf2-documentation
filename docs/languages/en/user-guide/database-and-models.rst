@@ -19,6 +19,7 @@ We are going to use MySQL, via PHP’s PDO driver, so create a database called
 data in it.
 
 .. code-block:: sql
+   :linenos:
 
     CREATE TABLE album (
       id int(11) NOT NULL auto_increment,
@@ -64,8 +65,8 @@ database access code into controller action methods as these are exposed by
 Let’s start by creating a file called ``Album.php`` under ``module/Album/src/Album/Model``:
 
 .. code-block:: php
+   :linenos:
 
-    <?php
     namespace Album\Model;
 
     class Album
@@ -90,8 +91,8 @@ properties. We will add an input filter for use with our form later.
 Next, we create our ``AlbumTable.php`` file in ``module/Album/src/Album/Model`` directory like this:
 
 .. code-block:: php
+   :linenos:
 
-    <?php
     namespace Album\Model;
 
     use Zend\Db\TableGateway\TableGateway;
@@ -175,9 +176,9 @@ object when the ``ServiceManager`` needs it. We start by implementing
 this method to the bottom of the ``Module.php`` file in ``module/Album``.
 
 .. code-block:: php
-    :emphasize-lines: 5-8,14-32
+   :linenos:
+   :emphasize-lines: 5-8,14-32
 
-    <?php
     namespace Album;
 
     // Add these import statements:
@@ -238,8 +239,8 @@ Modify ``config/autoload/global.php`` (in the Zend Skeleton root, not inside the
 Album module) with following code:
 
 .. code-block:: php
+   :linenos:
 
-    <?php
     return array(
         'db' => array(
             'driver'         => 'Pdo',
@@ -260,8 +261,8 @@ You should put your database credentials in ``config/autoload/local.php`` so
 that they are not in the git repository (as ``local.php`` is ignored):
 
 .. code-block:: php
+   :linenos:
 
-    <?php
     return array(
         'db' => array(
             'username' => 'YOUR USERNAME HERE',
@@ -277,6 +278,7 @@ can add a method to the controller to retrieve it. Add ``getAlbumTable()`` to
 the ``AlbumController`` class:
 
 .. code-block:: php
+   :linenos:
 
     // module/Album/src/Album/Controller/AlbumController.php:
         public function getAlbumTable()
@@ -291,6 +293,7 @@ the ``AlbumController`` class:
 You should also add:
 
 .. code-block:: php
+   :linenos:
 
     protected $albumTable;
 
@@ -311,6 +314,7 @@ them to the view. To do this, we fill in ``indexAction()`` within
 this:
 
 .. code-block:: php
+   :linenos:
 
     // module/Album/src/Album/Controller/AlbumController.php:
     // ...
@@ -330,6 +334,7 @@ script that is used, but the default is to use ``{controller name}/{action
 name}``. We can now fill in the ``index.phtml`` view script:
 
 .. code-block:: php
+   :linenos:
 
     <?php
     // module/Album/view/album/album/index.phtml:
