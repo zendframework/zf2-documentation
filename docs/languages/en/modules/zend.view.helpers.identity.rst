@@ -1,7 +1,12 @@
 .. _zend.view.helpers.initial.identity:
 
 View Helper - Identity
-----------------------
+======================
+
+.. _zend.view.helpers.initial.identity.introduction:
+
+Introduction
+------------
 
 The ``Identity`` helper allows for getting the identity from the ``AuthenticationService``.
 
@@ -10,7 +15,10 @@ defined and recognized by the ``ServiceManager``.
 
 ``Identity`` returns the identity in the ``AuthenticationService`` or `null` if no identity is available.
 
-As an example:
+.. _zend.view.helpers.initial.identity.basicusage:
+
+Basic Usage
+-----------
 
 .. code-block:: php
    :linenos:
@@ -22,6 +30,11 @@ As an example:
             echo 'Not logged in';
         }
     ?>
+
+.. _zend.view.helpers.initial.identity.servicemanager:
+
+Using with ServiceManager
+-------------------------
 
 When invoked, the ``Identity`` plugin will look for a service by the name or alias
 ``Zend\Authentication\AuthenticationService`` in the ``ServiceManager``.
@@ -42,4 +55,3 @@ You can provide this service to the ``ServiceManager`` in a configuration file:
             ),
         ),
     );
-

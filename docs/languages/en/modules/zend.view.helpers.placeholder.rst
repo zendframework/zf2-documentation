@@ -1,7 +1,12 @@
 .. _zend.view.helpers.initial.placeholder:
 
 View Helper - Placeholder
--------------------------
+=========================
+
+.. _zend.view.helpers.initial.placeholder.introduction:
+
+Introduction
+------------
 
 The ``Placeholder`` view helper is used to persist content between view scripts and view instances. It also offers
 some useful features such as aggregating content, capturing view script content for later use, and adding pre- and
@@ -9,7 +14,8 @@ post-text to content (and custom separators for aggregated content).
 
 .. _zend.view.helpers.initial.placeholder.usage:
 
-.. rubric:: Basic Usage of Placeholders
+Basic Usage
+-----------
 
 Basic usage of placeholders is to persist view data. Each invocation of the ``Placeholder`` helper expects a
 placeholder name; the helper then returns a placeholder container object that you can either manipulate or simply
@@ -27,7 +33,8 @@ echo out.
 
 .. _zend.view.helpers.initial.placeholder.aggregation:
 
-.. rubric:: Using Placeholders to Aggregate Content
+Aggregate Content
+-----------------
 
 Aggregating content via placeholders can be useful at times as well. For instance, your view script may have a
 variable array from which you wish to retrieve messages to display later; a later view script can then determine
@@ -89,7 +96,8 @@ properties or as array keys.
 
 .. _zend.view.helpers.initial.placeholder.capture:
 
-.. rubric:: Using Placeholders to Capture Content
+Capture Content
+---------------
 
 Occasionally you may have content for a placeholder in a view script that is easiest to template; the
 ``Placeholder`` view helper allows you to capture arbitrary content for later rendering using the following *API*.
@@ -140,8 +148,8 @@ Occasionally you may have content for a placeholder in a view script that is eas
 
 .. _zend.view.helpers.initial.placeholder.implementations:
 
-Concrete Placeholder Implementations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Concrete Implementations
+------------------------
 
 Zend Framework ships with a number of "concrete" placeholder implementations. These are for commonly used
 placeholders: doctype, page title, and various <head> elements. In all cases, calling the placeholder with no

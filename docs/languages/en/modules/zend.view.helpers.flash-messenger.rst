@@ -1,9 +1,10 @@
 .. _zend.view.helpers.initial.flashmessenger:
 
 FlashMessenger Helper
----------------------
+=====================
 
-.. rubric:: FlashMessenger Basic Usage
+Basic Usage
+-----------
 
 When only using the default ``namespace`` for the ``FlashMessenger`` all you need to do is this:
 
@@ -27,7 +28,8 @@ which translates to ``default``.
    // (aka: use Zend\Mvc\Controller\Plugin\FlashMessenger;)
    echo $this->flashMessenger()->render(FlashMessenger::NAMESPACE_SUCCESS);
 
-.. rubric:: FlashMessenger Layout ( CSS )
+FlashMessenger Layout ( CSS )
+-----------------------------
 
 The ``FlashMessenger`` default rendering adds a CSS class to the generated ``HTML``, that matches
 the defined ``namespace`` that should be rendered. While it may work well for the default cases,
@@ -50,7 +52,8 @@ The output of this example, using the default ``HTML`` rendering settings, would
        <li>You, the developer, are AWESOME!</li>
    </ul>
 
-.. rubric:: FlashMessenger Layout ( HTML )
+FlashMessenger Layout ( HTML )
+------------------------------
 
 Aside from modifying the rendered ``CSS`` classes of the ``FlashMessenger``, you are furthermore
 able to modify the generated ``HTML`` as a whole to create even more distinct visuals for your
@@ -91,7 +94,8 @@ The above code sample then would then generate the following output:
        <p>You, who's reading the docs, are AWESOME!</p>
    </div>
 
-.. rubric:: FlashMessenger Sample Modification Twitter Bootstrap 3
+FlashMessenger Sample Modification for Bootstrap 3
+--------------------------------------------------
 
 Taking all the above knowledge into account, we can create a nice, highly usable and user-friendly
 rendering strategy using the `Bootstrap front-end framework <http://getbootstrap.com/>`_  version 3

@@ -1,7 +1,12 @@
 .. _zend.view.helpers.initial.headtitle:
 
 View Helper - HeadTitle
------------------------
+=======================
+
+.. _zend.view.helpers.initial.headtitle.introduction:
+
+Introduction
+------------
 
 The *HTML* **<title>** element is used to provide a title for an *HTML* document. The ``HeadTitle`` helper allows
 you to programmatically create and store the title for later retrieval and output.
@@ -19,7 +24,8 @@ explicitly pass a different attach order as the second parameter.
 
 .. _zend.view.helpers.initial.headtitle.basicusage:
 
-.. rubric:: HeadTitle Helper Basic Usage
+Basic Usage
+-----------
 
 You may specify a title tag at any time. A typical usage would have you setting title segments for each level of
 depth in your application: site, module, controller, action, and potentially resource. This could be achieved in
@@ -82,5 +88,3 @@ When you're finally ready to render the title in your layout script, simply echo
 
    <!-- renders <action> - <controller> - <module> - Zend Framework -->
    <?php echo $this->headTitle() ?>
-
-

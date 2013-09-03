@@ -1,11 +1,15 @@
 .. _zend.view.helpers.initial.partial:
 
 View Helper - Partial
----------------------
+=====================
+
+.. _zend.view.helpers.initial.partial.introduction:
+
+Introduction
+------------
 
 The ``Partial`` view helper is used to render a specified template within its own variable scope. The primary use
-is for reusable template fragments with which you do not need to worry about variable name clashes. Additionally,
-they allow you to specify partial view scripts from specific modules.
+is for reusable template fragments with which you do not need to worry about variable name clashes.
 
 A sibling to the ``Partial``, the ``PartialLoop`` view helper allows you to pass iterable data, and render a
 partial for each item.
@@ -20,7 +24,8 @@ partial for each item.
 
 .. _zend.view.helpers.initial.partial.usage:
 
-.. rubric:: Basic Usage of Partials
+Basic Usage
+-----------
 
 Basic usage of partials is to render a template fragment in its own view scope. Consider the following partial
 script:
@@ -88,7 +93,8 @@ Which would then render:
 
 .. _zend.view.helpers.initial.partial.partialloop:
 
-.. rubric:: Using PartialLoop to Render Iterable Models
+Using PartialLoop to Render Iterable Models
+-------------------------------------------
 
 Typically, you'll want to use partials in a loop, to render the same content fragment many times; this way you can
 put large blocks of repeated content or complex display logic into a single location. However this has a
@@ -144,22 +150,3 @@ In your view script, you could then invoke the ``PartialLoop`` helper:
        <dt>Fish</dt>
        <dd>Flounder</dd>
    </dl>
-
-.. _zend.view.helpers.initial.partial.modules:
-
-.. rubric:: Rendering Partials in Other Modules
-
-Sometime a partial will exist in a different module. If you know the name of the module, you can pass it as the
-second argument to either ``partial()`` or ``partialLoop()``, moving the ``$model`` argument to third position.
-
-For instance, if there's a pager partial you wish to use that's in the 'list' module, you could grab it as follows:
-
-.. code-block:: php
-   :linenos:
-
-   <?php echo $this->partial('pager.phtml', 'list', $pagerData) ?>
-
-In this way, you can re-use partials created specifically for other modules. That said, it's likely a better
-practice to put re-usable partials in shared view script paths.
-
-

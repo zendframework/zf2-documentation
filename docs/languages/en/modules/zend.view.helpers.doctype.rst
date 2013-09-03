@@ -1,7 +1,12 @@
 .. _zend.view.helpers.initial.doctype:
 
 View Helper - Doctype
----------------------
+=====================
+
+.. _zend.view.helpers.initial.doctype.introduction:
+
+Introduction
+------------
 
 Valid *HTML* and *XHTML* documents should include a ``DOCTYPE`` declaration. Besides being difficult to remember,
 these can also affect how certain elements in your document should be rendered (for instance, CDATA escaping in
@@ -44,7 +49,8 @@ The ``Doctype`` helper is a concrete implementation of the :ref:`Placeholder hel
 
 .. _zend.view.helpers.initial.doctype.basicusage:
 
-.. rubric:: Doctype Helper Basic Usage
+Basic Usage
+-----------
 
 You may specify the doctype at any time. However, helpers that depend on the doctype for their output will
 recognize it only after you have set it, so the easiest approach is to specify it in your bootstrap:
@@ -64,7 +70,8 @@ And then print it out on top of your layout script:
 
 .. _zend.view.helpers.initial.doctype.retrieving:
 
-.. rubric:: Retrieving the Doctype
+Retrieving the Doctype
+----------------------
 
 If you need to know the doctype, you can do so by calling ``getDoctype()`` on the object, which is returned by
 invoking the helper.
@@ -95,7 +102,8 @@ You can also check if the doctype represents an *HTML5* document.
 
 .. _zend.view.helpers.initial.doctype.xhtml1_rdfa:
 
-.. rubric:: Choosing a Doctype to Use with the Open Graph Protocol
+Choosing a Doctype to Use with the Open Graph Protocol
+------------------------------------------------------
 
 To implement the `Open Graph Protocol`_, you may specify the XHTML1_RDFA doctype. This doctype allows a developer
 to use the `Resource Description Framework`_ within an *XHTML* document.
@@ -136,7 +144,10 @@ Here is how you check if the doctype is set to XHTML1_RDFA:
          <?php endif; ?>
    >
 
-.. rubric:: Zend MVC View Manager
+.. _zend.view.helpers.initial.doctype.mvc-view-manager:
+
+Zend MVC View Manager
+---------------------
 
 If you're running a Zend\Mvc application, you should specify doctype via the :ref:`ViewManager <zend.mvc.services#viewmanager>` service.
 
