@@ -474,6 +474,7 @@ Examples
        'HeaderField2' => 'header-field-value2',
    ));
    $request->getPost()->set('foo', 'bar');
+   $request->setContent($request->getPost()->toString());
    echo $request->toString();
 
    /** Will produce:
