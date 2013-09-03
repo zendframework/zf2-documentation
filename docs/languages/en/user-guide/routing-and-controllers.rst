@@ -49,9 +49,9 @@ in the module’s ``module.config.php`` file. We will add a route for our album
 actions. This is the updated module config file with the new code highlighted.
 
 .. code-block:: php
-    :emphasize-lines: 9-27
+   :linenos:
+   :emphasize-lines: 9-27
 
-    <?php
     return array(
         'controllers' => array(
             'invokables' => array(
@@ -135,8 +135,8 @@ In this case ``{action name}`` should start with a lower case letter.
 Let’s go ahead and create our controller class ``AlbumController.php`` at ``zf2-tutorials/module/Album/src/Album/Controller`` :
 
 .. code-block:: php
+   :linenos:
 
-    <?php
     namespace Album\Controller;
 
     use Zend\Mvc\Controller\AbstractActionController;
