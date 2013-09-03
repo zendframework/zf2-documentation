@@ -3,6 +3,11 @@
 View Helper - Navigation Proxy
 ==============================
 
+.. _zend.navigation.view.helpers.navigation.introduction:
+
+Introduction
+------------
+
 The Navigation helper is a proxy helper that relays calls to other navigational helpers. It can be considered an
 entry point to all navigation-related view tasks. The aforementioned navigational helpers are in the namespace
 ``Zend\View\Helper\Navigation``, and would thus require the path *Zend/View/Helper/Navigation* to be added as a
@@ -16,6 +21,11 @@ added to the view.
 When proxying to other helpers, the Navigation helper can inject its container, *ACL*/role, and translator. This
 means that you won't have to explicitly set all three in all navigational helpers, nor resort to injecting by means
 of static methods.
+
+.. _zend.navigation.view.helpers.navigation.methods:
+
+Methods
+-------
 
 - ``findHelper()`` finds the given helper, verifies that it is a navigational helper, and injects container,
   *ACL*/role and translator.

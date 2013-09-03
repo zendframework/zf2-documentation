@@ -3,6 +3,11 @@
 View Helper - Links
 ===================
 
+.. _zend.navigation.view.helpers.links.introduction:
+
+Introduction
+------------
+
 The links helper is used for rendering *HTML* ``LINK`` elements. Links are used for describing document
 relationships of the currently active page. Read more about links and link types at `Document relationships: the
 LINK element (HTML4 W3C Rec.)`_ and `Link types (HTML4 W3C Rec.)`_ in the *HTML*\ 4 W3C Recommendation.
@@ -118,9 +123,15 @@ Methods in the links helper:
 
 - ``renderLink()`` renders a single *link* element.
 
-.. _zend.navigation.view.helper.links.example1:
+.. _zend.navigation.view.helper.links.basic-usage:
 
-.. rubric:: Specify relations in pages
+Basic usage
+-----------
+
+.. _zend.navigation.view.helper.links.specify-relations:
+
+Specify relations in pages
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to specify relations in pages.
 
@@ -166,19 +177,25 @@ This example shows how to specify relations in pages.
        )
    ));
 
-.. _zend.navigation.view.helper.links.example2:
+.. _zend.navigation.view.helper.links.default-rendering:
 
-.. rubric:: Default rendering of links
+Default rendering of links
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to render a menu from a container registered/found in the view helper.
+
+In a view script or layout:
 
 .. code-block:: php
    :linenos:
 
-   In a view script or layout:
    <?php echo $this->view->navigation()->links(); ?>
 
-   Output:
+Output:
+
+.. code-block:: html
+   :linenos:
+
    <link rel="alternate" href="/products/server/faq/format/xml">
    <link rel="start" href="/" title="Home">
    <link rel="next" href="/products/server/editions" title="Editions">
@@ -189,33 +206,44 @@ This example shows how to render a menu from a container registered/found in the
    <link rel="canonical" href="http://www.example.com/?page=server-faq">
    <link rev="subsection" href="/products/server" title="Foo Server">
 
-.. _zend.navigation.view.helper.links.example3:
+.. _zend.navigation.view.helper.links.specify-rendering:
 
-.. rubric:: Specify which relations to render
+Specify which relations to render
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to specify which relations to find and render.
+
+Render only start, next, and prev:
 
 .. code-block:: php
    :linenos:
 
-   Render only start, next, and prev:
    $helper->setRenderFlag(Zend\View\Helper\Navigation\Links::RENDER_START |
                           Zend\View\Helper\Navigation\Links::RENDER_NEXT |
                           Zend\View\Helper\Navigation\Links::RENDER_PREV);
 
-   Output:
+Output:
+
+.. code-block:: html
+   :linenos:
+
    <link rel="start" href="/" title="Home">
    <link rel="next" href="/products/server/editions" title="Editions">
    <link rel="prev" href="/products/server" title="Foo Server">
 
+Render only native link types:
+
 .. code-block:: php
    :linenos:
 
-   Render only native link types:
    $helper->setRenderFlag(Zend\View\Helper\Navigation\Links::RENDER_ALL ^
                           Zend\View\Helper\Navigation\Links::RENDER_CUSTOM);
 
-   Output:
+Output:
+
+.. code-block:: html
+   :linenos:
+
    <link rel="alternate" href="/products/server/faq/format/xml">
    <link rel="start" href="/" title="Home">
    <link rel="next" href="/products/server/editions" title="Editions">
@@ -225,14 +253,19 @@ This example shows how to specify which relations to find and render.
    <link rel="chapter" href="/community" title="Community">
    <link rev="subsection" href="/products/server" title="Foo Server">
 
+Render all but chapter:
+
 .. code-block:: php
    :linenos:
 
-   Render all but chapter:
    $helper->setRenderFlag(Zend\View\Helper\Navigation\Links::RENDER_ALL ^
                           Zend\View\Helper\Navigation\Links::RENDER_CHAPTER);
 
-   Output:
+Output:
+
+.. code-block:: html
+   :linenos:
+
    <link rel="alternate" href="/products/server/faq/format/xml">
    <link rel="start" href="/" title="Home">
    <link rel="next" href="/products/server/editions" title="Editions">
