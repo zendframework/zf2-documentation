@@ -3,6 +3,11 @@
 View Helper - Menu
 ==================
 
+.. _zend.navigation.view.helpers.menu.introduction:
+
+Introduction
+------------
+
 The Menu helper is used for rendering menus from navigation containers. By default, the menu will be rendered using
 *HTML* *UL* and *LI* tags, but the helper also allows using a partial view script.
 
@@ -54,23 +59,29 @@ Methods in the Menu helper:
 
 - ``renderSubMenu()`` renders the deepest menu level of a container's active branch.
 
-.. _zend.navigation.view.helper.menu.example1:
+.. _zend.navigation.view.helper.menu.basic-usage:
 
-.. rubric:: Rendering a menu
+Basic usage
+-----------
 
 This example shows how to render a menu from a container registered/found in the view helper. Notice how pages are
 filtered out based on visibility and *ACL*.
 
+In a view script or layout:
+
 .. code-block:: php
    :linenos:
 
-   In a view script or layout:
    <?php echo $this->navigation()->menu()->render() ?>
 
    Or simply:
    <?php echo $this->navigation()->menu() ?>
 
-   Output:
+Output:
+
+.. code-block:: html
+   :linenos:
+
    <ul class="navigation">
        <li>
            <a title="Go Home" href="/">Home</a>
@@ -137,9 +148,10 @@ filtered out based on visibility and *ACL*.
        </li>
    </ul>
 
-.. _zend.navigation.view.helper.menu.example2:
+.. _zend.navigation.view.helper.menu.rendermenu:
 
-.. rubric:: Calling renderMenu() directly
+Calling renderMenu() directly
+-----------------------------
 
 This example shows how to render a menu that is not registered in the view helper by calling the ``renderMenu()``
 directly and specifying a few options.
@@ -158,7 +170,12 @@ directly and specifying a few options.
              ->menu()
              ->renderMenu($community, $options);
    ?>
-   Output:
+
+Output:
+
+.. code-block:: html
+   :linenos:
+
                    <ul class="community">
                        <li>
                            <a href="/community/account">My Account</a>
@@ -168,9 +185,10 @@ directly and specifying a few options.
                        </li>
                    </ul>
 
-.. _zend.navigation.view.helper.menu.example3:
+.. _zend.navigation.view.helper.menu.rendersubmenu:
 
-.. rubric:: Rendering the deepest active menu
+Rendering the deepest active menu
+---------------------------------
 
 This example shows how the ``renderSubMenu()`` will render the deepest sub menu of the active branch.
 
@@ -198,7 +216,11 @@ $options)`` with the following options:
              ->renderSubMenu(null, 'sidebar', 4);
    ?>
 
-   The output will be the same if 'FAQ' or 'Foo Server' is active:
+The output will be the same if 'FAQ' or 'Foo Server' is active:
+
+.. code-block:: html
+   :linenos:
+
        <ul class="sidebar">
            <li class="active">
                <a href="/products/server/faq">FAQ</a>
@@ -211,9 +233,10 @@ $options)`` with the following options:
            </li>
        </ul>
 
-.. _zend.navigation.view.helper.menu.example4:
+.. _zend.navigation.view.helper.menu.maxdepth:
 
-.. rubric:: Rendering a menu with maximum depth
+Rendering with maximum depth
+----------------------------
 
 .. code-block:: php
    :linenos:
@@ -224,7 +247,11 @@ $options)`` with the following options:
              ->setMaxDepth(1);
    ?>
 
-   Output:
+Output:
+
+.. code-block:: html
+   :linenos:
+
    <ul class="navigation">
        <li>
            <a title="Go Home" href="/">Home</a>
@@ -264,9 +291,10 @@ $options)`` with the following options:
        </li>
    </ul>
 
-.. _zend.navigation.view.helper.menu.example5:
+.. _zend.navigation.view.helper.menu.mindepth:
 
-.. rubric:: Rendering a menu with minimum depth
+Rendering with minimum depth
+----------------------------
 
 .. code-block:: php
    :linenos:
@@ -277,7 +305,11 @@ $options)`` with the following options:
              ->setMinDepth(1);
    ?>
 
-   Output:
+Output:
+
+.. code-block:: html
+   :linenos:
+
    <ul class="navigation">
        <li class="active">
            <a href="/products/server">Foo Server</a>
@@ -326,9 +358,10 @@ $options)`` with the following options:
        </li>
    </ul>
 
-.. _zend.navigation.view.helper.menu.example6:
+.. _zend.navigation.view.helper.menu.onlyactivebranch:
 
-.. rubric:: Rendering only the active branch of a menu
+Rendering only the active branch
+--------------------------------
 
 .. code-block:: php
    :linenos:
@@ -339,7 +372,11 @@ $options)`` with the following options:
              ->setOnlyActiveBranch(true);
    ?>
 
-   Output:
+Output:
+
+.. code-block:: html
+   :linenos:
+
    <ul class="navigation">
        <li class="active">
            <a href="/products">Products</a>
@@ -362,9 +399,10 @@ $options)`` with the following options:
        </li>
    </ul>
 
-.. _zend.navigation.view.helper.menu.example7:
+.. _zend.navigation.view.helper.menu.onlyactivebranch-mindepth:
 
-.. rubric:: Rendering only the active branch of a menu with minimum depth
+Rendering only the active branch with minimum depth
+---------------------------------------------------
 
 .. code-block:: php
    :linenos:
@@ -376,7 +414,11 @@ $options)`` with the following options:
              ->setMinDepth(1);
    ?>
 
-   Output:
+Output:
+
+.. code-block:: html
+   :linenos:
+
    <ul class="navigation">
        <li class="active">
            <a href="/products/server">Foo Server</a>
@@ -394,9 +436,10 @@ $options)`` with the following options:
        </li>
    </ul>
 
-.. _zend.navigation.view.helper.menu.example8:
+.. _zend.navigation.view.helper.menu.onlyactivebranch-maxdepth:
 
-.. rubric:: Rendering only the active branch of a menu with maximum depth
+Rendering only the active branch with maximum depth
+---------------------------------------------------
 
 .. code-block:: php
    :linenos:
@@ -408,7 +451,11 @@ $options)`` with the following options:
              ->setMaxDepth(1);
    ?>
 
-   Output:
+Output:
+
+.. code-block:: html
+   :linenos:
+
    <ul class="navigation">
        <li class="active">
            <a href="/products">Products</a>
@@ -423,9 +470,10 @@ $options)`` with the following options:
        </li>
    </ul>
 
-.. _zend.navigation.view.helper.menu.example9:
+.. _zend.navigation.view.helper.menu.onlyactivebranch-maxdepth-noparents:
 
-.. rubric:: Rendering only the active branch of a menu with maximum depth and no parents
+Rendering only the active branch with maximum depth and no parents
+------------------------------------------------------------------
 
 .. code-block:: php
    :linenos:
@@ -438,7 +486,11 @@ $options)`` with the following options:
              ->setMaxDepth(1);
    ?>
 
-   Output:
+Output:
+
+.. code-block:: html
+   :linenos:
+
    <ul class="navigation">
        <li class="active">
            <a href="/products/server">Foo Server</a>
@@ -448,9 +500,10 @@ $options)`` with the following options:
        </li>
    </ul>
 
-.. _zend.navigation.view.helper.menu.example10:
+.. _zend.navigation.view.helper.menu.partial:
 
-.. rubric:: Rendering a custom menu using a partial view script
+Rendering a custom menu using a partial view script
+---------------------------------------------------
 
 This example shows how to render a custom menu using a partial view script. By calling ``setPartial()``, you can
 specify a partial view script that will be used when calling ``render()``. When a partial is specified, the
@@ -476,7 +529,7 @@ In *module/MyModule/view/my-module/partials/menu.phtml*:
 
 Output:
 
-.. code-block:: php
+.. code-block:: html
    :linenos:
 
    <a title="Go Home" href="/">Home</a>
