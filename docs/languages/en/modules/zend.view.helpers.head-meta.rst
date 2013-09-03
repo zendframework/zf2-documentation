@@ -1,7 +1,12 @@
 .. _zend.view.helpers.initial.headmeta:
 
 View Helper - HeadMeta
-----------------------
+======================
+
+.. _zend.view.helpers.initial.headmeta.introduction:
+
+Introduction
+------------
 
 The *HTML* **<meta>** element is used to provide meta information about your *HTML* document -- typically keywords,
 document character set, caching pragmas, etc. Meta tags may be either of the 'http-equiv' or 'name' types, must
@@ -58,7 +63,8 @@ The ``HeadMeta`` helper is a concrete implementation of the :ref:`Placeholder he
 
 .. _zend.view.helpers.initial.headmeta.basicusage:
 
-.. rubric:: HeadMeta Helper Basic Usage
+Basic Usage
+-----------
 
 You may specify a new meta tag at any time. Typically, you will specify client-side caching rules or SEO keywords.
 
@@ -118,7 +124,8 @@ When you're ready to place your meta tags in the layout, simply echo the helper:
 
 .. _zend.view.helpers.initial.headmeta.property:
 
-.. rubric:: HeadMeta Usage with XHTML1_RDFA doctype
+Usage with XHTML1_RDFA doctype
+------------------------------
 
 Enabling the RDFa doctype with the :ref:`Doctype helper <zend.view.helpers.initial.doctype>` enables the use of the
 'property' attribute (in addition to the standard 'name' and 'http-equiv') with HeadMeta. This is commonly used
