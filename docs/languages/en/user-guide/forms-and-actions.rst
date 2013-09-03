@@ -19,8 +19,8 @@ start by creating a new class ``Album\Form\AlbumForm`` that extends from
 Create a file called ``AlbumForm.php`` in ``module/Album/src/Album/Form``:
 
 .. code-block:: php
+   :linenos:
 
-    <?php
     namespace Album\Form;
 
     use Zend\Form\Form;
@@ -72,9 +72,9 @@ that implements the ``InputFilterAwareInterface`` interface, such as a model ent
 going to add the input filter to the Album class, which resides in the ``Album.php`` file in ``module/Album/src/Album/Model``:
 
 .. code-block:: php
-    :emphasize-lines: 5-7,9,14,23-84
+   :linenos:
+   :emphasize-lines: 5-7,9,14,23-84
 
-    <?php
     namespace Album\Model;
 
     // Add these import statements
@@ -176,7 +176,8 @@ We now need to get the form to display and then process it on submission. This
 is done within the ``AlbumController``’s ``addAction()``:
 
 .. code-block:: php
-    :emphasize-lines: 6-7,10-31
+   :linenos:
+   :emphasize-lines: 6-7,10-31
 
     // module/Album/src/Album/Controller/AlbumController.php:
 
@@ -215,6 +216,7 @@ After adding the ``AlbumForm`` to the use list, we implement ``addAction()``.
 Let’s look at the ``addAction()`` code in a little more detail:
 
 .. code-block:: php
+   :linenos:
 
     $form = new AlbumForm();
     $form->get('submit')->setValue('Add');
@@ -224,6 +226,7 @@ do this here as we’ll want to re-use the form when editing an album and will u
 a different label.
 
 .. code-block:: php
+   :linenos:
 
     $request = $this->getRequest();
     if ($request->isPost()) {
@@ -238,6 +241,7 @@ set the posted data to the form and check to see if it is valid using the
 ``isValid()`` member function of the form.
 
 .. code-block:: php
+   :linenos:
 
     $album->exchangeArray($form->getData());
     $this->getAlbumTable()->saveAlbum($album);
@@ -246,6 +250,7 @@ If the form is valid, then we  grab the data from the form and store to the
 model using ``saveAlbum()``.
 
 .. code-block:: php
+   :linenos:
 
     // Redirect to list of albums
     return $this->redirect()->toRoute('album');
@@ -254,6 +259,7 @@ After we have saved the new album row, we redirect back to the list of albums
 using the ``Redirect`` controller plugin.
 
 .. code-block:: php
+   :linenos:
 
     return array('form' => $form);
 
@@ -265,6 +271,7 @@ create a ``ViewModel`` behind the scenes for you. This saves a little typing.
 We now need to render the form in the add.phtml view script:
 
 .. code-block:: php
+   :linenos:
 
     <?php
     // module/Album/view/album/album/add.phtml:
@@ -299,6 +306,7 @@ bundled ``formCollection`` view helper.  For example, in the view script above r
 all the form-rendering echo statements with:
 
 .. code-block:: php
+   :linenos:
 
     echo $this->formCollection($form);
 
@@ -320,6 +328,7 @@ Editing an album is almost identical to adding one, so the code is very similar.
 This time we use ``editAction()`` in the ``AlbumController``:
 
 .. code-block:: php
+   :linenos:
 
     // module/Album/src/Album/Controller/AlbumController.php:
     //...
@@ -374,6 +383,7 @@ adding an album. Firstly, we look for the ``id`` that is in the matched route
 and use it to load the album to be edited:
 
 .. code-block:: php
+   :linenos:
 
     $id = (int) $this->params()->fromRoute('id', 0);
     if (!$id) {
@@ -404,6 +414,7 @@ If it cannot, then the data access method throws an exception.  We catch that ex
 to the index page.
 
 .. code-block:: php
+   :linenos:
 
     $form = new AlbumForm();
     $form->bind($album);
@@ -424,7 +435,8 @@ which expects to find two methods in the model: ``getArrayCopy()`` and
 ``Album`` entity, so just need to write ``getArrayCopy()``:
 
 .. code-block:: php
-    :emphasize-lines: 10-14
+   :linenos:
+   :emphasize-lines: 10-14
 
     // module/Album/src/Album/Model/Album.php:
     // ...
@@ -450,6 +462,7 @@ The view template, ``edit.phtml``, looks very similar to the one for adding an
 album:
 
 .. code-block:: php
+   :linenos:
 
     <?php
     // module/Album/view/album/album/edit.phtml:
@@ -498,6 +511,7 @@ directly into our view (``Zend\Form`` is, after all, optional!).
 Let’s start with the action code in ``AlbumController::deleteAction()``:
 
 .. code-block:: php
+   :linenos:
 
     // module/Album/src/Album/Controller/AlbumController.php:
     //...
@@ -539,6 +553,7 @@ to the view, along with the ``id``.
 The view script is a simple form:
 
 .. code-block:: php
+   :linenos:
 
     <?php
     // module/Album/view/album/album/delete.phtml:
@@ -581,6 +596,7 @@ This is due to a route set up in the ``Application`` module’s
 ``module/Application/config/module.config.php`` and find the home route:
 
 .. code-block:: php
+   :linenos:
 
     'home' => array(
         'type' => 'Zend\Mvc\Router\Http\Literal',
@@ -597,7 +613,8 @@ Change the ``controller`` from ``Application\Controller\Index`` to
 ``Album\Controller\Album``:
 
 .. code-block:: php
-    :emphasize-lines: 6
+   :linenos:
+   :emphasize-lines: 6
 
     'home' => array(
         'type' => 'Zend\Mvc\Router\Http\Literal',
