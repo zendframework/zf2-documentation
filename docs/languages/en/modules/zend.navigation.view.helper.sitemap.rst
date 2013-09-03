@@ -3,6 +3,11 @@
 View Helper - Sitemap
 =====================
 
+.. _zend.navigation.view.helpers.sitemap.introduction:
+
+Introduction
+------------
+
 The Sitemap helper is used for generating *XML* sitemaps, as defined by the `Sitemaps XML format`_. Read more about
 `Sitemaps on Wikipedia`_.
 
@@ -55,9 +60,10 @@ Methods in the sitemap helper:
 
 - ``getDomSitemap()`` generates a DOMDocument from a given container.
 
-.. _zend.navigation.view.helper.sitemap.example:
+.. _zend.navigation.view.helper.sitemap.basic-usage:
 
-.. rubric:: Rendering an XML sitemap
+Basic usage
+-----------
 
 This example shows how to render an *XML* sitemap based on the setup we did further up.
 
@@ -139,6 +145,11 @@ Notice how pages that are invisible or pages with *ACL* roles incompatible with 
      </url>
    </urlset>
 
+.. _zend.navigation.view.helper.sitemap.rendering-noacl:
+
+Rendering using no *ACL* role
+-----------------------------
+
 Render the sitemap using no *ACL* role (should filter out /community/account):
 
 .. code-block:: php
@@ -203,6 +214,11 @@ Render the sitemap using no *ACL* role (should filter out /community/account):
        <loc>http://forums.example.com/</loc>
      </url>
    </urlset>
+
+.. _zend.navigation.view.helper.sitemap.rendering-maxdepth:
+
+Rendering using a maximum depth
+-------------------------------
 
 Render the sitemap using a maximum depth of 1.
 
