@@ -234,7 +234,7 @@ In addition to checking for redirect headers, you will often need to check for s
 to determine whether an action results in a 404 or 500 response, or to ensure that JSON responses contain the appropriate Content-Type header.
 The following assertions are available.
 
-* ``assertResponseCode($code)``: assert that the response resulted in the given HTTP response code.
+* ``assertResponseStatusCode($code)``: assert that the response resulted in the given HTTP response code.
 
 * ``assertResponseHeader($header)``: assert that the response contains the given header.
 
