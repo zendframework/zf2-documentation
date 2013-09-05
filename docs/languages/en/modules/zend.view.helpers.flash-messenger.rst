@@ -3,13 +3,23 @@
 FlashMessenger Helper
 =====================
 
+.. _zend.view.helpers.initial.flashmessenger.introduction:
+
+Introduction
+------------
+
+The ``FlashMessenger`` helper is used to render the messages of the
+:ref:`FlashMessenger MVC plugin <zend.mvc.controller-plugins.flashmessenger>`.
+
+.. _zend.view.helpers.initial.flashmessenger.basic-usage:
+
 Basic Usage
 -----------
 
 When only using the default ``namespace`` for the ``FlashMessenger`` all you need to do is this:
 
 .. code-block:: php
-   :lineos:
+   :linenos:
 
    // Usable in any of your .phtml files
    echo $this->flashMessenger()->render();
@@ -19,7 +29,7 @@ defined, the default ``Zend\Mvc\Controller\Plugin\FlashMessenger::NAMESPACE_DEFA
 which translates to ``default``.
 
 .. code-block:: php
-   :lineos:
+   :linenos:
 
    // Usable in any of your .phtml files
    echo $this->flashMessenger()->render('error');
@@ -28,8 +38,10 @@ which translates to ``default``.
    // (aka: use Zend\Mvc\Controller\Plugin\FlashMessenger;)
    echo $this->flashMessenger()->render(FlashMessenger::NAMESPACE_SUCCESS);
 
-FlashMessenger Layout ( CSS )
------------------------------
+.. _zend.view.helpers.initial.flashmessenger.css-layout:
+
+CSS Layout
+----------
 
 The ``FlashMessenger`` default rendering adds a CSS class to the generated ``HTML``, that matches
 the defined ``namespace`` that should be rendered. While it may work well for the default cases,
@@ -37,7 +49,7 @@ every so often you may want to add specific ``CSS`` classes to the ``HTML`` outp
 while making use of the second parameter of the ``render()`` function.
 
 .. code-block:: php
-   :lineos:
+   :linenos:
 
    // Usable in any of your .phtml files
    echo $this->flashMessenger()->render('error', array('alert', 'alert-danger'));
@@ -45,15 +57,17 @@ while making use of the second parameter of the ``render()`` function.
 The output of this example, using the default ``HTML`` rendering settings, would look like this:
 
 .. code-block:: html
-   :lineos:
+   :linenos:
 
    <ul class="alert alert-danger">
        <li>Some FlashMessenger Content</li>
        <li>You, the developer, are AWESOME!</li>
    </ul>
 
-FlashMessenger Layout ( HTML )
-------------------------------
+.. _zend.view.helpers.initial.flashmessenger.css-layout:
+
+HTML Layout
+-----------
 
 Aside from modifying the rendered ``CSS`` classes of the ``FlashMessenger``, you are furthermore
 able to modify the generated ``HTML`` as a whole to create even more distinct visuals for your
@@ -61,7 +75,7 @@ able to modify the generated ``HTML`` as a whole to create even more distinct vi
 ``FlashMessenger`` view helper itself.
 
 .. code-block:: php
-   :lineos:
+   :linenos:
 
    // Zend/View/Helper/FlashMessenger.php#L41-L43
    protected $messageCloseString     = '</li></ul>';
@@ -75,7 +89,7 @@ To change this, all we need to do is call the respective setter methods of these
 them new strings; for example:
 
 .. code-block:: php
-   :lineos:
+   :linenos:
 
    // In any of your .phtml files:
    echo $this->flashMessenger()
@@ -87,21 +101,24 @@ them new strings; for example:
 The above code sample then would then generate the following output:
 
 .. code-block:: html
-   :lineos:
+   :linenos:
 
    <div class="success">
        <p>Some FlashMessenger Content</p>
        <p>You, who's reading the docs, are AWESOME!</p>
    </div>
 
-FlashMessenger Sample Modification for Bootstrap 3
---------------------------------------------------
+.. _zend.view.helpers.initial.flashmessenger.modification-for-twitter-bootstrap:
+
+Sample Modification for Twitter Bootstrap 3
+-------------------------------------------
 
 Taking all the above knowledge into account, we can create a nice, highly usable and user-friendly
 rendering strategy using the `Bootstrap front-end framework <http://getbootstrap.com/>`_  version 3
 layouts:
 
 .. code-block:: php
+   :linenos:
 
     // In any of your .phtml files:
     $flash = $this->flashMessenger();
@@ -124,7 +141,7 @@ several ``FlashMessages`` available in each of the rendered ``namespaces``, then
 the same output multiple times only having different ``CSS`` classes applied.
 
 .. code-block:: html
-   :lineos:
+   :linenos:
 
    <div class="alert alert-dismissable alert-success">
        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
