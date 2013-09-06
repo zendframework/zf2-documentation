@@ -36,7 +36,7 @@ Reading RSS Feed Data with Zend\\Feed\\Reader
    try {
        $slashdotRss =
            Zend\Feed\Reader\Reader::import('http://rss.slashdot.org/Slashdot/slashdot');
-   } catch (Zend\Feed\Exception\Reader\RuntimeException $e) {
+   } catch (Zend\Feed\Reader\Exception\RuntimeException $e) {
        // feed import failed
        echo "Exception caught importing feed: {$e->getMessage()}\n";
        exit;
