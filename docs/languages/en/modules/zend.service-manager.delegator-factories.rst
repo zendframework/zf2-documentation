@@ -15,6 +15,7 @@ Delegator factory signature
 A delegator factory has the following signature:
 
 .. code-block:: php
+   :linenos:
 
    namespace Zend\ServiceManager;
 
