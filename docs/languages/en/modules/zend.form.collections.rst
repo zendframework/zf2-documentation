@@ -13,6 +13,7 @@ This document is intended to demonstrate these features. To do so, we first need
 to define some domain objects that we'll be using.
 
 .. code-block:: php
+   :linenos:
 
     namespace Application\Entity;
     
@@ -201,6 +202,7 @@ fields and relationships for a specific entity.
 Here is the ``Brand`` fieldset:
 
 .. code-block:: php
+   :linenos:
 
     namespace Application\Form;
     
@@ -275,6 +277,7 @@ only).
 Here is the ``Category`` fieldset:
 
 .. code-block:: php
+   :linenos:
 
     namespace Application\Form;
     
@@ -322,6 +325,7 @@ Nothing new here.
 And finally the ``Product`` fieldset:
 
 .. code-block:: php
+   :linenos:
 
     namespace Application\Form;
     
@@ -444,6 +448,7 @@ So far, so good. We now have our field sets in place. But those are field sets,
 not forms. And only ``Form`` instances can be validated. So here is the form :
 
 .. code-block:: php
+   :linenos:
 
     namespace Application\Form;
     
@@ -504,6 +509,7 @@ The Controller
 Now, let's create the action in the controller:
 
 .. code-block:: php
+   :linenos:
 
        /**
          * @return array
@@ -539,6 +545,7 @@ The View
 And finally, the view:
 
 .. code-block:: php
+   :linenos:
 
     <?php
     $form->setAttribute('action', $this->url('home'))
@@ -625,6 +632,7 @@ If you want, this placeholder (``__index__`` is the default) can be changed usin
 the ``template_placeholder`` option key:
 
 .. code-block:: php
+   :linenos:
 
     $this->add(array(
         'type' => 'Zend\Form\Element\Collection',
@@ -643,6 +651,7 @@ the ``template_placeholder`` option key:
 First, let's add a small button "Add new category" anywhere in the form:
 
 .. code-block:: html
+   :linenos:
 
     <button onclick="return add_category()">Add a new category</button>
 
@@ -656,6 +665,7 @@ The ``add_category`` function is fairly simple:
 Here is the code:
 
 .. code-block:: html
+   :linenos:
 
     <script>
         function add_category() {
@@ -689,6 +699,7 @@ want elements to be added, we don't need the data template, either. Here's how
 you do it:
 
 .. code-block:: php
+   :linenos:
 
     $this->add(array(
         'type' => 'Zend\Form\Element\Collection',
@@ -729,6 +740,7 @@ want the user to specify it in the creation form (but may wish to later in the
 input:
 
 .. code-block:: php
+   :linenos:
 
     <?php
     $form->setAttribute('action', $this->url('home'))
@@ -768,6 +780,7 @@ object (hence, in our case, in the ``CreateProduct`` form) by giving an array of
 all the elements we want to validate.  Our ``CreateProduct`` now looks like this:
 
 .. code-block:: php
+   :linenos:
 
     namespace Application\Form;
     
