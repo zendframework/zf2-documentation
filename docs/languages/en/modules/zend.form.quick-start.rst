@@ -555,6 +555,14 @@ Specifications are a great way to make forms, fieldsets, and elements re-usable 
 fact, the ``Captcha`` and ``Csrf`` elements define specifications in order to ensure they can work without
 additional user configuration!
 
+.. note::
+
+    If you set custom input filter specification either in ``getInputSpecification()`` or in ``getInputFilterSpecification()``,
+    the ``Zend\InputFilter\InputInterface`` set for that specific field is reset to the default ``Zend\InputFilter\Input``.
+
+    Some form elements may need a particular input filter, like ``Zend\Form\Element\File``: in this case it's mandatory to specify
+    the ``type`` key in your custom specification to match the original one (in ex. for the file element it's ``Zend\InputFilter\FileInput``).
+
 .. _zend.form.quick-start.binding:
 
 Binding an object
