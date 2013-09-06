@@ -1,14 +1,14 @@
 .. _zend.barcode.objects.details:
 
 Description of shipped barcodes
-===============================
+-------------------------------
 
 You will find below detailed information about all barcode types shipped by default with Zend Framework.
 
 .. _zend.barcode.objects.details.error:
 
 Zend\\Barcode\\Object\\Error
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.error.png
    :width: 400
@@ -20,7 +20,7 @@ This barcode is a special case. It is internally used to automatically render an
 .. _zend.barcode.objects.details.code128:
 
 Zend\\Barcode\\Object\\Code128
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.code128.png
    :width: 152
@@ -39,7 +39,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.codabar:
 
 Zend\\Barcode\\Object\\Codabar
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.codabar.png
    :width: 152
@@ -58,7 +58,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.code25:
 
 Zend\\Barcode\\Object\\Code25
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.code25.png
    :width: 152
@@ -77,7 +77,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.code25interleaved:
 
 Zend\\Barcode\\Object\\Code25interleaved
-----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.int25.png
    :width: 101
@@ -114,7 +114,7 @@ Available options include:
 .. _zend.barcode.objects.details.ean2:
 
 Zend\\Barcode\\Object\\Ean2
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.ean2.png
    :width: 41
@@ -141,7 +141,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.ean5:
 
 Zend\\Barcode\\Object\\Ean5
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.ean5.png
    :width: 68
@@ -168,7 +168,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.ean8:
 
 Zend\\Barcode\\Object\\Ean8
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.ean8.png
    :width: 82
@@ -195,7 +195,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.ean13:
 
 Zend\\Barcode\\Object\\Ean13
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.ean13.png
    :width: 113
@@ -221,7 +221,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.code39:
 
 Zend\\Barcode\\Object\\Code39
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.introduction.example-1.png
    :width: 275
@@ -244,7 +244,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.identcode:
 
 Zend\\Barcode\\Object\\Identcode
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.identcode.png
    :width: 137
@@ -271,7 +271,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.itf14:
 
 Zend\\Barcode\\Object\\Itf14
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.itf14.png
    :width: 155
@@ -298,7 +298,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.leitcode:
 
 Zend\\Barcode\\Object\\Leitcode
--------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.leitcode.png
    :width: 155
@@ -325,7 +325,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.planet:
 
 Zend\\Barcode\\Object\\Planet
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.planet.png
    :width: 286
@@ -344,7 +344,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.postnet:
 
 Zend\\Barcode\\Object\\Postnet
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.postnet.png
    :width: 286
@@ -363,7 +363,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.royalmail:
 
 Zend\\Barcode\\Object\\Royalmail
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.royalmail.png
    :width: 158
@@ -382,7 +382,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.upca:
 
 Zend\\Barcode\\Object\\Upca
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.upca.png
    :width: 115
@@ -411,7 +411,7 @@ There are no particular options for this barcode.
 .. _zend.barcode.objects.details.upce:
 
 Zend\\Barcode\\Object\\Upce
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/zend.barcode.objects.details.upce.png
    :width: 71
