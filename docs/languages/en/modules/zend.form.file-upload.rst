@@ -107,6 +107,7 @@ and a submit button.
 When rendered, the HTML should look similar to:
 
 .. code-block:: html
+   :linenos:
 
    <form name="upload-form" id="upload-form" method="post" enctype="multipart/form-data">
        <div class="form-element">
@@ -158,6 +159,7 @@ data.
 Upon a successful file upload, ``$form->getData()`` would return:
 
 .. code-block:: php
+   :linenos:
 
    array(1) {
        ["image-file"] => array(5) {
@@ -178,6 +180,7 @@ Upon a successful file upload, ``$form->getData()`` would return:
    This is due to how the file information is mapped in the ``$_FILES`` array:
 
    .. code-block:: php
+      :linenos:
 
       // A $_FILES array with single input and multiple files:
       array(1) {
@@ -482,6 +485,7 @@ convenient way to add the hidden input based on your handler type.
 When rendered, the HTML should look similar to:
 
 .. code-block:: html
+   :linenos:
 
    <form name="upload-form" id="upload-form" method="post" enctype="multipart/form-data">
        <input type="hidden" id="progress_key" name="PHP_SESSION_UPLOAD_PROGRESS" value="12345abcde">
