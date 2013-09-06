@@ -8,6 +8,7 @@ The Service Locator is a  service/object locator, tasked with retrieving other o
 Following is the ``Zend\ServiceManager\ServiceLocatorInterface`` API:
 
 .. code-block:: php
+   :linenos:
 
    namespace Zend\ServiceManager;
 
@@ -27,6 +28,7 @@ In addition to the above described methods, the ``ServiceManager`` provides addi
 - **Service registration**. ``ServiceManager::setService`` allows you to register an object as a service:
 
   .. code-block:: php
+     :linenos:
 
      $serviceManager->setService('my-foo', new stdClass());
      $serviceManager->setService('my-settings', array('password' => 'super-secret'));
@@ -38,6 +40,7 @@ In addition to the above described methods, the ``ServiceManager`` provides addi
   ``ServiceManager`` what class to instantiate when a particular service is requested:
 
   .. code-block:: php
+     :linenos:
 
      $serviceManager->setInvokableClass('foo-service-name', 'Fully\Qualified\Classname');
 
@@ -49,6 +52,7 @@ In addition to the above described methods, the ``ServiceManager`` provides addi
   or the name of a class implementing that interface:
 
   .. code-block:: php
+     :linenos:
 
      use Zend\ServiceManager\FactoryInterface;
      use Zend\ServiceManager\ServiceLocatorInterface;
@@ -78,6 +82,7 @@ In addition to the above described methods, the ``ServiceManager`` provides addi
   service, factory or invokable, or even other aliases:
 
   .. code-block:: php
+     :linenos:
 
      $foo      = new \stdClass();
      $foo->bar = 'baz!';
@@ -95,6 +100,7 @@ In addition to the above described methods, the ``ServiceManager`` provides addi
   abstract factories:
 
   .. code-block:: php
+     :linenos:
 
      use Zend\ServiceManager\ServiceLocatorInterface;
      use Zend\ServiceManager\AbstractFactoryInterface;
@@ -130,6 +136,7 @@ In addition to the above described methods, the ``ServiceManager`` provides addi
   ``Zend\ServiceManager\InitializerInterface``. They receive the new instance, and can then manipulate it:
 
   .. code-block:: php
+     :linenos:
 
      use Zend\ServiceManager\ServiceLocatorInterface;
      use Zend\ServiceManager\InitializerInterface;
