@@ -31,6 +31,7 @@ The ``LazyServiceFactory`` depends on `ProxyManager`_, so be sure to install it 
 the following steps:
 
 .. code-block:: sh
+   :linenos:
 
    php composer.phar require ocramius/proxy-manager:0.3.*
 
