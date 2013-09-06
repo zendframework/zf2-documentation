@@ -211,6 +211,7 @@ If you are creating your form class by extending ``Zend\Form\Form``, you *must n
 but rather in the ``init()`` method:
 
 .. code-block:: php
+   :linenos:
 
     namespace Application\Form;
 
@@ -231,6 +232,7 @@ but rather in the ``init()`` method:
 through the ``Zend\Form\FormElementManager``:
 
 .. code-block:: php
+   :linenos:
 
     namespace Application\Controller;
 

@@ -931,6 +931,7 @@ want depending on what you import.
     following line to the ``require`` section:
 
     .. code-block:: javascript
+       :linenos:
 
        "doctrine/common": ">=2.1",
 
