@@ -6,7 +6,7 @@ Zend\\View Quick Start
 .. _zend.view.quick-start.intro:
 
 Overview
-========
+--------
 
 ``Zend\View`` provides the "View" layer of Zend Framework 2's MVC system. It is a multi-tiered system allowing a
 variety of mechanisms for extension, substitution, and more.
@@ -41,7 +41,7 @@ Additionally, Zend Framework 2 provides integration with the MVC via a number of
 .. _zend.view.quick-start.usage:
 
 Usage
-=====
+-----
 
 This section of the manual is designed to show you typical usage patterns of the view layer when using it within
 the Zend Framework 2 MVC. The assumptions are that you are using :ref:`Dependency Injection <zend.di>` and the
@@ -50,7 +50,7 @@ default MVC view strategies.
 .. _zend.view.quick-start.usage.config:
 
 Configuration
--------------
+^^^^^^^^^^^^^
 
 The default configuration will typically work out-of-the-box. However, you will still need to
 select Resolver Strategies and configure them, as well as potentially indicate alternate template names for things
@@ -135,7 +135,7 @@ module from the framework's `ZendSkeletonApplication`_, or to one of your autolo
 .. _zend.view.quick-start.usage.controllers:
 
 Controllers and View Models
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``Zend\View\View`` consumes ``ViewModel``\s, passing them to the selected renderer. Where do you create these,
 though?
@@ -207,7 +207,7 @@ explicitly create and return a View Model and specify the template manually, as 
 .. _zend.view.quick-start.usage.nesting:
 
 Nesting View Models
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 The other use case you may have for setting explicit View Models is if you wish to **nest** them.
 In other words, you might want to render templates to be included within the main View you return.
@@ -357,7 +357,7 @@ rendering isolated from the Request/Response lifecycle of the controller.
 .. _zend.view.quick-start.usage.layouts:
 
 Dealing with Layouts
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 Most sites enforce a cohesive look-and-feel which we typically call the site's "layout". It includes the default
 stylesheets and JavaScript necessary, if any, as well as the basic markup structure into which all site
@@ -580,7 +580,7 @@ event.
 .. _zend.view.quick-start.usage.strategies:
 
 Creating and Registering Alternate Rendering and Response Strategies
---------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``Zend\View\View`` does very little. Its workflow is essentially to martial a ``ViewEvent``, and then trigger two
 events, "renderer" and "response". You can attach "strategies" to these events, using the methods
