@@ -163,6 +163,10 @@ If you’ve done it right, you should see the same result as with Apache above.
 To test that your routing is working, navigate to
 http://localhost:8080/1234 and you should see the same error page as with Apache above.
 
+.. note::
+
+    The built-in CLI server is **for development only**.
+
 Error reporting
 ---------------
 
