@@ -145,7 +145,7 @@ for our application.
 Using the Built-in PHP CLI Server
 ---------------------------------
 
-Alternatively, you can use the built-in CLI server (cli-server). To do this, you
+Alternatively — if you are using PHP 5.4 or above — you can use the built-in CLI server (cli-server). To do this, you
 just start the server in the ``public`` directory:
 
 .. code-block:: bash
