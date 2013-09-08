@@ -53,7 +53,7 @@ If you are using ``Zend\Console`` without MVC, we can get adapter using the foll
 
     try {
         $console = Console::getInstance();
-    } catch (ConsoleException $e){
+    } catch (ConsoleException $e) {
         // Could not get console adapter - most likely we are not running inside a console window.
     }
 

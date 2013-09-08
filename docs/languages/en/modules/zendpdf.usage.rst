@@ -72,7 +72,7 @@ There are also ``test.pdf`` file, which can be used with this demo for test purp
    }
 
    // Mark page as modified
-   foreach ($pdf->pages as $page){
+   foreach ($pdf->pages as $page) {
        $page->saveGS()
             ->setAlpha(0.25)
             ->setStyle($style)
