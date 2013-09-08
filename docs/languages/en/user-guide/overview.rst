@@ -13,9 +13,10 @@ poke around the code to find out more about how it all works and fits together.
 Some assumptions
 ----------------
 
-This tutorial assumes that you are running at least PHP 5.3.3 with the Apache web server
-and MySQL, accessible via the PDO extension. Your Apache installation must have
-the mod_rewrite extension installed and configured.
+This tutorial assumes that you are running PHP 5.4+, or at least PHP 5.3.3 with the Apache web server,
+and MySQL, accessible via the PDO extension. 
+
+If you are using Apache, your installation must have the mod_rewrite extension installed and configured.
 
 You must also ensure that Apache is configured to support ``.htaccess`` files. This is
 usually done by changing the setting:
