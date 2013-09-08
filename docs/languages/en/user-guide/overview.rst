@@ -37,6 +37,10 @@ exact details. You will not be able to navigate to any page other than the home
 page in this tutorial if you have not configured mod_rewrite and .htaccess usage
 correctly.
 
+.. note::
+
+Alternatively, if you are using PHP 5.4+ you may use the built-in web server instead of Apache for development.
+
 The tutorial application
 ------------------------
 
