@@ -855,10 +855,7 @@ tags at a minimum:
     *
     * LICENSE: Some license information
     *
-    * @category   Zend
-    * @package    Zend_Magic
-    * @subpackage Wand
-    * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+    * @copyright  Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
     * @license    http://framework.zend.com/license   BSD License
     * @link       http://framework.zend.com/package/PackageName
     * @since      File available since Release 1.5.0
@@ -888,10 +885,7 @@ Every class must have a docblock that contains these phpDocumentor tags at a min
     *
     * Long description for class (if any)...
     *
-    * @category   Zend
-    * @package    Zend_Magic
-    * @subpackage Wand
-    * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+    * @copyright  Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
     * @license    http://framework.zend.com/license   BSD License
     * @version    Release: @package_version@
     * @link       http://framework.zend.com/package/PackageName
