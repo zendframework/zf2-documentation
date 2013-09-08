@@ -101,10 +101,14 @@ http://localhost:8080/1234 and you should see this:
 .. image:: ../images/user-guide.skeleton-application.404.png
     :width: 940 px
 
+.. note::
+
+       The built-in CLI server is **for development only**.
+
 Using the Apache Web Server
 ---------------------------
 
-You now need to create an Apache virtual host for the application and edit your
+If you are using Apache, you now need to create an Apache virtual host for the application and edit your
 hosts file so that http://zf2-tutorial.localhost will serve ``index.php`` from the
 ``zf2-tutorial/public`` directory.
 
