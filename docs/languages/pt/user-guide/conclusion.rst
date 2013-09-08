@@ -11,18 +11,18 @@ Nesse tutorial nos passamos rapidamente sobre um grande número de diferentes pa
 framework.
 
 As partes mais importantes de nossa aplicação desenvolvida com Zend Framework 2 são os
-:ref:`modules <zend.module-manager.intro>`, os blocos de desenvolvimento de qualquer 
-:ref:`MVC ZF2 application <zend.mvc.intro>`.
+:ref:`módulos <zend.module-manager.intro>`, os blocos de desenvolvimento de qualquer 
+:ref:`Aplicação MVC com ZF2 <zend.mvc.intro>`.
 
 Para facilitar o trabalho com as dependencias da nossa aplica~ção nos usamos o
 :ref:`service manager <zend.service-manager.intro>`.
 
 Para conseguirmos mapear uma requisição para nossos controllers e açõesos usamos as
-:ref:`routes <zend.mvc.routing>`.
+:ref:`rotas <zend.mvc.routing>`.
 
 Persistencia de dados, na maioria dos casos, inclui o uso de :ref:`Zend\\Db <zend.db.adapter>`
 para comunicar com o banco de dados. A entrada de dados foi filtrada e validada com
-:ref:`input filters <zend.input-filter.intro>` e juntamente com o  
+:ref:`filtros de entrada <zend.input-filter.intro>` e juntamente com o  
 :ref:`Zend\\Form <zend.form.intro>` foi construida uma solida ponte entre a camada de regra de
 negocios e a camada de visão.
 
