@@ -1,20 +1,24 @@
 .. TO TRANSLATORS: You don't need to copy this file to your translation, use
    translated-snippets.rst to translate title if you want
 
-.. |ProgrammersReferenceGuideofZendFramework2| replace:: Guía de Referencia para el Programador de Zend Framework 2
+.. |ProgrammersReferenceGuideofZendFramework2| replace:: Programmer's Reference Guide of Zend Framework 2
 
-.. |IntroductiontoZendFramework| replace:: Introducción a Zend Framework 2
+.. |IntroductiontoZendFramework| replace:: Introduction to Zend Framework 2
 
-.. |UserGuide| replace:: Guía de Usuario
+.. |UserGuide| replace:: User Guide
 
-.. |UserGuideIntroduction| replace:: La Guía del Usuario ofrece llevarte a 
-   través de un ejemplo no trivial, mostrando diversas técnicas y características
-   del framework con el fin de construir una aplicación.
+.. |UserGuideIntroduction| replace:: The user guide is provided to take you through a non-trivial example, showing
+   you various techniques and features of the framework in order to build an
+   application.
 
-.. |LearningZendFramework| replace:: Aprendiendo Zend Framework 2
+.. |LearningZendFramework| replace:: Learning Zend Framework 2
 
-.. |ZendFrameworkReference| replace:: Referencia a Zend Framework 2 
+.. |Migration| replace:: Migration
 
-.. |ZendServiceReference| replace:: Referencia de Servicios para Zend Framework 2
+.. |ZendFrameworkReference| replace:: Zend Framework 2 Reference
 
-.. |IndicesAndTables| replace:: Índices y tablas
+.. |ZendServiceReference| replace:: Services for Zend Framework 2 Reference
+
+.. |IndicesAndTables| replace:: Indices and tables
+
+.. |ZFTool| replace:: Zend Framework Tool (ZFTool)
