@@ -72,10 +72,37 @@ to create a new project from scratch with Zend Framework:
 
         COMPOSER_PROCESS_TIMEOUT=5000 php composer.phar install
 
-We can now move on to the virtual host.
+We can now move on to the web server setup.
 
-Virtual host
-------------
+Using the Built-in PHP CLI Server
+---------------------------------
+
+For the simplest setup, you can use the built-in CLI server (cli-server). To do this, you
+just start the server in the ``public`` directory:
+
+.. code-block:: bash
+    :linenos:
+    
+    cd public
+    php -S 0.0.0.0:8080 index.php
+
+This will make the website available on port 8080 on all network interfaces, using
+``index.php`` to handle routing. This means the site is accessible via http://localhost:8080
+or http://<your-local-IP>:8080.
+
+If you’ve done it right, you should see something like this:
+
+.. image:: ../images/user-guide.skeleton-application.hello-world.png
+    :width: 940 px
+
+To test that your routing is working, navigate to
+http://localhost:8080/1234 and you should see this:
+
+.. image:: ../images/user-guide.skeleton-application.404.png
+    :width: 940 px
+
+Using the Apache Web Server
+---------------------------
 
 You now need to create an Apache virtual host for the application and edit your
 hosts file so that http://zf2-tutorial.localhost will serve ``index.php`` from the
@@ -110,24 +137,20 @@ define a virtual host along these lines:
 Make sure that you update your ``/etc/hosts`` or
 ``c:\windows\system32\drivers\etc\hosts`` file so that ``zf2-tutorial.localhost``
 is mapped to ``127.0.0.1``. The website can then be accessed using
-http://zf2-tutorial.localhost.  
+http://zf2-tutorial.localhost.
 
 .. code-block:: txt
    :linenos:
 
     127.0.0.1               zf2-tutorial.localhost localhost
 
-Restart your web server.
-If you’ve done it right, you should see something like this:
+Restart Apache.
 
-.. image:: ../images/user-guide.skeleton-application.hello-world.png
-    :width: 940 px
+If you've done it correctly, it should look identical to the CLI server output above.
 
 To test that your ``.htaccess`` file is working, navigate to
-http://zf2-tutorial.localhost/1234 and you should see this:
-
-.. image:: ../images/user-guide.skeleton-application.404.png
-    :width: 940 px
+http://zf2-tutorial.localhost/1234 and you should see the same error page as with
+the CLI server above.
 
 If you see a standard Apache 404 error, then you need to fix ``.htaccess`` usage
 before continuing.  If you're are using IIS with the URL Rewrite Module, import the following:
@@ -144,9 +167,9 @@ for our application.
 Error reporting
 ---------------
 
-Optionally, you can use the ``APPLICATION_ENV`` setting in your virtualhost to
-let PHP output all its errors to the browser. This can be useful when during
-development of your application.
+Optionally, *when using Apache*, you can use the ``APPLICATION_ENV`` setting in 
+your ``VirtualHost`` to let PHP output all its errors to the browser. This can be 
+useful when during development of your application.
 
 Edit ``index.php`` from the ``zf2-tutorial/public/`` directory and change it to
 the following:
