@@ -211,7 +211,7 @@ return a paginator object:
         ...
         public function fetchAll($paginated=false)
         {
-            if($paginated) {
+            if ($paginated) {
                 // create a new Select object for the table album
                 $select = new Select('album');
                 // create a new result set based on the Album entity

@@ -244,7 +244,8 @@ Below is an example:
 .. code-block:: php
     :linenos:
 
-    public function getConsoleUsage(Console $console){
+    public function getConsoleUsage(Console $console)
+    {
         return array(
             array( '<userEmail>'   , 'email of the user' ),
             array( '--verbose'     , 'Turn on verbose mode' ),
@@ -263,7 +264,8 @@ Using this method, we can display more than 2 columns of information, for exampl
 .. code-block:: php
     :linenos:
 
-    public function getConsoleUsage(Console $console){
+    public function getConsoleUsage(Console $console)
+    {
         return array(
             array( '<userEmail>' , 'user email'        , 'Full email address of the user to find.' ),
             array( '--verbose'   , 'verbose mode'      , 'Display additional information during processing' ),
@@ -298,7 +300,8 @@ You can use mix together all of the above styles to provide comprehensive usage 
 .. code-block:: php
     :linenos:
 
-    public function getConsoleUsage(Console $console){
+    public function getConsoleUsage(Console $console)
+    {
         return array(
             'Finding and listing users',
             'list [all|disabled] users [-w]'    => 'Show a list of users',
