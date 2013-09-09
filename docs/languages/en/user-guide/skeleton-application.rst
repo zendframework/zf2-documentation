@@ -78,16 +78,15 @@ Using the Built-in PHP CLI Server
 ---------------------------------
 
 For the simplest setup — if you are using PHP 5.4 or above — you can use the built-in CLI server (cli-server).
-To do this, you just start the server in the ``public`` directory:
+To do this, you just start the server in the root directory:
 
 .. code-block:: bash
     :linenos:
     
-    cd public
-    php -S 0.0.0.0:8080 index.php
+    php -S 0.0.0.0:8080 -t public/ public/index.php
 
 This will make the website available on port 8080 on all network interfaces, using
-``index.php`` to handle routing. This means the site is accessible via http://localhost:8080
+``public/index.php`` to handle routing. This means the site is accessible via http://localhost:8080
 or http://<your-local-IP>:8080.
 
 If you’ve done it right, you should see something like this:
