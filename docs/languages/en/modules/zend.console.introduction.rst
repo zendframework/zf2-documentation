@@ -142,7 +142,8 @@ We will now add ``resetpassword`` action to ``Application\Controller\IndexContro
             return new ViewModel(); // display standard index page
         }
 
-        public function resetpasswordAction(){
+        public function resetpasswordAction()
+        {
             $request = $this->getRequest();
 
             // Make sure that we are running in a console and the user has not tricked our
@@ -161,7 +162,7 @@ We will now add ``resetpassword`` action to ``Application\Controller\IndexContro
             //  Fetch the user and change his password, then email him ...
             // [...]
 
-            if (!$verbose){
+            if (!$verbose) {
                 return "Done! $userEmail has received an email with his new password.\n";
             }else{
                 return "Done! New password for user $userEmail is '$newPassword'. It has also been emailed to him. \n";
@@ -222,7 +223,8 @@ Let's modify our ``Application\Module`` to provide usage info:
             // [...]
         }
 
-        public function getConsoleUsage(Console $console){
+        public function getConsoleUsage(Console $console)
+        {
             return array(
                 // Describe available commands
                 'user resetpassword [--verbose|-v] EMAIL'    => 'Reset password for a user',
