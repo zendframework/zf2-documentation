@@ -27,7 +27,7 @@ To remove the copyright message, we need to edit the ``Application`` module’s
 
     // module/Application/view/layout/layout.phtml:
     // Remove this line:
-    <p>&copy; 2005 - 2012 by Zend Technologies Ltd. <?php echo $this->translate('All 
+    <p>&copy; 2005 - 2013 by Zend Technologies Ltd. <?php echo $this->translate('All 
     rights reserved.') ?></p>
 
 The page now looks ever so slightly better now!
