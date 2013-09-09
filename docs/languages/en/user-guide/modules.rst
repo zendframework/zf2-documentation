@@ -169,7 +169,7 @@ skeleton application. Update this file so that its ``modules`` section contains 
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 5
+   :emphasize-lines: 4
 
     return array(
         'modules' => array(
