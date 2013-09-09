@@ -39,13 +39,17 @@ Interface Injection
    :linenos:
 
    namespace Foo\Bar {
-       class Baz implements BamAwareInterface {
+       class Baz implements BamAwareInterface
+       {
            public $bam;
-           public function setBam(Bam $bam){
+           
+           public function setBam(Bam $bam)
+           {
                $this->bam = $bam;
            }
        }
-       class Bam {
+       class Bam
+       {
        }
        interface BamAwareInterface
        {
@@ -68,9 +72,12 @@ Setter Injection with Class Definition
    :linenos:
 
    namespace Foo\Bar {
-       class Baz {
+       class Baz
+       {
            public $bam;
-           public function setBam(Bam $bam){
+           
+           public function setBam(Bam $bam)
+           {
                $this->bam = $bam;
            }
        }
@@ -101,13 +108,17 @@ Multiple Injections To A Single Injection Point
    :linenos:
 
    namespace Application {
-       class Page {
+       class Page
+       {
            public $blocks;
-           public function addBlock(Block $block){
+           
+           public function addBlock(Block $block)
+           {
                $this->blocks[] = $block;
            }
        }
-       interface Block {
+       interface Block
+       {
        }
    }
 
