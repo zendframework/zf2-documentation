@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Zend Framework 2'
-copyright = u'2012, Zend Technologies Ltd.'
+copyright = u'2013, Zend Technologies Ltd.'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
