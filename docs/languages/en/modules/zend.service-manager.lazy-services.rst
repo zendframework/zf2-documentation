@@ -72,7 +72,7 @@ You can then proceed and configure the service manager to generate proxies inste
        'lazy_services' => array(
             // mapping services to their class names is required
             // since the ServiceManager is not a declarative DIC
-            'map' => array(
+            'class_map' => array(
                 'buzzer' => 'MyApp\Buzzer',
             ),
        ),
@@ -133,7 +133,7 @@ The setup above can also be represented via configuration in an MVC application'
            ),
        ),
        'lazy_services' => array(
-           'map' => array(
+           'class_map' => array(
                'buzzer' => 'MyApp\Buzzer',
            ),
        ),
@@ -155,7 +155,7 @@ This is the config structure expected by ``Zend\ServiceManager\Proxy\LazyService
            // map of service names and their relative class names - this
            // is required since the service manager cannot know the
            // class name of defined services upfront
-           'map' => array(
+           'class_map' => array(
                // 'foo' => 'MyApplication\Foo',
            ),
 
