@@ -44,6 +44,20 @@ Basic usage:
    echo $this->formLabel()->closeTag();
    // </label>
 
+   /**
+    * Example #3: Render html label after toggling off escape
+    */
+   $element->setLabel('<abbr title="Completely Automated Public Turing test to tell Computers and Humans Apart">CAPTCHA</abbr>');
+   $element->setLabelOptions(array('disable_html_escape' => true));
+   echo $this->formLabel($element);
+   // <label class="control-label" for="text-id">
+   //     <abbr title="Completely Automated Public Turing test to tell Computers and Humans Apart">CAPTCHA</abbr>
+   // </label>
+
+.. note::
+
+   HTML escape only applies to the ``Element::$label`` property, not to the helper ``$labelContent`` parameter.
+
 Attaching a translator and setting a text domain:
 
 .. code-block:: php
@@ -60,9 +74,9 @@ Attaching a translator and setting a text domain:
 
 .. note::
 
-   Note: If you have a translator in the Service Manager under the key, 'translator', the view helper plugin
+   If you have a translator in the Service Manager under the key, 'translator', the view helper plugin
    manager will automatically attach the translator to the FormLabel view helper. See
-   ``Zend\\View\\HelperPluginManager::injectTranslator()`` for more information.
+   ``Zend\View\HelperPluginManager::injectTranslator()`` for more information.
 
 .. _zend.form.view.helper.form-label.methods:
 

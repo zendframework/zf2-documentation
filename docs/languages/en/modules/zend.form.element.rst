@@ -53,7 +53,7 @@ hint to the view layer how it might render the item.
    Return the name for this element.
 
    :rtype: string
-   
+
 .. function:: setValue(string $value)
    :noindex:
 
@@ -90,13 +90,25 @@ hint to the view layer how it might render the item.
 
    :rtype: array
 
+.. function:: setLabelOptions(array $labelOptions)
+   :noindex:
+
+   Set label specific options.
+
+.. function:: getLabelOptions()
+   :noindex:
+
+   Return the label specific options.
+
+   :rtype: array
+
 .. _zend.form.element.methods.set-options:
 
 .. function:: setOptions(array $options)
    :noindex:
 
-   Set options for an element. Accepted options are: ``"label"`` and ``"label_attributes"``, which call
-   ``setLabel`` and ``setLabelAttributes``, respectively.
+   Set options for an element. Accepted options are: ``label``, ``label_attributes"``, ``label_options``, which call
+   ``setLabel``, ``setLabelAttributes`` and ``setLabelOptions``, respectively.
 
 .. function:: getOptions()
    :noindex:
