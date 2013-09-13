@@ -262,24 +262,24 @@ Behandlung benötigen um einen korrekten Content-Type Header zu schicken:
    RewriteEngine On
 
    RewriteCond %{REQUEST_URI} feed/rss$
-   RewriteCond %{DOCUMENT_ROOT}/cached/%{REQUEST_URI}.xml -f
-   RewriteRule .* cached/%{REQUEST_URI}.xml [L,T=application/rss+xml]
+   RewriteCond %{DOCUMENT_ROOT}/cached/%{REQUEST_URI}\.xml -f
+   RewriteRule ^ cached/%{REQUEST_URI}.xml [L,T=application/rss+xml]
 
    RewriteCond %{REQUEST_URI} feed/atom$
-   RewriteCond %{DOCUMENT_ROOT}/cached/%{REQUEST_URI}.xml -f
-   RewriteRule .* cached/%{REQUEST_URI}.xml [L,T=application/atom+xml]
+   RewriteCond %{DOCUMENT_ROOT}/cached/%{REQUEST_URI}\.xml -f
+   RewriteRule ^ cached/%{REQUEST_URI}.xml [L,T=application/atom+xml]
 
-   RewriteCond %{DOCUMENT_ROOT}/cached/index.html -f
+   RewriteCond %{DOCUMENT_ROOT}/cached/index\.html -f
    RewriteRule ^/*$ cached/index.html [L]
-   RewriteCond %{DOCUMENT_ROOT}/cached/%{REQUEST_URI}.(html|xml|json|opml|svg) -f
-   RewriteRule .* cached/%{REQUEST_URI}.%1 [L]
+   RewriteCond %{DOCUMENT_ROOT}/cached/%{REQUEST_URI}\.(html|xml|json|opml|svg) -f
+   RewriteRule ^ cached/%{REQUEST_URI}.%1 [L]
 
    RewriteCond %{REQUEST_FILENAME} -s [OR]
    RewriteCond %{REQUEST_FILENAME} -l [OR]
    RewriteCond %{REQUEST_FILENAME} -d
-   RewriteRule ^.*$ - [NC,L]
+   RewriteRule ^ - [NC,L]
 
-   RewriteRule ^.*$ index.php [NC,L]
+   RewriteRule ^ index.php [NC,L]
 
 Das obenstehende nimmt an das statische Dateien im Verzeichnis ``./public/cached`` gecacht werden. Wir betrachten
 die Einstellung dieses Ortes unter "public_dir" weiter unten.
