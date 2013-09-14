@@ -253,7 +253,7 @@ méthode ``Zend\Search\Lucene\Search\Similarity::setDefault($similarity);`` afin
            return log($numDocs/(float)($docFreq+1)) + 1.0;
        }
        public function coord($overlap, $maxOverlap) {
-           return $overlap/(float)$maxOverlap;
+           return $overlap/(float) $maxOverlap;
        }
    }
    $mySimilarity = new MySimilarity();

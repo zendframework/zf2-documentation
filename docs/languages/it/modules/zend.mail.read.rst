@@ -618,7 +618,7 @@ connessione POP3.
            $protocol = new Example_Mail_Protocol_Pop3_Knock($params['host']);
 
            // esegui i nostri comandi "speciali"
-           foreach ((array)$params['knock_ports'] as $port) {
+           foreach ((array) $params['knock_ports'] as $port) {
                $protocol->knock($port);
            }
 

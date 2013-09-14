@@ -591,7 +591,7 @@ main class. As an example, assume we need to knock different ports before we can
            $protocol = new Example_Mail_Protocol_Pop3_Knock($params['host']);
 
            // do our "special" thing
-           foreach ((array)$params['knock_ports'] as $port) {
+           foreach ((array) $params['knock_ports'] as $port) {
                $protocol->knock($port);
            }
 
