@@ -144,7 +144,7 @@ Next, we create our ``AlbumTable.php`` file in ``module/Album/src/Album/Model`` 
 
         public function deleteAlbum($id)
         {
-            $this->tableGateway->delete(array('id' => $id));
+            $this->tableGateway->delete(array('id' => (int) $id));
         }
     }
 
