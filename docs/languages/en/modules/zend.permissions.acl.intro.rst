@@ -193,6 +193,17 @@ For this example, ``Zend\Permissions\Acl\Role\GenericRole`` is used, but any obj
    // Administrator does not inherit access controls
    $acl->addRole(new Role('administrator'));
 
+   /*
+   # This example could also be called without instantiating the roles.
+   # This will still use Zend\Permissions\Acl\Role\GenericRole.
+   $acl = new Acl();
+
+   $acl->addRole('guest')
+       ->addRole('staff', 'guest');
+       ->addRole('editor', 'staff');
+       ->addRole('administrator');
+   */
+
 .. _zend.permissions.acl.introduction.defining:
 
 Defining Access Controls
