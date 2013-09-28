@@ -51,7 +51,56 @@ Using the array notation:
    		)
    	));
 
+.. _zend.form.element.multicheckbox.advanced:
 
+.. rubric:: Advanced Usage
+In order to set attributes or customize the option elements, an array can be used instead of a string. The 
+following keys are supported:
+
+* ``"label"`` - The string displayed for the option.
+* ``"value"`` - The form value associated with the option.
+* ``"selected"`` - Boolean that sets whether the option is marked as selected.
+* ``"disabled"`` - Boolean that sets whether the option will be disabled
+* ``"attributes"`` - Array of html attributes that will be set on this option. Merged with the attributes set on the element.
+* ``"label_attributes"`` - Array of html attributes that will be set on the label. Merged with the attributes set on the element's label.
+
+.. code-block:: php
+	:linenos:
+	
+   	$form = new Form('my-form');
+   	$form->add(array(
+   		'type' => 'Zend\Form\Element\MultiCheckbox',
+   		'name' => 'multi-checkbox',
+   		'options' => array(
+   			'label' => 'What do you like ?',
+   			'value_options' => array(
+   				array(
+					'value' => '0',
+					'label' => 'Apple',
+					'selected' => false,
+					'disabled' => false,
+					'attributes' => array(
+						'id' => 'apple_option',
+						'data-fruit' => 'apple',
+					),
+					'label_attributes' => array(
+						'id' => 'apple_label',
+					),
+				),
+   				array(
+					'value' => '1',
+					'label' => 'Orange',
+					'selected' => true,
+				),
+   				array(
+					'value' => '2',
+					'label' => 'Lemon',
+				),
+   			),
+   		)
+   	));
+	
+	
 .. _zend.form.element.multicheckbox.methods:
 
 .. rubric:: Public Methods

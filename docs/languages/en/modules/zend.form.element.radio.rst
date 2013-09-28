@@ -49,7 +49,11 @@ Using the array notation:
    		)
    	));
 
+.. rubric:: Advanced Usage
 
+See :ref:`MultiCheckbox for examples<zend.form.element.multicheckbox.advanced>` of how to apply attributes and options to each radio button. 
+	
+	
 .. _zend.form.element.radio.methods:
 
 .. rubric:: Public Methods
