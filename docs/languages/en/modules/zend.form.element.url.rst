@@ -36,7 +36,7 @@ Here is the same example using the array notation:
     $form->add(array(
     	'type' => 'Zend\Form\Element\Url',
     	'name' => 'webpage-url',
-    	'options => array(
+    	'options' => array(
     		'label' => 'Webpage URL'
     	)
     ));
