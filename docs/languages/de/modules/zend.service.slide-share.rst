@@ -62,7 +62,7 @@ Zur Referenz ist eine Pseudo-Code Version dieser Klasse anbei zu sehen.
         * Fügt ein Tag zu der Slideshow hinzu
         */
        public function addTag($tag) {
-           $this->_tags[] = (string)$tag;
+           $this->_tags[] = (string) $tag;
            return $this;
        }
 
@@ -86,7 +86,7 @@ Zur Referenz ist eine Pseudo-Code Version dieser Klasse anbei zu sehen.
         * (für das Hochladen einer neuen Slideshow)
         */
        public function setFilename($file) {
-           $this->_slideShowFilename = (string)$file;
+           $this->_slideShowFilename = (string) $file;
            return $this;
        }
 
@@ -123,7 +123,7 @@ Zur Referenz ist eine Pseudo-Code Version dieser Klasse anbei zu sehen.
         * Setzt den Titel für die Slideshow
         */
        public function setTitle($title) {
-           $this->_title = (string)$title;
+           $this->_title = (string) $title;
            return $this;
        }
 
@@ -138,7 +138,7 @@ Zur Referenz ist eine Pseudo-Code Version dieser Klasse anbei zu sehen.
         * Setzt die Beschreibung für die Slideshow
         */
        public function setDescription($desc) {
-           $this->_description = (string)$desc;
+           $this->_description = (string) $desc;
            return $this;
        }
 

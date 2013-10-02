@@ -60,7 +60,7 @@ reference a pseudo-code version of this class is provided below.
         * Adds a tag to the slide show
         */
        public function addTag($tag) {
-           $this->_tags[] = (string)$tag;
+           $this->_tags[] = (string) $tag;
            return $this;
        }
 
@@ -84,7 +84,7 @@ reference a pseudo-code version of this class is provided below.
         * (for uploading a new slide show)
         */
        public function setFilename($file) {
-           $this->_slideShowFilename = (string)$file;
+           $this->_slideShowFilename = (string) $file;
            return $this;
        }
 
@@ -121,7 +121,7 @@ reference a pseudo-code version of this class is provided below.
         * Sets the title for the Slide show
         */
        public function setTitle($title) {
-           $this->_title = (string)$title;
+           $this->_title = (string) $title;
            return $this;
        }
 
@@ -136,7 +136,7 @@ reference a pseudo-code version of this class is provided below.
         * Sets the description for the Slide show
         */
        public function setDescription($desc) {
-           $this->_description = (string)$desc;
+           $this->_description = (string) $desc;
            return $this;
        }
 

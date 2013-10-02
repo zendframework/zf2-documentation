@@ -62,7 +62,7 @@ voici un pseudo code de cette classe :
         * Associe un mot-clé au diaporama
         */
        public function addTag($tag) {
-           $this->_tags[] = (string)$tag;
+           $this->_tags[] = (string) $tag;
            return $this;
        }
 
@@ -86,7 +86,7 @@ voici un pseudo code de cette classe :
         * de fichiers local (pour l'upload d'un nouveau diaporama)
         */
        public function setFilename($file) {
-           $this->_slideShowFilename = (string)$file;
+           $this->_slideShowFilename = (string) $file;
            return $this;
        }
 
@@ -123,7 +123,7 @@ voici un pseudo code de cette classe :
         * Règle le titre du diaporama
         */
        public function setTitle($title) {
-           $this->_title = (string)$title;
+           $this->_title = (string) $title;
            return $this;
        }
 
@@ -138,7 +138,7 @@ voici un pseudo code de cette classe :
         * Régle la description du diaporama
         */
        public function setDescription($desc) {
-           $this->_description = (string)$desc;
+           $this->_description = (string) $desc;
            return $this;
        }
 

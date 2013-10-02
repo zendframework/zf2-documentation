@@ -139,7 +139,7 @@ clase ``AlbumTable`` en el directorio ``Model`` del módulo, así:
                 'artist' => $album->artist,
                 'title'  => $album->title,
             );
-            $id = (int)$album->id;
+            $id = (int) $album->id;
             if ($id == 0) {
                 $this->insert($data);
             } else {
