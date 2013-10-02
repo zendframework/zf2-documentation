@@ -203,7 +203,7 @@ Deux manières existent pour créer des objets ``Zend\XmlRpc\Value``: instanciez
    Lorsque vous créez un objet ``Zend\XmlRpc\Value``, sa valeur est déterminée par un type *PHP*. Celui-ci va
    être converti vers le type désiré en utilisant le cast *PHP*. Par exemple si une chaîne de caractères est
    donnée comme valeur à un objet ``Zend\XmlRpc_Value\Integer``, elle sera alors convertie suivant la règle
-   *(int)$value*.
+   *(int) $value*.
 
 .. _zend.xmlrpc.client.requests-and-responses:
 

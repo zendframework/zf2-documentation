@@ -133,7 +133,7 @@ com o seguinte código:
                 'title'  => $album->title,
             );
 
-            $id = (int)$album->id;
+            $id = (int) $album->id;
             if ($id == 0) {
                 $this->tableGateway->insert($data);
             } else {

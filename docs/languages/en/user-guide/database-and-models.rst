@@ -130,7 +130,7 @@ Next, we create our ``AlbumTable.php`` file in ``module/Album/src/Album/Model`` 
                 'title'  => $album->title,
             );
 
-            $id = (int)$album->id;
+            $id = (int) $album->id;
             if ($id == 0) {
                 $this->tableGateway->insert($data);
             } else {
