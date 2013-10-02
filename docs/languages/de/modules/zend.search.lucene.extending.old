@@ -273,7 +273,7 @@ Sie als Standard zu setzen.
        }
 
        public function coord($overlap, $maxOverlap) {
-           return $overlap/(float)$maxOverlap;
+           return $overlap/(float) $maxOverlap;
        }
    }
 

@@ -206,7 +206,7 @@ Ensuite, nous créons notre fichier ``AlbumTable.php`` dans le dossier ``module/
                 'title'  => $album->title,
             );
 
-            $id = (int)$album->id;
+            $id = (int) $album->id;
             if ($id == 0) {
                 $this->tableGateway->insert($data);
             } else {
