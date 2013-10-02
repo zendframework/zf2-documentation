@@ -264,7 +264,7 @@ The scoring algorithm can be customized by defining your own Similarity class. T
        }
 
        public function coord($overlap, $maxOverlap) {
-           return $overlap/(float)$maxOverlap;
+           return $overlap/(float) $maxOverlap;
        }
    }
 

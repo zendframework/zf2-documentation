@@ -286,7 +286,7 @@ queryNorm(q) - значение нормализации для запроса, 
        }
 
        public function coord($overlap, $maxOverlap) {
-           return $overlap/(float)$maxOverlap;
+           return $overlap/(float) $maxOverlap;
        }
    }
 

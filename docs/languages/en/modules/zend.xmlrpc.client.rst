@@ -205,7 +205,7 @@ subclasses directly, or use the static factory method ``Zend\XmlRpc\AbstractValu
 
    When building a new ``Zend\XmlRpc\Value`` object, its value is set by a *PHP* type. The *PHP* type will be
    converted to the specified type using *PHP* casting. For example, if a string is given as a value to the
-   ``Zend\XmlRpc\Value\Integer`` object, it will be converted using ``(int)$value``.
+   ``Zend\XmlRpc\Value\Integer`` object, it will be converted using ``(int) $value``.
 
 .. _zend.xmlrpc.client.requests-and-responses:
 

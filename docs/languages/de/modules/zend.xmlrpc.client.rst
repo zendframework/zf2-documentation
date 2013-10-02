@@ -209,7 +209,7 @@ Es gibt zwei Möglichkeiten ein ``Zend\XmlRpc\Value``-Objekt zu erstellen: Direk
 
    Bei der Erstellung eines neuen ``Zend\XmlRpc\Value``-Objekts wird dessen Wert durch einen nativen *PHP* Typ
    gesetzt. Dieser *PHP* Typ wird durch *PHP* Casting in den gewünschten Typ umgewandelt. Beispielsweise wird ein
-   String, der als Wert für ein ``Zend\XmlRpc_Value\Integer``-Objekt genutzt wird, durch ``(int)$value`` in ein
+   String, der als Wert für ein ``Zend\XmlRpc_Value\Integer``-Objekt genutzt wird, durch ``(int) $value`` in ein
    Integer konvertiert.
 
 .. _zend.xmlrpc.client.requests-and-responses:
