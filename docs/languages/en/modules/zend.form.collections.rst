@@ -16,29 +16,29 @@ to define some domain objects that we'll be using.
    :linenos:
 
     namespace Application\Entity;
-    
+
     class Product
     {
         /**
          * @var string
          */
         protected $name;
-    
+
         /**
          * @var int
          */
         protected $price;
-    
+
         /**
          * @var Brand
          */
         protected $brand;
-    
+
         /**
          * @var array
          */
         protected $categories;
-    
+
         /**
          * @param string $name
          * @return Product
@@ -48,7 +48,7 @@ to define some domain objects that we'll be using.
             $this->name = $name;
             return $this;
         }
-    
+
         /**
          * @return string
          */
@@ -56,7 +56,7 @@ to define some domain objects that we'll be using.
         {
             return $this->name;
         }
-    
+
         /**
          * @param int $price
          * @return Product
@@ -66,7 +66,7 @@ to define some domain objects that we'll be using.
             $this->price = $price;
             return $this;
         }
-    
+
         /**
          * @return int
          */
@@ -74,7 +74,7 @@ to define some domain objects that we'll be using.
         {
             return $this->price;
         }
-    
+
         /**
          * @param Brand $brand
          * @return Product
@@ -84,7 +84,7 @@ to define some domain objects that we'll be using.
             $this->brand = $brand;
             return $this;
         }
-    
+
         /**
          * @return Brand
          */
@@ -92,7 +92,7 @@ to define some domain objects that we'll be using.
         {
             return $this->brand;
         }
-    
+
         /**
          * @param array $categories
          * @return Product
@@ -102,7 +102,7 @@ to define some domain objects that we'll be using.
             $this->categories = $categories;
             return $this;
         }
-    
+
         /**
          * @return array
          */
@@ -118,12 +118,12 @@ to define some domain objects that we'll be using.
          * @var string
          */
         protected $name;
-    
+
         /**
          * @var string
          */
         protected $url;
-    
+
         /**
          * @param string $name
          * @return Brand
@@ -133,7 +133,7 @@ to define some domain objects that we'll be using.
             $this->name = $name;
             return $this;
         }
-    
+
         /**
          * @return string
          */
@@ -141,7 +141,7 @@ to define some domain objects that we'll be using.
         {
             return $this->name;
         }
-    
+
         /**
          * @param string $url
          * @return Brand
@@ -151,7 +151,7 @@ to define some domain objects that we'll be using.
             $this->url = $url;
             return $this;
         }
-    
+
         /**
          * @return string
          */
@@ -167,7 +167,7 @@ to define some domain objects that we'll be using.
          * @var string
          */
         protected $name;
-    
+
         /**
          * @param string $name
          * @return Category
@@ -177,7 +177,7 @@ to define some domain objects that we'll be using.
             $this->name = $name;
             return $this;
         }
-    
+
         /**
          * @return string
          */
@@ -205,42 +205,45 @@ Here is the ``Brand`` fieldset:
    :linenos:
 
     namespace Application\Form;
-    
+
     use Application\Entity\Brand;
     use Zend\Form\Fieldset;
     use Zend\InputFilter\InputFilterProviderInterface;
     use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
-    
+
     class BrandFieldset extends Fieldset implements InputFilterProviderInterface
     {
         public function __construct()
         {
             parent::__construct('brand');
-            $this->setHydrator(new ClassMethodsHydrator(false))
-                ->setObject(new Brand());
-    
+
+            $this
+                ->setHydrator(new ClassMethodsHydrator(false))
+                ->setObject(new Brand())
+            ;
+
             $this->add(array(
                 'name' => 'name',
                 'options' => array(
-                    'label' => 'Name of the brand'
+                    'label' => 'Name of the brand',
                 ),
                 'attributes' => array(
-                    'required' => 'required'
-                )
+                    'required' => 'required',
+                ),
             ));
-    
+
             $this->add(array(
                 'name' => 'url',
                 'type' => 'Zend\Form\Element\Url',
                 'options' => array(
-                    'label' => 'Website of the brand'
+                    'label' => 'Website of the brand',
                 ),
                 'attributes' => array(
-                    'required' => 'required'
-                )
+                    'required' => 'required',
+                ),
             ));
         }
-    
+
         /**
          * @return array
          */
@@ -249,7 +252,7 @@ Here is the ``Brand`` fieldset:
             return array(
                 'name' => array(
                     'required' => true,
-                )
+                ),
             );
         }
     }
@@ -280,33 +283,36 @@ Here is the ``Category`` fieldset:
    :linenos:
 
     namespace Application\Form;
-    
+
     use Application\Entity\Category;
     use Zend\Form\Fieldset;
     use Zend\InputFilter\InputFilterProviderInterface;
     use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
-    
+
     class CategoryFieldset extends Fieldset implements InputFilterProviderInterface
     {
         public function __construct()
         {
             parent::__construct('category');
-            $this->setHydrator(new ClassMethodsHydrator(false))
-                 ->setObject(new Category());
-    
+
+            $this
+                ->setHydrator(new ClassMethodsHydrator(false))
+                ->setObject(new Category())
+            ;
+
             $this->setLabel('Category');
-    
+
             $this->add(array(
                 'name' => 'name',
                 'options' => array(
-                    'label' => 'Name of the category'
+                    'label' => 'Name of the category',
                 ),
                 'attributes' => array(
-                    'required' => 'required'
-                )
+                    'required' => 'required',
+                ),
             ));
         }
-    
+
         /**
          * @return array
          */
@@ -315,7 +321,7 @@ Here is the ``Category`` fieldset:
             return array(
                 'name' => array(
                     'required' => true,
-                )
+                ),
             );
         }
     }
@@ -328,48 +334,51 @@ And finally the ``Product`` fieldset:
    :linenos:
 
     namespace Application\Form;
-    
+
     use Application\Entity\Product;
     use Zend\Form\Fieldset;
     use Zend\InputFilter\InputFilterProviderInterface;
     use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
-    
+
     class ProductFieldset extends Fieldset implements InputFilterProviderInterface
     {
         public function __construct()
         {
             parent::__construct('product');
-            $this->setHydrator(new ClassMethodsHydrator(false))
-                 ->setObject(new Product());
-    
+
+            $this
+                ->setHydrator(new ClassMethodsHydrator(false))
+                ->setObject(new Product())
+            ;
+
             $this->add(array(
                 'name' => 'name',
                 'options' => array(
-                    'label' => 'Name of the product'
+                    'label' => 'Name of the product',
                 ),
                 'attributes' => array(
-                    'required' => 'required'
-                )
+                    'required' => 'required',
+                ),
             ));
-    
+
             $this->add(array(
                 'name' => 'price',
                 'options' => array(
-                    'label' => 'Price of the product'
+                    'label' => 'Price of the product',
                 ),
                 'attributes' => array(
-                    'required' => 'required'
-                )
+                    'required' => 'required',
+                ),
             ));
-    
+
             $this->add(array(
                 'type' => 'Application\Form\BrandFieldset',
                 'name' => 'brand',
                 'options' => array(
-                    'label' => 'Brand of the product'
-                )
+                    'label' => 'Brand of the product',
+                ),
             ));
-    
+
             $this->add(array(
                 'type' => 'Zend\Form\Element\Collection',
                 'name' => 'categories',
@@ -379,12 +388,12 @@ And finally the ``Product`` fieldset:
                     'should_create_template' => true,
                     'allow_add' => true,
                     'target_element' => array(
-                        'type' => 'Application\Form\CategoryFieldset'
-                    )
-                )
+                        'type' => 'Application\Form\CategoryFieldset',
+                    ),
+                ),
             ));
         }
-    
+
         /**
          * Should return an array specification compatible with
          * {@link Zend\InputFilter\Factory::createInputFilter()}.
@@ -401,10 +410,10 @@ And finally the ``Product`` fieldset:
                     'required' => true,
                     'validators' => array(
                         array(
-                            'name' => 'Float'
-                        )
-                    )
-                )
+                            'name' => 'Float',
+                        ),
+                    ),
+                ),
             );
         }
     }
@@ -451,39 +460,41 @@ not forms. And only ``Form`` instances can be validated. So here is the form :
    :linenos:
 
     namespace Application\Form;
-    
+
     use Zend\Form\Form;
     use Zend\InputFilter\InputFilter;
     use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
-    
+
     class CreateProduct extends Form
     {
         public function __construct()
         {
             parent::__construct('create_product');
-    
-            $this->setAttribute('method', 'post')
-                 ->setHydrator(new ClassMethodsHydrator(false))
-                 ->setInputFilter(new InputFilter());
-    
+
+            $this
+                ->setAttribute('method', 'post')
+                ->setHydrator(new ClassMethodsHydrator(false))
+                ->setInputFilter(new InputFilter())
+            ;
+
             $this->add(array(
                 'type' => 'Application\Form\ProductFieldset',
                 'options' => array(
-                    'use_as_base_fieldset' => true
-                )
+                    'use_as_base_fieldset' => true,
+                ),
             ));
-    
+
             $this->add(array(
                 'type' => 'Zend\Form\Element\Csrf',
-                'name' => 'csrf'
+                'name' => 'csrf',
             ));
-    
+
             $this->add(array(
                 'name' => 'submit',
                 'attributes' => array(
                     'type' => 'submit',
-                    'value' => 'Send'
-                )
+                    'value' => 'Send',
+                ),
             ));
         }
     }
@@ -519,7 +530,7 @@ Now, let's create the action in the controller:
             $form = new CreateProduct();
             $product = new Product();
             $form->bind($product);
-            
+
             $request = $this->getRequest();
             if ($request->isPost()) {
                 $form->setData($request->getPost());
@@ -530,7 +541,7 @@ Now, let's create the action in the controller:
             }
 
             return array(
-                'form' => $form
+                'form' => $form,
             );
         }
 
@@ -550,23 +561,23 @@ And finally, the view:
     <?php
     $form->setAttribute('action', $this->url('home'))
          ->prepare();
-    
+
     echo $this->form()->openTag($form);
-    
+
     $product = $form->get('product');
-    
+
     echo $this->formRow($product->get('name'));
     echo $this->formRow($product->get('price'));
     echo $this->formCollection($product->get('categories'));
-    
+
     $brand = $product->get('brand');
-    
+
     echo $this->formRow($brand->get('name'));
     echo $this->formRow($brand->get('url'));
-    
+
     echo $this->formHidden($form->get('csrf'));
     echo $this->formElement($form->get('submit'));
-    
+
     echo $this->form()->closeTag();
 
 A few new things here :
@@ -592,8 +603,8 @@ As you can see, collections are wrapped inside a fieldset, and every item in the
 collection is itself wrapped in the fieldset. In fact, the ``Collection``
 element uses label for each item in the collection, while the label of the
 ``Collection`` element itself is used as the legend of the fieldset. You must have
-a label on every element in order to use this feature. If you don't want the fieldset 
-created, but just the elements within it, simply add a boolean ``false`` as the second 
+a label on every element in order to use this feature. If you don't want the fieldset
+created, but just the elements within it, simply add a boolean ``false`` as the second
 parameter of the ``FormCollection`` view helper.
 
 If you validate, all elements will show errors (this is normal, as we've marked
@@ -611,7 +622,7 @@ But that's not all.
 Adding New Elements Dynamically
 -------------------------------
 
-Remember the ``should_create_template``? We are going to use it now. 
+Remember the ``should_create_template``? We are going to use it now.
 
 Often, forms are not completely static. In our case, let's say that we don't
 want only two categories, but we want the user to be able to add other ones at
@@ -643,9 +654,9 @@ the ``template_placeholder`` option key:
             'should_create_template' => true,
             'template_placeholder' => '__placeholder__',
             'target_element' => array(
-                'type' => 'Application\Form\CategoryFieldset'
-            )
-        )
+                'type' => 'Application\Form\CategoryFieldset',
+            ),
+        ),
     ));
 
 First, let's add a small button "Add new category" anywhere in the form:
@@ -672,9 +683,9 @@ Here is the code:
             var currentCount = $('form > fieldset > fieldset').length;
             var template = $('form > fieldset > span').data('template');
             template = template.replace(/__index__/g, currentCount);
-    
+
             $('form > fieldset').append(template);
-    
+
             return false;
         }
     </script>
@@ -692,9 +703,9 @@ element by validating it, filtering it and retrieving it:
 
 .. image:: ../images/zend.form.collections.dynamic-elements.result.png
 
-Of course, if you don't want to allow adding elements in a collection, you must 
+Of course, if you don't want to allow adding elements in a collection, you must
 set the option ``allow_add`` to ``false``. This way, even if new elements are
-added, they won't be validated and hence, not added to the entity. Also, if we don't 
+added, they won't be validated and hence, not added to the entity. Also, if we don't
 want elements to be added, we don't need the data template, either. Here's how
 you do it:
 
@@ -710,9 +721,9 @@ you do it:
             'should_create_template' => false,
             'allow_add' => false,
             'target_element' => array(
-                'type' => 'Application\Form\CategoryFieldset'
-            )
-        )
+                'type' => 'Application\Form\CategoryFieldset',
+            ),
+        ),
     ));
 
 There are some limitations to this capability:
@@ -743,24 +754,27 @@ input:
    :linenos:
 
     <?php
-    $form->setAttribute('action', $this->url('home'))
-         ->prepare();
-    
+
+    $form
+        ->setAttribute('action', $this->url('home'))
+        ->prepare()
+    ;
+
     echo $this->form()->openTag($form);
-    
+
     $product = $form->get('product');
-    
+
     echo $this->formRow($product->get('name'));
     echo $this->formRow($product->get('price'));
     echo $this->formCollection($product->get('categories'));
-    
+
     $brand = $product->get('brand');
-    
+
     echo $this->formRow($brand->get('name'));
-    
+
     echo $this->formHidden($form->get('csrf'));
     echo $this->formElement($form->get('submit'));
-    
+
     echo $this->form()->closeTag();
 
 This is what we get:
@@ -783,53 +797,55 @@ all the elements we want to validate.  Our ``CreateProduct`` now looks like this
    :linenos:
 
     namespace Application\Form;
-    
+
     use Zend\Form\Form;
     use Zend\InputFilter\InputFilter;
     use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
-    
+
     class CreateProduct extends Form
     {
         public function __construct()
         {
             parent::__construct('create_product');
-    
-            $this->setAttribute('method', 'post')
-                 ->setHydrator(new ClassMethodsHydrator())
-                 ->setInputFilter(new InputFilter());
-    
+
+            $this
+                ->setAttribute('method', 'post')
+                ->setHydrator(new ClassMethodsHydrator())
+                ->setInputFilter(new InputFilter())
+            ;
+
             $this->add(array(
                 'type' => 'Application\Form\ProductFieldset',
                 'options' => array(
-                    'use_as_base_fieldset' => true
-                )
+                    'use_as_base_fieldset' => true,
+                ),
             ));
-    
+
             $this->add(array(
                 'type' => 'Zend\Form\Element\Csrf',
-                'name' => 'csrf'
+                'name' => 'csrf',
             ));
-    
+
             $this->add(array(
                 'name' => 'submit',
                 'attributes' => array(
                     'type' => 'submit',
-                    'value' => 'Send'
-                )
+                    'value' => 'Send',
+                ),
             ));
-    
+
             $this->setValidationGroup(array(
                 'csrf',
                 'product' => array(
                     'name',
                     'price',
                     'brand' => array(
-                        'name'
+                        'name',
                     ),
                     'categories' => array(
-                        'name'
-                    )
-                )
+                        'name',
+                    ),
+                ),
             ));
         }
     }
