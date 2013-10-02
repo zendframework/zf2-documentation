@@ -14,7 +14,7 @@ method.
 .. code-block:: php
    :linenos:
 
-   $channel = new Zend\Feed\Reader\Reader::import('http://rss.example.com/channelName');
+   $channel = Zend\Feed\Reader\Reader::import('http://rss.example.com/channelName');
 
 If any errors occur fetching the feed, a ``Zend\Feed\Reader\Exception\RuntimeException`` will be thrown.
 
