@@ -180,7 +180,9 @@ And a file called ``Bootstrap.php``, also under ``zf2-tutorial/module/Album/test
             $previousDir = '.';
             while (!is_dir($dir . '/' . $path)) {
                 $dir = dirname($dir);
-                if ($previousDir === $dir) return false;
+                if ($previousDir === $dir) {
+                    return false;
+                }
                 $previousDir = $dir;
             }
             return $dir . '/' . $path;
