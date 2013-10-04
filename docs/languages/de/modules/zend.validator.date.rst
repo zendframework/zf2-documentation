@@ -36,26 +36,6 @@ verwendet wenn kein Gebietsschema und kein Format angegeben werden.
 
 Das standardmäßige Datumsformat für ``Zend\Validate\Date`` ist 'yyyy-MM-dd'.
 
-.. _zend.validate.set.date.localized:
-
-Lokalisierte Datumsprüfung
---------------------------
-
-``Zend\Validate\Date`` prüft auch Daten welche in einem lokalisierten Format angegeben werden. Durch Verwendung
-der Option ``locale`` kann das Gebietsschema definiert werden von dem das Datumsformat für die Prüfung verwendet
-werden soll.
-
-.. code-block:: .validator.
-   :linenos:
-
-   $validator = new Zend\Validate\Date(array('locale' => 'de'));
-
-   $validator->isValid('10.Feb.2010'); // Gibt true zurück
-   $validator->isValid('10.May.2010'); // Gibt false zurück
-
-Die Option ``locale`` setzt das standardmäßige Datumsformat. Im obigen Beispiel ist dies 'dd.MM.yyyy' welches als
-Standardmäßige Datumsformat für 'de' definiert ist.
-
 .. _zend.validate.set.date.formats:
 
 Selbst definierte Datumsprüfung
