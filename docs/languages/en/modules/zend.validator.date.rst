@@ -35,25 +35,6 @@ been given.
 
 The default date format for ``Zend\Validator\Date`` is 'yyyy-MM-dd'.
 
-.. _zend.validator.set.date.localized:
-
-Localized date validation
--------------------------
-
-``Zend\Validator\Date`` validates also dates which are given in a localized format. By using the ``locale`` option
-you can define the locale which the date format should use for validation.
-
-.. code-block:: php
-   :linenos:
-
-   $validator = new Zend\Validator\Date(array('locale' => 'de'));
-
-   $validator->isValid('10.Feb.2010'); // returns true
-   $validator->isValid('10.May.2010'); // returns false
-
-The ``locale`` option sets the default date format. In the above example this is 'j.M.Y' which is defined as
-default date format for 'de'.
-
 .. _zend.validator.set.date.formats:
 
 Self defined date validation
