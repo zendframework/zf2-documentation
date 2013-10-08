@@ -314,7 +314,16 @@ Available Methods
 **getContent**
    ``getContent()``
 
-   Get message content
+   Get raw message content
+
+   Returns mixed
+   
+.. _zend.http.response._parent_.zend.stdlib.message.methods.get-body:
+
+**getBody**
+   ``getBody()``
+
+   Get decoded message content
 
    Returns mixed
 
