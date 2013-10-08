@@ -427,6 +427,7 @@ This special route will catch all console requests, regardless of the parameters
     'default-route' => array(
         'options' => array(
             'type'     => 'catchall',
+	    'route'    => '',
             'defaults' => array(
                 'controller' => 'Application\Controller\Index',
                 'action'     => 'consoledefault'
