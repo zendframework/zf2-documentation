@@ -204,6 +204,7 @@ Let's modify our ``Application\Module`` to provide usage info:
 
     namespace Application;
 
+    use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
     use Zend\ModuleManager\Feature\ConfigProviderInterface;
     use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
     use Zend\Console\Adapter\AdapterInterface as Console;
