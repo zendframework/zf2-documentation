@@ -224,7 +224,7 @@ but rather in the ``init()`` method:
             $this->add(array(
                 'name' => 'phone',
                 'type' => 'Phone',
-            ))
+            ));
         }
     }
 
