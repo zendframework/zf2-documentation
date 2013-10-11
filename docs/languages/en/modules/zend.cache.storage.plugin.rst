@@ -226,7 +226,7 @@ Examples
            return $this;
        }
        
-       // This method have to attach all events required by this plugin
+       // This method have to detach all events required by this plugin
        public function detach(EventManagerInterface $events)
        {
            foreach ($this->handles as $handle) {
