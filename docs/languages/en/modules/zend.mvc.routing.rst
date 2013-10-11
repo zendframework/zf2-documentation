@@ -656,6 +656,93 @@ from the above example:
     echo $this->url('blog/post', array('slug' => 'my-post')); // gives "/blog/my-post"
     echo $this->url('blog/rss'); // gives "/blog/rss"
 
+.. rubric:: An example with multiple Hostnames and subdomains within a single application
+
+.. code-block:: php
+    :linenos:
+    
+    return array(
+        'router' => array(
+            'routes' => array(
+                'modules.zendframework.com' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Hostname',
+                    'options' => array(
+                        'route' => ':4th.[:3rd.]:2nd.:1st', // domain levels from right to left
+                        'contraints' => array(
+                            '4th' => 'modules',
+                            '3rd' => '.*?', // optional 3rd level domain such as .ci, .dev or .test
+                            '2nd' => 'zendframework',
+                            '1st' => 'com',
+                        ),
+                        // Purposely omit default controller and action
+                        // to let the child routes control the route match
+                    ),
+                    // child route controllers may span multiple modules as desired
+                    'child_routes' => array(
+                        'index' => array(
+                            'type' => 'Zend\Mvc\Router\Http\Literal',
+                            'options' => array(
+                                'route' => '/',
+                                'defaults' => array(
+                                    'controller' => 'Module\Controller\Index',
+                                    'action' = > 'index',
+                                ),
+                            ),
+                            'may_terminate' => true,
+                        ),
+                    ),
+                ),
+                'packages.zendframework.com' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Hostname',
+                    'options' => array(
+                        'route' => ':4th.[:3rd.]:2nd.:1st', // domain levels from right to left
+                        'contraints' => array(
+                            '4th' => 'packages',
+                            '3rd' => '.*?', // optional 3rd level domain such as .ci, .dev or .test
+                            '2nd' => 'zendframework',
+                            '1st' => 'com',
+                        ),
+                        // Purposely omit default controller and action
+                        // to let the child routes control the route match
+                    ),
+                    // child route controllers may span multiple modules as desired
+                    'child_routes' => array(
+                        'index' => array(
+                            'type' => 'Zend\Mvc\Router\Http\Literal',
+                            'options' => array(
+                                'route' => '/',
+                                'defaults' => array(
+                                    'controller' => 'Package\Controller\Index',
+                                    'action' = > 'index',
+                                ),
+                            ),
+                            'may_terminate' => true,
+                        ),
+                    ),
+                ),
+            ),
+        ),
+    );
+
+The above would match the following:
+
+- ``modules.zendframework.com`` would dispatch the ``Index`` controller's ``index`` action of the ``Module`` module.
+
+- ``modules.ci.zendframework.com`` would dispatch the ``Index`` controller's ``index`` action of the ``Module`` module.
+
+- ``packages.zendframework.com`` would dispatch the ``Index`` controller's ``index`` action of the ``Package`` module.
+
+- ``packages.dev.zendframework.com`` would dispatch the ``Index`` controller's ``index`` action of the ``Package`` module.
+
+The ``Url`` controller plugin or view helper may be used to generate URLs following the above example:
+
+.. code-block:: php
+    :linenos:
+    
+    // reuse the route matched parameters to generate URLs
+    echo $this->url('modules.zendframework.com/index', array(), array(), true);
+    echo $this->url('packages.zendframework.com/index', array(), array(), true);
+
 .. warning::
 
     When defining child routes pay attention that the ``may_terminate`` and ``child_routes`` definitions
