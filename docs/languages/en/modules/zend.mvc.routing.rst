@@ -667,57 +667,57 @@ from the above example:
                 'modules.zendframework.com' => array(
                     'type' => 'Zend\Mvc\Router\Http\Hostname',
                     'options' => array(
-                    	'route' => ':4th.[:3rd.]:2nd.:1st', // domain levels from right to left
-                    	'contraints' => array(
-                    		'4th' => 'modules',
-                    		'3rd' => '.*?', // optional 3rd level domain such as .ci, .dev or .test
-                    		'2nd' => 'zendframework',
-                    		'1st' => 'com',
-                    	),
-                    	// Purposely omit default controller and action
-                    	// to let the child routes control the route match
+                        'route' => ':4th.[:3rd.]:2nd.:1st', // domain levels from right to left
+                        'contraints' => array(
+                            '4th' => 'modules',
+                            '3rd' => '.*?', // optional 3rd level domain such as .ci, .dev or .test
+                            '2nd' => 'zendframework',
+                            '1st' => 'com',
+                        ),
+                        // Purposely omit default controller and action
+                        // to let the child routes control the route match
                     ),
                     // child route controllers may span multiple modules as desired
                     'child_routes' => array(
-		                'index' => array(
-		                    'type' => 'Zend\Mvc\Router\Http\Literal',
-		                    'options' => array(
-		                    	'route' => '/',
-		                    	'defaults' => array(
-		                    		'controller' => 'Module\Controller\Index',
-		                    		'action' = > 'index',
-		                    	),
-		                    ),
-		                    'may_terminate' => true,
-		                ),
+                        'index' => array(
+                            'type' => 'Zend\Mvc\Router\Http\Literal',
+                            'options' => array(
+                                'route' => '/',
+                                'defaults' => array(
+                                    'controller' => 'Module\Controller\Index',
+                                    'action' = > 'index',
+                                ),
+                            ),
+                            'may_terminate' => true,
+                        ),
                     ),
                 ),
                 'packages.zendframework.com' => array(
                     'type' => 'Zend\Mvc\Router\Http\Hostname',
                     'options' => array(
-                    	'route' => ':4th.[:3rd.]:2nd.:1st', // domain levels from right to left
-                    	'contraints' => array(
-                    		'4th' => 'packages',
-                    		'3rd' => '.*?', // optional 3rd level domain such as .ci, .dev or .test
-                    		'2nd' => 'zendframework',
-                    		'1st' => 'com',
-                    	),
-                    	// Purposely omit default controller and action
-                    	// to let the child routes control the route match
+                        'route' => ':4th.[:3rd.]:2nd.:1st', // domain levels from right to left
+                        'contraints' => array(
+                            '4th' => 'packages',
+                            '3rd' => '.*?', // optional 3rd level domain such as .ci, .dev or .test
+                            '2nd' => 'zendframework',
+                            '1st' => 'com',
+                        ),
+                        // Purposely omit default controller and action
+                        // to let the child routes control the route match
                     ),
                     // child route controllers may span multiple modules as desired
                     'child_routes' => array(
-		                'index' => array(
-		                    'type' => 'Zend\Mvc\Router\Http\Literal',
-		                    'options' => array(
-		                    	'route' => '/',
-		                    	'defaults' => array(
-		                    		'controller' => 'Package\Controller\Index',
-		                    		'action' = > 'index',
-		                    	),
-		                    ),
-		                    'may_terminate' => true,
-		                ),
+                        'index' => array(
+                            'type' => 'Zend\Mvc\Router\Http\Literal',
+                            'options' => array(
+                                'route' => '/',
+                                'defaults' => array(
+                                    'controller' => 'Package\Controller\Index',
+                                    'action' = > 'index',
+                                ),
+                            ),
+                            'may_terminate' => true,
+                        ),
                     ),
                 ),
             ),
