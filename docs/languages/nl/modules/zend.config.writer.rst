@@ -84,7 +84,7 @@ naar een XML string of bestand.
 
 .. _zend.config.writer.xml.example:
 
-.. rubric:: Gebruik Zend\\Config\\Writer\\Ini
+.. rubric:: Gebruik Zend\\Config\\Writer\\Xml
 
 Het volgende voorbeeld illustreert het gebruik van ``Zend\Config\Writer\Xml`` om een nieuw configuratiebestand aan te maken:
 

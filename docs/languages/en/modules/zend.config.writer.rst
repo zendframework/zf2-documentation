@@ -82,7 +82,7 @@ The ``Zend\Config\Writer\Xml`` can be used to generate an XML string or file sta
 
 .. _zend.config.writer.xml.example:
 
-.. rubric:: Using Zend\\Config\\Writer\\Ini
+.. rubric:: Using Zend\\Config\\Writer\\Xml
 
 This example illustrates the basic use of ``Zend\Config\Writer\Xml`` to create a new config file:
 
