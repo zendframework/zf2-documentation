@@ -85,7 +85,7 @@ Zend\\Config\\Writer\\Xml
 
 .. _zend.config.writer.xml.example:
 
-.. rubric:: Использование Zend\\Config\\Writer\\Ini
+.. rubric:: Использование Zend\\Config\\Writer\\Xml
 
 Этот пример показывает основы использования ``Zend\Config\Writer\Xml`` для создания нового конфигурационного
 файла:
