@@ -7,7 +7,7 @@ Authentifizierung mit AuthSub
 Der AuthSub Mechanismum erlaubt es Web Anwendungen zu schreiben die einen authentifizierten Zugang zu Google Data
 Services benötigen, ohne das Code geschrieben werden muß der Benutzerzugangsdaten behandelt.
 
-Siehe `http://code.google.com/apis/accounts/AuthForWebApps.html`_ für weitere Informationen über Google Data
+Siehe http://code.google.com/apis/accounts/AuthForWebApps.html für weitere Informationen über Google Data
 AuthSub Authentifizierung.
 
 Die Google Dokumentation sagt das der ClientLogin Mechanismum ausreichend für "installierte Anwendungen" ist, und
@@ -116,4 +116,3 @@ gültig.
 
 
 
-.. _`http://code.google.com/apis/accounts/AuthForWebApps.html`: http://code.google.com/apis/accounts/AuthForWebApps.html

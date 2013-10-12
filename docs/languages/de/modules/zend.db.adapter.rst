@@ -913,7 +913,7 @@ Funktion der Webanwendung zu manipulieren. Wenn der Wert einer *PHP* Variablen �
 Parametern oder eines anderen Mechanismus gesetzt werden kann, könnte eine Person die *SQL* Anfragen nutzen um
 Dinge zu tun, wozu sie nicht gedacht sind, wie Daten ausgeben, wozu die Person keine Zugangsberechtigung hat. Dies
 ist eine ernst zu nehmende und weit verbreitete Technik um die Sicherheit einer Anwendung zu verletzen, bekannt
-unter dem Namen "SQL Injection" (siehe `http://en.wikipedia.org/wiki/SQL_Injection`_).
+unter dem Namen "SQL Injection" (siehe http://en.wikipedia.org/wiki/SQL_Injection).
 
 Die ``Zend_Db`` Adapterklassen bieten bequeme Methoden, die helfen die Verletzbarkeit durch *SQL* Injection
 Angriffe im *PHP* Code zu reduzieren. Die Lösung ist bestimmte Zeichen, wie Anführungszeichen, in *PHP* Werten zu
@@ -1355,7 +1355,7 @@ Microsoft SQL Server
   eckigen Klammern die der *SQL* Server für die Identifikatoren als Trennzeichen verwendet.
 
 - Man kann ``driver_options`` als Schlüssel im Options Array spezifizieren. Der Wert kann alles hieraus sein:
-  `http://msdn.microsoft.com/en-us/library/cc296161(SQL.90).aspx`_.
+  http://msdn.microsoft.com/en-us/library/cc296161(SQL.90).aspx.
 
 - Man kann ``setTransactionIsolationLevel()`` verwenden um einen Isolations Level für die aktuelle Verbindung zu
   setzen. Der Wert kann wie folgt sein: ``SQLSRV_TXN_READ_UNCOMMITTED``, ``SQLSRV_TXN_READ_COMMITTED``,
@@ -1451,7 +1451,7 @@ PDO Microsoft SQL Server
   "dblib", "freetds", oder "sybase" sein. Diese Option beeinflusst den *DNS* Prefix, welchen der Adapter beim
   Konstruieren des *DNS* Strings benutzt. Sowohl "freetds" als auch "sybase" implementieren einen Prefix von
   "sybase:", welcher für den `FreeTDS`_ Satz von Libraries verwendet wird. Siehe auch
-  `http://www.php.net/manual/de/ref.pdo-dblib.connection.php`_ für weitere Informationen über die *DNS* Prefixe
+  http://www.php.net/manual/de/ref.pdo-dblib.connection.php für weitere Informationen über die *DNS* Prefixe
   die von diesem Treiber verwendet werden.
 
 .. _zend.db.adapter.adapter-notes.pdo-mysql:
@@ -1553,10 +1553,7 @@ Firebird (Interbase)
 .. _`oci8`: http://www.php.net/oci8
 .. _`ibm_db2`: http://www.php.net/ibm_db2
 .. _`php_interbase`: http://www.php.net/ibase
-.. _`http://en.wikipedia.org/wiki/SQL_Injection`: http://en.wikipedia.org/wiki/SQL_Injection
 .. _`mysql_real_escape_string()`: http://www.php.net/mysqli_real_escape_string
 .. _`MySQL Query Cache`: http://dev.mysql.com/doc/refman/5.1/en/query-cache-how.html
-.. _`http://msdn.microsoft.com/en-us/library/cc296161(SQL.90).aspx`: http://msdn.microsoft.com/en-us/library/cc296161(SQL.90).aspx
 .. _`Microsoft's Knowledge Base`: http://support.microsoft.com/kb/232580
 .. _`FreeTDS`: http://www.freetds.org/
-.. _`http://www.php.net/manual/de/ref.pdo-dblib.connection.php`: http://www.php.net/manual/de/ref.pdo-dblib.connection.php

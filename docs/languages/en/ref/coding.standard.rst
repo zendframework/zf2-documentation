@@ -832,7 +832,7 @@ Documentation Format
 ^^^^^^^^^^^^^^^^^^^^
 
 All documentation blocks ("docblocks") must be compatible with the phpDocumentor format. Describing the
-phpDocumentor format is beyond the scope of this document. For more information, visit: `http://phpdoc.org/`_
+phpDocumentor format is beyond the scope of this document. For more information, visit: http://phpdoc.org/
 
 All class files must contain a "file-level" docblock at the top of each file and a "class-level" docblock
 immediately above each class. Examples of such docblocks can be found below.
@@ -904,4 +904,3 @@ If a function or method may throw an exception, use @throws for all known except
 
 
 .. _`license`: http://framework.zend.com/license
-.. _`http://phpdoc.org/`: http://phpdoc.org/

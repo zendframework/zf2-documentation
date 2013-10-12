@@ -112,8 +112,7 @@ Si vous utilisez à la place de la condition *$element->nomPropriete*, vous obti
 vide, sera évalué comme ``TRUE``, donc le test échouera.
 
 Pour plus d'informations, la spécification *RSS* 2.0 officielle est disponible à l'adresse :
-`http://blogs.law.harvard.edu/tech/rss`_
+http://blogs.law.harvard.edu/tech/rss
 
 
 
-.. _`http://blogs.law.harvard.edu/tech/rss`: http://blogs.law.harvard.edu/tech/rss

@@ -37,7 +37,7 @@ che può essere ufficialmente ottenuta con uno dei seguenti metodi:
      le proprie copie di lavoro.
 
      L'URL della branca principale (ndt. chiamata trunk in inglese) del deposito SVN di Zend Framework è:
-     `http://framework.zend.com/svn/framework/trunk`_
+     http://framework.zend.com/svn/framework/trunk
 
 
 
@@ -63,7 +63,6 @@ di un particolare componente.
 .. _`L'esecuzione di un checkout di una copia di lavoro`: http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.checkout.html
 .. _`svn update`: http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.update.html
 .. _`Una definizione esternaa`: http://svnbook.red-bean.com/nightly/en/svn.advanced.externals.html
-.. _`http://framework.zend.com/svn/framework/trunk`: http://framework.zend.com/svn/framework/trunk
 .. _`diversi modi per farlo`: http://www.php.net/manual/it/configuration.changes.php
 .. _`include_path`: http://www.php.net/manual/it/ini.core.php#ini.include-path
 .. _`Front Controller`: http://www.martinfowler.com/eaaCatalog/frontController.html

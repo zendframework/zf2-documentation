@@ -868,7 +868,7 @@ Format de la documentation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Tous les blocs de documentation ("docblocks") doivent être compatible avec le format phpDocumentor. La description
-du format phpDocumentor n'est pas du ressort de ce document. Pour plus d'information, visitez `http://phpdoc.org/`_
+du format phpDocumentor n'est pas du ressort de ce document. Pour plus d'information, visitez http://phpdoc.org/
 
 Tous les fichiers de code source écrits pour Zend Framework ou qui opèrent avec ce framework doivent contenir un
 docblock du fichier, en haut de chaque fichier, et un docblock de classe immédiatement au dessus de chaque classe.
@@ -945,4 +945,3 @@ Si une fonction/méthode peut lancer une exception, utilisez "@throws" :
 
 
 .. _`licence.`: http://framework.zend.com/license
-.. _`http://phpdoc.org/`: http://phpdoc.org/

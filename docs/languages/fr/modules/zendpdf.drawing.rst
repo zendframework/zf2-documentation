@@ -674,8 +674,8 @@ JPG, PNG et TIFF sont maintenant supportées) :
 **Important ! Le support JPEG nécessite que l'extension PHP GD soit installé.** **Important ! Le support PNG
 nécessite que l'extension ZLIB soit configuré pour accepter les images avec canaux Alpha.**
 
-Lisez la documentation de *PHP* pour plus d'informations (`http://www.php.net/manual/fr/ref.image.php`_ et
-`http://www.php.net/manual/fr/ref.zlib.php`_).
+Lisez la documentation de *PHP* pour plus d'informations (http://www.php.net/manual/fr/ref.image.php et
+http://www.php.net/manual/fr/ref.zlib.php).
 
 .. _zendpdf.drawing.line-drawing-style:
 
@@ -1240,5 +1240,3 @@ La transparence peut être paramétré en utilisant la méthode ``ZendPdf\Page::
 
 
 .. _`PDF Reference, Sixth Edition, version 1.7`: http://www.adobe.com/devnet/acrobat/pdfs/pdf_reference_1-7.pdf
-.. _`http://www.php.net/manual/fr/ref.image.php`: http://www.php.net/manual/fr/ref.image.php
-.. _`http://www.php.net/manual/fr/ref.zlib.php`: http://www.php.net/manual/fr/ref.zlib.php

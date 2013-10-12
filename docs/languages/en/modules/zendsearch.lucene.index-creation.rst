@@ -119,7 +119,7 @@ Index optimization
 A Lucene index consists of many segments. Each segment is a completely independent set of data.
 
 Lucene index segment files can't be updated by design. A segment update needs full segment reorganization. See
-Lucene index file formats for details (`http://lucene.apache.org/java/2_3_0/fileformats.html`_) [#]_. New documents
+Lucene index file formats for details (http://lucene.apache.org/java/2_3_0/fileformats.html) [#]_. New documents
 are added to the index by creating new segment.
 
 Increasing number of segments reduces quality of the index, but index optimization restores it. Optimization
@@ -190,16 +190,16 @@ calls.
 
 Default value is 10.
 
-Lucene Java and Luke (Lucene Index Toolbox -`http://www.getopt.org/luke/`_) can also be used to optimize an index.
+Lucene Java and Luke (Lucene Index Toolbox -http://www.getopt.org/luke/) can also be used to optimize an index.
 Latest Luke release (v0.8) is based on Lucene v2.3 and compatible with current implementation of
 ``Zend\Search\Lucene`` component (Zend Framework 1.6). Earlier versions of ``Zend\Search\Lucene`` implementations
 need another versions of Java Lucene tools to be compatible:
 
 
 
-   - Zend Framework 1.5 - Java Lucene 2.1 (Luke tool v0.7.1 -`http://www.getopt.org/luke/luke-0.7.1/`_)
+   - Zend Framework 1.5 - Java Lucene 2.1 (Luke tool v0.7.1 -http://www.getopt.org/luke/luke-0.7.1/)
 
-   - Zend Framework 1.0 - Java Lucene 1.4 - 2.1 (Luke tool v0.6 -`http://www.getopt.org/luke/luke-0.6/`_)
+   - Zend Framework 1.0 - Java Lucene 1.4 - 2.1 (Luke tool v0.6 -http://www.getopt.org/luke/luke-0.6/)
 
 
 
@@ -250,10 +250,6 @@ Do not use networked file systems with ``Zend\Search\Lucene``.
 
 
 
-.. _`http://lucene.apache.org/java/2_3_0/fileformats.html`: http://lucene.apache.org/java/2_3_0/fileformats.html
-.. _`http://www.getopt.org/luke/`: http://www.getopt.org/luke/
-.. _`http://www.getopt.org/luke/luke-0.7.1/`: http://www.getopt.org/luke/luke-0.7.1/
-.. _`http://www.getopt.org/luke/luke-0.6/`: http://www.getopt.org/luke/luke-0.6/
 .. _`documentation`: http://www.php.net/manual/en/function.flock.php
 
 .. [#] The currently supported Lucene index file format is version 2.3 (starting from Zend Framework 1.6).

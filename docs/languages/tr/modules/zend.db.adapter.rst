@@ -846,7 +846,7 @@ En kötüsü ise böyle kod hatalarının web uygulamanızın işlevini değişt
 tasarlanarak sömürülebilmesi(exploitlenmesi). Eğer PHP değişkeninizin değerini HTTP parametresi veya başka
 bir mekanizma ile belirtebiliyorlarsa , kişinin okumaya yetkisi olmayabilecek verinin geri döndürülmesi gibi
 SQL sorgunuzun yapmasını istemediğiniz şeyleri yapmasını sağlayabilirler. Bu "SQL Injection" olarak bilinen
-ciddi ve yaygın uygulama güvenliği ihlali tekniğidir (bakınız `http://en.wikipedia.org/wiki/SQL_Injection`_).
+ciddi ve yaygın uygulama güvenliği ihlali tekniğidir (bakınız http://en.wikipedia.org/wiki/SQL_Injection).
 
 Zend_Db Bağdaştırıcı sınıfı PHP kodunuzun SQL Injection saldırılarına karşı açıkları azaltmanıza
 yardımcı olan kullanışlı fonksiyonlar sağlamaktadır. Çözüm ise PHP değerlerindeki tırnaklar gibi özel
@@ -1276,7 +1276,7 @@ PDO Microsoft SQL Server
   "freetds" , veya "sybase" olabilir. Bu seçenek bağdaştırıcının DSN string'ini inşa sırasında
   kullandığı DSN önekini etkiler. "freetds" ve "sybase"`FreeTDS`_ kütüphane seti için kullanılan "sybase:"
   önekini içerir. Ayrıca bu sürücede kullanılan DSN önekleri hakkında daha çok bilgi için bakınız
-  `http://www.php.net/manual/en/ref.pdo-dblib.connection.php`_
+  http://www.php.net/manual/en/ref.pdo-dblib.connection.php
 
 .. _zend.db.adapter.adapter-notes.pdo-mysql:
 
@@ -1350,8 +1350,6 @@ PDO SQLite
 .. _`mysqli`: http://www.php.net/mysqli
 .. _`oci8`: http://www.php.net/oci8
 .. _`ibm_db2`: http://www.php.net/ibm_db2
-.. _`http://en.wikipedia.org/wiki/SQL_Injection`: http://en.wikipedia.org/wiki/SQL_Injection
 .. _`mysql_real_escape_string()`: http://www.php.net/mysqli_real_escape_string
 .. _`MySQL Query Cache`: http://dev.mysql.com/doc/refman/5.1/en/query-cache-how.html
 .. _`FreeTDS`: http://www.freetds.org/
-.. _`http://www.php.net/manual/en/ref.pdo-dblib.connection.php`: http://www.php.net/manual/en/ref.pdo-dblib.connection.php

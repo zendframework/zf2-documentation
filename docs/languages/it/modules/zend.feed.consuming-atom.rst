@@ -71,8 +71,7 @@ Gli elementi di un feed normalmente contengono le seguenti proprietà:
 
 
 
-Per maggiori informazioni sull'Atom e risorse aggiuntive è possibile visitare `http://www.atomenabled.org/`_.
+Per maggiori informazioni sull'Atom e risorse aggiuntive è possibile visitare http://www.atomenabled.org/.
 
 
 
-.. _`http://www.atomenabled.org/`: http://www.atomenabled.org/

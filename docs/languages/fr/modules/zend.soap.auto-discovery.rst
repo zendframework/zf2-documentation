@@ -28,7 +28,7 @@ Il y a trois configurations d'utilisation de *SOAP* avec Zend Framework :
 Il est indispensable de connaître les fonctionnalités qu'offre un serveur *SOAP*, afin de pouvoir communiquer
 avec lui. `WSDL`_ est alors utilisé pour décrire en détail l'API des services disponibles sur un serveur *SOAP*.
 
-Le langage WSDL est assez complexe (voyez `http://www.w3.org/TR/wsdl`_ pour les détails ). Il est donc difficile
+Le langage WSDL est assez complexe (voyez http://www.w3.org/TR/wsdl pour les détails ). Il est donc difficile
 d'écrire une définition WSDL correcte, à la main.
 
 Un autre problème concerne la synchronisation des changements dans l'API avec des fichiers WSDL déjà existants.
@@ -270,7 +270,6 @@ méthode *setClass* ou *addFunction* de la classe *AutoDiscover*.
 
 
 .. _`WSDL`: http://www.w3.org/TR/wsdl
-.. _`http://www.w3.org/TR/wsdl`: http://www.w3.org/TR/wsdl
 .. _`les types XSD`: http://www.w3.org/TR/xmlschema-2/
 .. _`Port Type`: http://www.w3.org/TR/wsdl#_porttypes
 

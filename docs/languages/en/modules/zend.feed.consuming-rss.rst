@@ -105,6 +105,5 @@ Where relevant, ``Zend\Feed`` supports a number of common RSS extensions includi
 and the Content, Slash, Syndication, Syndication/Thread and several other extensions or modules.
 
 For further information, the official *RSS* 2.0 specification is available at:
-`http://blogs.law.harvard.edu/tech/rss`_
+http://blogs.law.harvard.edu/tech/rss
 
-.. _`http://blogs.law.harvard.edu/tech/rss`: http://blogs.law.harvard.edu/tech/rss

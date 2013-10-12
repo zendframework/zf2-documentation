@@ -38,7 +38,7 @@ Dateisystem zu verschieben.
   Arbeitskopien ihrer Anwendungen zu Verwalten.
 
   Die *URL* für den Stamm des Zend Framework *SVN* Repositories ist:
-  `http://framework.zend.com/svn/framework/standard/trunk`_
+  http://framework.zend.com/svn/framework/standard/trunk
 
 Sobald eine Kopie des Zend Framework vorhanden ist, muß die eigene Anwendung fähig sein die Zend Framework
 Klassen aufzurufen. Obwohl es `verschiedene Wege gibt das zu erreichen`_, muß *PHP*'s `include_path`_ den Pfad zur
@@ -61,7 +61,6 @@ der Komponenten.
 .. _`svn update`: http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.update.html
 .. _`svn commit`: http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.commit.html
 .. _`externe Definition`: http://svnbook.red-bean.com/nightly/en/svn.advanced.externals.html
-.. _`http://framework.zend.com/svn/framework/standard/trunk`: http://framework.zend.com/svn/framework/standard/trunk
 .. _`verschiedene Wege gibt das zu erreichen`: http://www.php.net/manual/de/configuration.changes.php
 .. _`include_path`: http://www.php.net/manual/de/ini.core.php#ini.include-path
 .. _`QuickStart`: http://framework.zend.com/docs/quickstart
