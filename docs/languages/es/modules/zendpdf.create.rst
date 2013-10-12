@@ -1,5 +1,5 @@
 .. EN-Revision: none
-.. _zend.pdf.create:
+.. _zendpdf.create:
 
 Creando y Cargando Documentos PDF
 =================================
@@ -12,7 +12,7 @@ La clase ``ZendPdf`` también ofrece dos métodos estáticos para cargar un docu
 ``ZendPdf\Pdf::load()`` y ``ZendPdf\Pdf::parse()``. Ambos retornan objetos ``ZendPdf`` como resultado o arrojan una
 excepción si ocurre un error.
 
-.. _zend.pdf.create.example-1:
+.. _zendpdf.create.example-1:
 
 .. rubric:: Crear un nuevo documento PDF o cargar uno ya existente
 
@@ -37,7 +37,7 @@ recuperación de una revisión especificada.
 Una revisión puede especificarse como un segundo parámetro a los métodos ``ZendPdf\Pdf::load()`` y
 ``ZendPdf\Pdf::parse()`` o requerirlo llamando al método ``ZendPdf\Pdf::rollback()``. [#]_ call.
 
-.. _zend.pdf.create.example-2:
+.. _zendpdf.create.example-2:
 
 .. rubric:: Requiriendo Revisiones Específicas de un documento PDF
 

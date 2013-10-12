@@ -1,5 +1,5 @@
 .. EN-Revision: none
-.. _zend.pdf.save:
+.. _zendpdf.save:
 
 Änderungen an PDF Dokumenten speichern
 ======================================
@@ -14,7 +14,7 @@ Datei überschrieben.
 Die ``ZendPdf\Pdf::render($newSegmentOnly = false)`` Methode gibt das *PDF* Dokument als Zeichenkette zurück. Wenn
 $newSegmentOnly auf ``TRUE`` gesetzt wird, wird nur das neue *PDF* Dateisegment zurückgegeben.
 
-.. _zend.pdf.save.example-1:
+.. _zendpdf.save.example-1:
 
 .. rubric:: Speichern von PDF Dokumenten
 

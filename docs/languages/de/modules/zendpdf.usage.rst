@@ -1,147 +1,145 @@
 .. EN-Revision: none
-.. _zend.pdf.usage:
+.. _zendpdf.usage:
 
-Exemple d'utilisation du module ZendPdf
-========================================
+Anwendungsbeispiel für die ZendPdf Komponente
+==============================================
 
-Cette section propose un exemple d'utilisation du module ``ZendPdf``.
+Dieser Abschnitt stellt ein Beispiel für die Anwendung der Komponente bereit.
 
-Le code source de l'exemple est disponible dans le fichier ``demos/Zend/Pdf/demo.php``.
+Das Beispiel kann in der Datei ``demos/Zend/Pdf/demo.php`` gefunden werden.
 
-Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des tests.
+Dort gibt es auch die Datei ``test.pdf``, die für diese Demo zu Testzwecken verwendet werden kann.
 
-.. _zend.pdf.usage.example-1:
+.. _zendpdf.usage.example-1:
 
-.. rubric:: Exemple d'utilisation du module ZendPdf
+.. rubric:: Anwendungsbeispiel für die ZendPdf Komponente
 
 .. code-block:: php
    :linenos:
 
    if (!isset($argv[1])) {
-       echo "USAGE: php demo.php <pdf_file> [<output_pdf_file>]\n";
+       echo "VERWENDUNG: php demo.php <pdf_file> [<output_pdf_file>]\n";
        exit;
    }
 
    try {
        $pdf = ZendPdf\Pdf::load($argv[1]);
    } catch (ZendPdf\Exception $e) {
-       if ($e->getMessage() == 'Ouverture du fichier \''
-                             . $argv[1]
-                             . '\' impossible en lecture.') {
-           // Create new PDF if file doesn't exist
+       if ($e->getMessage() == 'Datei \'' . $argv[1] .
+                               '\' konnte nicht zum Lesen geöffnet werden.') {
+           // Erstelle neues PDF, wenn Datei nicht existiert
            $pdf = new ZendPdf\Pdf();
+
            if (!isset($argv[2])) {
-               // Force la ré-écriture complète du fichier
-               // (plutôt qu'une mise à jour)
+               // Erzwinge komplettes neu schreiben der Datei (statt nur updaten)
                $argv[2] = $argv[1];
            }
        } else {
-           // Lève une exception si ce n'est pas l'exception
-           // "Ouverture du fichier impossible"
+           // Werfe eine Ausnahme, wenn es nicht die "Can't open file"
+           // Exception ist
            throw $e;
        }
    }
 
-   //--------------------------------------------------------------------------
-   // Inverse l'ordre des pages
+   //------------------------------------------------------------------------
+   // Kehre die Seitenreihenfolge um
    $pdf->pages = array_reverse($pdf->pages);
 
-   // Crée un nouveau style
+   // Erstelle einen neuen Stil
    $style = new ZendPdf\Style();
-   $style->setFillColor(new ZendPdf_Color\RGB(0, 0, 0.9));
+   $style->setFillColor(new ZendPdf_Color\Rgb(0, 0, 0.9));
    $style->setLineColor(new ZendPdf_Color\GrayScale(0.2));
    $style->setLineWidth(3);
    $style->setLineDashingPattern(array(3, 2, 3, 4), 1.6);
-   $style->setFont(ZendPdf\Font::fontWithName(
-                       ZendPdf\Font::FONT_HELVETICA_BOLD), 32
-                   );
+   $fontH = ZendPdf\Font::fontWithName(ZendPdf\Font::FONT_HELVETICA_BOLD);
+   $style->setFont($fontH, 32);
 
    try {
-       // Crée un nouvel objet image
-       $stampImage = ZendPdf\Image::imageWithPath(dirname(__FILE__) .
-                                                   '/stamp.jpg');
+       // Erstelle ein neues Grafikobjekt
+       $imageFile = dirname(__FILE__) . '/stamp.jpg';
+       $stampImage = ZendPdf\Image::imageWithPath($imageFile);
    } catch (ZendPdf\Exception $e) {
-       // Exemple de gestion des exceptions lors du chargement d'image
-       if ($e->getMessage() != 'Image extension is not installed.' &&
-           $e->getMessage() != 'JPG support is not configured properly.') {
+       // Beispiel wie man mit Ladefehlern bei Grafiken umgeht.
+       if ($e->getMessage() != 'Image Erweiterung nicht installiert.' &&
+           $e->getMessage() != 'JPG Unterstützung ist nicht richtig ' .
+                               'konfiguriert.') {
            throw $e;
        }
        $stampImage = null;
    }
 
-   // Marque la page comme modifiée
+   // Kennzeichne Seiten als verändert
    foreach ($pdf->pages as $page){
        $page->saveGS()
-            ->setAlpha(0.25)
+            ->setAlpha(0,25)
             ->setStyle($style)
             ->rotate(0, 0, M_PI_2/3);
 
        $page->saveGS();
-       $page->setAlpha(0.25);
        $page->clipCircle(550, -10, 50);
        if ($stampImage != null) {
            $page->drawImage($stampImage, 500, -60, 600, 40);
        }
        $page->restoreGS();
 
-       $page->drawText('Modified by Zend Framework!', 150, 0);
-       $page->restoreGS();
+       $page->drawText('Modified by Zend Framework!', 150, 0)
+            ->restoreGS();
    }
 
-   // Ajoute une nouvelle page générée par l'objet ZendPdf
-   // (la page est attachée au document)
+   // Erstelle eine neue Seite mit Hilfe des ZendPdf Objekts
+   // (die Seite wird an das angegebene Dokument angehängt)
    $pdf->pages[] = ($page1 = $pdf->newPage('A4'));
 
-   // Ajoute une nouvelle page générée par l'objet ZendPdf
-   // (la page n'est pas attachée au document)
-   $pdf->pages[] =
-       ($page2 = new ZendPdf\Page(ZendPdf\Page::SIZE_LETTER_LANDSCAPE));
+   // Erstelle eine neue Seite mit Hilfe des ZendPdf\Page Objekts
+   // (die Seite wird nicht an das angegebene Dokument angehängt)
+   $page2 = new ZendPdf\Page(ZendPdf\Page::SIZE_LETTER_LANDSCAPE);
+   $pdf->pages[] = $page2;
 
-   // Crée une nouvelle police
+   // Erstelle einen neuen Zeichensatz
    $font = ZendPdf\Font::fontWithName(ZendPdf\Font::FONT_HELVETICA);
 
-   // Applique la police et dessine du texte
+   // Lege Zeichensatz fest und zeichnen einen text
    $page1->setFont($font, 36)
-         ->setFillColor(ZendPdf_Color\Html::color('#9999cc')
+         ->setFillColor(ZendPdf_Color\Html::color('#9999cc'))
          ->drawText('Helvetica 36 text string', 60, 500);
 
-   // Utilise la police dans une autre page
+   // Verwende das Zeichensatz Objekt für eine andere Seite
    $page2->setFont($font, 24)
          ->drawText('Helvetica 24 text string', 60, 500);
 
-   // Utilise une autre police
-   $page2->setFont(ZendPdf\Font::fontWithName(
-                           ZendPdf\Font::FONT_TIMES_ROMAN), 32)
+   // Verwenden einen anderen Zeichensatz
+   $fontT = ZendPdf\Font::fontWithName(ZendPdf\Font::FONT_TIMES);
+   $page2->setFont($fontT, 32)
          ->drawText('Times-Roman 32 text string', 60, 450);
 
-   // Dessine un rectangle
+   // Zeichne ein Rechteck
    $page2->setFillColor(new ZendPdf_Color\GrayScale(0.8))
          ->setLineColor(new ZendPdf_Color\GrayScale(0.2))
          ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
          ->drawRectangle(60, 400, 400, 350);
 
-   // Dessine un cercle
+   // Zeichne einen Kreis
    $page2->setLineDashingPattern(ZendPdf\Page::LINE_DASHING_SOLID)
-         ->setFillColor(new ZendPdf_Color\RGB(1, 0, 0))
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawCircle(85, 375, 25);
 
-   // Dessine des secteurs
+   // Zeichne Kreisausschnitte
    $page2->drawCircle(200, 375, 25, 2*M_PI/3, -M_PI/6)
-         ->setFillColor(new ZendPdf_Color\CMYK(1, 0, 0, 0))
+         ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
          ->drawCircle(200, 375, 25, M_PI/6, 2*M_PI/3)
-         ->setFillColor(new ZendPdf_Color\RGB(1, 1, 0))
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawCircle(200, 375, 25, -M_PI/6, M_PI/6);
 
-   // Dessine des ellipses
-   $page2->setFillColor(new ZendPdf_Color\RGB(1, 0, 0))
+   // Zeichne Ellipsen
+   $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawEllipse(250, 400, 400, 350)
-         ->setFillColor(new ZendPdf_Color\CMYK(1, 0, 0, 0))
+         ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
          ->drawEllipse(250, 400, 400, 350, M_PI/6, 2*M_PI/3)
-         ->setFillColor(new ZendPdf_Color\RGB(1, 1, 0))
+         ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawEllipse(250, 400, 400, 350, -M_PI/6, M_PI/6);
 
-   // Dessine et remplit un polygone
-   $page2->setFillColor(new ZendPdf_Color\RGB(1, 0, 1));
+   // Zeichne und fülle ein Polygon
+   $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 1));
    $x = array();
    $y = array();
    for ($count = 0; $count < 8; $count++) {
@@ -152,31 +150,31 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
                        ZendPdf\Page::SHAPE_DRAW_FILL_AND_STROKE,
                        ZendPdf\Page::FILL_METHOD_EVEN_ODD);
 
-   // ----- Dessiner des figures dans un système de coordonnées modifiées -----
+   // ----------- Zeichne Figuren in einem modifizierten Koordinatensystem --
 
-   // Mouvement du système de coordonnées
+   // Bewegung des Koordinatensystems
    $page2->saveGS();
-   $page2->translate(60, 250); // Décalage du système de coordonnées
+   $page2->translate(60, 250); // Wechle das Koordinatensystem
 
-   // Dessine un rectangle
+   // Ein Rechteck zeichnen
    $page2->setFillColor(new ZendPdf_Color\GrayScale(0.8))
          ->setLineColor(new ZendPdf_Color\GrayScale(0.2))
          ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
          ->drawRectangle(0, 50, 340, 0);
 
-   // Dessine un cercle
+   // Einen Kreis zeichnen
    $page2->setLineDashingPattern(ZendPdf\Page::LINE_DASHING_SOLID)
          ->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawCircle(25, 25, 25);
 
-   // Dessine des secteurs
+   // Einen Kreisausschnitt zeichnen
    $page2->drawCircle(140, 25, 25, 2*M_PI/3, -M_PI/6)
          ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
          ->drawCircle(140, 25, 25, M_PI/6, 2*M_PI/3)
          ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawCircle(140, 25, 25, -M_PI/6, M_PI/6);
 
-   // Dessine des ellipses
+   // Eine Ellipse zeichnen
    $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawEllipse(190, 50, 340, 0)
          ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
@@ -184,7 +182,7 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
          ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawEllipse(190, 50, 340, 0, -M_PI/6, M_PI/6);
 
-   // Dessine et remplit un polygone
+   // Ein Poligon zeichnen und füllen
    $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 1));
    $x = array();
    $y = array();
@@ -196,37 +194,37 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
                        ZendPdf\Page::SHAPE_DRAW_FILL_AND_STROKE,
                        ZendPdf\Page::FILL_METHOD_EVEN_ODD);
 
-   // Dessine une ligne
+   // Zeichne eine Linie
    $page2->setLineWidth(0.5)
-         ->drawLine(0, 25, 340, 25);
+         ->drawLine(60, 375, 400, 375);
 
    $page2->restoreGS();
 
-   // Mouvement du système de coordonnées, mise en biais et mise à l'échelle
+   // Wechsel des Koordinationssystems, drehen und skalieren
    $page2->saveGS();
-   $page2->translate(60, 150)     // Décalage du système de coordonnées
-         ->skew(0, 0, 0, -M_PI/9) // Mise en biais du système de coordonnées
-         ->scale(0.9, 0.9);       // Mise à l'échelle du système de coordonnées
+   $page2->translate(60, 150)     // Wechseln des Koordinationssystems
+         ->skew(0, 0, 0, -M_PI/9) // Drehen des Koordinationssystems
+         ->scale(0.9, 0.9);       // Skalieren des Koordinationssystems
 
-   // Dessine un rectangle
+   // Rechteck zeichnen
    $page2->setFillColor(new ZendPdf_Color\GrayScale(0.8))
          ->setLineColor(new ZendPdf_Color\GrayScale(0.2))
          ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
          ->drawRectangle(0, 50, 340, 0);
 
-   // Dessine un cercle
+   // Kreis zeichnen
    $page2->setLineDashingPattern(ZendPdf\Page::LINE_DASHING_SOLID)
          ->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawCircle(25, 25, 25);
 
-   // Dessine des secteurs
+   // Kreisausschnitt zeichnen
    $page2->drawCircle(140, 25, 25, 2*M_PI/3, -M_PI/6)
          ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
          ->drawCircle(140, 25, 25, M_PI/6, 2*M_PI/3)
          ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawCircle(140, 25, 25, -M_PI/6, M_PI/6);
 
-   // Dessine des ellipses
+   // Ellipse zeichnen
    $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 0))
          ->drawEllipse(190, 50, 340, 0)
          ->setFillColor(new ZendPdf_Color\Cmyk(1, 0, 0, 0))
@@ -234,7 +232,7 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
          ->setFillColor(new ZendPdf_Color\Rgb(1, 1, 0))
          ->drawEllipse(190, 50, 340, 0, -M_PI/6, M_PI/6);
 
-   // Dessine et remplit un polygone
+   // Poligon zeichnen und ausfüllen
    $page2->setFillColor(new ZendPdf_Color\Rgb(1, 0, 1));
    $x = array();
    $y = array();
@@ -246,18 +244,18 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
                        ZendPdf\Page::SHAPE_DRAW_FILL_AND_STROKE,
                        ZendPdf\Page::FILL_METHOD_EVEN_ODD);
 
-   // Dessine une ligne
+   // Linie zeichnen
    $page2->setLineWidth(0.5)
          ->drawLine(0, 25, 340, 25);
 
    $page2->restoreGS();
 
-   //--------------------------------------------------------------------------
+   //------------------------------------------------------------------------
 
    if (isset($argv[2])) {
        $pdf->save($argv[2]);
    } else {
-       $pdf->save($argv[1], true ); /* met à jour */
+       $pdf->save($argv[1], true /* Aktualisierung */);
    }
 
 

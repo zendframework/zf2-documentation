@@ -1,5 +1,5 @@
 .. EN-Revision: none
-.. _zend.pdf.save:
+.. _zendpdf.save:
 
 Sauvegarder les changement dans un document PDF
 ===============================================
@@ -14,7 +14,7 @@ fichier est écrasé.
 La méthode ``ZendPdf\Pdf::render($filename, $newSegmentOnly = false)`` retourne le document *PDF* dans une chaîne.
 Si ``$newSegmentOnly`` est à ``TRUE``, alors seulement les nouvelles sections du *PDF* sont retournées.
 
-.. _zend.pdf.save.example-1:
+.. _zendpdf.save.example-1:
 
 .. rubric:: Sauvegarder un document PDF
 

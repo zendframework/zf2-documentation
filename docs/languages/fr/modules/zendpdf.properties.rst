@@ -1,5 +1,5 @@
 .. EN-Revision: none
-.. _zend.pdf.info:
+.. _zendpdf.info:
 
 Informations du document et métadonnées
 =======================================

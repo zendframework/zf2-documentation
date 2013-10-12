@@ -1,5 +1,5 @@
 .. EN-Revision: none
-.. _zend.pdf.create:
+.. _zendpdf.create:
 
 Создание и загрузка документов PDF
 ==================================

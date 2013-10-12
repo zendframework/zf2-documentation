@@ -1,10 +1,10 @@
 .. EN-Revision: none
-.. _zend.pdf.drawing:
+.. _zendpdf.drawing:
 
 Zeichnen
 ========
 
-.. _zend.pdf.drawing.geometry:
+.. _zendpdf.drawing.geometry:
 
 Geometrie
 ---------
@@ -20,7 +20,7 @@ Die Seitengröße kann vom Seitenobjekt erhalten werden:
    $width  = $pdfPage->getWidth();
    $height = $pdfPage->getHeight();
 
-.. _zend.pdf.drawing.color:
+.. _zendpdf.drawing.color:
 
 Farben
 ------
@@ -54,7 +54,7 @@ Die *HTML* Farben werden auch durch die Klasse ``ZendPdf_Color\Html`` bereitgest
    $color2 = new ZendPdf_Color\Html('silver');
    $color3 = new ZendPdf_Color\Html('forestgreen');
 
-.. _zend.pdf.drawing.shape-drawing:
+.. _zendpdf.drawing.shape-drawing:
 
 Zeichnen von Formen
 -------------------
@@ -217,7 +217,7 @@ Die ``ZendPdf\Page`` Klass stellt einen Satz von einfachen Formen bereit:
                                $param6 = null,
                                $param7 = null);
 
-.. _zend.pdf.drawing.text-drawing:
+.. _zendpdf.drawing.text-drawing:
 
 Zeichnen von Text
 -----------------
@@ -243,7 +243,7 @@ detaillierte Beschreibung unten).
     */
    public function drawText($text, $x, $y, $charEncoding = '');
 
-.. _zend.pdf.drawing.text-drawing.example-1:
+.. _zendpdf.drawing.text-drawing.example-1:
 
 .. rubric:: Zeichne einen String auf der Seite
 
@@ -261,7 +261,7 @@ Datenbank erhalten wurde), kannst du die Zeichenkodierung zum Zeitpunkt des Zeic
 die Konvertierung für dich durchführen. Du kannst Quellstrings in jeder Kodierungsmethode übergeben, die von
 *PHP*'s `iconv()`_ Funktion unterstützt wird.
 
-.. _zend.pdf.drawing.text-drawing.example-2:
+.. _zendpdf.drawing.text-drawing.example-2:
 
 .. rubric:: Zeiche einen UTF-8 kodierten String auf der Seite
 
@@ -276,7 +276,7 @@ die Konvertierung für dich durchführen. Du kannst Quellstrings in jeder Kodier
    $pdfPage->drawText($unicodeString, 72, 720, 'UTF-8');
    ...
 
-.. _zend.pdf.drawing.using-fonts:
+.. _zendpdf.drawing.using-fonts:
 
 Verwendung von Zeichensätzen
 ----------------------------
@@ -306,7 +306,7 @@ Zeichensätze. Zeichensatzobjekte können über eine der zwei Fabrikmethoden (fa
 ``ZendPdf\Font::fontWithName($fontName)`` für die 14 *PDF* Standardzeichensätze oder
 ``ZendPdf\Font::fontWithPath($filePath)`` für eigene Zeichensätze.
 
-.. _zend.pdf.drawing.using-fonts.example-1:
+.. _zendpdf.drawing.using-fonts.example-1:
 
 .. rubric:: Einen Standardzeichensatz erstellen
 
@@ -365,7 +365,7 @@ Um einen TrueType Zeichensatz zu verwenden, mußt du den kompletten Verzeichnisp
 angeben. Wenn der Zeichensatz aus welchem Grund auch immer nicht gelesen werden kann oder wenn es kein TrueType
 Zeichensatz ist, wird the Fabrikmethode eine Ausnahme werfen:
 
-.. _zend.pdf.drawing.using-fonts.example-2:
+.. _zendpdf.drawing.using-fonts.example-2:
 
 .. rubric:: Einen TrueType Zeichensatz erstellen
 
@@ -385,7 +385,7 @@ Empfänger, die Seite wie beabsichtigt anzuschauen, sogar wenn sie den entsprech
 gar nicht installiert haben. Wenn du dich über die Dateigröße sorgst, kannst du angeben, dass das
 Zeichensatzprogramm nicht eingebettet wird, indem du eine 'nicht einbetten' Option an die Fabrikmethode übergibst:
 
-.. _zend.pdf.drawing.using-fonts.example-3:
+.. _zendpdf.drawing.using-fonts.example-3:
 
 .. rubric:: Erstelle einen TrueType Zeichensatz, aber bette ihn nicht in das PDF Dokument ein
 
@@ -412,7 +412,7 @@ werden kann, wird die Fabrikmethode eine Ausnahme werfen.
 Du kannst diese Zeichensätze weiterhin verwenden, aber du mußt entweder die 'nicht einbetten' Option übergeben
 wie oben beschrieben oder du kannst einfach die Ausnahme unterdrücken:
 
-.. _zend.pdf.drawing.using-fonts.example-4:
+.. _zendpdf.drawing.using-fonts.example-4:
 
 .. rubric:: Werfe keine Ausnahme für Zeichensätze, die nicht eingebettet werden können
 
@@ -435,7 +435,7 @@ eingebetteten Zeichensätze unter Verwendung des Flate Kompressionsschemas kompr
 Speicherplatz gespart werden kann. Wenn du aus welchem Grund auch immer nicht möchtest, dass das
 Zeichensatzprogramm kompimiert wird, kannst du dies mit einer Option abschalten:
 
-.. _zend.pdf.drawing.using-fonts.example-5:
+.. _zendpdf.drawing.using-fonts.example-5:
 
 .. rubric:: Komprimiere einen eingebetten Zeichensatz nicht
 
@@ -449,7 +449,7 @@ Zeichensatzprogramm kompimiert wird, kannst du dies mit einer Option abschalten:
 
 Zuguterletzt, kannst du die Einbettungsoptionen mit Hilfe des OR Operators kombinieren, wenn notwendig:
 
-.. _zend.pdf.drawing.using-fonts.example-6:
+.. _zendpdf.drawing.using-fonts.example-6:
 
 .. rubric:: Kombiniere die Zeichensatz Einbettungsoptionen
 
@@ -463,7 +463,7 @@ Zuguterletzt, kannst du die Einbettungsoptionen mit Hilfe des OR Operators kombi
                ZendPdf\Font::EMBED_DONT_COMPRESS));
    ...
 
-.. _zend.pdf.drawing.standard-fonts-limitations:
+.. _zendpdf.drawing.standard-fonts-limitations:
 
 Limits der Standard PDF Schriften
 ---------------------------------
@@ -477,7 +477,7 @@ Symbol und ZapfDingbats Schriften).
 Text kann trotzdem in jedem anderen Encoding angegeben werden, welches spezifiziert werden muß wenn es sich vom
 aktuellen Gebietsschema unterscheidet. Nur WinLatin1 Zeichen werden aktuell gezeichnet.
 
-.. _zend.pdf.drawing.using-fonts.example-7:
+.. _zendpdf.drawing.using-fonts.example-7:
 
 .. rubric:: Kombinieren mit in Schriften enthaltenen Optionen
 
@@ -491,7 +491,7 @@ aktuellen Gebietsschema unterscheidet. Nur WinLatin1 Zeichen werden aktuell geze
            ->drawText('Text with umlauts - à è ì', 72, 650, 'UTF-8');
    ...
 
-.. _zend.pdf.drawing.extracting-fonts:
+.. _zendpdf.drawing.extracting-fonts:
 
 Schriften extrahieren
 ---------------------
@@ -504,7 +504,7 @@ Mal in ein Dokument hinzugefügt und möglicherweise eingebetten werden, wenn es
 Die ``ZendPdf`` und ``ZendPdf\Page`` Objekte bieten spezielle Methoden um alle genannten Schriften innerhalb
 eines Dokuments oder einer Seite zu extrahieren:
 
-.. _zend.pdf.drawing.extracting-fonts.example-1:
+.. _zendpdf.drawing.extracting-fonts.example-1:
 
 .. rubric:: Schriften von einem geladenen Dokument extrahieren
 
@@ -537,7 +537,7 @@ eines Dokuments oder einer Seite zu extrahieren:
    $firstPageFonts = $firstPage->extractFonts();
    ...
 
-.. _zend.pdf.drawing.extracting-fonts.example-2:
+.. _zendpdf.drawing.extracting-fonts.example-2:
 
 .. rubric:: Eine Schrift von einem geladenen Dokument extrahieren durch die Angabe des Schriftnamens
 
@@ -610,7 +610,7 @@ Extrahierte Schriften können statt jeder anderen Schrift mit den folgenden Eins
 
 
 
-.. _zend.pdf.drawing.image-drawing:
+.. _zendpdf.drawing.image-drawing:
 
 Zeichnen von Grafiken
 ---------------------
@@ -635,7 +635,7 @@ Die ``ZendPdf\Page`` Klasse stellt die drawImage() Methode für das Zeichnen von
 Grafikobjekte sollten mit der Methode ``ZendPdf\Image::imageWithPath($filePath)`` erzeugt werden. (Es werden zur
 Zeit JPG, PNG und TIFF Grafiken unterstützt):
 
-.. _zend.pdf.drawing.image-drawing.example-1:
+.. _zendpdf.drawing.image-drawing.example-1:
 
 .. rubric:: Zeichnen von Grafiken
 
@@ -655,7 +655,7 @@ setzt voraus, dass die ZLIB Erweiterung konfiguriert wurde, um mit Grafiken mit 
 Wende dich an die *PHP* Dokumentation für weitere Informationen (`http://www.php.net/manual/de/ref.image.php`_).
 (`http://www.php.net/manual/de/ref.zlib.php`_).
 
-.. _zend.pdf.drawing.line-drawing-style:
+.. _zendpdf.drawing.line-drawing-style:
 
 Stil der Strichzeichnungen
 --------------------------
@@ -685,7 +685,7 @@ diese Parameter können an die Klassenmethoden von ``ZendPdf\Page`` übergeben w
     */
    public function setLineDashingPattern($pattern, $phase = 0);
 
-.. _zend.pdf.drawing.fill-style:
+.. _zendpdf.drawing.fill-style:
 
 Füllstil
 --------
@@ -742,12 +742,12 @@ Die ``ZendPdf\Page::drawPolygon()`` Methode akzeptiert ``$fillMethod`` als zusä
 
 
 
-.. _zend.pdf.drawing.linear-transformations:
+.. _zendpdf.drawing.linear-transformations:
 
 Lineare Transformationen
 ------------------------
 
-.. _zend.pdf.drawing.linear-transformations.rotations:
+.. _zendpdf.drawing.linear-transformations.rotations:
 
 Drehungen
 ^^^^^^^^^
@@ -768,7 +768,7 @@ Bevor eine Zeichenoperation angewendet wird, können *PDF* Seiten gedreht werden
     */
    public function rotate($x, $y, $angle);
 
-.. _zend.pdf.drawing.linear-transformations.scale:
+.. _zendpdf.drawing.linear-transformations.scale:
 
 Beginnend mit ZF 1.8, Skalierung
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -787,7 +787,7 @@ Skalenänderungen werden durch die ``ZendPdf\Page::scale()`` Methode angeboten:
     */
    public function scale($xScale, $yScale);
 
-.. _zend.pdf.drawing.linear-transformations.translate:
+.. _zendpdf.drawing.linear-transformations.translate:
 
 Beginnend mit ZF 1.8, Bewegungen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -806,7 +806,7 @@ Das bewegen des Koordinationssystem wird von der ``ZendPdf\Page::translate()`` M
     */
    public function translate($xShift, $yShift);
 
-.. _zend.pdf.drawing.linear-transformations.skew:
+.. _zendpdf.drawing.linear-transformations.skew:
 
 Beginnend mit ZF 1.8, Drehungen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -827,7 +827,7 @@ Das Drehen der Seite kann durch Verwendung der ``ZendPdf\Page::skew()`` Methode 
     */
    public function skew($x, $y, $xAngle, $yAngle);
 
-.. _zend.pdf.drawing.save-restore:
+.. _zendpdf.drawing.save-restore:
 
 Speichern/Wiederherstellen des Grafikzustand
 --------------------------------------------
@@ -859,7 +859,7 @@ In der ``ZendPdf\Page`` Klasse gibt es für diese Operationen zwei Methoden:
     */
    public function restoreGS();
 
-.. _zend.pdf.drawing.clipping:
+.. _zendpdf.drawing.clipping:
 
 Zeichenbereich
 --------------
@@ -946,7 +946,7 @@ Die ``ZendPdf\Page`` Klasse stellt einen Satz von Methoden für die Begrenzung b
                                $startAngle = null,
                                $endAngle = null);
 
-.. _zend.pdf.drawing.styles:
+.. _zendpdf.drawing.styles:
 
 Stile
 -----
@@ -1115,7 +1115,7 @@ zu setzen und zu holen:
     */
    public function getFontSize();
 
-.. _zend.pdf.drawing.alpha:
+.. _zendpdf.drawing.alpha:
 
 Transparenz
 -----------

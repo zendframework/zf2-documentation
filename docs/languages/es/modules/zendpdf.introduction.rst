@@ -1,5 +1,5 @@
 .. EN-Revision: none
-.. _zend.pdf.introduction:
+.. _zendpdf.introduction:
 
 Introducción
 ============
