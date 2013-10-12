@@ -107,7 +107,7 @@ wie bei der Verwendung des Adapter Konstruktors.
        'dbname'   => 'test'
    ));
 
-Wenn eine eigene Klasse geschrieben wird, die ``Zend\Db_Adapter\Abstract`` erweitert aber nicht mit dem Präfix
+Wenn eine eigene Klasse geschrieben wird, die ``Zend\Db\Adapter\Abstract`` erweitert aber nicht mit dem Präfix
 "``Zend\Db\Adapter``" beginnt, kann die ``factory()`` Methode verwendet werden um den Adapter zu Laden wenn der
 führende Teil der Adapter Klasse mit dem 'adapterNamespace' Schlüssel im Parameter Array spezifiziert wird.
 
@@ -347,7 +347,7 @@ Adapter übergeben wird.
    try {
        $db = Zend\Db\Db::factory('Pdo_Mysql', $parameters);
        $db->getConnection();
-   } catch (Zend\Db_Adapter\Exception $e) {
+   } catch (Zend\Db\Adapter\Exception $e) {
        // Möglicherweise ein fehlgeschlagener login,
        // oder die RDBMS läuft möglicherweise nicht
    } catch (Zend_Exception $e) {
@@ -1273,7 +1273,7 @@ Ausführen anderer Datenbank Anweisungen
 
 Es könnte Fälle geben in denen direkter Zugriff auf das Verbindungsobjekt benötigt wird, wie es von der *PHP*
 Erweiterung bereitgestellt wird. Einige der Erweiterungen könnten Features anbieten, welche nicht von Methoden der
-``Zend\Db_Adapter\Abstract`` Klasse auftauchen..
+``Zend\Db\Adapter\Abstract`` Klasse auftauchen..
 
 Zum Beispiel werden alle *SQL* Anweisungen von ``Zend_Db`` vorbereitet und dann ausgeführt. Trotzdem gibt es
 einige Features welche nicht kompatibel mit vorbereiteten Anweisungen sind. ``DDL`` Anweisungen wie ``CREATE`` und
@@ -1350,7 +1350,7 @@ Microsoft SQL Server
   Tabellenname spezifiziert wurde oder die letzte Insert Abfrage eine Id zurückgegeben hat. Die
   ``lastSequenceId()`` Methode gibt ``NULL`` zurück.
 
-- ``Zend\Db_Adapter\Sqlsrv`` setzt ``QUOTED_IDENTIFIER`` ON unmittelbar nach der Verbindung zu einer *SQL* Server
+- ``Zend\Db\Adapter\Sqlsrv`` setzt ``QUOTED_IDENTIFIER`` ON unmittelbar nach der Verbindung zu einer *SQL* Server
   Datenbank. Dadurch verwendet der Treiber das standardmäßige *SQL* Trennzeichen (**"**) statt den propietären
   eckigen Klammern die der *SQL* Server für die Identifikatoren als Trennzeichen verwendet.
 

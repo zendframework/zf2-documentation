@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.reserved.instance:
 
-Zend\Service_Amazon\Ec2: Reservierte Instanzen
+Zend\Service\Amazon\Ec2: Reservierte Instanzen
 ==============================================
 
 Mit Amazon *EC2* Reservierte Instanzen, kann man eine geringe Einmalzahlung für jede zu reservierende Instanz

@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.ebs:
 
-Zend\Service_Amazon\Ec2: Elastischer Block Speicher (EBS)
+Zend\Service\Amazon\Ec2: Elastischer Block Speicher (EBS)
 =========================================================
 
 Amazon Elastischer Block Speicher (Amazon EBS) ist ein neuer Typ an Speicher der speziell für Amazon EC2 Instanzen

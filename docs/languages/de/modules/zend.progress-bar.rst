@@ -64,11 +64,11 @@ Standard Adapter
 
 
 
-   - :ref:`Zend\ProgressBar_Adapter\Console <zend.progressbar.adapter.console>`
+   - :ref:`Zend\ProgressBar\Adapter\Console <zend.progressbar.adapter.console>`
 
-   - :ref:`Zend\ProgressBar_Adapter\JsPush <zend.progressbar.adapter.jspush>`
+   - :ref:`Zend\ProgressBar\Adapter\JsPush <zend.progressbar.adapter.jspush>`
 
-   - :ref:`Zend\ProgressBar_Adapter\JsPull <zend.progressbar.adapter.jspull>`
+   - :ref:`Zend\ProgressBar\Adapter\JsPull <zend.progressbar.adapter.jspull>`
 
 
 

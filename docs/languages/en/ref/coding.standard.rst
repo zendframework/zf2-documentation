@@ -132,8 +132,8 @@ Abstract Classes
 
 In general, abstract classes follow the same conventions as :ref:`classes
 <coding-standard.naming-conventions.classes>`, with one additional rule: abstract class names must end in the term,
-"Abstract", and that term must not be preceded by an underscore. As an example, ``Zend\Controller_Plugin\Abstract``
-is considered an invalid name, but ``Zend\Controller\PluginAbstract`` or ``Zend\Controller_Plugin\PluginAbstract``
+"Abstract", and that term must not be preceded by an underscore. As an example, ``Zend\Controller\Plugin\Abstract``
+is considered an invalid name, but ``Zend\Controller\PluginAbstract`` or ``Zend\Controller\Plugin\PluginAbstract``
 would be valid names.
 
 .. note::
@@ -147,7 +147,7 @@ would be valid names.
    simply "Abstract" or "Interface" -- both of which are reserved keywords in *PHP*. If we prepend the
    (sub)component name to the classname, we can avoid these issues.
 
-   To illustrate the situation, consider converting the class ``Zend\Controller_Request\Abstract`` to use
+   To illustrate the situation, consider converting the class ``Zend\Controller\Request\Abstract`` to use
    namespaces:
 
    .. code-block:: php
@@ -182,8 +182,8 @@ Interfaces
 
 In general, interfaces follow the same conventions as :ref:`classes <coding-standard.naming-conventions.classes>`,
 with one additional rule: interface names may optionally end in the term, "Interface", but that term must not be
-preceded by an underscore. As an example, ``Zend\Controller_Plugin\Interface`` is considered an invalid name, but
-``Zend\Controller\PluginInterface`` or ``Zend\Controller_Plugin\PluginInterface`` would be valid names.
+preceded by an underscore. As an example, ``Zend\Controller\Plugin\Interface`` is considered an invalid name, but
+``Zend\Controller\PluginInterface`` or ``Zend\Controller\Plugin\PluginInterface`` would be valid names.
 
 While this rule is not required, it is strongly recommended, as it provides a good visual cue to developers as to
 which files contain interfaces rather than classes.

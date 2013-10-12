@@ -106,9 +106,9 @@ Ergebnisse verarbeiten
 
 Es kann einer von zwei Typen von Ergebnisobjekten als Antwort auf eine Abfrage empfangen werden.
 
-Die erste Gruppe wird durch ``Zend\Service_Technorati\*ResultSet`` Objekte repräsentiert. Ein Ergebnisset Objekt
+Die erste Gruppe wird durch ``Zend\Service\Technorati\*ResultSet`` Objekte repräsentiert. Ein Ergebnisset Objekt
 ist grundsätzlich eine Kollektion von Ergebnisobjekten. Es erweitert die grundsätzliche
-``Zend\Service_Technorati\ResultSet`` Klasse und implementiert das *PHP* Interface ``SeekableIterator``. Der beste
+``Zend\Service\Technorati\ResultSet`` Klasse und implementiert das *PHP* Interface ``SeekableIterator``. Der beste
 Weg um ein Ergebnisset Objekt zu verarbeiten ist dieses mit einem *PHP* ``foreach()`` Statement zu durchlaufen.
 
 .. _zend.service.technorati.consuming-results.example-1:
@@ -122,15 +122,15 @@ Weg um ein Ergebnisset Objekt zu verarbeiten ist dieses mit einem *PHP* ``foreac
    $technorati = new Zend\Service\Technorati('VALID_API_KEY');
 
    // Technorati nach dem PHP Schlüsselwort durchsuchen
-   // $resultSet ist eine Instanz von Zend\Service_Technorati\SearchResultSet
+   // $resultSet ist eine Instanz von Zend\Service\Technorati\SearchResultSet
    $resultSet = $technorati->search('PHP');
 
    // Alle Ergebnisobjekte durchlaufen
    foreach ($resultSet as $result) {
-       // $result ist eine Instanz von Zend\Service_Technorati\SearchResult
+       // $result ist eine Instanz von Zend\Service\Technorati\SearchResult
    }
 
-Weil ``Zend\Service_Technorati\ResultSet`` das ``SeekableIterator`` Interface implementiert, kann ein spezifisches
+Weil ``Zend\Service\Technorati\ResultSet`` das ``SeekableIterator`` Interface implementiert, kann ein spezifisches
 Ergebnisobjekt gesucht werden indem dessen Position in der Ergebnissammlung verwendet wird.
 
 .. _zend.service.technorati.consuming-results.example-2:
@@ -144,10 +144,10 @@ Ergebnisobjekt gesucht werden indem dessen Position in der Ergebnissammlung verw
    $technorati = new Zend\Service\Technorati('VALID_API_KEY');
 
    // Technorati nach dem PHP Schlüsselwort durchsuchen
-   // $resultSet ist eine Instanz von Zend\Service_Technorati\SearchResultSet
+   // $resultSet ist eine Instanz von Zend\Service\Technorati\SearchResultSet
    $resultSet = $technorati->search('PHP');
 
-   // $result ist eine Instanz von Zend\Service_Technorati\SearchResult
+   // $result ist eine Instanz von Zend\Service\Technorati\SearchResult
    $resultSet->seek(1);
    $result = $resultSet->current();
 
@@ -157,9 +157,9 @@ Ergebnisobjekt gesucht werden indem dessen Position in der Ergebnissammlung verw
    bedeutet das man das zweite Ergebnis der Kollektion erhält.
 
 Die zweite Gruppe wird durch spezielle alleinstehende Ergebnisobjekte repräsentiert.
-``Zend\Service_Technorati\GetInfoResult``, ``Zend\Service_Technorati\BlogInfoResult`` und
-``Zend\Service_Technorati\KeyInfoResult`` funktionieren als Wrapper für zusätzliche Objekte, wie
-``Zend\Service_Technorati\Author`` und ``Zend\Service_Technorati\Weblog``.
+``Zend\Service\Technorati\GetInfoResult``, ``Zend\Service\Technorati\BlogInfoResult`` und
+``Zend\Service\Technorati\KeyInfoResult`` funktionieren als Wrapper für zusätzliche Objekte, wie
+``Zend\Service\Technorati\Author`` und ``Zend\Service\Technorati\Weblog``.
 
 .. _zend.service.technorati.consuming-results.example-3:
 
@@ -191,12 +191,12 @@ Details über Antwortklassen.
 Fehler behandeln
 ----------------
 
-Jede ``Zend\Service\Technorati`` Abfragemethode wirft bei einem Fehler eine ``Zend\Service_Technorati\Exception``
+Jede ``Zend\Service\Technorati`` Abfragemethode wirft bei einem Fehler eine ``Zend\Service\Technorati\Exception``
 Ausnahme mit einer bedeutungsvollen Fehlermeldung.
 
 Es gibt verschiedene Gründe die Verursachen können das eine ``Zend\Service\Technorati`` Abfrage fehlschlägt.
 ``Zend\Service\Technorati`` prüft alle Parameter für jegliche Abfrageanfragen. Wenn ein Parameter ungültig ist
-oder er einen ungültigen Wert enthält, wird eine neue ``Zend\Service_Technorati\Exception`` Ausnahme geworfen.
+oder er einen ungültigen Wert enthält, wird eine neue ``Zend\Service\Technorati\Exception`` Ausnahme geworfen.
 Zusätzlich kann das Technorati *API* Interface temporär unerreichbar sein, oder es kann eine Antwort zurückgeben
 die nicht gültig ist.
 
@@ -212,7 +212,7 @@ Eine Technorati Abfrage sollte immer mit einem ``try ... catch`` Block umhüllt 
    $technorati = new Zend\Service\Technorati('VALID_API_KEY');
    try {
        $resultSet = $technorati->search('PHP');
-   } catch(Zend\Service_Technorati\Exception $e) {
+   } catch(Zend\Service\Technorati\Exception $e) {
        echo "Ein Fehler ist aufgetreten: " $e->getMessage();
    }
 
@@ -226,7 +226,7 @@ Technorati die *API* Verwendung auf 500 Aufrufe pro Tag, und eine Ausnahme wird 
 zurückgegeben wenn versucht wird dieses Limit zu überschreiten. Man kann diese Information über die Verwendung
 des eigenen *API* Schlüssels erhalten indem die ``Zend\Service\Technorati::keyInfo()`` Methode verwendet wird.
 
-``Zend\Service\Technorati::keyInfo()`` gibt ein ``Zend\Service_Technorati\KeyInfoResult`` Object zurück. Für
+``Zend\Service\Technorati::keyInfo()`` gibt ein ``Zend\Service\Technorati\KeyInfoResult`` Object zurück. Für
 vollständige Details kann im `API Referenz Guide`_ nachgesehen werden.
 
 .. _zend.service.technorati.checking-api-daily-usage.example-1:
@@ -276,7 +276,7 @@ Technorati Cosmos
 ^^^^^^^^^^^^^^^^^
 
 Eine `Cosmos`_ Abfrage lässt einen Sehen welche Blog zu einer gegebenen *URL* verknüpft sind. Sie gibt ein
-:ref:`Zend\Service_Technorati\CosmosResultSet <zend.service.technorati.classes.cosmosresultset>` Objekt zurück.
+:ref:`Zend\Service\Technorati\CosmosResultSet <zend.service.technorati.classes.cosmosresultset>` Objekt zurück.
 Für vollständige Details kann nach ``Zend\Service\Technorati::cosmos()`` im `API Referenz Guide`_ nachgesehen
 werden.
 
@@ -305,7 +305,7 @@ Technorati Search
 ^^^^^^^^^^^^^^^^^
 
 Die `Search`_ Abfrage lässt einen Sehen welche Blogs einen gegebenen Suchstring enthalten. Sie gibt ein
-:ref:`Zend\Service_Technorati\SearchResultSet <zend.service.technorati.classes.searchresultset>` Objekt zurück.
+:ref:`Zend\Service\Technorati\SearchResultSet <zend.service.technorati.classes.searchresultset>` Objekt zurück.
 Für vollständige Details kann nach ``Zend\Service\Technorati::search()`` im `API Referenz Guide`_ nachgesehen
 werden.
 
@@ -334,7 +334,7 @@ Technorati Tag
 ^^^^^^^^^^^^^^
 
 Die `Tag`_ Abfrage lässt einen Sehen welche Antworten mit einem gegebenen Tag assoziiert sind. Sie gibt ein
-:ref:`Zend\Service_Technorati\TagResultSet <zend.service.technorati.classes.tagresultset>` Objekt zurück. Für
+:ref:`Zend\Service\Technorati\TagResultSet <zend.service.technorati.classes.tagresultset>` Objekt zurück. Für
 vollständige Details kann nach ``Zend\Service\Technorati::tag()`` im `API Referenz Guide`_ nachgesehen werden.
 
 .. _zend.service.technorati.queries.tag.example-1:
@@ -362,7 +362,7 @@ Technorati DailyCounts
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Die `DailyCounts`_ Abfrage bietet tägliche Anzahlen von Antworten die ein abgefragtes Schlüsselwort enthalten.
-Sie gibt ein :ref:`Zend\Service_Technorati\DailyCountsResultSet
+Sie gibt ein :ref:`Zend\Service\Technorati\DailyCountsResultSet
 <zend.service.technorati.classes.dailycountsresultset>` Objekt zurück. Für vollständige Details kann nach
 ``Zend\Service\Technorati::dailyCounts()`` im `API Referenz Guide`_ nachgesehen werden.
 
@@ -388,7 +388,7 @@ Technorati TopTags
 ^^^^^^^^^^^^^^^^^^
 
 Die `TopTags`_ Abfrage bietet Informationen über Top Tags die durch Technorati indiziert sind. Sie gibt ein
-:ref:`Zend\Service_Technorati\TagsResultSet <zend.service.technorati.classes.tagsresultset>` Objekt zurück. Für
+:ref:`Zend\Service\Technorati\TagsResultSet <zend.service.technorati.classes.tagsresultset>` Objekt zurück. Für
 vollständige Details kann nach ``Zend\Service\Technorati::topTags()`` im `API Referenz Guide`_ nachgesehen werden.
 
 .. _zend.service.technorati.queries.toptags.example-1:
@@ -416,7 +416,7 @@ Technorati BlogInfo
 ^^^^^^^^^^^^^^^^^^^
 
 Eine `BlogInfo`_ Abfrage bietet Informationen darüber welcher Blog, wenn überhaupt, mit einer gegebenen *URL*
-assoziiert ist. Sie gibt ein :ref:`Zend\Service_Technorati\BlogInfoResult
+assoziiert ist. Sie gibt ein :ref:`Zend\Service\Technorati\BlogInfoResult
 <zend.service.technorati.classes.bloginforesult>` Objekt zurück. Für vollständige Details kann nach
 ``Zend\Service\Technorati::blogInfo()`` im `API Referenz Guide`_ nachgesehen werden.
 
@@ -439,7 +439,7 @@ Technorati BlogPostTags
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Eine `BlogPostTags`_ Abfrage bietet Informationen über Top Tags die von einem spezifischen Blog verwendet werden.
-Sie gibt ein :ref:`Zend\Service_Technorati\TagsResultSet <zend.service.technorati.classes.tagsresultset>` Objekt
+Sie gibt ein :ref:`Zend\Service\Technorati\TagsResultSet <zend.service.technorati.classes.tagsresultset>` Objekt
 zurück. Für vollständige Details kann nach ``Zend\Service\Technorati::blogPostTags()`` im `API Referenz Guide`_
 nachgesehen werden.
 
@@ -468,7 +468,7 @@ Technorati GetInfo
 ^^^^^^^^^^^^^^^^^^
 
 Eine `GetInfo`_ Abfrage teilt mit was Technorati über ein Mitglied weiß. Sie gibt ein
-:ref:`Zend\Service_Technorati\GetInfoResult <zend.service.technorati.classes.getinforesult>` Objekt zurück. Für
+:ref:`Zend\Service\Technorati\GetInfoResult <zend.service.technorati.classes.getinforesult>` Objekt zurück. Für
 vollständige Details kann nach ``Zend\Service\Technorati::getInfo()`` im `API Referenz Guide`_ nachgesehen werden.
 
 .. _zend.service.technorati.queries.getinfo.example-1:
@@ -496,7 +496,7 @@ Technorati KeyInfo
 ^^^^^^^^^^^^^^^^^^
 
 Die KeyInfo Abfrage bietet Informationen über die tägliche Verwendung eines *API* Schlüssels. Sie gibt ein
-:ref:`Zend\Service_Technorati\KeyInfoResult <zend.service.technorati.classes.keyinforesult>` Objekt zurück. Für
+:ref:`Zend\Service\Technorati\KeyInfoResult <zend.service.technorati.classes.keyinforesult>` Objekt zurück. Für
 vollständige Details kann nach ``Zend\Service\Technorati::keyInfo()`` im `API Referenz Guide`_ nachgesehen werden.
 
 .. _zend.service.technorati.classes:
@@ -505,70 +505,70 @@ Zend\Service\Technorati Klassen
 -------------------------------
 
 Die folgenden Klassen werden von den verschiedenen Technorati Anfragen zurückgegeben. Jede
-``Zend\Service_Technorati\*ResultSet`` Klasse enthält ein typ-spezifisches Ergebnisset welches einfach, mit jedem
+``Zend\Service\Technorati\*ResultSet`` Klasse enthält ein typ-spezifisches Ergebnisset welches einfach, mit jedem
 Ergebnis das in einem Typ Ergebnisobjekt enthalten ist, iteriert werden kann. Alle Ergebnisset Klassen erweitern
-die ``Zend\Service_Technorati\ResultSet`` Klasse und implementieren das ``SeekableIterator`` Interface, welches
+die ``Zend\Service\Technorati\ResultSet`` Klasse und implementieren das ``SeekableIterator`` Interface, welches
 eine einfache Iteration und Suche nach einem spezifischen Ergebnis erlaubt.
 
 
 
-   - :ref:`Zend\Service_Technorati\ResultSet <zend.service.technorati.classes.resultset>`
+   - :ref:`Zend\Service\Technorati\ResultSet <zend.service.technorati.classes.resultset>`
 
-   - :ref:`Zend\Service_Technorati\CosmosResultSet <zend.service.technorati.classes.cosmosresultset>`
+   - :ref:`Zend\Service\Technorati\CosmosResultSet <zend.service.technorati.classes.cosmosresultset>`
 
-   - :ref:`Zend\Service_Technorati\SearchResultSet <zend.service.technorati.classes.searchresultset>`
+   - :ref:`Zend\Service\Technorati\SearchResultSet <zend.service.technorati.classes.searchresultset>`
 
-   - :ref:`Zend\Service_Technorati\TagResultSet <zend.service.technorati.classes.tagresultset>`
+   - :ref:`Zend\Service\Technorati\TagResultSet <zend.service.technorati.classes.tagresultset>`
 
-   - :ref:`Zend\Service_Technorati\DailyCountsResultSet <zend.service.technorati.classes.dailycountsresultset>`
+   - :ref:`Zend\Service\Technorati\DailyCountsResultSet <zend.service.technorati.classes.dailycountsresultset>`
 
-   - :ref:`Zend\Service_Technorati\TagsResultSet <zend.service.technorati.classes.tagsresultset>`
+   - :ref:`Zend\Service\Technorati\TagsResultSet <zend.service.technorati.classes.tagsresultset>`
 
-   - :ref:`Zend\Service_Technorati\Result <zend.service.technorati.classes.result>`
+   - :ref:`Zend\Service\Technorati\Result <zend.service.technorati.classes.result>`
 
-   - :ref:`Zend\Service_Technorati\CosmosResult <zend.service.technorati.classes.cosmosresult>`
+   - :ref:`Zend\Service\Technorati\CosmosResult <zend.service.technorati.classes.cosmosresult>`
 
-   - :ref:`Zend\Service_Technorati\SearchResult <zend.service.technorati.classes.searchresult>`
+   - :ref:`Zend\Service\Technorati\SearchResult <zend.service.technorati.classes.searchresult>`
 
-   - :ref:`Zend\Service_Technorati\TagResult <zend.service.technorati.classes.tagresult>`
+   - :ref:`Zend\Service\Technorati\TagResult <zend.service.technorati.classes.tagresult>`
 
-   - :ref:`Zend\Service_Technorati\DailyCountsResult <zend.service.technorati.classes.dailycountsresult>`
+   - :ref:`Zend\Service\Technorati\DailyCountsResult <zend.service.technorati.classes.dailycountsresult>`
 
-   - :ref:`Zend\Service_Technorati\TagsResult <zend.service.technorati.classes.tagsresult>`
+   - :ref:`Zend\Service\Technorati\TagsResult <zend.service.technorati.classes.tagsresult>`
 
-   - :ref:`Zend\Service_Technorati\GetInfoResult <zend.service.technorati.classes.getinforesult>`
+   - :ref:`Zend\Service\Technorati\GetInfoResult <zend.service.technorati.classes.getinforesult>`
 
-   - :ref:`Zend\Service_Technorati\BlogInfoResult <zend.service.technorati.classes.bloginforesult>`
+   - :ref:`Zend\Service\Technorati\BlogInfoResult <zend.service.technorati.classes.bloginforesult>`
 
-   - :ref:`Zend\Service_Technorati\KeyInfoResult <zend.service.technorati.classes.keyinforesult>`
+   - :ref:`Zend\Service\Technorati\KeyInfoResult <zend.service.technorati.classes.keyinforesult>`
 
 
 
 .. note::
 
-   ``Zend\Service_Technorati\GetInfoResult``, ``Zend\Service_Technorati\BlogInfoResult`` und
-   ``Zend\Service_Technorati\KeyInfoResult`` repräsentieren Ausnahmen zu den obigen weil Sie nicht zu einem
+   ``Zend\Service\Technorati\GetInfoResult``, ``Zend\Service\Technorati\BlogInfoResult`` und
+   ``Zend\Service\Technorati\KeyInfoResult`` repräsentieren Ausnahmen zu den obigen weil Sie nicht zu einem
    ergebnisset gehören und sie kein Interface implementieren. Sie repräsentieren ein einzelnes Antwortobjekt und
    sie funktionieren als Wrapper für zusätzliche ``Zend\Service\Technorati`` Objekte, wie
-   ``Zend\Service_Technorati\Author`` und ``Zend\Service_Technorati\Weblog``.
+   ``Zend\Service\Technorati\Author`` und ``Zend\Service\Technorati\Weblog``.
 
 Die ``Zend\Service\Technorati`` Bibliothek beinhaltet zusätzliche bequeme Klassen die spezifische Antwortobjekte
-repräsentieren. ``Zend\Service_Technorati\Author`` repräsentiert einen einzelnen Technorati Account, welcher auch
-als Blog Author oder Blogger bekannt ist. ``Zend\Service_Technorati\Weblog`` repräsentiert ein einzelnes Weblog
+repräsentieren. ``Zend\Service\Technorati\Author`` repräsentiert einen einzelnen Technorati Account, welcher auch
+als Blog Author oder Blogger bekannt ist. ``Zend\Service\Technorati\Weblog`` repräsentiert ein einzelnes Weblog
 Objekt, zusätzlich mit allen spezifischen Weblog Eigenschaften die Feed *URL*\ s oder Blog Namen. Für komplette
 Details kann nach ``Zend\Service\Technorati`` im `API Referenz Guide`_ nachgesehen werden.
 
 .. _zend.service.technorati.classes.resultset:
 
-Zend\Service_Technorati\ResultSet
+Zend\Service\Technorati\ResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\ResultSet`` ist das am meisten essentielle Ergebnisset. Der Zweck dieser Klasse ist es
+``Zend\Service\Technorati\ResultSet`` ist das am meisten essentielle Ergebnisset. Der Zweck dieser Klasse ist es
 von einer abfrage-spezifischen Kind-Ergebnisset-Klasse erweitert zu werden, und sie sollte niemals verwendet werden
 um ein alleinstehendes Objekt zu initialisieren. Jedes der spezifischen Ergebnissets repräsentiert eine Kollektion
-von abfrage-spezifischen :ref:`Zend\Service_Technorati\Result <zend.service.technorati.classes.result>` Objekte.
+von abfrage-spezifischen :ref:`Zend\Service\Technorati\Result <zend.service.technorati.classes.result>` Objekte.
 
-``Zend\Service_Technorati\ResultSet`` Implementiert das *PHP* ``SeekableIterator`` Interface, und man kann durch
+``Zend\Service\Technorati\ResultSet`` Implementiert das *PHP* ``SeekableIterator`` Interface, und man kann durch
 alle Ergebnisobjekte mit dem *PHP* Statement ``foreach()`` iterieren.
 
 .. _zend.service.technorati.classes.resultset.example-1:
@@ -583,173 +583,173 @@ alle Ergebnisobjekte mit dem *PHP* Statement ``foreach()`` iterieren.
    $resultSet = $technorati->search('php');
 
    // $resultSet ist jetzt eine Instanz von
-   // Zend\Service_Technorati\SearchResultSet
-   // sie erweitert Zend\Service_Technorati\ResultSet
+   // Zend\Service\Technorati\SearchResultSet
+   // sie erweitert Zend\Service\Technorati\ResultSet
    foreach ($resultSet as $result) {
-       // irgendwas mit dem Zend\Service_Technorati\SearchResult Objekt anfangen
+       // irgendwas mit dem Zend\Service\Technorati\SearchResult Objekt anfangen
    }
 
 .. _zend.service.technorati.classes.cosmosresultset:
 
-Zend\Service_Technorati\CosmosResultSet
+Zend\Service\Technorati\CosmosResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\CosmosResultSet`` repräsentiert ein Technorati Cosmos Abfrage Ergebnisset.
+``Zend\Service\Technorati\CosmosResultSet`` repräsentiert ein Technorati Cosmos Abfrage Ergebnisset.
 
 .. note::
 
-   ``Zend\Service_Technorati\CosmosResultSet`` erweitert :ref:`Zend\Service_Technorati\ResultSet
+   ``Zend\Service\Technorati\CosmosResultSet`` erweitert :ref:`Zend\Service\Technorati\ResultSet
    <zend.service.technorati.classes.resultset>`.
 
 .. _zend.service.technorati.classes.searchresultset:
 
-Zend\Service_Technorati\SearchResultSet
+Zend\Service\Technorati\SearchResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\SearchResultSet`` repräsentiert ein Technorati Search Abfrage Ergebnisset.
+``Zend\Service\Technorati\SearchResultSet`` repräsentiert ein Technorati Search Abfrage Ergebnisset.
 
 .. note::
 
-   ``Zend\Service_Technorati\SearchResultSet`` erweitert :ref:`Zend\Service_Technorati\ResultSet
+   ``Zend\Service\Technorati\SearchResultSet`` erweitert :ref:`Zend\Service\Technorati\ResultSet
    <zend.service.technorati.classes.resultset>`.
 
 .. _zend.service.technorati.classes.tagresultset:
 
-Zend\Service_Technorati\TagResultSet
+Zend\Service\Technorati\TagResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\TagResultSet`` repräsentiert ein Technorati Tag Abfrage Ergebnisset.
+``Zend\Service\Technorati\TagResultSet`` repräsentiert ein Technorati Tag Abfrage Ergebnisset.
 
 .. note::
 
-   ``Zend\Service_Technorati\TagResultSet`` erweitert :ref:`Zend\Service_Technorati\ResultSet
+   ``Zend\Service\Technorati\TagResultSet`` erweitert :ref:`Zend\Service\Technorati\ResultSet
    <zend.service.technorati.classes.resultset>`.
 
 .. _zend.service.technorati.classes.dailycountsresultset:
 
-Zend\Service_Technorati\DailyCountsResultSet
+Zend\Service\Technorati\DailyCountsResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\DailyCountsResultSet`` repräsentiert ein Technorati DailyCounts Abfrage Ergebnisset.
+``Zend\Service\Technorati\DailyCountsResultSet`` repräsentiert ein Technorati DailyCounts Abfrage Ergebnisset.
 
 .. note::
 
-   ``Zend\Service_Technorati\DailyCountsResultSet`` erweitert :ref:`Zend\Service_Technorati\ResultSet
+   ``Zend\Service\Technorati\DailyCountsResultSet`` erweitert :ref:`Zend\Service\Technorati\ResultSet
    <zend.service.technorati.classes.resultset>`.
 
 .. _zend.service.technorati.classes.tagsresultset:
 
-Zend\Service_Technorati\TagsResultSet
+Zend\Service\Technorati\TagsResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\TagsResultSet`` repräsentiert ein Technorati TopTags oder BlogPostTags Abfrage
+``Zend\Service\Technorati\TagsResultSet`` repräsentiert ein Technorati TopTags oder BlogPostTags Abfrage
 Ergebnisset.
 
 .. note::
 
-   ``Zend\Service_Technorati\TagsResultSet`` erweitert :ref:`Zend\Service_Technorati\ResultSet
+   ``Zend\Service\Technorati\TagsResultSet`` erweitert :ref:`Zend\Service\Technorati\ResultSet
    <zend.service.technorati.classes.resultset>`.
 
 .. _zend.service.technorati.classes.result:
 
-Zend\Service_Technorati\Result
+Zend\Service\Technorati\Result
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\Result`` ist das wichtigste Ergebnisobjekt. Der Zweck dieser Klasse ist es, durch eine
+``Zend\Service\Technorati\Result`` ist das wichtigste Ergebnisobjekt. Der Zweck dieser Klasse ist es, durch eine
 abfrage-spezifische Kind-Ergebnisklasse erweitert zu werden, und Sie sollte nie verwendet werden um ein
 alleinstehendes Objekt zu initiieren.
 
 .. _zend.service.technorati.classes.cosmosresult:
 
-Zend\Service_Technorati\CosmosResult
+Zend\Service\Technorati\CosmosResult
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\CosmosResult`` repräsentiert ein einzelnes Technorati Cosmos Abfrageobjekt. Es wird nie
+``Zend\Service\Technorati\CosmosResult`` repräsentiert ein einzelnes Technorati Cosmos Abfrageobjekt. Es wird nie
 als alleinstehendes Objekt zurückgegeben, aber es gehört immer einem gültigen
-:ref:`Zend\Service_Technorati\CosmosResultSet <zend.service.technorati.classes.cosmosresultset>` Objekt an.
+:ref:`Zend\Service\Technorati\CosmosResultSet <zend.service.technorati.classes.cosmosresultset>` Objekt an.
 
 .. note::
 
-   ``Zend\Service_Technorati\CosmosResult`` erweitert :ref:`Zend\Service_Technorati\Result
+   ``Zend\Service\Technorati\CosmosResult`` erweitert :ref:`Zend\Service\Technorati\Result
    <zend.service.technorati.classes.result>`.
 
 .. _zend.service.technorati.classes.searchresult:
 
-Zend\Service_Technorati\SearchResult
+Zend\Service\Technorati\SearchResult
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\SearchResult`` repräsentiert ein einzelnes Technorati Search Abfrage Ergebnisobjekt. Es
+``Zend\Service\Technorati\SearchResult`` repräsentiert ein einzelnes Technorati Search Abfrage Ergebnisobjekt. Es
 wird nie als alleinstehendes Objekt zurückgegeben, aber es gehört immer einem gültigen
-:ref:`Zend\Service_Technorati\SearchResultSet <zend.service.technorati.classes.searchresultset>` Objekt an.
+:ref:`Zend\Service\Technorati\SearchResultSet <zend.service.technorati.classes.searchresultset>` Objekt an.
 
 .. note::
 
-   ``Zend\Service_Technorati\SearchResult`` erweitert :ref:`Zend\Service_Technorati\Result
+   ``Zend\Service\Technorati\SearchResult`` erweitert :ref:`Zend\Service\Technorati\Result
    <zend.service.technorati.classes.result>`.
 
 .. _zend.service.technorati.classes.tagresult:
 
-Zend\Service_Technorati\TagResult
+Zend\Service\Technorati\TagResult
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\TagResult`` repräsentiert ein einzelnes Technorati Tag Abfrage Ergebnisobjekt. Es wird
+``Zend\Service\Technorati\TagResult`` repräsentiert ein einzelnes Technorati Tag Abfrage Ergebnisobjekt. Es wird
 nie als alleinstehendes Objekt zurückgegeben, aber es gehört immer einem gültigen
-:ref:`Zend\Service_Technorati\TagResultSet <zend.service.technorati.classes.tagresultset>` Objekt an.
+:ref:`Zend\Service\Technorati\TagResultSet <zend.service.technorati.classes.tagresultset>` Objekt an.
 
 .. note::
 
-   ``Zend\Service_Technorati\TagResult`` erweitert :ref:`Zend\Service_Technorati\Result
+   ``Zend\Service\Technorati\TagResult`` erweitert :ref:`Zend\Service\Technorati\Result
    <zend.service.technorati.classes.result>`.
 
 .. _zend.service.technorati.classes.dailycountsresult:
 
-Zend\Service_Technorati\DailyCountsResult
+Zend\Service\Technorati\DailyCountsResult
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\DailyCountsResult`` repräsentiert ein einzelnes Technorati DailyCounts Abfrage
+``Zend\Service\Technorati\DailyCountsResult`` repräsentiert ein einzelnes Technorati DailyCounts Abfrage
 Ergebnisobjekt. Es wird nie als alleinstehendes Objekt zurückgegeben, aber es gehört immer einem gültigen
-:ref:`Zend\Service_Technorati\DailyCountsResultSet <zend.service.technorati.classes.dailycountsresultset>` Objekt
+:ref:`Zend\Service\Technorati\DailyCountsResultSet <zend.service.technorati.classes.dailycountsresultset>` Objekt
 an.
 
 .. note::
 
-   ``Zend\Service_Technorati\DailyCountsResult`` erweitert :ref:`Zend\Service_Technorati\Result
+   ``Zend\Service\Technorati\DailyCountsResult`` erweitert :ref:`Zend\Service\Technorati\Result
    <zend.service.technorati.classes.result>`.
 
 .. _zend.service.technorati.classes.tagsresult:
 
-Zend\Service_Technorati\TagsResult
+Zend\Service\Technorati\TagsResult
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\TagsResult`` repräsentiert ein einzelnes Technorati TopTags oder BlogPostTags Abfrage
+``Zend\Service\Technorati\TagsResult`` repräsentiert ein einzelnes Technorati TopTags oder BlogPostTags Abfrage
 Ergebnisobjekt. Es wird nie als alleinstehendes Objekt zurückgegeben, aber es gehört immer einem gültigen
-:ref:`Zend\Service_Technorati\TagsResultSet <zend.service.technorati.classes.tagsresultset>` Objekt an.
+:ref:`Zend\Service\Technorati\TagsResultSet <zend.service.technorati.classes.tagsresultset>` Objekt an.
 
 .. note::
 
-   ``Zend\Service_Technorati\TagsResult`` erweitert :ref:`Zend\Service_Technorati\Result
+   ``Zend\Service\Technorati\TagsResult`` erweitert :ref:`Zend\Service\Technorati\Result
    <zend.service.technorati.classes.result>`.
 
 .. _zend.service.technorati.classes.getinforesult:
 
-Zend\Service_Technorati\GetInfoResult
+Zend\Service\Technorati\GetInfoResult
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\GetInfoResult`` repräsentiert ein einzelnes Technorati GetInfo Abfrage Ergebnisobjekt.
+``Zend\Service\Technorati\GetInfoResult`` repräsentiert ein einzelnes Technorati GetInfo Abfrage Ergebnisobjekt.
 
 .. _zend.service.technorati.classes.bloginforesult:
 
-Zend\Service_Technorati\BlogInfoResult
+Zend\Service\Technorati\BlogInfoResult
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\BlogInfoResult`` repräsentiert ein einzelnes Technorati BlogInfo Abfrage Ergebnisobjekt.
+``Zend\Service\Technorati\BlogInfoResult`` repräsentiert ein einzelnes Technorati BlogInfo Abfrage Ergebnisobjekt.
 
 .. _zend.service.technorati.classes.keyinforesult:
 
-Zend\Service_Technorati\KeyInfoResult
+Zend\Service\Technorati\KeyInfoResult
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Technorati\KeyInfoResult`` repräsentiert ein einzelnes Technorati KeyInfo Abfrage Ergebnisobjekt.
+``Zend\Service\Technorati\KeyInfoResult`` repräsentiert ein einzelnes Technorati KeyInfo Abfrage Ergebnisobjekt.
 Es bietet Informationen über die eigene :ref:`tägliche Verwendung des Technorati API Schlüssels
 <zend.service.technorati.checking-api-daily-usage>`.
 

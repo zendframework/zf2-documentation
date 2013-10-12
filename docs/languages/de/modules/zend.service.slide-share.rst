@@ -36,13 +36,13 @@ Das SlideShow Objekt
 --------------------
 
 Alle Slideshows in der ``Zend\Service\SlideShare`` werden repräsentiert durch die Verwendung des
-``Zend\Service_SlideShare\SlideShow`` Objektes (sowohl beim Empfangen als auch beim Hochladen neuer Slideshows).
+``Zend\Service\SlideShare\SlideShow`` Objektes (sowohl beim Empfangen als auch beim Hochladen neuer Slideshows).
 Zur Referenz ist eine Pseudo-Code Version dieser Klasse anbei zu sehen.
 
 .. code-block:: php
    :linenos:
 
-   class Zend\Service_SlideShare\SlideShow {
+   class Zend\Service\SlideShare\SlideShow {
 
        /**
         * Empfängt den Ort der Slideshow
@@ -195,7 +195,7 @@ Empfangen einer einzelnen Slideshow
 Die einfachste Verwendung der ``Zend\Service\SlideShare`` Komponente ist der Empfang einer einzelnen Slideshow
 durch die Slideshow ID die von der slideshare.net Anwendung angeboten wird und kann durch den Aufruf der
 ``getSlideShow()`` auf einem ``Zend\Service\SlideShare`` Objekt und der Verwendung des resultierenden
-``Zend\Service_SlideShare\SlideShow`` Objektes wie gezeigt durchgeführt werden.
+``Zend\Service\SlideShare\SlideShow`` Objektes wie gezeigt durchgeführt werden.
 
 .. code-block:: php
    :linenos:

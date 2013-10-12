@@ -36,13 +36,13 @@ L'objet SlideShow
 -----------------
 
 Chaque diaporama issu de ``Zend\Service\SlideShare`` est matérialisé par un objet
-``Zend\Service_SlideShare\SlideShow`` (que ce soit pour uploader ou récupérer des diaporamas). Pour information,
+``Zend\Service\SlideShare\SlideShow`` (que ce soit pour uploader ou récupérer des diaporamas). Pour information,
 voici un pseudo code de cette classe :
 
 .. code-block:: php
    :linenos:
 
-   class Zend\Service_SlideShare\SlideShow {
+   class Zend\Service\SlideShare\SlideShow {
 
        /**
         * Récupère l'emplacement du diaporama
@@ -195,7 +195,7 @@ Récupérer un diaporama simplement
 La manière la plus simple d'utiliser ``Zend\Service\SlideShare`` est la récupération d'un diaporama depuis son
 ID, fournit par le service slideshare.net, ceci est effectué via la méthode ``getSlideShow()`` de l'objet
 ``Zend\Service\SlideShare``. Le résultat de cette méthode est un objet de type
-``Zend\Service_SlideShare\SlideShow``.
+``Zend\Service\SlideShare\SlideShow``.
 
 .. code-block:: php
    :linenos:

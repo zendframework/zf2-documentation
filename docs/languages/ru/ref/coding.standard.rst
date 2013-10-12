@@ -154,8 +154,8 @@ Zend Framework использует схему именования классо
    .. code-block:: php
       :linenos:
 
-      Zend\Log_Adapter\Interface
-      Zend\Controller_Dispatcher\Interface
+      Zend\Log\Adapter\Interface
+      Zend\Controller\Dispatcher\Interface
 
 
 .. _coding-standard.naming-conventions.filenames:

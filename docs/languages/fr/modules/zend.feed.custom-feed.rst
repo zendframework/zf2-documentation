@@ -24,7 +24,7 @@ se soucier des espaces de noms.
     * (qui est optionnelle) et elle peut ajouter automatiquement
     * des espaces de noms supplémentaires.
     */
-   class MonEntree extends Zend\Feed_Entry\Atom
+   class MonEntree extends Zend\Feed\Entry\Atom
    {
 
        public function __construct($uri = 'http://www.exemple.com/monflux/',

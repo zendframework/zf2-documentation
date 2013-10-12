@@ -154,8 +154,8 @@ Es ist in der Nirvanix *API* Dokumentation zu beachten das *sessionToken* für d
 dieses aber nicht an das Proxy Objekt übbergeben haben. Es wird, der Bequemlichkeit halber, automatisch
 hinzugefügt.
 
-Das Ergebnis dieser Operation ist entweder ein ``Zend\Service_Nirvanix\Response`` Objekt welches das von Nirvanix
-zurückgegebene *XML* wrappt, oder ``Zend\Service_Nirvanix\Exception`` wenn ein Fehler aufgetreten ist.
+Das Ergebnis dieser Operation ist entweder ein ``Zend\Service\Nirvanix\Response`` Objekt welches das von Nirvanix
+zurückgegebene *XML* wrappt, oder ``Zend\Service\Nirvanix\Exception`` wenn ein Fehler aufgetreten ist.
 
 .. _zend.service.nirvanix.examining-results:
 
@@ -164,7 +164,7 @@ Ergebnisse erkunden
 
 Die Nirvanix REST *API* gibt Ihre Ergebnisse immer in einem *XML* zurück. ``Zend\Service\Nirvanix`` parst dieses
 *XML* mit der *SimpleXML* Erweiterung und dekoriert dann das sich ergebende *SimpleXMLElement* mit einem
-``Zend\Service_Nirvanix\Response`` Objekt.
+``Zend\Service\Nirvanix\Response`` Objekt.
 
 Der einfachste Weg ein Ergebnis vom service zu betrachten ist die Verwendung der in *PHP* eingebauten Funktionen
 wie ``print_r()``:
@@ -184,7 +184,7 @@ wie ``print_r()``:
    print_r($result);
    ?>
 
-   Zend\Service_Nirvanix\Response Object
+   Zend\Service\Nirvanix\Response Object
    (
        [_sxml:protected] => SimpleXMLElement Object
            (
@@ -198,7 +198,7 @@ Beispiel, könnte *$result->BytesUploaded* verwendet werden um die anzahl von em
 man auf das *SimpleXMLElement* direkt zugreifen wollen, kann einfach *$result->getSxml()* verwendet werden.
 
 Die üblichste Antwort von Nirvanix ist Erfolg (*ResponseCode* von Null). Es ist normalerweise nicht notwendig
-*ResponseCode* zu prüfen weil jedes nicht-null Ergebnis eine ``Zend\Service_Nirvanix\Exception`` wirft. Siehe das
+*ResponseCode* zu prüfen weil jedes nicht-null Ergebnis eine ``Zend\Service\Nirvanix\Exception`` wirft. Siehe das
 nächste Kapitel über die Behandlung von Fehlern.
 
 .. _zend.service.nirvanix.handling-errors:
@@ -224,7 +224,7 @@ erfolgreich war, ist *ResponseCode* nicht-Null und ein *ErrorMessage* Element so
 
 Um die Notwendigkeit zu verringern immer zu Prüfen ob *ResponseCode* Null ist, prüft ``Zend\Service\Nirvanix``
 automatisch jede von Nirvanix zurückgegebene Antwort. Wenn *ResponseCode* einen Fehler zeigt, wird eine
-``Zend\Service_Nirvanix\Exception`` geworfen.
+``Zend\Service\Nirvanix\Exception`` geworfen.
 
 .. code-block:: xml
    :linenos:
@@ -239,7 +239,7 @@ automatisch jede von Nirvanix zurückgegebene Antwort. Wenn *ResponseCode* einen
      $imfs = $nirvanix->getService('IMFS');
      $imfs->unlink('/a-nonexistant-path');
 
-   } catch (Zend\Service_Nirvanix\Exception $e) {
+   } catch (Zend\Service\Nirvanix\Exception $e) {
      echo $e->getMessage() . "\n";
      echo $e->getCode();
    }

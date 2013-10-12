@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.progressbar.adapter.jspush:
 
-Zend\ProgressBar_Adapter\JsPush
+Zend\ProgressBar\Adapter\JsPush
 ===============================
 
-``Zend\ProgressBar_Adapter\JsPush`` ist ein Adapter der es erlaubt den Fortschrittsbalken in einem Browser über
+``Zend\ProgressBar\Adapter\JsPush`` ist ein Adapter der es erlaubt den Fortschrittsbalken in einem Browser über
 Javascript Push zu aktualisieren. Das bedeutet das keine zweite Verbindung benötigt wird um den Status über den
 aktuell laufenden Prozess zu erhalten, sondern das der Prozess selbst seinen Status direkt an den Browser schickt.
 

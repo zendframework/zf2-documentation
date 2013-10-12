@@ -510,10 +510,10 @@ Session Handler für Tabellen Speicher
 
 Wenn eine *PHP* Anwendung auf der Windows Azure Plattform in einem Load-Balanced Modus läuft (wenn 2 oder mehr Web
 Rollen Instanzen laufen), ist es wichtig dass *PHP* Session Daten zwischen mehreren Web Rollen Instanzen verwendet
-werden können. Die Windows Azure *SDK* von *PHP* bietet die Klasse ``Zend\Service_WindowsAzure\SessionHandler`` an
+werden können. Die Windows Azure *SDK* von *PHP* bietet die Klasse ``Zend\Service\WindowsAzure\SessionHandler`` an
 welche den Windows Azure Tabellen Speicher als Session Handler für *PHP* Anwendungen verwendet.
 
-Um den ``Zend\Service_WindowsAzure\SessionHandler`` Session Handler zu verwenden sollte er als Default Session
+Um den ``Zend\Service\WindowsAzure\SessionHandler`` Session Handler zu verwenden sollte er als Default Session
 Handler für die *PHP* Anwendung registriert sein:
 
 .. _zend.service.windowsazure.storage.table.api.sessionhandler-register:
@@ -527,15 +527,15 @@ Handler für die *PHP* Anwendung registriert sein:
        'table.core.windows.net', 'myaccount', 'myauthkey'
    );
 
-   $sessionHandler = new Zend\Service_WindowsAzure\SessionHandler(
+   $sessionHandler = new Zend\Service\WindowsAzure\SessionHandler(
        $storageClient , 'sessionstable'
    );
    $sessionHandler->register();
 
-Der obenstehende Klassenname registriert den ``Zend\Service_WindowsAzure\SessionHandler`` Session Handler und
+Der obenstehende Klassenname registriert den ``Zend\Service\WindowsAzure\SessionHandler`` Session Handler und
 speichert Sessions in einer Tabelle die "sessionstable" genannt wird.
 
-Nach der Registrierung des ``Zend\Service_WindowsAzure\SessionHandler`` Session Handlers können Session gestartet
+Nach der Registrierung des ``Zend\Service\WindowsAzure\SessionHandler`` Session Handlers können Session gestartet
 und auf dem gleichen Weg wie normale *PHP* Sessions verwendet werden:
 
 .. _zend.service.windowsazure.storage.table.api.sessionhandler-usage:
@@ -549,7 +549,7 @@ und auf dem gleichen Weg wie normale *PHP* Sessions verwendet werden:
        'table.core.windows.net', 'myaccount', 'myauthkey'
    );
 
-   $sessionHandler = new Zend\Service_WindowsAzure\SessionHandler(
+   $sessionHandler = new Zend\Service\WindowsAzure\SessionHandler(
        $storageClient , 'sessionstable'
    );
    $sessionHandler->register();
@@ -564,7 +564,7 @@ und auf dem gleichen Weg wie normale *PHP* Sessions verwendet werden:
 
 .. warning::
 
-   Der ``Zend\Service_WindowsAzure\SessionHandler`` Session Handler sollte registriert werden bevor ein Aufruf zu
+   Der ``Zend\Service\WindowsAzure\SessionHandler`` Session Handler sollte registriert werden bevor ein Aufruf zu
    ``session_start()`` durchgeführt wird!
 
 

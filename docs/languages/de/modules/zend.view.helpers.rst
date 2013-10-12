@@ -11,7 +11,7 @@ diese Aufgaben für dich durchführen zu lassen.
 Ein Helfer ist einfach eine Klasse. Nehmen wir an wir wollen einen Helfer der 'fooBar' heißt. Standardmäßig wird
 der Klasse 'Zend\View\Helper\_' vorangestellt (Es kann ein eigener Prefix definiert werden wenn ein Pfad für die
 Helfer definiert wird), und das letzte Segment des Klassennamens ist der Name des Helfers; Dieses Segment sollte
-Titel Großgeschrieben sein; der volle Klassenname ist dann: ``Zend\View_Helper\FooBar``. Diese Klasse sollte
+Titel Großgeschrieben sein; der volle Klassenname ist dann: ``Zend\View\Helper\FooBar``. Diese Klasse sollte
 mindestens eine einzelne Methode enthalten, die nach dem Helfer benannt und camelCased ist: ``fooBar()``.
 
 .. note::
@@ -30,7 +30,7 @@ mindestens eine einzelne Methode enthalten, die nach dem Helfer benannt und came
    gesetzt um sicherzustellen das die Standard Helfer arbeiten.
 
 Um einen Helfer in deinem View Skript zu verwenden, rufe ihn mittels ``$this->helperName()`` auf. Im Hintergrund
-wird ``Zend_View`` die Klasse ``Zend\View_Helper\HelperName`` laden, eine Objektinstanz der Klasse erstellen und
+wird ``Zend_View`` die Klasse ``Zend\View\Helper\HelperName`` laden, eine Objektinstanz der Klasse erstellen und
 deren Methode ``helperName()`` aufrufen. Die Objektinstanz bleibt innerhalb der ``Zend_View`` Instanz bestehen und
 wird bei allen weiteren Aufrufen von ``$this->helperName()`` wiederverwendet.
 
@@ -276,7 +276,7 @@ schauen. Dies erlaubt dir, zu den vorhandenen Helfern weitere hinzufügen oder d
    // "/other/path/to/helpers/HelperName.php" mit dem Klassennamen
    // "My_View_Helper_HelperName", und zuletzt nach
    // "Zend/View/Helpers/HelperName.php" mit dem Klassennamen
-   // "Zend\View_Helper\HelperName" schauen.
+   // "Zend\View\Helper\HelperName" schauen.
 
 .. _zend.view.helpers.custom:
 
@@ -285,8 +285,8 @@ Eigene Helfer schreiben
 
 Eigene Helfer zu schreiben ist einfach; du mußt nur diese Regeln befolgen:
 
-- Wärend das nicht strikt notwendig ist, ist es empfohlen entweder ``Zend\View_Helper\Interface`` zu
-  implementieren oder ``Zend\View_Helper\Abstract`` zu erweitern wenn eigene Helfer erstellt werden. Eingeführt
+- Wärend das nicht strikt notwendig ist, ist es empfohlen entweder ``Zend\View\Helper\Interface`` zu
+  implementieren oder ``Zend\View\Helper\Abstract`` zu erweitern wenn eigene Helfer erstellt werden. Eingeführt
   mit 1.6.0, definieren diese einfach die ``setView()`` Methode; trotzdem, in kommenden Releases, ist es geplant
   ein Strategy Pattern zu implementieren das vieles der Namensschemas einfacher mach wie anbei beschrieben. Wenn
   darauf aufgebaut wird hilft das, das der eigene Code Zukunftssicher ist.
@@ -316,7 +316,7 @@ Hier ist ein Beispiel für unseren ``SpecialPurpose`` Helfer:
 .. code-block:: php
    :linenos:
 
-   class My_View_Helper_SpecialPurpose extends Zend\View_Helper\Abstract
+   class My_View_Helper_SpecialPurpose extends Zend\View\Helper\Abstract
    {
        protected $_count = 0;
        public function specialPurpose()
@@ -375,7 +375,7 @@ Wenn die Helfer Klasse eine ``setView()`` Methode hat, wird diese aufgerufen wen
 instanziert wird, und das aktuelle View Objekt übergeben wird. Es liegt an einem selbst das Objekt in der Klasse
 zu fixieren, genau so wie herauszufinden wie auf dieses zugegriffen werden sollte.
 
-Wenn ``Zend\View_Helper\Abstract`` erweitert wird, muß diese Methode nicht selbst definiert werden da Sie schon
+Wenn ``Zend\View\Helper\Abstract`` erweitert wird, muß diese Methode nicht selbst definiert werden da Sie schon
 vordefiniert ist.
 
 .. _zend.view.helpers.registering-concrete:

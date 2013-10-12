@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.instance:
 
-Zend\Service_Amazon\Ec2: Instanzen
+Zend\Service\Amazon\Ec2: Instanzen
 ==================================
 
 .. _zend.service.amazon.ec2.instance.types:

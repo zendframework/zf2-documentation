@@ -11,14 +11,14 @@ Come iniziare
 
 *Zend_Mail* fornisce delle funzionalità generiche per scrivere ed inviare messaggi e-mail sia in formato testuale
 sia compatibili con lo standard MIME multipart. *Zend_Mail* può inviare e-mail utilizzando il transpoter
-predefinito *Zend\Mail_Transport\Sendmail* oppure via *Zend\Mail_Transport\Smtp*.
+predefinito *Zend\Mail\Transport\Sendmail* oppure via *Zend\Mail\Transport\Smtp*.
 
 .. _zend.mail.introduction.example-1:
 
 .. rubric:: Semplice e-mail con Zend_Mail
 
 Una semplice e-mail è composta da alcuni destinatario, un oggetto, un contenuto ed un mittente. Ecco come inviare
-l'e-mail via *Zend\Mail_Transport\Sendmail*:
+l'e-mail via *Zend\Mail\Transport\Sendmail*:
 
 .. code-block:: php
    :linenos:
@@ -66,14 +66,14 @@ chiamare immediatamente un nuovo metodo in successione.
 Configurazione del transport sendmail predefinito
 -------------------------------------------------
 
-*Zend\Mail_Transport\Sendmail* è il transport predefinito per un'istanza di *Zend_Mail*. Consiste essenzialmente
+*Zend\Mail\Transport\Sendmail* è il transport predefinito per un'istanza di *Zend_Mail*. Consiste essenzialmente
 in un wrapper alla funzione PHP `mail()`_. Se si desidera passare parametri aggiuntivi alla funzione `mail()`_ è
 sufficiente creare una nuova istanza del transport e fornire i parametri al costruttore. La nuova istanza può sia
 agire come transport predefinito per *Zend_Mail* sia essere passata al metodo *send()* di *Zend_Mail*.
 
 .. _zend.mail.introduction.sendmail.example-1:
 
-.. rubric:: Passaggio di parametri aggiuntivi al transport Zend\Mail_Transport\Sendmail
+.. rubric:: Passaggio di parametri aggiuntivi al transport Zend\Mail\Transport\Sendmail
 
 Questo esempio mostra come cambiare l'intestazione Return-Path della funzione `mail()`_.
 
@@ -82,7 +82,7 @@ Questo esempio mostra come cambiare l'intestazione Return-Path della funzione `m
 
    <?php
 
-   $tr = new Zend\Mail_Transport\Sendmail('-fritorna_a_me@example.com');
+   $tr = new Zend\Mail\Transport\Sendmail('-fritorna_a_me@example.com');
    Zend\Mail\Mail::setDefaultTransport($tr);
 
    $mail = new Zend\Mail\Mail();

@@ -191,7 +191,7 @@ imagine, this can lead to many stat calls on the file system.
 Multiply this by the number of components that use the PluginLoader, and you get an idea of the scope of this
 issue. At the time of this writing, the following components made use of the PluginLoader:
 
-- ``Zend\Controller_Action\HelperBroker``: helpers
+- ``Zend\Controller\Action\HelperBroker``: helpers
 
 - ``Zend\File\Transfer``: adapters
 

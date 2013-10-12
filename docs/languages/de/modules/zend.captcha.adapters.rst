@@ -17,7 +17,7 @@ das verwendet werden soll, und die Session Namespaceklasse die für die Persiste
 ``Zend\Session\Namespace`` nicht verwenden will. ``Zend\Captcha\Word`` kapselt die Prüflogik.
 
 Standardmäßig ist die Wortlänge 8 Zeichen, das Sessiontimeout 5 Minuten und für die Persistenz wird
-``Zend\Session\Namespace`` verwendet (wobei der Namespace "``Zend\Form_Captcha\<captcha ID>``" verwendet wird).
+``Zend\Session\Namespace`` verwendet (wobei der Namespace "``Zend\Form\Captcha\<captcha ID>``" verwendet wird).
 
 Zusätzlich zu den Methoden wie vom ``Zend\Captcha\Adapter`` Interface benötigt werden bietet
 ``Zend\Captcha\Word`` die folgenden Methoden an:

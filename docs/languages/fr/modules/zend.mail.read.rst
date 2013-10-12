@@ -39,7 +39,7 @@ Exemple simple avec Pop3
 .. code-block:: php
    :linenos:
 
-   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'localhost',
+   $mail = new Zend\Mail\Storage\Pop3(array('host'     => 'localhost',
                                             'user'     => 'test',
                                             'password' => 'test'));
 
@@ -57,13 +57,13 @@ Mbox et Maildir sont les deux formats supportés pour le stockage local des éma
 formats le plus simple.
 
 Si vous voulez lire un fichier Mbox, vous devez juste donner le nom du fichier au constructeur de
-``Zend\Mail_Storage\Mbox``:
+``Zend\Mail\Storage\Mbox``:
 
 .. code-block:: php
    :linenos:
 
    $mail =
-       new Zend\Mail_Storage\Mbox(array('filename' => '/home/test/mail/inbox'));
+       new Zend\Mail\Storage\Mbox(array('filename' => '/home/test/mail/inbox'));
 
 Maildir est très similaire mais nécessite un nom de dossier :
 
@@ -71,7 +71,7 @@ Maildir est très similaire mais nécessite un nom de dossier :
    :linenos:
 
    $mail =
-       new Zend\Mail_Storage\Maildir(array('dirname' => '/home/test/mail/'));
+       new Zend\Mail\Storage\Maildir(array('dirname' => '/home/test/mail/'));
 
 Ces deux constructeurs lèvent une exception ``Zend\Mail\Exception`` si le stockage ne peut pas être lu.
 
@@ -88,17 +88,17 @@ une chaîne vide et le port par défaut celui donné dans la *RFC* du protocole.
    :linenos:
 
    // connexion à Pop3
-   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'exemple.com'
+   $mail = new Zend\Mail\Storage\Pop3(array('host'     => 'exemple.com'
                                             'user'     => 'test',
                                             'password' => 'test'));
 
    // connexion à Imap
-   $mail = new Zend\Mail_Storage\Imap(array('host'     => 'exemple.com'
+   $mail = new Zend\Mail\Storage\Imap(array('host'     => 'exemple.com'
                                             'user'     => 'test',
                                             'password' => 'test'));
 
    // exemple à un port non standard
-   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'exemple.com',
+   $mail = new Zend\Mail\Storage\Pop3(array('host'     => 'exemple.com',
                                             'port'     => 1120
                                             'user'     => 'test',
                                             'password' => 'test'));
@@ -109,23 +109,23 @@ indiqué dans la *RFC*.
 .. code-block:: php
    :linenos:
 
-   // exemples pour Zend\Mail_Storage\Pop3,
-   // identique à Zend\Mail_Storage\Imap
+   // exemples pour Zend\Mail\Storage\Pop3,
+   // identique à Zend\Mail\Storage\Imap
 
    // utiliser SSL avec un port différent
    // (par défaut 995 pour Pop3 et 993 pour Imap)
-   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'exemple.com'
+   $mail = new Zend\Mail\Storage\Pop3(array('host'     => 'exemple.com'
                                             'user'     => 'test',
                                             'password' => 'test',
                                             'ssl'      => 'SSL'));
 
    // utiliser TLS
-   $mail = new Zend\Mail_Storage\Pop3(array('host'     => 'exemple.com'
+   $mail = new Zend\Mail\Storage\Pop3(array('host'     => 'exemple.com'
                                             'user'     => 'test',
                                             'password' => 'test',
                                             'ssl'      => 'TLS'));
 
-Les deux constructeurs peuvent lever une exception ``Zend\Mail\Exception`` ou ``Zend\Mail_Protocol\Exception``\
+Les deux constructeurs peuvent lever une exception ``Zend\Mail\Exception`` ou ``Zend\Mail\Protocol\Exception``\
 (étendant ``Zend\Mail\Exception``), en fonction du type de l'erreur.
 
 .. _zend.mail.read-fetching:
@@ -393,7 +393,7 @@ dossier de base. Le format pour le maildir est comme définie dans maildir++ (av
 défaut), Mbox est une hiérarchie de dossiers avec des fichiers Mbox. Si vous n'avez pas un dossier de Mbox
 appelé INBOX dans votre dossier de base Mbox vous devez placer un autre dossier dans le constructeur.
 
-``Zend\Mail_Storage\Imap`` supporte déjà des dossiers par défaut. Exemples pour ouvrir ces stockages :
+``Zend\Mail\Storage\Imap`` supporte déjà des dossiers par défaut. Exemples pour ouvrir ces stockages :
 
 .. code-block:: php
    :linenos:
@@ -404,7 +404,7 @@ appelé INBOX dans votre dossier de base Mbox vous devez placer un autre dossier
            );
 
    // mbox avec un dossier par défaut nommé INBOX, fontionne aussi
-   // avec Zend\Mail\Storage\Folder\Maildir et Zend\Mail_Storage\Imap
+   // avec Zend\Mail\Storage\Folder\Maildir et Zend\Mail\Storage\Imap
    $mail = new Zend\Mail\Storage\Folder\Mbox(
                array('dirname' => '/home/test/mail/', 'folder'  => 'Archive')
            );
@@ -421,13 +421,13 @@ appelé INBOX dans votre dossier de base Mbox vous devez placer un autre dossier
            );
 
    // imap est le même avec ou sans dossier
-   $mail = new Zend\Mail_Storage\Imap(array('host'     => 'example.com',
+   $mail = new Zend\Mail\Storage\Imap(array('host'     => 'example.com',
                                             'user'     => 'test',
                                             'password' => 'test'));
 
 Avec la méthode ``getFolders($root = null)`` vous pouvez obtenir la hiérarchie des dossiers en commençant par le
-dossier racine ou le dossier fourni. Elle est retournée comme instance de ``Zend\Mail_Storage\Folder``, qui
-implémente *RecursiveIterator* et tous ses enfants sont également des instances de ``Zend\Mail_Storage\Folder``.
+dossier racine ou le dossier fourni. Elle est retournée comme instance de ``Zend\Mail\Storage\Folder``, qui
+implémente *RecursiveIterator* et tous ses enfants sont également des instances de ``Zend\Mail\Storage\Folder``.
 Chacune de ces instances à des noms locaux et globaux retournés par les méthodes ``getLocalName()`` et
 ``getGlobalName()``. Le nom global est le nom absolu du dossier racine (délimiteurs y compris), le nom local est
 le nom dans le dossier parent.
@@ -473,7 +473,7 @@ vérifié avec la méthode ``isSelectable()``. Ainsi il est très facile de prod
 
 Les dossiers choisis courants sont retournés par la méthode ``getSelectedFolder()``. Changer de dossier est fait
 avec la méthode ``selectFolder()``, qui a besoin du nom global comme paramètre. Si vous voulez éviter d'écrire
-des délimiteurs vous pouvez également employer les propriétés d'une instance de ``Zend\Mail_Storage\Folder``:
+des délimiteurs vous pouvez également employer les propriétés d'une instance de ``Zend\Mail\Storage\Folder``:
 
 .. code-block:: php
    :linenos:
@@ -522,7 +522,7 @@ persistante par l'intermédiaire du noop :
 Mettre en cache des instances
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Mail_Storage\Mbox``, ``Zend\Mail\Storage\Folder\Mbox``, ``Zend\Mail_Storage\Maildir`` et
+``Zend\Mail\Storage\Mbox``, ``Zend\Mail\Storage\Folder\Mbox``, ``Zend\Mail\Storage\Maildir`` et
 ``Zend\Mail\Storage\Folder\Maildir`` implémentant les méthodes magiques ``__sleep()`` et ``__wakeup()``, ce qui
 veut dire qu'ils sont sérialisable. Ceci évite d'analyser les dossiers ou l'arbre des dossiers plus d'une fois.
 L'inconvénient est que votre stockage de Mbox ou de Maildir ne doit pas changer. Quelques contrôles faciles sont
@@ -557,7 +557,7 @@ changements et la vérifiez avant d'employer l'instance caché.
 Étendre les classes de protocoles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Les stockages distants utilisent deux classes : ``Zend\Mail_Storage\<NOM>`` et ``Zend\Mail_Protocol\<NOM>``. La
+Les stockages distants utilisent deux classes : ``Zend\Mail\Storage\<NOM>`` et ``Zend\Mail\Protocol\<NOM>``. La
 classe de protocole traduit les commandes et les réponses de protocole et issu de ou pour *PHP*, comme des
 méthodes pour les commandes ou les variables avec différentes structures pour les données. L'autre/classe
 principale met en application l'interface commune.
@@ -569,15 +569,15 @@ ports avant que nous puissions nous relier à POP3.
 .. code-block:: php
    :linenos:
 
-   Zend\Loader\Loader::loadClass('Zend\Mail_Storage\Pop3');
+   Zend\Loader\Loader::loadClass('Zend\Mail\Storage\Pop3');
 
    class Example_Mail_Exception extends Zend\Mail\Exception
    {}
 
-   class Example_Mail_Protocol_Exception extends Zend\Mail_Protocol\Exception
+   class Example_Mail_Protocol_Exception extends Zend\Mail\Protocol\Exception
    {}
 
-   class Example_Mail_Protocol_Pop3_Knock extends Zend\Mail_Protocol\Pop3
+   class Example_Mail_Protocol_Pop3_Knock extends Zend\Mail\Protocol\Pop3
    {
        private $host, $port;
 
@@ -608,7 +608,7 @@ ports avant que nous puissions nous relier à POP3.
        }
    }
 
-   class Example_Mail_Pop3_Knock extends Zend\Mail_Storage\Pop3
+   class Example_Mail_Pop3_Knock extends Zend\Mail\Storage\Pop3
    {
        public function __construct(array $params)
        {
@@ -713,7 +713,7 @@ taille du dossier de mails est absent (qui peut se produire dans Maildir++) :
        public function getQuota($fromStorage = false) {
            try {
                return parent::getQuota($fromStorage);
-           } catch (Zend\Mail_Storage\Exception $e) {
+           } catch (Zend\Mail\Storage\Exception $e) {
                if (!$fromStorage) {
                    // Erreur inconnue
                    throw $e;

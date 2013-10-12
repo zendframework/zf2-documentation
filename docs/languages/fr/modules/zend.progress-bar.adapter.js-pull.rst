@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.progressbar.adapter.jspull:
 
-Zend\ProgressBar_Adapter\JsPull
+Zend\ProgressBar\Adapter\JsPull
 ===============================
 
-``Zend\ProgressBar_Adapter\JsPull`` est l'opposé de jsPush, car il requiert de venir récupérer les nouvelles
+``Zend\ProgressBar\Adapter\JsPull`` est l'opposé de jsPush, car il requiert de venir récupérer les nouvelles
 mises à jour, plutôt que d'envoyer les mises à jour vers le navigateur. Généralement, vous devriez utiliser
 l'adaptateur avec l'option de persistance de ``Zend_ProgressBar``. Lors de l'appel, l'adaptateur envoie une chaîne
 *JSON* vers le navigateur, qui est comparable à la chaîne *JSON* envoyée par l'adaptateur jsPush. La seule

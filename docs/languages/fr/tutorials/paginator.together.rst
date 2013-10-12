@@ -25,7 +25,7 @@ cette façon.
        {
            // Configuration du script de navigation. Voyez le tutoriel sur le script
            // des éléments de contrôle de la pagination pour plus d'informations
-           Zend\View_Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
+           Zend\View\Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
 
            // Cherchons une connection à une base depuis le registre
            $db = Zend\Registry\Registry::get('db');

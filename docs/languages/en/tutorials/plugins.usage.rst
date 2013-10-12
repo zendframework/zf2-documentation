@@ -65,7 +65,7 @@ resolve to ``Foo_Validate_Even`` and ``Foo_Validate_Dozens``, respectively.
    found on that path. If the file is not found, it then moves on to the next prefix path.
 
    Once the stack of prefix paths has been exhausted, if no matching file has been found, it will throw a
-   ``Zend\Loader_PluginLoader\Exception``.
+   ``Zend\Loader\PluginLoader\Exception``.
 
 .. _learning.plugins.usage.override:
 
@@ -75,7 +75,7 @@ One strength of the PluginLoader is that its use of a LIFO stack allows you to o
 creating your own versions locally with a different prefix path, and registering that prefix path later in the
 stack.
 
-For example, let's consider ``Zend\View_Helper\FormButton`` (view helpers are one form of plugin). This view helper
+For example, let's consider ``Zend\View\Helper\FormButton`` (view helpers are one form of plugin). This view helper
 accepts three arguments, an element name (also used as the element's DOM identifier), a value (used as the button
 label), and an optional array of attributes. The helper then generates *HTML* markup for a form input element.
 

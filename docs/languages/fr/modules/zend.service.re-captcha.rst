@@ -56,7 +56,7 @@ Lorsque le formulaire est envoyé, vous devriez recevoir 2 champs 'recaptcha_cha
    );
 
 Une fois que vous possédez le résultat, vérifiez sa validité. Il s'agit d'un objet
-``Zend\Service_ReCaptcha\Response`` qui possède une méthode ``isValid()``.
+``Zend\Service\ReCaptcha\Response`` qui possède une méthode ``isValid()``.
 
 .. _zend.service.recaptcha.example-3:
 
@@ -79,7 +79,7 @@ vous.
 Hiding email addresses
 ----------------------
 
-``Zend\Service_ReCaptcha\MailHide`` can be used to hide email addresses. It will replace a part of an email address
+``Zend\Service\ReCaptcha\MailHide`` can be used to hide email addresses. It will replace a part of an email address
 with a link that opens a popup window with a ReCaptcha challenge. Solving the challenge will reveal the complete
 email address.
 
@@ -98,7 +98,7 @@ API.
 
    // Create an instance of the mailhide component, passing it your public and private keys as well as
    // the mail address you want to hide
-   $mailHide = new Zend\Service_ReCaptcha\Mailhide();
+   $mailHide = new Zend\Service\ReCaptcha\Mailhide();
    $mailHide->setPublicKey($pubKey);
    $mailHide->setPrivateKey($privKey);
    $mailHide->setEmail($mail);
@@ -117,7 +117,7 @@ the following table:
 
       .. _zend.service.recaptcha.mailhide.options.table:
 
-      .. table:: Zend\Service_ReCaptcha\MailHide options
+      .. table:: Zend\Service\ReCaptcha\MailHide options
 
          +--------------+-------------------------------------+---------------+----------------------------+
          |Option        |Description                          |Expected Values|Default Value               |
@@ -145,7 +145,7 @@ The configuration options can be set by sending it as the fourth argument to the
 
    // Create an instance of the mailhide component, passing it your public and private keys as well as
    // well the mail address you want to hide
-   $mailHide = new Zend\Service_ReCaptcha\Mailhide();
+   $mailHide = new Zend\Service\ReCaptcha\Mailhide();
    $mailHide->setPublicKey($pubKey);
    $mailHide->setPrivateKey($privKey);
    $mailHide->setOptions(array(

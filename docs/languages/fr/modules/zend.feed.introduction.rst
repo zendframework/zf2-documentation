@@ -12,7 +12,7 @@ l'avenir, la prise en charge des modifications pourrait aussi inclure la prise e
 publication Atom.
 
 Sur le plan de la programmation, ``Zend_Feed`` est constitué d'une classe de base ``Zend_Feed`` et de classes de
-base abstraites ``Zend\Feed\Abstract`` et ``Zend\Feed_Entry\Abstract``, permettant de représenter respectivement
+base abstraites ``Zend\Feed\Abstract`` et ``Zend\Feed\Entry\Abstract``, permettant de représenter respectivement
 des flux et des entrées ; ``Zend_Feed`` contient aussi des implémentations particulières de ces classes
 abstraites pour les flux et entrées *RSS* et Atom ainsi qu'un assistant en coulisses qui assure le bon
 fonctionnement de la syntaxe intuitive.

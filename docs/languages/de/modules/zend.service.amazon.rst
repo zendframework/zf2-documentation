@@ -68,7 +68,7 @@ Fluent Interface Design Pattern verwendet.
 .. code-block:: php
    :linenos:
 
-   $query = new Zend\Service_Amazon\Query('AMAZON_API_KEY',
+   $query = new Zend\Service\Amazon\Query('AMAZON_API_KEY',
                                           'US',
                                           'AMAZON_SECRET_KEY');
    $query->category('Books')->Keywords('PHP');
@@ -179,7 +179,7 @@ Dokumentation`_
 
 .. tip::
 
-   Die :ref:`Zend\Service_Amazon\Query <zend.service.amazon.query>` Klasse ist ein einfach zu benutzender Wrapper
+   Die :ref:`Zend\Service\Amazon\Query <zend.service.amazon.query>` Klasse ist ein einfach zu benutzender Wrapper
    für diese Methode.
 
 .. _zend.service.amazon.query:
@@ -192,11 +192,11 @@ Benutzen der alternativen Abfrage API
 Einführung
 ^^^^^^^^^^
 
-``Zend\Service_Amazon\Query`` bietet eine alternative *API* für die Benutzung der Amazon Web Services. Die
+``Zend\Service\Amazon\Query`` bietet eine alternative *API* für die Benutzung der Amazon Web Services. Die
 alternative *API* benutzt das Fluent Interface Pattern. Das bedeutet, alle Aufrufe können durchgeführt werden
 durch Benutzen von verketteten Methoden Aufrufen. (z.B., *$obj->method()->method2($arg)*)
 
-Die ``Zend\Service_Amazon\Query`` *API* benutzt Überladung um einfachst eine Teile Suche zu realisieren, und
+Die ``Zend\Service\Amazon\Query`` *API* benutzt Überladung um einfachst eine Teile Suche zu realisieren, und
 ermöglicht es, basierend auf den spezifizierten Kriterien, zu suchen. Jede der Optionen wird als Methoden Aufruf
 angeboten, und jedes Methoden Argument korrespondiert mit dem beschriebenen Options Wert:
 
@@ -210,7 +210,7 @@ festzulegen:
 .. code-block:: php
    :linenos:
 
-   $query = new Zend\Service_Amazon\Query('MY_API_KEY', 'US', 'AMAZON_SECRET_KEY');
+   $query = new Zend\Service\Amazon\Query('MY_API_KEY', 'US', 'AMAZON_SECRET_KEY');
    $query->Category('Books')->Keywords('PHP');
    $results = $query->search();
    foreach ($results as $result) {
@@ -231,39 +231,39 @@ Die folgenden klassen werden alle zurückgegeben durch :ref:`Zend\Service\Amazon
 
 
 
-   - :ref:`Zend\Service_Amazon\Item <zend.service.amazon.classes.item>`
+   - :ref:`Zend\Service\Amazon\Item <zend.service.amazon.classes.item>`
 
-   - :ref:`Zend\Service_Amazon\Image <zend.service.amazon.classes.image>`
+   - :ref:`Zend\Service\Amazon\Image <zend.service.amazon.classes.image>`
 
-   - :ref:`Zend\Service_Amazon\ResultSet <zend.service.amazon.classes.resultset>`
+   - :ref:`Zend\Service\Amazon\ResultSet <zend.service.amazon.classes.resultset>`
 
-   - :ref:`Zend\Service_Amazon\OfferSet <zend.service.amazon.classes.offerset>`
+   - :ref:`Zend\Service\Amazon\OfferSet <zend.service.amazon.classes.offerset>`
 
-   - :ref:`Zend\Service_Amazon\Offer <zend.service.amazon.classes.offer>`
+   - :ref:`Zend\Service\Amazon\Offer <zend.service.amazon.classes.offer>`
 
-   - :ref:`Zend\Service_Amazon\SimilarProduct <zend.service.amazon.classes.similarproduct>`
+   - :ref:`Zend\Service\Amazon\SimilarProduct <zend.service.amazon.classes.similarproduct>`
 
-   - :ref:`Zend\Service_Amazon\Accessories <zend.service.amazon.classes.accessories>`
+   - :ref:`Zend\Service\Amazon\Accessories <zend.service.amazon.classes.accessories>`
 
-   - :ref:`Zend\Service_Amazon\CustomerReview <zend.service.amazon.classes.customerreview>`
+   - :ref:`Zend\Service\Amazon\CustomerReview <zend.service.amazon.classes.customerreview>`
 
-   - :ref:`Zend\Service_Amazon\EditorialReview <zend.service.amazon.classes.editorialreview>`
+   - :ref:`Zend\Service\Amazon\EditorialReview <zend.service.amazon.classes.editorialreview>`
 
-   - :ref:`Zend\Service_Amazon\ListMania <zend.service.amazon.classes.listmania>`
+   - :ref:`Zend\Service\Amazon\ListMania <zend.service.amazon.classes.listmania>`
 
 
 
 .. _zend.service.amazon.classes.item:
 
-Zend\Service_Amazon\Item
+Zend\Service\Amazon\Item
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Amazon\Item`` ist ein Klassen Typ der benutzt wird um ein Amazon Teil darzustellen welches durch das
+``Zend\Service\Amazon\Item`` ist ein Klassen Typ der benutzt wird um ein Amazon Teil darzustellen welches durch das
 Web Service zurück gegeben wird. Es enthält alle Attribute des Teils wie z.B. Titel, Beschreibung, Reviews, usw.
 
 .. _zend.service.amazon.classes.item.asxml:
 
-Zend\Service_Amazon\Item::asXML()
+Zend\Service\Amazon\Item::asXML()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 string:``asXML()``
@@ -276,12 +276,12 @@ Gibt das original *XML* für dieses Teil zurück
 Eigenschaften
 ^^^^^^^^^^^^^
 
-``Zend\Service_Amazon\Item`` hat eine Anzahl an Eigenschaften welche eine direkte Beziehung zu Ihren Standard
+``Zend\Service\Amazon\Item`` hat eine Anzahl an Eigenschaften welche eine direkte Beziehung zu Ihren Standard
 Amazon *API* Gegenstücken haben.
 
 .. _zend.service.amazon.classes.item.properties.table-1:
 
-.. table:: Zend\Service_Amazon\Item Eigenschaften
+.. table:: Zend\Service\Amazon\Item Eigenschaften
 
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
    |Name            |Typ                         |Beschreibung                                                                                    |
@@ -292,27 +292,27 @@ Amazon *API* Gegenstücken haben.
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
    |SalesRank       |int                         |Verkaufs Rang des Teils                                                                         |
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
-   |SmallImage      |Zend\Service_Amazon\Image   |Kleines Bild des Tiles                                                                          |
+   |SmallImage      |Zend\Service\Amazon\Image   |Kleines Bild des Tiles                                                                          |
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
-   |MediumImage     |Zend\Service_Amazon\Image   |Mittleres Bild des Teils                                                                        |
+   |MediumImage     |Zend\Service\Amazon\Image   |Mittleres Bild des Teils                                                                        |
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
-   |LargeImage      |Zend\Service_Amazon\Image   |Großes Bild des Teils                                                                           |
+   |LargeImage      |Zend\Service\Amazon\Image   |Großes Bild des Teils                                                                           |
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
    |Subjects        |array                       |Inhalte des Teils                                                                               |
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
-   |Offers          |Zend\Service_Amazon\OfferSet|Summe der Angebote und Angebote für dieses Teil                                                 |
+   |Offers          |Zend\Service\Amazon\OfferSet|Summe der Angebote und Angebote für dieses Teil                                                 |
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
-   |CustomerReviews |array                       |Kunden Reviews dargestellt als Array von Zend\Service_Amazon\CustomerReview Objekten            |
+   |CustomerReviews |array                       |Kunden Reviews dargestellt als Array von Zend\Service\Amazon\CustomerReview Objekten            |
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
-   |EditorialReviews|array                       |Editorial Reviews dargestellt als Array von Zend\Service_Amazon\EditorialReview Objekten        |
+   |EditorialReviews|array                       |Editorial Reviews dargestellt als Array von Zend\Service\Amazon\EditorialReview Objekten        |
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
-   |SimilarProducts |array                       |Ähnliche Produkte dargestellt als Array von Zend\Service_Amazon\SimilarProduct Objekten         |
+   |SimilarProducts |array                       |Ähnliche Produkte dargestellt als Array von Zend\Service\Amazon\SimilarProduct Objekten         |
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
-   |Accessories     |array                       |Zubehör für dieses Teil dargestellt als Array von Zend\Service_Amazon\Accessories Objekten      |
+   |Accessories     |array                       |Zubehör für dieses Teil dargestellt als Array von Zend\Service\Amazon\Accessories Objekten      |
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
    |Tracks          |array                       |Ein Array mit Track Nummern und Namen für Musik CDs und DVDs                                    |
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
-   |ListmaniaLists  |array                       |Passende Listmania Liste für diese Teil, als Array von Zend\Service_Amazon\ListmainList Objekten|
+   |ListmaniaLists  |array                       |Passende Listmania Liste für diese Teil, als Array von Zend\Service\Amazon\ListmainList Objekten|
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
    |PromotionalTag  |string                      |Promotion Tag des Teils                                                                         |
    +----------------+----------------------------+------------------------------------------------------------------------------------------------+
@@ -321,10 +321,10 @@ Amazon *API* Gegenstücken haben.
 
 .. _zend.service.amazon.classes.image:
 
-Zend\Service_Amazon\Image
+Zend\Service\Amazon\Image
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Amazon\Image`` repräsentiert ein entferntes Bild für ein Produkt.
+``Zend\Service\Amazon\Image`` repräsentiert ein entferntes Bild für ein Produkt.
 
 .. _zend.service.amazon.classes.image.properties:
 
@@ -333,7 +333,7 @@ Eigenschaften
 
 .. _zend.service.amazon.classes.image.properties.table-1:
 
-.. table:: Zend\Service_Amazon\Image Eigenschaften
+.. table:: Zend\Service\Amazon\Image Eigenschaften
 
    +------+--------+-------------------------------+
    |Name  |Typ     |Beschreibung                   |
@@ -349,10 +349,10 @@ Eigenschaften
 
 .. _zend.service.amazon.classes.resultset:
 
-Zend\Service_Amazon\ResultSet
+Zend\Service\Amazon\ResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_Amazon\ResultSet`` Objekte werden zurückgegeben durch :ref:`Zend\Service\Amazon::itemSearch()
+``Zend\Service\Amazon\ResultSet`` Objekte werden zurückgegeben durch :ref:`Zend\Service\Amazon::itemSearch()
 <zend.service.amazon.itemsearch>` und erlauben es, die vielfach zurück gelieferten Resultate, einfachst zu
 Handhaben.
 
@@ -365,7 +365,7 @@ Handhaben.
 
 .. _zend.service.amazon.classes.resultset.totalresults:
 
-Zend\Service_Amazon\ResultSet::totalResults()
+Zend\Service\Amazon\ResultSet::totalResults()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 int:``totalResults()``
@@ -375,12 +375,12 @@ Liefert die Gesamtanzahl der Resultate welche die Suche zurückgegeben hat
 
 .. _zend.service.amazon.classes.offerset:
 
-Zend\Service_Amazon\OfferSet
+Zend\Service\Amazon\OfferSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Jedes Resultat welches durch :ref:`Zend\Service\Amazon::itemSearch() <zend.service.amazon.itemsearch>` und
 :ref:`Zend\Service\Amazon::itemLookup() <zend.service.amazon.itemlookup>` zurückgegeben wird beinhaltet ein
-``Zend\Service_Amazon\OfferSet`` Objekt durch welches Preisinformationen für das Teil empfangen werden können.
+``Zend\Service\Amazon\OfferSet`` Objekt durch welches Preisinformationen für das Teil empfangen werden können.
 
 .. _zend.service.amazon.classes.offerset.parameters:
 
@@ -389,7 +389,7 @@ Eigenschaften
 
 .. _zend.service.amazon.classes.offerset.parameters.table-1:
 
-.. table:: Zend\Service_Amazon\OfferSet Properties
+.. table:: Zend\Service\Amazon\OfferSet Properties
 
    +----------------------+------+------------------------------------------------------------------+
    |Name                  |Typ   |Beschreibung                                                      |
@@ -410,21 +410,21 @@ Eigenschaften
    +----------------------+------+------------------------------------------------------------------+
    |TotalRefurbished      |int   |Erhältliche Gesamtanzahl dieses Teils die "Wiederhergestellt" sind|
    +----------------------+------+------------------------------------------------------------------+
-   |Offers                |array |Ein Array von Zend\Service_Amazon\Offer Objekten.                 |
+   |Offers                |array |Ein Array von Zend\Service\Amazon\Offer Objekten.                 |
    +----------------------+------+------------------------------------------------------------------+
 
 :ref:`Zurück zur Liste der Klassen <zend.service.amazon.classes>`
 
 .. _zend.service.amazon.classes.offer:
 
-Zend\Service_Amazon\Offer
+Zend\Service\Amazon\Offer
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Jedes Angebot für ein Teil wird als ``Zend\Service_Amazon\Offer`` Objekt zurück gegeben.
+Jedes Angebot für ein Teil wird als ``Zend\Service\Amazon\Offer`` Objekt zurück gegeben.
 
 .. _zend.service.amazon.classes.offer.properties:
 
-Zend\Service_Amazon\Offer Eigenschaften
+Zend\Service\Amazon\Offer Eigenschaften
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. _zend.service.amazon.classes.offer.properties.table-1:
@@ -457,11 +457,11 @@ Zend\Service_Amazon\Offer Eigenschaften
 
 .. _zend.service.amazon.classes.similarproduct:
 
-Zend\Service_Amazon\SimilarProduct
+Zend\Service\Amazon\SimilarProduct
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Bei der Suche nach Teilen gibt Amazon auch eine Liste an ähnlichen Produkten zurück, welche dem Suchenden
-empfohlen werden. Jedes dieser Produkte wird als ``Zend\Service_Amazon\SimilarProduct`` Objekt zurückgegeben.
+empfohlen werden. Jedes dieser Produkte wird als ``Zend\Service\Amazon\SimilarProduct`` Objekt zurückgegeben.
 
 Jedes Objekt enthält die Informationen welche es erlauben eine Subanfrage zu machen, um die kompletten
 Informationen zu diesem Teil zu bekommen.
@@ -473,7 +473,7 @@ Eigenschaften
 
 .. _zend.service.amazon.classes.similarproduct.properties.table-1:
 
-.. table:: Zend\Service_Amazon\SimilarProduct Eigenschaften
+.. table:: Zend\Service\Amazon\SimilarProduct Eigenschaften
 
    +-----+------+----------------------------------------+
    |Name |Typ   |Beschreibung                            |
@@ -487,10 +487,10 @@ Eigenschaften
 
 .. _zend.service.amazon.classes.accessories:
 
-Zend\Service_Amazon\Accessories
+Zend\Service\Amazon\Accessories
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Zubehör für das zurückgegebene Teil werden als ``Zend\Service_Amazon\Accessories`` Objekte dargestellt.
+Zubehör für das zurückgegebene Teil werden als ``Zend\Service\Amazon\Accessories`` Objekte dargestellt.
 
 .. _zend.service.amazon.classes.accessories.properties:
 
@@ -499,7 +499,7 @@ Eigenschaften
 
 .. _zend.service.amazon.classes.accessories.properties.table-1:
 
-.. table:: Zend\Service_Amazon\Accessories Eigenschaften
+.. table:: Zend\Service\Amazon\Accessories Eigenschaften
 
    +-----+------+----------------------------------------+
    |Name |Typ   |Beschreibung                            |
@@ -513,10 +513,10 @@ Eigenschaften
 
 .. _zend.service.amazon.classes.customerreview:
 
-Zend\Service_Amazon\CustomerReview
+Zend\Service\Amazon\CustomerReview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Jede Kunden Review wird als ``Zend\Service_Amazon\CustomerReview`` Objekt zurückgegeben.
+Jede Kunden Review wird als ``Zend\Service\Amazon\CustomerReview`` Objekt zurückgegeben.
 
 .. _zend.service.amazon.classes.customerreview.properties:
 
@@ -525,7 +525,7 @@ Eigenschaften
 
 .. _zend.service.amazon.classes.customerreview.properties.table-1:
 
-.. table:: Zend\Service_Amazon\CustomerReview Eigenschaften
+.. table:: Zend\Service\Amazon\CustomerReview Eigenschaften
 
    +------------+------+------------------------------------+
    |Name        |Typ   |Beschreibung                        |
@@ -549,10 +549,10 @@ Eigenschaften
 
 .. _zend.service.amazon.classes.editorialreview:
 
-Zend\Service_Amazon\EditorialReview
+Zend\Service\Amazon\EditorialReview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Jede Editorial review des Teils wird als ``Zend\Service_Amazon\EditorialReview`` Objekt zurückgegeben.
+Jede Editorial review des Teils wird als ``Zend\Service\Amazon\EditorialReview`` Objekt zurückgegeben.
 
 .. _zend.service.amazon.classes.editorialreview.properties:
 
@@ -561,7 +561,7 @@ Eigenschaften
 
 .. _zend.service.amazon.classes.editorialreview.properties.table-1:
 
-.. table:: Zend\Service_Amazon\EditorialReview Eigenschaften
+.. table:: Zend\Service\Amazon\EditorialReview Eigenschaften
 
    +-------+------+---------------------------+
    |Name   |Typ   |Beschreibung               |
@@ -575,10 +575,10 @@ Eigenschaften
 
 .. _zend.service.amazon.classes.listmania:
 
-Zend\Service_Amazon\Listmania
+Zend\Service\Amazon\Listmania
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Jedes List Mania List Ergebnis des Teils wird als ``Zend\Service_Amazon\Listmania`` Objekt zurückgegeben.
+Jedes List Mania List Ergebnis des Teils wird als ``Zend\Service\Amazon\Listmania`` Objekt zurückgegeben.
 
 .. _zend.service.amazon.classes.listmania.properties:
 
@@ -587,7 +587,7 @@ Eigenschaften
 
 .. _zend.service.amazon.classes.listmania.properties.table-1:
 
-.. table:: Zend\Service_Amazon\Listmania Eigenschaften
+.. table:: Zend\Service\Amazon\Listmania Eigenschaften
 
    +--------+------+--------------+
    |Name    |Typ   |Beschreibung  |

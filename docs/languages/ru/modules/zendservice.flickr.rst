@@ -49,7 +49,7 @@ Flickr, обратитесь к `документации по API веб-сер
 - *userSearch()*: Принимает строку запроса, состоящую из разделенных
   пробелами тегов, массив опций поиска как опциональный второй
   параметр и возвращает набор фотографий в виде объекта
-  *Zend\Service_Flickr\ResultSet*.
+  *Zend\Service\Flickr\ResultSet*.
 
 - *getIdByUsername()*: Возвращает ID пользователя, связанного с данным
   именем.
@@ -138,17 +138,17 @@ Flickr, обратитесь к `документации по API веб-сер
 Объекты следующих классов возвращаются методами *tagSearch()* и
 *userSearch()*:
 
-   - :ref:`Zend\Service_Flickr\ResultSet <zend.service.flickr.classes.resultset>`
+   - :ref:`Zend\Service\Flickr\ResultSet <zend.service.flickr.classes.resultset>`
 
-   - :ref:`Zend\Service_Flickr\Result <zend.service.flickr.classes.result>`
+   - :ref:`Zend\Service\Flickr\Result <zend.service.flickr.classes.result>`
 
-   - :ref:`Zend\Service_Flickr\Image <zend.service.flickr.classes.image>`
+   - :ref:`Zend\Service\Flickr\Image <zend.service.flickr.classes.image>`
 
 
 
 .. _zend.service.flickr.classes.resultset:
 
-Zend\Service_Flickr\ResultSet
+Zend\Service\Flickr\ResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Представляет набор результатов поиска, возвращенных Flickr
@@ -164,7 +164,7 @@ Zend\Service_Flickr\ResultSet
 Свойства класса
 ^^^^^^^^^^^^^^^
 
-.. table:: Свойства класса Zend\Service_Flickr\ResultSet
+.. table:: Свойства класса Zend\Service\Flickr\ResultSet
 
    +---------------------+---+------------------------------------------------------+
    |Имя                  |Тип|Описание                                              |
@@ -178,7 +178,7 @@ Zend\Service_Flickr\ResultSet
 
 .. _zend.service.flickr.classes.resultset.totalResults:
 
-Zend\Service_Flickr\ResultSet::totalResults()
+Zend\Service\Flickr\ResultSet::totalResults()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 int:``totalResults()``
@@ -190,7 +190,7 @@ int:``totalResults()``
 
 .. _zend.service.flickr.classes.result:
 
-Zend\Service_Flickr\Result
+Zend\Service\Flickr\Result
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Отдельный результат запроса к Flickr.
@@ -200,7 +200,7 @@ Zend\Service_Flickr\Result
 Свойства класса
 ^^^^^^^^^^^^^^^
 
-.. table:: Свойства класса Zend\Service_Flickr\Result
+.. table:: Свойства класса Zend\Service\Flickr\Result
 
    +----------+-------------------------+--------------------------------------------------------------------+
    |Имя       |Тип                      |Описание                                                            |
@@ -231,24 +231,24 @@ Zend\Service_Flickr\Result
    +----------+-------------------------+--------------------------------------------------------------------+
    |iconserver|string                   |Сервер, используемый в URL иконок                                   |
    +----------+-------------------------+--------------------------------------------------------------------+
-   |Square    |Zend\Service_Flickr\Image|Уменьшенная копия изображения 75x75                                 |
+   |Square    |Zend\Service\Flickr\Image|Уменьшенная копия изображения 75x75                                 |
    +----------+-------------------------+--------------------------------------------------------------------+
-   |Thumbnail |Zend\Service_Flickr\Image|Уменьшенная копия изображения 100x100                               |
+   |Thumbnail |Zend\Service\Flickr\Image|Уменьшенная копия изображения 100x100                               |
    +----------+-------------------------+--------------------------------------------------------------------+
-   |Small     |Zend\Service_Flickr\Image|Уменьшенная копия изображения 240x240                               |
+   |Small     |Zend\Service\Flickr\Image|Уменьшенная копия изображения 240x240                               |
    +----------+-------------------------+--------------------------------------------------------------------+
-   |Medium    |Zend\Service_Flickr\Image|Уменьшенная копия изображения 500x500                               |
+   |Medium    |Zend\Service\Flickr\Image|Уменьшенная копия изображения 500x500                               |
    +----------+-------------------------+--------------------------------------------------------------------+
-   |Large     |Zend\Service_Flickr\Image|Уменьшенная копия изображения 640x640                               |
+   |Large     |Zend\Service\Flickr\Image|Уменьшенная копия изображения 640x640                               |
    +----------+-------------------------+--------------------------------------------------------------------+
-   |Original  |Zend\Service_Flickr\Image|Оригинал изображения                                                |
+   |Original  |Zend\Service\Flickr\Image|Оригинал изображения                                                |
    +----------+-------------------------+--------------------------------------------------------------------+
 
 :ref:`Назад к списку классов <zend.service.flickr.classes>`
 
 .. _zend.service.flickr.classes.image:
 
-Zend\Service_Flickr\Image
+Zend\Service\Flickr\Image
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Представляет изображение, возвращенное в результате поиска.
@@ -258,7 +258,7 @@ Zend\Service_Flickr\Image
 Свойства класса
 ^^^^^^^^^^^^^^^
 
-.. table:: Свойства класса Zend\Service_Flickr\Image
+.. table:: Свойства класса Zend\Service\Flickr\Image
 
    +--------+------+----------------------------------------+
    |Имя     |Тип   |Описание                                |

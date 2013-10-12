@@ -50,7 +50,7 @@ SOAP Transaktionen betrachten
 Die gesamte Kommunikation mit StrikeIron wird durch Verwenden der *SOAP* Erweiterung durchgeführt. Es kann
 zeitweise nützlich sein das mit StrikeIron getauschte *XML* für Debugging Zwecke zu betrachten.
 
-Jeder StrikeIron Client (Subklasse von ``Zend\Service_StrikeIron\Base``) enthält eine ``getSoapClient()`` Methode
+Jeder StrikeIron Client (Subklasse von ``Zend\Service\StrikeIron\Base``) enthält eine ``getSoapClient()`` Methode
 um die darunterliegende Instanz von ``SOAPClient`` zu retournieren, die für die Kommunikation mit StrikeIron
 verwendet wird.
 

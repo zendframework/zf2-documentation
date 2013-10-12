@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.elasticip:
 
-Zend\Service_Amazon\Ec2: Elastische IP Adressen
+Zend\Service\Amazon\Ec2: Elastische IP Adressen
 ===============================================
 
 Standardmäßig werden allen Amazon EC2 Instanzen beim Starten zwei IP Adressen zugeordnet: eine private (RFC 1918)

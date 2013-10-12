@@ -136,8 +136,8 @@ Abstrakte Klassen
 Generell folgen abstrakte Klassen der gleichen Konvention wie :ref:`Klassen
 <coding-standard.naming-conventions.classes>`, mit einer zusätzlichen Regel: Die Namen von abstrakten Klassen
 müssen mit derm Term "Abstract" enden, und dem Term darf kein Unterstrich vorangestellt sein. Als Beispiel wird
-``Zend\Controller_Plugin\Abstract`` als ungültig angenommen, aber ``Zend\Controller\PluginAbstract`` oder
-``Zend\Controller_Plugin\PluginAbstract`` wären gültige Namen.
+``Zend\Controller\Plugin\Abstract`` als ungültig angenommen, aber ``Zend\Controller\PluginAbstract`` oder
+``Zend\Controller\Plugin\PluginAbstract`` wären gültige Namen.
 
 .. note::
 
@@ -151,7 +151,7 @@ müssen mit derm Term "Abstract" enden, und dem Term darf kein Unterstrich voran
    beide sind reservierte Schlüsselwörter in *PHP*. Wenn wir den Namen der (Unter)Komponente dem Klassennamen
    voranstellen können wir diese Probleme vermeiden.
 
-   Um die Situation zu illustrieren, nehmen wir an dass die Klasse ``Zend\Controller_Request\Abstract`` konvertiert
+   Um die Situation zu illustrieren, nehmen wir an dass die Klasse ``Zend\Controller\Request\Abstract`` konvertiert
    wird um Namespaces zu verwenden:
 
    .. code-block:: php
@@ -187,8 +187,8 @@ Interfaces
 
 Generell folgen Interfaces der gleichen Konvention wie :ref:`Klassen <coding-standard.naming-conventions.classes>`,
 mit einer zusätzlichen Regel: Die Namen von Interfaces können optional mit dem Term "Interface" enden, aber dem
-Term darf kein Unterstrich vorangestellt sein. Als Beispiel wird ``Zend\Controller_Plugin\Interface`` als ungültig
-angenommen, aber ``Zend\Controller\PluginInterface`` oder ``Zend\Controller_Plugin\PluginInterface`` wären
+Term darf kein Unterstrich vorangestellt sein. Als Beispiel wird ``Zend\Controller\Plugin\Interface`` als ungültig
+angenommen, aber ``Zend\Controller\PluginInterface`` oder ``Zend\Controller\Plugin\PluginInterface`` wären
 gültige Namen.
 
 Wärend diese Regel nicht benötigt wird, wird Sie stark empfohlen, da Sie Entwicklern einen guten visuellen

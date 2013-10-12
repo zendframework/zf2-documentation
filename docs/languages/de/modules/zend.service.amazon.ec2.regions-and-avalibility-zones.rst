@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.zones:
 
-Zend\Service_Amazon\Ec2: Regionen und Availability Zones
+Zend\Service\Amazon\Ec2: Regionen und Availability Zones
 ========================================================
 
 Amazon EC2 bietet die Möglichkeit Instanzen in verschiedene Regionen und Avaiability Zonen zu patzieren. Regionen

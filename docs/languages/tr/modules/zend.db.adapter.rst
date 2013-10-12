@@ -101,7 +101,7 @@ yapıcısına verilen parametreler dizisi gibidir.
        'dbname'   => 'test'
    ));
 
-Zend\Db_Adapter\Abstract sınıfını genişleten bir sınıf oluşturup , sınıf adını "Zend\Db\Adapter" paket
+Zend\Db\Adapter\Abstract sınıfını genişleten bir sınıf oluşturup , sınıf adını "Zend\Db\Adapter" paket
 öneki ile isimlendirmediyseniz bağdaştırınızı yüklemek için bağdaştırıcı sınıfının kılavuzluk
 eden kısmını parametre dizisindeki 'adapterNamespace' anahtarı ile belirtirseniz *factory()* metodunu
 kullanabilirsiniz.
@@ -307,7 +307,7 @@ uygulama kodunuzu basitleştirmenize yardım edebilir.
    try {
        $db = Zend\Db\Db::factory('Pdo_Mysql', $parameters);
        $db->getConnection();
-   } catch (Zend\Db_Adapter\Exception $e) {
+   } catch (Zend\Db\Adapter\Exception $e) {
        // muhtemelen geçersiz oturum bilgisi ,veya belki de RDBMS çalışmıyor
    } catch (Zend_Exception $e) {
        // muhtemelen factory() belirli Bağdaştırıcı sınıfını yükleyemedi
@@ -1168,7 +1168,7 @@ Diğer Veri tabanı deyimlerinin çalıştırılması
 ---------------------------------------------
 
 PHP veri tabanı eklentisi tarafından sağlanan bağlantı nesnesine direk bağlantı kurma ihtiyacınız olacak
-durumlar olabilir. Bu eklentilerin kimisi Zend\Db_Adapter\Abstract tarafından kapsanmayan özellikler sunabilir.
+durumlar olabilir. Bu eklentilerin kimisi Zend\Db\Adapter\Abstract tarafından kapsanmayan özellikler sunabilir.
 
 Örneğin Zend_Db'nin çalıştırdığı tüm SQL deyimleri önce hazırlanır sonra çalıştırılır. Ancak
 bazı veri tabanı özellikleri hazırlanmış deyimlerle uyumsuzdur. CREATE ve ALTER gibi DDL deyimleri MySQL'de

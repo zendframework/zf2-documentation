@@ -22,7 +22,7 @@ defaults can be done through the use of the ``clearDefaultFrom()`` and ``clearDe
 
    // Créer un transport
    $config = array('name' => 'sender.example.com');
-   $transport = new Zend\Mail_Transport\Smtp('mail.example.com', $config);
+   $transport = new Zend\Mail\Transport\Smtp('mail.example.com', $config);
 
    // Ajouter les nom et adresses "From" & "Reply-To" pour tous les émails
    // à envoyer
@@ -56,9 +56,9 @@ connexion entre chaque distribution en accédant à l'objet de protocole de tran
    :linenos:
 
    // Créer un transport
-   $transport = new Zend\Mail_Transport\Smtp();
+   $transport = new Zend\Mail\Transport\Smtp();
 
-   $protocol = new Zend\Mail_Protocol\Smtp('mail.example.com');
+   $protocol = new Zend\Mail\Protocol\Smtp('mail.example.com');
    $protocol->connect();
    $protocol->helo('sender.example.com');
 

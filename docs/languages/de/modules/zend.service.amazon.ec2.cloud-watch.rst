@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.cloudwatch:
 
-Zend\Service_Amazon\Ec2: CloudWatch Monitoring
+Zend\Service\Amazon\Ec2: CloudWatch Monitoring
 ==============================================
 
 Amazon CloudWatch ist ein einfach zu verwendender Web Service der vollständiges Monitoring für Amazon Elastic

@@ -17,8 +17,8 @@ Pour instancier un sérialiseur, vous devriez utiliser la méthode de fabrique d
    :linenos:
 
    $serializer = Zend\Serializer\Serializer::factory('PhpSerialize');
-   // $serializer est instance de Zend\Serializer_Adapter\AdapterInterface,
-   // précisément Zend\Serializer_Adapter\PhpSerialize
+   // $serializer est instance de Zend\Serializer\Adapter\AdapterInterface,
+   // précisément Zend\Serializer\Adapter\PhpSerialize
 
    try {
        $serialized = $serializer->serialize($data);

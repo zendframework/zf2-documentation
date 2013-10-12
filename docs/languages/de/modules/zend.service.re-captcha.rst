@@ -63,7 +63,7 @@ Wenn das Formular übertragen wurde, sollte man zwei Felder empfangen haben, 're
    );
 
 Sobald man das Ergebnis hat, kann es getestet werden um zu sehen ob es gültig ist. Das Ergebnis ist ein
-``Zend\Service_ReCaptcha\Response`` Objekt, welche eine ``isValid()`` Methode anbietet.
+``Zend\Service\ReCaptcha\Response`` Objekt, welche eine ``isValid()`` Methode anbietet.
 
 .. _zend.service.recaptcha.example-4:
 
@@ -86,7 +86,7 @@ automatisch durchgeführt.
 Email Adressen verstecken
 -------------------------
 
-``Zend\Service_ReCaptcha\MailHide`` kann verwendet werden um Email Adressen zu verstecken. Es ersetzt den Teil der
+``Zend\Service\ReCaptcha\MailHide`` kann verwendet werden um Email Adressen zu verstecken. Es ersetzt den Teil der
 Email Adresse mit einem Link der ein Popup Fenster mit einer reCAPTCHA Challenge öffnet. Das Lösen der Challenge
 gibt die komplette Email Adresse zurück.
 
@@ -105,7 +105,7 @@ Mailhide *API* erstellen.
 
    // Eine Instanz der Mailhide Komponente erstellen, dieser die öffentlichen und
    // privaten Schlüssel übergeben sowie die Mail Adresse die man verstecken will
-   $mailHide = new Zend\Service_ReCaptcha\Mailhide();
+   $mailHide = new Zend\Service\ReCaptcha\Mailhide();
    $mailHide->setPublicKey($pubKey);
    $mailHide->setPrivateKey($privKey);
    $mailHide->setEmail($mail);
@@ -124,7 +124,7 @@ setzen. Die vorhandenen Optionen sind in der folgenden Tabelle aufgelistet:
 
       .. _zend.service.recaptcha.mailhide.options.table:
 
-      .. table:: Zend\Service_ReCaptcha\MailHide options
+      .. table:: Zend\Service\ReCaptcha\MailHide options
 
          +--------------+--------------------------------------+---------------+----------------------------+
          |Option        |Beschreibung                          |Erwartete Werte|Standard Werte              |
@@ -153,7 +153,7 @@ werden oder indem die ``setOptions($options)`` aufgerufen wird, welche ein assoz
 
    // Eine Instanz der Mailhide Komponente erstellen, dieser die öffentlichen und
    // privaten Schlüssel übergeben sowie einige Konfigurations Optionen
-   $mailHide = new Zend\Service_ReCaptcha\Mailhide();
+   $mailHide = new Zend\Service\ReCaptcha\Mailhide();
    $mailHide->setPublicKey($pubKey);
    $mailHide->setPrivateKey($privKey);
    $mailHide->setOptions(array(

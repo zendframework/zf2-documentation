@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2:
 
-Zend\Service_Amazon\Ec2
+Zend\Service\Amazon\Ec2
 =======================
 
 .. _zend.service.amazon.ec2.introduction:
@@ -9,7 +9,7 @@ Zend\Service_Amazon\Ec2
 Einführung
 ----------
 
-``Zend\Service_Amazon\Ec2`` bietet ein Interface zu Amazon's Elastic Clound Computing (EC2).
+``Zend\Service\Amazon\Ec2`` bietet ein Interface zu Amazon's Elastic Clound Computing (EC2).
 
 .. _zend.service.amazon.ec2.whatis:
 

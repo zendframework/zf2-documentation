@@ -36,7 +36,7 @@ Récupérer vos entrées
 
 ``Zend\Service\Delicious`` fournis trois méthodes pour récupérer vos entrées : ``getPosts()``,
 ``getRecentPosts()`` et ``getAllPosts()``. Elles retournent toutes une instance de la classe
-``Zend\Service_Delicious\PostList``, qui contient toutes les entrées récupérées.
+``Zend\Service\Delicious\PostList``, qui contient toutes les entrées récupérées.
 
 .. code-block:: php
    :linenos:
@@ -49,7 +49,7 @@ Récupérer vos entrées
     * @param string $tag Optionnel pour filtrer par tag
     * @param Zend_Date $dt Optionnel pour filtrer par date
     * @param string $url Optionnel pour filtrer par url
-    * @return Zend\Service_Delicious\PostList
+    * @return Zend\Service\Delicious\PostList
     */
    public function getPosts($tag = null, $dt = null, $url = null);
 
@@ -59,7 +59,7 @@ Récupérer vos entrées
     * @param string $tag Optionnel pour filtrer par tag
     * @param string $count Nombre maximum d'entrées à récupérer
     *                     (15 par défaut)
-    * @return Zend\Service_Delicious\PostList
+    * @return Zend\Service\Delicious\PostList
     */
    public function getRecentPosts($tag = null, $count = 15);
 
@@ -67,13 +67,13 @@ Récupérer vos entrées
     * Récupère toutes les entrées
     *
     * @param string $tag Optionnel pour filtrer par tag
-    * @return Zend\Service_Delicious\PostList
+    * @return Zend\Service\Delicious\PostList
     */
    public function getAllPosts($tag = null);
 
 .. _zend.service.delicious.postlist:
 
-Zend\Service_Delicious\PostList
+Zend\Service\Delicious\PostList
 -------------------------------
 
 Des instances de cette classe sont retournées par les méthodes ``getPosts()``, ``getAllPosts()``,
@@ -180,7 +180,7 @@ la méthode ``withUrl()``:
 
 .. rubric:: Enchaînement des appels de méthode
 
-Toutes les méthodes "setter" renvoient l'objet ``Zend\Service_Delicious\PostList`` vous pouvez donc chaîner les
+Toutes les méthodes "setter" renvoient l'objet ``Zend\Service\Delicious\PostList`` vous pouvez donc chaîner les
 appels aux méthodes en utilisant une interface fluide.
 
 .. code-block:: php
@@ -200,7 +200,7 @@ Supprimer des entrées
 ---------------------
 
 Il y a deux moyens de supprimer une entrée, en spécifiant son *URL* ou en appelant la méthode ``delete()`` sur
-un objet Zend\Service_Delicious\PostList.
+un objet Zend\Service\Delicious\PostList.
 
 .. _zend.service.delicious.deleting_posts.deleting_posts:
 
@@ -215,7 +215,7 @@ un objet Zend\Service_Delicious\PostList.
    // en spécifiant l' URL
    $delicious->deletePost('http://framework.zend.com');
 
-   // en appelant la méthode de l'objet Zend\Service_Delicious\PostList
+   // en appelant la méthode de l'objet Zend\Service\Delicious\PostList
    $posts = $delicious->getPosts();
    $posts[0]->delete();
 
@@ -228,7 +228,7 @@ Ajout d'entrées
 ---------------
 
 Pour ajouter une entrée vous devez appeler la méthode ``createNewPost()``, qui renvoie un objet
-``Zend\Service_Delicious\Post``. Quand vous éditez l'entrée, vous devez la sauvegarder dans la base de donnée de
+``Zend\Service\Delicious\Post``. Quand vous éditez l'entrée, vous devez la sauvegarder dans la base de donnée de
 del.icio.us en appelant la méthode ``save()``.
 
 .. _zend.service.delicious.adding_posts.adding_a_post:
@@ -315,7 +315,7 @@ L'API Web del.icio.us autorise l'accès aux données publiques de tous les utili
    +----------------+----------------------------------------+-------------------------------+
    |getUserNetwork()|Récupère le réseau d'un utilisateur     |Array                          |
    +----------------+----------------------------------------+-------------------------------+
-   |getUserPosts()  |Récupère les entrées d'un utilisateur   |Zend\Service_Delicious\PostList|
+   |getUserPosts()  |Récupère les entrées d'un utilisateur   |Zend\Service\Delicious\PostList|
    +----------------+----------------------------------------+-------------------------------+
    |getUserTags()   |Récupère les étiquettes d'un utilisateur|Array                          |
    +----------------+----------------------------------------+-------------------------------+
@@ -350,12 +350,12 @@ Entrées publiques
 ^^^^^^^^^^^^^^^^^
 
 Quand vous récupérez des entrées publiques, la méthode ``getUserPosts()`` retourne un objet
-``Zend\Service_Delicious\PostList`` qui contient des objets ``Zend\Service_Delicious\SimplePost``. Ces derniers
+``Zend\Service\Delicious\PostList`` qui contient des objets ``Zend\Service\Delicious\SimplePost``. Ces derniers
 contiennent des informations basiques sur l'entrée : *URL*, title, notes, and tags.
 
 .. _zend.service.delicious.public_data.posts.SimplePost_methods:
 
-.. table:: Méthodes de la classe Zend\Service_Delicious\SimplePost
+.. table:: Méthodes de la classe Zend\Service\Delicious\SimplePost
 
    +----------+-----------------------------------+--------------+
    |Nom       |Description                        |Type de retour|

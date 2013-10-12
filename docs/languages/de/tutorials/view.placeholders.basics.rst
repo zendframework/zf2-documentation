@@ -60,7 +60,7 @@ wir die Sidebar in der Sidebar einer Ressource Methode unserer Bootstrap ein:
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        // ...
 

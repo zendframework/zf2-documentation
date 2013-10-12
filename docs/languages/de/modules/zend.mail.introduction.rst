@@ -11,14 +11,14 @@ Beginnen
 
 ``Zend_Mail`` stellt verallgemeinerte Funktionalitäten zum Verfassen und Senden sowohl von Text E-Mails als auch
 von *MIME*-konformen mehrteiligen E-Mails bereit. Mails können mit ``Zend_Mail`` durch den Standardtransport
-``Zend\Mail_Transport\Sendmail`` oder über ``Zend\Mail_Transport\Smtp`` versendet werden.
+``Zend\Mail\Transport\Sendmail`` oder über ``Zend\Mail\Transport\Smtp`` versendet werden.
 
 .. _zend.mail.introduction.example-1:
 
 .. rubric:: Einfache E-Mail mit Zend_Mail
 
 Eine einfache E-Mail besteht aus einigen Empfängern, einem Betreff, einem Hauptteil und einem Versender. Um solch
-eine Mail durch Verwenden von ``Zend\Mail_Transport\Sendmail`` zu Verwenden muß folgendes getan werden:
+eine Mail durch Verwenden von ``Zend\Mail\Transport\Sendmail`` zu Verwenden muß folgendes getan werden:
 
 .. code-block:: php
    :linenos:
@@ -64,7 +64,7 @@ Die meisten Methoden des ``Zend_Mail`` Objekts können mit dem bequemen Flüssig
 Den standardmäßigen Sendmail Transport konfigurieren
 ----------------------------------------------------
 
-Der standard Transport für eine ``Zend_Mail`` Instanz ist ``Zend\Mail_Transport\Sendmail``. Es ist
+Der standard Transport für eine ``Zend_Mail`` Instanz ist ``Zend\Mail\Transport\Sendmail``. Es ist
 notwendigerweise ein Wrapper für *PHP*'s `mail()`_ Funktion. Wenn der `mail()`_ Funktion zusätzliche Parameter
 mitgegeben werden sollen muß einfach eine neue Transport Instanz erzeugt werden und die Parameter dem Konstruktor
 übergeben werden. Die neue Transport Instanz kann dann als standard ``Zend_Mail`` Transport handeln oder der
@@ -72,14 +72,14 @@ mitgegeben werden sollen muß einfach eine neue Transport Instanz erzeugt werden
 
 .. _zend.mail.introduction.sendmail.example-1:
 
-.. rubric:: Zusätzliche Parameter einem Zend\Mail_Transport\Sendmail Transport übergeben
+.. rubric:: Zusätzliche Parameter einem Zend\Mail\Transport\Sendmail Transport übergeben
 
 Dieses Beispiel zeigt wie der Rückgabe-Pfad der `mail()`_ Funktion geändert werden kann.
 
 .. code-block:: php
    :linenos:
 
-   $tr = new Zend\Mail_Transport\Sendmail('-freturn_to_me@example.com');
+   $tr = new Zend\Mail\Transport\Sendmail('-freturn_to_me@example.com');
    Zend\Mail\Mail::setDefaultTransport($tr);
 
    $mail = new Zend\Mail\Mail();

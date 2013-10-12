@@ -15,7 +15,7 @@ es auch erlaubt den eigenen Status zu erhalten und zu aktualisieren, Freunden zu
 schicken, Tweets als Favoriten markieren und vieles mehr.
 
 ``Zend\Service\Twitter`` implementiert einen *REST* Service und alle Methoden geben eine Instanz von
-``Zend\Rest_Client\Result`` zurück.
+``Zend\Rest\Client\Result`` zurück.
 
 ``Zend\Service\Twitter`` ist in Untersektionen geteilt damit man einfachst erkennen kann welcher Typ von Aufrufen
 angefragt wird.

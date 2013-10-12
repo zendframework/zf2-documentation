@@ -12,17 +12,17 @@ Ensuite vous pouvez appeler la méthode ``write()`` du rédacteur et le fichier 
 pouvez aussi fournir ``$filename`` et ``$config`` directement à la méthode ``write()``. Actuellement les
 rédacteurs suivants sont embarqués avec ``Zend\Config\Writer``\  :
 
-- ``Zend\Config_Writer\Array``
+- ``Zend\Config\Writer\Array``
 
-- ``Zend\Config_Writer\Ini``
+- ``Zend\Config\Writer\Ini``
 
-- ``Zend\Config_Writer\Xml``
+- ``Zend\Config\Writer\Xml``
 
 Le rédacteur *INI* possède deux modes de rendu en fonction des sections. Par défaut la configuration de premier
 niveau est toujours écrite dans des noms de section. En appelant ``$writer->setRenderWithoutSections();``, toutes
 les options sont écrites dans l'espace de noms global du fichier *INI* et aucune section n'est appliquée.
 
-De plus, ``Zend\Config_Writer\Ini`` a un paramètre optionnel additionnel **nestSeparator**, définissant le
+De plus, ``Zend\Config\Writer\Ini`` a un paramètre optionnel additionnel **nestSeparator**, définissant le
 caractère séparant les profondeurs d'imbrication. Par défaut il s'agit du point, comme ``Zend\Config\Ini``
 l'accepte par défaut.
 
@@ -36,7 +36,7 @@ section en étend une autre, vous devez appeler la méthode ``setExtend()`` sur 
 
 .. rubric:: Utilisation de Zend\Config\Writer
 
-Cet exemple illustre une utilisation basique ``Zend\Config_Writer\Xml`` pour créer un nouveau fichier de
+Cet exemple illustre une utilisation basique ``Zend\Config\Writer\Xml`` pour créer un nouveau fichier de
 configuration :
 
 .. code-block:: php
@@ -58,18 +58,18 @@ configuration :
 
    // Ecrire le fichier de l'une des manières suivantes :
    // a)
-   $writer = new Zend\Config_Writer\Xml(array('config'   => $config,
+   $writer = new Zend\Config\Writer\Xml(array('config'   => $config,
                                               'filename' => 'config.xml'));
    $writer->write();
 
    // b)
-   $writer = new Zend\Config_Writer\Xml();
+   $writer = new Zend\Config\Writer\Xml();
    $writer->setConfig($config)
           ->setFilename('config.xml')
           ->write();
 
    // c)
-   $writer = new Zend\Config_Writer\Xml();
+   $writer = new Zend\Config\Writer\Xml();
    $writer->write('config.xml', $config);
 
 Ceci créera un fichier de configuration *XML* avec les sections "production" et "staging", où "staging" étend
@@ -95,7 +95,7 @@ Cet exemple montre comment modifier un fichier de configuration existant :
    $config->production->hostname = 'foobar';
 
    // Ecrire le fichier
-   $writer = new Zend\Config_Writer\Ini(array('config'   => $config,
+   $writer = new Zend\Config\Writer\Ini(array('config'   => $config,
                                               'filename' => 'config.ini'));
    $writer->write();
 

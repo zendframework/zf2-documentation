@@ -93,7 +93,7 @@ Code in der application.ini hinzufügen:
 .. code-block:: php
    :linenos:
 
-   resources.session.saveHandler.class = "Zend\Session_SaveHandler\DbTable"
+   resources.session.saveHandler.class = "Zend\Session\SaveHandler\DbTable"
    resources.session.saveHandler.options.name = "session"
    resources.session.saveHandler.options.primary.session_id = "session_id"
    resources.session.saveHandler.options.primary.save_path = "save_path"

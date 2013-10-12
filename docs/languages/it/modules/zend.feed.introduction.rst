@@ -11,7 +11,7 @@ trasformare il risultato nuovamente in un XML. In futuro, il supporto alla modif
 supporto all'Atom Publishing Protocol.
 
 *Zend_Feed* consiste in una classe base *Zend_Feed*, in due classi base astratte *Zend\Feed\Abstract* e
-*Zend\Feed_Entry\Abstract* per la rappresentazione del feed e dei suoi elementi, specifiche implementazioni per
+*Zend\Feed\Entry\Abstract* per la rappresentazione del feed e dei suoi elementi, specifiche implementazioni per
 feed RSS e Atom ed alcune funzioni a supporto che lavorano dietro le scene per assicurare il buon funzionamento ed
 una sintassi intuitiva.
 

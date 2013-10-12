@@ -93,7 +93,7 @@ die mit der Phrase ``_init`` beginnt. In diesem Fall wollen wir den Doctype init
 
    // application/Bootstrap.php
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        protected function _initDoctype()
        {
@@ -126,7 +126,7 @@ die ``View`` Ressource läuft, holen das View Objekt und konfigurieren es anschl
 
    // application/Bootstrap.php
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        protected function _initDoctype()
        {

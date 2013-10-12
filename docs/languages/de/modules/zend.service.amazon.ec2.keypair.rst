@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.keypairs:
 
-Zend\Service_Amazon\Ec2: Schlüsselpaare
+Zend\Service\Amazon\Ec2: Schlüsselpaare
 =======================================
 
 Schlüsselpaare werden verwendet um auf Instanzen zuzugreifen.

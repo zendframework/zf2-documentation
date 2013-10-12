@@ -45,7 +45,7 @@
 Zend_Feed. Импорт из массива может быть выполнен с помощью методов
 *Zend\Feed\Feed::importArray()* или *Zend\Feed\Feed::importBuilder()*. В последнем методе массив
 будет сформирован на лету с помощью специального источника
-данных, реализующего интерфейс *Zend\Feed_Builder\Interface*.
+данных, реализующего интерфейс *Zend\Feed\Builder\Interface*.
 
 .. _zend.feed.importing.custom.importarray:
 
@@ -198,20 +198,20 @@ Zend_Feed. Импорт из массива может быть выполнен
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Вы можете создать экземпляр Zeed_Feed из любого источника данных,
-реализующего интерфейс *Zend\Feed_Builder\Interface*. Вам нужно только
+реализующего интерфейс *Zend\Feed\Builder\Interface*. Вам нужно только
 реализовать методы *getHeader()* и *getEntries()* для того, чтобы можно было
 использовать свой объект с *Zend\Feed\Feed::importBuilder()*. Простой пример - вы
 можете использовать компоновщик *Zend\Feed\Builder*, который принимает
 массив в своем конструкторе, выполняет некоторую проверку и
 затем может использоваться в методе *importBuilder()*. *getEntries()* должен
-возвращать массив экземпляров *Zend\Feed_Builder\Entry*.
+возвращать массив экземпляров *Zend\Feed\Builder\Entry*.
 
 .. note::
 
    *Zend\Feed\Builder* служит только в качестве конкретной реализации
    для демонстрации использования. Пользователи должны
    создавать свои классы, реализующие интерфейс
-   *Zend\Feed_Builder\Interface*.
+   *Zend\Feed\Builder\Interface*.
 
 Ниже приведен пример использования *Zend\Feed\Feed::importBuilder()*:
 

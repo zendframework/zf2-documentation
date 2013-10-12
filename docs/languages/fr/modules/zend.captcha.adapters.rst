@@ -18,7 +18,7 @@ souhaitez pas utiliser ``Zend\Session\Namespace`` pour la persistance. ``Zend\Ca
 logique de validation.
 
 Par défaut la taille du mot est de 8 caractères, le timeout de session est de 5 minutes et l'objet d'espace de
-nom de session utilisé est ``Zend\Session\Namespace`` (avec l'espace de nom ("``Zend\Form_Captcha\<captcha
+nom de session utilisé est ``Zend\Session\Namespace`` (avec l'espace de nom ("``Zend\Form\Captcha\<captcha
 ID>``").
 
 En plus des méthodes standards fournies par ``Zend\Captcha\Adapter``, ``Zend\Captcha\Word`` propose les méthodes

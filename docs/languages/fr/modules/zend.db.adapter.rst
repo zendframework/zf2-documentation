@@ -105,7 +105,7 @@ que vous auriez passé au constructeur de la classe directement.
        'dbname'   => 'test'
    ));
 
-Si vous créez votre propre classe d'adaptateur qui étend ``Zend\Db_Adapter\Abstract`` et que celle-ci ne respecte
+Si vous créez votre propre classe d'adaptateur qui étend ``Zend\Db\Adapter\Abstract`` et que celle-ci ne respecte
 pas la syntaxe du préfixe package "``Zend\Db\Adapter``", utilisez alors la clé "*adapterNamespace*" dans le
 tableau de configuration passé à la méthode ``factory()`` afin de charger votre adaptateur.
 
@@ -335,7 +335,7 @@ reconnecter automatiquement en utilisant l'option d'adaptateur ``Zend\Db\Db::AUT
    try {
        $db = Zend\Db\Db::factory('Pdo_Mysql', $parameters);
        $db->getConnection();
-   } catch (Zend\Db_Adapter\Exception $e) {
+   } catch (Zend\Db\Adapter\Exception $e) {
        // probablement mauvais identifiants,
        // ou alors le SGBD n'est pas joignable
    } catch (Zend_Exception $e) {
@@ -1371,7 +1371,7 @@ Microsoft SQL Server
   the last value generated for an auto-increment key if a table name is specified or a last insert query returned
   id. The ``lastSequenceId()`` method returns ``NULL``.
 
-- ``Zend\Db_Adapter\Sqlsrv`` sets ``QUOTED_IDENTIFIER ON`` immediately after connecting to a *SQL* Server database.
+- ``Zend\Db\Adapter\Sqlsrv`` sets ``QUOTED_IDENTIFIER ON`` immediately after connecting to a *SQL* Server database.
   This makes the driver use the standard *SQL* identifier delimiter symbol (**"**) instead of the proprietary
   square-brackets syntax *SQL* Server uses for delimiting identifiers.
 

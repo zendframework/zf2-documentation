@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.s3:
 
-Zend\Service_Amazon\S3
+Zend\Service\Amazon\S3
 ======================
 
 .. _zend.service.amazon.s3.introduction:
@@ -20,7 +20,7 @@ Skalierbarkeit zu erhöhen und diese Vorteile an Entwickler weiterzugeben.
 Registrierung mit Amazon S3
 ---------------------------
 
-Bevor man mit ``Zend\Service_Amazon\S3`` beginnen kann, muß man einen Account registrieren. Sehen Sie bitte auf
+Bevor man mit ``Zend\Service\Amazon\S3`` beginnen kann, muß man einen Account registrieren. Sehen Sie bitte auf
 die Amazon Website `S3 FAQ`_ für weitere Informationen.
 
 Nach der Registrierung erhält man einen Anwendungsschlüssel und einen geheimen Schlüssel. Man benötigt beide um
@@ -31,7 +31,7 @@ auf den S3 Service zugreifen zu können.
 API Dokumentation
 -----------------
 
-Die Klasse ``Zend\Service_Amazon\S3`` bietet einen *PHP* Wrapper zum Amazon S3 REST Interface. Schauen Sie bitte in
+Die Klasse ``Zend\Service\Amazon\S3`` bietet einen *PHP* Wrapper zum Amazon S3 REST Interface. Schauen Sie bitte in
 die `Amazon S3 Dokumentation`_ für eine detailierte Beschreibung des Services. Man muß mit dem grundsätzlichen
 Konzept vertraut sein um dieses Service nutzen zu können.
 
@@ -40,7 +40,7 @@ Konzept vertraut sein um dieses Service nutzen zu können.
 Features
 --------
 
-``Zend\Service_Amazon\S3`` bietet die folgenden Funktionalitäten:
+``Zend\Service\Amazon\S3`` bietet die folgenden Funktionalitäten:
 
 
 
@@ -71,12 +71,12 @@ Das folgende Beispiel demonstriert die Erstellung eines Buckets, und das Speiche
 
 .. _zend.service.amazon.s3.storing-your-first.example:
 
-.. rubric:: Beispiel der Verwendung von Zend\Service_Amazon\S3
+.. rubric:: Beispiel der Verwendung von Zend\Service\Amazon\S3
 
 .. code-block:: php
    :linenos:
 
-   $s3 = new Zend\Service_Amazon\S3($my_aws_key, $my_aws_secret_key);
+   $s3 = new Zend\Service\Amazon\S3($my_aws_key, $my_aws_secret_key);
 
    $s3->createBucket("my-own-bucket");
 
@@ -84,15 +84,15 @@ Das folgende Beispiel demonstriert die Erstellung eines Buckets, und das Speiche
 
    echo $s3->getObject("my-own-bucket/myobject");
 
-Da der ``Zend\Service_Amazon\S3`` Service eine Authentifizierung benötigt, sollte man seine Zugangsdaten (AWS
+Da der ``Zend\Service\Amazon\S3`` Service eine Authentifizierung benötigt, sollte man seine Zugangsdaten (AWS
 Schlüssel und Geheimschlüssel) an den Konstruktor übergeben. Wenn man nur einen Account verwendet, kann man
 Standard-Zugangsdaten für das Service setzen:
 
 .. code-block:: php
    :linenos:
 
-   Zend\Service_Amazon\S3::setKeys($my_aws_key, $my_aws_secret_key);
-   $s3 = new Zend\Service_Amazon\S3();
+   Zend\Service\Amazon\S3::setKeys($my_aws_key, $my_aws_secret_key);
+   $s3 = new Zend\Service\Amazon\S3();
 
 .. _zend.service.amazon.s3.buckets:
 
@@ -115,12 +115,12 @@ bis 255 Zeichen lang sein. Namen die wie eine IP Adresse aussehen (z.B. "192.168
 
   .. _zend.service.amazon.s3.buckets.remove.example:
 
-  .. rubric:: Beispiel für das Entfernen eines Buckets in Zend\Service_Amazon\S3
+  .. rubric:: Beispiel für das Entfernen eines Buckets in Zend\Service\Amazon\S3
 
   .. code-block:: php
      :linenos:
 
-     $s3 = new Zend\Service_Amazon\S3($my_aws_key, $my_aws_secret_key);
+     $s3 = new Zend\Service\Amazon\S3($my_aws_key, $my_aws_secret_key);
 
      $s3->cleanBucket("my-own-bucket");
      $s3->removeBucket("my-own-bucket");
@@ -129,12 +129,12 @@ bis 255 Zeichen lang sein. Namen die wie eine IP Adresse aussehen (z.B. "192.168
 
   .. _zend.service.amazon.s3.buckets.list.example:
 
-  .. rubric:: Beispiel für das Auflisten der Buckets in Zend\Service_Amazon\S3
+  .. rubric:: Beispiel für das Auflisten der Buckets in Zend\Service\Amazon\S3
 
   .. code-block:: php
      :linenos:
 
-     $s3 = new Zend\Service_Amazon\S3($my_aws_key, $my_aws_secret_key);
+     $s3 = new Zend\Service\Amazon\S3($my_aws_key, $my_aws_secret_key);
 
      $list = $s3->getBuckets();
      foreach ($list as $bucket) {
@@ -196,20 +196,20 @@ zugreifen kann: *http://s3.amazonaws.com/[bucket-name]/[object-name]*.
 
      .. _zend.service.amazon.s3.objects.public.example:
 
-     .. rubric:: Beispiel für ein öffentliches Objekt in Zend\Service_Amazon\S3
+     .. rubric:: Beispiel für ein öffentliches Objekt in Zend\Service\Amazon\S3
 
      .. code-block:: php
         :linenos:
 
-        $s3 = new Zend\Service_Amazon\S3($my_aws_key, $my_aws_secret_key);
+        $s3 = new Zend\Service\Amazon\S3($my_aws_key, $my_aws_secret_key);
 
         $s3->putObject("my-own-bucket/Pictures/Me.png", file_get_contents("me.png"),
-            array(Zend\Service_Amazon\S3::S3_ACL_HEADER =>
-                  Zend\Service_Amazon\S3::S3_ACL_PUBLIC_READ));
+            array(Zend\Service\Amazon\S3::S3_ACL_HEADER =>
+                  Zend\Service\Amazon\S3::S3_ACL_PUBLIC_READ));
         // oder:
         $s3->putFile("me.png", "my-own-bucket/Pictures/Me.png",
-            array(Zend\Service_Amazon\S3::S3_ACL_HEADER =>
-                  Zend\Service_Amazon\S3::S3_ACL_PUBLIC_READ));
+            array(Zend\Service\Amazon\S3::S3_ACL_HEADER =>
+                  Zend\Service\Amazon\S3::S3_ACL_PUBLIC_READ));
         echo "Go to http://s3.amazonaws.com/my-own-bucket/Pictures/Me.png to see me!\n";
 
 - ``getObject($object)`` empfängt Objektdaten vom Speicher anhand des Namens.
@@ -237,12 +237,12 @@ zugreifen kann: *http://s3.amazonaws.com/[bucket-name]/[object-name]*.
 
   .. _zend.service.amazon.s3.objects.list.example:
 
-  .. rubric:: Beispiel für die Auflistung eines Zend\Service_Amazon\S3 Objekts
+  .. rubric:: Beispiel für die Auflistung eines Zend\Service\Amazon\S3 Objekts
 
   .. code-block:: php
      :linenos:
 
-     $s3 = new Zend\Service_Amazon\S3($my_aws_key, $my_aws_secret_key);
+     $s3 = new Zend\Service\Amazon\S3($my_aws_key, $my_aws_secret_key);
 
      $list = $s3->getObjectsByBucket("my-own-bucket");
      foreach ($list as $name) {
@@ -269,14 +269,14 @@ Dateien oder *PHP* Streams. Das ist Speziell dann nützlich wenn Dateien sehr gr
 Speichergrenzen zu kommen.
 
 Um ein Objekt mit Streaming zu Empfangen muss die Methode ``getObjectStream($object, $filename)`` verwendet werden.
-Diese Methode gibt einen ``Zend\Http_Response\Stream`` zurück, welcher wie im Kapitel :ref:`HTTP Client Daten
+Diese Methode gibt einen ``Zend\Http\Response\Stream`` zurück, welcher wie im Kapitel :ref:`HTTP Client Daten
 Streaming <zend.http.client.streaming>` verwendet werden kann.
 
 
 
       .. _zend.service.amazon.s3.streaming.example1:
 
-      .. rubric:: Beispiel für das Streamen von Daten mit Zend\Service_Amazon\S3
+      .. rubric:: Beispiel für das Streamen von Daten mit Zend\Service\Amazon\S3
 
       .. code-block:: php
          :linenos:
@@ -305,17 +305,17 @@ werden die Daten vom Stream gelesen wenn die Anfrage an den Server gesendet wird
 Stream wrapper
 --------------
 
-Zusätzlich zum oben beschriebenen Interface unterstützt ``Zend\Service_Amazon\S3`` das Arbeiten als Stream
+Zusätzlich zum oben beschriebenen Interface unterstützt ``Zend\Service\Amazon\S3`` das Arbeiten als Stream
 Wrapper. Hierfür muß das Client-Objekt als Stream Wrapper registriert werden:
 
 .. _zend.service.amazon.s3.streams.example:
 
-.. rubric:: Beispiel für Streams mit Zend\Service_Amazon\S3
+.. rubric:: Beispiel für Streams mit Zend\Service\Amazon\S3
 
 .. code-block:: php
    :linenos:
 
-   $s3 = new Zend\Service_Amazon\S3($my_aws_key, $my_aws_secret_key);
+   $s3 = new Zend\Service\Amazon\S3($my_aws_key, $my_aws_secret_key);
 
    $s3->registerStreamWrapper("s3");
 

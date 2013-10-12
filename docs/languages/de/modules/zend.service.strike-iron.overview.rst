@@ -108,7 +108,7 @@ StrikeIron Services zurück gibt:
 
 Die ``getService()`` Methode gibt einen Client für irgendein StrikeIron Service zurück das durch den Namen seiner
 *PHP* Wrapper Klasse definiert wurde. In diesem Fall, referiert der Name 'SalesUseTaxBasic' zu der Wrapper Klasse
-``Zend\Service_StrikeIron\SalesUseTaxBasic``. Wrapper sind für drei Services inkludiert und in :ref:`Bundled
+``Zend\Service\StrikeIron\SalesUseTaxBasic``. Wrapper sind für drei Services inkludiert und in :ref:`Bundled
 Services <zend.service.strikeiron.bundled-services>` beschrieben.
 
 Die ``getService()`` Methode kann auch einen Client für ein StrikeIron Service zurückgeben das bisher keinen
@@ -158,7 +158,7 @@ Ergebnisse betrachten
 
 Wenn man Services von StrikeIron lernt oder versucht fehler zu beheben, ist es oft nützlich das Ergebnis das von
 einem Methodenaufruf zurückgegeben wird auszugeben. Das Ergebnis wird immer ien Objekt sein das eine Instanz von
-``Zend\Service_StrikeIron\Decorator`` ist. Das ist ein kleines `Dekorator`_ Objekt das die Ergebnisse des Methoden
+``Zend\Service\StrikeIron\Decorator`` ist. Das ist ein kleines `Dekorator`_ Objekt das die Ergebnisse des Methoden
 Aufrufs ummantelt.
 
 Der einfachste Weg ein Ergebnis vom Service zu betrachten ist die Verwendung der eingebauten *PHP* Methode
@@ -176,7 +176,7 @@ Der einfachste Weg ein Ergebnis vom Service zu betrachten ist die Verwendung der
    print_r($rateInfo);
    ?>
 
-   Zend\Service_StrikeIron\Decorator Object
+   Zend\Service\StrikeIron\Decorator Object
    (
        [_name:protected] => GetTaxRateCanadaResult
        [_object:protected] => stdClass Object
@@ -230,13 +230,13 @@ fangen wenn man Methodenaufrufe zu einem Service durchführt:
 
      $taxBasic->getTaxRateCanada(array('province' => 'ontario'));
 
-   } catch (Zend\Service_StrikeIron\Exception $e) {
+   } catch (Zend\Service\StrikeIron\Exception $e) {
 
      // Fehler handhaben für Events wie Verbindungsprobleme oder Account Probleme
 
    }
 
-Die geworfenen Ausnahmen werden immer ``Zend\Service_StrikeIron\Exception`` sein.
+Die geworfenen Ausnahmen werden immer ``Zend\Service\StrikeIron\Exception`` sein.
 
 Es ist wichtig die Unterschiede zwischen Ausnahmen und normalen fehlgeschlagenen Methodenaufrufen zu verstehen.
 Ausnahmen treten für **ausgenommene** Verhaltenweisen auf, wie z.B. ein Netzwerk das abstürzt oder ein

@@ -6,7 +6,7 @@ Zend\Navigation\Page\Mvc
 
 Les pages de type *MVC* utilisent des paramètres *MVC* issus du composant ``Zend_Controller``. Une page *MVC*
 utilisera en interne ``Zend\Controller\Action\Helper\Url`` dans la méthode ``getHref()`` pour générer des cibles
-(hrefs), et la méthode ``isActive()`` utilisera les paramètres issus de ``Zend\Controller_Request\Abstract`` et
+(hrefs), et la méthode ``isActive()`` utilisera les paramètres issus de ``Zend\Controller\Request\Abstract`` et
 les comparera aux paramètres internes à la page.
 
 .. _zend.navigation.pages.mvc.options:
@@ -141,7 +141,7 @@ Les routes sont utilisables dans les pages de type *MVC*. Si une page a une rout
    (module, controller, action, etc.), autremant ``isActive()`` ne pourra déterminer si la page est active ou pas.
    La raison est qu'il n'existe actuellement aucune méthode permettant de récupérer les paramètres par défaut
    d'une route un objet ``Zend\Controller\Router\Route\Interface``, ni même de récupérer la route courante
-   depuis un objet ``Zend\Controller_Router\Interface``.
+   depuis un objet ``Zend\Controller\Router\Interface``.
 
 .. code-block:: php
    :linenos:
@@ -149,7 +149,7 @@ Les routes sont utilisables dans les pages de type *MVC*. Si une page a une rout
    // La route suivante est ajoutée au routeur de ZF
    Zend\Controller\Front::getInstance()->getRouter()->addRoute(
        'article_view', // nom de la route
-       new Zend\Controller_Router\Route(
+       new Zend\Controller\Router\Route(
            'a/:id',
            array(
                'module'     => 'news',

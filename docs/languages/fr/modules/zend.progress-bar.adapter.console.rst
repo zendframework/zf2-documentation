@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.progressbar.adapter.console:
 
-Zend\ProgressBar_Adapter\Console
+Zend\ProgressBar\Adapter\Console
 ================================
 
-``Zend\ProgressBar_Adapter\Console`` est un adaptateur de type texte pour les terminaux. Il peut automatiquement
+``Zend\ProgressBar\Adapter\Console`` est un adaptateur de type texte pour les terminaux. Il peut automatiquement
 détecter la largeur du terminal mais supporte aussi des largeurs personnalisées. Vous pouvez définir quels
 éléments seront affichés avec la barre de progression et personnaliser leur ordre. Vous pouvez aussi définir le
 style de la barre de progression elle-même.

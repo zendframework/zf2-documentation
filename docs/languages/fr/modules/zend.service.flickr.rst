@@ -47,7 +47,7 @@ utilisateurs.
 
 - ``userSearch()``: Accepte une chaîne de caractère de balise délimitée par des espaces, et un tableau
   d'options en second paramètre optionnel. Elle retourne un jeu de photos sous la forme d'un objet
-  ``Zend\Service_Flickr\ResultSet``.
+  ``Zend\Service\Flickr\ResultSet``.
 
 - ``getIdByUsername()``: Retourne l'identifiant utilisateur, correspondant à son nom d'utilisateur.
 
@@ -133,17 +133,17 @@ Classes de résultats Zend\Service\Flickr
 
 Les classes suivantes sont toutes retournées par ``tagSearch()`` et ``userSearch()``:
 
-   - :ref:`Zend\Service_Flickr\ResultSet <zend.service.flickr.classes.resultset>`
+   - :ref:`Zend\Service\Flickr\ResultSet <zend.service.flickr.classes.resultset>`
 
-   - :ref:`Zend\Service_Flickr\Result <zend.service.flickr.classes.result>`
+   - :ref:`Zend\Service\Flickr\Result <zend.service.flickr.classes.result>`
 
-   - :ref:`Zend\Service_Flickr\Image <zend.service.flickr.classes.image>`
+   - :ref:`Zend\Service\Flickr\Image <zend.service.flickr.classes.image>`
 
 
 
 .. _zend.service.flickr.classes.resultset:
 
-Zend\Service_Flickr\ResultSet
+Zend\Service\Flickr\ResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Représente le jeu de résultats d'une recherche sur Flickr.
@@ -160,7 +160,7 @@ Propriétés
 
 .. _zend.service.flickr.classes.resultset.properties.table-1:
 
-.. table:: Propriétés Zend\Service_Flickr\ResultSet
+.. table:: Propriétés Zend\Service\Flickr\ResultSet
 
    +---------------------+----+-------------------------------------------------------------+
    |Nom                  |Type|Description                                                  |
@@ -174,7 +174,7 @@ Propriétés
 
 .. _zend.service.flickr.classes.resultset.totalResults:
 
-Zend\Service_Flickr\ResultSet::totalResults()
+Zend\Service\Flickr\ResultSet::totalResults()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 int:``totalResults()``
@@ -186,7 +186,7 @@ Retourne le nombre de totale de résultats dans ce jeu de résultats.
 
 .. _zend.service.flickr.classes.result:
 
-Zend\Service_Flickr\Result
+Zend\Service\Flickr\Result
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Un seule image résultant d'une requête sur Flickr.
@@ -198,7 +198,7 @@ Propriétés
 
 .. _zend.service.flickr.classes.result.properties.table-1:
 
-.. table:: Propriétés Zend\Service_Flickr\Result
+.. table:: Propriétés Zend\Service\Flickr\Result
 
    +----------+-------------------------+-------------------------------------------------------------------------------------------+
    |Nom       |Type                     |Description                                                                                |
@@ -229,24 +229,24 @@ Propriétés
    +----------+-------------------------+-------------------------------------------------------------------------------------------+
    |iconserver|string                   |Le serveur utilisé pour l'assemblage des ??? icon URLs ???.                                |
    +----------+-------------------------+-------------------------------------------------------------------------------------------+
-   |Square    |Zend\Service_Flickr\Image|Une miniature de l'image au format 75x75 pixels.                                           |
+   |Square    |Zend\Service\Flickr\Image|Une miniature de l'image au format 75x75 pixels.                                           |
    +----------+-------------------------+-------------------------------------------------------------------------------------------+
-   |Thumbnail |Zend\Service_Flickr\Image|Une miniature de l'image de 100 pixels.                                                    |
+   |Thumbnail |Zend\Service\Flickr\Image|Une miniature de l'image de 100 pixels.                                                    |
    +----------+-------------------------+-------------------------------------------------------------------------------------------+
-   |Small     |Zend\Service_Flickr\Image|Une version en 240 pixels de l'image.                                                      |
+   |Small     |Zend\Service\Flickr\Image|Une version en 240 pixels de l'image.                                                      |
    +----------+-------------------------+-------------------------------------------------------------------------------------------+
-   |Medium    |Zend\Service_Flickr\Image|Une version en 500 pixel version de l'image.                                               |
+   |Medium    |Zend\Service\Flickr\Image|Une version en 500 pixel version de l'image.                                               |
    +----------+-------------------------+-------------------------------------------------------------------------------------------+
-   |Large     |Zend\Service_Flickr\Image|Une version en 640 pixel version de l'image.                                               |
+   |Large     |Zend\Service\Flickr\Image|Une version en 640 pixel version de l'image.                                               |
    +----------+-------------------------+-------------------------------------------------------------------------------------------+
-   |Original  |Zend\Service_Flickr\Image|L'image originale.                                                                         |
+   |Original  |Zend\Service\Flickr\Image|L'image originale.                                                                         |
    +----------+-------------------------+-------------------------------------------------------------------------------------------+
 
 :ref:`Retour à la liste des classes <zend.service.flickr.classes>`
 
 .. _zend.service.flickr.classes.image:
 
-Zend\Service_Flickr\Image
+Zend\Service\Flickr\Image
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Représente une image retournée pour une recherche Flickr.
@@ -258,7 +258,7 @@ Propriétés
 
 .. _zend.service.flickr.classes.image.properties.table-1:
 
-.. table:: Propriétés Zend\Service_Flickr\Image
+.. table:: Propriétés Zend\Service\Flickr\Image
 
    +--------+------+---------------------------------------------+
    |Nom     |Type  |Description                                  |

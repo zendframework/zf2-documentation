@@ -430,7 +430,7 @@ verwendet werden; wenn die benötigten Tabellen nicht existieren, wird er Sie er
                $ret = $this->_db->insert($table, array(
                    'nonce' => $nonce,
                ));
-           } catch (Zend\Db_Statement\Exception $e) {
+           } catch (Zend\Db\Statement\Exception $e) {
                return false;
            }
            return true;
@@ -568,7 +568,7 @@ Integration mit Zend_Auth
 
 Zend Framework bietet eine spezielle Klasse für die Unterstützung von Benutzer Authentifikation: ``Zend_Auth``.
 Diese Klasse kann zusammen mit ``ZendOpenId\Consumer`` verwendet werden. Das folgende Beispiel zeigt wie
-``OpenIdAdapter`` das ``Zend\Auth_Adapter\Interface`` mit der ``authenticate()`` Methode implementiert. Diese
+``OpenIdAdapter`` das ``Zend\Auth\Adapter\Interface`` mit der ``authenticate()`` Methode implementiert. Diese
 führt eine Authentifikations Anfrage und Verifikation durch.
 
 Der große Unterschied zwischen diesem Adapter und dem bestehenden ist, das er mit zwei *HTTP* Anfragen arbeitet
@@ -581,7 +581,7 @@ und einen Dispatch code enthält um den zweiten oder dritten Schritt der OpenID 
 .. code-block:: php
    :linenos:
 
-   class OpenIdAdapter implements Zend\Auth_Adapter\Interface {
+   class OpenIdAdapter implements Zend\Auth\Adapter\Interface {
        private $_id = null;
 
        public function __construct($id = null) {
@@ -654,13 +654,13 @@ Integration mit Zend_Controller
 
 Zuletzt ein paar Worte über die Integration in Model-View-Controller Anwendungen: Solche Zend Framework
 Anwendungen werden implementiert durch Verwenden der ``Zend_Controller`` Klasse und Sie verwenden die
-``Zend\Controller_Response\Http`` Klasse um *HTTP* Antworten vorzubereiten und an den Web Browser des Benutzers
+``Zend\Controller\Response\Http`` Klasse um *HTTP* Antworten vorzubereiten und an den Web Browser des Benutzers
 zurückzusenden.
 
 ``ZendOpenId\Consumer`` bietet keine GUI Möglichkeiten aber es führt *HTTP* Umleitungen bei erflgreichen
 ``ZendOpenId\Consumer::login`` und ``ZendOpenId\Consumer::check`` durch. Diese Umleitungen könnten nicht richtig
 funktionieren, oder sogar überhaupt nicht, wenn einige Daten bereits an den Web Browser gesendet wurden. Um *HTTP*
-Umleitungen im *MVC* Code richtig durchzuführen sollte die echte ``Zend\Controller_Response\Http`` als letztes
+Umleitungen im *MVC* Code richtig durchzuführen sollte die echte ``Zend\Controller\Response\Http`` als letztes
 Argument an ``ZendOpenId\Consumer::login`` oder ``ZendOpenId\Consumer::check`` gesendet werden.
 
 

@@ -39,12 +39,12 @@ Um den ``Zend\XmlRpc\Server`` zu erstellen, muss der Entwickler dem Server eine 
 Funktionen durch die Methoden ``setClass()`` und ``addFunction()`` hinzufügen.
 
 Wenn dieses erstmal erledigt wurde, kann man entweder der Methode ``Zend\XmlRpc\Server::handle()`` ein
-``Zend\XmlRpc\Request``-Objekt übergeben oder es wird ein ``Zend\XmlRpc_Request\Http`` instanziert, falls keines
+``Zend\XmlRpc\Request``-Objekt übergeben oder es wird ein ``Zend\XmlRpc\Request\Http`` instanziert, falls keines
 angegeben wurde - die Anfrage wird also aus ``php://input`` geladen.
 
 ``Zend\XmlRpc\Server::handle()`` versucht daraufhin, den zuständigen Handler, der durch die angeforderte Methode
 bestimmt wird, auszuführen. Es wird entweder ein ``Zend\XmlRpc\Response``- oder ein
-``Zend\XmlRpc_Server\Fault``-Objekt zurückgegeben. Beide Objekte besitzen eine Methode ``__toString()``, die eine
+``Zend\XmlRpc\Server\Fault``-Objekt zurückgegeben. Beide Objekte besitzen eine Methode ``__toString()``, die eine
 gültige *XML-RPC* Antwort im *XML*-Format zurückgibt, die direkt ausgegeben werden kann.
 
 .. _zend.xmlrpc.server.anatomy:
@@ -183,7 +183,7 @@ oder Funktion einen Namensraum angeben:
 Eigene Request-Objekte
 ----------------------
 
-Die meiste Zeit wird man einfach den Standard-Anfragetyp ``Zend\XmlRpc_Request\Http``, welcher im
+Die meiste Zeit wird man einfach den Standard-Anfragetyp ``Zend\XmlRpc\Request\Http``, welcher im
 ``Zend\XmlRpc\Server`` enthalten ist, nutzen. Jedoch gibt es gelegentlich Fälle, in denen *XML-RPC* über die
 Kommandozeile (*CLI*), ein grafisches Benutzerinterface (*GUI*), eine andere Umgebung oder beim Protokollieren von
 ankommenden Anfragen erreichbar sein muss. Um dies zu bewerkstelligen, muss man ein eigenes Anfrage-Objekt
@@ -197,7 +197,7 @@ Eigene Antwort-Objekte
 ----------------------
 
 Ähnlich wie bei den Anfrage-Objekten, kann der ``Zend\XmlRpc\Server`` auch eigene Antwortobjekte ausliefern;
-standardmäßig ist dies ein ``Zend\XmlRpc_Response\Http-Objekt``, das einen passenden Content-Type *HTTP*-Header
+standardmäßig ist dies ein ``Zend\XmlRpc\Response\Http-Objekt``, das einen passenden Content-Type *HTTP*-Header
 sendet, der für *XML-RPC* genutzt wird. Mögliche Nutzungen eines eigenen Objekts sind z.B. das Protokollieren von
 Antworten oder das Senden der Antworten zu ``STDOUT``.
 
@@ -216,16 +216,16 @@ Exceptions entblößen mehr Informationen über den Code oder die Umgebung als d
 Paradebeispiel beinhaltet Datenbankabstraktion- oder die Zugriffsschichten-Exceptions).
 
 Exception-Klassen können jedoch anhand einer Weißliste (Whitelist) als Fehler-Antworten zurückgegeben werden.
-Dazu muss man lediglich die gewünschte Exception mittels ``Zend\XmlRpc_Server\Fault::attachFaultException()`` zur
+Dazu muss man lediglich die gewünschte Exception mittels ``Zend\XmlRpc\Server\Fault::attachFaultException()`` zur
 Weißliste hinzufügen:
 
 .. code-block:: php
    :linenos:
 
-   Zend\XmlRpc_Server\Fault::attachFaultException('My_Project_Exception');
+   Zend\XmlRpc\Server\Fault::attachFaultException('My_Project_Exception');
 
 Abgeleitete Exceptions lassen sich als ganze Familie von Exceptions hinzufügen, indem man deren Basisklasse
-angibt. ``Zend\XmlRpc_Server\Exception``'s sind immer auf der Weißliste zu finden, da sie spezielle Serverfehler
+angibt. ``Zend\XmlRpc\Server\Exception``'s sind immer auf der Weißliste zu finden, da sie spezielle Serverfehler
 berichten (undefinierte Methoden, etc.).
 
 Jede Exception, die nicht auf der Weißliste zu finden ist, generiert eine Antwort mit dem '404' Code und der
@@ -240,7 +240,7 @@ Das Hinzufügen einer Vielzahl von Klassen zu einer *XML-RPC* Server Instanz kan
 Ressourcenverbrauch führen; jede Klasse muss via Reflection *API* (``Zend\Server\Reflection``) inspiziert werden,
 welche eine Liste von allen möglichen Signaturen, die der Server verwenden kann, zurückgibt.
 
-Um die Einbußen zu reduzieren, kann ``Zend\XmlRpc_Server\Cache`` genutzt werden, welche die Serverdefinitionen
+Um die Einbußen zu reduzieren, kann ``Zend\XmlRpc\Server\Cache`` genutzt werden, welche die Serverdefinitionen
 zwischen den Anfragen zwischenspeichert. Wenn dies mit ``__autoload()`` kombiniert wird, kann es zu einem großen
 Geschwindigkeitsschub kommen.
 
@@ -257,7 +257,7 @@ Ein Beispiel folgt:
    $cacheFile = dirname(__FILE__) . '/xmlrpc.cache';
    $server = new Zend\XmlRpc\Server();
 
-   if (!Zend\XmlRpc_Server\Cache::get($cacheFile, $server)) {
+   if (!Zend\XmlRpc\Server\Cache::get($cacheFile, $server)) {
        require_once 'My/Services/Glue.php';
        require_once 'My/Services/Paste.php';
        require_once 'My/Services/Tape.php';
@@ -266,7 +266,7 @@ Ein Beispiel folgt:
        $server->setClass('My_Services_Paste', 'paste'); // paste. Namensraum
        $server->setClass('My_Services_Tape', 'tape');   // tape. Namensraum
 
-       Zend\XmlRpc_Server\Cache::save($cacheFile, $server);
+       Zend\XmlRpc\Server\Cache::save($cacheFile, $server);
    }
 
    echo $server->handle();
@@ -454,7 +454,7 @@ Fehler-Antwort nutzen kann, dessen Nachricht und Code erhalten bleibt.
    require_once 'Services/Pick.php';
 
    // Services_Exceptions dürfen als Fehler-Antwort genutzt werden
-   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc\Server\Fault::attachFaultException('Services_Exception');
 
    $server = new Zend\XmlRpc\Server();
 
@@ -490,7 +490,7 @@ Im folgenden Beispiel wird ein eigenes Anfrage-Objekt instanziert und durch den 
    require_once 'Services/Pick.php';
 
    // Services_Exceptions dürfen als Fehler-Antwort genutzt werden
-   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc\Server\Fault::attachFaultException('Services_Exception');
 
    $server = new Zend\XmlRpc\Server();
 
@@ -526,7 +526,7 @@ setzt.
    require_once 'Services/Pick.php';
 
    // Services_Exceptions dürfen als Fehler-Antwort genutzt werden
-   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc\Server\Fault::attachFaultException('Services_Exception');
 
    $server = new Zend\XmlRpc\Server();
 
@@ -565,12 +565,12 @@ Dieses Beispiel zeigt, wie man Serverdefinitionen zwischen verschiedenen Anfrage
    $cacheFile = dirname(__FILE__) . '/xmlrpc.cache';
 
    // Services_Exceptions dürfen als Fehler-Antwort genutzt werden
-   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc\Server\Fault::attachFaultException('Services_Exception');
 
    $server = new Zend\XmlRpc\Server();
 
    // Versucht die Serverdefinition aus dem Cache zu laden
-   if (!Zend\XmlRpc_Server\Cache::get($cacheFile, $server)) {
+   if (!Zend\XmlRpc\Server\Cache::get($cacheFile, $server)) {
 
        // Methoden werden als comb.* aufgerufen
        $server->setClass('Services_Comb', 'comb');
@@ -582,7 +582,7 @@ Dieses Beispiel zeigt, wie man Serverdefinitionen zwischen verschiedenen Anfrage
        $server->setClass('Services_Pick', 'pick');
 
        // Speichern des Caches
-       Zend\XmlRpc_Server\Cache::save($cacheFile, $server);
+       Zend\XmlRpc\Server\Cache::save($cacheFile, $server);
    }
 
    // Ein neues Anfrage-Objekt wird erstellt
@@ -611,7 +611,7 @@ werden um die Performance Unterschiede auszunutzen.
 .. code-block:: php
    :linenos:
 
-   Zend\XmlRpc\Value::setGenerator(new Zend\XmlRpc_Generator\XmlWriter());
+   Zend\XmlRpc\Value::setGenerator(new Zend\XmlRpc\Generator\XmlWriter());
 
    $server = new Zend\XmlRpc\Server();
    ...

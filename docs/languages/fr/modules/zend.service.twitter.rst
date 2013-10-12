@@ -15,7 +15,7 @@ vous permettra également de récupérer et mettre à jour votre statut, de rép
 des messages directs, de marquer des tweets comme favoris et beaucoup d'autres choses.
 
 ``Zend\Service\Twitter`` implémente un service *REST*, et toutes ses méthodes retournes une instance de
-``Zend\Rest_Client\Result``.
+``Zend\Rest\Client\Result``.
 
 ``Zend\Service\Twitter`` et subdivisé en sections, ainsi vous pouvez facilement identifier le type d'appel qui est
 demandé.

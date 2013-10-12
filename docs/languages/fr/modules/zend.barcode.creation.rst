@@ -10,7 +10,7 @@ Utilisation de la fabrique Zend\Barcode\Barcode::factory
 ------------------------------------------------
 
 ``Zend_Barcode`` possède une méthode de fabrique pour créer une instance d'un générateur de rendu qui étend
-``Zend\Barcode_Renderer\RendererAbstract``. Ce méthode accepte 5 arguments.
+``Zend\Barcode\Renderer\RendererAbstract``. Ce méthode accepte 5 arguments.
 
 . Le nom du format de code-barres (ex. "code39") (obligatoire)
 

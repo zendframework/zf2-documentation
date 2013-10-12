@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.securitygroups:
 
-Zend\Service_Amazon\Ec2: Sicherheitsgruppen
+Zend\Service\Amazon\Ec2: Sicherheitsgruppen
 ===========================================
 
 Eine Sicherheitsgruppe ist eine benante Sammlung von Zugriffsregeln. Diese Zugriffsregeln spezifizieren welcher

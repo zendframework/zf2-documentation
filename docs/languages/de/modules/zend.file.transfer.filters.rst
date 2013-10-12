@@ -9,7 +9,7 @@ verschiedene Arbeiten die oft auf Dateien angewendet werden zu automatisieren. E
 nach der Validierung angewendet werden. Dateifilter verhalten sich auch etwas anders als andere Filter. Sie geben
 immer den Dateinamen zurück, und nicht den geänderten Inhalt (was eine schlechte Idee wäre wenn auf 1GB Dateien
 gearbeitet wird). Alle Dateifilter welche mit ``Zend\File\Transfer`` angeboten werden können in der
-``Zend_Filter`` Komponente gefunden werden und heißen ``Zend\Filter_File\*``. Die folgenden Filter sind aktuell
+``Zend_Filter`` Komponente gefunden werden und heißen ``Zend\Filter\File\*``. Die folgenden Filter sind aktuell
 vorhanden:
 
 - ``Decrypt``: Dieser Filter kann verschlüsselte Dateien entschlüsseln.

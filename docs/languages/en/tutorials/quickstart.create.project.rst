@@ -120,7 +120,7 @@ default directory in which to look for action controllers (more on that later). 
 
    // application/Bootstrap.php
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
    }
 
@@ -220,9 +220,9 @@ And the default ``ErrorController`` is as follows:
            $errors = $this->_getParam('error_handler');
 
            switch ($errors->type) {
-               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ROUTE:
-               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_CONTROLLER:
-               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ACTION:
+               case Zend\Controller\Plugin\ErrorHandler::EXCEPTION_NO_ROUTE:
+               case Zend\Controller\Plugin\ErrorHandler::EXCEPTION_NO_CONTROLLER:
+               case Zend\Controller\Plugin\ErrorHandler::EXCEPTION_NO_ACTION:
 
                    // 404 error -- controller or action not found
                    $this->getResponse()->setHttpResponseCode(404);

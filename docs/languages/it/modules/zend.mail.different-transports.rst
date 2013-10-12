@@ -18,8 +18,8 @@ L'oggetto fornito sovrascriverà il transport predefinito per la richiesta *send
    <?php
    $mail = new Zend\Mail\Mail();
    // crea il messaggio...
-   $tr1 = new Zend\Mail_Transport\Smtp('server@example.com');
-   $tr2 = new Zend\Mail_Transport\Smtp('altro_server@example.com');
+   $tr1 = new Zend\Mail\Transport\Smtp('server@example.com');
+   $tr2 = new Zend\Mail\Transport\Smtp('altro_server@example.com');
    $mail->send($tr1);
    $mail->send($tr2);
    $mail->send();  // utilizza nuovamente il tipo predefinito
@@ -28,6 +28,6 @@ L'oggetto fornito sovrascriverà il transport predefinito per la richiesta *send
 
    **Transport aggiuntivi**
 
-   E' possibile scrivere transport aggiuntivi implementando l'interfaccia *Zend\Mail_Transport\Interface*.
+   E' possibile scrivere transport aggiuntivi implementando l'interfaccia *Zend\Mail\Transport\Interface*.
 
 

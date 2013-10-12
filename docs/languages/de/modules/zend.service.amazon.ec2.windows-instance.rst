@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.windows.instance:
 
-Zend\Service_Amazon\Ec2: Windows Instanzen
+Zend\Service\Amazon\Ec2: Windows Instanzen
 ==========================================
 
 Die Verwendung von Amazon EC2 Instanzen auf denen Windows läuft ist ähnlich wie die Verwendung von Instanzen die

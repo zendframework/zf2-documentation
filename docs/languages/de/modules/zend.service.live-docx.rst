@@ -122,10 +122,10 @@ Das resultierende Dokument kann in jedem der folgenden grafischen Dateiformate g
 
 .. _zend.service.livedocx.mailmerge:
 
-Zend\Service_LiveDocx\MailMerge
+Zend\Service\LiveDocx\MailMerge
 -------------------------------
 
-``Zend\Service_LiveDocx\MailMerge`` ist das Mail-Merge-Objekt in der ``Zend\Service\LiveDocx`` Familie.
+``Zend\Service\LiveDocx\MailMerge`` ist das Mail-Merge-Objekt in der ``Zend\Service\LiveDocx`` Familie.
 
 .. _zend.service.livedocx.mailmerge.generation:
 
@@ -184,7 +184,7 @@ folgende geschrieben werden:
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
+   $phpLiveDocx = new Zend\Service\LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -215,7 +215,7 @@ Resultierendes Dokument als *PDF* im Document Viewer 2.26.1.
 Gehobeneres Mail-Merge
 ^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_LiveDocx\MailMerge`` erlaubt es Entwicklern eine beliebige Anzahl an Text-Feldern in ein Template
+``Zend\Service\LiveDocx\MailMerge`` erlaubt es Entwicklern eine beliebige Anzahl an Text-Feldern in ein Template
 einzufügen. Diese Text-Felder werden mit Daten gefüllt, wenn **createDocument()** aufgerufen wird.
 
 Zusätzlich zu Textfeldern ist es auch möglich, spezielle Regionen eines Dokuments anzugeben, die wiederholt
@@ -265,7 +265,7 @@ Der folgende Code füllt das obige Template mit Daten.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
+   $phpLiveDocx = new Zend\Service\LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -325,7 +325,7 @@ Man kann die *DOC* `Template Datei`_ und das resultierende `PDF Dokument`_ hier 
 Erstellen von Bitmap Bildern
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Zusätzlich zu den Dateiformaten für Dokumente erlaubt es ``Zend\Service_LiveDocx\MailMerge`` auch Dokumente als
+Zusätzlich zu den Dateiformaten für Dokumente erlaubt es ``Zend\Service\LiveDocx\MailMerge`` auch Dokumente als
 eine Anzahl von Bildern zu speichern (*BMP*, *GIF*, *JPG*, *PNG* und *TIFF*). Jede Seite des Dokuments wird als
 eine Datei gespeichert.
 
@@ -344,7 +344,7 @@ man ``getImageExportFormats()`` aufruft.
    $date = new Zend\Date\Date();
    $date->setLocale('en_US');
 
-   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
+   $phpLiveDocx = new Zend\Service\LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -406,7 +406,7 @@ Der folgende Code zeigt, wie man ein lokales Template verwendet.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
+   $phpLiveDocx = new Zend\Service\LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -425,7 +425,7 @@ Der folgende Code zeigt, wie ein Template auf den Server übertragen wird:
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
+   $phpLiveDocx = new Zend\Service\LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -437,7 +437,7 @@ Der folgende Code zeigt, wie auf das remote gespeicherte Template bei allen weit
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
+   $phpLiveDocx = new Zend\Service\LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -451,7 +451,7 @@ Der folgende Code zeigt, wie auf das remote gespeicherte Template bei allen weit
 Informationen erhalten
 ^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Service_LiveDocx\MailMerge`` bietet eine Anzahl an Methoden um Informationen über Feldnamen, vorhandene
+``Zend\Service\LiveDocx\MailMerge`` bietet eine Anzahl an Methoden um Informationen über Feldnamen, vorhandene
 Schriftarten und unterstützte Formate zu erhalten.
 
 .. _zend.service.livedocx.mailmerge.information.getfieldname:
@@ -465,7 +465,7 @@ aktualisieren kann.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
+   $phpLiveDocx = new Zend\Service\LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -490,7 +490,7 @@ herauszufinden.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
+   $phpLiveDocx = new Zend\Service\LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -520,7 +520,7 @@ führen.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
+   $phpLiveDocx = new Zend\Service\LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -541,7 +541,7 @@ Eingabeformat für den Erstellungsprozess des Dokuments auszuwählen.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge()
+   $phpLiveDocx = new Zend\Service\LiveDocx\MailMerge()
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -562,7 +562,7 @@ den Erstellungsprozess des Dokuments auszuwählen.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
+   $phpLiveDocx = new Zend\Service\LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');
@@ -580,7 +580,7 @@ den Erstellungsprozess des Dokuments auszuwählen.
 .. code-block:: php
    :linenos:
 
-   $phpLiveDocx = new Zend\Service_LiveDocx\MailMerge();
+   $phpLiveDocx = new Zend\Service\LiveDocx\MailMerge();
 
    $phpLiveDocx->setUsername('myUsername')
                ->setPassword('myPassword');

@@ -11,7 +11,7 @@ Zend\Service\StrikeIron: Mitgelieferte Services
 ZIP Code Informationen
 ----------------------
 
-``Zend\Service_StrikeIron\ZipCodeInfo`` bietet einen Client für StrikeIron's Zip Code Informations Service. Für
+``Zend\Service\StrikeIron\ZipCodeInfo`` bietet einen Client für StrikeIron's Zip Code Informations Service. Für
 mehr Informationen über dieses Service kann bei diesen StrikeIron Ressourcen nachgesehen werden:
 
 
@@ -67,7 +67,7 @@ Kanadischen Post Codes enthält:
 U.S. Address-Prüfung
 --------------------
 
-``Zend\Service_StrikeIron\USAddressVerification`` bietet einen Client für StrikeIron's U.S. Address-Prüfungs
+``Zend\Service\StrikeIron\USAddressVerification`` bietet einen Client für StrikeIron's U.S. Address-Prüfungs
 Service. Für mehr Informationen über dieses Service kann bei diesen StrikeIron Ressourcen nachgesehen werden:
 
 
@@ -119,7 +119,7 @@ Das Service enthält eine ``verifyAddressUSA()`` Methode die eine Adresse in den
 Verkaufs & Steuer Grundlagen
 ----------------------------
 
-``Zend\Service_StrikeIron\SalesUseTaxBasic`` bietet einen Client für StrikeIron's Verkaufs & Steuer Grundlagen
+``Zend\Service\StrikeIron\SalesUseTaxBasic`` bietet einen Client für StrikeIron's Verkaufs & Steuer Grundlagen
 Service. Für mehr Informationen über dieses Service kann bei diesen StrikeIron Ressourcen nachgesehen werden:
 
 

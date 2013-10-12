@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zend.service.amazon.ec2.images:
 
-Zend\Service_Amazon\Ec2: Amazon Maschinen Images (AMI)
+Zend\Service\Amazon\Ec2: Amazon Maschinen Images (AMI)
 ======================================================
 
 Amazon Maschinen Images (AMIs) sind mit einer bereits wachsenden Listen von Betriebssystemen vorkonfiguriert.

@@ -16,13 +16,13 @@ ainsi que l'alignement.
 
    ``Zend\Text\Table`` suppose que vos chaînes sont encodés en UTF-8 par défaut. Si ce n'est pas le cas, vous
    pouvez fournir l'encodage en tant que paramètre du constructeur ou à la méthode *setContent* de
-   ``Zend\Text_Table\Column``. Alternativement si vous avez un encodage différent dans le processus complet, vous
+   ``Zend\Text\Table\Column``. Alternativement si vous avez un encodage différent dans le processus complet, vous
    pouvez définir l'encodage d'entrée ("input") standard avec ``Zend\Text\Table::setInputCharset($charset)``.
    Dans le cas où vous avez besoin d'un autre encodage pour la sortie ("output") de la table, vous pouvez le
    paramétrer avec ``Zend\Text\Table::setOutputCharset($charset)``.
 
 Un objet ``Zend\Text\Table`` consiste en des lignes, qui contiennent des colonnes, représenté par
-``Zend\Text_Table\Row`` et ``Zend\Text_Table\Column``. Lors de la création d'une table, vous pouvez fournir un
+``Zend\Text\Table\Row`` et ``Zend\Text\Table\Column``. Lors de la création d'une table, vous pouvez fournir un
 tableau avec les options pour la table. Celles-ci sont :
 
    - *columnWidths* (obligatoire) : un tableau définissant toutes les largeurs de colonnes en nombre de
@@ -49,16 +49,16 @@ tableau avec les options pour la table. Celles-ci sont :
 
 
 
-Les lignes sont simplement ajoutées à la table en créant une nouvelle instance de ``Zend\Text_Table\Row``, et en
+Les lignes sont simplement ajoutées à la table en créant une nouvelle instance de ``Zend\Text\Table\Row``, et en
 l'ajoutant à la table via la méthode *appendRow*. Les lignes elle-même n'ont pas d'options. Vous pouvez aussi
 fournir un tableau directement à la méthode *appendRow*, qui le convertira automatiquement en des objets *Row*,
 contenant les multiples objets *Column*.
 
-De la même manière vous pouvez ajouter les colonnes aux lignes. Créez un instance de ``Zend\Text_Table\Column``
+De la même manière vous pouvez ajouter les colonnes aux lignes. Créez un instance de ``Zend\Text\Table\Column``
 et ensuite paramétrer les options de colonnes soit dans le constructeur ou plus tard par les méthodes *set**. Le
 premier paramètre est le contenu de la colonne qui peut avoir des lignes multiples, elles sont dans le meilleur
 des cas séparées par le caractère *\n*. Le second paramètre définit l'alignement, qui est *left* par défaut
-et peut être l'une des constantes de la classe ``Zend\Text_Table\Column``:
+et peut être l'une des constantes de la classe ``Zend\Text\Table\Column``:
 
    - ``ALIGN_LEFT``
 
@@ -90,10 +90,10 @@ Cet exemple illustre un utilisation basique de ``Zend\Text\Table`` pour créer u
    $table->appendRow(array('Zend', 'Framework'));
 
    // Or verbose
-   $row = new Zend\Text_Table\Row();
+   $row = new Zend\Text\Table\Row();
 
-   $row->appendColumn(new Zend\Text_Table\Column('Zend'));
-   $row->appendColumn(new Zend\Text_Table\Column('Framework'));
+   $row->appendColumn(new Zend\Text\Table\Column('Zend'));
+   $row->appendColumn(new Zend\Text\Table\Column('Framework'));
 
    $table->appendRow($row);
 

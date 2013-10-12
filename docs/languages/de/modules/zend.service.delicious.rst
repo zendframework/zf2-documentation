@@ -36,7 +36,7 @@ Beiträge abrufen
 
 ``Zend\Service\Delicious`` bietet drei Möglichkeiten, um Beiträge von del.icio.us abzurufen: ``getPosts()``,
 ``getRecentPosts()`` und ``getAllPosts()``. Jede dieser Methoden liefert eine Instanz der Klasse
-``Zend\Service_Delicious\PostList``, welche die abgerufenen Beiträge beinhaltet.
+``Zend\Service\Delicious\PostList``, welche die abgerufenen Beiträge beinhaltet.
 
 .. code-block:: php
    :linenos:
@@ -49,7 +49,7 @@ Beiträge abrufen
     * @param string $tag Optionaler Filter nach einem bestimmten tag
     * @param Zend_Date $dt Optionaler Filter nach Datum
     * @param string $url Optionaler Filter nach URL
-    * @return Zend\Service_Delicious\PostList
+    * @return Zend\Service\Delicious\PostList
     */
    public function getPosts($tag = null, $dt = null, $url = null);
 
@@ -59,7 +59,7 @@ Beiträge abrufen
     * @param string $tag   Optionaler Filter nach einem bestimmten tag
     * @param string $count Maximale Anzahl der Beiträge, die
     *                      zurückgeliefert werden (standardmäßig 15)
-    * @return Zend\Service_Delicious\PostList
+    * @return Zend\Service\Delicious\PostList
     */
    public function getRecentPosts($tag = null, $count = 15);
 
@@ -67,13 +67,13 @@ Beiträge abrufen
     * Alle Beiträge abrufen
     *
     * @param string $tag Optionaler Filter nach einem bestimmten tag
-    * @return Zend\Service_Delicious\PostList
+    * @return Zend\Service\Delicious\PostList
     */
    public function getAllPosts($tag = null);
 
 .. _zend.service.delicious.postlist:
 
-Zend\Service_Delicious\PostList
+Zend\Service\Delicious\PostList
 -------------------------------
 
 Instanzen dieser Klasse werden von den Methoden ``getPosts()``, ``getAllPosts()``, ``getRecentPosts()`` und
@@ -221,7 +221,7 @@ Das Hinzufügen von neuen Beiträgen
 ----------------------------------
 
 Um einen Beitrag hinzuzufügen, muss zu Beginn die Methode ``createNewPost()`` aufgerufen werden, welche eine
-Instanz der Klasse ``Zend\Service_Delicious\Post`` zurückgibt. Danach kann mit Hilfe des erhaltenen Objekts der
+Instanz der Klasse ``Zend\Service\Delicious\Post`` zurückgibt. Danach kann mit Hilfe des erhaltenen Objekts der
 Beitrag verändert werden. Nach der Änderung muss die ``save()``-Methode aufgerufen werden, damit die Änderungen
 in die del.icio.us-Datenbank übernommen werden.
 
@@ -307,7 +307,7 @@ Die del.icio.us webservice *API* ermöglicht den Zugriff auf die öffentlichen D
    +----------------+----------------------------------------------+-------------------------------+
    |getUserNetwork()|Liefert das Netzwerk eines Nutzers            |Array                          |
    +----------------+----------------------------------------------+-------------------------------+
-   |getUserPosts()  |Liefert alle Beiträge eines Nutzers           |Zend\Service_Delicious\PostList|
+   |getUserPosts()  |Liefert alle Beiträge eines Nutzers           |Zend\Service\Delicious\PostList|
    +----------------+----------------------------------------------+-------------------------------+
    |getUserTags()   |Liefert alle tags, die der Nutzer vergeben hat|Array                          |
    +----------------+----------------------------------------------+-------------------------------+
@@ -342,13 +342,13 @@ Die del.icio.us webservice *API* ermöglicht den Zugriff auf die öffentlichen D
 ^^^^^^^^^^^^^^^^^^^^
 
 Wenn öffentliche Beiträge über die Methode ``getUserPosts()`` bezogen werden wird ein
-``Zend\Service_Delicious\PostList`` Objekt zurückgegeben, welches die einzelnen Beiträge in einer Liste von
-``Zend\Service_Delicious\SimplePost``-Objekten speichert. Diese Objekte enthalten Basisinformationen über den
+``Zend\Service\Delicious\PostList`` Objekt zurückgegeben, welches die einzelnen Beiträge in einer Liste von
+``Zend\Service\Delicious\SimplePost``-Objekten speichert. Diese Objekte enthalten Basisinformationen über den
 Beitrag, wie z.B. den *URL*, den Titel, die Notizen und Tags.
 
 .. _zend.service.delicious.public_data.posts.SimplePost_methods:
 
-.. table:: Methoden der Klasse Zend\Service_Delicious\SimplePost
+.. table:: Methoden der Klasse Zend\Service\Delicious\SimplePost
 
    +----------+-----------------------------------------+------------+
    |Name      |Beschreibung                             |Rückgabewert|

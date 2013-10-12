@@ -54,8 +54,8 @@ Die grundlegende Verwendung ist einfach:
    // (zweites Argument) oder durch Verwendung von setNamespace()
    $reflection->getNamespace();
 
-``reflectFunction()`` gibt ein ``Zend\Server_Reflection\Function`` Objekt zurück; ``reflectClass()`` gibt ein
-``Zend\Server_Reflection\Class`` Objekt zurück. Bitte die *API* Documentation beachten, um zu erfahren, welche
+``reflectFunction()`` gibt ein ``Zend\Server\Reflection\Function`` Objekt zurück; ``reflectClass()`` gibt ein
+``Zend\Server\Reflection\Class`` Objekt zurück. Bitte die *API* Documentation beachten, um zu erfahren, welche
 Methoden für beide Klassen verfügbar sind.
 
 

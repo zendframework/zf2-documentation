@@ -9,7 +9,7 @@ Adaptateur d'authentification HTTP
 Introduction
 ------------
 
-``Zend\Auth_Adapter\Http`` fournit une implémentation des authentifications *HTTP* `Basic`_\ et `Digest`_, au
+``Zend\Auth\Adapter\Http`` fournit une implémentation des authentifications *HTTP* `Basic`_\ et `Digest`_, au
 regard de la norme `RFC-2617`_. Digest est une méthode d'authentification *HTTP* basée sur Basic, mais qui
 augmente la sécurité en fournissant un moyen d'authentification sans transmettre le mot de passe en clair, sur le
 réseau.
@@ -49,7 +49,7 @@ correspondance.
 Options de configuration
 ------------------------
 
-La classe ``Zend\Auth_Adapter\Http`` requière un tableau de configuration lors de sa construction. Il y a
+La classe ``Zend\Auth\Adapter\Http`` requière un tableau de configuration lors de sa construction. Il y a
 plusieurs options de configuration disponibles, dont certaines requises :
 
 .. _zend.authentication.adapter.configuration_options.table:
@@ -87,7 +87,7 @@ Le travail du résolveur consiste à récupérer un nom d'utilisateur ("username
 du mot de passe ("password"). L'authentification Digest, elle, attend un hash du "username", du "realm", et du
 "password" (séparés par des deux-points). Actuellement le seul algorithme de hash supporté est *MD5*.
 
-``Zend\Auth_Adapter\Http`` se fie a des objets implémentant ``Zend\Auth\Adapter\Http\Resolver\Interface``. Une
+``Zend\Auth\Adapter\Http`` se fie a des objets implémentant ``Zend\Auth\Adapter\Http\Resolver\Interface``. Une
 classe de résolution de fichier texte est inclue avec cet adaptateur, mais n'importe quelle classe peut être
 écrite, grâce à l'interface.
 
@@ -150,12 +150,12 @@ Ce tableau va permettre d'accepter les modes Basic ou Digest et demandera une au
 site situées sous ``/members_only`` et ``/my_account``. La valeur du "real" est en général affichée par le
 navigateur dans la boite de dialogue. Le paramètre ``nonce_timeout``, fonctionne comme expliqué plus haut.
 
-Ensuite, créez un objet de ``Zend\Auth_Adapter\Http``\  :
+Ensuite, créez un objet de ``Zend\Auth\Adapter\Http``\  :
 
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend\Auth_Adapter\Http($config);
+   $adapter = new Zend\Auth\Adapter\Http($config);
 
 Comme nous supportons les 2 modes Basic et Digest, nous avons besoin de deux résolveurs différents :
 
@@ -177,8 +177,8 @@ Enfin, nous procédons à la demande d'authentification. L'adaptateur a besoin d
 .. code-block:: php
    :linenos:
 
-   assert($request instanceof Zend\Controller_Request\Http);
-   assert($response instanceof Zend\Controller_Response\Http);
+   assert($request instanceof Zend\Controller\Request\Http);
+   assert($response instanceof Zend\Controller\Response\Http);
 
    $adapter->setRequest($request);
    $adapter->setResponse($response);

@@ -50,7 +50,7 @@ formulaire. Dans notre exemple, il n'y a qu'un seul fichier que nous souhaitons 
        <input type="submit" value="Upload File" />
    </form>
 
-Notez que vous devriez utiliser :ref:`Zend\Form_Element\File <zend.form.standardElements.file>` par simplicité
+Notez que vous devriez utiliser :ref:`Zend\Form\Element\File <zend.form.standardElements.file>` par simplicité
 plutôt que de créer le HTML manuellement.
 
 L'étape suivante est de créer le récepteur de l'upload. Dans notre exemple le récepteur est "*/file/upload*".
@@ -314,7 +314,7 @@ First, you need to have either ``APC`` or *uploadprogress* to be enabled. Note t
 ``APC`` within your php.ini.
 
 Second, you need to have the proper hidden fields added in the form which sends the files. When you use
-``Zend\Form_Element\File`` this hidden fields are automatically added by ``Zend_Form``.
+``Zend\Form\Element\File`` this hidden fields are automatically added by ``Zend_Form``.
 
 When the above two points are provided then you are able to get the actual progress of the file upload by using the
 *getProgress* method. Actually there are 2 official ways to handle this.
@@ -338,7 +338,7 @@ Standard Adapters <zend.progressbar.adapters>`.
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend\ProgressBar_Adapter\Console();
+   $adapter = new Zend\ProgressBar\Adapter\Console();
    $upload  = Zend\File\Transfer\Adapter\Http::getProgress($adapter);
 
    $upload = null;

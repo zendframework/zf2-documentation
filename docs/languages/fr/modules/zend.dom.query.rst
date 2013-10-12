@@ -22,7 +22,7 @@ Aspect théorique
 Pour utiliser ``Zend\Dom\Query``, vous instanciez un objet ``Zend\Dom\Query``, en fournissant optionnellement un
 document à analyser (sous la forme d'une chaîne). Une fois que vous avez un document, vous pouvez utiliser
 indifféremment les méthodes ``query()`` ou ``queryXpath()``\  ; chaque méthode retournera un objet
-``Zend\Dom_Query\Result`` avec tout noeud trouvé.
+``Zend\Dom\Query\Result`` avec tout noeud trouvé.
 
 La différence principale entre ``Zend\Dom\Query`` et l'utilisation de DOMDocument + DOMXPath est la possibilité
 de requêter avec les sélecteurs *CSS*. Vous pouvez utiliser n'importe quel élément suivant, dans n'importe
@@ -81,7 +81,7 @@ quelle combinaison :
 
 Une fois que vous avez réalisé votre recherche, vous pouvez ensuite travailler avec l'objet de résultat pour
 déterminer les informations sur les noeuds, ainsi que pour les récupérer eux et/ou leurs contenus directement
-afin de les examiner et les manipuler. ``Zend\Dom_Query\Result`` implémente *Countable* and *Iterator*, et stocke
+afin de les examiner et les manipuler. ``Zend\Dom\Query\Result`` implémente *Countable* and *Iterator*, et stocke
 le résultat en interne sous la forme DOMNodes/DOMElements. En exemple, considérons l'appel suivant sur l'HTML
 ci-dessus :
 
@@ -98,7 +98,7 @@ ci-dessus :
 
 ``Zend\Dom\Query`` permet aussi de faire directement des recherches de type XPath en utilisant la méthode
 ``queryXpath()``; vous pouvez fournir toute requête XPath valide à cette méthode, et elle retournera un objet
-``Zend\Dom_Query\Result``.
+``Zend\Dom\Query\Result``.
 
 .. _zend.dom.query.methods:
 
@@ -134,10 +134,10 @@ Ces méthodes sont disponibles pour ``Zend\Dom\Query``\  :
 
 .. _zend.dom.query.methods.zenddomqueryresult:
 
-Zend\Dom_Query\Result
+Zend\Dom\Query\Result
 ^^^^^^^^^^^^^^^^^^^^^
 
-Comme mentionné auparavant, ``Zend\Dom_Query\Result`` implémente à la fois *Iterator* et *Countable*, et en tant
+Comme mentionné auparavant, ``Zend\Dom\Query\Result`` implémente à la fois *Iterator* et *Countable*, et en tant
 que tel peut être utilisé dans une boucle *foreach* ainsi qu'avec la fonction ``count()``. De plus il expose les
 méthodes suivantes :
 
