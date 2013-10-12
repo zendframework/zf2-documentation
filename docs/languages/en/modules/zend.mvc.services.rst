@@ -510,7 +510,7 @@ The following plugin managers are configured by default:
 - **ValidatorManager**, corresponding to ``Zend\Validator\ValidatorPluginManager``, and used to
   manage validator instances.
 
-- **ViewHelperManager**, corresponding to ``Zend\View\HelperManager``, and used to
+- **ViewHelperManager**, corresponding to ``Zend\View\HelperPluginManager``, and used to
   manage view helper instances.
 
 As noted in the previous section, all plugin managers share the same configuration and service types
