@@ -96,8 +96,6 @@ que vous auriez passé au constructeur de la classe directement.
    // Nous n'avons pas besoin de la ligne suivante car Zend\Db\Adapter\Pdo\Mysql
    // sera automatiquement chargé par la fabrique Zend_Db.
 
-   // require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
-
    // Charge automatiquement la classe Zend\Db\Adapter\Pdo\Mysql
    // et en créer une instance.
    $db = Zend\Db\Db::factory('Pdo_Mysql', array(

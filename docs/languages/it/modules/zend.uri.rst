@@ -34,8 +34,6 @@ Creazione di un nuovo URI
    :linenos:
 
    <?php
-   require_once 'Zend/Uri.php';
-
    //  Per creare un nuovo URI da zero, passare solo lo schema
    $uri = Zend\Uri\Uri::factory('http');
 
@@ -62,8 +60,6 @@ Per manipolare un URI esistente passare l'intero URI a *Zend\Uri\Uri::factory()*
    :linenos:
 
    <?php
-   require_once 'Zend/Uri.php';
-
    // Per manipolare un URI esistente, passarlo come parametro
    $uri = Zend\Uri\Uri::factory('http://www.zend.com');
 
@@ -88,8 +84,6 @@ Si può usare la funzione *Zend\Uri\Uri::check()* se è solo necessario validare
    :linenos:
 
    <?php
-   require_once 'Zend/Uri.php';
-
    // Validazione del formato dell'URI
    $valid = Zend\Uri\Uri::check('http://uri.in.questione');
 
@@ -122,8 +116,6 @@ schema è *http*.
    :linenos:
 
    <?php
-   require_once 'Zend/Uri.php';
-
    $uri = Zend\Uri\Uri::factory('http://www.zend.com');
 
    $scheme = $uri->getScheme();  // "http"
@@ -143,8 +135,6 @@ Restituzione dell'intero URI
    :linenos:
 
    <?php
-   require_once 'Zend/Uri.php';
-
    $uri = Zend\Uri\Uri::factory('http://www.zend.com');
 
    echo $uri->getUri();  // "http://www.zend.com"
@@ -169,8 +159,6 @@ successivamente ad una manipolazione.
    :linenos:
 
    <?php
-   require_once 'Zend/Uri.php';
-
    $uri = Zend\Uri\Uri::factory('http://www.zend.com');
 
    $isValid = $uri->valid();  // TRUE

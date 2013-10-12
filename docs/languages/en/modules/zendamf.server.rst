@@ -591,7 +591,6 @@ be denied.
    if ($this->_acl->isAllowed($role, $class, $function)) {
        return true;
    } else {
-       require_once 'Zend/Amf/Server/Exception.php';
        throw new ZendAmf\Server\Exception("Access not allowed");
    }
 

@@ -34,8 +34,6 @@ semplice array PHP, che può essere utilizzato per stampare i dati, salvarli in 
    :linenos:
 
    <?php
-   require_once 'Zend/Feed.php';
-
    // Recupera le ultime novità da Slashdot
    try {
        $slashdotRss = Zend\Feed\Feed::import('http://rss.slashdot.org/Slashdot/slashdot');

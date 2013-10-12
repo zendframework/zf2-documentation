@@ -76,8 +76,6 @@ Das folgende Beispiel demonstriert die Erstellung eines Buckets, und das Speiche
 .. code-block:: php
    :linenos:
 
-   require_once 'Zend/Service/Amazon/S3.php';
-
    $s3 = new Zend\Service_Amazon\S3($my_aws_key, $my_aws_secret_key);
 
    $s3->createBucket("my-own-bucket");
@@ -92,8 +90,6 @@ Standard-Zugangsdaten für das Service setzen:
 
 .. code-block:: php
    :linenos:
-
-   require_once 'Zend/Service/Amazon/S3.php';
 
    Zend\Service_Amazon\S3::setKeys($my_aws_key, $my_aws_secret_key);
    $s3 = new Zend\Service_Amazon\S3();
@@ -124,8 +120,6 @@ bis 255 Zeichen lang sein. Namen die wie eine IP Adresse aussehen (z.B. "192.168
   .. code-block:: php
      :linenos:
 
-     require_once 'Zend/Service/Amazon/S3.php';
-
      $s3 = new Zend\Service_Amazon\S3($my_aws_key, $my_aws_secret_key);
 
      $s3->cleanBucket("my-own-bucket");
@@ -139,8 +133,6 @@ bis 255 Zeichen lang sein. Namen die wie eine IP Adresse aussehen (z.B. "192.168
 
   .. code-block:: php
      :linenos:
-
-     require_once 'Zend/Service/Amazon/S3.php';
 
      $s3 = new Zend\Service_Amazon\S3($my_aws_key, $my_aws_secret_key);
 
@@ -209,8 +201,6 @@ zugreifen kann: *http://s3.amazonaws.com/[bucket-name]/[object-name]*.
      .. code-block:: php
         :linenos:
 
-        require_once 'Zend/Service/Amazon/S3.php';
-
         $s3 = new Zend\Service_Amazon\S3($my_aws_key, $my_aws_secret_key);
 
         $s3->putObject("my-own-bucket/Pictures/Me.png", file_get_contents("me.png"),
@@ -251,8 +241,6 @@ zugreifen kann: *http://s3.amazonaws.com/[bucket-name]/[object-name]*.
 
   .. code-block:: php
      :linenos:
-
-     require_once 'Zend/Service/Amazon/S3.php';
 
      $s3 = new Zend\Service_Amazon\S3($my_aws_key, $my_aws_secret_key);
 
@@ -326,8 +314,6 @@ Wrapper. Hierfür muß das Client-Objekt als Stream Wrapper registriert werden:
 
 .. code-block:: php
    :linenos:
-
-   require_once 'Zend/Service/Amazon/S3.php';
 
    $s3 = new Zend\Service_Amazon\S3($my_aws_key, $my_aws_secret_key);
 

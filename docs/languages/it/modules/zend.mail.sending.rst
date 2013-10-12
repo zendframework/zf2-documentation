@@ -16,7 +16,6 @@ come transport.
    :linenos:
 
    <?php
-   require_once 'Zend/Mail/Transport/Smtp.php';
    $tr = new Zend\Mail_Transport\Smtp('mail.example.com');
    Zend\Mail\Mail::setDefaultTransport($tr);
 

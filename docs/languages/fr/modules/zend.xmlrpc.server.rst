@@ -585,9 +585,6 @@ performance differences.
 .. code-block:: php
    :linenos:
 
-   require_once 'Zend/XmlRpc/Server.php';
-   require_once 'Zend/XmlRpc/Generator/XMLWriter.php';
-
    Zend\XmlRpc\Value::setGenerator(new Zend\XmlRpc_Generator\XMLWriter());
 
    $server = new Zend\XmlRpc\Server();

@@ -64,8 +64,6 @@ Bağdaştırıcı yapıcısı bağlantıyı tanımlamak için parametreler dizis
    :linenos:
 
    <?php
-   require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
-
    $db = new Zend\Db\Adapter\Pdo\Mysql(array(
        'host'     => '127.0.0.1',
        'username' => 'webuser',
@@ -95,7 +93,6 @@ yapıcısına verilen parametreler dizisi gibidir.
    :linenos:
 
    <?php
-   require_once 'Zend/Db.php';
    // Zend\Db\Adapter\Pdo\Mysql sınıfını otomatik yükle ve instance'ını oluştur.
    $db = Zend\Db\Db::factory('Pdo_Mysql', array(
        'host'     => '127.0.0.1',
@@ -117,8 +114,6 @@ kullanabilirsiniz.
    :linenos:
 
    <?php
-   require_once 'Zend/Db.php';
-
    // Otomatik olarak MyProject_Db_Adapter_Pdo_Mysql sınıfını yükle ve instance'ını oluştur.
    $db = Zend\Db\Db::factory('Pdo_Mysql', array(
                        'host'             => '127.0.0.1',
@@ -153,9 +148,6 @@ yükleyebilirsiniz , örneğin :ref:`Zend\Config\Ini <zend.config.adapters.ini>`
    :linenos:
 
    <?php
-   require_once 'Zend/Config.php';
-   require_once 'Zend/Db.php';
-
    $config = new Zend\Config\Config(
                    array(
                        'database' => array(

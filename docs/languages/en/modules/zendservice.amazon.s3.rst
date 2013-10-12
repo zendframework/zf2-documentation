@@ -73,8 +73,6 @@ The following example demonstrates creating a bucket, storing and retrieving the
 .. code-block:: php
    :linenos:
 
-   require_once 'Zend/Service/Amazon/S3.php';
-
    $s3 = new ZendService\Amazon\S3($my_aws_key, $my_aws_secret_key);
 
    $s3->createBucket("my-own-bucket");
@@ -88,8 +86,6 @@ secret key) to the constructor. If you only use one account, you can set default
 
 .. code-block:: php
    :linenos:
-
-   require_once 'Zend/Service/Amazon/S3.php';
 
    ZendService\Amazon\S3::setKeys($my_aws_key, $my_aws_secret_key);
    $s3 = new ZendService\Amazon\S3();
@@ -119,8 +115,6 @@ address (e.g. "192.168.16.255") are not allowed.
   .. code-block:: php
      :linenos:
 
-     require_once 'Zend/Service/Amazon/S3.php';
-
      $s3 = new ZendService\Amazon\S3($my_aws_key, $my_aws_secret_key);
 
      $s3->cleanBucket("my-own-bucket");
@@ -134,8 +128,6 @@ address (e.g. "192.168.16.255") are not allowed.
 
   .. code-block:: php
      :linenos:
-
-     require_once 'Zend/Service/Amazon/S3.php';
 
      $s3 = new ZendService\Amazon\S3($my_aws_key, $my_aws_secret_key);
 
@@ -201,8 +193,6 @@ object with public access, in which case it will be available through the *URL*:
      .. code-block:: php
         :linenos:
 
-        require_once 'Zend/Service/Amazon/S3.php';
-
         $s3 = new ZendService\Amazon\S3($my_aws_key, $my_aws_secret_key);
 
         $s3->putObject("my-own-bucket/Pictures/Me.png", file_get_contents("me.png"),
@@ -243,8 +233,6 @@ object with public access, in which case it will be available through the *URL*:
 
   .. code-block:: php
      :linenos:
-
-     require_once 'Zend/Service/Amazon/S3.php';
 
      $s3 = new ZendService\Amazon\S3($my_aws_key, $my_aws_secret_key);
 
@@ -315,8 +303,6 @@ wrapper. For this, you need to register the client object as the stream wrapper:
 
 .. code-block:: php
    :linenos:
-
-   require_once 'Zend/Service/Amazon/S3.php';
 
    $s3 = new ZendService\Amazon\S3($my_aws_key, $my_aws_secret_key);
 

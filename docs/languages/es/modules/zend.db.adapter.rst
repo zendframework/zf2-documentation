@@ -99,8 +99,6 @@ parámetros que hubiera enviado al constructor del adaptador.
    // el archivo Zend\Db\Adapter\Pdo\Mysql será cargado para nosotros por el método
    // factory de Zend_Db.
 
-   // require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
-
    // carga automaticamente la clase Zend\Db\Adapter\Pdo\Mysql
    // y crea una instancia de la misma
    $db = Zend\Db\Db::factory('Pdo_Mysql', array(

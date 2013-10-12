@@ -16,9 +16,6 @@ sono PLAIN, LOGIN e CRAM-MD5, che necessitano dei valori di 'username' e 'passwo
    :linenos:
 
    <?php
-   require_once 'Zend/Mail.php';
-   require_once 'Zend/Mail/Transport/Smtp.php';
-
    $config = array('auth' => 'login',
                    'username' => 'myusername',
                    'password' => 'password');

@@ -16,10 +16,8 @@ L'oggetto fornito sovrascriverà il transport predefinito per la richiesta *send
    :linenos:
 
    <?php
-   require_once 'Zend/Mail.php';
    $mail = new Zend\Mail\Mail();
    // crea il messaggio...
-   require_once 'Zend/Mail/Transport/Smtp.php';
    $tr1 = new Zend\Mail_Transport\Smtp('server@example.com');
    $tr2 = new Zend\Mail_Transport\Smtp('altro_server@example.com');
    $mail->send($tr1);
