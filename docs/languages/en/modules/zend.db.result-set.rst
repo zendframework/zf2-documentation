@@ -56,7 +56,7 @@ The following is an example workflow similar to what one might find inside
 .. _zend.db.result-set.result-set:
 
 Zend\\Db\\ResultSet\\ResultSet and Zend\\Db\\ResultSet\\AbstractResultSet
----------------------------------------
+-------------------------------------------------------------------------
 
 For most purposes, either a instance of ``Zend\Db\ResultSet\ResultSet`` or a
 derivative of ``Zend\Db\ResultSet\AbstractResultSet`` will be being used.  The implementation of

@@ -85,7 +85,7 @@ The ``ModuleManager`` will call ``getAutoloaderConfig()`` and ``getConfig()``
 automatically for us.
 
 Autoloading files
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
 
 Our ``getAutoloaderConfig()`` method returns an array that is compatible with
 ZF2’s ``AutoloaderFactory``. We configure it so that we add a class map file to

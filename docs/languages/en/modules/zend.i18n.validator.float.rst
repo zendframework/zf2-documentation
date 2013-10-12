@@ -9,7 +9,7 @@ validates also localized input.
 .. _zend.i18n.validator.float.options:
 
 Supported options for Zend\\I18n\\Validator\\Float
---------------------------------------------
+--------------------------------------------------
 
 The following options are supported for ``Zend\I18n\Validator\Float``:
 

@@ -1,7 +1,7 @@
 .. _zend.test.phpunit:
 
 Unit testing with PHPUnit
---------------------
+-------------------------
 
 ``Zend\Test\PHPUnit`` provides a TestCase for MVC applications that contains assertions for testing against a variety of
 responsibilities. Probably the easiest way to understand what it can do is to see an example.
@@ -44,7 +44,7 @@ to test modules dependencies or your current application config.
 .. _zend.test.setup:
 
 Setup your TestCase
---------------------
+-------------------
 
 As noted in the previous example, all MVC test cases should extend AbstractHttpControllerTestCase.
 This class in turn extends ``PHPUnit_Framework_TestCase``, and gives you all the structure and assertions
@@ -81,7 +81,7 @@ throw MVC exception during the tests writing :
 .. _zend.test.testing:
 
 Testing your Controllers and MVC Applications
---------------------
+---------------------------------------------
 
 Once you have your application config in place, you can begin testing. Testing is basically as you would expect in an PHPUnit test
 suite, with a few minor differences.
@@ -129,14 +129,14 @@ You can use directly yours query args in the url :
 Now that the request is made, it's time to start making assertions against it.
 
 Assertions
---------------------
+----------
 
 Assertions are at the heart of Unit Testing; you use them to verify that the results are what you expect.
 To this end, ``Zend\Test\PHPUnit\AbstractControllerTestCase`` provides a number of assertions to make testing your
 MVC apps and controllers simpler.
 
 Request Assertions
---------------------
+------------------
 
 It's often useful to assert against the last run action, controller, and module; additionally, you may want
 to assert against the route that was matched. The following assertions can help you in this regard:
@@ -156,7 +156,7 @@ to assert against the route that was matched. The following assertions can help 
 Each also has a 'Not' variant for negative assertions.
 
 CSS Selector Assertions
---------------------
+-----------------------
 
 CSS selectors are an easy way to verify that certain artifacts are present in the response content.
 They also make it trivial to ensure that items necessary for Javascript UIs and/or AJAX integration will be present; most
@@ -187,7 +187,7 @@ assertNotQueryContentRegex(), and assertNotQueryCount(). (Note that the min and 
 be obvious reasons.)
 
 XPath Assertions
---------------------
+----------------
 
 Some developers are more familiar with XPath than with CSS selectors, and thus XPath variants of all the Query assertions are also provided.
 These are:
@@ -213,7 +213,7 @@ These are:
 * ``assertNotXpathQueryContentRegex($path, $pattern)``
 
 Redirect Assertions
---------------------
+-------------------
 
 Often an action will redirect. Instead of following the redirect, ``Zend\Test\PHPUnit\ControllerTestCase`` allows you to test for redirects
 with a handful of assertions.
@@ -228,7 +228,7 @@ expression provided by $pattern.
 Each also has a 'Not' variant for negative assertions.
 
 Response Header Assertions
---------------------
+--------------------------
 
 In addition to checking for redirect headers, you will often need to check for specific HTTP response codes and headers -- for instance,
 to determine whether an action results in a 404 or 500 response, or to ensure that JSON responses contain the appropriate Content-Type header.
