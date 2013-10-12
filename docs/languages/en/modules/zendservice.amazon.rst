@@ -287,23 +287,23 @@ counterparts.
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
    |SalesRank       |int                         |Sales Rank for the Item                                                                    |
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
-   |SmallImage      |ZendService\Amazon\Image   |Small Image of the Item                                                                    |
+   |SmallImage      |ZendService\Amazon\Image    |Small Image of the Item                                                                    |
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
-   |MediumImage     |ZendService\Amazon\Image   |Medium Image of the Item                                                                   |
+   |MediumImage     |ZendService\Amazon\Image    |Medium Image of the Item                                                                   |
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
-   |LargeImage      |ZendService\Amazon\Image   |Large Image of the Item                                                                    |
+   |LargeImage      |ZendService\Amazon\Image    |Large Image of the Item                                                                    |
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
    |Subjects        |array                       |Item Subjects                                                                              |
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
-   |Offers          |ZendService\Amazon\OfferSet|Offer Summary and Offers for the Item                                                      |
+   |Offers          |ZendService\Amazon\OfferSet |Offer Summary and Offers for the Item                                                      |
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
-   |CustomerReviews |array                       |Customer reviews represented as an array of ZendService\Amazon\CustomerReview objects     |
+   |CustomerReviews |array                       |Customer reviews represented as an array of ZendService\Amazon\CustomerReview objects      |
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
-   |EditorialReviews|array                       |Editorial reviews represented as an array of ZendService\Amazon\EditorialReview objects   |
+   |EditorialReviews|array                       |Editorial reviews represented as an array of ZendService\Amazon\EditorialReview objects    |
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
-   |SimilarProducts |array                       |Similar Products represented as an array of ZendService\Amazon\SimilarProduct objects     |
+   |SimilarProducts |array                       |Similar Products represented as an array of ZendService\Amazon\SimilarProduct objects      |
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
-   |Accessories     |array                       |Accessories for the item represented as an array of ZendService\Amazon\Accessories objects|
+   |Accessories     |array                       |Accessories for the item represented as an array of ZendService\Amazon\Accessories objects |
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
    |Tracks          |array                       |An array of track numbers and names for Music CDs and DVDs                                 |
    +----------------+----------------------------+-------------------------------------------------------------------------------------------+
@@ -404,7 +404,7 @@ Properties
    +----------------------+------+--------------------------------------------------------------+
    |TotalRefurbished      |int   |Total number of "refurbished" condition available for the item|
    +----------------------+------+--------------------------------------------------------------+
-   |Offers                |array |An array of ZendService\Amazon\Offer objects.                |
+   |Offers                |array |An array of ZendService\Amazon\Offer objects.                 |
    +----------------------+------+--------------------------------------------------------------+
 
 :ref:`Back to Class List <zendservice.amazon.classes>`

@@ -196,7 +196,7 @@ be done as follows:
 .. code-block:: php
    :linenos:
 
-   $twitter = new Zend_Service_Twitter(array(
+   $twitter = new ZendService_Twitter(array(
        'access_token' => array( // or use "accessToken" as the key; both work
            'token' => 'your-access-token',
            'secret' => 'your-access-token-secret',
@@ -216,7 +216,7 @@ client configuration for setting up an instance, use the key
 .. code-block:: php
    :linenos:
 
-   $twitter = new Zend_Service_Twitter(array(
+   $twitter = new ZendService_Twitter(array(
        'access_token' => array( // or use "accessToken" as the key; both work
            'token' => 'your-access-token',
            'secret' => 'your-access-token-secret',
@@ -522,7 +522,7 @@ will be returned, but this value may be changed using the *count* option.
 .. code-block:: php
    :linenos:
 
-   $twitter  = new Zend_Service_Twitter($options);
+   $twitter  = new ZendService_Twitter($options);
    $response = $twitter->search->tweets('#zendframework');
 
 The ``tweets()`` method accepts an optional second argument, array of optional parameters to

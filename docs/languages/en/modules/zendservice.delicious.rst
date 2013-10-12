@@ -300,7 +300,7 @@ The del.icio.us web *API* allows access to the public data of all users.
    +----------------+---------------------------+-------------------------------+
    |getUserNetwork()|Retrieves network of a user|Array                          |
    +----------------+---------------------------+-------------------------------+
-   |getUserPosts()  |Retrieves posts of a user  |ZendService\Delicious\PostList|
+   |getUserPosts()  |Retrieves posts of a user  |ZendService\Delicious\PostList |
    +----------------+---------------------------+-------------------------------+
    |getUserTags()   |Retrieves tags of a user   |Array                          |
    +----------------+---------------------------+-------------------------------+

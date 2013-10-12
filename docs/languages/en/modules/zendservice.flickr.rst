@@ -225,17 +225,17 @@ Properties
    +----------+-------------------------+------------------------------------------------------------------+
    |iconserver|string                   |The server used in assembling icon URLs.                          |
    +----------+-------------------------+------------------------------------------------------------------+
-   |Square    |ZendService\Flickr\Image|A 75x75 thumbnail of the image.                                   |
+   |Square    |ZendService\Flickr\Image |A 75x75 thumbnail of the image.                                   |
    +----------+-------------------------+------------------------------------------------------------------+
-   |Thumbnail |ZendService\Flickr\Image|A 100 pixel thumbnail of the image.                               |
+   |Thumbnail |ZendService\Flickr\Image |A 100 pixel thumbnail of the image.                               |
    +----------+-------------------------+------------------------------------------------------------------+
-   |Small     |ZendService\Flickr\Image|A 240 pixel version of the image.                                 |
+   |Small     |ZendService\Flickr\Image |A 240 pixel version of the image.                                 |
    +----------+-------------------------+------------------------------------------------------------------+
-   |Medium    |ZendService\Flickr\Image|A 500 pixel version of the image.                                 |
+   |Medium    |ZendService\Flickr\Image |A 500 pixel version of the image.                                 |
    +----------+-------------------------+------------------------------------------------------------------+
-   |Large     |ZendService\Flickr\Image|A 640 pixel version of the image.                                 |
+   |Large     |ZendService\Flickr\Image |A 640 pixel version of the image.                                 |
    +----------+-------------------------+------------------------------------------------------------------+
-   |Original  |ZendService\Flickr\Image|The original image.                                               |
+   |Original  |ZendService\Flickr\Image |The original image.                                               |
    +----------+-------------------------+------------------------------------------------------------------+
 
 :ref:`Back to Class List <zendservice.flickr.classes>`
