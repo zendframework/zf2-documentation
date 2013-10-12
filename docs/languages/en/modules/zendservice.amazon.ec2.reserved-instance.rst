@@ -53,7 +53,7 @@ availabilityZone, duration, fixedPrice, usagePrice, productDescription, instance
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new ZendService\Amazon_Ec2\Instance\Reserved('aws_key',
+   $ec2_instance = new ZendService\Amazon\Ec2\Instance\Reserved('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->describeInstances('instanceId');
 
@@ -71,7 +71,7 @@ availabilityZone, duration, fixedPrice, usagePrice and productDescription.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new ZendService\Amazon_Ec2\Instance\Reserved('aws_key',
+   $ec2_instance = new ZendService\Amazon\Ec2\Instance\Reserved('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->describeOfferings();
 
@@ -88,7 +88,7 @@ insufficient capacity errors) and pay a lower usage rate for the actual time use
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new ZendService\Amazon_Ec2\Instance\Reserved('aws_key',
+   $ec2_instance = new ZendService\Amazon\Ec2\Instance\Reserved('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->purchaseOffering('offeringId', 'instanceCount');
 

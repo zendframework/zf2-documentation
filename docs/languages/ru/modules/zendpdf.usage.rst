@@ -46,11 +46,11 @@
 
    // Создание нового стиля
    $style = new ZendPdf\Style();
-   $style->setFillColor(new ZendPdf_Color\RGB(0, 0, 0.9));
-   $style->setLineColor(new ZendPdf_Color\GrayScale(0.2));
+   $style->setFillColor(new ZendPdf\Color\RGB(0, 0, 0.9));
+   $style->setLineColor(new ZendPdf\Color\GrayScale(0.2));
    $style->setLineWidth(3);
    $style->setLineDashingPattern(array(3, 2, 3, 4), 1.6);
-   $style->setFont(new ZendPdf_Font\Standard(ZendPdf\Const::FONT_HELVETICA_BOLD), 32);
+   $style->setFont(new ZendPdf\Font\Standard(ZendPdf\Const::FONT_HELVETICA_BOLD), 32);
 
    // Создание нового объекта изображения
    $stampImage = ZendPdf\ImageFactory::factory(dirname(__FILE__) . '/stamp.jpg');
@@ -79,7 +79,7 @@
    $pdf->pages[] = ($page2 = new ZendPdf\Page(ZendPdf\Const::PAGESIZE_LETTER_LANDSCAPE));
 
    // Создание нового шрифта
-   $font = new ZendPdf_Font\Standard(ZendPdf\Const::FONT_HELVETICA);
+   $font = new ZendPdf\Font\Standard(ZendPdf\Const::FONT_HELVETICA);
 
    // Применение шрифта и написание текста
    $page1->setFont($font, 36);
@@ -90,37 +90,37 @@
    $page2->drawText('Helvetica 24 text string', 60, 500);
 
    // Использование другого шрифта
-   $page2->setFont(new ZendPdf_Font\Standard(ZendPdf\Const::FONT_TIMES_ROMAN), 32);
+   $page2->setFont(new ZendPdf\Font\Standard(ZendPdf\Const::FONT_TIMES_ROMAN), 32);
    $page2->drawText('Times-Roman 32 text string', 60, 450);
 
    // Рисование прямоугольника
-   $page2->setFillColor(new ZendPdf_Color\GrayScale(0.8));
-   $page2->setLineColor(new ZendPdf_Color\GrayScale(0.2));
+   $page2->setFillColor(new ZendPdf\Color\GrayScale(0.8));
+   $page2->setLineColor(new ZendPdf\Color\GrayScale(0.2));
    $page2->setLineDashingPattern(array(3, 2, 3, 4), 1.6);
    $page2->drawRectangle(60, 400, 400, 350);
 
    // Рисование круга
    $page2->setLineDashingPattern(ZendPdf\Const::LINEDASHING_SOLID);
-   $page2->setFillColor(new ZendPdf_Color\RGB(1, 0, 0));
+   $page2->setFillColor(new ZendPdf\Color\RGB(1, 0, 0));
    $page2->drawCircle(85, 375, 25);
 
    // Рисование секторов
    $page2->drawCircle(200, 375, 25, 2*M_PI/3, -M_PI/6);
-   $page2->setFillColor(new ZendPdf_Color\CMYK(1, 0, 0, 0));
+   $page2->setFillColor(new ZendPdf\Color\CMYK(1, 0, 0, 0));
    $page2->drawCircle(200, 375, 25, M_PI/6, 2*M_PI/3);
-   $page2->setFillColor(new ZendPdf_Color\RGB(1, 1, 0));
+   $page2->setFillColor(new ZendPdf\Color\RGB(1, 1, 0));
    $page2->drawCircle(200, 375, 25, -M_PI/6, M_PI/6);
 
    // Рисование элипса
-   $page2->setFillColor(new ZendPdf_Color\RGB(1, 0, 0));
+   $page2->setFillColor(new ZendPdf\Color\RGB(1, 0, 0));
    $page2->drawEllipse(250, 400, 400, 350);
-   $page2->setFillColor(new ZendPdf_Color\CMYK(1, 0, 0, 0));
+   $page2->setFillColor(new ZendPdf\Color\CMYK(1, 0, 0, 0));
    $page2->drawEllipse(250, 400, 400, 350, M_PI/6, 2*M_PI/3);
-   $page2->setFillColor(new ZendPdf_Color\RGB(1, 1, 0));
+   $page2->setFillColor(new ZendPdf\Color\RGB(1, 1, 0));
    $page2->drawEllipse(250, 400, 400, 350, -M_PI/6, M_PI/6);
 
    // Рисование и заполнение многоугольника
-   $page2->setFillColor(new ZendPdf_Color\RGB(1, 0, 1));
+   $page2->setFillColor(new ZendPdf\Color\RGB(1, 0, 1));
    $x = array();
    $y = array();
    for ($count = 0; $count < 8; $count++) {

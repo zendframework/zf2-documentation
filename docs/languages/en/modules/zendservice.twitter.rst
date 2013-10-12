@@ -60,7 +60,7 @@ details of an existing one you control. To do this:
   - From the header "Your access token", grab the "Access token" and "Access token secret" values.
 
 Armed with this information, you can now configure and create your
-``ZendService_Twitter\Twitter\Twitter`` instance:
+``ZendService\Twitter\Twitter\Twitter`` instance:
 
 .. code-block:: php
     :linenos:
@@ -113,7 +113,7 @@ Once you have the client configured, you can start consuming it:
     // Tweet something:
     $twitter->statuses->update('Hello world!');
 
-Every action you take returns a ``ZendService_Twitter\Twitter\Response`` object. This object
+Every action you take returns a ``ZendService\Twitter\Twitter\Response`` object. This object
 contains some general purpose methods for determining the status of the response (``isSuccess()``,
 ``isError()``), and otherwise acts as a value object containing the data returned. Essentially, if
 the response returns an object, you will be able to access the members listed by the `Twitter API
@@ -196,7 +196,7 @@ be done as follows:
 .. code-block:: php
    :linenos:
 
-   $twitter = new ZendService_Twitter(array(
+   $twitter = new ZendService\Twitter(array(
        'access_token' => array( // or use "accessToken" as the key; both work
            'token' => 'your-access-token',
            'secret' => 'your-access-token-secret',
@@ -216,7 +216,7 @@ client configuration for setting up an instance, use the key
 .. code-block:: php
    :linenos:
 
-   $twitter = new ZendService_Twitter(array(
+   $twitter = new ZendService\Twitter(array(
        'access_token' => array( // or use "accessToken" as the key; both work
            'token' => 'your-access-token',
            'secret' => 'your-access-token-secret',
@@ -226,7 +226,7 @@ client configuration for setting up an instance, use the key
            'consumerSecret' => 'your-consumer-secret',
        ),
        'http_client_options' => array(
-           'adapter' => 'Zend_Http_Client_Adapter_Curl',
+           'adapter' => 'Zend_Http\Client\Adapter\Curl',
        ),
    ));
 
@@ -522,7 +522,7 @@ will be returned, but this value may be changed using the *count* option.
 .. code-block:: php
    :linenos:
 
-   $twitter  = new ZendService_Twitter($options);
+   $twitter  = new ZendService\Twitter($options);
    $response = $twitter->search->tweets('#zendframework');
 
 The ``tweets()`` method accepts an optional second argument, array of optional parameters to

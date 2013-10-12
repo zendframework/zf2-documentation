@@ -261,7 +261,7 @@ The following is a list of methods where this adapter's behavior diverges from t
   - *string*- the name of a script registered with Job Queue to invoke. If passed in this way, no arguments are
     provided to the script.
 
-  - *array*- an array of values with which to configure a ``ZendApi_Job`` object. These may include the following:
+  - *array*- an array of values with which to configure a ``ZendApi\Job`` object. These may include the following:
 
     - ``script``- the name of the Job Queue script to invoke. (Required)
 
@@ -294,11 +294,11 @@ The following is a list of methods where this adapter's behavior diverges from t
     As noted, only the ``script`` argument is required; all others are simply available to allow passing more
     fine-grained detail on how and when to run the job.
 
-  - ``ZendApi_Job``- finally, you may simply pass a ``ZendApi_Job`` instance, and it will be passed along to
+  - ``ZendApi\Job``- finally, you may simply pass a ``ZendApi\Job`` instance, and it will be passed along to
     Platform's Job Queue.
 
   In all instances, ``send()`` returns a ``Zend\Queue\Message\PlatformJob`` object, which provides access to the
-  ``ZendApi_Job`` object used to communicate with Job Queue.
+  ``ZendApi\Job`` object used to communicate with Job Queue.
 
 - ``receive()``- retrieves a list of active jobs from Job Queue. Each job in the returned set will be an instance
   of ``Zend\Queue\Message\PlatformJob``.

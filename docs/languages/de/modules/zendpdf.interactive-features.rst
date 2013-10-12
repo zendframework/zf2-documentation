@@ -33,13 +33,13 @@ Die folgenden Typen werden von der ``ZendPdf`` Komponente unterstützt.
 
 .. _zendpdf.pages.interactive-features.destinations.types.zoom:
 
-ZendPdf_Destination\Zoom
+ZendPdf\Destination\Zoom
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zeigt die spezifizierte Seite, mit den Koordinaten (Links, Oben) positioniert an der oberen-linken Ecke des
 Fensters und dem Inhalt der Seite vergrößert auf den Zoom Faktor.
 
-Zielobjekte können durch Verwendung der ``ZendPdf_Destination\Zoom::create($page, $left = null, $top = null,
+Zielobjekte können durch Verwendung der ``ZendPdf\Destination\Zoom::create($page, $left = null, $top = null,
 $zoom = null)`` Methode erstellt werden.
 
 Wobei:
@@ -55,7 +55,7 @@ Wobei:
 ``NULL``, wenn es für die ``$left``, ``$top`` or ``$zoom`` Parameter spezifiziert wird, heißt "aktueller Wert der
 Viewer Anwendung".
 
-Die ``ZendPdf_Destination\Zoom`` Klasse bietet die folgenden Methoden an:
+Die ``ZendPdf\Destination\Zoom`` Klasse bietet die folgenden Methoden an:
 
 - ``Float`` ``getLeftEdge()``;
 
@@ -71,7 +71,7 @@ Die ``ZendPdf_Destination\Zoom`` Klasse bietet die folgenden Methoden an:
 
 .. _zendpdf.pages.interactive-features.destinations.types.fit:
 
-ZendPdf_Destination\Fit
+ZendPdf\Destination\Fit
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zeigt die spezifizierte Seite an, wobei der Inhalt soweit vergrössert wird, dass er auf die komplette Seite passt
@@ -79,19 +79,19 @@ sowohl Horizontal als auch Vertikal im Fenster. Wenn die benötigten horizontale
 Vergrösserungsfaktoren unterschiedlich sind, wird der kleinere der zwei verwendet, und die Seite im Fenster mit
 der anderen Dimension zentriert.
 
-Das Zielobjekt kann erstellt werden indem die ``ZendPdf_Destination\Fit::create($page)`` Methode verwendet wird.
+Das Zielobjekt kann erstellt werden indem die ``ZendPdf\Destination\Fit::create($page)`` Methode verwendet wird.
 
 Wobei ``$page`` eine Zielseite ist (ein ``ZendPdf\Page`` Objekt oder eine Seitennummer).
 
 .. _zendpdf.pages.interactive-features.destinations.types.fit-horizontally:
 
-ZendPdf_Destination\FitHorizontally
+ZendPdf\Destination\FitHorizontally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zeigt die spezifizierte Seite, mit den vertikalen Koordinaten an der oberen Ecke des Fensters positioniert, an und
 den Inhalt der Seite gerade genug vergrössert damit die komplette Breite der Seite in das Fenster passt.
 
-Das Zielobjekt kann erstellt werden indem die ``ZendPdf_Destination\FitHorizontally::create($page, $top)`` Methode
+Das Zielobjekt kann erstellt werden indem die ``ZendPdf\Destination\FitHorizontally::create($page, $top)`` Methode
 verwendet wird.
 
 Wobei:
@@ -100,7 +100,7 @@ Wobei:
 
 - ``$top`` ist die obere Ecke der angezeigten Seite (float).
 
-Die Klasse ``ZendPdf_Destination\FitHorizontally`` bietet auch die folgenden Methoden:
+Die Klasse ``ZendPdf\Destination\FitHorizontally`` bietet auch die folgenden Methoden:
 
 - ``Float`` ``getTopEdge()``;
 
@@ -108,13 +108,13 @@ Die Klasse ``ZendPdf_Destination\FitHorizontally`` bietet auch die folgenden Met
 
 .. _zendpdf.pages.interactive-features.destinations.types.fit-vertically:
 
-ZendPdf_Destination\FitVertically
+ZendPdf\Destination\FitVertically
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zeigt die spezifizierte Seite, mit den horizontalen Koordinaten an der oberen Ecke des Fensters positioniert, an
 und den Inhalt der Seite gerade genug vergrössert damit die komplette Höhe der Seite in das Fenster passt.
 
-Das Zielobjekt kann erstellt werden indem die ``ZendPdf_Destination\FitVertically::create($page, $left)`` Methode
+Das Zielobjekt kann erstellt werden indem die ``ZendPdf\Destination\FitVertically::create($page, $left)`` Methode
 verwendet wird.
 
 Wobei:
@@ -123,7 +123,7 @@ Wobei:
 
 - ``$left`` die linke Ecke der angezeigten Seite ist. (float).
 
-Die Klasse ``ZendPdf_Destination\FitVertically`` bietet auch die folgenden Methoden:
+Die Klasse ``ZendPdf\Destination\FitVertically`` bietet auch die folgenden Methoden:
 
 - ``Float`` ``getLeftEdge()``;
 
@@ -131,7 +131,7 @@ Die Klasse ``ZendPdf_Destination\FitVertically`` bietet auch die folgenden Metho
 
 .. _zendpdf.pages.interactive-features.destinations.types.fit-rectangle:
 
-ZendPdf_Destination\FitRectangle
+ZendPdf\Destination\FitRectangle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zeigt die spezifizierte Seite an, wobei der Inhalt gerade genug vergrössert ist damit er komplett in das Rechteck
@@ -139,7 +139,7 @@ passt das durch die Koordinaten links, unten, rechts und oben spezifiziert wird 
 vertikal. Wenn die notwendigen horizontalen und vertikalen Vergrösserungsfaktoren unterschiedlich sind, wird der
 kleinere der zwei verwendet, wobei das Rechteck im Fenster durch Verwendung der andern Dimension zentriert wird.
 
-Das Zielobjekt kann erstellt werden indem die ``ZendPdf_Destination\FitRectangle::create($page, $left, $bottom,
+Das Zielobjekt kann erstellt werden indem die ``ZendPdf\Destination\FitRectangle::create($page, $left, $bottom,
 $right, $top)`` Methode verwendet wird.
 
 Wobei:
@@ -154,7 +154,7 @@ Wobei:
 
 - ``$top`` die obere Ecke der angezeigten Seite ist (float).
 
-Die Klasse ``ZendPdf_Destination\FitRectangle`` bietet auch die folgenden Methoden an:
+Die Klasse ``ZendPdf\Destination\FitRectangle`` bietet auch die folgenden Methoden an:
 
 - ``Float`` ``getLeftEdge()``;
 
@@ -174,7 +174,7 @@ Die Klasse ``ZendPdf_Destination\FitRectangle`` bietet auch die folgenden Method
 
 .. _zendpdf.pages.interactive-features.destinations.types.fit-bounding-box:
 
-ZendPdf_Destination\FitBoundingBox
+ZendPdf\Destination\FitBoundingBox
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zeigt die spezifizierte Seite an, wobei der Inhalt gerade genug vergrössert ist damit die Zeichenbox komplett in
@@ -182,20 +182,20 @@ das Fenster passt, sowohl horizontal als auch vertikal. Wenn die notwendigen hor
 Vergrösserungsfaktoren unterschiedlich sind, wird der kleinere der zwei verwendet, wobei die Zeichenbox im Fenster
 durch Verwendung der andern Dimension zentriert wird.
 
-Das Zielobjekt kann erstellt werden indem die ``ZendPdf_Destination\FitBoundingBox::create($page, $left, $bottom,
+Das Zielobjekt kann erstellt werden indem die ``ZendPdf\Destination\FitBoundingBox::create($page, $left, $bottom,
 $right, $top)`` Methode verwendet wird.
 
 Wobei ``$page`` eine Zielseite ist (ein ``ZendPdf\Page`` Objekt oder eine Seitenzahl).
 
 .. _zendpdf.pages.interactive-features.destinations.types.fit-bounding-box-horizontally:
 
-ZendPdf_Destination\FitBoundingBoxHorizontally
+ZendPdf\Destination\FitBoundingBoxHorizontally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zeigt die spezifizierte Seite, mit den vertikalen Koordinaten an der oberen Ecke des Fensters positioniert, an und
 den Inhalt der Seite gerade genug vergrössert damit die komplette Breite der Zeichenbox in das Fenster passt.
 
-Das Zielobjekt kann erstellt werden indem die ``ZendPdf_Destination\FitBoundingBoxHorizontally::create($page,
+Das Zielobjekt kann erstellt werden indem die ``ZendPdf\Destination\FitBoundingBoxHorizontally::create($page,
 $top)`` Methode verwendet wird.
 
 Wobei
@@ -204,7 +204,7 @@ Wobei
 
 - ``$top`` ist die obere Ecke der angezeigten Seite (float).
 
-Die Klasse ``ZendPdf_Destination\FitBoundingBoxHorizontally`` bietet auch die folgenden Methoden:
+Die Klasse ``ZendPdf\Destination\FitBoundingBoxHorizontally`` bietet auch die folgenden Methoden:
 
 - ``Float`` ``getTopEdge()``;
 
@@ -212,13 +212,13 @@ Die Klasse ``ZendPdf_Destination\FitBoundingBoxHorizontally`` bietet auch die fo
 
 .. _zendpdf.pages.interactive-features.destinations.types.fit-bounding-box-vertically:
 
-ZendPdf_Destination\FitBoundingBoxVertically
+ZendPdf\Destination\FitBoundingBoxVertically
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zeigt die spezifizierte Seite, mit den horizontalen Koordinaten an der oberen Ecke des Fensters positioniert, an
 und den Inhalt der Seite gerade genug vergrössert damit die komplette Höhe der Zeichenbox in das Fenster passt.
 
-Das Zielobjekt kann erstellt werden indem die ``ZendPdf_Destination\FitBoundingBoxVertically::create($page,
+Das Zielobjekt kann erstellt werden indem die ``ZendPdf\Destination\FitBoundingBoxVertically::create($page,
 $left)`` Methode verwendet wird.
 
 Wobei
@@ -227,7 +227,7 @@ Wobei
 
 - ``$left`` ist die linke Ecke der angezeigten Seite (float).
 
-Die Klasse ``ZendPdf_Destination\FitBoundingBoxVertically`` bietet auch die folgenden Methoden:
+Die Klasse ``ZendPdf\Destination\FitBoundingBoxVertically`` bietet auch die folgenden Methoden:
 
 - ``Float`` ``getLeftEdge()``;
 
@@ -235,7 +235,7 @@ Die Klasse ``ZendPdf_Destination\FitBoundingBoxVertically`` bietet auch die folg
 
 .. _zendpdf.pages.interactive-features.destinations.types.named:
 
-ZendPdf_Destination\Named
+ZendPdf\Destination\Named
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Alle oben aufgeführten Ziele sind "Explizite Ziele".
@@ -243,13 +243,13 @@ Alle oben aufgeführten Ziele sind "Explizite Ziele".
 Zusätzlich dazu können *PDF* Dokumente ein Verzeichnis solcher Ziele enthalten welche verwendet werden können um
 nach ausserhalb des *PDF*'s zu referenzieren (z.B. '``http://www.mycompany.com/document.pdf#chapter3``').
 
-``ZendPdf_Destination\Named`` Objekte erlauben es auf Ziele der benannten Zielverzeichnisse des Dokuments zu
+``ZendPdf\Destination\Named`` Objekte erlauben es auf Ziele der benannten Zielverzeichnisse des Dokuments zu
 referenzieren.
 
-Benannte Zielobjekte können erstellt werden indem man die ``ZendPdf_Destination\Named::create(string $name)``
+Benannte Zielobjekte können erstellt werden indem man die ``ZendPdf\Destination\Named::create(string $name)``
 Methode verwendet.
 
-Die Klasse ``ZendPdf_Destination\Named`` bietet eine einzige zusätzliche Methode:
+Die Klasse ``ZendPdf\Destination\Named`` bietet eine einzige zusätzliche Methode:
 
 ``String`` ``getName()``;
 
@@ -281,7 +281,7 @@ explizites Ziel oder eine GoTo Aktion).
 
 Das Verzeichnis der benannten Ziele des *PDF* Dokuments kann mit der Methode ``ZendPdf\Pdf::setNamedDestination(string
 $name, $destination)`` aktualisiert werden, wobei ``$destination`` entweder ein explizites Ziel ist (jedes Ziel
-ausser ``ZendPdf_Destination\Named``) oder eine GoTo Aktion.
+ausser ``ZendPdf\Destination\Named``) oder eine GoTo Aktion.
 
 Wenn ``NULL`` statt ``$destination`` spezifiziert ist, werden die spezifizierten benannten Ziele entfernt.
 
@@ -306,8 +306,8 @@ Wenn ``NULL`` statt ``$destination`` spezifiziert ist, werden die spezifizierten
    $pdf->pages[] = $page1;
    $pdf->pages[] = $page2;
 
-   $destination1 = ZendPdf_Destination\Fit::create($page2);
-   $destination2 = ZendPdf_Destination\Fit::create($page3);
+   $destination1 = ZendPdf\Destination\Fit::create($page2);
+   $destination2 = ZendPdf\Destination\Fit::create($page3);
 
    // Gibt das $page2 Objekt zurück
    $page = $pdf->resolveDestination($destination1);
@@ -322,10 +322,10 @@ Wenn ``NULL`` statt ``$destination`` spezifiziert ist, werden die spezifizierten
    $destination = $pdf->getNamedDestination('Page3');
 
    // Gibt $destination1 zurück
-   $pdf->resolveDestination(ZendPdf_Destination\Named::create('Page2'));
+   $pdf->resolveDestination(ZendPdf\Destination\Named::create('Page2'));
 
    // Gibt null zurück, die Seite 3 ist bis jetzt nicht im Dokument enthalten
-   $pdf->resolveDestination(ZendPdf_Destination\Named::create('Page3'));
+   $pdf->resolveDestination(ZendPdf\Destination\Named::create('Page3'));
 
 .. _zendpdf.pages.interactive-features.actions:
 
@@ -343,25 +343,25 @@ Unterstützte Typen von Aktionen
 
 Die folgenden Typen von Aktionen werden beim Laden vom *PDF* Dokument erkannt:
 
-- ``ZendPdf_Action\GoTo``- geht zu einem Ziel im aktuellen Dokument.
+- ``ZendPdf\Action\GoTo``- geht zu einem Ziel im aktuellen Dokument.
 
-- ``ZendPdf_Action\GoToR``- geht zu einem Ziel in einem anderen Dokument.
+- ``ZendPdf\Action\GoToR``- geht zu einem Ziel in einem anderen Dokument.
 
-- ``ZendPdf_Action\GoToE``- geht zu einem Ziel in einem eingebetteten Dokument.
+- ``ZendPdf\Action\GoToE``- geht zu einem Ziel in einem eingebetteten Dokument.
 
-- ``ZendPdf_Action\Launch``- startet eine Anwendung, öffnet oder druckt ein Dokument.
+- ``ZendPdf\Action\Launch``- startet eine Anwendung, öffnet oder druckt ein Dokument.
 
-- ``ZendPdf_Action\Thread``- beginnt einen Artikel Thread zu lesen.
+- ``ZendPdf\Action\Thread``- beginnt einen Artikel Thread zu lesen.
 
-- ``ZendPdf_Action\URI``- löst ein *URI* auf.
+- ``ZendPdf\Action\URI``- löst ein *URI* auf.
 
-- ``ZendPdf_Action\Sound``- spielt einen Sound.
+- ``ZendPdf\Action\Sound``- spielt einen Sound.
 
-- ``ZendPdf_Action\Movie``- spielt einen Film.
+- ``ZendPdf\Action\Movie``- spielt einen Film.
 
-- ``ZendPdf_Action\Hide``- versteckt oder zeigt einen oder mehrere Hinweise auf dem Bildschirm.
+- ``ZendPdf\Action\Hide``- versteckt oder zeigt einen oder mehrere Hinweise auf dem Bildschirm.
 
-- ``ZendPdf_Action\Named``- führt eine vordefinierte Aktion an der Viewer Anwendung aus:
+- ``ZendPdf\Action\Named``- führt eine vordefinierte Aktion an der Viewer Anwendung aus:
 
   - **NextPage**- Geht zur nächsten Seite des Dokuments.
 
@@ -371,31 +371,31 @@ Die folgenden Typen von Aktionen werden beim Laden vom *PDF* Dokument erkannt:
 
   - **LastPage**- Geht zur letzten Seite des Dokuments.
 
-- ``ZendPdf_Action\SubmitForm``- sendet Daten zu einem eindeutigen Ressourcenziel.
+- ``ZendPdf\Action\SubmitForm``- sendet Daten zu einem eindeutigen Ressourcenziel.
 
-- ``ZendPdf_Action\ResetForm``- setzt Felder mit Ihren Standardwerten.
+- ``ZendPdf\Action\ResetForm``- setzt Felder mit Ihren Standardwerten.
 
-- ``ZendPdf_Action\ImportData``- importiert Feldwerte von einer Datei.
+- ``ZendPdf\Action\ImportData``- importiert Feldwerte von einer Datei.
 
-- ``ZendPdf_Action\JavaScript``- führt ein JavaScript Skript aus.
+- ``ZendPdf\Action\JavaScript``- führt ein JavaScript Skript aus.
 
-- ``ZendPdf_Action\SetOCGState``- setzt den Status von einem oder mehreren optionalen Inhaltsgruppen.
+- ``ZendPdf\Action\SetOCGState``- setzt den Status von einem oder mehreren optionalen Inhaltsgruppen.
 
-- ``ZendPdf_Action\Rendition``- kontrolliert das Abspielen von Multimedia Inhalten (Beginnen, Stoppen, Pausieren
+- ``ZendPdf\Action\Rendition``- kontrolliert das Abspielen von Multimedia Inhalten (Beginnen, Stoppen, Pausieren
   oder Fortsetzen des Abspielens).
 
-- ``ZendPdf_Action\Trans``- Aktualisiert das Display eines Dokuments indem ein Übersetzungsverzeichnis verwendet
+- ``ZendPdf\Action\Trans``- Aktualisiert das Display eines Dokuments indem ein Übersetzungsverzeichnis verwendet
   wird.
 
-- ``ZendPdf_Action\GoTo3DView``- setzt die aktuelle Ansicht eines 3D Hinweises.
+- ``ZendPdf\Action\GoTo3DView``- setzt die aktuelle Ansicht eines 3D Hinweises.
 
-Nur ``ZendPdf_Action\GoTo`` und ``ZendPdf_Action\URI`` Aktionen können aktuell von Benutzern erstellt werden.
+Nur ``ZendPdf\Action\GoTo`` und ``ZendPdf\Action\URI`` Aktionen können aktuell von Benutzern erstellt werden.
 
-Goto Aktionen können erstellt werden indem die Methode ``ZendPdf_Action\GoTo::create($destination)`` verwendet
+Goto Aktionen können erstellt werden indem die Methode ``ZendPdf\Action\GoTo::create($destination)`` verwendet
 wird wobei ``$destination`` ein ``ZendPdf\Destination`` Objekt oder ein String ist der verwendet werden kann um
 ein benanntes Ziel zu identifizieren.
 
-Die Methode ``ZendPdf_Action\URI::create($uri[, $isMap])`` muss verwendet werden um eine URI Aktion zu erstellen
+Die Methode ``ZendPdf\Action\URI::create($uri[, $isMap])`` muss verwendet werden um eine URI Aktion zu erstellen
 (siehe die *API* Dokumentation für Details). Der optionale ``$isMap`` Parameter wird standardmäßig auf ``FALSE``
 gesetzt.
 
@@ -426,14 +426,14 @@ durchlaufen werden können:
    $pdf->pages[] = $page1;
    $pdf->pages[] = $page2;
 
-   $action1 = ZendPdf_Action\GoTo::create(
-                               ZendPdf_Destination\Fit::create($page2));
-   $action2 = ZendPdf_Action\GoTo::create(
-                               ZendPdf_Destination\Fit::create($page3));
-   $action3 = ZendPdf_Action\GoTo::create(
-                               ZendPdf_Destination\Named::create('Chapter1'));
-   $action4 = ZendPdf_Action\GoTo::create(
-                               ZendPdf_Destination\Named::create('Chapter5'));
+   $action1 = ZendPdf\Action\GoTo::create(
+                               ZendPdf\Destination\Fit::create($page2));
+   $action2 = ZendPdf\Action\GoTo::create(
+                               ZendPdf\Destination\Fit::create($page3));
+   $action3 = ZendPdf\Action\GoTo::create(
+                               ZendPdf\Destination\Named::create('Chapter1'));
+   $action4 = ZendPdf\Action\GoTo::create(
+                               ZendPdf\Destination\Named::create('Chapter5'));
 
    $action2->next[] = $action3;
    $action2->next[] = $action4;
@@ -520,9 +520,9 @@ Outline Attribute können mit Hilfe der folgenden Methoden empfangen oder gesetz
 
 - ``setIsBold(boolean $isBold)``- setzt den isBold Status.
 
-- ``ZendPdf_Color\Rgb getColor()``- holt die Outline Text Farbe (``NULL`` bedeutet schwarz).
+- ``ZendPdf\Color\Rgb getColor()``- holt die Outline Text Farbe (``NULL`` bedeutet schwarz).
 
-- ``setColor(ZendPdf_Color\Rgb $color)``- setzt die Outline Text Farbe (``NULL`` bedeutet schwarz).
+- ``setColor(ZendPdf\Color\Rgb $color)``- setzt die Outline Text Farbe (``NULL`` bedeutet schwarz).
 
 - ``ZendPdf\Target getTarget()``- holt das Outline Ziel (eine Aktion oder ein benanntes Zielobjekt).
 
@@ -563,14 +563,14 @@ iterieren kann indem RecursiveIteratorIterator verwendet wird:
                if ($pdf->resolveDestination($OutlineItemTarget) === null) {
                    // Markiert ein Outline Element dessen Ziel
                    // nicht auflösbar ist mit Roter Farbe
-                   $childOutlineItem->setColor(new ZendPdf_Color\Rgb(1, 0, 0));
+                   $childOutlineItem->setColor(new ZendPdf\Color\Rgb(1, 0, 0));
                }
-           } else if ($OutlineItemTarget instanceof ZendPdf_Action\GoTo) {
+           } else if ($OutlineItemTarget instanceof ZendPdf\Action\GoTo) {
                $OutlineItemTarget->setDestination();
                if ($pdf->resolveDestination($OutlineItemTarget) === null) {
                    // Markiert ein Outline Element dessen Ziel
                    // nicht auflösbar ist mit Roter Farbe
-                   $childOutlineItem->setColor(new ZendPdf_Color\Rgb(1, 0, 0));
+                   $childOutlineItem->setColor(new ZendPdf\Color\Rgb(1, 0, 0));
                }
            }
        }
@@ -600,12 +600,12 @@ Anhänge können einer Seite angehängt werden indem die Methode
 
 Aktuell können drei Typen von Anhängen von Benutzern erstellt werden:
 
-- ``ZendPdf_Annotation\Link::create($x1, $y1, $x2, $y2, $target)`` wobei ``$target`` ein Aktionsobjekt oder ein
+- ``ZendPdf\Annotation\Link::create($x1, $y1, $x2, $y2, $target)`` wobei ``$target`` ein Aktionsobjekt oder ein
   Ziel oder ein String ist (welche für ein benanntes Zielobjekt verwendet werden kann).
 
-- ``ZendPdf_Annotation\Text::create($x1, $y1, $x2, $y2, $text)``
+- ``ZendPdf\Annotation\Text::create($x1, $y1, $x2, $y2, $text)``
 
-- ``ZendPdf_Annotation\FileAttachment::create($x1, $y1, $x2, $y2, $fileSpecification)``
+- ``ZendPdf\Annotation\FileAttachment::create($x1, $y1, $x2, $y2, $fileSpecification)``
 
 Ein Link-Anhang repräsentiert entweder einen Hypertext Link oder ein Ziel anderswo im Dokument oder eine Aktion
 die ausgeführt werden soll.

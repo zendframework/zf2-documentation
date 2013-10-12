@@ -27,7 +27,7 @@ Farben
 
 *PDF* bietet leistungsfähige Möglichkeiten für die Farbdarstellung. Die ``ZendPdf`` Komponente unterstützt die
 Grauskala sowie RGB und CYMK Farbräume. Jede kann überall verwendet werden, wo ein ``ZendPdf\Color`` Objekt
-benötigt wird. Die ``ZendPdf_Color\GrayScale``, ``ZendPdf_Color\Rgb`` und ``ZendPdf_Color\Cmyk`` Klassen
+benötigt wird. Die ``ZendPdf\Color\GrayScale``, ``ZendPdf\Color\Rgb`` und ``ZendPdf\Color\Cmyk`` Klassen
 stellen folgende Funktionalitäten bereit:
 
 .. code-block:: php
@@ -35,24 +35,24 @@ stellen folgende Funktionalitäten bereit:
 
    // $grayLevel (Fließkommazahl)
    // 0.0 (schwarz) - 1.0 (weiß)
-   $color1 = new ZendPdf_Color\GrayScale($grayLevel);
+   $color1 = new ZendPdf\Color\GrayScale($grayLevel);
 
    // $r, $g, $b (Fließkommazahlen)
    // 0.0 (min Helligkeit) - 1.0 (max Helligkeit)
-   $color2 = new ZendPdf_Color\Rgb($r, $g, $b);
+   $color2 = new ZendPdf\Color\Rgb($r, $g, $b);
 
    // $c, $m, $y, $k (Fließkommazahlen)
    // 0.0 (min Helligkeit) - 1.0 (max Helligkeit)
-   $color3 = new ZendPdf_Color\Cmyk($c, $m, $y, $k);
+   $color3 = new ZendPdf\Color\Cmyk($c, $m, $y, $k);
 
-Die *HTML* Farben werden auch durch die Klasse ``ZendPdf_Color\Html`` bereitgestellt:
+Die *HTML* Farben werden auch durch die Klasse ``ZendPdf\Color\Html`` bereitgestellt:
 
 .. code-block:: php
    :linenos:
 
-   $color1 = new ZendPdf_Color\Html('#3366FF');
-   $color2 = new ZendPdf_Color\Html('silver');
-   $color3 = new ZendPdf_Color\Html('forestgreen');
+   $color1 = new ZendPdf\Color\Html('#3366FF');
+   $color2 = new ZendPdf\Color\Html('silver');
+   $color3 = new ZendPdf\Color\Html('forestgreen');
 
 .. _zendpdf.drawing.shape-drawing:
 
@@ -290,11 +290,11 @@ mit der Methode ``ZendPdf\Page::setFont()`` festgelegt werden:
    /**
     * Lege den aktuellen Zeichensatz fest.
     *
-    * @param ZendPdf_Resource\Font $font
+    * @param ZendPdf\Resource\Font $font
     * @param float $fontSize
     * @return ZendPdf\Page
     */
-   public function setFont(ZendPdf_Resource\Font $font, $fontSize);
+   public function setFont(ZendPdf\Resource\Font $font, $fontSize);
 
 *PDF* Dokumente unterstützt PostScript Type1 und TrueType Zeichensätze, sowie die zwei speziellen *PDF* Typen
 Type3 und zusammengesetzte Zeichensätze (composite fonts). Es gibt zudem 14 Type1 Standardzeichensätze, die von
@@ -623,14 +623,14 @@ Die ``ZendPdf\Page`` Klasse stellt die drawImage() Methode für das Zeichnen von
    /**
     * Zeichne eine Grafik an der angegebenen Position der Seite.
     *
-    * @param ZendPdf_Ressource\Image $image
+    * @param ZendPdf\Ressource\Image $image
     * @param float $x1
     * @param float $y1
     * @param float $x2
     * @param float $y2
     * @return ZendPdf\Page
     */
-   public function drawImage(ZendPdf_Ressource\Image $image, $x1, $y1, $x2, $y2);
+   public function drawImage(ZendPdf\Ressource\Image $image, $x1, $y1, $x2, $y2);
 
 Grafikobjekte sollten mit der Methode ``ZendPdf\Image::imageWithPath($filePath)`` erzeugt werden. (Es werden zur
 Zeit JPG, PNG und TIFF Grafiken unterstützt):
@@ -1078,11 +1078,11 @@ zu setzen und zu holen:
    /**
     * Ändere den Zeichensatz.
     *
-    * @param ZendPdf_Resource\Font $font
+    * @param ZendPdf\Resource\Font $font
     * @param float $fontSize
     * @return ZendPdf\Page
     */
-   public function setFont(ZendPdf_Resource\Font $font, $fontSize);
+   public function setFont(ZendPdf\Resource\Font $font, $fontSize);
 
 .. code-block:: php
    :linenos:
@@ -1101,7 +1101,7 @@ zu setzen und zu holen:
    /**
     * Hole den Zeichensatz.
     *
-    * @return ZendPdf_Resource\Font $font
+    * @return ZendPdf\Resource\Font $font
     */
    public function getFont();
 

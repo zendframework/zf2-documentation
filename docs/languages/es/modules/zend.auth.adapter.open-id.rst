@@ -96,7 +96,7 @@ el formulario *HTML* con el ``$_POST['openid_action']`` en **"Login"**, y la seg
 
 Puede personalizar el proceso de autenticación OpenID de varias formas. Por ejemplo, recibir la redirección del
 servidor de OpenID en una página aparte, especificando la "raíz" del sitio web y utilizar un
-``ZendOpenId_Consumer\Storage`` o un ``Zend\Controller\Response``. Usted también puede utilizar el simple
+``ZendOpenId\Consumer\Storage`` o un ``Zend\Controller\Response``. Usted también puede utilizar el simple
 registro de extensiones para recuperar información sobre el usuario desde el servidor de OpenID. Todas estas
 posibilidades se describen con más detalle en el capítulo ``ZendOpenId\Consume``.
 

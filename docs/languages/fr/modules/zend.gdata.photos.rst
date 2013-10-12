@@ -211,7 +211,7 @@ Une *UserQuery* peut être construite comme suit :
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $query = new ZendGData_Photos\UserQuery();
+   $query = new ZendGData\Photos\UserQuery();
    $query->setUser("sample.user");
 
 Pour chaque requête, des paramètres de limitations de la recherche peuvent être passés grâce aux méthodes
@@ -273,7 +273,7 @@ Le flux de l'utilisateur est accessible en passant son nom à la méthode *getUs
 
    try {
        $userFeed = $service->getUserFeed("sample.user");
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Error: " . $e->getMessage();
    }
 
@@ -286,12 +286,12 @@ Ou alors, le flux peut être requêté directement :
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $query = new ZendGData_Photos\UserQuery();
+   $query = new ZendGData\Photos\UserQuery();
    $query->setUser("sample.user");
 
    try {
        $userFeed = $service->getUserFeed(null, $query);
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Error: " . $e->getMessage();
    }
 
@@ -304,13 +304,13 @@ Construire une requête donne aussi accès aux éléments d'un utilisateur :
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $query = new ZendGData_Photos\UserQuery();
+   $query = new ZendGData\Photos\UserQuery();
    $query->setUser("sample.user");
    $query->setType("entry");
 
    try {
        $userEntry = $service->getUserEntry($query);
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Error: " . $e->getMessage();
    }
 
@@ -330,13 +330,13 @@ Le flux d'albums est disponible en construisant un objet de requête et en le pa
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $query = new ZendGData_Photos\AlbumQuery();
+   $query = new ZendGData\Photos\AlbumQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
 
    try {
        $albumFeed = $service->getAlbumFeed($query);
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Error: " . $e->getMessage();
    }
 
@@ -352,14 +352,14 @@ Construire une requête donne aussi accès au requêtage d'un album :
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $query = new ZendGData_Photos\AlbumQuery();
+   $query = new ZendGData\Photos\AlbumQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setType("entry");
 
    try {
        $albumEntry = $service->getAlbumEntry($query);
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Error: " . $e->getMessage();
    }
 
@@ -380,14 +380,14 @@ Le flux de photos est accessible en construisant un objet de requête et en le p
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $query = new ZendGData_Photos\PhotoQuery();
+   $query = new ZendGData\Photos\PhotoQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setPhotoId("100");
 
    try {
        $photoFeed = $service->getPhotoFeed($query);
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Error: " . $e->getMessage();
    }
 
@@ -400,7 +400,7 @@ Construire une requête donne aussi accès au requêtage d'une photo :
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $query = new ZendGData_Photos\PhotoQuery();
+   $query = new ZendGData\Photos\PhotoQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setPhotoId("100");
@@ -408,7 +408,7 @@ Construire une requête donne aussi accès au requêtage d'une photo :
 
    try {
        $photoEntry = $service->getPhotoEntry($query);
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Error: " . $e->getMessage();
    }
 
@@ -430,7 +430,7 @@ Voici comment effectuer des actions sur les commentaires récupérés d'une phot
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $query = new ZendGData_Photos\PhotoQuery();
+   $query = new ZendGData\Photos\PhotoQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setPhotoId("100");
@@ -440,11 +440,11 @@ Voici comment effectuer des actions sur les commentaires récupérés d'une phot
        $photoFeed = $service->getPhotoFeed($query);
 
        foreach ($photoFeed as $entry) {
-           if ($entry instanceof ZendGData_Photos\CommentEntry) {
+           if ($entry instanceof ZendGData\Photos\CommentEntry) {
                // Faites quelque chose avec le commentaire
            }
        }
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Error: " . $e->getMessage();
    }
 
@@ -465,7 +465,7 @@ Voici comment effectuer des actions sur les mots-clés récupérés d'une photo 
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $query = new ZendGData_Photos\PhotoQuery();
+   $query = new ZendGData\Photos\PhotoQuery();
    $query->setUser("sample.user");
    $query->setAlbumId("1");
    $query->setPhotoId("100");
@@ -475,11 +475,11 @@ Voici comment effectuer des actions sur les mots-clés récupérés d'une photo 
        $photoFeed = $service->getPhotoFeed($query);
 
        foreach ($photoFeed as $entry) {
-           if ($entry instanceof ZendGData_Photos\TagEntry) {
+           if ($entry instanceof ZendGData\Photos\TagEntry) {
                // Faites quelque chose avec le mot-clé
            }
        }
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Error: " . $e->getMessage();
    }
 
@@ -504,7 +504,7 @@ Il est possible de créer un album, pour les clients authentifiés :
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $entry = new ZendGData_Photos\AlbumEntry();
+   $entry = new ZendGData\Photos\AlbumEntry();
    $entry->setTitle($service->newTitle("test album"));
 
    $service->insertAlbumEntry($entry);
@@ -528,11 +528,11 @@ Créer une photo est possible pour les clients authentifiés, procédez comme su
    $fd = $service->newMediaFileSource($photo["tmp_name"]);
    $fd->setContentType($photo["type"]);
 
-   $entry = new ZendGData_Photos\PhotoEntry();
+   $entry = new ZendGData\Photos\PhotoEntry();
    $entry->setMediaSource($fd);
    $entry->setTitle($service->newTitle($photo["name"]));
 
-   $albumQuery = new ZendGData_Photos\AlbumQuery;
+   $albumQuery = new ZendGData\Photos\AlbumQuery;
    $albumQuery->setUser("sample.user");
    $albumQuery->setAlbumId("1");
 
@@ -554,11 +554,11 @@ Il est possible de créer un commentaire pour une photo, voici un exemple :
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $entry = new ZendGData_Photos\CommentEntry();
+   $entry = new ZendGData\Photos\CommentEntry();
    $entry->setTitle($service->newTitle("comment"));
    $entry->setContent($service->newContent("comment"));
 
-   $photoQuery = new ZendGData_Photos\PhotoQuery;
+   $photoQuery = new ZendGData\Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -582,10 +582,10 @@ Il est possible de créer un mot-clé pour une photo, voici un exemple :
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $entry = new ZendGData_Photos\TagEntry();
+   $entry = new ZendGData\Photos\TagEntry();
    $entry->setTitle($service->newTitle("tag"));
 
-   $photoQuery = new ZendGData_Photos\PhotoQuery;
+   $photoQuery = new ZendGData\Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -616,7 +616,7 @@ Supprimer un album est possible si le client est authentifié :
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $albumQuery = new ZendGData_Photos\AlbumQuery;
+   $albumQuery = new ZendGData\Photos\AlbumQuery;
    $albumQuery->setUser("sample.user");
    $albumQuery->setAlbumId("1");
    $albumQuery->setType('entry');
@@ -639,7 +639,7 @@ Supprimer une photo est possible si le client est authentifié :
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $photoQuery = new ZendGData_Photos\PhotoQuery;
+   $photoQuery = new ZendGData\Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -663,7 +663,7 @@ Supprimer un commentaire est possible si le client est authentifié :
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $photoQuery = new ZendGData_Photos\PhotoQuery;
+   $photoQuery = new ZendGData\Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -689,7 +689,7 @@ Supprimer un mot-clé est possible, si le client est authentifié :
    $client = ZendGData\ClientLogin::getHttpClient($user, $pass, $service);
    $service = new ZendGData\Photos($client);
 
-   $photoQuery = new ZendGData_Photos\PhotoQuery;
+   $photoQuery = new ZendGData\Photos\PhotoQuery;
    $photoQuery->setUser("sample.user");
    $photoQuery->setAlbumId("1");
    $photoQuery->setPhotoId("100");
@@ -699,7 +699,7 @@ Supprimer un mot-clé est possible, si le client est authentifié :
    $photoFeed = $service->getPhotoFeed($query);
 
    foreach ($photoFeed as $entry) {
-       if ($entry instanceof ZendGData_Photos\TagEntry) {
+       if ($entry instanceof ZendGData\Photos\TagEntry) {
            if ($entry->getContent() == $tagContent) {
                $tagEntry = $entry;
            }
@@ -726,10 +726,10 @@ Voici un exemple de gestion des versions et accès concurrent sur un effacement 
        // $album est l'albumEntry à effacer
    try {
        $this->delete($album);
-   } catch (ZendGData_App\HttpException $e) {
+   } catch (ZendGData\App\HttpException $e) {
        if ($e->getMessage()->getStatus() === 409) {
            $entry =
-               new ZendGData_Photos\AlbumEntry($e->getMessage()
+               new ZendGData\Photos\AlbumEntry($e->getMessage()
                                                   ->getBody());
            $this->delete($entry->getLink('edit')->href);
        } else {

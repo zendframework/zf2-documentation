@@ -31,31 +31,31 @@ Couleurs
 
 Le format *PDF* a d'excellentes capacités dans la représentation des couleurs. Le module ``ZendPdf`` supporte
 les espaces de couleur : niveaux de gris, RGB et CMJN. Chacun d'entre eux peut-être utilisé à chaque fois qu'un
-objet ``ZendPdf\Color`` est requis. Les classes ``ZendPdf_Color\GrayScale``, ``ZendPdf_Color\RGB`` et
-``ZendPdf_Color\CMYK`` fournissent cette fonctionnalité :
+objet ``ZendPdf\Color`` est requis. Les classes ``ZendPdf\Color\GrayScale``, ``ZendPdf\Color\RGB`` et
+``ZendPdf\Color\CMYK`` fournissent cette fonctionnalité :
 
 .. code-block:: php
    :linenos:
 
    // $grayLevel (float). 0.0 (noir) - 1.0 (blanc)
-   $color1 = new ZendPdf_Color\GrayScale($grayLevel);
+   $color1 = new ZendPdf\Color\GrayScale($grayLevel);
 
    // $r, $g, $b (float).
    // 0.0 (intensité minimum) - 1.0 (intensité maximum)
-   $color2 = new ZendPdf_Color\RGB($r, $g, $b);
+   $color2 = new ZendPdf\Color\RGB($r, $g, $b);
 
    // $c, $m, $y, $k (float).
    // 0.0 (intensité minimum) - 1.0 (intensité maximum)
-   $color3 = new ZendPdf_Color\CMYK($c, $m, $y, $k);
+   $color3 = new ZendPdf\Color\CMYK($c, $m, $y, $k);
 
-Les différentes couleurs HTML sont aussi fourni avec la classe ``ZendPdf_Color\Html``:
+Les différentes couleurs HTML sont aussi fourni avec la classe ``ZendPdf\Color\Html``:
 
 .. code-block:: php
    :linenos:
 
-   $color1 = new ZendPdf_Color\Html('#3366FF');
-   $color2 = new ZendPdf_Color\Html('silver');
-   $color3 = new ZendPdf_Color\Html('forestgreen');
+   $color1 = new ZendPdf\Color\Html('#3366FF');
+   $color2 = new ZendPdf\Color\Html('silver');
+   $color3 = new ZendPdf\Color\Html('forestgreen');
 
 .. _zendpdf.drawing.shape-drawing:
 
@@ -314,11 +314,11 @@ Utiliser des polices de caractères
       /**
        * Choisit la police courante.
        *
-       * @param ZendPdf_Resource\Font $font
+       * @param ZendPdf\Resource\Font $font
        * @param float $fontSize
        * @return ZendPdf\Page
        */
-      public function setFont(ZendPdf_Resource\Font $font, $fontSize);
+      public function setFont(ZendPdf\Resource\Font $font, $fontSize);
 
 
 
@@ -643,14 +643,14 @@ La classe ``ZendPdf\Page`` fournis la méthode ``drawImage()`` pour dessiner une
       /**
        * Insère une image à la position spécifiée dans la page
        *
-       * @param ZendPdf_Resource\Image $image
+       * @param ZendPdf\Resource\Image $image
        * @param float $x1
        * @param float $y1
        * @param float $x2
        * @param float $y2
        * @return ZendPdf\Page
        */
-      public function drawImage(ZendPdf_Resource\Image $image, $x1, $y1, $x2, $y2);
+      public function drawImage(ZendPdf\Resource\Image $image, $x1, $y1, $x2, $y2);
 
 
 
@@ -1155,10 +1155,10 @@ graphique :
        * Choisit la police.
        *
        * @param ZendPdf\Font $font
-       * @param ZendPdf_Resource\Font $font
+       * @param ZendPdf\Resource\Font $font
        * @param float $fontSize
        */
-      public function setFont(ZendPdf_Resource\Font $font, $fontSize);
+      public function setFont(ZendPdf\Resource\Font $font, $fontSize);
 
 
 
@@ -1185,7 +1185,7 @@ graphique :
       /**
        * Récupère la police courante
        *
-       * @return ZendPdf_Resource\Font $font
+       * @return ZendPdf\Resource\Font $font
        */
       public function getFont();
 

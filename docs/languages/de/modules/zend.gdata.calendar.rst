@@ -216,12 +216,12 @@ Statuc Code resultieren.
 
    try {
        $listFeed= $service->getCalendarListFeed();
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
-Der Aufruf von ``getCalendarListFeed()`` erstellt eine neue Instanz von ``ZendGData_Calendar\ListFeed`` die jeden
-vorhandenen Kalender als Instanz von ``ZendGData_Calendar\ListEntry`` enthält. Nachdem der Feed empfangen wurde,
+Der Aufruf von ``getCalendarListFeed()`` erstellt eine neue Instanz von ``ZendGData\Calendar\ListFeed`` die jeden
+vorhandenen Kalender als Instanz von ``ZendGData\Calendar\ListEntry`` enthält. Nachdem der Feed empfangen wurde,
 können der Iterator und der Accessor die innerhalb des Feeds enthalten sind, verwendet werden um die enthaltenen
 Kalender zu inspizieren.
 
@@ -242,8 +242,8 @@ Events erhalten
 ---------------
 
 Wie die Liste der Kalender können auch die Events empfangen werden durch Verwendung der ``ZendGData\Calendar``
-Service Klasse. Die zurückgegebene Event Liste ist vom Typ ``ZendGData_Calendar\EventFeed`` und enthält jedes
-Event als Instanz von ``ZendGData_Calendar\EventEntry``. Wie vorher, erlauben die in der Instanz des Event Feeds
+Service Klasse. Die zurückgegebene Event Liste ist vom Typ ``ZendGData\Calendar\EventFeed`` und enthält jedes
+Event als Instanz von ``ZendGData\Calendar\EventEntry``. Wie vorher, erlauben die in der Instanz des Event Feeds
 enthaltenen Accessoren und der Iterator das individuelle Events inspiziert werden können.
 
 .. _zend.gdata.event_retrieval.queries:
@@ -252,7 +252,7 @@ Abfragen
 ^^^^^^^^
 
 Wenn Events mit der Kalender *API* empfangen werden, werden speziell erstellte Abfrage *URL*\ s verwendet um zu
-beschreiben welche Events zurückgegeben werden sollten. Die ``ZendGData_Calendar\EventQuery`` Klasse vereinfacht
+beschreiben welche Events zurückgegeben werden sollten. Die ``ZendGData\Calendar\EventQuery`` Klasse vereinfacht
 diese Aufgabe durch automatische Erstellung einer Abfrage *URL* basierend auf den gegebenen Parametern. Eine
 komplette Liste dieser Parameter ist in der `Abfrage Sektion des Google Data API Protokoll Referenz`_ enthalten.
 Trotzdem gibt es drei Parameter die es Wert sind speziell genannt zu werden:
@@ -299,7 +299,7 @@ Events die in der Zukunft stattfinden werden zurückgegeben.
    // Empfängt die Event Liste vom Kalender Server
    try {
        $eventFeed = $service->getCalendarEventFeed($query);
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -311,7 +311,7 @@ Events die in der Zukunft stattfinden werden zurückgegeben.
    echo "</ul>";
 
 Zusätzliche Eigenschaften wie ID, Autor, Wann, Event Status, Sichtbarkeit, Web Inhalt, und Inhalt, sowie andere
-sind innerhalb von ``ZendGData_Calendar\EventEntry`` vorhanden. Siehe die `Zend Framework API Dokumentation`_ und
+sind innerhalb von ``ZendGData\Calendar\EventEntry`` vorhanden. Siehe die `Zend Framework API Dokumentation`_ und
 die `Lalender Protokol Referenz`_ für eine komplette Liste.
 
 .. _zend.gdata.event_retrieval.date_range:
@@ -365,7 +365,7 @@ Individuelle Events können empfangen werden indem deren Event ID als Teil der A
 
    try {
        $event = $service->getCalendarEventEntry($query);
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -381,7 +381,7 @@ alle notwendigen Informationen enthält um das Event zu erhalten.
 
    try {
        $event = $service->getCalendarEventEntry($eventURL);
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -616,7 +616,7 @@ speichern.
    // Die Änderungen an den Server hochladen
    try {
        $event->save();
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
@@ -672,7 +672,7 @@ Kommentars in der ``author`` Eigenschaft und der Kommentar Text in der ``content
    // Die Kommentarliste für das Event erhalten
    try {
    $commentFeed = $service->getFeed($commentUrl);
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo "Fehler: " . $e->getMessage();
    }
 
