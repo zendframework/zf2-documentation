@@ -133,7 +133,7 @@ constructeur utilise. ("suffix", "height", "imgUrl", etc...).
 Zend\Captcha\ReCaptcha
 ----------------------
 
-L'adaptateur ``Zend\Captcha\ReCaptcha`` utilise :ref:`ZendService\ReCaptcha <zendservice.recaptcha>` pour
+L'adaptateur ``Zend\Captcha\ReCaptcha`` utilise :ref:`ZendService\ReCaptcha\ReCaptcha <zendservice.recaptcha>` pour
 générer des *CAPTCHA*. Les méthodes suivantes lui sont propres :
 
 - ``setPrivKey($key)`` et ``getPrivKey()`` vous permettent de gérer la clé privée utilisée avec le service
@@ -142,7 +142,7 @@ générer des *CAPTCHA*. Les méthodes suivantes lui sont propres :
 - ``setPubKey($key)`` et ``getPubKey()`` vous permettent de gérer la clé publique utilisée avec le service
   ReCaptcha. Cette clé doit être spécifiée en constructeur, mais peut être ensuite modifiée.
 
-- ``setService(ZendService\ReCaptcha $service)`` et ``getService()`` vous permettent d'interagir directement avec
+- ``setService(ZendService\ReCaptcha\ReCaptcha $service)`` et ``getService()`` vous permettent d'interagir directement avec
   l'objet service ReCaptcha utilisé par l'adaptateur.
 
 

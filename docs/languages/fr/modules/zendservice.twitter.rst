@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zendservice.twitter:
 
-ZendService\Twitter
+ZendService\Twitter\Twitter
 ====================
 
 .. _zendservice.twitter.introduction:
@@ -9,15 +9,15 @@ ZendService\Twitter
 Introduction
 ------------
 
-``ZendService\Twitter`` fournit un client pour `l'APIREST de Twitter`_. ``ZendService\Twitter`` vous permet
+``ZendService\Twitter\Twitter`` fournit un client pour `l'APIREST de Twitter`_. ``ZendService\Twitter\Twitter`` vous permet
 d'interroger les fils (timeline) publics. En fournissant un nom d'utilisateur et un mot de passe pour Twitter, il
 vous permettra également de récupérer et mettre à jour votre statut, de répondre à des amis, de leur envoyer
 des messages directs, de marquer des tweets comme favoris et beaucoup d'autres choses.
 
-``ZendService\Twitter`` implémente un service *REST*, et toutes ses méthodes retournes une instance de
+``ZendService\Twitter\Twitter`` implémente un service *REST*, et toutes ses méthodes retournes une instance de
 ``Zend\Rest\Client\Result``.
 
-``ZendService\Twitter`` et subdivisé en sections, ainsi vous pouvez facilement identifier le type d'appel qui est
+``ZendService\Twitter\Twitter`` et subdivisé en sections, ainsi vous pouvez facilement identifier le type d'appel qui est
 demandé.
 
 - *account* s'assure que vos données de compte sont valides, vérifie votre taux limite pour l'*API* et termine la
@@ -43,7 +43,7 @@ demandé.
 Authentification
 ----------------
 
-A l'exception de la récupération du fil public, ``ZendService\Twitter`` nécessite une authentification pour
+A l'exception de la récupération du fil public, ``ZendService\Twitter\Twitter`` nécessite une authentification pour
 fonctionner. Twitter utilise l'`Authentification HTTP basique`_. Vous pouvez lui passer votre nom d'utilisateur ou
 votre email utilisé pour l'enregistrement de votre compte ainsi que votre mot de passe pour vous connecter à
 Twitter.
@@ -58,7 +58,7 @@ passe et vérifier qu'ils sont corrects.
 .. code-block:: php
    :linenos:
 
-   $twitter = new ZendService\Twitter('myusername', 'mysecretpassword');
+   $twitter = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
    // vérifie vos données de connexion avec Twitter
    $response = $twitter->account->verifyCredentials();
 
@@ -69,7 +69,7 @@ argument
    :linenos:
 
    $userInfo   = array('username' => 'foo', 'password' => 'bar');
-   $twitter    = new ZendService\Twitter($userInfo);
+   $twitter    = new ZendService\Twitter\Twitter($userInfo);
    // vérifie vos données de connexion avec Twitter
    $response = $twitter->account->verifyCredentials();
 
@@ -87,7 +87,7 @@ Account Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->account->verifyCredentials();
 
 - ``endSession()`` signs users out of client-facing applications.
@@ -99,7 +99,7 @@ Account Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->account->endSession();
 
 - ``rateLimitStatus()`` returns the remaining number of *API* requests available to the authenticating user before
@@ -112,7 +112,7 @@ Account Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->account->rateLimitStatus();
 
 .. _zendservice.twitter.status:
@@ -130,7 +130,7 @@ Status Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->status->publicTimeline();
 
 - ``friendsTimeline()`` returns the 20 most recent statuses posted by the authenticating user and that user's
@@ -143,7 +143,7 @@ Status Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->status->friendsTimeline();
 
   The ``friendsTimeline()`` method accepts an array of optional parameters to modify the query.
@@ -162,7 +162,7 @@ Status Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->status->userTimeline();
 
   The ``userTimeline()`` method accepts an array of optional parameters to modify the query.
@@ -186,7 +186,7 @@ Status Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->status->show(1234);
 
 - ``update()`` updates the authenticating user's status. This method requires that you pass in the status update
@@ -199,7 +199,7 @@ Status Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->status->update('My Great Tweet');
 
   The ``update()`` method accepts a second additional parameter.
@@ -216,7 +216,7 @@ Status Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->status->replies();
 
   The ``replies()`` method accepts an array of optional parameters to modify the query.
@@ -237,7 +237,7 @@ Status Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->status->destroy(12345);
 
 .. _zendservice.twitter.user:
@@ -255,7 +255,7 @@ User Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->user->friends();
 
   The ``friends()`` method accepts an array of optional parameters to modify the query.
@@ -276,7 +276,7 @@ User Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->user->followers();
 
   The ``followers()`` method accepts an array of optional parameters to modify the query.
@@ -295,7 +295,7 @@ User Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->user->show('myfriend');
 
 .. _zendservice.twitter.directmessage:
@@ -312,7 +312,7 @@ Direct Message Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->directMessage->messages();
 
   The ``message()`` method accepts an array of optional parameters to modify the query.
@@ -333,7 +333,7 @@ Direct Message Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->directMessage->sent();
 
   The ``sent()`` method accepts an array of optional parameters to modify the query.
@@ -355,7 +355,7 @@ Direct Message Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->directMessage->new('myfriend', 'mymessage');
 
 - ``destroy()`` destroys the direct message specified in the required *id* parameter. The authenticating user must
@@ -368,7 +368,7 @@ Direct Message Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->directMessage->destroy(123548);
 
 .. _zendservice.twitter.friendship:
@@ -385,7 +385,7 @@ Friendship Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->friendship->create('mynewfriend');
 
 - ``destroy()`` discontinues friendship with the user specified in the *id* parameter and the authenticating user.
@@ -397,7 +397,7 @@ Friendship Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->friendship->destroy('myoldfriend');
 
 - ``exists()`` tests if a friendship exists between the user specified in the *id* parameter and the authenticating
@@ -410,7 +410,7 @@ Friendship Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->friendship->exists('myfriend');
 
 .. _zendservice.twitter.favorite:
@@ -428,7 +428,7 @@ Favorite Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->favorite->favorites();
 
   The ``favorites()`` method accepts an array of optional parameters to modify the query.
@@ -446,7 +446,7 @@ Favorite Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->favorite->create(12351);
 
 - ``destroy()`` un-favorites the status specified in the *id* parameter as the authenticating user.
@@ -458,7 +458,7 @@ Favorite Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->favorite->destroy(12351);
 
 .. _zendservice.twitter.block:
@@ -476,7 +476,7 @@ Block Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      // returns true or false
      $response = $twitter->block->exists('blockeduser');
      // returns the blocked user's info if the user is blocked
@@ -496,7 +496,7 @@ Block Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->block->create('usertoblock);
 
 - ``destroy()`` un-blocks the user specified in the *id* parameter for the authenticating user. Returns the
@@ -509,7 +509,7 @@ Block Methods
   .. code-block:: php
      :linenos:
 
-     $twitter    = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter    = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      $response   = $twitter->block->destroy('blockeduser');
 
 - ``blocking()`` returns an array of user objects that the authenticating user is blocking.
@@ -521,7 +521,7 @@ Block Methods
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter('myusername', 'mysecretpassword');
+     $twitter = new ZendService\Twitter\Twitter('myusername', 'mysecretpassword');
      // return the full user list from the first page
      $response = $twitter->block->blocking();
      // return an array of numeric user IDs from the second page

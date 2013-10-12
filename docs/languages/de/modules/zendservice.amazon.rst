@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zendservice.amazon:
 
-ZendService\Amazon
+ZendService\Amazon\Amazon
 ===================
 
 .. _zendservice.amazon.introduction:
@@ -9,11 +9,11 @@ ZendService\Amazon
 Einführung
 ----------
 
-``ZendService\Amazon`` ist eine einfach *API* für die Benutzung des Amazon Web Services. ``ZendService\Amazon``
+``ZendService\Amazon\Amazon`` ist eine einfach *API* für die Benutzung des Amazon Web Services. ``ZendService\Amazon\Amazon``
 hat 2 *API*\ s: eine traditionellere welche Amazon's eigener *API* folgt, und eine simplere "Abfrage *API*" um
 sogar komplexe Suchabfragen einfachst machen zu können.
 
-``ZendService\Amazon`` erlaubt es Entwicklern, Informationen von allen Amazon.com Web Seiten durch das Amazon Web
+``ZendService\Amazon\Amazon`` erlaubt es Entwicklern, Informationen von allen Amazon.com Web Seiten durch das Amazon Web
 Services *API* zu empfangen. Beispiele beinhalten:
 
 
@@ -30,10 +30,10 @@ Services *API* zu empfangen. Beispiele beinhalten:
 
 
 
-Um ``ZendService\Amazon`` benutzen zu können, benötigt man einen Amazon Entwickler *API* Schlüssel sowie einen
+Um ``ZendService\Amazon\Amazon`` benutzen zu können, benötigt man einen Amazon Entwickler *API* Schlüssel sowie einen
 geheimen Schlüssel. Um den Schlüssel zu bekommen und für weiter führende Informationen besuchen Sie bitte die
 `Amazon Web Service`_ Web Seite. Seit dem 15. August 2009 kann man die Amazon Produkt Advertising *API* über
-``ZendService\Amazon`` nur dann verwenden wenn man einen zusätzlichen geheimen Schlüssel spezifiziert.
+``ZendService\Amazon\Amazon`` nur dann verwenden wenn man einen zusätzlichen geheimen Schlüssel spezifiziert.
 
 .. note::
 
@@ -51,7 +51,7 @@ In diesem Beispiel suchen wir nach *PHP* Büchern bei Amazon, blättern durch di
 .. code-block:: php
    :linenos:
 
-   $amazon = new ZendService\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
+   $amazon = new ZendService\Amazon\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
    $results = $amazon->itemSearch(array('SearchIndex' => 'Books',
                                         'Keywords' => 'php'));
    foreach ($results as $result) {
@@ -82,7 +82,7 @@ Fluent Interface Design Pattern verwendet.
 Ländercodes
 -----------
 
-Standardmäßig verbindet sich ``ZendService\Amazon`` zum Amazon Web Service der Vereinigten Staaten ("*US*"). Um
+Standardmäßig verbindet sich ``ZendService\Amazon\Amazon`` zum Amazon Web Service der Vereinigten Staaten ("*US*"). Um
 sich zu einem anderen Land zu verbinden, muß einfach der entsprechende String des Landercodes als zweiter
 Parameter an den Konstruktor übergeben werden:
 
@@ -94,7 +94,7 @@ Parameter an den Konstruktor übergeben werden:
    :linenos:
 
    // Zu Amazon in Japan verbinden
-   $amazon = new ZendService\Amazon('AMAZON_API_KEY', 'JP', 'AMAZON_SECRET_KEY');
+   $amazon = new ZendService\Amazon\Amazon('AMAZON_API_KEY', 'JP', 'AMAZON_SECRET_KEY');
 
 .. note::
 
@@ -116,7 +116,7 @@ Die ``itemLookup()`` Methode ermöglicht es ein bestimmtes Teil bei Amazon zu er
 .. code-block:: php
    :linenos:
 
-   $amazon = new ZendService\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
+   $amazon = new ZendService\Amazon\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
    $item = $amazon->itemLookup('B0000A432X');
 
 Die ``itemLookup()`` Methode akzeptiert auch einen optionalen zweiten Parameter für die Handhabung der
@@ -145,7 +145,7 @@ benutzen der ``itemSearch()`` Methode wie im folgenden Beispiel:
 .. code-block:: php
    :linenos:
 
-   $amazon = new ZendService\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
+   $amazon = new ZendService\Amazon\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
    $results = $amazon->itemSearch(array('SearchIndex' => 'Books',
                                         'Keywords' => 'php'));
    foreach ($results as $result) {
@@ -162,7 +162,7 @@ zurückgegeben wird.
 .. code-block:: php
    :linenos:
 
-   $amazon = new ZendService\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
+   $amazon = new ZendService\Amazon\Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
    $results = $amazon->itemSearch(array(
        'SearchIndex'   => 'Books',
        'Keywords'      => 'php',
@@ -223,11 +223,11 @@ Für weitere Informationen über die möglichen Optionen, sehen Sie bitte in die
 
 .. _zendservice.amazon.classes:
 
-ZendService\Amazon Klassen
+ZendService\Amazon\Amazon Klassen
 ---------------------------
 
-Die folgenden klassen werden alle zurückgegeben durch :ref:`ZendService\Amazon::itemLookup()
-<zendservice.amazon.itemlookup>` und :ref:`ZendService\Amazon::itemSearch() <zendservice.amazon.itemsearch>`:
+Die folgenden klassen werden alle zurückgegeben durch :ref:`ZendService\Amazon\Amazon::itemLookup()
+<zendservice.amazon.itemlookup>` und :ref:`ZendService\Amazon\Amazon::itemSearch() <zendservice.amazon.itemsearch>`:
 
 
 
@@ -352,7 +352,7 @@ Eigenschaften
 ZendService\Amazon\ResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``ZendService\Amazon\ResultSet`` Objekte werden zurückgegeben durch :ref:`ZendService\Amazon::itemSearch()
+``ZendService\Amazon\ResultSet`` Objekte werden zurückgegeben durch :ref:`ZendService\Amazon\Amazon::itemSearch()
 <zendservice.amazon.itemsearch>` und erlauben es, die vielfach zurück gelieferten Resultate, einfachst zu
 Handhaben.
 
@@ -378,8 +378,8 @@ Liefert die Gesamtanzahl der Resultate welche die Suche zurückgegeben hat
 ZendService\Amazon\OfferSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Jedes Resultat welches durch :ref:`ZendService\Amazon::itemSearch() <zendservice.amazon.itemsearch>` und
-:ref:`ZendService\Amazon::itemLookup() <zendservice.amazon.itemlookup>` zurückgegeben wird beinhaltet ein
+Jedes Resultat welches durch :ref:`ZendService\Amazon\Amazon::itemSearch() <zendservice.amazon.itemsearch>` und
+:ref:`ZendService\Amazon\Amazon::itemLookup() <zendservice.amazon.itemlookup>` zurückgegeben wird beinhaltet ein
 ``ZendService\Amazon\OfferSet`` Objekt durch welches Preisinformationen für das Teil empfangen werden können.
 
 .. _zendservice.amazon.classes.offerset.parameters:

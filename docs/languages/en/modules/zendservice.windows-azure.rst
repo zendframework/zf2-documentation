@@ -20,10 +20,10 @@ Installing the Windows Azure SDK
 
 There are two development scenario's when working with Windows Azure.
 
-- You can develop your application using ``ZendService\WindowsAzure`` and the Windows Azure *SDK*, which provides
+- You can develop your application using ``ZendService\WindowsAzure\WindowsAzure`` and the Windows Azure *SDK*, which provides
   a local development environment of the services provided by Windows Azure's cloud infrastructure.
 
-- You can develop your application using ``ZendService\WindowsAzure``, working directly with the Windows Azure
+- You can develop your application using ``ZendService\WindowsAzure\WindowsAzure``, working directly with the Windows Azure
   cloud infrastructure.
 
 The first case requires you to install the `Windows Azure SDK`_ on your development machine. It is currently only
@@ -37,7 +37,7 @@ The latter case requires you to have an account at `Azure.com`_.
 API Documentation
 -----------------
 
-The ``ZendService\WindowsAzure`` class provides the *PHP* wrapper to the Windows Azure *REST* interface. Please
+The ``ZendService\WindowsAzure\WindowsAzure`` class provides the *PHP* wrapper to the Windows Azure *REST* interface. Please
 consult the `REST documentation`_ for detailed description of the service. You will need to be familiar with basic
 concepts in order to use this service.
 
@@ -46,7 +46,7 @@ concepts in order to use this service.
 Features
 --------
 
-``ZendService\WindowsAzure`` provides the following functionality:
+``ZendService\WindowsAzure\WindowsAzure`` provides the following functionality:
 
 - *PHP* classes for Windows Azure Blobs, Tables and Queues (for *CRUD* operations)
 
@@ -59,10 +59,10 @@ Features
 Architecture
 ------------
 
-``ZendService\WindowsAzure`` provides access to Windows Azure's storage, computation and management interfaces by
+``ZendService\WindowsAzure\WindowsAzure`` provides access to Windows Azure's storage, computation and management interfaces by
 abstracting the *REST*-*XML* interface Windows Azure provides into a simple *PHP* *API*.
 
-An application built using ``ZendService\WindowsAzure`` can access Windows Azure's features, no matter if it is
+An application built using ``ZendService\WindowsAzure\WindowsAzure`` can access Windows Azure's features, no matter if it is
 hosted on the Windows Azure platform or on an in-premise web server.
 
 .. include:: zendservice.windows-azure.blob.rst

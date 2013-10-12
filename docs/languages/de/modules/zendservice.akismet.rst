@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zendservice.akismet:
 
-ZendService\Akismet
+ZendService\Akismet\Akismet
 ====================
 
 .. _zendservice.akismet.introduction:
@@ -9,7 +9,7 @@ ZendService\Akismet
 Einführung
 ----------
 
-``ZendService\Akismet`` bietet einen Client für die `Akismet API`_. Der Akismet Service wird verwendet um
+``ZendService\Akismet\Akismet`` bietet einen Client für die `Akismet API`_. Der Akismet Service wird verwendet um
 herauszufinden ob hereinkommende Daten potentieller Spam sind. Er bietet auch Methoden für das Übertragen von
 Daten als bekannter Spam oder als falsch Positiv (ham). Original war es dazu gedacht um für Wordpress zu
 kategorisieren und Spam zu identifizieren, aber es für alle Arten von Daten verwendet werden.
@@ -29,7 +29,7 @@ den verschiedenen Methodenaufrufen.
 Prüfen eines API Schlüssels
 ---------------------------
 
-``ZendService\Akismet::verifyKey($key)`` wird verwendet um zu prüfen ob ein Akismet *API* Schlüssel gültig ist.
+``ZendService\Akismet\Akismet::verifyKey($key)`` wird verwendet um zu prüfen ob ein Akismet *API* Schlüssel gültig ist.
 In den meisten Fällen, besteht keine Notwendigkeit ihn zu prüfen, aber wenn eine Qualitätssicherung
 durchgeführt werden soll, oder eruiert werden soll ob ein neuerer erhaltener Schlüssel aktiv ist, kann das mit
 dieser Methode gemacht werden.
@@ -39,7 +39,7 @@ dieser Methode gemacht werden.
 
    // Instanzieren mit dem API Schlüssel und einer URL zur Anwendung oder
    // Ressource die verwendet wird
-   $akismet = new ZendService\Akismet($apiKey,
+   $akismet = new ZendService\Akismet\Akismet($apiKey,
                                        'http://framework.zend.com/wiki/');
    if ($akismet->verifyKey($apiKey) {
        echo "Schlüssel ist gültig.\n";
@@ -57,7 +57,7 @@ wurde.
 Auf Spam prüfen
 ---------------
 
-``ZendService\Akismet::isSpam($data)`` wird verwendet um zu prüfen ob die übergebenen Daten von Akismet als Spam
+``ZendService\Akismet\Akismet::isSpam($data)`` wird verwendet um zu prüfen ob die übergebenen Daten von Akismet als Spam
 erkannt werden. Es wird ein assoziatives Array als Basisargument akzeptiert. Das Array erfordert das die folgenden
 Schlüssel gesetzt werden:
 
@@ -128,7 +128,7 @@ Spam Daten kommen gelegentlich durch den Filter. Wenn in der Begutachtung der he
 wird, und man das Gefühl hat das er gefunden werden sollte, kann er an Akismet übertragen werden um deren Filter
 zu verbessern.
 
-``ZendService\Akismet::submitSpam()`` nimmt das selbe Datenarray entgegen wie es der ``isSpam()`` übergeben wird,
+``ZendService\Akismet\Akismet::submitSpam()`` nimmt das selbe Datenarray entgegen wie es der ``isSpam()`` übergeben wird,
 aber es wird kein Wert zurückgegeben. Eine Ausnahme wird geworfen wenn der *API* Schlüssel ungültig ist.
 
 .. _zendservice.akismet.submitspam.example-1:
@@ -161,7 +161,7 @@ Daten behalten werden, indem alle Daten die von Akismet als Spam erkannt, gelogg
 Zeit durchgesehen. Wenn solche Fülle gefunden werden, können die Daten an Akismet als "Ham", oder falsche
 Positive übermittelt werden (Ham ist gut, Spam ist schlecht)
 
-``ZendService\Akismet::submitHam()`` nimmt das selbe Datenarray entgegen wie ``isSpam()`` oder ``submitSpam()``,
+``ZendService\Akismet\Akismet::submitHam()`` nimmt das selbe Datenarray entgegen wie ``isSpam()`` oder ``submitSpam()``,
 und wie bei ``submitSpam()`` wird kein Wert zurückgegeben. Eine Ausnahme wird geworfen wenn der verwendete *API*
 Schlüssel ungültig ist.
 
@@ -190,7 +190,7 @@ Schlüssel ungültig ist.
 Zend-spezifische Methoden
 -------------------------
 
-Wärend die Akismet *API* nur vier Methoden spezifiziert, hat ``ZendService\Akismet`` verschiedene zusätzliche
+Wärend die Akismet *API* nur vier Methoden spezifiziert, hat ``ZendService\Akismet\Akismet`` verschiedene zusätzliche
 Methoden die für das Empfangen und Ändern von internen Eigenschaften verwendet werden können.
 
 - ``getBlogUrl()`` und ``setBlogUrl()`` erlaubt das Empfangen und Ändern der Blog *URL* die in den Anfragen

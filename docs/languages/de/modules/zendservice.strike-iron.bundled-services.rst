@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zendservice.strikeiron.bundled-services:
 
-ZendService\StrikeIron: Mitgelieferte Services
+ZendService\StrikeIron\StrikeIron: Mitgelieferte Services
 ===============================================
 
-``ZendService\StrikeIron`` kommt mit Wrapper Klassen für drei populäre StrikeIron Services.
+``ZendService\StrikeIron\StrikeIron`` kommt mit Wrapper Klassen für drei populäre StrikeIron Services.
 
 .. _zendservice.strikeiron.bundled-services.zip-code-information:
 
@@ -26,7 +26,7 @@ Kanadischen Post Codes enthält:
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new ZendService\StrikeIron(array('username' => 'your-username',
+   $strikeIron = new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    // Einen Client für das ZIP Code Informations Service erstellen
@@ -83,7 +83,7 @@ Das Service enthält eine ``verifyAddressUSA()`` Methode die eine Adresse in den
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new ZendService\StrikeIron(array('username' => 'your-username',
+   $strikeIron = new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    // Einen Client für das ZIP Code Informations Service erstellen
@@ -136,7 +136,7 @@ für die Vereinigten Staaten und Kanada enthalten.
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new ZendService\StrikeIron(array('username' => 'your-username',
+   $strikeIron = new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
                                                    'password' => 'your-password'));
 
    // Einen Client für das Verkaufs & Steuer Grundlagen Service erstellen

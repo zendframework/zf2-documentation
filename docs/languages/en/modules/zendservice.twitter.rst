@@ -8,14 +8,14 @@ ZendService\\Twitter
 Introduction
 ------------
 
-``ZendService\Twitter`` provides a client for the `Twitter API`_. ``ZendService\Twitter`` allows you to query
+``ZendService\Twitter\Twitter`` provides a client for the `Twitter API`_. ``ZendService\Twitter\Twitter`` allows you to query
 the public timeline. If you provide a username and OAuth details for Twitter, or your access token and secret, it will allow you to get and update
 your status, reply to friends, direct message friends, mark tweets as favorites, and much more.
 
-``ZendService\Twitter`` wraps all web service operations, including OAuth, and all methods return an instance of
+``ZendService\Twitter\Twitter`` wraps all web service operations, including OAuth, and all methods return an instance of
 ``ZendService\Twitter\Response``.
 
-``ZendService\Twitter`` is broken up into subsections so you can easily identify which type of call is being
+``ZendService\Twitter\Twitter`` is broken up into subsections so you can easily identify which type of call is being
 requested.
 
 - *account* allows you to check that your account credentials are valid
@@ -129,34 +129,34 @@ reading!
 Authentication
 --------------
 
-With the exception of fetching the public timeline, ``ZendService\Twitter`` requires authentication as a valid
+With the exception of fetching the public timeline, ``ZendService\Twitter\Twitter`` requires authentication as a valid
 user. This is achieved using the OAuth authentication protocol. OAuth is the only supported authentication mode for
-Twitter as of August 2010. The OAuth implementation used by ``ZendService\Twitter`` is ``ZendOAuth``.
+Twitter as of August 2010. The OAuth implementation used by ``ZendService\Twitter\Twitter`` is ``ZendOAuth``.
 
 .. _zendservice.twitter.authentication.example:
 
 .. rubric:: Creating the Twitter Class
 
-``ZendService\Twitter`` must authorize itself, on behalf of a user, before use with the Twitter API (except for
+``ZendService\Twitter\Twitter`` must authorize itself, on behalf of a user, before use with the Twitter API (except for
 public timeline). This must be accomplished using OAuth since Twitter has disabled it's basic HTTP authentication
 as of August 2010.
 
 There are two options to establishing authorization. The first is to implement the workflow of ``ZendOAuth`` via
-``ZendService\Twitter`` which proxies to an internal ``ZendOAuth\Consumer`` object. Please refer to the
+``ZendService\Twitter\Twitter`` which proxies to an internal ``ZendOAuth\Consumer`` object. Please refer to the
 ``ZendOAuth`` documentation for a full example of this workflow - you can call all documented
-``ZendOAuth\Consumer`` methods on ``ZendService\Twitter`` including constructor options. You may also use
-``ZendOAuth`` directly and only pass the resulting access token into ``ZendService\Twitter``. This is the normal
+``ZendOAuth\Consumer`` methods on ``ZendService\Twitter\Twitter`` including constructor options. You may also use
+``ZendOAuth`` directly and only pass the resulting access token into ``ZendService\Twitter\Twitter``. This is the normal
 workflow once you have established a reusable access token for a particular Twitter user. The resulting OAuth
 access token should be stored to a database for future use (otherwise you will need to authorize for every new
-instance of ``ZendService\Twitter``). Bear in mind that authorization via OAuth results in your user being
+instance of ``ZendService\Twitter\Twitter``). Bear in mind that authorization via OAuth results in your user being
 redirected to Twitter to give their consent to the requested authorization (this is not repeated for stored access
 tokens). This will require additional work (i.e. redirecting users and hosting a callback URL) over the previous
 HTTP authentication mechanism where a user just needed to allow applications to store their username and password.
 
-The following example demonstrates setting up ``ZendService\Twitter`` which is given an already established OAuth
+The following example demonstrates setting up ``ZendService\Twitter\Twitter`` which is given an already established OAuth
 access token. Please refer to the ``ZendOAuth`` documentation to understand the workflow involved. The access
 token is a serializable object, so you may store the serialized object to a database, and unserialize it at
-retrieval time before passing the objects into ``ZendService\Twitter``. The ``ZendOAuth`` documentation
+retrieval time before passing the objects into ``ZendService\Twitter\Twitter``. The ``ZendOAuth`` documentation
 demonstrates the workflow and objects involved.
 
 .. code-block:: php
@@ -186,7 +186,7 @@ demonstrates the workflow and objects involved.
    date, so storing them to a database is advised (they can, of course, be refreshed simply be repeating the OAuth
    authorization process). This can only be done while interacting with the user associated with that access token.
 
-   The previous pre-OAuth version of ``ZendService\Twitter`` allowed passing in a username as the first parameter
+   The previous pre-OAuth version of ``ZendService\Twitter\Twitter`` allowed passing in a username as the first parameter
    rather than within an array. This is no longer supported.
 
 If you have registered an application with Twitter, you can also use the access token
@@ -196,7 +196,7 @@ be done as follows:
 .. code-block:: php
    :linenos:
 
-   $twitter = new ZendService\Twitter(array(
+   $twitter = new ZendService\Twitter\Twitter(array(
        'access_token' => array( // or use "accessToken" as the key; both work
            'token' => 'your-access-token',
            'secret' => 'your-access-token-secret',
@@ -216,7 +216,7 @@ client configuration for setting up an instance, use the key
 .. code-block:: php
    :linenos:
 
-   $twitter = new ZendService\Twitter(array(
+   $twitter = new ZendService\Twitter\Twitter(array(
        'access_token' => array( // or use "accessToken" as the key; both work
            'token' => 'your-access-token',
            'secret' => 'your-access-token-secret',
@@ -522,7 +522,7 @@ will be returned, but this value may be changed using the *count* option.
 .. code-block:: php
    :linenos:
 
-   $twitter  = new ZendService\Twitter($options);
+   $twitter  = new ZendService\Twitter\Twitter($options);
    $response = $twitter->search->tweets('#zendframework');
 
 The ``tweets()`` method accepts an optional second argument, array of optional parameters to
@@ -568,7 +568,7 @@ The public timeline is cached by Twitter for 60 seconds.
 .. code-block:: php
    :linenos:
 
-   $twitter  = new ZendService\Twitter($options);
+   $twitter  = new ZendService\Twitter\Twitter($options);
    $response = $twitter->statuses->sample();
 
 

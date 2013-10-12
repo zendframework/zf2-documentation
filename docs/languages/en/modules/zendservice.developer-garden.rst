@@ -1,6 +1,6 @@
 .. _zendservice.developergarden:
 
-ZendService\DeveloperGarden
+ZendService\DeveloperGarden\DeveloperGarden
 ============================
 
 .. _zendservice.developergarden.introduction:
@@ -12,7 +12,7 @@ Developer Garden is the name of Deutsche Telekom’s developer community. Develo
 core services of Deutsche Telekom, such as voice connections (Voice Call) or sending text messages (Send SMS) via
 open interfaces (Open *API*\ s). You can access the Developer Garden services directly via *SOAP* or *REST*.
 
-The family of ``ZendService\DeveloperGarden`` components provides a clean and simple interface to the `Developer
+The family of ``ZendService\DeveloperGarden\DeveloperGarden`` components provides a clean and simple interface to the `Developer
 Garden APIs`_ and additionally offers functionality to improve handling and performance.
 
 - :ref:`BaseUserService <zendservice.developergarden.baseuserservice>`: Class to manage *API* quota and user

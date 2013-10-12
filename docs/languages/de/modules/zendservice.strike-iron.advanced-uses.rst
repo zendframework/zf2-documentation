@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zendservice.strikeiron.advanced-uses:
 
-ZendService\StrikeIron: Erweiterte Verwendung
+ZendService\StrikeIron\StrikeIron: Erweiterte Verwendung
 ==============================================
 
-Diese Sektion beschreibt die erweiterte Verwendung von ``ZendService\StrikeIron``.
+Diese Sektion beschreibt die erweiterte Verwendung von ``ZendService\StrikeIron\StrikeIron``.
 
 .. _zendservice.strikeiron.advanced-uses.services-by-wsdl:
 
@@ -21,7 +21,7 @@ der ``class`` Option an ``getService()`` übergeben werden:
 .. code-block:: php
    :linenos:
 
-   $strikeIron = new ZendService\StrikeIron(
+   $strikeIron = new ZendService\StrikeIron\StrikeIron(
        array('username' => 'your-username', 'password' => 'your-password')
    );
 
@@ -55,7 +55,7 @@ um die darunterliegende Instanz von ``SOAPClient`` zu retournieren, die für die
 verwendet wird.
 
 *PHP*'s `SOAPClient`_ hat eine ``trace`` Option die dazu führt dass das *XML*, das wärend der letzten Transaktion
-getauscht wurde, gemerkt wird. ``ZendService\StrikeIron`` aktiviert die ``trace`` Option nicht standardmäßig
+getauscht wurde, gemerkt wird. ``ZendService\StrikeIron\StrikeIron`` aktiviert die ``trace`` Option nicht standardmäßig
 aber das kann einfach getan werden durch Spezifizierung der Option die dazu verwendet wird den ``SOAPClient``
 Konstruktor zu übergeben.
 
@@ -67,7 +67,7 @@ Instanz zu erhalten und anschließend die entsprechenden Methoden wie `\__getLas
    :linenos:
 
    $strikeIron =
-       new ZendService\StrikeIron(array('username' => 'your-username',
+       new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
                                          'password' => 'your-password',
                                          'options'  => array('trace' => true)));
 

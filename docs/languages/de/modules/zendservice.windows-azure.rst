@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zendservice.windowsazure:
 
-ZendService\WindowsAzure
+ZendService\WindowsAzure\WindowsAzure
 =========================
 
 .. _zendservice.windowsazure.introduction:
@@ -21,11 +21,11 @@ Installieren der Windows Azure SDK
 
 Es gibt zwei Entwicklungs Szenarien wenn man mit Windows Azure arbeitet.
 
-- Man kann eigene Anwendungen entwickeln indem ``ZendService\WindowsAzure`` und die Windows Azure *SDK* verwendet
+- Man kann eigene Anwendungen entwickeln indem ``ZendService\WindowsAzure\WindowsAzure`` und die Windows Azure *SDK* verwendet
   wird, welche eine lokale Entwicklungsumgebung der von der Windows Azure Cloud Infrastruktur angebotenen Services
   anbietet.
 
-- Man kann eine Anwendung entwickeln indem ``ZendService\WindowsAzure`` verwendet, und direkt mit der Windows
+- Man kann eine Anwendung entwickeln indem ``ZendService\WindowsAzure\WindowsAzure`` verwendet, und direkt mit der Windows
   Azure Cloud Infrastruktur gearbeitet wird.
 
 Der erste Fall benötigt die Installation der `Windows Azure SDK`_ auf der Entwicklungsmaschine. Sie ist aktuell
@@ -39,7 +39,7 @@ Der letztere Fall benötigt einen Account bei `Azure.com`_.
 API Dokumentation
 -----------------
 
-Die Klasse ``ZendService\WindowsAzure`` bietet den *PHP* Wrapper zum Windows Azure *REST* Interface. Man sollte
+Die Klasse ``ZendService\WindowsAzure\WindowsAzure`` bietet den *PHP* Wrapper zum Windows Azure *REST* Interface. Man sollte
 die `REST Dokumentation`_ für eine detailiertere Beschreibung des Services konsultieren. Man sollte mit den
 grundsätzlichen Konzepten vertraut sein um diesen Service zu verwenden.
 
@@ -48,7 +48,7 @@ grundsätzlichen Konzepten vertraut sein um diesen Service zu verwenden.
 Features
 --------
 
-``ZendService\WindowsAzure`` bietet die folgende Funktionalität:
+``ZendService\WindowsAzure\WindowsAzure`` bietet die folgende Funktionalität:
 
 - *PHP* Klassen für Windows Azure Blobs, Tabellen und Queues (für *CRUD* Operationen)
 
@@ -61,10 +61,10 @@ Features
 Architektur
 -----------
 
-``ZendService\WindowsAzure`` bietet Zugriff zu Windows Azure's Speicher, Berechnungs und Management Interfaces
+``ZendService\WindowsAzure\WindowsAzure`` bietet Zugriff zu Windows Azure's Speicher, Berechnungs und Management Interfaces
 durch Abstrahierung des *REST*-*XML* Interfaces welches Windows Azure bietet in einer einfachen *PHP* *API*.
 
-Eine Anwendung welche durch Verwendung von ``ZendService\WindowsAzure`` gebaut wurde kann auf die Features von
+Eine Anwendung welche durch Verwendung von ``ZendService\WindowsAzure\WindowsAzure`` gebaut wurde kann auf die Features von
 Windows Azure zugreifen, unabhängig davon ob Sie auf der Windows Azure Plattform oder auf einem unabhängigen Web
 Server gehostet wird.
 

@@ -8,7 +8,7 @@ ZendService\\Flickr
 Introduction
 ------------
 
-``ZendService\Flickr`` is a simple *API* for using the Flickr REST Web Service. In order to use the Flickr web
+``ZendService\Flickr\Flickr`` is a simple *API* for using the Flickr REST Web Service. In order to use the Flickr web
 services, you must have an *API* key. To obtain a key and for more information about the Flickr REST Web Service,
 please visit the `Flickr API Documentation`_.
 
@@ -59,7 +59,7 @@ In this example, we have a Flickr user's e-mail address, and we search for the u
 .. code-block:: php
    :linenos:
 
-   $flickr = new ZendService\Flickr('MY_API_KEY');
+   $flickr = new ZendService\Flickr\Flickr('MY_API_KEY');
 
    $results = $flickr->userSearch($userEmail);
 

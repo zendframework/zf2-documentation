@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zendservice.audioscrobbler:
 
-ZendService\Audioscrobbler
+ZendService\Audioscrobbler\Audioscrobbler
 ===========================
 
 .. _zendservice.audioscrobbler.introduction:
@@ -9,10 +9,10 @@ ZendService\Audioscrobbler
 Einführung
 ----------
 
-``ZendService\Audioscrobbler`` ist eine einfache *API* für die Verwendung des Audioscrobbler REST Web Services.
+``ZendService\Audioscrobbler\Audioscrobbler`` ist eine einfache *API* für die Verwendung des Audioscrobbler REST Web Services.
 Der Audioscrobbler Web Service bietet Zugang zu seinen Datenbanken von Benutzern, Artisten, Albums, Lieder, tags,
-Gruppen und Foren. Die Methoden der ``ZendService\Audioscrobbler`` Klasse beginnt mit einem dieser Bezeichner. Der
-Syntax und der Namensraum des Audioscrobbler Web Services sind in ``ZendService\Audioscrobbler`` gespiegelt. Für
+Gruppen und Foren. Die Methoden der ``ZendService\Audioscrobbler\Audioscrobbler`` Klasse beginnt mit einem dieser Bezeichner. Der
+Syntax und der Namensraum des Audioscrobbler Web Services sind in ``ZendService\Audioscrobbler\Audioscrobbler`` gespiegelt. Für
 weitere Informationen über das Audioscrobbler REST Web Service, siehe die `Audioscrobbler Web Service Seite`_.
 
 .. _zendservice.audioscrobbler.users:
@@ -21,7 +21,7 @@ Benutzer
 --------
 
 Um Informationen über einen bestimmten Benutzer zu erhalten, wird zuerst die ``setUser()`` Methode verwendet um
-den Benutzer zu selektieren für den Daten empfangen werden sollen. ``ZendService\Audioscrobbler`` bietet
+den Benutzer zu selektieren für den Daten empfangen werden sollen. ``ZendService\Audioscrobbler\Audioscrobbler`` bietet
 verschiedene Methoden für das Empfangen von Daten eines einzelnen Benutzers:
 
 
@@ -104,7 +104,7 @@ In diesem Beispiel werden die ``setUser()`` und ``userGetProfileInformation()`` 
 .. code-block:: php
    :linenos:
 
-   $as = new ZendService\Audioscrobbler();
+   $as = new ZendService\Audioscrobbler\Audioscrobbler();
    // Den Benutzer setzen dessen Profilinformationen man empfangen will
    $as->setUser('BigDaddy71');
    // Informationen von BigDaddy71's Profil erhalten
@@ -120,7 +120,7 @@ In diesem Beispiel werden die ``setUser()`` und ``userGetProfileInformation()`` 
 .. code-block:: php
    :linenos:
 
-   $as = new ZendService\Audioscrobbler();
+   $as = new ZendService\Audioscrobbler\Audioscrobbler();
    // Den Benutzer setzen dessen wöchentliche Artistencharts man empfangen will
    $as->setUser('lo_fye');
    // Eine Liste von vorherigen Wochen erhalten in denen Chartdaten vorhanden sind
@@ -149,7 +149,7 @@ In diesem Beispiel werden die ``setUser()`` und ``userGetProfileInformation()`` 
 Artisten
 --------
 
-``ZendService\Audioscrobbler`` bietet verschiedene Methoden um Daten über einen speziellen Artisten zu empfangen,
+``ZendService\Audioscrobbler\Audioscrobbler`` bietet verschiedene Methoden um Daten über einen speziellen Artisten zu empfangen,
 der über die ``setArtist()`` Methode spezifiziert wurde:
 
 
@@ -178,7 +178,7 @@ der über die ``setArtist()`` Methode spezifiziert wurde:
 .. code-block:: php
    :linenos:
 
-   $as = new ZendService\Audioscrobbler();
+   $as = new ZendService\Audioscrobbler\Audioscrobbler();
    // Den Artisten setzen für den man ähnliche Artisten bekommen will
    $as->setArtist('LCD Soundsystem');
    // Ähnliche Artisten erhalten
@@ -193,7 +193,7 @@ der über die ``setArtist()`` Methode spezifiziert wurde:
 Lieder
 ------
 
-``ZendService\Audioscrobbler`` bietet zwei Methoden für das Empfangen von Daten für ein einzelnes Lied, das
+``ZendService\Audioscrobbler\Audioscrobbler`` bietet zwei Methoden für das Empfangen von Daten für ein einzelnes Lied, das
 über die ``setTrack()`` Methode spezifiziert wurde:
 
 
@@ -211,7 +211,7 @@ Lieder
 Tags
 ----
 
-``ZendService\Audioscrobbler`` bietet verschiedene Methoden für das Empfangen von Daten die einem einzelnen Tag
+``ZendService\Audioscrobbler\Audioscrobbler`` bietet verschiedene Methoden für das Empfangen von Daten die einem einzelnen Tag
 zugeordnet sind, welches über die ``setTag()`` Methode zugeordnet werden:
 
 
@@ -235,7 +235,7 @@ zugeordnet sind, welches über die ``setTag()`` Methode zugeordnet werden:
 Gruppen
 -------
 
-``ZendService\Audioscrobbler`` bietet verschiedene Methoden um Daten zu erhalten die einer speziellen Gruppe
+``ZendService\Audioscrobbler\Audioscrobbler`` bietet verschiedene Methoden um Daten zu erhalten die einer speziellen Gruppe
 gehören, die über die ``setGroup()`` Methode zugeordnet wurde:
 
 
@@ -273,7 +273,7 @@ gehören, die über die ``setGroup()`` Methode zugeordnet wurde:
 Foren
 -----
 
-``ZendService\Audioscrobbler`` bietet eine Methode für das Empfangen von Daten eines einzelnen Forums, das über
+``ZendService\Audioscrobbler\Audioscrobbler`` bietet eine Methode für das Empfangen von Daten eines einzelnen Forums, das über
 die ``setForum()`` Methode spezifiziert wurde:
 
 

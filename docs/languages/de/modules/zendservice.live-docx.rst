@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zendservice.livedocx:
 
-ZendService\LiveDocx
+ZendService\LiveDocx\LiveDocx
 =====================
 
 .. _zendservice.livedocx.introduction:
@@ -14,18 +14,18 @@ Daten von *PHP* mit einem Template kombiniert werden, die in einer MS Word-kompa
 Das resultierende Dokument kann als *PDF*, *DOCX*, *DOC*, *HTML* oder *RTF* Datei gespeichert werden. LiveDocx
 implementiert `Mail-Merge`_ in *PHP*.
 
-Die Familie der ``ZendService\LiveDocx`` Komponenten bietet ein klares und einfaches Interface zur `LiveDocx API`_
+Die Familie der ``ZendService\LiveDocx\LiveDocx`` Komponenten bietet ein klares und einfaches Interface zur `LiveDocx API`_
 und bietet zusätzlich Funktionalitäten, um die Geschwindigkeit im Netzwerk zu erhöhen.
 
-Wenn man zusätzlich zu diesem Kapitel des Handbuchs daran interessiert ist, mehr über ``ZendService\LiveDocx``
+Wenn man zusätzlich zu diesem Kapitel des Handbuchs daran interessiert ist, mehr über ``ZendService\LiveDocx\LiveDocx``
 und den dahinterliegenden *SOAP*-Service LiveDocx zu lernen, kann man bei den folgenden Ressourcen nachsehen:
 
 - **Mitgelieferte Beispielanwendungen**. Es gibt eine große Anzahl an Beispielanwendungen im Verzeichnis
   **/demos/ZendService/LiveDocx** der Zend Framework Distributionsdatei, oder der Trunk Version die vom
   standardmäßigen SVN Repository ausgecheckt werden kann. Diese sind dazu gedacht, schnell, in nur ein paar
-  Minuten, mit ``ZendService\LiveDocx`` zurecht zu kommen.
+  Minuten, mit ``ZendService\LiveDocx\LiveDocx`` zurecht zu kommen.
 
-- `ZendService\LiveDocx Blog und Webseite`_.
+- `ZendService\LiveDocx\LiveDocx Blog und Webseite`_.
 
 - `LiveDocx SOAP API Dokumentation`_.
 
@@ -125,7 +125,7 @@ Das resultierende Dokument kann in jedem der folgenden grafischen Dateiformate g
 ZendService\LiveDocx\MailMerge
 -------------------------------
 
-``ZendService\LiveDocx\MailMerge`` ist das Mail-Merge-Objekt in der ``ZendService\LiveDocx`` Familie.
+``ZendService\LiveDocx\MailMerge`` ist das Mail-Merge-Objekt in der ``ZendService\LiveDocx\LiveDocx`` Familie.
 
 .. _zendservice.livedocx.mailmerge.generation:
 
@@ -594,7 +594,7 @@ verwenden, wie z.B. ``Zend_Cache``- das macht die Anwendung sichtbar schneller.
 
 .. _`Mail-Merge`: http://en.wikipedia.org/wiki/Mail_merge
 .. _`LiveDocx API`: http://www.livedocx.com
-.. _`ZendService\LiveDocx Blog und Webseite`: http://www.phplivedocx.org/
+.. _`ZendService\LiveDocx\LiveDocx Blog und Webseite`: http://www.phplivedocx.org/
 .. _`LiveDocx SOAP API Dokumentation`: http://www.livedocx.com/pub/documentation/api.aspx
 .. _`LiveDocx WSDL`: https://api.livedocx.com/1.2/mailmerge.asmx?wsdl
 .. _`LiveDocx Blog und Webseite`: https://www.livedocx.com/

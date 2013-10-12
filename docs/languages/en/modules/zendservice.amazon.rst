@@ -8,11 +8,11 @@ ZendService\\Amazon
 Introduction
 ------------
 
-``ZendService\Amazon`` is a simple *API* for using Amazon web services. ``ZendService\Amazon`` has two *API*\ s:
+``ZendService\Amazon\Amazon`` is a simple *API* for using Amazon web services. ``ZendService\Amazon\Amazon`` has two *API*\ s:
 a more traditional one that follows Amazon's own *API*, and a simpler "Query *API*" for constructing even complex
 search queries easily.
 
-``ZendService\Amazon`` enables developers to retrieve information appearing throughout Amazon.com web sites
+``ZendService\Amazon\Amazon`` enables developers to retrieve information appearing throughout Amazon.com web sites
 directly through the Amazon Web Services *API*. Examples include:
 
 
@@ -29,9 +29,9 @@ directly through the Amazon Web Services *API*. Examples include:
 
 
 
-In order to use ``ZendService\Amazon``, you should already have an Amazon developer *API* key as well as a secret
+In order to use ``ZendService\Amazon\Amazon``, you should already have an Amazon developer *API* key as well as a secret
 key. To get a key and for more information, please visit the `Amazon Web Services`_ web site. As of August 15th,
-2009 you can only use the Amazon Product Advertising *API* through ``ZendService\Amazon``, when specifying the
+2009 you can only use the Amazon Product Advertising *API* through ``ZendService\Amazon\Amazon``, when specifying the
 additional secret key.
 
 .. note::
@@ -81,7 +81,7 @@ Interface design pattern.
 Country Codes
 -------------
 
-By default, ``ZendService\Amazon`` connects to the United States ("*US*") Amazon web service. To connect from a
+By default, ``ZendService\Amazon\Amazon`` connects to the United States ("*US*") Amazon web service. To connect from a
 different country, simply specify the appropriate country code string as the second parameter to the constructor:
 
 .. _zendservice.amazon.countrycodes.example.country_code:
@@ -221,8 +221,8 @@ For more information on the available options, please refer to the `relevant Ama
 ZendService\\Amazon Classes
 ---------------------------
 
-The following classes are all returned by :ref:`ZendService\Amazon::itemLookup() <zendservice.amazon.itemlookup>`
-and :ref:`ZendService\Amazon::itemSearch() <zendservice.amazon.itemsearch>`:
+The following classes are all returned by :ref:`ZendService\Amazon\Amazon::itemLookup() <zendservice.amazon.itemlookup>`
+and :ref:`ZendService\Amazon\Amazon::itemSearch() <zendservice.amazon.itemsearch>`:
 
 
 
@@ -347,7 +347,7 @@ Properties
 ZendService\\Amazon\\ResultSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``ZendService\Amazon\ResultSet`` objects are returned by :ref:`ZendService\Amazon::itemSearch()
+``ZendService\Amazon\ResultSet`` objects are returned by :ref:`ZendService\Amazon\Amazon::itemSearch()
 <zendservice.amazon.itemsearch>` and allow you to easily handle the multiple results returned.
 
 .. note::
@@ -372,8 +372,8 @@ Returns the total number of results returned by the search
 ZendService\\Amazon\\OfferSet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Each result returned by :ref:`ZendService\Amazon::itemSearch() <zendservice.amazon.itemsearch>` and
-:ref:`ZendService\Amazon::itemLookup() <zendservice.amazon.itemlookup>` contains a
+Each result returned by :ref:`ZendService\Amazon\Amazon::itemSearch() <zendservice.amazon.itemsearch>` and
+:ref:`ZendService\Amazon\Amazon::itemLookup() <zendservice.amazon.itemlookup>` contains a
 ``ZendService\Amazon\OfferSet`` object through which pricing information for the item can be retrieved.
 
 .. _zendservice.amazon.classes.offerset.parameters:

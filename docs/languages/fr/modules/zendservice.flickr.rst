@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zendservice.flickr:
 
-ZendService\Flickr
+ZendService\Flickr\Flickr
 ===================
 
 .. _zendservice.flickr.introduction:
@@ -9,7 +9,7 @@ ZendService\Flickr
 Introduction
 ------------
 
-``ZendService\Flickr`` est une *API* simple pour utiliser le service Web REST de Flick. Pour pouvoir utiliser les
+``ZendService\Flickr\Flickr`` est une *API* simple pour utiliser le service Web REST de Flick. Pour pouvoir utiliser les
 services Web Flickr, vous devez avoir une clé d'utilisation de l'API. Pour obtenir une telle clé, et pour plus
 d'information sur le service Web REST de Flickr, veuillez vous référez à la `documentation de l'API Flickr`_.
 
@@ -23,7 +23,7 @@ dans les tags.
 .. code-block:: php
    :linenos:
 
-   $flickr = new ZendService\Flickr('MA_CLE_API');
+   $flickr = new ZendService\Flickr\Flickr('MA_CLE_API');
 
    $results = $flickr->tagSearch("php");
 
@@ -42,7 +42,7 @@ dans les tags.
 Trouver les photos et les informations des utilisateurs Flickr
 --------------------------------------------------------------
 
-``ZendService\Flickr``\ fournit plusieurs façons différentes de récupérer des informations sur les
+``ZendService\Flickr\Flickr``\ fournit plusieurs façons différentes de récupérer des informations sur les
 utilisateurs.
 
 - ``userSearch()``: Accepte une chaîne de caractère de balise délimitée par des espaces, et un tableau
@@ -63,7 +63,7 @@ des utilisateurs en utilisant la méthode ``userSearch()``:
 .. code-block:: php
    :linenos:
 
-   $flickr = new ZendService\Flickr('MA_CLE_API');
+   $flickr = new ZendService\Flickr\Flickr('MA_CLE_API');
 
    $results = $flickr->userSearch($userEmail);
 
@@ -76,7 +76,7 @@ des utilisateurs en utilisant la méthode ``userSearch()``:
 Trouver des photos dans le pool d'un groupe
 -------------------------------------------
 
-``ZendService\Flickr`` vous permet de récupérer les photos issues du pool d'un groupe à partir de son ID.
+``ZendService\Flickr\Flickr`` vous permet de récupérer les photos issues du pool d'un groupe à partir de son ID.
 Utilisez pour cela la méthode ``groupPoolGetPhotos()``:
 
 .. _zendservice.flickr.grouppoolgetphotos.example-1:
@@ -86,7 +86,7 @@ Utilisez pour cela la méthode ``groupPoolGetPhotos()``:
 .. code-block:: php
    :linenos:
 
-   $flickr = new ZendService\Flickr('MA_CLE_API');
+   $flickr = new ZendService\Flickr\Flickr('MA_CLE_API');
 
    $results = $flickr->groupPoolGetPhotos($groupId);
 
@@ -105,7 +105,7 @@ Utilisez pour cela la méthode ``groupPoolGetPhotos()``:
 Récupérer les détails d'une image
 ---------------------------------
 
-``ZendService\Flickr`` permet de récupérer facilement et rapidement, les détails d'une image grâce à son ID.
+``ZendService\Flickr\Flickr`` permet de récupérer facilement et rapidement, les détails d'une image grâce à son ID.
 Utilisez simplement la méthode ``getImageDetails()``, comme dans l'exemple suivant :
 
 .. _zendservice.flickr.getimagedetails.example-1:
@@ -118,7 +118,7 @@ associées :
 .. code-block:: php
    :linenos:
 
-   $flickr = new ZendService\Flickr('MA_CLE_API');
+   $flickr = new ZendService\Flickr\Flickr('MA_CLE_API');
 
    $image = $flickr->getImageDetails($imageId);
 
@@ -128,7 +128,7 @@ associées :
 
 .. _zendservice.flickr.classes:
 
-Classes de résultats ZendService\Flickr
+Classes de résultats ZendService\Flickr\Flickr
 ----------------------------------------
 
 Les classes suivantes sont toutes retournées par ``tagSearch()`` et ``userSearch()``:

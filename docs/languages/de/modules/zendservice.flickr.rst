@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zendservice.flickr:
 
-ZendService\Flickr
+ZendService\Flickr\Flickr
 ===================
 
 .. _zendservice.flickr.introduction:
@@ -9,7 +9,7 @@ ZendService\Flickr
 Einführung
 ----------
 
-``ZendService\Flickr`` ist eine einfache *API* um den Flickr REST Web Service zu nutzen. Für die Benutzung des
+``ZendService\Flickr\Flickr`` ist eine einfache *API* um den Flickr REST Web Service zu nutzen. Für die Benutzung des
 Flickr Web Service, benötigt man einen *API* Schlüssel. Um diesen Schlüssel zu bekommen und für weitergehende
 Informationen über den Flickr REST Web Service besuchen Sie bitte die `Flickr API Dokumentation`_.
 
@@ -22,7 +22,7 @@ Im folgenden Bespiel benutzen wir die ``tagSearch()`` Methode um Photos zu suche
 .. code-block:: php
    :linenos:
 
-   $flickr = new ZendService\Flickr('MY_API_KEY');
+   $flickr = new ZendService\Flickr\Flickr('MY_API_KEY');
    $results = $flickr->tagSearch("php");
 
    foreach ($results as $result) {
@@ -40,7 +40,7 @@ Im folgenden Bespiel benutzen wir die ``tagSearch()`` Methode um Photos zu suche
 Bilder und Informationen von Flickr Benutzern finden
 ----------------------------------------------------
 
-``ZendService\Flickr`` stellt verschiedene unterschiedliche Wege zur Verfügung um Informationen von Flickr
+``ZendService\Flickr\Flickr`` stellt verschiedene unterschiedliche Wege zur Verfügung um Informationen von Flickr
 Benutzern zu bekommen:
 
 - ``userSearch()``: Akzeptiert ein String Abfrage von mit Leerzeichen getrennten Tags und als optionalen zweiten
@@ -63,7 +63,7 @@ eines Benutzer durch Verwendung der ``userSearch()`` Methode:
 .. code-block:: php
    :linenos:
 
-   $flickr = new ZendService\Flickr('MY_API_KEY');
+   $flickr = new ZendService\Flickr\Flickr('MY_API_KEY');
    $results = $flickr->userSearch($userEmail);
 
    foreach ($results as $result) {
@@ -75,7 +75,7 @@ eines Benutzer durch Verwendung der ``userSearch()`` Methode:
 Photos in einem Gruppenpool finden
 ----------------------------------
 
-``ZendService\Flickr`` erlaubt es Photos eines Gruppenpools basierend auf der ID zu empfangen. Hierfür kann die
+``ZendService\Flickr\Flickr`` erlaubt es Photos eines Gruppenpools basierend auf der ID zu empfangen. Hierfür kann die
 ``groupPoolGetPhotos()`` Methode verwendet werden:
 
 .. _zendservice.flickr.grouppoolgetphotos.example-1:
@@ -85,7 +85,7 @@ Photos in einem Gruppenpool finden
 .. code-block:: php
    :linenos:
 
-   $flickr = new ZendService\Flickr('MY_API_KEY');
+   $flickr = new ZendService\Flickr\Flickr('MY_API_KEY');
 
        $results = $flickr->groupPoolGetPhotos($groupId);
 
@@ -104,7 +104,7 @@ Photos in einem Gruppenpool finden
 Empfangen von Details zu Bildern durch Flickr
 ---------------------------------------------
 
-``ZendService\Flickr`` erlaubt es schnell und einfach an Details zu Bilders zu kommen, basieren auf einer
+``ZendService\Flickr\Flickr`` erlaubt es schnell und einfach an Details zu Bilders zu kommen, basieren auf einer
 übergebenen ID des Bildes. Einfach durch benutzen der ``getImageDetails()`` Methode, wie im folgenden Beispiel:
 
 .. _zendservice.flickr.getimagedetails.example-1:
@@ -116,7 +116,7 @@ Sobald man eine Flickr Bild ID hat, ist es eine einfache Angelegenheit, Informat
 .. code-block:: php
    :linenos:
 
-   $flickr = new ZendService\Flickr('MY_API_KEY');
+   $flickr = new ZendService\Flickr\Flickr('MY_API_KEY');
    $image = $flickr->getImageDetails($imageId);
 
    echo "Bild ID $imageId ist $image->width x $image->height Pixel groß.<br />\n";
@@ -124,7 +124,7 @@ Sobald man eine Flickr Bild ID hat, ist es eine einfache Angelegenheit, Informat
 
 .. _zendservice.flickr.classes:
 
-ZendService\Flickr Ergebnis Klassen
+ZendService\Flickr\Flickr Ergebnis Klassen
 ------------------------------------
 
 Die folgenden Klassen werden durch ``tagSearch()`` und ``userSearch()`` zurückgegeben:

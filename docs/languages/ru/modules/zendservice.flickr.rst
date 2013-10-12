@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zendservice.flickr:
 
-ZendService\Flickr
+ZendService\Flickr\Flickr
 ===================
 
 .. _zendservice.flickr.introduction:
@@ -9,7 +9,7 @@ ZendService\Flickr
 Введение
 --------
 
-*ZendService\Flickr* является простым API для использования веб-сервиса
+*ZendService\Flickr\Flickr* является простым API для использования веб-сервиса
 Flickr. Чтобы использовать веб-сервисы Flickr, вы должны иметь ключ к
 API. Для того, чтобы получить ключ и больше информации о сервисе
 Flickr, обратитесь к `документации по API веб-сервиса Flickr`_.
@@ -23,7 +23,7 @@ Flickr, обратитесь к `документации по API веб-сер
    :linenos:
 
    <?php
-   $flickr = new ZendService\Flickr('MY_API_KEY');
+   $flickr = new ZendService\Flickr\Flickr('MY_API_KEY');
 
    $results = $flickr->tagSearch("php");
 
@@ -43,7 +43,7 @@ Flickr, обратитесь к `документации по API веб-сер
 Поиск фотографий и информации о пользователе Flickr
 ---------------------------------------------------
 
-*ZendService\Flickr* предоставляет несколько способов получения
+*ZendService\Flickr\Flickr* предоставляет несколько способов получения
 информации о пользователях Flickr:
 
 - *userSearch()*: Принимает строку запроса, состоящую из разделенных
@@ -66,7 +66,7 @@ Flickr, обратитесь к `документации по API веб-сер
    :linenos:
 
    <?php
-   $flickr = new ZendService\Flickr('MY_API_KEY');
+   $flickr = new ZendService\Flickr\Flickr('MY_API_KEY');
 
    $results = $flickr->userSearch($userEmail);
 
@@ -79,7 +79,7 @@ Flickr, обратитесь к `документации по API веб-сер
 Поиск фотографий из пула группы
 -------------------------------
 
-*ZendService\Flickr* позволяет извлекать фотографии из пула группы
+*ZendService\Flickr\Flickr* позволяет извлекать фотографии из пула группы
 (group's pool), используя ID группы. Используйте метод *groupPoolGetPhotos()*:
 
 .. _zendservice.flickr.grouppoolgetphotos.example-1:
@@ -90,7 +90,7 @@ Flickr, обратитесь к `документации по API веб-сер
    :linenos:
 
    <?php
-       $flickr = new ZendService\Flickr('MY_API_KEY');
+       $flickr = new ZendService\Flickr\Flickr('MY_API_KEY');
 
        $results = $flickr->groupPoolGetPhotos($groupId);
 
@@ -110,7 +110,7 @@ Flickr, обратитесь к `документации по API веб-сер
 Извлечение данных по изображению в Flickr
 -----------------------------------------
 
-*ZendService\Flickr* делает быстрым и легким получение данных по
+*ZendService\Flickr\Flickr* делает быстрым и легким получение данных по
 изображению через его ID. Просто используйте метод *getImageDetails()*,
 как показано в следующем примере:
 
@@ -123,7 +123,7 @@ Flickr, обратитесь к `документации по API веб-сер
    :linenos:
 
    <?php
-   $flickr = new ZendService\Flickr('MY_API_KEY');
+   $flickr = new ZendService\Flickr\Flickr('MY_API_KEY');
 
    $image = $flickr->getImageDetails($imageId);
 
@@ -132,7 +132,7 @@ Flickr, обратитесь к `документации по API веб-сер
 
 .. _zendservice.flickr.classes:
 
-Классы результатов ZendService\Flickr
+Классы результатов ZendService\Flickr\Flickr
 --------------------------------------
 
 Объекты следующих классов возвращаются методами *tagSearch()* и

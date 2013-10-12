@@ -131,7 +131,7 @@ entfernt wird und der Anfangsbuchstabe kleingeschrieben wird: "suffix", "height"
 Zend\Captcha\ReCaptcha
 ----------------------
 
-Der ``Zend\Captcha\ReCaptcha`` Adapter verwendet :ref:`ZendService\ReCaptcha <zendservice.recaptcha>` um
+Der ``Zend\Captcha\ReCaptcha`` Adapter verwendet :ref:`ZendService\ReCaptcha\ReCaptcha <zendservice.recaptcha>` um
 *CAPTCHA*\ s zu erzeugen und zu prüfen. Es bietet die folgenden Methoden an:
 
 - ``setPrivKey($key)`` und ``getPrivKey()`` erlauben es den privaten Schlüssel zu spezifizieren der für den
@@ -142,7 +142,7 @@ Der ``Zend\Captcha\ReCaptcha`` Adapter verwendet :ref:`ZendService\ReCaptcha <ze
   ReCaptcha Service verwendet werden soll. Er muß wärend der Erstellung spezifiziert werden, auch wenn er
   jederzeit überschrieben werden kann.
 
-- ``setService(ZendService\ReCaptcha $service)`` und ``getService()`` erlauben es das ReCaptcha Serviceobjekt zu
+- ``setService(ZendService\ReCaptcha\ReCaptcha $service)`` und ``getService()`` erlauben es das ReCaptcha Serviceobjekt zu
   setzen und erhalten.
 
 

@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zendservice.recaptcha:
 
-ZendService\ReCaptcha
+ZendService\ReCaptcha\ReCaptcha
 ======================
 
 .. _zendservice.recaptcha.introduction:
@@ -9,7 +9,7 @@ ZendService\ReCaptcha
 Introduction
 ------------
 
-``ZendService\ReCaptcha`` fournit un client pour le `Service Web reCAPTCHA`_. D'après le site de reCAPTCHA,
+``ZendService\ReCaptcha\ReCaptcha`` fournit un client pour le `Service Web reCAPTCHA`_. D'après le site de reCAPTCHA,
 "reCAPTCHA est un service gratuit de CAPTCHA qui aide à la numérisation de livres." Chaque reCAPTCHA requière
 que l'utilisateur saisisse 2 mots, le premier est le CAPTCHA, et le second est issu de texte scanné que les OCR
 (Optical Character Recognition) ne peuvent identifier.
@@ -22,7 +22,7 @@ d'utilisation afin de générer une clé publique et une privée.
 Utilisation la plus simple
 --------------------------
 
-Instanciez un objet ``ZendService\ReCaptcha`` en lui passant vos clés publique et privée :
+Instanciez un objet ``ZendService\ReCaptcha\ReCaptcha`` en lui passant vos clés publique et privée :
 
 .. _zendservice.recaptcha.example-1:
 
@@ -31,7 +31,7 @@ Instanciez un objet ``ZendService\ReCaptcha`` en lui passant vos clés publique 
 .. code-block:: php
    :linenos:
 
-   $recaptcha = new ZendService\ReCaptcha($pubKey, $privKey);
+   $recaptcha = new ZendService\ReCaptcha\ReCaptcha($pubKey, $privKey);
 
 Pour rendre le reCAPTCHA, appelez simplement la méthode ``getHTML()``:
 

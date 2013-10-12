@@ -1,31 +1,31 @@
 .. EN-Revision: none
 .. _zendservice.slideshare:
 
-ZendService\SlideShare
+ZendService\SlideShare\SlideShare
 =======================
 
-Die ``ZendService\SlideShare`` wird verwendet um mit dem `slideshare.net`_ Web Service für das Online-Hosten von
+Die ``ZendService\SlideShare\SlideShare`` wird verwendet um mit dem `slideshare.net`_ Web Service für das Online-Hosten von
 Slideshows zu interagieren. Mit dieser Komponente kann eine Slideshow die in dieser Website gehostet wird in einer
 Website eingebettet und sogar neue Slideshows zum eigenen Account hochgeladen werden.
 
 .. _zendservice.slideshare.basicusage:
 
-Mit ZendService\SlideShare beginnen
+Mit ZendService\SlideShare\SlideShare beginnen
 ------------------------------------
 
-Um die ``ZendService\SlideShare`` Komponente zu verwenden muß zuerst ein Account auf den slideshare.net Servern
+Um die ``ZendService\SlideShare\SlideShare`` Komponente zu verwenden muß zuerst ein Account auf den slideshare.net Servern
 erstellt werden (mehr Informationen können `hier`_ gefunden werden) um einen *API* Schlüssel, Benutzername,
 Passwort und einen geteilten geheimen Wert zu erhalten -- diese werden alle benötigt um die
-``ZendService\SlideShare`` Komponente zu verwenden.
+``ZendService\SlideShare\SlideShare`` Komponente zu verwenden.
 
-Sobald ein Account erstellt wurde, kann die ``ZendService\SlideShare`` Komponente verwendet werden durch die
-Erstellung eines ``ZendService\SlideShare`` Objektes und dem anbieten dieser Werte wie anbei gezeigt:
+Sobald ein Account erstellt wurde, kann die ``ZendService\SlideShare\SlideShare`` Komponente verwendet werden durch die
+Erstellung eines ``ZendService\SlideShare\SlideShare`` Objektes und dem anbieten dieser Werte wie anbei gezeigt:
 
 .. code-block:: php
    :linenos:
 
    // Erstellt eine neue Instanz der Komponente
-   $ss = new ZendService\SlideShare('APIKEY',
+   $ss = new ZendService\SlideShare\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -35,7 +35,7 @@ Erstellung eines ``ZendService\SlideShare`` Objektes und dem anbieten dieser Wer
 Das SlideShow Objekt
 --------------------
 
-Alle Slideshows in der ``ZendService\SlideShare`` werden repräsentiert durch die Verwendung des
+Alle Slideshows in der ``ZendService\SlideShare\SlideShare`` werden repräsentiert durch die Verwendung des
 ``ZendService\SlideShare\SlideShow`` Objektes (sowohl beim Empfangen als auch beim Hochladen neuer Slideshows).
 Zur Referenz ist eine Pseudo-Code Version dieser Klasse anbei zu sehen.
 
@@ -184,7 +184,7 @@ Zur Referenz ist eine Pseudo-Code Version dieser Klasse anbei zu sehen.
    Die obige Pseudo-Klasse zeigt nur die Methoden welche von End-Benutzer Entwicklern verwendet werden sollten.
    Andere vorhandene Methoden sind intern für die Komponente.
 
-Wenn die ``ZendService\SlideShare`` Komponente verwendet wird, wird diese Daten Klasse sehr oft verwendet um
+Wenn die ``ZendService\SlideShare\SlideShare`` Komponente verwendet wird, wird diese Daten Klasse sehr oft verwendet um
 nachzusehen oder neue Slideshows zu oder von einem Webservice hinzuzufügen.
 
 .. _zendservice.slideshare.getslideshow:
@@ -192,16 +192,16 @@ nachzusehen oder neue Slideshows zu oder von einem Webservice hinzuzufügen.
 Empfangen einer einzelnen Slideshow
 -----------------------------------
 
-Die einfachste Verwendung der ``ZendService\SlideShare`` Komponente ist der Empfang einer einzelnen Slideshow
+Die einfachste Verwendung der ``ZendService\SlideShare\SlideShare`` Komponente ist der Empfang einer einzelnen Slideshow
 durch die Slideshow ID die von der slideshare.net Anwendung angeboten wird und kann durch den Aufruf der
-``getSlideShow()`` auf einem ``ZendService\SlideShare`` Objekt und der Verwendung des resultierenden
+``getSlideShow()`` auf einem ``ZendService\SlideShare\SlideShare`` Objekt und der Verwendung des resultierenden
 ``ZendService\SlideShare\SlideShow`` Objektes wie gezeigt durchgeführt werden.
 
 .. code-block:: php
    :linenos:
 
    // Erstellt eine neue Instanz der Komponente
-   $ss = new ZendService\SlideShare('APIKEY',
+   $ss = new ZendService\SlideShare\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -244,7 +244,7 @@ Beispiel der Verwendung jeder Methode wird anbei gezeigt:
    :linenos:
 
    // Erstellt eine neue Instanz der Komponente
-   $ss = new ZendService\SlideShare('APIKEY',
+   $ss = new ZendService\SlideShare\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -264,10 +264,10 @@ Beispiel der Verwendung jeder Methode wird anbei gezeigt:
 
 .. _zendservice.slideshare.caching:
 
-ZendService\SlideShare Caching Policy
+ZendService\SlideShare\SlideShare Caching Policy
 --------------------------------------
 
-Standardmäßig cached ``ZendService\SlideShare`` jede Anfrage an den Webservice automatisch in das Dateisystem
+Standardmäßig cached ``ZendService\SlideShare\SlideShare`` jede Anfrage an den Webservice automatisch in das Dateisystem
 (Standardpfad ``/tmp``) für 12 Stunden. Wenn man das Verhalten ändern will, muß eine eigenes :ref:`Zend_Cache
 <zend.cache>` Objekt durch Verwendung der ``setCacheObject()`` Methode angegeben werden wie anbei gezeigt:
 
@@ -285,7 +285,7 @@ Standardmäßig cached ``ZendService\SlideShare`` jede Anfrage an den Webservice
                                 $frontendOptions,
                                 $backendOptions);
 
-   $ss = new ZendService\SlideShare('APIKEY',
+   $ss = new ZendService\SlideShare\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');
@@ -309,7 +309,7 @@ gewünscht ist das Timeout für die Verbindung auf etwas anderes als den Standar
    $client = new Zend\Http\Client();
    $client->setConfig(array('timeout' => 5));
 
-   $ss = new ZendService\SlideShare('APIKEY',
+   $ss = new ZendService\SlideShare\SlideShare('APIKEY',
                                      'SHAREDSECRET',
                                      'USERNAME',
                                      'PASSWORD');

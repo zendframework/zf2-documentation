@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zendservice.technorati:
 
-ZendService\Technorati
+ZendService\Technorati\Technorati
 =======================
 
 .. _zendservice.technorati.introduction:
@@ -9,7 +9,7 @@ ZendService\Technorati
 Einführung
 ----------
 
-``ZendService\Technorati`` bietet ein einfaches, intuitives und objekt-orientiertes Interface für die Verwendung
+``ZendService\Technorati\Technorati`` bietet ein einfaches, intuitives und objekt-orientiertes Interface für die Verwendung
 der Technorati *API*. Es bietet Zugriff zu allen vorhandenen `Technorati API Abfragen`_ und gibt die originalen
 *XML* Antworten als freundliches *PHP* Objekt zurück.
 
@@ -35,14 +35,14 @@ werden.
    Es können bis zu 500 Technirati *API* Aufrufe pro Tag durchgeführt werden ohne das Kosten anfallen. Andere
    Limitationen der Verwendung können vorhanden sein, abhängig von der aktuellen Technorati *API* Lizenz.
 
-Sobald man einen gültigen *API* Schlüssel hat, kann man beginnen ``ZendService\Technorati`` zu verwenden.
+Sobald man einen gültigen *API* Schlüssel hat, kann man beginnen ``ZendService\Technorati\Technorati`` zu verwenden.
 
 .. _zendservice.technorati.making-first-query:
 
 Die erste Abfrage durchführen
 -----------------------------
 
-Um eine Abfrage durchzuführen, benötigt man zuerst eine ``ZendService\Technorati`` Instanz mit einem gültigen
+Um eine Abfrage durchzuführen, benötigt man zuerst eine ``ZendService\Technorati\Technorati`` Instanz mit einem gültigen
 *API* Schlüssel. Dann kann eine der vorhandenen Abfragemethoden ausgewählt werden, und durch Angabe der
 benötigen Argumente aufgerufen werden.
 
@@ -53,8 +53,8 @@ benötigen Argumente aufgerufen werden.
 .. code-block:: php
    :linenos:
 
-   // ein neues ZendService\Technorati mit einem gültigen API_KEY erstellen
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   // ein neues ZendService\Technorati\Technorati mit einem gültigen API_KEY erstellen
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
    // Technorati nach dem Schlüsselwort PHP durchsuchen
    $resultSet = $technorati->search('PHP');
@@ -69,8 +69,8 @@ verfeinern.
 .. code-block:: php
    :linenos:
 
-   // ein neues ZendService\Technorati mit einem gültigen API_KEY erstellen
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   // ein neues ZendService\Technorati\Technorati mit einem gültigen API_KEY erstellen
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
    // Die Abfrage nach Ergebnissen mit etwas Authority filtern
    // (Ergebnisse von Blogs mit einer Handvoll Links)
@@ -79,19 +79,19 @@ verfeinern.
    // Technorati nach dem Schlüsselwort PHP durchsuchen
    $resultSet = $technorati->search('PHP', $options);
 
-Eine ``ZendService\Technorati`` Instanz ist kein einmal zu verwendendes Objekt. Deswegen muß keine neue Instanz
-für jede Abfrage erstellt werden; es kann einfach das aktuelle ``ZendService\Technorati`` Objekt solange
+Eine ``ZendService\Technorati\Technorati`` Instanz ist kein einmal zu verwendendes Objekt. Deswegen muß keine neue Instanz
+für jede Abfrage erstellt werden; es kann einfach das aktuelle ``ZendService\Technorati\Technorati`` Objekt solange
 verwendet werden wie es benötigt wird.
 
 .. _zendservice.technorati.making-first-query.example-3:
 
-.. rubric:: Mehrfache Abfragen mit der gleichen ZendService\Technorati Instanz senden
+.. rubric:: Mehrfache Abfragen mit der gleichen ZendService\Technorati\Technorati Instanz senden
 
 .. code-block:: php
    :linenos:
 
-   // ein neues ZendService\Technorati mit einem gültigen API_KEY erstellen
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   // ein neues ZendService\Technorati\Technorati mit einem gültigen API_KEY erstellen
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
    // Technorati nach dem Schlüsselwort PHP durchsuchen
    $search = $technorati->search('PHP');
@@ -118,8 +118,8 @@ Weg um ein Ergebnisset Objekt zu verarbeiten ist dieses mit einem *PHP* ``foreac
 .. code-block:: php
    :linenos:
 
-   // ein neues ZendService\Technorati mit einem gültigen API_KEY erstellen
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   // ein neues ZendService\Technorati\Technorati mit einem gültigen API_KEY erstellen
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
    // Technorati nach dem PHP Schlüsselwort durchsuchen
    // $resultSet ist eine Instanz von ZendService\Technorati\SearchResultSet
@@ -140,8 +140,8 @@ Ergebnisobjekt gesucht werden indem dessen Position in der Ergebnissammlung verw
 .. code-block:: php
    :linenos:
 
-   // ein neues ZendService\Technorati mit einem gültigen API_KEY erstellen
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   // ein neues ZendService\Technorati\Technorati mit einem gültigen API_KEY erstellen
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
    // Technorati nach dem PHP Schlüsselwort durchsuchen
    // $resultSet ist eine Instanz von ZendService\Technorati\SearchResultSet
@@ -168,8 +168,8 @@ Die zweite Gruppe wird durch spezielle alleinstehende Ergebnisobjekte repräsent
 .. code-block:: php
    :linenos:
 
-   // ein neues ZendService\Technorati mit einem gültigen API_KEY erstellen
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   // ein neues ZendService\Technorati\Technorati mit einem gültigen API_KEY erstellen
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
    // Infos über weppos Author erhalten
    $result = $technorati->getInfo('weppos');
@@ -183,7 +183,7 @@ Die zweite Gruppe wird durch spezielle alleinstehende Ergebnisobjekte repräsent
    }
    echo "</ol>";
 
-Bitte lesen Sie das :ref:`ZendService\Technorati Klassen <zendservice.technorati.classes>` Kapitel für weitere
+Bitte lesen Sie das :ref:`ZendService\Technorati\Technorati Klassen <zendservice.technorati.classes>` Kapitel für weitere
 Details über Antwortklassen.
 
 .. _zendservice.technorati.handling-errors:
@@ -191,11 +191,11 @@ Details über Antwortklassen.
 Fehler behandeln
 ----------------
 
-Jede ``ZendService\Technorati`` Abfragemethode wirft bei einem Fehler eine ``ZendService\Technorati\Exception``
+Jede ``ZendService\Technorati\Technorati`` Abfragemethode wirft bei einem Fehler eine ``ZendService\Technorati\Exception``
 Ausnahme mit einer bedeutungsvollen Fehlermeldung.
 
-Es gibt verschiedene Gründe die Verursachen können das eine ``ZendService\Technorati`` Abfrage fehlschlägt.
-``ZendService\Technorati`` prüft alle Parameter für jegliche Abfrageanfragen. Wenn ein Parameter ungültig ist
+Es gibt verschiedene Gründe die Verursachen können das eine ``ZendService\Technorati\Technorati`` Abfrage fehlschlägt.
+``ZendService\Technorati\Technorati`` prüft alle Parameter für jegliche Abfrageanfragen. Wenn ein Parameter ungültig ist
 oder er einen ungültigen Wert enthält, wird eine neue ``ZendService\Technorati\Exception`` Ausnahme geworfen.
 Zusätzlich kann das Technorati *API* Interface temporär unerreichbar sein, oder es kann eine Antwort zurückgeben
 die nicht gültig ist.
@@ -209,7 +209,7 @@ Eine Technorati Abfrage sollte immer mit einem ``try ... catch`` Block umhüllt 
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    try {
        $resultSet = $technorati->search('PHP');
    } catch(ZendService\Technorati\Exception $e) {
@@ -222,11 +222,11 @@ Prüfen der täglichen Verwendung des eigenen API Schlüssels
 ----------------------------------------------------------
 
 Von Zeit zu Zeit wird man die tägliche Verwendung des *API* Schlüssels prüfen wollen. Standardmäßig limitiert
-Technorati die *API* Verwendung auf 500 Aufrufe pro Tag, und eine Ausnahme wird durch ``ZendService\Technorati``
+Technorati die *API* Verwendung auf 500 Aufrufe pro Tag, und eine Ausnahme wird durch ``ZendService\Technorati\Technorati``
 zurückgegeben wenn versucht wird dieses Limit zu überschreiten. Man kann diese Information über die Verwendung
-des eigenen *API* Schlüssels erhalten indem die ``ZendService\Technorati::keyInfo()`` Methode verwendet wird.
+des eigenen *API* Schlüssels erhalten indem die ``ZendService\Technorati\Technorati::keyInfo()`` Methode verwendet wird.
 
-``ZendService\Technorati::keyInfo()`` gibt ein ``ZendService\Technorati\KeyInfoResult`` Object zurück. Für
+``ZendService\Technorati\Technorati::keyInfo()`` gibt ein ``ZendService\Technorati\KeyInfoResult`` Object zurück. Für
 vollständige Details kann im `API Referenz Guide`_ nachgesehen werden.
 
 .. _zendservice.technorati.checking-api-daily-usage.example-1:
@@ -236,7 +236,7 @@ vollständige Details kann im `API Referenz Guide`_ nachgesehen werden.
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $key = $technorati->keyInfo();
 
    echo "API Schlüssel: " . $key->getApiKey() . "<br />";
@@ -248,7 +248,7 @@ vollständige Details kann im `API Referenz Guide`_ nachgesehen werden.
 Vorhandene Technorati Abfragen
 ------------------------------
 
-``ZendService\Technorati`` bietet Unterstützung für die folgenden Abfragen:
+``ZendService\Technorati\Technorati`` bietet Unterstützung für die folgenden Abfragen:
 
 
 
@@ -277,7 +277,7 @@ Technorati Cosmos
 
 Eine `Cosmos`_ Abfrage lässt einen Sehen welche Blog zu einer gegebenen *URL* verknüpft sind. Sie gibt ein
 :ref:`ZendService\Technorati\CosmosResultSet <zendservice.technorati.classes.cosmosresultset>` Objekt zurück.
-Für vollständige Details kann nach ``ZendService\Technorati::cosmos()`` im `API Referenz Guide`_ nachgesehen
+Für vollständige Details kann nach ``ZendService\Technorati\Technorati::cosmos()`` im `API Referenz Guide`_ nachgesehen
 werden.
 
 .. _zendservice.technorati.queries.cosmos.example-1:
@@ -287,7 +287,7 @@ werden.
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $resultSet = $technorati->cosmos('http://devzone.zend.com/');
 
    echo "<p>Liest " . $resultSet->totalResults() .
@@ -306,7 +306,7 @@ Technorati Search
 
 Die `Search`_ Abfrage lässt einen Sehen welche Blogs einen gegebenen Suchstring enthalten. Sie gibt ein
 :ref:`ZendService\Technorati\SearchResultSet <zendservice.technorati.classes.searchresultset>` Objekt zurück.
-Für vollständige Details kann nach ``ZendService\Technorati::search()`` im `API Referenz Guide`_ nachgesehen
+Für vollständige Details kann nach ``ZendService\Technorati\Technorati::search()`` im `API Referenz Guide`_ nachgesehen
 werden.
 
 .. _zendservice.technorati.queries.search.example-1:
@@ -316,7 +316,7 @@ werden.
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $resultSet = $technorati->search('zend framework');
 
    echo "<p>Liest " . $resultSet->totalResults() .
@@ -335,7 +335,7 @@ Technorati Tag
 
 Die `Tag`_ Abfrage lässt einen Sehen welche Antworten mit einem gegebenen Tag assoziiert sind. Sie gibt ein
 :ref:`ZendService\Technorati\TagResultSet <zendservice.technorati.classes.tagresultset>` Objekt zurück. Für
-vollständige Details kann nach ``ZendService\Technorati::tag()`` im `API Referenz Guide`_ nachgesehen werden.
+vollständige Details kann nach ``ZendService\Technorati\Technorati::tag()`` im `API Referenz Guide`_ nachgesehen werden.
 
 .. _zendservice.technorati.queries.tag.example-1:
 
@@ -344,7 +344,7 @@ vollständige Details kann nach ``ZendService\Technorati::tag()`` im `API Refere
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $resultSet = $technorati->tag('php');
 
    echo "<p>Liest " . $resultSet->totalResults() .
@@ -364,7 +364,7 @@ Technorati DailyCounts
 Die `DailyCounts`_ Abfrage bietet tägliche Anzahlen von Antworten die ein abgefragtes Schlüsselwort enthalten.
 Sie gibt ein :ref:`ZendService\Technorati\DailyCountsResultSet
 <zendservice.technorati.classes.dailycountsresultset>` Objekt zurück. Für vollständige Details kann nach
-``ZendService\Technorati::dailyCounts()`` im `API Referenz Guide`_ nachgesehen werden.
+``ZendService\Technorati\Technorati::dailyCounts()`` im `API Referenz Guide`_ nachgesehen werden.
 
 .. _zendservice.technorati.queries.dailycounts.example-1:
 
@@ -373,7 +373,7 @@ Sie gibt ein :ref:`ZendService\Technorati\DailyCountsResultSet
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $resultSet = $technorati->dailyCounts('php');
 
    foreach ($resultSet as $result) {
@@ -389,7 +389,7 @@ Technorati TopTags
 
 Die `TopTags`_ Abfrage bietet Informationen über Top Tags die durch Technorati indiziert sind. Sie gibt ein
 :ref:`ZendService\Technorati\TagsResultSet <zendservice.technorati.classes.tagsresultset>` Objekt zurück. Für
-vollständige Details kann nach ``ZendService\Technorati::topTags()`` im `API Referenz Guide`_ nachgesehen werden.
+vollständige Details kann nach ``ZendService\Technorati\Technorati::topTags()`` im `API Referenz Guide`_ nachgesehen werden.
 
 .. _zendservice.technorati.queries.toptags.example-1:
 
@@ -398,7 +398,7 @@ vollständige Details kann nach ``ZendService\Technorati::topTags()`` im `API Re
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $resultSet = $technorati->topTags();
 
    echo "<p>Liest " . $resultSet->totalResults() .
@@ -418,7 +418,7 @@ Technorati BlogInfo
 Eine `BlogInfo`_ Abfrage bietet Informationen darüber welcher Blog, wenn überhaupt, mit einer gegebenen *URL*
 assoziiert ist. Sie gibt ein :ref:`ZendService\Technorati\BlogInfoResult
 <zendservice.technorati.classes.bloginforesult>` Objekt zurück. Für vollständige Details kann nach
-``ZendService\Technorati::blogInfo()`` im `API Referenz Guide`_ nachgesehen werden.
+``ZendService\Technorati\Technorati::blogInfo()`` im `API Referenz Guide`_ nachgesehen werden.
 
 .. _zendservice.technorati.queries.bloginfo.example-1:
 
@@ -427,7 +427,7 @@ assoziiert ist. Sie gibt ein :ref:`ZendService\Technorati\BlogInfoResult
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $result = $technorati->blogInfo('http://devzone.zend.com/');
 
    echo '<h2><a href="' . (string) $result->getWeblog()->getUrl() . '">' .
@@ -440,7 +440,7 @@ Technorati BlogPostTags
 
 Eine `BlogPostTags`_ Abfrage bietet Informationen über Top Tags die von einem spezifischen Blog verwendet werden.
 Sie gibt ein :ref:`ZendService\Technorati\TagsResultSet <zendservice.technorati.classes.tagsresultset>` Objekt
-zurück. Für vollständige Details kann nach ``ZendService\Technorati::blogPostTags()`` im `API Referenz Guide`_
+zurück. Für vollständige Details kann nach ``ZendService\Technorati\Technorati::blogPostTags()`` im `API Referenz Guide`_
 nachgesehen werden.
 
 .. _zendservice.technorati.queries.blogposttags.example-1:
@@ -450,7 +450,7 @@ nachgesehen werden.
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $resultSet = $technorati->blogPostTags('http://devzone.zend.com/');
 
    echo "<p>Liest " . $resultSet->totalResults() .
@@ -469,7 +469,7 @@ Technorati GetInfo
 
 Eine `GetInfo`_ Abfrage teilt mit was Technorati über ein Mitglied weiß. Sie gibt ein
 :ref:`ZendService\Technorati\GetInfoResult <zendservice.technorati.classes.getinforesult>` Objekt zurück. Für
-vollständige Details kann nach ``ZendService\Technorati::getInfo()`` im `API Referenz Guide`_ nachgesehen werden.
+vollständige Details kann nach ``ZendService\Technorati\Technorati::getInfo()`` im `API Referenz Guide`_ nachgesehen werden.
 
 .. _zendservice.technorati.queries.getinfo.example-1:
 
@@ -478,7 +478,7 @@ vollständige Details kann nach ``ZendService\Technorati::getInfo()`` im `API Re
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $result = $technorati->getInfo('weppos');
 
    $author = $result->getAuthor();
@@ -497,11 +497,11 @@ Technorati KeyInfo
 
 Die KeyInfo Abfrage bietet Informationen über die tägliche Verwendung eines *API* Schlüssels. Sie gibt ein
 :ref:`ZendService\Technorati\KeyInfoResult <zendservice.technorati.classes.keyinforesult>` Objekt zurück. Für
-vollständige Details kann nach ``ZendService\Technorati::keyInfo()`` im `API Referenz Guide`_ nachgesehen werden.
+vollständige Details kann nach ``ZendService\Technorati\Technorati::keyInfo()`` im `API Referenz Guide`_ nachgesehen werden.
 
 .. _zendservice.technorati.classes:
 
-ZendService\Technorati Klassen
+ZendService\Technorati\Technorati Klassen
 -------------------------------
 
 Die folgenden Klassen werden von den verschiedenen Technorati Anfragen zurückgegeben. Jede
@@ -549,14 +549,14 @@ eine einfache Iteration und Suche nach einem spezifischen Ergebnis erlaubt.
    ``ZendService\Technorati\GetInfoResult``, ``ZendService\Technorati\BlogInfoResult`` und
    ``ZendService\Technorati\KeyInfoResult`` repräsentieren Ausnahmen zu den obigen weil Sie nicht zu einem
    ergebnisset gehören und sie kein Interface implementieren. Sie repräsentieren ein einzelnes Antwortobjekt und
-   sie funktionieren als Wrapper für zusätzliche ``ZendService\Technorati`` Objekte, wie
+   sie funktionieren als Wrapper für zusätzliche ``ZendService\Technorati\Technorati`` Objekte, wie
    ``ZendService\Technorati\Author`` und ``ZendService\Technorati\Weblog``.
 
-Die ``ZendService\Technorati`` Bibliothek beinhaltet zusätzliche bequeme Klassen die spezifische Antwortobjekte
+Die ``ZendService\Technorati\Technorati`` Bibliothek beinhaltet zusätzliche bequeme Klassen die spezifische Antwortobjekte
 repräsentieren. ``ZendService\Technorati\Author`` repräsentiert einen einzelnen Technorati Account, welcher auch
 als Blog Author oder Blogger bekannt ist. ``ZendService\Technorati\Weblog`` repräsentiert ein einzelnes Weblog
 Objekt, zusätzlich mit allen spezifischen Weblog Eigenschaften die Feed *URL*\ s oder Blog Namen. Für komplette
-Details kann nach ``ZendService\Technorati`` im `API Referenz Guide`_ nachgesehen werden.
+Details kann nach ``ZendService\Technorati\Technorati`` im `API Referenz Guide`_ nachgesehen werden.
 
 .. _zendservice.technorati.classes.resultset:
 
@@ -579,7 +579,7 @@ alle Ergebnisobjekte mit dem *PHP* Statement ``foreach()`` iterieren.
    :linenos:
 
    // eine einfache Abfrage durchlaufen
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $resultSet = $technorati->search('php');
 
    // $resultSet ist jetzt eine Instanz von

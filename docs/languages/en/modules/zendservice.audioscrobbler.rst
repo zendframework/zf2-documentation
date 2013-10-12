@@ -8,10 +8,10 @@ ZendService\\Audioscrobbler
 Introduction
 ------------
 
-``ZendService\Audioscrobbler`` is a simple *API* for using the Audioscrobbler REST Web Service. The Audioscrobbler
+``ZendService\Audioscrobbler\Audioscrobbler`` is a simple *API* for using the Audioscrobbler REST Web Service. The Audioscrobbler
 Web Service provides access to its database of Users, Artists, Albums, Tracks, Tags, Groups, and Forums. The
-methods of the ``ZendService\Audioscrobbler`` class begin with one of these terms. The syntax and namespaces of
-the Audioscrobbler Web Service are mirrored in ``ZendService\Audioscrobbler``. For more information about the
+methods of the ``ZendService\Audioscrobbler\Audioscrobbler`` class begin with one of these terms. The syntax and namespaces of
+the Audioscrobbler Web Service are mirrored in ``ZendService\Audioscrobbler\Audioscrobbler``. For more information about the
 Audioscrobbler REST Web Service, please visit the `Audioscrobbler Web Service site`_.
 
 .. _zendservice.audioscrobbler.users:
@@ -20,7 +20,7 @@ Users
 -----
 
 In order to retrieve information for a specific user, the ``setUser()`` method is first used to select the user for
-which data are to be retrieved. ``ZendService\Audioscrobbler`` provides several methods for retrieving data
+which data are to be retrieved. ``ZendService\Audioscrobbler\Audioscrobbler`` provides several methods for retrieving data
 specific to a single user:
 
 

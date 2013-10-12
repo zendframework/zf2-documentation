@@ -1,7 +1,7 @@
 .. EN-Revision: none
 .. _zendservice.twitter:
 
-ZendService\Twitter
+ZendService\Twitter\Twitter
 ====================
 
 .. _zendservice.twitter.introduction:
@@ -9,15 +9,15 @@ ZendService\Twitter
 Einführung
 ----------
 
-``ZendService\Twitter`` bietet einen Client für die `RESTAPI von Twitter`_. ``ZendService\Twitter`` erlaubt es
+``ZendService\Twitter\Twitter`` bietet einen Client für die `RESTAPI von Twitter`_. ``ZendService\Twitter\Twitter`` erlaubt es
 eine öffentliche Zeitachse abzufragen. Wenn man einen Benutzernamen und ein OAuth Details für Twitter angibt, ist
 es auch erlaubt den eigenen Status zu erhalten und zu aktualisieren, Freunden zu antworten, Nachrichten an Freunde
 schicken, Tweets als Favoriten markieren und vieles mehr.
 
-``ZendService\Twitter`` implementiert einen *REST* Service und alle Methoden geben eine Instanz von
+``ZendService\Twitter\Twitter`` implementiert einen *REST* Service und alle Methoden geben eine Instanz von
 ``Zend\Rest\Client\Result`` zurück.
 
-``ZendService\Twitter`` ist in Untersektionen geteilt damit man einfachst erkennen kann welcher Typ von Aufrufen
+``ZendService\Twitter\Twitter`` ist in Untersektionen geteilt damit man einfachst erkennen kann welcher Typ von Aufrufen
 angefragt wird.
 
 - *account* stellt sicher das die eigenen Zugangsdaten gültig sind, prüft das *API* Limit und beendet die
@@ -43,38 +43,38 @@ angefragt wird.
 Authentifizierung
 -----------------
 
-Mit der Ausnahme des Holens der öffentlichen Zeitlinie benötigt ``ZendService\Twitter`` eine Authentifizierung
+Mit der Ausnahme des Holens der öffentlichen Zeitlinie benötigt ``ZendService\Twitter\Twitter`` eine Authentifizierung
 als gültiger Benutzer. Das wird erreicht indem das OAuth Authentifizierungs Protokoll verwendet wird. OAuth ist
 der einzige unterstützte Authentifizierungsmodus für Twitter ab August 2010. Die OAuth Implementierung welche von
-``ZendService\Twitter`` verwendet wird ist ``ZendOAuth``.
+``ZendService\Twitter\Twitter`` verwendet wird ist ``ZendOAuth``.
 
 .. _zendservice.twitter.authentication.example:
 
 .. rubric:: Erstellung der Twitter Klasse
 
-``ZendService\Twitter`` muss sich selbst authorisieren, durch den Benutzer, bevor es mit der Twitter API verwendet
+``ZendService\Twitter\Twitter`` muss sich selbst authorisieren, durch den Benutzer, bevor es mit der Twitter API verwendet
 werden kann (außer für die öffentlichen Bereiche). Das muss durch Verwendung von OAuth durchgeführt werden da
 Twitter seine grundsätzliche HTTP Authentifizierung mit August 2010 deaktiviert hat.
 
 Es gibt zwei Optionen um Authorisierung zu ermöglichen. Der erste ist die Implementierung des Workflows von
-``ZendOauth`` über ``ZendService\Twitter`` welche zu einem internen ``ZendOauth\Consumer`` Objekt weiterleitet.
+``ZendOauth`` über ``ZendService\Twitter\Twitter`` welche zu einem internen ``ZendOauth\Consumer`` Objekt weiterleitet.
 Bitte sehen Sie in die Dokumentation von ``ZendOauth`` für ein vollständiges Beispiel dieses Workflows - man
-kann alle dokumentierten Methoden von ``ZendOauth\Consumer`` auf ``ZendService\Twitter`` aufrufen inklusive der
+kann alle dokumentierten Methoden von ``ZendOauth\Consumer`` auf ``ZendService\Twitter\Twitter`` aufrufen inklusive der
 Optionen des Constructors. Man kann ``ZendOauth`` auch direkt verwenden und nur den sich ergebenden Zugriffstoken
-an ``ZendService\Twitter`` übergeben. Das ist der normale Workflow sobald man einen wiederverwendbaren
+an ``ZendService\Twitter\Twitter`` übergeben. Das ist der normale Workflow sobald man einen wiederverwendbaren
 Zugriffstoken für einen bestimmten Twitter Benutzer bereitgestellt bekommt. Der sich ergebende Token für den
 Zugriff mit OAuth sollte für die zukünftige Verwendung in einer Datenbank gespeichert werden (andernfalls muss
-man sich für jede neue Instanz von ``ZendService\Twitter`` authorisieren). Man sollte im Kopf behalten dass die
+man sich für jede neue Instanz von ``ZendService\Twitter\Twitter`` authorisieren). Man sollte im Kopf behalten dass die
 Authorisierung über OAuth dazu führt dass der Benutzer zu Twitter umgeleitet wird um seine Bestätigung zur
 beantragten Authorisierung zu geben (das wird für gespeicherte Zugriffstokens nicht wiederholt). Das benötigt
 zusätzliche Arbeit (z.B. Umleiten von Benutzern und Bereitstellen einer Callback URL) über den vorherigen HTTP
 Authentofizierungs Mechanismus bei dem ein Benutzer Anwendungen nur erlaubt seinen Benutzernamen und sein Passwort
 zu speichern.
 
-Das folgende Beispiel demonstriert das Setup von ``ZendService\Twitter`` welchem ein bereits bereitgestellter
+Das folgende Beispiel demonstriert das Setup von ``ZendService\Twitter\Twitter`` welchem ein bereits bereitgestellter
 OAuth Zugriffstoken angegeben wird. Der Zugriffstoken ist ein Serialisiertes Objekt, damit man dass serialisierte
 Objekt in einer Datenbank speichern kann, und es zum Zeitpunkt des Empfangs deserialisiert bevor die Objekte an
-``ZendService\Twitter`` übergeben werden. Die Dokumentation von ``ZendOauth`` demonstriert den Workflow wenn
+``ZendService\Twitter\Twitter`` übergeben werden. Die Dokumentation von ``ZendOauth`` demonstriert den Workflow wenn
 Objekte involviert sind.
 
 .. code-block:: php
@@ -87,7 +87,7 @@ Objekte involviert sind.
     */
    $token = unserialize($serializedToken);
 
-   $twitter = new ZendService\Twitter(array(
+   $twitter = new ZendService\Twitter\Twitter(array(
        'username' => 'johndoe',
        'accessToken' => $token
    ));
@@ -105,7 +105,7 @@ Objekte involviert sind.
    wird). Das kann nur getan werden indem mit dem betreffenden Benutzer, welchem der Zugriffstoken gehört,
    interagiert wird.
 
-   Die vorher gezeigte pre-OAuth Version von ``ZendService\Twitter`` erlaubte die Übergabe eines Benutzernamens
+   Die vorher gezeigte pre-OAuth Version von ``ZendService\Twitter\Twitter`` erlaubte die Übergabe eines Benutzernamens
    als ersten Parameter statt in einem Array. Dies wird nicht länger unterstützt.
 
 .. _zendservice.twitter.account:
@@ -123,7 +123,7 @@ Account Methoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -138,7 +138,7 @@ Account Methoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -154,7 +154,7 @@ Account Methoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -175,7 +175,7 @@ Status Methoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -191,7 +191,7 @@ Status Methoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -214,7 +214,7 @@ Status Methoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -242,7 +242,7 @@ Status Methoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -258,7 +258,7 @@ Status Methoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -279,7 +279,7 @@ Status Methoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -304,7 +304,7 @@ Status Methoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -325,7 +325,7 @@ Benutzermethoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -351,7 +351,7 @@ Benutzermethoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -374,7 +374,7 @@ Benutzermethoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -394,7 +394,7 @@ Methoden zur direkten Benachrichtigung
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -420,7 +420,7 @@ Methoden zur direkten Benachrichtigung
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -446,7 +446,7 @@ Methoden zur direkten Benachrichtigung
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -462,7 +462,7 @@ Methoden zur direkten Benachrichtigung
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -482,7 +482,7 @@ Methoden für die Freundschaft
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -498,7 +498,7 @@ Methoden für die Freundschaft
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -514,7 +514,7 @@ Methoden für die Freundschaft
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -535,7 +535,7 @@ Methoden für Favoriten
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -557,7 +557,7 @@ Methoden für Favoriten
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -573,7 +573,7 @@ Methoden für Favoriten
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -594,7 +594,7 @@ Blockierende Methoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -621,7 +621,7 @@ Blockierende Methoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -637,7 +637,7 @@ Blockierende Methoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
@@ -652,7 +652,7 @@ Blockierende Methoden
   .. code-block:: php
      :linenos:
 
-     $twitter = new ZendService\Twitter(array(
+     $twitter = new ZendService\Twitter\Twitter(array(
          'username' => 'johndoe',
          'accessToken' => $token
      ));
