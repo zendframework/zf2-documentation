@@ -741,22 +741,19 @@ doc-блоков.
 Каждый файл, содержащий PHP-код должен иметь заголовочный блок в
 начале файла, содержащий как минимум следующие phpDocumentor-теги:
 
-   .. code-block:: php
-      :linenos:
+.. code-block:: php
+   :linenos:
 
-      /**
-       * Краткое описание файла
-       *
-       * Длинное описание файла (если есть)...
-       *
-       * LICENSE: Some license information
-       *
-       * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
-       * @license    http://www.zend.com/license/3_0.txt   PHP License 3.0
-       * @link       http://dev.zend.com/package/PackageName
-       * @since      File available since Release 1.2.0
-      */
-
+   /**
+    * Zend Framework (http://framework.zend.com/)
+    *
+    * Long description for file (if any)...
+    *
+    * @link      http://github.com/zendframework/zf2 for the canonical source repository
+    * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
+    * @license   http://framework.zend.com/license/new-bsd New BSD License
+    * @since     File available since Release 1.5.0
+    */
 
 .. _coding-standards.inline-documentation.classes:
 
@@ -766,22 +763,17 @@ doc-блоков.
 Каждый класс должен иметь doc-блок, содержащий как минимум
 следующие phpDocumentor-теги:
 
-   .. code-block:: php
-      :linenos:
+.. code-block:: php
+   :linenos:
 
-      /**
-       * Краткое описание класса
-       *
-       * Длинное описание класса (если есть)...
-       *
-       * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
-       * @license    http://www.zend.com/license/3_0.txt   PHP License 3.0
-       * @version    Release: @package_version@
-       * @link       http://dev.zend.com/package/PackageName
-       * @since      Class available since Release 1.2.0
-       * @deprecated Class deprecated in Release 2.0.0
-       */
-
+   /**
+    * Short description for class
+    *
+    * Long description for class (if any)...
+    *
+    * @since      Class available since Release 1.5.0
+    * @deprecated Class deprecated in Release 2.0.0
+    */
 
 .. _coding-standards.inline-documentation.functions:
 

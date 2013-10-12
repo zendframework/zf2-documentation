@@ -687,23 +687,19 @@ Dosyalar
 PHP kodu içeren her dosya üst kısmında en az aşağıdaki kadar phpDocumentor tagleri içerecek şekilde bir
 başlık kısmına sahip olmalı:
 
-   .. code-block:: php
-      :linenos:
+.. code-block:: php
+   :linenos:
 
-      /**
-       * Dosyanın kısa açıklaması
-       *
-       * Dosya için uzun açıklama (eğer varsa)
-       *
-       * LİSANS: Lisans bilgisi
-       *
-       * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
-       * @license    http://www.zend.com/license/3_0.txt   PHP License 3.0
-       * @link       http://dev.zend.com/package/PackageName
-       * @since      File available since Release 1.2.0
-      */
-
-
+   /**
+    * Zend Framework (http://framework.zend.com/)
+    *
+    * Long description for file (if any)...
+    *
+    * @link      http://github.com/zendframework/zf2 for the canonical source repository
+    * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
+    * @license   http://framework.zend.com/license/new-bsd New BSD License
+    * @since     File available since Release 1.5.0
+    */
 
 .. _coding-standards.inline-documentation.classes:
 
@@ -712,23 +708,17 @@ Sınıflar
 
 Her sınıf en az aşağıdaki kadar phpDocumentor tagleri içerecek şekilde bilgilendirme kısmı içermeli :
 
-   .. code-block:: php
-      :linenos:
+.. code-block:: php
+   :linenos:
 
-      /**
-       * Sınıfın kısa açıklaması
-       *
-       * Sınıfın uzun açıklaması (eğer varsa)
-       *
-       * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
-       * @license    http://www.zend.com/license/3_0.txt   PHP License 3.0
-       * @version    Release: @package_version@
-       * @link       http://dev.zend.com/package/PackageName
-       * @since      Class available since Release 1.2.0
-       * @deprecated Class deprecated in Release 2.0.0
-       */
-
-
+   /**
+    * Short description for class
+    *
+    * Long description for class (if any)...
+    *
+    * @since      Class available since Release 1.5.0
+    * @deprecated Class deprecated in Release 2.0.0
+    */
 
 .. _coding-standards.inline-documentation.functions:
 
