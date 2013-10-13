@@ -71,6 +71,7 @@ The ``HeadStyle`` helper is a concrete implementation of the :ref:`Placeholder h
 
    By default, Zend Framework uses *UTF-8* as its default encoding, and, specific to this case, ``Zend\View`` does
    as well. So if you want to use another encoding with ``headStyle``, you will have do three things:
+
       1. Create a custom renderer and implement a ``getEncoding()`` method;
       2. Create a custom rendering strategy that will return an instance of your custom renderer;
       3. Attach the custom strategy in the ``ViewEvent``;
