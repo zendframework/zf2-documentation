@@ -152,7 +152,7 @@ just a few tweaks however, we can make it look awesome:
               ->menu()
               ->setMinDepth(0)
               ->setMaxDepth(0)
-              ->setUlClass('nav');
+              ->setUlClass('nav navbar-nav');
     ?>
 
 Here we tell the renderer to give the root UL the class of 'nav' so that
