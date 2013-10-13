@@ -8,7 +8,7 @@ scheme will not be affected, even if a different scheme is enforced.
 
 .. _zend.filter.set.uri-normalize.options:
 
-.. rubrice:: Supported Options
+.. rubric:: Supported Options
 
 The following options are supported for ``Zend\Filter\UriNormalize``:
 
