@@ -306,11 +306,11 @@ each is expected to return an array of configuration for a service manager, as
 denoted in the :ref:`section on default service configuration
 <zend.mvc.services.service-manager-configuration>`.
 
-Configuration mapping table 
+Configuration mapping table
 ---------------------------
 
 +------------------------------+---------------------------------------+---------------------------------+------------------------+
-| Manager name                 | Interface name                        | Module Method name              | Config key name        | 
+| Manager name                 | Interface name                        | Module Method name              | Config key name        |
 +==============================+=======================================+=================================+========================+
 | ``ControllerPluginManager``  | ``ControllerPluginProviderInterface`` | ``getControllerPluginConfig()`` | ``controller_plugins`` |
 +------------------------------+---------------------------------------+---------------------------------+------------------------+
@@ -369,18 +369,25 @@ To cap off the tutorial, let's review how and when configuration is defined and
 merged.
 
 - **System configuration**
+
   - Defined in ``config/application.config.php``
   - No merging occurs
   - Allows manipulation programmatically, which allows the ability to:
+
     - Alter flags based on computed values
     - Alter the configuration glob path based on computed values
+
   - Configuration is passed to the ``Application`` instance, and then the
     ``ModuleManager`` in order to initialize the system.
+
 - **Application configuration**
+
   - The ``ModuleManager`` loops through each module class in the order defined
     in the **system configuration**
+
     - Service configuration defined in ``Module`` class methods is aggregated
     - Configuration returned by ``Module::getConfig()`` is aggregated
+
   - Files detected from the **service configuration** ``config_glob_paths``
     setting are merged, based on the order they resolve in the glob path.
   - Merged configuration is finally passed to the ``ServiceManager``
