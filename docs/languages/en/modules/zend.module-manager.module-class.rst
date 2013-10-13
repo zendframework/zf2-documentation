@@ -78,9 +78,9 @@ The following example shows a more typical usage of the ``Module`` class:
    }
 
 For a list of the provided module manager listeners and the interfaces and methods that ``Module`` classes may
-implement in order to interact with the module manager and application, see the :ref:`module manager listeners
- <zend.module-manager.module-manager.module-manager-listeners>` and the :ref:`module mananger events
- <zend.module-manager.module-manager.module-manager-events>` documentations.
+implement in order to interact with the module manager and application, see the :ref:`module manager
+listeners <zend.module-manager.module-manager.module-manager-listeners>` and the :ref:`module mananger
+events <zend.module-manager.module-manager.module-manager-events>` documentations.
 
 .. _zend.module-manager.module-class.the-loadModules.post-event:
 
