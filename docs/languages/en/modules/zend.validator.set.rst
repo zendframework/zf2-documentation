@@ -25,7 +25,8 @@ Ccnum
 .. include:: zend.validator.db.rst
 .. include:: zend.validator.digits.rst
 .. include:: zend.validator.email-address.rst
-.. include:: zend.validator.float.rst
+.. include:: zend.validator.file.rst
+.. include:: zend.i18n.validator.float.rst
 .. include:: zend.validator.greater-than.rst
 .. include:: zend.validator.hex.rst
 .. include:: zend.validator.hostname.rst
