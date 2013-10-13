@@ -46,7 +46,7 @@ all given plugins at once.
    $plugin = new Zend\Cache\Storage\Plugin\Serializer();
    $cache->addPlugin($plugin);
 
-.. _zend.cache.storage.plugin.clear-expired-by-factor
+.. _zend.cache.storage.plugin.clear-expired-by-factor:
 
 The ClearExpiredByFactor Plugin
 -------------------------------
@@ -55,7 +55,7 @@ The ClearExpiredByFactor Plugin
    storage method ``clearExpired()`` randomly (by factor) after every call of
    ``setItem()``, ``setItems()``, ``addItem()`` and ``addItems()``.
 
-.. _zend.cache.storage.plugin.clear-expired-by-factor.options
+.. _zend.cache.storage.plugin.clear-expired-by-factor.options:
 
 .. table:: Plugin specific options
 
@@ -72,7 +72,7 @@ The ClearExpiredByFactor Plugin
     The storage have to implement the ``Zend\Cache\Storage\ClearExpiredInterface``
     to work with this plugin.
 
-.. _zend.cache.storage.plugin.exeption-handler
+.. _zend.cache.storage.plugin.exeption-handler:
 
 The ExceptionHandler Plugin
 ---------------------------
@@ -84,7 +84,7 @@ The ExceptionHandler Plugin
    It's configurable if the plugin should re-throw the catched exception.
    
 
-.. _zend.cache.storage.plugin.exeption-handler.options
+.. _zend.cache.storage.plugin.exeption-handler.options:
 
 .. table:: Plugin specific options
 
@@ -97,7 +97,7 @@ The ExceptionHandler Plugin
    |throw_exceptions    |``boolean``           |``true``       |Re-throw catched exceptions                 |
    +--------------------+----------------------+---------------+--------------------------------------------+
 
-.. _zend.cache.storage.plugin.ignore-user-abort
+.. _zend.cache.storage.plugin.ignore-user-abort:
 
 The IgnoreUserAbort Plugin
 --------------------------
@@ -105,7 +105,7 @@ The IgnoreUserAbort Plugin
    The ``Zend\Cache\Storage\Adapter\IgnoreUserAbort`` plugin ignores script
    terminations by users until write operations to cache finished.
 
-.. _zend.cache.storage.plugin.ignore-user-abort.options
+.. _zend.cache.storage.plugin.ignore-user-abort.options:
 
 .. table:: Plugin specific options
 
@@ -115,7 +115,7 @@ The IgnoreUserAbort Plugin
    |exit_on_abort       |``boolean``  |``true``       |Terminate script execution if user abort the script  |
    +--------------------+-------------+---------------+-----------------------------------------------------+
 
-.. _zend.cache.storage.plugin.optimize-by-factor
+.. _zend.cache.storage.plugin.optimize-by-factor:
 
 The OptimizeByFactor Plugin
 ---------------------------
@@ -123,7 +123,7 @@ The OptimizeByFactor Plugin
    The ``Zend\Cache\Storage\Adapter\OptimizeByFactor`` plugin calls the storage
    method ``optimize()`` randomly (by factor) after removing items from cache.
 
-.. _zend.cache.storage.plugin.optimize-by-factor.options
+.. _zend.cache.storage.plugin.optimize-by-factor.options:
 
 .. table:: Plugin specific options
 
@@ -140,7 +140,7 @@ The OptimizeByFactor Plugin
     The storage have to implement the ``Zend\Cache\Storage\OptimizableInterface``
     to work with this plugin.
 
-.. _zend.cache.storage.plugin.serializer
+.. _zend.cache.storage.plugin.serializer:
 
 The Serializer Plugin
 ---------------------
@@ -149,7 +149,7 @@ The Serializer Plugin
    writing to cache and unserialize on reading. So it's possible to store
    different datatypes into cache storages only support strings.
 
-.. _zend.cache.storage.plugin.serializer.options
+.. _zend.cache.storage.plugin.serializer.options:
 
 .. table:: Plugin specific options
 

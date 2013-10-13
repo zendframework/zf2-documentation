@@ -191,7 +191,7 @@ As you can see, this is really simple code. A Product has two scalar properties
 (name and price), a OneToOne relationship (one product has one brand), and a
 OneToMany relationship (one product has many categories).
 
-.. _zend.form.collections.fieldsets
+.. _zend.form.collections.fieldsets:
 
 Creating Fieldsets
 ------------------
@@ -448,7 +448,7 @@ This element has a few interesting options:
   the collection. In this case, the ``target_element`` is a ``Category``
   fieldset.
 
-.. _zend.form.collections.form
+.. _zend.form.collections.form:
 
 The Form Element
 ----------------
@@ -512,7 +512,7 @@ entity only once, and the concrete ``Form`` instance will only compose those
 fieldsets. You no longer have to add the "username" input to every form that
 deals with users!
 
-.. _zend.form.collections.controller
+.. _zend.form.collections.controller:
 
 The Controller
 --------------
@@ -548,7 +548,7 @@ Now, let's create the action in the controller:
 This is super easy. Nothing to do in the controllers. All the magic is done
 behind the scene.
 
-.. _zend.form.collections.view
+.. _zend.form.collections.view:
 
 The View
 --------
@@ -617,7 +617,7 @@ objects!
 
 But that's not all.
 
-.. _zend.form.collections.dynamic-elements
+.. _zend.form.collections.dynamic-elements:
 
 Adding New Elements Dynamically
 -------------------------------
@@ -738,7 +738,7 @@ There are some limitations to this capability:
   into the entity), but if the validation fails, this newly added element will
   be automatically be replaced at the end of the collection.
 
-.. _zend.form.collections.validation-groups
+.. _zend.form.collections.validation-groups:
 
 Validation groups for fieldsets and collection
 ----------------------------------------------

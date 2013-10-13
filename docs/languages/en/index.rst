@@ -728,7 +728,7 @@ Zend\\ServiceManager
         * :doc:`modules/zend.service-manager.delegator-factories`
         * :doc:`modules/zend.service-manager.lazy-services`
 
-.. _zend.session
+.. _zend.session:
 
 Zend\\Session
 ^^^^^^^^^^^^^
