@@ -588,7 +588,7 @@ value when doing the deletion.
 Ensuring that the home page displays the list of albums
 -------------------------------------------------------
 
-One final point. At the moment, the home page, http://zf2-tutorial.localhost/
+One final point. At the moment, the home page, ``http://zf2-tutorial.localhost/``
 doesn’t display the list of albums.
 
 This is due to a route set up in the ``Application`` module’s
