@@ -882,23 +882,19 @@ Fichiers
 Chaque fichier qui contient du code PHP doit avoir un bloc d'entête en haut du fichier qui contient au minimum ces
 balises phpDocumentor :
 
-   .. code-block:: php
-      :linenos:
+.. code-block:: php
+   :linenos:
 
-      /**
-       * Description courte du fichier
-       *
-       * Description longue du fichier s'il y en a une
-       *
-       * LICENSE: Informations sur la licence
-       *
-       * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
-       * @license    http://framework.zend.com/license   BSD License
-       * @link       http://framework.zend.com/package/PackageName
-       * @since      File available since Release 1.5.0
-      */
-
-
+   /**
+    * Zend Framework (http://framework.zend.com/)
+    *
+    * Long description for file (if any)...
+    *
+    * @link      http://github.com/zendframework/zf2 for the canonical source repository
+    * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
+    * @license   http://framework.zend.com/license/new-bsd New BSD License
+    * @since     File available since Release 1.5.0
+    */
 
 .. _coding-standards.inline-documentation.classes:
 
@@ -907,23 +903,17 @@ Classes
 
 Chaque classe doit avoir un docblock qui contient au minimum ces balises phpDocumentor :
 
-   .. code-block:: php
-      :linenos:
+.. code-block:: php
+   :linenos:
 
-      /**
-       * Description courte de la classe
-       *
-       * Description longue de la classe, s'il y en a une
-       *
-       * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
-       * @license    http://framework.zend.com/license   BSD License
-       * @version    Release: @package_version@
-       * @link       http://framework.zend.com/package/PackageName
-       * @since      Class available since Release 1.5.0
-       * @deprecated Class deprecated in Release 2.0.0
-       */
-
-
+   /**
+    * Short description for class
+    *
+    * Long description for class (if any)...
+    *
+    * @since      Class available since Release 1.5.0
+    * @deprecated Class deprecated in Release 2.0.0
+    */
 
 .. _coding-standards.inline-documentation.functions:
 

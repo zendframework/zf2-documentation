@@ -17,11 +17,6 @@ También está el archivo ``test.pdf``, que puede ser usado con esta demo con fi
 .. code-block:: php
    :linenos:
 
-   /**
-    * @package ZendPdf
-    * @subpackage demo
-    */
-
    if (!isset($argv[1])) {
        echo "USAGE: php demo.php <pdf_file> [<output_pdf_file>]\n";
        exit;

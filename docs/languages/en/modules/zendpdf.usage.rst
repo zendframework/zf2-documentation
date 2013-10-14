@@ -16,11 +16,6 @@ There are also ``test.pdf`` file, which can be used with this demo for test purp
 .. code-block:: php
    :linenos:
 
-   /**
-    * @package ZendPdf
-    * @subpackage demo
-    */
-
    if (!isset($argv[1])) {
        echo "USAGE: php demo.php <pdf_file> [<output_pdf_file>]\n";
        exit;
