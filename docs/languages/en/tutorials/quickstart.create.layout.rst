@@ -174,7 +174,7 @@ support a single action, you can do so, and be assured it will be present in the
 
    **Checkpoint**
 
-   Now go to "http://localhost" and check out the source. You should see your XHTML header, head, title, and body
+   Now go to ``http://localhost`` and check out the source. You should see your XHTML header, head, title, and body
    sections.
 
 
