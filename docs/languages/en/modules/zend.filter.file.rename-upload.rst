@@ -6,7 +6,7 @@ RenameUpload
 ``Zend\Filter\File\RenameUpload`` can be used to rename or move an uploaded file
 to a new path.
 
-.. _zend.filter.file.rename.options:
+.. _zend.filter.file.rename-upload.options:
 
 .. rubric:: Supported Options
 
@@ -47,7 +47,7 @@ The following set of options are supported:
 When filtering HTML5 file uploads with the ``multiple`` attribute set, all files will
 be filtered with the same option settings.
 
-.. _zend.filter.file.rename.usage:
+.. _zend.filter.file.rename-upload.usage:
 
 .. rubric:: Usage Examples
 
