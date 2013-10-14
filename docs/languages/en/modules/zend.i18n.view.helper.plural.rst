@@ -24,8 +24,8 @@ hence break current applications that may (or may not) want those new rules.
 That's why defining rules is now up to the developer. To help you with this process, here are some links with up-to-date
 plural rules for tons of languages:
 
-* [http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html](http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html)
-* [https://developer.mozilla.org/en-US/docs/Localization_and_Plurals](https://developer.mozilla.org/en-US/docs/Localization_and_Plurals)
+* http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
+* https://developer.mozilla.org/en-US/docs/Localization_and_Plurals
 
 .. _zend.i18n.view.helper.plural.usage:
 
