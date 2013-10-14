@@ -16,8 +16,10 @@ Definitions are introduced to the Zend\\Di\\Di object through a definition list 
 Zend\\Di\\DefinitionList (SplDoublyLinkedList). Order is important. Definitions in the front of the list will be
 consulted on a class before definitions at the end of the list.
 
-Note: Regardless of what kind of Definition strategy you decide to use, it is important that your autoloaders are
-already setup and ready to use.
+.. note::
+
+   Regardless of what kind of Definition strategy you decide to use, it is important that your autoloaders are
+   already setup and ready to use.
 
 .. _zend.di.definition.runtimedefinition:
 
