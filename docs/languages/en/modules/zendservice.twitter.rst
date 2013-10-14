@@ -685,7 +685,7 @@ The ``update()`` method accepts a second additional parameter.
 user.
 
 .. code-block:: php
-     :linenos:
+   :linenos:
 
    $twitter  = new ZendService\Twitter\Twitter($options);
    $response = $twitter->statuses->mentionsTimeline();

@@ -4,7 +4,7 @@
 Setting up a database adapter
 ################################################
 
-.. _dbadapter.introduction
+.. _dbadapter.introduction:
 
 Introduction
 ------------
@@ -15,7 +15,7 @@ to function.
 
 There are many different ways to provide this functionality to your application. Below are a few examples.
 
-.. _dbadapter.basic-setup
+.. _dbadapter.basic-setup:
 
 Basic setup
 -----------
@@ -56,7 +56,7 @@ The adapter can then be accessed in any ServiceLocatorAware classes.
 
 More information on adapter options can be found in the docs for :ref:`Zend\\Db\\Adapter <zend.db.adapter>`.
 
-.. _dbadapter.setting-a-static-adapter
+.. _dbadapter.setting-a-static-adapter:
 
 Setting a static adapter
 ------------------------

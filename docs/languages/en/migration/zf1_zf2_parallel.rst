@@ -141,7 +141,7 @@ guideline without losing development time in a full stack migration.
 .. _`zf-2-for-1`: https://github.com/EvanDotPro/zf-2-for-1
 .. _`Zend Framework 2 : Using Zend Framework 1 libraries`: http://samsonasik.wordpress.com/2012/12/04/zend-framework-2-using-zend-framework-1-libraries-in-zend-framework-2/
 .. _`apache`: http://httpd.apache.org/
-.. _`Microsoft IIS`: http://www.iis.net/
+.. _`Microsoft IIS 7`: http://www.iis.net/
 .. _`Zend Framework URL Rewriting in IIS7`: http://akrabat.com/winphp-challenge/zend-framework-url-rewriting-in-iis7/
 .. _`nginx`: http://nginx.org/
 .. _`Zend Framework on nginx`: http://stackoverflow.com/questions/376732/zend-framework-on-nginx

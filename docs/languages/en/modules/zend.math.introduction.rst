@@ -10,7 +10,7 @@ Introduction to Zend\\Math
 
 We expect to add more functionalities in the future.
 
-.. _zend.math.introduction.rand
+.. _zend.math.introduction.rand:
 
 Random number generator
 -----------------------
