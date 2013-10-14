@@ -6,7 +6,7 @@ NumberParse
 The ``NumberParse`` filter can be used to parse a number from a string. It acts as a
 wrapper for the ``NumberFormatter`` class within the Internationalization extension (Intl).
 
-.. _zend.i18n.filter.number-format.options:
+.. _zend.i18n.filter.number-parse.options:
 
 .. rubric:: Supported Options for NumberParse Filter
 
@@ -29,7 +29,7 @@ The following options are supported for ``NumberParse``:
 
   Methods for getting/setting the parse type are also available: ``getType()`` and ``setType()``
 
-.. _zend.i18n.filter.number-format.usage:
+.. _zend.i18n.filter.number-parse.usage:
 
 .. rubric:: NumberParse Filter Usage
 

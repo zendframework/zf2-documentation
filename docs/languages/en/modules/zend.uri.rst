@@ -136,9 +136,6 @@ example, the scheme of ``http://johndoe@example.com/my/path?query#token`` is 'ht
 The ``getScheme()`` instance method returns only the scheme part of the *URI* 
 object.
 
-.. _zend.uri.instance-methods.geturi:
-
-
 .. _zend.uri.instance-methods.getuserinfo:
 
 Getting the Userinfo of the URI

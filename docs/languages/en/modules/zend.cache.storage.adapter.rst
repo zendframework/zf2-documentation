@@ -985,8 +985,6 @@ The ZendServerShm Adapter
 Examples
 --------
 
-.. _zend.cache.storage.adapter.examples.basic:
-
 .. rubric:: Basic usage
 
 .. code-block:: php
@@ -1009,8 +1007,6 @@ Examples
        $result = doExpensiveStuff();
        $cache->setItem($key, $result);
    }
-
-.. _zend.cache.storage.adapter.examples.basic:
 
 .. rubric:: Get multiple rows from db
 

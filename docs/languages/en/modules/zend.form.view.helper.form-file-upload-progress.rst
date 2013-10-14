@@ -20,7 +20,7 @@ See the `PECL uploadprogress extension`_ for more information.
 
 ``FormFileUploadProgress`` extends from :ref:`Zend\\Form\\View\\Helper\\FormInput <zend.form.view.helper.form-input>`.
 
-.. _zend.form.view.helper.form-file-session-progress.usage:
+.. _zend.form.view.helper.form-file-upload-progress.usage:
 
 Basic usage:
 
