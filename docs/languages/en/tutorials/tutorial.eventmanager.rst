@@ -228,7 +228,6 @@ At any point, if you do not want to notify shared listeners, pass a ``null``
 value to ``setSharedManager()``:
 
 .. code-block:: php
-    :startinline: true
 
     $events->setSharedManager(null);
 
@@ -236,7 +235,6 @@ and they will be ignored. If at any point, you want to enable them again, pass
 the ``SharedEventManager`` instance:
 
 .. code-block:: php
-    :startinline: true
 
     $events->setSharedManager($sharedEvents);
 
@@ -371,7 +369,6 @@ As an example:
 You can attach this using either ``attach()`` or ``attachAggregate()``:
 
 .. code-block:: php
-    :startinline: true
 
     $logListener = new LogEvents($logger);
 
