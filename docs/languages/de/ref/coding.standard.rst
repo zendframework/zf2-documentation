@@ -873,31 +873,15 @@ phpDocumentor Tags enthält:
    :linenos:
 
    /**
-    * Kurze Beschreibung der Datei
+    * Zend Framework (http://framework.zend.com/)
     *
-    * Lange Beschreibung der Datei (wenn vorhanden)...
+    * Long description for file (if any)...
     *
-    * LICENSE: Einige Lizenz Informationen
-    *
-    * @category   Zend
-    * @package    Zend_Magic
-    * @subpackage Wand
-    * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
-    * @license    http://framework.zend.com/license   BSD License
-    * @version    $Id:$
-    * @link       http://framework.zend.com/package/PackageName
-    * @since      Datei vorhanden seit Release 1.2.0
-   */
-
-Das ``@category`` Tag muß den Wert "Zend" haben.
-
-Das ``@package`` Tag muß hinzugefügt sein, und sollte mit dem Namen der Komponente identisch sein dessen Klasse
-in der Datei enthalten ist; typischerweise wird dieser zwei Segmente haben, den Präfix "Zend", und den Namen der
-Komponente.
-
-Das ``@subpackage`` Tag ist optional. Wenn es angegeben wird, sollte es der Name der Subkomponente sein, ohne den
-Präfix der Klasse. Im obigen Beispiel ist die Annahme das die Klasse in der Datei entweder "``Zend\Magic\Wand``"
-ist oder den Klassennamen als Teil seines Präfixes verwendet.
+    * @link      http://github.com/zendframework/zf2 for the canonical source repository
+    * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
+    * @license   http://framework.zend.com/license/new-bsd New BSD License
+    * @since     File available since Release 1.5.0
+    */
 
 .. _coding-standards.inline-documentation.classes:
 
@@ -910,29 +894,13 @@ Jede Klasse muß einen Docblock haben welche mindestens diese phpDocumentor Tags
    :linenos:
 
    /**
-    * Kurze Beschreibung für die Klasse
+    * Short description for class
     *
-    * Lange Beschreibung für die Klasse (wenn vorhanden)...
+    * Long description for class (if any)...
     *
-    * @category   Zend
-    * @package    Zend_Magic
-    * @subpackage Wand
-    * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
-    * @license    http://framework.zend.com/license   BSD License
-    * @version    Release: @package_version@
-    * @link       http://framework.zend.com/package/PackageName
-    * @since      Klasse vorhanden seit Release 1.5.0
-    * @deprecated Klasse abgeraten ab Release 2.0.0
+    * @since      Class available since Release 1.5.0
+    * @deprecated Class deprecated in Release 2.0.0
     */
-
-Das ``@category`` Tag muß den Wert "Zend" haben.
-
-Das ``@package`` Tag muß hinzugefügt sein, und sollte mit der Komponente identisch sein der die Klasse gehört;
-typischerweise wird dieser zwei Segmente haben, den Präfix "Zend", und den Namen der Komponente.
-
-Das ``@subpackage`` Tag ist optional. Wenn es angegeben wird, sollte es der Name der Subkomponente sein, ohne den
-Präfix der Klasse. Im obigen Beispiel ist die Annahme das die Klasse in der Datei entweder "``Zend\Magic\Wand``"
-ist oder den Klassennamen als Teil seines Präfixes verwendet.
 
 .. _coding-standards.inline-documentation.functions:
 

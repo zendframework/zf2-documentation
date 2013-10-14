@@ -839,29 +839,15 @@ contenga como mínimo las siguientes etiquetas phpDocumentor:
    :linenos:
 
    /**
-    * Descripción corta del fichero
+    * Zend Framework (http://framework.zend.com/)
     *
-    * Descripción larga del fichero (si la hubiera)...
+    * Long description for file (if any)...
     *
-    * LICENSE: Some license information
-    *
-    * @category   Zend
-    * @package    Zend_Magic
-    * @subpackage Wand
-    * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
-    * @license    http://framework.zend.com/license   BSD License
-    * @link       http://framework.zend.com/package/PackageName
-    * @since      File available since Release 1.5.0
-   */
-
-The ``@category`` annotation must have a value of "Zend".
-
-The ``@package`` annotation must be assigned, and should be equivalent to the component name of the class contained
-in the file; typically, this will only have two segments, the "Zend" prefix, and the component name.
-
-The ``@subpackage`` annotation is optional. If provided, it should be the subcomponent name, minus the class
-prefix. In the example above, the assumption is that the class in the file is either "``Zend\Magic\Wand``", or uses
-that classname as part of its prefix.
+    * @link      http://github.com/zendframework/zf2 for the canonical source repository
+    * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
+    * @license   http://framework.zend.com/license/new-bsd New BSD License
+    * @since     File available since Release 1.5.0
+    */
 
 .. _coding-standards.inline-documentation.classes:
 
@@ -875,29 +861,13 @@ phpDocumentor:
    :linenos:
 
    /**
-    * Descripción corta de la clase
+    * Short description for class
     *
-    * Descripcion larga de la clase (si la hubiera)...
+    * Long description for class (if any)...
     *
-    * @category   Zend
-    * @package    Zend_Magic
-    * @subpackage Wand
-    * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
-    * @license    http://framework.zend.com/license   BSD License
-    * @version    Release: @package_version@
-    * @link       http://framework.zend.com/package/PackageName
     * @since      Class available since Release 1.5.0
     * @deprecated Class deprecated in Release 2.0.0
     */
-
-The ``@category`` annotation must have a value of "Zend".
-
-The ``@package`` annotation must be assigned, and should be equivalent to the component to which the class belongs;
-typically, this will only have two segments, the "Zend" prefix, and the component name.
-
-The ``@subpackage`` annotation is optional. If provided, it should be the subcomponent name, minus the class
-prefix. In the example above, the assumption is that the class described is either "``Zend\Magic\Wand``", or uses
-that classname as part of its prefix.
 
 .. _coding-standards.inline-documentation.functions:
 
