@@ -160,7 +160,9 @@ that configuration to the class name.
 To demonstrate both of these points, we'll look at a use case where we'll have two separate DbAdapters, one will be
 for read-only operations, the other will be for read-write operations:
 
-Note: Aliases can also have parameters registered at alias time
+.. note::
+
+   Aliases can also have parameters registered at alias time
 
 .. code-block:: php
    :linenos:
