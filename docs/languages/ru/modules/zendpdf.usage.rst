@@ -17,11 +17,6 @@
    :linenos:
 
    <?php
-   /**
-    * @package ZendPdf
-    * @subpackage demo
-    */
-
    /** ZendPdf */
    require_once 'Zend/Pdf.php';
 
