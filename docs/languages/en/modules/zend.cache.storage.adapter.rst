@@ -318,7 +318,7 @@ clear all items of a given namespace.
 
    :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods-clear-by-prefix-interface
+.. _zend.cache.storage.adapter.methods-clear-by-prefix-interface:
 
 The ClearByPrefixInterface
 --------------------------
@@ -333,7 +333,7 @@ all items of a given prefix (within the current configured namespace).
 
    :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods-clear-expired-interface
+.. _zend.cache.storage.adapter.methods-clear-expired-interface:
 
 The ClearExpiredInterface
 -------------------------
@@ -348,7 +348,7 @@ all expired items (within the current configured namespace).
 
    :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods-flushable-interface
+.. _zend.cache.storage.adapter.methods-flushable-interface:
 
 The FlushableInterface
 ----------------------
@@ -363,7 +363,7 @@ the complete storage.
 
    :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods-iterable-interface
+.. _zend.cache.storage.adapter.methods-iterable-interface:
 
 The IterableInterface
 ---------------------
@@ -379,7 +379,7 @@ so it's possible to directly iterate over the storage using ``foreach``.
 
    :rtype: Zend\\Cache\\Storage\\IteratorInterface
 
-.. _zend.cache.storage.adapter.methods-optimizable-interface
+.. _zend.cache.storage.adapter.methods-optimizable-interface:
 
 The OptimizableInterface
 ------------------------
@@ -394,7 +394,7 @@ optimization processes on the storage.
 
    :rtype: boolean
 
-.. _zend.cache.storage.adapter.methods-taggable-interface
+.. _zend.cache.storage.adapter.methods-taggable-interface:
 
 The TaggableInterface
 ---------------------
@@ -427,7 +427,7 @@ with one or more tags and to clean items matching tags.
 
    :rtype: boolean
 
-.. _zend.cache.storage.adapter.apc
+.. _zend.cache.storage.adapter.apc:
 
 The Apc Adapter
 ---------------
@@ -445,7 +445,7 @@ The Apc Adapter
    - ``Zend\Cache\Storage\IterableInterface``
    - ``Zend\Cache\Storage\TotalSpaceCapableInterface``
 
-.. _zend.cache.storage.adapter.apc.capabilities
+.. _zend.cache.storage.adapter.apc.capabilities:
 
 .. table:: Capabilities
 
@@ -477,7 +477,7 @@ The Apc Adapter
 
 -------------------------------
 
-.. _zend.cache.storage.adapter.apc.options
+.. _zend.cache.storage.adapter.apc.options:
 
 .. table:: Adapter specific options
 
@@ -487,7 +487,7 @@ The Apc Adapter
    |namespace_separator |``string`` |":"            |A separator for the namespace and prefix    |
    +--------------------+-----------+---------------+--------------------------------------------+
 
-.. _zend.cache.storage.adapter.dba
+.. _zend.cache.storage.adapter.dba:
 
 The Dba Adapter
 ---------------
@@ -506,7 +506,7 @@ The Dba Adapter
    - ``Zend\Cache\Storage\OptimizableInterface``
    - ``Zend\Cache\Storage\TotalSpaceCapableInterface``
 
-.. _zend.cache.storage.adapter.dba.capabilities
+.. _zend.cache.storage.adapter.dba.capabilities:
 
 .. table:: Capabilities
 
@@ -528,7 +528,7 @@ The Dba Adapter
 
 -------------------------------
 
-.. _zend.cache.storage.adapter.dba.options
+.. _zend.cache.storage.adapter.dba.options:
 
 .. table:: Adapter specific options
 
@@ -552,7 +552,7 @@ The Dba Adapter
    Because of this adapter doesn't support automatically expire items it's
    very important to clean outdated items by self.
 
-.. _zend.cache.storage.adapter.filesystem
+.. _zend.cache.storage.adapter.filesystem:
 
 The Filesystem Adapter
 ----------------------
@@ -573,7 +573,7 @@ The Filesystem Adapter
    - ``Zend\Cache\Storage\TaggableInterface``
    - ``Zend\Cache\Storage\TotalSpaceCapableInterface``
 
-.. _zend.cache.storage.adapter.filesystem.capabilities
+.. _zend.cache.storage.adapter.filesystem.capabilities:
 
 .. table:: Capabilities
 
@@ -605,7 +605,7 @@ The Filesystem Adapter
 
 -------------------------------
 
-.. _zend.cache.storage.adapter.filesystem.options
+.. _zend.cache.storage.adapter.filesystem.options:
 
 .. table:: Adapter specific options
 
@@ -635,7 +635,7 @@ The Filesystem Adapter
    |umask               |``integer`` ``false`` |``false``                |Use umask_ to set file and directory permissions                                    |
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------+
 
-.. _zend.cache.storage.adapter.memcached
+.. _zend.cache.storage.adapter.memcached:
 
 The Memcached Adapter
 ---------------------
@@ -651,7 +651,7 @@ The Memcached Adapter
    - ``Zend\Cache\Storage\FlushableInterface``
    - ``Zend\Cache\Storage\TotalSpaceCapableInterface``
 
-.. _zend.cache.storage.adapter.memcached.capabilities
+.. _zend.cache.storage.adapter.memcached.capabilities:
 
 .. table:: Capabilities
 
@@ -683,7 +683,7 @@ The Memcached Adapter
 
 -------------------------------
 
-.. _zend.cache.storage.adapter.memcached.options
+.. _zend.cache.storage.adapter.memcached.options:
 
 .. table:: Adapter specific options
 
@@ -698,7 +698,7 @@ The Memcached Adapter
    |                    |                      |                         |Please read this<http://php.net/manual/memcached.setoption.php> for more information                  |
    +--------------------+----------------------+-------------------------+------------------------------------------------------------------------------------------------------+
 
-.. _zend.cache.storage.adapter.memory
+.. _zend.cache.storage.adapter.memory:
 
 The Memory Adapter
 ------------------
@@ -717,7 +717,7 @@ The Memory Adapter
    - ``Zend\Cache\Storage\TaggableInterface``
    - ``Zend\Cache\Storage\TotalSpaceCapableInterface``
 
-.. _zend.cache.storage.adapter.memory.capabilities
+.. _zend.cache.storage.adapter.memory.capabilities:
 
 .. table:: Capabilities
 
@@ -747,7 +747,7 @@ The Memory Adapter
 
 -------------------------------
 
-.. _zend.cache.storage.adapter.memory.options
+.. _zend.cache.storage.adapter.memory.options:
 
 .. table:: Adapter specific options
 
@@ -765,7 +765,7 @@ The Memory Adapter
 
    All stored items will be lost after terminating the script.
 
-.. _zend.cache.storage.adapter.wincache
+.. _zend.cache.storage.adapter.wincache:
 
 The WinCache Adapter
 --------------------
@@ -780,7 +780,7 @@ The WinCache Adapter
    - ``Zend\Cache\Storage\FlushableInterface``
    - ``Zend\Cache\Storage\TotalSpaceCapableInterface``
 
-.. _zend.cache.storage.adapter.wincache.capabilities
+.. _zend.cache.storage.adapter.wincache.capabilities:
 
 .. table:: Capabilities
 
@@ -810,7 +810,7 @@ The WinCache Adapter
 
 -------------------------------
 
-.. _zend.cache.storage.adapter.wincache.options
+.. _zend.cache.storage.adapter.wincache.options:
 
 .. table:: Adapter specific options
 
@@ -820,7 +820,7 @@ The WinCache Adapter
    |namespace_separator |``string`` |":"            |A separator for the namespace and prefix    |
    +--------------------+-----------+---------------+--------------------------------------------+
 
-.. _zend.cache.storage.adapter.xcache
+.. _zend.cache.storage.adapter.xcache:
 
 The XCache Adapter
 --------------------
@@ -838,7 +838,7 @@ The XCache Adapter
    - ``Zend\Cache\Storage\IterableInterface``
    - ``Zend\Cache\Storage\TotalSpaceCapableInterface``
 
-.. _zend.cache.storage.adapter.xcache.capabilities
+.. _zend.cache.storage.adapter.xcache.capabilities:
 
 .. table:: Capabilities
 
@@ -870,7 +870,7 @@ The XCache Adapter
 
 -------------------------------
 
-.. _zend.cache.storage.adapter.xcache.options
+.. _zend.cache.storage.adapter.xcache.options:
 
 .. table:: Adapter specific options
 
@@ -889,7 +889,7 @@ The XCache Adapter
    |admin_pass          |``string``  |""             |The password of ``xcache.admin.pass`` in plain text                                    |
    +--------------------+------------+---------------+---------------------------------------------------------------------------------------+
 
-.. _zend.cache.storage.adapter.zend-server-disk
+.. _zend.cache.storage.adapter.zend-server-disk:
 
 The ZendServerDisk Adapter
 --------------------------
@@ -905,7 +905,7 @@ The ZendServerDisk Adapter
    - ``Zend\Cache\Storage\FlushableInterface``
    - ``Zend\Cache\Storage\TotalSpaceCapableInterface``
 
-.. _zend.cache.storage.adapter.zend-server-disk.capabilities
+.. _zend.cache.storage.adapter.zend-server-disk.capabilities:
 
 .. table:: Capabilities
 
@@ -935,7 +935,7 @@ The ZendServerDisk Adapter
    |namespaceSeparator  |``::``                                                                                                       |
    +--------------------+-------------------------------------------------------------------------------------------------------------+
 
-.. _zend.cache.storage.adapter.zend-server-shm
+.. _zend.cache.storage.adapter.zend-server-shm:
 
 The ZendServerShm Adapter
 -------------------------
@@ -950,7 +950,7 @@ The ZendServerShm Adapter
    - ``Zend\Cache\Storage\FlushableInterface``
    - ``Zend\Cache\Storage\TotalSpaceCapableInterface``
 
-.. _zend.cache.storage.adapter.zend-server-shm.capabilities
+.. _zend.cache.storage.adapter.zend-server-shm.capabilities:
 
 .. table:: Capabilities
 

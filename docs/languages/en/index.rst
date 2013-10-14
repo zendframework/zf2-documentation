@@ -45,7 +45,6 @@
    modules/zend.cache.storage.adapter
    modules/zend.cache.storage.capabilities
    modules/zend.cache.storage.plugin
-   modules/zend.cache.backend
    modules/zend.cache.pattern
    modules/zend.cache.pattern.callback-cache
    modules/zend.cache.pattern.class-cache
@@ -729,7 +728,7 @@ Zend\\ServiceManager
         * :doc:`modules/zend.service-manager.delegator-factories`
         * :doc:`modules/zend.service-manager.lazy-services`
 
-.. _zend.session
+.. _zend.session:
 
 Zend\\Session
 ^^^^^^^^^^^^^
@@ -768,11 +767,15 @@ Zend\\Tag
         * :doc:`modules/zend.tag.introduction`
         * :doc:`modules/zend.tag.cloud`
 
+.. _zend.test:
+
 Zend\\Test
 ^^^^^^^^^
 
         * :doc:`modules/zend.test.introduction`
         * :doc:`modules/zend.test.phpunit`
+
+.. _zend.text:
 
 Zend\\Text
 ^^^^^^^^^^

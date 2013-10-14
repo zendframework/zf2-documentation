@@ -7,8 +7,7 @@ This filter can strip XML and HTML tags from given content.
 
 .. warning::
 
-   Zend\\Filter\\StripTags is potentially unsecure
-   ===============================================
+   **Zend\\Filter\\StripTags is potentially unsecure**
 
    Be warned that Zend\\Filter\\StripTags should only be used to strip all available tags.
 
