@@ -513,7 +513,7 @@ you will change the template; if you provide no arguments, the root layout View 
 .. code-block:: php
    :linenos:
 
-  //In a view script
+   //In a view script
 
    // Change the layout:
    $this->layout('alternate/layout'); // OR
