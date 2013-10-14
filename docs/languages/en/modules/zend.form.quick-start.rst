@@ -454,12 +454,7 @@ factory to create an input. Every HTML5 (email, url, color…) elements have a b
     use Zend\InputFilter\InputProviderInterface;
     use Zend\Validator\Regex as RegexValidator;
     use Zend\Validator\ValidatorInterface;
-    
-    /**
-     * @category   Zend
-     * @package    Zend_Form
-     * @subpackage Element
-     */
+
     class Color extends Element implements InputProviderInterface
     {
         /**
