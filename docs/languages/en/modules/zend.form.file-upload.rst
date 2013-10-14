@@ -22,7 +22,7 @@ handling file uploads in your projects.
    for handling uploads via the ``PUT`` method, but it is possible with PHP.
    See the `PUT Method Support`_ in the PHP documentation for more information.
 
-.. _`PUT Method Support`: //php.net/manual/en/features.file-upload.put-method.php
+.. _`PUT Method Support`: http://php.net/manual/en/features.file-upload.put-method.php
 
 Standard Example
 ----------------
