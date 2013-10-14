@@ -104,7 +104,6 @@ In your code you can always test to see if an element is non-empty with:
 Where relevant, ``Zend\Feed`` supports a number of common RSS extensions including Dublin Core, Atom (inside RSS)
 and the Content, Slash, Syndication, Syndication/Thread and several other extensions or modules.
 
-For further information, the official *RSS* 2.0 specification is available at:
-`http://blogs.law.harvard.edu/tech/rss`_
+Please see the official `RSS 2.0 specification`_ for further information.
 
-.. _`http://blogs.law.harvard.edu/tech/rss`: http://blogs.law.harvard.edu/tech/rss
+.. _`RSS 2.0 specification`: http://cyber.law.harvard.edu/rss/rss.html
