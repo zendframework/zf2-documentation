@@ -40,7 +40,7 @@ same characters are being escaped differently between contexts:
 
 More detailed examples will be given in later chapters.
 
-.. _zend.escaper.theory-of-operation.problem-with-inconsistent-functionality
+.. _zend.escaper.theory-of-operation.problem-with-inconsistent-functionality:
 
 The Problem with Inconsistent Functionality
 -------------------------------------------
@@ -79,7 +79,7 @@ escaping in web applications. It implements methods that specifically target XSS
 secure their applications without misusing other inadequate methods, or using, most likely incomplete, home-grown
 solutions.
 
-.. _zend.escaper.theory-of-operation.why-contextual-escaping
+.. _zend.escaper.theory-of-operation.why-contextual-escaping:
 
 Why Contextual Escaping?
 ------------------------

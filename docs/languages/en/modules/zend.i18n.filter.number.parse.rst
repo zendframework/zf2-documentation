@@ -50,4 +50,4 @@ The following options are supported for ``NumberParse``:
 
 
 .. _`format style constants`: http://us.php.net/manual/en/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle
-.. _`formatting type`: http://us.php.net/manual/en/class.numberformatter.php#intl.numberformatter-constants.types
+.. _`parsing type`: http://us.php.net/manual/en/class.numberformatter.php#intl.numberformatter-constants.types

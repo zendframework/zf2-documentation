@@ -128,8 +128,9 @@ to install the FirePHPCore Server Library and the FirePHP browser extension.
 
 To install the FirePHPCore Library you can use composer. Add the repository and the required line to your topmost composer.json:
 
-.. code-block:: php
+.. code-block:: json
    :linenos:
+
    {
       [ .. ]
 
