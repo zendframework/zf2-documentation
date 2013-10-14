@@ -64,7 +64,7 @@ The output of this example, using the default ``HTML`` rendering settings, would
        <li>You, the developer, are AWESOME!</li>
    </ul>
 
-.. _zend.view.helpers.initial.flashmessenger.css-layout:
+.. _zend.view.helpers.initial.flashmessenger.html-layout:
 
 HTML Layout
 -----------
