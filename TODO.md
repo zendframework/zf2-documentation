@@ -8,7 +8,7 @@ please first drop a note to the ZF contributors mailing list (http://framework.z
 and/or to the [#zftalk.dev IRC channel](irc://irc.freenode.net/zftalk.dev).
 
 Alternatively, some issues are reported to the
-[documentation issue tracker](https://github.com/zendframework/zf2-documentation/pull/714/files), if you're looking
+[documentation issue tracker](https://github.com/zendframework/zf2-documentation/issues), if you're looking
 for issues to fix, you can pick an issue there as well.
 
 Components that need refactoring
