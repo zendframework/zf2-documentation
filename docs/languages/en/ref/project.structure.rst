@@ -273,4 +273,4 @@ create the appropriate rewrite rules.
 .. _`Service Layer`: http://www.martinfowler.com/eaaCatalog/serviceLayer.html
 .. _`Userland Naming Guide`: http://www.php.net/manual/en/userlandnaming.php
 .. _`Apache documentation`: http://httpd.apache.org/docs/
-.. _`Blueprint for PHP Applications: Bootstrapping`: http://devzone.zend.com/a/70
+.. _`Blueprint for PHP Applications: Bootstrapping`: http://devzone.zend.com/400/blueprint-for-php-applications_bootstrapping-part-1/
