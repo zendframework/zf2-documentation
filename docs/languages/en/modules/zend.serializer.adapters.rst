@@ -199,7 +199,7 @@ There are no configuration options for this adapter.
 
 .. _`PHP`: http://php.net
 .. _`PECL`: http://pecl.php.net
-.. _`JSON`: wikipedia.org/wiki/JavaScript_Object_Notation
+.. _`JSON`: http://wikipedia.org/wiki/JavaScript_Object_Notation
 .. _`Igbinary`: http://pecl.php.net/package/igbinary
 .. _`WDDX`: http://wikipedia.org/wiki/WDDX
 .. _`wddx_*()`: http://php.net/manual/book.wddx.php
