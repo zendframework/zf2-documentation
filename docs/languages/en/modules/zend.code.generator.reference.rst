@@ -8,47 +8,28 @@ Zend\Code\Generator Reference
 Abstract Classes and Interfaces
 -------------------------------
 
-.. _zend.code.generator.reference.abstracts.abstract:
+.. _zend.code.generator.reference.interface.generator:
 
-Zend\Code\Generator\AbstractGenerator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Zend\Code\Generator\GeneratorInterface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The base class from which all CodeGenerator classes inherit provides the minimal functionality necessary. It's
+The base interface from which all CodeGenerator classes implement provides the minimal functionality necessary. It's
 *API* is as follows:
 
 .. code-block:: php
    :linenos:
 
-   abstract class Zend\Code\Generator\AbstractGenerator
+   interface Zend\Code\Generator\GeneratorInterface
    {
-       final public function __construct(Array $options = array())
-       public function setOptions(Array $options)
-       public function setSourceContent($sourceContent)
-       public function getSourceContent()
-       protected function _init()
-       protected function _prepare()
-       abstract public function generate();
-       final public function __toString()
+       public function generate();
    }
-
-The constructor first calls ``_init()`` (which is left empty for the concrete extending class to implement), then
-passes the ``$options`` parameter to ``setOptions()``, and finally calls ``_prepare()`` (again, to be implemented
-by an extending class).
-
-Like most classes in Zend Framework, ``setOptions()`` compares an option key to existing setters in the class, and
-passes the value on to that method if found.
-
-``__toString()`` is marked as final, and proxies to ``generate()``.
-
-``setSourceContent()`` and ``getSourceContent()`` are intended to either set the default content for the code being
-generated, or to replace said content once all generation tasks are complete.
 
 .. _zend.code.generator.reference.abstracts.abstract:
 
 Zend\Code\Generator\AbstractGenerator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Code\Generator\AbstractGenerator`` extends ``Zend\Code\Generator\AbstractGenerator``, and adds some properties for tracking
+``Zend\Code\Generator\AbstractGenerator`` implements ``Zend\Code\Generator\GeneratorInterface``, and adds some properties for tracking
 whether content has changed as well as the amount of indentation that should appear before generated content. Its
 *API* is as follows:
 
@@ -56,13 +37,25 @@ whether content has changed as well as the amount of indentation that should app
    :linenos:
 
    abstract class Zend\Code\Generator\AbstractGenerator
-       extends Zend\Code\Generator\AbstractGenerator
+       implements Zend\Code\Generator\GeneratorInterface
    {
+       public function __construct(Array|Traversable $options = array())
+       public function setOptions(Array $options)
+       public function setSourceContent($sourceContent)
+       public function getSourceContent()
        public function setSourceDirty($isSourceDirty = true)
        public function isSourceDirty()
        public function setIndentation($indentation)
        public function getIndentation()
    }
+
+The constructor passes the ``$options`` parameter to ``setOptions()``.
+
+Like most classes in Zend Framework, ``setOptions()`` compares an option key to existing setters in the class, and
+passes the value on to that method if found.
+
+``setSourceContent()`` and ``getSourceContent()`` are intended to either set the default content for the code being
+generated, or to replace said content once all generation tasks are complete.
 
 .. _zend.code.generator.reference.abstracts.member-abstract:
 
