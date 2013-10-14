@@ -1,5 +1,5 @@
 .. EN-Revision: none
-.. _zend.pdf.save:
+.. _zendpdf.save:
 
 Guardar Cambios a Documentos PDF
 ================================
@@ -14,7 +14,7 @@ sobreescrito.
 ``ZendPdf\Pdf::render($newSegmentOnly = false)`` regresa el documento *PDF* como un string. Si $newSegmentOnly es
 verdadero, entonces sólo el nuevo segmento del archivo *PDF* es devuelto.
 
-.. _zend.pdf.save.example-1:
+.. _zendpdf.save.example-1:
 
 .. rubric:: Guardando Documentos PDF
 

@@ -1,5 +1,5 @@
 .. EN-Revision: none
-.. _zend.pdf.usage:
+.. _zendpdf.usage:
 
 Пример использования модуля ZendPdf
 ====================================
@@ -17,8 +17,6 @@
    :linenos:
 
    <?php
-   /** ZendPdf */
-   require_once 'Zend/Pdf.php';
 
    if (!isset($argv[1])) {
        echo "USAGE: php demo.php <pdf_file> [<output_pdf_file>]\n";

@@ -24,8 +24,6 @@ extension`_). Vous pouvez simplement appeler les procédures de service de REST 
    /**
     * Connexion au serveur framework.zend.com server
     */
-   require_once 'Zend/Rest/Client.php';
-
    $client = new Zend\Rest\Client('http://framework.zend.com/rest');
 
    echo $client->sayHello('Davey', 'Day')->get();

@@ -24,7 +24,6 @@ l'e-mail via *Zend\Mail_Transport\Sendmail*:
    :linenos:
 
    <?php
-   require_once 'Zend/Mail.php';
    $mail = new Zend\Mail\Mail();
    $mail->setBodyText('Questo è il testo.');
    $mail->setFrom('qualcuno@example.com', 'Un mittente');
@@ -55,7 +54,6 @@ chiamare immediatamente un nuovo metodo in successione.
    :linenos:
 
    <?php
-   require_once 'Zend/Mail.php';
    $mail = new Zend\Mail\Mail();
    $mail->setBodyText('Questo è il testo.')
        ->setFrom('qualcuno@example.com', 'Un mittente')
@@ -83,8 +81,6 @@ Questo esempio mostra come cambiare l'intestazione Return-Path della funzione `m
    :linenos:
 
    <?php
-   require_once 'Zend/Mail.php';
-   require_once 'Zend/Mail/Transport/Sendmail.php';
 
    $tr = new Zend\Mail_Transport\Sendmail('-fritorna_a_me@example.com');
    Zend\Mail\Mail::setDefaultTransport($tr);

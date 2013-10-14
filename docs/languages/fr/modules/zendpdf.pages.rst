@@ -1,10 +1,10 @@
 .. EN-Revision: none
-.. _zend.pdf.pages:
+.. _zendpdf.pages:
 
 Les pages d'un document
 =======================
 
-.. _zend.pdf.pages.creation:
+.. _zendpdf.pages.creation:
 
 Création de page
 ----------------
@@ -37,7 +37,7 @@ Les pages du document sont stockées dans l'attribut public ``$pages`` de la cla
 d'objet ``ZendPdf\Page``. Il définit l'ensemble des pages, ainsi que l'ordre de celle-ci et peut-être manipulé
 comme un tableau classique :
 
-.. _zend.pdf.pages.example-1:
+.. _zendpdf.pages.example-1:
 
 .. rubric:: Gestion des pages d'un document PDF
 
@@ -57,7 +57,7 @@ comme un tableau classique :
    unset($pdf->pages[$id]);
    ...
 
-.. _zend.pdf.pages.cloning:
+.. _zendpdf.pages.cloning:
 
 Clonage de page
 ---------------
@@ -65,7 +65,7 @@ Clonage de page
 Les pages existantes d'un *PDF* peuvent être clonées en créant un nouvel objet ``ZendPdf\Page`` avec la page
 existante comme paramètre :
 
-.. _zend.pdf.pages.example-2:
+.. _zendpdf.pages.example-2:
 
 .. rubric:: Cloner une page existante
 

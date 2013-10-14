@@ -1,10 +1,10 @@
 .. EN-Revision: none
-.. _zend.pdf.drawing:
+.. _zendpdf.drawing:
 
 Dessiner
 ========
 
-.. _zend.pdf.drawing.geometry:
+.. _zendpdf.drawing.geometry:
 
 Géométrie
 ---------
@@ -24,7 +24,7 @@ La taille d'une page peut-être récupéré depuis un objet page :
 
 
 
-.. _zend.pdf.drawing.color:
+.. _zendpdf.drawing.color:
 
 Couleurs
 --------
@@ -57,7 +57,7 @@ Les différentes couleurs HTML sont aussi fourni avec la classe ``ZendPdf_Color\
    $color2 = new ZendPdf_Color\Html('silver');
    $color3 = new ZendPdf_Color\Html('forestgreen');
 
-.. _zend.pdf.drawing.shape-drawing:
+.. _zendpdf.drawing.shape-drawing:
 
 Dessiner des formes
 -------------------
@@ -237,7 +237,7 @@ La classe ``ZendPdf\Page`` fournit les outils de dessins :
 
 
 
-.. _zend.pdf.drawing.text-drawing:
+.. _zendpdf.drawing.text-drawing:
 
 Dessiner du texte
 -----------------
@@ -266,7 +266,7 @@ La police courant ainsi que sa taille seront utilisées pour le dessin (voir la 
 
 
 
-.. _zend.pdf.drawing.text-drawing.example-1:
+.. _zendpdf.drawing.text-drawing.example-1:
 
 .. rubric:: Dessiner une ligne dans la page
 
@@ -283,7 +283,7 @@ chaîne MacRoman obtenue depuis une base de données), vous pouvez indiquer l'en
 ZendPdf gérera la conversion pour vous. Vous pouvez fournir des chaînes dans n'importe quel encodage supporté
 par la fonction *iconv()* de *PHP*:
 
-.. _zend.pdf.drawing.text-drawing.example-2:
+.. _zendpdf.drawing.text-drawing.example-2:
 
 .. rubric:: Dessiner une chaîne UTF-8 sur une page
 
@@ -298,7 +298,7 @@ par la fonction *iconv()* de *PHP*:
    $pdfPage->drawText($unicodeString, 72, 720, 'UTF-8');
    ...
 
-.. _zend.pdf.drawing.using-fonts:
+.. _zendpdf.drawing.using-fonts:
 
 Utiliser des polices de caractères
 ----------------------------------
@@ -330,7 +330,7 @@ ZendPdf supporte actuellement les 14 polices standard mais également vos propre
 police obtenus via une des deux fabriques méthodes : ``ZendPdf\Font::fontWithName($fontName)`` pour les 14
 polices *PDF* standard ou ``ZendPdf\Font::fontWithPath($filePath)`` pour les polices personnalisées.
 
-.. _zend.pdf.drawing.using-fonts.example-1:
+.. _zendpdf.drawing.using-fonts.example-1:
 
 .. rubric:: Créer une police standard
 
@@ -385,7 +385,7 @@ Pour utiliser une police TrueType, vous devez fournir le chemin de fichier compl
 ne peut pas être lue pour une quelconque raison, ou si ce n'est pas une police TrueType, la méthode lèvera une
 exception :
 
-.. _zend.pdf.drawing.using-fonts.example-2:
+.. _zendpdf.drawing.using-fonts.example-2:
 
 .. rubric:: Créer une police TrueType
 
@@ -405,7 +405,7 @@ destinataires de voir la page comme prévu, même s'ils ne font pas installer le
 système. En cas de problème avec la taille du fichier généré, vous pouvez demander que la police ne soit pas
 incorporé en passant l'option 'ne pas inclure' à la méthode de création :
 
-.. _zend.pdf.drawing.using-fonts.example-3:
+.. _zendpdf.drawing.using-fonts.example-3:
 
 .. rubric:: Créer une police TrueType sans l'incorporer dans le document PDF
 
@@ -433,7 +433,7 @@ incorporée, la méthode de création lèvera une exception.
 Vous pouvez toujours utiliser ces polices, mais vous devez passer le paramètre 'ne pas inclure' comme décrit
 ci-dessous, ou vous pouvez simplement bloquer l'exception :
 
-.. _zend.pdf.drawing.using-fonts.example-4:
+.. _zendpdf.drawing.using-fonts.example-4:
 
 .. rubric:: Ne pas lever d'exception pour les polices ne pouvant être incorporées
 
@@ -454,7 +454,7 @@ défaut, toutes les polices incorporées sont comprimées en utilisant le schém
 résultat un gain d'espace de 50% en moyenne. Si, pour une quelconque raison, vous ne voulez pas comprimer la
 police, vous pouvez le neutraliser avec une option :
 
-.. _zend.pdf.drawing.using-fonts.example-5:
+.. _zendpdf.drawing.using-fonts.example-5:
 
 .. rubric:: Ne pas compresser une police incorporée
 
@@ -470,7 +470,7 @@ police, vous pouvez le neutraliser avec une option :
 En conclusion, si nécessaire, vous pouvez combiner les options d'incorporation en employant l'opérateur binaire
 OR :
 
-.. _zend.pdf.drawing.using-fonts.example-6:
+.. _zendpdf.drawing.using-fonts.example-6:
 
 .. rubric:: Combiner les options de polices incorporées
 
@@ -484,7 +484,7 @@ OR :
         ZendPdf\Font::EMBED_DONT_COMPRESS));
    ...
 
-.. _zend.pdf.drawing.standard-fonts-limitations:
+.. _zendpdf.drawing.standard-fonts-limitations:
 
 Limitations des polices standard PDF
 ------------------------------------
@@ -498,7 +498,7 @@ type Latin1(excepté les polices Symbol and ZapfDingbats).
 Le texte peut encore être fourni dans n'importe quel autre encodage, qui doit être spécifié s'il diffère de
 celui en cours. Seulement les caractères WinLatin1 seront tracés réellement.
 
-.. _zend.pdf.drawing.using-fonts.example-7:
+.. _zendpdf.drawing.using-fonts.example-7:
 
 .. rubric:: Combiner les options de polices embarqués
 
@@ -512,7 +512,7 @@ celui en cours. Seulement les caractères WinLatin1 seront tracés réellement.
            ->drawText('Text with umlauts - à è ì', 72, 650, 'UTF-8');
    ...
 
-.. _zend.pdf.drawing.extracting-fonts:
+.. _zendpdf.drawing.extracting-fonts:
 
 Extraction des polices
 ----------------------
@@ -525,7 +525,7 @@ attacher et probablement intégrer la police dans le document chaque fois que vo
 Les objets ``ZendPdf`` et ``ZendPdf\Page`` fournissent une méthode spéciale pour extraire toutes les polices
 mentionnés à l'intérieur d'un document ou d'une page :
 
-.. _zend.pdf.drawing.extracting-fonts.example-1:
+.. _zendpdf.drawing.extracting-fonts.example-1:
 
 .. rubric:: Extraction de polices à partir d'un document chargé
 
@@ -555,7 +555,7 @@ mentionnés à l'intérieur d'un document ou d'une page :
    $firstPageFonts = $firstPage->extractFonts();
    ...
 
-.. _zend.pdf.drawing.extracting-fonts.example-2:
+.. _zendpdf.drawing.extracting-fonts.example-2:
 
 .. rubric:: Extraction d'une police à partir d'un document chargé en spécifiant le nom de police
 
@@ -628,7 +628,7 @@ suivantes :
 
 
 
-.. _zend.pdf.drawing.image-drawing:
+.. _zendpdf.drawing.image-drawing:
 
 Insertion d'images
 ------------------
@@ -657,7 +657,7 @@ La classe ``ZendPdf\Page`` fournis la méthode ``drawImage()`` pour dessiner une
 Les objets Image peuvent être créés avec la méthode ``ZendPdf\Image::imageWithPath($filePath)`` (les images
 JPG, PNG et TIFF sont maintenant supportées) :
 
-.. _zend.pdf.drawing.image-drawing.example-1:
+.. _zendpdf.drawing.image-drawing.example-1:
 
 .. rubric:: Insertion d'images
 
@@ -677,7 +677,7 @@ nécessite que l'extension ZLIB soit configuré pour accepter les images avec ca
 Lisez la documentation de *PHP* pour plus d'informations (`http://www.php.net/manual/fr/ref.image.php`_ et
 `http://www.php.net/manual/fr/ref.zlib.php`_).
 
-.. _zend.pdf.drawing.line-drawing-style:
+.. _zendpdf.drawing.line-drawing-style:
 
 Style de lignes
 ---------------
@@ -712,7 +712,7 @@ Le style de ligne est définit par l'épaisseur, la couleur et le style de tiret
 
 
 
-.. _zend.pdf.drawing.fill-style:
+.. _zendpdf.drawing.fill-style:
 
 Style de remplissage
 --------------------
@@ -765,12 +765,12 @@ La méthode ``ZendPdf\Page::drawPoligon()`` prend aussi paramètre supplémentai
 
 
 
-.. _zend.pdf.drawing.linear-transformations:
+.. _zendpdf.drawing.linear-transformations:
 
 Transformations linéaires
 -------------------------
 
-.. _zend.pdf.drawing.linear-transformations.rotations:
+.. _zendpdf.drawing.linear-transformations.rotations:
 
 Rotations
 ^^^^^^^^^
@@ -791,7 +791,7 @@ méthode ``ZendPdf\Page::rotate()``:
     */
    public function rotate($x, $y, $angle);
 
-.. _zend.pdf.drawing.linear-transformations.scale:
+.. _zendpdf.drawing.linear-transformations.scale:
 
 A partir de Zend Framework 1.8, mise à l'échelle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -810,7 +810,7 @@ La mise à l'échelle est fournie par la méthode ``ZendPdf\Page::scale()``:
     */
    public function scale($xScale, $yScale);
 
-.. _zend.pdf.drawing.linear-transformations.translate:
+.. _zendpdf.drawing.linear-transformations.translate:
 
 A partir de Zend Framework 1.8, décalage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -829,7 +829,7 @@ Le décalage du système de coordonnées est réalisé par la méthode ``ZendPdf
     */
    public function translate($xShift, $yShift);
 
-.. _zend.pdf.drawing.linear-transformations.skew:
+.. _zendpdf.drawing.linear-transformations.skew:
 
 A partir de Zend Framework 1.8, mise en biais
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -850,7 +850,7 @@ La mise en biais de la page peut être réalisé par la méthode ``ZendPdf\Page:
     */
    public function skew($x, $y, $xAngle, $yAngle);
 
-.. _zend.pdf.drawing.save-restore:
+.. _zendpdf.drawing.save-restore:
 
 Sauvegarder et restaurer l'état graphique
 -----------------------------------------
@@ -884,7 +884,7 @@ Il y a deux méthodes dans la classe ``ZendPdf\Page`` pour réaliser ces opérat
 
 
 
-.. _zend.pdf.drawing.clipping:
+.. _zendpdf.drawing.clipping:
 
 Zone de dessin
 --------------
@@ -977,7 +977,7 @@ La classe ``ZendPdf\Page`` fournit des méthodes pour les opérations de découp
 
 
 
-.. _zend.pdf.drawing.styles:
+.. _zendpdf.drawing.styles:
 
 Styles
 ------
@@ -1205,7 +1205,7 @@ graphique :
 
 
 
-.. _zend.pdf.drawing.alpha:
+.. _zendpdf.drawing.alpha:
 
 Transparence
 ------------

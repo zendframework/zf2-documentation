@@ -1,10 +1,10 @@
 .. EN-Revision: none
-.. _zend.pdf.drawing:
+.. _zendpdf.drawing:
 
 Dibujo
 ======
 
-.. _zend.pdf.drawing.geometry:
+.. _zendpdf.drawing.geometry:
 
 Geometría
 ---------
@@ -24,7 +24,7 @@ El tamaño de la página se puede recuperar desde un objeto página:
 
 
 
-.. _zend.pdf.drawing.color:
+.. _zendpdf.drawing.color:
 
 Colores
 -------
@@ -55,7 +55,7 @@ Los estilos de colores *HTML* también se proporcionan con la clase ``ZendPdf_Co
    $color2 = new ZendPdf_Color\Html('silver');
    $color3 = new ZendPdf_Color\Html('forestgreen');
 
-.. _zend.pdf.drawing.shape-drawing:
+.. _zendpdf.drawing.shape-drawing:
 
 Dibujo de Formas
 ----------------
@@ -191,7 +191,7 @@ La clase ``ZendPdf\Page`` proporciona un conjunto de primitivas de dibujo:
                                $param6 = null,
                                $param7 = null);
 
-.. _zend.pdf.drawing.text-drawing:
+.. _zendpdf.drawing.text-drawing:
 
 Dibujo de Texto
 ---------------
@@ -217,7 +217,7 @@ descripción detallada más abajo).
     */
    public function drawText($text, $x, $y, $charEncoding = '');
 
-.. _zend.pdf.drawing.text-drawing.example-1:
+.. _zendpdf.drawing.text-drawing.example-1:
 
 .. rubric:: Dibujar un string en la página
 
@@ -234,7 +234,7 @@ disco, o un string MacRoman obtenido a partir del legado de una base de datos), 
 caracteres a llamar en tiempo de dibujo y ``ZendPdf`` se encargará de la conversión. Puede proporcionar la
 fuente de cualquier método de codificación de strings soportados por la función de *PHP* *iconv()*:
 
-.. _zend.pdf.drawing.text-drawing.example-2:
+.. _zendpdf.drawing.text-drawing.example-2:
 
 .. rubric:: Dibujar un string codificado en UTF-8 en la página
 
@@ -249,7 +249,7 @@ fuente de cualquier método de codificación de strings soportados por la funci�
    $pdfPage->drawText($unicodeString, 72, 720, 'UTF-8');
    ...
 
-.. _zend.pdf.drawing.using-fonts:
+.. _zendpdf.drawing.using-fonts:
 
 Uso de Fuentes
 --------------
@@ -278,7 +278,7 @@ TrueType. Los objetos Font se obtienen a través de una de los dos métodos de f
 ``ZendPdf\Font::fontWithName($fontName)`` para las 14 fuentes estándar *PDF* o
 ``ZendPdf\Font::fontWithPath($filePath)`` para fuentes personalizadas.
 
-.. _zend.pdf.drawing.using-fonts.example-1:
+.. _zendpdf.drawing.using-fonts.example-1:
 
 .. rubric:: Crear un tipo de letra normal
 
@@ -334,7 +334,7 @@ Para utilizar una fuente TrueType, debe proporcionar toda la ruta del archivo a 
 fuente no se puede leer por alguna razón, o si no es una fuente TrueType, el método de fábrica arrojará una
 excepción:
 
-.. _zend.pdf.drawing.using-fonts.example-2:
+.. _zendpdf.drawing.using-fonts.example-2:
 
 .. rubric:: Crear una fuente TrueType
 
@@ -354,7 +354,7 @@ destinatarios vean la página como está previsto, incluso si no tienen los tipo
 su sistema. Si le preocupa el tamaño del archivo, puede pedir que la fuente del programa no sea integrada pasando
 una opción 'do not embed' ("no incluir") al método de fábrica:
 
-.. _zend.pdf.drawing.using-fonts.example-3:
+.. _zendpdf.drawing.using-fonts.example-3:
 
 .. rubric:: Crear una fuente TrueType, pero no incluirla en el documento PDF
 
@@ -381,7 +381,7 @@ que no puede ser incorporada, el método de fábrica lanzará una excepción.
 Puede seguir utilizando esas fuentes, pero debe pasar el flag de no incluir como se ha descripto anteriormente, o
 simplemente puede suprimir la excepción:
 
-.. _zend.pdf.drawing.using-fonts.example-4:
+.. _zendpdf.drawing.using-fonts.example-4:
 
 .. rubric:: No arrojar una excepción para las fuentes que no puedan ser incorporadas
 
@@ -403,7 +403,7 @@ las fuentes incorporadas son comprimidas utilizando el esquema de compresión Fl
 espacio del 50% en promedio. Si, por alguna razón, no desea comprimir la fuente del programa, se puede desactivar
 con una opción:
 
-.. _zend.pdf.drawing.using-fonts.example-5:
+.. _zendpdf.drawing.using-fonts.example-5:
 
 .. rubric:: No comprimir una fuente incrustada
 
@@ -417,7 +417,7 @@ con una opción:
 
 Por último, en caso necesario, puede combinar las opciones de la integración mediante el operador binario OR:
 
-.. _zend.pdf.drawing.using-fonts.example-6:
+.. _zendpdf.drawing.using-fonts.example-6:
 
 .. rubric:: La combinación de opciones de la incrustación de fuentes
 
@@ -431,7 +431,7 @@ Por último, en caso necesario, puede combinar las opciones de la integración m
                ZendPdf\Font::EMBED_DONT_COMPRESS));
    ...
 
-.. _zend.pdf.drawing.standard-fonts-limitations:
+.. _zendpdf.drawing.standard-fonts-limitations:
 
 Limitaciones de las fuentes PDF estándar
 ----------------------------------------
@@ -445,7 +445,7 @@ Latin1 (excepto las fuentes ZapfDingbats y Symbol).
 El texto todavía se puede proporcionar en cualquier otra codificación, que debe ser especificada si ésta es
 distinto de una fuente local actual. Realmente, sólo se dibujarán caracteres WinLatin1.
 
-.. _zend.pdf.drawing.using-fonts.example-7:
+.. _zendpdf.drawing.using-fonts.example-7:
 
 .. rubric:: Combinación de opciones de la incrustación de fuentes
 
@@ -459,7 +459,7 @@ distinto de una fuente local actual. Realmente, sólo se dibujarán caracteres W
            ->drawText('Text with umlauts - à è ì', 72, 650, 'UTF-8');
    ...
 
-.. _zend.pdf.drawing.extracting-fonts:
+.. _zendpdf.drawing.extracting-fonts:
 
 Extracción de las fuentes
 -------------------------
@@ -472,7 +472,7 @@ posiblemente, incrustar una fuente en un documento cada vez que desee actualizar
 Los objetos ``ZendPdf`` y ``ZendPdf\Page`` proporcionan métodos especiales para extraer todas las fuentes
 mencionadas en un documento o una página:
 
-.. _zend.pdf.drawing.extracting-fonts.example-1:
+.. _zendpdf.drawing.extracting-fonts.example-1:
 
 .. rubric:: Extracción de las fuentes de un documento cargado
 
@@ -503,7 +503,7 @@ mencionadas en un documento o una página:
    $firstPageFonts = $firstPage->extractFonts();
    ...
 
-.. _zend.pdf.drawing.extracting-fonts.example-2:
+.. _zendpdf.drawing.extracting-fonts.example-2:
 
 .. rubric:: Extracción de la fuente de un documento cargado especificando el nombre de la fuente
 
@@ -576,7 +576,7 @@ Las fuentes extraídas pueden ser utilizadas en el lugar de cualquier otra fuent
 
 
 
-.. _zend.pdf.drawing.image-drawing:
+.. _zendpdf.drawing.image-drawing:
 
 Dibujo de Imágenes
 ------------------
@@ -601,7 +601,7 @@ La clase ``ZendPdf\Page`` proporciona el método drawImage() para dibujar la ima
 Los objetos imagen deben ser creados con el método ``ZendPdf\Image::imageWithPath($filePath)`` (imágenes JPG,
 PNG y TIFF ahora son soportadas):
 
-.. _zend.pdf.drawing.image-drawing.example-1:
+.. _zendpdf.drawing.image-drawing.example-1:
 
 .. rubric:: Dibujar una imagen
 
@@ -621,7 +621,7 @@ requiere que se configure la extensión ZLIB para trabajar con imágenes canal A
 Consulte la documentación de *PHP* para obtener información detallada
 (`http://www.php.net/manual/en/ref.image.php`_). (`http://www.php.net/manual/en/ref.zlib.php`_).
 
-.. _zend.pdf.drawing.line-drawing-style:
+.. _zendpdf.drawing.line-drawing-style:
 
 Estilo de Dibujo de Líneas
 --------------------------
@@ -651,7 +651,7 @@ línea. Todo esto parámetros pueden ser asignados por los métodos de la clase 
     */
    public function setLineDashingPattern($pattern, $phase = 0);
 
-.. _zend.pdf.drawing.fill-style:
+.. _zendpdf.drawing.fill-style:
 
 Estilo Relleno
 --------------
@@ -706,12 +706,12 @@ El método ``ZendPdf\Page::drawPolygon()`` también tiene un parámetro adiciona
 
 
 
-.. _zend.pdf.drawing.linear-transformations:
+.. _zendpdf.drawing.linear-transformations:
 
 Transformaciones Lineales
 -------------------------
 
-.. _zend.pdf.drawing.linear-transformations.rotations:
+.. _zendpdf.drawing.linear-transformations.rotations:
 
 Rotaciones
 ^^^^^^^^^^
@@ -732,7 +732,7 @@ La página *PDF* se puede rotar antes de aplicar cualquier operación de dibujo.
     */
    public function rotate($x, $y, $angle);
 
-.. _zend.pdf.drawing.linear-transformations.scale:
+.. _zendpdf.drawing.linear-transformations.scale:
 
 A partir de Zend Framework 1.8, el escalado
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -751,7 +751,7 @@ La escala de transformación es proporcionada por el método: ``ZendPdf\Page::sc
     */
    public function scale($xScale, $yScale);
 
-.. _zend.pdf.drawing.linear-transformations.translate:
+.. _zendpdf.drawing.linear-transformations.translate:
 
 A partir de Zend Framework 1.8, traducir
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -770,7 +770,7 @@ El desplazamiento del sistema de coordenadas es realizado por el método ``ZendP
     */
    public function translate($xShift, $yShift);
 
-.. _zend.pdf.drawing.linear-transformations.skew:
+.. _zendpdf.drawing.linear-transformations.skew:
 
 A partir de Zend Framework 1.8, el sesgo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -791,7 +791,7 @@ El sesgo de una página se puede hacer utilizando el método ``ZendPdf\Page::ske
     */
    public function skew($x, $y, $xAngle, $yAngle);
 
-.. _zend.pdf.drawing.save-restore:
+.. _zendpdf.drawing.save-restore:
 
 Guardar/Restaurar el estado de los gráficos
 -------------------------------------------
@@ -824,7 +824,7 @@ Existen dos métodos en la clase ``ZendPdf\Page`` para estas operaciones:
     */
    public function restoreGS();
 
-.. _zend.pdf.drawing.clipping:
+.. _zendpdf.drawing.clipping:
 
 Señalar el área de recorte
 --------------------------
@@ -910,7 +910,7 @@ La clase ``ZendPdf\Page`` proporciona un conjunto de métodos para las operacion
                                $startAngle = null,
                                $endAngle = null);
 
-.. _zend.pdf.drawing.styles:
+.. _zendpdf.drawing.styles:
 
 Estilos
 -------
@@ -1079,7 +1079,7 @@ estado de los gráficos:
     */
    public function getFontSize();
 
-.. _zend.pdf.drawing.alpha:
+.. _zendpdf.drawing.alpha:
 
 Transparencia
 -------------

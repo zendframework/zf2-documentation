@@ -1,10 +1,10 @@
 .. EN-Revision: none
-.. _zend.pdf.interactive-features:
+.. _zendpdf.interactive-features:
 
 Interaktive Features
 ====================
 
-.. _zend.pdf.pages.interactive-features.destinations:
+.. _zendpdf.pages.interactive-features.destinations:
 
 Ziele
 -----
@@ -18,20 +18,20 @@ Ein Ziel definiert eine spezielle Sicht eines Dokuments, bestehend aus den folge
 - Der Zoom Faktor der verwendet werden soll wenn die Seite angezeigt wird.
 
 Ziele können mit Outline Elementen ((:ref:`Document Outline (bookmarks)
-<zend.pdf.pages.interactive-features.outlines>`), Hinweisen (:ref:`Annotations
-<zend.pdf.pages.interactive-features.annotations>`), oder Aktionen (:ref:`Actions
-<zend.pdf.pages.interactive-features.actions>`) verknüpft werden. In jedem Fall spezifiziert das Ziel die Sicht
+<zendpdf.pages.interactive-features.outlines>`), Hinweisen (:ref:`Annotations
+<zendpdf.pages.interactive-features.annotations>`), oder Aktionen (:ref:`Actions
+<zendpdf.pages.interactive-features.actions>`) verknüpft werden. In jedem Fall spezifiziert das Ziel die Sicht
 des Dokuments welche dargestellt werden soll wenn das Outline Element oder der Hinweis geöffnet, oder die Aktion
 durchgeführt werden soll. Zusätzlich kann eine optionale Dokument Öffnungs-Aktion spezifiziert werden.
 
-.. _zend.pdf.pages.interactive-features.destinations.types:
+.. _zendpdf.pages.interactive-features.destinations.types:
 
 Unterstützte Zieltypen
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Die folgenden Typen werden von der ``ZendPdf`` Komponente unterstützt.
 
-.. _zend.pdf.pages.interactive-features.destinations.types.zoom:
+.. _zendpdf.pages.interactive-features.destinations.types.zoom:
 
 ZendPdf_Destination\Zoom
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -69,7 +69,7 @@ Die ``ZendPdf_Destination\Zoom`` Klasse bietet die folgenden Methoden an:
 
 - ``setZoomFactor(float $zoom)``;
 
-.. _zend.pdf.pages.interactive-features.destinations.types.fit:
+.. _zendpdf.pages.interactive-features.destinations.types.fit:
 
 ZendPdf_Destination\Fit
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -83,7 +83,7 @@ Das Zielobjekt kann erstellt werden indem die ``ZendPdf_Destination\Fit::create(
 
 Wobei ``$page`` eine Zielseite ist (ein ``ZendPdf\Page`` Objekt oder eine Seitennummer).
 
-.. _zend.pdf.pages.interactive-features.destinations.types.fit-horizontally:
+.. _zendpdf.pages.interactive-features.destinations.types.fit-horizontally:
 
 ZendPdf_Destination\FitHorizontally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -106,7 +106,7 @@ Die Klasse ``ZendPdf_Destination\FitHorizontally`` bietet auch die folgenden Met
 
 - ``setTopEdge(float $top)``;
 
-.. _zend.pdf.pages.interactive-features.destinations.types.fit-vertically:
+.. _zendpdf.pages.interactive-features.destinations.types.fit-vertically:
 
 ZendPdf_Destination\FitVertically
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -129,7 +129,7 @@ Die Klasse ``ZendPdf_Destination\FitVertically`` bietet auch die folgenden Metho
 
 - ``setLeftEdge(float $left)``;
 
-.. _zend.pdf.pages.interactive-features.destinations.types.fit-rectangle:
+.. _zendpdf.pages.interactive-features.destinations.types.fit-rectangle:
 
 ZendPdf_Destination\FitRectangle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -172,7 +172,7 @@ Die Klasse ``ZendPdf_Destination\FitRectangle`` bietet auch die folgenden Method
 
 - ``setTopEdge(float $top)``;
 
-.. _zend.pdf.pages.interactive-features.destinations.types.fit-bounding-box:
+.. _zendpdf.pages.interactive-features.destinations.types.fit-bounding-box:
 
 ZendPdf_Destination\FitBoundingBox
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -187,7 +187,7 @@ $right, $top)`` Methode verwendet wird.
 
 Wobei ``$page`` eine Zielseite ist (ein ``ZendPdf\Page`` Objekt oder eine Seitenzahl).
 
-.. _zend.pdf.pages.interactive-features.destinations.types.fit-bounding-box-horizontally:
+.. _zendpdf.pages.interactive-features.destinations.types.fit-bounding-box-horizontally:
 
 ZendPdf_Destination\FitBoundingBoxHorizontally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -210,7 +210,7 @@ Die Klasse ``ZendPdf_Destination\FitBoundingBoxHorizontally`` bietet auch die fo
 
 - ``setTopEdge(float $top)``;
 
-.. _zend.pdf.pages.interactive-features.destinations.types.fit-bounding-box-vertically:
+.. _zendpdf.pages.interactive-features.destinations.types.fit-bounding-box-vertically:
 
 ZendPdf_Destination\FitBoundingBoxVertically
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -233,7 +233,7 @@ Die Klasse ``ZendPdf_Destination\FitBoundingBoxVertically`` bietet auch die folg
 
 - ``setLeftEdge(float $left)``;
 
-.. _zend.pdf.pages.interactive-features.destinations.types.named:
+.. _zendpdf.pages.interactive-features.destinations.types.named:
 
 ZendPdf_Destination\Named
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -253,7 +253,7 @@ Die Klasse ``ZendPdf_Destination\Named`` bietet eine einzige zusätzliche Method
 
 ``String`` ``getName()``;
 
-.. _zend.pdf.pages.interactive-features.destinations.processing:
+.. _zendpdf.pages.interactive-features.destinations.processing:
 
 Verarbeitung von Zielen auf Level des Dokuments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -268,13 +268,13 @@ Die Methode ``ZendPdf\Pdf::resolveDestination()`` nimmt auch einen optionalen bo
 ``$refreshPageCollectionHashes``, der standardmäßig ``TRUE`` ist. Er zwingt das ``ZendPdf`` Objekt die Hashes
 der internen Kollektion der Seiten neu zu laden da die Liste der Seiten des Dokuments vom Benutzer aktualisiert
 sein könnte indem die Eigenschaft ``ZendPdf\Pdf::$pages`` verwendet wird (:ref:`Arbeiten mit Seiten
-<zend.pdf.pages>`). Das kann aus Gründen der Performance ausgeschaltet werden, wenn bekannt ist das die Liste der
+<zendpdf.pages>`). Das kann aus Gründen der Performance ausgeschaltet werden, wenn bekannt ist das die Liste der
 Seiten des Dokuments seit der letzten Anfragemethode nicht geändert wurde.
 
 Die komplette Liste der benannten Ziele kann empfangen werden indem die Methode
 ``ZendPdf\Pdf::getNamedDestinations()`` verwendet wird. Sie gibt ein Array von ``ZendPdf\Target`` Objekten zurück,
 welche entweder explizite Ziele oder eine GoTo Aktion sind (:ref:`Aktionen
-<zend.pdf.pages.interactive-features.actions>`).
+<zendpdf.pages.interactive-features.actions>`).
 
 Die Methode ``ZendPdf\Pdf::getNamedDestination(string $name)`` gibt spezifizierte benannte Ziele zurück (ein
 explizites Ziel oder eine GoTo Aktion).
@@ -290,7 +290,7 @@ Wenn ``NULL`` statt ``$destination`` spezifiziert ist, werden die spezifizierten
    Benannte Ziele die nicht aufgelöst werden können, werden automatisch vom Dokument entfernt wenn das Dokument
    gespeichert wird.
 
-.. _zend.pdf.interactive-features.destinations.example-1:
+.. _zendpdf.interactive-features.destinations.example-1:
 
 .. rubric:: Beispiel für die Verwendung von Zielen
 
@@ -327,7 +327,7 @@ Wenn ``NULL`` statt ``$destination`` spezifiziert ist, werden die spezifizierten
    // Gibt null zurück, die Seite 3 ist bis jetzt nicht im Dokument enthalten
    $pdf->resolveDestination(ZendPdf_Destination\Named::create('Page3'));
 
-.. _zend.pdf.pages.interactive-features.actions:
+.. _zendpdf.pages.interactive-features.actions:
 
 Aktionen
 --------
@@ -336,7 +336,7 @@ Statt einfach zu einem Ziel im Dokument zu springen, kann ein Hinweis oder Outli
 Viewer Anwendung spezifizieren die auszuführen ist, wie das starten einer Anwendung, das Abspielen eines Sounds,
 oder der Änderung der Sichtweise des Hinweis Status.
 
-.. _zend.pdf.pages.interactive-features.actions.types:
+.. _zendpdf.pages.interactive-features.actions.types:
 
 Unterstützte Typen von Aktionen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -401,7 +401,7 @@ gesetzt.
 
 Es unterstützt auch die folgenden Methoden:
 
-.. _zend.pdf.pages.interactive-features.actions.chaining:
+.. _zendpdf.pages.interactive-features.actions.chaining:
 
 Verketten von Aktionen
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -452,7 +452,7 @@ durchlaufen werden können:
    // Ausgabe 'Aktionen im Baum: 4'
    printf("Aktionen im Baum: %d\n", $actionsCount++);
 
-.. _zend.pdf.pages.interactive-features.actions.open-action:
+.. _zendpdf.pages.interactive-features.actions.open-action:
 
 Dokument Öffnen Aktion
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -466,7 +466,7 @@ Die ``ZendPdf\Target ZendPdf\Pdf::getOpenAction()`` Methode gibt die aktuelle Do
 Die ``setOpenAction(ZendPdf\Target $openAction = null)`` Methode setzt eine Dokument Öffnen Aktion oder löscht
 diese wenn ``$openAction`` ``NULL`` ist.
 
-.. _zend.pdf.pages.interactive-features.outlines:
+.. _zendpdf.pages.interactive-features.outlines:
 
 Dokument Outline (Bookmarks)
 ----------------------------
@@ -584,7 +584,7 @@ iterieren kann indem RecursiveIteratorIterator verwendet wird:
    dokument gespeichert wird, indem dessen Ziele auf ``NULL`` gesetzt werden. Damit wird das Dokument nicht durch
    Entfernen von Seiten korrupiert auf die durch Outlines referenziert wird.
 
-.. _zend.pdf.pages.interactive-features.annotations:
+.. _zendpdf.pages.interactive-features.annotations:
 
 Anhänge
 -------

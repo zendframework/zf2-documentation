@@ -1,10 +1,10 @@
 .. EN-Revision: none
-.. _zend.pdf.pages:
+.. _zendpdf.pages:
 
 Arbeiten mit Seiten
 ===================
 
-.. _zend.pdf.pages.creation:
+.. _zendpdf.pages.creation:
 
 Erstellen von Seiten
 --------------------
@@ -39,7 +39,7 @@ Dokumentseiten werden im öffentlichen ``$pages`` Attribut der ``ZendPdf`` Klass
 ein Array mit ``ZendPdf\Page`` Objekten und definiert die komplette Instanz und die Reihenfolge der Seiten. Dieses
 Array kann wie ein normales *PHP* Array verändert werden:
 
-.. _zend.pdf.pages.example-1:
+.. _zendpdf.pages.example-1:
 
 .. rubric:: Verwaltung von PDF Dokumentseiten
 
@@ -60,7 +60,7 @@ Array kann wie ein normales *PHP* Array verändert werden:
 
    ...
 
-.. _zend.pdf.pages.cloning:
+.. _zendpdf.pages.cloning:
 
 Klonen von Seiten
 -----------------
@@ -68,7 +68,7 @@ Klonen von Seiten
 Bestehende *PDF* Seiten können durch das Erstellen eines neuen ``ZendPdf\Page`` Objektes geklont werden indem
 eine existierende Seite als Parameter angegeben wird:
 
-.. _zend.pdf.pages.example-2:
+.. _zendpdf.pages.example-2:
 
 .. rubric:: Klonen bestehender Seiten
 

@@ -1,10 +1,10 @@
 .. EN-Revision: none
-.. _zend.pdf.pages:
+.. _zendpdf.pages:
 
 Trabajando con Páginas
 ======================
 
-.. _zend.pdf.pages.creation:
+.. _zendpdf.pages.creation:
 
 Creación de Páginas
 -------------------
@@ -36,7 +36,7 @@ Las páginas del documento se almacenados en el atributo público ``$pages`` de 
 posee un array de objetos ``ZendPdf\Page`` y define completamente las instancias y el orden de las páginas. Este
 array puede manipularse como cualquie otro array *PHP*:
 
-.. _zend.pdf.pages.example-1:
+.. _zendpdf.pages.example-1:
 
 .. rubric:: Administración de Páginas de un Documento PDF
 
@@ -57,7 +57,7 @@ array puede manipularse como cualquie otro array *PHP*:
 
    ...
 
-.. _zend.pdf.pages.cloning:
+.. _zendpdf.pages.cloning:
 
 Clonado de Páginas
 ------------------
@@ -65,7 +65,7 @@ Clonado de Páginas
 La página *PDF* existente puede ser clonada creando un nuevo objeto ``ZendPdf\Page`` con una página existente
 como parámetro:
 
-.. _zend.pdf.pages.example-2:
+.. _zendpdf.pages.example-2:
 
 .. rubric:: Clonando una Página Existente
 

@@ -98,8 +98,6 @@ wie bei der Verwendung des Adapter Konstruktors.
    // Zend\Db\Adapter\Pdo\Mysql Datei für uns durch die Factory
    // Methode von Zend_Db geladen wird
 
-   // require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
-
    // Lädt automatisch die Klasse Zend\Db\Adapter\Pdo\Mysql
    // und erzeugt eine Instanz von Ihr.
    $db = Zend\Db\Db::factory('Pdo_Mysql', array(

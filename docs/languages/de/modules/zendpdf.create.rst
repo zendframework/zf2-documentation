@@ -1,5 +1,5 @@
 .. EN-Revision: none
-.. _zend.pdf.create:
+.. _zendpdf.create:
 
 Erstellen und Laden von PDF Dokumenten
 ======================================
@@ -12,7 +12,7 @@ Die ``ZendPdf`` Klasse stellt zwei statische Methoden zum Laden von bestehenden 
 die ``ZendPdf\Pdf::load()`` und ``ZendPdf\Pdf::parse()`` Methoden. Beide geben als Ergebnis ``ZendPdf`` Objekte zurück
 oder werfen eine Ausnahme, wenn ein Fehler auftritt.
 
-.. _zend.pdf.create.example-1:
+.. _zendpdf.create.example-1:
 
 .. rubric:: Erstellen und Laden von PDF Dokumenten
 
@@ -37,7 +37,7 @@ Rückgabe einer vorgegebenen Revision des Dokuments.
 Die Revision kann den Methoden ``ZendPdf\Pdf::load()`` und ``ZendPdf\Pdf::parse()`` als zweiter Parameter übergeben oder
 durch Aufruf der ``ZendPdf\Pdf::rollback()`` Methode. [#]_ Aufruf angefordert werden.
 
-.. _zend.pdf.create.example-2:
+.. _zendpdf.create.example-2:
 
 .. rubric:: Rückgabe einer vorgegebenen Revision eines PDF Dokuments
 

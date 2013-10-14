@@ -1,5 +1,5 @@
 .. EN-Revision: none
-.. _zend.pdf.create:
+.. _zendpdf.create:
 
 Créer et charger des documents PDF
 ==================================
@@ -13,7 +13,7 @@ La classe ``ZendPdf`` fournis deux méthodes statiques pour charger un *PDF* exi
 ``ZendPdf\Pdf::load()`` et ``ZendPdf\Pdf::parse()``. Les deux retournent un objet ``ZendPdf`` ou lève une exception en
 cas d'erreur.
 
-.. _zend.pdf.create.example-1:
+.. _zendpdf.create.example-1:
 
 .. rubric:: Créer un nouveau document PDF ou en charger un existant
 
@@ -38,7 +38,7 @@ d'une version spécifique.
 La version peut-être donnée en second paramètre des méthodes ``ZendPdf\Pdf::load()`` et ``ZendPdf\Pdf::parse()`` ou
 obligatoire dans le cas d'un appel à ``ZendPdf\Pdf::rollback()`` [#]_
 
-.. _zend.pdf.create.example-2:
+.. _zendpdf.create.example-2:
 
 .. rubric:: Demander une version particulière d'un document PDF
 

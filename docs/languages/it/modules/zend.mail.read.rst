@@ -568,7 +568,6 @@ connessione POP3.
    :linenos:
 
    <?php
-   require_once 'Zend/Loader.php';
    Zend\Loader\Loader::loadClass('Zend\Mail_Storage\Pop3');
 
    class Example_Mail_Exception extends Zend\Mail\Exception

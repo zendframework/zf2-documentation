@@ -31,7 +31,6 @@ Zend\Server\Reflection
    :linenos:
 
    <?php
-   require_once 'Zend/Server/Reflection.php';
    $class    = Zend\Server\Reflection::reflectClass('My_Class');
    $function = Zend\Server\Reflection::reflectFunction('my_function');
 
