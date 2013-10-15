@@ -46,7 +46,7 @@ View Helpers
 ------------
 
 Separation of data (model) and rendering (view)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Classes in the ``Zend\Navigation`` namespace do not deal with rendering of navigational elements. Rendering is done
 with navigational view helpers. However, pages contain information that is used by view helpers when rendering,

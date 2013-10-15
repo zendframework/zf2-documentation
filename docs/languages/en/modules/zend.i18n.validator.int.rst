@@ -9,7 +9,7 @@ can be validated.
 .. _zend.validator.set.int.options:
 
 Supported options for Zend\\I18n\\Validator\\Int
-------------------------------------------
+------------------------------------------------
 
 The following options are supported for ``Zend\I18n\Validator\Int``:
 

@@ -1,7 +1,7 @@
 .. _zend.code.generator.reference:
 
 Zend\Code\Generator Reference
-============================
+=============================
 
 .. _zend.code.generator.reference.abstracts:
 
@@ -27,7 +27,7 @@ The base interface from which all CodeGenerator classes implement provides the m
 .. _zend.code.generator.reference.abstracts.abstract:
 
 Zend\Code\Generator\AbstractGenerator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``Zend\Code\Generator\AbstractGenerator`` implements ``Zend\Code\Generator\GeneratorInterface``, and adds some properties for tracking
 whether content has changed as well as the amount of indentation that should appear before generated content. Its
@@ -90,7 +90,7 @@ Concrete CodeGenerator Classes
 .. _zend.code.generator.reference.concrete.body:
 
 Zend\Code\Generator\BodyGenerator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``Zend\Code\Generator\BodyGenerator`` is intended for generating arbitrary procedural code to include within a file. As
 such, you simply set content for the object, and it will return that content when you invoke ``generate()``.
@@ -110,7 +110,7 @@ The *API* of the class is as follows:
 .. _zend.code.generator.reference.concrete.class:
 
 Zend\Code\Generator\ClassGenerator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``Zend\Code\Generator\ClassGenerator`` is intended for generating *PHP* classes. The basic functionality just generates
 the *PHP* class itself, as well as optionally the related *PHP* DocBlock. Classes may implement or inherit from
@@ -160,7 +160,7 @@ Note that ``setDocBlock()`` expects an instance of ``Zend\Code\Generator\DocBloc
 .. _zend.code.generator.reference.concrete.docblock:
 
 Zend\Code\Generator\DocBlockGenerator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``Zend\Code\Generator\DocBlockGenerator`` can be used to generate arbitrary *PHP* docblocks, including all the standard
 docblock features: short and long descriptions and annotation tags.
@@ -313,7 +313,7 @@ The *API* of the class is as follows:
 .. _zend.code.generator.reference.concrete.member-container:
 
 Zend\Code\Generator\Member\ContainerGenerator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``Zend\Code\Generator\Member\ContainerGenerator`` is used internally by ``Zend\Code\Generator\ClassGenerator`` to keep track of
 class members -- properties and methods alike. These are indexed by name, using the concrete instances of the
@@ -332,7 +332,7 @@ The *API* of the class is as follows:
 .. _zend.code.generator.reference.concrete.method:
 
 Zend\Code\Generator\MethodGenerator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``Zend\Code\Generator\MethodGenerator`` describes a class method, and can generate both the code and the docblock for the
 method. The visibility and status as static, abstract, or final may be indicated, per its parent class,
@@ -368,7 +368,7 @@ The *API* of the class is as follows:
 .. _zend.code.generator.reference.concrete.parameter:
 
 Zend\Code\Generator\ParameterGenerator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``Zend\Code\Generator\ParameterGenerator`` may be used to specify method parameters. Each parameter may have a position
 (if unspecified, the order in which they are registered with the method will be used), a default value, and a data
