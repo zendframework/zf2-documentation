@@ -17,9 +17,6 @@ alternativa verranno usati i valori predefiniti 25 per TSL e 465 per SSL.
    :linenos:
 
    <?php
-   require_once 'Zend/Mail.php';
-   require_once 'Zend/Mail/Transport/Smtp.php';
-
    $config = array('ssl' => 'tls',
                    'port' => 25); // valore opzionale della porta
 

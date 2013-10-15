@@ -23,8 +23,6 @@ Flickr, обратитесь к `документации по API веб-сер
    :linenos:
 
    <?php
-   require_once 'Zend/Service/Flickr.php';
-
    $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $results = $flickr->tagSearch("php");
@@ -68,8 +66,6 @@ Flickr, обратитесь к `документации по API веб-сер
    :linenos:
 
    <?php
-   require_once 'Zend/Service/Flickr.php';
-
    $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $results = $flickr->userSearch($userEmail);
@@ -94,8 +90,6 @@ Flickr, обратитесь к `документации по API веб-сер
    :linenos:
 
    <?php
-       require_once 'Zend/Service/Flickr.php';
-
        $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
        $results = $flickr->groupPoolGetPhotos($groupId);
@@ -129,8 +123,6 @@ Flickr, обратитесь к `документации по API веб-сер
    :linenos:
 
    <?php
-   require_once 'Zend/Service/Flickr.php';
-
    $flickr = new Zend\Service\Flickr('MY_API_KEY');
 
    $image = $flickr->getImageDetails($imageId);

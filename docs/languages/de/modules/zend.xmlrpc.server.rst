@@ -611,9 +611,6 @@ werden um die Performance Unterschiede auszunutzen.
 .. code-block:: php
    :linenos:
 
-   require_once 'Zend/XmlRpc/Server.php';
-   require_once 'Zend/XmlRpc/Generator/XmlWriter.php';
-
    Zend\XmlRpc\Value::setGenerator(new Zend\XmlRpc_Generator\XmlWriter());
 
    $server = new Zend\XmlRpc\Server();
