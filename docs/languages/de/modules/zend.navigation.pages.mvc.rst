@@ -6,7 +6,7 @@ Zend\Navigation\Page\Mvc
 
 *MVC* Seiten werden definiert indem *MVC* Parameter verwendet werden wie von der ``Zend_Controller`` Komponent
 bekannt. Eine *MVC* Seite wird intern in der ``getHref()`` Methode ``Zend\Controller\Action\Helper\Url`` verwenden
-um hrefs zu erstellen, und die ``isActive()`` Methode wird die Parameter von ``Zend\Controller_Request\Abstract``
+um hrefs zu erstellen, und die ``isActive()`` Methode wird die Parameter von ``Zend\Controller\Request\Abstract``
 mit den Seiten Parametern verknüpfen um zu erkennen ob die Seite aktiv ist.
 
 .. _zend.navigation.pages.mvc.options:
@@ -143,7 +143,7 @@ verwendet um die *URL* für die Seite zu erstellen.
    spezifizieren sollte die diese Route definieren (module, controller, action, usw.), andernfalls ist die
    ``isActive()`` Methode nicht dazu in der Lage zu erkennen ob die Seite aktiv ist oder nicht. Der Grund hierfür
    ist, das es aktuell keinen Weg gibt die Standardparameter von einem ``Zend\Controller\Router\Route\Interface``
-   Objekt zu erhalten, oder die aktuelle Route von einem ``Zend\Controller_Router\Interface`` Objekt.
+   Objekt zu erhalten, oder die aktuelle Route von einem ``Zend\Controller\Router\Interface`` Objekt.
 
 .. code-block:: php
    :linenos:
@@ -151,7 +151,7 @@ verwendet um die *URL* für die Seite zu erstellen.
    // Die folgende Route wird den ZF Router hinzugefügt
    Zend\Controller\Front::getInstance()->getRouter()->addRoute(
        'article_view', // route name
-       new Zend\Controller_Router\Route(
+       new Zend\Controller\Router\Route(
            'a/:id',
            array(
                'module'     => 'news',

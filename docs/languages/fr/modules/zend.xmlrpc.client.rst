@@ -95,7 +95,7 @@ compatible XML-RPC, suivant la table suivante :
    +==========================+================+
    |integer                   |int             |
    +--------------------------+----------------+
-   |Zend\Crypt_Math\BigInteger|i8              |
+   |Zend\Crypt\Math\BigInteger|i8              |
    +--------------------------+----------------+
    |double                    |double          |
    +--------------------------+----------------+
@@ -171,29 +171,29 @@ Deux manières existent pour créer des objets ``Zend\XmlRpc\Value``: instanciez
    +----------------+----------------------------------------+----------------------------+
    |XML-RPC Type    |Zend\XmlRpc\Value Constante             |Zend\XmlRpc\Value Objet     |
    +================+========================================+============================+
-   |int             |Zend\XmlRpc\Value::XMLRPC_TYPE_INTEGER  |Zend\XmlRpc_Value\Integer   |
+   |int             |Zend\XmlRpc\Value::XMLRPC_TYPE_INTEGER  |Zend\XmlRpc\Value\Integer   |
    +----------------+----------------------------------------+----------------------------+
-   |i8              |Zend\XmlRpc\Value::XMLRPC_TYPE_I8       |Zend\XmlRpc_Value\BigInteger|
+   |i8              |Zend\XmlRpc\Value::XMLRPC_TYPE_I8       |Zend\XmlRpc\Value\BigInteger|
    +----------------+----------------------------------------+----------------------------+
-   |ex:i8           |Zend\XmlRpc\Value::XMLRPC_TYPE_APACHEI8 |Zend\XmlRpc_Value\BigInteger|
+   |ex:i8           |Zend\XmlRpc\Value::XMLRPC_TYPE_APACHEI8 |Zend\XmlRpc\Value\BigInteger|
    +----------------+----------------------------------------+----------------------------+
-   |double          |Zend\XmlRpc\Value::XMLRPC_TYPE_DOUBLE   |Zend\XmlRpc_Value\Double    |
+   |double          |Zend\XmlRpc\Value::XMLRPC_TYPE_DOUBLE   |Zend\XmlRpc\Value\Double    |
    +----------------+----------------------------------------+----------------------------+
-   |boolean         |Zend\XmlRpc\Value::XMLRPC_TYPE_BOOLEAN  |Zend\XmlRpc_Value\Boolean   |
+   |boolean         |Zend\XmlRpc\Value::XMLRPC_TYPE_BOOLEAN  |Zend\XmlRpc\Value\Boolean   |
    +----------------+----------------------------------------+----------------------------+
-   |string          |Zend\XmlRpc\Value::XMLRPC_TYPE_STRING   |Zend\XmlRpc_Value\String    |
+   |string          |Zend\XmlRpc\Value::XMLRPC_TYPE_STRING   |Zend\XmlRpc\Value\String    |
    +----------------+----------------------------------------+----------------------------+
-   |nil             |Zend\XmlRpc\Value::XMLRPC_TYPE_NIL      |Zend\XmlRpc_Value\Nil       |
+   |nil             |Zend\XmlRpc\Value::XMLRPC_TYPE_NIL      |Zend\XmlRpc\Value\Nil       |
    +----------------+----------------------------------------+----------------------------+
-   |ex:nil          |Zend\XmlRpc\Value::XMLRPC_TYPE_APACHENIL|Zend\XmlRpc_Value\Nil       |
+   |ex:nil          |Zend\XmlRpc\Value::XMLRPC_TYPE_APACHENIL|Zend\XmlRpc\Value\Nil       |
    +----------------+----------------------------------------+----------------------------+
-   |base64          |Zend\XmlRpc\Value::XMLRPC_TYPE_BASE64   |Zend\XmlRpc_Value\Base64    |
+   |base64          |Zend\XmlRpc\Value::XMLRPC_TYPE_BASE64   |Zend\XmlRpc\Value\Base64    |
    +----------------+----------------------------------------+----------------------------+
-   |dateTime.iso8601|Zend\XmlRpc\Value::XMLRPC_TYPE_DATETIME |Zend\XmlRpc_Value\DateTime  |
+   |dateTime.iso8601|Zend\XmlRpc\Value::XMLRPC_TYPE_DATETIME |Zend\XmlRpc\Value\DateTime  |
    +----------------+----------------------------------------+----------------------------+
-   |array           |Zend\XmlRpc\Value::XMLRPC_TYPE_ARRAY    |Zend\XmlRpc_Value\Array     |
+   |array           |Zend\XmlRpc\Value::XMLRPC_TYPE_ARRAY    |Zend\XmlRpc\Value\Array     |
    +----------------+----------------------------------------+----------------------------+
-   |struct          |Zend\XmlRpc\Value::XMLRPC_TYPE_STRUCT   |Zend\XmlRpc_Value\Struct    |
+   |struct          |Zend\XmlRpc\Value::XMLRPC_TYPE_STRUCT   |Zend\XmlRpc\Value\Struct    |
    +----------------+----------------------------------------+----------------------------+
 
 .. note::
@@ -202,7 +202,7 @@ Deux manières existent pour créer des objets ``Zend\XmlRpc\Value``: instanciez
 
    Lorsque vous créez un objet ``Zend\XmlRpc\Value``, sa valeur est déterminée par un type *PHP*. Celui-ci va
    être converti vers le type désiré en utilisant le cast *PHP*. Par exemple si une chaîne de caractères est
-   donnée comme valeur à un objet ``Zend\XmlRpc_Value\Integer``, elle sera alors convertie suivant la règle
+   donnée comme valeur à un objet ``Zend\XmlRpc\Value\Integer``, elle sera alors convertie suivant la règle
    *(int) $value*.
 
 .. _zend.xmlrpc.client.requests-and-responses:
@@ -214,7 +214,7 @@ Un autre moyen d'appeler des méthodes avec un client XML-RPC est d'utiliser le 
 *PHP* qui proxie un espace de nom XML-RPC, en fonctionnant autant que possible comme les objets *PHP*.
 
 Pour instancier un proxy serveur, appelez ``getProxy()`` de ``Zend\XmlRpc\Client``. Elle retourne un objet
-``Zend\XmlRpc_Client\ServerProxy``. Tout appel de méthode sur l'objet proxy sera proxié vers le serveur XML-RPC,
+``Zend\XmlRpc\Client\ServerProxy``. Tout appel de méthode sur l'objet proxy sera proxié vers le serveur XML-RPC,
 et les paramètres seront utilisés comme pour une méthode *PHP* banale.
 
 .. _zend.xmlrpc.client.requests-and-responses.example-1:
@@ -268,7 +268,7 @@ Erreurs HTTP
 ^^^^^^^^^^^^
 
 Si une erreur *HTTP* survient, par exemple le serveur renvoie un *404 Not Found*, alors une
-``Zend\XmlRpc_Client\HttpException`` sera levée.
+``Zend\XmlRpc\Client\HttpException`` sera levée.
 
 .. _zend.xmlrpc.client.error-handling.http.example-1:
 
@@ -283,14 +283,14 @@ Si une erreur *HTTP* survient, par exemple le serveur renvoie un *404 Not Found*
 
        $client->call('bar', array($arg1, $arg2));
 
-   } catch (Zend\XmlRpc_Client\HttpException $e) {
+   } catch (Zend\XmlRpc\Client\HttpException $e) {
 
        // $e->getCode() retourne 404
        // $e->getMessage() retourne "Not Found"
 
    }
 
-Quelque soit l'utilisation du client XML-RPC, une ``Zend\XmlRpc_Client\HttpException`` sera systématiquement
+Quelque soit l'utilisation du client XML-RPC, une ``Zend\XmlRpc\Client\HttpException`` sera systématiquement
 levée lorsqu'une erreur *HTTP* de quelque type que ce soit est rencontrée.
 
 .. _zend.xmlrpc.client.error-handling.faults:
@@ -303,7 +303,7 @@ méthodes du client XML-RPC, et ce type contient un message, et un code d'erreur
 gérées différemment en fonction du contexte d'utilisation de l'objet ``Zend\XmlRpc\Client``.
 
 Lors de l'utilisation de la méthode ``call()``, ou de l'objet proxy serveur, une erreur XML-RPC aura pour effet de
-lancer une ``Zend\XmlRpc_Client\FaultException``. Le code et le message de l'exception seront rendus dans leurs
+lancer une ``Zend\XmlRpc\Client\FaultException``. Le code et le message de l'exception seront rendus dans leurs
 valeurs respectives de la réponse XML-RPC.
 
 .. _zend.xmlrpc.client.error-handling.faults.example-1:
@@ -319,14 +319,14 @@ valeurs respectives de la réponse XML-RPC.
 
        $client->call('badMethod');
 
-   } catch (Zend\XmlRpc_Client\FaultException $e) {
+   } catch (Zend\XmlRpc\Client\FaultException $e) {
 
        // $e->getCode() retourne 1
        // $e->getMessage() retourne "Unknown method"
 
    }
 
-En utilisant ``call()``, une exception ``Zend\XmlRpc_Client\FaultException`` sera donc lancée si une erreur
+En utilisant ``call()``, une exception ``Zend\XmlRpc\Client\FaultException`` sera donc lancée si une erreur
 survient. Un objet ``Zend\XmlRpc\Response`` contenant l'erreur sera de même disponible via la méthode
 ``getLastResponse()``.
 
@@ -342,7 +342,7 @@ Introspection du serveur
 Certains serveurs XML-RPC supportent l'introspection de leurs méthodes au travers de l'espace de noms *system.*
 ``Zend\XmlRpc\Client`` fournit un support d'un tel procédé.
 
-Une instance de ``Zend\XmlRpc_Client\ServerIntrospection`` sera retournée si vous appelez la méthode
+Une instance de ``Zend\XmlRpc\Client\ServerIntrospection`` sera retournée si vous appelez la méthode
 ``getIntrospector()`` sur l'objet ``Zend_XmlRpcClient``.
 
 .. _zend.xmlrpc.client.request-to-response:

@@ -11,18 +11,18 @@ speziellen Optionen instanziert, welche **filename** und **config** sein können
 des Writers aufgerufen und die Configdatei wird erstellt. Man kann ``$filename`` und ``$config`` auch direkt an die
 ``write()`` Methode übergeben. Aktuell werden die folgenden Writer mit ``Zend\Config\Writer`` ausgeliefert:
 
-- ``Zend\Config_Writer\Array``
+- ``Zend\Config\Writer\Array``
 
-- ``Zend\Config_Writer\Ini``
+- ``Zend\Config\Writer\Ini``
 
-- ``Zend\Config_Writer\Xml``
+- ``Zend\Config\Writer\Xml``
 
 Der *INI* Writer hat zwei Modi für die Darstellung bezüglich Sektionen. Standardmäßig wird die Top-Level
 Konfiguration immer in Sektionsnamen geschrieben. Durch den Aufruf von ``$writer->setRenderWithoutSections();``
 werden alle Optionen in den globalen Namespace der *INI* Datei geschrieben und es werden keine Sektionen
 angehängt.
 
-Zusätzlich hat ``Zend\Config_Writer\Ini`` einen zusätzlichen optionalen Parameter **nestSeparator**, welche
+Zusätzlich hat ``Zend\Config\Writer\Ini`` einen zusätzlichen optionalen Parameter **nestSeparator**, welche
 definiert mit welchem Zeichen die einzelnen Nodes getrennt werden. Der Standard ist ein einzelner Punkt, wie er
 standardmäßig von ``Zend\Config\Ini`` akzeptiert wird.
 
@@ -36,7 +36,7 @@ werden ("``$config->branch = array();``"). Um zu definieren welche Sektion eine 
 
 .. rubric:: Verwenden von Zend\Config\Writer
 
-Dieses Beispiel zeigt die grundsätzliche Verwendung von ``Zend\Config_Writer\Xml`` um eine neue
+Dieses Beispiel zeigt die grundsätzliche Verwendung von ``Zend\Config\Writer\Xml`` um eine neue
 Konfigurationsdatei zu erstellen:
 
 .. code-block:: php
@@ -58,18 +58,18 @@ Konfigurationsdatei zu erstellen:
 
    // Die Config Datei auf einem der folgenden Wege schreiben:
    // a)
-   $writer = new Zend\Config_Writer\Xml(array('config'   => $config,
+   $writer = new Zend\Config\Writer\Xml(array('config'   => $config,
                                               'filename' => 'config.xml'));
    $writer->write();
 
    // b)
-   $writer = new Zend\Config_Writer\Xml();
+   $writer = new Zend\Config\Writer\Xml();
    $writer->setConfig($config)
           ->setFilename('config.xml')
           ->write();
 
    // c)
-   $writer = new Zend\Config_Writer\Xml();
+   $writer = new Zend\Config\Writer\Xml();
    $writer->write('config.xml', $config);
 
 Das erstellt eine *XML* Config Datei mit den Sektionen production und staging, wobei staging production erweitert.
@@ -94,7 +94,7 @@ Dieses Beispiel zeigt wie eine bestehende Config Datei bearbeitet werden kann.
    $config->production->hostname = 'foobar';
 
    // Schreibe die Config Datei
-   $writer = new Zend\Config_Writer\Ini(array('config'   => $config,
+   $writer = new Zend\Config\Writer\Ini(array('config'   => $config,
                                               'filename' => 'config.ini'));
    $writer->write();
 

@@ -80,7 +80,7 @@ Quelques exemples :
    :linenos:
 
    // Ajout d'un objet élément :
-   $form->addElement(new Zend\Form_Element\Text('username'));
+   $form->addElement(new Zend\Form\Element\Text('username'));
 
    // Passage d'un texte décrivant le futur objet élément, à Zend_Form :
    $form->addElement('text', 'username');
@@ -96,7 +96,7 @@ Voyons comment passer un validateur à un élément dont nous créons l'objet. O
 .. code-block:: php
    :linenos:
 
-   $username = new Zend\Form_Element\Text('username');
+   $username = new Zend\Form\Element\Text('username');
 
    // Passage d'un objet Zend\Validate\*:
    $username->addValidator(new Zend\Validate\Alnum());

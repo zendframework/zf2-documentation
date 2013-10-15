@@ -1,5 +1,5 @@
 .. EN-Revision: none
-.. _zend.pdf.pages:
+.. _zendpdf.pages:
 
 Страницы документа
 ==================

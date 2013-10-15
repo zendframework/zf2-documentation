@@ -157,9 +157,9 @@ Anmerkungsfeed gesendet werden. Im unten gezeigten Beispiel starten wir von eine
 .. code-block:: php
    :linenos:
 
-   $entry = new ZendGData_Books\VolumeEntry();
+   $entry = new ZendGData\Books\VolumeEntry();
    $entry->setId(new ZendGData\App\Extension\Id(VOLUME_ID));
-   $entry->setRating(new ZendGData_Extension\Rating(3, 1, 5, 1));
+   $entry->setRating(new ZendGData\Extension\Rating(3, 1, 5, 1));
    $books->insertVolume($entry, ZendGData\Books::MY_ANNOTATION_FEED_URI);
 
 .. _zend.gdata.books.reviews:
@@ -374,7 +374,7 @@ Das folgende Beispiel erstellt einen neuen Eintrag und fügt Ihn der Bibliothek 
 .. code-block:: php
    :linenos:
 
-   $entry = new ZendGData_Books\VolumeEntry();
+   $entry = new ZendGData\Books\VolumeEntry();
    $entry->setId(new ZendGData\App\Extension\Id(VOLUME_ID));
    $books->insertVolume(
        $entry,

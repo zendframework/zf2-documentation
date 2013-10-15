@@ -7,7 +7,7 @@ Validateurs pour Zend\File\Transfer
 ``Zend\File\Transfer`` est fourni avec de multiples validateurs liés qui doivent être utiliser pour accroître la
 sécurité et prévenir les attaques possibles. Notez que les validateurs ne sont bons que si vous les utilisez.
 Tous les validateurs qui sont fournis avec ``Zend\File\Transfer`` peuvent être trouvés avec le composant
-``Zend_Validator`` et sont nommés ``Zend\Validate_File\*``. Les validateurs suivants sont actuellement
+``Zend_Validator`` et sont nommés ``Zend\Validate\File\*``. Les validateurs suivants sont actuellement
 disponibles :
 
 - *Count*\  : ce validateur vérifie le nombre de fichiers. Il est possible de définir un minimum et un maximum

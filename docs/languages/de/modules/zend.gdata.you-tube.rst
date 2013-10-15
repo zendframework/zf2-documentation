@@ -91,7 +91,7 @@ enthalten, beginnend mit dem 10ten Video und 20 Videos pro Seite anzeigt, sortie
    }
 
 Für weitere Details über die verschiedenen Abfrageparameter, kann der `Referenz Guide`_ hilfreich sein. Die
-vorhandenen Hilfsfunktionen in `ZendGData_YouTube\VideoQuery`_ für jeden dieser Parameter werden im `PHP
+vorhandenen Hilfsfunktionen in `ZendGData\YouTube\VideoQuery`_ für jeden dieser Parameter werden im `PHP
 Entwickler Guide`_ detailierter beschrieben.
 
 .. _zend.gdata.youtube.videos.searchingcategories:
@@ -122,7 +122,7 @@ Standard Feeds empfangen
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Die YouTube Daten *API* hat eine Anzahl an `Standard Feeds`_. Diese Standard Feeds können als
-`ZendGData_YouTube\VideoFeed`_ Objekte empfangen werden indem die spezifizierten *URL*\ s und die in der
+`ZendGData\YouTube\VideoFeed`_ Objekte empfangen werden indem die spezifizierten *URL*\ s und die in der
 `ZendGData\YouTube`_ Klasse vordefinierten Konstanten (zum Beispiel ZendGData\YouTube::STANDARD_TOP_RATED_URI)
 oder die vordefinierten Hilfsmethoden verwendet verwendet werden (siehe das Codebeispiel anbei).
 
@@ -144,7 +144,7 @@ Um zum Beispiel die Top gereihten Videos von Heute zu erhalten:
 
 .. _zend.gdata.youtube.videos.standard.example-2:
 
-.. rubric:: Verwenden von ZendGData_YouTube\VideoQuery um Videos zu empfangen
+.. rubric:: Verwenden von ZendGData\YouTube\VideoQuery um Videos zu empfangen
 
 .. code-block:: php
    :linenos:
@@ -244,12 +244,12 @@ für das Video mit der ID 'abc123813abc' zu empfangen kann der folgende Code ver
        echo $commentEntry->content->text . "\n\n\n";
    }
 
-Kommentare können für ein Video auch empfangen werden wenn man eine Kopie des `ZendGData_YouTube\VideoEntry`_
+Kommentare können für ein Video auch empfangen werden wenn man eine Kopie des `ZendGData\YouTube\VideoEntry`_
 Objektes hat:
 
 .. _zend.gdata.youtube.videos.comments.example-2:
 
-.. rubric:: Empfangen eines Feeds von Videokommentaren von einem ZendGData_YouTube\VideoEntry
+.. rubric:: Empfangen eines Feeds von Videokommentaren von einem ZendGData\YouTube\VideoEntry
 
 .. code-block:: php
    :linenos:
@@ -316,7 +316,7 @@ Eine Liste von Einschreibungen eines Benutzers erhalten
 -------------------------------------------------------
 
 Ein Benutzer kann verschiedene Arten von Einschreibungen besitzen: Kanal Einschreibungen, Tag Einschreibungen, oder
-Favoriten Einschreibungen. Ein `ZendGData_YouTube\SubscriptionEntry`_ wird verwendet um individuelle
+Favoriten Einschreibungen. Ein `ZendGData\YouTube\SubscriptionEntry`_ wird verwendet um individuelle
 Einschreibungen zu repräsentieren.
 
 Um alle Einschreibungen für den Benutzer 'liz' zu erhalten kann der folgende Code verwendet werden:
@@ -366,7 +366,7 @@ Prozesses betrachtet haben. Das Hochladen von Videos kann auf 2 Wegen durchgefü
 direkte Hochladen des Videos oder durch das Senden der Video Meta-Daten und indem der Benutzer das Video über ein
 *HTML* Formular hochlädt.
 
-Um ein Video direkt hochzuladen, muß zuerst ein neues `ZendGData_YouTube\VideoEntry`_ Objekt erstellt und einige
+Um ein Video direkt hochzuladen, muß zuerst ein neues `ZendGData\YouTube\VideoEntry`_ Objekt erstellt und einige
 benötigte Meta-Daten spezifiziert werden. Das folgende Beispiel zeigt das Hochladen des Quicktime Videos
 "mytestmovie.mov" auf YouTube mit den folgenden Eigenschaften:
 
@@ -396,8 +396,8 @@ benötigte Meta-Daten spezifiziert werden. Das folgende Beispiel zeigt das Hochl
    |Developer Tags|mydevelopertag, anotherdevelopertag|
    +--------------+-----------------------------------+
 
-Der folgende Code erzeugt einen leeren `ZendGData_YouTube\VideoEntry`_ der Hochgeladen werden kann. Ein
-`ZendGData_App\MediaFileSource`_ wird dann verwendet um die aktuelle Video Datei zu speichern. Unter der Hand wird
+Der folgende Code erzeugt einen leeren `ZendGData\YouTube\VideoEntry`_ der Hochgeladen werden kann. Ein
+`ZendGData\App\MediaFileSource`_ wird dann verwendet um die aktuelle Video Datei zu speichern. Unter der Hand wird
 ein `ZendGData\YouTube\Extension\MediaGroup`_ Objekt verwendet um alle Metadaten des Videos zu speichern. Die
 anbei beschriebenen Helfermethoden erlauben es die Metadaten des Videos zu setzen ohne das man sich um das Medien
 Gruppen Objekt kümmern muß. $uploadUrl ist der Ort an den der neue Eintrag gepostet wird. Er kann entweder durch
@@ -412,7 +412,7 @@ $userName des aktuell authentifizierten Benutzers spezifiziert werden, oder, alt
    :linenos:
 
    $yt = new ZendGData\YouTube($httpClient);
-   $myVideoEntry = new ZendGData_YouTube\VideoEntry();
+   $myVideoEntry = new ZendGData\YouTube\VideoEntry();
 
    $filesource = $yt->newMediaFileSource('mytestmovie.mov');
    $filesource->setContentType('video/quicktime');
@@ -435,7 +435,7 @@ $userName des aktuell authentifizierten Benutzers spezifiziert werden, oder, alt
 
    // Optional den Ort des Videos setzen
    $yt->registerPackage('ZendGData\Geo');
-   $yt->registerPackage('ZendGData_Geo\Extension');
+   $yt->registerPackage('ZendGData\Geo\Extension');
    $where = $yt->newGeoRssWhere();
    $position = $yt->newGmlPos('37.0 -122.0');
    $where->point = $yt->newGmlPoint($position);
@@ -445,16 +445,16 @@ $userName des aktuell authentifizierten Benutzers spezifiziert werden, oder, alt
    $uploadUrl =
        'http://uploads.gdata.youtube.com/feeds/users/default/uploads';
 
-   // Versuch das Video hochzuladen, eine ZendGData_App\HttpException fangen wenn
-   // Sie vorhanden ist oder nur eine reguläre ZendGData_App\Exception
+   // Versuch das Video hochzuladen, eine ZendGData\App\HttpException fangen wenn
+   // Sie vorhanden ist oder nur eine reguläre ZendGData\App\Exception
 
    try {
        $newEntry = $yt->insertEntry($myVideoEntry,
                                     $uploadUrl,
-                                    'ZendGData_YouTube\VideoEntry');
-   } catch (ZendGData_App\HttpException $httpException) {
+                                    'ZendGData\YouTube\VideoEntry');
+   } catch (ZendGData\App\HttpException $httpException) {
        echo $httpException->getRawResponseBody();
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo $e->getMessage();
    }
 
@@ -468,7 +468,7 @@ Browser-basierender Upload
 --------------------------
 
 Browser-basierendes hochladen wird fast auf die gleiche Weise durchgeführt wie direktes Hochladen, ausser das man
-kein `ZendGData_App\MediaFileSource`_ Objekt an den `ZendGData_YouTube\VideoEntry`_ anhängt den man erstellt.
+kein `ZendGData\App\MediaFileSource`_ Objekt an den `ZendGData\YouTube\VideoEntry`_ anhängt den man erstellt.
 Stattdessen überträgt man einfach alle Metadaten des Videos um ein Token Element zurück zu erhalten welches
 verwendet werden kann um ein *HTML* Upload Formular zu erstellen.
 
@@ -481,7 +481,7 @@ verwendet werden kann um ein *HTML* Upload Formular zu erstellen.
 
    $yt = new ZendGData\YouTube($httpClient);
 
-   $myVideoEntry= new ZendGData_YouTube\VideoEntry();
+   $myVideoEntry= new ZendGData\YouTube\VideoEntry();
    $myVideoEntry->setVideoTitle('My Test Movie');
    $myVideoEntry->setVideoDescription('My Test Movie');
 
@@ -527,7 +527,7 @@ Den Upload Status prüfen
 Nachdem ein Video hochgeladen wurde, wird es im Upload Feed des authentifizierten Benutzer unmittelbar sichtbar
 sein. Trotzdem wird es auf der Site nicht öffentlich sein solange es nicht bearbeitet wurde. Videos die
 ausgeschlossen oder nicht erfolgreich hochgeladen wurden werden auch nur im Upload Feed des authentifizierten
-Benutzers sichtbar sein. Der folgende Code prüft den Status eines `ZendGData_YouTube\VideoEntry`_ um zu sehen ob
+Benutzers sichtbar sein. Der folgende Code prüft den Status eines `ZendGData\YouTube\VideoEntry`_ um zu sehen ob
 er jetzt noch nicht live ist oder ob er nicht akzeptiert wurde.
 
 .. _zend.gdata.youtube.uploads.status.example:
@@ -539,7 +539,7 @@ er jetzt noch nicht live ist oder ob er nicht akzeptiert wurde.
 
    try {
        $control = $videoEntry->getControl();
-   } catch (ZendGData_App\Exception $e) {
+   } catch (ZendGData\App\Exception $e) {
        echo $e->getMessage();
    }
 
@@ -580,13 +580,13 @@ Bitte schauen Sie in die komplette Dokumentation die im `PHP Entwickler Guide`_ 
 .. _`ZendGData\YouTube`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData\YouTube.html
 .. _`You Tube API Referenz Guide`: http://code.google.com/apis/youtube/reference.html#Video_Feeds
 .. _`Referenz Guide`: http://code.google.com/apis/youtube/reference.html#Searching_for_videos
-.. _`ZendGData_YouTube\VideoQuery`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData_YouTube\VideoQuery.html
+.. _`ZendGData\YouTube\VideoQuery`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData\YouTube\VideoQuery.html
 .. _`PHP Entwickler Guide`: http://code.google.com/apis/youtube/developers_guide_php.html
 .. _`speziell formatierten URL`: http://code.google.com/apis/youtube/reference.html#Category_Search
 .. _`Standard Feeds`: http://code.google.com/apis/youtube/reference.html#Standard_feeds
-.. _`ZendGData_YouTube\VideoFeed`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData_YouTube\VideoFeed.html
-.. _`ZendGData_YouTube\VideoEntry`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData_YouTube\VideoEntry.html
-.. _`ZendGData_YouTube\SubscriptionEntry`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData_YouTube\SubscriptionEntry.html
+.. _`ZendGData\YouTube\VideoFeed`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData\YouTube\VideoFeed.html
+.. _`ZendGData\YouTube\VideoEntry`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData\YouTube\VideoEntry.html
+.. _`ZendGData\YouTube\SubscriptionEntry`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData\YouTube\SubscriptionEntry.html
 .. _`Protokoll Guide`: http://code.google.com/apis/youtube/developers_guide_protocol.html#Process_Flows_for_Uploading_Videos
-.. _`ZendGData_App\MediaFileSource`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData_App\MediaFileSource.html
+.. _`ZendGData\App\MediaFileSource`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData\App\MediaFileSource.html
 .. _`ZendGData\YouTube\Extension\MediaGroup`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData\YouTube\Extension\MediaGroup.html

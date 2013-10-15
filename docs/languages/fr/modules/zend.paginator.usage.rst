@@ -24,7 +24,7 @@ adaptateurs existent par défaut :
    +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |DbSelect     |Utilise une instance de Zend\Db\Select qui retourne un tableau                                                                                                                                                    |
    +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |DbTableSelect|Utilise une instance Zend\Db_Table\Select, qui retournera une instance de Zend\Db\Table\Rowset\Abstract. Ceci fournit aussi des informations supplémentaires sur le jeu de résultats, tel que les noms de colonne.|
+   |DbTableSelect|Utilise une instance Zend\Db\Table\Select, qui retournera une instance de Zend\Db\Table\Rowset\Abstract. Ceci fournit aussi des informations supplémentaires sur le jeu de résultats, tel que les noms de colonne.|
    +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Iterator     |Utilise une instance implémentant Iterator                                                                                                                                                                        |
    +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -48,7 +48,7 @@ Pour créer une instance de ``Zend_Paginator``, vous devez spécifier un adaptat
    .. code-block:: php
       :linenos:
 
-      $paginator = new Zend\Paginator\Paginator(new Zend\Paginator_Adapter\Array($array));
+      $paginator = new Zend\Paginator\Paginator(new Zend\Paginator\Adapter\Array($array));
 
 
 
@@ -82,7 +82,7 @@ données paginées.
 
 
 La manière la plus simple de suivre et scruter cette valeur est via l'URL. Nous recommandons l'utilisation d'un
-routeur compatible avec ``Zend\Controller_Router\Interface``, mais ceci n'est pas nécessaire.
+routeur compatible avec ``Zend\Controller\Router\Interface``, mais ceci n'est pas nécessaire.
 
 Voici une route que vous pourriez définir dans un fichier de configuration *INI*:
 
@@ -153,9 +153,9 @@ following setup:
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend\Paginator_Adapter\DbSelect($db->select()->from('posts'));
+   $adapter = new Zend\Paginator\Adapter\DbSelect($db->select()->from('posts'));
    $adapter->setRowCount(
-       $db->select()->from('item_counts', array(Zend\Paginator_Adapter\DbSelect::ROW_COUNT_COLUMN => 'post_count'))
+       $db->select()->from('item_counts', array(Zend\Paginator\Adapter\DbSelect::ROW_COUNT_COLUMN => 'post_count'))
    )
 
    $paginator = new Zend\Paginator\Paginator($adapter);
@@ -247,7 +247,7 @@ affranchir totalement des appels à *PaginationControl*:
       :linenos:
 
       Zend\Paginator\Paginator::setDefaultScrollingStyle('Sliding');
-      Zend\View_Helper\PaginationControl::setDefaultViewPartial(
+      Zend\View\Helper\PaginationControl::setDefaultViewPartial(
           'my_pagination_control.phtml'
       );
       $paginator->setView($view);

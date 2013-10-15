@@ -39,7 +39,7 @@ Créer des objets mémoires verrouillés en utilisant la méthode ``createLocked
 "Verrouillé" signifie que de tels objets ne sont jamais mis en cache et déchargés de la mémoire.
 
 Les objets verrouillés fournissent la même interface que des objets mobiles
-(``Zend\Memory_Container\Interface``). Donc l'objet verrouillé peut être utilisé en n'importe quel endroit à la
+(``Zend\Memory\Container\Interface``). Donc l'objet verrouillé peut être utilisé en n'importe quel endroit à la
 place des objets mobiles.
 
 Il est utile si une application ou un développeur peut décider, que quelques objets ne devraient jamais être mis
@@ -48,7 +48,7 @@ en cache, en se basant sur des considérations de performance.
 L'accès aux objets verrouillés est plus rapide, parce que le manager de mémoire ne doit pas suivre à la trace
 des changements pour ces objets.
 
-La classe d'objets verrouillés (``Zend\Memory_Container\Locked``) garantit pratiquement la même performance qu'en
+La classe d'objets verrouillés (``Zend\Memory\Container\Locked``) garantit pratiquement la même performance qu'en
 travaillant avec une variable de type chaîne de caractères. La couche supérieure est un simple référence pour
 récupérer la propriété de classe.
 

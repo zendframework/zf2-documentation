@@ -136,8 +136,8 @@ Arayüz sınıfları diğer sınıflarla aynı kurallara uymalıdır (yukarıya 
    .. code-block:: php
       :linenos:
 
-      Zend\Log_Adapter\Interface
-      Zend\Controller_Dispatcher\Interface
+      Zend\Log\Adapter\Interface
+      Zend\Controller\Dispatcher\Interface
 
 
 

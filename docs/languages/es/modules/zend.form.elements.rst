@@ -68,7 +68,7 @@ el archivo "My/Decorator/Label.php".
 .. code-block:: php
    :linenos:
 
-   class My_Decorator_Label extends Zend\Form_Decorator\Abstract
+   class My_Decorator_Label extends Zend\Form\Decorator\Abstract
    {
        protected $_placement = 'PREPEND';
 
@@ -526,7 +526,7 @@ Los decoradores usados por defecto por ``Zend\Form\Element`` son:
   puede usarse para especificar qué auxiliar vista usar. Por defecto, ``Zend\Form\Element`` especifica el auxiliar
   vista 'formText', pero cada subclase especifica diferentes auxiliares.
 
-- **Errors**: añade mensajes de error al elemento usando ``Zend\View_Helper\FormErrors``. Si no está presente, no
+- **Errors**: añade mensajes de error al elemento usando ``Zend\View\Helper\FormErrors``. Si no está presente, no
   se añade nada.
 
 - **Description**: añade la descripción del elemento. Si no está presente, no se añade nada. Por defecto, la
@@ -534,7 +534,7 @@ Los decoradores usados por defecto por ``Zend\Form\Element`` son:
 
 - **HtmlTag**: envuelve el elemento y los errores en una etiqueta HTML <dd>.
 
-- **Label**: añade al comienzo una etiqueta al elemento usando ``Zend\View_Helper\FormLabel``, y envolviéndola en
+- **Label**: añade al comienzo una etiqueta al elemento usando ``Zend\View\Helper\FormLabel``, y envolviéndola en
   una etiqueta <dt>. Si ninguna etiqueta es provista, solo la etiqueta de la definición es generada.
 
 .. note::
@@ -810,7 +810,7 @@ tipo:
 
 - Cargadores y rutas de plugin:
 
-  - ``setPluginLoader(Zend\Loader_PluginLoader\Interface $loader, $type)``
+  - ``setPluginLoader(Zend\Loader\PluginLoader\Interface $loader, $type)``
 
   - ``getPluginLoader($type)``
 

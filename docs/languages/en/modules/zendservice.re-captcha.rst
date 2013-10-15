@@ -8,7 +8,7 @@ ZendService\\ReCaptcha
 Introduction
 ------------
 
-``ZendService\ReCaptcha`` provides a client for the `reCAPTCHA Web Service`_. Per the reCAPTCHA site, "reCAPTCHA
+``ZendService\ReCaptcha\ReCaptcha`` provides a client for the `reCAPTCHA Web Service`_. Per the reCAPTCHA site, "reCAPTCHA
 is a free CAPTCHA service that helps to digitize books." Each reCAPTCHA requires the user to input two words, the
 first of which is the actual CAPTCHA, and the second of which is a word from some scanned text that Optical
 Character Recognition (OCR) software has been unable to identify. The assumption is that if a user correctly

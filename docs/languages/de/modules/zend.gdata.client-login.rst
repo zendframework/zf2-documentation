@@ -60,10 +60,10 @@ Service zu verwenden und ein ``ZendGData`` Client Objekt zu erstellen das diesen
    $passwd = 'xxxxxxxx';
    try {
       $client = ZendGData\ClientLogin::getHttpClient($email, $passwd, 'cl');
-   } catch (ZendGData_App\CaptchaRequiredException $cre) {
+   } catch (ZendGData\App\CaptchaRequiredException $cre) {
        echo 'URL des CAPTCHA Bildes: ' . $cre->getCaptchaUrl() . "\n";
        echo 'Token ID: ' . $cre->getCaptchaToken() . "\n";
-   } catch (ZendGData_App\AuthException $ae) {
+   } catch (ZendGData\App\AuthException $ae) {
       echo 'Authentifizierungs Problem: ' . $ae->exception() . "\n";
    }
 

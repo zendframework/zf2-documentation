@@ -34,7 +34,7 @@ Gibt ``TRUE`` zurück wenn, und nur wenn, der angegebene Wert ein String und in 
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validate_Sitemap\Lastmod();
+   $validator = new Zend\Validate\Sitemap\Lastmod();
 
    $validator->isValid('1999-11-11T22:23:52-02:00'); // true
    $validator->isValid('2008-05-12T00:42:52+02:00'); // true
@@ -72,7 +72,7 @@ Stringwerte.
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validate_Sitemap\Priority();
+   $validator = new Zend\Validate\Sitemap\Priority();
 
    $validator->isValid('0.1'); // true
    $validator->isValid('0.789'); // true
@@ -87,7 +87,7 @@ Stringwerte.
 
 .. _zend.validator.set.sitemap.options:
 
-Unterstützte Optionen für Zend\Validate_Sitemap\*
+Unterstützte Optionen für Zend\Validate\Sitemap\*
 -------------------------------------------------
 
 Es gibt keine unterstützten Optionen für irgendeine der Sitemap Prüfungen.

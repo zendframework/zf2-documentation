@@ -24,8 +24,6 @@ extension`_). Vous pouvez simplement appeler les procédures de service de REST 
    /**
     * Connexion au serveur framework.zend.com server
     */
-   require_once 'Zend/Rest/Client.php';
-
    $client = new Zend\Rest\Client('http://framework.zend.com/rest');
 
    echo $client->sayHello('Davey', 'Day')->get();
@@ -51,7 +49,7 @@ extension`_). Vous pouvez simplement appeler les procédures de service de REST 
 Réponses
 --------
 
-Toutes les demandes faites en utilisant ``Zend\Rest\Client`` retourne un objet ``Zend\Rest_Client\Response``. Cet
+Toutes les demandes faites en utilisant ``Zend\Rest\Client`` retourne un objet ``Zend\Rest\Client\Response``. Cet
 objet a beaucoup de propriétés qui facilitent l'accès aux résultats.
 
 Quand le service est basé sur ``Zend\Rest\Server``, Zend\Rest\Client peut faire plusieurs suppositions au sujet de
@@ -72,11 +70,11 @@ la réponse, y compris le statut de réponse (succès ou échec) et le type de r
 
 Dans l'exemple ci-dessus, vous pouvez voir que nous utilisons le résultat de la demande comme un objet, pour
 appeler ``isSuccess()``, et puis grâce à ``__toString()``, nous pouvons simplement faire *echo* sur l'objet pour
-récupérer le résultat. ``Zend\Rest_Client\Response`` vous permettra de afficher n'importe quelle valeur
+récupérer le résultat. ``Zend\Rest\Client\Response`` vous permettra de afficher n'importe quelle valeur
 scalaire. Pour les types complexes, vous pouvez employer la notation type objet ou type tableau.
 
 Si cependant, vous souhaitez questionner un service n'employant pas ``Zend\Rest\Server`` l'objet de
-``Zend\Rest_Client\Response`` se comportera comme un *SimpleXMLElement*. Cependant, pour faciliter les choses, il
+``Zend\Rest\Client\Response`` se comportera comme un *SimpleXMLElement*. Cependant, pour faciliter les choses, il
 questionnera automatiquement le *XML* en utilisant XPath si la propriété n'est pas un descendant direct de
 l'élément racine du document. En plus, si vous accédez à une propriété comme à une méthode, vous recevrez
 la valeur de *PHP* pour l'objet, ou un tableau de résultats.

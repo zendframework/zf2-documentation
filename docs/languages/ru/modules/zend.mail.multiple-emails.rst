@@ -18,7 +18,7 @@ SMTP-соединение. До каждой отправки передаетс
    :linenos:
 
    // Создание транспорта
-   $transport = new Zend\Mail_Transport\Smtp('localhost');
+   $transport = new Zend\Mail\Transport\Smtp('localhost');
 
    // Цикл с отправкой сообщений
    for ($i = 0; $i > 5; $i++) {
@@ -46,9 +46,9 @@ SMTP-соединение. До каждой отправки передаетс
    :linenos:
 
    // Создание транспорта
-   $transport = new Zend\Mail_Transport\Smtp();
+   $transport = new Zend\Mail\Transport\Smtp();
 
-   $protocol = new Zend\Mail_Protocol\Smtp('localhost');
+   $protocol = new Zend\Mail\Protocol\Smtp('localhost');
    $protocol->connect();
    $protocol->helo('localhost');
 

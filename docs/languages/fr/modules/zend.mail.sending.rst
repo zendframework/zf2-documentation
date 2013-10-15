@@ -4,7 +4,7 @@
 Envoyer des émail en utilisant SMTP
 ===================================
 
-Pour envoyer des émail via SMTP, ``Zend\Mail_Transport\Smtp`` a besoin d'être créé et enregistré avant que la
+Pour envoyer des émail via SMTP, ``Zend\Mail\Transport\Smtp`` a besoin d'être créé et enregistré avant que la
 méthode soit appelée. Pour tout appel de ``Zend\Mail\Mail::send()`` dans le script en cours, le transport SMTP sera
 utilisé :
 
@@ -15,10 +15,10 @@ utilisé :
 .. code-block:: php
    :linenos:
 
-   $tr = new Zend\Mail_Transport\Smtp('mail.example.com');
+   $tr = new Zend\Mail\Transport\Smtp('mail.example.com');
    Zend\Mail\Mail::setDefaultTransport($tr);
 
-La méthode ``setDefaultTransport()`` et le constructeur de ``Zend\Mail_Transport\Smtp`` ne sont pas coûteux en
+La méthode ``setDefaultTransport()`` et le constructeur de ``Zend\Mail\Transport\Smtp`` ne sont pas coûteux en
 terme de performances. Ces deux lignes peuvent être traitées lors de l'initialisation du script (par exemple dans
 un fichier ``config.inc``) pour configurer le comportement de la classe ``Zend_Mail`` pour le reste du script. Cela
 garde les informations de configuration en dehors de la logique applicative - si les émail doivent être envoyés

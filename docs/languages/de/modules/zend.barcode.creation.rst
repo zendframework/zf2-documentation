@@ -10,7 +10,7 @@ Verwendung von Zend\Barcode\Barcode::factory
 ------------------------------------
 
 ``Zend_Barcode`` verwendet eine Factory Methode um die Instanz eines Renderers zu erstellen der
-``Zend\Barcode_Renderer\RendererAbstract`` erweitert. Die Factory Methode akzeptiert fünf Argumente.
+``Zend\Barcode\Renderer\RendererAbstract`` erweitert. Die Factory Methode akzeptiert fünf Argumente.
 
 . Der Name des Barcode Formats (z.B., "code39") (benötigt)
 

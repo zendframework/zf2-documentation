@@ -97,7 +97,7 @@ The following describes the use cases for each directory as listed.
     application, or for implementing a `Service Layer`_ for your models.
 
   - **Bootstrap.php**: This file is the entry point for your application, and should implement
-    ``Zend\Application_Bootstrap\Bootstrapper``. The purpose for this file is to bootstrap the application and make
+    ``Zend\Application\Bootstrap\Bootstrapper``. The purpose for this file is to bootstrap the application and make
     components available to the application by initializing them.
 
 - **data/**: This directory provides a place to store application data that is volatile and possibly temporary. The

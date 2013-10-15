@@ -8,7 +8,7 @@ Es ist die Natur von Anwendungen eine Vielzahl an Caches jedes Types zu benötig
 der Bibliothek oder dem Domainmodell auf das zugegriffen wird. Um die einfache Definition von ``Zend_Cache``
 Optionen zu erlauben (wie von der Bootstrap), damit auf ein Cacheobjekt zugegriffen werden kann und nur ein
 minimales Setup im Sourcecode der Anwendung benötigt wird, wurde die Klasse ``Zend\Cache\Manager`` geschrieben.
-Diese Klasse wird von ``Zend\Application_Resource\Cachemanager`` verwendet um sicherzustellen das die Konfiguration
+Diese Klasse wird von ``Zend\Application\Resource\Cachemanager`` verwendet um sicherzustellen das die Konfiguration
 der Bootstrap vorhanden ist, und ``Zend\Controller\Action\Helper\Cache`` um einen einfachen Zugriff und eine
 einfache Instanzierung von Controllern und anderen Helfern zu erlauben.
 
@@ -166,7 +166,7 @@ die Methode ``Zend\Cache\Manager::setTemplateOptions()`` verwendet wird.
    $manager->setTemplateOptions('database', $fineTuning);
    $databaseCache = $manager->getCache('database');
 
-Um zu helfen den Cache Manager sinnvoller zu machen wird ``Zend\Application_Resource\Cachemanager`` und auch der
+Um zu helfen den Cache Manager sinnvoller zu machen wird ``Zend\Application\Resource\Cachemanager`` und auch der
 Action Helfer ``Zend\Controller\Action\Helper\Cache`` angeboten. Beide sind in den betreffenden Abschnitten des
 Referenz Handbuchs beschrieben.
 

@@ -12,7 +12,7 @@ handling file uploads in your projects.
 
    If the reader has experience with file uploading in Zend Framework v1.x,
    he/she will notice some major differences.
-   ``Zend_File_Transfer`` has been deprecated in favor of using the standard ZF2 ``Zend\Form``
+   ``Zend_File\Transfer`` has been deprecated in favor of using the standard ZF2 ``Zend\Form``
    and ``Zend\InputFilter`` features.
 
 .. note::

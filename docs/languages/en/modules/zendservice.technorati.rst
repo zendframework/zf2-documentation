@@ -8,7 +8,7 @@ ZendService\\Technorati
 Introduction
 ------------
 
-``ZendService\Technorati`` provides an easy, intuitive and object-oriented interface for using the Technorati
+``ZendService\Technorati\Technorati`` provides an easy, intuitive and object-oriented interface for using the Technorati
 *API*. It provides access to all available `Technorati API queries`_ and returns the original *XML* response as a
 friendly *PHP* object.
 
@@ -32,14 +32,14 @@ Technorati account`_, then visit the `API Key section`_.
    You can make up to 500 Technorati *API* calls per day, at no charge. Other usage limitations may apply,
    depending on the current Technorati *API* license.
 
-Once you have a valid *API* key, you're ready to start using ``ZendService\Technorati``.
+Once you have a valid *API* key, you're ready to start using ``ZendService\Technorati\Technorati``.
 
 .. _zendservice.technorati.making-first-query:
 
 Making Your First Query
 -----------------------
 
-In order to run a query, first you need a ``ZendService\Technorati`` instance with a valid *API* key. Then choose
+In order to run a query, first you need a ``ZendService\Technorati\Technorati`` instance with a valid *API* key. Then choose
 one of the available query methods, and call it providing required arguments.
 
 .. _zendservice.technorati.making-first-query.example-1:
@@ -49,7 +49,7 @@ one of the available query methods, and call it providing required arguments.
 .. code-block:: php
    :linenos:
 
-   // create a new ZendService\Technorati
+   // create a new ZendService\Technorati\Technorati
    // with a valid API_KEY
    $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
@@ -65,7 +65,7 @@ Each query method accepts an array of optional parameters that can be used to re
 .. code-block:: php
    :linenos:
 
-   // create a new ZendService\Technorati
+   // create a new ZendService\Technorati\Technorati
    // with a valid API_KEY
    $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
@@ -76,17 +76,17 @@ Each query method accepts an array of optional parameters that can be used to re
    // search Technorati for PHP keyword
    $resultSet = $technorati->search('PHP', $options);
 
-A ``ZendService\Technorati`` instance is not a single-use object. That is, you don't need to create a new instance
-for each query call; simply use your current ``ZendService\Technorati`` object as long as you need it.
+A ``ZendService\Technorati\Technorati`` instance is not a single-use object. That is, you don't need to create a new instance
+for each query call; simply use your current ``ZendService\Technorati\Technorati`` object as long as you need it.
 
 .. _zendservice.technorati.making-first-query.example-3:
 
-.. rubric:: Sending multiple queries with the same ZendService\Technorati instance
+.. rubric:: Sending multiple queries with the same ZendService\Technorati\Technorati instance
 
 .. code-block:: php
    :linenos:
 
-   // create a new ZendService\Technorati
+   // create a new ZendService\Technorati\Technorati
    // with a valid API_KEY
    $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
@@ -115,7 +115,7 @@ a collection of result objects. It extends the basic ``ZendService\Technorati\Re
 .. code-block:: php
    :linenos:
 
-   // create a new ZendService\Technorati
+   // create a new ZendService\Technorati\Technorati
    // with a valid API_KEY
    $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
 
@@ -182,7 +182,7 @@ additional objects, such as ``ZendService\Technorati\Author`` and ``ZendService\
    }
    echo "</ol>";
 
-Please read the :ref:`ZendService\Technorati Classes <zendservice.technorati.classes>` section for further
+Please read the :ref:`ZendService\Technorati\Technorati Classes <zendservice.technorati.classes>` section for further
 details about response classes.
 
 .. _zendservice.technorati.handling-errors:
@@ -190,10 +190,10 @@ details about response classes.
 Handling Errors
 ---------------
 
-Each ``ZendService\Technorati`` query method throws a ``ZendService\Technorati\Exception`` exception on failure
+Each ``ZendService\Technorati\Technorati`` query method throws a ``ZendService\Technorati\Exception`` exception on failure
 with a meaningful error message.
 
-There are several reasons that may cause a ``ZendService\Technorati`` query to fail. ``ZendService\Technorati``
+There are several reasons that may cause a ``ZendService\Technorati\Technorati`` query to fail. ``ZendService\Technorati\Technorati``
 validates all parameters for any query request. If a parameter is invalid or it contains an invalid value, a new
 ``ZendService\Technorati\Exception`` exception is thrown. Additionally, the Technorati *API* interface could be
 temporally unavailable, or it could return a response that is not well formed.
@@ -220,11 +220,11 @@ Checking Your API Key Daily Usage
 ---------------------------------
 
 From time to time you probably will want to check your *API* key daily usage. By default Technorati limits your
-*API* usage to 500 calls per day, and an exception is returned by ``ZendService\Technorati`` if you try to use it
+*API* usage to 500 calls per day, and an exception is returned by ``ZendService\Technorati\Technorati`` if you try to use it
 beyond this limit. You can get information about your *API* key usage using the
-``ZendService\Technorati::keyInfo()`` method.
+``ZendService\Technorati\Technorati::keyInfo()`` method.
 
-``ZendService\Technorati::keyInfo()`` returns a ``ZendService\Technorati\KeyInfoResult`` object. For full details
+``ZendService\Technorati\Technorati::keyInfo()`` returns a ``ZendService\Technorati\KeyInfoResult`` object. For full details
 please see the `API reference guide`_.
 
 .. _zendservice.technorati.checking-api-daily-usage.example-1:
@@ -246,7 +246,7 @@ please see the `API reference guide`_.
 Available Technorati Queries
 ----------------------------
 
-``ZendService\Technorati`` provides support for the following queries:
+``ZendService\Technorati\Technorati`` provides support for the following queries:
 
 
 
@@ -275,7 +275,7 @@ Technorati Cosmos
 
 `Cosmos`_ query lets you see what blogs are linking to a given *URL*. It returns a
 :ref:`ZendService\Technorati\CosmosResultSet <zendservice.technorati.classes.cosmosresultset>` object. For full
-details please see ``ZendService\Technorati::cosmos()`` in the `API reference guide`_.
+details please see ``ZendService\Technorati\Technorati::cosmos()`` in the `API reference guide`_.
 
 .. _zendservice.technorati.queries.cosmos.example-1:
 
@@ -359,7 +359,7 @@ Technorati DailyCounts
 
 The `DailyCounts`_ query provides daily counts of posts containing the queried keyword. It returns a
 :ref:`ZendService\Technorati\DailyCountsResultSet <zendservice.technorati.classes.dailycountsresultset>` object.
-For full details please see ``ZendService\Technorati::dailyCounts()`` in the `API reference guide`_.
+For full details please see ``ZendService\Technorati\Technorati::dailyCounts()`` in the `API reference guide`_.
 
 .. _zendservice.technorati.queries.dailycounts.example-1:
 
@@ -471,7 +471,7 @@ details please see ``ZendService\Technorati\Technorati::getInfo()`` in the `API 
 .. code-block:: php
    :linenos:
 
-   $technorati = new ZendService\Technorati('VALID_API_KEY');
+   $technorati = new ZendService\Technorati\Technorati('VALID_API_KEY');
    $result = $technorati->getInfo('weppos');
 
    $author = $result->getAuthor();
@@ -541,13 +541,13 @@ result object. All result set classes extend ``ZendService\Technorati\ResultSet`
    ``ZendService\Technorati\GetInfoResult``, ``ZendService\Technorati\BlogInfoResult`` and
    ``ZendService\Technorati\KeyInfoResult`` represent exceptions to the above because they don't belong to a
    result set and they don't implement any interface. They represent a single response object and they act as a
-   wrapper for additional ``ZendService\Technorati`` objects, such as ``ZendService\Technorati\Author`` and
+   wrapper for additional ``ZendService\Technorati\Technorati`` objects, such as ``ZendService\Technorati\Author`` and
    ``ZendService\Technorati\Weblog``.
 
-The ``ZendService\Technorati`` library includes additional convenient classes representing specific response
+The ``ZendService\Technorati\Technorati`` library includes additional convenient classes representing specific response
 objects. ``ZendService\Technorati\Author`` represents a single Technorati account, also known as a blog author or
 blogger. ``ZendService\Technorati\Weblog`` represents a single weblog object, along with all specific weblog
-properties such as feed *URL*\ s or blog name. For full details please see ``ZendService\Technorati`` in the `API
+properties such as feed *URL*\ s or blog name. For full details please see ``ZendService\Technorati\Technorati`` in the `API
 reference guide`_.
 
 .. _zendservice.technorati.classes.resultset:

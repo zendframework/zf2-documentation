@@ -206,7 +206,7 @@ Multipliziert mit der anzahl der Komponenten die den PluginLoader verwenden, und
 Reichweite des Problems. Zu der Zeit zu der das geschrieben wird, verwenden die folgenden Komponenten den
 PluginLoader:
 
-- ``Zend\Controller_Action\HelperBroker``: Helfer
+- ``Zend\Controller\Action\HelperBroker``: Helfer
 
 - ``Zend\File\Transfer``: Adapter
 

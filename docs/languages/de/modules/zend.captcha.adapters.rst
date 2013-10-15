@@ -17,7 +17,7 @@ das verwendet werden soll, und die Session Namespaceklasse die für die Persiste
 ``Zend\Session\Namespace`` nicht verwenden will. ``Zend\Captcha\Word`` kapselt die Prüflogik.
 
 Standardmäßig ist die Wortlänge 8 Zeichen, das Sessiontimeout 5 Minuten und für die Persistenz wird
-``Zend\Session\Namespace`` verwendet (wobei der Namespace "``Zend\Form_Captcha\<captcha ID>``" verwendet wird).
+``Zend\Session\Namespace`` verwendet (wobei der Namespace "``Zend\Form\Captcha\<captcha ID>``" verwendet wird).
 
 Zusätzlich zu den Methoden wie vom ``Zend\Captcha\Adapter`` Interface benötigt werden bietet
 ``Zend\Captcha\Word`` die folgenden Methoden an:
@@ -131,7 +131,7 @@ entfernt wird und der Anfangsbuchstabe kleingeschrieben wird: "suffix", "height"
 Zend\Captcha\ReCaptcha
 ----------------------
 
-Der ``Zend\Captcha\ReCaptcha`` Adapter verwendet :ref:`Zend\Service\ReCaptcha <zend.service.recaptcha>` um
+Der ``Zend\Captcha\ReCaptcha`` Adapter verwendet :ref:`ZendService\ReCaptcha\ReCaptcha <zendservice.recaptcha>` um
 *CAPTCHA*\ s zu erzeugen und zu prüfen. Es bietet die folgenden Methoden an:
 
 - ``setPrivKey($key)`` und ``getPrivKey()`` erlauben es den privaten Schlüssel zu spezifizieren der für den
@@ -142,7 +142,7 @@ Der ``Zend\Captcha\ReCaptcha`` Adapter verwendet :ref:`Zend\Service\ReCaptcha <z
   ReCaptcha Service verwendet werden soll. Er muß wärend der Erstellung spezifiziert werden, auch wenn er
   jederzeit überschrieben werden kann.
 
-- ``setService(Zend\Service\ReCaptcha $service)`` und ``getService()`` erlauben es das ReCaptcha Serviceobjekt zu
+- ``setService(ZendService\ReCaptcha\ReCaptcha $service)`` und ``getService()`` erlauben es das ReCaptcha Serviceobjekt zu
   setzen und erhalten.
 
 

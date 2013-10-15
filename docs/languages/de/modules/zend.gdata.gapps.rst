@@ -60,7 +60,7 @@ angegeben. Zum Beispiel:
    :linenos:
 
    $domain = "example.com";
-   $query = new ZendGData_Gapps\UserQuery($domain, $arg);
+   $query = new ZendGData\Gapps\UserQuery($domain, $arg);
 
 Wenn eine Serviceklassen Factorymethode verwendet wird um eine Abfrage zu erstellen, setzt die Serviceklasse die
 Domain der Abfrage automatisch so das Sie ihrer eigenen Domain entspricht. Als Ergebnis ist es nicht notwendig die
@@ -78,7 +78,7 @@ Domain als Teil der Konstruktorargumente zu spezifizieren.
 Interaktion mit Benutzern
 -------------------------
 
-Jeder Benutzerzugang zu einer Google Apps gehosteten Domain wird als Instanz von ``ZendGData_Gapps\UserEntry``
+Jeder Benutzerzugang zu einer Google Apps gehosteten Domain wird als Instanz von ``ZendGData\Gapps\UserEntry``
 repräsentiert. Diese Klasse bietet Zugriff zu allen Zugangseigenschaften inklusive Name, Benutzername, Passwort,
 Zugriffsrechte und aktuellen Quoten.
 
@@ -136,7 +136,7 @@ der Benutzer nicht gefunden wird, wird ``NULL`` zurückgegeben.
    echo 'Hat den Regeln zugestimmt: ' .
         ($user->login->agreedToTerms ? 'Ja' : 'Nein') . "\n";
 
-Benutzer kann man auch erhalten indem eine Instanz von ``ZendGData_Gapps\UserQuery`` erstellt wird, und dessen
+Benutzer kann man auch erhalten indem eine Instanz von ``ZendGData\Gapps\UserQuery`` erstellt wird, und dessen
 username Eigenschaft dem Benutzernamen des Benutzers entspricht den man erhalten will und ``getUserEntry()`` auf
 einem Serviceobjekt mit dieser Abfrage aufruft.
 
@@ -157,7 +157,7 @@ einem Serviceobjekt mit dieser Abfrage aufruft.
         ($user->login->agreedToTerms ? 'Ja' : 'Nein') . "\n";
 
 Wenn der spezifizierte Benutzer nicht gefunden werden kann wird eine ServiceException mit einem Fehlercode von
-``ZendGData_Gapps\Error::ENTITY_DOES_NOT_EXIST`` geworfen. ServiceExceptions werden in :ref:`dem Kapitel über
+``ZendGData\Gapps\Error::ENTITY_DOES_NOT_EXIST`` geworfen. ServiceExceptions werden in :ref:`dem Kapitel über
 Exceptions <zend.gdata.gapps.exceptions>` behandelt.
 
 .. _zend.gdata.gapps.users.retrievingAll:
@@ -177,7 +177,7 @@ Um alle Benutzer in einer Domäne zu erhalten kann die einfache ``retrieveAllUse
            ' ' . $user->name->familyName . ")\n";
    }
 
-Das wird ein ``ZendGData_Gapps\UserFeed`` Objekt erstellen welches jeden Benutzer dieser Domain enthält.
+Das wird ein ``ZendGData\Gapps\UserFeed`` Objekt erstellen welches jeden Benutzer dieser Domain enthält.
 
 Alternativ kann ``getUserFeed()`` ohne Optionen aufgerufen werden. Es ist zu beachten das dieser Feed bei
 größeren Domains durch den Server in Seiten ausgegeben werden kann. Über weitere Informationen der Ausgabe in
@@ -321,7 +321,7 @@ Spitznamen arbeiten als Email Aliase für bestehende Benutzer. Jeder Spitzname e
 Schlüsseleigenschaften: Seinen Namen und seinen Eigentümer. Jede Email die zu einem Spitznamen adressiert wurde
 wird zu dem Benutzer weitergeleitet der diesen Spitznamen besitzt.
 
-Spitznamen werden repräsentiert als Instanz von ``ZendGData_Gapps\NicknameEntry``.
+Spitznamen werden repräsentiert als Instanz von ``ZendGData\Gapps\NicknameEntry``.
 
 .. _zend.gdata.gapps.nicknames.creating:
 
@@ -363,7 +363,7 @@ zurück wenn der Benutzer nicht gefunden wurde.
    echo 'Spitzname: ' . $nickname->nickname->name . "\n";
    echo 'Eigentümer: ' . $nickname->login->username . "\n";
 
-Individuelle Spitznamen können durch Erstellung einer ``ZendGData_Gapps\NicknameQuery`` Instanz erhalten werden,
+Individuelle Spitznamen können durch Erstellung einer ``ZendGData\Gapps\NicknameQuery`` Instanz erhalten werden,
 indem dessen nickname Eigenschaft dem Spitznamen gleichgesetzt wird der empfangen werden soll, und
 ``getNicknameEntry()`` auf einem Server Objekt mit dieser Abfrage aufgerufen wird.
 
@@ -377,7 +377,7 @@ indem dessen nickname Eigenschaft dem Spitznamen gleichgesetzt wird der empfange
    echo 'Eigentümer: ' . $nickname->login->username . "\n";
 
 Genau wie bei den Benutzern wird eine ServiceException geworfen wenn kein entsprechender Spitzname gefunden wurde
-und ein Fehlercode von ``ZendGData_Gapps\Error::ENTITY_DOES_NOT_EXIST`` zurückgegeben. Auch das wird in :ref:`dem
+und ein Fehlercode von ``ZendGData\Gapps\Error::ENTITY_DOES_NOT_EXIST`` zurückgegeben. Auch das wird in :ref:`dem
 Kapitel über Exceptions <zend.gdata.gapps.exceptions>` beschrieben.
 
 .. _zend.gdata.gapps.nicknames.retrievingUser:
@@ -397,10 +397,10 @@ Um alle Spitznamen zu erhalten die einem angegebenen Benutzer assoziiert sind, k
        echo '  * ' . $nickname->nickname->name . "\n";
    }
 
-Das erzeugt ein ``ZendGData_Gapps\NicknameFeed`` Objekt welches jeden mit dem spezifizierten Benutzer assoziierten
+Das erzeugt ein ``ZendGData\Gapps\NicknameFeed`` Objekt welches jeden mit dem spezifizierten Benutzer assoziierten
 Spitznamen enthält.
 
-Alternativ setzt das Erstellen einer neuen ``ZendGData_Gapps\NicknameQuery`` dessen username Eigenschaft auf den
+Alternativ setzt das Erstellen einer neuen ``ZendGData\Gapps\NicknameQuery`` dessen username Eigenschaft auf den
 gewünschten Benutzer, und überträgt die Abfrage durch den Aufruf von ``getNicknameFeed()`` auf dem Service
 Objekt.
 
@@ -433,7 +433,7 @@ aufgerufen werden.
            $nickname->login->username . "\n";
    }
 
-Das wird ein ``ZendGData_Gapps\NicknameFeed`` Objekt erstellen welches jeden Spitznamen in der Domain enthält.
+Das wird ein ``ZendGData\Gapps\NicknameFeed`` Objekt erstellen welches jeden Spitznamen in der Domain enthält.
 
 Alternativ kann ``getNicknameFeed()`` auf einem Service Objekt ohne Argumente aufgerufen werden.
 
@@ -480,7 +480,7 @@ mit einer neuen Email Liste beginnen will, ist es empfehlenswert statt dessen Go
 Email Liste ist nicht mit Google Gruppen kompatibel. Wenn man also eine Email Liste erstellt, scheint Sie nicht als
 Gruppe auf. Das Gegenteil ist natürlich genauso wahr.
 
-Jede Gruppe an einer Domain wird als Instanz von ``ZendGData_Gapps\GroupEntry`` repräsentiert.
+Jede Gruppe an einer Domain wird als Instanz von ``ZendGData\Gapps\GroupEntry`` repräsentiert.
 
 .. _zend.gdata.gapps.groups.creating:
 
@@ -531,9 +531,9 @@ Um eine individuelle Gruppe zu erhalten, muss die bequeme Methode ``retrieveGrou
        echo "\nWert der Eigenschaft: " . $p->value . "\n\n";
    }
 
-Das erstellt ein ``ZendGData_Gapps\GroupEntry`` Objekt welches die Eigenschaften der Gruppe enthält.
+Das erstellt ein ``ZendGData\Gapps\GroupEntry`` Objekt welches die Eigenschaften der Gruppe enthält.
 
-Alternativ kann ein neuer ``ZendGData_Gapps\GroupQuery`` erstellt, seine groupId Eigenschaft auf die gewünschte
+Alternativ kann ein neuer ``ZendGData\Gapps\GroupQuery`` erstellt, seine groupId Eigenschaft auf die gewünschte
 Gruppen Id gesetzt werden, und die Abfrage übermittelt werden indem ``getGroupEntry()`` auf dem Service Objekt
 aufgerufen wird.
 
@@ -569,7 +569,7 @@ Um alle Gruppen in einer Domäne zu erhalten muss die bequeme Methode ``retrieve
        echo "\n\n";
    }
 
-Dies erstellt ein ``ZendGData_Gapps\GroupFeed`` Objekt welches jede Gruppe der Domain enthält.
+Dies erstellt ein ``ZendGData\Gapps\GroupFeed`` Objekt welches jede Gruppe der Domain enthält.
 
 Alternativ kann ``getGroupFeed()`` auf einem Service Objekt ohne Argumente aufgerufen werden.
 
@@ -635,10 +635,10 @@ Um alle Gruppen zu erhalten bei denen eine Spezielle Person Mitglied ist, kann d
        echo "\n\n";
    }
 
-Dies erstellt ein ``ZendGData_Gapps\GroupFeed`` Objekt welches jede Gruppe enthält die mit dem spezifizierten
+Dies erstellt ein ``ZendGData\Gapps\GroupFeed`` Objekt welches jede Gruppe enthält die mit dem spezifizierten
 Mitglied assoziiert ist.
 
-Alternativ kann eine neue ``ZendGData_Gapps\GroupQuery`` erstellt werden, die Eigenschaft member auf die
+Alternativ kann eine neue ``ZendGData\Gapps\GroupQuery`` erstellt werden, die Eigenschaft member auf die
 gewünschte Email Adresse gesetzt, und die Abfrage durch Aufruf von ``getGroupFeed()`` auf dem Service Objekt
 übermittelt werden.
 
@@ -663,7 +663,7 @@ Mit Gruppenmitgliedern interagieren
 -----------------------------------
 
 Jedes Mitglied welches bei einer Gruppe eingeschrieben ist wird durch eine Instanz von
-``ZendGData_Gapps\MemberEntry`` repräsentiert. Durch diese Klasse können individuelle Empfänger bei Gruppen
+``ZendGData\Gapps\MemberEntry`` repräsentiert. Durch diese Klasse können individuelle Empfänger bei Gruppen
 hinzugefügt und gelöscht werden.
 
 .. _zend.gdata.gapps.groupMembers.adding:
@@ -746,14 +746,14 @@ Id gesetzt und ``getMemberFeed()`` auf einem Service Objekt aufgerufen werden.
        }
    }
 
-Das erstellt ein ``ZendGData_Gapps\MemberFeed`` Objekt welches jedes Mitglied der ausgewählten Gruppe enthält.
+Das erstellt ein ``ZendGData\Gapps\MemberFeed`` Objekt welches jedes Mitglied der ausgewählten Gruppe enthält.
 
 .. _zend.gdata.gapps.groupOwners:
 
 Mit Gruppen Eigentümern interagieren
 ------------------------------------
 
-Jeder Eigentümer der mit einer Gruppe assoziiert ist wird durch eine Instanz von ``ZendGData_Gapps\OwnerEntry``
+Jeder Eigentümer der mit einer Gruppe assoziiert ist wird durch eine Instanz von ``ZendGData\Gapps\OwnerEntry``
 repräsentiert. Durch diese Klasse können individuelle Eigentümer hinzugefügt und von Gruppen entfernt werden.
 
 .. _zend.gdata.gapps.groupOwners.adding:
@@ -806,7 +806,7 @@ Id gesetzt und ``getOwnerFeed()`` auf einem Service Objekt aufgerufen werden.
        }
    }
 
-Das erstelle ein ``ZendGData_Gapps\OwnerFeed`` Objekt welches jedes Mitglied der ausgewählten Gruppe enthält.
+Das erstelle ein ``ZendGData\Gapps\OwnerFeed`` Objekt welches jedes Mitglied der ausgewählten Gruppe enthält.
 
 .. _zend.gdata.gapps.groupOwners.check:
 
@@ -847,7 +847,7 @@ Email Listen erlauben verschiedenen Benutzern Emails zu empfangen die zu einer e
 sind. Benutzer müssen keine Teilnehmer dieser Domain sein um sich in eine Email Liste einzuschreiben, wen deren
 komplette Email Adresse (inklusive Domain) verwendet wird.
 
-Jede Email Liste einer Domain wird als Instanz von ``ZendGData_Gapps\EmailListEntry`` repräsentiert.
+Jede Email Liste einer Domain wird als Instanz von ``ZendGData\Gapps\EmailListEntry`` repräsentiert.
 
 .. _zend.gdata.gapps.emailLists.creating:
 
@@ -889,10 +889,10 @@ Um alle Email Lsiten zu denen ein spezieller Empfänger eingeschrieben ist zu em
        echo '  * ' . $list->emailList->name . "\n";
    }
 
-Das erstellt ein ``ZendGData_Gapps\EmailListFeed`` Objekt welches jede Email Liste enthält die mit dem speziellen
+Das erstellt ein ``ZendGData\Gapps\EmailListFeed`` Objekt welches jede Email Liste enthält die mit dem speziellen
 Empfänger assoziiert ist.
 
-Alternativ kann ein neues ``ZendGData_Gapps\EmailListQuery`` erstellt werden, dessen recipient Eigenschaft auf die
+Alternativ kann ein neues ``ZendGData\Gapps\EmailListQuery`` erstellt werden, dessen recipient Eigenschaft auf die
 gewünschte Email Adresse gesetzt werden, und die Abfrage durch den Aufruf von ``getEmailListFeed()`` auf dem
 Service Objekt übermittelt werden.
 
@@ -924,7 +924,7 @@ werden.
        echo '  * ' . $list->emailList->name . "\n";
    }
 
-Das erzeugt ein ``ZendGData_Gapps\EmailListFeed`` Objekt welches jede Email Liste der Domain enthält.
+Das erzeugt ein ``ZendGData\Gapps\EmailListFeed`` Objekt welches jede Email Liste der Domain enthält.
 
 Alternativ kann ``getEmailListFeed()`` auf dem Service Objekt ohne Argumente aufgerufen werden.
 
@@ -955,7 +955,7 @@ Mit den Empfängern von Email Listen interagieren
 ------------------------------------------------
 
 Jeder Empfänger der bei einer Email Liste eingeschrieben ist, wird durch eine Instanz von
-``ZendGData_Gapps\EmailListRecipient`` repräsentiert. Durch diese Klasse können individuelle Empfänger
+``ZendGData\Gapps\EmailListRecipient`` repräsentiert. Durch diese Klasse können individuelle Empfänger
 hinzugefügt und von Email Listen entfernt werden.
 
 .. _zend.gdata.gapps.emailListRecipients.adding:
@@ -1003,7 +1003,7 @@ werden.
        echo '  * ' . $recipient->who->email . "\n";
    }
 
-Das Erstellt ein ``ZendGData_Gapps\EmailListRecipientFeed`` Objekt welche jeden Empfänger für die ausgewählte
+Das Erstellt ein ``ZendGData\Gapps\EmailListRecipientFeed`` Objekt welche jeden Empfänger für die ausgewählte
 Email Liste enthält.
 
 .. _zend.gdata.gapps.emailListRecipients.removing:
@@ -1025,12 +1025,12 @@ Fehler handhaben
 ----------------
 
 Zusätzlich zur Standardsuite von Ausnahmen die von ``ZendGData`` geworfen werden, können Anfragen welche die
-Provisionierungs *API* verwenden auch eine ``ZendGData_Gapps\ServiceException`` werfen. Diese Ausnahme zeigt das
+Provisionierungs *API* verwenden auch eine ``ZendGData\Gapps\ServiceException`` werfen. Diese Ausnahme zeigt das
 ein *API* spezieller Fehler aufgetreten ist welche verhindert das die Anfrage fertiggestellt werden kann.
 
 Jede ServiceException Instanz kann einen oder mehrere Fehler Objekte enthalten. Jedes dieser Objekte enthalten
 einen Fehlercode, Grund und (optional) die Eingave welche die Ausnahme getriggert hat. Eine komplette Liste von
-bekannten Fehlercodes wird in der Zend Framework *API* Dokumentation unter ``ZendGData_Gapps\Error`` angeboten.
+bekannten Fehlercodes wird in der Zend Framework *API* Dokumentation unter ``ZendGData\Gapps\Error`` angeboten.
 Zusätzlich ist die maßgebliche Fehlerliste online unter `Google Apps Provisioning API V2.0 Reference: Appendix
 D`_ vorhanden.
 
@@ -1049,9 +1049,9 @@ Fehler korrekt behandelt werden kann:
        $query = $gdata->newUserQuery($username);
        try {
            $user = $gdata->getUserEntry($query);
-       } catch (ZendGData_Gapps\ServiceException $e) {
+       } catch (ZendGData\Gapps\ServiceException $e) {
            // Den Benutzer auf null setzen wen er nicht gefunden wurde
-           if ($e->hasError(ZendGData_Gapps\Error::ENTITY_DOES_NOT_EXIST)) {
+           if ($e->hasError(ZendGData\Gapps\Error::ENTITY_DOES_NOT_EXIST)) {
                $user = null;
            } else {
                throw $e;

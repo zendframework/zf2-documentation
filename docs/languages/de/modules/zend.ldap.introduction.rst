@@ -25,8 +25,8 @@ durchzuführen, wie das Setzen und Empfangen von Attributen (Datumswerte, Passw�
 (``Zend\Ldap\Dn``) zu manipulieren.
 
 Zusätzlich abstrahiert die Komponente das Suchen im *LDAP* Schema für OpenLDAP und ActiveDirectory Server
-``Zend\Ldap_Node\Schema`` und das empfangen von Server Informationen für OpenLDAP-, ActiveDirectory- und Novell
-eDirectory Server (``Zend\Ldap_Node\RootDse``).
+``Zend\Ldap\Node\Schema`` und das empfangen von Server Informationen für OpenLDAP-, ActiveDirectory- und Novell
+eDirectory Server (``Zend\Ldap\Node\RootDse``).
 
 Die Verwendung der ``Zend_Ldap`` Klasse hängt vom Typ des *LDAP* Servers ab und wird am besten mit einigen
 einfachen Beispielen gezeigt.
@@ -83,7 +83,7 @@ Benutzername in DN-Form im Optionen-Array übergeben wurde, wird ``Zend_Ldap`` s
 an den Server binden, den Account DN für den Benutzernamen empfangen der bei *bind()* angegeben wurde und dann mit
 diesem zum DN verbinden.
 
-Dieses Verhalten ist kritisch für :ref:`Zend\Auth_Adapter\Ldap <zend.auth.adapter.ldap>`, welches den vom Benutzer
+Dieses Verhalten ist kritisch für :ref:`Zend\Auth\Adapter\Ldap <zend.auth.adapter.ldap>`, welches den vom Benutzer
 angegebenen Benutzernamen direkt an ``bind()`` übergibt.
 
 Das folgende Beispiel zeigt wie der nicht-DN Benutzername '**abaker**' mit ``bind()`` verwendet werden kann:
@@ -225,7 +225,7 @@ keinen Effekt hat, aber in der Praxis für Fehlerbehandlung und Debugging Zwecke
 warscheinlich auf ``LDAP_X_DOMAIN_MISMATCH`` sowie ``LDAP_NO_SUCH_OBJECT`` und ``LDAP_INVALID_CREDENTIALS`` prüfen
 will.
 
-Der obige Code ist dem Code der in :ref:`Zend\Auth_Adapter\Ldap <zend.auth.adapter.ldap>` verwendet wurde sehr
+Der obige Code ist dem Code der in :ref:`Zend\Auth\Adapter\Ldap <zend.auth.adapter.ldap>` verwendet wurde sehr
 ähnlich. Fakt ist, das wir einfach empfehlen den Authentifizierungs Adapter für Multi-Domain und Failover
 basierte *LDAP* Authentifizierung zu verwenden (oder den Code zu kopieren).
 

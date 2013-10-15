@@ -29,8 +29,6 @@ HTTP-запросов. Zend\Http\Client поддерживает как боль
       :linenos:
 
       <?php
-          require_once 'Zend/Http/Client.php';
-
           $client = new Zend\Http\Client('http://example.org', array(
               'maxredirects' => 0,
               'timeout'      => 30));
@@ -91,8 +89,6 @@ HTTP-запросов. Zend\Http\Client поддерживает как боль
       :linenos:
 
       <?php
-          require_once 'Zend/Http/Client.php';
-
           $client = new Zend\Http\Client('http://example.org');
           $response = $client->request();
       ?>

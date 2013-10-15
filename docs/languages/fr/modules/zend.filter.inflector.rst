@@ -67,7 +67,7 @@ préfixes plus profonds, enlevez leur préfixe "``Zend_Filter``" tout simplement
 .. code-block:: php
    :linenos:
 
-   // utilise Zend\Filter_Word\CamelCaseToDash comme règle
+   // utilise Zend\Filter\Word\CamelCaseToDash comme règle
    $inflector->addRules(array('script' => 'Word_CamelCaseToDash'));
 
 Pour spécifier d'autres chemins, ``Zend\Filter\Inflector`` possède une méthode qui proxie vers le plugin loader,
@@ -253,7 +253,7 @@ noms des filtres passés à ces 2 méthodes sont de la forme :
    $inflector = new Zend\Filter\Inflector(':script.:suffix');
 
    // Affecte une règle pour utiliser le filtre
-   //Zend\Filter_Word\CamelCaseToDash
+   //Zend\Filter\Word\CamelCaseToDash
    $inflector->setFilterRule('script', 'Word_CamelCaseToDash');
 
    // Ajoute une règle vers un filtre de casse minuscule

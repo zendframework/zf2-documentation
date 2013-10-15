@@ -13,7 +13,7 @@
 которого в Zend Framework-е не предусмотрено адаптера. В этом случае
 нужно создать собственный адаптер.
 
-Для этого нужно реализовать интерфейс ``Zend\Paginator_Adapter\Interface``. Он
+Для этого нужно реализовать интерфейс ``Zend\Paginator\Adapter\Interface``. Он
 включает в себя два метода:
 
 - count()
@@ -42,7 +42,7 @@
    return array_slice($this->_array, $offset, $itemCountPerPage);
 
 Посмотрите исходники адаптеров, входящих в поставку Zend Framework
-(все они реализуют ``Zend\Paginator_Adapter\Interface``), чтобы получить
+(все они реализуют ``Zend\Paginator\Adapter\Interface``), чтобы получить
 представление о том, как можно реализовать свой адаптер.
 
 .. _zend.paginator.advanced.scrolling-styles:
@@ -51,7 +51,7 @@
 -------------------------------
 
 При создании своего стиля прокрутки реализуйте интерфейс
-``Zend\Paginator_ScrollingStyle\Interface``, который определяет единственный
+``Zend\Paginator\ScrollingStyle\Interface``, который определяет единственный
 метод, ``getPages()``:
 
 .. code-block:: php
@@ -64,7 +64,7 @@
 находятся рядом с текущей страницей).
 
 Если только ваш стиль прокрутки не наследует от уже
-существующего (для примера смотрите ``Zend\Paginator_ScrollingStyle\Elastic``), то
+существующего (для примера смотрите ``Zend\Paginator\ScrollingStyle\Elastic``), то
 этот метод должен иметь в конце что-то вроде следующего:
 
 .. code-block:: php
@@ -211,7 +211,7 @@
 инкапсуляцию для того, что предоставлять доступ к этим данным.
 В других случаях объект может участвовать в связи
 "имеет-адаптер" вместо связи "является-адаптером", которую
-предлагает ``Zend\Paginator_Adapter\Abstract``. В этих случаях вы можете
+предлагает ``Zend\Paginator\Adapter\Abstract``. В этих случаях вы можете
 использовать интерфейс ``Zend\Paginator\AdapterAggregate``, который по
 поведению значительно похож на интерфейс ``IteratorAggregate`` из
 расширения SPL.
@@ -226,7 +226,7 @@
           /**
            * Возвращайте из этого метода полностью сконфигурированный адаптер.
            *
-           * @return Zend\Paginator_Adapter\Abstract
+           * @return Zend\Paginator\Adapter\Abstract
            */
           public function getPaginatorAdapter();
       }
@@ -234,7 +234,7 @@
 
 
 Как видно из кода, интерфейс довольно небольшой и от вас
-ожидается только возврат экземпляра ``Zend\Paginator_Adapter\Abstract``.
+ожидается только возврат экземпляра ``Zend\Paginator\Adapter\Abstract``.
 Фабричный метод ``Zend\Paginator\Paginator::factory`` и конструктор класса ``Zend_Paginator``
 после этого распознают экземпляр ``Zend\Paginator\AdapterAggregate`` и
 обрабатывают его должным образом.

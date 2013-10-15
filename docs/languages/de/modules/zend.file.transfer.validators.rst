@@ -7,7 +7,7 @@ Prüfungen für Zend\File\Transfer
 ``Zend\File\Transfer`` wird mit verschiedenen Datei-relevanten Prüfungen ausgeliefert welche verwendet werden
 können um die Sicherheit zu erhöhen und mögliche Attacken zu verhindern. Es ist zu beachten das diese Prüfungen
 nur so effektiv sind wie Sie effektiv angewendet verwendet. Alle Prüfungen die mit ``Zend\File\Transfer``
-angeboten werden können in der ``Zend_Validator`` Komponente gefunden werden und heißen ``Zend\Validate_File\*``.
+angeboten werden können in der ``Zend_Validator`` Komponente gefunden werden und heißen ``Zend\Validate\File\*``.
 Die folgenden Prüfungen sind vorhanden:
 
 - ``Count``: Diese Prüfung checkt die Anzahl der Dateien. Es kann ein Minimum und ein Maximum spezifiziert werden.

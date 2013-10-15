@@ -8,7 +8,7 @@ ZendService\\Akismet
 Introduction
 ------------
 
-``ZendService\Akismet`` provides a client for the `Akismet API`_. The Akismet service is used to determine if
+``ZendService\Akismet\Akismet`` provides a client for the `Akismet API`_. The Akismet service is used to determine if
 incoming data is potentially spam. It also exposes methods for submitting data as known spam or as false positives
 (ham). It was originally intended to help categorize and identify spam for Wordpress, but it can be used for any
 type of data.

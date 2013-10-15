@@ -17,7 +17,6 @@ MIME:
    :linenos:
 
    <?php
-   require_once 'Zend/Mail.php';
    $mail = new Zend\Mail\Mail();
    $mail->setBodyText('Un bel testo di test');
    $mail->setBodyHtml('Un bel testo di <b>Test</b>');

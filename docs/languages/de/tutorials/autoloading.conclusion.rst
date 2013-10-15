@@ -10,7 +10,7 @@ Zend Framework empfiehlt die Verwendung von Autoloading, und initialisiert es st
 erweitert werden können indem eigene Autoloader oder Ressource Autoloader angehängt werden.
 
 Für weitere Informationen über dessen Verwendung kann in den Seiten von :ref:`Zend\Loader\Autoloader
-<zend.loader.autoloader>` und :ref:`Zend\Loader_Autoloader\Resource <zend.loader.autoloader-resource>` im Handbuch
+<zend.loader.autoloader>` und :ref:`Zend\Loader\Autoloader\Resource <zend.loader.autoloader-resource>` im Handbuch
 nachgelesen werden.
 
 

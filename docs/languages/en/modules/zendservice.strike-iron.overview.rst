@@ -3,11 +3,11 @@
 ZendService\\StrikeIron
 =======================
 
-``ZendService\StrikeIron`` provides a *PHP* 5 client to StrikeIron web services. See the following sections:
+``ZendService\StrikeIron\StrikeIron`` provides a *PHP* 5 client to StrikeIron web services. See the following sections:
 
 
 
-   - :ref:`ZendService\StrikeIron <zendservice.strikeiron>`
+   - :ref:`ZendService\StrikeIron\StrikeIron <zendservice.strikeiron>`
 
 
 
@@ -33,14 +33,14 @@ multiple services. StrikeIron also manages customer billing for all services in 
 for solution providers. Get started with free web services at `http://www.strikeiron.com/sdp`_.
 
 StrikeIron's services may be used through the `PHP 5 SOAP extension`_ alone. However, using StrikeIron this way
-does not give an ideal *PHP*-like interface. The ``ZendService\StrikeIron`` component provides a lightweight layer
+does not give an ideal *PHP*-like interface. The ``ZendService\StrikeIron\StrikeIron`` component provides a lightweight layer
 on top of the *SOAP* extension for working with StrikeIron services in a more convenient, *PHP*-like manner.
 
 .. note::
 
-   The *PHP* 5 *SOAP* extension must be installed and enabled to use ``ZendService\StrikeIron``.
+   The *PHP* 5 *SOAP* extension must be installed and enabled to use ``ZendService\StrikeIron\StrikeIron``.
 
-The ``ZendService\StrikeIron`` component provides:
+The ``ZendService\StrikeIron\StrikeIron`` component provides:
 
 
 
@@ -62,11 +62,11 @@ The ``ZendService\StrikeIron`` component provides:
 Registering with StrikeIron
 ---------------------------
 
-Before you can get started with ``ZendService\StrikeIron``, you must first `register`_ for a StrikeIron developer
+Before you can get started with ``ZendService\StrikeIron\StrikeIron``, you must first `register`_ for a StrikeIron developer
 account.
 
 After registering, you will receive a StrikeIron username and password. These will be used when connecting to
-StrikeIron using ``ZendService\StrikeIron``.
+StrikeIron using ``ZendService\StrikeIron\StrikeIron``.
 
 You will also need to `sign up`_ for StrikeIron's Super Data Pack Web Service.
 
@@ -78,9 +78,9 @@ Getting Started
 ---------------
 
 Once you have `registered`_ for a StrikeIron account and signed up for the `Super Data Pack`_, you're ready to
-start using ``ZendService\StrikeIron``.
+start using ``ZendService\StrikeIron\StrikeIron``.
 
-StrikeIron consists of hundreds of different web services. ``ZendService\StrikeIron`` can be used with many of
+StrikeIron consists of hundreds of different web services. ``ZendService\StrikeIron\StrikeIron`` can be used with many of
 these services but provides supported wrappers for three of them:
 
 - :ref:`ZIP Code Information <zendservice.strikeiron.bundled-services.zip-code-information>`
@@ -89,7 +89,7 @@ these services but provides supported wrappers for three of them:
 
 - :ref:`Sales & Use Tax Basic <zendservice.strikeiron.bundled-services.sales-use-tax-basic>`
 
-The class ``ZendService\StrikeIron`` provides a simple way of specifying your StrikeIron account information and
+The class ``ZendService\StrikeIron\StrikeIron`` provides a simple way of specifying your StrikeIron account information and
 other options in its constructor. It also has a factory method that will return clients for StrikeIron services:
 
 .. code-block:: php

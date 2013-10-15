@@ -3,7 +3,7 @@
 ZendService\\StrikeIron: Advanced Uses
 ======================================
 
-This section describes the more advanced uses of ``ZendService\StrikeIron``.
+This section describes the more advanced uses of ``ZendService\StrikeIron\StrikeIron``.
 
 .. _zendservice.strikeiron.advanced-uses.services-by-wsdl:
 
@@ -52,7 +52,7 @@ Every StrikeIron client (subclass of ``ZendService\StrikeIron\Base``) contains a
 return the underlying instance of ``SOAPClient`` used to communicate with StrikeIron.
 
 *PHP*'`SOAPClient`_ has a ``trace`` option that causes it to remember the *XML* exchanged during the last
-transaction. ``ZendService\StrikeIron`` does not enable the ``trace`` option by default but this can easily by
+transaction. ``ZendService\StrikeIron\StrikeIron`` does not enable the ``trace`` option by default but this can easily by
 changed by specifying the options that will be passed to the ``SOAPClient`` constructor.
 
 To view a SOAP transaction, call the ``getSoapClient()`` method to get the ``SOAPClient`` instance and then call

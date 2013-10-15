@@ -40,7 +40,7 @@ Feed personalizzati
 *Zend_Feed* consente agli sviluppatori di creare facilmente i propri feed. E' sufficiente creare un array ed
 importarlo con *Zend_Feed*. L'array può essere importato con *Zend\Feed\Feed::importArray()* o con
 *Zend\Feed\Feed::importBuilder()*. Nell'ultimo caso l'array sarà elaborato al volo da una sorgente di dati
-personalizzata che implementa *Zend\Feed_Builder\Interface*.
+personalizzata che implementa *Zend\Feed\Builder\Interface*.
 
 .. _zend.feed.importing.custom.importarray:
 
@@ -182,17 +182,17 @@ Importazione di una sorgente di dati personalizzata
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 E' possibile creare un'istanza di *Zend_Feed* da una qualsiasi sorgente di dati che implementa
-*Zend\Feed_Builder\Interface*. E' sufficiente implementare i metodi *getHeader()* e *getEntries()* per essere in
+*Zend\Feed\Builder\Interface*. E' sufficiente implementare i metodi *getHeader()* e *getEntries()* per essere in
 grado di utilizzare il proprio oggetto con *Zend\Feed\Feed::importBuilder()*. Come semplice esempio di implementazione
 è possibile utilizzare *Zend\Feed\Feed::importBuilder()*, che accetta un array in ingresso, esegue alcune validazioni
 minori ed infine può essere utilizzato nel metodo *importBuilder()*. Il metodo *getHeader()* deve restituire
-un'istanza di *Zend\Feed_Builder\Header* e *getEntries()* deve restituire un array di istanze di
-*Zend\Feed_Builder\Entry*.
+un'istanza di *Zend\Feed\Builder\Header* e *getEntries()* deve restituire un array di istanze di
+*Zend\Feed\Builder\Entry*.
 
 .. note::
 
    *Zend\Feed\Builder* è utile come concreta implementazione per dimostrare l'utilizzo. Si consiglia agli utenti
-   la creazione di proprie implementazioni personalizzate di *Zend\Feed_Builder\Interface*.
+   la creazione di proprie implementazioni personalizzate di *Zend\Feed\Builder\Interface*.
 
 Ecco un esempio di utilizzo di *Zend\Feed\Feed::importBuilder()*:
 

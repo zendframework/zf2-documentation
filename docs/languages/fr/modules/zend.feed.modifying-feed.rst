@@ -43,7 +43,7 @@ pas explicitement un autre espace de noms.
 .. code-block:: php
    :linenos:
 
-   $entree = new Zend\Feed_Entry\Atom();
+   $entree = new Zend\Feed\Entry\Atom();
    // en Atom, id est toujours affecté par le serveur
    $entree->title = 'mon entrée perso';
    $entree->author->name = 'Auteur';

@@ -257,8 +257,8 @@ man die folgenden Informationen.
 - **Checksum**: Ein Strung der als Callback für eine Methode verwendet wird, welche die Prüfung der Checksumme
   durchführt.
 
-Die eigene Barcode Prüfung muss ``Zend\Validate_Barcode\AdapterAbstract`` erweitern oder
-Zend\Validate_Barcode\AdapterInterface implementieren.
+Die eigene Barcode Prüfung muss ``Zend\Validate\Barcode\AdapterAbstract`` erweitern oder
+Zend\Validate\Barcode\AdapterInterface implementieren.
 
 Als Beispiel, erstellen wir eine Prüfung welche eine gerade Anzahl an Zeichen erwartet welche alle Ziffern und die
 Zeichen 'ABCDE' enthalten kann, und die eine Checksumme benötigt.
@@ -266,7 +266,7 @@ Zeichen 'ABCDE' enthalten kann, und die eine Checksumme benötigt.
 .. code-block:: .validator.
    :linenos:
 
-   class My_Barcode_MyBar extends Zend\Validate_Barcode\AdapterAbstract
+   class My_Barcode_MyBar extends Zend\Validate\Barcode\AdapterAbstract
    {
        protected $_length     = 'even';
        protected $_characters = '0123456789ABCDE';

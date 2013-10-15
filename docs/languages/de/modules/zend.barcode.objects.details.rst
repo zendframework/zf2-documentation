@@ -9,7 +9,7 @@ ausgeliefert werden.
 
 .. _zend.barcode.objects.details.error:
 
-Zend\Barcode_Object\Error
+Zend\Barcode\Object\Error
 -------------------------
 
 .. image:: ../images/zend.barcode.objects.details.error.png
@@ -21,7 +21,7 @@ diese von der ``Zend_Barcode`` Komponente gefangen wird.
 
 .. _zend.barcode.objects.details.code25:
 
-Zend\Barcode_Object\Code25
+Zend\Barcode\Object\Code25
 --------------------------
 
 .. image:: ../images/zend.barcode.objects.details.code25.png
@@ -40,14 +40,14 @@ Es gibt keine speziellen Optionen für diesen Barcode.
 
 .. _zend.barcode.objects.details.code25interleaved:
 
-Zend\Barcode_Object\Code25interleaved
+Zend\Barcode\Object\Code25interleaved
 -------------------------------------
 
 .. image:: ../images/zend.barcode.objects.details.int25.png
    :width: 101
    :align: center
 
-Dieser Barcode erweitert ``Zend\Barcode_Object\Code25`` (Code 2 of 5). Er hat die gleichen Details und Optionen und
+Dieser Barcode erweitert ``Zend\Barcode\Object\Code25`` (Code 2 of 5). Er hat die gleichen Details und Optionen und
 fügt folgendes hinzu:
 
 - **Name:** Code 2 of 5 Interleaved
@@ -62,7 +62,7 @@ Vorhandene Optionen:
 
 .. _zend.barcode.objects.details.code25interleaved.table:
 
-.. table:: Optionen für Zend\Barcode_Object\Code25interleaved
+.. table:: Optionen für Zend\Barcode\Object\Code25interleaved
 
    +--------------+--------+------------+----------------------------------------------------------+
    |Option        |Datentyp|Standardwert|Beschreibung                                              |
@@ -72,19 +72,19 @@ Vorhandene Optionen:
 
 .. note::
 
-   Wenn die Anzahl der Zeichen nicht gerade ist, wird ``Zend\Barcode_Object\Code25interleaved`` fehlende Nullen dem
+   Wenn die Anzahl der Zeichen nicht gerade ist, wird ``Zend\Barcode\Object\Code25interleaved`` fehlende Nullen dem
    Barcode Text automatisch voranstellen.
 
 .. _zend.barcode.objects.details.ean2:
 
-Zend\Barcode_Object\Ean2
+Zend\Barcode\Object\Ean2
 ------------------------
 
 .. image:: ../images/zend.barcode.objects.details.ean2.png
    :width: 41
    :align: center
 
-Dieser Barcode erweitert ``Zend\Barcode_Object\Ean5`` (*EAN* 5) und hat die gleichen Details und Optionen, und
+Dieser Barcode erweitert ``Zend\Barcode\Object\Ean5`` (*EAN* 5) und hat die gleichen Details und Optionen, und
 fügt die folgenden hinzu:
 
 - **Name:** *EAN*-2
@@ -99,19 +99,19 @@ Es gibt keine speziellen Optionen für diesen Barcode.
 
 .. note::
 
-   Wenn die Anzahl der Zeichen kleiner als 2 ist, wird ``Zend\Barcode_Object\Ean2`` fehlende Nullen dem Barcode
+   Wenn die Anzahl der Zeichen kleiner als 2 ist, wird ``Zend\Barcode\Object\Ean2`` fehlende Nullen dem Barcode
    Text automatisch voranstellen.
 
 .. _zend.barcode.objects.details.ean5:
 
-Zend\Barcode_Object\Ean5
+Zend\Barcode\Object\Ean5
 ------------------------
 
 .. image:: ../images/zend.barcode.objects.details.ean5.png
    :width: 68
    :align: center
 
-Dieser Barcode erweitert ``Zend\Barcode_Object\Ean13`` (*EAN* 13) und hat eigene Details und Optionen und fügt die
+Dieser Barcode erweitert ``Zend\Barcode\Object\Ean13`` (*EAN* 13) und hat eigene Details und Optionen und fügt die
 folgenden hinzu:
 
 - **Name:** *EAN*-5
@@ -126,19 +126,19 @@ Es gibt keine speziellen Optionen für diesen Barcode.
 
 .. note::
 
-   Wenn die Anzahl der Zeichen kleiner als 5 ist, wird ``Zend\Barcode_Object\Ean5`` fehlende Nullen dem Barcode
+   Wenn die Anzahl der Zeichen kleiner als 5 ist, wird ``Zend\Barcode\Object\Ean5`` fehlende Nullen dem Barcode
    Text automatisch voranstellen.
 
 .. _zend.barcode.objects.details.ean8:
 
-Zend\Barcode_Object\Ean8
+Zend\Barcode\Object\Ean8
 ------------------------
 
 .. image:: ../images/zend.barcode.objects.details.ean8.png
    :width: 82
    :align: center
 
-Dieser Barcode erweitert ``Zend\Barcode_Object\Ean13`` (*EAN* 13) und hat eigene Details und Optionen und fügt die
+Dieser Barcode erweitert ``Zend\Barcode\Object\Ean13`` (*EAN* 13) und hat eigene Details und Optionen und fügt die
 folgenden hinzu:
 
 - **Name:** *EAN*-8
@@ -153,12 +153,12 @@ Es gibt keine speziellen Optionen für diesen Barcode.
 
 .. note::
 
-   Wenn die Anzahl der Zeichen kleiner als 8 ist, wird ``Zend\Barcode_Object\Ean8`` fehlende Nullen dem Barcode
+   Wenn die Anzahl der Zeichen kleiner als 8 ist, wird ``Zend\Barcode\Object\Ean8`` fehlende Nullen dem Barcode
    Text automatisch voranstellen.
 
 .. _zend.barcode.objects.details.ean13:
 
-Zend\Barcode_Object\Ean13
+Zend\Barcode\Object\Ean13
 -------------------------
 
 .. image:: ../images/zend.barcode.objects.details.ean13.png
@@ -177,14 +177,14 @@ Es gibt keine speziellen Optionen für diesen Barcode.
 
 .. note::
 
-   Wenn die Anzahl der Zeichen kleiner als 13 ist, wird ``Zend\Barcode_Object\Ean13`` fehlende Nullen dem Barcode
+   Wenn die Anzahl der Zeichen kleiner als 13 ist, wird ``Zend\Barcode\Object\Ean13`` fehlende Nullen dem Barcode
    Text automatisch voranstellen.
 
    Die Option ``withQuietZones`` hat bei diesem Barcode keinen Effekt
 
 .. _zend.barcode.objects.details.code39:
 
-Zend\Barcode_Object\Code39
+Zend\Barcode\Object\Code39
 --------------------------
 
 .. image:: ../images/zend.barcode.introduction.example-1.png
@@ -201,20 +201,20 @@ Zend\Barcode_Object\Code39
 
 .. note::
 
-   ``Zend\Barcode_Object\Code39`` fügt automatisch die Start und Stop Zeichen ('\*') hinzu.
+   ``Zend\Barcode\Object\Code39`` fügt automatisch die Start und Stop Zeichen ('\*') hinzu.
 
 Es gibt keine speziellen Optionen für diesen Barcode.
 
 .. _zend.barcode.objects.details.identcode:
 
-Zend\Barcode_Object\Identcode
+Zend\Barcode\Object\Identcode
 -----------------------------
 
 .. image:: ../images/zend.barcode.objects.details.identcode.png
    :width: 137
    :align: center
 
-Dieser Barcode erweitert ``Zend\Barcode_Object\Code25interleaved`` (Code 2 of 5 Interleaved), und enthält einige
+Dieser Barcode erweitert ``Zend\Barcode\Object\Code25interleaved`` (Code 2 of 5 Interleaved), und enthält einige
 seiner Fähigkeiten; er hat auch selbst einige spezielle.
 
 - **Name:** Identcode (Deutsche Post Identcode)
@@ -229,19 +229,19 @@ Es gibt keine speziellen Optionen für diesen Barcode.
 
 .. note::
 
-   Wenn die Anzahl der Zeichen kleiner als 12 ist, wird ``Zend\Barcode_Object\Identcode`` fehlende Nullen dem
+   Wenn die Anzahl der Zeichen kleiner als 12 ist, wird ``Zend\Barcode\Object\Identcode`` fehlende Nullen dem
    Barcode Text automatisch voranstellen.
 
 .. _zend.barcode.objects.details.itf14:
 
-Zend\Barcode_Object\Itf14
+Zend\Barcode\Object\Itf14
 -------------------------
 
 .. image:: ../images/zend.barcode.objects.details.itf14.png
    :width: 155
    :align: center
 
-Dieser Barcode erweitert ``Zend\Barcode_Object\Int25`` (Code 2 of 5 Interleaved), und erweitert einige seiner
+Dieser Barcode erweitert ``Zend\Barcode\Object\Int25`` (Code 2 of 5 Interleaved), und erweitert einige seiner
 Möglichkeiten; er hat auch selbst einige spezielle.
 
 - **Name:** *ITF*-14
@@ -256,19 +256,19 @@ Es gibt keine speziellen Optionen für diesen Barcode.
 
 .. note::
 
-   Wenn die Anzahl der Zeichen kleiner als 14 ist, wird ``Zend\Barcode_Object\Itf14`` fehlende Nullen dem Barcode
+   Wenn die Anzahl der Zeichen kleiner als 14 ist, wird ``Zend\Barcode\Object\Itf14`` fehlende Nullen dem Barcode
    Text automatisch voranstellen.
 
 .. _zend.barcode.objects.details.leitcode:
 
-Zend\Barcode_Object\Leitcode
+Zend\Barcode\Object\Leitcode
 ----------------------------
 
 .. image:: ../images/zend.barcode.objects.details.leitcode.png
    :width: 155
    :align: center
 
-Dieser Barcode erweitert ``Zend\Barcode_Object\Identcode`` (Deutsche Post Identcode), und enthält einige seiner
+Dieser Barcode erweitert ``Zend\Barcode\Object\Identcode`` (Deutsche Post Identcode), und enthält einige seiner
 Möglichkeiten; er hat auch einige eigene Möglichkeit.
 
 - **Name:** Leitcode (Deutsche Post Leitcode)
@@ -283,12 +283,12 @@ Es gibt keine speziellen Optionen für diesen Barcode.
 
 .. note::
 
-   Wenn die Anzahl der Zeichen kleiner als 14 ist, wird ``Zend\Barcode_Object\Leitcode`` fehlende Nullen dem
+   Wenn die Anzahl der Zeichen kleiner als 14 ist, wird ``Zend\Barcode\Object\Leitcode`` fehlende Nullen dem
    Barcode Text automatisch voranstellen.
 
 .. _zend.barcode.objects.details.planet:
 
-Zend\Barcode_Object\Planet
+Zend\Barcode\Object\Planet
 --------------------------
 
 .. image:: ../images/zend.barcode.objects.details.planet.png
@@ -307,7 +307,7 @@ Es gibt keine speziellen Optionen für diesen Barcode.
 
 .. _zend.barcode.objects.details.postnet:
 
-Zend\Barcode_Object\Postnet
+Zend\Barcode\Object\Postnet
 ---------------------------
 
 .. image:: ../images/zend.barcode.objects.details.postnet.png
@@ -326,7 +326,7 @@ Es gibt keine speziellen Optionen für diesen Barcode.
 
 .. _zend.barcode.objects.details.royalmail:
 
-Zend\Barcode_Object\Royalmail
+Zend\Barcode\Object\Royalmail
 -----------------------------
 
 .. image:: ../images/zend.barcode.objects.details.royalmail.png
@@ -345,14 +345,14 @@ Es gibt keine speziellen Optionen für diesen Barcode.
 
 .. _zend.barcode.objects.details.upca:
 
-Zend\Barcode_Object\Upca
+Zend\Barcode\Object\Upca
 ------------------------
 
 .. image:: ../images/zend.barcode.objects.details.upca.png
    :width: 115
    :align: center
 
-Dieser Barcode erweitert ``Zend\Barcode_Object\Ean13`` (*EAN* 13) und erweitert einige seiner Möglichkeiten; er
+Dieser Barcode erweitert ``Zend\Barcode\Object\Ean13`` (*EAN* 13) und erweitert einige seiner Möglichkeiten; er
 hat auch selbst einige.
 
 - **Name:** *UPC*-A (Universal Product Code)
@@ -367,21 +367,21 @@ Es gibt keine speziellen Optionen für diesen Barcode.
 
 .. note::
 
-   Wenn die Anzahl der Zeichen kleiner als 12 ist, wird ``Zend\Barcode_Object\Upca`` fehlende Nullen dem Barcode
+   Wenn die Anzahl der Zeichen kleiner als 12 ist, wird ``Zend\Barcode\Object\Upca`` fehlende Nullen dem Barcode
    Text automatisch voranstellen.
 
    Die Option ``withQuietZones`` hat bei diesem Barcode keinen Effekt
 
 .. _zend.barcode.objects.details.upce:
 
-Zend\Barcode_Object\Upce
+Zend\Barcode\Object\Upce
 ------------------------
 
 .. image:: ../images/zend.barcode.objects.details.upce.png
    :width: 71
    :align: center
 
-Dieser Barcode erweitert ``Zend\Barcode_Object\Upca`` (*UPC*-A), und verwendet einige seiner Fähigkeiten; er hat
+Dieser Barcode erweitert ``Zend\Barcode\Object\Upca`` (*UPC*-A), und verwendet einige seiner Fähigkeiten; er hat
 auch einige eigene. Das erste Zeichen des zu kodierenden Textes ist das System (0 oder 1). und enthält einige
 seiner Möglichkeiten; er hat auch einige eigene Möglichkeit.
 
@@ -397,12 +397,12 @@ Es gibt keine speziellen Optionen für diesen Barcode.
 
 .. note::
 
-   Wenn die Anzahl der Zeichen kleiner als 8 ist, wird ``Zend\Barcode_Object\Upce`` fehlende Nullen dem Barcode
+   Wenn die Anzahl der Zeichen kleiner als 8 ist, wird ``Zend\Barcode\Object\Upce`` fehlende Nullen dem Barcode
    Text automatisch voranstellen.
 
 .. note::
 
-   Wenn das erste Zeichen des zu kodierenden Textes nicht 0 oder 1 ist, ersetzt ``Zend\Barcode_Object\Upce`` dieses
+   Wenn das erste Zeichen des zu kodierenden Textes nicht 0 oder 1 ist, ersetzt ``Zend\Barcode\Object\Upce`` dieses
    automatisch durch 0.
 
    Die Option ``withQuietZones`` hat bei diesem Barcode keinen Effekt

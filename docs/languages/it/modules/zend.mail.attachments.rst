@@ -17,7 +17,6 @@ passando uno o più parametri al metodo *createAttachment()*:
    :linenos:
 
    <?php
-   require_once 'Zend/Mail.php';
    $mail = new Zend\Mail\Mail();
    // crea il messaggio...
    $mail->createAttachment($someBinaryString);
@@ -31,7 +30,6 @@ un oggetto *Zend\Mime\Part*:
    :linenos:
 
    <?php
-   require_once 'Zend/Mail.php';
    $mail = new Zend\Mail\Mail();
 
    $at = $mail->createAttachment($myImage);
@@ -48,7 +46,6 @@ Un'alternativa consiste nel creare un'istanza di Zend\Mime\Part ed aggiungere l'
    :linenos:
 
    <?php
-   require_once 'Zend/Mail.php';
    $mail = new Zend\Mail\Mail();
 
    $at = new Zend\Mime\Part($myImage);

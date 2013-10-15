@@ -8,7 +8,7 @@ Zend\\Service\\Rackspace
 Introduction
 ------------
 
-The ``ZendService\Rackspace`` is a class that provides a simple *API* to manage the Rackspace services Cloud Files
+The ``ZendService\Rackspace\Rackspace`` is a class that provides a simple *API* to manage the Rackspace services Cloud Files
 and Cloud Servers.
 
 .. note::
@@ -23,11 +23,11 @@ and Cloud Servers.
 Registering with Rackspace
 --------------------------
 
-Before you can get started with ``ZendService\Rackspace``, you must first register for an account. Please see the
+Before you can get started with ``ZendService\Rackspace\Rackspace``, you must first register for an account. Please see the
 `Cloud services`_ page on the Rackspace website for more information.
 
 After registering, you can get the Username and the API Key from the Rackspace management console under the menu
-"Your Account" > "API Access". These informations are required to use the ``ZendService\Rackspace`` classes.
+"Your Account" > "API Access". These informations are required to use the ``ZendService\Rackspace\Rackspace`` classes.
 
 .. _zendservice.rackspace.feature.files:
 
@@ -88,7 +88,7 @@ different flavors of memory, disk space, and CPU.
 Available Methods
 -----------------
 
-Eeach service class (Files, Servers) of Rackspace extends the ``ZendService\Rackspace`` abstract class. This class
+Eeach service class (Files, Servers) of Rackspace extends the ``ZendService\Rackspace\Rackspace`` abstract class. This class
 contains a set of public methods shared with all the service. This public methods are reported as follow:
 
 .. _zendservice.rackspace.files.methods.authenticate:
@@ -97,7 +97,7 @@ contains a set of public methods shared with all the service. This public method
    ``authenticate()``
 
    Authenticate the Rackspace API using the user and the key specified in the concrete class that extend
-   ``ZendService\Rackspace``. Return **true** in case of success and **false** in case of error.
+   ``ZendService\Rackspace\Rackspace``. Return **true** in case of success and **false** in case of error.
 
 .. _zendservice.rackspace.files.methods.set-service-net:
 

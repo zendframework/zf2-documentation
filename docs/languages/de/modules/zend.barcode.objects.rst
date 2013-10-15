@@ -29,19 +29,19 @@ können auf vier Wegen gesetzt werden:
    $options = array('text' => 'ZEND-FRAMEWORK', 'barHeight' => 40);
 
    // Fall 1: Constructor
-   $barcode = new Zend\Barcode_Object\Code39($options);
+   $barcode = new Zend\Barcode\Object\Code39($options);
 
    // Fall 2: setOptions()
-   $barcode = new Zend\Barcode_Object\Code39();
+   $barcode = new Zend\Barcode\Object\Code39();
    $barcode->setOptions($options);
 
    // Fall 3: setConfig()
    $config  = new Zend\Config\Config($options);
-   $barcode = new Zend\Barcode_Object\Code39();
+   $barcode = new Zend\Barcode\Object\Code39();
    $barcode->setConfig($config);
 
    // Fall 4: individuelle Setter
-   $barcode = new Zend\Barcode_Object\Code39();
+   $barcode = new Zend\Barcode\Object\Code39();
    $barcode->setText('ZEND-FRAMEWORK')
            ->setBarHeight(40);
 
@@ -147,7 +147,7 @@ Gemeinsame zusätzliche Getter
    +-----------------------------------+---------+--------------------------------------------------------------------------------------------------------------------------+
    |Getter                             |Daten Typ|Beschreibung                                                                                                              |
    +===================================+=========+==========================================================================================================================+
-   |getType()                          |String   |Gibt den Namen der Barcode Klasse ohne den Namespace zurück (z.B. gibt Zend\Barcode_Object\Code39 einfach "code39" zurück)|
+   |getType()                          |String   |Gibt den Namen der Barcode Klasse ohne den Namespace zurück (z.B. gibt Zend\Barcode\Object\Code39 einfach "code39" zurück)|
    +-----------------------------------+---------+--------------------------------------------------------------------------------------------------------------------------+
    |getRawText()                       |String   |Gibt den originalen Text zurück der beim Objekt angegeben wurde                                                           |
    +-----------------------------------+---------+--------------------------------------------------------------------------------------------------------------------------+

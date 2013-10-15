@@ -15,7 +15,7 @@ reflètent la structure de répertoires que la commande ``zf`` crée sous ``appl
 un module -- le module "default" ou "application". Ainsi, nous allons vouloir configurer un autoload pour les
 ressources sous ce dossier.
 
-``Zend\Application_Module\Autoloader`` propose la fonctionnalité nécessaire à la correspondance entre les
+``Zend\Application\Module\Autoloader`` propose la fonctionnalité nécessaire à la correspondance entre les
 ressources d'un module et ses dossiers, il propose pour cela un mécanisme de nommage standard. Une instance de la
 classe est créée par défaut pendant l'initialisation de l'objet de bootstrap et utilisera le préfixe de module
 "Application". De ce fait, nos classes de modèles, formulaires, et tables commenceront toutes par le préfixe de
@@ -229,7 +229,7 @@ pas nécessaire en production. Créez le script ``scripts/load.sqlite.php`` avec
    ));
    try {
        $getopt->parse();
-   } catch (Zend\Console_Getopt\Exception $e) {
+   } catch (Zend\Console\Getopt\Exception $e) {
        // Mauvaises options passées: afficher l'aide
        echo $e->getUsageMessage();
        return false;
@@ -353,7 +353,7 @@ le fichier ``Guestbook.php``. Si vous ouvrez ce fichier, vous y verrez le conten
    /**
     * This is the DbTable class for the guestbook table.
     */
-   class Application_Model_DbTable_Guestbook extends Zend\Db_Table\Abstract
+   class Application_Model_DbTable_Guestbook extends Zend\Db\Table\Abstract
    {
        /** Table name */
        protected $_name    = 'guestbook';
@@ -408,7 +408,7 @@ pour y voir ceci:
            if (is_string($dbTable)) {
                $dbTable = new $dbTable();
            }
-           if (!$dbTable instanceof Zend\Db_Table\Abstract) {
+           if (!$dbTable instanceof Zend\Db\Table\Abstract) {
                throw new Exception('Invalid table data gateway provided');
            }
            $this->_dbTable = $dbTable;

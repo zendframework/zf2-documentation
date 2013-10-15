@@ -47,7 +47,7 @@ Spezifiziere die komplette Adresse des Services im Constructor von ``Zend\Rest\C
 Antworten
 ---------
 
-Alle Anfragen die über ``Zend\Rest\Client`` gemacht wurden, liefern ein ``Zend\Rest_Client\Response`` Objekt
+Alle Anfragen die über ``Zend\Rest\Client`` gemacht wurden, liefern ein ``Zend\Rest\Client\Response`` Objekt
 zurück. Dieses Objekt hat viele Eigenschaften, was es einfacher macht, auf die Ergebnisse zuzugreifen.
 
 Wenn ein Service auf ``Zend\Rest\Server`` basiert, kann ``Zend\Rest\Client`` einige Annahmen über die Antwort
@@ -68,11 +68,11 @@ treffen, inklusive dem Antwort Status (erfolgreich oder fehlerhaft) und den Rüc
 
 Im obigen Beispiel kann man sehen, dass das Ergebnis der Anfrage als Objekt verwendet wird, um ``isSuccess()``
 aufzurufen. Mithilfe der magischen ``__toString()``-Methode kann man das Objekt bzw. das Ergebnis ausgeben
-(*echo*). ``Zend\Rest_Client\Response`` erlaubt die Ausgabe jedes skalaren Wertes. Für komplexe Typen, kann
+(*echo*). ``Zend\Rest\Client\Response`` erlaubt die Ausgabe jedes skalaren Wertes. Für komplexe Typen, kann
 entweder die Array- oder die Objektschreibweise verwendet werden.
 
 Wenn trotzdem ein Service abgefragt wird, der nicht ``Zend\Rest\Server`` verwendet, wird sich das
-``Zend\Rest_Client\Response`` Objekt mehr wie ein *SimpleXMLElement* verhalten. Um die Dinge trotzdem einfacher zu
+``Zend\Rest\Client\Response`` Objekt mehr wie ein *SimpleXMLElement* verhalten. Um die Dinge trotzdem einfacher zu
 gestalten, wird das *XML* automatisch abgefragt, indem XPath verwendet wird, wenn die Eigenschaft nicht von
 direkter Abstammung des Dokument Root-Elements ist. Zusätzlich, wenn auf eine Eigenschaft als Methode zugegriffen
 wird, empfängt man den *PHP* Wert für das Objekt, oder ein Array mit den *PHP* Wert Ergebnissen.

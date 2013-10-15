@@ -112,7 +112,7 @@ Der folgende Code demonstriert wie die richtigen Adapter erstellt und in das For
 
            if ($loginForm->isValid()) {
 
-               $adapter = new Zend\Auth_Adapter\DbTable(
+               $adapter = new Zend\Auth\Adapter\DbTable(
                    $db,
                    'users',
                    'username',

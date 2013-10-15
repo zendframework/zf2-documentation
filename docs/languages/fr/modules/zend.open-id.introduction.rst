@@ -74,7 +74,7 @@ nécessitant l'identification OpenID. ``ZendOpenId\Provider``, elle, permet de c
 Ces deux classes sont totalement indépendantes l'une de l'autre.
 
 Les seuls points communs entre ces deux classes sont l'extension Simple Registration Extension, implémentée par
-la classe ``ZendOpenId_Extension\Sreg``, ainsi que les fonctions utilitaires présentes dans la classe
+la classe ``ZendOpenId\Extension\Sreg``, ainsi que les fonctions utilitaires présentes dans la classe
 ``ZendOpenId``.
 
 .. note::
