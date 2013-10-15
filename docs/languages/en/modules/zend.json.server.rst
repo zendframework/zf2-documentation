@@ -458,8 +458,8 @@ Methods available in ``Zend\Json\Server\Smd`` include:
 
 .. _`JSON-RPC`: http://groups.google.com/group/json-rpc/
 .. _`JSON-RPC version 1 specification`: http://json-rpc.org/wiki/specification
-.. _`version 2 specification`: http://groups.google.com/group/json-rpc/web/json-rpc-1-2-proposal
-.. _`Service Mapping Description (SMD) specification`: http://groups.google.com/group/json-schema/web/service-mapping-description-proposal
+.. _`version 2 specification`: http://www.jsonrpc.org/specification
+.. _`Service Mapping Description (SMD) specification`: http://www.jsonrpc.org/specification
 .. _`SoapServer`: http://www.php.net/manual/en/class.soapserver.php
 .. _`the XML-RPC EPI project`: http://xmlrpc-epi.sourceforge.net/specs/rfc.fault_codes.php
-.. _`specification`: http://groups.google.com/group/json-schema/web/service-mapping-description-proposal
+.. _`specification`: http://www.jsonrpc.org/specification
