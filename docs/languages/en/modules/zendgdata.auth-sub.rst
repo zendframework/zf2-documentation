@@ -6,7 +6,7 @@ Authenticating with AuthSub
 The AuthSub mechanism enables you to write web applications that acquire authenticated access Google Data services,
 without having to write code that handles user credentials.
 
-See `http://code.google.com/apis/accounts/AuthForWebApps.html`_ for more information about Google Data AuthSub
+See http://code.google.com/apis/accounts/AuthForWebApps.html for more information about Google Data AuthSub
 authentication.
 
 The Google documentation says the ClientLogin mechanism is appropriate for "installed applications" whereas the
@@ -111,4 +111,3 @@ function. Otherwise, the token is still valid for some time.
 
 
 
-.. _`http://code.google.com/apis/accounts/AuthForWebApps.html`: http://code.google.com/apis/accounts/AuthForWebApps.html

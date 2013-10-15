@@ -100,8 +100,7 @@ Wenn du stattdessen ``$item->propname`` verwendest, wirst du immer ein leeres Ob
 evaluiert, so dass deine Prüfung fehlschlagen würde.
 
 Für weitere Informationen ist die offizielle *RSS* 2.0 Specification hier verfügbar:
-`http://blogs.law.harvard.edu/tech/rss`_
+http://blogs.law.harvard.edu/tech/rss
 
 
 
-.. _`http://blogs.law.harvard.edu/tech/rss`: http://blogs.law.harvard.edu/tech/rss

@@ -64,8 +64,7 @@ Atom Einträge haben normalerweise folgende Eigenschaften:
 
 - ``updated``- Das Datum, an dem der Eintrag das letzte Mal geändert wurde, im *RFC* 3339 Format
 
-Für weitere Informationen über Atom und unzähligen anderen Quellen, besuche `http://www.atomenabled.org/`_.
+Für weitere Informationen über Atom und unzähligen anderen Quellen, besuche http://www.atomenabled.org/.
 
 
 
-.. _`http://www.atomenabled.org/`: http://www.atomenabled.org/

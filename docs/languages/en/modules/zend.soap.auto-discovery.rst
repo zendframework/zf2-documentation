@@ -25,7 +25,7 @@ There are three configurations for *SOAP* applications where Zend Framework may 
 We always have to know, which functionality is provided by *SOAP* server to operate with it. `WSDL`_ is used to
 describe network service *API* in details.
 
-WSDL language is complex enough (see `http://www.w3.org/TR/wsdl`_ for the details). So it's difficult to prepare
+WSDL language is complex enough (see http://www.w3.org/TR/wsdl for the details). So it's difficult to prepare
 correct WSDL description.
 
 Another problem is synchronizing changes in network service *API* with already existing WSDL.
@@ -210,7 +210,6 @@ Therefore you can set the styles before you call any *setClass* or *addFunction*
 
 
 .. _`WSDL`: http://www.w3.org/TR/wsdl
-.. _`http://www.w3.org/TR/wsdl`: http://www.w3.org/TR/wsdl
 .. _`XSD types`: http://www.w3.org/TR/xmlschema-2/
 .. _`Port Type`: http://www.w3.org/TR/wsdl#_porttypes
 

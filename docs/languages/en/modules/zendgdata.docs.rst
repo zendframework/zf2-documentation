@@ -7,7 +7,7 @@ The Google Documents List Data *API* allows client applications to upload docume
 them in the form of Google Data *API* ("GData") feeds. Your client application can request a list of a user's
 documents, and query the content in an existing document.
 
-See `http://code.google.com/apis/documents/overview.html`_ for more information about the Google Documents List
+See http://code.google.com/apis/documents/overview.html for more information about the Google Documents List
 *API*.
 
 .. _zendgdata.docs.listdocuments:
@@ -145,6 +145,5 @@ which queries the documents list for documents which contain the search string:
 
 
 
-.. _`http://code.google.com/apis/documents/overview.html`: http://code.google.com/apis/documents/overview.html
 .. _`standard Google Data API query parameters`: http://code.google.com/apis/gdata/reference.html#Queries
 .. _`Documents List Data API Reference Guide`: http://code.google.com/apis/documents/reference.html#Parameters

@@ -116,8 +116,7 @@ Se in alternativa si utilizza *$item->propname*, verrà sempre restituito un ogg
 dunque il controllo non sarà eseguito correttamente.
 
 Per ulteriori informazioni, le specifiche ufficiali del formato RSS 2.0 sono disponibili all'indirizzo:
-`http://blogs.law.harvard.edu/tech/rss`_
+http://blogs.law.harvard.edu/tech/rss
 
 
 
-.. _`http://blogs.law.harvard.edu/tech/rss`: http://blogs.law.harvard.edu/tech/rss

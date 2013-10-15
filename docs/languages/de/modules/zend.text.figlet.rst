@@ -7,7 +7,7 @@ Zend\Text\Figlet
 ``Zend\Text\Figlet`` ist eine Komponente die es Entwicklern erlaubt einen sogenannten FIGlet Text zu erstellen. Ein
 FIGlet Text ist ein String der eine *ASCII* Kunst repräsentiert. FIGlets sind ein spezielles Schriftformat, das
 FLT (FigLet Font) genannt wird. Standardmäßig wird eine Schriftart mit ``Zend\Text\Figlet`` ausgeliefert, aber
-man kann zusätzliche Schriftarten unter `http://www.figlet.org`_ herunterladen.
+man kann zusätzliche Schriftarten unter http://www.figlet.org herunterladen.
 
 .. note::
 
@@ -86,5 +86,4 @@ Angenommen es wird eine Monospace Schriftart verwenden dann würde das Beispiel 
 
 
 
-.. _`http://www.figlet.org`: http://www.figlet.org/fontdb.cgi
 .. _`hier`: http://www.jave.de/figlet/figfont.txt

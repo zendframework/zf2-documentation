@@ -588,6 +588,5 @@ A Complete Example
 
 
 
-.. _`http://www.w3.org/Protocols/rfc2616/rfc2616.html`: http://www.w3.org/Protocols/rfc2616/rfc2616.html
 
-.. [#] See RFC 2616 -`http://www.w3.org/Protocols/rfc2616/rfc2616.html`_.
+.. [#] See RFC 2616 -http://www.w3.org/Protocols/rfc2616/rfc2616.html.

@@ -38,7 +38,7 @@ The following exception subclasses are used by ``ZendGData``:
      challenge from the authentication service. This exception contains a token ID and a *URL* to a CAPTCHA(tm)
      challenge image. The image is a visual puzzle that should be displayed to the user. After collecting the
      user's response to the challenge image, the response can be included with the next ClientLogin attempt.The
-     user can alternatively be directed to this website: `https://www.google.com/accounts/DisplayUnlockCaptcha`_
+     user can alternatively be directed to this website: https://www.google.com/accounts/DisplayUnlockCaptcha
      Further information can be found in the :ref:`ClientLogin documentation <zendgdata.clientlogin>`.
 
 
@@ -63,4 +63,3 @@ information on which exception subclasses are thrown by which methods in ``ZendG
 
 
 
-.. _`https://www.google.com/accounts/DisplayUnlockCaptcha`: https://www.google.com/accounts/DisplayUnlockCaptcha

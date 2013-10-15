@@ -6,7 +6,7 @@ Authenticating with ClientLogin
 The ClientLogin mechanism enables you to write *PHP* application that acquire authenticated access to Google
 Services, specifying a user's credentials in the *HTTP* Client.
 
-See `http://code.google.com/apis/accounts/AuthForInstalledApps.html`_ for more information about Google Data
+See http://code.google.com/apis/accounts/AuthForInstalledApps.html for more information about Google Data
 ClientLogin authentication.
 
 The Google documentation says the ClientLogin mechanism is appropriate for "installed applications" whereas the
@@ -73,4 +73,3 @@ these can be used repeatedly in the future.
 
 
 
-.. _`http://code.google.com/apis/accounts/AuthForInstalledApps.html`: http://code.google.com/apis/accounts/AuthForInstalledApps.html
