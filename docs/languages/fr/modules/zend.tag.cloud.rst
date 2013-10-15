@@ -23,7 +23,7 @@ Vous pouvez instancier et configurer ``Zend\Tag\Cloud`` de manière classique, o
   décorateur.
 
 - *pluginLoader*\  : un chargeur de classe à utiliser. Doit implémenter l'interface
-  ``Zend\Loader_PluginLoader\Interface``.
+  ``Zend\Loader\PluginLoader\Interface``.
 
 - *prefixPath*\  : préfixes de chemins à ajouter au chargeur de classes. Doit être un tableau contenant les
   préfixes et les chemins. Les éléments invalides seront ignorés.

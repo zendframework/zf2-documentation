@@ -78,7 +78,7 @@ OpenID-verwendenden Servern und der zweite ist ``ZendOpenId\Provider`` für die 
 Diese sind komplett unabhängig voneinander und können separat verwendet werden.
 
 Der einzige gemeinsame Code der von diesen Unterpaketen verwendet wird ist die OpenID Simply Registry Erweiterung
-die von der ``ZendOpenId_Extension\Sreg`` Klasse implementiert wird und ein Set von Hilfs Funktionen die von der
+die von der ``ZendOpenId\Extension\Sreg`` Klasse implementiert wird und ein Set von Hilfs Funktionen die von der
 ``ZendOpenId`` Klasse implementiert werden.
 
 .. note::

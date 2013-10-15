@@ -22,14 +22,14 @@ Array oder eine Instanz von ``Zend_Config``. Die vorhandenen Optionen sind:
   übergeben wird.
 
 - ``pluginLoader``: ein anderer Plugin Loader der zu verwenden ist. Muß eine Instanz von
-  ``Zend\Loader_PluginLoader\Interface`` sein.
+  ``Zend\Loader\PluginLoader\Interface`` sein.
 
 - ``prefixPath``: Präfix Pfade die dem Plugin Loader hinzugefügt werden. Muß ein Array sein das die Schlüssel
   prefix und path oder mehrere Arrays enthält, welche die Schlüssel prefix und path enthalten. Ungültige
   Elemente werden übersprungen.
 
 - ``pluginLoader``: ein anderer Plugin Loader der verwendet wird. Muß eine Instanz von
-  ``Zend\Loader_PluginLoader\Interface`` sein.
+  ``Zend\Loader\PluginLoader\Interface`` sein.
 
 - ``prefixPath``: Präfix Pfad der dem Plugin Loader hinzugefügt wird. Muß ein Array sein das die Schlüssel
   prefix und path enthält, oder mehrere Array welche die Schlüssel prefix und path enthalten. Ungültige Elemente

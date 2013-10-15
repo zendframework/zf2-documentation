@@ -10,7 +10,7 @@ Cela signifie que les classes ne seront pas trouvées par l'autoloader.
 
 Si vous lisez :ref:`les caractéristiques de l'architecture <learning.autoloading.design>` de l'autoloader, le
 dernier point de cette section indique qu'une solution existe pour un tel problème. Zend Framework utilise alors
-``Zend\Loader_Autoloader\Resource``.
+``Zend\Loader\Autoloader\Resource``.
 
 Une ressource est juste un nom qui correspond à un espace de noms pour un composant (qui est ajouté à l'espace
 de noms de l'autoloader) et un chemin (qui est relatif au chemin de base de l'autoloader). Sous forme de code, vous
@@ -19,7 +19,7 @@ feriez quelque chose comme:
 .. code-block:: php
    :linenos:
 
-   $loader = new Zend\Application_Module\Autoloader(array(
+   $loader = new Zend\Application\Module\Autoloader(array(
        'namespace' => 'Blog',
        'basePath'  => APPLICATION_PATH . '/modules/blog',
    ));
@@ -46,12 +46,12 @@ Le premier réflexe est de créer un chargeur de ressources:
 .. code-block:: php
    :linenos:
 
-   $loader = new Zend\Loader_Autoloader\Resource(array(
+   $loader = new Zend\Loader\Autoloader\Resource(array(
        'basePath'  => 'path/to/some/resources/',
        'namespace' => 'Foo',
    ));
 
-Puis, nous définissons des types de ressources. ``Zend\Loader_Autoloader\Resourse::addResourceType()`` prend trois
+Puis, nous définissons des types de ressources. ``Zend\Loader\Autoloader\Resourse::addResourceType()`` prend trois
 arguments: le "type" de resource (une chaîne arbitraire), le chemin sous le chemin de base dans lequel le type de
 ressource doit se trouver, et le préfixe particulier à utiliser pour ce type de ressource. Dans l'arbre
 représenté ci-dessus, il y a trois types : form (dans le sous-dossier "forms", avec un préfixe "Form"), model
@@ -81,8 +81,8 @@ Il ne reste plus qu'à utiliser les classes:
    site. Les modules possèdent typiquement des types de ressource par défaut, et Zend Framework :ref:`recommande
    une hiérarchie de répertoires standard pour les modules <project-structure.filesystem>`.Les autoloaders de
    ressources sont particulièrement adaptés à cette situation -- tellement qu'ils sont activés par défaut
-   lorsque vous créez des classes de bootstrap qui étendent ``Zend\Application_Module\Bootstrap``. Pour plus
-   d'informations, lisez la :ref:`documentation de Zend\Loader_Autoloader\Module
+   lorsque vous créez des classes de bootstrap qui étendent ``Zend\Application\Module\Bootstrap``. Pour plus
+   d'informations, lisez la :ref:`documentation de Zend\Loader\Autoloader\Module
    <zend.loader.autoloader-resource.module>`.
 
 

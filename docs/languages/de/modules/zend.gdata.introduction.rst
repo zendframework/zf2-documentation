@@ -63,20 +63,20 @@ Struktur von ZendGData
      löschen.
 
    - Abfrage Klassen - abgeleitet von ``ZendGData\Query``. Diese beinhalten auch andere Klassen für spezielle
-     Services, wie ``ZendGData_Spreadsheet\ListQuery`` und ``ZendGData_Spreadsheets\CellQuery``. Abfrage Klassen
+     Services, wie ``ZendGData\Spreadsheet\ListQuery`` und ``ZendGData\Spreadsheets\CellQuery``. Abfrage Klassen
      bieten Methoden die verwendet werden können um Abfragen für Daten zu erstellen die von GData Services
      empfangen werden. Die Methoden inkludieren Getter und Setter wie ``setUpdatedMin()``, ``setStartIndex()``, und
      ``getPublishedMin()``. Die Abfrage Klassen haben auch eine Methode um eine *URL* zu erhalten welche die
      erstellte Abfrage repräsentieren. --``getQueryUrl()``. Alternativ kann man die Abfrage String Komponente der
      *URL* erhalten indem die ``getQueryString()`` Methode verwendet wird.
 
-   - Feed Klassen - abgeleitet von ``ZendGData_App\Feed``. Diese beinhalten auch andere Klassen wie
-     ``ZendGData\Feed``, ``ZendGData_Spreadsheets\SpreadsheetFeed``, und ``ZendGData_Spreadsheets\ListFeed``.
+   - Feed Klassen - abgeleitet von ``ZendGData\App\Feed``. Diese beinhalten auch andere Klassen wie
+     ``ZendGData\Feed``, ``ZendGData\Spreadsheets\SpreadsheetFeed``, und ``ZendGData\Spreadsheets\ListFeed``.
      Diese Klassen repräsentieren Feeds von Einträgen die von Services empfangen wurden. Sie werden primär
      verwendet um Daten die von Services zurückgegeben werden zu erhalten.
 
-   - Eingabe Klassen - abgeleitet von ``ZendGData_App\Entry``. Diese beinhalten auch andere Klassen wie
-     ``ZendGData\Entry``, und ``ZendGData_Spreadsheets\ListEntry``. Diese Klassen repräsentieren Einträge die
+   - Eingabe Klassen - abgeleitet von ``ZendGData\App\Entry``. Diese beinhalten auch andere Klassen wie
+     ``ZendGData\Entry``, und ``ZendGData\Spreadsheets\ListEntry``. Diese Klassen repräsentieren Einträge die
      von Services empfangen oder für die Erstellung von Daten, die an Services geschickt werden, verwendet werden.
      Zusätzlich zur Möglichkeit die Eigenschaften eines Eintrages (wie den Zellen Wert der Tabellenkalkulation)
      zu setzen, kann das Objekt des Eintrages verwendet werden um Aktualisierungs- oder Löschanfragen an ein
@@ -84,10 +84,10 @@ Struktur von ZendGData
      durchgeführt wurden zu einem Service zurück zu Speichern von welche der Eintrag initiiert wurde, oder
      ``$entry->delete()`` um einen Eintrag von einem Server zu Löschen.
 
-   - Andere Daten Modell Klassen - abgeleitet von ``ZendGData_App\Extension``. Diese beinhalten Klassen wie
+   - Andere Daten Modell Klassen - abgeleitet von ``ZendGData\App\Extension``. Diese beinhalten Klassen wie
      ``ZendGData\App\Extension\Title`` (repräsentiert das atom:title *XML* Element),
-     ``ZendGData_Extension\When`` (repräsentiert das gd:when *XML* Element das von dem GData Event "Kind"
-     verwendet wird), und ``ZendGData_Extension\Cell`` (repräsentiert das gs:cell *XML* Element das von Google
+     ``ZendGData\Extension\When`` (repräsentiert das gd:when *XML* Element das von dem GData Event "Kind"
+     verwendet wird), und ``ZendGData\Extension\Cell`` (repräsentiert das gs:cell *XML* Element das von Google
      Tabellenkalkulation verwendet wird). Diese Klassen werden pur verwendet um von den Server zurückgegebene
      Daten zu speichern und für die Erstellung von Daten die an Services gesendet werden. Diese beinhalten Getter
      und Setter wie ``setText()`` um den Kindtext Node eines Elements zu setzen, ``getText()`` um den Text Node
@@ -171,7 +171,7 @@ Abhängigkeiten
 
 ``ZendGData`` verwendet :ref:`Zend\Http\Client <zend.http.client>` um Anfragen an google.com zu senden und
 Ergebnisse zu erhalten. Die Antworter der meisten Google Data Anfragen werden als Subklasse von
-``ZendGData_App\Feed`` oder ``ZendGData_App\Entry`` Klassen zurückgegeben.
+``ZendGData\App\Feed`` oder ``ZendGData\App\Entry`` Klassen zurückgegeben.
 
 ``ZendGData`` nimmt an das die *PHP* Anwendung auf einem Host läuft der eine direkte Verbindung zum Internet hat.
 Der ``ZendGData`` Client arbeitet indem er zu Google Daten Servern Kontakt aufnimmt.
@@ -413,8 +413,8 @@ Das ``ZendGData`` Objekt hat eine ``insertEntry()`` Funktion mit der man Daten h
 Google Data Services zu speichern.
 
 Die Daten Modell Klassen jedes Services kann verwendet werden um einen entsprechenden Eintrag zu erstellen und an
-Google's Services zu schicken. Die ``insertEntry()`` Funktion akzeptiert ein Kind von ``ZendGData_App\Entry`` als
-Daten die an den Service geschickt werden. Die Methode gibt ein Kind von ``ZendGData_App\Entry`` zurück welches
+Google's Services zu schicken. Die ``insertEntry()`` Funktion akzeptiert ein Kind von ``ZendGData\App\Entry`` als
+Daten die an den Service geschickt werden. Die Methode gibt ein Kind von ``ZendGData\App\Entry`` zurück welches
 den Status des Eintrages repräsentiert der vom Server zurückgegeben wurde.
 
 Alternativ, kann die *XML* Struktur eines Eintrages als String konstruiert und dieser String an die

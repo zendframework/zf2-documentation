@@ -142,9 +142,9 @@ l'élément et en créer une représentation.
 Créer votre premier décorateur
 ------------------------------
 
-Les décorateurs de ``Zend_Form`` implémentent tous, ``Zend\Form_Decorator\Interface``. Cette interface permet de
+Les décorateurs de ``Zend_Form`` implémentent tous, ``Zend\Form\Decorator\Interface``. Cette interface permet de
 régler les options du décorateur, enregistrer en lui l'élément ainsi qu'effectuer le rendu. Une classe de base,
-``Zend\Form_Decorator\Abstract``, propose une implémentation de cette logique de base dont vous aurez besoin, à
+``Zend\Form\Decorator\Abstract``, propose une implémentation de cette logique de base dont vous aurez besoin, à
 l'exception du rendu que vous devrez définir.
 
 Imaginons une situation dans laquelle nous souhaitons simplement rendre un élément comme un tag html text avec un
@@ -154,7 +154,7 @@ Un tel décorateur pourrait ressembler à ça :
 .. code-block:: php
    :linenos:
 
-   class My_Decorator_SimpleInput extends Zend\Form_Decorator\Abstract
+   class My_Decorator_SimpleInput extends Zend\Form\Decorator\Abstract
    {
        protected $_format = '<label for="%s">%s</label><input id="%s" name="%s" type="text" value="%s"/>';
 

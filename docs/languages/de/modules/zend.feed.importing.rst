@@ -38,7 +38,7 @@ Eigene Feeds
 ``Zend_Feed`` ermöglicht es Entwicklern Ihre eigenen Feeds sehr einfach zu erstellen. Man muß nur ein Array
 erstellen und es in ``Zend_Feed`` importieren, Dieses Array kann mit ``Zend\Feed\Feed::importArray()`` oder mit
 ``Zend\Feed\Feed::importBuilder()`` importiert werden. Im letzteren Fall wird das Array on the Fly durch eine eigene
-Datenquelle berechnet die ``Zend\Feed_Builder\Interface`` implementiert.
+Datenquelle berechnet die ``Zend\Feed\Builder\Interface`` implementiert.
 
 .. _zend.feed.importing.custom.importarray:
 
@@ -268,18 +268,18 @@ Referenzen:
 Importieren einer eigenen Daten Quelle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Eine ``Zend_Feed`` Instanz kann von jeder Datenquelle erstellt werden die ``Zend\Feed_Builder\Interface``
+Eine ``Zend_Feed`` Instanz kann von jeder Datenquelle erstellt werden die ``Zend\Feed\Builder\Interface``
 implementiert. Die ``getHeader()`` und ``getEntries()`` Methoden müssen implementiert werden damit das Objekt mit
 ``Zend\Feed\Feed::importBuilder()`` verwendet werden kann. Als einfache Referenz Implementation kann
 ``Zend\Feed\Builder`` verwendet werden, welches ein Array im Contructor entgegen nimmt, einige einfache Prüfungen
 durchführt, und anschließend in der ``importBuilder()`` Methode verwendet werden kann. Die ``getHeader()``
-Methode muß eine Instanz von ``Zend\Feed_Builder\Header`` zurückgeben, und ``getEntries()`` muß ein Array von
-``Zend\Feed_Builder\Entry`` Instanzen zurückgeben.
+Methode muß eine Instanz von ``Zend\Feed\Builder\Header`` zurückgeben, und ``getEntries()`` muß ein Array von
+``Zend\Feed\Builder\Entry`` Instanzen zurückgeben.
 
 .. note::
 
    ``Zend\Feed\Builder`` arbeitet als konkrete Implementation um die Verwendung zu demonstrieren. Benutzer sind
-   angehlaten Ihre eigenen Klassen zu Erstellen um ``Zend\Feed_Builder\Interface`` zu implementieren.
+   angehlaten Ihre eigenen Klassen zu Erstellen um ``Zend\Feed\Builder\Interface`` zu implementieren.
 
 Hier ist ein Beispiel der Verwendung von ``Zend\Feed\Feed::importBuilder()``:
 

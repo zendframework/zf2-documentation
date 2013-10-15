@@ -46,17 +46,17 @@ erzeugenden Code zu setzen, oder um gesetzte Inhalte zu ersetzen sobald alle Arb
 
 .. _zend.codegenerator.reference.abstracts.php-abstract:
 
-Zend\CodeGenerator_Php\Abstract
+Zend\CodeGenerator\Php\Abstract
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\CodeGenerator_Php\Abstract`` erweitert ``Zend\CodeGenerator\Abstract``, und fügt einige Eigenschaften hinzu
+``Zend\CodeGenerator\Php\Abstract`` erweitert ``Zend\CodeGenerator\Abstract``, und fügt einige Eigenschaften hinzu
 für das Verfolgen ob Inhalte geändert wurden sowie der Anzahl an Einrückungen die vorhanden sein sollten bevor
 Inhalte erzeugt werden. Die *API* ist wie folgt:
 
 .. code-block:: php
    :linenos:
 
-   abstract class Zend\CodeGenerator_Php\Abstract
+   abstract class Zend\CodeGenerator\Php\Abstract
        extends Zend\CodeGenerator\Abstract
    {
        public function setSourceDirty($isSourceDirty = true)
@@ -78,7 +78,7 @@ ein Member Abstrakt, Statisch, oder Final ist; und der Name des Members. Die *AP
    :linenos:
 
    abstract class Zend\CodeGenerator\Php\Member\Abstract
-       extends Zend\CodeGenerator_Php\Abstract
+       extends Zend\CodeGenerator\Php\Abstract
    {
        public function setAbstract($isAbstract)
        public function isAbstract()
@@ -97,10 +97,10 @@ Konkrete CodeGenerator Klassen
 
 .. _zend.codegenerator.reference.concrete.php-body:
 
-Zend\CodeGenerator_Php\Body
+Zend\CodeGenerator\Php\Body
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\CodeGenerator_Php\Body`` ist dazu gedacht generellen prozeduralen Code in einer Datei einzufügen. Als
+``Zend\CodeGenerator\Php\Body`` ist dazu gedacht generellen prozeduralen Code in einer Datei einzufügen. Als
 solches kann man einfach den Inhalt für das Objekt setzen, und es wird den Inhalt zurückgeben wenn man
 ``generate()`` aufruft.
 
@@ -109,7 +109,7 @@ Die *API* der Klasse ist wie folgt:
 .. code-block:: php
    :linenos:
 
-   class Zend\CodeGenerator_Php\Body extends Zend\CodeGenerator_Php\Abstract
+   class Zend\CodeGenerator\Php\Body extends Zend\CodeGenerator\Php\Abstract
    {
        public function setContent($content)
        public function getContent()
@@ -118,10 +118,10 @@ Die *API* der Klasse ist wie folgt:
 
 .. _zend.codegenerator.reference.concrete.php-class:
 
-Zend\CodeGenerator_Php\Class
+Zend\CodeGenerator\Php\Class
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\CodeGenerator_Php\Class`` ist für die Erstellung von *PHP* Klassen gedacht. Die Basisfunktionalität ist
+``Zend\CodeGenerator\Php\Class`` ist für die Erstellung von *PHP* Klassen gedacht. Die Basisfunktionalität ist
 nur die Erstellung der *PHP* Klasse selbst, sowie optional den betreffenden *PHP* DocBlock. Klassen können von
 anderen Klassen abgeleitet sein, oder diese Implementieren, und können als Abstrakt markiert sein. Bei Verwendung
 von anderen CodeGenerator Klassen kann man auch Klassenkonstanten, Eigenschaften und Methoden hinzufügen.
@@ -131,12 +131,12 @@ Die *API* ist wie folgt:
 .. code-block:: php
    :linenos:
 
-   class Zend\CodeGenerator_Php\Class extends Zend\CodeGenerator_Php\Abstract
+   class Zend\CodeGenerator\Php\Class extends Zend\CodeGenerator\Php\Abstract
    {
        public static function fromReflection(
            Zend\Reflection\Class $reflectionClass
        )
-       public function setDocblock(Zend\CodeGenerator_Php\Docblock $docblock)
+       public function setDocblock(Zend\CodeGenerator\Php\Docblock $docblock)
        public function getDocblock()
        public function setName($name)
        public function getName()
@@ -160,18 +160,18 @@ Die *API* ist wie folgt:
    }
 
 Die ``setProperty()`` Methode akzeptiert ein Array von Informationen, die verwendet werden können um eine Instanz
-von ``Zend\CodeGenerator_Php\Property`` zu erstellen -- oder einfach eine Instanz von
-``Zend\CodeGenerator_Php\Property`` selbst. Genauso akzeptiert ``setMethod()`` entweder ein Array von Information
-für die Erstellung einer ``Zend\CodeGenerator_Php\Method`` Instanz oder eine konkrete Instanz dieser Klasse.
+von ``Zend\CodeGenerator\Php\Property`` zu erstellen -- oder einfach eine Instanz von
+``Zend\CodeGenerator\Php\Property`` selbst. Genauso akzeptiert ``setMethod()`` entweder ein Array von Information
+für die Erstellung einer ``Zend\CodeGenerator\Php\Method`` Instanz oder eine konkrete Instanz dieser Klasse.
 
-Beachte das ``setDocBlock()`` eine Instanz von ``Zend\CodeGenerator_Php\DocBlock`` erwartet.
+Beachte das ``setDocBlock()`` eine Instanz von ``Zend\CodeGenerator\Php\DocBlock`` erwartet.
 
 .. _zend.codegenerator.reference.concrete.php-docblock:
 
-Zend\CodeGenerator_Php\Docblock
+Zend\CodeGenerator\Php\Docblock
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\CodeGenerator_Php\Docblock`` kann verwendet werden um *PHP* DocBlocks zu erstellen, inklusive aller
+``Zend\CodeGenerator\Php\Docblock`` kann verwendet werden um *PHP* DocBlocks zu erstellen, inklusive aller
 standardmäßigen DocBlock Features: Kurz- und Langbeschreibung sowie zusätzliche Tags.
 
 Zusätzliche Tags können durch Verwendung der ``setTag()`` und ``setTags()`` Methoden gesetzt werden; diese nehmen
@@ -183,7 +183,7 @@ Die *API* ist wie folgt:
 .. code-block:: php
    :linenos:
 
-   class Zend\CodeGenerator_Php\Docblock extends Zend\CodeGenerator_Php\Abstract
+   class Zend\CodeGenerator\Php\Docblock extends Zend\CodeGenerator\Php\Abstract
    {
        public static function fromReflection(
            Zend\Reflection\Docblock $reflectionDocblock
@@ -213,10 +213,10 @@ Die *API* der Klasse ist wie folgt:
    :linenos:
 
    class Zend\CodeGenerator\Php\Docblock\Tag
-       extends Zend\CodeGenerator_Php\Abstract
+       extends Zend\CodeGenerator\Php\Abstract
    {
        public static function fromReflection(
-           Zend\Reflection_Docblock\Tag $reflectionTag
+           Zend\Reflection\Docblock\Tag $reflectionTag
        )
        public function setName($name)
        public function getName()
@@ -244,7 +244,7 @@ Die *API* dieser Klasse ist wie folgt:
        extends Zend\CodeGenerator\Php\Docblock\Tag
    {
        public static function fromReflection(
-           Zend\Reflection_Docblock\Tag $reflectionTagParam
+           Zend\Reflection\Docblock\Tag $reflectionTagParam
        )
        public function setDatatype($datatype)
        public function getDatatype()
@@ -271,7 +271,7 @@ Die *API* der Klasse ist wie folgt:
        extends Zend\CodeGenerator\Php\Docblock\Tag
    {
        public static function fromReflection(
-           Zend\Reflection_Docblock\Tag $reflectionTagReturn
+           Zend\Reflection\Docblock\Tag $reflectionTagReturn
        )
        public function setDatatype($datatype)
        public function getDatatype()
@@ -280,16 +280,16 @@ Die *API* der Klasse ist wie folgt:
 
 .. _zend.codegenerator.reference.concrete.php-file:
 
-Zend\CodeGenerator_Php\File
+Zend\CodeGenerator\Php\File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\CodeGenerator_Php\File`` wird verwendet um den kompletten Inhalt einer Datei zu erstellen die *PHP* Code
+``Zend\CodeGenerator\Php\File`` wird verwendet um den kompletten Inhalt einer Datei zu erstellen die *PHP* Code
 enthalten wird. Die Datei kann Klassen oder eigenen *PHP* Code enthalten, und wenn gewünscht einen Datei-Level
 Docblock.
 
 Wenn der Datei Klassen hinzugefügt werden, muß man entweder ein Array von Informationen übergeben die an den
-Constructor von ``Zend\CodeGenerator_Php\Class`` übergeben werden, oder eine Instanz dieser Klasse. Genau wie bei
-den DocBlocks, muß man Informationen für den Constructor von ``Zend\CodeGenerator_Php\Docblock`` übergeben die
+Constructor von ``Zend\CodeGenerator\Php\Class`` übergeben werden, oder eine Instanz dieser Klasse. Genau wie bei
+den DocBlocks, muß man Informationen für den Constructor von ``Zend\CodeGenerator\Php\Docblock`` übergeben die
 verwendet werden, oder eine Instanz dieser Klasse.
 
 Die *API* der Klasse ist wie folgt:
@@ -297,14 +297,14 @@ Die *API* der Klasse ist wie folgt:
 .. code-block:: php
    :linenos:
 
-   class Zend\CodeGenerator_Php\File extends Zend\CodeGenerator_Php\Abstract
+   class Zend\CodeGenerator\Php\File extends Zend\CodeGenerator\Php\Abstract
    {
        public static function fromReflectedFilePath(
            $filePath,
            $usePreviousCodeGeneratorIfItExists = true,
            $includeIfNotAlreadyIncluded = true)
        public static function fromReflection(Zend\Reflection\File $reflectionFile)
-       public function setDocblock(Zend\CodeGenerator_Php\Docblock $docblock)
+       public function setDocblock(Zend\CodeGenerator\Php\Docblock $docblock)
        public function getDocblock()
        public function setRequiredFiles($requiredFiles)
        public function getRequiredFiles()
@@ -325,7 +325,7 @@ Die *API* der Klasse ist wie folgt:
 Zend\CodeGenerator\Php\Member\Container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\CodeGenerator\Php\Member\Container`` wird intern von ``Zend\CodeGenerator_Php\Class`` verwendet um die
+``Zend\CodeGenerator\Php\Member\Container`` wird intern von ``Zend\CodeGenerator\Php\Class`` verwendet um die
 Klassenmember zu erheben -- Eigenschaften sowie Methoden. Diese werden durch den Namen indiziert, indem die
 konkrete Instanz des Members als Wert verwendet wird.
 
@@ -341,30 +341,30 @@ Die *API* der Klasse ist wie folgt:
 
 .. _zend.codegenerator.reference.concrete.php-method:
 
-Zend\CodeGenerator_Php\Method
+Zend\CodeGenerator\Php\Method
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\CodeGenerator_Php\Method`` beschreibt eine Klassenmethode, und kann sowohl Code als auch den DocBlock für
+``Zend\CodeGenerator\Php\Method`` beschreibt eine Klassenmethode, und kann sowohl Code als auch den DocBlock für
 diese Methode erstellen. Die Sichtbarkeit und der Status als Statisch, Abstrakt, oder Final kann, über die
 Eltern-Klasse, ``Zend\CodeGenerator\Php\Member\Abstract``, angegeben werden. Letztendlich können die Parameter und
 Rückgabewerte für die Methode spezifiziert werden.
 
 Parameter könnnen durch Verwendung von ``setParameter()`` oder ``setParameters()`` gesetzt werden. In jedem Fall,
 sollte der Parameter entweder ein Array von Informationen sein die an den Constructor von
-``Zend\CodeGenerator_Php\Parameter`` übergeben werden, oder eine Instanz dieser Klasse.
+``Zend\CodeGenerator\Php\Parameter`` übergeben werden, oder eine Instanz dieser Klasse.
 
 Die *API* der Klasse ist wie folgt:
 
 .. code-block:: php
    :linenos:
 
-   class Zend\CodeGenerator_Php\Method
+   class Zend\CodeGenerator\Php\Method
        extends Zend\CodeGenerator\Php\Member\Abstract
    {
        public static function fromReflection(
            Zend\Reflection\Method $reflectionMethod
        )
-       public function setDocblock(Zend\CodeGenerator_Php\Docblock $docblock)
+       public function setDocblock(Zend\CodeGenerator\Php\Docblock $docblock)
        public function getDocblock()
        public function setFinal($isFinal)
        public function setParameters(Array $parameters)
@@ -377,10 +377,10 @@ Die *API* der Klasse ist wie folgt:
 
 .. _zend.codegenerator.reference.concrete.php-parameter:
 
-Zend\CodeGenerator_Php\Parameter
+Zend\CodeGenerator\Php\Parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\CodeGenerator_Php\Parameter`` kann verwendet werden um Methodenparameter zu spezifizieren. Jeder Parameter
+``Zend\CodeGenerator\Php\Parameter`` kann verwendet werden um Methodenparameter zu spezifizieren. Jeder Parameter
 kann eine Position haben (wenn nicht spezifiziert wird die Reihenfolge in der diese spezifiziert werden verwendet),
 einen Standardwert, und einen Datentyp; ein Parametername wird benötigt.
 
@@ -389,7 +389,7 @@ Die *API* der Klasse ist wie folgt:
 .. code-block:: php
    :linenos:
 
-   class Zend\CodeGenerator_Php\Parameter extends Zend\CodeGenerator_Php\Abstract
+   class Zend\CodeGenerator\Php\Parameter extends Zend\CodeGenerator\Php\Abstract
    {
        public static function fromReflection(
            Zend\Reflection\Parameter $reflectionParameter
@@ -408,13 +408,13 @@ Die *API* der Klasse ist wie folgt:
    }
 
 Es gibt einige Probleme die auftreten können wenn man versucht ``NULL``, boolsche Werte oder Arrays als
-Standardwerte zu setzen. Hierfür kann das Wert-Halte-Objekt ``Zend\CodeGenerator_Php\ParameterDefaultValue``
+Standardwerte zu setzen. Hierfür kann das Wert-Halte-Objekt ``Zend\CodeGenerator\Php\ParameterDefaultValue``
 verwendet werden. Zum Beispiel:
 
 .. code-block:: php
    :linenos:
 
-   $parameter = new Zend\CodeGenerator_Php\Parameter();
+   $parameter = new Zend\CodeGenerator\Php\Parameter();
    $parameter->setDefaultValue(
        new Zend\CodeGenerator\Php\Parameter\DefaultValue("null")
    );
@@ -427,10 +427,10 @@ Werte-Halter.
 
 .. _zend.codegenerator.reference.concrete.php-property:
 
-Zend\CodeGenerator_Php\Property
+Zend\CodeGenerator\Php\Property
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\CodeGenerator_Php\Property`` beschreibt die Eigenschaft einer Klasse, welche entweder eine Konstante oder
+``Zend\CodeGenerator\Php\Property`` beschreibt die Eigenschaft einer Klasse, welche entweder eine Konstante oder
 eine Variable sein kann. In jedem Fall, kann der Eigenschaft ein optionaler Standardwert assoziiert werden.
 Zusätzlich kann die Sichtbarkeit von variablen Eigenschaften über die Elternklasse
 ``Zend\CodeGenerator\Php\Member\Abstract`` gesetzt werden.
@@ -440,7 +440,7 @@ Die *API* der Klasse ist wie folgt:
 .. code-block:: php
    :linenos:
 
-   class Zend\CodeGenerator_Php\Property
+   class Zend\CodeGenerator\Php\Property
        extends Zend\CodeGenerator\Php\Member\Abstract
    {
        public static function fromReflection(

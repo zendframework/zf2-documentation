@@ -58,7 +58,7 @@ sidebar in a resource method of our bootstrap:
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        // ...
 

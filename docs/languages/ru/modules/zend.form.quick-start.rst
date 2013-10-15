@@ -94,7 +94,7 @@ Zend_Form - Быстрый старт
    :linenos:
 
    // Инстанцирование элемента и его передача объекту формы:
-   $form->addElement(new Zend\Form_Element\Text('username'));
+   $form->addElement(new Zend\Form\Element\Text('username'));
 
    // Передача типа элемента объекту формы
    $form->addElement('text', 'username');
@@ -115,7 +115,7 @@ Zend_Form - Быстрый старт
 .. code-block:: php
    :linenos:
 
-   $username = new Zend\Form_Element\Text('username');
+   $username = new Zend\Form\Element\Text('username');
 
    // Передача объекта Zend\Validate\*:
    $username->addValidator(new Zend\Validate\Alnum());

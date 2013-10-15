@@ -17,14 +17,14 @@ essayez d'affecter un formateur.
 Formatage simple
 ----------------
 
-``Zend\Log_Formatter\Simple`` est le formateur par défaut. Il est configuré automatiquement quand vous n'indiquez
+``Zend\Log\Formatter\Simple`` est le formateur par défaut. Il est configuré automatiquement quand vous n'indiquez
 aucun formateur. La configuration par défaut est équivalente à ce qui suit :
 
    .. code-block:: php
       :linenos:
 
       $format = '%timestamp% %priorityName% (%priority%): %message%' . PHP_EOL;
-      $formatter = new Zend\Log_Formatter\Simple($format);
+      $formatter = new Zend\Log\Formatter\Simple($format);
 
 
 
@@ -34,8 +34,8 @@ rédacteur :
    .. code-block:: php
       :linenos:
 
-      $redacteur = new Zend\Log_Writer\Stream('php://output');
-      $formateur = new Zend\Log_Formatter\Simple('Bonjour %message%' . PHP_EOL);
+      $redacteur = new Zend\Log\Writer\Stream('php://output');
+      $formateur = new Zend\Log\Formatter\Simple('Bonjour %message%' . PHP_EOL);
       $redacteur->setFormatter($formateur);
 
       $logger = new Zend\Log\Log();
@@ -47,24 +47,24 @@ rédacteur :
 
 
 
-Le constructeur de ``Zend\Log_Formatter\Simple`` accepte un paramètre unique : la chaîne de formatage. Cette
+Le constructeur de ``Zend\Log\Formatter\Simple`` accepte un paramètre unique : la chaîne de formatage. Cette
 chaîne contient des clés entourées par le signe pourcentage (par exemple %message%). La chaîne de formatage
 peut contenir n'importe quelle clé du tableau de données d'événement. Vous pouvez récupérer les clés par
-défaut en utilisant la constante DEFAULT_FORMAT de ``Zend\Log_Formatter\Simple``.
+défaut en utilisant la constante DEFAULT_FORMAT de ``Zend\Log\Formatter\Simple``.
 
 .. _zend.log.formatters.xml:
 
 Formater vers le XML
 --------------------
 
-``Zend\Log_Formatter\Xml`` formate des données de log dans des chaînes de type XML. Par défaut, il note
+``Zend\Log\Formatter\Xml`` formate des données de log dans des chaînes de type XML. Par défaut, il note
 automatiquement tout le tableau de données d'événements :
 
    .. code-block:: php
       :linenos:
 
-      $redacteur = new Zend\Log_Writer\Stream('php://output');
-      $formateur = new Zend\Log_Formatter\Xml();
+      $redacteur = new Zend\Log\Writer\Stream('php://output');
+      $formateur = new Zend\Log\Formatter\Xml();
       $redacteur->setFormatter($formateur);
 
       $logger = new Zend\Log\Log();
@@ -89,15 +89,15 @@ Le code ci-dessus affiche le XML suivant (des espaces supplémentaires sont ajou
 
 
 Il est possible d'adapter l'élément racine comme indiquent faire correspondre les éléments XML au tableau de
-données d'évènements. Le constructeur de ``Zend\Log_Formatter\Xml`` accepte une chaîne avec le nom de
+données d'évènements. Le constructeur de ``Zend\Log\Formatter\Xml`` accepte une chaîne avec le nom de
 l'élément racine comme premier paramètre et un tableau associatif avec les éléments de correspondance comme
 deuxième paramètre :
 
    .. code-block:: php
       :linenos:
 
-      $redacteur = new Zend\Log_Writer\Stream('php://output');
-      $formateur = new Zend\Log_Formatter\Xml('log',
+      $redacteur = new Zend\Log\Writer\Stream('php://output');
+      $formateur = new Zend\Log\Formatter\Xml('log',
                                               array('msg' => 'message',
                                                     'niveau' => 'priorityName'));
       $redacteur->setFormatter($formateur);

@@ -11,14 +11,14 @@ Pour commencer
 
 ``Zend_Mail`` fournit des fonctionnalités génériques pour écrire et envoyer des émail au format texte et
 *MIME*. Un émail peut-être envoyé avec ``Zend_Mail`` via le transporteur par défaut
-``Zend\Mail_Transport\Sendmail`` ou via ``Zend\Mail_Transport\Smtp``.
+``Zend\Mail\Transport\Sendmail`` ou via ``Zend\Mail\Transport\Smtp``.
 
 .. _zend.mail.introduction.example-1:
 
 .. rubric:: Émail simple avec ``Zend_Mail``
 
 Un émail simple est composé d'un destinataire, d'un sujet, d'un message et d'un expéditeur. Pour envoyer ce
-genre de messages en utilisant ``Zend\Mail_Transport\Sendmail``, vous pouvez faire comme ceci :
+genre de messages en utilisant ``Zend\Mail\Transport\Sendmail``, vous pouvez faire comme ceci :
 
 .. code-block:: php
    :linenos:
@@ -64,7 +64,7 @@ Vous pouvez aussi utiliser la plupart des méthodes de l'objet ``Zend_Mail`` via
 Configurer le transport sendmail par défaut
 -------------------------------------------
 
-Le transporteur par défaut pour une instance ``Zend_Mail`` est ``Zend\Mail_Transport\Sendmail``. C'est
+Le transporteur par défaut pour une instance ``Zend_Mail`` est ``Zend\Mail\Transport\Sendmail``. C'est
 essentiellement un paquet pour la fonction *PHP* `mail()`_. Si vous souhaitez fournir des paramètres additionnels
 à la fonction `mail()`_, créez simplement une nouvelle instance du transporteur et fournissez vos paramètres au
 constructeur. La nouvelle instance du transporteur peut ainsi devenir le transporteur par défaut ``Zend_Mail``, ou
@@ -72,14 +72,14 @@ il peut être fourni à la méthode ``send()`` de ``Zend_Mail``.
 
 .. _zend.mail.introduction.sendmail.example-1:
 
-.. rubric:: Fournir des paramètres additionnels au transporteur ``Zend\Mail_Transport\Sendmail``
+.. rubric:: Fournir des paramètres additionnels au transporteur ``Zend\Mail\Transport\Sendmail``
 
 Cet exemple montre comment changer le Return-Path de la fonction `mail()`_.
 
 .. code-block:: php
    :linenos:
 
-   $tr = new Zend\Mail_Transport\Sendmail('-freturn_to_me@example.com');
+   $tr = new Zend\Mail\Transport\Sendmail('-freturn_to_me@example.com');
    Zend\Mail\Mail::setDefaultTransport($tr);
 
    $mail = new Zend\Mail\Mail();

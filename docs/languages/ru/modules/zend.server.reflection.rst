@@ -31,7 +31,6 @@ Zend\Server\Reflection
    :linenos:
 
    <?php
-   require_once 'Zend/Server/Reflection.php';
    $class    = Zend\Server\Reflection::reflectClass('My_Class');
    $function = Zend\Server\Reflection::reflectFunction('my_function');
 
@@ -59,8 +58,8 @@ Zend\Server\Reflection
    // или с помощью метода setNamespace()
    $reflection->getNamespace();
 
-*reflectFunction()* возвращает объект *Zend\Server_Reflection\Function*, *reflectClass*
-возвращает объект *Zend\Server_Reflection\Class*. Обратитесь к документации
+*reflectFunction()* возвращает объект *Zend\Server\Reflection\Function*, *reflectClass*
+возвращает объект *Zend\Server\Reflection\Class*. Обратитесь к документации
 API чтобы узнать, какие методы доступны в этих объектах.
 
 

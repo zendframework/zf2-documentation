@@ -23,7 +23,7 @@ Standardwerte zurückgesetzt werden (gelöscht). Das Zurücksetzen der Standardw
 
    // Transport erstellen
    $config = array('name' => 'sender.example.com');
-   $transport = new Zend\Mail_Transport\Smtp('mail.example.com', $config);
+   $transport = new Zend\Mail\Transport\Smtp('mail.example.com', $config);
 
    // Setzt From & Reply-To Adressen
    // und Namen für alle Emails die zu versenden sind
@@ -58,9 +58,9 @@ durch Zugriff auf das Protokoll Objekt des Transportes, manipuliert werden.
    :linenos:
 
    // Transport erstellen
-   $transport = new Zend\Mail_Transport\Smtp();
+   $transport = new Zend\Mail\Transport\Smtp();
 
-   $protocol = new Zend\Mail_Protocol\Smtp('mail.example.com');
+   $protocol = new Zend\Mail\Protocol\Smtp('mail.example.com');
    $protocol->connect();
    $protocol->helo('mail.example.com');
 

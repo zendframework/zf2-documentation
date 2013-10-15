@@ -13,7 +13,7 @@ directory structure that the ``zf`` tool sets up under ``application/``, and all
 begin with a common prefix, the module name. ``application/`` is itself a module -- the "default" or "application"
 module. As such, we'll want to setup autoloading for resources within this directory.
 
-``Zend\Application_Module\Autoloader`` provides the functionality needed to map the various resources under a
+``Zend\Application\Module\Autoloader`` provides the functionality needed to map the various resources under a
 module to the appropriate directories, and provides a standard naming mechanism as well. An instance of the class
 is created by default during initialization of the bootstrap object; your application bootstrap will be default use
 the module prefix "Application". As such, our models, forms, and table classes will all begin with the class prefix
@@ -227,7 +227,7 @@ database requirements locally so they can have the fully working application. Cr
    ));
    try {
        $getopt->parse();
-   } catch (Zend\Console_Getopt\Exception $e) {
+   } catch (Zend\Console\Getopt\Exception $e) {
        // Bad options passed: report usage
        echo $e->getUsageMessage();
        return false;
@@ -351,7 +351,7 @@ with the file ``Guestbook.php``. If you open that file, you'll see the following
    /**
     * This is the DbTable class for the guestbook table.
     */
-   class Application_Model_DbTable_Guestbook extends Zend\Db_Table\Abstract
+   class Application_Model_DbTable_Guestbook extends Zend\Db\Table\Abstract
    {
        /** Table name */
        protected $_name    = 'guestbook';
@@ -407,7 +407,7 @@ read as follows:
            if (is_string($dbTable)) {
                $dbTable = new $dbTable();
            }
-           if (!$dbTable instanceof Zend\Db_Table\Abstract) {
+           if (!$dbTable instanceof Zend\Db\Table\Abstract) {
                throw new Exception('Invalid table data gateway provided');
            }
            $this->_dbTable = $dbTable;

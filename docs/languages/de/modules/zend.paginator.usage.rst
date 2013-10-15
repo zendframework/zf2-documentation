@@ -24,7 +24,7 @@ Framework standardmäßig ausgeliefert:
    +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |DbSelect     |Verwendet eine Instanz von Zend\Db\Select, welche ein Array zurückgibt                                                                                                                                   |
    +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |DbTableSelect|Verwendet eine Instanz von Zend\Db_Table\Select, welche eine Instanz von Zend\Db\Table\Rowset\Abstract zurückgibt. Das gibt zusätzliche Information pber das Ergebnisset, wie z.B. die Namen der Spalten.|
+   |DbTableSelect|Verwendet eine Instanz von Zend\Db\Table\Select, welche eine Instanz von Zend\Db\Table\Rowset\Abstract zurückgibt. Das gibt zusätzliche Information pber das Ergebnisset, wie z.B. die Namen der Spalten.|
    +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Iterator     |Verwendet eine Instanz von Iterator                                                                                                                                                                      |
    +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -45,7 +45,7 @@ Um eine Instanz von ``Zend_Paginator`` zu erstellen, muß ein Adapter an den Kon
 .. code-block:: php
    :linenos:
 
-   $paginator = new Zend\Paginator\Paginator(new Zend\Paginator_Adapter\Array($array));
+   $paginator = new Zend\Paginator\Paginator(new Zend\Paginator\Adapter\Array($array));
 
 Der Einfachheit halber kann man für die mit dem Zend Framework mitgelieferten Adapter die statische ``factory()``
 verwenden:
@@ -70,7 +70,7 @@ seitenweisen Daten zuzugreifen.
    $paginator->setCurrentPageNumber($page);
 
 Der einfachste Weg um diesen Wert zu verfolgen ist über eine *URL*. Auch wenn wir empfehlen einen
-``Zend\Controller_Router\Interface``-kompatiblen Router zu verwenden um dies zu bewerkstelligen, ist das keine
+``Zend\Controller\Router\Interface``-kompatiblen Router zu verwenden um dies zu bewerkstelligen, ist das keine
 Notwendigkeit.
 
 Das folgende ist eine Beispielroute die in einer *INI* Konfigurationsdatei verwendet werden könnte:
@@ -132,13 +132,13 @@ eigenen Tabelle speichert, kann eine schnellere Abfrage der Anzahl mit dem folge
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend\Paginator_Adapter\DbSelect($db->select()->from('posts'));
+   $adapter = new Zend\Paginator\Adapter\DbSelect($db->select()->from('posts'));
    $adapter->setRowCount(
        $db->select()
           ->from(
               'item_counts',
               array(
-                  Zend\Paginator_Adapter\DbSelect::ROW_COUNT_COLUMN => 'post_count'
+                  Zend\Paginator\Adapter\DbSelect::ROW_COUNT_COLUMN => 'post_count'
               )
           )
    );
@@ -225,7 +225,7 @@ Instanz kann dei Aufruf der PaginationControl komplett eliminiert werden:
    :linenos:
 
    Zend\Paginator\Paginator::setDefaultScrollingStyle('Sliding');
-   Zend\View_Helper\PaginationControl::setDefaultViewPartial(
+   Zend\View\Helper\PaginationControl::setDefaultViewPartial(
        'my_pagination_control.phtml'
    );
    $paginator->setView($view);

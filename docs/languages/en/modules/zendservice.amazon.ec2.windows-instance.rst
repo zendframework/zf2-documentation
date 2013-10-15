@@ -76,7 +76,7 @@ progress s3Bucket and s3Prefix.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new ZendService\Amazon_Ec2\Instance\Windows('aws_key',
+   $ec2_instance = new ZendService\Amazon\Ec2\Instance\Windows('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->bundle('instanceId', 's3Bucket', 's3Prefix');
 
@@ -92,7 +92,7 @@ updateTime, progress s3Bucket and s3Prefix.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new ZendService\Amazon_Ec2\Instance\Windows('aws_key',
+   $ec2_instance = new ZendService\Amazon\Ec2\Instance\Windows('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->describeBundle('bundleId');
 
@@ -108,7 +108,7 @@ updateTime, progress s3Bucket and s3Prefix.
 .. code-block:: php
    :linenos:
 
-   $ec2_instance = new ZendService\Amazon_Ec2\Instance\Windows('aws_key',
+   $ec2_instance = new ZendService\Amazon\Ec2\Instance\Windows('aws_key',
                                                         'aws_secret_key');
    $return = $ec2_instance->cancelBundle('bundleId');
 

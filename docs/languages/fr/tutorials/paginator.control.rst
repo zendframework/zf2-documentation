@@ -62,7 +62,7 @@ Il faut maintenant indiquer à Zend_Paginator la vue partielle à utiliser. Ajou
 .. code-block:: php
    :linenos:
 
-   Zend\View_Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
+   Zend\View\Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
 
 La dernière étape est la plus simple. Passez un objet Paginator à un script de vue (PAS 'controls.phtml'!).
 Ensuite, demandez simplement l'affichage de l'objet Paginator lui-même. Ceci va faire intervenir l'aide de vue

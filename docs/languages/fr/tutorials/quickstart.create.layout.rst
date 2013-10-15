@@ -90,7 +90,7 @@ commence par ``_init``. Dans notre cas, nous voulons initialiser le doctype et d
 
    // application/Bootstrap.php
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        protected function _initDoctype()
        {
@@ -123,7 +123,7 @@ allons d'abord nous assurer que la ressource ``View`` existe, puis nous la récu
 
    // application/Bootstrap.php
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        protected function _initDoctype()
        {

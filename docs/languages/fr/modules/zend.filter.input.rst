@@ -274,7 +274,7 @@ are returned by ``Zend\Filter\Input``.
 .. code-block:: php
    :linenos:
 
-   $translate = new Zend\Translator_Adapter\Array(array(
+   $translate = new Zend\Translator\Adapter\Array(array(
        'content' => array(
            Zend\Filter\Input::MISSING_MESSAGE => "Where is the field?"
        )

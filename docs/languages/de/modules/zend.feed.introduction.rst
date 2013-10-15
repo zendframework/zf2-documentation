@@ -11,7 +11,7 @@ Feed und Eintragsstruktur sowie die Rückgabe der Ergebniss nach *XML*. In Zukun
 Modifizierungsunterstützung auch das Atom Publishing Protocol unterstützen.
 
 ``Zend_Feed`` besteht aus der Basisklasse ``Zend_Feed``, sowie den beiden abstrakten Basisklassen
-``Zend\Feed\Abstract`` und ``Zend\Feed_Entry\Abstract`` für die Darstellung von Feeds und Einträgen, aus
+``Zend\Feed\Abstract`` und ``Zend\Feed\Entry\Abstract`` für die Darstellung von Feeds und Einträgen, aus
 speziellen Implementationen von Feeds und Einträgen für *RSS* und Atom sowie einem Helfer, der hinter den
 Kulissen die natürliche Syntax ermöglicht.
 

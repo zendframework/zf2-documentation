@@ -66,7 +66,7 @@ Essayez d'ajouter ceci à votre classe de bootstrap:
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        protected function _initDocType()
        {
@@ -110,7 +110,7 @@ manière que nous avions agit avec le doctype. Dans ce cas, nous allons écrire 
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        // ...
 
@@ -181,7 +181,7 @@ Dans notre exemple, nous supposerons que toutes les pages ont besoin de charger 
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        // ...
 
@@ -254,7 +254,7 @@ nous allons donc mettre à jour notre méthode de bootstap ``_initPlaceholders()
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        // ...
 

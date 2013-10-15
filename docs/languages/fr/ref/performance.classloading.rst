@@ -208,7 +208,7 @@ l'imaginer, tout ceci entraîne des appels aux stats du système de fichiers.
 Multipliez ceci par le nombre de composants qui utilisent le PluginLoader, et vous aurez une idée de l'importance
 de ce problème. Au moment de l'écriture de ce document, les composants suivants utilisent le PluginLoader :
 
-- ``Zend\Controller_Action\HelperBroker``\  : aides d'action
+- ``Zend\Controller\Action\HelperBroker``\  : aides d'action
 
 - ``Zend\File\Transfer``\  : adaptateurs
 

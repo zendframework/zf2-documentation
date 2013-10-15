@@ -12,7 +12,7 @@ Adaptateurs de source de données personnalisée
 À partir d'un moment, vous pourriez avoir besoin de parcourir un type de données qui n'est pas couvert par les
 adaptateurs fournis par défaut. Dans ce cas, vous devrez écrire vos propres adaptateurs.
 
-Pour faire ceci, vous devez implémenter ``Zend\Paginator_Adapter\Interface``. Il existe deux méthodes requises :
+Pour faire ceci, vous devez implémenter ``Zend\Paginator\Adapter\Interface``. Il existe deux méthodes requises :
 
 - ``count()``
 
@@ -40,7 +40,7 @@ Pour un tableau, il s'agirait :
 
 
 
-Regardez les adaptateurs fournis par défaut (ils implémentent tous ``Zend\Paginator_Adapter\Interface``) pour
+Regardez les adaptateurs fournis par défaut (ils implémentent tous ``Zend\Paginator\Adapter\Interface``) pour
 avoir une idée de la manière d'implémenter votre propre adaptateur.
 
 .. _zend.paginator.advanced.scrolling-styles:
@@ -49,7 +49,7 @@ Styles de défilement personnalisés
 ----------------------------------
 
 Créer votre propre style de défilement requiert que vous implémentiez
-``Zend\Paginator_ScrollingStyle\Interface``, qui définit une seule méthode, ``getPages()``. Et plus
+``Zend\Paginator\ScrollingStyle\Interface``, qui définit une seule méthode, ``getPages()``. Et plus
 spécifiquement :
 
 
@@ -64,7 +64,7 @@ spécifiquement :
 Cette méthode doit calculer des bornes inférieures et supérieures des numéros de page dans la plage des pages
 dites "local" (c'est-à-dire qui sont proches de la page courante).
 
-A moins que votre style étende un autre style de défilement (voir ``Zend\Paginator_ScrollingStyle\Elastic`` par
+A moins que votre style étende un autre style de défilement (voir ``Zend\Paginator\ScrollingStyle\Elastic`` par
 exemple), votre style personnalisé devra inévitablement se terminer par quelque chose de similaire à ceci :
 
 
@@ -205,7 +205,7 @@ Zend\Paginator\AdapterAggregate Interface
 Depending on your application you might want to paginate objects, whose internal data-structure is equal to
 existing adapters, but you don't want to break up your encapsulation to allow access to this data. In other cases
 an object might be in a "has-an adapter" relationship, rather than the "is-an adapter" relationsship that
-``Zend\Paginator_Adapter\Abstract`` promotes. For this cases you can use the ``Zend\Paginator\AdapterAggregate``
+``Zend\Paginator\Adapter\Abstract`` promotes. For this cases you can use the ``Zend\Paginator\AdapterAggregate``
 interface that behaves much like the ``IteratorAggregate`` interface of the PHP SPL extension.
 
 
@@ -218,14 +218,14 @@ interface that behaves much like the ``IteratorAggregate`` interface of the PHP 
           /**
            * Return a fully configured Paginator Adapter from this method.
            *
-           * @return Zend\Paginator_Adapter\Abstract
+           * @return Zend\Paginator\Adapter\Abstract
            */
           public function getPaginatorAdapter();
       }
 
 
 
-The interface is fairly small and only expects you to return an instance of ``Zend\Paginator_Adapter\Abstract``. An
+The interface is fairly small and only expects you to return an instance of ``Zend\Paginator\Adapter\Abstract``. An
 Adapter Aggregate instance is then recognized by both *Zend\Paginator\Paginator::factory* and the constructor of
 Zend_Paginator and handled accordingly.
 

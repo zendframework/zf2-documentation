@@ -102,7 +102,7 @@ Le code suivant montre comment construire l'adaptateur d'authentification et l'i
 
            if ($loginForm->isValid()) {
 
-               $adapter = new Zend\Auth_Adapter\DbTable(
+               $adapter = new Zend\Auth\Adapter\DbTable(
                    $db,
                    'users',
                    'username',

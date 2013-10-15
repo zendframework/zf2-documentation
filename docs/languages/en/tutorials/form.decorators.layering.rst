@@ -39,7 +39,7 @@ To simplify the process, we'll take a look at the example from :ref:`the previou
 .. code-block:: php
    :linenos:
 
-   class My_Decorator_SimpleInput extends Zend\Form_Decorator\Abstract
+   class My_Decorator_SimpleInput extends Zend\Form\Decorator\Abstract
    {
        protected $_format = '<label for="%s">%s</label>'
                           . '<input id="%s" name="%s" type="text" value="%s"/>';
@@ -62,7 +62,7 @@ Let's now remove the label functionality, and build a separate decorator for tha
 .. code-block:: php
    :linenos:
 
-   class My_Decorator_SimpleInput extends Zend\Form_Decorator\Abstract
+   class My_Decorator_SimpleInput extends Zend\Form\Decorator\Abstract
    {
        protected $_format = '<input id="%s" name="%s" type="text" value="%s"/>';
 
@@ -78,7 +78,7 @@ Let's now remove the label functionality, and build a separate decorator for tha
        }
    }
 
-   class My_Decorator_SimpleLabel extends Zend\Form_Decorator\Abstract
+   class My_Decorator_SimpleLabel extends Zend\Form\Decorator\Abstract
    {
        protected $_format = '<label for="%s">%s</label>';
 
@@ -106,13 +106,13 @@ To overcome this, simply concatenate the passed in ``$content`` with the markup 
 
 The problem with the above approach comes when you want to programmatically choose whether the original content
 should precede or append the new markup. Fortunately, there's a standard mechanism for this already;
-``Zend\Form_Decorator\Abstract`` has a concept of placement and defines some constants for matching it.
+``Zend\Form\Decorator\Abstract`` has a concept of placement and defines some constants for matching it.
 Additionally, it allows specifying a separator to place between the two. Let's make use of those:
 
 .. code-block:: php
    :linenos:
 
-   class My_Decorator_SimpleInput extends Zend\Form_Decorator\Abstract
+   class My_Decorator_SimpleInput extends Zend\Form\Decorator\Abstract
    {
        protected $_format = '<input id="%s" name="%s" type="text" value="%s"/>';
 
@@ -137,7 +137,7 @@ Additionally, it allows specifying a separator to place between the two. Let's m
        }
    }
 
-   class My_Decorator_SimpleLabel extends Zend\Form_Decorator\Abstract
+   class My_Decorator_SimpleLabel extends Zend\Form\Decorator\Abstract
    {
        protected $_format = '<label for="%s">%s</label>';
 

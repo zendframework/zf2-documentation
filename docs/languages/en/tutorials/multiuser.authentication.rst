@@ -109,7 +109,7 @@ The following code will demonstrate how to construct the proper adapter, integra
 
            if ($loginForm->isValid()) {
 
-               $adapter = new Zend\Auth_Adapter\DbTable(
+               $adapter = new Zend\Auth\Adapter\DbTable(
                    $db,
                    'users',
                    'username',

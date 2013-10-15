@@ -69,7 +69,7 @@ werden zu ``Zend\Validate\NotEmpty`` und ``Zend\Validate\Int`` aufgelöst; die n
    Plugin Namen passt. Wenn die Datei nicht gefunden wird, geht er auf den nächsten Präfix Pfad weiter.
 
    Sobald der Stack von Präfix Pfaden erschöpft ist, und keine passende Datei gefunden wurde, wirft es eine
-   ``Zend\Loader_PluginLoader\Exception``.
+   ``Zend\Loader\PluginLoader\Exception``.
 
 .. _learning.plugins.usage.override:
 
@@ -79,7 +79,7 @@ Eine Stärke des PluginLoaders ist dessen Verwendung eines LIFO Stacks welche es
 überladen indem eine eigene Version lokal mit einem anderen Präfix Pfad erstellt wird, und der Präfix Pfad
 später im Stack registriert wird.
 
-Nehmen wir zum Beispiel ``Zend\View_Helper\FormButton`` an (View Helfer sind eine Form von Plugins). Dieser View
+Nehmen wir zum Beispiel ``Zend\View\Helper\FormButton`` an (View Helfer sind eine Form von Plugins). Dieser View
 Helfer akzeptiert drei Argumente, ein Elementname (der auch als DOM Identifikator des Elements verwendet wird),
 einen Wert (der als Button Label verwendet wird), und ein optionales Array an Attributen. Der Helfer erzeugt dann
 das *HTML* Markup für ein Formular Eingabeelement.

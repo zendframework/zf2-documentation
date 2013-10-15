@@ -3,7 +3,7 @@
 ZendService\\StrikeIron: Bundled Services
 =========================================
 
-``ZendService\StrikeIron`` comes with wrapper classes for three popular StrikeIron services.
+``ZendService\StrikeIron\StrikeIron`` comes with wrapper classes for three popular StrikeIron services.
 
 .. _zendservice.strikeiron.bundled-services.zip-code-information:
 

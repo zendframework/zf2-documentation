@@ -70,7 +70,7 @@ Um auf Filter mit diesem Präfix zuzugreifen, die aber tiefer in der Hirarchie v
 .. code-block:: php
    :linenos:
 
-   // Verwendet Zend\Filter_Word\CamelCaseToDash als Regel
+   // Verwendet Zend\Filter\Word\CamelCaseToDash als Regel
    $inflector->addRules(array('script' => 'Word_CamelCaseToDash'));
 
 Um einen alternativen Pfad zu setzen hat ``Zend\Filter\Inflector`` eine Utility Methode die den Plugin Lader
@@ -260,7 +260,7 @@ Variable hinzufügt). Filter werden in einem der folgenden Wege spezifiziert:
 
    $inflector = new Zend\Filter\Inflector(':script.:suffix');
 
-   // Setzt eine Regel um den Zend\Filter_Word\CamelCaseToDash Filter zu verwenden
+   // Setzt eine Regel um den Zend\Filter\Word\CamelCaseToDash Filter zu verwenden
    $inflector->setFilterRule('script', 'Word_CamelCaseToDash');
 
    // Eine Regel hinzufügen um Strings kleinzuschreiben

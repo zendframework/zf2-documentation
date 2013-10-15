@@ -25,7 +25,7 @@ sollte Controller nicht in dieser Art und Weise verwenden.
        {
            // Das Seitenkontroll View Skript einrichten. Siehe das Handbuch zu
            // Seitenkontrollen für weitere Informationen über dieses View Skript
-           Zend\View_Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
+           Zend\View\Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
 
            // Holt eine bereits instanzierte Datenbank Verbindung von der Registry
            $db = Zend\Registry\Registry::get('db');

@@ -4,7 +4,7 @@
 Rédacteurs (Writers)
 ====================
 
-Un rédacteur est un objet qui hérite de ``Zend\Log_Writer\Abstract``. La responsabilité d'un rédacteur est
+Un rédacteur est un objet qui hérite de ``Zend\Log\Writer\Abstract``. La responsabilité d'un rédacteur est
 d'enregistrer des données de log dans un stockage particulier.
 
 .. _zend.log.writers.stream:
@@ -12,7 +12,7 @@ d'enregistrer des données de log dans un stockage particulier.
 Écrire vers un flux (stream)
 ----------------------------
 
-``Zend\Log_Writer\Stream`` envoie des données de log à un `flux de PHP`_.
+``Zend\Log\Writer\Stream`` envoie des données de log à un `flux de PHP`_.
 
 Pour écrire des données de log dans le buffer d'affichage de PHP, il faut utiliser l'URL *php://output*.
 Alternativement, vous pouvez préférer envoyer des données de log directement à un flux comme ``STDERR``
@@ -21,7 +21,7 @@ Alternativement, vous pouvez préférer envoyer des données de log directement 
    .. code-block:: php
       :linenos:
 
-      $redacteur = new Zend\Log_Writer\Stream('php://output');
+      $redacteur = new Zend\Log\Writer\Stream('php://output');
       $logger = new Zend\Log\Log($redacteur);
 
       $logger->info("Message d'information");
@@ -33,15 +33,15 @@ Pour écrire des données dans un fichier, employer un des `Filesystem URLs`_:
    .. code-block:: php
       :linenos:
 
-      $redacteur = new Zend\Log_Writer\Stream('/chemin/vers/fichierdelog');
+      $redacteur = new Zend\Log\Writer\Stream('/chemin/vers/fichierdelog');
       $logger = new Zend\Log\Log($redacteur);
 
       $logger->info("Message d'information");
 
 Par défaut, le flux s'ouvre en mode d'ajout (*"a"*). Pour l'ouvrir avec un mode différent, le constructeur de
-``Zend\Log_Writer\Stream`` accepte un deuxième paramètre facultatif pour le mode.
+``Zend\Log\Writer\Stream`` accepte un deuxième paramètre facultatif pour le mode.
 
-Le constructeur de ``Zend\Log_Writer\Stream`` accepte également une ressource existante de flux :
+Le constructeur de ``Zend\Log\Writer\Stream`` accepte également une ressource existante de flux :
 
    .. code-block:: php
       :linenos:
@@ -51,7 +51,7 @@ Le constructeur de ``Zend\Log_Writer\Stream`` accepte également une ressource e
           throw new Exception('Impossible d\'ouvrir le flux');
       }
 
-      $redacteur = new Zend\Log_Writer\Stream($flux);
+      $redacteur = new Zend\Log\Writer\Stream($flux);
       $logger = new Zend\Log\Log($redacteur);
 
       $logger->info("Message d'information");
@@ -64,8 +64,8 @@ Vous ne pouvez pas indiquer le mode pour des ressources existantes de flux. Le f
 Écrire dans des bases de données
 --------------------------------
 
-``Zend\Log_Writer\Db`` écrit les informations de log dans une table de base de données en utilisant ``Zend_Db``.
-Le constructeur de ``Zend\Log_Writer\Db`` reçoit une instance de ``Zend\Db\Adapter``, un nom de table, et un plan
+``Zend\Log\Writer\Db`` écrit les informations de log dans une table de base de données en utilisant ``Zend_Db``.
+Le constructeur de ``Zend\Log\Writer\Db`` reçoit une instance de ``Zend\Db\Adapter``, un nom de table, et un plan
 de correspondance entre les colonnes de la base de données et les données élémentaires d'événement :
 
    .. code-block:: php
@@ -78,7 +78,7 @@ de correspondance entre les colonnes de la base de données et les données él�
       $db = Zend\Db\Db::factory('PDO_MYSQL', $parametres);
 
       $planDeCorrespondance = array('niveau' => 'priority', 'msg' => 'message');
-      $redacteur = new Zend\Log_Writer\Db($db,
+      $redacteur = new Zend\Log\Writer\Db($db,
                                           'nom_de_la_table_de_log',
                                           $planDeCorrespondance);
 
@@ -95,13 +95,13 @@ le message de log.
 Déraciner les rédacteurs
 ------------------------
 
-Le ``Zend\Log_Writer\Null`` est une souche qui écrit des données de log nulle part. Il est utile pour neutraliser
+Le ``Zend\Log\Writer\Null`` est une souche qui écrit des données de log nulle part. Il est utile pour neutraliser
 le log ou déraciner le log pendant les essais :
 
    .. code-block:: php
       :linenos:
 
-      $redacteur = new Zend\Log_Writer\Null;
+      $redacteur = new Zend\Log\Writer\Null;
       $logger = new Zend\Log\Log($redacteur);
 
       // va nulle part
@@ -114,13 +114,13 @@ le log ou déraciner le log pendant les essais :
 Tester avec un simulacre
 ------------------------
 
-Le ``Zend\Log_Writer\Mock`` est un rédacteur très simple qui enregistre les données brutes qu'il reçoit dans un
+Le ``Zend\Log\Writer\Mock`` est un rédacteur très simple qui enregistre les données brutes qu'il reçoit dans un
 tableau exposé comme propriété publique.
 
    .. code-block:: php
       :linenos:
 
-      $simulacre = new Zend\Log_Writer\Mock;
+      $simulacre = new Zend\Log\Writer\Mock;
       $logger = new Zend\Log\Log($simulacre);
 
       $logger->info("Message d'information");
@@ -152,9 +152,9 @@ de rédacteurs. Pour faire ceci, employer la méthode ``addWriter()``:
       :linenos:
 
       $redacteur1 =
-          new Zend\Log_Writer\Stream('/chemin/vers/premier/fichierdelog');
+          new Zend\Log\Writer\Stream('/chemin/vers/premier/fichierdelog');
       $redacteur2 =
-          new Zend\Log_Writer\Stream('/chemin/vers/second/fichierdelog');
+          new Zend\Log\Writer\Stream('/chemin/vers/second/fichierdelog');
 
       $logger = new Zend\Log\Log();
       $logger->addWriter($redacteur1);

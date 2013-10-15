@@ -66,7 +66,7 @@ könnte versuchen das folgende in der Bootstrap Klasse hinzuzufügen:
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        protected function _initDocType()
        {
@@ -110,7 +110,7 @@ auf den verschiedenen Platzhaltern zu arbeiten, und einen initialen Titel sowie 
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        // ...
 
@@ -182,7 +182,7 @@ vorhanden ist (relativ zum Dokument Root); wir spezifizieren dass in unserer Boo
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        // ...
 
@@ -257,7 +257,7 @@ aktualisieren die ``_initPlaceholders()`` Methode in der Bootstrap um das zu tun
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        // ...
 

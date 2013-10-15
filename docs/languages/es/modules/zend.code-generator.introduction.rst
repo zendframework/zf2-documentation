@@ -22,12 +22,12 @@ la configuración adecuada o configurarla después de la instanciación. Para ge
    :linenos:
 
    // Pasando la configuración al constructor:
-   $file = new Zend\CodeGenerator_Php\File(array(
+   $file = new Zend\CodeGenerator\Php\File(array(
        'classes' => array(
-           new Zend\CodeGenerator_Php\Class(array(
+           new Zend\CodeGenerator\Php\Class(array(
                'name'    => 'World',
                'methods' => array(
-                   new Zend\CodeGenerator_Php\Method(array(
+                   new Zend\CodeGenerator\Php\Method(array(
                        'name' => 'hello',
                        'body' => 'echo \'Hello world!\';',
                    )),
@@ -37,15 +37,15 @@ la configuración adecuada o configurarla después de la instanciación. Para ge
    ));
 
    // Configurando después de la instanciación
-   $method = new Zend\CodeGenerator_Php\Method();
+   $method = new Zend\CodeGenerator\Php\Method();
    $method->setName('hello')
           ->setBody('echo \'Hello world!\';');
 
-   $class = new Zend\CodeGenerator_Php\Class();
+   $class = new Zend\CodeGenerator\Php\Class();
    $class->setName('World')
          ->setMethod($method);
 
-   $file = new Zend\CodeGenerator_Php\File();
+   $file = new Zend\CodeGenerator\Php\File();
    $file->setClass($class);
 
    // Mostrar el archivo generado
@@ -81,16 +81,16 @@ Podríamos entonces hacer lo siguiente:
 .. code-block:: php
    :linenos:
 
-   $class = Zend\CodeGenerator_Php\Class::fromReflection(
+   $class = Zend\CodeGenerator\Php\Class::fromReflection(
        new Zend\Reflection\Class('World')
    );
 
-   $method = new Zend\CodeGenerator_Php\Method();
+   $method = new Zend\CodeGenerator\Php\Method();
    $method->setName('mrMcFeeley')
           ->setBody('echo \'Hello, Mr. McFeeley!\';');
    $class->setMethod($method);
 
-   $file = new Zend\CodeGenerator_Php\File();
+   $file = new Zend\CodeGenerator\Php\File();
    $file->setClass($class);
 
    // Mostrar el archivo generado

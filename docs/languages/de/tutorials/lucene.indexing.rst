@@ -20,11 +20,11 @@ Es gibt zwei Wege Dokument Objekte zu erstellen. Der erste ist es manuell zu tun
 .. code-block:: php
    :linenos:
 
-   $doc = new Zend\Search_Lucene\Document();
-   $doc->addField(Zend\Search_Lucene\Field::Text('url', $docUrl));
-   $doc->addField(Zend\Search_Lucene\Field::Text('title', $docTitle));
-   $doc->addField(Zend\Search_Lucene\Field::unStored('contents', $docBody));
-   $doc->addField(Zend\Search_Lucene\Field::binary('avatar', $avatarData));
+   $doc = new Zend\Search\Lucene\Document();
+   $doc->addField(Zend\Search\Lucene\Field::Text('url', $docUrl));
+   $doc->addField(Zend\Search\Lucene\Field::Text('title', $docTitle));
+   $doc->addField(Zend\Search\Lucene\Field::unStored('contents', $docBody));
+   $doc->addField(Zend\Search\Lucene\Field::binary('avatar', $avatarData));
 
 Die zweite Methode ist das Laden von *HTML* oder von Microsoft Office 2007 Dateien:
 

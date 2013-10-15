@@ -46,7 +46,7 @@ es nur eine Datei welche wir hochladen wollen.
        <input type="submit" value="Upload File" />
    </form>
 
-Der Bequemlichkeit halber kann :ref:`Zend\Form_Element\File <zend.form.standardElements.file>` verwendet werden
+Der Bequemlichkeit halber kann :ref:`Zend\Form\Element\File <zend.form.standardElements.file>` verwendet werden
 statt das *HTML* manuell zu erstellen.
 
 Der nächste Schritt ist die Erstellung des Empfängers des Uploads. In unserem Beispiel ist der Empfänger bei
@@ -314,7 +314,7 @@ Erstens, muß man entweder *APC* oder ``UploadProgress`` aktiviert haben. Es ist
 *APC* in der eigenen ``php.ini`` ausgeschaltet werden kann.
 
 Zweitens, muß man die richtigen unsichtbaren Felder im Formular hinzugefügt haben das die Dateien sendet. Wenn
-man ``Zend\Form_Element\File`` verwendet werden diese unsichtbaren Felder automatisch von ``Zend_Form``
+man ``Zend\Form\Element\File`` verwendet werden diese unsichtbaren Felder automatisch von ``Zend_Form``
 hinzugefügt.
 
 Wenn die oberen zwei Punkte vorhanden sind dann ist man in der Lage den aktuellen Fortschritt des Datei uploads zu
@@ -339,7 +339,7 @@ wenn es das erste Mal aufgerufen wird. Für Details über den zu verwendenden Ad
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend\ProgressBar_Adapter\Console();
+   $adapter = new Zend\ProgressBar\Adapter\Console();
    $upload  = Zend\File\Transfer\Adapter\Http::getProgress($adapter);
 
    $upload = null;

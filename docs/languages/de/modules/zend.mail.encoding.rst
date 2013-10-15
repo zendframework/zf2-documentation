@@ -28,7 +28,7 @@ Header Kodierung zu wechseln, wie im folgenden Beispiel beschrieben:
    // Römisch basierten Buchstaben sehr unterschiedlich ist
    $mail->setHeaderEncoding(Zend\Mime\Mime::ENCODING_BASE64);
 
-``Zend\Mail_Transport\Smtp`` kodiert die Zeilen beginnend mit einem oder zwei Punkten, so dass die Mail das SMTP
+``Zend\Mail\Transport\Smtp`` kodiert die Zeilen beginnend mit einem oder zwei Punkten, so dass die Mail das SMTP
 Protokoll nicht missachtet.
 
 

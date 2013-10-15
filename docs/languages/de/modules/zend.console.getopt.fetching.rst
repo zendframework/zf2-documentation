@@ -20,7 +20,7 @@ Handhaben von Getopt Ausnahmen
 ------------------------------
 
 Wenn ein Benutzer irgendeine ungültige Option auf der Kommandozeile angibt, wirft die analysierende Funktion eine
-``Zend\Console_Getopt\Exception``. Diese Ausnahme kann im Code der Anwendung abgefangen werden. Die ``parse()``
+``Zend\Console\Getopt\Exception``. Diese Ausnahme kann im Code der Anwendung abgefangen werden. Die ``parse()``
 Methode kann verwendet werden um das Objekt dazu zu zwingen die Argumente zu analysieren. Das ist deswegen
 nützlich weil ``parse()`` in einen **try** Block eingebettet werden kann. Wenn es erfolgreich ist, kann man sicher
 sein das die Analyse keine weiteren Ausnahmen werfen wird. Die geworfene Ausnahme hat eine eigene Methode
@@ -36,7 +36,7 @@ sein das die Analyse keine weiteren Ausnahmen werfen wird. Die geworfene Ausnahm
    try {
        $opts = new Zend\Console\Getopt('abp:');
        $opts->parse();
-   } catch (Zend\Console_Getopt\Exception $e) {
+   } catch (Zend\Console\Getopt\Exception $e) {
        echo $e->getUsageMessage();
        exit;
    }
