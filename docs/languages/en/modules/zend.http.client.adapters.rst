@@ -66,7 +66,7 @@ The Socket adapter allows several extra configuration options that can be set us
          +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
          |sslcapath          |Path to SSL certificate directory                                                   |string       |NULL         |
          +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
-         |sslallowselfsigned |Whether to allow self-signed certificates                                           |string       |FALSE         |
+         |sslallowselfsigned |Whether to allow self-signed certificates                                           |string       |FALSE        |
          +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
          |sslusecontext      |Enables proxied connections to use SSL even if the proxy connection itself does not.|boolean      |FALSE        |
          +-------------------+------------------------------------------------------------------------------------+-------------+-------------+
@@ -222,19 +222,19 @@ Using the Proxy adapter requires several additional configuration parameters to 
 
       .. table:: Zend\\Http\\Client configuration parameters
 
-         +----------+------------------------------+-------------+--------------------------------------+
-         |Parameter |Description                   |Expected Type|Example Value                         |
-         +==========+==============================+=============+======================================+
-         |proxy_host|Proxy server address          |string       |'proxy.myhost.com' or '10.1.2.3'      |
-         +----------+------------------------------+-------------+--------------------------------------+
-         |proxy_port|Proxy server TCP port         |integer      |8080 (default) or 81                  |
-         +----------+------------------------------+-------------+--------------------------------------+
-         |proxy_user|Proxy user name, if required  |string       |'shahar' or '' for none (default)     |
-         +----------+------------------------------+-------------+--------------------------------------+
-         |proxy_pass|Proxy password, if required   |string       |'secret' or '' for none (default)     |
-         +----------+------------------------------+-------------+--------------------------------------+
+         +----------+------------------------------+-------------+----------------------------------------+
+         |Parameter |Description                   |Expected Type|Example Value                           |
+         +==========+==============================+=============+========================================+
+         |proxy_host|Proxy server address          |string       |'proxy.myhost.com' or '10.1.2.3'        |
+         +----------+------------------------------+-------------+----------------------------------------+
+         |proxy_port|Proxy server TCP port         |integer      |8080 (default) or 81                    |
+         +----------+------------------------------+-------------+----------------------------------------+
+         |proxy_user|Proxy user name, if required  |string       |'shahar' or '' for none (default)       |
+         +----------+------------------------------+-------------+----------------------------------------+
+         |proxy_pass|Proxy password, if required   |string       |'secret' or '' for none (default)       |
+         +----------+------------------------------+-------------+----------------------------------------+
          |proxy_auth|Proxy HTTP authentication type|string       |Zend\\Http\\Client::AUTH_BASIC (default)|
-         +----------+------------------------------+-------------+--------------------------------------+
+         +----------+------------------------------+-------------+----------------------------------------+
 
 
 
