@@ -8,8 +8,8 @@ various drawbacks when you are protecting against it.  Such as an IP address may
 on their ISP; or a browsers user agent may change during the request either by a web browser extension OR an upgrade
 that retains session cookies.
 
-.. include:: zend.session.validator.http-user-agent.rst
-.. include:: zend.session.validator.remote-addr.rst
+.. include:: include/zend.session.validator.http-user-agent.rst
+.. include:: include/zend.session.validator.remote-addr.rst
 
 Custom Validators
 -----------------

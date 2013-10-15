@@ -7,9 +7,9 @@ Zend Framework comes with a standard set of storage classes which are ready for 
 the intermediary between when the session starts and when the session writes and closes.  The default session storage
 is ``Zend\Session\Storage\SessionArrayStorage``.
 
-.. include:: zend.session.storage.array-storage.rst
-.. include:: zend.session.storage.session-storage.rst
-.. include:: zend.session.storage.session-array-storage.rst
+.. include:: include/zend.session.storage.array-storage.rst
+.. include:: include/zend.session.storage.session-storage.rst
+.. include:: include/zend.session.storage.session-array-storage.rst
 
 .. _zend.session.storage.custom-storage:
 

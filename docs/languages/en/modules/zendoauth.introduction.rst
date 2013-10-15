@@ -26,7 +26,7 @@ OAuth as an alternative and future replacement for their own solutions.
 Zend Framework's ``ZendOAuth`` currently implements a full OAuth Consumer conforming to the OAuth Core 1.0
 Revision A Specification (24 June 2009) via the ``ZendOAuth\Consumer`` class.
 
-.. include:: zendoauth.protocol-workflow.rst
-.. include:: zendoauth.security-architecture.rst
-.. include:: zendoauth.getting-started.rst
+.. include:: include/zendoauth.protocol-workflow.rst
+.. include:: include/zendoauth.security-architecture.rst
+.. include:: include/zendoauth.getting-started.rst
 

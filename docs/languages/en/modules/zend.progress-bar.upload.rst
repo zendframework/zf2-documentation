@@ -104,8 +104,8 @@ Standard Handlers
    - :ref:`Zend\\Progressbar\\Upload\\UploadProgress <zend.progress-bar.upload.upload-progress>`
 
 
-.. include:: zend.progress-bar.upload.apc-progress.rst
-.. include:: zend.progress-bar.upload.session-progress.rst
-.. include:: zend.progress-bar.upload.upload-progress.rst
+.. include:: include/zend.progress-bar.upload.apc-progress.rst
+.. include:: include/zend.progress-bar.upload.session-progress.rst
+.. include:: include/zend.progress-bar.upload.upload-progress.rst
 
 

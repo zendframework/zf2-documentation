@@ -7,8 +7,8 @@ Zend Framework comes with a standard set of config classes which are ready for y
 various configuration such as where a cookie lives, lifetime, including several bits to configure ext/session when
 using ``Zend\Session\Config\SessionConfig``.
 
-.. include:: zend.session.config.standard-config.rst
-.. include:: zend.session.config.session-config.rst
+.. include:: include/zend.session.config.standard-config.rst
+.. include:: include/zend.session.config.session-config.rst
 
 Custom Configuration
 --------------------

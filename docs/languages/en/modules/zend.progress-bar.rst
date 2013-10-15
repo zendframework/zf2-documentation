@@ -67,7 +67,7 @@ Standard Adapters
 
 
 
-.. include:: zend.progress-bar.adapter.console.rst
-.. include:: zend.progress-bar.adapter.js-push.rst
-.. include:: zend.progress-bar.adapter.js-pull.rst
+.. include:: include/zend.progress-bar.adapter.console.rst
+.. include:: include/zend.progress-bar.adapter.js-push.rst
+.. include:: include/zend.progress-bar.adapter.js-pull.rst
 

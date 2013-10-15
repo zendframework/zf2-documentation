@@ -65,9 +65,9 @@ abstracting the *REST*-*XML* interface Windows Azure provides into a simple *PHP
 An application built using ``ZendService\WindowsAzure\WindowsAzure`` can access Windows Azure's features, no matter if it is
 hosted on the Windows Azure platform or on an in-premise web server.
 
-.. include:: zendservice.windows-azure.blob.rst
-.. include:: zendservice.windows-azure.table.rst
-.. include:: zendservice.windows-azure.queue.rst
+.. include:: include/zendservice.windows-azure.blob.rst
+.. include:: include/zendservice.windows-azure.table.rst
+.. include:: include/zendservice.windows-azure.queue.rst
 
 
 .. _`Windows Azure SDK`: http://www.microsoft.com/downloads/details.aspx?FamilyID=6967ff37-813e-47c7-b987-889124b43abd&displaylang=en

@@ -12,11 +12,11 @@ as file renaming.
    a ``$_FILES`` array as the supplied argument.
    When a ``$_FILES`` array is passed in, the ``tmp_name`` is used for the file path.
 
-.. include:: zend.filter.file.decrypt.rst
-.. include:: zend.filter.file.encrypt.rst
-.. include:: zend.filter.file.lowercase.rst
-.. include:: zend.filter.file.rename.rst
-.. include:: zend.filter.file.rename-upload.rst
-.. include:: zend.filter.file.uppercase.rst
+.. include:: include/zend.filter.file.decrypt.rst
+.. include:: include/zend.filter.file.encrypt.rst
+.. include:: include/zend.filter.file.lowercase.rst
+.. include:: include/zend.filter.file.rename.rst
+.. include:: include/zend.filter.file.rename-upload.rst
+.. include:: include/zend.filter.file.uppercase.rst
 
 

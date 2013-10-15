@@ -7,9 +7,9 @@ Zend Framework comes with a standard set of save handler classes which are ready
 themselves are decoupled from PHP's save handler functions and are *only* implemented as a PHP save handler when
 utilized in conjunction with ``Zend\Session\SessionManager``. 
 
-.. include:: zend.session.save-handler.cache.rst
-.. include:: zend.session.save-handler.db-table-gateway.rst
-.. include:: zend.session.save-handler.mongo-db.rst
+.. include:: include/zend.session.save-handler.cache.rst
+.. include:: include/zend.session.save-handler.db-table-gateway.rst
+.. include:: include/zend.session.save-handler.mongo-db.rst
 
 .. _zend.session.save-handler.custom-save-handler:
 
