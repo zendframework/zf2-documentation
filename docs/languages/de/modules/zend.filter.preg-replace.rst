@@ -18,10 +18,10 @@ String, für ein einzelnes Pattern sein, oder ein Array von Strings für mehrere
 
    $filter = new Zend\Filter\PregReplace(array('match' => '/bob/',
                                                'replace' => 'john'));
-   $input  = 'Hy bob!';
+   $input  = 'Hi bob!';
 
    $filter->filter($input);
-   // Gibt 'Hy john!' zurück
+   // Gibt 'Hi john!' zurück
 
 Man kann ``getMatchPattern()`` und ``setMatchPattern()`` verwenden um die Suchpattern im Nachhinein zu Setzen. Um
 das Ersatzpattern zu Setzen können ``getReplacement()`` und ``setReplacement()`` verwendet werden.
@@ -30,9 +30,9 @@ das Ersatzpattern zu Setzen können ``getReplacement()`` und ``setReplacement()`
    :linenos:
 
    $filter = new Zend\Filter\PregReplace();
-   $filter->setMatchPattern(array('bob', 'Hy'))
+   $filter->setMatchPattern(array('bob', 'Hi'))
           ->setReplacement(array('john', 'Bye'));
-   $input  = 'Hy bob!";
+   $input  = 'Hi bob!';
 
    $filter->filter($input);
    // Gibt 'Bye john!' zurück
