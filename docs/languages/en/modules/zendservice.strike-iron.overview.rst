@@ -30,7 +30,7 @@ Bradstreet Business Credit Checks, and much, much more.
 
 Each StrikeIron web service shares a standard *SOAP* (and REST) *API*, making it easy to integrate and manage
 multiple services. StrikeIron also manages customer billing for all services in a single account, making it perfect
-for solution providers. Get started with free web services at `http://www.strikeiron.com/sdp`_.
+for solution providers. Get started with free web services at http://www.strikeiron.com/sdp.
 
 StrikeIron's services may be used through the `PHP 5 SOAP extension`_ alone. However, using StrikeIron this way
 does not give an ideal *PHP*-like interface. The ``ZendService\StrikeIron\StrikeIron`` component provides a lightweight layer
@@ -279,7 +279,6 @@ its cache and query the subscription information again, use ``getSubscriptionInf
 
 
 .. _`StrikeIron`: http://www.strikeiron.com
-.. _`http://www.strikeiron.com/sdp`: http://www.strikeiron.com/sdp
 .. _`PHP 5 SOAP extension`: http://us.php.net/soap
 .. _`register`: http://strikeiron.com/Register.aspx
 .. _`sign up`: http://www.strikeiron.com/ProductDetail.aspx?p=257

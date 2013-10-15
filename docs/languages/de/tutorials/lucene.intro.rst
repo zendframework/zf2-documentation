@@ -9,7 +9,7 @@ benötigt keine *PHP* Erweiterungen [#]_ und auch keine zusätzlich installierte
 Installation von Zend Framework verwendet werden.
 
 ``Zend\Search\Lucene`` ist eine reine *PHP* Portierung der populären Open Source Volltext Such Maschine auch
-bekannt als Apache Lucene. Siehe `http://lucene.apache.org/`_ für Details.
+bekannt als Apache Lucene. Siehe http://lucene.apache.org/ für Details.
 
 Die Information vor einer Suche muss indiziert werden. ``Zend\Search\Lucene`` und Java Lucene verwenden ein
 Dokumenten Konzept welches als "atomar indiziertes Element" bekannt ist.
@@ -63,7 +63,6 @@ die Umwandlung in Token oder der Behandlung von Feldwerten als binärer String z
 
 
 
-.. _`http://lucene.apache.org/`: http://lucene.apache.org
 
 .. [#] Obwohl einige *UTF-8* bearbeitenden Funktionalitäten die **mbstring** Erweiterung aktiviert benötigen
 .. [#] Binäre String können auch als Feldwerte verwendet werden

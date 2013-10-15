@@ -39,7 +39,7 @@ dans votre arborescence de fichiers.
      copies de travail de leurs applications.
 
      L'URL du tronc du référentiel SVN de Zend Framework est :
-     `http://framework.zend.com/svn/framework/standard/trunk`_
+     http://framework.zend.com/svn/framework/standard/trunk
 
 
 
@@ -65,7 +65,6 @@ Framework composant par composant.
 .. _`svn update`: http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.update.html
 .. _`svn commit`: http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.commit.html
 .. _`définition externe`: http://svnbook.red-bean.com/nightly/en/svn.advanced.externals.html
-.. _`http://framework.zend.com/svn/framework/standard/trunk`: http://framework.zend.com/svn/framework/trunk
 .. _`plusieurs manières de réaliser ceci`: http://www.php.net/manual/fr/configuration.changes.php
 .. _`include_path`: http://www.php.net/manual/fr/ini.core.php#ini.include-path
 .. _`tutoriel de démarrage rapide ("QuickStart")`: http://framework.zend.com/docs/quickstart

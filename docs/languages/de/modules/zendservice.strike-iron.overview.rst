@@ -33,7 +33,7 @@ Bradstreet Business Credit Prüfungen, und viele, viele mehr.
 Jedes StrikeIron Web Service bietet eine standard *SOAP* (und REST) *API*, welche die Integration und Handhabung
 mehrerer Services sehr einfach macht. StrikeIron managt auch die Kundenverrechnung für alle Services in einem
 einzelnen Account, was es für Lösungsanbieter perfekt macht. Man kann mit freien WebServices unter
-`http://www.strikeiron.com/sdp`_ starten.
+http://www.strikeiron.com/sdp starten.
 
 Die Services von StrikeIron können schon alleine durch die `PHP 5 SOAP Erweiterung`_ verwendet werden. Trotzdem
 bietet die Verwendung von StrikeIron auf diesem Weg kein ideales *PHP*-artiges Interface. Die
@@ -289,7 +289,6 @@ Account Informationen nochmals abzufragen, kann ``getSubscriptionInfo(true)`` ve
 
 
 .. _`StrikeIron`: http://www.strikeiron.com
-.. _`http://www.strikeiron.com/sdp`: http://www.strikeiron.com/sdp
 .. _`PHP 5 SOAP Erweiterung`: http://us.php.net/soap
 .. _`registrieren`: http://strikeiron.com/Register.aspx
 .. _`anmelden`: http://www.strikeiron.com/ProductDetail.aspx?p=257

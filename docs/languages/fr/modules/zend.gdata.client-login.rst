@@ -7,7 +7,7 @@ Authentification avec ClientLogin
 Le mécanisme dit "ClientLogin" vous permet d'écrire des applications *PHP* qui récupèrent une authentification
 vis à vis des services Google, en spécifiant des identifiants dans le client *HTTP*.
 
-Voyez `http://code.google.com/apis/accounts/AuthForInstalledApps.html`_ pour plus d'informations sur
+Voyez http://code.google.com/apis/accounts/AuthForInstalledApps.html pour plus d'informations sur
 l'authentification ClientLogin de Google Data.
 
 La documentation Google indique que le mécanisme ClientLogin est approprié dans le cas d'applications
@@ -77,4 +77,3 @@ passe de compte Google, ils ne peuvent être invalidés et sont utilisables de m
 
 
 
-.. _`http://code.google.com/apis/accounts/AuthForInstalledApps.html`: http://code.google.com/apis/accounts/AuthForInstalledApps.html

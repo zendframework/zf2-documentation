@@ -209,6 +209,5 @@ la dernière réponse, mais sous forme d'objet :ref:`Zend\Http\Response <zend.ht
 
 
 
-.. _`http://www.w3.org/Protocols/rfc2616/rfc2616.html`: http://www.w3.org/Protocols/rfc2616/rfc2616.html
 
-.. [#] Voyez la RFC 2616 -`http://www.w3.org/Protocols/rfc2616/rfc2616.html`_.
+.. [#] Voyez la RFC 2616 -http://www.w3.org/Protocols/rfc2616/rfc2616.html.

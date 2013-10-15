@@ -53,13 +53,13 @@ La correspondance de types est effectuée grâce à ``addTypes()`` et ``addCompl
 .. note::
 
    Les paramètres de messages peuvent être soit "element", soit "type" (voyez
-   `http://www.w3.org/TR/wsdl#_messages`_).
+   http://www.w3.org/TR/wsdl#_messages).
 
    "element" doit correspondre à un élément de définition de type. "type" correspond à une entrée
    complexType.
 
    Tous les types standards XSD possèdent une définition "element" et "complexType" (Voyez
-   `http://schemas.xmlsoap.org/soap/encoding/`_).
+   http://schemas.xmlsoap.org/soap/encoding/).
 
    Tous les éléments non standards, qui doivent être ajoutés avec la méthode
    ``Zend\Soap\Wsdl::addComplexType()``, sont décrits en utilisant un noeud "complexType" décrits dans la section
@@ -76,7 +76,7 @@ addPortType()
 
 Ceci fait la jointure entre des méthodes du service décrites en tant qu'implémentations de Zend\Soap\Server.
 
-Voyez `http://www.w3.org/TR/wsdl#_porttypes`_ pour plus de détails.
+Voyez http://www.w3.org/TR/wsdl#_porttypes pour plus de détails.
 
 .. _zend.soap.wsdl.add_port_operation:
 
@@ -106,7 +106,7 @@ Cette méthode ajoute aussi les messages d'opération correspondants aux portage
 
 
 
-Voyez `http://www.w3.org/TR/wsdl#_request-response`_ pour les détails.
+Voyez http://www.w3.org/TR/wsdl#_request-response pour les détails.
 
 .. _zend.soap.wsdl.add_binding:
 
@@ -117,7 +117,7 @@ addBinding()
 (/definitions/binding).
 
 Le noeud du document WSDL "binding" définit le format du message et les détails du protocole pour les opérations
-et messages définis par un portage "portType" particulier (voyez `http://www.w3.org/TR/wsdl#_bindings`_).
+et messages définis par un portage "portType" particulier (voyez http://www.w3.org/TR/wsdl#_bindings).
 
 La méthode crée le noeud de correspondance et le retourne. Il peut alors être utilisé.
 
@@ -140,7 +140,7 @@ spécifiés.
 définissant l'élément "soap:body" comme *<soap:body use="encoded"
 encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>*
 
-Voyez les détails à `http://www.w3.org/TR/wsdl#_bindings`_.
+Voyez les détails à http://www.w3.org/TR/wsdl#_bindings.
 
 .. _zend.soap.wsdl.add_soap_binding:
 
@@ -154,7 +154,7 @@ et le transport spécifié (``Zend\Soap\Server`` utilise le style RPC sur *HTTP*
 L'élément "/definitions/binding/soap:binding" est alors utilisé pour spécifier que la correspondance est
 relative au format du protocole *SOAP*.
 
-Voyez `http://www.w3.org/TR/wsdl#_bindings`_ pour les détails.
+Voyez http://www.w3.org/TR/wsdl#_bindings pour les détails.
 
 .. _zend.soap.wsdl.add_soap_operation:
 
@@ -172,7 +172,7 @@ renseigné pour les autres modes de transports.
 
 ``Zend\Soap\Server`` utilise *$serviceUri . '#' . $methodName* pour le nom de l'action *SOAP*.
 
-Voyez `http://www.w3.org/TR/wsdl#_soap:operation`_ pour plus de détails.
+Voyez http://www.w3.org/TR/wsdl#_soap:operation pour plus de détails.
 
 .. _zend.soap.wsdl.add_service:
 
@@ -198,7 +198,7 @@ Utilisations de ``Zend\Soap\Server``:
 où ``$name`` est un nom de classe pour le Web Service utilisant des classes, ou un nom de script pour le Web
 Service qui utilise des fonctions.
 
-Voyez `http://www.w3.org/TR/wsdl#_services`_ pour les détails.
+Voyez http://www.w3.org/TR/wsdl#_services pour les détails.
 
 .. _zend.soap.wsdl.types:
 
@@ -304,7 +304,7 @@ que la propriété soit incluse dans la description WSDL.
 
 Ceci évite les duplications et récursions si cette méthode est appelée plus d'une fois.
 
-Voyez `http://www.w3.org/TR/wsdl#_types`_ pour plus de détails.
+Voyez http://www.w3.org/TR/wsdl#_types pour plus de détails.
 
 .. _zend.soap.wsdl.add_documentation:
 
@@ -317,7 +317,7 @@ l'élément optionnel "wsdl:document".
 L'élément "/definitions/binding/soap:binding" est utilisé pour dire que la correspondance est liée au format du
 protocole *SOAP*.
 
-Voyez `http://www.w3.org/TR/wsdl#_documentation`_ pour les détails.
+Voyez http://www.w3.org/TR/wsdl#_documentation pour les détails.
 
 .. _zend.soap.wsdl.retrieve:
 
@@ -329,15 +329,6 @@ WSDL sous forme de *XML*, de structure DOM, ou de fichier.
 
 
 
-.. _`http://www.w3.org/TR/wsdl#_messages`: http://www.w3.org/TR/wsdl#_messages
-.. _`http://schemas.xmlsoap.org/soap/encoding/`: http://schemas.xmlsoap.org/soap/encoding/
-.. _`http://www.w3.org/TR/wsdl#_porttypes`: http://www.w3.org/TR/wsdl#_porttypes
-.. _`http://www.w3.org/TR/wsdl#_request-response`: http://www.w3.org/TR/wsdl#_request-response
-.. _`http://www.w3.org/TR/wsdl#_bindings`: http://www.w3.org/TR/wsdl#_bindings
-.. _`http://www.w3.org/TR/wsdl#_soap:operation`: http://www.w3.org/TR/wsdl#_soap:operation
-.. _`http://www.w3.org/TR/wsdl#_services`: http://www.w3.org/TR/wsdl#_services
-.. _`http://www.w3.org/TR/wsdl#_types`: http://www.w3.org/TR/wsdl#_types
-.. _`http://www.w3.org/TR/wsdl#_documentation`: http://www.w3.org/TR/wsdl#_documentation
 
 .. [#] *'tns:' namespace* est l'URI du script (*'http://' .$_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']*).
 .. [#] *'http://' .$_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']*

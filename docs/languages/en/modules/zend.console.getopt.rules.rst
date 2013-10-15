@@ -20,7 +20,7 @@ Declaring Options with the Short Syntax
 ---------------------------------------
 
 ``Zend\Console\Getopt`` supports a compact syntax similar to that used by *GNU* Getopt (see
-`http://www.gnu.org/software/libc/manual/html_node/Getopt.html`_. This syntax supports only single-character flags.
+http://www.gnu.org/software/libc/manual/html_node/Getopt.html. This syntax supports only single-character flags.
 In a single string, you type each of the letters that correspond to flags supported by your application. A letter
 followed by a colon character (**:**) indicates a flag that requires a parameter.
 
@@ -85,4 +85,3 @@ string parameter.
 
 
 
-.. _`http://www.gnu.org/software/libc/manual/html_node/Getopt.html`: http://www.gnu.org/software/libc/manual/html_node/Getopt.html
