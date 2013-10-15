@@ -1,7 +1,7 @@
 .. _zend.feed.pubsubhubbub.introduction:
 
 Zend\\Feed\\PubSubHubbub
-======================
+========================
 
 ``Zend\Feed\PubSubHubbub`` is an implementation of the PubSubHubbub Core 0.2 Specification (Working Draft). It
 offers implementations of a Pubsubhubbub Publisher and Subscriber suited to Zend Framework and other *PHP*
@@ -133,7 +133,7 @@ tolerance for failures both in terms of their own temporary downtime or Publishe
 .. _zend.feed.pubsubhubbub.zend.feed.pubsubhubbub.subscriber:
 
 Zend\\Feed\\PubSubHubbub\\Subscriber
----------------------------------
+------------------------------------
 
 In Pubsubhubbub, the Subscriber is the party who wishes to receive updates to any Topic (*RSS* or Atom feed). They
 achieve this by subscribing to one or more of the Hubs advertised by that Topic, usually as a set of one or more

@@ -1,7 +1,7 @@
 .. _zend.json.server:
 
 Zend\\Json\\Server - JSON-RPC server
-==================================
+====================================
 
 ``Zend\Json\Server`` is a `JSON-RPC`_ server implementation. It supports both the `JSON-RPC version 1
 specification`_ as well as the `version 2 specification`_; additionally, it provides a *PHP* implementation of the
