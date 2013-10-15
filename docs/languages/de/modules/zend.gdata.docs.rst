@@ -8,7 +8,7 @@ Die Google Dokumente Listen Daten *API* erlaubt es Client Anwendungen Dokumente 
 diese in der Form von Google Daten *API* ("GData") Feeds aufzulisten. Die Client Anwendung kann eine Liste von
 Benutzer Dokumenten anfragen, und den Inhalt in einem existierenden Dokument abfragen.
 
-Siehe `http://code.google.com/apis/documents/overview.html`_ für weitere Informationen über die Google Dokumente
+Siehe http://code.google.com/apis/documents/overview.html für weitere Informationen über die Google Dokumente
 Listen *API*.
 
 .. _zend.gdata.docs.listdocuments:
@@ -155,6 +155,5 @@ Suchstring enthalten:
 
 
 
-.. _`http://code.google.com/apis/documents/overview.html`: http://code.google.com/apis/documents/overview.html
 .. _`standardmäßigen Google Daten API Abfrageparameter`: http://code.google.com/apis/gdata/reference.html#Queries
 .. _`Dokumenten Listen Daten API Referenz Anleitung`: http://code.google.com/apis/documents/reference.html#Parameters

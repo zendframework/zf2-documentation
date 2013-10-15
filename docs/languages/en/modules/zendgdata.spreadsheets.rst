@@ -7,7 +7,7 @@ The Google Spreadsheets data *API* allows client applications to view and update
 of Google data *API* feeds. Your client application can request a list of a user's spreadsheets, edit or delete
 content in an existing Spreadsheets worksheet, and query the content in an existing Spreadsheets worksheet.
 
-See `http://code.google.com/apis/spreadsheets/overview.html`_ for more information about the Google Spreadsheets
+See http://code.google.com/apis/spreadsheets/overview.html for more information about the Google Spreadsheets
 *API*.
 
 .. _zendgdata.spreadsheets.creating:
@@ -299,4 +299,3 @@ be overwritten. Note: Use ``updateCell()`` to change the data in a cell, even if
 
 
 
-.. _`http://code.google.com/apis/spreadsheets/overview.html`: http://code.google.com/apis/spreadsheets/overview.html

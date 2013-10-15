@@ -673,7 +673,7 @@ Belgelendirme Biçimi
 
 Tüm bilgilendirme kısımları ("docblocks") phpDocumentor biçimi ile uyumlu olmalı. phpDocumenter biçimini
 açıklamak bu belgenin kapsamı dışındadır. Daha fazla bilgi için lütfen ziyaret edin :
-`http://phpdoc.org/`_
+http://phpdoc.org/
 
 Zend Framework için veya Zend Framework ile çalışan her kaynak kod dosyası her dosyanın üstünde "dosya
 seviyesinde" ve her sınıfın üstünde "sınıf seviyesinde" bilgilendirme kısmı içermelidir. Aşağıdakiler
@@ -751,4 +751,3 @@ Eğer fonksiyon/metod kural dışı durum(exception) fırlatabiliyorsa , @throws
 
 
 
-.. _`http://phpdoc.org/`: http://phpdoc.org/

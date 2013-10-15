@@ -34,7 +34,7 @@ carpeta "library" a cualquier otra posición (compartida o no) de su sistema de 
   working copies.
 
   The *URL* for the trunk of Zend Framework's *SVN* repository is:
-  `http://framework.zend.com/svn/framework/standard/trunk`_
+  http://framework.zend.com/svn/framework/standard/trunk
 
 Una vez que tenga disponible una copia de Zend Framework, su aplicación necesita poder acceder a las clases del
 framework. Aunque hay `diferentes maneras de lograr esto`_, su `include_path`_ de *PHP* necesita contener una ruta
@@ -57,7 +57,6 @@ Framework, componente a componente.
 .. _`svn update`: http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.update.html
 .. _`svn commit`: http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.commit.html
 .. _`externals definition`: http://svnbook.red-bean.com/nightly/en/svn.advanced.externals.html
-.. _`http://framework.zend.com/svn/framework/standard/trunk`: http://framework.zend.com/svn/framework/standard/trunk
 .. _`diferentes maneras de lograr esto`: http://www.php.net/manual/en/configuration.changes.php
 .. _`include_path`: http://www.php.net/manual/en/ini.core.php#ini.include-path
 .. _`QuickStart`: http://framework.zend.com/docs/quickstart

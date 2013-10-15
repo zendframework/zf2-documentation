@@ -23,7 +23,7 @@ index on the filesystem and does not require a database server, it can add searc
 
 ``Zend\Search\Lucene`` was derived from the Apache Lucene project. The currently (starting from ZF 1.6) supported
 Lucene index format versions are 1.4 - 2.3. For more information on Lucene, visit
-`http://lucene.apache.org/java/docs/`_.
+http://lucene.apache.org/java/docs/.
 
 .. note::
 
@@ -421,4 +421,3 @@ Parsed documents may be augmented by the programmer with any other field:
 
 
 
-.. _`http://lucene.apache.org/java/docs/`: http://lucene.apache.org/java/docs/

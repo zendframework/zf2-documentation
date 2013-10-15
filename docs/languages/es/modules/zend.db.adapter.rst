@@ -877,7 +877,7 @@ manipulate the function of your web application. If they can specify the value o
 of an *HTTP* parameter or other mechanism, they might be able to make your *SQL* queries do things that you didn't
 intend them to do, such as return data to which the person should not have privilege to read. This is a serious and
 widespread technique for violating application security, known as "SQL Injection" (see
-`http://en.wikipedia.org/wiki/SQL_Injection`_).
+http://en.wikipedia.org/wiki/SQL_Injection).
 
 The ``Zend_Db`` Adapter class provides convenient functions to help you reduce vulnerabilities to *SQL* Injection
 attacks in your *PHP* code. The solution is to escape special characters such as quotes in *PHP* values before they
@@ -1350,7 +1350,7 @@ Microsoft SQL Server
   square-brackets syntax *SQL* Server uses for delimiting identifiers.
 
 - You can specify ``driver_options`` as a key in the options array. The value can be a anything from here
-  `http://msdn.microsoft.com/en-us/library/cc296161(SQL.90).aspx`_.
+  http://msdn.microsoft.com/en-us/library/cc296161(SQL.90).aspx.
 
 - You can use ``setTransactionIsolationLevel()`` to set isolation level for current connection. The value can be
   ``SQLSRV_TXN_READ_UNCOMMITTED``, ``SQLSRV_TXN_READ_COMMITTED``, ``SQLSRV_TXN_REPEATABLE_READ``,
@@ -1394,7 +1394,7 @@ PDO Microsoft SQL Server
 - You can specify *pdoType* as a key in the options array. The value can be "mssql" (the default), "dblib",
   "freetds", or "sybase". This option affects the DSN prefix the adapter uses when constructing the DSN string.
   Both "freetds" and "sybase" imply a prefix of "sybase:", which is used for the `FreeTDS`_ set of libraries. See
-  also `http://www.php.net/manual/en/ref.pdo-dblib.connection.php`_ for more information on the DSN prefixes used
+  also http://www.php.net/manual/en/ref.pdo-dblib.connection.php for more information on the DSN prefixes used
   in this driver.
 
 .. _zend.db.adapter.adapter-notes.pdo-mysql:
@@ -1493,10 +1493,7 @@ Firebird/Interbase
 .. _`oci8`: http://www.php.net/oci8
 .. _`ibm_db2`: http://www.php.net/ibm_db2
 .. _`php_interbase`: http://www.php.net/ibase
-.. _`http://en.wikipedia.org/wiki/SQL_Injection`: http://en.wikipedia.org/wiki/SQL_Injection
 .. _`mysql_real_escape_string()`: http://www.php.net/mysqli_real_escape_string
 .. _`MySQL Query Cache`: http://dev.mysql.com/doc/refman/5.1/en/query-cache-how.html
-.. _`http://msdn.microsoft.com/en-us/library/cc296161(SQL.90).aspx`: http://msdn.microsoft.com/en-us/library/cc296161(SQL.90).aspx
 .. _`Microsoft's Knowledge Base`: http://support.microsoft.com/kb/232580
 .. _`FreeTDS`: http://www.freetds.org/
-.. _`http://www.php.net/manual/en/ref.pdo-dblib.connection.php`: http://www.php.net/manual/en/ref.pdo-dblib.connection.php

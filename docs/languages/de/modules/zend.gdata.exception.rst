@@ -41,7 +41,7 @@ Die folgenden Ausnahme Subklassen werden von ``ZendGData`` verwendet:
      eine *URL* zu einem CAPTCHA(tm) Challenge Bild. Dieses Bild ist ein visuelles Puzzle das dem Benutzer
      angezeigt werden sollte. Nachdem die Antwort des Benutzers auf dieses Challenge Bild gesammelt wurde, kann die
      Antwort im nächsten ClientLogin Versuch inkludiert werden. Alternativ kann der Benutzer direkt zu dieser
-     Webseite geleitet werden: `https://www.google.com/accounts/DisplayUnlockCaptcha`_ Weitere Informationen
+     Webseite geleitet werden: https://www.google.com/accounts/DisplayUnlockCaptcha Weitere Informationen
      können in der :ref:`ClientLogin Dokumentation <zend.gdata.clientlogin>` gefunden werden.
 
 
@@ -68,4 +68,3 @@ geworfen werden.
 
 
 
-.. _`https://www.google.com/accounts/DisplayUnlockCaptcha`: https://www.google.com/accounts/DisplayUnlockCaptcha

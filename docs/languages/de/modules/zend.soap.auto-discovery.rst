@@ -30,7 +30,7 @@ Es gibt drei Konfigurationen für *SOAP* Anwendungen wo Zend Framework verwendet
 Wir müssen immer wissen, welche Funktionalität vom *SOAP* Server angeboten wird um mit Ihm zu arbeiten. `WSDL`_
 wird verwendet um die Netzwerk Service *API* im Detail zu beschreiben.
 
-Die WSDL Sprache ist komplex genug (siehe `http://www.w3.org/TR/wsdl`_ für die Details). Es ist also kompliziert
+Die WSDL Sprache ist komplex genug (siehe http://www.w3.org/TR/wsdl für die Details). Es ist also kompliziert
 genug die richtige WSDL Beschreibung vorzubereiten.
 
 Ein anderes Problem ist die Synchronisation von Änderungen in der Netzwerk Service *API* mit schon existierendem
@@ -270,7 +270,6 @@ auf der AutoDiscovery Klasse ausführt.
 
 
 .. _`WSDL`: http://www.w3.org/TR/wsdl
-.. _`http://www.w3.org/TR/wsdl`: http://www.w3.org/TR/wsdl
 .. _`XSD Typen`: http://www.w3.org/TR/xmlschema-2/
 .. _`Port Typ`: http://www.w3.org/TR/wsdl#_porttypes
 

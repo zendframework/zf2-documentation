@@ -633,8 +633,8 @@ are supported now):
 **Important! JPEG support requires PHP GD extension to be configured.** **Important! PNG support requires ZLIB
 extension to be configured to work with Alpha channel images.**
 
-Refer to the *PHP* documentation for detailed information (`http://www.php.net/manual/en/ref.image.php`_).
-(`http://www.php.net/manual/en/ref.zlib.php`_).
+Refer to the *PHP* documentation for detailed information (http://www.php.net/manual/en/ref.image.php).
+(http://www.php.net/manual/en/ref.zlib.php).
 
 .. _zendpdf.drawing.line-drawing-style:
 
@@ -1120,5 +1120,3 @@ Transparency may be set using ``ZendPdf\Page::setAlpha()`` method:
 
 .. _`iconv()`: http://www.php.net/manual/function.iconv.php
 .. _`PDF Reference, Sixth Edition, version 1.7`: http://www.adobe.com/devnet/acrobat/pdfs/pdf_reference_1-7.pdf
-.. _`http://www.php.net/manual/en/ref.image.php`: http://www.php.net/manual/en/ref.image.php
-.. _`http://www.php.net/manual/en/ref.zlib.php`: http://www.php.net/manual/en/ref.zlib.php

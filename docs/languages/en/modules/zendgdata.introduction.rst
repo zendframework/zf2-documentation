@@ -9,7 +9,7 @@ post data, update data and delete data using standard *HTTP* and the Atom syndic
 component is a *PHP* 5 interface for accessing Google Data from *PHP*. The ``ZendGData`` component also supports
 accessing other services implementing the Atom Publishing Protocol.
 
-See `http://code.google.com/apis/gdata/`_ for more information about Google Data *API*.
+See http://code.google.com/apis/gdata/ for more information about Google Data *API*.
 
 The services that are accessible by ``ZendGData`` include the following:
 
@@ -455,5 +455,4 @@ To delete entries, you must be using an authenticated ``Zend\Http\Client`` that 
 
 
 .. _`Atom Publishing Protocol`: http://ietfreport.isoc.org/idref/draft-ietf-atompub-protocol/
-.. _`http://code.google.com/apis/gdata/`: http://code.google.com/apis/gdata/
 .. _`Google Blogger`: http://code.google.com/apis/blogger/developers_guide_php.html

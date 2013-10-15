@@ -8,7 +8,7 @@ Le mécanisme d'authentification AuthSub permet d'écrire des applications dans 
 de coder "en dur" des identifiants. L'application demande ces informations à l'utilisateur, pour ouvrir un session
 de travail.
 
-Voyez `http://code.google.com/apis/accounts/AuthForWebApps.html`_ pour plus d'informations sur l'authentification
+Voyez http://code.google.com/apis/accounts/AuthForWebApps.html pour plus d'informations sur l'authentification
 AuthSub de Google Data.
 
 La documentation Google indique que le mécanisme ClientLogin est approprié dans le cas d'applications
@@ -118,4 +118,3 @@ Pour détruire la validité d'un jeton d'authentification, utilisez la méthode 
 
 
 
-.. _`http://code.google.com/apis/accounts/AuthForWebApps.html`: http://code.google.com/apis/accounts/AuthForWebApps.html

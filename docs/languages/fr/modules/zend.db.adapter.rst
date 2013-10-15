@@ -896,7 +896,7 @@ Pire encore est le cas où de telles erreurs *SQL* peuvent être utilisées dél
 de manipuler la logique de votre requête. Si une personne peut manipuler un paramètre de votre requête, par
 exemple via un paramètre *HTTP* ou une autre méthode, alors il peut y avoir une fuite de données, voire même
 une corruption totale de votre base de données. Cette technique très préoccupante de violation de la sécurité
-d'un SGBD, est appelée "injection *SQL*" (voyez `http://en.wikipedia.org/wiki/SQL_Injection`_).
+d'un SGBD, est appelée "injection *SQL*" (voyez http://en.wikipedia.org/wiki/SQL_Injection).
 
 La classe Zend_Db Adapter possède des méthodes adaptées pour vous aider à faire face à de telles
 vulnérabilités. La solution proposée est l'échappement de tels caractères (comme la "quote" = ') dans les
@@ -1376,7 +1376,7 @@ Microsoft SQL Server
   square-brackets syntax *SQL* Server uses for delimiting identifiers.
 
 - You can specify ``driver_options`` as a key in the options array. The value can be a anything from here
-  `http://msdn.microsoft.com/en-us/library/cc296161(SQL.90).aspx`_.
+  http://msdn.microsoft.com/en-us/library/cc296161(SQL.90).aspx.
 
 - You can use ``setTransactionIsolationLevel()`` to set isolation level for current connection. The value can be
   ``SQLSRV_TXN_READ_UNCOMMITTED``, ``SQLSRV_TXN_READ_COMMITTED``, ``SQLSRV_TXN_REPEATABLE_READ``,
@@ -1420,7 +1420,7 @@ PDO Microsoft SQL Server
 - Vous pouvez spécifier la clé *pdoType* dans le tableau d'options de construction de l'adaptateur. La valeur
   peut être "mssql" (défaut), "dblib", "freetds", ou "sybase". Cette option affecte la syntaxe du préfixe DSN
   que l'adaptateur utilisera. "freetds" et "sybase" impliquent un préfixe "sybase:", qui est utilisé par les
-  librairies `FreeTDS`_.Voyez aussi `http://www.php.net/manual/en/ref.pdo-dblib.connection.php`_ pour plus
+  librairies `FreeTDS`_.Voyez aussi http://www.php.net/manual/en/ref.pdo-dblib.connection.php pour plus
   d'informations sur les DSN pour ce driver.
 
 .. _zend.db.adapter.adapter-notes.pdo-mysql:
@@ -1521,10 +1521,7 @@ Firebird (Interbase)
 .. _`oci8`: http://www.php.net/oci8
 .. _`ibm_db2`: http://www.php.net/ibm_db2
 .. _`php_interbase`: http://www.php.net/ibase
-.. _`http://en.wikipedia.org/wiki/SQL_Injection`: http://en.wikipedia.org/wiki/SQL_Injection
 .. _`mysql_real_escape_string()`: http://www.php.net/mysqli_real_escape_string
 .. _`cache de requêtes`: http://dev.mysql.com/doc/refman/5.1/en/query-cache-how.html
-.. _`http://msdn.microsoft.com/en-us/library/cc296161(SQL.90).aspx`: http://msdn.microsoft.com/en-us/library/cc296161(SQL.90).aspx
 .. _`base de connaissance Microsoft`: http://support.microsoft.com/kb/232580
 .. _`FreeTDS`: http://www.freetds.org/
-.. _`http://www.php.net/manual/en/ref.pdo-dblib.connection.php`: http://www.php.net/manual/en/ref.pdo-dblib.connection.php

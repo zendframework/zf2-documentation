@@ -50,13 +50,13 @@ below).
 .. note::
 
    Messages parts can use either 'element' or 'type' attribute for typing (see
-   `http://www.w3.org/TR/wsdl#_messages`_).
+   http://www.w3.org/TR/wsdl#_messages).
 
    'element' attribute must refer to a corresponding element of data type definition. 'type' attribute refers to a
    corresponding complexType entry.
 
    All standard XSD types have both 'element' and 'complexType' definitions (see
-   `http://schemas.xmlsoap.org/soap/encoding/`_).
+   http://schemas.xmlsoap.org/soap/encoding/).
 
    All non-standard types, which may be added using ``Zend\Soap\Wsdl::addComplexType()`` method, are described
    using 'complexType' node of '/definitions/types/schema/' section of WSDL document.
@@ -73,7 +73,7 @@ port type name.
 
 It joins a set of Web Service methods defined in terms of ``Zend\Soap\Server`` implementation.
 
-See `http://www.w3.org/TR/wsdl#_porttypes`_ for the details.
+See http://www.w3.org/TR/wsdl#_porttypes for the details.
 
 .. _zend.soap.wsdl.add_port_operation:
 
@@ -99,7 +99,7 @@ parameters.
          - output message with name *$methodName . 'Response'*.
 
 
-See `http://www.w3.org/TR/wsdl#_request-response`_ for the details.
+See http://www.w3.org/TR/wsdl#_request-response for the details.
 
 .. _zend.soap.wsdl.add_binding:
 
@@ -109,7 +109,7 @@ addBinding() method
 ``addBinding($name, $portType)`` method adds new binding to the WSDL document (/definitions/binding).
 
 'binding' WSDL document node defines message format and protocol details for operations and messages defined by a
-particular portType (see `http://www.w3.org/TR/wsdl#_bindings`_).
+particular portType (see http://www.w3.org/TR/wsdl#_bindings).
 
 The method creates binding node and returns it. Then it may be used to fill with actual data.
 
@@ -130,7 +130,7 @@ It takes an *XML_Tree_Node* object returned by ``addBinding()`` as an input (``$
 output entries defining 'soap:body' element as '<soap:body use="encoded"
 encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
 
-See `http://www.w3.org/TR/wsdl#_bindings`_ for the details.
+See http://www.w3.org/TR/wsdl#_bindings for the details.
 
 .. _zend.soap.wsdl.add_soap_binding:
 
@@ -144,7 +144,7 @@ specified style and transport (Zend\\Soap\\Server implementation uses RPC style 
 '/definitions/binding/soap:binding' element is used to signify that the binding is bound to the *SOAP* protocol
 format.
 
-See `http://www.w3.org/TR/wsdl#_bindings`_ for the details.
+See http://www.w3.org/TR/wsdl#_bindings for the details.
 
 .. _zend.soap.wsdl.add_soap_operation:
 
@@ -161,7 +161,7 @@ other transports.
 
 ``Zend\Soap\Server`` implementation uses *$serviceUri . '#' . $methodName* for *SOAP* operation action name.
 
-See `http://www.w3.org/TR/wsdl#_soap:operation`_ for the details.
+See http://www.w3.org/TR/wsdl#_soap:operation for the details.
 
 .. _zend.soap.wsdl.add_service:
 
@@ -187,7 +187,7 @@ WSDL 1.1 allows to have several port types (sets of operations) per service. Thi
 where ``$name`` is a class name for the Web Service definition mode using class and script name for the Web Service
 definition mode using set of functions.
 
-See `http://www.w3.org/TR/wsdl#_services`_ for the details.
+See http://www.w3.org/TR/wsdl#_services for the details.
 
 .. _zend.soap.wsdl.types:
 
@@ -288,7 +288,7 @@ description.
 
 It prevents duplications if this method is called two or more times and recursion in the types definition section.
 
-See `http://www.w3.org/TR/wsdl#_types`_ for the details.
+See http://www.w3.org/TR/wsdl#_types for the details.
 
 .. _zend.soap.wsdl.add_documentation:
 
@@ -301,7 +301,7 @@ addDocumentation() method
 '/definitions/binding/soap:binding' element is used to signify that the binding is bound to the *SOAP* protocol
 format.
 
-See `http://www.w3.org/TR/wsdl#_documentation`_ for the details.
+See http://www.w3.org/TR/wsdl#_documentation for the details.
 
 .. _zend.soap.wsdl.retrieve:
 
@@ -311,15 +311,6 @@ Get finalized WSDL document
 ``toXML()``, ``toDomDocument()`` and ``dump($filename = false)`` methods may be used to get WSDL document as an
 *XML*, DOM structure or a file.
 
-.. _`http://www.w3.org/TR/wsdl#_messages`: http://www.w3.org/TR/wsdl#_messages
-.. _`http://schemas.xmlsoap.org/soap/encoding/`: http://schemas.xmlsoap.org/soap/encoding/
-.. _`http://www.w3.org/TR/wsdl#_porttypes`: http://www.w3.org/TR/wsdl#_porttypes
-.. _`http://www.w3.org/TR/wsdl#_request-response`: http://www.w3.org/TR/wsdl#_request-response
-.. _`http://www.w3.org/TR/wsdl#_bindings`: http://www.w3.org/TR/wsdl#_bindings
-.. _`http://www.w3.org/TR/wsdl#_soap:operation`: http://www.w3.org/TR/wsdl#_soap:operation
-.. _`http://www.w3.org/TR/wsdl#_services`: http://www.w3.org/TR/wsdl#_services
-.. _`http://www.w3.org/TR/wsdl#_types`: http://www.w3.org/TR/wsdl#_types
-.. _`http://www.w3.org/TR/wsdl#_documentation`: http://www.w3.org/TR/wsdl#_documentation
 
 .. [#] *'tns:' namespace* is defined as script *URI* (*'http://' .$_SERVER['HTTP_HOST'] .
        $_SERVER['SCRIPT_NAME']*).

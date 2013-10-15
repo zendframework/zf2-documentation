@@ -8,7 +8,7 @@ require any *PHP* extensions [#]_ or additional software to be installed, and ca
 Framework installation.
 
 ``Zend\Search\Lucene`` is a pure *PHP* port of the popular open source full-text search engine known as Apache
-Lucene. See `http://lucene.apache.org/`_ for the details.
+Lucene. See http://lucene.apache.org/ for the details.
 
 Information must be indexed to be available for searching. ``Zend\Search\Lucene`` and Java Lucene use a document
 concept known as an "atomic indexing item."
@@ -55,7 +55,6 @@ indexing for another. The same applies for storing, tokenizing, or treating fiel
 
 
 
-.. _`http://lucene.apache.org/`: http://lucene.apache.org
 
 .. [#] Though some *UTF-8* processing functionality requires the **mbstring** extension to be turned on
 .. [#] Binary strings are also allowed to be used as field values

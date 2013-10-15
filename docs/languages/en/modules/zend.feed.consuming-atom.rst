@@ -65,6 +65,5 @@ Atom entries commonly have the following properties:
 Where relevant, ``Zend\Feed`` supports a number of common RSS extensions including Dublin Core and the Content,
 Slash, Syndication, Syndication/Thread and several other extensions in common use on blogs.
 
-For more information on Atom and plenty of resources, see `http://www.atomenabled.org/`_.
+For more information on Atom and plenty of resources, see http://www.atomenabled.org/.
 
-.. _`http://www.atomenabled.org/`: http://www.atomenabled.org/

@@ -856,7 +856,7 @@ Dokumentations Format
 
 Alle Dokumentations Blöcke ("DocBlock") müssel mit dem phpDocumentor Format kompatibel sein. Die Beschreibung des
 phpDocumentor Formats is jenseits der Reichweite dieses Dokuments. Für weiterführende Informationen siehe:
-`http://phpdoc.org">`_
+http://phpdoc.org
 
 Alle Klassen Dateien müssen einen "file-level" Docblock am Beginn jeder Datei und einen "class-level" Docblock
 direkt überhalb jeder Klasse enthalten. Beispiele solcher Docblocks können anbei gefunden werden.
@@ -929,4 +929,3 @@ verwendet werden:
 
 
 .. _`Lizenz`: http://framework.zend.com/license
-.. _`http://phpdoc.org">`: http://phpdoc.org/

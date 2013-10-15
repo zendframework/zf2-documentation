@@ -38,7 +38,7 @@ Voici les sous classes exception utilisées dans ``ZendGData``:
      vers une image CAPTCHA(tm). Cette image est un puzzle visuel qui devrait être retournée à l'utilisateur du
      service. Après récupération de la réponse de l'utilisateur, celle-ci peut être incluse lors du
      ClientLogin suivant. L'utilisateur peut aussi alternativement être redirigé vers ce site :
-     `https://www.google.com/accounts/DisplayUnlockCaptcha`_. De plus amples informations peuvent être trouvées
+     https://www.google.com/accounts/DisplayUnlockCaptcha. De plus amples informations peuvent être trouvées
      dans :ref:`la documentation du ClientLogin <zend.gdata.clientlogin>`.
 
 
@@ -66,4 +66,3 @@ l'API pour savoir quel composant ``ZendGData`` envoie quel type d'exception.
 
 
 
-.. _`https://www.google.com/accounts/DisplayUnlockCaptcha`: https://www.google.com/accounts/DisplayUnlockCaptcha

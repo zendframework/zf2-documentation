@@ -22,7 +22,7 @@ Optionen mit der kurzen Syntax definieren
 -----------------------------------------
 
 ``Zend\Console\Getopt`` unterstützt eine kompakte Syntax wie Sie durch *GNU* Getopt verwendet wird (siehe
-`http://www.gnu.org/software/libc/manual/html_node/Getopt.html`_). Diese Syntax unterstützt nur Einzel-Zeichen
+http://www.gnu.org/software/libc/manual/html_node/Getopt.html). Diese Syntax unterstützt nur Einzel-Zeichen
 Flags. In einer einzelnen Zeichenkette, wird jeder Buchstabe angegeben der einem Flag entspricht das durch die
 Anwendung unterstützt wird. Der Buchstabe, gefolgt von einem Doppelpunkt Zeichen (**:**) zeigt ein Flag das einen
 Parameter benötigt.
@@ -90,4 +90,3 @@ kann einen Optionalen Zeichenketten Parameter annehmen.
 
 
 
-.. _`http://www.gnu.org/software/libc/manual/html_node/Getopt.html`: http://www.gnu.org/software/libc/manual/html_node/Getopt.html

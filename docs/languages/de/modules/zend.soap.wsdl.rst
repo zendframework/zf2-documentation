@@ -57,13 +57,13 @@ Methoden ausgeführt werden (siehe anbei).
 .. note::
 
    Nachrichten Teile können entweder 'element' oder 'type' Attribute für das typisieren verwenden (siehe
-   `http://www.w3.org/TR/wsdl#_messages`_).
+   http://www.w3.org/TR/wsdl#_messages).
 
    'element' Attribute müssen zu einem entsprechenden Element von Daten Typ Definition referieren. 'type' zu einem
    entsprechenden complexType Eintrag.
 
    Alle standardmäßigen XSD Typen haben beide 'element' und 'complexType' Definitionen (siehe
-   `http://schemas.xmlsoap.org/soap/encoding/`_).
+   http://schemas.xmlsoap.org/soap/encoding/).
 
    Alle nicht-standardmäßigen Typen, welche hinzugefügt werden können durch verwenden der
    ``Zend\Soap\Wsdl::addComplexType()`` Methode, sind beschrieben durch Verwendung des 'complexType' Nodes des
@@ -81,7 +81,7 @@ spezifizierten Port Typ Namen hinzu.
 
 Es verbindet ein Set von Web Service Methoden die im Sinne der ``Zend\Soap\Server`` Implementation definiert sind.
 
-Siehe `http://www.w3.org/TR/wsdl#_porttypes`_ für Details.
+Siehe http://www.w3.org/TR/wsdl#_porttypes für Details.
 
 .. _zend.soap.wsdl.add_port_operation:
 
@@ -113,7 +113,7 @@ Sie fügt auch eine korrespondierende Port Operations Nachricht hinzu anhängig 
 
 
 
-Siehe `http://www.w3.org/TR/wsdl#_request-response`_ für Details.
+Siehe http://www.w3.org/TR/wsdl#_request-response für Details.
 
 .. _zend.soap.wsdl.add_binding:
 
@@ -123,7 +123,7 @@ Die addBinding() Methode
 Die ``addBinding($name, $portType)`` Methode fügt neue Bindungen in das WSDL Dokument ein (/definitions/binding).
 
 Der 'binding' WSDL Dokument Knoten definiert das Nachrichtenformat und Protokolldetails für Operationen und
-Nachrichten die von einem speziellen portType definiert sind (siehe `http://www.w3.org/TR/wsdl#_bindings`_).
+Nachrichten die von einem speziellen portType definiert sind (siehe http://www.w3.org/TR/wsdl#_bindings).
 
 Die Methode erzeugt einen Bindungsknoten und gibt diesen zurück. Dieser kann dann verwendet werden um mit
 aktuellen Daten gefüllt zu werden.
@@ -147,7 +147,7 @@ Die ``Zend\Soap\Server`` Implementation fügt korrespondierende gebundene Eintr�
 mit Eingabe und Ausgabe Einträgen hinzu die ein 'soap:body' Element als '<soap:body use="encoded"
 encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/> definieren.
 
-Siehe `http://www.w3.org/TR/wsdl#_bindings`_ für Details.
+Siehe http://www.w3.org/TR/wsdl#_bindings für Details.
 
 .. _zend.soap.wsdl.add_soap_binding:
 
@@ -162,7 +162,7 @@ Stil über *HTTP*).
 Das '/definitions/binding/soap:binding' Element wird verwendet um zu signieren dass das Bindung zum *SOAP*
 Protokoll Format gebunden ist.
 
-Siehe `http://www.w3.org/TR/wsdl#_bindings`_ für Details.
+Siehe http://www.w3.org/TR/wsdl#_bindings für Details.
 
 .. _zend.soap.wsdl.add_soap_operation:
 
@@ -181,7 +181,7 @@ Fall** für andere Transporte spezifiziert werden.
 Die ``Zend\Soap\Server`` Implementation verwendet *$serviceUri . '#' . $methodName* für den *SOAP* Operations
 Action Namen.
 
-Siehe `http://www.w3.org/TR/wsdl#_soap:operation`_ für Details.
+Siehe http://www.w3.org/TR/wsdl#_soap:operation für Details.
 
 .. _zend.soap.wsdl.add_service:
 
@@ -209,7 +209,7 @@ Die ``Zend\Soap\Server`` Implementation verwendet:
 wobei ``$name`` der Klassenname für die Web Service Definition ist wenn Klassen verwendet werden und Skript Name
 für die Web Service Definition wenn ein Set von Funktionen verwendet wird.
 
-Siehe `http://www.w3.org/TR/wsdl#_services`_ für Details.
+Siehe http://www.w3.org/TR/wsdl#_services für Details.
 
 .. _zend.soap.wsdl.types:
 
@@ -318,7 +318,7 @@ Eigenschaft in die WSDL Beschreibung hinzugefügt wird.
 Es verhindert Duplikate wenn diese Methode zwei oder mehrmals aufgerufen wird und auch Rekursionen im Kapitel der
 Typ Definitionen.
 
-Siehe `http://www.w3.org/TR/wsdl#_types`_ für Details.
+Siehe http://www.w3.org/TR/wsdl#_types für Details.
 
 .. _zend.soap.wsdl.add_documentation:
 
@@ -331,7 +331,7 @@ das optionale 'wsdl:document' Element verwendet wird.
 Das '/definitions/binding/soap:binding' Element wird verwendet um zu signieren das die Bindung zum *SOAP* Protokoll
 Format gebunden wurde.
 
-Siehe `http://www.w3.org/TR/wsdl#_documentation`_ für Details.
+Siehe http://www.w3.org/TR/wsdl#_documentation für Details.
 
 .. _zend.soap.wsdl.retrieve:
 
@@ -343,15 +343,6 @@ Dokument als *XML*, DOM Struktur oder Datei zu erhalten.
 
 
 
-.. _`http://www.w3.org/TR/wsdl#_messages`: http://www.w3.org/TR/wsdl#_messages
-.. _`http://schemas.xmlsoap.org/soap/encoding/`: http://schemas.xmlsoap.org/soap/encoding/
-.. _`http://www.w3.org/TR/wsdl#_porttypes`: http://www.w3.org/TR/wsdl#_porttypes
-.. _`http://www.w3.org/TR/wsdl#_request-response`: http://www.w3.org/TR/wsdl#_request-response
-.. _`http://www.w3.org/TR/wsdl#_bindings`: http://www.w3.org/TR/wsdl#_bindings
-.. _`http://www.w3.org/TR/wsdl#_soap:operation`: http://www.w3.org/TR/wsdl#_soap:operation
-.. _`http://www.w3.org/TR/wsdl#_services`: http://www.w3.org/TR/wsdl#_services
-.. _`http://www.w3.org/TR/wsdl#_types`: http://www.w3.org/TR/wsdl#_types
-.. _`http://www.w3.org/TR/wsdl#_documentation`: http://www.w3.org/TR/wsdl#_documentation
 
 .. [#] *'tns:' namespace* wird als Skript *URI* definiert (*'http://' .$_SERVER['HTTP_HOST'] .
        $_SERVER['SCRIPT_NAME']*).

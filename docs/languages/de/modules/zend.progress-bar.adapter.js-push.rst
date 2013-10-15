@@ -95,13 +95,13 @@ aktuellen Inhalt dann nicht laden.
 Statt einen eigenen Fortschrittsbalken zu erstellen, kann es gewünscht sein einen von einer vorhandenen Bibliothek
 wir Dojo, jQuery usw zu verwenden. Es gibt zum Beispiel:
 
-- Dojo: `http://dojotoolkit.org/reference-guide/dijit/ProgressBar.html`_
+- Dojo: http://dojotoolkit.org/reference-guide/dijit/ProgressBar.html
 
-- jQuery: `http://t.wits.sg/2008/06/20/jquery-progress-bar-11/`_
+- jQuery: http://t.wits.sg/2008/06/20/jquery-progress-bar-11/
 
-- MooTools: `http://davidwalsh.name/dw-content/progress-bar.php`_
+- MooTools: http://davidwalsh.name/dw-content/progress-bar.php
 
-- Prototype: `http://livepipe.net/control/progressbar`_
+- Prototype: http://livepipe.net/control/progressbar
 
 .. note::
 
@@ -113,7 +113,3 @@ wir Dojo, jQuery usw zu verwenden. Es gibt zum Beispiel:
 
 
 
-.. _`http://dojotoolkit.org/reference-guide/dijit/ProgressBar.html`: http://dojotoolkit.org/reference-guide/dijit/ProgressBar.html
-.. _`http://t.wits.sg/2008/06/20/jquery-progress-bar-11/`: http://t.wits.sg/2008/06/20/jquery-progress-bar-11/
-.. _`http://davidwalsh.name/dw-content/progress-bar.php`: http://davidwalsh.name/dw-content/progress-bar.php
-.. _`http://livepipe.net/control/progressbar`: http://livepipe.net/control/progressbar

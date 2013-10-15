@@ -79,8 +79,7 @@
 
 
 Другие ресурсы и дополнительную информацию по Atom ищите на
-сайте: `http://www.atomenabled.org/`_.
+сайте: http://www.atomenabled.org/.
 
 
 
-.. _`http://www.atomenabled.org/`: http://www.atomenabled.org/

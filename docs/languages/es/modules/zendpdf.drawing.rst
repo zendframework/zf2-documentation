@@ -619,7 +619,7 @@ PNG y TIFF ahora son soportadas):
 requiere que se configure la extensión ZLIB para trabajar con imágenes canal Alfa.**
 
 Consulte la documentación de *PHP* para obtener información detallada
-(`http://www.php.net/manual/en/ref.image.php`_). (`http://www.php.net/manual/en/ref.zlib.php`_).
+(http://www.php.net/manual/en/ref.image.php). (http://www.php.net/manual/en/ref.zlib.php).
 
 .. _zendpdf.drawing.line-drawing-style:
 
@@ -1113,5 +1113,3 @@ La transparencia puede ser el método ``ZendPdf\Page::setAlpha()``:
 
 
 .. _`PDF Reference, Sixth Edition, version 1.7`: http://www.adobe.com/devnet/acrobat/pdfs/pdf_reference_1-7.pdf
-.. _`http://www.php.net/manual/en/ref.image.php`: http://www.php.net/manual/en/ref.image.php
-.. _`http://www.php.net/manual/en/ref.zlib.php`: http://www.php.net/manual/en/ref.zlib.php

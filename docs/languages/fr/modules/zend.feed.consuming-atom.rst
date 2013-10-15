@@ -74,8 +74,7 @@ Les entrées Atom possèdent généralement les propriétés suivantes :
 
 
 Pour plus d'informations sur Atom ainsi qu'un grand nombre de ressources, voyez le site
-`http://www.atomenabled.org/`_.
+http://www.atomenabled.org/.
 
 
 
-.. _`http://www.atomenabled.org/`: http://www.atomenabled.org/

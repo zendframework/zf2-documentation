@@ -6,7 +6,7 @@ Using Google Calendar
 You can use the ``ZendGData\Calendar`` class to view, create, update, and delete events in the online Google
 Calendar service.
 
-See `http://code.google.com/apis/calendar/overview.html`_ for more information about the Google Calendar *API*.
+See http://code.google.com/apis/calendar/overview.html for more information about the Google Calendar *API*.
 
 .. _zendgdata.calendar.connecting:
 
@@ -653,7 +653,6 @@ comment text is stored in the ``content`` property.
 
 
 
-.. _`http://code.google.com/apis/calendar/overview.html`: http://code.google.com/apis/calendar/overview.html
 .. _`Authentication Overview in the Google Data API Developer's Guide`: http://code.google.com/apis/gdata/auth.html
 .. _`Queries section of the Google Data APIs Protocol Reference`: http://code.google.com/apis/gdata/reference.html#Queries
 .. _`Zend Framework API Documentation`: http://framework.zend.com/apidoc/core/
